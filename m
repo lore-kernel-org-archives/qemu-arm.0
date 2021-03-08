@@ -1,120 +1,152 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2173811lfg;
-        Mon, 8 Mar 2021 12:45:57 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJw1WSakV8ywQP8Uty9Tk+psumMcztAkbMOqzGgE+t+2kifVdaNa/4qBm3UmN0D+6aZUcRMv
-X-Received: by 2002:a92:6b04:: with SMTP id g4mr21347972ilc.223.1615236357007;
-        Mon, 08 Mar 2021 12:45:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1615236357; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2240003lfg;
+        Mon, 8 Mar 2021 14:30:49 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwAfiP4sgeHM6ajjU9H+HWzJ3YZixkqDsvm/fECJRPnlETClXfsAUQprcmoUuHoLL49e0Vz
+X-Received: by 2002:a6b:db15:: with SMTP id t21mr20433288ioc.133.1615242649842;
+        Mon, 08 Mar 2021 14:30:49 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1615242649; cv=pass;
         d=google.com; s=arc-20160816;
-        b=LqJkL054RnhaZuP6rlf28T7g/GFCrXLtL4HKHjiWhXQPMs3Be8oa9BtuqlZLXOjnRB
-         xCwPRI7fV+HXGkLRqpS4IGE7yKaerJDNUjsJglWdG6OSv5F6+yhTq4MKCDzFCp4bjkj4
-         WF6yxbO40tn85feFgb1wA3W2eAAQ4MAsJ9B7HeV4Xzjra6NkopopD7ktbaOo7/XyJ730
-         d4ekx1ImMAK2RfUJBPT/UcjD5reop5iA3jnciAZSwUW+U6oUaNiTqnq93dROhJXEhMAI
-         +gI7BjwO5Fnhdfe/13damMP5Zjj9Y1tHh9ogr+Tu9ZnGxmTiknQ7J5LKbza0QDgTd0dh
-         Vgmw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=qSG6GsOiJMr17/OLkL10W8K6wMI3bv07LXhhS9Vz4M/gXNkPm2f2ar0T8N4TZPxurx
+         m5XDIN/vEubTmL3LtFpGwcC8DeWcRR67ACQKpYWucG3FrpfXA9fbdP8HDWEBrkKAjIsg
+         tcvwhn3zOvZVXvB5Q6g7HzEu9oDG/0u8ZP/pNNnz6ykHjauQacYHmCNMN2VTheH90ZUr
+         NBsLarL+dgboDV+04+c9aY3pJwlpmzfhfX+qCKCXJTB9NVwC89+XchI0bOEmxnOshz5u
+         mLu6uTZ6jqZAY1F7mURDMnOw//kPjvl9mShS6f1yx5RpEIYTkASnS6NKdZ0pbS7yz/mo
+         8xJQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=8DznHYerOPOtkTEXJEAY2N/mu3UvWoXYBXaJgVA4E2c=;
-        b=TtVi8fVfoanG+X3RQsM8fokoViObnViFDwP8iqZlqtVWMZrkRAqO0totevVAS1uEYF
-         AEFXzwaANQFQaIcUeV77d/wzC85lQU7NuTKr/dLc91T8pFpPUK9DgX2XfQuCjqycpY4D
-         vOt6zSD7izHgIcY77uoyStdsuo5ct6TlhV7cFd8GrooNW9ZRKj2hPSZHjX5Q3IHnQrMV
-         gaO7fBBsTiK0tCYQ/ZKue69Noo9h38AcrMX1+4QkkpqR4C/COUswLa/1nMxRJq2rONP4
-         wffQu2FOUD8eVAhHuGrIaKhThHxaztUiFDMbwSa4eItlQb9crh7XVy7ksNEeHN/anRu6
-         /oYQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=iSZvYWU1;
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=o3cmzx65Vkkk0HpIQ6se5Lnmb2cU6Fv5RySi733NPsA=;
+        b=XUje4vaBQgc/Z6fOi6zOsvOPzaKEDtzBhzAkTbPsXxyp9ky3WRlvghftaBn58ehAuH
+         wFW7B4vwR3aDJkJwhDYOy0GKlzmxeXZCUfE06LR6ncN+ILkf1P7w1Jwl2jCz9ZLHlING
+         oew8InNpc6BD8GKOOPQ5dlw8mwhabCpQlc9AXXxJ4a3qrNnX1KLcty59tzy4zqk8qhI8
+         5cFb7UhJnjv4cDHepMHTYnAIYtIpfkwqerRJMEI40X6xZH7mvTmQW5/QeapL5+qGx/w6
+         2Jh8jADueeVtoelqkT2mBhV4vhB6KQJlhHpjXRleerp4x5ydS5XfC8Bu0Nt4Yr0ebLpx
+         nM4A==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=jKH2dyuR;
+       arc=pass (i=1 spf=pass spfdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=xilinx.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e11si11044617ilu.32.2021.03.08.12.45.56
+        by mx.google.com with ESMTPS id a10si12557781ilv.61.2021.03.08.14.30.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Mar 2021 12:45:56 -0800 (PST)
+        Mon, 08 Mar 2021 14:30:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=iSZvYWU1;
+       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=jKH2dyuR;
+       arc=pass (i=1 spf=pass spfdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39934 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=xilinx.com
+Received: from localhost ([::1]:47320 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lJMlI-0001Mw-B2
-	for alex.bennee@linaro.org; Mon, 08 Mar 2021 15:45:56 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37686)
+	id 1lJOOn-0001Nt-5o
+	for alex.bennee@linaro.org; Mon, 08 Mar 2021 17:30:49 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59658)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wrampazz@redhat.com>)
- id 1lJMkp-0001Kh-FB
- for qemu-arm@nongnu.org; Mon, 08 Mar 2021 15:45:27 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:55403)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <wrampazz@redhat.com>)
- id 1lJMkn-0006MX-06
- for qemu-arm@nongnu.org; Mon, 08 Mar 2021 15:45:26 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1615236324;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=8DznHYerOPOtkTEXJEAY2N/mu3UvWoXYBXaJgVA4E2c=;
- b=iSZvYWU16TECHA82NeIptYAVSnr3MPAPr6pVbJpIN+A9zyVUdgD2Y9VFcuMPak7lhXGFcN
- fIwgtevFIE5/lL90+M5kQqQr6R7hmnwjkl8RaOgDiK7kyi2e0i4IsvvBJQDceybtlM2LfK
- QtMymCXTCt7WR1hYkJEX+MlKrQRuNrM=
-Received: from mail-vk1-f198.google.com (mail-vk1-f198.google.com
- [209.85.221.198]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-466-AABBAVh8P-mU3sLz9W2FQA-1; Mon, 08 Mar 2021 15:45:22 -0500
-X-MC-Unique: AABBAVh8P-mU3sLz9W2FQA-1
-Received: by mail-vk1-f198.google.com with SMTP id r1so1172066vke.11
- for <qemu-arm@nongnu.org>; Mon, 08 Mar 2021 12:45:22 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=8DznHYerOPOtkTEXJEAY2N/mu3UvWoXYBXaJgVA4E2c=;
- b=CbZ8OMTvESkWVvibDyhbVv5dGfCJKxrCACGcV46RVslXTreTfUVX72GpgKkLUTwGgp
- nVgGmHpQg0LIi9aedygMvOYsbzPghZo/9rvzcDDEWy3kAbmOeTLBkOWSIJ18WcsY4HEv
- PRiEcOFv4tRTTK44wA780AyhJHGt3N7ELzhYHMDd1Df3ZlqZbq3ZLTH5u8q/HK5nOKNh
- iTpqGhMO0+RQUdmRnfy7Zw8CYrWp9ForqZ+vUk+lvunXxf5P6b96pU626ez3V9Qvn0Le
- Bq5XrCcxnivsi8EzsDcpeMuTqTRbsc4jCqQNSGsyAAhV9O+u4f9lvjPgNh5MxKvw8TV1
- Z8lw==
-X-Gm-Message-State: AOAM531lJHy2yC9Cv4VoxjHgPdj9UeDtevdzh0VveOt4PEi+ZopTnFl/
- LAyAHlm5/IPoUiq7n0nA7k98kShg2w5zf+hn4fgLDoivPBOWpufJi4qOCkr7ovu+yVHsETsj80i
- YhFs0KrzEKoBFr3Bc7TKhz/O6nnel
-X-Received: by 2002:a1f:b250:: with SMTP id b77mr15137765vkf.7.1615236322012; 
- Mon, 08 Mar 2021 12:45:22 -0800 (PST)
-X-Received: by 2002:a1f:b250:: with SMTP id b77mr15137756vkf.7.1615236321792; 
- Mon, 08 Mar 2021 12:45:21 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <edgar@xilinx.com>)
+ id 1lJONw-0001NH-Sl; Mon, 08 Mar 2021 17:29:57 -0500
+Received: from mail-mw2nam08on2062.outbound.protection.outlook.com
+ ([40.107.101.62]:25185 helo=NAM04-MW2-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <edgar@xilinx.com>)
+ id 1lJONt-0003iL-3X; Mon, 08 Mar 2021 17:29:55 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=DPEXwganwwKnWi588lNuTOMyWMjYY7rzpfjYx2nJvNIPlevxj6MwvrgfWdlVhQkssaVhuANP7HcBcShWeQ3Hoq24Ae9xhQuKfqE8KUUvoKiE501k2GxdHm3Y4zKk42tiomRpDqLxUHs8NiUqHvbVdgcfLgUBAm2+Iv/AKkvTUhO3wXs9n+iCdGP+pgA3jLdfh7fp8R0WlcEBq7k0rgt0BvbdziJegFhHEpygH9oZEX/UuB0634oElu0yJiSWyJw9pguPDY+Ls0FxD1YsNRSa53lPpb/chwYqOp3oM7VhqGzcowJDRbXgc175418LLYPNtnvZtgBx6X+ZCocS/FNPpQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=o3cmzx65Vkkk0HpIQ6se5Lnmb2cU6Fv5RySi733NPsA=;
+ b=lmXxKMdH2GTLmxZAl2KH5fVcw/igegRboZNwxQbPGcGR+x81T5qHlF4LB49j05NSTmnsoV4DbKh49erTNFm44yWavZZew0LyijfO3lAbOMAYTY/JYUSal1MbVrviFSjZ6Sbvkb0WI5bG5NdOzBDtqwCnKoDno4hSJqc5FgnZvp9yNiiN5CMhgkN62s1wLeUbsGH/4+82zRY7tx2tsFdtIUsD46mReO/uJGuXJrOUtm2d+moezIoKqbs22V3TMnN0TBHl+Ae0rMV5R5D768nrYDeZKekBYeb2q8q6q+NvjlQ8BaeCiM9/bZYzMjG3cYSG2UNcFSebyFc046dkQ6KKBA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 149.199.62.198) smtp.rcpttodomain=linaro.org smtp.mailfrom=xilinx.com;
+ dmarc=pass (p=none sp=none pct=100) action=none header.from=xilinx.com;
+ dkim=none (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=o3cmzx65Vkkk0HpIQ6se5Lnmb2cU6Fv5RySi733NPsA=;
+ b=jKH2dyuRXBm+Ct5rMyUF02OiBYDPAO0xSVkweBvSBnMqQl1m4v2FXTZsmkdK+h6XtP5F4zoaXVEudpKrK++I7c9vSxw9agjz6GCQjfyehid7bKn5MTEGsOs+HpZykbeSf2qZx+5VdpRrfa7v4cB9xEAas8AwGrZqTnYJxYh+1/A=
+Received: from MN2PR01CA0059.prod.exchangelabs.com (2603:10b6:208:23f::28) by
+ SN6PR02MB4286.namprd02.prod.outlook.com (2603:10b6:805:a8::18) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.3912.17; Mon, 8 Mar 2021 22:29:48 +0000
+Received: from BL2NAM02FT034.eop-nam02.prod.protection.outlook.com
+ (2603:10b6:208:23f:cafe::8) by MN2PR01CA0059.outlook.office365.com
+ (2603:10b6:208:23f::28) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3912.17 via Frontend
+ Transport; Mon, 8 Mar 2021 22:29:48 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 149.199.62.198)
+ smtp.mailfrom=xilinx.com; linaro.org; dkim=none (message not signed)
+ header.d=none;linaro.org; dmarc=pass action=none header.from=xilinx.com;
+Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
+ 149.199.62.198 as permitted sender) receiver=protection.outlook.com;
+ client-ip=149.199.62.198; helo=xsj-pvapexch01.xlnx.xilinx.com;
+Received: from xsj-pvapexch01.xlnx.xilinx.com (149.199.62.198) by
+ BL2NAM02FT034.mail.protection.outlook.com (10.152.77.161) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.20.3912.25 via Frontend Transport; Mon, 8 Mar 2021 22:29:48 +0000
+Received: from xsj-pvapexch02.xlnx.xilinx.com (172.19.86.41) by
+ xsj-pvapexch01.xlnx.xilinx.com (172.19.86.40) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2106.2; Mon, 8 Mar 2021 14:29:45 -0800
+Received: from smtp.xilinx.com (172.19.127.96) by
+ xsj-pvapexch02.xlnx.xilinx.com (172.19.86.41) with Microsoft SMTP Server id
+ 15.1.2106.2 via Frontend Transport; Mon, 8 Mar 2021 14:29:45 -0800
+Received: from [10.71.118.76] (port=56746 helo=localhost)
+ by smtp.xilinx.com with esmtp (Exim 4.90)
+ (envelope-from <edgar@xilinx.com>)
+ id 1lJONl-0003t7-4U; Mon, 08 Mar 2021 14:29:45 -0800
+Date: Mon, 8 Mar 2021 23:29:46 +0100
+From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH v1 1/2] hw/misc: versal: Add a model of the XRAM controller
+Message-ID: <20210308222946.GP28976@toto>
+References: <20210302110955.1810487-1-edgar.iglesias@gmail.com>
+ <20210302110955.1810487-2-edgar.iglesias@gmail.com>
+ <CAFEAcA-Bquwni3NN6BLfXjCntCwUqXuXx9=-RSpZgfHS+RgxqQ@mail.gmail.com>
 MIME-Version: 1.0
-References: <20210304203540.41614-1-nieklinnenbank@gmail.com>
- <20210304203540.41614-3-nieklinnenbank@gmail.com>
- <CAKJDGDZq_ioF91BUWRo_y0GKYGbjgZa46Pt83wp7t3b_ZC=ixw@mail.gmail.com>
- <4d6d2e89-1152-249b-fe55-d1b611fd77e8@redhat.com>
- <CAPan3WqJHFy=GKVXFHgDbTimmZsBueUUhxvs4L+D58J-JQF3ew@mail.gmail.com>
- <CAKJDGDaUrbVpmNRvJvc+psWXzNUk6s=u8NxsR6E727UjiwsjeQ@mail.gmail.com>
-In-Reply-To: <CAKJDGDaUrbVpmNRvJvc+psWXzNUk6s=u8NxsR6E727UjiwsjeQ@mail.gmail.com>
-From: Willian Rampazzo <wrampazz@redhat.com>
-Date: Mon, 8 Mar 2021 17:44:56 -0300
-Message-ID: <CAKJDGDZ2yf_Z1y6qxmet=6rtH90C1BZ_cOGNW41Jk-d1EzJFwQ@mail.gmail.com>
-Subject: Re: [PATCH v3 2/5] tests/acceptance/boot_linux_console: remove
- Armbian 19.11.3 bionic test for orangepi-pc machine
-To: Niek Linnenbank <nieklinnenbank@gmail.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=wrampazz@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=wrampazz@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.251,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA-Bquwni3NN6BLfXjCntCwUqXuXx9=-RSpZgfHS+RgxqQ@mail.gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-EOPAttributedMessage: 0
+X-MS-Office365-Filtering-HT: Tenant
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 9135f5db-d74c-4f76-bb7a-08d8e281aede
+X-MS-TrafficTypeDiagnostic: SN6PR02MB4286:
+X-Microsoft-Antispam-PRVS: <SN6PR02MB4286E91C3AED6C87358BB6C7C2939@SN6PR02MB4286.namprd02.prod.outlook.com>
+X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
+X-MS-Oob-TLC-OOBClassifiers: OLM:612;
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: sv468RlUTpdrQDAg8shAHAqL0AO3Agn4t79dDGRCXm3UvbSvEsEIDC47gYkv0wf5nTGjTKZCIvRdjzWy2dWoa+J287O2hUEe0mABvzTQEomMSBO/HYnNHJfZFkr3FM/RavEK8SnOh6XmHZBJOUrUeikq9/xW4qFzpQa4U5dIoA+oT8+U+0d8gL4+3nqufHQLok5W6vuqVd/fdNvH7rC9jEhrPjQJ2Hq09Y/vmGg1kIt+Wx9yreDWINS/OjnOErb0yye6iZkolKtPsKL7kitEXJtGJHto/NiIw+gus499l5vQD/J6+/iZ3UcNTkz/BJ1jqn1dR4Bdao1BZG7xHZiKr7fzRIFi6ywVyAEQClQrGE63wcV0YU2iOY+TrGzVlwZWYTfkYCCMzFrc7ggre3WXNsrRlHfriH2IDQ9pkMf8/315Z/RazU9VdrNtIUQHbu2W++gaLOC48ULnYeCKuos514fh3fSD+pjl5sqE8o5on/JVfKjWFZTO0537H4RxFXKvytcxcTEgQKtGSePg2mnM7hCUHRO68naiki7TjL7538MmMSlRl3HJXi0U28mqHHNsCyAlKcAs7BeyyTQwiFmf5HchRaIplhq/JYn/VZWPbgAmAkY0e/9ibFy0ts9GKPShxANy4T3iZoyL4GFaBU/UNF3DULleviM+INZVNk9OsdU=
+X-Forefront-Antispam-Report: CIP:149.199.62.198; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:xsj-pvapexch01.xlnx.xilinx.com;
+ PTR:unknown-62-198.xilinx.com; CAT:NONE;
+ SFS:(7916004)(4636009)(39860400002)(396003)(136003)(376002)(346002)(46966006)(36840700001)(5660300002)(33656002)(1076003)(36860700001)(36906005)(478600001)(54906003)(336012)(4326008)(47076005)(356005)(316002)(7416002)(107886003)(426003)(8676002)(82740400003)(82310400003)(8936002)(2906002)(83380400001)(6916009)(33716001)(70206006)(70586007)(186003)(26005)(9786002)(7636003)(9686003);
+ DIR:OUT; SFP:1101; 
+X-OriginatorOrg: xilinx.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Mar 2021 22:29:48.4003 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9135f5db-d74c-4f76-bb7a-08d8e281aede
+X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.62.198];
+ Helo=[xsj-pvapexch01.xlnx.xilinx.com]
+X-MS-Exchange-CrossTenant-AuthSource: BL2NAM02FT034.eop-nam02.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR02MB4286
+Received-SPF: pass client-ip=40.107.101.62; envelope-from=edgar@xilinx.com;
+ helo=NAM04-MW2-obe.outbound.protection.outlook.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -128,108 +160,103 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Daniel Berrange <berrange@redhat.com>, qemu-devel <qemu-devel@nongnu.org>,
- Beniamino Galvani <b.galvani@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- Pavel Dovgalyuk <Pavel.Dovgaluk@ispras.ru>,
- Cleber Rosa Junior <crosa@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: Stefano Stabellini <sstabellini@kernel.org>,
+ Joe Komlodi <joe.komlodi@xilinx.com>,
+ Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>,
+ Francisco Iglesias <frasse.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, francisco.iglesias@xilinx.com,
+ KONRAD Frederic <frederic.konrad@adacore.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
+ Luc Michel <luc.michel@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oOgmwWSU6oPL
+X-TUID: Kqnp7ZT+1nYe
 
-On Mon, Mar 8, 2021 at 5:41 PM Willian Rampazzo <wrampazz@redhat.com> wrote=
-:
->
-> On Mon, Mar 8, 2021 at 5:32 PM Niek Linnenbank <nieklinnenbank@gmail.com>=
- wrote:
+On Mon, Mar 08, 2021 at 04:54:26PM +0000, Peter Maydell wrote:
+> On Tue, 2 Mar 2021 at 11:09, Edgar E. Iglesias <edgar.iglesias@gmail.com> wrote:
 > >
-> > Hi Philippe, Willian,
+> > From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 > >
-> > On Mon, Mar 8, 2021 at 8:52 AM Philippe Mathieu-Daud=C3=A9 <philmd@redh=
-at.com> wrote:
-> >>
-> >> On 3/5/21 4:16 PM, Willian Rampazzo wrote:
-> >> > On Thu, Mar 4, 2021 at 5:44 PM Niek Linnenbank <nieklinnenbank@gmail=
-.com> wrote:
-> >> >>
-> >> >> The image for Armbian 19.11.3 bionic has been removed from the armb=
-ian server.
-> >> >> Without the image as input the test arm_orangepi_bionic_19_11 canno=
-t run.
-> >> >>
-> >> >> This commit removes the test completely and merges the code of the =
-generic function
-> >> >> do_test_arm_orangepi_uboot_armbian back with the 20.08 test.
-> >> >>
-> >> >> Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
-> >> >> ---
-> >> >>  tests/acceptance/boot_linux_console.py | 72 ++++++++--------------=
-----
-> >> >>  1 file changed, 23 insertions(+), 49 deletions(-)
-> >> >>
-> >> >> diff --git a/tests/acceptance/boot_linux_console.py b/tests/accepta=
-nce/boot_linux_console.py
-> >> >> index eb01286799..9fadea9958 100644
-> >> >> --- a/tests/acceptance/boot_linux_console.py
-> >> >> +++ b/tests/acceptance/boot_linux_console.py
-> >> >> @@ -802,7 +802,29 @@ def test_arm_orangepi_sd(self):
-> >> >>          # Wait for VM to shut down gracefully
-> >> >>          self.vm.wait()
-> >> >>
-> >> >> -    def do_test_arm_orangepi_uboot_armbian(self, image_path):
-> >> >> +    @skipUnless(os.getenv('ARMBIAN_ARTIFACTS_CACHED'),
-> >> >> +                'Test artifacts fetched from unreliable apt.armbia=
-n.com')
-> >> >> +    @skipUnless(os.getenv('AVOCADO_ALLOW_LARGE_STORAGE'), 'storage=
- limited')
-> >> >> +    def test_arm_orangepi_bionic_20_08(self):
-> >> >> +        """
-> >> >> +        :avocado: tags=3Darch:arm
-> >> >> +        :avocado: tags=3Dmachine:orangepi-pc
-> >> >> +        :avocado: tags=3Ddevice:sd
-> >> >> +        """
-> >> >> +
-> >> >> +        # This test download a 275 MiB compressed image and expand=
- it
-> >> >> +        # to 1036 MiB, but the underlying filesystem is 1552 MiB..=
-.
-> >> >> +        # As we expand it to 2 GiB we are safe.
-> >> >> +
-> >> >> +        image_url =3D ('https://dl.armbian.com/orangepipc/archive/=
-'
-> >> >> +                     'Armbian_20.08.1_Orangepipc_bionic_current_5.=
-8.5.img.xz')
-> >> >
-> >> > The Armbian 20 is not available on this link anymore. I can browse j=
-ust 21.
-> >>
-> >> Cat-and-mouse game *sigh*.
-> >>
+> > Add a model of the Xilinx Versal Accelerator RAM (XRAM).
+> > This is mainly a stub to make firmware happy. The size of
+> > the RAMs can be probed. The interrupt mask logic is
+> > modelled but none of the interrups will ever be raised
+> > unless injected.
 > >
-> > Just to clarify here: in this patch I wanted to only make the change to=
- remove the test for the 19.11.3 image.
-> > And in the 3rd patch (tests/acceptance/boot_linux_console: change URL f=
-or test_arm_orangepi_bionic_20_08)
-> > do the update for to correct the 20.08 link. So each patch fixes one pr=
-oblem at a time.
+> > Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+> > ---
+> >  include/hw/misc/xlnx-versal-xramc.h | 102 +++++++++++
+> >  hw/misc/xlnx-versal-xramc.c         | 253 ++++++++++++++++++++++++++++
+> >  hw/misc/meson.build                 |   1 +
+> >  3 files changed, 356 insertions(+)
+> >  create mode 100644 include/hw/misc/xlnx-versal-xramc.h
+> >  create mode 100644 hw/misc/xlnx-versal-xramc.c
 > >
-> > Does that make sense, or do you prefer that I combine them in a single =
-patch instead?
->
-> Ops, I forgot about the 3rd patch in this series. That makes sense to
-> me, sorry for the mess.
->
+> > diff --git a/include/hw/misc/xlnx-versal-xramc.h b/include/hw/misc/xlnx-versal-xramc.h
+> > new file mode 100644
+> > index 0000000000..68163cf330
+> > --- /dev/null
+> > +++ b/include/hw/misc/xlnx-versal-xramc.h
+> > @@ -0,0 +1,102 @@
+> > +/*
+> > + * QEMU model of the Xilinx XRAM Controller.
+> > + *
+> > + * Copyright (c) 2021 Xilinx Inc.
+> > + * SPDX-License-Identifier: GPL-2.0-or-later
+> > + * Written by Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+> > + */
+> > +
+> > +#ifndef XLNX_VERSAL_XRAMC_H
+> > +#define XLNX_VERSAL_XRAMC_H
+> > +
+> > +#include "qemu/osdep.h"
+> 
+> Headers must never include osdep.h.
+> 
+> > +#include "hw/sysbus.h"
+> > +#include "hw/register.h"
+> > +#include "qemu/bitops.h"
+> > +#include "qemu/log.h"
+> > +#include "migration/vmstate.h"
+> > +#include "hw/irq.h"
+> 
+> I bet you don't really need all of these includes in the header file;
+> some of them belong in the .c file.
 
-And, in this case,
+Yep, I'll cleanup the header files in v2.
 
-Reviewed-by: Willian Rampazzo <willianr@redhat.com>
 
-> >
-> > Regards,
-> > Niek
-> >
-> > --
-> > Niek Linnenbank
-> >
+> 
+> > +static void xram_ctrl_init(Object *obj)
+> > +{
+> > +    XlnxXramCtrl *s = XLNX_XRAM_CTRL(obj);
+> > +    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+> > +    RegisterInfoArray *reg_array;
+> > +
+> > +    memory_region_init(&s->iomem, obj, TYPE_XLNX_XRAM_CTRL,
+> > +                       XRAM_CTRL_R_MAX * 4);
+> > +    reg_array =
+> > +        register_init_block32(DEVICE(obj), xram_ctrl_regs_info,
+> > +                              ARRAY_SIZE(xram_ctrl_regs_info),
+> > +                              s->regs_info, s->regs,
+> > +                              &xram_ctrl_ops,
+> > +                              XLNX_XRAM_CTRL_ERR_DEBUG,
+> > +                              XRAM_CTRL_R_MAX * 4);
+> > +    memory_region_add_subregion(&s->iomem,
+> > +                                0x0,
+> > +                                &reg_array->mem);
+> 
+> Isn't this just creating a container region that contains
+> exactly one subregion that is the same size as it? Do we
+> need to do this so that the reg_array is disposed of via
+> refcounting or something ?
 
+TBH I was just copying a pattern here. It looks to me like if
+reg_array gets leaked and we're using an unnecesarry container MR.
+I'll fix this in v2 (if I understood the life-cycle
+of these regs correctly).
+
+Cheers,
+Edgar

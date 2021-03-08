@@ -1,355 +1,179 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp476436lfq;
-        Wed, 13 Jan 2021 06:23:16 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwnmj7Ha5Rfdbp7LFi6qBq21B0z+m7WYto9e5NMr9RybpPAYG3RdpfxxUMKK6LB0lGxIH4M
-X-Received: by 2002:a25:e047:: with SMTP id x68mr3557341ybg.160.1610547796692;
-        Wed, 13 Jan 2021 06:23:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610547796; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1614599lfg;
+        Sun, 7 Mar 2021 23:50:41 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJygmPtEvJy03dgaR3pSDjJ+OTe6iia64XcqW9V12GQsaBELwRrqMZh2nNtrPC+3zjfG9CRh
+X-Received: by 2002:a5d:8d92:: with SMTP id b18mr18155679ioj.167.1615189841076;
+        Sun, 07 Mar 2021 23:50:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1615189841; cv=none;
         d=google.com; s=arc-20160816;
-        b=rANEz9Xq/34MQ0QT0f0awLcE/CzprjM5SPWr7Be6hxUXarzPDWKlRMwhMu9Q2iAHjf
-         esrdc9N8N3kp+6kdWkQfTn3Skp8I+ecjOQmaBtgWfhz0EM7Wnsut8p/ejzv68Q6L0IGH
-         YXL/8zzjwVxMDR22phNGrQp0xr54pjbr29sosRLj2VJUDosglN0ezGxJ1HdlOlIyLCtI
-         ftVP45HoDsG5iNTt0rXVS4McATVNq7ACOWt84kJmaDlPT+NouqiscP2TmpcLG2A+BU6I
-         z9kAAl3vdKaQ0/yEuSt+BgrS1BZl8hTzEmcTpFcugPoJ/V/xmGTdbAG4Hoh/yECoSJPT
-         15XA==
+        b=pf4SuEtHT7OHmKQIsojxd0ze4ZE7OaKWkxBYOazyy09vrRs7rVCBW7+q61p7rLJAmB
+         IPNa55HdaT3SiMQ13p+yD5IMeJRapqsWtx4A+gcRFcHvBQUlES5oosaZpVRKZj7oeaG5
+         O65C6+tyD8+6Qg+8tjjAFFslpaW9tJuXb1qNoGB8XMbz7lUAqugCRX4VV01oY+BxzE34
+         Mprpd7p9THfH9GD1czABN6hgO3+0gGkZDJ0qeFsoIykCFMX4oSQqO3NA2dYUQiT0I1Nq
+         B8ubP3UuyQ69Yy4a/YQRLkCZRsmLlldd4azWvnVMUyBV3+oGTV+v8KiBoizGFPM8n9Y5
+         E4cw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=j/tzQYxcL9oPXA73zHHNehn2z9Rge6a9/KFC8AG2a48=;
-        b=cc3Ez3En6KcSQCyzyaR663/YV8d7LGzJyxxP02LwPNHAgE/M9jfJmxlsUu2dx6vCKF
-         6KUHRRA+KXn90QFmSp8mmJ+thhTQdl+d8XPsuvR7834v+H05QucW01EMyYTTdTI/yvb/
-         ExBiwa4R6HTJ+XiCeaHgp0tW3yxFCBhDzdw4MQlJ6uhVjcXAP4KrLeByFfzhCejnkBH5
-         xeqUyqeszTCfOvSnBUreOjzx7GbQ4GruL0LE0j1XWquM7/K3O/n59OcYe+Ph1bfws0k6
-         mZqmLul4WOPyPsjjrlzY7vk1JaIu8LEePxzuBWYNKCfk+EOmxcSwH2mONIA6xawi3fad
-         maCw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=sdilp73AuirF724i5VenkGAx8C9V0SGJGdomHDOsg+U=;
+        b=HP/R3v/ZPNjgeM6ucOrzGODRjwYZ2jXIPZIvESa2DcfonfYFLn7Fn8w1FyWu6m8j9f
+         t+bjBN2BxIbx5ld/uhRxyQiQmIs6nEDOngG9OpPLmYh95a361o8xaOAONENP3hdEImoT
+         QSCmCVrYncR1tzsuVp8Wr5ktlYAHQGpLML4/m+lIhVWylyS0FXiNalr/WkLAo9EwByff
+         oUyf/SJAJQGofK+ujOi0NFP1/F4JG32DRaLWNSqUrYmXEFDIWJZfr/JwDmT96bNAiIf+
+         I86McEQTL58rGlthx43K85hzPc+Ycq53DbQgv2yODbtQlmSSA3TvyznFrz03ShkmDhF4
+         6imQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=p+LdzPCw;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IT5NhmaL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u5si2226726ybo.69.2021.01.13.06.23.16
+        by mx.google.com with ESMTPS id e11si9500890ilu.32.2021.03.07.23.50.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Jan 2021 06:23:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 07 Mar 2021 23:50:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=p+LdzPCw;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:41244 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IT5NhmaL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:55364 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kzh3M-0000Mj-0I
-	for alex.bennee@linaro.org; Wed, 13 Jan 2021 09:23:16 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50084)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lJAf2-0000kh-8U
+	for alex.bennee@linaro.org; Mon, 08 Mar 2021 02:50:40 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34476)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1kzgrk-0007Ax-0K; Wed, 13 Jan 2021 09:11:16 -0500
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534]:35843)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1kzgrh-0005cp-JP; Wed, 13 Jan 2021 09:11:15 -0500
-Received: by mail-ed1-x534.google.com with SMTP id b2so2060651edm.3;
- Wed, 13 Jan 2021 06:11:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=j/tzQYxcL9oPXA73zHHNehn2z9Rge6a9/KFC8AG2a48=;
- b=p+LdzPCwrMO54FN2vizwydvYz8ZgMxrW79QbxiLQoiPNjuPMAwU+q5V6sseXnj7ZME
- LnN6xPX3H+FlpyGiSWVTZoNTM59znEkyua6Q5eO4/a4Xv1G17tQRC7XdBNjEVd7kT0CL
- WiJwSsVmd7BXkzWTYfVbU6PiOHBmx1ZDS4iYy0VagxHP5MBdNc0UNRFv3Su70n5np4/q
- /ciNs8deNDbEDcOyxqInPBjyAxby7MY/kzub2UFTUmrOGVbGmUn53v6nePM5UvWMvVFb
- iKcwh/33lBemxf4MdApj9qnIKq1cm8IZyHl9+gQ0BndyJNYQdCE6XJEYkQTXJB0x3e+5
- XHdQ==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lJAeW-0000kR-Iz
+ for qemu-arm@nongnu.org; Mon, 08 Mar 2021 02:50:08 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:28365)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lJAeT-00012D-N8
+ for qemu-arm@nongnu.org; Mon, 08 Mar 2021 02:50:08 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1615189803;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=sdilp73AuirF724i5VenkGAx8C9V0SGJGdomHDOsg+U=;
+ b=IT5NhmaLTPc3FH4rr9a9zm1lDvnHcpn9velOHZbft0ozEFy+EKLfjSMNbqL3GPma3IaGiK
+ Ozd7ACgCPL9GDbVAe3l0ZkjxlK6ngwqLfo5Md3xXOGxpg0GyEWCqTfhIL3RmWZUX0obgy/
+ yTr81SoOLMZgKRVXRmWFvrEThkCY8C8=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-268-4Ar-2xZkN_uJwwPM6wriEQ-1; Mon, 08 Mar 2021 02:49:59 -0500
+X-MC-Unique: 4Ar-2xZkN_uJwwPM6wriEQ-1
+Received: by mail-wr1-f70.google.com with SMTP id n16so3368947wro.1
+ for <qemu-arm@nongnu.org>; Sun, 07 Mar 2021 23:49:59 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=j/tzQYxcL9oPXA73zHHNehn2z9Rge6a9/KFC8AG2a48=;
- b=pEH7lrKMP8bNrIr+WRw54LDjCAX+GZ8mbm8o91Z1pDRlq0vxIviy+vjruirHVoew8F
- UuIbsDjs1DpEHdBhDtP2gHLDgkkv+HFoFw2jYWyNliwdx59Ve/ul6M/QMat4QrJP0b3F
- 8okAec8x8HOfSUFQwOfhn6ABYjQCnBBGaXVQ3r2yVuYgwSi6Ete5+Xfb+lvj1dDnICK8
- YdHuF+76bo4kLLljWEIbws/j7MDQqJ9SpS8kT0s4xuXs+QO6EFbQcGbLDXewzG0Y2B6v
- KJsO9g33o1/gJ3UNDn2zxgLcSFr6FA67SnZeemFed1NenYxQkg7WaL+CTbNOp2vXwe0K
- Xi8g==
-X-Gm-Message-State: AOAM533QvZQUebJmO9ym7q0x6aHLT/wcF1ymkynwW+pXSXxWPblElFzh
- lQ3eHRXERHwE6KnNRXrlMuKhar0SEJdMc7uWb3o=
-X-Received: by 2002:a05:6402:1714:: with SMTP id
- y20mr1925629edu.2.1610547070906; 
- Wed, 13 Jan 2021 06:11:10 -0800 (PST)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=sdilp73AuirF724i5VenkGAx8C9V0SGJGdomHDOsg+U=;
+ b=hmJlUDu1p5oaoQPiHMUS44e2AcLhe2CDcZGO+8UGC4avfX14uGfZEp58N38ddoTtQG
+ IaQOS9l0Oyvwyr5poh2mjzH2dr/20CugRgHLu/M5AbZlDcKL72oQUubV1YMvJhr1woh1
+ pyVJ5FkVzf9GDon2tJ1TN5/Qm2yCVL1FxjMJieGSXAiZn2xQYdreEV0mJ0TWyuDleAs0
+ 4kOLu5Dk8pPrfS3jL1gxCE80B2aCH4FHAHsYdxfiyUq3B0FNb3Rv8Uqpy6NZAXp+b8zn
+ 8puNJmfj6eAqfPk+HQUbQLfux0iODeE5Y4fQn3XTbIcQz6e9NDclHqv/xo7H546n7toX
+ iDCQ==
+X-Gm-Message-State: AOAM531eMBHeULTcX6/oW2eRZG/Fus4sQ50fP4AjRPmPLovuclOP9FU0
+ yW+5PhSu04ndjXvXhbH4mbS4P+HZDJWYh26iPvUdHzvW0L+U5g89/pguTV0rdlXrvhy3jh2Ckpp
+ mRm4VCb7yk63t
+X-Received: by 2002:adf:a1ce:: with SMTP id v14mr21781633wrv.228.1615189798787; 
+ Sun, 07 Mar 2021 23:49:58 -0800 (PST)
+X-Received: by 2002:adf:a1ce:: with SMTP id v14mr21781611wrv.228.1615189798617; 
+ Sun, 07 Mar 2021 23:49:58 -0800 (PST)
+Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net.
+ [83.57.175.68])
+ by smtp.gmail.com with ESMTPSA id v18sm13873563wrf.41.2021.03.07.23.49.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 07 Mar 2021 23:49:58 -0800 (PST)
+Subject: Re: [PATCH v3 4/5] tests/acceptance: update sunxi kernel from armbian
+ to 5.10.16
+To: Willian Rampazzo <wrampazz@redhat.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>
+References: <20210304203540.41614-1-nieklinnenbank@gmail.com>
+ <20210304203540.41614-5-nieklinnenbank@gmail.com>
+ <CAKJDGDawHKo0=q_psWrSOGVXvDf+QjjM20E29bdbogNfBTUsXg@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <0c4868bb-374e-ec77-a7cd-4ae901e1e684@redhat.com>
+Date: Mon, 8 Mar 2021 08:49:57 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.0
 MIME-Version: 1.0
-References: <FRYP281MB0158389968A2A1C231F3A585ABFB0@FRYP281MB0158.DEUP281.PROD.OUTLOOK.COM>
- <CAFEAcA9-EP7s-gNCsXf_59eOfo+hvTX_EwJjg02dHt0eyWOk9A@mail.gmail.com>
- <15fc51bf-1473-2808-583e-c58eb1620577@greensocs.com>
-In-Reply-To: <15fc51bf-1473-2808-583e-c58eb1620577@greensocs.com>
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Date: Wed, 13 Jan 2021 15:11:01 +0100
-Message-ID: <CAJy5ezruHnVHbDFLzeMpj7=1=gSjExEE9H_3j6eVpr3-Pa0UVQ@mail.gmail.com>
-Subject: Re: [PATCH] Initialize Zynq7000 UART clocks on reset
-To: Damien Hedde <damien.hedde@greensocs.com>
-Content-Type: multipart/alternative; boundary="0000000000000e376905b8c8b6cc"
-Received-SPF: pass client-ip=2a00:1450:4864:20::534;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-ed1-x534.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+In-Reply-To: <CAKJDGDawHKo0=q_psWrSOGVXvDf+QjjM20E29bdbogNfBTUsXg@mail.gmail.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.251,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=-0.01,
+ RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Michael Peter <michael.peter@hensoldt-cyber.de>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Alistair Francis <alistair@alistair23.me>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0rVNfs2eMyux
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ Daniel Berrange <berrange@redhat.com>, qemu-devel <qemu-devel@nongnu.org>,
+ b.galvani@gmail.com, qemu-arm@nongnu.org,
+ Pavel Dovgalyuk <Pavel.Dovgaluk@ispras.ru>,
+ Cleber Rosa Junior <crosa@redhat.com>,
+ Philippe Mathieu Daude <philmd@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Jr5jfFVdHYHF
 
---0000000000000e376905b8c8b6cc
-Content-Type: text/plain; charset="UTF-8"
+On 3/5/21 4:04 PM, Willian Rampazzo wrote:
+> On Thu, Mar 4, 2021 at 5:45 PM Niek Linnenbank <nieklinnenbank@gmail.com> wrote:
+>>
+>> The linux kernel 4.20.7 binary for sunxi has been removed from apt.armbian.com:
+>>
+>>   $ ARMBIAN_ARTIFACTS_CACHED=yes AVOCADO_ALLOW_LARGE_STORAGE=yes avocado --show=app,console run -t machine:orangepi-pc tests/acceptance/boot_linux_console.py
+>>   Fetching asset from tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi
+>>   ...
+>>   (1/6) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi:
+>>     CANCEL: Missing asset https://apt.armbian.com/pool/main/l/linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.deb (0.55 s)
+>>
+>> This commit updates the sunxi kernel to 5.10.16 for the acceptance
+>> tests of the orangepi-pc and cubieboard machines.
+>>
+>> Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+>> ---
+>>  tests/acceptance/boot_linux_console.py | 40 +++++++++++++-------------
+>>  tests/acceptance/replay_kernel.py      |  8 +++---
+>>  2 files changed, 24 insertions(+), 24 deletions(-)
+>>
+> 
+> I think some devs will not like it,
+Maybe you refer to my previous NACKs regarding similar changes in
+integration tests. Niek is the author of the test and the maintainer
+of the machine, so if he is OK to stop testing the 4.20.7 kernels
+and test the 5.10.16 from now on, I won't object.
 
-On Wed, 13 Jan 2021, 11:19 Damien Hedde, <damien.hedde@greensocs.com> wrote:
+> but, for me, it is fine as we
+> don't have the old kernel available anymore:
+> 
+> Reviewed-by: Willian Rampazzo <willianr@redhat.com>
+> 
 
->
-> This is ok but I'm afraid we may end up doing this kind of thing in a
-> lot of devices. So maybe we should consider changing the behavior of
-> device_is_in_reset() so that it returns false in the reset-exit case.
-> What do you think ? (I've a patch for this, which make this one useless)
->
-
-Thanks Damien,
-
-IMO, a central fix for this would be better, I agree with you.
-
-Thanks,
-Edgar
-
-
-
-> But this patch does not harm so, anyway:
-> Reviewed-by: Damien Hedde <damien.hedde@greensocs.com>
->
-> On 1/7/21 9:00 PM, Peter Maydell wrote:
-> > Alistair/Edgar/Damien -- could I get a review from one of you
-> > for this Xilinx clock-gen related patch, please?
-> >
-> > thanks
-> > -- PMM
-> >
-> > On Tue, 24 Nov 2020 at 18:54, Michael Peter
-> > <michael.peter@hensoldt-cyber.de> wrote:
-> >>
-> >> Pass an additional argument to zynq_slcr_compute_clocks that indicates
-> whether an reset-exit condition
-> >> applies. If called from zynq_slcr_reset_exit, external clocks are
-> assumed to be active, even if the
-> >> device state indicates a reset state.
-> >>
-> >> Signed-off-by: Michael Peter <michael.peter@hensoldt-cyber.de>
-> >> ---
-> >>  hw/misc/zynq_slcr.c | 12 ++++++------
-> >>  1 file changed, 6 insertions(+), 6 deletions(-)
-> >>
-> >> diff --git a/hw/misc/zynq_slcr.c b/hw/misc/zynq_slcr.c
-> >> index a2b28019e3..073122b934 100644
-> >> --- a/hw/misc/zynq_slcr.c
-> >> +++ b/hw/misc/zynq_slcr.c
-> >> @@ -269,12 +269,12 @@ static uint64_t zynq_slcr_compute_clock(const
-> uint64_t periods[],
-> >>   * But do not propagate them further. Connected clocks
-> >>   * will not receive any updates (See zynq_slcr_compute_clocks())
-> >>   */
-> >> -static void zynq_slcr_compute_clocks(ZynqSLCRState *s)
-> >> +static void zynq_slcr_compute_clocks(ZynqSLCRState *s, bool
-> ignore_reset)
-> >>  {
-> >>      uint64_t ps_clk = clock_get(s->ps_clk);
-> >>
-> >>      /* consider outputs clocks are disabled while in reset */
-> >> -    if (device_is_in_reset(DEVICE(s))) {
-> >> +    if (!ignore_reset && device_is_in_reset(DEVICE(s))) {
-> >>          ps_clk = 0;
-> >>      }
-> >>
-> >> @@ -305,7 +305,7 @@ static void
-> zynq_slcr_propagate_clocks(ZynqSLCRState *s)
-> >>  static void zynq_slcr_ps_clk_callback(void *opaque)
-> >>  {
-> >>      ZynqSLCRState *s = (ZynqSLCRState *) opaque;
-> >> -    zynq_slcr_compute_clocks(s);
-> >> +    zynq_slcr_compute_clocks(s, false);
-> >>      zynq_slcr_propagate_clocks(s);
-> >>  }
-> >>
-> >> @@ -410,7 +410,7 @@ static void zynq_slcr_reset_hold(Object *obj)
-> >>      ZynqSLCRState *s = ZYNQ_SLCR(obj);
-> >>
-> >>      /* will disable all output clocks */
-> >> -    zynq_slcr_compute_clocks(s);
-> >> +    zynq_slcr_compute_clocks(s, false);
-> >>      zynq_slcr_propagate_clocks(s);
-> >>  }
-> >>
-> >> @@ -419,7 +419,7 @@ static void zynq_slcr_reset_exit(Object *obj)
-> >>      ZynqSLCRState *s = ZYNQ_SLCR(obj);
-> >>
-> >>      /* will compute output clocks according to ps_clk and registers */
-> >> -    zynq_slcr_compute_clocks(s);
-> >> +    zynq_slcr_compute_clocks(s, true);
-> >>      zynq_slcr_propagate_clocks(s);
-> >>  }
-> >>
-> >> @@ -558,7 +558,7 @@ static void zynq_slcr_write(void *opaque, hwaddr
-> offset,
-> >>      case R_ARM_PLL_CTRL:
-> >>      case R_DDR_PLL_CTRL:
-> >>      case R_UART_CLK_CTRL:
-> >> -        zynq_slcr_compute_clocks(s);
-> >> +        zynq_slcr_compute_clocks(s, false);
-> >>          zynq_slcr_propagate_clocks(s);
-> >>          break;
-> >>      }
-> >> --
-> >> 2.17.1
-> >
->
-
---0000000000000e376905b8c8b6cc
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
-class=3D"gmail_attr">On Wed, 13 Jan 2021, 11:19 Damien Hedde, &lt;<a href=
-=3D"mailto:damien.hedde@greensocs.com">damien.hedde@greensocs.com</a>&gt; w=
-rote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex=
-;border-left:1px #ccc solid;padding-left:1ex"><br>
-This is ok but I&#39;m afraid we may end up doing this kind of thing in a<b=
-r>
-lot of devices. So maybe we should consider changing the behavior of<br>
-device_is_in_reset() so that it returns false in the reset-exit case.<br>
-What do you think ? (I&#39;ve a patch for this, which make this one useless=
-)<br></blockquote></div></div><div dir=3D"auto"><br></div><div dir=3D"auto"=
->Thanks Damien,=C2=A0</div><div dir=3D"auto"><br></div><div dir=3D"auto">IM=
-O, a central fix for this would be better, I agree with you.</div><div dir=
-=3D"auto"><br></div><div dir=3D"auto">Thanks,=C2=A0</div><div dir=3D"auto">=
-Edgar</div><div dir=3D"auto"><br></div><div dir=3D"auto"><br></div><div dir=
-=3D"auto"><div class=3D"gmail_quote"><blockquote class=3D"gmail_quote" styl=
-e=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
-<br>
-But this patch does not harm so, anyway:<br>
-Reviewed-by: Damien Hedde &lt;<a href=3D"mailto:damien.hedde@greensocs.com"=
- target=3D"_blank" rel=3D"noreferrer">damien.hedde@greensocs.com</a>&gt;<br=
->
-<br>
-On 1/7/21 9:00 PM, Peter Maydell wrote:<br>
-&gt; Alistair/Edgar/Damien -- could I get a review from one of you<br>
-&gt; for this Xilinx clock-gen related patch, please?<br>
-&gt; <br>
-&gt; thanks<br>
-&gt; -- PMM<br>
-&gt; <br>
-&gt; On Tue, 24 Nov 2020 at 18:54, Michael Peter<br>
-&gt; &lt;<a href=3D"mailto:michael.peter@hensoldt-cyber.de" target=3D"_blan=
-k" rel=3D"noreferrer">michael.peter@hensoldt-cyber.de</a>&gt; wrote:<br>
-&gt;&gt;<br>
-&gt;&gt; Pass an additional argument to zynq_slcr_compute_clocks that indic=
-ates whether an reset-exit condition<br>
-&gt;&gt; applies. If called from zynq_slcr_reset_exit, external clocks are =
-assumed to be active, even if the<br>
-&gt;&gt; device state indicates a reset state.<br>
-&gt;&gt;<br>
-&gt;&gt; Signed-off-by: Michael Peter &lt;<a href=3D"mailto:michael.peter@h=
-ensoldt-cyber.de" target=3D"_blank" rel=3D"noreferrer">michael.peter@hensol=
-dt-cyber.de</a>&gt;<br>
-&gt;&gt; ---<br>
-&gt;&gt;=C2=A0 hw/misc/zynq_slcr.c | 12 ++++++------<br>
-&gt;&gt;=C2=A0 1 file changed, 6 insertions(+), 6 deletions(-)<br>
-&gt;&gt;<br>
-&gt;&gt; diff --git a/hw/misc/zynq_slcr.c b/hw/misc/zynq_slcr.c<br>
-&gt;&gt; index a2b28019e3..073122b934 100644<br>
-&gt;&gt; --- a/hw/misc/zynq_slcr.c<br>
-&gt;&gt; +++ b/hw/misc/zynq_slcr.c<br>
-&gt;&gt; @@ -269,12 +269,12 @@ static uint64_t zynq_slcr_compute_clock(cons=
-t uint64_t periods[],<br>
-&gt;&gt;=C2=A0 =C2=A0* But do not propagate them further. Connected clocks<=
-br>
-&gt;&gt;=C2=A0 =C2=A0* will not receive any updates (See zynq_slcr_compute_=
-clocks())<br>
-&gt;&gt;=C2=A0 =C2=A0*/<br>
-&gt;&gt; -static void zynq_slcr_compute_clocks(ZynqSLCRState *s)<br>
-&gt;&gt; +static void zynq_slcr_compute_clocks(ZynqSLCRState *s, bool ignor=
-e_reset)<br>
-&gt;&gt;=C2=A0 {<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 uint64_t ps_clk =3D clock_get(s-&gt;ps_clk);<b=
-r>
-&gt;&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 /* consider outputs clocks are disabled while =
-in reset */<br>
-&gt;&gt; -=C2=A0 =C2=A0 if (device_is_in_reset(DEVICE(s))) {<br>
-&gt;&gt; +=C2=A0 =C2=A0 if (!ignore_reset &amp;&amp; device_is_in_reset(DEV=
-ICE(s))) {<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ps_clk =3D 0;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 }<br>
-&gt;&gt;<br>
-&gt;&gt; @@ -305,7 +305,7 @@ static void zynq_slcr_propagate_clocks(ZynqSLC=
-RState *s)<br>
-&gt;&gt;=C2=A0 static void zynq_slcr_ps_clk_callback(void *opaque)<br>
-&gt;&gt;=C2=A0 {<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 ZynqSLCRState *s =3D (ZynqSLCRState *) opaque;=
-<br>
-&gt;&gt; -=C2=A0 =C2=A0 zynq_slcr_compute_clocks(s);<br>
-&gt;&gt; +=C2=A0 =C2=A0 zynq_slcr_compute_clocks(s, false);<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 zynq_slcr_propagate_clocks(s);<br>
-&gt;&gt;=C2=A0 }<br>
-&gt;&gt;<br>
-&gt;&gt; @@ -410,7 +410,7 @@ static void zynq_slcr_reset_hold(Object *obj)<=
-br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 ZynqSLCRState *s =3D ZYNQ_SLCR(obj);<br>
-&gt;&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 /* will disable all output clocks */<br>
-&gt;&gt; -=C2=A0 =C2=A0 zynq_slcr_compute_clocks(s);<br>
-&gt;&gt; +=C2=A0 =C2=A0 zynq_slcr_compute_clocks(s, false);<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 zynq_slcr_propagate_clocks(s);<br>
-&gt;&gt;=C2=A0 }<br>
-&gt;&gt;<br>
-&gt;&gt; @@ -419,7 +419,7 @@ static void zynq_slcr_reset_exit(Object *obj)<=
-br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 ZynqSLCRState *s =3D ZYNQ_SLCR(obj);<br>
-&gt;&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 /* will compute output clocks according to ps_=
-clk and registers */<br>
-&gt;&gt; -=C2=A0 =C2=A0 zynq_slcr_compute_clocks(s);<br>
-&gt;&gt; +=C2=A0 =C2=A0 zynq_slcr_compute_clocks(s, true);<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 zynq_slcr_propagate_clocks(s);<br>
-&gt;&gt;=C2=A0 }<br>
-&gt;&gt;<br>
-&gt;&gt; @@ -558,7 +558,7 @@ static void zynq_slcr_write(void *opaque, hwad=
-dr offset,<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 case R_ARM_PLL_CTRL:<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 case R_DDR_PLL_CTRL:<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 case R_UART_CLK_CTRL:<br>
-&gt;&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 zynq_slcr_compute_clocks(s);<br>
-&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 zynq_slcr_compute_clocks(s, false);<b=
-r>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 zynq_slcr_propagate_clocks(s);<b=
-r>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 }<br>
-&gt;&gt; --<br>
-&gt;&gt; 2.17.1<br>
-&gt; <br>
-</blockquote></div></div></div>
-
---0000000000000e376905b8c8b6cc--

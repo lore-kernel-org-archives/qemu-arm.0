@@ -1,64 +1,64 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1779971lfg;
-        Mon, 8 Mar 2021 04:13:59 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzyPM0ug/NfgL77WRQkrxVuzg7h14untmrrJQPNOt4f0yNFlzQhtv5/b1hQfa3gkfXIPb3w
-X-Received: by 2002:a0c:c68f:: with SMTP id d15mr7572299qvj.20.1615205639014;
-        Mon, 08 Mar 2021 04:13:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1615205639; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1782647lfg;
+        Mon, 8 Mar 2021 04:17:34 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwDVOJ5Q0Otkc6pKdeeQQYumRX8txxnMGFSZwiCoPHH96zKE4VzPWBK+bt8O34L1b+Wyi0B
+X-Received: by 2002:a05:6602:2248:: with SMTP id o8mr18103146ioo.155.1615205854007;
+        Mon, 08 Mar 2021 04:17:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1615205854; cv=none;
         d=google.com; s=arc-20160816;
-        b=RRLiY5w3PsqtOvvE43jqJ0pcqlPVSMY7NufhG4BfXdBDHzsmqSB4ZF2wYINgmNNIVB
-         beWSVzEltiRRT3ifHpwHOo5qdvLh4mAJS6q3MorWKd2ijQyGOoWG1Ll6FEyGvxCPbVOw
-         0npKkIK0GfLUOQtS+l9qDvPJUtw9xTJmC5nleIhFw9SsfVkqNpHtoRsp15e9pOphRm5j
-         X+Iu21hbb47/55+svB3zjO+gD82d41FI0wmE9u8CYJ6jbYu28+F46Ykadg03+pTMeejx
-         X6oWqRBr6saC7DJlTeXq4V2AFfwbpR/36HOvXTsEdPvNFTgzJD9WXfsTEmKzySPXIaZr
-         7Rkg==
+        b=rK05/s0g9GayoMwa10BJS62aFlEb5RCiynRHjGOGnr1hhiMjPeePXKhv8B3lIxFUqc
+         5RAWIQwyQqUALJZ0qNi1gaHg2bmnQ/20LAB446bHCxbu2SClS0hm1LAIcrhds3KvXnBf
+         sfd1S5iLJ3srIUBqVtua7SH/xqh3+xdE0XhCCUlxA5T/aBrh15nOKQ9ERq5tKbuxH8Wh
+         6dKVww3SauN3DFXXfl+uUteJgt786h9m+p8UrPwTJ9RaleCj7qMN6c8M0byg3Wt23ytO
+         syd0TOQ9l6oqMOAyveVyGBaVJElyJVrEd9ky6CuIbHBE81GsdzgFSu2mx1nvJrJVsNyO
+         i5rg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject;
-        bh=geMx4hqEpQWUjNBe58H8e5PITHEsLNDbhvGTpWCIkUM=;
-        b=yaPIZ6YdYdLoHXGb5VvYYwisPRHl9k6wnKQ1xZUEDL9zmTN2ZP8yNPvK1Cx54EXns2
-         RiSlcQfvo5uKphzVzGB5RiLKwXDwSe9U+lNzSmMtp0QhIydHCHtzoosnSFt0SidlmPzO
-         oOwCf94+HmkkH8noAMR2AryGpr0P1/HdEg143aZNePYHd3abttyA3VFHaEOHSn2f28HE
-         OqhrC+2+9CMEzUilZu7LlL0Wlwua8GQYq0JfbtuFe8iEQfZYHs8hZqe/kiyk0NC4Pj5Y
-         wykF2rc1h4tIESzkgOfiO837+7y7pWNZ1FBuHiUpaAo2AJKDiTcaVNu1OlC+v15lil6o
-         OA6g==
+        bh=rtNc3vqfZVcysIxek7eLyW/kaoKsiCPPDzIoKLdqOnQ=;
+        b=RNnGlJ4y1NaYrqI5IpwaP183zomNnmCuy+kqqzemUmcdDGwz8lj5gUrAeb9UNgpU0R
+         xu7bFA3ujph8mD5WQngeqHqbj2mvMMqZdgfskiubLQDieypeMK15Jnp19fD6XKhwV/V5
+         A2rcEomVgbIUfIIbthAQ9wdiSoueDdfIQBz5oS57QEO5Je0CcXZRFiamVG4ZkwAK91sd
+         6zrSdT/swJ9+e8/QtelFwghkttr1S39lMCNibfS/CyQhwHrGrtaZO6Fd3eZLUEuyJVNQ
+         vPeum2yobvZw91l9mPs6N68WbWvgy1lBrCkdrlZZfkbmiXgOeiZmUiVZbim5p5Y6RdIX
+         Clcg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g16si2057306qtv.108.2021.03.08.04.13.58
+        by mx.google.com with ESMTPS id r13si11102797ill.105.2021.03.08.04.17.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Mar 2021 04:13:59 -0800 (PST)
+        Mon, 08 Mar 2021 04:17:34 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52676 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33586 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lJElq-0004Je-5e
-	for alex.bennee@linaro.org; Mon, 08 Mar 2021 07:13:58 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34208)
+	id 1lJEpJ-0008Dh-B5
+	for alex.bennee@linaro.org; Mon, 08 Mar 2021 07:17:33 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34862)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <cfontana@suse.de>)
- id 1lJElX-0004Hd-Il; Mon, 08 Mar 2021 07:13:40 -0500
-Received: from mx2.suse.de ([195.135.220.15]:46550)
+ id 1lJEp4-0008CR-NM; Mon, 08 Mar 2021 07:17:18 -0500
+Received: from mx2.suse.de ([195.135.220.15]:49112)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <cfontana@suse.de>)
- id 1lJElS-0002QW-0u; Mon, 08 Mar 2021 07:13:39 -0500
+ id 1lJEp0-0004Gl-KD; Mon, 08 Mar 2021 07:17:18 -0500
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id B049CAC0C;
- Mon,  8 Mar 2021 12:13:29 +0000 (UTC)
+ by mx2.suse.de (Postfix) with ESMTP id BF489AD57;
+ Mon,  8 Mar 2021 12:17:11 +0000 (UTC)
 Subject: Re: [RFC PATCH v2 6/8] cpu: Declare cpu_has_work() in 'sysemu/tcg.h'
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  qemu-devel@nongnu.org
 References: <20210304222323.1954755-1-f4bug@amsat.org>
  <20210304222323.1954755-7-f4bug@amsat.org>
 From: Claudio Fontana <cfontana@suse.de>
-Message-ID: <417b5d4a-b1a6-92be-5d84-f8ef28f793c9@suse.de>
-Date: Mon, 8 Mar 2021 13:13:28 +0100
+Message-ID: <ddd0572a-bba2-62ac-27b8-4a7d04257695@suse.de>
+Date: Mon, 8 Mar 2021 13:17:10 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.12.0
 MIME-Version: 1.0
@@ -97,7 +97,7 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
  David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /C/zil8oW8Wz
+X-TUID: 596V40/r7VCe
 
 On 3/4/21 11:23 PM, Philippe Mathieu-Daudé wrote:
 > We can only check if a vCPU has work with TCG.
@@ -151,15 +151,18 @@ On 3/4/21 11:23 PM, Philippe Mathieu-Daudé wrote:
 >  #define tcg_enabled() 0
 > +#define cpu_has_work(cpu) false
 
+email errors, so not sure if my previous message went off.
 
-I am not sure I like this approach,
+I am not convinced by this approach of _hiding_ the fact that cpu_has_work is TCG-only from the context where it is used.
 
-it is misleading for the reader: cpu_has_work should not be called for TCG at all,
-or at least a clue should be given that it is indeed a TCG-only function.
+When reading the actual code using this, how to get an immediate clue that this is TCG-only?
 
-Otherwise, from the common code, the reader does not have any clue from the context that this is actually meaningful for TCG only.
+I think cpu_has_work should either be renamed to tcg_cpu_has_work(), thus providing the context in the name,
+or it should not be visible/called for non-TCG at all, its call protected in some way (if (tcg_enabled() or ifdef or such..)
 
-Where is this actually used..?
+Ciao,
+
+Claudio
 
 
 >  #else

@@ -1,69 +1,69 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1902524lfg;
-        Mon, 8 Mar 2021 06:52:42 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJylXFW5F1ZbJpflyCKB2ChvLdq3D55N0f0rUCycVNRyWNVgSZyStbVYFDprPJPMPw5jZkcX
-X-Received: by 2002:a05:6602:2048:: with SMTP id z8mr19193920iod.143.1615215162649;
-        Mon, 08 Mar 2021 06:52:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1615215162; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1903366lfg;
+        Mon, 8 Mar 2021 06:54:00 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzNAFStMbwxmf+o3+RL19nlL62QD6wLMb9CJTR9NSAS/ix8QrjckqXWspmuEp3+l7D3djIl
+X-Received: by 2002:a05:6e02:1aa9:: with SMTP id l9mr20516530ilv.108.1615215240070;
+        Mon, 08 Mar 2021 06:54:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1615215240; cv=none;
         d=google.com; s=arc-20160816;
-        b=FpQd2oBQCwXDKe71lZDpm00Urzzrxexh39uHxBGLnd09Ht2qdU1XNqPHScNiWagsHC
-         SPr1gfeihEkWioJNqxaAe0hzKkYDYLrsXGaISfyjLOslsDCvjKiyBrzvCA9uUCQJwWRf
-         TbF2/LBFzBrvROUDRgZ/I5W+2RQInihnQaiD9XwkEApXJRcbmeESDH0N9RszQzwBS1Fp
-         9HqR3l03dp/xXF9RNn9jgke2/rlR+Omadxa8hQjiQyPYOXnkaF1UbzpBlR+UNHQH7t6n
-         fZ8IqodAp27IpM/Cc+KmM23RH7UDz4zsPRspos9NhPzJS+GmY0Ts6QlbVijRw9OxYb/m
-         gXlA==
+        b=GjjcJjw7OfBYB0Kffss7IYRLDTWabboLdHKilFUwaXDlE3Lxq2v/Yydil6QFr/AeMM
+         roVz9kODTVpkBWULCxOstLJYbS425HuAWrrYb7OvAsqa77bySaaLZIY21FoBJjNWULLW
+         YfZ0VfVaqQN+XqTQ0zrtdimV96GAyTNuyzhnChroUNPH8B0NUroP8NmU9qrJqBtV5keK
+         aGX9jnCKYEoOQBdszaLbji3B8gf7hUuzkDWf2fS/p/Y7B8y2cC+G7cJt4UoB2s4DJDji
+         noA2du2EELXFs2uHbGrXX7pVr4gU4XScOy0na7HkCZ7Da4dXbzrc2B/zcV04Mvvu00M5
+         JhIg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject;
-        bh=Q3d2iAiAEuxDQrbb7h2KKDwusZFB+KZodCfdWAhVAiY=;
-        b=TNbyLFP1sLcmhsTA9zw6gupktBbclGErLvA7H5svKUSbKFeumeMISSvgy6/mKV3d3X
-         fWiNdiG4uMgGPXxkk+sSszRvI0sn2ECK58fkjd8VcnDO1AAxjFjlrInYjojfJg8JBHFT
-         22PaYiWSz2eGA5AoE/Lge6oZgWbAQ3gqsbsJFxG8YfRDcTHSBCb6HWu1GxlTS7RfYBQ1
-         nxw0/wG5P2jQ4b6zqKMBMx8ZjCZauAnv8SaN74T2B+cFbO00k2bJXAforqZ81wXHrgvd
-         eIrXniIPfGSlF46q9f31+cPAjgpAxLKNFYCJb6H4sHMwcvAV0LHm5lWlmGwfOqZ2G0g8
-         6guA==
+        bh=KMLx7cpPb7gKl8mC1t88mml60/pl6e2vNknp2okeIsM=;
+        b=ukEBOob/epT1IOcR+vAW1YzQp+/Tg5LExiU5Y8rnvS9JfO+pBigVo317PsNEbTA/z8
+         jBDfaT4AVFBmvqEkoAh1wo8HCrsvvEIUmpACeWGynIjwBZmCe7/Xk/PnYGf+fU6Ha99X
+         Je/ECmNaYtPzmrLapLhkrDpOyWL48lDevhC20b52u6PPOYfMtzzb0rNSpPuI8deb/Uc6
+         FPAxCG5rQ33oqWt5FSPJYk1QqEXX32upC3bT1tVSdWtfnviIp/SbwFLqMLt3KJepLxzr
+         2qESlk0ST3y2m1VZHpWUEOtfD16u1WiJb0FKfg3JT+s6YZar7nPn6U3/KWpiR6YSAqs1
+         IiPg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r7si10463511ilb.63.2021.03.08.06.52.42
+        by mx.google.com with ESMTPS id s16si10962945ilq.21.2021.03.08.06.53.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Mar 2021 06:52:42 -0800 (PST)
+        Mon, 08 Mar 2021 06:54:00 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:47040 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49886 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lJHFR-0003WY-U7
-	for alex.bennee@linaro.org; Mon, 08 Mar 2021 09:52:41 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42114)
+	id 1lJHGh-0004jy-D7
+	for alex.bennee@linaro.org; Mon, 08 Mar 2021 09:53:59 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42286)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <cfontana@suse.de>)
- id 1lJHF7-0003VR-H1; Mon, 08 Mar 2021 09:52:21 -0500
-Received: from mx2.suse.de ([195.135.220.15]:46950)
+ id 1lJHGY-0004je-KW; Mon, 08 Mar 2021 09:53:50 -0500
+Received: from mx2.suse.de ([195.135.220.15]:47622)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <cfontana@suse.de>)
- id 1lJHF5-000372-Vb; Mon, 08 Mar 2021 09:52:21 -0500
+ id 1lJHGW-0003gw-Ce; Mon, 08 Mar 2021 09:53:50 -0500
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 14D40AE15;
- Mon,  8 Mar 2021 14:52:17 +0000 (UTC)
-Subject: Re: [RFC PATCH v2 2/8] sysemu/tcg: Restrict qemu_tcg_mttcg_enabled()
- to TCG
+ by mx2.suse.de (Postfix) with ESMTP id 135ADAB8C;
+ Mon,  8 Mar 2021 14:53:46 +0000 (UTC)
+Subject: Re: [RFC PATCH v2 3/8] target/arm: Directly use arm_cpu_has_work
+ instead of CPUClass::has_work
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  qemu-devel@nongnu.org
 References: <20210304222323.1954755-1-f4bug@amsat.org>
- <20210304222323.1954755-3-f4bug@amsat.org>
+ <20210304222323.1954755-4-f4bug@amsat.org>
 From: Claudio Fontana <cfontana@suse.de>
-Message-ID: <ab719bff-5af7-c663-1665-816cecdd2f6e@suse.de>
-Date: Mon, 8 Mar 2021 15:52:16 +0100
+Message-ID: <b67724ae-f43a-f71e-c2ce-1c4dd8d904f2@suse.de>
+Date: Mon, 8 Mar 2021 15:53:45 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.12.0
 MIME-Version: 1.0
-In-Reply-To: <20210304222323.1954755-3-f4bug@amsat.org>
+In-Reply-To: <20210304222323.1954755-4-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
@@ -97,86 +97,60 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
  David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /y+GxBEXuk+4
+X-TUID: rd85dbm6Wsuc
 
 On 3/4/21 11:23 PM, Philippe Mathieu-Daudé wrote:
-> qemu_tcg_mttcg_enabled() shouldn't not be used outside of TCG,
-> restrict its declaration.
+> There is only one CPUClass::has_work() ARM handler: arm_cpu_has_work().
+> 
+> Avoid a dereference by declaring it in "internals.h" and call it
+> directly  in the WFI helper.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
 Reviewed-by: Claudio Fontana <cfontana@suse.de>
-
 > ---
->  include/hw/core/cpu.h | 9 ---------
->  include/sysemu/tcg.h  | 9 +++++++++
->  accel/tcg/cpu-exec.c  | 1 +
->  tcg/tcg.c             | 1 +
->  4 files changed, 11 insertions(+), 9 deletions(-)
+>  target/arm/internals.h | 1 +
+>  target/arm/cpu.c       | 2 +-
+>  target/arm/op_helper.c | 2 +-
+>  3 files changed, 3 insertions(+), 2 deletions(-)
 > 
-> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-> index e3648338dfe..1376e496a3f 100644
-> --- a/include/hw/core/cpu.h
-> +++ b/include/hw/core/cpu.h
-> @@ -454,15 +454,6 @@ static inline void cpu_tb_jmp_cache_clear(CPUState *cpu)
->      }
+> diff --git a/target/arm/internals.h b/target/arm/internals.h
+> index 05cebc8597c..1930be08828 100644
+> --- a/target/arm/internals.h
+> +++ b/target/arm/internals.h
+> @@ -172,6 +172,7 @@ static inline int r14_bank_number(int mode)
+>  void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu);
+>  void arm_translate_init(void);
+>  
+> +bool arm_cpu_has_work(CPUState *cs);
+>  #ifdef CONFIG_TCG
+>  void arm_cpu_synchronize_from_tb(CPUState *cs, const TranslationBlock *tb);
+>  #endif /* CONFIG_TCG */
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index 5e018b2a732..6d2d9f2100f 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -76,7 +76,7 @@ void arm_cpu_synchronize_from_tb(CPUState *cs,
 >  }
->  
-> -/**
-> - * qemu_tcg_mttcg_enabled:
-> - * Check whether we are running MultiThread TCG or not.
-> - *
-> - * Returns: %true if we are in MTTCG mode %false otherwise.
-> - */
-> -extern bool mttcg_enabled;
-> -#define qemu_tcg_mttcg_enabled() (mttcg_enabled)
-> -
->  /**
->   * cpu_paging_enabled:
->   * @cpu: The CPU whose state is to be inspected.
-> diff --git a/include/sysemu/tcg.h b/include/sysemu/tcg.h
-> index fddde2b6b9a..c16c13c3c69 100644
-> --- a/include/sysemu/tcg.h
-> +++ b/include/sysemu/tcg.h
-> @@ -17,6 +17,15 @@ void tcg_exec_init(unsigned long tb_size, int splitwx);
->  extern bool tcg_allowed;
->  #define tcg_enabled() (tcg_allowed)
->  
-> +/**
-> + * qemu_tcg_mttcg_enabled:
-> + * Check whether we are running MultiThread TCG or not.
-> + *
-> + * Returns: %true if we are in MTTCG mode %false otherwise.
-> + */
-> +extern bool mttcg_enabled;
-> +#define qemu_tcg_mttcg_enabled() (mttcg_enabled)
-> +
 >  #endif /* CONFIG_TCG */
 >  
->  #endif
-> diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
-> index 16e4fe3ccd8..7e67ade35b9 100644
-> --- a/accel/tcg/cpu-exec.c
-> +++ b/accel/tcg/cpu-exec.c
-> @@ -39,6 +39,7 @@
->  #include "hw/i386/apic.h"
->  #endif
->  #include "sysemu/cpus.h"
-> +#include "sysemu/tcg.h"
->  #include "exec/cpu-all.h"
->  #include "sysemu/cpu-timers.h"
->  #include "sysemu/replay.h"
-> diff --git a/tcg/tcg.c b/tcg/tcg.c
-> index 63a12b197bf..4a4dac0bb3e 100644
-> --- a/tcg/tcg.c
-> +++ b/tcg/tcg.c
-> @@ -65,6 +65,7 @@
->  #include "elf.h"
->  #include "exec/log.h"
->  #include "sysemu/sysemu.h"
-> +#include "sysemu/tcg.h"
+> -static bool arm_cpu_has_work(CPUState *cs)
+> +bool arm_cpu_has_work(CPUState *cs)
+>  {
+>      ARMCPU *cpu = ARM_CPU(cs);
 >  
->  /* Forward declarations for functions declared in tcg-target.c.inc and
->     used here. */
+> diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
+> index 65cb37d088f..a4da6f4fde8 100644
+> --- a/target/arm/op_helper.c
+> +++ b/target/arm/op_helper.c
+> @@ -289,7 +289,7 @@ void HELPER(wfi)(CPUARMState *env, uint32_t insn_len)
+>      CPUState *cs = env_cpu(env);
+>      int target_el = check_wfx_trap(env, false);
+>  
+> -    if (cpu_has_work(cs)) {
+> +    if (arm_cpu_has_work(cs)) {
+>          /* Don't bother to go into our "low power state" if
+>           * we would just wake up immediately.
+>           */
 > 
 

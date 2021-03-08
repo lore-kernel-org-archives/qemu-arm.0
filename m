@@ -1,97 +1,96 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2163158lfg;
-        Mon, 8 Mar 2021 12:28:17 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzGZA+XQEIoNNG2OOGpdzNs711BOoI8CD6V4qPkajij2w5S3nrxJhZC7k/xKZqCDWvQVRSL
-X-Received: by 2002:a6b:fc16:: with SMTP id r22mr19180066ioh.102.1615235296912;
-        Mon, 08 Mar 2021 12:28:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1615235296; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2166258lfg;
+        Mon, 8 Mar 2021 12:33:05 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwmhz55UBnFioij0MTFCTe7/fEMc8KwiXNw+/hG9V4UIZAz8edeQwJP1xd/ve3V+gnWTqSL
+X-Received: by 2002:a92:7303:: with SMTP id o3mr19921315ilc.38.1615235584899;
+        Mon, 08 Mar 2021 12:33:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1615235584; cv=none;
         d=google.com; s=arc-20160816;
-        b=mPZbRhEve5d2Y/ZvMw6aV8Cn2h1GpXmLQMZ1XldewJ2A441DmcecG8LIcvkh0fCLPt
-         ndeYW/OlqTj5g1hwg75Y9uJg9+wJgRDbQJZwtJvcsiWmk7taRE+N61JsqbcxuT8VEgH2
-         Rrm8yC6X1ffZmhTmV7Xwdsrn5l/PlKOzC3wVyd5W8VLv68dAM2rFDLzHIvk1PdzxYblr
-         8E0LSbxNcQ/8zed5LyiEj5QvNRe83jQeTLvMQikC0IcQecfJF1yD7plgc3QkSru/IIWT
-         bjEGe8Cp52ul8pDQOEAHpqBU3swUaAuhVJAOM/sNETeeIlGhG3KXxN5k9PnsYCitOsDr
-         CZWQ==
+        b=GBgW8x+YJ2rd7T4oL0l0sf4UyeQUYVUwBXda/JFaLhvJujG8H7WApEKYMcB6WjL+XE
+         H0zUcMzD5AX8odTfXFbc3G06ZMsuwoaefxS/0GoRpA2hyRWx4RHD5tTZbZr+KLWSbpQo
+         ZLGP3WzqDj6z6KtxwWhXACEv7RBn38B9Wrh82rvWoTfCaHNF/KZox/jXkyoIGseulPST
+         fgmJORhl+j15n6uF2aWGgAalRFNrmRfmcX/Tr6ySzy4u1Oxn0puw0Uw5PpCujc72rvfZ
+         IpxMs2axraw2ZtcW72V+t18SERXV2tUiCiyvJCRu5rF1BC9/TzrbSWALgyWKGbGuFzGq
+         6O3g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=zbzOIo4mZsywshKUpqSH4IKpc8WPw3tWkeMAsFLoUVo=;
-        b=A/TDoeYi8EYvOaluoQpdQVCMnqYh7UP08k1aXfbwicXvmGGa+RbO55QxkMGuUvnCK2
-         q06w0CUiOu4aNfj/zz6scrUkma2YWC+DLyCE728T5dd+Y/BTJy4Ww+q3TO0+ImNg7lPG
-         GGT7gAvYmrEbZhyjdvFJWD+O6rFEQGcn2I+60nksRQHT9LCgzQBkFNKTlW3QeKUKGHlx
-         9ydH351OhNmY/GKg5+ZiGYnetT+sIOc5HByd4inecgZM0Cr2j3B+UlVgSrRqH9exGuEv
-         ZJjSvutZrI+qYWVaqdDXIRAxMuovPIEDKMGN9UY1Yfs4HVxv45DOsC7nA6IQiFoM6yqs
-         GO3g==
+        bh=cB7RESq++gU8X3Z1jSwlbXmrp2OCbipUfhx7PCcAVes=;
+        b=VIUioMroquCvKRGuQ44CPdcPtX8N8EAq3OTBT2x0P0Rha0PomU/fjyNrWrpySBfQhr
+         mJOWPmmPnAPmhZ8hVQsHBx/UO1QhjyPyciJgkT3GnAEFfaHj+Bb2atXaAOiDHkmAsEbz
+         7JmxZd8ZPfubohhxvcUTVwPq1zAyr4YcC4VlguCxuM1zyBeeMtcX+/gKr2cUziJCgLhC
+         XI4tz33AkmwEQXDXPXCs726EUbae9WnyqzY2YrwJ9xi3S1k3TxQN2dfSwtwDdjwBVBN0
+         s28/PNlTPZCCPXQn1rm+om2/RQEqrZV0nL83PwuSs6145mrPv+Z4+zhUxj8vPGknovkH
+         Y2XQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CEp9dS1R;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=u8UG7BIT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z8si12647966jan.13.2021.03.08.12.28.16
+        by mx.google.com with ESMTPS id q19si12060227jat.59.2021.03.08.12.33.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Mar 2021 12:28:16 -0800 (PST)
+        Mon, 08 Mar 2021 12:33:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CEp9dS1R;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=u8UG7BIT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:48522 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53090 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lJMUC-0000y6-6P
-	for alex.bennee@linaro.org; Mon, 08 Mar 2021 15:28:16 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33904)
+	id 1lJMYq-00032k-2z
+	for alex.bennee@linaro.org; Mon, 08 Mar 2021 15:33:04 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34744)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1lJMU3-0000xW-Lv; Mon, 08 Mar 2021 15:28:07 -0500
-Received: from mail-io1-xd2b.google.com ([2607:f8b0:4864:20::d2b]:37118)
+ id 1lJMYU-00032D-Q2; Mon, 08 Mar 2021 15:32:42 -0500
+Received: from mail-io1-xd2c.google.com ([2607:f8b0:4864:20::d2c]:32777)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1lJMU1-00077D-No; Mon, 08 Mar 2021 15:28:07 -0500
-Received: by mail-io1-xd2b.google.com with SMTP id p16so11440281ioj.4;
- Mon, 08 Mar 2021 12:28:04 -0800 (PST)
+ id 1lJMYS-0000kn-PB; Mon, 08 Mar 2021 15:32:42 -0500
+Received: by mail-io1-xd2c.google.com with SMTP id n132so11459482iod.0;
+ Mon, 08 Mar 2021 12:32:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=zbzOIo4mZsywshKUpqSH4IKpc8WPw3tWkeMAsFLoUVo=;
- b=CEp9dS1RRyWsnHtZ5POzVJLSus+K7bPIa3CaPGFzf9mMvKQedKzQCLqzSJqnNK86bo
- glE6mPohOqHZGBUt4DV1STeVW1GAuh1qSEreAvfOv11POuJkVIgVLrxcFxhL8zP0E51o
- aDObDTRfrwmlRuEhoMsO4Jl9KhWTLdiuH1gn2/Gium0C7Me5qzr0e8822gPeyhVZcUEA
- 63PHm2tayMX1xKrBVdvCQsBnpSLRozIsIEl+hxB3J7xZSmAY21Zx3/kjTmvMu1mV7FQ5
- +lhA9iQdt8vLe+x2KfDH83pYGWNZkYyPToDjz6HGQqfbGNwtwEf8Se+nCrQTfJqf1ILy
- ikxQ==
+ :cc; bh=cB7RESq++gU8X3Z1jSwlbXmrp2OCbipUfhx7PCcAVes=;
+ b=u8UG7BITYk+YW4Z1lb10sOJzeVmlRAX2HFamGLN/V2COcgw9NHHkmg+avs3jFCHxBI
+ C628dUT7Ehz5jXS95VhfG62p8jkve9U6hqbL89SQvWjPae2KCUrvkfOZmf4Yj7n/2V3t
+ j20lwAIRJlP8u5jGNlOKxjTSKeh93ZMMiESrjvsVnE3SNQhsZ1a4Egr0A88oIe+s1X47
+ 2niMJ7yj4XM5BGuJGnHd/qd7UFgQpyeIHcB8TOW/c+hL56XE6LlJMqyY+xef0YU+yCOj
+ KRTA6Tww92dJKAyk1C6fFexpV/Y1O4yRFSskOZo85nQVUKHfCS6yXB3cY+nwfwP3E0yK
+ 8cKQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=zbzOIo4mZsywshKUpqSH4IKpc8WPw3tWkeMAsFLoUVo=;
- b=D5d6ejns7kj+kxsKQgaVXBIudun8X27o51jL1/FaK+c3EV8CxUVVllTAFmcSOSDhRD
- eQlbdTC09Jt0G8EzwKpANC8w1Evt0psXOecxUqeMyHgVqnC4feM6jsv5fdFPwrxKcDEM
- 7+z4PP75Bs5gblIJ1juef6s/O1cOBSJoYUYL7IYP2yEve97F0lmG8TpXWqx3mVS/YOFt
- bIOBQCFuyTXl7et0EQnFIU0bU6J0q4/ns92KzqdkkecdB8Tj5fEGhkdjF/ZpUBEGFXDN
- KjOLeecgdTWULFG/VhCnDwAsTnpPjlnclEX4GC87yCSX1uNbM39Gs2zU/mydAuMIiV6p
- HF8g==
-X-Gm-Message-State: AOAM530XdAusl1pgAP9Rcpi43XlnjEH18d3twJU/5eexTlApPTtoWwH6
- RTU8/aF2/9skx7PeXpKpef4R7K1MEckYqGhOwSg=
-X-Received: by 2002:a05:6602:2102:: with SMTP id
- x2mr21077380iox.83.1615235283443; 
- Mon, 08 Mar 2021 12:28:03 -0800 (PST)
+ bh=cB7RESq++gU8X3Z1jSwlbXmrp2OCbipUfhx7PCcAVes=;
+ b=IMLss6tgglRK2TrZYoVOROVb3pLKy3+b1mhAxgDZt6ysDEYFB6GmZe0yBnB+CLlbQS
+ 6M1+856i8aTmlE0MJ5L82AzU+u4Ao/AkxnLUL8JZrI9LfX3bM3HiUfY//jSm97ePDXJa
+ qiuDyalc7d0Lxo+u5VEl/wMb7szIQVT45YucMYD0aDGaIrIPIUrzXAkh6ceGp1k6rz2V
+ P2xjO/IfnN2xY0S1LNriC6WYQG2wuNRijFGLr+yEdkl9kZBEAnl67//L56i5Z2oKHHn1
+ NTCUJdx9+x+EiE+95Vz49t8Y8Mlzb9iLNDRoxoC8STVXTwf/OYsqo/lsGYXT84BlxzCa
+ A/CQ==
+X-Gm-Message-State: AOAM533SZU4RJ7UUDtNnQ0XOsHkwkfOOwNT2s/Zew6wFm8KJBIfA/EVj
+ RWz6YMxJ40+B3H8a2V+TsceDlgQLGN8flngJuKs=
+X-Received: by 2002:a5d:80d5:: with SMTP id h21mr7667218ior.11.1615235559131; 
+ Mon, 08 Mar 2021 12:32:39 -0800 (PST)
 MIME-Version: 1.0
 References: <20210304203540.41614-1-nieklinnenbank@gmail.com>
- <20210304203540.41614-5-nieklinnenbank@gmail.com>
- <CAKJDGDawHKo0=q_psWrSOGVXvDf+QjjM20E29bdbogNfBTUsXg@mail.gmail.com>
- <0c4868bb-374e-ec77-a7cd-4ae901e1e684@redhat.com>
-In-Reply-To: <0c4868bb-374e-ec77-a7cd-4ae901e1e684@redhat.com>
+ <20210304203540.41614-3-nieklinnenbank@gmail.com>
+ <CAKJDGDZq_ioF91BUWRo_y0GKYGbjgZa46Pt83wp7t3b_ZC=ixw@mail.gmail.com>
+ <4d6d2e89-1152-249b-fe55-d1b611fd77e8@redhat.com>
+In-Reply-To: <4d6d2e89-1152-249b-fe55-d1b611fd77e8@redhat.com>
 From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Mon, 8 Mar 2021 21:27:52 +0100
-Message-ID: <CAPan3WoQZQGV6nB-FT=bTNTsM46eeQpCNNFU975a4to6ed0trw@mail.gmail.com>
-Subject: Re: [PATCH v3 4/5] tests/acceptance: update sunxi kernel from armbian
- to 5.10.16
+Date: Mon, 8 Mar 2021 21:32:28 +0100
+Message-ID: <CAPan3WqJHFy=GKVXFHgDbTimmZsBueUUhxvs4L+D58J-JQF3ew@mail.gmail.com>
+Subject: Re: [PATCH v3 2/5] tests/acceptance/boot_linux_console: remove
+ Armbian 19.11.3 bionic test for orangepi-pc machine
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: multipart/alternative; boundary="0000000000004c629d05bd0c4523"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d2b;
- envelope-from=nieklinnenbank@gmail.com; helo=mail-io1-xd2b.google.com
+Content-Type: multipart/alternative; boundary="000000000000bb0ec905bd0c5593"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d2c;
+ envelope-from=nieklinnenbank@gmail.com; helo=mail-io1-xd2c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -118,76 +117,83 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
  Willian Rampazzo <wrampazz@redhat.com>, Cleber Rosa Junior <crosa@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Fd43eTqujDv7
+X-TUID: Bti+CXztdmIF
 
---0000000000004c629d05bd0c4523
+--000000000000bb0ec905bd0c5593
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 Hi Philippe, Willian,
 
-Thanks for reviewing!
-
-On Mon, Mar 8, 2021 at 8:50 AM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
+On Mon, Mar 8, 2021 at 8:52 AM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
 om>
 wrote:
 
-> On 3/5/21 4:04 PM, Willian Rampazzo wrote:
-> > On Thu, Mar 4, 2021 at 5:45 PM Niek Linnenbank <nieklinnenbank@gmail.co=
+> On 3/5/21 4:16 PM, Willian Rampazzo wrote:
+> > On Thu, Mar 4, 2021 at 5:44 PM Niek Linnenbank <nieklinnenbank@gmail.co=
 m>
 > wrote:
 > >>
-> >> The linux kernel 4.20.7 binary for sunxi has been removed from
-> apt.armbian.com:
+> >> The image for Armbian 19.11.3 bionic has been removed from the armbian
+> server.
+> >> Without the image as input the test arm_orangepi_bionic_19_11 cannot
+> run.
 > >>
-> >>   $ ARMBIAN_ARTIFACTS_CACHED=3Dyes AVOCADO_ALLOW_LARGE_STORAGE=3Dyes
-> avocado --show=3Dapp,console run -t machine:orangepi-pc
-> tests/acceptance/boot_linux_console.py
-> >>   Fetching asset from
-> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi
-> >>   ...
-> >>   (1/6)
-> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi=
-:
-> >>     CANCEL: Missing asset
-> https://apt.armbian.com/pool/main/l/linux-4.20.7-sunxi/linux-image-dev-su=
-nxi_5.75_armhf.deb
-> (0.55 s)
-> >>
-> >> This commit updates the sunxi kernel to 5.10.16 for the acceptance
-> >> tests of the orangepi-pc and cubieboard machines.
+> >> This commit removes the test completely and merges the code of the
+> generic function
+> >> do_test_arm_orangepi_uboot_armbian back with the 20.08 test.
 > >>
 > >> Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
 > >> ---
-> >>  tests/acceptance/boot_linux_console.py | 40 +++++++++++++------------=
+> >>  tests/acceptance/boot_linux_console.py | 72 ++++++++-----------------=
 -
-> >>  tests/acceptance/replay_kernel.py      |  8 +++---
-> >>  2 files changed, 24 insertions(+), 24 deletions(-)
+> >>  1 file changed, 23 insertions(+), 49 deletions(-)
 > >>
+> >> diff --git a/tests/acceptance/boot_linux_console.py
+> b/tests/acceptance/boot_linux_console.py
+> >> index eb01286799..9fadea9958 100644
+> >> --- a/tests/acceptance/boot_linux_console.py
+> >> +++ b/tests/acceptance/boot_linux_console.py
+> >> @@ -802,7 +802,29 @@ def test_arm_orangepi_sd(self):
+> >>          # Wait for VM to shut down gracefully
+> >>          self.vm.wait()
+> >>
+> >> -    def do_test_arm_orangepi_uboot_armbian(self, image_path):
+> >> +    @skipUnless(os.getenv('ARMBIAN_ARTIFACTS_CACHED'),
+> >> +                'Test artifacts fetched from unreliable
+> apt.armbian.com')
+> >> +    @skipUnless(os.getenv('AVOCADO_ALLOW_LARGE_STORAGE'), 'storage
+> limited')
+> >> +    def test_arm_orangepi_bionic_20_08(self):
+> >> +        """
+> >> +        :avocado: tags=3Darch:arm
+> >> +        :avocado: tags=3Dmachine:orangepi-pc
+> >> +        :avocado: tags=3Ddevice:sd
+> >> +        """
+> >> +
+> >> +        # This test download a 275 MiB compressed image and expand it
+> >> +        # to 1036 MiB, but the underlying filesystem is 1552 MiB...
+> >> +        # As we expand it to 2 GiB we are safe.
+> >> +
+> >> +        image_url =3D ('https://dl.armbian.com/orangepipc/archive/'
+> >> +
+>  'Armbian_20.08.1_Orangepipc_bionic_current_5.8.5.img.xz')
 > >
-> > I think some devs will not like it,
-> Maybe you refer to my previous NACKs regarding similar changes in
-> integration tests. Niek is the author of the test and the maintainer
-> of the machine, so if he is OK to stop testing the 4.20.7 kernels
-> and test the 5.10.16 from now on, I won't object.
+> > The Armbian 20 is not available on this link anymore. I can browse just
+> 21.
 >
-
-For me the 4.20.7 kernel would have been OK if it was still available. With
-that version removed,
-I looked at what is now available on https://apt.armbian.com/pool/main/l/.
-There are quite a lot of packaged kernels there
-and 5.10.16 seemed to me a good balance of running newer kernel code with a
-version that will hopefully stay around for a while.
-
-
+> Cat-and-mouse game *sigh*.
 >
-> > but, for me, it is fine as we
-> > don't have the old kernel available anymore:
-> >
-> > Reviewed-by: Willian Rampazzo <willianr@redhat.com>
-> >
 >
-> Thanks, will add your reviewed-by tag.
+Just to clarify here: in this patch I wanted to only make the change to
+remove the test for the 19.11.3 image.
+And in the 3rd patch (tests/acceptance/boot_linux_console: change URL for
+test_arm_orangepi_bionic_20_08)
+do the update for to correct the 20.08 link. So each patch fixes one
+problem at a time.
+
+Does that make sense, or do you prefer that I combine them in a single
+patch instead?
 
 Regards,
 Niek
@@ -195,76 +201,90 @@ Niek
 --=20
 Niek Linnenbank
 
---0000000000004c629d05bd0c4523
+--000000000000bb0ec905bd0c5593
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><div dir=3D"ltr">Hi Philippe, Willian,<br></div><div><br><=
-/div><div>Thanks for reviewing!<br></div><div><br></div><div class=3D"gmail=
-_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, Mar 8, 2021 at 8:50 A=
-M Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com">phil=
-md@redhat.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" sty=
-le=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);paddi=
-ng-left:1ex">On 3/5/21 4:04 PM, Willian Rampazzo wrote:<br>
-&gt; On Thu, Mar 4, 2021 at 5:45 PM Niek Linnenbank &lt;<a href=3D"mailto:n=
+<div dir=3D"ltr"><div dir=3D"ltr"><div>Hi Philippe, Willian,</div><div><br>=
+</div></div><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr=
+">On Mon, Mar 8, 2021 at 8:52 AM Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D=
+"mailto:philmd@redhat.com">philmd@redhat.com</a>&gt; wrote:<br></div><block=
+quote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1=
+px solid rgb(204,204,204);padding-left:1ex">On 3/5/21 4:16 PM, Willian Ramp=
+azzo wrote:<br>
+&gt; On Thu, Mar 4, 2021 at 5:44 PM Niek Linnenbank &lt;<a href=3D"mailto:n=
 ieklinnenbank@gmail.com" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;=
  wrote:<br>
 &gt;&gt;<br>
-&gt;&gt; The linux kernel 4.20.7 binary for sunxi has been removed from <a =
-href=3D"http://apt.armbian.com" rel=3D"noreferrer" target=3D"_blank">apt.ar=
-mbian.com</a>:<br>
+&gt;&gt; The image for Armbian 19.11.3 bionic has been removed from the arm=
+bian server.<br>
+&gt;&gt; Without the image as input the test arm_orangepi_bionic_19_11 cann=
+ot run.<br>
 &gt;&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0$ ARMBIAN_ARTIFACTS_CACHED=3Dyes AVOCADO_ALLOW_LARGE_S=
-TORAGE=3Dyes avocado --show=3Dapp,console run -t machine:orangepi-pc tests/=
-acceptance/boot_linux_console.py<br>
-&gt;&gt;=C2=A0 =C2=A0Fetching asset from tests/acceptance/boot_linux_consol=
-e.py:BootLinuxConsole.test_arm_orangepi<br>
-&gt;&gt;=C2=A0 =C2=A0...<br>
-&gt;&gt;=C2=A0 =C2=A0(1/6) tests/acceptance/boot_linux_console.py:BootLinux=
-Console.test_arm_orangepi:<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0CANCEL: Missing asset <a href=3D"https://apt.ar=
-mbian.com/pool/main/l/linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.d=
-eb" rel=3D"noreferrer" target=3D"_blank">https://apt.armbian.com/pool/main/=
-l/linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.deb</a> (0.55 s)<br>
-&gt;&gt;<br>
-&gt;&gt; This commit updates the sunxi kernel to 5.10.16 for the acceptance=
-<br>
-&gt;&gt; tests of the orangepi-pc and cubieboard machines.<br>
+&gt;&gt; This commit removes the test completely and merges the code of the=
+ generic function<br>
+&gt;&gt; do_test_arm_orangepi_uboot_armbian back with the 20.08 test.<br>
 &gt;&gt;<br>
 &gt;&gt; Signed-off-by: Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenban=
 k@gmail.com" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;<br>
 &gt;&gt; ---<br>
-&gt;&gt;=C2=A0 tests/acceptance/boot_linux_console.py | 40 +++++++++++++---=
+&gt;&gt;=C2=A0 tests/acceptance/boot_linux_console.py | 72 ++++++++--------=
 ----------<br>
-&gt;&gt;=C2=A0 tests/acceptance/replay_kernel.py=C2=A0 =C2=A0 =C2=A0 |=C2=
-=A0 8 +++---<br>
-&gt;&gt;=C2=A0 2 files changed, 24 insertions(+), 24 deletions(-)<br>
+&gt;&gt;=C2=A0 1 file changed, 23 insertions(+), 49 deletions(-)<br>
 &gt;&gt;<br>
+&gt;&gt; diff --git a/tests/acceptance/boot_linux_console.py b/tests/accept=
+ance/boot_linux_console.py<br>
+&gt;&gt; index eb01286799..9fadea9958 100644<br>
+&gt;&gt; --- a/tests/acceptance/boot_linux_console.py<br>
+&gt;&gt; +++ b/tests/acceptance/boot_linux_console.py<br>
+&gt;&gt; @@ -802,7 +802,29 @@ def test_arm_orangepi_sd(self):<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 # Wait for VM to shut down grace=
+fully<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 self.vm.wait()<br>
+&gt;&gt;<br>
+&gt;&gt; -=C2=A0 =C2=A0 def do_test_arm_orangepi_uboot_armbian(self, image_=
+path):<br>
+&gt;&gt; +=C2=A0 =C2=A0 @skipUnless(os.getenv(&#39;ARMBIAN_ARTIFACTS_CACHED=
+&#39;),<br>
+&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &#39;Test=
+ artifacts fetched from unreliable <a href=3D"http://apt.armbian.com" rel=
+=3D"noreferrer" target=3D"_blank">apt.armbian.com</a>&#39;)<br>
+&gt;&gt; +=C2=A0 =C2=A0 @skipUnless(os.getenv(&#39;AVOCADO_ALLOW_LARGE_STOR=
+AGE&#39;), &#39;storage limited&#39;)<br>
+&gt;&gt; +=C2=A0 =C2=A0 def test_arm_orangepi_bionic_20_08(self):<br>
+&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;&quot;&quot;<br>
+&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 :avocado: tags=3Darch:arm<br>
+&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 :avocado: tags=3Dmachine:orangepi-pc<=
+br>
+&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 :avocado: tags=3Ddevice:sd<br>
+&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;&quot;&quot;<br>
+&gt;&gt; +<br>
+&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 # This test download a 275 MiB compre=
+ssed image and expand it<br>
+&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 # to 1036 MiB, but the underlying fil=
+esystem is 1552 MiB...<br>
+&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 # As we expand it to 2 GiB we are saf=
+e.<br>
+&gt;&gt; +<br>
+&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 image_url =3D (&#39;<a href=3D"https:=
+//dl.armbian.com/orangepipc/archive/" rel=3D"noreferrer" target=3D"_blank">=
+https://dl.armbian.com/orangepipc/archive/</a>&#39;<br>
+&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0&#39;Armbian_20.08.1_Orangepipc_bionic_current_5.8.5.img.xz&#3=
+9;)<br>
 &gt; <br>
-&gt; I think some devs will not like it,<br>
-Maybe you refer to my previous NACKs regarding similar changes in<br>
-integration tests. Niek is the author of the test and the maintainer<br>
-of the machine, so if he is OK to stop testing the 4.20.7 kernels<br>
-and test the 5.10.16 from now on, I won&#39;t object.<br></blockquote><div>=
-<br></div><div>For me the 4.20.7 kernel would have been OK if it was still =
-available. With that version removed,</div><div>I looked at what is now ava=
-ilable on <a href=3D"https://apt.armbian.com/pool/main/l/">https://apt.armb=
-ian.com/pool/main/l/</a>. There are quite a lot of packaged kernels there</=
-div><div>and 5.10.16 seemed to me a good balance of running newer kernel co=
-de with a version that will hopefully stay around for a while.<br></div><di=
-v>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px=
- 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+&gt; The Armbian 20 is not available on this link anymore. I can browse jus=
+t 21.<br>
 <br>
-&gt; but, for me, it is fine as we<br>
-&gt; don&#39;t have the old kernel available anymore:<br>
-&gt; <br>
-&gt; Reviewed-by: Willian Rampazzo &lt;<a href=3D"mailto:willianr@redhat.co=
-m" target=3D"_blank">willianr@redhat.com</a>&gt;<br>
-&gt; <br>
-<br>
-</blockquote></div><div>Thanks, will add your reviewed-by tag.</div><div><b=
-r></div><div>Regards,</div><div>Niek<br></div><div><br>-- <br><div dir=3D"l=
-tr" class=3D"gmail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br>=
-</div></div></div></div></div>
+Cat-and-mouse game *sigh*.<br>
+<br></blockquote><div><br></div><div>Just to clarify here: in this patch I =
+wanted to only make the change to remove the test for the 19.11.3 image.</d=
+iv><div>And in the 3rd patch (tests/acceptance/boot_linux_console: change U=
+RL for test_arm_orangepi_bionic_20_08)</div><div>do the update for to corre=
+ct the 20.08 link. So each patch fixes one problem at a time.<br></div><div=
+><br></div><div>Does that make sense, or do you prefer that I combine them =
+in a single patch instead?</div><div><br></div><div>Regards,</div><div>Niek=
+<br></div><div><br></div></div>-- <br><div dir=3D"ltr" class=3D"gmail_signa=
+ture"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></div></div>
 
---0000000000004c629d05bd0c4523--
+--000000000000bb0ec905bd0c5593--

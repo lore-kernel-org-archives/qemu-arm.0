@@ -1,157 +1,205 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2620366lfg;
-        Tue, 9 Mar 2021 01:43:52 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyPOja8zNJcH/ZR0fS0jyk1aICANPC6dGpWG4QsUHhTlhyDZXFgB714o5kQZRSdwTA658Ux
-X-Received: by 2002:a17:906:f0d0:: with SMTP id dk16mr19520703ejb.48.1615283031855;
-        Tue, 09 Mar 2021 01:43:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1615283031; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2621986lfg;
+        Tue, 9 Mar 2021 01:46:04 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwIN35bGD2JW6AjLlVxVsk45XLSMfXbwy+VJKgHOIltah/RQ+ldEd+1aJVkWHBl95oO0IRc
+X-Received: by 2002:a25:e010:: with SMTP id x16mr39514463ybg.511.1615283163993;
+        Tue, 09 Mar 2021 01:46:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1615283163; cv=none;
         d=google.com; s=arc-20160816;
-        b=VhsnrQQtbrkGcV+RBVHzJwBCC88cVRbdh+uDc/YHR0DEZEwh94HRYmoIRzHZWep+gu
-         xZ+53OZqKaNDvp6A7JPwaKwq2fZdQrAQsSRnbJKwKIMHSs9JH9tuyOVWBP7yHiRUnw8r
-         ErnFpJmmym4tDzptDdaJDq9gQXXWUtLGd+wbgrmJOl8Le/EPh/C0KkTb6JUlnjuSadJ4
-         BNZW7PVKGs+xzrlmgk6gVAucZIUIOC7Hfof1cc53IghmKVQagCgrRDv57WTkBaq5AWGX
-         9JjzuQrJFoO+soLygM2NTjnfo64eJBsafSzFtLpZFOXjXb1WpkGjt7eweTmDUMw/wJfx
-         gsZg==
+        b=WwvepjlMuKGxSknPg03MaEoxDVHXTY3umf2AksyyPGYO4p0wyPFJF7FwPGYhJl17S0
+         NraXCY0TtJaHZ/n4J3g30S689lOHpy5EsdALkDqIpIBaSPI71QYoyIVlmrhrXu1SZ22G
+         gW/vwaFUdNiqO8WRs/XR9iFPTN6PmUzCNU2uHKgRIyZrD0HORxskEAgHe0DZqdMuT8Eg
+         Fr81+IlW27YROQB5tshLcX1YRcFm46DFzCeVXrMx8+25NIDuLHKDGbeve2DoGiZG0mcP
+         nN0LNYNKRovp0wkPUn7om6LqmaRxxqBIBpZQxto28WRd35R8JksFSOs7yKz5mFXyr8WF
+         dXJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=FNEf+GtEbXYXeLBBojgwoYyBlmOqbIHHX0ChTeVYfLI=;
-        b=d8ur6OarkiPEP4FcIomPPN2DxpwZf+OTkJRqr1C+G6q1tepN2/cvRm9gKpdWn/MzXn
-         1QfmCqVJ1eqxNvurLUCvmw188YnE7yIQzDxzQpLoRrYuTWnbXO5vZ2nMCc++XvFNBskX
-         jbuXDwO4hSlbHK69WYmMCxitfgYJ6su0nSah4raBudhfhhx/axUdAJZw+WEXuPS+moDa
-         PHRBut7+VgNRYqQl3Xm4untNf/tmE53IIBv1g+YOnN3B+QmKRsQn/ZHJMVXt74uSsvUP
-         d5uXCSMQfH5trMoRHJdugwU+GwW14HTXculonYA8oNysUVMB1hLX1KjQlzKQhwlIi9Ff
-         SRQw==
+        bh=O3/YHhtt0nFh9XJoyKgcgE06oocOksGsEu1/BLb3tac=;
+        b=X3UhB+Poy4Z6UPUV4c7KPN9NDCFGmbv6Jvs9wdv7WecnjLuvKiSwScbJOW7wGFAnI8
+         T1MdFTZqie5LP7D1KtxRrP76jZr1ek8B0re/+2Js3q+CuiZcPci3UWFFD/ONnYOu72X6
+         OHXgcjX3mb9Hs21wUDsmk+h/f+v5ZHZyjBxBc/Ea2WnycjPEm6INclVKsKm51IyaLI6/
+         dWVMzjv8GNaXExPSh2X/N4eV5SO0LxKhxreUXTXtmPhyCN1XXyIJDkvI0v1M+nbrKNp/
+         ZL+w4xsyhPO6iwyKrq4vmLPSBJmcvYTPZKOKedtLaB96d9bh5DgiPwx7svtqnii9hGn3
+         7cuA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Mzz9Tcxx;
-       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
-        by mx.google.com with ESMTPS id a20si4420369ejf.345.2021.03.09.01.43.51
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fhwo0Z7G;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id m7si13655009ybb.421.2021.03.09.01.46.03
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 09 Mar 2021 01:43:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 09 Mar 2021 01:46:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Mzz9Tcxx;
-       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fhwo0Z7G;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:57786 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lJYwF-0006PU-9C
+	for alex.bennee@linaro.org; Tue, 09 Mar 2021 04:46:03 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36526)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1lJYtG-0004QR-Qf
+ for qemu-devel@nongnu.org; Tue, 09 Mar 2021 04:42:58 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:26234)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1lJYtE-0003zp-FO
+ for qemu-devel@nongnu.org; Tue, 09 Mar 2021 04:42:58 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1615283030;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=FNEf+GtEbXYXeLBBojgwoYyBlmOqbIHHX0ChTeVYfLI=;
-	b=Mzz9TcxxwnibQyhiJcKrOMazV7KLRv9s7X6GxRp2To++eKl7p8d5GAh4DyCj/U/3xOyPyT
-	+GiEYzS3T0uzdhachM8jWO0vkOq7MGu5RLuE1ps44fffdVas578iuB/qc1V6uoK7bHnGd3
-	C3cXKStwiStTvwkzt2LLuDfbHDtfJzg=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-585-QQzuaGWNMmi2LX-h7Y3rmw-1; Tue, 09 Mar 2021 04:43:47 -0500
-X-MC-Unique: QQzuaGWNMmi2LX-h7Y3rmw-1
-Received: by mail-wm1-f71.google.com with SMTP id a63so230329wmd.8
-        for <alex.bennee@linaro.org>; Tue, 09 Mar 2021 01:43:46 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=FNEf+GtEbXYXeLBBojgwoYyBlmOqbIHHX0ChTeVYfLI=;
-        b=MXmP9cV8ZSBoZOczr/ogKXBaU4WzkGaAfFfWENp/B7bAK+HolsQ8q1bZ3FSQZpA5oa
-         yhkJR19oOCleJoS1uynSd3qQoWPrTmsyGfNKEt8QdBbTBhWSRX1KKp2gYLCdEPCNURoW
-         J/kigH2hVwAWmBrhETA9L5BCrncDfYpaVyFdDHR/NVPjX+soXcUgdvQlTkM0BRyLyDn9
-         HV6jB7bjjjZUaf7w2TEXxTMza0XijLsdqOqskjR3E/ha0UE50i2MpLxZ/65Wz28lByp0
-         d7zkmhEMhmua/G7BPxb8KvjoMTV9xsbUeIqEJZ2zOs2pRuyNE9ISVev8NlluG1elP/Ik
-         0XxQ==
-X-Gm-Message-State: AOAM530dsSCsO0jcfx48xm33iwgk7Pwre1ZJmO1k5yI0lXbEuSJSFMGR
-	BvRd/37Re0Sk/bbG2F3gO9q9wiRPStOZA9myMm2vA6F2y1EwpZs8VtNGRBjOMjK/4VY4+HdjWDK
-	KReDPaB9p5JbJF0gh
-X-Received: by 2002:a1c:7d4e:: with SMTP id y75mr3044811wmc.168.1615283025985;
-        Tue, 09 Mar 2021 01:43:45 -0800 (PST)
-X-Received: by 2002:a1c:7d4e:: with SMTP id y75mr3044795wmc.168.1615283025781;
-        Tue, 09 Mar 2021 01:43:45 -0800 (PST)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net. [83.57.175.68])
-        by smtp.gmail.com with ESMTPSA id 18sm3231744wmj.21.2021.03.09.01.43.44
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 09 Mar 2021 01:43:45 -0800 (PST)
-Subject: Re: [PATCH v2 0/2] tests/acceptance: Test Aspeed ARM machines
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-Cc: Cleber Rosa <crosa@redhat.com>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>
-References: <20210304123951.163411-1-joel@jms.id.au>
- <CAFEAcA9jux7H2cAwgrndvUv5=fivgQwbWDUEbU7rv7xUb=rz4A@mail.gmail.com>
- <345ad50c-ac43-2337-29e4-b7f060896434@kaod.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <ce0fdfce-409f-4e20-7b11-180673a39473@redhat.com>
-Date: Tue, 9 Mar 2021 10:43:44 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.0
+ s=mimecast20190719; t=1615282975;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=O3/YHhtt0nFh9XJoyKgcgE06oocOksGsEu1/BLb3tac=;
+ b=fhwo0Z7G0G/KDlF3B9b3dsn8NAx9nDbWI3BKUk5m7TIqby4ETcNlAP/Ilz+mpb2pCeotqx
+ 1IilheYUEDmdEKMiU2GOmXbONKnBSRvV+nann8mgqH/uacVwc6r7T456jGrEouNMayxnFf
+ JWC27Ief6HOVdMrEa/HoRotKnTP+lFY=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-249-iYTllbZ2NEWgn311pUZv2w-1; Tue, 09 Mar 2021 04:42:51 -0500
+X-MC-Unique: iYTllbZ2NEWgn311pUZv2w-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7A38E26860;
+ Tue,  9 Mar 2021 09:42:49 +0000 (UTC)
+Received: from localhost (ovpn-115-70.ams2.redhat.com [10.36.115.70])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 1224B5D9DC;
+ Tue,  9 Mar 2021 09:42:48 +0000 (UTC)
+Date: Mon, 8 Mar 2021 10:52:58 +0000
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Keqian Zhu <zhukeqian1@huawei.com>
+Subject: Re: [PATCH v2 1/2] ramlist: Make dirty bitmap blocks of ramlist
+ resizable
+Message-ID: <YEYCClbYd36JLRHt@stefanha-x1.localdomain>
+References: <20201130131104.10600-1-zhukeqian1@huawei.com>
+ <20201130131104.10600-2-zhukeqian1@huawei.com>
+ <20201217100501.GE4338@stefanha-x1.localdomain>
+ <7306ed10-871a-58ab-06d4-daa1efc5c9a7@huawei.com>
+ <bbfc0b13-0917-6851-e10f-c7001ff9fd22@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <345ad50c-ac43-2337-29e4-b7f060896434@kaod.org>
+In-Reply-To: <bbfc0b13-0917-6851-e10f-c7001ff9fd22@huawei.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=stefanha@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: +NoElqdzxd/b
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="YE0cVbtlxVHLD1pB"
+Content-Disposition: inline
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=stefanha@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
+X-Spam_bar: --
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_12_24=1.049,
+ DKIMWL_WL_HIGH=-0.251, DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1,
+ DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
+ wanghaibin.wang@huawei.com, qemu-devel@nongnu.org,
+ "Dr . David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, kuhn.chenqun@huawei.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 4HGGqOOtrRfz
 
-+Alex
+--YE0cVbtlxVHLD1pB
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-On 3/5/21 4:38 PM, Cédric Le Goater wrote:
-> On 3/5/21 4:12 PM, Peter Maydell wrote:
->> On Thu, 4 Mar 2021 at 12:40, Joel Stanley <joel@jms.id.au> wrote:
->>>
->>> v2: Fix ast2600 test, thanks Cédric for the review.
->>>
->>> This adds tests for the Aspeed ARM SoCs. The AST2400 and AST2500 tests
->>> use OpenBMC images from that project, fetched from github releases. The
->>> AST2600 test uses a Debian arm32 kernel.
->>
->> Just a note that I'm assuming that Cédric will gather up the
->> various aspeed related patches that have been on the list recently
->> and send a pullreq for them. (Having been on holiday my to-review
->> queue is pretty full so I've just ignored anything aspeed-related;
->> let me know if there is anything you specifically want me to look
->> at, queue, whatever.)
->>
->> PS: softfreeze is 16 March so a pullreq on list sometime next week
->> would probably be the ideal.
-> 
-> Yes. I am preparing the PR. 
-> 
->   aspeed: Integrate HACE
->   hw: Model ASPEED's Hash and Crypto Engine
->   hw/misc: Model KCS devices in the Aspeed LPC controller
->   hw/misc: Add a basic Aspeed LPC controller model
->   hw/arm: ast2600: Correct the iBT interrupt ID
->   hw/arm: ast2600: Set AST2600_MAX_IRQ to value from datasheet
->   hw/arm: ast2600: Force a multiple of 32 of IRQs for the GIC
->   hw/arm/aspeed: Fix location of firmware images in documentation
->   aspeed: Emulate the AST2600A3
->   tests/acceptance: Test ast2600 machine
->   tests/acceptance: Test ast2400 and ast2500 machines
->   arm/ast2600: Fix SMP booting with -kernel
-> 
-> The HACE patchset needs a second look from an Aspeed-aware person and 
-> I have some questions on AST2600A3.
-> 
-> Merging these acceptance tests would be really nice. Have we addressed
-> all you concerns Philippe regarding the image downloads ?
+On Sat, Dec 26, 2020 at 03:11:53PM +0800, Keqian Zhu wrote:
+>=20
+> [...]
+>=20
+> >>> -        for (j =3D old_num_blocks; j < new_num_blocks; j++) {
+> >>> -            new_blocks->blocks[j] =3D bitmap_new(DIRTY_MEMORY_BLOCK_=
+SIZE);
+> >>> +        if (extend) {
+> >>> +            for (j =3D cpy_num_blocks; j < new_num_blocks; j++) {
+> >>> +                new_blocks->blocks[j] =3D bitmap_new(DIRTY_MEMORY_BL=
+OCK_SIZE);
+> >>> +            }
+> >>> +        } else {
+> >>> +            for (j =3D cpy_num_blocks; j < old_num_blocks; j++) {
+> >>> +                /* We are safe to free it, for that it is out-of-use=
+ */
+> >>> +                g_free(old_blocks->blocks[j]);
+> >>
+> >> This looks unsafe because this code uses Read Copy Update (RCU):
+> >>
+> >>   old_blocks =3D qatomic_rcu_read(&ram_list.dirty_memory[i]);
+> >>
+> >> Other threads may still be accessing old_blocks so we cannot modify it
+> >> immediately. Changes need to be deferred until the next RCU period.
+> >> g_free_rcu() needs to be used to do this.
+> >>
+> > Hi Stefan,
+> >=20
+> > You are right. I was thinking about the VM life cycle before. We shrink=
+ the dirty_memory
+> > when we are removing unused ramblock. However we can not rely on this.
+> >=20
+> > I also notice that "Organization into blocks allows dirty memory to gro=
+w (but not shrink)
+> > under RCU". Why "but not shrink"? Any thoughts?
+> Hi,
+>=20
+> After my analysis, it's both unsafe to grow or shrink under RCU.
+>=20
+> ram_list.blocks and ram_list.dirty_memory[X] are closely related and
+> both protected by RCU. For the lockless RCU readers, we can't promise the=
+y
+> always see consistent version of the two structures.
+>=20
+> For grow, a reader may see un-growed @dirty_memory and growed @blocks, ca=
+using out-of-bound access.
 
-No, but I'll defer to Alex here:
-https://www.mail-archive.com/qemu-devel@nongnu.org/msg787742.html
+Growth is safe because other threads only access pre-existing ranges
+(below the old maximum size). They will only start accessing the newly
+added ranges after resize.
 
-> 
-> Thanks,
-> 
-> C.
-> 
+Did you find a code path where this constraint is violated?
+
+Stefan
+
+--YE0cVbtlxVHLD1pB
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmBGAgoACgkQnKSrs4Gr
+c8iEeQf8CxiGgNJuAyHSHx5T7BvSzjpesLRJdzcDUlQ5SDNXYeW3gxLWmKbQBvcR
+eLjAZw3eGu39bddhLgsFmIRUnkLELmhkdrnUCi53nhHqnZsd04kSmPh0b6aDLBj+
+b1YMEqhgERTAQezBn9N7OuS+zkZzmNt9ub8oyEnsqedwAvGNXOCbGIhlC83MYSbb
+qksH37bjitj+RK7WwJk2/SKHL12E1yyEPyu2tigSLnJHgydLjd+zxELYIlP6Vi9N
+kbNkJ3xIMPqwvoHOsYsc2dElqJom+gSjT9Rkxxlx4li6aE3YpC0w6TXDYbXkHYdM
+3YI+OrYFDvhqWSJNcBuc4sek32dWyw==
+=AEYx
+-----END PGP SIGNATURE-----
+
+--YE0cVbtlxVHLD1pB--
+

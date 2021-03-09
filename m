@@ -1,81 +1,108 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2666204lfg;
-        Tue, 9 Mar 2021 02:46:07 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyaPN0RwHnwqNemBdyWHDahsK33bNXuHvw0/QsagUXAkC9tOwTUZ7YZ1ljfN3eZQsTLbnPV
-X-Received: by 2002:a25:61cf:: with SMTP id v198mr41764139ybb.381.1615286767155;
-        Tue, 09 Mar 2021 02:46:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1615286767; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2655985lfg;
+        Tue, 9 Mar 2021 02:30:02 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyLHKyChp0IiXlC7JB5fXyD3adUyxDOYR2NzzcSV+veq2kFc+usj+td/fsqdxuEPH7QJhxX
+X-Received: by 2002:a05:6e02:1544:: with SMTP id j4mr24297377ilu.29.1615285802185;
+        Tue, 09 Mar 2021 02:30:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1615285802; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y/DG/WNVfvQwCWtUt7tWw5i8P2CuZ5oQZDDBzs7QiRoxxaPdg5WPvoBrI4HRWgM1Rp
-         t2Ag5Cx4UM9PHnCOiys4IF5NnwJA7k+cd77u6/RwwFtvJi3YouDaVDIsrlxAdYKpaXdN
-         BeIzyKrrHCCZpsEHBZ8Du+E9V2/CDhvOxM57/shZfhcgncYPU/iv8Q/WDTCx6Faf1vMO
-         xQ1ksIfouBvZBzeCOHbCOX+dCf996ktw9djSN6VDJCAV3FAB5ST2erjXuURaVNJre0/4
-         CNhjESD0Oe+GL3MR7sJ7+K1wPihYlAPs+D5JvvXtuwgauGyxcV9rGuO/nl6Dlfv5Kmgh
-         RNLw==
+        b=RXChU1BAwxU90DS2MfpjggMTvLxXOmd/JuRLIArf/MS9U9QzecLfWWtEmsHfqiY6KB
+         BWIJF45LJbcnJKcWoW7MXO4Ajp65ssVukwKkPKgRpNOfBt0SlDm9AkaK5gGZewsxJ+lU
+         9ga7s+Vn84FZAtlfNRMprbEOov+gZR/ioLn04URzPkR3LAL9e6UspjWam2T6P+30LYOY
+         SX0Gl6ZHoPZrt8kAEE915Mh8iY7B1CdQz/UF28ztdXPRD7zVM2N+7ZSCxz7LZ5bsLJiS
+         QR3lW6O76BJSTs2lehqnnvsNrl3XE0JPQ7NbsVTgOHsF718H4tcY8u56Q191KxMLajdr
+         avkA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:subject:from:references:to;
-        bh=JgbbK4w9qCzdaUrTkFgQ830Om6BwW642vnCROYDf9HQ=;
-        b=e+b3wYpgNLnvFuaOCvPCZDFJoaPFWoRThrLS1ahvGX2Ytk6QKKizFOkCLO8omOcArK
-         sd91NMoZluGLtm/xAMm2kwb06tCgJcD6oRiJGMEazRgbGCg3II0+k3z9xZMGKGAG5nK6
-         YI1UYVdey08565QpEgmN8aQLyBA6Thh7mwj3E358OGmUKUmFtWFQUkeEr9NF8TGHFWDl
-         VNdGhxokhlVkxbgMQP6cYCp//HU/s31XSXTONo9t3NeuhaUUGn+Gs8XkPKLS/eMpczNY
-         D7LJGaea1FBFSIUlRUuKui/+SihURAga5GyBoCudVHzizzkTNSNjo7yRNdbXD5/bnqH2
-         Femw==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=MJ7TYibJkeU3EVVD0ygt9kCwRtbkam9/TntZSjYi9Ws=;
+        b=kX574aiZ9RHKgvilgdgU8lYwqsDamXNNja923/1Nthp+uNbX4CxDETedaEHVD8uAuG
+         f23rnBQDPCEzhNDU62xoyymBEi39dK860ni2rlShtWLEHMc/r9zfKwPb7dR/mnmLHDVF
+         4iZ9uEBDNvPN4P7wypX5mttoxxjuY0kIFCMy0BUe37mVZh3XYmZfDCovKygShRlKLMEk
+         hw0EbyukC+hZdNYTpofYWRlHmO0okMLe8WXDETssn7J4KnmKZRYZ1GmUfOAqGxwQzS1b
+         yFnVctP0Ebgka0AOXGgguCV+53UPFLNtRWKDYbR/uqcfPTl0ruCdTCSkmdAoqN8hbyEH
+         BVfg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=d1cLtZN5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m3si18933038ybf.497.2021.03.09.02.46.07
+        by mx.google.com with ESMTPS id g25si13324467ioc.83.2021.03.09.02.30.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Mar 2021 02:46:07 -0800 (PST)
+        Tue, 09 Mar 2021 02:30:02 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36050 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=d1cLtZN5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:58176 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lJZsM-0004OZ-Hc
-	for alex.bennee@linaro.org; Tue, 09 Mar 2021 05:46:06 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53216)
+	id 1lJZcn-0006mn-FC
+	for alex.bennee@linaro.org; Tue, 09 Mar 2021 05:30:01 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48528)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangxingang5@huawei.com>)
- id 1lJZrt-0004Mv-R3; Tue, 09 Mar 2021 05:45:37 -0500
-Received: from szxga07-in.huawei.com ([45.249.212.35]:3602)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangxingang5@huawei.com>)
- id 1lJZro-000630-Rc; Tue, 09 Mar 2021 05:45:37 -0500
-Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4DvsJ50lpWz7kNc;
- Tue,  9 Mar 2021 18:43:33 +0800 (CST)
-Received: from [10.174.185.226] (10.174.185.226) by
- DGGEMS409-HUB.china.huawei.com (10.3.19.209) with Microsoft SMTP Server id
- 14.3.498.0; Tue, 9 Mar 2021 18:45:12 +0800
-To: <qemu-devel@nongnu.org>
-References: <1614414831-39712-1-git-send-email-wangxingang5@huawei.com>
-From: Wang Xingang <wangxingang5@huawei.com>
-Subject: Re: [RFC RESEND PATCH 0/4] hw/arm/virt-acpi-build: Introduce iommu
- option for pci root bus
-Message-ID: <3e354c2e-61cc-9d8f-886e-79f08a1f44f3@huawei.com>
-Date: Tue, 9 Mar 2021 18:44:57 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.5.1
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1lJZb0-0005Fw-Kv
+ for qemu-arm@nongnu.org; Tue, 09 Mar 2021 05:28:12 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:34188)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1lJZaw-0005Wq-FX
+ for qemu-arm@nongnu.org; Tue, 09 Mar 2021 05:28:10 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1615285685;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=MJ7TYibJkeU3EVVD0ygt9kCwRtbkam9/TntZSjYi9Ws=;
+ b=d1cLtZN58f91PJk0zN7V9IUpX/T/Bd8Ii5Q3PkfdkNDcFdnU2Bw92dH5xjn53IpctyL4Xa
+ o3i0VImDICIund0h0FxCC/k/6Df/nWVwqARx1Eu2y/qr14+1Em0fyzKDH6EAS4/lxqvkBl
+ Dxur4XmTEHzobvynTTBfNRA9Uav3NPo=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-393-s4hFKVxxNZeXa8GRopaDNw-1; Tue, 09 Mar 2021 05:28:03 -0500
+X-MC-Unique: s4hFKVxxNZeXa8GRopaDNw-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 33694108BD08;
+ Tue,  9 Mar 2021 10:28:02 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-112-254.ams2.redhat.com [10.36.112.254])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 292F51F4;
+ Tue,  9 Mar 2021 10:27:58 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, peter.maydell@linaro.org, mst@redhat.com,
+ jean-philippe@linaro.org, peterx@redhat.com, jasowang@redhat.com,
+ pbonzini@redhat.com
+Subject: [PATCH v3 1/7] intel_iommu: Fix mask may be uninitialized in
+ vtd_context_device_invalidate
+Date: Tue,  9 Mar 2021 11:27:36 +0100
+Message-Id: <20210309102742.30442-2-eric.auger@redhat.com>
+In-Reply-To: <20210309102742.30442-1-eric.auger@redhat.com>
+References: <20210309102742.30442-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <1614414831-39712-1-git-send-email-wangxingang5@huawei.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.174.185.226]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.35;
- envelope-from=wangxingang5@huawei.com; helo=szxga07-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+Received-SPF: pass client-ip=216.205.24.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.251,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -89,40 +116,45 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: xieyingtai@huawei.com, peter.maydell@linaro.org, cenjiahui@huawei.com,
- mst@redhat.com, shannon.zhaosl@gmail.com, qemu-arm@nongnu.org,
- marcel.apfelbaum@gmail.com, imammedo@redhat.com
+Cc: vivek.gautam@arm.com, shameerali.kolothum.thodi@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LBJd+JgIEVqg
+X-TUID: cdNlUoMNNLUd
 
-Hi, everyone! Do you have any suggestions? Please help review these 
-patches, thanks very much.
+With -Werror=maybe-uninitialized configuration we get
+../hw/i386/intel_iommu.c: In function ‘vtd_context_device_invalidate’:
+../hw/i386/intel_iommu.c:1888:10: error: ‘mask’ may be used
+uninitialized in this function [-Werror=maybe-uninitialized]
+ 1888 |     mask = ~mask;
+      |     ~~~~~^~~~~~~
 
-On 2021/2/27 16:33, Wang Xingang wrote:
-> From: Xingang Wang <wangxingang5@huawei.com>
-> 
-> These patches add support for configure iommu on/off for pci root bus,
-> including primary bus and pxb root bus. At present, All root bus will go
-> through iommu when iommu is configured, which is not flexible.
-> 
-> So this add option to enable/disable iommu for primary bus and pxb root bus.
-> When iommu is enabled for the root bus, devices attached to it will go
-> through iommu. When iommu is disabled for the root bus, devices will not
-> go through iommu accordingly.
-> 
-> Xingang Wang (4):
->    pci: Add PCI_BUS_IOMMU property
->    hw/pci: Add iommu option for pci root bus
->    hw/pci: Add pci_root_bus_max_bus
->    hw/arm/virt-acpi-build: Add explicit idmap info in IORT table
-> 
->   hw/arm/virt-acpi-build.c            | 92 +++++++++++++++++++++--------
->   hw/arm/virt.c                       | 29 +++++++++
->   hw/pci-bridge/pci_expander_bridge.c |  6 ++
->   hw/pci/pci.c                        | 35 ++++++++++-
->   include/hw/arm/virt.h               |  1 +
->   include/hw/pci/pci.h                |  1 +
->   include/hw/pci/pci_bus.h            | 13 ++++
->   7 files changed, 153 insertions(+), 24 deletions(-)
-> 
+Add a g_assert_not_reached() to avoid the error.
+
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Reviewed-by: Peter Xu <peterx@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+
+---
+
+v2 -> v3:
+- Added Philippe and Peter's R-b
+---
+ hw/i386/intel_iommu.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
+index b4f5094259..3206f379f8 100644
+--- a/hw/i386/intel_iommu.c
++++ b/hw/i386/intel_iommu.c
+@@ -1884,6 +1884,8 @@ static void vtd_context_device_invalidate(IntelIOMMUState *s,
+     case 3:
+         mask = 7;   /* Mask bit 2:0 in the SID field */
+         break;
++    default:
++        g_assert_not_reached();
+     }
+     mask = ~mask;
+ 
+-- 
+2.26.2
+

@@ -1,115 +1,115 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2910413lfg;
-        Tue, 9 Mar 2021 07:26:55 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzflr1r5NdNsNUJXeMvSqM3Kz9cptczcDghjs8cPZOz2CGIyRyZJqa8wniL0E91LZRcP7RL
-X-Received: by 2002:ab0:d89:: with SMTP id i9mr16363571uak.101.1615303615471;
-        Tue, 09 Mar 2021 07:26:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1615303615; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2920799lfg;
+        Tue, 9 Mar 2021 07:39:59 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzbA1/MMCFHv4kqr4eYgq93NyePRSngf1X6EazsWYzlVFlf3xxxBFZdSeNRn6ehXNWE1X/E
+X-Received: by 2002:a9f:258e:: with SMTP id 14mr16576323uaf.128.1615304399370;
+        Tue, 09 Mar 2021 07:39:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1615304399; cv=none;
         d=google.com; s=arc-20160816;
-        b=saHExQrjdcR6H6v4+omkyR3ZJBfObowpYAUUPaZ/yZcx9GVRxSuVHuE5Kpn8byzj/R
-         ghR72iJVyfWmiwpoNGjPEJWJB8vaP03qwdZNiTQNp7oCnF2EQJbbFBazM5nyP44n4rMl
-         g75dFfzej4esPsVBZ/nlRbarXq9IrsqVUUE1WavVIts4+WxQ4ToBwV+FkXah/lfpUSmM
-         bF18SQvb1qB1nwJ4CgYiSqb/y/mWp9QW+5i+CBEYPT3y5aPqi2giFt8A/QbxtzlPtw1g
-         mgf0RCh0/0aarUX9fUv9SlulN1FQIgoXzou2h1DXCSzZ7hoitGKnh7uUa6qGIKJMm0vc
-         ODag==
+        b=o4SWKefw6CV2evYHYO7ZQdc1q8yIZMIlCaqECfZVgHftOm1s7cWgo/ZBnNaMRlzeCW
+         fha9mklBE/LU1Se1V93W9y782WqPL3Y4/u0dofHTCk+1zIYStLq4QaP8k8LaLq+KxQ8z
+         hta7WKaOOsN7ooPRGDqZxVQIHHaaWhR5rIgjrbAPNbI2C5IeATnujn1W0DeKe84kZzsE
+         cPGpvs5uENzpiVV1cZFugJbVGrsYbOCQeCrB3+VXakBBpZLZrEjR2ninIpu/DD0lbijt
+         ACNlo6SMtsIQ0Jg/qgP1EaNvIpfPBcZQb3f/jyg0hVkFgi2oTi09P/cqhCCmF0N7mGVD
+         dNkg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=KVTw4auZoA1sQ5f6tNBsrZgImX3Q8mIkVMkXXJga3ko=;
-        b=II9Zp+iikrTCB3d8YaBnPZ+gZQjZSze0fPZ6dNFyv4u/Y2hvSdFnx3WXwPDS+KU42K
-         DrhGdQ2LzmDPC5XpJPU/oZFKHHY8d9PEVzePaEmr2TzUIx0JwiA0iDptAERrWf+82g1f
-         VakKhMEzU0Kk6j0noJK1rvB+eRygI6od1gi4ucFntIAYlR1Vaw89hVQEJvyBxJKBgS5y
-         JH3fxquz5TvY+bDjluva6191zshrqcjCYZM4hMa6ETuxVhkmthlqA76eMk0YPsaZ//xI
-         iMHvu9huFyl2lKTtWKHq/IgJ0/63Ry7UWAuNLdkCR4c0kcQw05Z8brql8CdVeae1ZbL4
-         2NSw==
+        bh=CezqnxXRYtaCxPTztJEnGsM8L4NDy6bEHTl2hiTBHOw=;
+        b=G21F+B/aOkud/vQ3z88VDh5UUF7iDW2fF7Dbyq1p0FPW/3Dq9FquKK7mHzhycavmJj
+         rgjskvOJi8T+iDBrd+jAG38CrOK+h9yfRvbzAb1B1wCM9QZ0BA4rB0DqWqMky2M8zTTx
+         Fxdy3UmV0zfINOGIaCW75GNwqN4/vAeJVZLnhP8lSQPhsh8rFV2A5ztLIhEMhoVW0UEx
+         Pl5/oHfNgWU41lJAdTjdbnak05OvRXQ9bC03dLaNbr69X6MpuIduOOYaXnVSklVOCunw
+         SDpSo+tIw45O4qSERn/JtsjwU/05jQt3MQM6urHhX9O7RKVko7TtfDoQKsZeoyplC2PD
+         X+lA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Y8T3thRb;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=DufxvXxk;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v19si2353492uap.204.2021.03.09.07.26.55
+        by mx.google.com with ESMTPS id w11si2337247vsk.192.2021.03.09.07.39.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Mar 2021 07:26:55 -0800 (PST)
+        Tue, 09 Mar 2021 07:39:59 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Y8T3thRb;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59814 helo=lists1p.gnu.org)
+       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=DufxvXxk;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:38514 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lJeG6-00052q-Iu
-	for alex.bennee@linaro.org; Tue, 09 Mar 2021 10:26:54 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47588)
+	id 1lJeSk-0003CK-HI
+	for alex.bennee@linaro.org; Tue, 09 Mar 2021 10:39:58 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55184)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lJdc4-0007IB-PD
- for qemu-devel@nongnu.org; Tue, 09 Mar 2021 09:45:32 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:45958)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lJdc1-0005uQ-Rl
- for qemu-devel@nongnu.org; Tue, 09 Mar 2021 09:45:32 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1615301128;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=KVTw4auZoA1sQ5f6tNBsrZgImX3Q8mIkVMkXXJga3ko=;
- b=Y8T3thRbJo38s0K7pA9MnEzvHgKl+Fi5VDdaLz2cDhMEZZfmOyz3jint9txTzgnH3Fy7MF
- xlYaqLH8oLXQMvHi/BOM0SO86/NBU6dUP6ylD3s/V4St4cpOeIDLwgKur5t643P/TIZuY0
- 02m3Bid5GlaTsWxVqPV+QFuYbFVz4Qo=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-562-1-DLu99kMwyqQA-IFoMSFA-1; Tue, 09 Mar 2021 09:45:27 -0500
-X-MC-Unique: 1-DLu99kMwyqQA-IFoMSFA-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C1274800D62;
- Tue,  9 Mar 2021 14:45:25 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-112-40.ams2.redhat.com [10.36.112.40])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 762AD5C233;
- Tue,  9 Mar 2021 14:45:14 +0000 (UTC)
-Subject: Re: [PATCH v2 2/2] accel: kvm: Add aligment assert for
- kvm_log_clear_one_slot
-To: Keqian Zhu <zhukeqian1@huawei.com>,
- Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
- <pbonzini@redhat.com>, "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
- Andrew Jones <drjones@redhat.com>, Peter Xu <peterx@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>
-References: <20201217014941.22872-1-zhukeqian1@huawei.com>
- <20201217014941.22872-3-zhukeqian1@huawei.com>
- <65c92236-5212-f725-047a-cb1d231eff25@redhat.com>
- <759785ef-f29e-f05f-9f2f-357e71ae3680@huawei.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <11854ebf-ed88-496d-8381-5385ef1b403a@redhat.com>
-Date: Tue, 9 Mar 2021 15:45:13 +0100
+ (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
+ id 1lJe5C-0000We-MR
+ for qemu-devel@nongnu.org; Tue, 09 Mar 2021 10:15:40 -0500
+Received: from mail-io1-xd36.google.com ([2607:f8b0:4864:20::d36]:45279)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
+ id 1lJe59-0001zC-J6
+ for qemu-devel@nongnu.org; Tue, 09 Mar 2021 10:15:38 -0500
+Received: by mail-io1-xd36.google.com with SMTP id a7so14231886iok.12
+ for <qemu-devel@nongnu.org>; Tue, 09 Mar 2021 07:15:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=CezqnxXRYtaCxPTztJEnGsM8L4NDy6bEHTl2hiTBHOw=;
+ b=DufxvXxkZ2nirEzFFV2Wjrfn1SqInHQPBrzYRWk4JX8ZrY94V45MVQF52HyZeD4fW8
+ Q+GsZG2cuSIoNDD4z7YsFS0K2vdFNlHVKTXkKNAvZ5KN57B8JfQosD/AuKAb5foOICeq
+ Z1VwiiHs8oN2uSznYxkNflbOBHC+KPtXekayWMuhehONLMC9Ifp780PZPWLDcFrGibrK
+ u8uGUnnVr0hfgg6WezJUXMeJHtB64CVDUKBof389+S4xoHAwfCZOyWwFNryVj7U5k2xD
+ rdVb4FLa1FgH1Q3jhUlHK9Vz+xGp6sWAqsbiq8pNLjbXJXk4EVwU8o+ML5J1MlKFm0eV
+ 7tgg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=CezqnxXRYtaCxPTztJEnGsM8L4NDy6bEHTl2hiTBHOw=;
+ b=HN9+2Vp+u5qppGiAMFWV29c5QiIsqzIMLCrlRG2/EDozrO4n2j1uf8Ipj62qyPBtSo
+ ZeB2OvSudVwOGgQL97eNEGq+DVMngJxuGQQKDJvFCc4U0jEthLQjoTxJEizk3AUb7BFe
+ R05kUNJDDfvhTISyjQSkOMjWsMdyQI8GjR/ueFHFb1kYWY8x5ODO4wy63UbJ7raG56nH
+ w8DZF1qYQ9cWSkzZqNmnYXgT1vRNJ+mas6IumtgEwgvhA2J6MvxfHwuRzL1i8xQt1RFl
+ fQIdvtglaknOVD7mqUqxKIaWieAcJVSwUiFgTtwiIhXnTTsXK69UIVK/uJ/JnH/QJqEX
+ JiNA==
+X-Gm-Message-State: AOAM530IV9KgxpCwZdOynLuwPLXAGRLqHKD2zz3T463jbzT2AuNQPvyn
+ C+VJMzCs6VUIFbned++ANR1aYyM0rHUIkmVHZrYvfPBdCUcsmdoT5ZmMT/2sbN3inxdjztGNheH
+ S5JiNmn2C+dFABh/naPHoHGsh0XzE2QAQJB6s5ctoojY4dnNp6Yl4ZnSGaipYb6iZ/O9fxW0=
+X-Received: by 2002:a05:6638:ec7:: with SMTP id
+ q7mr29117458jas.54.1615302933334; 
+ Tue, 09 Mar 2021 07:15:33 -0800 (PST)
+Received: from [10.0.10.142] (c-174-52-16-57.hsd1.ut.comcast.net.
+ [174.52.16.57])
+ by smtp.gmail.com with ESMTPSA id x16sm7886868ilp.44.2021.03.09.07.15.32
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 09 Mar 2021 07:15:33 -0800 (PST)
+Subject: Re: [PATCH v2 1/3] target/arm: Add support for FEAT_TLBIRANGE
+To: Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org
+References: <20210308231117.12650-1-rebecca@nuviainc.com>
+ <20210308231117.12650-2-rebecca@nuviainc.com>
+From: Rebecca Cran <rebecca@nuviainc.com>
+Message-ID: <59c3c36f-6fce-510b-654f-28d7838baadb@nuviainc.com>
+Date: Tue, 9 Mar 2021 08:15:31 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.0
 MIME-Version: 1.0
-In-Reply-To: <759785ef-f29e-f05f-9f2f-357e71ae3680@huawei.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <20210308231117.12650-2-rebecca@nuviainc.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.251,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d36;
+ envelope-from=rebecca@nuviainc.com; helo=mail-io1-xd36.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -122,107 +122,19 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Zenghui Yu <yuzenghui@huawei.com>, wanghaibin.wang@huawei.com,
- jiangkunkun@huawei.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: S5xw6d3nDMZZ
+X-TUID: voxn9Dgluub5
 
-On 09/03/2021 15.05, Keqian Zhu wrote:
+On 3/8/21 4:11 PM, Rebecca Cran wrote:
+> ARMv8.4 adds the mandatory FEAT_TLBIRANGE. It provides TLBI
+> maintenance instructions that apply to a range of input addresses.
 > 
-> 
-> On 2021/3/9 21:48, Thomas Huth wrote:
->> On 17/12/2020 02.49, Keqian Zhu wrote:
->>> The parameters start and size are transfered from QEMU memory
->>> emulation layer. It can promise that they are TARGET_PAGE_SIZE
->>> aligned. However, KVM needs they are qemu_real_page_size aligned.
->>>
->>> Though no caller breaks this aligned requirement currently, we'd
->>> better add an explicit assert to avoid future breaking.
->>>
->>> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
->>> ---
->>>    accel/kvm/kvm-all.c | 7 +++++++
->>>    1 file changed, 7 insertions(+)
->>>
->>> ---
->>> v2
->>>    - Address Andrew's commment (Use assert instead of return err).
->>>
->>> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
->>> index f6b16a8df8..73b195cc41 100644
->>> --- a/accel/kvm/kvm-all.c
->>> +++ b/accel/kvm/kvm-all.c
->>> @@ -692,6 +692,10 @@ out:
->>>    #define KVM_CLEAR_LOG_ALIGN  (qemu_real_host_page_size << KVM_CLEAR_LOG_SHIFT)
->>>    #define KVM_CLEAR_LOG_MASK   (-KVM_CLEAR_LOG_ALIGN)
->>>    +/*
->>> + * As the granule of kvm dirty log is qemu_real_host_page_size,
->>> + * @start and @size are expected and restricted to align to it.
->>> + */
->>>    static int kvm_log_clear_one_slot(KVMSlot *mem, int as_id, uint64_t start,
->>>                                      uint64_t size)
->>>    {
->>> @@ -701,6 +705,9 @@ static int kvm_log_clear_one_slot(KVMSlot *mem, int as_id, uint64_t start,
->>>        unsigned long *bmap_clear = NULL, psize = qemu_real_host_page_size;
->>>        int ret;
->>>    +    /* Make sure start and size are qemu_real_host_page_size aligned */
->>> +    assert(QEMU_IS_ALIGNED(start | size, psize));
->>
->> Sorry, but that was a bad idea: It triggers and kills my Centos 6 VM:
->>
->> $ qemu-system-x86_64 -accel kvm -hda ~/virt/images/centos6.qcow2 -m 1G
->> qemu-system-x86_64: ../../devel/qemu/accel/kvm/kvm-all.c:690: kvm_log_clear_one_slot: Assertion `QEMU_IS_ALIGNED(start | size, psize)' failed.
->> Aborted (core dumped)
-> Hi Thomas,
-> 
-> I think this patch is ok, maybe it trigger a potential bug?
+> Signed-off-by: Rebecca Cran <rebecca@nuviainc.com>
 
-Well, sure, there is either a bug somewhere else or in this new code. But it's certainly not normal that the assert() triggers, is it?
+I realized this only partially addresses the feedback from v1.
+Specifically, it still doesn't take TBI into account.
 
-FWIW, here's a backtrace:
-
-#0  0x00007ffff2c1584f in raise () at /lib64/libc.so.6
-#1  0x00007ffff2bffc45 in abort () at /lib64/libc.so.6
-#2  0x00007ffff2bffb19 in _nl_load_domain.cold.0 () at /lib64/libc.so.6
-#3  0x00007ffff2c0de36 in .annobin_assert.c_end () at /lib64/libc.so.6
-#4  0x0000555555ba25f3 in kvm_log_clear_one_slot
-     (size=6910080, start=0, as_id=0, mem=0x555556e1ee00)
-     at ../../devel/qemu/accel/kvm/kvm-all.c:691
-#5  0x0000555555ba25f3 in kvm_physical_log_clear
-     (section=0x7fffffffd0b0, section=0x7fffffffd0b0, kml=0x555556dbaac0)
-     at ../../devel/qemu/accel/kvm/kvm-all.c:843
-#6  0x0000555555ba25f3 in kvm_log_clear (listener=0x555556dbaac0, section=0x7fffffffd0b0)
-     at ../../devel/qemu/accel/kvm/kvm-all.c:1253
-#7  0x0000555555b023d8 in memory_region_clear_dirty_bitmap
-     (mr=mr@entry=0x5555573394c0, start=start@entry=0, len=len@entry=6910080)
-     at ../../devel/qemu/softmmu/memory.c:2132
-#8  0x0000555555b313d9 in cpu_physical_memory_snapshot_and_clear_dirty
-     (mr=mr@entry=0x5555573394c0, offset=offset@entry=0, length=length@entry=6910080, client=client@entry=0) at ../../devel/qemu/softmmu/physmem.c:1109
-#9  0x0000555555b02483 in memory_region_snapshot_and_clear_dirty
-     (mr=mr@entry=0x5555573394c0, addr=addr@entry=0, size=size@entry=6910080, client=client@entry=0)
-     at ../../devel/qemu/softmmu/memory.c:2146
-#10 0x0000555555babe99 in vga_draw_graphic (full_update=0, s=0x5555573394b0)
-     at ../../devel/qemu/hw/display/vga.c:1661
-#11 0x0000555555babe99 in vga_update_display (opaque=0x5555573394b0)
-     at ../../devel/qemu/hw/display/vga.c:1784
-#12 0x0000555555babe99 in vga_update_display (opaque=0x5555573394b0)
-     at ../../devel/qemu/hw/display/vga.c:1757
-#13 0x00005555558ddd32 in graphic_hw_update (con=0x555556a11800)
-     at ../../devel/qemu/ui/console.c:279
-#14 0x00005555558dccd2 in dpy_refresh (s=0x555556c17da0) at ../../devel/qemu/ui/console.c:1742
-#15 0x00005555558dccd2 in gui_update (opaque=opaque@entry=0x555556c17da0)
-     at ../../devel/qemu/ui/console.c:209
-#16 0x0000555555dbd520 in timerlist_run_timers (timer_list=0x555556937c50)
-     at ../../devel/qemu/util/qemu-timer.c:574
-#17 0x0000555555dbd520 in timerlist_run_timers (timer_list=0x555556937c50)
-     at ../../devel/qemu/util/qemu-timer.c:499
-#18 0x0000555555dbd74a in qemu_clock_run_timers (type=<optimized out>)
-     at ../../devel/qemu/util/qemu-timer.c:670
-#19 0x0000555555dbd74a in qemu_clock_run_all_timers () at ../../devel/qemu/util/qemu-timer.c:670
-
-Looks like something in the vga code calls this with size=6910080
-and thus triggers the alignment assertion?
-
-  Thomas
-
+-- 
+Rebecca Cran

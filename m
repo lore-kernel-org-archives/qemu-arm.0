@@ -1,178 +1,206 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2956309lfg;
-        Tue, 9 Mar 2021 08:22:32 -0800 (PST)
-X-Received: by 2002:aca:5cd6:: with SMTP id q205mr3491736oib.94.1615306952458;
-        Tue, 09 Mar 2021 08:22:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1615306952; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2956324lfg;
+        Tue, 9 Mar 2021 08:22:33 -0800 (PST)
+X-Received: by 2002:a9d:4b83:: with SMTP id k3mr23920108otf.21.1615306953564;
+        Tue, 09 Mar 2021 08:22:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1615306953; cv=none;
         d=google.com; s=arc-20160816;
-        b=q5cZDstvkMSv01Wu8WLgxBJJIcRKTQGjnWuHaviQTHRLOcVClmnkKB5BfZUhkxXEeI
-         EatfGg1kjf2Df2clTdAGraQqibpT0+LV5YtO+mnoAO4K3D96aeKloruRVbkPfdL3V5xK
-         zHmngRAbnghg/piiJTQq01hD091OI4w8OJV5c8HAeDSIx8imhRBHSLJixIqR29lp8dBU
-         3lJbgKgK+uE+gNFjXGaJAZXpjP2nE978c9ou/J6exJnnP4qrHq2iJHySrhNBAZ3JdmnE
-         2A7hCw0uyDrjMNUKxoT36wsxY4zneHwS4qsJg5AqqZzbEk2K3TvjZHYs+WuBU21zkvzZ
-         e2nA==
+        b=Rhh0LVFSqAezXEJuON9IBwQEakaJ7pxO/vHxaLf0pxO0hmjxUIZzUhctTKyjRsP31e
+         qz708D07r5XiGcXrCBOC9K3gfuXVL9kK/ywRuQgCt6HRH9NZ/lD78PVav3YvxrZhv0Nw
+         fz2toAfQwf5n5yHIw0gHBujlWy6pcFqO5tEmcDPwdBMI38x5I5bb4bVsCEba87x+mO2q
+         MOk+fWRXkVwjBr6sS9LaZUycFqcX0l4drqaJ+lEaawC+Iu47aiWyISabBigRIHqap4XF
+         IPl3Al7c7Nl0gFw1/oF3Bc1Gl7GtIeGePCqsoKyf0IMCSyDaxK6nqicN/GNMxrpFQn5l
+         fP5w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=bptJGYx73w0iLgXPC0ahsEqU5HiDk0G0B7MTmQ2AFnA=;
-        b=Y8XojzUXToQHWx81kR8NPJHESXh5/ZRhKH2BrBdzfAwoZlxTjzoi/AhyPBz9v9QXLk
-         gjvaxBw318BcBvNUgk24NVwub11Zz835nLPQ/6KzEI0EPpQjJV7rAhlkGlVkZoN9uoxN
-         pdKRvOoJZORjxDArYcjoz4l3yfBCYeSjEZ8/1fd//DvKidAntqhZg4HOhdCd2kl6oGzm
-         BPsUcIcDwL/c6rkLlBfjndCBNuejcGsa6w2ui8JZ6naih4VV8c9RTA3OXilUR3na8frj
-         k5L5u0wzMSiTTIvIQ7wXnso0tYMkR/JT7+SiW+CilourF+f3Qrb7NHF8vU38DxS0/ZTH
-         OMyA==
+        bh=eeIkjfuK4lIZhLLIPgTtWdu0JToAdaQwwLqvqAcG254=;
+        b=FHYhzwaEWGQrpJKqM9KxpjGa3oc3XovEsPvjPZQ8zWnE27KbboTjWFeLAYz0qkclAI
+         IULMqfRu2LE6TqnOaEXrRtgOJ6Dxzr8aybBAIUrxfTc/f64vTWY/hoH9fgLFbs0hu4fd
+         GD6eZgoC7DPu1EzmcAKOgd339Rr/NVFSLyzI1xyXOWsd2po2wMBZBymTZ0KpRX2PF4hh
+         wNyoOU5vfnjh6n/haeh/hrOIJXCu8VKGHna1t5eUBjSCxRgzeXVq1P2uTgtJStKepRqv
+         S6VI/Kwyif8WB2kGL1SdnNqSoYd7ZxeWTiPhXSYenjfxv5hvNczPGLqZS2Owa0HAI5qV
+         LCWQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=yCkrIyVp;
+       dkim=pass header.i=@linaro.org header.s=google header.b=aJYF0Ek5;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id h27sor3350229otg.151.2021.03.09.08.22.32
+        by mx.google.com with SMTPS id j23sor2457140oij.94.2021.03.09.08.22.33
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 09 Mar 2021 08:22:32 -0800 (PST)
+        Tue, 09 Mar 2021 08:22:33 -0800 (PST)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=yCkrIyVp;
+       dkim=pass header.i=@linaro.org header.s=google header.b=aJYF0Ek5;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=bptJGYx73w0iLgXPC0ahsEqU5HiDk0G0B7MTmQ2AFnA=;
-        b=yCkrIyVpXMuyWp5Xowa6qQlOP7GAwLSF0pBCvOIrcEChHqsauXQ1Fko5mdQ/HWkbCy
-         aWwuPk+3tKdzCoKp7oodAayj/RzcZkzznjksMRSiLoWKvIK9r/33kx7XaBvt5ERq1aSB
-         gpWPaAB4jphBMsBQTKSITpPWdHg5B+R049fKa1qAn+GLSXgCKgxXnf3xOoYSoEtN7J45
-         E+r4uTpfKIk2dsqvSNwuHbM1mID9QP3VucEUiB2mRXn+J21w6Kc1d2RQJKP1zLK2BW+x
-         vvCxWX3uoIZX0c2FRzajmUqB4OCikmhkPXN5bDCKSAAKsT/a8k4NDfRBEqtpK80HuCkp
-         yP5A==
+        bh=eeIkjfuK4lIZhLLIPgTtWdu0JToAdaQwwLqvqAcG254=;
+        b=aJYF0Ek554kl/uUuyu83mgE6ixaCJIlo2YxwjmIm8dwjYKdOPL6IxvavdRv90amKhN
+         nKUIfnttPNxv4PqYf5ov5gBFwMAi6+0Xm2sRjb62far8uqBl3qi4lY9+E/a/6fdvoKRG
+         Xx1eHM233bpqqbDbEfZKk2vFg7OuhZ3UYmoBLMnVDGotqI7UDWsR84Gu1Bb7Sqj0OQUU
+         HmQ3CMozI2c/r1HYqCO5qaDUTS3BXlWM1uxqQPgpZNVd112DkTN+G8QuVWRdZCUj57A5
+         r4Ls/ZbJJtxu0SN7nlwd1HAQDO43xjjOyswbDAEqmQ0z5Jig81xNQgnksLO0A0lUbABp
+         iCiQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=bptJGYx73w0iLgXPC0ahsEqU5HiDk0G0B7MTmQ2AFnA=;
-        b=cwe+O8gQ7kElIDAx9q6+Pr9sFsCoMQNE1M9e03FuRJmXd6xWrY6fnqmRue1TtQulKc
-         E+ThNGEyjCXH49/fbTbUt0E6I2mLGJOrt7X+v1lPu+RGOu376qhaCCLXLumeeiIcDhc3
-         vDzGDUqp3+gNMxV7rjuNxtPA1PE5FKeN7CtUAdbEh4K1N8pEk7o+lUZaEiqkp8+P0oXR
-         fd2tnjclAWUnSrI35pzd6TxOlENIyI4PAqvtn0db4/s/2ODCsg/EeL+qMCslkioiq+bD
-         n3NdQjYhSDTp5uk17N8I6fjlmmoqiU7p6Zy9ySM6fAgRWvLkf5Kg0a24/nDw4RcNhFen
-         Z7gQ==
-X-Gm-Message-State: AOAM533rK8a/pc8LIVMHoX7+8+j08IED302SNuHf7LSs7DdgitGyfEvS
-	yzNRgP6S6B+w2Ba9zEfqtI2o683b
-X-Google-Smtp-Source: ABdhPJzqBl7DRttyKS28ge+8mbAlJXU3BvaiuhaF771LAqH62bIN1JGkCpAb4jKrd8J+StQhaS/rFA==
-X-Received: by 2002:a05:6830:3495:: with SMTP id c21mr24550583otu.97.1615306952107;
-        Tue, 09 Mar 2021 08:22:32 -0800 (PST)
+        bh=eeIkjfuK4lIZhLLIPgTtWdu0JToAdaQwwLqvqAcG254=;
+        b=SA8leLoIFlR6Q+NG9Q5mCa906baB7h5LE3iGbl8SACcLCgFcviudC/5HYSkE+lyAWR
+         JGhdU5ykwc3e1mM98G7Xbl/T5xa1yXo/Uo66jsBSzRGiCdvHAkzb+Z9BsTO31oH4GmK4
+         d1MYaWTuK8T6W/7++iSUNCtdAXzyytQe2PHRAiHWzUTjctNKed2cVYtP44cVv5ZwEFS+
+         IN2UHO9ul/hIKn7kpOzK+J6PywA+6tYp2QPruZ4Mfr6KNJHWb23ARYjOTEG9fZEQwFIS
+         vUQ5R7IKRiu6CmWSrnipebGtETUTgCMYgb9gIhvMby4W/gu3/3pgwYUA3G3geh2ZboLx
+         DG4w==
+X-Gm-Message-State: AOAM533IYullAYtVdbIeCMtEIJS9N9/GJGZ+A8X7QMgsWuct56RKRX2T
+	ISkvfYdKBuN2uWsbWePXLtLNkXvH
+X-Google-Smtp-Source: ABdhPJwcOlQ8nU2tnj0f8/na54UuO0s2jWlO7pG4DHzwAnJuanyHqh9i3GVXTLLW1UNTtElAquuu4w==
+X-Received: by 2002:aca:2104:: with SMTP id 4mr3523575oiz.124.1615306953244;
+        Tue, 09 Mar 2021 08:22:33 -0800 (PST)
 Return-Path: <richard.henderson@linaro.org>
 Received: from localhost.localdomain (fixed-187-189-51-144.totalplay.net. [187.189.51.144])
-        by smtp.gmail.com with ESMTPSA id u19sm3470898ote.15.2021.03.09.08.22.31
+        by smtp.gmail.com with ESMTPSA id u19sm3470898ote.15.2021.03.09.08.22.32
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 09 Mar 2021 08:22:31 -0800 (PST)
+        Tue, 09 Mar 2021 08:22:32 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org,
 	qemu-arm@nongnu.org,
 	alex.bennee@linaro.org,
 	Stephen Long <steplong@quicinc.com>
-Subject: [PATCH v4 69/78] target/arm: Implement SVE2 FCVTLT
-Date: Tue,  9 Mar 2021 08:20:32 -0800
-Message-Id: <20210309162041.23124-70-richard.henderson@linaro.org>
+Subject: [PATCH v4 70/78] target/arm: Implement SVE2 FCVTXNT, FCVTX
+Date: Tue,  9 Mar 2021 08:20:33 -0800
+Message-Id: <20210309162041.23124-71-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210309162041.23124-1-richard.henderson@linaro.org>
 References: <20210309162041.23124-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: oRimZ+4FGtPL
+X-TUID: eMjmqC21gPf5
 
 From: Stephen Long <steplong@quicinc.com>
 
 Signed-off-by: Stephen Long <steplong@quicinc.com>
-Message-Id: <20200428174332.17162-3-steplong@quicinc.com>
+Message-Id: <20200428174332.17162-4-steplong@quicinc.com>
+[rth: Use do_frint_mode, which avoids a specific runtime helper.]
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper-sve.h    |  5 +++++
  target/arm/sve.decode      |  2 ++
- target/arm/sve_helper.c    | 23 +++++++++++++++++++++++
- target/arm/translate-sve.c | 16 ++++++++++++++++
- 4 files changed, 46 insertions(+)
+ target/arm/translate-sve.c | 49 ++++++++++++++++++++++++++++++--------
+ 2 files changed, 41 insertions(+), 10 deletions(-)
 
-diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
-index eedb70eb50..8569d384b9 100644
---- a/target/arm/helper-sve.h
-+++ b/target/arm/helper-sve.h
-@@ -2739,3 +2739,8 @@ DEF_HELPER_FLAGS_5(sve2_fcvtnt_sh, TCG_CALL_NO_RWG,
-                    void, ptr, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_5(sve2_fcvtnt_ds, TCG_CALL_NO_RWG,
-                    void, ptr, ptr, ptr, ptr, i32)
-+
-+DEF_HELPER_FLAGS_5(sve2_fcvtlt_hs, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(sve2_fcvtlt_sd, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
 diff --git a/target/arm/sve.decode b/target/arm/sve.decode
-index 2c38fe4691..d152193e89 100644
+index d152193e89..4fcd1b43f7 100644
 --- a/target/arm/sve.decode
 +++ b/target/arm/sve.decode
-@@ -1576,4 +1576,6 @@ RAX1            01000101 00 1 ..... 11110 1 ..... .....  @rd_rn_rm_e0
+@@ -1575,6 +1575,8 @@ SM4EKEY         01000101 00 1 ..... 11110 0 ..... .....  @rd_rn_rm_e0
+ RAX1            01000101 00 1 ..... 11110 1 ..... .....  @rd_rn_rm_e0
  
  ### SVE2 floating-point convert precision odd elements
++FCVTXNT_ds      01100100 00 0010 10 101 ... ..... .....  @rd_pg_rn_e0
++FCVTX_ds        01100101 00 0010 10 101 ... ..... .....  @rd_pg_rn_e0
  FCVTNT_sh       01100100 10 0010 00 101 ... ..... .....  @rd_pg_rn_e0
-+FCVTLT_hs       01100100 10 0010 01 101 ... ..... .....  @rd_pg_rn_e0
+ FCVTLT_hs       01100100 10 0010 01 101 ... ..... .....  @rd_pg_rn_e0
  FCVTNT_ds       01100100 11 0010 10 101 ... ..... .....  @rd_pg_rn_e0
-+FCVTLT_sd       01100100 11 0010 11 101 ... ..... .....  @rd_pg_rn_e0
-diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
-index b719a3aacf..3b3f1eca5d 100644
---- a/target/arm/sve_helper.c
-+++ b/target/arm/sve_helper.c
-@@ -7620,3 +7620,26 @@ void HELPER(NAME)(void *vd, void *vn, void *vg, void *status, uint32_t desc)  \
- 
- DO_FCVTNT(sve2_fcvtnt_sh, uint32_t, uint16_t, H1_4, H1_2, sve_f32_to_f16)
- DO_FCVTNT(sve2_fcvtnt_ds, uint64_t, uint32_t, H1_4, H1_2, float64_to_float32)
-+
-+#define DO_FCVTLT(NAME, TYPEW, TYPEN, HW, HN, OP)                             \
-+void HELPER(NAME)(void *vd, void *vn, void *vg, void *status, uint32_t desc)  \
-+{                                                                             \
-+    intptr_t i = simd_oprsz(desc);                                            \
-+    uint64_t *g = vg;                                                         \
-+    do {                                                                      \
-+        uint64_t pg = g[(i - 1) >> 6];                                        \
-+        do {                                                                  \
-+            i -= sizeof(TYPEW);                                               \
-+            if (likely((pg >> (i & 63)) & 1)) {                               \
-+                TYPEN nn = *(TYPEN *)(vn + HN(i + sizeof(TYPEN)));            \
-+                *(TYPEW *)(vd + HW(i)) = OP(nn, status);                      \
-+            }                                                                 \
-+        } while (i & 63);                                                     \
-+    } while (i != 0);                                                         \
-+}
-+
-+DO_FCVTLT(sve2_fcvtlt_hs, uint32_t, uint16_t, H1_4, H1_2, sve_f16_to_f32)
-+DO_FCVTLT(sve2_fcvtlt_sd, uint64_t, uint32_t, H1_4, H1_2, float32_to_float64)
-+
-+#undef DO_FCVTLT
-+#undef DO_FCVTNT
 diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-index 83fab9a6fc..c29984d244 100644
+index c29984d244..14a6a53320 100644
 --- a/target/arm/translate-sve.c
 +++ b/target/arm/translate-sve.c
-@@ -8237,3 +8237,19 @@ static bool trans_FCVTNT_ds(DisasContext *s, arg_rpr_esz *a)
+@@ -4765,11 +4765,9 @@ static bool trans_FRINTX(DisasContext *s, arg_rpr_esz *a)
+     return do_zpz_ptr(s, a->rd, a->rn, a->pg, a->esz == MO_16, fns[a->esz - 1]);
+ }
+ 
+-static bool do_frint_mode(DisasContext *s, arg_rpr_esz *a, int mode)
++static bool do_frint_mode(DisasContext *s, arg_rpr_esz *a,
++                          int mode, gen_helper_gvec_3_ptr *fn)
+ {
+-    if (a->esz == 0) {
+-        return false;
+-    }
+     if (sve_access_check(s)) {
+         unsigned vsz = vec_full_reg_size(s);
+         TCGv_i32 tmode = tcg_const_i32(mode);
+@@ -4780,7 +4778,7 @@ static bool do_frint_mode(DisasContext *s, arg_rpr_esz *a, int mode)
+         tcg_gen_gvec_3_ptr(vec_full_reg_offset(s, a->rd),
+                            vec_full_reg_offset(s, a->rn),
+                            pred_full_reg_offset(s, a->pg),
+-                           status, vsz, vsz, 0, frint_fns[a->esz - 1]);
++                           status, vsz, vsz, 0, fn);
+ 
+         gen_helper_set_rmode(tmode, tmode, status);
+         tcg_temp_free_i32(tmode);
+@@ -4791,27 +4789,42 @@ static bool do_frint_mode(DisasContext *s, arg_rpr_esz *a, int mode)
+ 
+ static bool trans_FRINTN(DisasContext *s, arg_rpr_esz *a)
+ {
+-    return do_frint_mode(s, a, float_round_nearest_even);
++    if (a->esz == 0) {
++        return false;
++    }
++    return do_frint_mode(s, a, float_round_nearest_even, frint_fns[a->esz - 1]);
+ }
+ 
+ static bool trans_FRINTP(DisasContext *s, arg_rpr_esz *a)
+ {
+-    return do_frint_mode(s, a, float_round_up);
++    if (a->esz == 0) {
++        return false;
++    }
++    return do_frint_mode(s, a, float_round_up, frint_fns[a->esz - 1]);
+ }
+ 
+ static bool trans_FRINTM(DisasContext *s, arg_rpr_esz *a)
+ {
+-    return do_frint_mode(s, a, float_round_down);
++    if (a->esz == 0) {
++        return false;
++    }
++    return do_frint_mode(s, a, float_round_down, frint_fns[a->esz - 1]);
+ }
+ 
+ static bool trans_FRINTZ(DisasContext *s, arg_rpr_esz *a)
+ {
+-    return do_frint_mode(s, a, float_round_to_zero);
++    if (a->esz == 0) {
++        return false;
++    }
++    return do_frint_mode(s, a, float_round_to_zero, frint_fns[a->esz - 1]);
+ }
+ 
+ static bool trans_FRINTA(DisasContext *s, arg_rpr_esz *a)
+ {
+-    return do_frint_mode(s, a, float_round_ties_away);
++    if (a->esz == 0) {
++        return false;
++    }
++    return do_frint_mode(s, a, float_round_ties_away, frint_fns[a->esz - 1]);
+ }
+ 
+ static bool trans_FRECPX(DisasContext *s, arg_rpr_esz *a)
+@@ -8253,3 +8266,19 @@ static bool trans_FCVTLT_sd(DisasContext *s, arg_rpr_esz *a)
      }
-     return do_zpz_ptr(s, a->rd, a->rn, a->pg, false, gen_helper_sve2_fcvtnt_ds);
+     return do_zpz_ptr(s, a->rd, a->rn, a->pg, false, gen_helper_sve2_fcvtlt_sd);
  }
 +
-+static bool trans_FCVTLT_hs(DisasContext *s, arg_rpr_esz *a)
++static bool trans_FCVTX_ds(DisasContext *s, arg_rpr_esz *a)
 +{
 +    if (!dc_isar_feature(aa64_sve2, s)) {
 +        return false;
 +    }
-+    return do_zpz_ptr(s, a->rd, a->rn, a->pg, false, gen_helper_sve2_fcvtlt_hs);
++    return do_frint_mode(s, a, float_round_to_odd, gen_helper_sve_fcvt_ds);
 +}
 +
-+static bool trans_FCVTLT_sd(DisasContext *s, arg_rpr_esz *a)
++static bool trans_FCVTXNT_ds(DisasContext *s, arg_rpr_esz *a)
 +{
 +    if (!dc_isar_feature(aa64_sve2, s)) {
 +        return false;
 +    }
-+    return do_zpz_ptr(s, a->rd, a->rn, a->pg, false, gen_helper_sve2_fcvtlt_sd);
++    return do_frint_mode(s, a, float_round_to_odd, gen_helper_sve2_fcvtnt_ds);
 +}
 -- 
 2.25.1

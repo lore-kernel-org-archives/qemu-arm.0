@@ -1,109 +1,81 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2892789lfg;
-        Tue, 9 Mar 2021 07:09:35 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxLt3nnsFy679pEh4qcKjBdGJZq5OI87xocEyj0tga3W3lQHuCcW2n2tVZgL2Sz+7Uujh2R
-X-Received: by 2002:ab0:1487:: with SMTP id d7mr16366779uae.78.1615302575443;
-        Tue, 09 Mar 2021 07:09:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1615302575; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2908917lfg;
+        Tue, 9 Mar 2021 07:25:03 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJykPycX/s3tl0ByPJ1pHimmOOkWoXp1dcJNvoaFTlNR89IaA8bIstu6E1WCPHkRvkAf0mEJ
+X-Received: by 2002:a67:6991:: with SMTP id e139mr2715163vsc.11.1615303503775;
+        Tue, 09 Mar 2021 07:25:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1615303503; cv=none;
         d=google.com; s=arc-20160816;
-        b=d1uCtDa7jZx+9xJw2dYL5UkMoiedLe/M/TC7Ew4MoUmNi3H3ch4SwyqfOmMzedIXl8
-         HjypB+J90C+PsEtjTQJT5YHQZeSuEFJ3/PXdIpfXokPccqt2iM48MQQEXoztuzCC3Cqs
-         awV8f9uFaK2aVayotNd+Fm2mOwEP2JN2mK+jhZIvY+HYLuD2jhMqcN80qTLHmGRRu8Fr
-         Tn7WXa+XoQhUCQDOtjhr1ZSZ+FroGj0gqba6jGOHUP7utA054+cF8Y0PoEzpbMY+CmX9
-         pa45yJ+Gf/0QTxVEM13Rqyh7PRCztJTgg6BfL4y70EQvmGKw8OMlWNmxPViuww0lamiE
-         OQ8A==
+        b=Eth5l9g7xPGSLsUbQbyY2nI/TPeE9OLJwfn+Wf97vRGy9PIXrP951t4WCCJH0ACiC8
+         9hdnKoa723Sz4wVNDczlkaUKr6mFV6VGcVcFnHJaueAKypTao8EAkhvHpuIBHPnBUwal
+         KB+5QXWCsJ/8CDLjECGTqeb7RNxO7vDHGu0hACx8Wj64eTN1A+1YaLO5yzeGaSmipFXk
+         1+IMR3M3u7PQN+ZOZuny6TJb394HyYoi5c2/vr51C3saRzZk2doUZMUzlc6ps7R64FmX
+         YP8z83mk0eC88jdZ0o/fdyX/Qs1yzJGCOWO4lP5HkHUBEwXYXfiY3X+e2gtRXl2NONAk
+         MQgw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:references:message-id
-         :content-transfer-encoding:date:in-reply-to:from:subject
-         :mime-version:dkim-signature;
-        bh=RRl8ZwwGl0rjUuWYzuTyINdrAJBZTYZJDNbf5fF8KoY=;
-        b=JWyjRR8Q/qf5ZRiMm/6OvIqihVm1RGEeX2tnpSNYBDKwuCMpMI8wJ6pKDyzaxkzDDC
-         O67IMWSejSkGMDpkGtLGuWR8GNpoebarO2nN3hshthASAKLp19SYgtdSOLL7WH7EgdYq
-         jNuj/Jx9bqttfoqN3B9dQXUkE0uhJIMcwFaVZ9nFH/lJLJuUEO3p9HTu9DYdJD9Wrzyx
-         3VOYU+aLN4jkZ7gURuPccPw17XYfku9zA4fGoA7iWzc3glepSEArSAYgf0djbA6eWUVT
-         C/RRleZoWERvxl/WTG6B0DKRdH0siA8JuU4wDaDQ+zKg3TEALoJyXqSItuavMxB3Okjn
-         pkKw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=ABOvI6buwgUMmWlmw64iDznXsPsyUMMEDVCnGIDbrO4=;
+        b=0DeIkbKqpyDlD7d23jzHO8/HQ5mXC9gnAWxF94S5vymxYuPpHzotinQvTEGHvgVrEJ
+         Nq009BjttZR+Kgke53Yt95JVpBklV+R0yKdFxXD0RvSQNc6Hom7BxGGOL3Hx6hx2dVoW
+         VcLR4nlucACnmv+JN6g02gAf8MmgsJgin4y0hDI7lI0osR+FU1yXdP8nWel2vXzf59A/
+         hSdpv8NjTCZpVKXA61MILMCYwTq/yhpvxg1EK6qMvF4dolM4/us9JmDkS1b73z1XiKCW
+         8xShTl8+F1mZZBVr9sIWdDnT6AKwkQg31B6EhSqfpTLQlq/q5Wll47pz1mMlcD/ZG1fe
+         Xsvw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@livius-net.20150623.gappssmtp.com header.s=20150623 header.b=CoznnZ27;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o19si2205166uaj.170.2021.03.09.07.09.35
+        by mx.google.com with ESMTPS id x3si2289909vsn.137.2021.03.09.07.25.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Mar 2021 07:09:35 -0800 (PST)
+        Tue, 09 Mar 2021 07:25:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@livius-net.20150623.gappssmtp.com header.s=20150623 header.b=CoznnZ27;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38234 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57172 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lJdzK-00019d-Mj
-	for alex.bennee@linaro.org; Tue, 09 Mar 2021 10:09:34 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45764)
+	id 1lJeEJ-0003uP-1U
+	for alex.bennee@linaro.org; Tue, 09 Mar 2021 10:25:03 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49550)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ilg@livius.net>) id 1lJdUZ-0008Ab-M0
- for qemu-arm@nongnu.org; Tue, 09 Mar 2021 09:37:47 -0500
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a]:39280)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <ilg@livius.net>) id 1lJdUX-0002Xd-6D
- for qemu-arm@nongnu.org; Tue, 09 Mar 2021 09:37:47 -0500
-Received: by mail-ed1-x52a.google.com with SMTP id h10so20586766edl.6
- for <qemu-arm@nongnu.org>; Tue, 09 Mar 2021 06:37:43 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=livius-net.20150623.gappssmtp.com; s=20150623;
- h=mime-version:subject:from:in-reply-to:date:cc
- :content-transfer-encoding:message-id:references:to;
- bh=RRl8ZwwGl0rjUuWYzuTyINdrAJBZTYZJDNbf5fF8KoY=;
- b=CoznnZ27q0i1MKxTi9Kzn0pbxM0+i8sz/AeGxchjjmU0q9HmtBbRYfchSdHaUOZxhi
- R75C88eikBDRw5x3kLNW0R5FVRMml1BmMRDmmeP3nwm7g49m5IwpUbkKfft2MvIpKaF4
- bIU4nLBma6xnfdIlNiSan2PitrLylwGHpnhsLurVhw5trXKjqCrgtquIdtfMJfBmr+oJ
- H1n8RvC2AbWziVDGJEIygH4AV4siVeCrw+VyWPkU3locEfjpc7H9qsc/CfHtulwf0I6u
- C/gTgPPVlNmdn4zC0uRmFa1n60jeG+cfVbPcW0dyvzIPSNZpkfcqK616OZcdmcJNkLl8
- p9eg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
- :content-transfer-encoding:message-id:references:to;
- bh=RRl8ZwwGl0rjUuWYzuTyINdrAJBZTYZJDNbf5fF8KoY=;
- b=JalYrgPNWS8+geSJTupaTf6Ee0ZcfhQ1wV+oomSoiAO6OQVJj7O2WhQ7gOUWON2Fub
- GgcPdfC4Mb7dEzXlXbDZkyNEqbvpoTy+DTsLH+I5T+7Tlyg3IXMZQqmgoUCmb374c42W
- 3reRsSza327hXlOZiMEV1S11knvERulUS7CuF5UtnyxtsuE9IFxK7cntpv63fxbqLai4
- qdj7SkCY887SqNw/FNBJRRffk0I8RNksGLjfaU/kUEtvnO/9Bq24+ocx1aXFDTe/xCuW
- fV5s4pmrhmnPtsoDGT/aLfd6VdmDxDjMiQxHZvcEc632MMIAvL13AMuTC1h03Q2MGB0n
- e+JA==
-X-Gm-Message-State: AOAM530Y4shfclL3dWUfWQVgIjP2TOSX5esx5h7lMXH7EwlK3Cr1CdoY
- vJCfbZ1BJ7dYY77gs5lYR9aYKA==
-X-Received: by 2002:a05:6402:304b:: with SMTP id
- bu11mr4287747edb.157.1615300662793; 
- Tue, 09 Mar 2021 06:37:42 -0800 (PST)
-Received: from wks.local (5-12-20-125.residential.rdsnet.ro. [5.12.20.125])
- by smtp.gmail.com with ESMTPSA id e4sm8566632ejz.4.2021.03.09.06.37.42
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 09 Mar 2021 06:37:42 -0800 (PST)
-Content-Type: text/plain;
-	charset=us-ascii
-Mime-Version: 1.0 (Mac OS X Mail 14.0 \(3654.60.0.2.21\))
-Subject: Re: Malfunctionning qemu-system-arm ?
-From: Liviu Ionescu <ilg@livius.net>
-In-Reply-To: <e00943e0-b9a7-1688-b169-3650e8e4290e@trusted-objects.com>
-Date: Tue, 9 Mar 2021 16:37:41 +0200
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <FBA649E1-4EFB-4409-894E-C1A5AB086BF1@livius.net>
-References: <20210211141515.8755-1-peter.maydell@linaro.org>
- <14af0670-caaf-caf1-0b90-fb10c7db13b0@trusted-objects.com>
- <e00943e0-b9a7-1688-b169-3650e8e4290e@trusted-objects.com>
-To: vincent Dupaquis <v.dupaquis@trusted-objects.com>
-X-Mailer: Apple Mail (2.3654.60.0.2.21)
-Received-SPF: none client-ip=2a00:1450:4864:20::52a;
- envelope-from=ilg@livius.net; helo=mail-ed1-x52a.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
+ (Exim 4.90_1) (envelope-from <cfontana@suse.de>)
+ id 1lJdld-0001xK-5S; Tue, 09 Mar 2021 09:55:25 -0500
+Received: from mx2.suse.de ([195.135.220.15]:38358)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <cfontana@suse.de>)
+ id 1lJdlb-0001aY-5u; Tue, 09 Mar 2021 09:55:24 -0500
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.221.27])
+ by mx2.suse.de (Postfix) with ESMTP id 8D469AE7F;
+ Tue,  9 Mar 2021 14:55:16 +0000 (UTC)
+Subject: Re: [PATCH v2 1/3] target/arm: Restrict v8M IDAU to TCG
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+References: <20210221222617.2579610-1-f4bug@amsat.org>
+ <20210221222617.2579610-2-f4bug@amsat.org>
+ <51ae2fad-f20e-27f2-2f7b-b7dca331dea3@suse.de>
+ <75ce7727-caec-fd63-b2e6-9344e22cfa75@amsat.org>
+From: Claudio Fontana <cfontana@suse.de>
+Message-ID: <0db478a3-ad7d-d70c-f650-54fb4ff35b49@suse.de>
+Date: Tue, 9 Mar 2021 15:55:15 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.12.0
+MIME-Version: 1.0
+In-Reply-To: <75ce7727-caec-fd63-b2e6-9344e22cfa75@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=195.135.220.15; envelope-from=cfontana@suse.de;
+ helo=mx2.suse.de
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -116,28 +88,111 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EWDYc/JoGbSS
+X-TUID: msPboKhwlPHS
 
+On 3/9/21 3:18 PM, Philippe Mathieu-Daudé wrote:
+> On 3/9/21 2:41 PM, Claudio Fontana wrote:
+>> On 2/21/21 11:26 PM, Philippe Mathieu-Daudé wrote:
+>>> IDAU is specific to M-profile. KVM only supports A-profile.
+>>> Restrict this interface to TCG, as it is pointless (and
+>>> confusing) on a KVM-only build.
+>>>
+>>> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+>>> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+>>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>>
+>>
+>> This one breaks the KVM tests hard though (most of them).
+>>
+>> I will try to figure out why.
+>>
+>> Ciao,
+>>
+>> Claudio
+>>
+>>
+>>> ---
+>>>  target/arm/cpu.c     | 7 -------
+>>>  target/arm/cpu_tcg.c | 8 ++++++++
+>>>  2 files changed, 8 insertions(+), 7 deletions(-)
+>>>
+>>> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+>>> index b8bc89e71fc..a772fd4926f 100644
+>>> --- a/target/arm/cpu.c
+>>> +++ b/target/arm/cpu.c
+>>> @@ -2380,12 +2380,6 @@ static const TypeInfo arm_cpu_type_info = {
+>>>      .class_init = arm_cpu_class_init,
+>>>  };
+>>>  
+>>> -static const TypeInfo idau_interface_type_info = {
+>>> -    .name = TYPE_IDAU_INTERFACE,
+>>> -    .parent = TYPE_INTERFACE,
+> 
+> Hmm this is an interface...
+> 
+> Is a CPU/machine trying to resolve it?
 
+I think that qtests assume the interface to be there.
 
-> On 15 Feb 2021, at 17:09, vincent Dupaquis =
-<v.dupaquis@trusted-objects.com> wrote:
->=20
-> ... stuck on the starting HAL_init() call.
+device-introspection-test for sure, but apparently many others too..
 
-HAL requires, amongst other things, the clock registers, since it sets =
-the PLLs for the desired frequencies.
+RFC v5 is out now,
 
-xPack QEMU Arm [1] implements these registers, and is able to properly =
-run the HAL init code.
+Ciao,
 
+Claudio
 
-Regards,
-
-Liviu
-
-[1] - https://xpack.github.io/qemu-arm/
+> 
+>>> -    .class_size = sizeof(IDAUInterfaceClass),
+>>> -};
+>>> -
+>>>  static void arm_cpu_register_types(void)
+>>>  {
+>>>      const size_t cpu_count = ARRAY_SIZE(arm_cpus);
+>>> @@ -2399,7 +2393,6 @@ static void arm_cpu_register_types(void)
+>>>      if (cpu_count) {
+>>>          size_t i;
+>>>  
+>>> -        type_register_static(&idau_interface_type_info);
+>>>          for (i = 0; i < cpu_count; ++i) {
+>>>              arm_cpu_register(&arm_cpus[i]);
+>>>          }
+>>> diff --git a/target/arm/cpu_tcg.c b/target/arm/cpu_tcg.c
+>>> index c29b434c60d..fb07a336939 100644
+>>> --- a/target/arm/cpu_tcg.c
+>>> +++ b/target/arm/cpu_tcg.c
+>>> @@ -14,6 +14,7 @@
+>>>  #include "hw/core/tcg-cpu-ops.h"
+>>>  #endif /* CONFIG_TCG */
+>>>  #include "internals.h"
+>>> +#include "target/arm/idau.h"
+>>>  
+>>>  /* CPU models. These are not needed for the AArch64 linux-user build. */
+>>>  #if !defined(CONFIG_USER_ONLY) || !defined(TARGET_AARCH64)
+>>> @@ -739,10 +740,17 @@ static const ARMCPUInfo arm_tcg_cpus[] = {
+>>>      { .name = "pxa270-c5",   .initfn = pxa270c5_initfn },
+>>>  };
+>>>  
+>>> +static const TypeInfo idau_interface_type_info = {
+>>> +    .name = TYPE_IDAU_INTERFACE,
+>>> +    .parent = TYPE_INTERFACE,
+>>> +    .class_size = sizeof(IDAUInterfaceClass),
+>>> +};
+>>> +
+>>>  static void arm_tcg_cpu_register_types(void)
+>>>  {
+>>>      size_t i;
+>>>  
+>>> +    type_register_static(&idau_interface_type_info);
+>>>      for (i = 0; i < ARRAY_SIZE(arm_tcg_cpus); ++i) {
+>>>          arm_cpu_register(&arm_tcg_cpus[i]);
+>>>      }
+>>>
+>>
+>>
+> 
 

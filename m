@@ -1,79 +1,97 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2405673lfg;
-        Mon, 8 Mar 2021 19:19:51 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxgEe3n0GKsJrU6Ryap5M7DAzZhV4G7Vzkna9JadpK4Nr3nvi3ig/4fjQdsrjMDjJBdZLme
-X-Received: by 2002:a6b:6618:: with SMTP id a24mr21662229ioc.100.1615259991761;
-        Mon, 08 Mar 2021 19:19:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1615259991; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2501358lfg;
+        Mon, 8 Mar 2021 22:20:49 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJw/wnT42wk8RRhJHLiIIw+INx9Tszd5hl4m4DTVII0nFLjEB/EoLoao4E8FpcLqGVvq/XsR
+X-Received: by 2002:a05:6e02:1544:: with SMTP id j4mr23704033ilu.29.1615270849041;
+        Mon, 08 Mar 2021 22:20:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1615270849; cv=none;
         d=google.com; s=arc-20160816;
-        b=JRTstidOanXSOs0T89pHgx7N4KShGxeGyYII7uPYAippn2EvMLF9vILYHZqqJPb4kW
-         Gd295TT+APIZAbgKFDd/iZjWSncCdwG2Lc3q85VoDbbilkXUH5WCeT99unLynqDVlQhR
-         VvoMeKW2Sf2a8B5edb4mbELKIeuScLBrtmUPeqpWb6X8IGowF5s0nF1QiTGISNpRiP71
-         FRBky6M2CwZCJEiQ5U/jy63GbKgMcHJCYWm1acRL/7AGqYm9Xx8AhiDSKAjahmnEsCZa
-         qFfLoUhTZVljOgOf5OXjIGQs+P7M+OtV4OVVf8tHPnNHCrdJa2v1Rs4YMFKnXkPa8SDr
-         exaA==
+        b=G7U2eAi/f1VEXeC0YWv0WggfZJwO4JGmU0ORGUM5g9OI70tIHeFqv9A2xUmmyd9VFN
+         4aAaFoWNkylpp+cgUXfM6qVD7UYq5ZE8ZFeqU31EtTRZajK0OItNyBt3emwi7rs0YrY8
+         zxMPivz8ufoBLcL+MMDhyitUz2JCVHklfUlLB4vPzc+oLiYGnK7ZcrMkIs7v+65spFWE
+         3Shf11SUE1S6ITGxPyM3X1+82wohlc9D7JNE9goJIs3di5pkKmy+4ct9+queJlQ9bbK+
+         4sPJA3NBjcwFuhJ1SVaJGliNt4Umh655TUD9Wcm7WEc4HgBxbmHx8QdUp5mEIAu81Q3j
+         WGBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
-         :subject:to:from;
-        bh=/kIrjla22Km6kxiWklA1JFeeSZuz65iC7YpmRtjdDxk=;
-        b=ADm+Iqv38gu4AVN61DAqpRUM2luuWiZOJXK2QmddtBbLWsINrQ3aDXD9cj3AXzoeME
-         S8WgPKwo13ZilHlNRJILLf8SaWkekA6HOoK3j420zVUlFa8atw5edFBWcVez4//ul4zp
-         zwJVB4E73a+5IK8BAkVxjzgnPsOs+Tn7bvw0id3adnKdAuHO64pjL8H2y2WLu8bCO1Pu
-         mmr61AcESxoxw5W2N4FryMBjOp77YVxd6fbEb03bN0d8XqJKmgvPauN1hSGphadyJ/Kj
-         NrkEghpAvO+gMjdqXmL6G7SiUK5Ig8wCzkYnkF9oXStTonQZCvbmRnU18uptA024bc9Z
-         qmVw==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=miQeKNkvU8lnqhe4eX7n0EAYZqmKfdLV68+1Zj20kXw=;
+        b=MP6wArecaUeFS9TLYS3f2Aw84mWpI9ZF494+QBe0eg5hM87OP/2QB6Gd/5J4zUbDZp
+         rsv6eV7SZYZWtYmhMXIk3c6b1ObSqvjj4UMHiLAgLwEQU58f6p8uyTGXqaBYubKfj72Z
+         fHwNLOgyBOo4v1SdgxDmVObNM6GWV/pjsYqYCkQqCTnI/sc7C9JXvePyFDLHNdJJwgT9
+         wYMHSc3wTCt0OPB0VfyA8hfmqsiheZIKqJJLgT85PzElIT1mmAVh4flItwS49iltgoFh
+         rpV8vVJbO9dJrda4CjnGx/OVqBszRY4Wkxf93+NqeUwNAhAi6wi68sM95KdG067MxhuJ
+         3JgA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@jms.id.au header.s=google header.b=YvfDI6F1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 17si13108892ilz.157.2021.03.08.19.19.51
+        by mx.google.com with ESMTPS id k15si13108857jan.49.2021.03.08.22.20.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Mar 2021 19:19:51 -0800 (PST)
+        Mon, 08 Mar 2021 22:20:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@jms.id.au header.s=google header.b=YvfDI6F1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40776 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46904 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lJSuU-00068z-Us
-	for alex.bennee@linaro.org; Mon, 08 Mar 2021 22:19:50 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53450)
+	id 1lJVjc-0008D0-89
+	for alex.bennee@linaro.org; Tue, 09 Mar 2021 01:20:48 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51404)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
- id 1lJSuM-00068n-0M; Mon, 08 Mar 2021 22:19:42 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:3447)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
- id 1lJSuI-0000Dv-Ij; Mon, 08 Mar 2021 22:19:41 -0500
-Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4DvgP21rYRzMkpc;
- Tue,  9 Mar 2021 11:17:10 +0800 (CST)
-Received: from DESKTOP-5IS4806.china.huawei.com (10.174.184.42) by
- DGGEMS414-HUB.china.huawei.com (10.3.19.214) with Microsoft SMTP Server id
- 14.3.498.0; Tue, 9 Mar 2021 11:19:14 +0800
-From: Keqian Zhu <zhukeqian1@huawei.com>
-To: Kirti Wankhede <kwankhede@nvidia.com>, Alex Williamson
- <alex.williamson@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, "Dr .
- David Alan Gilbert" <dgilbert@redhat.com>, <qemu-devel@nongnu.org>,
- <qemu-arm@nongnu.org>
-Subject: [PATCH v2] vfio/migrate: Move switch of dirty tracking into
- vfio_memory_listener
-Date: Tue, 9 Mar 2021 11:19:13 +0800
-Message-ID: <20210309031913.11508-1-zhukeqian1@huawei.com>
-X-Mailer: git-send-email 2.8.4.windows.1
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1lJVie-0008Co-O6; Tue, 09 Mar 2021 01:19:48 -0500
+Received: from mail-qv1-xf2e.google.com ([2607:f8b0:4864:20::f2e]:46669)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1lJVic-0007UH-Ln; Tue, 09 Mar 2021 01:19:48 -0500
+Received: by mail-qv1-xf2e.google.com with SMTP id 15so5873978qvp.13;
+ Mon, 08 Mar 2021 22:19:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=miQeKNkvU8lnqhe4eX7n0EAYZqmKfdLV68+1Zj20kXw=;
+ b=YvfDI6F1dsvxuSVYQYq0yOCc1BMuTN424Owb4vdEY9K9PbwCpWYO3o3uZaPekIOLul
+ Yv7CQNxtuk/R/ygn8okmoJzzK6Z0dG7G0mmPI91+1ZLxClnRUSe+9zGFcySA5ZTJLOVi
+ 1pCMAiYtuozU9Ke56WOytDsp5n80R1gU9fENw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=miQeKNkvU8lnqhe4eX7n0EAYZqmKfdLV68+1Zj20kXw=;
+ b=W+HeYEuoUd6ko8BMB1Ka1CUsK3XB+5H90wQCZIho4QqcysX4KoYU788uvQf/ifzXSJ
+ eQj46bab8GLcttaiXb/CJ9YrqaShOxsZJFVORMcntBntqs029qwYm5LulV9uiH02AHPo
+ WYoL7guiOiXc8tA+ZiinMPJC4AHoGEpFCZgPK6QR1i6IIotnE50UuuC8NnxJjRGuoqvD
+ 5Kx7hmHurpSK9Nf3ZMUDDc2+268XVFqEBTrHMd0Ya5wMENXMms3kCz2ira06w07l//zI
+ B3vDEkkMMURE6yyl/Fz5Tqj65u+dbKbpbYMjJc6XS/ZlCcS0EiS0U4vQgNwE+z54SpOf
+ dTMQ==
+X-Gm-Message-State: AOAM531+b6ZkSHNc/nK1sKhddismcy/5Bur91o1Jdawh4+SlJxPtvhB3
+ aHZkJG5XQb6INRIVtTt+PEjZ88jm7QbS0Uqp524=
+X-Received: by 2002:a0c:b894:: with SMTP id y20mr24547768qvf.43.1615270784686; 
+ Mon, 08 Mar 2021 22:19:44 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.174.184.42]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191;
- envelope-from=zhukeqian1@huawei.com; helo=szxga05-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20210304123951.163411-1-joel@jms.id.au>
+ <20210304123951.163411-3-joel@jms.id.au>
+ <5e6691b6-1cdc-8d66-25e7-4df1be63be46@redhat.com>
+In-Reply-To: <5e6691b6-1cdc-8d66-25e7-4df1be63be46@redhat.com>
+From: Joel Stanley <joel@jms.id.au>
+Date: Tue, 9 Mar 2021 06:19:31 +0000
+Message-ID: <CACPK8XfYVO2VBcvAhPXPx+MSe75Oi+YoJ-SCAGhUWDs1xh4RNQ@mail.gmail.com>
+Subject: Re: [PATCH v2 2/2] tests/acceptance: Test ast2600 machine
+To: Wainer dos Santos Moschetta <wainersm@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::f2e;
+ envelope-from=joel.stan@gmail.com; helo=mail-qv1-xf2e.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -86,208 +104,95 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, jiangkunkun@huawei.com,
- Peter Xu <peterx@redhat.com>, Stefan
- Hajnoczi <stefanha@redhat.com>, wanghaibin.wang@huawei.com,
- Zenghui Yu <yuzenghui@huawei.com>, Igor Mammedov <imammedo@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Cleber Rosa <crosa@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PGwFk+ZksyFv
+X-TUID: hQQj+be2C91Y
 
-For now the switch of vfio dirty page tracking is integrated into
-@vfio_save_handler. The reason is that some PCI vendor driver may
-start to track dirty base on _SAVING state of device, so if dirty
-tracking is started before setting device state, vfio will report
-full-dirty to QEMU.
+On Fri, 5 Mar 2021 at 20:46, Wainer dos Santos Moschetta
+<wainersm@redhat.com> wrote:
+>
+> Hi,
+>
+> On 3/4/21 9:39 AM, Joel Stanley wrote:
+> > This tests a Debian multi-soc arm32 Linux kernel on the AST2600 based
+> > Tacoma BMC machine.
+> >
+> > There is no root file system so the test terminates when boot reaches
+> > the stage where it attempts and fails to mount something.
+> >
+> > Signed-off-by: Joel Stanley <joel@jms.id.au>
+> > ---
+> > v2: Update expected strings so test passes
+> > ---
+> >   tests/acceptance/boot_linux_console.py | 26 ++++++++++++++++++++++++++
+> >   1 file changed, 26 insertions(+)
+> >
+> > diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/boot_linux_console.py
+> > index 2f46a08fdc10..4f1df69bc75c 100644
+> > --- a/tests/acceptance/boot_linux_console.py
+> > +++ b/tests/acceptance/boot_linux_console.py
+> > @@ -1094,6 +1094,32 @@ def do_test_arm_aspeed(self, image):
+> >           # self.wait_for_console_pattern("login:")
+> >           self.vm.shutdown()
+> >
+> > +    def test_arm_ast2600_debian(self):
+> > +        """
+> > +        :avocado: tags=arch:arm
+> > +        :avocado: tags=machine:tacoma-bmc
+> > +        """
+> > +        deb_url = ('http://snapshot.debian.org/archive/debian/'
+> > +                   '20210302T203551Z/'
+> > +                   'pool/main/l/linux/'
+> > +                   'linux-image-5.10.0-3-armmp_5.10.13-1_armhf.deb')
+> > +        deb_hash = 'db40d32fe39255d05482bea48d72467b67d6225bb2a2a4d6f618cb8976f1e09e'
+> > +        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash,
+> > +                                    algorithm='sha256')
+> > +        kernel_path = self.extract_from_deb(deb_path, '/boot/vmlinuz-5.10.0-3-armmp')
+> > +        dtb_path = self.extract_from_deb(deb_path,
+> > +                '/usr/lib/linux-image-5.10.0-3-armmp/aspeed-bmc-opp-tacoma.dtb')
+> > +
+> > +        self.vm.set_console()
+> > +        self.vm.add_args('-kernel', kernel_path,
+> > +                         '-dtb', dtb_path,
+> > +                         '-net', 'nic')
+> > +        self.vm.launch()
+> > +        self.wait_for_console_pattern("Booting Linux on physical CPU 0xf00")
+> > +        self.wait_for_console_pattern("SMP: Total of 2 processors activated")
+>
+> Above check isn't reliable. Here the VM started with smp 1, therefore
+> the test failed as:
 
-However, the dirty bmap of all ramblocks are fully set when setup
-ram saving, so it's not matter whether the device is in _SAVING
-state when start vfio dirty tracking.
+We should reliably pass that check once this fix has been merged:
 
-Moreover, this logic causes some problems [1]. The object of dirty
-tracking is guest memory, but the object of @vfio_save_handler is
-device state, which produces unnecessary coupling and conflicts:
+ https://lore.kernel.org/qemu-devel/20210303010505.635621-1-joel@jms.id.au/T/
 
-1. Coupling: Their saving granule is different (perVM vs perDevice).
-   vfio will enable dirty_page_tracking for each devices, actually
-   once is enough.
+Having that line included is helpful, as it tests the smp boot stub
+functionality in our emulated machine.
 
-2. Conflicts: The ram_save_setup() traverses all memory_listeners
-   to execute their log_start() and log_sync() hooks to get the
-   first round dirty bitmap, which is used by the bulk stage of
-   ram saving. However, as vfio dirty tracking is not yet started,
-   it can't get dirty bitmap from vfio. Then we give up the chance
-   to handle vfio dirty page at bulk stage.
+>
+> FAIL: Failure message found in console: Kernel panic - not syncing
+>
+> > +        self.wait_for_console_pattern("No filesystem could mount root")
+> > +        self.vm.shutdown()
+>
+> You don't need to shutdown the VM as the test's tearDown() does that for
+> you.
 
-Move the switch of vfio dirty_page_tracking into vfio_memory_listener
-can solve above problems. Besides, Do not require devices in SAVING
-state for vfio_sync_dirty_bitmap().
+Thanks, I'll send a v2 with those removed.
 
-[1] https://www.spinics.net/lists/kvm/msg229967.html
 
-Reported-by: Zenghui Yu <yuzenghui@huawei.com>
-Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
-Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
----
-
-changelog:
-
-v2:
- - use log_global_(start|stop) to switch vfio dirty tracking. (Paolo)
- - add the initial design idea.
-
----
- hw/vfio/common.c    | 49 ++++++++++++++++++++++++++++++++++++---------
- hw/vfio/migration.c | 35 --------------------------------
- 2 files changed, 40 insertions(+), 44 deletions(-)
-
-diff --git a/hw/vfio/common.c b/hw/vfio/common.c
-index 6ff1daa763..a27aa9dda8 100644
---- a/hw/vfio/common.c
-+++ b/hw/vfio/common.c
-@@ -311,7 +311,7 @@ bool vfio_mig_active(void)
-     return true;
- }
- 
--static bool vfio_devices_all_saving(VFIOContainer *container)
-+static bool vfio_devices_all_dirty_tracking(VFIOContainer *container)
- {
-     VFIOGroup *group;
-     VFIODevice *vbasedev;
-@@ -329,13 +329,8 @@ static bool vfio_devices_all_saving(VFIOContainer *container)
-                 return false;
-             }
- 
--            if (migration->device_state & VFIO_DEVICE_STATE_SAVING) {
--                if ((vbasedev->pre_copy_dirty_page_tracking == ON_OFF_AUTO_OFF)
--                    && (migration->device_state & VFIO_DEVICE_STATE_RUNNING)) {
--                        return false;
--                }
--                continue;
--            } else {
-+            if ((vbasedev->pre_copy_dirty_page_tracking == ON_OFF_AUTO_OFF)
-+                && (migration->device_state & VFIO_DEVICE_STATE_RUNNING)) {
-                 return false;
-             }
-         }
-@@ -987,6 +982,40 @@ static void vfio_listener_region_del(MemoryListener *listener,
-     }
- }
- 
-+static void vfio_set_dirty_page_tracking(VFIOContainer *container, bool start)
-+{
-+    int ret;
-+    struct vfio_iommu_type1_dirty_bitmap dirty = {
-+        .argsz = sizeof(dirty),
-+    };
-+
-+    if (start) {
-+        dirty.flags = VFIO_IOMMU_DIRTY_PAGES_FLAG_START;
-+    } else {
-+        dirty.flags = VFIO_IOMMU_DIRTY_PAGES_FLAG_STOP;
-+    }
-+
-+    ret = ioctl(container->fd, VFIO_IOMMU_DIRTY_PAGES, &dirty);
-+    if (ret) {
-+        error_report("Failed to set dirty tracking flag 0x%x errno: %d",
-+                     dirty.flags, errno);
-+    }
-+}
-+
-+static void vfio_listener_log_global_start(MemoryListener *listener)
-+{
-+    VFIOContainer *container = container_of(listener, VFIOContainer, listener);
-+
-+    vfio_set_dirty_page_tracking(container, true);
-+}
-+
-+static void vfio_listener_log_global_stop(MemoryListener *listener)
-+{
-+    VFIOContainer *container = container_of(listener, VFIOContainer, listener);
-+
-+    vfio_set_dirty_page_tracking(container, false);
-+}
-+
- static int vfio_get_dirty_bitmap(VFIOContainer *container, uint64_t iova,
-                                  uint64_t size, ram_addr_t ram_addr)
- {
-@@ -1128,7 +1157,7 @@ static void vfio_listerner_log_sync(MemoryListener *listener,
-         return;
-     }
- 
--    if (vfio_devices_all_saving(container)) {
-+    if (vfio_devices_all_dirty_tracking(container)) {
-         vfio_sync_dirty_bitmap(container, section);
-     }
- }
-@@ -1136,6 +1165,8 @@ static void vfio_listerner_log_sync(MemoryListener *listener,
- static const MemoryListener vfio_memory_listener = {
-     .region_add = vfio_listener_region_add,
-     .region_del = vfio_listener_region_del,
-+    .log_global_start = vfio_listener_log_global_start,
-+    .log_global_stop = vfio_listener_log_global_stop,
-     .log_sync = vfio_listerner_log_sync,
- };
- 
-diff --git a/hw/vfio/migration.c b/hw/vfio/migration.c
-index 00daa50ed8..c0f646823a 100644
---- a/hw/vfio/migration.c
-+++ b/hw/vfio/migration.c
-@@ -395,40 +395,10 @@ static int vfio_load_device_config_state(QEMUFile *f, void *opaque)
-     return qemu_file_get_error(f);
- }
- 
--static int vfio_set_dirty_page_tracking(VFIODevice *vbasedev, bool start)
--{
--    int ret;
--    VFIOMigration *migration = vbasedev->migration;
--    VFIOContainer *container = vbasedev->group->container;
--    struct vfio_iommu_type1_dirty_bitmap dirty = {
--        .argsz = sizeof(dirty),
--    };
--
--    if (start) {
--        if (migration->device_state & VFIO_DEVICE_STATE_SAVING) {
--            dirty.flags = VFIO_IOMMU_DIRTY_PAGES_FLAG_START;
--        } else {
--            return -EINVAL;
--        }
--    } else {
--            dirty.flags = VFIO_IOMMU_DIRTY_PAGES_FLAG_STOP;
--    }
--
--    ret = ioctl(container->fd, VFIO_IOMMU_DIRTY_PAGES, &dirty);
--    if (ret) {
--        error_report("Failed to set dirty tracking flag 0x%x errno: %d",
--                     dirty.flags, errno);
--        return -errno;
--    }
--    return ret;
--}
--
- static void vfio_migration_cleanup(VFIODevice *vbasedev)
- {
-     VFIOMigration *migration = vbasedev->migration;
- 
--    vfio_set_dirty_page_tracking(vbasedev, false);
--
-     if (migration->region.mmaps) {
-         vfio_region_unmap(&migration->region);
-     }
-@@ -469,11 +439,6 @@ static int vfio_save_setup(QEMUFile *f, void *opaque)
-         return ret;
-     }
- 
--    ret = vfio_set_dirty_page_tracking(vbasedev, true);
--    if (ret) {
--        return ret;
--    }
--
-     qemu_put_be64(f, VFIO_MIG_FLAG_END_OF_STATE);
- 
-     ret = qemu_file_get_error(f);
--- 
-2.19.1
-
+>
+> Thanks!
+>
+> - Wainer
+>
+> > +
+> >       def test_m68k_mcf5208evb(self):
+> >           """
+> >           :avocado: tags=arch:m68k
+>

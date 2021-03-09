@@ -1,269 +1,266 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2954882lfg;
-        Tue, 9 Mar 2021 08:20:53 -0800 (PST)
-X-Received: by 2002:aca:6289:: with SMTP id w131mr3402656oib.69.1615306853080;
-        Tue, 09 Mar 2021 08:20:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1615306853; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2954919lfg;
+        Tue, 9 Mar 2021 08:20:55 -0800 (PST)
+X-Received: by 2002:aca:b90b:: with SMTP id j11mr3513121oif.118.1615306855172;
+        Tue, 09 Mar 2021 08:20:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1615306855; cv=none;
         d=google.com; s=arc-20160816;
-        b=EyJr8yCM34XSnC+SQKjynsmFvCZC086rOtlvPY8Hk/vhvUxLHWQylL7u2k2t7WFm1W
-         1Z265g7bKoifI3VJ4n8x46NWSlrnwkS61+uUw+iaRNO2pzKnLnRAadCBEcT/3oqNI5lO
-         D5UXqOlcFd0aD58Qw7hEY5CFSnrEqXvEE2M2+U5DFS2z6Z3XjQupfvWCQVRcp5MnGnG+
-         H5r5dMgisneL9Gs3xS42fjKaqxo8DSgQSPiEc4Z3fNPBA7qxFxrc1SFq7mbT2qxhs1MB
-         Ca46ecJHaIhdRfn6EmdAnnlHz96NFJZP7r7Ylev8Z0MqONXXisNtEXRg0SoXG1oek89u
-         oL9g==
+        b=wPinZZl+p0moeEbOWLOr4EELKQ5zxROKHeO07ptfCCO39Ol4aaz7rt6URTheUIqr/R
+         RW/2jUM6HSDTyt9IxOJKKDrVnUfAaEp1+6MVar1qgm8vIHYiAXA8r/WlVlA/YJDT1sft
+         oMB0eEdFBBFikm9eSfyu4T/sAqhPywNytFHlcfYNPo0f16LsauaWWMo0KWYvrIYS99tK
+         myzrZm12vcKDGAZKuUm5HLmPNGtgePOOsf+CJO/nCuMDRM70JByfwcjv+X7+p2mvjLtP
+         sk+shPUGCHRNatPka4YZ7yFl5avkg8yjsaW/I5D2vY+p/4NFZei8XILeAbY4zyx+lGOh
+         RXtA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=+s4Ex6WJ2oxr+RR4s+3+c7rbv+0uvqpEzs763JIOfME=;
-        b=iMqHu4TKwnsA+0VfiwCjQWs4mpSK3YjwZKm4suovRH8b1VdAvAoBME5c0Nit9O1xj+
-         siijubbAGRjKJMu7HRhlG4cGf9IVlwub/fSJOhhRShgBoH7DjNha+QGIo8IXAYdL0HSo
-         nRsXEdKN5k4l3G9ZhdRj7OEN3bTLQZWB6oEVj5hdNBMbuoUpnovnI8fHjWdh+H5lwlb6
-         H8GwvG5Meb7FQkfkk6Uo9/Z6sVJjQ/4sgBIpFOSZpmZ3Tk8dOzEvCafwQl4VuBXDo5DI
-         FR9XF61v9n1LImp30zIojnjLlIK4UZqR1xt8o3ZW+Da2XLB7xgF9YH3XmuOT8x0604Os
-         FpVg==
+        bh=ALuD3u4vRQ1W3ilZFnOTMRI40+P7noMwmrau2Rl0oOs=;
+        b=sHADQ/TzAt/rdwIxwHmcnezoxU1ig+rQLulLf/gxAPXmOVUQmXhRTFRMDfUH41LHLK
+         cGGAwJxVjmgmJWVAAcaHpNSf+lg5DPIuhYy4BYKNkK8SDvjj89ofnXzoD8jzG+asE/10
+         kqXLRfouBTvoQuYyQT8GpQ4Wt900UawBP06pLUJ4390Jsx20zi5JG+yrAKYc6QSmeZ2x
+         x0yzXdV8Xjz+YgZXVIqIEKMxCsDwTJq4rJu5p4Ivqco+7UrrXpTJwMnEe62WHiEReqSY
+         1yzbKUo8MWzkbwQsuQZVh4IojuhBcdEqo4MMOkhwjunvYz6o8NXQ0kdP0CiUpRUFsEDq
+         mUwQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=y4Y7ubhR;
+       dkim=pass header.i=@linaro.org header.s=google header.b=VA+lmLkL;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id e17sor3304998otf.4.2021.03.09.08.20.52
+        by mx.google.com with SMTPS id s1sor4131816ois.123.2021.03.09.08.20.54
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 09 Mar 2021 08:20:53 -0800 (PST)
+        Tue, 09 Mar 2021 08:20:55 -0800 (PST)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=y4Y7ubhR;
+       dkim=pass header.i=@linaro.org header.s=google header.b=VA+lmLkL;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=+s4Ex6WJ2oxr+RR4s+3+c7rbv+0uvqpEzs763JIOfME=;
-        b=y4Y7ubhRzzGM1uGSydXZo2o0+lJ90YagFX3foXSRID0URQ0J74P8ndPTmRtiILXyhu
-         oGQUUFULMICx8mmPle8AOg8u5XXY8kux2Ba+5jiToj3FKSD2SO68TqTwT1jFhLNRTAta
-         7CbXdMFN5GmHMJVCOr7JqMS5nN61sa25BttreG7d1EjnA3rHa9FMPuakAcq7tnNce44t
-         Lp1g26I+z0KyOJB+jIXTwXiJsmRspOp2hTYgwlgAlR8J8fOQDYiHPDR5EDjQUhk66BpP
-         Kaq1ybRY36zTwookMlKr7UEti333D+c9maEuFmC9z2X+HgQqIPhuFuveoP2BOr2nj/OY
-         ee0A==
+        bh=ALuD3u4vRQ1W3ilZFnOTMRI40+P7noMwmrau2Rl0oOs=;
+        b=VA+lmLkLyJ7OOnHoHD0nTuRs+/4t6k53adCvz0cl5yr9GwOqyjhIlNptMmMU6E+Eqp
+         cEgdabQ221LwL9oGZZcMaX1Rt7Vu4MrRotqDCRv7//oJUCs217c2IEWe+wLkT+fAifoy
+         dgR8vPkuLsPAgwpdYfUIwPTuEtY9iHkVeKbObn/64wjuEkVZVWVkPXz3DDMe+jmHQiBC
+         b21K21S87FLCdagT7hqAG050j/D98oYJ7q8GMas3YrKa6cjO+96b3dWS+WPw5FWwir2I
+         ed2IimXcsl6aK7w3n72snfOBGGwykg2OopgdSIibdv2bow1KQ4HMNqaryN3/v93voLgz
+         3rZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=+s4Ex6WJ2oxr+RR4s+3+c7rbv+0uvqpEzs763JIOfME=;
-        b=tF56S+NlXmsqS+v+kkigwcx7aaBuUE67yiBT+7vXfA2HzvR0jGNOYTmy4AxQPoKUPT
-         gAW2NvDh+nfidpDllseL+TCM9TgcpXw+K40fPDWXH+epgMXc51HKnOAxY2R05Y5ZIch0
-         ScGD7TKRAJozmQqyAbl9UCD+BrybU056KWUpnpGdn3/Cp8L6RvtA98nzkjb+2nSYU2FF
-         X8TfifwYZ5VH5Pei/9UMt5yZ3jDFyuGVOeulk2agDznOudFsodBN+PLtswz/1igevSQo
-         Eotr5m3hf6EJ24LBj/IvdwghGuQQf9SXgvdcXTKk0kC+nMUAt9pxIF9z1ZUFN4R7hxtZ
-         sqag==
-X-Gm-Message-State: AOAM5335+Czz7gQYehnjt/XfRhVMZoVzGW0VmV/kfLB5iEe/dzv3W2k2
-	aYoy49hbguCbV/Z21+ahNcXjbLR7MPAQ/DiybgU=
-X-Google-Smtp-Source: ABdhPJx//UKWHYwfdSYC04Xn9/AU0oqB2gP31vr/Nb4CaYH4WvRNbAm+NH2iWdzfGWg0AYNO4fE3cA==
-X-Received: by 2002:a05:6830:558:: with SMTP id l24mr24494637otb.209.1615306852671;
-        Tue, 09 Mar 2021 08:20:52 -0800 (PST)
+        bh=ALuD3u4vRQ1W3ilZFnOTMRI40+P7noMwmrau2Rl0oOs=;
+        b=edO8sv+7wwomyjUMYTyjeey/MvLfvaYrIopB+xqN0AA3BTUdEFO3ogiOBwWbylT6Qo
+         Ng0BCqC199gRYrhjd4Ab1DvfOCI7KSHVToIhfrjr8ouLONrSWo+hLOit0ovEc8YIe1v5
+         zdt6HUwR5vndnEnaH2Nu6AU5AHXVjq3VgG1fQCidawPh9v3M4+WYAKpqMt2qJstHBbnb
+         wqSGIu4ounn4b5RwRz/ub+18l2aSxibG2EA3mvcfM5yMXETGusR+KiLfX4iE/Z+mjgvv
+         OtZ1ODE/ayh4+QP44AiSaicPJVGEu4DhJeEm7+WUMF3mBf+Y4nxv/PDOoyMv+Z1aLTqz
+         DBqw==
+X-Gm-Message-State: AOAM533Z0LgcwhKR8dGZ8t7ILTUn+kgm3fccExJ8SyMmuN1jqxmJmyDf
+	xQdR5DXa9z3KLhVi4SjcPpG1O+3f
+X-Google-Smtp-Source: ABdhPJzB2eNliMpD8PDhfiuf6cxrWjsDRuyVuIb40uaJPjUPfji7WTGS5/Xy+UTfmrrPN2+Kp1IIIA==
+X-Received: by 2002:a54:4494:: with SMTP id v20mr3492740oiv.147.1615306854731;
+        Tue, 09 Mar 2021 08:20:54 -0800 (PST)
 Return-Path: <richard.henderson@linaro.org>
 Received: from localhost.localdomain (fixed-187-189-51-144.totalplay.net. [187.189.51.144])
-        by smtp.gmail.com with ESMTPSA id v23sm2516474ots.63.2021.03.09.08.20.51
+        by smtp.gmail.com with ESMTPSA id v23sm2516474ots.63.2021.03.09.08.20.53
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 09 Mar 2021 08:20:52 -0800 (PST)
+        Tue, 09 Mar 2021 08:20:54 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org,
 	qemu-arm@nongnu.org,
 	alex.bennee@linaro.org
-Subject: [PATCH v4 08/78] target/arm: Implement SVE2 integer pairwise arithmetic
-Date: Tue,  9 Mar 2021 08:19:31 -0800
-Message-Id: <20210309162041.23124-9-richard.henderson@linaro.org>
+Subject: [PATCH v4 10/78] target/arm: Implement SVE2 integer add/subtract long
+Date: Tue,  9 Mar 2021 08:19:33 -0800
+Message-Id: <20210309162041.23124-11-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210309162041.23124-1-richard.henderson@linaro.org>
 References: <20210309162041.23124-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: 4HkYwWEu8wRH
+X-TUID: z2nnS01G4uf6
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
-v2: Load all inputs before writing any output (laurent desnogues)
+v2: Fix select offsets (laurent desnogues).
 ---
- target/arm/helper-sve.h    | 45 ++++++++++++++++++++++
- target/arm/sve.decode      |  8 ++++
- target/arm/sve_helper.c    | 76 ++++++++++++++++++++++++++++++++++++++
- target/arm/translate-sve.c |  6 +++
- 4 files changed, 135 insertions(+)
+ target/arm/helper-sve.h    | 24 ++++++++++++++++++++
+ target/arm/sve.decode      | 19 ++++++++++++++++
+ target/arm/sve_helper.c    | 43 +++++++++++++++++++++++++++++++++++
+ target/arm/translate-sve.c | 46 ++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 132 insertions(+)
 
 diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
-index 5fdc0d223a..09bc067dd4 100644
+index 37461c9927..a81297b387 100644
 --- a/target/arm/helper-sve.h
 +++ b/target/arm/helper-sve.h
-@@ -326,6 +326,51 @@ DEF_HELPER_FLAGS_5(sve_sel_zpzz_s, TCG_CALL_NO_RWG,
- DEF_HELPER_FLAGS_5(sve_sel_zpzz_d, TCG_CALL_NO_RWG,
-                    void, ptr, ptr, ptr, ptr, i32)
+@@ -1367,6 +1367,30 @@ DEF_HELPER_FLAGS_5(sve_ftmad_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_5(sve_ftmad_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_5(sve_ftmad_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
  
-+DEF_HELPER_FLAGS_5(sve2_addp_zpzz_b, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(sve2_addp_zpzz_h, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(sve2_addp_zpzz_s, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(sve2_addp_zpzz_d, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_saddl_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_saddl_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_saddl_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
 +
-+DEF_HELPER_FLAGS_5(sve2_smaxp_zpzz_b, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(sve2_smaxp_zpzz_h, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(sve2_smaxp_zpzz_s, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(sve2_smaxp_zpzz_d, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_ssubl_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_ssubl_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_ssubl_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
 +
-+DEF_HELPER_FLAGS_5(sve2_umaxp_zpzz_b, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(sve2_umaxp_zpzz_h, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(sve2_umaxp_zpzz_s, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(sve2_umaxp_zpzz_d, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_sabdl_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_sabdl_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_sabdl_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
 +
-+DEF_HELPER_FLAGS_5(sve2_sminp_zpzz_b, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(sve2_sminp_zpzz_h, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(sve2_sminp_zpzz_s, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(sve2_sminp_zpzz_d, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_uaddl_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_uaddl_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_uaddl_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
 +
-+DEF_HELPER_FLAGS_5(sve2_uminp_zpzz_b, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(sve2_uminp_zpzz_h, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(sve2_uminp_zpzz_s, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(sve2_uminp_zpzz_d, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_usubl_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_usubl_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_usubl_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
 +
- DEF_HELPER_FLAGS_5(sve_asr_zpzw_b, TCG_CALL_NO_RWG,
-                    void, ptr, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_5(sve_asr_zpzw_h, TCG_CALL_NO_RWG,
++DEF_HELPER_FLAGS_4(sve2_uabdl_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_uabdl_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_uabdl_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++
+ DEF_HELPER_FLAGS_4(sve_ld1bb_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
+ DEF_HELPER_FLAGS_4(sve_ld2bb_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
+ DEF_HELPER_FLAGS_4(sve_ld3bb_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
 diff --git a/target/arm/sve.decode b/target/arm/sve.decode
-index 58c3f7ede4..61a3321325 100644
+index cd4f73265f..fbfd57b23a 100644
 --- a/target/arm/sve.decode
 +++ b/target/arm/sve.decode
-@@ -1140,3 +1140,11 @@ SRHADD          01000100 .. 010 100 100 ... ..... .....  @rdn_pg_rm
- URHADD          01000100 .. 010 101 100 ... ..... .....  @rdn_pg_rm
- SHSUB           01000100 .. 010 110 100 ... ..... .....  @rdm_pg_rn # SHSUBR
- UHSUB           01000100 .. 010 111 100 ... ..... .....  @rdm_pg_rn # UHSUBR
+@@ -1159,3 +1159,22 @@ SUQADD          01000100 .. 011 100 100 ... ..... .....  @rdn_pg_rm
+ USQADD          01000100 .. 011 101 100 ... ..... .....  @rdn_pg_rm
+ SQSUB_zpzz      01000100 .. 011 110 100 ... ..... .....  @rdm_pg_rn # SQSUBR
+ UQSUB_zpzz      01000100 .. 011 111 100 ... ..... .....  @rdm_pg_rn # UQSUBR
 +
-+### SVE2 integer pairwise arithmetic
++#### SVE2 Widening Integer Arithmetic
 +
-+ADDP            01000100 .. 010 001 101 ... ..... .....  @rdn_pg_rm
-+SMAXP           01000100 .. 010 100 101 ... ..... .....  @rdn_pg_rm
-+UMAXP           01000100 .. 010 101 101 ... ..... .....  @rdn_pg_rm
-+SMINP           01000100 .. 010 110 101 ... ..... .....  @rdn_pg_rm
-+UMINP           01000100 .. 010 111 101 ... ..... .....  @rdn_pg_rm
++## SVE2 integer add/subtract long
++
++SADDLB          01000101 .. 0 ..... 00 0000 ..... .....  @rd_rn_rm
++SADDLT          01000101 .. 0 ..... 00 0001 ..... .....  @rd_rn_rm
++UADDLB          01000101 .. 0 ..... 00 0010 ..... .....  @rd_rn_rm
++UADDLT          01000101 .. 0 ..... 00 0011 ..... .....  @rd_rn_rm
++
++SSUBLB          01000101 .. 0 ..... 00 0100 ..... .....  @rd_rn_rm
++SSUBLT          01000101 .. 0 ..... 00 0101 ..... .....  @rd_rn_rm
++USUBLB          01000101 .. 0 ..... 00 0110 ..... .....  @rd_rn_rm
++USUBLT          01000101 .. 0 ..... 00 0111 ..... .....  @rd_rn_rm
++
++SABDLB          01000101 .. 0 ..... 00 1100 ..... .....  @rd_rn_rm
++SABDLT          01000101 .. 0 ..... 00 1101 ..... .....  @rd_rn_rm
++UABDLB          01000101 .. 0 ..... 00 1110 ..... .....  @rd_rn_rm
++UABDLT          01000101 .. 0 ..... 00 1111 ..... .....  @rd_rn_rm
 diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
-index a7a934f3a4..19ae7722f0 100644
+index 009d49e81d..8f22e025e6 100644
 --- a/target/arm/sve_helper.c
 +++ b/target/arm/sve_helper.c
-@@ -681,6 +681,82 @@ DO_ZPZZ_D(sve2_uhsub_zpzz_d, uint64_t, DO_HSUB_D)
- #undef DO_ZPZZ
- #undef DO_ZPZZ_D
+@@ -1113,6 +1113,49 @@ DO_ZZW(sve_lsl_zzw_s, uint32_t, uint64_t, H1_4, DO_LSL)
+ #undef DO_ZPZ
+ #undef DO_ZPZ_D
  
 +/*
-+ * Three operand expander, operating on element pairs.
-+ * If the slot I is even, the elements from from VN {I, I+1}.
-+ * If the slot I is odd, the elements from from VM {I-1, I}.
-+ * Load all of the input elements in each pair before overwriting output.
++ * Three-operand expander, unpredicated, in which the two inputs are
++ * selected from the top or bottom half of the wide column.
 + */
-+#define DO_ZPZZ_PAIR(NAME, TYPE, H, OP) \
-+void HELPER(NAME)(void *vd, void *vn, void *vm, void *vg, uint32_t desc) \
-+{                                                               \
-+    intptr_t i, opr_sz = simd_oprsz(desc);                      \
-+    for (i = 0; i < opr_sz; ) {                                 \
-+        uint16_t pg = *(uint16_t *)(vg + H1_2(i >> 3));         \
-+        do {                                                    \
-+            TYPE n0 = *(TYPE *)(vn + H(i));                     \
-+            TYPE m0 = *(TYPE *)(vm + H(i));                     \
-+            TYPE n1 = *(TYPE *)(vn + H(i + sizeof(TYPE)));      \
-+            TYPE m1 = *(TYPE *)(vm + H(i + sizeof(TYPE)));      \
-+            if (pg & 1) {                                       \
-+                *(TYPE *)(vd + H(i)) = OP(n0, n1);              \
-+            }                                                   \
-+            i += sizeof(TYPE), pg >>= sizeof(TYPE);             \
-+            if (pg & 1) {                                       \
-+                *(TYPE *)(vd + H(i)) = OP(m0, m1);              \
-+            }                                                   \
-+            i += sizeof(TYPE), pg >>= sizeof(TYPE);             \
-+        } while (i & 15);                                       \
-+    }                                                           \
++#define DO_ZZZ_TB(NAME, TYPEW, TYPEN, HW, HN, OP) \
++void HELPER(NAME)(void *vd, void *vn, void *vm, uint32_t desc)          \
++{                                                                       \
++    intptr_t i, opr_sz = simd_oprsz(desc);                              \
++    int sel1 = extract32(desc, SIMD_DATA_SHIFT, 1) * sizeof(TYPEN);     \
++    int sel2 = extract32(desc, SIMD_DATA_SHIFT + 1, 1) * sizeof(TYPEN); \
++    for (i = 0; i < opr_sz; i += sizeof(TYPEW)) {                       \
++        TYPEW nn = *(TYPEN *)(vn + HN(i + sel1));                       \
++        TYPEW mm = *(TYPEN *)(vm + HN(i + sel2));                       \
++        *(TYPEW *)(vd + HW(i)) = OP(nn, mm);                            \
++    }                                                                   \
 +}
 +
-+/* Similarly, specialized for 64-bit operands.  */
-+#define DO_ZPZZ_PAIR_D(NAME, TYPE, OP) \
-+void HELPER(NAME)(void *vd, void *vn, void *vm, void *vg, uint32_t desc) \
-+{                                                               \
-+    intptr_t i, opr_sz = simd_oprsz(desc) / 8;                  \
-+    TYPE *d = vd, *n = vn, *m = vm;                             \
-+    uint8_t *pg = vg;                                           \
-+    for (i = 0; i < opr_sz; i += 2) {                           \
-+        TYPE n0 = n[i], n1 = n[i + 1];                          \
-+        TYPE m0 = m[i], m1 = m[i + 1];                          \
-+        if (pg[H1(i)] & 1) {                                    \
-+            d[i] = OP(n0, n1);                                  \
-+        }                                                       \
-+        if (pg[H1(i + 1)] & 1) {                                \
-+            d[i + 1] = OP(m0, m1);                              \
-+        }                                                       \
-+    }                                                           \
-+}
++DO_ZZZ_TB(sve2_saddl_h, int16_t, int8_t, H1_2, H1, DO_ADD)
++DO_ZZZ_TB(sve2_saddl_s, int32_t, int16_t, H1_4, H1_2, DO_ADD)
++DO_ZZZ_TB(sve2_saddl_d, int64_t, int32_t,     , H1_4, DO_ADD)
 +
-+DO_ZPZZ_PAIR(sve2_addp_zpzz_b, uint8_t, H1_2, DO_ADD)
-+DO_ZPZZ_PAIR(sve2_addp_zpzz_h, uint16_t, H1_2, DO_ADD)
-+DO_ZPZZ_PAIR(sve2_addp_zpzz_s, uint32_t, H1_4, DO_ADD)
-+DO_ZPZZ_PAIR_D(sve2_addp_zpzz_d, uint64_t, DO_ADD)
++DO_ZZZ_TB(sve2_ssubl_h, int16_t, int8_t, H1_2, H1, DO_SUB)
++DO_ZZZ_TB(sve2_ssubl_s, int32_t, int16_t, H1_4, H1_2, DO_SUB)
++DO_ZZZ_TB(sve2_ssubl_d, int64_t, int32_t,     , H1_4, DO_SUB)
 +
-+DO_ZPZZ_PAIR(sve2_umaxp_zpzz_b, uint8_t, H1_2, DO_MAX)
-+DO_ZPZZ_PAIR(sve2_umaxp_zpzz_h, uint16_t, H1_2, DO_MAX)
-+DO_ZPZZ_PAIR(sve2_umaxp_zpzz_s, uint32_t, H1_4, DO_MAX)
-+DO_ZPZZ_PAIR_D(sve2_umaxp_zpzz_d, uint64_t, DO_MAX)
++DO_ZZZ_TB(sve2_sabdl_h, int16_t, int8_t, H1_2, H1, DO_ABD)
++DO_ZZZ_TB(sve2_sabdl_s, int32_t, int16_t, H1_4, H1_2, DO_ABD)
++DO_ZZZ_TB(sve2_sabdl_d, int64_t, int32_t,     , H1_4, DO_ABD)
 +
-+DO_ZPZZ_PAIR(sve2_uminp_zpzz_b, uint8_t, H1_2, DO_MIN)
-+DO_ZPZZ_PAIR(sve2_uminp_zpzz_h, uint16_t, H1_2, DO_MIN)
-+DO_ZPZZ_PAIR(sve2_uminp_zpzz_s, uint32_t, H1_4, DO_MIN)
-+DO_ZPZZ_PAIR_D(sve2_uminp_zpzz_d, uint64_t, DO_MIN)
++DO_ZZZ_TB(sve2_uaddl_h, uint16_t, uint8_t, H1_2, H1, DO_ADD)
++DO_ZZZ_TB(sve2_uaddl_s, uint32_t, uint16_t, H1_4, H1_2, DO_ADD)
++DO_ZZZ_TB(sve2_uaddl_d, uint64_t, uint32_t,     , H1_4, DO_ADD)
 +
-+DO_ZPZZ_PAIR(sve2_smaxp_zpzz_b, int8_t, H1_2, DO_MAX)
-+DO_ZPZZ_PAIR(sve2_smaxp_zpzz_h, int16_t, H1_2, DO_MAX)
-+DO_ZPZZ_PAIR(sve2_smaxp_zpzz_s, int32_t, H1_4, DO_MAX)
-+DO_ZPZZ_PAIR_D(sve2_smaxp_zpzz_d, int64_t, DO_MAX)
++DO_ZZZ_TB(sve2_usubl_h, uint16_t, uint8_t, H1_2, H1, DO_SUB)
++DO_ZZZ_TB(sve2_usubl_s, uint32_t, uint16_t, H1_4, H1_2, DO_SUB)
++DO_ZZZ_TB(sve2_usubl_d, uint64_t, uint32_t,     , H1_4, DO_SUB)
 +
-+DO_ZPZZ_PAIR(sve2_sminp_zpzz_b, int8_t, H1_2, DO_MIN)
-+DO_ZPZZ_PAIR(sve2_sminp_zpzz_h, int16_t, H1_2, DO_MIN)
-+DO_ZPZZ_PAIR(sve2_sminp_zpzz_s, int32_t, H1_4, DO_MIN)
-+DO_ZPZZ_PAIR_D(sve2_sminp_zpzz_d, int64_t, DO_MIN)
++DO_ZZZ_TB(sve2_uabdl_h, uint16_t, uint8_t, H1_2, H1, DO_ABD)
++DO_ZZZ_TB(sve2_uabdl_s, uint32_t, uint16_t, H1_4, H1_2, DO_ABD)
++DO_ZZZ_TB(sve2_uabdl_d, uint64_t, uint32_t,     , H1_4, DO_ABD)
 +
-+#undef DO_ZPZZ_PAIR
-+#undef DO_ZPZZ_PAIR_D
++#undef DO_ZZZ_TB
 +
- /* Three-operand expander, controlled by a predicate, in which the
-  * third operand is "wide".  That is, for D = N op M, the same 64-bit
-  * value of M is used with all of the narrower values of N.
+ /* Two-operand reduction expander, controlled by a predicate.
+  * The difference between TYPERED and TYPERET has to do with
+  * sign-extension.  E.g. for SMAX, TYPERED must be signed,
 diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-index 07e1315cca..0675abf1d8 100644
+index fc8e2a84f2..b94561b92b 100644
 --- a/target/arm/translate-sve.c
 +++ b/target/arm/translate-sve.c
-@@ -5958,3 +5958,9 @@ DO_SVE2_ZPZZ(SHSUB, shsub)
- DO_SVE2_ZPZZ(UHADD, uhadd)
- DO_SVE2_ZPZZ(URHADD, urhadd)
- DO_SVE2_ZPZZ(UHSUB, uhsub)
+@@ -5971,3 +5971,49 @@ DO_SVE2_ZPZZ(SQSUB_zpzz, sqsub)
+ DO_SVE2_ZPZZ(UQSUB_zpzz, uqsub)
+ DO_SVE2_ZPZZ(SUQADD, suqadd)
+ DO_SVE2_ZPZZ(USQADD, usqadd)
 +
-+DO_SVE2_ZPZZ(ADDP, addp)
-+DO_SVE2_ZPZZ(SMAXP, smaxp)
-+DO_SVE2_ZPZZ(UMAXP, umaxp)
-+DO_SVE2_ZPZZ(SMINP, sminp)
-+DO_SVE2_ZPZZ(UMINP, uminp)
++/*
++ * SVE2 Widening Integer Arithmetic
++ */
++
++static bool do_sve2_zzw_ool(DisasContext *s, arg_rrr_esz *a,
++                            gen_helper_gvec_3 *fn, int data)
++{
++    if (fn == NULL || !dc_isar_feature(aa64_sve2, s)) {
++        return false;
++    }
++    if (sve_access_check(s)) {
++        unsigned vsz = vec_full_reg_size(s);
++        tcg_gen_gvec_3_ool(vec_full_reg_offset(s, a->rd),
++                           vec_full_reg_offset(s, a->rn),
++                           vec_full_reg_offset(s, a->rm),
++                           vsz, vsz, data, fn);
++    }
++    return true;
++}
++
++#define DO_SVE2_ZZZ_TB(NAME, name, SEL1, SEL2) \
++static bool trans_##NAME(DisasContext *s, arg_rrr_esz *a)               \
++{                                                                       \
++    static gen_helper_gvec_3 * const fns[4] = {                         \
++        NULL,                       gen_helper_sve2_##name##_h,         \
++        gen_helper_sve2_##name##_s, gen_helper_sve2_##name##_d,         \
++    };                                                                  \
++    return do_sve2_zzw_ool(s, a, fns[a->esz], (SEL2 << 1) | SEL1);      \
++}
++
++DO_SVE2_ZZZ_TB(SADDLB, saddl, false, false)
++DO_SVE2_ZZZ_TB(SSUBLB, ssubl, false, false)
++DO_SVE2_ZZZ_TB(SABDLB, sabdl, false, false)
++
++DO_SVE2_ZZZ_TB(UADDLB, uaddl, false, false)
++DO_SVE2_ZZZ_TB(USUBLB, usubl, false, false)
++DO_SVE2_ZZZ_TB(UABDLB, uabdl, false, false)
++
++DO_SVE2_ZZZ_TB(SADDLT, saddl, true, true)
++DO_SVE2_ZZZ_TB(SSUBLT, ssubl, true, true)
++DO_SVE2_ZZZ_TB(SABDLT, sabdl, true, true)
++
++DO_SVE2_ZZZ_TB(UADDLT, uaddl, true, true)
++DO_SVE2_ZZZ_TB(USUBLT, usubl, true, true)
++DO_SVE2_ZZZ_TB(UABDLT, uabdl, true, true)
 -- 
 2.25.1

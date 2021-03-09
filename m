@@ -1,148 +1,157 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2620124lfg;
-        Tue, 9 Mar 2021 01:43:36 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzdNvrOHsgtCPm9bNgUGCP8OfV/p+MmVY4QzJNQFiQWJmhF1TLey3q+HjT2onGtQG89vFOy
-X-Received: by 2002:a05:6e02:1a42:: with SMTP id u2mr23387389ilv.175.1615283016282;
-        Tue, 09 Mar 2021 01:43:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1615283016; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2620366lfg;
+        Tue, 9 Mar 2021 01:43:52 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyPOja8zNJcH/ZR0fS0jyk1aICANPC6dGpWG4QsUHhTlhyDZXFgB714o5kQZRSdwTA658Ux
+X-Received: by 2002:a17:906:f0d0:: with SMTP id dk16mr19520703ejb.48.1615283031855;
+        Tue, 09 Mar 2021 01:43:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1615283031; cv=none;
         d=google.com; s=arc-20160816;
-        b=o9zuZ7bTItAlmxkGoQz2Jw2jLpk8HYwHqROqQ6MAjyu/C90KxprUgLkWWPYEUyYWS2
-         k0mika60KVQz/zK/u9CL47HEj7LQpcl+QOMN2g9ng++f93aNY/+t0W6Nl7zQGn39Fifv
-         9+J2iuKRkwJ3yAGD0v8UyuapEHte+xGoYYcOVrU2gYgTELykrFMmQno11DexCeP1XAtz
-         xrRHL9Gu8/PZ0uVRB2LJcsbYoYCcyb8BHIRhE+NClQYqYnycLbDAnAiL/HzEAG4SFmMV
-         Hx+Uj0cz92l28H+QH2KavBnYS/DjyXg3XzbQ7x/HFfeMgyj9wNyvPA77V2yn/XEgRUqE
-         McIw==
+        b=VhsnrQQtbrkGcV+RBVHzJwBCC88cVRbdh+uDc/YHR0DEZEwh94HRYmoIRzHZWep+gu
+         xZ+53OZqKaNDvp6A7JPwaKwq2fZdQrAQsSRnbJKwKIMHSs9JH9tuyOVWBP7yHiRUnw8r
+         ErnFpJmmym4tDzptDdaJDq9gQXXWUtLGd+wbgrmJOl8Le/EPh/C0KkTb6JUlnjuSadJ4
+         BNZW7PVKGs+xzrlmgk6gVAucZIUIOC7Hfof1cc53IghmKVQagCgrRDv57WTkBaq5AWGX
+         9JjzuQrJFoO+soLygM2NTjnfo64eJBsafSzFtLpZFOXjXb1WpkGjt7eweTmDUMw/wJfx
+         gsZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=zVT/Zu11/6lpquaKnNSYtY8M1oQCLdlQlbLtc4Josag=;
-        b=XRPpq3Y2/uIGbrx7RNj+H8JTl7ic20V8Rj576/NK7fXt2pfdmXmVrEv9jUsVi+0GDW
-         m+FBlixCA17+jQ0U8JLYXCTw4ZAu/BSsH3esGxSPIXuBFoD4i3r31a9i9rbF8n1B+r0U
-         CxqymsktB4E1LP8Faoxj3SMb9ikebg+YnmAjoXtovpate+tIKIGAeckXMMg4/LMMkrD+
-         HuF6ffk218hrQeDIjEFDXCa6GE+5/mqbSJFxnnjyC+cXEPxaS5oUUX59CSIOMYNHVmQf
-         5SJJ8UNiZQiSaGbvZY1MhIRMi6JL4p7lBL6fMDWYwSU5+SlTKBsYFIdlHqDkRhbr9erR
-         3wlw==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=FNEf+GtEbXYXeLBBojgwoYyBlmOqbIHHX0ChTeVYfLI=;
+        b=d8ur6OarkiPEP4FcIomPPN2DxpwZf+OTkJRqr1C+G6q1tepN2/cvRm9gKpdWn/MzXn
+         1QfmCqVJ1eqxNvurLUCvmw188YnE7yIQzDxzQpLoRrYuTWnbXO5vZ2nMCc++XvFNBskX
+         jbuXDwO4hSlbHK69WYmMCxitfgYJ6su0nSah4raBudhfhhx/axUdAJZw+WEXuPS+moDa
+         PHRBut7+VgNRYqQl3Xm4untNf/tmE53IIBv1g+YOnN3B+QmKRsQn/ZHJMVXt74uSsvUP
+         d5uXCSMQfH5trMoRHJdugwU+GwW14HTXculonYA8oNysUVMB1hLX1KjQlzKQhwlIi9Ff
+         SRQw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="ic/JvaGd";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z23si13552263iod.32.2021.03.09.01.43.36
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Mzz9Tcxx;
+       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <philmd@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
+        by mx.google.com with ESMTPS id a20si4420369ejf.345.2021.03.09.01.43.51
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Mar 2021 01:43:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 09 Mar 2021 01:43:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="ic/JvaGd";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:51952 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lJYtr-00040d-KQ
-	for alex.bennee@linaro.org; Tue, 09 Mar 2021 04:43:35 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36008)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lJYrK-0000NJ-FQ; Tue, 09 Mar 2021 04:40:58 -0500
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b]:37379)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lJYrH-0002ki-0v; Tue, 09 Mar 2021 04:40:57 -0500
-Received: by mail-wr1-x42b.google.com with SMTP id v15so14449715wrx.4;
- Tue, 09 Mar 2021 01:40:54 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=zVT/Zu11/6lpquaKnNSYtY8M1oQCLdlQlbLtc4Josag=;
- b=ic/JvaGddUFqh/epYb/rGBHn1f71wS6FEwfBURvcPK5fFFs7VUD5cdS3t4tnz/TEpN
- ps74YssowW3GtICnBNzlth7cA4BgiQPwzEVxg8BODl0Avu+yrrQ1ARMUKPg7KRxypjfo
- +D0LD2nBwblMtBFFiyfrx/iuqhjTWrQRo4hIUs281QzYPSJwxSGkeo6qIsNsO0yN+LOb
- fJBzHktL+OKdnwcMNX9D6Pp9z+leJVfhBq1R3xZa6vOuwfBSRTCg/ZjY48F/7iL2aIyt
- GsCDA6PQhGhZnGFuRjzLsV+WoFCGd43n3rhk3uotdqggKOk7H9zAQcT3WntbhA8lyQHU
- CV6A==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Mzz9Tcxx;
+       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1615283030;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=FNEf+GtEbXYXeLBBojgwoYyBlmOqbIHHX0ChTeVYfLI=;
+	b=Mzz9TcxxwnibQyhiJcKrOMazV7KLRv9s7X6GxRp2To++eKl7p8d5GAh4DyCj/U/3xOyPyT
+	+GiEYzS3T0uzdhachM8jWO0vkOq7MGu5RLuE1ps44fffdVas578iuB/qc1V6uoK7bHnGd3
+	C3cXKStwiStTvwkzt2LLuDfbHDtfJzg=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-585-QQzuaGWNMmi2LX-h7Y3rmw-1; Tue, 09 Mar 2021 04:43:47 -0500
+X-MC-Unique: QQzuaGWNMmi2LX-h7Y3rmw-1
+Received: by mail-wm1-f71.google.com with SMTP id a63so230329wmd.8
+        for <alex.bennee@linaro.org>; Tue, 09 Mar 2021 01:43:46 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=zVT/Zu11/6lpquaKnNSYtY8M1oQCLdlQlbLtc4Josag=;
- b=Rmh5+odX0fvneou5zgfQNbZQKiIXr69bC9Z1ahYAfw3FlQAQ28nixadu7HOsc+KbiD
- 1jaPeUfZUuW0rG6gMrQqi2/qmxsgov2k+w2Z8zr6/3uRyMjR2tourqxlBWpD90vJisqI
- xLnA31TTescxwKob3n66ucKhg4kJAuZvwEoNzc0tAbtbjCTGcNhc+noSvAO1Q4MeG9p2
- 3Z7BAIzOp8IWBsXx7KCT+gQfrLuAx7x6/g1uBxeFhJH4C/FjHBqfMev6zlKNA+VUdZJD
- OeK6N87L52KKrYw9MRKVE45JHra8joLfs7xmT44hjKPFr78Suj/fYhT9tflEVS6/x75W
- 00tw==
-X-Gm-Message-State: AOAM5325Pt2e6W897WJTjp+2/zNCSgVYhJFc+O9XYj+AHFekctAx6/Aw
- QD43GSwVb1jIrxPUmFOWRW10rrN1zWc=
-X-Received: by 2002:adf:82aa:: with SMTP id 39mr27860381wrc.114.1615282852989; 
- Tue, 09 Mar 2021 01:40:52 -0800 (PST)
-Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net.
- [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id j30sm27250480wrj.62.2021.03.09.01.40.52
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 09 Mar 2021 01:40:52 -0800 (PST)
-Subject: Re: [PATCH 1/2] hw: Model ASPEED's Hash and Crypto Engine
-To: Joel Stanley <joel@jms.id.au>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
- <clg@kaod.org>
-References: <20210303070331.70744-1-joel@jms.id.au>
- <20210303070331.70744-2-joel@jms.id.au>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <ee41e324-501a-2a88-428e-916872736eef@amsat.org>
-Date: Tue, 9 Mar 2021 10:40:51 +0100
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=FNEf+GtEbXYXeLBBojgwoYyBlmOqbIHHX0ChTeVYfLI=;
+        b=MXmP9cV8ZSBoZOczr/ogKXBaU4WzkGaAfFfWENp/B7bAK+HolsQ8q1bZ3FSQZpA5oa
+         yhkJR19oOCleJoS1uynSd3qQoWPrTmsyGfNKEt8QdBbTBhWSRX1KKp2gYLCdEPCNURoW
+         J/kigH2hVwAWmBrhETA9L5BCrncDfYpaVyFdDHR/NVPjX+soXcUgdvQlTkM0BRyLyDn9
+         HV6jB7bjjjZUaf7w2TEXxTMza0XijLsdqOqskjR3E/ha0UE50i2MpLxZ/65Wz28lByp0
+         d7zkmhEMhmua/G7BPxb8KvjoMTV9xsbUeIqEJZ2zOs2pRuyNE9ISVev8NlluG1elP/Ik
+         0XxQ==
+X-Gm-Message-State: AOAM530dsSCsO0jcfx48xm33iwgk7Pwre1ZJmO1k5yI0lXbEuSJSFMGR
+	BvRd/37Re0Sk/bbG2F3gO9q9wiRPStOZA9myMm2vA6F2y1EwpZs8VtNGRBjOMjK/4VY4+HdjWDK
+	KReDPaB9p5JbJF0gh
+X-Received: by 2002:a1c:7d4e:: with SMTP id y75mr3044811wmc.168.1615283025985;
+        Tue, 09 Mar 2021 01:43:45 -0800 (PST)
+X-Received: by 2002:a1c:7d4e:: with SMTP id y75mr3044795wmc.168.1615283025781;
+        Tue, 09 Mar 2021 01:43:45 -0800 (PST)
+Return-Path: <philmd@redhat.com>
+Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net. [83.57.175.68])
+        by smtp.gmail.com with ESMTPSA id 18sm3231744wmj.21.2021.03.09.01.43.44
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 09 Mar 2021 01:43:45 -0800 (PST)
+Subject: Re: [PATCH v2 0/2] tests/acceptance: Test Aspeed ARM machines
+To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+Cc: Cleber Rosa <crosa@redhat.com>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
+References: <20210304123951.163411-1-joel@jms.id.au>
+ <CAFEAcA9jux7H2cAwgrndvUv5=fivgQwbWDUEbU7rv7xUb=rz4A@mail.gmail.com>
+ <345ad50c-ac43-2337-29e4-b7f060896434@kaod.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <ce0fdfce-409f-4e20-7b11-180673a39473@redhat.com>
+Date: Tue, 9 Mar 2021 10:43:44 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.7.0
 MIME-Version: 1.0
-In-Reply-To: <20210303070331.70744-2-joel@jms.id.au>
+In-Reply-To: <345ad50c-ac43-2337-29e4-b7f060896434@kaod.org>
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42b.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gsJ1b0PCtGvJ
+X-TUID: +NoElqdzxd/b
 
-On 3/3/21 8:03 AM, Joel Stanley wrote:
-> The HACE (Hash and Crpyto Engine) is a device that offloads MD5, SHA1,
++Alex
 
-Typo "Crypto"
-
-> SHA2, RSA and other cryptographic algorithms.
+On 3/5/21 4:38 PM, Cédric Le Goater wrote:
+> On 3/5/21 4:12 PM, Peter Maydell wrote:
+>> On Thu, 4 Mar 2021 at 12:40, Joel Stanley <joel@jms.id.au> wrote:
+>>>
+>>> v2: Fix ast2600 test, thanks Cédric for the review.
+>>>
+>>> This adds tests for the Aspeed ARM SoCs. The AST2400 and AST2500 tests
+>>> use OpenBMC images from that project, fetched from github releases. The
+>>> AST2600 test uses a Debian arm32 kernel.
+>>
+>> Just a note that I'm assuming that Cédric will gather up the
+>> various aspeed related patches that have been on the list recently
+>> and send a pullreq for them. (Having been on holiday my to-review
+>> queue is pretty full so I've just ignored anything aspeed-related;
+>> let me know if there is anything you specifically want me to look
+>> at, queue, whatever.)
+>>
+>> PS: softfreeze is 16 March so a pullreq on list sometime next week
+>> would probably be the ideal.
 > 
-> This initial model implements a subset of the device's functionality;
-> currently only direct access (non-scatter gather) hashing.
+> Yes. I am preparing the PR. 
 > 
-> Signed-off-by: Joel Stanley <joel@jms.id.au>
-> Signed-off-by: Cédric Le Goater <clg@kaod.org>
-> ---
->  include/hw/misc/aspeed_hace.h |  33 ++++
->  hw/misc/aspeed_hace.c         | 302 ++++++++++++++++++++++++++++++++++
->  hw/misc/meson.build           |   2 +-
->  3 files changed, 336 insertions(+), 1 deletion(-)
->  create mode 100644 include/hw/misc/aspeed_hace.h
->  create mode 100644 hw/misc/aspeed_hace.c
+>   aspeed: Integrate HACE
+>   hw: Model ASPEED's Hash and Crypto Engine
+>   hw/misc: Model KCS devices in the Aspeed LPC controller
+>   hw/misc: Add a basic Aspeed LPC controller model
+>   hw/arm: ast2600: Correct the iBT interrupt ID
+>   hw/arm: ast2600: Set AST2600_MAX_IRQ to value from datasheet
+>   hw/arm: ast2600: Force a multiple of 32 of IRQs for the GIC
+>   hw/arm/aspeed: Fix location of firmware images in documentation
+>   aspeed: Emulate the AST2600A3
+>   tests/acceptance: Test ast2600 machine
+>   tests/acceptance: Test ast2400 and ast2500 machines
+>   arm/ast2600: Fix SMP booting with -kernel
+> 
+> The HACE patchset needs a second look from an Aspeed-aware person and 
+> I have some questions on AST2600A3.
+> 
+> Merging these acceptance tests would be really nice. Have we addressed
+> all you concerns Philippe regarding the image downloads ?
+
+No, but I'll defer to Alex here:
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg787742.html
+
+> 
+> Thanks,
+> 
+> C.
+> 

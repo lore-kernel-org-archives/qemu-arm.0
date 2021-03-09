@@ -1,101 +1,109 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2882842lfg;
-        Tue, 9 Mar 2021 07:00:10 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxiZouI4PoWALp9h1eiuOd+BvL/X/BnKnwBqhvU+tHk7aNALZ+imrNQ+L9Ch+INJU9uJlrM
-X-Received: by 2002:a05:6638:2bb:: with SMTP id d27mr28580146jaq.98.1615302010706;
-        Tue, 09 Mar 2021 07:00:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1615302010; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2896014lfg;
+        Tue, 9 Mar 2021 07:12:53 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyeWZA73usvWfiythDFihPNcOU+pZ8LkkVz2j4NWa0bS5Z/K70cS0RM6ynhjPOO1UOAGmlB
+X-Received: by 2002:a9f:2b8e:: with SMTP id y14mr17220872uai.8.1615302773571;
+        Tue, 09 Mar 2021 07:12:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1615302773; cv=none;
         d=google.com; s=arc-20160816;
-        b=BHrgECAYLu3/wQHu66Qd6vPG2azUKx0yg+XiiYFFRFRqChFqVaAkt9Wbvc8dzJmtuf
-         ekQ4692upuj4/1Ntv+C6CsmmMgVdmoe7p/9Osx91305kv5fVpuuejz8XOfT+tSvoXnT5
-         FVham8txmc7P+ldKDDNTvhc8ihoUye8dw+BEpAT+R05zItWOUNdf5HuO0CaqApoP6kJ6
-         c2DSmfBrI2X4v8FbYwuchka2WZHu95pnNgsCvx1eZ/UBqOWNeY+B7++O68/0R+oOcjP4
-         VD/MavEGPZckLWgM/H2LejbDjfboQhGrKhps5IvjwhIg+jZZjGHVGWvp3iU5rMWo8eAN
-         7pUg==
+        b=gQbSJXNFtNTXOPGuz/NVBKPEkAQR5ukM3wrP3oWnkuK2ef7ZmeC0orjp6qRc+rcdVv
+         lenA20uhvC9YLr7GmAER3vJzQGcdkdkitz4O234N7eyFslHX2znA0d9Y4NqvtnvNwA7m
+         Y1ztnwGb9oIs9FVwEB1xrkAKYlIpT6uDeia6hdvZiXsUdUIHcwMzu6wevKgq/alCBCZX
+         +P027YQCRoJAGY4prEE4Sa+CrUIF9I8DF1XcwW2aYYM6r8K0sFAZT7UkJxFXWXaez/WP
+         jDDB4yDJIVff2S0aV1//QhzeTPQqQ1IaD8tYbGyD1swQOa4vIOWZg73AqIxxFMDNazws
+         t+rw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=rWMCGsO2IXqhTuYUTz0jnig0e2Ub4psMekhB8cC22ug=;
-        b=I4JCO5mibRizqY6/G0UAaHv8MLF0wx33DbHUdX2BiqMYdSy4PNHglLtQxsjf/0Rs3b
-         D+FImt0kMLa0QqAq9jWJuVmUoaof/SeaitUJiQmBG2PnBXu7o01s+qRvEnH03vgJeIWT
-         6lPoxCmwbo+LFWmxQV/JZwMBOfSqc7pXbY0Zo2K0mfyRASsBfxCWV43Umt/DkXqRyDja
-         wfr23UzY451lgE158HaREhbx/e6+WBzlfBvktiNuRcnqV/Ck69Vmwk5CRyGLgvFReIad
-         wB8/HFjcIgeIvf1l5079pAL+iW8xYhGCv2YIuUi96hhaSo75k17+e7NgrBifVPuLwqrX
-         fmcw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=chuoaICmiBfrDBlUcbMO3IRg1iki2dfxOMLEGBz7MLQ=;
+        b=FEcqT5T4DX1FcCHkbRY8/sGHCwuGppikTg5OwH/DkXX/JtcVRzeKZBFDgCrPct9k4N
+         3y+3KQ+D7wZu3hmX0fV0MPbCK/5I8eb5G4Vg0vGDhsfKn9+ndAwn9mwHuG4p+TH1RtX5
+         bQWBEonUAB/dZqlkG1T0UQfEtGOsWVgEmiXKn4vmDjJvPK8oxYqF1eON1Bri7w7loqIt
+         4TRBxHg1aefskGh9iTA4z1RUOm6ofYn0Hys8YWxA5AG0aWFerbu980ONGwwg/xCGdHrh
+         +7w0f7PF2JIeqLXSXGl2Kl78V6EcI7YY4xj7ZOx+7yJJQiGFSKLaM+OwPG8VPVR2d4DW
+         GmWQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kFx+4haw;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=adNxYirK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y12si13592982ilv.132.2021.03.09.07.00.10
+        by mx.google.com with ESMTPS id t7si1347545vkm.33.2021.03.09.07.12.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Mar 2021 07:00:10 -0800 (PST)
+        Tue, 09 Mar 2021 07:12:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kFx+4haw;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=adNxYirK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:39854 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:47452 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lJdqD-0006jQ-Ta
-	for alex.bennee@linaro.org; Tue, 09 Mar 2021 10:00:09 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42956)
+	id 1lJe2W-00052r-SP
+	for alex.bennee@linaro.org; Tue, 09 Mar 2021 10:12:52 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45344)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1lJdL6-000686-Ul; Tue, 09 Mar 2021 09:28:05 -0500
-Received: from mail-il1-x12e.google.com ([2607:f8b0:4864:20::12e]:38288)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1lJdKx-0006dq-5L; Tue, 09 Mar 2021 09:27:59 -0500
-Received: by mail-il1-x12e.google.com with SMTP id f10so12316489ilq.5;
- Tue, 09 Mar 2021 06:27:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=rWMCGsO2IXqhTuYUTz0jnig0e2Ub4psMekhB8cC22ug=;
- b=kFx+4hawekk48BqAyc9qoMiZxIWleajBsfE5Vc30vqKkxPXz7CkbNw6L6lJWWI6Wv/
- cOha/sCOzZwOFB0pvmw8B/gBZ1AdDNeexvhgM873BvEBF/UK+IPkipVohSQsIizDqoIL
- +FWbmd1ylaEpsHZJnxscTcZbirzn0sZ/JF47IRA1+1fLg1N/mJhtnPcRknSGkgP9YMTp
- ixz/HMSyCapq4tk08hLJC5spMKyECeyyVDDlf4EV7EZmbrfFL2JvC43FFnQLUPaDetaY
- BopdMap4RSK6MSOlvfgp//O2DGCZGgvFgqhz7Mi3lSnG5BXKscr4KCrhtMffQV9LJ4cV
- JJAg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=rWMCGsO2IXqhTuYUTz0jnig0e2Ub4psMekhB8cC22ug=;
- b=A4iyjP6xqsmduO8b0Z3sCdkGMR5aKe2h7tVp88hJrXokpWeX2pK0ID8653V0PqXNIy
- U9P1ScQEb8g0qd7Tz4o52++I+aBKyW3Anb1mc1Cjt78iIrX5Ayz5P9KVzrwjD9ijmCz/
- GnHTM7QQJAHo8TL8PcuoWqfwNspKVqkAxubdIJViqc4AxD76OcirpOPbyWrKhywCuzdP
- l47gAkHgWUypBvMm+eVQVTYC5G3Sw/tZj5/rUxQdGulov50mArXPpcQR7O8cw976ZaIa
- oDTNsBEvLhaWbgaI/bqsLzYeBss1oQ2fDx6MSMpjbyQEfyR46W4go9y9IDJOEdQuMpBo
- xPnA==
-X-Gm-Message-State: AOAM531J2diHRpMI42Ac1ao5dlhZINhJw9BnyZ+rnKBb12wg5zsPX85l
- hX0IT59AtQ32Av3btk7ihzqgDDYSP/vr8+OUWPc=
-X-Received: by 2002:a92:c102:: with SMTP id p2mr24162648ile.227.1615300069375; 
- Tue, 09 Mar 2021 06:27:49 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1lJdT7-00065d-Rf
+ for qemu-arm@nongnu.org; Tue, 09 Mar 2021 09:36:17 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:59038)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1lJdT6-0001rq-DO
+ for qemu-arm@nongnu.org; Tue, 09 Mar 2021 09:36:17 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1615300575;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=chuoaICmiBfrDBlUcbMO3IRg1iki2dfxOMLEGBz7MLQ=;
+ b=adNxYirK94jrQdmBUxe1dNVFlT5de9B2uv4yQNwCMTeoG+ciSBC/aTtD1I4/vzQuJtj9hl
+ mMQgqV3bk/dWWnvVFX9Ttp9fW3Y6KKfNPfd4+Ah8slbvDxJSEzKSoYDnaMS3DaljZkqiXe
+ pSlisoBPf0hhPfdwv5UCKwWqUpugFsM=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-271-bLGfwM6hNS6zOSUu4dkLxg-1; Tue, 09 Mar 2021 09:36:11 -0500
+X-MC-Unique: bLGfwM6hNS6zOSUu4dkLxg-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id F0CE81B2C983;
+ Tue,  9 Mar 2021 14:36:09 +0000 (UTC)
+Received: from [10.36.112.254] (ovpn-112-254.ams2.redhat.com [10.36.112.254])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id ABE3F6F98C;
+ Tue,  9 Mar 2021 14:36:04 +0000 (UTC)
+Subject: Re: [RFC RESEND PATCH 0/4] hw/arm/virt-acpi-build: Introduce iommu
+ option for pci root bus
+To: Wang Xingang <wangxingang5@huawei.com>, qemu-devel@nongnu.org
+References: <1614414831-39712-1-git-send-email-wangxingang5@huawei.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <e37590d0-d65f-e4e4-ec59-92eb3166d9d9@redhat.com>
+Date: Tue, 9 Mar 2021 15:36:02 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.0
 MIME-Version: 1.0
-References: <20210301073947.39451-1-jasowang@redhat.com>
- <20210301193343.324840-1-alxndr@bu.edu>
-In-Reply-To: <20210301193343.324840-1-alxndr@bu.edu>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 9 Mar 2021 09:26:27 -0500
-Message-ID: <CAKmqyKOwp=63RBGRPapwD9F+tJ48tT-WEBGksUW0025eQcw3XQ@mail.gmail.com>
-Subject: Re: [PATCH] cadence_gem: switch to use qemu_receive_packet() for
- loopback
-To: Alexander Bulekov <alxndr@bu.edu>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::12e;
- envelope-from=alistair23@gmail.com; helo=mail-il1-x12e.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+In-Reply-To: <1614414831-39712-1-git-send-email-wangxingang5@huawei.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.251,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -109,45 +117,49 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- qemu-security@nongnu.org, P J P <ppandit@redhat.com>,
- "open list:Xilinx Zynq" <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: xieyingtai@huawei.com, peter.maydell@linaro.org, cenjiahui@huawei.com,
+ mst@redhat.com, shannon.zhaosl@gmail.com, qemu-arm@nongnu.org,
+ imammedo@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /lWL/rhdvtkt
+X-TUID: G9ry5iREhzNp
 
-On Mon, Mar 1, 2021 at 2:34 PM Alexander Bulekov <alxndr@bu.edu> wrote:
->
-> This patch switches to use qemu_receive_packet() which can detect
-> reentrancy and return early.
->
-> Signed-off-by: Alexander Bulekov <alxndr@bu.edu>
+Hi,
+On 2/27/21 9:33 AM, Wang Xingang wrote:
+> From: Xingang Wang <wangxingang5@huawei.com>
+> 
+> These patches add support for configure iommu on/off for pci root bus,
+> including primary bus and pxb root bus. At present, All root bus will go
+> through iommu when iommu is configured, which is not flexible.
+> 
+> So this add option to enable/disable iommu for primary bus and pxb root bus.
+> When iommu is enabled for the root bus, devices attached to it will go
+> through iommu. When iommu is disabled for the root bus, devices will not
+> go through iommu accordingly.
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Please could you give an example of the qemu command line for which the
+new option is useful for you. This would help me to understand your
+pcie/pci topology and also make sure I test it with the smmu.
 
-Alistair
+Thank you in advance
 
-> ---
->  hw/net/cadence_gem.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-> index 9a4474a084..1c576a130c 100644
-> --- a/hw/net/cadence_gem.c
-> +++ b/hw/net/cadence_gem.c
-> @@ -1275,7 +1275,7 @@ static void gem_transmit(CadenceGEMState *s)
->                  /* Send the packet somewhere */
->                  if (s->phy_loop || (s->regs[GEM_NWCTRL] &
->                                      GEM_NWCTRL_LOCALLOOP)) {
-> -                    gem_receive(qemu_get_queue(s->nic), s->tx_packet,
-> +                    qemu_receive_packet(qemu_get_queue(s->nic), s->tx_packet,
->                                  total_bytes);
->                  } else {
->                      qemu_send_packet(qemu_get_queue(s->nic), s->tx_packet,
-> --
-> 2.28.0
->
->
+Best Regards
+
+Eric
+> 
+> Xingang Wang (4):
+>   pci: Add PCI_BUS_IOMMU property
+>   hw/pci: Add iommu option for pci root bus
+>   hw/pci: Add pci_root_bus_max_bus
+>   hw/arm/virt-acpi-build: Add explicit idmap info in IORT table
+> 
+>  hw/arm/virt-acpi-build.c            | 92 +++++++++++++++++++++--------
+>  hw/arm/virt.c                       | 29 +++++++++
+>  hw/pci-bridge/pci_expander_bridge.c |  6 ++
+>  hw/pci/pci.c                        | 35 ++++++++++-
+>  include/hw/arm/virt.h               |  1 +
+>  include/hw/pci/pci.h                |  1 +
+>  include/hw/pci/pci_bus.h            | 13 ++++
+>  7 files changed, 153 insertions(+), 24 deletions(-)
+> 
+

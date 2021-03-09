@@ -1,160 +1,180 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2655985lfg;
-        Tue, 9 Mar 2021 02:30:02 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyLHKyChp0IiXlC7JB5fXyD3adUyxDOYR2NzzcSV+veq2kFc+usj+td/fsqdxuEPH7QJhxX
-X-Received: by 2002:a05:6e02:1544:: with SMTP id j4mr24297377ilu.29.1615285802185;
-        Tue, 09 Mar 2021 02:30:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1615285802; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2799895lfg;
+        Tue, 9 Mar 2021 05:19:18 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyyemzWVhobt8q/kxVjzAFjF1v/vARsJ8pgkUiipdmWqD2oGgmW53C470i/mpPW6jBgs1nK
+X-Received: by 2002:a92:c052:: with SMTP id o18mr24520660ilf.84.1615295958578;
+        Tue, 09 Mar 2021 05:19:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1615295958; cv=none;
         d=google.com; s=arc-20160816;
-        b=RXChU1BAwxU90DS2MfpjggMTvLxXOmd/JuRLIArf/MS9U9QzecLfWWtEmsHfqiY6KB
-         BWIJF45LJbcnJKcWoW7MXO4Ajp65ssVukwKkPKgRpNOfBt0SlDm9AkaK5gGZewsxJ+lU
-         9ga7s+Vn84FZAtlfNRMprbEOov+gZR/ioLn04URzPkR3LAL9e6UspjWam2T6P+30LYOY
-         SX0Gl6ZHoPZrt8kAEE915Mh8iY7B1CdQz/UF28ztdXPRD7zVM2N+7ZSCxz7LZ5bsLJiS
-         QR3lW6O76BJSTs2lehqnnvsNrl3XE0JPQ7NbsVTgOHsF718H4tcY8u56Q191KxMLajdr
-         avkA==
+        b=0cmdjjhfSg2fLqzN6t+ip8zfVH44+wRynmh2dlZasv0vfCsuHblkTHVhVSBgJJ97sF
+         dbreJTnMFLpAN39DWw3n7ddH8V8fK+yOWU81RPRJRsZFFM1q2t9AJDtA03cOQhf35Nc5
+         5OXJc8JUgdMmrEoMTPvA8Kg9EwSnt2Q9BKiked87xNjN2ZmdRyQWRdeud0n1c72fdVZS
+         i0ocTSyL7e2LifGtlasZlLqpIs/r8fQS/fS5Th+3ZNeg87tnxLBj9RmBoZhcNtN5FFCf
+         bXuVApyDE1bOw4nLvjEykrj5eUbdz5lovIMTInDDIH9/GLSGtVLkyAoe+xKvKCtTqxQ6
+         oRPA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=MJ7TYibJkeU3EVVD0ygt9kCwRtbkam9/TntZSjYi9Ws=;
-        b=kX574aiZ9RHKgvilgdgU8lYwqsDamXNNja923/1Nthp+uNbX4CxDETedaEHVD8uAuG
-         f23rnBQDPCEzhNDU62xoyymBEi39dK860ni2rlShtWLEHMc/r9zfKwPb7dR/mnmLHDVF
-         4iZ9uEBDNvPN4P7wypX5mttoxxjuY0kIFCMy0BUe37mVZh3XYmZfDCovKygShRlKLMEk
-         hw0EbyukC+hZdNYTpofYWRlHmO0okMLe8WXDETssn7J4KnmKZRYZ1GmUfOAqGxwQzS1b
-         yFnVctP0Ebgka0AOXGgguCV+53UPFLNtRWKDYbR/uqcfPTl0ruCdTCSkmdAoqN8hbyEH
-         BVfg==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=fna6enZXAYFfcesA62niTMHmMfq8+njy85nCkvdbQ8Q=;
+        b=v65NxeNM+uaXH5WOkGmeItgn+s4znPCm/SIeTgAlZL3l+Y2owvv7bgCK7vfNrIdFAQ
+         z1u6QIv5jw9wsTtqjDBQbk+TcLercmOdH/YGHVkhMlP9VLOhE53J9fMhineujiyIyxgB
+         NQEQftffb18E1Fqph2CVSXgwH3Fjc96ZbIemvDZjW/NfWEgUZi9tKvPo05pyc3l5Zg2n
+         Elz6qRflVfTuI1A9pGqSKUvP5ZMs39wj4Y0Dq41glsVr1lZTosqzs/0TwQlQHTHYI3Db
+         TKbVlMW8iBNSOcnq9NZf2iQaeXwtDJNdYakyvRZDmd4LgnW2u7gNxnDdlExUBU+9KueQ
+         ++Lw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=d1cLtZN5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g25si13324467ioc.83.2021.03.09.02.30.02
+        by mx.google.com with ESMTPS id x8si13211672ioj.36.2021.03.09.05.19.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Mar 2021 02:30:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 09 Mar 2021 05:19:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=d1cLtZN5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58176 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:44702 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lJZcn-0006mn-FC
-	for alex.bennee@linaro.org; Tue, 09 Mar 2021 05:30:01 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48528)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lJcGb-00027B-Qp
+	for alex.bennee@linaro.org; Tue, 09 Mar 2021 08:19:17 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43906)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lJZb0-0005Fw-Kv
- for qemu-arm@nongnu.org; Tue, 09 Mar 2021 05:28:12 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:34188)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lJZaw-0005Wq-FX
- for qemu-arm@nongnu.org; Tue, 09 Mar 2021 05:28:10 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1615285685;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=MJ7TYibJkeU3EVVD0ygt9kCwRtbkam9/TntZSjYi9Ws=;
- b=d1cLtZN58f91PJk0zN7V9IUpX/T/Bd8Ii5Q3PkfdkNDcFdnU2Bw92dH5xjn53IpctyL4Xa
- o3i0VImDICIund0h0FxCC/k/6Df/nWVwqARx1Eu2y/qr14+1Em0fyzKDH6EAS4/lxqvkBl
- Dxur4XmTEHzobvynTTBfNRA9Uav3NPo=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-393-s4hFKVxxNZeXa8GRopaDNw-1; Tue, 09 Mar 2021 05:28:03 -0500
-X-MC-Unique: s4hFKVxxNZeXa8GRopaDNw-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 33694108BD08;
- Tue,  9 Mar 2021 10:28:02 +0000 (UTC)
-Received: from laptop.redhat.com (ovpn-112-254.ams2.redhat.com [10.36.112.254])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 292F51F4;
- Tue,  9 Mar 2021 10:27:58 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, peter.maydell@linaro.org, mst@redhat.com,
- jean-philippe@linaro.org, peterx@redhat.com, jasowang@redhat.com,
- pbonzini@redhat.com
-Subject: [PATCH v3 1/7] intel_iommu: Fix mask may be uninitialized in
- vtd_context_device_invalidate
-Date: Tue,  9 Mar 2021 11:27:36 +0100
-Message-Id: <20210309102742.30442-2-eric.auger@redhat.com>
-In-Reply-To: <20210309102742.30442-1-eric.auger@redhat.com>
-References: <20210309102742.30442-1-eric.auger@redhat.com>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1lJcEW-00025v-QS; Tue, 09 Mar 2021 08:17:09 -0500
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:37838)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1lJcER-0007AZ-Qj; Tue, 09 Mar 2021 08:17:08 -0500
+Received: from pps.filterd (m0127361.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
+ 129D3WFe117548; Tue, 9 Mar 2021 08:16:48 -0500
+Received: from ppma04fra.de.ibm.com (6a.4a.5195.ip4.static.sl-reverse.com
+ [149.81.74.106])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 375wcm9ca6-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 09 Mar 2021 08:16:47 -0500
+Received: from pps.filterd (ppma04fra.de.ibm.com [127.0.0.1])
+ by ppma04fra.de.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 129DBeCl023362;
+ Tue, 9 Mar 2021 13:16:46 GMT
+Received: from b06cxnps4075.portsmouth.uk.ibm.com
+ (d06relay12.portsmouth.uk.ibm.com [9.149.109.197])
+ by ppma04fra.de.ibm.com with ESMTP id 3768v0r0w9-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 09 Mar 2021 13:16:46 +0000
+Received: from d06av24.portsmouth.uk.ibm.com (d06av24.portsmouth.uk.ibm.com
+ [9.149.105.60])
+ by b06cxnps4075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 129DGhSW55247346
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 9 Mar 2021 13:16:43 GMT
+Received: from d06av24.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id C842642047;
+ Tue,  9 Mar 2021 13:16:43 +0000 (GMT)
+Received: from d06av24.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 8C94D42045;
+ Tue,  9 Mar 2021 13:16:43 +0000 (GMT)
+Received: from smtp.tlslab.ibm.com (unknown [9.101.4.1])
+ by d06av24.portsmouth.uk.ibm.com (Postfix) with SMTP;
+ Tue,  9 Mar 2021 13:16:43 +0000 (GMT)
+Received: from yukon.ibmuc.com (unknown [9.171.48.251])
+ by smtp.tlslab.ibm.com (Postfix) with ESMTP id E9B8C220270;
+ Tue,  9 Mar 2021 14:16:42 +0100 (CET)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: [PULL 1/7] arm/ast2600: Fix SMP booting with -kernel
+Date: Tue,  9 Mar 2021 14:16:35 +0100
+Message-Id: <20210309131641.2709380-2-clg@kaod.org>
+X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20210309131641.2709380-1-clg@kaod.org>
+References: <20210309131641.2709380-1-clg@kaod.org>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.251,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: quoted-printable
+X-TM-AS-GCONF: 00
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.369, 18.0.761
+ definitions=2021-03-09_11:2021-03-08,
+ 2021-03-09 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ lowpriorityscore=0
+ malwarescore=0 impostorscore=0 spamscore=0 suspectscore=0 phishscore=0
+ adultscore=0 bulkscore=0 mlxscore=0 clxscore=1034 priorityscore=1501
+ mlxlogscore=856 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2009150000 definitions=main-2103090064
+Received-SPF: softfail client-ip=148.163.158.5; envelope-from=clg@kaod.org;
+ helo=mx0b-001b2d01.pphosted.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: vivek.gautam@arm.com, shameerali.kolothum.thodi@huawei.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cdNlUoMNNLUd
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: w/hLoOeN0ZIV
 
-With -Werror=maybe-uninitialized configuration we get
-../hw/i386/intel_iommu.c: In function ‘vtd_context_device_invalidate’:
-../hw/i386/intel_iommu.c:1888:10: error: ‘mask’ may be used
-uninitialized in this function [-Werror=maybe-uninitialized]
- 1888 |     mask = ~mask;
-      |     ~~~~~^~~~~~~
+From: Joel Stanley <joel@jms.id.au>
 
-Add a g_assert_not_reached() to avoid the error.
+The ast2600 machines do not have PSCI firmware, so this property should
+have never been set. Removing this node fixes SMP booting Linux kernels
+that have PSCI enabled, as Linux fails to find PSCI in the device tree
+and falls back to the soc-specific method for enabling secondary CPUs.
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Peter Xu <peterx@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+The comment is out of date as Qemu has supported -kernel booting since
+9bb6d14081ce ("aspeed: Add boot stub for smp booting"), in v5.1.
 
+Fixes: f25c0ae1079d ("aspeed/soc: Add AST2600 support")
+Signed-off-by: Joel Stanley <joel@jms.id.au>
+Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+Tested-by: C=C3=A9dric Le Goater <clg@kaod.org>
+Message-Id: <20210303010505.635621-1-joel@jms.id.au>
+Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
+ hw/arm/aspeed_ast2600.c | 7 -------
+ 1 file changed, 7 deletions(-)
 
-v2 -> v3:
-- Added Philippe and Peter's R-b
----
- hw/i386/intel_iommu.c | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
-index b4f5094259..3206f379f8 100644
---- a/hw/i386/intel_iommu.c
-+++ b/hw/i386/intel_iommu.c
-@@ -1884,6 +1884,8 @@ static void vtd_context_device_invalidate(IntelIOMMUState *s,
-     case 3:
-         mask = 7;   /* Mask bit 2:0 in the SID field */
-         break;
-+    default:
-+        g_assert_not_reached();
-     }
-     mask = ~mask;
- 
--- 
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index bf31ca351feb..49b00763864c 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -241,8 +241,6 @@ static void aspeed_soc_ast2600_realize(DeviceState *d=
+ev, Error **errp)
+=20
+     /* CPU */
+     for (i =3D 0; i < sc->num_cpus; i++) {
+-        object_property_set_int(OBJECT(&s->cpu[i]), "psci-conduit",
+-                                QEMU_PSCI_CONDUIT_SMC, &error_abort);
+         if (sc->num_cpus > 1) {
+             object_property_set_int(OBJECT(&s->cpu[i]), "reset-cbar",
+                                     ASPEED_A7MPCORE_ADDR, &error_abort);
+@@ -253,11 +251,6 @@ static void aspeed_soc_ast2600_realize(DeviceState *=
+dev, Error **errp)
+         object_property_set_int(OBJECT(&s->cpu[i]), "cntfrq", 1125000000=
+,
+                                 &error_abort);
+=20
+-        /*
+-         * TODO: the secondary CPUs are started and a boot helper
+-         * is needed when using -kernel
+-         */
+-
+         if (!qdev_realize(DEVICE(&s->cpu[i]), NULL, errp)) {
+             return;
+         }
+--=20
 2.26.2
 

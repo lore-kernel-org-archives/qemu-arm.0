@@ -1,198 +1,106 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2908917lfg;
-        Tue, 9 Mar 2021 07:25:03 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJykPycX/s3tl0ByPJ1pHimmOOkWoXp1dcJNvoaFTlNR89IaA8bIstu6E1WCPHkRvkAf0mEJ
-X-Received: by 2002:a67:6991:: with SMTP id e139mr2715163vsc.11.1615303503775;
-        Tue, 09 Mar 2021 07:25:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1615303503; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2930568lfg;
+        Tue, 9 Mar 2021 07:53:08 -0800 (PST)
+X-Received: by 2002:a9d:6215:: with SMTP id g21mr1572064otj.80.1615305188129;
+        Tue, 09 Mar 2021 07:53:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1615305188; cv=none;
         d=google.com; s=arc-20160816;
-        b=Eth5l9g7xPGSLsUbQbyY2nI/TPeE9OLJwfn+Wf97vRGy9PIXrP951t4WCCJH0ACiC8
-         9hdnKoa723Sz4wVNDczlkaUKr6mFV6VGcVcFnHJaueAKypTao8EAkhvHpuIBHPnBUwal
-         KB+5QXWCsJ/8CDLjECGTqeb7RNxO7vDHGu0hACx8Wj64eTN1A+1YaLO5yzeGaSmipFXk
-         1+IMR3M3u7PQN+ZOZuny6TJb394HyYoi5c2/vr51C3saRzZk2doUZMUzlc6ps7R64FmX
-         YP8z83mk0eC88jdZ0o/fdyX/Qs1yzJGCOWO4lP5HkHUBEwXYXfiY3X+e2gtRXl2NONAk
-         MQgw==
+        b=MJFpxneR0LmbJ7mjlg9lcOJ3zcRcGM3r7XNgX036txmlsvdl3tLLOSKQL5dH0Ysekc
+         6p1uj+pLz9PrVlw3JGIrGZtw7b3woFjjMePdT5rp9hkTWUxavb+/9VKr4qhWgbjfFGNB
+         a2o1fJtgnNFAquVsZ2/CSMxhefRR9EzoiFyK4VnHDwr6Gqc6YC0F/e1CC2cho9lYbkQf
+         tauTmq5NvrEP2zLDlgc2qChRmThCL0L47ZJbHndtv/kt0/TE8g2++KC9exBl9kEsd/uI
+         Te4V7FpmMl8mmAQtT949vFTzwbHu/+b8IXjFJ5rDdTcklEF0A02OjS2bJFGoirFRgDHL
+         PQBw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=ABOvI6buwgUMmWlmw64iDznXsPsyUMMEDVCnGIDbrO4=;
-        b=0DeIkbKqpyDlD7d23jzHO8/HQ5mXC9gnAWxF94S5vymxYuPpHzotinQvTEGHvgVrEJ
-         Nq009BjttZR+Kgke53Yt95JVpBklV+R0yKdFxXD0RvSQNc6Hom7BxGGOL3Hx6hx2dVoW
-         VcLR4nlucACnmv+JN6g02gAf8MmgsJgin4y0hDI7lI0osR+FU1yXdP8nWel2vXzf59A/
-         hSdpv8NjTCZpVKXA61MILMCYwTq/yhpvxg1EK6qMvF4dolM4/us9JmDkS1b73z1XiKCW
-         8xShTl8+F1mZZBVr9sIWdDnT6AKwkQg31B6EhSqfpTLQlq/q5Wll47pz1mMlcD/ZG1fe
-         Xsvw==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=W14unbYsNxQ1Va38g+npA6Ct860YaOiFCU0ExYMrSII=;
+        b=Gr5tFeJAXxxXNIkcyBl1iAQS70xtroN4+ImbO4GpcndepqbpGG/KhC5z/ULH/wodr4
+         5O/C9ew03UOu3cNRrrjyHnK0jeMODrNC5xNDSBjT9rAXkIBWz/XuECdoJgIB1RrF/BSz
+         NY/SLJ9OYmWd7x1Syqhpx3rUBd9h0n6805/0fM0/xZhMDeykSYQ6/deEkBy4qzb+iuPE
+         fyISOCF3k/ZojiGlM+FC65hf+GUf/MklF3rC5DWkziyGX+GZCkX4tp2LgCVK0dFaxp1r
+         mVigOANMJLXvdwLfScuzy5VaIalMW1tpriYiHrKa8q1/jOvtmInMmaRU4uZs7NBnrf48
+         YVDQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x3si2289909vsn.137.2021.03.09.07.25.03
+       dkim=pass header.i=@linaro.org header.s=google header.b=esD8E35Z;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id z21sor2807707ooe.3.2021.03.09.07.53.07
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Mar 2021 07:25:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 09 Mar 2021 07:53:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57172 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lJeEJ-0003uP-1U
-	for alex.bennee@linaro.org; Tue, 09 Mar 2021 10:25:03 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49550)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cfontana@suse.de>)
- id 1lJdld-0001xK-5S; Tue, 09 Mar 2021 09:55:25 -0500
-Received: from mx2.suse.de ([195.135.220.15]:38358)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cfontana@suse.de>)
- id 1lJdlb-0001aY-5u; Tue, 09 Mar 2021 09:55:24 -0500
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 8D469AE7F;
- Tue,  9 Mar 2021 14:55:16 +0000 (UTC)
-Subject: Re: [PATCH v2 1/3] target/arm: Restrict v8M IDAU to TCG
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-References: <20210221222617.2579610-1-f4bug@amsat.org>
- <20210221222617.2579610-2-f4bug@amsat.org>
- <51ae2fad-f20e-27f2-2f7b-b7dca331dea3@suse.de>
- <75ce7727-caec-fd63-b2e6-9344e22cfa75@amsat.org>
-From: Claudio Fontana <cfontana@suse.de>
-Message-ID: <0db478a3-ad7d-d70c-f650-54fb4ff35b49@suse.de>
-Date: Tue, 9 Mar 2021 15:55:15 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
+       dkim=pass header.i=@linaro.org header.s=google header.b=esD8E35Z;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=W14unbYsNxQ1Va38g+npA6Ct860YaOiFCU0ExYMrSII=;
+        b=esD8E35ZJqmJeIWUYcoLpnvh5fT950Ojq4nVPtntQ8u8Di+bwpvSpMEt+LIZipAXj8
+         INigbQIIlKUIudUPpoJGb2hhf9fx+HvIQcPYnU0pjqphFzDQSkCWr50dfTABFUG3kQXL
+         JJWnabYsxd90Gc2Vd7HImtnV6046eckNL0U74YrXl4oNS6tg96hnuhlDgYYpHPnCr3yo
+         azhCeSPdNPMr4u/KXX3ybGM8A1ScgcYkqKK0E5+rFX4Fxqh5liO+ZJzfZ7m+b8xXYCsE
+         CdECEI4orWLjLnBBQwzc38EOOH1L7Va4afQN1seJ7cKOKx538J6xdf8xLcPPTCTIONmL
+         bXqA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=W14unbYsNxQ1Va38g+npA6Ct860YaOiFCU0ExYMrSII=;
+        b=eq6YmVcbK9EERikr1mNGUZP16D2eW0RJ6OfPEArCu6bsobVDd+UBlmxZ65rpDWDeHz
+         tf4O+MwlV1+0/5VRrGPRkuPs/p2pBVYdwtP7jPbrcxpigcpcI3mlPVJ2BvSrFuLceubO
+         4p7L7T/91bP14IA4kPxlBVo6gMc7tStqG54VpEOl5ti1++CQuzgXnLmzn0zvjCC/lRb9
+         ZEb3gtXlkAz9tZ5MnvFEehFO9vdWGPCeEG34PpcZ5HTwQH5tdXeP+tByX59eG1mVCp4p
+         xNUc5HkVOtDx7YDP1v8wiONA3iEw986tjWdq6G7J8PqVGc9LYXKtAxXPeQgkb9n6Ttlp
+         Q7kw==
+X-Gm-Message-State: AOAM5339u3HEw758kaq2dt9+MM2yd6LrNvQKyNu/SNGN+O6D/zqCR8p2
+	oejOsD6tbvUw62ltbIzYrYlWFT68
+X-Google-Smtp-Source: ABdhPJyPz/6JiOsB00tepMobuAYWqENwXA3l3HRCNuXCVH4Uiovke5F8XIe6YYrRoaEIiQVbQiZ42A==
+X-Received: by 2002:a05:6820:129:: with SMTP id i9mr22618434ood.80.1615305187750;
+        Tue, 09 Mar 2021 07:53:07 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from localhost.localdomain (fixed-187-189-51-144.totalplay.net. [187.189.51.144])
+        by smtp.gmail.com with ESMTPSA id b14sm2952539ooj.26.2021.03.09.07.53.06
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 09 Mar 2021 07:53:07 -0800 (PST)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org,
+	qemu-arm@nongnu.org,
+	alex.bennee@linaro.org
+Subject: [PATCH v4 0/8] target/arm: sve1 fixes
+Date: Tue,  9 Mar 2021 07:52:57 -0800
+Message-Id: <20210309155305.11301-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <75ce7727-caec-fd63-b2e6-9344e22cfa75@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=195.135.220.15; envelope-from=cfontana@suse.de;
- helo=mx2.suse.de
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: msPboKhwlPHS
+X-TUID: wlyIw0gsltlE
 
-On 3/9/21 3:18 PM, Philippe Mathieu-Daudé wrote:
-> On 3/9/21 2:41 PM, Claudio Fontana wrote:
->> On 2/21/21 11:26 PM, Philippe Mathieu-Daudé wrote:
->>> IDAU is specific to M-profile. KVM only supports A-profile.
->>> Restrict this interface to TCG, as it is pointless (and
->>> confusing) on a KVM-only build.
->>>
->>> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
->>> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
->>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->>
->>
->> This one breaks the KVM tests hard though (most of them).
->>
->> I will try to figure out why.
->>
->> Ciao,
->>
->> Claudio
->>
->>
->>> ---
->>>  target/arm/cpu.c     | 7 -------
->>>  target/arm/cpu_tcg.c | 8 ++++++++
->>>  2 files changed, 8 insertions(+), 7 deletions(-)
->>>
->>> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
->>> index b8bc89e71fc..a772fd4926f 100644
->>> --- a/target/arm/cpu.c
->>> +++ b/target/arm/cpu.c
->>> @@ -2380,12 +2380,6 @@ static const TypeInfo arm_cpu_type_info = {
->>>      .class_init = arm_cpu_class_init,
->>>  };
->>>  
->>> -static const TypeInfo idau_interface_type_info = {
->>> -    .name = TYPE_IDAU_INTERFACE,
->>> -    .parent = TYPE_INTERFACE,
-> 
-> Hmm this is an interface...
-> 
-> Is a CPU/machine trying to resolve it?
+Three of these have been hanging around on a queue for ages;
+the rest are new.  The WHILE and reduction bugs were found by
+RISU triggering an assertion on 384-bit (vq=3) vectors.
 
-I think that qtests assume the interface to be there.
 
-device-introspection-test for sure, but apparently many others too..
+r~
 
-RFC v5 is out now,
 
-Ciao,
+Richard Henderson (8):
+  target/arm: Fix sve_uzp_p vs odd vector lengths
+  target/arm: Fix sve_zip_p vs odd vector lengths
+  target/arm: Fix sve_punpk_p vs odd vector lengths
+  target/arm: Update find_last_active for PREDDESC
+  target/arm: Update BRKA, BRKB, BRKN for PREDDESC
+  target/arm: Update CNTP for PREDDESC
+  target/arm: Update WHILE for PREDDESC
+  target/arm: Update sve reduction vs simd_desc
 
-Claudio
+ target/arm/sve_helper.c    | 107 +++++++++++++++++++++----------------
+ target/arm/translate-sve.c |  26 ++++-----
+ 2 files changed, 73 insertions(+), 60 deletions(-)
 
-> 
->>> -    .class_size = sizeof(IDAUInterfaceClass),
->>> -};
->>> -
->>>  static void arm_cpu_register_types(void)
->>>  {
->>>      const size_t cpu_count = ARRAY_SIZE(arm_cpus);
->>> @@ -2399,7 +2393,6 @@ static void arm_cpu_register_types(void)
->>>      if (cpu_count) {
->>>          size_t i;
->>>  
->>> -        type_register_static(&idau_interface_type_info);
->>>          for (i = 0; i < cpu_count; ++i) {
->>>              arm_cpu_register(&arm_cpus[i]);
->>>          }
->>> diff --git a/target/arm/cpu_tcg.c b/target/arm/cpu_tcg.c
->>> index c29b434c60d..fb07a336939 100644
->>> --- a/target/arm/cpu_tcg.c
->>> +++ b/target/arm/cpu_tcg.c
->>> @@ -14,6 +14,7 @@
->>>  #include "hw/core/tcg-cpu-ops.h"
->>>  #endif /* CONFIG_TCG */
->>>  #include "internals.h"
->>> +#include "target/arm/idau.h"
->>>  
->>>  /* CPU models. These are not needed for the AArch64 linux-user build. */
->>>  #if !defined(CONFIG_USER_ONLY) || !defined(TARGET_AARCH64)
->>> @@ -739,10 +740,17 @@ static const ARMCPUInfo arm_tcg_cpus[] = {
->>>      { .name = "pxa270-c5",   .initfn = pxa270c5_initfn },
->>>  };
->>>  
->>> +static const TypeInfo idau_interface_type_info = {
->>> +    .name = TYPE_IDAU_INTERFACE,
->>> +    .parent = TYPE_INTERFACE,
->>> +    .class_size = sizeof(IDAUInterfaceClass),
->>> +};
->>> +
->>>  static void arm_tcg_cpu_register_types(void)
->>>  {
->>>      size_t i;
->>>  
->>> +    type_register_static(&idau_interface_type_info);
->>>      for (i = 0; i < ARRAY_SIZE(arm_tcg_cpus); ++i) {
->>>          arm_cpu_register(&arm_tcg_cpus[i]);
->>>      }
->>>
->>
->>
-> 
-
+-- 
+2.25.1

@@ -1,126 +1,196 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2930672lfg;
-        Tue, 9 Mar 2021 07:53:18 -0800 (PST)
-X-Received: by 2002:aca:4a95:: with SMTP id x143mr3317718oia.59.1615305198062;
-        Tue, 09 Mar 2021 07:53:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1615305198; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2954773lfg;
+        Tue, 9 Mar 2021 08:20:44 -0800 (PST)
+X-Received: by 2002:a9d:70c9:: with SMTP id w9mr11109867otj.62.1615306843954;
+        Tue, 09 Mar 2021 08:20:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1615306843; cv=none;
         d=google.com; s=arc-20160816;
-        b=VaBZvTUQAh5GVxgh8I6lWWKPAuH3GcSp89qfn9dueQlIKo/k9VOr4WqKN9f6yk9yc8
-         9VbJftaUM/X5cZgLb3kkBqeAwT7z+4cmWKXKW1GqvwTn4VoywsVTe2yQWdfxFq0ek6mf
-         5MUQw1uh2rc7WkE1Ky0fmwb+/Z9pUlNJH5X659WtGk+hZlb15leXDQO9bI6yGVACVfR8
-         osoMO6B+fix/LZkszz5MAv6RjIiLSSpFzRbdUu94lChl/yLYfkOP9fdspfMMxuPAjVKE
-         UH1l+MnV0MN+zSNaR69dvzYOLPBO4HFFb5pJT5bgcCZ5QxcK+gciZeSwTvVVBaZJH7oF
-         ZKdQ==
+        b=HwqfGmtrxg3lv0kN/qs4tUnmooyU6kYYQNFedt69OfBqmOE2V5sMR7ZAlpC6NsV0Yf
+         5YnKAdSdKULdxBpjMNgIuMXSCiLuIm4cdRpsSJA3LUnMw6CeTe8cF+u/NKpXliadbgjx
+         lSZbCvRGZjvsfDCBmoLWNx7Spr16dhySzNb4uDCYHmXKQYMJ9AS8bPyj12EJXHVMGU91
+         TkgQ/0TQ8duotFAbUWkGi7WYE3Z6hKysUoy03xy6+j3usEgbLv5vgABCUIuRaeue05pZ
+         OOPUD1+A3pqntBcWWQFN+nVuvviVZf1JZ2LAbzRZhZwHAbsZ0Bp1SL8LGr4cynL3/vFv
+         giTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=kPQnPJ7DMhJJR2d+A/Ri0b5LMFWa1kAHZRSsfJazyFE=;
-        b=GC+T/uT6xYGR7Ib+wDUAazl5tuEV3HxKRoJJlXDQoiWRgJhlyCkHJyG67/Y+HovQGF
-         2wTz1ho4XsZY1MRjESSb1BcUDJJCOeExqFCpy/Ek3RgfkT8bOicfzYetoW6A/gBBCfdM
-         gCFoMNSBlo7cVt/CeNgKRlgxCy5atyDDzJ891F95aYO8TflMns9MKKwFCUNrAag1VoiF
-         +O/0vcmfqczGbGZ3cANsq8l5tmFruwzHyn6aEg4+/OoH8vrmFmPrTu74opZzKqeOojhl
-         xDucdmUuepLqe7xljSTJWY6/MeZC6GFB7NweMYnSwnhBkgwOxiscWhvbwJ/Hbu6R45SA
-         NZ8A==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=lnwWrhEneEUUM+YHpqRK/Z28UUqQlE1sLsUPEdpUHzc=;
+        b=EAbJxjWDpSqDxt6G3iWOarqcRZvhK5Z1dfNxOjdQNLqb9tIqamOKFnzLPa+s6Ftgsa
+         27rls3CuHnbq6r3LAUh8/Wch5BqX6IDaTlWj/bDuJLCclQ/2Jm1WOC1W4WBHBs6fLY1u
+         h2BvIpKKMAlADtlpeq5UhTMTupm5E0/gZPsVM+4oBc72oRqPAg0WYmVlvSQNcYSbgbeg
+         7yQtqQic5iFiX62HZ5j3JBa1cmshNpaL27LUQpJ+2Y9mVpqUbAzNLjbuY9uN1LaRFNsa
+         9rqr+es44/FVp4PHJ0VORjR2Xds7CO2T1G5Lt72iptnZkL6RFX4NgsXvI13NZwRglu8z
+         EMVQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CGklaU2V;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NYZveROC;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id h131sor4048799oif.89.2021.03.09.07.53.17
+        by mx.google.com with SMTPS id o14sor4047293oiw.145.2021.03.09.08.20.43
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 09 Mar 2021 07:53:18 -0800 (PST)
+        Tue, 09 Mar 2021 08:20:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CGklaU2V;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NYZveROC;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=kPQnPJ7DMhJJR2d+A/Ri0b5LMFWa1kAHZRSsfJazyFE=;
-        b=CGklaU2VC4z9nSnobL5Chl81RexnvQ2fhx0iuuwEO1vQFMPRe+lGtL1opZysUkbOds
-         BjsY1/mEJARUwC7o4pH65C4ZGeAKUFT3slYIpOVLkxTEerNyxy3kribuzp1dk6k59lw6
-         E/ChaWqEzD+DrVAqfF6Ta/Bz8+wQZmxBiwmTmIEr3K3FW9qzX6/Lq8hhLU437dHCWVcj
-         sQclWVkrpDdzA3hiKCs7c9dbtst3MsVREp6W/u9TFYP6ev5mkMvmjkj+it9g7dAIWHkZ
-         6r/taznM880SlJ6KNaMCM3ISsc9tO2z19htYGGWDQ4ZSIzmuyZla3YzLlAmXVrsWY8k8
-         flGg==
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=lnwWrhEneEUUM+YHpqRK/Z28UUqQlE1sLsUPEdpUHzc=;
+        b=NYZveROCj4x3Zd0gjPRlffBCQz8wWsgl91wH9n6geQZR42+2Brl9Uy5I2LWYivlF4b
+         IwJabAq8PaUPm8WuIaYw5t+yW1KfCvWhQFlQcLxpcwOOhl/aPSvuHbABSdN3Geq6ApZ8
+         CArAeCQbQJ8ilxQzyfIJy52x/uSrjBn42OTS84SMNuaZhc0UyR+tyJ0BdKU3nwnCwzkE
+         8pPMPqz4742ZRtdh9HGmo8JKfZ7DMi+9mmu94agpPSzSNDYVb8MznAAVm03oNRMY81yy
+         rhLlnDqwDv+Yt65dMszaU6SLnkD5ibdjIdZ8CObSlgBAeFKFbHq58Ksvoh1qMtWY/iJP
+         gpRg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=kPQnPJ7DMhJJR2d+A/Ri0b5LMFWa1kAHZRSsfJazyFE=;
-        b=qJ6tzOVNDYWzABCMhNc8/G4/6CsmQg0WXgjSediggn45YT/78d8QSircvxa2ZCN6zc
-         zUwu+4Jl71vfkaYAXydnotYqzpawSHrOblo8HAUL8nMTvpY1VOBy5XgS6F4Fwo9C8lYF
-         OIatsvJg169z4dzvIw0w26lLJKWubngVHXiXcMfbZOe1MejdigIeDoqicfDo4XmbqfIi
-         FRUCpOmmHrRAxOjAl4SeWwZN7GwQD8Gf7XjErSO3mpkxI//ib+IIZwexYSBIOOvVqqmg
-         eu4L1lzDl4/2kmt/lfbChucmQkMgE01lTcOkYen5YRatFyYefdka25hWV86H3v616aFE
-         DCYA==
-X-Gm-Message-State: AOAM531TXxdR406FOh9eQriU4A7fqoR8KOltcbakWflt505AGDKzpeEV
-	kCoqZOLmxVNSs3DSndF3SPpeNo7uC0WjADC2m4Q=
-X-Google-Smtp-Source: ABdhPJzx22I8KOesJOPxeMQHNPHe/hq4YtQuKa0CTb3cl+rx1wZ+R3I44vEKjUJe6GjpY3AWnJPBNQ==
-X-Received: by 2002:aca:44d6:: with SMTP id r205mr3416941oia.104.1615305197748;
-        Tue, 09 Mar 2021 07:53:17 -0800 (PST)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=lnwWrhEneEUUM+YHpqRK/Z28UUqQlE1sLsUPEdpUHzc=;
+        b=aVCaZX9ev0qM19loxSt3/wawegiIWOzgamp6o2wsZKynlyIU/t1a67rS2pqNw6gN27
+         5YOBX1qT/xncaoz/Hma3M8AURUo+IQ0gMG0oe3EXkdRVocXxrCQlNsqIYqiqTSCmCtPG
+         IlnCf+VJn8XqVLSZI9645iz31IcyOGCurto1W+ZA9vqc4YbaZsTBw8TUYrxR8SutPm4f
+         h3zyZyTy69k/DiV3nr3bxoyhM4y4jnIg7Tqidv7kykh7Ocj0zuRsDu1Xp9qr6jH7jTpV
+         AxFrn1MpwKlEMH1CfJciXmPv8nfpucghw/6CPfXTlE66jX37HSL1QnvuxrTY8mUf30iF
+         4n6g==
+X-Gm-Message-State: AOAM531fSVl08iKeInyWNI+8qK/FthHlukysxVa/u8kAwFW9ufCi8Dmr
+	UpIgoAJVsN8AQ4gtAxkwwvAgtk0XV4zitFr7I7g=
+X-Google-Smtp-Source: ABdhPJzJxOFUD4BMJ2dE+GdZWvJuj6HIkkm3BhL09NgN39JdjWqOkpiOVg7B5selxuzBSo9huyOwBA==
+X-Received: by 2002:aca:b544:: with SMTP id e65mr3510183oif.78.1615306843476;
+        Tue, 09 Mar 2021 08:20:43 -0800 (PST)
 Return-Path: <richard.henderson@linaro.org>
 Received: from localhost.localdomain (fixed-187-189-51-144.totalplay.net. [187.189.51.144])
-        by smtp.gmail.com with ESMTPSA id b14sm2952539ooj.26.2021.03.09.07.53.16
+        by smtp.gmail.com with ESMTPSA id v23sm2516474ots.63.2021.03.09.08.20.42
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 09 Mar 2021 07:53:17 -0800 (PST)
+        Tue, 09 Mar 2021 08:20:43 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org,
 	qemu-arm@nongnu.org,
 	alex.bennee@linaro.org
-Subject: [PATCH v4 8/8] target/arm: Update sve reduction vs simd_desc
-Date: Tue,  9 Mar 2021 07:53:05 -0800
-Message-Id: <20210309155305.11301-9-richard.henderson@linaro.org>
+Subject: [PATCH v4 00/78] target/arm: Implement SVE2
+Date: Tue,  9 Mar 2021 08:19:23 -0800
+Message-Id: <20210309162041.23124-1-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210309155305.11301-1-richard.henderson@linaro.org>
-References: <20210309155305.11301-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: vSdSNwM99kSo
+X-TUID: k4EyZzMJpgix
 
-With the reduction operations, we intentionally increase maxsz to
-the next power of 2, so as to fill out the reduction tree correctly.
-Since e2e7168a214b, oprsz must equal maxsz, with exceptions for small
-vectors, so this triggers an assertion for vector sizes > 32 that are
-not themselves a power of 2.
+After a 6-month hiatus, sve2 is back.  This time, with RISU
+testing vs FVP 11.13.36.
 
-Pass the power-of-two value in the simd_data field instead.
+Based-on: 20210309155305.11301-1-richard.henderson@linaro.org
+("target/arm: sve1 fixes")
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/sve_helper.c    | 2 +-
- target/arm/translate-sve.c | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
-index 6f4bc3a3cc..fd6c58f96a 100644
---- a/target/arm/sve_helper.c
-+++ b/target/arm/sve_helper.c
-@@ -2896,7 +2896,7 @@ static TYPE NAME##_reduce(TYPE *data, float_status *status, uintptr_t n) \
- }                                                                     \
- uint64_t HELPER(NAME)(void *vn, void *vg, void *vs, uint32_t desc)    \
- {                                                                     \
--    uintptr_t i, oprsz = simd_oprsz(desc), maxsz = simd_maxsz(desc);  \
-+    uintptr_t i, oprsz = simd_oprsz(desc), maxsz = simd_data(desc);   \
-     TYPE data[sizeof(ARMVectorReg) / sizeof(TYPE)];                   \
-     for (i = 0; i < oprsz; ) {                                        \
-         uint16_t pg = *(uint16_t *)(vg + H1_2(i >> 3));               \
-diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-index 2420cd741b..0eefb61214 100644
---- a/target/arm/translate-sve.c
-+++ b/target/arm/translate-sve.c
-@@ -3440,7 +3440,7 @@ static void do_reduce(DisasContext *s, arg_rpr_esz *a,
- {
-     unsigned vsz = vec_full_reg_size(s);
-     unsigned p2vsz = pow2ceil(vsz);
--    TCGv_i32 t_desc = tcg_const_i32(simd_desc(vsz, p2vsz, 0));
-+    TCGv_i32 t_desc = tcg_const_i32(simd_desc(vsz, vsz, p2vsz));
-     TCGv_ptr t_zn, t_pg, status;
-     TCGv_i64 temp;
- 
+r~
+
+
+Richard Henderson (60):
+  target/arm: Add ID_AA64ZFR0 fields and isar_feature_aa64_sve2
+  target/arm: Implement SVE2 Integer Multiply - Unpredicated
+  target/arm: Implement SVE2 integer pairwise add and accumulate long
+  target/arm: Implement SVE2 integer unary operations (predicated)
+  target/arm: Split out saturating/rounding shifts from neon
+  target/arm: Implement SVE2 saturating/rounding bitwise shift left
+    (predicated)
+  target/arm: Implement SVE2 integer halving add/subtract (predicated)
+  target/arm: Implement SVE2 integer pairwise arithmetic
+  target/arm: Implement SVE2 saturating add/subtract (predicated)
+  target/arm: Implement SVE2 integer add/subtract long
+  target/arm: Implement SVE2 integer add/subtract interleaved long
+  target/arm: Implement SVE2 integer add/subtract wide
+  target/arm: Implement SVE2 integer multiply long
+  target/arm: Implement PMULLB and PMULLT
+  target/arm: Implement SVE2 bitwise shift left long
+  target/arm: Implement SVE2 bitwise exclusive-or interleaved
+  target/arm: Implement SVE2 bitwise permute
+  target/arm: Implement SVE2 complex integer add
+  target/arm: Implement SVE2 integer absolute difference and accumulate
+    long
+  target/arm: Implement SVE2 integer add/subtract long with carry
+  target/arm: Implement SVE2 bitwise shift right and accumulate
+  target/arm: Implement SVE2 bitwise shift and insert
+  target/arm: Implement SVE2 integer absolute difference and accumulate
+  target/arm: Implement SVE2 saturating extract narrow
+  target/arm: Implement SVE2 SHRN, RSHRN
+  target/arm: Implement SVE2 SQSHRUN, SQRSHRUN
+  target/arm: Implement SVE2 UQSHRN, UQRSHRN
+  target/arm: Implement SVE2 SQSHRN, SQRSHRN
+  target/arm: Implement SVE2 WHILEGT, WHILEGE, WHILEHI, WHILEHS
+  target/arm: Implement SVE2 WHILERW, WHILEWR
+  target/arm: Implement SVE2 bitwise ternary operations
+  target/arm: Implement SVE2 saturating multiply-add long
+  target/arm: Implement SVE2 saturating multiply-add high
+  target/arm: Implement SVE2 integer multiply-add long
+  target/arm: Implement SVE2 complex integer multiply-add
+  target/arm: Implement SVE2 XAR
+  target/arm: Pass separate addend to {U,S}DOT helpers
+  target/arm: Pass separate addend to FCMLA helpers
+  target/arm: Split out formats for 2 vectors + 1 index
+  target/arm: Split out formats for 3 vectors + 1 index
+  target/arm: Implement SVE2 integer multiply (indexed)
+  target/arm: Implement SVE2 integer multiply-add (indexed)
+  target/arm: Implement SVE2 saturating multiply-add high (indexed)
+  target/arm: Implement SVE2 saturating multiply-add (indexed)
+  target/arm: Implement SVE2 integer multiply long (indexed)
+  target/arm: Implement SVE2 saturating multiply (indexed)
+  target/arm: Implement SVE2 signed saturating doubling multiply high
+  target/arm: Implement SVE2 saturating multiply high (indexed)
+  target/arm: Implement SVE2 multiply-add long (indexed)
+  target/arm: Implement SVE2 complex integer multiply-add (indexed)
+  target/arm: Implement SVE mixed sign dot product (indexed)
+  target/arm: Implement SVE mixed sign dot product
+  target/arm: Implement SVE2 crypto unary operations
+  target/arm: Implement SVE2 crypto destructive binary operations
+  target/arm: Implement SVE2 crypto constructive binary operations
+  target/arm: Share table of sve load functions
+  target/arm: Implement SVE2 LD1RO
+  target/arm: Implement 128-bit ZIP, UZP, TRN
+  target/arm: Implement SVE2 complex integer dot product
+  target/arm: Enable SVE2 and some extensions
+
+Stephen Long (18):
+  target/arm: Implement SVE2 floating-point pairwise
+  target/arm: Implement SVE2 MATCH, NMATCH
+  target/arm: Implement SVE2 ADDHNB, ADDHNT
+  target/arm: Implement SVE2 RADDHNB, RADDHNT
+  target/arm: Implement SVE2 SUBHNB, SUBHNT
+  target/arm: Implement SVE2 RSUBHNB, RSUBHNT
+  target/arm: Implement SVE2 HISTCNT, HISTSEG
+  target/arm: Implement SVE2 scatter store insns
+  target/arm: Implement SVE2 gather load insns
+  target/arm: Implement SVE2 FMMLA
+  target/arm: Implement SVE2 SPLICE, EXT
+  target/arm: Implement SVE2 TBL, TBX
+  target/arm: Implement SVE2 FCVTNT
+  target/arm: Implement SVE2 FCVTLT
+  target/arm: Implement SVE2 FCVTXNT, FCVTX
+  target/arm: Implement SVE2 FLOGB
+  target/arm: Implement SVE2 bitwise shift immediate
+  target/arm: Implement SVE2 fp multiply-add long
+
+ target/arm/cpu.h                |   56 +
+ target/arm/helper-sve.h         |  722 ++++++-
+ target/arm/helper.h             |  104 +-
+ target/arm/translate-a64.h      |    3 +
+ target/arm/vec_internal.h       |  143 ++
+ target/arm/sve.decode           |  568 +++++-
+ target/arm/cpu64.c              |   11 +
+ target/arm/helper.c             |    3 +-
+ target/arm/kvm64.c              |   11 +
+ target/arm/neon_helper.c        |  507 +----
+ target/arm/sve_helper.c         | 2123 ++++++++++++++++++++-
+ target/arm/translate-a64.c      |   68 +-
+ target/arm/translate-sve.c      | 3157 +++++++++++++++++++++++++++++--
+ target/arm/vec_helper.c         |  777 +++++++-
+ target/arm/translate-neon.c.inc |   20 +-
+ 15 files changed, 7425 insertions(+), 848 deletions(-)
+
 -- 
 2.25.1

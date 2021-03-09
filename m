@@ -1,97 +1,85 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2501358lfg;
-        Mon, 8 Mar 2021 22:20:49 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJw/wnT42wk8RRhJHLiIIw+INx9Tszd5hl4m4DTVII0nFLjEB/EoLoao4E8FpcLqGVvq/XsR
-X-Received: by 2002:a05:6e02:1544:: with SMTP id j4mr23704033ilu.29.1615270849041;
-        Mon, 08 Mar 2021 22:20:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1615270849; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2538605lfg;
+        Mon, 8 Mar 2021 23:27:56 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxSThZ7F0o+g72c7KVIV49KV6LTAgEm4+eO6IxGMo8EzbxyzAtq1Z//YCeMiWbRJ7gGnhIC
+X-Received: by 2002:a92:cda2:: with SMTP id g2mr24142183ild.297.1615274876413;
+        Mon, 08 Mar 2021 23:27:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1615274876; cv=none;
         d=google.com; s=arc-20160816;
-        b=G7U2eAi/f1VEXeC0YWv0WggfZJwO4JGmU0ORGUM5g9OI70tIHeFqv9A2xUmmyd9VFN
-         4aAaFoWNkylpp+cgUXfM6qVD7UYq5ZE8ZFeqU31EtTRZajK0OItNyBt3emwi7rs0YrY8
-         zxMPivz8ufoBLcL+MMDhyitUz2JCVHklfUlLB4vPzc+oLiYGnK7ZcrMkIs7v+65spFWE
-         3Shf11SUE1S6ITGxPyM3X1+82wohlc9D7JNE9goJIs3di5pkKmy+4ct9+queJlQ9bbK+
-         4sPJA3NBjcwFuhJ1SVaJGliNt4Umh655TUD9Wcm7WEc4HgBxbmHx8QdUp5mEIAu81Q3j
-         WGBQ==
+        b=mtZ2VXsLRc97thRUOTnGAMXKdu9go/mUa7sLu8U1/nU9/dsO++V/nTkKvgJDCQwxJ5
+         pk4yui2W/wllXyhCkLJTNj37se9HSPD3gwUdBSAwO+zXGneg97GUqayIzrZZCrOVmJ06
+         08uP43D4ENHY9mMa7GXpJHA7tOVkUVqP9Gno5robsbd4tVYTEXG4oiHYFP+Vdef69N29
+         X3FwdLB2oEP+hhD4yjNH3AOXDhLq9NOlyOYS92f7ZwgzGoksil6/9pygT61uDmXA1gLn
+         Ydf8nnkM6FCpc9wfRXwxAEmjaMsvr7tgobVpMU9ah/wGnoWI6OiDCqWc9u0rSArl4Nre
+         825Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=miQeKNkvU8lnqhe4eX7n0EAYZqmKfdLV68+1Zj20kXw=;
-        b=MP6wArecaUeFS9TLYS3f2Aw84mWpI9ZF494+QBe0eg5hM87OP/2QB6Gd/5J4zUbDZp
-         rsv6eV7SZYZWtYmhMXIk3c6b1ObSqvjj4UMHiLAgLwEQU58f6p8uyTGXqaBYubKfj72Z
-         fHwNLOgyBOo4v1SdgxDmVObNM6GWV/pjsYqYCkQqCTnI/sc7C9JXvePyFDLHNdJJwgT9
-         wYMHSc3wTCt0OPB0VfyA8hfmqsiheZIKqJJLgT85PzElIT1mmAVh4flItwS49iltgoFh
-         rpV8vVJbO9dJrda4CjnGx/OVqBszRY4Wkxf93+NqeUwNAhAi6wi68sM95KdG067MxhuJ
-         3JgA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=GGfIej1nXQFaNPyrgAQISp3y5EWrF/DpDGZ1BHFPU+8=;
+        b=NBsJoHplZm+U9iD3AkgO+KIH2nsSuEmWRtDcqc0LUnGy8g87ZOIWyQxRLsnx6gmlUt
+         RpTShq1h1wljgSKdBsIo4c24iBKHipgJIErSqrf1DycWpR3TVHvJSCLS7RFzDHBaAL+c
+         YFiGEe6izRhSDhz09V0724WeyhyIrQr9d8jWFnuYnsjqiY6XXSct/RYIQGXIpDYksyeD
+         ZH3Xaca6yVoSbuO8CamKJd3xJGcQhz06aSVEH4avhR0de9eF6V1NeOHpH1BiB0Z/QX/5
+         wFfAsyNUzjR5aiRzecQzFPAxx+zeBVPhKNCEizv7YM5y4NJH+mwHDTTCX2YGyJtP6fGc
+         Pe9A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=YvfDI6F1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k15si13108857jan.49.2021.03.08.22.20.48
+        by mx.google.com with ESMTPS id o10si13830811jat.112.2021.03.08.23.27.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Mar 2021 22:20:49 -0800 (PST)
+        Mon, 08 Mar 2021 23:27:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=YvfDI6F1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46904 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42266 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lJVjc-0008D0-89
-	for alex.bennee@linaro.org; Tue, 09 Mar 2021 01:20:48 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51404)
+	id 1lJWmZ-00050g-MG
+	for alex.bennee@linaro.org; Tue, 09 Mar 2021 02:27:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34020)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1lJVie-0008Co-O6; Tue, 09 Mar 2021 01:19:48 -0500
-Received: from mail-qv1-xf2e.google.com ([2607:f8b0:4864:20::f2e]:46669)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1lJVic-0007UH-Ln; Tue, 09 Mar 2021 01:19:48 -0500
-Received: by mail-qv1-xf2e.google.com with SMTP id 15so5873978qvp.13;
- Mon, 08 Mar 2021 22:19:45 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=miQeKNkvU8lnqhe4eX7n0EAYZqmKfdLV68+1Zj20kXw=;
- b=YvfDI6F1dsvxuSVYQYq0yOCc1BMuTN424Owb4vdEY9K9PbwCpWYO3o3uZaPekIOLul
- Yv7CQNxtuk/R/ygn8okmoJzzK6Z0dG7G0mmPI91+1ZLxClnRUSe+9zGFcySA5ZTJLOVi
- 1pCMAiYtuozU9Ke56WOytDsp5n80R1gU9fENw=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=miQeKNkvU8lnqhe4eX7n0EAYZqmKfdLV68+1Zj20kXw=;
- b=W+HeYEuoUd6ko8BMB1Ka1CUsK3XB+5H90wQCZIho4QqcysX4KoYU788uvQf/ifzXSJ
- eQj46bab8GLcttaiXb/CJ9YrqaShOxsZJFVORMcntBntqs029qwYm5LulV9uiH02AHPo
- WYoL7guiOiXc8tA+ZiinMPJC4AHoGEpFCZgPK6QR1i6IIotnE50UuuC8NnxJjRGuoqvD
- 5Kx7hmHurpSK9Nf3ZMUDDc2+268XVFqEBTrHMd0Ya5wMENXMms3kCz2ira06w07l//zI
- B3vDEkkMMURE6yyl/Fz5Tqj65u+dbKbpbYMjJc6XS/ZlCcS0EiS0U4vQgNwE+z54SpOf
- dTMQ==
-X-Gm-Message-State: AOAM531+b6ZkSHNc/nK1sKhddismcy/5Bur91o1Jdawh4+SlJxPtvhB3
- aHZkJG5XQb6INRIVtTt+PEjZ88jm7QbS0Uqp524=
-X-Received: by 2002:a0c:b894:: with SMTP id y20mr24547768qvf.43.1615270784686; 
- Mon, 08 Mar 2021 22:19:44 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <lushenming@huawei.com>)
+ id 1lJWlD-00048W-7R; Tue, 09 Mar 2021 02:26:32 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32]:3558)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <lushenming@huawei.com>)
+ id 1lJWl5-0006RQ-77; Tue, 09 Mar 2021 02:26:30 -0500
+Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.60])
+ by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4Dvmtg2wlgzjWbD;
+ Tue,  9 Mar 2021 15:24:43 +0800 (CST)
+Received: from [10.174.184.135] (10.174.184.135) by
+ DGGEMS405-HUB.china.huawei.com (10.3.19.205) with Microsoft SMTP Server id
+ 14.3.498.0; Tue, 9 Mar 2021 15:26:04 +0800
+Subject: Re: [PATCH v3 3/3] vfio: Avoid disabling and enabling vectors
+ repeatedly in VFIO migration
+To: Alex Williamson <alex.williamson@redhat.com>, <mst@redhat.com>,
+ <marcel.apfelbaum@gmail.com>
+References: <20210223022225.50-1-lushenming@huawei.com>
+ <20210223022225.50-4-lushenming@huawei.com>
+ <20210302142628.60e0ab6f@omen.home.shazbot.org>
+From: Shenming Lu <lushenming@huawei.com>
+Message-ID: <97a3189a-f053-cb77-0ae9-02530fb4ac89@huawei.com>
+Date: Tue, 9 Mar 2021 15:25:52 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.2.2
 MIME-Version: 1.0
-References: <20210304123951.163411-1-joel@jms.id.au>
- <20210304123951.163411-3-joel@jms.id.au>
- <5e6691b6-1cdc-8d66-25e7-4df1be63be46@redhat.com>
-In-Reply-To: <5e6691b6-1cdc-8d66-25e7-4df1be63be46@redhat.com>
-From: Joel Stanley <joel@jms.id.au>
-Date: Tue, 9 Mar 2021 06:19:31 +0000
-Message-ID: <CACPK8XfYVO2VBcvAhPXPx+MSe75Oi+YoJ-SCAGhUWDs1xh4RNQ@mail.gmail.com>
-Subject: Re: [PATCH v2 2/2] tests/acceptance: Test ast2600 machine
-To: Wainer dos Santos Moschetta <wainersm@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f2e;
- envelope-from=joel.stan@gmail.com; helo=mail-qv1-xf2e.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+In-Reply-To: <20210302142628.60e0ab6f@omen.home.shazbot.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.174.184.135]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.32; envelope-from=lushenming@huawei.com;
+ helo=szxga06-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -104,95 +92,120 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Cleber Rosa <crosa@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Neo Jia <cjia@nvidia.com>,
+ Marc Zyngier <maz@kernel.org>, Cornelia Huck <cohuck@redhat.com>,
+ qemu-devel@nongnu.org, "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
+ Eric Auger <eric.auger@redhat.com>, Kirti Wankhede <kwankhede@nvidia.com>,
+ qemu-arm@nongnu.org, yuzenghui@huawei.com, wanghaibin.wang@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hQQj+be2C91Y
+X-TUID: K8Hn8g3zir7O
 
-On Fri, 5 Mar 2021 at 20:46, Wainer dos Santos Moschetta
-<wainersm@redhat.com> wrote:
->
-> Hi,
->
-> On 3/4/21 9:39 AM, Joel Stanley wrote:
-> > This tests a Debian multi-soc arm32 Linux kernel on the AST2600 based
-> > Tacoma BMC machine.
-> >
-> > There is no root file system so the test terminates when boot reaches
-> > the stage where it attempts and fails to mount something.
-> >
-> > Signed-off-by: Joel Stanley <joel@jms.id.au>
-> > ---
-> > v2: Update expected strings so test passes
-> > ---
-> >   tests/acceptance/boot_linux_console.py | 26 ++++++++++++++++++++++++++
-> >   1 file changed, 26 insertions(+)
-> >
-> > diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/boot_linux_console.py
-> > index 2f46a08fdc10..4f1df69bc75c 100644
-> > --- a/tests/acceptance/boot_linux_console.py
-> > +++ b/tests/acceptance/boot_linux_console.py
-> > @@ -1094,6 +1094,32 @@ def do_test_arm_aspeed(self, image):
-> >           # self.wait_for_console_pattern("login:")
-> >           self.vm.shutdown()
-> >
-> > +    def test_arm_ast2600_debian(self):
-> > +        """
-> > +        :avocado: tags=arch:arm
-> > +        :avocado: tags=machine:tacoma-bmc
-> > +        """
-> > +        deb_url = ('http://snapshot.debian.org/archive/debian/'
-> > +                   '20210302T203551Z/'
-> > +                   'pool/main/l/linux/'
-> > +                   'linux-image-5.10.0-3-armmp_5.10.13-1_armhf.deb')
-> > +        deb_hash = 'db40d32fe39255d05482bea48d72467b67d6225bb2a2a4d6f618cb8976f1e09e'
-> > +        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash,
-> > +                                    algorithm='sha256')
-> > +        kernel_path = self.extract_from_deb(deb_path, '/boot/vmlinuz-5.10.0-3-armmp')
-> > +        dtb_path = self.extract_from_deb(deb_path,
-> > +                '/usr/lib/linux-image-5.10.0-3-armmp/aspeed-bmc-opp-tacoma.dtb')
-> > +
-> > +        self.vm.set_console()
-> > +        self.vm.add_args('-kernel', kernel_path,
-> > +                         '-dtb', dtb_path,
-> > +                         '-net', 'nic')
-> > +        self.vm.launch()
-> > +        self.wait_for_console_pattern("Booting Linux on physical CPU 0xf00")
-> > +        self.wait_for_console_pattern("SMP: Total of 2 processors activated")
->
-> Above check isn't reliable. Here the VM started with smp 1, therefore
-> the test failed as:
+On 2021/3/3 5:26, Alex Williamson wrote:
+> 
+> MST/Marcel,
+> 
+> Do you have an Ack or objection to exporting msix_masked() as below?
 
-We should reliably pass that check once this fix has been merged:
+Or could we use msix_function_masked instead as below? :-)
 
- https://lore.kernel.org/qemu-devel/20210303010505.635621-1-joel@jms.id.au/T/
+if (!pdev->msix_function_masked) {
+    for (nr = 0; nr < msix_nr_vectors_allocated(pdev); nr++) {
+        if (!msix_is_masked(pdev, nr)) {
+            max_vec = nr;
+        }
+    }
+}
 
-Having that line included is helpful, as it tests the smp boot stub
-functionality in our emulated machine.
+Thanks,
+Shenming
 
->
-> FAIL: Failure message found in console: Kernel panic - not syncing
->
-> > +        self.wait_for_console_pattern("No filesystem could mount root")
-> > +        self.vm.shutdown()
->
-> You don't need to shutdown the VM as the test's tearDown() does that for
-> you.
-
-Thanks, I'll send a v2 with those removed.
-
-
->
-> Thanks!
->
-> - Wainer
->
-> > +
-> >       def test_m68k_mcf5208evb(self):
-> >           """
-> >           :avocado: tags=arch:m68k
->
+> Thanks,
+> 
+> Alex
+> 
+> On Tue, 23 Feb 2021 10:22:25 +0800
+> Shenming Lu <lushenming@huawei.com> wrote:
+> 
+>> In VFIO migration resume phase and some guest startups, there are
+>> already unmasked vectors in the vector table when calling
+>> vfio_msix_enable(). So in order to avoid inefficiently disabling
+>> and enabling vectors repeatedly, let's allocate all needed vectors
+>> first and then enable these unmasked vectors one by one without
+>> disabling.
+>>
+>> Signed-off-by: Shenming Lu <lushenming@huawei.com>
+>> ---
+>>  hw/pci/msix.c         |  2 +-
+>>  hw/vfio/pci.c         | 20 +++++++++++++++++---
+>>  include/hw/pci/msix.h |  1 +
+>>  3 files changed, 19 insertions(+), 4 deletions(-)
+>>
+>> diff --git a/hw/pci/msix.c b/hw/pci/msix.c
+>> index ae9331cd0b..e057958fcd 100644
+>> --- a/hw/pci/msix.c
+>> +++ b/hw/pci/msix.c
+>> @@ -131,7 +131,7 @@ static void msix_handle_mask_update(PCIDevice *dev, int vector, bool was_masked)
+>>      }
+>>  }
+>>  
+>> -static bool msix_masked(PCIDevice *dev)
+>> +bool msix_masked(PCIDevice *dev)
+>>  {
+>>      return dev->config[dev->msix_cap + MSIX_CONTROL_OFFSET] & MSIX_MASKALL_MASK;
+>>  }
+>> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+>> index f74be78209..088fd41926 100644
+>> --- a/hw/vfio/pci.c
+>> +++ b/hw/vfio/pci.c
+>> @@ -569,6 +569,9 @@ static void vfio_msix_vector_release(PCIDevice *pdev, unsigned int nr)
+>>  
+>>  static void vfio_msix_enable(VFIOPCIDevice *vdev)
+>>  {
+>> +    PCIDevice *pdev = &vdev->pdev;
+>> +    unsigned int nr, max_vec = 0;
+>> +
+>>      vfio_disable_interrupts(vdev);
+>>  
+>>      vdev->msi_vectors = g_new0(VFIOMSIVector, vdev->msix->entries);
+>> @@ -587,11 +590,22 @@ static void vfio_msix_enable(VFIOPCIDevice *vdev)
+>>       * triggering to userspace, then immediately release the vector, leaving
+>>       * the physical device with no vectors enabled, but MSI-X enabled, just
+>>       * like the guest view.
+>> +     * If there are already unmasked vectors (in migration resume phase and
+>> +     * some guest startups) which will be enabled soon, we can allocate all
+>> +     * of them here to avoid inefficiently disabling and enabling vectors
+>> +     * repeatedly later.
+>>       */
+>> -    vfio_msix_vector_do_use(&vdev->pdev, 0, NULL, NULL);
+>> -    vfio_msix_vector_release(&vdev->pdev, 0);
+>> +    if (!msix_masked(pdev)) {
+>> +        for (nr = 0; nr < msix_nr_vectors_allocated(pdev); nr++) {
+>> +            if (!msix_is_masked(pdev, nr)) {
+>> +                max_vec = nr;
+>> +            }
+>> +        }
+>> +    }
+>> +    vfio_msix_vector_do_use(pdev, max_vec, NULL, NULL);
+>> +    vfio_msix_vector_release(pdev, max_vec);
+>>  
+>> -    if (msix_set_vector_notifiers(&vdev->pdev, vfio_msix_vector_use,
+>> +    if (msix_set_vector_notifiers(pdev, vfio_msix_vector_use,
+>>                                    vfio_msix_vector_release, NULL)) {
+>>          error_report("vfio: msix_set_vector_notifiers failed");
+>>      }
+>> diff --git a/include/hw/pci/msix.h b/include/hw/pci/msix.h
+>> index 4c4a60c739..b3cd88e262 100644
+>> --- a/include/hw/pci/msix.h
+>> +++ b/include/hw/pci/msix.h
+>> @@ -28,6 +28,7 @@ void msix_load(PCIDevice *dev, QEMUFile *f);
+>>  
+>>  int msix_enabled(PCIDevice *dev);
+>>  int msix_present(PCIDevice *dev);
+>> +bool msix_masked(PCIDevice *dev);
+>>  
+>>  bool msix_is_masked(PCIDevice *dev, unsigned vector);
+>>  void msix_set_pending(PCIDevice *dev, unsigned vector);
+> 
+> .
+> 

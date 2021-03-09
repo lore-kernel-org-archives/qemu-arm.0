@@ -1,233 +1,135 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2930646lfg;
-        Tue, 9 Mar 2021 07:53:14 -0800 (PST)
-X-Received: by 2002:a4a:a223:: with SMTP id m35mr6811948ool.39.1615305194842;
-        Tue, 09 Mar 2021 07:53:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1615305194; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2958152lfg;
+        Tue, 9 Mar 2021 08:24:42 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxmGZ/j0QIjYLs5/gFUO5FzgI02bfxcrxZBGbu5xFYNxj9XiC8d3WqiZrC0TCXo0Mywa+75
+X-Received: by 2002:a05:6e02:1608:: with SMTP id t8mr25398515ilu.79.1615307082737;
+        Tue, 09 Mar 2021 08:24:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1615307082; cv=none;
         d=google.com; s=arc-20160816;
-        b=pjcwxr/yJ7GCP1jgNJK5GVsJ6Q6Eybf4Pn1WaQsWQLq4Fh5YuHxvqJ0KxZBgYHaPJy
-         LccnqdMMmfNnT/TNx3dtVM+nSllu9AEadMS8jFvcbnl8cTZ8NnHrGjU7F16ygTfpn9//
-         cgF/jEWrJCotpXWeccPMXnWIjVyh43uwltSVLDuRWTaR4zxGmW7V/uumpVAFTOPqUW7O
-         7c282UnbIYq4o75P971eG6dWnqWIR7HkA2LIKG5rCg7Cjs066gMfHC0++fyX+cinLaaL
-         lW/p3Z4CjBkd6ItetRyUQjfCXEOuKpum2U5SxNgPOMR/HB3DFH5M/tZ8qoaGs0fRptaY
-         sR8Q==
+        b=TGSwg82sLVaaEMxuDYH0RbobGL4Au6WMnD6VtefoidrvSJRqGxzVk9iRjYRNOWbmCN
+         ZL/cse9OFJ3PoAGRHSUQM3AATYj9jFz9ihXK0MlSHutSpjtRu6AfNRLspAxS3ZyV6uD5
+         3QxxwANDhWBzmX7bYXZO3ewKH3Xk75nCH0JN88jGCnHWctpvmluPxtjGcAXN50hL4ZNt
+         c22N0dTtAjE7uThRyhzRuv+WsMZjY2L6fDRUH8BWvDYE9leICdx162J1n7WIzK+yIo8i
+         BzTLoJBDj4I+KMFTSeSRo/VuS2tgUzkz9fX6bm8tZM1sMZDqI7CnGbcJEYLu7WRtl9cU
+         u6hg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=IUswOVHmPjwO24MveU3hkPJismX650bXSG+gRkRnCa0=;
-        b=AyLXP+ZDX8ZgFO2OlYasCJ6WbVNtFCSNF9bjm6jILEkoHkmJBG/GdWl3DOUaWQ6PTj
-         SS+pXRBDCBvd3GwmsKo783r0QqO5Ke5sJvfkXj7B2zAGBUUuNgTl/s8FRXtfL6pkEtbn
-         5jXxc+f4lPeeE2hVeE7dEljdiCiNTFQOXHbHQ9mUQFGZXHrOqU8M0XtSwCxN2P/LVJOT
-         ZriW58UJoalaY88t7fkaGy/li7diqhQCUEJnMIxq3scNcyV5cw/OKfxhVbpgefrTRvWG
-         x+6W6e02KWhpxa2SGXSv5tOZVqt1OVAzMk0c2US1wqpkS0ci6gTkw+BmewJrkpuhW5KL
-         dXZw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=sN+hwOSWWku2IDqj62zGmsVyOXYhK0ebtTufLl6atlU=;
+        b=DEf+gNB2PrOXQq0hpm34PhTZtdnuV8j5R/3GvVeb3jjjq2rnUXAxUhJGcoznmosPOI
+         bkn1WekvmuCEXd6DxQ2BjuU9pd0wl6ROgBgYSIzc343nEQOe/t9yHXQLC1QrE+FK9Gza
+         Np9qnaKE4kiEsLA3iId45XNfQijGf1VfIV1oWXQz+MVhVZ14qVAGRn5PSzhzNnlS+RB0
+         l0kTdQ6qQFNyVNpa+U3JcQisxuazg5C3BxY6opzdfmIb17jTuhGAMcCSzjceanKt30Ly
+         Asa1pJ76Id1sgw9pVfOIrIYrtWKXsjQfLxAYprrq0ogPIXvR7RnXYrjIYyriMEjo/7nZ
+         zc6g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OyUjvzFU;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id j25sor1245761otk.55.2021.03.09.07.53.13
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id e6si16427882ilu.126.2021.03.09.08.24.42
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 09 Mar 2021 07:53:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 09 Mar 2021 08:24:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OyUjvzFU;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=IUswOVHmPjwO24MveU3hkPJismX650bXSG+gRkRnCa0=;
-        b=OyUjvzFU9zJ6OB/wTdFdcfACo8xGqg7O8WqTG1x4O/06XPlKKRShU0jqpmfk7TAz+S
-         LwNqUgAm8mO+9xz6eAQyOCvxwjZX6xlX4jFBqR3WK78RV+S5Mez5xahEsQ+ch2BVb5Tj
-         JxEBqqHxH+vA+50vzFFuPEgBb+A4Qu8cbKW+GB7iOeSJxhRv3S6Ib6qiN7rSZEmLsmrB
-         PAUD80yJNM9g4+LEGpCADx9f37q8A/w0Yzb4GP5JVT6tjhBT05jr2YmbZ+5Bj9qBV/dp
-         WHTkcjRlmMuYp+GQZsyBgfyB47zcGzXY/rk40+t634SCBepKolSJOFWnRIg8/tOI3/Qn
-         co0g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=IUswOVHmPjwO24MveU3hkPJismX650bXSG+gRkRnCa0=;
-        b=jpYefGjjpcmKPXPb2oPxBkVg6cr/rG2gM3DBKc31Pq4zhR4FQ7l1x5qBha39gMGFED
-         86V85lX8YLq3ynEX/6SAtq8s4s75JXZccCjeT3DWvljOoN4qdhm7HKjTN/0kuWfOUTP6
-         FwtmDTQxddiDvIUsn7W6xXZGLe5PkxuxMD9eDg62gFfZ1Ixwd4wnhwuR1uWiN8JKtTrL
-         v4NKXsJQi2ktTnpE/mGy8Eh3zPrpG0pz91Zz27aOwxkJx20EmDdSDozMhHjY8Oi427Lu
-         ShIKRuvR0MRnwzsxbaHTbXciggU4G9/SWQf6mE4MTcc88KIlm8P0lUgzSpC2Z63ybLfj
-         Bu+g==
-X-Gm-Message-State: AOAM530VYIeS6nx/Ginoqyuiz92WJnVxoFmJWJto9XLa9PL85PEXquU5
-	EULud5Ym5njMvgfTmsUn/xoc0Je9nTEX9OwN3qM=
-X-Google-Smtp-Source: ABdhPJzfpNLT72v1CjaUU870e9bAN7x8QTC/HjaUr+sBNn6kG7ma8/ikOd+70FWhWk8hFLWt9mHv4w==
-X-Received: by 2002:a05:6830:4109:: with SMTP id w9mr24786851ott.176.1615305193475;
-        Tue, 09 Mar 2021 07:53:13 -0800 (PST)
-Return-Path: <richard.henderson@linaro.org>
-Received: from localhost.localdomain (fixed-187-189-51-144.totalplay.net. [187.189.51.144])
-        by smtp.gmail.com with ESMTPSA id b14sm2952539ooj.26.2021.03.09.07.53.12
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 09 Mar 2021 07:53:13 -0800 (PST)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org,
-	qemu-arm@nongnu.org,
-	alex.bennee@linaro.org
-Subject: [PATCH v4 5/8] target/arm: Update BRKA, BRKB, BRKN for PREDDESC
-Date: Tue,  9 Mar 2021 07:53:02 -0800
-Message-Id: <20210309155305.11301-6-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210309155305.11301-1-richard.henderson@linaro.org>
-References: <20210309155305.11301-1-richard.henderson@linaro.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:36320 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lJfA2-00021D-0o
+	for alex.bennee@linaro.org; Tue, 09 Mar 2021 11:24:42 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38494)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <v.dupaquis@trusted-objects.com>)
+ id 1lJel8-000376-A7; Tue, 09 Mar 2021 10:58:58 -0500
+Received: from mailex.trusted-objects.com ([149.202.244.204]:34559)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <v.dupaquis@trusted-objects.com>)
+ id 1lJel6-0003Pt-Hm; Tue, 09 Mar 2021 10:58:58 -0500
+Received: from [192.170.0.219] (88.127.245.42) by S76918.EX76918.lan
+ (2001:41d0:117:dd00::95ca:f4cc) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P521) id 15.1.2176.2; Tue, 9 Mar
+ 2021 16:58:41 +0100
+Subject: Re: Malfunctionning qemu-system-arm ?
+To: Liviu Ionescu <ilg@livius.net>
+References: <20210211141515.8755-1-peter.maydell@linaro.org>
+ <14af0670-caaf-caf1-0b90-fb10c7db13b0@trusted-objects.com>
+ <e00943e0-b9a7-1688-b169-3650e8e4290e@trusted-objects.com>
+ <FBA649E1-4EFB-4409-894E-C1A5AB086BF1@livius.net>
+From: vincent Dupaquis <v.dupaquis@trusted-objects.com>
+Message-ID: <943374ff-fc7f-b0bc-0b53-0e7487cdf810@trusted-objects.com>
+Date: Tue, 9 Mar 2021 16:58:41 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.1
 MIME-Version: 1.0
+In-Reply-To: <FBA649E1-4EFB-4409-894E-C1A5AB086BF1@livius.net>
+Content-Type: text/plain; charset="utf-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: cIneKracW4q3
+Content-Language: fr-FR
+X-Originating-IP: [88.127.245.42]
+X-ClientProxiedBy: S76918.EX76918.lan (2001:41d0:117:dd00::95ca:f4cc) To
+ S76918.EX76918.lan (2001:41d0:117:dd00::95ca:f4cc)
+Received-SPF: none client-ip=149.202.244.204;
+ envelope-from=v.dupaquis@trusted-objects.com; helo=mailex.trusted-objects.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ep1C3TiqMgny
 
-Since b64ee454a4a0, all predicate operations should be
-using these field macros for predicates.
+Liviu,
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/sve_helper.c    | 30 ++++++++++++++----------------
- target/arm/translate-sve.c |  4 ++--
- 2 files changed, 16 insertions(+), 18 deletions(-)
+Thanks for the responses, I'll have a check on this.
 
-diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
-index 224c767944..8e0a5d30a5 100644
---- a/target/arm/sve_helper.c
-+++ b/target/arm/sve_helper.c
-@@ -2710,7 +2710,7 @@ static uint32_t do_zero(ARMPredicateReg *d, intptr_t oprsz)
- void HELPER(sve_brkpa)(void *vd, void *vn, void *vm, void *vg,
-                        uint32_t pred_desc)
- {
--    intptr_t oprsz = extract32(pred_desc, 0, SIMD_OPRSZ_BITS) + 2;
-+    intptr_t oprsz = FIELD_EX32(pred_desc, PREDDESC, OPRSZ);
-     if (last_active_pred(vn, vg, oprsz)) {
-         compute_brk_z(vd, vm, vg, oprsz, true);
-     } else {
-@@ -2721,7 +2721,7 @@ void HELPER(sve_brkpa)(void *vd, void *vn, void *vm, void *vg,
- uint32_t HELPER(sve_brkpas)(void *vd, void *vn, void *vm, void *vg,
-                             uint32_t pred_desc)
- {
--    intptr_t oprsz = extract32(pred_desc, 0, SIMD_OPRSZ_BITS) + 2;
-+    intptr_t oprsz = FIELD_EX32(pred_desc, PREDDESC, OPRSZ);
-     if (last_active_pred(vn, vg, oprsz)) {
-         return compute_brks_z(vd, vm, vg, oprsz, true);
-     } else {
-@@ -2732,7 +2732,7 @@ uint32_t HELPER(sve_brkpas)(void *vd, void *vn, void *vm, void *vg,
- void HELPER(sve_brkpb)(void *vd, void *vn, void *vm, void *vg,
-                        uint32_t pred_desc)
- {
--    intptr_t oprsz = extract32(pred_desc, 0, SIMD_OPRSZ_BITS) + 2;
-+    intptr_t oprsz = FIELD_EX32(pred_desc, PREDDESC, OPRSZ);
-     if (last_active_pred(vn, vg, oprsz)) {
-         compute_brk_z(vd, vm, vg, oprsz, false);
-     } else {
-@@ -2743,7 +2743,7 @@ void HELPER(sve_brkpb)(void *vd, void *vn, void *vm, void *vg,
- uint32_t HELPER(sve_brkpbs)(void *vd, void *vn, void *vm, void *vg,
-                             uint32_t pred_desc)
- {
--    intptr_t oprsz = extract32(pred_desc, 0, SIMD_OPRSZ_BITS) + 2;
-+    intptr_t oprsz = FIELD_EX32(pred_desc, PREDDESC, OPRSZ);
-     if (last_active_pred(vn, vg, oprsz)) {
-         return compute_brks_z(vd, vm, vg, oprsz, false);
-     } else {
-@@ -2753,56 +2753,55 @@ uint32_t HELPER(sve_brkpbs)(void *vd, void *vn, void *vm, void *vg,
- 
- void HELPER(sve_brka_z)(void *vd, void *vn, void *vg, uint32_t pred_desc)
- {
--    intptr_t oprsz = extract32(pred_desc, 0, SIMD_OPRSZ_BITS) + 2;
-+    intptr_t oprsz = FIELD_EX32(pred_desc, PREDDESC, OPRSZ);
-     compute_brk_z(vd, vn, vg, oprsz, true);
- }
- 
- uint32_t HELPER(sve_brkas_z)(void *vd, void *vn, void *vg, uint32_t pred_desc)
- {
--    intptr_t oprsz = extract32(pred_desc, 0, SIMD_OPRSZ_BITS) + 2;
-+    intptr_t oprsz = FIELD_EX32(pred_desc, PREDDESC, OPRSZ);
-     return compute_brks_z(vd, vn, vg, oprsz, true);
- }
- 
- void HELPER(sve_brkb_z)(void *vd, void *vn, void *vg, uint32_t pred_desc)
- {
--    intptr_t oprsz = extract32(pred_desc, 0, SIMD_OPRSZ_BITS) + 2;
-+    intptr_t oprsz = FIELD_EX32(pred_desc, PREDDESC, OPRSZ);
-     compute_brk_z(vd, vn, vg, oprsz, false);
- }
- 
- uint32_t HELPER(sve_brkbs_z)(void *vd, void *vn, void *vg, uint32_t pred_desc)
- {
--    intptr_t oprsz = extract32(pred_desc, 0, SIMD_OPRSZ_BITS) + 2;
-+    intptr_t oprsz = FIELD_EX32(pred_desc, PREDDESC, OPRSZ);
-     return compute_brks_z(vd, vn, vg, oprsz, false);
- }
- 
- void HELPER(sve_brka_m)(void *vd, void *vn, void *vg, uint32_t pred_desc)
- {
--    intptr_t oprsz = extract32(pred_desc, 0, SIMD_OPRSZ_BITS) + 2;
-+    intptr_t oprsz = FIELD_EX32(pred_desc, PREDDESC, OPRSZ);
-     compute_brk_m(vd, vn, vg, oprsz, true);
- }
- 
- uint32_t HELPER(sve_brkas_m)(void *vd, void *vn, void *vg, uint32_t pred_desc)
- {
--    intptr_t oprsz = extract32(pred_desc, 0, SIMD_OPRSZ_BITS) + 2;
-+    intptr_t oprsz = FIELD_EX32(pred_desc, PREDDESC, OPRSZ);
-     return compute_brks_m(vd, vn, vg, oprsz, true);
- }
- 
- void HELPER(sve_brkb_m)(void *vd, void *vn, void *vg, uint32_t pred_desc)
- {
--    intptr_t oprsz = extract32(pred_desc, 0, SIMD_OPRSZ_BITS) + 2;
-+    intptr_t oprsz = FIELD_EX32(pred_desc, PREDDESC, OPRSZ);
-     compute_brk_m(vd, vn, vg, oprsz, false);
- }
- 
- uint32_t HELPER(sve_brkbs_m)(void *vd, void *vn, void *vg, uint32_t pred_desc)
- {
--    intptr_t oprsz = extract32(pred_desc, 0, SIMD_OPRSZ_BITS) + 2;
-+    intptr_t oprsz = FIELD_EX32(pred_desc, PREDDESC, OPRSZ);
-     return compute_brks_m(vd, vn, vg, oprsz, false);
- }
- 
- void HELPER(sve_brkn)(void *vd, void *vn, void *vg, uint32_t pred_desc)
- {
--    intptr_t oprsz = extract32(pred_desc, 0, SIMD_OPRSZ_BITS) + 2;
--
-+    intptr_t oprsz = FIELD_EX32(pred_desc, PREDDESC, OPRSZ);
-     if (!last_active_pred(vn, vg, oprsz)) {
-         do_zero(vd, oprsz);
-     }
-@@ -2827,8 +2826,7 @@ static uint32_t predtest_ones(ARMPredicateReg *d, intptr_t oprsz,
- 
- uint32_t HELPER(sve_brkns)(void *vd, void *vn, void *vg, uint32_t pred_desc)
- {
--    intptr_t oprsz = extract32(pred_desc, 0, SIMD_OPRSZ_BITS) + 2;
--
-+    intptr_t oprsz = FIELD_EX32(pred_desc, PREDDESC, OPRSZ);
-     if (last_active_pred(vn, vg, oprsz)) {
-         return predtest_ones(vd, oprsz, -1);
-     } else {
-diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-index cac8082156..c0212e6b08 100644
---- a/target/arm/translate-sve.c
-+++ b/target/arm/translate-sve.c
-@@ -2850,7 +2850,7 @@ static bool do_brk3(DisasContext *s, arg_rprr_s *a,
-     TCGv_ptr n = tcg_temp_new_ptr();
-     TCGv_ptr m = tcg_temp_new_ptr();
-     TCGv_ptr g = tcg_temp_new_ptr();
--    TCGv_i32 t = tcg_const_i32(vsz - 2);
-+    TCGv_i32 t = tcg_const_i32(FIELD_DP32(0, PREDDESC, OPRSZ, vsz));
- 
-     tcg_gen_addi_ptr(d, cpu_env, pred_full_reg_offset(s, a->rd));
-     tcg_gen_addi_ptr(n, cpu_env, pred_full_reg_offset(s, a->rn));
-@@ -2884,7 +2884,7 @@ static bool do_brk2(DisasContext *s, arg_rpr_s *a,
-     TCGv_ptr d = tcg_temp_new_ptr();
-     TCGv_ptr n = tcg_temp_new_ptr();
-     TCGv_ptr g = tcg_temp_new_ptr();
--    TCGv_i32 t = tcg_const_i32(vsz - 2);
-+    TCGv_i32 t = tcg_const_i32(FIELD_DP32(0, PREDDESC, OPRSZ, vsz));
- 
-     tcg_gen_addi_ptr(d, cpu_env, pred_full_reg_offset(s, a->rd));
-     tcg_gen_addi_ptr(n, cpu_env, pred_full_reg_offset(s, a->rn));
+The issue not testing with the HAL is that as most people use it, qemu 
+on these platforms is a bit useless for emulation.
+
+On the other hand, it would be more on ST to invest on making those 
+emulations running ...
+
+Best regards,
+
+Vincent.
+
+Le 09/03/2021 à 15:37, Liviu Ionescu a écrit :
+>
+>> On 15 Feb 2021, at 17:09, vincent Dupaquis <v.dupaquis@trusted-objects.com> wrote:
+>>
+>> ... stuck on the starting HAL_init() call.
+> HAL requires, amongst other things, the clock registers, since it sets the PLLs for the desired frequencies.
+>
+> xPack QEMU Arm [1] implements these registers, and is able to properly run the HAL init code.
+>
+>
+> Regards,
+>
+> Liviu
+>
+> [1] - https://xpack.github.io/qemu-arm/
+>
 -- 
-2.25.1
+
+*Vincent Dupaquis*
+Software security & Cryptography expert
+06 24 58 17 05
+/Europarc de Pichaury Bâtiment B8 1330 rue Guillibert Gautier de la 
+Lauzière 13290 Aix-en-Provence/
+
+www.trusted-objects.com <http://www.trusted-objects.com>

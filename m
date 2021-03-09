@@ -1,275 +1,289 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2955221lfg;
-        Tue, 9 Mar 2021 08:21:15 -0800 (PST)
-X-Received: by 2002:a05:6830:2318:: with SMTP id u24mr13600300ote.291.1615306874816;
-        Tue, 09 Mar 2021 08:21:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1615306874; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2955249lfg;
+        Tue, 9 Mar 2021 08:21:16 -0800 (PST)
+X-Received: by 2002:aca:4e83:: with SMTP id c125mr3513365oib.38.1615306876206;
+        Tue, 09 Mar 2021 08:21:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1615306876; cv=none;
         d=google.com; s=arc-20160816;
-        b=siwQHyNg2W0ppcBCBZeO8uL27Bts/tF1te6mKKoucqUPLaWu0e5FG8Sow3GPHyE1Ir
-         MODwW//LBOYWVCzRX3rMsBSuH/TBzbc0r7DMEIFhIfnz8pzQDr4fvRCL7p382DrrpWlH
-         XQWwqT1G4uH7RwF4e2VuMjJVNobWFc5w/kl5iIaWZDApehmzXWtrS5i9Aj+kbQ46sv28
-         CWjdm4nnYrH/2bNMgEXK5cR/DQsnQ2BoWhGUEDUsH4aWJUAgTluDUTa5nAT5kiViSN/P
-         2qHtdtIUXB5PMFtYqRMej0jWunXCONpH8eVS2eLFSgVaciT99182avxbXG8sJf9rGUby
-         hPfw==
+        b=td9K901E8uBRyF889gH1ReyCNYRfQ3y56fvm1JCOtK4reuAwv4CJWyDXclEUv7sXXI
+         B4za9cuh0Jjaq/FL9Ojbzv/1eqblWg10pbgqS6zNxzt3UHYuTSahms86RitBBRbG7cbm
+         lJPdkYvgyvqEjTyL8eOQZBrjFVgZGTNoSH+Pg0+F2y6ZP7NOXImIWdP00pj8zlSoKXZQ
+         CqFXuModxcgykNozC2raP8ch+MsP3uymF/sYfwDl415a7us72fEONj8fySG2WGpMkojP
+         VbouONjeW1rQvD5wyRnWPnTIjLauXKPHPyTikIBS+jdXSwGbI/6Pvb4x90IE/WxFcuq0
+         IlXA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=hoz+RRUt4NVeZFe30oZNFywcAnPrk+J9cCbokJUYKMc=;
-        b=athCDT206pg3oMmily9l5+vxeb0kNSkLhBljNOA/F345SU7mNolnqSAoN9wOQ+R1sj
-         GaRNaVCSaj41tv4c5AG5hexXUG4o6I8ZwYfx/Ox5f7uUKscHvEFAcPFmkQ6XcTpW22/t
-         3VcPaK0XRMV68YD4TbvQ7qhw53Cg3lrjJWGobnH2TEz+SllgzJjg0j74RgGBXdmFWj3I
-         LlIO/4oRJX9/RlD0WbGaFwbL1BXfW8e3+qpPYyswV2R7eHydM80xtLXYtjVxYqmoshTp
-         xrpl/xo18Gew3Oss3dx3Q0tjAmPOJPz6ly6AuQIq4uvLXOsUwtx/GcSTv2x+sL2ON9qO
-         vghA==
+        bh=tqdKhCk5c5yScfkTSz3TJ7AtRc7gWT1n4eCkVBF5BsQ=;
+        b=S6l2d/lMApIwQVPHYUQiVbYGYp3rOIi61CbzYGUreBaUreSqhe/I257ESTysGfXsAf
+         PaJEFiIRulevrB6qM0PyqFk3bAFHq6mAOfJ08X+MrjZy8PYAw3kics1HQjZRef3o/kG9
+         FcWLAf4HDrrJBpxDK4IEY9J2QZarLWyNCUICdGJsFrfcstiR109rMMVWmdAK711xsE50
+         CWcXq3HE+3XKFyytyWEHvNPlODIa7eBgEDr3tUwatTDWCum3eJSNWo4WuU6crpi6w4jw
+         +/psHUW5kjqdwMw38A2NzgYeljeQqYY5oTUWopbRNhk8nHZ0ms8ajVyPu5c69TuF4ii+
+         UM6Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qP1GpV2X;
+       dkim=pass header.i=@linaro.org header.s=google header.b=HR2bZZ3t;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id q142sor2340190oic.51.2021.03.09.08.21.14
+        by mx.google.com with SMTPS id q132sor874063oia.165.2021.03.09.08.21.16
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 09 Mar 2021 08:21:14 -0800 (PST)
+        Tue, 09 Mar 2021 08:21:16 -0800 (PST)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qP1GpV2X;
+       dkim=pass header.i=@linaro.org header.s=google header.b=HR2bZZ3t;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=hoz+RRUt4NVeZFe30oZNFywcAnPrk+J9cCbokJUYKMc=;
-        b=qP1GpV2XDwLC0d8IoBEa4QpmQ/N3MQT33eWqhbRmFgA3um8l2es++97TTpfN8FLS8B
-         a54fgtSE8SNfp4rM+Kmd/6MgFC4kjIQOVeLLbgoubkbkUqn5I9PA5ZnH5jVoNOP1nhq9
-         2EExRAcI935AxYyx8UDQ+1yFfnVPJnwuzCaBqiwkzQlDVXMNtzYrdJnqnNkPfxVHCObD
-         y9vcugyg3QBlqRdgSju6lBYta1Hp3WJqvdJciuOC0ww80tgEBiB/AGhEYa39iAdKDoQq
-         eyb2s39DGJwPqavwjrU+3H61upAeVbrBKZDTWK2whO5mZQYjU/5FoZ0DK45eS49sIJRY
-         VnGQ==
+        bh=tqdKhCk5c5yScfkTSz3TJ7AtRc7gWT1n4eCkVBF5BsQ=;
+        b=HR2bZZ3tdv/TymFNmL57UxfwRoqMdldC6FyJmrE008FG9TLdWBl80a3c/r6aULJhsz
+         JxKnxtXt9bn8Lnwfe/EoQ0vOYpQYvvaCHAhVVz6ZPm+kUiW2Eg8TujW8dlube7r9lDqX
+         vP3zmSZGj091NHLz6ySbAvsKz7a9EbQj4c2uFBiGaCwLD3oB+ZzBkuzBK7Hv0HWl1hEN
+         LedhbVtBOd8cX1b6UzBmDpon2WjTZ9LaOLhNW12cLzXWnbZyBURVL+JZ+k727nyd8jYy
+         KpWNj0ah94PnXotm8JauvDbMAf9CS+ld5rYbzWfhjOPFqANm+leGpr/RfL3D0Jlu77G/
+         gceQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=hoz+RRUt4NVeZFe30oZNFywcAnPrk+J9cCbokJUYKMc=;
-        b=Du4lo9xkV2SobbS9NPrU2W68xVzqIW5jCG1TPb+YCTCc6Jc6gTiIlJOf9r23lzBZnw
-         vudVhTDIDpB/7H0O+0vMwaiWfrnUdMgfoeu1vvmc7b3+k+DWpZamqVXwjSJbKOSTVBuR
-         dVi8MJs2x5vnJIn/J1fxMC3oMmM5Kq65r7Vybr25Uk4VJk4uMGR+WLaVtKODdIls3LBj
-         3BCVkiYH7G8BdZu8Lh3b0B0smh+wsaNNB0DtSmIoau6xgTKdkqMBiN7si7R0qSdAigGO
-         ZoXI+DikIRU6T1f6+AAt/sEfhyEx3LRAjCNt0hnBuhVB0kp4SeZrJzNu3+WFUzbu4Wi2
-         x3xQ==
-X-Gm-Message-State: AOAM531iAxKlmGwEqjlBRaSeyvyuhhbLNA3TNlYeZjlKettpYqglbFrD
-	/pIU75FlufA5PAPKsGIxm7NTfX23
-X-Google-Smtp-Source: ABdhPJzWg/Of3cfqbPzuJT3iwblBwsjys6jLCKv0CZ1x59wfvjH8prSrDuLK2+9QibenUVZMck53fg==
-X-Received: by 2002:aca:ed10:: with SMTP id l16mr3513793oih.132.1615306874400;
-        Tue, 09 Mar 2021 08:21:14 -0800 (PST)
+        bh=tqdKhCk5c5yScfkTSz3TJ7AtRc7gWT1n4eCkVBF5BsQ=;
+        b=mn8zAd8v/0FMokTSYFNq5hRdHY7QFJFOSJolppx1Bh7fILVqhdxg/PViCR5d0tIRL/
+         8w2LvSIfCatRZQVVVBshkxybd72Kaad/zIM2MiNMjgkHE8axC01awoYZ7CB0bWFygSvt
+         iu8DbsJMgCZdPDRN4yoo/2cRX5gAnuWdK9lU5BkipEEylHgK87D/Dc6Ti1LxHjuqhDMi
+         o1gvufXOXpt0Jf9yfR4YFNC6Hr9A5jPQT3DxZhFpJemEBTCH65qYFS1kmU1IoEafW0/j
+         7+55mD4EsffKcL++GvMky5Syqy75bRWj+Jb5GRsUAfbwyFyMO4wS1WbS63k2UWiq/RTc
+         n3Fw==
+X-Gm-Message-State: AOAM5311fiANNZiVBLaPVouElYb6s2WLjyAIASrxNrs/FxfPVhc+8frA
+	5bzHlYzOsTdVjc/VuAHWxwunyBv8
+X-Google-Smtp-Source: ABdhPJzs+UFBtONZB4SINmnAvl2TFU5VS1tDsKadtrE5JL7wtUzpOIaB3+6JCMQ5IxXBXHsC8xHOSw==
+X-Received: by 2002:aca:5cd6:: with SMTP id q205mr3487126oib.94.1615306875831;
+        Tue, 09 Mar 2021 08:21:15 -0800 (PST)
 Return-Path: <richard.henderson@linaro.org>
 Received: from localhost.localdomain (fixed-187-189-51-144.totalplay.net. [187.189.51.144])
-        by smtp.gmail.com with ESMTPSA id v23sm2516474ots.63.2021.03.09.08.21.13
+        by smtp.gmail.com with ESMTPSA id v23sm2516474ots.63.2021.03.09.08.21.14
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 09 Mar 2021 08:21:14 -0800 (PST)
+        Tue, 09 Mar 2021 08:21:15 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org,
 	qemu-arm@nongnu.org,
 	alex.bennee@linaro.org
-Subject: [PATCH v4 28/78] target/arm: Implement SVE2 UQSHRN, UQRSHRN
-Date: Tue,  9 Mar 2021 08:19:51 -0800
-Message-Id: <20210309162041.23124-29-richard.henderson@linaro.org>
+Subject: [PATCH v4 29/78] target/arm: Implement SVE2 SQSHRN, SQRSHRN
+Date: Tue,  9 Mar 2021 08:19:52 -0800
+Message-Id: <20210309162041.23124-30-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210309162041.23124-1-richard.henderson@linaro.org>
 References: <20210309162041.23124-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: Zu6RDA64wFgx
+X-TUID: +2c2RWQhPGqJ
+
+This completes the section "SVE2 bitwise shift right narrow".
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper-sve.h    | 16 +++++++
- target/arm/sve.decode      |  4 ++
- target/arm/sve_helper.c    | 24 ++++++++++
- target/arm/translate-sve.c | 93 ++++++++++++++++++++++++++++++++++++++
- 4 files changed, 137 insertions(+)
+ target/arm/helper-sve.h    |  16 ++++++
+ target/arm/sve.decode      |   4 ++
+ target/arm/sve_helper.c    |  24 +++++++++
+ target/arm/translate-sve.c | 105 +++++++++++++++++++++++++++++++++++++
+ 4 files changed, 149 insertions(+)
 
 diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
-index 2e80d9d27b..ba6a24fc8b 100644
+index ba6a24fc8b..1c7fe8e417 100644
 --- a/target/arm/helper-sve.h
 +++ b/target/arm/helper-sve.h
 @@ -2476,6 +2476,22 @@ DEF_HELPER_FLAGS_3(sve2_sqrshrunt_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
  DEF_HELPER_FLAGS_3(sve2_sqrshrunt_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
  DEF_HELPER_FLAGS_3(sve2_sqrshrunt_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
  
-+DEF_HELPER_FLAGS_3(sve2_uqshrnb_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_3(sve2_uqshrnb_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_3(sve2_uqshrnb_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(sve2_sqshrnb_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(sve2_sqshrnb_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(sve2_sqshrnb_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
 +
-+DEF_HELPER_FLAGS_3(sve2_uqshrnt_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_3(sve2_uqshrnt_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_3(sve2_uqshrnt_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(sve2_sqshrnt_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(sve2_sqshrnt_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(sve2_sqshrnt_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
 +
-+DEF_HELPER_FLAGS_3(sve2_uqrshrnb_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_3(sve2_uqrshrnb_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_3(sve2_uqrshrnb_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(sve2_sqrshrnb_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(sve2_sqrshrnb_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(sve2_sqrshrnb_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
 +
-+DEF_HELPER_FLAGS_3(sve2_uqrshrnt_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_3(sve2_uqrshrnt_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_3(sve2_uqrshrnt_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(sve2_sqrshrnt_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(sve2_sqrshrnt_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(sve2_sqrshrnt_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
 +
- DEF_HELPER_FLAGS_6(sve2_faddp_zpzz_h, TCG_CALL_NO_RWG,
-                    void, ptr, ptr, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_6(sve2_faddp_zpzz_s, TCG_CALL_NO_RWG,
+ DEF_HELPER_FLAGS_3(sve2_uqshrnb_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_3(sve2_uqshrnb_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_3(sve2_uqshrnb_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
 diff --git a/target/arm/sve.decode b/target/arm/sve.decode
-index 18faa900ca..13b5da0856 100644
+index 13b5da0856..0674464695 100644
 --- a/target/arm/sve.decode
 +++ b/target/arm/sve.decode
 @@ -1296,6 +1296,10 @@ SHRNB           01000101 .. 1 ..... 00 0100 ..... .....  @rd_rn_tszimm_shr
  SHRNT           01000101 .. 1 ..... 00 0101 ..... .....  @rd_rn_tszimm_shr
  RSHRNB          01000101 .. 1 ..... 00 0110 ..... .....  @rd_rn_tszimm_shr
  RSHRNT          01000101 .. 1 ..... 00 0111 ..... .....  @rd_rn_tszimm_shr
-+UQSHRNB         01000101 .. 1 ..... 00 1100 ..... .....  @rd_rn_tszimm_shr
-+UQSHRNT         01000101 .. 1 ..... 00 1101 ..... .....  @rd_rn_tszimm_shr
-+UQRSHRNB        01000101 .. 1 ..... 00 1110 ..... .....  @rd_rn_tszimm_shr
-+UQRSHRNT        01000101 .. 1 ..... 00 1111 ..... .....  @rd_rn_tszimm_shr
- 
- ## SVE2 floating-point pairwise operations
- 
++SQSHRNB         01000101 .. 1 ..... 00 1000 ..... .....  @rd_rn_tszimm_shr
++SQSHRNT         01000101 .. 1 ..... 00 1001 ..... .....  @rd_rn_tszimm_shr
++SQRSHRNB        01000101 .. 1 ..... 00 1010 ..... .....  @rd_rn_tszimm_shr
++SQRSHRNT        01000101 .. 1 ..... 00 1011 ..... .....  @rd_rn_tszimm_shr
+ UQSHRNB         01000101 .. 1 ..... 00 1100 ..... .....  @rd_rn_tszimm_shr
+ UQSHRNT         01000101 .. 1 ..... 00 1101 ..... .....  @rd_rn_tszimm_shr
+ UQRSHRNB        01000101 .. 1 ..... 00 1110 ..... .....  @rd_rn_tszimm_shr
 diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
-index 96a4c76e94..83d3547f67 100644
+index 83d3547f67..4b487d6f5f 100644
 --- a/target/arm/sve_helper.c
 +++ b/target/arm/sve_helper.c
 @@ -1971,6 +1971,30 @@ DO_SHRNT(sve2_sqrshrunt_h, int16_t, uint8_t, H1_2, H1, DO_SQRSHRUN_H)
  DO_SHRNT(sve2_sqrshrunt_s, int32_t, uint16_t, H1_4, H1_2, DO_SQRSHRUN_S)
  DO_SHRNT(sve2_sqrshrunt_d, int64_t, uint32_t,     , H1_4, DO_SQRSHRUN_D)
  
-+#define DO_UQSHRN_H(x, sh) MIN(x >> sh, UINT8_MAX)
-+#define DO_UQSHRN_S(x, sh) MIN(x >> sh, UINT16_MAX)
-+#define DO_UQSHRN_D(x, sh) MIN(x >> sh, UINT32_MAX)
++#define DO_SQSHRN_H(x, sh) do_sat_bhs(x >> sh, INT8_MIN, INT8_MAX)
++#define DO_SQSHRN_S(x, sh) do_sat_bhs(x >> sh, INT16_MIN, INT16_MAX)
++#define DO_SQSHRN_D(x, sh) do_sat_bhs(x >> sh, INT32_MIN, INT32_MAX)
 +
-+DO_SHRNB(sve2_uqshrnb_h, uint16_t, uint8_t, DO_UQSHRN_H)
-+DO_SHRNB(sve2_uqshrnb_s, uint32_t, uint16_t, DO_UQSHRN_S)
-+DO_SHRNB(sve2_uqshrnb_d, uint64_t, uint32_t, DO_UQSHRN_D)
++DO_SHRNB(sve2_sqshrnb_h, int16_t, uint8_t, DO_SQSHRN_H)
++DO_SHRNB(sve2_sqshrnb_s, int32_t, uint16_t, DO_SQSHRN_S)
++DO_SHRNB(sve2_sqshrnb_d, int64_t, uint32_t, DO_SQSHRN_D)
 +
-+DO_SHRNT(sve2_uqshrnt_h, uint16_t, uint8_t, H1_2, H1, DO_UQSHRN_H)
-+DO_SHRNT(sve2_uqshrnt_s, uint32_t, uint16_t, H1_4, H1_2, DO_UQSHRN_S)
-+DO_SHRNT(sve2_uqshrnt_d, uint64_t, uint32_t,     , H1_4, DO_UQSHRN_D)
++DO_SHRNT(sve2_sqshrnt_h, int16_t, uint8_t, H1_2, H1, DO_SQSHRN_H)
++DO_SHRNT(sve2_sqshrnt_s, int32_t, uint16_t, H1_4, H1_2, DO_SQSHRN_S)
++DO_SHRNT(sve2_sqshrnt_d, int64_t, uint32_t,     , H1_4, DO_SQSHRN_D)
 +
-+#define DO_UQRSHRN_H(x, sh) MIN(do_urshr(x, sh), UINT8_MAX)
-+#define DO_UQRSHRN_S(x, sh) MIN(do_urshr(x, sh), UINT16_MAX)
-+#define DO_UQRSHRN_D(x, sh) MIN(do_urshr(x, sh), UINT32_MAX)
++#define DO_SQRSHRN_H(x, sh) do_sat_bhs(do_srshr(x, sh), INT8_MIN, INT8_MAX)
++#define DO_SQRSHRN_S(x, sh) do_sat_bhs(do_srshr(x, sh), INT16_MIN, INT16_MAX)
++#define DO_SQRSHRN_D(x, sh) do_sat_bhs(do_srshr(x, sh), INT32_MIN, INT32_MAX)
 +
-+DO_SHRNB(sve2_uqrshrnb_h, uint16_t, uint8_t, DO_UQRSHRN_H)
-+DO_SHRNB(sve2_uqrshrnb_s, uint32_t, uint16_t, DO_UQRSHRN_S)
-+DO_SHRNB(sve2_uqrshrnb_d, uint64_t, uint32_t, DO_UQRSHRN_D)
++DO_SHRNB(sve2_sqrshrnb_h, int16_t, uint8_t, DO_SQRSHRN_H)
++DO_SHRNB(sve2_sqrshrnb_s, int32_t, uint16_t, DO_SQRSHRN_S)
++DO_SHRNB(sve2_sqrshrnb_d, int64_t, uint32_t, DO_SQRSHRN_D)
 +
-+DO_SHRNT(sve2_uqrshrnt_h, uint16_t, uint8_t, H1_2, H1, DO_UQRSHRN_H)
-+DO_SHRNT(sve2_uqrshrnt_s, uint32_t, uint16_t, H1_4, H1_2, DO_UQRSHRN_S)
-+DO_SHRNT(sve2_uqrshrnt_d, uint64_t, uint32_t,     , H1_4, DO_UQRSHRN_D)
++DO_SHRNT(sve2_sqrshrnt_h, int16_t, uint8_t, H1_2, H1, DO_SQRSHRN_H)
++DO_SHRNT(sve2_sqrshrnt_s, int32_t, uint16_t, H1_4, H1_2, DO_SQRSHRN_S)
++DO_SHRNT(sve2_sqrshrnt_d, int64_t, uint32_t,     , H1_4, DO_SQRSHRN_D)
 +
- #undef DO_SHRNB
- #undef DO_SHRNT
- 
+ #define DO_UQSHRN_H(x, sh) MIN(x >> sh, UINT8_MAX)
+ #define DO_UQSHRN_S(x, sh) MIN(x >> sh, UINT16_MAX)
+ #define DO_UQSHRN_D(x, sh) MIN(x >> sh, UINT32_MAX)
 diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-index fe247d758c..6a3c34a4fc 100644
+index 6a3c34a4fc..5380ed26c1 100644
 --- a/target/arm/translate-sve.c
 +++ b/target/arm/translate-sve.c
-@@ -6957,6 +6957,99 @@ static bool trans_SQRSHRUNT(DisasContext *s, arg_rri_esz *a)
+@@ -6957,6 +6957,111 @@ static bool trans_SQRSHRUNT(DisasContext *s, arg_rri_esz *a)
      return do_sve2_shr_narrow(s, a, ops);
  }
  
-+static void gen_uqshrnb_vec(unsigned vece, TCGv_vec d,
++static void gen_sqshrnb_vec(unsigned vece, TCGv_vec d,
 +                            TCGv_vec n, int64_t shr)
 +{
 +    TCGv_vec t = tcg_temp_new_vec_matching(d);
 +    int halfbits = 4 << vece;
++    int64_t max = MAKE_64BIT_MASK(0, halfbits - 1);
++    int64_t min = -max - 1;
 +
-+    tcg_gen_shri_vec(vece, n, n, shr);
++    tcg_gen_sari_vec(vece, n, n, shr);
++    tcg_gen_dupi_vec(vece, t, min);
++    tcg_gen_smax_vec(vece, n, n, t);
++    tcg_gen_dupi_vec(vece, t, max);
++    tcg_gen_smin_vec(vece, n, n, t);
 +    tcg_gen_dupi_vec(vece, t, MAKE_64BIT_MASK(0, halfbits));
-+    tcg_gen_umin_vec(vece, d, n, t);
++    tcg_gen_and_vec(vece, d, n, t);
 +    tcg_temp_free_vec(t);
 +}
 +
-+static bool trans_UQSHRNB(DisasContext *s, arg_rri_esz *a)
++static bool trans_SQSHRNB(DisasContext *s, arg_rri_esz *a)
 +{
 +    static const TCGOpcode vec_list[] = {
-+        INDEX_op_shri_vec, INDEX_op_umin_vec, 0
++        INDEX_op_sari_vec, INDEX_op_smax_vec, INDEX_op_smin_vec, 0
 +    };
 +    static const GVecGen2i ops[3] = {
-+        { .fniv = gen_uqshrnb_vec,
++        { .fniv = gen_sqshrnb_vec,
 +          .opt_opc = vec_list,
-+          .fno = gen_helper_sve2_uqshrnb_h,
++          .fno = gen_helper_sve2_sqshrnb_h,
 +          .vece = MO_16 },
-+        { .fniv = gen_uqshrnb_vec,
++        { .fniv = gen_sqshrnb_vec,
 +          .opt_opc = vec_list,
-+          .fno = gen_helper_sve2_uqshrnb_s,
++          .fno = gen_helper_sve2_sqshrnb_s,
 +          .vece = MO_32 },
-+        { .fniv = gen_uqshrnb_vec,
++        { .fniv = gen_sqshrnb_vec,
 +          .opt_opc = vec_list,
-+          .fno = gen_helper_sve2_uqshrnb_d,
++          .fno = gen_helper_sve2_sqshrnb_d,
 +          .vece = MO_64 },
 +    };
 +    return do_sve2_shr_narrow(s, a, ops);
 +}
 +
-+static void gen_uqshrnt_vec(unsigned vece, TCGv_vec d,
-+                            TCGv_vec n, int64_t shr)
++static void gen_sqshrnt_vec(unsigned vece, TCGv_vec d,
++                             TCGv_vec n, int64_t shr)
 +{
 +    TCGv_vec t = tcg_temp_new_vec_matching(d);
 +    int halfbits = 4 << vece;
++    int64_t max = MAKE_64BIT_MASK(0, halfbits - 1);
++    int64_t min = -max - 1;
 +
-+    tcg_gen_shri_vec(vece, n, n, shr);
-+    tcg_gen_dupi_vec(vece, t, MAKE_64BIT_MASK(0, halfbits));
-+    tcg_gen_umin_vec(vece, n, n, t);
++    tcg_gen_sari_vec(vece, n, n, shr);
++    tcg_gen_dupi_vec(vece, t, min);
++    tcg_gen_smax_vec(vece, n, n, t);
++    tcg_gen_dupi_vec(vece, t, max);
++    tcg_gen_smin_vec(vece, n, n, t);
 +    tcg_gen_shli_vec(vece, n, n, halfbits);
++    tcg_gen_dupi_vec(vece, t, MAKE_64BIT_MASK(0, halfbits));
 +    tcg_gen_bitsel_vec(vece, d, t, d, n);
 +    tcg_temp_free_vec(t);
 +}
 +
-+static bool trans_UQSHRNT(DisasContext *s, arg_rri_esz *a)
++static bool trans_SQSHRNT(DisasContext *s, arg_rri_esz *a)
 +{
 +    static const TCGOpcode vec_list[] = {
-+        INDEX_op_shli_vec, INDEX_op_shri_vec, INDEX_op_umin_vec, 0
++        INDEX_op_shli_vec, INDEX_op_sari_vec,
++        INDEX_op_smax_vec, INDEX_op_smin_vec, 0
 +    };
 +    static const GVecGen2i ops[3] = {
-+        { .fniv = gen_uqshrnt_vec,
++        { .fniv = gen_sqshrnt_vec,
 +          .opt_opc = vec_list,
 +          .load_dest = true,
-+          .fno = gen_helper_sve2_uqshrnt_h,
++          .fno = gen_helper_sve2_sqshrnt_h,
 +          .vece = MO_16 },
-+        { .fniv = gen_uqshrnt_vec,
++        { .fniv = gen_sqshrnt_vec,
 +          .opt_opc = vec_list,
 +          .load_dest = true,
-+          .fno = gen_helper_sve2_uqshrnt_s,
++          .fno = gen_helper_sve2_sqshrnt_s,
 +          .vece = MO_32 },
-+        { .fniv = gen_uqshrnt_vec,
++        { .fniv = gen_sqshrnt_vec,
 +          .opt_opc = vec_list,
 +          .load_dest = true,
-+          .fno = gen_helper_sve2_uqshrnt_d,
++          .fno = gen_helper_sve2_sqshrnt_d,
 +          .vece = MO_64 },
 +    };
 +    return do_sve2_shr_narrow(s, a, ops);
 +}
 +
-+static bool trans_UQRSHRNB(DisasContext *s, arg_rri_esz *a)
++static bool trans_SQRSHRNB(DisasContext *s, arg_rri_esz *a)
 +{
 +    static const GVecGen2i ops[3] = {
-+        { .fno = gen_helper_sve2_uqrshrnb_h },
-+        { .fno = gen_helper_sve2_uqrshrnb_s },
-+        { .fno = gen_helper_sve2_uqrshrnb_d },
++        { .fno = gen_helper_sve2_sqrshrnb_h },
++        { .fno = gen_helper_sve2_sqrshrnb_s },
++        { .fno = gen_helper_sve2_sqrshrnb_d },
 +    };
 +    return do_sve2_shr_narrow(s, a, ops);
 +}
 +
-+static bool trans_UQRSHRNT(DisasContext *s, arg_rri_esz *a)
++static bool trans_SQRSHRNT(DisasContext *s, arg_rri_esz *a)
 +{
 +    static const GVecGen2i ops[3] = {
-+        { .fno = gen_helper_sve2_uqrshrnt_h },
-+        { .fno = gen_helper_sve2_uqrshrnt_s },
-+        { .fno = gen_helper_sve2_uqrshrnt_d },
++        { .fno = gen_helper_sve2_sqrshrnt_h },
++        { .fno = gen_helper_sve2_sqrshrnt_s },
++        { .fno = gen_helper_sve2_sqrshrnt_d },
 +    };
 +    return do_sve2_shr_narrow(s, a, ops);
 +}
 +
- static bool do_sve2_zpzz_fp(DisasContext *s, arg_rprr_esz *a,
-                             gen_helper_gvec_4_ptr *fn)
+ static void gen_uqshrnb_vec(unsigned vece, TCGv_vec d,
+                             TCGv_vec n, int64_t shr)
  {
 -- 
 2.25.1

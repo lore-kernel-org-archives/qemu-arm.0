@@ -1,218 +1,186 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3186235lfg;
-        Tue, 9 Mar 2021 13:36:30 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJznxc4j+h6E57OW0KEVUHL3rppKm9+JvHoNzTmrY+/QWgk9rhn1m6ke4Ssp+CzadhyTzWXj
-X-Received: by 2002:a25:105:: with SMTP id 5mr43205923ybb.133.1615325790820;
-        Tue, 09 Mar 2021 13:36:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1615325790; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3208367lfg;
+        Tue, 9 Mar 2021 14:08:24 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwEqUoZ6xPF0TXrUzGwFqWMeV3pXYeZIcf3pL0or0ZnXGgwVM+ydtRmrTag1fCT4QXS3ILE
+X-Received: by 2002:a17:906:f8d5:: with SMTP id lh21mr253331ejb.64.1615327704706;
+        Tue, 09 Mar 2021 14:08:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1615327704; cv=none;
         d=google.com; s=arc-20160816;
-        b=LHvlE258jyDD9tRie3Xz25J08p3Aa3VykGQajnhvXyqLlAbiW405ku42O0PhEKPn2u
-         iCh6G52eLVzoGHE8JgTVVLSJHyKsbG/Uweuz3OrxcjNxyvTk+AKmcJ1AfMtiEYiMx4er
-         EIuonpgvffYffqDcGSGpitgpPLVSABxszcQlDax7RnZxeVOhEUJEQStr1PGv0EwQ5Rgf
-         VZJxK2XsIp24mW+U/Y2O1NC9OrPW4ITPI7OzWG8j73qLKb3qvyIncra/vVeOhVpwrg8T
-         5uQOvzJzOShZQjJaIfc7j/kiaStajdV02RGx+JswJ9F5FzDYS//Nx2N8sgPfReCG6LSW
-         xqpQ==
+        b=uLmrhbJG+nps7kBC8n+72tIKdrdADyZnro6nLW0fYjiNQ0vd6S8nWhycrSF8EhTTN4
+         4inYhIF1glllf77fauvnVxN/XmZNZn1rw5uJi6ctGrCo+8P4FhUfr0Trt6iEtkBtEFBJ
+         rp+hw/INw5tNSBYkaQFvS9ufiyiLg7Jk1L/7gcNaOifMJ3EjcWd4QGcMqwNDXVrrS55S
+         3r14mnBQy9YKMQ+LjfHTIMCt7iKmBiz6aDvqPPto0DLFz1WQAg0qVk3qo0vm0sjOX2c9
+         jetCtbagYjrG4p3shBvXztYTmVO3tfQtEbTmlFFjfZ3hZuDgc2rXC6UcYWscr0gAO983
+         BzZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:user-agent
-         :references:in-reply-to:subject:to:from:message-id:date;
-        bh=H1lwslJ0aPFhCmMU3DSUJ7f6mKPmf5F/HJUQakeOVfQ=;
-        b=mArdgXhxTE0i/Bdb+R28fdDrTGqMn+RQ5rCXcVrhkklG4o+RU/cIXnN5gz5QjbDjwz
-         tJi1WupHVxH0b8i/VWO94yoq51APEEZbfjXl5wdKQ7gMOe/9n/jM6uGguvmornOCzD4B
-         j2cY6ydh5jKooyku9qHPD0wj+kThEav6K6teOIi3VSHi6eKxADgJDQO6Jxdwsro0+iCh
-         l7gO2M7lIHb0W8Z1yB6TnQXwys3NBnyNt+FY6qu0hHmLMAyJxFCY9R8ouvy1eumu02Z0
-         gRV/1UuG5ZtDv2He/kGTuEb1TuK8O1DDl4yJMv8osjVjw3PSErpI40PnmGU5JoKbF1E3
-         i9/g==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:references:cc:to:from:subject
+         :dkim-signature;
+        bh=TrRfkpaCyAif10vY2NLzElT8H9hcz96S44UT+WnEyM0=;
+        b=E9ab9gcXvcVlqkmDR4tJF0JTkFhE3hZT5yJrq9pJljeYeWf9zFVMSfT5y90kLADHN1
+         TMDiInlqNZMy6F+AchWTssHylB933LPFAuV8Nno5E83i/9lqeKQYAsX0RQNzEprFTQBp
+         yPNnM8iLNAObt9nLzou3OxxtrgsqKOjDC4hgv2RCFnoLD1o7NfRovBlIzuD4IDNoGnmy
+         7JQwt8BIq+F0T7YvJBEtcUVSe54sV4t9T2QbMVeQm75gOQShBTv9kozbO0aA2thv7g9R
+         QGlwJNMvZSSioUi8BSvj+nJaFl9YSLWSdsFPrGctqgiOf15uxMeihjmqlooBNYkdRua+
+         KWjQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x77si22573138ybe.284.2021.03.09.13.36.30
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FgUnxXZs;
+       spf=pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <philmd@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [63.128.21.124])
+        by mx.google.com with ESMTPS id c23si4160355ejd.271.2021.03.09.14.08.24
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Mar 2021 13:36:30 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 09 Mar 2021 14:08:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) client-ip=63.128.21.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: from localhost ([::1]:32970 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lJk1m-0004XH-2p
-	for alex.bennee@linaro.org; Tue, 09 Mar 2021 16:36:30 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35256)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <maz@kernel.org>)
- id 1lJk0v-0004VD-G0; Tue, 09 Mar 2021 16:35:37 -0500
-Received: from mail.kernel.org ([198.145.29.99]:45012)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <maz@kernel.org>)
- id 1lJk0h-0005cm-C7; Tue, 09 Mar 2021 16:35:34 -0500
-Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
- [51.254.78.96])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 915AC64F78;
- Tue,  9 Mar 2021 21:35:17 +0000 (UTC)
-Received: from 78.163-31-62.static.virginmediabusiness.co.uk ([62.31.163.78]
- helo=wait-a-minute.misterjones.org)
- by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94)
- (envelope-from <maz@kernel.org>)
- id 1lJk0Z-000dZe-IM; Tue, 09 Mar 2021 21:35:15 +0000
-Date: Tue, 09 Mar 2021 21:35:14 +0000
-Message-ID: <87y2ewqact.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
-To: Andrew Jones <drjones@redhat.com>
-Subject: Re: [PATCH] hw/arm/virt: KVM: The IPA lower bound is 32
-In-Reply-To: <20210309200606.kjjbxyyzijv2qsd4@kamzik.brq.redhat.com>
-References: <20210309185939.188431-1-drjones@redhat.com>
- <87eegoxhd5.wl-maz@kernel.org>
- <20210309200606.kjjbxyyzijv2qsd4@kamzik.brq.redhat.com>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
- (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-Content-Type: text/plain; charset=US-ASCII
-X-SA-Exim-Connect-IP: 62.31.163.78
-X-SA-Exim-Rcpt-To: drjones@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, peter.maydell@linaro.org, eric.auger@redhat.com
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
- SAEximRunCond expanded to false
-Received-SPF: pass client-ip=198.145.29.99; envelope-from=maz@kernel.org;
- helo=mail.kernel.org
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- eric.auger@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TyvpA8rOz4Mz
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FgUnxXZs;
+       spf=pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1615327703;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=TrRfkpaCyAif10vY2NLzElT8H9hcz96S44UT+WnEyM0=;
+	b=FgUnxXZsgjBvrb3220+nGB0Q8THgSq7pMRjoJj9bSnNJqs/394SltmWFUD0Bcs4VUQ2gLl
+	HMRt+fKVq1RKElSa4cpJ4VcSvlWtCTvsL+GkHqs8OJMh4v9W+xHztl/YBhC4SjKjRnu5SB
+	BnvkgZ45FIzSZx3/cSCaaxFI6s28Ug4=
+Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
+ [209.85.208.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-476-yIrO1ubwO7u8uJHaBEMH-A-1; Tue, 09 Mar 2021 17:08:22 -0500
+X-MC-Unique: yIrO1ubwO7u8uJHaBEMH-A-1
+Received: by mail-ed1-f69.google.com with SMTP id n20so7495994edr.8
+        for <alex.bennee@linaro.org>; Tue, 09 Mar 2021 14:08:21 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:from:to:cc:references:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=TrRfkpaCyAif10vY2NLzElT8H9hcz96S44UT+WnEyM0=;
+        b=iaCXF0h6nctMXzjW6C/2zwMehfzWOdLiGWzIx2k670SmO9H3UsTeBmXHjdtmwwtaf9
+         kyiyQO4miJWLVKpHvUKl2VbhkifKj40xdf458jB4O3umXDGN+HJserTBeUzWXv8Kyhlr
+         MrbuOqb3Or439agtZgwxXKJNKMZ93HuWQkhckmEvmFmw91IHy5Yf02p25tVTkRYW9l8s
+         CogWCrPLEqhH3VI6dM7dDayJA+ZvaTeKKA3gcU2ioB3sDBMIkD0OCYWDNk9Lv0Vtd91T
+         O+NigFKawkJtCqdcKRUmVj9QS9AwJOGDSzHLZW8Wzk5bzkIi4LAkfIRBOLgXMICNNGvI
+         I2CQ==
+X-Gm-Message-State: AOAM533u/k/UuVKQ0Ae7wZ4ly1srscHSp+SXhgT5TeVhneI/KSGOd5ac
+	6FBvoF7+vrH+LwIWg6OKXDqWv6z933iKs9FMnnEGbvkuQl+bVIDO26zsJL5tBv8A1Zsm75MPpFr
+	Ljvjnoz26xF1X1ffU
+X-Received: by 2002:a17:907:d15:: with SMTP id gn21mr180979ejc.337.1615327700939;
+        Tue, 09 Mar 2021 14:08:20 -0800 (PST)
+X-Received: by 2002:a17:907:d15:: with SMTP id gn21mr180947ejc.337.1615327700754;
+        Tue, 09 Mar 2021 14:08:20 -0800 (PST)
+Return-Path: <philmd@redhat.com>
+Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net. [83.57.175.68])
+        by smtp.gmail.com with ESMTPSA id u15sm10107092eds.6.2021.03.09.14.08.16
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 09 Mar 2021 14:08:20 -0800 (PST)
+Subject: Re: [PATCH 0/2] sysemu: Let VMChangeStateHandler take boolean
+ 'running' argument
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+Cc: Huacai Chen <chenhuacai@kernel.org>, Greg Kurz <groug@kaod.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
+ Amit Shah <amit@kernel.org>, Dmitry Fleytman <dmitry.fleytman@gmail.com>,
+ qemu-arm@nongnu.org, John Snow <jsnow@redhat.com>, qemu-s390x@nongnu.org,
+ Paul Durrant <paul@xen.org>, Anthony Perard <anthony.perard@citrix.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Kevin Wolf <kwolf@redhat.com>, Marcelo Tosatti <mtosatti@redhat.com>,
+ Max Reitz <mreitz@redhat.com>, Alex Williamson <alex.williamson@redhat.com>,
+ Aurelien Jarno <aurelien@aurel32.net>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Jason Wang <jasowang@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Halil Pasic <pasic@linux.ibm.com>, Fam Zheng <fam@euphon.net>,
+ qemu-ppc@nongnu.org, kvm@vger.kernel.org,
+ Stefano Stabellini <sstabellini@kernel.org>, xen-devel@lists.xenproject.org,
+ Cornelia Huck <cohuck@redhat.com>, David Hildenbrand <david@redhat.com>,
+ qemu-block@nongnu.org, Christian Borntraeger <borntraeger@de.ibm.com>,
+ Sunil Muthuswamy <sunilmut@microsoft.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>, Thomas Huth <thuth@redhat.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>
+References: <20210111152020.1422021-1-philmd@redhat.com>
+ <84048681-32d3-7217-e94c-461501cf550b@redhat.com>
+Message-ID: <3112233d-e227-b0c5-4a97-3ad0127a4d12@redhat.com>
+Date: Tue, 9 Mar 2021 23:08:16 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.0
+MIME-Version: 1.0
+In-Reply-To: <84048681-32d3-7217-e94c-461501cf550b@redhat.com>
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: F1hboC/tjGB7
 
-On Tue, 09 Mar 2021 20:06:06 +0000,
-Andrew Jones <drjones@redhat.com> wrote:
+ping, qemu-trivial maybe?
+
+On 2/22/21 3:34 PM, Philippe Mathieu-Daudé wrote:
+> Paolo, this series is fully reviewed, can it go via your
+> misc tree?
 > 
-> On Tue, Mar 09, 2021 at 07:21:58PM +0000, Marc Zyngier wrote:
-> > Hi Andrew,
-> > 
-> > On Tue, 09 Mar 2021 18:59:39 +0000,
-> > Andrew Jones <drjones@redhat.com> wrote:
-> > > 
-> > > The virt machine already checks KVM_CAP_ARM_VM_IPA_SIZE to get the
-> > > upper bound of the IPA size. If that bound is lower than the highest
-> > > possible GPA for the machine, then QEMU will error out. However, the
-> > > IPA is set to 40 when the highest GPA is less than or equal to 40,
-> > > even when KVM may only support an IPA limit as low as 32. This means
-> > > KVM may fail the VM creation unnecessarily. Additionally, 40 is
-> > > selected with the value 0, which means use the default, and that gets
-> > > around a check in some versions of KVM, causing a difficult to debug
-> > > fail. Always use the IPA size that corresponds to the highest possible
-> > > GPA, unless it's lower than 32, in which case use 32.
-> > > 
-> > > Signed-off-by: Andrew Jones <drjones@redhat.com>
-> > > ---
-> > >  hw/arm/virt.c | 9 ++++-----
-> > >  1 file changed, 4 insertions(+), 5 deletions(-)
-> > > 
-> > > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> > > index 371147f3ae9c..7bf563715b4e 100644
-> > > --- a/hw/arm/virt.c
-> > > +++ b/hw/arm/virt.c
-> > > @@ -2547,14 +2547,13 @@ static int virt_kvm_type(MachineState *ms, const char *type_str)
-> > >                       "require an IPA range (%d bits) larger than "
-> > >                       "the one supported by the host (%d bits)",
-> > >                       requested_pa_size, max_vm_pa_size);
-> > > -       exit(1);
-> > > +        exit(1);
-> > >      }
-> > > +
-> > >      /*
-> > > -     * By default we return 0 which corresponds to an implicit legacy
-> > > -     * 40b IPA setting. Otherwise we return the actual requested PA
-> > > -     * logsize
-> > > +     * KVM requires the IPA size to be at least 32 bits.
-> > >       */
-> > > -    return requested_pa_size > 40 ? requested_pa_size : 0;
-> > > +    return requested_pa_size < 32 ? 32 : requested_pa_size;
-> > 
-> > Doesn't this break on older kernels (pre 233a7cb23531, which is
-> > anything up 4.19), where the 'type' parameter passed at VM creation
-> > time was expected to be 0 and nothing else?
+> On 1/11/21 4:20 PM, Philippe Mathieu-Daudé wrote:
+>> Trivial prototype change to clarify the use of the 'running'
+>> argument of VMChangeStateHandler.
+>>
+>> Green CI:
+>> https://gitlab.com/philmd/qemu/-/pipelines/239497352
+>>
+>> Philippe Mathieu-Daudé (2):
+>>   sysemu/runstate: Let runstate_is_running() return bool
+>>   sysemu: Let VMChangeStateHandler take boolean 'running' argument
+>>
+>>  include/sysemu/runstate.h   | 12 +++++++++---
+>>  target/arm/kvm_arm.h        |  2 +-
+>>  target/ppc/cpu-qom.h        |  2 +-
+>>  accel/xen/xen-all.c         |  2 +-
+>>  audio/audio.c               |  2 +-
+>>  block/block-backend.c       |  2 +-
+>>  gdbstub.c                   |  2 +-
+>>  hw/block/pflash_cfi01.c     |  2 +-
+>>  hw/block/virtio-blk.c       |  2 +-
+>>  hw/display/qxl.c            |  2 +-
+>>  hw/i386/kvm/clock.c         |  2 +-
+>>  hw/i386/kvm/i8254.c         |  2 +-
+>>  hw/i386/kvmvapic.c          |  2 +-
+>>  hw/i386/xen/xen-hvm.c       |  2 +-
+>>  hw/ide/core.c               |  2 +-
+>>  hw/intc/arm_gicv3_its_kvm.c |  2 +-
+>>  hw/intc/arm_gicv3_kvm.c     |  2 +-
+>>  hw/intc/spapr_xive_kvm.c    |  2 +-
+>>  hw/misc/mac_via.c           |  2 +-
+>>  hw/net/e1000e_core.c        |  2 +-
+>>  hw/nvram/spapr_nvram.c      |  2 +-
+>>  hw/ppc/ppc.c                |  2 +-
+>>  hw/ppc/ppc_booke.c          |  2 +-
+>>  hw/s390x/tod-kvm.c          |  2 +-
+>>  hw/scsi/scsi-bus.c          |  2 +-
+>>  hw/usb/hcd-ehci.c           |  2 +-
+>>  hw/usb/host-libusb.c        |  2 +-
+>>  hw/usb/redirect.c           |  2 +-
+>>  hw/vfio/migration.c         |  2 +-
+>>  hw/virtio/virtio-rng.c      |  2 +-
+>>  hw/virtio/virtio.c          |  2 +-
+>>  net/net.c                   |  2 +-
+>>  softmmu/memory.c            |  2 +-
+>>  softmmu/runstate.c          |  4 ++--
+>>  target/arm/kvm.c            |  2 +-
+>>  target/i386/kvm/kvm.c       |  2 +-
+>>  target/i386/sev.c           |  2 +-
+>>  target/i386/whpx/whpx-all.c |  2 +-
+>>  target/mips/kvm.c           |  4 ++--
+>>  ui/gtk.c                    |  2 +-
+>>  ui/spice-core.c             |  2 +-
+>>  41 files changed, 51 insertions(+), 45 deletions(-)
+>>
 > 
-> Doh, of course!
-> 
-> > 
-> > I had a quick go at qemu a couple of weeks back and came up with the
-> > following hack, but never actually tested it (there is no way qemu can
-> > fit in the initramfs I am feeding to this damn machine...).
-> > 
-> > Thanks,
-> > 
-> > 	M.
-> > 
-> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> > index 371147f3ae..3301bb8dba 100644
-> > --- a/hw/arm/virt.c
-> > +++ b/hw/arm/virt.c
-> > @@ -2534,8 +2534,11 @@ static HotplugHandler *virt_machine_get_hotplug_handler(MachineState *machine,
-> >  static int virt_kvm_type(MachineState *ms, const char *type_str)
-> >  {
-> >      VirtMachineState *vms = VIRT_MACHINE(ms);
-> > -    int max_vm_pa_size = kvm_arm_get_max_vm_ipa_size(ms);
-> > +    int max_vm_pa_size;
-> >      int requested_pa_size;
-> > +    bool fixed_ipa;
-> > +
-> > +    max_vm_pa_size = kvm_arm_get_max_vm_ipa_size(ms, &fixed_ipa);
-> >  
-> >      /* we freeze the memory map to compute the highest gpa */
-> >      virt_set_memmap(vms);
-> > @@ -2550,11 +2553,12 @@ static int virt_kvm_type(MachineState *ms, const char *type_str)
-> >         exit(1);
-> >      }
-> >      /*
-> > -     * By default we return 0 which corresponds to an implicit legacy
-> > -     * 40b IPA setting. Otherwise we return the actual requested PA
-> > -     * logsize
-> > +     * We return the requested PA log size, unless KVM only supports
-> > +     * the implicit legacy 40b IPA setting, in which case we return 0.
-> >       */
-> > -    return requested_pa_size > 40 ? requested_pa_size : 0;
-> > +    if (fixed_ipa)
-> > +        return 0;
-> > +    return requested_pa_size;
-> 
-> Looks good to me. I think we should still ensure requested_pa_size is at
-> least 32 though.
-
-Yes, absolutely.
-
-> I can add that and test this tomorrow. Should I post it with your
-> authorship?
-
-No, please keep it with yours (add a Suggested-by: tag if you really
-want to). If you can give it a good shake, that'd be great. I'll try
-and repost the kernel fixes tomorrow.
-
-Thanks,
-
-	M.
-
--- 
-Without deviation from the norm, progress is not possible.

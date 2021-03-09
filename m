@@ -1,223 +1,276 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2955054lfg;
-        Tue, 9 Mar 2021 08:21:03 -0800 (PST)
-X-Received: by 2002:a4a:c697:: with SMTP id m23mr22887238ooq.28.1615306863637;
-        Tue, 09 Mar 2021 08:21:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1615306863; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2955034lfg;
+        Tue, 9 Mar 2021 08:21:02 -0800 (PST)
+X-Received: by 2002:a05:6808:341:: with SMTP id j1mr3486288oie.173.1615306862506;
+        Tue, 09 Mar 2021 08:21:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1615306862; cv=none;
         d=google.com; s=arc-20160816;
-        b=VRfjefdtATcdn52BI5d+IEGaWfPuI8fq7I/uTLI/zQLdx6rDQQ7hc3UXdjAU3Zos/v
-         QPU0EiIq2GYYrXlJfrNz8MP0GZ3fYL4+UE8qAUhFqoY9BVYjC8KvQ3OgBHoX1DZ1ZM7f
-         rjwJaR/PVwvk+bgv5wk3E2wywoQELpt6aJzm9jVJA90MJz0i6zV0QTN2wAjypqYmH5uY
-         cTD9VoMLVWyPModn9SXDHeF3LYx1+oqK6xBKXkgyTtqYHTElebMQKn8hx6kwkrKXieCM
-         YbLqK/IKk9vTNGdf4MjDRaElQ5mpKxBH8nC+wFmy7/Oquz0pyMoWuMr/lWyiu/cWXq8E
-         ffxQ==
+        b=G0bepXDkWPtU+6PTNVyHdFTPjfSHgBC8sSXEtDgDPSZ2LmUanPx6w+M8Ve7go8JM1o
+         o91mJUodh1lJAnXS3/MOq5mawqJ2mbWfaGM+5YK35FqOp76GwTXOu/kwWxUS4yV+Clo3
+         nCwV1dPoz1cLOmTAyuTCLyZcDhx2vpGn7tkUEA1bUMQA2HpYr70mEsQ/Z+m3DED77EmZ
+         gMuhngflPWfZLusHVU0nPnJDSV+z+NzqmIqB64SgHh03wBtxf0FihAOX4sL1ZgDe+vQr
+         kt7z53Lw2WTlNVJ21VCowPolsYtfv1VMxW4PoYfjvOFohXQSB9ROJUR8uC6AVma1I8s5
+         Ck3w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=rDEY1GrPbC6zgYAZ0Uc0BKJUrlnah2xC2PMQNWF2rHg=;
-        b=lPRn46OrUWrDIqlo5VPYhsrIZSlvm8j3BqcpzOOWyKKmfgR2JNjsQeRhXqxkWWNYNZ
-         dCtdly0z1saj28uUe6Ej6ebG7LQ+avDzyi2mgCP+n/hA1MjVQeOpJ1CdGn/SUfGJN2jO
-         TxbPQbTEVSrCc2d9vwxcDOgWj1czg/VxaReRNKVcJQFsgloNSNT5cysxZ793v/owr/wy
-         M0s7HalPMFBfGqAiShl2lRAsD8jh3mlYa/nhKRcJNkrG8gcLJEBdwt+dYQzhz4SRwpXI
-         V0RUDvYyl5KfdgsMAE+WzS7XEiBKgJRnCcZQG0QilOvh05NqxaCsy8LEXc5OxFQXa1mN
-         I7zg==
+        bh=JFABDHCDp3HL/YAORggSqEppCmdhvx5EoY62umVHCko=;
+        b=PuiSBrQzqoCNx7w8KQ4xNx3hZUAcjgQLhr96ed7BEL1Y9/eU8qlcQzFFmvAh4LH4/3
+         PCmKn5gzDmJvznNhiNFq2aYMEpW38v39kJ+QU/tDhPt7SbikHcg+n9rOBOCza6+FtYJo
+         1KY/DroAUUKgtoF/ANM93vGrpft9/z4Em5Eb0IvbjYdRTFBUOak3CEQW23IxDOh4BEZT
+         Mv5Rhv7bc0cpRHc7WioNEOoGxhlV4f1UQjsi0/QGPVkcXX/I9UVjSD1fwvaxq7ymM/XM
+         kAjgmhqhrRNzARNBIW04xpOVJI7VQjrR70AIaVoFXBhNJK7tTGHWsLmIR+kAHFvoFgny
+         xkyQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fsQlb2ve;
+       dkim=pass header.i=@linaro.org header.s=google header.b=hsTdpc9z;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id o18sor6925291ooo.11.2021.03.09.08.21.03
+        by mx.google.com with SMTPS id o131sor4204168oia.0.2021.03.09.08.21.02
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 09 Mar 2021 08:21:03 -0800 (PST)
+        Tue, 09 Mar 2021 08:21:02 -0800 (PST)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fsQlb2ve;
+       dkim=pass header.i=@linaro.org header.s=google header.b=hsTdpc9z;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=rDEY1GrPbC6zgYAZ0Uc0BKJUrlnah2xC2PMQNWF2rHg=;
-        b=fsQlb2ve2NwjOuuXAEO7JyEDSrXnwhH7Wck4bjfEaaSKfyO9LKgFWyhljSkyCbSyR0
-         Vlr5xvo7D3p54uctpQksLlcQQe1EAJJfQtc9/DBhzU47quesGnJhmyERrZKDZocmjrCO
-         NfKcVdtaOd2KDXiUw5GKAiOAzQC9+v9Da5xh5mGXL2cDbEvis09ITW30mX/RMzPToETn
-         ozV6S/cXY2Txd99Q1pNj+0CwfyzNaTShSgZtBVF/x3mxdnlMFOZnlbWd47TdpNHCoMp3
-         vuEMP6qwq3oODARRvge9zLarU/MWwHXhUWE4Z/fCYYdAvb5dlnrEzhDQscNWFxT3P89B
-         Hv8g==
+        bh=JFABDHCDp3HL/YAORggSqEppCmdhvx5EoY62umVHCko=;
+        b=hsTdpc9zKjY5nOzrRPvd4u/3wtkuaVepm9JCeWX8DeuSQ25dbel+OM4L0xr9mr4wkT
+         Ekuo6t5NG3ntvMuKBLw3fVUg/QDuCnzqEVEBjn0jv+vlj9lI4b+9K2kYNYh3IceX6QBA
+         M4ChE+4NrjRiF0ywtsDeR+wfWUzZEW9b5RJPYfLE9B5dsSJ0vMNrom6PrtZQsNwRZv/8
+         Q4Gk7VgenGfjfQYmOJWx2DNDI5GrXt6xBMr9QHtzc+RG+mQxNdXSoGCTBYllSkw9W52q
+         EB78NbpJgkHgys+9zA+4zinXOX5wM+zNObiAkNSpEbsvYlVgWiojiHQKfWWPx9IwFEk0
+         z3Ng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=rDEY1GrPbC6zgYAZ0Uc0BKJUrlnah2xC2PMQNWF2rHg=;
-        b=QyrXpi+xDL/fb5S2HYXKdzcS6KP/+goJhJ4kBXWPNnrFu86tQogp3JXHI01xMX8emw
-         XAI0ZrL57pmdn++7hFLEa9f7A+0SbB8fg4m9I6RcBIflUwnCtiHbcyFQtH+jIs3+o3fL
-         nQkT5TJqdyho0a7g6Zrv2RgKIAwSJXLuxeV0iXgQomANsP5iKicYqLg3Knr5RF0Z8qrH
-         p+9eMCc+KlVMnCK5jzbOiMvqIL41vuFqSsZdM91mxpybLJx40Or7qbdHY2avd1Ke02b0
-         Vt9O8B9QNnQ7/PQsBn/C72nKt9jpzzHW32CT6vE49gESsCpX9ORsjRMr+hWFYAEdiQJF
-         5nYA==
-X-Gm-Message-State: AOAM532wikt8e4e3t0iOuq2paIlcvcKcG4HD4ZkhYFdW4SgEVqc4ZV8E
-	63JCdi2oaTcF+cNAUmrxY49e9G7hCn3k7DZ0lSQ=
-X-Google-Smtp-Source: ABdhPJzMuv5pq7S2RHMfjRM75EiZyJP/W7W5x2x/7BwQPtjrqCk+ICtRwDc6ZqFumuKQcjJLcgb03g==
-X-Received: by 2002:a4a:e2c6:: with SMTP id l6mr22918563oot.31.1615306863209;
-        Tue, 09 Mar 2021 08:21:03 -0800 (PST)
+        bh=JFABDHCDp3HL/YAORggSqEppCmdhvx5EoY62umVHCko=;
+        b=iFYZwnljUWow5TSdm4E3p8s+YGkPq2qdMC3Is9fhMJs5I/AwUiXNRIWBW1Bd8cNECm
+         jNwgD73BEWMxGbdgbzvHwL/Yy9KRF089G6zLOJxXMcH+YTDyD7XBIEoKazUleVYImQU6
+         qZJtHndM+aMH5Rl67t7YxCNrxogvC/7Feq+bbCrd1dJnv6fj/z3sjNpZGHdDiEpDQY1L
+         QkI99UxJhU3sIrsSyivbzO1vxROj4t1dRVP5Sc+Up5Fb6aDXqjhficvYrERafR3Ja6QN
+         NKfYphUkBsKZSdxgJ6aTfMS8SSKtc0bj72Wa9v899JRD+swOIk4EzH7J6fh+5dV6pI4V
+         qPsA==
+X-Gm-Message-State: AOAM530knmB9fozgb5QNTzeGvn8DdLdaRNJpWm7Ut0BF7N1Xt4Tk/5tk
+	OVVjA1eb7nkexHeLvCdNCTjagoYh
+X-Google-Smtp-Source: ABdhPJze8GRIRIE8OpPFuCsQr7Uu7TTSKZ4haSLQ0vyBfniRdA1v47ac9BTr2GADYgxGGz5TjxlRkQ==
+X-Received: by 2002:aca:fc11:: with SMTP id a17mr1346633oii.68.1615306862128;
+        Tue, 09 Mar 2021 08:21:02 -0800 (PST)
 Return-Path: <richard.henderson@linaro.org>
 Received: from localhost.localdomain (fixed-187-189-51-144.totalplay.net. [187.189.51.144])
-        by smtp.gmail.com with ESMTPSA id v23sm2516474ots.63.2021.03.09.08.21.02
+        by smtp.gmail.com with ESMTPSA id v23sm2516474ots.63.2021.03.09.08.21.01
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 09 Mar 2021 08:21:02 -0800 (PST)
+        Tue, 09 Mar 2021 08:21:01 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org,
 	qemu-arm@nongnu.org,
 	alex.bennee@linaro.org
-Subject: [PATCH v4 18/78] target/arm: Implement SVE2 complex integer add
-Date: Tue,  9 Mar 2021 08:19:41 -0800
-Message-Id: <20210309162041.23124-19-richard.henderson@linaro.org>
+Subject: [PATCH v4 17/78] target/arm: Implement SVE2 bitwise permute
+Date: Tue,  9 Mar 2021 08:19:40 -0800
+Message-Id: <20210309162041.23124-18-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210309162041.23124-1-richard.henderson@linaro.org>
 References: <20210309162041.23124-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: /qxg1TIJvIW2
+X-TUID: 55tD4Zy11v2O
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
-v2: Fix subtraction ordering (laurent desnogues).
----
- target/arm/helper-sve.h    | 10 +++++++++
- target/arm/sve.decode      |  9 ++++++++
- target/arm/sve_helper.c    | 42 ++++++++++++++++++++++++++++++++++++++
- target/arm/translate-sve.c | 31 ++++++++++++++++++++++++++++
- 4 files changed, 92 insertions(+)
+ target/arm/cpu.h           |  5 +++
+ target/arm/helper-sve.h    | 15 ++++++++
+ target/arm/sve.decode      |  6 ++++
+ target/arm/sve_helper.c    | 73 ++++++++++++++++++++++++++++++++++++++
+ target/arm/translate-sve.c | 36 +++++++++++++++++++
+ 5 files changed, 135 insertions(+)
 
-diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
-index 4861481fe0..c2155cc544 100644
---- a/target/arm/helper-sve.h
-+++ b/target/arm/helper-sve.h
-@@ -2392,3 +2392,13 @@ DEF_HELPER_FLAGS_4(sve2_bgrp_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_4(sve2_bgrp_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_4(sve2_bgrp_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_4(sve2_bgrp_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+
-+DEF_HELPER_FLAGS_4(sve2_cadd_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve2_cadd_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve2_cadd_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve2_cadd_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+
-+DEF_HELPER_FLAGS_4(sve2_sqcadd_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve2_sqcadd_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve2_sqcadd_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve2_sqcadd_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-diff --git a/target/arm/sve.decode b/target/arm/sve.decode
-index 7cb89a0d47..7508b901d0 100644
---- a/target/arm/sve.decode
-+++ b/target/arm/sve.decode
-@@ -1226,3 +1226,12 @@ EORTB           01000101 .. 0 ..... 10010 1 ..... .....  @rd_rn_rm
- BEXT            01000101 .. 0 ..... 1011 00 ..... .....  @rd_rn_rm
- BDEP            01000101 .. 0 ..... 1011 01 ..... .....  @rd_rn_rm
- BGRP            01000101 .. 0 ..... 1011 10 ..... .....  @rd_rn_rm
-+
-+#### SVE2 Accumulate
-+
-+## SVE2 complex integer add
-+
-+CADD_rot90      01000101 .. 00000 0 11011 0 ..... .....  @rdn_rm
-+CADD_rot270     01000101 .. 00000 0 11011 1 ..... .....  @rdn_rm
-+SQCADD_rot90    01000101 .. 00000 1 11011 0 ..... .....  @rdn_rm
-+SQCADD_rot270   01000101 .. 00000 1 11011 1 ..... .....  @rdn_rm
-diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
-index ef9d40591a..6d70d10701 100644
---- a/target/arm/sve_helper.c
-+++ b/target/arm/sve_helper.c
-@@ -1314,6 +1314,48 @@ DO_BITPERM(sve2_bgrp_d, uint64_t, bitgroup)
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 824365209b..57d03addb4 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -4208,6 +4208,11 @@ static inline bool isar_feature_aa64_sve2_pmull128(const ARMISARegisters *id)
+     return FIELD_EX64(id->id_aa64zfr0, ID_AA64ZFR0, AES) >= 2;
+ }
  
- #undef DO_BITPERM
- 
-+#define DO_CADD(NAME, TYPE, H, ADD_OP, SUB_OP)                  \
-+void HELPER(NAME)(void *vd, void *vn, void *vm, uint32_t desc)  \
-+{                                                               \
-+    intptr_t i, opr_sz = simd_oprsz(desc);                      \
-+    int sub_r = simd_data(desc);                                \
-+    if (sub_r) {                                                \
-+        for (i = 0; i < opr_sz; i += 2 * sizeof(TYPE)) {        \
-+            TYPE acc_r = *(TYPE *)(vn + H(i));                  \
-+            TYPE acc_i = *(TYPE *)(vn + H(i + sizeof(TYPE)));   \
-+            TYPE el2_r = *(TYPE *)(vm + H(i));                  \
-+            TYPE el2_i = *(TYPE *)(vm + H(i + sizeof(TYPE)));   \
-+            acc_r = ADD_OP(acc_r, el2_i);                       \
-+            acc_i = SUB_OP(acc_i, el2_r);                       \
-+            *(TYPE *)(vd + H(i)) = acc_r;                       \
-+            *(TYPE *)(vd + H(i + sizeof(TYPE))) = acc_i;        \
-+        }                                                       \
-+    } else {                                                    \
-+        for (i = 0; i < opr_sz; i += 2 * sizeof(TYPE)) {        \
-+            TYPE acc_r = *(TYPE *)(vn + H(i));                  \
-+            TYPE acc_i = *(TYPE *)(vn + H(i + sizeof(TYPE)));   \
-+            TYPE el2_r = *(TYPE *)(vm + H(i));                  \
-+            TYPE el2_i = *(TYPE *)(vm + H(i + sizeof(TYPE)));   \
-+            acc_r = SUB_OP(acc_r, el2_i);                       \
-+            acc_i = ADD_OP(acc_i, el2_r);                       \
-+            *(TYPE *)(vd + H(i)) = acc_r;                       \
-+            *(TYPE *)(vd + H(i + sizeof(TYPE))) = acc_i;        \
-+        }                                                       \
-+    }                                                           \
++static inline bool isar_feature_aa64_sve2_bitperm(const ARMISARegisters *id)
++{
++    return FIELD_EX64(id->id_aa64zfr0, ID_AA64ZFR0, BITPERM) != 0;
 +}
 +
-+DO_CADD(sve2_cadd_b, int8_t, H1, DO_ADD, DO_SUB)
-+DO_CADD(sve2_cadd_h, int16_t, H1_2, DO_ADD, DO_SUB)
-+DO_CADD(sve2_cadd_s, int32_t, H1_4, DO_ADD, DO_SUB)
-+DO_CADD(sve2_cadd_d, int64_t,     , DO_ADD, DO_SUB)
+ /*
+  * Feature tests for "does this exist in either 32-bit or 64-bit?"
+  */
+diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
+index f65818da05..4861481fe0 100644
+--- a/target/arm/helper-sve.h
++++ b/target/arm/helper-sve.h
+@@ -2377,3 +2377,18 @@ DEF_HELPER_FLAGS_4(sve2_eoril_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(sve2_eoril_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(sve2_eoril_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(sve2_eoril_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
 +
-+DO_CADD(sve2_sqcadd_b, int8_t, H1, DO_SQADD_B, DO_SQSUB_B)
-+DO_CADD(sve2_sqcadd_h, int16_t, H1_2, DO_SQADD_H, DO_SQSUB_H)
-+DO_CADD(sve2_sqcadd_s, int32_t, H1_4, DO_SQADD_S, DO_SQSUB_S)
-+DO_CADD(sve2_sqcadd_d, int64_t,     , do_sqadd_d, do_sqsub_d)
++DEF_HELPER_FLAGS_4(sve2_bext_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_bext_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_bext_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_bext_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
 +
-+#undef DO_CADD
++DEF_HELPER_FLAGS_4(sve2_bdep_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_bdep_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_bdep_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_bdep_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_4(sve2_bgrp_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_bgrp_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_bgrp_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_bgrp_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+diff --git a/target/arm/sve.decode b/target/arm/sve.decode
+index 0922a44829..7cb89a0d47 100644
+--- a/target/arm/sve.decode
++++ b/target/arm/sve.decode
+@@ -1220,3 +1220,9 @@ USHLLT          01000101 .. 0 ..... 1010 11 ..... .....  @rd_rn_tszimm_shl
+ 
+ EORBT           01000101 .. 0 ..... 10010 0 ..... .....  @rd_rn_rm
+ EORTB           01000101 .. 0 ..... 10010 1 ..... .....  @rd_rn_rm
++
++## SVE2 bitwise permute
++
++BEXT            01000101 .. 0 ..... 1011 00 ..... .....  @rd_rn_rm
++BDEP            01000101 .. 0 ..... 1011 01 ..... .....  @rd_rn_rm
++BGRP            01000101 .. 0 ..... 1011 10 ..... .....  @rd_rn_rm
+diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
+index 9f5d143348..ef9d40591a 100644
+--- a/target/arm/sve_helper.c
++++ b/target/arm/sve_helper.c
+@@ -1241,6 +1241,79 @@ DO_ZZZ_NTB(sve2_eoril_d, uint64_t,     , DO_EOR)
+ 
+ #undef DO_ZZZ_NTB
+ 
++#define DO_BITPERM(NAME, TYPE, OP) \
++void HELPER(NAME)(void *vd, void *vn, void *vm, uint32_t desc) \
++{                                                              \
++    intptr_t i, opr_sz = simd_oprsz(desc);                     \
++    for (i = 0; i < opr_sz; i += sizeof(TYPE)) {               \
++        TYPE nn = *(TYPE *)(vn + i);                           \
++        TYPE mm = *(TYPE *)(vm + i);                           \
++        *(TYPE *)(vd + i) = OP(nn, mm, sizeof(TYPE) * 8);      \
++    }                                                          \
++}
++
++static uint64_t bitextract(uint64_t data, uint64_t mask, int n)
++{
++    uint64_t res = 0;
++    int db, rb = 0;
++
++    for (db = 0; db < n; ++db) {
++        if ((mask >> db) & 1) {
++            res |= ((data >> db) & 1) << rb;
++            ++rb;
++        }
++    }
++    return res;
++}
++
++DO_BITPERM(sve2_bext_b, uint8_t, bitextract)
++DO_BITPERM(sve2_bext_h, uint16_t, bitextract)
++DO_BITPERM(sve2_bext_s, uint32_t, bitextract)
++DO_BITPERM(sve2_bext_d, uint64_t, bitextract)
++
++static uint64_t bitdeposit(uint64_t data, uint64_t mask, int n)
++{
++    uint64_t res = 0;
++    int rb, db = 0;
++
++    for (rb = 0; rb < n; ++rb) {
++        if ((mask >> rb) & 1) {
++            res |= ((data >> db) & 1) << rb;
++            ++db;
++        }
++    }
++    return res;
++}
++
++DO_BITPERM(sve2_bdep_b, uint8_t, bitdeposit)
++DO_BITPERM(sve2_bdep_h, uint16_t, bitdeposit)
++DO_BITPERM(sve2_bdep_s, uint32_t, bitdeposit)
++DO_BITPERM(sve2_bdep_d, uint64_t, bitdeposit)
++
++static uint64_t bitgroup(uint64_t data, uint64_t mask, int n)
++{
++    uint64_t resm = 0, resu = 0;
++    int db, rbm = 0, rbu = 0;
++
++    for (db = 0; db < n; ++db) {
++        uint64_t val = (data >> db) & 1;
++        if ((mask >> db) & 1) {
++            resm |= val << rbm++;
++        } else {
++            resu |= val << rbu++;
++        }
++    }
++
++    return resm | (resu << rbm);
++}
++
++DO_BITPERM(sve2_bgrp_b, uint8_t, bitgroup)
++DO_BITPERM(sve2_bgrp_h, uint16_t, bitgroup)
++DO_BITPERM(sve2_bgrp_s, uint32_t, bitgroup)
++DO_BITPERM(sve2_bgrp_d, uint64_t, bitgroup)
++
++#undef DO_BITPERM
 +
  #define DO_ZZI_SHLL(NAME, TYPEW, TYPEN, HW, HN) \
  void HELPER(NAME)(void *vd, void *vn, uint32_t desc)           \
  {                                                              \
 diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-index 06812405f2..e4eca9f16d 100644
+index ea03bf6609..06812405f2 100644
 --- a/target/arm/translate-sve.c
 +++ b/target/arm/translate-sve.c
-@@ -6286,3 +6286,34 @@ static bool trans_BGRP(DisasContext *s, arg_rrr_esz *a)
-     }
-     return do_sve2_zzw_ool(s, a, fns[a->esz], 0);
+@@ -6250,3 +6250,39 @@ static bool trans_USHLLT(DisasContext *s, arg_rri_esz *a)
+ {
+     return do_sve2_shll_tb(s, a, true, true);
  }
 +
-+static bool do_cadd(DisasContext *s, arg_rrr_esz *a, bool sq, bool rot)
++static bool trans_BEXT(DisasContext *s, arg_rrr_esz *a)
 +{
-+    static gen_helper_gvec_3 * const fns[2][4] = {
-+        { gen_helper_sve2_cadd_b, gen_helper_sve2_cadd_h,
-+          gen_helper_sve2_cadd_s, gen_helper_sve2_cadd_d },
-+        { gen_helper_sve2_sqcadd_b, gen_helper_sve2_sqcadd_h,
-+          gen_helper_sve2_sqcadd_s, gen_helper_sve2_sqcadd_d },
++    static gen_helper_gvec_3 * const fns[4] = {
++        gen_helper_sve2_bext_b, gen_helper_sve2_bext_h,
++        gen_helper_sve2_bext_s, gen_helper_sve2_bext_d,
 +    };
-+    return do_sve2_zzw_ool(s, a, fns[sq][a->esz], rot);
++    if (!dc_isar_feature(aa64_sve2_bitperm, s)) {
++        return false;
++    }
++    return do_sve2_zzw_ool(s, a, fns[a->esz], 0);
 +}
 +
-+static bool trans_CADD_rot90(DisasContext *s, arg_rrr_esz *a)
++static bool trans_BDEP(DisasContext *s, arg_rrr_esz *a)
 +{
-+    return do_cadd(s, a, false, false);
++    static gen_helper_gvec_3 * const fns[4] = {
++        gen_helper_sve2_bdep_b, gen_helper_sve2_bdep_h,
++        gen_helper_sve2_bdep_s, gen_helper_sve2_bdep_d,
++    };
++    if (!dc_isar_feature(aa64_sve2_bitperm, s)) {
++        return false;
++    }
++    return do_sve2_zzw_ool(s, a, fns[a->esz], 0);
 +}
 +
-+static bool trans_CADD_rot270(DisasContext *s, arg_rrr_esz *a)
++static bool trans_BGRP(DisasContext *s, arg_rrr_esz *a)
 +{
-+    return do_cadd(s, a, false, true);
-+}
-+
-+static bool trans_SQCADD_rot90(DisasContext *s, arg_rrr_esz *a)
-+{
-+    return do_cadd(s, a, true, false);
-+}
-+
-+static bool trans_SQCADD_rot270(DisasContext *s, arg_rrr_esz *a)
-+{
-+    return do_cadd(s, a, true, true);
++    static gen_helper_gvec_3 * const fns[4] = {
++        gen_helper_sve2_bgrp_b, gen_helper_sve2_bgrp_h,
++        gen_helper_sve2_bgrp_s, gen_helper_sve2_bgrp_d,
++    };
++    if (!dc_isar_feature(aa64_sve2_bitperm, s)) {
++        return false;
++    }
++    return do_sve2_zzw_ool(s, a, fns[a->esz], 0);
 +}
 -- 
 2.25.1

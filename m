@@ -1,234 +1,312 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3002506lfg;
-        Tue, 9 Mar 2021 09:19:08 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz1N1HORH3KO3nfhVzrpSPHPuA4KgcAalGO0n86DjiDWl5hgt3qFHx+v3gCbGnyEbIJMyKb
-X-Received: by 2002:a92:444b:: with SMTP id a11mr24677521ilm.291.1615310348593;
-        Tue, 09 Mar 2021 09:19:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1615310348; cv=none;
-        d=google.com; s=arc-20160816;
-        b=nKrHKZvtIxLjUntc7Ur++YbfWCcVyDL8adyfjRZr1nDmw7uh1e3HnQjdbGnuc3i99M
-         iatpjzQuKz+/a75XnAn4F5gFDyYlsgnCl8vWvacdb+EflnqRNberPbikPQlcm61LRF2e
-         rHderp9+i23PChi4pArXOHqY4jHRJ5r5smfSpiXX9qfX1nkQYYtnfTQqCDkY910VMfY5
-         dWbokE+r8hNe/EMc+vRbcjBIjQxxeM774ql817xubphrUJB1RhCw/cE3Zcyu2bmKOFEK
-         21laVamG8/mkwIDni13Gk57lF1UqPW+E6nYneBhPe0S+gxUHqV+Oe1sQ0SGjLAzU8y/u
-         6E1A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:subject:from:references:to:dkim-signature;
-        bh=1jJJbOIxOY0Mxq+H2kcUM6uJwMCSAvdeDJz/Hci88oM=;
-        b=l+Er+hwc+0zQE2KI6pZFQZeeiWSODqXGczUxve7DgxY1fZdDHhWWYHM7OYow3g/0WU
-         KmuaN9gMo4mUFtxpdqcBL60XtrcxzhcmVBQ/ErjHefP4dOXCbofyVnHytSxHVM4ebTdC
-         ROat3El0npq2B4lskqygXdNBThsraN60H9nPoKCOeb9yE2m8f0hr4fPuseb6r/3ncM5Q
-         QgO08EHg7JhTBagxhO2Ggvx6kMng0ceCvNzgPo4KMUZxKST79o9y2oR0SJcU7XOrPrWa
-         Kg2+eVUuxiR7YYSixq8/2G3oy45M+IhYwrLKBZLF0nhAalQ/LojmOYmvIydvcV817izq
-         wHdg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gYojolVD;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r4si917342ilo.48.2021.03.09.09.19.08
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Mar 2021 09:19:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gYojolVD;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55464 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lJg0h-0000lp-Oo
-	for alex.bennee@linaro.org; Tue, 09 Mar 2021 12:19:07 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44912)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lJf5y-0006RW-TH
- for qemu-devel@nongnu.org; Tue, 09 Mar 2021 11:20:30 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:42602)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lJf5q-0002G3-CX
- for qemu-devel@nongnu.org; Tue, 09 Mar 2021 11:20:30 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1615306821;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=1jJJbOIxOY0Mxq+H2kcUM6uJwMCSAvdeDJz/Hci88oM=;
- b=gYojolVDbLntuoLfIPwjzCaBnihBZJsuh63w/dpfukK/ocMEe7Iov3MGbPTJDa2MzxF4vl
- SRTWjdCcFB8xAiK9kzvZgPnx0eJM7z0bBdep1oh2D+Dt0LC1ITT6klqRFimy6hK2skL39q
- cDVYizPDf9nhMYuxELvUC7Rd51gnFVI=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-55-IJO7rgPAP8Cvint-yo1Ckw-1; Tue, 09 Mar 2021 11:20:19 -0500
-X-MC-Unique: IJO7rgPAP8Cvint-yo1Ckw-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5C96B80432E;
- Tue,  9 Mar 2021 16:20:17 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-112-72.ams2.redhat.com [10.36.112.72])
- by smtp.corp.redhat.com (Postfix) with ESMTP id B62FB60C17;
- Tue,  9 Mar 2021 16:20:07 +0000 (UTC)
-To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-References: <20201217014941.22872-1-zhukeqian1@huawei.com>
- <20201217014941.22872-3-zhukeqian1@huawei.com>
- <65c92236-5212-f725-047a-cb1d231eff25@redhat.com>
- <759785ef-f29e-f05f-9f2f-357e71ae3680@huawei.com>
- <11854ebf-ed88-496d-8381-5385ef1b403a@redhat.com> <YEeM8eUUzm9AlaFI@work-vm>
-From: Thomas Huth <thuth@redhat.com>
-Subject: Re: [PATCH v2 2/2] accel: kvm: Add aligment assert for
- kvm_log_clear_one_slot
-Message-ID: <48fd9bee-4542-533a-b893-7acf3744fe36@redhat.com>
-Date: Tue, 9 Mar 2021 17:20:01 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.0
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id r24sm9379394edw.11.2021.03.09.09.21.27
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 09 Mar 2021 09:21:27 -0800 (PST)
+Received: from zen.lan (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 3E8711FF87;
+	Tue,  9 Mar 2021 17:21:27 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: keithp@keithp.com,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [PATCH  v3 1/4] semihosting: move semihosting tests to multiarch
+Date: Tue,  9 Mar 2021 17:21:24 +0000
+Message-Id: <20210309172127.20470-2-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20210309172127.20470-1-alex.bennee@linaro.org>
+References: <20210309172127.20470-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <YEeM8eUUzm9AlaFI@work-vm>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.251,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
- jiangkunkun@huawei.com, qemu-devel@nongnu.org, Peter Xu <peterx@redhat.com>,
- qemu-arm@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
- wanghaibin.wang@huawei.com, Zenghui Yu <yuzenghui@huawei.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Keqian Zhu <zhukeqian1@huawei.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TogXET+FsFgT
+X-TUID: 1O3hZCzfTZVN
 
-On 09/03/2021 15.57, Dr. David Alan Gilbert wrote:
-> * Thomas Huth (thuth@redhat.com) wrote:
->> On 09/03/2021 15.05, Keqian Zhu wrote:
->>>
->>>
->>> On 2021/3/9 21:48, Thomas Huth wrote:
->>>> On 17/12/2020 02.49, Keqian Zhu wrote:
->>>>> The parameters start and size are transfered from QEMU memory
->>>>> emulation layer. It can promise that they are TARGET_PAGE_SIZE
->>>>> aligned. However, KVM needs they are qemu_real_page_size aligned.
->>>>>
->>>>> Though no caller breaks this aligned requirement currently, we'd
->>>>> better add an explicit assert to avoid future breaking.
->>>>>
->>>>> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
->>>>> ---
->>>>>     accel/kvm/kvm-all.c | 7 +++++++
->>>>>     1 file changed, 7 insertions(+)
->>>>>
->>>>> ---
->>>>> v2
->>>>>     - Address Andrew's commment (Use assert instead of return err).
->>>>>
->>>>> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
->>>>> index f6b16a8df8..73b195cc41 100644
->>>>> --- a/accel/kvm/kvm-all.c
->>>>> +++ b/accel/kvm/kvm-all.c
->>>>> @@ -692,6 +692,10 @@ out:
->>>>>     #define KVM_CLEAR_LOG_ALIGN  (qemu_real_host_page_size << KVM_CLEAR_LOG_SHIFT)
->>>>>     #define KVM_CLEAR_LOG_MASK   (-KVM_CLEAR_LOG_ALIGN)
->>>>>     +/*
->>>>> + * As the granule of kvm dirty log is qemu_real_host_page_size,
->>>>> + * @start and @size are expected and restricted to align to it.
->>>>> + */
->>>>>     static int kvm_log_clear_one_slot(KVMSlot *mem, int as_id, uint64_t start,
->>>>>                                       uint64_t size)
->>>>>     {
->>>>> @@ -701,6 +705,9 @@ static int kvm_log_clear_one_slot(KVMSlot *mem, int as_id, uint64_t start,
->>>>>         unsigned long *bmap_clear = NULL, psize = qemu_real_host_page_size;
->>>>>         int ret;
->>>>>     +    /* Make sure start and size are qemu_real_host_page_size aligned */
->>>>> +    assert(QEMU_IS_ALIGNED(start | size, psize));
->>>>
->>>> Sorry, but that was a bad idea: It triggers and kills my Centos 6 VM:
->>>>
->>>> $ qemu-system-x86_64 -accel kvm -hda ~/virt/images/centos6.qcow2 -m 1G
->>>> qemu-system-x86_64: ../../devel/qemu/accel/kvm/kvm-all.c:690: kvm_log_clear_one_slot: Assertion `QEMU_IS_ALIGNED(start | size, psize)' failed.
->>>> Aborted (core dumped)
->>> Hi Thomas,
->>>
->>> I think this patch is ok, maybe it trigger a potential bug?
->>
->> Well, sure, there is either a bug somewhere else or in this new code. But it's certainly not normal that the assert() triggers, is it?
->>
->> FWIW, here's a backtrace:
->>
->> #0  0x00007ffff2c1584f in raise () at /lib64/libc.so.6
->> #1  0x00007ffff2bffc45 in abort () at /lib64/libc.so.6
->> #2  0x00007ffff2bffb19 in _nl_load_domain.cold.0 () at /lib64/libc.so.6
->> #3  0x00007ffff2c0de36 in .annobin_assert.c_end () at /lib64/libc.so.6
->> #4  0x0000555555ba25f3 in kvm_log_clear_one_slot
->>      (size=6910080, start=0, as_id=0, mem=0x555556e1ee00)
->>      at ../../devel/qemu/accel/kvm/kvm-all.c:691
->> #5  0x0000555555ba25f3 in kvm_physical_log_clear
->>      (section=0x7fffffffd0b0, section=0x7fffffffd0b0, kml=0x555556dbaac0)
->>      at ../../devel/qemu/accel/kvm/kvm-all.c:843
->> #6  0x0000555555ba25f3 in kvm_log_clear (listener=0x555556dbaac0, section=0x7fffffffd0b0)
->>      at ../../devel/qemu/accel/kvm/kvm-all.c:1253
->> #7  0x0000555555b023d8 in memory_region_clear_dirty_bitmap
->>      (mr=mr@entry=0x5555573394c0, start=start@entry=0, len=len@entry=6910080)
->>      at ../../devel/qemu/softmmu/memory.c:2132
->> #8  0x0000555555b313d9 in cpu_physical_memory_snapshot_and_clear_dirty
->>      (mr=mr@entry=0x5555573394c0, offset=offset@entry=0, length=length@entry=6910080, client=client@entry=0) at ../../devel/qemu/softmmu/physmem.c:1109
->> #9  0x0000555555b02483 in memory_region_snapshot_and_clear_dirty
->>      (mr=mr@entry=0x5555573394c0, addr=addr@entry=0, size=size@entry=6910080, client=client@entry=0)
->>      at ../../devel/qemu/softmmu/memory.c:2146
-> 
-> Could you please figure out which memory region this is?
-> WTH is that size? Is that really the problem that the size is just
-> crazy?
+It may be arm-compat-semihosting but more than one architecture uses
+it so lets move the tests into the multiarch area. We gate it on the
+feature and split the semicall.h header between the arches.
 
-The answer is one stack frame below...
+Also clean-up a bit of the Makefile messing about to one common set of
+runners.
 
->> #10 0x0000555555babe99 in vga_draw_graphic (full_update=0, s=0x5555573394b0)
->>      at ../../devel/qemu/hw/display/vga.c:1661
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ tests/tcg/aarch64/semicall.h                  | 18 +++++++++++
+ tests/tcg/arm/semicall.h                      | 15 +--------
+ tests/tcg/riscv64/semicall.h                  | 22 +++++++++++++
+ .../arm-compat-semi}/semiconsole.c            |  2 ++
+ .../arm-compat-semi}/semihosting.c            |  5 ++-
+ tests/tcg/Makefile.target                     |  3 ++
+ tests/tcg/aarch64/Makefile.target             | 18 -----------
+ tests/tcg/arm/Makefile.target                 | 16 ++--------
+ tests/tcg/multiarch/Makefile.target           | 31 +++++++++++++++++++
+ 9 files changed, 83 insertions(+), 47 deletions(-)
+ create mode 100644 tests/tcg/aarch64/semicall.h
+ create mode 100644 tests/tcg/riscv64/semicall.h
+ rename tests/tcg/{arm => multiarch/arm-compat-semi}/semiconsole.c (93%)
+ rename tests/tcg/{arm => multiarch/arm-compat-semi}/semihosting.c (85%)
 
-The vga code basically does this:
-
-     region_start = (s->start_addr * 4);
-     region_end = region_start + (ram_addr_t)s->line_offset * height;
-     region_end += width * depth / 8; /* scanline length */
-     region_end -= s->line_offset;
-     ...
-     memory_region_snapshot_and_clear_dirty(... region_end - region_start...);
-
-Thus it uses a size that is nowhere guaranteed to be a multiple
-of the page size.
-
-A similar usage can be seen in other devices, too (e.g. sm501.c),
-so either there is a bug in the assert() statement, or we have
-a problem with many devices...
-
-  Thomas
-
+diff --git a/tests/tcg/aarch64/semicall.h b/tests/tcg/aarch64/semicall.h
+new file mode 100644
+index 0000000000..8a3fce35c5
+--- /dev/null
++++ b/tests/tcg/aarch64/semicall.h
+@@ -0,0 +1,18 @@
++/*
++ * Semihosting Tests - AArch64 helper
++ *
++ * Copyright (c) 2019
++ * Written by Alex Bennée <alex.bennee@linaro.org>
++ *
++ * SPDX-License-Identifier: GPL-3.0-or-later
++ */
++
++uintptr_t __semi_call(uintptr_t type, uintptr_t arg0)
++{
++    register uintptr_t t asm("x0") = type;
++    register uintptr_t a0 asm("x1") = arg0;
++    asm("hlt 0xf000"
++        : "=r" (t)
++        : "r" (t), "r" (a0));
++    return t;
++}
+diff --git a/tests/tcg/arm/semicall.h b/tests/tcg/arm/semicall.h
+index d4f6818192..ad8ac51310 100644
+--- a/tests/tcg/arm/semicall.h
++++ b/tests/tcg/arm/semicall.h
+@@ -1,5 +1,5 @@
+ /*
+- * Semihosting Tests
++ * Semihosting Tests - ARM Helper
+  *
+  * Copyright (c) 2019
+  * Written by Alex Bennée <alex.bennee@linaro.org>
+@@ -7,13 +7,8 @@
+  * SPDX-License-Identifier: GPL-3.0-or-later
+  */
+ 
+-#define SYS_WRITE0      0x04
+-#define SYS_READC       0x07
+-#define SYS_REPORTEXC   0x18
+-
+ uintptr_t __semi_call(uintptr_t type, uintptr_t arg0)
+ {
+-#if defined(__arm__)
+     register uintptr_t t asm("r0") = type;
+     register uintptr_t a0 asm("r1") = arg0;
+ #ifdef __thumb__
+@@ -23,13 +18,5 @@ uintptr_t __semi_call(uintptr_t type, uintptr_t arg0)
+ #endif
+     asm(SVC : "=r" (t)
+         : "r" (t), "r" (a0));
+-#else
+-    register uintptr_t t asm("x0") = type;
+-    register uintptr_t a0 asm("x1") = arg0;
+-    asm("hlt 0xf000"
+-        : "=r" (t)
+-        : "r" (t), "r" (a0));
+-#endif
+-
+     return t;
+ }
+diff --git a/tests/tcg/riscv64/semicall.h b/tests/tcg/riscv64/semicall.h
+new file mode 100644
+index 0000000000..f8c88f32dc
+--- /dev/null
++++ b/tests/tcg/riscv64/semicall.h
+@@ -0,0 +1,22 @@
++/*
++ * Semihosting Tests - RiscV64 Helper
++ *
++ * Copyright (c) 2021
++ * Written by Alex Bennée <alex.bennee@linaro.org>
++ *
++ * SPDX-License-Identifier: GPL-3.0-or-later
++ */
++
++uintptr_t __semi_call(uintptr_t type, uintptr_t arg0)
++{
++    register uintptr_t t asm("a0") = type;
++    register uintptr_t a0 asm("a1") = arg0;
++    asm(".option norvc\n\t"
++        ".balign 16\n\t"
++        "slli zero, zero, 0x1f\n\t"
++        "ebreak\n\t"
++        "srai zero, zero, 0x7\n\t"
++        : "=r" (t)
++        : "r" (t), "r" (a0));
++    return t;
++}
+diff --git a/tests/tcg/arm/semiconsole.c b/tests/tcg/multiarch/arm-compat-semi/semiconsole.c
+similarity index 93%
+rename from tests/tcg/arm/semiconsole.c
+rename to tests/tcg/multiarch/arm-compat-semi/semiconsole.c
+index 6ef0bd2450..1d82efc589 100644
+--- a/tests/tcg/arm/semiconsole.c
++++ b/tests/tcg/multiarch/arm-compat-semi/semiconsole.c
+@@ -7,6 +7,8 @@
+  * SPDX-License-Identifier: GPL-3.0-or-later
+  */
+ 
++#define SYS_READC       0x07
++
+ #include <stdio.h>
+ #include <stdint.h>
+ #include "semicall.h"
+diff --git a/tests/tcg/arm/semihosting.c b/tests/tcg/multiarch/arm-compat-semi/semihosting.c
+similarity index 85%
+rename from tests/tcg/arm/semihosting.c
+rename to tests/tcg/multiarch/arm-compat-semi/semihosting.c
+index 33faac9916..b3fd16cd12 100644
+--- a/tests/tcg/arm/semihosting.c
++++ b/tests/tcg/multiarch/arm-compat-semi/semihosting.c
+@@ -7,12 +7,15 @@
+  * SPDX-License-Identifier: GPL-3.0-or-later
+  */
+ 
++#define SYS_WRITE0      0x04
++#define SYS_REPORTEXC   0x18
++
+ #include <stdint.h>
+ #include "semicall.h"
+ 
+ int main(int argc, char *argv[argc])
+ {
+-#if defined(__arm__)
++#if UINTPTR_MAX == UINT32_MAX
+     uintptr_t exit_code = 0x20026;
+ #else
+     uintptr_t exit_block[2] = {0x20026, 0};
+diff --git a/tests/tcg/Makefile.target b/tests/tcg/Makefile.target
+index 24d75a5801..cab8c6b3a2 100644
+--- a/tests/tcg/Makefile.target
++++ b/tests/tcg/Makefile.target
+@@ -32,6 +32,9 @@
+ all:
+ -include ../../../config-host.mak
+ -include ../config-$(TARGET).mak
++ifeq ($(CONFIG_USER_ONLY),y)
++-include $(SRC_PATH)/default-configs/targets/$(TARGET).mak
++endif
+ 
+ # for including , in command strings
+ COMMA := ,
+diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+index bf53ad0087..56e48f4b34 100644
+--- a/tests/tcg/aarch64/Makefile.target
++++ b/tests/tcg/aarch64/Makefile.target
+@@ -41,24 +41,6 @@ AARCH64_TESTS += mte-1 mte-2 mte-3 mte-4
+ mte-%: CFLAGS += -march=armv8.5-a+memtag
+ endif
+ 
+-# Semihosting smoke test for linux-user
+-AARCH64_TESTS += semihosting
+-run-semihosting: semihosting
+-	$(call run-test,$<,$(QEMU) $< 2> $<.err, "$< on $(TARGET_NAME)")
+-
+-run-plugin-semihosting-with-%:
+-	$(call run-test, $@, $(QEMU) $(QEMU_OPTS) \
+-		-plugin $(PLUGIN_LIB)/$(call extract-plugin,$@) \
+-		 $(call strip-plugin,$<) 2> $<.err, \
+-		"$< on $(TARGET_NAME) with $*")
+-
+-AARCH64_TESTS += semiconsole
+-run-semiconsole: semiconsole
+-	$(call skip-test, $<, "MANUAL ONLY")
+-
+-run-plugin-semiconsole-with-%:
+-	$(call skip-test, $<, "MANUAL ONLY")
+-
+ ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_SVE),)
+ # System Registers Tests
+ AARCH64_TESTS += sysregs
+diff --git a/tests/tcg/arm/Makefile.target b/tests/tcg/arm/Makefile.target
+index ec95156562..1deda384df 100644
+--- a/tests/tcg/arm/Makefile.target
++++ b/tests/tcg/arm/Makefile.target
+@@ -30,37 +30,25 @@ run-fcvt: fcvt
+ 	$(call diff-out,fcvt,$(ARM_SRC)/fcvt.ref)
+ 
+ # Semihosting smoke test for linux-user
+-ARM_TESTS += semihosting
+ semihosting: CFLAGS += -mthumb
+-run-semihosting: semihosting
+-	$(call run-test,$<,$(QEMU) $< 2> $<.err, "$< on $(TARGET_NAME)")
+ 
+ ARM_TESTS += semihosting-arm
+ semihosting-arm: CFLAGS += -marm
+-semihosting-arm: semihosting.c
+-	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
+ 
+ run-semihosting-arm: semihosting-arm
+ 	$(call run-test,$<,$(QEMU) $< 2> $<.err, "$< on $(TARGET_NAME)")
+ 
+-run-plugin-semihosting-with-%:
++run-plugin-semihosting-arm-with-%:
+ 	$(call run-test, $@, $(QEMU) $(QEMU_OPTS) \
+ 		-plugin $(PLUGIN_LIB)/$(call extract-plugin,$@) \
+ 		 $(call strip-plugin,$<) 2> $<.err, \
+ 		"$< on $(TARGET_NAME) with $*")
+ 
+-ARM_TESTS += semiconsole semiconsole-arm
++ARM_TESTS += semiconsole-arm
+ 
+ semiconsole: CFLAGS += -mthumb
+-run-semiconsole: semiconsole
+-	$(call skip-test, $<, "MANUAL ONLY")
+-
+-run-plugin-semiconsole-with-%:
+-	$(call skip-test, $<, "MANUAL ONLY")
+ 
+ semiconsole-arm: CFLAGS += -marm
+-semiconsole-arm: semiconsole.c
+-	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
+ 
+ run-semiconsole-arm: semiconsole-arm
+ 	$(call skip-test, $<, "MANUAL ONLY")
+diff --git a/tests/tcg/multiarch/Makefile.target b/tests/tcg/multiarch/Makefile.target
+index abbdb2e126..a3a751723d 100644
+--- a/tests/tcg/multiarch/Makefile.target
++++ b/tests/tcg/multiarch/Makefile.target
+@@ -69,6 +69,37 @@ run-gdbstub-%:
+ endif
+ EXTRA_RUNS += run-gdbstub-sha1 run-gdbstub-qxfer-auxv-read
+ 
++# ARM Compatible Semi Hosting Tests
++#
++# Despite having ARM in the name we actually have several
++# architectures that implement it. We gate the tests on the feature
++# appearing in config.
++#
++ifeq ($(CONFIG_ARM_COMPATIBLE_SEMIHOSTING),y)
++VPATH += $(MULTIARCH_SRC)/arm-compat-semi
++
++# Add -I path back to TARGET_NAME for semicall.h
++semihosting: CFLAGS+=-I$(SRC_PATH)/tests/tcg/$(TARGET_NAME)
++
++run-semihosting: semihosting
++	$(call run-test,$<,$(QEMU) $< 2> $<.err, "$< on $(TARGET_NAME)")
++
++run-plugin-semihosting-with-%:
++	$(call run-test, $@, $(QEMU) $(QEMU_OPTS) \
++		-plugin $(PLUGIN_LIB)/$(call extract-plugin,$@) \
++		 $(call strip-plugin,$<) 2> $<.err, \
++		"$< on $(TARGET_NAME) with $*")
++
++semiconsole: CFLAGS+=-I$(SRC_PATH)/tests/tcg/$(TARGET_NAME)
++
++run-semiconsole: semiconsole
++	$(call skip-test, $<, "MANUAL ONLY")
++
++run-plugin-semiconsole-with-%:
++	$(call skip-test, $<, "MANUAL ONLY")
++
++TESTS += semihosting semiconsole
++endif
+ 
+ # Update TESTS
+ TESTS += $(MULTIARCH_TESTS)
+-- 
+2.20.1

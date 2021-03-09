@@ -1,211 +1,171 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2538605lfg;
-        Mon, 8 Mar 2021 23:27:56 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxSThZ7F0o+g72c7KVIV49KV6LTAgEm4+eO6IxGMo8EzbxyzAtq1Z//YCeMiWbRJ7gGnhIC
-X-Received: by 2002:a92:cda2:: with SMTP id g2mr24142183ild.297.1615274876413;
-        Mon, 08 Mar 2021 23:27:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1615274876; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2579548lfg;
+        Tue, 9 Mar 2021 00:38:44 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwyoDngqkS8Dh3e4ooECdpd08cXwP+mBgwj+esAeNbzbc0qLTXVJfgEF7XpSmR0oBNjabal
+X-Received: by 2002:a25:2183:: with SMTP id h125mr40199843ybh.378.1615279124102;
+        Tue, 09 Mar 2021 00:38:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1615279124; cv=none;
         d=google.com; s=arc-20160816;
-        b=mtZ2VXsLRc97thRUOTnGAMXKdu9go/mUa7sLu8U1/nU9/dsO++V/nTkKvgJDCQwxJ5
-         pk4yui2W/wllXyhCkLJTNj37se9HSPD3gwUdBSAwO+zXGneg97GUqayIzrZZCrOVmJ06
-         08uP43D4ENHY9mMa7GXpJHA7tOVkUVqP9Gno5robsbd4tVYTEXG4oiHYFP+Vdef69N29
-         X3FwdLB2oEP+hhD4yjNH3AOXDhLq9NOlyOYS92f7ZwgzGoksil6/9pygT61uDmXA1gLn
-         Ydf8nnkM6FCpc9wfRXwxAEmjaMsvr7tgobVpMU9ah/wGnoWI6OiDCqWc9u0rSArl4Nre
-         825Q==
+        b=Z4EKl3ECdheKMHFJRNJyHZs3yMrEpeZ0V6GbYTnZjogU2YMt83Ezb4F5SDaaZnB4oB
+         Su2qC7WKdDogLS20M3dHT6p1aQ3BxHu2c0xWi3CBPeVN8g4G8P2s3v6U/+PYlRGIS1De
+         U+Jbg3Zkluk+9F63dXh8Gp9727o2KhaIN6k9yrPRwbWAT+H6vKi6BCbCUcD2yns83sUw
+         Thsz5r+LhXbgqG/r0vDR9TfRM333cM9tyl9jC+diD97ZOeOioZ2w8T608jZVLUtDZhz3
+         R5jMfhD28i1jG6ZDROVdtVihq0xGqfpgbpgexQchkRKGGXPmbO1KNNv2D34NBMAapZ1s
+         RTTw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=GGfIej1nXQFaNPyrgAQISp3y5EWrF/DpDGZ1BHFPU+8=;
-        b=NBsJoHplZm+U9iD3AkgO+KIH2nsSuEmWRtDcqc0LUnGy8g87ZOIWyQxRLsnx6gmlUt
-         RpTShq1h1wljgSKdBsIo4c24iBKHipgJIErSqrf1DycWpR3TVHvJSCLS7RFzDHBaAL+c
-         YFiGEe6izRhSDhz09V0724WeyhyIrQr9d8jWFnuYnsjqiY6XXSct/RYIQGXIpDYksyeD
-         ZH3Xaca6yVoSbuO8CamKJd3xJGcQhz06aSVEH4avhR0de9eF6V1NeOHpH1BiB0Z/QX/5
-         wFfAsyNUzjR5aiRzecQzFPAxx+zeBVPhKNCEizv7YM5y4NJH+mwHDTTCX2YGyJtP6fGc
-         Pe9A==
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=tLhh6Dp03nyJ+Bzj1ov/nQwTahFJ76ls+vmQls49DSU=;
+        b=wHGgDxBDgIBjyYxmceIOBt4wyED0RYFtnI03TSx8GRowTW0ekBaF79oxM8ayW3EzzT
+         ifJ+yZhsmaPWTwHQjL9lz32Wu7ndMMQ61n/PQPe5XcXWufOFC2aY+t8PizuZ+4vQV+XC
+         rJEBB2Oq8npsHAvoL659+CS7t6M7Nd6ryNkqeMqkKGzsBzGFcg0gx1bK3GYprTjJ/N37
+         cCaqAsEg+KzNLOTvpgtXXSjfIMkAOOAWKT5NVpN4RqNHNJ7/uPL4gcUZEDlos4Q34YeG
+         yi8tCw2HCTj3upHb8Ow/jOranUBWVt4OvjyJ+UOyEmvTV4bbG3jLmPB5yhfJ4W45ttcM
+         13jg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PIWc7xD4;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o10si13830811jat.112.2021.03.08.23.27.56
+        by mx.google.com with ESMTPS id t16si14057468ybq.375.2021.03.09.00.38.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Mar 2021 23:27:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 09 Mar 2021 00:38:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:42266 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PIWc7xD4;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:39684 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lJWmZ-00050g-MG
-	for alex.bennee@linaro.org; Tue, 09 Mar 2021 02:27:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34020)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lJXt5-0005e3-FC
+	for alex.bennee@linaro.org; Tue, 09 Mar 2021 03:38:43 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47708)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lushenming@huawei.com>)
- id 1lJWlD-00048W-7R; Tue, 09 Mar 2021 02:26:32 -0500
-Received: from szxga06-in.huawei.com ([45.249.212.32]:3558)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lushenming@huawei.com>)
- id 1lJWl5-0006RQ-77; Tue, 09 Mar 2021 02:26:30 -0500
-Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4Dvmtg2wlgzjWbD;
- Tue,  9 Mar 2021 15:24:43 +0800 (CST)
-Received: from [10.174.184.135] (10.174.184.135) by
- DGGEMS405-HUB.china.huawei.com (10.3.19.205) with Microsoft SMTP Server id
- 14.3.498.0; Tue, 9 Mar 2021 15:26:04 +0800
-Subject: Re: [PATCH v3 3/3] vfio: Avoid disabling and enabling vectors
- repeatedly in VFIO migration
-To: Alex Williamson <alex.williamson@redhat.com>, <mst@redhat.com>,
- <marcel.apfelbaum@gmail.com>
-References: <20210223022225.50-1-lushenming@huawei.com>
- <20210223022225.50-4-lushenming@huawei.com>
- <20210302142628.60e0ab6f@omen.home.shazbot.org>
-From: Shenming Lu <lushenming@huawei.com>
-Message-ID: <97a3189a-f053-cb77-0ae9-02530fb4ac89@huawei.com>
-Date: Tue, 9 Mar 2021 15:25:52 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.2.2
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1lJXsD-0005Ee-RK
+ for qemu-devel@nongnu.org; Tue, 09 Mar 2021 03:37:49 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:24037)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1lJXs9-0007N7-1a
+ for qemu-devel@nongnu.org; Tue, 09 Mar 2021 03:37:48 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1615279062;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=tLhh6Dp03nyJ+Bzj1ov/nQwTahFJ76ls+vmQls49DSU=;
+ b=PIWc7xD4iXbFemq+DnGzz1cavBVtM99DDwPylyTjWz1pYQOu0k4zAFPwPoVgjWOTWSui2z
+ wWNDAYeGxda6ORu8wKCMPC5gJqbV/lTzSTTl54AeTl7GU2wjQ2pLjPjSJMvX9LFOzv9VmL
+ pLPYAQtITafjlTrnU/fJvj//RT4nLAA=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-580-B9ZR0FCjMSmwoxL5MTRU0g-1; Tue, 09 Mar 2021 03:37:39 -0500
+X-MC-Unique: B9ZR0FCjMSmwoxL5MTRU0g-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 10B40193F564;
+ Tue,  9 Mar 2021 08:37:38 +0000 (UTC)
+Received: from [10.36.112.254] (ovpn-112-254.ams2.redhat.com [10.36.112.254])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 4BBA7679F0;
+ Tue,  9 Mar 2021 08:37:30 +0000 (UTC)
+Subject: Re: [PATCH v2 4/7] hw/arm/smmu-common: Fix smmu_iotlb_inv_iova when
+ asid is not set
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20210225091435.644762-1-eric.auger@redhat.com>
+ <20210225091435.644762-5-eric.auger@redhat.com>
+ <CAFEAcA_ZTJUD1SfbAX07uk+WceO_NvqE_i+NrHF13bAOmfF3nw@mail.gmail.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <4626b8d9-8b0f-c81c-56a2-331957dfd81a@redhat.com>
+Date: Tue, 9 Mar 2021 09:37:29 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.0
 MIME-Version: 1.0
-In-Reply-To: <20210302142628.60e0ab6f@omen.home.shazbot.org>
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <CAFEAcA_ZTJUD1SfbAX07uk+WceO_NvqE_i+NrHF13bAOmfF3nw@mail.gmail.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.174.184.135]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.32; envelope-from=lushenming@huawei.com;
- helo=szxga06-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=eric.auger@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.251,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Neo Jia <cjia@nvidia.com>,
- Marc Zyngier <maz@kernel.org>, Cornelia Huck <cohuck@redhat.com>,
- qemu-devel@nongnu.org, "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
- Eric Auger <eric.auger@redhat.com>, Kirti Wankhede <kwankhede@nvidia.com>,
- qemu-arm@nongnu.org, yuzenghui@huawei.com, wanghaibin.wang@huawei.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: K8Hn8g3zir7O
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ Jason Wang <jasowang@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
+ Peter Xu <peterx@redhat.com>, vivek.gautam@arm.com,
+ qemu-arm <qemu-arm@nongnu.org>,
+ Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Eric Auger <eric.auger.pro@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: J8PPv1nEoSck
 
-On 2021/3/3 5:26, Alex Williamson wrote:
-> 
-> MST/Marcel,
-> 
-> Do you have an Ack or objection to exporting msix_masked() as below?
-
-Or could we use msix_function_masked instead as below? :-)
-
-if (!pdev->msix_function_masked) {
-    for (nr = 0; nr < msix_nr_vectors_allocated(pdev); nr++) {
-        if (!msix_is_masked(pdev, nr)) {
-            max_vec = nr;
-        }
-    }
-}
-
-Thanks,
-Shenming
-
-> Thanks,
-> 
-> Alex
-> 
-> On Tue, 23 Feb 2021 10:22:25 +0800
-> Shenming Lu <lushenming@huawei.com> wrote:
-> 
->> In VFIO migration resume phase and some guest startups, there are
->> already unmasked vectors in the vector table when calling
->> vfio_msix_enable(). So in order to avoid inefficiently disabling
->> and enabling vectors repeatedly, let's allocate all needed vectors
->> first and then enable these unmasked vectors one by one without
->> disabling.
+Hi Peter,
+On 3/8/21 5:37 PM, Peter Maydell wrote:
+> On Thu, 25 Feb 2021 at 09:15, Eric Auger <eric.auger@redhat.com> wrote:
 >>
->> Signed-off-by: Shenming Lu <lushenming@huawei.com>
+>> If the asid is not set, do not attempt to locate the key directly
+>> as all inserted keys have a valid asid.
+>>
+>> Use g_hash_table_foreach_remove instead.
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 >> ---
->>  hw/pci/msix.c         |  2 +-
->>  hw/vfio/pci.c         | 20 +++++++++++++++++---
->>  include/hw/pci/msix.h |  1 +
->>  3 files changed, 19 insertions(+), 4 deletions(-)
+>>  hw/arm/smmu-common.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
 >>
->> diff --git a/hw/pci/msix.c b/hw/pci/msix.c
->> index ae9331cd0b..e057958fcd 100644
->> --- a/hw/pci/msix.c
->> +++ b/hw/pci/msix.c
->> @@ -131,7 +131,7 @@ static void msix_handle_mask_update(PCIDevice *dev, int vector, bool was_masked)
->>      }
->>  }
->>  
->> -static bool msix_masked(PCIDevice *dev)
->> +bool msix_masked(PCIDevice *dev)
+>> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+>> index 405d5c5325..e9ca3aebb2 100644
+>> --- a/hw/arm/smmu-common.c
+>> +++ b/hw/arm/smmu-common.c
+>> @@ -151,7 +151,7 @@ inline void
+>>  smmu_iotlb_inv_iova(SMMUState *s, int asid, dma_addr_t iova,
+>>                      uint8_t tg, uint64_t num_pages, uint8_t ttl)
 >>  {
->>      return dev->config[dev->msix_cap + MSIX_CONTROL_OFFSET] & MSIX_MASKALL_MASK;
->>  }
->> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
->> index f74be78209..088fd41926 100644
->> --- a/hw/vfio/pci.c
->> +++ b/hw/vfio/pci.c
->> @@ -569,6 +569,9 @@ static void vfio_msix_vector_release(PCIDevice *pdev, unsigned int nr)
->>  
->>  static void vfio_msix_enable(VFIOPCIDevice *vdev)
->>  {
->> +    PCIDevice *pdev = &vdev->pdev;
->> +    unsigned int nr, max_vec = 0;
->> +
->>      vfio_disable_interrupts(vdev);
->>  
->>      vdev->msi_vectors = g_new0(VFIOMSIVector, vdev->msix->entries);
->> @@ -587,11 +590,22 @@ static void vfio_msix_enable(VFIOPCIDevice *vdev)
->>       * triggering to userspace, then immediately release the vector, leaving
->>       * the physical device with no vectors enabled, but MSI-X enabled, just
->>       * like the guest view.
->> +     * If there are already unmasked vectors (in migration resume phase and
->> +     * some guest startups) which will be enabled soon, we can allocate all
->> +     * of them here to avoid inefficiently disabling and enabling vectors
->> +     * repeatedly later.
->>       */
->> -    vfio_msix_vector_do_use(&vdev->pdev, 0, NULL, NULL);
->> -    vfio_msix_vector_release(&vdev->pdev, 0);
->> +    if (!msix_masked(pdev)) {
->> +        for (nr = 0; nr < msix_nr_vectors_allocated(pdev); nr++) {
->> +            if (!msix_is_masked(pdev, nr)) {
->> +                max_vec = nr;
->> +            }
->> +        }
->> +    }
->> +    vfio_msix_vector_do_use(pdev, max_vec, NULL, NULL);
->> +    vfio_msix_vector_release(pdev, max_vec);
->>  
->> -    if (msix_set_vector_notifiers(&vdev->pdev, vfio_msix_vector_use,
->> +    if (msix_set_vector_notifiers(pdev, vfio_msix_vector_use,
->>                                    vfio_msix_vector_release, NULL)) {
->>          error_report("vfio: msix_set_vector_notifiers failed");
->>      }
->> diff --git a/include/hw/pci/msix.h b/include/hw/pci/msix.h
->> index 4c4a60c739..b3cd88e262 100644
->> --- a/include/hw/pci/msix.h
->> +++ b/include/hw/pci/msix.h
->> @@ -28,6 +28,7 @@ void msix_load(PCIDevice *dev, QEMUFile *f);
->>  
->>  int msix_enabled(PCIDevice *dev);
->>  int msix_present(PCIDevice *dev);
->> +bool msix_masked(PCIDevice *dev);
->>  
->>  bool msix_is_masked(PCIDevice *dev, unsigned vector);
->>  void msix_set_pending(PCIDevice *dev, unsigned vector);
+>> -    if (ttl && (num_pages == 1)) {
+>> +    if (ttl && (num_pages == 1) && (asid >= 0)) {
+>>          SMMUIOTLBKey key = smmu_get_iotlb_key(asid, iova, tg, ttl);
+>>
+>>          g_hash_table_remove(s->iotlb, &key);
 > 
-> .
+> Do we also need to avoid the remove-by-key codepath if
+> the tg is not set ?
+when TG is not set, TTL is res0 so I think it is safe.
+
+Thanks
+
+Eric
 > 
+> thanks
+> -- PMM
+> 
+

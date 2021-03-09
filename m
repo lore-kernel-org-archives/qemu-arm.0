@@ -1,110 +1,110 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2896014lfg;
-        Tue, 9 Mar 2021 07:12:53 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyeWZA73usvWfiythDFihPNcOU+pZ8LkkVz2j4NWa0bS5Z/K70cS0RM6ynhjPOO1UOAGmlB
-X-Received: by 2002:a9f:2b8e:: with SMTP id y14mr17220872uai.8.1615302773571;
-        Tue, 09 Mar 2021 07:12:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1615302773; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2910377lfg;
+        Tue, 9 Mar 2021 07:26:51 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxzCrlDadtbKwA3bYSPUVUB1Kn0T2g4+pNR529OkUZ284rb4YfaCTy/sspD7lOI/hwO4j7a
+X-Received: by 2002:ab0:42c:: with SMTP id 41mr16636707uav.80.1615303611714;
+        Tue, 09 Mar 2021 07:26:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1615303611; cv=none;
         d=google.com; s=arc-20160816;
-        b=gQbSJXNFtNTXOPGuz/NVBKPEkAQR5ukM3wrP3oWnkuK2ef7ZmeC0orjp6qRc+rcdVv
-         lenA20uhvC9YLr7GmAER3vJzQGcdkdkitz4O234N7eyFslHX2znA0d9Y4NqvtnvNwA7m
-         Y1ztnwGb9oIs9FVwEB1xrkAKYlIpT6uDeia6hdvZiXsUdUIHcwMzu6wevKgq/alCBCZX
-         +P027YQCRoJAGY4prEE4Sa+CrUIF9I8DF1XcwW2aYYM6r8K0sFAZT7UkJxFXWXaez/WP
-         jDDB4yDJIVff2S0aV1//QhzeTPQqQ1IaD8tYbGyD1swQOa4vIOWZg73AqIxxFMDNazws
-         t+rw==
+        b=X0pmZ9+BjzH1+oeOiW7oNgGCe+GIUEb76GXsg3DeN6BrdzBBhLUqXWs8IC+HVQwF9N
+         JP+7F2iuQo1KXIwk5jz1kupqPNeNlNRm95orcK/gVOWgi2srCz4mVZWofYeEA/J93bZR
+         zmcBmj2qrYPYAXjFxMzExXQYWwMGlgbc8b4LBt4lA9jHR5wVQwl6/2vN7cnoc1bcY92T
+         NrW+0mSVP6lUrS2u+jq21DkvxHmvM2HWTU3bgJTZlw5NcL611wuUcIzCPTzv1DNhi9C9
+         7j0V7cOqNZxxC5IkSEZGE7i5Du1z0UOL79Uo1uW2t/Xyt841Yb5D3jF+mG3KMUzsdC37
+         27Sw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=chuoaICmiBfrDBlUcbMO3IRg1iki2dfxOMLEGBz7MLQ=;
-        b=FEcqT5T4DX1FcCHkbRY8/sGHCwuGppikTg5OwH/DkXX/JtcVRzeKZBFDgCrPct9k4N
-         3y+3KQ+D7wZu3hmX0fV0MPbCK/5I8eb5G4Vg0vGDhsfKn9+ndAwn9mwHuG4p+TH1RtX5
-         bQWBEonUAB/dZqlkG1T0UQfEtGOsWVgEmiXKn4vmDjJvPK8oxYqF1eON1Bri7w7loqIt
-         4TRBxHg1aefskGh9iTA4z1RUOm6ofYn0Hys8YWxA5AG0aWFerbu980ONGwwg/xCGdHrh
-         +7w0f7PF2JIeqLXSXGl2Kl78V6EcI7YY4xj7ZOx+7yJJQiGFSKLaM+OwPG8VPVR2d4DW
-         GmWQ==
+         :list-unsubscribe:list-id:precedence:content-disposition:user-agent
+         :in-reply-to:mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=rAQA3tcvp0tq3g1EHejBPjwgLMcXkHYaMzRqzot0XC4=;
+        b=zbsPe9IqY9d5RORHIPHGAawiqx3S7UZWUIjvVRYmxU1E61+YPr1XJk+ZVViCP/pZLK
+         CG7QTmznkqxrMyzNJoIIBky6XIXpCzHQ2ZsG0DwAAIHv+U4LjzehPA9x1D79JruwJQBP
+         YNPbh+rZKxsvGwVU/3cTmsYeHPX8/rd5Io6kpgmPH36eDrsdGs+xSkcQf56Y3AUR1sbc
+         2WPpvKLI1Yg2762f0Rdsixp5Xo035Gua793sIkw2mNlOnBnVie6u/BbuGvih6IZS3JWv
+         LmiPBeCrhajBMO2OHitOOMHo5JJFuRajfLg/TrwMDX1zSp5xlEI++DfiqQQISpHD5Xsg
+         X7rQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=adNxYirK;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hzTXG4tu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t7si1347545vkm.33.2021.03.09.07.12.53
+        by mx.google.com with ESMTPS id v18si2359483vsl.271.2021.03.09.07.26.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Mar 2021 07:12:53 -0800 (PST)
+        Tue, 09 Mar 2021 07:26:51 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=adNxYirK;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hzTXG4tu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47452 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:32954 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lJe2W-00052r-SP
-	for alex.bennee@linaro.org; Tue, 09 Mar 2021 10:12:52 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45344)
+	id 1lJeG2-0005bj-W9
+	for alex.bennee@linaro.org; Tue, 09 Mar 2021 10:26:51 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50234)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lJdT7-00065d-Rf
- for qemu-arm@nongnu.org; Tue, 09 Mar 2021 09:36:17 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:59038)
+ (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
+ id 1lJdoL-0005Qt-Mw
+ for qemu-arm@nongnu.org; Tue, 09 Mar 2021 09:58:15 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:50126)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lJdT6-0001rq-DO
- for qemu-arm@nongnu.org; Tue, 09 Mar 2021 09:36:17 -0500
+ (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
+ id 1lJdoH-0002lQ-P2
+ for qemu-arm@nongnu.org; Tue, 09 Mar 2021 09:58:13 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1615300575;
+ s=mimecast20190719; t=1615301887;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=chuoaICmiBfrDBlUcbMO3IRg1iki2dfxOMLEGBz7MLQ=;
- b=adNxYirK94jrQdmBUxe1dNVFlT5de9B2uv4yQNwCMTeoG+ciSBC/aTtD1I4/vzQuJtj9hl
- mMQgqV3bk/dWWnvVFX9Ttp9fW3Y6KKfNPfd4+Ah8slbvDxJSEzKSoYDnaMS3DaljZkqiXe
- pSlisoBPf0hhPfdwv5UCKwWqUpugFsM=
+ bh=rAQA3tcvp0tq3g1EHejBPjwgLMcXkHYaMzRqzot0XC4=;
+ b=hzTXG4tu0W1gJpwFGGFYsArC9CUAAR+1a5zf+R2bihi8lTLhN1XSHMs/n6JObd6D51hEVo
+ fgi7tKn+f0a6ssJsoQiIpEb0jZXKs7u7VacdXGYQqBvYIOk5WboDMjkYfYwvzSN5LmDb7J
+ w7KGHSm4BwkNf9CASD6uu34+9KOpTUQ=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-271-bLGfwM6hNS6zOSUu4dkLxg-1; Tue, 09 Mar 2021 09:36:11 -0500
-X-MC-Unique: bLGfwM6hNS6zOSUu4dkLxg-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
+ us-mta-501-FnZ1EWRkM0irL7hFlHwJrw-1; Tue, 09 Mar 2021 09:58:06 -0500
+X-MC-Unique: FnZ1EWRkM0irL7hFlHwJrw-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id F0CE81B2C983;
- Tue,  9 Mar 2021 14:36:09 +0000 (UTC)
-Received: from [10.36.112.254] (ovpn-112-254.ams2.redhat.com [10.36.112.254])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id ABE3F6F98C;
- Tue,  9 Mar 2021 14:36:04 +0000 (UTC)
-Subject: Re: [RFC RESEND PATCH 0/4] hw/arm/virt-acpi-build: Introduce iommu
- option for pci root bus
-To: Wang Xingang <wangxingang5@huawei.com>, qemu-devel@nongnu.org
-References: <1614414831-39712-1-git-send-email-wangxingang5@huawei.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <e37590d0-d65f-e4e4-ec59-92eb3166d9d9@redhat.com>
-Date: Tue, 9 Mar 2021 15:36:02 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.0
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 87E2E108BD08;
+ Tue,  9 Mar 2021 14:58:04 +0000 (UTC)
+Received: from work-vm (ovpn-112-63.ams2.redhat.com [10.36.112.63])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id A7D3B5C233;
+ Tue,  9 Mar 2021 14:57:55 +0000 (UTC)
+Date: Tue, 9 Mar 2021 14:57:53 +0000
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Subject: Re: [PATCH v2 2/2] accel: kvm: Add aligment assert for
+ kvm_log_clear_one_slot
+Message-ID: <YEeM8eUUzm9AlaFI@work-vm>
+References: <20201217014941.22872-1-zhukeqian1@huawei.com>
+ <20201217014941.22872-3-zhukeqian1@huawei.com>
+ <65c92236-5212-f725-047a-cb1d231eff25@redhat.com>
+ <759785ef-f29e-f05f-9f2f-357e71ae3680@huawei.com>
+ <11854ebf-ed88-496d-8381-5385ef1b403a@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <1614414831-39712-1-git-send-email-wangxingang5@huawei.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+In-Reply-To: <11854ebf-ed88-496d-8381-5385ef1b403a@redhat.com>
+User-Agent: Mutt/2.0.5 (2021-01-21)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=dgilbert@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=216.205.24.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=dgilbert@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -29
 X-Spam_score: -3.0
 X-Spam_bar: ---
 X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.251,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -117,49 +117,120 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: xieyingtai@huawei.com, peter.maydell@linaro.org, cenjiahui@huawei.com,
- mst@redhat.com, shannon.zhaosl@gmail.com, qemu-arm@nongnu.org,
- imammedo@redhat.com
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+ jiangkunkun@huawei.com, qemu-devel@nongnu.org, Peter Xu <peterx@redhat.com>,
+ qemu-arm@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+ wanghaibin.wang@huawei.com, Zenghui Yu <yuzenghui@huawei.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Keqian Zhu <zhukeqian1@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: G9ry5iREhzNp
+X-TUID: RpRKEcRcLXiJ
 
-Hi,
-On 2/27/21 9:33 AM, Wang Xingang wrote:
-> From: Xingang Wang <wangxingang5@huawei.com>
+* Thomas Huth (thuth@redhat.com) wrote:
+> On 09/03/2021 15.05, Keqian Zhu wrote:
+> > 
+> > 
+> > On 2021/3/9 21:48, Thomas Huth wrote:
+> > > On 17/12/2020 02.49, Keqian Zhu wrote:
+> > > > The parameters start and size are transfered from QEMU memory
+> > > > emulation layer. It can promise that they are TARGET_PAGE_SIZE
+> > > > aligned. However, KVM needs they are qemu_real_page_size aligned.
+> > > > 
+> > > > Though no caller breaks this aligned requirement currently, we'd
+> > > > better add an explicit assert to avoid future breaking.
+> > > > 
+> > > > Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+> > > > ---
+> > > >    accel/kvm/kvm-all.c | 7 +++++++
+> > > >    1 file changed, 7 insertions(+)
+> > > > 
+> > > > ---
+> > > > v2
+> > > >    - Address Andrew's commment (Use assert instead of return err).
+> > > > 
+> > > > diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+> > > > index f6b16a8df8..73b195cc41 100644
+> > > > --- a/accel/kvm/kvm-all.c
+> > > > +++ b/accel/kvm/kvm-all.c
+> > > > @@ -692,6 +692,10 @@ out:
+> > > >    #define KVM_CLEAR_LOG_ALIGN  (qemu_real_host_page_size << KVM_CLEAR_LOG_SHIFT)
+> > > >    #define KVM_CLEAR_LOG_MASK   (-KVM_CLEAR_LOG_ALIGN)
+> > > >    +/*
+> > > > + * As the granule of kvm dirty log is qemu_real_host_page_size,
+> > > > + * @start and @size are expected and restricted to align to it.
+> > > > + */
+> > > >    static int kvm_log_clear_one_slot(KVMSlot *mem, int as_id, uint64_t start,
+> > > >                                      uint64_t size)
+> > > >    {
+> > > > @@ -701,6 +705,9 @@ static int kvm_log_clear_one_slot(KVMSlot *mem, int as_id, uint64_t start,
+> > > >        unsigned long *bmap_clear = NULL, psize = qemu_real_host_page_size;
+> > > >        int ret;
+> > > >    +    /* Make sure start and size are qemu_real_host_page_size aligned */
+> > > > +    assert(QEMU_IS_ALIGNED(start | size, psize));
+> > > 
+> > > Sorry, but that was a bad idea: It triggers and kills my Centos 6 VM:
+> > > 
+> > > $ qemu-system-x86_64 -accel kvm -hda ~/virt/images/centos6.qcow2 -m 1G
+> > > qemu-system-x86_64: ../../devel/qemu/accel/kvm/kvm-all.c:690: kvm_log_clear_one_slot: Assertion `QEMU_IS_ALIGNED(start | size, psize)' failed.
+> > > Aborted (core dumped)
+> > Hi Thomas,
+> > 
+> > I think this patch is ok, maybe it trigger a potential bug?
 > 
-> These patches add support for configure iommu on/off for pci root bus,
-> including primary bus and pxb root bus. At present, All root bus will go
-> through iommu when iommu is configured, which is not flexible.
+> Well, sure, there is either a bug somewhere else or in this new code. But it's certainly not normal that the assert() triggers, is it?
 > 
-> So this add option to enable/disable iommu for primary bus and pxb root bus.
-> When iommu is enabled for the root bus, devices attached to it will go
-> through iommu. When iommu is disabled for the root bus, devices will not
-> go through iommu accordingly.
+> FWIW, here's a backtrace:
+> 
+> #0  0x00007ffff2c1584f in raise () at /lib64/libc.so.6
+> #1  0x00007ffff2bffc45 in abort () at /lib64/libc.so.6
+> #2  0x00007ffff2bffb19 in _nl_load_domain.cold.0 () at /lib64/libc.so.6
+> #3  0x00007ffff2c0de36 in .annobin_assert.c_end () at /lib64/libc.so.6
+> #4  0x0000555555ba25f3 in kvm_log_clear_one_slot
+>     (size=6910080, start=0, as_id=0, mem=0x555556e1ee00)
+>     at ../../devel/qemu/accel/kvm/kvm-all.c:691
+> #5  0x0000555555ba25f3 in kvm_physical_log_clear
+>     (section=0x7fffffffd0b0, section=0x7fffffffd0b0, kml=0x555556dbaac0)
+>     at ../../devel/qemu/accel/kvm/kvm-all.c:843
+> #6  0x0000555555ba25f3 in kvm_log_clear (listener=0x555556dbaac0, section=0x7fffffffd0b0)
+>     at ../../devel/qemu/accel/kvm/kvm-all.c:1253
+> #7  0x0000555555b023d8 in memory_region_clear_dirty_bitmap
+>     (mr=mr@entry=0x5555573394c0, start=start@entry=0, len=len@entry=6910080)
+>     at ../../devel/qemu/softmmu/memory.c:2132
+> #8  0x0000555555b313d9 in cpu_physical_memory_snapshot_and_clear_dirty
+>     (mr=mr@entry=0x5555573394c0, offset=offset@entry=0, length=length@entry=6910080, client=client@entry=0) at ../../devel/qemu/softmmu/physmem.c:1109
+> #9  0x0000555555b02483 in memory_region_snapshot_and_clear_dirty
+>     (mr=mr@entry=0x5555573394c0, addr=addr@entry=0, size=size@entry=6910080, client=client@entry=0)
+>     at ../../devel/qemu/softmmu/memory.c:2146
 
-Please could you give an example of the qemu command line for which the
-new option is useful for you. This would help me to understand your
-pcie/pci topology and also make sure I test it with the smmu.
+Could you please figure out which memory region this is?
+WTH is that size? Is that really the problem that the size is just
+crazy?
 
-Thank you in advance
+Dave
 
-Best Regards
-
-Eric
+> #10 0x0000555555babe99 in vga_draw_graphic (full_update=0, s=0x5555573394b0)
+>     at ../../devel/qemu/hw/display/vga.c:1661
+> #11 0x0000555555babe99 in vga_update_display (opaque=0x5555573394b0)
+>     at ../../devel/qemu/hw/display/vga.c:1784
+> #12 0x0000555555babe99 in vga_update_display (opaque=0x5555573394b0)
+>     at ../../devel/qemu/hw/display/vga.c:1757
+> #13 0x00005555558ddd32 in graphic_hw_update (con=0x555556a11800)
+>     at ../../devel/qemu/ui/console.c:279
+> #14 0x00005555558dccd2 in dpy_refresh (s=0x555556c17da0) at ../../devel/qemu/ui/console.c:1742
+> #15 0x00005555558dccd2 in gui_update (opaque=opaque@entry=0x555556c17da0)
+>     at ../../devel/qemu/ui/console.c:209
+> #16 0x0000555555dbd520 in timerlist_run_timers (timer_list=0x555556937c50)
+>     at ../../devel/qemu/util/qemu-timer.c:574
+> #17 0x0000555555dbd520 in timerlist_run_timers (timer_list=0x555556937c50)
+>     at ../../devel/qemu/util/qemu-timer.c:499
+> #18 0x0000555555dbd74a in qemu_clock_run_timers (type=<optimized out>)
+>     at ../../devel/qemu/util/qemu-timer.c:670
+> #19 0x0000555555dbd74a in qemu_clock_run_all_timers () at ../../devel/qemu/util/qemu-timer.c:670
 > 
-> Xingang Wang (4):
->   pci: Add PCI_BUS_IOMMU property
->   hw/pci: Add iommu option for pci root bus
->   hw/pci: Add pci_root_bus_max_bus
->   hw/arm/virt-acpi-build: Add explicit idmap info in IORT table
+> Looks like something in the vga code calls this with size=6910080
+> and thus triggers the alignment assertion?
 > 
->  hw/arm/virt-acpi-build.c            | 92 +++++++++++++++++++++--------
->  hw/arm/virt.c                       | 29 +++++++++
->  hw/pci-bridge/pci_expander_bridge.c |  6 ++
->  hw/pci/pci.c                        | 35 ++++++++++-
->  include/hw/arm/virt.h               |  1 +
->  include/hw/pci/pci.h                |  1 +
->  include/hw/pci/pci_bus.h            | 13 ++++
->  7 files changed, 153 insertions(+), 24 deletions(-)
-> 
+>  Thomas
+-- 
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
 

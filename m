@@ -1,114 +1,111 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp906557lfg;
-        Wed, 10 Mar 2021 14:00:37 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwBA7VfWCapQNId5JWn0aDV6KIe7Ca2F44VCa3u8TJLrrG4OMF2VMYI8QHKRWteYvyrdfMA
-X-Received: by 2002:a4a:e8d1:: with SMTP id h17mr2730411ooe.20.1615413637382;
-        Wed, 10 Mar 2021 14:00:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1615413637; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp596580lfg;
+        Wed, 10 Mar 2021 06:59:00 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwXAyYmn4cNVEvu/33Xt0tGYe3KPzH1DH/qUikIfQSpEIWercaK1O0VC/his7QVQWcu1w/E
+X-Received: by 2002:a05:6e02:188e:: with SMTP id o14mr2999343ilu.76.1615388340255;
+        Wed, 10 Mar 2021 06:59:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1615388340; cv=none;
         d=google.com; s=arc-20160816;
-        b=ffOw5dlhrljaw9Q2Qi9nDQth9FrGnEjXUzjM4uViK/Wc2D183VsrhpgJc2lL8WErtl
-         NXjIu5ri5Ax4MqUh7B9otnsU2RBkHr/lYBVE2NrWfP1Q7z+GsjGYu8i6mZOCaZRkNz6I
-         EJ7hixdchspetpYy58wUibaNPjJnPfOCvxZPBXGX1QnrHBE4+jIf7ggRa1zgYakCGHk/
-         9VioycuDMGJTKl8RmtMeepRIM7YsptYt+uytHUIOL0rkFTFI7hPupg4maAo5td2dtHaV
-         KVVrUJ6MyupkWw91FqiaCYrSpBSPjsSfVQPriZWqf7sI9lFRPvcQ1qFh9Sq/NAM74NF3
-         1IdQ==
+        b=O+GpY5PC0b1yqJu0Bhim8ZL83a8H/Xvt56ZVogDluP+FkUonh+MF/reLu5zhwFH1vr
+         k4MpY/BzEylHYFdlfegD3+vEjfNNoUni3Fbc0da7oO41B/9zj8OpeK+Ql6+2kFaR9p90
+         8+75aM4Bqp/LyRZjjnW96dwq73TFpFmDPlxVUXd+m5MfigzNPxsJ0yilw3oeAHmfmFHf
+         HqAbPd6/BPaiZGniJ4D3Iru1XEnZjbQ89BvmDJCxbg7AbtiJIVerIqx62YBLeU5bRyV6
+         pu7FRlISgpJDu0Akt6FcCNyYRkXu4tvBSwF3nPp8qrO6PsfprIhxjZTgejxdzIk+hpWU
+         c9CA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=GUn4kUvUN9HZ5OWofuz5zx/E+kceRjyBd/xxvqEusHU=;
-        b=quHriigMd3yHf77jVu417RPlGDx+RgwEocHQxIu1i51ofr3cR8/z8CaXKQnoZcWWCe
-         ZXpYRCJi+WIJ14rogQKBcFZDHJqZxgJApBjqYdXQuhosdU77yG23B3kKPMCAorIrLdPX
-         1yHl+qp1CIDCC1V421mYE7fRE7gPpvFgRScIokssT+MK2zFT3A4QJcbAohAxLbURSUBX
-         vpfETJ8HqqO3G7hAJOWMKeXiycWH0k9wLq1pIGlLF4UWGdyBoLvPF1zV9B5zAGuav5Za
-         8LDb0bQDi0xuk9OSYpOXv1f6RUYA+Q9LIyc1MtJ90hlj+mO24jc4wvmIn43gAFhjXni4
-         QQoQ==
+        bh=3OGphF3PDtlKT2Fb73K7UQ0HPa5hfx/4zjbwbt8NseY=;
+        b=SD66gLNPYHGt9aqGoDgPh/HFgUdtoMdD6z9AqqNRv2OVnBdZDaY/1nfQXxlmeLIY1w
+         QjQgdW3bY7FdZzFDGoWPKn/EAG/FAj8C+zWyBxdpxJUOx5H20vNkW6qeCuwYLQH8AaP+
+         dr2FgwWm4a3QLOr714qIhFyMkm+VHqAeSoomMDA+ZaJlLHmnJ+6M0qvFfFXd1fWp6f89
+         WOM9gZC/53kqIk7EPOTR6flra0CQXbQ9pFJPScn6b3wpgzvuepQCMj6gE+CtGrGveAcX
+         QtYb46oo6dN40Hd2JtGOJQKiAi1KGsZEZfEfOg2K8BwnohRYMmedKMHL9rp6ibE/40jZ
+         FzGQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=sR6ETms0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BtTURNtI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p9si752029ota.140.2021.03.10.14.00.37
+        by mx.google.com with ESMTPS id i14si15514150ilv.136.2021.03.10.06.59.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 10 Mar 2021 14:00:37 -0800 (PST)
+        Wed, 10 Mar 2021 06:59:00 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=sR6ETms0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33790 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BtTURNtI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:47320 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lK6se-0006vQ-GE
-	for alex.bennee@linaro.org; Wed, 10 Mar 2021 17:00:36 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37602)
+	id 1lK0Id-0003sh-Gk
+	for alex.bennee@linaro.org; Wed, 10 Mar 2021 09:58:59 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42884)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
- id 1lK6ry-0006PB-P2
- for qemu-arm@nongnu.org; Wed, 10 Mar 2021 16:59:54 -0500
-Received: from mail-qv1-xf36.google.com ([2607:f8b0:4864:20::f36]:35505)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
- id 1lK6rv-0002lR-Vl
- for qemu-arm@nongnu.org; Wed, 10 Mar 2021 16:59:54 -0500
-Received: by mail-qv1-xf36.google.com with SMTP id x27so1610540qvd.2
- for <qemu-arm@nongnu.org>; Wed, 10 Mar 2021 13:59:51 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=GUn4kUvUN9HZ5OWofuz5zx/E+kceRjyBd/xxvqEusHU=;
- b=sR6ETms0H3ATh7FqCaPfU0OnxFjdkEDJXM+j+sXEbtPb7KuevXUHmRYheXV0pY23lZ
- 4L5fKrf4es7iiDLL+kruPJQfxSZSptJUbimsRKr/I1gcgedS74WGj1ZxiE2Gg+0DSWd/
- IjjjNzkN4fMuNnsrujfidbOIKMJjjiocokctw1j4VaWeRgDPRMKfY9zyyqCOspHCMr4L
- icHsmFMrTHYJLMCfeOXg1sbSLZcMIYkaotRgJcPlXhuwZwQXbLweDQVVVa2Pg4EisLQt
- /3xsZkORfWM29++v/3RUzZExFTwCyVPeXP0JySW4YmMJIqF3vGAi9T9CAQm0qOZMTPwT
- 5RYA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=GUn4kUvUN9HZ5OWofuz5zx/E+kceRjyBd/xxvqEusHU=;
- b=gjIdTXId10tJvKoEBur46x5NB8SMfNIpkgwpavRP9j2oEffOa50MtpCS7XDAf5cY5k
- Ac+NvOFJJ0Kq4LRmQiK5h+TxvDe+TW5xuMPu3xsF3zqGBtt5B+6ig9E+KujAU8ZHPi1R
- YvzI04VTm/RfxP6iUH6wzSOSOuBPQpz+0IpdOFTYwUGRCJSBjcDsWqyZ6LbTpn7NmUph
- GSKqIoS3mMPmrvLL/8qhhMtxHPbUJ7l2wNszcrO6aryaakdm+SpykIGegjecxNbyazg1
- EeSYBZpmlHImCitqw3LNoLMTX36pb01lKYQ4BQw1ie3sOn7VG8ZYK//N4LbG7Hdc+gyy
- IajA==
-X-Gm-Message-State: AOAM533mtXTz2MpBMvNn6UXKsY0pD2hDeZ9a+zn6BWYImBBSjq6x9mBM
- dlmpFYt/WbesPmq08yM+YgMi0Q==
-X-Received: by 2002:ad4:44a9:: with SMTP id n9mr5156585qvt.60.1615413590397;
- Wed, 10 Mar 2021 13:59:50 -0800 (PST)
-Received: from [10.0.10.142] (c-174-52-16-57.hsd1.ut.comcast.net.
- [174.52.16.57])
- by smtp.gmail.com with ESMTPSA id x36sm474091qte.1.2021.03.10.13.59.49
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 10 Mar 2021 13:59:50 -0800 (PST)
-Subject: Re: [PATCH v3 1/3] target/arm: Add support for FEAT_TLBIRANGE
-To: Richard Henderson <richard.henderson@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-References: <20210310002917.8876-1-rebecca@nuviainc.com>
- <20210310002917.8876-2-rebecca@nuviainc.com>
- <3930c2d8-8972-0acf-7a48-71803072a559@linaro.org>
-From: Rebecca Cran <rebecca@nuviainc.com>
-Message-ID: <35b847ab-b064-248d-adf4-143ae8d7a19d@nuviainc.com>
-Date: Wed, 10 Mar 2021 14:59:48 -0700
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1lK0IS-0003oV-FB
+ for qemu-arm@nongnu.org; Wed, 10 Mar 2021 09:58:48 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:36207)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1lK0IP-00007z-Vb
+ for qemu-arm@nongnu.org; Wed, 10 Mar 2021 09:58:47 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1615388324;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=3OGphF3PDtlKT2Fb73K7UQ0HPa5hfx/4zjbwbt8NseY=;
+ b=BtTURNtIwKLlAl0tcJEYuHvwb9IsxMGsViLHxqjQ/BHwhFnZzkleKJvHMqEElO5izshFC1
+ xzafnygT+PM0CpbGq2LNdORPy7JdNgkbzTa+1C6EI9Cq/7+SsA+wNT1eoU4KIXJ9eI23jG
+ W90kR1taz6wGPkcMdCtggGgmdwofRJE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-181-XpgVjsQfMKuJhl7xktSGSg-1; Wed, 10 Mar 2021 09:58:41 -0500
+X-MC-Unique: XpgVjsQfMKuJhl7xktSGSg-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C962A18568C1;
+ Wed, 10 Mar 2021 14:58:39 +0000 (UTC)
+Received: from [10.36.112.254] (ovpn-112-254.ams2.redhat.com [10.36.112.254])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 477021000320;
+ Wed, 10 Mar 2021 14:58:38 +0000 (UTC)
+Subject: Re: [PATCH v2 2/2] hw/arm/virt: KVM: The IPA lower bound is 32
+To: Andrew Jones <drjones@redhat.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+References: <20210310135218.255205-1-drjones@redhat.com>
+ <20210310135218.255205-3-drjones@redhat.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <1e161cc6-cbfb-5c89-5f3a-c76298d3748a@redhat.com>
+Date: Wed, 10 Mar 2021 15:58:36 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+ Thunderbird/78.7.0
 MIME-Version: 1.0
-In-Reply-To: <3930c2d8-8972-0acf-7a48-71803072a559@linaro.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <20210310135218.255205-3-drjones@redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f36;
- envelope-from=rebecca@nuviainc.com; helo=mail-qv1-xf36.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.243,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -121,106 +118,134 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, pbonzini@redhat.com, maz@kernel.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qbmQgz+rdVNf
+X-TUID: kRztZt9uMb4I
 
-On 3/10/21 12:24 PM, Richard Henderson wrote:
-> On 3/9/21 6:29 PM, Rebecca Cran wrote:
->> +void tlb_flush_page_range_by_mmuidx(CPUState *cpu, target_ulong addr,
->> +                                    unsigned int num_pages, uint16_t 
->> idxmap)
-> 
-> I am not keen on this interface.  I think you should take either 
-> start+end addresses (inclusive) or start+length (in bytes).
-> 
-> Using num_pages, and as an unsigned int, seems too easy to fail when 
-> applied to a different guest.
-> 
->> +{
->> +  /*
->> +   * We currently do a full flush, but for performance this should be
->> +   * updated to only flush the requested pages, taking TBI into account.
->> +   */
->> +    tlb_flush_by_mmuidx(cpu, idxmap);
->> +}
-> 
-> And if you're going to cop-out like this, you might as well just do it 
-> in target/arm and not add these new interfaces at all.
-> 
->> +#ifdef TARGET_AARCH64
->> +static unsigned int tlbi_aa64_range_get_num_pages(CPUARMState *env,
->> +                                                  uint64_t value,
->> +                                                  uint64_t addr)
->> +{
->> +    unsigned int page_size;
->> +    unsigned int page_shift;
->> +    unsigned int page_size_granule;
->> +    uint64_t num;
->> +    uint64_t scale;
->> +    uint64_t exponent;
->> +    uint64_t high_addr;
->> +
->> +    num = (value >> 39) & 0xF;
->> +    scale = (value >> 44) & 0x3;
->> +    page_size_granule = (value >> 46) & 0x3;
-> 
-> extract64()
-> 
->> +
->> +    switch (page_size_granule) {
->> +    case 1:
->> +      page_size = 4096;
->> +      page_shift = 12;
->> +      break;
->> +    case 2:
->> +      page_size = 16384;
->> +      page_shift = 14;
->> +      break;
->> +    case 3:
->> +      page_size = 65536;
->> +      page_shift = 16;
->> +      break;
->> +    default:
->> +      qemu_log_mask(LOG_GUEST_ERROR, "Invalid page size granule %d\n",
->> +                    page_size_granule);
->> +
->> +      raise_exception(env, EXCP_UDEF, syn_uncategorized(),
->> +                      exception_target_el(env));
-> 
-> You can't raise an exception from here, because you don't have all of 
-> the context for unwinding the tcg state.  Which you cannot access from 
-> within the callback of an ARMCPRegInfo.
-> 
-> The manual says that if TG does not correspond to the granule size of 
-> the actual translation then "the architecture does not require that the 
-> instruction invalidates any entries".  "Reserved" can be safely assumed 
-> to "not correspond", so I think you could just as easily return 0 here, 
-> after logging the guest error.
-> 
-> 
->> +    high_addr = addr + (((num + 1) << exponent) * page_size);
->> +
->> +    return (high_addr - addr) >> page_shift;
-> 
-> I'll note that it would be much easier for you to return a byte value 
-> for the length, and that you don't actually need to pass in addr at all.
-> 
->> +    uint64_t addr = (value & 0xFFFFFFFFFUL) << TARGET_PAGE_BITS;
-> 
-> The manual does not explicitly say, but I'm certain that this should be 
-> a signed address, when regime_has_2_ranges().  Otherwise it would be 
-> impossible to flush a range of kernel addresses.
-> 
-> But all of this is moot if we're just going to flush all pages.  At 
-> which point you might as well simply re-use tlbi_aa64_vmalle1_write et 
-> al.  Place your TODO comment in front of tlbirange_reginfo[] instead of 
-> buried n-levels further down.
+Hi Drew,
 
-Thanks for the comments. I'll continue working on the full/proper 
-implementation (including changing the interface to remove num_pages) 
-and send out a v4.
+On 3/10/21 2:52 PM, Andrew Jones wrote:
+> The virt machine already checks KVM_CAP_ARM_VM_IPA_SIZE to get the
+> upper bound of the IPA size. If that bound is lower than the highest
+> possible GPA for the machine, then QEMU will error out. However, the
+> IPA is set to 40 when the highest GPA is less than or equal to 40,
+> even when KVM may support an IPA limit as low as 32. This means KVM
+> may fail the VM creation unnecessarily. Additionally, 40 is selected
+> with the value 0, which means use the default, and that gets around
+> a check in some versions of KVM, causing a difficult to debug fail.
+> Always use the IPA size that corresponds to the highest possible GPA,
+> unless it's lower than 32, in which case use 32. Also, we must still
+> use 0 when KVM only supports the legacy fixed 40 bit IPA.
+> 
+> Suggested-by: Marc Zyngier <maz@kernel.org>
+> Signed-off-by: Andrew Jones <drjones@redhat.com>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
 
--- 
-Rebecca Cran
+Thanks
+
+Eric
+> ---
+
+>  hw/arm/virt.c        | 23 ++++++++++++++++-------
+>  target/arm/kvm.c     |  4 +++-
+>  target/arm/kvm_arm.h |  6 ++++--
+>  3 files changed, 23 insertions(+), 10 deletions(-)
+> 
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 371147f3ae9c..3ed94d24d70b 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -2534,27 +2534,36 @@ static HotplugHandler *virt_machine_get_hotplug_handler(MachineState *machine,
+>  static int virt_kvm_type(MachineState *ms, const char *type_str)
+>  {
+>      VirtMachineState *vms = VIRT_MACHINE(ms);
+> -    int max_vm_pa_size = kvm_arm_get_max_vm_ipa_size(ms);
+> -    int requested_pa_size;
+> +    int max_vm_pa_size, requested_pa_size;
+> +    bool fixed_ipa;
+> +
+> +    max_vm_pa_size = kvm_arm_get_max_vm_ipa_size(ms, &fixed_ipa);
+>  
+>      /* we freeze the memory map to compute the highest gpa */
+>      virt_set_memmap(vms);
+>  
+>      requested_pa_size = 64 - clz64(vms->highest_gpa);
+>  
+> +    /*
+> +     * KVM requires the IPA size to be at least 32 bits.
+> +     */
+> +    if (requested_pa_size < 32) {
+> +        requested_pa_size = 32;
+> +    }
+> +
+>      if (requested_pa_size > max_vm_pa_size) {
+>          error_report("-m and ,maxmem option values "
+>                       "require an IPA range (%d bits) larger than "
+>                       "the one supported by the host (%d bits)",
+>                       requested_pa_size, max_vm_pa_size);
+> -       exit(1);
+> +        exit(1);
+>      }
+>      /*
+> -     * By default we return 0 which corresponds to an implicit legacy
+> -     * 40b IPA setting. Otherwise we return the actual requested PA
+> -     * logsize
+> +     * We return the requested PA log size, unless KVM only supports
+> +     * the implicit legacy 40b IPA setting, in which case the kvm_type
+> +     * must be 0.
+>       */
+> -    return requested_pa_size > 40 ? requested_pa_size : 0;
+> +    return fixed_ipa ? 0 : requested_pa_size;
+>  }
+>  
+>  static void virt_machine_class_init(ObjectClass *oc, void *data)
+> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+> index 00e124c81239..1fcab0e1d37b 100644
+> --- a/target/arm/kvm.c
+> +++ b/target/arm/kvm.c
+> @@ -230,12 +230,14 @@ bool kvm_arm_pmu_supported(void)
+>      return kvm_check_extension(kvm_state, KVM_CAP_ARM_PMU_V3);
+>  }
+>  
+> -int kvm_arm_get_max_vm_ipa_size(MachineState *ms)
+> +int kvm_arm_get_max_vm_ipa_size(MachineState *ms, bool *fixed_ipa)
+>  {
+>      KVMState *s = KVM_STATE(ms->accelerator);
+>      int ret;
+>  
+>      ret = kvm_check_extension(s, KVM_CAP_ARM_VM_IPA_SIZE);
+> +    *fixed_ipa = ret <= 0;
+> +
+>      return ret > 0 ? ret : 40;
+>  }
+>  
+> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+> index eb81b7059eb1..d36d76403ff2 100644
+> --- a/target/arm/kvm_arm.h
+> +++ b/target/arm/kvm_arm.h
+> @@ -311,10 +311,12 @@ bool kvm_arm_sve_supported(void);
+>  /**
+>   * kvm_arm_get_max_vm_ipa_size:
+>   * @ms: Machine state handle
+> + * @fixed_ipa: True when the IPA limit is fixed at 40. This is the case
+> + * for legacy KVM.
+>   *
+>   * Returns the number of bits in the IPA address space supported by KVM
+>   */
+> -int kvm_arm_get_max_vm_ipa_size(MachineState *ms);
+> +int kvm_arm_get_max_vm_ipa_size(MachineState *ms, bool *fixed_ipa);
+>  
+>  /**
+>   * kvm_arm_sync_mpstate_to_kvm:
+> @@ -409,7 +411,7 @@ static inline void kvm_arm_add_vcpu_properties(Object *obj)
+>      g_assert_not_reached();
+>  }
+>  
+> -static inline int kvm_arm_get_max_vm_ipa_size(MachineState *ms)
+> +static inline int kvm_arm_get_max_vm_ipa_size(MachineState *ms, bool *fixed_ipa)
+>  {
+>      g_assert_not_reached();
+>  }
+> 
+

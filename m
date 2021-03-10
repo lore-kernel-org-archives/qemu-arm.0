@@ -1,82 +1,82 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2958152lfg;
-        Tue, 9 Mar 2021 08:24:42 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxmGZ/j0QIjYLs5/gFUO5FzgI02bfxcrxZBGbu5xFYNxj9XiC8d3WqiZrC0TCXo0Mywa+75
-X-Received: by 2002:a05:6e02:1608:: with SMTP id t8mr25398515ilu.79.1615307082737;
-        Tue, 09 Mar 2021 08:24:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1615307082; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp446205lfg;
+        Wed, 10 Mar 2021 03:46:52 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwJcIem3u4JpTIXejvKapVR+N+tDWD1fQbnf4wZfKbhbRyLA738KFyd8K2hndOu1Bpc1NMy
+X-Received: by 2002:a92:6b04:: with SMTP id g4mr2172544ilc.223.1615376811928;
+        Wed, 10 Mar 2021 03:46:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1615376811; cv=none;
         d=google.com; s=arc-20160816;
-        b=TGSwg82sLVaaEMxuDYH0RbobGL4Au6WMnD6VtefoidrvSJRqGxzVk9iRjYRNOWbmCN
-         ZL/cse9OFJ3PoAGRHSUQM3AATYj9jFz9ihXK0MlSHutSpjtRu6AfNRLspAxS3ZyV6uD5
-         3QxxwANDhWBzmX7bYXZO3ewKH3Xk75nCH0JN88jGCnHWctpvmluPxtjGcAXN50hL4ZNt
-         c22N0dTtAjE7uThRyhzRuv+WsMZjY2L6fDRUH8BWvDYE9leICdx162J1n7WIzK+yIo8i
-         BzTLoJBDj4I+KMFTSeSRo/VuS2tgUzkz9fX6bm8tZM1sMZDqI7CnGbcJEYLu7WRtl9cU
-         u6hg==
+        b=lE+Je8lykccqtLF+jDUwpzzqiZPIB6YXgAiujIRsPPhPj2Fbts0Tn4rwbpLBRG2BsR
+         XANkL5iwHxQF+1sACT2hr307kmE/T3jdTYYGSgOamhLFOGjkZbsGv+B8zJBNfWifjrtS
+         rEjyD2pCajSdXAFmnB2tswO+NbwGHSate8jIG87h/PGpw7OueQvuaakwEXqzYqTiVXgt
+         g0HGlV+HpLdDUkRcW+3upG196O6WZbDZsBrMRI/gHkxklzOGdGdOrtGCMW82nzIQFsvK
+         J8rAACWmiqPLIHgWJupbxGolvFQoXVYIGOxbj8243osoFwKd6231gSHi9hqFpNQMNaKj
+         3d1Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject;
-        bh=sN+hwOSWWku2IDqj62zGmsVyOXYhK0ebtTufLl6atlU=;
-        b=DEf+gNB2PrOXQq0hpm34PhTZtdnuV8j5R/3GvVeb3jjjq2rnUXAxUhJGcoznmosPOI
-         bkn1WekvmuCEXd6DxQ2BjuU9pd0wl6ROgBgYSIzc343nEQOe/t9yHXQLC1QrE+FK9Gza
-         Np9qnaKE4kiEsLA3iId45XNfQijGf1VfIV1oWXQz+MVhVZ14qVAGRn5PSzhzNnlS+RB0
-         l0kTdQ6qQFNyVNpa+U3JcQisxuazg5C3BxY6opzdfmIb17jTuhGAMcCSzjceanKt30Ly
-         Asa1pJ76Id1sgw9pVfOIrIYrtWKXsjQfLxAYprrq0ogPIXvR7RnXYrjIYyriMEjo/7nZ
-         zc6g==
+        bh=5DhUk1cFG2cWPDHl9mkfQdPsYfsLRzmYJBxOza4wBgc=;
+        b=AqUZ7AgkQwXw9VGIa9rXaz4XNUl2OrHCLoZAyOF422xO9BUj/vauPrgGaA/A9XCRNL
+         5LXhnCgdR16TIqG33GxazJXdr6W9tqpo/LlS8ntzaAL4J8M1s5EQiQWxIsQEEKdoRmTT
+         T8ABrLMxDQpUC15I034DUoFFpVwO2OqJCvMqaQs1zChFYv8y4cqglCRp5MVW1TjwsoB0
+         mqmHVRVelZzM5FZGMMgPdc89c2waWABFKl5BkoP/wwOOiW03ePHVpWOsgcroKIoUzwlz
+         BxRsjlTOZOzqnFnPisYUMbUhhWTjatK69IiKmFAmVgVfGXbiMyJa/xe2iIrYT7RwZyUg
+         yziA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e6si16427882ilu.126.2021.03.09.08.24.42
+        by mx.google.com with ESMTPS id z1si10145554ioe.13.2021.03.10.03.46.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Mar 2021 08:24:42 -0800 (PST)
+        Wed, 10 Mar 2021 03:46:51 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36320 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58632 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lJfA2-00021D-0o
-	for alex.bennee@linaro.org; Tue, 09 Mar 2021 11:24:42 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38494)
+	id 1lJxIh-0002aN-5U
+	for alex.bennee@linaro.org; Wed, 10 Mar 2021 06:46:51 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54698)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <v.dupaquis@trusted-objects.com>)
- id 1lJel8-000376-A7; Tue, 09 Mar 2021 10:58:58 -0500
-Received: from mailex.trusted-objects.com ([149.202.244.204]:34559)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <v.dupaquis@trusted-objects.com>)
- id 1lJel6-0003Pt-Hm; Tue, 09 Mar 2021 10:58:58 -0500
-Received: from [192.170.0.219] (88.127.245.42) by S76918.EX76918.lan
- (2001:41d0:117:dd00::95ca:f4cc) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P521) id 15.1.2176.2; Tue, 9 Mar
- 2021 16:58:41 +0100
-Subject: Re: Malfunctionning qemu-system-arm ?
-To: Liviu Ionescu <ilg@livius.net>
-References: <20210211141515.8755-1-peter.maydell@linaro.org>
- <14af0670-caaf-caf1-0b90-fb10c7db13b0@trusted-objects.com>
- <e00943e0-b9a7-1688-b169-3650e8e4290e@trusted-objects.com>
- <FBA649E1-4EFB-4409-894E-C1A5AB086BF1@livius.net>
-From: vincent Dupaquis <v.dupaquis@trusted-objects.com>
-Message-ID: <943374ff-fc7f-b0bc-0b53-0e7487cdf810@trusted-objects.com>
-Date: Tue, 9 Mar 2021 16:58:41 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.1
+ (Exim 4.90_1) (envelope-from <cfontana@suse.de>)
+ id 1lJxIL-0002Xz-9c; Wed, 10 Mar 2021 06:46:29 -0500
+Received: from mx2.suse.de ([195.135.220.15]:52134)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <cfontana@suse.de>)
+ id 1lJxIJ-00050l-8W; Wed, 10 Mar 2021 06:46:29 -0500
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.221.27])
+ by mx2.suse.de (Postfix) with ESMTP id 8B29FAE78;
+ Wed, 10 Mar 2021 11:46:25 +0000 (UTC)
+Subject: Re: [PATCH v2 1/3] target/arm: Restrict v8M IDAU to TCG
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>
+References: <20210221222617.2579610-1-f4bug@amsat.org>
+ <20210221222617.2579610-2-f4bug@amsat.org>
+ <51ae2fad-f20e-27f2-2f7b-b7dca331dea3@suse.de>
+ <75ce7727-caec-fd63-b2e6-9344e22cfa75@amsat.org>
+From: Claudio Fontana <cfontana@suse.de>
+Message-ID: <c1b1838e-4b91-5411-42f6-cea97e1f0e81@suse.de>
+Date: Wed, 10 Mar 2021 12:46:24 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.12.0
 MIME-Version: 1.0
-In-Reply-To: <FBA649E1-4EFB-4409-894E-C1A5AB086BF1@livius.net>
-Content-Type: text/plain; charset="utf-8"; format=flowed
+In-Reply-To: <75ce7727-caec-fd63-b2e6-9344e22cfa75@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Content-Language: fr-FR
-X-Originating-IP: [88.127.245.42]
-X-ClientProxiedBy: S76918.EX76918.lan (2001:41d0:117:dd00::95ca:f4cc) To
- S76918.EX76918.lan (2001:41d0:117:dd00::95ca:f4cc)
-Received-SPF: none client-ip=149.202.244.204;
- envelope-from=v.dupaquis@trusted-objects.com; helo=mailex.trusted-objects.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=195.135.220.15; envelope-from=cfontana@suse.de;
+ helo=mx2.suse.de
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -89,47 +89,151 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ep1C3TiqMgny
+X-TUID: hYQuXcpMJB5I
 
-Liviu,
-
-Thanks for the responses, I'll have a check on this.
-
-The issue not testing with the HAL is that as most people use it, qemu 
-on these platforms is a bit useless for emulation.
-
-On the other hand, it would be more on ST to invest on making those 
-emulations running ...
-
-Best regards,
-
-Vincent.
-
-Le 09/03/2021 à 15:37, Liviu Ionescu a écrit :
->
->> On 15 Feb 2021, at 17:09, vincent Dupaquis <v.dupaquis@trusted-objects.com> wrote:
+On 3/9/21 3:18 PM, Philippe Mathieu-Daudé wrote:
+> On 3/9/21 2:41 PM, Claudio Fontana wrote:
+>> On 2/21/21 11:26 PM, Philippe Mathieu-Daudé wrote:
+>>> IDAU is specific to M-profile. KVM only supports A-profile.
+>>> Restrict this interface to TCG, as it is pointless (and
+>>> confusing) on a KVM-only build.
+>>>
+>>> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+>>> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+>>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 >>
->> ... stuck on the starting HAL_init() call.
-> HAL requires, amongst other things, the clock registers, since it sets the PLLs for the desired frequencies.
->
-> xPack QEMU Arm [1] implements these registers, and is able to properly run the HAL init code.
->
->
-> Regards,
->
-> Liviu
->
-> [1] - https://xpack.github.io/qemu-arm/
->
--- 
+>>
+>> This one breaks the KVM tests hard though (most of them).
+>>
+>> I will try to figure out why.
+>>
+>> Ciao,
+>>
+>> Claudio
+>>
+>>
+>>> ---
+>>>  target/arm/cpu.c     | 7 -------
+>>>  target/arm/cpu_tcg.c | 8 ++++++++
+>>>  2 files changed, 8 insertions(+), 7 deletions(-)
+>>>
+>>> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+>>> index b8bc89e71fc..a772fd4926f 100644
+>>> --- a/target/arm/cpu.c
+>>> +++ b/target/arm/cpu.c
+>>> @@ -2380,12 +2380,6 @@ static const TypeInfo arm_cpu_type_info = {
+>>>      .class_init = arm_cpu_class_init,
+>>>  };
+>>>  
+>>> -static const TypeInfo idau_interface_type_info = {
+>>> -    .name = TYPE_IDAU_INTERFACE,
+>>> -    .parent = TYPE_INTERFACE,
+> 
+> Hmm this is an interface...
+> 
+> Is a CPU/machine trying to resolve it?
 
-*Vincent Dupaquis*
-Software security & Cryptography expert
-06 24 58 17 05
-/Europarc de Pichaury Bâtiment B8 1330 rue Guillibert Gautier de la 
-Lauzière 13290 Aix-en-Provence/
+Well, this fails horribly at any qemu-system-aarch64 startup for the kvm-only build:
 
-www.trusted-objects.com <http://www.trusted-objects.com>
+in my view we cannot remove the idau interface until we have removed all the TCG-only boards fronm the build.
+
+When calling qemu_init(), and we get into select_machine(),
+
+the object_class_get_list() tries to initialize all machine types.
+
+When it does that, it tries to initialize the IDAU interface, and fails.
+
+#0  0x0000ffffb9e51828 in raise () at /lib64/libc.so.6
+#1  0x0000ffffb9e52e4c in abort () at /lib64/libc.so.6
+#2  0x0000aaaae042a484 in type_initialize (ti=0xaaaaf0cb37c0) at ../qom/object.c:333
+#3  0x0000aaaae042c06c in object_class_foreach_tramp (key=0xaaaaf0cb3940, value=0xaaaaf0cb37c0, opaque=0xfffff9f2bac8)
+    at ../qom/object.c:1069
+#4  0x0000ffffbb3d4248 in g_hash_table_foreach () at /usr/lib64/libglib-2.0.so.0
+#5  0x0000aaaae042c180 in object_class_foreach (fn=
+    0xaaaae042c324 <object_class_get_list_tramp>, implements_type=0xaaaae089cc90 "machine", include_abstract=false, opaque=0xfffff9f2bb10)
+    at ../qom/object.c:1091
+#6  0x0000aaaae042c3a8 in object_class_get_list (implements_type=0xaaaae089cc90 "machine", include_abstract=false) at ../qom/object.c:1148
+#7  0x0000aaaae03863d8 in select_machine () at ../softmmu/vl.c:1607
+#8  0x0000aaaae038ad74 in qemu_init (argc=15, argv=0xfffff9f2be08, envp=0xfffff9f2be88) at ../softmmu/vl.c:3489
+#9  0x0000aaaadfdcf5a0 in main (argc=15, argv=0xfffff9f2be08, envp=0xfffff9f2be88) at ../softmmu/main.c:49
+
+
+(gdb) frame 2
+#2  0x0000aaaae042a484 in type_initialize (ti=0xaaaaf0cb37c0) at ../qom/object.c:333
+333                     abort();
+(gdb) p ti[0]
+$1 = {name = 0xaaaaf0cb3940 "mps2tz", class_size = 408, instance_size = 202224, instance_align = 0, class_init = 
+    0xaaaae0273408 <mps2tz_class_init>, class_base_init = 0x0, class_data = 0x0, instance_init = 0x0, instance_post_init = 0x0, 
+  instance_finalize = 0x0, abstract = true, parent = 0xaaaaf0cb3960 "machine", parent_type = 0xaaaaf0cad860, class = 0xaaaaf0d0d830, 
+  num_interfaces = 1, interfaces = {{typename = 0xaaaaf0cb3980 "idau-interface"}, {typename = 0x0} <repeats 31 times>}}
+
+
+In my view we should revert this until all incompatible boards are disabled
+
+In this case, the one failing is MPS2, so the offender is
+
+devices/arm-softmmu.mak:CONFIG_MPS2=y
+
+from the point of view of the kvm-only build.
+
+What I'd suggest is (but I am open to alternatives):
+
+* revert this one
+* complete my arm cleanup series, with now all tests passing
+* disable the non-KVM boards for KVM-only builds (basically your series)
+* apply the accelerator classes specializations to ARM
+
+
+
+> 
+>>> -    .class_size = sizeof(IDAUInterfaceClass),
+>>> -};
+>>> -
+>>>  static void arm_cpu_register_types(void)
+>>>  {
+>>>      const size_t cpu_count = ARRAY_SIZE(arm_cpus);
+>>> @@ -2399,7 +2393,6 @@ static void arm_cpu_register_types(void)
+>>>      if (cpu_count) {
+>>>          size_t i;
+>>>  
+>>> -        type_register_static(&idau_interface_type_info);
+>>>          for (i = 0; i < cpu_count; ++i) {
+>>>              arm_cpu_register(&arm_cpus[i]);
+>>>          }
+>>> diff --git a/target/arm/cpu_tcg.c b/target/arm/cpu_tcg.c
+>>> index c29b434c60d..fb07a336939 100644
+>>> --- a/target/arm/cpu_tcg.c
+>>> +++ b/target/arm/cpu_tcg.c
+>>> @@ -14,6 +14,7 @@
+>>>  #include "hw/core/tcg-cpu-ops.h"
+>>>  #endif /* CONFIG_TCG */
+>>>  #include "internals.h"
+>>> +#include "target/arm/idau.h"
+>>>  
+>>>  /* CPU models. These are not needed for the AArch64 linux-user build. */
+>>>  #if !defined(CONFIG_USER_ONLY) || !defined(TARGET_AARCH64)
+>>> @@ -739,10 +740,17 @@ static const ARMCPUInfo arm_tcg_cpus[] = {
+>>>      { .name = "pxa270-c5",   .initfn = pxa270c5_initfn },
+>>>  };
+>>>  
+>>> +static const TypeInfo idau_interface_type_info = {
+>>> +    .name = TYPE_IDAU_INTERFACE,
+>>> +    .parent = TYPE_INTERFACE,
+>>> +    .class_size = sizeof(IDAUInterfaceClass),
+>>> +};
+>>> +
+>>>  static void arm_tcg_cpu_register_types(void)
+>>>  {
+>>>      size_t i;
+>>>  
+>>> +    type_register_static(&idau_interface_type_info);
+>>>      for (i = 0; i < ARRAY_SIZE(arm_tcg_cpus); ++i) {
+>>>          arm_cpu_register(&arm_tcg_cpus[i]);
+>>>      }
+>>>
+>>
+>>
+

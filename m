@@ -1,80 +1,109 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp136376lfg;
-        Tue, 9 Mar 2021 19:07:13 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzUw0l63Wvf9mTJxoNGAeYqlZRtj1sA2epzO67ZhTmoty8scdESoPI1zGcYuzdBtKlokDYd
-X-Received: by 2002:a05:6638:e93:: with SMTP id p19mr1279619jas.10.1615345632869;
-        Tue, 09 Mar 2021 19:07:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1615345632; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp227186lfg;
+        Tue, 9 Mar 2021 21:49:19 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwqhFxjFKd0IZNc09ckhELxpGPQRL+2U3boImrGWallUICYSYE8amPrf7VrcFb/w6IdnJm9
+X-Received: by 2002:a25:c2c4:: with SMTP id s187mr1960108ybf.292.1615355359069;
+        Tue, 09 Mar 2021 21:49:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1615355359; cv=none;
         d=google.com; s=arc-20160816;
-        b=X2p/o2OZ/3kbL8KI36p+QC66KCAl/LQYXR8u3DZM6z5I3DRb2fMsOZAsxQfxovq6wR
-         3s/wV4DwdltaIM2kso5QHuYG5Urjo0dYbaGghVixjvpU6CqEYiP0IBB3f1tRwbiQRK1S
-         dMJGh1gmQ8IZgnr/p6+mr3zuUGZHiOilNLr1JOnXvkjXSXEUs8+kVKZaNSCp0+rs2FGY
-         IFvBNjsqOqSSbygR1BC4VPK5uZZoXYCBCqiQ/MYo3pEdY4eFdXBXQW3p9SvxuEB5ryqI
-         tL7IbnfsomMqoKECF4SK83yrsjxmVgBxHby2QsKExL7WoEeFDU3mMMNLeV7dWBypGJv6
-         ijzQ==
+        b=lNCNZ9d/Igkc1wHQkBx6z6KYJegXl44v09AHSG/54t1uKJSNJCVEf3NdP/P8oNVHuW
+         9dikv09E61YSgcsQsAkKWS4G5LqGNudD9610pbrBDWqDp6/iizBIClPun8AsM+dV5lE1
+         gnbhOvVcsIwRX4+B3ef8l9qPey5XXefYQr/z2LkHTtsQZgHR9EkR0Gk9ojqSTWuCduL7
+         8MZr99ePPYCd0/HuELwJ3hRdnNH3WMTPfo/tjlLUlNYQ1UGqOQ7VQU1bdJ9+oc9+VAWv
+         cSL+Wez4P+SKnEkqVjWV8XK1orApuIkCrwN9oLC9VIiVMpYyBUXGx38tHU6m9qkv8Tjd
+         sPlw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=Y2Nb8tq5y/EDmnDnapM01bA+KsUSaj4KAL4dF9y0ALQ=;
-        b=TTyAMMibijFkn6c1X7YZ7Ve0yEUgcH+BR2kGRS4hD11Ov123mRZKHkicYg+dC9flZJ
-         27XqgkbNXdQ2sWLzFuhmoklq+QfqLOirLH5fULIN0hLfzdl1kBid0S1yBVv1k03b1hnI
-         gyLiWkNXKqqG16ZAIgGJQSOG8o3+/eHY9JZTPepxlLhnlTfPGY76as/w9KBoEnD+jIWq
-         wPSr6md/tqvEy9plzD5BUrAKkQRNOfgYWhnIvAT9LpOXENmv6M4WadlFyFZ0X88PRlzL
-         iKk5lg/KSvb4ITRimycpfUvBsBkxMUo5aT+IBYzTxWHlKqoUVURCcI6IZDBwKojy8b3m
-         rdfQ==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=3w3B/gSzMEgKn5BXRbrTYg307mW71qMdepdzlZ7TXI4=;
+        b=rkMleUGQ6+mCmQlP6bVuu34mOryiYvVyp624dZ8+EVpgJv2LYWWkHFc9MGIyEs3hJX
+         kwPBeIgBDrgfoZmC3ey+KRsj14MBMQe+GwXFG4ClVn54/38xrRYlYrG5xbqRryiNJ7Mu
+         pfpHLoSOsH4XlSrrATketBSKReksIJT1G3KjUM33iJV1iIZ0ZlKCw4EPi3IXVnUbwsoJ
+         dfBOaZvkzwpcWnRdXep+E7cTTZECbsHlwjv9h8ZO5a/wW5fSG8/VBMHS1BG0ikw0TIbO
+         pFg8iHPxXub/wqBHWyEh1qyqPphOyuTn+bsMbnMca3ovIoBVXxhu29HXdhzRAvzaujVX
+         vrpA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FovmF+SA;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z9si14621724ior.7.2021.03.09.19.07.12
+        by mx.google.com with ESMTPS id t90si9875565ybi.318.2021.03.09.21.49.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Mar 2021 19:07:12 -0800 (PST)
+        Tue, 09 Mar 2021 21:49:19 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36936 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FovmF+SA;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:36870 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lJpBo-0000ig-2G
-	for alex.bennee@linaro.org; Tue, 09 Mar 2021 22:07:12 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37452)
+	id 1lJrig-0005AS-Ex
+	for alex.bennee@linaro.org; Wed, 10 Mar 2021 00:49:18 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35946)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lushenming@huawei.com>)
- id 1lJp7z-00059L-0J; Tue, 09 Mar 2021 22:03:15 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:4375)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lushenming@huawei.com>)
- id 1lJp7u-0002vD-Tw; Tue, 09 Mar 2021 22:03:14 -0500
-Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4DwH0F6C7Hz17HcP;
- Wed, 10 Mar 2021 11:01:17 +0800 (CST)
-Received: from DESKTOP-7FEPK9S.china.huawei.com (10.174.184.135) by
- DGGEMS404-HUB.china.huawei.com (10.3.19.204) with Microsoft SMTP Server id
- 14.3.498.0; Wed, 10 Mar 2021 11:02:59 +0800
-From: Shenming Lu <lushenming@huawei.com>
-To: Alex Williamson <alex.williamson@redhat.com>, Kirti Wankhede
- <kwankhede@nvidia.com>, Cornelia Huck <cohuck@redhat.com>,
- <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-Subject: [PATCH v4 2/3] vfio: Set the priority of the VFIO VM state change
- handler explicitly
-Date: Wed, 10 Mar 2021 11:02:32 +0800
-Message-ID: <20210310030233.1133-3-lushenming@huawei.com>
-X-Mailer: git-send-email 2.27.0.windows.1
-In-Reply-To: <20210310030233.1133-1-lushenming@huawei.com>
-References: <20210310030233.1133-1-lushenming@huawei.com>
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lJriY-00059g-9n
+ for qemu-arm@nongnu.org; Wed, 10 Mar 2021 00:49:10 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:60467)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lJriU-0006FH-E9
+ for qemu-arm@nongnu.org; Wed, 10 Mar 2021 00:49:09 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1615355344;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=3w3B/gSzMEgKn5BXRbrTYg307mW71qMdepdzlZ7TXI4=;
+ b=FovmF+SAwGUfz4BNhS/aeG9fhmQ99hTZZn7rohImkVhOKtSUklZ/OT4jT3pyDjKfy/aZnY
+ PoIC1qcjmYCR+97afon3GtUs9Hf+I7DsrL712+8AUGn39ugRt4KcKncdHcdrVbpM3neXDt
+ 9thImgmOOxebqWV28GvZU0xXg8en8Kc=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-433-Y1Zu6yP5NRqLWQMxI6dzqw-1; Wed, 10 Mar 2021 00:49:01 -0500
+X-MC-Unique: Y1Zu6yP5NRqLWQMxI6dzqw-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 595A7184609D;
+ Wed, 10 Mar 2021 05:49:00 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-112-19.ams2.redhat.com [10.36.112.19])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 225016062F;
+ Wed, 10 Mar 2021 05:48:51 +0000 (UTC)
+Subject: Re: [PATCH v2] tests/acceptance: Add bFLT loader linux-user test
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org, Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Willian Rampazzo <willianr@redhat.com>, Cleber Rosa <crosa@redhat.com>
+References: <20210214194524.768660-1-f4bug@amsat.org>
+ <cae49194-7c6e-4c5e-6407-687c08ef67b9@amsat.org>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <9e790254-2153-f24f-693a-6ecf22de814a@redhat.com>
+Date: Wed, 10 Mar 2021 06:48:50 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.0
 MIME-Version: 1.0
+In-Reply-To: <cae49194-7c6e-4c5e-6407-687c08ef67b9@amsat.org>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.174.184.135]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190;
- envelope-from=lushenming@huawei.com; helo=szxga04-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.251,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -88,45 +117,103 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Neo Jia <cjia@nvidia.com>,
- mst@redhat.com, Marc Zyngier <maz@kernel.org>,
- "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
- Eric Auger <eric.auger@redhat.com>, marcel.apfelbaum@gmail.com,
- yuzenghui@huawei.com, wanghaibin.wang@huawei.com, lushenming@huawei.com
+Cc: qemu-arm@nongnu.org,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Laurent Vivier <laurent@vivier.eu>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FI97LNsMx4ay
+X-TUID: MTz6bAYQOkfk
 
-In the VFIO VM state change handler when stopping the VM, the _RUNNING
-bit in device_state is cleared which makes the VFIO device stop, including
-no longer generating interrupts. Then we can save the pending states of
-all interrupts in the GIC VM state change handler (on ARM).
+On 09/03/2021 23.27, Philippe Mathieu-Daudé wrote:
+> ping?
 
-So we have to set the priority of the VFIO VM state change handler
-explicitly (like virtio devices) to ensure it is called before the
-GIC's in saving.
+I guess we really need someone who could act as a maintainer for the 
+tests/acceptance directory, who could pick up patches and send pull requests 
+if nobody else is picking up these patches...
 
-Signed-off-by: Shenming Lu <lushenming@huawei.com>
-Reviewed-by: Kirti Wankhede <kwankhede@nvidia.com>
-Reviewed-by: Cornelia Huck <cohuck@redhat.com>
----
- hw/vfio/migration.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+Cleber, Wainer, Willian, any volunteers?
 
-diff --git a/hw/vfio/migration.c b/hw/vfio/migration.c
-index f5bf67f642..b74982e3e6 100644
---- a/hw/vfio/migration.c
-+++ b/hw/vfio/migration.c
-@@ -862,7 +862,8 @@ static int vfio_migration_init(VFIODevice *vbasedev,
-     register_savevm_live(id, VMSTATE_INSTANCE_ID_ANY, 1, &savevm_vfio_handlers,
-                          vbasedev);
- 
--    migration->vm_state = qemu_add_vm_change_state_handler(vfio_vmstate_change,
-+    migration->vm_state = qdev_add_vm_change_state_handler(vbasedev->dev,
-+                                                           vfio_vmstate_change,
-                                                            vbasedev);
-     migration->migration_state.notify = vfio_migration_state_notifier;
-     add_migration_state_change_notifier(&migration->migration_state);
--- 
-2.19.1
+  Thomas
+
+
+> On 2/14/21 8:45 PM, Philippe Mathieu-Daudé wrote:
+>> Add a very quick test that runs a busybox binary in bFLT format:
+>>
+>>    $ avocado --show=app run -t linux_user tests/acceptance/load_bflt.py
+>>    JOB ID     : db94d5960ce564c50904d666a7e259148c27e88f
+>>    JOB LOG    : ~/avocado/job-results/job-2019-06-25T10.52-db94d59/job.log
+>>     (1/1) tests/acceptance/load_bflt.py:LoadBFLT.test_stm32: PASS (0.15 s)
+>>    RESULTS    : PASS 1 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 | CANCEL 0
+>>    JOB TIME   : 0.54 s
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>> Based-on: <20210214175912.732946-1-f4bug@amsat.org>
+>>    tests/acceptance: Extract QemuBaseTest from Test
+>>    tests/acceptance: Make pick_default_qemu_bin() more generic
+>>    tests/acceptance: Introduce QemuUserTest base class
+>> ---
+>>   tests/acceptance/load_bflt.py | 51 +++++++++++++++++++++++++++++++++++
+>>   1 file changed, 51 insertions(+)
+>>   create mode 100644 tests/acceptance/load_bflt.py
+>>
+>> diff --git a/tests/acceptance/load_bflt.py b/tests/acceptance/load_bflt.py
+>> new file mode 100644
+>> index 00000000000..4b7796d0775
+>> --- /dev/null
+>> +++ b/tests/acceptance/load_bflt.py
+>> @@ -0,0 +1,51 @@
+>> +# Test the bFLT format
+>> +#
+>> +# Copyright (C) 2019 Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> +#
+>> +# SPDX-License-Identifier: GPL-2.0-or-later
+>> +
+>> +import os
+>> +import bz2
+>> +import subprocess
+>> +
+>> +from avocado_qemu import QemuUserTest
+>> +
+>> +
+>> +class LoadBFLT(QemuUserTest):
+>> +
+>> +    def extract_cpio(self, cpio_path):
+>> +        """
+>> +        Extracts a cpio archive into the test workdir
+>> +
+>> +        :param cpio_path: path to the cpio archive
+>> +        """
+>> +        cwd = os.getcwd()
+>> +        os.chdir(self.workdir)
+>> +        with bz2.open(cpio_path, 'rb') as archive_cpio:
+>> +            subprocess.run(['cpio', '-i'], input=archive_cpio.read(),
+>> +                           stderr=subprocess.DEVNULL)
+>> +        os.chdir(cwd)
+>> +
+>> +    @skipUnless(os.getenv('AVOCADO_ALLOW_UNTRUSTED_CODE'), 'untrusted code')
+>> +    def test_stm32(self):
+>> +        """
+>> +        :avocado: tags=arch:arm
+>> +        :avocado: tags=linux_user
+>> +        :avocado: tags=quick
+>> +        """
+>> +        # See https://elinux.org/STM32#User_Space
+>> +        rootfs_url = ('https://elinux.org/images/5/51/'
+>> +                      'Stm32_mini_rootfs.cpio.bz2')
+>> +        rootfs_hash = '9f065e6ba40cce7411ba757f924f30fcc57951e6'
+>> +        rootfs_path_bz2 = self.fetch_asset(rootfs_url, asset_hash=rootfs_hash)
+>> +        busybox_path = self.workdir + "/bin/busybox"
+>> +
+>> +        self.extract_cpio(rootfs_path_bz2)
+>> +
+>> +        res = self.run(busybox_path)
+>> +        ver = 'BusyBox v1.24.0.git (2015-02-03 22:17:13 CET) multi-call binary.'
+>> +        self.assertIn(ver, res.stdout_text)
+>> +
+>> +        res = self.run(busybox_path, ['uname', '-a'])
+>> +        unm = 'armv7l GNU/Linux'
+>> +        self.assertIn(unm, res.stdout_text)
+>>
+> 
 

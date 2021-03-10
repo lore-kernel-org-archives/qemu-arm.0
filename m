@@ -1,105 +1,84 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp541853lfg;
-        Wed, 10 Mar 2021 05:54:30 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwFgncwtSDnDfnsML5b7gb77qhImXNf17PrHiQr8etU5NcGJy+QsRqb0XYj3ixobZbk7Kbw
-X-Received: by 2002:a37:8743:: with SMTP id j64mr2520159qkd.299.1615384470261;
-        Wed, 10 Mar 2021 05:54:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1615384470; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp548888lfg;
+        Wed, 10 Mar 2021 06:03:08 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJw0nkEUV21RvGCLkQxJ/aMExjNnBkrd8pL2SkZrmQINoWo+4YMGih4fXaYNtkgVaxu5TZVI
+X-Received: by 2002:a67:eed4:: with SMTP id o20mr1620651vsp.25.1615384988400;
+        Wed, 10 Mar 2021 06:03:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1615384988; cv=none;
         d=google.com; s=arc-20160816;
-        b=sM+tQgTxuRG8DuERBmrPX5z3h3pmhpv7taNEAzzPYw0aTW8429hHANBolmLkRDR5kV
-         koY1FTtWk617eIIugPHwMoyn0zwJ4vd3/zdbvfNz56cGSP/M9QO7KlFqq8EU6E+8ZG5f
-         RLhrs/YaVImuGUDJliOgQ6Fa6aFPXayUDA5lNNRsWYDhDyJGJ/RLdsV1n7/7BnpfuJgx
-         aqVXNoqPZdm80d0f2NOkTXpz9HqzZ67HgAa3OjdzHd3rxbBKwCzak43jaO1KY9kaB5xT
-         uOVnSN5ndveFrel7wUdkTdbFzW30afSCRklaTY9KUUqrfbNZ0SztV5g62rhGyM7IonUY
-         KTHA==
+        b=oz01ts2O81WQJ6/jBQ3aoDwicdHvzI26jwgIObc1zMNq/WZP10b578SHN6IgaQkiH8
+         7q2JGETIrLsYvH2YQf7jbK4XRREsF9DO+9Vj/SBowAIerD2JuG6+bNbMuoTH0jLXk8Fu
+         A0aq7pAz51NX5H320rl8fTiUMzmbmU3xGE8B3i1dzRW4+w3CbTa5bVmRJmjoqcF30ks0
+         PpioJI4C9qlj3dfYvRwWLxG5uON2Kybmmb/yzFj8T1g8wN/SbIVKABkBb0UzEYKQJBPM
+         x72HrV00Cpv6i2mkyI5xBPlDr+OYo41wvS87VtSg4/JzTAos3lOgr1YgRd+xhwGgGQl1
+         hTEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=whWKpVu8xA+DzrGadbo1O+7eDzqdpgVKg8TpF66ONXc=;
-        b=r2Ve3w2ujbuaBqJtX6gSakJmnwS8RQ22DyQ/7LUpNWs9MfoCKbIbHJ9hvcPwrtpLaP
-         jDnL0Rf29cuPM06UMhdUV7R3U3C9uKJToyqzGy7TJ3HFo0k4jJwX3Dv7PlFxiN2eH/2D
-         x8jsPJv97UmsTnbC3dMhk9+D7Grt+FPMf6PCQ+Yq0mK46yHtdjphNOSjP5AYlz2lfwEX
-         t3BFFt/4FzkDZDPm1Mv+svLoiOQu4gndsUWOArsP8cDaMWbAd1L859qg7/KJQJAVLPBu
-         /svRt4hgC1SZYPx/1yjABUQwK4qUo3fEcuMEel9/EDx+tqlveN+r3lPk1qy0N8iYqYcy
-         EYqA==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:references:to:from:subject;
+        bh=UeU8NLBFKAKRH62ytWdiixIEzlmpvoWwsCFTKLqGjDA=;
+        b=nVgcV8juLvTNPohgyvQWZxxIpqzMMgj8UL7DIEWZWvcRIvt7iI9rA3jgx4AmN914Nz
+         33eoFqHTulpZ3i9GCqFveR21/VZL3emDF68nkcUWrpDmYWLHmGUwJ6kk1dgWAX9qw+4f
+         cQsRVqPi4j9Uib+Nsx9gckkhKn9ie+PlvdpWk5AhJZnUVRHXXm/xmac44lG1h54/2IHc
+         TRls2W4J/VwhHvq6nLT6ZZgthCfviGElBUHTZkWyG0E2pch382bPQ9D+uU67mZXy5Hgi
+         VSKGPvilixK3MlNe9V9gmWVARi9Htk6TfzYUAI9Dmm3zfphTMi5HMCbjy10E9a8dgasw
+         JUSQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=EkH0cw4d;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h3si564251qtn.35.2021.03.10.05.54.30
+        by mx.google.com with ESMTPS id f2si2999912uaa.198.2021.03.10.06.03.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 10 Mar 2021 05:54:30 -0800 (PST)
+        Wed, 10 Mar 2021 06:03:08 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=EkH0cw4d;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58306 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:44112 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lJzID-0002ao-Ib
-	for alex.bennee@linaro.org; Wed, 10 Mar 2021 08:54:29 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54684)
+	id 1lJzQX-0000Xq-J2
+	for alex.bennee@linaro.org; Wed, 10 Mar 2021 09:03:07 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57194)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1lJzGN-0001Is-Eo
- for qemu-arm@nongnu.org; Wed, 10 Mar 2021 08:52:35 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:59909)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1lJzGL-00044q-T5
- for qemu-arm@nongnu.org; Wed, 10 Mar 2021 08:52:35 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1615384353;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=whWKpVu8xA+DzrGadbo1O+7eDzqdpgVKg8TpF66ONXc=;
- b=EkH0cw4dKqV6eO/ZEjxBcOIed/oDmIl5sEtgWpPveVovG6LfIrNDCCvJT8MTrn9vwmxmJE
- K6vjCNNtVJ2Qd5NVFOKqw3Y/VLEmpwp5GZkuTUsJvLSSIuj5+iwb3tQqTUKoyFY9R/xIQx
- tKjg5CXqMJunH7kV1+Ei/RAB3R83VeQ=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-478-abI9GVubNPKLIklaFFgguA-1; Wed, 10 Mar 2021 08:52:31 -0500
-X-MC-Unique: abI9GVubNPKLIklaFFgguA-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5399A57;
- Wed, 10 Mar 2021 13:52:30 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.40.193.217])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 4762F60C13;
- Wed, 10 Mar 2021 13:52:25 +0000 (UTC)
-From: Andrew Jones <drjones@redhat.com>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
-Subject: [PATCH v2 1/2] accel: kvm: Fix kvm_type invocation
-Date: Wed, 10 Mar 2021 14:52:17 +0100
-Message-Id: <20210310135218.255205-2-drjones@redhat.com>
-In-Reply-To: <20210310135218.255205-1-drjones@redhat.com>
-References: <20210310135218.255205-1-drjones@redhat.com>
+ (Exim 4.90_1) (envelope-from <cfontana@suse.de>)
+ id 1lJzNy-0007Jr-Qm; Wed, 10 Mar 2021 09:00:26 -0500
+Received: from mx2.suse.de ([195.135.220.15]:53046)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <cfontana@suse.de>)
+ id 1lJzNw-00085O-69; Wed, 10 Mar 2021 09:00:26 -0500
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.221.27])
+ by mx2.suse.de (Postfix) with ESMTP id 83038AD72;
+ Wed, 10 Mar 2021 14:00:21 +0000 (UTC)
+Subject: Re: [PATCH v2 1/3] target/arm: Restrict v8M IDAU to TCG
+From: Claudio Fontana <cfontana@suse.de>
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>
+References: <20210221222617.2579610-1-f4bug@amsat.org>
+ <20210221222617.2579610-2-f4bug@amsat.org>
+ <51ae2fad-f20e-27f2-2f7b-b7dca331dea3@suse.de>
+ <75ce7727-caec-fd63-b2e6-9344e22cfa75@amsat.org>
+ <c1b1838e-4b91-5411-42f6-cea97e1f0e81@suse.de>
+ <68796aa5-1c75-8a74-fc98-7d929df9478d@amsat.org>
+ <c7a46e45-1682-ad76-a9eb-a155729e8d8f@suse.de>
+Message-ID: <b79d147d-85e8-6631-53dd-9feecb3e7729@suse.de>
+Date: Wed, 10 Mar 2021 15:00:20 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.12.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <c7a46e45-1682-ad76-a9eb-a155729e8d8f@suse.de>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=drjones@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.243,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+Received-SPF: pass client-ip=195.135.220.15; envelope-from=cfontana@suse.de;
+ helo=mx2.suse.de
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -113,52 +92,155 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: pbonzini@redhat.com, maz@kernel.org, eric.auger@redhat.com,
- peter.maydell@linaro.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+ "Daniel P . Berrange" <berrange@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CkNnhcXe9xeb
+X-TUID: tiOyUWHtzCKo
 
-Prior to commit f2ce39b4f067 a MachineClass kvm_type method
-only needed to be registered to ensure it would be executed.
-With commit f2ce39b4f067 a kvm-type machine property must also
-be specified. hw/arm/virt relies on the kvm_type method to pass
-its selected IPA limit to KVM, but this is not exposed as a
-machine property. Restore the previous functionality of invoking
-kvm_type when it's present.
+On 3/10/21 2:45 PM, Claudio Fontana wrote:
+> On 3/10/21 2:42 PM, Philippe Mathieu-Daudé wrote:
+>> On 3/10/21 12:46 PM, Claudio Fontana wrote:
+>>> On 3/9/21 3:18 PM, Philippe Mathieu-Daudé wrote:
+>>>> On 3/9/21 2:41 PM, Claudio Fontana wrote:
+>>>>> On 2/21/21 11:26 PM, Philippe Mathieu-Daudé wrote:
+>>>>>> IDAU is specific to M-profile. KVM only supports A-profile.
+>>>>>> Restrict this interface to TCG, as it is pointless (and
+>>>>>> confusing) on a KVM-only build.
+>>>>>>
+>>>>>> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+>>>>>> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+>>>>>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>>>>>
+>>>>>
+>>>>> This one breaks the KVM tests hard though (most of them).
+>>>>>
+>>>>> I will try to figure out why.
+>>>>>
+>>>>> Ciao,
+>>>>>
+>>>>> Claudio
+>>>>>
+>>>>>
+>>>>>> ---
+>>>>>>  target/arm/cpu.c     | 7 -------
+>>>>>>  target/arm/cpu_tcg.c | 8 ++++++++
+>>>>>>  2 files changed, 8 insertions(+), 7 deletions(-)
+>>>>>>
+>>>>>> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+>>>>>> index b8bc89e71fc..a772fd4926f 100644
+>>>>>> --- a/target/arm/cpu.c
+>>>>>> +++ b/target/arm/cpu.c
+>>>>>> @@ -2380,12 +2380,6 @@ static const TypeInfo arm_cpu_type_info = {
+>>>>>>      .class_init = arm_cpu_class_init,
+>>>>>>  };
+>>>>>>  
+>>>>>> -static const TypeInfo idau_interface_type_info = {
+>>>>>> -    .name = TYPE_IDAU_INTERFACE,
+>>>>>> -    .parent = TYPE_INTERFACE,
+>>>>
+>>>> Hmm this is an interface...
+>>>>
+>>>> Is a CPU/machine trying to resolve it?
+>>>
+>>> Well, this fails horribly at any qemu-system-aarch64 startup for the kvm-only build:
+>>>
+>>> in my view we cannot remove the idau interface until we have removed all the TCG-only boards fronm the build.
+>>
+>> Yes, this is a similar bug to the one fixed by commit 8d0bceba24c
+>> ("hw/nvram: Always register FW_CFG_DATA_GENERATOR_INTERFACE").
+>>
+>>>
+>>> When calling qemu_init(), and we get into select_machine(),
+>>>
+>>> the object_class_get_list() tries to initialize all machine types.
+>>>
+>>> When it does that, it tries to initialize the IDAU interface, and fails.
+>>>
+>>> #0  0x0000ffffb9e51828 in raise () at /lib64/libc.so.6
+>>> #1  0x0000ffffb9e52e4c in abort () at /lib64/libc.so.6
+>>> #2  0x0000aaaae042a484 in type_initialize (ti=0xaaaaf0cb37c0) at ../qom/object.c:333
+>>> #3  0x0000aaaae042c06c in object_class_foreach_tramp (key=0xaaaaf0cb3940, value=0xaaaaf0cb37c0, opaque=0xfffff9f2bac8)
+>>>     at ../qom/object.c:1069
+>>> #4  0x0000ffffbb3d4248 in g_hash_table_foreach () at /usr/lib64/libglib-2.0.so.0
+>>> #5  0x0000aaaae042c180 in object_class_foreach (fn=
+>>>     0xaaaae042c324 <object_class_get_list_tramp>, implements_type=0xaaaae089cc90 "machine", include_abstract=false, opaque=0xfffff9f2bb10)
+>>>     at ../qom/object.c:1091
+>>> #6  0x0000aaaae042c3a8 in object_class_get_list (implements_type=0xaaaae089cc90 "machine", include_abstract=false) at ../qom/object.c:1148
+>>> #7  0x0000aaaae03863d8 in select_machine () at ../softmmu/vl.c:1607
+>>> #8  0x0000aaaae038ad74 in qemu_init (argc=15, argv=0xfffff9f2be08, envp=0xfffff9f2be88) at ../softmmu/vl.c:3489
+>>> #9  0x0000aaaadfdcf5a0 in main (argc=15, argv=0xfffff9f2be08, envp=0xfffff9f2be88) at ../softmmu/main.c:49
+>>>
+>>>
+>>> (gdb) frame 2
+>>> #2  0x0000aaaae042a484 in type_initialize (ti=0xaaaaf0cb37c0) at ../qom/object.c:333
+>>> 333                     abort();
+>>> (gdb) p ti[0]
+>>> $1 = {name = 0xaaaaf0cb3940 "mps2tz", class_size = 408, instance_size = 202224, instance_align = 0, class_init = 
+>>>     0xaaaae0273408 <mps2tz_class_init>, class_base_init = 0x0, class_data = 0x0, instance_init = 0x0, instance_post_init = 0x0, 
+>>>   instance_finalize = 0x0, abstract = true, parent = 0xaaaaf0cb3960 "machine", parent_type = 0xaaaaf0cad860, class = 0xaaaaf0d0d830, 
+>>>   num_interfaces = 1, interfaces = {{typename = 0xaaaaf0cb3980 "idau-interface"}, {typename = 0x0} <repeats 31 times>}}
+>>>
+>>>
+>>> In my view we should revert this until all incompatible boards are disabled
+>>
+>> My view is this is a QOM design problem. Others might hit the
+>> same issue. It is hard to debug. It should be fixed upfront.
 
-Fixes: f2ce39b4f067 ("vl: make qemu_get_machine_opts static")
-Signed-off-by: Andrew Jones <drjones@redhat.com>
----
- accel/kvm/kvm-all.c | 2 ++
- include/hw/boards.h | 1 +
- 2 files changed, 3 insertions(+)
+What is the QOM design problem to fix exactly?
 
-diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index f88a52393fe0..37b0a1861e72 100644
---- a/accel/kvm/kvm-all.c
-+++ b/accel/kvm/kvm-all.c
-@@ -2068,6 +2068,8 @@ static int kvm_init(MachineState *ms)
-                                                             "kvm-type",
-                                                             &error_abort);
-         type = mc->kvm_type(ms, kvm_type);
-+    } else if (mc->kvm_type) {
-+        type = mc->kvm_type(ms, NULL);
-     }
- 
-     do {
-diff --git a/include/hw/boards.h b/include/hw/boards.h
-index a46dfe5d1a6a..327949967609 100644
---- a/include/hw/boards.h
-+++ b/include/hw/boards.h
-@@ -128,6 +128,7 @@ typedef struct {
-  * @kvm_type:
-  *    Return the type of KVM corresponding to the kvm-type string option or
-  *    computed based on other criteria such as the host kernel capabilities.
-+ *    kvm-type may be NULL if it is not needed.
-  * @numa_mem_supported:
-  *    true if '--numa node.mem' option is supported and false otherwise
-  * @smp_parse:
--- 
-2.26.2
+And in any case, I think this small change "target/arm: Restrict v8M IDAU to TCG",
+when applied on its own, does not get us any closer to the goal, it actually hinders us, as we do not have a working buildable and testable kvm-only build to base on.
+
+That is why I added a revert of this to my series.
+
+My suggestion is just to postpone your change to later on,
+when we have the other pieces in place (ie after we can disable incompabile boards).
+
+A working kvm-only build is a good starting point I think.
+
+After we are able to disable incompatible boards,
+we can reapply "target/arm: Restrict v8M IDAU to TCG",
+and we can also remove a lot of additional stubs and V7M-only code and such from the KVM-only build.
+
+But I'd rather have a functional, make check-able starting point..
+
+Ciao,
+
+CLaudio
+
+
+>>
+>>> In this case, the one failing is MPS2, so the offender is
+>>>
+>>> devices/arm-softmmu.mak:CONFIG_MPS2=y
+>>>
+>>> from the point of view of the kvm-only build.
+>>>
+>>> What I'd suggest is (but I am open to alternatives):
+>>>
+>>> * revert this one
+>>> * complete my arm cleanup series, with now all tests passing
+>>> * disable the non-KVM boards for KVM-only builds (basically your series)
+>>> * apply the accelerator classes specializations to ARM
+>>
+>> MPS2TZ uses a Cortex-M33 which is requires TCG.
+>> The machine shouldn't be present if TCG is not built-in.
+>>
+>> Previous attempt which you acked :)
+>> "target/arm: Restrict ARMv7 M-profile cpus to TCG accel"
+>> https://www.mail-archive.com/qemu-block@nongnu.org/msg79943.html
+>>
+> 
+> Yes, I would absolutely like to proceed with all of this,
+> 
+> and have only the right configuration for KVM be built,
+> 
+> but I am a bit lost with all these different series.
+> 
+> Ciao,
+> 
+> CLaudio
+> 
 

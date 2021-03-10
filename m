@@ -1,102 +1,103 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp827781lfg;
-        Wed, 10 Mar 2021 11:59:07 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx6svRzpjlD8BCBWceIuMoe3kyzn1eCN1LBN3PAGCskd9cV2vOdx46shXDJ45pUGakV3qW1
-X-Received: by 2002:a25:4dc4:: with SMTP id a187mr6746849ybb.78.1615406347381;
-        Wed, 10 Mar 2021 11:59:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1615406347; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp827892lfg;
+        Wed, 10 Mar 2021 11:59:18 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzVP3X8vdcK6W1XFCtU6vRhIjX2M5BDjdKpmhRAo1V9rH1oZ4byrMGDNh3ZK+HMtcA7TQNS
+X-Received: by 2002:a25:ace7:: with SMTP id x39mr6439453ybd.400.1615406358185;
+        Wed, 10 Mar 2021 11:59:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1615406358; cv=none;
         d=google.com; s=arc-20160816;
-        b=I1z83g+FVLKLVqbfV9tGvMT2gKhOliDaNcoZMFrRCf7YtWnldnVHTBi099IaadEhrT
-         PpYlXI0Ngk+TJxPe82tB5evolM9cClkkSLewFJ/eKehPR7bOLFUTuwA/7LDPJbvIFVpq
-         pRWS3srYtvyPpxVJTlbs+2fw8zkTsty66y8bplyRbhpuVOtOEwA90/ilhWx1c4xS/gqO
-         b9lQfG+J7EIQCnHjlQJNKCLYB66Oe4imtSP5BRgVl5x6L2oxdIgvAOsE0Mp5gyfCWRZZ
-         gaiGoCKVgbC6Y+tEW9HNE1hrjYhVQ4xvH+QXJQKaNZHNlZ6t2IrkwFOwxSweTIOSLm9O
-         KTyw==
+        b=fd0akBcKsBmV8Ljfk8l3vEv0VVmuo3gMfu61biN4t3XYUd95yUKD2LQTP1rTtQw+Tu
+         R5tF0yqS1XmcXIa+CvN+JFRfKjI3EDmLBEDhgsJZRQ7kHqCxKcFs5D1O7VRcEYdTZpFX
+         mcVec59+tZO84CFA/nnpyeO3uM6J5cueOKv461GHIcXUB/hnTRNgie0/E4WYKDtCs9qV
+         FrBX+afzfeYm88LYVDqnyqhWIq7TX8gfkRyYOsgyk6Q5zISw/H+u4oPdfyMj4ZQPIWNv
+         kwNr1mkTIVJJ54HUegYVtN/ql62N06wzoqTYQA1unHWoSZfmaZTXt6cmi9/LHEeuGEzI
+         z3PA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=kFj03blwbcM66TuxYye9XnlpLa3NkLZCnKGhAwTXsCo=;
-        b=heNtHGEGnQJqK5WNNdi8PX+V8SvBVxSN0H60coCxTFFGxnpAfRaftVmjZe2HtlcjbZ
-         4ozVsRq1uMSNU2/ELtkCeSpDvMyBlozvGQosmvtDDCbC2+f3HsknEBQHORbrFYckxR9K
-         89kM0+LOdzE8PQGqugYIEe/Wpj6N2J5xcyfEUKR/BVy9QE/V9aqWTFfBcc0H/0C5WGcv
-         scQ5g/vp+HrOCqSrCrAgna8TS6Lnd3eUnPDwrbbL9LGrC9cku3vMQOK72ZLWuI7ZgAkG
-         4SzA0dVo30nup2P4xY2hPJXiSow9ERvV13fweR86ujWp8eYnT6M7lee1s8NJoc8d5DKv
-         X9RQ==
+        bh=7+Rz9VtTzj18ZejGjRujsTac3478spKZatBuoAAa8Eg=;
+        b=vLUKg1QhWMSgdUceuQ1EkDLcEblfo8NbMc2o3oNvvG5weqnirxolMMWXcNL/b8doyW
+         +sEbXPJsBzu6uEUiXmyN6waJy+1qO7gDIYjRb98uuEJ4A7Eddz35/MhBvT5qo38scDU2
+         bPvbaDMjTSoLrj8dQU37apUci19YrrxpBuAZmv/33HO6j1CWVIAxDtyEGsqxOO++b701
+         tow26WBQi9ssOqgKt0H6f2N9i8jOLetw84KufvuCR62/DQXy9Rw1V+Ye5Q4zoYexN/LG
+         K20zjsLPVduX7p4n7ILwdiQvjPsEuaOqG2CSLMhjc6erZTdp95wYR9zUVHEF8Ue19MPZ
+         524g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=NeoFOJ+M;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hd3dKjrS;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f85si588481ybg.23.2021.03.10.11.59.07
+        by mx.google.com with ESMTPS id j15si506126ybh.265.2021.03.10.11.59.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 10 Mar 2021 11:59:07 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 10 Mar 2021 11:59:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=NeoFOJ+M;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hd3dKjrS;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:40846 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40022 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lK4z4-0006pO-L8
-	for alex.bennee@linaro.org; Wed, 10 Mar 2021 14:59:06 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55994)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lK4zF-0006T7-Fn
+	for alex.bennee@linaro.org; Wed, 10 Mar 2021 14:59:17 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56026)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1lK4yd-0006P0-Cl; Wed, 10 Mar 2021 14:58:39 -0500
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a]:42894)
+ id 1lK4ye-0006Ql-R6; Wed, 10 Mar 2021 14:58:42 -0500
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534]:41809)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1lK4ya-0001cf-8h; Wed, 10 Mar 2021 14:58:38 -0500
-Received: by mail-ed1-x52a.google.com with SMTP id v13so29922614edw.9;
- Wed, 10 Mar 2021 11:58:35 -0800 (PST)
+ id 1lK4yc-0001eC-Fp; Wed, 10 Mar 2021 14:58:40 -0500
+Received: by mail-ed1-x534.google.com with SMTP id b7so29987046edz.8;
+ Wed, 10 Mar 2021 11:58:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=kFj03blwbcM66TuxYye9XnlpLa3NkLZCnKGhAwTXsCo=;
- b=NeoFOJ+MezDk1XdLouQhVpsczB9l3x0SATw+ZTXBerLkmZX4rhVRv8X6PtOSEm7UlD
- 6Uw6I/sbKF5V1y2YcHQscgPS3Lk1ek0mkpYI34RdZB2kXMYjyHRc9bXfQvXEj5/02tw1
- HR9gZ6XxVJkX+++GrOSOaKaQtB+Ij0dmpNtS4qsJEPeU6pA+tFpU0D1qNQ5669tWSz0V
- xaP6+i5a1BbGFivk/ckMSCoIVjiEMwKUXe2KRQopU+nW7hXYS01kD/YpkDFxJWEZNiY1
- ZkjmuVCoVAXsaQ1pfcO0LZQ2CNvWM6J52tRYEI87sxWuwjFy2oSNQt0yz/kJ2GSxR/IY
- Cd+A==
+ bh=7+Rz9VtTzj18ZejGjRujsTac3478spKZatBuoAAa8Eg=;
+ b=hd3dKjrSHCktVDN9LoDJzWPU2IjNkEeFaFoDrr4NkC8d3XmVfxfZZLrSa8jiulaIOB
+ rwkewxRF++CmFQyo+hTkqf/P/zLPbKVAR6GEz+HwZj9Y3IxjPaYKddNf2tOvH/YO5i1w
+ gRIPZt5LDg31YrMc+Juk1rGKQXD54u7NFqLUnh8l9EiYvygxD72yM5RE+JtCUJTebr7Q
+ kZOne9UCzdXrnC3KFhofKI7GKRYrohdWxz5TH0/aAG3KWSLTyvGv8fUD1ysleP2lVcpa
+ FN+OayVyb+6XgVdhktE0Rds7Vv8dZFNi0NDnO2yMJS+Hxoiv01/DThfIUcTHxIzZkpK5
+ zxSg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=kFj03blwbcM66TuxYye9XnlpLa3NkLZCnKGhAwTXsCo=;
- b=X3ffPyyakZG/ae7G1PlPDG5dbz++9lv0N5hr7OP3QW5jWhVF6UyD57Q3sMA8YPdF8f
- 6cC8M0v5dwCi6htYYoT8iyzlwCXmDdIOlCnc+O4LULqn9MvZQtJgpxm5hble3L+PvpN7
- WBquWE2anM+aW5q9eyr5LLFHHjH/WiiZRJjNWuO3IsV/NmdMHz8A1qcerxp9SuFUecvL
- 0XIoY2EfJPIuMb/TLc/50W4Bv2J8GWCbkjnNjgambTYglfbaquetAGsVyKvPsODnU2G6
- 5DTDMY6vbfzl5mWtqGN2C9S51HcLC664bjYHX4lrdyICISnBw1XPDlp30dvFHLN7dszZ
- uKgQ==
-X-Gm-Message-State: AOAM533FaLIdYjXT/UYPisSSnMzq/C1lj/WLA4B9bkq6fKayWTXA/G0U
- 7F0NwYStPrCquHL2KhoCNjyhtS/Ez0t3HA==
-X-Received: by 2002:a50:cc4a:: with SMTP id n10mr5194201edi.371.1615406314537; 
- Wed, 10 Mar 2021 11:58:34 -0800 (PST)
+ bh=7+Rz9VtTzj18ZejGjRujsTac3478spKZatBuoAAa8Eg=;
+ b=jOKjlmnOtCD/IlD13/WljDOBGeWSYcPtlgwhVO8Vy9l+rSOZ69i4ouMXkehYXaTBHD
+ uWZtHh/iy42bhVxIxEUkjW6pkFR8zHDGFyM+3k/Cu7Zg+j2S+5N4EwBawdLOhiVgJUiJ
+ e/2GuuIlMXIy03lT6QuEqi0On6MBTjdXfrtQHoUnN0/UkYwpS7hKFjHm6Hga98rdNG9Y
+ hB46dsDQnd/LfjBoP++Joppcq+el1InkqHYhvasYFFegxDHXZ1Q8Sh1D+UnWFSXmeXRO
+ c1jx0N9SywtfB0ZXXxzBMaEtqICwu19g6dk/s84yKen9b/fgN+1zGUSA9CT7hWbwTdI0
+ b3Dw==
+X-Gm-Message-State: AOAM530PIDdrgOFYIkUwzbKqdmAxJIyo0VjUrrx5C7znThSdkTuhDGYt
+ uVGLQMP+2BiICk7lHYIDj/e6eFxYwVGUAQ==
+X-Received: by 2002:a05:6402:57:: with SMTP id
+ f23mr5021977edu.323.1615406316871; 
+ Wed, 10 Mar 2021 11:58:36 -0800 (PST)
 Received: from tuf.home (2a02-a456-6be8-1-d8ed-76d3-94d3-2909.fixed6.kpn.net.
  [2a02:a456:6be8:1:d8ed:76d3:94d3:2909])
- by smtp.gmail.com with ESMTPSA id h13sm133570edz.71.2021.03.10.11.58.32
+ by smtp.gmail.com with ESMTPSA id h13sm133570edz.71.2021.03.10.11.58.35
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 10 Mar 2021 11:58:32 -0800 (PST)
+ Wed, 10 Mar 2021 11:58:36 -0800 (PST)
 From: Niek Linnenbank <nieklinnenbank@gmail.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v4 1/5] hw/net/allwinner-sun8i-emac: traverse transmit queue
- using TX_CUR_DESC register value
-Date: Wed, 10 Mar 2021 20:58:16 +0100
-Message-Id: <20210310195820.21950-2-nieklinnenbank@gmail.com>
+Subject: [PATCH v4 3/5] tests/acceptance/boot_linux_console: change URL for
+ test_arm_orangepi_bionic_20_08
+Date: Wed, 10 Mar 2021 20:58:18 +0100
+Message-Id: <20210310195820.21950-4-nieklinnenbank@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210310195820.21950-1-nieklinnenbank@gmail.com>
 References: <20210310195820.21950-1-nieklinnenbank@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
- envelope-from=nieklinnenbank@gmail.com; helo=mail-ed1-x52a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::534;
+ envelope-from=nieklinnenbank@gmail.com; helo=mail-ed1-x534.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,161 +106,53 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, thuth@redhat.com, berrange@redhat.com,
  wrampazz@redhat.com, f4bug@amsat.org, b.galvani@gmail.com,
  Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
- Pavel.Dovgaluk@ispras.ru, crosa@redhat.com, philmd@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zrH+Sfa6rkDN
+ Pavel.Dovgaluk@ispras.ru, crosa@redhat.com,
+ Willian Rampazzo <willianr@redhat.com>, philmd@redhat.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: OZ7CP7yWIoPT
 
-Currently the emulated EMAC for sun8i always traverses the transmit queue
-from the head when transferring packets. It searches for a list of consecutive
-descriptors whichs are flagged as ready for processing and transmits their payloads
-accordingly. The controller stops processing once it finds a descriptor that is not
-marked ready.
+Update the download URL of the Armbian 20.08 Bionic image for
+test_arm_orangepi_bionic_20_08 of the orangepi-pc machine.
 
-While the above behaviour works in most situations, it is not the same as the actual
-EMAC in hardware. Actual hardware uses the TX_CUR_DESC register value to keep track
-of the last position in the transmit queue and continues processing from that position
-when software triggers the start of DMA processing. The currently emulated behaviour can
-lead to packet loss on transmit when software fills the transmit queue with ready
-descriptors that overlap the tail of the circular list.
-
-This commit modifies the emulated EMAC for sun8i such that it processes
-the transmit queue using the TX_CUR_DESC register in the same way as hardware.
+The archive.armbian.com URL contains more images and should keep stable
+for a longer period of time than dl.armbian.com.
 
 Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Willian Rampazzo <willianr@redhat.com>
 ---
- hw/net/allwinner-sun8i-emac.c | 58 +++++++++++++++++++----------------
- 1 file changed, 32 insertions(+), 26 deletions(-)
+ tests/acceptance/boot_linux_console.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/net/allwinner-sun8i-emac.c b/hw/net/allwinner-sun8i-emac.c
-index 042768922c..e586c147e5 100644
---- a/hw/net/allwinner-sun8i-emac.c
-+++ b/hw/net/allwinner-sun8i-emac.c
-@@ -339,35 +339,40 @@ static void allwinner_sun8i_emac_update_irq(AwSun8iEmacState *s)
-     qemu_set_irq(s->irq, (s->int_sta & s->int_en) != 0);
- }
+diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/boot_linux_console.py
+index 9fadea9958..4a7a6830ca 100644
+--- a/tests/acceptance/boot_linux_console.py
++++ b/tests/acceptance/boot_linux_console.py
+@@ -816,7 +816,7 @@ def test_arm_orangepi_bionic_20_08(self):
+         # to 1036 MiB, but the underlying filesystem is 1552 MiB...
+         # As we expand it to 2 GiB we are safe.
  
--static uint32_t allwinner_sun8i_emac_next_desc(AwSun8iEmacState *s,
--                                               FrameDescriptor *desc,
--                                               size_t min_size)
-+static bool allwinner_sun8i_emac_desc_owned(FrameDescriptor *desc,
-+                                            size_t min_buf_size)
- {
--    uint32_t paddr = desc->next;
-+    return (desc->status & DESC_STATUS_CTL) && (min_buf_size == 0 ||
-+           (desc->status2 & DESC_STATUS2_BUF_SIZE_MASK) >= min_buf_size);
-+}
- 
--    dma_memory_read(&s->dma_as, paddr, desc, sizeof(*desc));
-+static void allwinner_sun8i_emac_get_desc(AwSun8iEmacState *s,
-+                                          FrameDescriptor *desc,
-+                                          uint32_t phys_addr)
-+{
-+    dma_memory_read(&s->dma_as, phys_addr, desc, sizeof(*desc));
-+}
- 
--    if ((desc->status & DESC_STATUS_CTL) &&
--        (desc->status2 & DESC_STATUS2_BUF_SIZE_MASK) >= min_size) {
--        return paddr;
--    } else {
--        return 0;
--    }
-+static uint32_t allwinner_sun8i_emac_next_desc(AwSun8iEmacState *s,
-+                                               FrameDescriptor *desc)
-+{
-+    const uint32_t nxt = desc->next;
-+    allwinner_sun8i_emac_get_desc(s, desc, nxt);
-+    return nxt;
- }
- 
--static uint32_t allwinner_sun8i_emac_get_desc(AwSun8iEmacState *s,
--                                              FrameDescriptor *desc,
--                                              uint32_t start_addr,
--                                              size_t min_size)
-+static uint32_t allwinner_sun8i_emac_find_desc(AwSun8iEmacState *s,
-+                                               FrameDescriptor *desc,
-+                                               uint32_t start_addr,
-+                                               size_t min_size)
- {
-     uint32_t desc_addr = start_addr;
- 
-     /* Note that the list is a cycle. Last entry points back to the head. */
-     while (desc_addr != 0) {
--        dma_memory_read(&s->dma_as, desc_addr, desc, sizeof(*desc));
-+        allwinner_sun8i_emac_get_desc(s, desc, desc_addr);
- 
--        if ((desc->status & DESC_STATUS_CTL) &&
--            (desc->status2 & DESC_STATUS2_BUF_SIZE_MASK) >= min_size) {
-+        if (allwinner_sun8i_emac_desc_owned(desc, min_size)) {
-             return desc_addr;
-         } else if (desc->next == start_addr) {
-             break;
-@@ -383,14 +388,14 @@ static uint32_t allwinner_sun8i_emac_rx_desc(AwSun8iEmacState *s,
-                                              FrameDescriptor *desc,
-                                              size_t min_size)
- {
--    return allwinner_sun8i_emac_get_desc(s, desc, s->rx_desc_curr, min_size);
-+    return allwinner_sun8i_emac_find_desc(s, desc, s->rx_desc_curr, min_size);
- }
- 
- static uint32_t allwinner_sun8i_emac_tx_desc(AwSun8iEmacState *s,
--                                             FrameDescriptor *desc,
--                                             size_t min_size)
-+                                             FrameDescriptor *desc)
- {
--    return allwinner_sun8i_emac_get_desc(s, desc, s->tx_desc_head, min_size);
-+    allwinner_sun8i_emac_get_desc(s, desc, s->tx_desc_curr);
-+    return s->tx_desc_curr;
- }
- 
- static void allwinner_sun8i_emac_flush_desc(AwSun8iEmacState *s,
-@@ -470,7 +475,8 @@ static ssize_t allwinner_sun8i_emac_receive(NetClientState *nc,
-         bytes_left -= desc_bytes;
- 
-         /* Move to the next descriptor */
--        s->rx_desc_curr = allwinner_sun8i_emac_next_desc(s, &desc, 64);
-+        s->rx_desc_curr = allwinner_sun8i_emac_find_desc(s, &desc, desc.next,
-+                                                         AW_SUN8I_EMAC_MIN_PKT_SZ);
-         if (!s->rx_desc_curr) {
-             /* Not enough buffer space available */
-             s->int_sta |= INT_STA_RX_BUF_UA;
-@@ -495,10 +501,10 @@ static void allwinner_sun8i_emac_transmit(AwSun8iEmacState *s)
-     size_t transmitted = 0;
-     static uint8_t packet_buf[2048];
- 
--    s->tx_desc_curr = allwinner_sun8i_emac_tx_desc(s, &desc, 0);
-+    s->tx_desc_curr = allwinner_sun8i_emac_tx_desc(s, &desc);
- 
-     /* Read all transmit descriptors */
--    while (s->tx_desc_curr != 0) {
-+    while (allwinner_sun8i_emac_desc_owned(&desc, 0)) {
- 
-         /* Read from physical memory into packet buffer */
-         bytes = desc.status2 & DESC_STATUS2_BUF_SIZE_MASK;
-@@ -524,7 +530,7 @@ static void allwinner_sun8i_emac_transmit(AwSun8iEmacState *s)
-             packet_bytes = 0;
-             transmitted++;
-         }
--        s->tx_desc_curr = allwinner_sun8i_emac_next_desc(s, &desc, 0);
-+        s->tx_desc_curr = allwinner_sun8i_emac_next_desc(s, &desc);
-     }
- 
-     /* Raise transmit completed interrupt */
+-        image_url = ('https://dl.armbian.com/orangepipc/archive/'
++        image_url = ('https://archive.armbian.com/orangepipc/archive/'
+                      'Armbian_20.08.1_Orangepipc_bionic_current_5.8.5.img.xz')
+         image_hash = ('b4d6775f5673486329e45a0586bf06b6'
+                       'dbe792199fd182ac6b9c7bb6c7d3e6dd')
 -- 
 2.25.1
 

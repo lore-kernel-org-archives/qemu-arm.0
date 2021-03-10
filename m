@@ -1,227 +1,876 @@
-Received: by 2002:a0c:aac5:0:0:0:0:0 with SMTP id g5csp794150qvb;
-        Wed, 10 Mar 2021 07:20:52 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwdedqXn2oRgvNjgN9Mwf0cceo7wy0pvqlj/NBecxhqhsZG4/cS0M6EhL+SumImzseWjHDd
-X-Received: by 2002:a92:c052:: with SMTP id o18mr2974419ilf.84.1615389651634;
-        Wed, 10 Mar 2021 07:20:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1615389651; cv=none;
-        d=google.com; s=arc-20160816;
-        b=IldxX8JbvwaknD58FmpznlcU5xubfsjsL7GESPePyKOsoLLxcjMirNbsdMEii61swo
-         a5h15dtGkXCE5L7Y1G44/cyBbmG66QQR5snjd5vB22LP9ZenRuLoHbogOw3VqpR0U5ol
-         /2rdzQOwEpt4i+6J/A+QZVv56muI26X1lXPJ0gZBrsbummEUmR3vOGxkZLq/CU6tdTbW
-         HY7w4DMhGiXkbdn52tusKV+/k+W+z3q0p6Ko6+gfjqU0QY0Cm9PLo+QlIsoGV8m3E2a/
-         +aBiwMhVWLdTIwCCpDn9yidteu4keuaviSveyDNxEsCgFWdLNvHRK90kp34GFXS5/M8P
-         fQZQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=TbMLigH8Mpsu0ZbFvIpyL/zkpW0x74/TgwZ0GYk8LbU=;
-        b=E/mQojnz+SD0Jl3p2fjSj1F6VoZU4dJrFmc1lXxmUNiFN0Wd7vr8RtuSDRMz4IKRU0
-         6CBNe4auJdhb02hyX72jmNTjoahWGJ+dKDPMa5oETqiRL+JN/d+8lY/ZcM/+qyb45fZ0
-         vkI/IuAL9+5U/HfahdkaOzdbZ2z2RU61mTHfVIaqvscyYBSGyT2tIZ6Cj4staQaqRtMI
-         j7IOhjf97VqfTQt9xhJK8MJqqlq5FN0fRtmhPYAvAEaXhkzpeQP9mRO5UYLZWzb8vlWQ
-         JszpDjyov9pcMTxKzwzsf6qrup4WtFuZi98XfBya/BKERVcgs2LfvfhyhPAsLgMXDz60
-         TNSA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=erVtgq3w;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h13si17368351iow.73.2021.03.10.07.20.51
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 10 Mar 2021 07:20:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=erVtgq3w;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44554 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lK0dm-0007kv-V5
-	for alex.bennee@linaro.org; Wed, 10 Mar 2021 10:20:50 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49050)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wrampazz@redhat.com>)
- id 1lK0dP-0007jH-9g
- for qemu-arm@nongnu.org; Wed, 10 Mar 2021 10:20:27 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:35559)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <wrampazz@redhat.com>)
- id 1lK0dM-0005SY-5o
- for qemu-arm@nongnu.org; Wed, 10 Mar 2021 10:20:26 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1615389623;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=TbMLigH8Mpsu0ZbFvIpyL/zkpW0x74/TgwZ0GYk8LbU=;
- b=erVtgq3wkoi/13VQerUIDHLpUMoonOeCydXKS9Kif2l75SvpJTHeFkuTyjh41kXrqxMYDh
- Pl139cU4hbZvmWM9FMbJBLVh7ctgBwDDvm3usj+Zu8Acns0D6P13qxZpsUfEbl+lSHRRmb
- j9YChrQKU4OkEzxPhN6KJJx0TJNqZAE=
-Received: from mail-vs1-f71.google.com (mail-vs1-f71.google.com
- [209.85.217.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-581-Zpc2J_ujOICld5hajTJItQ-1; Wed, 10 Mar 2021 10:20:19 -0500
-X-MC-Unique: Zpc2J_ujOICld5hajTJItQ-1
-Received: by mail-vs1-f71.google.com with SMTP id w5so5058206vsf.14
- for <qemu-arm@nongnu.org>; Wed, 10 Mar 2021 07:20:19 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=TbMLigH8Mpsu0ZbFvIpyL/zkpW0x74/TgwZ0GYk8LbU=;
- b=cQEHVm99DuidBCwY1OKGMYeGmzgWEh1fq+/3Ngdb3yZauNihA2j1t5vuhF5rTlBnga
- 8F3IMTuTeU/xtrt91c58HaKFbdkmdzSl/YqucZrtMAF64is1Wik5uPOAeLkJUSCpNtqh
- pSjNOgMlcW4uXn5HdAKN2gzVvIOUJxymuwl4vjzRGuPRBALfVgg6yr4RngrSaddGVc7V
- RLjsSFY+lVR2GLIWNc0EqPUt8Eg5g3v/TBa8An9Ms974+vd1ozVLXfPEPnXNY4yS49MF
- T3Q/da7tQXfGVfJyEW0S45RQDfKW29u3r4FBh9I3tZZzS7poIUCyLLNOWM1d7CZ7xD3H
- fRow==
-X-Gm-Message-State: AOAM533NQOshgf5rbt6LFM5h3ftWjyj5p6i6U829bVceznb3iOJ2yCar
- T6IqojZvABqRxh+V3IhlgdlnDgSFbkbmIC/w64fU3EqQb0jcu/1/sGFFlzlBcjOVX0cKKeG3BtW
- uPHlKhO9cq5zVoMth8dEB+3+dMrkz
-X-Received: by 2002:a67:3241:: with SMTP id y62mr1922444vsy.45.1615389618903; 
- Wed, 10 Mar 2021 07:20:18 -0800 (PST)
-X-Received: by 2002:a67:3241:: with SMTP id y62mr1922416vsy.45.1615389618673; 
- Wed, 10 Mar 2021 07:20:18 -0800 (PST)
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id q16sm9977692ejd.15.2021.03.10.08.00.07
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 10 Mar 2021 08:00:10 -0800 (PST)
+Received: from zen.lan (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 3C2BE1FF93;
+	Wed, 10 Mar 2021 16:00:03 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: peter.maydell@linaro.org
+Cc: qemu-devel@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	qemu-arm@nongnu.org (open list:Virt)
+Subject: [PULL v2 07/15] hw/board: promote fdt from ARM VirtMachineState to MachineState
+Date: Wed, 10 Mar 2021 15:59:54 +0000
+Message-Id: <20210310160002.11659-8-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20210310160002.11659-1-alex.bennee@linaro.org>
+References: <20210310160002.11659-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-References: <20210214194524.768660-1-f4bug@amsat.org>
-In-Reply-To: <20210214194524.768660-1-f4bug@amsat.org>
-From: Willian Rampazzo <wrampazz@redhat.com>
-Date: Wed, 10 Mar 2021 12:19:52 -0300
-Message-ID: <CAKJDGDb_ZF_r3EzfXyQRKSWdvyV98eLD9=3PEdz=w+YAe_JWzw@mail.gmail.com>
-Subject: Re: [PATCH v2] tests/acceptance: Add bFLT loader linux-user test
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=wrampazz@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=wrampazz@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.243,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-devel <qemu-devel@nongnu.org>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Laurent Vivier <laurent@vivier.eu>, Willian Rampazzo <willianr@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, Cleber Rosa <crosa@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cBHTVEE+aNIG
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: Qplg8kIM+m1W
 
-On Sun, Feb 14, 2021 at 4:45 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
-g> wrote:
->
-> Add a very quick test that runs a busybox binary in bFLT format:
->
->   $ avocado --show=3Dapp run -t linux_user tests/acceptance/load_bflt.py
->   JOB ID     : db94d5960ce564c50904d666a7e259148c27e88f
->   JOB LOG    : ~/avocado/job-results/job-2019-06-25T10.52-db94d59/job.log
->    (1/1) tests/acceptance/load_bflt.py:LoadBFLT.test_stm32: PASS (0.15 s)
->   RESULTS    : PASS 1 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 =
-| CANCEL 0
->   JOB TIME   : 0.54 s
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
-> Based-on: <20210214175912.732946-1-f4bug@amsat.org>
->   tests/acceptance: Extract QemuBaseTest from Test
->   tests/acceptance: Make pick_default_qemu_bin() more generic
->   tests/acceptance: Introduce QemuUserTest base class
-> ---
->  tests/acceptance/load_bflt.py | 51 +++++++++++++++++++++++++++++++++++
->  1 file changed, 51 insertions(+)
->  create mode 100644 tests/acceptance/load_bflt.py
->
+The use of FDT's is quite common across our various platforms. To
+allow the guest loader to tweak it we need to make it available in
+the generic state. This creates the field and migrates the initial
+user to use the generic field. Other boards will be updated in later
+patches.
 
-Including the skipUnless on `cpio` mentioned by Thomas,
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Message-Id: <20210303173642.3805-2-alex.bennee@linaro.org>
 
-Reviewed-by: Willian Rampazzo <willianr@redhat.com>
-
-> diff --git a/tests/acceptance/load_bflt.py b/tests/acceptance/load_bflt.p=
-y
-> new file mode 100644
-> index 00000000000..4b7796d0775
-> --- /dev/null
-> +++ b/tests/acceptance/load_bflt.py
-> @@ -0,0 +1,51 @@
-> +# Test the bFLT format
-> +#
-> +# Copyright (C) 2019 Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> +#
-> +# SPDX-License-Identifier: GPL-2.0-or-later
-> +
-> +import os
-> +import bz2
-> +import subprocess
-> +
-> +from avocado_qemu import QemuUserTest
-> +
-> +
-> +class LoadBFLT(QemuUserTest):
-> +
-> +    def extract_cpio(self, cpio_path):
-> +        """
-> +        Extracts a cpio archive into the test workdir
-> +
-> +        :param cpio_path: path to the cpio archive
-> +        """
-> +        cwd =3D os.getcwd()
-> +        os.chdir(self.workdir)
-> +        with bz2.open(cpio_path, 'rb') as archive_cpio:
-> +            subprocess.run(['cpio', '-i'], input=3Darchive_cpio.read(),
-> +                           stderr=3Dsubprocess.DEVNULL)
-> +        os.chdir(cwd)
-> +
-> +    @skipUnless(os.getenv('AVOCADO_ALLOW_UNTRUSTED_CODE'), 'untrusted co=
-de')
-> +    def test_stm32(self):
-> +        """
-> +        :avocado: tags=3Darch:arm
-> +        :avocado: tags=3Dlinux_user
-> +        :avocado: tags=3Dquick
-> +        """
-> +        # See https://elinux.org/STM32#User_Space
-> +        rootfs_url =3D ('https://elinux.org/images/5/51/'
-> +                      'Stm32_mini_rootfs.cpio.bz2')
-> +        rootfs_hash =3D '9f065e6ba40cce7411ba757f924f30fcc57951e6'
-> +        rootfs_path_bz2 =3D self.fetch_asset(rootfs_url, asset_hash=3Dro=
-otfs_hash)
-> +        busybox_path =3D self.workdir + "/bin/busybox"
-> +
-> +        self.extract_cpio(rootfs_path_bz2)
-> +
-> +        res =3D self.run(busybox_path)
-> +        ver =3D 'BusyBox v1.24.0.git (2015-02-03 22:17:13 CET) multi-cal=
-l binary.'
-> +        self.assertIn(ver, res.stdout_text)
-> +
-> +        res =3D self.run(busybox_path, ['uname', '-a'])
-> +        unm =3D 'armv7l GNU/Linux'
-> +        self.assertIn(unm, res.stdout_text)
-> --
-> 2.26.2
->
-
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index ee9a93101e..921416f918 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -153,7 +153,6 @@ struct VirtMachineState {
+     MemMapEntry *memmap;
+     char *pciehb_nodename;
+     const int *irqmap;
+-    void *fdt;
+     int fdt_size;
+     uint32_t clock_phandle;
+     uint32_t gic_phandle;
+diff --git a/include/hw/boards.h b/include/hw/boards.h
+index a46dfe5d1a..5fda5fd128 100644
+--- a/include/hw/boards.h
++++ b/include/hw/boards.h
+@@ -258,6 +258,7 @@ struct MachineState {
+ 
+     /*< public >*/
+ 
++    void *fdt;
+     char *dtb;
+     char *dumpdtb;
+     int phandle_start;
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 371147f3ae..c08bf11297 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -218,14 +218,14 @@ static bool cpu_type_valid(const char *cpu)
+     return false;
+ }
+ 
+-static void create_kaslr_seed(VirtMachineState *vms, const char *node)
++static void create_kaslr_seed(MachineState *ms, const char *node)
+ {
+     uint64_t seed;
+ 
+     if (qemu_guest_getrandom(&seed, sizeof(seed), NULL)) {
+         return;
+     }
+-    qemu_fdt_setprop_u64(vms->fdt, node, "kaslr-seed", seed);
++    qemu_fdt_setprop_u64(ms->fdt, node, "kaslr-seed", seed);
+ }
+ 
+ static void create_fdt(VirtMachineState *vms)
+@@ -239,7 +239,7 @@ static void create_fdt(VirtMachineState *vms)
+         exit(1);
+     }
+ 
+-    vms->fdt = fdt;
++    ms->fdt = fdt;
+ 
+     /* Header */
+     qemu_fdt_setprop_string(fdt, "/", "compatible", "linux,dummy-virt");
+@@ -248,11 +248,11 @@ static void create_fdt(VirtMachineState *vms)
+ 
+     /* /chosen must exist for load_dtb to fill in necessary properties later */
+     qemu_fdt_add_subnode(fdt, "/chosen");
+-    create_kaslr_seed(vms, "/chosen");
++    create_kaslr_seed(ms, "/chosen");
+ 
+     if (vms->secure) {
+         qemu_fdt_add_subnode(fdt, "/secure-chosen");
+-        create_kaslr_seed(vms, "/secure-chosen");
++        create_kaslr_seed(ms, "/secure-chosen");
+     }
+ 
+     /* Clock node, for the benefit of the UART. The kernel device tree
+@@ -316,6 +316,7 @@ static void fdt_add_timer_nodes(const VirtMachineState *vms)
+     ARMCPU *armcpu;
+     VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
+     uint32_t irqflags = GIC_FDT_IRQ_FLAGS_LEVEL_HI;
++    MachineState *ms = MACHINE(vms);
+ 
+     if (vmc->claim_edge_triggered_timers) {
+         irqflags = GIC_FDT_IRQ_FLAGS_EDGE_LO_HI;
+@@ -327,19 +328,19 @@ static void fdt_add_timer_nodes(const VirtMachineState *vms)
+                              (1 << MACHINE(vms)->smp.cpus) - 1);
+     }
+ 
+-    qemu_fdt_add_subnode(vms->fdt, "/timer");
++    qemu_fdt_add_subnode(ms->fdt, "/timer");
+ 
+     armcpu = ARM_CPU(qemu_get_cpu(0));
+     if (arm_feature(&armcpu->env, ARM_FEATURE_V8)) {
+         const char compat[] = "arm,armv8-timer\0arm,armv7-timer";
+-        qemu_fdt_setprop(vms->fdt, "/timer", "compatible",
++        qemu_fdt_setprop(ms->fdt, "/timer", "compatible",
+                          compat, sizeof(compat));
+     } else {
+-        qemu_fdt_setprop_string(vms->fdt, "/timer", "compatible",
++        qemu_fdt_setprop_string(ms->fdt, "/timer", "compatible",
+                                 "arm,armv7-timer");
+     }
+-    qemu_fdt_setprop(vms->fdt, "/timer", "always-on", NULL, 0);
+-    qemu_fdt_setprop_cells(vms->fdt, "/timer", "interrupts",
++    qemu_fdt_setprop(ms->fdt, "/timer", "always-on", NULL, 0);
++    qemu_fdt_setprop_cells(ms->fdt, "/timer", "interrupts",
+                        GIC_FDT_IRQ_TYPE_PPI, ARCH_TIMER_S_EL1_IRQ, irqflags,
+                        GIC_FDT_IRQ_TYPE_PPI, ARCH_TIMER_NS_EL1_IRQ, irqflags,
+                        GIC_FDT_IRQ_TYPE_PPI, ARCH_TIMER_VIRT_IRQ, irqflags,
+@@ -375,35 +376,35 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
+         }
+     }
+ 
+-    qemu_fdt_add_subnode(vms->fdt, "/cpus");
+-    qemu_fdt_setprop_cell(vms->fdt, "/cpus", "#address-cells", addr_cells);
+-    qemu_fdt_setprop_cell(vms->fdt, "/cpus", "#size-cells", 0x0);
++    qemu_fdt_add_subnode(ms->fdt, "/cpus");
++    qemu_fdt_setprop_cell(ms->fdt, "/cpus", "#address-cells", addr_cells);
++    qemu_fdt_setprop_cell(ms->fdt, "/cpus", "#size-cells", 0x0);
+ 
+     for (cpu = smp_cpus - 1; cpu >= 0; cpu--) {
+         char *nodename = g_strdup_printf("/cpus/cpu@%d", cpu);
+         ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(cpu));
+         CPUState *cs = CPU(armcpu);
+ 
+-        qemu_fdt_add_subnode(vms->fdt, nodename);
+-        qemu_fdt_setprop_string(vms->fdt, nodename, "device_type", "cpu");
+-        qemu_fdt_setprop_string(vms->fdt, nodename, "compatible",
++        qemu_fdt_add_subnode(ms->fdt, nodename);
++        qemu_fdt_setprop_string(ms->fdt, nodename, "device_type", "cpu");
++        qemu_fdt_setprop_string(ms->fdt, nodename, "compatible",
+                                     armcpu->dtb_compatible);
+ 
+         if (vms->psci_conduit != QEMU_PSCI_CONDUIT_DISABLED && smp_cpus > 1) {
+-            qemu_fdt_setprop_string(vms->fdt, nodename,
++            qemu_fdt_setprop_string(ms->fdt, nodename,
+                                         "enable-method", "psci");
+         }
+ 
+         if (addr_cells == 2) {
+-            qemu_fdt_setprop_u64(vms->fdt, nodename, "reg",
++            qemu_fdt_setprop_u64(ms->fdt, nodename, "reg",
+                                  armcpu->mp_affinity);
+         } else {
+-            qemu_fdt_setprop_cell(vms->fdt, nodename, "reg",
++            qemu_fdt_setprop_cell(ms->fdt, nodename, "reg",
+                                   armcpu->mp_affinity);
+         }
+ 
+         if (ms->possible_cpus->cpus[cs->cpu_index].props.has_node_id) {
+-            qemu_fdt_setprop_cell(vms->fdt, nodename, "numa-node-id",
++            qemu_fdt_setprop_cell(ms->fdt, nodename, "numa-node-id",
+                 ms->possible_cpus->cpus[cs->cpu_index].props.node_id);
+         }
+ 
+@@ -414,71 +415,74 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
+ static void fdt_add_its_gic_node(VirtMachineState *vms)
+ {
+     char *nodename;
++    MachineState *ms = MACHINE(vms);
+ 
+-    vms->msi_phandle = qemu_fdt_alloc_phandle(vms->fdt);
++    vms->msi_phandle = qemu_fdt_alloc_phandle(ms->fdt);
+     nodename = g_strdup_printf("/intc/its@%" PRIx64,
+                                vms->memmap[VIRT_GIC_ITS].base);
+-    qemu_fdt_add_subnode(vms->fdt, nodename);
+-    qemu_fdt_setprop_string(vms->fdt, nodename, "compatible",
++    qemu_fdt_add_subnode(ms->fdt, nodename);
++    qemu_fdt_setprop_string(ms->fdt, nodename, "compatible",
+                             "arm,gic-v3-its");
+-    qemu_fdt_setprop(vms->fdt, nodename, "msi-controller", NULL, 0);
+-    qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
++    qemu_fdt_setprop(ms->fdt, nodename, "msi-controller", NULL, 0);
++    qemu_fdt_setprop_sized_cells(ms->fdt, nodename, "reg",
+                                  2, vms->memmap[VIRT_GIC_ITS].base,
+                                  2, vms->memmap[VIRT_GIC_ITS].size);
+-    qemu_fdt_setprop_cell(vms->fdt, nodename, "phandle", vms->msi_phandle);
++    qemu_fdt_setprop_cell(ms->fdt, nodename, "phandle", vms->msi_phandle);
+     g_free(nodename);
+ }
+ 
+ static void fdt_add_v2m_gic_node(VirtMachineState *vms)
+ {
++    MachineState *ms = MACHINE(vms);
+     char *nodename;
+ 
+     nodename = g_strdup_printf("/intc/v2m@%" PRIx64,
+                                vms->memmap[VIRT_GIC_V2M].base);
+-    vms->msi_phandle = qemu_fdt_alloc_phandle(vms->fdt);
+-    qemu_fdt_add_subnode(vms->fdt, nodename);
+-    qemu_fdt_setprop_string(vms->fdt, nodename, "compatible",
++    vms->msi_phandle = qemu_fdt_alloc_phandle(ms->fdt);
++    qemu_fdt_add_subnode(ms->fdt, nodename);
++    qemu_fdt_setprop_string(ms->fdt, nodename, "compatible",
+                             "arm,gic-v2m-frame");
+-    qemu_fdt_setprop(vms->fdt, nodename, "msi-controller", NULL, 0);
+-    qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
++    qemu_fdt_setprop(ms->fdt, nodename, "msi-controller", NULL, 0);
++    qemu_fdt_setprop_sized_cells(ms->fdt, nodename, "reg",
+                                  2, vms->memmap[VIRT_GIC_V2M].base,
+                                  2, vms->memmap[VIRT_GIC_V2M].size);
+-    qemu_fdt_setprop_cell(vms->fdt, nodename, "phandle", vms->msi_phandle);
++    qemu_fdt_setprop_cell(ms->fdt, nodename, "phandle", vms->msi_phandle);
+     g_free(nodename);
+ }
+ 
+ static void fdt_add_gic_node(VirtMachineState *vms)
+ {
++    MachineState *ms = MACHINE(vms);
+     char *nodename;
+ 
+-    vms->gic_phandle = qemu_fdt_alloc_phandle(vms->fdt);
+-    qemu_fdt_setprop_cell(vms->fdt, "/", "interrupt-parent", vms->gic_phandle);
++    vms->gic_phandle = qemu_fdt_alloc_phandle(ms->fdt);
++    qemu_fdt_setprop_cell(ms->fdt, "/", "interrupt-parent", vms->gic_phandle);
+ 
+     nodename = g_strdup_printf("/intc@%" PRIx64,
+                                vms->memmap[VIRT_GIC_DIST].base);
+-    qemu_fdt_add_subnode(vms->fdt, nodename);
+-    qemu_fdt_setprop_cell(vms->fdt, nodename, "#interrupt-cells", 3);
+-    qemu_fdt_setprop(vms->fdt, nodename, "interrupt-controller", NULL, 0);
+-    qemu_fdt_setprop_cell(vms->fdt, nodename, "#address-cells", 0x2);
+-    qemu_fdt_setprop_cell(vms->fdt, nodename, "#size-cells", 0x2);
+-    qemu_fdt_setprop(vms->fdt, nodename, "ranges", NULL, 0);
++    qemu_fdt_add_subnode(ms->fdt, nodename);
++    qemu_fdt_setprop_cell(ms->fdt, nodename, "#interrupt-cells", 3);
++    qemu_fdt_setprop(ms->fdt, nodename, "interrupt-controller", NULL, 0);
++    qemu_fdt_setprop_cell(ms->fdt, nodename, "#address-cells", 0x2);
++    qemu_fdt_setprop_cell(ms->fdt, nodename, "#size-cells", 0x2);
++    qemu_fdt_setprop(ms->fdt, nodename, "ranges", NULL, 0);
+     if (vms->gic_version == VIRT_GIC_VERSION_3) {
+         int nb_redist_regions = virt_gicv3_redist_region_count(vms);
+ 
+-        qemu_fdt_setprop_string(vms->fdt, nodename, "compatible",
++        qemu_fdt_setprop_string(ms->fdt, nodename, "compatible",
+                                 "arm,gic-v3");
+ 
+-        qemu_fdt_setprop_cell(vms->fdt, nodename,
++        qemu_fdt_setprop_cell(ms->fdt, nodename,
+                               "#redistributor-regions", nb_redist_regions);
+ 
+         if (nb_redist_regions == 1) {
+-            qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
++            qemu_fdt_setprop_sized_cells(ms->fdt, nodename, "reg",
+                                          2, vms->memmap[VIRT_GIC_DIST].base,
+                                          2, vms->memmap[VIRT_GIC_DIST].size,
+                                          2, vms->memmap[VIRT_GIC_REDIST].base,
+                                          2, vms->memmap[VIRT_GIC_REDIST].size);
+         } else {
+-            qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
++            qemu_fdt_setprop_sized_cells(ms->fdt, nodename, "reg",
+                                  2, vms->memmap[VIRT_GIC_DIST].base,
+                                  2, vms->memmap[VIRT_GIC_DIST].size,
+                                  2, vms->memmap[VIRT_GIC_REDIST].base,
+@@ -488,22 +492,22 @@ static void fdt_add_gic_node(VirtMachineState *vms)
+         }
+ 
+         if (vms->virt) {
+-            qemu_fdt_setprop_cells(vms->fdt, nodename, "interrupts",
++            qemu_fdt_setprop_cells(ms->fdt, nodename, "interrupts",
+                                    GIC_FDT_IRQ_TYPE_PPI, ARCH_GIC_MAINT_IRQ,
+                                    GIC_FDT_IRQ_FLAGS_LEVEL_HI);
+         }
+     } else {
+         /* 'cortex-a15-gic' means 'GIC v2' */
+-        qemu_fdt_setprop_string(vms->fdt, nodename, "compatible",
++        qemu_fdt_setprop_string(ms->fdt, nodename, "compatible",
+                                 "arm,cortex-a15-gic");
+         if (!vms->virt) {
+-            qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
++            qemu_fdt_setprop_sized_cells(ms->fdt, nodename, "reg",
+                                          2, vms->memmap[VIRT_GIC_DIST].base,
+                                          2, vms->memmap[VIRT_GIC_DIST].size,
+                                          2, vms->memmap[VIRT_GIC_CPU].base,
+                                          2, vms->memmap[VIRT_GIC_CPU].size);
+         } else {
+-            qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
++            qemu_fdt_setprop_sized_cells(ms->fdt, nodename, "reg",
+                                          2, vms->memmap[VIRT_GIC_DIST].base,
+                                          2, vms->memmap[VIRT_GIC_DIST].size,
+                                          2, vms->memmap[VIRT_GIC_CPU].base,
+@@ -512,13 +516,13 @@ static void fdt_add_gic_node(VirtMachineState *vms)
+                                          2, vms->memmap[VIRT_GIC_HYP].size,
+                                          2, vms->memmap[VIRT_GIC_VCPU].base,
+                                          2, vms->memmap[VIRT_GIC_VCPU].size);
+-            qemu_fdt_setprop_cells(vms->fdt, nodename, "interrupts",
++            qemu_fdt_setprop_cells(ms->fdt, nodename, "interrupts",
+                                    GIC_FDT_IRQ_TYPE_PPI, ARCH_GIC_MAINT_IRQ,
+                                    GIC_FDT_IRQ_FLAGS_LEVEL_HI);
+         }
+     }
+ 
+-    qemu_fdt_setprop_cell(vms->fdt, nodename, "phandle", vms->gic_phandle);
++    qemu_fdt_setprop_cell(ms->fdt, nodename, "phandle", vms->gic_phandle);
+     g_free(nodename);
+ }
+ 
+@@ -526,6 +530,7 @@ static void fdt_add_pmu_nodes(const VirtMachineState *vms)
+ {
+     ARMCPU *armcpu = ARM_CPU(first_cpu);
+     uint32_t irqflags = GIC_FDT_IRQ_FLAGS_LEVEL_HI;
++    MachineState *ms = MACHINE(vms);
+ 
+     if (!arm_feature(&armcpu->env, ARM_FEATURE_PMU)) {
+         assert(!object_property_get_bool(OBJECT(armcpu), "pmu", NULL));
+@@ -538,12 +543,12 @@ static void fdt_add_pmu_nodes(const VirtMachineState *vms)
+                              (1 << MACHINE(vms)->smp.cpus) - 1);
+     }
+ 
+-    qemu_fdt_add_subnode(vms->fdt, "/pmu");
++    qemu_fdt_add_subnode(ms->fdt, "/pmu");
+     if (arm_feature(&armcpu->env, ARM_FEATURE_V8)) {
+         const char compat[] = "arm,armv8-pmuv3";
+-        qemu_fdt_setprop(vms->fdt, "/pmu", "compatible",
++        qemu_fdt_setprop(ms->fdt, "/pmu", "compatible",
+                          compat, sizeof(compat));
+-        qemu_fdt_setprop_cells(vms->fdt, "/pmu", "interrupts",
++        qemu_fdt_setprop_cells(ms->fdt, "/pmu", "interrupts",
+                                GIC_FDT_IRQ_TYPE_PPI, VIRTUAL_PMU_IRQ, irqflags);
+     }
+ }
+@@ -749,6 +754,7 @@ static void create_uart(const VirtMachineState *vms, int uart,
+     const char clocknames[] = "uartclk\0apb_pclk";
+     DeviceState *dev = qdev_new(TYPE_PL011);
+     SysBusDevice *s = SYS_BUS_DEVICE(dev);
++    MachineState *ms = MACHINE(vms);
+ 
+     qdev_prop_set_chr(dev, "chardev", chr);
+     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+@@ -757,28 +763,28 @@ static void create_uart(const VirtMachineState *vms, int uart,
+     sysbus_connect_irq(s, 0, qdev_get_gpio_in(vms->gic, irq));
+ 
+     nodename = g_strdup_printf("/pl011@%" PRIx64, base);
+-    qemu_fdt_add_subnode(vms->fdt, nodename);
++    qemu_fdt_add_subnode(ms->fdt, nodename);
+     /* Note that we can't use setprop_string because of the embedded NUL */
+-    qemu_fdt_setprop(vms->fdt, nodename, "compatible",
++    qemu_fdt_setprop(ms->fdt, nodename, "compatible",
+                          compat, sizeof(compat));
+-    qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
++    qemu_fdt_setprop_sized_cells(ms->fdt, nodename, "reg",
+                                      2, base, 2, size);
+-    qemu_fdt_setprop_cells(vms->fdt, nodename, "interrupts",
++    qemu_fdt_setprop_cells(ms->fdt, nodename, "interrupts",
+                                GIC_FDT_IRQ_TYPE_SPI, irq,
+                                GIC_FDT_IRQ_FLAGS_LEVEL_HI);
+-    qemu_fdt_setprop_cells(vms->fdt, nodename, "clocks",
++    qemu_fdt_setprop_cells(ms->fdt, nodename, "clocks",
+                                vms->clock_phandle, vms->clock_phandle);
+-    qemu_fdt_setprop(vms->fdt, nodename, "clock-names",
++    qemu_fdt_setprop(ms->fdt, nodename, "clock-names",
+                          clocknames, sizeof(clocknames));
+ 
+     if (uart == VIRT_UART) {
+-        qemu_fdt_setprop_string(vms->fdt, "/chosen", "stdout-path", nodename);
++        qemu_fdt_setprop_string(ms->fdt, "/chosen", "stdout-path", nodename);
+     } else {
+         /* Mark as not usable by the normal world */
+-        qemu_fdt_setprop_string(vms->fdt, nodename, "status", "disabled");
+-        qemu_fdt_setprop_string(vms->fdt, nodename, "secure-status", "okay");
++        qemu_fdt_setprop_string(ms->fdt, nodename, "status", "disabled");
++        qemu_fdt_setprop_string(ms->fdt, nodename, "secure-status", "okay");
+ 
+-        qemu_fdt_setprop_string(vms->fdt, "/secure-chosen", "stdout-path",
++        qemu_fdt_setprop_string(ms->fdt, "/secure-chosen", "stdout-path",
+                                 nodename);
+     }
+ 
+@@ -792,19 +798,20 @@ static void create_rtc(const VirtMachineState *vms)
+     hwaddr size = vms->memmap[VIRT_RTC].size;
+     int irq = vms->irqmap[VIRT_RTC];
+     const char compat[] = "arm,pl031\0arm,primecell";
++    MachineState *ms = MACHINE(vms);
+ 
+     sysbus_create_simple("pl031", base, qdev_get_gpio_in(vms->gic, irq));
+ 
+     nodename = g_strdup_printf("/pl031@%" PRIx64, base);
+-    qemu_fdt_add_subnode(vms->fdt, nodename);
+-    qemu_fdt_setprop(vms->fdt, nodename, "compatible", compat, sizeof(compat));
+-    qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
++    qemu_fdt_add_subnode(ms->fdt, nodename);
++    qemu_fdt_setprop(ms->fdt, nodename, "compatible", compat, sizeof(compat));
++    qemu_fdt_setprop_sized_cells(ms->fdt, nodename, "reg",
+                                  2, base, 2, size);
+-    qemu_fdt_setprop_cells(vms->fdt, nodename, "interrupts",
++    qemu_fdt_setprop_cells(ms->fdt, nodename, "interrupts",
+                            GIC_FDT_IRQ_TYPE_SPI, irq,
+                            GIC_FDT_IRQ_FLAGS_LEVEL_HI);
+-    qemu_fdt_setprop_cell(vms->fdt, nodename, "clocks", vms->clock_phandle);
+-    qemu_fdt_setprop_string(vms->fdt, nodename, "clock-names", "apb_pclk");
++    qemu_fdt_setprop_cell(ms->fdt, nodename, "clocks", vms->clock_phandle);
++    qemu_fdt_setprop_string(ms->fdt, nodename, "clock-names", "apb_pclk");
+     g_free(nodename);
+ }
+ 
+@@ -821,32 +828,30 @@ static void virt_powerdown_req(Notifier *n, void *opaque)
+     }
+ }
+ 
+-static void create_gpio_keys(const VirtMachineState *vms,
+-                             DeviceState *pl061_dev,
++static void create_gpio_keys(char *fdt, DeviceState *pl061_dev,
+                              uint32_t phandle)
+ {
+     gpio_key_dev = sysbus_create_simple("gpio-key", -1,
+                                         qdev_get_gpio_in(pl061_dev, 3));
+ 
+-    qemu_fdt_add_subnode(vms->fdt, "/gpio-keys");
+-    qemu_fdt_setprop_string(vms->fdt, "/gpio-keys", "compatible", "gpio-keys");
+-    qemu_fdt_setprop_cell(vms->fdt, "/gpio-keys", "#size-cells", 0);
+-    qemu_fdt_setprop_cell(vms->fdt, "/gpio-keys", "#address-cells", 1);
++    qemu_fdt_add_subnode(fdt, "/gpio-keys");
++    qemu_fdt_setprop_string(fdt, "/gpio-keys", "compatible", "gpio-keys");
++    qemu_fdt_setprop_cell(fdt, "/gpio-keys", "#size-cells", 0);
++    qemu_fdt_setprop_cell(fdt, "/gpio-keys", "#address-cells", 1);
+ 
+-    qemu_fdt_add_subnode(vms->fdt, "/gpio-keys/poweroff");
+-    qemu_fdt_setprop_string(vms->fdt, "/gpio-keys/poweroff",
++    qemu_fdt_add_subnode(fdt, "/gpio-keys/poweroff");
++    qemu_fdt_setprop_string(fdt, "/gpio-keys/poweroff",
+                             "label", "GPIO Key Poweroff");
+-    qemu_fdt_setprop_cell(vms->fdt, "/gpio-keys/poweroff", "linux,code",
++    qemu_fdt_setprop_cell(fdt, "/gpio-keys/poweroff", "linux,code",
+                           KEY_POWER);
+-    qemu_fdt_setprop_cells(vms->fdt, "/gpio-keys/poweroff",
++    qemu_fdt_setprop_cells(fdt, "/gpio-keys/poweroff",
+                            "gpios", phandle, 3, 0);
+ }
+ 
+ #define SECURE_GPIO_POWEROFF 0
+ #define SECURE_GPIO_RESET    1
+ 
+-static void create_secure_gpio_pwr(const VirtMachineState *vms,
+-                                   DeviceState *pl061_dev,
++static void create_secure_gpio_pwr(char *fdt, DeviceState *pl061_dev,
+                                    uint32_t phandle)
+ {
+     DeviceState *gpio_pwr_dev;
+@@ -860,22 +865,22 @@ static void create_secure_gpio_pwr(const VirtMachineState *vms,
+     qdev_connect_gpio_out(pl061_dev, SECURE_GPIO_POWEROFF,
+                           qdev_get_gpio_in_named(gpio_pwr_dev, "shutdown", 0));
+ 
+-    qemu_fdt_add_subnode(vms->fdt, "/gpio-poweroff");
+-    qemu_fdt_setprop_string(vms->fdt, "/gpio-poweroff", "compatible",
++    qemu_fdt_add_subnode(fdt, "/gpio-poweroff");
++    qemu_fdt_setprop_string(fdt, "/gpio-poweroff", "compatible",
+                             "gpio-poweroff");
+-    qemu_fdt_setprop_cells(vms->fdt, "/gpio-poweroff",
++    qemu_fdt_setprop_cells(fdt, "/gpio-poweroff",
+                            "gpios", phandle, SECURE_GPIO_POWEROFF, 0);
+-    qemu_fdt_setprop_string(vms->fdt, "/gpio-poweroff", "status", "disabled");
+-    qemu_fdt_setprop_string(vms->fdt, "/gpio-poweroff", "secure-status",
++    qemu_fdt_setprop_string(fdt, "/gpio-poweroff", "status", "disabled");
++    qemu_fdt_setprop_string(fdt, "/gpio-poweroff", "secure-status",
+                             "okay");
+ 
+-    qemu_fdt_add_subnode(vms->fdt, "/gpio-restart");
+-    qemu_fdt_setprop_string(vms->fdt, "/gpio-restart", "compatible",
++    qemu_fdt_add_subnode(fdt, "/gpio-restart");
++    qemu_fdt_setprop_string(fdt, "/gpio-restart", "compatible",
+                             "gpio-restart");
+-    qemu_fdt_setprop_cells(vms->fdt, "/gpio-restart",
++    qemu_fdt_setprop_cells(fdt, "/gpio-restart",
+                            "gpios", phandle, SECURE_GPIO_RESET, 0);
+-    qemu_fdt_setprop_string(vms->fdt, "/gpio-restart", "status", "disabled");
+-    qemu_fdt_setprop_string(vms->fdt, "/gpio-restart", "secure-status",
++    qemu_fdt_setprop_string(fdt, "/gpio-restart", "status", "disabled");
++    qemu_fdt_setprop_string(fdt, "/gpio-restart", "secure-status",
+                             "okay");
+ }
+ 
+@@ -889,6 +894,7 @@ static void create_gpio_devices(const VirtMachineState *vms, int gpio,
+     int irq = vms->irqmap[gpio];
+     const char compat[] = "arm,pl061\0arm,primecell";
+     SysBusDevice *s;
++    MachineState *ms = MACHINE(vms);
+ 
+     pl061_dev = qdev_new("pl061");
+     s = SYS_BUS_DEVICE(pl061_dev);
+@@ -896,33 +902,33 @@ static void create_gpio_devices(const VirtMachineState *vms, int gpio,
+     memory_region_add_subregion(mem, base, sysbus_mmio_get_region(s, 0));
+     sysbus_connect_irq(s, 0, qdev_get_gpio_in(vms->gic, irq));
+ 
+-    uint32_t phandle = qemu_fdt_alloc_phandle(vms->fdt);
++    uint32_t phandle = qemu_fdt_alloc_phandle(ms->fdt);
+     nodename = g_strdup_printf("/pl061@%" PRIx64, base);
+-    qemu_fdt_add_subnode(vms->fdt, nodename);
+-    qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
++    qemu_fdt_add_subnode(ms->fdt, nodename);
++    qemu_fdt_setprop_sized_cells(ms->fdt, nodename, "reg",
+                                  2, base, 2, size);
+-    qemu_fdt_setprop(vms->fdt, nodename, "compatible", compat, sizeof(compat));
+-    qemu_fdt_setprop_cell(vms->fdt, nodename, "#gpio-cells", 2);
+-    qemu_fdt_setprop(vms->fdt, nodename, "gpio-controller", NULL, 0);
+-    qemu_fdt_setprop_cells(vms->fdt, nodename, "interrupts",
++    qemu_fdt_setprop(ms->fdt, nodename, "compatible", compat, sizeof(compat));
++    qemu_fdt_setprop_cell(ms->fdt, nodename, "#gpio-cells", 2);
++    qemu_fdt_setprop(ms->fdt, nodename, "gpio-controller", NULL, 0);
++    qemu_fdt_setprop_cells(ms->fdt, nodename, "interrupts",
+                            GIC_FDT_IRQ_TYPE_SPI, irq,
+                            GIC_FDT_IRQ_FLAGS_LEVEL_HI);
+-    qemu_fdt_setprop_cell(vms->fdt, nodename, "clocks", vms->clock_phandle);
+-    qemu_fdt_setprop_string(vms->fdt, nodename, "clock-names", "apb_pclk");
+-    qemu_fdt_setprop_cell(vms->fdt, nodename, "phandle", phandle);
++    qemu_fdt_setprop_cell(ms->fdt, nodename, "clocks", vms->clock_phandle);
++    qemu_fdt_setprop_string(ms->fdt, nodename, "clock-names", "apb_pclk");
++    qemu_fdt_setprop_cell(ms->fdt, nodename, "phandle", phandle);
+ 
+     if (gpio != VIRT_GPIO) {
+         /* Mark as not usable by the normal world */
+-        qemu_fdt_setprop_string(vms->fdt, nodename, "status", "disabled");
+-        qemu_fdt_setprop_string(vms->fdt, nodename, "secure-status", "okay");
++        qemu_fdt_setprop_string(ms->fdt, nodename, "status", "disabled");
++        qemu_fdt_setprop_string(ms->fdt, nodename, "secure-status", "okay");
+     }
+     g_free(nodename);
+ 
+     /* Child gpio devices */
+     if (gpio == VIRT_GPIO) {
+-        create_gpio_keys(vms, pl061_dev, phandle);
++        create_gpio_keys(ms->fdt, pl061_dev, phandle);
+     } else {
+-        create_secure_gpio_pwr(vms, pl061_dev, phandle);
++        create_secure_gpio_pwr(ms->fdt, pl061_dev, phandle);
+     }
+ }
+ 
+@@ -930,6 +936,7 @@ static void create_virtio_devices(const VirtMachineState *vms)
+ {
+     int i;
+     hwaddr size = vms->memmap[VIRT_MMIO].size;
++    MachineState *ms = MACHINE(vms);
+ 
+     /* We create the transports in forwards order. Since qbus_realize()
+      * prepends (not appends) new child buses, the incrementing loop below will
+@@ -979,15 +986,15 @@ static void create_virtio_devices(const VirtMachineState *vms)
+         hwaddr base = vms->memmap[VIRT_MMIO].base + i * size;
+ 
+         nodename = g_strdup_printf("/virtio_mmio@%" PRIx64, base);
+-        qemu_fdt_add_subnode(vms->fdt, nodename);
+-        qemu_fdt_setprop_string(vms->fdt, nodename,
++        qemu_fdt_add_subnode(ms->fdt, nodename);
++        qemu_fdt_setprop_string(ms->fdt, nodename,
+                                 "compatible", "virtio,mmio");
+-        qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
++        qemu_fdt_setprop_sized_cells(ms->fdt, nodename, "reg",
+                                      2, base, 2, size);
+-        qemu_fdt_setprop_cells(vms->fdt, nodename, "interrupts",
++        qemu_fdt_setprop_cells(ms->fdt, nodename, "interrupts",
+                                GIC_FDT_IRQ_TYPE_SPI, irq,
+                                GIC_FDT_IRQ_FLAGS_EDGE_LO_HI);
+-        qemu_fdt_setprop(vms->fdt, nodename, "dma-coherent", NULL, 0);
++        qemu_fdt_setprop(ms->fdt, nodename, "dma-coherent", NULL, 0);
+         g_free(nodename);
+     }
+ }
+@@ -1068,17 +1075,18 @@ static void virt_flash_fdt(VirtMachineState *vms,
+ {
+     hwaddr flashsize = vms->memmap[VIRT_FLASH].size / 2;
+     hwaddr flashbase = vms->memmap[VIRT_FLASH].base;
++    MachineState *ms = MACHINE(vms);
+     char *nodename;
+ 
+     if (sysmem == secure_sysmem) {
+         /* Report both flash devices as a single node in the DT */
+         nodename = g_strdup_printf("/flash@%" PRIx64, flashbase);
+-        qemu_fdt_add_subnode(vms->fdt, nodename);
+-        qemu_fdt_setprop_string(vms->fdt, nodename, "compatible", "cfi-flash");
+-        qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
++        qemu_fdt_add_subnode(ms->fdt, nodename);
++        qemu_fdt_setprop_string(ms->fdt, nodename, "compatible", "cfi-flash");
++        qemu_fdt_setprop_sized_cells(ms->fdt, nodename, "reg",
+                                      2, flashbase, 2, flashsize,
+                                      2, flashbase + flashsize, 2, flashsize);
+-        qemu_fdt_setprop_cell(vms->fdt, nodename, "bank-width", 4);
++        qemu_fdt_setprop_cell(ms->fdt, nodename, "bank-width", 4);
+         g_free(nodename);
+     } else {
+         /*
+@@ -1086,21 +1094,21 @@ static void virt_flash_fdt(VirtMachineState *vms,
+          * only visible to the secure world.
+          */
+         nodename = g_strdup_printf("/secflash@%" PRIx64, flashbase);
+-        qemu_fdt_add_subnode(vms->fdt, nodename);
+-        qemu_fdt_setprop_string(vms->fdt, nodename, "compatible", "cfi-flash");
+-        qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
++        qemu_fdt_add_subnode(ms->fdt, nodename);
++        qemu_fdt_setprop_string(ms->fdt, nodename, "compatible", "cfi-flash");
++        qemu_fdt_setprop_sized_cells(ms->fdt, nodename, "reg",
+                                      2, flashbase, 2, flashsize);
+-        qemu_fdt_setprop_cell(vms->fdt, nodename, "bank-width", 4);
+-        qemu_fdt_setprop_string(vms->fdt, nodename, "status", "disabled");
+-        qemu_fdt_setprop_string(vms->fdt, nodename, "secure-status", "okay");
++        qemu_fdt_setprop_cell(ms->fdt, nodename, "bank-width", 4);
++        qemu_fdt_setprop_string(ms->fdt, nodename, "status", "disabled");
++        qemu_fdt_setprop_string(ms->fdt, nodename, "secure-status", "okay");
+         g_free(nodename);
+ 
+         nodename = g_strdup_printf("/flash@%" PRIx64, flashbase);
+-        qemu_fdt_add_subnode(vms->fdt, nodename);
+-        qemu_fdt_setprop_string(vms->fdt, nodename, "compatible", "cfi-flash");
+-        qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
++        qemu_fdt_add_subnode(ms->fdt, nodename);
++        qemu_fdt_setprop_string(ms->fdt, nodename, "compatible", "cfi-flash");
++        qemu_fdt_setprop_sized_cells(ms->fdt, nodename, "reg",
+                                      2, flashbase + flashsize, 2, flashsize);
+-        qemu_fdt_setprop_cell(vms->fdt, nodename, "bank-width", 4);
++        qemu_fdt_setprop_cell(ms->fdt, nodename, "bank-width", 4);
+         g_free(nodename);
+     }
+ }
+@@ -1167,17 +1175,17 @@ static FWCfgState *create_fw_cfg(const VirtMachineState *vms, AddressSpace *as)
+     fw_cfg_add_i16(fw_cfg, FW_CFG_NB_CPUS, (uint16_t)ms->smp.cpus);
+ 
+     nodename = g_strdup_printf("/fw-cfg@%" PRIx64, base);
+-    qemu_fdt_add_subnode(vms->fdt, nodename);
+-    qemu_fdt_setprop_string(vms->fdt, nodename,
++    qemu_fdt_add_subnode(ms->fdt, nodename);
++    qemu_fdt_setprop_string(ms->fdt, nodename,
+                             "compatible", "qemu,fw-cfg-mmio");
+-    qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
++    qemu_fdt_setprop_sized_cells(ms->fdt, nodename, "reg",
+                                  2, base, 2, size);
+-    qemu_fdt_setprop(vms->fdt, nodename, "dma-coherent", NULL, 0);
++    qemu_fdt_setprop(ms->fdt, nodename, "dma-coherent", NULL, 0);
+     g_free(nodename);
+     return fw_cfg;
+ }
+ 
+-static void create_pcie_irq_map(const VirtMachineState *vms,
++static void create_pcie_irq_map(const MachineState *ms,
+                                 uint32_t gic_phandle,
+                                 int first_irq, const char *nodename)
+ {
+@@ -1205,10 +1213,10 @@ static void create_pcie_irq_map(const VirtMachineState *vms,
+         }
+     }
+ 
+-    qemu_fdt_setprop(vms->fdt, nodename, "interrupt-map",
++    qemu_fdt_setprop(ms->fdt, nodename, "interrupt-map",
+                      full_irq_map, sizeof(full_irq_map));
+ 
+-    qemu_fdt_setprop_cells(vms->fdt, nodename, "interrupt-map-mask",
++    qemu_fdt_setprop_cells(ms->fdt, nodename, "interrupt-map-mask",
+                            cpu_to_be16(PCI_DEVFN(3, 0)), /* Slot 3 */
+                            0, 0,
+                            0x7           /* PCI irq */);
+@@ -1225,6 +1233,7 @@ static void create_smmu(const VirtMachineState *vms,
+     hwaddr size = vms->memmap[VIRT_SMMU].size;
+     const char irq_names[] = "eventq\0priq\0cmdq-sync\0gerror";
+     DeviceState *dev;
++    MachineState *ms = MACHINE(vms);
+ 
+     if (vms->iommu != VIRT_IOMMU_SMMUV3 || !vms->iommu_phandle) {
+         return;
+@@ -1242,26 +1251,26 @@ static void create_smmu(const VirtMachineState *vms,
+     }
+ 
+     node = g_strdup_printf("/smmuv3@%" PRIx64, base);
+-    qemu_fdt_add_subnode(vms->fdt, node);
+-    qemu_fdt_setprop(vms->fdt, node, "compatible", compat, sizeof(compat));
+-    qemu_fdt_setprop_sized_cells(vms->fdt, node, "reg", 2, base, 2, size);
++    qemu_fdt_add_subnode(ms->fdt, node);
++    qemu_fdt_setprop(ms->fdt, node, "compatible", compat, sizeof(compat));
++    qemu_fdt_setprop_sized_cells(ms->fdt, node, "reg", 2, base, 2, size);
+ 
+-    qemu_fdt_setprop_cells(vms->fdt, node, "interrupts",
++    qemu_fdt_setprop_cells(ms->fdt, node, "interrupts",
+             GIC_FDT_IRQ_TYPE_SPI, irq    , GIC_FDT_IRQ_FLAGS_EDGE_LO_HI,
+             GIC_FDT_IRQ_TYPE_SPI, irq + 1, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI,
+             GIC_FDT_IRQ_TYPE_SPI, irq + 2, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI,
+             GIC_FDT_IRQ_TYPE_SPI, irq + 3, GIC_FDT_IRQ_FLAGS_EDGE_LO_HI);
+ 
+-    qemu_fdt_setprop(vms->fdt, node, "interrupt-names", irq_names,
++    qemu_fdt_setprop(ms->fdt, node, "interrupt-names", irq_names,
+                      sizeof(irq_names));
+ 
+-    qemu_fdt_setprop_cell(vms->fdt, node, "clocks", vms->clock_phandle);
+-    qemu_fdt_setprop_string(vms->fdt, node, "clock-names", "apb_pclk");
+-    qemu_fdt_setprop(vms->fdt, node, "dma-coherent", NULL, 0);
++    qemu_fdt_setprop_cell(ms->fdt, node, "clocks", vms->clock_phandle);
++    qemu_fdt_setprop_string(ms->fdt, node, "clock-names", "apb_pclk");
++    qemu_fdt_setprop(ms->fdt, node, "dma-coherent", NULL, 0);
+ 
+-    qemu_fdt_setprop_cell(vms->fdt, node, "#iommu-cells", 1);
++    qemu_fdt_setprop_cell(ms->fdt, node, "#iommu-cells", 1);
+ 
+-    qemu_fdt_setprop_cell(vms->fdt, node, "phandle", vms->iommu_phandle);
++    qemu_fdt_setprop_cell(ms->fdt, node, "phandle", vms->iommu_phandle);
+     g_free(node);
+ }
+ 
+@@ -1269,22 +1278,23 @@ static void create_virtio_iommu_dt_bindings(VirtMachineState *vms)
+ {
+     const char compat[] = "virtio,pci-iommu";
+     uint16_t bdf = vms->virtio_iommu_bdf;
++    MachineState *ms = MACHINE(vms);
+     char *node;
+ 
+-    vms->iommu_phandle = qemu_fdt_alloc_phandle(vms->fdt);
++    vms->iommu_phandle = qemu_fdt_alloc_phandle(ms->fdt);
+ 
+     node = g_strdup_printf("%s/virtio_iommu@%d", vms->pciehb_nodename, bdf);
+-    qemu_fdt_add_subnode(vms->fdt, node);
+-    qemu_fdt_setprop(vms->fdt, node, "compatible", compat, sizeof(compat));
+-    qemu_fdt_setprop_sized_cells(vms->fdt, node, "reg",
++    qemu_fdt_add_subnode(ms->fdt, node);
++    qemu_fdt_setprop(ms->fdt, node, "compatible", compat, sizeof(compat));
++    qemu_fdt_setprop_sized_cells(ms->fdt, node, "reg",
+                                  1, bdf << 8, 1, 0, 1, 0,
+                                  1, 0, 1, 0);
+ 
+-    qemu_fdt_setprop_cell(vms->fdt, node, "#iommu-cells", 1);
+-    qemu_fdt_setprop_cell(vms->fdt, node, "phandle", vms->iommu_phandle);
++    qemu_fdt_setprop_cell(ms->fdt, node, "#iommu-cells", 1);
++    qemu_fdt_setprop_cell(ms->fdt, node, "phandle", vms->iommu_phandle);
+     g_free(node);
+ 
+-    qemu_fdt_setprop_cells(vms->fdt, vms->pciehb_nodename, "iommu-map",
++    qemu_fdt_setprop_cells(ms->fdt, vms->pciehb_nodename, "iommu-map",
+                            0x0, vms->iommu_phandle, 0x0, bdf,
+                            bdf + 1, vms->iommu_phandle, bdf + 1, 0xffff - bdf);
+ }
+@@ -1309,6 +1319,7 @@ static void create_pcie(VirtMachineState *vms)
+     char *nodename;
+     int i, ecam_id;
+     PCIHostState *pci;
++    MachineState *ms = MACHINE(vms);
+ 
+     dev = qdev_new(TYPE_GPEX_HOST);
+     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+@@ -1369,27 +1380,27 @@ static void create_pcie(VirtMachineState *vms)
+     }
+ 
+     nodename = vms->pciehb_nodename = g_strdup_printf("/pcie@%" PRIx64, base);
+-    qemu_fdt_add_subnode(vms->fdt, nodename);
+-    qemu_fdt_setprop_string(vms->fdt, nodename,
++    qemu_fdt_add_subnode(ms->fdt, nodename);
++    qemu_fdt_setprop_string(ms->fdt, nodename,
+                             "compatible", "pci-host-ecam-generic");
+-    qemu_fdt_setprop_string(vms->fdt, nodename, "device_type", "pci");
+-    qemu_fdt_setprop_cell(vms->fdt, nodename, "#address-cells", 3);
+-    qemu_fdt_setprop_cell(vms->fdt, nodename, "#size-cells", 2);
+-    qemu_fdt_setprop_cell(vms->fdt, nodename, "linux,pci-domain", 0);
+-    qemu_fdt_setprop_cells(vms->fdt, nodename, "bus-range", 0,
++    qemu_fdt_setprop_string(ms->fdt, nodename, "device_type", "pci");
++    qemu_fdt_setprop_cell(ms->fdt, nodename, "#address-cells", 3);
++    qemu_fdt_setprop_cell(ms->fdt, nodename, "#size-cells", 2);
++    qemu_fdt_setprop_cell(ms->fdt, nodename, "linux,pci-domain", 0);
++    qemu_fdt_setprop_cells(ms->fdt, nodename, "bus-range", 0,
+                            nr_pcie_buses - 1);
+-    qemu_fdt_setprop(vms->fdt, nodename, "dma-coherent", NULL, 0);
++    qemu_fdt_setprop(ms->fdt, nodename, "dma-coherent", NULL, 0);
+ 
+     if (vms->msi_phandle) {
+-        qemu_fdt_setprop_cells(vms->fdt, nodename, "msi-parent",
++        qemu_fdt_setprop_cells(ms->fdt, nodename, "msi-parent",
+                                vms->msi_phandle);
+     }
+ 
+-    qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
++    qemu_fdt_setprop_sized_cells(ms->fdt, nodename, "reg",
+                                  2, base_ecam, 2, size_ecam);
+ 
+     if (vms->highmem) {
+-        qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "ranges",
++        qemu_fdt_setprop_sized_cells(ms->fdt, nodename, "ranges",
+                                      1, FDT_PCI_RANGE_IOPORT, 2, 0,
+                                      2, base_pio, 2, size_pio,
+                                      1, FDT_PCI_RANGE_MMIO, 2, base_mmio,
+@@ -1398,23 +1409,23 @@ static void create_pcie(VirtMachineState *vms)
+                                      2, base_mmio_high,
+                                      2, base_mmio_high, 2, size_mmio_high);
+     } else {
+-        qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "ranges",
++        qemu_fdt_setprop_sized_cells(ms->fdt, nodename, "ranges",
+                                      1, FDT_PCI_RANGE_IOPORT, 2, 0,
+                                      2, base_pio, 2, size_pio,
+                                      1, FDT_PCI_RANGE_MMIO, 2, base_mmio,
+                                      2, base_mmio, 2, size_mmio);
+     }
+ 
+-    qemu_fdt_setprop_cell(vms->fdt, nodename, "#interrupt-cells", 1);
+-    create_pcie_irq_map(vms, vms->gic_phandle, irq, nodename);
++    qemu_fdt_setprop_cell(ms->fdt, nodename, "#interrupt-cells", 1);
++    create_pcie_irq_map(ms, vms->gic_phandle, irq, nodename);
+ 
+     if (vms->iommu) {
+-        vms->iommu_phandle = qemu_fdt_alloc_phandle(vms->fdt);
++        vms->iommu_phandle = qemu_fdt_alloc_phandle(ms->fdt);
+ 
+         switch (vms->iommu) {
+         case VIRT_IOMMU_SMMUV3:
+             create_smmu(vms, vms->bus);
+-            qemu_fdt_setprop_cells(vms->fdt, nodename, "iommu-map",
++            qemu_fdt_setprop_cells(ms->fdt, nodename, "iommu-map",
+                                    0x0, vms->iommu_phandle, 0x0, 0x10000);
+             break;
+         default:
+@@ -1466,17 +1477,18 @@ static void create_secure_ram(VirtMachineState *vms,
+     char *nodename;
+     hwaddr base = vms->memmap[VIRT_SECURE_MEM].base;
+     hwaddr size = vms->memmap[VIRT_SECURE_MEM].size;
++    MachineState *ms = MACHINE(vms);
+ 
+     memory_region_init_ram(secram, NULL, "virt.secure-ram", size,
+                            &error_fatal);
+     memory_region_add_subregion(secure_sysmem, base, secram);
+ 
+     nodename = g_strdup_printf("/secram@%" PRIx64, base);
+-    qemu_fdt_add_subnode(vms->fdt, nodename);
+-    qemu_fdt_setprop_string(vms->fdt, nodename, "device_type", "memory");
+-    qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg", 2, base, 2, size);
+-    qemu_fdt_setprop_string(vms->fdt, nodename, "status", "disabled");
+-    qemu_fdt_setprop_string(vms->fdt, nodename, "secure-status", "okay");
++    qemu_fdt_add_subnode(ms->fdt, nodename);
++    qemu_fdt_setprop_string(ms->fdt, nodename, "device_type", "memory");
++    qemu_fdt_setprop_sized_cells(ms->fdt, nodename, "reg", 2, base, 2, size);
++    qemu_fdt_setprop_string(ms->fdt, nodename, "status", "disabled");
++    qemu_fdt_setprop_string(ms->fdt, nodename, "secure-status", "okay");
+ 
+     if (secure_tag_sysmem) {
+         create_tag_ram(secure_tag_sysmem, base, size, "mach-virt.secure-tag");
+@@ -1489,9 +1501,11 @@ static void *machvirt_dtb(const struct arm_boot_info *binfo, int *fdt_size)
+ {
+     const VirtMachineState *board = container_of(binfo, VirtMachineState,
+                                                  bootinfo);
++    MachineState *ms = MACHINE(board);
++
+ 
+     *fdt_size = board->fdt_size;
+-    return board->fdt;
++    return ms->fdt;
+ }
+ 
+ static void virt_build_smbios(VirtMachineState *vms)
+@@ -1539,7 +1553,7 @@ void virt_machine_done(Notifier *notifier, void *data)
+      * while qemu takes charge of the qom stuff.
+      */
+     if (info->dtb_filename == NULL) {
+-        platform_bus_add_all_fdt_nodes(vms->fdt, "/intc",
++        platform_bus_add_all_fdt_nodes(ms->fdt, "/intc",
+                                        vms->memmap[VIRT_PLATFORM_BUS].base,
+                                        vms->memmap[VIRT_PLATFORM_BUS].size,
+                                        vms->irqmap[VIRT_PLATFORM_BUS]);
+-- 
+2.20.1

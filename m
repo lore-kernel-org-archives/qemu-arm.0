@@ -1,120 +1,105 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp718120lfg;
-        Thu, 11 Mar 2021 15:18:09 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzVgjzpcCOzEgyYIBjbF0CVQSjUtHej3W6xgodwCjdE/Nm4CLoU5HEeRZS4fSUI/iSDFrSK
-X-Received: by 2002:a05:6830:1690:: with SMTP id k16mr1125694otr.112.1615504689144;
-        Thu, 11 Mar 2021 15:18:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1615504689; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp736264lfg;
+        Thu, 11 Mar 2021 15:50:36 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzWeJKp4sdY8m96FLWMR+2+B7+CrVR2iW5s7ZSKey22i3HRQ5hXo7KzisqKAJt9gmgACoL+
+X-Received: by 2002:a05:6638:ec7:: with SMTP id q7mr6049086jas.54.1615506636510;
+        Thu, 11 Mar 2021 15:50:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1615506636; cv=none;
         d=google.com; s=arc-20160816;
-        b=Xb1ifqiJUEmNUerVP7Icmj1Oq0/XulfFTWIxfkLOpbP+k+doFHwQqPE2S7rWUy/njC
-         NDEgEfSFfEdARwhRVmAKn8/TmzZAg76t7qB31LjY5VNZmPNJIrVIdbdHPYCyv2UMvV7D
-         dvitlj872sIwvneToVezCXHqks7sAIEU2CAj//5Q0sSfMBnzejWKlY+HQoJqLKyY/2NC
-         Yf/nzf5T8g7Kxt9KAnp1sa/nttFvUn6VSh/hil8H6s4GZosZHEpGnXxEEyDFqXpIzI9z
-         fr9SnyIfehNEw5tQ6ABDoS0LDwl/oR/SYwHQIIXyKzShjSIaWWAiFCsPy+LULefxtGoN
-         rBNQ==
+        b=obhWrHpKQ/zBFbEFoU/rJs2pLMID621quwFBc+gv0beVSgCAPu1y92oKuxS1dZcEM/
+         MjZ1ma2ukGnX2A6yEunSu9FhlaEP23bJk0e5ZgrD93JaSP/hqX0M1Ob2f/vqmt/Hyr7o
+         qLw58k7lSn/1eOl2Tx5ZMYjFlUmCABiJwHzuDJzDbZtkNzco/wEHsraorSAOtiYWRrmY
+         l42Kal5/KmzJnApYaWuYzyXCNnkDblxrlETn0IYkcKcQQHIFwtJywXLlIvF28tHaL0ZQ
+         TwuhjXolcOnF/3B4rPeIUaYbZjNMy1BMxG5QTwP8lPIXuL33bUSeKp1VTRSVzqe5PH5c
+         WTcQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=HdOBjBLcdbMXP51scg5DrlFZj8mW1XPQm5WfkP9UVng=;
-        b=CrGiISQfpSpkaoy11KR/7iftv5bsNiCPpg9M/OuMp9BeISj08VXThjAVPQeya3CA0c
-         YGj+YdRd4zGknRi3AOSD4EnP0Ymb4lYgjJWPWen3TwO73jlb0j838jR0UaRUo6e1XcgP
-         rC7rDyEJ95LTFkUPaT9tOK1JyL/9Tl0BhMFu3RSbT6gabO9C5u2boiwUXKatyI/aQYU4
-         1lNF7ubRbLwGSWGji5jP1N/EFeSfn+xXsopR2qXD1Eam8XwYkm5RWIOQBpBn3PCJTeYz
-         vsKVjk47i2f7rl683iZ6vsZI+vC5hHE1i/4QTew/Bt4i4eRn8TML8LX2FGrSN8Pj7xs1
-         ag1A==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=wh9EwU4i06ioYEqsPWPov44GpqVJVHuB8gjUzCfLwQs=;
+        b=J7JBB4d6ZqYoxPzt6lYmSq0RJMtsk0r04nrgTCvSzAPuhiBA0JEiusPCdubVyteg+D
+         kCTRwQFtrnYpl6Wmaykn05TUMIZSLjTf3LvFqiKIsVuZ9r5zRPNMthCISXMC38sT+Jni
+         +yoNHHjZS8vbHFHH0rjLgvFqZZ4IskX0ZwcFoq09e7rxS/PNmDBakD+vzpHKCgjCTFdD
+         8OrFFIeOIAQfogc35hgjNFOdgGoRoPwStQYOduW2WISDBqcI01FxYRaOHVA9R3pXWIYr
+         j69mmQEwgwowzkmn8oiZH92r4qYYtcYlsYwcNVV4EKiOp3PSX8oIM36xFRt9t+vsaVxa
+         yzOg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=MkNnYem2;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=diRKxDBT;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w12si3313417oiv.255.2021.03.11.15.18.08
+        by mx.google.com with ESMTPS id a14si4531421ilm.45.2021.03.11.15.50.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Mar 2021 15:18:09 -0800 (PST)
+        Thu, 11 Mar 2021 15:50:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=MkNnYem2;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57166 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=diRKxDBT;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:55696 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lKUZE-0000Km-C4
-	for alex.bennee@linaro.org; Thu, 11 Mar 2021 18:18:08 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49826)
+	id 1lKV4d-0007I2-Lg
+	for alex.bennee@linaro.org; Thu, 11 Mar 2021 18:50:35 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57710)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lKUU1-0001oQ-FZ
- for qemu-devel@nongnu.org; Thu, 11 Mar 2021 18:12:49 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:40129)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lKUTo-00056O-J8
- for qemu-devel@nongnu.org; Thu, 11 Mar 2021 18:12:44 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1615504350;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=HdOBjBLcdbMXP51scg5DrlFZj8mW1XPQm5WfkP9UVng=;
- b=MkNnYem2Lb7HW81MmLrkVHzTDPe/3R1NbySdrLUVHgxfogEn3+WXonAnrwV/8jsXl1sSOD
- VORk5eW8a2vWAxcUUWQdjxwVYQ7RItwre6+l46AzTeE+gLfWtaAZzv9ygqTtbhrWD6n7ND
- AkmgvnaPadGkN4xS7sZ6uAkAC+a4z6o=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-56-s9zCKpiyNS6-r-Ta12dBYg-1; Thu, 11 Mar 2021 18:12:28 -0500
-X-MC-Unique: s9zCKpiyNS6-r-Ta12dBYg-1
-Received: by mail-wm1-f70.google.com with SMTP id c7so4641952wml.8
- for <qemu-devel@nongnu.org>; Thu, 11 Mar 2021 15:12:28 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1lKV1r-0007CT-EZ; Thu, 11 Mar 2021 18:47:43 -0500
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633]:37479)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1lKV1p-0004pf-BT; Thu, 11 Mar 2021 18:47:43 -0500
+Received: by mail-pl1-x633.google.com with SMTP id 30so6477205ple.4;
+ Thu, 11 Mar 2021 15:47:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=wh9EwU4i06ioYEqsPWPov44GpqVJVHuB8gjUzCfLwQs=;
+ b=diRKxDBTlmvuzpcijsYMSTDfcXcl4CPzNNgZaShLSbNBbNh5/dDIi86Zsd/iTvpkiJ
+ nvVjT8VUhKCK/5OFPSa4z6X10Wr4M/ClCclzZwD9fGiuuTemy26HmIvhzFIFaC+37cQC
+ AtEDJfHY2JW53d+BPJsAjKAsU/OisLhl1TgH1oQmfCj/JTbsN4Ba4cW21tqU03fPnY05
+ VFhYP1OCmSy73WJgLDTyg5wD5NJxDUKaZ5zWr7ahdLMi5JaBWcBmg2T/xbBJyRpr2Pbl
+ nCvfK5KB+05qpzEf3buR+TxnFFzDDyRzBESYMEk4xzGPCPdz5KcvF/TYqmvnMVw0ZHsS
+ mJ6w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=HdOBjBLcdbMXP51scg5DrlFZj8mW1XPQm5WfkP9UVng=;
- b=UAtrC3il/gKoS08iSz8NxyX9TxuUjuSKcIjUDuClAPCzD3nV/dGWHsPc2y44z1q2wK
- Uam4cyoDm5N0qCz+Gtkv/Z248C35urnhGCUxdpgkJAQkz7ZyF3xHvyu+N2OhE2277x3r
- 4eIAw+HbDiso5Wa/nTrkEpBOUTdL0wplgF7Ah+0lpYICHBFyry77j+JBvlN5v27wgPzT
- PguFfwF8Apkwvp2lcg4ccgpt50IvWtwgU5p+L9rnJfE9RU6XvNGB8iwsdgXY5vKwIHou
- RcFW2Zzi35/McVWi2ly0bdFoshku0d3wL5xdCVFMhgPxDL++jiiVMQjCPUh9+Uym+vGG
- 0uXg==
-X-Gm-Message-State: AOAM530m9Q5CepgeDbP++86P0lNDc0YTR8aGru0SCWx+oIHgcM6037r+
- y1zaXHh7LCysgrhapGvFveStJHalOn9HJjU5E8dLg9QlhuOQK84UDJlMvl8NoVzG3J2j+JkcF4h
- KZDZ4hhwf2KQv6xSp04Ty6oCCZn0ptAuayaNIysfPkxnwAikQzroouG4xkS2ucV4R
-X-Received: by 2002:adf:e5c4:: with SMTP id a4mr10992793wrn.174.1615504346609; 
- Thu, 11 Mar 2021 15:12:26 -0800 (PST)
-X-Received: by 2002:adf:e5c4:: with SMTP id a4mr10992771wrn.174.1615504346467; 
- Thu, 11 Mar 2021 15:12:26 -0800 (PST)
-Received: from localhost.localdomain (17.red-88-21-201.staticip.rima-tde.net.
- [88.21.201.17])
- by smtp.gmail.com with ESMTPSA id s23sm255991wmc.35.2021.03.11.15.12.25
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=wh9EwU4i06ioYEqsPWPov44GpqVJVHuB8gjUzCfLwQs=;
+ b=UYEDA7L9aNLV13d1WiULdaU27YgY9wKw92SyjaTWVT2z7VfrqhUJIjNq9x04RVD/4E
+ iGCuAofQTLLZyB7CWQICEMgZTMF831R5wd47xqujc22OjQztgTj4l1NqSZ5JITu/wv5H
+ A8UK9y/VpQpTJekDufiL4L7bzFaPfFYpAtVm2ikotzAr3lC+AwEfyR9YAKg3zIJO7+NG
+ TXB7xEBBXyHfVfA67/RHEhq2uWXsAEmNZk4IAQ0SsnzRACMR4JrY3/ngVcjtAcqO7DgU
+ 9AgqotyN27g05LEZk9qZsJuKu4Fz/HEqhjoNlgwHkLcj4sK1YqswEzPFph5m4pOdAinG
+ ewlw==
+X-Gm-Message-State: AOAM531NJUyMKI2t8lstTgJqff5QQNpP3a6seS2Hxj84ASVLicvNwFDZ
+ n2VUWEfK0wUaoXcy5q88tPI=
+X-Received: by 2002:a17:90b:fd2:: with SMTP id
+ gd18mr11249517pjb.115.1615506459291; 
+ Thu, 11 Mar 2021 15:47:39 -0800 (PST)
+Received: from localhost.localdomain ([45.124.203.14])
+ by smtp.gmail.com with ESMTPSA id a204sm3357005pfd.106.2021.03.11.15.47.35
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 11 Mar 2021 15:12:26 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org,
-	Claudio Fontana <cfontana@suse.de>
-Subject: [PATCH 4/6] qtest/arm-cpu-features: Check KVM availability at runtime
-Date: Fri, 12 Mar 2021 00:12:00 +0100
-Message-Id: <20210311231202.1536040-5-philmd@redhat.com>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20210311231202.1536040-1-philmd@redhat.com>
-References: <20210311231202.1536040-1-philmd@redhat.com>
+ Thu, 11 Mar 2021 15:47:38 -0800 (PST)
+From: Joel Stanley <joel@jms.id.au>
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>
+Subject: [PATCH v2 0/3] hw/misc: Model ASPEED hash and crpyto engine
+Date: Fri, 12 Mar 2021 10:17:23 +1030
+Message-Id: <20210311234726.437676-1-joel@jms.id.au>
+X-Mailer: git-send-email 2.30.1
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.25,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
+ envelope-from=joel.stan@gmail.com; helo=mail-pl1-x633.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -127,77 +112,45 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <lvivier@redhat.com>, Andrew Jones <drjones@redhat.com>,
- =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Thomas Huth <thuth@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5XfZ/+8Jcib2
+X-TUID: 1SnUq/h/vzAD
 
-sve_tests_sve_off_kvm() and test_query_cpu_model_expansion_kvm()
-are KVM specific tests. Skip them if KVM is not built-in.
+v2: Address review from Andrew and Phillepe. Adds a qtest.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
----
- tests/qtest/arm-cpu-features.c | 12 +++++++++++-
- 1 file changed, 11 insertions(+), 1 deletion(-)
+This adds a model for the ASPEED hash and crypto engine (HACE) found on
+all supported ASPEED SoCs.
 
-diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
-index 8252b85bb85..2b70104515d 100644
---- a/tests/qtest/arm-cpu-features.c
-+++ b/tests/qtest/arm-cpu-features.c
-@@ -21,7 +21,7 @@
- #define SVE_MAX_VQ 16
- 
- #define MACHINE     "-machine virt,gic-version=max -accel tcg "
--#define MACHINE_KVM "-machine virt,gic-version=max -accel kvm -accel tcg "
-+#define MACHINE_KVM "-machine virt,gic-version=max -accel kvm "
- #define QUERY_HEAD  "{ 'execute': 'query-cpu-model-expansion', " \
-                     "  'arguments': { 'type': 'full', "
- #define QUERY_TAIL  "}}"
-@@ -413,6 +413,10 @@ static void sve_tests_sve_off_kvm(const void *data)
-     QTestState *qts;
- 
-     qts = qtest_init(MACHINE_KVM "-cpu max,sve=off");
-+    if (!qtest_probe_accel(qts, "kvm")) {
-+        g_test_skip("KVM not available, skipping test");
-+        goto done;
-+    }
- 
-     /*
-      * We don't know if this host supports SVE so we don't
-@@ -424,6 +428,7 @@ static void sve_tests_sve_off_kvm(const void *data)
-     assert_sve_vls(qts, "max", 0, NULL);
-     assert_sve_vls(qts, "max", 0, "{ 'sve128': false }");
- 
-+done:
-     qtest_quit(qts);
- }
- 
-@@ -492,6 +497,10 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
-     QTestState *qts;
- 
-     qts = qtest_init(MACHINE_KVM "-cpu max");
-+    if (!qtest_probe_accel(qts, "kvm")) {
-+        g_test_skip("KVM not available, skipping test");
-+        goto done;
-+    }
- 
-     /*
-      * These tests target the 'host' CPU type, so KVM must be enabled.
-@@ -609,6 +618,7 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
-         assert_has_not_feature(qts, "host", "kvm-steal-time");
-     }
- 
-+done:
-     qtest_quit(qts);
- }
- 
+The model uses Qemu's gcrypto API to perform the SHA and MD5 hashing
+directly in the machine's emulated memory space, which I found a neat
+use of Qemu's features.
+
+It has been tested using u-boot and from Linux userspace, and v2 adds a
+qtest for the model running as part of the ast2600-evb machine.
+
+Joel Stanley (3):
+  hw: Model ASPEED's Hash and Crypto Engine
+  aspeed: Integrate HACE
+  tests/qtest: Add test for Aspeed HACE
+
+ docs/system/arm/aspeed.rst     |   2 +-
+ include/hw/arm/aspeed_soc.h    |   3 +
+ include/hw/misc/aspeed_hace.h  |  33 ++++
+ hw/arm/aspeed_ast2600.c        |  14 ++
+ hw/arm/aspeed_soc.c            |  15 ++
+ hw/misc/aspeed_hace.c          | 312 +++++++++++++++++++++++++++++++++
+ tests/qtest/aspeed_hace-test.c | 215 +++++++++++++++++++++++
+ MAINTAINERS                    |   1 +
+ hw/misc/meson.build            |   2 +-
+ tests/qtest/meson.build        |   3 +
+ 10 files changed, 598 insertions(+), 2 deletions(-)
+ create mode 100644 include/hw/misc/aspeed_hace.h
+ create mode 100644 hw/misc/aspeed_hace.c
+ create mode 100644 tests/qtest/aspeed_hace-test.c
+
 -- 
-2.26.2
+2.30.1
 

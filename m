@@ -1,100 +1,100 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp736733lfg;
-        Thu, 11 Mar 2021 15:51:32 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxfYylCeS/UQUqNM1s23M8hXeLVtPICmbYxxO4j+6oyfa+PXF0NnsKyxSVrSALdmZI/NU4+
-X-Received: by 2002:a05:6e02:1292:: with SMTP id y18mr757246ilq.142.1615506692105;
-        Thu, 11 Mar 2021 15:51:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1615506692; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp737440lfg;
+        Thu, 11 Mar 2021 15:52:54 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzqh//abJGOvZH5twE4xhWwqa+kLNo3GAZd/kD/bRHds8yzjj3/OxB8kQGQI+i/odn3g6Hs
+X-Received: by 2002:a5d:9ec7:: with SMTP id a7mr7866019ioe.126.1615506774679;
+        Thu, 11 Mar 2021 15:52:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1615506774; cv=none;
         d=google.com; s=arc-20160816;
-        b=c/eMlkFhePRSs0UI12Ui/iX3/wo0Lol2c4shCYZU58Y8YF122k/5IZl+h8brC+BGsl
-         uRDPVXaD1pr/HVR+ltoXuSvhZ0b+2Mn/P0U3szPOnZBwoRr2HPUjnVNOfb5CWwpUlA3o
-         ZXqzMEHsmKRwPRlHNOXBvwaRQ0R1sT0LadXczNC879FY7pBQaF8TOQrrXP1X53eB9lmJ
-         jysRDch2j2BAR2Hq7Z0VFrx8EnQSVZhC7x9TTosWh2EbdJKtkt64abFrRAnL/tXJE6Ig
-         l+fMA3qY6NAX+tiBPdnCy0p4Lshx0Q8fIlugMOU5/EWhMGmbTASrfZtWQEe0ZMqqZfvc
-         0gDA==
+        b=a2sSzFyKc1dCg7QUy5gKX1gbGjzD8scMF7Sa8sqtL+YTFeHmKUafh+SB+u21Z1KtZ/
+         nRL2cNy0ZiSmQRuy6hSw+DWQRA1YHG0ZhTnFgHlPX7V2zIiD5jgKudOKPM+FRsvo4Cuh
+         JEgSRiE2nbSkBgCiBAkKOI6678qVJrscFvsImZeZf6oSF5Fr9yKpaIWKFOAMTemyB0s8
+         bakVtnM0s1DqOplfA0GBtAlAnXAar73OwSBxAyWfLUEvwmSOgD7SjFi0hrK1L/CTUwPj
+         sUh9IIN36GtRGGb0nw52w3hE3zH9g4nzXMrF4lR1IEp3UrBt0hgdffFR+vlCsVkQb3er
+         JqPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=r5amDhdAUd3+uxTq9vMjjF3AQ/mdg5uAcqfB/PBbELI=;
-        b=YuIMYDiHpKJDtPPNgys/k5L0+22MOqXWlFONAyCyAxvidgBu2CitflM3ru06zrHC2r
-         p8IuXH7ux4Bg6Ba0dm2+Dx9zwX5J+MvNo/NSQBgHhY8+sZuJASD39OZd7m93Ed/ANLqc
-         1udVwgV4FMt2krlOM8MNZ2IEnAEvsaQdpN2sMMVfYzXQSccRg8oNlRQpRzlKvAjLh5J+
-         K2b4SoQFDtpcE3+1FS9cjQNjHk81bGPyg2Zv0BaSS5Yg/yMzc33d4MWgkD5PupOlw49D
-         g2O/SrAaTr+jZWBC2hG/TOwUwqaKFJzIInaTcB0rnf9ADivatGo7p68pVRwaNVDAN5nb
-         GVpQ==
+        bh=DmiSmSTOcKJi33SCR15NFLIR3awSI25ZKFUxj7RWFO8=;
+        b=A0gHS5ern0IIqjWI5OxXby6oVURN1xL5/QOJV2/VTxgusjBFoaEYotIoe+5w2aysj3
+         qe1wQQT0CgpvNV+l4vD8os/kZeHjYr7/NAKgIcAOVRIaViIygzj9z8hIABBucSrJGAhw
+         PVOv0WMGOFWbMIWqAqfpTYCBksv0R+YwaoIAK3SBxTWehRYlqAtfJQ0QRnmHkyC2eJIw
+         y0OtzG67JnzgNXyFzWECASMFQg7/wXibL9SkMxVylqqdXLr3M/uoPUUjobKoLkOqAF1l
+         zZnThoSQiC+9qkPQ2VgZuVkvYEA4NCCxCLEQn/Yf3t8Cz4YOI/SEUbYYNqwRPPFAyJFv
+         e7pw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qeNDsPVw;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uH3OeKPQ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z15si3882010ilm.67.2021.03.11.15.51.31
+        by mx.google.com with ESMTPS id j8si3648393ilq.114.2021.03.11.15.52.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Mar 2021 15:51:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 11 Mar 2021 15:52:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qeNDsPVw;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:32990 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uH3OeKPQ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:34798 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lKV5X-0001sj-8a
-	for alex.bennee@linaro.org; Thu, 11 Mar 2021 18:51:31 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57774)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lKV6r-00037z-KK
+	for alex.bennee@linaro.org; Thu, 11 Mar 2021 18:52:53 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57832)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1lKV1w-0007Rt-8K; Thu, 11 Mar 2021 18:47:48 -0500
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634]:39838)
+ id 1lKV25-0007i3-Ij; Thu, 11 Mar 2021 18:47:59 -0500
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030]:37377)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1lKV1t-0004s7-Ru; Thu, 11 Mar 2021 18:47:47 -0500
-Received: by mail-pl1-x634.google.com with SMTP id j6so11031363plx.6;
- Thu, 11 Mar 2021 15:47:45 -0800 (PST)
+ id 1lKV23-0004yg-42; Thu, 11 Mar 2021 18:47:56 -0500
+Received: by mail-pj1-x1030.google.com with SMTP id
+ x7-20020a17090a2b07b02900c0ea793940so9873532pjc.2; 
+ Thu, 11 Mar 2021 15:47:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=r5amDhdAUd3+uxTq9vMjjF3AQ/mdg5uAcqfB/PBbELI=;
- b=qeNDsPVwgp6VsKIrRtp6bHFgvPDqX1UK4frkuQm2uDSHci6Xf1d7h6MJG8yjVItoPl
- fe4sQ8m7CqQHYOdmKzbDoVyHNOiBKmsHtClvGneXjyAs6yjlvQOBkZSCHbV+fEyJdiqy
- jstPQb4n+NCCGHqnn2Ggc+w8QBp8xok8oblJLqs8nxQWbO+ITjeMFnv4914C9tJyDWxE
- fglaplHZ8m7rWhzeUuydrUlinPu8l38frMVCxD9xPmL5/iol4iTfq0IIUFMO403G0vlR
- 783hocX3JIblPrMLSSKdX2EQ3fqjQRJ/nW83Sev/G05xlCwy0aYKH0Nnmc6cnKIxoU0/
- Fzyw==
+ bh=DmiSmSTOcKJi33SCR15NFLIR3awSI25ZKFUxj7RWFO8=;
+ b=uH3OeKPQQasT4MdzndD5LXVXsB9j8BoeJ/kf8uFU9GlP9RPbYWYgvvh8Lw5+WWpNav
+ 3Zw7/mbab117eVnwOqvQ+PY0hhCaHTQo7KbUArUi7GvcdycXRgHLX3q9z84inVqmBgei
+ w9SefMwpWlMk4XGcUYCUNvLLQh+2y6R8uoXgqnU+4W7CzoEWFdgZfKULzZXn12OE7vvJ
+ /AaoFtNYGFX0P2gVLFEtPYEQvjvw6CmhzuuF+lNQcECel7/uXU0zlUF4YG08AJtGHI1y
+ Fn5wKVBW7FBO1RABLegS2kO4vIYbmMSs3V/A8+3Jz2uELiumKcyd36XY71IeeRPob29T
+ m7Uw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=r5amDhdAUd3+uxTq9vMjjF3AQ/mdg5uAcqfB/PBbELI=;
- b=T/DKQyxrw37pdjgvRC57nLoJ525Fy9v89rCWUiOn251TtzIshkaPEdpgcj8s0/3OjQ
- LBrwKVzrmFg+8r39Xpk4B3+/40nT+a3F8e83hCEe117psS/1MVtOz+d4AxEYphc2Id0B
- p55s1IwxDT9jv125KC5VsQ0eLeLaq16wWM5K0yy578ERBt6rMlvCuMGwN+9nWGTUx05D
- 9gMK2fHPkHyMXxufGsMLbnn8jZRZ4kr+dKqfl/t8bMFVd/JzpzwvwUzO0i6zGwxmQadQ
- DyO3JedjuAWbHul90NbLOR0/LQ70TSK3s2TBcXdhv284VFlvhntjte+dHHsmOVOKg9B/
- SdOA==
-X-Gm-Message-State: AOAM532A58jgg4/KPNdLq/NfztRPEzmIJwcVpn1VPhZwVEU/f4qy1Pl3
- jg2NeA2SFOp9BLr/p2A/ZFeCFcMwP+9Cnw==
-X-Received: by 2002:a17:90a:2a46:: with SMTP id
- d6mr11011320pjg.197.1615506464069; 
- Thu, 11 Mar 2021 15:47:44 -0800 (PST)
+ bh=DmiSmSTOcKJi33SCR15NFLIR3awSI25ZKFUxj7RWFO8=;
+ b=gQggVoYQIvUnoTc7KS7Um4Gu38qKQAzz/ot71/C51od3UgRmu0j2zprPAY7erlHMAT
+ z++YT+XIYoFvW5prIP6jjuyUS5qjariZwp56/Raow9w3pIDJ/N+y5rOShmsxipy+1Uz0
+ w6cumYEd5bGnBa+ZfdgxlMdBByavD7FNCsFf0c3h7rZEmzCrg0inJAHILeBTnkjbbPmf
+ L8TH1/JJlRwObv8XiOzsoxJIiA9JREwKaL9xvP2ng5fdogEujyvzottsPzSxfvmxlFZV
+ uzRFlb+5p2ltGnVwjZuK3dz5XEo+jvOIKQs9P0oHWH4YJxrGxuTIZtxJz1N+H3oZZBmn
+ pNfA==
+X-Gm-Message-State: AOAM531EwRDcyHNdpSCja2Q4eJDIe6W0QAKrKclzdtUBucSPXEIcSQ/7
+ kaYwwZq21ausp3/PVYy04OM=
+X-Received: by 2002:a17:90a:e642:: with SMTP id
+ ep2mr11177142pjb.62.1615506473538; 
+ Thu, 11 Mar 2021 15:47:53 -0800 (PST)
 Received: from localhost.localdomain ([45.124.203.14])
- by smtp.gmail.com with ESMTPSA id a204sm3357005pfd.106.2021.03.11.15.47.39
+ by smtp.gmail.com with ESMTPSA id a204sm3357005pfd.106.2021.03.11.15.47.49
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 11 Mar 2021 15:47:43 -0800 (PST)
+ Thu, 11 Mar 2021 15:47:52 -0800 (PST)
 From: Joel Stanley <joel@jms.id.au>
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>
-Subject: [PATCH v2 1/3] hw: Model ASPEED's Hash and Crypto Engine
-Date: Fri, 12 Mar 2021 10:17:24 +1030
-Message-Id: <20210311234726.437676-2-joel@jms.id.au>
+Subject: [PATCH v2 3/3] tests/qtest: Add test for Aspeed HACE
+Date: Fri, 12 Mar 2021 10:17:26 +1030
+Message-Id: <20210311234726.437676-4-joel@jms.id.au>
 X-Mailer: git-send-email 2.30.1
 In-Reply-To: <20210311234726.437676-1-joel@jms.id.au>
 References: <20210311234726.437676-1-joel@jms.id.au>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::634;
- envelope-from=joel.stan@gmail.com; helo=mail-pl1-x634.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1030;
+ envelope-from=joel.stan@gmail.com; helo=mail-pj1-x1030.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -104,414 +104,292 @@ X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>, Paolo Bonzini <pbonzini@redhat.com>,
  qemu-arm@nongnu.org, qemu-devel@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RG5rPZA/XCtb
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: DE0k3ieGq6EU
 
-The HACE (Hash and Crypto Engine) is a device that offloads MD5, SHA1,
-SHA2, RSA and other cryptographic algorithms.
+This adds a test for the Aspeed Hash and Crypto (HACE) engine. It tests
+the currently implemented behavior of the hash functionality.
 
-This initial model implements a subset of the device's functionality;
-currently only direct access (non-scatter gather) hashing.
+The tests are similar, but are cut/pasted instead of broken out into a
+common function so the assert machinery produces useful output when a
+test fails.
 
 Signed-off-by: Joel Stanley <joel@jms.id.au>
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
-v2:
- - reorder register defines
- - mask src/dest/len registers according to hardware
----
- include/hw/misc/aspeed_hace.h |  33 ++++
- hw/misc/aspeed_hace.c         | 312 ++++++++++++++++++++++++++++++++++
- hw/misc/meson.build           |   2 +-
- 3 files changed, 346 insertions(+), 1 deletion(-)
- create mode 100644 include/hw/misc/aspeed_hace.h
- create mode 100644 hw/misc/aspeed_hace.c
+ tests/qtest/aspeed_hace-test.c | 215 +++++++++++++++++++++++++++++++++
+ MAINTAINERS                    |   1 +
+ tests/qtest/meson.build        |   3 +
+ 3 files changed, 219 insertions(+)
+ create mode 100644 tests/qtest/aspeed_hace-test.c
 
-diff --git a/include/hw/misc/aspeed_hace.h b/include/hw/misc/aspeed_hace.h
+diff --git a/tests/qtest/aspeed_hace-test.c b/tests/qtest/aspeed_hace-test.c
 new file mode 100644
-index 000000000000..e1fce670ef9e
+index 000000000000..52501ee37afb
 --- /dev/null
-+++ b/include/hw/misc/aspeed_hace.h
-@@ -0,0 +1,33 @@
++++ b/tests/qtest/aspeed_hace-test.c
+@@ -0,0 +1,215 @@
 +/*
-+ * ASPEED Hash and Crypto Engine
-+ *
-+ * Copyright (C) 2021 IBM Corp.
++ * QTest testcase for the ASPEED Hash and Crypto Engine
 + *
 + * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#ifndef ASPEED_HACE_H
-+#define ASPEED_HACE_H
-+
-+#include "hw/sysbus.h"
-+
-+#define TYPE_ASPEED_HACE "aspeed.hace"
-+#define ASPEED_HACE(obj) OBJECT_CHECK(AspeedHACEState, (obj), TYPE_ASPEED_HACE)
-+
-+#define ASPEED_HACE_NR_REGS (0x64 >> 2)
-+
-+typedef struct AspeedHACEState {
-+    /* <private> */
-+    SysBusDevice parent;
-+
-+    /*< public >*/
-+    MemoryRegion iomem;
-+    qemu_irq irq;
-+
-+    uint32_t regs[ASPEED_HACE_NR_REGS];
-+
-+    MemoryRegion *dram_mr;
-+    AddressSpace dram_as;
-+} AspeedHACEState;
-+
-+#endif /* _ASPEED_HACE_H_ */
-diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
-new file mode 100644
-index 000000000000..3d02fae2dd62
---- /dev/null
-+++ b/hw/misc/aspeed_hace.c
-@@ -0,0 +1,312 @@
-+/*
-+ * ASPEED Hash and Crypto Engine
-+ *
-+ * Copyright (C) 2021 IBM Corp.
-+ *
-+ * Joel Stanley <joel@jms.id.au>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
++ * Copyright 2021 IBM Corp.
 + */
 +
 +#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "qemu/error-report.h"
-+#include "hw/misc/aspeed_hace.h"
-+#include "qapi/error.h"
-+#include "migration/vmstate.h"
-+#include "crypto/hash.h"
-+#include "hw/qdev-properties.h"
-+#include "hw/irq.h"
 +
-+#define R_CRYPT_CMD     (0x10 / 4)
++#include "libqtest-single.h"
++#include "qemu-common.h"
++#include "qemu/bitops.h"
 +
-+#define R_STATUS        (0x1c / 4)
-+#define HASH_IRQ        BIT(9)
-+#define CRYPT_IRQ       BIT(12)
-+#define TAG_IRQ         BIT(15)
++#define HACE_BASE                0x1e6d0000
 +
-+#define R_HASH_SRC      (0x20 / 4)
-+#define R_HASH_DEST     (0x24 / 4)
-+#define R_HASH_SRC_LEN  (0x2c / 4)
++#define HACE_CMD                 0x10
++#define  HACE_SHA_BE_EN                 BIT(3)
++#define  HACE_MD5_LE_EN                 BIT(2)
++#define  HACE_ALGO_MD5                  0
++#define  HACE_ALGO_SHA1                 BIT(5)
++#define  HACE_ALGO_SHA224               BIT(6)
++#define  HACE_ALGO_SHA256               (BIT(4) | BIT(6))
++#define  HACE_ALGO_SHA512               (BIT(5) | BIT(6))
++#define  HACE_ALGO_SHA384               (BIT(5) | BIT(6) | BIT(10))
++#define  HACE_SG_EN                     BIT(18)
 +
-+#define R_HASH_CMD      (0x30 / 4)
-+/* Hash algorithim selection */
-+#define  HASH_ALGO_MASK                 (BIT(4) | BIT(5) | BIT(6))
-+#define  HASH_ALGO_MD5                  0
-+#define  HASH_ALGO_SHA1                 BIT(5)
-+#define  HASH_ALGO_SHA224               BIT(6)
-+#define  HASH_ALGO_SHA256               (BIT(4) | BIT(6))
-+#define  HASH_ALGO_SHA512_SERIES        (BIT(5) | BIT(6))
-+/* SHA512 algorithim selection */
-+#define  SHA512_HASH_ALGO_MASK          (BIT(10) | BIT(11) | BIT(12))
-+#define  HASH_ALGO_SHA512_SHA512        0
-+#define  HASH_ALGO_SHA512_SHA384        BIT(10)
-+#define  HASH_ALGO_SHA512_SHA256        BIT(11)
-+#define  HASH_ALGO_SHA512_SHA224        (BIT(10) | BIT(11))
-+/* HMAC modes */
-+#define  HASH_HMAC_MASK                 (BIT(7) | BIT(8))
-+#define  HASH_DIGEST                    0
-+#define  HASH_DIGEST_HMAC               BIT(7)
-+#define  HASH_DIGEST_ACCUM              BIT(8)
-+#define  HASH_HMAC_KEY                  (BIT(7) | BIT(8))
-+/* Cascscaed operation modes */
-+#define  HASH_ONLY                      0
-+#define  HASH_ONLY2                     BIT(0)
-+#define  HASH_CRYPT_THEN_HASH           BIT(1)
-+#define  HASH_HASH_THEN_CRYPT           (BIT(0) | BIT(1))
-+/* Other cmd bits */
-+#define  HASH_IRQ_EN                    BIT(9)
-+#define  HASH_SG_EN                     BIT(18)
++#define HACE_STS                 (HACE_BASE + 0x1c)
++#define  HACE_RSA_ISR                   BIT(13)
++#define  HACE_CRYPTO_ISR                BIT(12)
++#define  HACE_HASH_ISR                  BIT(9)
++#define  HACE_RSA_BUSY                  BIT(2)
++#define  HACE_CRYPTO_BUSY               BIT(1)
++#define  HACE_HASH_BUSY                 BIT(0)
++#define HACE_HASH_SRC            (HACE_BASE + 0x20)
++#define HACE_HASH_DIGEST    (HACE_BASE + 0x24)
++#define HACE_HASH_KEY_BUFF       (HACE_BASE + 0x28)
++#define HACE_HASH_DATA_LEN       (HACE_BASE + 0x2c)
++#define HACE_HASH_CMD            (HACE_BASE + 0x30)
 +
++QTestState *qts;
 +
-+static int do_hash_operation(AspeedHACEState *s, int algo)
++/*
++ * Test vector is the ascii "abc"
++ *
++ * Expected results were generated using command line utitiles:
++ *
++ *  echo -n -e 'abc' | dd of=/tmp/test
++ *  for hash in sha512sum sha256sum md5sum; do $hash /tmp/test; done
++ *
++ */
++static const uint8_t test_vector[] = {0x61, 0x62, 0x63};
++
++static const uint8_t test_result_sha512[] = {
++    0xdd, 0xaf, 0x35, 0xa1, 0x93, 0x61, 0x7a, 0xba, 0xcc, 0x41, 0x73, 0x49,
++    0xae, 0x20, 0x41, 0x31, 0x12, 0xe6, 0xfa, 0x4e, 0x89, 0xa9, 0x7e, 0xa2,
++    0x0a, 0x9e, 0xee, 0xe6, 0x4b, 0x55, 0xd3, 0x9a, 0x21, 0x92, 0x99, 0x2a,
++    0x27, 0x4f, 0xc1, 0xa8, 0x36, 0xba, 0x3c, 0x23, 0xa3, 0xfe, 0xeb, 0xbd,
++    0x45, 0x4d, 0x44, 0x23, 0x64, 0x3c, 0xe8, 0x0e, 0x2a, 0x9a, 0xc9, 0x4f,
++    0xa5, 0x4c, 0xa4, 0x9f};
++
++static const uint8_t test_result_sha256[] = {
++    0xba, 0x78, 0x16, 0xbf, 0x8f, 0x01, 0xcf, 0xea, 0x41, 0x41, 0x40, 0xde,
++    0x5d, 0xae, 0x22, 0x23, 0xb0, 0x03, 0x61, 0xa3, 0x96, 0x17, 0x7a, 0x9c,
++    0xb4, 0x10, 0xff, 0x61, 0xf2, 0x00, 0x15, 0xad};
++
++static const uint8_t test_result_md5[] = {
++    0x90, 0x01, 0x50, 0x98, 0x3c, 0xd2, 0x4f, 0xb0, 0xd6, 0x96, 0x3f, 0x7d,
++    0x28, 0xe1, 0x7f, 0x72};
++
++static void write_regs(uint64_t src, uint64_t length, uint64_t out,
++                       uint32_t method)
 +{
-+    hwaddr src, len, dest;
-+    uint8_t *digest_buf = NULL;
-+    size_t digest_len = 0;
-+    char *src_buf;
-+    int rc;
++        writel(HACE_HASH_SRC, src);
++        writel(HACE_HASH_DIGEST, out);
++        writel(HACE_HASH_DATA_LEN, length);
++        writel(HACE_HASH_CMD, HACE_SHA_BE_EN | method);
++}
 +
-+    src = 0x80000000 | s->regs[R_HASH_SRC];
-+    len = s->regs[R_HASH_SRC_LEN];
-+    dest = 0x80000000 | s->regs[R_HASH_DEST];
++static void test_md5(void)
++{
++    uint64_t src_addr = 0x80000000;
++    uint64_t digest_addr = 0x81000000;
++    uint8_t digest[16] = {0};
 +
-+    src_buf = address_space_map(&s->dram_as, src, &len, false,
-+                                MEMTXATTRS_UNSPECIFIED);
-+    if (!src_buf) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: failed to map dram\n", __func__);
-+        return -EACCES;
-+    }
++    /* Check engine is idle, no busy or irq bits set */
++    g_assert_cmphex(readl(HACE_STS), ==, 0);
 +
-+    rc = qcrypto_hash_bytes(algo, src_buf, len, &digest_buf, &digest_len,
-+                            &error_fatal);
-+    if (rc < 0) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: qcrypto failed\n", __func__);
-+        return rc;
-+    }
++    /* Write test vector into memory */
++    qtest_memwrite(qts, src_addr, test_vector, sizeof(test_vector));
 +
-+    rc = address_space_write(&s->dram_as, dest, MEMTXATTRS_UNSPECIFIED,
-+                             digest_buf, digest_len);
-+    if (rc) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: address space write failed\n", __func__);
-+    }
-+    g_free(digest_buf);
++    write_regs(src_addr, sizeof(test_vector), digest_addr, HACE_ALGO_MD5);
 +
-+    address_space_unmap(&s->dram_as, src_buf, len, false, len);
++    /* Check hash IRQ status is asserted */
++    g_assert_cmphex(readl(HACE_STS), ==, 0x00000200);
 +
++    /* Clear IRQ status and check status is deasserted */
++    writel(HACE_STS, 0x00000200);
++    g_assert_cmphex(readl(HACE_STS), ==, 0);
++
++    /* Read computed digest from memory */
++    qtest_memread(qts, digest_addr, digest, sizeof(digest));
++
++    /* Check result of computation */
++    g_assert_cmpmem(digest, sizeof(digest),
++                    test_result_md5, sizeof(digest));
++}
++
++static void test_sha256(void)
++{
++    uint64_t src_addr = 0x80000000;
++    uint64_t digest_addr = 0x81000000;
++    uint8_t digest[32] = {0};
++
++    /* Check engine is idle, no busy or irq bits set */
++    g_assert_cmphex(readl(HACE_STS), ==, 0);
++
++    /* Write test vector into memory */
++    qtest_memwrite(qts, src_addr, test_vector, sizeof(test_vector));
++
++    write_regs(src_addr, sizeof(test_vector), digest_addr, HACE_ALGO_SHA256);
++
++    /* Check hash IRQ status is asserted */
++    g_assert_cmphex(readl(HACE_STS), ==, 0x00000200);
++
++    /* Clear IRQ status and check status is deasserted */
++    writel(HACE_STS, 0x00000200);
++    g_assert_cmphex(readl(HACE_STS), ==, 0);
++
++    /* Read computed digest from memory */
++    qtest_memread(qts, digest_addr, digest, sizeof(digest));
++
++    /* Check result of computation */
++    g_assert_cmpmem(digest, sizeof(digest),
++                    test_result_sha256, sizeof(digest));
++}
++
++static void test_sha512(void)
++{
++    uint64_t src_addr = 0x80000000;
++    uint64_t digest_addr = 0x81000000;
++    uint8_t digest[64] = {0};
++
++    /* Check engine is idle, no busy or irq bits set */
++    g_assert_cmphex(readl(HACE_STS), ==, 0);
++
++    /* Write test vector into memory */
++    qtest_memwrite(qts, src_addr, test_vector, sizeof(test_vector));
++
++    write_regs(src_addr, sizeof(test_vector), digest_addr, HACE_ALGO_SHA512);
++
++    /* Check hash IRQ status is asserted */
++    g_assert_cmphex(readl(HACE_STS), ==, 0x00000200);
++
++    /* Clear IRQ status and check status is deasserted */
++    writel(HACE_STS, 0x00000200);
++    g_assert_cmphex(readl(HACE_STS), ==, 0);
++
++    /* Read computed digest from memory */
++    qtest_memread(qts, digest_addr, digest, sizeof(digest));
++
++    /* Check result of computation */
++    g_assert_cmpmem(digest, sizeof(digest),
++                    test_result_sha512, sizeof(digest));
++}
++
++static void test_addresses(void)
++{
 +    /*
-+     * Set status bits to indicate completion. Testing shows hardware sets
-+     * these irrespective of HASH_IRQ_EN.
++     * Check command mode is zero, meaning engine is in direct access mode,
++     * as this affects the masking behavior of the HASH_SRC register.
 +     */
-+    s->regs[R_STATUS] |= HASH_IRQ;
++    g_assert_cmphex(readl(HACE_CMD), ==, 0);
++    g_assert_cmphex(readl(HACE_HASH_SRC), ==, 0);
++    g_assert_cmphex(readl(HACE_HASH_DIGEST), ==, 0);
++    g_assert_cmphex(readl(HACE_HASH_DATA_LEN), ==, 0);
 +
-+    return 0;
++    /* Check that the address masking is correct */
++    writel(HACE_HASH_SRC, 0xffffffff);
++    g_assert_cmphex(readl(HACE_HASH_SRC), ==, 0x7fffffff);
++
++    writel(HACE_HASH_DIGEST, 0xffffffff);
++    g_assert_cmphex(readl(HACE_HASH_DIGEST), ==, 0x7ffffff8);
++
++    writel(HACE_HASH_DATA_LEN, 0xffffffff);
++    g_assert_cmphex(readl(HACE_HASH_DATA_LEN), ==, 0x0fffffff);
++
++    /* Reset to zero */
++    writel(HACE_HASH_SRC, 0);
++    writel(HACE_HASH_DIGEST, 0);
++    writel(HACE_HASH_DATA_LEN, 0);
++
++    /* Check that all bits are now zero */
++    g_assert_cmphex(readl(HACE_HASH_SRC), ==, 0);
++    g_assert_cmphex(readl(HACE_HASH_DIGEST), ==, 0);
++    g_assert_cmphex(readl(HACE_HASH_DATA_LEN), ==, 0);
 +}
 +
-+
-+static uint64_t aspeed_hace_read(void *opaque, hwaddr addr, unsigned int size)
++int main(int argc, char **argv)
 +{
-+    AspeedHACEState *s = ASPEED_HACE(opaque);
++    int ret;
 +
-+    addr >>= 2;
++    g_test_init(&argc, &argv, NULL);
++    g_test_set_nonfatal_assertions();
 +
-+    if (addr >= ASPEED_HACE_NR_REGS) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Out-of-bounds read at offset 0x%" HWADDR_PRIx "\n",
-+                      __func__, addr << 2);
-+        return 0;
-+    }
++    qtest_add_func("aspeed_hace_addresses", test_addresses);
++    qtest_add_func("aspeed_hace_sha512", test_sha512);
++    qtest_add_func("aspeed_hace_sha256", test_sha256);
++    qtest_add_func("aspeed_hace_md5", test_md5);
 +
-+    return s->regs[addr];
++    qts = qtest_start("-machine ast2600-evb");
++    ret = g_test_run();
++    qtest_end();
++
++    return ret;
 +}
-+
-+static void aspeed_hace_write(void *opaque, hwaddr addr, uint64_t data,
-+                              unsigned int size)
-+{
-+    AspeedHACEState *s = ASPEED_HACE(opaque);
-+
-+    addr >>= 2;
-+
-+    if (addr >= ASPEED_HACE_NR_REGS) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Out-of-bounds write at offset 0x%" HWADDR_PRIx "\n",
-+                      __func__, addr << 2);
-+        return;
-+    }
-+
-+    switch (addr) {
-+    case R_STATUS:
-+        if (data & HASH_IRQ) {
-+            data &= ~HASH_IRQ;
-+
-+            if (s->regs[addr] & HASH_IRQ) {
-+                qemu_irq_lower(s->irq);
-+            }
-+        }
-+        break;
-+    case R_HASH_SRC:
-+        data &= 0x7FFFFFFF;
-+        break;
-+    case R_HASH_DEST:
-+        data &= 0x7FFFFFF8;
-+        break;
-+    case R_HASH_SRC_LEN:
-+        data &= 0x0FFFFFFF;
-+        break;
-+    case R_HASH_CMD: {
-+        int algo = -1;
-+        if ((data & HASH_HMAC_MASK)) {
-+            qemu_log_mask(LOG_UNIMP,
-+                          "%s: HMAC engine command mode %ld not implemented",
-+                          __func__, (data & HASH_HMAC_MASK) >> 8);
-+        }
-+        if (data & HASH_SG_EN) {
-+            qemu_log_mask(LOG_UNIMP,
-+                          "%s: Hash scatter gather mode not implemented",
-+                          __func__);
-+        }
-+        if (data & BIT(1)) {
-+            qemu_log_mask(LOG_UNIMP,
-+                          "%s: Cascaded mode not implemented",
-+                          __func__);
-+        }
-+        switch (data & HASH_ALGO_MASK) {
-+        case HASH_ALGO_MD5:
-+            algo = QCRYPTO_HASH_ALG_MD5;
-+            break;
-+        case HASH_ALGO_SHA1:
-+            algo = QCRYPTO_HASH_ALG_SHA1;
-+            break;
-+        case HASH_ALGO_SHA224:
-+            algo = QCRYPTO_HASH_ALG_SHA224;
-+            break;
-+        case HASH_ALGO_SHA256:
-+            algo = QCRYPTO_HASH_ALG_SHA256;
-+            break;
-+        case HASH_ALGO_SHA512_SERIES:
-+            switch (data & SHA512_HASH_ALGO_MASK) {
-+            case HASH_ALGO_SHA512_SHA512:
-+                algo = QCRYPTO_HASH_ALG_SHA512;
-+                break;
-+            case HASH_ALGO_SHA512_SHA384:
-+                algo = QCRYPTO_HASH_ALG_SHA384;
-+                break;
-+            case HASH_ALGO_SHA512_SHA256:
-+                algo = QCRYPTO_HASH_ALG_SHA256;
-+                break;
-+            case HASH_ALGO_SHA512_SHA224:
-+                algo = QCRYPTO_HASH_ALG_SHA224;
-+                break;
-+            default:
-+                qemu_log_mask(LOG_GUEST_ERROR,
-+                        "%s: Invalid sha512 hash algorithm selection 0x%03lx\n",
-+                        __func__, data & SHA512_HASH_ALGO_MASK);
-+                break;
-+            }
-+            break;
-+        default:
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Invalid hash algorithm selection 0x%03lx\n",
-+                      __func__, data & HASH_ALGO_MASK);
-+            break;
-+        }
-+        if (algo >= 0) {
-+            do_hash_operation(s, algo);
-+
-+            if (data & HASH_IRQ_EN) {
-+                qemu_irq_raise(s->irq);
-+            }
-+        }
-+
-+        break;
-+    }
-+    case R_CRYPT_CMD:
-+        qemu_log_mask(LOG_UNIMP, "%s: Crypt commands not implemented\n",
-+                       __func__);
-+        break;
-+    default:
-+        break;
-+    }
-+
-+    s->regs[addr] = data;
-+}
-+
-+static const MemoryRegionOps aspeed_hace_ops = {
-+    .read = aspeed_hace_read,
-+    .write = aspeed_hace_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 1,
-+        .max_access_size = 4,
-+    },
-+};
-+
-+static void aspeed_hace_reset(DeviceState *dev)
-+{
-+    struct AspeedHACEState *s = ASPEED_HACE(dev);
-+
-+    memset(s->regs, 0, sizeof(s->regs));
-+}
-+
-+static void aspeed_hace_realize(DeviceState *dev, Error **errp)
-+{
-+    AspeedHACEState *s = ASPEED_HACE(dev);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-+
-+    sysbus_init_irq(sbd, &s->irq);
-+
-+    memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_hace_ops, s,
-+            TYPE_ASPEED_HACE, 0x1000);
-+
-+    if (!s->dram_mr) {
-+        error_setg(errp, TYPE_ASPEED_HACE ": 'dram' link not set");
-+        return;
-+    }
-+
-+    address_space_init(&s->dram_as, s->dram_mr, "dram");
-+
-+    sysbus_init_mmio(sbd, &s->iomem);
-+}
-+
-+static Property aspeed_hace_properties[] = {
-+    DEFINE_PROP_LINK("dram", AspeedHACEState, dram_mr,
-+                     TYPE_MEMORY_REGION, MemoryRegion *),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
-+
-+static const VMStateDescription vmstate_aspeed_hace = {
-+    .name = TYPE_ASPEED_HACE,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32_ARRAY(regs, AspeedHACEState, ASPEED_HACE_NR_REGS),
-+        VMSTATE_END_OF_LIST(),
-+    }
-+};
-+
-+static void aspeed_hace_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->realize = aspeed_hace_realize;
-+    dc->reset = aspeed_hace_reset;
-+    device_class_set_props(dc, aspeed_hace_properties);
-+    dc->desc = "Aspeed Hash and Crypto Engine",
-+    dc->vmsd = &vmstate_aspeed_hace;
-+}
-+
-+static const TypeInfo aspeed_hace_info = {
-+    .name = TYPE_ASPEED_HACE,
-+    .parent = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(AspeedHACEState),
-+    .class_init = aspeed_hace_class_init,
-+};
-+
-+static void aspeed_hace_register_types(void)
-+{
-+    type_register_static(&aspeed_hace_info);
-+}
-+
-+type_init(aspeed_hace_register_types);
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index e30a555db5ca..357a2399e0a5 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -103,7 +103,7 @@ softmmu_ss.add(when: 'CONFIG_ARMSSE_MHU', if_true: files('armsse-mhu.c'))
- softmmu_ss.add(when: 'CONFIG_PVPANIC_ISA', if_true: files('pvpanic-isa.c'))
- softmmu_ss.add(when: 'CONFIG_PVPANIC_PCI', if_true: files('pvpanic-pci.c'))
- softmmu_ss.add(when: 'CONFIG_AUX', if_true: files('auxbus.c'))
--softmmu_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_scu.c', 'aspeed_sdmc.c', 'aspeed_xdma.c'))
-+softmmu_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_hace.c', 'aspeed_scu.c', 'aspeed_sdmc.c', 'aspeed_xdma.c'))
- softmmu_ss.add(when: 'CONFIG_MSF2', if_true: files('msf2-sysreg.c'))
- softmmu_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_rng.c'))
+diff --git a/MAINTAINERS b/MAINTAINERS
+index e04ae21a2f04..353aa479a720 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1026,6 +1026,7 @@ F: include/hw/misc/pca9552*.h
+ F: hw/net/ftgmac100.c
+ F: include/hw/net/ftgmac100.h
+ F: docs/system/arm/aspeed.rst
++F: tests/qtest/*aspeed*
  
+ NRF51
+ M: Joel Stanley <joel@jms.id.au>
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index 2688e1bfad7f..2eec06b10094 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -156,12 +156,15 @@ qtests_npcm7xx = \
+    'npcm7xx_timer-test',
+    'npcm7xx_watchdog_timer-test'] + \
+    (slirp.found() ? ['npcm7xx_emc-test'] : [])
++qtests_aspeed = \
++  ['aspeed_hace-test']
+ qtests_arm = \
+   (config_all_devices.has_key('CONFIG_MPS2') ? ['sse-timer-test'] : []) + \
+   (config_all_devices.has_key('CONFIG_CMSDK_APB_DUALTIMER') ? ['cmsdk-apb-dualtimer-test'] : []) + \
+   (config_all_devices.has_key('CONFIG_CMSDK_APB_TIMER') ? ['cmsdk-apb-timer-test'] : []) + \
+   (config_all_devices.has_key('CONFIG_CMSDK_APB_WATCHDOG') ? ['cmsdk-apb-watchdog-test'] : []) + \
+   (config_all_devices.has_key('CONFIG_PFLASH_CFI02') ? ['pflash-cfi02-test'] : []) +         \
++  (config_all_devices.has_key('CONFIG_ASPEED_SOC') ? qtests_aspeed : []) + \
+   (config_all_devices.has_key('CONFIG_NPCM7XX') ? qtests_npcm7xx : []) + \
+   ['arm-cpu-features',
+    'microbit-test',
 -- 
 2.30.1
 

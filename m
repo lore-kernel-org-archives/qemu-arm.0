@@ -1,101 +1,127 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp407575lfg;
-        Thu, 11 Mar 2021 07:56:00 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyl1dwjU7GzhQy0r+Qi7LQGJUSM+peDsF3WcqCz/v0RPm56Qr8ud/Ptv66QFWGZXJMPY/Ua
-X-Received: by 2002:a05:6808:7ca:: with SMTP id f10mr6800090oij.139.1615478160173;
-        Thu, 11 Mar 2021 07:56:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1615478160; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp428846lfg;
+        Thu, 11 Mar 2021 08:20:36 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzZDE0V2ZwiFqriI3NCxRoiOWqhKMVL4X3Gcxek7Lb1q4P0Fx5UfYIIrtU0jE4miZC+Rrw6
+X-Received: by 2002:a92:d80f:: with SMTP id y15mr7120506ilm.96.1615479636046;
+        Thu, 11 Mar 2021 08:20:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1615479636; cv=none;
         d=google.com; s=arc-20160816;
-        b=FTlJF0yrprTyjIjcWOrQmbdVgmSSABeETBgudKtiagupo33pwy/L5cGG77yPbBryX+
-         ed5XUi9KBRiqU0X6Nsw5u4/uE49nDguEvnzQ35lzY8sAO29/Dqt8NnmK/FSUXpDkOo3c
-         sVSOsLEf0qB5wG8MCl4PWs7+GH5fLibaSTjMljHXmN7+ejiXIg1noCAwfIjWxshE2n09
-         enJxlheGrx3SErZEvkdUTwDquCtRy6s+gZ/DE5mis7Ond1dDgTJ99VBFGSi7TuVRiiOL
-         pF/wGefjkuOW5iMNBXUDpLznoPINWzaCn2azbTBMfDPLcBfZD5vuSaUj5xEpzrsrWaC0
-         oY3g==
+        b=UqT35HYdz7SAGLp35FHWtTez8I6R55IeUmwKVxqw3Igoq0VhiWQK5azJ4zZqO57eAw
+         3P9nx5/JkP9gMKWLUD432nSHIrof8DSdCdEn6eKWAL5veYKjK0806sCeQMEY7zpbdSDy
+         AcXmX85QWg0L7IRwmh6+O9pi8cxLKWumxSKsC1j2W5rPU++vVojreMVue7JKC9TkpPGo
+         3tVpr7Q40vkXwKW4FBApne9Gh9Itoecjdt9mbC4LT4xccwcxsqelY30ApFco759Hr6LM
+         YqfzLfastuqH1L5MHvebeDTUhiJLVeaXHxV5nuJ+fDnSIwXv7RwIL5KK5Ysj0eiVMoZo
+         eXFA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=aChvB70ga2vyQQ6upZMSMkTcWbC7jbTXxgEhfs6fhw4=;
-        b=Pw+1cISVyrTXi44k+IVnSyEap0pOXV02MQs5Tzv+dX2PNVy7lGUlk8e8NKMjaG0aPs
-         kOg+UxkSl4LqIp14Q5VNXdHxLlHN4h9xx3A6bgLdOuJm042k5JBpgP3M8vECauEOtkTW
-         ea/ijdyZTBRMW1yYCoVL2Jc7qpq0nseDOVRPcU1ax6Gn2X1fXC99RU6S7Rf43CnGv4O3
-         xBZknGyucrdMCt4mXpVazvaYb0/O6e3XHFMhVTFAtraExw1qdEj2y9Epe803/bOlAAeT
-         epcgY/ENjfTfZrShga7T++Y29j5MN5eD7kdxMc8GNw5dJQIkfVoxve3+ygqOSRZRhB+6
-         kMRA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=LrADqJeed8uGCxsGNZ4KUfZ7NLuQoNuxyycdjUUjj58=;
+        b=FscVlqYkEYv/tML20VVtyh9wL87Q/xjGGQGYUg6/ZUhBG3xPI1W6NStN7h+jLop6XU
+         rTSVx2I05GKpvXGM4zmpAl5KvuxoBPoOZys8mlTJkXD0imeIbzw5Pwel9kldUNtD5czp
+         k4fOTKTCS3IgWNf8+v5WmVLGOABcCjcHCK2UiPewD4Sl9AiBCjdysEonKblNzxS/Bt/h
+         JODBpo/MidBf6DRrKnh9IEY5A7nkqH1GXreQYpfyfjSPVBaLp4Udre8Y1MiDWrMzaT4h
+         0qXHj0b84PBKImTKo0lzaUFQz/S8rjmPoeHY7a/cKOOUmSAw9KDv/fI28yFdKAIFSB/1
+         Nfjg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=iEbqqxyB;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IK6bf1Hg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m9si2675587ote.258.2021.03.11.07.56.00
+        by mx.google.com with ESMTPS id y18si3156295jat.6.2021.03.11.08.20.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Mar 2021 07:56:00 -0800 (PST)
+        Thu, 11 Mar 2021 08:20:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=iEbqqxyB;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IK6bf1Hg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:55510 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:42614 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lKNfL-0000P4-Bu
-	for alex.bennee@linaro.org; Thu, 11 Mar 2021 10:55:59 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54538)
+	id 1lKO39-0007pW-C4
+	for alex.bennee@linaro.org; Thu, 11 Mar 2021 11:20:35 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41594)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lKNL4-0007TI-5E
- for qemu-arm@nongnu.org; Thu, 11 Mar 2021 10:35:03 -0500
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a]:38820)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lKNL0-0004BR-Sq
- for qemu-arm@nongnu.org; Thu, 11 Mar 2021 10:35:01 -0500
-Received: by mail-ed1-x52a.google.com with SMTP id h13so3378960eds.5
- for <qemu-arm@nongnu.org>; Thu, 11 Mar 2021 07:34:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=aChvB70ga2vyQQ6upZMSMkTcWbC7jbTXxgEhfs6fhw4=;
- b=iEbqqxyBm9OxKYC4cfcJvubqMnCygTJ/QEm5H3YkTR4OvVQZ+tLyCWSclQre5bzV5X
- Z+RPnHH5mR2bW1i64Ip/o3HF2KLOELj7R2n7OacNtty9OOfiMnlkfJa+Uv3WO8HwYQdJ
- EQARJ6a+dOFtkvxOR++lZtWsj/Y1Uotz4J/KVucEkzlPOOBOO+HBnx53uPbPPv/sRv8c
- RRLiADniapFOajYBzOrOYAJjqogqryNB5ob8ZCpldMy6w6/wrTIT1i7mtdNWIzjfHs3j
- 4slFZNCAspVtbM5y2T+wyp91fLuc6RBMLMgS+J5NG9m9pRMUdREO+0wbHHMi4k4xLSVl
- sr9A==
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1lKO0n-0004GQ-Ft
+ for qemu-arm@nongnu.org; Thu, 11 Mar 2021 11:18:09 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:54718)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1lKO0l-0002hv-UH
+ for qemu-arm@nongnu.org; Thu, 11 Mar 2021 11:18:09 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1615479487;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=LrADqJeed8uGCxsGNZ4KUfZ7NLuQoNuxyycdjUUjj58=;
+ b=IK6bf1Hg2zkyPRviOXlVaDW2xbyOA1LQz60iniggwGLdUgJW/OheWmFu0qH9EYS/bY0hvT
+ VjEKJTLQM9PdXp/slB8MOyr0PzCzDsnwOOD3dwrn2TqReeG6JTnOhsLR8abPU68DqoLV0W
+ rP/+UtJsKBFGPExJ0sbBC8f/X1a8fIc=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-498-sUDz5lgEOVKVbTryuFGEbQ-1; Thu, 11 Mar 2021 11:18:03 -0500
+X-MC-Unique: sUDz5lgEOVKVbTryuFGEbQ-1
+Received: by mail-wm1-f69.google.com with SMTP id c7so4245541wml.8
+ for <qemu-arm@nongnu.org>; Thu, 11 Mar 2021 08:18:03 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=aChvB70ga2vyQQ6upZMSMkTcWbC7jbTXxgEhfs6fhw4=;
- b=RINGjS1Ct020KZg5GsSZ/Mdgrvzun0CiV3NKadgQY1RD4vUA2UvxU46GTqy03krIta
- owJsqJkgbKOW3+zhReqcCBgnGx0BtG8LMxI60v7gR7TYXqhtPRBBkyleaSRS/hAtnYiT
- 62Tj61ZgBvurp+hsKs8HBAAxJuKtw3NBFrAPNz9CKSNNyiFdRx/QvUEU4R0xyTJi3fTD
- 3C8k+7EJX4HMMw/v3kl6ScDoU0RsNwYqjZ3Hw5ukaSIw7Q6DmpG11JvcVg2+IHjoUwlp
- 4xmL2hVFGZ6jURHDtRYZ0UQMvyCxxFS0WQTzJPKMxIg/jhc76yo5aZDl8t9a+iKa64hK
- +TnA==
-X-Gm-Message-State: AOAM531h18R5aBAHeshOLxuFErGTIAXurNCJH6Ma67xw1obk012645c0
- NuzhJ0QoeHRsKSwaXmWVTMBNQggOLtcOPSLj9iKBXw==
-X-Received: by 2002:aa7:c3cd:: with SMTP id l13mr8991421edr.52.1615476897275; 
- Thu, 11 Mar 2021 07:34:57 -0800 (PST)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=LrADqJeed8uGCxsGNZ4KUfZ7NLuQoNuxyycdjUUjj58=;
+ b=ONndPK5HJrEVn/kHr3SPDMOEcOFnJovsIl4C8KLCTau58h86wqw/CD78KEsFexkczN
+ E6HC8GDWPPxAOyS2Q30AlVWchCjHsCDa0fFdG/aMIZgAwpLmhfIJMb+wQppXKLQUQheX
+ Tq0UbGY+rO0WVDVXYDBR2Zjtn2NWh/tPTOQXuNErKmxgYsd9Lob9ZJOXJNlcu4ZflW37
+ EH0OJhxj4HMjkSpVoZbRKk0dC28/yEFC/KBhoy3H0/5arbr7YCpk0MQfNeigK8R9TV4u
+ wCoZdv3JPzyMRM7KrbYi9lqiSMV+tF4XACyuVfAPgQOskyenTeJLkchlZzgZttOUKNrH
+ 456A==
+X-Gm-Message-State: AOAM532nmkVp/dUtdonet6iAo4EXUPpY6lguY19w1/8rEtVEtnSe2Fi5
+ Cz1+WHHeFBIY8qYct3a6P/Jbc2cqU6wU+80gLTKwfpNuhHlQJkSA2+41T4PUIOAUwJMxwkSYT41
+ Dnowt6/vWQxBR
+X-Received: by 2002:adf:9bd7:: with SMTP id e23mr9397590wrc.48.1615479482242; 
+ Thu, 11 Mar 2021 08:18:02 -0800 (PST)
+X-Received: by 2002:adf:9bd7:: with SMTP id e23mr9397562wrc.48.1615479482009; 
+ Thu, 11 Mar 2021 08:18:02 -0800 (PST)
+Received: from ?IPv6:2001:b07:6468:f312:c8dd:75d4:99ab:290a?
+ ([2001:b07:6468:f312:c8dd:75d4:99ab:290a])
+ by smtp.gmail.com with ESMTPSA id i8sm5047429wry.90.2021.03.11.08.18.01
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 11 Mar 2021 08:18:01 -0800 (PST)
+Subject: Re: arm: "max" CPU class hierarchy changes possible?
+To: Peter Maydell <peter.maydell@linaro.org>,
+ Claudio Fontana <cfontana@suse.de>
+References: <11e9d3bb-c94c-4ad7-35b0-b698376c5e00@suse.de>
+ <CAFEAcA8T+u6QG9PQWs40PTSZ86SEeLQrciT8WHxFyH3UVbipiA@mail.gmail.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <2e6a5d98-e022-0b39-5f30-92eb74491d3b@redhat.com>
+Date: Thu, 11 Mar 2021 17:18:00 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.0
 MIME-Version: 1.0
-References: <20210310195820.21950-1-nieklinnenbank@gmail.com>
-In-Reply-To: <20210310195820.21950-1-nieklinnenbank@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 11 Mar 2021 15:34:38 +0000
-Message-ID: <CAFEAcA8+Xc1fzCcNVQjGu_WJ3gZLnUXu-iPz1AJ8WS5Q+-7mKQ@mail.gmail.com>
-Subject: Re: [PATCH v4 0/5] Allwinner H3 fixes for EMAC and acceptance tests
-To: Niek Linnenbank <nieklinnenbank@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <CAFEAcA8T+u6QG9PQWs40PTSZ86SEeLQrciT8WHxFyH3UVbipiA@mail.gmail.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=pbonzini@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.25,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -108,28 +134,34 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Thomas Huth <thuth@redhat.com>, "Daniel P. Berrange" <berrange@redhat.com>,
- Willian Rampazzo <wrampazz@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
- Beniamino Galvani <b.galvani@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- Pavel Dovgaluk <Pavel.Dovgaluk@ispras.ru>, Cleber Rosa <crosa@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-arm <qemu-arm@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>,
+ Eduardo Habkost <ehabkost@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 35jnlmBoZ8F1
+X-TUID: junblrCk7JMh
 
-On Wed, 10 Mar 2021 at 19:58, Niek Linnenbank <nieklinnenbank@gmail.com> wrote:
->
-> The following are maintenance patches for the Allwinner H3. The first patch
-> resolves artifact download errors by updating the URLs to the armbian.com server.
->
-> The second patch is a fix for the EMAC that is used by the Allwinner H3 / Orange Pi PC machine.
->
-> All these patches have been reviewed and tested and should be ready to pull in.
+On 11/03/21 16:02, Peter Maydell wrote:
+> On Thu, 11 Mar 2021 at 14:27, Claudio Fontana <cfontana@suse.de> wrote:
+>> the "max" cpu in x86 and s390 is a class,
+>>
+>> and then "host" has "max" as parent.
+>>
+>> This would be a convenient setup for ARM too, as it would allow to put common code between kvm and tcg in the "max" class,
+>> and allow "host" to specialize the behavior for KVM (and in the future HVF probably).
+>>
+>> Would changing the class hierarchy this way be acceptable, cause any problems?
+> 
+> It's not clear to me why 'host' would be a subtype of 'max':
+> that doesn't seem like an obvious relationship.
 
+On x86, "-cpu host" is essentially the same as "-cpu max" with the only 
+difference that it errors out on TCG.  So:
 
+- with TCG: "-cpu max" enables all that can be emulated, "-cpu host" fails
 
-Applied to target-arm.next, thanks.
+- with KVM: "-cpu max" enables all that can be virtualized, "-cpu host" 
+does the same
 
--- PMM
+Paolo
+

@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id e22sm2601168edu.61.2021.03.12.02.20.30
+        by smtp.gmail.com with ESMTPSA id t15sm2730249edw.84.2021.03.12.02.20.30
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 12 Mar 2021 02:20:30 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id C03001FF87;
+	by zen.linaroharston (Postfix) with ESMTP id D5C3E1FF8C;
 	Fri, 12 Mar 2021 10:20:29 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -12,319 +12,117 @@ Cc: keithp@keithp.com,
 	qemu-arm@nongnu.org,
 	qemu-riscv@nongnu.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH  v5 1/5] semihosting: move semihosting tests to multiarch
-Date: Fri, 12 Mar 2021 10:20:25 +0000
-Message-Id: <20210312102029.17017-2-alex.bennee@linaro.org>
+Subject: [PATCH  v5 2/5] semihosting/arm-compat-semi: unify GET/SET_ARG helpers
+Date: Fri, 12 Mar 2021 10:20:26 +0000
+Message-Id: <20210312102029.17017-3-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210312102029.17017-1-alex.bennee@linaro.org>
 References: <20210312102029.17017-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: MSdTZcNdM0eo
+X-TUID: V7sSLnLLs4Mu
 
-It may be arm-compat-semihosting but more than one architecture uses
-it so lets move the tests into the multiarch area. We gate it on the
-feature and split the semicall.h header between the arches.
+From the semihosting point of view what we want to know is the current
+mode of the processor. Unify this into a single helper and allow us to
+use the same GET/SET_ARG helpers for the rest of the code. Having the
+helper will also be useful later.
 
-Also clean-up a bit of the Makefile messing about to one common set of
-runners.
+Note: we aren't currently testing riscv32 due to missing toolchain for
+check-tcg tests.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Keith Packard <keithp@keithp.com>
 
 ---
-v5
-  - add to MAINTAINERS
+v3
+  - consistent #ifdeffery
 ---
- tests/tcg/aarch64/semicall.h                  | 18 +++++++++++
- tests/tcg/arm/semicall.h                      | 15 +--------
- tests/tcg/riscv64/semicall.h                  | 22 +++++++++++++
- .../arm-compat-semi}/semiconsole.c            |  2 ++
- .../arm-compat-semi}/semihosting.c            |  5 ++-
- MAINTAINERS                                   |  1 +
- tests/tcg/Makefile.target                     |  3 ++
- tests/tcg/aarch64/Makefile.target             | 18 -----------
- tests/tcg/arm/Makefile.target                 | 16 ++--------
- tests/tcg/multiarch/Makefile.target           | 31 +++++++++++++++++++
- 10 files changed, 84 insertions(+), 47 deletions(-)
- create mode 100644 tests/tcg/aarch64/semicall.h
- create mode 100644 tests/tcg/riscv64/semicall.h
- rename tests/tcg/{arm => multiarch/arm-compat-semi}/semiconsole.c (93%)
- rename tests/tcg/{arm => multiarch/arm-compat-semi}/semihosting.c (85%)
+ semihosting/arm-compat-semi.c | 56 ++++++++++++-----------------------
+ 1 file changed, 19 insertions(+), 37 deletions(-)
 
-diff --git a/tests/tcg/aarch64/semicall.h b/tests/tcg/aarch64/semicall.h
-new file mode 100644
-index 0000000000..8a3fce35c5
---- /dev/null
-+++ b/tests/tcg/aarch64/semicall.h
-@@ -0,0 +1,18 @@
-+/*
-+ * Semihosting Tests - AArch64 helper
-+ *
-+ * Copyright (c) 2019
-+ * Written by Alex Bennée <alex.bennee@linaro.org>
-+ *
-+ * SPDX-License-Identifier: GPL-3.0-or-later
-+ */
-+
-+uintptr_t __semi_call(uintptr_t type, uintptr_t arg0)
-+{
-+    register uintptr_t t asm("x0") = type;
-+    register uintptr_t a0 asm("x1") = arg0;
-+    asm("hlt 0xf000"
-+        : "=r" (t)
-+        : "r" (t), "r" (a0));
-+    return t;
-+}
-diff --git a/tests/tcg/arm/semicall.h b/tests/tcg/arm/semicall.h
-index d4f6818192..ad8ac51310 100644
---- a/tests/tcg/arm/semicall.h
-+++ b/tests/tcg/arm/semicall.h
-@@ -1,5 +1,5 @@
- /*
-- * Semihosting Tests
-+ * Semihosting Tests - ARM Helper
-  *
-  * Copyright (c) 2019
-  * Written by Alex Bennée <alex.bennee@linaro.org>
-@@ -7,13 +7,8 @@
-  * SPDX-License-Identifier: GPL-3.0-or-later
-  */
+diff --git a/semihosting/arm-compat-semi.c b/semihosting/arm-compat-semi.c
+index 94950b6c56..0f0e129a7c 100644
+--- a/semihosting/arm-compat-semi.c
++++ b/semihosting/arm-compat-semi.c
+@@ -767,15 +767,28 @@ static const GuestFDFunctions guestfd_fns[] = {
+     },
+ };
  
--#define SYS_WRITE0      0x04
--#define SYS_READC       0x07
--#define SYS_REPORTEXC   0x18
--
- uintptr_t __semi_call(uintptr_t type, uintptr_t arg0)
- {
--#if defined(__arm__)
-     register uintptr_t t asm("r0") = type;
-     register uintptr_t a0 asm("r1") = arg0;
- #ifdef __thumb__
-@@ -23,13 +18,5 @@ uintptr_t __semi_call(uintptr_t type, uintptr_t arg0)
- #endif
-     asm(SVC : "=r" (t)
-         : "r" (t), "r" (a0));
--#else
--    register uintptr_t t asm("x0") = type;
--    register uintptr_t a0 asm("x1") = arg0;
--    asm("hlt 0xf000"
--        : "=r" (t)
--        : "r" (t), "r" (a0));
+-/* Read the input value from the argument block; fail the semihosting
+- * call if the memory read fails.
++/*
++ * Read the input value from the argument block; fail the semihosting
++ * call if the memory read fails. Eventually we could use a generic
++ * CPUState helper function here.
+  */
+-#ifdef TARGET_ARM
++static inline bool is_64bit_semihosting(CPUArchState *env)
++{
++#if defined(TARGET_ARM)
++    return is_a64(env);
++#elif defined(TARGET_RISCV)
++    return !riscv_cpu_is_32bit(env);
++#else
++#error un-handled architecture
++#endif
++}
++
++
+ #define GET_ARG(n) do {                                 \
+-    if (is_a64(env)) {                                  \
++    if (is_64bit_semihosting(env)) {                    \
+         if (get_user_u64(arg ## n, args + (n) * 8)) {   \
+             errno = EFAULT;                             \
+-            return set_swi_errno(cs, -1);              \
++            return set_swi_errno(cs, -1);               \
+         }                                               \
+     } else {                                            \
+         if (get_user_u32(arg ## n, args + (n) * 4)) {   \
+@@ -786,41 +799,10 @@ static const GuestFDFunctions guestfd_fns[] = {
+ } while (0)
+ 
+ #define SET_ARG(n, val)                                 \
+-    (is_a64(env) ?                                      \
++    (is_64bit_semihosting(env) ?                        \
+      put_user_u64(val, args + (n) * 8) :                \
+      put_user_u32(val, args + (n) * 4))
 -#endif
+ 
+-#ifdef TARGET_RISCV
 -
-     return t;
- }
-diff --git a/tests/tcg/riscv64/semicall.h b/tests/tcg/riscv64/semicall.h
-new file mode 100644
-index 0000000000..f8c88f32dc
---- /dev/null
-+++ b/tests/tcg/riscv64/semicall.h
-@@ -0,0 +1,22 @@
-+/*
-+ * Semihosting Tests - RiscV64 Helper
-+ *
-+ * Copyright (c) 2021
-+ * Written by Alex Bennée <alex.bennee@linaro.org>
-+ *
-+ * SPDX-License-Identifier: GPL-3.0-or-later
-+ */
-+
-+uintptr_t __semi_call(uintptr_t type, uintptr_t arg0)
-+{
-+    register uintptr_t t asm("a0") = type;
-+    register uintptr_t a0 asm("a1") = arg0;
-+    asm(".option norvc\n\t"
-+        ".balign 16\n\t"
-+        "slli zero, zero, 0x1f\n\t"
-+        "ebreak\n\t"
-+        "srai zero, zero, 0x7\n\t"
-+        : "=r" (t)
-+        : "r" (t), "r" (a0));
-+    return t;
-+}
-diff --git a/tests/tcg/arm/semiconsole.c b/tests/tcg/multiarch/arm-compat-semi/semiconsole.c
-similarity index 93%
-rename from tests/tcg/arm/semiconsole.c
-rename to tests/tcg/multiarch/arm-compat-semi/semiconsole.c
-index 6ef0bd2450..1d82efc589 100644
---- a/tests/tcg/arm/semiconsole.c
-+++ b/tests/tcg/multiarch/arm-compat-semi/semiconsole.c
-@@ -7,6 +7,8 @@
-  * SPDX-License-Identifier: GPL-3.0-or-later
-  */
- 
-+#define SYS_READC       0x07
-+
- #include <stdio.h>
- #include <stdint.h>
- #include "semicall.h"
-diff --git a/tests/tcg/arm/semihosting.c b/tests/tcg/multiarch/arm-compat-semi/semihosting.c
-similarity index 85%
-rename from tests/tcg/arm/semihosting.c
-rename to tests/tcg/multiarch/arm-compat-semi/semihosting.c
-index 33faac9916..b3fd16cd12 100644
---- a/tests/tcg/arm/semihosting.c
-+++ b/tests/tcg/multiarch/arm-compat-semi/semihosting.c
-@@ -7,12 +7,15 @@
-  * SPDX-License-Identifier: GPL-3.0-or-later
-  */
- 
-+#define SYS_WRITE0      0x04
-+#define SYS_REPORTEXC   0x18
-+
- #include <stdint.h>
- #include "semicall.h"
- 
- int main(int argc, char *argv[argc])
- {
--#if defined(__arm__)
-+#if UINTPTR_MAX == UINT32_MAX
-     uintptr_t exit_code = 0x20026;
- #else
-     uintptr_t exit_block[2] = {0x20026, 0};
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 8e9f0d591e..0af92aea8f 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -3264,6 +3264,7 @@ M: Alex Bennée <alex.bennee@linaro.org>
- S: Maintained
- F: semihosting/
- F: include/semihosting/
-+F: tests/tcg/multiarch/arm-compat-semi/
- 
- Multi-process QEMU
- M: Elena Ufimtseva <elena.ufimtseva@oracle.com>
-diff --git a/tests/tcg/Makefile.target b/tests/tcg/Makefile.target
-index 24d75a5801..cab8c6b3a2 100644
---- a/tests/tcg/Makefile.target
-+++ b/tests/tcg/Makefile.target
-@@ -32,6 +32,9 @@
- all:
- -include ../../../config-host.mak
- -include ../config-$(TARGET).mak
-+ifeq ($(CONFIG_USER_ONLY),y)
-+-include $(SRC_PATH)/default-configs/targets/$(TARGET).mak
-+endif
- 
- # for including , in command strings
- COMMA := ,
-diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-index bf53ad0087..56e48f4b34 100644
---- a/tests/tcg/aarch64/Makefile.target
-+++ b/tests/tcg/aarch64/Makefile.target
-@@ -41,24 +41,6 @@ AARCH64_TESTS += mte-1 mte-2 mte-3 mte-4
- mte-%: CFLAGS += -march=armv8.5-a+memtag
- endif
- 
--# Semihosting smoke test for linux-user
--AARCH64_TESTS += semihosting
--run-semihosting: semihosting
--	$(call run-test,$<,$(QEMU) $< 2> $<.err, "$< on $(TARGET_NAME)")
+-/*
+- * get_user_ual is defined as get_user_u32 in softmmu-semi.h,
+- * we need a macro that fetches a target_ulong
+- */
+-#define get_user_utl(arg, p)                    \
+-    ((sizeof(target_ulong) == 8) ?              \
+-     get_user_u64(arg, p) :                     \
+-     get_user_u32(arg, p))
 -
--run-plugin-semihosting-with-%:
--	$(call run-test, $@, $(QEMU) $(QEMU_OPTS) \
--		-plugin $(PLUGIN_LIB)/$(call extract-plugin,$@) \
--		 $(call strip-plugin,$<) 2> $<.err, \
--		"$< on $(TARGET_NAME) with $*")
+-/*
+- * put_user_ual is defined as put_user_u32 in softmmu-semi.h,
+- * we need a macro that stores a target_ulong
+- */
+-#define put_user_utl(arg, p)                    \
+-    ((sizeof(target_ulong) == 8) ?              \
+-     put_user_u64(arg, p) :                     \
+-     put_user_u32(arg, p))
 -
--AARCH64_TESTS += semiconsole
--run-semiconsole: semiconsole
--	$(call skip-test, $<, "MANUAL ONLY")
+-#define GET_ARG(n) do {                                                 \
+-        if (get_user_utl(arg ## n, args + (n) * sizeof(target_ulong))) { \
+-            errno = EFAULT;                                             \
+-            return set_swi_errno(cs, -1);                              \
+-        }                                                               \
+-    } while (0)
 -
--run-plugin-semiconsole-with-%:
--	$(call skip-test, $<, "MANUAL ONLY")
--
- ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_SVE),)
- # System Registers Tests
- AARCH64_TESTS += sysregs
-diff --git a/tests/tcg/arm/Makefile.target b/tests/tcg/arm/Makefile.target
-index ec95156562..1deda384df 100644
---- a/tests/tcg/arm/Makefile.target
-+++ b/tests/tcg/arm/Makefile.target
-@@ -30,37 +30,25 @@ run-fcvt: fcvt
- 	$(call diff-out,fcvt,$(ARM_SRC)/fcvt.ref)
+-#define SET_ARG(n, val)                                 \
+-    put_user_utl(val, args + (n) * sizeof(target_ulong))
+-#endif
  
- # Semihosting smoke test for linux-user
--ARM_TESTS += semihosting
- semihosting: CFLAGS += -mthumb
--run-semihosting: semihosting
--	$(call run-test,$<,$(QEMU) $< 2> $<.err, "$< on $(TARGET_NAME)")
- 
- ARM_TESTS += semihosting-arm
- semihosting-arm: CFLAGS += -marm
--semihosting-arm: semihosting.c
--	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
- 
- run-semihosting-arm: semihosting-arm
- 	$(call run-test,$<,$(QEMU) $< 2> $<.err, "$< on $(TARGET_NAME)")
- 
--run-plugin-semihosting-with-%:
-+run-plugin-semihosting-arm-with-%:
- 	$(call run-test, $@, $(QEMU) $(QEMU_OPTS) \
- 		-plugin $(PLUGIN_LIB)/$(call extract-plugin,$@) \
- 		 $(call strip-plugin,$<) 2> $<.err, \
- 		"$< on $(TARGET_NAME) with $*")
- 
--ARM_TESTS += semiconsole semiconsole-arm
-+ARM_TESTS += semiconsole-arm
- 
- semiconsole: CFLAGS += -mthumb
--run-semiconsole: semiconsole
--	$(call skip-test, $<, "MANUAL ONLY")
--
--run-plugin-semiconsole-with-%:
--	$(call skip-test, $<, "MANUAL ONLY")
- 
- semiconsole-arm: CFLAGS += -marm
--semiconsole-arm: semiconsole.c
--	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
- 
- run-semiconsole-arm: semiconsole-arm
- 	$(call skip-test, $<, "MANUAL ONLY")
-diff --git a/tests/tcg/multiarch/Makefile.target b/tests/tcg/multiarch/Makefile.target
-index abbdb2e126..a3a751723d 100644
---- a/tests/tcg/multiarch/Makefile.target
-+++ b/tests/tcg/multiarch/Makefile.target
-@@ -69,6 +69,37 @@ run-gdbstub-%:
- endif
- EXTRA_RUNS += run-gdbstub-sha1 run-gdbstub-qxfer-auxv-read
- 
-+# ARM Compatible Semi Hosting Tests
-+#
-+# Despite having ARM in the name we actually have several
-+# architectures that implement it. We gate the tests on the feature
-+# appearing in config.
-+#
-+ifeq ($(CONFIG_ARM_COMPATIBLE_SEMIHOSTING),y)
-+VPATH += $(MULTIARCH_SRC)/arm-compat-semi
-+
-+# Add -I path back to TARGET_NAME for semicall.h
-+semihosting: CFLAGS+=-I$(SRC_PATH)/tests/tcg/$(TARGET_NAME)
-+
-+run-semihosting: semihosting
-+	$(call run-test,$<,$(QEMU) $< 2> $<.err, "$< on $(TARGET_NAME)")
-+
-+run-plugin-semihosting-with-%:
-+	$(call run-test, $@, $(QEMU) $(QEMU_OPTS) \
-+		-plugin $(PLUGIN_LIB)/$(call extract-plugin,$@) \
-+		 $(call strip-plugin,$<) 2> $<.err, \
-+		"$< on $(TARGET_NAME) with $*")
-+
-+semiconsole: CFLAGS+=-I$(SRC_PATH)/tests/tcg/$(TARGET_NAME)
-+
-+run-semiconsole: semiconsole
-+	$(call skip-test, $<, "MANUAL ONLY")
-+
-+run-plugin-semiconsole-with-%:
-+	$(call skip-test, $<, "MANUAL ONLY")
-+
-+TESTS += semihosting semiconsole
-+endif
- 
- # Update TESTS
- TESTS += $(MULTIARCH_TESTS)
+ /*
+  * Do a semihosting call.
 -- 
 2.20.1

@@ -1,93 +1,92 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1011757lfg;
-        Fri, 12 Mar 2021 00:12:13 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzyvM/BsAh6LYFmB97ibBylZVOe2rho3eClmW4b9P/rSe1WRk8Uz1kO5/5GiVTJz9/fHss4
-X-Received: by 2002:a25:d016:: with SMTP id h22mr17045947ybg.278.1615536732880;
-        Fri, 12 Mar 2021 00:12:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1615536732; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1014931lfg;
+        Fri, 12 Mar 2021 00:17:20 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxBN1sR8r4kzcZDztar90H9QDwBn0n1b0RgphRy4T+REtulF5dy9ZNV8RvW9dpy6Conjnnw
+X-Received: by 2002:a25:5f46:: with SMTP id h6mr17856501ybm.255.1615537039978;
+        Fri, 12 Mar 2021 00:17:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1615537039; cv=none;
         d=google.com; s=arc-20160816;
-        b=wxu9n6uHvzZzCe9VWO+bE3AIri1mnZdo/KIpkMBJ9glbDkICrmE9JOcztKkRGzJ+Ci
-         7dGY7NwZ91zeGvsClJ9jIiLaZ20fWDv2nH43dAelQUxtD1vPC3ALtFzWCVQ/9NI7WV3v
-         HA6vJ2GIeNEZAD0wKFtRNRbknH9enGYx2l8EOfirr2x2YAGKGQCIly/teoHefzM16yK/
-         Ir3/hB6UAkh2ZlyExlyO4tLl1EZCLMBMqgSUiH2fjcXWyAqaVZYFBJzDk3pD6bvAe51/
-         WnmzBtwShdXR5FfnRJ7gIwHCYPYrKmvDuW37OztGRkRWNac7qawv7a97NrCI0Y6u9+RI
-         Vs5g==
+        b=WD0DYtkdFf7KNfw1ER0EBWv2zV1u3G4z1fwTokhraZw+MLQKVGGOEhbzwOGRp1zGSG
+         IgmMrjEG6k5cSTCQWRKbddkbTtvGwBCrrOQn4rWB/hr/FiByv7d0Szm9LolxstRHKMZ6
+         0MB6UsSsKaAeSydlLU0KqKzsXXJc3L1f6zgwG+N02ICIs6+LYFNGnUHjaHuMG2wkM4N0
+         gNUof0woWrp7M80A5MEWuyLPkxs3byd3OtzJd2LDoIyOCQ2uaWXb8ByOHL/JztoK7qNG
+         3aJUsoq6vWrb+WmLJDRZnOwpFHdNOu/EsDIXyGrV4xcAR1w9VxPZmOIu8SxsQ1wckYez
+         hVgw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:subject:from:references:to:dkim-signature;
-        bh=uGuVoJ2Pflr7WqCqgfkZIlzhyrlDRD/JkcTbC7O4Cbo=;
-        b=tqswZTweD88BUIZQ86gwUP9q+eahgjiWzG4aP3zHqvfPCO8LPWl+ypt9bZhCJcRvJs
-         AWeHex1uPR2jCPipqNZFEBWt/0WZmszZTyBqWsN7Br0K5jMZ9HK/6Y2n8tdza/NIwXY4
-         CzNby/gjAXMh56oNmjYhWg2pRJ3CxSSQlOd1PGbWKnK/jZZGGIAHTCTkWli+4OIgLN2J
-         eabKB7s9Dye6wTaE7PxgPAcD8kzYtaWoElrkBg76i4pbGVLtSajteYd6DaQG+0CY72Lz
-         UEi4eapYVrA6qOLIBNJxVLYV6BO7Z3x4bGQB6MWgvF1wvebth/9odvlkaYHUC7v9vsrg
-         RQag==
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=djhwfvanJrQsHYbs1FX23KzOT+bFXFonPYugzWeOyzk=;
+        b=rYorrNZymjBlAbAkB7nv1AN0rgYim7R3I94K5oCaXHspdQgc43QSOynNOF7Udx+RRA
+         L1yWQv0OtnlIfsM7hQXxyaqLdj11BHk696R8BI8Gc1Xu0CKtCFyUaLf/29R4ib2kvhdQ
+         /Qa8iieGNHRzPKKirp6HAwPjMdH978JUCSt9Rklf5RJ46WI6eXvd/ZFSvTI1ci6jOopc
+         b0uQ991tJwopySs03ZPzIdl1YjZ1UW+wWnunp9j9Npm65T8/Aq19uk/D/DuVXkGzAfng
+         fb3TYgwsFRZ63jWsu8CLVXkEvAsi717rt/6/C77MOLwhf0IK8rRoJkvaK4svJ/5cSZ6S
+         7tWw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="NlNE4F/k";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=S+UUfDmJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h37si5320448ybj.201.2021.03.12.00.12.12
+        by mx.google.com with ESMTPS id e31si6083315ybi.442.2021.03.12.00.17.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 12 Mar 2021 00:12:12 -0800 (PST)
+        Fri, 12 Mar 2021 00:17:19 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="NlNE4F/k";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=S+UUfDmJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38460 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50046 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lKcu4-0001RO-4D
-	for alex.bennee@linaro.org; Fri, 12 Mar 2021 03:12:12 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59466)
+	id 1lKcz1-0007Te-B0
+	for alex.bennee@linaro.org; Fri, 12 Mar 2021 03:17:19 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60578)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lKctu-0001R7-Gl
- for qemu-arm@nongnu.org; Fri, 12 Mar 2021 03:12:02 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:46790)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lKcy7-0006Oj-0C
+ for qemu-arm@nongnu.org; Fri, 12 Mar 2021 03:16:23 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:29634)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lKcts-0002iO-VU
- for qemu-arm@nongnu.org; Fri, 12 Mar 2021 03:12:02 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lKcxz-0005OV-IO
+ for qemu-arm@nongnu.org; Fri, 12 Mar 2021 03:16:22 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1615536720;
+ s=mimecast20190719; t=1615536974;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=uGuVoJ2Pflr7WqCqgfkZIlzhyrlDRD/JkcTbC7O4Cbo=;
- b=NlNE4F/kwWX8zaR1BhKO9l6jt1NNsu04NnowYSXYPLSkoS+GKFFC3GDAyUy4gx5Dh1NO0n
- OEt5RJIN220dAPMscvs6YzgFuoI91+eJZTrOpVSgm1bfhsAZ9DcmUDuUOWevnyVSrfiaqt
- hM/Znz827594jwViKor0w2ARuwTkkSI=
+ bh=djhwfvanJrQsHYbs1FX23KzOT+bFXFonPYugzWeOyzk=;
+ b=S+UUfDmJ5tpHPWIHxGcATyoqNu+d6xx75095QOT4MjY4c7pCwqK8Q2D1uhA12cIDKy1ENI
+ aWYt30Vp+TFRpQLP6E/we8ud3VWP7kCeh9Zt/4hs2OdMtIbQ7FOyT9Ly8EtmRWkDLWa2W+
+ zQZn6rJon/CUqfrDIM9BqkxIYtFbPyI=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-219-vnpBco2KOhe1WVR42aFAyw-1; Fri, 12 Mar 2021 03:11:56 -0500
-X-MC-Unique: vnpBco2KOhe1WVR42aFAyw-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
+ us-mta-19-nt9enLupNaOokk7YQD4YrA-1; Fri, 12 Mar 2021 03:16:13 -0500
+X-MC-Unique: nt9enLupNaOokk7YQD4YrA-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2DF1F100D675;
- Fri, 12 Mar 2021 08:11:55 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C5037E5760;
+ Fri, 12 Mar 2021 08:16:11 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-112-83.ams2.redhat.com [10.36.112.83])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 55E33369A;
- Fri, 12 Mar 2021 08:11:46 +0000 (UTC)
-To: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@gmail.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 3F7DF19C47;
+ Fri, 12 Mar 2021 08:16:02 +0000 (UTC)
+Subject: Re: [PATCH 2/6] tests/qtest: Add qtest_probe_accel() method
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org, Claudio Fontana <cfontana@suse.de>
 References: <20210311231202.1536040-1-philmd@redhat.com>
- <20210311231202.1536040-2-philmd@redhat.com>
- <CAJ+F1CLu=A4CaL+KbsSuOr9A36DX_9PpkVNg7PH7-4hCzpfoFg@mail.gmail.com>
+ <20210311231202.1536040-3-philmd@redhat.com>
 From: Thomas Huth <thuth@redhat.com>
-Subject: Re: [PATCH 1/6] accel: Introduce 'query-accels' QMP command
-Message-ID: <651baead-dcc3-c0ef-f5dd-cda36c8d6599@redhat.com>
-Date: Fri, 12 Mar 2021 09:11:45 +0100
+Message-ID: <8814a4d5-f26d-3645-4e64-eb5b8f8bf973@redhat.com>
+Date: Fri, 12 Mar 2021 09:16:01 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.0
 MIME-Version: 1.0
-In-Reply-To: <CAJ+F1CLu=A4CaL+KbsSuOr9A36DX_9PpkVNg7PH7-4hCzpfoFg@mail.gmail.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+In-Reply-To: <20210311231202.1536040-3-philmd@redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
 X-Mimecast-Spam-Score: 0
@@ -104,7 +103,7 @@ X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.25,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
  RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -120,76 +119,88 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Laurent Vivier <lvivier@redhat.com>, Andrew Jones <drjones@redhat.com>,
  =?UTF-8?Q?Daniel_P_=2e_Berrang=c3=a9?= <berrange@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- libvir-list@redhat.com, Richard Henderson <richard.henderson@linaro.org>,
- QEMU <qemu-devel@nongnu.org>, Markus Armbruster <armbru@redhat.com>,
- "open list:ARM" <qemu-arm@nongnu.org>, Claudio Fontana <cfontana@suse.de>,
- Igor Mammedov <imammedo@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+ Richard Henderson <richard.henderson@linaro.org>,
+ Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Eric Blake <eblake@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1L2u8USMMgxU
+X-TUID: 9XgobXWj9hxK
 
-On 12/03/2021 08.42, Marc-André Lureau wrote:
+On 12/03/2021 00.11, Philippe Mathieu-Daudé wrote:
+> Introduce the qtest_probe_accel() method which allows
+> to query at runtime if a QEMU instance has an accelerator
+> built-in.
 > 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+>   tests/qtest/libqos/libqtest.h |  9 +++++++++
+>   tests/qtest/libqtest.c        | 24 ++++++++++++++++++++++++
+>   2 files changed, 33 insertions(+)
 > 
-> On Fri, Mar 12, 2021 at 3:14 AM Philippe Mathieu-Daudé <philmd@redhat.com 
-> <mailto:philmd@redhat.com>> wrote:
-> 
-[...]
->     +##
->     +# @AcceleratorInfo:
->     +#
->     +# Accelerator information.
->     +#
->     +# @name: The accelerator name.
->     +#
->     +# Since: 6.0
->     +##
->     +{ 'union': 'AcceleratorInfo',
->     +  'base': {'name': 'Accelerator'},
->     +  'discriminator': 'name',
->     +  'data': { } }
-> 
->     +
-> 
-> 
-> Making room for future details, why not.
+> diff --git a/tests/qtest/libqos/libqtest.h b/tests/qtest/libqos/libqtest.h
+> index a68dcd79d44..ebedb82ec98 100644
+> --- a/tests/qtest/libqos/libqtest.h
+> +++ b/tests/qtest/libqos/libqtest.h
+> @@ -763,6 +763,15 @@ void qmp_expect_error_and_unref(QDict *rsp, const char *class);
+>    */
+>   bool qtest_probe_child(QTestState *s);
+>   
+> +/**
+> + * qtest_probe_accel:
+> + * @s: QTestState instance to operate on.
+> + * @name: Accelerator name to check for.
+> + *
+> + * Returns: true if the accelerator is built in.
+> + */
+> +bool qtest_probe_accel(QTestState *s, const char *name);
 
-I think we definitely need the additional data section here: For KVM on 
-POWER, it would be good to know whether it's KVM-HV or KVM-PR, for KVM on 
-MIPS it would be good to know whether it's KVM_VM_MIPS_VZ or KVM_VM_MIPS_TE, 
-for KVM on x86 whether it's the AMD flavor or Intel, ...
+Maybe better qtest_has_accel() ? ... that makes it clear right from the 
+start what the return type is about.
 
->     +##
->     +# @query-accels:
->     +#
->     +# Get a list of AcceleratorInfo for all built-in accelerators.
->     +#
->     +# Returns: a list of @AcceleratorInfo describing each accelerator.
->     +#
->     +# Since: 6.0
->     +#
->     +# Example:
->     +#
->     +# -> { "execute": "query-accels" }
->     +# <- { "return": [
->     +#        {
->     +#            "type": "qtest"
->     +#        },
->     +#        {
->     +#            "type": "kvm"
->     +#        }
->     +#    ] }
->     +#
->     +##
->     +{ 'command': 'query-accels',
->     +  'returns': ['AcceleratorInfo'] }
-> 
-> 
-> That's nice, but how do you know which accels are actually enabled?
+>   /**
+>    * qtest_set_expected_status:
+>    * @s: QTestState instance to operate on.
+> diff --git a/tests/qtest/libqtest.c b/tests/qtest/libqtest.c
+> index 71e359efcd3..57e7e55b9cc 100644
+> --- a/tests/qtest/libqtest.c
+> +++ b/tests/qtest/libqtest.c
+> @@ -872,6 +872,30 @@ void qtest_qmp_eventwait(QTestState *s, const char *event)
+>       qobject_unref(response);
+>   }
+>   
+> +bool qtest_probe_accel(QTestState *s, const char *name)
+> +{
+> +    bool has_accel = false;
+> +    QDict *response;
+> +    QList *accels;
+> +    QListEntry *accel;
+> +
+> +    response = qtest_qmp(s, "{'execute': 'query-accels'}");
+> +    accels = qdict_get_qlist(response, "return");
+> +
+> +    QLIST_FOREACH_ENTRY(accels, accel) {
+> +        QDict *accel_dict = qobject_to(QDict, qlist_entry_obj(accel));
+> +        const char *accel_name = qdict_get_str(accel_dict, "name");
+> +
+> +        if (!strcmp(name, accel_name)) {
 
-I guess we need two commands in the end, one for querying which accelerators 
-are available, and one for querying the data from the currently active 
-accelerator...?
+I'd prefer g_str_equal() ... that's easier to read.
+
+> +            has_accel = true;
+> +            break;
+> +        }
+> +    }
+> +    qobject_unref(response);
+> +
+> +    return has_accel;
+> +}
+> +
+>   char *qtest_vhmp(QTestState *s, const char *fmt, va_list ap)
+>   {
+>       char *cmd;
+> 
 
   Thomas
 

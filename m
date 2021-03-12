@@ -1,144 +1,188 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2335768lfg;
-        Sat, 13 Mar 2021 11:49:00 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwu9Iu5NhNchlcna0arebsqxiOh1M5HS3J/GAUx9cDXLVMzMyUblZRkJgQUnPkNqN/2wOZe
-X-Received: by 2002:a05:6902:4b3:: with SMTP id r19mr27367621ybs.432.1615664940842;
-        Sat, 13 Mar 2021 11:49:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1615664940; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1483959lfg;
+        Fri, 12 Mar 2021 10:30:12 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwSwWrQUq9DZ2iALX8Wu1k6X1YF8oDuKBnoUZ3pcskorJ76tknXVZ+4cTPgwA0ydVenGbq+
+X-Received: by 2002:a92:c709:: with SMTP id a9mr3732102ilp.272.1615573812602;
+        Fri, 12 Mar 2021 10:30:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1615573812; cv=none;
         d=google.com; s=arc-20160816;
-        b=YJUwtMfAOqdARtJ+vs6S2/NTXqKMD2UfjkugFBEdPd+X1t7nVfoFi8iB5mStrgb2vv
-         vFamG+4x28llnP38XiWORO3XXn3zwU2B6dHEhPSnJ4q/nzrBM81QkWyTTU+GGTsIAE1S
-         WzBhZLkBSTiXnnGxCzoQBmbDn3ohtU6+HEyh364j8PgncmhYcB1Gmup8cTUYWs8tuId3
-         qwmHqXjTyOUqNA1e72T87X4e64bc+ydF2FmRqlfKHN2eMXahoGahiyJ4UHxnT82iqQNO
-         lgDYrG8voX6SpvxZGVZ3K1B7hpsyHgE7E3tQsivdCywNCWg2KNz/e8C9VhOjnSJiyvnC
-         1+AQ==
+        b=dA9tsIpyEOnHXHt+vO9fnT81O4a1kMO3yj4VBudvYd/yAL4ne2+Cw0VV6Ffnnte6Kh
+         t6QgtIsDijUX+ev+kyu5otb6NapDX4792IJvOyBkHuZugdiRjO5r72TWuf7u6SrFN4vs
+         WbxP1rTEYiW0gHiiIVxjWjM061Tfe6TZzCcdEXYf8FpQoMoRIuG16+qNDgs2mg7P27wV
+         avx2x/lqLxlx5QkOF+u46ibHnyiotowWg7Dw4QYjCXqS+hL5hlrUHETRALjIdLvou26Y
+         D87kCBf/+2RWThALFVeCXBN9klwqQ5H/MJIDQ0qkpM/6DCFzNKYWY+oCu+l9igTq5czp
+         Sd2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=pgqlVMFohaF7iRRtOqmZSpltiWSkM5vINFATy7vMnzA=;
-        b=ME61gsoZsGowF5UvlJWTgu2ZOLTsdsJ5eXUWBoXdlfArKQmLXn0qmV+1Dg0YrNXGfz
-         9qe8RVLodDcZb4pMS3rj8BNtW3ra+IFnB5Z5ziflTx0LLAnaQnyMoRJHcpkRX1D1xKFK
-         KFGOQUmRnghk5rEHCk3Xi8ML7QCeXTKQ4AX2vmVy7U5j6D91r1X+GbrJZuvbO6u6ZIWb
-         um8SjAcn9NbbcvCwmOWAuEV4tSLRzVc0icBH11eC1PEHLHpc3TBcFlK8L/brC0DEmDIz
-         V9kTP2/QeyrA6lxA4d6Kw0p4CJvuUy3aTdoK5B65HXCIbR4dHTuQQ+gvMA6km8/GuBy6
-         H0ug==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=FdVDED8kKnbt0t9rcpUoiyt06STJfiA/Zd4Bwc57Y8s=;
+        b=PFEuWhjuqOwwJN/BJKBcmWJD8fki3CPwY+N4USAaQVM2XXen1CzRtdzLXIZkYcMWVb
+         g43gUBvhvvRsqnuflehqZdZaF/VOPLQ6ySs4RNHbEAS4zmtZfNCWmCO79KYGiyVAD1Jp
+         JRs/wUizVpBw6ePytKH9BLcUbDEdNerbtbhcSWMamKP10UPwSmsFBya99BYbBDT4n1mG
+         dRPSNjP4Oh0ry/JMSnJQOFOuNUjz38T6xu9dq4x6nnES4gTAKyO/pnOj54LWumDihF23
+         795V+PfJBY7Sqex8uBfmrX2D5ykF9tvc/2P40fNXQu94ML7i7rpfUb0AKPrmx5rHYzeK
+         G7fg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Adho7pXl;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=hFY6aiFV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b71si9160200yba.187.2021.03.13.11.49.00
+        by mx.google.com with ESMTPS id f7si5816376jav.10.2021.03.12.10.30.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 13 Mar 2021 11:49:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 12 Mar 2021 10:30:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Adho7pXl;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=hFY6aiFV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56000 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53268 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lLAFw-0005ax-4Z
-	for alex.bennee@linaro.org; Sat, 13 Mar 2021 14:49:00 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56884)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lKmY7-0007Zj-Oh
+	for alex.bennee@linaro.org; Fri, 12 Mar 2021 13:30:11 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59788)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lLAEf-0004co-PW
- for qemu-devel@nongnu.org; Sat, 13 Mar 2021 14:47:42 -0500
-Received: from mail-qk1-x732.google.com ([2607:f8b0:4864:20::732]:39256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lKlbf-0005R8-KY
+ for qemu-arm@nongnu.org; Fri, 12 Mar 2021 12:29:47 -0500
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331]:43743)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lLAEe-0006OV-AK
- for qemu-devel@nongnu.org; Sat, 13 Mar 2021 14:47:41 -0500
-Received: by mail-qk1-x732.google.com with SMTP id g185so27939996qkf.6
- for <qemu-devel@nongnu.org>; Sat, 13 Mar 2021 11:47:39 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lKlbb-0002g1-Gb
+ for qemu-arm@nongnu.org; Fri, 12 Mar 2021 12:29:47 -0500
+Received: by mail-wm1-x331.google.com with SMTP id
+ u5-20020a7bcb050000b029010e9316b9d5so12671404wmj.2
+ for <qemu-arm@nongnu.org>; Fri, 12 Mar 2021 09:29:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=pgqlVMFohaF7iRRtOqmZSpltiWSkM5vINFATy7vMnzA=;
- b=Adho7pXl8fZJ3UYAUlXfkxLk5bx7fMf1X3SHJGmCQUR80TninQGrhVbhIG0A2m4C/j
- Aci8IODGUJvg41YBqsa/UEXcZ3DyFRnbL7wIUo9E5Rf9TiGxxrNSDm0TUrTv+Ox56yNa
- ON6u70PvzixGWg5zO8ktpe40p6tsR1x0TWwC8M0IgFoyRF97BuWUBObFRSTKsW2cJ6zw
- F//8s514zvylJMfTiOyrj3iUh1ogSRTMtL8VB2XCTYEZ9JvmMvmQlCVO1GYmpnlzBT16
- ZNTg007iUS9S0lHy0nSfxTXmngxKZDtufPeZOuBj3ocvA9ts1PcPhm2QkikuTguGSM/6
- aeGA==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=FdVDED8kKnbt0t9rcpUoiyt06STJfiA/Zd4Bwc57Y8s=;
+ b=hFY6aiFV596TJ8mRkE54kxP7Hq8Bne2Gl5B/yE5QkwiYbMPtyTSHGDBSWRDdMSDhk/
+ IK0YleMIff7FjwcHCa5bVHX97jK7kIUcUtTQ8sbdoUA+1tGNc91wYqcmTfFSFcQCq4e3
+ +ir0U4uqctisXEKMA8YjOzVMmegfbLY5rXmERkvVS+qtfS+qE/oIWMpaCiI790t5vseI
+ rliQsMmSWthDenmoaEpMIYEH16PYnw52enyAdoEuhCkVoI+8MCgq8khHKZc7LaN403lz
+ kQyOMJwNm2rXJWUiuP8QAT0W0Ob2uuc52k1rgjEdGthezZEmIy4KcQp52QmErur7yuD/
+ r75A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=pgqlVMFohaF7iRRtOqmZSpltiWSkM5vINFATy7vMnzA=;
- b=SKVhl+8k3JTeO/BLXF/2bELYdDOQROWv8eRC8D7nAeEXEUW57bCYsCURWIuCiQ8eUv
- FwMyg2//2IpntaILpT9hXTNKrukzJIkZNlqxhAN2+X+DiHmiJq2gEnH4nYtBg2lOSIfd
- h0woiZOCvXX93Dj4Ni+LdZtMYaYP1S98sdzRwQ2RpRJ0cGBJG7m8jJp0RfY4any9awFv
- +fHRQo9+RZbb3hmz6/cXJRPRxCxSo3TYMITPqz8a2YZexekqr9ItkV9ls0qkg5c2628n
- IkphaodPjQVrUFN/odXt9WN4c1b+YFYBVQVUCz7WluY69xd7mqNp61db2d9rlnoT/OV3
- To3A==
-X-Gm-Message-State: AOAM531wmtOKAiH9jSOvRKYZN5fxaMJ9PEjhzgy6SGoH7gr/RaKlQpcG
- ox3EAXn5eN9uq45qIvnRP6aPQw==
-X-Received: by 2002:a37:7ac3:: with SMTP id
- v186mr18006763qkc.211.1615664859501; 
- Sat, 13 Mar 2021 11:47:39 -0800 (PST)
-Received: from [10.10.121.52] (fixed-187-189-51-144.totalplay.net.
- [187.189.51.144])
- by smtp.gmail.com with ESMTPSA id z196sm7478507qka.70.2021.03.13.11.47.38
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 13 Mar 2021 11:47:39 -0800 (PST)
-Subject: Re: [PATCH] hw/display/bcm2835_fb: Remove DeviceReset() call in
- DeviceRealize()
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-References: <20210313170131.2116837-1-f4bug@amsat.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <895860ad-914d-c10f-73c7-7ae2bd356d8b@linaro.org>
-Date: Sat, 13 Mar 2021 13:47:29 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.1
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=FdVDED8kKnbt0t9rcpUoiyt06STJfiA/Zd4Bwc57Y8s=;
+ b=DTfJHo2iidv5Dkpucuqj6LYAtpS78l8k7yCF4E4pNlAhx3JhZYw6DpUknkfZRUGLqF
+ q1U65Yxboiem3r+DsnxUNzbeWmEa8pG6kB0q/5wWunBXipEi9NcI+21HR0Vdi/up1KCY
+ W0G8IFcQRDX3+Wq7MIeDize/wASI3MA8hjP9+8lGx8sTpNQtZ7CnR823dsEj4uzq0Y6K
+ VWvSaY1AW4b8GgOngmq6nx3+5gATtZDxGTxudMzYcuxamCYHe3nG+HVFXHRKi1v56EJ8
+ 5qyvbfdSqe9l/C09lq42YbI864K5SgrIZgINNRmzrKqvAzyLyVJ080JoLk2UiMpKszKH
+ CdNA==
+X-Gm-Message-State: AOAM530B1mWugX7KoAbfdQIqhpJEszSRPF0Svc6vzdbsRpeEwPR6PqB/
+ eckIVY3ry/9yko6JTdLURpGm+i9RaB06B0+3
+X-Received: by 2002:a1c:3c02:: with SMTP id j2mr14101898wma.92.1615570182187; 
+ Fri, 12 Mar 2021 09:29:42 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id m132sm2679001wmf.45.2021.03.12.09.29.41
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 12 Mar 2021 09:29:41 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH for-6.0 1/2] memory: Add offset_in_region to flatview_cb
+ arguments
+Date: Fri, 12 Mar 2021 17:29:38 +0000
+Message-Id: <20210312172939.695-2-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20210312172939.695-1-peter.maydell@linaro.org>
+References: <20210312172939.695-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20210313170131.2116837-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::732;
- envelope-from=richard.henderson@linaro.org; helo=mail-qk1-x732.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, Andrew Baumann <Andrew.Baumann@microsoft.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: folllvduFtG1
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Kumar Gala <kumar.gala@linaro.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: auwZn4wwCCAd
 
-On 3/13/21 11:01 AM, Philippe Mathieu-Daudé wrote:
-> When QDev objects have their DeviceReset handler set, they
-> shouldn't worry about calling it at realization stage (it
-> is handled by hw/core/qdev.c::device_set_realized).
-> 
-> Remove the pointless/confusing bcm2835_fb_reset() call.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé<f4bug@amsat.org>
-> ---
+The function flatview_for_each_range() calls a callback for each
+range in a FlatView.  Currently the callback gets the start and
+length of the range and the MemoryRegion involved, but not the offset
+within the MemoryRegion.  Add this to the callback's arguments; we're
+going to want it for a new use in the next commit.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+While we're editing the flatview_cb typedef, add names for the
+arguments that were missing names.
 
-r~
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ include/exec/memory.h           | 4 +++-
+ softmmu/memory.c                | 3 ++-
+ tests/qtest/fuzz/generic_fuzz.c | 4 +++-
+ 3 files changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/include/exec/memory.h b/include/exec/memory.h
+index 54ccf1a5f09..0c3ddf2bb9a 100644
+--- a/include/exec/memory.h
++++ b/include/exec/memory.h
+@@ -778,7 +778,9 @@ static inline FlatView *address_space_to_flatview(AddressSpace *as)
+ 
+ typedef int (*flatview_cb)(Int128 start,
+                            Int128 len,
+-                           const MemoryRegion*, void*);
++                           const MemoryRegion *mr,
++                           hwaddr offset_in_region,
++                           void *opaque);
+ 
+ void flatview_for_each_range(FlatView *fv, flatview_cb cb , void *opaque);
+ 
+diff --git a/softmmu/memory.c b/softmmu/memory.c
+index 9db47b7db6b..3cc78862c79 100644
+--- a/softmmu/memory.c
++++ b/softmmu/memory.c
+@@ -671,7 +671,8 @@ void flatview_for_each_range(FlatView *fv, flatview_cb cb , void *opaque)
+     assert(cb);
+ 
+     FOR_EACH_FLAT_RANGE(fr, fv) {
+-        if (cb(fr->addr.start, fr->addr.size, fr->mr, opaque))
++        if (cb(fr->addr.start, fr->addr.size, fr->mr,
++               fr->offset_in_region, opaque))
+             break;
+     }
+ }
+diff --git a/tests/qtest/fuzz/generic_fuzz.c b/tests/qtest/fuzz/generic_fuzz.c
+index ee8c17a04c4..c10a19316f5 100644
+--- a/tests/qtest/fuzz/generic_fuzz.c
++++ b/tests/qtest/fuzz/generic_fuzz.c
+@@ -96,7 +96,9 @@ struct get_io_cb_info {
+ };
+ 
+ static int get_io_address_cb(Int128 start, Int128 size,
+-                          const MemoryRegion *mr, void *opaque) {
++                             const MemoryRegion *mr,
++                             hwaddr offset_in_region,
++                             void *opaque) {
+     struct get_io_cb_info *info = opaque;
+     if (g_hash_table_lookup(fuzzable_memoryregions, mr)) {
+         if (info->index == 0) {
+-- 
+2.20.1
+

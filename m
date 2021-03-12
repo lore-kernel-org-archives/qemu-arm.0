@@ -1,109 +1,98 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp933609lfg;
-        Thu, 11 Mar 2021 21:54:02 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwyrrmc7BJG6lMSmvcuu9Fkwl54rfJoHR2KxHB6GB295iKRkJdNlWYcRIJmUmZ3LlIEs3W9
-X-Received: by 2002:a25:be8d:: with SMTP id i13mr16630744ybk.320.1615528442011;
-        Thu, 11 Mar 2021 21:54:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1615528442; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp958131lfg;
+        Thu, 11 Mar 2021 22:35:28 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx4Nmj2+EOx/IXuMwJ36PKxjcQ9N6Kd/ee0ft8ruWL+nFPD1OnIjyd+jHd1w07eGUICKIBg
+X-Received: by 2002:a25:c793:: with SMTP id w141mr17278446ybe.29.1615530928618;
+        Thu, 11 Mar 2021 22:35:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1615530928; cv=none;
         d=google.com; s=arc-20160816;
-        b=DB/FRDIb45k+8pxRC7sm6OtmTzwns0qX6JiTl/iv/1EyEydRx9tLeE/yaqz0aQoV0Y
-         zc/J+Rg5XH/S9lO1tCikX4b0OQ0jCuu7L3sq7Ol8P7pbhMxSbkl7X2bAXNvvhpWMc7dC
-         cMqii+bjB9UQa5nNzo8H2W83YH8HS2DLAnLAxbU5+wPzSnxptdldGDdAflcJQQCC7oqq
-         tEoW3/SlL/GKzT265/0v99dxCP4Xg73bhvH2KLQG6flMCv/+at/vugpEOmUMbDCtyvx8
-         5GLDXTeRvHu8rsFTzoplCrHf+33ZYh6yWCSfYFBAFU+jzf5FS0qP/x2ioeLY/D20iQXy
-         FaZQ==
+        b=MgU2s9ha1G2LHBLtWp6SUFByItntoVrHipM1hNZY0NdjeAeuZNipKwjwdgjOLT2rbZ
+         qHD51VPOPwTzg0vLJkjcrYwZh2ZQzPp4xThgmZJ9a3K+jZzkRIuwGzrV32PCVtqgmdwb
+         RFcar+odIVUlc4ByZCo9fQqBQkYUsjje1qy/oEcVlt9Q+2YQ2RxRw32shSUBJkGJSYqh
+         OpktR8X63HKxXuUQO6Rw/OfyO+CDagADPyLCVNjv7Jrdtl1gBS8N08QUhN4pmlKJEpLq
+         A/frgoDR/TOzJ0cGDKrcK8R4IBh9Z18yWBVDCQ/KknVhVi+Mq83HoI4QrramvWvGA2c2
+         ylNg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=lkPdMs3gW63TryGGFO98QH3i4WpZFx+UEfNPPLaA9Nk=;
-        b=czZbjD5TCT97kz8MG+m5pGTRC7uFvfoofFFZVFF8Mx5S+0HmmDSNcvFExS8h8R4czv
-         MRPby6VK1zXU+rHdnKBbkn7fRJkj9UFfJD2LH1mqGwCRhZgmpEs/F4zHMbf3TXqGEBm4
-         mkq8Nf7x4OaCK2TjhVOlTlX45p3lDXlKqLiNtcIzmyPjJdC1yVGpU5OT3V2ysbP6ULGC
-         1IR1z8Owt/wLvhuGJHwxQpT4GS/YZetm4DcDrPqOro0XFRCB/lq8SBWe9PJwK63MLDzj
-         dYhd2oK0zoDpwfZ/hCu0HWMQ3PF3ubh8rNvJSXxi90bmX8DVBCDATU+iDzd3+IjGaOPx
-         rKWQ==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=51MDElGIrd0gOlrw0iLGZfFcICmNZ9NXvYc8V3cZNZE=;
+        b=lkl1JGySE8ozit2xaGFpTE6Miyxlv0veLrzNW7lecWLiesa3kf+DxYYUc2DDLUhQ7q
+         BrlorTOK9JE4igJQL6tSS3JJ2HSiONj0+8VjsU7V3jAf1BAuOtpnXHW5mVy5kJ//PT6A
+         W/oLrgRbKx+mnm2x6SIBgfDe1ZESVP4cHj8PRc8ZEU7x92sfbsk+2fQ9EX7NnR3zITPZ
+         hHh9ZaBMZDPxC7tujnBx3KM4ABZaMTkewNEhe6gN3tl77m6FkInwKqEsrGtsIho5Hxf9
+         dbc4ItyIKPYjt7CGNuJhr7kxNfPvazsvmPobRBUynL/4cK1dZ044vJckvKo9xyjtxvq+
+         pI2A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=H7g3O8oq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@jms.id.au header.s=google header.b=GamGiyYC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m64si5614617ybm.121.2021.03.11.21.54.01
+        by mx.google.com with ESMTPS id k125si4924390ybf.221.2021.03.11.22.35.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Mar 2021 21:54:02 -0800 (PST)
+        Thu, 11 Mar 2021 22:35:28 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=H7g3O8oq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34172 helo=lists1p.gnu.org)
+       dkim=fail header.i=@jms.id.au header.s=google header.b=GamGiyYC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:40800 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lKakL-0006nm-CW
-	for alex.bennee@linaro.org; Fri, 12 Mar 2021 00:54:01 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56138)
+	id 1lKbOR-0006V9-Qi
+	for alex.bennee@linaro.org; Fri, 12 Mar 2021 01:35:27 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36166)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lKak5-0006mK-Fy
- for qemu-arm@nongnu.org; Fri, 12 Mar 2021 00:53:46 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:51999)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lKak1-00081r-DG
- for qemu-arm@nongnu.org; Fri, 12 Mar 2021 00:53:44 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1615528419;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=lkPdMs3gW63TryGGFO98QH3i4WpZFx+UEfNPPLaA9Nk=;
- b=H7g3O8oqWNsPa4qYQvHwfJsSx9z4OCOcBbXpTEZl44ddQqbkvY6/NTn27gRYrmhb+/bbG1
- yERvsJQ0aoT1M76Q5ZquRh/GxFbS8gS6bX9hlint+i49tOL6ZsRMW9tujD9KuCMC4QzTLS
- y5H7RcTvWh3/mNHDXlKTrOdjiwRKgcw=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-283-Lo4un77jPkOvjgGIZnEeSw-1; Fri, 12 Mar 2021 00:53:37 -0500
-X-MC-Unique: Lo4un77jPkOvjgGIZnEeSw-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 49A55192D785;
- Fri, 12 Mar 2021 05:53:36 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-112-83.ams2.redhat.com [10.36.112.83])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 3CA4860C5D;
- Fri, 12 Mar 2021 05:53:33 +0000 (UTC)
-Subject: Re: [PATCH v2 3/3] tests/qtest: Add test for Aspeed HACE
-To: Joel Stanley <joel@jms.id.au>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
- <clg@kaod.org>, Laurent Vivier <lvivier@redhat.com>
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1lKbMT-0004vQ-JJ; Fri, 12 Mar 2021 01:33:25 -0500
+Received: from mail-qk1-x736.google.com ([2607:f8b0:4864:20::736]:44770)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1lKbMP-0007lM-Hb; Fri, 12 Mar 2021 01:33:23 -0500
+Received: by mail-qk1-x736.google.com with SMTP id 130so23258404qkh.11;
+ Thu, 11 Mar 2021 22:33:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=51MDElGIrd0gOlrw0iLGZfFcICmNZ9NXvYc8V3cZNZE=;
+ b=GamGiyYCwWgPnNyp8jg/1x2zTAHWXJ+OpZ/rGaH5W3OQnm1nKTZViTFc9P5SQhDBHC
+ SDsumfW6rXeeyAEDdG9VpgYcYIwCvKcOjhkZb5+D3/wsNCtE6MWLMm4UI0OPrBtidSFF
+ djTJAyjl/Ozn13y3N+u/AT9okqqbZOAaBbi1o=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=51MDElGIrd0gOlrw0iLGZfFcICmNZ9NXvYc8V3cZNZE=;
+ b=mIq2fkkLRXpp835CEcVSQ9uIMfwqiMfI3BgOqSc1xeBmcY35uyavKYb4GBdE2606Dr
+ kxC9HkbA4RmteGDkbeJaiPTeutCFPwb4sXokZ/j/X3MVBXDvUN8If6bqRNyvnKuFvRsA
+ pNhao6q5/o4NgDm5n2U7nQ3KXxgHytEpQnvsX88KzXrmoR65w0Rqx94O66f+xxZNn1Ck
+ ibbZOlzRi2U3aIU99JISKwC5xA/sWKf1N+tBuy+COOeva+zgGkdXCYhap3HhZeq8F4tj
+ rzyBzEQWVmSnQDSgT8huNTRAjoP+yE7J116Z3AmIB3Ma1NpNH6u5Gtv7h2dyS4AWJcya
+ DbDw==
+X-Gm-Message-State: AOAM530MY8qFo5N81iGacvzU0DB+p9EJQ/udi/a6NTivGpFZAG+PyoeY
+ tTM9IiwW/92ns0z5wya4CYPiVY/sntfvF1dxpYo=
+X-Received: by 2002:a05:620a:4055:: with SMTP id
+ i21mr11237475qko.55.1615530796929; 
+ Thu, 11 Mar 2021 22:33:16 -0800 (PST)
+MIME-Version: 1.0
 References: <20210311234726.437676-1-joel@jms.id.au>
  <20210311234726.437676-4-joel@jms.id.au>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <ee8d96c5-fc66-79f5-7ac7-f3bb443eb724@redhat.com>
-Date: Fri, 12 Mar 2021 06:53:33 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.0
-MIME-Version: 1.0
-In-Reply-To: <20210311234726.437676-4-joel@jms.id.au>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.25,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ <ee8d96c5-fc66-79f5-7ac7-f3bb443eb724@redhat.com>
+In-Reply-To: <ee8d96c5-fc66-79f5-7ac7-f3bb443eb724@redhat.com>
+From: Joel Stanley <joel@jms.id.au>
+Date: Fri, 12 Mar 2021 06:33:04 +0000
+Message-ID: <CACPK8XcDmchL_UX=RoyC88+QJj3e3wi_QrLjEfh_S3jpNDbCnA@mail.gmail.com>
+Subject: Re: [PATCH v2 3/3] tests/qtest: Add test for Aspeed HACE
+To: Thomas Huth <thuth@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::736;
+ envelope-from=joel.stan@gmail.com; helo=mail-qk1-x736.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -116,76 +105,77 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>
+Cc: Laurent Vivier <lvivier@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XsVFym8WSWwx
+X-TUID: H0lApwsYilzs
 
-On 12/03/2021 00.47, Joel Stanley wrote:
-> This adds a test for the Aspeed Hash and Crypto (HACE) engine. It tests
-> the currently implemented behavior of the hash functionality.
-> 
-> The tests are similar, but are cut/pasted instead of broken out into a
-> common function so the assert machinery produces useful output when a
-> test fails.
-> 
-> Signed-off-by: Joel Stanley <joel@jms.id.au>
-> ---
->   tests/qtest/aspeed_hace-test.c | 215 +++++++++++++++++++++++++++++++++
->   MAINTAINERS                    |   1 +
->   tests/qtest/meson.build        |   3 +
->   3 files changed, 219 insertions(+)
->   create mode 100644 tests/qtest/aspeed_hace-test.c
-> 
-> diff --git a/tests/qtest/aspeed_hace-test.c b/tests/qtest/aspeed_hace-test.c
-> new file mode 100644
-> index 000000000000..52501ee37afb
-> --- /dev/null
-> +++ b/tests/qtest/aspeed_hace-test.c
-> @@ -0,0 +1,215 @@
-> +/*
-> + * QTest testcase for the ASPEED Hash and Crypto Engine
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + * Copyright 2021 IBM Corp.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +
-> +#include "libqtest-single.h"
+On Fri, 12 Mar 2021 at 05:53, Thomas Huth <thuth@redhat.com> wrote:
+>
+> On 12/03/2021 00.47, Joel Stanley wrote:
+> > This adds a test for the Aspeed Hash and Crypto (HACE) engine. It tests
+> > the currently implemented behavior of the hash functionality.
+> >
+> > The tests are similar, but are cut/pasted instead of broken out into a
+> > common function so the assert machinery produces useful output when a
+> > test fails.
+> >
+> > Signed-off-by: Joel Stanley <joel@jms.id.au>
+> > ---
+> >   tests/qtest/aspeed_hace-test.c | 215 +++++++++++++++++++++++++++++++++
+> >   MAINTAINERS                    |   1 +
+> >   tests/qtest/meson.build        |   3 +
+> >   3 files changed, 219 insertions(+)
+> >   create mode 100644 tests/qtest/aspeed_hace-test.c
+> >
+> > diff --git a/tests/qtest/aspeed_hace-test.c b/tests/qtest/aspeed_hace-test.c
+> > new file mode 100644
+> > index 000000000000..52501ee37afb
+> > --- /dev/null
+> > +++ b/tests/qtest/aspeed_hace-test.c
+> > @@ -0,0 +1,215 @@
+> > +/*
+> > + * QTest testcase for the ASPEED Hash and Crypto Engine
+> > + *
+> > + * SPDX-License-Identifier: GPL-2.0-or-later
+> > + * Copyright 2021 IBM Corp.
+> > + */
+> > +
+> > +#include "qemu/osdep.h"
+> > +
+> > +#include "libqtest-single.h"
+>
+> Bonus points for writing the test without "libqtest-single.h" and using only
+> "libqtest.h" instead. We should try to avoid libqtest-single.h in new code
+> since such code can not be shared with tests that run multiple instances of
+> QEMU. But if it's too cumbersome, I do not insist.
 
-Bonus points for writing the test without "libqtest-single.h" and using only 
-"libqtest.h" instead. We should try to avoid libqtest-single.h in new code 
-since such code can not be shared with tests that run multiple instances of 
-QEMU. But if it's too cumbersome, I do not insist.
+This wasn't too hard, so I went ahead and did it. I'll send a new version.
 
-> diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-> index 2688e1bfad7f..2eec06b10094 100644
-> --- a/tests/qtest/meson.build
-> +++ b/tests/qtest/meson.build
-> @@ -156,12 +156,15 @@ qtests_npcm7xx = \
->      'npcm7xx_timer-test',
->      'npcm7xx_watchdog_timer-test'] + \
->      (slirp.found() ? ['npcm7xx_emc-test'] : [])
-> +qtests_aspeed = \
-> +  ['aspeed_hace-test']
+>
+> > diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+> > index 2688e1bfad7f..2eec06b10094 100644
+> > --- a/tests/qtest/meson.build
+> > +++ b/tests/qtest/meson.build
+> > @@ -156,12 +156,15 @@ qtests_npcm7xx = \
+> >      'npcm7xx_timer-test',
+> >      'npcm7xx_watchdog_timer-test'] + \
+> >      (slirp.found() ? ['npcm7xx_emc-test'] : [])
+> > +qtests_aspeed = \
+> > +  ['aspeed_hace-test']
+>
+> Do you plan to add more aspeed tests later? If not, I think you could simply
+> do it without this variable and use ['aspeed_hace-test'] below.
 
-Do you plan to add more aspeed tests later? If not, I think you could simply 
-do it without this variable and use ['aspeed_hace-test'] below.
+I intend on sending more, but they are not ready yet. I will leave it
+like this in readiness for those future tests if that's okay.
 
->   qtests_arm = \
->     (config_all_devices.has_key('CONFIG_MPS2') ? ['sse-timer-test'] : []) + \
->     (config_all_devices.has_key('CONFIG_CMSDK_APB_DUALTIMER') ? ['cmsdk-apb-dualtimer-test'] : []) + \
->     (config_all_devices.has_key('CONFIG_CMSDK_APB_TIMER') ? ['cmsdk-apb-timer-test'] : []) + \
->     (config_all_devices.has_key('CONFIG_CMSDK_APB_WATCHDOG') ? ['cmsdk-apb-watchdog-test'] : []) + \
->     (config_all_devices.has_key('CONFIG_PFLASH_CFI02') ? ['pflash-cfi02-test'] : []) +         \
-> +  (config_all_devices.has_key('CONFIG_ASPEED_SOC') ? qtests_aspeed : []) + \
->     (config_all_devices.has_key('CONFIG_NPCM7XX') ? qtests_npcm7xx : []) + \
->     ['arm-cpu-features',
->      'microbit-test',
-> 
+Thanks for the review.
 
-  Thomas
+Cheers,
 
+Joel

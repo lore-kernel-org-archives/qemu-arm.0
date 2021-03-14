@@ -1,111 +1,101 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2791017lfg;
-        Sun, 14 Mar 2021 05:11:38 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJytBhUiJzntG11LJRFg7FgqJ90qziZ9NmnhnoapUPzbtOgQJO6kbH3s0OGfCqZGnoKFytyg
-X-Received: by 2002:a05:6e02:1bc5:: with SMTP id x5mr8392667ilv.48.1615723898407;
-        Sun, 14 Mar 2021 05:11:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1615723898; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2828008lfg;
+        Sun, 14 Mar 2021 06:19:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz9wH55qRlmgJXzriFs1q2IzZXKXsjQpK8kXKZp5dNwnyxI7I+53XOCJPRY+uYqn1w8rTfy
+X-Received: by 2002:a05:6638:1390:: with SMTP id w16mr6122839jad.83.1615727943510;
+        Sun, 14 Mar 2021 06:19:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1615727943; cv=none;
         d=google.com; s=arc-20160816;
-        b=xsv4e4W+6gs9pi1YOlZuwgtff4rp3Ki5f42ZbqZAZtlSzsOnt6qP4+D6t3ylpbV7MJ
-         b+IIkWvz7czFH5CO/5E1OLPScar5AEoRxt+iRrvnnWvKjOfwhNq6IZQ9w2xD5nJOj1cO
-         hRqSwd0Qhb1HeVbBHEVr5605dkPe/Ws4KSJl1EwtnOlenixy2QkHtRYFiJ1sH10/RxYw
-         9Rsz7P5/XuPJelF6hZ57RrYRZMmhCFFUSJ2HbSblb5sfJ6j2P9zlqFa3m8/zcy6swxGW
-         IVihtpnyyqE/sbQ2Fvn7TyT5WeJEYmddT3YFK5flXFUGentPG0RQkSJfxJg0md+xubBw
-         bWZg==
+        b=wdhMxCYllRBnw1GHwplfXq0ohJ8/nGZKHKVjP7xt5Vb4hIaKKmbpRjKaoG10yFdVYe
+         7ZGF+168WGdq0gTzM5ymxQZZvCLQEYiH8kBdsrNIAHszaRGECw9+sLgE1Pj1f4gDVn4e
+         tdHeKkKVjvYFegChDmGETINx0jMzNFXvvH5EFBSJpG6FU1DALMt125VTzIBOYnosqicJ
+         vmXE0mtXLNyGiMRSj1FXWljSqfY28T20jz6al8Xd8VQDbxveHuDIrJrov0jcgsx345hy
+         sEkwcwF5ha1OPj3Szhd045TVBczulDU1+sPPz7C3/4AGGHDUYLc9LFiz/SzKSRArbYo7
+         iL9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=ZnewPn8tqQo/isEe3fCNm+zNZloJ3Iz3jXQx2ZWCYD0=;
-        b=EpqdcKrlguQq7mWr/vRHBixfPBKcjRTMIg/FxQCGCgrDwCLakWFybT8QfMjLZzqC87
-         z5sK62DmiirNxtq1LIq3agfDmCN25FKdiCS4rndz8p8E0lFKsAH/wWOpO9/NmTzCQoOj
-         PjW+8RN/23aQ9PcEqvfyJDlv8abDPlsSobCk4rHKKY9ADGB20DC6MuKlq4I5BpljCCgS
-         LBt14/WZMS+S2uiRvFA8a6QX3ZYn2EO5qUx0/YunruckmVjyEGuqVDHoyHT5wPYlDMH2
-         UGv3D6ffAFzWcm+tYMCf9WQNhwqFcIf2ba9Msw2drGOrK5o4w2WIM6Kpw3XQqAxuuBih
-         mq9Q==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=McFs42ILNKixEv2gIpOsYdm7tY2XM7v6iokt0UWP/jw=;
+        b=uUMjvISPYLMHOmfmwSs7n4hjTLvjBHtFdzzgS2Zs4CMPwMlW7E0fnjtCFIro3tmysy
+         kjDQJL9gQTn2FZC7T5Bf+4er8ikZyRMZgI23RAynC+539vNuvngz2eu0499fCJ6nDMbr
+         9+PEG7p5JyB0sw1hEbT79IxzGdvbkdNFe31y5JkV4XMy1aVVHhz414uPiot6Ls3kw/rJ
+         hnUB3rw8hhoSpZCP0WhmCqkfjtTXuRH560BJj3L4saZpyD5S4idGI5d8V3ovWnrTxDWx
+         wl7uq+2TMWv+0GOaqp9FoO7TXMacX7Dqy0rHpWJVzrTnSzWesh/ky8ssxwF2B7uthgLz
+         V6TA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aKpLZO6y;
+       dkim=fail header.i=@linaro.org header.s=google header.b=op1Ge9qw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t26si9163955jan.106.2021.03.14.05.11.38
+        by mx.google.com with ESMTPS id f14si8632441iow.105.2021.03.14.06.19.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 14 Mar 2021 05:11:38 -0700 (PDT)
+        Sun, 14 Mar 2021 06:19:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aKpLZO6y;
+       dkim=fail header.i=@linaro.org header.s=google header.b=op1Ge9qw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58810 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:58922 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lLPar-0004dt-O5
-	for alex.bennee@linaro.org; Sun, 14 Mar 2021 08:11:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54452)
+	id 1lLQe6-0003M8-J7
+	for alex.bennee@linaro.org; Sun, 14 Mar 2021 09:19:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38070)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lLPaj-0004dU-UJ
- for qemu-arm@nongnu.org; Sun, 14 Mar 2021 08:11:29 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:50576)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lLPai-0006ZW-22
- for qemu-arm@nongnu.org; Sun, 14 Mar 2021 08:11:29 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1615723887;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ZnewPn8tqQo/isEe3fCNm+zNZloJ3Iz3jXQx2ZWCYD0=;
- b=aKpLZO6yE/JN7fix3BMsExKQKRMoZQu2gkvjbOYQ4XETBVrb8SYiLUnoau/VcPf0VKPoN/
- JseESKl26IsPEvTYvH8sscp/T6jkRzHDhNo6Gw5as62XuGmElreeHvC0bUlfMB4vbzUoYQ
- wVHWaSI6lQSgrCdwdr+ETdY24Ce7FD4=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-161-e5IeIsjSOjWY3o44jKua1Q-1; Sun, 14 Mar 2021 08:11:25 -0400
-X-MC-Unique: e5IeIsjSOjWY3o44jKua1Q-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6F74F8015BD;
- Sun, 14 Mar 2021 12:11:23 +0000 (UTC)
-Received: from [10.36.112.254] (ovpn-112-254.ams2.redhat.com [10.36.112.254])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id E305110023BE;
- Sun, 14 Mar 2021 12:11:17 +0000 (UTC)
-Subject: Re: [RFC RESEND PATCH 2/4] hw/pci: Add iommu option for pci root bus
-To: Wang Xingang <wangxingang5@huawei.com>, qemu-devel@nongnu.org
-References: <1614414831-39712-1-git-send-email-wangxingang5@huawei.com>
- <1614414831-39712-3-git-send-email-wangxingang5@huawei.com>
- <d5cac8e3-2584-e904-0d1f-92058b45975e@redhat.com>
- <0aa15918-44fb-1b61-e520-a3ac8f6da4de@huawei.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <46e52aa9-0c69-5b13-afbe-5eba1e80fb0a@redhat.com>
-Date: Sun, 14 Mar 2021 13:11:16 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.0
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lLQdb-0003Lv-OI
+ for qemu-arm@nongnu.org; Sun, 14 Mar 2021 09:18:31 -0400
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a]:43736)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lLQda-0004HN-1n
+ for qemu-arm@nongnu.org; Sun, 14 Mar 2021 09:18:31 -0400
+Received: by mail-ed1-x52a.google.com with SMTP id e7so14143751edu.10
+ for <qemu-arm@nongnu.org>; Sun, 14 Mar 2021 06:18:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=McFs42ILNKixEv2gIpOsYdm7tY2XM7v6iokt0UWP/jw=;
+ b=op1Ge9qwVGstGdaxYpuXmLt+TOGylNwm2VHYAH9aiqHA9cWBt+GVdsm0yI3LJfNqk5
+ nYKZ3ux0ohxes4fgRvtBDQevgcYfOcNgZKaxXw9SuTidUd9SKnMAWqvZHo5HVKA4TtXu
+ Z+nyO1pm4lZWzmnchgDnrIWF1P+TWkJLbG39dD0ilvxoc+st1GZXf8bVLX0lGQm7hePS
+ T+8Wz7GCx5daAGR7OcJXCNf9oN3e1qcB57kMa12hUYiN4E20nMwec8SsTP9KeMsvGtcj
+ 5Lyv1KpTh4YeTTQFk5UJCqJM6UcFsuai0BcAZYJYhuYghwiD4g94OS7H4WgCK8IIfVXf
+ f8lA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=McFs42ILNKixEv2gIpOsYdm7tY2XM7v6iokt0UWP/jw=;
+ b=JPYF2D0AEdw6kXIcyK2tOU2CInKLCv7REWuhKyZQ2t91ywn2gRW44KFcgHywIo5DHU
+ GQ5Z+3V9ku9nuJIgCsnw5XTZ07VPrmN8W+V4hsBzqUfezYo7KcL8FmC+qYDiiroZZ2IH
+ 2sUmw5jTiXCtBW2TmCy8kSRqW1gsJbEJY1fcO9UuZSNSvAYMjIqpghK8LuC410/JaWOD
+ bRRWQx2jMqqkC5Q6Vydnq2ne9PgY6gelzhomNDlJI9sEdx6di4OSPtOXM0HxHHpYyWXm
+ BsD9oQ6vu3qVyiUMnWgpQjjIpxZxUc/pRhRFXSYHTPreuFWDr7zSHXTM+RYko1omO87P
+ n0Yw==
+X-Gm-Message-State: AOAM530GIuqTdP5fUdIvJHIBL80qcslvH9VzhQDNyUWtI289fBmiXW8B
+ jevAfAs+hGl07kr4tQL7O6OJvm6k8ZOohr+/CDJjLw==
+X-Received: by 2002:aa7:cb0a:: with SMTP id s10mr24625041edt.36.1615727908450; 
+ Sun, 14 Mar 2021 06:18:28 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <0aa15918-44fb-1b61-e520-a3ac8f6da4de@huawei.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.25,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=-0.01,
- RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+References: <20210311180855.149764-1-wuhaotsh@google.com>
+ <20210311180855.149764-6-wuhaotsh@google.com>
+In-Reply-To: <20210311180855.149764-6-wuhaotsh@google.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sun, 14 Mar 2021 13:18:06 +0000
+Message-ID: <CAFEAcA8fHD5jrg-nak=sFPf0CvA0bzYqVEh_ZDCxX+DjPPPuCQ@mail.gmail.com>
+Subject: Re: [PATCH v2 5/5] tests/qtest: Test PWM fan RPM using MFT in PWM test
+To: Hao Wu <wuhaotsh@google.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -119,195 +109,46 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: xieyingtai@huawei.com, peter.maydell@linaro.org, cenjiahui@huawei.com,
- mst@redhat.com, shannon.zhaosl@gmail.com, qemu-arm@nongnu.org,
- imammedo@redhat.com
+Cc: Patrick Venture <venture@google.com>,
+ Havard Skinnemoen <hskinnemoen@google.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, CS20 KFTing <kfting@nuvoton.com>,
+ qemu-arm <qemu-arm@nongnu.org>, IS20 Avi Fishman <Avi.Fishman@nuvoton.com>,
+ Doug Evans <dje@google.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: S7HGb3u3tJ9M
+X-TUID: ds8GSAJnQiOa
 
-Hi Xingang
+On Thu, 11 Mar 2021 at 18:09, Hao Wu <wuhaotsh@google.com> wrote:
+>
+> This patch adds testing of PWM fan RPMs in the existing npcm7xx pwm
+> test. It tests whether the MFT module can measure correct fan values
+> for a PWM fan in NPCM7XX boards.
+>
+> Reviewed-by: Doug Evans <dje@google.com>
+> Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
+> Signed-off-by: Hao Wu <wuhaotsh@google.com>
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-On 3/11/21 1:24 PM, Wang Xingang wrote:
-> Hi Eric,
-> 
-> On 2021/3/10 18:24, Auger Eric wrote:
->> Hi Xingang,
->>
->> On 2/27/21 9:33 AM, Wang Xingang wrote:
->>> From: Xingang Wang <wangxingang5@huawei.com>
->>>
->>> This add iommu option for pci root bus, including primary bus
->>> and pxb root bus. Default option is set to true, and the option
->>> is valid only if the iommu option for machine is properly set.
->>>
->>> Signed-off-by: Xingang Wang <wangxingang5@huawei.com>
->>> Signed-off-by: Jiahui Cen <cenjiahui@huawei.com>
->>> ---
->>>   hw/arm/virt.c                       | 29 +++++++++++++++++++++++++++++
->>>   hw/pci-bridge/pci_expander_bridge.c |  6 ++++++
->>>   hw/pci/pci.c                        |  2 +-
->>>   include/hw/arm/virt.h               |  1 +
->>>   4 files changed, 37 insertions(+), 1 deletion(-)
->>>
->>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->>> index 371147f3ae..0c9e549759 100644
->>> --- a/hw/arm/virt.c
->>> +++ b/hw/arm/virt.c
->>> @@ -79,6 +79,7 @@
->>>   #include "hw/virtio/virtio-iommu.h"
->>>   #include "hw/char/pl011.h"
->>>   #include "qemu/guest-random.h"
->>> +#include "include/hw/pci/pci_bus.h"
->>>     #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
->>>       static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
->>> @@ -1232,6 +1233,10 @@ static void create_smmu(const VirtMachineState
->>> *vms,
->>>         dev = qdev_new("arm-smmuv3");
->>>   +    if (vms->primary_bus_iommu) {
->>> +        bus->flags |= PCI_BUS_IOMMU;
->>> +    }
->>> +
->>>       object_property_set_link(OBJECT(dev), "primary-bus", OBJECT(bus),
->>>                                &error_abort);
->>>       sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
->>> @@ -2305,6 +2310,20 @@ static void virt_set_iommu(Object *obj, const
->>> char *value, Error **errp)
->>>       }
->>>   }
->>>   +static bool virt_get_primary_bus_iommu(Object *obj, Error **errp)
->>> +{
->>> +    VirtMachineState *vms = VIRT_MACHINE(obj);
->>> +
->>> +    return vms->primary_bus_iommu;
->>> +}
->>> +
->>> +static void virt_set_primary_bus_iommu(Object *obj, bool value,
->>> Error **errp)
->>> +{
->>> +    VirtMachineState *vms = VIRT_MACHINE(obj);
->>> +
->>> +    vms->primary_bus_iommu = value;
->>> +}
->>> +
->>>   static CpuInstanceProperties
->>>   virt_cpu_index_to_props(MachineState *ms, unsigned cpu_index)
->>>   {
->>> @@ -2629,6 +2648,13 @@ static void
->>> virt_machine_class_init(ObjectClass *oc, void *data)
->>>                                             "Set the IOMMU type. "
->>>                                             "Valid values are none
->>> and smmuv3");
->>>   +    object_class_property_add_bool(oc, "primary_bus_iommu",
->>> +                                  virt_get_primary_bus_iommu,
->>> +                                  virt_set_primary_bus_iommu);
->>> +    object_class_property_set_description(oc, "primary_bus_iommu",
->>> +                                          "Set on/off to
->>> enable/disable "
->>> +                                          "iommu for primary bus");
->>> +
->>>       object_class_property_add_bool(oc, "ras", virt_get_ras,
->>>                                      virt_set_ras);
->>>       object_class_property_set_description(oc, "ras",
->>> @@ -2696,6 +2722,9 @@ static void virt_instance_init(Object *obj)
->>>       /* Default disallows iommu instantiation */
->>>       vms->iommu = VIRT_IOMMU_NONE;
->>>   +    /* Iommu is enabled by default for primary bus */
->>> +    vms->primary_bus_iommu = true;
->>> +
->>>       /* Default disallows RAS instantiation */
->>>       vms->ras = false;
->>>   diff --git a/hw/pci-bridge/pci_expander_bridge.c
->>> b/hw/pci-bridge/pci_expander_bridge.c
->>> index aedded1064..0412656265 100644
->>> --- a/hw/pci-bridge/pci_expander_bridge.c
->>> +++ b/hw/pci-bridge/pci_expander_bridge.c
->>> @@ -57,6 +57,7 @@ struct PXBDev {
->>>         uint8_t bus_nr;
->>>       uint16_t numa_node;
->>> +    bool iommu;
->>>   };
->>>     static PXBDev *convert_to_pxb(PCIDevice *dev)
->>> @@ -254,6 +255,10 @@ static void pxb_dev_realize_common(PCIDevice
->>> *dev, bool pcie, Error **errp)
->>>       bus->address_space_io = pci_get_bus(dev)->address_space_io;
->>>       bus->map_irq = pxb_map_irq_fn;
->>>   +    if (pxb->iommu) {
->>> +        bus->flags |= PCI_BUS_IOMMU;
->>> +    }
->>> +
->>>       PCI_HOST_BRIDGE(ds)->bus = bus;
->>>         pxb_register_bus(dev, bus, &local_err);
->>> @@ -301,6 +306,7 @@ static Property pxb_dev_properties[] = {
->>>       /* Note: 0 is not a legal PXB bus number. */
->>>       DEFINE_PROP_UINT8("bus_nr", PXBDev, bus_nr, 0),
->>>       DEFINE_PROP_UINT16("numa_node", PXBDev, numa_node,
->>> NUMA_NODE_UNASSIGNED),
->>> +    DEFINE_PROP_BOOL("iommu", PXBDev, iommu, true),
->> looks a bit odd to me that we have a property for the PXE-PCIe extra
->> root complex and not for the gpex device. Wouldn't it make sense to add
->> one for the GPEX too? In the positive you still could have a machine
->> option that would force the GPEX property value?
-> 
-> Indeed it makes sense to add one property for GPEX too.However, the
-> iommu property for PXBDev only helps to add option in qemu command line.
-> When it is necessary to check whether the iommu is enabled on the root
-> bus, it would be better to access the bus flag. In qemu, the pxb is not
-> related to GPEX currently, and i do not find proper position to add the
-> iommu property for GPEX, you might have some good idea for that.
 
-What I had in mind was to add a similar property at GPEX level. Maybe I
-would instead introduce an option that disallow the iommu on its
-hierarchy. You would also have a virt machine  "primary_bus_iommu"
-option that would control the GPEX property through an
-object_property_set_int() call
+> +static void mft_verify_rpm(QTestState *qts, const TestData *td, uint64_t duty)
+> +{
+> +    int index = mft_compute_index(td);
+> +    uint16_t cnt, cr;
+> +    uint32_t rpm = DEFAULT_RPM * duty / MAX_DUTY;
+> +    uint64_t clk = read_pclk(qts, true);
+> +    int32_t expected_cnt = mft_compute_cnt(rpm, clk);
+> +
+> +    qtest_irq_intercept_in(qts, "/machine/soc/a9mpcore/gic");
+> +    g_test_message(
+> +        "verifying rpm for mft[%d]: clk: %lu, duty: %lu, rpm: %u, cnt: %d",
+> +        index, clk, duty, rpm, expected_cnt);
 
-But I would be curious about others' thoughts.
+Hi -- this won't build on 32-bit hosts (or on OSX, and it warns on OpenBSD),
+because uint64_t and 'long' aren't the same thing. You need to use the
+PRIu64 etc macros when printing uint64_t values, so the argument type and
+the format string match.
 
-Thanks
+I've fixed this up in the pullreq.
 
-Eric
-> 
->>>       DEFINE_PROP_END_OF_LIST(),
->>>   };
->>>   diff --git a/hw/pci/pci.c b/hw/pci/pci.c
->>> index a9ebef8a35..dc969989c9 100644
->>> --- a/hw/pci/pci.c
->>> +++ b/hw/pci/pci.c
->>> @@ -2712,7 +2712,7 @@ AddressSpace
->>> *pci_device_iommu_address_space(PCIDevice *dev)
->>>             iommu_bus = parent_bus;
->>>       }
->>> -    if (iommu_bus && iommu_bus->iommu_fn) {
->>> +    if (pci_bus_has_iommu(bus) && iommu_bus && iommu_bus->iommu_fn) {
->>>           return iommu_bus->iommu_fn(bus, iommu_bus->iommu_opaque,
->>> devfn);
->>>       }
->>>       return &address_space_memory;
->>> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
->>> index ee9a93101e..babe829486 100644
->>> --- a/include/hw/arm/virt.h
->>> +++ b/include/hw/arm/virt.h
->>> @@ -147,6 +147,7 @@ struct VirtMachineState {
->>>       OnOffAuto acpi;
->>>       VirtGICType gic_version;
->>>       VirtIOMMUType iommu;
->>> +    bool primary_bus_iommu;
->>>       VirtMSIControllerType msi_controller;
->>>       uint16_t virtio_iommu_bdf;
->>>       struct arm_boot_info bootinfo;
->>>
->> Thanks
->>
->> Eric
->>
->> .
->>
-> 
-> Thanks
-> 
-> Xingang
-> 
-> .
-> 
-
+thanks
+-- PMM

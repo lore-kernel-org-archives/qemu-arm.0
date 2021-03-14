@@ -1,108 +1,112 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp562990lfg;
-        Thu, 11 Mar 2021 11:12:25 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxbFxnC2PbEkkq74vg1VNsWx2jED+IXMzbGo7Q4usvBnjVjgBdnCqbeOjANzLQ/pgPgJkgg
-X-Received: by 2002:a9d:4e99:: with SMTP id v25mr290758otk.315.1615489945261;
-        Thu, 11 Mar 2021 11:12:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1615489945; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2791017lfg;
+        Sun, 14 Mar 2021 05:11:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJytBhUiJzntG11LJRFg7FgqJ90qziZ9NmnhnoapUPzbtOgQJO6kbH3s0OGfCqZGnoKFytyg
+X-Received: by 2002:a05:6e02:1bc5:: with SMTP id x5mr8392667ilv.48.1615723898407;
+        Sun, 14 Mar 2021 05:11:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1615723898; cv=none;
         d=google.com; s=arc-20160816;
-        b=BdLI5KL0/8YX5t3Vg1f+rgKllRRpPEHipctUeHZMKuqB7b1ph+X+uFhjWZfq/rKk/O
-         IlyqRifBcPTkQIUohFM5lhSkUKmzl4ZfOoxfGbAdJoneum4R15Xf8ZuUcYSgUhWh43UY
-         g4NtbWyXfDk6LJAhr6GXkJO0XZEsVieyHngiTW/2Zl8ncPM6nipTfzLEgk2QY2LOiVrr
-         JxoCDamhRCS4nBVmVYqNZ9oPxVTBJLamIRz7NVjAt6bnkzaaUKXoqqawHd8joWYfx2pG
-         /HGn0W7nnNS1GDCAb/5gBzrQBx1kdOJXPSpcnZH9rPTt5vS68bt3qaTZTQpY1Lu8xU1X
-         AEaQ==
+        b=xsv4e4W+6gs9pi1YOlZuwgtff4rp3Ki5f42ZbqZAZtlSzsOnt6qP4+D6t3ylpbV7MJ
+         b+IIkWvz7czFH5CO/5E1OLPScar5AEoRxt+iRrvnnWvKjOfwhNq6IZQ9w2xD5nJOj1cO
+         hRqSwd0Qhb1HeVbBHEVr5605dkPe/Ws4KSJl1EwtnOlenixy2QkHtRYFiJ1sH10/RxYw
+         9Rsz7P5/XuPJelF6hZ57RrYRZMmhCFFUSJ2HbSblb5sfJ6j2P9zlqFa3m8/zcy6swxGW
+         IVihtpnyyqE/sbQ2Fvn7TyT5WeJEYmddT3YFK5flXFUGentPG0RQkSJfxJg0md+xubBw
+         bWZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=mvnt0/oHxgsc0ZSJzXmoV4OhUWcGkwTy29Z3dbN2kS4=;
-        b=qNlFi9g4dk44fduZ6hx9F+ZJwrVnFTI2FH1XvSslw55FzgA2wC3VvFbxMcb7AVg0w4
-         nhTLsEwdAU4dNF3G1ha4eQlgvALvyRDrdI0i1HCKhDCxEAREILA2JlDM53Iw83IHu6hx
-         lMXrXeMEwQlNLPRw9Z2pNDY8AgNFMNM1tyBhbXJChhPKfrtaAGYMEZI6ZFduvGu0t9Jk
-         ciRuRyFFp+MDan+Hns5gFBIqgSYoHKGrMq4PyIBTHasFyjA5pwe7Y6zHDBmXw7E/Fc7p
-         /RRY7YCyHdnKw8EoTa+Z4wvPMuwJDuWXsespoVBQYT7iMBMnMAKlQ1rNqdRR2pir2+hh
-         QrGA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=ZnewPn8tqQo/isEe3fCNm+zNZloJ3Iz3jXQx2ZWCYD0=;
+        b=EpqdcKrlguQq7mWr/vRHBixfPBKcjRTMIg/FxQCGCgrDwCLakWFybT8QfMjLZzqC87
+         z5sK62DmiirNxtq1LIq3agfDmCN25FKdiCS4rndz8p8E0lFKsAH/wWOpO9/NmTzCQoOj
+         PjW+8RN/23aQ9PcEqvfyJDlv8abDPlsSobCk4rHKKY9ADGB20DC6MuKlq4I5BpljCCgS
+         LBt14/WZMS+S2uiRvFA8a6QX3ZYn2EO5qUx0/YunruckmVjyEGuqVDHoyHT5wPYlDMH2
+         UGv3D6ffAFzWcm+tYMCf9WQNhwqFcIf2ba9Msw2drGOrK5o4w2WIM6Kpw3XQqAxuuBih
+         mq9Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZIcWyGwO;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aKpLZO6y;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x88si2665940ota.32.2021.03.11.11.12.24
+        by mx.google.com with ESMTPS id t26si9163955jan.106.2021.03.14.05.11.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Mar 2021 11:12:25 -0800 (PST)
+        Sun, 14 Mar 2021 05:11:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZIcWyGwO;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aKpLZO6y;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58090 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:58810 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lKQjQ-0003m5-4b
-	for alex.bennee@linaro.org; Thu, 11 Mar 2021 14:12:24 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39304)
+	id 1lLPar-0004dt-O5
+	for alex.bennee@linaro.org; Sun, 14 Mar 2021 08:11:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54452)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1lKQiA-0003kQ-Oj
- for qemu-arm@nongnu.org; Thu, 11 Mar 2021 14:11:07 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:38249)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1lLPaj-0004dU-UJ
+ for qemu-arm@nongnu.org; Sun, 14 Mar 2021 08:11:29 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:50576)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1lKQi0-0001mE-7R
- for qemu-arm@nongnu.org; Thu, 11 Mar 2021 14:11:03 -0500
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1lLPai-0006ZW-22
+ for qemu-arm@nongnu.org; Sun, 14 Mar 2021 08:11:29 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1615489854;
+ s=mimecast20190719; t=1615723887;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=mvnt0/oHxgsc0ZSJzXmoV4OhUWcGkwTy29Z3dbN2kS4=;
- b=ZIcWyGwOTGDCDX8LcpiYQHX/b81E6FxXkA/t8bWMpabrqQEwVxypFPel6ABI8gbd3FxGGo
- Us+vXLSRXXK+paiRBnImuuA6EZcRyOv610k0B/qwNKjbZzhAPej/6DiaozOeL+dLjara6x
- M3ceZ/pv3IyXZewZ81aBSXyO2AqguEU=
+ bh=ZnewPn8tqQo/isEe3fCNm+zNZloJ3Iz3jXQx2ZWCYD0=;
+ b=aKpLZO6yE/JN7fix3BMsExKQKRMoZQu2gkvjbOYQ4XETBVrb8SYiLUnoau/VcPf0VKPoN/
+ JseESKl26IsPEvTYvH8sscp/T6jkRzHDhNo6Gw5as62XuGmElreeHvC0bUlfMB4vbzUoYQ
+ wVHWaSI6lQSgrCdwdr+ETdY24Ce7FD4=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-207-gfHgqskGOpO3CLWyjvHC9g-1; Thu, 11 Mar 2021 14:10:52 -0500
-X-MC-Unique: gfHgqskGOpO3CLWyjvHC9g-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
+ us-mta-161-e5IeIsjSOjWY3o44jKua1Q-1; Sun, 14 Mar 2021 08:11:25 -0400
+X-MC-Unique: e5IeIsjSOjWY3o44jKua1Q-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5842419057A1;
- Thu, 11 Mar 2021 19:10:51 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.40.192.104])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 8E33517A81;
- Thu, 11 Mar 2021 19:10:49 +0000 (UTC)
-Date: Thu, 11 Mar 2021 20:10:46 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: arm: "max" CPU class hierarchy changes possible?
-Message-ID: <20210311191046.ykcelkwq7orajyu7@kamzik.brq.redhat.com>
-References: <11e9d3bb-c94c-4ad7-35b0-b698376c5e00@suse.de>
- <CAFEAcA8T+u6QG9PQWs40PTSZ86SEeLQrciT8WHxFyH3UVbipiA@mail.gmail.com>
- <2e6a5d98-e022-0b39-5f30-92eb74491d3b@redhat.com>
- <2277fdf5-ec92-476a-8fe5-0d4eee23dfef@suse.de>
- <CAFEAcA_j-0+vmNFtPjcxEXC9r4bFrebDfGjq-x1SfguzUG4qcw@mail.gmail.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6F74F8015BD;
+ Sun, 14 Mar 2021 12:11:23 +0000 (UTC)
+Received: from [10.36.112.254] (ovpn-112-254.ams2.redhat.com [10.36.112.254])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id E305110023BE;
+ Sun, 14 Mar 2021 12:11:17 +0000 (UTC)
+Subject: Re: [RFC RESEND PATCH 2/4] hw/pci: Add iommu option for pci root bus
+To: Wang Xingang <wangxingang5@huawei.com>, qemu-devel@nongnu.org
+References: <1614414831-39712-1-git-send-email-wangxingang5@huawei.com>
+ <1614414831-39712-3-git-send-email-wangxingang5@huawei.com>
+ <d5cac8e3-2584-e904-0d1f-92058b45975e@redhat.com>
+ <0aa15918-44fb-1b61-e520-a3ac8f6da4de@huawei.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <46e52aa9-0c69-5b13-afbe-5eba1e80fb0a@redhat.com>
+Date: Sun, 14 Mar 2021 13:11:16 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_j-0+vmNFtPjcxEXC9r4bFrebDfGjq-x1SfguzUG4qcw@mail.gmail.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+In-Reply-To: <0aa15918-44fb-1b61-e520-a3ac8f6da4de@huawei.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=drjones@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=216.205.24.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -30
+X-Spam_score: -3.1
 X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.25,
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.25,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=-0.01,
+ RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -115,73 +119,195 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <ehabkost@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- qemu-devel <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Claudio Fontana <cfontana@suse.de>, Paolo Bonzini <pbonzini@redhat.com>
+Cc: xieyingtai@huawei.com, peter.maydell@linaro.org, cenjiahui@huawei.com,
+ mst@redhat.com, shannon.zhaosl@gmail.com, qemu-arm@nongnu.org,
+ imammedo@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rlpB1Yon4QdR
+X-TUID: S7HGb3u3tJ9M
 
-On Thu, Mar 11, 2021 at 06:33:15PM +0000, Peter Maydell wrote:
-> On Thu, 11 Mar 2021 at 17:16, Claudio Fontana <cfontana@suse.de> wrote:
-> > Maybe Peter you could clarify similarly what the intended meaning of "max" is on ARM?
+Hi Xingang
+
+On 3/11/21 1:24 PM, Wang Xingang wrote:
+> Hi Eric,
 > 
-> "max" is "best we can do, whatever that is". (On KVM this is "same as
-> the host".)
-> "host" is "whatever the host is (KVM only)".
+> On 2021/3/10 18:24, Auger Eric wrote:
+>> Hi Xingang,
+>>
+>> On 2/27/21 9:33 AM, Wang Xingang wrote:
+>>> From: Xingang Wang <wangxingang5@huawei.com>
+>>>
+>>> This add iommu option for pci root bus, including primary bus
+>>> and pxb root bus. Default option is set to true, and the option
+>>> is valid only if the iommu option for machine is properly set.
+>>>
+>>> Signed-off-by: Xingang Wang <wangxingang5@huawei.com>
+>>> Signed-off-by: Jiahui Cen <cenjiahui@huawei.com>
+>>> ---
+>>>   hw/arm/virt.c                       | 29 +++++++++++++++++++++++++++++
+>>>   hw/pci-bridge/pci_expander_bridge.c |  6 ++++++
+>>>   hw/pci/pci.c                        |  2 +-
+>>>   include/hw/arm/virt.h               |  1 +
+>>>   4 files changed, 37 insertions(+), 1 deletion(-)
+>>>
+>>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>>> index 371147f3ae..0c9e549759 100644
+>>> --- a/hw/arm/virt.c
+>>> +++ b/hw/arm/virt.c
+>>> @@ -79,6 +79,7 @@
+>>>   #include "hw/virtio/virtio-iommu.h"
+>>>   #include "hw/char/pl011.h"
+>>>   #include "qemu/guest-random.h"
+>>> +#include "include/hw/pci/pci_bus.h"
+>>>     #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
+>>>       static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
+>>> @@ -1232,6 +1233,10 @@ static void create_smmu(const VirtMachineState
+>>> *vms,
+>>>         dev = qdev_new("arm-smmuv3");
+>>>   +    if (vms->primary_bus_iommu) {
+>>> +        bus->flags |= PCI_BUS_IOMMU;
+>>> +    }
+>>> +
+>>>       object_property_set_link(OBJECT(dev), "primary-bus", OBJECT(bus),
+>>>                                &error_abort);
+>>>       sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+>>> @@ -2305,6 +2310,20 @@ static void virt_set_iommu(Object *obj, const
+>>> char *value, Error **errp)
+>>>       }
+>>>   }
+>>>   +static bool virt_get_primary_bus_iommu(Object *obj, Error **errp)
+>>> +{
+>>> +    VirtMachineState *vms = VIRT_MACHINE(obj);
+>>> +
+>>> +    return vms->primary_bus_iommu;
+>>> +}
+>>> +
+>>> +static void virt_set_primary_bus_iommu(Object *obj, bool value,
+>>> Error **errp)
+>>> +{
+>>> +    VirtMachineState *vms = VIRT_MACHINE(obj);
+>>> +
+>>> +    vms->primary_bus_iommu = value;
+>>> +}
+>>> +
+>>>   static CpuInstanceProperties
+>>>   virt_cpu_index_to_props(MachineState *ms, unsigned cpu_index)
+>>>   {
+>>> @@ -2629,6 +2648,13 @@ static void
+>>> virt_machine_class_init(ObjectClass *oc, void *data)
+>>>                                             "Set the IOMMU type. "
+>>>                                             "Valid values are none
+>>> and smmuv3");
+>>>   +    object_class_property_add_bool(oc, "primary_bus_iommu",
+>>> +                                  virt_get_primary_bus_iommu,
+>>> +                                  virt_set_primary_bus_iommu);
+>>> +    object_class_property_set_description(oc, "primary_bus_iommu",
+>>> +                                          "Set on/off to
+>>> enable/disable "
+>>> +                                          "iommu for primary bus");
+>>> +
+>>>       object_class_property_add_bool(oc, "ras", virt_get_ras,
+>>>                                      virt_set_ras);
+>>>       object_class_property_set_description(oc, "ras",
+>>> @@ -2696,6 +2722,9 @@ static void virt_instance_init(Object *obj)
+>>>       /* Default disallows iommu instantiation */
+>>>       vms->iommu = VIRT_IOMMU_NONE;
+>>>   +    /* Iommu is enabled by default for primary bus */
+>>> +    vms->primary_bus_iommu = true;
+>>> +
+>>>       /* Default disallows RAS instantiation */
+>>>       vms->ras = false;
+>>>   diff --git a/hw/pci-bridge/pci_expander_bridge.c
+>>> b/hw/pci-bridge/pci_expander_bridge.c
+>>> index aedded1064..0412656265 100644
+>>> --- a/hw/pci-bridge/pci_expander_bridge.c
+>>> +++ b/hw/pci-bridge/pci_expander_bridge.c
+>>> @@ -57,6 +57,7 @@ struct PXBDev {
+>>>         uint8_t bus_nr;
+>>>       uint16_t numa_node;
+>>> +    bool iommu;
+>>>   };
+>>>     static PXBDev *convert_to_pxb(PCIDevice *dev)
+>>> @@ -254,6 +255,10 @@ static void pxb_dev_realize_common(PCIDevice
+>>> *dev, bool pcie, Error **errp)
+>>>       bus->address_space_io = pci_get_bus(dev)->address_space_io;
+>>>       bus->map_irq = pxb_map_irq_fn;
+>>>   +    if (pxb->iommu) {
+>>> +        bus->flags |= PCI_BUS_IOMMU;
+>>> +    }
+>>> +
+>>>       PCI_HOST_BRIDGE(ds)->bus = bus;
+>>>         pxb_register_bus(dev, bus, &local_err);
+>>> @@ -301,6 +306,7 @@ static Property pxb_dev_properties[] = {
+>>>       /* Note: 0 is not a legal PXB bus number. */
+>>>       DEFINE_PROP_UINT8("bus_nr", PXBDev, bus_nr, 0),
+>>>       DEFINE_PROP_UINT16("numa_node", PXBDev, numa_node,
+>>> NUMA_NODE_UNASSIGNED),
+>>> +    DEFINE_PROP_BOOL("iommu", PXBDev, iommu, true),
+>> looks a bit odd to me that we have a property for the PXE-PCIe extra
+>> root complex and not for the gpex device. Wouldn't it make sense to add
+>> one for the GPEX too? In the positive you still could have a machine
+>> option that would force the GPEX property value?
 > 
-> > KVM: (aarch64-only): aarch64_max_initfn():
-> >
-> > The following comment in the code seems wrong to me:
-> >
-> > /* -cpu max: if KVM is enabled, like -cpu host (best possible with this host); */
-> >
-> > This is not exactly true:
-> >
-> > "-cpu max" calls kvm_arm_set_cpu_features_from_host(), (which checks "dtb_compatible", and if not set gets the features from the host, if set ...?)
-> > After that, calls aarch64_add_sve_properties() and then adds also "svw-max-vq". This code is common with TCG.
-> >
-> > In the case of cpu host instead,
-> >
-> > "-cpu host" calls kvm_arm_set_cpu_features_from_host(), same as max, then calls aarch64_add_sve_properties() but does NOT add "svw-max-vq".
-> >
-> > Is this a bug?
+> Indeed it makes sense to add one property for GPEX too.However, the
+> iommu property for PXBDev only helps to add option in qemu command line.
+> When it is necessary to check whether the iommu is enabled on the root
+> bus, it would be better to access the bus flag. In qemu, the pxb is not
+> related to GPEX currently, and i do not find proper position to add the
+> iommu property for GPEX, you might have some good idea for that.
 
-It was left out intentionally. More below.
+What I had in mind was to add a similar property at GPEX level. Maybe I
+would instead introduce an option that disallow the iommu on its
+hierarchy. You would also have a virt machine  "primary_bus_iommu"
+option that would control the GPEX property through an
+object_property_set_int() call
 
+But I would be curious about others' thoughts.
+
+Thanks
+
+Eric
 > 
-> Maybe; that's a question for Richard or Drew...
+>>>       DEFINE_PROP_END_OF_LIST(),
+>>>   };
+>>>   diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+>>> index a9ebef8a35..dc969989c9 100644
+>>> --- a/hw/pci/pci.c
+>>> +++ b/hw/pci/pci.c
+>>> @@ -2712,7 +2712,7 @@ AddressSpace
+>>> *pci_device_iommu_address_space(PCIDevice *dev)
+>>>             iommu_bus = parent_bus;
+>>>       }
+>>> -    if (iommu_bus && iommu_bus->iommu_fn) {
+>>> +    if (pci_bus_has_iommu(bus) && iommu_bus && iommu_bus->iommu_fn) {
+>>>           return iommu_bus->iommu_fn(bus, iommu_bus->iommu_opaque,
+>>> devfn);
+>>>       }
+>>>       return &address_space_memory;
+>>> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+>>> index ee9a93101e..babe829486 100644
+>>> --- a/include/hw/arm/virt.h
+>>> +++ b/include/hw/arm/virt.h
+>>> @@ -147,6 +147,7 @@ struct VirtMachineState {
+>>>       OnOffAuto acpi;
+>>>       VirtGICType gic_version;
+>>>       VirtIOMMUType iommu;
+>>> +    bool primary_bus_iommu;
+>>>       VirtMSIControllerType msi_controller;
+>>>       uint16_t virtio_iommu_bdf;
+>>>       struct arm_boot_info bootinfo;
+>>>
+>> Thanks
+>>
+>> Eric
+>>
+>> .
+>>
 > 
-> > Are "max" and "host" for KVM supposed to be the same like with x86?
-
-Yes, but my understanding of "max" == "host" for KVM is that that only
-applies to the perspective of the guest. What CPU and what CPU features
-the guest can see should be exactly the same with either "max" or "host",
-depending on the enabling/disabling of any optional CPU properties.
-
-The question here seems to be that, if one has a CPU property, does that
-imply the other should have the same? Which would effectively allow the
-two to be aliases (when KVM is enabled). I don't know, does x86 ensure
-100% property compatibility?
-
-I opted not to support sve-max-vq for "host" because I consider it a
-legacy CPU property, one I didn't want to propagate. Indeed it may
-make more sense to depreciate sve-max-vq than to "fix" this issue
-by adding it to "host". Note, we can already create equivalent SVE
-CPUs. The following are the same from the perspective of the guest
-
- -accel kvm -cpu host,sve512=on
- -accel kvm -cpu max,sve512=on
-
-And, for TCG, these are the same from the perspective of the guest
- 
- -accel tcg -cpu max,sve512=on
- -accel tcg -cpu max,sve-max-vq=4
-
-So we already don't need sve-max-vq.
-
-Thanks,
-drew
+> Thanks
+> 
+> Xingang
+> 
+> .
+> 
 

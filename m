@@ -1,114 +1,107 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2785188lfg;
-        Sun, 14 Mar 2021 05:03:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwKjNDw7UW/MUVjjy3MdSHnUmV7vSLJlG85AeuN1Dg4xsOZB5osz/XFZESRldXBUzNfDuq+
-X-Received: by 2002:a05:6602:99:: with SMTP id h25mr4331064iob.168.1615723404598;
-        Sun, 14 Mar 2021 05:03:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1615723404; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3522873lfg;
+        Mon, 15 Mar 2021 04:54:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy39pllWrczLbv9/Rk1MLSKVYEWkOt3wZ5d/0kvsl+ox57ahYJrNEZNsJl1JsWE4sMw9o+X
+X-Received: by 2002:a05:6e02:1545:: with SMTP id j5mr11999737ilu.180.1615809278348;
+        Mon, 15 Mar 2021 04:54:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1615809278; cv=none;
         d=google.com; s=arc-20160816;
-        b=PPu+ALWePAY8tH7cNDVvd69/rFj3qmp+bp6p4aJn2aeNKEvZyyS2jfqtQs11EF0Ucn
-         90G54Mf2scius+0ILSAOfssPY7rWlIRCj3/EYNQHyeQrPIIHb/fzK4DWq/+rE608Hy4p
-         g0b9BtAqn1FgnrKhs2fNx0GiRA21lhCXpOX6UsSFC38DBMvL3e1yrFY+uDed6dY0aSwr
-         2CrpDgCEn9hbGc+K/vsMpsN8xRtgt8RIvxDoAvyjCtKIJtWLdekAU6PHir7n6nUwLkCT
-         44P+BcNx5tMOxarPRyuIBW+5jG9jQLFjHWoxzem9o2gpYqeBPWb8SZZ8k0Vwzz1amSU6
-         822Q==
+        b=ZGjUjrL0ONDeaq9xQfLq/GkRPNSd4K0xOfudxfSM+7mWzKRd0u+fLM9YINftMFrsQF
+         SYnUvtojo2HytV24q225W/RQQLjZ4bbMeM3aTfjoK6RlFDRcPjqO3077T2q9dzT2ahEe
+         gRxm1oWr5pS0SaZ6yiAvqvfTruC4MGFxgsKMYdedg4VR7cdqAQR45SyUoyDcf7lRQsgc
+         yH2ec4pr8xmHdwee57SC02Yp20rczqvTpETTZMWHfq2Q2cBTueyscTb8kcRhxyWPZpJ/
+         fMmYLc2XdU/5SNqTtqnu5DXwSBzep54aORZscujE+gg7FcyRpr9wdtbO8x6dp/5LaLfj
+         CZOw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=UXrTBagnd5z8v/jlXuWoIx9biVw15bK39wkhoTQNd9U=;
-        b=ulwQdhhhoOfB3QnBI/ktxdXOEYS6SOHbI8B9M/z6vI2nBANfdZNLVM6CJv5eKGd1cL
-         v6kVzDUeeZfPld1tI9er0up0uBbQhhi8iM98CExlDarpD7CynBH4AHGoRqIFYcvZZ95q
-         jz0+lG1a/xffa345Qc7oCo6pVggXwvgeeYSVhU4Hqc+2ZClQm0SCOGzQAs6STmQU1vE+
-         XbZbMT5fhLtNjxBdCDDOZ99/SzJPzCLxUKhm1WyJlmg18l/d0gwxvnP5eFQnKzUCNkVT
-         TCZiFtIwDVqOgGlQIIO5Qthk6Vhc2rsSRhsM4/+fZu26uBKEbCugnNqpGO0TZoSHq/HO
-         Ulew==
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=jWGYH8nfIerffoG4f2iFEpUs8wlGWlS4x1yGycxGMas=;
+        b=OhncJTdo9Uj+tARPrerzSHDKbB+8Gp+IDdVZTlj0E7YAEwRnz0a2VuwljDoWeSNBDE
+         NZ8KSF87XNqNvDOjjLM7U0mq9weypTGSd6QHSFUreODFgoE/2eno0Ql5J3yKdqICbUbi
+         pELe5HvQ5tl/XZYefv57BaubVEDWNKmC33PHczjWfKYTRFMrrxXxhiV7TQfyIY5IHzK2
+         CRuWUL7mO7OEBMQ9WIcm5f06ol9iCbiC3xWCyKbFiZITDqaXtL00bwAXCGDdxnuvC5lH
+         Kb/eySYQ5gVKB+tixbuMoLVZQm41u3oJysVOSCHbTTktD8dtbxSDdw6pb8To0Uj71fXs
+         FYng==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="HaYd/Q5y";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FIfonbb4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r1si8748592ilj.99.2021.03.14.05.03.24
+        by mx.google.com with ESMTPS id x15si10242561iow.18.2021.03.15.04.54.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 14 Mar 2021 05:03:24 -0700 (PDT)
+        Mon, 15 Mar 2021 04:54:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="HaYd/Q5y";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FIfonbb4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55014 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:36550 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lLPSt-0002ek-Rs
-	for alex.bennee@linaro.org; Sun, 14 Mar 2021 08:03:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53550)
+	id 1lLlnx-0004bB-DG
+	for alex.bennee@linaro.org; Mon, 15 Mar 2021 07:54:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44082)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lLPSO-0002ds-PA
- for qemu-arm@nongnu.org; Sun, 14 Mar 2021 08:02:52 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:24877)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1lLlng-0004YY-8Q
+ for qemu-arm@nongnu.org; Mon, 15 Mar 2021 07:54:20 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:51838)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lLPSK-0001bM-Ba
- for qemu-arm@nongnu.org; Sun, 14 Mar 2021 08:02:52 -0400
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1lLlne-0002Ei-Jf
+ for qemu-arm@nongnu.org; Mon, 15 Mar 2021 07:54:20 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1615723367;
+ s=mimecast20190719; t=1615809257;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=UXrTBagnd5z8v/jlXuWoIx9biVw15bK39wkhoTQNd9U=;
- b=HaYd/Q5yz99A16/l1a5k8cwOlGgKRokXzGIREi4ib4UPAXHH1Q40Qadfki3OxbSVgKKXu/
- USfGBmBUDkRp7n8qeoNnFIy1M6fCzM82KlWYomG5MQ2UIVyzWgAZSx05u4AArccJHy/vI9
- TdTA4Bp54lbyAs381wZwWg9q+l4nb8A=
+ bh=jWGYH8nfIerffoG4f2iFEpUs8wlGWlS4x1yGycxGMas=;
+ b=FIfonbb4/wilF6lOEMHKVv55Q/aQ86oTMDVjEWRKEuetFr70+MxdmOICcYhu8EoYTrgQsy
+ EJ5EXYRYNZMeE4mCvEFxfBxJmuVb5zbUU/3n7F5mcxLerWz0iVO0Oy6dI26uhHoYq8mH/c
+ LzfhAz54mpIiHxAnv03Ezys/MzVcyfs=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-480-Y3vTEtwaPg-RZ6gE0FvfaA-1; Sun, 14 Mar 2021 08:02:43 -0400
-X-MC-Unique: Y3vTEtwaPg-RZ6gE0FvfaA-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
+ us-mta-269-HBT-_vxDORaNw6IR5cipOg-1; Mon, 15 Mar 2021 07:54:15 -0400
+X-MC-Unique: HBT-_vxDORaNw6IR5cipOg-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3251A107465C;
- Sun, 14 Mar 2021 12:02:42 +0000 (UTC)
-Received: from [10.36.112.254] (ovpn-112-254.ams2.redhat.com [10.36.112.254])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 27F1D60861;
- Sun, 14 Mar 2021 12:02:38 +0000 (UTC)
-Subject: Re: [RFC RESEND PATCH 0/4] hw/arm/virt-acpi-build: Introduce iommu
- option for pci root bus
-To: Wang Xingang <wangxingang5@huawei.com>, qemu-devel@nongnu.org
-References: <1614414831-39712-1-git-send-email-wangxingang5@huawei.com>
- <e37590d0-d65f-e4e4-ec59-92eb3166d9d9@redhat.com>
- <697b7fcd-c75e-71c9-baf9-64ef610d9efb@huawei.com>
- <9594e4c6-b7e3-988f-fe84-425cd76dc055@redhat.com>
- <ae4eb8d1-6c29-7c74-829e-08760ce0d8df@huawei.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <776f8b57-be0c-d001-69ce-3358f39080b8@redhat.com>
-Date: Sun, 14 Mar 2021 13:02:37 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.0
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3F72D100C663;
+ Mon, 15 Mar 2021 11:54:14 +0000 (UTC)
+Received: from localhost (unknown [10.40.208.4])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 93725620DE;
+ Mon, 15 Mar 2021 11:54:05 +0000 (UTC)
+Date: Mon, 15 Mar 2021 12:54:03 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: David Hildenbrand <david@redhat.com>
+Subject: Re: [PATCH v3 4/4] acpi: Set proper maximum size for
+ "etc/acpi/rsdp" blob
+Message-ID: <20210315125403.68ef8925@redhat.com>
+In-Reply-To: <20210304105554.121674-5-david@redhat.com>
+References: <20210304105554.121674-1-david@redhat.com>
+ <20210304105554.121674-5-david@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <ae4eb8d1-6c29-7c74-829e-08760ce0d8df@huawei.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=eric.auger@redhat.com;
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=imammedo@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -30
-X-Spam_score: -3.1
+X-Spam_score_int: -29
+X-Spam_score: -3.0
 X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.25,
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.25,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=-0.01,
- RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -121,256 +114,71 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: xieyingtai@huawei.com, peter.maydell@linaro.org, cenjiahui@huawei.com,
- mst@redhat.com, shannon.zhaosl@gmail.com, qemu-arm@nongnu.org,
- imammedo@redhat.com
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ Alistair Francis <alistair.francis@xilinx.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Laszlo Ersek <lersek@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QzGtpvVE9Sem
+X-TUID: 6KDwlnAYsOEo
 
-Hi Xingang,
+On Thu,  4 Mar 2021 11:55:54 +0100
+David Hildenbrand <david@redhat.com> wrote:
 
-On 3/11/21 12:57 PM, Wang Xingang wrote:
-> Hi Eric,
+> Let's also set a maximum size for "etc/acpi/rsdp", so the maximum
+> size doesn't get implicitly set based on the initial table size. In my
+> experiments, the table size was in the range of 22 bytes, so a single
+> page (== what we used until now) seems to be good enough.
 > 
-> On 2021/3/10 18:18, Auger Eric wrote:
->> Hi Xingang,
->>
->> On 3/10/21 3:13 AM, Wang Xingang wrote:
->>> Hi Eric,
->>>
->>> On 2021/3/9 22:36, Auger Eric wrote:
->>>> Hi,
->>>> On 2/27/21 9:33 AM, Wang Xingang wrote:
->>>>> From: Xingang Wang <wangxingang5@huawei.com>
->>>>>
->>>>> These patches add support for configure iommu on/off for pci root bus,
->>>>> including primary bus and pxb root bus. At present, All root bus
->>>>> will go
->>>>> through iommu when iommu is configured, which is not flexible.
->>>>>
->>>>> So this add option to enable/disable iommu for primary bus and pxb
->>>>> root bus.
->>>>> When iommu is enabled for the root bus, devices attached to it will go
->>>>> through iommu. When iommu is disabled for the root bus, devices
->>>>> will not
->>>>> go through iommu accordingly.
->>>>
->>>> Please could you give an example of the qemu command line for which the
->>>> new option is useful for you. This would help me to understand your
->>>> pcie/pci topology and also make sure I test it with the smmu.
-
-It looks like a guest issue. I have switched to a fedora guest and it
-works now with the following command line:
-
-./build/qemu-system-aarch64 -M virt,gic-version=host -cpu host \
--smp 8 -m 16G -display none --enable-kvm -serial \
--drive
-file=/home/augere/VM/IMAGES/aarch64-vm0-fed30.raw,format=raw,if=none,cache=writethrough,id=drv0
-\
--netdev
-tap,id=nic0,script=/home/augere/TEST/SCRIPTS/qemu-ifup,downscript=/home/augere/TEST/SCRIPTS/qemu-ifdown,vhost=on
-\
--drive if=pflash,format=raw,file=/home/augere/VM/UEFI/flash0.img,readonly \
--drive if=pflash,format=raw,file=/home/augere/VM/UEFI/flash1.img \
--net none -d guest_errors \
--device
-virtio-blk-pci,bus=pcie.0,scsi=off,drive=drv0,id=virtio-disk0,bootindex=1,werror=stop,rerror=stop
-\
--device pxb-pcie,id=bridge1,bus=pcie.0,bus_nr=254 \
--device pcie-root-port,port=0x0,chassis=4,id=pcie.4,bus=bridge1 \
--device virtio-net-pci,bus=pcie.4,netdev=nic0,mac=6a:f5:10:b1:3d:d2
-
-It also works with your patches.
-
-Thanks
-
-Eric
-
->>>>
->>>> Thank you in advance
->>>>
->>>> Best Regards
->>>>
->>>> Eric
->>>>>
->>>>> Xingang Wang (4):
->>>>>     pci: Add PCI_BUS_IOMMU property
->>>>>     hw/pci: Add iommu option for pci root bus
->>>>>     hw/pci: Add pci_root_bus_max_bus
->>>>>     hw/arm/virt-acpi-build: Add explicit idmap info in IORT table
->>>>>
->>>>>    hw/arm/virt-acpi-build.c            | 92
->>>>> +++++++++++++++++++++--------
->>>>>    hw/arm/virt.c                       | 29 +++++++++
->>>>>    hw/pci-bridge/pci_expander_bridge.c |  6 ++
->>>>>    hw/pci/pci.c                        | 35 ++++++++++-
->>>>>    include/hw/arm/virt.h               |  1 +
->>>>>    include/hw/pci/pci.h                |  1 +
->>>>>    include/hw/pci/pci_bus.h            | 13 ++++
->>>>>    7 files changed, 153 insertions(+), 24 deletions(-)
->>>>>
->>>>
->>>> .
->>>>
->>>
->>> Thanks for your advice.
->>>
->>> I test this with the following script, in which i add two options.
->>>
->>> The option `primary_bus_iommu=false(or true)` for `-machine
->>> virt,iommu=smmuv3`, this helps to enable/disable whether primary bus go
->>> through iommu.
->>>
->>> The other option `iommu=false` or `iommu=true` for `-device pxb-pcie`
->>> helps to enable/disable whether pxb root bus go through iommu.
->>>
->>>> #!/bin/sh
->>>>
->>>> /path/to/qemu/build/aarch64-softmmu/qemu-system-aarch64 \
->>>> -enable-kvm \
->>>> -cpu host \
->>>> -kernel /path/to/linux/arch/arm64/boot/Image \
->>>> -m 16G \
->>>> -smp 8,sockets=8,cores=1,threads=1 \
->>>> -machine
->>>> virt,kernel_irqchip=on,gic-version=3,iommu=smmuv3,primary_bus_iommu=false
->>>>
->>>> \
->>>> -drive
->>>> file=./QEMU_EFI-pflash.raw,if=pflash,format=raw,unit=0,readonly=on \
->>>> -device
->>>> pxb-pcie,bus_nr=0x10,id=pci.10,bus=pcie.0,addr=0x3.0x1,iommu=false \
->>>> -device
->>>> pxb-pcie,bus_nr=0x20,id=pci.20,bus=pcie.0,addr=0x3.0x2,iommu=true \
->>>> -device
->>>> pxb-pcie,bus_nr=0x23,id=pci.30,bus=pcie.0,addr=0x3.0x3,iommu=true \
->>>> -device
->>>> pxb-pcie,bus_nr=0x40,id=pci.40,bus=pcie.0,addr=0x3.0x4,iommu=false \
->>>> -device pcie-pci-bridge,id=pci.11,bus=pci.10,addr=0x1 \
->>>> -device pcie-pci-bridge,id=pci.21,bus=pci.20,addr=0x1 \
->>>> -device
->>>> pcie-root-port,port=0x20,chassis=10,id=pci.2,bus=pcie.0,addr=0x2 \
->>>> -device
->>>> pcie-root-port,port=0x20,chassis=11,id=pci.12,bus=pci.10,addr=0x2 \
->>>> -device
->>>> pcie-root-port,port=0x20,chassis=19,id=pci.19,bus=pci.11,addr=0x3 \
->>>> -device
->>>> pcie-root-port,port=0x20,chassis=12,id=pci.22,bus=pci.20,addr=0x2 \
->>>> -device
->>>> pcie-root-port,port=0x20,chassis=13,id=pci.42,bus=pci.40,addr=0x2 \
->>>> -device virtio-scsi-pci,id=scsi0,bus=pci.12,addr=0x1 \
->>>> -device vfio-pci,host=b5:00.2,bus=pci.42,addr=0x0,id=acc2 \
->>>> -net none \
->>>> -initrd /path/to/rootfs.cpio.gz \
->>>> -nographic \
->>>> -append "rdinit=init console=ttyAMA0 earlycon=pl011,0x9000000
->>>> nokaslr" \
->>>
->>> I test the command line with an accelerator. The IORT table will have
->>> some changes, so only the root bus with iommu=true will go through
->>> smmuv3.
->>
->> Thank you for sharing your command line.
->>
->> On my end without using ",iommu=smmuv3" and the new options, my guest
->> crashes.
->>
->>      0.833665] ACPI: PCI Root Bridge [PC0A] (domain 0000 [bus 0a-0b])
->> [    0.837630] acpi PNP0A08:00: _OSC: OS supports [ExtendedConfig ASPM
->> ClockPM Segments MSI HPX-Type3]
->> [    0.843377] acpi PNP0A08:00: _OSC: platform does not support [LTR]
->> [    0.846796] acpi PNP0A08:00: _OSC: OS now controls [PCIeHotplug PME
->> AER PCIeCapability]
->> [    0.851082] acpi PNP0A08:00: ECAM area [mem
->> 0x4010a00000-0x4010bfffff] reserved by PNP0C02:00
->> [    0.854742] acpi PNP0A08:00: ECAM at [mem 0x4010a00000-0x4010bfffff]
->> for [bus 0a-0b]
->> [    0.859569] ------------[ cut here ]------------
->> [    0.862470] kernel BUG at mm/ioremap.c:76!
->> [    0.865066] Internal error: Oops - BUG: 0 [#1] SMP
->> [    0.868130] Modules linked in:
->> [    0.870060] CPU: 6 PID: 1 Comm: swapper/0 Not tainted
->> 5.11.0-rc6-guest-upstream+ #26
->> [    0.874920] Hardware name: QEMU KVM Virtual Machine, BIOS 0.0.0
->> 02/06/2015
->> [    0.879283] pstate: 80400005 (Nzcv daif +PAN -UAO -TCO BTYPE=--)
->> [    0.883055] pc : ioremap_page_range+0x33c/0x3e0
->> [    0.885942] lr : ioremap_page_range+0x30/0x3e0
->> [    0.888737] sp : ffff80001272f800
->> [    0.890824] x29: ffff80001272f800 x28: ffffffbffe801000
->> [    0.894168] x27: ffffffc020040000 x26: ffff8000111b01f8
->> [    0.897543] x25: 0400000000000001 x24: ffffffbffe800000
->> [    0.900882] x23: 000000003eff3000 x22: ffffffbffe801000
->> [    0.904221] x21: ffffffbffe801000 x20: ffff0003f2270020
->> [    0.907612] x19: 0000000000000001 x18: 0000000000000030
->> [    0.910952] x17: 0000000000000000 x16: 0000000000000001
->> [    0.914283] x15: ffffffffffffffff x14: ffff8000116d49c8
->> [    0.917679] x13: 000000003eff3000 x12: 0000000000000041
->> [    0.921018] x11: ffff800011f2f000 x10: 000000000000002e
->> [    0.924359] x9 : ffff800010c372c4 x8 : ffffffbffe800000
->> [    0.927744] x7 : ffff0003f224eff8 x6 : 0000000000000001
->> [    0.931092] x5 : ffffffbffe800fff x4 : ffff8000116de650
->> [    0.934430] x3 : 0068000000000f17 x2 : 0140000000000000
->> [    0.937813] x1 : 00000040407f0000 x0 : ffff0003ffdcccc0
->> [    0.941165] Call trace:
->> [    0.942713]  ioremap_page_range+0x33c/0x3e0
->> [    0.945374]  pci_remap_iospace+0x7c/0x90
->> [    0.947881]  acpi_pci_probe_root_resources+0x180/0x238
->> [    0.951122]  pci_acpi_root_prepare_resources+0x28/0xc8
->> [    0.954357]  acpi_pci_root_create+0x9c/0x2f8
->> [    0.956990]  pci_acpi_scan_root+0x150/0x240
->> [    0.959639]  acpi_pci_root_add+0x34c/0x4e0
->> [    0.962220]  acpi_bus_attach+0x15c/0x2c0
->> [    0.964692]  acpi_bus_attach+0x9c/0x2c0
->> [    0.967135]  acpi_bus_attach+0x9c/0x2c0
->> [    0.969582]  acpi_bus_scan+0x64/0x118
->> [    0.971888]  acpi_scan_init+0x10c/0x244
->> [    0.974302]  acpi_init+0x2bc/0x328
->> [    0.976463]  do_one_initcall+0x54/0x268
->> [    0.978913]  kernel_init_freeable+0x22c/0x2c4
->> [    0.981658]  kernel_init+0x1c/0x128
->> [    0.983864]  ret_from_fork+0x10/0x34
->> [    0.986139] Code: a9446bf9 a8cb7bfd d50323bf d65f03c0 (d4210000)
->> [    0.990037] ---[ end trace fc68f309d1db57e3 ]---
->> [    0.992939] Kernel panic - not syncing: Oops - BUG: Fatal exception
->> [    0.996893] SMP: stopping secondary CPUs
->> [    0.999487] ---[ end Kernel panic - not syncing: Oops - BUG: Fatal
->> exception ]---
->>
->> Do you have any idea. I am using
->>
->> http://snapshots.linaro.org/components/kernel/leg-virt-tianocore-edk2-upstream/4198/QEMU-AARCH64/RELEASE_GCC5/
->>
->>
->> Thanks
->>
->> Eric
->>
->>
->>
->>
->>>
->>> Thanks,
->>> Xingang
->>> .
->>>
->>
->> .
->>
+> Now that we have defined maximum sizes for all currently used table types,
+> let's assert that we catch usage with new tables that need a proper maximum
+> size definition.
 > 
-> I retest with the QEMU_EFI.fd and QEMU.img.gz you provided, and i don't
-> have this issue. Could you please provide more information about how you
-> test, and is everything ok with the iommu=smmuv3 on ?
+> Also assert that our initial size does not exceed the maximum size; while
+> qemu_ram_alloc_internal() properly asserts that the initial RAMBlock size
+> is <= its maximum size, the result might differ when the host page size
+> is bigger than 4k.
 > 
-> From the debug info, it might be the problem of building the ACPI IORT
-> table. And could you please retest without the last patch, and see if
-> everything is ok.
+> Suggested-by: Laszlo Ersek <lersek@redhat.com>
+> Cc: Alistair Francis <alistair.francis@xilinx.com>
+> Cc: Paolo Bonzini <pbonzini@redhat.com>
+> Cc: "Michael S. Tsirkin" <mst@redhat.com>
+> Cc: Igor Mammedov <imammedo@redhat.com>
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
+> Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+> Cc: Paolo Bonzini <pbonzini@redhat.com>
+> Cc: Richard Henderson <richard.henderson@linaro.org>
+> Cc: Laszlo Ersek <lersek@redhat.com>
+> Signed-off-by: David Hildenbrand <david@redhat.com>
+> ---
+>  hw/acpi/utils.c | 7 ++++++-
+>  1 file changed, 6 insertions(+), 1 deletion(-)
 > 
-> Thanks.
-> 
-> Xingang
-> 
-> .
-> 
+> diff --git a/hw/acpi/utils.c b/hw/acpi/utils.c
+> index f2d69a6d92..0c486ea29f 100644
+> --- a/hw/acpi/utils.c
+> +++ b/hw/acpi/utils.c
+> @@ -29,14 +29,19 @@
+>  MemoryRegion *acpi_add_rom_blob(FWCfgCallback update, void *opaque,
+>                                  GArray *blob, const char *name)
+>  {
+> -    uint64_t max_size = 0;
+> +    uint64_t max_size;
+[...]
+> +    } else {
+> +        g_assert_not_reached();
+>      }
+> +    g_assert(acpi_data_len(blob) <= max_size);
+
+though it's correct,
+but theoretically compiler might get unhappy about uninitialized max_size here
+
+though if it compiles fine with our current CI it should be good enough
+
+>  
+>      return rom_add_blob(name, blob->data, acpi_data_len(blob), max_size, -1,
+>                          name, update, opaque, NULL, true);
 

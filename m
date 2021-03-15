@@ -1,102 +1,109 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2828008lfg;
-        Sun, 14 Mar 2021 06:19:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz9wH55qRlmgJXzriFs1q2IzZXKXsjQpK8kXKZp5dNwnyxI7I+53XOCJPRY+uYqn1w8rTfy
-X-Received: by 2002:a05:6638:1390:: with SMTP id w16mr6122839jad.83.1615727943510;
-        Sun, 14 Mar 2021 06:19:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1615727943; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3408271lfg;
+        Mon, 15 Mar 2021 01:57:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwB4Smns+WiXzlPKeEYraWTg9GaMp6sl1RflBBpNiD8iHK2GnZrFQoaQQCc/c4Td0Qk1EGK
+X-Received: by 2002:a25:dc94:: with SMTP id y142mr34653652ybe.346.1615798679109;
+        Mon, 15 Mar 2021 01:57:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1615798679; cv=none;
         d=google.com; s=arc-20160816;
-        b=wdhMxCYllRBnw1GHwplfXq0ohJ8/nGZKHKVjP7xt5Vb4hIaKKmbpRjKaoG10yFdVYe
-         7ZGF+168WGdq0gTzM5ymxQZZvCLQEYiH8kBdsrNIAHszaRGECw9+sLgE1Pj1f4gDVn4e
-         tdHeKkKVjvYFegChDmGETINx0jMzNFXvvH5EFBSJpG6FU1DALMt125VTzIBOYnosqicJ
-         vmXE0mtXLNyGiMRSj1FXWljSqfY28T20jz6al8Xd8VQDbxveHuDIrJrov0jcgsx345hy
-         sEkwcwF5ha1OPj3Szhd045TVBczulDU1+sPPz7C3/4AGGHDUYLc9LFiz/SzKSRArbYo7
-         iL9w==
+        b=GLRu1mr3qiMq8DWAFjqxsYI3PQzanILxCRxQ7Oan47Wlug/ha9MdBRaZOCeUQL11Gc
+         0Ug4AYNmQFZybVgC/m5UByOFRhCOrK9WUYPcJump6UgLfBr/ffFAYmNrcaz3JeShDOmI
+         TEu9xzVcmebQYBLWFtycMSruBVIHKQE3qZq8R1eFT2SxSruNmlgJkukk9jxfbPp4T/y9
+         oOipdcjmnnw7KxrAlFKn6Qb0Kf9GA26R8v8iG+Vg5hNI/InAUf8hIfWXKPjeWfxS/Lar
+         7i6sVz4qbD5/HG+4lih4XbgCreu+2p0ZSrk5r6d5rq/VJhlYB1RGenkKqJb5T5/SOlDf
+         HIEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=McFs42ILNKixEv2gIpOsYdm7tY2XM7v6iokt0UWP/jw=;
-        b=uUMjvISPYLMHOmfmwSs7n4hjTLvjBHtFdzzgS2Zs4CMPwMlW7E0fnjtCFIro3tmysy
-         kjDQJL9gQTn2FZC7T5Bf+4er8ikZyRMZgI23RAynC+539vNuvngz2eu0499fCJ6nDMbr
-         9+PEG7p5JyB0sw1hEbT79IxzGdvbkdNFe31y5JkV4XMy1aVVHhz414uPiot6Ls3kw/rJ
-         hnUB3rw8hhoSpZCP0WhmCqkfjtTXuRH560BJj3L4saZpyD5S4idGI5d8V3ovWnrTxDWx
-         wl7uq+2TMWv+0GOaqp9FoO7TXMacX7Dqy0rHpWJVzrTnSzWesh/ky8ssxwF2B7uthgLz
-         V6TA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:organization:from:references:to:subject:dkim-signature;
+        bh=FXyWk/M454tGToxGEoPuTZqKKUwq8ZYtJWhGMG2i3I4=;
+        b=xk+LYT+brV/hx+rhFvHF6ZaTb6jpvIwzFGLsxqZJ65/0SBP5y272ufKE4gBbFhiOpw
+         LVKOA5b7pZ0uzgda94Ix3rImvQjbRHpwaROi8UK/qpypEKWyK6yU8IE15H46/zJFb3x5
+         +PdWQCnaiW1QDwWHLTPwiQta/yP/Z7W5j1V1k6RjbdYJOzyG6nlqF9cUotDsZ2o7o4bX
+         Y2s024/8Vgn3hAJqIHM1WvCJM/2ROaoenib1J21EwZyQeg9DmJ4KUft3JpQn58W5g25R
+         FdQ9Iy9K///HiXzyshcf3Oii2uwdy05b5vsqmqSPhtzswc4BCTst6eSTleQQO8CGc+GP
+         HPBg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=op1Ge9qw;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AYM3SAIa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f14si8632441iow.105.2021.03.14.06.19.03
+        by mx.google.com with ESMTPS id 21si13496430ybn.355.2021.03.15.01.57.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 14 Mar 2021 06:19:03 -0700 (PDT)
+        Mon, 15 Mar 2021 01:57:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=op1Ge9qw;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AYM3SAIa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58922 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:38162 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lLQe6-0003M8-J7
-	for alex.bennee@linaro.org; Sun, 14 Mar 2021 09:19:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38070)
+	id 1lLj30-0000DQ-EK
+	for alex.bennee@linaro.org; Mon, 15 Mar 2021 04:57:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58162)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lLQdb-0003Lv-OI
- for qemu-arm@nongnu.org; Sun, 14 Mar 2021 09:18:31 -0400
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a]:43736)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lLQda-0004HN-1n
- for qemu-arm@nongnu.org; Sun, 14 Mar 2021 09:18:31 -0400
-Received: by mail-ed1-x52a.google.com with SMTP id e7so14143751edu.10
- for <qemu-arm@nongnu.org>; Sun, 14 Mar 2021 06:18:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=McFs42ILNKixEv2gIpOsYdm7tY2XM7v6iokt0UWP/jw=;
- b=op1Ge9qwVGstGdaxYpuXmLt+TOGylNwm2VHYAH9aiqHA9cWBt+GVdsm0yI3LJfNqk5
- nYKZ3ux0ohxes4fgRvtBDQevgcYfOcNgZKaxXw9SuTidUd9SKnMAWqvZHo5HVKA4TtXu
- Z+nyO1pm4lZWzmnchgDnrIWF1P+TWkJLbG39dD0ilvxoc+st1GZXf8bVLX0lGQm7hePS
- T+8Wz7GCx5daAGR7OcJXCNf9oN3e1qcB57kMa12hUYiN4E20nMwec8SsTP9KeMsvGtcj
- 5Lyv1KpTh4YeTTQFk5UJCqJM6UcFsuai0BcAZYJYhuYghwiD4g94OS7H4WgCK8IIfVXf
- f8lA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=McFs42ILNKixEv2gIpOsYdm7tY2XM7v6iokt0UWP/jw=;
- b=JPYF2D0AEdw6kXIcyK2tOU2CInKLCv7REWuhKyZQ2t91ywn2gRW44KFcgHywIo5DHU
- GQ5Z+3V9ku9nuJIgCsnw5XTZ07VPrmN8W+V4hsBzqUfezYo7KcL8FmC+qYDiiroZZ2IH
- 2sUmw5jTiXCtBW2TmCy8kSRqW1gsJbEJY1fcO9UuZSNSvAYMjIqpghK8LuC410/JaWOD
- bRRWQx2jMqqkC5Q6Vydnq2ne9PgY6gelzhomNDlJI9sEdx6di4OSPtOXM0HxHHpYyWXm
- BsD9oQ6vu3qVyiUMnWgpQjjIpxZxUc/pRhRFXSYHTPreuFWDr7zSHXTM+RYko1omO87P
- n0Yw==
-X-Gm-Message-State: AOAM530GIuqTdP5fUdIvJHIBL80qcslvH9VzhQDNyUWtI289fBmiXW8B
- jevAfAs+hGl07kr4tQL7O6OJvm6k8ZOohr+/CDJjLw==
-X-Received: by 2002:aa7:cb0a:: with SMTP id s10mr24625041edt.36.1615727908450; 
- Sun, 14 Mar 2021 06:18:28 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1lLj2r-0000CI-02
+ for qemu-arm@nongnu.org; Mon, 15 Mar 2021 04:57:49 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:52208)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1lLj2m-0006P1-Lo
+ for qemu-arm@nongnu.org; Mon, 15 Mar 2021 04:57:47 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1615798663;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=FXyWk/M454tGToxGEoPuTZqKKUwq8ZYtJWhGMG2i3I4=;
+ b=AYM3SAIa46WFPrd1GVk9CvpuKehX08PE5MuYjsDzJElYr+CM0/B6/0nms+HxXKYsebZkuD
+ ra8wxMdmxgI4HnGmAnullzY95QSkKMmeAluKgWIJO2t9hPgdVUuQE6m14wrzEND6/uZZpT
+ uUwLk5tUjEwV1uvgYP8BiIksLM4iGeg=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-430-MmNVA530Ot-BxkF0cobF5g-1; Mon, 15 Mar 2021 04:57:39 -0400
+X-MC-Unique: MmNVA530Ot-BxkF0cobF5g-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 51E618042BE;
+ Mon, 15 Mar 2021 08:57:38 +0000 (UTC)
+Received: from [10.36.112.200] (ovpn-112-200.ams2.redhat.com [10.36.112.200])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 8C380610AF;
+ Mon, 15 Mar 2021 08:57:32 +0000 (UTC)
+Subject: Re: [PATCH v3 0/4] acpi: Set proper maximum size for
+ "etc/table-loader" blob
+To: qemu-devel@nongnu.org
+References: <20210304105554.121674-1-david@redhat.com>
+From: David Hildenbrand <david@redhat.com>
+Organization: Red Hat GmbH
+Message-ID: <acb73d49-6c26-0f4a-9426-fd345b9cf35a@redhat.com>
+Date: Mon, 15 Mar 2021 09:57:31 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.0
 MIME-Version: 1.0
-References: <20210311180855.149764-1-wuhaotsh@google.com>
- <20210311180855.149764-6-wuhaotsh@google.com>
-In-Reply-To: <20210311180855.149764-6-wuhaotsh@google.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sun, 14 Mar 2021 13:18:06 +0000
-Message-ID: <CAFEAcA8fHD5jrg-nak=sFPf0CvA0bzYqVEh_ZDCxX+DjPPPuCQ@mail.gmail.com>
-Subject: Re: [PATCH v2 5/5] tests/qtest: Test PWM fan RPM using MFT in PWM test
-To: Hao Wu <wuhaotsh@google.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20210304105554.121674-1-david@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=david@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=david@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.25,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=-0.01,
+ RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -109,46 +116,36 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Patrick Venture <venture@google.com>,
- Havard Skinnemoen <hskinnemoen@google.com>,
- QEMU Developers <qemu-devel@nongnu.org>, CS20 KFTing <kfting@nuvoton.com>,
- qemu-arm <qemu-arm@nongnu.org>, IS20 Avi Fishman <Avi.Fishman@nuvoton.com>,
- Doug Evans <dje@google.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Alistair Francis <alistair.francis@xilinx.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Laszlo Ersek <lersek@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ds8GSAJnQiOa
+X-TUID: GOp95gA0YpcY
 
-On Thu, 11 Mar 2021 at 18:09, Hao Wu <wuhaotsh@google.com> wrote:
->
-> This patch adds testing of PWM fan RPMs in the existing npcm7xx pwm
-> test. It tests whether the MFT module can measure correct fan values
-> for a PWM fan in NPCM7XX boards.
->
-> Reviewed-by: Doug Evans <dje@google.com>
-> Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
-> Signed-off-by: Hao Wu <wuhaotsh@google.com>
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+On 04.03.21 11:55, David Hildenbrand wrote:
+> Fix and cleanup initializing the maximum size of mutable ACPI blobs.
+> 
+> v1/v2 -> v3:
+> - 'acpi: Set proper maximum size for "etc/table-loader" blob'
+> -- Move "etc/table-loader" change to separate patch
+> -- Extend description
+> -- Fixup maximum size (now really use 64k)
+> - Add some patches to cleanup/refactor the code. I avoided using a new
+>    enum for the different tables for now, using the table names should be
+>    good enough and is simple.
+> 
+
+Ping, would be nice to get this into v6.0
 
 
-> +static void mft_verify_rpm(QTestState *qts, const TestData *td, uint64_t duty)
-> +{
-> +    int index = mft_compute_index(td);
-> +    uint16_t cnt, cr;
-> +    uint32_t rpm = DEFAULT_RPM * duty / MAX_DUTY;
-> +    uint64_t clk = read_pclk(qts, true);
-> +    int32_t expected_cnt = mft_compute_cnt(rpm, clk);
-> +
-> +    qtest_irq_intercept_in(qts, "/machine/soc/a9mpcore/gic");
-> +    g_test_message(
-> +        "verifying rpm for mft[%d]: clk: %lu, duty: %lu, rpm: %u, cnt: %d",
-> +        index, clk, duty, rpm, expected_cnt);
+-- 
+Thanks,
 
-Hi -- this won't build on 32-bit hosts (or on OSX, and it warns on OpenBSD),
-because uint64_t and 'long' aren't the same thing. You need to use the
-PRIu64 etc macros when printing uint64_t values, so the argument type and
-the format string match.
+David / dhildenb
 
-I've fixed this up in the pullreq.
-
-thanks
--- PMM

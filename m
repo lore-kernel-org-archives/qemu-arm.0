@@ -1,93 +1,117 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4836006lfg;
-        Tue, 16 Mar 2021 11:55:45 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwKFrvt5lsaJ2RMQXDyswAYox3c5IQJiavR79jDrcPOl4zG1wMLlvhVi+NYAoTuX4JCWO78
-X-Received: by 2002:a02:605d:: with SMTP id d29mr86530jaf.81.1615920945747;
-        Tue, 16 Mar 2021 11:55:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1615920945; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4865710lfg;
+        Tue, 16 Mar 2021 12:38:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwZwRfRxezmRTnBdnzdyR/rRS66DXxl48OvDMzhzshC5/uujkvgzUbx0lvGLF0EVqqzdZ2u
+X-Received: by 2002:a5d:854b:: with SMTP id b11mr4493675ios.105.1615923535019;
+        Tue, 16 Mar 2021 12:38:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1615923535; cv=none;
         d=google.com; s=arc-20160816;
-        b=iqEGcq0EKqbTff7hpFu43cKSVVTQg0SEJ52aLOFZKkCzEIbSYwh/8vElMR5GSvwEyo
-         mpA+xjCl9+cwthwtbixlF2xgnLhl6RH/949moVFb2Y61MgjajBhJa5k6hpGfXXTG/XYN
-         mFcBVKFyatrqdQ5EWsspDLlPI0Xs7DkzPC7GY/igO1vlWctJnYHBPlFdUeQuTPW+S0Vz
-         UYLUo16lg3JgmTlHpQKiSmGdz01/2DKVlbtHsRfATRxmH+7noGyx5fkt4fRJs7ozGXEE
-         XPTT/bNIz+Ogx8b7TbaocKKi1r4bp5rlTpenRp7P2guSGy51IUfuuPK6fGqp80hXpqHL
-         jQJA==
+        b=DmEdxvCMpO7i2ebIa0Y/9KQLsP/trXCZLIhPz89pxWRqUqI5RtIFyz4BJt4QZAfe13
+         70+Ox1JzYPnAYQPmkEh6t7iPZ9nukc/Z19Obzv28MUUMP/kU60vr2DlzV/kr4VFLlegq
+         4jvbqP/TBGmj/gF2+hqvmkiXsSXnHxDfGzahrrhRWqnGfyAw5XHyR6udpwbgtei/tYZL
+         Og5NqcAAlcGIO1onfqidKZnvAgmbatLV0UOWJbyBUnSI/UslZS/wKUDzoDlLU5sDQK5/
+         Jq7e00BI0LLSE+plQSDDHuLH07NxRCjTgAnZBUa7QhW008T0TsZY1dQlvxcKfMEz2lzz
+         /0Ow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :mime-version:dkim-signature:dkim-filter;
-        bh=bbJmYIfUVQIpxeym60+pI3Ext9dWhJxDwEhJwRGb9R0=;
-        b=yrAD3ia17BAKUzpvuRrmWu7O6Q4IDdSjndg3Jx6KdttakYdc5++2KFMVRtC9e+gDxi
-         HVDHKBPW6JwT49QbBP5s+owbALedHJaFCuPjk4Fpmw2rhpUBvYCbpWswUG4b2S8qrLgn
-         Vcb0q9/Dgn2wp5H/59+oxBXu7zJ66yt3kWvoei2hAnMen9saaurnaNezzREGX57Fmn6r
-         crORV2qmEltsyClbegcMnVGcMr4yAT+ezoQ+8akA4eVCvmhmlzkfPGVWH+qGsHJRFVZ2
-         beenHNx0TcwrrCY/xPVWOyF0RR3jutBE2o0OVdk7YKAgbXFcJC0vDtzfDKFelugNK9nZ
-         RNjQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=EACJ9883Q7MnEp/uF9ho4TOANiAD687SqaQL/J7HMJY=;
+        b=R4xTIoXYebfzuDoRzQYpjgcr+udstA3jYlPp3NDZMCS8mIDgUGXOki0K0gv3YxmlRO
+         d3oA2qSFmdGrZLcmq6UG5y9nHk8dzQYbhnVX6H8BehFlFrHr+MHTpc5rGYXCiZPo6yZu
+         +mXePdMXpILl72cMXs+hG0j+HeTEo0wyafTbGjSoAZpethMMUIiyT6pPnvG5YjK8Bl4N
+         XQD5DyzwwB6hyfHqqlxE0KHsSxle+oNf1mrRDsgRhLceHq4h8zgMvTKbWhb7P9uYiGOO
+         OLeNfboHwz9LUACRTlh7Z0GFCCgkukEj+CRrdl6F/QKQ3F4qUe5IfZzSza6wc6QZqRdx
+         0ywg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@nifty.com header.s=dec2015msa header.b=ENTKQZMf;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GztSzCBt;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x15si387121ilv.138.2021.03.16.11.55.45
+        by mx.google.com with ESMTPS id m19si14776867jat.16.2021.03.16.12.38.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Mar 2021 11:55:45 -0700 (PDT)
+        Tue, 16 Mar 2021 12:38:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@nifty.com header.s=dec2015msa header.b=ENTKQZMf;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GztSzCBt;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: from localhost ([::1]:40318 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:37980 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lMEr3-0003J2-2d
-	for alex.bennee@linaro.org; Tue, 16 Mar 2021 14:55:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37406)
+	id 1lMFWo-0007uQ-0X
+	for alex.bennee@linaro.org; Tue, 16 Mar 2021 15:38:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43036)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <masahiroy@kernel.org>)
- id 1lMEX9-00082Q-4w; Tue, 16 Mar 2021 14:35:15 -0400
-Received: from conssluserg-05.nifty.com ([210.131.2.90]:55646)
+ (Exim 4.90_1) (envelope-from <wrampazz@redhat.com>)
+ id 1lMEni-0000Kv-HK
+ for qemu-arm@nongnu.org; Tue, 16 Mar 2021 14:52:18 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:28530)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <masahiroy@kernel.org>)
- id 1lMEX4-0006jm-4s; Tue, 16 Mar 2021 14:35:10 -0400
-Received: from mail-pf1-f179.google.com (mail-pf1-f179.google.com
- [209.85.210.179]) (authenticated)
- by conssluserg-05.nifty.com with ESMTP id 12GIYWEj017022;
- Wed, 17 Mar 2021 03:34:32 +0900
-DKIM-Filter: OpenDKIM Filter v2.10.3 conssluserg-05.nifty.com 12GIYWEj017022
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nifty.com;
- s=dec2015msa; t=1615919672;
- bh=bbJmYIfUVQIpxeym60+pI3Ext9dWhJxDwEhJwRGb9R0=;
- h=From:Date:Subject:To:From;
- b=ENTKQZMfjtkGZLLKMANHUbA2zD80Dy4f3N5D5jgSFyp9moLKkFhdU8+HJnGY3l5iO
- vZ0PMkO/gVpb5plewWs/1+I2QZaQdzclaTVVaNSI6fOS+5YE8NdAAiSJuaMRUiRh4a
- O12cqiHfYS5PtqMZOQSoi+EiwB3rgRZmZ0Qzx2QABBO9j9GYsqUzSmkA1DUPOst48K
- 9RyuHJOvdQ4WO225LWc4K3er73zLVtNZDCwuRu16y3F/n2zuNPq2U2183ad0BFgUHC
- oB27/yDSWJywIwHCjdx2cfXkr+CuDdlfmfbBkSnJla8IPaRWHwhFXwFiV7PVN1E6K/
- YA/LnKozdKr3Q==
-X-Nifty-SrcIP: [209.85.210.179]
-Received: by mail-pf1-f179.google.com with SMTP id e26so9407710pfd.9;
- Tue, 16 Mar 2021 11:34:32 -0700 (PDT)
-X-Gm-Message-State: AOAM530x/RqsrBI1jvwvZ41cHzdw2CilxthBdKK3fZYQd+qnbddQYIDo
- gypzHxVRKI4KdapbeCjiH+MEM373VzVO1YBivLA=
-X-Received: by 2002:a65:41c6:: with SMTP id b6mr874213pgq.7.1615919671845;
- Tue, 16 Mar 2021 11:34:31 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <wrampazz@redhat.com>)
+ id 1lMEng-0005xi-BN
+ for qemu-arm@nongnu.org; Tue, 16 Mar 2021 14:52:18 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1615920735;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=EACJ9883Q7MnEp/uF9ho4TOANiAD687SqaQL/J7HMJY=;
+ b=GztSzCBt0AURM9mXsLmvRDh5s2joMJLJ02iqhfLt5qvoU/hcGDZ1szBoSHh9GQo4XPRflK
+ YGzuvx9S3aBGs+uklfOoiRhavvSujNf9j5c+9TWWiu1WXN5uX/RTc98jq91HKWnBkHsgOm
+ S9GZIWbaWUBgq/XKDFpXoMoDzv9HFdw=
+Received: from mail-vs1-f72.google.com (mail-vs1-f72.google.com
+ [209.85.217.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-233-vfZl5OE_MdSnMIh7i_hc0g-1; Tue, 16 Mar 2021 14:52:12 -0400
+X-MC-Unique: vfZl5OE_MdSnMIh7i_hc0g-1
+Received: by mail-vs1-f72.google.com with SMTP id u16so9685458vsp.10
+ for <qemu-arm@nongnu.org>; Tue, 16 Mar 2021 11:52:12 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=EACJ9883Q7MnEp/uF9ho4TOANiAD687SqaQL/J7HMJY=;
+ b=Wrl1ArFawtcHx2C9gizM2oXscB5WYN/ycvKE5uSli7KekcXqqPkp/XPBuyH9wQt1p/
+ Wed36bKKDKgvX6gi7i7UYLkfzQck+X61EyE4AwCHM01yMT4K5jUMDSK4esbThQHnpDey
+ gfkDClBQ5quwCEq0OL6kQt34odu1bvwrMvjV0wtOCs4fYWh91NNRbAfvvmYKNqVOn8QQ
+ 96dZtYxxEFrJcr7k5VpINuoLk5AX1dmI8KuqVNFXhD8qBB2mAv0egUYCy5+o9M6XlApE
+ NNsaft803OrFAqfjxIeGQHQ1TjwD+1w+qlkpfy+k4C9hGYTbJmv2G2DmiH6i0lZkOsOi
+ 8ogg==
+X-Gm-Message-State: AOAM53083tZGVa2XKhxWAXOZnWDti72zMYFQondMWRdK/1hsS2C6iEtP
+ psVCyXNcMrDtGYciH325etZUgi2uWHlYt3ZF776l0bewBxeDC/lXokNkw2HHCRBlxaKytvB23ys
+ M/P672hLrgK5EFI0ULE/txfwsJ8Te
+X-Received: by 2002:a9f:2069:: with SMTP id 96mr393258uam.110.1615920731688;
+ Tue, 16 Mar 2021 11:52:11 -0700 (PDT)
+X-Received: by 2002:a9f:2069:: with SMTP id 96mr393244uam.110.1615920731462;
+ Tue, 16 Mar 2021 11:52:11 -0700 (PDT)
 MIME-Version: 1.0
-From: Masahiro Yamada <masahiroy@kernel.org>
-Date: Wed, 17 Mar 2021 03:33:55 +0900
-X-Gmail-Original-Message-ID: <CAK7LNASNqCcTLE+hJqpohbh6_TLGZxZ0o8dm14BQSVtrCVCDDQ@mail.gmail.com>
-Message-ID: <CAK7LNASNqCcTLE+hJqpohbh6_TLGZxZ0o8dm14BQSVtrCVCDDQ@mail.gmail.com>
-Subject: Question about two option formats for netdev
-To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <20210214194524.768660-1-f4bug@amsat.org>
+ <cae49194-7c6e-4c5e-6407-687c08ef67b9@amsat.org>
+ <9e790254-2153-f24f-693a-6ecf22de814a@redhat.com>
+In-Reply-To: <9e790254-2153-f24f-693a-6ecf22de814a@redhat.com>
+From: Willian Rampazzo <wrampazz@redhat.com>
+Date: Tue, 16 Mar 2021 15:51:45 -0300
+Message-ID: <CAKJDGDat_bBKvkhcu1dTB54sE52od6K7NhKnVPVo8nGa9ATfdw@mail.gmail.com>
+Subject: Re: [PATCH v2] tests/acceptance: Add bFLT loader linux-user test
+To: Thomas Huth <thuth@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=wrampazz@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: softfail client-ip=210.131.2.90;
- envelope-from=masahiroy@kernel.org; helo=conssluserg-05.nifty.com
-X-Spam_score_int: -11
-X-Spam_score: -1.2
-X-Spam_bar: -
-X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=wrampazz@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.25,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -100,50 +124,139 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-devel <qemu-devel@nongnu.org>, Laurent Vivier <laurent@vivier.eu>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+ Willian Rampazzo <willianr@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Cleber Rosa <crosa@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gscYYVtSJZvr
+X-TUID: LGzg4ET+jobV
 
-Hi.
+Hi Thomas,
 
-I have a question about adding
-a network device.
+Sorry for the late reply.
 
+On Wed, Mar 10, 2021 at 2:49 AM Thomas Huth <thuth@redhat.com> wrote:
+>
+> On 09/03/2021 23.27, Philippe Mathieu-Daud=C3=A9 wrote:
+> > ping?
+>
+> I guess we really need someone who could act as a maintainer for the
+> tests/acceptance directory, who could pick up patches and send pull reque=
+sts
+> if nobody else is picking up these patches...
+>
+> Cleber, Wainer, Willian, any volunteers?
+>
 
-qemu-system-arm -machine vexpress-a9 \
--net nic,model=lan9118 -net user   ...
+This is something I have discussed with Philippe some times already. I
+understand the tests/acceptance directory is a gray area. I'm more
+comfortable with the idea that subsystem maintainers are responsible
+to send pull requests for tests related to them or, at least, ack
+them. In case of a refactor or test improvement, someone else working
+with testing core features could send the pull request.
 
-works for me, but 'man qemu-system-arm'
-says this is "Legacy option".
+I know Cleber has been sending pull requests with changes related to
+the testing core (avocado_qemu) and changes related to tests
+refactoring or code improvement. I would be more than happy to backup
+him if needed.
 
+Willian
 
-Is there any new (or recommended) form
-to use a lan9118 device?
+>   Thomas
+>
+>
+> > On 2/14/21 8:45 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> >> Add a very quick test that runs a busybox binary in bFLT format:
+> >>
+> >>    $ avocado --show=3Dapp run -t linux_user tests/acceptance/load_bflt=
+.py
+> >>    JOB ID     : db94d5960ce564c50904d666a7e259148c27e88f
+> >>    JOB LOG    : ~/avocado/job-results/job-2019-06-25T10.52-db94d59/job=
+.log
+> >>     (1/1) tests/acceptance/load_bflt.py:LoadBFLT.test_stm32: PASS (0.1=
+5 s)
+> >>    RESULTS    : PASS 1 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUP=
+T 0 | CANCEL 0
+> >>    JOB TIME   : 0.54 s
+> >>
+> >> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> >> ---
+> >> Based-on: <20210214175912.732946-1-f4bug@amsat.org>
+> >>    tests/acceptance: Extract QemuBaseTest from Test
+> >>    tests/acceptance: Make pick_default_qemu_bin() more generic
+> >>    tests/acceptance: Introduce QemuUserTest base class
+> >> ---
+> >>   tests/acceptance/load_bflt.py | 51 +++++++++++++++++++++++++++++++++=
+++
+> >>   1 file changed, 51 insertions(+)
+> >>   create mode 100644 tests/acceptance/load_bflt.py
+> >>
+> >> diff --git a/tests/acceptance/load_bflt.py b/tests/acceptance/load_bfl=
+t.py
+> >> new file mode 100644
+> >> index 00000000000..4b7796d0775
+> >> --- /dev/null
+> >> +++ b/tests/acceptance/load_bflt.py
+> >> @@ -0,0 +1,51 @@
+> >> +# Test the bFLT format
+> >> +#
+> >> +# Copyright (C) 2019 Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> >> +#
+> >> +# SPDX-License-Identifier: GPL-2.0-or-later
+> >> +
+> >> +import os
+> >> +import bz2
+> >> +import subprocess
+> >> +
+> >> +from avocado_qemu import QemuUserTest
+> >> +
+> >> +
+> >> +class LoadBFLT(QemuUserTest):
+> >> +
+> >> +    def extract_cpio(self, cpio_path):
+> >> +        """
+> >> +        Extracts a cpio archive into the test workdir
+> >> +
+> >> +        :param cpio_path: path to the cpio archive
+> >> +        """
+> >> +        cwd =3D os.getcwd()
+> >> +        os.chdir(self.workdir)
+> >> +        with bz2.open(cpio_path, 'rb') as archive_cpio:
+> >> +            subprocess.run(['cpio', '-i'], input=3Darchive_cpio.read(=
+),
+> >> +                           stderr=3Dsubprocess.DEVNULL)
+> >> +        os.chdir(cwd)
+> >> +
+> >> +    @skipUnless(os.getenv('AVOCADO_ALLOW_UNTRUSTED_CODE'), 'untrusted=
+ code')
+> >> +    def test_stm32(self):
+> >> +        """
+> >> +        :avocado: tags=3Darch:arm
+> >> +        :avocado: tags=3Dlinux_user
+> >> +        :avocado: tags=3Dquick
+> >> +        """
+> >> +        # See https://elinux.org/STM32#User_Space
+> >> +        rootfs_url =3D ('https://elinux.org/images/5/51/'
+> >> +                      'Stm32_mini_rootfs.cpio.bz2')
+> >> +        rootfs_hash =3D '9f065e6ba40cce7411ba757f924f30fcc57951e6'
+> >> +        rootfs_path_bz2 =3D self.fetch_asset(rootfs_url, asset_hash=
+=3Drootfs_hash)
+> >> +        busybox_path =3D self.workdir + "/bin/busybox"
+> >> +
+> >> +        self.extract_cpio(rootfs_path_bz2)
+> >> +
+> >> +        res =3D self.run(busybox_path)
+> >> +        ver =3D 'BusyBox v1.24.0.git (2015-02-03 22:17:13 CET) multi-=
+call binary.'
+> >> +        self.assertIn(ver, res.stdout_text)
+> >> +
+> >> +        res =3D self.run(busybox_path, ['uname', '-a'])
+> >> +        unm =3D 'armv7l GNU/Linux'
+> >> +        self.assertIn(unm, res.stdout_text)
+> >>
+> >
+>
 
-
-If I understand correctly,
-
--netdev user,id=<id>   \
--device <driver>,netdev=<id>
-
-is the new option form.
-
-For example, I can use the new form
-for virtio-net-device.
-
-
-But, it does not work for lan9118,
-and actually I cannot see lan9118 in
-"qemu-system-arm -machine vexpress-a9 -device help".
-
-
-So, the two options are different worlds,
-we need to choose appropriate form
-to use a particular device, correct?
-
-
-
-
--- 
-Best Regards
-Masahiro Yamada

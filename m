@@ -1,107 +1,67 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4692753lfg;
-        Tue, 16 Mar 2021 08:50:07 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyN5domqMWufULvaV7MyAEEOvR2G1t1TRiB5BOIu3QjhhCljkR/RcniVEQnTdpcUtEbPkQa
-X-Received: by 2002:a5d:80d5:: with SMTP id h21mr3893178ior.11.1615909807481;
-        Tue, 16 Mar 2021 08:50:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1615909807; cv=none;
-        d=google.com; s=arc-20160816;
-        b=frYNT1Y8d/6ua16eH9kr/pLb4wReMLfSTsX3bcZxZVcUbrvOT1DsUBubaPZ0zQHSJ6
-         43aITrCpJ33JrLkl9qLNEwDsU5pK1uBmUCZYlCxyS+w+aPV0kn3D8PRVBTnIhELV4fIh
-         QQwcsY4CaFBx8bupqscPQZ13z1CqNEqgANNHb0LP1a/jSIfboK+o8TJ6FzKvO2FwIBp1
-         kEc4Vel169lOSYtc6fbm1P1TgbcpUvau5ZIc5mpUiY2459kkIn6SLYm7oeWOddT4L0N6
-         dQt7mkxle0cl5s5maA+svqLH9DOPdw2DKTXdUIvp0vVjmUQtFc3WHSr6rbeEiFAamiBm
-         Hlvw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=c1KETVQxlesPGOxLpbPCGBEToWENT6MfthnXoeOv+EA=;
-        b=McO9NNpvknyYg3amUqpvCzuiaH+wFZtxoFrZJCwfQQ28NpIydbDLBZJZbfARP8UVC/
-         eM5/KazldCgPGpDcDyZtD7CI+omVtdm9mL+iW9PF/auMu88qLrF5Av0lgtjg8tB/4YTg
-         H1YkZgEhyBQfA9N6hYYzGR5VnJyNSLzrJ6xipLGCCj+METbZ5r+4xMNX2dgLfLnGisnS
-         2B3uFNaDLXa0Syodc8M6MFWwxopqGeuTMnSnVUPogg+Yy+FzQy6ZSY/OiFzHvnS1chs9
-         SogYu5jwNKHkOChl2iuzP8NnTzKZoCU4HvinGXlcHtj2qqnt5XdewwQH4e5aEmy4W2Vo
-         xHyg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=pHp8HwcI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4765410lfg;
+        Tue, 16 Mar 2021 10:17:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxV7Ha4l+4UiiHUhLvf4Y1RIF4lsWh22PSatEnLuzWlXa79nz5xyA6KdRBjaOz2t3um6A3K
+X-Received: by 2002:a05:6e02:20c3:: with SMTP id 3mr4416827ilq.164.1615915073815;
+        Tue, 16 Mar 2021 10:17:53 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o9si12309144jas.111.2021.03.16.08.50.07
+        by mx.google.com with ESMTPS id d9si15043323jak.86.2021.03.16.10.17.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Mar 2021 08:50:07 -0700 (PDT)
+        Tue, 16 Mar 2021 10:17:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=pHp8HwcI;
+       arc=fail (signature failed);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43766 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40530 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lMBxO-0008Oi-Fg
-	for alex.bennee@linaro.org; Tue, 16 Mar 2021 11:50:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33168)
+	id 1lMDKL-0008Ne-2W
+	for alex.bennee@linaro.org; Tue, 16 Mar 2021 13:17:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52046)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
- id 1lMBwk-0007yG-Mx
- for qemu-arm@nongnu.org; Tue, 16 Mar 2021 11:49:26 -0400
-Received: from mail-qt1-x830.google.com ([2607:f8b0:4864:20::830]:44690)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
- id 1lMBwi-0002PG-DS
- for qemu-arm@nongnu.org; Tue, 16 Mar 2021 11:49:26 -0400
-Received: by mail-qt1-x830.google.com with SMTP id m7so11964200qtq.11
- for <qemu-arm@nongnu.org>; Tue, 16 Mar 2021 08:49:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=c1KETVQxlesPGOxLpbPCGBEToWENT6MfthnXoeOv+EA=;
- b=pHp8HwcI5t1R7qryBqakQXCh5IuzqcGtBDtkQw2hSeeX3Ox2oUCUssRpoLx3QsuZBq
- 2RswZ2dLXD1Xsnw0vQj2ekAoygmT+NrdH+7dmLxhhwp4Xd3d5/nUBQzi2cI/FurJstw9
- 4Ia7B8l0mpriiKsAFwVXP/Jz0cbT35R0BgyiUFecvh8QwjsGbV8qidjeOSLIvOW2JJDW
- uKcshc6FOAR299A4DiO0AborotHyxd8quTehh2MmX/Ifh7BzZPK4gizJuuz1htnkGNz+
- wBhgsIYSBcgvVzXgAQfWn9rqs8QeW0JbRu3a3EnCcoXjwDYarcE8ASodZbkOHwnYWpNn
- JzDA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=c1KETVQxlesPGOxLpbPCGBEToWENT6MfthnXoeOv+EA=;
- b=D4gRpbmRKsUid07Er7PH+ePQ/ArO6Sawr9kM4ny9rEUtFNEjcCTtiDXYP7Y3Z5na0G
- j1y80aLD4LuC1dpnxsTz6y1ZTJTv5rJQcB41STsDzEzUcl3aoKdshmpY5D3ezOB2CviZ
- T2N282pEy59kqTkYEVzXeyTgowVsafv8e1PgQ4LjLhSTFdPNeMYjpBmkAAdQFsJ/hi2s
- jTvnrF9ZBMRP0qWsuExdG2m+9NQpZxySjRp9BQdqsmVRkIpuX8KzmUjj6xEueB5+zLVu
- gXoq2lhH2n3+nQihr1PopLGjh6zmGuDncmA0GXvFC5BRa/4tpqrSBNiY2tUCmP4q2WIQ
- ZWsQ==
-X-Gm-Message-State: AOAM533UQjO7ufjyPCeCwWqf6hBOwdRk2gCWKKCBS7qW1i5z81Gq8QwE
- TNAQfnzCr1hvtDlh8QksnZu17w==
-X-Received: by 2002:ac8:7b8b:: with SMTP id p11mr295944qtu.57.1615909763487;
- Tue, 16 Mar 2021 08:49:23 -0700 (PDT)
-Received: from cube.nuviainc.com (c-174-52-16-57.hsd1.ut.comcast.net.
- [174.52.16.57])
- by smtp.gmail.com with ESMTPSA id n5sm14855623qkp.133.2021.03.16.08.49.22
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 16 Mar 2021 08:49:23 -0700 (PDT)
-From: Rebecca Cran <rebecca@nuviainc.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org
-Subject: [PATCH v4 2/3] target/arm: Add support for FEAT_TLBIOS
-Date: Tue, 16 Mar 2021 09:49:09 -0600
-Message-Id: <20210316154910.25804-3-rebecca@nuviainc.com>
-X-Mailer: git-send-email 2.26.2
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1lMD77-0001Bk-6H; Tue, 16 Mar 2021 13:04:13 -0400
+Resent-Date: Tue, 16 Mar 2021 13:04:13 -0400
+Resent-Message-Id: <E1lMD77-0001Bk-6H@lists.gnu.org>
+Received: from sender4-of-o53.zoho.com ([136.143.188.53]:21311)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1lMD73-0004Pt-9s; Tue, 16 Mar 2021 13:04:12 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1615914243; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=APVK+Vr3NoAD97fKForVr5pOACuEjrco16i7gfEQ0G4SnLYZUJSMRErwkX++XqcyC2C34VmdmOtI+Wt0mzDHuNUMjHMHz6yBZj79QYGEplelRRJy9e0jd1fGvV03LPv+jwmxf7Beic7Za9RfmEDHyj1G+rmo39mMRVlPGvDA6/E=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1615914243;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=ZgjQdtuJsT4HMD+M1TveOQB7gbXCbmnXTVHrpqK6XUE=; 
+ b=hzOfWkWmy5/VFUz1mvGVU9aRT7uDMewcWNaCjTS3hBNtV0tLusSznTDvUQTq+nANt2qrY+W7altB65tVau/UrJ9aH8QHrmRIFGwr2XZQe4V5Xi5IVT1Y+B1Ec7BxeaEj91wafyEKjWttvBX7sTp3jAD2OWZJQlh7AX9ssxP9dg0=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1615914229382483.7943073805267;
+ Tue, 16 Mar 2021 10:03:49 -0700 (PDT)
 In-Reply-To: <20210316154910.25804-1-rebecca@nuviainc.com>
-References: <20210316154910.25804-1-rebecca@nuviainc.com>
+Subject: Re: [PATCH v4 0/3] target/arm: Add support for FEAT_TLBIOS and
+ FEAT_TLBIRANGE
+Message-ID: <161591422750.11496.15457338112726761074@c9d4d6fbb2f1>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::830;
- envelope-from=rebecca@nuviainc.com; helo=mail-qt1-x830.google.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: rebecca@nuviainc.com
+Date: Tue, 16 Mar 2021 10:03:49 -0700 (PDT)
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.53; envelope-from=no-reply@patchew.org;
+ helo=sender4-of-o53.zoho.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -115,129 +75,66 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Rebecca Cran <rebecca@nuviainc.com>, qemu-devel@nongnu.org
+Reply-To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, richard.henderson@linaro.org,
+ rebecca@nuviainc.com, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LwIoNCpuMWjP
+X-TUID: FyLgdDvxtym5
 
-ARMv8.4 adds the mandatory FEAT_TLBIOS. It provides TLBI
-maintenance instructions that extend to the Outer Shareable domain.
-
-Signed-off-by: Rebecca Cran <rebecca@nuviainc.com>
----
- target/arm/cpu.h    |  5 ++
- target/arm/helper.c | 75 ++++++++++++++++++++
- 2 files changed, 80 insertions(+)
-
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 32b78a4ef587..272fde83ca4e 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -4043,6 +4043,11 @@ static inline bool isar_feature_aa64_tlbirange(const ARMISARegisters *id)
-     return FIELD_EX64(id->id_aa64isar0, ID_AA64ISAR0, TLB) == 2;
- }
- 
-+static inline bool isar_feature_aa64_tlbios(const ARMISARegisters *id)
-+{
-+    return FIELD_EX64(id->id_aa64isar0, ID_AA64ISAR0, TLB) != 0;
-+}
-+
- static inline bool isar_feature_aa64_sb(const ARMISARegisters *id)
- {
-     return FIELD_EX64(id->id_aa64isar1, ID_AA64ISAR1, SB) != 0;
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 7133454330d3..afcbb5e30c18 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -7235,6 +7235,78 @@ static const ARMCPRegInfo tlbirange_reginfo[] = {
-     REGINFO_SENTINEL
- };
- 
-+static const ARMCPRegInfo tlbios_reginfo[] = {
-+    { .name = "TLBI_VMALLE1OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 1, .opc2 = 0,
-+      .access = PL1_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_vmalle1is_write },
-+    { .name = "TLBI_ASIDE1OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 1, .opc2 = 2,
-+      .access = PL1_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_vmalle1is_write },
-+    { .name = "TLBI_RVAE1OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 5, .opc2 = 1,
-+      .access = PL1_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_rvae1is_write },
-+    { .name = "TLBI_RVAAE1OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 5, .opc2 = 3,
-+      .access = PL1_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_rvae1is_write },
-+   { .name = "TLBI_RVALE1OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 5, .opc2 = 5,
-+      .access = PL1_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_rvae1is_write },
-+    { .name = "TLBI_RVAALE1OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 5, .opc2 = 7,
-+      .access = PL1_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_rvae1is_write },
-+    { .name = "TLBI_ALLE2OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 1, .opc2 = 0,
-+      .access = PL2_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_alle2is_write },
-+   { .name = "TLBI_ALLE1OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 1, .opc2 = 4,
-+      .access = PL2_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_alle1is_write },
-+    { .name = "TLBI_VMALLS12E1OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 1, .opc2 = 6,
-+      .access = PL2_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_alle1is_write },
-+    { .name = "TLBI_IPAS2E1OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 0,
-+      .access = PL2_W, .type = ARM_CP_NOP },
-+    { .name = "TLBI_RIPAS2E1OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 3,
-+      .access = PL2_W, .type = ARM_CP_NOP },
-+    { .name = "TLBI_IPAS2LE1OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 4,
-+      .access = PL2_W, .type = ARM_CP_NOP },
-+    { .name = "TLBI_RIPAS2LE1OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 7,
-+      .access = PL2_W, .type = ARM_CP_NOP },
-+   { .name = "TLBI_RVAE2OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 5, .opc2 = 1,
-+      .access = PL2_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_rvae2is_write },
-+   { .name = "TLBI_RVALE2OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 5, .opc2 = 5,
-+      .access = PL2_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_rvae2is_write },
-+    { .name = "TLBI_ALLE3OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 1, .opc2 = 0,
-+      .access = PL3_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_alle3is_write },
-+   { .name = "TLBI_RVAE3OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 5, .opc2 = 1,
-+      .access = PL3_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_rvae3is_write },
-+   { .name = "TLBI_RVALE3OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 5, .opc2 = 5,
-+      .access = PL3_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_rvae3is_write },
-+    REGINFO_SENTINEL
-+};
-+
- static uint64_t rndr_readfn(CPUARMState *env, const ARMCPRegInfo *ri)
- {
-     Error *err = NULL;
-@@ -8607,6 +8679,9 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-     if (cpu_isar_feature(aa64_tlbirange, cpu)) {
-         define_arm_cp_regs(cpu, tlbirange_reginfo);
-     }
-+    if (cpu_isar_feature(aa64_tlbios, cpu)) {
-+        define_arm_cp_regs(cpu, tlbios_reginfo);
-+    }
- #ifndef CONFIG_USER_ONLY
-     /* Data Cache clean instructions up to PoP */
-     if (cpu_isar_feature(aa64_dcpop, cpu)) {
--- 
-2.26.2
-
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIxMDMxNjE1NDkxMC4yNTgw
+NC0xLXJlYmVjY2FAbnV2aWFpbmMuY29tLwoKCgpIaSwKClRoaXMgc2VyaWVzIHNlZW1zIHRvIGhh
+dmUgc29tZSBjb2Rpbmcgc3R5bGUgcHJvYmxlbXMuIFNlZSBvdXRwdXQgYmVsb3cgZm9yCm1vcmUg
+aW5mb3JtYXRpb246CgpUeXBlOiBzZXJpZXMKTWVzc2FnZS1pZDogMjAyMTAzMTYxNTQ5MTAuMjU4
+MDQtMS1yZWJlY2NhQG51dmlhaW5jLmNvbQpTdWJqZWN0OiBbUEFUQ0ggdjQgMC8zXSB0YXJnZXQv
+YXJtOiBBZGQgc3VwcG9ydCBmb3IgRkVBVF9UTEJJT1MgYW5kIEZFQVRfVExCSVJBTkdFCgo9PT0g
+VEVTVCBTQ1JJUFQgQkVHSU4gPT09CiMhL2Jpbi9iYXNoCmdpdCByZXYtcGFyc2UgYmFzZSA+IC9k
+ZXYvbnVsbCB8fCBleGl0IDAKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lbGltaXQgMApn
+aXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVzIFRydWUKZ2l0IGNvbmZpZyAtLWxvY2FsIGRp
+ZmYuYWxnb3JpdGhtIGhpc3RvZ3JhbQouL3NjcmlwdHMvY2hlY2twYXRjaC5wbCAtLW1haWxiYWNr
+IGJhc2UuLgo9PT0gVEVTVCBTQ1JJUFQgRU5EID09PQoKVXBkYXRpbmcgM2M4Y2Y1YTljMjFmZjg3
+ODIxNjRkMWRlZjdmNDRiZDg4ODcxMzM4NApGcm9tIGh0dHBzOi8vZ2l0aHViLmNvbS9wYXRjaGV3
+LXByb2plY3QvcWVtdQogLSBbdGFnIHVwZGF0ZV0gICAgICBwYXRjaGV3LzIwMjEwMjEyMTUwMjU2
+Ljg4NS0xLXpoaXdlaV9saXVAYy1za3kuY29tIC0+IHBhdGNoZXcvMjAyMTAyMTIxNTAyNTYuODg1
+LTEtemhpd2VpX2xpdUBjLXNreS5jb20KIC0gW3RhZyB1cGRhdGVdICAgICAgcGF0Y2hldy8yMDIx
+MDMxNjEyMDQyMC4xOTY1OC0xLWJtZW5nLmNuQGdtYWlsLmNvbSAtPiBwYXRjaGV3LzIwMjEwMzE2
+MTIwNDIwLjE5NjU4LTEtYm1lbmcuY25AZ21haWwuY29tCiAtIFt0YWcgdXBkYXRlXSAgICAgIHBh
+dGNoZXcvMjAyMTAzMTYxMzEzNTMuNDUzMy0xLXBldGVyLm1heWRlbGxAbGluYXJvLm9yZyAtPiBw
+YXRjaGV3LzIwMjEwMzE2MTMxMzUzLjQ1MzMtMS1wZXRlci5tYXlkZWxsQGxpbmFyby5vcmcKIC0g
+W3RhZyB1cGRhdGVdICAgICAgcGF0Y2hldy8yMDIxMDMxNjEzNDQ1Ni4zMjQzMTAyLTEtbWFyY2Fu
+ZHJlLmx1cmVhdUByZWRoYXQuY29tIC0+IHBhdGNoZXcvMjAyMTAzMTYxMzQ0NTYuMzI0MzEwMi0x
+LW1hcmNhbmRyZS5sdXJlYXVAcmVkaGF0LmNvbQogKiBbbmV3IHRhZ10gICAgICAgICBwYXRjaGV3
+LzIwMjEwMzE2MTU0OTEwLjI1ODA0LTEtcmViZWNjYUBudXZpYWluYy5jb20gLT4gcGF0Y2hldy8y
+MDIxMDMxNjE1NDkxMC4yNTgwNC0xLXJlYmVjY2FAbnV2aWFpbmMuY29tClN3aXRjaGVkIHRvIGEg
+bmV3IGJyYW5jaCAndGVzdCcKZTlmM2UwMCB0YXJnZXQvYXJtOiBzZXQgSURfQUE2NElTQVIwLlRM
+QiB0byAyIGZvciBtYXggQUFSQ0g2NCBDUFUgdHlwZQo4YmNhYzRjIHRhcmdldC9hcm06IEFkZCBz
+dXBwb3J0IGZvciBGRUFUX1RMQklPUwpmMTcxOTY2IHRhcmdldC9hcm06IEFkZCBzdXBwb3J0IGZv
+ciBGRUFUX1RMQklSQU5HRQoKPT09IE9VVFBVVCBCRUdJTiA9PT0KMS8zIENoZWNraW5nIGNvbW1p
+dCBmMTcxOTY2NTdlZTMgKHRhcmdldC9hcm06IEFkZCBzdXBwb3J0IGZvciBGRUFUX1RMQklSQU5H
+RSkKV0FSTklORzogbGluZSBvdmVyIDgwIGNoYXJhY3RlcnMKIzIxODogRklMRTogaW5jbHVkZS9l
+eGVjL2V4ZWMtYWxsLmg6MzU0Ogorc3RhdGljIGlubGluZSB2b2lkIHRsYl9mbHVzaF9wYWdlX3Jh
+bmdlX2JpdHNfYnlfbW11aWR4X2FsbF9jcHVzX3N5bmNlZChDUFVTdGF0ZSAqc3JjX2NwdSwKCldB
+Uk5JTkc6IGxpbmUgb3ZlciA4MCBjaGFyYWN0ZXJzCiMyMTk6IEZJTEU6IGluY2x1ZGUvZXhlYy9l
+eGVjLWFsbC5oOjM1NToKKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdGFyZ2V0X3Vsb25nIGFkZHIsCgpFUlJPUjog
+bGluZSBvdmVyIDkwIGNoYXJhY3RlcnMKIzIyMDogRklMRTogaW5jbHVkZS9leGVjL2V4ZWMtYWxs
+Lmg6MzU2OgorICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICB0YXJnZXRfdWxvbmcgbGVuZ3RoLAoKV0FSTklORzogbGlu
+ZSBvdmVyIDgwIGNoYXJhY3RlcnMKIzIyMTogRklMRTogaW5jbHVkZS9leGVjL2V4ZWMtYWxsLmg6
+MzU3OgorICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICB1aW50MTZfdCBpZHhtYXAsCgpXQVJOSU5HOiBsaW5lIG92ZXIg
+ODAgY2hhcmFjdGVycwojMjIyOiBGSUxFOiBpbmNsdWRlL2V4ZWMvZXhlYy1hbGwuaDozNTg6Cisg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgIHVuc2lnbmVkIGJpdHMpCgp0b3RhbDogMSBlcnJvcnMsIDQgd2FybmluZ3Ms
+IDU0NSBsaW5lcyBjaGVja2VkCgpQYXRjaCAxLzMgaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2Ug
+cmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9y
+dCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4K
+CjIvMyBDaGVja2luZyBjb21taXQgOGJjYWM0YzA0YzhlICh0YXJnZXQvYXJtOiBBZGQgc3VwcG9y
+dCBmb3IgRkVBVF9UTEJJT1MpCjMvMyBDaGVja2luZyBjb21taXQgZTlmM2UwMDJkNzNkICh0YXJn
+ZXQvYXJtOiBzZXQgSURfQUE2NElTQVIwLlRMQiB0byAyIGZvciBtYXggQUFSQ0g2NCBDUFUgdHlw
+ZSkKPT09IE9VVFBVVCBFTkQgPT09CgpUZXN0IGNvbW1hbmQgZXhpdGVkIHdpdGggY29kZTogMQoK
+ClRoZSBmdWxsIGxvZyBpcyBhdmFpbGFibGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAy
+MTAzMTYxNTQ5MTAuMjU4MDQtMS1yZWJlY2NhQG51dmlhaW5jLmNvbS90ZXN0aW5nLmNoZWNrcGF0
+Y2gvP3R5cGU9bWVzc2FnZS4KLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBh
+dGNoZXcgW2h0dHBzOi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0
+byBwYXRjaGV3LWRldmVsQHJlZGhhdC5jb20=

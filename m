@@ -1,113 +1,109 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4282010lfg;
-        Mon, 15 Mar 2021 23:20:38 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzroRHpYhsCkwcMg1vgU5SyUcY2JLrZFD8ByVv3mcCdIsEKEb71OCcS5tlxSqIjJ6uca4V0
-X-Received: by 2002:a25:dccc:: with SMTP id y195mr4816956ybe.182.1615875638335;
-        Mon, 15 Mar 2021 23:20:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1615875638; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4298663lfg;
+        Mon, 15 Mar 2021 23:51:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwHrbVYlc/v2zEzh+GzjyYqSRCrDUBAPNyhWYmP20i0Cjxl+hTbwAhPdfhAmjZhYBhD174i
+X-Received: by 2002:a25:c6cb:: with SMTP id k194mr4782095ybf.27.1615877512190;
+        Mon, 15 Mar 2021 23:51:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1615877512; cv=none;
         d=google.com; s=arc-20160816;
-        b=wEgKyRLDf71M4Bfu5qWLbrnpRMrr3407OJg1iKvSTRVTI+abyCX0ytJPgTmsfuoOUl
-         kf+SpGGuYTkp+MjrxEOy6Pfi9n39hoGH7Nq51x5OCnvj3ofjFdr5WUuwUBUBANkzQl1G
-         CbIKn8WsXgS/8NCV3xs2nSB/7b1gKOkgzct6iJJgrpn2OC6kxm97YwzCGGp9e/dphJoi
-         jO30hhOMJp8wmEEKTyZN6jIvmwJoPcRMEBQ8eeRvYUP2pwyEXC0a3eaYRgFgzlXKpVSW
-         1XPKXWoMqSAGo8fwwPTsPgaXNubZPj2/Z6rowR9BqRyhT0mJhkY31U8KKgk7j4s+8+im
-         yuUw==
+        b=OsZu4Np28ij8S29q17j+UC4uhMMnz+OluNkk2uxrAN8V6eTp4MvvUvWhQtO19jt/pI
+         fc8/I2OL6H4sia8a5v45jFXj50p4JvsxiuUmNZoPTCduMGJvjMzFxzgp2qBjNp86SOD0
+         H7Iu4h7Lg/VwqBMqTRMbI+V1QkwBeQvQr8N0evYc0AAfU19JuZ0+KIN/meC3CRunUWfC
+         2XHA7ZADg5mSFkgrwQ9d0swNSRXiIRb3DorJtBORoK7dzyHyfnMFcseSN2Kk7b6sGzU3
+         IsIrxK5loT3i6L+3BTh80mGmzGM6yvBxC75kIECIsv4nynMZMg+rjMrxYU3AEJiCpQvF
+         yQyQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=xa8lEQsaui5Bd4Q9zs21cUobprOLGQPxtJNVvsraVnQ=;
-        b=vfsVP6HaNk6Whvtn+UmhqKg1Ve1fEjkT0/5zfYfRuOPLjtPl6vOrISNtALdTu/+rn1
-         5BhTW9xA4jODw0TVWauBema3IB+aVYKVA/MldiSrCqlfo13kSeNmKpZrKWlLsILbySV7
-         lp6FlxyX97yxk26jvv9shRhT6K8Hn3uOGUpBmd1NMKemL0phsEvvWzCeZQ18cTDI7TmM
-         lNz542D3pKfnWUxHpLiNN8rJafm01JTCNEhB2qlTumd/SebQcsLhK+VS6buYUekt4Muk
-         gD+vLAOrzHdpGxQH6SWNehDTCz/u7AEvZFjcajkYtcsh+QTIKyphJrtD036Cgog0G3z8
-         ZOJw==
+         :mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:to:from:dkim-signature;
+        bh=w0KstcLZ8b+Vwye/WH21Tr7axtgIfcSX4dC1DtbDifc=;
+        b=x83lF4i/q3Hu9jPjfCMEb17XXSaeE4620kGh2OACHQVCv8jNvQbSmVrt1iTOcAo0Qw
+         Xu/FuohUQtwUunVdegobHrC1r6TIPi/yHbN5gPAF80yqOgjx01D9W/aJo1rb1LxCkGLt
+         hL4gJtDQuTRRw73PY4Rttu4DdnekbJlsFSwwOhLPw7u36Zg0N9ZQ+t9i3mBaHHfuAFir
+         0EvhBi4Qp9KHHNkx49YbySqpZ0yI2rCjgPM7rPUhXd5C2c0U2rB1NKr/9VrsxRe7fSFr
+         Z/IEWJGoAZAwzr6ADyCkhrRrGxEVfGLFgh0YSmDqlryTtUXBeAN1BW2UkkIXqcmLXcfT
+         pOaw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=T2SP8Pdt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NQMmz8i8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z30si1605694ybi.99.2021.03.15.23.20.38
+        by mx.google.com with ESMTPS id z30si1679273ybi.99.2021.03.15.23.51.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 15 Mar 2021 23:20:38 -0700 (PDT)
+        Mon, 15 Mar 2021 23:51:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=T2SP8Pdt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45622 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NQMmz8i8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:33196 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lM34H-00064p-N3
-	for alex.bennee@linaro.org; Tue, 16 Mar 2021 02:20:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45128)
+	id 1lM3YV-00068G-J3
+	for alex.bennee@linaro.org; Tue, 16 Mar 2021 02:51:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50276)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
- id 1lM33m-00064U-4C
- for qemu-arm@nongnu.org; Tue, 16 Mar 2021 02:20:06 -0400
-Received: from mail-qk1-x734.google.com ([2607:f8b0:4864:20::734]:43699)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
- id 1lM33k-0005Br-Du
- for qemu-arm@nongnu.org; Tue, 16 Mar 2021 02:20:05 -0400
-Received: by mail-qk1-x734.google.com with SMTP id b130so34168198qkc.10
- for <qemu-arm@nongnu.org>; Mon, 15 Mar 2021 23:20:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=xa8lEQsaui5Bd4Q9zs21cUobprOLGQPxtJNVvsraVnQ=;
- b=T2SP8PdtsW3ltkt5air6Ah5igDXXbdjrAXA+5tiLAt5MxILjXFQMuEcw+FFBd6a9vT
- ikhp6M3B/tjPo1OlJm7vc4TKDklwEhJPP8chPdoPK414+J3Rxr0KdQ1LWnnfzHIvDhMs
- ELIzSck4tkegpyaIXV/vwFK1qBfDbT2hpkbPx/zuJoCQo7H5O5VFbeVu1S+0nLxjSFvb
- Zvyrp4ziAOHa14XdkEzwxteoRvl1FNTf/aiQJnEs4pxV4gnXGXPwn7tyba6EQyMdKw+a
- BVSbZqO+evxFvIADeTaubswuyXROXIXeJkwmlI3/3rObTdJoKXX+LUrHSSjZJcbgZoWo
- lGEg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=xa8lEQsaui5Bd4Q9zs21cUobprOLGQPxtJNVvsraVnQ=;
- b=JtQrSDFq74m7dA2TFsU864BfwRG1dIl0odS5iU2H9qvdWEo8iXhM6fGzBqIf3c3vwn
- p0FN9hwpCWjzCO9M/qfMVVMfl+kxxybUwHb0bMgUfGMl8uDN3AYL+9XA1Hkb0FAD22Nk
- VfhkPvHu+rvtdDZZ36ryA0v0jZBR0ETt2wzoUtB82RYZKBruVIXXp2sUAbDmSpHdFV2Z
- GMERIfIisShuHhHz7oOkqMkOBsLrNBpWQ9GVIaAsBI534Z/9w1NzjVuI45gV1IAdye4T
- MTLrqRSg+n+Iq9bcXqquKuF0wlxRKWTZPfUz7eaTFd0M5GaJgk0CEBLGXkUqO45Cpa3V
- A/aw==
-X-Gm-Message-State: AOAM532nUrnU37+nwXYGMv6pVzF1Yyc7dEaGApzWBRNVs7MUW2l7S+Hq
- iq/JxRalMXkGsMkcu0+42MoB3g==
-X-Received: by 2002:a37:988:: with SMTP id 130mr30406486qkj.120.1615875603279; 
- Mon, 15 Mar 2021 23:20:03 -0700 (PDT)
-Received: from [10.0.10.142] (c-174-52-16-57.hsd1.ut.comcast.net.
- [174.52.16.57])
- by smtp.gmail.com with ESMTPSA id z24sm13890387qkz.65.2021.03.15.23.20.01
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 15 Mar 2021 23:20:02 -0700 (PDT)
-Subject: Re: [PATCH v3 1/3] target/arm: Add support for FEAT_TLBIRANGE
-To: Richard Henderson <richard.henderson@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-References: <20210310002917.8876-1-rebecca@nuviainc.com>
- <20210310002917.8876-2-rebecca@nuviainc.com>
- <3930c2d8-8972-0acf-7a48-71803072a559@linaro.org>
-From: Rebecca Cran <rebecca@nuviainc.com>
-Message-ID: <970813ec-f190-6faa-e1d6-763ba3a6ed60@nuviainc.com>
-Date: Tue, 16 Mar 2021 00:20:00 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1lM3YC-00067u-Im
+ for qemu-arm@nongnu.org; Tue, 16 Mar 2021 02:51:32 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:37277)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1lM3Y9-0007mY-LH
+ for qemu-arm@nongnu.org; Tue, 16 Mar 2021 02:51:31 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1615877488;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=w0KstcLZ8b+Vwye/WH21Tr7axtgIfcSX4dC1DtbDifc=;
+ b=NQMmz8i8LbzgFlDgySiTTeieksXFtoYDX/GR5ubjY+ufSxCaZy/DY7lXZuV0xtEPkimvCP
+ T7PIYWVJ8qidRxGsCbIOIGPQiD0/aEMuQkRCKJ9Y/TFW5UL2J8olR3FEqKZOSKPhiT3Cak
+ 01+q3xUcr/zHmkcPCWO0ju7z/AKOMMk=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-170-R7NRjLM5NuKHOC_2dHvUuA-1; Tue, 16 Mar 2021 02:51:24 -0400
+X-MC-Unique: R7NRjLM5NuKHOC_2dHvUuA-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C77C319057A2;
+ Tue, 16 Mar 2021 06:51:23 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-83.phx2.redhat.com
+ [10.3.112.83])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 8A1B310016DB;
+ Tue, 16 Mar 2021 06:51:20 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 004FA1132C12; Tue, 16 Mar 2021 07:51:18 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Eric Blake <eblake@redhat.com>
+Subject: Re: [PATCH 1/6] accel: Introduce 'query-accels' QMP command
+References: <20210311231202.1536040-1-philmd@redhat.com>
+ <20210311231202.1536040-2-philmd@redhat.com>
+ <b71367e7-eade-e7fb-d612-8bc18fba35c3@redhat.com>
+Date: Tue, 16 Mar 2021 07:51:18 +0100
+In-Reply-To: <b71367e7-eade-e7fb-d612-8bc18fba35c3@redhat.com> (Eric Blake's
+ message of "Mon, 15 Mar 2021 12:53:01 -0500")
+Message-ID: <87ft0va8wp.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <3930c2d8-8972-0acf-7a48-71803072a559@linaro.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::734;
- envelope-from=rebecca@nuviainc.com; helo=mail-qk1-x734.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.25,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -121,26 +117,94 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-devel@nongnu.org
+Cc: Laurent Vivier <lvivier@redhat.com>, Andrew Jones <drjones@redhat.com>,
+ "Daniel P . =?utf-8?Q?Berrang=C3=A9?=" <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, "Michael
+ S. Tsirkin" <mst@redhat.com>, Richard Henderson <richard.henderson@linaro.org>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, Claudio Fontana <cfontana@suse.de>,
+ Igor Mammedov <imammedo@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RFrfLYy2G95D
+X-TUID: MXOL+AK844rn
 
-On 3/10/21 12:24 PM, Richard Henderson wrote:
-> On 3/9/21 6:29 PM, Rebecca Cran wrote:
+Eric Blake <eblake@redhat.com> writes:
 
->> +    uint64_t addr = (value & 0xFFFFFFFFFUL) << TARGET_PAGE_BITS;
-> 
-> The manual does not explicitly say, but I'm certain that this should be 
-> a signed address, when regime_has_2_ranges().  Otherwise it would be 
-> impossible to flush a range of kernel addresses.
+> On 3/11/21 5:11 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+[...]
+>> diff --git a/accel/accel-qmp.c b/accel/accel-qmp.c
+>> new file mode 100644
+>> index 00000000000..f16e49b8956
+>> --- /dev/null
+>> +++ b/accel/accel-qmp.c
+>> @@ -0,0 +1,47 @@
+>> +/*
+>> + * QEMU accelerators, QMP commands
+>> + *
+>> + * Copyright (c) 2021 Red Hat Inc.
+>> + *
+>> + * SPDX-License-Identifier: GPL-2.0-or-later
+>> + */
+>> +
+>> +#include "qemu/osdep.h"
+>> +#include "qapi/qapi-commands-machine.h"
+>> +
+>> +static const Accelerator accel_list[] =3D {
+>> +    ACCELERATOR_QTEST,
+>> +#ifdef CONFIG_TCG
+>> +    ACCELERATOR_TCG,
+>> +#endif
+>> +#ifdef CONFIG_KVM
+>> +    ACCELERATOR_KVM,
+>> +#endif
+>
+> ...would it be worth compiling the enum to only list enum values that
+> were actually compiled in?  That would change it to:
+>
+> { 'enum': 'Accelerator',
+>   'data': [ 'qtest',
+>             { 'name': 'tcg', 'if': 'defined(CONFIG_TCG)' },
+> ...
 
-I see other functions have
+Makes introspection more useful.  Management applications can get the
+information the list of compiled-in accelerators from query-qmp-schema.
+They don't have to be taught to use query-accels.
 
-uint64_t pageaddr = sextract(value...);
+In fact, query-accels becomes useless except as a tool to force
+visibility of Accelerator in query-qmp-schema.  We wouldn't have to
+force if we had CLI introspection that shows the type of -accel's
+parameter @accel.  Adding a query command is a common work-around for
+our anemic CLI introspection capabilities.
 
-Would that be sufficient here too, or do we need to check 
-regime_has_2_ranges()?
+The query command could be made more useful than introspection if it
+reflected run time state, i.e. it showed an accelerator only when the
+host system actually supports it.  Can't say how practical that would
+be.
 
--- 
-Rebecca Cran
+>>
+>> +AcceleratorInfoList *qmp_query_accels(Error **errp)
+>> +{
+>> +    AcceleratorInfoList *list =3D NULL, **tail =3D &list;
+>> +
+>> +    for (unsigned i =3D 0; i < ARRAY_SIZE(accel_list); i++) {
+>> +        AcceleratorInfo *info =3D g_new0(AcceleratorInfo, 1);
+>> +
+>> +        info->name =3D accel_list[i];
+>> +
+>> +        QAPI_LIST_APPEND(tail, info);
+>> +    }
+>> +
+>> +    return list;
+>> +}
+
+You could then use something like
+
+        for (accel =3D 0; accel < ACCELERATOR__MAX; accel++) {
+            AcceleratorInfo *info =3D g_new0(AcceleratorInfo, 1);
+
+            info->name =3D Accelerator_str(accel);
+
+            QAPI_LIST_APPEND(tail, info);
+        }
+

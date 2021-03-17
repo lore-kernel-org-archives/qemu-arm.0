@@ -1,109 +1,98 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp378564lfg;
-        Wed, 17 Mar 2021 05:55:18 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJydKCI0JO7Be07Q4PxwCOnF1uclxmnVneHXc2oDZ0xpMMPdjzo7KDuFUdCp14+YsIBk2WE+
-X-Received: by 2002:a25:148b:: with SMTP id 133mr4265157ybu.157.1615985718739;
-        Wed, 17 Mar 2021 05:55:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1615985718; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp623605lfg;
+        Wed, 17 Mar 2021 10:36:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx67M8lEP8A4LE6uNqQE10Yw04AF6qtOG2L13na0phY3rSi9Xg+KvzNYBNT9OuzFS53zORZ
+X-Received: by 2002:a02:7691:: with SMTP id z139mr3748024jab.130.1616002612080;
+        Wed, 17 Mar 2021 10:36:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616002612; cv=none;
         d=google.com; s=arc-20160816;
-        b=DPp2j7zpTLiAHDra3SC2oNdRlic5iOmG6BAoktIcc/wty3pukNaznBhmVBcwj67va1
-         iyu2sB54pH4OXHxO1aMY+7lMooHN16ik8s+zPBI8x94xBX3EELbedF/izy4q01FNbn/U
-         3OEL+CjjKlMcEJ41GAufD1r544EUh4jcOf2OPYdATw3vdf8UvMs3glvc0iHBnK7dP1Fk
-         eIXOScix3RBFgPAYAG7PUEoDBuxq0k2nCy57/v69vu1vhp2+I8DK5D2W19zVF2zBlLWM
-         IVSuBs4eVgN1KuNpmvq8rXK4Tq5VaGQ3q4sPT8g7HVrPGF9EDrZF3ZR4sSvLjm7tXfxq
-         JqAA==
+        b=ptoYlUnXnQAm/fJQfpXK+lZTSpM16lIvGopkaSwwMYGklEjd1Zgc3rud0j0Itd87Ir
+         3BfdCcAfPDLWm9pSyKWVvOft6uksRNZ7vJCas+ALPAQOXCDyoPEj7Bh+SyoAdu7rtNY1
+         y8r0DmrZg4fgSOLei+wVDEAYA5atIxFd2pvSWZbryrKHWsqDCzUKPSUtIiHko9im1Eul
+         M63WR702uNirSTYxnaxo2bikJgX3bEmbrQsc4Cx5t+zh08nWib5UScz4ORNWrbYtQbYv
+         vnVpMHGLApLxlJMh8z0If/1+wiz6T8c/fCr9/YXGoihr926sodtZdPFKK3AtXE6NAv1h
+         HtSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=Fn84ExT8pSFAG1LBy957G7xwmEEJG7a07W8pYDLWZyU=;
-        b=YgUKA19li/J1kkH//LiRGGb3WWyoFjVghglI7hQ5HilZRcCJMwJBmgYcB3jysFNzFX
-         B2ywI525aVLNNc6KmT20M3i6b02t8AW/QGoNNY4236RAEvWFqvOM6WZ4tXTeXdt6aDgr
-         lvPEFQVGqWQSeUsEfpIXiyo19qGXMC5ta92LZ+DlBbzSilovnKhj5ZzqpqM0ezEez7UW
-         KeVxmHYjxJ1EoJyv3snFPeotLvMwUuE6e/J7TjhJpDdL3+5kg0EeRGifFQdnQ1ReQ9H6
-         RKL2miGYucMFIOy0v3HWr4HHhNPqz9NH6YkpkJJiTbpdkSuLgVqLDqEOBtqqgCoUKfcA
-         79jQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=DluSfLbaem5v7GWHc2WuBaaDgRL7q8LagZ8nfmVkFSo=;
+        b=1BDyrPtL3wdZhIiy+lnCpZNZeZ3gp2+8zzx1lagjbDbl3/UqhdtHv6nB7dn2lMzLkV
+         gXAIYZDvLdab1E6cK2N+E2VpyZp+uEMA01eEeYkhnimXmvlesxSqwdstRu9c6ABSXKpC
+         iGt2YALQwDf7IPqyYq2KdIWsPrKGwhR/GnKx20B4IhDtwy8M2mwajoG1ZtqHTsza+Epb
+         8kOtVF11yxRfvSswi60e177XOkkfGvg/8ttLbHgFQJ247/goSN1Y+HsxLUzRXatvfDFm
+         UiADrC1CAh+XDcUei2mDXNpE4Fm2Q2zJVLXNi1UpTWKe9+Lhbc3AqeriM0H8KwpwFWr7
+         LWCA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=P8pujd17;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n22si20796800ybg.348.2021.03.17.05.55.18
+        by mx.google.com with ESMTPS id x16si10165060ilc.34.2021.03.17.10.36.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 17 Mar 2021 05:55:18 -0700 (PDT)
+        Wed, 17 Mar 2021 10:36:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=P8pujd17;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46916 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:42140 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lMVhm-0007rq-3T
-	for alex.bennee@linaro.org; Wed, 17 Mar 2021 08:55:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37064)
+	id 1lMa6F-0004lP-Bc
+	for alex.bennee@linaro.org; Wed, 17 Mar 2021 13:36:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43452)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1lMVhd-0007rN-Pn
- for qemu-arm@nongnu.org; Wed, 17 Mar 2021 08:55:09 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:22483)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1lMZaJ-0002Ix-Ji; Wed, 17 Mar 2021 13:03:51 -0400
+Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:36617)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1lMVhb-0004OM-Jl
- for qemu-arm@nongnu.org; Wed, 17 Mar 2021 08:55:09 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1615985705;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=Fn84ExT8pSFAG1LBy957G7xwmEEJG7a07W8pYDLWZyU=;
- b=P8pujd17u6nJ1t4duaWBFOuIB8cU4qAFnI+n1zeah3pHjKSs464JqU10q2NdQ8HUobJPfG
- Qyrsb1KNArUqmjnILLeRb/WhuI1v3SPBpL+Z763VtRDcFctgB+IUd6/ATrSV57gNsxWDJN
- C4O5bUm1OnY8ioZ61PzTwg2asWdTXTM=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-155-ZL_ZUI0FMXqKPtP_yJ7_1Q-1; Wed, 17 Mar 2021 08:55:03 -0400
-X-MC-Unique: ZL_ZUI0FMXqKPtP_yJ7_1Q-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C698580006E;
- Wed, 17 Mar 2021 12:55:01 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.40.196.5])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 3F39B5D6AC;
- Wed, 17 Mar 2021 12:54:55 +0000 (UTC)
-Date: Wed, 17 Mar 2021 13:54:53 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH] hw/char/pl011: Fix clock migration failure
-Message-ID: <20210317125453.t6f7xs7bqf2vvbgu@kamzik.brq.redhat.com>
-References: <20210317044441.112313-1-gshan@redhat.com>
- <CAFEAcA8Wf+fYppz6kWurU=68NH7uvn0HFXc_FJ6twoA86bcBcg@mail.gmail.com>
- <73a30558-469e-8ef0-02b2-aaaaa2449cda@redhat.com>
- <CAFEAcA_yuSR=KkpBTh+21JkqiB7gKfnFvgvxYgPN2yLfvxpi_A@mail.gmail.com>
- <3e7ba090-c45e-8fa4-1a59-16856241cbdc@redhat.com>
- <CAFEAcA_zYaOXw5yaXWEjgBy6YeTpB5FRBCO96To-bv9xpQzbMQ@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1lMZaH-0001Ms-7o; Wed, 17 Mar 2021 13:03:51 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.4.253])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 35C9691500D7;
+ Wed, 17 Mar 2021 18:03:44 +0100 (CET)
+Received: from kaod.org (37.59.142.102) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2106.2; Wed, 17 Mar
+ 2021 18:03:43 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-102R004f3c21803-2d0a-479f-9ec6-c96feb35a6cd,
+ 10040688A1AB5364447EAD88D88247B833C1D39B) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Subject: Re: [PATCH v3 1/3] hw: Model ASPEED's Hash and Crypto Engine
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>, Joel Stanley
+ <joel@jms.id.au>, Thomas Huth <thuth@redhat.com>, Laurent Vivier
+ <lvivier@redhat.com>
+References: <20210312105711.551423-1-joel@jms.id.au>
+ <20210312105711.551423-2-joel@jms.id.au>
+ <d2969a4a-abaf-b4e5-1cdb-5fdac85fa388@amsat.org>
+ <6fcc0cc8-e09d-5390-dc3b-593612e404e6@kaod.org>
+ <bc22a53d-f21d-e34e-f075-f8c97fba164d@amsat.org>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <4bf33abe-e729-33e3-51fe-64a9ac472324@kaod.org>
+Date: Wed, 17 Mar 2021 18:03:43 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_zYaOXw5yaXWEjgBy6YeTpB5FRBCO96To-bv9xpQzbMQ@mail.gmail.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=drjones@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.251,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <bc22a53d-f21d-e34e-f075-f8c97fba164d@amsat.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.102]
+X-ClientProxiedBy: DAG9EX1.mxp5.local (172.16.2.81) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: ba562289-b734-49d0-adbd-952750de5f21
+X-Ovh-Tracer-Id: 3922635278227376943
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduledrudefgedgleekucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepgeelleeuveelvdejvdegtddugfdvkeejueehvdejuefgleeivdduhfduteffgeeinecuffhomhgrihhnpehmrghilhdqrghrtghhihhvvgdrtghomhenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtvdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepfhegsghughesrghmshgrthdrohhrgh
+Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo529.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -116,80 +105,96 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Luc Michel <luc@lmichel.fr>, QEMU Developers <qemu-devel@nongnu.org>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, Shan Gavin <shan.gavin@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Gavin Shan <gshan@redhat.com>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: omwQoaBjK70e
+X-TUID: B0ndAin7/hLd
 
-On Wed, Mar 17, 2021 at 11:14:56AM +0000, Peter Maydell wrote:
-> On Wed, 17 Mar 2021 at 10:59, Gavin Shan <gshan@redhat.com> wrote:
-> >
-> > Hi Peter,
-> >
-> > On 3/17/21 9:40 PM, Peter Maydell wrote:
-> > > On Wed, 17 Mar 2021 at 10:37, Gavin Shan <gshan@redhat.com> wrote:
-> > >> On 3/17/21 8:09 PM, Peter Maydell wrote:
-> > >>> On Wed, 17 Mar 2021 at 04:44, Gavin Shan <gshan@redhat.com> wrote:
-> > >>>>
-> > >>>>    static const VMStateDescription vmstate_pl011 = {
-> > >>>>        .name = "pl011",
-> > >>>>        .version_id = 2,
-> > >>>>        .minimum_version_id = 2,
-> > >>>> +    .post_load = pl011_post_load,
-> > >>>>        .fields = (VMStateField[]) {
-> > >>>>            VMSTATE_UINT32(readbuff, PL011State),
-> > >>>>            VMSTATE_UINT32(flags, PL011State),
-> > >>>> @@ -355,10 +355,6 @@ static const VMStateDescription vmstate_pl011 = {
-> > >>>>            VMSTATE_INT32(read_trigger, PL011State),
-> > >>>>            VMSTATE_END_OF_LIST()
-> > >>>>        },
-> > >>>> -    .subsections = (const VMStateDescription * []) {
-> > >>>> -        &vmstate_pl011_clock,
-> > >>>> -        NULL
-> > >>>> -    }
-> > >>>>    };
-> > >>>
-> > >>> Doesn't dropping the subsection break migration compat ?
-> > >>>
-> > >>
-> > >> It's why this patch needs to be backported to stable branches.
-> > >> In that way, we won't have migration compatible issue.
-> > >
-> > > No, migration has to work from the existing already
-> > > shipped 5.1, 5.2, etc releases to 6.0 (assuming you use
-> > > the correct "virt-5.2" &c versioned machine type.)
-> > >
-> >
-> > Commit aac63e0e6ea3 ("hw/char/pl011: add a clock input") is merged
-> > to v5.2.0. The migration failure happens during migration from v6.0
-> > to v5.1 with machine type as "virt-5.1", instead of migrating from
-> > v5.1 to v6.0. One question is if we need support backwards migration?
+On 3/17/21 2:13 PM, Philippe Mathieu-Daudé wrote:
 > 
-> Upstream doesn't care about backwards migration. AIUI
-> RedHat as a downstream care about the backwards-migration
-> case in some specific situations, but I don't know if that
-> would include this one.
+> 
+> On 3/17/21 1:36 PM, Cédric Le Goater wrote:
+>> On 3/17/21 12:47 PM, Philippe Mathieu-Daudé wrote:
+>>> On 3/12/21 11:57 AM, Joel Stanley wrote:
+>>>> The HACE (Hash and Crypto Engine) is a device that offloads MD5, SHA1,
+>>>> SHA2, RSA and other cryptographic algorithms.
+>>>>
+>>>> This initial model implements a subset of the device's functionality;
+>>>> currently only direct access (non-scatter gather) hashing.
+>>>>
+>>>> Signed-off-by: Joel Stanley <joel@jms.id.au>
+>>>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+>>>> ---
+>>>> v3:
+>>>>  - rebase on upstream to fix meson.build conflict
+>>>> v2:
+>>>>  - reorder register defines
+>>>>  - mask src/dest/len registers according to hardware
+>>>> ---
+>>>>  include/hw/misc/aspeed_hace.h |  33 ++++
+>>>>  hw/misc/aspeed_hace.c         | 312 ++++++++++++++++++++++++++++++++++
+>>>>  hw/misc/meson.build           |   1 +
+>>>>  3 files changed, 346 insertions(+)
+>>>>  create mode 100644 include/hw/misc/aspeed_hace.h
+>>>>  create mode 100644 hw/misc/aspeed_hace.c
+> 
+>>>> +static int do_hash_operation(AspeedHACEState *s, int algo)
+>>>> +{
+>>>> +    hwaddr src, len, dest;
+>>>> +    uint8_t *digest_buf = NULL;
+>>>> +    size_t digest_len = 0;
+>>>> +    char *src_buf;
+>>>> +    int rc;
+>>>> +
+>>>> +    src = 0x80000000 | s->regs[R_HASH_SRC];
+>>>> +    len = s->regs[R_HASH_SRC_LEN];
+>>>> +    dest = 0x80000000 | s->regs[R_HASH_DEST];
+>>>> +
+>>>> +    src_buf = address_space_map(&s->dram_as, src, &len, false,
+>>>> +                                MEMTXATTRS_UNSPECIFIED);
+>>>
+>>> It seems the Aspeed machines aren't using correctly the AS API...
+>>> This device shouldn't worry about where it is physically mapped.
+>>> IOW its AS is too wide.
+>>>
+>>> I'm trying to fix this in a series:
+>>> https://www.mail-archive.com/qemu-devel@nongnu.org/msg791085.html
+>>
+>> The buffers can be anywhere in DRAM
+> 
+> Exactly. This device only requires direct access to DRAM, not the
+> full bus. Regardless the amount of DRAM available, only the bus
+> aperture to the DRAM should be passed to this device (MR link),
+> then this device use an AS view on it, zero-based.
+> 
+> Your device becomes independent to where the DRAM is physically
+> mapped on the SoC.
 
-Right, we do prefer to be able to support "ping-pong" migrations. For
-example, if we start a virt-5.1 machine on a 5.1 build of QEMU, and then
-migrate it to a 5.2 build of QEMU, we'd like to also be able to go back
-to the 5.1 build.
+ok.
 
-I agree this patch is not the right approach. I think the right approach
-is to introduce a compat property and make the "new" section dependent
-on it. And then update the hw_compat_* arrays. Gavin, please take a look
-at "Connecting subsections to properties" of docs/devel/migration.rst.
+The initial problem was that the RAM was not initialized before 
+the SoC was realized and we couldn't use it. things have changed
+and we can now pass directly machine->ram to sub models instead of 
+the ram_container. That should address your comments on the HACE 
+model and on the SMC model. 
 
-I'm also curious what the state of mach-virt's machine types are for
-migration. It'd be nice to exhaustively test both forward migration of
-all machine types and ping-pong migrations of all machine types. We can
-then consider each issue we find (the pessimist in me suggests we'll find
-more than this pl011 issue) and how/if we want to resolve them.
+I will check what we can do for the mmio_flash address space.
 
-Thanks,
-drew
+C. 
+
+
+> 
+>> which is mapped at 0x80000000
+>> on the AST2600. This is correct and very similar to what we do 
+>> in the Aspeed SMC DMA models.
+>>
+>> I would prefer if we did loads though.
+>>
+>> Cheers,
+>>
+>> C.
+>>
+>>
 

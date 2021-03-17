@@ -1,220 +1,204 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp395048lfg;
-        Wed, 17 Mar 2021 06:10:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxLOB5yyJ0RVbSZjKf7d/vUkeY8Vrnwag0UDkR9OYMGgmlMLtgePvyxA4xMMo0KKyXdn9X7
-X-Received: by 2002:a05:6e02:216d:: with SMTP id s13mr7665971ilv.208.1615986641831;
-        Wed, 17 Mar 2021 06:10:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1615986641; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp399201lfg;
+        Wed, 17 Mar 2021 06:14:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzakS2x/9Cv8oh7cz2DutiuOuquuIe1/Faoq1yt+ea5tZYInfJRdkvb2Y9zsY4LVVQnZiOU
+X-Received: by 2002:a5e:df46:: with SMTP id g6mr6875149ioq.38.1615986899165;
+        Wed, 17 Mar 2021 06:14:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1615986899; cv=none;
         d=google.com; s=arc-20160816;
-        b=tAU1Epjdv6AY6KJyYd2r2anaJkukN0RvUsTmc57c0auldjEDjRg2p8lFzKucXw4MVl
-         WsRV3gqM6/adO4fxFHz5VOXIqPtl9XzTusHX2+kJ7+GCpWfxp/t0DIx0EKn7DsRIRai8
-         eMgEcw5ggrZ7nKUcZcjXruc2/sJskuQXgFPUW7WJ4yE4FSwpf2Wt5iDKCiupeZ67Gpwv
-         Yl4CJH6sdGBBZqEGKt0kUsHqtX9Ilqd7AHnFJKvQEEVUdrLN/VwnGZEduv7vfecnACqI
-         SW5cpOCq9u8mSEjo63rL4GK5OHKnkOy9z8Axp9qZOG+tV5wimYJ/lzvn9r4BiMhxEjeN
-         GL7A==
+        b=L104d2cjsQZ5jdEglwNYDoX+N/wv4G/z7Knko8/tVY/xbwIZuTm8T4QLJ/ZBJcoju5
+         0M2wS5e4+VI246mN44EppU3/7T7jr4YpYiz7k8zPL+xwZltjzYct3yRohgW7vkAPoSL9
+         Mid4uieYEVrCfSmvbvje7WlWsFtEd73iRfBy0EHGj/X3PB+Weu++mrjpV3z3lUJssGkI
+         lx05ClOLcIMvEEHgXJLLEQQa3luYfHsct63veizNViMriZwY3U3nW5/LQATazYwYibmP
+         CqGvy6qOP/kDPenfdCxYMNyCBwJKs/R0u5O/EvfE4hy1SFgHuYT0gzUODwyAqgKphiUk
+         lrsQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=0ZP9hWOCMObFvrBuDSNyfH5w21qCWfRoNuFS3Nz6Efo=;
-        b=tX/YHBmYH1XdErR0U1znbPRJ4Lu8TUIADqVeucmT6UEtlfldSSNrJ/HVusagG2X0JL
-         s3HrDbpMfVRAt5Zsw+yBYFCqZFi1z85vjPK1AHRKGcOcQpknIitS6NwxT3hCKpVg9que
-         EZTpXYwpno1sXj70+DFq8MtU4Wq9Yn/PjRYrfSC+U7fr2NfTpx+E3fKkGkFbAZwxWu7/
-         nGg5h/wG31zrU2Z3A2NjbzxX48r9R1CpWtNk+X+F79WseHk7uaGUnj3f2Wqcx6lXyKR2
-         tijLcO7Jk6iIEF7cicCYj89bM6LUJAzlag9bD73QW83WV+3SC5xTqxo+Zi3lQESvk9gV
-         ly/A==
+        bh=tyfdIrrUU149tMTriiYqnAsdO45BM9HjBqKRU975yP8=;
+        b=1IQFE/k1hjKIA3UJYwOCW3p63GLcjrAZO4Bf8dGkYNtLNyD2k1ff+5E/fjZoGSwOuw
+         nH6zEP56uftt7ds0uDQbAholLb2emaOyu40hWCrXsG7ievqXpn7dgfkKnHo7blxnSMl9
+         NMOrPEB3QyEMGn9YUDHXlVZSmarSwxmDKIsPuinjPOUOSC6Q/awsPlHH58bXDAxs8x5L
+         gxp+hKJVuGBIL+Wf+tRHTyyMFQKkG2HojL9m/UNzNCoFmyRA0BHA/XH5Dkl9FTqfuVA+
+         djP7/0FySE2q2/8OpIwbz9K7YYzthfkg9jnnznT+Aac9irGOtBLIMTUncyoUSioazmGM
+         fz3A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cAQqe61W;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nrRxNVpq;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p6si15211077ilp.90.2021.03.17.06.10.41
+        by mx.google.com with ESMTPS id o16si15169123ilk.56.2021.03.17.06.14.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 17 Mar 2021 06:10:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 17 Mar 2021 06:14:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cAQqe61W;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34424 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nrRxNVpq;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:40028 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lMVwf-0006fQ-3E
-	for alex.bennee@linaro.org; Wed, 17 Mar 2021 09:10:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40604)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lMW0o-0000mJ-Fi
+	for alex.bennee@linaro.org; Wed, 17 Mar 2021 09:14:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41572)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lMVvO-0005bz-5p
- for qemu-arm@nongnu.org; Wed, 17 Mar 2021 09:09:22 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:37631)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lMVvH-0004Gy-Qc
- for qemu-arm@nongnu.org; Wed, 17 Mar 2021 09:09:18 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1615986554;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=0ZP9hWOCMObFvrBuDSNyfH5w21qCWfRoNuFS3Nz6Efo=;
- b=cAQqe61W7OQBAQjFpoOMEOUbVBEhzZn9xtjSbZ+cNJgKIuGsQcSqF5bKgvkBxIzgo01G6w
- 3eW68Whxns8Qc6BtSyADP2NHcESzS6/5QZG3LGnXYFQU28uH70L4w1XA1I41Yd89yepNfu
- DkoMAuJlhqWg76QuJoBOJ30fnmgaCps=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-442-hf-wPBxnOQ6m02Fq7x5CnA-1; Wed, 17 Mar 2021 09:09:13 -0400
-X-MC-Unique: hf-wPBxnOQ6m02Fq7x5CnA-1
-Received: by mail-wr1-f72.google.com with SMTP id r12so18419864wro.15
- for <qemu-arm@nongnu.org>; Wed, 17 Mar 2021 06:09:13 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lMVzU-0008IA-CM; Wed, 17 Mar 2021 09:13:36 -0400
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333]:41824)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lMVzS-000745-Gw; Wed, 17 Mar 2021 09:13:36 -0400
+Received: by mail-wm1-x333.google.com with SMTP id
+ t5-20020a1c77050000b029010e62cea9deso1301230wmi.0; 
+ Wed, 17 Mar 2021 06:13:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=tyfdIrrUU149tMTriiYqnAsdO45BM9HjBqKRU975yP8=;
+ b=nrRxNVpqGYCAmVN+nZR9r+A4kZ9kh5AYlNVRtLXO121mCnZGzE9guGMKam7qzhuKtk
+ btvu4iVM6b0ULXSUwn0fddrZShFTLZPi3/gVZzL7eOWNrV2o/bBBDLQSOBFkMl9qJbIn
+ /BeU+2ygcSo+7E8xN83381Ga1jHVpMubTGRgg6fi3Aet6f/rH7rnmNx1UnN4Xyr3Ans/
+ P+WefXHHwkCh7I9PGmD2xGVAIO0UVHCnE1y0b9XN1DPZxUFYZaeb3Mb8oE7VDxM8VAF9
+ DGuM+7aTEG0aqY0LGsYiIsj0Bm8MkknGM36OiTn6JLMeHFqKsmibJbmqR0ujfZsE06Z8
+ apqg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=0ZP9hWOCMObFvrBuDSNyfH5w21qCWfRoNuFS3Nz6Efo=;
- b=kutAn/ZDqUIv/hrptFhmYTWwxEu7Alxj0ai5zy6tt8W7FKXvRpwD/MD3RZ8LbYCl+t
- Rd439CLCFFCeOp5qXJQSbS5sksU6zN63ZSCJLcvTYpVfg2UtAYXYTOGv//qk+cfMXESo
- 0I05f4dUsF0JbgD8Yx30S5YH5M0mG+bsPiIdjyWD1wbt/iHaZyJKH07SgrFIRsIsV+nN
- PSzCgmdqSVgB5h/3roJFWi7CW8lr+RlPPQAH6YIvbhkg0tOiKfBqYohsb/LfOkeyRrCZ
- mx+J9dA+ONAk+GH2P2FzcZQtLbNZeArpgujoDiqxpdDqnYMuThMOdcoDca9jo4PfbKs3
- Xlcw==
-X-Gm-Message-State: AOAM532fnJkk91PvmrSfQoEf3M7TwuFPaxivBxmcINdjlYYvEdDBD1pX
- QLezX1wrCcCgUQtPl5Z3BGShvJPeu7U2zcUfeH509VbPTOYUStt/jdaEXkqYFwljJq6u+FI6Cov
- QmEUDwa4JtZDF
-X-Received: by 2002:a5d:46c4:: with SMTP id g4mr4364147wrs.241.1615986552034; 
- Wed, 17 Mar 2021 06:09:12 -0700 (PDT)
-X-Received: by 2002:a5d:46c4:: with SMTP id g4mr4364127wrs.241.1615986551842; 
- Wed, 17 Mar 2021 06:09:11 -0700 (PDT)
+ bh=tyfdIrrUU149tMTriiYqnAsdO45BM9HjBqKRU975yP8=;
+ b=r1qM3jRPs1MzMT3DSkUdYClWvx6v6tYYuhcfL5ZIiYv0UfmrYTuHkj9FQTEdBGH6Eq
+ Hnx8ay+e2UFXESqSMrDv0OvL42U3rWQHpyd4kUdLE/8E6Sf4/36qqukV+ABMvSFvaRDm
+ RoL1wMEciAh213EuCseD0KdwXgW2S6royzY756azKTs24T82rUTjGY9I5IbRZxmgnKYX
+ VioyuSoyxN5HxhBJKrRuhkfaAiphjLhKB4aRd3ylnQY4v9Mo5IQhvL7KEFC4E3Vn2Z0L
+ 4eyVihcFW6ynXyhJYXrH5s5kwz+u18ulGQYhaQlE4OP/0FSF4gy8F+S2eU6w1wAjILE2
+ UN2g==
+X-Gm-Message-State: AOAM53319SC/X1OS4+rj5BaXbKl17E1G1hhFxiY2EYd9SqdhB3iA9+Bt
+ /6YJwGta22Qhbp+nQvB9Yi4=
+X-Received: by 2002:a1c:1d14:: with SMTP id d20mr3716390wmd.36.1615986812492; 
+ Wed, 17 Mar 2021 06:13:32 -0700 (PDT)
 Received: from [192.168.1.36] (17.red-88-21-201.staticip.rima-tde.net.
  [88.21.201.17])
- by smtp.gmail.com with ESMTPSA id 1sm2448357wmj.2.2021.03.17.06.09.10
+ by smtp.gmail.com with ESMTPSA id j136sm2422973wmj.35.2021.03.17.06.13.31
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 17 Mar 2021 06:09:11 -0700 (PDT)
-Subject: Re: [PATCH] hw/char/pl011: Fix clock migration failure
-To: Andrew Jones <drjones@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
-References: <20210317044441.112313-1-gshan@redhat.com>
- <CAFEAcA8Wf+fYppz6kWurU=68NH7uvn0HFXc_FJ6twoA86bcBcg@mail.gmail.com>
- <73a30558-469e-8ef0-02b2-aaaaa2449cda@redhat.com>
- <CAFEAcA_yuSR=KkpBTh+21JkqiB7gKfnFvgvxYgPN2yLfvxpi_A@mail.gmail.com>
- <3e7ba090-c45e-8fa4-1a59-16856241cbdc@redhat.com>
- <CAFEAcA_zYaOXw5yaXWEjgBy6YeTpB5FRBCO96To-bv9xpQzbMQ@mail.gmail.com>
- <20210317125453.t6f7xs7bqf2vvbgu@kamzik.brq.redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <4fbceae2-7a0f-49cc-3a91-e4fa6be8c6af@redhat.com>
-Date: Wed, 17 Mar 2021 14:09:10 +0100
+ Wed, 17 Mar 2021 06:13:31 -0700 (PDT)
+Subject: Re: [PATCH v3 1/3] hw: Model ASPEED's Hash and Crypto Engine
+To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Joel Stanley <joel@jms.id.au>, Thomas Huth <thuth@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>
+References: <20210312105711.551423-1-joel@jms.id.au>
+ <20210312105711.551423-2-joel@jms.id.au>
+ <d2969a4a-abaf-b4e5-1cdb-5fdac85fa388@amsat.org>
+ <6fcc0cc8-e09d-5390-dc3b-593612e404e6@kaod.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <bc22a53d-f21d-e34e-f075-f8c97fba164d@amsat.org>
+Date: Wed, 17 Mar 2021 14:13:30 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.0
 MIME-Version: 1.0
-In-Reply-To: <20210317125453.t6f7xs7bqf2vvbgu@kamzik.brq.redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <6fcc0cc8-e09d-5390-dc3b-593612e404e6@kaod.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.251,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x333.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Gavin Shan <gshan@redhat.com>, Luc Michel <luc@lmichel.fr>,
- Beraldo Leal <bleal@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>, avocado-devel <avocado-devel@redhat.com>,
- Shan Gavin <shan.gavin@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: p3htJb6c+0K+
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: jdu5FbyDt+75
 
-+Beraldo
 
-On 3/17/21 1:54 PM, Andrew Jones wrote:
-> On Wed, Mar 17, 2021 at 11:14:56AM +0000, Peter Maydell wrote:
->> On Wed, 17 Mar 2021 at 10:59, Gavin Shan <gshan@redhat.com> wrote:
+
+On 3/17/21 1:36 PM, Cédric Le Goater wrote:
+> On 3/17/21 12:47 PM, Philippe Mathieu-Daudé wrote:
+>> On 3/12/21 11:57 AM, Joel Stanley wrote:
+>>> The HACE (Hash and Crypto Engine) is a device that offloads MD5, SHA1,
+>>> SHA2, RSA and other cryptographic algorithms.
 >>>
->>> Hi Peter,
+>>> This initial model implements a subset of the device's functionality;
+>>> currently only direct access (non-scatter gather) hashing.
 >>>
->>> On 3/17/21 9:40 PM, Peter Maydell wrote:
->>>> On Wed, 17 Mar 2021 at 10:37, Gavin Shan <gshan@redhat.com> wrote:
->>>>> On 3/17/21 8:09 PM, Peter Maydell wrote:
->>>>>> On Wed, 17 Mar 2021 at 04:44, Gavin Shan <gshan@redhat.com> wrote:
->>>>>>>
->>>>>>>    static const VMStateDescription vmstate_pl011 = {
->>>>>>>        .name = "pl011",
->>>>>>>        .version_id = 2,
->>>>>>>        .minimum_version_id = 2,
->>>>>>> +    .post_load = pl011_post_load,
->>>>>>>        .fields = (VMStateField[]) {
->>>>>>>            VMSTATE_UINT32(readbuff, PL011State),
->>>>>>>            VMSTATE_UINT32(flags, PL011State),
->>>>>>> @@ -355,10 +355,6 @@ static const VMStateDescription vmstate_pl011 = {
->>>>>>>            VMSTATE_INT32(read_trigger, PL011State),
->>>>>>>            VMSTATE_END_OF_LIST()
->>>>>>>        },
->>>>>>> -    .subsections = (const VMStateDescription * []) {
->>>>>>> -        &vmstate_pl011_clock,
->>>>>>> -        NULL
->>>>>>> -    }
->>>>>>>    };
->>>>>>
->>>>>> Doesn't dropping the subsection break migration compat ?
->>>>>>
->>>>>
->>>>> It's why this patch needs to be backported to stable branches.
->>>>> In that way, we won't have migration compatible issue.
->>>>
->>>> No, migration has to work from the existing already
->>>> shipped 5.1, 5.2, etc releases to 6.0 (assuming you use
->>>> the correct "virt-5.2" &c versioned machine type.)
->>>>
->>>
->>> Commit aac63e0e6ea3 ("hw/char/pl011: add a clock input") is merged
->>> to v5.2.0. The migration failure happens during migration from v6.0
->>> to v5.1 with machine type as "virt-5.1", instead of migrating from
->>> v5.1 to v6.0. One question is if we need support backwards migration?
+>>> Signed-off-by: Joel Stanley <joel@jms.id.au>
+>>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+>>> ---
+>>> v3:
+>>>  - rebase on upstream to fix meson.build conflict
+>>> v2:
+>>>  - reorder register defines
+>>>  - mask src/dest/len registers according to hardware
+>>> ---
+>>>  include/hw/misc/aspeed_hace.h |  33 ++++
+>>>  hw/misc/aspeed_hace.c         | 312 ++++++++++++++++++++++++++++++++++
+>>>  hw/misc/meson.build           |   1 +
+>>>  3 files changed, 346 insertions(+)
+>>>  create mode 100644 include/hw/misc/aspeed_hace.h
+>>>  create mode 100644 hw/misc/aspeed_hace.c
+
+>>> +static int do_hash_operation(AspeedHACEState *s, int algo)
+>>> +{
+>>> +    hwaddr src, len, dest;
+>>> +    uint8_t *digest_buf = NULL;
+>>> +    size_t digest_len = 0;
+>>> +    char *src_buf;
+>>> +    int rc;
+>>> +
+>>> +    src = 0x80000000 | s->regs[R_HASH_SRC];
+>>> +    len = s->regs[R_HASH_SRC_LEN];
+>>> +    dest = 0x80000000 | s->regs[R_HASH_DEST];
+>>> +
+>>> +    src_buf = address_space_map(&s->dram_as, src, &len, false,
+>>> +                                MEMTXATTRS_UNSPECIFIED);
 >>
->> Upstream doesn't care about backwards migration. AIUI
->> RedHat as a downstream care about the backwards-migration
->> case in some specific situations, but I don't know if that
->> would include this one.
+>> It seems the Aspeed machines aren't using correctly the AS API...
+>> This device shouldn't worry about where it is physically mapped.
+>> IOW its AS is too wide.
+>>
+>> I'm trying to fix this in a series:
+>> https://www.mail-archive.com/qemu-devel@nongnu.org/msg791085.html
 > 
-> Right, we do prefer to be able to support "ping-pong" migrations. For
-> example, if we start a virt-5.1 machine on a 5.1 build of QEMU, and then
-> migrate it to a 5.2 build of QEMU, we'd like to also be able to go back
-> to the 5.1 build.
+> The buffers can be anywhere in DRAM
+
+Exactly. This device only requires direct access to DRAM, not the
+full bus. Regardless the amount of DRAM available, only the bus
+aperture to the DRAM should be passed to this device (MR link),
+then this device use an AS view on it, zero-based.
+
+Your device becomes independent to where the DRAM is physically
+mapped on the SoC.
+
+> which is mapped at 0x80000000
+> on the AST2600. This is correct and very similar to what we do 
+> in the Aspeed SMC DMA models.
 > 
-> I agree this patch is not the right approach. I think the right approach
-> is to introduce a compat property and make the "new" section dependent
-> on it. And then update the hw_compat_* arrays. Gavin, please take a look
-> at "Connecting subsections to properties" of docs/devel/migration.rst.
+> I would prefer if we did loads though.
 > 
-> I'm also curious what the state of mach-virt's machine types are for
-> migration. It'd be nice to exhaustively test both forward migration of
-> all machine types and ping-pong migrations of all machine types.
-
-FYI this test has been suggested to the Avocado team few times.
-They might already have a ticket to track any progress.
-
-> We can
-> then consider each issue we find (the pessimist in me suggests we'll find
-> more than this pl011 issue) and how/if we want to resolve them.
-
+> Cheers,
+> 
+> C.
+> 
+> 

@@ -1,123 +1,105 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp5026591lfg;
-        Tue, 16 Mar 2021 17:03:38 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzPy91zJswUIJJSgcSzbxj2qBbo4QqqinyTDbXFPqVVYn3QWmEjo7EIxqsholMxumlE4V0Z
-X-Received: by 2002:a25:cc4b:: with SMTP id l72mr1593986ybf.455.1615939418365;
-        Tue, 16 Mar 2021 17:03:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1615939418; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp5097087lfg;
+        Tue, 16 Mar 2021 19:05:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyKDit/iaFnUL0Bf8VESAGUID/rLDn6UAZ3aalWpitzVXh/eUVgSiIljid2MRy67oZZEDwz
+X-Received: by 2002:a25:7d04:: with SMTP id y4mr1999045ybc.402.1615946730654;
+        Tue, 16 Mar 2021 19:05:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1615946730; cv=none;
         d=google.com; s=arc-20160816;
-        b=d9P9/qLS1bLbhuKllmaeCzYtF4/W5yth1U6QLZHTDwFNR3z+qs/4OGTXplxSdawxgb
-         WhW/PcqvbxRTNgSRJM3kmUmfoj7/Tn/jjjjktkIAD9Bl9mwZFj7cf1NyvOlYnoLFbLKt
-         rb3GHzyHxqboqP5iJI7X7/L9Aeh9c+b24fBOPQdC0JlIltshV62ZL1yKOy/ERmpBG+lj
-         +23bnTnzrKbbQyf+x4f2Gu7DARh+cRSWAlNNpcQ29nI3y7fLNBf2qeXLRHcPJPg3NOcR
-         RhqCfeBi0MQgMukckHFhLXiMmw5a6gQWV8UaeB3cRoELnYBhmVD7SU1eFcDwzH9cEVxo
-         cM1w==
+        b=eTybcVAdsini8PGkmFsnF0WkDGAjp+aR4PR2qEKL7jFVooiEJNYe2xYox/4U1/tcg2
+         2hIviMOAa3Sdl2QxIMrWdgK2+HWdRtv192JF3YyI3pNBbiwdrNUl0SeKkeXW0TdY57ld
+         pxnUWs0fTLK9ZMmbYFZfgUlo8gVEp7lcQp8o4sOnxG8QSNX6rSpqJu6rO4126x+5Az2T
+         caz58Bks4LtSRz3u0FAvwomYp57MkKfup+/ZFowUA5oECnxTGMx9c+VxhYHbDb5oodpr
+         db7SWflPtVeMpa7/gZwrqhBWOK/3Y1+f6DRa2aE6DGmOeVxLKw1+yH5sECO4zC+2nz2H
+         YCsw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :subject:to:from:date:references:in-reply-to:message-id:mime-version
-         :user-agent:dkim-signature:dkim-signature;
-        bh=N8QCkO51Ivy+h98QyQ9WC1tuaG9547oUt0AzwY3UUCk=;
-        b=iLNT78uXMeXl3xECPiygjlvayKPaa583A/PkXUGrIZLIl7AwTYVSCGwBCBJaSEnOCH
-         XVZuZiAF/h3ogk/9MxM6xcmAD9UCSBgxvAw5e6YpAk5VVj3iq2D8/X3ipmcCDTM3bWgC
-         EPMmR+1uh3wk0GqFEU1jL5AaJ7Yyy+xAa957fcky9nXHQ4i61UVXCdwWaGFFOv6UAjuG
-         QO0aX1WXBlTPFkrsXbegu1rnVA3G2RlMYrpI55CB9H2BJKEown+bPB1+IvWbR1Bk/z8R
-         NKzrVY5spS2bGEnKctNS/nYV0RvfR8DH3/uLQya8528T7/5w+Q8i6IY9y9vLO3Svn+SY
-         bOLQ==
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=bgrIk/Dff7bIAxN/4yFOY5v6QHWPW5HJiV736mIknHs=;
+        b=zQaa9HSr1A4qY8x1M+FcNfOGhdakp2BvWi6nmysm9VrAPzCIL1JD3wv9HjdG4O9WRy
+         +TKc00fMd27USgf6c83qpY5uWvdgOUuM2e4J4CRoMZQNT4zM92LaQ7NGGVT/oKq/lxMR
+         BvSVRaohPt9f21tj5DchWJHzTmEbPExo0wXuMBCdwpZNqUCp3bKpSSQg48hxS8fvq394
+         0GBvFOAeDjTtrm1CxZ4MzQNnJ+t8VvMBTkEuK4CFwQViNVMRtZlBCAbTAfiJ8LsUWsdA
+         BCFBBx6ETLtUpLhejaBZEL0FGQlytbUy5SUiI0hyMKAeAeo7+JQH/7Kw3f4NbkWQFDgv
+         N/pQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm2 header.b=UG0x9zBn;
-       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=dmLElmC+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OyY2n1Df;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 145si3379662ybn.229.2021.03.16.17.03.38
+        by mx.google.com with ESMTPS id w191si21483159ybe.183.2021.03.16.19.05.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Mar 2021 17:03:38 -0700 (PDT)
+        Tue, 16 Mar 2021 19:05:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm2 header.b=UG0x9zBn;
-       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=dmLElmC+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33984 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OyY2n1Df;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:38518 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lMJez-0004sl-ML
-	for alex.bennee@linaro.org; Tue, 16 Mar 2021 20:03:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36786)
+	id 1lMLYw-00075U-1G
+	for alex.bennee@linaro.org; Tue, 16 Mar 2021 22:05:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55358)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
- id 1lMJem-0004s8-P0; Tue, 16 Mar 2021 20:03:24 -0400
-Received: from out1-smtp.messagingengine.com ([66.111.4.25]:51631)
+ (Exim 4.90_1) (envelope-from <crosa@redhat.com>) id 1lMLYj-00074E-Hk
+ for qemu-arm@nongnu.org; Tue, 16 Mar 2021 22:05:17 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:51699)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
- id 1lMJeh-0004vC-S8; Tue, 16 Mar 2021 20:03:24 -0400
-Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
- by mailout.nyi.internal (Postfix) with ESMTP id 750CE5C00B4;
- Tue, 16 Mar 2021 20:03:16 -0400 (EDT)
-Received: from imap2 ([10.202.2.52])
- by compute3.internal (MEProxy); Tue, 16 Mar 2021 20:03:16 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=
- mime-version:message-id:in-reply-to:references:date:from:to:cc
- :subject:content-type:content-transfer-encoding; s=fm2; bh=N8QCk
- O51Ivy+h98QyQ9WC1tuaG9547oUt0AzwY3UUCk=; b=UG0x9zBnsgjbR9ZzZ+Fve
- 5azz+vZaPYTGwC674x04k5o2mHrGSYyhzRo7VsGf2XyXyXKmsR/WAj58Z2wbqS/d
- 9wEDSYB1VCGhIKv2v4ZIviOoSjCGOTnlp2s912y8FuD76fLenxMQbAP3dfBs0wJU
- 5KAsSkt1/AGz6m/fqU31ESdR1xhUQ8edNsNwRv+JQi8umDDG63usssFj0KTyLkZZ
- GUkgos+EMLWp7bfWsanXjWtEGUDtwwM1lkSJUt9n7mnVKNF/a5rlTVnkrTpWf6hT
- f+ZwSphEZbu5FWhfgSzU0MQC9EiurUoLO14JLEXMNgnj0ntCzkUXaOWDoJtWBT0q
- w==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-transfer-encoding:content-type
- :date:from:in-reply-to:message-id:mime-version:references
- :subject:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=fm2; bh=N8QCkO51Ivy+h98QyQ9WC1tuaG9547oUt0AzwY3UU
- Ck=; b=dmLElmC+hi5ckCBSNlcboaG5oXRvtyTLDu+DEhdQgG2KDLnHWy/Rsew0m
- kk3L0i0gFjg9Md2p+Km/GBiZJlgIKKCgItx7xLhLbhZSn5RYRzzx3copea8Tc4BQ
- 93xLWUXd8NN6lECo1TLQ4kPsVSCszY0sfXpEQ/vprYUqjlNAgcUUck5ADKR/zHR+
- OidQToV8s7n3/OjNqU2qC/n6TBr8XHUlTpO9Wd/Fa9fsr8vl8uK07gTVRER76GHq
- yDv45QcZ2mhxIiSR1967A2pBKLpYklIuTjYEyM82LHkOBbUJE4+BiGeMqbljOvLT
- 77BxBj85wj1UDDfHgZNs6l9nvrzbQ==
-X-ME-Sender: <xms:Q0dRYCreZXDjIsZdiu_DN_XaOyfS1YBWFSuPkyfVCVmrDGOfxSW1jQ>
- <xme:Q0dRYApwp-MBh2sh30-2aSL0iiRdQoolSkwp34b7AQyyCFa5xDRxkLgYRPMcVnnR7
- tm_wdt1c-YKnqJgQw>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduledrudeffedgudefucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhepofgfggfkjghffffhvffutgfgsehtqhertderreejnecuhfhrohhmpedftehn
- ughrvgifucflvghffhgvrhihfdcuoegrnhgurhgvfiesrghjrdhiugdrrghuqeenucggtf
- frrghtthgvrhhnpedvgeekheegfedvhfethefhudetteegueeggfeiieegueehkedugedt
- kefglefgheenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhroh
- hmpegrnhgurhgvfiesrghjrdhiugdrrghu
-X-ME-Proxy: <xmx:Q0dRYHMIjEkLebTRlJbOgLjWh99CPfnaLLVF92HbbC7ytvb5eA32zQ>
- <xmx:Q0dRYB5XHulpc1lZWvkchhadWwo8lG5yRJAA_cVEr6gQmu1xRzhl7Q>
- <xmx:Q0dRYB7QGxQe6Rnf6ob3fGhUyl1Hd2nFwXAIdHIPEu3JAsNG3mmolQ>
- <xmx:REdRYPR9vt2pou1wOR0kw9LDGvZnd5KRikqf7wNn5-Jt8d33Cl6dPQ>
-Received: by mailuser.nyi.internal (Postfix, from userid 501)
- id 18394A00073; Tue, 16 Mar 2021 20:03:14 -0400 (EDT)
-X-Mailer: MessagingEngine.com Webmail Interface
-User-Agent: Cyrus-JMAP/3.5.0-alpha0-206-g078a48fda5-fm-20210226.001-g078a48fd
-Mime-Version: 1.0
-Message-Id: <943cd3e4-1706-4c31-bb45-ffea4478ca70@www.fastmail.com>
-In-Reply-To: <20210312105711.551423-2-joel@jms.id.au>
-References: <20210312105711.551423-1-joel@jms.id.au>
- <20210312105711.551423-2-joel@jms.id.au>
-Date: Wed, 17 Mar 2021 10:32:43 +1030
-From: "Andrew Jeffery" <andrew@aj.id.au>
-To: "Joel Stanley" <joel@jms.id.au>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- "Thomas Huth" <thuth@redhat.com>, "Laurent Vivier" <lvivier@redhat.com>
-Subject: Re: [PATCH v3 1/3] hw: Model ASPEED's Hash and Crypto Engine
-Content-Type: text/plain;charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=66.111.4.25; envelope-from=andrew@aj.id.au;
- helo=out1-smtp.messagingengine.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from <crosa@redhat.com>) id 1lMLYb-0000Wq-1w
+ for qemu-arm@nongnu.org; Tue, 16 Mar 2021 22:05:15 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1615946707;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=bgrIk/Dff7bIAxN/4yFOY5v6QHWPW5HJiV736mIknHs=;
+ b=OyY2n1DfSyCGRCoQt5MF0l9DlCZNIM2nF3FYZgJlw74Fv4DFs3yNZlrjfYujp+CfPlQpxe
+ OOMjyrxEeBrQMip3NXOcI9gJDLwnymOR+Eb+vc6hT5ZeTYXbl0u1J1UmNa+mMivSO4eKBD
+ JNx//BfUiR3K5gETS5RzIQnHhSgb8HU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-20-npakodA0OOa1GhM1ultIEA-1; Tue, 16 Mar 2021 22:05:02 -0400
+X-MC-Unique: npakodA0OOa1GhM1ultIEA-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id CD4731074659;
+ Wed, 17 Mar 2021 02:05:00 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-113-107.rdu2.redhat.com
+ [10.10.113.107])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 7042860C13;
+ Wed, 17 Mar 2021 02:04:56 +0000 (UTC)
+Date: Tue, 16 Mar 2021 22:04:54 -0400
+From: Cleber Rosa <crosa@redhat.com>
+To: Joel Stanley <joel@jms.id.au>
+Subject: Re: [PATCH v2 1/2] tests/acceptance: Test ast2400 and ast2500 machines
+Message-ID: <YFFjxg3MNd9oJ0vu@localhost.localdomain>
+References: <20210304123951.163411-1-joel@jms.id.au>
+ <20210304123951.163411-2-joel@jms.id.au>
+MIME-Version: 1.0
+In-Reply-To: <20210304123951.163411-2-joel@jms.id.au>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=crosa@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="pk2IiuFRYfvGL2eL"
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=crosa@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.25,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -130,162 +112,91 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- Cameron Esfahani via <qemu-devel@nongnu.org>,
- Peter Maydell <peter.maydell@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ qemu-devel@nongnu.org, Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ qemu-arm@nongnu.org, =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dVHib8oHUSqS
+X-TUID: A6SxRPP4m+mV
 
+--pk2IiuFRYfvGL2eL
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-
-On Fri, 12 Mar 2021, at 21:27, Joel Stanley wrote:
-> The HACE (Hash and Crypto Engine) is a device that offloads MD5, SHA1,=
-
-> SHA2, RSA and other cryptographic algorithms.
+On Thu, Mar 04, 2021 at 11:09:50PM +1030, Joel Stanley wrote:
+> Test MTD images from the OpenBMC project on AST2400 and AST2500 SoCs
+> from ASPEED, by booting Palmetto and Romulus BMC machines.
 >=20
-> This initial model implements a subset of the device's functionality;
-> currently only direct access (non-scatter gather) hashing.
+> The images are fetched from OpenBMC's release directory on github.
 >=20
+> Co-developed-by: C=E9dric Le Goater <clg@kaod.org>
+> Reviewed-by: C=E9dric Le Goater <clg@kaod.org>
+> Tested-by: C=E9dric Le Goater <clg@kaod.org>
 > Signed-off-by: Joel Stanley <joel@jms.id.au>
-> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 > ---
-> v3:
->  - rebase on upstream to fix meson.build conflict
-> v2:
->  - reorder register defines
->  - mask src/dest/len registers according to hardware
-> ---
->  include/hw/misc/aspeed_hace.h |  33 ++++
->  hw/misc/aspeed_hace.c         | 312 +++++++++++++++++++++++++++++++++=
-+
->  hw/misc/meson.build           |   1 +
->  3 files changed, 346 insertions(+)
->  create mode 100644 include/hw/misc/aspeed_hace.h
->  create mode 100644 hw/misc/aspeed_hace.c
->=20
-> diff --git a/include/hw/misc/aspeed_hace.h=20
-> b/include/hw/misc/aspeed_hace.h
-> new file mode 100644
-> index 000000000000..e1fce670ef9e
-> --- /dev/null
-> +++ b/include/hw/misc/aspeed_hace.h
-> @@ -0,0 +1,33 @@
-> +/*
-> + * ASPEED Hash and Crypto Engine
-> + *
-> + * Copyright (C) 2021 IBM Corp.
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + */
-> +
-> +#ifndef ASPEED_HACE_H
-> +#define ASPEED_HACE_H
-> +
-> +#include "hw/sysbus.h"
-> +
-> +#define TYPE_ASPEED_HACE "aspeed.hace"
-> +#define ASPEED_HACE(obj) OBJECT_CHECK(AspeedHACEState, (obj),=20
-> TYPE_ASPEED_HACE)
-> +
-> +#define ASPEED_HACE_NR_REGS (0x64 >> 2)
-> +
-> +typedef struct AspeedHACEState {
-> +    /* <private> */
-> +    SysBusDevice parent;
-> +
-> +    /*< public >*/
-> +    MemoryRegion iomem;
-> +    qemu_irq irq;
-> +
-> +    uint32_t regs[ASPEED_HACE_NR_REGS];
-> +
-> +    MemoryRegion *dram_mr;
-> +    AddressSpace dram_as;
-> +} AspeedHACEState;
-> +
-> +#endif /* _ASPEED_HACE_H_ */
-> diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
-> new file mode 100644
-> index 000000000000..3d02fae2dd62
-> --- /dev/null
-> +++ b/hw/misc/aspeed_hace.c
-> @@ -0,0 +1,312 @@
-> +/*
-> + * ASPEED Hash and Crypto Engine
-> + *
-> + * Copyright (C) 2021 IBM Corp.
-> + *
-> + * Joel Stanley <joel@jms.id.au>
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qemu/log.h"
-> +#include "qemu/error-report.h"
-> +#include "hw/misc/aspeed_hace.h"
-> +#include "qapi/error.h"
-> +#include "migration/vmstate.h"
-> +#include "crypto/hash.h"
-> +#include "hw/qdev-properties.h"
-> +#include "hw/irq.h"
-> +
-> +#define R_CRYPT_CMD     (0x10 / 4)
-> +
-> +#define R_STATUS        (0x1c / 4)
-> +#define HASH_IRQ        BIT(9)
-> +#define CRYPT_IRQ       BIT(12)
-> +#define TAG_IRQ         BIT(15)
-> +
-> +#define R_HASH_SRC      (0x20 / 4)
-> +#define R_HASH_DEST     (0x24 / 4)
-> +#define R_HASH_SRC_LEN  (0x2c / 4)
-> +
-> +#define R_HASH_CMD      (0x30 / 4)
-> +/* Hash algorithim selection */
-> +#define  HASH_ALGO_MASK                 (BIT(4) | BIT(5) | BIT(6))
-> +#define  HASH_ALGO_MD5                  0
-> +#define  HASH_ALGO_SHA1                 BIT(5)
-> +#define  HASH_ALGO_SHA224               BIT(6)
-> +#define  HASH_ALGO_SHA256               (BIT(4) | BIT(6))
-> +#define  HASH_ALGO_SHA512_SERIES        (BIT(5) | BIT(6))
-> +/* SHA512 algorithim selection */
-> +#define  SHA512_HASH_ALGO_MASK          (BIT(10) | BIT(11) | BIT(12))=
+>  tests/acceptance/boot_linux_console.py | 46 ++++++++++++++++++++++++++
+>  1 file changed, 46 insertions(+)
 
-> +#define  HASH_ALGO_SHA512_SHA512        0
-> +#define  HASH_ALGO_SHA512_SHA384        BIT(10)
-> +#define  HASH_ALGO_SHA512_SHA256        BIT(11)
-> +#define  HASH_ALGO_SHA512_SHA224        (BIT(10) | BIT(11))
-> +/* HMAC modes */
-> +#define  HASH_HMAC_MASK                 (BIT(7) | BIT(8))
-> +#define  HASH_DIGEST                    0
-> +#define  HASH_DIGEST_HMAC               BIT(7)
-> +#define  HASH_DIGEST_ACCUM              BIT(8)
-> +#define  HASH_HMAC_KEY                  (BIT(7) | BIT(8))
-> +/* Cascscaed operation modes */
-> +#define  HASH_ONLY                      0
-> +#define  HASH_ONLY2                     BIT(0)
-> +#define  HASH_CRYPT_THEN_HASH           BIT(1)
-> +#define  HASH_HASH_THEN_CRYPT           (BIT(0) | BIT(1))
-> +/* Other cmd bits */
-> +#define  HASH_IRQ_EN                    BIT(9)
-> +#define  HASH_SG_EN                     BIT(18)
-> +
-> +
-> +static int do_hash_operation(AspeedHACEState *s, int algo)
-> +{
-> +    hwaddr src, len, dest;
-> +    uint8_t *digest_buf =3D NULL;
-> +    size_t digest_len =3D 0;
-> +    char *src_buf;
-> +    int rc;
-> +
-> +    src =3D 0x80000000 | s->regs[R_HASH_SRC];
+These seem quite stable, as not as slow as the comment on the seems to
+indicate.  On a reasonbly low powered machine:
 
-Tricky. Also doesn't work on the AST2400 where SDRAM is based at=20
-0x40000000?
+JOB ID     : 01fb73b0f5f4612e95f9f2c2a791df9c11d226ca
+JOB LOG    : /home/cleber/avocado/job-results/job-2021-03-16T21.58-01fb73b/=
+job.log
+ (1/6) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_ast=
+2400_palmetto_openbmc_v2_9_0: STARTED
+ (2/6) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_ast=
+2500_romulus_openbmc_v2_9_0: STARTED
+ (3/6) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_ast=
+2400_palmetto_openbmc_v2_9_0: STARTED
+ (4/6) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_ast=
+2500_romulus_openbmc_v2_9_0: STARTED
+ (1/6) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_ast=
+2400_palmetto_openbmc_v2_9_0: PASS (32.70 s)
+ (3/6) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_ast=
+2400_palmetto_openbmc_v2_9_0: PASS (32.86 s)
+ (5/6) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_ast=
+2400_palmetto_openbmc_v2_9_0: STARTED
+ (6/6) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_ast=
+2500_romulus_openbmc_v2_9_0: STARTED
+ (4/6) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_ast=
+2500_romulus_openbmc_v2_9_0: PASS (42.46 s)
+ (2/6) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_ast=
+2500_romulus_openbmc_v2_9_0: PASS (42.64 s)
+ (5/6) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_ast=
+2400_palmetto_openbmc_v2_9_0: PASS (21.78 s)
+ (6/6) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_ast=
+2500_romulus_openbmc_v2_9_0: PASS (26.11 s)
+RESULTS    : PASS 6 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 | CA=
+NCEL 0
+JOB HTML   : /home/cleber/avocado/job-results/job-2021-03-16T21.58-01fb73b/=
+results.html
+JOB TIME   : 61.04 s
 
-Other than that it looks good to me.
+Reviewed-by: Cleber Rosa <crosa@redhat.com>
+Tested-by: Cleber Rosa <crosa@redhat.com>
 
-Andrew
+--pk2IiuFRYfvGL2eL
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEeruW64tGuU1eD+m7ZX6NM6XyCfMFAmBRY8MACgkQZX6NM6Xy
+CfO3nQ//ffz90W2lO+oEo2bKrb6Es4BxviE+1+11bpvR3DptXAx4gbd0xfhsePr2
+P8ySGkPyrsKpjQsI2c1Q8NAl77sUK0TY0t9V6vlNddgCvG4IS1MFt6h6FOimZlF3
+RRknr+e9v3EjDcsxd9cQ9XJW0YMlg7PRgQhATZtUdeUcmy8RvsU9CcGYBWTBXgDK
+8AtVH/crbxY8DvMLT1rErCi6hfNq8oE8ZW1x2t7h4MfGLmq0ZCIY5EttzQJfoFnL
+rIK0rgzAlF6YptPdk/96HpQ+jbfhHz7stdjMVUyKieCFQmcw0zhuHV6gR2TFvzZk
+I4ynKuvtUOQpRdZWpP3rWR2tdbycl3I2gIklaHouVu9RUBYaI2c4K+LnLFMN9RRk
+503LEFbqm1RCJr7PxkZm2xHXa2BAyarS0vcxuMXJATq8QYdsNtp+rTIux8p19TzG
++KpfiYlu0dto6ijeLCG8qQubDYFgSvFYKURbrs2LFHTtiMKeRMyOLhrsivsdAvPK
+MSrJXWcaWjNjCk9xw+bK/ZPWFq5a26hY42qKg1BY8gmWN4LLXzm6C/pgWY/uZnWv
+2wv+QdXZ6AIZBT9mVVuM0ugMj85ZJOKdqJAtd2WV9l2+RD9I6bgqEKkypIIThlv8
+VIaZhjZnRnazTwkR0Kojq4WSRKG483EDFj59n1xs9fD3KwmQbMw=
+=abaJ
+-----END PGP SIGNATURE-----
+
+--pk2IiuFRYfvGL2eL--
+

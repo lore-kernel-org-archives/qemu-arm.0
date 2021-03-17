@@ -1,90 +1,88 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp623605lfg;
-        Wed, 17 Mar 2021 10:36:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx67M8lEP8A4LE6uNqQE10Yw04AF6qtOG2L13na0phY3rSi9Xg+KvzNYBNT9OuzFS53zORZ
-X-Received: by 2002:a02:7691:: with SMTP id z139mr3748024jab.130.1616002612080;
-        Wed, 17 Mar 2021 10:36:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1616002612; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp692850lfg;
+        Wed, 17 Mar 2021 12:10:34 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw3x32CF66c8KRH8SQu4Wzw7tTLJZWXYxGu4PUP4tv2zcUE6d2xzt4Y7iX7YyyaoOrGSoKP
+X-Received: by 2002:a02:230d:: with SMTP id u13mr4063875jau.53.1616008234376;
+        Wed, 17 Mar 2021 12:10:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616008234; cv=none;
         d=google.com; s=arc-20160816;
-        b=ptoYlUnXnQAm/fJQfpXK+lZTSpM16lIvGopkaSwwMYGklEjd1Zgc3rud0j0Itd87Ir
-         3BfdCcAfPDLWm9pSyKWVvOft6uksRNZ7vJCas+ALPAQOXCDyoPEj7Bh+SyoAdu7rtNY1
-         y8r0DmrZg4fgSOLei+wVDEAYA5atIxFd2pvSWZbryrKHWsqDCzUKPSUtIiHko9im1Eul
-         M63WR702uNirSTYxnaxo2bikJgX3bEmbrQsc4Cx5t+zh08nWib5UScz4ORNWrbYtQbYv
-         vnVpMHGLApLxlJMh8z0If/1+wiz6T8c/fCr9/YXGoihr926sodtZdPFKK3AtXE6NAv1h
-         HtSw==
+        b=O0eTaERfyLLoNthyuri51TPfOiBEDoCsQl9fouR6Pkt0egYXu6Ed2HWeLfEHKlM88Y
+         XAZ72BMfnkvf2uM0SoWabhci3T5S3ZyUdUV8abCtmUpn59+MuWefSOfuJYh9Dh7zdBsg
+         Go/xjrZHmf8VtkrwkDRW1jBW5L4Ic0zt31ilVBtXHnyu0qfbq7K6Almj7ivqO+TAJcej
+         UFEP4I/qYklwgdGuof0VjYplKDCAJZgwJWO33Z2lukkWeKdCZoDElWqNd3HJnSjINUvD
+         AybcogVBGiiKs1uCR/fXYhF932pOg2twGvD/xX0CVwfHZbV7dtvqZf480DLYqyPMtxBT
+         pE+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject;
-        bh=DluSfLbaem5v7GWHc2WuBaaDgRL7q8LagZ8nfmVkFSo=;
-        b=1BDyrPtL3wdZhIiy+lnCpZNZeZ3gp2+8zzx1lagjbDbl3/UqhdtHv6nB7dn2lMzLkV
-         gXAIYZDvLdab1E6cK2N+E2VpyZp+uEMA01eEeYkhnimXmvlesxSqwdstRu9c6ABSXKpC
-         iGt2YALQwDf7IPqyYq2KdIWsPrKGwhR/GnKx20B4IhDtwy8M2mwajoG1ZtqHTsza+Epb
-         8kOtVF11yxRfvSswi60e177XOkkfGvg/8ttLbHgFQJ247/goSN1Y+HsxLUzRXatvfDFm
-         UiADrC1CAh+XDcUei2mDXNpE4Fm2Q2zJVLXNi1UpTWKe9+Lhbc3AqeriM0H8KwpwFWr7
-         LWCA==
+        bh=/HDLH5GVTOCk0Wbq25hprqMNQcjsEX+t1ekRK97E5/s=;
+        b=JEFhRWca06Rhh/tS/NbaUHzcRK0DH22oFdiCmni2bYSKwKbIk0TDZQl7kBGiCOXwKE
+         Hv0J4NBA6oY4yB4Ivr5rvPK61zYJPbLK7G5ecbB5pc2butdhUfwEXNVKY0+p26C0nqbP
+         YApfYmzLzdA55T04Ch6jG5jp3GoPc3AlyaF497td/FvyLBXSvk/yWJptjouWWjppQI6i
+         GpftyZI3H5FQaDgCj6WW0/kdOfOLL1NL0R03/wb/NvGGz6qt7QJUvieVUejX9f36ydCE
+         ZH/W5IgRW03e0PTZO2PbXdRuKLoQyawd2A2zdL7aUqOONu5JI4sBQowO85np7u2tQre5
+         dVPw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x16si10165060ilc.34.2021.03.17.10.36.51
+        by mx.google.com with ESMTPS id q13si16117956ile.1.2021.03.17.12.10.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 17 Mar 2021 10:36:52 -0700 (PDT)
+        Wed, 17 Mar 2021 12:10:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:42140 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43056 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lMa6F-0004lP-Bc
-	for alex.bennee@linaro.org; Wed, 17 Mar 2021 13:36:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43452)
+	id 1lMbYv-0004sm-J3
+	for alex.bennee@linaro.org; Wed, 17 Mar 2021 15:10:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43122)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1lMZaJ-0002Ix-Ji; Wed, 17 Mar 2021 13:03:51 -0400
-Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:36617)
+ id 1lMbCC-0003Lm-Mx; Wed, 17 Mar 2021 14:47:04 -0400
+Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:36039)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1lMZaH-0001Ms-7o; Wed, 17 Mar 2021 13:03:51 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.4.253])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 35C9691500D7;
- Wed, 17 Mar 2021 18:03:44 +0100 (CET)
-Received: from kaod.org (37.59.142.102) by DAG4EX1.mxp5.local (172.16.2.31)
+ id 1lMbC6-0006RI-VI; Wed, 17 Mar 2021 14:47:04 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.20.195])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id CC427915D364;
+ Wed, 17 Mar 2021 19:46:19 +0100 (CET)
+Received: from kaod.org (37.59.142.104) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2106.2; Wed, 17 Mar
- 2021 18:03:43 +0100
+ 2021 19:46:18 +0100
 Authentication-Results: garm.ovh; auth=pass
- (GARM-102R004f3c21803-2d0a-479f-9ec6-c96feb35a6cd,
+ (GARM-104R00567ebd040-bc2e-4e28-b982-3ede969a9a4f,
  10040688A1AB5364447EAD88D88247B833C1D39B) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Subject: Re: [PATCH v3 1/3] hw: Model ASPEED's Hash and Crypto Engine
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>, Joel Stanley
- <joel@jms.id.au>, Thomas Huth <thuth@redhat.com>, Laurent Vivier
- <lvivier@redhat.com>
-References: <20210312105711.551423-1-joel@jms.id.au>
- <20210312105711.551423-2-joel@jms.id.au>
- <d2969a4a-abaf-b4e5-1cdb-5fdac85fa388@amsat.org>
- <6fcc0cc8-e09d-5390-dc3b-593612e404e6@kaod.org>
- <bc22a53d-f21d-e34e-f075-f8c97fba164d@amsat.org>
+Subject: Re: [PATCH 2/5] hw/arm/aspeed: Do not sysbus-map mmio flash region
+ directly, use alias
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ <qemu-devel@nongnu.org>
+References: <20210312182851.1922972-1-f4bug@amsat.org>
+ <20210312182851.1922972-3-f4bug@amsat.org>
+ <4a812dc9-b448-0b8f-6a66-95cb96acdc17@amsat.org>
 From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <4bf33abe-e729-33e3-51fe-64a9ac472324@kaod.org>
-Date: Wed, 17 Mar 2021 18:03:43 +0100
+Message-ID: <da1043ee-5945-86a3-450b-d73eee1b1685@kaod.org>
+Date: Wed, 17 Mar 2021 19:46:17 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.6.0
 MIME-Version: 1.0
-In-Reply-To: <bc22a53d-f21d-e34e-f075-f8c97fba164d@amsat.org>
+In-Reply-To: <4a812dc9-b448-0b8f-6a66-95cb96acdc17@amsat.org>
 Content-Type: text/plain; charset="utf-8"
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.102]
-X-ClientProxiedBy: DAG9EX1.mxp5.local (172.16.2.81) To DAG4EX1.mxp5.local
+X-Originating-IP: [37.59.142.104]
+X-ClientProxiedBy: DAG1EX1.mxp5.local (172.16.2.1) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: ba562289-b734-49d0-adbd-952750de5f21
-X-Ovh-Tracer-Id: 3922635278227376943
+X-Ovh-Tracer-GUID: 443d7359-2681-4cee-bb9b-c21af257b3a1
+X-Ovh-Tracer-Id: 5654832283019807675
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduledrudefgedgleekucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepgeelleeuveelvdejvdegtddugfdvkeejueehvdejuefgleeivdduhfduteffgeeinecuffhomhgrihhnpehmrghilhdqrghrtghhihhvvgdrtghomhenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtvdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepfhegsghughesrghmshgrthdrohhrgh
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduledrudefgedguddvtdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeejkeduueduveelgeduueegkeelffevledujeetffeivdelvdfgkeeufeduheehfeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtgeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepghhrohhugheskhgrohgurdhorhhg
 Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
  helo=smtpout1.mo529.mail-out.ovh.net
 X-Spam_score_int: -18
@@ -105,96 +103,63 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ Alistair Francis <alistair@alistair23.me>, Greg Kurz <groug@kaod.org>,
+ Peter Xu <peterx@redhat.com>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ Joel Stanley <joel@jms.id.au>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+ David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: B0ndAin7/hLd
+X-TUID: 26hnBY8TJhVr
 
-On 3/17/21 2:13 PM, Philippe Mathieu-Daudé wrote:
-> 
-> 
-> On 3/17/21 1:36 PM, Cédric Le Goater wrote:
->> On 3/17/21 12:47 PM, Philippe Mathieu-Daudé wrote:
->>> On 3/12/21 11:57 AM, Joel Stanley wrote:
->>>> The HACE (Hash and Crypto Engine) is a device that offloads MD5, SHA1,
->>>> SHA2, RSA and other cryptographic algorithms.
->>>>
->>>> This initial model implements a subset of the device's functionality;
->>>> currently only direct access (non-scatter gather) hashing.
->>>>
->>>> Signed-off-by: Joel Stanley <joel@jms.id.au>
->>>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
->>>> ---
->>>> v3:
->>>>  - rebase on upstream to fix meson.build conflict
->>>> v2:
->>>>  - reorder register defines
->>>>  - mask src/dest/len registers according to hardware
->>>> ---
->>>>  include/hw/misc/aspeed_hace.h |  33 ++++
->>>>  hw/misc/aspeed_hace.c         | 312 ++++++++++++++++++++++++++++++++++
->>>>  hw/misc/meson.build           |   1 +
->>>>  3 files changed, 346 insertions(+)
->>>>  create mode 100644 include/hw/misc/aspeed_hace.h
->>>>  create mode 100644 hw/misc/aspeed_hace.c
-> 
->>>> +static int do_hash_operation(AspeedHACEState *s, int algo)
->>>> +{
->>>> +    hwaddr src, len, dest;
->>>> +    uint8_t *digest_buf = NULL;
->>>> +    size_t digest_len = 0;
->>>> +    char *src_buf;
->>>> +    int rc;
->>>> +
->>>> +    src = 0x80000000 | s->regs[R_HASH_SRC];
->>>> +    len = s->regs[R_HASH_SRC_LEN];
->>>> +    dest = 0x80000000 | s->regs[R_HASH_DEST];
->>>> +
->>>> +    src_buf = address_space_map(&s->dram_as, src, &len, false,
->>>> +                                MEMTXATTRS_UNSPECIFIED);
->>>
->>> It seems the Aspeed machines aren't using correctly the AS API...
->>> This device shouldn't worry about where it is physically mapped.
->>> IOW its AS is too wide.
->>>
->>> I'm trying to fix this in a series:
->>> https://www.mail-archive.com/qemu-devel@nongnu.org/msg791085.html
->>
->> The buffers can be anywhere in DRAM
-> 
-> Exactly. This device only requires direct access to DRAM, not the
-> full bus. Regardless the amount of DRAM available, only the bus
-> aperture to the DRAM should be passed to this device (MR link),
-> then this device use an AS view on it, zero-based.
-> 
-> Your device becomes independent to where the DRAM is physically
-> mapped on the SoC.
+On 3/13/21 1:05 PM, Philippe Mathieu-Daudé wrote:
+> Incorrect subject prefix, should be "hw/ssi/aspeed_smc"
 
-ok.
+Is this just good practice or something that was agreed upon ? 
+We should update checkpatch if so.
 
-The initial problem was that the RAM was not initialized before 
-the SoC was realized and we couldn't use it. things have changed
-and we can now pass directly machine->ram to sub models instead of 
-the ram_container. That should address your comments on the HACE 
-model and on the SMC model. 
-
-I will check what we can do for the mmio_flash address space.
+Thanks,
 
 C. 
 
 
 > 
->> which is mapped at 0x80000000
->> on the AST2600. This is correct and very similar to what we do 
->> in the Aspeed SMC DMA models.
+> On 3/12/21 7:28 PM, Philippe Mathieu-Daudé wrote:
+>> The flash mmio region is exposed as an AddressSpace.
+>> AddressSpaces must not be sysbus-mapped, therefore map
+>> the region using an alias.
 >>
->> I would prefer if we did loads though.
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>>  include/hw/ssi/aspeed_smc.h | 1 +
+>>  hw/ssi/aspeed_smc.c         | 4 +++-
+>>  2 files changed, 4 insertions(+), 1 deletion(-)
 >>
->> Cheers,
->>
->> C.
->>
->>
+>> diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
+>> index 16c03fe64f3..e3c96cecbd8 100644
+>> --- a/include/hw/ssi/aspeed_smc.h
+>> +++ b/include/hw/ssi/aspeed_smc.h
+>> @@ -84,6 +84,7 @@ struct AspeedSMCState {
+>>  
+>>      MemoryRegion mmio;
+>>      MemoryRegion mmio_flash;
+>> +    MemoryRegion mmio_flash_alias;
+>>  
+>>      qemu_irq irq;
+>>      int irqline;
+>> diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+>> index 16addee4dc8..aa26578bdac 100644
+>> --- a/hw/ssi/aspeed_smc.c
+>> +++ b/hw/ssi/aspeed_smc.c
+>> @@ -1386,7 +1386,9 @@ static void aspeed_smc_realize(DeviceState *dev, Error **errp)
+>>      memory_region_init_io(&s->mmio_flash, OBJECT(s),
+>>                            &aspeed_smc_flash_default_ops, s, name,
+>>                            s->ctrl->flash_window_size);
+>> -    sysbus_init_mmio(sbd, &s->mmio_flash);
+>> +    memory_region_init_alias(&s->mmio_flash_alias, OBJECT(s), name,
+>> +                             &s->mmio_flash, 0, s->ctrl->flash_window_size);
+>> +    sysbus_init_mmio(sbd, &s->mmio_flash_alias);
+>>  
+>>      s->flashes = g_new0(AspeedSMCFlash, s->ctrl->max_peripherals);
 

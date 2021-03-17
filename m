@@ -1,95 +1,115 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp616227lfg;
-        Wed, 17 Mar 2021 10:27:16 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw8JUTbPyPJuK5gBVeFxve7t6qn/w6CX1LN2UeluYWu94TEA2r6U/kVh5xhE0TfKjqMX0VV
-X-Received: by 2002:a5b:d0b:: with SMTP id y11mr6074587ybp.64.1616002036816;
-        Wed, 17 Mar 2021 10:27:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1616002036; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp696474lfg;
+        Wed, 17 Mar 2021 12:14:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx5kO/x5odtNYf9yXW5Q0m2L49gPe+C6tH66REXfWP9VXp/prBkuLAvifRqGoBfRmTM4mcH
+X-Received: by 2002:a6b:b415:: with SMTP id d21mr7838573iof.149.1616008499822;
+        Wed, 17 Mar 2021 12:14:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616008499; cv=none;
         d=google.com; s=arc-20160816;
-        b=pwR2J7EheyklRnMJ62okkB0tKKl/tn75CDHx8rhODPaTndoR/FrneiurLiDXXz2QHg
-         CnO25zEhYWZwQ3zKu7WUoalSsU98IKP66UgWjYIRIiV1OFy/B2UX8wqBAlbdiAd7PVBu
-         uGQk/3K818aRn3nFi46/HOkS3nyGDhTukOktGcNxH8/DFe93OFmyJelpTMI6zqVwH5Eo
-         92sP7AxDdHJudU5wJAJMrrNGB/q9TLYz7SlGs6e1lZviKfxkygZnF0q0RPloR1CKkRru
-         P5atB9Qwahk+wruxwbygPdHKoF0I0ZkUAP7cSYDCEKk73JVtvGWK3jauVJ6oOdQ4ixDt
-         Rc7A==
+        b=qmLd+dHhdYMMz2s8K0kj+x8F4CSoGWcEWXX1RueiuF8MpFpcB22aK575jQxr/6x58i
+         eiYdMP4UlUZhu8XoAN44K+VzO+36aomhXBvZzqG1w7r+64p/tOX0qEnBmdfq5RxsyGye
+         7y88VG6SaQTuWloVNwwbm3kWt8deDAraHakyV7PBzk4XCwbDV5EUiktFEGFhNMVGJ3zp
+         D7FZBceKU96Q/fFW/x3ocR3WpGMRPhguppLbRIK3ujWGYF2lrGE0QnUnwkdWWej7WF/8
+         VyZblBdoFlfFT0yROTUlIG04PlZTJgMxoFCrpTF0YH8ZK9jadPl+ExyoBgCYwVoqtw1O
+         aH7Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=JmNmkWjSPq2d27m6Ll8pD8/ZF0Z/skglHvl7zNUCE6U=;
-        b=yYrVeMw9vtGPJtsBBA4Ot+mlOfAr9Az5EK12zXJyjJQdqJpFJbpO95AFX470P1R/J2
-         A5jfl1a3LSp0yXxh9QA5ljAm+IMI8KYWQcdlDpJhj7ENArZV0fwLiSMHGelzO6PnOcIp
-         btySRAV1XzRvusY5Q5vpwIPHwjBErdLENQRrpJO01Www0He784UDOxNBJZrqIvT7X4+4
-         2DA/r8P/FFYac90RSQWWPR1YftbdrvhkT3w5U5MolC6iDzrrOlSJsm4WKY9ego38ASoL
-         Oc6M/UCSbvW7oMPkyFLqTlw6DcZZr2lG3viNYEZzHZsJX4CJyuv0oPVEDbyPC5+S0VVE
-         AavQ==
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=9RfYQkNDI2CePM1bVdUco5MnPHa+DN+iB58ilrdwb7w=;
+        b=p7aM73p1FwNLOgheEtaFU+YBTkoRw4LQZpgKs2SqR3OfjVOVrbByVihMMT9bth8YKr
+         hKpebqqSqoo5mZ6UojKL6arhSQCJmtnWUHB6PFopUtg9msSexYTG6YFgcwUJRXfG7LdW
+         8iPOcf81lQqeF95gNw5tjVOaaXyR764eBrr7FP3qLz8OwzErtlKaS/gsBvXFfzs8xLl/
+         rdnhKtdUNjnQJBlGWeYSCQVmPkN5A6X8jFvLUg3nmlgnHT7ZfAcCVU6i9kOO8vl7Y3g5
+         7q1TocV6LQCUTOo8499999ZTShzhVpoej8sq2Jl7Wa9tx+94PxfyCSwzsZqN3C6Mjfbh
+         ydTQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=n6fIJMlQ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x6si21340474ybq.233.2021.03.17.10.27.16
+        by mx.google.com with ESMTPS id j20si15584321jak.102.2021.03.17.12.14.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 17 Mar 2021 10:27:16 -0700 (PDT)
+        Wed, 17 Mar 2021 12:14:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:51448 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=n6fIJMlQ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:52516 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lMZwy-000518-5W
-	for alex.bennee@linaro.org; Wed, 17 Mar 2021 13:27:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46490)
+	id 1lMbdD-0000Ug-3A
+	for alex.bennee@linaro.org; Wed, 17 Mar 2021 15:14:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46326)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1lMZm0-0002o0-U8
- for qemu-devel@nongnu.org; Wed, 17 Mar 2021 13:15:57 -0400
-Received: from 3.mo51.mail-out.ovh.net ([188.165.32.156]:44766)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1lMZlx-0006U4-3r
- for qemu-devel@nongnu.org; Wed, 17 Mar 2021 13:15:56 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.16.105])
- by mo51.mail-out.ovh.net (Postfix) with ESMTPS id A0F10274440;
- Wed, 17 Mar 2021 18:15:47 +0100 (CET)
-Received: from kaod.org (37.59.142.100) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2106.2; Wed, 17 Mar
- 2021 18:15:46 +0100
-Authentication-Results: garm.ovh; auth=pass
- (GARM-100R003c8da9e17-da6d-41e7-a5c1-5b7bd1d2311e,
- 10040688A1AB5364447EAD88D88247B833C1D39B) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Subject: Re: [PATCH 1/5] hw/arm/aspeed: Do not directly map ram container onto
- main address bus
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- <qemu-devel@nongnu.org>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lMbPF-0002z0-Ju; Wed, 17 Mar 2021 15:00:38 -0400
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435]:39796)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lMbP9-0003Vl-VS; Wed, 17 Mar 2021 15:00:29 -0400
+Received: by mail-wr1-x435.google.com with SMTP id e18so2943543wrt.6;
+ Wed, 17 Mar 2021 12:00:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=9RfYQkNDI2CePM1bVdUco5MnPHa+DN+iB58ilrdwb7w=;
+ b=n6fIJMlQT72PJuGuqctQjtr/0JsNqx5pc92dXpBFKYtCZB04s/X7FtLmfZ6+EUv0Rk
+ a89WqmldCWTIVzXOWEEl5SNO1QY6EW1PI0OqMDD6Un0oA1rbnY7gPXc3KHJ/0oieULeI
+ KfVoO4rr4D+aEoVh+Z9r5YqGT8Xuuorsgu8+pc40KiCPPNod8bskiOeiX6YZUbu/BIKo
+ SrKYUjrWv0LSxXUZcjO9BcJuzd/UUAwIH5/6Lb+3vi70gRg0kyCAVxO4PtD9T3aLqAsv
+ GyWDwwZFUDwgLW0Qvf9CwoBYfnR+GVd+EkE6WBQR1qMBijMwNTosZoXAELw2axadLHck
+ Cqjw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=9RfYQkNDI2CePM1bVdUco5MnPHa+DN+iB58ilrdwb7w=;
+ b=SBy0mnprAzSc5/rdVhMHapC38ujMYJ0RhwItycCURZkdXPeo8+PpklIcW4rfVB806A
+ 0yZ9sOJS6n49DID8IIkS5VXyNBnT5ZU7ZcyK7Q+wIqFaLI26wLN0pYYjEpg9GxIWmjfP
+ QD2qSgM+EGceqaq/125OkMs2RW/DGy5YWIQ+74Eau64UT9sMv2lrYRA7DMMe8oIrBXou
+ zIJr9+V1nKTPRd8oe1VqZ6s0P7U7HDfJ+w7x9GVDrTnGG32atuIWZzLvFMqXmQbJYcQF
+ dLnPbhGiVH9jcnyzZVnJQ/ninV9KHPr4/fPika53+JM8TNxTB7bs225fNKaEVjr3evY/
+ m+Iw==
+X-Gm-Message-State: AOAM5325Q7/3a+y1y0zt4nXb+SUkJ85XoHBYiK74mBo8UhO63vsJ/lK+
+ iiEJa1HOX2bOEOGrvmEs1rk=
+X-Received: by 2002:a5d:4f0e:: with SMTP id c14mr5747163wru.78.1616007620954; 
+ Wed, 17 Mar 2021 12:00:20 -0700 (PDT)
+Received: from [192.168.1.36] (17.red-88-21-201.staticip.rima-tde.net.
+ [88.21.201.17])
+ by smtp.gmail.com with ESMTPSA id h20sm3264629wmm.19.2021.03.17.12.00.19
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 17 Mar 2021 12:00:20 -0700 (PDT)
+Subject: Re: [PATCH 2/5] hw/arm/aspeed: Do not sysbus-map mmio flash region
+ directly, use alias
+To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, qemu-devel@nongnu.org
 References: <20210312182851.1922972-1-f4bug@amsat.org>
- <20210312182851.1922972-2-f4bug@amsat.org>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <0614fe51-102d-cb48-984c-c8f52eabfb56@kaod.org>
-Date: Wed, 17 Mar 2021 18:15:46 +0100
+ <20210312182851.1922972-3-f4bug@amsat.org>
+ <871fce3d-8b3c-bcce-6170-9010b1ed7d5c@kaod.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <38ba72b0-ca80-11e9-3933-1da563748a83@amsat.org>
+Date: Wed, 17 Mar 2021 20:00:19 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.0
+ Thunderbird/78.8.0
 MIME-Version: 1.0
-In-Reply-To: <20210312182851.1922972-2-f4bug@amsat.org>
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <871fce3d-8b3c-bcce-6170-9010b1ed7d5c@kaod.org>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.100]
-X-ClientProxiedBy: DAG6EX2.mxp5.local (172.16.2.52) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 0631b608-4d0c-4794-945e-f6f0cc1bbc2f
-X-Ovh-Tracer-Id: 4126141686554069947
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduledrudefgedguddtvdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeejkeduueduveelgeduueegkeelffevledujeetffeivdelvdfgkeeufeduheehfeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddttdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepghhrohhugheskhgrohgurdhorhhg
-Received-SPF: pass client-ip=188.165.32.156; envelope-from=clg@kaod.org;
- helo=3.mo51.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x435.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -102,58 +122,36 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-ppc@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Andrew Jeffery <andrew@aj.id.au>, Alistair Francis <alistair@alistair23.me>,
- Greg Kurz <groug@kaod.org>, Peter Xu <peterx@redhat.com>, qemu-arm@nongnu.org,
- =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ Alistair Francis <alistair@alistair23.me>, Greg Kurz <groug@kaod.org>,
+ Peter Xu <peterx@redhat.com>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
  Joel Stanley <joel@jms.id.au>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
  David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9IRm7L+bmNbG
+X-TUID: NeqbgGHtmCv0
 
-On 3/12/21 7:28 PM, Philippe Mathieu-Daudé wrote:
-> The RAM container is exposed as an AddressSpace.
-> AddressSpaces root MemoryRegion must not be mapped into other
-> MemoryRegion, therefore map the RAM container using an alias.
+On 3/17/21 7:30 PM, Cédric Le Goater wrote:
+> On 3/12/21 7:28 PM, Philippe Mathieu-Daudé wrote:
+>> The flash mmio region is exposed as an AddressSpace.
+>> AddressSpaces must not be sysbus-mapped, therefore map
+>> the region using an alias.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  hw/arm/aspeed.c | 6 +++++-
->  1 file changed, 5 insertions(+), 1 deletion(-)
+> That does the trick but you need an extra change in the model. 
 > 
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index a17b75f4940..daeef5b32a2 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -40,6 +40,7 @@ struct AspeedMachineState {
->  
->      AspeedSoCState soc;
->      MemoryRegion ram_container;
-> +    MemoryRegion ram_container_alias;
->      MemoryRegion max_ram;
->      bool mmio_exec;
->      char *fmc_model;
-> @@ -339,9 +340,12 @@ static void aspeed_machine_init(MachineState *machine)
->      }
->      qdev_realize(DEVICE(&bmc->soc), NULL, &error_abort);
->  
-> +    memory_region_init_alias(&bmc->ram_container_alias, NULL,
-> +                             "ram-container-alias", &bmc->ram_container, 0,
-> +                             memory_region_size(&bmc->ram_container));
->      memory_region_add_subregion(get_system_memory(),
->                                  sc->memmap[ASPEED_DEV_SDRAM],
-> -                                &bmc->ram_container);
-> +                                &bmc->ram_container_alias);
->  
->      max_ram_size = object_property_get_uint(OBJECT(&bmc->soc), "max-ram-size",
->                                              &error_abort);
+> The fixes are in my aspeed-6.0 branch on GH and they survive the last
+> patch of your series :
 > 
+>   [PATCH 5/5] memory: Make sure root MR won't be added as subregion
 
-RAM is now initialized before the SoC. So we should be able to use 
-machine->ram instead of the bmc->ram_container MR and simplify the
-Aspeed SMC model below the SoC.
+I wondered about changing DMA_FLASH_ADDR() wasn't sure the tests
+would use the flash.
 
-Thanks,
+> I will upstream for 6.1.
 
-C.
+Thanks!
+
+Phil.

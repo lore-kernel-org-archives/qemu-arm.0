@@ -1,98 +1,184 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp330573lfg;
-        Thu, 18 Mar 2021 05:50:16 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyCAFptengfjrdgNTAncSI0vfSFHw8VoNDvgpzWWQZpOihRrOXtfzT/fsm/a2bbC989sK43
-X-Received: by 2002:a5d:4dd2:: with SMTP id f18mr9525257wru.366.1616071816100;
-        Thu, 18 Mar 2021 05:50:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1616071816; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp336704lfg;
+        Thu, 18 Mar 2021 05:59:29 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx4ESqKLZA9h+5vfAQZs/KphQ6TGgClFg+zHZZnNdtodAacsO+3SLkpHAF8Qp/AW5HSvE8D
+X-Received: by 2002:a25:9a09:: with SMTP id x9mr11757165ybn.493.1616072369696;
+        Thu, 18 Mar 2021 05:59:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616072369; cv=none;
         d=google.com; s=arc-20160816;
-        b=WWiNsv+mui6Ib/vWgn26Sb4DKJZ/WSyUuVngtNy+h2pFQJx2Ca9+nA6JENI2HFkAtv
-         my2DlpKz4COUFmmpIy7B9Lyg9wwikH+JxFeoV8FNCW/aJdmjUZ/GsCJTClNeyoQshfk8
-         uSEwG55QzhGuukygDX/jYox8H4JxYr4HlrQxwN9dbaY/so+ummUB5HSrrlQdLbuZ/1F0
-         6p4eSSDS/3borkLg7MMhT8Pv/54ON18trkKvyT9HDST7VzTveeiYj2YUgwHweP8sKj7p
-         3K+znaNXMRuo2Gdhi6ImtKBIVKm9DE54MbASdAxWmuMg+LZAIk/etqNUUfR8fqetS+vE
-         9zhA==
+        b=HLJLqyyo6QEcPATwhv3pVuk3p/uqJ9Nv6luX9fizaDol1gUxY+jMyUad5w2HXN/vKi
+         sWPftODbrls+RWN/l/MxZ6gTQc765JXVPuudrbfGfQZOm52EJH63+FFt8Qw1L6Cj/dVq
+         qQ3FbIrmXYKNXZmarr89fcaow+Z4lzhpAIONeGjJmStO4EWWUKF1dzrXbRt2fi5DukBD
+         eEFh+LRrA2q9+Rn+ToW5O4NaEtZnId20I+N49VHAxcdzIWG3QA+vCga/M97q/BWqouf4
+         6us/XkdgCu15V2syecR8EMH1TXnVwsKJerwHFw4K4vQYIDKg38JCd5A/7z8cPpuDONId
+         ByHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject;
-        bh=52WOGLQ+ZJyVFakBUNzQoGDcH1ps1XG/BT6J15OJZek=;
-        b=FfmT2462VZS9wRNauxkab0kj9xkOvLA0o0SS3gm9sB6jDQK1paxBcrZi/d0gI4NXuT
-         rHBWIXXlpwrgfjaca49WeC1JI7I40EMHVdofA/6wPLVE3q8ORMYELnf7yHflZWhjg10A
-         CCIQSgy5rhFYF5dWwdpM6lMAoD8+93aulKa8AymrqB7lfkBD1VoLyyVJs6JCZSF5GHth
-         7G5PB491xNw6U5apaoVEPEttwOeJ2KoIKGv8a2VWskcQTmCC55mKgznNamrF2jg4FRLt
-         M3WPA4RlFxVGVpBaZee8+M5Qmb5gJcFkJ5S8GMx36nrPdQG7LikchCg/S64UXaxQtkkh
-         De6Q==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=X1B7B1qQ6qUwfc6Z50q4pgKPBhtb9o34cGdMzKwnyN8=;
+        b=fvRXyx9tZ/XB7v9+Jin9usBNhDrcAr0lIfTvXz7Kn0XC4cgy66Sn+1K7pplCkpcc6P
+         jtRXuxpyEGhAcePsQzSW45ZsbrIJ82Jyk/2U+Ys2FzrtYoiBV4dJl7olugEzHGuurWEP
+         GBjZsOw3VojbFxMixFpFHVgSi1Bgh3himXg1kJFHLNf8MTFkasEQeNfxc91H0x1gTjwO
+         kEw/lrdTpmFuCciWhRRDNbsbB3VVVzlTZuG71mu/UOoHsBrRVzWGRL7OrhLVb3OzHoHt
+         5fDcY9EgAOM1tzVtyovE50nefKka+QmLGR2NocewjTQP+x9V5gz8glLCEp9nh0GSn6e3
+         fBVQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of cfontana@suse.de designates 195.135.220.15 as permitted sender) smtp.mailfrom=cfontana@suse.de
-Return-Path: <cfontana@suse.de>
-Received: from mx2.suse.de (mx2.suse.de. [195.135.220.15])
-        by mx.google.com with ESMTPS id 7si1983699wmi.175.2021.03.18.05.50.16
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 18 Mar 2021 05:50:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cfontana@suse.de designates 195.135.220.15 as permitted sender) client-ip=195.135.220.15;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="MnfR/Uky";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id p68si2148129ybc.51.2021.03.18.05.59.29
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 18 Mar 2021 05:59:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of cfontana@suse.de designates 195.135.220.15 as permitted sender) smtp.mailfrom=cfontana@suse.de
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.221.27])
-	by mx2.suse.de (Postfix) with ESMTP id A4FEBAC75;
-	Thu, 18 Mar 2021 12:50:15 +0000 (UTC)
-Subject: Re: [PATCH v2 3/3] target/arm: Restrict v7A TCG cpus to TCG accel
-To: Andrew Jones <drjones@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-References: <20210221222617.2579610-1-f4bug@amsat.org>
- <20210221222617.2579610-4-f4bug@amsat.org>
- <c395479b-d2e0-a862-3446-4afef601ca1f@suse.de>
- <8a302c84-b69c-b0c2-de45-607dd1f686a6@redhat.com>
- <e0d11b2c-7b1c-c968-feb2-675a8c98c7a4@suse.de>
- <ec296129-2c4d-fd74-d044-50c470e29609@redhat.com>
- <cd4caf9d-c32c-25fd-a27f-d352ece74ed3@redhat.com>
- <CAFEAcA8YybFf1=wQ7-scC2JnQEHr9nx0LBvt16dTBOXV0KuMAg@mail.gmail.com>
- <28540fd5-3bd3-30d7-624d-da21d0f39806@redhat.com>
- <CAFEAcA8t3Roq2qL1RTru1H+WZAQMVmWcN=VjCtJkvAzmyws_YQ@mail.gmail.com>
- <20210318123727.vfjaecuklzicmprn@kamzik.brq.redhat.com>
-From: Claudio Fontana <cfontana@suse.de>
-Message-ID: <f41c34dc-2cad-5929-06d8-6ea098ab5b8a@suse.de>
-Date: Thu, 18 Mar 2021 13:50:14 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="MnfR/Uky";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:58482 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lMsFN-0003KQ-11
+	for alex.bennee@linaro.org; Thu, 18 Mar 2021 08:59:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35892)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1lMsFC-0003Jy-P6
+ for qemu-arm@nongnu.org; Thu, 18 Mar 2021 08:59:18 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:37835)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1lMsFB-000230-8E
+ for qemu-arm@nongnu.org; Thu, 18 Mar 2021 08:59:18 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1616072356;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=X1B7B1qQ6qUwfc6Z50q4pgKPBhtb9o34cGdMzKwnyN8=;
+ b=MnfR/UkyRKzlbTDnBtAQz0YsOm3XahU+EP6kvacvjXAwNH1RvUHUi3XhK1hOqphbHx59qH
+ qzoLQyu+Cq9A9PX+DiZpoZTbHCcc32hBIZdn3Q280fKgNuqhGGpTq1p5OAUZibISw6cMCk
+ 4KBFAdk4nLFQiuGjfkFdt+YlNa/2X3s=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-449-IMflEntJOJOf2XaFpXQ2UA-1; Thu, 18 Mar 2021 08:59:14 -0400
+X-MC-Unique: IMflEntJOJOf2XaFpXQ2UA-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2E8E61922020;
+ Thu, 18 Mar 2021 12:59:13 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.40.196.5])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id D1EBC5D6AB;
+ Thu, 18 Mar 2021 12:59:10 +0000 (UTC)
+Date: Thu, 18 Mar 2021 13:59:08 +0100
+From: Andrew Jones <drjones@redhat.com>
+To: Claudio Fontana <cfontana@suse.de>
+Subject: Re: arm_cpu_post_init (Was: Re: arm: "max" CPU class hierarchy
+ changes possible?)
+Message-ID: <20210318125908.zwpm47ftlsuen3zo@kamzik.brq.redhat.com>
+References: <11e9d3bb-c94c-4ad7-35b0-b698376c5e00@suse.de>
+ <CAFEAcA8T+u6QG9PQWs40PTSZ86SEeLQrciT8WHxFyH3UVbipiA@mail.gmail.com>
+ <2e6a5d98-e022-0b39-5f30-92eb74491d3b@redhat.com>
+ <2277fdf5-ec92-476a-8fe5-0d4eee23dfef@suse.de>
+ <CAFEAcA_j-0+vmNFtPjcxEXC9r4bFrebDfGjq-x1SfguzUG4qcw@mail.gmail.com>
+ <20210311191046.ykcelkwq7orajyu7@kamzik.brq.redhat.com>
+ <5467e45c-cc8e-6422-0c56-398405a7c331@suse.de>
+ <c3397f29-82eb-5a1b-803d-8184c9a8d508@suse.de>
+ <20210318120837.cg4gfdpchjwiabav@kamzik.brq.redhat.com>
+ <fc769a96-a304-7429-5dee-a65b52179b1c@suse.de>
 MIME-Version: 1.0
-In-Reply-To: <20210318123727.vfjaecuklzicmprn@kamzik.brq.redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: sDyzyp/XpLgD
+In-Reply-To: <fc769a96-a304-7429-5dee-a65b52179b1c@suse.de>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=drjones@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.249,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-devel <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: YhDliceLw379
 
-On 3/18/21 1:37 PM, Andrew Jones wrote:
-> On Thu, Mar 18, 2021 at 11:38:51AM +0000, Peter Maydell wrote:
->> On Thu, 18 Mar 2021 at 11:31, Philippe Mathieu-Daudé <philmd@redhat.com> wrote:
->>> I tend to agree. The problem is for the running VMs started before
->>> 82bf7ae84ce (so up to any fork based on v5.2). I don't know what
->>> the forks are supposed to do with the running VMs if they want to
->>> migrate them to newer QEMU (or upgrade the host QEMU).
->>
->> Anybody with a Cortex-A15 KVM VM is just going to have to stay
->> with their pre-existing ancient hardware, their pre-existing
->> host kernel and their pre-existing QEMU binary. That's what
->> "we deprecated and then dropped support for this" means:
->> we no longer support running that kind of VM, so users who
->> were doing it need to either do something else instead, or
->> else just keep on going with the old versions they have.
->>
+On Thu, Mar 18, 2021 at 01:42:36PM +0100, Claudio Fontana wrote:
+> On 3/18/21 1:08 PM, Andrew Jones wrote:
+> > On Thu, Mar 18, 2021 at 12:32:30PM +0100, Claudio Fontana wrote:
+> >> And why do we have a separate arm_cpu_finalize_features()?
+> > 
+> > Separate, because it's not just called from arm_cpu_realizefn().
 > 
-> I strongly agree.
+> In particular it is also called by the monitor.c in qmp_query_cpu_model_expansion(),
 > 
-> And, downstream-wise, I can't speak for anything but RHEL, but RHEL
-> cannot have this problem. There are no 32-bit ARM builds for RHEL.
+> which basically creates an object of the cpu subclass,
+> and then calls arm_cpu_finalize_[features]() explicitly on the object.
 > 
-> Thanks,
-> drew
-> 
+> Is the qdev realize() method not called in this case? Should instead it be triggered, rather than initializing/realizing an incomplete object?
 
-I don't see a strong issue with this either, there is no 32bit support for KVM ARM.
+Can you elaborate on what you mean by "triggered"? The QMP query does the
+least that it can get away with while still reusing the CPU model's
+feature initialization code. Any suggestions for improving that,
+preferably in the form of a patch, would be welcome. If it works well for
+Arm, then it could probably be applied to other architectures. The Arm QMP
+query is modeled off the others.
+
+> 
+> > 
+> >>
+> >> Nothing in the ARM cpu classes initializations ever seems to be "final" to me.
+> > 
+> > Some CPU features cannot be simply switched on/off at the property
+> > parse time. For example, there could be dependencies on multiple
+> > properties, the mutual exclusion of properties, or other aspects
+> > that can only be known later than property parse time. That stuff
+> > goes in arm_cpu_finalize_features().
+> 
+> Seems like _part_ of that is in arm_cpu_finalize_[features]() (in practice, this ends up being AARCH64-only stuff,
+> ie SVE, PAUTH and KVM).
+> 
+> After calling that, the arm realizefn() also does further setting and unsetting of features, checking previous feature states.
+> 
+> There is a whole lot following the arm_cpu_finalize_[features]() call,
+> there are ~300 lines of features initializations happening _after_ the call to arm_cpu_finalize_[features]().
+>
+
+Any feature that needs a finalizer (i.e. it can't be managed at property
+parsing time) and wants to be probable by the QMP query will need to have
+its finalizing moved to arm_cpu_finalize_features(). Some of those ~300
+lines might be better pushed into property set/get handlers, others will
+never want to be advertised in the QMP query, but the rest will get moved
+when the need is great enough.
 
 Thanks,
+drew
 
-Claudio

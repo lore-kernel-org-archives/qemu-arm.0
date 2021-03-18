@@ -1,115 +1,105 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp721224lfg;
-        Thu, 18 Mar 2021 14:14:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzhJyhKQ74oTLBILbOuuJQVuO6nRU2HliO6IqYlsIDSdKHCmnpxH6HZvXvTXylmQhF6IOeC
-X-Received: by 2002:a05:6e02:d4e:: with SMTP id h14mr426015ilj.80.1616102071057;
-        Thu, 18 Mar 2021 14:14:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1616102071; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp730172lfg;
+        Thu, 18 Mar 2021 14:29:45 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwFor2MBpera73q++453A4JjsPOL3dDqkO4W3VrU7zpT6epX7b0tSouXOOKA6StLbgtKdgV
+X-Received: by 2002:a6b:b2cd:: with SMTP id b196mr457442iof.67.1616102985814;
+        Thu, 18 Mar 2021 14:29:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616102985; cv=none;
         d=google.com; s=arc-20160816;
-        b=gBse7/IQQzMIkAcXV5XAl/Ml6Hxrfymlzq7J2q9PtyKR5LFgXdyCkBudiiyFnmkE7z
-         ije9UE5aY/u1Ha/utiUbiLTX115mYxAdzwfWEESCSaK/Anplt5q4TFMoQxdxKJBX6Svh
-         sqpkA0cz1dwfz2125Xa4q1CAr63unXZry2IPMVe8GRV4UHbERC03PYoJ+/uDfEYBDgix
-         yRnUfXBjme6MLoKh4A1XbxYgINOK0l2ux2DQjRQ+lxu7kn2msEmE6y+2mGVGJlleYyer
-         oU94p3ReVdxa9C3ejjnnnZRApFGoB21XqcbaBvUFSZcSUBS5Okwz8fb6eOgzFlNvdIuI
-         jVng==
+        b=0T5XPGd4o3s9eSbAJaUDYd6QoA2PTqki1erfjLVtgoCp6YCjpBa/Lc+LEXshcoibY5
+         HX4ZnxXRPQpDtkPG4ebXxnDMi6BlFqZvNKvOtWcSLtm6NxTdf9SmsdiRs2R5lS97NVAL
+         z7uajE+6e08gNibXOOTcfIQW4nf/8Sy9hDd52C3m6CBBw9IpTq5V3kwh0LBjlM8R+Ym1
+         rj9AMFz9BH0l0BbWFVgL32bCKAsJCwkj+xlHzZWNnC0VfP7BEgZOcv2vGAKfeMZuClH9
+         HvrdlT5YGQJ6H8kXJ9FUdqL77qGNlXW+MajwFVQIihP5MWRB+xwQcoMPWUG0QcXmb/RV
+         4FTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=gVKvW9rSAO0dP3lXSgeqfRbuP0yqwxlRmxb/jqCOt4M=;
-        b=vN4oo+8suBBm8eCofKfvvCo1ySPXxCqAebo8zykhcuW4IJzy389/EjqpJtA18tQe2m
-         46O0t3d3iIQFw3WAuTL3pv8ngkecbEazArCh6FmwjIKhRyaSiojGLeXu+6VFF9j7xPoF
-         ltnIS9c4vdajQZ9g/YmrqZtrxMoBHM1FTlqsgM2nMQ7gqYdn7aCB/QcZRDWwx+vJuIcf
-         POR3fNpVsuvRMZY2YqfxNr9qjCC9DyqDXpL7Cy7EkCOLG4SaCP6JWeAxH4yuy1DbNoiq
-         8dNY9HcsngPAMNWrSQSWHhZ4nmRdc2T2wHC/ADI05owtWHjalSt9LPwXkNhfMkoBpcmk
-         5yBQ==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=e96zrz3bBkHkSRTd5wrEVa/AuScRiO2HztO8NjaOxcg=;
+        b=kOYh7QnmCG1/XAB8A7ycQtabbITtpw2N6D4g437xHGzJ5r6m3qOdMAtG0B7cz2v9kC
+         Li8HRSMw8/LpPWXS4BptypQ805HUZW49w1Z9rAea2PjHEc87mzjf1nUIp37v4PLkRova
+         OiYTDfrakU/oVHo9UVTiV0rutxBQfCFWzJnZNpnJBNOt+SkiUfwqY4S0bR+ziQl+jbdk
+         YdFzT7wvIQvR/v+vlGf6wglUVk7qHYPtWxBEBNhmyWNotKHnKiCp1E/6xKJ4uq5c2anW
+         Xl3FP5GfuV7vTg0OWSGHBiGC1ifl1o/SrAySMrxBjKII8ZWB2vSr7wivpPf1sC9/qjfv
+         HbGQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=q55OKyMG;
+       dkim=pass header.i=@linaro.org header.s=google header.b=cTFbh8ou;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u12si2465291ilm.97.2021.03.18.14.14.30
+        by mx.google.com with ESMTPS id z5si2218597ilh.73.2021.03.18.14.29.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 18 Mar 2021 14:14:31 -0700 (PDT)
+        Thu, 18 Mar 2021 14:29:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=q55OKyMG;
+       dkim=pass header.i=@linaro.org header.s=google header.b=cTFbh8ou;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37284 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43776 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lMzyQ-0003wo-CT
-	for alex.bennee@linaro.org; Thu, 18 Mar 2021 17:14:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33700)
+	id 1lN0DB-0007dx-3F
+	for alex.bennee@linaro.org; Thu, 18 Mar 2021 17:29:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36460)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lMzyB-0003wZ-SF
- for qemu-arm@nongnu.org; Thu, 18 Mar 2021 17:14:15 -0400
-Received: from mail-oi1-x231.google.com ([2607:f8b0:4864:20::231]:36693)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lN0CX-0007cV-B0
+ for qemu-arm@nongnu.org; Thu, 18 Mar 2021 17:29:08 -0400
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632]:42632)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lMzy7-0006lO-4C
- for qemu-arm@nongnu.org; Thu, 18 Mar 2021 17:14:15 -0400
-Received: by mail-oi1-x231.google.com with SMTP id d133so2481924oib.3
- for <qemu-arm@nongnu.org>; Thu, 18 Mar 2021 14:14:10 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lN0CR-00054K-Vz
+ for qemu-arm@nongnu.org; Thu, 18 Mar 2021 17:29:04 -0400
+Received: by mail-ej1-x632.google.com with SMTP id hq27so6250298ejc.9
+ for <qemu-arm@nongnu.org>; Thu, 18 Mar 2021 14:28:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=gVKvW9rSAO0dP3lXSgeqfRbuP0yqwxlRmxb/jqCOt4M=;
- b=q55OKyMG1rL0820gm9Datyd7qhzduf3lapMX9RSOVKKCNOW4qevj8kBhf07hrmzkMi
- kySqgM+cJhBADWSCmpzWrbBKrrQxnbkvMFWqP+XnJoIak9fl9VzzwJSz6BxvE2Sdjf2b
- 4D5nIRrp1IrH8AwAhr7nWLF59M3YlFl2gbOVmFnboUE1lsq75uEWWpOWMumFLH/qcwQn
- 7JxiRSofCqJjQWHfkXoxaGq75M3O6ZrRiW5Bk98XFj/zJS7HxgEypV9lLuVhdvghKL4f
- TJ0143GcXDHTXxSmhUadM0Seyeb5GdvNMGs9kO2qQjZUa7dMtz8EmCzMP8DsJmV01x/8
- HkLg==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=e96zrz3bBkHkSRTd5wrEVa/AuScRiO2HztO8NjaOxcg=;
+ b=cTFbh8ouw652/gr5ri874gGVMntqOKs1+JGAVc9lcA/9Zz3aAOcSSL9S9Sk93/q7UC
+ cywZEPj9qGDw43ROGSYItZDkb+N3yiWc9WYY4zceEB8o53FYo0reWs/oc4fymcMIAT/Z
+ ORxwG5Dg48PVoi0ee2bhz4sc3V5Mba4rSwxKzNc2vuhHiPDXQB0s4VSPKotAd9aFCBac
+ hvu1rsQnV0s7alOyi2FIzkSCCSuK7nvkEz90qp9s7tQZQ8hFU6sGGI8WXB2e9GIVE2K1
+ zs8HbfsCE/x5oEhAQ2PRHwvPHOkt3J494PZht5frrAEOtghSsoZSYMdBouk5Ltwwgcw/
+ V18Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=gVKvW9rSAO0dP3lXSgeqfRbuP0yqwxlRmxb/jqCOt4M=;
- b=XkwFcDLpOCFfy7BqNoLbgg0J/pEIJ8kSVmpjVR3x+I3GvUe5qyB+J7tr0xZfv2vUpZ
- e5bd3yTeGrpetydyORQF21uJe0d94JbiUAb4Vu9IBJpoyRskiHWDh1YTHs0uhKFKOAzR
- +ry8aXovCUTlSfDkXMQ+1y2XYyb4sEO3vq9zdrLkQ/GAxbUNmpkKre29VVH1pp2S9hKG
- eCtXDcOnD8JhchiV2O57XeorLESad2UDyMfoJGWQ/pWfRa+hLr1W/bLV8xZTC0L1aw5p
- 8XMCrbCgCz152Aa+Q6/7YFw382rrjdBUENZeeTGE98X+G9jDUX3IEie16UhhPevV8al3
- weJg==
-X-Gm-Message-State: AOAM533tTzg3Bu6wvDA2D+5HhKHA2ASv//Nh68+rQGChf0oeB/qm+MCi
- RM6mFMOD/aLqofZqyPhNWLY25w==
-X-Received: by 2002:aca:3058:: with SMTP id w85mr4516774oiw.19.1616102049429; 
- Thu, 18 Mar 2021 14:14:09 -0700 (PDT)
-Received: from [10.10.121.52] (fixed-187-189-51-144.totalplay.net.
- [187.189.51.144])
- by smtp.gmail.com with ESMTPSA id w11sm800129ooc.35.2021.03.18.14.14.08
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 18 Mar 2021 14:14:08 -0700 (PDT)
-Subject: Re: [PATCH for-6.0 v2 4/5] hw/core/loader: Add new function
- rom_ptr_for_as()
-To: Peter Maydell <peter.maydell@linaro.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=e96zrz3bBkHkSRTd5wrEVa/AuScRiO2HztO8NjaOxcg=;
+ b=b/PFyEeIAAdlsKmsBBtf8MFUlFOtkfyvuXtYGrMJrfQ5PaOjuc/QeowZ4uoVM47I5j
+ pg4ylUTZgAYxx2NaeI4isiQgTfK6rUhtHVvyp6husugIg5JGuU3k2otPn74iw2TAe6Nq
+ p1jqye94CI0LtwIhuQHYUhvszdNwFI6IeuC62sX0q+cRIXYoQdw/kU06+rvnJCVOUb0X
+ Xcr2fia15yievE8gK40Q/4iFvMI9Uxr9u5ZMDIWcVbhEUdbDON/7vAEakCg/nakt7IBQ
+ D+4jped6KCXuElgkCwQI4qB6hUs4g0aNMDEuPWLBw5UqhX7s577d3Ib1Y3cOpYWqgZFz
+ cACg==
+X-Gm-Message-State: AOAM5336FJUORcUeMKBZCweLWXV4ROCn8Y+0l0e5R1nQnq4/JMMy6gDL
+ /6HgmTD0AiNsPjgZ/Ka5n3/LI2WhW5EzbA12LuoUGA==
+X-Received: by 2002:a17:907:10ce:: with SMTP id
+ rv14mr686599ejb.56.1616102938260; 
+ Thu, 18 Mar 2021 14:28:58 -0700 (PDT)
+MIME-Version: 1.0
 References: <20210318174823.18066-1-peter.maydell@linaro.org>
  <20210318174823.18066-5-peter.maydell@linaro.org>
  <176ca6cf-f917-eb5d-a5ce-d8a98db8fce4@linaro.org>
  <CAFEAcA-mZMP0LPmGKvMuUq8C_V6cG9AVpaAQ4SoWvihObO_VXA@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <ec96b321-80d4-948d-b482-dfad61eff67f@linaro.org>
-Date: Thu, 18 Mar 2021 15:14:06 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.1
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-mZMP0LPmGKvMuUq8C_V6cG9AVpaAQ4SoWvihObO_VXA@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::231;
- envelope-from=richard.henderson@linaro.org; helo=mail-oi1-x231.google.com
+ <ec96b321-80d4-948d-b482-dfad61eff67f@linaro.org>
+In-Reply-To: <ec96b321-80d4-948d-b482-dfad61eff67f@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 18 Mar 2021 21:28:33 +0000
+Message-ID: <CAFEAcA9i21sTkYoMfMt8sgN+18B3uHSqzG3No7k-+XJkzREi9A@mail.gmail.com>
+Subject: Re: [PATCH for-6.0 v2 4/5] hw/core/loader: Add new function
+ rom_ptr_for_as()
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::632;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x632.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -125,25 +115,38 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7vrcfPF1P4lD
+X-TUID: TO+nSMO2fhMl
 
-On 3/18/21 1:02 PM, Peter Maydell wrote:
->>> +     * Note that we do not check @as against the 'as' member in the
->>> +     * 'struct Rom' returned by rom_ptr(). The Rom::as is the
->>> +     * AddressSpace which the rom blob should be written to...
-...
->> Should you really have this special case?  Nowhere is this going to verify that
->> @addr is in @as.
-> 
-> It's the "happens almost all the time" case. Nothing verifies
-> that @addr is in @as anyway -- see the "Note that" part of the
-> comment above.
+On Thu, 18 Mar 2021 at 21:14, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> On 3/18/21 1:02 PM, Peter Maydell wrote:
+> >>> +     * Note that we do not check @as against the 'as' member in the
+> >>> +     * 'struct Rom' returned by rom_ptr(). The Rom::as is the
+> >>> +     * AddressSpace which the rom blob should be written to...
+> ...
+> >> Should you really have this special case?  Nowhere is this going to verify that
+> >> @addr is in @as.
+> >
+> > It's the "happens almost all the time" case. Nothing verifies
+> > that @addr is in @as anyway -- see the "Note that" part of the
+> > comment above.
+>
+> The comment explains why we don't examine Rom::as.
+> But we do check @addr vs @as via @as -> @fv -> flatview_translate.
 
-The comment explains why we don't examine Rom::as.
-But we do check @addr vs @as via @as -> @fv -> flatview_translate.
+All we do is look for "every other address in the AS that
+maps to the same MR as the address we started with".
+Are you asking about the !cbdata.mr exit ? That's for the
+implausible corner case that the caller asked us about an
+address with no RAM. In that case the early "check rom_ptr()
+directly against @address" gets us the "did the user load
+an image at that address", and we can skip the "check for
+other aliases, because by there aren't going to be any
+aliases to no MR at all.
 
-
-r~
+thanks
+-- PMM

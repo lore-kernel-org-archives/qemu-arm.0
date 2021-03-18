@@ -1,88 +1,87 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp336704lfg;
-        Thu, 18 Mar 2021 05:59:29 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx4ESqKLZA9h+5vfAQZs/KphQ6TGgClFg+zHZZnNdtodAacsO+3SLkpHAF8Qp/AW5HSvE8D
-X-Received: by 2002:a25:9a09:: with SMTP id x9mr11757165ybn.493.1616072369696;
-        Thu, 18 Mar 2021 05:59:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1616072369; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp348912lfg;
+        Thu, 18 Mar 2021 06:11:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzollwX1CMYTWrD+nkP/Rq6/gj5BAQupmxq0MxtRsrecnQtvIF9g1T5kksEBgwbxwZw7ZNl
+X-Received: by 2002:a17:906:934c:: with SMTP id p12mr40549197ejw.131.1616073063443;
+        Thu, 18 Mar 2021 06:11:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616073063; cv=none;
         d=google.com; s=arc-20160816;
-        b=HLJLqyyo6QEcPATwhv3pVuk3p/uqJ9Nv6luX9fizaDol1gUxY+jMyUad5w2HXN/vKi
-         sWPftODbrls+RWN/l/MxZ6gTQc765JXVPuudrbfGfQZOm52EJH63+FFt8Qw1L6Cj/dVq
-         qQ3FbIrmXYKNXZmarr89fcaow+Z4lzhpAIONeGjJmStO4EWWUKF1dzrXbRt2fi5DukBD
-         eEFh+LRrA2q9+Rn+ToW5O4NaEtZnId20I+N49VHAxcdzIWG3QA+vCga/M97q/BWqouf4
-         6us/XkdgCu15V2syecR8EMH1TXnVwsKJerwHFw4K4vQYIDKg38JCd5A/7z8cPpuDONId
-         ByHQ==
+        b=LwJsytEl9VW4uw9beEfoC4B4rR+l6GIzh5yl9rikGsti4hzP4/UxAZ3aUDUCiHdYZO
+         2oyq+9d0z4JcB8Wfh0P38NQSpDNy0h/YRbPolsrqUVLUmDLazdus1NmftC/Low1p/UTz
+         RUGQG3//fAGIiT55UhKi38o9TNyOh+i7mGnV9wDnqO/+fHvYVMXdBmrDJAYIiRlmN677
+         9YumX7JPAmNqy+b6dBHA7lj0iXoQppqBGiAco/nGgoLfJ1y+rZf7sMary9ycHGdEebmp
+         5vD9XPQYc90FmC9wv/5Ea9y2QPGVQlAWSF+hR6nsu9j4c3CBGYxDv2pbyXGVnk9RNzwo
+         oi7Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
          :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=X1B7B1qQ6qUwfc6Z50q4pgKPBhtb9o34cGdMzKwnyN8=;
-        b=fvRXyx9tZ/XB7v9+Jin9usBNhDrcAr0lIfTvXz7Kn0XC4cgy66Sn+1K7pplCkpcc6P
-         jtRXuxpyEGhAcePsQzSW45ZsbrIJ82Jyk/2U+Ys2FzrtYoiBV4dJl7olugEzHGuurWEP
-         GBjZsOw3VojbFxMixFpFHVgSi1Bgh3himXg1kJFHLNf8MTFkasEQeNfxc91H0x1gTjwO
-         kEw/lrdTpmFuCciWhRRDNbsbB3VVVzlTZuG71mu/UOoHsBrRVzWGRL7OrhLVb3OzHoHt
-         5fDcY9EgAOM1tzVtyovE50nefKka+QmLGR2NocewjTQP+x9V5gz8glLCEp9nh0GSn6e3
-         fBVQ==
+        bh=ENuj9UqEoIBGeNMgO7o6g4Sh0jyqtSxXQjdRXAPy/r8=;
+        b=Luz0x0AsX3pcEzt0fgE8pmGx7xo87WidX6xcwbWXMxFSdlJpZMXWjvWvVtNzSn7Len
+         0T5g0y3e8orFm4zVw7nf2nuNwDWpy6lr/ehbi5yN73Ya7ueVwl8PI5p37WmazcMku/vG
+         m6LKxw3kwyDNN34zICXuXwsXb6knzwRlUtqfq59QIdt9oPUqW0rez5vlXMqPq+wueQ1C
+         JX7mVxN9qUBEU/G4OxkU3GxIY340BJZfmguQW8qUT8wXr5XRpOMiMz9hxdLJziGuwmwE
+         jr+5NWjyRStrJf+IwrOrKc1/X+yelgRcR2xj/t3FU6hCph01zFjPc1xA7aQ23s/yEsn1
+         U1DQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="MnfR/Uky";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GvrcdfOW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p68si2148129ybc.51.2021.03.18.05.59.29
+        by mx.google.com with ESMTPS id i19si1603341ejd.152.2021.03.18.06.11.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 18 Mar 2021 05:59:29 -0700 (PDT)
+        Thu, 18 Mar 2021 06:11:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="MnfR/Uky";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GvrcdfOW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58482 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39268 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lMsFN-0003KQ-11
-	for alex.bennee@linaro.org; Thu, 18 Mar 2021 08:59:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35892)
+	id 1lMsQY-0007gH-42
+	for alex.bennee@linaro.org; Thu, 18 Mar 2021 09:11:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38722)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1lMsFC-0003Jy-P6
- for qemu-arm@nongnu.org; Thu, 18 Mar 2021 08:59:18 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:37835)
+ (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
+ id 1lMsPy-0007fO-Pw
+ for qemu-arm@nongnu.org; Thu, 18 Mar 2021 09:10:26 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:29490)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1lMsFB-000230-8E
- for qemu-arm@nongnu.org; Thu, 18 Mar 2021 08:59:18 -0400
+ (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
+ id 1lMsPs-0008NC-4K
+ for qemu-arm@nongnu.org; Thu, 18 Mar 2021 09:10:26 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1616072356;
+ s=mimecast20190719; t=1616073015;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=X1B7B1qQ6qUwfc6Z50q4pgKPBhtb9o34cGdMzKwnyN8=;
- b=MnfR/UkyRKzlbTDnBtAQz0YsOm3XahU+EP6kvacvjXAwNH1RvUHUi3XhK1hOqphbHx59qH
- qzoLQyu+Cq9A9PX+DiZpoZTbHCcc32hBIZdn3Q280fKgNuqhGGpTq1p5OAUZibISw6cMCk
- 4KBFAdk4nLFQiuGjfkFdt+YlNa/2X3s=
+ bh=ENuj9UqEoIBGeNMgO7o6g4Sh0jyqtSxXQjdRXAPy/r8=;
+ b=GvrcdfOW5ZJj4fqiMke5xZCCz79ICLyzTQ8Rx8wlPXRXiSYs06ejwsD2r6I+nH1t+q6MvN
+ L6Qi2Ro2qoNM0PpR75fBxg6AX0DO+jRHrWwhl2xJo7TF/L2kEuSlPCU7ofAW5vZ5i/tPoV
+ kug1aqfqt/hvtrqQVKEd5yVhiDWnJ2E=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-449-IMflEntJOJOf2XaFpXQ2UA-1; Thu, 18 Mar 2021 08:59:14 -0400
-X-MC-Unique: IMflEntJOJOf2XaFpXQ2UA-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
+ us-mta-557-onYVG1gvN8CZd5NjUf9tZQ-1; Thu, 18 Mar 2021 09:10:13 -0400
+X-MC-Unique: onYVG1gvN8CZd5NjUf9tZQ-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2E8E61922020;
- Thu, 18 Mar 2021 12:59:13 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.40.196.5])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id D1EBC5D6AB;
- Thu, 18 Mar 2021 12:59:10 +0000 (UTC)
-Date: Thu, 18 Mar 2021 13:59:08 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Claudio Fontana <cfontana@suse.de>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id CBCBB180FCB0;
+ Thu, 18 Mar 2021 13:10:11 +0000 (UTC)
+Received: from localhost (ovpn-116-229.rdu2.redhat.com [10.10.116.229])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 565A81A353;
+ Thu, 18 Mar 2021 13:10:11 +0000 (UTC)
+Date: Thu, 18 Mar 2021 09:10:10 -0400
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Andrew Jones <drjones@redhat.com>
 Subject: Re: arm_cpu_post_init (Was: Re: arm: "max" CPU class hierarchy
  changes possible?)
-Message-ID: <20210318125908.zwpm47ftlsuen3zo@kamzik.brq.redhat.com>
-References: <11e9d3bb-c94c-4ad7-35b0-b698376c5e00@suse.de>
- <CAFEAcA8T+u6QG9PQWs40PTSZ86SEeLQrciT8WHxFyH3UVbipiA@mail.gmail.com>
+Message-ID: <20210318131010.GT3139005@habkost.net>
+References: <CAFEAcA8T+u6QG9PQWs40PTSZ86SEeLQrciT8WHxFyH3UVbipiA@mail.gmail.com>
  <2e6a5d98-e022-0b39-5f30-92eb74491d3b@redhat.com>
  <2277fdf5-ec92-476a-8fe5-0d4eee23dfef@suse.de>
  <CAFEAcA_j-0+vmNFtPjcxEXC9r4bFrebDfGjq-x1SfguzUG4qcw@mail.gmail.com>
@@ -91,16 +90,17 @@ References: <11e9d3bb-c94c-4ad7-35b0-b698376c5e00@suse.de>
  <c3397f29-82eb-5a1b-803d-8184c9a8d508@suse.de>
  <20210318120837.cg4gfdpchjwiabav@kamzik.brq.redhat.com>
  <fc769a96-a304-7429-5dee-a65b52179b1c@suse.de>
+ <20210318125908.zwpm47ftlsuen3zo@kamzik.brq.redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <fc769a96-a304-7429-5dee-a65b52179b1c@suse.de>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+In-Reply-To: <20210318125908.zwpm47ftlsuen3zo@kamzik.brq.redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=drjones@redhat.com;
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=ehabkost@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -29
 X-Spam_score: -3.0
@@ -122,63 +122,45 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
+ qemu-devel <qemu-devel@nongnu.org>,
  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- qemu-devel <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Claudio Fontana <cfontana@suse.de>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YhDliceLw379
+X-TUID: jafeOON2zmHa
 
-On Thu, Mar 18, 2021 at 01:42:36PM +0100, Claudio Fontana wrote:
-> On 3/18/21 1:08 PM, Andrew Jones wrote:
-> > On Thu, Mar 18, 2021 at 12:32:30PM +0100, Claudio Fontana wrote:
-> >> And why do we have a separate arm_cpu_finalize_features()?
+On Thu, Mar 18, 2021 at 01:59:08PM +0100, Andrew Jones wrote:
+> On Thu, Mar 18, 2021 at 01:42:36PM +0100, Claudio Fontana wrote:
+> > On 3/18/21 1:08 PM, Andrew Jones wrote:
+> > > On Thu, Mar 18, 2021 at 12:32:30PM +0100, Claudio Fontana wrote:
+> > >> And why do we have a separate arm_cpu_finalize_features()?
+> > > 
+> > > Separate, because it's not just called from arm_cpu_realizefn().
 > > 
-> > Separate, because it's not just called from arm_cpu_realizefn().
-> 
-> In particular it is also called by the monitor.c in qmp_query_cpu_model_expansion(),
-> 
-> which basically creates an object of the cpu subclass,
-> and then calls arm_cpu_finalize_[features]() explicitly on the object.
-> 
-> Is the qdev realize() method not called in this case? Should instead it be triggered, rather than initializing/realizing an incomplete object?
-
-Can you elaborate on what you mean by "triggered"? The QMP query does the
-least that it can get away with while still reusing the CPU model's
-feature initialization code. Any suggestions for improving that,
-preferably in the form of a patch, would be welcome. If it works well for
-Arm, then it could probably be applied to other architectures. The Arm QMP
-query is modeled off the others.
-
-> 
+> > In particular it is also called by the monitor.c in qmp_query_cpu_model_expansion(),
 > > 
-> >>
-> >> Nothing in the ARM cpu classes initializations ever seems to be "final" to me.
+> > which basically creates an object of the cpu subclass,
+> > and then calls arm_cpu_finalize_[features]() explicitly on the object.
 > > 
-> > Some CPU features cannot be simply switched on/off at the property
-> > parse time. For example, there could be dependencies on multiple
-> > properties, the mutual exclusion of properties, or other aspects
-> > that can only be known later than property parse time. That stuff
-> > goes in arm_cpu_finalize_features().
+> > Is the qdev realize() method not called in this case? Should instead it be triggered, rather than initializing/realizing an incomplete object?
 > 
-> Seems like _part_ of that is in arm_cpu_finalize_[features]() (in practice, this ends up being AARCH64-only stuff,
-> ie SVE, PAUTH and KVM).
-> 
-> After calling that, the arm realizefn() also does further setting and unsetting of features, checking previous feature states.
-> 
-> There is a whole lot following the arm_cpu_finalize_[features]() call,
-> there are ~300 lines of features initializations happening _after_ the call to arm_cpu_finalize_[features]().
->
+> Can you elaborate on what you mean by "triggered"? The QMP query does the
+> least that it can get away with while still reusing the CPU model's
+> feature initialization code. Any suggestions for improving that,
+> preferably in the form of a patch, would be welcome. If it works well for
+> Arm, then it could probably be applied to other architectures. The Arm QMP
+> query is modeled off the others.
 
-Any feature that needs a finalizer (i.e. it can't be managed at property
-parsing time) and wants to be probable by the QMP query will need to have
-its finalizing moved to arm_cpu_finalize_features(). Some of those ~300
-lines might be better pushed into property set/get handlers, others will
-never want to be advertised in the QMP query, but the rest will get moved
-when the need is great enough.
+This sound very similar to x86_cpu_expand_features(), so the
+approach makes sense to me.
 
-Thanks,
-drew
+It wouldn't make sense to call realize() inside
+qmp_query_cpu_model_expansion().  Realizing the CPU means
+plugging it into the guest, and we would never want to do that
+when executing a query command.
+
+-- 
+Eduardo
 

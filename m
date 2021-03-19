@@ -1,107 +1,110 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1856387lfg;
-        Fri, 19 Mar 2021 21:48:56 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwus9XqBIuix8nDE/XH55VH8o8BfxQPKlLEzCyL7XlxXJ9vGKPc45x3nHPTmOuAPW/Wx0lD
-X-Received: by 2002:a25:2f16:: with SMTP id v22mr4154328ybv.521.1616215736379;
-        Fri, 19 Mar 2021 21:48:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1616215736; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1586265lfg;
+        Fri, 19 Mar 2021 12:51:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwK5CFuNCz3cuEwXGgdFA6jnrWu2EJLstKp/CfGQQg5nwECu2gD4Kqm2bXmhNiaQDa2PoWK
+X-Received: by 2002:a92:cd0c:: with SMTP id z12mr3985877iln.109.1616183476912;
+        Fri, 19 Mar 2021 12:51:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616183476; cv=none;
         d=google.com; s=arc-20160816;
-        b=zJQtsZfg95lTpY7imUxs57enjMp5nX/3QZ3Ri33lb75E8yVq9mcHDBzUtR4m+8kszR
-         sj6f7jYwis5qT8ahQyjy0BIiYSk16Gabm/AbTRlGrsEFjg1r8KAiCbryu7getMvCQkjb
-         mE7VqqoajQTDhzTDI39rZlOL/h3Umpbl6xMT5t/Q9jtEPdEAQjUhj7/DqA8pHbHk0jy0
-         J0+m8qXSDXaoakHhuEd15TLzbD7dS7ebkqQ/vLVs0DPefQKkvBsnzocxk5L+xfO0+fVp
-         6PwdBN9cUyB56t+EGvoN13w35IdF+V5u4jbVaugV+5oJtAC17BkLxTZOCCZjgbmZGSlD
-         /k5g==
+        b=FIAtEkUesu4ScKxHrPr8lKizX/OWzKBAluMGp0TCAaN0prL0iOESC/lhHagN4UTvqu
+         FtWi5eOyXepwaxGvE5V8FipM/rcIg3nRjPHnjEfb06B76Eq08B5vB42ujb+McRAP8ANe
+         WDJ86pv6L2PauAzSVvPqwkR/h/HQx8gP+Npa2PSK2YSi7fKkoFnBQLMvqXkTAK+1ByVB
+         EYri1WULYkm1zRZo0fnGwRxgkq3zIW2TTHiUC1X8WY+pY/anTl2KPekYw405VzyfYvWQ
+         6TqpnvkqxoQIF6GGf4zuh1TOEg0kzuJGQIQFLzGvuhQCSGp3leddHyAhGNMOItbTEovS
+         XiFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=DIlC0yFaVwd1Mn2tnr/miENdMF3yBBzUtKisv14gNog=;
-        b=oT1yM1RAoLxitfAxXe8Nfgxa62LLc8/NRReilQSWZdkS8FQMa7ZWmWUBbU8Ov7vs6t
-         VRbLBw7S2F1il+EDF3ug6uBvv+z/sA46YTLGyIeDE+9/PfM/wkNKACvWRU6kISHIpcc8
-         0IxusgnJoQx5k8OIvfF+ETQyN3UsbnkJbuJb6l0ExxSqWlFVWoAPDvIASSYf1pnhK9Pl
-         OiQqREHy6Eq7MuBR0HA0Fl2urHrnSo1ivai0RnEisMR72jw8IM5x1mmIzgms/KgY231z
-         RjKTPhI1+NvkrUOgX2fw8RAtSrclTVc8mZ5W+Kc5c5p51IvkDGuh3NDK5aEBmj+EeUtw
-         xksg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:from:subject:mime-version
+         :message-id:date:dkim-signature;
+        bh=j46CI3Og4hVkDDNrH53Wwik7HYlH8KkukwySRapqCWU=;
+        b=w3hSRIAnzxuU16qLOBVk7pN1+LjiRNXjY4INN3YLiy/JjpU1frcOXsmSeNmUKNYCNo
+         RH1rA4PZ7SDhsp7kMwlvMC5Sml9JfMM5AX7eNg3yDg1560N2RAZtgnX8p52LBwyAu5Ck
+         3gSbs6HhDbNUCaqooLd3NvfA1JGK+OBEqi3erPQn9srZWeL2WhC7MKw4OB/vMPKvuKWK
+         4aPiQQhUnll/BE7gXIHZLUYvZqI7fKzykPZU9HP5m7zWKv2dmLVRM8UPuXoczDcF0YyO
+         gah9jVVBh4wpdrAt6kGcsa7EPPLYe6r6jW4B7QX8puJcuqzvejg7AtliBYm4urhBXZrc
+         Q4Kg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Dwqg8mtT;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=GYj7hsz0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n16si2829047ybm.460.2021.03.19.21.48.56
+        by mx.google.com with ESMTPS id b14si4380710ion.78.2021.03.19.12.51.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 19 Mar 2021 21:48:56 -0700 (PDT)
+        Fri, 19 Mar 2021 12:51:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Dwqg8mtT;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=GYj7hsz0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40634 helo=lists1p.gnu.org)
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:52100 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lNTXj-0000do-N2
-	for alex.bennee@linaro.org; Sat, 20 Mar 2021 00:48:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55714)
+	id 1lNL9Q-0004jU-7J
+	for alex.bennee@linaro.org; Fri, 19 Mar 2021 15:51:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41640)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lNTXa-0000dO-VK
- for qemu-arm@nongnu.org; Sat, 20 Mar 2021 00:48:47 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:27822)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lNTXY-0003Bh-Al
- for qemu-arm@nongnu.org; Sat, 20 Mar 2021 00:48:46 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1616215722;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=DIlC0yFaVwd1Mn2tnr/miENdMF3yBBzUtKisv14gNog=;
- b=Dwqg8mtTv/D5qR2KeHq5FZSpesTsF3pdjNMIrhOYA7xoSH7h2PXGxiPc8MAchCSufpDmj0
- JBlaONF7R7O+Q/mNEyu9azS/2IHs5nyoyqo5/HoLHBphw+t8LOwvpymJtipOuWzPoIigob
- TA+SRcuxp/6Tzuc6ROQ3kCJOuP7GanI=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-312-kVo_TSNeMNemOJyqhuHajw-1; Sat, 20 Mar 2021 00:48:40 -0400
-X-MC-Unique: kVo_TSNeMNemOJyqhuHajw-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1ED96107ACCA;
- Sat, 20 Mar 2021 04:48:39 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-112-13.ams2.redhat.com [10.36.112.13])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 8EBCA6F125;
- Sat, 20 Mar 2021 04:48:33 +0000 (UTC)
-Subject: Re: [PATCH] configure: Improve alias attribute check
-To: Gavin Shan <gshan@redhat.com>, qemu-devel@nongnu.org
-References: <20210320042753.69297-1-gshan@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <584e6cec-dd1d-7aa5-5f67-43bfcd9ae66a@redhat.com>
-Date: Sat, 20 Mar 2021 05:48:32 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.0
-MIME-Version: 1.0
-In-Reply-To: <20210320042753.69297-1-gshan@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.251,
+ (Exim 4.90_1) (envelope-from
+ <3pABVYAMKCAMgmhjrrjoh.frpthpx-dupqrqjqx.ruj@flex--dje.bounces.google.com>)
+ id 1lNL9G-0004hx-Nm
+ for qemu-arm@nongnu.org; Fri, 19 Mar 2021 15:51:06 -0400
+Received: from mail-vk1-xa49.google.com ([2607:f8b0:4864:20::a49]:47431)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from
+ <3pABVYAMKCAMgmhjrrjoh.frpthpx-dupqrqjqx.ruj@flex--dje.bounces.google.com>)
+ id 1lNL9C-0007J7-OY
+ for qemu-arm@nongnu.org; Fri, 19 Mar 2021 15:51:06 -0400
+Received: by mail-vk1-xa49.google.com with SMTP id o128so4295639vkc.14
+ for <qemu-arm@nongnu.org>; Fri, 19 Mar 2021 12:51:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=date:message-id:mime-version:subject:from:to:cc;
+ bh=j46CI3Og4hVkDDNrH53Wwik7HYlH8KkukwySRapqCWU=;
+ b=GYj7hsz0MkYuOu42/ryzsO7gctCRvx5eRxK58FVdd+1vbOGi4nIXcyQ8s18Gs+mtvq
+ dXcpIlzj979Q/Jw9YFs9y66jF3+Lu27r8H0egEjuJHmDesIt0osR87PetYIaNfnN+6An
+ wzy+TC46WtJaL1NQbM6aSR93OdFsME4hCPxlDhI42DX9XF4o4ZxTy1QSH58pwlRwqB7x
+ dnYU0/+vyZQT4cajSZf/J2CqJanXF6V+rwk5SfQS+gaWSa0sUWSiHDacMrXBCpGw2yRj
+ 72RB1M0hRH2amRWio72xE2gmzEFwvonnV/GD94/jyPbPeauv4QhwiwGQGe8cb/28//1Y
+ Q2SQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
+ bh=j46CI3Og4hVkDDNrH53Wwik7HYlH8KkukwySRapqCWU=;
+ b=PLHrsXj4QHykNsOaBgdZUXn7QXsfmdPyaucSRXr+N+PH2BORDLFA7j6SQ4p1Z7IxDY
+ X5pSPLnj3CgeRTfzy2B5J/uIDkFyQAJ0CBHOyNj5qSdAeDEhJ9qeQLsTrrvlh5SDKdOT
+ AbfDed4COHtliJvQZLIWjOR2zo+1wJTKvAL+4PbRZmo217e+DqDZXE6z1dg15FjoC1mR
+ zqm0/il/Nnj2fw1j3S+Nx+ohPS5XnEUOOiDqlbthdKm0SlWsHaVVOV7fINjTCv3joeXc
+ lyAO/ogu+c3df8TXbbCHYFT+Fa54VQoDPWPFemtlnjJQv0t8t5mrXeN+mXMpbnKBcePE
+ qfyQ==
+X-Gm-Message-State: AOAM531M8fBsDcx8f0NGY3zqYyzyyQNjnia89ZYSoInDIHUq77A2nHhf
+ erNejaPb7pNwvh2QnFL3pQ0eGZGhgfN+oNPvAWSicrqi9d3Wk98znPD16vXwE9OPR3cvJD1VUgd
+ xqk7ArrYCAUm2LN9/7OVuKBZreQVjZqJ+S7WMA8K9k3JCvDMxbA==
+X-Received: from ruffy.mtv.corp.google.com
+ ([2620:0:1000:1412:e514:6b57:7d74:59ea])
+ (user=dje job=sendgmr) by 2002:ab0:2b06:: with SMTP id
+ e6mr163139uar.43.1616183460527; 
+ Fri, 19 Mar 2021 12:51:00 -0700 (PDT)
+Date: Fri, 19 Mar 2021 12:50:44 -0700
+Message-Id: <20210319195044.741821-1-dje@google.com>
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.31.0.rc2.261.g7f71774620-goog
+Subject: [PATCH] net/npcm7xx_emc.c: Fix handling of receiving packets when
+ RSDR not set
+From: Doug Evans <dje@google.com>
+To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: Havard Skinnemoen <hskinnemoen@google.com>,
+ Tyrone Ting <kfting@nuvoton.com>, 
+ Jason Wang <jasowang@redhat.com>, Doug Evans <dje@google.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::a49;
+ envelope-from=3pABVYAMKCAMgmhjrrjoh.frpthpx-dupqrqjqx.ruj@flex--dje.bounces.google.com;
+ helo=mail-vk1-xa49.google.com
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -114,84 +117,105 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: richard.henderson@linaro.org, laurent@vivier.eu, qemu-arm@nongnu.org,
- shan.gavin@gmail.com, pbonzini@redhat.com, philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: t89FJDKfQFRN
+X-TUID: 9bfGhD3ppGZA
 
-On 20/03/2021 05.27, Gavin Shan wrote:
-> It's still possible that the wrong value is returned from the alias
-> of variable even if the program can be compiled without issue. This
-> improves the check by executing the binary to check the result.
-> 
-> If alias attribute can't be working properly, the @target_page in
-> exec-vary.c will always return zeroes when we have the following gcc
-> version.
-> 
->    # gcc --version
->    gcc (GCC) 11.0.0 20210210 (Red Hat 11.0.0-0)
-> 
-> This abstracts the code from exec-vary.c and use it as indicator to
-> enable gcc alias attribute or not.
-> 
-> Signed-off-by: Gavin Shan <gshan@redhat.com>
-> ---
->   configure | 34 ++++++++++++++++++++++++++++++----
->   1 file changed, 30 insertions(+), 4 deletions(-)
-> 
-> diff --git a/configure b/configure
-> index f7d022a5db..8321f380d5 100755
-> --- a/configure
-> +++ b/configure
-> @@ -75,6 +75,7 @@ fi
->   
->   TMPB="qemu-conf"
->   TMPC="${TMPDIR1}/${TMPB}.c"
-> +TMPC_B="${TMPDIR1}/${TMPB}_b.c"
->   TMPO="${TMPDIR1}/${TMPB}.o"
->   TMPCXX="${TMPDIR1}/${TMPB}.cxx"
->   TMPE="${TMPDIR1}/${TMPB}.exe"
-> @@ -4878,13 +4879,38 @@ fi
->   
->   attralias=no
->   cat > $TMPC << EOF
-> -int x = 1;
-> +static int x;
->   extern const int y __attribute__((alias("x")));
-> -int main(void) { return 0; }
-> +extern int read_y(void);
-> +void write_x(int val);
-> +
-> +void write_x(int val)
-> +{
-> +    x = val;
-> +}
-> +
-> +int main(void)
-> +{
-> +    return read_y();
-> +}
->   EOF
-> -if compile_prog "" "" ; then
-> -    attralias=yes
-> +cat > $TMPC_B << EOF
-> +extern const int y;
-> +extern void write_x(int val);
-> +int read_y(void);
-> +
-> +int read_y(void)
-> +{
-> +     write_x(1);
-> +     return y;
-> +}
-> +EOF
-> +
-> +TMPC+=" ${TMPC_B}"
-> +if compile_prog "" "" && ! $TMPE; then
+Turning REG_MCMDR_RXON is enough to start receiving packets.
 
-What about cross-compiling? Running an executable won't work if QEMU gets 
-cross-compiled...
+Signed-off-by: Doug Evans <dje@google.com>
+---
+ hw/net/npcm7xx_emc.c           |  4 +++-
+ tests/qtest/npcm7xx_emc-test.c | 30 +++++++++++++++++++++---------
+ 2 files changed, 24 insertions(+), 10 deletions(-)
 
-  Thomas
+diff --git a/hw/net/npcm7xx_emc.c b/hw/net/npcm7xx_emc.c
+index 714a742ba7..7c892f820f 100644
+--- a/hw/net/npcm7xx_emc.c
++++ b/hw/net/npcm7xx_emc.c
+@@ -702,7 +702,9 @@ static void npcm7xx_emc_write(void *opaque, hwaddr offset,
+                    !(value & REG_MCMDR_RXON)) {
+             emc->regs[REG_MGSTA] |= REG_MGSTA_RXHA;
+         }
+-        if (!(value & REG_MCMDR_RXON)) {
++        if (value & REG_MCMDR_RXON) {
++            emc->rx_active = true;
++        } else {
+             emc_halt_rx(emc, 0);
+         }
+         break;
+diff --git a/tests/qtest/npcm7xx_emc-test.c b/tests/qtest/npcm7xx_emc-test.c
+index 7a28173195..9eec71d87c 100644
+--- a/tests/qtest/npcm7xx_emc-test.c
++++ b/tests/qtest/npcm7xx_emc-test.c
+@@ -492,9 +492,6 @@ static void enable_tx(QTestState *qts, const EMCModule *mod,
+         mcmdr |= REG_MCMDR_TXON;
+         emc_write(qts, mod, REG_MCMDR, mcmdr);
+     }
+-
+-    /* Prod the device to send the packet. */
+-    emc_write(qts, mod, REG_TSDR, 1);
+ }
+ 
+ static void emc_send_verify1(QTestState *qts, const EMCModule *mod, int fd,
+@@ -558,6 +555,9 @@ static void emc_send_verify(QTestState *qts, const EMCModule *mod, int fd,
+     enable_tx(qts, mod, &desc[0], NUM_TX_DESCRIPTORS, desc_addr,
+               with_irq ? REG_MIEN_ENTXINTR : 0);
+ 
++    /* Prod the device to send the packet. */
++    emc_write(qts, mod, REG_TSDR, 1);
++
+     /*
+      * It's problematic to observe the interrupt for each packet.
+      * Instead just wait until all the packets go out.
+@@ -643,13 +643,10 @@ static void enable_rx(QTestState *qts, const EMCModule *mod,
+         mcmdr |= REG_MCMDR_RXON | mcmdr_flags;
+         emc_write(qts, mod, REG_MCMDR, mcmdr);
+     }
+-
+-    /* Prod the device to accept a packet. */
+-    emc_write(qts, mod, REG_RSDR, 1);
+ }
+ 
+ static void emc_recv_verify(QTestState *qts, const EMCModule *mod, int fd,
+-                            bool with_irq)
++                            bool with_irq, bool pump_rsdr)
+ {
+     NPCM7xxEMCRxDesc desc[NUM_RX_DESCRIPTORS];
+     uint32_t desc_addr = DESC_ADDR;
+@@ -679,6 +676,15 @@ static void emc_recv_verify(QTestState *qts, const EMCModule *mod, int fd,
+     enable_rx(qts, mod, &desc[0], NUM_RX_DESCRIPTORS, desc_addr,
+               with_irq ? REG_MIEN_ENRXINTR : 0, 0);
+ 
++    /*
++     * If requested, prod the device to accept a packet.
++     * This isn't necessary, the linux driver doesn't do this.
++     * Test doing/not-doing this for robustness.
++     */
++    if (pump_rsdr) {
++        emc_write(qts, mod, REG_RSDR, 1);
++    }
++
+     /* Send test packet to device's socket. */
+     ret = iov_send(fd, iov, 2, 0, sizeof(len) + sizeof(test));
+     g_assert_cmpint(ret, == , sizeof(test) + sizeof(len));
+@@ -826,8 +832,14 @@ static void test_rx(gconstpointer test_data)
+ 
+     qtest_irq_intercept_in(qts, "/machine/soc/a9mpcore/gic");
+ 
+-    emc_recv_verify(qts, td->module, test_sockets[0], /*with_irq=*/false);
+-    emc_recv_verify(qts, td->module, test_sockets[0], /*with_irq=*/true);
++    emc_recv_verify(qts, td->module, test_sockets[0], /*with_irq=*/false,
++                    /*pump_rsdr=*/false);
++    emc_recv_verify(qts, td->module, test_sockets[0], /*with_irq=*/false,
++                    /*pump_rsdr=*/true);
++    emc_recv_verify(qts, td->module, test_sockets[0], /*with_irq=*/true,
++                    /*pump_rsdr=*/false);
++    emc_recv_verify(qts, td->module, test_sockets[0], /*with_irq=*/true,
++                    /*pump_rsdr=*/true);
+     emc_test_ptle(qts, td->module, test_sockets[0]);
+ 
+     qtest_quit(qts);
+-- 
+2.31.0.rc2.261.g7f71774620-goog
 

@@ -1,120 +1,88 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp744234lfg;
-        Thu, 18 Mar 2021 14:56:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxWUgVXrlE8j4/8H1tvzc+8WXa/QKzBVXJcCYzawZY8PpI8XlPiBxWBJSLX18RT5x5xSOLg
-X-Received: by 2002:a02:3304:: with SMTP id c4mr8838095jae.68.1616104595818;
-        Thu, 18 Mar 2021 14:56:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1616104595; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1081624lfg;
+        Fri, 19 Mar 2021 01:19:45 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzyAYUsVXLx8ZJIw7a90BybvjRgPOtMXrB5KKKm7SH1CSnR5YkgLEsGYcxxw4YkjIe4Swez
+X-Received: by 2002:a25:bc41:: with SMTP id d1mr4800300ybk.125.1616141985085;
+        Fri, 19 Mar 2021 01:19:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616141985; cv=none;
         d=google.com; s=arc-20160816;
-        b=mvQyprI+rvs/J6llHMJxqeHSZznOKqYTErN68G7Hr2ZuY6tIIVWrtMoDhpJlSqhrHF
-         esaJOe4U+toMnb/k14JwSKcMSOjoG7kSuIEublTfN/7bQ8ljaiKiApj1PTsHK7dmeWYl
-         1oL+oi9lz/7xX3J19Il+Ap4iNfFFZlzvrcv48BSe9siCG9Ofqp5DpAvWaWnMehARn6ja
-         gS0VRdOVQ8/ZyL8uMjgjeCVX84xqcA1KfOJzpjjw1n8PcglN+qqw7h27YfGY+GDTdLPx
-         Vu+xQrCCiW9DATGDxGnDN443iymwYg7NdH8lc++oJyYjEmUAMVwOiAl7whRsIwPOIlu2
-         SfRQ==
+        b=jJOGNnbbXjjjEUbRyx3a2s0MnQlaseEWd4Y0gKgc53T9TvGSnjiG33jaacv4Nw9iBz
+         5wyY5KLkgxasaTnpMPOxWTOY2xWC7iXqJLSwcFeyPpSnQ34Aq5QMrQOjgkSUgBvbD4B6
+         8niY15O8Gv/BNAEv29gRaJfIA3cqMh0JggBYJ5hVBr+A/PEycrouz0Z35F1qVlCHG9J3
+         zIQYafQ47RaAa5LD8PR/46bpB+x4Dcz1z+mVmTtMulb4tAY/BH4RNgrF4/W8RVWt17Mk
+         hrH0cABUtj8CD4DWscLYC4+rIBk2s+mHftNiYysz9W4sYuFo2La2ayf8uKOYYTga6uD5
+         +uwA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=wWoxWk6iH+D7yn1pettTTwgNja5Zzig50vwkwOCThGg=;
-        b=oRJ36/eWW+Ah0+s7ACN5aYb7084CoO7YJq1W0UqMv2gqTyRNrjQDsC17liNriVCRpH
-         PZU3T79Udpl1kHG9ak84PKT/u1my36dvJSdFsqcL+JRKB/nal8i/E6QTP8rv0b5pss5v
-         OPF+vxOGYnYh7XQe9VZArQbFpv+cB/QJ0w4x7Hro+VbwcLUSbrY/YcX+cwfqHxQcP5EP
-         CQFq/hqOQlDIC9kRwk0Mydm2EH6LiKqP+EWbpmf6B3yjUZYkYgtz/R+fglo6vp/cb7bJ
-         1YzMJySwp88YzBZWdV+WgZ+/qJ8iB/0uO2WNdBCEVLx/tNyHC68lrcYq7stwiBeOMmdc
-         btUA==
+         :message-id:from:references:to:subject;
+        bh=YyrgUY2Ar0/q4o+VhAlfZsR7NtDlugG7lKOFpxSFrEw=;
+        b=r3kGADu4voX8O4ltc63i2snTFKRegfpnZzum9TwBbbkpQZQUA73FOiymGfAbfQq4kE
+         98HdUU5XsxObgBnO6KhgJ/ycxoIbFaaWK7/T1ychul9veYxBPioyJZxOHUY2G1MHoytW
+         xCiP5KCSHASq8lWXyfWmqsWATQDrpgI7S8x1ojvtjl/tEO2RHtLyS1dBxQmfWtT49I92
+         Wx43g2DxW5vZFoUGDHnb9kncBALrEQra0XN98dTK+44ZgqOnQSTPMM316Xbfb8H7ixx+
+         v4IgCadx/7z0+Uix4OPFRpOIggvCNEgA8i7fqZB/rM40dA/uudqndQk+IGzvYLbSAFCP
+         bQ3A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=HSbvmRFW;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n17si2414673ilo.20.2021.03.18.14.56.35
+        by mx.google.com with ESMTPS id c2si4983632ybe.381.2021.03.19.01.19.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 18 Mar 2021 14:56:35 -0700 (PDT)
+        Fri, 19 Mar 2021 01:19:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=HSbvmRFW;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50742 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:54202 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lN0d9-0003aq-4a
-	for alex.bennee@linaro.org; Thu, 18 Mar 2021 17:56:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41446)
+	id 1lNAMC-0002YO-FE
+	for alex.bennee@linaro.org; Fri, 19 Mar 2021 04:19:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51792)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lN0cx-0003ae-R2
- for qemu-arm@nongnu.org; Thu, 18 Mar 2021 17:56:23 -0400
-Received: from mail-ot1-x335.google.com ([2607:f8b0:4864:20::335]:37774)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lN0cw-0001Ib-45
- for qemu-arm@nongnu.org; Thu, 18 Mar 2021 17:56:23 -0400
-Received: by mail-ot1-x335.google.com with SMTP id
- t23-20020a0568301e37b02901b65ab30024so6643216otr.4
- for <qemu-arm@nongnu.org>; Thu, 18 Mar 2021 14:56:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=wWoxWk6iH+D7yn1pettTTwgNja5Zzig50vwkwOCThGg=;
- b=HSbvmRFWz0cRqYtH7QIMl3E40DUyVPCsB6giJJGduuxQ5r+EFOEoVmnV7WHN7nnok7
- 6s2MJ4usi2sYpC3HLdjJaSd9FiPKC0MP8IlDtZ8jlX4ry9jRoYLnuWtBpal6UkX6IMJ7
- ZRvXr7G/0On7RFZFI2d7kSYbaizv3UkFuPYhw42btPPET9c6syKenzAjjWYtA5EVMrse
- +7KfcDLzv4J7trVOP17BRAqVltmknZGhgDZI6FvzCA89GzBgJJca71KiZ4t8TFu3vtNd
- iNor8Mo6LjvnC6r/6WrRYUKVmlv2F4v+hEvJ4iyzs5iajS656e5IJf36w1cUbDKG04MW
- gmnw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=wWoxWk6iH+D7yn1pettTTwgNja5Zzig50vwkwOCThGg=;
- b=kGjiSQqR1px8iG8N7KkoTElaYcgD/VdEHnLbJAV49OOsAbWB0+STTo7po7aUfBy26z
- lFGAQTRELLIqxMXrp1IS9NJQex3SfOyz75SDyK4dq0tjZ40zhPfJUz78GHgQ5GGDpnAO
- strf0mfbzNzmI2EydBcLiI6J+xCbnngvY3hetWomNk0fgXHRuMiLPvVKAQfcLqTvnGoN
- NUrB3ej9N2SJ4+Di3JhHmJu+mK8TB3rJLm80a6ege5icxLPXHG63zi2U1vgDhYZNd6sa
- s7jEa98eQMc5wwCUHihm1lEe9MJ0JPqNzFes1+AdN1Wi8PBqoe7onagkFtZZ60B5zSi4
- 0pRQ==
-X-Gm-Message-State: AOAM531xK1hZ1VAzsRsnxeasmhM9zepe/EwSFWhcRdWo/1Fq6fKVBF6T
- dk69u2Qog5RuXpl+uTxfm0mD7w==
-X-Received: by 2002:a9d:6a0a:: with SMTP id g10mr9092512otn.236.1616104580356; 
- Thu, 18 Mar 2021 14:56:20 -0700 (PDT)
-Received: from [10.10.121.52] (fixed-187-189-51-144.totalplay.net.
- [187.189.51.144])
- by smtp.gmail.com with ESMTPSA id r22sm754334otg.4.2021.03.18.14.56.18
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 18 Mar 2021 14:56:19 -0700 (PDT)
-Subject: Re: [PATCH for-6.0 v2 4/5] hw/core/loader: Add new function
- rom_ptr_for_as()
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20210318174823.18066-1-peter.maydell@linaro.org>
- <20210318174823.18066-5-peter.maydell@linaro.org>
- <176ca6cf-f917-eb5d-a5ce-d8a98db8fce4@linaro.org>
- <CAFEAcA-mZMP0LPmGKvMuUq8C_V6cG9AVpaAQ4SoWvihObO_VXA@mail.gmail.com>
- <ec96b321-80d4-948d-b482-dfad61eff67f@linaro.org>
- <CAFEAcA9i21sTkYoMfMt8sgN+18B3uHSqzG3No7k-+XJkzREi9A@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <706a2b95-f0ba-4abf-fdf7-09b7b856db45@linaro.org>
-Date: Thu, 18 Mar 2021 15:56:16 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.1
+ (Exim 4.90_1) (envelope-from <cfontana@suse.de>)
+ id 1lNALe-00023v-Kz; Fri, 19 Mar 2021 04:19:10 -0400
+Received: from mx2.suse.de ([195.135.220.15]:39896)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <cfontana@suse.de>)
+ id 1lNALc-0006Eo-Rp; Fri, 19 Mar 2021 04:19:10 -0400
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.221.27])
+ by mx2.suse.de (Postfix) with ESMTP id B049AAB8C;
+ Fri, 19 Mar 2021 08:19:03 +0000 (UTC)
+Subject: Re: arm_cpu_post_init (Was: Re: arm: "max" CPU class hierarchy
+ changes possible?)
+To: Eduardo Habkost <ehabkost@redhat.com>, Andrew Jones <drjones@redhat.com>
+References: <CAFEAcA8T+u6QG9PQWs40PTSZ86SEeLQrciT8WHxFyH3UVbipiA@mail.gmail.com>
+ <2e6a5d98-e022-0b39-5f30-92eb74491d3b@redhat.com>
+ <2277fdf5-ec92-476a-8fe5-0d4eee23dfef@suse.de>
+ <CAFEAcA_j-0+vmNFtPjcxEXC9r4bFrebDfGjq-x1SfguzUG4qcw@mail.gmail.com>
+ <20210311191046.ykcelkwq7orajyu7@kamzik.brq.redhat.com>
+ <5467e45c-cc8e-6422-0c56-398405a7c331@suse.de>
+ <c3397f29-82eb-5a1b-803d-8184c9a8d508@suse.de>
+ <20210318120837.cg4gfdpchjwiabav@kamzik.brq.redhat.com>
+ <fc769a96-a304-7429-5dee-a65b52179b1c@suse.de>
+ <20210318125908.zwpm47ftlsuen3zo@kamzik.brq.redhat.com>
+ <20210318131010.GT3139005@habkost.net>
+From: Claudio Fontana <cfontana@suse.de>
+Message-ID: <ce57f177-9215-fcb7-1b93-5cc738e50f4e@suse.de>
+Date: Fri, 19 Mar 2021 09:19:02 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.12.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9i21sTkYoMfMt8sgN+18B3uHSqzG3No7k-+XJkzREi9A@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <20210318131010.GT3139005@habkost.net>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::335;
- envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x335.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=195.135.220.15; envelope-from=cfontana@suse.de;
+ helo=mx2.suse.de
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -127,37 +95,53 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ qemu-devel <qemu-devel@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 445+i0i6CkVP
+X-TUID: AUi4RfaP2Ufc
 
-On 3/18/21 3:28 PM, Peter Maydell wrote:
-> On Thu, 18 Mar 2021 at 21:14, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
->>
->> On 3/18/21 1:02 PM, Peter Maydell wrote:
->>>>> +     * Note that we do not check @as against the 'as' member in the
->>>>> +     * 'struct Rom' returned by rom_ptr(). The Rom::as is the
->>>>> +     * AddressSpace which the rom blob should be written to...
->> ...
->>>> Should you really have this special case?  Nowhere is this going to verify that
->>>> @addr is in @as.
+On 3/18/21 2:10 PM, Eduardo Habkost wrote:
+> On Thu, Mar 18, 2021 at 01:59:08PM +0100, Andrew Jones wrote:
+>> On Thu, Mar 18, 2021 at 01:42:36PM +0100, Claudio Fontana wrote:
+>>> On 3/18/21 1:08 PM, Andrew Jones wrote:
+>>>> On Thu, Mar 18, 2021 at 12:32:30PM +0100, Claudio Fontana wrote:
+>>>>> And why do we have a separate arm_cpu_finalize_features()?
+>>>>
+>>>> Separate, because it's not just called from arm_cpu_realizefn().
 >>>
->>> It's the "happens almost all the time" case. Nothing verifies
->>> that @addr is in @as anyway -- see the "Note that" part of the
->>> comment above.
+>>> In particular it is also called by the monitor.c in qmp_query_cpu_model_expansion(),
+>>>
+>>> which basically creates an object of the cpu subclass,
+>>> and then calls arm_cpu_finalize_[features]() explicitly on the object.
+>>>
+>>> Is the qdev realize() method not called in this case? Should instead it be triggered, rather than initializing/realizing an incomplete object?
 >>
->> The comment explains why we don't examine Rom::as.
->> But we do check @addr vs @as via @as -> @fv -> flatview_translate.
+>> Can you elaborate on what you mean by "triggered"? The QMP query does the
+>> least that it can get away with while still reusing the CPU model's
+>> feature initialization code. Any suggestions for improving that,
+>> preferably in the form of a patch, would be welcome. If it works well for
+>> Arm, then it could probably be applied to other architectures. The Arm QMP
+>> query is modeled off the others.
 > 
-> All we do is look for "every other address in the AS that
-> maps to the same MR as the address we started with".
-> Are you asking about the !cbdata.mr exit ?
+> This sound very similar to x86_cpu_expand_features(), so the
+> approach makes sense to me.
 
-Well, I suppose.  I guess I didn't read the cb properly.
+Interesting, to me it sounds like a CPUClass method is hiding here, cc->cpu_expand_features(),
+I could help kickstart the implementation but would need a good description / comment of exactly which features are supposed to be expanded there. 
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> 
+> It wouldn't make sense to call realize() inside
+> qmp_query_cpu_model_expansion().  Realizing the CPU means
+> plugging it into the guest, and we would never want to do that
+> when executing a query command.
+> 
 
-r~
+Makes sense, thanks for the explanation.
+
+Ciao,
+
+Claudio

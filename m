@@ -1,165 +1,105 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1844136lfg;
-        Fri, 19 Mar 2021 21:19:19 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyJBnQLEY3HrVV9euQBlz8SevuY6KfT1SEaXF4uVks3mGR4qdcPsZ4O7qSd3gJvfIP2ZSOL
-X-Received: by 2002:a25:7d04:: with SMTP id y4mr10541042ybc.402.1616213959601;
-        Fri, 19 Mar 2021 21:19:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1616213959; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2226299lfg;
+        Sat, 20 Mar 2021 09:03:24 -0700 (PDT)
+X-Received: by 2002:a9d:70c9:: with SMTP id w9mr5331873otj.62.1616256204274;
+        Sat, 20 Mar 2021 09:03:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616256204; cv=none;
         d=google.com; s=arc-20160816;
-        b=WH1RWAzKMNxf22qzihgGJ2QqeNloZsRnOnuXlphZc4ZcRs9iaVLkhz5OChZptUDTyH
-         MBKY0vzWGYJxbh0ws+lnPrJvufcJkjI5qEdB+LGq+3WADyffXfX0huu8GjHPrDlHRZPA
-         coT6emGOX/7Avpym3nGDNSSPvf9BlA1Fyr/JKo888uzPh3haSeukC6g28zQ5QrIFcBEQ
-         GiPvWZr83ktpvPwYYyq+XZJOTyep7Vs7IiJ0jkbmbl4NyQ8tykpXCFrA1B7wtxkZ181H
-         QF4NCdmHw8b6xKgwHfbAZ26Dd+c/fjftP3TT9IfixtLjGj65ikYO4IdCZz9PH98vZ+ng
-         nRkA==
+        b=gv7O1iQ/Hk/8N9ni2zFl2ogAjQ++Oov9wycGcxtIjppIl6wsTTPst1URk/lYhdzP/U
+         6zhC8rj/iLPO1zIg54e7wb3NDtUc5i+royM6IsTYRxUKchtCjXJcUbz9vOotvrpI3weY
+         7v19eWlVzL0IZRrUDHdVi2lcMuDvvJacS1krED0KnkrU94U7aV2zgjbbY9mhX0DE+sxI
+         5rFMlfLLc3jmHUc8fKsKBdcWIPfB+3gr41gdLcptw8G6V4zPCZ/JEopYSa4xnKJQL5vV
+         gSSHvBMnTB+hWDsKTrzLqSTqKgXYz0klKWvshhjeEC+3FU9oNWOvXdZNdzefDqu36V7q
+         2TAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=lUnwcybZywkU5SwBHHcOsvqNm6NDwGhyBTSUV07CaOU=;
-        b=LM4DDUlSeBVkduJnRHAtQktyUJggOvnl9YUZ6sTzIBZRkd9gUu8OEvRcOHdteyXEqp
-         XI+CcEIH5vD3hkVjt4DZe3BVPnAvO6LOp3jDrnaf7IOgckkM6SOCFxFD0WbRuRU5+/rS
-         KA/0sl1Z8x58CAbu9SD7sBZ74KCLLcaTbEywg6p/9MNZEqzJFwxWQnmC2HSExDD0iuY5
-         sbZ70vPvC1Jllxc4Ap4q5CJSBED+9K6OztlNlGyCOkhL18gQKLrJk0BRoStFDvwV67yz
-         8eMO/mAvicJBhbaB3lwmCd5RyeSrv4N1EolhBWId+OcdCNmZob3KibEFPqgD2amJz1K5
-         gwxw==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=KFysDJ08D9omJTXIYlcLRJ7jgqI0qmUjZq0yFR6tzCE=;
+        b=SXWbPXC411fnvQm3gpEs99uvFTFed2sqgmjVHwUXlzzrHhnxdEdxKEH7UFoNJ02N/Q
+         AEB6YRYVDmtVwn3/abFEJGcIDr/FB6uXPkmT+0DTu9NwW7H8YqbP3bEazpihdKdcxEy+
+         ZokvRRHJcQinEwaBylqSHfY060kf4CLYEki3IxYPPYIhvUtMu8JYFUdYLB/2cUBO4hTx
+         QZ3rnwdq7tUrDwXlZ3asRqYDCOjmVbDSYuOwwJ3TtmmHwmVLPpH9okX70zJ4+0WS7NiJ
+         2eD9fpbMqGo6HJ1ymtnDPgbtcoc21iAAlGbULK7uqrr7zvUCK52e0VNu3kq10i6/bsiw
+         cqtw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=jJwwdqDl;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s189si1019933ybc.63.2021.03.19.21.19.19
+       dkim=pass header.i=@linaro.org header.s=google header.b=XghXtDIi;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id t15sor1849194otk.49.2021.03.20.09.03.23
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 19 Mar 2021 21:19:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Sat, 20 Mar 2021 09:03:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=jJwwdqDl;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33492 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lNT54-00044K-UB
-	for alex.bennee@linaro.org; Sat, 20 Mar 2021 00:19:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50824)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1lNT4w-00043x-9E
- for qemu-arm@nongnu.org; Sat, 20 Mar 2021 00:19:10 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:34016)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1lNT4s-0001nf-Ht
- for qemu-arm@nongnu.org; Sat, 20 Mar 2021 00:19:09 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1616213945;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=lUnwcybZywkU5SwBHHcOsvqNm6NDwGhyBTSUV07CaOU=;
- b=jJwwdqDlNE86vvtFaU+MDHnJIPr6zs/80xcECthq9IpDo5pyxbAsOtA486tZqlsg78swRs
- dVXlZDxrIZjL9/+4/GAFxSDV76zSmuBFacJBUNIesHh9I/BywH6PvCJ5ZFq519LO3KVxE8
- 8JzcJnzBjNA8xPcEM1QYa/rUZXiEN/U=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-227--mex6WckOJCd8rIK0_Co_A-1; Sat, 20 Mar 2021 00:19:01 -0400
-X-MC-Unique: -mex6WckOJCd8rIK0_Co_A-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D8E23107ACCA;
- Sat, 20 Mar 2021 04:18:58 +0000 (UTC)
-Received: from gshan.redhat.com (vpn2-54-40.bne.redhat.com [10.64.54.40])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 279005C1D1;
- Sat, 20 Mar 2021 04:18:56 +0000 (UTC)
-From: Gavin Shan <gshan@redhat.com>
-To: qemu-arm@nongnu.org
-Subject: [PATCH 1/2] disas/arm-a64.cc: Fix build error
-Date: Sat, 20 Mar 2021 12:18:54 +0800
-Message-Id: <20210320041854.68668-1-gshan@redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=XghXtDIi;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=KFysDJ08D9omJTXIYlcLRJ7jgqI0qmUjZq0yFR6tzCE=;
+        b=XghXtDIiYlIVe+ByLL40W8wbwWTnH97u0CpksdXCN01QLz/Z8pV+3mtKc72X1A2uXy
+         ppYPF4z8z10PwHH8Pce4PkQT5fS0dLsgkzM5ioZ87w3Lo5zGLhNZtBGudGvnCZyxe+DC
+         e2nh+JWSxrnBxpSsrR/ZwUx5Jad52Y1u7NryPkIvRV2d8E+m8KJdsDg1Ia/kp7GxallR
+         DtcC2dW573vGnCdV8Po+WjeUVyEUySW3yMiCEKqkLld6a18LBnXGgCLJSyCw8F3JRkU0
+         4JeTkLSjw/zFr20xJEUyjncVy7ogh998N+ap/zdhnpIt72Tmpx2YSPXcfq/QchTcH7Oe
+         KnAQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=KFysDJ08D9omJTXIYlcLRJ7jgqI0qmUjZq0yFR6tzCE=;
+        b=CNeoW3kAUJOQU9cj46jLZCW4mB5KUFERZ7p3JKy93TIRcAgIFfSrlHjwrOz5Wm0Flq
+         PS5eCqYE4WpAE5gbTeJbYUiq78rPMknO99/clvWxjZGw4YiK/TVeMAJZGtPvMUr5IybI
+         1tJ2dmO7x7Nv2x4dqUv79P2172RqkXH0FyafpbPGzB5d+ebvyi8sg+7kAbx42IMLgh9N
+         7NcyVf86LME5PdAmiTgpXUl0as54wKYxmFqJOU40OJ5ZG06jj/Uff6OwMQ9yKRLvAh14
+         kI6taOz7VtU/YobWmnqSduExK1rk8fdrUsuvNAevjrPMI80cHV0doj1groxUn06ZS852
+         iV6w==
+X-Gm-Message-State: AOAM532axA55bgsXsEssdbhDkWjx7TfM+dY1iVDdm4MG9nLGHRt2wtdp
+	NfgDG3pMCmecP3l4dAMfFkHuQzjiBv9T1A9+zuc=
+X-Google-Smtp-Source: ABdhPJwxdjfuLVMFES428jSmwjO39VPbcodbtPjDmHkG+IzEjpliyDcqFb93lXdvtlPJvbXcKpAnqg==
+X-Received: by 2002:a9d:3b85:: with SMTP id k5mr5125431otc.237.1616256203790;
+        Sat, 20 Mar 2021 09:03:23 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [10.10.121.52] (fixed-187-189-51-144.totalplay.net. [187.189.51.144])
+        by smtp.gmail.com with ESMTPSA id m19sm1946701oop.6.2021.03.20.09.03.22
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 20 Mar 2021 09:03:23 -0700 (PDT)
+Subject: Re: [PATCH v1 05/14] semihosting: move semihosting tests to multiarch
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+References: <20210320133706.21475-1-alex.bennee@linaro.org>
+ <20210320133706.21475-6-alex.bennee@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <ecfe75b0-1275-bca5-68d7-e6ed2e1abbaf@linaro.org>
+Date: Sat, 20 Mar 2021 10:03:19 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=gshan@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20210320133706.21475-6-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=gshan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.251,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
- qemu-devel@nongnu.org, shan.gavin@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aGP9c+kySpB+
+X-TUID: 3C8kPN2AUxnu
 
-This fixes the following build error with gcc v11.0.0:
+On 3/20/21 7:36 AM, Alex Bennée wrote:
+> It may be arm-compat-semihosting but more than one architecture uses
+> it so lets move the tests into the multiarch area. We gate it on the
+> feature and split the semicall.h header between the arches.
+> 
+> Also clean-up a bit of the Makefile messing about to one common set of
+> runners.
+> 
+> Signed-off-by: Alex Bennée<alex.bennee@linaro.org>
+> Message-Id:<20210312102029.17017-2-alex.bennee@linaro.org>
 
-  # gcc --version
-  gcc (GCC) 11.0.0 20210210 (Red Hat 11.0.0-0)
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-  [969/2604] Compiling C++ object libcommon.fa.p/disas_arm-a64.cc.o
-  FAILED: libcommon.fa.p/disas_arm-a64.cc.o
-    :
-  In file included from /usr/include/glib-2.0/glib/gmacros.h:241,
-                   from /usr/lib64/glib-2.0/include/glibconfig.h:9,
-                   from /usr/include/glib-2.0/glib/gtypes.h:32,
-                   from /usr/include/glib-2.0/glib/galloca.h:32,
-                   from /usr/include/glib-2.0/glib.h:30,
-                   from /home/gavin/sandbox/qemu.main/include/glib-compat.h:32,
-                   from /home/gavin/sandbox/qemu.main/include/qemu/osdep.h:126,
-                   from ../disas/arm-a64.cc:21:
-  /usr/include/c++/11/type_traits:56:3: error: template with C linkage
-     56 |   template<typename _Tp, _Tp __v>
-        |   ^~~~~~~~
-  ../disas/arm-a64.cc:20:1: note: ‘extern "C"’ linkage started here
-     20 | extern "C" {
-        | ^~~~~~~~~~
-
-Signed-off-by: Gavin Shan <gshan@redhat.com>
----
- disas/arm-a64.cc | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/disas/arm-a64.cc b/disas/arm-a64.cc
-index 9fa779e175..8545c04038 100644
---- a/disas/arm-a64.cc
-+++ b/disas/arm-a64.cc
-@@ -17,13 +17,13 @@
-  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-  */
- 
-+#include "vixl/a64/disasm-a64.h"
-+
- extern "C" {
- #include "qemu/osdep.h"
- #include "disas/dis-asm.h"
- }
- 
--#include "vixl/a64/disasm-a64.h"
--
- using namespace vixl;
- 
- static Decoder *vixl_decoder = NULL;
--- 
-2.23.0
-
+r~

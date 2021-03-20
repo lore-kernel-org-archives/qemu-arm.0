@@ -1,110 +1,127 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1586265lfg;
-        Fri, 19 Mar 2021 12:51:17 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwK5CFuNCz3cuEwXGgdFA6jnrWu2EJLstKp/CfGQQg5nwECu2gD4Kqm2bXmhNiaQDa2PoWK
-X-Received: by 2002:a92:cd0c:: with SMTP id z12mr3985877iln.109.1616183476912;
-        Fri, 19 Mar 2021 12:51:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1616183476; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2287565lfg;
+        Sat, 20 Mar 2021 10:52:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyFb1RnUuJ6M/NLuUVrqm666vXZBQ9HViBbu5QmUFiXIZGuVE0fgU1PY1ygPeqINYjKKxGs
+X-Received: by 2002:a25:7107:: with SMTP id m7mr15108614ybc.55.1616262741060;
+        Sat, 20 Mar 2021 10:52:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616262741; cv=none;
         d=google.com; s=arc-20160816;
-        b=FIAtEkUesu4ScKxHrPr8lKizX/OWzKBAluMGp0TCAaN0prL0iOESC/lhHagN4UTvqu
-         FtWi5eOyXepwaxGvE5V8FipM/rcIg3nRjPHnjEfb06B76Eq08B5vB42ujb+McRAP8ANe
-         WDJ86pv6L2PauAzSVvPqwkR/h/HQx8gP+Npa2PSK2YSi7fKkoFnBQLMvqXkTAK+1ByVB
-         EYri1WULYkm1zRZo0fnGwRxgkq3zIW2TTHiUC1X8WY+pY/anTl2KPekYw405VzyfYvWQ
-         6TqpnvkqxoQIF6GGf4zuh1TOEg0kzuJGQIQFLzGvuhQCSGp3leddHyAhGNMOItbTEovS
-         XiFw==
+        b=AY6AC2Ep2eA4wYydDmi4z5bV4hJVpm2N7u7vpShSx30NjTpGKXXY2cKkoNlN8SoWWS
+         JgUudeLNFlp0eMOMfJpv/wabv6R847YySCAmM0JJGmydlQ0wAMVORzylBnyQMpKvhje3
+         9529BYaA1IrqofIZA1M+Uo8wt/Ye/LZ5iYsxpbeqJNDHf62vwxmwsMHZx46e7kgS98go
+         5b+aJfxcjOBm7uV2D2YYnBbG4VZL2xsN3rf6lk4127f2pERGRzwfpbwbaskhleL1RdTl
+         88k/mbv3z11851CKZHRr8Eb6S9a9ZSnuHZ3qUVg9uFP2LbKaqe7BO48n3k3606zVPuzN
+         apGw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:mime-version
-         :message-id:date:dkim-signature;
-        bh=j46CI3Og4hVkDDNrH53Wwik7HYlH8KkukwySRapqCWU=;
-        b=w3hSRIAnzxuU16qLOBVk7pN1+LjiRNXjY4INN3YLiy/JjpU1frcOXsmSeNmUKNYCNo
-         RH1rA4PZ7SDhsp7kMwlvMC5Sml9JfMM5AX7eNg3yDg1560N2RAZtgnX8p52LBwyAu5Ck
-         3gSbs6HhDbNUCaqooLd3NvfA1JGK+OBEqi3erPQn9srZWeL2WhC7MKw4OB/vMPKvuKWK
-         4aPiQQhUnll/BE7gXIHZLUYvZqI7fKzykPZU9HP5m7zWKv2dmLVRM8UPuXoczDcF0YyO
-         gah9jVVBh4wpdrAt6kGcsa7EPPLYe6r6jW4B7QX8puJcuqzvejg7AtliBYm4urhBXZrc
-         Q4Kg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:subject:from:references:to:dkim-signature;
+        bh=+jZAd9HhlZg4BnTjX6jXLJJEr/uXVf9dPfUKNRs07Nc=;
+        b=kIruYmPg3QnQK01a3RBpRIUIn0e/VTenxdAmgzbosNu8znO3jb51Gstock4sJT/WXu
+         Qmj2NTKxdbmgfbG5/2BBOeER0vvVbNZEfp6zD+3YKIuXXtzUEHVBSME+i7z+eMnV1WEF
+         LjV2XmzL4fdTosSYRJxOlXC1lylCBIwye30ewcDqgtSLYtRe/MfrZBycj84ArWbE/W/6
+         qwz/beN8N5emyy3Qt2t6Of2QlrqVvcl4uBCTvHbd8GfSjY+edkYpdCGSc+lWGjhgxfT7
+         5fXYWRqEHceQy63w2IHeBFzC2PRpBQi0GTsqAue9zfDBB+DDhjPEuF4skw/vIIa5nuIL
+         aMiQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=GYj7hsz0;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=TcBCTnG6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b14si4380710ion.78.2021.03.19.12.51.16
+        by mx.google.com with ESMTPS id w17si9020776ybq.190.2021.03.20.10.52.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 19 Mar 2021 12:51:16 -0700 (PDT)
+        Sat, 20 Mar 2021 10:52:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=GYj7hsz0;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=TcBCTnG6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:52100 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:57622 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lNL9Q-0004jU-7J
-	for alex.bennee@linaro.org; Fri, 19 Mar 2021 15:51:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41640)
+	id 1lNfls-0008W0-Cu
+	for alex.bennee@linaro.org; Sat, 20 Mar 2021 13:52:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38958)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3pABVYAMKCAMgmhjrrjoh.frpthpx-dupqrqjqx.ruj@flex--dje.bounces.google.com>)
- id 1lNL9G-0004hx-Nm
- for qemu-arm@nongnu.org; Fri, 19 Mar 2021 15:51:06 -0400
-Received: from mail-vk1-xa49.google.com ([2607:f8b0:4864:20::a49]:47431)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3pABVYAMKCAMgmhjrrjoh.frpthpx-dupqrqjqx.ruj@flex--dje.bounces.google.com>)
- id 1lNL9C-0007J7-OY
- for qemu-arm@nongnu.org; Fri, 19 Mar 2021 15:51:06 -0400
-Received: by mail-vk1-xa49.google.com with SMTP id o128so4295639vkc.14
- for <qemu-arm@nongnu.org>; Fri, 19 Mar 2021 12:51:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=date:message-id:mime-version:subject:from:to:cc;
- bh=j46CI3Og4hVkDDNrH53Wwik7HYlH8KkukwySRapqCWU=;
- b=GYj7hsz0MkYuOu42/ryzsO7gctCRvx5eRxK58FVdd+1vbOGi4nIXcyQ8s18Gs+mtvq
- dXcpIlzj979Q/Jw9YFs9y66jF3+Lu27r8H0egEjuJHmDesIt0osR87PetYIaNfnN+6An
- wzy+TC46WtJaL1NQbM6aSR93OdFsME4hCPxlDhI42DX9XF4o4ZxTy1QSH58pwlRwqB7x
- dnYU0/+vyZQT4cajSZf/J2CqJanXF6V+rwk5SfQS+gaWSa0sUWSiHDacMrXBCpGw2yRj
- 72RB1M0hRH2amRWio72xE2gmzEFwvonnV/GD94/jyPbPeauv4QhwiwGQGe8cb/28//1Y
- Q2SQ==
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1lNfli-0008UU-KM
+ for qemu-arm@nongnu.org; Sat, 20 Mar 2021 13:52:10 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:49927)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1lNflg-0000af-3S
+ for qemu-arm@nongnu.org; Sat, 20 Mar 2021 13:52:10 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1616262727;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=+jZAd9HhlZg4BnTjX6jXLJJEr/uXVf9dPfUKNRs07Nc=;
+ b=TcBCTnG6MBVbh8NhudncvgpOBuN9P5ofiTIqE5ZGKQwB8iY4Qyh1DqAnI5AmRIovpDwyP9
+ lWpBbGP6QEepOjMezawe13YN6ugm5q3uLSDqSoMytnT9TRthG+asSt06ZtCZHlMhNQGd4L
+ kOeWTcyUIsXsQ+y+ROsBQgcu9PgCcHw=
+Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
+ [209.85.208.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-599-ahHNn5X6MAanvrnjEFRopA-1; Sat, 20 Mar 2021 13:52:03 -0400
+X-MC-Unique: ahHNn5X6MAanvrnjEFRopA-1
+Received: by mail-ed1-f72.google.com with SMTP id bi17so24679759edb.6
+ for <qemu-arm@nongnu.org>; Sat, 20 Mar 2021 10:52:03 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
- bh=j46CI3Og4hVkDDNrH53Wwik7HYlH8KkukwySRapqCWU=;
- b=PLHrsXj4QHykNsOaBgdZUXn7QXsfmdPyaucSRXr+N+PH2BORDLFA7j6SQ4p1Z7IxDY
- X5pSPLnj3CgeRTfzy2B5J/uIDkFyQAJ0CBHOyNj5qSdAeDEhJ9qeQLsTrrvlh5SDKdOT
- AbfDed4COHtliJvQZLIWjOR2zo+1wJTKvAL+4PbRZmo217e+DqDZXE6z1dg15FjoC1mR
- zqm0/il/Nnj2fw1j3S+Nx+ohPS5XnEUOOiDqlbthdKm0SlWsHaVVOV7fINjTCv3joeXc
- lyAO/ogu+c3df8TXbbCHYFT+Fa54VQoDPWPFemtlnjJQv0t8t5mrXeN+mXMpbnKBcePE
- qfyQ==
-X-Gm-Message-State: AOAM531M8fBsDcx8f0NGY3zqYyzyyQNjnia89ZYSoInDIHUq77A2nHhf
- erNejaPb7pNwvh2QnFL3pQ0eGZGhgfN+oNPvAWSicrqi9d3Wk98znPD16vXwE9OPR3cvJD1VUgd
- xqk7ArrYCAUm2LN9/7OVuKBZreQVjZqJ+S7WMA8K9k3JCvDMxbA==
-X-Received: from ruffy.mtv.corp.google.com
- ([2620:0:1000:1412:e514:6b57:7d74:59ea])
- (user=dje job=sendgmr) by 2002:ab0:2b06:: with SMTP id
- e6mr163139uar.43.1616183460527; 
- Fri, 19 Mar 2021 12:51:00 -0700 (PDT)
-Date: Fri, 19 Mar 2021 12:50:44 -0700
-Message-Id: <20210319195044.741821-1-dje@google.com>
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.31.0.rc2.261.g7f71774620-goog
-Subject: [PATCH] net/npcm7xx_emc.c: Fix handling of receiving packets when
- RSDR not set
-From: Doug Evans <dje@google.com>
-To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Cc: Havard Skinnemoen <hskinnemoen@google.com>,
- Tyrone Ting <kfting@nuvoton.com>, 
- Jason Wang <jasowang@redhat.com>, Doug Evans <dje@google.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::a49;
- envelope-from=3pABVYAMKCAMgmhjrrjoh.frpthpx-dupqrqjqx.ruj@flex--dje.bounces.google.com;
- helo=mail-vk1-xa49.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ h=x-gm-message-state:to:cc:references:from:subject:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=+jZAd9HhlZg4BnTjX6jXLJJEr/uXVf9dPfUKNRs07Nc=;
+ b=o0JLAdw/wIkkLrufamm/OpaN58CP/ERLozG/AVdIbyAhsIzu0hhbo0q+obYnykDFzF
+ swxyc85m/ygcsV/CP0Cg9FPVorQEiWgJeZxWrosOpt1UDVRKkCUvAcWrv6BT7unnxkx3
+ Q6XcxtCGQn+DdThF5qaaEKyvymJDfYU8Ly4W8STjgfnZpsZPuG8LjreIp7gm++M7D69O
+ 0f+EKeh3d+omMjoXX+N9dhhkLGlSujlfa7x7vvMHbx90o8HW2drrM4cNDLXH4rLV3roA
+ 0wf/MWIVlTlEN0m0V29YUgjZqXMKM7UJHZ5uMg/FS/ejJGZPYzdReyXctfKgNuYFTdSM
+ 5aKQ==
+X-Gm-Message-State: AOAM5320EgAsIF1sAwA+a5BZmGm/Z83LPRjNHJ8HQUL98Uz36MQhUEjU
+ pq6x4KIyTS029XSSpnpQaOqgTeZYM35p+VIXTPM7OgLnwEAn2EOPAw/Yv10Xo0Htm0orgognB1M
+ FkPWMt7vWOFNw
+X-Received: by 2002:a17:906:688:: with SMTP id
+ u8mr10532203ejb.38.1616262722433; 
+ Sat, 20 Mar 2021 10:52:02 -0700 (PDT)
+X-Received: by 2002:a17:906:688:: with SMTP id
+ u8mr10532188ejb.38.1616262722265; 
+ Sat, 20 Mar 2021 10:52:02 -0700 (PDT)
+Received: from ?IPv6:2001:b07:6468:f312:c8dd:75d4:99ab:290a?
+ ([2001:b07:6468:f312:c8dd:75d4:99ab:290a])
+ by smtp.gmail.com with ESMTPSA id r17sm6572102edm.89.2021.03.20.10.52.00
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 20 Mar 2021 10:52:01 -0700 (PDT)
+To: Gavin Shan <gshan@redhat.com>, qemu-devel@nongnu.org
+References: <20210320042753.69297-1-gshan@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [PATCH] configure: Improve alias attribute check
+Message-ID: <5a6e5d96-7b23-7a56-3096-fb80155cac26@redhat.com>
+Date: Sat, 20 Mar 2021 18:52:00 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.0
+MIME-Version: 1.0
+In-Reply-To: <20210320042753.69297-1-gshan@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=pbonzini@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.251,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -117,105 +134,46 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: thuth@redhat.com, richard.henderson@linaro.org, laurent@vivier.eu,
+ qemu-arm@nongnu.org, shan.gavin@gmail.com, philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9bfGhD3ppGZA
+X-TUID: JyXGsh7wxeNN
 
-Turning REG_MCMDR_RXON is enough to start receiving packets.
+On 20/03/21 05:27, Gavin Shan wrote:
+> It's still possible that the wrong value is returned from the alias
+> of variable even if the program can be compiled without issue. This
+> improves the check by executing the binary to check the result.
+> 
+> If alias attribute can't be working properly, the @target_page in
+> exec-vary.c will always return zeroes when we have the following gcc
+> version.
+> 
+>   # gcc --version
+>   gcc (GCC) 11.0.0 20210210 (Red Hat 11.0.0-0)
+> 
+> This abstracts the code from exec-vary.c and use it as indicator to
+> enable gcc alias attribute or not.
+> 
+> +void write_x(int val);
+> +
+> +void write_x(int val)
+> +{
+> +    x = val;
+> +}
+> +
+> +int main(void)
+> +{
+> +    return read_y();
+> +}
 
-Signed-off-by: Doug Evans <dje@google.com>
----
- hw/net/npcm7xx_emc.c           |  4 +++-
- tests/qtest/npcm7xx_emc-test.c | 30 +++++++++++++++++++++---------
- 2 files changed, 24 insertions(+), 10 deletions(-)
+I think this should be "read_y() == 1 ? 0 : 1".
 
-diff --git a/hw/net/npcm7xx_emc.c b/hw/net/npcm7xx_emc.c
-index 714a742ba7..7c892f820f 100644
---- a/hw/net/npcm7xx_emc.c
-+++ b/hw/net/npcm7xx_emc.c
-@@ -702,7 +702,9 @@ static void npcm7xx_emc_write(void *opaque, hwaddr offset,
-                    !(value & REG_MCMDR_RXON)) {
-             emc->regs[REG_MGSTA] |= REG_MGSTA_RXHA;
-         }
--        if (!(value & REG_MCMDR_RXON)) {
-+        if (value & REG_MCMDR_RXON) {
-+            emc->rx_active = true;
-+        } else {
-             emc_halt_rx(emc, 0);
-         }
-         break;
-diff --git a/tests/qtest/npcm7xx_emc-test.c b/tests/qtest/npcm7xx_emc-test.c
-index 7a28173195..9eec71d87c 100644
---- a/tests/qtest/npcm7xx_emc-test.c
-+++ b/tests/qtest/npcm7xx_emc-test.c
-@@ -492,9 +492,6 @@ static void enable_tx(QTestState *qts, const EMCModule *mod,
-         mcmdr |= REG_MCMDR_TXON;
-         emc_write(qts, mod, REG_MCMDR, mcmdr);
-     }
--
--    /* Prod the device to send the packet. */
--    emc_write(qts, mod, REG_TSDR, 1);
- }
- 
- static void emc_send_verify1(QTestState *qts, const EMCModule *mod, int fd,
-@@ -558,6 +555,9 @@ static void emc_send_verify(QTestState *qts, const EMCModule *mod, int fd,
-     enable_tx(qts, mod, &desc[0], NUM_TX_DESCRIPTORS, desc_addr,
-               with_irq ? REG_MIEN_ENTXINTR : 0);
- 
-+    /* Prod the device to send the packet. */
-+    emc_write(qts, mod, REG_TSDR, 1);
-+
-     /*
-      * It's problematic to observe the interrupt for each packet.
-      * Instead just wait until all the packets go out.
-@@ -643,13 +643,10 @@ static void enable_rx(QTestState *qts, const EMCModule *mod,
-         mcmdr |= REG_MCMDR_RXON | mcmdr_flags;
-         emc_write(qts, mod, REG_MCMDR, mcmdr);
-     }
--
--    /* Prod the device to accept a packet. */
--    emc_write(qts, mod, REG_RSDR, 1);
- }
- 
- static void emc_recv_verify(QTestState *qts, const EMCModule *mod, int fd,
--                            bool with_irq)
-+                            bool with_irq, bool pump_rsdr)
- {
-     NPCM7xxEMCRxDesc desc[NUM_RX_DESCRIPTORS];
-     uint32_t desc_addr = DESC_ADDR;
-@@ -679,6 +676,15 @@ static void emc_recv_verify(QTestState *qts, const EMCModule *mod, int fd,
-     enable_rx(qts, mod, &desc[0], NUM_RX_DESCRIPTORS, desc_addr,
-               with_irq ? REG_MIEN_ENRXINTR : 0, 0);
- 
-+    /*
-+     * If requested, prod the device to accept a packet.
-+     * This isn't necessary, the linux driver doesn't do this.
-+     * Test doing/not-doing this for robustness.
-+     */
-+    if (pump_rsdr) {
-+        emc_write(qts, mod, REG_RSDR, 1);
-+    }
-+
-     /* Send test packet to device's socket. */
-     ret = iov_send(fd, iov, 2, 0, sizeof(len) + sizeof(test));
-     g_assert_cmpint(ret, == , sizeof(test) + sizeof(len));
-@@ -826,8 +832,14 @@ static void test_rx(gconstpointer test_data)
- 
-     qtest_irq_intercept_in(qts, "/machine/soc/a9mpcore/gic");
- 
--    emc_recv_verify(qts, td->module, test_sockets[0], /*with_irq=*/false);
--    emc_recv_verify(qts, td->module, test_sockets[0], /*with_irq=*/true);
-+    emc_recv_verify(qts, td->module, test_sockets[0], /*with_irq=*/false,
-+                    /*pump_rsdr=*/false);
-+    emc_recv_verify(qts, td->module, test_sockets[0], /*with_irq=*/false,
-+                    /*pump_rsdr=*/true);
-+    emc_recv_verify(qts, td->module, test_sockets[0], /*with_irq=*/true,
-+                    /*pump_rsdr=*/false);
-+    emc_recv_verify(qts, td->module, test_sockets[0], /*with_irq=*/true,
-+                    /*pump_rsdr=*/true);
-     emc_test_ptle(qts, td->module, test_sockets[0]);
- 
-     qtest_quit(qts);
--- 
-2.31.0.rc2.261.g7f71774620-goog
+I can reproduce it with -flto -O2 but not without -flto, do you agree?
+
+Perhaps we can obtain the same optimization by wrapping reads of the 
+page size in an inline __attribute__((const)) function.  Richard, what 
+do you think?
+
+Paolo
 

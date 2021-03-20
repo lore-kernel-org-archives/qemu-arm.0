@@ -1,155 +1,154 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp237352lfg;
-        Thu, 18 Mar 2021 03:47:10 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw6vjFDd+ZTtCPKxV5xDkN9uhEC9SrqlxvJqKJoUwBzeJ88QgaHqcstmAU0SBoE7f4drray
-X-Received: by 2002:a05:6402:35cd:: with SMTP id z13mr2823988edc.21.1616064430176;
-        Thu, 18 Mar 2021 03:47:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1616064430; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2412775lfg;
+        Sat, 20 Mar 2021 15:34:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxdYqhU0dhzgnqWsv4CxQFdJDeeS4WYhPWfVEZ7BHIx817fKM0HvJazgSSK3S25Mx8FCTq7
+X-Received: by 2002:a25:ad57:: with SMTP id l23mr14507401ybe.172.1616279663483;
+        Sat, 20 Mar 2021 15:34:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616279663; cv=none;
         d=google.com; s=arc-20160816;
-        b=QdTg9Q0+7w9RRGWetOramrHvjyR5KYeQYnUyzgIYLrnc/lecFtJDP5lyb6unchI7Ve
-         bbhbF0MMqO5fDPh6yHyJDng+GKtgAi3xWZ3X0WJDnXkcSvpVsnqLAsHQkYj2fRdadH6o
-         Yal+g/c2kSgmTdyjl/ZkBVOBghZ9Gbm7r/cM+NxXrb5zqyeglHKHvNy0VRF1l5Pj01T6
-         EOWexS79WNJAiB/TalVPGzpuOlaWJkyXTEeBeOKl6aEmbHGkMLiF32Qqsmu12zfmKYxf
-         i44O/a6akmZNFKiA9U3TkXRVzmuneUEY1CQvEdPA2icfaWfuJruOUkmod7+zQAJV/z1u
-         Sj0w==
+        b=gzB/vmLCg29dVXAwiCLPJcsOsiJhR9eo6UjjM5iDWQBXHAm6JchjE1TbrZAlIXcBqb
+         Uea02EwjSk+Hyjq5NSXgX8SmnlbokFhMbJBCWHloMDdOREmzlbqr74GfaTusjrLfnwxY
+         3jsgwmUE+5+ySn7nMvlh4PgcTp7NEVVZ0FQBhoQM/qpdcDQRXvn7GcSXVtebMGTdfb5f
+         L8izTP0xbE+kjge41M+/9OojKQ+FfwKBM9FLCjqeXX63A+RlyVFWDh5itjy+zLXw/7CU
+         lH55wk/3t9whUVsXHMrLA7fJ4s4+9mA3Fo2b+wGOJFgBZwF+YhMT6KTJdWxePdgggiLh
+         WpvA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=ydCeXgICna55PjLHgHsra4HmULIKMVLqCEAZhSLxPcY=;
-        b=YUzNu0XMUXxFww8sgrU0n37dPtg6JT1hw9s6qiJiy+Q49fZFPZh0XDmBKGvyJMffO8
-         b5fXIjHX7nOr1Go86y37Sni9mARDfIeDW0UdC8/9xLcilmi9me4Ix7/4E5OR/1q20IPf
-         xIiJdouAqQTOWbo9ShzL5rmhXE614XcrdOWFfht5TVFi+gftOi4IKa6ItApqgmuliBbV
-         27Zz2L6l7uJqnkqMI13U8ojectGuMdqEdJ3VE0tGoJQjgfgByav+bWtdtczIouihffbw
-         lcD1XKKFR9xyQg1Ak1hleUYTYLzQzLEoGvgJAnSNrbtILnvBjOEkH04NwPd+8SSykykx
-         xKGQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=1UxKis0LVyGsYkzLfjdp1IYD4jd9L2RM7ZQeouyzT4o=;
+        b=gUr4sjq6hb+AJylTn5WuLFOkkIPMPgNgudFvFRpah+jLBw6BjG4E/XySF1bs5X4gr/
+         fya49mzk8dVXFBWcxyYRkBNitpfGlmoCWusodue2HUolW1ktnrhGFZ5BvKEj+KjouuC0
+         1Bzt6HOdE1h4iTO90dM/KAGwzaVwQe2Gbp++PzSKCjWLW/tCYHSFuhKm/aosVoUy6bFM
+         SQxypkIJhzKz7ink5q7igrVCG/CQIldqEFoiC+jmXgZsmzvdsJ8r/2FBEQK84eSVyxt8
+         TeGfK1TZL632Dhdy4P7wX42Qr/nBgmlPSRDHhxzOurxfFkS+gcjsrIkEoyWnPIGZAgDw
+         N7hA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BNszh4jr;
-       spf=pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [63.128.21.124])
-        by mx.google.com with ESMTPS id bf1si1186325edb.359.2021.03.18.03.47.09
+       dkim=fail header.i=@linaro.org header.s=google header.b=Egxb+jV6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id j18si8336866ybp.489.2021.03.20.15.34.23
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 18 Mar 2021 03:47:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) client-ip=63.128.21.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 20 Mar 2021 15:34:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BNszh4jr;
-       spf=pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1616064429;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=ydCeXgICna55PjLHgHsra4HmULIKMVLqCEAZhSLxPcY=;
-	b=BNszh4jrUs7u4Vrj6DaYbVkQ2ADi4rqzCuRh/YVYnE7Nj98TVUGzhZcJUwovKPymeEFnt0
-	6LyhFn2oNhHv6zbwhzzpwksRO1ws3XPYZeA55OPyxdPHCSbiXTSD7zWYmzmqxZ/UfsdI6Z
-	PwDfFjmWlL5Llldd5hL6QNj2+YWtxls=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-350-nq2xlN2lOiKe_go14kcQlg-1; Thu, 18 Mar 2021 06:47:07 -0400
-X-MC-Unique: nq2xlN2lOiKe_go14kcQlg-1
-Received: by mail-wr1-f70.google.com with SMTP id n16so18847050wro.1
-        for <alex.bennee@linaro.org>; Thu, 18 Mar 2021 03:47:07 -0700 (PDT)
+       dkim=fail header.i=@linaro.org header.s=google header.b=Egxb+jV6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:60876 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lNkAo-0004WO-Ny
+	for alex.bennee@linaro.org; Sat, 20 Mar 2021 18:34:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42982)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1lNkAV-0004Jx-4G
+ for qemu-arm@nongnu.org; Sat, 20 Mar 2021 18:34:03 -0400
+Received: from mail-ot1-x329.google.com ([2607:f8b0:4864:20::329]:34733)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1lNkAT-00060U-LM
+ for qemu-arm@nongnu.org; Sat, 20 Mar 2021 18:34:02 -0400
+Received: by mail-ot1-x329.google.com with SMTP id
+ k14-20020a9d7dce0000b02901b866632f29so12130386otn.1
+ for <qemu-arm@nongnu.org>; Sat, 20 Mar 2021 15:34:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=1UxKis0LVyGsYkzLfjdp1IYD4jd9L2RM7ZQeouyzT4o=;
+ b=Egxb+jV6YhtlwnCBbVGxYuMsm0N/zOL/jQRHIwVXS4ap6+ZR1SM+yGRMehB8QTJZMZ
+ 8vuUl39MIvS/HZy3tzRLLqREVloqDsSFdgP0z3qhyQzj/rouk/90fSxkQwvNjDr66XSf
+ ul0k27+pmFbEAOt7CY1oG6H5iwfrulDyIwIMyaDhCPKwVOUmAmE3kXRyNf3O0VQ+1OfG
+ 0Ij1H9i4iKcwkledkRKTPh5DJtSEbkCIef+Rwv7ab3UYb/F9j69t37q0fSxs6NvwAFJE
+ rRQ/SSbRKM8TBmWldGKJ2baU56vO2MEvDFGW7PXbT19se4fLKN3e65nsu0rrjiKO00Vp
+ Nl/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=ydCeXgICna55PjLHgHsra4HmULIKMVLqCEAZhSLxPcY=;
-        b=CF1qObEfY0VKZttOvqx/mXwBqoYcZS7GmW8bq+bcEgv/fIeaqmTEjRGbRs0llSlHjN
-         sk+H9xQbLiGoxETjW9nPO7ioHskQId50G521H+GlGC1K/CGUXN9a6wqPfT6nmF4klXut
-         1m9+MjzYUsjWL9DMhLp6/FeYlUXfJCFDGd3vFmTQSD21sWU6/3qCFLhFOraHs+eFRGGB
-         Ug0t86p9ZavJyOKhDa3jT/+4O39SjfRNnQ3uYT0EldZk8Dg4/jZIS6zdkxl5GKRE2G6X
-         e308p3a8XMvp1JSc8V5C8CEdfZ1dy+ANmmeOb9Hx9R+/TmbCkW3hARDtMZIiSa+DVqWg
-         1Tfw==
-X-Gm-Message-State: AOAM532cLwqRMpHwpDG72YyP7WS5KF9KGyiqd94mbYC5HraYYt0YDW74
-	m1dK1nkFdPu7OAt2BVMmBP+ClSzLPP+B79ey8geLtSWKKV0Ui0ycxF0z6wevE+RhP4ZAapGjggh
-	vZGtelfDpLpeFrR/W
-X-Received: by 2002:adf:ee92:: with SMTP id b18mr8703430wro.275.1616064426467;
-        Thu, 18 Mar 2021 03:47:06 -0700 (PDT)
-X-Received: by 2002:adf:ee92:: with SMTP id b18mr8703416wro.275.1616064426302;
-        Thu, 18 Mar 2021 03:47:06 -0700 (PDT)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.36] (17.red-88-21-201.staticip.rima-tde.net. [88.21.201.17])
-        by smtp.gmail.com with ESMTPSA id g15sm1795135wmq.31.2021.03.18.03.47.05
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 18 Mar 2021 03:47:05 -0700 (PDT)
-Subject: Re: [PATCH v2 3/3] target/arm: Restrict v7A TCG cpus to TCG accel
-To: Claudio Fontana <cfontana@suse.de>, qemu-devel@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-Cc: qemu-arm@nongnu.org, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>, Andrew Jones <drjones@redhat.com>
-References: <20210221222617.2579610-1-f4bug@amsat.org>
- <20210221222617.2579610-4-f4bug@amsat.org>
- <c395479b-d2e0-a862-3446-4afef601ca1f@suse.de>
- <8a302c84-b69c-b0c2-de45-607dd1f686a6@redhat.com>
- <e0d11b2c-7b1c-c968-feb2-675a8c98c7a4@suse.de>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <ec296129-2c4d-fd74-d044-50c470e29609@redhat.com>
-Date: Thu, 18 Mar 2021 11:47:04 +0100
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=1UxKis0LVyGsYkzLfjdp1IYD4jd9L2RM7ZQeouyzT4o=;
+ b=gjLSdCv8guRl/BnOwVkzvwnj1DqyYyFavUwuEyuFNxKmrF1xm4C7uGhhqAmG9tLDvm
+ GCUL2Vq9GzqQrSZ5xgbkdrlPsabtj9PQJb3SLPw1dZga+UJkQ6SDa99vdzLtLxDoXMsz
+ wKUlHtJKOarPYkRhUNMH7LejxkFM5WGkpvP041NUF6kBDOOWK2APEgLyQ6lGarY2y+93
+ 0zBuVrvS4Y21UlfXVemWUn1RoAM67wezpO+GhbtIZJHDz372GnH2q7qFFTPp5jiAlWDe
+ 9bAX/BV4+TpsuGyJ+vAjxvgbXKbfKF+Y7EKfLjv08sMw0clNISUuRx/ft2t5NV7B0ifa
+ 1Nwg==
+X-Gm-Message-State: AOAM531zXtVlxztzzhIQIX6+exsW5hpZZIUf+S1U9rBge2+/GkjK/i31
+ Hd+WlsdbzSGOJ/0fD69eE6Glmw==
+X-Received: by 2002:a05:6830:908:: with SMTP id
+ v8mr6399637ott.217.1616279639793; 
+ Sat, 20 Mar 2021 15:33:59 -0700 (PDT)
+Received: from [10.10.121.52] (fixed-187-189-51-144.totalplay.net.
+ [187.189.51.144])
+ by smtp.gmail.com with ESMTPSA id b14sm2113698ooj.26.2021.03.20.15.33.58
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 20 Mar 2021 15:33:59 -0700 (PDT)
+Subject: Re: [PATCH] configure: Improve alias attribute check
+To: Paolo Bonzini <pbonzini@redhat.com>, Gavin Shan <gshan@redhat.com>,
+ qemu-devel@nongnu.org
+References: <20210320042753.69297-1-gshan@redhat.com>
+ <5a6e5d96-7b23-7a56-3096-fb80155cac26@redhat.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <107a73a0-aafe-bfce-7c28-8ed5fe6c022f@linaro.org>
+Date: Sat, 20 Mar 2021 16:33:55 -0600
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.0
+ Thunderbird/78.7.1
 MIME-Version: 1.0
-In-Reply-To: <e0d11b2c-7b1c-c968-feb2-675a8c98c7a4@suse.de>
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <5a6e5d96-7b23-7a56-3096-fb80155cac26@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: 4++q/bC1QLfK
+Received-SPF: pass client-ip=2607:f8b0:4864:20::329;
+ envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x329.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: thuth@redhat.com, qemu-arm@nongnu.org, philmd@redhat.com, laurent@vivier.eu,
+ shan.gavin@gmail.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: V7lEyQAuV6V9
 
-On 3/18/21 10:56 AM, Claudio Fontana wrote:
-> On 3/18/21 10:47 AM, Philippe Mathieu-Daudé wrote:
->> Hi Peter,
->>
->> On 3/11/21 11:43 AM, Claudio Fontana wrote:
->>> On 2/21/21 11:26 PM, Philippe Mathieu-Daudé wrote:
->>>> KVM requires the target cpu to be at least ARMv8 architecture
->>>> (support on ARMv7 has been dropped in commit 82bf7ae84ce:
->>>> "target/arm: Remove KVM support for 32-bit Arm hosts").
->>>>
->>>> A KVM-only build won't be able to run TCG cpus, move the
->>>> v7A CPU definitions to cpu_tcg.c.
->>>>
->>>> Reported-by: Peter Maydell <peter.maydell@linaro.org>
->>>> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
->>>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->>>
->>>
->>> Here I think it's better to keep the "a15" cpu around,
->>> until we fix the board configuration situation.
->>>
->>> I added a patch that does that into my KVM-only build series, to avoid the resulting breakages.
->>
->> Actually I got a downstream report that this break migration from QEMU
->> 5.2 to QEMU 6.0.
->>
->> I first thought it was on an old kernel (with 32-bit KVM enabled),
->> but not, it is for Aarch64 VMs on recent KVM (without 32-bit support)
->> but the 'virt' machines were started with default Cortex-A15 CPU...
->>
->>     mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a15");
->>
->> I'm not sure upstream should care about this case, but I though
->> maybe you could give me hints about the best way to keep old VMs
->> working, as this likely affects any distribution. Obviously not
->> upgrading QEMU is not a solution :)
->>
->> The simplest seems to revert 82bf7ae84ce and this patch, but I
->> doubt this will be enough.
->>
->> Maybe there is some clever thing to do before reverting 82bf7ae84ce,
->> that could also benefit upstream, by doing something with versioned
->> machines? I have no idea (yet) how that work and if it could work.
+On 3/20/21 11:52 AM, Paolo Bonzini wrote:
+>> +int main(void)
+>> +{
+>> +    return read_y();
+>> +}
 > 
-> Does just applying my series fix it?
+> I think this should be "read_y() == 1 ? 0 : 1".
 
-But we are past soft-freeze so I'm looking for a surgical fix.
+As a testcase returning 0 on success, yes.
 
-I'll send a partial revert for now.
+> I can reproduce it with -flto -O2 but not without -flto, do you agree?
+
+Agreed.  Replicated with a random recent gcc 11 snapshot.
+This is really annoying of lto.  It's clear something needs to change though.
+
+> Perhaps we can obtain the same optimization by wrapping reads of the page size 
+> in an inline __attribute__((const)) function.  Richard, what do you think?
+
+I'll give it a shot and see what happens.
+
+
+r~

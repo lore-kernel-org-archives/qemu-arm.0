@@ -1,91 +1,94 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2965226lfg;
-        Sun, 21 Mar 2021 10:47:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwXA/mvJOSE5rBYp+FqlR62EJ+qKGJnT5sHJkBH2vs9MRpjCQzb4YrarDEZh+BDsQZdwL6x
-X-Received: by 2002:a25:c0d6:: with SMTP id c205mr3526138ybf.31.1616348844560;
-        Sun, 21 Mar 2021 10:47:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1616348844; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2984318lfg;
+        Sun, 21 Mar 2021 11:23:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxs5q7G80JSSqEo2231rzMtnkxhYr3Ck1qYLJkcWu35P8wKtsmETHqWPE6PgjAkIB5iZDQr
+X-Received: by 2002:a05:6e02:1068:: with SMTP id q8mr9460992ilj.57.1616351029702;
+        Sun, 21 Mar 2021 11:23:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616351029; cv=none;
         d=google.com; s=arc-20160816;
-        b=SIeM7qQcKHMlxtUBqfXc6sv5IiYSxy1XN5XvPfXj49D0x25XSS0yfzoyMfB/K1yAc5
-         +G2o0ODCdO/uP579IIJyc9YH5yfMir8easbbhqZebQGNaAy5up6uu/feDKL+t2www9UR
-         Kei9BmhgdjQr9D2HUmY8PAHlxlMiE5gwoMzVkLw2Rd/IIDhIAf9bagKGY3SRb1uFvVF+
-         cFXfY8zI7ufI7ppjhDzRGV+8DhxMKeIQOmP76nKcpj21k70MVbwZZtjDd1v4nUu4cgNB
-         3hQSawQQ8s2r1T7j1fA0QArubQx4eyz9OST8p16kRDd4d6k8qcAn48JLbuFxCZKBJWCn
-         SjcQ==
+        b=sMfgmxA4D9oChak0RpXQN2X5qjJoTKDEFIh7/AkhRbmXKb5imf7SwbWmQxdcDMdTUC
+         ExMWGi7GprYW65+S5vJQNA4jGxaX+uZ7vsssDlN82DB8Qr/NAccVP4gjF3HsHFpn7VJM
+         PScc0uB7QqjUVB0+2CE349WDCzVd4QZoFxTQbe0SB7xhwVAG/2rJe3DH58d7wu1zg1Of
+         UQ+J4hmubK4L0BrN71TXEPRPSt0BHTWLN/t57jnaHOFWQ7/NWiBQ0CxLNEFDQO6TYVtx
+         nAdSxIrucuVh2ifLqRA/AYhgjENBn9c/079rtwcf6SjP8MIYvyje30jF3fMEqowklyeg
+         tzZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=NrCHJZvKCoC7SNioLyPo0GqS34HqMycBLYeeTUjRQaA=;
-        b=FwBjI1YnyXUrRxjGE5FRmw2cA3v1hn4HglD8e1c56hcPQ7ujLJmMbc+9jaR2oko69C
-         wJK5C67Aopq1mfy1wXleWsIw6pySz0qCWWcmdAn8FAb0p2mG0We7f3sPDheYxbTIWsyi
-         c1fNCe94EaOg58hMDYKHOWQEBhxLgYldk10XFhEU838PlbQ2LVLxYgjbcvejm7OqCOUN
-         /Z4mS0Zxdg69AU62YMuRVrTXSQQ8W+9R9S7QI4FSemr5vCfB2XWeJX/e0ASnAsrJ2G9e
-         /b/ofdEV5stUy3++GzEYI+o0BsYKO33u7oxIUpWyFocTB7BcKO1LBgFOZrfiMJg6Z7tU
-         Iy3Q==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=Pj1PAyxsiuUEPDDgb2yHswzTVjSTyuDVe+SG0k7qMU4=;
+        b=taVHd+6l6pKW6SV4jZaFC8OZahFtRL5qnETZRkqNDoGSlDplD4Ipxh7nrptGmTGZTH
+         R2z4xwpnbeyBHn3ldSD9F1XdBXvVe9+FBAhsHxwS2t9CHx3K+jUmwraq2IjSLHRhhp1Y
+         onBospXmktRWfzJElcuBRgwoSeVV9zL9SGA3yefzzVQfjdtXcdMPqsLn2ZFb4LNE9La8
+         XDqVsAYcN+33wyn1zpQnUpTFU7DypOaEheZS9yc/ukxHdyYYB3qGW5Z5tGtSYUjKeI1x
+         nFeHULecpyYkDC1mVKUqLKFk5zLheZVU5VULr3uOC1V3n4gaFujvjf+VwgI4i47x/xHJ
+         FOeA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IGhYLp59;
+       dkim=fail header.i=@linaro.org header.s=google header.b=bsOTQU2+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n137si10594867yba.468.2021.03.21.10.47.24
+        by mx.google.com with ESMTPS id o18si7483609jat.92.2021.03.21.11.23.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 21 Mar 2021 10:47:24 -0700 (PDT)
+        Sun, 21 Mar 2021 11:23:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IGhYLp59;
+       dkim=fail header.i=@linaro.org header.s=google header.b=bsOTQU2+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43416 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:34196 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lO2Ad-0006Rn-O3
-	for alex.bennee@linaro.org; Sun, 21 Mar 2021 13:47:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43440)
+	id 1lO2js-0008Fv-St
+	for alex.bennee@linaro.org; Sun, 21 Mar 2021 14:23:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49324)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1lO2AQ-0006Pg-RF
- for qemu-arm@nongnu.org; Sun, 21 Mar 2021 13:47:10 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:51746)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1lO2AO-0002AK-1J
- for qemu-arm@nongnu.org; Sun, 21 Mar 2021 13:47:10 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1616348827;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=NrCHJZvKCoC7SNioLyPo0GqS34HqMycBLYeeTUjRQaA=;
- b=IGhYLp59d79GRfxi3ZJfgiK8hCpoSd77DWulwxcdCkYYxrxfqKLOTDLCUxrzN+IwKlVnGY
- CdqbtQSIeU460SU0TIQz/Z3/UPpb4dXteQO46z+kCZhUIfvzg5rdT6EMN1+EDSP6m4nCMP
- qCSL5Xv/wmSDQ+linGSNuMR9tVUUvBk=
-Received: from mail-pl1-f198.google.com (mail-pl1-f198.google.com
- [209.85.214.198]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-431-e1DcBK-nMjWy1Ew0096k4A-1; Sun, 21 Mar 2021 13:47:04 -0400
-X-MC-Unique: e1DcBK-nMjWy1Ew0096k4A-1
-Received: by mail-pl1-f198.google.com with SMTP id 17so25442360plj.1
- for <qemu-arm@nongnu.org>; Sun, 21 Mar 2021 10:47:04 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1lO2jH-0008Fe-61
+ for qemu-arm@nongnu.org; Sun, 21 Mar 2021 14:23:11 -0400
+Received: from mail-ot1-x332.google.com ([2607:f8b0:4864:20::332]:37831)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1lO2jD-0000F7-GE
+ for qemu-arm@nongnu.org; Sun, 21 Mar 2021 14:23:10 -0400
+Received: by mail-ot1-x332.google.com with SMTP id
+ t23-20020a0568301e37b02901b65ab30024so13758558otr.4
+ for <qemu-arm@nongnu.org>; Sun, 21 Mar 2021 11:23:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=Pj1PAyxsiuUEPDDgb2yHswzTVjSTyuDVe+SG0k7qMU4=;
+ b=bsOTQU2+MfPaiGGGjEvk1gQvM2hai+UDXAxSqYtBrQ+un+ZfPCdOyJ9lSyrq6l1ev4
+ 2XWm2FklY0hA1PL0WeKe0R3eVSPLB8jtu1D0H6s3DHPKhTH6UkqFHwa8MkWnP8AYZsQc
+ 2lhem8bcrqu3JD4klKaSBSYOAxK3lxo9MrXOLIN0IBL32kPC4NS5sh1n0/Pel1ATCWaI
+ Q246ivLbCrT8XJwOBDKEijvbijCjlbx4OtNcOapBZNn1UTsRW9S4X+u10WqzOhq7hjXF
+ XSEXP56RpzzDvrukOf/M6Ym/Ln64G/+Rvs6koG0/MYsEf2SmAShiZwh/cFVhVUsf8bGX
+ DPJA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=NrCHJZvKCoC7SNioLyPo0GqS34HqMycBLYeeTUjRQaA=;
- b=oVTf6knzCPJJU61hNExjhUG6LwMtWZggjue9eXTicb1rEuEm9Pej62CjotpD7SsJ+G
- PBvY5kkotzPFoYDsSdNT6wlKjniNxw9a5F8XCEWjDyp/++6lTH2utPt9+hdVRBPeToUG
- gxSCtCELnATWlCcwYgpwZm/7xE3dXv6Ve2xrOjbAPgM9295ZR1dkOSerV45xWiHEc+WO
- INDbH53XbJRZLga5+lWESMsCcEAxnNEhf0p5S3YNxjv0r6ym5b+mpLUw+ZFAdRTx3VO6
- BUkaLFTJ4YmmT/VboEkyA7FhXQLBI37diFpae2XQBbLu8v/u4gFGCQoSKDfisdzfXUBf
- c2tw==
-X-Gm-Message-State: AOAM532PiW3T99j+FR85WI+w0+KEW59feLXKw8hd6BVunptl47wWEDTY
- gs8wqpRf8zGvu+/O4XWI0inEMUG/OzHsb1AKHX4KhOyLOaid8ILJRGOZ6stVWxdnfh01KozBcsB
- LzvjQipP8OlYjfYHUuy0ClLunpNQp
-X-Received: by 2002:a63:e005:: with SMTP id e5mr19494327pgh.10.1616348823321; 
- Sun, 21 Mar 2021 10:47:03 -0700 (PDT)
-X-Received: by 2002:a63:e005:: with SMTP id e5mr19494307pgh.10.1616348823067; 
- Sun, 21 Mar 2021 10:47:03 -0700 (PDT)
-MIME-Version: 1.0
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=Pj1PAyxsiuUEPDDgb2yHswzTVjSTyuDVe+SG0k7qMU4=;
+ b=REvNjhqjWen5syA441WXLHLK4q6vrgUvaAo6J2yshMfl3FhlDlMIZsqCAjD1SAbZyn
+ AicY1m3LsKwtyAD5uxIUFH7MVQLQ6iteNX4aYvGo2askUWLuIE7VjdVE8hYQAd7OoBP/
+ 2OtCKlOnDnJOHSeVWTb0lPswNzrGouBVLOfqzMQsB1u264UjYMP6US7XKZ9LEovgzm8E
+ WuGhvPUoo6X4037c/sRhEVxSLHL4+9hTVwaALhDWKWTtxvwWkr/t2f0E+1YSpsH+GzBt
+ a9wXm5ARc0e0A82etGc4tyNUSpMk9Jkl+NK4oWi3/wIyjFTxtR5X0Y8Gij7SRvxbAKU3
+ IncA==
+X-Gm-Message-State: AOAM530RxWdITHcRBvK0UHxmjYRxAUboQvYpr3EsYz/3ZtftnGUZeXC+
+ jc0kRYO4i66/Ip5Amh2WCHubJQ==
+X-Received: by 2002:a9d:129:: with SMTP id 38mr8803443otu.50.1616350985590;
+ Sun, 21 Mar 2021 11:23:05 -0700 (PDT)
+Received: from [10.10.121.52] (fixed-187-189-51-144.totalplay.net.
+ [187.189.51.144])
+ by smtp.gmail.com with ESMTPSA id v22sm2568508oop.4.2021.03.21.11.23.03
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 21 Mar 2021 11:23:05 -0700 (PDT)
+Subject: Re: [PATCH] configure: Improve alias attribute check
+To: Paolo Bonzini <pbonzini@redhat.com>
 References: <20210320042753.69297-1-gshan@redhat.com>
  <5a6e5d96-7b23-7a56-3096-fb80155cac26@redhat.com>
  <107a73a0-aafe-bfce-7c28-8ed5fe6c022f@linaro.org>
@@ -93,26 +96,25 @@ References: <20210320042753.69297-1-gshan@redhat.com>
  <CABgObfafUvCAriWa+mFQKL=Js4GGuMrNr3Gw8v2Z+Z=J3xT7XA@mail.gmail.com>
  <fefde0c1-5670-7cd5-4f7c-ab11af6aeb62@linaro.org>
  <CABgObfbG701a-_TB2v7irYe1DpPY-_zExgJ4SPMfyUEJD_2uXw@mail.gmail.com>
-In-Reply-To: <CABgObfbG701a-_TB2v7irYe1DpPY-_zExgJ4SPMfyUEJD_2uXw@mail.gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Date: Sun, 21 Mar 2021 18:46:50 +0100
-Message-ID: <CABgObfazrLonuARgBUOfOC-13qQ4riKQx14x7uDbWnVba9xzSQ@mail.gmail.com>
-Subject: Re: [PATCH] configure: Improve alias attribute check
-To: Richard Henderson <richard.henderson@linaro.org>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: multipart/alternative; boundary="0000000000006eb42405be0f896c"
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+ <CABgObfazrLonuARgBUOfOC-13qQ4riKQx14x7uDbWnVba9xzSQ@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <0cad2de8-1150-be7c-237b-9f3ddea52473@linaro.org>
+Date: Sun, 21 Mar 2021 12:23:02 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.1
+MIME-Version: 1.0
+In-Reply-To: <CABgObfazrLonuARgBUOfOC-13qQ4riKQx14x7uDbWnVba9xzSQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::332;
+ envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x332.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=-0.01,
- RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -132,141 +134,19 @@ Cc: Aldy Hernandez <aldyh@redhat.com>, Thomas Huth <thuth@redhat.com>,
  Shan Gavin <shan.gavin@gmail.com>, Philippe Mathieu Daude <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZUjh/9aKVg30
+X-TUID: O8Nqpz9Nez6Q
 
---0000000000006eb42405be0f896c
-Content-Type: text/plain; charset="UTF-8"
+On 3/21/21 11:46 AM, Paolo Bonzini wrote:
+> HRM, what about biting the bullet and making exec-vary.c a C++ source?... Then 
+> instead of making it conditional an attribute((alias)), we make it conditional 
+> on having a C++ compiler.
 
-HRM, what about biting the bullet and making exec-vary.c a C++ source?...
-Then instead of making it conditional an attribute((alias)), we make it
-conditional on having a C++ compiler.
+Doesn't help.  The gcc bug I filed talks about c++, because that's the closest 
+analogy.
 
-Making cpu-all.h compile as C++ would be complex, but we can isolate all
-the required declarations in a separate header file that does not need
-either osdep.h or glib-compat.h, and basically just have a global
-constructor in exec-vary.cc that forwards to a function in exec.c.
+But set_preferred_target_page_bits is called *much* later than a constructor. 
+Though still before any use of the variable in question, for which we have an 
+--enable-debug-tcg assertion.
 
-Paolo
 
-Il dom 21 mar 2021, 18:43 Paolo Bonzini <pbonzini@redhat.com> ha scritto:
-
->
->
-> Il dom 21 mar 2021, 18:34 Richard Henderson <richard.henderson@linaro.org>
-> ha scritto:
->
->> On 3/21/21 10:50 AM, Paolo Bonzini wrote:
->> >     Another workaround may be to avoid compiling exec-vary.c with
->> -flto.  I'm not
->> >     sure that my meson fu is up to that.  Paolo?
->> >
->> > You would have to define a static library.
->>
->> Ok.  With an extra -fno-lto flag, or can I somehow remove -flto from the
->> library's cflags?  Or unset the meson b_lto variable?
->>
->
-> -fno-lto should work, yes. b_lto tries to cater to other compilers, but we
-> don't support anything but gcc-like drivers.
->
-> >     I have filed a gcc bug report:
->> >
->> >     https://gcc.gnu.org/bugzilla/show_bug.cgi?id=99696
->> >
->> >     Hopefully someone can address that before gcc 11 gets released.  At
->> which
->> >     point we need do nothing in qemu.  Aldy?
->>
->> So, I've reproduced the testcase failure with gcc 9.3 (ubuntu 20.04) as
->> well.
->> Which means that there are at least two releases for which this has not
->> worked.
->>
->> I think Gavin's runtime test is unnecessary.  We don't have to check the
->> runtime results, we can just [ "$lto" = true ], and we fairly well know
->> it'll fail.
->>
->
-> Yeah, if anything the test can be used to re-enable attribute((alias))
-> once we know there are some fixed compilers. (Though it's quite ugly to
-> have worse compilation when cross-compiling).
->
-> Paolo
->
->
->>
->> r~
->>
->>
-
---0000000000006eb42405be0f896c
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto">HRM, what about biting the bullet and making exec-vary.c =
-a C++ source?... Then instead of making it conditional an attribute((alias)=
-), we make it conditional on having a C++ compiler.<div dir=3D"auto"><br></=
-div><div dir=3D"auto">Making cpu-all.h compile as C++ would be complex, but=
- we can isolate all the required declarations in a separate header file tha=
-t does not need either osdep.h or glib-compat.h, and basically just have a =
-global constructor in exec-vary.cc that forwards to a function in exec.c.</=
-div><div dir=3D"auto"><br></div><div dir=3D"auto">Paolo</div></div><br><div=
- class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">Il dom 21 mar =
-2021, 18:43 Paolo Bonzini &lt;<a href=3D"mailto:pbonzini@redhat.com">pbonzi=
-ni@redhat.com</a>&gt; ha scritto:<br></div><blockquote class=3D"gmail_quote=
-" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><=
-div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" c=
-lass=3D"gmail_attr">Il dom 21 mar 2021, 18:34 Richard Henderson &lt;<a href=
-=3D"mailto:richard.henderson@linaro.org" target=3D"_blank" rel=3D"noreferre=
-r">richard.henderson@linaro.org</a>&gt; ha scritto:<br></div><blockquote cl=
-ass=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;p=
-adding-left:1ex">On 3/21/21 10:50 AM, Paolo Bonzini wrote:<br>
-&gt;=C2=A0 =C2=A0 =C2=A0Another workaround may be to avoid compiling exec-v=
-ary.c with -flto.=C2=A0 I&#39;m not<br>
-&gt;=C2=A0 =C2=A0 =C2=A0sure that my meson fu is up to that.=C2=A0 Paolo?<b=
-r>
-&gt; <br>
-&gt; You would have to define a static library.<br>
-<br>
-Ok.=C2=A0 With an extra -fno-lto flag, or can I somehow remove -flto from t=
-he <br>
-library&#39;s cflags?=C2=A0 Or unset the meson b_lto variable?<br></blockqu=
-ote></div></div><div dir=3D"auto"><br></div><div dir=3D"auto">-fno-lto shou=
-ld work, yes. b_lto tries to cater to other compilers, but we don&#39;t sup=
-port anything but gcc-like drivers.</div><div dir=3D"auto"><br></div><div d=
-ir=3D"auto"><div class=3D"gmail_quote"><blockquote class=3D"gmail_quote" st=
-yle=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">&gt;=
-=C2=A0 =C2=A0 =C2=A0I have filed a gcc bug report:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0<a href=3D"https://gcc.gnu.org/bugzilla/show_bug.cg=
-i?id=3D99696" rel=3D"noreferrer noreferrer noreferrer" target=3D"_blank">ht=
-tps://gcc.gnu.org/bugzilla/show_bug.cgi?id=3D99696</a><br>&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0Hopefully someone can address that before gcc 11 ge=
-ts released.=C2=A0 At which<br>
-&gt;=C2=A0 =C2=A0 =C2=A0point we need do nothing in qemu.=C2=A0 Aldy?<br><b=
-r>
-So, I&#39;ve reproduced the testcase failure with gcc 9.3 (ubuntu 20.04) as=
- well. <br>
-Which means that there are at least two releases for which this has not wor=
-ked.<br>
-<br>
-I think Gavin&#39;s runtime test is unnecessary.=C2=A0 We don&#39;t have to=
- check the <br>
-runtime results, we can just [ &quot;$lto&quot; =3D true ], and we fairly w=
-ell know it&#39;ll fail.<br></blockquote></div></div><div dir=3D"auto"><br>=
-</div><div dir=3D"auto">Yeah, if anything the test can be used to re-enable=
- attribute((alias)) once we know there are some fixed compilers. (Though it=
-&#39;s quite ugly to have worse compilation when cross-compiling).</div><di=
-v dir=3D"auto"><br></div><div dir=3D"auto">Paolo</div><div dir=3D"auto"><br=
-></div><div dir=3D"auto"><div class=3D"gmail_quote"><blockquote class=3D"gm=
-ail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-le=
-ft:1ex">
-<br>
-<br>
-r~<br>
-<br>
-</blockquote></div></div></div>
-</blockquote></div>
-
---0000000000006eb42405be0f896c--
-
+r~

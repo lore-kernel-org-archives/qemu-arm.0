@@ -1,112 +1,115 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3718953lfg;
-        Mon, 22 Mar 2021 08:57:47 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyRjJHM6Y8JSDCXnzIKmFqqSQcS+91ehQRsTmAWjlpA0w3R57me121R4r7RCzJ8237+2WSo
-X-Received: by 2002:a92:ad11:: with SMTP id w17mr515176ilh.199.1616428666829;
-        Mon, 22 Mar 2021 08:57:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1616428666; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3787456lfg;
+        Mon, 22 Mar 2021 10:24:15 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyyirSzQZk7Ek2DmR2TcHBRMByq1wWatahmyX1BUctOkUWKZ9svWaJhQ0T8L8pdmUyshoGm
+X-Received: by 2002:a6b:e312:: with SMTP id u18mr673589ioc.58.1616433855666;
+        Mon, 22 Mar 2021 10:24:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616433855; cv=none;
         d=google.com; s=arc-20160816;
-        b=hcZzBykqaXNF57gMYAG5FXxgPIgEy/p+GS+5vz0ZjG+QBve8ICD3CU+y0CU5b/ma4I
-         kgzR2/ou2je/jjn1UMXSIgrbJoL8J17v+oE8j3saqzyc4fuLzYu3KL9nN+JbnSa8iyfy
-         rdinz3mo4mLUK267GWCYG8SJLYrhqIb56DKUWUmOAaSJDz5B3u4fU6UAV1JjWXX6YOPE
-         qRGrC/wOf26SbFOMopv0gcbX8s02et0CoCsiyeRkDCRpTKKiNvH90mTgD9+HQjOO3642
-         pANqzftM8ZC/FVEc/5W1Y56bVW8SOorZRz9ikNqrdsOztOm6vO+ufcnJSP4Ev+EvaRGw
-         k7OQ==
+        b=HPYx6TY4FCrUcwl1Ml5HxaXj7UjhMGhl1wlxCDl6Ig/H+qMA2PNWHwTrIbzjtlKlbC
+         RrOxXhiqT6OLcidOWXYZC8+qc8DD/ixC9qDIt9JR00f6KITNl4J69uZAS4ZSQgw3B9AU
+         t099oFSGtvgqhsK3uhXO7yvM8dfZRd6MNiNl9qnQFwN5Y+yeoHFMRH4jjDMBdPv67Krt
+         Bomm6+B65RTqAuG6QijKMxHvdvXkFAFBrW6Fr82x0Ajc5/vFCXmRJ0mR2cwXd+lFBET/
+         C7ApJc0iYK/Gn+3Tj1JjfZDkuXcDT4U8kqaXAp3zuTAkRSPbKEaAoXl7kXBP7ClDMQbT
+         FJdQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=943xaER/uZ2yx+0NU3LkWfKz9OTuumEUfbOODT+zbzU=;
-        b=Jc8jZK9+WbroKt/hDF9JMl6CtLIeaTSj6ToP2dVUnGw59+3xxk3XjRFAwqA9iRVDZ4
-         Sqo1qp3XBNxEfL4Diz4wUELt8vFlHYfk3HBBqrgtRjEwlEX0Q0QP6hLBUhulfsGwQkJ9
-         KSy6Ig0ikbIuJFfkCi2XbNFUTd6Wl+4lBckbk42/h6WGV4KaM7nQ3nsi5HTBbG6rarhW
-         uMKHqZUYEPx/6fYfg+SC0GQbZlnU1rYmBQYsZ5vKSwF/SxchuGOdXP5K2hDRwtt9Dzq9
-         YJJkBQKCpUfu3dZMf6gpdijtdfLiyqrLbfMC5uXS0xABtxOcAzBv2ddVTUaiApxfp417
-         MHRw==
+        bh=6EIOj8kOe3G8xmO5YEi69htRRkTwVIv59rtCOgFmuXc=;
+        b=GoLEKhcV0LBywqmFY7jzU5JkauQYN35B42eZ3hTIchfUHzv3YMxysCSoYHD1LJ2Z23
+         6FSWXO4Z+OIctlrK+5cTWH/KVWCB/0g7Jkb+uHm+zqwqcrqkIfXEtCNL/1mePs4aed1W
+         pVi+xYf6nldsKb+ETBp4knI6/e2sjEkrRXf6NmxxBaJOb0w9nsusqfmM4ZPxa+MZIcpH
+         FyhyYjjMU0XmOfHfKkvo/FDDEXERRCfD72Bwmmo6k2zatLGtdVLw3V4luB4wiMzpH/Lg
+         Ro0+0ROUY/OGDS1GrMuXtyecZcV42Bl8NoFWtllCZp8xicQOz0XdboOqE7YHmgvyPRzy
+         K7Ng==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="UXVZ/jav";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="dF/JXLU0";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x1si9242555ilg.52.2021.03.22.08.57.46
+        by mx.google.com with ESMTPS id l10si9280488ilv.24.2021.03.22.10.24.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 Mar 2021 08:57:46 -0700 (PDT)
+        Mon, 22 Mar 2021 10:24:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="UXVZ/jav";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="dF/JXLU0";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34360 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50400 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lOMw6-0002Mn-4M
-	for alex.bennee@linaro.org; Mon, 22 Mar 2021 11:57:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38888)
+	id 1lOOHm-00076m-Tl
+	for alex.bennee@linaro.org; Mon, 22 Mar 2021 13:24:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40526)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1lOMkH-0005Xz-G1
- for qemu-arm@nongnu.org; Mon, 22 Mar 2021 11:45:33 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:59646)
+ (Exim 4.90_1) (envelope-from <wrampazz@redhat.com>)
+ id 1lOOCl-0000Iy-RS
+ for qemu-arm@nongnu.org; Mon, 22 Mar 2021 13:19:06 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:54594)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1lOMk8-0007Jn-NZ
- for qemu-arm@nongnu.org; Mon, 22 Mar 2021 11:45:33 -0400
+ (Exim 4.90_1) (envelope-from <wrampazz@redhat.com>)
+ id 1lOOCd-00015k-3O
+ for qemu-arm@nongnu.org; Mon, 22 Mar 2021 13:19:03 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1616427922;
+ s=mimecast20190719; t=1616433526;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=943xaER/uZ2yx+0NU3LkWfKz9OTuumEUfbOODT+zbzU=;
- b=UXVZ/javHIth0d+7xaYhuAEEHhxHGcaC/DBFqI78UZ/sTcsjcN54nFLbhBZEnrfvNl27vy
- I+NAh+3woXsq0NjII7R7Vrfywwv+ZstVTmX/bynW7DZG8J/mBoewj9O5p+tLT7PwS4bUnW
- xCY+Bx2HMh996GB0Yczn7cYzp5Ff9D4=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-214-RqHeZ4m0M6e87ekK6Rse7A-1; Mon, 22 Mar 2021 11:45:20 -0400
-X-MC-Unique: RqHeZ4m0M6e87ekK6Rse7A-1
-Received: by mail-wr1-f71.google.com with SMTP id h30so26370641wrh.10
- for <qemu-arm@nongnu.org>; Mon, 22 Mar 2021 08:45:20 -0700 (PDT)
+ bh=6EIOj8kOe3G8xmO5YEi69htRRkTwVIv59rtCOgFmuXc=;
+ b=dF/JXLU0NUoCE8TxJrhS5Fzp0En1H8kg2qWzJsOJni47J5AVDmvk71b8xyBGkLerhrVj/d
+ UrqFAloU7JdJwgmp+NaM/QzkZ/gHubVgkGzJnPNejwRTAHxJt9CYpPYAvv02XmrUKc//BV
+ fmIQQXcHoXb/rMMJjpydCnwfAOaInuI=
+Received: from mail-vk1-f198.google.com (mail-vk1-f198.google.com
+ [209.85.221.198]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-206-5S8ZsfIjNnaxvFN4yUjLNQ-1; Mon, 22 Mar 2021 13:18:44 -0400
+X-MC-Unique: 5S8ZsfIjNnaxvFN4yUjLNQ-1
+Received: by mail-vk1-f198.google.com with SMTP id k198so14465802vke.12
+ for <qemu-arm@nongnu.org>; Mon, 22 Mar 2021 10:18:44 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=943xaER/uZ2yx+0NU3LkWfKz9OTuumEUfbOODT+zbzU=;
- b=e5x52qWu/w3ldJlFxX5QlbYA0IWTdEdy7CIR3BCN0sW5pD+0bXMUxpNj2DjYjUBLRT
- mPSLRHHiH+Y7N3gHpMknnVgFhwH8mhLyLr0VGpu96hGWqS3BwwGam0QVME1C+AHkA+Qg
- CVy2m/f70yuIsk15xP2rwwy8fFTtdzLcFUF28B2jm1VGm3KIZQ1ENApYpJOSm8eMWPUD
- ANhvQebAGOvHJo4kNOYK2tplkDRRvxIiiSyhWV9BPkfqAOHxFgVO79AnmDLyZS7GPKc6
- C9HQ6v14casO+hL5ENTzn3B7R7CwdP7qVnq3Wx0bJg19IGg6JO3DppwAmh2pKrUMppSf
- 65sQ==
-X-Gm-Message-State: AOAM530Q0gqmSeS8U92jMvlRc5vwzvziZ8R+Z47nhZ6MgMBzcg4XHk2g
- 0+ERvbn+sqHwvB6AB7SFWJ0vsVm3PMTVpfma6G2Qs/IxWc6NIFUdq+d0FeoKX8hcioVVKNk4226
- pFzMZHetOGOa8
-X-Received: by 2002:a05:600c:1992:: with SMTP id
- t18mr412860wmq.125.1616427919114; 
- Mon, 22 Mar 2021 08:45:19 -0700 (PDT)
-X-Received: by 2002:a05:600c:1992:: with SMTP id
- t18mr412843wmq.125.1616427918959; 
- Mon, 22 Mar 2021 08:45:18 -0700 (PDT)
-Received: from redhat.com ([2a10:800e:f0d3:0:b69b:9fb8:3947:5636])
- by smtp.gmail.com with ESMTPSA id u2sm20840802wrp.12.2021.03.22.08.45.17
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 Mar 2021 08:45:18 -0700 (PDT)
-Date: Mon, 22 Mar 2021 11:45:16 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PULL 18/20] acpi: Move maximum size logic into acpi_add_rom_blob()
-Message-ID: <20210322154417.524229-19-mst@redhat.com>
-References: <20210322154417.524229-1-mst@redhat.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=6EIOj8kOe3G8xmO5YEi69htRRkTwVIv59rtCOgFmuXc=;
+ b=Fr8bxgrEM7G52QE5yaL+1DEDYHePASuh7NCxk5EqnQXAdhJd6iL+CiNw8GbkdczOP4
+ Tf21B7mmpxq7njGCIafqqLEC6Tv9XcGtYKxpjo4jXA2HFp2wCLnAhfnwTJ5RGcxQJBBH
+ MX2Y+CA7bRSZHrK349CoU3UrsHNH8T2pGPuP8oNxoLEcz9R+vnqo6rxedNuVeq8tznKr
+ eSqhjY9Uq8EJCqL8xI7zYMlsEejJLhbt3qaYW1c5ZEACbWuhS5IljR6ozng5GcahOgHX
+ p3iLjpmtE6ZfdepPke6cxG0UmXLVXaW8psDJfhP+4AbgU8UwQJW/3hnfiWI9F+a48p7Y
+ JXDw==
+X-Gm-Message-State: AOAM5326m5u38hzDlUrSV+WtTHfXBzDpkeEvJUIITCnCpuqFlEjdwuEr
+ eOnDbTZ+29CE1kU7kK1w0/lshIAe6UjVIqhLHj89olN+DxfeCmeT+3r44fIgB0MHhjrxf5z6NOF
+ 0RByzElGJWXMpgDrKGiSB68ofGUJK
+X-Received: by 2002:a1f:7889:: with SMTP id t131mr958120vkc.2.1616433523973;
+ Mon, 22 Mar 2021 10:18:43 -0700 (PDT)
+X-Received: by 2002:a1f:7889:: with SMTP id t131mr958087vkc.2.1616433523716;
+ Mon, 22 Mar 2021 10:18:43 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20210322154417.524229-1-mst@redhat.com>
-X-Mailer: git-send-email 2.27.0.106.g8ac3dc51b1
-X-Mutt-Fcc: =sent
+References: <20210304203540.41614-1-nieklinnenbank@gmail.com>
+ <20210304203540.41614-3-nieklinnenbank@gmail.com>
+ <CAKJDGDZq_ioF91BUWRo_y0GKYGbjgZa46Pt83wp7t3b_ZC=ixw@mail.gmail.com>
+ <4d6d2e89-1152-249b-fe55-d1b611fd77e8@redhat.com>
+ <CAPan3WqJHFy=GKVXFHgDbTimmZsBueUUhxvs4L+D58J-JQF3ew@mail.gmail.com>
+ <CAKJDGDaUrbVpmNRvJvc+psWXzNUk6s=u8NxsR6E727UjiwsjeQ@mail.gmail.com>
+ <CAKJDGDZ2yf_Z1y6qxmet=6rtH90C1BZ_cOGNW41Jk-d1EzJFwQ@mail.gmail.com>
+ <fe4d5ba3-643a-70c0-417f-73d5ccb5acda@amsat.org>
+In-Reply-To: <fe4d5ba3-643a-70c0-417f-73d5ccb5acda@amsat.org>
+From: Willian Rampazzo <wrampazz@redhat.com>
+Date: Mon, 22 Mar 2021 14:18:17 -0300
+Message-ID: <CAKJDGDZtNhro8YhCQVatO8Xw5riwz7593mmg9r4HaMDn+vC1ZQ@mail.gmail.com>
+Subject: Re: [PATCH v3 2/5] tests/acceptance/boot_linux_console: remove
+ Armbian 19.11.3 bionic test for orangepi-pc machine
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=wrampazz@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=wrampazz@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
@@ -127,192 +130,137 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>, David Hildenbrand <david@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Alistair Francis <alistair.francis@xilinx.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Laszlo Ersek <lersek@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ Daniel Berrange <berrange@redhat.com>, qemu-devel <qemu-devel@nongnu.org>,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Pavel Dovgalyuk <Pavel.Dovgaluk@ispras.ru>,
+ Cleber Rosa Junior <crosa@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UMKM9+2XnB+4
+X-TUID: /PQdrTiH9qYU
 
-From: David Hildenbrand <david@redhat.com>
+Hi Philippe,
 
-We want to have safety margins for all tables based on the table type.
-Let's move the maximum size logic into acpi_add_rom_blob() and make it
-dependent on the table name, so we don't have to replicate for each and
-every instance that creates such tables.
+On Mon, Mar 22, 2021 at 1:54 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g> wrote:
+>
+> Hi Willian,
+>
+> On 3/8/21 9:44 PM, Willian Rampazzo wrote:
+> > On Mon, Mar 8, 2021 at 5:41 PM Willian Rampazzo <wrampazz@redhat.com> w=
+rote:
+> >>
+> >> On Mon, Mar 8, 2021 at 5:32 PM Niek Linnenbank <nieklinnenbank@gmail.c=
+om> wrote:
+> >>>
+> >>> Hi Philippe, Willian,
+> >>>
+> >>> On Mon, Mar 8, 2021 at 8:52 AM Philippe Mathieu-Daud=C3=A9 <philmd@re=
+dhat.com> wrote:
+> >>>>
+> >>>> On 3/5/21 4:16 PM, Willian Rampazzo wrote:
+> >>>>> On Thu, Mar 4, 2021 at 5:44 PM Niek Linnenbank <nieklinnenbank@gmai=
+l.com> wrote:
+> >>>>>>
+> >>>>>> The image for Armbian 19.11.3 bionic has been removed from the arm=
+bian server.
+> >>>>>> Without the image as input the test arm_orangepi_bionic_19_11 cann=
+ot run.
+> >>>>>>
+> >>>>>> This commit removes the test completely and merges the code of the=
+ generic function
+> >>>>>> do_test_arm_orangepi_uboot_armbian back with the 20.08 test.
+> >>>>>>
+> >>>>>> Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+> >>>>>> ---
+> >>>>>>  tests/acceptance/boot_linux_console.py | 72 ++++++++-------------=
+-----
+> >>>>>>  1 file changed, 23 insertions(+), 49 deletions(-)
+> >>>>>>
+> >>>>>> diff --git a/tests/acceptance/boot_linux_console.py b/tests/accept=
+ance/boot_linux_console.py
+> >>>>>> index eb01286799..9fadea9958 100644
+> >>>>>> --- a/tests/acceptance/boot_linux_console.py
+> >>>>>> +++ b/tests/acceptance/boot_linux_console.py
+> >>>>>> @@ -802,7 +802,29 @@ def test_arm_orangepi_sd(self):
+> >>>>>>          # Wait for VM to shut down gracefully
+> >>>>>>          self.vm.wait()
+> >>>>>>
+> >>>>>> -    def do_test_arm_orangepi_uboot_armbian(self, image_path):
+> >>>>>> +    @skipUnless(os.getenv('ARMBIAN_ARTIFACTS_CACHED'),
+> >>>>>> +                'Test artifacts fetched from unreliable apt.armbi=
+an.com')
+> >>>>>> +    @skipUnless(os.getenv('AVOCADO_ALLOW_LARGE_STORAGE'), 'storag=
+e limited')
+> >>>>>> +    def test_arm_orangepi_bionic_20_08(self):
+> >>>>>> +        """
+> >>>>>> +        :avocado: tags=3Darch:arm
+> >>>>>> +        :avocado: tags=3Dmachine:orangepi-pc
+> >>>>>> +        :avocado: tags=3Ddevice:sd
+> >>>>>> +        """
+> >>>>>> +
+> >>>>>> +        # This test download a 275 MiB compressed image and expan=
+d it
+> >>>>>> +        # to 1036 MiB, but the underlying filesystem is 1552 MiB.=
+..
+> >>>>>> +        # As we expand it to 2 GiB we are safe.
+> >>>>>> +
+> >>>>>> +        image_url =3D ('https://dl.armbian.com/orangepipc/archive=
+/'
+> >>>>>> +                     'Armbian_20.08.1_Orangepipc_bionic_current_5=
+.8.5.img.xz')
+> >>>>>
+> >>>>> The Armbian 20 is not available on this link anymore. I can browse =
+just 21.
+> >>>>
+> >>>> Cat-and-mouse game *sigh*.
+>
+> 2021-03-22 17:18:10,701 download         L0067 INFO | Fetching
+> https://archive.armbian.com/orangepipc/archive/Armbian_20.08.1_Orangepipc=
+_bionic_current_5.8.5.img.xz
+> -> /home/phil/avocado/da
+> ta/cache/by_location/f2eb27a12b81ce15e93f340fabbced2136af1caa/Armbian_20.=
+08.1_Orangepipc_bionic_current_5.8.5.img.xz.nfwdzivg
+> 2021-03-22 17:18:11,263 asset            L0136 INFO | Temporary asset
+> file unavailable due to failed download attempt.
+> 2021-03-22 17:18:11,263 asset            L0368 ERROR| URLError: <urlopen
+> error [Errno 113] No route to host>
+>
+> It might be a temporary problem, but looking long term the
+> current setup doesn't scale IMHO.
+>
 
-Suggested-by: Laszlo Ersek <lersek@redhat.com>
-Cc: Alistair Francis <alistair.francis@xilinx.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: Igor Mammedov <imammedo@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
-Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>
-Cc: Richard Henderson <richard.henderson@linaro.org>
-Cc: Laszlo Ersek <lersek@redhat.com>
-Signed-off-by: David Hildenbrand <david@redhat.com>
-Message-Id: <20210304105554.121674-4-david@redhat.com>
-Reviewed-by: Laszlo Ersek <lersek@redhat.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
----
- include/hw/acpi/aml-build.h |  4 ----
- include/hw/acpi/utils.h     |  3 +--
- hw/acpi/utils.c             | 12 ++++++++++--
- hw/arm/virt-acpi-build.c    | 13 ++++++-------
- hw/i386/acpi-build.c        |  8 +++-----
- hw/i386/acpi-microvm.c      | 16 ++++++----------
- 6 files changed, 26 insertions(+), 30 deletions(-)
+Have you changed something in the test? The test is supposed to skip
+when the asset is not available in the cache. What was the result of
+this test execution? Skip, fail, or error? If it was not Skip, we need
+to investigate what happened.
 
-diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
-index ca781f3531..471266d739 100644
---- a/include/hw/acpi/aml-build.h
-+++ b/include/hw/acpi/aml-build.h
-@@ -4,10 +4,6 @@
- #include "hw/acpi/acpi-defs.h"
- #include "hw/acpi/bios-linker-loader.h"
- 
--/* Reserve RAM space for tables: add another order of magnitude. */
--#define ACPI_BUILD_TABLE_MAX_SIZE         0x200000
--#define ACPI_BUILD_LOADER_MAX_SIZE        0x10000
--
- #define ACPI_BUILD_APPNAME6 "BOCHS "
- #define ACPI_BUILD_APPNAME8 "BXPC    "
- 
-diff --git a/include/hw/acpi/utils.h b/include/hw/acpi/utils.h
-index 140b4de603..0022df027d 100644
---- a/include/hw/acpi/utils.h
-+++ b/include/hw/acpi/utils.h
-@@ -4,6 +4,5 @@
- #include "hw/nvram/fw_cfg.h"
- 
- MemoryRegion *acpi_add_rom_blob(FWCfgCallback update, void *opaque,
--                                GArray *blob, const char *name,
--                                uint64_t max_size);
-+                                GArray *blob, const char *name);
- #endif
-diff --git a/hw/acpi/utils.c b/hw/acpi/utils.c
-index a134a4d554..f2d69a6d92 100644
---- a/hw/acpi/utils.c
-+++ b/hw/acpi/utils.c
-@@ -27,9 +27,17 @@
- #include "hw/loader.h"
- 
- MemoryRegion *acpi_add_rom_blob(FWCfgCallback update, void *opaque,
--                                GArray *blob, const char *name,
--                                uint64_t max_size)
-+                                GArray *blob, const char *name)
- {
-+    uint64_t max_size = 0;
-+
-+    /* Reserve RAM space for tables: add another order of magnitude. */
-+    if (!strcmp(name, ACPI_BUILD_TABLE_FILE)) {
-+        max_size = 0x200000;
-+    } else if (!strcmp(name, ACPI_BUILD_LOADER_FILE)) {
-+        max_size = 0x10000;
-+    }
-+
-     return rom_add_blob(name, blob->data, acpi_data_len(blob), max_size, -1,
-                         name, update, opaque, NULL, true);
- }
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index a91550de6f..f5a2b2d4cb 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -859,14 +859,13 @@ void virt_acpi_setup(VirtMachineState *vms)
-     /* Now expose it all to Guest */
-     build_state->table_mr = acpi_add_rom_blob(virt_acpi_build_update,
-                                               build_state, tables.table_data,
--                                              ACPI_BUILD_TABLE_FILE,
--                                              ACPI_BUILD_TABLE_MAX_SIZE);
-+                                              ACPI_BUILD_TABLE_FILE);
-     assert(build_state->table_mr != NULL);
- 
--    build_state->linker_mr =
--        acpi_add_rom_blob(virt_acpi_build_update, build_state,
--                          tables.linker->cmd_blob, ACPI_BUILD_LOADER_FILE,
--                          ACPI_BUILD_LOADER_MAX_SIZE);
-+    build_state->linker_mr = acpi_add_rom_blob(virt_acpi_build_update,
-+                                               build_state,
-+                                               tables.linker->cmd_blob,
-+                                               ACPI_BUILD_LOADER_FILE);
- 
-     fw_cfg_add_file(vms->fw_cfg, ACPI_BUILD_TPMLOG_FILE, tables.tcpalog->data,
-                     acpi_data_len(tables.tcpalog));
-@@ -880,7 +879,7 @@ void virt_acpi_setup(VirtMachineState *vms)
- 
-     build_state->rsdp_mr = acpi_add_rom_blob(virt_acpi_build_update,
-                                              build_state, tables.rsdp,
--                                             ACPI_BUILD_RSDP_FILE, 0);
-+                                             ACPI_BUILD_RSDP_FILE);
- 
-     qemu_register_reset(virt_acpi_build_reset, build_state);
-     virt_acpi_build_reset(build_state);
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index dc56006353..3aeae15e57 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -2628,14 +2628,12 @@ void acpi_setup(void)
-     /* Now expose it all to Guest */
-     build_state->table_mr = acpi_add_rom_blob(acpi_build_update,
-                                               build_state, tables.table_data,
--                                              ACPI_BUILD_TABLE_FILE,
--                                              ACPI_BUILD_TABLE_MAX_SIZE);
-+                                              ACPI_BUILD_TABLE_FILE);
-     assert(build_state->table_mr != NULL);
- 
-     build_state->linker_mr =
-         acpi_add_rom_blob(acpi_build_update, build_state,
--                          tables.linker->cmd_blob, ACPI_BUILD_LOADER_FILE,
--                          ACPI_BUILD_LOADER_MAX_SIZE);
-+                          tables.linker->cmd_blob, ACPI_BUILD_LOADER_FILE);
- 
-     fw_cfg_add_file(x86ms->fw_cfg, ACPI_BUILD_TPMLOG_FILE,
-                     tables.tcpalog->data, acpi_data_len(tables.tcpalog));
-@@ -2674,7 +2672,7 @@ void acpi_setup(void)
-         build_state->rsdp = NULL;
-         build_state->rsdp_mr = acpi_add_rom_blob(acpi_build_update,
-                                                  build_state, tables.rsdp,
--                                                 ACPI_BUILD_RSDP_FILE, 0);
-+                                                 ACPI_BUILD_RSDP_FILE);
-     }
- 
-     qemu_register_reset(acpi_build_reset, build_state);
-diff --git a/hw/i386/acpi-microvm.c b/hw/i386/acpi-microvm.c
-index 502aac0ba2..271710eb92 100644
---- a/hw/i386/acpi-microvm.c
-+++ b/hw/i386/acpi-microvm.c
-@@ -249,16 +249,12 @@ void acpi_setup_microvm(MicrovmMachineState *mms)
-     acpi_build_microvm(&tables, mms);
- 
-     /* Now expose it all to Guest */
--    acpi_add_rom_blob(acpi_build_no_update, NULL,
--                      tables.table_data,
--                      ACPI_BUILD_TABLE_FILE,
--                      ACPI_BUILD_TABLE_MAX_SIZE);
--    acpi_add_rom_blob(acpi_build_no_update, NULL,
--                      tables.linker->cmd_blob,
--                      ACPI_BUILD_LOADER_FILE, ACPI_BUILD_LOADER_MAX_SIZE);
--    acpi_add_rom_blob(acpi_build_no_update, NULL,
--                      tables.rsdp,
--                      ACPI_BUILD_RSDP_FILE, 0);
-+    acpi_add_rom_blob(acpi_build_no_update, NULL, tables.table_data,
-+                      ACPI_BUILD_TABLE_FILE);
-+    acpi_add_rom_blob(acpi_build_no_update, NULL, tables.linker->cmd_blob,
-+                      ACPI_BUILD_LOADER_FILE);
-+    acpi_add_rom_blob(acpi_build_no_update, NULL, tables.rsdp,
-+                      ACPI_BUILD_RSDP_FILE);
- 
-     acpi_build_tables_cleanup(&tables, false);
- }
--- 
-MST
+> >>> Just to clarify here: in this patch I wanted to only make the change =
+to remove the test for the 19.11.3 image.
+> >>> And in the 3rd patch (tests/acceptance/boot_linux_console: change URL=
+ for test_arm_orangepi_bionic_20_08)
+> >>> do the update for to correct the 20.08 link. So each patch fixes one =
+problem at a time.
+> >>>
+> >>> Does that make sense, or do you prefer that I combine them in a singl=
+e patch instead?
+> >>
+> >> Ops, I forgot about the 3rd patch in this series. That makes sense to
+> >> me, sorry for the mess.
+> >>
+> >
+> > And, in this case,
+> >
+> > Reviewed-by: Willian Rampazzo <willianr@redhat.com>
+> >
+> >>>
+> >>> Regards,
+> >>> Niek
+> >>>
+> >>> --
+> >>> Niek Linnenbank
+> >>>
+> >
+>
 

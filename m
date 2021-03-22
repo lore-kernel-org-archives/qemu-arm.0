@@ -1,110 +1,105 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3445319lfg;
-        Mon, 22 Mar 2021 03:19:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzU7NnpID9R/OcYTNLLjzyVf/FabGVWKQa+JNZJoezPdB18TbI3UlOCCRwgm5fZexurot8y
-X-Received: by 2002:a25:12c3:: with SMTP id 186mr7317987ybs.236.1616408341711;
-        Mon, 22 Mar 2021 03:19:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1616408341; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3468476lfg;
+        Mon, 22 Mar 2021 03:51:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwmpcTJl4WMbuiwaakshN5F9p42aj7HIzTPUSES18p2A99Y9jQo7s02fAjEpxiIrZoH/f7i
+X-Received: by 2002:a25:d3cd:: with SMTP id e196mr23766559ybf.182.1616410302550;
+        Mon, 22 Mar 2021 03:51:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616410302; cv=none;
         d=google.com; s=arc-20160816;
-        b=KDM1RJJyARobKHbE2r55P8cjDroOW9s2Y3kIFMJXMsEBpA7KFaX1PxutYSH6rQuYnJ
-         2GvuUCmQJ40odTZRy0Iamr8koFRZ0pUWe6KtzMgyVtOA32nDP+VpDm/eVPuZM2qJjxOf
-         aMqfYFf7sRYvxRkqFg6jAj0ojkdLT4qTopvxemCMOq/S3XFrmAX/CWndkx5SXXIJcfuJ
-         haGCnNgIW+1zlkFm4A21jySmPojz0idn0q+CDlfSazQpYwF79K9HJJGt5u4Hs1PiDqRC
-         2d67Ncs7AfTjLea8Z0N5m2UC5hbgskvoobyCoKiamRF3IbdhHwE3fesY0tDCznAvvXWV
-         OxlQ==
+        b=SP/G406ELJklPyAwNSh2hixM7wnx8C7jkfAxADokfLoRsQG5muSwfQNBiqJM+0uMRp
+         +nI6d7bTfDLh0INzp1pvVokyC2Vcq0Q94VrT2StvP0I4e/IU27bm0mAJHAum+rYayDVW
+         vsRqQuuLtVawnxEi7Cnv/pmwyvMF3u/4d0klUTm7J5Zc6cRYuArOxEsx8qi/EzN4FH1A
+         Km6HOvrZ361YsGGOspyzVaxKC3AmvQanQbTRlofFhJ5jAfSYCy0Bepku7+Xq2WiqyHAA
+         ZjmSXOKuxAzoo0EQyGmSKvF4BdvQspX+WaNRN8jf47J461HbG1LhD3fomQLDCLcKx89E
+         er6A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=jf1VGujtece+sgrlTdeq9JiiLbbG5le4coO4jmGjzMs=;
-        b=w7AhnED6icCc1u8qFxCwcGHT/JsDV1MhJQv++N6QjXw06FTrVLxHtT06/bKE9FVXE4
-         4bBK7zSIRUjqwpM5rvxyVVQ0qSvO03ltxAJcpD+XEGWcugmTj2k8ILNTB86jfRhVxchB
-         LvjPLrbhq34JggTi2gBu5SvEgiivDuQXpsUn1+dmG8OPHJR934j3uXSIi5sCwB1WQPuf
-         eQBSUefv0pAF+N4DcmyiOs8KsiNdZLMkzE3pSzsyyV0Y+QhKUlsxBTAsZRro0czh6LvZ
-         6qPHTR2mwYMHhfJ2kPTM03EwJ43stm4YCRuVMd9hbTsn1CTKdIXqdWXtmKZZjM4xtbkV
-         DrsQ==
+        bh=IdMyx4Ge8WP5u/ksqA3Bu4g4/7MUQLUbjBsq/UzTV1M=;
+        b=Xs0E9g8E/EbzN86o/lT/cvyrWc+HW2JqcP2WeiC9XsuRNqu693nQ4NFexo/oQips7Z
+         /RspYaxvqQThNAofN0VuZsGbDAM9t4xWvXvpuQd87gEmSNOIXwndtM3X2aRY0m7W/lT1
+         NKcVhwO4fZIf0UkjcPmzOv9FaGF/943eGmdtRz/Fku4wtw9NjxNC2b/hwxinJ1OV6907
+         WlC/XMMMSRQKUWv9OtUWveKDy1J233RwxQDkLtlhyJ2sRw9TfnTyCx5baD4dcUEPYeDw
+         21/qmYDp+uKXilcCVppnQJaXhZEdyrTm9RI73A3SnvbhHnM4NmsZHhrk50Y8ceftO+uG
+         Orog==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=N6iKUsFm;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bLnw8SEN;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i137si2398025yba.368.2021.03.22.03.19.01
+        by mx.google.com with ESMTPS id f10si8604156ybp.38.2021.03.22.03.51.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 Mar 2021 03:19:01 -0700 (PDT)
+        Mon, 22 Mar 2021 03:51:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=N6iKUsFm;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bLnw8SEN;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48082 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:49464 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lOHeH-0000ZS-05
-	for alex.bennee@linaro.org; Mon, 22 Mar 2021 06:19:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55908)
+	id 1lOI9t-0001gi-S8
+	for alex.bennee@linaro.org; Mon, 22 Mar 2021 06:51:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39520)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <haibo.xu@linaro.org>)
- id 1lOHTP-0007Dc-J1
- for qemu-devel@nongnu.org; Mon, 22 Mar 2021 06:07:47 -0400
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f]:40599)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <haibo.xu@linaro.org>)
- id 1lOHTL-0002Rl-Rg
- for qemu-devel@nongnu.org; Mon, 22 Mar 2021 06:07:47 -0400
-Received: by mail-pl1-x62f.google.com with SMTP id g1so6277977plg.7
- for <qemu-devel@nongnu.org>; Mon, 22 Mar 2021 03:07:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=jf1VGujtece+sgrlTdeq9JiiLbbG5le4coO4jmGjzMs=;
- b=N6iKUsFm3jc2NUeWupkVAaHWrDMQnmpc+3X563QHjhEeWbp40BYEqrnBl+3qyNdnr9
- PAQ+8JyJBUmH6QAgHiQGkD2GbjHnp/QJmUrQkbWnEuJxZ6pk17z+3LDznE34CJkT5r6P
- KLMfXvpD7GBtSj83bnkS+hIP5UUsI8BNRhK03dn+hQ3+MKBWl0vBMxNVOiIsbDq0fCLf
- /FjB70CPhXy4lp8J68FWX6PrpsB3eJRhIsYIqIBQDJeMcBq23rM76kDjwzdFEgB+zQDW
- We1GaJwdbK0Uhaf9JeGmfWLdjUdNF3SLhanAKVAF0JIz6RwH4UriRTMcQn0r+4/MDgd/
- jmzQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=jf1VGujtece+sgrlTdeq9JiiLbbG5le4coO4jmGjzMs=;
- b=Ca1fLkDJV6INYOilhxdP977YyQM7Dm1DfsxYziQyfH19yJO5P/YtHx7gKoP2c1H5A2
- +Zlq4d8S6XKMSpsJjv2wKGKzX/3sXZO+KvNvnkrXzsBvzlPdUQtfjH3KW2qAj/loDEv4
- r5fcdUdermOs+avWFLH906TYHKkKEFj6ve6XObHdmstLw00yinYY65Nb7Sw0gub9dk5w
- q6Lxopcu3bxX5aU2iJpBJdMb0u3QxDSzG/FiPWZ2fH1SMkTeqJ00GaFJcs3obxCjAOiE
- 8+lDzu7KXtoj3RwfQUdWS966BALflUxKo1VtNaEfneYZZMqAtRJakr3BDm5I+cbOOe/q
- hUfA==
-X-Gm-Message-State: AOAM533WuxTMyEbFloIjNLtJEUXd6AWxqm/cnQdM6FIFX/XPcfoTrk3k
- XWVptS3MFmm0B4YncJU6Rml6Lkr50hU8
-X-Received: by 2002:a17:90b:681:: with SMTP id
- m1mr12231622pjz.168.1616407660836; 
- Mon, 22 Mar 2021 03:07:40 -0700 (PDT)
-Received: from localhost.localdomain ([147.75.106.138])
- by smtp.gmail.com with ESMTPSA id c193sm13697145pfc.180.2021.03.22.03.07.39
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 Mar 2021 03:07:40 -0700 (PDT)
-From: Haibo Xu <haibo.xu@linaro.org>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
-Subject: [PATCH 1/3] Update linux header with new arm64 NV macro.
-Date: Mon, 22 Mar 2021 10:07:24 +0000
-Message-Id: <636b5932e4cf061b6f97516e82d4319c1d29b871.1616052889.git.haibo.xu@linaro.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <cover.1616052889.git.haibo.xu@linaro.org>
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1lOI7T-0000CC-0Q
+ for qemu-devel@nongnu.org; Mon, 22 Mar 2021 06:49:11 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:46761)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1lOI7R-0001P3-2E
+ for qemu-devel@nongnu.org; Mon, 22 Mar 2021 06:49:10 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1616410148;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=IdMyx4Ge8WP5u/ksqA3Bu4g4/7MUQLUbjBsq/UzTV1M=;
+ b=bLnw8SENfbVV81URA+TYMw+n42MUsetPU5ioH/HEuJ9GlOv0vlW+lkku25NweO0ZFIp4CY
+ SLddGYmAvF02rjxew/prAxoqdeXDz53/ZZEaC0nLBg/EvHFQkNzMuAJ5XkuKhEzycpvZEq
+ jSJyWEm8mh4FV1sVl9FSkkrL5IibeH0=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-447-LvMn0ekuOJax2atLdcfg5A-1; Mon, 22 Mar 2021 06:49:06 -0400
+X-MC-Unique: LvMn0ekuOJax2atLdcfg5A-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 22C5781623;
+ Mon, 22 Mar 2021 10:49:05 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.40.194.23])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id D582C2B3BE;
+ Mon, 22 Mar 2021 10:49:02 +0000 (UTC)
+Date: Mon, 22 Mar 2021 11:48:59 +0100
+From: Andrew Jones <drjones@redhat.com>
+To: Haibo Xu <haibo.xu@linaro.org>
+Subject: Re: [PATCH 3/3] Enable nested virtualization support in arm64 KVM mode
+Message-ID: <20210322104859.snm764n7sfmrpmrd@kamzik.brq.redhat.com>
 References: <cover.1616052889.git.haibo.xu@linaro.org>
+ <b7c2626e6c720ccc43e57197dff3dac72d613640.1616052890.git.haibo.xu@linaro.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62f;
- envelope-from=haibo.xu@linaro.org; helo=mail-pl1-x62f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+In-Reply-To: <b7c2626e6c720ccc43e57197dff3dac72d613640.1616052890.git.haibo.xu@linaro.org>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=drjones@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -117,50 +112,191 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, richard.henderson@linaro.org,
- Haibo Xu <haibo.xu@linaro.org>, pbonzini@redhat.com, philmd@redhat.com
+Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, pbonzini@redhat.com,
+ philmd@redhat.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EiJFbh/qiOo8
+X-TUID: D4ldK1tYELQL
 
-Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
----
- linux-headers/asm-arm64/kvm.h | 2 ++
- linux-headers/linux/kvm.h     | 1 +
- 2 files changed, 3 insertions(+)
+On Mon, Mar 22, 2021 at 10:07:26AM +0000, Haibo Xu wrote:
+> Add support for arm64 el2 in qemu KVM mode(nested virtualization).
+> This feature is disabled by default, just as that in TCG mode, and
+> can be enabled by "-M virt,accel=kvm,virtualization=on" when starting
+> a VM.
+> 
+> Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
+> ---
+>  hw/arm/virt.c        | 11 ++++++++---
+>  target/arm/cpu.h     |  8 ++++++++
+>  target/arm/kvm64.c   | 14 ++++++++++++++
+>  target/arm/kvm_arm.h | 28 ++++++++++++++++++++++++++++
+>  4 files changed, 58 insertions(+), 3 deletions(-)
+> 
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index aa2bbd14e0..72e60348d5 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -663,6 +663,11 @@ static void create_gic(VirtMachineState *vms)
+>              qdev_prop_set_uint32(vms->gic, "redist-region-count[1]",
+>                  MIN(smp_cpus - redist0_count, redist1_capacity));
+>          }
+> +
+> +        if (kvm_irqchip_in_kernel()) {
+> +            qdev_prop_set_bit(vms->gic, "has-virtualization-extensions",
+> +                              vms->virt);
+> +        }
+>      } else {
+>          if (!kvm_irqchip_in_kernel()) {
+>              qdev_prop_set_bit(vms->gic, "has-virtualization-extensions",
+> @@ -1905,9 +1910,9 @@ static void machvirt_init(MachineState *machine)
+>          exit(1);
+>      }
+>  
+> -    if (vms->virt && kvm_enabled()) {
+> -        error_report("mach-virt: KVM does not support providing "
+> -                     "Virtualization extensions to the guest CPU");
+> +    if (vms->virt && kvm_enabled() && !kvm_arm_nested_virt_supported()) {
+> +        error_report("mach-virt: nested virtualization requested, "
+> +                     "but not supported by the host.");
+>          exit(1);
+>      }
+>  
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index 193a49ec7f..377187152b 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -4182,6 +4182,14 @@ static inline bool isar_feature_aa64_ssbs(const ARMISARegisters *id)
+>      return FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, SSBS) != 0;
+>  }
+>  
+> +/*
+> + * Currently we don't differentiate between the ARMv8.3-NV and ARMv8.4-NV.
+> + */
+> +static inline bool isar_feature_aa64_nv(const ARMISARegisters *id)
+> +{
+> +    return FIELD_EX64(id->id_aa64mmfr2, ID_AA64MMFR2, NV) != 0;
+> +}
 
-diff --git a/linux-headers/asm-arm64/kvm.h b/linux-headers/asm-arm64/kvm.h
-index b6a0eaa32a..77b995a26c 100644
---- a/linux-headers/asm-arm64/kvm.h
-+++ b/linux-headers/asm-arm64/kvm.h
-@@ -106,6 +106,7 @@ struct kvm_regs {
- #define KVM_ARM_VCPU_SVE		4 /* enable SVE for this CPU */
- #define KVM_ARM_VCPU_PTRAUTH_ADDRESS	5 /* VCPU uses address authentication */
- #define KVM_ARM_VCPU_PTRAUTH_GENERIC	6 /* VCPU uses generic authentication */
-+#define KVM_ARM_VCPU_HAS_EL2		7 /* Support nested virtualization */
- 
- struct kvm_vcpu_init {
- 	__u32 target;
-@@ -334,6 +335,7 @@ struct kvm_vcpu_events {
- #define KVM_DEV_ARM_VGIC_GRP_CPU_SYSREGS 6
- #define KVM_DEV_ARM_VGIC_GRP_LEVEL_INFO  7
- #define KVM_DEV_ARM_VGIC_GRP_ITS_REGS 8
-+#define KVM_DEV_ARM_VGIC_GRP_MAINT_IRQ 9
- #define KVM_DEV_ARM_VGIC_LINE_LEVEL_INFO_SHIFT	10
- #define KVM_DEV_ARM_VGIC_LINE_LEVEL_INFO_MASK \
- 			(0x3fffffULL << KVM_DEV_ARM_VGIC_LINE_LEVEL_INFO_SHIFT)
-diff --git a/linux-headers/linux/kvm.h b/linux-headers/linux/kvm.h
-index 020b62a619..ce4630c4db 100644
---- a/linux-headers/linux/kvm.h
-+++ b/linux-headers/linux/kvm.h
-@@ -1056,6 +1056,7 @@ struct kvm_ppc_resize_hpt {
- #define KVM_CAP_ENFORCE_PV_FEATURE_CPUID 190
- #define KVM_CAP_SYS_HYPERV_CPUID 191
- #define KVM_CAP_DIRTY_LOG_RING 192
-+#define KVM_CAP_ARM_EL2 193
- 
- #ifdef KVM_CAP_IRQ_ROUTING
- 
--- 
-2.17.1
+What calls this function?
+
+> +
+>  /*
+>   * Feature tests for "does this exist in either 32-bit or 64-bit?"
+>   */
+> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+> index dff85f6db9..2810104dea 100644
+> --- a/target/arm/kvm64.c
+> +++ b/target/arm/kvm64.c
+> @@ -500,6 +500,7 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+>       */
+>      int fdarray[3];
+>      bool sve_supported;
+> +    bool el2_supported;
+>      uint64_t features = 0;
+>      uint64_t t;
+>      int err;
+> @@ -646,6 +647,7 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+>      }
+>  
+>      sve_supported = ioctl(fdarray[0], KVM_CHECK_EXTENSION, KVM_CAP_ARM_SVE) > 0;
+> +    el2_supported = ioctl(fdarray[0], KVM_CHECK_EXTENSION, KVM_CAP_ARM_EL2) > 0;
+>  
+>      kvm_arm_destroy_scratch_host_vcpu(fdarray);
+>  
+> @@ -671,6 +673,10 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+>      features |= 1ULL << ARM_FEATURE_PMU;
+>      features |= 1ULL << ARM_FEATURE_GENERIC_TIMER;
+>  
+> +    if (el2_supported) {
+> +        features |= 1ULL << ARM_FEATURE_EL2;
+> +    }
+> +
+>      ahcf->features = features;
+>  
+>      return true;
+> @@ -721,6 +727,11 @@ bool kvm_arm_steal_time_supported(void)
+>      return kvm_check_extension(kvm_state, KVM_CAP_STEAL_TIME);
+>  }
+>  
+> +bool kvm_arm_nested_virt_supported(void)
+> +{
+> +    return kvm_check_extension(kvm_state, KVM_CAP_ARM_EL2);
+> +}
+> +
+>  QEMU_BUILD_BUG_ON(KVM_ARM64_SVE_VQ_MIN != 1);
+>  
+>  void kvm_arm_sve_get_vls(CPUState *cs, unsigned long *map)
+> @@ -856,6 +867,9 @@ int kvm_arch_init_vcpu(CPUState *cs)
+>          assert(kvm_arm_sve_supported());
+>          cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_SVE;
+>      }
+> +    if (cpu->has_el2) {
+> +        cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_HAS_EL2;
+> +    }
+>  
+>      /* Do KVM_ARM_VCPU_INIT ioctl */
+>      ret = kvm_arm_vcpu_init(cs);
+> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+> index 34f8daa377..da3a3d5920 100644
+> --- a/target/arm/kvm_arm.h
+> +++ b/target/arm/kvm_arm.h
+> @@ -285,6 +285,24 @@ void kvm_arm_steal_time_finalize(ARMCPU *cpu, Error **errp);
+>   */
+>  bool kvm_arm_steal_time_supported(void);
+>  
+> +/**
+> + * kvm_arm_nested_virt_finalize:
+> + * @cpu: ARMCPU for which to finalize nested-virt
+> + * @errp: Pointer to Error* for error propagation
+> + *
+> + * Validate the nested-virt property selection and set its default
+> + * based on KVM support and guest configuration.
+> + */
+> +void kvm_arm_nested_virt_finalize(ARMCPU *cpu, Error **errp);
+
+Where is this function defined? From where is it called?
+
+> +
+> +/**
+> + * kvm_arm_nested_virt_supported:
+> + *
+> + * Returns: true if KVM can enable nested virtualization
+> + * and false otherwise.
+> + */
+> +bool kvm_arm_nested_virt_supported(void);
+> +
+>  /**
+>   * kvm_arm_aarch32_supported:
+>   *
+> @@ -398,6 +416,11 @@ static inline bool kvm_arm_steal_time_supported(void)
+>      return false;
+>  }
+>  
+> +static inline bool kvm_arm_nested_virt_supported(void)
+> +{
+> +    return false;
+> +}
+> +
+>  /*
+>   * These functions should never actually be called without KVM support.
+>   */
+> @@ -441,6 +464,11 @@ static inline void kvm_arm_steal_time_finalize(ARMCPU *cpu, Error **errp)
+>      g_assert_not_reached();
+>  }
+>  
+> +static inline void kvm_arm_nested_virt_finalize(ARMCPU *cpu, Error **errp)
+> +{
+> +    g_assert_not_reached();
+> +}
+> +
+>  static inline void kvm_arm_sve_get_vls(CPUState *cs, unsigned long *map)
+>  {
+>      g_assert_not_reached();
+> -- 
+> 2.17.1
+>
+
+Thanks,
+drew 
 

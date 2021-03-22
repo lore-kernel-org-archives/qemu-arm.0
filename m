@@ -1,106 +1,113 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3500958lfg;
-        Mon, 22 Mar 2021 04:33:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwThEszwsNvG/MMdKXnMKamNc/pFcflAYYyzAXMv59NSXmG2SN7ILHGo11+/D6VNyWZzoI8
-X-Received: by 2002:a05:6638:338a:: with SMTP id h10mr10602336jav.129.1616412819826;
-        Mon, 22 Mar 2021 04:33:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1616412819; cv=none;
+Received: by 2002:a0c:aac5:0:0:0:0:0 with SMTP id g5csp4641886qvb;
+        Mon, 22 Mar 2021 06:19:47 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy8KmKKg2IQkPXLtFIc+SRpPMRtUuTFNbYn+A59aMiU9Me5uOjwi1vR/G3DZ2p27X67ep9Z
+X-Received: by 2002:a05:6602:2e85:: with SMTP id m5mr10693430iow.112.1616419187436;
+        Mon, 22 Mar 2021 06:19:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616419187; cv=none;
         d=google.com; s=arc-20160816;
-        b=KrcgkQXWc9srcseLt34Ww0dPqrtHBUJBTGb/EDdsAGIvcBxiXlludxejFwIqN7wiWJ
-         JjfQRT+MuVq3DU+Jd+kUCEAczGS2aapT04n5QKtqJuRBYJRx+SdnVAhc3kzb6tozkOj9
-         0CuR3BWxd3jE4jzv+X/tAAv7dCXC9WxnnIU91ues1J1GBEa3ofc7mk9jAEOzq9SJBqgt
-         gSDlWz2Yoo4b5JKhzxSv+wmKQpCWqcwjMNMty9mlp6WGYkW/Otzvork4/jUElRU5SLVR
-         SHNKfqX2EZimnRDbhR5NvfM+hR7n3Pmn5w53KN68K2SCcsHyNRuOQl0drjJVjRmdYVU3
-         7jCA==
+        b=aKGHHJNF55j85Fc0DknxYFL1H0jHaqiLZOzVbdw18ayZm6EYhHMxXchcVbwj1mi4qM
+         VeCEN3qy6ruqtsc4dnomhVsqGzGJ+pevshxnxVwGTBqpg4hKig+ckQnQBU4VHtsw6Pa+
+         aDqp5WHN1lWH26wM0tFSZAcVcMGuFWppvajiWbZH/dspsQ2UV8VFYts7UXWi4tMd0BZ6
+         pgMJUbioPnGQTrRiHSthRY9djjTV5uWAPRIXI0xhsUqEMAMbinTYpGWMF7QOjgiTS+To
+         DwDcF3oflOiHfdYo3ooMySkmTGWNpf9hozc3hiM2LJiwkGCyjyBtj1KzAfltgWx7jBQo
+         34EA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-disposition:in-reply-to:mime-version:references:message-id
-         :subject:to:from:date:dkim-signature;
-        bh=Iaoh85QvGzl5H56/LFLcAbT2b7UqD8DUh6R+dTwgt6U=;
-        b=gTJ0fHhUIR9hjY4I7NikZc2dhIN39XgYkgMQXaUHcdqUeSf3AM7Gmo/ZWtJYRJV5DD
-         +OXT1IvyfFNa9YyQ+FYE3WO5CpW0bA+jcJOiHMW5yJ/xmw5rLPi4LjlgFeu6Wj9vO3bK
-         doqbfwsM8IVgXH/RTLlGoWioHfsCOgMc7PdQsWZ8c4lFhFjpDL+n1pVFNBjcaAvWGTZQ
-         kcBSfgv5BP+1v9DEmPc1sNN15g1T5fJ84O3xCUbkDJV69kd1w+/CsCIrvGehXKgAKh6H
-         gX+D9ATJJkRp1uG90g+uF9JXuE1Zq0PbPMkOans8bGpaTNM9Zm6GkmIjELIUPex/OMTB
-         ku6Q==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=/Jd6LlYso9CpV5yXyhGuwTiL+80VQyaNjfm+a1TXPoA=;
+        b=YfJGlircbkp8eR3ikcn4W7a8iuzS/fZ5SFZTgOPhzYCQfSpnDu8u/WvTwEgtlNewTv
+         nn4xd2cGUnOv85Yz7XcnsEPlE4o2WdlcLWPPFZICaDtMwwDNFhpRw8mKuelvFS1j6wX+
+         BlQLnFZkTjrf2ns+TlYmcbF9zanJ018qlfxEWdt7KcaDMOyrGS4vSo0XIRfI+13+l/wa
+         IlFD2GeQaynbN+LhbYbAXYqOkwBUt7Wd1G2Fqkc0Knu42Su0RD891mXqwzYR3diY/VFj
+         NQf7cGVQi9IJyF3pays2OhhKIRr+YZwpPMjLCeKx038c7WlxLtAyqqHN3Sq5KVdALhrP
+         jaQg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JK7Z8cja;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=MMvDMVdc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k20si8626406ilh.152.2021.03.22.04.33.39
+        by mx.google.com with ESMTPS id w24si8936461jaq.43.2021.03.22.06.19.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 Mar 2021 04:33:39 -0700 (PDT)
+        Mon, 22 Mar 2021 06:19:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JK7Z8cja;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=MMvDMVdc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60286 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:48530 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lOIoV-0005sC-3w
-	for alex.bennee@linaro.org; Mon, 22 Mar 2021 07:33:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52068)
+	id 1lOKTC-0005Nc-PE
+	for alex.bennee@linaro.org; Mon, 22 Mar 2021 09:19:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50228)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mrezanin@redhat.com>)
- id 1lOIoL-0005ri-Aa
- for qemu-arm@nongnu.org; Mon, 22 Mar 2021 07:33:29 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:56007)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <mrezanin@redhat.com>)
- id 1lOIoJ-00022u-Dv
- for qemu-arm@nongnu.org; Mon, 22 Mar 2021 07:33:29 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1616412806;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Iaoh85QvGzl5H56/LFLcAbT2b7UqD8DUh6R+dTwgt6U=;
- b=JK7Z8cjalEm6uu8LJoEVOfns61ejgujuUVseYW3Zuqb+P1JsQGY4hLrIytI1CeNKHxosrM
- kyRid+W8OG6GWkjYw7pe+XfOxJLujHrOaDUMxmBiLga1Z1KAeO3MPtWudg5b0OlMxldPsi
- c0z51Fw/ZKREcNZ+A70koCzSt6I1/T8=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-540-2DZWgD4iOFWV-CtEvFOeBA-1; Mon, 22 Mar 2021 07:33:23 -0400
-X-MC-Unique: 2DZWgD4iOFWV-CtEvFOeBA-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AF58281631;
- Mon, 22 Mar 2021 11:33:22 +0000 (UTC)
-Received: from lws.brq.redhat.com (unknown [10.40.192.5])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 28EE32A2D6;
- Mon, 22 Mar 2021 11:33:20 +0000 (UTC)
-Date: Mon, 22 Mar 2021 12:33:18 +0100
-From: Miroslav Rezanina <mrezanin@redhat.com>
-To: Gavin Shan <gshan@redhat.com>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lOKSU-0005NR-SE; Mon, 22 Mar 2021 09:19:04 -0400
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e]:36370)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lOKSS-0004Rl-R7; Mon, 22 Mar 2021 09:19:02 -0400
+Received: by mail-wr1-x42e.google.com with SMTP id k8so16697739wrc.3;
+ Mon, 22 Mar 2021 06:18:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=/Jd6LlYso9CpV5yXyhGuwTiL+80VQyaNjfm+a1TXPoA=;
+ b=MMvDMVdcTNG+7UezLxTM9XPPwbHX0inYbAHLp0BCcI3beakx88rrC3RYuxHEEkfTlv
+ 0BuCAipgIgg6VI+ptytu1eaBxWRw8VyAPGSX/uK54IBv+ycgQ60lcbomGC3Le2Jb0kze
+ ppHubKasfWXm5U1okyvzk3ZszKYCwsX/QSxWNuj5C3EM6CJBQfYESCZX3nQUkd7HsNl6
+ NFjztCpWnnEwqIkEkkwLvuUwAvcfrJZwsMKb35os7+mszbe/oku2vxscLAlD0bub/9mf
+ CD7JueCsd5kAcS14Jy4WZDOcuIdQUKFZbrvhHDQWK1zRQH77TtDF4bHDTrZC7jqlcXio
+ kI9w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=/Jd6LlYso9CpV5yXyhGuwTiL+80VQyaNjfm+a1TXPoA=;
+ b=KHHDNisylOtIzRBFiZORQHDr8V6ErxSqbMv3KDCarkk34uGmwqM5+++F6VJ1jsQKl5
+ C+WQkenQaI5VDC8RdQy5obRx2S24XqmEKMtdSBOWr4r4IWQZiUaCW0ikO62phDcuERka
+ FSGUPb6rYozs1jp2fiyQddwDs8hfRdx/Itt6+GGFtWRStfdOYD7TtsZ03ykQ0PvXhHcz
+ 4mmr3RT64z8uTgP0pd8BZ14aC2Ec3/EvyCGajtRZhQwht1T/u14qpWV5l2QJmXntXVge
+ Tsi4MI6gcNZOamueegqOF5etURhZ+Dh283/G8JKLS/JIzKRwkA6DXuh8NGZ6QRzycYoe
+ zWiQ==
+X-Gm-Message-State: AOAM5333G1UhSM86Db2XuyZoy0RyxecZ4LW4tRYY5xP9O+7HZbea4/jG
+ 3sUmZ3w8N0k22qCAkHBJXXQ=
+X-Received: by 2002:a5d:5083:: with SMTP id a3mr11990889wrt.38.1616419138786; 
+ Mon, 22 Mar 2021 06:18:58 -0700 (PDT)
+Received: from [192.168.1.36] (17.red-88-21-201.staticip.rima-tde.net.
+ [88.21.201.17])
+ by smtp.gmail.com with ESMTPSA id u23sm17058910wmn.26.2021.03.22.06.18.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 22 Mar 2021 06:18:58 -0700 (PDT)
 Subject: Re: [PATCH 1/2] disas/arm-a64.cc: Fix build error
-Message-ID: <20210322113318.pz7paluwfjtj6nv3@lws.brq.redhat.com>
+To: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org,
+ Christian Ehrhardt <christian.ehrhardt@canonical.com>
 References: <20210320041854.68668-1-gshan@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <94f75c91-bd1a-2840-a469-91b5b4327ebb@amsat.org>
+Date: Mon, 22 Mar 2021 14:18:57 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.0
 MIME-Version: 1.0
 In-Reply-To: <20210320041854.68668-1-gshan@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mrezanin@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=mrezanin@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42e.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -113,13 +120,16 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, richard.henderson@linaro.org,
+Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
  qemu-devel@nongnu.org, shan.gavin@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yTD2r/4FChXl
+X-TUID: O5nKFjZFj8sc
 
-On Sat, Mar 20, 2021 at 12:18:54PM +0800, Gavin Shan wrote:
++Christian for
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg785090.html
+
+On 3/20/21 5:18 AM, Gavin Shan wrote:
 > This fixes the following build error with gcc v11.0.0:
 > 
 >   # gcc --version
@@ -168,12 +178,5 @@ On Sat, Mar 20, 2021 at 12:18:54PM +0800, Gavin Shan wrote:
 >  using namespace vixl;
 >  
 >  static Decoder *vixl_decoder = NULL;
-> -- 
-> 2.23.0
 > 
-> 
-
-This error occurs when c++ compiler is used. With the fix, build pass.
-
-Reviewed-by: Miroslav Rezanina <mrezanin@redhat.com>
 

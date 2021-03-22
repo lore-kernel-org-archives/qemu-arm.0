@@ -1,160 +1,162 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3959938lfg;
-        Mon, 22 Mar 2021 14:37:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzm9CImkLxzhHyL22GiDkHxVG5lSsqA/ihHQEEYZiYf20osMzdHAEXWjk6yS6C1AfULjoKY
-X-Received: by 2002:a5d:9e18:: with SMTP id h24mr1563673ioh.80.1616449023393;
-        Mon, 22 Mar 2021 14:37:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1616449023; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3970151lfg;
+        Mon, 22 Mar 2021 14:56:20 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyFztteHoiB0Rli2PMfa4/ymHB/PIECv0GVK67im37cxDjqQpLx/ukMQglbyLWeF394p1MB
+X-Received: by 2002:a92:d6d2:: with SMTP id z18mr1961167ilp.30.1616450179903;
+        Mon, 22 Mar 2021 14:56:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616450179; cv=none;
         d=google.com; s=arc-20160816;
-        b=SiZuyrisy+jARrrw9j18vNwBVHqt/cnmLS2e1+kWzSLgj8Bd7b2seQ8gNl7q5fmNsl
-         96Pr5TyQchnvZ+ddYadn+QvXpMGWuFSisR99D0Qs8iywZZ6F+0o0/Pd0n0gJH1DQPGEg
-         67URwyFFtbWhfRyL5up147AVf1g69r3qdGi1BKBnzgC59K8hcXoPhmZHk78rJOgq1Xpy
-         tkJ+OpTq0afX3KiniHcseQN2dI/KoOZvzHlcUzC3YQZ/WgQBNElOlz9UejBa5FzfmJL9
-         hM2d/OySzJjtJpe0d/Kqvi3RiJ2iMMRPsnUVm2Gjeqox4QFZP0WtDIH/IwaW8RWup9wP
-         uocg==
+        b=hzGRK+kVvRtbOyPW3GswaNw3JqT6KNeoEpYXAryb7QPlOo9LRmFxIkKNXiCx2uPC/r
+         9hJAY6pD2kx6u3ySIai56qoleJy46l+CCsHSzb1oKpZsLcYOqk3kVjObos6rL4CdFsPp
+         vFNp6eQCi1iG3p72SPVbJSFrIwro8Ksv9iXdVKwmmuKN2pdavXeRW1vaZLlIrcqgU4xF
+         OFEDIhK6OZj7h6cgRLLgxFtUx3Z5n+XNceX8olKWi+Oc4cvwkhTQJAG46fL+8l3vFTn/
+         DgozGrDZSA9ccI3iOw/gOO0PTa6D4sSgynh2jeIRn1MZfLq/Z+zifwbGQq8KB0MyN1hp
+         7jvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version;
-        bh=yL6BP2bTk5ywX1/JnOob/fRiBS6nuoD6UAbyt13OTjk=;
-        b=cAnsI5LvPXhwy7V34aFslafvSKVAQLcVbo2BeCdyDAPR+f73s76/Ltw/QS7WkzD68e
-         XDsL69/BtJmeV8Pu6FN2TJzG/vofwcGwL3xt4sBdVFIxH+z6x/ByHjGaRh4mmdY58Ajf
-         6LndFnKeXOpblCI6Z1rDsZdHFirWd8IHWQk8PWjJaRmg8bzAAY2BNqJfIGsivKCg89iC
-         FK10AG3z+R0BQzf6JCM9fw3QnfnxuX1zsD/U23lPOBmH4CwPye9UMOZZluNEsgL+EIwd
-         YGch2VvysZyoHs2+25octntrVVqeCjVInyVaxkrdJouHg3ey40JJ9XrdKf9ummn8iY6G
-         AZMQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=4qGj1w/nhoROvJ5m6ERYb7kgZs3mgPQDuwoOcV0knog=;
+        b=z29lO0YN+lUUUlO3dUhLyOdUwzc1jhzc1mcgf/8QBnlTsl4Y4RIjpdS9LjfPsdeQeI
+         5/Ne1g67a5Cw2oifd3XiRWfc/Mp9wUQImJIKUqIf3f3eXc/AwgJVXdSysL8HVC1XLZWF
+         sZjgeanXnZIAD5A45scFu4g1uzoIGAcQDOdHDYWoTFvUaQBngv16nE6YH+uYOffG52eB
+         03nu1yks0sLhHRqaOtJGymwCvGUEU31cwJNrtRLzHtpNmR28//iOJvY4kJcpOT1Bs9i7
+         L2eVYNjJmpwWL0TGCfdMalGxJbBhjGHIiQ0RffLOm8qg2v2RoMTVV4mB6WXTpu3g+Z2+
+         3Xkw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@mutex.one header.s=default header.b=Fo7Wp4F2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q7si7781380ile.66.2021.03.22.14.37.03
+        by mx.google.com with ESMTPS id u12si10404104ilv.137.2021.03.22.14.56.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 Mar 2021 14:37:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 22 Mar 2021 14:56:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43266 helo=lists1p.gnu.org)
+       dkim=fail header.i=@mutex.one header.s=default header.b=Fo7Wp4F2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:57396 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lOSEQ-0004L9-N7
-	for alex.bennee@linaro.org; Mon, 22 Mar 2021 17:37:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49220)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lOSX5-0003Im-7O
+	for alex.bennee@linaro.org; Mon, 22 Mar 2021 17:56:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52774)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <arnd@arndb.de>)
- id 1lOSCp-0003mf-Ph; Mon, 22 Mar 2021 17:35:23 -0400
-Received: from mout.kundenserver.de ([217.72.192.73]:55609)
+ (Exim 4.90_1) (envelope-from <marian@mutex.one>)
+ id 1lOSWr-0003IM-Cy; Mon, 22 Mar 2021 17:56:05 -0400
+Received: from mail.mutex.one ([62.77.152.124]:56044)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <arnd@arndb.de>)
- id 1lOSCm-0005XD-NC; Mon, 22 Mar 2021 17:35:23 -0400
-Received: from mail-ot1-f42.google.com ([209.85.210.42]) by
- mrelayeu.kundenserver.de (mreue109 [213.165.67.113]) with ESMTPSA (Nemesis)
- id 1M5wTt-1lI8fw48jr-007VoN; Mon, 22 Mar 2021 22:35:16 +0100
-Received: by mail-ot1-f42.google.com with SMTP id
- 68-20020a9d0f4a0000b02901b663e6258dso17448899ott.13; 
- Mon, 22 Mar 2021 14:35:15 -0700 (PDT)
-X-Gm-Message-State: AOAM530xUWsceAcbnHYVFIQNEm/Rkpz//bpbdSvNe/tEPtOZGaZD3wwH
- 8UR2Fdox77SNt8JpYcftygO6/cuHiwBE7CJAeh0=
-X-Received: by 2002:a9d:316:: with SMTP id 22mr1549535otv.210.1616448914233;
- Mon, 22 Mar 2021 14:35:14 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <marian@mutex.one>)
+ id 1lOSWo-0005xk-KQ; Mon, 22 Mar 2021 17:56:05 -0400
+Received: from localhost (localhost.localdomain [127.0.0.1])
+ by mail.mutex.one (Postfix) with ESMTP id 74FB4BF426A2;
+ Mon, 22 Mar 2021 23:55:58 +0200 (EET)
+X-Virus-Scanned: Debian amavisd-new at mail.mutex.one
+Received: from mail.mutex.one ([127.0.0.1])
+ by localhost (mail.mutex.one [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 6CvHQ_3wAryT; Mon, 22 Mar 2021 23:55:57 +0200 (EET)
+Received: [127.0.0.1] (localhost [127.0.0.1])nknown [79.112.115.168])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.mutex.one (Postfix) with ESMTPSA id BA2AEBF42692;
+ Mon, 22 Mar 2021 23:55:56 +0200 (EET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mutex.one; s=default;
+ t=1616450156; bh=56gKa/9K+bohAh0JX6G0ndA+B07XW+dnsNawaoFpzO4=;
+ h=From:To:Cc:Subject:Date:From;
+ b=Fo7Wp4F2jxxjm4ZN1nAV0uPVEXTEjU1IzSivIX68sWVIJPh11Z6CSx4jE2RoMZj8D
+ fLMOdmJamH7mk76AVqyyCtI8wTJ7heua+mIATBDyAxhvkkobln1N2wRRgn73gsqawp
+ pZRehoQkhaSIylJd53gXa1g2xzXyitY0kGkNimyc=
+From: Marian Postevca <posteuca@mutex.one>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v3 0/1] Rework ACPI OEM fields handling to simplify code (was:
+ acpi: Remove duplicated code handling OEM ID and OEM table ID fields)
+Date: Mon, 22 Mar 2021 23:55:53 +0200
+Message-Id: <20210322215554.24875-1-posteuca@mutex.one>
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-References: <20210322201336.9539-1-peter.maydell@linaro.org>
-In-Reply-To: <20210322201336.9539-1-peter.maydell@linaro.org>
-From: Arnd Bergmann <arnd@arndb.de>
-Date: Mon, 22 Mar 2021 22:34:58 +0100
-X-Gmail-Original-Message-ID: <CAK8P3a0WJ0x3dvEg2MjNRpFXzWw=gR5wz5-7UfpTqeggxa+n7g@mail.gmail.com>
-Message-ID: <CAK8P3a0WJ0x3dvEg2MjNRpFXzWw=gR5wz5-7UfpTqeggxa+n7g@mail.gmail.com>
-Subject: Re: [PATCH] hw/pci-host/gpex: Don't fault for unmapped parts of MMIO
- and PIO windows
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-Provags-ID: V03:K1:pNTT/xVPe4C4/n+IgCVjxrMKLsAGq9mT0k9bvqQEu+NrL924wHr
- YzzDPsnj6M4JRZfFGgp1Vekr4h1mI+tnv6Kv4WvZY42WEwSev8nzdArLv8hv/g1Vkfy2C7S
- 5BUzwaeOg/MCdIby+S/fKrdY7n4dkXrnayQsI51kKT2rwGouKaONGSgAcgutZQCGL4ohDrb
- bbThqkHkYfSqK2KEld1YQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:mlZuUCdVKK0=:dDrV90+ognQAgviNnOHEeC
- USPcXEQSiipY9AQU0R4eSvi5ksGO8rQVgHYAQ2cvqTHQzEStMyZbixwupMtasKYNsB6l6QybC
- +lz8k5pEkYnRyqTZ8l28s/ZoKN+KYzK+4myJUNvOo/2DwuUXj+4wIUh/Vdg8Hmc1iKU6Dr6BH
- I+29VlU1H5r2idhnjEXYORYU5peNvswY7sVpXJJ36NaSKpoWtMbD3fuXBVgBohUtt7bOWOjl8
- iUncfGBiasamRPAOhOLuAbx8hXuAKvDZ2A2k3T4b+kIkOqNE0+7cyqXB/uH/fCMkSiK5PWwaI
- 1aXoGRmgKDAmiyWGByuHn6rXRL9AYb87ZTE6w8jJqb/ICxQ3FuW6cHoGjqfyHAKjtjwwQP3wS
- lqxNeDVp3VMN5hsLjlCkNoLoNxq0rlCogo20XLD3C/MxQD6SJhD09FVnq+Wa5
-Received-SPF: none client-ip=217.72.192.73; envelope-from=arnd@arndb.de;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=62.77.152.124; envelope-from=marian@mutex.one;
+ helo=mail.mutex.one
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
- QEMU Developers <qemu-devel@nongnu.org>, Dmitry Vyukov <dvyukov@google.com>,
- "Michael S. Tsirkin" <mst@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gmzAVUhAf3j/
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Dongjiu Geng <gengdongjiu@huawei.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Xiang Zheng <zhengxiang9@huawei.com>, qemu-arm@nongnu.org,
+ Marian Postevca <posteuca@mutex.one>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 9lfQcWnxtFJx
 
-6On Mon, Mar 22, 2021 at 9:13 PM Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> Currently the gpex PCI controller implements no special behaviour for
-> guest accesses to areas of the PIO and MMIO where it has not mapped
-> any PCI devices, which means that for Arm you end up with a CPU
-> exception due to a data abort.
->
-> Most host OSes expect "like an x86 PC" behaviour, where bad accesses
-> like this return -1 for reads and ignore writes.  In the interests of
-> not being surprising, make host CPU accesses to these windows behave
-> as -1/discard where there's no mapped PCI device.
->
-> Reported-by: Dmitry Vyukov <dvyukov@google.com>
-> Fixes: https://bugs.launchpad.net/qemu/+bug/1918917
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> Not convinced that this is 6.0 material, because IMHO the
-> kernel shouldn't be doing this in the first place.
-> Do we need to have the property machinery so that old
-> virt-5.2 etc retain the previous behaviour ?
-
-I think it would be sufficient to do this for the ioport window,
-which is what old-style ISA drivers access. I am not aware
-of any driver accessing hardcoded addresses in the mmio
-window, at least not without probing io ports first (the VGA
-text console would use both).
-
-I checked which SoCs the kernel supports that do require a special
-hook to avoid an abort and found these:
-
-arch/arm/mach-bcm/bcm_5301x.c:  hook_fault_code(16 + 6,
-bcm5301x_abort_handler, SIGBUS, BUS_OBJERR,
-arch/arm/mach-cns3xxx/pcie.c:   hook_fault_code(16 + 6,
-cns3xxx_pcie_abort_handler, SIGBUS, 0,
-arch/arm/mach-iop32x/pci.c:     hook_fault_code(16+6,
-iop3xx_pci_abort, SIGBUS, 0, "imprecise external abort");
-arch/arm/mach-ixp4xx/common-pci.c:      hook_fault_code(16+6,
-abort_handler, SIGBUS, 0,
-drivers/pci/controller/dwc/pci-imx6.c:  hook_fault_code(8,
-imx6q_pcie_abort_handler, SIGBUS, 0,
-drivers/pci/controller/dwc/pci-keystone.c:      hook_fault_code(17,
-ks_pcie_fault, SIGBUS, 0,
-
-The first four (bcm5301x, cns3xxx, iop32x and ixp4xx) generate an
-'imprecise external abort' (16+6), imx6q has a "precise external abort on
-non-linefetch" (8), and keystone in LPAE mode has an "asynchronous external
-abort". The only SoC among those that is emulated by qemu to my knowledge
-is the i.MX6q in the 'sabrelite' machine.
-
-It's possible that some of these are not caused by a PCI master abort
-but some other error condition on the PCI host though. I think most other
-PCI implementations either ignore the error or generate an I/O interrupt.
-
-        Arnd
+This patch consolidates ACPI OEM fields handling=0D
+by:=0D
+- Moving common code in PC and MICROVM to X86.=0D
+- Changes unnecessary dynamic memory allocation to static allocation=0D
+- Uses dedicated structure to keep values of fields instead of two=0D
+  separate strings=0D
+- Adds helper macros to initialize the structure=0D
+=0D
+v2:=0D
+- Move the setters/getters of OEM fields to X86MachineState to=0D
+  remove duplication=0D
+- Change commit message to make it clear the second commit is=0D
+  a re-factor=0D
+=0D
+v3:=0D
+- Rebase "acpi: Consolidate the handling of OEM ID and OEM=0D
+          Table ID fields to latest" to latest HEAD=0D
+- Dropped "acpi: Move setters/getters of oem fields to=0D
+           X86MachineState" since it was accepted already=0D
+=0D
+Marian Postevca (1):=0D
+  acpi: Consolidate the handling of OEM ID and OEM Table ID fields=0D
+=0D
+ hw/acpi/hmat.h                   |  2 +-=0D
+ hw/i386/acpi-common.h            |  2 +-=0D
+ include/hw/acpi/acpi-build-oem.h | 55 ++++++++++++++++++++++=0D
+ include/hw/acpi/aml-build.h      | 15 +++---=0D
+ include/hw/acpi/ghes.h           |  2 +-=0D
+ include/hw/acpi/pci.h            |  2 +-=0D
+ include/hw/acpi/vmgenid.h        |  2 +-=0D
+ include/hw/arm/virt.h            |  4 +-=0D
+ include/hw/i386/x86.h            |  4 +-=0D
+ include/hw/mem/nvdimm.h          |  4 +-=0D
+ hw/acpi/aml-build.c              | 27 ++++++-----=0D
+ hw/acpi/ghes.c                   |  5 +-=0D
+ hw/acpi/hmat.c                   |  4 +-=0D
+ hw/acpi/nvdimm.c                 | 22 +++++----=0D
+ hw/acpi/pci.c                    |  4 +-=0D
+ hw/acpi/vmgenid.c                |  6 ++-=0D
+ hw/arm/virt-acpi-build.c         | 40 ++++++----------=0D
+ hw/arm/virt.c                    | 16 +++----=0D
+ hw/i386/acpi-build.c             | 78 +++++++++++++++-----------------=0D
+ hw/i386/acpi-common.c            |  4 +-=0D
+ hw/i386/acpi-microvm.c           | 13 ++----=0D
+ hw/i386/x86.c                    | 19 ++++----=0D
+ 22 files changed, 182 insertions(+), 148 deletions(-)=0D
+ create mode 100644 include/hw/acpi/acpi-build-oem.h=0D
+=0D
+-- =0D
+2.26.2=0D
+=0D

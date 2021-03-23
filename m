@@ -1,342 +1,182 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id r17sm13251449edm.89.2021.03.23.09.53.10
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 23 Mar 2021 09:53:12 -0700 (PDT)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 8C66B1FF91;
-	Tue, 23 Mar 2021 16:53:09 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4711117lfg;
+        Tue, 23 Mar 2021 09:48:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzKd352QzwrJ/vVhyD+4hOL7cSw2npeDq7T+Sh417RXCSOoC94tm4bAbDCDwH1BgjbzS5eO
+X-Received: by 2002:a05:6638:3884:: with SMTP id b4mr5411723jav.18.1616518135203;
+        Tue, 23 Mar 2021 09:48:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616518135; cv=none;
+        d=google.com; s=arc-20160816;
+        b=i7Xq6dZYdsKCGS07YTPBjQEjVCUNrYozqU0l8sdfrb6c9QCMIHUugzAIFWDuy+yPCW
+         k5gbeRzodPjHjHVsralbi/PYafuRwGNLa6akpi1vrxjimlVjVifJgnJbhLC7e1IH3mxB
+         FJN8EJRObYcTVRug3mZe5XgkqgbB7Qe+HpAmuIG7UR9yXLub9e7j1QORjbiTJmX54Zpc
+         JmzNqVrQhVK7gdZrbD14qekNYwCJbC/+K/bk0vojo8rnD6LFDJ9PMQy8i88WDFV8k6uR
+         DxFTXDmfsVnFQJegeSvyqb/LZTY1F4t3aqKyOpBZ20ZN+azqnBBUsZnbskCCu9nQQbBN
+         DDow==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=wacrUPXby6VxBAOyWwd3GMdytvH/G6kApR/JrO/ejAY=;
+        b=EM5QZvAg3+pcpY/KjXQ8vRUcqxIWCM+vJBeTvwoFbgL0g+SP75HzB0LbzuYqjLK6Ld
+         tMHqJrmgNkWpB3N/dEVXtnJ5XEfyQyVfHOVQw6rKkO87ySF+FS8BOwcZSdMTZr7MKrNd
+         leQDlr3qaQXMQC6X6ejhtCukXflE7u/ubWAdJUCJU+da7/oXd42Knqw0Nh049RgmlHgW
+         xPMXkYi1oFmWa1mb/lrcxx1gYZiDW7EB3AD1Swqo99pYIXG+YphBjO34N+qPOefrHe3C
+         6sm5TrD9s0qu8IIgsRL9pp3fayQFrcICkbgX3VI2IjbmtpeRdlQJzR9PUNdc5tr7YIgh
+         SXCQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=OKV7cpro;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id q9si7763321jat.84.2021.03.23.09.48.55
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 23 Mar 2021 09:48:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=OKV7cpro;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:40758 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lOkD8-00072P-HE
+	for alex.bennee@linaro.org; Tue, 23 Mar 2021 12:48:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39226)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lOjKC-0005fB-5M; Tue, 23 Mar 2021 11:52:09 -0400
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:45709)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lOjK4-0003ZI-6b; Tue, 23 Mar 2021 11:52:06 -0400
+Received: by mail-wr1-x431.google.com with SMTP id 61so21255744wrm.12;
+ Tue, 23 Mar 2021 08:51:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=wacrUPXby6VxBAOyWwd3GMdytvH/G6kApR/JrO/ejAY=;
+ b=OKV7cproh+phYnlnQ965o6n7nwQb2zQPwGVOb/6HfChkkqmjgWGuXV3GMN1V5RUn+s
+ G2Aliv1nJAWcUD3vE+QzErO/+Ceo0om0AHkXLfdEcdoZFTy1Kti+giBkvemToLSiN3tW
+ qUILq0FKh6HHOAZOfrepkViVJQ5gh1ekwbsBjvlh6kKRk828ru/i6y7NwfiFBhBaNosa
+ 2WSZE8R60GaOX6ymjD9hPvaovjH4zUKt93AUQN9niY0Guw1Dqxft0hR09a2wsdNYBEXU
+ oXpNC8N/LJFBKjP8gOflred30MfxxGVcWSY4kKrJor/orzmoczJ4FT09aNZRJblm4y7+
+ cSjw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=wacrUPXby6VxBAOyWwd3GMdytvH/G6kApR/JrO/ejAY=;
+ b=FNuFdWoGgCxlxkGd8ckXMuGE/2G748hv9OIj6d62uJKfSgw+flg+eg3JuMzaaes4sd
+ 2ktvQXSVpccpo2J6cspiGJnpmZFpn/n1hfufzg3HA8Kze0BEEINxnULtHDKUBvh1ERSK
+ jq3qU+XV5pamB4yP46DVIWiWxzfvC/BUmQIwfYhdVoj+oiMNUQSGFwVwPLKXYu47KCC4
+ ez129QG1EeDI/cH5MR/BNaZlwqlTF0Pp+MN0GT59i0O068EEHDurrZXiIsLO9O0+rtPY
+ pEvUnstxLyMT4WAypMYARW4XLBvLlra0wDpuRrvE8cwZ3cCTZQl90miRqIHHYFxKQn49
+ PPMA==
+X-Gm-Message-State: AOAM532XhkfX8uehATu7PBETrk3zJ+4rpCFWiYs3a0TW5llJvLXSAZxD
+ tJCN4RfQJ572URlj9/lanBiT4TkZmkEczA==
+X-Received: by 2002:adf:8562:: with SMTP id 89mr4703432wrh.101.1616514717933; 
+ Tue, 23 Mar 2021 08:51:57 -0700 (PDT)
+Received: from localhost.localdomain (17.red-88-21-201.staticip.rima-tde.net.
+ [88.21.201.17])
+ by smtp.gmail.com with ESMTPSA id g5sm24414743wrq.30.2021.03.23.08.51.56
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 23 Mar 2021 08:51:57 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PATCH  v2 05/22] semihosting: move semihosting tests to multiarch
-Date: Tue, 23 Mar 2021 16:52:51 +0000
-Message-Id: <20210323165308.15244-6-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210323165308.15244-1-alex.bennee@linaro.org>
-References: <20210323165308.15244-1-alex.bennee@linaro.org>
+Subject: [RFC PATCH 05/13] blobs: Only install npcm7xx bootrom if ARM system
+ targets are built
+Date: Tue, 23 Mar 2021 16:51:24 +0100
+Message-Id: <20210323155132.238193-6-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20210323155132.238193-1-f4bug@amsat.org>
+References: <20210323155132.238193-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: /0oY4sveTO2v
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x431.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Havard Skinnemoen <hskinnemoen@google.com>, Tyrone Ting <kfting@nuvoton.com>,
+ qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: eup6llNrT1ZK
 
-It may be arm-compat-semihosting but more than one architecture uses
-it so lets move the tests into the multiarch area. We gate it on the
-feature and split the semicall.h header between the arches.
-
-Also clean-up a bit of the Makefile messing about to one common set of
-runners.
-
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20210312102029.17017-2-alex.bennee@linaro.org>
-Message-Id: <20210320133706.21475-6-alex.bennee@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- tests/tcg/aarch64/semicall.h                  | 18 +++++++++++
- tests/tcg/arm/semicall.h                      | 15 +--------
- tests/tcg/riscv64/semicall.h                  | 22 +++++++++++++
- .../arm-compat-semi}/semiconsole.c            |  2 ++
- .../arm-compat-semi}/semihosting.c            |  5 ++-
- MAINTAINERS                                   |  1 +
- tests/tcg/Makefile.target                     |  3 ++
- tests/tcg/aarch64/Makefile.target             | 18 -----------
- tests/tcg/arm/Makefile.target                 | 22 ++++++-------
- tests/tcg/multiarch/Makefile.target           | 31 +++++++++++++++++++
- 10 files changed, 91 insertions(+), 46 deletions(-)
- create mode 100644 tests/tcg/aarch64/semicall.h
- create mode 100644 tests/tcg/riscv64/semicall.h
- rename tests/tcg/{arm => multiarch/arm-compat-semi}/semiconsole.c (93%)
- rename tests/tcg/{arm => multiarch/arm-compat-semi}/semihosting.c (85%)
+Cc: Havard Skinnemoen <hskinnemoen@google.com>
+Cc: Tyrone Ting <kfting@nuvoton.com>
+Cc: qemu-arm@nongnu.org
+---
+ meson.build         | 2 ++
+ pc-bios/meson.build | 7 ++++++-
+ 2 files changed, 8 insertions(+), 1 deletion(-)
 
-diff --git a/tests/tcg/aarch64/semicall.h b/tests/tcg/aarch64/semicall.h
-new file mode 100644
-index 0000000000..8a3fce35c5
---- /dev/null
-+++ b/tests/tcg/aarch64/semicall.h
-@@ -0,0 +1,18 @@
-+/*
-+ * Semihosting Tests - AArch64 helper
-+ *
-+ * Copyright (c) 2019
-+ * Written by Alex Bennée <alex.bennee@linaro.org>
-+ *
-+ * SPDX-License-Identifier: GPL-3.0-or-later
-+ */
-+
-+uintptr_t __semi_call(uintptr_t type, uintptr_t arg0)
-+{
-+    register uintptr_t t asm("x0") = type;
-+    register uintptr_t a0 asm("x1") = arg0;
-+    asm("hlt 0xf000"
-+        : "=r" (t)
-+        : "r" (t), "r" (a0));
-+    return t;
-+}
-diff --git a/tests/tcg/arm/semicall.h b/tests/tcg/arm/semicall.h
-index d4f6818192..ad8ac51310 100644
---- a/tests/tcg/arm/semicall.h
-+++ b/tests/tcg/arm/semicall.h
-@@ -1,5 +1,5 @@
- /*
-- * Semihosting Tests
-+ * Semihosting Tests - ARM Helper
-  *
-  * Copyright (c) 2019
-  * Written by Alex Bennée <alex.bennee@linaro.org>
-@@ -7,13 +7,8 @@
-  * SPDX-License-Identifier: GPL-3.0-or-later
-  */
- 
--#define SYS_WRITE0      0x04
--#define SYS_READC       0x07
--#define SYS_REPORTEXC   0x18
--
- uintptr_t __semi_call(uintptr_t type, uintptr_t arg0)
- {
--#if defined(__arm__)
-     register uintptr_t t asm("r0") = type;
-     register uintptr_t a0 asm("r1") = arg0;
- #ifdef __thumb__
-@@ -23,13 +18,5 @@ uintptr_t __semi_call(uintptr_t type, uintptr_t arg0)
- #endif
-     asm(SVC : "=r" (t)
-         : "r" (t), "r" (a0));
--#else
--    register uintptr_t t asm("x0") = type;
--    register uintptr_t a0 asm("x1") = arg0;
--    asm("hlt 0xf000"
--        : "=r" (t)
--        : "r" (t), "r" (a0));
--#endif
--
-     return t;
- }
-diff --git a/tests/tcg/riscv64/semicall.h b/tests/tcg/riscv64/semicall.h
-new file mode 100644
-index 0000000000..f8c88f32dc
---- /dev/null
-+++ b/tests/tcg/riscv64/semicall.h
-@@ -0,0 +1,22 @@
-+/*
-+ * Semihosting Tests - RiscV64 Helper
-+ *
-+ * Copyright (c) 2021
-+ * Written by Alex Bennée <alex.bennee@linaro.org>
-+ *
-+ * SPDX-License-Identifier: GPL-3.0-or-later
-+ */
-+
-+uintptr_t __semi_call(uintptr_t type, uintptr_t arg0)
-+{
-+    register uintptr_t t asm("a0") = type;
-+    register uintptr_t a0 asm("a1") = arg0;
-+    asm(".option norvc\n\t"
-+        ".balign 16\n\t"
-+        "slli zero, zero, 0x1f\n\t"
-+        "ebreak\n\t"
-+        "srai zero, zero, 0x7\n\t"
-+        : "=r" (t)
-+        : "r" (t), "r" (a0));
-+    return t;
-+}
-diff --git a/tests/tcg/arm/semiconsole.c b/tests/tcg/multiarch/arm-compat-semi/semiconsole.c
-similarity index 93%
-rename from tests/tcg/arm/semiconsole.c
-rename to tests/tcg/multiarch/arm-compat-semi/semiconsole.c
-index 6ef0bd2450..1d82efc589 100644
---- a/tests/tcg/arm/semiconsole.c
-+++ b/tests/tcg/multiarch/arm-compat-semi/semiconsole.c
-@@ -7,6 +7,8 @@
-  * SPDX-License-Identifier: GPL-3.0-or-later
-  */
- 
-+#define SYS_READC       0x07
-+
- #include <stdio.h>
- #include <stdint.h>
- #include "semicall.h"
-diff --git a/tests/tcg/arm/semihosting.c b/tests/tcg/multiarch/arm-compat-semi/semihosting.c
-similarity index 85%
-rename from tests/tcg/arm/semihosting.c
-rename to tests/tcg/multiarch/arm-compat-semi/semihosting.c
-index 33faac9916..b3fd16cd12 100644
---- a/tests/tcg/arm/semihosting.c
-+++ b/tests/tcg/multiarch/arm-compat-semi/semihosting.c
-@@ -7,12 +7,15 @@
-  * SPDX-License-Identifier: GPL-3.0-or-later
-  */
- 
-+#define SYS_WRITE0      0x04
-+#define SYS_REPORTEXC   0x18
-+
- #include <stdint.h>
- #include "semicall.h"
- 
- int main(int argc, char *argv[argc])
- {
--#if defined(__arm__)
-+#if UINTPTR_MAX == UINT32_MAX
-     uintptr_t exit_code = 0x20026;
- #else
-     uintptr_t exit_block[2] = {0x20026, 0};
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 9147e9a429..8249014614 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -3284,6 +3284,7 @@ M: Alex Bennée <alex.bennee@linaro.org>
- S: Maintained
- F: semihosting/
- F: include/semihosting/
-+F: tests/tcg/multiarch/arm-compat-semi/
- 
- Multi-process QEMU
- M: Elena Ufimtseva <elena.ufimtseva@oracle.com>
-diff --git a/tests/tcg/Makefile.target b/tests/tcg/Makefile.target
-index 24d75a5801..cab8c6b3a2 100644
---- a/tests/tcg/Makefile.target
-+++ b/tests/tcg/Makefile.target
-@@ -32,6 +32,9 @@
- all:
- -include ../../../config-host.mak
- -include ../config-$(TARGET).mak
-+ifeq ($(CONFIG_USER_ONLY),y)
-+-include $(SRC_PATH)/default-configs/targets/$(TARGET).mak
-+endif
- 
- # for including , in command strings
- COMMA := ,
-diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-index bf53ad0087..56e48f4b34 100644
---- a/tests/tcg/aarch64/Makefile.target
-+++ b/tests/tcg/aarch64/Makefile.target
-@@ -41,24 +41,6 @@ AARCH64_TESTS += mte-1 mte-2 mte-3 mte-4
- mte-%: CFLAGS += -march=armv8.5-a+memtag
+diff --git a/meson.build b/meson.build
+index b5b8892fe7a..10c21ef52af 100644
+--- a/meson.build
++++ b/meson.build
+@@ -94,10 +94,12 @@
+ edk2_targets = [ 'arm-softmmu', 'aarch64-softmmu', 'i386-softmmu', 'x86_64-softmmu' ]
+ install_edk2_blobs = false
+ install_blobs_alpha = false
++install_blobs_arm = false
+ if get_option('install_blobs')
+   foreach target : target_dirs
+     install_edk2_blobs = install_edk2_blobs or target in edk2_targets
+     install_blobs_alpha = install_blobs_alpha or target in ['alpha-softmmu']
++    install_blobs_arm = install_blobs_hppa or target in ['arm-softmmu', 'aarch64-softmmu']
+   endforeach
  endif
  
--# Semihosting smoke test for linux-user
--AARCH64_TESTS += semihosting
--run-semihosting: semihosting
--	$(call run-test,$<,$(QEMU) $< 2> $<.err, "$< on $(TARGET_NAME)")
--
--run-plugin-semihosting-with-%:
--	$(call run-test, $@, $(QEMU) $(QEMU_OPTS) \
--		-plugin $(PLUGIN_LIB)/$(call extract-plugin,$@) \
--		 $(call strip-plugin,$<) 2> $<.err, \
--		"$< on $(TARGET_NAME) with $*")
--
--AARCH64_TESTS += semiconsole
--run-semiconsole: semiconsole
--	$(call skip-test, $<, "MANUAL ONLY")
--
--run-plugin-semiconsole-with-%:
--	$(call skip-test, $<, "MANUAL ONLY")
--
- ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_SVE),)
- # System Registers Tests
- AARCH64_TESTS += sysregs
-diff --git a/tests/tcg/arm/Makefile.target b/tests/tcg/arm/Makefile.target
-index ec95156562..5ab59ed6ce 100644
---- a/tests/tcg/arm/Makefile.target
-+++ b/tests/tcg/arm/Makefile.target
-@@ -29,37 +29,31 @@ run-fcvt: fcvt
- 	$(call run-test,fcvt,$(QEMU) $<,"$< on $(TARGET_NAME)")
- 	$(call diff-out,fcvt,$(ARM_SRC)/fcvt.ref)
+diff --git a/pc-bios/meson.build b/pc-bios/meson.build
+index 29085912d7d..635485931b9 100644
+--- a/pc-bios/meson.build
++++ b/pc-bios/meson.build
+@@ -81,7 +81,6 @@
+   'opensbi-riscv64-generic-fw_dynamic.bin',
+   'opensbi-riscv32-generic-fw_dynamic.elf',
+   'opensbi-riscv64-generic-fw_dynamic.elf',
+-  'npcm7xx_bootrom.bin',
+ ))
  
-+ifeq ($(CONFIG_ARM_COMPATIBLE_SEMIHOSTING),y)
-+
- # Semihosting smoke test for linux-user
--ARM_TESTS += semihosting
- semihosting: CFLAGS += -mthumb
--run-semihosting: semihosting
--	$(call run-test,$<,$(QEMU) $< 2> $<.err, "$< on $(TARGET_NAME)")
- 
- ARM_TESTS += semihosting-arm
--semihosting-arm: CFLAGS += -marm
-+semihosting-arm: CFLAGS += -marm -I$(SRC_PATH)/tests/tcg/$(TARGET_NAME)
- semihosting-arm: semihosting.c
- 	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
- 
- run-semihosting-arm: semihosting-arm
- 	$(call run-test,$<,$(QEMU) $< 2> $<.err, "$< on $(TARGET_NAME)")
- 
--run-plugin-semihosting-with-%:
-+run-plugin-semihosting-arm-with-%:
- 	$(call run-test, $@, $(QEMU) $(QEMU_OPTS) \
- 		-plugin $(PLUGIN_LIB)/$(call extract-plugin,$@) \
- 		 $(call strip-plugin,$<) 2> $<.err, \
- 		"$< on $(TARGET_NAME) with $*")
- 
--ARM_TESTS += semiconsole semiconsole-arm
-+ARM_TESTS += semiconsole-arm
- 
- semiconsole: CFLAGS += -mthumb
--run-semiconsole: semiconsole
--	$(call skip-test, $<, "MANUAL ONLY")
- 
--run-plugin-semiconsole-with-%:
--	$(call skip-test, $<, "MANUAL ONLY")
--
--semiconsole-arm: CFLAGS += -marm
--semiconsole-arm: semiconsole.c
-+semiconsole-arm: CFLAGS += -marm -I$(SRC_PATH)/tests/tcg/$(TARGET_NAME)
-+semiconsole-arm: semihosting.c
- 	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
- 
- run-semiconsole-arm: semiconsole-arm
-@@ -68,6 +62,8 @@ run-semiconsole-arm: semiconsole-arm
- run-plugin-semiconsole-arm-with-%:
- 	$(call skip-test, $<, "MANUAL ONLY")
- 
-+endif
-+
- ARM_TESTS += commpage
- 
- TESTS += $(ARM_TESTS)
-diff --git a/tests/tcg/multiarch/Makefile.target b/tests/tcg/multiarch/Makefile.target
-index abbdb2e126..a3a751723d 100644
---- a/tests/tcg/multiarch/Makefile.target
-+++ b/tests/tcg/multiarch/Makefile.target
-@@ -69,6 +69,37 @@ run-gdbstub-%:
+ if host_machine.system() == 'windows'
+@@ -96,6 +95,12 @@
+   ))
  endif
- EXTRA_RUNS += run-gdbstub-sha1 run-gdbstub-qxfer-auxv-read
  
-+# ARM Compatible Semi Hosting Tests
-+#
-+# Despite having ARM in the name we actually have several
-+# architectures that implement it. We gate the tests on the feature
-+# appearing in config.
-+#
-+ifeq ($(CONFIG_ARM_COMPATIBLE_SEMIHOSTING),y)
-+VPATH += $(MULTIARCH_SRC)/arm-compat-semi
-+
-+# Add -I path back to TARGET_NAME for semicall.h
-+semihosting: CFLAGS+=-I$(SRC_PATH)/tests/tcg/$(TARGET_NAME)
-+
-+run-semihosting: semihosting
-+	$(call run-test,$<,$(QEMU) $< 2> $<.err, "$< on $(TARGET_NAME)")
-+
-+run-plugin-semihosting-with-%:
-+	$(call run-test, $@, $(QEMU) $(QEMU_OPTS) \
-+		-plugin $(PLUGIN_LIB)/$(call extract-plugin,$@) \
-+		 $(call strip-plugin,$<) 2> $<.err, \
-+		"$< on $(TARGET_NAME) with $*")
-+
-+semiconsole: CFLAGS+=-I$(SRC_PATH)/tests/tcg/$(TARGET_NAME)
-+
-+run-semiconsole: semiconsole
-+	$(call skip-test, $<, "MANUAL ONLY")
-+
-+run-plugin-semiconsole-with-%:
-+	$(call skip-test, $<, "MANUAL ONLY")
-+
-+TESTS += semihosting semiconsole
++if install_blobs_arm
++  blobs_ss.add(files(
++    'npcm7xx_bootrom.bin',
++  ))
 +endif
++
+ blobs_ss = blobs_ss.apply(config_host, strict: false)
  
- # Update TESTS
- TESTS += $(MULTIARCH_TESTS)
+ if get_option('install_blobs')
 -- 
-2.20.1
+2.26.2
+

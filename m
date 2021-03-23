@@ -1,97 +1,99 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4412892lfg;
-        Tue, 23 Mar 2021 03:55:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyciaHHhmxBobI1kkLUOcawNykpUDWZ6jd6/W/1O6ZqZ7AYGBVofDeHc3DKBytoYdcSRZJ9
-X-Received: by 2002:a05:6638:f11:: with SMTP id h17mr3867823jas.67.1616496924301;
-        Tue, 23 Mar 2021 03:55:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1616496924; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4486929lfg;
+        Tue, 23 Mar 2021 05:31:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyZbgVnalJ0Gy4yXgevlCAn59Ujht/tlWLKh9H4LpXowiuppbcw/SsLQnFiNobS0UFJN9d9
+X-Received: by 2002:aca:180c:: with SMTP id h12mr3251764oih.109.1616502676830;
+        Tue, 23 Mar 2021 05:31:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616502676; cv=none;
         d=google.com; s=arc-20160816;
-        b=PmaGwMM5yUbP+9wSsJIiFC1j0g4uASTg+oDzCWSi4nuqJ+KSZgGvBE5YMBT7g3xWpj
-         m3KcvlBCr04mVXwYEOvI5S7rK+7gmy46bkRuLN9XtEujwXCPlHFQlpekvWGccRGY5ZTS
-         UVwQ9XMQxu0616N9ik7rO2+7frXUKupM0LzyuSg9B2ysVE002tvRQYtQZE0mTiyID+rq
-         TJpCj4UaGFmQ+mPiK2ANneaNQhkl4WRgI1+W2gf2wfTzZU/115mSVshyikbmFBtxyi0d
-         UxpwFBqjQ+crOJ/SfU/79BZkYNGTUm1iyjSV3ZZjyOxKaZ88+nf8mKbjybJhLtNnNM0t
-         plPw==
+        b=riDe7+/ElCiJy8DQC4H2Wg7To3fgezU/1j1or7qU6wYJnAChotvPG+rbDpn+kHZuw0
+         zoeL/o6Z4+KAMbICNiv2Rp0cSS4JLiYirLzhhqM20byE8W2Dc7mMY2cSwxRtoYXGVfIF
+         4YHOL5UUPHF5U9RCSrguAypN+WnKg/2F1jXpzGsvFuaHCLpVH1YkL7zXi9GVet3Cqtcd
+         N7QWQNXwqnsJJHIFG4CqY7BT3X8ENSbRT+iWTipf029xvU/E7R2Wi6iSQFrZIi91UaFX
+         d/kYYd0sKvMZZRQaLZDwsPxlyp0NcLihPcaMxNby75JW576ZFFZxK+Wh8GVu94z6xkv+
+         7noA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=PlQ1M49uwiBqU7zJK9Oe0O7XmS+lsIGXoNikxB4ENiE=;
-        b=aBhqmd7qwvF7AO3uK+mrzu0KW40mpR/JdOGBEP+IxIUMOjOo+6ptq6cE7l4wmsxiN3
-         Kk8PgvlLa0273Of4BOewLgmrrZ6ViqMnKouT8LlzfwislamBlSA+aSTqA2BmW2gxotqZ
-         NeHLT0xUrddvcQOVDet5GjiAvWi1bIxwFgHgmPg88xibSJIZBv08CvsHxySTs/qOqN1M
-         j87UnfHu0PWdNPzjGaBLp1DYfs3khWq87vpEdIcsd/nsht5doGwJHWvRizS6EG7JDcwK
-         KgQRRdz9mw2fQLT5K7DvAFdzMgmusPpHCYGCgrmsOHssfuG3UP4MHNr4VDUCqgzaVcbp
-         RV0g==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=YUWeZv6EYVYn4X6YJwPyxI9zJ3tzVHLfSu3vTw/tqD0=;
+        b=v1txfAMOdKaPivgmU7WDUkTyvUjGWMlu92RGqqlM/j+5YkH+xlxAKslhAGwkmPbnWA
+         r3r0jrVJf4epVVW4uTd6DkaV24CG8Dej7GzqAnsv46vQD1Ccq/aRxrUFRDBhSsgiYosV
+         9nRxMm872ChbVwR2PDrJqNuzoeasK9ELCVZx3aN2JLDJjk5pCTzlDwz7cvdbGZ3oaXXN
+         CnlPGsg7udxN0LpjIE1crMu0mQP9yP1rRba+cHmICMJ1XFB2lgi4zducz8YYDskXjxXi
+         HCtiaxxpwN8kXNYNWXBwymwK42oAol3hnbD9qw3U1HvEbb1su2LGXYMdqKyfh1rcwbAn
+         KfTQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=aIzl71VE;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=KnnL6JcP;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p9si11052055jan.5.2021.03.23.03.55.24
+        by mx.google.com with ESMTPS id z3si13705339otj.61.2021.03.23.05.31.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 Mar 2021 03:55:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 23 Mar 2021 05:31:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=aIzl71VE;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=KnnL6JcP;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39818 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51680 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lOeh1-00005b-KG
-	for alex.bennee@linaro.org; Tue, 23 Mar 2021 06:55:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47100)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lOgBo-0004DD-0N
+	for alex.bennee@linaro.org; Tue, 23 Mar 2021 08:31:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42020)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lOegp-00005H-9v
- for qemu-arm@nongnu.org; Tue, 23 Mar 2021 06:55:11 -0400
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629]:39935)
+ id 1lOg8d-0001Qd-4D
+ for qemu-devel@nongnu.org; Tue, 23 Mar 2021 08:27:59 -0400
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b]:42734)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lOegm-000440-Dv
- for qemu-arm@nongnu.org; Tue, 23 Mar 2021 06:55:11 -0400
-Received: by mail-ej1-x629.google.com with SMTP id ce10so26312587ejb.6
- for <qemu-arm@nongnu.org>; Tue, 23 Mar 2021 03:55:07 -0700 (PDT)
+ id 1lOg8b-0005iV-7d
+ for qemu-devel@nongnu.org; Tue, 23 Mar 2021 08:27:58 -0400
+Received: by mail-ej1-x62b.google.com with SMTP id hq27so26775388ejc.9
+ for <qemu-devel@nongnu.org>; Tue, 23 Mar 2021 05:27:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=PlQ1M49uwiBqU7zJK9Oe0O7XmS+lsIGXoNikxB4ENiE=;
- b=aIzl71VE0wJsfa+7IuYWxc3qG5K+RR/zuQtqlNsj6r3oOIghAvES3UbEa+DbS8EM69
- RsGyJyJYvKaLVMJYq2zc5s2srIiSN5qa0K0F3zO85ffwIRu+lzirAg9ind8SjxDI1XcZ
- SUOlGAYyEbo783OT04DkDPpBPMSukd3otDdwxc7HVfiBfmabVss3GK/k8uHjFoYGy2ye
- YOrpceSmaQM0lCHxC5bQU/a/9HoR3ODpAYl2Jb6epGO/Mxt+yRBQcCoZAFFWHAJ5doG0
- Jo6igH7KDg5XgppNkL059srfWaEoTUNv0uQ2oiLC1NtS+RpOIM59W0toOmRnkX7s8ZW9
- E7kA==
+ :cc:content-transfer-encoding;
+ bh=YUWeZv6EYVYn4X6YJwPyxI9zJ3tzVHLfSu3vTw/tqD0=;
+ b=KnnL6JcP/Z+DcnDdjYcWoEr6yzKuxjWp8H8u49ry2AbAG0nsH+GT2EfpvFGMvKhO4K
+ xSPoccmvf5Kwv7CwUFqxye5jlZjglTgUHrFzDbBhUojuV4MC4rKfl2Z3uV8NzPeJXZPY
+ RwpaanucqSEyjJLSl2kBLo7heBw5hrRuKCbAfZUdgb617Re5uD2H1z24tfip5NAufWkA
+ VeaqVqvgUgL9Pzyak/nWC9xItotpAouf+TrcW2IUTusReuJB6qt7BK3ilief83hCJCf9
+ j31C3zyG5w7oJNYxxHdSshTn+gczhy1UQt35Y7dZ9uB1HysQJXYf74i4C86Ep6bjPR0h
+ jl7w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=PlQ1M49uwiBqU7zJK9Oe0O7XmS+lsIGXoNikxB4ENiE=;
- b=l0lCtEnIf7fZgN/YnJDsyohffSAEpUI8wp0lM3YeVOzp3kSgTudxmEf2K8sJUFZepN
- 6z+OZ43Q7la9hrkUcyPo4d6djNQNi3MKwAbahgdPTRXeAnQMGixsKuZaaMJZCBZtWs5n
- 7//DPk0dN2N/6GTa7l1ixvXWTI6+Hm/9RB2MqoHwh6RaSvDZCIKXw3MPEcYQ8pq0uwbN
- tNcEXVhi0bNIy10p7BM1jlIrtsBBdgx9Sjqv+X+QDfXL2Amh5EaUYeAepMcZTHTMEcLv
- BX5RKEiq8f6V4KEEHAflMk2OBbigi4LVCtofRvL4Nam+Sz/F3xofnTLD0lXsDtACchBK
- VQeg==
-X-Gm-Message-State: AOAM530XqiyaVf6vXDjBPA+/aMDjdBdDZ1a3zO2EC/rGW4zDca4dmKhQ
- 9hu71v0F1QVTF2vPon4w9RxNjVR7nZt3fNExzE1u2g==
-X-Received: by 2002:a17:906:c301:: with SMTP id
- s1mr4205769ejz.382.1616496906251; 
- Tue, 23 Mar 2021 03:55:06 -0700 (PDT)
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=YUWeZv6EYVYn4X6YJwPyxI9zJ3tzVHLfSu3vTw/tqD0=;
+ b=Ca/h3g9hwIJYlPuF0X7obbvbolmv4H6jH89y2jO26UgebNGcHDBtZF1WFC4eAgQWTD
+ 7NMco8Hrdt5G1CIbr/HQWk4kYscUouuPGQefab/g09CTKBUIyqF45CjscWO+W5/k8Azv
+ gVzQhIFDChBOuXHoIcn7d6pXiRMTwa/G4ArABpL0Yq/sWyS0YJ8offLkjWtAIoc0UEw2
+ xzrJrTvP3ObIBLReJNgYG9oQKCwKrWdiKfpgBH4trPPNFqfHwiS8YHP5hbfqj7KhsdXU
+ pFUEgZBx9RJYM2QUWbul5Lciikl8LM/byfDD6EgV9ZeuvGAU7qUm3Oe/4NnlYo5TMJxa
+ Q7bg==
+X-Gm-Message-State: AOAM5303YxwdPOEyx+L35ucCMtPEA3OrQ0BorFRDrCG3eNiSw5R4IeJC
+ gKcXfez6UWvl74X04uRzu+OJ6IJ6SdU7P7YPNUczzA==
+X-Received: by 2002:a17:906:bd2:: with SMTP id
+ y18mr4756350ejg.482.1616502473222; 
+ Tue, 23 Mar 2021 05:27:53 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210322201336.9539-1-peter.maydell@linaro.org>
- <20210322183320-mutt-send-email-mst@kernel.org>
-In-Reply-To: <20210322183320-mutt-send-email-mst@kernel.org>
+References: <20210313170131.2116837-1-f4bug@amsat.org>
+In-Reply-To: <20210313170131.2116837-1-f4bug@amsat.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 23 Mar 2021 10:54:37 +0000
-Message-ID: <CAFEAcA9zUxUQN5CnJMx+P2gKOPwLwend17XWotKMZPSrhrBYbw@mail.gmail.com>
-Subject: Re: [PATCH] hw/pci-host/gpex: Don't fault for unmapped parts of MMIO
- and PIO windows
-To: "Michael S. Tsirkin" <mst@redhat.com>
+Date: Tue, 23 Mar 2021 12:27:24 +0000
+Message-ID: <CAFEAcA-8agmT_SpO7MYmWX19XhKrAz9TCgiCzo4S-uL-V4Pf=Q@mail.gmail.com>
+Subject: Re: [PATCH] hw/display/bcm2835_fb: Remove DeviceReset() call in
+ DeviceRealize()
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::629;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x629.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -100,61 +102,144 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "open list:RISC-V" <qemu-riscv@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Arnd Bergmann <arnd@arndb.de>, QEMU Developers <qemu-devel@nongnu.org>,
- Dmitry Vyukov <dvyukov@google.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zpdtnJtQtAyf
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ Gerd Hoffmann <kraxel@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: iHDqED+cRaVH
 
-On Mon, 22 Mar 2021 at 22:35, Michael S. Tsirkin <mst@redhat.com> wrote:
+On Sat, 13 Mar 2021 at 17:01, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
+ wrote:
 >
-> On Mon, Mar 22, 2021 at 08:13:36PM +0000, Peter Maydell wrote:
-> > Currently the gpex PCI controller implements no special behaviour for
-> > guest accesses to areas of the PIO and MMIO where it has not mapped
-> > any PCI devices, which means that for Arm you end up with a CPU
-> > exception due to a data abort.
-> >
-> > Most host OSes expect "like an x86 PC" behaviour, where bad accesses
-> > like this return -1 for reads and ignore writes.  In the interests of
-> > not being surprising, make host CPU accesses to these windows behave
-> > as -1/discard where there's no mapped PCI device.
-> >
-> > Reported-by: Dmitry Vyukov <dvyukov@google.com>
-> > Fixes: https://bugs.launchpad.net/qemu/+bug/1918917
-> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> When QDev objects have their DeviceReset handler set, they
+> shouldn't worry about calling it at realization stage (it
+> is handled by hw/core/qdev.c::device_set_realized).
 >
-> Acked-by: Michael S. Tsirkin <mst@redhat.com>
+> Remove the pointless/confusing bcm2835_fb_reset() call.
 >
-> BTW it looks like launchpad butchered the lore.kernel.org
-> link so one can't find out what was the guest issue this is
-> fixing. Want to include a bit more data in the commit log
-> instead?
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>  hw/display/bcm2835_fb.c | 2 --
+>  1 file changed, 2 deletions(-)
+>
+> diff --git a/hw/display/bcm2835_fb.c b/hw/display/bcm2835_fb.c
+> index 2be77bdd3a0..445e8636770 100644
+> --- a/hw/display/bcm2835_fb.c
+> +++ b/hw/display/bcm2835_fb.c
+> @@ -424,8 +424,6 @@ static void bcm2835_fb_realize(DeviceState *dev, Erro=
+r **errp)
+>      s->dma_mr =3D MEMORY_REGION(obj);
+>      address_space_init(&s->dma_as, s->dma_mr, TYPE_BCM2835_FB "-memory")=
+;
+>
+> -    bcm2835_fb_reset(dev);
+> -
+>      s->con =3D graphic_console_init(dev, 0, &vgafb_ops, s);
+>      qemu_console_resize(s->con, s->config.xres, s->config.yres);
+>  }
 
-The link in the LP report works for me, I can just click
-straight through.
-https://lore.kernel.org/lkml/CAK8P3a0HVu+x0T6+K3d0v1bvU-Pes0F0CSjqm5x=bxFgv5Y3mA@mail.gmail.com/
+With this patch applied, I get a clang-sanitizer-build failure
+in "make check":
 
-It's a syzkaller report that the kernel falls over if userspace
-tries to access a non-existent 8250 UART, because it doesn't
-expect the external abort.
+$ QTEST_QEMU_BINARY=3D./build/arm-clang/qemu-system-arm
+build/arm-clang/tests/qtest/test-hmp
+/arm/hmp/raspi0: ../../hw/display/bcm2835_fb.c:131:13: runtime error:
+store to null pointer of type 'uint32_t' (aka 'unsigned int')
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+=3D=3D23006=3D=3DERROR: UndefinedBehaviorSanitizer: SEGV on unknown address
+0x000000000000 (pc 0x5599adaf839b bp 0x000000000000 sp 0x7ffd81ee77a0
+T23006)
+=3D=3D23006=3D=3DThe signal is caused by a WRITE memory access.
+=3D=3D23006=3D=3DHint: address points to the zero page.
+    #0 0x5599adaf839a in draw_line_src16
+/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../hw/displa=
+y/bcm2835_fb.c:131:30
+    #1 0x5599add82e8f in framebuffer_update_display
+/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../hw/displa=
+y/framebuffer.c:107:13
+    #2 0x5599adaf7844 in fb_update_display
+/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../hw/displa=
+y/bcm2835_fb.c:203:5
+    #3 0x5599ad9e7800 in graphic_hw_update
+/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../ui/consol=
+e.c:279:9
+    #4 0x5599aea450d3 in aio_bh_poll
+/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../util/asyn=
+c.c:164:13
+    #5 0x5599ae9e5d73 in aio_poll
+/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../util/aio-=
+posix.c:659:17
+    #6 0x5599ad873d2c in handle_hmp_command
+/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../monitor/h=
+mp.c:1117:9
+    #7 0x5599ae368594 in qmp_human_monitor_command
+/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../monitor/m=
+isc.c:135:5
+    #8 0x5599ae996101 in qmp_marshal_human_monitor_command
+/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/qapi/qapi-comma=
+nds-misc.c:266:14
+    #9 0x5599ae9de39c in do_qmp_dispatch_bh
+/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../qapi/qmp-=
+dispatch.c:131:5
+    #10 0x5599aea450d3 in aio_bh_poll
+/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../util/asyn=
+c.c:164:13
+    #11 0x5599ae9e332b in aio_dispatch
+/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../util/aio-=
+posix.c:381:5
+    #12 0x5599aea4799a in aio_ctx_dispatch
+/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../util/asyn=
+c.c:306:5
+    #13 0x7f74a0a35416 in g_main_context_dispatch
+(/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x4c416)
+    #14 0x5599ae9dc8f4 in glib_pollfds_poll
+/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../util/main=
+-loop.c:231:9
+    #15 0x5599ae9dc8f4 in os_host_main_loop_wait
+/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../util/main=
+-loop.c:254
+    #16 0x5599ae9dc8f4 in main_loop_wait
+/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../util/main=
+-loop.c:530
+    #17 0x5599ae42adf6 in qemu_main_loop
+/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../softmmu/r=
+unstate.c:725:9
+    #18 0x5599ad5bbf0a in main
+/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../softmmu/m=
+ain.c:50:5
+    #19 0x7f749bcf3bf6 in __libc_start_main
+/build/glibc-S9d2JN/glibc-2.27/csu/../csu/libc-start.c:310
+    #20 0x5599ad59c519 in _start
+(/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/qemu-system-ar=
+m+0x1335519)
 
-> > Do we need to have the property machinery so that old
-> > virt-5.2 etc retain the previous behaviour ?
+UndefinedBehaviorSanitizer can not provide additional info.
+=3D=3D23006=3D=3DABORTING
+Broken pipe
+Aborted (core dumped)
 
-Musing on this after sending the patch, I'm leaning towards
-adding the property stuff, just to be on the safe side.
+The patch is correct in that the device shouldn't be resetting itself
+in realize, but this is presumably masking a bug elsewhere in the device
+that we need to fix first before we can make this change.
+
+It looks as if what happens is that the GraphicHwOps methods can
+get called before the device is reset. I don't know if that is
+something we can arrange to have not happen -- certainly it's
+a bit confusing to have to deal with the device not having been
+reset yet -- or if implementations just have to deal with it.
 
 thanks
 -- PMM

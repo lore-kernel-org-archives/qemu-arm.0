@@ -1,343 +1,160 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id d19sm6141500edr.45.2021.03.20.06.37.08
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 20 Mar 2021 06:37:10 -0700 (PDT)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 3E7CA1FF91;
-	Sat, 20 Mar 2021 13:37:07 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PATCH  v1 05/14] semihosting: move semihosting tests to multiarch
-Date: Sat, 20 Mar 2021 13:36:57 +0000
-Message-Id: <20210320133706.21475-6-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210320133706.21475-1-alex.bennee@linaro.org>
-References: <20210320133706.21475-1-alex.bennee@linaro.org>
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4412892lfg;
+        Tue, 23 Mar 2021 03:55:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyciaHHhmxBobI1kkLUOcawNykpUDWZ6jd6/W/1O6ZqZ7AYGBVofDeHc3DKBytoYdcSRZJ9
+X-Received: by 2002:a05:6638:f11:: with SMTP id h17mr3867823jas.67.1616496924301;
+        Tue, 23 Mar 2021 03:55:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616496924; cv=none;
+        d=google.com; s=arc-20160816;
+        b=PmaGwMM5yUbP+9wSsJIiFC1j0g4uASTg+oDzCWSi4nuqJ+KSZgGvBE5YMBT7g3xWpj
+         m3KcvlBCr04mVXwYEOvI5S7rK+7gmy46bkRuLN9XtEujwXCPlHFQlpekvWGccRGY5ZTS
+         UVwQ9XMQxu0616N9ik7rO2+7frXUKupM0LzyuSg9B2ysVE002tvRQYtQZE0mTiyID+rq
+         TJpCj4UaGFmQ+mPiK2ANneaNQhkl4WRgI1+W2gf2wfTzZU/115mSVshyikbmFBtxyi0d
+         UxpwFBqjQ+crOJ/SfU/79BZkYNGTUm1iyjSV3ZZjyOxKaZ88+nf8mKbjybJhLtNnNM0t
+         plPw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=PlQ1M49uwiBqU7zJK9Oe0O7XmS+lsIGXoNikxB4ENiE=;
+        b=aBhqmd7qwvF7AO3uK+mrzu0KW40mpR/JdOGBEP+IxIUMOjOo+6ptq6cE7l4wmsxiN3
+         Kk8PgvlLa0273Of4BOewLgmrrZ6ViqMnKouT8LlzfwislamBlSA+aSTqA2BmW2gxotqZ
+         NeHLT0xUrddvcQOVDet5GjiAvWi1bIxwFgHgmPg88xibSJIZBv08CvsHxySTs/qOqN1M
+         j87UnfHu0PWdNPzjGaBLp1DYfs3khWq87vpEdIcsd/nsht5doGwJHWvRizS6EG7JDcwK
+         KgQRRdz9mw2fQLT5K7DvAFdzMgmusPpHCYGCgrmsOHssfuG3UP4MHNr4VDUCqgzaVcbp
+         RV0g==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=aIzl71VE;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id p9si11052055jan.5.2021.03.23.03.55.24
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 23 Mar 2021 03:55:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=aIzl71VE;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:39818 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lOeh1-00005b-KG
+	for alex.bennee@linaro.org; Tue, 23 Mar 2021 06:55:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47100)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lOegp-00005H-9v
+ for qemu-arm@nongnu.org; Tue, 23 Mar 2021 06:55:11 -0400
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629]:39935)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lOegm-000440-Dv
+ for qemu-arm@nongnu.org; Tue, 23 Mar 2021 06:55:11 -0400
+Received: by mail-ej1-x629.google.com with SMTP id ce10so26312587ejb.6
+ for <qemu-arm@nongnu.org>; Tue, 23 Mar 2021 03:55:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=PlQ1M49uwiBqU7zJK9Oe0O7XmS+lsIGXoNikxB4ENiE=;
+ b=aIzl71VE0wJsfa+7IuYWxc3qG5K+RR/zuQtqlNsj6r3oOIghAvES3UbEa+DbS8EM69
+ RsGyJyJYvKaLVMJYq2zc5s2srIiSN5qa0K0F3zO85ffwIRu+lzirAg9ind8SjxDI1XcZ
+ SUOlGAYyEbo783OT04DkDPpBPMSukd3otDdwxc7HVfiBfmabVss3GK/k8uHjFoYGy2ye
+ YOrpceSmaQM0lCHxC5bQU/a/9HoR3ODpAYl2Jb6epGO/Mxt+yRBQcCoZAFFWHAJ5doG0
+ Jo6igH7KDg5XgppNkL059srfWaEoTUNv0uQ2oiLC1NtS+RpOIM59W0toOmRnkX7s8ZW9
+ E7kA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=PlQ1M49uwiBqU7zJK9Oe0O7XmS+lsIGXoNikxB4ENiE=;
+ b=l0lCtEnIf7fZgN/YnJDsyohffSAEpUI8wp0lM3YeVOzp3kSgTudxmEf2K8sJUFZepN
+ 6z+OZ43Q7la9hrkUcyPo4d6djNQNi3MKwAbahgdPTRXeAnQMGixsKuZaaMJZCBZtWs5n
+ 7//DPk0dN2N/6GTa7l1ixvXWTI6+Hm/9RB2MqoHwh6RaSvDZCIKXw3MPEcYQ8pq0uwbN
+ tNcEXVhi0bNIy10p7BM1jlIrtsBBdgx9Sjqv+X+QDfXL2Amh5EaUYeAepMcZTHTMEcLv
+ BX5RKEiq8f6V4KEEHAflMk2OBbigi4LVCtofRvL4Nam+Sz/F3xofnTLD0lXsDtACchBK
+ VQeg==
+X-Gm-Message-State: AOAM530XqiyaVf6vXDjBPA+/aMDjdBdDZ1a3zO2EC/rGW4zDca4dmKhQ
+ 9hu71v0F1QVTF2vPon4w9RxNjVR7nZt3fNExzE1u2g==
+X-Received: by 2002:a17:906:c301:: with SMTP id
+ s1mr4205769ejz.382.1616496906251; 
+ Tue, 23 Mar 2021 03:55:06 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: vg19hhhTRxWO
+References: <20210322201336.9539-1-peter.maydell@linaro.org>
+ <20210322183320-mutt-send-email-mst@kernel.org>
+In-Reply-To: <20210322183320-mutt-send-email-mst@kernel.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 23 Mar 2021 10:54:37 +0000
+Message-ID: <CAFEAcA9zUxUQN5CnJMx+P2gKOPwLwend17XWotKMZPSrhrBYbw@mail.gmail.com>
+Subject: Re: [PATCH] hw/pci-host/gpex: Don't fault for unmapped parts of MMIO
+ and PIO windows
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::629;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x629.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "open list:RISC-V" <qemu-riscv@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Arnd Bergmann <arnd@arndb.de>, QEMU Developers <qemu-devel@nongnu.org>,
+ Dmitry Vyukov <dvyukov@google.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: zpdtnJtQtAyf
 
-It may be arm-compat-semihosting but more than one architecture uses
-it so lets move the tests into the multiarch area. We gate it on the
-feature and split the semicall.h header between the arches.
+On Mon, 22 Mar 2021 at 22:35, Michael S. Tsirkin <mst@redhat.com> wrote:
+>
+> On Mon, Mar 22, 2021 at 08:13:36PM +0000, Peter Maydell wrote:
+> > Currently the gpex PCI controller implements no special behaviour for
+> > guest accesses to areas of the PIO and MMIO where it has not mapped
+> > any PCI devices, which means that for Arm you end up with a CPU
+> > exception due to a data abort.
+> >
+> > Most host OSes expect "like an x86 PC" behaviour, where bad accesses
+> > like this return -1 for reads and ignore writes.  In the interests of
+> > not being surprising, make host CPU accesses to these windows behave
+> > as -1/discard where there's no mapped PCI device.
+> >
+> > Reported-by: Dmitry Vyukov <dvyukov@google.com>
+> > Fixes: https://bugs.launchpad.net/qemu/+bug/1918917
+> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>
+> Acked-by: Michael S. Tsirkin <mst@redhat.com>
+>
+> BTW it looks like launchpad butchered the lore.kernel.org
+> link so one can't find out what was the guest issue this is
+> fixing. Want to include a bit more data in the commit log
+> instead?
 
-Also clean-up a bit of the Makefile messing about to one common set of
-runners.
+The link in the LP report works for me, I can just click
+straight through.
+https://lore.kernel.org/lkml/CAK8P3a0HVu+x0T6+K3d0v1bvU-Pes0F0CSjqm5x=bxFgv5Y3mA@mail.gmail.com/
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20210312102029.17017-2-alex.bennee@linaro.org>
+It's a syzkaller report that the kernel falls over if userspace
+tries to access a non-existent 8250 UART, because it doesn't
+expect the external abort.
 
----
-v6.0-rc1
-  - fix breakage for semihosting/semiconsole-arm
----
- tests/tcg/aarch64/semicall.h                  | 18 +++++++++++
- tests/tcg/arm/semicall.h                      | 15 +--------
- tests/tcg/riscv64/semicall.h                  | 22 +++++++++++++
- .../arm-compat-semi}/semiconsole.c            |  2 ++
- .../arm-compat-semi}/semihosting.c            |  5 ++-
- MAINTAINERS                                   |  1 +
- tests/tcg/Makefile.target                     |  3 ++
- tests/tcg/aarch64/Makefile.target             | 18 -----------
- tests/tcg/arm/Makefile.target                 | 22 ++++++-------
- tests/tcg/multiarch/Makefile.target           | 31 +++++++++++++++++++
- 10 files changed, 91 insertions(+), 46 deletions(-)
- create mode 100644 tests/tcg/aarch64/semicall.h
- create mode 100644 tests/tcg/riscv64/semicall.h
- rename tests/tcg/{arm => multiarch/arm-compat-semi}/semiconsole.c (93%)
- rename tests/tcg/{arm => multiarch/arm-compat-semi}/semihosting.c (85%)
+> > Do we need to have the property machinery so that old
+> > virt-5.2 etc retain the previous behaviour ?
 
-diff --git a/tests/tcg/aarch64/semicall.h b/tests/tcg/aarch64/semicall.h
-new file mode 100644
-index 0000000000..8a3fce35c5
---- /dev/null
-+++ b/tests/tcg/aarch64/semicall.h
-@@ -0,0 +1,18 @@
-+/*
-+ * Semihosting Tests - AArch64 helper
-+ *
-+ * Copyright (c) 2019
-+ * Written by Alex Bennée <alex.bennee@linaro.org>
-+ *
-+ * SPDX-License-Identifier: GPL-3.0-or-later
-+ */
-+
-+uintptr_t __semi_call(uintptr_t type, uintptr_t arg0)
-+{
-+    register uintptr_t t asm("x0") = type;
-+    register uintptr_t a0 asm("x1") = arg0;
-+    asm("hlt 0xf000"
-+        : "=r" (t)
-+        : "r" (t), "r" (a0));
-+    return t;
-+}
-diff --git a/tests/tcg/arm/semicall.h b/tests/tcg/arm/semicall.h
-index d4f6818192..ad8ac51310 100644
---- a/tests/tcg/arm/semicall.h
-+++ b/tests/tcg/arm/semicall.h
-@@ -1,5 +1,5 @@
- /*
-- * Semihosting Tests
-+ * Semihosting Tests - ARM Helper
-  *
-  * Copyright (c) 2019
-  * Written by Alex Bennée <alex.bennee@linaro.org>
-@@ -7,13 +7,8 @@
-  * SPDX-License-Identifier: GPL-3.0-or-later
-  */
- 
--#define SYS_WRITE0      0x04
--#define SYS_READC       0x07
--#define SYS_REPORTEXC   0x18
--
- uintptr_t __semi_call(uintptr_t type, uintptr_t arg0)
- {
--#if defined(__arm__)
-     register uintptr_t t asm("r0") = type;
-     register uintptr_t a0 asm("r1") = arg0;
- #ifdef __thumb__
-@@ -23,13 +18,5 @@ uintptr_t __semi_call(uintptr_t type, uintptr_t arg0)
- #endif
-     asm(SVC : "=r" (t)
-         : "r" (t), "r" (a0));
--#else
--    register uintptr_t t asm("x0") = type;
--    register uintptr_t a0 asm("x1") = arg0;
--    asm("hlt 0xf000"
--        : "=r" (t)
--        : "r" (t), "r" (a0));
--#endif
--
-     return t;
- }
-diff --git a/tests/tcg/riscv64/semicall.h b/tests/tcg/riscv64/semicall.h
-new file mode 100644
-index 0000000000..f8c88f32dc
---- /dev/null
-+++ b/tests/tcg/riscv64/semicall.h
-@@ -0,0 +1,22 @@
-+/*
-+ * Semihosting Tests - RiscV64 Helper
-+ *
-+ * Copyright (c) 2021
-+ * Written by Alex Bennée <alex.bennee@linaro.org>
-+ *
-+ * SPDX-License-Identifier: GPL-3.0-or-later
-+ */
-+
-+uintptr_t __semi_call(uintptr_t type, uintptr_t arg0)
-+{
-+    register uintptr_t t asm("a0") = type;
-+    register uintptr_t a0 asm("a1") = arg0;
-+    asm(".option norvc\n\t"
-+        ".balign 16\n\t"
-+        "slli zero, zero, 0x1f\n\t"
-+        "ebreak\n\t"
-+        "srai zero, zero, 0x7\n\t"
-+        : "=r" (t)
-+        : "r" (t), "r" (a0));
-+    return t;
-+}
-diff --git a/tests/tcg/arm/semiconsole.c b/tests/tcg/multiarch/arm-compat-semi/semiconsole.c
-similarity index 93%
-rename from tests/tcg/arm/semiconsole.c
-rename to tests/tcg/multiarch/arm-compat-semi/semiconsole.c
-index 6ef0bd2450..1d82efc589 100644
---- a/tests/tcg/arm/semiconsole.c
-+++ b/tests/tcg/multiarch/arm-compat-semi/semiconsole.c
-@@ -7,6 +7,8 @@
-  * SPDX-License-Identifier: GPL-3.0-or-later
-  */
- 
-+#define SYS_READC       0x07
-+
- #include <stdio.h>
- #include <stdint.h>
- #include "semicall.h"
-diff --git a/tests/tcg/arm/semihosting.c b/tests/tcg/multiarch/arm-compat-semi/semihosting.c
-similarity index 85%
-rename from tests/tcg/arm/semihosting.c
-rename to tests/tcg/multiarch/arm-compat-semi/semihosting.c
-index 33faac9916..b3fd16cd12 100644
---- a/tests/tcg/arm/semihosting.c
-+++ b/tests/tcg/multiarch/arm-compat-semi/semihosting.c
-@@ -7,12 +7,15 @@
-  * SPDX-License-Identifier: GPL-3.0-or-later
-  */
- 
-+#define SYS_WRITE0      0x04
-+#define SYS_REPORTEXC   0x18
-+
- #include <stdint.h>
- #include "semicall.h"
- 
- int main(int argc, char *argv[argc])
- {
--#if defined(__arm__)
-+#if UINTPTR_MAX == UINT32_MAX
-     uintptr_t exit_code = 0x20026;
- #else
-     uintptr_t exit_block[2] = {0x20026, 0};
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 25fc49d1dc..b6e1b25b33 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -3283,6 +3283,7 @@ M: Alex Bennée <alex.bennee@linaro.org>
- S: Maintained
- F: semihosting/
- F: include/semihosting/
-+F: tests/tcg/multiarch/arm-compat-semi/
- 
- Multi-process QEMU
- M: Elena Ufimtseva <elena.ufimtseva@oracle.com>
-diff --git a/tests/tcg/Makefile.target b/tests/tcg/Makefile.target
-index 24d75a5801..cab8c6b3a2 100644
---- a/tests/tcg/Makefile.target
-+++ b/tests/tcg/Makefile.target
-@@ -32,6 +32,9 @@
- all:
- -include ../../../config-host.mak
- -include ../config-$(TARGET).mak
-+ifeq ($(CONFIG_USER_ONLY),y)
-+-include $(SRC_PATH)/default-configs/targets/$(TARGET).mak
-+endif
- 
- # for including , in command strings
- COMMA := ,
-diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-index bf53ad0087..56e48f4b34 100644
---- a/tests/tcg/aarch64/Makefile.target
-+++ b/tests/tcg/aarch64/Makefile.target
-@@ -41,24 +41,6 @@ AARCH64_TESTS += mte-1 mte-2 mte-3 mte-4
- mte-%: CFLAGS += -march=armv8.5-a+memtag
- endif
- 
--# Semihosting smoke test for linux-user
--AARCH64_TESTS += semihosting
--run-semihosting: semihosting
--	$(call run-test,$<,$(QEMU) $< 2> $<.err, "$< on $(TARGET_NAME)")
--
--run-plugin-semihosting-with-%:
--	$(call run-test, $@, $(QEMU) $(QEMU_OPTS) \
--		-plugin $(PLUGIN_LIB)/$(call extract-plugin,$@) \
--		 $(call strip-plugin,$<) 2> $<.err, \
--		"$< on $(TARGET_NAME) with $*")
--
--AARCH64_TESTS += semiconsole
--run-semiconsole: semiconsole
--	$(call skip-test, $<, "MANUAL ONLY")
--
--run-plugin-semiconsole-with-%:
--	$(call skip-test, $<, "MANUAL ONLY")
--
- ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_SVE),)
- # System Registers Tests
- AARCH64_TESTS += sysregs
-diff --git a/tests/tcg/arm/Makefile.target b/tests/tcg/arm/Makefile.target
-index ec95156562..5ab59ed6ce 100644
---- a/tests/tcg/arm/Makefile.target
-+++ b/tests/tcg/arm/Makefile.target
-@@ -29,37 +29,31 @@ run-fcvt: fcvt
- 	$(call run-test,fcvt,$(QEMU) $<,"$< on $(TARGET_NAME)")
- 	$(call diff-out,fcvt,$(ARM_SRC)/fcvt.ref)
- 
-+ifeq ($(CONFIG_ARM_COMPATIBLE_SEMIHOSTING),y)
-+
- # Semihosting smoke test for linux-user
--ARM_TESTS += semihosting
- semihosting: CFLAGS += -mthumb
--run-semihosting: semihosting
--	$(call run-test,$<,$(QEMU) $< 2> $<.err, "$< on $(TARGET_NAME)")
- 
- ARM_TESTS += semihosting-arm
--semihosting-arm: CFLAGS += -marm
-+semihosting-arm: CFLAGS += -marm -I$(SRC_PATH)/tests/tcg/$(TARGET_NAME)
- semihosting-arm: semihosting.c
- 	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
- 
- run-semihosting-arm: semihosting-arm
- 	$(call run-test,$<,$(QEMU) $< 2> $<.err, "$< on $(TARGET_NAME)")
- 
--run-plugin-semihosting-with-%:
-+run-plugin-semihosting-arm-with-%:
- 	$(call run-test, $@, $(QEMU) $(QEMU_OPTS) \
- 		-plugin $(PLUGIN_LIB)/$(call extract-plugin,$@) \
- 		 $(call strip-plugin,$<) 2> $<.err, \
- 		"$< on $(TARGET_NAME) with $*")
- 
--ARM_TESTS += semiconsole semiconsole-arm
-+ARM_TESTS += semiconsole-arm
- 
- semiconsole: CFLAGS += -mthumb
--run-semiconsole: semiconsole
--	$(call skip-test, $<, "MANUAL ONLY")
- 
--run-plugin-semiconsole-with-%:
--	$(call skip-test, $<, "MANUAL ONLY")
--
--semiconsole-arm: CFLAGS += -marm
--semiconsole-arm: semiconsole.c
-+semiconsole-arm: CFLAGS += -marm -I$(SRC_PATH)/tests/tcg/$(TARGET_NAME)
-+semiconsole-arm: semihosting.c
- 	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
- 
- run-semiconsole-arm: semiconsole-arm
-@@ -68,6 +62,8 @@ run-semiconsole-arm: semiconsole-arm
- run-plugin-semiconsole-arm-with-%:
- 	$(call skip-test, $<, "MANUAL ONLY")
- 
-+endif
-+
- ARM_TESTS += commpage
- 
- TESTS += $(ARM_TESTS)
-diff --git a/tests/tcg/multiarch/Makefile.target b/tests/tcg/multiarch/Makefile.target
-index abbdb2e126..a3a751723d 100644
---- a/tests/tcg/multiarch/Makefile.target
-+++ b/tests/tcg/multiarch/Makefile.target
-@@ -69,6 +69,37 @@ run-gdbstub-%:
- endif
- EXTRA_RUNS += run-gdbstub-sha1 run-gdbstub-qxfer-auxv-read
- 
-+# ARM Compatible Semi Hosting Tests
-+#
-+# Despite having ARM in the name we actually have several
-+# architectures that implement it. We gate the tests on the feature
-+# appearing in config.
-+#
-+ifeq ($(CONFIG_ARM_COMPATIBLE_SEMIHOSTING),y)
-+VPATH += $(MULTIARCH_SRC)/arm-compat-semi
-+
-+# Add -I path back to TARGET_NAME for semicall.h
-+semihosting: CFLAGS+=-I$(SRC_PATH)/tests/tcg/$(TARGET_NAME)
-+
-+run-semihosting: semihosting
-+	$(call run-test,$<,$(QEMU) $< 2> $<.err, "$< on $(TARGET_NAME)")
-+
-+run-plugin-semihosting-with-%:
-+	$(call run-test, $@, $(QEMU) $(QEMU_OPTS) \
-+		-plugin $(PLUGIN_LIB)/$(call extract-plugin,$@) \
-+		 $(call strip-plugin,$<) 2> $<.err, \
-+		"$< on $(TARGET_NAME) with $*")
-+
-+semiconsole: CFLAGS+=-I$(SRC_PATH)/tests/tcg/$(TARGET_NAME)
-+
-+run-semiconsole: semiconsole
-+	$(call skip-test, $<, "MANUAL ONLY")
-+
-+run-plugin-semiconsole-with-%:
-+	$(call skip-test, $<, "MANUAL ONLY")
-+
-+TESTS += semihosting semiconsole
-+endif
- 
- # Update TESTS
- TESTS += $(MULTIARCH_TESTS)
--- 
-2.20.1
+Musing on this after sending the patch, I'm leaning towards
+adding the property stuff, just to be on the safe side.
+
+thanks
+-- PMM

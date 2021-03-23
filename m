@@ -1,116 +1,111 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3613289lfg;
-        Mon, 29 Mar 2021 05:20:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy6D1m0LQFBHRpVSWicv8WUfNeUDBgQ2dPWTQt3ChiXumEXvqVsEnok7ayC6zdF9SMsmwha
-X-Received: by 2002:a05:6e02:dea:: with SMTP id m10mr19303458ilj.51.1617020443080;
-        Mon, 29 Mar 2021 05:20:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617020443; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4184196lfg;
+        Mon, 22 Mar 2021 21:14:08 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwemM0q1ZlxGWDGKyiE+SyI3cn3tdB4fQo3aXTK2bUs6F+MvJfiIds2M98kK0DhoGxg3rda
+X-Received: by 2002:a05:6e02:148b:: with SMTP id n11mr3216524ilk.6.1616472848050;
+        Mon, 22 Mar 2021 21:14:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616472848; cv=none;
         d=google.com; s=arc-20160816;
-        b=C4yCWRmF3dZpseziQ4N7HxBgo6c/UCOVac1DoJzvjc4/MR1YWBea9E/kx9tdaZDmw1
-         OLJVHZzgXueaXT7Z6yyMgEXKVeHsgNWmsywgwRXCHdEmt4UNbABt25h9gYZqxON6rHFg
-         brzlcZ5lqFl3TQcYx5vEtmyWcWX28RRvoSWqgzmU1mCAgT0Z38l726HQ4rh32h9jiRCx
-         LHYdfn1ZDta3Nx13PBTtL0weAA+Nv8qEa3TbUQvMtpXkAQziWRCzt8Gew0QcUxFel8wF
-         hT9VX2fbAlRBBJ4fh3TtSJ1q94mLcgEv1rzj1z2xdSaroq81mFHRDpK9Qx/zIEdETWOM
-         FvPg==
+        b=gcPE6tZjAgDsHYnCD2uvm/kI7WIjGPigHkBvBRobik/pBzMsih2YF7Cja++q005MTG
+         AMpEgjmSCqbCKOqIvCJFLGEYCVKE6PMyt4j3UCFu0fGBYsRHJXi8vHigSkPm86dAhQ5U
+         U/hC59RDAQVgCEUktrhuhtsQ/5aH9vQO4I4VwG+nR+R9HO20A2CnuRgRKORbtKdojp+d
+         zBz11kEg+kIdCMYQ7FqMo/3YpT1OslpO6hHLcsCfoKzRgKdv477QcKLplwy4iKAmMwRw
+         hI0oo/JAidz2srsGvws3bP5aOaVEsTphLcIaeiHYKkNSObOkwUkGWI1JKAlSb5S2jCOR
+         09ow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:message-id:date:subject:to:from;
-        bh=/jPoPC19MJIK0XQD1aGGupS7Qld8QfIp0ZBLl/CfKhI=;
-        b=ibDdlYdZ0RwphRwF4faEa+nq63mAvjnAi3snLvRJbxH0RFRmU31eIPJLXs12U25PkK
-         QecOyODaIRK6+NC73SZ13TKkxLZ7e60go0qJSkM4cjQuby48xX/cXZFSNZjwWJTNQs6u
-         /THBV/p2EsjBTb4gz0RWwf5xuPsbUZ+AHMoeYEd9uhhqjmp6Y8i06x5ewl9P1Tyq2aYz
-         yOormlKyDKoRDp4jADSyj4DRQQ0eWLt2VHnXycmx5XXm2wKPHkDKVHqOyrvxhFlA9MTN
-         jvEEnTkUKvc7C9OfD8tGiMvjAFpe3UWUT2sONrzmU0nG2KztdWzWyDSs+C9dVcUuazAN
-         KqqA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=te6zLYq8PJH8MbvrLGCtpL7G2FDmfaJBuFqu6R6k4qU=;
+        b=HQ3xRKBM8/zjAz3myQS23ulAKczZ2fad64cEAjpLMiqk/BcjfFHVHdEu6/vxqUHbkQ
+         RL0zOX8WcVuwrnRWYgWA91avL5ub9NjDVoaGMJzwIGMlzVXjg7yGQcxB6KdOS141mcB6
+         jfI87ihNCI5JE/8ZslBzoe6aGT7wmCfvY0cd5+ehZQ5cydos0nTwE9K0ikx1OYeomOe+
+         xmjz+k7qNAL0pU+cG55Sros1Pd5zeAH3WqrayYkuYwkv74Rwd9z54RUs4oWU99E2B/rL
+         SXIx6U0XeSh+FyERaq/oDa5I8oDAdyYMC8LI4TNTVddriQz8CYjUCMBbBq3W6U2F3TEI
+         CIHg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=jcvTIemW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q19si14061323jat.59.2021.03.29.05.20.42
+        by mx.google.com with ESMTPS id l2si200566ios.47.2021.03.22.21.14.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 29 Mar 2021 05:20:43 -0700 (PDT)
+        Mon, 22 Mar 2021 21:14:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:49388 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=jcvTIemW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:50896 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lQqsq-0001Kp-Ae
-	for alex.bennee@linaro.org; Mon, 29 Mar 2021 08:20:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34472)
+	id 1lOYQh-0000mt-7x
+	for alex.bennee@linaro.org; Tue, 23 Mar 2021 00:14:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56006)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1lQqrk-0001K0-Lk; Mon, 29 Mar 2021 08:19:32 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:24240
- helo=mx0a-001b2d01.pphosted.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1lQqre-0006ug-Ig; Mon, 29 Mar 2021 08:19:31 -0400
-Received: from pps.filterd (m0098420.ppops.net [127.0.0.1])
- by mx0b-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 12TC3cT0119378; Mon, 29 Mar 2021 08:19:19 -0400
-Received: from ppma04ams.nl.ibm.com (63.31.33a9.ip4.static.sl-reverse.com
- [169.51.49.99])
- by mx0b-001b2d01.pphosted.com with ESMTP id 37jjb4whd2-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 29 Mar 2021 08:19:19 -0400
-Received: from pps.filterd (ppma04ams.nl.ibm.com [127.0.0.1])
- by ppma04ams.nl.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 12TC8wOP018828;
- Mon, 29 Mar 2021 12:19:17 GMT
-Received: from b06avi18878370.portsmouth.uk.ibm.com
- (b06avi18878370.portsmouth.uk.ibm.com [9.149.26.194])
- by ppma04ams.nl.ibm.com with ESMTP id 37hvb8hsaj-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 29 Mar 2021 12:19:17 +0000
-Received: from b06wcsmtp001.portsmouth.uk.ibm.com
- (b06wcsmtp001.portsmouth.uk.ibm.com [9.149.105.160])
- by b06avi18878370.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP
- id 12TCItTj10813770
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 29 Mar 2021 12:18:55 GMT
-Received: from b06wcsmtp001.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id D4D7DA4054;
- Mon, 29 Mar 2021 12:19:14 +0000 (GMT)
-Received: from b06wcsmtp001.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 759EBA4060;
- Mon, 29 Mar 2021 12:19:14 +0000 (GMT)
-Received: from smtp.tlslab.ibm.com (unknown [9.101.4.1])
- by b06wcsmtp001.portsmouth.uk.ibm.com (Postfix) with SMTP;
- Mon, 29 Mar 2021 12:19:14 +0000 (GMT)
-Received: from yukon.ibmuc.com (unknown [9.171.94.32])
- by smtp.tlslab.ibm.com (Postfix) with ESMTP id 9B438220179;
- Mon, 29 Mar 2021 14:19:13 +0200 (CEST)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH] hw/misc: Add an iBT device model
-Date: Mon, 29 Mar 2021 14:19:12 +0200
-Message-Id: <20210329121912.271900-1-clg@kaod.org>
-X-Mailer: git-send-email 2.26.3
-Content-Type: text/plain; charset=UTF-8
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: L_Dij0dTk9TswTtKdDFhwpIbTIM_xxhp
-X-Proofpoint-ORIG-GUID: L_Dij0dTk9TswTtKdDFhwpIbTIM_xxhp
-Content-Transfer-Encoding: quoted-printable
-X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+ (Exim 4.90_1) (envelope-from <shashi.mallela@linaro.org>)
+ id 1lOYPc-0000k1-Iv
+ for qemu-arm@nongnu.org; Tue, 23 Mar 2021 00:13:02 -0400
+Received: from mail-qk1-x72e.google.com ([2607:f8b0:4864:20::72e]:46652)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shashi.mallela@linaro.org>)
+ id 1lOYPM-0006bI-G5
+ for qemu-arm@nongnu.org; Tue, 23 Mar 2021 00:13:00 -0400
+Received: by mail-qk1-x72e.google.com with SMTP id z10so13098121qkz.13
+ for <qemu-arm@nongnu.org>; Mon, 22 Mar 2021 21:12:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=te6zLYq8PJH8MbvrLGCtpL7G2FDmfaJBuFqu6R6k4qU=;
+ b=jcvTIemWcdTOKcPmlG8XLDDFdBSJMDADR1QzBk++IGSU3NTqiBgqnrF95tO3APvJej
+ XeR0CV8xIZISw/F/qcmeXS3yCywA31nFmScfAL7w+bUtxz3thT4OoO3dI3obAD6wp754
+ UndKxTxoL6LLkeoN6Nzik4EnhCdlsWd1TvwGVisCgaQeiUI6xHlPtqErlgXXg64Kdc4E
+ wHryWlTFMASHnjIyMbeGelD3dUKW2UMGJWdhq6iJJ+JsJU1rvmMTk8uOsISlW4UXVlQJ
+ w9GvL0UkzojB1Lo+0tsDxwHKNydwlwgYOz9MQ9IahAqoXxhMUbRibdqhVDgEW09YMV88
+ 4u4A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=te6zLYq8PJH8MbvrLGCtpL7G2FDmfaJBuFqu6R6k4qU=;
+ b=Fz7XQlzGQYyRx4BsrkkEoF5RnkUFJSQ591e2hmhYw2xenF1Im309JN/LfgUtV8M4UE
+ bhk8eeZBj4cVu/hAiyNReQYbfuKPERXEdXWDMY1AEkh0helKNqA2Y+tOvIUtbdLTxv9T
+ WHq5doJcL4swmi/ClJtwSZPDvgvvQy3GbOiu7B6TPZfa9Lv/FmNXyIScH2wz9X94rebY
+ KU8zggt6FCxhPQoey5Idv0j/E5XR+n1Ss0sQLZBVFZ6P6rV6L99D3NYAZoHuueLIR+xX
+ eqKafiRLvGS2comEQWaIhwy1Jgxv/nO0wg17rNldNIumLD6gWMzWRFghk9Hzo1959pQE
+ Zymw==
+X-Gm-Message-State: AOAM531vGHgZ1OIGtlszL5EkfSAIqXZwSeANYiZHwppbHPbeX+QaLFcS
+ iz8Q46iIYU0Kfsl6J6CksP1ngm0HEf4ESA==
+X-Received: by 2002:a37:5f04:: with SMTP id t4mr3523364qkb.440.1616472762421; 
+ Mon, 22 Mar 2021 21:12:42 -0700 (PDT)
+Received: from localhost.localdomain
+ (bras-base-stsvon1503w-grc-23-174-92-28-28.dsl.bell.ca. [174.92.28.28])
+ by smtp.googlemail.com with ESMTPSA id m21sm12601181qka.28.2021.03.22.21.12.41
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 22 Mar 2021 21:12:42 -0700 (PDT)
+From: Shashi Mallela <shashi.mallela@linaro.org>
+To: peter.maydell@linaro.org,
+	leif@nuviainc.com,
+	rad@semihalf.com
+Subject: [PATCH v1 3/8] hw/intc: GICv3 ITS command queue framework
+Date: Tue, 23 Mar 2021 00:12:33 -0400
+Message-Id: <20210323041238.133835-4-shashi.mallela@linaro.org>
+X-Mailer: git-send-email 2.27.0
+In-Reply-To: <20210323041238.133835-1-shashi.mallela@linaro.org>
+References: <20210323041238.133835-1-shashi.mallela@linaro.org>
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.369, 18.0.761
- definitions=2021-03-29_08:2021-03-26,
- 2021-03-29 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- mlxlogscore=999 bulkscore=0
- mlxscore=0 impostorscore=0 adultscore=0 lowpriorityscore=0 clxscore=1034
- spamscore=0 priorityscore=1501 phishscore=0 malwarescore=0 suspectscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2103250000
- definitions=main-2103290095
-Received-SPF: softfail client-ip=148.163.158.5; envelope-from=clg@kaod.org;
- helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -11
-X-Spam_score: -1.2
-X-Spam_bar: -
-X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::72e;
+ envelope-from=shashi.mallela@linaro.org; helo=mail-qk1-x72e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -123,842 +118,407 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Corey Minyard <cminyard@mvista.com>, Andrew Jeffery <andrew@aj.id.au>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Joel Stanley <joel@jms.id.au>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 40NHNDJIF3+V
+X-TUID: rv83Ta/HdRi8
 
-Implement an IPMI BT interface model using a chardev backend to
-communicate with an external PowerNV machine. It uses the OpenIPMI
-simulator protocol for virtual machines described in :
+Added functionality to trigger ITS command queue processing on
+write to CWRITE register and process each command queue entry to
+identify the command type and handle commands like MAPD,MAPC,SYNC.
 
-    https://github.com/cminyard/openipmi/blob/master/lanserv/README.vm
-
-and implemented by the 'ipmi-bmc-extern' model on the host side.
-
-To use, start the Aspeed BMC machine with :
-
-    -chardev socket,id=3Dipmi0,host=3Dlocalhost,port=3D9002,ipv4,server,now=
-ait \
-    -global driver=3Daspeed.ibt,property=3Dchardev,value=3Dipmi0
-
-and the PowerNV machine with :
-
-    -chardev socket,id=3Dipmi0,host=3Dlocalhost,port=3D9002,reconnect=3D10 \
-    -device ipmi-bmc-extern,id=3Dbmc0,chardev=3Dipmi0 \
-    -device isa-ipmi-bt,bmc=3Dbmc0,irq=3D10 -nodefaults
-
-Cc: Corey Minyard <cminyard@mvista.com>
-Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+Signed-off-by: Shashi Mallela <shashi.mallela@linaro.org>
 ---
- include/hw/arm/aspeed_soc.h  |   2 +
- include/hw/misc/aspeed_ibt.h |  47 +++
- hw/arm/aspeed_ast2600.c      |  12 +
- hw/arm/aspeed_soc.c          |  12 +
- hw/misc/aspeed_ibt.c         | 596 +++++++++++++++++++++++++++++++++++
- hw/misc/meson.build          |   1 +
- hw/misc/trace-events         |   7 +
- 7 files changed, 677 insertions(+)
- create mode 100644 include/hw/misc/aspeed_ibt.h
- create mode 100644 hw/misc/aspeed_ibt.c
+ hw/intc/arm_gicv3_its.c | 362 ++++++++++++++++++++
+ 1 file changed, 362 insertions(+)
 
-diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index d9161d26d645..f0c36b8f7d35 100644
---- a/include/hw/arm/aspeed_soc.h
-+++ b/include/hw/arm/aspeed_soc.h
-@@ -30,6 +30,7 @@
- #include "hw/usb/hcd-ehci.h"
- #include "qom/object.h"
- #include "hw/misc/aspeed_lpc.h"
-+#include "hw/misc/aspeed_ibt.h"
-=20
- #define ASPEED_SPIS_NUM  2
- #define ASPEED_EHCIS_NUM 2
-@@ -65,6 +66,7 @@ struct AspeedSoCState {
-     AspeedSDHCIState sdhci;
-     AspeedSDHCIState emmc;
-     AspeedLPCState lpc;
-+    AspeedIBTState ibt;
+diff --git a/hw/intc/arm_gicv3_its.c b/hw/intc/arm_gicv3_its.c
+index 4895d32e67..9b094e1f0a 100644
+--- a/hw/intc/arm_gicv3_its.c
++++ b/hw/intc/arm_gicv3_its.c
+@@ -56,6 +56,362 @@ struct GICv3ITSClass {
+     CmdQDesc      cq;
  };
-=20
- #define TYPE_ASPEED_SOC "aspeed-soc"
-diff --git a/include/hw/misc/aspeed_ibt.h b/include/hw/misc/aspeed_ibt.h
-new file mode 100644
-index 000000000000..a02a57df9ff8
---- /dev/null
-+++ b/include/hw/misc/aspeed_ibt.h
-@@ -0,0 +1,47 @@
-+/*
-+ * ASPEED iBT Device
-+ *
-+ * Copyright 2016 IBM Corp.
-+ *
-+ * This code is licensed under the GPL version 2 or later.  See
-+ * the COPYING file in the top-level directory.
-+ */
-+#ifndef ASPEED_IBT_H
-+#define ASPEED_IBT_H
-+
-+#include "hw/sysbus.h"
-+#include "chardev/char-fe.h"
-+
-+#define TYPE_ASPEED_IBT "aspeed.ibt"
-+#define ASPEED_IBT(obj) OBJECT_CHECK(AspeedIBTState, (obj), TYPE_ASPEED_IB=
-T)
-+
-+#define ASPEED_IBT_NR_REGS (0x1C >> 2)
-+
-+#define ASPEED_IBT_BUFFER_SIZE 64
-+
-+typedef struct AspeedIBTState {
-+    /*< private >*/
-+    SysBusDevice parent_obj;
-+
-+    /*< public >*/
-+    CharBackend chr;
-+    bool connected;
-+
-+    uint8_t recv_msg[ASPEED_IBT_BUFFER_SIZE];
-+    uint8_t recv_msg_len;
-+    int recv_msg_index;
-+    int recv_msg_too_many;
-+    bool recv_waiting;
-+    int in_escape;
-+
-+    uint8_t send_msg[ASPEED_IBT_BUFFER_SIZE];
-+    uint8_t send_msg_len;
-+
-+    MemoryRegion iomem;
-+    qemu_irq irq;
-+
-+    uint32_t regs[ASPEED_IBT_NR_REGS];
-+
-+} AspeedIBTState;
-+
-+#endif /* ASPEED_IBT_H */
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index fc81c0d8df06..c30d0f320c2a 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -219,6 +219,8 @@ static void aspeed_soc_ast2600_init(Object *obj)
-=20
-     snprintf(typename, sizeof(typename), "aspeed.hace-%s", socname);
-     object_initialize_child(obj, "hace", &s->hace, typename);
-+
-+    object_initialize_child(obj, "ibt", &s->ibt, TYPE_ASPEED_IBT);
- }
-=20
- /*
-@@ -510,6 +512,16 @@ static void aspeed_soc_ast2600_realize(DeviceState *de=
-v, Error **errp)
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->hace), 0, sc->memmap[ASPEED_DEV_HAC=
-E]);
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->hace), 0,
-                        aspeed_soc_get_irq(s, ASPEED_DEV_HACE));
-+
-+    /* iBT */
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->ibt), errp)) {
-+        return;
-+    }
-+    memory_region_add_subregion(&s->lpc.iomem,
-+                   sc->memmap[ASPEED_DEV_IBT] - sc->memmap[ASPEED_DEV_LPC],
-+                   &s->ibt.iomem);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->ibt), 0,
-+                       aspeed_soc_get_irq(s, ASPEED_DEV_IBT));
- }
-=20
- static void aspeed_soc_ast2600_class_init(ObjectClass *oc, void *data)
-diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-index 4a95d27d9d63..5ab4cefc7e8b 100644
---- a/hw/arm/aspeed_soc.c
-+++ b/hw/arm/aspeed_soc.c
-@@ -219,6 +219,8 @@ static void aspeed_soc_init(Object *obj)
-=20
-     snprintf(typename, sizeof(typename), "aspeed.hace-%s", socname);
-     object_initialize_child(obj, "hace", &s->hace, typename);
-+
-+    object_initialize_child(obj, "ibt", &s->ibt, TYPE_ASPEED_IBT);
- }
-=20
- static void aspeed_soc_realize(DeviceState *dev, Error **errp)
-@@ -438,6 +440,16 @@ static void aspeed_soc_realize(DeviceState *dev, Error=
- **errp)
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->hace), 0, sc->memmap[ASPEED_DEV_HAC=
-E]);
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->hace), 0,
-                        aspeed_soc_get_irq(s, ASPEED_DEV_HACE));
-+
-+    /* iBT */
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->ibt), errp)) {
-+        return;
-+    }
-+    memory_region_add_subregion(&s->lpc.iomem,
-+                   sc->memmap[ASPEED_DEV_IBT] - sc->memmap[ASPEED_DEV_LPC],
-+                   &s->ibt.iomem);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_ibt,
-+                       qdev_get_gpio_in(DEVICE(&s->lpc), aspeed_lpc_ibt));
- }
- static Property aspeed_soc_properties[] =3D {
-     DEFINE_PROP_LINK("dram", AspeedSoCState, dram_mr, TYPE_MEMORY_REGION,
-diff --git a/hw/misc/aspeed_ibt.c b/hw/misc/aspeed_ibt.c
-new file mode 100644
-index 000000000000..69a2096ccb00
---- /dev/null
-+++ b/hw/misc/aspeed_ibt.c
-@@ -0,0 +1,596 @@
-+/*
-+ * ASPEED iBT Device
-+ *
-+ * Copyright (c) 2016-2021 C=C3=A9dric Le Goater, IBM Corporation.
-+ *
-+ * This code is licensed under the GPL version 2 or later.  See
-+ * the COPYING file in the top-level directory.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/sysbus.h"
-+#include "sysemu/qtest.h"
-+#include "sysemu/sysemu.h"
-+#include "qemu/log.h"
-+#include "qapi/error.h"
-+#include "qemu/error-report.h"
-+#include "hw/irq.h"
-+#include "hw/qdev-properties.h"
-+#include "hw/qdev-properties-system.h"
-+#include "migration/vmstate.h"
-+#include "hw/misc/aspeed_ibt.h"
-+#include "trace.h"
-+
-+#define BT_IO_REGION_SIZE 0x1C
-+
-+#define TO_REG(o) (o >> 2)
-+
-+#define BT_CR0                0x0   /* iBT config */
-+#define   BT_CR0_IO_BASE         16
-+#define   BT_CR0_IRQ             12
-+#define   BT_CR0_EN_CLR_SLV_RDP  0x8
-+#define   BT_CR0_EN_CLR_SLV_WRP  0x4
-+#define   BT_CR0_ENABLE_IBT      0x1
-+#define BT_CR1                0x4  /* interrupt enable */
-+#define   BT_CR1_IRQ_H2B         0x01
-+#define   BT_CR1_IRQ_HBUSY       0x40
-+#define BT_CR2                0x8  /* interrupt status */
-+#define   BT_CR2_IRQ_H2B         0x01
-+#define   BT_CR2_IRQ_HBUSY       0x40
-+#define BT_CR3                0xc /* unused */
-+#define BT_CTRL                  0x10
-+#define   BT_CTRL_B_BUSY         0x80
-+#define   BT_CTRL_H_BUSY         0x40
-+#define   BT_CTRL_OEM0           0x20
-+#define   BT_CTRL_SMS_ATN        0x10
-+#define   BT_CTRL_B2H_ATN        0x08
-+#define   BT_CTRL_H2B_ATN        0x04
-+#define   BT_CTRL_CLR_RD_PTR     0x02
-+#define   BT_CTRL_CLR_WR_PTR     0x01
-+#define BT_BMC2HOST            0x14
-+#define BT_INTMASK             0x18
-+#define   BT_INTMASK_B2H_IRQEN   0x01
-+#define   BT_INTMASK_B2H_IRQ     0x02
-+#define   BT_INTMASK_BMC_HWRST   0x80
-+
-+/*
-+ * VM IPMI defines
-+ */
-+#define VM_MSG_CHAR        0xA0 /* Marks end of message */
-+#define VM_CMD_CHAR        0xA1 /* Marks end of a command */
-+#define VM_ESCAPE_CHAR     0xAA /* Set bit 4 from the next byte to 0 */
-+
-+#define VM_PROTOCOL_VERSION        1
-+#define VM_CMD_VERSION             0xff /* A version number byte follows */
-+#define VM_CMD_NOATTN              0x00
-+#define VM_CMD_ATTN                0x01
-+#define VM_CMD_ATTN_IRQ            0x02
-+#define VM_CMD_POWEROFF            0x03
-+#define VM_CMD_RESET               0x04
-+#define VM_CMD_ENABLE_IRQ          0x05 /* Enable/disable the messaging ir=
-q */
-+#define VM_CMD_DISABLE_IRQ         0x06
-+#define VM_CMD_SEND_NMI            0x07
-+#define VM_CMD_CAPABILITIES        0x08
-+#define   VM_CAPABILITIES_POWER    0x01
-+#define   VM_CAPABILITIES_RESET    0x02
-+#define   VM_CAPABILITIES_IRQ      0x04
-+#define   VM_CAPABILITIES_NMI      0x08
-+#define   VM_CAPABILITIES_ATTN     0x10
-+#define   VM_CAPABILITIES_GRACEFUL_SHUTDOWN 0x20
-+#define VM_CMD_GRACEFUL_SHUTDOWN   0x09
-+
-+/*
-+ * These routines are inspired by the 'ipmi-bmc-extern' model and by
-+ * the lanserv simulator of OpenIPMI. See :
-+ *    https://github.com/cminyard/openipmi/blob/master/lanserv/serial_ipmi=
-.c
-+ */
-+static unsigned char ipmb_checksum(const unsigned char *data, int size,
-+                                   unsigned char start)
+ 
++static MemTxResult process_sync(GICv3ITSState *s, uint32_t offset)
 +{
-+        unsigned char csum =3D start;
++    GICv3ITSClass *c = ARM_GICV3_ITS_GET_CLASS(s);
++    AddressSpace *as = &s->gicv3->sysmem_as;
++    uint64_t rdbase;
++    uint64_t value;
++    bool pta = false;
++    MemTxResult res = MEMTX_OK;
 +
-+        for (; size > 0; size--, data++) {
-+                csum +=3D *data;
-+        }
-+        return csum;
-+}
++    offset += NUM_BYTES_IN_DW;
++    offset += NUM_BYTES_IN_DW;
 +
-+static void vm_add_char(unsigned char ch, unsigned char *c, unsigned int *=
-pos)
-+{
-+    switch (ch) {
-+    case VM_MSG_CHAR:
-+    case VM_CMD_CHAR:
-+    case VM_ESCAPE_CHAR:
-+        c[(*pos)++] =3D VM_ESCAPE_CHAR;
-+        c[(*pos)++] =3D ch | 0x10;
-+        break;
++    value = address_space_ldq_le(as, c->cq.base_addr + offset,
++                                     MEMTXATTRS_UNSPECIFIED, &res);
 +
-+    default:
-+        c[(*pos)++] =3D ch;
-+    }
-+}
-+
-+static void aspeed_ibt_dump_msg(const char *func, unsigned char *msg,
-+                                unsigned int len)
-+{
-+    if (trace_event_get_state_backends(TRACE_ASPEED_IBT_CHR_DUMP_MSG)) {
-+        int size =3D len * 3 + 1;
-+        char tmp[size];
-+        int i, n =3D 0;
-+
-+        for (i =3D 0; i < len; i++) {
-+            n +=3D snprintf(tmp + n, size - n, "%02x:", msg[i]);
-+        }
-+        tmp[size - 1] =3D 0;
-+
-+        trace_aspeed_ibt_chr_dump_msg(func, tmp, len);
-+    }
-+}
-+
-+static void aspeed_ibt_chr_write(AspeedIBTState *ibt, const uint8_t *buf,
-+                                 int len)
-+{
-+    int i;
-+
-+    if (!qemu_chr_fe_get_driver(&ibt->chr)) {
-+        return;
-+    }
-+
-+    aspeed_ibt_dump_msg(__func__, ibt->recv_msg, ibt->recv_msg_len);
-+
-+    for (i =3D 0; i < len; i++) {
-+        qemu_chr_fe_write(&ibt->chr, &buf[i], 1);
-+    }
-+}
-+
-+static void vm_send(AspeedIBTState *ibt)
-+{
-+    unsigned int i;
-+    unsigned int len =3D 0;
-+    unsigned char c[(ibt->send_msg_len + 7) * 2];
-+    uint8_t netfn;
-+
-+    /*
-+     * The VM IPMI message format does not follow the IPMI BT
-+     * interface format. The sequence and the netfn bytes need to be
-+     * swapped.
-+     */
-+    netfn =3D ibt->send_msg[1];
-+    ibt->send_msg[1] =3D ibt->send_msg[2];
-+    ibt->send_msg[2] =3D netfn;
-+
-+    /* No length byte in the VM IPMI message format. trim it */
-+    for (i =3D 1; i < ibt->send_msg_len; i++) {
-+        vm_add_char(ibt->send_msg[i], c, &len);
-+    }
-+
-+    vm_add_char(-ipmb_checksum(&ibt->send_msg[1], ibt->send_msg_len - 1, 0=
-),
-+                c, &len);
-+    c[len++] =3D VM_MSG_CHAR;
-+
-+    aspeed_ibt_chr_write(ibt, c, len);
-+}
-+
-+static void aspeed_ibt_update_irq(AspeedIBTState *ibt)
-+{
-+    bool raise =3D false;
-+
-+    /* H2B rising */
-+    if ((ibt->regs[TO_REG(BT_CTRL)] & BT_CTRL_H2B_ATN) &&
-+        ((ibt->regs[TO_REG(BT_CR1)] & BT_CR1_IRQ_H2B) =3D=3D BT_CR1_IRQ_H2=
-B)) {
-+        ibt->regs[TO_REG(BT_CR2)] |=3D BT_CR2_IRQ_H2B;
-+
++    if ((s->typer >> GITS_TYPER_PTA_OFFSET) & GITS_TYPER_PTA_MASK) {
 +        /*
-+         * Also flag the fact that we are waiting for the guest/driver
-+         * to read a received message
++         * only bits[47:16] are considered instead of bits [51:16]
++         * since with a physical address the target address must be
++         * 64KB aligned
 +         */
-+        ibt->recv_waiting =3D true;
-+        raise =3D true;
-+    }
-+
-+    /* H_BUSY falling (not supported) */
-+    if ((ibt->regs[TO_REG(BT_CTRL)] & BT_CTRL_H_BUSY) &&
-+        ((ibt->regs[TO_REG(BT_CR1)] & BT_CR1_IRQ_HBUSY) =3D=3D BT_CR1_IRQ_=
-HBUSY)) {
-+        ibt->regs[TO_REG(BT_CR2)] |=3D BT_CR2_IRQ_HBUSY;
-+
-+        raise =3D true;
-+    }
-+
-+    if (raise) {
-+        qemu_irq_raise(ibt->irq);
-+    }
-+}
-+
-+static void vm_handle_msg(AspeedIBTState *ibt, unsigned char *msg,
-+                          unsigned int len)
-+{
-+    uint8_t seq;
-+
-+    aspeed_ibt_dump_msg(__func__, ibt->recv_msg, ibt->recv_msg_len);
-+
-+    if (len < 4) {
-+        qemu_log_mask(LOG_GUEST_ERROR, " %s: Message too short\n", __func_=
-_);
-+        return;
-+    }
-+
-+    if (ipmb_checksum(ibt->recv_msg, ibt->recv_msg_len, 0) !=3D 0) {
-+        qemu_log_mask(LOG_GUEST_ERROR, " %s: Message checksum failure\n",
-+                      __func__);
-+        return;
-+    }
-+
-+    /* Trim the checksum byte */
-+    ibt->recv_msg_len--;
-+
-+    /*
-+     * The VM IPMI message format does not follow the IPMI BT
-+     * interface format. The sequence and the netfn bytes need to be
-+     * swapped.
-+     */
-+    seq =3D ibt->recv_msg[0];
-+    ibt->recv_msg[0] =3D ibt->recv_msg[1];
-+    ibt->recv_msg[1] =3D seq;
-+
-+    aspeed_ibt_update_irq(ibt);
-+}
-+
-+/* TODO: handle commands */
-+static void vm_handle_cmd(AspeedIBTState *ibt, unsigned char *msg,
-+                          unsigned int len)
-+{
-+    aspeed_ibt_dump_msg(__func__, ibt->recv_msg, ibt->recv_msg_len);
-+
-+    if (len < 1) {
-+        qemu_log_mask(LOG_GUEST_ERROR, " %s: Command too short\n", __func_=
-_);
-+        return;
-+    }
-+
-+    switch (msg[0]) {
-+    case VM_CMD_VERSION:
-+        break;
-+
-+    case VM_CMD_CAPABILITIES:
-+        if (len < 2) {
-+            return;
-+        }
-+        break;
-+
-+    case VM_CMD_RESET:
-+        break;
-+    }
-+}
-+
-+static void vm_handle_char(AspeedIBTState *ibt, unsigned char ch)
-+{
-+    unsigned int len =3D ibt->recv_msg_len;
-+
-+    switch (ch) {
-+    case VM_MSG_CHAR:
-+    case VM_CMD_CHAR:
-+        if (ibt->in_escape) {
-+            qemu_log_mask(LOG_GUEST_ERROR, " %s: Message ended in escape\n=
-",
-+                          __func__);
-+        } else if (ibt->recv_msg_too_many) {
-+            qemu_log_mask(LOG_GUEST_ERROR, " %s: Message too long\n", __fu=
-nc__);
-+        } else if (ibt->recv_msg_len =3D=3D 0) {
-+            /* Nothing to do */
-+        } else if (ch =3D=3D VM_MSG_CHAR) {
-+            /* Last byte of message. Signal BMC as the host would do */
-+            ibt->regs[TO_REG(BT_CTRL)] |=3D BT_CTRL_H2B_ATN;
-+
-+            vm_handle_msg(ibt, ibt->recv_msg, ibt->recv_msg_len);
-+
-+            /* Message is only handled when read by BMC (!B_BUSY) */
-+        } else if (ch =3D=3D VM_CMD_CHAR) {
-+            vm_handle_cmd(ibt, ibt->recv_msg, ibt->recv_msg_len);
-+
-+            /* Command is now handled. reset receive state */
-+            ibt->in_escape =3D 0;
-+            ibt->recv_msg_len =3D 0;
-+            ibt->recv_msg_too_many =3D 0;
-+        }
-+        break;
-+
-+    case VM_ESCAPE_CHAR:
-+        if (!ibt->recv_msg_too_many) {
-+            ibt->in_escape =3D 1;
-+        }
-+        break;
-+
-+    default:
-+        if (ibt->in_escape) {
-+            ibt->in_escape =3D 0;
-+            ch &=3D ~0x10;
-+        }
-+
-+        if (!ibt->recv_msg_too_many) {
-+            if (len >=3D sizeof(ibt->recv_msg)) {
-+                ibt->recv_msg_too_many =3D 1;
-+                break;
-+            }
-+
-+            ibt->recv_msg[len] =3D ch;
-+            ibt->recv_msg_len++;
-+        }
-+        break;
-+    }
-+}
-+
-+static void vm_connected(AspeedIBTState *ibt)
-+{
-+    unsigned int len =3D 0;
-+    unsigned char c[5];
-+
-+    vm_add_char(VM_CMD_VERSION, c, &len);
-+    vm_add_char(VM_PROTOCOL_VERSION, c, &len);
-+    c[len++] =3D VM_CMD_CHAR;
-+
-+    aspeed_ibt_chr_write(ibt, c, len);
-+}
-+
-+static void aspeed_ibt_chr_event(void *opaque, QEMUChrEvent event)
-+{
-+    AspeedIBTState *ibt =3D ASPEED_IBT(opaque);
-+
-+    switch (event) {
-+    case CHR_EVENT_OPENED:
-+        vm_connected(ibt);
-+        ibt->connected =3D true;
-+        break;
-+
-+    case CHR_EVENT_CLOSED:
-+        if (!ibt->connected) {
-+            return;
-+        }
-+        ibt->connected =3D false;
-+        break;
-+    case CHR_EVENT_BREAK:
-+    case CHR_EVENT_MUX_IN:
-+    case CHR_EVENT_MUX_OUT:
-+        /* Ignore */
-+        break;
-+   }
-+    trace_aspeed_ibt_chr_event(ibt->connected);
-+}
-+
-+static int aspeed_ibt_chr_can_receive(void *opaque)
-+{
-+    AspeedIBTState *ibt =3D ASPEED_IBT(opaque);
-+
-+    return !ibt->recv_waiting && !(ibt->regs[TO_REG(BT_CTRL)] & BT_CTRL_B_=
-BUSY);
-+}
-+
-+static void aspeed_ibt_chr_receive(void *opaque, const uint8_t *buf,
-+                                   int size)
-+{
-+    AspeedIBTState *ibt =3D ASPEED_IBT(opaque);
-+    int i;
-+
-+    if (!ibt->connected) {
-+        qemu_log_mask(LOG_GUEST_ERROR, " %s: not connected !?\n", __func__=
-);
-+        return;
-+    }
-+
-+    for (i =3D 0; i < size; i++) {
-+        vm_handle_char(ibt, buf[i]);
-+    }
-+}
-+
-+static void aspeed_ibt_write(void *opaque, hwaddr offset, uint64_t data,
-+                             unsigned size)
-+{
-+    AspeedIBTState *ibt =3D ASPEED_IBT(opaque);
-+
-+    trace_aspeed_ibt_write(offset, data);
-+
-+    switch (offset) {
-+    case BT_CTRL:
-+        /* CLR_WR_PTR: cleared before a message is written */
-+        if (data & BT_CTRL_CLR_WR_PTR) {
-+            memset(ibt->send_msg, 0, sizeof(ibt->send_msg));
-+            ibt->send_msg_len =3D 0;
-+            trace_aspeed_ibt_event("CLR_WR_PTR");
-+        }
-+
-+        /* CLR_RD_PTR: cleared before a message is read */
-+        else if (data & BT_CTRL_CLR_RD_PTR) {
-+            ibt->recv_msg_index =3D -1;
-+            trace_aspeed_ibt_event("CLR_RD_PTR");
-+        }
-+
-+        /*
-+         * H2B_ATN: raised by host to end message, cleared by BMC
-+         * before reading message
-+         */
-+        else if (data & BT_CTRL_H2B_ATN) {
-+            ibt->regs[TO_REG(BT_CTRL)] &=3D ~BT_CTRL_H2B_ATN;
-+            trace_aspeed_ibt_event("H2B_ATN");
-+        }
-+
-+        /* B_BUSY: raised and cleared by BMC when message is read */
-+        else if (data & BT_CTRL_B_BUSY) {
-+            ibt->regs[TO_REG(BT_CTRL)] ^=3D BT_CTRL_B_BUSY;
-+            trace_aspeed_ibt_event("B_BUSY");
-+        }
-+
-+        /*
-+         * B2H_ATN: raised by BMC and cleared by host
-+         *
-+         * Also simulate the host busy bit which is set while the host
-+         * is reading the message from the BMC
-+         */
-+        else if (data & BT_CTRL_B2H_ATN) {
-+            trace_aspeed_ibt_event("B2H_ATN");
-+            ibt->regs[TO_REG(BT_CTRL)] |=3D (BT_CTRL_B2H_ATN | BT_CTRL_H_B=
-USY);
-+
-+            vm_send(ibt);
-+
-+            ibt->regs[TO_REG(BT_CTRL)] &=3D ~(BT_CTRL_B2H_ATN | BT_CTRL_H_=
-BUSY);
-+
-+            /* signal H_BUSY falling but that's a bit useless */
-+            aspeed_ibt_update_irq(ibt);
-+        }
-+
-+        /* Anything else is unexpected */
-+        else {
-+            qemu_log_mask(LOG_GUEST_ERROR, "%s: unexpected CTRL setting\n",
-+                          __func__);
-+        }
-+
-+        /* Message was read by BMC. we can reset the receive state */
-+        if (!(ibt->regs[TO_REG(BT_CTRL)] & BT_CTRL_B_BUSY)) {
-+            trace_aspeed_ibt_event("B_BUSY cleared");
-+            ibt->recv_waiting =3D false;
-+            ibt->in_escape =3D 0;
-+            ibt->recv_msg_len =3D 0;
-+            ibt->recv_msg_too_many =3D 0;
-+        }
-+        break;
-+
-+    case BT_BMC2HOST:
-+        if (ibt->send_msg_len < sizeof(ibt->send_msg)) {
-+            trace_aspeed_ibt_event("BMC2HOST");
-+            ibt->send_msg[ibt->send_msg_len++] =3D data & 0xff;
-+        }
-+        break;
-+
-+    case BT_CR0: /* TODO: iBT config */
-+    case BT_CR1: /* interrupt enable */
-+    case BT_CR3: /* unused */
-+    case BT_INTMASK:
-+        ibt->regs[TO_REG(offset)] =3D (uint32_t) data;
-+        break;
-+    case BT_CR2: /* interrupt status. writing 1 clears. */
-+        ibt->regs[TO_REG(offset)] ^=3D (uint32_t) data;
-+        qemu_irq_lower(ibt->irq);
-+        break;
-+
-+    default:
-+        qemu_log_mask(LOG_UNIMP, "%s: not implemented 0x%" HWADDR_PRIx "\n=
-",
-+                      __func__, offset);
-+        break;
-+    }
-+}
-+
-+static uint64_t aspeed_ibt_read(void *opaque, hwaddr offset, unsigned size)
-+{
-+    AspeedIBTState *ibt =3D ASPEED_IBT(opaque);
-+    uint64_t val =3D 0;
-+
-+    switch (offset) {
-+    case BT_BMC2HOST:
-+        trace_aspeed_ibt_event("BMC2HOST");
-+        /*
-+         * The IPMI BT interface requires the first byte to be the
-+         * length of the message
-+         */
-+        if (ibt->recv_msg_index =3D=3D -1) {
-+            val =3D ibt->recv_msg_len;
-+            ibt->recv_msg_index++;
-+        } else if (ibt->recv_msg_index < ibt->recv_msg_len) {
-+            val =3D ibt->recv_msg[ibt->recv_msg_index++];
-+        }
-+        break;
-+
-+    case BT_CR0:
-+    case BT_CR1:
-+    case BT_CR2:
-+    case BT_CR3:
-+    case BT_CTRL:
-+    case BT_INTMASK:
-+        return ibt->regs[TO_REG(offset)];
-+    default:
-+        qemu_log_mask(LOG_UNIMP, "%s: not implemented 0x%" HWADDR_PRIx "\n=
-",
-+                      __func__, offset);
-+        return 0;
-+    }
-+
-+    trace_aspeed_ibt_read(offset, val);
-+    return val;
-+}
-+
-+static const MemoryRegionOps aspeed_ibt_ops =3D {
-+    .read =3D aspeed_ibt_read,
-+    .write =3D aspeed_ibt_write,
-+    .endianness =3D DEVICE_LITTLE_ENDIAN,
-+    .valid =3D {
-+        .min_access_size =3D 1,
-+        .max_access_size =3D 4,
-+    },
-+};
-+
-+static void aspeed_ibt_reset(DeviceState *dev)
-+{
-+    AspeedIBTState *ibt =3D ASPEED_IBT(dev);
-+
-+    memset(ibt->regs, 0, sizeof(ibt->regs));
-+
-+    memset(ibt->recv_msg, 0, sizeof(ibt->recv_msg));
-+    ibt->recv_msg_len =3D 0;
-+    ibt->recv_msg_index =3D -1;
-+    ibt->recv_msg_too_many =3D 0;
-+    ibt->recv_waiting =3D false;
-+    ibt->in_escape =3D 0;
-+
-+    memset(ibt->send_msg, 0, sizeof(ibt->send_msg));
-+    ibt->send_msg_len =3D 0;
-+}
-+
-+static void aspeed_ibt_realize(DeviceState *dev, Error **errp)
-+{
-+    SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
-+    AspeedIBTState *ibt =3D ASPEED_IBT(dev);
-+
-+    if (!qemu_chr_fe_get_driver(&ibt->chr) && !qtest_enabled()) {
-+        warn_report("Aspeed iBT has no chardev backend");
++        rdbase = (value >> RDBASE_OFFSET) & RDBASE_MASK;
++        pta = true;
 +    } else {
-+        qemu_chr_fe_set_handlers(&ibt->chr, aspeed_ibt_chr_can_receive,
-+                                 aspeed_ibt_chr_receive, aspeed_ibt_chr_ev=
-ent,
-+                                 NULL, ibt, NULL, true);
++        rdbase = (value >> RDBASE_OFFSET) & RDBASE_PROCNUM_MASK;
 +    }
 +
-+    sysbus_init_irq(sbd, &ibt->irq);
-+    memory_region_init_io(&ibt->iomem, OBJECT(ibt), &aspeed_ibt_ops, ibt,
-+                          TYPE_ASPEED_IBT, BT_IO_REGION_SIZE);
-+
-+    sysbus_init_mmio(sbd, &ibt->iomem);
-+}
-+
-+static Property aspeed_ibt_props[] =3D {
-+    DEFINE_PROP_CHR("chardev", AspeedIBTState, chr),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
-+static const VMStateDescription vmstate_aspeed_ibt =3D {
-+    .name =3D "aspeed.bt",
-+    .version_id =3D 1,
-+    .minimum_version_id =3D 1,
-+    .fields =3D (VMStateField[]) {
-+        VMSTATE_UINT32_ARRAY(regs, AspeedIBTState, ASPEED_IBT_NR_REGS),
-+        VMSTATE_END_OF_LIST()
++    if (!pta && (rdbase < (s->gicv3->num_cpu))) {
++        /*
++         * Current implementation makes a blocking synchronous call
++         * for every command issued earlier,hence the internal state
++         * is already consistent by the time SYNC command is executed.
++         */
 +    }
-+};
 +
-+static void aspeed_ibt_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc =3D DEVICE_CLASS(klass);
-+    dc->realize =3D aspeed_ibt_realize;
-+    dc->reset =3D aspeed_ibt_reset;
-+    dc->desc =3D "ASPEED iBT Device";
-+    dc->vmsd =3D &vmstate_aspeed_ibt;
-+    device_class_set_props(dc, aspeed_ibt_props);
++    offset += NUM_BYTES_IN_DW;
++    return res;
 +}
 +
-+static const TypeInfo aspeed_ibt_info =3D {
-+    .name =3D TYPE_ASPEED_IBT,
-+    .parent =3D TYPE_SYS_BUS_DEVICE,
-+    .instance_size =3D sizeof(AspeedIBTState),
-+    .class_init =3D aspeed_ibt_class_init,
-+};
-+
-+static void aspeed_ibt_register_types(void)
++static void update_cte(GICv3ITSState *s, uint16_t icid, uint64_t cte)
 +{
-+    type_register_static(&aspeed_ibt_info);
++    GICv3ITSClass *c = ARM_GICV3_ITS_GET_CLASS(s);
++    AddressSpace *as = &s->gicv3->sysmem_as;
++    uint64_t value;
++    uint8_t  page_sz_type;
++    uint64_t l2t_addr;
++    bool valid_l2t;
++    uint32_t l2t_id;
++    uint32_t page_sz = 0;
++    uint32_t max_l2_entries;
++
++    if (c->ct.indirect) {
++        /* 2 level table */
++        page_sz_type = (s->baser[0] >>
++                        GITS_BASER_PAGESIZE_OFFSET) &
++                        GITS_BASER_PAGESIZE_MASK;
++
++        if (page_sz_type == 0) {
++            page_sz = GITS_ITT_PAGE_SIZE_0;
++        } else if (page_sz_type == 1) {
++            page_sz = GITS_ITT_PAGE_SIZE_1;
++        } else if (page_sz_type == 2) {
++            page_sz = GITS_ITT_PAGE_SIZE_2;
++        }
++
++        l2t_id = icid / (page_sz / L1TABLE_ENTRY_SIZE);
++
++        value = address_space_ldq_le(as,
++                                     c->ct.base_addr +
++                                     (l2t_id * L1TABLE_ENTRY_SIZE),
++                                     MEMTXATTRS_UNSPECIFIED, NULL);
++
++        valid_l2t = (value >> VALID_SHIFT) & VALID_MASK;
++
++        if (valid_l2t) {
++            max_l2_entries = page_sz / c->ct.entry_sz;
++
++            l2t_addr = (value >> page_sz_type) &
++                        ((1ULL << (51 - page_sz_type)) - 1);
++
++            address_space_write(as, l2t_addr +
++                                 ((icid % max_l2_entries) * GITS_CTE_SIZE),
++                                 MEMTXATTRS_UNSPECIFIED,
++                                 &cte, sizeof(cte));
++        }
++    } else {
++        /* Flat level table */
++        address_space_write(as, c->ct.base_addr + (icid * GITS_CTE_SIZE),
++                            MEMTXATTRS_UNSPECIFIED, &cte,
++                            sizeof(cte));
++    }
 +}
 +
-+type_init(aspeed_ibt_register_types);
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index 1deef25764da..30cb61ec0e31 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -111,6 +111,7 @@ softmmu_ss.add(when: 'CONFIG_PVPANIC_PCI', if_true: fil=
-es('pvpanic-pci.c'))
- softmmu_ss.add(when: 'CONFIG_AUX', if_true: files('auxbus.c'))
- softmmu_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
-   'aspeed_hace.c',
-+  'aspeed_ibt.c',
-   'aspeed_lpc.c',
-   'aspeed_scu.c',
-   'aspeed_sdmc.c',
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index d0a89eb05964..e8fcacdfd9e9 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -19,6 +19,13 @@ allwinner_h3_dramphy_write(uint64_t offset, uint64_t dat=
-a, unsigned size) "write
- allwinner_sid_read(uint64_t offset, uint64_t data, unsigned size) "offset =
-0x%" PRIx64 " data 0x%" PRIx64 " size %" PRIu32
- allwinner_sid_write(uint64_t offset, uint64_t data, unsigned size) "offset=
- 0x%" PRIx64 " data 0x%" PRIx64 " size %" PRIu32
-=20
-+# aspeed_ibt.c
-+aspeed_ibt_chr_dump_msg(const char *func, const char *buf, uint32_t len) "=
-%s: %s #%d bytes"
-+aspeed_ibt_chr_event(bool connected) "connected:%d"
-+aspeed_ibt_read(uint64_t offset, uint64_t value) "offset:0x%" PRIx64 " val=
-ue:0x%" PRIx64
-+aspeed_ibt_write(uint64_t offset, uint64_t value) "offset:0x%" PRIx64 " va=
-lue:0x%" PRIx64
-+aspeed_ibt_event(const char* event) "%s"
++static MemTxResult process_mapc(GICv3ITSState *s, uint32_t offset)
++{
++    GICv3ITSClass *c = ARM_GICV3_ITS_GET_CLASS(s);
++    AddressSpace *as = &s->gicv3->sysmem_as;
++    uint16_t icid;
++    uint64_t rdbase;
++    bool valid;
++    bool pta = false;
++    MemTxResult res = MEMTX_OK;
++    uint64_t cte_entry;
++    uint64_t value;
 +
- # avr_power.c
- avr_power_read(uint8_t value) "power_reduc read value:%u"
- avr_power_write(uint8_t value) "power_reduc write value:%u"
---=20
-2.26.3
++    offset += NUM_BYTES_IN_DW;
++    offset += NUM_BYTES_IN_DW;
++
++    value = address_space_ldq_le(as, c->cq.base_addr + offset,
++                                 MEMTXATTRS_UNSPECIFIED, &res);
++
++    icid = value & ICID_MASK;
++
++    if ((s->typer >> GITS_TYPER_PTA_OFFSET) & GITS_TYPER_PTA_MASK) {
++        /*
++         * only bits[47:16] are considered instead of bits [51:16]
++         * since with a physical address the target address must be
++         * 64KB aligned
++         */
++        rdbase = (value >> RDBASE_OFFSET) & RDBASE_MASK;
++        pta = true;
++    } else {
++        rdbase = (value >> RDBASE_OFFSET) & RDBASE_PROCNUM_MASK;
++    }
++
++    valid = (value >> VALID_SHIFT) & VALID_MASK;
++
++    if (valid) {
++        if ((icid > c->ct.max_collids) || (!pta &&
++                (rdbase > s->gicv3->num_cpu))) {
++            if ((s->typer >> GITS_TYPER_SEIS_OFFSET) &
++                             GITS_TYPER_SEIS_MASK) {
++                /* Generate System Error here if supported */
++            }
++            qemu_log_mask(LOG_GUEST_ERROR,
++                "%s: invalid collection table attributes "
++                "icid %d rdbase %lu\n", __func__, icid, rdbase);
++            /*
++             * in this implementation,in case of error
++             * we ignore this command and move onto the next
++             * command in the queue
++             */
++        } else {
++            if (c->ct.valid) {
++                /* add mapping entry to collection table */
++                cte_entry = (valid & VALID_MASK) |
++                            (pta ? ((rdbase & RDBASE_MASK) << 1ULL) :
++                            ((rdbase & RDBASE_PROCNUM_MASK) << 1ULL));
++
++                update_cte(s, icid, cte_entry);
++            }
++        }
++    } else {
++        if (c->ct.valid) {
++            /* remove mapping entry from collection table */
++            cte_entry = 0;
++
++            update_cte(s, icid, cte_entry);
++        }
++    }
++
++    offset += NUM_BYTES_IN_DW;
++    offset += NUM_BYTES_IN_DW;
++
++    return res;
++}
++
++static void update_dte(GICv3ITSState *s, uint32_t devid, uint64_t dte)
++{
++    GICv3ITSClass *c = ARM_GICV3_ITS_GET_CLASS(s);
++    AddressSpace *as = &s->gicv3->sysmem_as;
++    uint64_t value;
++    uint8_t  page_sz_type;
++    uint64_t l2t_addr;
++    bool valid_l2t;
++    uint32_t l2t_id;
++    uint32_t page_sz = 0;
++    uint32_t max_l2_entries;
++
++    if (c->dt.indirect) {
++        /* 2 level table */
++        page_sz_type = (s->baser[0] >>
++                        GITS_BASER_PAGESIZE_OFFSET) &
++                        GITS_BASER_PAGESIZE_MASK;
++
++        if (page_sz_type == 0) {
++            page_sz = GITS_ITT_PAGE_SIZE_0;
++        } else if (page_sz_type == 1) {
++            page_sz = GITS_ITT_PAGE_SIZE_1;
++        } else if (page_sz_type == 2) {
++            page_sz = GITS_ITT_PAGE_SIZE_2;
++        }
++
++        l2t_id = devid / (page_sz / L1TABLE_ENTRY_SIZE);
++
++        value = address_space_ldq_le(as,
++                                     c->dt.base_addr +
++                                     (l2t_id * L1TABLE_ENTRY_SIZE),
++                                     MEMTXATTRS_UNSPECIFIED, NULL);
++
++        valid_l2t = (value >> VALID_SHIFT) & VALID_MASK;
++
++        if (valid_l2t) {
++            max_l2_entries = page_sz / c->dt.entry_sz;
++
++            l2t_addr = (value >> page_sz_type) &
++                        ((1ULL << (51 - page_sz_type)) - 1);
++
++            address_space_write(as, l2t_addr +
++                                 ((devid % max_l2_entries) * GITS_DTE_SIZE),
++                                 MEMTXATTRS_UNSPECIFIED, &dte, sizeof(dte));
++        }
++    } else {
++        /* Flat level table */
++        address_space_write(as, c->dt.base_addr + (devid * GITS_DTE_SIZE),
++                            MEMTXATTRS_UNSPECIFIED, &dte, sizeof(dte));
++    }
++}
++
++static MemTxResult process_mapd(GICv3ITSState *s, uint64_t value,
++                                 uint32_t offset)
++{
++    GICv3ITSClass *c = ARM_GICV3_ITS_GET_CLASS(s);
++    AddressSpace *as = &s->gicv3->sysmem_as;
++    uint32_t devid;
++    uint8_t size;
++    uint64_t itt_addr;
++    bool valid;
++    MemTxResult res = MEMTX_OK;
++    uint64_t dte_entry = 0;
++
++    devid = (value >> DEVID_OFFSET) & DEVID_MASK;
++
++    offset += NUM_BYTES_IN_DW;
++    value = address_space_ldq_le(as, c->cq.base_addr + offset,
++                                 MEMTXATTRS_UNSPECIFIED, &res);
++    size = (value & SIZE_MASK);
++
++    offset += NUM_BYTES_IN_DW;
++    value = address_space_ldq_le(as, c->cq.base_addr + offset,
++                                 MEMTXATTRS_UNSPECIFIED, &res);
++    itt_addr = (value >> ITTADDR_OFFSET) & ITTADDR_MASK;
++
++    valid = (value >> VALID_SHIFT) & VALID_MASK;
++
++    if (valid) {
++        if ((devid > c->dt.max_devids) ||
++            (size > ((s->typer >> GITS_TYPER_IDBITS_OFFSET) &
++                          GITS_TYPER_IDBITS_MASK))) {
++            if ((s->typer >> GITS_TYPER_SEIS_OFFSET) &
++                             GITS_TYPER_SEIS_MASK) {
++                /* Generate System Error here if supported */
++            }
++            qemu_log_mask(LOG_GUEST_ERROR,
++                "%s: invalid device table attributes "
++                "devid %d or size %d\n", __func__, devid, size);
++            /*
++             * in this implementation,in case of error
++             * we ignore this command and move onto the next
++             * command in the queue
++             */
++        } else {
++            if (c->dt.valid) {
++                /* add mapping entry to device table */
++                dte_entry = (valid & VALID_MASK) |
++                            ((size & SIZE_MASK) << 1U) |
++                            ((itt_addr & ITTADDR_MASK) << 6ULL);
++
++                update_dte(s, devid, dte_entry);
++            }
++        }
++    } else {
++        if (c->dt.valid) {
++            /* remove mapping entry from device table */
++            dte_entry = 0;
++            update_dte(s, devid, dte_entry);
++        }
++    }
++
++    offset += NUM_BYTES_IN_DW;
++    offset += NUM_BYTES_IN_DW;
++
++    return res;
++}
++
++/*
++ * Current implementation blocks until all
++ * commands are processed
++ */
++static MemTxResult process_cmdq(GICv3ITSState *s)
++{
++    GICv3ITSClass *c = ARM_GICV3_ITS_GET_CLASS(s);
++    uint32_t wr_offset = 0;
++    uint32_t rd_offset = 0;
++    uint32_t cq_offset = 0;
++    uint64_t data;
++    AddressSpace *as = &s->gicv3->sysmem_as;
++    MemTxResult res = MEMTX_OK;
++    uint8_t cmd;
++
++    wr_offset = (s->cwriter >> GITS_CWRITER_OFFSET) &
++                             GITS_CWRITER_OFFSET_MASK;
++
++    if (wr_offset > c->cq.max_entries) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                        "%s: invalid write offset "
++                        "%d\n", __func__, wr_offset);
++        res = MEMTX_ERROR;
++        return res;
++    }
++
++    rd_offset = (s->creadr >> GITS_CREADR_OFFSET) &
++                             GITS_CREADR_OFFSET_MASK;
++
++    while (wr_offset != rd_offset) {
++        cq_offset = (rd_offset * GITS_CMDQ_ENTRY_SIZE);
++        data = address_space_ldq_le(as, c->cq.base_addr + cq_offset,
++                                      MEMTXATTRS_UNSPECIFIED, &res);
++        cmd = (data & CMD_MASK);
++
++        switch (cmd) {
++        case GITS_CMD_INT:
++            break;
++        case GITS_CMD_CLEAR:
++            break;
++        case GITS_CMD_SYNC:
++            res = process_sync(s, cq_offset);
++            break;
++        case GITS_CMD_MAPD:
++            res = process_mapd(s, data, cq_offset);
++            break;
++        case GITS_CMD_MAPC:
++            res = process_mapc(s, cq_offset);
++            break;
++        case GITS_CMD_MAPTI:
++            break;
++        case GITS_CMD_MAPI:
++            break;
++        case GITS_CMD_DISCARD:
++            break;
++        default:
++            break;
++        }
++        if (res == MEMTX_OK) {
++            rd_offset++;
++            rd_offset %= c->cq.max_entries;
++            s->creadr = (rd_offset << GITS_CREADR_OFFSET);
++        } else {
++            qemu_log_mask(LOG_GUEST_ERROR,
++                "%s: %x cmd processing failed!!\n", __func__, cmd);
++            break;
++        }
++    }
++    return res;
++}
++
+ static bool extract_table_params(GICv3ITSState *s, int index)
+ {
+     GICv3ITSClass *c = ARM_GICV3_ITS_GET_CLASS(s);
+@@ -325,6 +681,9 @@ static MemTxResult its_writel(GICv3ITSState *s, hwaddr offset,
+         break;
+     case GITS_CWRITER:
+         s->cwriter = deposit64(s->cwriter, 0, 32, value);
++        if ((s->ctlr & GITS_CTLR_ENABLED) && (s->cwriter != s->creadr)) {
++            result = process_cmdq(s);
++        }
+         break;
+     case GITS_CWRITER + 4:
+         s->cwriter = deposit64(s->cwriter, 32, 32, value);
+@@ -459,6 +818,9 @@ static MemTxResult its_writell(GICv3ITSState *s, hwaddr offset,
+         break;
+     case GITS_CWRITER:
+         s->cwriter = value;
++        if ((s->ctlr & GITS_CTLR_ENABLED) && (s->cwriter != s->creadr)) {
++            result = process_cmdq(s);
++        }
+         break;
+     case GITS_TYPER:
+     case GITS_CREADR:
+-- 
+2.27.0
 

@@ -1,245 +1,259 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4486929lfg;
-        Tue, 23 Mar 2021 05:31:17 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyZbgVnalJ0Gy4yXgevlCAn59Ujht/tlWLKh9H4LpXowiuppbcw/SsLQnFiNobS0UFJN9d9
-X-Received: by 2002:aca:180c:: with SMTP id h12mr3251764oih.109.1616502676830;
-        Tue, 23 Mar 2021 05:31:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1616502676; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4595788lfg;
+        Tue, 23 Mar 2021 07:36:57 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzd6XG6GYbSWORgFRM+Gvp3/YS2iPL+Rk6phxqnHxZvGBKUczz68HmNiOKsYUD1egG9OTVM
+X-Received: by 2002:a05:6638:614:: with SMTP id g20mr4737553jar.85.1616510216860;
+        Tue, 23 Mar 2021 07:36:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616510216; cv=none;
         d=google.com; s=arc-20160816;
-        b=riDe7+/ElCiJy8DQC4H2Wg7To3fgezU/1j1or7qU6wYJnAChotvPG+rbDpn+kHZuw0
-         zoeL/o6Z4+KAMbICNiv2Rp0cSS4JLiYirLzhhqM20byE8W2Dc7mMY2cSwxRtoYXGVfIF
-         4YHOL5UUPHF5U9RCSrguAypN+WnKg/2F1jXpzGsvFuaHCLpVH1YkL7zXi9GVet3Cqtcd
-         N7QWQNXwqnsJJHIFG4CqY7BT3X8ENSbRT+iWTipf029xvU/E7R2Wi6iSQFrZIi91UaFX
-         d/kYYd0sKvMZZRQaLZDwsPxlyp0NcLihPcaMxNby75JW576ZFFZxK+Wh8GVu94z6xkv+
-         7noA==
+        b=iYdiZFGwO3FUcRR7oOx+I/LuwlQMV3JRBsj5ylgNyBpPQa/sQ3nqpdvGD4dfIIfRIy
+         A+rjowFS3WvYynT0vhONFb3c5Xinog6/+hzYwZtyXzblAwW0JWMJC4aWVu99BB7ZDVV9
+         Ft+6eYhbmu6jLaOKa0UY/2q5er/ufxF25zUQqBA6MDd9SOu415TVP5v7btvnGVEFOUHa
+         spLvxincVpDiqPZrGoA4Xyipxn+KIls1mYpgFMmtYvMIDKsCevUO2Fip5XAqbt2zI9PV
+         wCZmM1gvt2jIv0iUE+CxGjG/dB3/xU7wWUFxbyQ2H7S3oySYz/MxDSHcNK8GCEN+XH6r
+         9Vfg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=YUWeZv6EYVYn4X6YJwPyxI9zJ3tzVHLfSu3vTw/tqD0=;
-        b=v1txfAMOdKaPivgmU7WDUkTyvUjGWMlu92RGqqlM/j+5YkH+xlxAKslhAGwkmPbnWA
-         r3r0jrVJf4epVVW4uTd6DkaV24CG8Dej7GzqAnsv46vQD1Ccq/aRxrUFRDBhSsgiYosV
-         9nRxMm872ChbVwR2PDrJqNuzoeasK9ELCVZx3aN2JLDJjk5pCTzlDwz7cvdbGZ3oaXXN
-         CnlPGsg7udxN0LpjIE1crMu0mQP9yP1rRba+cHmICMJ1XFB2lgi4zducz8YYDskXjxXi
-         HCtiaxxpwN8kXNYNWXBwymwK42oAol3hnbD9qw3U1HvEbb1su2LGXYMdqKyfh1rcwbAn
-         KfTQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=gh2VXji5Y1oI8vBGS/k6N5w9Quw/ru4X7bPOp8UR7Bc=;
+        b=0FRHLk3IRp2Jhr4aB3nHfl7vCiavNdB89/HDY0C+M7PHa9Daetqd1ktMCvduMZqhw8
+         6G2QZwd7DmBGVCtVwE4dXMl7PwDB0RX78ICbcJHHZDojJkamhFXAiL13DmW63dytSjsL
+         WRw2Osx2yO+IET3ltLFUuBrezdO0bPj1rKMENKdXQZ2+9rA9mn97F51UuU4UVB+c0t27
+         ZxynUx8Jy7nA8pt4AQOSmcxOlzIvLDEhtWsz67RloFAZItKSZwo6Q5OEVuaqH83gdK52
+         9XmB2Z4yMoXQeAAI5bJVnGatrk6vHiLBjB9sELn01VPdsaO5P8VipjnQO/ObRNbm+ewK
+         uZ9A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=KnnL6JcP;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=C4PKqFrD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z3si13705339otj.61.2021.03.23.05.31.16
+        by mx.google.com with ESMTPS id j7si3660338ila.72.2021.03.23.07.36.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 Mar 2021 05:31:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 23 Mar 2021 07:36:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=KnnL6JcP;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51680 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=C4PKqFrD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:60300 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lOgBo-0004DD-0N
-	for alex.bennee@linaro.org; Tue, 23 Mar 2021 08:31:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42020)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lOi9Q-0001vC-18
+	for alex.bennee@linaro.org; Tue, 23 Mar 2021 10:36:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47806)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lOg8d-0001Qd-4D
- for qemu-devel@nongnu.org; Tue, 23 Mar 2021 08:27:59 -0400
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b]:42734)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lOi5h-0006Yf-2a; Tue, 23 Mar 2021 10:33:05 -0400
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435]:45961)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lOg8b-0005iV-7d
- for qemu-devel@nongnu.org; Tue, 23 Mar 2021 08:27:58 -0400
-Received: by mail-ej1-x62b.google.com with SMTP id hq27so26775388ejc.9
- for <qemu-devel@nongnu.org>; Tue, 23 Mar 2021 05:27:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=YUWeZv6EYVYn4X6YJwPyxI9zJ3tzVHLfSu3vTw/tqD0=;
- b=KnnL6JcP/Z+DcnDdjYcWoEr6yzKuxjWp8H8u49ry2AbAG0nsH+GT2EfpvFGMvKhO4K
- xSPoccmvf5Kwv7CwUFqxye5jlZjglTgUHrFzDbBhUojuV4MC4rKfl2Z3uV8NzPeJXZPY
- RwpaanucqSEyjJLSl2kBLo7heBw5hrRuKCbAfZUdgb617Re5uD2H1z24tfip5NAufWkA
- VeaqVqvgUgL9Pzyak/nWC9xItotpAouf+TrcW2IUTusReuJB6qt7BK3ilief83hCJCf9
- j31C3zyG5w7oJNYxxHdSshTn+gczhy1UQt35Y7dZ9uB1HysQJXYf74i4C86Ep6bjPR0h
- jl7w==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lOi5e-000273-1E; Tue, 23 Mar 2021 10:33:04 -0400
+Received: by mail-wr1-x435.google.com with SMTP id 61so20972633wrm.12;
+ Tue, 23 Mar 2021 07:33:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=gh2VXji5Y1oI8vBGS/k6N5w9Quw/ru4X7bPOp8UR7Bc=;
+ b=C4PKqFrDLAxK3F254ATi1vvmwnXZQYdkQMiSXspKmj5BJJBQ/bOV/PpzRK/KEiSUb4
+ SYQwflTQdhAO9tHiXtC9dZm8DqYgqJlrke9QVtFQ1va8VOvMkGhoO1VlggGRAZCmT0eX
+ F3rIsoVmmUfc2U3OYf6L07nyIlEmEJxkqDrEpSozxWMN/lnZ1lo8utDHBsQJG2+ELAB4
+ hOs7HKu/I/FHTmcL/emH9dTcRXrnnKRRRSF+WT2nGDDnI61ntrNGzdb8VR9fMnxDOZER
+ WFk5cqFkGjoSslsQSuhejVIHPzYI9jNBMQm1gF0Tzyuo+vl5o6O3uelZPhPsEWWjghll
+ NJvw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=YUWeZv6EYVYn4X6YJwPyxI9zJ3tzVHLfSu3vTw/tqD0=;
- b=Ca/h3g9hwIJYlPuF0X7obbvbolmv4H6jH89y2jO26UgebNGcHDBtZF1WFC4eAgQWTD
- 7NMco8Hrdt5G1CIbr/HQWk4kYscUouuPGQefab/g09CTKBUIyqF45CjscWO+W5/k8Azv
- gVzQhIFDChBOuXHoIcn7d6pXiRMTwa/G4ArABpL0Yq/sWyS0YJ8offLkjWtAIoc0UEw2
- xzrJrTvP3ObIBLReJNgYG9oQKCwKrWdiKfpgBH4trPPNFqfHwiS8YHP5hbfqj7KhsdXU
- pFUEgZBx9RJYM2QUWbul5Lciikl8LM/byfDD6EgV9ZeuvGAU7qUm3Oe/4NnlYo5TMJxa
- Q7bg==
-X-Gm-Message-State: AOAM5303YxwdPOEyx+L35ucCMtPEA3OrQ0BorFRDrCG3eNiSw5R4IeJC
- gKcXfez6UWvl74X04uRzu+OJ6IJ6SdU7P7YPNUczzA==
-X-Received: by 2002:a17:906:bd2:: with SMTP id
- y18mr4756350ejg.482.1616502473222; 
- Tue, 23 Mar 2021 05:27:53 -0700 (PDT)
-MIME-Version: 1.0
-References: <20210313170131.2116837-1-f4bug@amsat.org>
-In-Reply-To: <20210313170131.2116837-1-f4bug@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 23 Mar 2021 12:27:24 +0000
-Message-ID: <CAFEAcA-8agmT_SpO7MYmWX19XhKrAz9TCgiCzo4S-uL-V4Pf=Q@mail.gmail.com>
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=gh2VXji5Y1oI8vBGS/k6N5w9Quw/ru4X7bPOp8UR7Bc=;
+ b=mm/5hTNfbeceEFM1b2rxqRvPUCYtZCXYM8+mUhWFjUcCNEUzZn+hl3eUq+dxhV8ra+
+ 0Y/x3aW7J2Voc+SRCzr7C2JgLod4MmHzlUUJ2wEw9YmZo4kFC+0XZsWNTiksW0d4caBv
+ Q2MP+vZGOJYqJmw7DFLytzU0x7tprG42xfdXzLR7+bY2N5QnK9IzyDLmGik5Vd6Dlq+K
+ db2xDoza+6oZcTlf1WXiRdIhLteWbEuURTcyYjU5YVw0X92+rBUXwOIaCnCf7TQoAKkD
+ akOFVhrMWp5svfEIEjHftzZKqbtmdlCBq90M3CGDlusfFam7yqIi3ASH6OiqpwKB8NeO
+ k8qQ==
+X-Gm-Message-State: AOAM532z9hWeZ/hZXdWS7uKTm+iD0Wd8HRxlSFtHKLlgE6ltWYD5OBWV
+ rnR7qj7RMZ+9t2pGScebaew=
+X-Received: by 2002:a5d:404d:: with SMTP id w13mr4340509wrp.230.1616509979636; 
+ Tue, 23 Mar 2021 07:32:59 -0700 (PDT)
+Received: from [192.168.1.36] (17.red-88-21-201.staticip.rima-tde.net.
+ [88.21.201.17])
+ by smtp.gmail.com with ESMTPSA id n6sm27338339wrw.63.2021.03.23.07.32.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 23 Mar 2021 07:32:58 -0700 (PDT)
 Subject: Re: [PATCH] hw/display/bcm2835_fb: Remove DeviceReset() call in
  DeviceRealize()
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20210313170131.2116837-1-f4bug@amsat.org>
+ <CAFEAcA-8agmT_SpO7MYmWX19XhKrAz9TCgiCzo4S-uL-V4Pf=Q@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <2628b2a4-3a6e-7dd6-8309-4ae1cc3d8570@amsat.org>
+Date: Tue, 23 Mar 2021 15:32:57 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA-8agmT_SpO7MYmWX19XhKrAz9TCgiCzo4S-uL-V4Pf=Q@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x435.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
  QEMU Developers <qemu-devel@nongnu.org>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>,
  Gerd Hoffmann <kraxel@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iHDqED+cRaVH
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: +R6Gz2lmpfKP
 
-On Sat, 13 Mar 2021 at 17:01, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
- wrote:
->
-> When QDev objects have their DeviceReset handler set, they
-> shouldn't worry about calling it at realization stage (it
-> is handled by hw/core/qdev.c::device_set_realized).
->
-> Remove the pointless/confusing bcm2835_fb_reset() call.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  hw/display/bcm2835_fb.c | 2 --
->  1 file changed, 2 deletions(-)
->
-> diff --git a/hw/display/bcm2835_fb.c b/hw/display/bcm2835_fb.c
-> index 2be77bdd3a0..445e8636770 100644
-> --- a/hw/display/bcm2835_fb.c
-> +++ b/hw/display/bcm2835_fb.c
-> @@ -424,8 +424,6 @@ static void bcm2835_fb_realize(DeviceState *dev, Erro=
-r **errp)
->      s->dma_mr =3D MEMORY_REGION(obj);
->      address_space_init(&s->dma_as, s->dma_mr, TYPE_BCM2835_FB "-memory")=
-;
->
-> -    bcm2835_fb_reset(dev);
-> -
->      s->con =3D graphic_console_init(dev, 0, &vgafb_ops, s);
->      qemu_console_resize(s->con, s->config.xres, s->config.yres);
->  }
+On 3/23/21 1:27 PM, Peter Maydell wrote:
+> On Sat, 13 Mar 2021 at 17:01, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>>
+>> When QDev objects have their DeviceReset handler set, they
+>> shouldn't worry about calling it at realization stage (it
+>> is handled by hw/core/qdev.c::device_set_realized).
+>>
+>> Remove the pointless/confusing bcm2835_fb_reset() call.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>>  hw/display/bcm2835_fb.c | 2 --
+>>  1 file changed, 2 deletions(-)
+>>
+>> diff --git a/hw/display/bcm2835_fb.c b/hw/display/bcm2835_fb.c
+>> index 2be77bdd3a0..445e8636770 100644
+>> --- a/hw/display/bcm2835_fb.c
+>> +++ b/hw/display/bcm2835_fb.c
+>> @@ -424,8 +424,6 @@ static void bcm2835_fb_realize(DeviceState *dev, Error **errp)
+>>      s->dma_mr = MEMORY_REGION(obj);
+>>      address_space_init(&s->dma_as, s->dma_mr, TYPE_BCM2835_FB "-memory");
+>>
+>> -    bcm2835_fb_reset(dev);
+>> -
+>>      s->con = graphic_console_init(dev, 0, &vgafb_ops, s);
+>>      qemu_console_resize(s->con, s->config.xres, s->config.yres);
+>>  }
+> 
+> With this patch applied, I get a clang-sanitizer-build failure
+> in "make check":
+> 
+> $ QTEST_QEMU_BINARY=./build/arm-clang/qemu-system-arm
+> build/arm-clang/tests/qtest/test-hmp
+> /arm/hmp/raspi0: ../../hw/display/bcm2835_fb.c:131:13: runtime error:
+> store to null pointer of type 'uint32_t' (aka 'unsigned int')
+> UndefinedBehaviorSanitizer:DEADLYSIGNAL
+> ==23006==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address
+> 0x000000000000 (pc 0x5599adaf839b bp 0x000000000000 sp 0x7ffd81ee77a0
+> T23006)
+> ==23006==The signal is caused by a WRITE memory access.
+> ==23006==Hint: address points to the zero page.
+>     #0 0x5599adaf839a in draw_line_src16
+> /home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../hw/display/bcm2835_fb.c:131:30
+>     #1 0x5599add82e8f in framebuffer_update_display
+> /home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../hw/display/framebuffer.c:107:13
+>     #2 0x5599adaf7844 in fb_update_display
+> /home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../hw/display/bcm2835_fb.c:203:5
+>     #3 0x5599ad9e7800 in graphic_hw_update
+> /home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../ui/console.c:279:9
+>     #4 0x5599aea450d3 in aio_bh_poll
+> /home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../util/async.c:164:13
+>     #5 0x5599ae9e5d73 in aio_poll
+> /home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../util/aio-posix.c:659:17
+>     #6 0x5599ad873d2c in handle_hmp_command
+> /home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../monitor/hmp.c:1117:9
+>     #7 0x5599ae368594 in qmp_human_monitor_command
+> /home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../monitor/misc.c:135:5
+>     #8 0x5599ae996101 in qmp_marshal_human_monitor_command
+> /home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/qapi/qapi-commands-misc.c:266:14
+>     #9 0x5599ae9de39c in do_qmp_dispatch_bh
+> /home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../qapi/qmp-dispatch.c:131:5
+>     #10 0x5599aea450d3 in aio_bh_poll
+> /home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../util/async.c:164:13
+>     #11 0x5599ae9e332b in aio_dispatch
+> /home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../util/aio-posix.c:381:5
+>     #12 0x5599aea4799a in aio_ctx_dispatch
+> /home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../util/async.c:306:5
+>     #13 0x7f74a0a35416 in g_main_context_dispatch
+> (/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x4c416)
+>     #14 0x5599ae9dc8f4 in glib_pollfds_poll
+> /home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../util/main-loop.c:231:9
+>     #15 0x5599ae9dc8f4 in os_host_main_loop_wait
+> /home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../util/main-loop.c:254
+>     #16 0x5599ae9dc8f4 in main_loop_wait
+> /home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../util/main-loop.c:530
+>     #17 0x5599ae42adf6 in qemu_main_loop
+> /home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../softmmu/runstate.c:725:9
+>     #18 0x5599ad5bbf0a in main
+> /home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../softmmu/main.c:50:5
+>     #19 0x7f749bcf3bf6 in __libc_start_main
+> /build/glibc-S9d2JN/glibc-2.27/csu/../csu/libc-start.c:310
+>     #20 0x5599ad59c519 in _start
+> (/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/qemu-system-arm+0x1335519)
+> 
+> UndefinedBehaviorSanitizer can not provide additional info.
+> ==23006==ABORTING
+> Broken pipe
+> Aborted (core dumped)
+> 
+> The patch is correct in that the device shouldn't be resetting itself
+> in realize, but this is presumably masking a bug elsewhere in the device
+> that we need to fix first before we can make this change.
+> 
+> It looks as if what happens is that the GraphicHwOps methods can
+> get called before the device is reset. I don't know if that is
+> something we can arrange to have not happen -- certainly it's
+> a bit confusing to have to deal with the device not having been
+> reset yet -- or if implementations just have to deal with it.
 
-With this patch applied, I get a clang-sanitizer-build failure
-in "make check":
+Thanks for the report.
 
-$ QTEST_QEMU_BINARY=3D./build/arm-clang/qemu-system-arm
-build/arm-clang/tests/qtest/test-hmp
-/arm/hmp/raspi0: ../../hw/display/bcm2835_fb.c:131:13: runtime error:
-store to null pointer of type 'uint32_t' (aka 'unsigned int')
-UndefinedBehaviorSanitizer:DEADLYSIGNAL
-=3D=3D23006=3D=3DERROR: UndefinedBehaviorSanitizer: SEGV on unknown address
-0x000000000000 (pc 0x5599adaf839b bp 0x000000000000 sp 0x7ffd81ee77a0
-T23006)
-=3D=3D23006=3D=3DThe signal is caused by a WRITE memory access.
-=3D=3D23006=3D=3DHint: address points to the zero page.
-    #0 0x5599adaf839a in draw_line_src16
-/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../hw/displa=
-y/bcm2835_fb.c:131:30
-    #1 0x5599add82e8f in framebuffer_update_display
-/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../hw/displa=
-y/framebuffer.c:107:13
-    #2 0x5599adaf7844 in fb_update_display
-/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../hw/displa=
-y/bcm2835_fb.c:203:5
-    #3 0x5599ad9e7800 in graphic_hw_update
-/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../ui/consol=
-e.c:279:9
-    #4 0x5599aea450d3 in aio_bh_poll
-/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../util/asyn=
-c.c:164:13
-    #5 0x5599ae9e5d73 in aio_poll
-/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../util/aio-=
-posix.c:659:17
-    #6 0x5599ad873d2c in handle_hmp_command
-/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../monitor/h=
-mp.c:1117:9
-    #7 0x5599ae368594 in qmp_human_monitor_command
-/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../monitor/m=
-isc.c:135:5
-    #8 0x5599ae996101 in qmp_marshal_human_monitor_command
-/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/qapi/qapi-comma=
-nds-misc.c:266:14
-    #9 0x5599ae9de39c in do_qmp_dispatch_bh
-/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../qapi/qmp-=
-dispatch.c:131:5
-    #10 0x5599aea450d3 in aio_bh_poll
-/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../util/asyn=
-c.c:164:13
-    #11 0x5599ae9e332b in aio_dispatch
-/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../util/aio-=
-posix.c:381:5
-    #12 0x5599aea4799a in aio_ctx_dispatch
-/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../util/asyn=
-c.c:306:5
-    #13 0x7f74a0a35416 in g_main_context_dispatch
-(/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x4c416)
-    #14 0x5599ae9dc8f4 in glib_pollfds_poll
-/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../util/main=
--loop.c:231:9
-    #15 0x5599ae9dc8f4 in os_host_main_loop_wait
-/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../util/main=
--loop.c:254
-    #16 0x5599ae9dc8f4 in main_loop_wait
-/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../util/main=
--loop.c:530
-    #17 0x5599ae42adf6 in qemu_main_loop
-/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../softmmu/r=
-unstate.c:725:9
-    #18 0x5599ad5bbf0a in main
-/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/../../softmmu/m=
-ain.c:50:5
-    #19 0x7f749bcf3bf6 in __libc_start_main
-/build/glibc-S9d2JN/glibc-2.27/csu/../csu/libc-start.c:310
-    #20 0x5599ad59c519 in _start
-(/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/qemu-system-ar=
-m+0x1335519)
+I don't understand well how graphic works, but I noticed
+bcm2835_fb_reconfigure() calls qemu_console_resize() ->
+qemu_create_displaysurface() -> pixman_image_create_bits(),
+so then when framebuffer_update_display() is called,
+surface_data() is not NULL.
 
-UndefinedBehaviorSanitizer can not provide additional info.
-=3D=3D23006=3D=3DABORTING
-Broken pipe
-Aborted (core dumped)
+So we can trigger the qemu_create_displaysurface() call by
+replacing the open-coded bcm2835_fb_reconfigure() in reset():
 
-The patch is correct in that the device shouldn't be resetting itself
-in realize, but this is presumably masking a bug elsewhere in the device
-that we need to fix first before we can make this change.
+-- >8 --
+diff --git a/hw/display/bcm2835_fb.c b/hw/display/bcm2835_fb.c
+index 445e8636770..d7a44771c44 100644
+--- a/hw/display/bcm2835_fb.c
++++ b/hw/display/bcm2835_fb.c
+@@ -396,10 +396,7 @@ static void bcm2835_fb_reset(DeviceState *dev)
 
-It looks as if what happens is that the GraphicHwOps methods can
-get called before the device is reset. I don't know if that is
-something we can arrange to have not happen -- certainly it's
-a bit confusing to have to deal with the device not having been
-reset yet -- or if implementations just have to deal with it.
+     s->pending = false;
 
-thanks
--- PMM
+-    s->config = s->initial_config;
+-
+-    s->invalidate = true;
+-    s->lock = false;
++    bcm2835_fb_reconfigure(s, &s->initial_config);
+ }
+---
+
+I'll send a patch.

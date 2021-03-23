@@ -1,102 +1,99 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4727172lfg;
-        Tue, 23 Mar 2021 10:07:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx2eAxcXtKSqrPPcZJItb5siO13PEnAtDKfCiRRoczFcd318QqTReRPeTpvqnhpHt+n7Gwh
-X-Received: by 2002:a05:6638:ec7:: with SMTP id q7mr5509636jas.54.1616519257071;
-        Tue, 23 Mar 2021 10:07:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1616519257; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4711346lfg;
+        Tue, 23 Mar 2021 09:49:15 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwiwnA4rq8watcGBgZPRu1vktIIX/yNHZAzOdsOKh1GLnwbE6LlCvn8o5nO7KnyhKaX/sey
+X-Received: by 2002:a05:6e02:f90:: with SMTP id v16mr5360020ilo.294.1616518155374;
+        Tue, 23 Mar 2021 09:49:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616518155; cv=none;
         d=google.com; s=arc-20160816;
-        b=jieV/1MEMRTPT5uhHduzEAfXaCU9Tnou5PttbJwnLlrwyLQYpPLp031CwKZr/ebfgs
-         xBtr7Qtxa5RdJbvJ5brpNccaSaM+Mvr0+mp0Jw2Nap9GM7JLbKxXBOKuQS+kajA3fZ8T
-         9m94SRXgyR2cPYkn4CFPXtJKK3O1yIPZR23aWc1o5NYCg4haf9DExvuBa69zn200FJXt
-         wFb5X3N6lae35hHC50w0ldz+hVe/6lB7rerPvmtFTUhHG+WMuYBzxO8JpBOnrXISm32r
-         F+OGZAeGVPulV1bOok975Dwh4TeTLwEL+GPMWyvLIgev3a6c0swroatRB2olpZEseiUK
-         Ogrw==
+        b=MeZgVmgjjfdLAdMUK0ZSO7N5b5IFgoNC80qLBwANq3gsU3pvcj8RDKvT3hhN9Wxb62
+         M2sDTRMN2Jj7IJUMH+bq1dcCoq5Kr0vR6okfS0Hh0k0NGkESHDXBeBP2e46wKzbCJp6F
+         byS04bhfGvN9erhcQvty+jWgtNM2MSN4+dGxt8LjaHJQzUduAUQdR1z80adWW+691vAh
+         JIHNGnUZ1JOApW8xlRTtM0mAdDFbz4VH2/PRvXmHNA//o8AqyhkAkCXSbINxo68AcLxi
+         V0j2eyBSKxfHB6tScsBTMRhHa/ZCLFkt3pppDfbVfXh5FV6THr2te2HGlM8hmilJxjmW
+         UvOQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=EYb7MCD9rAm74EVNp0mTMTFqaEPr7f8+yagDdP+XAac=;
-        b=Mc0G4aMoGRAdqB7tQxGAcT2+eomkXMc7TVRDJlhmaLxz4R5vEWI+d/cx8elB15LT1K
-         So7GZHGZc1Qz0HCDZXzpzpRWKPDR2z71pFxHBkpoXPLPj5I0eyNaucPo++xjSrV35Ceg
-         Zx110hKIeWiBRA1qFmV7N5xVNXu7i+x2/HBlbJBdcAQtIRn/qwqVLy62SRH6lJA7W0Ik
-         3IcfARn7QgpMTCmedcqdgJM7kgEbHLqeoiKd/P22HGx2dK3FqVVMgH6Y6ae1RAzwwahF
-         wC3eK++9GIpZ09On1ZwbQl7Y6rO3ZAYQw1XBVnsbZTv3ajnrVM6oiAMCx1COttwV/+bN
-         4hIA==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=T9rgbORsGA9riDUDb8xvzjRsLP7URL+4hWLMqQizWD0=;
+        b=t0Q9+VRIfDFzJguYHLTxpk6GdPqveZcO6MTSjdqIpGRQRkMjngB1WqQN10czN4NQRM
+         wlySftjND0dGBUfqf8a3GCGhRf1LdaHdw2P+R5N33QHcFvelvok67gwk5lBOsFm14H2J
+         2lw4u4o51X8fUqqtVfUGT6HuarhgZ20L8PJIwO8JWpTN56Nmky9rcqwkEm/K5CyMJHuE
+         diIxkRaIfFp5jA+xia/5XVT3lo8SBHIhjzX09j+F0lA3GpI/orgMQ3BgduVZcUx6JSyW
+         ItxMTm9/dRD5fma80EESWu1hLXnue3iMiIf1CS0j8rs0Rq+Vs7KYkb1mJfdAfniLdwXH
+         lXUw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ovVZUhAK;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=g31nUmLO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q9si7817652jat.84.2021.03.23.10.07.36
+        by mx.google.com with ESMTPS id 13si11793235ilq.107.2021.03.23.09.49.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 Mar 2021 10:07:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 23 Mar 2021 09:49:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ovVZUhAK;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=g31nUmLO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:55618 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43676 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lOkVE-0007L9-CA
-	for alex.bennee@linaro.org; Tue, 23 Mar 2021 13:07:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45438)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lOkDS-00007A-JH
+	for alex.bennee@linaro.org; Tue, 23 Mar 2021 12:49:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45408)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lOjgF-0005DY-Df; Tue, 23 Mar 2021 12:14:55 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e]:33502)
+ id 1lOjgA-00054n-Vk; Tue, 23 Mar 2021 12:14:51 -0400
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d]:33420)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lOjgD-0007eG-Nd; Tue, 23 Mar 2021 12:14:55 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id
- w203-20020a1c49d40000b029010c706d0642so1407772wma.0; 
- Tue, 23 Mar 2021 09:14:53 -0700 (PDT)
+ id 1lOjg8-0007ae-VH; Tue, 23 Mar 2021 12:14:50 -0400
+Received: by mail-wr1-x42d.google.com with SMTP id o16so21385022wrn.0;
+ Tue, 23 Mar 2021 09:14:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=EYb7MCD9rAm74EVNp0mTMTFqaEPr7f8+yagDdP+XAac=;
- b=ovVZUhAKnS78InoOcEsbdnP1XHBrT8vxa9YB+OEakLJ+nRRw0lHq/B2TGLCrswQKKI
- 14PzG66USogxaznvETy1GbVvOSCIxyNzzlycKBC3b3B+5shj+ufUX4+/Y1Bj93dDdgLt
- 6/x6tB/3R/GbvYltWkMS+vd4TRJAeaRvbqBokVrNnq5Yqx3nbHwkS6qadqXGe3/WHQrs
- UEMjr/1kUFP68MgT1co/uD54WFCi3naT+VJ/aFm3KVu63WASdQ7BCHmP3K5OsM3eI7Go
- jLa9912F94YT+rYwWq2OG8IY1CoDoagTxCpGZgu54L4NToNmNOo/3v4lX1J65BwQeOQn
- VvdQ==
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=T9rgbORsGA9riDUDb8xvzjRsLP7URL+4hWLMqQizWD0=;
+ b=g31nUmLOIFxJqcy4JS+AIJxozlX8sj+RZS5s/mL7jsY6DCsH/rxUXerTq7c+9084gM
+ 4F/3qs6pwlUAPwFNixgZgVclHGib8mORoXqK4h7PRS3FTWz2W0ApOmpUm/t0TRlOYUU3
+ 57VlrHbV0P6mkVEvAMujqt2XjA2ZjfwVbSdWFkNdwMijes5/5cJrMbIxJbUq8WW8DgLG
+ gppm0ucY7nUv3WZxAshs1UDOTqst08TxIXi+pS+O1IKQMr9nqe7YW0j+PHOd0rIBB/Ul
+ mpl+O7CgGZFUanrU6JKun4YHw5MPMg/zuKJtheaCXEskSM46yQ42fFtcewCdO+l7g5Q1
+ 4x0g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=EYb7MCD9rAm74EVNp0mTMTFqaEPr7f8+yagDdP+XAac=;
- b=XpIOwggwfmKuXSPImw1/U5b6G40kslPQm1Lffno/b+Kd8kg3T+/v63/WcYpVY68QB5
- wE754UEVXFFfto6t/SlIQsI+0KRlXl8V7zr0uyPWOamGGi3OXXm9l98BKJnH+uPyIkiP
- ToiwZZNTAyW9tnTxoI29dlzbnP9oKoROusrPsdTIuxRMbFQlsxE5Lx5lDrQrLVwZHUDt
- EVV8PZU5tMsym3vhOw9EFw9HO+ovniRS6t+zaTdWR8pSze43SXG0W8usBG54hXtTMNSm
- Io8cK+s4wIHXhLB57KSqVRbzZu8VltKB6GD3gjplY43TEUPgOHWqs28nizYcSe+aW61E
- xFpA==
-X-Gm-Message-State: AOAM533vG+FEaIGltMyBEAdy4TAY02UDYAgwqGdcOATG/2YLOWV/WAtD
- uDSwT7+sQ4+EQ+5J0Um+QhCNcT8Nr3rAAA==
-X-Received: by 2002:a1c:3954:: with SMTP id g81mr4100415wma.170.1616516091209; 
- Tue, 23 Mar 2021 09:14:51 -0700 (PDT)
+ :mime-version:content-transfer-encoding;
+ bh=T9rgbORsGA9riDUDb8xvzjRsLP7URL+4hWLMqQizWD0=;
+ b=W3wTHItTLoh9WvlWnxplfSirq+DJ3/jGA0z1SP52BU1G8DQ+jZTyaTzfPrpREsfpkG
+ 93xHxxDc4lo1txBcsrdZDg2segNpXyv3cR/lJrvQXTN9gQ/Eb2Y70JruwBKuGSrcUOqJ
+ U/sP6njv1r0jC/yjxJz7uvF39WqJOn1IdjTpieT8Rc+6JSUQutFUnvFumIm2hndX0XwV
+ JoxdwfjeWteXmX3mJ8UXiU6Bigf2v2Uo2N6dHsJmz5VqHkKFXf8auNGTnXSBPLUHdR+u
+ nX+6iRTIyR0sT8Ic5ipOX30oTfSIkM4HW+S+J1Khul2Eu7da/8HEp3p6Z1OoOmxOl3rN
+ U/nQ==
+X-Gm-Message-State: AOAM532DSSsnfwJumQ+ib1yCmdnPtgG4exLmdi5km//FwMxF1lSYinAu
+ iNgmB30wKwWE06jvyu6Is0c7Mi8VL1u3iQ==
+X-Received: by 2002:adf:c752:: with SMTP id b18mr4739087wrh.233.1616516086499; 
+ Tue, 23 Mar 2021 09:14:46 -0700 (PDT)
 Received: from localhost.localdomain (17.red-88-21-201.staticip.rima-tde.net.
  [88.21.201.17])
- by smtp.gmail.com with ESMTPSA id c9sm3192765wml.42.2021.03.23.09.14.50
+ by smtp.gmail.com with ESMTPSA id c8sm2982249wmb.34.2021.03.23.09.14.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 23 Mar 2021 09:14:50 -0700 (PDT)
+ Tue, 23 Mar 2021 09:14:45 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 1/3] hw/display/bcm2835_fb: Resize console on reset
-Date: Tue, 23 Mar 2021 17:14:41 +0100
-Message-Id: <20210323161443.245636-2-f4bug@amsat.org>
+Subject: [PATCH v2 0/3] hw/display/bcm2835_fb: Remove DeviceReset() call in
+ DeviceRealize()
+Date: Tue, 23 Mar 2021 17:14:40 +0100
+Message-Id: <20210323161443.245636-1-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20210323161443.245636-1-f4bug@amsat.org>
-References: <20210323161443.245636-1-f4bug@amsat.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32e.google.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42d.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -106,76 +103,36 @@ X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: K/G/L325NAP/
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: h8a3qgb0R/5b
 
-We want to remove the bcm2835_fb_reset() call in bcm2835_fb_realize()
-but doing triggers:
-
-  hw/display/bcm2835_fb.c:131:13: runtime error: store to null pointer of type 'uint32_t' (aka 'unsigned int')
-  SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior hw/display/bcm2835_fb.c:131:13 in
-  AddressSanitizer:DEADLYSIGNAL
-  =================================================================
-  ==195864==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000000 (pc 0x555d1d51e6d6 bp 0x7ffd25a31160 sp 0x7ffd25a30fb0 T0)
-  ==195864==The signal is caused by a WRITE memory access.
-  ==195864==Hint: address points to the zero page.
-     #0 0x555d1d51e6d6 in draw_line_src16 hw/display/bcm2835_fb.c:131:30
-     #1 0x555d1dd88d5f in framebuffer_update_display hw/display/framebuffer.c:107:13
-     #2 0x555d1d51d081 in fb_update_display hw/display/bcm2835_fb.c:203:5
-     #3 0x555d1ccb93d6 in graphic_hw_update ui/console.c:279:9
-     #4 0x555d1dbc92cb in gd_refresh ui/gtk.c:492:5
-     #5 0x555d1ccef1fc in dpy_refresh ui/console.c:1734:13
-     #6 0x555d1ccee09c in gui_update ui/console.c:209:5
-     #7 0x555d201f3cf2 in timerlist_run_timers util/qemu-timer.c:586:9
-     #8 0x555d201f4061 in qemu_clock_run_timers util/qemu-timer.c:600:12
-     #9 0x555d201f5029 in qemu_clock_run_all_timers util/qemu-timer.c:682:25
-    #10 0x555d200c6f6c in main_loop_wait util/main-loop.c:541:5
-    #11 0x555d1f06ba93 in qemu_main_loop softmmu/runstate.c:725:9
-    #12 0x555d1cafe6ae in main softmmu/main.c:50:5
-    #13 0x7f6e6991b081 in __libc_start_main (/lib64/libc.so.6+0x27081)
-    #14 0x555d1ca249ed in _start (/mnt/scratch/qemu/sanitizer_aa64/qemu-system-aarch64+0x22999ed)
-
-  AddressSanitizer can not provide additional info.
-  SUMMARY: AddressSanitizer: SEGV hw/display/bcm2835_fb.c:131:30 in draw_line_src16
-  ==195864==ABORTING
-
-The graphic console timer kicks before the display device is realized.
-By calling qemu_console_resize() in bcm2835_fb_reset() we force the
-creation of the graphic console surface early enough.
-
-Reported-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/display/bcm2835_fb.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/hw/display/bcm2835_fb.c b/hw/display/bcm2835_fb.c
-index 2be77bdd3a0..3e63d58e0b2 100644
---- a/hw/display/bcm2835_fb.c
-+++ b/hw/display/bcm2835_fb.c
-@@ -399,6 +399,7 @@ static void bcm2835_fb_reset(DeviceState *dev)
-     s->config = s->initial_config;
- 
-     s->invalidate = true;
-+    qemu_console_resize(s->con, s->initial_config.xres, s->initial_config.yres);
-     s->lock = false;
- }
- 
--- 
-2.26.2
-
+Since v1:=0D
+Resize console on reset to create the surface, see:=0D
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg794307.html=0D
+=0D
+Philippe Mathieu-Daud=C3=A9 (3):=0D
+  hw/display/bcm2835_fb: Resize console on reset=0D
+  hw/display/bcm2835_fb: Use bcm2835_fb_reconfigure in bcm2835_fb_reset=0D
+  hw/display/bcm2835_fb: Remove DeviceReset() call in DeviceRealize()=0D
+=0D
+ hw/display/bcm2835_fb.c | 7 +------=0D
+ 1 file changed, 1 insertion(+), 6 deletions(-)=0D
+=0D
+-- =0D
+2.26.2=0D
+=0D

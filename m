@@ -1,66 +1,111 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp123985lfg;
-        Wed, 24 Mar 2021 00:31:36 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxOw5G8RB0dh74XCkjbMy3JaIskeoZi9u3gXUL+UypIB8ux+YoOCrH0UnSlT5eefi4ZLoAi
-X-Received: by 2002:a6b:103:: with SMTP id 3mr1486933iob.98.1616571096516;
-        Wed, 24 Mar 2021 00:31:36 -0700 (PDT)
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp179148lfg;
+        Wed, 24 Mar 2021 02:06:01 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwmXqvdkNrxp9uXN11Neok39Rl8bWX4YQZFu5pNCji1xkhb213E+Y8SKUA7s2iDTpE5jRBI
+X-Received: by 2002:a92:194c:: with SMTP id e12mr1792326ilm.292.1616576761280;
+        Wed, 24 Mar 2021 02:06:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616576761; cv=none;
+        d=google.com; s=arc-20160816;
+        b=eIfOrO6g2aJpgU8WkUaygKsYTvX+367F62+BuhSNqFbP4Ved+WNd2Wi3t2Ypo3A3hK
+         PIulv4L5yN9w1Ody31wFsoSc8xLduhh69f3fdl3r47RwQHxl6jl0reuFXigW1w8eZP7w
+         YqJ3PrlZsZn6YtEcU12HsnZ9eUiIx6B5nb6BuBodNlup8m8dFj3YGVYqXXRwSVymUyKd
+         EnO/V1sLGuCaqJapn60+keZRFFUqTuDdDuisMG4fgfP9wTtdtI6ij1lxmco974i8czPw
+         Io4JgDMi6SJpVWNOaayYfT8VM2XpbVsgyXYd4xW8+3ryvkOwHVyVrcFAo9IoLP9iNJh8
+         tvgQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=cqWQ4biIsqGbffuhGtJrjqABhwDdPCoQajgy0EAoXu4=;
+        b=ZG0UqViSyDboZa/1Ht3zGtAD5WB9oGaoOY2j3l2WOU1YyNzvdTnxDapNC7rnZXIxt7
+         fXMNnuBPWCPJ4lXygYfte2rhMS1mhqa31rmQbvLCqgE+/x4CRu22qSdX4R8ivdhwxMvY
+         HGpolFfrVIP/COtoeJilK35EATVWnynsFcSK6TuR1ZaVxBIyXDudWov5mEO6Xf6ZtwKW
+         ELI+TenH7ajOpZ+upwIgpFo+eJvpDYRQB7gm+Qllf9KpXfUN+TCICaxmGbkBAaZGegpv
+         x8j4syd1gBsUzLduYoAD24TDSgvSk+4mpEn5WzGxozE3GUyMA26Ezvat8YFek0wZYpqA
+         HXMg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bOsL3rVN;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a14si1269022ilm.45.2021.03.24.00.31.36
+        by mx.google.com with ESMTPS id s18si1276535jaj.23.2021.03.24.02.06.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 Mar 2021 00:31:36 -0700 (PDT)
+        Wed, 24 Mar 2021 02:06:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41776 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bOsL3rVN;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:60518 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lOxzL-0004fj-RS
-	for alex.bennee@linaro.org; Wed, 24 Mar 2021 03:31:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49968)
+	id 1lOzSi-0001Nt-KD
+	for alex.bennee@linaro.org; Wed, 24 Mar 2021 05:06:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43710)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1lOxz9-0004fL-Qh; Wed, 24 Mar 2021 03:31:23 -0400
-Resent-Date: Wed, 24 Mar 2021 03:31:23 -0400
-Resent-Message-Id: <E1lOxz9-0004fL-Qh@lists.gnu.org>
-Received: from sender4-of-o53.zoho.com ([136.143.188.53]:21323)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1lOxz7-0004Py-3W; Wed, 24 Mar 2021 03:31:23 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1616571052; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=IJxR4VrKVfMfGUuWp9n0pHnpknjlYMlEpOitsllC3QHi2M/uuGbrxP3s0pORUVdhqqTSlVPAkQViuNAhgFX3ImZOFvUflxf81T17v02S/HXOZ/588RNYHQBMi+eV3GZDdtrVftRiCJQ/+J2xG7ZHOQkCw9LUOg7WRhQwlAjsdDw=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1616571052;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=nMt3SRLXNgVrvb1s0aiKKR62ZTp97DV7kEtnDa/ja48=; 
- b=Ts2Re14JtLL7UJFe64j6foXnXYf77pr+VpyuEYdXNNs1pBxyd2nNfU/Tap/9UIp9Q7//2T4p7dZleAnaRbcRCZNBJcj4/3pyT0/rYSUopz4LQ0paBkufKFKbw5MU2Xl14utuEDwLL/IwS3Gs3+aDjrQaB+aVu6/UHxDFFrU/hzc=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1616571050006709.3541462791587;
- Wed, 24 Mar 2021 00:30:50 -0700 (PDT)
-In-Reply-To: <20210324070955.125941-1-joel@jms.id.au>
-Subject: Re: [PATCH v4 0/3] hw/misc: Model ASPEED hash and crypto engine
-Message-ID: <161657104880.22034.9311450853562432648@72b6d80f974b>
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lOzSa-0001NG-NA
+ for qemu-arm@nongnu.org; Wed, 24 Mar 2021 05:05:52 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:23258)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lOzSY-0001Cz-As
+ for qemu-arm@nongnu.org; Wed, 24 Mar 2021 05:05:52 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1616576748;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=cqWQ4biIsqGbffuhGtJrjqABhwDdPCoQajgy0EAoXu4=;
+ b=bOsL3rVNjliA66Fp4zfHsllmm2B+wwpXJ0nX+1UWYLbl0/SpQWBKNWcVc2hqDyLWoCFUD2
+ bmCVOAnhicSOZo9cnb5d9IWmZpN5rS33Kmy+wOIhPghEDoiUkDMT69ixDnKlxTHi3Fvv1j
+ fVjE2zcB1EiYowsOUfhz8N4IdTRTXRo=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-508-lPA8aiqLMpyTYmhERBLM7g-1; Wed, 24 Mar 2021 05:05:46 -0400
+X-MC-Unique: lPA8aiqLMpyTYmhERBLM7g-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B668B8189CA;
+ Wed, 24 Mar 2021 09:05:45 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-112-47.ams2.redhat.com [10.36.112.47])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id C07BB709ED;
+ Wed, 24 Mar 2021 09:05:43 +0000 (UTC)
+Subject: Re: [PATCH v4 3/3] tests/qtest: Add test for Aspeed HACE
+To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Joel Stanley <joel@jms.id.au>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <f4bug@amsat.org>
+References: <20210324070955.125941-1-joel@jms.id.au>
+ <20210324070955.125941-4-joel@jms.id.au>
+ <ddc26232-ec90-9c50-1c50-e99a9b5ca6e2@kaod.org>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <89880af3-bc5e-040c-8065-439b3477c8fb@redhat.com>
+Date: Wed, 24 Mar 2021 10:05:42 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: joel@jms.id.au
-Date: Wed, 24 Mar 2021 00:30:50 -0700 (PDT)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.53; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o53.zoho.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <ddc26232-ec90-9c50-1c50-e99a9b5ca6e2@kaod.org>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -73,75 +118,30 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, andrew@aj.id.au, qemu-devel@nongnu.org,
- f4bug@amsat.org, qemu-arm@nongnu.org, clg@kaod.org
+Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gVlucGnsBpSt
+X-TUID: uExh9HvE43yM
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIxMDMyNDA3MDk1NS4xMjU5
-NDEtMS1qb2VsQGptcy5pZC5hdS8KCgoKSGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZlIHNv
-bWUgY29kaW5nIHN0eWxlIHByb2JsZW1zLiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9y
-bWF0aW9uOgoKVHlwZTogc2VyaWVzCk1lc3NhZ2UtaWQ6IDIwMjEwMzI0MDcwOTU1LjEyNTk0MS0x
-LWpvZWxAam1zLmlkLmF1ClN1YmplY3Q6IFtQQVRDSCB2NCAwLzNdIGh3L21pc2M6IE1vZGVsIEFT
-UEVFRCBoYXNoIGFuZCBjcnlwdG8gZW5naW5lCgo9PT0gVEVTVCBTQ1JJUFQgQkVHSU4gPT09CiMh
-L2Jpbi9iYXNoCmdpdCByZXYtcGFyc2UgYmFzZSA+IC9kZXYvbnVsbCB8fCBleGl0IDAKZ2l0IGNv
-bmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lbGltaXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5y
-ZW5hbWVzIFRydWUKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYuYWxnb3JpdGhtIGhpc3RvZ3JhbQou
-L3NjcmlwdHMvY2hlY2twYXRjaC5wbCAtLW1haWxiYWNrIGJhc2UuLgo9PT0gVEVTVCBTQ1JJUFQg
-RU5EID09PQoKVXBkYXRpbmcgM2M4Y2Y1YTljMjFmZjg3ODIxNjRkMWRlZjdmNDRiZDg4ODcxMzM4
-NApGcm9tIGh0dHBzOi8vZ2l0aHViLmNvbS9wYXRjaGV3LXByb2plY3QvcWVtdQogKiBbbmV3IHRh
-Z10gICAgICAgICBwYXRjaGV3LzIwMjEwMzI0MDcwOTU1LjEyNTk0MS0xLWpvZWxAam1zLmlkLmF1
-IC0+IHBhdGNoZXcvMjAyMTAzMjQwNzA5NTUuMTI1OTQxLTEtam9lbEBqbXMuaWQuYXUKU3dpdGNo
-ZWQgdG8gYSBuZXcgYnJhbmNoICd0ZXN0Jwo1ZWJjMmM1IHRlc3RzL3F0ZXN0OiBBZGQgdGVzdCBm
-b3IgQXNwZWVkIEhBQ0UKNmZjMTk0NiBhc3BlZWQ6IEludGVncmF0ZSBIQUNFCmZhM2JiYWUgaHc6
-IE1vZGVsIEFTUEVFRCdzIEhhc2ggYW5kIENyeXB0byBFbmdpbmUKCj09PSBPVVRQVVQgQkVHSU4g
-PT09CjEvMyBDaGVja2luZyBjb21taXQgZmEzYmJhZTcxZGQ1IChodzogTW9kZWwgQVNQRUVEJ3Mg
-SGFzaCBhbmQgQ3J5cHRvIEVuZ2luZSkKVXNlIG9mIHVuaW5pdGlhbGl6ZWQgdmFsdWUgJGFjcGlf
-dGVzdGV4cGVjdGVkIGluIHN0cmluZyBlcSBhdCAuL3NjcmlwdHMvY2hlY2twYXRjaC5wbCBsaW5l
-IDE1MjkuCldBUk5JTkc6IGFkZGVkLCBtb3ZlZCBvciBkZWxldGVkIGZpbGUocyksIGRvZXMgTUFJ
-TlRBSU5FUlMgbmVlZCB1cGRhdGluZz8KIzIyOiAKbmV3IGZpbGUgbW9kZSAxMDA2NDQKCldBUk5J
-Tkc6IGxpbmUgb3ZlciA4MCBjaGFyYWN0ZXJzCiM5NTogRklMRTogaHcvbWlzYy9hc3BlZWRfaGFj
-ZS5jOjY5OgorICAgIHsgSEFTSF9BTEdPX1NIQTUxMl9TRVJJRVMgfCBIQVNIX0FMR09fU0hBNTEy
-X1NIQTUxMiwgUUNSWVBUT19IQVNIX0FMR19TSEE1MTIgfSwKCldBUk5JTkc6IGxpbmUgb3ZlciA4
-MCBjaGFyYWN0ZXJzCiM5NjogRklMRTogaHcvbWlzYy9hc3BlZWRfaGFjZS5jOjcwOgorICAgIHsg
-SEFTSF9BTEdPX1NIQTUxMl9TRVJJRVMgfCBIQVNIX0FMR09fU0hBNTEyX1NIQTM4NCwgUUNSWVBU
-T19IQVNIX0FMR19TSEEzODQgfSwKCldBUk5JTkc6IGxpbmUgb3ZlciA4MCBjaGFyYWN0ZXJzCiM5
-NzogRklMRTogaHcvbWlzYy9hc3BlZWRfaGFjZS5jOjcxOgorICAgIHsgSEFTSF9BTEdPX1NIQTUx
-Ml9TRVJJRVMgfCBIQVNIX0FMR09fU0hBNTEyX1NIQTI1NiwgUUNSWVBUT19IQVNIX0FMR19TSEEy
-NTYgfSwKCkVSUk9SOiBicmFjZXMge30gYXJlIG5lY2Vzc2FyeSBmb3IgYWxsIGFybXMgb2YgdGhp
-cyBzdGF0ZW1lbnQKIzEwNTogRklMRTogaHcvbWlzYy9hc3BlZWRfaGFjZS5jOjc5OgorICAgICAg
-ICBpZiAobWFzayA9PSBoYXNoX2FsZ29fbWFwW2ldLm1hc2spClsuLi5dCgpXQVJOSU5HOiBsaW5l
-IG92ZXIgODAgY2hhcmFjdGVycwojMjEyOiBGSUxFOiBody9taXNjL2FzcGVlZF9oYWNlLmM6MTg2
-OgorICAgICAgICAgICAgICAgICAgICAgICAgICAiJXM6IEhNQUMgZW5naW5lIGNvbW1hbmQgbW9k
-ZSAlIlBSSXg2NCIgbm90IGltcGxlbWVudGVkIiwKCnRvdGFsOiAxIGVycm9ycywgNSB3YXJuaW5n
-cywgNDA4IGxpbmVzIGNoZWNrZWQKClBhdGNoIDEvMyBoYXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFz
-ZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVw
-b3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5UQUlORVJT
-LgoKMi8zIENoZWNraW5nIGNvbW1pdCA2ZmMxOTQ2MDFlMWIgKGFzcGVlZDogSW50ZWdyYXRlIEhB
-Q0UpCjMvMyBDaGVja2luZyBjb21taXQgNWViYzJjNTY0MmRhICh0ZXN0cy9xdGVzdDogQWRkIHRl
-c3QgZm9yIEFzcGVlZCBIQUNFKQpXQVJOSU5HOiBsaW5lIG92ZXIgODAgY2hhcmFjdGVycwojMTMw
-OiBGSUxFOiB0ZXN0cy9xdGVzdC9hc3BlZWRfaGFjZS10ZXN0LmM6OTE6CisgICAgd3JpdGVfcmVn
-cyhzLCBiYXNlLCBzcmNfYWRkciwgc2l6ZW9mKHRlc3RfdmVjdG9yKSwgZGlnZXN0X2FkZHIsIEhB
-Q0VfQUxHT19NRDUpOwoKV0FSTklORzogbGluZSBvdmVyIDgwIGNoYXJhY3RlcnMKIzE2MTogRklM
-RTogdGVzdHMvcXRlc3QvYXNwZWVkX2hhY2UtdGVzdC5jOjEyMjoKKyAgICB3cml0ZV9yZWdzKHMs
-IGJhc2UsIHNyY19hZGRyLCBzaXplb2YodGVzdF92ZWN0b3IpLCBkaWdlc3RfYWRkciwgSEFDRV9B
-TEdPX1NIQTI1Nik7CgpXQVJOSU5HOiBsaW5lIG92ZXIgODAgY2hhcmFjdGVycwojMTkyOiBGSUxF
-OiB0ZXN0cy9xdGVzdC9hc3BlZWRfaGFjZS10ZXN0LmM6MTUzOgorICAgIHdyaXRlX3JlZ3Mocywg
-YmFzZSwgc3JjX2FkZHIsIHNpemVvZih0ZXN0X3ZlY3RvciksIGRpZ2VzdF9hZGRyLCBIQUNFX0FM
-R09fU0hBNTEyKTsKCldBUk5JTkc6IGxpbmUgb3ZlciA4MCBjaGFyYWN0ZXJzCiMyNTM6IEZJTEU6
-IHRlc3RzL3F0ZXN0L2FzcGVlZF9oYWNlLXRlc3QuYzoyMTQ6CisgICAgZ19hc3NlcnRfY21waGV4
-KHF0ZXN0X3JlYWRsKHMsIGJhc2UgKyBIQUNFX0hBU0hfRElHRVNUKSwgPT0sIGV4cGVjdGVkLT5k
-ZXN0KTsKCldBUk5JTkc6IGxpbmUgb3ZlciA4MCBjaGFyYWN0ZXJzCiMyNTY6IEZJTEU6IHRlc3Rz
-L3F0ZXN0L2FzcGVlZF9oYWNlLXRlc3QuYzoyMTc6CisgICAgZ19hc3NlcnRfY21waGV4KHF0ZXN0
-X3JlYWRsKHMsIGJhc2UgKyBIQUNFX0hBU0hfREFUQV9MRU4pLCA9PSwgZXhwZWN0ZWQtPmxlbik7
-Cgp0b3RhbDogMCBlcnJvcnMsIDUgd2FybmluZ3MsIDMzNSBsaW5lcyBjaGVja2VkCgpQYXRjaCAz
-LzMgaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVy
-cm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBz
-ZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KPT09IE9VVFBVVCBFTkQgPT09CgpUZXN0IGNv
-bW1hbmQgZXhpdGVkIHdpdGggY29kZTogMQoKClRoZSBmdWxsIGxvZyBpcyBhdmFpbGFibGUgYXQK
-aHR0cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAyMTAzMjQwNzA5NTUuMTI1OTQxLTEtam9lbEBqbXMu
-aWQuYXUvdGVzdGluZy5jaGVja3BhdGNoLz90eXBlPW1lc3NhZ2UuCi0tLQpFbWFpbCBnZW5lcmF0
-ZWQgYXV0b21hdGljYWxseSBieSBQYXRjaGV3IFtodHRwczovL3BhdGNoZXcub3JnL10uClBsZWFz
-ZSBzZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEByZWRoYXQuY29t
+On 24/03/2021 08.21, Cédric Le Goater wrote:
+> On 3/24/21 8:09 AM, Joel Stanley wrote:
+>> This adds a test for the Aspeed Hash and Crypto (HACE) engine. It tests
+>> the currently implemented behavior of the hash functionality.
+>>
+>> The tests are similar, but are cut/pasted instead of broken out into a
+>> common function so the assert machinery produces useful output when a
+>> test fails.
+>>
+>> Signed-off-by: Joel Stanley <joel@jms.id.au>
+> 
+> Reviewed-by: Cédric Le Goater <clg@kaod.org>
+> 
+> Thomas,
+> 
+> Can we keep your Acked-by ?
+
+Yes:
+
+Acked-by: Thomas Huth <thuth@redhat.com>
+

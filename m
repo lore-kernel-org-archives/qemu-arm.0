@@ -1,86 +1,86 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp119779lfg;
-        Wed, 24 Mar 2021 00:24:44 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxE49e4wAOXerwwtE60X5YY7ndL3HgL3WVYKp3I5kIdwuKQo0M1vcq4IWeaqZ6/xszZWYLG
-X-Received: by 2002:a25:56c2:: with SMTP id k185mr1307056ybb.131.1616570683875;
-        Wed, 24 Mar 2021 00:24:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1616570683; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp120870lfg;
+        Wed, 24 Mar 2021 00:26:39 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzOYYBXTBlFm46THjtiwehJaq1FuuS1DJYVcuGqLdkNZPtvCz+5Om7x74O1aKq6k/YCAJR9
+X-Received: by 2002:a5b:448:: with SMTP id s8mr2733952ybp.363.1616570799502;
+        Wed, 24 Mar 2021 00:26:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616570799; cv=none;
         d=google.com; s=arc-20160816;
-        b=vgYJGlmHAOFolEJ+yxcbRzaxzjqwHb5TkruRbu5H0h0rt7fd+ZakkLj7UZPCk2Vmel
-         iv8sH27Z0xlH59/eI9o4c12Cg/vx/SGLWtzsyTn2Ny+OrscZ9SQbsAjNlJn2zka1tDHg
-         /6/mnbNBzyps0wLQLBl6BJzz4LUe1ea2BDg6GtCkfMjYF8iXt1HIUkO0T6jCn+GuAOM+
-         m393xB3H+tnz1qsXoCCkXTZeZ29LHVsjvFrpHTaLDOOvDPxzCo7g/5cu+obVe43hRHIG
-         npGt0GiVRxWRyYafoqAfMv8Dc7/zKuaOExKJsv5oLwp2oH11wTYjiA31d9lR4ht4Chg5
-         wQXA==
+        b=iZEy7Su5u6vsinV6OximhpHbyUUO+VBEgxa6klPhG5OEwHeybUNwHh90R9d4LO561b
+         2BZd6p9Mq3ZMKo5yIBTys2PCFZM3P6h/3iJ7cdoRh8Q/C13dkilPiyMLuqAtSPGqg71Q
+         ehh+UtqgVhiiQoHc5fDFIvGhz5sgeg8uvzJ+UZj/7Pb5ZsyvjpSi9OLieYAC78Cl5sCT
+         ThjbJsvP5a0gB4kqXw85zQiBLgcdF65t5+vvOtgNt80z2mgymretuOc8erC1/7cXIeVQ
+         VHl2sZBAjust7nimts/0+V0FRaDDmiNNkLysXfRTCqGwWovXvFBAtuMf7jA9jv2Pjuzt
+         E3vQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject;
-        bh=MDmQ3JwJ/31xXIsuqng3fi/eCXd+E1Bla3JEUZXUdLM=;
-        b=uQEdVo3YYeiA+/vpcHXuFNser+ZsSmCXB1PCSRsPwFt3gAANfTMpNrx7bNdiaq6A8r
-         oZzrjzreqnLhD9Dc9bJZrHVRutVipz92+MuS2kQIXx6IYdlC5/ebKcvnmfcEWYh4jYEX
-         tLpBve7z4jwteoKpZqeIPHZtlh2HP2VtdumVt65rhUKrPzU4w2djeztPpt2YAdgEqfK4
-         yOTf9D0rnOEk6mzZiE8BPvihn636C/0FEuVkGBVnqYHoZzPbGarTrxOekV8ZSDT72dBW
-         IOe7EpIFqBTDHN6DWAwBywrw7QxySc81UlmgoAUP5SmgMP1oio/JLkjgTQ3RvyjoZ6Yn
-         a/Cg==
+        bh=eQYnEm0TcubLInTHFSH+CdZCjEdQtpC2EMu2IqzlqO8=;
+        b=rvS8q0zFYRdvxVNcMjwjcLbjGZz3OMv/Ax5tsWqOsBG404phuR7q8hHnVQUBpZbgpn
+         xvfsXg6QtpTv8cA+IheVk3km1JjGBvxdxa/cNWsp9oI945CXauZzyQ8gAZiHrniB0C6K
+         FESQDnXAorrdcI1wOmlXfmGfNqpeCeubKfLdAcPQlftARRFvLDOIQ+SZStBiGPhyDViO
+         BY37DzwTD5LSzB7dWlNsSxYv8IkglOt+odueNBFkRF3jBTZuaqCqlQljEDev9SP0YFtc
+         OCRdZBf8GEolgL+bwkSGdSohvvUZnZyyW3v75TRenMXiOUo5wZ6skriHlCN4PwPmE8Wt
+         BKqQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q10si1658495ybc.382.2021.03.24.00.24.43
+        by mx.google.com with ESMTPS id n2si1510649ybo.332.2021.03.24.00.26.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 Mar 2021 00:24:43 -0700 (PDT)
+        Wed, 24 Mar 2021 00:26:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34886 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38008 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lOxsh-0001WZ-5l
-	for alex.bennee@linaro.org; Wed, 24 Mar 2021 03:24:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47830)
+	id 1lOxuY-0002uw-Q2
+	for alex.bennee@linaro.org; Wed, 24 Mar 2021 03:26:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48744)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1lOxpw-0006kK-E7
- for qemu-arm@nongnu.org; Wed, 24 Mar 2021 03:21:52 -0400
-Received: from 6.mo52.mail-out.ovh.net ([188.165.49.222]:49584)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1lOxuO-0002tw-QW
+ for qemu-arm@nongnu.org; Wed, 24 Mar 2021 03:26:28 -0400
+Received: from 6.mo52.mail-out.ovh.net ([188.165.49.222]:43236)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1lOxpu-0006sq-60
- for qemu-arm@nongnu.org; Wed, 24 Mar 2021 03:21:52 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.146.221])
- by mo52.mail-out.ovh.net (Postfix) with ESMTPS id 17380255FBD;
- Wed, 24 Mar 2021 08:21:46 +0100 (CET)
-Received: from kaod.org (37.59.142.98) by DAG4EX1.mxp5.local (172.16.2.31)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1lOxuK-0001Bi-Jf
+ for qemu-arm@nongnu.org; Wed, 24 Mar 2021 03:26:28 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.146.194])
+ by mo52.mail-out.ovh.net (Postfix) with ESMTPS id 8875E256027;
+ Wed, 24 Mar 2021 08:26:22 +0100 (CET)
+Received: from kaod.org (37.59.142.105) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2106.2; Wed, 24 Mar
- 2021 08:21:46 +0100
+ 2021 08:26:21 +0100
 Authentication-Results: garm.ovh; auth=pass
- (GARM-98R002911f2134-810f-47b8-bf4b-ea4397835682,
+ (GARM-105G006a5c23d08-01a7-4aae-8830-a64657fbe1a4,
  90EFDD1C85C6F754CEE6F6149A82CEA72524D6DA) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Subject: Re: [PATCH v4 2/3] aspeed: Integrate HACE
+Subject: Re: [PATCH v4 1/3] hw: Model ASPEED's Hash and Crypto Engine
 To: Joel Stanley <joel@jms.id.au>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
  <f4bug@amsat.org>
 References: <20210324070955.125941-1-joel@jms.id.au>
- <20210324070955.125941-3-joel@jms.id.au>
+ <20210324070955.125941-2-joel@jms.id.au>
 From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <158967a9-9a91-5551-8546-5d37b805634d@kaod.org>
-Date: Wed, 24 Mar 2021 08:21:45 +0100
+Message-ID: <b6dbf253-87cf-0233-c090-f09d796d15a9@kaod.org>
+Date: Wed, 24 Mar 2021 08:26:21 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.6.0
 MIME-Version: 1.0
-In-Reply-To: <20210324070955.125941-3-joel@jms.id.au>
+In-Reply-To: <20210324070955.125941-2-joel@jms.id.au>
 Content-Type: text/plain; charset="utf-8"
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.98]
-X-ClientProxiedBy: DAG2EX2.mxp5.local (172.16.2.12) To DAG4EX1.mxp5.local
+X-Originating-IP: [37.59.142.105]
+X-ClientProxiedBy: DAG8EX1.mxp5.local (172.16.2.71) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: 70d9836d-8c65-49f9-bac0-b8090332792c
-X-Ovh-Tracer-Id: 16756205367250029350
+X-Ovh-Tracer-GUID: 95bb69a7-9b1f-4289-bf2a-d83291ac28de
+X-Ovh-Tracer-Id: 16833892459912334118
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduledrudegjedguddtjecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeejkeduueduveelgeduueegkeelffevledujeetffeivdelvdfgkeeufeduheehfeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleeknecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehjohgvlhesjhhmshdrihgurdgruh
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduledrudegjedguddtkecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeejkeduueduveelgeduueegkeelffevledujeetffeivdelvdfgkeeufeduheehfeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtheenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepjhhovghlsehjmhhsrdhiugdrrghu
 Received-SPF: pass client-ip=188.165.49.222; envelope-from=clg@kaod.org;
  helo=6.mo52.mail-out.ovh.net
 X-Spam_score_int: -18
@@ -105,176 +105,468 @@ Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
  qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3PBLiF8apxx+
+X-TUID: x/zFJxauMnDb
 
 On 3/24/21 8:09 AM, Joel Stanley wrote:
-> Add the hash and crypto engine model to the Aspeed socs.
+> The HACE (Hash and Crypto Engine) is a device that offloads MD5, SHA1,
+> SHA2, RSA and other cryptographic algorithms.
 > 
-> Reviewed-by: Andrew Jeffery <andrew@aj.id.au>
+> This initial model implements a subset of the device's functionality;
+> currently only direct access (non-scatter gather) hashing.
+> 
 > Signed-off-by: Joel Stanley <joel@jms.id.au>
 
 Reviewed-by: Cédric Le Goater <clg@kaod.org>
 
+Thanks,
+
+C.
 
 > ---
-> v3: Rebase on upstream
-> v4: Update integration for soc-specific hace objects
+> v3:
+>  - rebase on upstream to fix meson.build conflict
+> v2:
+>  - reorder register defines
+>  - mask src/dest/len registers according to hardware
+> v4:
+>  - Fix typos in comments
+>  - Remove sdram base address; new memory region fixes mean this is not
+>    required
+>  - Use PRIx64
+>  - Add Object Classes for soc familiy specific features
+>  - Convert big switch statement to a lookup in a struct
 > ---
->  docs/system/arm/aspeed.rst  |  2 +-
->  include/hw/arm/aspeed_soc.h |  3 +++
->  hw/arm/aspeed_ast2600.c     | 15 +++++++++++++++
->  hw/arm/aspeed_soc.c         | 16 ++++++++++++++++
->  4 files changed, 35 insertions(+), 1 deletion(-)
+>  include/hw/misc/aspeed_hace.h |  43 ++++
+>  hw/misc/aspeed_hace.c         | 358 ++++++++++++++++++++++++++++++++++
+>  hw/misc/meson.build           |   1 +
+>  3 files changed, 402 insertions(+)
+>  create mode 100644 include/hw/misc/aspeed_hace.h
+>  create mode 100644 hw/misc/aspeed_hace.c
 > 
-> diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-> index d1fb8f25b39c..f9466e6d8245 100644
-> --- a/docs/system/arm/aspeed.rst
-> +++ b/docs/system/arm/aspeed.rst
-> @@ -49,6 +49,7 @@ Supported devices
->   * Ethernet controllers
->   * Front LEDs (PCA9552 on I2C bus)
->   * LPC Peripheral Controller (a subset of subdevices are supported)
-> + * Hash/Crypto Engine (HACE) - Hash support only, no scatter-gather
->  
->  
->  Missing devices
-> @@ -59,7 +60,6 @@ Missing devices
->   * PWM and Fan Controller
->   * Slave GPIO Controller
->   * Super I/O Controller
-> - * Hash/Crypto Engine
->   * PCI-Express 1 Controller
->   * Graphic Display Controller
->   * PECI Controller
-> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-> index 9359d6da336d..d9161d26d645 100644
-> --- a/include/hw/arm/aspeed_soc.h
-> +++ b/include/hw/arm/aspeed_soc.h
-> @@ -21,6 +21,7 @@
->  #include "hw/rtc/aspeed_rtc.h"
->  #include "hw/i2c/aspeed_i2c.h"
->  #include "hw/ssi/aspeed_smc.h"
+> diff --git a/include/hw/misc/aspeed_hace.h b/include/hw/misc/aspeed_hace.h
+> new file mode 100644
+> index 000000000000..94d5ada95fa2
+> --- /dev/null
+> +++ b/include/hw/misc/aspeed_hace.h
+> @@ -0,0 +1,43 @@
+> +/*
+> + * ASPEED Hash and Crypto Engine
+> + *
+> + * Copyright (C) 2021 IBM Corp.
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#ifndef ASPEED_HACE_H
+> +#define ASPEED_HACE_H
+> +
+> +#include "hw/sysbus.h"
+> +
+> +#define TYPE_ASPEED_HACE "aspeed.hace"
+> +#define TYPE_ASPEED_AST2400_HACE TYPE_ASPEED_HACE "-ast2400"
+> +#define TYPE_ASPEED_AST2500_HACE TYPE_ASPEED_HACE "-ast2500"
+> +#define TYPE_ASPEED_AST2600_HACE TYPE_ASPEED_HACE "-ast2600"
+> +OBJECT_DECLARE_TYPE(AspeedHACEState, AspeedHACEClass, ASPEED_HACE)
+> +
+> +#define ASPEED_HACE_NR_REGS (0x64 >> 2)
+> +
+> +struct AspeedHACEState {
+> +    SysBusDevice parent;
+> +
+> +    MemoryRegion iomem;
+> +    qemu_irq irq;
+> +
+> +    uint32_t regs[ASPEED_HACE_NR_REGS];
+> +
+> +    MemoryRegion *dram_mr;
+> +    AddressSpace dram_as;
+> +};
+> +
+> +
+> +struct AspeedHACEClass {
+> +    SysBusDeviceClass parent_class;
+> +
+> +    uint32_t src_mask;
+> +    uint32_t dest_mask;
+> +    uint32_t hash_mask;
+> +};
+> +
+> +#endif /* _ASPEED_HACE_H_ */
+> diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
+> new file mode 100644
+> index 000000000000..a962ccea90e8
+> --- /dev/null
+> +++ b/hw/misc/aspeed_hace.c
+> @@ -0,0 +1,358 @@
+> +/*
+> + * ASPEED Hash and Crypto Engine
+> + *
+> + * Copyright (C) 2021 IBM Corp.
+> + *
+> + * Joel Stanley <joel@jms.id.au>
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qemu/log.h"
+> +#include "qemu/error-report.h"
 > +#include "hw/misc/aspeed_hace.h"
->  #include "hw/watchdog/wdt_aspeed.h"
->  #include "hw/net/ftgmac100.h"
->  #include "target/arm/cpu.h"
-> @@ -50,6 +51,7 @@ struct AspeedSoCState {
->      AspeedTimerCtrlState timerctrl;
->      AspeedI2CState i2c;
->      AspeedSCUState scu;
-> +    AspeedHACEState hace;
->      AspeedXDMAState xdma;
->      AspeedSMCState fmc;
->      AspeedSMCState spi[ASPEED_SPIS_NUM];
-> @@ -133,6 +135,7 @@ enum {
->      ASPEED_DEV_XDMA,
->      ASPEED_DEV_EMMC,
->      ASPEED_DEV_KCS,
-> +    ASPEED_DEV_HACE,
->  };
->  
->  #endif /* ASPEED_SOC_H */
-> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-> index bc87e754a3cc..c149936e0b28 100644
-> --- a/hw/arm/aspeed_ast2600.c
-> +++ b/hw/arm/aspeed_ast2600.c
-> @@ -42,6 +42,7 @@ static const hwaddr aspeed_soc_ast2600_memmap[] = {
->      [ASPEED_DEV_ETH2]      = 0x1E680000,
->      [ASPEED_DEV_ETH4]      = 0x1E690000,
->      [ASPEED_DEV_VIC]       = 0x1E6C0000,
-> +    [ASPEED_DEV_HACE]      = 0x1E6D0000,
->      [ASPEED_DEV_SDMC]      = 0x1E6E0000,
->      [ASPEED_DEV_SCU]       = 0x1E6E2000,
->      [ASPEED_DEV_XDMA]      = 0x1E6E7000,
-> @@ -102,6 +103,7 @@ static const int aspeed_soc_ast2600_irqmap[] = {
->      [ASPEED_DEV_I2C]       = 110,   /* 110 -> 125 */
->      [ASPEED_DEV_ETH1]      = 2,
->      [ASPEED_DEV_ETH2]      = 3,
-> +    [ASPEED_DEV_HACE]      = 4,
->      [ASPEED_DEV_ETH3]      = 32,
->      [ASPEED_DEV_ETH4]      = 33,
->      [ASPEED_DEV_KCS]       = 138,   /* 138 -> 142 */
-> @@ -213,6 +215,9 @@ static void aspeed_soc_ast2600_init(Object *obj)
->                              TYPE_SYSBUS_SDHCI);
->  
->      object_initialize_child(obj, "lpc", &s->lpc, TYPE_ASPEED_LPC);
+> +#include "qapi/error.h"
+> +#include "migration/vmstate.h"
+> +#include "crypto/hash.h"
+> +#include "hw/qdev-properties.h"
+> +#include "hw/irq.h"
 > +
-> +    snprintf(typename, sizeof(typename), "aspeed.hace-%s", socname);
-> +    object_initialize_child(obj, "hace", &s->hace, typename);
->  }
->  
->  /*
-> @@ -498,6 +503,16 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
->      sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_4,
->                         qdev_get_gpio_in(DEVICE(&s->a7mpcore),
->                                  sc->irqmap[ASPEED_DEV_KCS] + aspeed_lpc_kcs_4));
+> +#define R_CRYPT_CMD     (0x10 / 4)
 > +
-> +    /* HACE */
-> +    object_property_set_link(OBJECT(&s->hace), "dram", OBJECT(s->dram_mr),
-> +                             &error_abort);
-> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->hace), errp)) {
+> +#define R_STATUS        (0x1c / 4)
+> +#define HASH_IRQ        BIT(9)
+> +#define CRYPT_IRQ       BIT(12)
+> +#define TAG_IRQ         BIT(15)
+> +
+> +#define R_HASH_SRC      (0x20 / 4)
+> +#define R_HASH_DEST     (0x24 / 4)
+> +#define R_HASH_SRC_LEN  (0x2c / 4)
+> +
+> +#define R_HASH_CMD      (0x30 / 4)
+> +/* Hash algorithm selection */
+> +#define  HASH_ALGO_MASK                 (BIT(4) | BIT(5) | BIT(6))
+> +#define  HASH_ALGO_MD5                  0
+> +#define  HASH_ALGO_SHA1                 BIT(5)
+> +#define  HASH_ALGO_SHA224               BIT(6)
+> +#define  HASH_ALGO_SHA256               (BIT(4) | BIT(6))
+> +#define  HASH_ALGO_SHA512_SERIES        (BIT(5) | BIT(6))
+> +/* SHA512 algorithm selection */
+> +#define  SHA512_HASH_ALGO_MASK          (BIT(10) | BIT(11) | BIT(12))
+> +#define  HASH_ALGO_SHA512_SHA512        0
+> +#define  HASH_ALGO_SHA512_SHA384        BIT(10)
+> +#define  HASH_ALGO_SHA512_SHA256        BIT(11)
+> +#define  HASH_ALGO_SHA512_SHA224        (BIT(10) | BIT(11))
+> +/* HMAC modes */
+> +#define  HASH_HMAC_MASK                 (BIT(7) | BIT(8))
+> +#define  HASH_DIGEST                    0
+> +#define  HASH_DIGEST_HMAC               BIT(7)
+> +#define  HASH_DIGEST_ACCUM              BIT(8)
+> +#define  HASH_HMAC_KEY                  (BIT(7) | BIT(8))
+> +/* Cascaded operation modes */
+> +#define  HASH_ONLY                      0
+> +#define  HASH_ONLY2                     BIT(0)
+> +#define  HASH_CRYPT_THEN_HASH           BIT(1)
+> +#define  HASH_HASH_THEN_CRYPT           (BIT(0) | BIT(1))
+> +/* Other cmd bits */
+> +#define  HASH_IRQ_EN                    BIT(9)
+> +#define  HASH_SG_EN                     BIT(18)
+> +
+> +static const struct {
+> +    uint32_t mask;
+> +    QCryptoHashAlgorithm algo;
+> +} hash_algo_map[] = {
+> +    { HASH_ALGO_MD5, QCRYPTO_HASH_ALG_MD5 },
+> +    { HASH_ALGO_SHA1, QCRYPTO_HASH_ALG_SHA1 },
+> +    { HASH_ALGO_SHA224, QCRYPTO_HASH_ALG_SHA224 },
+> +    { HASH_ALGO_SHA256, QCRYPTO_HASH_ALG_SHA256 },
+> +    { HASH_ALGO_SHA512_SERIES | HASH_ALGO_SHA512_SHA512, QCRYPTO_HASH_ALG_SHA512 },
+> +    { HASH_ALGO_SHA512_SERIES | HASH_ALGO_SHA512_SHA384, QCRYPTO_HASH_ALG_SHA384 },
+> +    { HASH_ALGO_SHA512_SERIES | HASH_ALGO_SHA512_SHA256, QCRYPTO_HASH_ALG_SHA256 },
+> +};
+> +
+> +static int hash_algo_lookup(uint32_t mask)
+> +{
+> +    int i;
+> +
+> +    for (i = 0; i < ARRAY_SIZE(hash_algo_map); i++) {
+> +        if (mask == hash_algo_map[i].mask)
+> +            return hash_algo_map[i].algo;
+> +    }
+> +
+> +    return -1;
+> +}
+> +
+> +static int do_hash_operation(AspeedHACEState *s, int algo)
+> +{
+> +    hwaddr src, len, dest;
+> +    uint8_t *digest_buf = NULL;
+> +    size_t digest_len = 0;
+> +    char *src_buf;
+> +    int rc;
+> +
+> +    src = s->regs[R_HASH_SRC];
+> +    len = s->regs[R_HASH_SRC_LEN];
+> +    dest = s->regs[R_HASH_DEST];
+> +
+> +    src_buf = address_space_map(&s->dram_as, src, &len, false,
+> +                                MEMTXATTRS_UNSPECIFIED);
+> +    if (!src_buf) {
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: failed to map dram\n", __func__);
+> +        return -EACCES;
+> +    }
+> +
+> +    rc = qcrypto_hash_bytes(algo, src_buf, len, &digest_buf, &digest_len,
+> +                            &error_fatal);
+> +    if (rc < 0) {
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: qcrypto failed\n", __func__);
+> +        return rc;
+> +    }
+> +
+> +    rc = address_space_write(&s->dram_as, dest, MEMTXATTRS_UNSPECIFIED,
+> +                             digest_buf, digest_len);
+> +    if (rc) {
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "%s: address space write failed\n", __func__);
+> +    }
+> +    g_free(digest_buf);
+> +
+> +    address_space_unmap(&s->dram_as, src_buf, len, false, len);
+> +
+> +    /*
+> +     * Set status bits to indicate completion. Testing shows hardware sets
+> +     * these irrespective of HASH_IRQ_EN.
+> +     */
+> +    s->regs[R_STATUS] |= HASH_IRQ;
+> +
+> +    return 0;
+> +}
+> +
+> +
+> +static uint64_t aspeed_hace_read(void *opaque, hwaddr addr, unsigned int size)
+> +{
+> +    AspeedHACEState *s = ASPEED_HACE(opaque);
+> +
+> +    addr >>= 2;
+> +
+> +    if (addr >= ASPEED_HACE_NR_REGS) {
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "%s: Out-of-bounds read at offset 0x%" HWADDR_PRIx "\n",
+> +                      __func__, addr << 2);
+> +        return 0;
+> +    }
+> +
+> +    return s->regs[addr];
+> +}
+> +
+> +static void aspeed_hace_write(void *opaque, hwaddr addr, uint64_t data,
+> +                              unsigned int size)
+> +{
+> +    AspeedHACEState *s = ASPEED_HACE(opaque);
+> +    AspeedHACEClass *ahc = ASPEED_HACE_GET_CLASS(s);
+> +
+> +    addr >>= 2;
+> +
+> +    if (addr >= ASPEED_HACE_NR_REGS) {
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "%s: Out-of-bounds write at offset 0x%" HWADDR_PRIx "\n",
+> +                      __func__, addr << 2);
 > +        return;
 > +    }
-> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->hace), 0, sc->memmap[ASPEED_DEV_HACE]);
-> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->hace), 0,
-> +                       aspeed_soc_get_irq(s, ASPEED_DEV_HACE));
->  }
->  
->  static void aspeed_soc_ast2600_class_init(ObjectClass *oc, void *data)
-> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-> index 057d053c8478..c8c3bd233233 100644
-> --- a/hw/arm/aspeed_soc.c
-> +++ b/hw/arm/aspeed_soc.c
-> @@ -34,6 +34,7 @@ static const hwaddr aspeed_soc_ast2400_memmap[] = {
->      [ASPEED_DEV_VIC]    = 0x1E6C0000,
->      [ASPEED_DEV_SDMC]   = 0x1E6E0000,
->      [ASPEED_DEV_SCU]    = 0x1E6E2000,
-> +    [ASPEED_DEV_HACE]   = 0x1E6E3000,
->      [ASPEED_DEV_XDMA]   = 0x1E6E7000,
->      [ASPEED_DEV_VIDEO]  = 0x1E700000,
->      [ASPEED_DEV_ADC]    = 0x1E6E9000,
-> @@ -65,6 +66,7 @@ static const hwaddr aspeed_soc_ast2500_memmap[] = {
->      [ASPEED_DEV_VIC]    = 0x1E6C0000,
->      [ASPEED_DEV_SDMC]   = 0x1E6E0000,
->      [ASPEED_DEV_SCU]    = 0x1E6E2000,
-> +    [ASPEED_DEV_HACE]   = 0x1E6E3000,
->      [ASPEED_DEV_XDMA]   = 0x1E6E7000,
->      [ASPEED_DEV_ADC]    = 0x1E6E9000,
->      [ASPEED_DEV_VIDEO]  = 0x1E700000,
-> @@ -117,6 +119,7 @@ static const int aspeed_soc_ast2400_irqmap[] = {
->      [ASPEED_DEV_ETH2]   = 3,
->      [ASPEED_DEV_XDMA]   = 6,
->      [ASPEED_DEV_SDHCI]  = 26,
-> +    [ASPEED_DEV_HACE]   = 4,
->  };
->  
->  #define aspeed_soc_ast2500_irqmap aspeed_soc_ast2400_irqmap
-> @@ -212,6 +215,9 @@ static void aspeed_soc_init(Object *obj)
->      }
->  
->      object_initialize_child(obj, "lpc", &s->lpc, TYPE_ASPEED_LPC);
 > +
-> +    snprintf(typename, sizeof(typename), "aspeed.hace-%s", socname);
-> +    object_initialize_child(obj, "hace", &s->hace, typename);
->  }
->  
->  static void aspeed_soc_realize(DeviceState *dev, Error **errp)
-> @@ -425,6 +431,16 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
->  
->      sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_4,
->                         qdev_get_gpio_in(DEVICE(&s->lpc), aspeed_lpc_kcs_4));
+> +    switch (addr) {
+> +    case R_STATUS:
+> +        if (data & HASH_IRQ) {
+> +            data &= ~HASH_IRQ;
 > +
-> +    /* HACE */
-> +    object_property_set_link(OBJECT(&s->hace), "dram", OBJECT(s->dram_mr),
-> +                             &error_abort);
-> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->hace), errp)) {
+> +            if (s->regs[addr] & HASH_IRQ) {
+> +                qemu_irq_lower(s->irq);
+> +            }
+> +        }
+> +        break;
+> +    case R_HASH_SRC:
+> +        data &= ahc->src_mask;
+> +        break;
+> +    case R_HASH_DEST:
+> +        data &= ahc->dest_mask;
+> +        break;
+> +    case R_HASH_SRC_LEN:
+> +        data &= 0x0FFFFFFF;
+> +        break;
+> +    case R_HASH_CMD: {
+> +        int algo = -1;
+> +        if ((data & HASH_HMAC_MASK)) {
+> +            qemu_log_mask(LOG_UNIMP,
+> +                          "%s: HMAC engine command mode %"PRIx64" not implemented",
+> +                          __func__, (data & HASH_HMAC_MASK) >> 8);
+> +        }
+> +        if (data & HASH_SG_EN) {
+> +            qemu_log_mask(LOG_UNIMP,
+> +                          "%s: Hash scatter gather mode not implemented",
+> +                          __func__);
+> +        }
+> +        if (data & BIT(1)) {
+> +            qemu_log_mask(LOG_UNIMP,
+> +                          "%s: Cascaded mode not implemented",
+> +                          __func__);
+> +        }
+> +        algo = hash_algo_lookup(data & ahc->hash_mask);
+> +        if (algo < 0) {
+> +                qemu_log_mask(LOG_GUEST_ERROR,
+> +                        "%s: Invalid hash algorithm selection 0x%"PRIx64"\n",
+> +                        __func__, data & ahc->hash_mask);
+> +                break;
+> +        }
+> +        do_hash_operation(s, algo);
+> +
+> +        if (data & HASH_IRQ_EN) {
+> +            qemu_irq_raise(s->irq);
+> +        }
+> +        break;
+> +    }
+> +    case R_CRYPT_CMD:
+> +        qemu_log_mask(LOG_UNIMP, "%s: Crypt commands not implemented\n",
+> +                       __func__);
+> +        break;
+> +    default:
+> +        break;
+> +    }
+> +
+> +    s->regs[addr] = data;
+> +}
+> +
+> +static const MemoryRegionOps aspeed_hace_ops = {
+> +    .read = aspeed_hace_read,
+> +    .write = aspeed_hace_write,
+> +    .endianness = DEVICE_LITTLE_ENDIAN,
+> +    .valid = {
+> +        .min_access_size = 1,
+> +        .max_access_size = 4,
+> +    },
+> +};
+> +
+> +static void aspeed_hace_reset(DeviceState *dev)
+> +{
+> +    struct AspeedHACEState *s = ASPEED_HACE(dev);
+> +
+> +    memset(s->regs, 0, sizeof(s->regs));
+> +}
+> +
+> +static void aspeed_hace_realize(DeviceState *dev, Error **errp)
+> +{
+> +    AspeedHACEState *s = ASPEED_HACE(dev);
+> +    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+> +
+> +    sysbus_init_irq(sbd, &s->irq);
+> +
+> +    memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_hace_ops, s,
+> +            TYPE_ASPEED_HACE, 0x1000);
+> +
+> +    if (!s->dram_mr) {
+> +        error_setg(errp, TYPE_ASPEED_HACE ": 'dram' link not set");
 > +        return;
 > +    }
-> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->hace), 0, sc->memmap[ASPEED_DEV_HACE]);
-> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->hace), 0,
-> +                       aspeed_soc_get_irq(s, ASPEED_DEV_HACE));
->  }
->  static Property aspeed_soc_properties[] = {
->      DEFINE_PROP_LINK("dram", AspeedSoCState, dram_mr, TYPE_MEMORY_REGION,
+> +
+> +    address_space_init(&s->dram_as, s->dram_mr, "dram");
+> +
+> +    sysbus_init_mmio(sbd, &s->iomem);
+> +}
+> +
+> +static Property aspeed_hace_properties[] = {
+> +    DEFINE_PROP_LINK("dram", AspeedHACEState, dram_mr,
+> +                     TYPE_MEMORY_REGION, MemoryRegion *),
+> +    DEFINE_PROP_END_OF_LIST(),
+> +};
+> +
+> +
+> +static const VMStateDescription vmstate_aspeed_hace = {
+> +    .name = TYPE_ASPEED_HACE,
+> +    .version_id = 1,
+> +    .minimum_version_id = 1,
+> +    .fields = (VMStateField[]) {
+> +        VMSTATE_UINT32_ARRAY(regs, AspeedHACEState, ASPEED_HACE_NR_REGS),
+> +        VMSTATE_END_OF_LIST(),
+> +    }
+> +};
+> +
+> +static void aspeed_hace_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +
+> +    dc->realize = aspeed_hace_realize;
+> +    dc->reset = aspeed_hace_reset;
+> +    device_class_set_props(dc, aspeed_hace_properties);
+> +    dc->vmsd = &vmstate_aspeed_hace;
+> +}
+> +
+> +static const TypeInfo aspeed_hace_info = {
+> +    .name = TYPE_ASPEED_HACE,
+> +    .parent = TYPE_SYS_BUS_DEVICE,
+> +    .instance_size = sizeof(AspeedHACEState),
+> +    .class_init = aspeed_hace_class_init,
+> +    .class_size = sizeof(AspeedHACEClass)
+> +};
+> +
+> +static void aspeed_ast2400_hace_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +    AspeedHACEClass *ahc = ASPEED_HACE_CLASS(klass);
+> +
+> +    dc->desc = "AST2400 Hash and Crypto Engine";
+> +
+> +    ahc->src_mask = 0x0FFFFFFF;
+> +    ahc->dest_mask = 0x0FFFFFF8;
+> +    ahc->hash_mask = HASH_ALGO_MASK;
+> +}
+> +
+> +static const TypeInfo aspeed_ast2400_hace_info = {
+> +    .name = TYPE_ASPEED_AST2400_HACE,
+> +    .parent = TYPE_ASPEED_HACE,
+> +    .class_init = aspeed_ast2400_hace_class_init,
+> +};
+> +
+> +static void aspeed_ast2500_hace_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +    AspeedHACEClass *ahc = ASPEED_HACE_CLASS(klass);
+> +
+> +    dc->desc = "AST2500 Hash and Crypto Engine";
+> +
+> +    ahc->src_mask = 0x3fffffff;
+> +    ahc->dest_mask = 0x3ffffff8;
+> +    ahc->hash_mask = HASH_ALGO_MASK;
+> +}
+> +
+> +static const TypeInfo aspeed_ast2500_hace_info = {
+> +    .name = TYPE_ASPEED_AST2500_HACE,
+> +    .parent = TYPE_ASPEED_HACE,
+> +    .class_init = aspeed_ast2500_hace_class_init,
+> +};
+> +
+> +static void aspeed_ast2600_hace_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +    AspeedHACEClass *ahc = ASPEED_HACE_CLASS(klass);
+> +
+> +    dc->desc = "AST2600 Hash and Crypto Engine";
+> +
+> +    ahc->src_mask = 0x7FFFFFFF;
+> +    ahc->dest_mask = 0x7FFFFFF8;
+> +    ahc->hash_mask = HASH_ALGO_MASK | SHA512_HASH_ALGO_MASK;
+> +}
+> +
+> +static const TypeInfo aspeed_ast2600_hace_info = {
+> +    .name = TYPE_ASPEED_AST2600_HACE,
+> +    .parent = TYPE_ASPEED_HACE,
+> +    .class_init = aspeed_ast2600_hace_class_init,
+> +};
+> +
+> +static void aspeed_hace_register_types(void)
+> +{
+> +    type_register_static(&aspeed_ast2400_hace_info);
+> +    type_register_static(&aspeed_ast2500_hace_info);
+> +    type_register_static(&aspeed_ast2600_hace_info);
+> +    type_register_static(&aspeed_hace_info);
+> +}
+> +
+> +type_init(aspeed_hace_register_types);
+> diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+> index 21034dc60a81..1e7b8b064bd1 100644
+> --- a/hw/misc/meson.build
+> +++ b/hw/misc/meson.build
+> @@ -109,6 +109,7 @@ softmmu_ss.add(when: 'CONFIG_PVPANIC_ISA', if_true: files('pvpanic-isa.c'))
+>  softmmu_ss.add(when: 'CONFIG_PVPANIC_PCI', if_true: files('pvpanic-pci.c'))
+>  softmmu_ss.add(when: 'CONFIG_AUX', if_true: files('auxbus.c'))
+>  softmmu_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
+> +  'aspeed_hace.c',
+>    'aspeed_lpc.c',
+>    'aspeed_scu.c',
+>    'aspeed_sdmc.c',
 > 
 

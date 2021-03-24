@@ -1,105 +1,76 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp111518lfg;
-        Wed, 24 Mar 2021 00:10:56 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxAQaD3s74b2ow396+lXWKrZGsQPR6kzDo3lABRoLQdPNHClrmTGVDe1DywEf+gHqiYLkZW
-X-Received: by 2002:a25:6610:: with SMTP id a16mr2565535ybc.339.1616569856592;
-        Wed, 24 Mar 2021 00:10:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1616569856; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp366162lfg;
+        Wed, 24 Mar 2021 06:17:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJylo0NfFv8F4aKFer7sUQkTioPTOkFT2HUvFBcodCLwqY0ZgKq9ID98Hcyu8Xu3f5G82hkh
+X-Received: by 2002:a92:8752:: with SMTP id d18mr2457999ilm.283.1616591872822;
+        Wed, 24 Mar 2021 06:17:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616591872; cv=none;
         d=google.com; s=arc-20160816;
-        b=FmE1cjhOQnnBuknoIs7A/qgNmCu8UvtnVv4rjX0v8hse1+eKGVtwfL/mihEyLh3rTy
-         H47poaBgfHiHIraYYhh+l3iyW3QNIMqi1/qJ/HiabQqRYl2F02p93MGugGBORR02eMMm
-         TgNq0nfka+uqlDUmXxvf0cWXNlutnI9ab7actvPtDzfidBKklC8ihb+8Tg5qsU3olOzM
-         6hRrnwniUwanKV3c4wTEzmupOTVnrah8Kv1nL8GiML7O8n4TqpgVJk2WEgxrdoiJ/PjF
-         5fM1LQ/PxkyL39oFLlfRsdmqRYWipUdiVAyIPkEtWcivQJhMneVEvmP9eA49FyBEGmu1
-         a7Ew==
+        b=o7VD803BwxW9A833OKXo2KmsNvLoEcp4GYzw24PbrvrBLbQRoAjBZwuNyXd7UYpzp9
+         shace96btEvGcaKTelA/ij/07/xe0OVcOGOwwTy5hY/8li1t7VVWCvguvAogyCIzA7hZ
+         ZQB+z7CgoSSH56F/G1LsBH2ycQGhCzs1ZpryU36Kn3okJtGLHAuVx1FMuYBgQR2ZoAdd
+         athxlRTo/gwoL9ctGUdxdKsCSxSWFOVfJW4lxqtZrkuNEzVIs0O6E+qItCHUD6HUt4kr
+         wnYTesESubeHHL/Osg2wQ5Kfx9DZzoL5tQbrE5JNu8FMag7UV2SX6n7ic6+pzzskNu7F
+         TezA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=3/o7dxIJvo+wY+R5e6q/EE3dKUI5sEW9NHgjAowAggU=;
-        b=JhjPLw44HYaArUy2AQ4eS/aqtUDYgem7nC/AWID3LHA2pbwnlt4+Il/bCwKO0fkF20
-         g0khx6eKDzp3evrxUpWM/I3TDm2npDLb8onoBOdVUe1pW+m7VxqanB6QebkQd/sEAQyu
-         WwJUduc61rATiyTi7g14an+6U8bcNQ0IFnp4pTV6ehhZx5WYUsRBuvOTvOrvkeK8JKmX
-         5WTd9vJZi4oCmQ40ziR+8dP69SWpVhBGRmiTwFYgeAvDx+1Api5Q+P8GflaWsIBmt7Sg
-         8GLblyueGWc6O2ldZOcvhL+tdfgfOZjcd3jzZplGbop4BJkQFQzW8KqMa7wO5SxaUbj4
-         H5dg==
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :subject:to:from;
+        bh=spmq4E4B1hTNvlcxVhpQCvvwwhN0nXbG9HuiLELrtfQ=;
+        b=iAxioe3bLFqBHhy0W6Q2yPwtJ1prSW+jHIl5MpuZUxKbLO8umlEhrP0Zpzgs7Zgpgm
+         mvOplW7j63O3dli9yplQwYDvJLbsRVwDzCAPPtTBCJuIRR/gKiC1UCus0nAR/TrHTsfe
+         md1VuwQJE/k8V8hcSrHpzIyksT1W7uEWs1Zw8yoTAuN4ATXdfV/9PtF3MGJBgTk9V7xr
+         Nk0JDaaMqCg05ddWtPZeSSY7R8tIP3tXgjck9GwkRZhgmXz/7gmHmZRPtW6Oh94Rum+F
+         jR5xqWfYhbn+4SwutIziuUwmucS62XEj/mXt+ZzX6clO/6IuKQKj7OA4G3ZBe8e8L7eW
+         3lzQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Sqzsam3i;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u16si1488975ybc.168.2021.03.24.00.10.56
+        by mx.google.com with ESMTPS id w9si1747270jad.47.2021.03.24.06.17.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 Mar 2021 00:10:56 -0700 (PDT)
+        Wed, 24 Mar 2021 06:17:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Sqzsam3i;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45394 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Received: from localhost ([::1]:35106 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lOxfL-0002I2-Rs
-	for alex.bennee@linaro.org; Wed, 24 Mar 2021 03:10:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45832)
+	id 1lP3OS-0006Yf-1t
+	for alex.bennee@linaro.org; Wed, 24 Mar 2021 09:17:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60574)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1lOxei-0002Hr-NO; Wed, 24 Mar 2021 03:10:16 -0400
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630]:42598)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1lOxeg-0008MG-M3; Wed, 24 Mar 2021 03:10:16 -0400
-Received: by mail-pl1-x630.google.com with SMTP id v23so7425853ple.9;
- Wed, 24 Mar 2021 00:10:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=3/o7dxIJvo+wY+R5e6q/EE3dKUI5sEW9NHgjAowAggU=;
- b=Sqzsam3iQNhxwjdlssfCWuNkuPf2hSnt1XEY4HslD7U0eTUvCjbVXueCN2DMAa//l/
- XyZGxCMTyVoMWZaN0Y1zK5UonRpJkPQcnumMK6FW/tjoQA0gxVgnGTy9SrcqsBbF6dbd
- vhYTs6VW6Mfelm7xMB3+2CR8Zs+IXqUnERcxx/+6AIobl0cHGUI7qZIoYcAr2iDh27JZ
- NIQMS34CLc3Dkh2w0QfFsrshb+13RzlctZqoyQldkjQPmEVeaaJDM2GqbumQNGCOXOZK
- W2PSSV7aGKRoeedi3Cb1cYO1PMPT9RmwJCrb9Ah+dW1r+EIW/8yy/t8DtFF36lsj2+qB
- RCPw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=3/o7dxIJvo+wY+R5e6q/EE3dKUI5sEW9NHgjAowAggU=;
- b=QSMS2APhMDab82Lnu7V7Fc5e+xFpgBtbrkA1jmEBOXBrmfwHCSg/aCXbofb/HDuL+Y
- LZPWxfSJIVZ09c66Fv1EPJfD3A107ZTOEnyra8y1ABKYC8wKfAnT/DacQy117OB30T/B
- 105aZ5vLVAnEgYDaABtrPm7/jR2azomNCcHfWvQKd3B/ZBRT2Xjt36Xf0yvBvgLfGGGP
- DUtvIDw8Cv5kzgBu2S7M6JojbIAO4gq4ln9qbuRHvvjuElJz3xU3183z/F4Ke19pHK7J
- G3PiqP3QWjbZ9ERHW3lGPd0ZrmHJFBa6BmA/6h+REPD8F+PAi6sORzAnKcSFylb3i/bi
- zEsA==
-X-Gm-Message-State: AOAM533E7mkOTuts+6zAgHEslSb9nwRxGT2+a1v6b1yXrfuee6pEG+uv
- zSYjTSMZmQIHx7ABp9yfuH0=
-X-Received: by 2002:a17:90a:f0d4:: with SMTP id
- fa20mr2011528pjb.220.1616569811746; 
- Wed, 24 Mar 2021 00:10:11 -0700 (PDT)
-Received: from localhost.localdomain ([45.124.203.14])
- by smtp.gmail.com with ESMTPSA id y22sm1297116pfn.32.2021.03.24.00.10.08
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 24 Mar 2021 00:10:10 -0700 (PDT)
-From: Joel Stanley <joel@jms.id.au>
-To: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH v4 0/3] hw/misc: Model ASPEED hash and crypto engine
-Date: Wed, 24 Mar 2021 17:39:52 +1030
-Message-Id: <20210324070955.125941-1-joel@jms.id.au>
-X-Mailer: git-send-email 2.30.2
+ (Exim 4.90_1) (envelope-from <wangxingang5@huawei.com>)
+ id 1lP3Nm-0006Wc-Nz; Wed, 24 Mar 2021 09:17:10 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:4307)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <wangxingang5@huawei.com>)
+ id 1lP3Nk-0005UU-24; Wed, 24 Mar 2021 09:17:10 -0400
+Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.60])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4F57x94lBZznVm3;
+ Wed, 24 Mar 2021 21:14:21 +0800 (CST)
+Received: from huawei.com (10.174.185.226) by DGGEMS404-HUB.china.huawei.com
+ (10.3.19.204) with Microsoft SMTP Server id 14.3.498.0; Wed, 24 Mar 2021
+ 21:16:46 +0800
+From: Wang Xingang <wangxingang5@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <eric.auger@redhat.com>
+Subject: [PATCH RFC v2 0/6] Introduce IOMMU Option For PCI Root Bus
+Date: Wed, 24 Mar 2021 13:16:29 +0000
+Message-ID: <1616591795-2056-1-git-send-email-wangxingang5@huawei.com>
+X-Mailer: git-send-email 2.6.4.windows.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
- envelope-from=joel.stan@gmail.com; helo=mail-pl1-x630.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain
+X-Originating-IP: [10.174.185.226]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.190;
+ envelope-from=wangxingang5@huawei.com; helo=szxga04-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -112,54 +83,64 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: xieyingtai@huawei.com, peter.maydell@linaro.org, cenjiahui@huawei.com,
+ ehabkost@redhat.com, mst@redhat.com, richard.henderson@linaro.org,
+ shannon.zhaosl@gmail.com, marcel.apfelbaum@gmail.com, pbonzini@redhat.com,
+ imammedo@redhat.com, wangxingang5@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4lPgO8ZKLZWI
+X-TUID: zPtds/DrWJQK
 
-v4: Rebase on Philippe's memory region cleanup series [1]
-    Address feedback from Cédric
-    Rework qtest to run on ast2400, ast2500 and ast2600
-v3: Rework qtest to not use libqtest-single.h, rebase to avoid LPC
-conflicts.
-v2: Address review from Andrew and Philippe. Adds a qtest.
+From: Xingang Wang <wangxingang5@huawei.com>
 
-[1] https://lore.kernel.org/qemu-devel/20210312182851.1922972-1-f4bug@amsat.org/
+These patches add support for configure iommu on/off for pci root bus,
+including primary bus and pxb root bus. At present, All root bus
+will go through iommu when iommu is configured, which is not flexible.
 
-This adds a model for the ASPEED hash and crypto engine (HACE) found on
-all supported ASPEED SoCs.
+So this add option to enable/disable iommu for primary bus and pxb
+root bus.  When iommu is enabled for the root bus, devices attached to it
+will go through iommu. When iommu is disabled for the root bus, devices
+will not go through iommu accordingly.
 
-The model uses Qemu's gcrypto API to perform the SHA and MD5 hashing
-directly in the machine's emulated memory space, which I found a neat
-use of Qemu's features.
+The option example for iommu configuration is like the following:
 
-It has been tested using u-boot and from Linux userspace, and adds a
-qtest for the model running as part of the ast2600-evb, ast2500-evb and
-palmetto-bmc (to test ast2400) machines.
+primary root bus option:
+arm: -machine virt iommu=smmuv3,primary_bus_iommu=false(or true)
+x86: -machine q35,primary_bus_iommu=false(or true)
 
-Note that the tests will fail without Philippe's series.
+pxb root bus:
+-device pxb-pcie,bus_nr=0x10,id=pci.10,bus=pcie.0,addr=0x3.0x1,iommu=false 
 
-Joel Stanley (3):
-  hw: Model ASPEED's Hash and Crypto Engine
-  aspeed: Integrate HACE
-  tests/qtest: Add test for Aspeed HACE
+History:
 
- docs/system/arm/aspeed.rst     |   2 +-
- include/hw/arm/aspeed_soc.h    |   3 +
- include/hw/misc/aspeed_hace.h  |  43 ++++
- hw/arm/aspeed_ast2600.c        |  15 ++
- hw/arm/aspeed_soc.c            |  16 ++
- hw/misc/aspeed_hace.c          | 358 +++++++++++++++++++++++++++++++++
- tests/qtest/aspeed_hace-test.c | 313 ++++++++++++++++++++++++++++
- MAINTAINERS                    |   1 +
- hw/misc/meson.build            |   1 +
- tests/qtest/meson.build        |   3 +
- 10 files changed, 754 insertions(+), 1 deletion(-)
- create mode 100644 include/hw/misc/aspeed_hace.h
- create mode 100644 hw/misc/aspeed_hace.c
- create mode 100644 tests/qtest/aspeed_hace-test.c
+v1 -> v2:
+- Fix some issues
+- Took into account Eric's comments, and remove the PCI_BUS_IOMMU flag,
+  replace it with a property in PCIHostState.
+- Add support for x86 iommu option
+
+Xingang Wang (6):
+  hw/pci/pci_host: Add iommu property for pci host
+  hw/pci: Add iommu option for pci root bus
+  hw/pci: Add pci_root_bus_max_bus
+  hw/arm/virt-acpi-build: Add explicit idmap info in IORT table
+  hw/i386/acpi-build: Add explicit scope in DMAR table
+  hw/i386/acpi-build: Add iommu filter in IVRS table
+
+ hw/arm/virt-acpi-build.c            | 103 ++++++++++++++++++++++------
+ hw/arm/virt.c                       |  25 +++++++
+ hw/i386/acpi-build.c                |  70 ++++++++++++++++++-
+ hw/i386/pc.c                        |  19 +++++
+ hw/pci-bridge/pci_expander_bridge.c |   3 +
+ hw/pci-host/q35.c                   |   1 +
+ hw/pci/pci.c                        |  52 +++++++++++++-
+ hw/pci/pci_host.c                   |   2 +
+ include/hw/arm/virt.h               |   1 +
+ include/hw/i386/pc.h                |   1 +
+ include/hw/pci/pci.h                |   2 +
+ include/hw/pci/pci_host.h           |   1 +
+ 12 files changed, 254 insertions(+), 26 deletions(-)
 
 -- 
-2.30.2
+2.19.1
 

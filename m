@@ -1,325 +1,185 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id b15sm2898718wmd.41.2021.03.24.07.30.23
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 24 Mar 2021 07:30:25 -0700 (PDT)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 3AC651FF91;
-	Wed, 24 Mar 2021 14:30:22 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: peter.maydell@linaro.org
-Cc: qemu-devel@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PULL 05/22] semihosting: move semihosting tests to multiarch
-Date: Wed, 24 Mar 2021 14:30:04 +0000
-Message-Id: <20210324143021.8560-6-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210324143021.8560-1-alex.bennee@linaro.org>
-References: <20210324143021.8560-1-alex.bennee@linaro.org>
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp457417lfg;
+        Wed, 24 Mar 2021 08:03:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyk5eq71YidN9k10PgeL5a6OfSuXQfyhZenjo+0wqBFXQ9VwTESJw/Ev0ou7qztH73MsYiS
+X-Received: by 2002:a02:cb48:: with SMTP id k8mr3370065jap.52.1616598216768;
+        Wed, 24 Mar 2021 08:03:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616598216; cv=none;
+        d=google.com; s=arc-20160816;
+        b=dcni7J9Vh0T1AEreS/sc38pQLtpr3hk4NJJcGMtVgqL3x33E+9Bjel4DMATs/5Fq5u
+         XfOjX/1kduR/DfQOjAg+sTavbEobR2FaTR0Tq34FXAh9ntNwU2MwZXyhR1ViYKdLWceo
+         Z1RWNfy3iFmJR4JZBKOqOqSHhKFcyxiZXt8fnPsfNiorIZ3Akh+JtyVez4Huuof0PkB7
+         PFE/OW4Qlj71cOXdKBgi9h8Prtegj+M36DUP4L4eJ8d29zwLc60undr1GW1TYnJ40RpO
+         lxhHkmYHTv67BwKi0yvdyE0cmPswn3/ur5GA6bXu/LHR6fk+/Tn7RiP0PEaFpOIR1DYn
+         2T5w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=Zkpgw+q6sBEuy/RONXS1L9ALzNdKp7enT0/cJcs9PmA=;
+        b=krTW+pSLhPTzgrzv9mzRhLietnU/zXlkC+DigDqsITKRrSb0XGyM3RZoVhuULfMcfU
+         lhBVejtkOb/86wo/d0fjZ5/w3Mn+9ygkQSSt+qjNoE9bOsEau39jBsSjyLxTav0J7Znu
+         Trpls6ACiXEcxEP5THPk1nySHYA0XSd9DtACXV/FaiMEj4xFx5a71sIh05rbN/q1iIRV
+         DwdYp2Pd/Hq0/ORVAQ4yjYZxVe/iRfeEEJ6twJpH4i/aU8i/eoQtI5Qw5VS987R06JA+
+         BUHRMKQ5SJxqwRnTZi/DZ0WPxMBGBW64Rgq7pwnrMf0OFDA9hOy+XHh/4uOnBa97Ma7X
+         SZAQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=vZSQPRmi;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id h26si1600711ila.123.2021.03.24.08.03.36
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 24 Mar 2021 08:03:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=vZSQPRmi;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:57878 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lP52l-0005P5-T7
+	for alex.bennee@linaro.org; Wed, 24 Mar 2021 11:03:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60576)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1lP51u-0004kG-V1; Wed, 24 Mar 2021 11:02:42 -0400
+Received: from mail-qt1-x82e.google.com ([2607:f8b0:4864:20::82e]:45958)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1lP51s-0000C2-5n; Wed, 24 Mar 2021 11:02:42 -0400
+Received: by mail-qt1-x82e.google.com with SMTP id u8so1604269qtq.12;
+ Wed, 24 Mar 2021 08:02:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=Zkpgw+q6sBEuy/RONXS1L9ALzNdKp7enT0/cJcs9PmA=;
+ b=vZSQPRmi+xSByZ3HvrAygQ9C9CpS+mljEnxkB/ILm/EAhqDrrsU1KhLz46919D60I3
+ jOktFm/I/YZpPd6Guqo+z6LuH8lNdnXg7ZRN90a3bQh4iT5/+6ABF/Ws24f5oWQZsvOG
+ B95/NStvLXn3XUcp/Lw34U7X202Bj3Jo8zyeBPKdcvGtG6kZVmjfIiZ/rsQ8v8AEHXKW
+ x3X6i7v38KD4oz+SAB//V7coavGBQ27m6/wSKJZ0Gl6Wd9MDUv/GSCBE05GpeL1OXk4p
+ BsG7u4ysscNWOPXGxEBQkkhKccngHXeekj5fTCcY7hi/gBI2g/S6SXcibuCqJWcBtQc8
+ HAEw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=Zkpgw+q6sBEuy/RONXS1L9ALzNdKp7enT0/cJcs9PmA=;
+ b=LeBFrOUiyDeoqS+/hws23TkErT2Yy3izpQfGBnJxZu5uRFCpLgqrZgEfgXx/JW9Yyu
+ PvpG2WB2Yj2W/UaSO8h0SVNDcaA16/6py3i+R3XpBDfxWeygBYZPLbwrO7bXAzsnIkBW
+ /dMcbmBtXTtUV25iaSsnFvB4JKxphMwqXu5erQ71OkhzLANU1JiRE5ob0ACaqMZPctvY
+ rzeAQD4RWsusZIc+PaTqfDvzWL09L5DfeHSaGElg7XAfeE9RZAzwTDiqY5lGE+SZs7GH
+ BCZOSSlf0djK1AA1H4MD2N1JptbAZLx7RzIgrQdclk9jW/cStIFiaMwy8PZHBTYIRqWi
+ 6p7A==
+X-Gm-Message-State: AOAM532w9i5vbNxE+iLYG2rbQVVimdfvmCFFUHWu7v5VNGc8fkM1+eAm
+ PrruTHUY+587E8N2gy+gZzPW2JM8Psjmvnxj8l8=
+X-Received: by 2002:ac8:4750:: with SMTP id k16mr3256494qtp.239.1616598158578; 
+ Wed, 24 Mar 2021 08:02:38 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: tY2dBaokF0UV
+References: <20210323182958.277654-1-f4bug@amsat.org>
+In-Reply-To: <20210323182958.277654-1-f4bug@amsat.org>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Wed, 24 Mar 2021 11:00:39 -0400
+Message-ID: <CAKmqyKNDkz7-Y1nrn+Rx5JZQ1tBAgT+E-s8QNVtqdtO3CNmVCw@mail.gmail.com>
+Subject: Re: [PATCH] hw/display/xlnx_dp: Free FIFOs adding xlnx_dp_finalize()
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::82e;
+ envelope-from=alistair23@gmail.com; helo=mail-qt1-x82e.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ KONRAD Frederic <frederic.konrad@adacore.com>, qemu-arm <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: FFWPpW08iXRD
 
-It may be arm-compat-semihosting but more than one architecture uses
-it so lets move the tests into the multiarch area. We gate it on the
-feature and split the semicall.h header between the arches.
+On Tue, Mar 23, 2021 at 3:15 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g> wrote:
+>
+> When building with --enable-sanitizers we get:
+>
+>   Direct leak of 16 byte(s) in 1 object(s) allocated from:
+>       #0 0x5618479ec7cf in malloc (qemu-system-aarch64+0x233b7cf)
+>       #1 0x7f675745f958 in g_malloc (/lib64/libglib-2.0.so.0+0x58958)
+>       #2 0x561847c2dcc9 in xlnx_dp_init hw/display/xlnx_dp.c:1259:5
+>       #3 0x56184a5bdab8 in object_init_with_type qom/object.c:375:9
+>       #4 0x56184a5a2bda in object_initialize_with_type qom/object.c:517:5
+>       #5 0x56184a5a24d5 in object_initialize qom/object.c:536:5
+>       #6 0x56184a5a2f6c in object_initialize_child_with_propsv qom/object=
+.c:566:5
+>       #7 0x56184a5a2e60 in object_initialize_child_with_props qom/object.=
+c:549:10
+>       #8 0x56184a5a3a1e in object_initialize_child_internal qom/object.c:=
+603:5
+>       #9 0x5618495aa431 in xlnx_zynqmp_init hw/arm/xlnx-zynqmp.c:273:5
+>
+> The RX/TX FIFOs are created in xlnx_dp_init(), add xlnx_dp_finalize()
+> to destroy them.
+>
+> Fixes: 58ac482a66d ("introduce xlnx-dp")
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-Also clean-up a bit of the Makefile messing about to one common set of
-runners.
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20210323165308.15244-6-alex.bennee@linaro.org>
+Alistair
 
-diff --git a/tests/tcg/aarch64/semicall.h b/tests/tcg/aarch64/semicall.h
-new file mode 100644
-index 0000000000..8a3fce35c5
---- /dev/null
-+++ b/tests/tcg/aarch64/semicall.h
-@@ -0,0 +1,18 @@
-+/*
-+ * Semihosting Tests - AArch64 helper
-+ *
-+ * Copyright (c) 2019
-+ * Written by Alex Bennée <alex.bennee@linaro.org>
-+ *
-+ * SPDX-License-Identifier: GPL-3.0-or-later
-+ */
-+
-+uintptr_t __semi_call(uintptr_t type, uintptr_t arg0)
-+{
-+    register uintptr_t t asm("x0") = type;
-+    register uintptr_t a0 asm("x1") = arg0;
-+    asm("hlt 0xf000"
-+        : "=r" (t)
-+        : "r" (t), "r" (a0));
-+    return t;
-+}
-diff --git a/tests/tcg/arm/semicall.h b/tests/tcg/arm/semicall.h
-index d4f6818192..ad8ac51310 100644
---- a/tests/tcg/arm/semicall.h
-+++ b/tests/tcg/arm/semicall.h
-@@ -1,5 +1,5 @@
- /*
-- * Semihosting Tests
-+ * Semihosting Tests - ARM Helper
-  *
-  * Copyright (c) 2019
-  * Written by Alex Bennée <alex.bennee@linaro.org>
-@@ -7,13 +7,8 @@
-  * SPDX-License-Identifier: GPL-3.0-or-later
-  */
- 
--#define SYS_WRITE0      0x04
--#define SYS_READC       0x07
--#define SYS_REPORTEXC   0x18
--
- uintptr_t __semi_call(uintptr_t type, uintptr_t arg0)
- {
--#if defined(__arm__)
-     register uintptr_t t asm("r0") = type;
-     register uintptr_t a0 asm("r1") = arg0;
- #ifdef __thumb__
-@@ -23,13 +18,5 @@ uintptr_t __semi_call(uintptr_t type, uintptr_t arg0)
- #endif
-     asm(SVC : "=r" (t)
-         : "r" (t), "r" (a0));
--#else
--    register uintptr_t t asm("x0") = type;
--    register uintptr_t a0 asm("x1") = arg0;
--    asm("hlt 0xf000"
--        : "=r" (t)
--        : "r" (t), "r" (a0));
--#endif
--
-     return t;
- }
-diff --git a/tests/tcg/riscv64/semicall.h b/tests/tcg/riscv64/semicall.h
-new file mode 100644
-index 0000000000..f8c88f32dc
---- /dev/null
-+++ b/tests/tcg/riscv64/semicall.h
-@@ -0,0 +1,22 @@
-+/*
-+ * Semihosting Tests - RiscV64 Helper
-+ *
-+ * Copyright (c) 2021
-+ * Written by Alex Bennée <alex.bennee@linaro.org>
-+ *
-+ * SPDX-License-Identifier: GPL-3.0-or-later
-+ */
-+
-+uintptr_t __semi_call(uintptr_t type, uintptr_t arg0)
-+{
-+    register uintptr_t t asm("a0") = type;
-+    register uintptr_t a0 asm("a1") = arg0;
-+    asm(".option norvc\n\t"
-+        ".balign 16\n\t"
-+        "slli zero, zero, 0x1f\n\t"
-+        "ebreak\n\t"
-+        "srai zero, zero, 0x7\n\t"
-+        : "=r" (t)
-+        : "r" (t), "r" (a0));
-+    return t;
-+}
-diff --git a/tests/tcg/arm/semiconsole.c b/tests/tcg/multiarch/arm-compat-semi/semiconsole.c
-similarity index 93%
-rename from tests/tcg/arm/semiconsole.c
-rename to tests/tcg/multiarch/arm-compat-semi/semiconsole.c
-index 6ef0bd2450..1d82efc589 100644
---- a/tests/tcg/arm/semiconsole.c
-+++ b/tests/tcg/multiarch/arm-compat-semi/semiconsole.c
-@@ -7,6 +7,8 @@
-  * SPDX-License-Identifier: GPL-3.0-or-later
-  */
- 
-+#define SYS_READC       0x07
-+
- #include <stdio.h>
- #include <stdint.h>
- #include "semicall.h"
-diff --git a/tests/tcg/arm/semihosting.c b/tests/tcg/multiarch/arm-compat-semi/semihosting.c
-similarity index 85%
-rename from tests/tcg/arm/semihosting.c
-rename to tests/tcg/multiarch/arm-compat-semi/semihosting.c
-index 33faac9916..b3fd16cd12 100644
---- a/tests/tcg/arm/semihosting.c
-+++ b/tests/tcg/multiarch/arm-compat-semi/semihosting.c
-@@ -7,12 +7,15 @@
-  * SPDX-License-Identifier: GPL-3.0-or-later
-  */
- 
-+#define SYS_WRITE0      0x04
-+#define SYS_REPORTEXC   0x18
-+
- #include <stdint.h>
- #include "semicall.h"
- 
- int main(int argc, char *argv[argc])
- {
--#if defined(__arm__)
-+#if UINTPTR_MAX == UINT32_MAX
-     uintptr_t exit_code = 0x20026;
- #else
-     uintptr_t exit_block[2] = {0x20026, 0};
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 10ed6d7624..554be84b32 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -3286,6 +3286,7 @@ M: Alex Bennée <alex.bennee@linaro.org>
- S: Maintained
- F: semihosting/
- F: include/semihosting/
-+F: tests/tcg/multiarch/arm-compat-semi/
- 
- Multi-process QEMU
- M: Elena Ufimtseva <elena.ufimtseva@oracle.com>
-diff --git a/tests/tcg/Makefile.target b/tests/tcg/Makefile.target
-index 24d75a5801..cab8c6b3a2 100644
---- a/tests/tcg/Makefile.target
-+++ b/tests/tcg/Makefile.target
-@@ -32,6 +32,9 @@
- all:
- -include ../../../config-host.mak
- -include ../config-$(TARGET).mak
-+ifeq ($(CONFIG_USER_ONLY),y)
-+-include $(SRC_PATH)/default-configs/targets/$(TARGET).mak
-+endif
- 
- # for including , in command strings
- COMMA := ,
-diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-index bf53ad0087..56e48f4b34 100644
---- a/tests/tcg/aarch64/Makefile.target
-+++ b/tests/tcg/aarch64/Makefile.target
-@@ -41,24 +41,6 @@ AARCH64_TESTS += mte-1 mte-2 mte-3 mte-4
- mte-%: CFLAGS += -march=armv8.5-a+memtag
- endif
- 
--# Semihosting smoke test for linux-user
--AARCH64_TESTS += semihosting
--run-semihosting: semihosting
--	$(call run-test,$<,$(QEMU) $< 2> $<.err, "$< on $(TARGET_NAME)")
--
--run-plugin-semihosting-with-%:
--	$(call run-test, $@, $(QEMU) $(QEMU_OPTS) \
--		-plugin $(PLUGIN_LIB)/$(call extract-plugin,$@) \
--		 $(call strip-plugin,$<) 2> $<.err, \
--		"$< on $(TARGET_NAME) with $*")
--
--AARCH64_TESTS += semiconsole
--run-semiconsole: semiconsole
--	$(call skip-test, $<, "MANUAL ONLY")
--
--run-plugin-semiconsole-with-%:
--	$(call skip-test, $<, "MANUAL ONLY")
--
- ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_SVE),)
- # System Registers Tests
- AARCH64_TESTS += sysregs
-diff --git a/tests/tcg/arm/Makefile.target b/tests/tcg/arm/Makefile.target
-index ec95156562..5ab59ed6ce 100644
---- a/tests/tcg/arm/Makefile.target
-+++ b/tests/tcg/arm/Makefile.target
-@@ -29,37 +29,31 @@ run-fcvt: fcvt
- 	$(call run-test,fcvt,$(QEMU) $<,"$< on $(TARGET_NAME)")
- 	$(call diff-out,fcvt,$(ARM_SRC)/fcvt.ref)
- 
-+ifeq ($(CONFIG_ARM_COMPATIBLE_SEMIHOSTING),y)
-+
- # Semihosting smoke test for linux-user
--ARM_TESTS += semihosting
- semihosting: CFLAGS += -mthumb
--run-semihosting: semihosting
--	$(call run-test,$<,$(QEMU) $< 2> $<.err, "$< on $(TARGET_NAME)")
- 
- ARM_TESTS += semihosting-arm
--semihosting-arm: CFLAGS += -marm
-+semihosting-arm: CFLAGS += -marm -I$(SRC_PATH)/tests/tcg/$(TARGET_NAME)
- semihosting-arm: semihosting.c
- 	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
- 
- run-semihosting-arm: semihosting-arm
- 	$(call run-test,$<,$(QEMU) $< 2> $<.err, "$< on $(TARGET_NAME)")
- 
--run-plugin-semihosting-with-%:
-+run-plugin-semihosting-arm-with-%:
- 	$(call run-test, $@, $(QEMU) $(QEMU_OPTS) \
- 		-plugin $(PLUGIN_LIB)/$(call extract-plugin,$@) \
- 		 $(call strip-plugin,$<) 2> $<.err, \
- 		"$< on $(TARGET_NAME) with $*")
- 
--ARM_TESTS += semiconsole semiconsole-arm
-+ARM_TESTS += semiconsole-arm
- 
- semiconsole: CFLAGS += -mthumb
--run-semiconsole: semiconsole
--	$(call skip-test, $<, "MANUAL ONLY")
- 
--run-plugin-semiconsole-with-%:
--	$(call skip-test, $<, "MANUAL ONLY")
--
--semiconsole-arm: CFLAGS += -marm
--semiconsole-arm: semiconsole.c
-+semiconsole-arm: CFLAGS += -marm -I$(SRC_PATH)/tests/tcg/$(TARGET_NAME)
-+semiconsole-arm: semihosting.c
- 	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
- 
- run-semiconsole-arm: semiconsole-arm
-@@ -68,6 +62,8 @@ run-semiconsole-arm: semiconsole-arm
- run-plugin-semiconsole-arm-with-%:
- 	$(call skip-test, $<, "MANUAL ONLY")
- 
-+endif
-+
- ARM_TESTS += commpage
- 
- TESTS += $(ARM_TESTS)
-diff --git a/tests/tcg/multiarch/Makefile.target b/tests/tcg/multiarch/Makefile.target
-index abbdb2e126..a3a751723d 100644
---- a/tests/tcg/multiarch/Makefile.target
-+++ b/tests/tcg/multiarch/Makefile.target
-@@ -69,6 +69,37 @@ run-gdbstub-%:
- endif
- EXTRA_RUNS += run-gdbstub-sha1 run-gdbstub-qxfer-auxv-read
- 
-+# ARM Compatible Semi Hosting Tests
-+#
-+# Despite having ARM in the name we actually have several
-+# architectures that implement it. We gate the tests on the feature
-+# appearing in config.
-+#
-+ifeq ($(CONFIG_ARM_COMPATIBLE_SEMIHOSTING),y)
-+VPATH += $(MULTIARCH_SRC)/arm-compat-semi
-+
-+# Add -I path back to TARGET_NAME for semicall.h
-+semihosting: CFLAGS+=-I$(SRC_PATH)/tests/tcg/$(TARGET_NAME)
-+
-+run-semihosting: semihosting
-+	$(call run-test,$<,$(QEMU) $< 2> $<.err, "$< on $(TARGET_NAME)")
-+
-+run-plugin-semihosting-with-%:
-+	$(call run-test, $@, $(QEMU) $(QEMU_OPTS) \
-+		-plugin $(PLUGIN_LIB)/$(call extract-plugin,$@) \
-+		 $(call strip-plugin,$<) 2> $<.err, \
-+		"$< on $(TARGET_NAME) with $*")
-+
-+semiconsole: CFLAGS+=-I$(SRC_PATH)/tests/tcg/$(TARGET_NAME)
-+
-+run-semiconsole: semiconsole
-+	$(call skip-test, $<, "MANUAL ONLY")
-+
-+run-plugin-semiconsole-with-%:
-+	$(call skip-test, $<, "MANUAL ONLY")
-+
-+TESTS += semihosting semiconsole
-+endif
- 
- # Update TESTS
- TESTS += $(MULTIARCH_TESTS)
--- 
-2.20.1
+> ---
+>  hw/display/xlnx_dp.c | 9 +++++++++
+>  1 file changed, 9 insertions(+)
+>
+> diff --git a/hw/display/xlnx_dp.c b/hw/display/xlnx_dp.c
+> index c56e6ec5936..4fd6aeb18b5 100644
+> --- a/hw/display/xlnx_dp.c
+> +++ b/hw/display/xlnx_dp.c
+> @@ -1260,6 +1260,14 @@ static void xlnx_dp_init(Object *obj)
+>      fifo8_create(&s->tx_fifo, 16);
+>  }
+>
+> +static void xlnx_dp_finalize(Object *obj)
+> +{
+> +    XlnxDPState *s =3D XLNX_DP(obj);
+> +
+> +    fifo8_destroy(&s->tx_fifo);
+> +    fifo8_destroy(&s->rx_fifo);
+> +}
+> +
+>  static void xlnx_dp_realize(DeviceState *dev, Error **errp)
+>  {
+>      XlnxDPState *s =3D XLNX_DP(dev);
+> @@ -1359,6 +1367,7 @@ static const TypeInfo xlnx_dp_info =3D {
+>      .parent        =3D TYPE_SYS_BUS_DEVICE,
+>      .instance_size =3D sizeof(XlnxDPState),
+>      .instance_init =3D xlnx_dp_init,
+> +    .instance_finalize =3D xlnx_dp_finalize,
+>      .class_init    =3D xlnx_dp_class_init,
+>  };
+>
+> --
+> 2.26.2
+>
+>

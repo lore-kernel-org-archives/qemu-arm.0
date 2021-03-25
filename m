@@ -1,94 +1,120 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp166010lfg;
-        Thu, 25 Mar 2021 00:55:53 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy08XHxDb73x7I3tthJS6TeioSltnP0JfQTUB5S2aSDEorUIKFn30Ublw/Lz9epX9Dds48N
-X-Received: by 2002:a02:8545:: with SMTP id g63mr6382212jai.79.1616658952898;
-        Thu, 25 Mar 2021 00:55:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1616658952; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp351011lfg;
+        Thu, 25 Mar 2021 05:18:58 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxswZLajzhzOj2Zql+4BKQw+/5mRHLvo8lQaZrnrnQMHSZ1i0SeUW5/OTPwP7b4Ux2cboS3
+X-Received: by 2002:aca:4188:: with SMTP id o130mr6121835oia.53.1616674738456;
+        Thu, 25 Mar 2021 05:18:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616674738; cv=none;
         d=google.com; s=arc-20160816;
-        b=bL6iK+sTuzHyvoUNDhmTI7A2QWNXYLO9Ln5sDnSo4uY7ItkJqXwv6lnbsCE2RD6N35
-         0dRK3x8GdusjYMCBuYD5j4lqE6JHme8hkHYiCwoKSxzoekDMU5G62xVRvNaEC4YVtPsZ
-         30zSfjyNyMqs1v9OQHEIXFI8+KHe4BcablWWmtmCX3N4mbyThNtQo7MPXhH34FUm4xQc
-         Hfrqg17dKlWYfkFDqgV+6AYH5Ptvb+AEPn3b/QjDUJ0ObPXZ7OV30XH9UCLH1fxOxYCm
-         jyrtFeYZTZVx1exO3X8JJpjgIRd6zL1KpyCkABvqOCzGFZTywa7gF2FKQWS3sbtvx8lM
-         SAhA==
+        b=rIyvu6sOytMbKe1OAGaJOTUhUmhGY1eiXu9JMhK7Kxe4qlT8BkfAKlypIK9nEsEqUc
+         vpXd0hT7C8dTw26TIUluGAge8cLQFJPxb1sanw/unOybGP8g97q8ldIWuhH+zKfOyttZ
+         3xfDdrZcG+3FQjHJdjrSSriddbFkv63vN6S47b2B6K+HiAFxit/WeSHJcbolCBKMaKs5
+         tWbc+2kd3p05RsVgGEvlLnl+9/86hUK4ivriznjEMJUVyvCD7YGZn0Ud4kajVpPfRSFZ
+         9jxGoc3vpRN5gvNCgbsFvNucEQJ3wJUEE9F21QY83oE8d8WoxitsPi5r3YQ6bPHK5vN4
+         Xwhg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=29unsZ3ISktXm2vOHjwVp3gx4KUFwqZ198h+O07ouNw=;
-        b=Kg/inQ3Fqzna6E2vzp/S9ytltFlaxnnwOyPN/jctenR+3Wf1Ar6HvZx0fA+hPDehwL
-         ELOjB29I+bSjIRyogMsXdtlMoMeLUy1UEvDfqFgTuPdNMoZBsC5y8dr/tvf2udKSn+17
-         VSAVB2Coshrv4dc1yTGzoV6pdD210z4LkuI8g4PAjTl7MFMCJeAd0Fta1sEu3lhOAe3C
-         /aKTA2ACn11MrZ8Jf8yZknVnqbPzLaN8jSEHJ3xDUTEPIpCzlSWzq6QHHaphFW5SCXPI
-         HRGwizVyToASce34hXLH3X9TaPZB7DIgSNuuJCKxN+JCUHnrf8gWBfNsVx69KoilGfsb
-         sYEQ==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:mime-version
+         :message-id:date:user-agent:references:in-reply-to:subject:to:from
+         :dkim-signature;
+        bh=jperPNLmhByLCS/rEka9DO+sGWRrZa+aR6WQ/k/a/3o=;
+        b=iFSEApMWLTy5kCg8ufSDLnBdl8v9Csavf5Vr95NpctTsgo5fpj8N9wQGGsqwTEWL9t
+         jLHam2kXyFDTz3KPUz/or5f1rmM7bs3Jiq3+wRnJ93Sn0e7mYWhqG0lO5nQlOpZfsiRf
+         xymfP+R4AdyVJNnyBLg/8LZE3tCaOAlX4xZsDHOfytAgfMU0yFzBJ0xaNXSSjhGGCX1I
+         38Uvz4M2jZZEmX6lt5/9uTiL/r5Z8KY/SZ0e9dFEJSPiYN7bMA2bTM7ielhF81XGhqUx
+         TZC4BPWvMiUe8jV+JXgR6WvmphCID6m3UDrEyxoepTmCYA4hqVPPsOfvsp8/jaJF3jMm
+         ZygQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=aa211rrR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a17si3864796jat.53.2021.03.25.00.55.52
+        by mx.google.com with ESMTPS id p17si4675838ots.49.2021.03.25.05.18.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Mar 2021 00:55:52 -0700 (PDT)
+        Thu, 25 Mar 2021 05:18:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:53526 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=aa211rrR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:58812 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lPKqO-000208-7J
-	for alex.bennee@linaro.org; Thu, 25 Mar 2021 03:55:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59656)
+	id 1lPOwz-0007xe-Os
+	for alex.bennee@linaro.org; Thu, 25 Mar 2021 08:18:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44062)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1lPKqE-0001zn-Q1; Thu, 25 Mar 2021 03:55:42 -0400
-Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:45067)
+ (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
+ id 1lPOwr-0007xX-KT
+ for qemu-arm@nongnu.org; Thu, 25 Mar 2021 08:18:49 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:58517)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1lPKqC-0005lb-JW; Thu, 25 Mar 2021 03:55:42 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.143.183])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 97D26947E83F;
- Thu, 25 Mar 2021 08:55:29 +0100 (CET)
-Received: from kaod.org (37.59.142.95) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2106.2; Thu, 25 Mar
- 2021 08:55:28 +0100
-Authentication-Results: garm.ovh; auth=pass
- (GARM-95G001445e6baa-2f23-4fe5-b208-a08609762435,
- 632375478080DBB88D2B1DB455BDA690282D892D) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Subject: Re: [PATCH 2/3] aspeed: Add Scater-Gather support for HACE Hash
-To: Klaus Heinrich Kiwi <klaus@linux.vnet.ibm.com>, <qemu-arm@nongnu.org>,
- <qemu-devel@nongnu.org>
-References: <20210324223846.17407-1-klaus@linux.vnet.ibm.com>
- <20210324223846.17407-3-klaus@linux.vnet.ibm.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <329648d7-9f30-2a58-be89-d157c446e927@kaod.org>
-Date: Thu, 25 Mar 2021 08:55:27 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.0
+ (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
+ id 1lPOwp-0001VD-HD
+ for qemu-arm@nongnu.org; Thu, 25 Mar 2021 08:18:48 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1616674726;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:in-reply-to:in-reply-to:  references:references;
+ bh=jperPNLmhByLCS/rEka9DO+sGWRrZa+aR6WQ/k/a/3o=;
+ b=aa211rrRHOtBpkLLLkdB5a3U5CjNHVfWptlbX5z5o+e2G3ZMB4r5oeFZantLJHZWxeUf6F
+ 5wtFszMd06UDjV5eop97iHhD7ybeKrcVq4+5Z2u4ST0nBYgXzzSeAygaKDwyU0ddka1fGO
+ QYt7uP8MGlQ9zgkWcaYyrCJEtCNG6V8=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-456-Fo4qiMxdPzau7sSjrbga-w-1; Thu, 25 Mar 2021 08:18:44 -0400
+X-MC-Unique: Fo4qiMxdPzau7sSjrbga-w-1
+Received: by mail-wr1-f72.google.com with SMTP id t16so2554585wrn.20
+ for <qemu-arm@nongnu.org>; Thu, 25 Mar 2021 05:18:44 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:in-reply-to:references
+ :user-agent:reply-to:date:message-id:mime-version;
+ bh=jperPNLmhByLCS/rEka9DO+sGWRrZa+aR6WQ/k/a/3o=;
+ b=MGzu5ueC2vIjDXa6otXvD1Vu/Cd2a4aeybEYh6Y8bp965+nw4nlbliADIYH6ZDKfBY
+ qg3KcDtLU/J2rlv72K146Uf57AxbMvhX3pm3IJW+RF89nfkcLcdAYuWI11QK3ajSASrF
+ s+up77fA27lnv9k06QRp7XOVpfTmzl3vLemSz7tAFwT7UPAweDD3TIayTRZYcmSYOmYK
+ jnHMEuBIwa9lV0+sA5Tnw9M5wNp/4DJnN3uezE5G3Mc1x3rfoTArSBgpK8ItyVwOqgDD
+ uoDJZtOVw3TxP8vBPsi0usAVzmm/nrLDd3PXjvO/7zQEbNnGutNuFJ/aUpsFo6B+V8SP
+ 8qfw==
+X-Gm-Message-State: AOAM530jOJiuDG1PrXu13elslJUWkBUK/f6wOZyrgh50d7iBRMolnIXv
+ Xo9n3qxaOYZ9hTcFi78zRSmK3Mlg+d96G8894/4I5fX/Y+2bIHdBT99S73ity2Et89kOkRgrjte
+ bU5b6YDIfx4fs
+X-Received: by 2002:a5d:4686:: with SMTP id u6mr8596608wrq.60.1616674722010;
+ Thu, 25 Mar 2021 05:18:42 -0700 (PDT)
+X-Received: by 2002:a5d:4686:: with SMTP id u6mr8596576wrq.60.1616674721758;
+ Thu, 25 Mar 2021 05:18:41 -0700 (PDT)
+Received: from localhost (trasno.trasno.org. [83.165.45.250])
+ by smtp.gmail.com with ESMTPSA id c16sm8078071wrs.81.2021.03.25.05.18.40
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 25 Mar 2021 05:18:41 -0700 (PDT)
+From: Juan Quintela <quintela@redhat.com>
+To: Haibo Xu <haibo.xu@linaro.org>
+Subject: Re: [RFC PATCH v2 3/5] Add APIs to get/set MTE tags
+In-Reply-To: <5f269099f5f06c23f11d41b45d64f77eca23a8ff.1615972140.git.haibo.xu@linaro.org>
+ (Haibo Xu's message of "Wed, 17 Mar 2021 09:28:22 +0000")
+References: <cover.1615972140.git.haibo.xu@linaro.org>
+ <5f269099f5f06c23f11d41b45d64f77eca23a8ff.1615972140.git.haibo.xu@linaro.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
+Date: Thu, 25 Mar 2021 13:18:40 +0100
+Message-ID: <87tuozo28v.fsf@secure.mitica>
 MIME-Version: 1.0
-In-Reply-To: <20210324223846.17407-3-klaus@linux.vnet.ibm.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.95]
-X-ClientProxiedBy: DAG2EX1.mxp5.local (172.16.2.11) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 2ec53a62-ede1-4f53-a751-678acbbf21ab
-X-Ovh-Tracer-Id: 4751579082012986159
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduledrudegledguddufecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgihesthejredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeegvdeijeefvdfhudfhffeuveehledufffhvdekheelgedttddthfeigeevgefhffenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleehnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehklhgruhhssehlihhnuhigrdhvnhgvthdrihgsmhdrtghomh
-Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
- helo=smtpout1.mo529.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=quintela@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=quintela@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -101,216 +127,85 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <lvivier@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
- Paolo Bonzini <pbonzini@redhat.com>
+Reply-To: quintela@redhat.com
+Cc: peter.maydell@linaro.org, drjones@redhat.com, richard.henderson@linaro.org,
+ dgilbert@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2YYOQj8cAO9K
+X-TUID: 7U1L5fIqIwO0
 
-On 3/24/21 11:38 PM, Klaus Heinrich Kiwi wrote:
-> Complement the Aspeed HACE support with Scatter-Gather hash support for
-> sha256 and sha512. Scatter-Gather is only supported on AST2600-series.
-> 
-> Signed-off-by: Klaus Heinrich Kiwi <klaus@linux.vnet.ibm.com>
-
-this looks good. A few extra comments,
-
+Haibo Xu <haibo.xu@linaro.org> wrote:
+> MTE spec provide instructions to retrieve the memory tags:
+> (1) LDG, at 16 bytes granularity, and available in both user
+>     and kernel space;
+> (2) LDGM, at 256 bytes granularity in maximum, and only
+>     available in kernel space
+>
+> To improve the performance, KVM has exposed the LDGM capability
+> to user space by providing a new APIs. This patch is just a
+> wrapper for the KVM APIs.
+>
+> Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
 > ---
->  hw/misc/aspeed_hace.c         | 127 ++++++++++++++++++++++++++++++++--
->  include/hw/misc/aspeed_hace.h |   6 ++
->  2 files changed, 127 insertions(+), 6 deletions(-)
-> 
-> diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
-> index 93313d2b80..8a37b1d961 100644
-> --- a/hw/misc/aspeed_hace.c
-> +++ b/hw/misc/aspeed_hace.c
-> @@ -57,6 +57,10 @@
->  /* Other cmd bits */
->  #define  HASH_IRQ_EN                    BIT(9)
->  #define  HASH_SG_EN                     BIT(18)
-> +/* Scatter-gather data list */
-> +#define  SG_LIST_LAST                   BIT(31)
-> +#define  SG_LIST_LEN_MASK               0x7fffffff
-> +#define  SG_LIST_ADDR_MASK              0x7ffffff8  /* 8-byte aligned */
->  
->  static const struct {
->      uint32_t mask;
-> @@ -129,6 +133,117 @@ static int do_hash_operation(AspeedHACEState *s, int algo)
->      return 0;
+>  target/arm/kvm64.c   | 24 ++++++++++++++++++++++++
+>  target/arm/kvm_arm.h |  2 ++
+>  2 files changed, 26 insertions(+)
+>
+> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+> index 73a191f8e1..3157025316 100644
+> --- a/target/arm/kvm64.c
+> +++ b/target/arm/kvm64.c
+> @@ -1606,3 +1606,27 @@ bool kvm_arm_verify_ext_dabt_pending(CPUState *cs)
+>      }
+>      return false;
 >  }
->  
-> +static int do_hash_sg_operation(AspeedHACEState *s, int algo)
-
-Do we really care about the return value ? 
-
+> +
+> +int kvm_arm_mte_get_tags(uint64_t ipa, uint64_t len, uint8_t *buf)
 > +{
-> +    uint32_t src, dest, reqSize;
-> +    hwaddr len;
-> +    const size_t reqLen = sizeof(struct aspeed_sg_list);
-> +    struct iovec iov[ASPEED_HACE_MAX_SG];
-> +    unsigned int i = 0;
-> +    unsigned int isLast = 0;
-> +    uint8_t *digestBuf = NULL;
-> +    size_t digestLen = 0, size = 0;
-> +    struct aspeed_sg_list *sgList;
-> +    int rc;
+> +    struct kvm_arm_copy_mte_tags args = {
+> +        .guest_ipa = ipa,
+> +        .length = len,
+> +        .addr = buf,
+> +        .flags = KVM_ARM_TAGS_FROM_GUEST,
+> +    };
 > +
-> +    reqSize = s->regs[R_HASH_SRC_LEN];
-> +    dest = s->regs[R_HASH_DEST];
-> +
-> +    while (!isLast && i < ASPEED_HACE_MAX_SG) {
-> +        src = s->regs[R_HASH_SRC] + (i * reqLen);
-> +        len = reqLen;
-> +        sgList = (struct aspeed_sg_list *) address_space_map(&s->dram_as,
-> +                                                                     src,
-> +                                                         (hwaddr *) &len,
-> +                                                                   false,
-> +                                                 MEMTXATTRS_UNSPECIFIED);
+> +    return kvm_vm_ioctl(kvm_state, KVM_ARM_MTE_COPY_TAGS, &args);
 
-This should be doing LE loads.
+Just a question, how fast/slow are this calls?
 
-> +        if (!sgList) {
-> +            qemu_log_mask(LOG_GUEST_ERROR,
-> +             "%s: failed to map dram for SG Array entry '%u' for address '0x%0x'\n",
-> +             __func__, i, src);
-> +            rc = -EACCES;
-> +            goto cleanup;
-> +        }
-> +        if (len != reqLen)
-> +            qemu_log_mask(LOG_GUEST_ERROR,
-> +             "%s:  Warning: dram map for SG array entry '%u' requested size '%lu' != mapped size '%lu'\n",
-> +             __func__, i, reqLen, len);
-> +
-> +        isLast = sgList->len & SG_LIST_LAST;
-> +
-> +        iov[i].iov_len = (hwaddr) (sgList->len & SG_LIST_LEN_MASK);
-> +        iov[i].iov_base = address_space_map(&s->dram_as,
-> +                            sgList->phy_addr & SG_LIST_ADDR_MASK,
-> +                            &iov[i].iov_len, false,
-> +                            MEMTXATTRS_UNSPECIFIED);
-> +        if (!iov[i].iov_base) {
-> +            qemu_log_mask(LOG_GUEST_ERROR,
-> +             "%s: failed to map dram for SG array entry '%u' for region '0x%x', len '%u'\n",
-> +             __func__, i, sgList->phy_addr & SG_LIST_ADDR_MASK,
-> +             sgList->len & SG_LIST_LEN_MASK);
-> +            rc = -EACCES;
-> +            goto cleanup;
-> +        }
-> +        if (iov[i].iov_len != (sgList->len & SG_LIST_LEN_MASK))
-> +            qemu_log_mask(LOG_GUEST_ERROR,
-> +             "%s:  Warning: dram map for SG region entry %u requested size %u != mapped size %lu\n",
-> +             __func__, i, (sgList->len & SG_LIST_LEN_MASK), iov[i].iov_len);
-> +
-> +
-> +        address_space_unmap(&s->dram_as, (void *) sgList, len, false,
-> +                            len);
-> +        size += iov[i].iov_len;
-> +        i++;
-> +    }
-> +
-> +    if (!isLast) {
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                     "%s: Error: Exhausted maximum of '%u' SG array entries\n",
-> +                     __func__, ASPEED_HACE_MAX_SG);
-> +        rc = -ENOTSUP;
-> +        goto cleanup;
-> +    }
-> +
-> +    if (size != reqSize)
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +         "%s: Warning: requested SG total size %u != actual size %lu\n",
-> +         __func__, reqSize, size);
-> +
-> +    rc = qcrypto_hash_bytesv(algo, iov, i, &digestBuf, &digestLen,
-> +                            &error_fatal);
-> +    if (rc < 0) {
-> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: qcrypto failed\n",
-> +                      __func__);
-> +        goto cleanup;
-> +    }
-> +
-> +    rc = address_space_write(&s->dram_as, dest, MEMTXATTRS_UNSPECIFIED,
-> +                             digestBuf, digestLen);
-> +    if (rc)
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "%s: address space write failed\n", __func__);
-> +    g_free(digestBuf);
-> +
-> +cleanup:
-> +
-> +    for (; i > 0; i--) {
-> +        address_space_unmap(&s->dram_as, iov[i - 1].iov_base,
-> +                            iov[i - 1].iov_len, false,
-> +                            iov[i - 1].iov_len);
-> +    }
-> +
-> +    /*
-> +     * Set status bits to indicate completion. Testing shows hardware sets
-> +     * these irrespective of HASH_IRQ_EN.
-> +     */
-> +    if (!rc) {
-> +        s->regs[R_STATUS] |= HASH_IRQ;
-> +    }
-> +
-> +    return rc;
+My understanding is that we are making a kvm call for each page that we
+want to migrate, right?
+
+Each time that we want to send it.
+
+Later, Juan.
+
+
 > +}
 > +
+> +int kvm_arm_mte_set_tags(uint64_t ipa, uint64_t len, uint8_t *buf)
+> +{
+> +    struct kvm_arm_copy_mte_tags args = {
+> +        .guest_ipa = ipa,
+> +        .length = len,
+> +        .addr = buf,
+> +        .flags = KVM_ARM_TAGS_TO_GUEST,
+> +    };
 > +
+> +    return kvm_vm_ioctl(kvm_state, KVM_ARM_MTE_COPY_TAGS, &args);
+> +}
+> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+> index 34f8daa377..bbb833d6c6 100644
+> --- a/target/arm/kvm_arm.h
+> +++ b/target/arm/kvm_arm.h
+> @@ -360,6 +360,8 @@ int kvm_arm_vgic_probe(void);
 >  
->  static uint64_t aspeed_hace_read(void *opaque, hwaddr addr, unsigned int size)
->  {
-> @@ -187,11 +302,6 @@ static void aspeed_hace_write(void *opaque, hwaddr addr, uint64_t data,
->                            "%s: HMAC engine command mode %"PRIx64" not implemented",
->                            __func__, (data & HASH_HMAC_MASK) >> 8);
->          }
-> -        if (data & HASH_SG_EN) {
-> -            qemu_log_mask(LOG_UNIMP,
-> -                          "%s: Hash scatter gather mode not implemented",
-> -                          __func__);
-> -        }
->          if (data & BIT(1)) {
->              qemu_log_mask(LOG_UNIMP,
->                            "%s: Cascaded mode not implemented",
-> @@ -204,7 +314,12 @@ static void aspeed_hace_write(void *opaque, hwaddr addr, uint64_t data,
->                          __func__, data & ahc->hash_mask);
->                  break;
->          }
-> -        do_hash_operation(s, algo);
-> +        if (data & HASH_SG_EN) {
-> +            s->regs[(R_HASH_SRC >> 2)] &= 0x7FFFFFF8;
-
-I think Joel introduced a class mask for this value.
-
-> +            do_hash_sg_operation(s, algo);
-> +        } else {
-> +            do_hash_operation(s, algo);
-> +        }
+>  void kvm_arm_pmu_set_irq(CPUState *cs, int irq);
+>  void kvm_arm_pmu_init(CPUState *cs);
+> +int kvm_arm_mte_get_tags(uint64_t ipa, uint64_t len, uint8_t *buf);
+> +int kvm_arm_mte_set_tags(uint64_t ipa, uint64_t len, uint8_t *buf);
 >  
->          if (data & HASH_IRQ_EN) {
->              qemu_irq_raise(s->irq);
-> diff --git a/include/hw/misc/aspeed_hace.h b/include/hw/misc/aspeed_hace.h
-> index 94d5ada95f..ead46afda9 100644
-> --- a/include/hw/misc/aspeed_hace.h
-> +++ b/include/hw/misc/aspeed_hace.h
-> @@ -40,4 +40,10 @@ struct AspeedHACEClass {
->      uint32_t hash_mask;
->  };
->  
-> +#define ASPEED_HACE_MAX_SG      256
-> +struct aspeed_sg_list {
-> +        uint32_t len;
-> +        uint32_t phy_addr;
-> +} __attribute__ ((__packed__));
-> +
-
-May be keep the definition in the .c file 
-
-Thanks,
-
-C. 
-
->  #endif /* _ASPEED_HACE_H_ */
-> 
+>  /**
+>   * kvm_arm_pvtime_init:
 

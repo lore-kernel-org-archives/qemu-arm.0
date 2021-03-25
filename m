@@ -1,112 +1,109 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp533589lfg;
-        Thu, 25 Mar 2021 08:43:12 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyCn8FAZTrQv/1sDmXEMF0XzhRYQHHtgavicJxZgwPbbmANc6eMXzxJjsgiweT9WDNVhIVE
-X-Received: by 2002:a92:6b0e:: with SMTP id g14mr7451563ilc.246.1616686992105;
-        Thu, 25 Mar 2021 08:43:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1616686992; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp609395lfg;
+        Thu, 25 Mar 2021 10:12:48 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwKu+fituBdX6D+hyd/R+mPXYtDVXXJ4DFrchrbVrTukeGO6gK3q3YcKjtoMsObjXRcb6av
+X-Received: by 2002:a02:605d:: with SMTP id d29mr8320967jaf.81.1616692368301;
+        Thu, 25 Mar 2021 10:12:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616692368; cv=none;
         d=google.com; s=arc-20160816;
-        b=Xw2ipV15k2XSg4AreTGdOJOVD2lb9n/TDGJw/nWMx49dtIhQVDYBO3Xp0q0xWgHcEC
-         UnazlWdZtOrl7FS1PCUknDMWDY8Om0yMX468p9IP2ez7yYZDn3UdRY1bPNnAGWvSDv9/
-         F3u/FQ6ZtRxoWMR1NALRAHFWcX3HA5d9DqFt7MbJJ0jUbwwnbQH6qqeUfrkOz2Fk1VFs
-         BMbNsQbD2QisbAzUTFkTRQtDFCnwpPIi7iLJ2JE6cb9NP4KFyVo0rpfMozHOog5i8H/c
-         j7TWlyM6gJZYE5tf5UuWj+CWyseKO9JsDfbAbwKIVQenLew5M74iwjACamnXhAvDWXhQ
-         iH3Q==
+        b=Jlinv7aty85i3iUIqzD8ABGhibQKndsLF05aB6OP2ZkKDgvx+9e2qbHRjhzARG1c3G
+         W87ZGGZARtKB9az4Jr8SqaGlEotbYs5qYaPtzHZdUdueMASfN977+v/XS2Qo94ScwQfF
+         udv8ibtaluQK3lhMoim+ahBEMxKdbWn8FsXD7mrTRDpLnQre/m7MPGccFiAJqAz71IxM
+         lVDpHAvSH0lkTAUYGxaD641vvwDSSkIjkkf0nA0TbLKpN+o5TXIfYNHYZX2+1wbRIkZG
+         tenK8g2xPK8kC8Q+kmodj0C+xS8rCvT384YQiieGEitwisfaNnChULy1H9N/DA5ojwxG
+         gk1w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:mime-version
-         :message-id:date:user-agent:references:in-reply-to:subject:to:from
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=UIJxEAlQj/HbemPN4KZdxgk+VH926zNpI+GeMP35nDc=;
-        b=nr8A+3CHnebMjRmFE1Awoh7GZhkdcdA2uGKXEF2G6d30D6TwTSIrtO8/i+p/mRqZc6
-         8IvW9A43jqFUl19tb0+8R8RaRyIejVn3PDn+WKajctdObrw2YGBzQjlr1j3N0m0JcNdz
-         HxDG6ob7wZaxapprUBQE7wxjZWp78Bw0o2AMw500j/agyTIBdpjogdftIZc/TxkZaam3
-         sE+7ZfRtTMUZSL44soTjIOXZOILr31PhUEC0UUgu1gYiENiSseHpIb1Z2Zk0ba8+KhCz
-         z2ZpPyxG1YvVqzQny8knd79+UAnJTyT0DCy/LqeuHPG91Am79HkCrM1S67SYvKBKil4L
-         qHfA==
+        bh=yd24CN/cEsMQNc/Y0vFp8HoTg/GNygss3BU1636GTgw=;
+        b=P4cCYbog2nXx8BA+3Fr8VY4U0VHAAHwhAHVc5u/yg53G+IyyTahWIdj8j9l3n5hkOw
+         TRFO6OozO6/XonDsvG3x07fBo6T8llCY8unUYT6YQlLHqu9XvABnIuubWoik5MEOAfFe
+         bpxIFajyiY5xirpRzm3kDjnlXq1iYiGTtpygB3IOFcyCgzDXZw8Ua1F2FqdkmKczBATf
+         5AOMMROmfavfP2NSh+YJs4hQ62J4Mz0NJfUH6z6inMdVImmnwzBTE9t97jH4wmZVI4CX
+         28PZ9w8qCBTrETicNGBnD3UCUuKAUblk3cMt4TMyI2Vq3SWrCfpiklYVUf9ZkuGEsqjY
+         G0Lg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=XMHLc66+;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=QgGnJTcA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y28si4687418iot.95.2021.03.25.08.43.11
+        by mx.google.com with ESMTPS id a4si4752197jat.82.2021.03.25.10.12.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Mar 2021 08:43:12 -0700 (PDT)
+        Thu, 25 Mar 2021 10:12:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=XMHLc66+;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=QgGnJTcA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60696 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50288 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lPS8d-0008JL-Bm
-	for alex.bennee@linaro.org; Thu, 25 Mar 2021 11:43:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43842)
+	id 1lPTXL-0002QR-J7
+	for alex.bennee@linaro.org; Thu, 25 Mar 2021 13:12:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42388)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1lPS3Z-00015x-Nt
- for qemu-arm@nongnu.org; Thu, 25 Mar 2021 11:37:59 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:46421)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1lPTON-0003as-LR
+ for qemu-arm@nongnu.org; Thu, 25 Mar 2021 13:03:32 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:50498)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1lPS3M-0007SI-2y
- for qemu-arm@nongnu.org; Thu, 25 Mar 2021 11:37:56 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1lPTOK-0004h3-3k
+ for qemu-arm@nongnu.org; Thu, 25 Mar 2021 13:03:30 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1616686661;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=UIJxEAlQj/HbemPN4KZdxgk+VH926zNpI+GeMP35nDc=;
- b=XMHLc66+7N8/bXnbJYt3wGEg2UULDN9/DEMdmjoA/UgiHPltALk9xVlq2sKuyPLtReIUPh
- 6BBatp6wYiAEDEl+qn+6D76y2PsGluYwcewMHJK+MEBp2uiDysK4fvj58mFK/qiCmopxvw
- nrHOXYYDYEOP96rHp/zEomtgou3VJ+c=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-432-afRaN347NI2hS1tk5KlPqA-1; Thu, 25 Mar 2021 11:37:38 -0400
-X-MC-Unique: afRaN347NI2hS1tk5KlPqA-1
-Received: by mail-wr1-f69.google.com with SMTP id r12so2815122wro.15
- for <qemu-arm@nongnu.org>; Thu, 25 Mar 2021 08:37:38 -0700 (PDT)
+ s=mimecast20190719; t=1616691805;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=yd24CN/cEsMQNc/Y0vFp8HoTg/GNygss3BU1636GTgw=;
+ b=QgGnJTcArgy/qT6cyJPQQ7/xkqMjpXytwbe6sjqNtAjNG+GQe/qsivnR41pjGAylHSznpc
+ MXGEY/lxvaVdH+VPth5kSiGHW2kP89Bd29OHOBYwyeHS4JFHWKt1dp0JdBnpyDAaR3BlB2
+ ttEzIwYLFnEAZ666j2ZB0i7OxCUSKmw=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-151-mvQ0DV_2N7S0AIbg0niNdA-1; Thu, 25 Mar 2021 13:03:20 -0400
+X-MC-Unique: mvQ0DV_2N7S0AIbg0niNdA-1
+Received: by mail-wm1-f72.google.com with SMTP id n17so64820wmi.2
+ for <qemu-arm@nongnu.org>; Thu, 25 Mar 2021 10:03:20 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:in-reply-to:references
- :user-agent:reply-to:date:message-id:mime-version;
- bh=UIJxEAlQj/HbemPN4KZdxgk+VH926zNpI+GeMP35nDc=;
- b=d57XnBRAjMP4BoR/Q9iCJIP+F8eSWzBR9A+dss28UnLzeruJxc1QKsm9z2/swUlXNh
- ooQjwRfd2PSbCREXussYDWzc9+KIs0RAWMGtmVztTk8diTi0clQWfE0qrhQC4Oo5evMM
- l5jCOijnVku8fFfaa/JisyuVsHjSMchTSsPOgPPxM+1hTyDCtd+gxRx+dTLeZgExhvww
- ZKhCQviqSF6jBJyltD6V1WocoK2uCuZjpFiDEBKkf2BJJf8h+ivwy494j09RE0Guvwbd
- ezl0TCm5XVaCwsNDKvIXR0E6gkwY/6XdMJ5xwG8p8fExPy4el8yGyyBuNvx7EXnvx0d1
- 6wpA==
-X-Gm-Message-State: AOAM531heP/ibWp5LR28rLgER5zOUqkdE9rHGw+c+Q8SE80asZElHgij
- nXM26426vV1VaQISf6/5Xa1H34KkRNdQzsQz8Aibj727b3/7/vig4dYXyiCXJkf9FYfXASKhbRw
- IMRXPUxNUicVi
-X-Received: by 2002:adf:f852:: with SMTP id d18mr9970693wrq.210.1616686657012; 
- Thu, 25 Mar 2021 08:37:37 -0700 (PDT)
-X-Received: by 2002:adf:f852:: with SMTP id d18mr9970665wrq.210.1616686656712; 
- Thu, 25 Mar 2021 08:37:36 -0700 (PDT)
-Received: from localhost (trasno.trasno.org. [83.165.45.250])
- by smtp.gmail.com with ESMTPSA id u20sm8445764wru.6.2021.03.25.08.37.36
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=yd24CN/cEsMQNc/Y0vFp8HoTg/GNygss3BU1636GTgw=;
+ b=ZDT9cQgiw6S1XjHIefvvKAav7irOhGQbs3dYPwf5QHox5JRb0Y369fkd38Coj6NlTn
+ Ve7o2gNKm3Eo/wSY5DRSp8/3mXe5DJ+LGhsIW199ECsIBQSYTjCfg/zSkjmYlf68xbtv
+ cSpKA2G2zr7AwkB6LMZv2xRY3FoCRLKFoGztysu44oPiYJfu1PlMsx7s4BolyJz1411R
+ Q2wWM2mZR6X4w2tnMUrs6KZzQ9TkAXGcPBvBdNzcNWSPM1ZGf58Z93GU2HlOL3TpqSmn
+ 6tReTZxSGCypn0jlad8sAuBrQCYlpVhO3drtBqFGFQIWPxX9+vZEHGFLHllcYEckgWyU
+ 6ahQ==
+X-Gm-Message-State: AOAM531t9jNeAMSmgrRIMJe+kbNJN9DFDYGJ/qGfmE4lst56wPQZJ0Fx
+ uuSucV6EKur9aqR8B63LP/uiuuYIhFlWuh/wWL6poT3p3d6aPNWQWu6TOxUkEIjI9fz5/OnTfth
+ OWjsY0lj/KycW
+X-Received: by 2002:a1c:1dd4:: with SMTP id d203mr8966828wmd.83.1616691798001; 
+ Thu, 25 Mar 2021 10:03:18 -0700 (PDT)
+X-Received: by 2002:a1c:1dd4:: with SMTP id d203mr8966784wmd.83.1616691797600; 
+ Thu, 25 Mar 2021 10:03:17 -0700 (PDT)
+Received: from redhat.com ([2a10:800e:f0d3:0:b69b:9fb8:3947:5636])
+ by smtp.gmail.com with ESMTPSA id m11sm8702227wri.44.2021.03.25.10.03.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 25 Mar 2021 08:37:36 -0700 (PDT)
-From: Juan Quintela <quintela@redhat.com>
-To: Haibo Xu <haibo.xu@linaro.org>
-Subject: Re: [RFC PATCH v2 4/5] Add migration support for KVM guest with MTE
-In-Reply-To: <881871e8394fa18a656dfb105d42e6099335c721.1615972140.git.haibo.xu@linaro.org>
- (Haibo Xu's message of "Wed, 17 Mar 2021 09:28:23 +0000")
-References: <cover.1615972140.git.haibo.xu@linaro.org>
- <881871e8394fa18a656dfb105d42e6099335c721.1615972140.git.haibo.xu@linaro.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
-Date: Thu, 25 Mar 2021 16:37:35 +0100
-Message-ID: <87y2ebmegw.fsf@secure.mitica>
+ Thu, 25 Mar 2021 10:03:17 -0700 (PDT)
+Date: Thu, 25 Mar 2021 13:03:14 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH v2 for-6.0?] hw/pci-host/gpex: Don't fault for unmapped
+ parts of MMIO and PIO windows
+Message-ID: <20210325130304-mutt-send-email-mst@kernel.org>
+References: <20210325163315.27724-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
+In-Reply-To: <20210325163315.27724-1-peter.maydell@linaro.org>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=quintela@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=quintela@redhat.com;
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=mst@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
@@ -114,7 +111,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -127,140 +124,159 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: quintela@redhat.com
-Cc: peter.maydell@linaro.org, drjones@redhat.com, richard.henderson@linaro.org,
- dgilbert@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- philmd@redhat.com
+Cc: Arnd Bergmann <arnd@arndb.de>, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
+ qemu-devel@nongnu.org, Dmitry Vyukov <dvyukov@google.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 659wgAv8gCuF
+X-TUID: R6b6LYhaQZ9N
 
-Haibo Xu <haibo.xu@linaro.org> wrote:
-> To make it easier to keep the page tags sync with
-> the page data, tags for one page are appended to
-> the data during ram save iteration.
->
-> This patch only add the pre-copy migration support.
-> Post-copy and compress as well as zero page saving
-> are not supported yet.
->
-> Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
+On Thu, Mar 25, 2021 at 04:33:15PM +0000, Peter Maydell wrote:
+> Currently the gpex PCI controller implements no special behaviour for
+> guest accesses to areas of the PIO and MMIO where it has not mapped
+> any PCI devices, which means that for Arm you end up with a CPU
+> exception due to a data abort.
+> 
+> Most host OSes expect "like an x86 PC" behaviour, where bad accesses
+> like this return -1 for reads and ignore writes.  In the interests of
+> not being surprising, make host CPU accesses to these windows behave
+> as -1/discard where there's no mapped PCI device.
+> 
+> The old behaviour generally didn't cause any problems, because
+> almost always the guest OS will map the PCI devices and then only
+> access where it has mapped them. One corner case where you will see
+> this kind of access is if Linux attempts to probe legacy ISA
+> devices via a PIO window access. So far the only case where we've
+> seen this has been via the syzkaller fuzzer.
+> 
+> Reported-by: Dmitry Vyukov <dvyukov@google.com>
+> Fixes: https://bugs.launchpad.net/qemu/+bug/1918917
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
+Acked-by: Michael S. Tsirkin <mst@redhat.com>
 
->  #define RAM_SAVE_FLAG_XBZRLE   0x40
->  /* 0x80 is reserved in migration.h start with 0x100 next */
->  #define RAM_SAVE_FLAG_COMPRESS_PAGE    0x100
-> +#define RAM_SAVE_FLAG_MTE              0x200
-
-Flags are really a scarce resource.  You are using one here, when you
-know that you will always have the feature enable (or not), so you can
-do better during negotiation IMHO.
-
-
-
-> +void precopy_enable_metadata_migration(void)
-> +{
-> +    if (!ram_state) {
-> +        return;
+> ---
+> v1->v2 changes: put in the hw_compat machinery.
+> 
+> Still not sure if I want to put this in 6.0 or not.
+> 
+>  include/hw/pci-host/gpex.h |  4 +++
+>  hw/core/machine.c          |  1 +
+>  hw/pci-host/gpex.c         | 56 ++++++++++++++++++++++++++++++++++++--
+>  3 files changed, 58 insertions(+), 3 deletions(-)
+> 
+> diff --git a/include/hw/pci-host/gpex.h b/include/hw/pci-host/gpex.h
+> index d48a020a952..fcf8b638200 100644
+> --- a/include/hw/pci-host/gpex.h
+> +++ b/include/hw/pci-host/gpex.h
+> @@ -49,8 +49,12 @@ struct GPEXHost {
+>  
+>      MemoryRegion io_ioport;
+>      MemoryRegion io_mmio;
+> +    MemoryRegion io_ioport_window;
+> +    MemoryRegion io_mmio_window;
+>      qemu_irq irq[GPEX_NUM_IRQS];
+>      int irq_num[GPEX_NUM_IRQS];
+> +
+> +    bool allow_unmapped_accesses;
+>  };
+>  
+>  struct GPEXConfig {
+> diff --git a/hw/core/machine.c b/hw/core/machine.c
+> index 257a664ea2e..9750fad7435 100644
+> --- a/hw/core/machine.c
+> +++ b/hw/core/machine.c
+> @@ -41,6 +41,7 @@ GlobalProperty hw_compat_5_2[] = {
+>      { "PIIX4_PM", "smm-compat", "on"},
+>      { "virtio-blk-device", "report-discard-granularity", "off" },
+>      { "virtio-net-pci", "vectors", "3"},
+> +    { "gpex-pcihost", "allow-unmapped-accesses", "false" },
+>  };
+>  const size_t hw_compat_5_2_len = G_N_ELEMENTS(hw_compat_5_2);
+>  
+> diff --git a/hw/pci-host/gpex.c b/hw/pci-host/gpex.c
+> index 2bdbe7b4561..a6752fac5e8 100644
+> --- a/hw/pci-host/gpex.c
+> +++ b/hw/pci-host/gpex.c
+> @@ -83,12 +83,51 @@ static void gpex_host_realize(DeviceState *dev, Error **errp)
+>      int i;
+>  
+>      pcie_host_mmcfg_init(pex, PCIE_MMCFG_SIZE_MAX);
+> +    sysbus_init_mmio(sbd, &pex->mmio);
+> +
+> +    /*
+> +     * Note that the MemoryRegions io_mmio and io_ioport that we pass
+> +     * to pci_register_root_bus() are not the same as the
+> +     * MemoryRegions io_mmio_window and io_ioport_window that we
+> +     * expose as SysBus MRs. The difference is in the behaviour of
+> +     * accesses to addresses where no PCI device has been mapped.
+> +     *
+> +     * io_mmio and io_ioport are the underlying PCI view of the PCI
+> +     * address space, and when a PCI device does a bus master access
+> +     * to a bad address this is reported back to it as a transaction
+> +     * failure.
+> +     *
+> +     * io_mmio_window and io_ioport_window implement "unmapped
+> +     * addresses read as -1 and ignore writes"; this is traditional
+> +     * x86 PC behaviour, which is not mandated by the PCI spec proper
+> +     * but expected by much PCI-using guest software, including Linux.
+> +     *
+> +     * In the interests of not being unnecessarily surprising, we
+> +     * implement it in the gpex PCI host controller, by providing the
+> +     * _window MRs, which are containers with io ops that implement
+> +     * the 'background' behaviour and which hold the real PCI MRs as
+> +     * subregions.
+> +     */
+>      memory_region_init(&s->io_mmio, OBJECT(s), "gpex_mmio", UINT64_MAX);
+>      memory_region_init(&s->io_ioport, OBJECT(s), "gpex_ioport", 64 * 1024);
+>  
+> -    sysbus_init_mmio(sbd, &pex->mmio);
+> -    sysbus_init_mmio(sbd, &s->io_mmio);
+> -    sysbus_init_mmio(sbd, &s->io_ioport);
+> +    if (s->allow_unmapped_accesses) {
+> +        memory_region_init_io(&s->io_mmio_window, OBJECT(s),
+> +                              &unassigned_io_ops, OBJECT(s),
+> +                              "gpex_mmio_window", UINT64_MAX);
+> +        memory_region_init_io(&s->io_ioport_window, OBJECT(s),
+> +                              &unassigned_io_ops, OBJECT(s),
+> +                              "gpex_ioport_window", 64 * 1024);
+> +
+> +        memory_region_add_subregion(&s->io_mmio_window, 0, &s->io_mmio);
+> +        memory_region_add_subregion(&s->io_ioport_window, 0, &s->io_ioport);
+> +        sysbus_init_mmio(sbd, &s->io_mmio_window);
+> +        sysbus_init_mmio(sbd, &s->io_ioport_window);
+> +    } else {
+> +        sysbus_init_mmio(sbd, &s->io_mmio);
+> +        sysbus_init_mmio(sbd, &s->io_ioport);
 > +    }
 > +
-> +    ram_state->metadata_enabled = true;
-> +}
-
-My understanding is that in your following patch, if mte is enabled, you
-will always sent mte tags, for all pages needed, right?
-
-> +static int save_normal_page_mte_tags(QEMUFile *f, uint8_t *addr)
-> +{
-> +    uint8_t *tag_buf = NULL;
-> +    uint64_t ipa;
-> +    int size = TARGET_PAGE_SIZE / MTE_GRANULE_SIZE;
+>      for (i = 0; i < GPEX_NUM_IRQS; i++) {
+>          sysbus_init_irq(sbd, &s->irq[i]);
+>          s->irq_num[i] = -1;
+> @@ -108,6 +147,16 @@ static const char *gpex_host_root_bus_path(PCIHostState *host_bridge,
+>      return "0000:00";
+>  }
+>  
+> +static Property gpex_host_properties[] = {
+> +    /*
+> +     * Permit CPU accesses to unmapped areas of the PIO and MMIO windows
+> +     * (discarding writes and returning -1 for reads) rather than aborting.
+> +     */
+> +    DEFINE_PROP_BOOL("allow-unmapped-accesses", GPEXHost,
+> +                     allow_unmapped_accesses, true),
+> +    DEFINE_PROP_END_OF_LIST(),
+> +};
 > +
-> +    if (kvm_physical_memory_addr_from_host(kvm_state, addr, &ipa)) {
-> +        /* Buffer for the page tags(one byte per tag) */
-> +        tag_buf = g_try_malloc0(size);
-
-size of the buffer is known at start of migration.  Just get a buffer
-and reuse it?
-
-Do zero pages have mte tags?  From migration point of view, a zero page
-is a page that is just full of zeros, i.e. nothing else special.
-Because you are not sending any for them.
-
-
-
-> @@ -1148,6 +1219,10 @@ static bool control_save_page(RAMState *rs, RAMBlock *block, ram_addr_t offset,
->  static int save_normal_page(RAMState *rs, RAMBlock *block, ram_addr_t offset,
->                              uint8_t *buf, bool async)
+>  static void gpex_host_class_init(ObjectClass *klass, void *data)
 >  {
-> +    if (rs->metadata_enabled) {
-> +        offset |= RAM_SAVE_FLAG_MTE;
-
-You don't really need the flag, for you normal pages are just
-TARGET_PAGE_SIZE + (TARGET_PAGE_SIZE/MTE_)
-
-
-> +    }
-> +
->      ram_counters.transferred += save_page_header(rs, rs->f, block,
->                                                   offset | RAM_SAVE_FLAG_PAGE);
->      if (async) {
-> @@ -1159,6 +1234,11 @@ static int save_normal_page(RAMState *rs, RAMBlock *block, ram_addr_t offset,
->      }
->      ram_counters.transferred += TARGET_PAGE_SIZE;
->      ram_counters.normal++;
-> +
-> +    if (rs->metadata_enabled) {
-
-See?  You are not checking the flag, you are checking the bool setup at
-the beggining of migration.
-
-> +        ram_counters.transferred += save_normal_page_mte_tags(rs->f, buf);
-> +    }
-> +
->      return 1;
+>      DeviceClass *dc = DEVICE_CLASS(klass);
+> @@ -117,6 +166,7 @@ static void gpex_host_class_init(ObjectClass *klass, void *data)
+>      dc->realize = gpex_host_realize;
+>      set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+>      dc->fw_name = "pci";
+> +    device_class_set_props(dc, gpex_host_properties);
 >  }
 >  
-> @@ -2189,6 +2269,7 @@ static void ram_state_reset(RAMState *rs)
->      rs->last_version = ram_list.version;
->      rs->ram_bulk_stage = true;
->      rs->fpo_enabled = false;
-> +    rs->metadata_enabled = false;
->  }
->  
->  #define MAX_WAIT 50 /* ms, half buffered_file limit */
-> @@ -3779,7 +3860,7 @@ static int ram_load_precopy(QEMUFile *f)
->              trace_ram_load_loop(block->idstr, (uint64_t)addr, flags, host);
->          }
->  
-> -        switch (flags & ~RAM_SAVE_FLAG_CONTINUE) {
-> +        switch (flags & ~(RAM_SAVE_FLAG_CONTINUE | RAM_SAVE_FLAG_MTE)) {
-
-Creating the flag is hurting you here also.
-
->          case RAM_SAVE_FLAG_MEM_SIZE:
->              /* Synchronize RAM block list */
->              total_ram_bytes = addr;
-> @@ -3849,6 +3930,9 @@ static int ram_load_precopy(QEMUFile *f)
->  
->          case RAM_SAVE_FLAG_PAGE:
->              qemu_get_buffer(f, host, TARGET_PAGE_SIZE);
-> +            if (flags & RAM_SAVE_FLAG_MTE) {
-> +                load_normal_page_mte_tags(f, host);
-> +            }
-
-I don't claim to understand the MTE, but my understanding is that if we
-are using MTE, all pages have to have MTE flags, right?
-
-So, somtehing like
-
-is_mte_enabled()
-
-that I told in the other thread looks like a good idea.
-
-Later, Juan.
-
->              break;
->  
->          case RAM_SAVE_FLAG_COMPRESS_PAGE:
+>  static void gpex_host_initfn(Object *obj)
+> -- 
+> 2.20.1
 

@@ -1,104 +1,103 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp528836lfg;
-        Thu, 25 Mar 2021 08:37:12 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxGkMehNjjgT82We2Samb10OS7ajvyYMuXer10mHucOxTYNXH/JSfw2ZtJ1kRFR0N6UpYRu
-X-Received: by 2002:a02:cd33:: with SMTP id h19mr7987858jaq.88.1616686632632;
-        Thu, 25 Mar 2021 08:37:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1616686632; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp529520lfg;
+        Thu, 25 Mar 2021 08:38:06 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyrZzC2kXxulZ1huaYt6FmdZUFC0r6EY+vdhEzHwLKQIJozyL8tiy9ztt9o+Lh370xpVBAG
+X-Received: by 2002:a5d:89d9:: with SMTP id a25mr6892011iot.69.1616686686285;
+        Thu, 25 Mar 2021 08:38:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616686686; cv=none;
         d=google.com; s=arc-20160816;
-        b=guGVMLKzugx1+WH35uXwv2slAZOqaYY+CqGggSqwBPe2rboVC7aJmMRd+TDhCJQ1ZI
-         3HF7nm5hVpnZHiGS4n73fQmHONuze/a9Z9vkc7jxqNg7R29Lg5o5QU9zvkmtiVFZ8ogl
-         Cl+5zS8yQcwuhh0bf4qRM2s/9dF6fk3saWFR7upGOEpbi/XlkTlQszcHG+I3gREffXB/
-         t0xx0zH0HuoZaNdU0s430XPN/pfTjFO/CFHH4lCJCifrMkBmXMyehu6AbXT+/1yBb2sI
-         UD3voOyXYloPnxTsC8r4XHLvYud5sliV6VzeD6eieOlyKcZWsigeler6t2+NyXhYRBj+
-         0lGg==
+        b=hUPb8LRHh/jqaQaNJS5AFkwzCAMMPxDgNJKkFh1zcmcDjNtUmNoCS/3E5fpxWSdbea
+         MCvTwXEG9QptphH3Z6NBxc7RL/RbT84ZNFDw/I+n9WYFgnId/NEilYNQcP6VNonvlHMt
+         AYnsZ0GwAnyHkVSS0jKeYdz5WNRJQ+VDTlbpBfFv32Ibls58goQXolrX6VJfn710sq23
+         oni9TzBs1/5CyqrHgpA+pPhYsmdM4Vy8/pw49ad9WVQjm3S82nywCJOfNhLkI1rGsYEC
+         l/IAhn7JGUgcpUyFtmEXsCRBF7YAO0pjRTDTgOCavTNxYCBgKvMT3S4fhJVr6GLgh24R
+         Z9cg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=qsbZ3WwBIAsRBGcGHbyvNlewlN2P0E/qqzYZ7ye59xs=;
-        b=Y6424IM9M3HyTFdyEe2TtD0MertzMw8SKH+RhcdQSA7Hbl3qOpGQIVXwsQd8N9ycII
-         Vq1byOhdoQzk7K4tO/zMTT5YmiCWbs5m7H9lJ7ZB9zZfz24QqobIH3su5bnVsgcky85t
-         aZ2i+qIjtFHRKtISoXG+QRPc6VCkteGd4/V6d/ff+UHEqdRTmynd6JQ+KCge0BoBhxfI
-         /PTTQb2Vm8d/eUQRyBxsPc+BH97C3f6Ztddun8iyGyQS+OqvmUNu0UYsNi0Dw/cSDm8a
-         V66flKWcRU6/bsSI4KiPuwCpOGvfdFSuXmOAfLdWvjVJzJgoM68TVozM8YhXxloCHg6k
-         qAIg==
+        bh=HBUJPboo8vzvo+P46JoUkwrV2UGz/XowQ0iwB317xoU=;
+        b=LuK8pltbYUTWWF20pUr478twaxqDuVo+CU5ar2vhP0g5Ez3rdyzyaUnNDIzAu7NNRS
+         LHoGP80vjWQWHpdo6yAQ4hZIVg9ToeRWrvZqXcyeZOJP5tVmsOzuybnoIrr77AoJkCpE
+         u+47tswemtzLx7BGBhz7dA/V02ioN2UmXo5AKqOKi+X9YG9nQwMFtCAig8nhv8WFBshE
+         eo1rlQh50KDvF3iOybNhVpSfFUBUkWEmkr4WqNlHMGx5W+hSDiB1G9sCeJ3PCyJ6LZjW
+         gLvswdrcAMON5eLaEby0S2qDpWn5C+nTv3fE1iG1jpmIRtbChwWXIPT3EbV8Rsxh+LYH
+         +ByQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Z0PnyL0O;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Vyomhw+u;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u8si4448476iop.38.2021.03.25.08.37.12
+        by mx.google.com with ESMTPS id v4si1586096iob.94.2021.03.25.08.38.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Mar 2021 08:37:12 -0700 (PDT)
+        Thu, 25 Mar 2021 08:38:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Z0PnyL0O;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Vyomhw+u;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:41020 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42190 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lPS2p-0000IC-TD
-	for alex.bennee@linaro.org; Thu, 25 Mar 2021 11:37:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42620)
+	id 1lPS3h-0000nL-HG
+	for alex.bennee@linaro.org; Thu, 25 Mar 2021 11:38:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42608)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lPRzB-0005E9-CJ
- for qemu-arm@nongnu.org; Thu, 25 Mar 2021 11:33:26 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e]:39559)
+ id 1lPRzA-0005E6-N3
+ for qemu-arm@nongnu.org; Thu, 25 Mar 2021 11:33:25 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a]:54104)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lPRz5-000564-Pw
- for qemu-arm@nongnu.org; Thu, 25 Mar 2021 11:33:25 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id
- d8-20020a1c1d080000b029010f15546281so3333747wmd.4
+ id 1lPRz1-00055q-JI
+ for qemu-arm@nongnu.org; Thu, 25 Mar 2021 11:33:23 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id g20so1414130wmk.3
  for <qemu-arm@nongnu.org>; Thu, 25 Mar 2021 08:33:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=qsbZ3WwBIAsRBGcGHbyvNlewlN2P0E/qqzYZ7ye59xs=;
- b=Z0PnyL0OgB70hT+woVqg8D4e8BzLbvaOplIzx5NzFRWKMNMXNkyi1rGkdwoVRoDhah
- 7knOo1YMezs1xVpXEogcqE9SKrrrznUtYpxV7hKXiMrpAHz4FgQepNvaiq3vImXE/ZD9
- g+LVxaRZpTza4yvxWL4oGem8y9Hc84FcYiC9Ouw6zBRTupTEXaeh3OqvCthYccj/IHC0
- 0dRThM/QyxnAc9O3pnYodMJ45XGq0Ga2dk6RXMeLVcyy9knlUFmAfnXHWgvRLVI8LKiF
- OuZsBXnDLkpnUj7YdQx5Ajer4lCH52KiOYpkr32Pb+KbhY8qupdY4YFUyJKeDeJmeRn/
- yvoA==
+ bh=HBUJPboo8vzvo+P46JoUkwrV2UGz/XowQ0iwB317xoU=;
+ b=Vyomhw+uoEfnfc3INjXZvtatCkD9AZ+Opmpsxz4Ayz/lLNEIW23EKRXk5T+AQcKtIb
+ oMWueOa/vaUXwMvD/5CHV8KKyCE2NJlc+BsowTrWsdSLzwn3ESUK9y1aYkvqJQGyOyFA
+ jXVwzjoc4O2IlTeSX0lF//lvZI3Az9T8M7PfZyyp3eL1dzHkS45wwUruJnuE/70oiuXT
+ fX3GDMQAb6gpso2j7dxTiHurmQiztMgt1W7yKwKyweskstdeFeeBeU2X7nodJs1JEAI+
+ NKifyw9k57osxYpHsHjrgvnEn9dNH/NYFfoiketadgZVI5iD9yRQ4ZOTsOkr0FgQganA
+ dEkg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=qsbZ3WwBIAsRBGcGHbyvNlewlN2P0E/qqzYZ7ye59xs=;
- b=kSNgeidyXvCCYgTZKWe+FKls1ZgX/Xjp7lCD1ts8mOfMwN9UE+sBI+qn57UXzgStlQ
- jQXUf+5C/JHYtbSYGW8Z5ST83UKkMuoGaAH50JcwDYHkUXLLzk3qhpGpAeEW+C6GQAMC
- +/SKO9aITasPLVxYPMtez4CQl4mu7Zxt/F4yyVIbMPfTretjNb7N6kuwoYpJfgBNxl26
- c+o4Qx1EHFRI67tfBWYjrvZIAVUZqxj0CJ/bq0tylBqZRb8LQNjArNYS44Y46kVUw+Xu
- ch4z2RyNdlcwezTCEQBEXu2yIdsbQ1AGAGFIayQBMFa2ApgNjMjczGc0SOF5IprkQZ65
- puKA==
-X-Gm-Message-State: AOAM5322i6w1xlyQXPW2ZllLMLy7fBAcgeBfohQhca43KEYt3EdQmiwr
- 8w7cUzVwM5LW3zc5NpVZuH6jRLG7ob0t3S3f
-X-Received: by 2002:a7b:c04d:: with SMTP id u13mr8489521wmc.83.1616686395042; 
- Thu, 25 Mar 2021 08:33:15 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id g11sm8004580wrw.89.2021.03.25.08.33.14
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ bh=HBUJPboo8vzvo+P46JoUkwrV2UGz/XowQ0iwB317xoU=;
+ b=kF1OClwGweuTYN/2A50hWj9kfHq4qlUGBngHjX0mxsiYXK5lnpH0y6rqDuLlP8KyHA
+ srKyCMyWQ93MNz8k4qLelEEiLOKyyxRtJ6v8U14e378pnnK+zTYEK3mzUDa4IoeUTzaM
+ vdt6/ALfSc6sq8oQwg+fS6gI6h3gD6ih5SlyMfmQvEBL5UYciLj4gAtGKxZs9hwKRWMa
+ ivpXWPNBLSWpvL3MMGVEzkdikJQkYyPTQAx0YOhRapvVvOIGgPugNG9/NC+sp2Ov97CV
+ FbWrjb3/HKTEL0yxMqnPYZMQcec0Qr/rOn8Ppy4N5Yx743Uv9lDBLmsQ1KLwGpT3ZLIp
+ nzrg==
+X-Gm-Message-State: AOAM532r/5MkO9K3wrs6lXTFz1Lh+FBmEfKgEGBGIpbdGowu6jf/j+A9
+ ghj9hZNk6rB3JGUrrNnEAVa1t28sExizW4cc
+X-Received: by 2002:a1c:f305:: with SMTP id q5mr8524371wmq.96.1616686394040;
  Thu, 25 Mar 2021 08:33:14 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id g11sm8004580wrw.89.2021.03.25.08.33.13
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 25 Mar 2021 08:33:13 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-6.0 2/4] machine: Provide a function to check the dynamic
- sysbus whitelist
-Date: Thu, 25 Mar 2021 15:33:08 +0000
-Message-Id: <20210325153310.9131-3-peter.maydell@linaro.org>
+Subject: [PATCH for-6.0 1/4] include/hw/boards.h: Document
+ machine_class_allow_dynamic_sysbus_dev()
+Date: Thu, 25 Mar 2021 15:33:07 +0000
+Message-Id: <20210325153310.9131-2-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210325153310.9131-1-peter.maydell@linaro.org>
 References: <20210325153310.9131-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -125,98 +124,42 @@ Cc: Eduardo Habkost <ehabkost@redhat.com>,
  David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DFWhu8MJXo7/
+X-TUID: /JpE8pE5MW/r
 
-Provide a new function dynamic_sysbus_dev_allowed() which checks
-the per-machine whitelist of dynamic sysbus devices and returns
-a boolean result indicating whether the device is whitelisted.
-We can use this in the implementation of validate_sysbus_device(),
-but we will also need it so that machine hotplug callbacks can
-validate devices rather than assuming that any sysbus device
-might be hotpluggable into the platform bus.
+The function machine_class_allow_dynamic_sysbus_dev() is currently
+undocumented; add a doc comment.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/boards.h | 24 ++++++++++++++++++++++++
- hw/core/machine.c   | 21 ++++++++++++++++-----
- 2 files changed, 40 insertions(+), 5 deletions(-)
+ include/hw/boards.h | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
 diff --git a/include/hw/boards.h b/include/hw/boards.h
-index 27106abc11d..609112a4e1a 100644
+index 4a90549ad85..27106abc11d 100644
 --- a/include/hw/boards.h
 +++ b/include/hw/boards.h
-@@ -51,6 +51,30 @@ void machine_set_cpu_numa_node(MachineState *machine,
-  */
- void machine_class_allow_dynamic_sysbus_dev(MachineClass *mc, const char *type);
+@@ -36,7 +36,21 @@ void machine_set_cpu_numa_node(MachineState *machine,
+                                const CpuInstanceProperties *props,
+                                Error **errp);
  
 +/**
-+ * device_is_dynamic_sysbus: test whether device is a dynamic sysbus device
++ * machine_class_allow_dynamic_sysbus_dev: Add type to list of valid devices
 + * @mc: Machine class
-+ * @dev: device to check
++ * @type: type to whitelist (should be a subtype of TYPE_SYS_BUS_DEVICE)
 + *
-+ * Returns: true if @dev is a sysbus device on the machine's whitelist
-+ * of dynamically pluggable sysbus devices; otherwise false.
-+ *
-+ * This function checks whether @dev is a valid dynamic sysbus device,
-+ * by first confirming that it is a sysbus device and then checking it
-+ * against the whitelist of permitted dynamic sysbus devices which has
-+ * been set up by the machine using machine_class_allow_dynamic_sysbus_dev().
-+ *
-+ * It is valid to call this with something that is not a subclass of
-+ * TYPE_SYS_BUS_DEVICE; the function will return false in this case.
-+ * This allows hotplug callback functions to be written as:
-+ *     if (device_is_dynamic_sysbus(mc, dev)) {
-+ *         handle dynamic sysbus case;
-+ *     } else if (some other kind of hotplug) {
-+ *         handle that;
-+ *     }
++ * Add the QOM type @type to the list of devices of which are subtypes
++ * of TYPE_SYS_BUS_DEVICE but which are still permitted to be dynamically
++ * created (eg by the user on the command line with -device).
++ * By default if the user tries to create any devices on the command line
++ * that are subtypes of TYPE_SYS_BUS_DEVICE they will get an error message;
++ * for the special cases which are permitted for this machine model, the
++ * machine model class init code must call this function to whitelist them.
 + */
-+bool device_is_dynamic_sysbus(MachineClass *mc, DeviceState *dev);
+ void machine_class_allow_dynamic_sysbus_dev(MachineClass *mc, const char *type);
 +
  /*
   * Checks that backend isn't used, preps it for exclusive usage and
   * returns migratable MemoryRegion provided by backend.
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index 9935c6ddd56..8d97094736a 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -529,20 +529,31 @@ void machine_class_allow_dynamic_sysbus_dev(MachineClass *mc, const char *type)
-     QAPI_LIST_PREPEND(mc->allowed_dynamic_sysbus_devices, g_strdup(type));
- }
- 
--static void validate_sysbus_device(SysBusDevice *sbdev, void *opaque)
-+bool device_is_dynamic_sysbus(MachineClass *mc, DeviceState *dev)
- {
--    MachineState *machine = opaque;
--    MachineClass *mc = MACHINE_GET_CLASS(machine);
-     bool allowed = false;
-     strList *wl;
-+    Object *obj = OBJECT(dev);
-+
-+    if (!object_dynamic_cast(obj, TYPE_SYS_BUS_DEVICE)) {
-+        return false;
-+    }
- 
-     for (wl = mc->allowed_dynamic_sysbus_devices;
-          !allowed && wl;
-          wl = wl->next) {
--        allowed |= !!object_dynamic_cast(OBJECT(sbdev), wl->value);
-+        allowed |= !!object_dynamic_cast(obj, wl->value);
-     }
- 
--    if (!allowed) {
-+    return allowed;
-+}
-+
-+static void validate_sysbus_device(SysBusDevice *sbdev, void *opaque)
-+{
-+    MachineState *machine = opaque;
-+    MachineClass *mc = MACHINE_GET_CLASS(machine);
-+
-+    if (!device_is_dynamic_sysbus(mc, DEVICE(sbdev))) {
-         error_report("Option '-device %s' cannot be handled by this machine",
-                      object_class_get_name(object_get_class(OBJECT(sbdev))));
-         exit(1);
 -- 
 2.20.1
 

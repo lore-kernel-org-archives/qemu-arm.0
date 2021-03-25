@@ -1,160 +1,168 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp494301lfg;
-        Thu, 25 Mar 2021 08:01:58 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw54XZO1sQjde1E2LmkmE4ZyzV3Aly0DkJ7a9Ar6ViY31mVYhUTXw1vwbT94XYMoG6xcMJZ
-X-Received: by 2002:a6b:b415:: with SMTP id d21mr6706834iof.149.1616684518377;
-        Thu, 25 Mar 2021 08:01:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1616684518; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp526570lfg;
+        Thu, 25 Mar 2021 08:34:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJytwhhxQr5Oh5iPri1GOfRVVu3X0m5rDin5ll60RQZPa4aGjz+4/DL7FQB0LVax5QTfPywn
+X-Received: by 2002:a05:6e02:1e01:: with SMTP id g1mr7151856ila.192.1616686462382;
+        Thu, 25 Mar 2021 08:34:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616686462; cv=none;
         d=google.com; s=arc-20160816;
-        b=hM0tWodrUEmb85zZ8vQ5Wubkd+WTX2lwYOdwLABvmDi/Zj2OyEMhRUD2VtIrWkqooz
-         qV5/3rQOHrTKrSrvleDD9lWXYE7lIlQYmt6sErkLdsVaAeym/e7m/jW0pde04tw7JsOC
-         DiD9Qua9QtyofZtkQT2q+8k0YF9TYBgC9cs2gaXDz4bRTqBJ2lsPVnthVeiewxoFsY3P
-         /G1CdRSdSRFP+JiLErbgHcrTyG/ogtkgSBwEuLQECnRSPpBr6Y5iMEO//8OiA5ti3p0F
-         uTdWZMxHp2lFZ5rLlnjn9+oxVi9DM0MeewPfGbj9Cgv/Sc2KBHa/tDy+C8fru5SoZxVH
-         7dGw==
+        b=d4KzBHdR5cMamWN74RgPX8VQeM7aXbG4i7Pt6EV3BkeoBKrmI10N+bLj+12upGYwkr
+         z9D+EJtFfljvgcCH1U2TmjVWiBxm9znDlnwSx+VrXy8DO0aOsYoXQInMlIxsVqckYeVr
+         QzH1zC6WEOkrqB+WPskXe8aqKz03PoZbOeRaj5G0A9xFPa1Rbo+O1v7+yIPQmB/9jbMy
+         rTN9zNGmJQqaJcnSbxAhU0m7yVAzEXJDjDh3V+PCVBTjwFiVExgcWg5SOBaWRsnX87kt
+         HJzwKSjdDvRk3/FQ9uS0U52/eDStUYWr9ohBOgm8KFlmsilnRChsbISdgWqHW+rwLoD5
+         eBRg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=0rJMh0y0ddtRVjV56MbL77inVy+ML7ywKCz7f783g4I=;
-        b=ajufqSJ4+7zeJ9SxWzC3hvEYffgi8do7Q9kbTtALsRMxqCRB4DI69Ooy4bSSKMS+VS
-         VjMj0vOVR9+N0KbA4CwbInBnt1GamSUAZBZL8PHKkwfWCaeQ5V0JT9z6RrJzjfA5jY9d
-         NxL3hs7n81BglvvzYfrTqR5rAzzE96IGKppqUgQilmc/Z0NR+NIC4E7oqPtgvu3Bni/R
-         eNqjrFOkkKdGrLQdJgEE48MYCTNWjFeteiEMUcObhHvUpb2YDUSJ5bg4G3syGA8xoN8i
-         jxiiEt6cwIsGg23TPZMcNdxhEzVYL2ur5wBRLvsGbKFs7yBySXvCEjT8Z2ogEcOitoXZ
-         az4g==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=IxDNo1Allqz7OOOia7vB67LRCL15GAaiRHjRAX0Tx7I=;
+        b=omBz/S5cR2o7ktjNHqylXVQkHPcAS/lK3tRY368j0Ww0zJon4JvWJK+XlZmrqi1fa0
+         KJTGqXG4kjxUBSfDSQPCO3jBPw0ArdhTtokLPNvYpCATkogOo4iQvDzFqd4Q4YvckGBz
+         P3A3AKdoQQWzWx7V4yYFyfloffuJs6/JYJ7na8SMoHaJNUFcKAUwXUeo0ECQMz9ha2iL
+         s2kkMuX4BUie74xn5ENFMcQNrAtEJ7fM0ZQDILz6M/he2n6B1bG99yTfIQflxNLZsoD3
+         cf32Vy/C8lPZato3Cek+pjGRtDxfZzekKHFw4PyMs7vXmlOrTy4li3YDxp8kaLNYMqc/
+         xFuQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="ULZ/tBdQ";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=HuWgQT4d;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s1si3911580iob.72.2021.03.25.08.01.58
+        by mx.google.com with ESMTPS id w4si722900ilo.99.2021.03.25.08.34.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Mar 2021 08:01:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 25 Mar 2021 08:34:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="ULZ/tBdQ";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45458 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=HuWgQT4d;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:33234 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lPRUj-0007ys-M8
-	for alex.bennee@linaro.org; Thu, 25 Mar 2021 11:01:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60188)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lPS05-0005Ts-Mv
+	for alex.bennee@linaro.org; Thu, 25 Mar 2021 11:34:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42598)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lPRSF-0006ts-OU
- for qemu-devel@nongnu.org; Thu, 25 Mar 2021 10:59:23 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:39418)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lPRS9-0002Tz-Rp
- for qemu-devel@nongnu.org; Thu, 25 Mar 2021 10:59:23 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1616684354;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=0rJMh0y0ddtRVjV56MbL77inVy+ML7ywKCz7f783g4I=;
- b=ULZ/tBdQuHLr/98tEhe2bpT19Kc5KUTnrz2xnDy3HDpY9taWxmqsJz0xMWzz72Mb+Nkhwi
- S/0uOCeGhix/gCAhy5zscxwD8ulNx4pqjXzU/eEtbiwMLbV1+dAM9dwRAr4Uil3B5yuKXW
- wDJVvjG46FGZnYyvXh9oiGce+u8OJvg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-60--HCPVSKoODaTmTZjCTo0xA-1; Thu, 25 Mar 2021 10:59:12 -0400
-X-MC-Unique: -HCPVSKoODaTmTZjCTo0xA-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A1DB9801FCE;
- Thu, 25 Mar 2021 14:59:10 +0000 (UTC)
-Received: from [10.36.112.13] (ovpn-112-13.ams2.redhat.com [10.36.112.13])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 7328210013D7;
- Thu, 25 Mar 2021 14:59:08 +0000 (UTC)
-Subject: Re: [PATCH] hw/arm/smmuv3: Drop unused CDM_VALID() and is_cd_valid()
-To: Zenghui Yu <yuzenghui@huawei.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, peter.maydell@linaro.org
-References: <20210325142702.790-1-yuzenghui@huawei.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <a6d396c7-128f-a16d-d872-286520e6da86@redhat.com>
-Date: Thu, 25 Mar 2021 15:59:07 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.0
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lPRz9-0005Dy-CY
+ for qemu-arm@nongnu.org; Thu, 25 Mar 2021 11:33:24 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436]:41718)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lPRz0-00054U-S9
+ for qemu-arm@nongnu.org; Thu, 25 Mar 2021 11:33:21 -0400
+Received: by mail-wr1-x436.google.com with SMTP id b9so2706344wrt.8
+ for <qemu-arm@nongnu.org>; Thu, 25 Mar 2021 08:33:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=IxDNo1Allqz7OOOia7vB67LRCL15GAaiRHjRAX0Tx7I=;
+ b=HuWgQT4dZMTapAWP00yWoc7NuPdw86WlZEU22A0VzI2aNpbTv9CoTM0zgyYvNsj4RE
+ 57he1t63r5RsNPu+LC9ojZyrAjZhyj8qIIfX2vA+1ae2GM2fxtPoDJ6Nf/MqqjEpRQbN
+ 2XyW3LBWKW3xlF08TG9XqqOa/1vNLl7UEiKHAXlSAx9jtd79TfLCzwclMCF10izhr+/j
+ DEEtD2JPiy+uNCHNaJu8By+OKoaJU9GFvkN5BHkv2C+IrlhnNbh7JGm3sN98JnuoZurv
+ w/ESQZAKFC8a1kyiM24xSYpY5sAepV7ez119ILf8sAcI5qlgL/VX/pKc2UalX308nyB7
+ mBLQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=IxDNo1Allqz7OOOia7vB67LRCL15GAaiRHjRAX0Tx7I=;
+ b=t8xCsOPQVfJffBrstAl+txXanYF16EEUqBRDBvdg2IJsHeQaVzdI/Zb4p/dafPNMM3
+ ifIpPScSFGrwr3LDapkFM2spRKe2PjS5wCrUAIh6a9rE28q4UD0goUJX/m996EhUr/PF
+ 8120Mf0dT9+zoi6e06roZbc9WfD2jakfWO2ZZjImw9EByAzpLCouMdQ1AKCUvHF+sxIf
+ c1EHj/XxnP0rbUo/FaoRtweaL/FO6gxPwZHM6UQsZv7OQJ1Yv12s/tNSsSvdMu+VUlRE
+ 7aDVDL3GpzaGUYJuGDvXYfR08V3belIHX148FWKrpP5JcdyabLm/LxLBzmZM71BdYKcG
+ 86Qw==
+X-Gm-Message-State: AOAM531cz+Km/xprwlIMBx/kttELaXXa6mejAYKlQ1MyZz6NpMMRJYDJ
+ BiYBjBV5wwuV3W8slWqJ8Fkh5EuajFqyD55l
+X-Received: by 2002:adf:a59a:: with SMTP id g26mr9652377wrc.271.1616686393076; 
+ Thu, 25 Mar 2021 08:33:13 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id g11sm8004580wrw.89.2021.03.25.08.33.11
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 25 Mar 2021 08:33:12 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH for-6.0 0/4] Don't treat all sysbus devices as hotpluggable
+Date: Thu, 25 Mar 2021 15:33:06 +0000
+Message-Id: <20210325153310.9131-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-In-Reply-To: <20210325142702.790-1-yuzenghui@huawei.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x436.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: wanghaibin.wang@huawei.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GNucltgIvcy1
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Eduardo Habkost <ehabkost@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Greg Kurz <groug@kaod.org>,
+ qemu-ppc@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Igor Mammedov <imammedo@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: DsrLeMYtyU5N
 
-Hi Zenghui,
+On the two machines which have the "platform bus" (ppc e500 and arm
+virt) we currently treat all TYPE_SYS_BUS_DEVICE devices as being
+hotpluggable in the device callbacks, and try to plug those devices
+into the platform bus.  This is far too broad, because only a handful
+of devices are actually valid to plug into the platform bus. 
+Moreover, if a device which is pluggable for some other reason (like
+a PCI device) happens to use a sysbus device internally as part of
+its implementation, the hotplug callback will incorrectly grab that
+sysbus device, probably resulting in an assertion failure.
 
-On 3/25/21 3:27 PM, Zenghui Yu wrote:
-> They were introduced in commit 9bde7f0674fe ("hw/arm/smmuv3: Implement
-> translate callback") but never actually used. Drop them.
-> 
-> Signed-off-by: Zenghui Yu <yuzenghui@huawei.com>
-> ---
->  hw/arm/smmuv3-internal.h | 7 -------
->  1 file changed, 7 deletions(-)
-> 
-> diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
-> index b6f7e53b7c..3dac5766ca 100644
-> --- a/hw/arm/smmuv3-internal.h
-> +++ b/hw/arm/smmuv3-internal.h
-> @@ -595,13 +595,6 @@ static inline int pa_range(STE *ste)
->  #define CD_A(x)          extract32((x)->word[1], 14, 1)
->  #define CD_AARCH64(x)    extract32((x)->word[1], 9 , 1)
->  
-> -#define CDM_VALID(x)    ((x)->word[0] & 0x1)
-> -
-> -static inline int is_cd_valid(SMMUv3State *s, STE *ste, CD *cd)
-> -{
-> -    return CD_VALID(cd);
-> -}
-> -
->  /**
->   * tg2granule - Decodes the CD translation granule size field according
->   * to the ttbr in use
-> 
-Acked-by: Eric Auger <eric.auger@redhat.com>
+Mostly PCI devices don't use sysbus devices internally, so the only
+case we've encountered so far is the not-valid-anyway
+ qemu-system-ppc64 -M ppce500 -device macio-oldworld
+but we might create more in future.
 
-Thanks
+This series restricts hotpluggability of sysbus devices on these
+platforms to those devices which are on the dynamic sysbus whitelist
+(which we were maintaining anyway).  With it, the above ppc
+commandline stops asserting and instead fails cleanly with
+  qemu-system-ppc64: Device heathrow is not supported by this machine yet.
 
-Eric
+Patch 1 is an API doc improvement while I was in the header file
+anyway.
+
+thanks
+-- PMM
+
+Peter Maydell (4):
+  include/hw/boards.h: Document machine_class_allow_dynamic_sysbus_dev()
+  machine: Provide a function to check the dynamic sysbus whitelist
+  hw/arm/virt: Only try to add valid dynamic sysbus devices to platform
+    bus
+  hw/ppc/e500plat: Only try to add valid dynamic sysbus devices to
+    platform bus
+
+ include/hw/boards.h | 38 ++++++++++++++++++++++++++++++++++++++
+ hw/arm/virt.c       |  8 ++++++--
+ hw/core/machine.c   | 21 ++++++++++++++++-----
+ hw/ppc/e500plat.c   |  8 ++++++--
+ 4 files changed, 66 insertions(+), 9 deletions(-)
+
+-- 
+2.20.1
 

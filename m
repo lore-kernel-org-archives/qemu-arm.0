@@ -1,176 +1,167 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1185148lfg;
-        Fri, 26 Mar 2021 02:29:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwrp6+9JzhSR8zv+QFduXitVXY2kdldc/gf4LemZr7sR7iV+DDjKfLKD9XbiwyV+41ljqH2
-X-Received: by 2002:a25:d916:: with SMTP id q22mr17895371ybg.411.1616750961585;
-        Fri, 26 Mar 2021 02:29:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1616750961; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp457816lfg;
+        Thu, 25 Mar 2021 07:18:44 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzWz2imolgv1TIfN5j6JyTuwlyfQLTk+sCA6zXAtRC8yBIW9F7ZVI+G0mOg/IP3uu7BoW2Z
+X-Received: by 2002:a02:8801:: with SMTP id r1mr7912203jai.51.1616681924756;
+        Thu, 25 Mar 2021 07:18:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616681924; cv=none;
         d=google.com; s=arc-20160816;
-        b=heFSomh2IBfjxr25RBvtTwR+5QrMghui3X69m4fHCwYN/4Vn2rLHMME53+1qgMJRJo
-         amZyYOYldEJLl9Ig2v5F176eThmgzGAFhai3p3VanvXSa2ttcExakgK6dZujMIrJhd6Q
-         Ye9bz7/an9BlvVZnNwo36hNOwMOPb57z+tgUDWdhnD/IgZncNgNiK1s0+00h0fjqHmso
-         nZcc2sXpEvbqaL1du+GMxMh8hfMSzVywGsB7rB/xzNXsCe/QSHJG4nFNmYU1KDq4gkH6
-         aD5+F/MWFoLblA4Ps/mwXFuviNF73vtcAW8IwlODNginex2I6+TwbG58+xZed/UjZs8H
-         aInQ==
+        b=taDLkzB7tnJU+Bo7icnKlIjmY1u/IUydSw505ZQdyJjdCJvt813y/LsZQWBsXb9YNv
+         Ih8v441wHXageLDnR9oDVFADIN3cYUCqUf35yKh91RxUiAw3ka6uuFfCkBudWsigTwcJ
+         6xPxvCz6qSnyinmOfCh72jvbh281fEVu69VA032+aCA4S6QqyHQu/+ThQmvZfgBOLNs0
+         tJbPJqBnTXxfFQfI2sG/IaNxJKeB8vPpgmrU6+EVYjWqvq+9uILEsOryxFk0xA+/RoP0
+         lvaq/drNuQsRMMqZLkHXzH6830BEc2B0bIh6PbNgY5q2wsMNDPiuAL23qJ1PLmwCF2bx
+         lbvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=e8t2iYkiXXmY7OnG3w5pEugsIdsJyEuw+n/LI4Taouo=;
-        b=MNybGp/Y6oJWnbtQ67DrCstsRUPubm811Sw2iZiHP33WQvo0kehnivztcQKg0xq1zz
-         Kx/DlVUdYadNIyC+lefOjLTW0tyWTAehNUyawNaMaA2TNGNemf0G6SBMWVKfeoP3Fnkq
-         d19xVS2UGnjVYlVz8ea9dcLEStT23FmjdXfhvfFuXD5tokCwF1j+cntHHR3ZM7pky+aK
-         U2lxA6SsvvmvcM+vfP3fKiCLMv0fAk2KEUlfTQCKYPE+MA1Vr2C9zbLA6QCGXCO+A5Dz
-         GMRrAyL3BukBAAbGP0G8Y0LtDHMcLsZVtvm6s3E2aJ8JeEvsE+sWe2RAvnFeDeuJHRqx
-         GHeg==
+         :message-id:from:references:to:subject;
+        bh=VPyegNcCAlxdGkiqWTN5GoKQ04juoez02pRiMPzV5wo=;
+        b=KgthBkCAQn8mUU/9gbUvnF7GpePl7q0KK+jX+3fJaYv3qMPfSxiYEzdnCdAS805vyp
+         2k4rOGn/vDLtbe1LUSUUa+wigpHks60PixHISWyxpgaDq3irmZ5uCgr0Dgzy+nsETaIW
+         oD2Ai9b32aCh0zM7LqdFvwA9K+VRvNEPFSfGX7d4COxsLgsMH2P2t8pS7qv5hvBIuoS4
+         b6640LLqz30snTfUDurB19eQ0PaMfEnsWbsLuH59aETz5RBxWjz7O2Mzrr1ZDTkuVxpS
+         l9ofnWyY15O2JxNBAkLkpXBip28sIXU3lt8tSlS+5nmOglTbhNmJQn8QnB3g5lDELMdm
+         oWkg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hAbit58P;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h63si7828505ybi.46.2021.03.26.02.29.21
+        by mx.google.com with ESMTPS id b12si3964901jaq.101.2021.03.25.07.18.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Mar 2021 02:29:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 25 Mar 2021 07:18:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hAbit58P;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40314 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Received: from localhost ([::1]:37790 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lPimO-0001FX-Rz
-	for alex.bennee@linaro.org; Fri, 26 Mar 2021 05:29:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46592)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lPQou-0004fR-3I
+	for alex.bennee@linaro.org; Thu, 25 Mar 2021 10:18:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45682)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lPikQ-00080I-K7
- for qemu-devel@nongnu.org; Fri, 26 Mar 2021 05:27:18 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:56701)
+ (Exim 4.90_1) (envelope-from <yuzenghui@huawei.com>)
+ id 1lPQom-0004f9-MW; Thu, 25 Mar 2021 10:18:36 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:4308)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lPikO-0002wa-QY
- for qemu-devel@nongnu.org; Fri, 26 Mar 2021 05:27:18 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1616750835;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=e8t2iYkiXXmY7OnG3w5pEugsIdsJyEuw+n/LI4Taouo=;
- b=hAbit58P95ky17s4nyJMKG0k/QpBTOmOtu0v/bDtRdeCJouH4mIxZTU6IdyNjDybG5+RC4
- 0fs72hHKMGLRyE8Kl0SFqffYeHz466kqsd0QCAkfxcwfGqgOooyaqS2ooTfCFHIaOmVDXQ
- 78fVXjRHZ+lbCQ8LHgs2tPgjuDC3iYQ=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-298-Qv6e_CGxOr2vDHu8vTkVYg-1; Fri, 26 Mar 2021 05:27:07 -0400
-X-MC-Unique: Qv6e_CGxOr2vDHu8vTkVYg-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 90ACD10621A3;
- Fri, 26 Mar 2021 09:27:05 +0000 (UTC)
-Received: from [10.36.112.13] (ovpn-112-13.ams2.redhat.com [10.36.112.13])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id A4BDE6A8F0;
- Fri, 26 Mar 2021 09:27:02 +0000 (UTC)
-Subject: Re: [PATCH for-6.0 1/4] include/hw/boards.h: Document
- machine_class_allow_dynamic_sysbus_dev()
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20210325153310.9131-1-peter.maydell@linaro.org>
- <20210325153310.9131-2-peter.maydell@linaro.org>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <af25a32c-6bff-c44c-ff9c-65721d5e9e54@redhat.com>
-Date: Fri, 26 Mar 2021 10:27:00 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.0
+ (Exim 4.90_1) (envelope-from <yuzenghui@huawei.com>)
+ id 1lPQoj-0003Hj-Sj; Thu, 25 Mar 2021 10:18:36 -0400
+Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.60])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4F5nFW1t79zpVSK;
+ Thu, 25 Mar 2021 22:15:43 +0800 (CST)
+Received: from [10.174.185.179] (10.174.185.179) by
+ DGGEMS414-HUB.china.huawei.com (10.3.19.214) with Microsoft SMTP Server id
+ 14.3.498.0; Thu, 25 Mar 2021 22:18:05 +0800
+Subject: Re: [PATCH v3 6/7] hw/arm/smmuv3: Fix SMMU_CMD_CFGI_STE_RANGE handling
+To: Eric Auger <eric.auger@redhat.com>, <eric.auger.pro@gmail.com>,
+ <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <peter.maydell@linaro.org>,
+ <mst@redhat.com>, <jean-philippe@linaro.org>, <peterx@redhat.com>,
+ <jasowang@redhat.com>, <pbonzini@redhat.com>
+References: <20210309102742.30442-1-eric.auger@redhat.com>
+ <20210309102742.30442-7-eric.auger@redhat.com>
+From: Zenghui Yu <yuzenghui@huawei.com>
+Message-ID: <7fdc3340-51b5-3a89-7d41-2eac2c768829@huawei.com>
+Date: Thu, 25 Mar 2021 22:18:04 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.9.0
 MIME-Version: 1.0
-In-Reply-To: <20210325153310.9131-2-peter.maydell@linaro.org>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <20210309102742.30442-7-eric.auger@redhat.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Originating-IP: [10.174.185.179]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.190; envelope-from=yuzenghui@huawei.com;
+ helo=szxga04-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <ehabkost@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Greg Kurz <groug@kaod.org>,
- qemu-ppc@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LovSlR3hy3G1
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: vivek.gautam@arm.com, shameerali.kolothum.thodi@huawei.com,
+ wanghaibin.wang@huawei.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 0A00Ju8NDl5c
 
-Hi Peter,
-
-On 3/25/21 4:33 PM, Peter Maydell wrote:
-> The function machine_class_allow_dynamic_sysbus_dev() is currently
-> undocumented; add a doc comment.
+On 2021/3/9 18:27, Eric Auger wrote:
+> If the whole SID range (32b) is invalidated (SMMU_CMD_CFGI_ALL),
+> @end overflows and we fail to handle the command properly.
 > 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  include/hw/boards.h | 14 ++++++++++++++
->  1 file changed, 14 insertions(+)
+> Once this gets fixed, the current code really is awkward in the
+> sense it loops over the whole range instead of removing the
+> currently cached configs through a hash table lookup.
 > 
-> diff --git a/include/hw/boards.h b/include/hw/boards.h
-> index 4a90549ad85..27106abc11d 100644
-> --- a/include/hw/boards.h
-> +++ b/include/hw/boards.h
-> @@ -36,7 +36,21 @@ void machine_set_cpu_numa_node(MachineState *machine,
->                                 const CpuInstanceProperties *props,
->                                 Error **errp);
->  
-> +/**
-> + * machine_class_allow_dynamic_sysbus_dev: Add type to list of valid devices
-nit: s/of valid devices/of dynamically instantiable sysbus devices ?
-> + * @mc: Machine class
-> + * @type: type to whitelist (should be a subtype of TYPE_SYS_BUS_DEVICE)
-> + *
-> + * Add the QOM type @type to the list of devices of which are subtypes
-> + * of TYPE_SYS_BUS_DEVICE but which are still permitted to be dynamically
-> + * created (eg by the user on the command line with -device).
-> + * By default if the user tries to create any devices on the command line
-> + * that are subtypes of TYPE_SYS_BUS_DEVICE they will get an error message;
-> + * for the special cases which are permitted for this machine model, the
-> + * machine model class init code must call this function to whitelist them.
-> + */
->  void machine_class_allow_dynamic_sysbus_dev(MachineClass *mc, const char *type);
-> +
->  /*
->   * Checks that backend isn't used, preps it for exclusive usage and
->   * returns migratable MemoryRegion provided by backend.
+> Fix both the overflow and the lookup.
 > 
-Besides
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Not much to do with this patch, but maybe we can take the fix a little
+further. We now take StreamID as the start of the invalidation range,
+regardless of whatever the Range is, whilst the spec clearly states that
+"the StreamID parameter (of *CMD_CFGI_ALL* command) is IGNORED". If
+there are some random bits in the StreamID field (who knows), we'll fail
+to perform the full invalidation but get a strange range (e.g.,
+SMMUSIDRange={.start=1, .end=0}) instead.
 
-Thanks
+And having looked at the spec again, 4.3.2 CMD_CFGI_STE_RANGE:
 
-Eric
+  - "Invalidation is performed for an *aligned* range of 2^(Range+1)
+     StreamIDs."
 
+  - "The bottom Range+1 bits of the StreamID parameter are IGNORED,
+     aligning the range to its size."
+
+which seems to be some bits that we had never taken into account. And
+what I'm saying is roughly something like below (compile tested), any
+thoughts?
+
+
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index 3b87324ce2..8705612535 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -980,16 +980,20 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
+          }
+          case SMMU_CMD_CFGI_STE_RANGE: /* same as SMMU_CMD_CFGI_ALL */
+          {
+-            uint32_t start = CMD_SID(&cmd);
++            uint32_t sid = CMD_SID(&cmd), mask;
+              uint8_t range = CMD_STE_RANGE(&cmd);
+-            uint64_t end = start + (1ULL << (range + 1)) - 1;
+-            SMMUSIDRange sid_range = {start, end};
++            SMMUSIDRange sid_range;
+
+              if (CMD_SSEC(&cmd)) {
+                  cmd_error = SMMU_CERROR_ILL;
+                  break;
+              }
+-            trace_smmuv3_cmdq_cfgi_ste_range(start, end);
++
++            mask = (1ULL << (range + 1)) - 1;
++            sid_range.start = sid & ~mask;
++            sid_range.end = sid_range.start + mask;
++
++            trace_smmuv3_cmdq_cfgi_ste_range(sid_range.start, 
+sid_range.end);
+              g_hash_table_foreach_remove(bs->configs, 
+smmuv3_invalidate_ste,
+                                          &sid_range);
+              break;

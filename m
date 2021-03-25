@@ -1,106 +1,103 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4791816lfg;
-        Tue, 23 Mar 2021 11:31:04 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzqm8nNN+uVrN/r1lAGtjpqGRpE6Ma87yIOV/o2pbioxvndolfMZm0hh7zW75NLZIJ0l+T/
-X-Received: by 2002:a5e:d907:: with SMTP id n7mr5718305iop.177.1616524264001;
-        Tue, 23 Mar 2021 11:31:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1616524263; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp596309lfg;
+        Thu, 25 Mar 2021 09:59:08 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw45vBJ23YCe/gKUwxultoUt7ownOn27CkWBwKP8bk+lXWNRFUeLTjLkMlRFoL27xe7I9L4
+X-Received: by 2002:a6b:fe13:: with SMTP id x19mr7231393ioh.73.1616691548093;
+        Thu, 25 Mar 2021 09:59:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616691548; cv=none;
         d=google.com; s=arc-20160816;
-        b=INpjRy3Hx+r6qKajFMwBFjnwu3Jowg08DE664sdREC0juhJKChaDZ4XTi/cMHVow2L
-         d4RGy7AOn3OlWHYhEPAKNyhu/+mAbrehSW0VPf7wSqGYmsfZWrd52e1wde8Ky5Lus7TG
-         XvXm97YNp3yREJsiTQ5Y6fivtW78B2UD3VJ30ojfqbWbNm9s++MhK+yyUFz2o3WaZVVa
-         VUszUv+mPqg3BmFqNaiJCwGw+YSksYMhD3yuqPkdXkWJiuLPButQpqi8d2MLc9m2fvy7
-         h5PrYK5H2nCD5IQSHgGRFIPswVcQ/+5jULfXNHV1AvqvDaJAMfcvayRcN4Au2Fpn/GJ3
-         Sxgg==
+        b=ApJ1wFEafWo4vuXr9syo4xDRmIYBsyi+cEjltiW/p37rKE8t1uu0DEcM0LhgSb+VGZ
+         KKTPuIWABPkl35d2TKX6E0Ci3iPQfyuudiO4fJcx/Q8UVUi8o2D3nkOR3NMUq9HNJc53
+         ngG3bnfe6Xl9HHG/1anHzx3ymmmUjrQBqH62dTv3s+2Z4i9b8PRP/7AraF8WOCr2979k
+         czniKeROAgzzsDggkzTZR6O1Rnn3G+k5zkcdRCtcYRPq6uK8ombtC0dqHurtaz1FGqXv
+         cb/4QfaF853xye4Ncd084vr+DwU8pqodmnrvgB/M4b+WevnlCBJ5z3CcfGIkDEUNtFB2
+         CirA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=K0nfW/LiCoGkx3aq8IRZykw93coUaSyrmm75EamV5Po=;
-        b=QNO3p5P0go0X9u+GDuU8MqPMAzentCz8BRnLtRyBXbdwo9qj1l72Eb5mTijuzYsjjV
-         Yz9JeLEPNpjFijixcZEiyqafqlpQxC15YcpBSMfISju5ZLCGgFsMl+E4F8SuG81nS1kk
-         byg2SdQ25DWV5OTxxoSkBQufm2PV2hpM1JdSiGaF3VdDun2CiPBAkxJwOVfX4fcp80X/
-         6NhM5ib0M1EHqXLQ1xfNhdKzUgj/ioVT8CioAn9Ol6Sj5NCwlp73kdlrrc2K8Wcr72ET
-         PEkJWy0wTbSSDw8o2X0RDA9IyaZ/xLnnPuOo7HA6neyOlxM84c934KOUlQ2BCA/e9Uik
-         5Aig==
+         :content-language:mime-version:user-agent:date:message-id:subject
+         :from:to:dkim-signature;
+        bh=V/U1NZIstR+UNfYiD66TOJxGWDNy1ofJqvwlRQeqXDw=;
+        b=0C7Bz9IE8tla06sHAKCX25C6STsy5pnfgV3/q9Kb8j3pz/22y9AC2FuU30C2QIaRz7
+         ocVLgGWz4bWTpzp2WKsjG+ggBcoNenhpWdqbUNw89KFEbKdxBaO4T8T8ziwz69ve2VvX
+         MitMezDqOr1kG1nkgEvw/RMBeXt0KboMfsMdjhyUEkzDFt/uHwiqNR47briTQQSJG6/k
+         l864xoSKMNOLWsbXpRrK6V9o7hSZAZ1x1z8o3fYmtbt7JHWudk89TReHhETIHXQyVoA2
+         t3pgtb/LvfQmd/WkHaE1PZFxow66s6XLm3ijdfMavhIw0Y5eI3PxbqvAziegqXrETUyP
+         0QBg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Gia0TC8i;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AJwqw9Qb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n13si12550201ioc.51.2021.03.23.11.31.03
+        by mx.google.com with ESMTPS id v7si2164034jat.21.2021.03.25.09.59.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 Mar 2021 11:31:03 -0700 (PDT)
+        Thu, 25 Mar 2021 09:59:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Gia0TC8i;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AJwqw9Qb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:60888 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:51954 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lOlnz-0006zH-7m
-	for alex.bennee@linaro.org; Tue, 23 Mar 2021 14:31:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57436)
+	id 1lPTK7-0007Xe-BR
+	for alex.bennee@linaro.org; Thu, 25 Mar 2021 12:59:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37978)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lOln4-0006nt-UC; Tue, 23 Mar 2021 14:30:08 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:42942)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lOln1-00048B-Jj; Tue, 23 Mar 2021 14:30:05 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id x13so21807248wrs.9;
- Tue, 23 Mar 2021 11:30:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=K0nfW/LiCoGkx3aq8IRZykw93coUaSyrmm75EamV5Po=;
- b=Gia0TC8iNv3r+mdeeV0bt4kppFG+n8xKMGnIfhvUiYH2l8IC5ukQdtbH2YxpUshiQ/
- IUot2rDT3kxTFvpO5xI7LO9omY4rIFcldVtXoGY9v6MnQ6xeNdkIfng39/aTPDW5EeLn
- UT0Z7Ibsi52L1S2mfiAPQ2mng+kTlPp/V/CwwLJJQzuRby9lrtyTVcsoh8u4TQOJcMQx
- tAu0kQ8Zo/qpP/9loNg9RShRDJKB3XeOlvG9ZLGz4HypFW4ylA/LVLldkzTj0++Y3duV
- iLASIkcm2GfWYphqHWdCFDHKHVp/IaQ8iJp4x9TL4akBPLXPfpC+4BFvqWEtksXehD6h
- H0tQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=K0nfW/LiCoGkx3aq8IRZykw93coUaSyrmm75EamV5Po=;
- b=mk8Zhlzg1FW1nrilAMR090gTN+T6Wdr4Oc207A4mi9aXevTJsoF7j0DhwkxuawMpZl
- QQSN9dPcNYao5G5a1NtAlwzqOKXFdi8YH3amnSxzIeueZkqSIDPRr/q4VZ+5PsoBKgJn
- PspSxggkupcDY1yqRy6qtmqq8iLH70KfBjJxUkghniudMAee5+RQhETOBsRnP2QKWJC/
- 0SnKntLcYv7mSvF1twdRp/uoKWcdP5oTF1+GJAs+JxEXOTtxNKR7uCUdBNhE/Kkotv+b
- WGYuCv3XJ4qs938a5jZvnIgVxwtqR7Y8LdSivpc58HMMxdzplaQjTCLN8tARbFH2Z6A7
- m/2A==
-X-Gm-Message-State: AOAM530W5oDscTA0cBmQFxXWB4j0NOezGsFzOVgmS5da1aQx/dO8MuAV
- d7BpIf8rs1yINzMoPR2aLBW96P05zy/oVA==
-X-Received: by 2002:a5d:6602:: with SMTP id n2mr5526285wru.262.1616524200497; 
- Tue, 23 Mar 2021 11:30:00 -0700 (PDT)
-Received: from localhost.localdomain (17.red-88-21-201.staticip.rima-tde.net.
- [88.21.201.17])
- by smtp.gmail.com with ESMTPSA id e8sm3490396wme.14.2021.03.23.11.29.59
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 23 Mar 2021 11:29:59 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH] hw/display/xlnx_dp: Free FIFOs adding xlnx_dp_finalize()
-Date: Tue, 23 Mar 2021 19:29:58 +0100
-Message-Id: <20210323182958.277654-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lPTJG-0007Tp-Mb
+ for qemu-arm@nongnu.org; Thu, 25 Mar 2021 12:58:14 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:41029)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lPTJF-0001Wr-2t
+ for qemu-arm@nongnu.org; Thu, 25 Mar 2021 12:58:14 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1616691490;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=V/U1NZIstR+UNfYiD66TOJxGWDNy1ofJqvwlRQeqXDw=;
+ b=AJwqw9Qb9sOGiMWpjdbN5wIJ9D7K5DS+TL+PliGlSAOdUTY94iX0UJylndSxAOQ8j+IQGv
+ kSvwgVoIfhzkOtomzHbPoEKVZrkf0/2sWBJuIGrt+hLOrYVIQYKPKFNXgYCkFcEIMr87ai
+ ilw4ryXI43+mVr3xJIMq38UFmIYJH+U=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-67-y971qC6oM6aDCKCioUqq3A-1; Thu, 25 Mar 2021 12:58:08 -0400
+X-MC-Unique: y971qC6oM6aDCKCioUqq3A-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0EDDF107ACCD;
+ Thu, 25 Mar 2021 16:58:07 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-114-244.ams2.redhat.com [10.36.114.244])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 58ED317258;
+ Thu, 25 Mar 2021 16:58:01 +0000 (UTC)
+To: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
+From: Thomas Huth <thuth@redhat.com>
+Subject: qemu-system-aarch64 crashes with device ich9-usb-ehci1
+Message-ID: <2542a79a-c143-1db4-de97-6b04929158db@redhat.com>
+Date: Thu, 25 Mar 2021 17:58:00 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42c.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -113,64 +110,18 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- KONRAD Frederic <frederic.konrad@adacore.com>, qemu-arm@nongnu.org
+Cc: Gerd Hoffmann <kraxel@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: S3iI2UD47qMw
+X-TUID: XJVBrp8cfVd+
 
-When building with --enable-sanitizers we get:
 
-  Direct leak of 16 byte(s) in 1 object(s) allocated from:
-      #0 0x5618479ec7cf in malloc (qemu-system-aarch64+0x233b7cf)
-      #1 0x7f675745f958 in g_malloc (/lib64/libglib-2.0.so.0+0x58958)
-      #2 0x561847c2dcc9 in xlnx_dp_init hw/display/xlnx_dp.c:1259:5
-      #3 0x56184a5bdab8 in object_init_with_type qom/object.c:375:9
-      #4 0x56184a5a2bda in object_initialize_with_type qom/object.c:517:5
-      #5 0x56184a5a24d5 in object_initialize qom/object.c:536:5
-      #6 0x56184a5a2f6c in object_initialize_child_with_propsv qom/object.c:566:5
-      #7 0x56184a5a2e60 in object_initialize_child_with_props qom/object.c:549:10
-      #8 0x56184a5a3a1e in object_initialize_child_internal qom/object.c:603:5
-      #9 0x5618495aa431 in xlnx_zynqmp_init hw/arm/xlnx-zynqmp.c:273:5
+In case anybody is interested, ich9-usb-ehci1 can be used to crash QEMU:
 
-The RX/TX FIFOs are created in xlnx_dp_init(), add xlnx_dp_finalize()
-to destroy them.
+$ ./qemu-system-aarch64 -M virt -device ich9-usb-ehci1,help
+qemu-system-aarch64: ../../devel/qemu/softmmu/physmem.c:1154: 
+phys_section_add: Assertion `map->sections_nb < TARGET_PAGE_SIZE' failed.
+Aborted (core dumped)
 
-Fixes: 58ac482a66d ("introduce xlnx-dp")
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/display/xlnx_dp.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
-
-diff --git a/hw/display/xlnx_dp.c b/hw/display/xlnx_dp.c
-index c56e6ec5936..4fd6aeb18b5 100644
---- a/hw/display/xlnx_dp.c
-+++ b/hw/display/xlnx_dp.c
-@@ -1260,6 +1260,14 @@ static void xlnx_dp_init(Object *obj)
-     fifo8_create(&s->tx_fifo, 16);
- }
- 
-+static void xlnx_dp_finalize(Object *obj)
-+{
-+    XlnxDPState *s = XLNX_DP(obj);
-+
-+    fifo8_destroy(&s->tx_fifo);
-+    fifo8_destroy(&s->rx_fifo);
-+}
-+
- static void xlnx_dp_realize(DeviceState *dev, Error **errp)
- {
-     XlnxDPState *s = XLNX_DP(dev);
-@@ -1359,6 +1367,7 @@ static const TypeInfo xlnx_dp_info = {
-     .parent        = TYPE_SYS_BUS_DEVICE,
-     .instance_size = sizeof(XlnxDPState),
-     .instance_init = xlnx_dp_init,
-+    .instance_finalize = xlnx_dp_finalize,
-     .class_init    = xlnx_dp_class_init,
- };
- 
--- 
-2.26.2
+  Thomas
 

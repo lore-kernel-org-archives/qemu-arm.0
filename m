@@ -1,108 +1,113 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4711117lfg;
-        Tue, 23 Mar 2021 09:48:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzKd352QzwrJ/vVhyD+4hOL7cSw2npeDq7T+Sh417RXCSOoC94tm4bAbDCDwH1BgjbzS5eO
-X-Received: by 2002:a05:6638:3884:: with SMTP id b4mr5411723jav.18.1616518135203;
-        Tue, 23 Mar 2021 09:48:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1616518135; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp663176lfg;
+        Thu, 25 Mar 2021 11:20:37 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwget1IOZR75aQhQlTdiEW6LoDlBVXXgOujQufxVX2mE7qWPiuxTChYBCsc7lQvWt1ehsNA
+X-Received: by 2002:a6b:6418:: with SMTP id t24mr7213365iog.159.1616696437272;
+        Thu, 25 Mar 2021 11:20:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616696437; cv=none;
         d=google.com; s=arc-20160816;
-        b=i7Xq6dZYdsKCGS07YTPBjQEjVCUNrYozqU0l8sdfrb6c9QCMIHUugzAIFWDuy+yPCW
-         k5gbeRzodPjHjHVsralbi/PYafuRwGNLa6akpi1vrxjimlVjVifJgnJbhLC7e1IH3mxB
-         FJN8EJRObYcTVRug3mZe5XgkqgbB7Qe+HpAmuIG7UR9yXLub9e7j1QORjbiTJmX54Zpc
-         JmzNqVrQhVK7gdZrbD14qekNYwCJbC/+K/bk0vojo8rnD6LFDJ9PMQy8i88WDFV8k6uR
-         DxFTXDmfsVnFQJegeSvyqb/LZTY1F4t3aqKyOpBZ20ZN+azqnBBUsZnbskCCu9nQQbBN
-         DDow==
+        b=KNlpgQLZ0MEe6exhfoPLWQIiTNZh6YM+2Zqsa3guU1PjSiV18fwIyFxk39EQPqr6mR
+         nKAHcqMryhwl4PnN4ZIVhCPz8jZWn4VvZcUsNmIeUI10531YEkZ3A42YXvIRiVSMuT6w
+         CDP4WmPiDzvaIrd1zijPo0dQ9teyVZuNTmlonjDK73+iK2vgMRgSpxLxYyZxeeR6V1Aq
+         NG0wC3H0BiCrcKbAHGVhe7qekNkmis8mAEr2/d7XUSinjCt+iA5QVF8Hd6E1zLqjBu6y
+         HyDGZF2sgiDNux+CWYaYG/OcxWCoXXvgG0dAFzlPfcDtbC6bR77cO/JjAo60dLWkm7L4
+         Dl1A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=wacrUPXby6VxBAOyWwd3GMdytvH/G6kApR/JrO/ejAY=;
-        b=EM5QZvAg3+pcpY/KjXQ8vRUcqxIWCM+vJBeTvwoFbgL0g+SP75HzB0LbzuYqjLK6Ld
-         tMHqJrmgNkWpB3N/dEVXtnJ5XEfyQyVfHOVQw6rKkO87ySF+FS8BOwcZSdMTZr7MKrNd
-         leQDlr3qaQXMQC6X6ejhtCukXflE7u/ubWAdJUCJU+da7/oXd42Knqw0Nh049RgmlHgW
-         xPMXkYi1oFmWa1mb/lrcxx1gYZiDW7EB3AD1Swqo99pYIXG+YphBjO34N+qPOefrHe3C
-         6sm5TrD9s0qu8IIgsRL9pp3fayQFrcICkbgX3VI2IjbmtpeRdlQJzR9PUNdc5tr7YIgh
-         SXCQ==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=aQY57PXl5KgQCcyO+MfsfF9QAvKDZdNHuXYoHurhUcc=;
+        b=ULo63nzi6Rl9tuMN4AuiJkqY7wiE2+2VCYZ33bQ2GeZbqv4cUcDrrQFJfTpMmG3mHs
+         ubJVSYv1SeFsJ+pifW2qIsKBSvW8CVNfRtEPBvZLu9orpWagxbqj5arJIF9OZLxGz8mv
+         cVN+VephYk+teo4KQJJ/pCD0yyBzIhKjfktDfQIuKLh9E71soWdubhRdnStB/MnrLip+
+         AgIyAIQ0XP6NJVm9ciYG2Cuuq3dsbWs8PPT+r2fSPRnhlKty642Z+k2YYyOTMS6xbO0Q
+         TjuDOpgFjFHqJngSqnLTEVkOS4VV+d6jN6PV9XLZoQz0/OigL9+dHf+/nerFQM25Zo8i
+         yhrQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=OKV7cpro;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=WwGC8rSN;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q9si7763321jat.84.2021.03.23.09.48.55
+        by mx.google.com with ESMTPS id o20si4444863ioo.5.2021.03.25.11.20.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 Mar 2021 09:48:55 -0700 (PDT)
+        Thu, 25 Mar 2021 11:20:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=OKV7cpro;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=WwGC8rSN;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:40758 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40880 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lOkD8-00072P-HE
-	for alex.bennee@linaro.org; Tue, 23 Mar 2021 12:48:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39226)
+	id 1lPUaw-00036a-Mw
+	for alex.bennee@linaro.org; Thu, 25 Mar 2021 14:20:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39134)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lOjKC-0005fB-5M; Tue, 23 Mar 2021 11:52:09 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:45709)
+ id 1lPUVg-0001Cx-34; Thu, 25 Mar 2021 14:15:09 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335]:38885)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lOjK4-0003ZI-6b; Tue, 23 Mar 2021 11:52:06 -0400
-Received: by mail-wr1-x431.google.com with SMTP id 61so21255744wrm.12;
- Tue, 23 Mar 2021 08:51:59 -0700 (PDT)
+ id 1lPUVb-0008Og-4H; Thu, 25 Mar 2021 14:15:04 -0400
+Received: by mail-wm1-x335.google.com with SMTP id
+ m20-20020a7bcb940000b029010cab7e5a9fso3624490wmi.3; 
+ Thu, 25 Mar 2021 11:15:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=wacrUPXby6VxBAOyWwd3GMdytvH/G6kApR/JrO/ejAY=;
- b=OKV7cproh+phYnlnQ965o6n7nwQb2zQPwGVOb/6HfChkkqmjgWGuXV3GMN1V5RUn+s
- G2Aliv1nJAWcUD3vE+QzErO/+Ceo0om0AHkXLfdEcdoZFTy1Kti+giBkvemToLSiN3tW
- qUILq0FKh6HHOAZOfrepkViVJQ5gh1ekwbsBjvlh6kKRk828ru/i6y7NwfiFBhBaNosa
- 2WSZE8R60GaOX6ymjD9hPvaovjH4zUKt93AUQN9niY0Guw1Dqxft0hR09a2wsdNYBEXU
- oXpNC8N/LJFBKjP8gOflred30MfxxGVcWSY4kKrJor/orzmoczJ4FT09aNZRJblm4y7+
- cSjw==
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=aQY57PXl5KgQCcyO+MfsfF9QAvKDZdNHuXYoHurhUcc=;
+ b=WwGC8rSNib25wjhN1CU5aNjj/SWOFHXaH0N/ZPlEtrYoNSiOzNH2qt+ZvnILJsh8QZ
+ GCFsfyTwy7RwGkno6k+s0/UXVzofM7EzFsAhc1b/AFHArQ7kbK+0plXULPoF+81PrNDd
+ TUre/NgYL2cOxTJ+8NXFmLp8GgsHNVYPAcocqkS3CfGnBsT+a+W8DODZ7becLokBFidF
+ 8jQV+KXYYF9nX5jeyu06HMoz951kSgmtW3TnOKt4eDdbgSqcQY19KbfFTBrelo6VgQqr
+ VAfuUC5Cp4ojceE6BK+orB7tdp0CnXLtyvMAHShHrSB3JFQMuxhl+F+KVLREl6Eny98y
+ zJQg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=wacrUPXby6VxBAOyWwd3GMdytvH/G6kApR/JrO/ejAY=;
- b=FNuFdWoGgCxlxkGd8ckXMuGE/2G748hv9OIj6d62uJKfSgw+flg+eg3JuMzaaes4sd
- 2ktvQXSVpccpo2J6cspiGJnpmZFpn/n1hfufzg3HA8Kze0BEEINxnULtHDKUBvh1ERSK
- jq3qU+XV5pamB4yP46DVIWiWxzfvC/BUmQIwfYhdVoj+oiMNUQSGFwVwPLKXYu47KCC4
- ez129QG1EeDI/cH5MR/BNaZlwqlTF0Pp+MN0GT59i0O068EEHDurrZXiIsLO9O0+rtPY
- pEvUnstxLyMT4WAypMYARW4XLBvLlra0wDpuRrvE8cwZ3cCTZQl90miRqIHHYFxKQn49
- PPMA==
-X-Gm-Message-State: AOAM532XhkfX8uehATu7PBETrk3zJ+4rpCFWiYs3a0TW5llJvLXSAZxD
- tJCN4RfQJ572URlj9/lanBiT4TkZmkEczA==
-X-Received: by 2002:adf:8562:: with SMTP id 89mr4703432wrh.101.1616514717933; 
- Tue, 23 Mar 2021 08:51:57 -0700 (PDT)
-Received: from localhost.localdomain (17.red-88-21-201.staticip.rima-tde.net.
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=aQY57PXl5KgQCcyO+MfsfF9QAvKDZdNHuXYoHurhUcc=;
+ b=DpDMb4BrmigkF6xjEzdYblvWEGgC3HN/UPpb7eBuQVq1quw1OmnOB4Gu5HjnbC2g6L
+ kDdX3GTtjMQeQTdFA1sCyjebFpPqxFb9W7QjFyv97oW5pe0Ch3XpxITzdDi4aTP3dikM
+ nvbNjCufIiT2sRyWoF4T7NTg2FIzGEvFGmFd5HiKj3L1SEEbeoTUMQPtXNqo8Bx4w5uV
+ +DBkg8uqhURhk6ci0+eqfwiTfsq517ii8OFywR+/dagXP3cJ5VV5DSiYBuFzjebjtxqP
+ WRmbwoXD1tiASpp5ugfbg1+lK9y0XMyCRItEmqhr8jzgk+AR39EHPBKb773T1n+gg5xd
+ RO4w==
+X-Gm-Message-State: AOAM5336RGlD2Ez0GOAlLymasNXmFWQ9WGrGfjrZHCVhkJC2efNObjn/
+ EwBzT2ma1Hv7V1aaR9+uoqc=
+X-Received: by 2002:a05:600c:203:: with SMTP id 3mr9233774wmi.88.1616696098486; 
+ Thu, 25 Mar 2021 11:14:58 -0700 (PDT)
+Received: from [192.168.1.36] (17.red-88-21-201.staticip.rima-tde.net.
  [88.21.201.17])
- by smtp.gmail.com with ESMTPSA id g5sm24414743wrq.30.2021.03.23.08.51.56
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 23 Mar 2021 08:51:57 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [RFC PATCH 05/13] blobs: Only install npcm7xx bootrom if ARM system
- targets are built
-Date: Tue, 23 Mar 2021 16:51:24 +0100
-Message-Id: <20210323155132.238193-6-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20210323155132.238193-1-f4bug@amsat.org>
-References: <20210323155132.238193-1-f4bug@amsat.org>
+ by smtp.gmail.com with ESMTPSA id r14sm8750081wrw.91.2021.03.25.11.14.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 25 Mar 2021 11:14:57 -0700 (PDT)
+Subject: Re: [PATCH v2 for-6.0?] hw/pci-host/gpex: Don't fault for unmapped
+ parts of MMIO and PIO windows
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20210325163315.27724-1-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <1df78911-9858-b747-b22b-7e5254cd3cac@amsat.org>
+Date: Thu, 25 Mar 2021 19:14:56 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x431.google.com
+In-Reply-To: <20210325163315.27724-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
 X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -117,66 +122,181 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Thomas Huth <thuth@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Havard Skinnemoen <hskinnemoen@google.com>, Tyrone Ting <kfting@nuvoton.com>,
- qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-riscv@nongnu.org, Dmitry Vyukov <dvyukov@google.com>,
+ Arnd Bergmann <arnd@arndb.de>, "Michael S. Tsirkin" <mst@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eup6llNrT1ZK
+X-TUID: n2A2KEzkYPMi
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
-Cc: Havard Skinnemoen <hskinnemoen@google.com>
-Cc: Tyrone Ting <kfting@nuvoton.com>
-Cc: qemu-arm@nongnu.org
----
- meson.build         | 2 ++
- pc-bios/meson.build | 7 ++++++-
- 2 files changed, 8 insertions(+), 1 deletion(-)
+Hi Peter,
 
-diff --git a/meson.build b/meson.build
-index b5b8892fe7a..10c21ef52af 100644
---- a/meson.build
-+++ b/meson.build
-@@ -94,10 +94,12 @@
- edk2_targets = [ 'arm-softmmu', 'aarch64-softmmu', 'i386-softmmu', 'x86_64-softmmu' ]
- install_edk2_blobs = false
- install_blobs_alpha = false
-+install_blobs_arm = false
- if get_option('install_blobs')
-   foreach target : target_dirs
-     install_edk2_blobs = install_edk2_blobs or target in edk2_targets
-     install_blobs_alpha = install_blobs_alpha or target in ['alpha-softmmu']
-+    install_blobs_arm = install_blobs_hppa or target in ['arm-softmmu', 'aarch64-softmmu']
-   endforeach
- endif
- 
-diff --git a/pc-bios/meson.build b/pc-bios/meson.build
-index 29085912d7d..635485931b9 100644
---- a/pc-bios/meson.build
-+++ b/pc-bios/meson.build
-@@ -81,7 +81,6 @@
-   'opensbi-riscv64-generic-fw_dynamic.bin',
-   'opensbi-riscv32-generic-fw_dynamic.elf',
-   'opensbi-riscv64-generic-fw_dynamic.elf',
--  'npcm7xx_bootrom.bin',
- ))
- 
- if host_machine.system() == 'windows'
-@@ -96,6 +95,12 @@
-   ))
- endif
- 
-+if install_blobs_arm
-+  blobs_ss.add(files(
-+    'npcm7xx_bootrom.bin',
-+  ))
-+endif
-+
- blobs_ss = blobs_ss.apply(config_host, strict: false)
- 
- if get_option('install_blobs')
--- 
-2.26.2
+On 3/25/21 5:33 PM, Peter Maydell wrote:
+> Currently the gpex PCI controller implements no special behaviour for
+> guest accesses to areas of the PIO and MMIO where it has not mapped
+> any PCI devices, which means that for Arm you end up with a CPU
+> exception due to a data abort.
+> 
+> Most host OSes expect "like an x86 PC" behaviour, where bad accesses
+> like this return -1 for reads and ignore writes.  In the interests of
+> not being surprising, make host CPU accesses to these windows behave
+> as -1/discard where there's no mapped PCI device.
+> 
+> The old behaviour generally didn't cause any problems, because
+> almost always the guest OS will map the PCI devices and then only
+> access where it has mapped them. One corner case where you will see
+> this kind of access is if Linux attempts to probe legacy ISA
+> devices via a PIO window access. So far the only case where we've
+> seen this has been via the syzkaller fuzzer.
+> 
+> Reported-by: Dmitry Vyukov <dvyukov@google.com>
+> Fixes: https://bugs.launchpad.net/qemu/+bug/1918917
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> v1->v2 changes: put in the hw_compat machinery.
+> 
+> Still not sure if I want to put this in 6.0 or not.
+> 
+>  include/hw/pci-host/gpex.h |  4 +++
+>  hw/core/machine.c          |  1 +
+>  hw/pci-host/gpex.c         | 56 ++++++++++++++++++++++++++++++++++++--
+>  3 files changed, 58 insertions(+), 3 deletions(-)
+> 
+> diff --git a/include/hw/pci-host/gpex.h b/include/hw/pci-host/gpex.h
+> index d48a020a952..fcf8b638200 100644
+> --- a/include/hw/pci-host/gpex.h
+> +++ b/include/hw/pci-host/gpex.h
+> @@ -49,8 +49,12 @@ struct GPEXHost {
+>  
+>      MemoryRegion io_ioport;
+>      MemoryRegion io_mmio;
+> +    MemoryRegion io_ioport_window;
+> +    MemoryRegion io_mmio_window;
+>      qemu_irq irq[GPEX_NUM_IRQS];
+>      int irq_num[GPEX_NUM_IRQS];
+> +
+> +    bool allow_unmapped_accesses;
+>  };
+>  
+>  struct GPEXConfig {
+> diff --git a/hw/core/machine.c b/hw/core/machine.c
+> index 257a664ea2e..9750fad7435 100644
+> --- a/hw/core/machine.c
+> +++ b/hw/core/machine.c
+> @@ -41,6 +41,7 @@ GlobalProperty hw_compat_5_2[] = {
+>      { "PIIX4_PM", "smm-compat", "on"},
+>      { "virtio-blk-device", "report-discard-granularity", "off" },
+>      { "virtio-net-pci", "vectors", "3"},
+> +    { "gpex-pcihost", "allow-unmapped-accesses", "false" },
+>  };
+>  const size_t hw_compat_5_2_len = G_N_ELEMENTS(hw_compat_5_2);
+>  
+> diff --git a/hw/pci-host/gpex.c b/hw/pci-host/gpex.c
+> index 2bdbe7b4561..a6752fac5e8 100644
+> --- a/hw/pci-host/gpex.c
+> +++ b/hw/pci-host/gpex.c
+> @@ -83,12 +83,51 @@ static void gpex_host_realize(DeviceState *dev, Error **errp)
+>      int i;
+>  
+>      pcie_host_mmcfg_init(pex, PCIE_MMCFG_SIZE_MAX);
+> +    sysbus_init_mmio(sbd, &pex->mmio);
+> +
+> +    /*
+> +     * Note that the MemoryRegions io_mmio and io_ioport that we pass
+> +     * to pci_register_root_bus() are not the same as the
+> +     * MemoryRegions io_mmio_window and io_ioport_window that we
+> +     * expose as SysBus MRs. The difference is in the behaviour of
+> +     * accesses to addresses where no PCI device has been mapped.
+> +     *
+> +     * io_mmio and io_ioport are the underlying PCI view of the PCI
+> +     * address space, and when a PCI device does a bus master access
+> +     * to a bad address this is reported back to it as a transaction
+> +     * failure.
+> +     *
+> +     * io_mmio_window and io_ioport_window implement "unmapped
+> +     * addresses read as -1 and ignore writes"; this is traditional
+> +     * x86 PC behaviour, which is not mandated by the PCI spec proper
+> +     * but expected by much PCI-using guest software, including Linux.
 
+I suspect PCI-ISA bridges to provide an EISA bus.
+
+The 'IEEE P996' ISA spec doesn't seem public. Per the Intel
+ISA spec:
+https://archive.org/details/bitsavers_intelbusSpep89_3342148/page/n31/mode/2up
+the data lines are tri-stated, but I couldn't find the default logic
+when no add-on card owns the bus at the requested address (to confirm
+the "read as -1").
+
+> +     * In the interests of not being unnecessarily surprising, we
+> +     * implement it in the gpex PCI host controller, by providing the
+> +     * _window MRs, which are containers with io ops that implement
+> +     * the 'background' behaviour and which hold the real PCI MRs as
+> +     * subregions.
+> +     */
+>      memory_region_init(&s->io_mmio, OBJECT(s), "gpex_mmio", UINT64_MAX);
+>      memory_region_init(&s->io_ioport, OBJECT(s), "gpex_ioport", 64 * 1024);
+>  
+> -    sysbus_init_mmio(sbd, &pex->mmio);
+> -    sysbus_init_mmio(sbd, &s->io_mmio);
+> -    sysbus_init_mmio(sbd, &s->io_ioport);
+> +    if (s->allow_unmapped_accesses) {
+> +        memory_region_init_io(&s->io_mmio_window, OBJECT(s),
+> +                              &unassigned_io_ops, OBJECT(s),
+> +                              "gpex_mmio_window", UINT64_MAX);
+
+EISA -> 4 * GiB
+
+unassigned_io_ops allows 64-bit accesses. Here we want up to 32.
+
+Maybe we don't care.
+
+> +        memory_region_init_io(&s->io_ioport_window, OBJECT(s),
+> +                              &unassigned_io_ops, OBJECT(s),
+> +                              "gpex_ioport_window", 64 * 1024);
+
+Ditto, unassigned_io_ops accepts 64-bit accesses.
+
+> +
+> +        memory_region_add_subregion(&s->io_mmio_window, 0, &s->io_mmio);
+> +        memory_region_add_subregion(&s->io_ioport_window, 0, &s->io_ioport);
+> +        sysbus_init_mmio(sbd, &s->io_mmio_window);
+> +        sysbus_init_mmio(sbd, &s->io_ioport_window);
+> +    } else {
+> +        sysbus_init_mmio(sbd, &s->io_mmio);
+> +        sysbus_init_mmio(sbd, &s->io_ioport);
+> +    }
+> +
+>      for (i = 0; i < GPEX_NUM_IRQS; i++) {
+>          sysbus_init_irq(sbd, &s->irq[i]);
+>          s->irq_num[i] = -1;
+> @@ -108,6 +147,16 @@ static const char *gpex_host_root_bus_path(PCIHostState *host_bridge,
+>      return "0000:00";
+>  }
+>  
+> +static Property gpex_host_properties[] = {
+> +    /*
+> +     * Permit CPU accesses to unmapped areas of the PIO and MMIO windows
+> +     * (discarding writes and returning -1 for reads) rather than aborting.
+> +     */
+> +    DEFINE_PROP_BOOL("allow-unmapped-accesses", GPEXHost,
+> +                     allow_unmapped_accesses, true),
+> +    DEFINE_PROP_END_OF_LIST(),
+> +};
+> +
+>  static void gpex_host_class_init(ObjectClass *klass, void *data)
+>  {
+>      DeviceClass *dc = DEVICE_CLASS(klass);
+> @@ -117,6 +166,7 @@ static void gpex_host_class_init(ObjectClass *klass, void *data)
+>      dc->realize = gpex_host_realize;
+>      set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+>      dc->fw_name = "pci";
+> +    device_class_set_props(dc, gpex_host_properties);
+
+IMO this change belongs to the parent bridges,
+TYPE_PCI_HOST_BRIDGE and TYPE_PCIE_HOST_BRIDGE.
+
+Again, 6.0 is at the door, so this can be discussed /
+updated later.
+
+Regards,
+
+Phil.

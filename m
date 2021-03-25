@@ -1,453 +1,529 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id y10sm8301852wrl.19.2021.03.25.11.01.57
+        by smtp.gmail.com with ESMTPSA id z2sm8650448wrv.47.2021.03.25.12.42.02
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 25 Mar 2021 11:01:57 -0700 (PDT)
+        Thu, 25 Mar 2021 12:42:02 -0700 (PDT)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id AEA621FF7E;
-	Thu, 25 Mar 2021 18:01:56 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id 2B1A61FF7E;
+	Thu, 25 Mar 2021 19:42:02 +0000 (GMT)
 References: <20210323041238.133835-1-shashi.mallela@linaro.org>
+ <20210323041238.133835-3-shashi.mallela@linaro.org>
 User-agent: mu4e 1.5.11; emacs 28.0.50
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Shashi Mallela <shashi.mallela@linaro.org>
 Cc: peter.maydell@linaro.org, leif@nuviainc.com, rad@semihalf.com,
  qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH v1 0/8] GICv3 LPI and ITS feature implementation
-Date: Thu, 25 Mar 2021 17:59:13 +0000
-In-reply-to: <20210323041238.133835-1-shashi.mallela@linaro.org>
-Message-ID: <87lfabglij.fsf@linaro.org>
+Subject: Re: [PATCH v1 2/8] hw/intc: GICv3 ITS register definitions added
+Date: Thu, 25 Mar 2021 19:34:39 +0000
+In-reply-to: <20210323041238.133835-3-shashi.mallela@linaro.org>
+Message-ID: <87mtur10mu.fsf@linaro.org>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="=-=-="
-X-TUID: RcK1OyhrIZV+
-
---=-=-=
-Content-Type: text/plain
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: x4QZBXcYvhX2
 
 
 Shashi Mallela <shashi.mallela@linaro.org> writes:
 
-> This patchset implements qemu device model for enabling physical
-> LPI support and ITS functionality in GIC as per GICv3 specification.
-> Both flat table and 2 level tables are implemented.The ITS commands
-> for adding/deleting ITS table entries,trigerring LPI interrupts are 
-> implemented.Translated LPI interrupt ids are processed by redistributor
-> to determine priority and set pending state appropriately before
-> forwarding the same to cpu interface.
-> The ITS feature support has been added to sbsa-ref platform as well as
-> virt platform,wherein the emulated functionality co-exists with kvm
-> kernel functionality.
+> Defined descriptors for ITS device table,collection table and ITS
+> command queue entities.Implemented register read/write functions,
+> extract ITS table parameters and command queue parameters,extended
+> gicv3 common to capture qemu address space(which host the ITS table
+> platform memories required for subsequent ITS processing) and
+> initialize the same in its device.
+>
+> Signed-off-by: Shashi Mallela <shashi.mallela@linaro.org>
+> ---
+>  hw/intc/arm_gicv3_its.c            | 356 ++++++++++++++++++++
+>  include/hw/intc/arm_gicv3_common.h |   4 +
+>  2 files changed, 360 insertions(+)
+>
+> diff --git a/hw/intc/arm_gicv3_its.c b/hw/intc/arm_gicv3_its.c
+> index 34e49b4d63..4895d32e67 100644
+> --- a/hw/intc/arm_gicv3_its.c
+> +++ b/hw/intc/arm_gicv3_its.c
+> @@ -23,11 +23,179 @@ typedef struct GICv3ITSClass GICv3ITSClass;
+>  DECLARE_OBJ_CHECKERS(GICv3ITSState, GICv3ITSClass,
+>                       ARM_GICV3_ITS, TYPE_ARM_GICV3_ITS)
+>=20=20
+> +typedef struct {
+> +    bool valid;
+> +    bool indirect;
+> +    uint16_t entry_sz;
+> +    uint32_t max_entries;
+> +    uint32_t max_devids;
+> +    uint64_t base_addr;
+> +} DevTableDesc;
+> +
+> +typedef struct {
+> +    bool valid;
+> +    bool indirect;
+> +    uint16_t entry_sz;
+> +    uint32_t max_entries;
+> +    uint32_t max_collids;
+> +    uint64_t base_addr;
+> +} CollTableDesc;
+> +
+> +typedef struct {
+> +    bool valid;
+> +    uint32_t max_entries;
+> +    uint64_t base_addr;
+> +} CmdQDesc;
+> +
+>  struct GICv3ITSClass {
+>      GICv3ITSCommonClass parent_class;
+>      void (*parent_reset)(DeviceState *dev);
+> +
+> +    DevTableDesc  dt;
+> +    CollTableDesc ct;
+> +    CmdQDesc      cq;
+>  };
+>=20=20
+> +static bool extract_table_params(GICv3ITSState *s, int index)
+> +{
+> +    GICv3ITSClass *c =3D ARM_GICV3_ITS_GET_CLASS(s);
+> +    uint16_t num_pages =3D 0;
+> +    uint8_t  page_sz_type;
+> +    uint8_t type;
+> +    uint32_t page_sz =3D 0;
+> +    uint64_t value =3D s->baser[index];
+> +
+> +    num_pages =3D (value & GITS_BASER_SIZE);
+> +    page_sz_type =3D (value >> GITS_BASER_PAGESIZE_OFFSET) &
+> +                        GITS_BASER_PAGESIZE_MASK;
 
-Running the kvm-unit-tests ITS set:
+So these definitions can come in the header on the same patch where they
+are used. Also with the FIELD macros this then becomes:
 
-   env QEMU=$HOME/lsrc/qemu.git/builds/arm.all/qemu-system-aarch64 ./run_tests.sh -g its
+  num_pages =3D FIELD_EX64(value, GITS_BASER, SIZE);
+  page_sz_type =3D FIELD_EX64(value, GITS_BASER, PAGESIZE);
 
-with a patched unitests.cfg to remove the KVM requirement I get:
+etc...
 
-  PASS its-introspection (5 tests)
-  FAIL its-trigger (6 tests, 1 unexpected failures)
-  FAIL its-migration
-  FAIL its-pending-migration (1 tests, 1 unexpected failures)
-  SKIP its-migrate-unmapped-collection (1 tests, 1 skipped)
+basically anywhere where you are shift and masking you should be using
+the FIELD macros (or at the least the extract/deposit functions).
 
-The its-migration asserts:
+> +
+> +    if (page_sz_type =3D=3D 0) {
+> +        page_sz =3D GITS_ITT_PAGE_SIZE_0;
+> +    } else if (page_sz_type =3D=3D 0) {
+> +        page_sz =3D GITS_ITT_PAGE_SIZE_1;
+> +    } else if (page_sz_type =3D=3D 2) {
+> +        page_sz =3D GITS_ITT_PAGE_SIZE_2;
+> +    } else {
+> +        return false;
+> +    }
+> +
+> +    type =3D (value >> GITS_BASER_TYPE_OFFSET) &
+> +                        GITS_BASER_TYPE_MASK;
+> +
+> +    if (type =3D=3D GITS_ITT_TYPE_DEVICE) {
+> +        c->dt.valid =3D (value >> GITS_BASER_VALID) & GITS_BASER_VALID_M=
+ASK;
+> +
+> +        if (c->dt.valid) {
+> +            c->dt.indirect =3D (value >> GITS_BASER_INDIRECT_OFFSET) &
+> +                                       GITS_BASER_INDIRECT_MASK;
+> +            c->dt.entry_sz =3D (value >> GITS_BASER_ENTRYSIZE_OFFSET) &
+> +                                   GITS_BASER_ENTRYSIZE_MASK;
+> +
+> +            if (!c->dt.indirect) {
+> +                c->dt.max_entries =3D ((num_pages + 1) * page_sz) /
+> +                                                       c->dt.entry_sz;
+> +            } else {
+> +                c->dt.max_entries =3D ((((num_pages + 1) * page_sz) /
+> +                                        L1TABLE_ENTRY_SIZE) *
+> +                                    (page_sz / c->dt.entry_sz));
+> +            }
+> +
+> +            c->dt.max_devids =3D (1UL << (((value >> GITS_TYPER_DEVBITS_=
+OFFSET) &
+> +                                           GITS_TYPER_DEVBITS_MASK) + 1)=
+);
+> +
+> +            if ((page_sz =3D=3D GITS_ITT_PAGE_SIZE_0) ||
+> +                    (page_sz =3D=3D GITS_ITT_PAGE_SIZE_1)) {
+> +                c->dt.base_addr =3D (value >> GITS_BASER_PHYADDR_OFFSET)=
+ &
+> +                                        GITS_BASER_PHYADDR_MASK;
+> +                c->dt.base_addr <<=3D GITS_BASER_PHYADDR_OFFSET;
+> +            } else if (page_sz =3D=3D GITS_ITT_PAGE_SIZE_2) {
+> +                c->dt.base_addr =3D ((value >> GITS_BASER_PHYADDR_OFFSET=
+L_64K) &
+> +                                   GITS_BASER_PHYADDR_MASKL_64K) <<
+> +                                     GITS_BASER_PHYADDR_OFFSETL_64K;
+> +                c->dt.base_addr |=3D ((value >> GITS_BASER_PHYADDR_OFFSE=
+T) &
+> +                                    GITS_BASER_PHYADDR_MASKH_64K) <<
+> +                                     GITS_BASER_PHYADDR_OFFSETH_64K;
+> +            }
+> +        }
+> +    } else if (type =3D=3D GITS_ITT_TYPE_COLLECTION) {
+> +        c->ct.valid =3D (value >> GITS_BASER_VALID) & GITS_BASER_VALID_M=
+ASK;
+> +
+> +        /*
+> +         * GITS_TYPER.HCC is 0 for this implementation
+> +         * hence writes are discarded if ct.valid is 0
+> +         */
+> +        if (c->ct.valid) {
+> +            c->ct.indirect =3D (value >> GITS_BASER_INDIRECT_OFFSET) &
+> +                                       GITS_BASER_INDIRECT_MASK;
+> +            c->ct.entry_sz =3D (value >> GITS_BASER_ENTRYSIZE_OFFSET) &
+> +                                    GITS_BASER_ENTRYSIZE_MASK;
+> +
+> +            if (!c->ct.indirect) {
+> +                c->ct.max_entries =3D ((num_pages + 1) * page_sz) /
+> +                                      c->ct.entry_sz;
+> +            } else {
+> +                c->ct.max_entries =3D ((((num_pages + 1) * page_sz) /
+> +                                      L1TABLE_ENTRY_SIZE) *
+> +                                      (page_sz / c->ct.entry_sz));
+> +            }
+> +
+> +            if ((value >> GITS_TYPER_CIL_OFFSET) & GITS_TYPER_CIL_MASK) {
+> +                c->ct.max_collids =3D (1UL << (((value >>
+> +                                               GITS_TYPER_CIDBITS_OFFSET=
+) &
+> +                                               GITS_TYPER_CIDBITS_MASK) =
++ 1));
+> +            } else {
+> +                /* 16-bit CollectionId supported when CIL =3D=3D 0 */
+> +                c->ct.max_collids =3D (1UL << 16);
+> +            }
+> +
+> +            if ((page_sz =3D=3D GITS_ITT_PAGE_SIZE_0) ||
+> +                 (page_sz =3D=3D GITS_ITT_PAGE_SIZE_1)) {
+> +                c->ct.base_addr =3D (value >> GITS_BASER_PHYADDR_OFFSET)=
+ &
+> +                                            GITS_BASER_PHYADDR_MASK;
+> +                c->ct.base_addr <<=3D GITS_BASER_PHYADDR_OFFSET;
+> +            } else if (page_sz =3D=3D GITS_ITT_PAGE_SIZE_2) {
+> +                c->ct.base_addr =3D ((value >> GITS_BASER_PHYADDR_OFFSET=
+L_64K) &
+> +                                   GITS_BASER_PHYADDR_MASKL_64K) <<
+> +                                    GITS_BASER_PHYADDR_OFFSETL_64K;
+> +                c->ct.base_addr |=3D ((value >> GITS_BASER_PHYADDR_OFFSE=
+T) &
+> +                                    GITS_BASER_PHYADDR_MASKH_64K) <<
+> +                                    GITS_BASER_PHYADDR_OFFSETH_64K;
+> +            }
+> +        }
+> +    } else {
+> +        /* unsupported ITS table type */
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Unsupported ITS table type %=
+d",
+> +                         __func__, type);
 
-  Now migrate the VM, then press a key to continue...
-  INFO: gicv3: its-migration: Migration complete
-  INT dev_id=2 event_id=20
-  /home/alex/lsrc/tests/kvm-unit-tests.git/lib/arm64/gic-v3-its-cmd.c:192: assert failed: false: INT timeout!
-          STACK:
+LOG_UNIMP
 
-Full logs attached:
+> +        return false;
+> +    }
+> +    return true;
+> +}
+> +
+> +static bool extract_cmdq_params(GICv3ITSState *s)
+> +{
+> +    GICv3ITSClass *c =3D ARM_GICV3_ITS_GET_CLASS(s);
+> +    uint16_t num_pages =3D 0;
+> +    uint64_t value =3D s->cbaser;
+> +
+> +    num_pages =3D (value & GITS_CBASER_SIZE);
+> +
+> +    c->cq.valid =3D (value >> GITS_CBASER_VALID_OFFSET) &
+> +                                GITS_CBASER_VALID_MASK;
+> +
+> +    if (!num_pages || !c->cq.valid) {
+> +        return false;
+> +    }
+> +
+> +    if (c->cq.valid) {
+> +        c->cq.max_entries =3D ((num_pages + 1) * GITS_ITT_PAGE_SIZE_0) /
+> +                                                GITS_CMDQ_ENTRY_SIZE;
+> +        c->cq.base_addr =3D (value >> GITS_CBASER_PHYADDR_OFFSET) &
+> +                                    GITS_CBASER_PHYADDR_MASK;
+> +        c->cq.base_addr <<=3D GITS_CBASER_PHYADDR_OFFSET;
+> +    }
+> +    return true;
+> +}
+> +
+>  static MemTxResult its_trans_writew(GICv3ITSState *s, hwaddr offset,
+>                                 uint64_t value, MemTxAttrs attrs)
+>  {
+> @@ -126,7 +294,75 @@ static MemTxResult its_writel(GICv3ITSState *s, hwad=
+dr offset,
+>                                 uint64_t value, MemTxAttrs attrs)
+>  {
+>      MemTxResult result =3D MEMTX_OK;
+> +    int index;
+> +    uint64_t temp =3D 0;
+>=20=20
+> +    switch (offset) {
+> +    case GITS_CTLR:
+> +        s->ctlr |=3D (value & ~(s->ctlr));
+> +        break;
+> +    case GITS_CBASER:
+> +        /* GITS_CBASER register becomes RO if ITS is already enabled */
+> +        if (!(s->ctlr & GITS_CTLR_ENABLED)) {
+> +            s->cbaser =3D deposit64(s->cbaser, 0, 32, value);
+> +            s->creadr =3D 0;
+> +        }
+> +        break;
+> +    case GITS_CBASER + 4:
+> +        /* GITS_CBASER register becomes RO if ITS is already enabled */
+> +        if (!(s->ctlr & GITS_CTLR_ENABLED)) {
+> +            s->cbaser =3D deposit64(s->cbaser, 32, 32, value);
+> +            if (!extract_cmdq_params(s)) {
+> +                qemu_log_mask(LOG_GUEST_ERROR,
+> +                       "%s: error extracting GITS_CBASER parameters "
+> +                       TARGET_FMT_plx "\n", __func__, offset);
+> +                s->cbaser =3D 0;
+> +                result =3D MEMTX_ERROR;
 
+LOG_UNIMP?
 
---=-=-=
-Content-Type: application/octet-stream
-Content-Disposition: attachment; filename=for-shash.logs
-Content-Transfer-Encoding: base64
-Content-Description: logs from kvm-unit-tests ITS run
+> +            } else {
+> +                s->creadr =3D 0;
+> +            }
+> +        }
+> +        break;
+> +    case GITS_CWRITER:
+> +        s->cwriter =3D deposit64(s->cwriter, 0, 32, value);
+> +        break;
+> +    case GITS_CWRITER + 4:
+> +        s->cwriter =3D deposit64(s->cwriter, 32, 32, value);
+> +        break;
+> +    case GITS_BASER ... GITS_BASER + 0x3f:
+> +        /* GITS_BASERn registers become RO if ITS is already enabled */
+> +        if (!(s->ctlr & GITS_CTLR_ENABLED)) {
+> +            index =3D (offset - GITS_BASER) / 8;
+> +
+> +            if (offset & 7) {
+> +                temp =3D s->baser[index];
+> +                temp =3D deposit64(temp, 32, 32, (value & ~GITS_BASER_VA=
+L_MASK));
+> +                s->baser[index] |=3D temp;
+> +
+> +                if (!extract_table_params(s, index)) {
+> +                    qemu_log_mask(LOG_GUEST_ERROR,
+> +                        "%s: error extracting GITS_BASER parameters "
+> +                        TARGET_FMT_plx "\n", __func__, offset);
 
-dGltZW91dCAtayAxcyAtLWZvcmVncm91bmQgOTBzIC9ob21lL2FsZXgvbHNyYy9xZW11LmdpdC9i
-dWlsZHMvYXJtLmFsbC9xZW11LXN5c3RlbS1hYXJjaDY0IC1ub2RlZmF1bHRzIC1tYWNoaW5lIHZp
-cnQsYWNjZWw9dGNnIC1jcHUgY29ydGV4LWE1NyAtZGV2aWNlIHZpcnRpby1zZXJpYWwtZGV2aWNl
-IC1kZXZpY2UgdmlydGNvbnNvbGUsY2hhcmRldj1jdGQgLWNoYXJkZXYgdGVzdGRldixpZD1jdGQg
-LWRldmljZSBwY2ktdGVzdGRldiAtZGlzcGxheSBub25lIC1zZXJpYWwgc3RkaW8gLWtlcm5lbCBh
-cm0vZ2ljLmZsYXQgLXNtcCA4IC1tYWNoaW5lIGdpYy12ZXJzaW9uPTMgLWFwcGVuZCBpdHMtaW50
-cm9zcGVjdGlvbiAjIC1pbml0cmQgL3RtcC90bXAuaXJDUllnTWVGVApQQVNTOiBnaWN2MzogaXRz
-LWludHJvc3BlY3Rpb246IEdJVFNfSUlEUiBpcyByZWFkLW9ubHkKUEFTUzogZ2ljdjM6IGl0cy1p
-bnRyb3NwZWN0aW9uOiBHSVRTX1RZUEVSIGlzIHJlYWQtb25seQpQQVNTOiBnaWN2MzogaXRzLWlu
-dHJvc3BlY3Rpb246IElUUyBzdXBwb3J0cyBwaHlzaWNhbCBMUElzCklORk86IGdpY3YzOiBpdHMt
-aW50cm9zcGVjdGlvbjogdkxQSSBzdXBwb3J0OiBubwpJTkZPOiBnaWN2MzogaXRzLWludHJvc3Bl
-Y3Rpb246IElUVCBlbnRyeSBzaXplID0gMHhjCklORk86IGdpY3YzOiBpdHMtaW50cm9zcGVjdGlv
-bjogQml0IENvdW50OiBFdmVudElEPTE2IERldmljZUlkPTE2IENvbGxJZD0xNgpQQVNTOiBnaWN2
-MzogaXRzLWludHJvc3BlY3Rpb246IElEIHNwYWNlcwpJTkZPOiBnaWN2MzogaXRzLWludHJvc3Bl
-Y3Rpb246IFRhcmdldCBhZGRyZXNzIGZvcm1hdCBQRSAjClBBU1M6IGdpY3YzOiBpdHMtaW50cm9z
-cGVjdGlvbjogZGV0ZWN0IGRldmljZSBhbmQgY29sbGVjdGlvbiBCQVNFUgpJTkZPOiBnaWN2Mzog
-aXRzLWludHJvc3BlY3Rpb246IGRldmljZSB0YWJsZSBlbnRyeV9zaXplID0gMHg5CklORk86IGdp
-Y3YzOiBpdHMtaW50cm9zcGVjdGlvbjogY29sbGVjdGlvbiB0YWJsZSBlbnRyeV9zaXplID0gMHg5
-ClNVTU1BUlk6IDUgdGVzdHMKCnJ1bl9taWdyYXRpb24gdGltZW91dCAtayAxcyAtLWZvcmVncm91
-bmQgOTBzIC9ob21lL2FsZXgvbHNyYy9xZW11LmdpdC9idWlsZHMvYXJtLmFsbC9xZW11LXN5c3Rl
-bS1hYXJjaDY0IC1ub2RlZmF1bHRzIC1tYWNoaW5lIHZpcnQsYWNjZWw9dGNnIC1jcHUgY29ydGV4
-LWE1NyAtZGV2aWNlIHZpcnRpby1zZXJpYWwtZGV2aWNlIC1kZXZpY2UgdmlydGNvbnNvbGUsY2hh
-cmRldj1jdGQgLWNoYXJkZXYgdGVzdGRldixpZD1jdGQgLWRldmljZSBwY2ktdGVzdGRldiAtZGlz
-cGxheSBub25lIC1zZXJpYWwgc3RkaW8gLWtlcm5lbCBhcm0vZ2ljLmZsYXQgLXNtcCA4IC1tYWNo
-aW5lIGdpYy12ZXJzaW9uPTMgLWFwcGVuZCBpdHMtbWlncmF0ZS11bm1hcHBlZC1jb2xsZWN0aW9u
-ICMgLWluaXRyZCAvdG1wL3RtcC5EUXdQcmJGa2QwCnFlbXUtc3lzdGVtLWFhcmNoNjQ6cWVtdS1z
-eXN0ZW0tYWFyY2g2NDogLWNoYXJkZXYgLWNoYXJkZXYgc29ja2V0LGlkPW1vbjEscGF0aD0vdG1w
-L21pZy1oZWxwZXItcW1wMS55RWhWemhlQmFpLHNlcnZlcixub3dhaXQgc29ja2V0LGlkPW1vbjIs
-cGF0aD0vdG1wL21pZy1oZWxwZXItcW1wMi5XSWhRbkNINW5xLHNlcnZlcixub3dhaXQ6IDogd2Fy
-bmluZzogd2FybmluZzogc2hvcnQtZm9ybSBib29sZWFuIG9wdGlvbiAnc2VydmVyJyBkZXByZWNh
-dGVkc2hvcnQtZm9ybSBib29sZWFuIG9wdGlvbiAnc2VydmVyJyBkZXByZWNhdGVkCgpQbGVhc2Ug
-dXNlIHNlcnZlcj1vbiBpbnN0ZWFkClBsZWFzZSB1c2Ugc2VydmVyPW9uIGluc3RlYWQKcWVtdS1z
-eXN0ZW0tYWFyY2g2NDpxZW11LXN5c3RlbS1hYXJjaDY0OiAtY2hhcmRldiAtY2hhcmRldiBzb2Nr
-ZXQsaWQ9bW9uMSxwYXRoPS90bXAvbWlnLWhlbHBlci1xbXAxLnlFaFZ6aGVCYWksc2VydmVyLG5v
-d2FpdCBzb2NrZXQsaWQ9bW9uMixwYXRoPS90bXAvbWlnLWhlbHBlci1xbXAyLldJaFFuQ0g1bnEs
-c2VydmVyLG5vd2FpdDogOiB3YXJuaW5nOiB3YXJuaW5nOiBzaG9ydC1mb3JtIGJvb2xlYW4gb3B0
-aW9uICdub3dhaXQnIGRlcHJlY2F0ZWRzaG9ydC1mb3JtIGJvb2xlYW4gb3B0aW9uICdub3dhaXQn
-IGRlcHJlY2F0ZWQKClBsZWFzZSB1c2Ugd2FpdD1vZmYgaW5zdGVhZApQbGVhc2UgdXNlIHdhaXQ9
-b2ZmIGluc3RlYWQKSVRTOiBNQVBEIGRldmlkPTIgc2l6ZSA9IDB4OCBpdHQ9MHg0MDQ0MDAwMCB2
-YWxpZD0xCklUUzogTUFQRCBkZXZpZD03IHNpemUgPSAweDggaXR0PTB4NDA0NTAwMDAgdmFsaWQ9
-MQpNQVBDIGNvbF9pZD0zIHRhcmdldF9hZGRyID0gMHgzMDAwMCB2YWxpZD0xCk1BUEMgY29sX2lk
-PTIgdGFyZ2V0X2FkZHIgPSAweDIwMDAwIHZhbGlkPTEKSU5WQUxMIGNvbF9pZD0yCklOVkFMTCBj
-b2xfaWQ9MwpNQVBUSSBkZXZfaWQ9MiBldmVudF9pZD0yMCAtPiBwaHlzX2lkPTgxOTUsIGNvbF9p
-ZD0zCk1BUFRJIGRldl9pZD03IGV2ZW50X2lkPTI1NSAtPiBwaHlzX2lkPTgxOTYsIGNvbF9pZD0y
-ClNLSVA6IGdpY3YzOiBpdHMtbWlncmF0ZS11bm1hcHBlZC1jb2xsZWN0aW9uOiBTa2lwcGluZyB0
-ZXN0LCBhcyB0aGlzIHRlc3QgaGFuZ3Mgd2l0aG91dCB0aGUgZml4LiBTZXQgRVJSQVRBXzhjNThi
-ZTM0NDk0Yj15IHRvIGVuYWJsZS4KTm93IG1pZ3JhdGUgdGhlIFZNLCB0aGVuIHByZXNzIGEga2V5
-IHRvIGNvbnRpbnVlLi4uCklORk86IGdpY3YzOiBpdHMtbWlncmF0ZS11bm1hcHBlZC1jb2xsZWN0
-aW9uOiBNaWdyYXRpb24gY29tcGxldGUKU1VNTUFSWTogMSB0ZXN0cywgMSBza2lwcGVkCgpydW5f
-bWlncmF0aW9uIHRpbWVvdXQgLWsgMXMgLS1mb3JlZ3JvdW5kIDkwcyAvaG9tZS9hbGV4L2xzcmMv
-cWVtdS5naXQvYnVpbGRzL2FybS5hbGwvcWVtdS1zeXN0ZW0tYWFyY2g2NCAtbm9kZWZhdWx0cyAt
-bWFjaGluZSB2aXJ0LGFjY2VsPXRjZyAtY3B1IGNvcnRleC1hNTcgLWRldmljZSB2aXJ0aW8tc2Vy
-aWFsLWRldmljZSAtZGV2aWNlIHZpcnRjb25zb2xlLGNoYXJkZXY9Y3RkIC1jaGFyZGV2IHRlc3Rk
-ZXYsaWQ9Y3RkIC1kZXZpY2UgcGNpLXRlc3RkZXYgLWRpc3BsYXkgbm9uZSAtc2VyaWFsIHN0ZGlv
-IC1rZXJuZWwgYXJtL2dpYy5mbGF0IC1zbXAgOCAtbWFjaGluZSBnaWMtdmVyc2lvbj0zIC1hcHBl
-bmQgaXRzLW1pZ3JhdGlvbiAjIC1pbml0cmQgL3RtcC90bXAubzZ5dm1yN0lvVwpxZW11LXN5c3Rl
-bS1hYXJjaDY0OiAtY2hhcmRldiBzb2NrZXQsaWQ9bW9uMixwYXRoPS90bXAvbWlnLWhlbHBlci1x
-bXAyLjI2SFpOdmk1UjYsc2VydmVyLG5vd2FpdDogd2FybmluZzogc2hvcnQtZm9ybSBib29sZWFu
-IG9wdGlvbiAnc2VydmVyJyBkZXByZWNhdGVkClBsZWFzZSB1c2Ugc2VydmVyPW9uIGluc3RlYWQK
-cWVtdS1zeXN0ZW0tYWFyY2g2NDogLWNoYXJkZXYgc29ja2V0LGlkPW1vbjIscGF0aD0vdG1wL21p
-Zy1oZWxwZXItcW1wMi4yNkhaTnZpNVI2LHNlcnZlcixub3dhaXQ6IHdhcm5pbmc6IHNob3J0LWZv
-cm0gYm9vbGVhbiBvcHRpb24gJ25vd2FpdCcgZGVwcmVjYXRlZApQbGVhc2UgdXNlIHdhaXQ9b2Zm
-IGluc3RlYWQKcWVtdS1zeXN0ZW0tYWFyY2g2NDogLWNoYXJkZXYgc29ja2V0LGlkPW1vbjEscGF0
-aD0vdG1wL21pZy1oZWxwZXItcW1wMS5hM3BiZWFPRzBHLHNlcnZlcixub3dhaXQ6IHdhcm5pbmc6
-IHNob3J0LWZvcm0gYm9vbGVhbiBvcHRpb24gJ3NlcnZlcicgZGVwcmVjYXRlZApQbGVhc2UgdXNl
-IHNlcnZlcj1vbiBpbnN0ZWFkCnFlbXUtc3lzdGVtLWFhcmNoNjQ6IC1jaGFyZGV2IHNvY2tldCxp
-ZD1tb24xLHBhdGg9L3RtcC9taWctaGVscGVyLXFtcDEuYTNwYmVhT0cwRyxzZXJ2ZXIsbm93YWl0
-OiB3YXJuaW5nOiBzaG9ydC1mb3JtIGJvb2xlYW4gb3B0aW9uICdub3dhaXQnIGRlcHJlY2F0ZWQK
-UGxlYXNlIHVzZSB3YWl0PW9mZiBpbnN0ZWFkCklUUzogTUFQRCBkZXZpZD0yIHNpemUgPSAweDgg
-aXR0PTB4NDA0NDAwMDAgdmFsaWQ9MQpJVFM6IE1BUEQgZGV2aWQ9NyBzaXplID0gMHg4IGl0dD0w
-eDQwNDUwMDAwIHZhbGlkPTEKTUFQQyBjb2xfaWQ9MyB0YXJnZXRfYWRkciA9IDB4MzAwMDAgdmFs
-aWQ9MQpNQVBDIGNvbF9pZD0yIHRhcmdldF9hZGRyID0gMHgyMDAwMCB2YWxpZD0xCklOVkFMTCBj
-b2xfaWQ9MgpJTlZBTEwgY29sX2lkPTMKTUFQVEkgZGV2X2lkPTIgZXZlbnRfaWQ9MjAgLT4gcGh5
-c19pZD04MTk1LCBjb2xfaWQ9MwpNQVBUSSBkZXZfaWQ9NyBldmVudF9pZD0yNTUgLT4gcGh5c19p
-ZD04MTk2LCBjb2xfaWQ9MgpOb3cgbWlncmF0ZSB0aGUgVk0sIHRoZW4gcHJlc3MgYSBrZXkgdG8g
-Y29udGludWUuLi4KSU5GTzogZ2ljdjM6IGl0cy1taWdyYXRpb246IE1pZ3JhdGlvbiBjb21wbGV0
-ZQpJTlQgZGV2X2lkPTIgZXZlbnRfaWQ9MjAKL2hvbWUvYWxleC9sc3JjL3Rlc3RzL2t2bS11bml0
-LXRlc3RzLmdpdC9saWIvYXJtNjQvZ2ljLXYzLWl0cy1jbWQuYzoxOTI6IGFzc2VydCBmYWlsZWQ6
-IGZhbHNlOiBJTlQgdGltZW91dCEKCVNUQUNLOgoKcnVuX21pZ3JhdGlvbiB0aW1lb3V0IC1rIDFz
-IC0tZm9yZWdyb3VuZCA5MHMgL2hvbWUvYWxleC9sc3JjL3FlbXUuZ2l0L2J1aWxkcy9hcm0uYWxs
-L3FlbXUtc3lzdGVtLWFhcmNoNjQgLW5vZGVmYXVsdHMgLW1hY2hpbmUgdmlydCxhY2NlbD10Y2cg
-LWNwdSBjb3J0ZXgtYTU3IC1kZXZpY2UgdmlydGlvLXNlcmlhbC1kZXZpY2UgLWRldmljZSB2aXJ0
-Y29uc29sZSxjaGFyZGV2PWN0ZCAtY2hhcmRldiB0ZXN0ZGV2LGlkPWN0ZCAtZGV2aWNlIHBjaS10
-ZXN0ZGV2IC1kaXNwbGF5IG5vbmUgLXNlcmlhbCBzdGRpbyAta2VybmVsIGFybS9naWMuZmxhdCAt
-c21wIDggLW1hY2hpbmUgZ2ljLXZlcnNpb249MyAtYXBwZW5kIGl0cy1wZW5kaW5nLW1pZ3JhdGlv
-biAjIC1pbml0cmQgL3RtcC90bXAuZzBNQ2VoTkhFNwpxZW11LXN5c3RlbS1hYXJjaDY0OiAtY2hh
-cmRldiBzb2NrZXQsaWQ9bW9uMixwYXRoPS90bXAvbWlnLWhlbHBlci1xbXAyLkx6d3pMZ3ZxU0os
-c2VydmVyLG5vd2FpdDogd2FybmluZzogc2hvcnQtZm9ybSBib29sZWFuIG9wdGlvbiAnc2VydmVy
-JyBkZXByZWNhdGVkClBsZWFzZSB1c2Ugc2VydmVyPW9uIGluc3RlYWQKcWVtdS1zeXN0ZW0tYWFy
-Y2g2NDogLWNoYXJkZXYgc29ja2V0LGlkPW1vbjIscGF0aD0vdG1wL21pZy1oZWxwZXItcW1wMi5M
-end6TGd2cVNKLHNlcnZlcixub3dhaXQ6IHdhcm5pbmc6IHNob3J0LWZvcm0gYm9vbGVhbiBvcHRp
-b24gJ25vd2FpdCcgZGVwcmVjYXRlZApxZW11LXN5c3RlbS1hYXJjaDY0OlBsZWFzZSB1c2Ugd2Fp
-dD1vZmYgaW5zdGVhZAogLWNoYXJkZXYgc29ja2V0LGlkPW1vbjEscGF0aD0vdG1wL21pZy1oZWxw
-ZXItcW1wMS5IVmpPRU9MVTJMLHNlcnZlcixub3dhaXQ6IHdhcm5pbmc6IHNob3J0LWZvcm0gYm9v
-bGVhbiBvcHRpb24gJ3NlcnZlcicgZGVwcmVjYXRlZApQbGVhc2UgdXNlIHNlcnZlcj1vbiBpbnN0
-ZWFkCnFlbXUtc3lzdGVtLWFhcmNoNjQ6IC1jaGFyZGV2IHNvY2tldCxpZD1tb24xLHBhdGg9L3Rt
-cC9taWctaGVscGVyLXFtcDEuSFZqT0VPTFUyTCxzZXJ2ZXIsbm93YWl0OiB3YXJuaW5nOiBzaG9y
-dC1mb3JtIGJvb2xlYW4gb3B0aW9uICdub3dhaXQnIGRlcHJlY2F0ZWQKUGxlYXNlIHVzZSB3YWl0
-PW9mZiBpbnN0ZWFkCklUUzogTUFQRCBkZXZpZD0yIHNpemUgPSAweDggaXR0PTB4NDA0NTAwMDAg
-dmFsaWQ9MQpNQVBDIGNvbF9pZD03IHRhcmdldF9hZGRyID0gMHg3MDAwMCB2YWxpZD0xCk1BUEMg
-Y29sX2lkPTYgdGFyZ2V0X2FkZHIgPSAweDYwMDAwIHZhbGlkPTEKTUFQVEkgZGV2X2lkPTIgZXZl
-bnRfaWQ9MCAtPiBwaHlzX2lkPTgxOTIsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lk
-PTEgLT4gcGh5c19pZD04MTkzLCBjb2xfaWQ9NwpNQVBUSSBkZXZfaWQ9MiBldmVudF9pZD0yIC0+
-IHBoeXNfaWQ9ODE5NCwgY29sX2lkPTYKTUFQVEkgZGV2X2lkPTIgZXZlbnRfaWQ9MyAtPiBwaHlz
-X2lkPTgxOTUsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTQgLT4gcGh5c19pZD04
-MTk2LCBjb2xfaWQ9NgpNQVBUSSBkZXZfaWQ9MiBldmVudF9pZD01IC0+IHBoeXNfaWQ9ODE5Nywg
-Y29sX2lkPTcKTUFQVEkgZGV2X2lkPTIgZXZlbnRfaWQ9NiAtPiBwaHlzX2lkPTgxOTgsIGNvbF9p
-ZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTcgLT4gcGh5c19pZD04MTk5LCBjb2xfaWQ9NwpN
-QVBUSSBkZXZfaWQ9MiBldmVudF9pZD04IC0+IHBoeXNfaWQ9ODIwMCwgY29sX2lkPTYKTUFQVEkg
-ZGV2X2lkPTIgZXZlbnRfaWQ9OSAtPiBwaHlzX2lkPTgyMDEsIGNvbF9pZD03Ck1BUFRJIGRldl9p
-ZD0yIGV2ZW50X2lkPTEwIC0+IHBoeXNfaWQ9ODIwMiwgY29sX2lkPTYKTUFQVEkgZGV2X2lkPTIg
-ZXZlbnRfaWQ9MTEgLT4gcGh5c19pZD04MjAzLCBjb2xfaWQ9NwpNQVBUSSBkZXZfaWQ9MiBldmVu
-dF9pZD0xMiAtPiBwaHlzX2lkPTgyMDQsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lk
-PTEzIC0+IHBoeXNfaWQ9ODIwNSwgY29sX2lkPTcKTUFQVEkgZGV2X2lkPTIgZXZlbnRfaWQ9MTQg
-LT4gcGh5c19pZD04MjA2LCBjb2xfaWQ9NgpNQVBUSSBkZXZfaWQ9MiBldmVudF9pZD0xNSAtPiBw
-aHlzX2lkPTgyMDcsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTE2IC0+IHBoeXNf
-aWQ9ODIwOCwgY29sX2lkPTYKTUFQVEkgZGV2X2lkPTIgZXZlbnRfaWQ9MTcgLT4gcGh5c19pZD04
-MjA5LCBjb2xfaWQ9NwpNQVBUSSBkZXZfaWQ9MiBldmVudF9pZD0xOCAtPiBwaHlzX2lkPTgyMTAs
-IGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTE5IC0+IHBoeXNfaWQ9ODIxMSwgY29s
-X2lkPTcKTUFQVEkgZGV2X2lkPTIgZXZlbnRfaWQ9MjAgLT4gcGh5c19pZD04MjEyLCBjb2xfaWQ9
-NgpNQVBUSSBkZXZfaWQ9MiBldmVudF9pZD0yMSAtPiBwaHlzX2lkPTgyMTMsIGNvbF9pZD03Ck1B
-UFRJIGRldl9pZD0yIGV2ZW50X2lkPTIyIC0+IHBoeXNfaWQ9ODIxNCwgY29sX2lkPTYKTUFQVEkg
-ZGV2X2lkPTIgZXZlbnRfaWQ9MjMgLT4gcGh5c19pZD04MjE1LCBjb2xfaWQ9NwpNQVBUSSBkZXZf
-aWQ9MiBldmVudF9pZD0yNCAtPiBwaHlzX2lkPTgyMTYsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0y
-IGV2ZW50X2lkPTI1IC0+IHBoeXNfaWQ9ODIxNywgY29sX2lkPTcKTUFQVEkgZGV2X2lkPTIgZXZl
-bnRfaWQ9MjYgLT4gcGh5c19pZD04MjE4LCBjb2xfaWQ9NgpNQVBUSSBkZXZfaWQ9MiBldmVudF9p
-ZD0yNyAtPiBwaHlzX2lkPTgyMTksIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTI4
-IC0+IHBoeXNfaWQ9ODIyMCwgY29sX2lkPTYKTUFQVEkgZGV2X2lkPTIgZXZlbnRfaWQ9MjkgLT4g
-cGh5c19pZD04MjIxLCBjb2xfaWQ9NwpNQVBUSSBkZXZfaWQ9MiBldmVudF9pZD0zMCAtPiBwaHlz
-X2lkPTgyMjIsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTMxIC0+IHBoeXNfaWQ9
-ODIyMywgY29sX2lkPTcKTUFQVEkgZGV2X2lkPTIgZXZlbnRfaWQ9MzIgLT4gcGh5c19pZD04MjI0
-LCBjb2xfaWQ9NgpNQVBUSSBkZXZfaWQ9MiBldmVudF9pZD0zMyAtPiBwaHlzX2lkPTgyMjUsIGNv
-bF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTM0IC0+IHBoeXNfaWQ9ODIyNiwgY29sX2lk
-PTYKTUFQVEkgZGV2X2lkPTIgZXZlbnRfaWQ9MzUgLT4gcGh5c19pZD04MjI3LCBjb2xfaWQ9NwpN
-QVBUSSBkZXZfaWQ9MiBldmVudF9pZD0zNiAtPiBwaHlzX2lkPTgyMjgsIGNvbF9pZD02Ck1BUFRJ
-IGRldl9pZD0yIGV2ZW50X2lkPTM3IC0+IHBoeXNfaWQ9ODIyOSwgY29sX2lkPTcKTUFQVEkgZGV2
-X2lkPTIgZXZlbnRfaWQ9MzggLT4gcGh5c19pZD04MjMwLCBjb2xfaWQ9NgpNQVBUSSBkZXZfaWQ9
-MiBldmVudF9pZD0zOSAtPiBwaHlzX2lkPTgyMzEsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2
-ZW50X2lkPTQwIC0+IHBoeXNfaWQ9ODIzMiwgY29sX2lkPTYKTUFQVEkgZGV2X2lkPTIgZXZlbnRf
-aWQ9NDEgLT4gcGh5c19pZD04MjMzLCBjb2xfaWQ9NwpNQVBUSSBkZXZfaWQ9MiBldmVudF9pZD00
-MiAtPiBwaHlzX2lkPTgyMzQsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTQzIC0+
-IHBoeXNfaWQ9ODIzNSwgY29sX2lkPTcKTUFQVEkgZGV2X2lkPTIgZXZlbnRfaWQ9NDQgLT4gcGh5
-c19pZD04MjM2LCBjb2xfaWQ9NgpNQVBUSSBkZXZfaWQ9MiBldmVudF9pZD00NSAtPiBwaHlzX2lk
-PTgyMzcsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTQ2IC0+IHBoeXNfaWQ9ODIz
-OCwgY29sX2lkPTYKTUFQVEkgZGV2X2lkPTIgZXZlbnRfaWQ9NDcgLT4gcGh5c19pZD04MjM5LCBj
-b2xfaWQ9NwpNQVBUSSBkZXZfaWQ9MiBldmVudF9pZD00OCAtPiBwaHlzX2lkPTgyNDAsIGNvbF9p
-ZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTQ5IC0+IHBoeXNfaWQ9ODI0MSwgY29sX2lkPTcK
-TUFQVEkgZGV2X2lkPTIgZXZlbnRfaWQ9NTAgLT4gcGh5c19pZD04MjQyLCBjb2xfaWQ9NgpNQVBU
-SSBkZXZfaWQ9MiBldmVudF9pZD01MSAtPiBwaHlzX2lkPTgyNDMsIGNvbF9pZD03Ck1BUFRJIGRl
-dl9pZD0yIGV2ZW50X2lkPTUyIC0+IHBoeXNfaWQ9ODI0NCwgY29sX2lkPTYKTUFQVEkgZGV2X2lk
-PTIgZXZlbnRfaWQ9NTMgLT4gcGh5c19pZD04MjQ1LCBjb2xfaWQ9NwpNQVBUSSBkZXZfaWQ9MiBl
-dmVudF9pZD01NCAtPiBwaHlzX2lkPTgyNDYsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50
-X2lkPTU1IC0+IHBoeXNfaWQ9ODI0NywgY29sX2lkPTcKTUFQVEkgZGV2X2lkPTIgZXZlbnRfaWQ9
-NTYgLT4gcGh5c19pZD04MjQ4LCBjb2xfaWQ9NgpNQVBUSSBkZXZfaWQ9MiBldmVudF9pZD01NyAt
-PiBwaHlzX2lkPTgyNDksIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTU4IC0+IHBo
-eXNfaWQ9ODI1MCwgY29sX2lkPTYKTUFQVEkgZGV2X2lkPTIgZXZlbnRfaWQ9NTkgLT4gcGh5c19p
-ZD04MjUxLCBjb2xfaWQ9NwpNQVBUSSBkZXZfaWQ9MiBldmVudF9pZD02MCAtPiBwaHlzX2lkPTgy
-NTIsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTYxIC0+IHBoeXNfaWQ9ODI1Mywg
-Y29sX2lkPTcKTUFQVEkgZGV2X2lkPTIgZXZlbnRfaWQ9NjIgLT4gcGh5c19pZD04MjU0LCBjb2xf
-aWQ9NgpNQVBUSSBkZXZfaWQ9MiBldmVudF9pZD02MyAtPiBwaHlzX2lkPTgyNTUsIGNvbF9pZD03
-Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTY0IC0+IHBoeXNfaWQ9ODI1NiwgY29sX2lkPTYKTUFQ
-VEkgZGV2X2lkPTIgZXZlbnRfaWQ9NjUgLT4gcGh5c19pZD04MjU3LCBjb2xfaWQ9NwpNQVBUSSBk
-ZXZfaWQ9MiBldmVudF9pZD02NiAtPiBwaHlzX2lkPTgyNTgsIGNvbF9pZD02Ck1BUFRJIGRldl9p
-ZD0yIGV2ZW50X2lkPTY3IC0+IHBoeXNfaWQ9ODI1OSwgY29sX2lkPTcKTUFQVEkgZGV2X2lkPTIg
-ZXZlbnRfaWQ9NjggLT4gcGh5c19pZD04MjYwLCBjb2xfaWQ9NgpNQVBUSSBkZXZfaWQ9MiBldmVu
-dF9pZD02OSAtPiBwaHlzX2lkPTgyNjEsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lk
-PTcwIC0+IHBoeXNfaWQ9ODI2MiwgY29sX2lkPTYKTUFQVEkgZGV2X2lkPTIgZXZlbnRfaWQ9NzEg
-LT4gcGh5c19pZD04MjYzLCBjb2xfaWQ9NwpNQVBUSSBkZXZfaWQ9MiBldmVudF9pZD03MiAtPiBw
-aHlzX2lkPTgyNjQsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTczIC0+IHBoeXNf
-aWQ9ODI2NSwgY29sX2lkPTcKTUFQVEkgZGV2X2lkPTIgZXZlbnRfaWQ9NzQgLT4gcGh5c19pZD04
-MjY2LCBjb2xfaWQ9NgpNQVBUSSBkZXZfaWQ9MiBldmVudF9pZD03NSAtPiBwaHlzX2lkPTgyNjcs
-IGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTc2IC0+IHBoeXNfaWQ9ODI2OCwgY29s
-X2lkPTYKTUFQVEkgZGV2X2lkPTIgZXZlbnRfaWQ9NzcgLT4gcGh5c19pZD04MjY5LCBjb2xfaWQ9
-NwpNQVBUSSBkZXZfaWQ9MiBldmVudF9pZD03OCAtPiBwaHlzX2lkPTgyNzAsIGNvbF9pZD02Ck1B
-UFRJIGRldl9pZD0yIGV2ZW50X2lkPTc5IC0+IHBoeXNfaWQ9ODI3MSwgY29sX2lkPTcKTUFQVEkg
-ZGV2X2lkPTIgZXZlbnRfaWQ9ODAgLT4gcGh5c19pZD04MjcyLCBjb2xfaWQ9NgpNQVBUSSBkZXZf
-aWQ9MiBldmVudF9pZD04MSAtPiBwaHlzX2lkPTgyNzMsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0y
-IGV2ZW50X2lkPTgyIC0+IHBoeXNfaWQ9ODI3NCwgY29sX2lkPTYKTUFQVEkgZGV2X2lkPTIgZXZl
-bnRfaWQ9ODMgLT4gcGh5c19pZD04Mjc1LCBjb2xfaWQ9NwpNQVBUSSBkZXZfaWQ9MiBldmVudF9p
-ZD04NCAtPiBwaHlzX2lkPTgyNzYsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTg1
-IC0+IHBoeXNfaWQ9ODI3NywgY29sX2lkPTcKTUFQVEkgZGV2X2lkPTIgZXZlbnRfaWQ9ODYgLT4g
-cGh5c19pZD04Mjc4LCBjb2xfaWQ9NgpNQVBUSSBkZXZfaWQ9MiBldmVudF9pZD04NyAtPiBwaHlz
-X2lkPTgyNzksIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTg4IC0+IHBoeXNfaWQ9
-ODI4MCwgY29sX2lkPTYKTUFQVEkgZGV2X2lkPTIgZXZlbnRfaWQ9ODkgLT4gcGh5c19pZD04Mjgx
-LCBjb2xfaWQ9NwpNQVBUSSBkZXZfaWQ9MiBldmVudF9pZD05MCAtPiBwaHlzX2lkPTgyODIsIGNv
-bF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTkxIC0+IHBoeXNfaWQ9ODI4MywgY29sX2lk
-PTcKTUFQVEkgZGV2X2lkPTIgZXZlbnRfaWQ9OTIgLT4gcGh5c19pZD04Mjg0LCBjb2xfaWQ9NgpN
-QVBUSSBkZXZfaWQ9MiBldmVudF9pZD05MyAtPiBwaHlzX2lkPTgyODUsIGNvbF9pZD03Ck1BUFRJ
-IGRldl9pZD0yIGV2ZW50X2lkPTk0IC0+IHBoeXNfaWQ9ODI4NiwgY29sX2lkPTYKTUFQVEkgZGV2
-X2lkPTIgZXZlbnRfaWQ9OTUgLT4gcGh5c19pZD04Mjg3LCBjb2xfaWQ9NwpNQVBUSSBkZXZfaWQ9
-MiBldmVudF9pZD05NiAtPiBwaHlzX2lkPTgyODgsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2
-ZW50X2lkPTk3IC0+IHBoeXNfaWQ9ODI4OSwgY29sX2lkPTcKTUFQVEkgZGV2X2lkPTIgZXZlbnRf
-aWQ9OTggLT4gcGh5c19pZD04MjkwLCBjb2xfaWQ9NgpNQVBUSSBkZXZfaWQ9MiBldmVudF9pZD05
-OSAtPiBwaHlzX2lkPTgyOTEsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTEwMCAt
-PiBwaHlzX2lkPTgyOTIsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTEwMSAtPiBw
-aHlzX2lkPTgyOTMsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTEwMiAtPiBwaHlz
-X2lkPTgyOTQsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTEwMyAtPiBwaHlzX2lk
-PTgyOTUsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTEwNCAtPiBwaHlzX2lkPTgy
-OTYsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTEwNSAtPiBwaHlzX2lkPTgyOTcs
-IGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTEwNiAtPiBwaHlzX2lkPTgyOTgsIGNv
-bF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTEwNyAtPiBwaHlzX2lkPTgyOTksIGNvbF9p
-ZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTEwOCAtPiBwaHlzX2lkPTgzMDAsIGNvbF9pZD02
-Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTEwOSAtPiBwaHlzX2lkPTgzMDEsIGNvbF9pZD03Ck1B
-UFRJIGRldl9pZD0yIGV2ZW50X2lkPTExMCAtPiBwaHlzX2lkPTgzMDIsIGNvbF9pZD02Ck1BUFRJ
-IGRldl9pZD0yIGV2ZW50X2lkPTExMSAtPiBwaHlzX2lkPTgzMDMsIGNvbF9pZD03Ck1BUFRJIGRl
-dl9pZD0yIGV2ZW50X2lkPTExMiAtPiBwaHlzX2lkPTgzMDQsIGNvbF9pZD02Ck1BUFRJIGRldl9p
-ZD0yIGV2ZW50X2lkPTExMyAtPiBwaHlzX2lkPTgzMDUsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0y
-IGV2ZW50X2lkPTExNCAtPiBwaHlzX2lkPTgzMDYsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2
-ZW50X2lkPTExNSAtPiBwaHlzX2lkPTgzMDcsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50
-X2lkPTExNiAtPiBwaHlzX2lkPTgzMDgsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lk
-PTExNyAtPiBwaHlzX2lkPTgzMDksIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTEx
-OCAtPiBwaHlzX2lkPTgzMTAsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTExOSAt
-PiBwaHlzX2lkPTgzMTEsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTEyMCAtPiBw
-aHlzX2lkPTgzMTIsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTEyMSAtPiBwaHlz
-X2lkPTgzMTMsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTEyMiAtPiBwaHlzX2lk
-PTgzMTQsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTEyMyAtPiBwaHlzX2lkPTgz
-MTUsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTEyNCAtPiBwaHlzX2lkPTgzMTYs
-IGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTEyNSAtPiBwaHlzX2lkPTgzMTcsIGNv
-bF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTEyNiAtPiBwaHlzX2lkPTgzMTgsIGNvbF9p
-ZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTEyNyAtPiBwaHlzX2lkPTgzMTksIGNvbF9pZD03
-Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTEyOCAtPiBwaHlzX2lkPTgzMjAsIGNvbF9pZD02Ck1B
-UFRJIGRldl9pZD0yIGV2ZW50X2lkPTEyOSAtPiBwaHlzX2lkPTgzMjEsIGNvbF9pZD03Ck1BUFRJ
-IGRldl9pZD0yIGV2ZW50X2lkPTEzMCAtPiBwaHlzX2lkPTgzMjIsIGNvbF9pZD02Ck1BUFRJIGRl
-dl9pZD0yIGV2ZW50X2lkPTEzMSAtPiBwaHlzX2lkPTgzMjMsIGNvbF9pZD03Ck1BUFRJIGRldl9p
-ZD0yIGV2ZW50X2lkPTEzMiAtPiBwaHlzX2lkPTgzMjQsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0y
-IGV2ZW50X2lkPTEzMyAtPiBwaHlzX2lkPTgzMjUsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2
-ZW50X2lkPTEzNCAtPiBwaHlzX2lkPTgzMjYsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50
-X2lkPTEzNSAtPiBwaHlzX2lkPTgzMjcsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lk
-PTEzNiAtPiBwaHlzX2lkPTgzMjgsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTEz
-NyAtPiBwaHlzX2lkPTgzMjksIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTEzOCAt
-PiBwaHlzX2lkPTgzMzAsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTEzOSAtPiBw
-aHlzX2lkPTgzMzEsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTE0MCAtPiBwaHlz
-X2lkPTgzMzIsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTE0MSAtPiBwaHlzX2lk
-PTgzMzMsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTE0MiAtPiBwaHlzX2lkPTgz
-MzQsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTE0MyAtPiBwaHlzX2lkPTgzMzUs
-IGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTE0NCAtPiBwaHlzX2lkPTgzMzYsIGNv
-bF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTE0NSAtPiBwaHlzX2lkPTgzMzcsIGNvbF9p
-ZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTE0NiAtPiBwaHlzX2lkPTgzMzgsIGNvbF9pZD02
-Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTE0NyAtPiBwaHlzX2lkPTgzMzksIGNvbF9pZD03Ck1B
-UFRJIGRldl9pZD0yIGV2ZW50X2lkPTE0OCAtPiBwaHlzX2lkPTgzNDAsIGNvbF9pZD02Ck1BUFRJ
-IGRldl9pZD0yIGV2ZW50X2lkPTE0OSAtPiBwaHlzX2lkPTgzNDEsIGNvbF9pZD03Ck1BUFRJIGRl
-dl9pZD0yIGV2ZW50X2lkPTE1MCAtPiBwaHlzX2lkPTgzNDIsIGNvbF9pZD02Ck1BUFRJIGRldl9p
-ZD0yIGV2ZW50X2lkPTE1MSAtPiBwaHlzX2lkPTgzNDMsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0y
-IGV2ZW50X2lkPTE1MiAtPiBwaHlzX2lkPTgzNDQsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2
-ZW50X2lkPTE1MyAtPiBwaHlzX2lkPTgzNDUsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50
-X2lkPTE1NCAtPiBwaHlzX2lkPTgzNDYsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lk
-PTE1NSAtPiBwaHlzX2lkPTgzNDcsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTE1
-NiAtPiBwaHlzX2lkPTgzNDgsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTE1NyAt
-PiBwaHlzX2lkPTgzNDksIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTE1OCAtPiBw
-aHlzX2lkPTgzNTAsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTE1OSAtPiBwaHlz
-X2lkPTgzNTEsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTE2MCAtPiBwaHlzX2lk
-PTgzNTIsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTE2MSAtPiBwaHlzX2lkPTgz
-NTMsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTE2MiAtPiBwaHlzX2lkPTgzNTQs
-IGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTE2MyAtPiBwaHlzX2lkPTgzNTUsIGNv
-bF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTE2NCAtPiBwaHlzX2lkPTgzNTYsIGNvbF9p
-ZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTE2NSAtPiBwaHlzX2lkPTgzNTcsIGNvbF9pZD03
-Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTE2NiAtPiBwaHlzX2lkPTgzNTgsIGNvbF9pZD02Ck1B
-UFRJIGRldl9pZD0yIGV2ZW50X2lkPTE2NyAtPiBwaHlzX2lkPTgzNTksIGNvbF9pZD03Ck1BUFRJ
-IGRldl9pZD0yIGV2ZW50X2lkPTE2OCAtPiBwaHlzX2lkPTgzNjAsIGNvbF9pZD02Ck1BUFRJIGRl
-dl9pZD0yIGV2ZW50X2lkPTE2OSAtPiBwaHlzX2lkPTgzNjEsIGNvbF9pZD03Ck1BUFRJIGRldl9p
-ZD0yIGV2ZW50X2lkPTE3MCAtPiBwaHlzX2lkPTgzNjIsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0y
-IGV2ZW50X2lkPTE3MSAtPiBwaHlzX2lkPTgzNjMsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2
-ZW50X2lkPTE3MiAtPiBwaHlzX2lkPTgzNjQsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50
-X2lkPTE3MyAtPiBwaHlzX2lkPTgzNjUsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lk
-PTE3NCAtPiBwaHlzX2lkPTgzNjYsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTE3
-NSAtPiBwaHlzX2lkPTgzNjcsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTE3NiAt
-PiBwaHlzX2lkPTgzNjgsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTE3NyAtPiBw
-aHlzX2lkPTgzNjksIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTE3OCAtPiBwaHlz
-X2lkPTgzNzAsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTE3OSAtPiBwaHlzX2lk
-PTgzNzEsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTE4MCAtPiBwaHlzX2lkPTgz
-NzIsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTE4MSAtPiBwaHlzX2lkPTgzNzMs
-IGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTE4MiAtPiBwaHlzX2lkPTgzNzQsIGNv
-bF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTE4MyAtPiBwaHlzX2lkPTgzNzUsIGNvbF9p
-ZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTE4NCAtPiBwaHlzX2lkPTgzNzYsIGNvbF9pZD02
-Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTE4NSAtPiBwaHlzX2lkPTgzNzcsIGNvbF9pZD03Ck1B
-UFRJIGRldl9pZD0yIGV2ZW50X2lkPTE4NiAtPiBwaHlzX2lkPTgzNzgsIGNvbF9pZD02Ck1BUFRJ
-IGRldl9pZD0yIGV2ZW50X2lkPTE4NyAtPiBwaHlzX2lkPTgzNzksIGNvbF9pZD03Ck1BUFRJIGRl
-dl9pZD0yIGV2ZW50X2lkPTE4OCAtPiBwaHlzX2lkPTgzODAsIGNvbF9pZD02Ck1BUFRJIGRldl9p
-ZD0yIGV2ZW50X2lkPTE4OSAtPiBwaHlzX2lkPTgzODEsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0y
-IGV2ZW50X2lkPTE5MCAtPiBwaHlzX2lkPTgzODIsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2
-ZW50X2lkPTE5MSAtPiBwaHlzX2lkPTgzODMsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50
-X2lkPTE5MiAtPiBwaHlzX2lkPTgzODQsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lk
-PTE5MyAtPiBwaHlzX2lkPTgzODUsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTE5
-NCAtPiBwaHlzX2lkPTgzODYsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTE5NSAt
-PiBwaHlzX2lkPTgzODcsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTE5NiAtPiBw
-aHlzX2lkPTgzODgsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTE5NyAtPiBwaHlz
-X2lkPTgzODksIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTE5OCAtPiBwaHlzX2lk
-PTgzOTAsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTE5OSAtPiBwaHlzX2lkPTgz
-OTEsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTIwMCAtPiBwaHlzX2lkPTgzOTIs
-IGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTIwMSAtPiBwaHlzX2lkPTgzOTMsIGNv
-bF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTIwMiAtPiBwaHlzX2lkPTgzOTQsIGNvbF9p
-ZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTIwMyAtPiBwaHlzX2lkPTgzOTUsIGNvbF9pZD03
-Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTIwNCAtPiBwaHlzX2lkPTgzOTYsIGNvbF9pZD02Ck1B
-UFRJIGRldl9pZD0yIGV2ZW50X2lkPTIwNSAtPiBwaHlzX2lkPTgzOTcsIGNvbF9pZD03Ck1BUFRJ
-IGRldl9pZD0yIGV2ZW50X2lkPTIwNiAtPiBwaHlzX2lkPTgzOTgsIGNvbF9pZD02Ck1BUFRJIGRl
-dl9pZD0yIGV2ZW50X2lkPTIwNyAtPiBwaHlzX2lkPTgzOTksIGNvbF9pZD03Ck1BUFRJIGRldl9p
-ZD0yIGV2ZW50X2lkPTIwOCAtPiBwaHlzX2lkPTg0MDAsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0y
-IGV2ZW50X2lkPTIwOSAtPiBwaHlzX2lkPTg0MDEsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2
-ZW50X2lkPTIxMCAtPiBwaHlzX2lkPTg0MDIsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50
-X2lkPTIxMSAtPiBwaHlzX2lkPTg0MDMsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lk
-PTIxMiAtPiBwaHlzX2lkPTg0MDQsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTIx
-MyAtPiBwaHlzX2lkPTg0MDUsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTIxNCAt
-PiBwaHlzX2lkPTg0MDYsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTIxNSAtPiBw
-aHlzX2lkPTg0MDcsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTIxNiAtPiBwaHlz
-X2lkPTg0MDgsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTIxNyAtPiBwaHlzX2lk
-PTg0MDksIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTIxOCAtPiBwaHlzX2lkPTg0
-MTAsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTIxOSAtPiBwaHlzX2lkPTg0MTEs
-IGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTIyMCAtPiBwaHlzX2lkPTg0MTIsIGNv
-bF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTIyMSAtPiBwaHlzX2lkPTg0MTMsIGNvbF9p
-ZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTIyMiAtPiBwaHlzX2lkPTg0MTQsIGNvbF9pZD02
-Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTIyMyAtPiBwaHlzX2lkPTg0MTUsIGNvbF9pZD03Ck1B
-UFRJIGRldl9pZD0yIGV2ZW50X2lkPTIyNCAtPiBwaHlzX2lkPTg0MTYsIGNvbF9pZD02Ck1BUFRJ
-IGRldl9pZD0yIGV2ZW50X2lkPTIyNSAtPiBwaHlzX2lkPTg0MTcsIGNvbF9pZD03Ck1BUFRJIGRl
-dl9pZD0yIGV2ZW50X2lkPTIyNiAtPiBwaHlzX2lkPTg0MTgsIGNvbF9pZD02Ck1BUFRJIGRldl9p
-ZD0yIGV2ZW50X2lkPTIyNyAtPiBwaHlzX2lkPTg0MTksIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0y
-IGV2ZW50X2lkPTIyOCAtPiBwaHlzX2lkPTg0MjAsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2
-ZW50X2lkPTIyOSAtPiBwaHlzX2lkPTg0MjEsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50
-X2lkPTIzMCAtPiBwaHlzX2lkPTg0MjIsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lk
-PTIzMSAtPiBwaHlzX2lkPTg0MjMsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTIz
-MiAtPiBwaHlzX2lkPTg0MjQsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTIzMyAt
-PiBwaHlzX2lkPTg0MjUsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTIzNCAtPiBw
-aHlzX2lkPTg0MjYsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTIzNSAtPiBwaHlz
-X2lkPTg0MjcsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTIzNiAtPiBwaHlzX2lk
-PTg0MjgsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTIzNyAtPiBwaHlzX2lkPTg0
-MjksIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTIzOCAtPiBwaHlzX2lkPTg0MzAs
-IGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTIzOSAtPiBwaHlzX2lkPTg0MzEsIGNv
-bF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTI0MCAtPiBwaHlzX2lkPTg0MzIsIGNvbF9p
-ZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTI0MSAtPiBwaHlzX2lkPTg0MzMsIGNvbF9pZD03
-Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTI0MiAtPiBwaHlzX2lkPTg0MzQsIGNvbF9pZD02Ck1B
-UFRJIGRldl9pZD0yIGV2ZW50X2lkPTI0MyAtPiBwaHlzX2lkPTg0MzUsIGNvbF9pZD03Ck1BUFRJ
-IGRldl9pZD0yIGV2ZW50X2lkPTI0NCAtPiBwaHlzX2lkPTg0MzYsIGNvbF9pZD02Ck1BUFRJIGRl
-dl9pZD0yIGV2ZW50X2lkPTI0NSAtPiBwaHlzX2lkPTg0MzcsIGNvbF9pZD03Ck1BUFRJIGRldl9p
-ZD0yIGV2ZW50X2lkPTI0NiAtPiBwaHlzX2lkPTg0MzgsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0y
-IGV2ZW50X2lkPTI0NyAtPiBwaHlzX2lkPTg0MzksIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2
-ZW50X2lkPTI0OCAtPiBwaHlzX2lkPTg0NDAsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50
-X2lkPTI0OSAtPiBwaHlzX2lkPTg0NDEsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lk
-PTI1MCAtPiBwaHlzX2lkPTg0NDIsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTI1
-MSAtPiBwaHlzX2lkPTg0NDMsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTI1MiAt
-PiBwaHlzX2lkPTg0NDQsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTI1MyAtPiBw
-aHlzX2lkPTg0NDUsIGNvbF9pZD03Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTI1NCAtPiBwaHlz
-X2lkPTg0NDYsIGNvbF9pZD02Ck1BUFRJIGRldl9pZD0yIGV2ZW50X2lkPTI1NSAtPiBwaHlzX2lk
-PTg0NDcsIGNvbF9pZD03CklOVkFMTCBjb2xfaWQ9NwpJTlZBTEwgY29sX2lkPTYKTm93IG1pZ3Jh
-dGUgdGhlIFZNLCB0aGVuIHByZXNzIGEga2V5IHRvIGNvbnRpbnVlLi4uCklORk86IGdpY3YzOiBp
-dHMtcGVuZGluZy1taWdyYXRpb246IE1pZ3JhdGlvbiBjb21wbGV0ZQpJTkZPOiBnaWN2MzogaXRz
-LXBlbmRpbmctbWlncmF0aW9uOiBleHBlY3RlZCAxMjggTFBJcyBvbiBQRSAjNiwgMCBvYnNlcnZl
-ZApGQUlMOiBnaWN2MzogaXRzLXBlbmRpbmctbWlncmF0aW9uOiAxMjggTFBJcyBvbiBib3RoIFBF
-MCBhbmQgUEUxIGFmdGVyIG1pZ3JhdGlvbgpTVU1NQVJZOiAxIHRlc3RzLCAxIHVuZXhwZWN0ZWQg
-ZmFpbHVyZXMKCnRpbWVvdXQgLWsgMXMgLS1mb3JlZ3JvdW5kIDkwcyAvaG9tZS9hbGV4L2xzcmMv
-cWVtdS5naXQvYnVpbGRzL2FybS5hbGwvcWVtdS1zeXN0ZW0tYWFyY2g2NCAtbm9kZWZhdWx0cyAt
-bWFjaGluZSB2aXJ0LGFjY2VsPXRjZyAtY3B1IGNvcnRleC1hNTcgLWRldmljZSB2aXJ0aW8tc2Vy
-aWFsLWRldmljZSAtZGV2aWNlIHZpcnRjb25zb2xlLGNoYXJkZXY9Y3RkIC1jaGFyZGV2IHRlc3Rk
-ZXYsaWQ9Y3RkIC1kZXZpY2UgcGNpLXRlc3RkZXYgLWRpc3BsYXkgbm9uZSAtc2VyaWFsIHN0ZGlv
-IC1rZXJuZWwgYXJtL2dpYy5mbGF0IC1zbXAgOCAtbWFjaGluZSBnaWMtdmVyc2lvbj0zIC1hcHBl
-bmQgaXRzLXRyaWdnZXIgIyAtaW5pdHJkIC90bXAvdG1wLnNoWGFOb0JYM3AKSVRTOiBNQVBEIGRl
-dmlkPTIgc2l6ZSA9IDB4OCBpdHQ9MHg0MDQ0MDAwMCB2YWxpZD0xCklUUzogTUFQRCBkZXZpZD03
-IHNpemUgPSAweDggaXR0PTB4NDA0NTAwMDAgdmFsaWQ9MQpNQVBDIGNvbF9pZD0zIHRhcmdldF9h
-ZGRyID0gMHgzMDAwMCB2YWxpZD0xCk1BUEMgY29sX2lkPTIgdGFyZ2V0X2FkZHIgPSAweDIwMDAw
-IHZhbGlkPTEKSU5WQUxMIGNvbF9pZD0yCklOVkFMTCBjb2xfaWQ9MwpNQVBUSSBkZXZfaWQ9MiBl
-dmVudF9pZD0yMCAtPiBwaHlzX2lkPTgxOTUsIGNvbF9pZD0zCk1BUFRJIGRldl9pZD03IGV2ZW50
-X2lkPTI1NSAtPiBwaHlzX2lkPTgxOTYsIGNvbF9pZD0yCklOVCBkZXZfaWQ9MiBldmVudF9pZD0y
-MApQQVNTOiBnaWN2MzogaXRzLXRyaWdnZXI6IGludDogZGV2PTIsIGV2ZW50aWQ9MjAgIC0+IGxw
-aT0gODE5NSwgY29sPTMKSU5UIGRldl9pZD03IGV2ZW50X2lkPTI1NQpQQVNTOiBnaWN2MzogaXRz
-LXRyaWdnZXI6IGludDogZGV2PTcsIGV2ZW50aWQ9MjU1IC0+IGxwaT0gODE5NiwgY29sPTIKSU5W
-IGRldl9pZD0yIGV2ZW50X2lkPTIwCklOVCBkZXZfaWQ9MiBldmVudF9pZD0yMApQQVNTOiBnaWN2
-MzogaXRzLXRyaWdnZXI6IGludi9pbnZhbGw6IGRldjIvZXZlbnRpZD0yMCBkb2VzIG5vdCB0cmln
-Z2VyIGFueSBMUEkKSU5UIGRldl9pZD0yIGV2ZW50X2lkPTIwCklORk86IGdpY3YzOiBpdHMtdHJp
-Z2dlcjogaW52L2ludmFsbDogVW5leHBlY3RlZCBMUEkgKGNwdWlkPTMsIGludGlkPTgxOTUpCkZB
-SUw6IGdpY3YzOiBpdHMtdHJpZ2dlcjogaW52L2ludmFsbDogZGV2Mi9ldmVudGlkPTIwIHN0aWxs
-IGRvZXMgbm90IHRyaWdnZXIgYW55IExQSQpJTlZBTEwgY29sX2lkPTMKSU5UIGRldl9pZD0yIGV2
-ZW50X2lkPTIwClBBU1M6IGdpY3YzOiBpdHMtdHJpZ2dlcjogaW52L2ludmFsbDogZGV2Mi9ldmVu
-dGlkPTIwIG5vdyB0cmlnZ2VycyBhbiBMUEkKSVRTOiBNQVBEIGRldmlkPTIgc2l6ZSA9IDB4OCBp
-dHQ9MHg0MDQ0MDAwMCB2YWxpZD0wCklOVCBkZXZfaWQ9MiBldmVudF9pZD0yMApQQVNTOiBnaWN2
-MzogaXRzLXRyaWdnZXI6IG1hcGQgdmFsaWQ9ZmFsc2U6IG5vIExQSSBhZnRlciBkZXZpY2UgdW5t
-YXAKU1VNTUFSWTogNiB0ZXN0cywgMSB1bmV4cGVjdGVkIGZhaWx1cmVzCgpCVUlMRF9IRUFEPTMw
-NTRjYTI2Cg==
---=-=-=
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+LOG_UNIMP again?=20
 
+> +                    s->baser[index] =3D 0;
+> +                    result =3D MEMTX_ERROR;
+> +                }
+> +            } else {
+> +                s->baser[index] =3D  deposit64(s->baser[index], 0, 32, v=
+alue);
+> +            }
+> +        }
+> +        break;
+> +    case GITS_IIDR:
+> +    case GITS_TYPER:
+> +    case GITS_CREADR:
+> +        /* RO registers, ignore the write */
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +            "%s: invalid guest write to RO register at offset "
+> +            TARGET_FMT_plx "\n", __func__, offset);
+> +        break;
+> +    default:
+> +        result =3D MEMTX_ERROR;
+> +        break;
+> +    }
+>      return result;
+>  }
+>=20=20
+> @@ -134,7 +370,54 @@ static MemTxResult its_readl(GICv3ITSState *s, hwadd=
+r offset,
+>                                 uint64_t *data, MemTxAttrs attrs)
+>  {
+>      MemTxResult result =3D MEMTX_OK;
+> +    int index;
+>=20=20
+> +    switch (offset) {
+> +    case GITS_CTLR:
+> +        *data =3D s->ctlr;
+> +        break;
+> +    case GITS_IIDR:
+> +        *data =3D s->iidr;
+> +        break;
+> +    case GITS_PIDR2:
+> +        *data =3D 0x30; /* GICv3 */
+> +        break;
+> +    case GITS_TYPER:
+> +        *data =3D extract64(s->typer, 0, 32);
+> +        break;
+> +    case GITS_TYPER + 4:
+> +        *data =3D extract64(s->typer, 32, 32);
+> +        break;
+> +    case GITS_CBASER:
+> +        *data =3D extract64(s->cbaser, 0, 32);
+> +        break;
+> +    case GITS_CBASER + 4:
+> +        *data =3D extract64(s->cbaser, 32, 32);
+> +        break;
+> +    case GITS_CREADR:
+> +        *data =3D extract64(s->creadr, 0, 32);
+> +        break;
+> +    case GITS_CREADR + 4:
+> +        *data =3D extract64(s->creadr, 32, 32);
+> +        break;
+> +    case GITS_CWRITER:
+> +        *data =3D extract64(s->cwriter, 0, 32);
+> +        break;
+> +    case GITS_CWRITER + 4:
+> +        *data =3D extract64(s->cwriter, 32, 32);
+> +        break;
+> +    case GITS_BASER ... GITS_BASER + 0x3f:
+> +        index =3D (offset - GITS_BASER) / 8;
+> +        if (offset & 7) {
+> +            *data =3D s->baser[index] >> 32;
+> +        } else {
+> +            *data =3D (uint32_t)s->baser[index];
+> +        }
+> +        break;
+> +    default:
+> +        result =3D MEMTX_ERROR;
+> +        break;
+> +    }
+>      return result;
+>  }
+>=20=20
+> @@ -142,7 +425,52 @@ static MemTxResult its_writell(GICv3ITSState *s, hwa=
+ddr offset,
+>                                 uint64_t value, MemTxAttrs attrs)
+>  {
+>      MemTxResult result =3D MEMTX_OK;
+> +    int index;
+>=20=20
+> +    switch (offset) {
+> +    case GITS_BASER ... GITS_BASER + 0x3f:
+> +        /* GITS_BASERn registers become RO if ITS is already enabled */
+> +        if (!(s->ctlr & GITS_CTLR_ENABLED)) {
+> +            index =3D (offset - GITS_BASER) / 8;
+> +            s->baser[index] |=3D (value & ~GITS_BASER_VAL_MASK);
+> +            if (!extract_table_params(s, index)) {
+> +                qemu_log_mask(LOG_GUEST_ERROR,
+> +                        "%s: error extracting GITS_BASER parameters "
+> +                        TARGET_FMT_plx "\n", __func__, offset);
+> +                s->baser[index] =3D 0;
+> +                result =3D MEMTX_ERROR;
+> +            }
+> +        }
+> +        break;
+> +    case GITS_CBASER:
+> +        /* GITS_CBASER register becomes RO if ITS is already enabled */
+> +        if (!(s->ctlr & GITS_CTLR_ENABLED)) {
+> +            s->cbaser =3D value;
+> +            if (!extract_cmdq_params(s)) {
+> +                qemu_log_mask(LOG_GUEST_ERROR,
+> +                       "%s: error extracting GITS_CBASER parameters "
+> +                       TARGET_FMT_plx "\n", __func__, offset);
+
+So are these all LOG_UNIMP or are they a programming failure on our part?
+
+> +                s->cbaser =3D 0;
+> +                result =3D MEMTX_ERROR;
+> +            } else {
+> +                s->creadr =3D 0;
+> +            }
+> +        }
+> +        break;
+> +    case GITS_CWRITER:
+> +        s->cwriter =3D value;
+> +        break;
+> +    case GITS_TYPER:
+> +    case GITS_CREADR:
+> +        /* RO register, ignore the write */
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "%s: invalid guest write to RO register at offset "
+> +                      TARGET_FMT_plx "\n", __func__, offset);
+> +        break;
+> +    default:
+> +        result =3D MEMTX_ERROR;
+> +        break;
+> +    }
+>      return result;
+>  }
+>=20=20
+> @@ -150,7 +478,29 @@ static MemTxResult its_readll(GICv3ITSState *s, hwad=
+dr offset,
+>                                 uint64_t *data, MemTxAttrs attrs)
+>  {
+>      MemTxResult result =3D MEMTX_OK;
+> +    int index;
+>=20=20
+> +    switch (offset) {
+> +    case GITS_TYPER:
+> +        *data =3D s->typer;
+> +        break;
+> +    case GITS_BASER ... GITS_BASER + 0x3f:
+> +        index =3D (offset - GITS_BASER) / 8;
+> +        *data =3D s->baser[index];
+> +        break;
+> +    case GITS_CBASER:
+> +        *data =3D s->cbaser;
+> +        break;
+> +    case GITS_CREADR:
+> +        *data =3D s->creadr;
+> +        break;
+> +    case GITS_CWRITER:
+> +        *data =3D s->cwriter;
+> +        break;
+> +    default:
+> +        result =3D MEMTX_ERROR;
+> +        break;
+> +    }
+>      return result;
+>  }
+>=20=20
+> @@ -250,6 +600,9 @@ static void gicv3_arm_its_realize(DeviceState *dev, E=
+rror **errp)
+>      GICv3ITSState *s =3D ARM_GICV3_ITS_COMMON(dev);
+>=20=20
+>      gicv3_its_init_mmio(s, &gicv3_its_control_ops, &gicv3_its_trans_ops);
+> +
+> +    address_space_init(&s->gicv3->sysmem_as, s->gicv3->sysmem,
+> +                        "gicv3-its-sysmem");
+>  }
+>=20=20
+>  static void gicv3_its_reset(DeviceState *dev)
+> @@ -259,6 +612,9 @@ static void gicv3_its_reset(DeviceState *dev)
+>=20=20
+>      if (s->gicv3->cpu->gicr_typer & GICR_TYPER_PLPIS) {
+>          c->parent_reset(dev);
+> +        memset(&c->dt, 0 , sizeof(c->dt));
+> +        memset(&c->ct, 0 , sizeof(c->ct));
+> +        memset(&c->cq, 0 , sizeof(c->cq));
+>=20=20
+>          /* set the ITS default features supported */
+>          s->typer =3D GITS_TYPER_PHYSICAL | (GITS_TYPER_ITT_ENTRY_SIZE <<
+> diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gic=
+v3_common.h
+> index 91491a2f66..b0f2414fa3 100644
+> --- a/include/hw/intc/arm_gicv3_common.h
+> +++ b/include/hw/intc/arm_gicv3_common.h
+> @@ -226,12 +226,16 @@ struct GICv3State {
+>      int dev_fd; /* kvm device fd if backed by kvm vgic support */
+>      Error *migration_blocker;
+>=20=20
+> +    MemoryRegion *sysmem;
+> +    AddressSpace sysmem_as;
+> +
+>      /* Distributor */
+>=20=20
+>      /* for a GIC with the security extensions the NS banked version of t=
+his
+>       * register is just an alias of bit 1 of the S banked version.
+>       */
+>      uint32_t gicd_ctlr;
+> +    uint32_t gicd_typer;
+>      uint32_t gicd_statusr[2];
+>      GIC_DECLARE_BITMAP(group);        /* GICD_IGROUPR */
+>      GIC_DECLARE_BITMAP(grpmod);       /* GICD_IGRPMODR */
 
 
 --=20
 Alex Benn=C3=A9e
-
---=-=-=--

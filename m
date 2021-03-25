@@ -1,108 +1,84 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp718727lfg;
-        Thu, 25 Mar 2021 12:40:38 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx2nm8vAOyxJcsDpROQYhzcIa29crl1WUg1GlMIjUGgBUBrJe/zpnrwUhjr6tkWyTYmYonX
-X-Received: by 2002:a05:6e02:1a8a:: with SMTP id k10mr7703899ilv.194.1616701238023;
-        Thu, 25 Mar 2021 12:40:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1616701238; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp836683lfg;
+        Thu, 25 Mar 2021 16:01:02 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxh/C1/J/WKw6HDeoHbuF1QgmaCWt0RSn3uxTKN7+s1Sa57dIaM7V7NxuO4Egc8boPONXjn
+X-Received: by 2002:a5d:8f90:: with SMTP id l16mr8291029iol.76.1616713262033;
+        Thu, 25 Mar 2021 16:01:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616713262; cv=none;
         d=google.com; s=arc-20160816;
-        b=TfH0jr8n7oD3bcwPqV5NS3lfTLJ4f44YWplS1uLEsilGYId+J9SayH5cAUS7KAGkEQ
-         dv799tPNnY/RNJV0rikc6tNvsleM9G8Ep6I+llbTnJ/bIiKdFfc3ALJUsF5jb83/nZ5n
-         ZTC37wZNAJoMvKkvnA23QVdYTajdOf03M8rtC2revdpYfYH7JkSOaeLlNJfO48CeE575
-         +fltOEocE5efnwjy25cXYVdvY7BiAROgh1CT3mnoqZQOPf0ObCJ7+9J77fbBYgWvViJr
-         P2P+kF3GMlzy/hpLqV+nEsCYSzmDON25jlU5p/FdCkAAwppeGBgsrcYVISBGyrOF27Iz
-         dm1Q==
+        b=AW1NjG3HsuVMPFeg6jscMs/QNdV720AHikknPjf+Y2+mpbIzM7gerAmWEkOgaXUfsP
+         qE3BuisAbxQ0kZ0P1HXc5MmH4dO/HAH/TeFEPsidmhR5HanqujfKohktGPAiWfz2kClS
+         68YiPXcfNEVHVuj/UZ0OFntefeHenJDbIC8ASNrpeEWLPPm99A46VZ2dE9g6FQiUZN2f
+         fCspRlOXhgkrQZQbCxJyxzt8DKDOXdjP39e5JhiKapYM60B/KlZep1XNox9Ec9Z0flC3
+         1VMxtNr6a4/BLOBrLiRJr+oI50+lUgtS6Sr/7AoEHcKmmW8TqN9hsqKfDKpAS6sO/sEr
+         PXUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:user-agent
-         :in-reply-to:mime-version:references:message-id:subject:to:from:date
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=nNoUVBjk3Q+B6eRSv5ouyTzahQ0ia2diWuMdD04UnGA=;
-        b=aoKt6YbwFiYdSBSyYSic8xOTegh0FToytbVkVrNDvrkI1cYlANHBYxj2gU0rPbSGam
-         8KzXUf+vamp9EcyJ2RzRqZHNVWM9CK4/P3dduazNxgBzXkWKbVX7cQTp4AM/z5TtbWZT
-         H4TEeQHPmk++Tr5Qs3L7CwsFYv6MXRTOhjdkniJMS80cjbxpHqDA/F0mSQRMI3LIHF3W
-         M+b9NGD9beRvAnTRozDCMeGp3urUlO1lK2TRUH2qhBJ3tuFpc6xDVUGXBhan7f6AVSaq
-         4VpjIy82uHpI6ITzulM9jEEYw2oK4XFrCqLlmmCMX0FGNgDGnMiLS3RcB/5RfKPZiTOU
-         TTbA==
+        bh=ZWnyugIt2uAFo7BW201DNkoFB0gdGgG459412F79j1E=;
+        b=FYxJJH3eE5kK0o/o2MbGgbVCtSMfCmUfbkrFIohwjiTqEJ9yRq6qBLkgq3JZkD1FUm
+         VjgNxz6V8Hm3Oqz5XFMCrx8JMba48oH5nEmbRltVXHOWLU0Y85xmdyyvQvYkipmXdK0D
+         tONJPOlt19G3YCjy2wXkwxGGw+Zl8sQ9+URul/p7pFNvIGu6V15Shkve3OMNHwiJVTi0
+         9LUoZ5nSuBybgLi2D5Je19CyIq/qxgcdkA2QIg+OrDK/RBYlfKnnVNg1Z1fCKx5NMTq0
+         owaRZKGa8tZq4p8a6yWw+RKKqrHNpKsMrM7Re6iQqafB50O8oWWewdbfcLvtSTOBZwzP
+         w0ow==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IuXQU10A;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=fGCB92AO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s4si5345684ilv.131.2021.03.25.12.40.37
+        by mx.google.com with ESMTPS id z6si5527603ilb.14.2021.03.25.16.01.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Mar 2021 12:40:37 -0700 (PDT)
+        Thu, 25 Mar 2021 16:01:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IuXQU10A;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33824 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=fGCB92AO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:38192 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lPVqM-0007Up-Bz
-	for alex.bennee@linaro.org; Thu, 25 Mar 2021 15:40:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47440)
+	id 1lPYyL-0002r6-9m
+	for alex.bennee@linaro.org; Thu, 25 Mar 2021 19:01:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37224)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1lPVnu-0006JT-U2
- for qemu-arm@nongnu.org; Thu, 25 Mar 2021 15:38:02 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:31430)
+ (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
+ id 1lPYy0-0002qr-34; Thu, 25 Mar 2021 19:00:40 -0400
+Received: from ozlabs.org ([203.11.71.1]:53753)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1lPVnr-0006bY-3L
- for qemu-arm@nongnu.org; Thu, 25 Mar 2021 15:38:02 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1616701077;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=nNoUVBjk3Q+B6eRSv5ouyTzahQ0ia2diWuMdD04UnGA=;
- b=IuXQU10AILqrGWwMDYiDFXJh2XPC6siXBztoYSddx3+0M8pjWYNQv4BeuTeCKA43gy7Zly
- LOKPb1KCvVSd269HZ2YRupG5oYYZS90aupwUD0XxKIo4bDG67SQnkgsTtnOAxoqOJ9ouIm
- 67Ss00LnwEVaZy/oV7JblnvrOspcTTk=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-343-Sh3rCa0BMz66oRJR_aP95Q-1; Thu, 25 Mar 2021 15:37:55 -0400
-X-MC-Unique: Sh3rCa0BMz66oRJR_aP95Q-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E6B09801817;
- Thu, 25 Mar 2021 19:37:52 +0000 (UTC)
-Received: from work-vm (ovpn-112-89.ams2.redhat.com [10.36.112.89])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id ED207189BB;
- Thu, 25 Mar 2021 19:37:50 +0000 (UTC)
-Date: Thu, 25 Mar 2021 19:37:48 +0000
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: Haibo Xu <haibo.xu@linaro.org>
-Subject: Re: [RFC PATCH v2 4/5] Add migration support for KVM guest with MTE
-Message-ID: <YFzmjCAtz3WwbOmt@work-vm>
-References: <cover.1615972140.git.haibo.xu@linaro.org>
- <881871e8394fa18a656dfb105d42e6099335c721.1615972140.git.haibo.xu@linaro.org>
- <YFJiZSW0OjdQdOXZ@work-vm>
- <CAJc+Z1FVwgVHGP6b0cbFaeWOqTGe9WJDV7UQgf6TP1Qthu2O4w@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
+ id 1lPYxt-00051l-BS; Thu, 25 Mar 2021 19:00:36 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+ id 4F60tz1ml8z9sW1; Fri, 26 Mar 2021 10:00:27 +1100 (AEDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=gibson.dropbear.id.au; s=201602; t=1616713227;
+ bh=Lt4r8EbS7PeGT6I4qtuwivA+tancYxK0UPqLv2jEuX0=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=fGCB92AOG6SxliVzRmbPTNdJX7wZwUp0tk1dBqYAjTa2YgxzJq5LWvmovsT7Npp+L
+ 8ny6F4+qRCuAQEm5uhKxrVV07VbTDVtVWiisPZANAHEPaZC33XQkZmvJMmes+jICu8
+ RQmVvRbP5Auq5lH9hyvXtjofddvCo9WA9hr6Tb+U=
+Date: Fri, 26 Mar 2021 09:48:09 +1100
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH for-6.0 4/4] hw/ppc/e500plat: Only try to add valid
+ dynamic sysbus devices to platform bus
+Message-ID: <YF0TKRmG5FgxdZU5@yekko.fritz.box>
+References: <20210325153310.9131-1-peter.maydell@linaro.org>
+ <20210325153310.9131-5-peter.maydell@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <CAJc+Z1FVwgVHGP6b0cbFaeWOqTGe9WJDV7UQgf6TP1Qthu2O4w@mail.gmail.com>
-User-Agent: Mutt/2.0.6 (2021-03-06)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=dgilbert@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="nYKUghgsFZuhc+Vx"
 Content-Disposition: inline
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=dgilbert@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+In-Reply-To: <20210325153310.9131-5-peter.maydell@linaro.org>
+Received-SPF: pass client-ip=203.11.71.1; envelope-from=dgibson@ozlabs.org;
+ helo=ozlabs.org
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -115,324 +91,103 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
- Juan Quintela <quintela@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Cc: Eduardo Habkost <ehabkost@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Greg Kurz <groug@kaod.org>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Igor Mammedov <imammedo@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KhfKuFpgO4zh
+X-TUID: inihO4ndgi3j
 
-* Haibo Xu (haibo.xu@linaro.org) wrote:
-> On Thu, 18 Mar 2021 at 04:11, Dr. David Alan Gilbert
-> <dgilbert@redhat.com> wrote:
-> >
-> > * Haibo Xu (haibo.xu@linaro.org) wrote:
-> > > To make it easier to keep the page tags sync with
-> > > the page data, tags for one page are appended to
-> > > the data during ram save iteration.
-> > >
-> > > This patch only add the pre-copy migration support.
-> > > Post-copy and compress as well as zero page saving
-> > > are not supported yet.
-> > >
-> > > Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
-> >
-> > My guess is that this doesn't work with a lot of other options; e.g.
-> > postcopy and probably compression and a bunch of other things.
-> > Postcopy I can see you'll need some interesting kernel changes for -
-> > you'd need to be able to atomically place a  page with it's tag data.
-> >
-> > You probably need to add stuff to migrate_caps_check  to disable
-> > features that you don't support.
-> >
-> 
-> Hi David,
-> 
-> Thanks so much for the comments!
-> 
-> You are right, this RFC patch only supports pre-copy mode, no
-> postcopy, no compression.
-> As a RFC, here just want to finalize the tag migration process, that is:
-> 1. let the tag go with the page data(the current choice) which may be
-> a little complex to put
->     them into the current migration process.
 
-I think it's probably the easiest.
+--nYKUghgsFZuhc+Vx
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> 2. migrate them separately which is easy to implement with the current
-> migration(treat the tags
->     as device status), but it would be hard to keep the page data and
-> tag to sync with each other.
-> 3. Any other ways?
-> 
-> Once the tag migration process is finalized, a new formal patch series
-> with postcopy as well as
-> compression should be reworked.
+On Thu, Mar 25, 2021 at 03:33:10PM +0000, Peter Maydell wrote:
+> The e500plat machine device plug callback currently calls
+> platform_bus_link_device() for any sysbus device.  This is overly
+> broad, because platform_bus_link_device() will unconditionally grab
+> the IRQs and MMIOs of the device it is passed, whether it was
+> intended for the platform bus or not.  Restrict hotpluggability of
+> sysbus devices to only those devices on the dynamic sysbus whitelist.
+>=20
+> We were mostly getting away with this because the board creates the
+> platform bus as the last device it creates, and so the hotplug
+> callback did not do anything for all the sysbus devices created by
+> the board itself.  However if the user plugged in a device which
+> itself uses a sysbus device internally we would have mishandled this
+> and probably asserted. An example of this is:
+>  qemu-system-ppc64 -M ppce500 -device macio-oldworld
+>=20
+> This isn't a sensible command because the macio-oldworld device
+> is really specific to the 'g3beige' machine, but we now fail
+> with a reasonable error message rather than asserting:
+> qemu-system-ppc64: Device heathrow is not supported by this machine yet.
+>=20
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-It's probably best to look what you would have to do to fit it in with
-those before finalising the basic version; not necessary implement them
-- just get an idea.
+Acked-by: David Gibson <david@gibson.dropbear.id.au>
 
-> What's more, you mentioned that "some interesting kernel changes are
-> needed to atomically
-> place a  page with it's tag data". You mean a single kernel API to
-> store page data and tag in
-> the migration load process?
+> ---
+>  hw/ppc/e500plat.c | 8 ++++++--
+>  1 file changed, 6 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/hw/ppc/e500plat.c b/hw/ppc/e500plat.c
+> index bddd5e7c48f..fc911bbb7bd 100644
+> --- a/hw/ppc/e500plat.c
+> +++ b/hw/ppc/e500plat.c
+> @@ -48,7 +48,9 @@ static void e500plat_machine_device_plug_cb(HotplugHand=
+ler *hotplug_dev,
+>      PPCE500MachineState *pms =3D PPCE500_MACHINE(hotplug_dev);
+> =20
+>      if (pms->pbus_dev) {
+> -        if (object_dynamic_cast(OBJECT(dev), TYPE_SYS_BUS_DEVICE)) {
+> +        MachineClass *mc =3D MACHINE_GET_CLASS(pms);
+> +
+> +        if (device_is_dynamic_sysbus(mc, dev)) {
+>              platform_bus_link_device(pms->pbus_dev, SYS_BUS_DEVICE(dev));
+>          }
+>      }
+> @@ -58,7 +60,9 @@ static
+>  HotplugHandler *e500plat_machine_get_hotpug_handler(MachineState *machin=
+e,
+>                                                      DeviceState *dev)
+>  {
+> -    if (object_dynamic_cast(OBJECT(dev), TYPE_SYS_BUS_DEVICE)) {
+> +    MachineClass *mc =3D MACHINE_GET_CLASS(machine);
+> +
+> +    if (device_is_dynamic_sysbus(mc, dev)) {
+>          return HOTPLUG_HANDLER(machine);
+>      }
+> =20
 
-Yes;  see migration/postcopy-ram.c postcopy_place_page  - it has the
-problem of placing the whole page in memory before the guest starts
-usign it; I think for MTE you're going to have to put the MTE data in at
-the same time.
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
 
-Dave
+--nYKUghgsFZuhc+Vx
+Content-Type: application/pgp-signature; name="signature.asc"
 
-> 
-> Regards,
-> Haibo
-> 
-> > > ---
-> > >  include/hw/arm/virt.h    |  2 +
-> > >  include/migration/misc.h |  1 +
-> > >  migration/ram.c          | 86 +++++++++++++++++++++++++++++++++++++++-
-> > >  3 files changed, 88 insertions(+), 1 deletion(-)
-> > >
-> > > diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> > > index 921416f918..8b28cde8bf 100644
-> > > --- a/include/hw/arm/virt.h
-> > > +++ b/include/hw/arm/virt.h
-> > > @@ -166,6 +166,8 @@ struct VirtMachineState {
-> > >      PCIBus *bus;
-> > >      char *oem_id;
-> > >      char *oem_table_id;
-> > > +    /* migrate memory tags */
-> > > +    NotifierWithReturn precopy_notifier;
-> > >  };
-> > >
-> > >  #define VIRT_ECAM_ID(high) (high ? VIRT_HIGH_PCIE_ECAM : VIRT_PCIE_ECAM)
-> > > diff --git a/include/migration/misc.h b/include/migration/misc.h
-> > > index bccc1b6b44..005133f471 100644
-> > > --- a/include/migration/misc.h
-> > > +++ b/include/migration/misc.h
-> > > @@ -38,6 +38,7 @@ void precopy_add_notifier(NotifierWithReturn *n);
-> > >  void precopy_remove_notifier(NotifierWithReturn *n);
-> > >  int precopy_notify(PrecopyNotifyReason reason, Error **errp);
-> > >  void precopy_enable_free_page_optimization(void);
-> > > +void precopy_enable_metadata_migration(void);
-> > >
-> > >  void ram_mig_init(void);
-> > >  void qemu_guest_free_page_hint(void *addr, size_t len);
-> > > diff --git a/migration/ram.c b/migration/ram.c
-> > > index 72143da0ac..e67b798c3b 100644
-> > > --- a/migration/ram.c
-> > > +++ b/migration/ram.c
-> > > @@ -53,10 +53,12 @@
-> > >  #include "block.h"
-> > >  #include "sysemu/sysemu.h"
-> > >  #include "sysemu/cpu-throttle.h"
-> > > +#include "sysemu/kvm.h"
-> > >  #include "savevm.h"
-> > >  #include "qemu/iov.h"
-> > >  #include "multifd.h"
-> > >  #include "sysemu/runstate.h"
-> > > +#include "kvm_arm.h"
-> > >
-> > >  #if defined(__linux__)
-> > >  #include "qemu/userfaultfd.h"
-> > > @@ -80,6 +82,9 @@
-> > >  #define RAM_SAVE_FLAG_XBZRLE   0x40
-> > >  /* 0x80 is reserved in migration.h start with 0x100 next */
-> > >  #define RAM_SAVE_FLAG_COMPRESS_PAGE    0x100
-> > > +#define RAM_SAVE_FLAG_MTE              0x200
-> >
-> > I think that's using the last free bit in the flags field, which is a
-> > bit painful.
-> >
-> 
-> Yes, only 0x80(reserved) and 0x200 are available.
-> 
-> > > +#define MTE_GRANULE_SIZE   (16)
-> > >
-> > >  static inline bool is_zero_range(uint8_t *p, uint64_t size)
-> > >  {
-> > > @@ -317,6 +322,8 @@ struct RAMState {
-> > >      bool ram_bulk_stage;
-> > >      /* The free page optimization is enabled */
-> > >      bool fpo_enabled;
-> > > +    /* The RAM meta data(e.t memory tag) is enabled */
-> > > +    bool metadata_enabled;
-> > >      /* How many times we have dirty too many pages */
-> > >      int dirty_rate_high_cnt;
-> > >      /* these variables are used for bitmap sync */
-> > > @@ -394,6 +401,15 @@ void precopy_enable_free_page_optimization(void)
-> > >      ram_state->fpo_enabled = true;
-> > >  }
-> > >
-> > > +void precopy_enable_metadata_migration(void)
-> > > +{
-> > > +    if (!ram_state) {
-> > > +        return;
-> > > +    }
-> > > +
-> > > +    ram_state->metadata_enabled = true;
-> > > +}
-> > > +
-> > >  uint64_t ram_bytes_remaining(void)
-> > >  {
-> > >      return ram_state ? (ram_state->migration_dirty_pages * TARGET_PAGE_SIZE) :
-> > > @@ -1134,6 +1150,61 @@ static bool control_save_page(RAMState *rs, RAMBlock *block, ram_addr_t offset,
-> > >      return true;
-> > >  }
-> > >
-> > > +static int save_normal_page_mte_tags(QEMUFile *f, uint8_t *addr)
-> > > +{
-> > > +    uint8_t *tag_buf = NULL;
-> > > +    uint64_t ipa;
-> > > +    int size = TARGET_PAGE_SIZE / MTE_GRANULE_SIZE;
-> >
-> > This function needs to be mostly somewhere aarch specific; or somehow
-> > made more generic.
-> > We shouldn't have RAM_SAVE_FLAG_MTE as well - we should be something
-> > like RAM_SAVE_FLAG_ARCH_METADATA and that way other architectures with
-> > something else glued onto pages can do something similar.
-> > Try and keep migration/ architecture independent.
-> 
-> Yes, it should be arch independent and handled with a more abstract way.
-> 
-> >
-> > > +    if (kvm_physical_memory_addr_from_host(kvm_state, addr, &ipa)) {
-> > > +        /* Buffer for the page tags(one byte per tag) */
-> > > +        tag_buf = g_try_malloc0(size);
-> >
-> > It feels like you want to allocate tag_buf in setup and free it at the
-> > end rather than doing this in every page.
-> 
-> Yes, the tag buffer allocation could be moved to migration save/load
-> setup and cleanup function.
-> 
-> >
-> > > +        if (!tag_buf) {
-> > > +            error_report("%s: Error allocating MTE tag_buf", __func__);
-> > > +            return 0;
-> > > +        }
-> > > +
-> > > +        if (kvm_arm_mte_get_tags(ipa, TARGET_PAGE_SIZE, tag_buf) < 0) {
-> > > +            error_report("%s: Can't get MTE tags from guest", __func__);
-> >
-> > For any error like this you probably want to say the addresses to make
-> > it easier to debug when it fails.
-> >
-> 
-> Good suggestion! Will add the "address" info to the log.
-> 
-> > > +            g_free(tag_buf);
-> > > +            return 0;
-> > > +        }
-> > > +
-> > > +        qemu_put_buffer(f, tag_buf, size);
-> > > +
-> > > +        g_free(tag_buf);
-> > > +
-> > > +        return size;
-> > > +    }
-> > > +
-> > > +    return 0;
-> > > +}
-> > > +
-> > > +static void load_normal_page_mte_tags(QEMUFile *f, uint8_t *addr)
-> > > +{
-> > > +    uint8_t *tag_buf = NULL;
-> > > +    uint64_t ipa;
-> > > +    int size = TARGET_PAGE_SIZE / MTE_GRANULE_SIZE;
-> > > +
-> > > +    if (kvm_physical_memory_addr_from_host(kvm_state, addr, &ipa)) {
-> > > +        /* Buffer for the page tags(one byte per tag) */
-> > > +        tag_buf = g_try_malloc0(size);
-> > > +        if (!tag_buf) {
-> > > +            error_report("%s: Error allocating MTE tag_buf", __func__);
-> > > +            return;
-> > > +        }
-> > > +
-> > > +        qemu_get_buffer(f, tag_buf, size);
-> > > +        if (kvm_arm_mte_set_tags(ipa, TARGET_PAGE_SIZE, tag_buf) < 0) {
-> >
-> > what protections are there here to stop you setting the mte on something
-> > useful, like part of the host kernel or qemu?
-> 
-> Kernel would do some parameter check(e.t ipa within a valid slot)
-> before setting the tag data.
-> 
-> >
-> > > +            error_report("%s: Can't set MTE tags to guest", __func__);
-> > > +        }
-> > > +
-> > > +        g_free(tag_buf);
-> > > +    }
-> > > +
-> > > +    return;
-> > > +}
-> > > +
-> > >  /*
-> > >   * directly send the page to the stream
-> > >   *
-> > > @@ -1148,6 +1219,10 @@ static bool control_save_page(RAMState *rs, RAMBlock *block, ram_addr_t offset,
-> > >  static int save_normal_page(RAMState *rs, RAMBlock *block, ram_addr_t offset,
-> > >                              uint8_t *buf, bool async)
-> > >  {
-> > > +    if (rs->metadata_enabled) {
-> > > +        offset |= RAM_SAVE_FLAG_MTE;
-> > > +    }
-> > > +
-> > >      ram_counters.transferred += save_page_header(rs, rs->f, block,
-> > >                                                   offset | RAM_SAVE_FLAG_PAGE);
-> > >      if (async) {
-> > > @@ -1159,6 +1234,11 @@ static int save_normal_page(RAMState *rs, RAMBlock *block, ram_addr_t offset,
-> > >      }
-> > >      ram_counters.transferred += TARGET_PAGE_SIZE;
-> > >      ram_counters.normal++;
-> > > +
-> > > +    if (rs->metadata_enabled) {
-> > > +        ram_counters.transferred += save_normal_page_mte_tags(rs->f, buf);
-> > > +    }
-> > > +
-> > >      return 1;
-> > >  }
-> > >
-> > > @@ -2189,6 +2269,7 @@ static void ram_state_reset(RAMState *rs)
-> > >      rs->last_version = ram_list.version;
-> > >      rs->ram_bulk_stage = true;
-> > >      rs->fpo_enabled = false;
-> > > +    rs->metadata_enabled = false;
-> > >  }
-> > >
-> > >  #define MAX_WAIT 50 /* ms, half buffered_file limit */
-> > > @@ -3779,7 +3860,7 @@ static int ram_load_precopy(QEMUFile *f)
-> > >              trace_ram_load_loop(block->idstr, (uint64_t)addr, flags, host);
-> > >          }
-> > >
-> > > -        switch (flags & ~RAM_SAVE_FLAG_CONTINUE) {
-> > > +        switch (flags & ~(RAM_SAVE_FLAG_CONTINUE | RAM_SAVE_FLAG_MTE)) {
-> > >          case RAM_SAVE_FLAG_MEM_SIZE:
-> > >              /* Synchronize RAM block list */
-> > >              total_ram_bytes = addr;
-> > > @@ -3849,6 +3930,9 @@ static int ram_load_precopy(QEMUFile *f)
-> > >
-> > >          case RAM_SAVE_FLAG_PAGE:
-> > >              qemu_get_buffer(f, host, TARGET_PAGE_SIZE);
-> > > +            if (flags & RAM_SAVE_FLAG_MTE) {
-> > > +                load_normal_page_mte_tags(f, host);
-> > > +            }
-> > >              break;
-> > >
-> > >          case RAM_SAVE_FLAG_COMPRESS_PAGE:
-> > > --
-> > > 2.17.1
-> > >
-> > --
-> > Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
-> >
-> 
--- 
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+-----BEGIN PGP SIGNATURE-----
 
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAmBdEycACgkQbDjKyiDZ
+s5LAlg//Un57R9rRoIwo2i5MNA/bh0y6mBPZxT3c9Jv9cngshj4vsj+Tc8CBFiTe
+hp1nMJi1rwk0ELiV1evncfWG2FpO/Y+TFFjtm98TLWKnZhAapU3NqkwMEcSRtOns
+BOaG0N99kU9sowPJsAm/sTsDXBdteK8eOllqAwX2xrsCZGL2arWCJqRoxKWSGaQ4
+55cGBCM9/Gy5SFtcn/mGfEpjHEoGgHKzVoFnjBrDZK8/lLNzxbX6LgtyPvGf7NiA
+CEcLK2C3iuMONf5fCTZ+T6dl+hCMGkftScAxDNxbeGvET4JBFL1RbxzjzelAZ2Bj
+muHbMAq/ZdNBp4OHmstO//atL2NsMXYFmqeBRzpkpsnAmZIHHGyTjZMN2TdL7f6H
+L0sAcuQYQy/e485bVMnB9wJJ904A59uUm19fEOd9VytN+NQfG8hMZYMsVDxRNVCF
+NtlVtTJWWq4+5DMq7jOQQveUGowFrCCJZGO4E3eheuBviNPEEWphvv5iRg75QBnj
+AeJI2XaJbHKD1YnPNPAqwHOHHihdU0SF1bDT3Bs8uq0+/GjPDRXm7OCIpVJkj76G
+pGzd9Fmzi0PgVcsJgt57VNePSBu7w+c5QmDoB5OJBriToBRnS0OY3DZbct4FDcZY
+68y1b2JcD5YVS3P+bvAGhakFw/zOcDbciPNLkNy7CmT7QekR4YE=
+=7F7o
+-----END PGP SIGNATURE-----
+
+--nYKUghgsFZuhc+Vx--

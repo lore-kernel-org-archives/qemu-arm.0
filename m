@@ -1,89 +1,88 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp925172lfg;
-        Wed, 24 Mar 2021 19:19:22 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwjaYa++uSen2/INGwYJSs0SkQ3o/+UWRjE5oLA63Sfziv4mBq7whFnpW/2ni+5kcfMxg2q
-X-Received: by 2002:a25:c50a:: with SMTP id v10mr9217306ybe.461.1616638761900;
-        Wed, 24 Mar 2021 19:19:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1616638761; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp30308lfg;
+        Wed, 24 Mar 2021 20:41:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyoVDWhY8JlEjugB3xTMVcVm6PZ1ENQ9ly6a0ydN4VYlXL9lwFa/kMl2n3TgUPiMr41O5hK
+X-Received: by 2002:a05:6e02:1069:: with SMTP id q9mr5279040ilj.97.1616643709154;
+        Wed, 24 Mar 2021 20:41:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616643709; cv=none;
         d=google.com; s=arc-20160816;
-        b=ujEcVihaRTUNabi7KUdHWN+M0GhpRafaOntmQs0x5y2rg8dyx/HD+ZywE1feUP1M/K
-         sDO/oE8y7sq4nLhCpDsDc3tTJQCtls1j99N7iwRGAjR0ucvnZ8ilLVvKzbMmnlvW/+Ws
-         gmNTwh2ivPotqCvtPUUJmkZ57gbckLg3hvkDO6eKnm/Bde0cmxWhBgKRZa73q9yknZn4
-         dxqsnNLXnwrR6MIYQaghwzjrTlWsyuGXIwq0DQDnJyOzg0/+ljBqWKP6mpurl8nfN9RY
-         uJrvKydrlinTymdD1oMEbLGg0J5BCKhnQm8hlvkjuKhCsSbpIEZsMoWOdYSOxEiYILHS
-         5SVA==
+        b=c45TQWDb0nkqPxCf5YIdaFCEg8imuC8Wa5pZ5qXbkxxt3NbQc65654yDlbaylWwVbt
+         PuBvj4HISyc8Nz3yLwMVnOyoXPrkxAl89DK4GTVnld6IEtmZ6O0zXgwfnFVxA5/QCBBj
+         FZyTg3ev3fEX9MrPjvoBruSRbQsjGHxRG5mJWhqn+Zf6ZghdaCSQnauKuh/F5Ri0VDmt
+         QrtVmtvcX2OYLbFN3V6HnOZp+JyXo9O8bWx2C04tVDQoXmwb4Iv2piKyvIot3eq9B1ZQ
+         wbFVn+FEWijP6KIvVxtOHKoJVqqgvhFveAMUukD9yy5Lin4k9ap9DXedEcHF+VxXX90R
+         t+hA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=6pGBmDCKNvtROlIYViTp4xjkv7wURxRN8ukttVDzpYM=;
-        b=BLBo6TZR8dy42N1g6TGfPl4Np3o8eYjmn0uHPwDnH8G4+489UDPRxQa9DFfbzghlPn
-         +k1xDKfeVov/np3Xm8Jv3rorLRB4CY6eluXuXE9ZI59xjqFN36W6mSh2BTOnQr7CfVVd
-         R6CM7s3FzdVaKhJ1fV7L9XVQRF3QtrPWV34u/lamNJ27ZPfodEACRdlt7Zp3LOoXDTKG
-         95piprS6tGJFT7d4xZt6OAxQzUs0FXCDkuCvjvlNiOS3XbXI92EqrjPUGZDC1Me36fwK
-         GxKjZxcQ1heeHNs1kyd9zzE2WJJlUWRa1qRanVBwdcJjC4zEOvxqBia4tMZs0+xNBv7C
-         70TQ==
+        bh=N5zYOilNafpGjI+lqRigyHSHNHkMxteQH+UEtE2QTtM=;
+        b=veehlQZqXOlTcS3raG7d7qJekB2pqjVvVx9D11XLfvrVgdHOAZ+q0p9x4JF13a62i7
+         YBF2OhJAofZ+kJvxaNdN7NVqhqXpIlB0jJDTs2vnmjYN+btX2q2CDpaGN26dbr6rfuML
+         CZayifdneRTbe+wUbw93dlxPOhEIs6bX1fzR7wjLt9JXzjT7n4Qe2rQ1HlsGcP8yMD1m
+         LiC1Uh+K26/J9w0txokQawEiHfzKaqx57xqX+uVXzhnseY6XkEI0YJTAXHvVmaiJDybY
+         Qo3Vj/VjF6qbsYTrv+3JGsOVWW1350A6gKAa4Mlv6ZsYJl4cpP8zr7Rcbq+bOOW6BlEx
+         t/9A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=Lp7J6so8;
+       dkim=fail header.i=@jms.id.au header.s=google header.b=ij0l8gIS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p13si3634961ybl.314.2021.03.24.19.19.21
+        by mx.google.com with ESMTPS id o10si3452784jat.112.2021.03.24.20.41.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 Mar 2021 19:19:21 -0700 (PDT)
+        Wed, 24 Mar 2021 20:41:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=Lp7J6so8;
+       dkim=fail header.i=@jms.id.au header.s=google header.b=ij0l8gIS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34222 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42536 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lPFaj-0001RI-3I
-	for alex.bennee@linaro.org; Wed, 24 Mar 2021 22:19:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60130)
+	id 1lPGsW-0001Ll-9A
+	for alex.bennee@linaro.org; Wed, 24 Mar 2021 23:41:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45980)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1lPFa9-0001R1-3k; Wed, 24 Mar 2021 22:18:45 -0400
-Received: from mail-qv1-xf31.google.com ([2607:f8b0:4864:20::f31]:39705)
+ id 1lPGrL-0001In-HZ; Wed, 24 Mar 2021 23:40:35 -0400
+Received: from mail-qt1-x82d.google.com ([2607:f8b0:4864:20::82d]:40501)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1lPFa6-0003FL-SS; Wed, 24 Mar 2021 22:18:44 -0400
-Received: by mail-qv1-xf31.google.com with SMTP id q9so447965qvm.6;
- Wed, 24 Mar 2021 19:18:42 -0700 (PDT)
+ id 1lPGrI-000654-Vw; Wed, 24 Mar 2021 23:40:35 -0400
+Received: by mail-qt1-x82d.google.com with SMTP id i19so750986qtv.7;
+ Wed, 24 Mar 2021 20:40:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=6pGBmDCKNvtROlIYViTp4xjkv7wURxRN8ukttVDzpYM=;
- b=Lp7J6so8rL89dMu8HMEt7fObG10Z6XWs2AGbxt93wg5vftHXVW7rMX2xAHu3rWsiR0
- NuGff3HUzvwYXh05hORmA4jlyQhqPQmh/tWepuseAxJ8CI/QV5+MIOQrgZa2+BLZJTif
- 7uTifQNqvXar35O+o+89UY823GjBTZ/zAjYRY=
+ :cc; bh=N5zYOilNafpGjI+lqRigyHSHNHkMxteQH+UEtE2QTtM=;
+ b=ij0l8gISnKh+fgL9AbQGh9R18RHISvJtR301+belTH+NByVg5xYG8zQlPnzbGGyh2k
+ 6S6GwHq9OYCRGf1W+GpA6FGyv1CcRb2vSw4Cq4Q5SgEWIFzMT7ZnIZppi2mibazu2a3y
+ 7R3lTld/gcu5tRggWMw1pUvxl/s3fujSdZBUc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=6pGBmDCKNvtROlIYViTp4xjkv7wURxRN8ukttVDzpYM=;
- b=S5o4uTflhyHkZa20bOkIgL+gPkCQg9Zl/YmmEFr8f2YaYm3TWmjPAzQMx/BXHCsF+9
- X1pACEJiRnjUvb1rUBmOSLDNxT8EUJsoXN/lYHiGU4KYmrffwUbMcTobEv/IdVO25J24
- h5oEI+u7IAKJjgdzagtrtgL5M8ktV+JMhnfLTetIBPZQzZgYP0sS4Wgd1Q1+AJVuPfuL
- qeh38WntGrRTlKXIdrC/pukgivRDR46lda6t/z5M0kdzzpcRkJrDvkepzpXtiCsIxhR9
- ES3oU9MV1op70toUl8alLfxNRcqS1G3ju0y9L0GU+UrOKS8h8vmGsZ3QL1LicIiRPp53
- Hv8A==
-X-Gm-Message-State: AOAM533kjNxLGJGQFPeDgjWf9WwO6gNm/W57Cr8vxkdbPfoqPZZk4GWg
- P4eJtOwXohoC7FUE9kNZpLzBXtpdFMapm+sX28s=
-X-Received: by 2002:a05:6214:180d:: with SMTP id
- o13mr6178723qvw.10.1616638721420; 
- Wed, 24 Mar 2021 19:18:41 -0700 (PDT)
+ bh=N5zYOilNafpGjI+lqRigyHSHNHkMxteQH+UEtE2QTtM=;
+ b=kTBDqAxH7An26f3y0XpGk7LSr11QN97rLTvknU5Mkogiz6OMm3GuRilm4Lqwb99c8t
+ R9chfDiM2b2o3lePTOy1i1VEQBgIsPosTZorl7Uk9f2f7EyHHbl9FF/bp3BvU7G+61PK
+ lXeN0ThFyUd04B12idlFlSF+bHjGCiHMdjbC8fSOlVqFL8yi8Hvpl+88l97EAm2+ksz/
+ 5XKldc8vJ3g8Fpwou4yEJbqz8etsavy9GGE0JsOdCWozianzuocAGRchm+goWde3CQf/
+ 2lm3lW6Pmeu8Hw8yzHOPRpiMHXqnkSoeGKKdiOLT34PU86VzU5mNdHl+JcKujiqnJcyk
+ CPZA==
+X-Gm-Message-State: AOAM530Hy/xEaMjCZuLexhVE+oXYgSdFgnIWu8x6VOHTC4qWRTsY6slI
+ 4YOkjCtyT3FAWtskp1G5U4M1IxlKg2bLWTLp8yw=
+X-Received: by 2002:ac8:6f02:: with SMTP id g2mr5923978qtv.385.1616643631415; 
+ Wed, 24 Mar 2021 20:40:31 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210324223846.17407-1-klaus@linux.vnet.ibm.com>
- <20210324223846.17407-4-klaus@linux.vnet.ibm.com>
-In-Reply-To: <20210324223846.17407-4-klaus@linux.vnet.ibm.com>
+ <20210324223846.17407-3-klaus@linux.vnet.ibm.com>
+In-Reply-To: <20210324223846.17407-3-klaus@linux.vnet.ibm.com>
 From: Joel Stanley <joel@jms.id.au>
-Date: Thu, 25 Mar 2021 02:18:29 +0000
-Message-ID: <CACPK8XfHw06+o6LJsPY4X3=V69L2uT+2cZurCNxd623WT0Em+A@mail.gmail.com>
-Subject: Re: [PATCH 3/3] tests: Aspeed HACE Scatter-Gather tests
+Date: Thu, 25 Mar 2021 03:40:18 +0000
+Message-ID: <CACPK8XcZDyip9s+xN+HP5_Z7S_v8zY6tGRVbD83uaCT=kfprWw@mail.gmail.com>
+Subject: Re: [PATCH 2/3] aspeed: Add Scater-Gather support for HACE Hash
 To: Klaus Heinrich Kiwi <klaus@linux.vnet.ibm.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f31;
- envelope-from=joel.stan@gmail.com; helo=mail-qv1-xf31.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::82d;
+ envelope-from=joel.stan@gmail.com; helo=mail-qt1-x82d.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -112,220 +111,249 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /cdA4Tr5HcRg
+X-TUID: XByENPJTqIDK
 
 On Wed, 24 Mar 2021 at 22:39, Klaus Heinrich Kiwi
 <klaus@linux.vnet.ibm.com> wrote:
 >
-> Expand current Aspeed HACE testsuite to also include Scatter-Gather of
-> sha256 and sha512 operations.
+> Complement the Aspeed HACE support with Scatter-Gather hash support for
+> sha256 and sha512. Scatter-Gather is only supported on AST2600-series.
+
+Please update the documentation at docs/system/arm/aspeed.rst too.
+
 >
 > Signed-off-by: Klaus Heinrich Kiwi <klaus@linux.vnet.ibm.com>
 > ---
->  tests/qtest/aspeed_hace-test.c | 164 ++++++++++++++++++++++++++++++---
->  1 file changed, 153 insertions(+), 11 deletions(-)
+>  hw/misc/aspeed_hace.c         | 127 ++++++++++++++++++++++++++++++++--
+>  include/hw/misc/aspeed_hace.h |   6 ++
+>  2 files changed, 127 insertions(+), 6 deletions(-)
 >
-> diff --git a/tests/qtest/aspeed_hace-test.c b/tests/qtest/aspeed_hace-test.c
-> index 2b624b6b09..ae3f963449 100644
-> --- a/tests/qtest/aspeed_hace-test.c
-> +++ b/tests/qtest/aspeed_hace-test.c
-> @@ -35,6 +35,11 @@
->  #define HACE_HASH_DATA_LEN       0x2c
->  #define HACE_HASH_CMD            0x30
+> diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
+> index 93313d2b80..8a37b1d961 100644
+> --- a/hw/misc/aspeed_hace.c
+> +++ b/hw/misc/aspeed_hace.c
+> @@ -57,6 +57,10 @@
+>  /* Other cmd bits */
+>  #define  HASH_IRQ_EN                    BIT(9)
+>  #define  HASH_SG_EN                     BIT(18)
+> +/* Scatter-gather data list */
+> +#define  SG_LIST_LAST                   BIT(31)
+> +#define  SG_LIST_LEN_MASK               0x7fffffff
+> +#define  SG_LIST_ADDR_MASK              0x7ffffff8  /* 8-byte aligned */
 >
+>  static const struct {
+>      uint32_t mask;
+> @@ -129,6 +133,117 @@ static int do_hash_operation(AspeedHACEState *s, int algo)
+>      return 0;
+>  }
+>
+> +static int do_hash_sg_operation(AspeedHACEState *s, int algo)
+> +{
+> +    uint32_t src, dest, reqSize;
+> +    hwaddr len;
+> +    const size_t reqLen = sizeof(struct aspeed_sg_list);
+
+It would be more descriptive to use this sizeof where you need it,
+instead of assigning to a constant.
+
+> +    struct iovec iov[ASPEED_HACE_MAX_SG];
+> +    unsigned int i = 0;
+> +    unsigned int isLast = 0;
+
+This sounds like it's a boolean.
+
+> +    uint8_t *digestBuf = NULL;
+> +    size_t digestLen = 0, size = 0;
+> +    struct aspeed_sg_list *sgList;
+> +    int rc;
+
+This needs some work to match qemu coding style.
+
+> +
+> +    reqSize = s->regs[R_HASH_SRC_LEN];
+> +    dest = s->regs[R_HASH_DEST];
+> +
+> +    while (!isLast && i < ASPEED_HACE_MAX_SG) {
+> +        src = s->regs[R_HASH_SRC] + (i * reqLen);
+> +        len = reqLen;
+> +        sgList = (struct aspeed_sg_list *) address_space_map(&s->dram_as,
+
+You can remove this cast as the function returns a void pointer.
+
+> +                                                                     src,
+> +                                                         (hwaddr *) &len,
+
+You can remove this cast as the variable is already a hwaddr type.
+
+> +                                                                   false,
+> +                                                 MEMTXATTRS_UNSPECIFIED);
+
+In the direct access code, we use address_space_map to save copying
+the memory contents that is to be hashed. That's not the case for the
+scatter gather list.
+
+Instead of creating mappings to read the sg list, you could load the
+addr, len pairs using address_space_ldl_le. This would give you the
+pointer to create mappings for.
+
+> +        if (!sgList) {
+> +            qemu_log_mask(LOG_GUEST_ERROR,
+> +             "%s: failed to map dram for SG Array entry '%u' for address '0x%0x'\n",
+> +             __func__, i, src);
+> +            rc = -EACCES;
+> +            goto cleanup;
+> +        }
+> +        if (len != reqLen)
+> +            qemu_log_mask(LOG_GUEST_ERROR,
+> +             "%s:  Warning: dram map for SG array entry '%u' requested size '%lu' != mapped size '%lu'\n",
+> +             __func__, i, reqLen, len);
+> +
+> +        isLast = sgList->len & SG_LIST_LAST;
+
+You could drop the isLast variable, and perform this test at the
+bottom of the while loop:
+
+if (sgList->len & SG_LIST_LAST)
+   break;
+
+> +
+> +        iov[i].iov_len = (hwaddr) (sgList->len & SG_LIST_LEN_MASK);
+> +        iov[i].iov_base = address_space_map(&s->dram_as,
+> +                            sgList->phy_addr & SG_LIST_ADDR_MASK,
+> +                            &iov[i].iov_len, false,
+> +                            MEMTXATTRS_UNSPECIFIED);
+> +        if (!iov[i].iov_base) {
+> +            qemu_log_mask(LOG_GUEST_ERROR,
+> +             "%s: failed to map dram for SG array entry '%u' for region '0x%x', len '%u'\n",
+> +             __func__, i, sgList->phy_addr & SG_LIST_ADDR_MASK,
+> +             sgList->len & SG_LIST_LEN_MASK);
+> +            rc = -EACCES;
+> +            goto cleanup;
+> +        }
+> +        if (iov[i].iov_len != (sgList->len & SG_LIST_LEN_MASK))
+> +            qemu_log_mask(LOG_GUEST_ERROR,
+> +             "%s:  Warning: dram map for SG region entry %u requested size %u != mapped size %lu\n",
+> +             __func__, i, (sgList->len & SG_LIST_LEN_MASK), iov[i].iov_len);
+> +
+> +
+> +        address_space_unmap(&s->dram_as, (void *) sgList, len, false,
+> +                            len);
+> +        size += iov[i].iov_len;
+> +        i++;
+> +    }
+> +
+> +    if (!isLast) {
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                     "%s: Error: Exhausted maximum of '%u' SG array entries\n",
+> +                     __func__, ASPEED_HACE_MAX_SG);
+> +        rc = -ENOTSUP;
+> +        goto cleanup;
+> +    }
+> +
+> +    if (size != reqSize)
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +         "%s: Warning: requested SG total size %u != actual size %lu\n",
+> +         __func__, reqSize, size);
+> +
+> +    rc = qcrypto_hash_bytesv(algo, iov, i, &digestBuf, &digestLen,
+> +                            &error_fatal);
+> +    if (rc < 0) {
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: qcrypto failed\n",
+> +                      __func__);
+> +        goto cleanup;
+> +    }
+> +
+> +    rc = address_space_write(&s->dram_as, dest, MEMTXATTRS_UNSPECIFIED,
+> +                             digestBuf, digestLen);
+> +    if (rc)
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "%s: address space write failed\n", __func__);
+> +    g_free(digestBuf);
+> +
+> +cleanup:
+> +
+> +    for (; i > 0; i--) {
+> +        address_space_unmap(&s->dram_as, iov[i - 1].iov_base,
+> +                            iov[i - 1].iov_len, false,
+> +                            iov[i - 1].iov_len);
+> +    }
+> +
+> +    /*
+> +     * Set status bits to indicate completion. Testing shows hardware sets
+> +     * these irrespective of HASH_IRQ_EN.
+
+This is the same comment from the direct method. Have you confirmed
+this is true on hardware?
+
+> +     */
+> +    if (!rc) {
+> +        s->regs[R_STATUS] |= HASH_IRQ;
+> +    }
+> +
+> +    return rc;
+> +}
+> +
+> +
+>
+>  static uint64_t aspeed_hace_read(void *opaque, hwaddr addr, unsigned int size)
+>  {
+> @@ -187,11 +302,6 @@ static void aspeed_hace_write(void *opaque, hwaddr addr, uint64_t data,
+>                            "%s: HMAC engine command mode %"PRIx64" not implemented",
+>                            __func__, (data & HASH_HMAC_MASK) >> 8);
+>          }
+> -        if (data & HASH_SG_EN) {
+> -            qemu_log_mask(LOG_UNIMP,
+> -                          "%s: Hash scatter gather mode not implemented",
+> -                          __func__);
+> -        }
+>          if (data & BIT(1)) {
+>              qemu_log_mask(LOG_UNIMP,
+>                            "%s: Cascaded mode not implemented",
+> @@ -204,7 +314,12 @@ static void aspeed_hace_write(void *opaque, hwaddr addr, uint64_t data,
+>                          __func__, data & ahc->hash_mask);
+>                  break;
+>          }
+> -        do_hash_operation(s, algo);
+> +        if (data & HASH_SG_EN) {
+> +            s->regs[(R_HASH_SRC >> 2)] &= 0x7FFFFFF8;
+
+This is setting (0x20 / 4) >> 2 == 2, which is Crypto Data
+Destination. I suspect you wanted R_HASH_SRC, so you can omit the
+right shift.
+
+However I suggest you check that hardware masks the register when the
+write occurs, and if it does, implement that in the write callback for
+R_HASH_SRC. That way a guest code doing a read-write will see the
+correct thing.
+
+> +            do_hash_sg_operation(s, algo);
+> +        } else {
+> +            do_hash_operation(s, algo);
+> +        }
+>
+>          if (data & HASH_IRQ_EN) {
+>              qemu_irq_raise(s->irq);
+> diff --git a/include/hw/misc/aspeed_hace.h b/include/hw/misc/aspeed_hace.h
+> index 94d5ada95f..ead46afda9 100644
+> --- a/include/hw/misc/aspeed_hace.h
+> +++ b/include/hw/misc/aspeed_hace.h
+> @@ -40,4 +40,10 @@ struct AspeedHACEClass {
+>      uint32_t hash_mask;
+>  };
+>
+> +#define ASPEED_HACE_MAX_SG      256
 > +struct aspeed_sg_list {
 > +        uint32_t len;
 > +        uint32_t phy_addr;
+
+Does "phy" mean physical? If so, we could call it phys_addr to avoid
+confusion with the addresses of PHYs.
+
+Alternatively, call it 'addr'.
+
 > +} __attribute__ ((__packed__));
 > +
->  /*
->   * Test vector is the ascii "abc"
->   *
-> @@ -63,6 +68,33 @@ static const uint8_t test_result_md5[] = {
->      0x90, 0x01, 0x50, 0x98, 0x3c, 0xd2, 0x4f, 0xb0, 0xd6, 0x96, 0x3f, 0x7d,
->      0x28, 0xe1, 0x7f, 0x72};
->
-> +/*
-> + * The Scatter-Gather Test vector is the ascii "abc" "def" "ghi", broken
-> + * into blocks of 3 characters as shown
-> + *
-> + * Expected results were generated using command line utitiles:
-> + *
-> + *  echo -n -e 'abcdefghi' | dd of=/tmp/test
-> + *  for hash in sha512sum sha256sum; do $hash /tmp/test; done
-> + *
-> + */
-> +static const uint8_t test_vector_sg1[] = {0x61, 0x62, 0x63};
-> +static const uint8_t test_vector_sg2[] = {0x64, 0x65, 0x66};
-> +static const uint8_t test_vector_sg3[] = {0x67, 0x68, 0x69};
-> +
-> +static const uint8_t test_result_sg_sha512[] = {
-> +    0xf2, 0x2d, 0x51, 0xd2, 0x52, 0x92, 0xca, 0x1d, 0x0f, 0x68, 0xf6, 0x9a,
-> +    0xed, 0xc7, 0x89, 0x70, 0x19, 0x30, 0x8c, 0xc9, 0xdb, 0x46, 0xef, 0xb7,
-> +    0x5a, 0x03, 0xdd, 0x49, 0x4f, 0xc7, 0xf1, 0x26, 0xc0, 0x10, 0xe8, 0xad,
-> +    0xe6, 0xa0, 0x0a, 0x0c, 0x1a, 0x5f, 0x1b, 0x75, 0xd8, 0x1e, 0x0e, 0xd5,
-> +    0xa9, 0x3c, 0xe9, 0x8d, 0xc9, 0xb8, 0x33, 0xdb, 0x78, 0x39, 0x24, 0x7b,
-> +    0x1d, 0x9c, 0x24, 0xfe};
-> +
-> +static const uint8_t test_result_sg_sha256[] = {
-> +    0x19, 0xcc, 0x02, 0xf2, 0x6d, 0xf4, 0x3c, 0xc5, 0x71, 0xbc, 0x9e, 0xd7,
-> +    0xb0, 0xc4, 0xd2, 0x92, 0x24, 0xa3, 0xec, 0x22, 0x95, 0x29, 0x22, 0x17,
-> +    0x25, 0xef, 0x76, 0xd0, 0x21, 0xc8, 0x32, 0x6f};
-> +
->
->  static void write_regs(QTestState *s, uint32_t base, uint32_t src,
->                         uint32_t length, uint32_t out, uint32_t method)
-> @@ -167,28 +199,124 @@ static void test_sha512(const char *machine, const uint32_t base,
->                      test_result_sha512, sizeof(digest));
->  }
->
-> +static void test_sha256_sg(const char *machine, const uint32_t base,
-> +                        const uint32_t src_addr)
-> +{
-> +    QTestState *s = qtest_init(machine);
-> +
-> +    const uint32_t src_addr_1 = src_addr + 0x1000000;
-> +    const uint32_t src_addr_2 = src_addr + 0x2000000;
-> +    const uint32_t src_addr_3 = src_addr + 0x3000000;
-> +    const uint32_t digest_addr = src_addr + 0x4000000;
-> +    uint8_t digest[32] = {0};
-> +    struct aspeed_sg_list array[] = {
-> +            { sizeof(test_vector_sg1),              src_addr_1},
-> +            { sizeof(test_vector_sg2),              src_addr_2},
-> +            { sizeof(test_vector_sg3) | 1u << 31,   src_addr_3},
-
-These sizeofs are always going to be 3.
-
-I assume 1 << 31 is to indicate the final entry? Perhaps add a define for it.
-
-> +        };
-> +
-> +    /* Check engine is idle, no busy or irq bits set */
-> +    g_assert_cmphex(qtest_readl(s, base + HACE_STS), ==, 0);
-> +
-> +    /* Write test vector into memory */
-> +    qtest_memwrite(s, src_addr_1, test_vector_sg1, sizeof(test_vector_sg1));
-> +    qtest_memwrite(s, src_addr_2, test_vector_sg2, sizeof(test_vector_sg2));
-> +    qtest_memwrite(s, src_addr_3, test_vector_sg3, sizeof(test_vector_sg3));
-
-It would simplify your test case if you wrote the test vector to the
-one memory location.
-
-> +    qtest_memwrite(s, src_addr, array, sizeof(array));
-> +
-> +    write_regs(s, base, src_addr,
-> +               (sizeof(test_vector_sg1)
-> +                + sizeof(test_vector_sg2)
-> +                + sizeof(test_vector_sg3)),
-> +               digest_addr, HACE_ALGO_SHA256 | HACE_SG_EN);
-> +
-> +    /* Check hash IRQ status is asserted */
-> +    g_assert_cmphex(qtest_readl(s, base + HACE_STS), ==, 0x00000200);
-> +
-> +    /* Clear IRQ status and check status is deasserted */
-> +    qtest_writel(s, base + HACE_STS, 0x00000200);
-> +    g_assert_cmphex(qtest_readl(s, base + HACE_STS), ==, 0);
-> +
-> +    /* Read computed digest from memory */
-> +    qtest_memread(s, digest_addr, digest, sizeof(digest));
-> +
-> +    /* Check result of computation */
-> +    g_assert_cmpmem(digest, sizeof(digest),
-> +                    test_result_sg_sha256, sizeof(digest));
-> +}
-> +
-
-
->  struct masks {
-> -    uint32_t src;
-> +    uint32_t src_direct;
-
-You could leave this one the same.
-
-> +    uint32_t src_sg;
-
-You add this, but haven't written a new test to use it.
-
->      uint32_t dest;
->      uint32_t len;
->  };
->
->  static const struct masks ast2600_masks = {
-> -    .src  = 0x7fffffff,
-> -    .dest = 0x7ffffff8,
-> -    .len  = 0x0fffffff,
-> +    .src_direct  = 0x7fffffff,
-> +    .src_sg      = 0x7ffffff8,
-> +    .dest        = 0x7ffffff8,
-> +    .len         = 0x0fffffff,
->  };
->
->  static const struct masks ast2500_masks = {
-> -    .src  = 0x3fffffff,
-> -    .dest = 0x3ffffff8,
-> -    .len  = 0x0fffffff,
-> +    .src_direct  = 0x3fffffff,
-> +    .src_sg      = 0x0,         /* SG mode not supported */
-
-There's no need to add it in this case.
-
-> +    .dest        = 0x3ffffff8,
-> +    .len         = 0x0fffffff,
->  };
->
->  static const struct masks ast2400_masks = {
-> -    .src  = 0x0fffffff,
-> -    .dest = 0x0ffffff8,
-> -    .len  = 0x0fffffff,
-> +    .src_direct  = 0x0fffffff,
-> +    .src_sg      = 0x0,         /* SG mode not supported */
-> +    .dest        = 0x0ffffff8,
-> +    .len         = 0x0fffffff,
->  };
->
->  static void test_addresses(const char *machine, const uint32_t base,
-> @@ -208,7 +336,8 @@ static void test_addresses(const char *machine, const uint32_t base,
->
->      /* Check that the address masking is correct */
->      qtest_writel(s, base + HACE_HASH_SRC, 0xffffffff);
-> -    g_assert_cmphex(qtest_readl(s, base + HACE_HASH_SRC), ==, expected->src);
-> +    g_assert_cmphex(qtest_readl(s, base + HACE_HASH_SRC), ==,
-> +                    expected->src_direct);
->
->      qtest_writel(s, base + HACE_HASH_DIGEST, 0xffffffff);
->      g_assert_cmphex(qtest_readl(s, base + HACE_HASH_DIGEST), ==, expected->dest);
-> @@ -238,11 +367,21 @@ static void test_sha256_ast2600(void)
->      test_sha256("-machine ast2600-evb", 0x1e6d0000, 0x80000000);
->  }
->
-> +static void test_sha256_sg_ast2600(void)
-> +{
-> +    test_sha256_sg("-machine ast2600-evb", 0x1e6d0000, 0x80000000);
-> +}
-> +
->  static void test_sha512_ast2600(void)
->  {
->      test_sha512("-machine ast2600-evb", 0x1e6d0000, 0x80000000);
->  }
->
-> +static void test_sha512_sg_ast2600(void)
-> +{
-> +    test_sha512_sg("-machine ast2600-evb", 0x1e6d0000, 0x80000000);
-> +}
-> +
->  static void test_addresses_ast2600(void)
->  {
->      test_addresses("-machine ast2600-evb", 0x1e6d0000, &ast2600_masks);
-> @@ -299,6 +438,9 @@ int main(int argc, char **argv)
->      qtest_add_func("ast2600/hace/sha256", test_sha256_ast2600);
->      qtest_add_func("ast2600/hace/md5", test_md5_ast2600);
->
-> +    qtest_add_func("ast2600/hace/sha512_sg", test_sha512_sg_ast2600);
-> +    qtest_add_func("ast2600/hace/sha256_sg", test_sha256_sg_ast2600);
-> +
->      qtest_add_func("ast2500/hace/addresses", test_addresses_ast2500);
->      qtest_add_func("ast2500/hace/sha512", test_sha512_ast2500);
->      qtest_add_func("ast2500/hace/sha256", test_sha256_ast2500);
+>  #endif /* _ASPEED_HACE_H_ */
 > --
 > 2.25.1
 >

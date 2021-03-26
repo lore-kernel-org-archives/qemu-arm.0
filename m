@@ -1,112 +1,131 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1189435lfg;
-        Fri, 26 Mar 2021 02:36:10 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxC3C0XsEYeVSxAacSNseKD7rkb3LC1AQSMq8thbTt7AMiJ0+UlNOThgKjKnjJ4GDDfWP36
-X-Received: by 2002:a25:d44f:: with SMTP id m76mr19390321ybf.101.1616751370802;
-        Fri, 26 Mar 2021 02:36:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1616751370; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1652364lfg;
+        Fri, 26 Mar 2021 12:31:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzAbLODco+FX7/91qg+XYkgB6swWNF+/ssP7ArAt29rImZ0En/OZRGtiRfc2cDENVQ/FDEf
+X-Received: by 2002:a92:dc49:: with SMTP id x9mr11818998ilq.281.1616787113151;
+        Fri, 26 Mar 2021 12:31:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616787113; cv=none;
         d=google.com; s=arc-20160816;
-        b=Fp3pxkNiA5w+QrA1pikMxUkLf/nKO/h5aIgChAP3LG8sKfeWbBu2scxx7oAxOl5y/6
-         +O9JkE3fXdO7AddHfmIu6w6n5doULEEIXpRENF5OXCv7LdO40zzJJikQZzdoWvOtsif8
-         16C2X9BhsktyvJ3kQMC+LTP9VMWOknMxaM1BeXKJElMGa5uzvcA6TBifNqAzgqky/sZV
-         xQ7zoKmxTr/QMf9YHYIXFm/mQ2yRcjlyDRJU9XkUR8QbRMsgp5gziCpW7YpM1tygbm/L
-         0xb4Aj0BN4jXCjVSN/qcs+ioBhpm1cBGIT9OFvHUSNPyvAX6rZi6BIEev8QCs44V5r/z
-         3E5w==
+        b=liNlFcATCroOj/SxYkMOuQgUkE+rxTeYUad9WRRdY0JJ2x8FFgu+Bi4cHsT8VSOxxB
+         SpYdmV/NXVnd1c1camUFjqMAcXCPk78tvEqryax/64wTDi+luERVsnF23eD3G1cJ93IJ
+         5jsHnwXQLU1E8zsVk3NqKGDyVd2zgB+ZsMt/SpynztZgJhzQMxUyAqAcFxkQE88Q2QNS
+         IcUqP0xOg5ut/51Ypionf4d2Z1td2XjuQaiWEiyNXtin9FLd47TCVU6tPL1TXWC9LVuN
+         2xEs/r1YzYvVmb4qsdX6LpYdHjJyR8DK0c3oNHXP93LxLpNCLyGLDlZ1aryEwlR/GLWa
+         mwkw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=TpHw/ZRZvklF4zEweFSNZmDPsX+do4tXURjjd3R5O/g=;
-        b=HzISjlJ4iwTBp+Y1JEoHEL0PvITf8Nx1uFl6ESxXPEtu8I3XrDLi+90mzrHExYQO/u
-         rfUTxK7y5DIEUVcGFihhvBtZj197e4TaCEbCH+63LpBqcu3ZizbJgAY4ofbOy5f3a7lg
-         5dzB2n8X5IddSB90LYjgzHBD22vDSXGeCkAUSXzT35s9jUjck0Iuk/UjV6UAoP0nE2zO
-         WwrBw5gtOuTxqHhmfIAowu+kAo3/PvT0XK3oQRSn8x8rPoTeYjMgHkcoY8cH7zOCfdr7
-         nSviAOuKqGB4s8bmtkzE1Uelvl9KYyCaJdaOz2EiAD9j/tzng1oSdmJIUu9xrQI8Go/L
-         UMIQ==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=Pg9xsFCo2deiI+mV4SSRyu5ituukAb+fP/SgflVpVo0=;
+        b=COngLCLAd2nEPbQl+gDuaYy1YtQmnlefLjmwcnKFpR5+niIsIeHvuEYR/hyZYjD7p8
+         NPtuJ5A2z+uQActw0F1DoRCZ8dEQxWw5bXoP4rY5hqxjmHD92wDmpuoerQS0GXZh1U42
+         kTGnY9F1cIsUO3SZRrEoqz+TG9o4aYe4toSf8oHvbg+XWV5nAhKRRJdPKfxewLnCw6M+
+         BkagmwldV/1zKK3cmsdcNTcrK3RMcyPG8Dp1HMgO866oz2fev1jUe7v1xpSeKx7+Hufh
+         TeChyrT3DYf9jC9Fr7BdONex8L2mO7/TT9G65xpI9TEB2rQnHnhEE6tKcdPCtDcl79+T
+         yWJA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=INPoUC8O;
+       dkim=fail header.i=@ibm.com header.s=pp1 header.b=tQ+GgRGf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z13si7632517ybr.458.2021.03.26.02.36.10
+        by mx.google.com with ESMTPS id j1si7143448jat.46.2021.03.26.12.31.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Mar 2021 02:36:10 -0700 (PDT)
+        Fri, 26 Mar 2021 12:31:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=INPoUC8O;
+       dkim=fail header.i=@ibm.com header.s=pp1 header.b=tQ+GgRGf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56238 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Received: from localhost ([::1]:33718 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lPisz-0007xe-M9
-	for alex.bennee@linaro.org; Fri, 26 Mar 2021 05:36:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48210)
+	id 1lPsBT-0001B4-Ox
+	for alex.bennee@linaro.org; Fri, 26 Mar 2021 15:31:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50772)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lPisb-0007wi-O4
- for qemu-arm@nongnu.org; Fri, 26 Mar 2021 05:35:45 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:39619)
+ (Exim 4.90_1) (envelope-from <klaus@linux.vnet.ibm.com>)
+ id 1lPsAZ-0001As-NA; Fri, 26 Mar 2021 15:30:56 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:13826
+ helo=mx0a-001b2d01.pphosted.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lPisV-0007nQ-DP
- for qemu-arm@nongnu.org; Fri, 26 Mar 2021 05:35:45 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1616751338;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=TpHw/ZRZvklF4zEweFSNZmDPsX+do4tXURjjd3R5O/g=;
- b=INPoUC8OrKXMXzXtGKHuXN7qiag7RV2BQN1avLnYJh2XZzuUe7F34Zo4oK/+GLCBNzeNj9
- jFP3PJa3/YmjlPugEvUof8qamZk75VZ4fuGt5pfpFMlgAzpnmj+BQkwmwdbbCUzmsua8o3
- PiAmUrixurSPY5geZSAWES/GmWw/vWc=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-444-cZ9g888HNtOM1guDtzO0Iw-1; Fri, 26 Mar 2021 05:35:34 -0400
-X-MC-Unique: cZ9g888HNtOM1guDtzO0Iw-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id CD99E6B9C0;
- Fri, 26 Mar 2021 09:35:32 +0000 (UTC)
-Received: from [10.36.112.13] (ovpn-112-13.ams2.redhat.com [10.36.112.13])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 7E1DD63632;
- Fri, 26 Mar 2021 09:35:30 +0000 (UTC)
-Subject: Re: [PATCH for-6.0 2/4] machine: Provide a function to check the
- dynamic sysbus whitelist
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20210325153310.9131-1-peter.maydell@linaro.org>
- <20210325153310.9131-3-peter.maydell@linaro.org>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <c841a6e8-2f98-21ff-dfc7-9e0718dcc780@redhat.com>
-Date: Fri, 26 Mar 2021 10:35:28 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.0
+ (Exim 4.90_1) (envelope-from <klaus@linux.vnet.ibm.com>)
+ id 1lPsAV-0005mD-Kz; Fri, 26 Mar 2021 15:30:55 -0400
+Received: from pps.filterd (m0098413.ppops.net [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
+ 12QJ49da131590; Fri, 26 Mar 2021 15:30:44 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=from : to : cc : subject
+ : date : message-id : mime-version : content-transfer-encoding; s=pp1;
+ bh=Pg9xsFCo2deiI+mV4SSRyu5ituukAb+fP/SgflVpVo0=;
+ b=tQ+GgRGf6KobP8CkNbn5wPlARduqmccUA5LoYVt6hfILselwmCkzn9C0YF2SP6ApsIdC
+ 9CGI6L/Fvre3RM3rLUNBBcOI1vgZeQ3Xbq/0WIU4dLrIVLcuHge4FpbqYgW53Qms9sf2
+ HOY+QRAhCql9q4RxlswbYa5k9Hk/G1X0pObm++oahzEJbkd30D8xHTYHfOA3AkkQAccN
+ tuifMvq2RddEXnT5BPgbXduhkeoUStN/DEAMTx9IbS7CxoEji3nrMyhmcpMgSbZiYV/g
+ 0uoTCTDVgUAlFyYt7MRwRgDNmFAzNsjWkG2gxyG9L/fIF3rIfTYzzWIFmERqvP0QhR6E Nw== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com with ESMTP id 37hfysjpkk-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 26 Mar 2021 15:30:44 -0400
+Received: from m0098413.ppops.net (m0098413.ppops.net [127.0.0.1])
+ by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 12QJ4bcR133093;
+ Fri, 26 Mar 2021 15:30:44 -0400
+Received: from ppma02wdc.us.ibm.com (aa.5b.37a9.ip4.static.sl-reverse.com
+ [169.55.91.170])
+ by mx0b-001b2d01.pphosted.com with ESMTP id 37hfysjpk9-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 26 Mar 2021 15:30:43 -0400
+Received: from pps.filterd (ppma02wdc.us.ibm.com [127.0.0.1])
+ by ppma02wdc.us.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 12QJE7g7002441;
+ Fri, 26 Mar 2021 19:30:43 GMT
+Received: from b01cxnp23033.gho.pok.ibm.com (b01cxnp23033.gho.pok.ibm.com
+ [9.57.198.28]) by ppma02wdc.us.ibm.com with ESMTP id 37h1587g7p-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 26 Mar 2021 19:30:43 +0000
+Received: from b01ledav005.gho.pok.ibm.com (b01ledav005.gho.pok.ibm.com
+ [9.57.199.110])
+ by b01cxnp23033.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 12QJUgT136635130
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 26 Mar 2021 19:30:43 GMT
+Received: from b01ledav005.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id DABC5AE060;
+ Fri, 26 Mar 2021 19:30:42 +0000 (GMT)
+Received: from b01ledav005.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 14D69AE05C;
+ Fri, 26 Mar 2021 19:30:41 +0000 (GMT)
+Received: from T480-KlausKiwi.localdomain (unknown [9.85.195.191])
+ by b01ledav005.gho.pok.ibm.com (Postfix) with ESMTP;
+ Fri, 26 Mar 2021 19:30:40 +0000 (GMT)
+From: Klaus Heinrich Kiwi <klaus@linux.vnet.ibm.com>
+To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Subject: [PATCH v2 0/2] aspeed: HACE hash Scatter-Gather support 
+Date: Fri, 26 Mar 2021 16:30:31 -0300
+Message-Id: <20210326193033.11798-1-klaus@linux.vnet.ibm.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <20210325153310.9131-3-peter.maydell@linaro.org>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=eric.auger@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: QTBW7vqGpxecOymAKum_QUvCCPLJmirH
+X-Proofpoint-GUID: fyF-VEhnFlC46xdNF1unG_E5nZMNKtAf
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.369, 18.0.761
+ definitions=2021-03-26_08:2021-03-26,
+ 2021-03-26 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ mlxlogscore=999 phishscore=0
+ adultscore=0 suspectscore=0 bulkscore=0 spamscore=0 lowpriorityscore=0
+ impostorscore=0 priorityscore=1501 malwarescore=0 mlxscore=0 clxscore=1015
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2103250000
+ definitions=main-2103260140
+Received-SPF: none client-ip=148.163.158.5;
+ envelope-from=klaus@linux.vnet.ibm.com; helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -119,112 +138,39 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <ehabkost@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Greg Kurz <groug@kaod.org>,
- qemu-ppc@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>
+Cc: Laurent Vivier <lvivier@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ Andrew Jeffery <andrew@aj.id.au>,
+ Klaus Heinrich Kiwi <klaus@linux.vnet.ibm.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oMRZdlS4WStg
+X-TUID: HcpumtJlFIdb
 
-Hi Peter,
+This series adds support for scatter-gather sha256 and sha512 operations
+on Aspeed's HACE (Hash And Crypto Engine) to the Aspeed model, as well
+as testcases for them.
 
-On 3/25/21 4:33 PM, Peter Maydell wrote:
-> Provide a new function dynamic_sysbus_dev_allowed() which checks
-> the per-machine whitelist of dynamic sysbus devices and returns
-> a boolean result indicating whether the device is whitelisted.
-> We can use this in the implementation of validate_sysbus_device(),
-> but we will also need it so that machine hotplug callbacks can
-> validate devices rather than assuming that any sysbus device
-> might be hotpluggable into the platform bus.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
+These operations are supported on AST2600 series of machines.
 
-Thanks
+Signed-off-by: Klaus Heinrich Kiwi <klaus@linux.vnet.ibm.com>
 
-Eric
+---
+Changes since V1:
 
-> ---
->  include/hw/boards.h | 24 ++++++++++++++++++++++++
->  hw/core/machine.c   | 21 ++++++++++++++++-----
->  2 files changed, 40 insertions(+), 5 deletions(-)
-> 
-> diff --git a/include/hw/boards.h b/include/hw/boards.h
-> index 27106abc11d..609112a4e1a 100644
-> --- a/include/hw/boards.h
-> +++ b/include/hw/boards.h
-> @@ -51,6 +51,30 @@ void machine_set_cpu_numa_node(MachineState *machine,
->   */
->  void machine_class_allow_dynamic_sysbus_dev(MachineClass *mc, const char *type);
->  
-> +/**
-> + * device_is_dynamic_sysbus: test whether device is a dynamic sysbus device
-> + * @mc: Machine class
-> + * @dev: device to check
-> + *
-> + * Returns: true if @dev is a sysbus device on the machine's whitelist
-> + * of dynamically pluggable sysbus devices; otherwise false.
-> + *
-> + * This function checks whether @dev is a valid dynamic sysbus device,
-> + * by first confirming that it is a sysbus device and then checking it
-> + * against the whitelist of permitted dynamic sysbus devices which has
-> + * been set up by the machine using machine_class_allow_dynamic_sysbus_dev().
-> + *
-> + * It is valid to call this with something that is not a subclass of
-> + * TYPE_SYS_BUS_DEVICE; the function will return false in this case.
-> + * This allows hotplug callback functions to be written as:
-> + *     if (device_is_dynamic_sysbus(mc, dev)) {
-> + *         handle dynamic sysbus case;
-> + *     } else if (some other kind of hotplug) {
-> + *         handle that;
-> + *     }
-> + */
-> +bool device_is_dynamic_sysbus(MachineClass *mc, DeviceState *dev);
-> +
->  /*
->   * Checks that backend isn't used, preps it for exclusive usage and
->   * returns migratable MemoryRegion provided by backend.
-> diff --git a/hw/core/machine.c b/hw/core/machine.c
-> index 9935c6ddd56..8d97094736a 100644
-> --- a/hw/core/machine.c
-> +++ b/hw/core/machine.c
-> @@ -529,20 +529,31 @@ void machine_class_allow_dynamic_sysbus_dev(MachineClass *mc, const char *type)
->      QAPI_LIST_PREPEND(mc->allowed_dynamic_sysbus_devices, g_strdup(type));
->  }
->  
-> -static void validate_sysbus_device(SysBusDevice *sbdev, void *opaque)
-> +bool device_is_dynamic_sysbus(MachineClass *mc, DeviceState *dev)
->  {
-> -    MachineState *machine = opaque;
-> -    MachineClass *mc = MACHINE_GET_CLASS(machine);
->      bool allowed = false;
->      strList *wl;
-> +    Object *obj = OBJECT(dev);
-> +
-> +    if (!object_dynamic_cast(obj, TYPE_SYS_BUS_DEVICE)) {
-> +        return false;
-> +    }
->  
->      for (wl = mc->allowed_dynamic_sysbus_devices;
->           !allowed && wl;
->           wl = wl->next) {
-> -        allowed |= !!object_dynamic_cast(OBJECT(sbdev), wl->value);
-> +        allowed |= !!object_dynamic_cast(obj, wl->value);
->      }
->  
-> -    if (!allowed) {
-> +    return allowed;
-> +}
-> +
-> +static void validate_sysbus_device(SysBusDevice *sbdev, void *opaque)
-> +{
-> +    MachineState *machine = opaque;
-> +    MachineClass *mc = MACHINE_GET_CLASS(machine);
-> +
-> +    if (!device_is_dynamic_sysbus(mc, DEVICE(sbdev))) {
->          error_report("Option '-device %s' cannot be handled by this machine",
->                       object_class_get_name(object_get_class(OBJECT(sbdev))));
->          exit(1);
-> 
+ * Use address_space_ldl_le() to load single addresses instead of
+   address_space_map()
+ * Updated documentation
+ * Removed several uneeded variables / casts
+ * Confirmed behavior on real hardware for register masks, IRQ register
+   etc
+ * Adjusted testcases accordingly
+ * Coding style fixes
+
+ docs/system/arm/aspeed.rst     |   2 +-
+ hw/misc/aspeed_hace.c          | 126 +++++++++++++++++++++++++++++++--
+ tests/qtest/aspeed_hace-test.c | 156 ++++++++++++++++++++++++++++++++++++++---
+ 3 files changed, 268 insertions(+), 16 deletions(-)
+
 

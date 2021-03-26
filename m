@@ -1,139 +1,461 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3969255lfg;
-        Mon, 29 Mar 2021 13:07:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxa5qNwvMRkNIv2fBth8fR3nqyLicSM03TgTkofJNxpq4HDVEijM+aC9G3ATTgbI3DM4Itv
-X-Received: by 2002:a6b:d80d:: with SMTP id y13mr21713189iob.75.1617048471651;
-        Mon, 29 Mar 2021 13:07:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617048471; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp889034lfg;
+        Thu, 25 Mar 2021 17:31:27 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw6KT1/l0mVHfDJzj+O5YtTSx/ievzw7tdOrRBySGgnm4FyvHB/mxR7fseFAHrq/ZDcNhde
+X-Received: by 2002:a92:b70c:: with SMTP id k12mr3496246ili.156.1616718687539;
+        Thu, 25 Mar 2021 17:31:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616718687; cv=none;
         d=google.com; s=arc-20160816;
-        b=wSFRJCCtOuLlzHPRwtNVzKe7+hYP8nW3ulISCesTFJ+OP/RvqFuQEIAeekGMgJ4UdA
-         6XD94XQgQfaw+mYWRDpe3l54HNnrdzfJEHpvjnSDnDNI1hqf/JQeHbzyZexo8+rKqxyX
-         e1fcqzw9paQUoOW5p/6zM9UEEeyW/l22o90jtx166ixUNAQmNf1fn6jjkE/89vxQY9rM
-         M9wJ6YNOZPwcYbYxXJozHCDB60KiNrWF6ss1Gzq8njfcz4efVX/BsbsLohbQFPsULQe+
-         ELTl+t+bm8svLVnFPhoBf+cKXcOwPCxHSF2impJ72V/kau6vX0/zR4l4VMsULsGGPwQw
-         UYww==
+        b=X+xaQeFTKisx0u/YXbC8sewKJgZzHn3X6IvtcTul7xRP+rrHwaou6Oa7JMp8kxa0I/
+         v8bzUdb8/p2dCFxM1UCvI8SKTMsgxOSXGKuB5m1vtJx5WCozbgxx3qFko3Qbmkzcaa5g
+         cpJPlgC4LjfqnNjZeL4UvaY4Pz6KTw33dFFbj+8t7+VymySehjTletLiVm+wGDUAXir5
+         pJW1+PJEsXyiCjrzGVsiRl91pUcKWU8zmDtMBnnltYxI6p7w3y7DdnDst4c47gUewgo3
+         DPoDIMr49Qtv74cmPHe9PcdV6+a0KvWk9l/aOZC2dcmeGTK//sleLWve37bzkvNEc1HN
+         3uuA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :mime-version:dkim-signature;
-        bh=PrMSn4LxiUgBmXLrPj22xAdE+PCPcq9h0zn3SA2U/24=;
-        b=nwhgUHj1Y1ik8T+IkFXxb4Jqgz5cowEleSKMqYckpvlIvt/zKt2l6qsAAf8RH+1QWk
-         RSoSQBL0Y2aztlujdOIuNJVQsgxp2gMZPjuIOXJxwYReHxPBoUCGFR2d/eyDAcagoqoC
-         sZ8XSDZR4RljXiks0jJRv7GCA+T+F6+mRrBVkVZ3JFHCAiSk+Olsoo2RnV77G177is/+
-         7H58vCP5TVI8H5GGMtdJTv9Ut7HCJ+XxAea/mNAPVyrW7QCOntaoz3elM5uxxrJ3O6C7
-         tKgPhdME5GqgdMg8YzW3Fpu92v9JZXASQpT6tji7ZPZkorFeR6tSnutlh4HHSbWgz4wC
-         QxHA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=saTn6NarVlEELQgHGdwR/wrWO06QjsMUeOIlGAoNQ9M=;
+        b=OKiXe0HHeRa/LfUuXsGNEJgrfmAhmfAMqQBdHkXdcnhQi+P7W8OcT3Yh0EKIUByZL4
+         FaxDpRoapksixtnX/WA3SlbVz+WQ6UxKxDW0Y/+0YygAGN1xQhTNjC5qECrGicyr9fGj
+         zvJPF/OM+/lM307pdFygFxr4P+BStcCOEpcmF7xIOE3YOGovLWx8ET0SLvfDzveK+LEG
+         B6nKXwsvhnziQybKFA6FLBXhYt4wAsgfUDN7QAxvSflh942YQyNzG9AfbpJ8tVZ2PC6f
+         Po+RBeayT5RLmCSihPSlvs3LDo93IiFVUYgTm+XI3vmcXAGe2vwBWkbln5YD8sCMk1tx
+         j0qw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pAElK9pz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hqQ6yMll;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t31si14981587jal.89.2021.03.29.13.07.51
+        by mx.google.com with ESMTPS id x11si5165095iow.52.2021.03.25.17.31.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 29 Mar 2021 13:07:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 25 Mar 2021 17:31:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pAElK9pz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:46366 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hqQ6yMll;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:59686 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lQyAx-0003j1-0O
-	for alex.bennee@linaro.org; Mon, 29 Mar 2021 16:07:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48292)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lPaNq-0004iB-Rk
+	for alex.bennee@linaro.org; Thu, 25 Mar 2021 20:31:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57678)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <derrick.mckee@gmail.com>)
- id 1lQyAg-0003is-EO
- for qemu-arm@nongnu.org; Mon, 29 Mar 2021 16:07:34 -0400
-Received: from mail-qk1-x729.google.com ([2607:f8b0:4864:20::729]:45025)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lPaKP-0002Pp-KK; Thu, 25 Mar 2021 20:27:53 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a]:38768)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <derrick.mckee@gmail.com>)
- id 1lQyAe-0008K1-Qu
- for qemu-arm@nongnu.org; Mon, 29 Mar 2021 16:07:34 -0400
-Received: by mail-qk1-x729.google.com with SMTP id y18so13662325qky.11
- for <qemu-arm@nongnu.org>; Mon, 29 Mar 2021 13:07:31 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lPaKE-00042Z-TJ; Thu, 25 Mar 2021 20:27:45 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ m20-20020a7bcb940000b029010cab7e5a9fso4025506wmi.3; 
+ Thu, 25 Mar 2021 17:27:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:from:date:message-id:subject:to;
- bh=PrMSn4LxiUgBmXLrPj22xAdE+PCPcq9h0zn3SA2U/24=;
- b=pAElK9pzACiJneFju69oJLl6dmt949F0RwOSDG6F9X6NkQVo1lFxzmN9LfzXCJrnDY
- OktckvSZx0zo4mUE68W3yBaTh61CjKR8dt4zRYToivFraCVu99I7B/Pq2upsN5ryTP7u
- SfkJBZwbN+a35hgV5K2YhQaZyfsRMOBYcU5huLr3tyDRhAWYVozyrn5tGZlYNcmQFE5r
- 03WhgphLro08O6NG93GGdQmbKYKD/B6pDeKXRKvnjNsTTQqtk03lakHE1sohjPr9APy+
- PWMbaVQofxNsvJPtbeY/RtvW+trES9U8n/HptC7dQKe4RvCu26xLe2U4gp83T8w1qK0c
- 29Lw==
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=saTn6NarVlEELQgHGdwR/wrWO06QjsMUeOIlGAoNQ9M=;
+ b=hqQ6yMllaA4CLNt9rLG19D+p6ABbiimsAVYZ6gof5/26P4m3A+TrjSLrjhb8E5CpaD
+ k1bjspKsRk4KD+NAw6s2oR1SS849pXkypeM6PRHYeNai8tvs4RdA6nbYVHx3FnhoaWka
+ TnEktTPPI2LDuHuK2WPh+fta7zi84IFZ42Sf7JDhDKXLZxYiDc8BdIEVuqNKBQVcCYwJ
+ 2/IIB6cji/VJHYEabwdj6KE6oZVEEhJ473jpjNzIs5k1/UOxrXyZUXEjd0SYCv1bBGnG
+ OPmAN+++431XhIx16jo99xp2O/rVdQiDHxgsXObnKA9Y4iMar5rXbBoOqRKG9MCPgAPm
+ w3vw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=PrMSn4LxiUgBmXLrPj22xAdE+PCPcq9h0zn3SA2U/24=;
- b=K9GF+79DfbrXZnwQG26wN+OaCpzHjcVS0sgTbJGdG93XUkMYiAM+pDxIcKkbd0YqKJ
- k8vQbL97AH+Sgs+WnLe7pP3ZALQIXrUYMbNazLzJAR3INXyyMA5oM2VBpySI6LBtCo9G
- +f9TvRyNGqjmbgCrUsnU8himXHrozLv7PHFbkLVX+ggrpVxeFk+g4zAqLoBXyoOYS2VW
- DA0PjLzzo0YLWo7DLPuPjPUCx2WM8Pqwk1hk2TIyjyRFm07p1QKOF/SA3t70rxsDReV1
- pI6eI17CkS5T6Pq8VzhTXM7d2yPXN83FQ8b3mJHSOsUsqFl+FzE6TeTp0ogU+xYOpd1s
- jlLA==
-X-Gm-Message-State: AOAM5302PlfrwdClYFby1znWf6KM1u4aDxz0DMlqADOAh6qhCCNdpavZ
- pRIqSl7nrM8PHpJX0xtRpVZbWzbG3WbHL24xYxV6VWqyMj4C9Q==
-X-Received: by 2002:ae9:ebc3:: with SMTP id
- b186mr26276450qkg.335.1617048450772; 
- Mon, 29 Mar 2021 13:07:30 -0700 (PDT)
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=saTn6NarVlEELQgHGdwR/wrWO06QjsMUeOIlGAoNQ9M=;
+ b=Wz9U+kldQS96O0w28xF0TynTxCk3yny81KWxM8VaYS9UND+oZWdzJSgF6KWOaWRw2e
+ EIMkwl+vw0LCaFnO6Wly1A/ZSJHt3kxsWG0mLsNyWe4Qguh3Ekix7hmazXRUB5x2Dnle
+ DOsRDVB/GwfYVNQ5/BrpGedz3+dFvDTiPiiTpXddfYxgaa9yInOQrPBnfT6ueVurIpOI
+ AdHtlmwW4EEOOMdBBURFFj0QnHlKkaEc7j3ngFbrGXA+QnIPUnyw7LwoQ2s4q6W5umST
+ 7dXHHg0/pJsu7fXMS+oauhPkun8KF5AitmSntRi1B7gtXRpD3Va/3A2KHW4OkiuSc+hH
+ xyrQ==
+X-Gm-Message-State: AOAM532p/F8eJjBeXpfq0BG3VrBA476pl6U4AJu12BTWdaX4n3pCG9Fl
+ 3KFAMThM91hokEVHsqYULJ0287Fpm6LNEg==
+X-Received: by 2002:a1c:bc82:: with SMTP id
+ m124mr10383440wmf.118.1616718456724; 
+ Thu, 25 Mar 2021 17:27:36 -0700 (PDT)
+Received: from localhost.localdomain (17.red-88-21-201.staticip.rima-tde.net.
+ [88.21.201.17])
+ by smtp.gmail.com with ESMTPSA id q207sm8402159wme.36.2021.03.25.17.27.35
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 25 Mar 2021 17:27:36 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [RFC PATCH-for-6.1 01/10] hw/misc: Add device to help managing
+ aliased memory regions
+Date: Fri, 26 Mar 2021 01:27:19 +0100
+Message-Id: <20210326002728.1069834-2-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20210326002728.1069834-1-f4bug@amsat.org>
+References: <20210326002728.1069834-1-f4bug@amsat.org>
 MIME-Version: 1.0
-From: Derrick McKee <derrick.mckee@gmail.com>
-Date: Mon, 29 Mar 2021 16:07:20 -0400
-Message-ID: <CAJoBWHx5DM=zhj10j1ai5T_LO9ScAhFzUezuhGu6a73vn=4_Rg@mail.gmail.com>
-Subject: AUTIA authentication sometimes fails
-To: "open list:ARM" <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::729;
- envelope-from=derrick.mckee@gmail.com; helo=mail-qk1-x729.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32a.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hX05yQouf39N
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Alistair Francis <alistair@alistair23.me>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Laurent Vivier <laurent@vivier.eu>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 8p3WHvHzg848
 
-Hi,
+// TODO explain here how buses work? when some address lines are
+// not bound we get memory aliasing, high addresses are masked.
+// etc...
 
-I am running across a scenario where a PAC signed code pointer (using
-pacia) sometimes does not successfully authenticate despite the signed
-pointer and the salt used to sign the pointer are correctly given to a
-autia instruction.  Only one particular pointer fails, while others
-are correctly authenticated.  Unfortunately, I can't provide a simple
-use case, because the behavior is part of a running kernel, and all
-the pointers involved are kernel space pointers.  An example of what I
-am seeing (not guaranteeing correct assembly, just a gist):
+Add a helper to manage this use case easily.
 
-mov x9, 0xffff800009200000
-mov x10, 0x20001
-pacia x9, x10  // x9 contains 0xff90800009200000
-...
-mov x9, 0xff90800009200000
-mov x10 0x20001
-autia x9, x10  // x9 contains invalid pointer
+For example a having @span_size = @region_size / 4 we get such mapping:
 
-However, this same code with different pointer values correctly
-authenticate.  Is there something specific about the kernel and PAC
-authentication that I am missing?  Thanks.
+          ^-----------^
+          |           |
+          |           |
+          | +-------+ |                 +---------+          <--+
+          |           |                 +---------+             |
+          |           |                 |         |             |
+          |           |   +-----------> | alias#3 |             |
+          |           |   |             |         |             |
+          |           |   |             +---------+             |
+          |           |   |             +---------+             |
+          |           |   |             |         |             |
+          |           |   |   +-------> | alias#2 |             |
+          |           |   |   |         |         |             |region
+          | container |   |   |         +---------+             | size
+          |           |   |   |         +---------+             |
+          |           |   |   |         |         |             |
+          |           |   |   |  +----> | alias#1 |             |
+          |           |   |   |  |      |         |             |
+          |           |   |   |  |      +---------+  <--+       |
+          |           | +-+---+--+--+   +---------+     |       |
+          |           | |           |   |         |     |span   |
+          |           | | subregion +-> | alias#0 |     |size   |
+   offset |           | |           |   |         |     |       |
+   +----> | +-------+ | +-----------+   +---------+  <--+    <--+
+   |      |           |
+   |      |           |
+   |      |           |
+   |      |           |
+   |      |           |
+   |      ^-----------^
 
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ include/hw/misc/aliased_region.h |  87 ++++++++++++++++++++
+ hw/misc/aliased_region.c         | 133 +++++++++++++++++++++++++++++++
+ MAINTAINERS                      |   6 ++
+ hw/misc/Kconfig                  |   3 +
+ hw/misc/meson.build              |   1 +
+ 5 files changed, 230 insertions(+)
+ create mode 100644 include/hw/misc/aliased_region.h
+ create mode 100644 hw/misc/aliased_region.c
+
+diff --git a/include/hw/misc/aliased_region.h b/include/hw/misc/aliased_region.h
+new file mode 100644
+index 00000000000..0ce0d5d1cef
+--- /dev/null
++++ b/include/hw/misc/aliased_region.h
+@@ -0,0 +1,87 @@
++/*
++ * Aliased memory regions
++ *
++ * Copyright (c) 2018  Philippe Mathieu-Daudé <f4bug@amsat.org>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#ifndef HW_MISC_ALIASED_REGION_H
++#define HW_MISC_ALIASED_REGION_H
++
++#include "exec/memory.h"
++#include "hw/sysbus.h"
++
++#define TYPE_ALIASED_REGION "aliased-memory-region"
++OBJECT_DECLARE_SIMPLE_TYPE(AliasedRegionState, ALIASED_REGION)
++
++struct AliasedRegionState {
++    /*< private >*/
++    SysBusDevice parent_obj;
++
++    /*< public >*/
++    MemoryRegion container;
++    uint64_t region_size;
++    uint64_t span_size;
++    MemoryRegion *mr;
++
++    struct {
++        size_t count;
++        MemoryRegion *alias;
++    } mem;
++};
++
++/**
++ * memory_region_add_subregion_aliased:
++ * @container: the #MemoryRegion to contain the aliased subregions.
++ * @offset: the offset relative to @container where the aliased subregion
++ *          are added.
++ * @region_size: size of the region containing the aliased subregions.
++ * @subregion: the subregion to be aliased.
++ * @span_size: size between each aliased subregion
++ *
++ * This utility function creates and maps an instance of aliased-memory-region,
++ * which is a dummy device of a single region which simply contains multiple
++ * aliases of the provided @subregion, spanned over the @region_size every
++ * @span_size. The device is mapped at @offset within @container.
++ *
++ * For example a having @span_size = @region_size / 4 we get such mapping:
++ *
++ *               +-----------+
++ *               |           |
++ *               |           |
++ *               | +-------+ |                 +---------+          <--+
++ *               |           |                 +---------+             |
++ *               |           |                 |         |             |
++ *               |           |   +-----------> | alias#3 |             |
++ *               |           |   |             |         |             |
++ *               |           |   |             +---------+             |
++ *               |           |   |             +---------+             |
++ *               |           |   |             |         |             |
++ *               |           |   |   +-------> | alias#2 |             |
++ *               |           |   |   |         |         |             |region
++ *               | container |   |   |         +---------+             | size
++ *               |           |   |   |         +---------+             |
++ *               |           |   |   |         |         |             |
++ *               |           |   |   |  +----> | alias#1 |             |
++ *               |           |   |   |  |      |         |             |
++ *               |           |   |   |  |      +---------+  <--+       |
++ *               |           | +-+---+--+--+   +---------+     |       |
++ *               |           | |           |   |         |     |span   |
++ *               |           | | subregion +-> | alias#0 |     |size   |
++ *        offset |           | |           |   |         |     |       |
++ *        +----> | +-------+ | +-----------+   +---------+  <--+    <--+
++ *        |      |           |
++ *        |      |           |
++ *        |      |           |
++ *        |      |           |
++ *        |      |           |
++ *        +      +-----------+
++ */
++void memory_region_add_subregion_aliased(MemoryRegion *container,
++                                         hwaddr offset,
++                                         uint64_t region_size,
++                                         MemoryRegion *subregion,
++                                         uint64_t span_size);
++
++#endif
+diff --git a/hw/misc/aliased_region.c b/hw/misc/aliased_region.c
+new file mode 100644
+index 00000000000..8fcc63f2648
+--- /dev/null
++++ b/hw/misc/aliased_region.c
+@@ -0,0 +1,133 @@
++/*
++ * Aliased memory regions
++ *
++ * Copyright (c) 2018  Philippe Mathieu-Daudé <f4bug@amsat.org>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/cutils.h"
++#include "qapi/error.h"
++#include "hw/hw.h"
++#include "hw/sysbus.h"
++#include "hw/misc/aliased_region.h"
++#include "hw/qdev-properties.h"
++
++static void aliased_mem_realize(AliasedRegionState *s, const char *mr_name)
++{
++    uint64_t subregion_size;
++    int subregion_bits;
++
++    memory_region_init(&s->container, OBJECT(s), mr_name, s->region_size);
++
++    subregion_bits = 64 - clz64(s->span_size - 1);
++    s->mem.count = s->region_size >> subregion_bits;
++    assert(s->mem.count > 1);
++    subregion_size = 1ULL << subregion_bits;
++
++    s->mem.alias = g_new(MemoryRegion, s->mem.count);
++    for (size_t i = 0; i < s->mem.count; i++) {
++        g_autofree char *name = g_strdup_printf("%s [#%zu/%zu]",
++                                                memory_region_name(s->mr),
++                                                i, s->mem.count);
++        memory_region_init_alias(&s->mem.alias[i], OBJECT(s), name,
++                                 s->mr, 0, s->span_size);
++        memory_region_add_subregion(&s->container, i * subregion_size,
++                                    &s->mem.alias[i]);
++    }
++}
++
++static void aliased_mr_realize(DeviceState *dev, Error **errp)
++{
++    AliasedRegionState *s = ALIASED_REGION(dev);
++    g_autofree char *name = NULL, *span = NULL;
++
++    if (s->region_size == 0) {
++        error_setg(errp, "property 'region-size' not specified or zero");
++        return;
++    }
++
++    if (s->mr == NULL) {
++        error_setg(errp, "property 'iomem' not specified");
++        return;
++    }
++
++    if (!s->span_size) {
++        s->span_size = pow2ceil(memory_region_size(s->mr));
++    } else if (!is_power_of_2(s->span_size)) {
++        error_setg(errp, "property 'span-size' must be a power of 2");
++        return;
++    }
++
++    span = size_to_str(s->span_size);
++    name = g_strdup_printf("masked %s [span of %s]",
++                           memory_region_name(s->mr), span);
++    aliased_mem_realize(s, name);
++    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->container);
++}
++
++static void aliased_mr_unrealize(DeviceState *dev)
++{
++    AliasedRegionState *s = ALIASED_REGION(dev);
++
++    g_free(s->mem.alias);
++}
++
++static Property aliased_mr_properties[] = {
++    DEFINE_PROP_UINT64("region-size", AliasedRegionState, region_size, 0),
++    DEFINE_PROP_UINT64("span-size", AliasedRegionState, span_size, 0),
++    DEFINE_PROP_LINK("iomem", AliasedRegionState, mr,
++                     TYPE_MEMORY_REGION, MemoryRegion *),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
++static void aliased_mr_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->realize = aliased_mr_realize;
++    dc->unrealize = aliased_mr_unrealize;
++    /* Reason: needs to be wired up to work */
++    dc->user_creatable = false;
++    device_class_set_props(dc, aliased_mr_properties);
++}
++
++static const TypeInfo aliased_mr_info = {
++    .name = TYPE_ALIASED_REGION,
++    .parent = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(AliasedRegionState),
++    .class_init = aliased_mr_class_init,
++};
++
++static void aliased_mr_register_types(void)
++{
++    type_register_static(&aliased_mr_info);
++}
++
++type_init(aliased_mr_register_types)
++
++void memory_region_add_subregion_aliased(MemoryRegion *container,
++                                         hwaddr offset,
++                                         uint64_t region_size,
++                                         MemoryRegion *subregion,
++                                         uint64_t span_size)
++{
++    DeviceState *dev;
++
++    if (!region_size) {
++        region_size = pow2ceil(memory_region_size(container));
++    } else {
++        assert(region_size <= memory_region_size(container));
++    }
++
++    dev = qdev_new(TYPE_ALIASED_REGION);
++    qdev_prop_set_uint64(dev, "region-size", region_size);
++    qdev_prop_set_uint64(dev, "span-size", span_size);
++    object_property_set_link(OBJECT(dev), "iomem", OBJECT(subregion),
++                             &error_abort);
++    sysbus_realize(SYS_BUS_DEVICE(dev), &error_abort);
++
++    memory_region_add_subregion(container, offset,
++                                sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0));
++}
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 554be84b321..f82ffd50a91 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -2097,6 +2097,12 @@ S: Maintained
+ F: include/hw/misc/empty_slot.h
+ F: hw/misc/empty_slot.c
+ 
++Aliased memory region
++M: Philippe Mathieu-Daudé <f4bug@amsat.org>
++S: Maintained
++F: include/hw/misc/aliased_region.h
++F: hw/misc/aliased_region.c
++
+ Standard VGA
+ M: Gerd Hoffmann <kraxel@redhat.com>
+ S: Maintained
+diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+index c71ed258204..ca51b99989e 100644
+--- a/hw/misc/Kconfig
++++ b/hw/misc/Kconfig
+@@ -151,6 +151,9 @@ config AUX
+ config UNIMP
+     bool
+ 
++config ALIASED_REGION
++    bool
++
+ config LED
+     bool
+ 
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index 21034dc60a8..e65541b835f 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -12,6 +12,7 @@
+ softmmu_ss.add(when: 'CONFIG_EMC141X', if_true: files('emc141x.c'))
+ softmmu_ss.add(when: 'CONFIG_UNIMP', if_true: files('unimp.c'))
+ softmmu_ss.add(when: 'CONFIG_EMPTY_SLOT', if_true: files('empty_slot.c'))
++softmmu_ss.add(when: 'CONFIG_ALIASED_REGION', if_true: files('aliased_region.c'))
+ softmmu_ss.add(when: 'CONFIG_LED', if_true: files('led.c'))
+ softmmu_ss.add(when: 'CONFIG_PVPANIC_COMMON', if_true: files('pvpanic.c'))
+ 
 -- 
-Derrick McKee
-Phone: (703) 957-9362
-Email: derrick.mckee@gmail.com
+2.26.2
+

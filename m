@@ -1,112 +1,112 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp888250lfg;
-        Thu, 25 Mar 2021 17:30:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxMx8KxXJIF6O6f8elSC/1YGxkUg7se4VnqDWp0TE/QXujr+8NOEID14laMRvQVlbKLD+EK
-X-Received: by 2002:a92:d981:: with SMTP id r1mr8513071iln.98.1616718601918;
-        Thu, 25 Mar 2021 17:30:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1616718601; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1189435lfg;
+        Fri, 26 Mar 2021 02:36:10 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxC3C0XsEYeVSxAacSNseKD7rkb3LC1AQSMq8thbTt7AMiJ0+UlNOThgKjKnjJ4GDDfWP36
+X-Received: by 2002:a25:d44f:: with SMTP id m76mr19390321ybf.101.1616751370802;
+        Fri, 26 Mar 2021 02:36:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616751370; cv=none;
         d=google.com; s=arc-20160816;
-        b=nLzEjViCLSD0IIM+cx8E0dsqtPM2FD2bO84VmPwFGv8Xq6ywqdmqV8q6JsOd1OwLoV
-         ufbhWbdh2TFUUkWN8ChAAWUQ37cyfYKKvqqGT/NpgJqSoMhu1f+KxG1JVoEDXGUyAjkI
-         wEyl9P6EtpWoRrhL+FIvd9r/7ZLpBTH3LOmKyYXjMxOcwa+nHDLliD58U5aRwhplo2pC
-         jNBBUIhwRNFsWNMfllAp7J4gg5m4W02y9j+WmbrSexWFRA+HMmGS86G459BnWKZ4NrjE
-         ldxjCrQkB56oVmGp7BLoc5QA01dGVr1mqG07dWSw5xw3dMx0NCEFt2fU+pf9V1ThGabU
-         S4Vg==
+        b=Fp3pxkNiA5w+QrA1pikMxUkLf/nKO/h5aIgChAP3LG8sKfeWbBu2scxx7oAxOl5y/6
+         +O9JkE3fXdO7AddHfmIu6w6n5doULEEIXpRENF5OXCv7LdO40zzJJikQZzdoWvOtsif8
+         16C2X9BhsktyvJ3kQMC+LTP9VMWOknMxaM1BeXKJElMGa5uzvcA6TBifNqAzgqky/sZV
+         xQ7zoKmxTr/QMf9YHYIXFm/mQ2yRcjlyDRJU9XkUR8QbRMsgp5gziCpW7YpM1tygbm/L
+         0xb4Aj0BN4jXCjVSN/qcs+ioBhpm1cBGIT9OFvHUSNPyvAX6rZi6BIEev8QCs44V5r/z
+         3E5w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=IYakNFxQV1ex75l66dPkqyEqS369liYXkwtkj/H9Uas=;
-        b=NeYCvHz2s8LsBJE2sIGw5iK9uh/+lNpGmOiKImJOuowySTHD4HUN3WCbNSVgyWXHar
-         gswC4L9bKO+I2bukW9NsUd5R1mb0OdXU1vk5KzeMmZpwB8/UqPRgmArvL00o7Z55bgKd
-         4oHM5EneERZZITVGXr4FBueH/nuOzXG1uQm7/3rZPVNzxb4Ssk5v3RBlnT47CaE7SYfY
-         gDRou2A5QZrT0//BuKnek3Qgr3Y73qw8YqKZB/1BlaTkCYQh1q5dPsWVKuXzldDjHmYp
-         NaJ2AiXXCYVedQjjI8PZ6HxHZb1te7ynY9kFsgkdOL58R2fdR2od3E7YVRTzahVln368
-         t9nw==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=TpHw/ZRZvklF4zEweFSNZmDPsX+do4tXURjjd3R5O/g=;
+        b=HzISjlJ4iwTBp+Y1JEoHEL0PvITf8Nx1uFl6ESxXPEtu8I3XrDLi+90mzrHExYQO/u
+         rfUTxK7y5DIEUVcGFihhvBtZj197e4TaCEbCH+63LpBqcu3ZizbJgAY4ofbOy5f3a7lg
+         5dzB2n8X5IddSB90LYjgzHBD22vDSXGeCkAUSXzT35s9jUjck0Iuk/UjV6UAoP0nE2zO
+         WwrBw5gtOuTxqHhmfIAowu+kAo3/PvT0XK3oQRSn8x8rPoTeYjMgHkcoY8cH7zOCfdr7
+         nSviAOuKqGB4s8bmtkzE1Uelvl9KYyCaJdaOz2EiAD9j/tzng1oSdmJIUu9xrQI8Go/L
+         UMIQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KPgrCjl7;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=INPoUC8O;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f14si5277694iow.105.2021.03.25.17.30.01
+        by mx.google.com with ESMTPS id z13si7632517ybr.458.2021.03.26.02.36.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Mar 2021 17:30:01 -0700 (PDT)
+        Fri, 26 Mar 2021 02:36:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KPgrCjl7;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=INPoUC8O;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:58754 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:56238 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lPaMT-0004Iv-75
-	for alex.bennee@linaro.org; Thu, 25 Mar 2021 20:30:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57712)
+	id 1lPisz-0007xe-M9
+	for alex.bennee@linaro.org; Fri, 26 Mar 2021 05:36:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48210)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lPaKR-0002RW-Fs; Thu, 25 Mar 2021 20:27:55 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c]:44587)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lPaKP-000452-87; Thu, 25 Mar 2021 20:27:54 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id
- j4-20020a05600c4104b029010c62bc1e20so2112478wmi.3; 
- Thu, 25 Mar 2021 17:27:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=IYakNFxQV1ex75l66dPkqyEqS369liYXkwtkj/H9Uas=;
- b=KPgrCjl7IEfoYlrAJFCDMudAfThi+8A7nYifuZpdkqHNNj2tu1GBZmdoCJK30+iz26
- TatGmkhGh6fSBj5zwzxTTyolSrNFlCbQ96wcMdfeUMtkMsTenHnwj3oy+h00COc2gF5V
- pGejtLKe4WsO4r6LyNfE12k3Mo2uDfsf1hp2AQbjvwCaI5+mRgZHjdqJNLULqzDCc2zf
- DJYFn1Yirj9flWyfBZXdNqAK9uxsTOOomjsfWbgBNZ82KJIf4ctMY4tL1l7tInTb6sLA
- AyeCPrEVk3+ijjvP378521okK5qsgls19edZgOtTODDF6cdFMcgHYhlf6YceabPA/ETD
- nkjg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=IYakNFxQV1ex75l66dPkqyEqS369liYXkwtkj/H9Uas=;
- b=k5W2mvyS51GD6dhNoimEszopWHobWnB8efwxqo7LgQtNkNRbvz5+cro7H9RjfXuskI
- JuajobnD2EsmBXm2zg8BkLLosBJvBSV/TUQQkDh62xA6uHTPDaPkhlbmAnEst2Eakubn
- 7fHYQOUt2d0K7/gT0kMCtbCu/RNPsrCWC0PTciduxCF5Q5nxPabfJCzBLGHt6BYywqVm
- roXg2M1pthnE4dbskRRIKYB2LpyJ1nIoq/+rdElFwaVbV1vHbxR7gdKDzleaC60WUXKt
- lKtVLokANo2C3XYMnFyPM5semYYCwXM36JsDAQLxAkM3GoWR9yVM6hxg/4WB+PLyXOfT
- STcg==
-X-Gm-Message-State: AOAM531sgHL44vA95u/hmaOYBqwk0sBIHUZnPNnyHDraLQjwfQMCWTQh
- i83oyqZChXFwk3h82M7V2hprQlALRIKnvA==
-X-Received: by 2002:a05:600c:210a:: with SMTP id
- u10mr10497666wml.147.1616718466644; 
- Thu, 25 Mar 2021 17:27:46 -0700 (PDT)
-Received: from localhost.localdomain (17.red-88-21-201.staticip.rima-tde.net.
- [88.21.201.17])
- by smtp.gmail.com with ESMTPSA id r11sm9513265wrm.26.2021.03.25.17.27.45
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 25 Mar 2021 17:27:46 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [RFC PATCH-for-6.1 03/10] hw/arm/musicpal: Map flash using
- memory_region_add_subregion_aliased()
-Date: Fri, 26 Mar 2021 01:27:21 +0100
-Message-Id: <20210326002728.1069834-4-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20210326002728.1069834-1-f4bug@amsat.org>
-References: <20210326002728.1069834-1-f4bug@amsat.org>
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1lPisb-0007wi-O4
+ for qemu-arm@nongnu.org; Fri, 26 Mar 2021 05:35:45 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:39619)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1lPisV-0007nQ-DP
+ for qemu-arm@nongnu.org; Fri, 26 Mar 2021 05:35:45 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1616751338;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=TpHw/ZRZvklF4zEweFSNZmDPsX+do4tXURjjd3R5O/g=;
+ b=INPoUC8OrKXMXzXtGKHuXN7qiag7RV2BQN1avLnYJh2XZzuUe7F34Zo4oK/+GLCBNzeNj9
+ jFP3PJa3/YmjlPugEvUof8qamZk75VZ4fuGt5pfpFMlgAzpnmj+BQkwmwdbbCUzmsua8o3
+ PiAmUrixurSPY5geZSAWES/GmWw/vWc=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-444-cZ9g888HNtOM1guDtzO0Iw-1; Fri, 26 Mar 2021 05:35:34 -0400
+X-MC-Unique: cZ9g888HNtOM1guDtzO0Iw-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id CD99E6B9C0;
+ Fri, 26 Mar 2021 09:35:32 +0000 (UTC)
+Received: from [10.36.112.13] (ovpn-112-13.ams2.redhat.com [10.36.112.13])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 7E1DD63632;
+ Fri, 26 Mar 2021 09:35:30 +0000 (UTC)
+Subject: Re: [PATCH for-6.0 2/4] machine: Provide a function to check the
+ dynamic sysbus whitelist
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20210325153310.9131-1-peter.maydell@linaro.org>
+ <20210325153310.9131-3-peter.maydell@linaro.org>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <c841a6e8-2f98-21ff-dfc7-9e0718dcc780@redhat.com>
+Date: Fri, 26 Mar 2021 10:35:28 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32c.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+In-Reply-To: <20210325153310.9131-3-peter.maydell@linaro.org>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=eric.auger@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -119,82 +119,112 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Jan Kiszka <jan.kiszka@web.de>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Alistair Francis <alistair@alistair23.me>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Laurent Vivier <laurent@vivier.eu>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+Cc: Eduardo Habkost <ehabkost@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Greg Kurz <groug@kaod.org>,
+ qemu-ppc@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
  David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pih03MXkV2Wg
+X-TUID: oMRZdlS4WStg
 
-Instead of using a device specific feature for mapping the
-flash memory multiple times over a wider region, use the
-generic memory_region_add_subregion_aliased() helper.
+Hi Peter,
 
-There is no change in the memory layout.
+On 3/25/21 4:33 PM, Peter Maydell wrote:
+> Provide a new function dynamic_sysbus_dev_allowed() which checks
+> the per-machine whitelist of dynamic sysbus devices and returns
+> a boolean result indicating whether the device is whitelisted.
+> We can use this in the implementation of validate_sysbus_device(),
+> but we will also need it so that machine hotplug callbacks can
+> validate devices rather than assuming that any sysbus device
+> might be hotpluggable into the platform bus.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/arm/musicpal.c | 11 +++++++----
- hw/arm/Kconfig    |  1 +
- 2 files changed, 8 insertions(+), 4 deletions(-)
+Thanks
 
-diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
-index 8b58b66f263..7d1f2f3fb3f 100644
---- a/hw/arm/musicpal.c
-+++ b/hw/arm/musicpal.c
-@@ -30,6 +30,7 @@
- #include "hw/irq.h"
- #include "hw/or-irq.h"
- #include "hw/audio/wm8750.h"
-+#include "hw/misc/aliased_region.h"
- #include "sysemu/block-backend.h"
- #include "sysemu/runstate.h"
- #include "sysemu/dma.h"
-@@ -1656,7 +1657,7 @@ static void musicpal_init(MachineState *machine)
-         qdev_prop_set_uint32(dev, "num-blocks", flash_size / sector_size);
-         qdev_prop_set_uint32(dev, "sector-length", sector_size);
-         qdev_prop_set_uint8(dev, "width", 2); /* 16-bit */
--        qdev_prop_set_uint8(dev, "mappings", MP_FLASH_SIZE_MAX / flash_size);
-+        qdev_prop_set_uint8(dev, "mappings", 0);
-         qdev_prop_set_uint8(dev, "big-endian", 0);
-         qdev_prop_set_uint16(dev, "id0", 0x00bf);
-         qdev_prop_set_uint16(dev, "id1", 0x236d);
-@@ -1667,14 +1668,16 @@ static void musicpal_init(MachineState *machine)
-         qdev_prop_set_string(dev, "name", "musicpal.flash");
-         sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
- 
--        sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0,
--                        0x100000000ULL - MP_FLASH_SIZE_MAX);
--
-         /*
-          * The original U-Boot accesses the flash at 0xFE000000 instead of
-          * 0xFF800000 (if there is 8 MB flash). So remap flash access if the
-          * image is smaller than 32 MB.
-          */
-+        memory_region_add_subregion_aliased(get_system_memory(),
-+                                0x100000000ULL - MP_FLASH_SIZE_MAX,
-+                                MP_FLASH_SIZE_MAX,
-+                                sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0),
-+                                flash_size);
-     }
-     sysbus_create_simple(TYPE_MV88W8618_FLASHCFG, MP_FLASHCFG_BASE, NULL);
- 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 8c37cf00da7..aa8553b3cd3 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -101,6 +101,7 @@ config MUSICPAL
-     select MARVELL_88W8618
-     select PTIMER
-     select PFLASH_CFI02
-+    select ALIASED_REGION
-     select SERIAL
-     select WM8750
- 
--- 
-2.26.2
+Eric
+
+> ---
+>  include/hw/boards.h | 24 ++++++++++++++++++++++++
+>  hw/core/machine.c   | 21 ++++++++++++++++-----
+>  2 files changed, 40 insertions(+), 5 deletions(-)
+> 
+> diff --git a/include/hw/boards.h b/include/hw/boards.h
+> index 27106abc11d..609112a4e1a 100644
+> --- a/include/hw/boards.h
+> +++ b/include/hw/boards.h
+> @@ -51,6 +51,30 @@ void machine_set_cpu_numa_node(MachineState *machine,
+>   */
+>  void machine_class_allow_dynamic_sysbus_dev(MachineClass *mc, const char *type);
+>  
+> +/**
+> + * device_is_dynamic_sysbus: test whether device is a dynamic sysbus device
+> + * @mc: Machine class
+> + * @dev: device to check
+> + *
+> + * Returns: true if @dev is a sysbus device on the machine's whitelist
+> + * of dynamically pluggable sysbus devices; otherwise false.
+> + *
+> + * This function checks whether @dev is a valid dynamic sysbus device,
+> + * by first confirming that it is a sysbus device and then checking it
+> + * against the whitelist of permitted dynamic sysbus devices which has
+> + * been set up by the machine using machine_class_allow_dynamic_sysbus_dev().
+> + *
+> + * It is valid to call this with something that is not a subclass of
+> + * TYPE_SYS_BUS_DEVICE; the function will return false in this case.
+> + * This allows hotplug callback functions to be written as:
+> + *     if (device_is_dynamic_sysbus(mc, dev)) {
+> + *         handle dynamic sysbus case;
+> + *     } else if (some other kind of hotplug) {
+> + *         handle that;
+> + *     }
+> + */
+> +bool device_is_dynamic_sysbus(MachineClass *mc, DeviceState *dev);
+> +
+>  /*
+>   * Checks that backend isn't used, preps it for exclusive usage and
+>   * returns migratable MemoryRegion provided by backend.
+> diff --git a/hw/core/machine.c b/hw/core/machine.c
+> index 9935c6ddd56..8d97094736a 100644
+> --- a/hw/core/machine.c
+> +++ b/hw/core/machine.c
+> @@ -529,20 +529,31 @@ void machine_class_allow_dynamic_sysbus_dev(MachineClass *mc, const char *type)
+>      QAPI_LIST_PREPEND(mc->allowed_dynamic_sysbus_devices, g_strdup(type));
+>  }
+>  
+> -static void validate_sysbus_device(SysBusDevice *sbdev, void *opaque)
+> +bool device_is_dynamic_sysbus(MachineClass *mc, DeviceState *dev)
+>  {
+> -    MachineState *machine = opaque;
+> -    MachineClass *mc = MACHINE_GET_CLASS(machine);
+>      bool allowed = false;
+>      strList *wl;
+> +    Object *obj = OBJECT(dev);
+> +
+> +    if (!object_dynamic_cast(obj, TYPE_SYS_BUS_DEVICE)) {
+> +        return false;
+> +    }
+>  
+>      for (wl = mc->allowed_dynamic_sysbus_devices;
+>           !allowed && wl;
+>           wl = wl->next) {
+> -        allowed |= !!object_dynamic_cast(OBJECT(sbdev), wl->value);
+> +        allowed |= !!object_dynamic_cast(obj, wl->value);
+>      }
+>  
+> -    if (!allowed) {
+> +    return allowed;
+> +}
+> +
+> +static void validate_sysbus_device(SysBusDevice *sbdev, void *opaque)
+> +{
+> +    MachineState *machine = opaque;
+> +    MachineClass *mc = MACHINE_GET_CLASS(machine);
+> +
+> +    if (!device_is_dynamic_sysbus(mc, DEVICE(sbdev))) {
+>          error_report("Option '-device %s' cannot be handled by this machine",
+>                       object_class_get_name(object_get_class(OBJECT(sbdev))));
+>          exit(1);
+> 
 

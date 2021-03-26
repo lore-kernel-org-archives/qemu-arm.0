@@ -1,102 +1,103 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp891680lfg;
-        Thu, 25 Mar 2021 17:36:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwFpFViYbn1k/hzVro+WbGnHxWbW/j/ygYa2IEpEOa3k8eOwEsJ+uGpgF2RXIOSfZfqN1QH
-X-Received: by 2002:a05:6602:24d4:: with SMTP id h20mr8393570ioe.4.1616718981125;
-        Thu, 25 Mar 2021 17:36:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1616718981; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp891901lfg;
+        Thu, 25 Mar 2021 17:36:47 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJygVN1/P+gZqW9HKfErx26nyS18cD4nnYwYiBDl28iNEPIgGnKNvASvAJB7CDD63pBtNYDd
+X-Received: by 2002:a05:6602:1592:: with SMTP id e18mr8016344iow.49.1616719007424;
+        Thu, 25 Mar 2021 17:36:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616719007; cv=none;
         d=google.com; s=arc-20160816;
-        b=LsI3BIINiu7fcpMMOxQeO2neveWlg9XYwkK+Dq+uz5wxYSp0uT5w3F+VLqTazz7SWr
-         myGqAxY1IY7lRupw6+BY9KkuoJfjoAANvqDVdv9wW6ipiusjAXHV5BCHQHLBKKk8fkXI
-         +qeTkkDBSRM4PxtRQ+ZI5cqOB4cSHkNBQvSJ8c6Q3DhLmCsgair7B4Uwi63A/eIs+Flq
-         D3LltcYUs7L49VZYIaadmdBR8ZGx5z+wtNLMBM4ca5O1NKyYyhs7gHzeBF1zBSZSRX9g
-         HM93TcgBZ7tKRy0zYs4Xs+ypRw5wDScid5w439bCPZc63c1eHYtnjjjaLGH4Sa/dKPiE
-         lUhg==
+        b=0Yf1+e8X5aL+RKvQ9TE2UQZHw3T9YT7VZJR1bS1p3v08oNoovvr6r3O10x2MnBU82D
+         2XbudS+xuGIYs61rf5Qe9iW8AIJFKN7k4zSnzVRnqmX1URgWHLLDY87eUOh8LJHpHV5/
+         UX5M4jeCZxembL1Ytf2xe335NX4yX8u+4jCSard1QDKH/DXaEiXyU59bwtxJbvpT1AAZ
+         ULPwPWkaQrnkuAEaO4gmxPGV65XZRE3sMolPvF88vgenPADkGkX5rji3rY7AEtjvqM6q
+         Bbb9HqRQA5q7ptCN9REG/FPmwakClAIQwQgeRzoRqfRZLyTaOLfa/J+R4s2xiqc8aDTj
+         hIBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=OKDA4eVJdfRxYq1EfuTuqohDkKwpb3am+iFd4G3Hvr4=;
-        b=XmjlbAqu3u0C/J5HiCsWNM1xWyGv36P+EH7IF/soRgUq8PSDflZNHe2Q04+NEhh/H7
-         tKRtGXWWBYDBTOFRrxSi3W+qAjlEkoHQ2xOuxBBddwb5ZC5G8CHbLewgQBihCXWlsy0V
-         jPv82GWpVTEJMtHRoN5s31yX7ap2qkwBytZeFrVDbwPBzPDYGXnVuOYpkJVR+A8LXytM
-         E5WHyzVjMNYfKiIPCDFLLDNIpd6yqi+8fQzQMK7UeSBnVC/3qS22eQRcG5nK1heqOIZe
-         FC+GYa25EAWwcmBZ7n5yolKmai6c05h963pe49AxAVbxPNn+/+GnXLOM49+jjZhsBGF2
-         pFsg==
+        bh=ac0Y0HtO9B44DC7CRON+B/TUEAbi/V+Fv+F690K+iOg=;
+        b=pFLHhL6LkxUdBvYhCyOjeR2aSI2tu0ySbF5EIoOQf1Z5+anji/Bqf3bsHEr02IV+g9
+         JlB/YvdAXn/o1yqUFurVc4k+EypIgv8gC8Ljbgc4lUbRt63PMP5IDY/8HW1DbfIc+WUz
+         GBg5KXykqpGgRmipxPyVSbrU9LkhrKDgtXvwVZHevHHSrRUv6I1y2Ufh0PFXPqH+0T85
+         d761AQghojEbDMWkq8WBuzcD9A3kiAOKTG2VTtzQcdHiJ+Ql4QT4uGefL5pOG82ED8Az
+         t8ZvqxQskbY89IeAWufK6PYElBjLF/3KSGl/Jsq6EQQyJkiwVbGVcmF/aS1Vo308wrLG
+         8ulQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="O8+KG+/o";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iqmAYl2j;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d6si6324012ilv.126.2021.03.25.17.36.20
+        by mx.google.com with ESMTPS id m16si4857766ilf.93.2021.03.25.17.36.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Mar 2021 17:36:21 -0700 (PDT)
+        Thu, 25 Mar 2021 17:36:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="O8+KG+/o";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iqmAYl2j;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:47456 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48538 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lPaSa-0003Gc-Dl
-	for alex.bennee@linaro.org; Thu, 25 Mar 2021 20:36:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57900)
+	id 1lPaT0-0003hs-MR
+	for alex.bennee@linaro.org; Thu, 25 Mar 2021 20:36:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57936)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lPaKw-0002or-GI; Thu, 25 Mar 2021 20:28:26 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336]:51866)
+ id 1lPaKy-0002vS-SW; Thu, 25 Mar 2021 20:28:28 -0400
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:36664)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lPaKp-0004Hq-R8; Thu, 25 Mar 2021 20:28:23 -0400
-Received: by mail-wm1-x336.google.com with SMTP id p19so2119802wmq.1;
- Thu, 25 Mar 2021 17:28:13 -0700 (PDT)
+ id 1lPaKx-0004M5-3L; Thu, 25 Mar 2021 20:28:28 -0400
+Received: by mail-wr1-x42f.google.com with SMTP id k8so4036913wrc.3;
+ Thu, 25 Mar 2021 17:28:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=OKDA4eVJdfRxYq1EfuTuqohDkKwpb3am+iFd4G3Hvr4=;
- b=O8+KG+/omyfE3MH1os+UijgTr/H3PK50FfNKFkjBALk6lmN9OPaXSGbEHO8OzF7pKu
- unDA/pp34Ts9CED9QY34UuHA3GIVmBEdHxsLxbht2imL0nbsecRFsU9Ec3AjMun7ouPR
- LMAsCnSI0inmmqD3evV3B7wS4NHrwnZmoEDN2v+0xMnVNYFgbw+cSHY04OwBn5M+4RoH
- SFxa+/WDTyZg2KEnBBie2EYvW7FmxAr+BsO5cRy5TVF4r+iYlNB+8r/m8Qt7EuENKijG
- GmjymdiQR4f813q7I4djwx68DYv5/CeMKNsKHmvwewG5AC/h4JOdZYB57e7FmxDl5ekF
- j7Ig==
+ bh=ac0Y0HtO9B44DC7CRON+B/TUEAbi/V+Fv+F690K+iOg=;
+ b=iqmAYl2jN3HWu/A7aUc/pSLgR/GC7FfqN3oJ/B6BTStageD5LUGX4gbKUI/dG/Ks82
+ xfRU2YWlsh0jPYeGN3IQ9r6NwDQE3Gt8PBmIstFCsZd5ZXoGNblym8XUcizMEZ5OWbOp
+ 5ML7PCeKdNPjvyp5jiW+laBZsAPlI85pvMJxbNYzqOBqGbtp34vV/UXG/akuaZ6ih3EV
+ X19KPH0ZGvdsOYSpOMJbMfqBt7Loki8qrltW4AlT0At5ksPR28G61rHpX89HJ08duCf2
+ 0TD/mvUMAqr1ayGfIgVFxEehSqLiUSmLCV1U4oH8iXNsqss9I+6YVMVkEEWtM0Sy6MGl
+ kV7Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=OKDA4eVJdfRxYq1EfuTuqohDkKwpb3am+iFd4G3Hvr4=;
- b=F8ILx7UiEzpL39v7thRmK2CNojRjBc7wzwyBoeBzqahwcGkvrQYM6+C3R7BdBzGigL
- OKiEvzRLOxy9Vl99e560FV3gRMSgt0H35dR7ME2lcT0YWsiZfJJkRqIxeyHV/oweGmht
- US4ijGQnTDuFveU0leX4Sq9XHPgXwFIxeGTvfWTNSPFMs5SNEro5WKo+DjB4jRsf9o9N
- 0AjE5+cg7Hzj4azJkjup3/HgeZta/AVbK1GyCtvSSU5qcRX9DZuvEgG9vrLEw3RIRJxi
- nqXYrFwD5as16OfyHEBRNNwQv4gvxLUp4CNInt3wfUHsVGimHzwnLrKgbUZ3uB7O3wcl
- AE2w==
-X-Gm-Message-State: AOAM533FJWu0phlqgf9ySOWk7aYgG0Jhgy8LRo/vp2Y1GyNwiiknkRci
- 2G4pfVoVSIGrFO3vhqcjv9buzpnyRNo0AQ==
-X-Received: by 2002:a1c:9a09:: with SMTP id c9mr10056005wme.172.1616718492267; 
- Thu, 25 Mar 2021 17:28:12 -0700 (PDT)
+ bh=ac0Y0HtO9B44DC7CRON+B/TUEAbi/V+Fv+F690K+iOg=;
+ b=ajerWKspy8nm5Lp7X3U9AGvFnQycitz0KJG8OhFprjTvr9rp/WSxnK2RqsAb30XNVX
+ IVBWZgqcJP2gHFo+Ay0jJOxEi521YIUpZnxCU0EX8WgemWSbRa5GWzsriyCC4r5I+eOG
+ 0Eu9UhfCiu7tOFyjhEqGvchlS0gbIKol/vQ/tIJ+IN5D8dJl1adD7y9a3fQ+zznLxBDl
+ 0fJsrznQ5rURUz9adfDKyXTvp+4dc+/prL4TaQmfA8qNVj6Kf87Aap0Eo9mZgw0ibJaC
+ B0G3Y8u6GypxfhKfgCByge2Lmk8L+vhbhI3ClAqQpliWvtgio6YSKfdp+CTEUXqjVxu8
+ BQMQ==
+X-Gm-Message-State: AOAM53192cxlaOmmftyztWurwuXnroYvOS8MBztwtlVt67qPUBJzOZoh
+ 0LWs1edoOpToE5PGH/kJWvxNE4iF4ImrxQ==
+X-Received: by 2002:a05:6000:10c3:: with SMTP id
+ b3mr11417612wrx.96.1616718502178; 
+ Thu, 25 Mar 2021 17:28:22 -0700 (PDT)
 Received: from localhost.localdomain (17.red-88-21-201.staticip.rima-tde.net.
  [88.21.201.17])
- by smtp.gmail.com with ESMTPSA id s20sm8211386wmj.36.2021.03.25.17.28.11
+ by smtp.gmail.com with ESMTPSA id a17sm7951026wmj.9.2021.03.25.17.28.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 25 Mar 2021 17:28:11 -0700 (PDT)
+ Thu, 25 Mar 2021 17:28:21 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [RFC PATCH-for-6.1 08/10] hw/misc/aliased_region: Simplify aliased
- I/O regions
-Date: Fri, 26 Mar 2021 01:27:26 +0100
-Message-Id: <20210326002728.1069834-9-f4bug@amsat.org>
+Subject: [RFC PATCH-for-6.1 10/10] hw/m68k/q800: Map MacIO using
+ memory_region_add_subregion_aliased()
+Date: Fri, 26 Mar 2021 01:27:28 +0100
+Message-Id: <20210326002728.1069834-11-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20210326002728.1069834-1-f4bug@amsat.org>
 References: <20210326002728.1069834-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x336.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42f.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -126,125 +127,144 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: j5pkkiHmyT+V
+X-TUID: uXM2B1ZiQClP
 
-Currently a small I/O region aliased on a wide container creates
-many aliases. For example, a 8 bytes regions in a 4KiB container
-creates 512 aliases! As I/O goes via the slow path, we can optimize
-by using an I/O region which dispatch via an address space view
-of the aliased region.
+Currently the memory and flatview tree is huge, not very practical:
+
+  $ (echo info mtree -f;echo q) \
+    | qemu-system-m68k -M q800 -S -monitor stdio \
+    | wc -l
+  2073
+
+Use the memory_region_add_subregion_aliased() helper to manage the
+MacIO aliases under the hood.
+
+- before:
+
+  (qemu) info mtree
+  address-space: memory
+      0000000000000000-0000000007ffffff (prio 0, ram): m68k_mac.ram
+      0000000040800000-00000000408fffff (prio 0, rom): m68k_mac.rom
+      0000000050000000-000000005003ffff (prio 0, i/o): alias mac_m68k.io[0] @mac-io 0000000000000000-000000000003ffff
+      0000000050040000-000000005007ffff (prio 0, i/o): alias mac_m68k.io[1] @mac-io 0000000000000000-000000000003ffff
+      0000000050080000-00000000500bffff (prio 0, i/o): alias mac_m68k.io[2] @mac-io 0000000000000000-000000000003ffff
+      ...
+      0000000053f40000-0000000053f7ffff (prio 0, i/o): alias mac_m68k.io[253] @mac-io 0000000000000000-000000000003ffff
+      0000000053f80000-0000000053fbffff (prio 0, i/o): alias mac_m68k.io[254] @mac-io 0000000000000000-000000000003ffff
+      0000000053fc0000-0000000053ffffff (prio 0, i/o): alias mac_m68k.io[255] @mac-io 0000000000000000-000000000003ffff
+      0000000060000000-00000000efffffff (prio 0, i/o): nubus-super-slots
+      00000000f0000000-00000000feffffff (prio 0, i/o): nubus-slots
+        00000000f9000000-00000000f9ffffff (prio 0, i/o): nubus-slot-9
+          00000000f9001000-00000000f9400fff (prio 0, ram): macfb-vram
+          00000000f9800000-00000000f9800fff (prio 0, i/o): macfb-ctrl
+          00000000f9ffffe8-00000000f9ffffeb (prio 0, i/o): nubus-slot-9-rom
+          00000000f9ffffec-00000000f9ffffff (prio 0, i/o): nubus-slot-9-format-block
+
+- after:
+
+  (qemu) info mtree
+  address-space: memory
+    0000000000000000-ffffffffffffffff (prio 0, i/o): system
+      0000000000000000-0000000007ffffff (prio 0, ram): m68k_mac.ram
+      0000000040800000-00000000408fffff (prio 0, rom): m68k_mac.rom
+      0000000050000000-0000000053ffffff (prio 0, i/o): masked mac-io [span of 256 KiB]
+      0000000060000000-00000000efffffff (prio 0, i/o): nubus-super-slots
+      00000000f0000000-00000000feffffff (prio 0, i/o): nubus-slots
+        00000000f9000000-00000000f9ffffff (prio 0, i/o): nubus-slot-9
+          00000000f9001000-00000000f9400fff (prio 0, ram): macfb-vram
+          00000000f9800000-00000000f9800fff (prio 0, i/o): macfb-ctrl
+          00000000f9ffffe8-00000000f9ffffeb (prio 0, i/o): nubus-slot-9-rom
+          00000000f9ffffec-00000000f9ffffff (prio 0, i/o): nubus-slot-9-format-block
+
+  (qemu) info mtree -f
+  FlatView #0
+   AS "memory", root: system
+   AS "cpu-memory-0", root: system
+   AS "dp8393x", root: system
+   Root memory region: system
+    0000000000000000-0000000007ffffff (prio 0, ram): m68k_mac.ram
+    0000000040800000-00000000408fffff (prio 0, rom): m68k_mac.rom
+    0000000050000000-0000000053ffffff (prio 0, i/o): masked mac-io [span of 256 KiB]
+    0000000060000000-00000000efffffff (prio 0, i/o): nubus-super-slots
+    00000000f0000000-00000000f9000fff (prio 0, i/o): nubus-slots
+    00000000f9001000-00000000f9400fff (prio 0, ram): macfb-vram
+    00000000f9401000-00000000f97fffff (prio 0, i/o): nubus-slots @0000000009401000
+    00000000f9800000-00000000f9800fff (prio 0, i/o): macfb-ctrl
+    00000000f9801000-00000000f9ffffe7 (prio 0, i/o): nubus-slots @0000000009801000
+    00000000f9ffffe8-00000000f9ffffeb (prio 0, rom): nubus-slot-9-rom
+    00000000f9ffffec-00000000f9ffffff (prio 0, i/o): nubus-slot-9-format-block
+    00000000fa000000-00000000feffffff (prio 0, i/o): nubus-slots @000000000a000000
+
+  FlatView #1
+   AS "mac-io", root: mac-io
+   Root memory region: mac-io
+    0000000000000000-0000000000001fff (prio 0, i/o): via1
+    0000000000002000-0000000000003fff (prio 0, i/o): via2
+    0000000000008000-0000000000008fff (prio 0, rom): dp8393x-prom
+    000000000000a000-000000000000a0ff (prio 0, i/o): dp8393x-regs
+    000000000000c020-000000000000c027 (prio 0, i/o): escc
+    0000000000010000-00000000000100ff (prio 0, i/o): esp-regs
+    0000000000010100-0000000000010103 (prio 0, i/o): esp-pdma
+    000000000001e000-000000000001ffff (prio 0, i/o): swim
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/misc/aliased_region.h |  6 +++-
- hw/misc/aliased_region.c         | 56 ++++++++++++++++++++++++++++++--
- 2 files changed, 59 insertions(+), 3 deletions(-)
+ hw/m68k/q800.c  | 15 +++------------
+ hw/m68k/Kconfig |  1 +
+ 2 files changed, 4 insertions(+), 12 deletions(-)
 
-diff --git a/include/hw/misc/aliased_region.h b/include/hw/misc/aliased_region.h
-index 0ce0d5d1cef..30b54cf06b7 100644
---- a/include/hw/misc/aliased_region.h
-+++ b/include/hw/misc/aliased_region.h
-@@ -1,7 +1,7 @@
- /*
-  * Aliased memory regions
-  *
-- * Copyright (c) 2018  Philippe Mathieu-Daudé <f4bug@amsat.org>
-+ * Copyright (c) 2018, 2020  Philippe Mathieu-Daudé <f4bug@amsat.org>
-  *
-  * SPDX-License-Identifier: GPL-2.0-or-later
-  */
-@@ -25,6 +25,10 @@ struct AliasedRegionState {
-     uint64_t span_size;
-     MemoryRegion *mr;
+diff --git a/hw/m68k/q800.c b/hw/m68k/q800.c
+index 8f14e677077..4ca7e1af08e 100644
+--- a/hw/m68k/q800.c
++++ b/hw/m68k/q800.c
+@@ -40,6 +40,7 @@
+ #include "standard-headers/asm-m68k/bootinfo.h"
+ #include "standard-headers/asm-m68k/bootinfo-mac.h"
+ #include "bootinfo.h"
++#include "hw/misc/aliased_region.h"
+ #include "hw/misc/mac_via.h"
+ #include "hw/input/adb.h"
+ #include "hw/nubus/mac-nubus-bridge.h"
+@@ -214,9 +215,6 @@ static void q800_init(MachineState *machine)
+     int32_t initrd_size;
+     MemoryRegion *rom;
+     MemoryRegion *macio;
+-    MemoryRegion *io;
+-    const int io_slice_nb = (IO_SIZE / IO_SLICE);
+-    int i;
+     ram_addr_t ram_size = machine->ram_size;
+     const char *kernel_filename = machine->kernel_filename;
+     const char *initrd_filename = machine->initrd_filename;
+@@ -258,15 +256,8 @@ static void q800_init(MachineState *machine)
+      * Memory from IO_BASE to IO_BASE + IO_SLICE is repeated
+      * from IO_BASE + IO_SLICE to IO_BASE + IO_SIZE
+      */
+-    io = g_new(MemoryRegion, io_slice_nb);
+-    for (i = 0; i < io_slice_nb; i++) {
+-        char *name = g_strdup_printf("mac_m68k.io[%d]", i);
+-
+-        memory_region_init_alias(&io[i], NULL, name, macio, 0, IO_SLICE);
+-        memory_region_add_subregion(get_system_memory(),
+-                                    IO_BASE + i * IO_SLICE, &io[i]);
+-        g_free(name);
+-    }
++    memory_region_add_subregion_aliased(get_system_memory(),
++                                        IO_BASE, IO_SIZE, macio, IO_SLICE);
  
-+    struct {
-+        AddressSpace as;
-+    } io;
-+
-     struct {
-         size_t count;
-         MemoryRegion *alias;
-diff --git a/hw/misc/aliased_region.c b/hw/misc/aliased_region.c
-index 8fcc63f2648..46b4412430a 100644
---- a/hw/misc/aliased_region.c
-+++ b/hw/misc/aliased_region.c
-@@ -1,7 +1,7 @@
- /*
-  * Aliased memory regions
-  *
-- * Copyright (c) 2018  Philippe Mathieu-Daudé <f4bug@amsat.org>
-+ * Copyright (c) 2018, 2020  Philippe Mathieu-Daudé <f4bug@amsat.org>
-  *
-  * SPDX-License-Identifier: GPL-2.0-or-later
-  */
-@@ -14,6 +14,50 @@
- #include "hw/misc/aliased_region.h"
- #include "hw/qdev-properties.h"
+     /* IRQ Glue */
+     glue = qdev_new(TYPE_GLUE);
+diff --git a/hw/m68k/Kconfig b/hw/m68k/Kconfig
+index f839f8a0306..d2e588913b7 100644
+--- a/hw/m68k/Kconfig
++++ b/hw/m68k/Kconfig
+@@ -23,6 +23,7 @@ config Q800
+     select ESP
+     select DP8393X
+     select OR_IRQ
++    select ALIASED_REGION
  
-+static MemTxResult aliased_io_read(void *opaque, hwaddr offset,
-+                                   uint64_t *data, unsigned size,
-+                                   MemTxAttrs attrs)
-+{
-+    AliasedRegionState *s = ALIASED_REGION(opaque);
-+
-+    return address_space_read(&s->io.as, offset, attrs, data, size);
-+}
-+
-+static MemTxResult aliased_io_write(void *opaque, hwaddr offset,
-+                                    uint64_t data, unsigned size,
-+                                    MemTxAttrs attrs)
-+{
-+    AliasedRegionState *s = ALIASED_REGION(opaque);
-+
-+    return address_space_write(&s->io.as, offset, attrs, &data, size);
-+}
-+
-+static bool aliased_io_accepts(void *opaque, hwaddr offset, unsigned size,
-+                               bool is_write, MemTxAttrs attrs)
-+{
-+    AliasedRegionState *s = ALIASED_REGION(opaque);
-+
-+    return address_space_access_valid(&s->io.as, offset, size, is_write, attrs);
-+}
-+
-+static const MemoryRegionOps aliased_io_ops = {
-+    .read_with_attrs = aliased_io_read,
-+    .write_with_attrs = aliased_io_write,
-+    .impl.min_access_size = 1,
-+    .impl.max_access_size = 8,
-+    .valid.min_access_size = 1,
-+    .valid.max_access_size = 8,
-+    .valid.accepts = aliased_io_accepts,
-+    .endianness = DEVICE_NATIVE_ENDIAN,
-+};
-+
-+static void aliased_io_realize(AliasedRegionState *s, const char *mr_name)
-+{
-+    memory_region_init_io(&s->container, OBJECT(s), &aliased_io_ops, s,
-+                          mr_name, s->region_size);
-+    address_space_init(&s->io.as, s->mr, memory_region_name(s->mr));
-+}
-+
- static void aliased_mem_realize(AliasedRegionState *s, const char *mr_name)
- {
-     uint64_t subregion_size;
-@@ -63,7 +107,15 @@ static void aliased_mr_realize(DeviceState *dev, Error **errp)
-     span = size_to_str(s->span_size);
-     name = g_strdup_printf("masked %s [span of %s]",
-                            memory_region_name(s->mr), span);
--    aliased_mem_realize(s, name);
-+
-+    if (memory_region_is_ram(s->mr)
-+            || memory_region_is_ram_device(s->mr)
-+            || memory_region_is_romd(s->mr)) {
-+        aliased_mem_realize(s, name);
-+    } else {
-+        /* I/O or container */
-+        aliased_io_realize(s, name);
-+    }
-     sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->container);
- }
- 
+ config M68K_VIRT
+     bool
 -- 
 2.26.2
 

@@ -1,103 +1,102 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp890309lfg;
-        Thu, 25 Mar 2021 17:33:53 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx9huGrILVf8R747adtZnIrVP7wlpxkoUvl33rjELHrUFGYBc28iIYYdnnNiz7233i7BUgG
-X-Received: by 2002:a92:d80f:: with SMTP id y15mr8461685ilm.96.1616718833107;
-        Thu, 25 Mar 2021 17:33:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1616718833; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp890944lfg;
+        Thu, 25 Mar 2021 17:34:54 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyFYcW/v0LQ6hgB5XHOTLFAPfmGfm0CAmIyH727dOlNYNcvCOUgSCwY0HrU6AA3sYY3NxnP
+X-Received: by 2002:a02:3085:: with SMTP id q127mr9638088jaq.137.1616718894496;
+        Thu, 25 Mar 2021 17:34:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616718894; cv=none;
         d=google.com; s=arc-20160816;
-        b=N3aw4ywGMZGPdMjdnZAfBrfWgoctUAXHByXUSKvUhmc1XWShyY5IRis8SNWKmzwhtL
-         GtZy9brDcrhYcpK9pnUIccA4Se2R1/Cr9pmWjSDknSeOQIR48kwvG1XWesG6/f0n7IFw
-         zj5KPPzTFDi5vnBBV5wkQ0bBjvd5SXkWvdUBeX5lnZiGp5yn1ehcB4jTibds9WosPIbH
-         KMRyYGnGfPh0+dv+DzueFkB7XnnIGPWUDTdomapTIVh4iMahreDEKBfAiP/FOoiQiHAn
-         wY2Mo7HAKabuPrfkMEw0IhCJdMp/ldwB0mH9ifgMf146EXRY9+slYP0lIcx50Bemc1pB
-         5PxA==
+        b=O/or8oMBp+Gdfhv3dlAmEwikZ1e7upQL5PPgnUJVmfyqcl1Yic/NfHiGinG0MQNrO5
+         +INjqDMQGsFfNHgWp7PipLrWhu08eUJpRgzC5qld7Wd85fFLepyDnfpqNiasGGs5f8ly
+         WQHhljUAdoB9vwaVqnNyPF4DigqAnLTAYphonH9WsgBTuEiCpKtFH4PgJS6Cb5ORc67l
+         7RGbJgxPWKZ3FeMukJXU3QWwWB4geItVK9ftXOs3fplo6Nd/mwnQph6b0Tr1HOqGxAoA
+         WCa7ZpS19GQNTsDl5OazFz/4Aiayet3aVARf1CoVf26eTJJJ7Fl3tHgbmafpVCVDwjNU
+         w84Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=dJbcGY6sOvOVraPquf/gluBsf0D+iYUyhVli41P2iL8=;
-        b=vsrSyvM5ph4go0R3rdW2BZgAKPKp/VR2cLrNuFEzBDPmROMAqWVk9Hmd9js211hkb9
-         ZN303NAqLC/IlbVwNx2FsPAHZempQOVu05OW/vRleUWZ7z84VT5NkZVyzP2eOSWceo3S
-         gm6x7jaZfXm8AGIH20UYRNp7K4tAr1HYY4iIYMa+WdVt2WWEI6KO9sF0Dv2o/DNNq81m
-         Hbk9XZg/sn4ulUxdmCE1+DuEypFW4rUWqaFwOEDSUkpxTFObkf1q2LHyqOW4eJNHTcBr
-         5tzqK9D/prFk/4FkIuwn1fFTGu/PV/wxzKO8YZoxHp2YpoZO4RR0K6Pk8I8L/D+OPz3K
-         woCw==
+        bh=nDWnefwEc2MavpEPfUetVUP5VldhKkTrnJaHJ9vDFJg=;
+        b=ES17WtdwSxDqcmIkALf2bWZtkIPfgJUQg1lnoyTlHjhy9YWcoNxCMLzgLDdq1bnsX7
+         Nln6EU/q3j6VuQfOAZkljinSj24Ip+J7vgdpiOCVdUqxTjNKwcdIBjr9kwDKuTiC5aes
+         ijuHwbkhuMeDlkkDxFKnlyAiTlP8eK6OaFppjCiMRryAcvtL3+66tehrl2E452UxR3gV
+         pPiP/EIAdqkokILrYhB18Lew+rQklzAItUpiRnsa1bRFUo+urXKWuGFYuCUQkR29hX1S
+         SOodn3oR3x5mOAqbaJXtblyQyiHY/hc6nB5lMDRrItqU4c7unGEUCFIYx+WbvDUKOyok
+         X4Tg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=QavHjpPU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qWF7s3vr;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i23si5374361jaq.67.2021.03.25.17.33.52
+        by mx.google.com with ESMTPS id c5si5429156jam.17.2021.03.25.17.34.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Mar 2021 17:33:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 25 Mar 2021 17:34:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=QavHjpPU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qWF7s3vr;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:37998 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41124 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lPaQC-0007cc-8y
-	for alex.bennee@linaro.org; Thu, 25 Mar 2021 20:33:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57804)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lPaRB-0000Xx-Np
+	for alex.bennee@linaro.org; Thu, 25 Mar 2021 20:34:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57818)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lPaKc-0002n3-8f; Thu, 25 Mar 2021 20:28:06 -0400
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329]:36771)
+ id 1lPaKh-0002oE-L9; Thu, 25 Mar 2021 20:28:19 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b]:33401)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lPaKa-0004Bb-Mg; Thu, 25 Mar 2021 20:28:05 -0400
-Received: by mail-wm1-x329.google.com with SMTP id
- j20-20020a05600c1914b029010f31e15a7fso4035332wmq.1; 
- Thu, 25 Mar 2021 17:28:02 -0700 (PDT)
+ id 1lPaKf-0004FA-Ua; Thu, 25 Mar 2021 20:28:11 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id o16so4072180wrn.0;
+ Thu, 25 Mar 2021 17:28:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=dJbcGY6sOvOVraPquf/gluBsf0D+iYUyhVli41P2iL8=;
- b=QavHjpPUU/2FTrNGn+BNIYCIvSckEOAjdO1WvSBeaip7H1mVUFLLisbh1i/Z0/73gP
- 3GfhCvlwYq1zpN5UtUW2Cvc8Bo4R+FbIVaconwCJZYTkfUJRkhFfXz41v60Aaopnh+0A
- wKpcAkarUjmjvn+uP4OExdtLGJ+iaaB0j69Qx3JnFFGP38SGGWZu22Wvqhp+msEnxOOz
- 4XT/3m/wChvdP3fYiML2p3JHQoOgie3VeqcSJOcA5gk9vHCvsfj+2qxFVj2jtVtDbX7g
- jd34gix/Q+at6nXkHgrV90bQ4ZCHjSRYEDG4lvk5HwD8VpRV+oVNc7MXKkaxje2ZNxka
- t8Eg==
+ bh=nDWnefwEc2MavpEPfUetVUP5VldhKkTrnJaHJ9vDFJg=;
+ b=qWF7s3vr6tMbXqm7PL121kfpJIY8tLAD0lQs1XkGxpQSsqetG8+7mYnujU6/vtjlZ3
+ xkEA18Dfj7wNUC7PPAYJVjG7JlRl8l+QikwyDBd7nUHWj6yJjCv+NvkFyw64vWdhLVje
+ DI7/sRKj4UFmH8Ye7vGZBO+k9oiwNLt6ze1k0Nc/I1v15h+HLy20NHLeTKIwCpkHKfhD
+ QMZqo+WPyE9kwZPTaiN4OrLLttIKwEs+7MPKJz3NnYA3mUCvopedhIRNNCo3yI3u7hYs
+ BjxDQfMJ5sFTlAJlBxEyRnEQLqNDQwrwbE4o/xl6Otw9YJkx0dTfLpjauJXrAmtqdQmJ
+ Ju+g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=dJbcGY6sOvOVraPquf/gluBsf0D+iYUyhVli41P2iL8=;
- b=geRLiHGzu4OIh/hvmB5KKGjUBnIPsnC2GzPqij3tZxHmiyBWGUpQuGMEthgtrI2IOP
- yYCV0h0hOJl+7ar9rFyV3+AnNEJQP+zpDPMpwrFwWu1YseFQU+hvhoiipJjDGsJj0cva
- O0FATam3hohFAHc82fLurAhgRJkny//Q3n7ZF29YYQRW0ApLp3I9JTQac5H/PbYB4Ms3
- QcRVmGne3ow+PJk6j5jQRaVH6D3VlO18b1tDhz8PbzrPRZf7aKNWGFe/Gf1EpqOQf0GB
- oKjtzcJEhQexFDHe4uu44EGa0gReCRTNGg+c/pqllf2FHPb65DcKhzEiPO02krfqAgTw
- b2vQ==
-X-Gm-Message-State: AOAM532QLeTGvhGIpsv+Ijzrl+bbgF/MWV2FyGZwQOV1WCLfrp3J1D+G
- k9uvVESmTIxZMir5ltRiL32zsegbZlUT0A==
-X-Received: by 2002:a1c:e341:: with SMTP id a62mr10654555wmh.152.1616718481720; 
- Thu, 25 Mar 2021 17:28:01 -0700 (PDT)
+ bh=nDWnefwEc2MavpEPfUetVUP5VldhKkTrnJaHJ9vDFJg=;
+ b=hDLVZtS9Ec5so84JkCjPD3TwkfCX/IZRCCyXLOb/6AyCsJ4oeXGP9twO4P58iedMKA
+ QCM7R6td1O+k8PzgNYAYdNEvlWwaojcBCEO88RbUfSObW5oMegsvK83NVROOeg4ZLLG0
+ 8oM177oGAslIfOK1ZHwKon0RWCZCM1Ge3fT5BO+r2qLFkP1KdQ+XFpSQKipq6/LRs9no
+ Fm/mE0FSB7RARDs2YR7Mqd98T/L84WGusPSmRbXJbHMKCV3h8ZuquuWmh0MavBKtgS36
+ +6qujSBIqKt1A9FYSfrbjxvBrvf7go8aqBRosM2/rGk9iQENRabp+J0Rx2O17T6JPOAs
+ i7BA==
+X-Gm-Message-State: AOAM533xVxoaXSh/Y2ukT0MmTwaAhCGy7KWw8Xi9ekw1tBRTQEYuURME
+ y9GATlIzwYcjj/B4+LeV+brPqOIhKdvT6w==
+X-Received: by 2002:adf:8b45:: with SMTP id v5mr11436323wra.398.1616718487086; 
+ Thu, 25 Mar 2021 17:28:07 -0700 (PDT)
 Received: from localhost.localdomain (17.red-88-21-201.staticip.rima-tde.net.
  [88.21.201.17])
- by smtp.gmail.com with ESMTPSA id a13sm9524931wrp.31.2021.03.25.17.28.00
+ by smtp.gmail.com with ESMTPSA id y1sm7976686wmq.29.2021.03.25.17.28.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 25 Mar 2021 17:28:01 -0700 (PDT)
+ Thu, 25 Mar 2021 17:28:06 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH-for-6.1 06/10] hw/block/pflash_cfi02: Remove
- pflash_setup_mappings()
-Date: Fri, 26 Mar 2021 01:27:24 +0100
-Message-Id: <20210326002728.1069834-7-f4bug@amsat.org>
+Subject: [PATCH-for-6.1 07/10] hw/block/pflash_cfi02: Simplify
+ pflash_cfi02_register() prototype
+Date: Fri, 26 Mar 2021 01:27:25 +0100
+Message-Id: <20210326002728.1069834-8-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20210326002728.1069834-1-f4bug@amsat.org>
 References: <20210326002728.1069834-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x329.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -107,136 +106,188 @@ X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Magnus Damm <magnus.damm@gmail.com>, Jan Kiszka <jan.kiszka@web.de>,
  "open list:Block layer core" <qemu-block@nongnu.org>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Alistair Francis <alistair@alistair23.me>,
  Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Laurent Vivier <laurent@vivier.eu>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ Laurent Vivier <laurent@vivier.eu>, Michael Walle <michael@walle.cc>,
+ qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ Antony Pavlov <antonynpavlov@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Greg Kurz <groug@kaod.org>,
  Max Reitz <mreitz@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1urck2KOdW7c
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: n0ZlDdS2D2Qx
 
-All boards calling pflash_cfi02_register() use nb_mappings=1,
-which does not do any mapping:
-
-  $ git grep -wl pflash_cfi02_register hw/
-  hw/arm/xilinx_zynq.c
-  hw/block/pflash_cfi02.c
-  hw/lm32/lm32_boards.c
-  hw/ppc/ppc405_boards.c
-  hw/sh4/r2d.c
-
-We can remove this now unneeded code.
+The previous commit removed the mapping code from TYPE_PFLASH_CFI02.
+pflash_cfi02_register() doesn't use the 'nb_mappings' argument
+anymore. Simply remove it to simplify.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/block/pflash_cfi02.c | 35 ++---------------------------------
- 1 file changed, 2 insertions(+), 33 deletions(-)
+ include/hw/block/flash.h | 1 -
+ hw/arm/digic_boards.c    | 1 -
+ hw/arm/musicpal.c        | 1 -
+ hw/arm/xilinx_zynq.c     | 2 +-
+ hw/block/pflash_cfi02.c  | 3 +--
+ hw/lm32/lm32_boards.c    | 4 ++--
+ hw/ppc/ppc405_boards.c   | 6 +++---
+ hw/sh4/r2d.c             | 2 +-
+ 8 files changed, 8 insertions(+), 12 deletions(-)
 
+diff --git a/include/hw/block/flash.h b/include/hw/block/flash.h
+index 7dde0adcee7..0e5dd818a9d 100644
+--- a/include/hw/block/flash.h
++++ b/include/hw/block/flash.h
+@@ -36,7 +36,6 @@ PFlashCFI02 *pflash_cfi02_register(hwaddr base,
+                                    hwaddr size,
+                                    BlockBackend *blk,
+                                    uint32_t sector_len,
+-                                   int nb_mappings,
+                                    int width,
+                                    uint16_t id0, uint16_t id1,
+                                    uint16_t id2, uint16_t id3,
+diff --git a/hw/arm/digic_boards.c b/hw/arm/digic_boards.c
+index 293402b1240..eb694c70d4c 100644
+--- a/hw/arm/digic_boards.c
++++ b/hw/arm/digic_boards.c
+@@ -128,7 +128,6 @@ static void digic4_add_k8p3215uqb_rom(DigicState *s, hwaddr addr,
+                          FLASH_K8P3215UQB_SIZE / FLASH_K8P3215UQB_SECTOR_SIZE);
+     qdev_prop_set_uint32(dev, "sector-length", FLASH_K8P3215UQB_SECTOR_SIZE);
+     qdev_prop_set_uint8(dev, "width", 4); /* 32-bit */
+-    qdev_prop_set_uint8(dev, "mappings", 0);
+     qdev_prop_set_uint8(dev, "big-endian", 0);
+     qdev_prop_set_uint16(dev, "id0", 0x00ec);
+     qdev_prop_set_uint16(dev, "id1", 0x007e);
+diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
+index 7d1f2f3fb3f..e882e11df36 100644
+--- a/hw/arm/musicpal.c
++++ b/hw/arm/musicpal.c
+@@ -1657,7 +1657,6 @@ static void musicpal_init(MachineState *machine)
+         qdev_prop_set_uint32(dev, "num-blocks", flash_size / sector_size);
+         qdev_prop_set_uint32(dev, "sector-length", sector_size);
+         qdev_prop_set_uint8(dev, "width", 2); /* 16-bit */
+-        qdev_prop_set_uint8(dev, "mappings", 0);
+         qdev_prop_set_uint8(dev, "big-endian", 0);
+         qdev_prop_set_uint16(dev, "id0", 0x00bf);
+         qdev_prop_set_uint16(dev, "id1", 0x236d);
+diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
+index 8db6cfd47f5..d12b00e7648 100644
+--- a/hw/arm/xilinx_zynq.c
++++ b/hw/arm/xilinx_zynq.c
+@@ -220,7 +220,7 @@ static void zynq_init(MachineState *machine)
+     pflash_cfi02_register(0xe2000000, "zynq.pflash", FLASH_SIZE,
+                           dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
+                           FLASH_SECTOR_SIZE, 1,
+-                          1, 0x0066, 0x0022, 0x0000, 0x0000, 0x0555, 0x2aa,
++                          0x0066, 0x0022, 0x0000, 0x0000, 0x0555, 0x2aa,
+                           0);
+ 
+     /* Create the main clock source, and feed slcr with it */
 diff --git a/hw/block/pflash_cfi02.c b/hw/block/pflash_cfi02.c
-index 02c514fb6e0..6f4b3e3c3fe 100644
+index 6f4b3e3c3fe..2b412402fac 100644
 --- a/hw/block/pflash_cfi02.c
 +++ b/hw/block/pflash_cfi02.c
-@@ -75,7 +75,6 @@ struct PFlashCFI02 {
-     uint32_t nb_blocs[PFLASH_MAX_ERASE_REGIONS];
-     uint32_t sector_len[PFLASH_MAX_ERASE_REGIONS];
-     uint32_t chip_len;
--    uint8_t mappings;
-     uint8_t width;
-     uint8_t be;
-     int wcycle; /* if 0, the flash is read normally */
-@@ -92,13 +91,6 @@ struct PFlashCFI02 {
-     uint16_t unlock_addr1;
-     uint8_t cfi_table[0x4d];
-     QEMUTimer timer;
--    /*
--     * The device replicates the flash memory across its memory space.  Emulate
--     * that by having a container (.mem) filled with an array of aliases
--     * (.mem_mappings) pointing to the flash memory (.orig_mem).
--     */
--    MemoryRegion mem;
--    MemoryRegion *mem_mappings;    /* array; one per mapping */
-     MemoryRegion orig_mem;
-     bool rom_mode;
-     int read_counter; /* used for lazy switch-back to rom mode */
-@@ -158,23 +150,6 @@ static inline void toggle_dq2(PFlashCFI02 *pfl)
-     pfl->status ^= 0x04;
- }
- 
--/*
-- * Set up replicated mappings of the same region.
-- */
--static void pflash_setup_mappings(PFlashCFI02 *pfl)
--{
--    unsigned i;
--    hwaddr size = memory_region_size(&pfl->orig_mem);
--
--    memory_region_init(&pfl->mem, OBJECT(pfl), "pflash", pfl->mappings * size);
--    pfl->mem_mappings = g_new(MemoryRegion, pfl->mappings);
--    for (i = 0; i < pfl->mappings; ++i) {
--        memory_region_init_alias(&pfl->mem_mappings[i], OBJECT(pfl),
--                                 "pflash-alias", &pfl->orig_mem, 0, size);
--        memory_region_add_subregion(&pfl->mem, i * size, &pfl->mem_mappings[i]);
--    }
--}
--
- static void pflash_reset_state_machine(PFlashCFI02 *pfl)
- {
-     trace_pflash_reset(pfl->name);
-@@ -917,12 +892,7 @@ static void pflash_cfi02_realize(DeviceState *dev, Error **errp)
-     pfl->sector_erase_map = bitmap_new(pfl->total_sectors);
- 
-     pfl->rom_mode = true;
--    if (pfl->mappings > 1) {
--        pflash_setup_mappings(pfl);
--        sysbus_init_mmio(SYS_BUS_DEVICE(dev), &pfl->mem);
--    } else {
--        sysbus_init_mmio(SYS_BUS_DEVICE(dev), &pfl->orig_mem);
--    }
-+    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &pfl->orig_mem);
- 
-     timer_init_ns(&pfl->timer, QEMU_CLOCK_VIRTUAL, pflash_timer, pfl);
-     pfl->status = 0;
-@@ -950,7 +920,6 @@ static Property pflash_cfi02_properties[] = {
-     DEFINE_PROP_UINT32("num-blocks3", PFlashCFI02, nb_blocs[3], 0),
-     DEFINE_PROP_UINT32("sector-length3", PFlashCFI02, sector_len[3], 0),
-     DEFINE_PROP_UINT8("width", PFlashCFI02, width, 0),
--    DEFINE_PROP_UINT8("mappings", PFlashCFI02, mappings, 0),
-     DEFINE_PROP_UINT8("big-endian", PFlashCFI02, be, 0),
-     DEFINE_PROP_UINT16("id0", PFlashCFI02, ident0, 0),
-     DEFINE_PROP_UINT16("id1", PFlashCFI02, ident1, 0),
-@@ -1008,6 +977,7 @@ PFlashCFI02 *pflash_cfi02_register(hwaddr base,
+@@ -968,7 +968,7 @@ PFlashCFI02 *pflash_cfi02_register(hwaddr base,
+                                    hwaddr size,
+                                    BlockBackend *blk,
+                                    uint32_t sector_len,
+-                                   int nb_mappings, int width,
++                                   int width,
+                                    uint16_t id0, uint16_t id1,
+                                    uint16_t id2, uint16_t id3,
+                                    uint16_t unlock_addr0,
+@@ -977,7 +977,6 @@ PFlashCFI02 *pflash_cfi02_register(hwaddr base,
  {
      DeviceState *dev = qdev_new(TYPE_PFLASH_CFI02);
  
-+    assert(nb_mappings <= 1);
+-    assert(nb_mappings <= 1);
      if (blk) {
          qdev_prop_set_drive(dev, "drive", blk);
      }
-@@ -1015,7 +985,6 @@ PFlashCFI02 *pflash_cfi02_register(hwaddr base,
-     qdev_prop_set_uint32(dev, "num-blocks", size / sector_len);
-     qdev_prop_set_uint32(dev, "sector-length", sector_len);
-     qdev_prop_set_uint8(dev, "width", width);
--    qdev_prop_set_uint8(dev, "mappings", nb_mappings);
-     qdev_prop_set_uint8(dev, "big-endian", !!be);
-     qdev_prop_set_uint16(dev, "id0", id0);
-     qdev_prop_set_uint16(dev, "id1", id1);
+diff --git a/hw/lm32/lm32_boards.c b/hw/lm32/lm32_boards.c
+index b5d97dd53ed..96877ba7cfb 100644
+--- a/hw/lm32/lm32_boards.c
++++ b/hw/lm32/lm32_boards.c
+@@ -121,7 +121,7 @@ static void lm32_evr_init(MachineState *machine)
+     pflash_cfi02_register(flash_base, "lm32_evr.flash", flash_size,
+                           dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
+                           flash_sector_size,
+-                          1, 2, 0x01, 0x7e, 0x43, 0x00, 0x555, 0x2aa, 1);
++                          2, 0x01, 0x7e, 0x43, 0x00, 0x555, 0x2aa, 1);
+ 
+     /* create irq lines */
+     env->pic_state = lm32_pic_init(qemu_allocate_irq(cpu_irq_handler, cpu, 0));
+@@ -218,7 +218,7 @@ static void lm32_uclinux_init(MachineState *machine)
+     pflash_cfi02_register(flash_base, "lm32_uclinux.flash", flash_size,
+                           dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
+                           flash_sector_size,
+-                          1, 2, 0x01, 0x7e, 0x43, 0x00, 0x555, 0x2aa, 1);
++                          2, 0x01, 0x7e, 0x43, 0x00, 0x555, 0x2aa, 1);
+ 
+     /* create irq lines */
+     env->pic_state = lm32_pic_init(qemu_allocate_irq(cpu_irq_handler, env, 0));
+diff --git a/hw/ppc/ppc405_boards.c b/hw/ppc/ppc405_boards.c
+index 8f77887fb18..2503e033497 100644
+--- a/hw/ppc/ppc405_boards.c
++++ b/hw/ppc/ppc405_boards.c
+@@ -198,7 +198,7 @@ static void ref405ep_init(MachineState *machine)
+         pflash_cfi02_register((uint32_t)(-bios_size),
+                               "ef405ep.bios", bios_size,
+                               blk_by_legacy_dinfo(dinfo),
+-                              64 * KiB, 1,
++                              64 * KiB,
+                               2, 0x0001, 0x22DA, 0x0000, 0x0000, 0x555, 0x2AA,
+                               1);
+     } else
+@@ -469,7 +469,7 @@ static void taihu_405ep_init(MachineState *machine)
+         pflash_cfi02_register(0xFFE00000,
+                               "taihu_405ep.bios", bios_size,
+                               blk_by_legacy_dinfo(dinfo),
+-                              64 * KiB, 1,
++                              64 * KiB,
+                               4, 0x0001, 0x22DA, 0x0000, 0x0000, 0x555, 0x2AA,
+                               1);
+         fl_idx++;
+@@ -502,7 +502,7 @@ static void taihu_405ep_init(MachineState *machine)
+         bios_size = 32 * MiB;
+         pflash_cfi02_register(0xfc000000, "taihu_405ep.flash", bios_size,
+                               blk_by_legacy_dinfo(dinfo),
+-                              64 * KiB, 1,
++                              64 * KiB,
+                               4, 0x0001, 0x22DA, 0x0000, 0x0000, 0x555, 0x2AA,
+                               1);
+         fl_idx++;
+diff --git a/hw/sh4/r2d.c b/hw/sh4/r2d.c
+index 443820901d4..b7288dcba80 100644
+--- a/hw/sh4/r2d.c
++++ b/hw/sh4/r2d.c
+@@ -301,7 +301,7 @@ static void r2d_init(MachineState *machine)
+     dinfo = drive_get(IF_PFLASH, 0, 0);
+     pflash_cfi02_register(0x0, "r2d.flash", FLASH_SIZE,
+                           dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
+-                          64 * KiB, 1, 2, 0x0001, 0x227e, 0x2220, 0x2200,
++                          64 * KiB, 2, 0x0001, 0x227e, 0x2220, 0x2200,
+                           0x555, 0x2aa, 0);
+ 
+     /* NIC: rtl8139 on-board, and 2 slots. */
 -- 
 2.26.2
 

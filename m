@@ -1,309 +1,149 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3342271lfg;
-        Sun, 28 Mar 2021 21:23:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy7C4eDwSLgaSB37LqxSMBHe5f36iAQu+KvX+Svo9kkvMgUUOwgfI4Il2vTjya6pEUZRD6Y
-X-Received: by 2002:a05:6e02:f92:: with SMTP id v18mr11849788ilo.263.1616991817127;
-        Sun, 28 Mar 2021 21:23:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1616991817; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3388794lfg;
+        Sun, 28 Mar 2021 23:01:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxtlEh+56YcF6T7DyA2S4Z5P66MAxCmk2t6wdhfPAWvxwRoPLoobcQKfyY5LDDzEjSQ86lG
+X-Received: by 2002:a92:cecb:: with SMTP id z11mr3904438ilq.284.1616997671476;
+        Sun, 28 Mar 2021 23:01:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616997671; cv=none;
         d=google.com; s=arc-20160816;
-        b=keQ/OYR/+UPLvA++40qaVz8ZAEWvdhF/qWqEGSRTaEBdIsNHnZJuLx1h6ar+KnAqkP
-         eNjvNlfXmakzYzG/IT2+4Yx39JRmTNdbancig7ua2OHHdWQfrXxV9yYIKFBow7g34tpk
-         feWtR1ucRIZrmqmwgPthR2XKmneqqFeWdf7eP3Z3ygD1fjK6PO7SzkRieGR74+v1NmOO
-         t5rE7Sxg2BamIZpiR5ogVXIC26xlyAPk0W9S467+1hrJXb8/pWojXA/JahjMsmw4G2uA
-         AOPC2r2bPe1iREwjdyJUEMe/T7kjAZ/8PEhv80S9r0VPkMGvM1Eajj/vlyALxgnb7DLT
-         TN9Q==
+        b=YNfaUkl1hvhpm86HIkNgCd695SgyfiRQYPf4EYhxUjOKqAU/IMp258fVQFZuf6eYi+
+         Rq1JLZmF58h4etJHOaWZzxnh7q9vAP0NYAR4kb1/84NJp0y6rd4pDmv9UWziW2YvBFp7
+         T8CuEyuY5QOIKSnjXazsLQjy5h4kHSWyEEN7UshY3RbMVw6tY1wD+VoRodA0wFaLHudE
+         URRosdEhgNzcH8K/Fa2x3zGRePlcfjlkBD3ogNe+qzG3b7cBuiRq0z8Kp0SibJFjhoXU
+         RSM1ebt7tp4LnV2TJQ7vIQOlI+j44kW34Q1jb1Gcj2A7UcoGHDYWPGBzko2VU4raMU/C
+         0CaQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
          :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=Zx5RQ3BaOrvPVbent5SFY3ySU5Iu7k28Eh/mSppR3t0=;
-        b=UDSweg6j+H1w6wAB/3JMY3M6scG814W3ToLCoKp/14O6UdkI33mORO8ojFtkF2DGDN
-         IG7hnWDVPV1K4h6TDBtEET5KA53/Luql8x2scEtwSTNVDwB07VFSf967sfnEH8Nmguss
-         X4d4AGUfd3bfAfo8w+aY+OTcP9MdsSeqvwekHceh3tcwcpZz+jwx+hMLHoXc09PC7B1I
-         0trupOt88CHkua92D5oLlQSTsxoIT7MGkiUDOWmPYjasbLJAtGqMo6UQ19GaezWRdkLC
-         LqGmxv/Vc3/LfqJiWKRpOnWtAn9A4TZoUG071ZsM++4ah2MCZwAf3iVZQA6qdk8iNeLj
-         kasQ==
+        bh=DxnXBJserF3d6NhZmo0k6vUxubcNiFaus1B8RwrUjQc=;
+        b=dTtbkVQFU3ob4yz76gSKU1FYMAIN36h+/mhbI2km2R/tCmPPEDApuZn7G/YNZx4ZBn
+         kWQ1/dZC8kujwYUZx1ww5ZtNHhVJ61FcGDrTLBLM6oiTldMlNOk9lDNzvFsglup8XUtb
+         l/J1APy5dj56C5p0L+/YoX3SJrU6f5kEZwp7w2v5kVYyRJadYu8KDfP2dpGejj04Qls1
+         5OneiZ42dpBVec3AaJCgzlCYhKxpCDSsrEhWwvdSQKcQ8Z4pwcK3ySj1L+ZgU56fbtzK
+         lC1tlg321Yw7fDs55mJMdWrXp/PRc6Ne8n5ozhn3vTgMkl4qzqKwWnwqWeETjRaGL790
+         hwlA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=qFrVq0gm;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Y1SDcGlr;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s4si14270170ilv.131.2021.03.28.21.23.36
+        by mx.google.com with ESMTPS id u5si11294958ill.119.2021.03.28.23.01.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 28 Mar 2021 21:23:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 28 Mar 2021 23:01:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=qFrVq0gm;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44756 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Y1SDcGlr;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:56216 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lQjRA-00036n-Cc
-	for alex.bennee@linaro.org; Mon, 29 Mar 2021 00:23:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48648)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lQkxa-0001PV-Q7
+	for alex.bennee@linaro.org; Mon, 29 Mar 2021 02:01:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36514)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1lQjOZ-0007uz-KW; Mon, 29 Mar 2021 00:20:55 -0400
-Received: from ozlabs.org ([203.11.71.1]:34017)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1lQkvt-0000Uw-Dh
+ for qemu-devel@nongnu.org; Mon, 29 Mar 2021 01:59:25 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:33257)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1lQjOW-00005X-6s; Mon, 29 Mar 2021 00:20:55 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
- id 4F7zs94SdGz9sW4; Mon, 29 Mar 2021 15:20:45 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1616991645;
- bh=umubXwmB0G0CpiqVw0TC9gPKSv1UzwrXH1/mL02Xo5I=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=qFrVq0gmMuJZQaeGZLUEp5qXEjgvgD2zYB2TfdfHMxXMNasZ0I9zI09rGqWE/lqFa
- HALOikngZhXcW2EXVaQrDuk8JuW5vajNErjtt3aNaI+BU1pASuSSDvmdukMsHmhXfn
- EzM9pWQSd11/qQsNn/djOnYDjkj8nJthtyyi8TsA=
-Date: Mon, 29 Mar 2021 15:12:20 +1100
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-Subject: Re: [PATCH-for-6.1 07/10] hw/block/pflash_cfi02: Simplify
- pflash_cfi02_register() prototype
-Message-ID: <YGFTpHZhWxqYxxl2@yekko.fritz.box>
-References: <20210326002728.1069834-1-f4bug@amsat.org>
- <20210326002728.1069834-8-f4bug@amsat.org>
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1lQkvq-0008Ve-Qy
+ for qemu-devel@nongnu.org; Mon, 29 Mar 2021 01:59:23 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1616997560;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=DxnXBJserF3d6NhZmo0k6vUxubcNiFaus1B8RwrUjQc=;
+ b=Y1SDcGlr3+GQMqXspGPINIBqjRHeUiW+igj8lKxnzdztwOVR+M1X7uSPyMkoQ2muCffIqr
+ tLT2ns2l8cy40LmIQrDq9NXwBcrrcmrPXtdOnOIsGYUiR+ROsld4Ws/rJQiYrKHt+ABaaV
+ E/BZ3SMuD7Z3dQSo84JiwtgvixsDg+A=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-372-wnXaklVBN2uiPh4-SnRsLQ-1; Mon, 29 Mar 2021 01:59:18 -0400
+X-MC-Unique: wnXaklVBN2uiPh4-SnRsLQ-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9AAE1107ACCA;
+ Mon, 29 Mar 2021 05:59:17 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-112-102.ams2.redhat.com
+ [10.36.112.102])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 48EC25D6A1;
+ Mon, 29 Mar 2021 05:59:17 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id A48E218000A0; Mon, 29 Mar 2021 07:59:15 +0200 (CEST)
+Date: Mon, 29 Mar 2021 07:59:15 +0200
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: Re: [PATCH v2 1/3] hw/display/bcm2835_fb: Resize console on reset
+Message-ID: <20210329055915.zvkxo5u6cvk7hycp@sirius.home.kraxel.org>
+References: <20210323161443.245636-1-f4bug@amsat.org>
+ <20210323161443.245636-2-f4bug@amsat.org>
+ <CAFEAcA8hKY2XGUhWoyvB8wb+mqc8nhUJHhM7J2=0EUiMBXsstQ@mail.gmail.com>
+ <2953bd3c-bdde-0a51-8938-eb3fa4808213@amsat.org>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="whqoo4aav4AqWT8g"
+In-Reply-To: <2953bd3c-bdde-0a51-8938-eb3fa4808213@amsat.org>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20210326002728.1069834-8-f4bug@amsat.org>
-Received-SPF: pass client-ip=203.11.71.1; envelope-from=dgibson@ozlabs.org;
- helo=ozlabs.org
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Magnus Damm <magnus.damm@gmail.com>, Jan Kiszka <jan.kiszka@web.de>,
- "open list:Block layer core" <qemu-block@nongnu.org>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Alistair Francis <alistair@alistair23.me>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>, Michael Walle <michael@walle.cc>,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Antony Pavlov <antonynpavlov@gmail.com>, Max Reitz <mreitz@redhat.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
- Greg Kurz <groug@kaod.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /lWwKCkXqeJ4
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 56NdurR8rFG1
 
+  Hi,
 
---whqoo4aav4AqWT8g
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> > and realize
+> > already calls qemu_console_resize(), so how can adding a
+> > call to resize here in reset cause the console surface to
+> > be created any earlier than it already is ?
+> > 
+> > I also don't understand how the GUI timer can call us before
+> > the device is realized, given that we only register ourselves
+> > via graphics_console_init() in the device realize.
 
-On Fri, Mar 26, 2021 at 01:27:25AM +0100, Philippe Mathieu-Daud=E9 wrote:
-> The previous commit removed the mapping code from TYPE_PFLASH_CFI02.
-> pflash_cfi02_register() doesn't use the 'nb_mappings' argument
-> anymore. Simply remove it to simplify.
->=20
-> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
+Yes, should not happen.  Also note that graphics_console_init()
+creates a surface.
 
-Revieed-by: David Gibson <david@gibson.dropbear.id.au>
+> > Is it possible to get the UI layer to
+> > not start calling into graphics devices until after the
+> > system has been reset for the first time, for instance?
 
-> ---
->  include/hw/block/flash.h | 1 -
->  hw/arm/digic_boards.c    | 1 -
->  hw/arm/musicpal.c        | 1 -
->  hw/arm/xilinx_zynq.c     | 2 +-
->  hw/block/pflash_cfi02.c  | 3 +--
->  hw/lm32/lm32_boards.c    | 4 ++--
->  hw/ppc/ppc405_boards.c   | 6 +++---
->  hw/sh4/r2d.c             | 2 +-
->  8 files changed, 8 insertions(+), 12 deletions(-)
->=20
-> diff --git a/include/hw/block/flash.h b/include/hw/block/flash.h
-> index 7dde0adcee7..0e5dd818a9d 100644
-> --- a/include/hw/block/flash.h
-> +++ b/include/hw/block/flash.h
-> @@ -36,7 +36,6 @@ PFlashCFI02 *pflash_cfi02_register(hwaddr base,
->                                     hwaddr size,
->                                     BlockBackend *blk,
->                                     uint32_t sector_len,
-> -                                   int nb_mappings,
->                                     int width,
->                                     uint16_t id0, uint16_t id1,
->                                     uint16_t id2, uint16_t id3,
-> diff --git a/hw/arm/digic_boards.c b/hw/arm/digic_boards.c
-> index 293402b1240..eb694c70d4c 100644
-> --- a/hw/arm/digic_boards.c
-> +++ b/hw/arm/digic_boards.c
-> @@ -128,7 +128,6 @@ static void digic4_add_k8p3215uqb_rom(DigicState *s, =
-hwaddr addr,
->                           FLASH_K8P3215UQB_SIZE / FLASH_K8P3215UQB_SECTOR=
-_SIZE);
->      qdev_prop_set_uint32(dev, "sector-length", FLASH_K8P3215UQB_SECTOR_S=
-IZE);
->      qdev_prop_set_uint8(dev, "width", 4); /* 32-bit */
-> -    qdev_prop_set_uint8(dev, "mappings", 0);
->      qdev_prop_set_uint8(dev, "big-endian", 0);
->      qdev_prop_set_uint16(dev, "id0", 0x00ec);
->      qdev_prop_set_uint16(dev, "id1", 0x007e);
-> diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
-> index 7d1f2f3fb3f..e882e11df36 100644
-> --- a/hw/arm/musicpal.c
-> +++ b/hw/arm/musicpal.c
-> @@ -1657,7 +1657,6 @@ static void musicpal_init(MachineState *machine)
->          qdev_prop_set_uint32(dev, "num-blocks", flash_size / sector_size=
-);
->          qdev_prop_set_uint32(dev, "sector-length", sector_size);
->          qdev_prop_set_uint8(dev, "width", 2); /* 16-bit */
-> -        qdev_prop_set_uint8(dev, "mappings", 0);
->          qdev_prop_set_uint8(dev, "big-endian", 0);
->          qdev_prop_set_uint16(dev, "id0", 0x00bf);
->          qdev_prop_set_uint16(dev, "id1", 0x236d);
-> diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
-> index 8db6cfd47f5..d12b00e7648 100644
-> --- a/hw/arm/xilinx_zynq.c
-> +++ b/hw/arm/xilinx_zynq.c
-> @@ -220,7 +220,7 @@ static void zynq_init(MachineState *machine)
->      pflash_cfi02_register(0xe2000000, "zynq.pflash", FLASH_SIZE,
->                            dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
->                            FLASH_SECTOR_SIZE, 1,
-> -                          1, 0x0066, 0x0022, 0x0000, 0x0000, 0x0555, 0x2=
-aa,
-> +                          0x0066, 0x0022, 0x0000, 0x0000, 0x0555, 0x2aa,
->                            0);
-> =20
->      /* Create the main clock source, and feed slcr with it */
-> diff --git a/hw/block/pflash_cfi02.c b/hw/block/pflash_cfi02.c
-> index 6f4b3e3c3fe..2b412402fac 100644
-> --- a/hw/block/pflash_cfi02.c
-> +++ b/hw/block/pflash_cfi02.c
-> @@ -968,7 +968,7 @@ PFlashCFI02 *pflash_cfi02_register(hwaddr base,
->                                     hwaddr size,
->                                     BlockBackend *blk,
->                                     uint32_t sector_len,
-> -                                   int nb_mappings, int width,
-> +                                   int width,
->                                     uint16_t id0, uint16_t id1,
->                                     uint16_t id2, uint16_t id3,
->                                     uint16_t unlock_addr0,
-> @@ -977,7 +977,6 @@ PFlashCFI02 *pflash_cfi02_register(hwaddr base,
->  {
->      DeviceState *dev =3D qdev_new(TYPE_PFLASH_CFI02);
-> =20
-> -    assert(nb_mappings <=3D 1);
->      if (blk) {
->          qdev_prop_set_drive(dev, "drive", blk);
->      }
-> diff --git a/hw/lm32/lm32_boards.c b/hw/lm32/lm32_boards.c
-> index b5d97dd53ed..96877ba7cfb 100644
-> --- a/hw/lm32/lm32_boards.c
-> +++ b/hw/lm32/lm32_boards.c
-> @@ -121,7 +121,7 @@ static void lm32_evr_init(MachineState *machine)
->      pflash_cfi02_register(flash_base, "lm32_evr.flash", flash_size,
->                            dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
->                            flash_sector_size,
-> -                          1, 2, 0x01, 0x7e, 0x43, 0x00, 0x555, 0x2aa, 1);
-> +                          2, 0x01, 0x7e, 0x43, 0x00, 0x555, 0x2aa, 1);
-> =20
->      /* create irq lines */
->      env->pic_state =3D lm32_pic_init(qemu_allocate_irq(cpu_irq_handler, =
-cpu, 0));
-> @@ -218,7 +218,7 @@ static void lm32_uclinux_init(MachineState *machine)
->      pflash_cfi02_register(flash_base, "lm32_uclinux.flash", flash_size,
->                            dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
->                            flash_sector_size,
-> -                          1, 2, 0x01, 0x7e, 0x43, 0x00, 0x555, 0x2aa, 1);
-> +                          2, 0x01, 0x7e, 0x43, 0x00, 0x555, 0x2aa, 1);
-> =20
->      /* create irq lines */
->      env->pic_state =3D lm32_pic_init(qemu_allocate_irq(cpu_irq_handler, =
-env, 0));
-> diff --git a/hw/ppc/ppc405_boards.c b/hw/ppc/ppc405_boards.c
-> index 8f77887fb18..2503e033497 100644
-> --- a/hw/ppc/ppc405_boards.c
-> +++ b/hw/ppc/ppc405_boards.c
-> @@ -198,7 +198,7 @@ static void ref405ep_init(MachineState *machine)
->          pflash_cfi02_register((uint32_t)(-bios_size),
->                                "ef405ep.bios", bios_size,
->                                blk_by_legacy_dinfo(dinfo),
-> -                              64 * KiB, 1,
-> +                              64 * KiB,
->                                2, 0x0001, 0x22DA, 0x0000, 0x0000, 0x555, =
-0x2AA,
->                                1);
->      } else
-> @@ -469,7 +469,7 @@ static void taihu_405ep_init(MachineState *machine)
->          pflash_cfi02_register(0xFFE00000,
->                                "taihu_405ep.bios", bios_size,
->                                blk_by_legacy_dinfo(dinfo),
-> -                              64 * KiB, 1,
-> +                              64 * KiB,
->                                4, 0x0001, 0x22DA, 0x0000, 0x0000, 0x555, =
-0x2AA,
->                                1);
->          fl_idx++;
-> @@ -502,7 +502,7 @@ static void taihu_405ep_init(MachineState *machine)
->          bios_size =3D 32 * MiB;
->          pflash_cfi02_register(0xfc000000, "taihu_405ep.flash", bios_size,
->                                blk_by_legacy_dinfo(dinfo),
-> -                              64 * KiB, 1,
-> +                              64 * KiB,
->                                4, 0x0001, 0x22DA, 0x0000, 0x0000, 0x555, =
-0x2AA,
->                                1);
->          fl_idx++;
-> diff --git a/hw/sh4/r2d.c b/hw/sh4/r2d.c
-> index 443820901d4..b7288dcba80 100644
-> --- a/hw/sh4/r2d.c
-> +++ b/hw/sh4/r2d.c
-> @@ -301,7 +301,7 @@ static void r2d_init(MachineState *machine)
->      dinfo =3D drive_get(IF_PFLASH, 0, 0);
->      pflash_cfi02_register(0x0, "r2d.flash", FLASH_SIZE,
->                            dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
-> -                          64 * KiB, 1, 2, 0x0001, 0x227e, 0x2220, 0x2200,
-> +                          64 * KiB, 2, 0x0001, 0x227e, 0x2220, 0x2200,
->                            0x555, 0x2aa, 0);
-> =20
->      /* NIC: rtl8139 on-board, and 2 slots. */
+Can that actually happen?  I don't think it could in the past,
+but maybe now with the initialization changes.  We can add a
+check to gui_update() ...
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
+take care,
+  Gerd
 
---whqoo4aav4AqWT8g
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAmBhU6QACgkQbDjKyiDZ
-s5IfTxAArwoh5tiOGaQDwwySJibn2OlWFHhDeHWypBm4CRO7ISGSS30+jC70bi2X
-Tdqm0kpivNw2yvR6mGlyhP9/Hj3mJIzUkmmEiptmYLAJKEvinEOiy54URu/xnoDy
-V/kMQqYElaQO5eAerIcp22fv1VNTVsRLWvJhBev7AwaZ3pJ87/7gJmhAmd2bIMya
-SPQ7h9SO7I00TV7QqHXaUS4aUhIMmpQL5D/oXpH/QmRoVOqsB3tDPTgMzP6t5Be6
-MrHc+Y7ZzbFWmTffQxrQb/kcc98rSQzLbJar5Ulnw1iyjBSSoPQsrpERHBkWto+l
-Ffvi7zs5DUcfNymjRz2Uo5rh2oKBj5J5lw1HwB+jLI0zUb0VUMPAHt73xDKk1TiN
-qPk2yEjhGXXINHzl0QJn2egYDnOcvUs6QUTr3SPCAX2any3f+RcTdeneyCgZRiy+
-YdWPgw/E0dbO0pC5ARtMc3VzdSC3UUVHomwBD48rdMEGZS5NLVpoIFROcGmvwp33
-z0Vncv3wgOVXfBnsrcC8XcUyW5SXgVE4r/Egf4/Usb2WOsDyVMZTQ+9278yc0/R/
-atVOBrESMk9IPDpq1pXW25zHn+nFU89KiDexvkYKAqr44iHC9iHpCUEOsgCu3ZpP
-sK4AYYYVtAsCywGsv1gdIe3KtV7UWkb00LUYH9KOvE9PQ+YGXfY=
-=Ft1W
------END PGP SIGNATURE-----
-
---whqoo4aav4AqWT8g--

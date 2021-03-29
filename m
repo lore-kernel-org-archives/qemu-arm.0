@@ -1,131 +1,94 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1652364lfg;
-        Fri, 26 Mar 2021 12:31:53 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzAbLODco+FX7/91qg+XYkgB6swWNF+/ssP7ArAt29rImZ0En/OZRGtiRfc2cDENVQ/FDEf
-X-Received: by 2002:a92:dc49:: with SMTP id x9mr11818998ilq.281.1616787113151;
-        Fri, 26 Mar 2021 12:31:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1616787113; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3458060lfg;
+        Mon, 29 Mar 2021 01:11:43 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwx93hAvBBBoHcZ73MI8PWyPZOA10zOqxgBgyGAAYlTXUWRsjvzvYe9eS3EMFZIEg+jGUnC
+X-Received: by 2002:a25:31d6:: with SMTP id x205mr33949663ybx.64.1617005503738;
+        Mon, 29 Mar 2021 01:11:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617005503; cv=none;
         d=google.com; s=arc-20160816;
-        b=liNlFcATCroOj/SxYkMOuQgUkE+rxTeYUad9WRRdY0JJ2x8FFgu+Bi4cHsT8VSOxxB
-         SpYdmV/NXVnd1c1camUFjqMAcXCPk78tvEqryax/64wTDi+luERVsnF23eD3G1cJ93IJ
-         5jsHnwXQLU1E8zsVk3NqKGDyVd2zgB+ZsMt/SpynztZgJhzQMxUyAqAcFxkQE88Q2QNS
-         IcUqP0xOg5ut/51Ypionf4d2Z1td2XjuQaiWEiyNXtin9FLd47TCVU6tPL1TXWC9LVuN
-         2xEs/r1YzYvVmb4qsdX6LpYdHjJyR8DK0c3oNHXP93LxLpNCLyGLDlZ1aryEwlR/GLWa
-         mwkw==
+        b=q3Yl9Uo5wZWXOiJKSvxaUyVOcVcMzsMe5CwTioFyXED5cu3yNBfL1et7iWoh0Rgzei
+         v8876YKcYVv0mCKgb0gENTK40UTxaUyTEekbzAdfS8YmJ0+10PitH0Zw0mja4g7/SXfg
+         ePE5pSlZ7X8twsXTyhEUpmE3bez89PoluNnA0TLvCHCiD/ZtS6OTxZuzaz3kPk6Me0xl
+         yUwfVTSvBfknwDnmRpxnqAGlZLxMrDzWDjWWyQt75SXgtJsGQOk6DulzU5LIr2pDFQsp
+         7TJO6fiaPOdtmzDQ91W+Cl2/SfOIuZIoXUjQnP7dusFNBxYokd3vwJ6vhI89X2a9qaTF
+         bnRA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=Pg9xsFCo2deiI+mV4SSRyu5ituukAb+fP/SgflVpVo0=;
-        b=COngLCLAd2nEPbQl+gDuaYy1YtQmnlefLjmwcnKFpR5+niIsIeHvuEYR/hyZYjD7p8
-         NPtuJ5A2z+uQActw0F1DoRCZ8dEQxWw5bXoP4rY5hqxjmHD92wDmpuoerQS0GXZh1U42
-         kTGnY9F1cIsUO3SZRrEoqz+TG9o4aYe4toSf8oHvbg+XWV5nAhKRRJdPKfxewLnCw6M+
-         BkagmwldV/1zKK3cmsdcNTcrK3RMcyPG8Dp1HMgO866oz2fev1jUe7v1xpSeKx7+Hufh
-         TeChyrT3DYf9jC9Fr7BdONex8L2mO7/TT9G65xpI9TEB2rQnHnhEE6tKcdPCtDcl79+T
-         yWJA==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=5SnNR6SPjZP/q7ltogEYEL19C6NJbf7FbpwoRT2hjaQ=;
+        b=kfKTUoa/zG2v9qYw4IePaSaJdZf12Z/mCVHHeA9mhG7kKje697HU2s97AfDvMyhQqx
+         hY6tZHiRDH4alQfPVSQVMqRkjHisL+XFVhnl1FX5dRC0FF9VgjPERYcQM76v/HNsry5K
+         opwIB6kNEJH4ulfPD0yhON4WRN4kAFRHhBWeF7/DyhcnPrEsnuX42I1VOZN+0/4o1a28
+         5BIRtZ0QRZg1IdiWWFZt+jcBZDHBT4mqwa7Nv0xm4CMgk2XvZe5OsD08HWTOt7AOVQYH
+         IGUKr5W7I0mbosatj+apZWU232bCbWn4C3uL+pvMwxS9TCSh+fVrUU23atyWuCjJX91q
+         KcuQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@ibm.com header.s=pp1 header.b=tQ+GgRGf;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j1si7143448jat.46.2021.03.26.12.31.52
+        by mx.google.com with ESMTPS id g11si10046770ybq.121.2021.03.29.01.11.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Mar 2021 12:31:53 -0700 (PDT)
+        Mon, 29 Mar 2021 01:11:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@ibm.com header.s=pp1 header.b=tQ+GgRGf;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Received: from localhost ([::1]:33718 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:50424 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lPsBT-0001B4-Ox
-	for alex.bennee@linaro.org; Fri, 26 Mar 2021 15:31:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50772)
+	id 1lQmzv-0004ri-48
+	for alex.bennee@linaro.org; Mon, 29 Mar 2021 04:11:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34000)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <klaus@linux.vnet.ibm.com>)
- id 1lPsAZ-0001As-NA; Fri, 26 Mar 2021 15:30:56 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:13826
- helo=mx0a-001b2d01.pphosted.com)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1lQmzT-0004rR-JP
+ for qemu-arm@nongnu.org; Mon, 29 Mar 2021 04:11:16 -0400
+Received: from 9.mo51.mail-out.ovh.net ([46.105.48.137]:58397)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <klaus@linux.vnet.ibm.com>)
- id 1lPsAV-0005mD-Kz; Fri, 26 Mar 2021 15:30:55 -0400
-Received: from pps.filterd (m0098413.ppops.net [127.0.0.1])
- by mx0b-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 12QJ49da131590; Fri, 26 Mar 2021 15:30:44 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=from : to : cc : subject
- : date : message-id : mime-version : content-transfer-encoding; s=pp1;
- bh=Pg9xsFCo2deiI+mV4SSRyu5ituukAb+fP/SgflVpVo0=;
- b=tQ+GgRGf6KobP8CkNbn5wPlARduqmccUA5LoYVt6hfILselwmCkzn9C0YF2SP6ApsIdC
- 9CGI6L/Fvre3RM3rLUNBBcOI1vgZeQ3Xbq/0WIU4dLrIVLcuHge4FpbqYgW53Qms9sf2
- HOY+QRAhCql9q4RxlswbYa5k9Hk/G1X0pObm++oahzEJbkd30D8xHTYHfOA3AkkQAccN
- tuifMvq2RddEXnT5BPgbXduhkeoUStN/DEAMTx9IbS7CxoEji3nrMyhmcpMgSbZiYV/g
- 0uoTCTDVgUAlFyYt7MRwRgDNmFAzNsjWkG2gxyG9L/fIF3rIfTYzzWIFmERqvP0QhR6E Nw== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0b-001b2d01.pphosted.com with ESMTP id 37hfysjpkk-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 26 Mar 2021 15:30:44 -0400
-Received: from m0098413.ppops.net (m0098413.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 12QJ4bcR133093;
- Fri, 26 Mar 2021 15:30:44 -0400
-Received: from ppma02wdc.us.ibm.com (aa.5b.37a9.ip4.static.sl-reverse.com
- [169.55.91.170])
- by mx0b-001b2d01.pphosted.com with ESMTP id 37hfysjpk9-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 26 Mar 2021 15:30:43 -0400
-Received: from pps.filterd (ppma02wdc.us.ibm.com [127.0.0.1])
- by ppma02wdc.us.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 12QJE7g7002441;
- Fri, 26 Mar 2021 19:30:43 GMT
-Received: from b01cxnp23033.gho.pok.ibm.com (b01cxnp23033.gho.pok.ibm.com
- [9.57.198.28]) by ppma02wdc.us.ibm.com with ESMTP id 37h1587g7p-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 26 Mar 2021 19:30:43 +0000
-Received: from b01ledav005.gho.pok.ibm.com (b01ledav005.gho.pok.ibm.com
- [9.57.199.110])
- by b01cxnp23033.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 12QJUgT136635130
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 26 Mar 2021 19:30:43 GMT
-Received: from b01ledav005.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id DABC5AE060;
- Fri, 26 Mar 2021 19:30:42 +0000 (GMT)
-Received: from b01ledav005.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 14D69AE05C;
- Fri, 26 Mar 2021 19:30:41 +0000 (GMT)
-Received: from T480-KlausKiwi.localdomain (unknown [9.85.195.191])
- by b01ledav005.gho.pok.ibm.com (Postfix) with ESMTP;
- Fri, 26 Mar 2021 19:30:40 +0000 (GMT)
-From: Klaus Heinrich Kiwi <klaus@linux.vnet.ibm.com>
-To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: [PATCH v2 0/2] aspeed: HACE hash Scatter-Gather support 
-Date: Fri, 26 Mar 2021 16:30:31 -0300
-Message-Id: <20210326193033.11798-1-klaus@linux.vnet.ibm.com>
-X-Mailer: git-send-email 2.25.1
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1lQmzK-0004Df-Ru
+ for qemu-arm@nongnu.org; Mon, 29 Mar 2021 04:11:15 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.138.109])
+ by mo51.mail-out.ovh.net (Postfix) with ESMTPS id 1DB892655DD;
+ Mon, 29 Mar 2021 10:10:54 +0200 (CEST)
+Received: from kaod.org (37.59.142.103) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2106.2; Mon, 29 Mar
+ 2021 10:10:46 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-103G0053527f1ab-c79a-4640-b0ee-60b89973fcda,
+ 8BF819BD6DA5614ACA9E0FB600EB83BC0C5CC0F8) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Subject: Re: [PATCH v3 1/2] aspeed: Add Scater-Gather support for HACE Hash
+To: Klaus Heinrich Kiwi <klaus@linux.vnet.ibm.com>, <qemu-arm@nongnu.org>,
+ <qemu-devel@nongnu.org>
+References: <20210326193745.13558-1-klaus@linux.vnet.ibm.com>
+ <20210326193745.13558-2-klaus@linux.vnet.ibm.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <2c432f9c-7d57-068a-302d-2ced8f54c520@kaod.org>
+Date: Mon, 29 Mar 2021 10:10:45 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: QTBW7vqGpxecOymAKum_QUvCCPLJmirH
-X-Proofpoint-GUID: fyF-VEhnFlC46xdNF1unG_E5nZMNKtAf
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.369, 18.0.761
- definitions=2021-03-26_08:2021-03-26,
- 2021-03-26 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- mlxlogscore=999 phishscore=0
- adultscore=0 suspectscore=0 bulkscore=0 spamscore=0 lowpriorityscore=0
- impostorscore=0 priorityscore=1501 malwarescore=0 mlxscore=0 clxscore=1015
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2103250000
- definitions=main-2103260140
-Received-SPF: none client-ip=148.163.158.5;
- envelope-from=klaus@linux.vnet.ibm.com; helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
-X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20210326193745.13558-2-klaus@linux.vnet.ibm.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.103]
+X-ClientProxiedBy: DAG9EX1.mxp5.local (172.16.2.81) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 81700482-f4b8-41d7-8b47-2ec454da569d
+X-Ovh-Tracer-Id: 10053723221702970159
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduledrudehjedguddviecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgihesthejredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeegvdeijeefvdfhudfhffeuveehledufffhvdekheelgedttddthfeigeevgefhffenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtfeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepkhhlrghusheslhhinhhugidrvhhnvghtrdhisghmrdgtohhm
+Received-SPF: pass client-ip=46.105.48.137; envelope-from=clg@kaod.org;
+ helo=9.mo51.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -140,37 +103,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Laurent Vivier <lvivier@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Andrew Jeffery <andrew@aj.id.au>,
- Klaus Heinrich Kiwi <klaus@linux.vnet.ibm.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Joel Stanley <joel@jms.id.au>
+ Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
+ Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HcpumtJlFIdb
+X-TUID: CgZkfg1NbLNw
 
-This series adds support for scatter-gather sha256 and sha512 operations
-on Aspeed's HACE (Hash And Crypto Engine) to the Aspeed model, as well
-as testcases for them.
+On 3/26/21 8:37 PM, Klaus Heinrich Kiwi wrote:
+> Complement the Aspeed HACE support with Scatter-Gather hash support for
+> sha256 and sha512. Scatter-Gather is only supported on AST2600-series.
 
-These operations are supported on AST2600 series of machines.
+...
 
-Signed-off-by: Klaus Heinrich Kiwi <klaus@linux.vnet.ibm.com>
+>  static uint64_t aspeed_hace_read(void *opaque, hwaddr addr, unsigned int size)
+>  {
+> @@ -187,11 +303,6 @@ static void aspeed_hace_write(void *opaque, hwaddr addr, uint64_t data,
+>                            "%s: HMAC engine command mode %"PRIx64" not implemented",
+>                            __func__, (data & HASH_HMAC_MASK) >> 8);
+>          }
+> -        if (data & HASH_SG_EN) {
+> -            qemu_log_mask(LOG_UNIMP,
+> -                          "%s: Hash scatter gather mode not implemented",
+> -                          __func__);
+> -        }
 
----
-Changes since V1:
+Could we check the SoC type and emit an error if not ast2600 ? 
 
- * Use address_space_ldl_le() to load single addresses instead of
-   address_space_map()
- * Updated documentation
- * Removed several uneeded variables / casts
- * Confirmed behavior on real hardware for register masks, IRQ register
-   etc
- * Adjusted testcases accordingly
- * Coding style fixes
+>          if (data & BIT(1)) {
+>              qemu_log_mask(LOG_UNIMP,
+>                            "%s: Cascaded mode not implemented",
+> @@ -204,7 +315,10 @@ static void aspeed_hace_write(void *opaque, hwaddr addr, uint64_t data,
+>                          __func__, data & ahc->hash_mask);
+>                  break;
+>          }
+> -        do_hash_operation(s, algo);
+> +        if (data & HASH_SG_EN)
+> +            do_hash_sg_operation(s, algo);
+> +        else
+> +            do_hash_operation(s, algo);
 
- docs/system/arm/aspeed.rst     |   2 +-
- hw/misc/aspeed_hace.c          | 126 +++++++++++++++++++++++++++++++--
- tests/qtest/aspeed_hace-test.c | 156 ++++++++++++++++++++++++++++++++++++++---
- 3 files changed, 268 insertions(+), 16 deletions(-)
+patchew should complain for the lack of { }.
 
+Thanks,
+
+C. 
+
+>          if (data & HASH_IRQ_EN) {
+>              qemu_irq_raise(s->irq);
+> 
 

@@ -1,88 +1,101 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1884370lfg;
-        Fri, 26 Mar 2021 19:25:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxXM3Y4wm306PbmdMOCXS4vEmDWFK/VzdbLe9hBide690Ah9wBJagCe1jTevSYSO4IkA38q
-X-Received: by 2002:a25:5d6:: with SMTP id 205mr24277317ybf.344.1616811955016;
-        Fri, 26 Mar 2021 19:25:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1616811955; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4004638lfg;
+        Mon, 29 Mar 2021 14:05:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz45rnJTL7n4dlb/oqsE3ZqhzOF0MTeWOvcbCrZqbl02tJWPTjSyucz+PeygWNC1Kv/PQcY
+X-Received: by 2002:a5e:990f:: with SMTP id t15mr14601121ioj.180.1617051935419;
+        Mon, 29 Mar 2021 14:05:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617051935; cv=none;
         d=google.com; s=arc-20160816;
-        b=lp6p8fhbPd/KYH0/6kRZ3AVhbKpFowMbtpweIoFDFJjkbnkWp1ZLKONOaUrIrjejyM
-         Ywi+hEL0PPjZtprt4J4if8ZlsXyrZ4BzIRG6KC8b/CVnyidkFqoSm1aQiqrBdweZiddr
-         UFB28rLx6cgBd8M4Yk3WqJY8Uud6o6MkCPAPV2oybkv0XYku1ERoH3+iUg6pEpbn8FLJ
-         w/4aNZY2AaXyBTf52CpdthfBnOcd90FgGSpjNQfi3QEt6/Ksi26wXEZmvq6pUS3kwLUu
-         CM1X2I+gv5DOGx25ChlrG/c5UdHrSQ7NzKt3kEatN4pdulrNaWwW9Mk9WcGqwzj8ZC1K
-         GRrA==
+        b=lmEZ1wJ1xNPs/r/FAHNDpfS4lhxPbEQbGkRLriyMSSfvO3HmjnDCGATbl87XN0IXbk
+         rfNIZH8eUGN5E4K6z81fdgarNRu4c7/bHt2psP5NOHGasAEs5aQZR4CnPa+FBKmFZcml
+         LMThLAJfLUr/PneDoUoqSi7i50vPl6oeBcqZ3ROlJNrrqB4fpUhc5iEeO57aP2Svi/eQ
+         8dzs8MYoYxx/jYpZ5nw7kvOchAuVIyQ1njn8lswrd4rEYWc+tBNc0U4qeCHl/OrELyEj
+         6kqHXrr9RNpe8PDYyKVplFqsGSmZRMTUn8bbqGvvFu6NZaNEQt+Lc5nNd+lbXTla2DHI
+         NewA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:mime-version:user-agent:date:message-id
-         :subject:from:to;
-        bh=zsQ5OVUdEtZRl3pbaoD1/YM4lb5axA2w3dkk/dTpJnE=;
-        b=KOx//l0GWFHba+HaEkNwJVm4E0sUqx0qNOxKbEUKZgC+Ht54U9qLgpEnKC4skd7oy7
-         9KFTSFZzjI5M3dBOayVyJ7n00peeN0YmNJPzNRsZtCHlNaOG3MEHG/kpGnhJOGqGk6EE
-         phvlhngyqT+B8266ypaPyjljBFEFCEDoaRgZUDQTytsUOySG0vA33NT9VnGc3eVs319W
-         ioQAXIRt2YgVv5iXWIHBQK0wr7Zkku6CgxyLurFHNWZT0Lo9OEp6zAHLAFClmf+mn2+9
-         fu83BJZ5IystPx8rUN9ZA4D4sOSfddTHc+wg8x8/KQbhTFPygvE9wIQe3o+JtARzAvYY
-         QoAQ==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=vkjCKrgwLWR6YRViltSxKNkGUgKZ6V1+usGQPPX6UAk=;
+        b=KaLK8kNQUv/z6cwhCvo/h1G15Ea5aFGrxPQyp6hF4vac0z1BHOfNixbBmf/bjfgTYR
+         NOc3VtoKN3DhS693iTk5lcUiXS45mjoUB3UuGjNRby6iy23pF7ftf7A7EwfKlmLxf0ch
+         hx0LoHfWV1/SCjZypgU9uzZmU9M5nbzAGTEu1f+NmRQ9Q0RtD3b+WQSmg4Yc/DBqGv9h
+         0Fpt2bHHytecru2/Eyez4CfF6EJPz0uWRG6TmJjGoPOB25vPtvek1CSO/FgsqInRzaSQ
+         LcHD4tC05YcwSFDwNQ/Rqgew4zx7RH+aKjjHOWPVg8pQskuTac+hzffESwyQc5mYRsjO
+         kznQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=J+FjDZNV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x10si4758241ybh.479.2021.03.26.19.25.54
+        by mx.google.com with ESMTPS id e16si14960046jam.51.2021.03.29.14.05.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Mar 2021 19:25:55 -0700 (PDT)
+        Mon, 29 Mar 2021 14:05:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=J+FjDZNV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:58204 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:40384 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lPye6-0000ch-24
-	for alex.bennee@linaro.org; Fri, 26 Mar 2021 22:25:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35470)
+	id 1lQz4o-00005S-Nc
+	for alex.bennee@linaro.org; Mon, 29 Mar 2021 17:05:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59900)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jiangkunkun@huawei.com>)
- id 1lPydZ-0000cS-34; Fri, 26 Mar 2021 22:25:17 -0400
-Received: from szxga01-in.huawei.com ([45.249.212.187]:2500)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jiangkunkun@huawei.com>)
- id 1lPydW-0002yQ-I1; Fri, 26 Mar 2021 22:25:16 -0400
-Received: from dggeml406-hub.china.huawei.com (unknown [172.30.72.56])
- by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4F6jJj67WxzWQF9;
- Sat, 27 Mar 2021 10:21:41 +0800 (CST)
-Received: from dggema765-chm.china.huawei.com (10.1.198.207) by
- dggeml406-hub.china.huawei.com (10.3.17.50) with Microsoft SMTP Server (TLS)
- id 14.3.498.0; Sat, 27 Mar 2021 10:24:55 +0800
-Received: from [10.174.185.210] (10.174.185.210) by
- dggema765-chm.china.huawei.com (10.1.198.207) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.2106.2; Sat, 27 Mar 2021 10:24:55 +0800
-To: Eric Auger <eric.auger@redhat.com>, Prem Mallappa
- <prem.mallappa@broadcom.com>, Peter Maydell <peter.maydell@linaro.org>,
- <linuc.decode@gmail.com>
-From: Kunkun Jiang <jiangkunkun@huawei.com>
-Subject: A question about the translation granule size supported by the vSMMU
-Message-ID: <fa696532-5f04-aeeb-1ba3-6427675c6655@huawei.com>
-Date: Sat, 27 Mar 2021 10:24:44 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lQz4e-00005E-5H
+ for qemu-arm@nongnu.org; Mon, 29 Mar 2021 17:05:24 -0400
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533]:41543)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lQz4c-0001Yp-Ew
+ for qemu-arm@nongnu.org; Mon, 29 Mar 2021 17:05:23 -0400
+Received: by mail-ed1-x533.google.com with SMTP id z1so15762028edb.8
+ for <qemu-arm@nongnu.org>; Mon, 29 Mar 2021 14:05:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=vkjCKrgwLWR6YRViltSxKNkGUgKZ6V1+usGQPPX6UAk=;
+ b=J+FjDZNVuyNeoGIh0BgmYg+9FKnJFvb1nUmVwlF8fFDrfcpUoNkxGbZsadUQR5wOJJ
+ /5FzpVKpOXmTMhPHWocxBZCM5iwBRcbv8YlKcRGZphuI3Ki8CafxVNUzVd1Ku7LbzErh
+ 2EBjtzBbnRgV3jdRuIAzX6ea2uie8Yh7hbZoPj5L7Cr/feFyqME1GSuPF3drekCuCOJL
+ eQ9VYD+BAvbJSYwea336/Rj66yblDypXIvYGLAu3KuxdPGVTJcjHlhWS0qE4Mr4r4AK/
+ 5I4qO02nVZUYpGwXtGSNbzDAP/8wgMHDrgz2S8S3LBrg39H1gHVnALFWEaPARkEjhHWJ
+ 9ZJA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=vkjCKrgwLWR6YRViltSxKNkGUgKZ6V1+usGQPPX6UAk=;
+ b=LzdlZQTyorM7/emaNMN7XwRfuikSG9pMA4P39jOta51ebul76F/wWY04pVR9qxaDJR
+ 9i8U1R+R77K/sQOQUFtBqkysGhBmHBtUDQDzGZ7xPN3jEEtaT9BNSyJH/1e4XD+QZv5z
+ VqkbQLIuKgs3DIB/fvene2ElM3Z4chZOTzZywJFpd8C6rpgFFzmgTKFNJPG3Ckkx99Mp
+ 4O8bMzI+YlNFRQD5heIvEiv0TZ4Zbpvg8jln8tim8Ueut3Zv+9Chjwlrrso/wg4IGA4J
+ lp+gqjivf4bvqmJiIIuqIvXC3kMYsLnvIMq5pnz19urhJ7wRYwGGP6AG7yN/7dMluA/F
+ a6sQ==
+X-Gm-Message-State: AOAM533xa9tul3SDfHM1yu8c69YuTmhK1hbn5+BtO7bCNnTKaJoYRCbE
+ dJL5+84HMZ8E1h40rw1jRCVugQZOuTaRNT8UQutzxQ==
+X-Received: by 2002:aa7:c804:: with SMTP id a4mr29774552edt.251.1617051920867; 
+ Mon, 29 Mar 2021 14:05:20 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-X-Originating-IP: [10.174.185.210]
-X-ClientProxiedBy: dggeme709-chm.china.huawei.com (10.1.199.105) To
- dggema765-chm.china.huawei.com (10.1.198.207)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.187;
- envelope-from=jiangkunkun@huawei.com; helo=szxga01-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <CAJoBWHx5DM=zhj10j1ai5T_LO9ScAhFzUezuhGu6a73vn=4_Rg@mail.gmail.com>
+In-Reply-To: <CAJoBWHx5DM=zhj10j1ai5T_LO9ScAhFzUezuhGu6a73vn=4_Rg@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 29 Mar 2021 21:04:50 +0000
+Message-ID: <CAFEAcA8KCJTwsb2YYoU3d_PbO=KW_ytSJXHLZZTkukVX6YzCPQ@mail.gmail.com>
+Subject: Re: AUTIA authentication sometimes fails
+To: Derrick McKee <derrick.mckee@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::533;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x533.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -95,41 +108,39 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Zenghui Yu <yuzenghui@huawei.com>,
- "wanghaibin.wang@huawei.com" <wanghaibin.wang@huawei.com>,
- "open list:ARM SMMU" <qemu-arm@nongnu.org>, Keqian Zhu <zhukeqian1@huawei.com>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: "open list:ARM" <qemu-arm@nongnu.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bwuGJmKMukx5
+X-TUID: /9E63KUHx21+
 
-Hi all,
+On Mon, 29 Mar 2021 at 21:07, Derrick McKee <derrick.mckee@gmail.com> wrote:
+>
+> Hi,
+>
+> I am running across a scenario where a PAC signed code pointer (using
+> pacia) sometimes does not successfully authenticate despite the signed
+> pointer and the salt used to sign the pointer are correctly given to a
+> autia instruction.  Only one particular pointer fails, while others
+> are correctly authenticated.  Unfortunately, I can't provide a simple
+> use case, because the behavior is part of a running kernel, and all
+> the pointers involved are kernel space pointers.  An example of what I
+> am seeing (not guaranteeing correct assembly, just a gist):
+>
+> mov x9, 0xffff800009200000
+> mov x10, 0x20001
+> pacia x9, x10  // x9 contains 0xff90800009200000
+> ...
+> mov x9, 0xff90800009200000
+> mov x10 0x20001
+> autia x9, x10  // x9 contains invalid pointer
+>
+> However, this same code with different pointer values correctly
+> authenticate.  Is there something specific about the kernel and PAC
+> authentication that I am missing?  Thanks.
 
-Recently, I did some tests on SMMU nested mode. Here is
-a question about the translation granule size supported by
-vSMMU.
+cc'ing Richard, but I suspect you'll need to provide more detail...
 
-There is such a code in SMMUv3_init_regs():
-
->    /* 4K and 64K granule support */
->     s->idr[5] = FIELD_DP32(s->idr[5], IDR5, GRAN4K, 1);
->     s->idr[5] = FIELD_DP32(s->idr[5], IDR5, GRAN64K, 1);
->     s->idr[5] = FIELD_DP32(s->idr[5], IDR5, OAS, SMMU_IDR5_OAS); /* 44 
-> bits */
-Why is the 16K granule not supported? I modified the code
-to support it and did not encounter any problems in the
-test. Although 4K and 64K minimal granules are "strongly
-recommended", I think vSMMU should still support 16K.😉
-Are there other reasons why 16K is not supported here?
-
-When in SMMU nested mode, it may get errors if pSMMU
-doesn't support 16K but vSMMU supports 16K. But we
-can get some settings of pSMMU to avoid this situation.
-I found some discussions between Eric and Linu about
-this [1], but this idea does not seem to be implemented.
-
-[1] https://lists.gnu.org/archive/html/qemu-arm/2017-09/msg00149.html
-
-Best regards,
-Kunkun Jiang
-
+thanks
+-- PMM

@@ -1,95 +1,132 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3458060lfg;
-        Mon, 29 Mar 2021 01:11:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwx93hAvBBBoHcZ73MI8PWyPZOA10zOqxgBgyGAAYlTXUWRsjvzvYe9eS3EMFZIEg+jGUnC
-X-Received: by 2002:a25:31d6:: with SMTP id x205mr33949663ybx.64.1617005503738;
-        Mon, 29 Mar 2021 01:11:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617005503; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3473602lfg;
+        Mon, 29 Mar 2021 01:39:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyMrtGWr8G1rDI92D5/gob56FKC/oxtF4Zdzis7K5087Xs2ITzrDZqVFoSWJVBAcCdQXyeH
+X-Received: by 2002:a25:ae9f:: with SMTP id b31mr36852023ybj.160.1617007190849;
+        Mon, 29 Mar 2021 01:39:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617007190; cv=none;
         d=google.com; s=arc-20160816;
-        b=q3Yl9Uo5wZWXOiJKSvxaUyVOcVcMzsMe5CwTioFyXED5cu3yNBfL1et7iWoh0Rgzei
-         v8876YKcYVv0mCKgb0gENTK40UTxaUyTEekbzAdfS8YmJ0+10PitH0Zw0mja4g7/SXfg
-         ePE5pSlZ7X8twsXTyhEUpmE3bez89PoluNnA0TLvCHCiD/ZtS6OTxZuzaz3kPk6Me0xl
-         yUwfVTSvBfknwDnmRpxnqAGlZLxMrDzWDjWWyQt75SXgtJsGQOk6DulzU5LIr2pDFQsp
-         7TJO6fiaPOdtmzDQ91W+Cl2/SfOIuZIoXUjQnP7dusFNBxYokd3vwJ6vhI89X2a9qaTF
-         bnRA==
+        b=c2jauwN6NDBj7nzPzDmsCFC597XvJ2Lqg8ZMXGorbHxUxc7alf2opdNYwHPJyCqg9i
+         jgwRLHxThHNyj3NSpj13/c/p1uQNZhtIUhXZRA3hpuuORJHU7OQO+YRwA5yw2U6hFuXq
+         v7ozffniFbSmiQBhNt+6+QVMvMPJkbCr+pHLsQiGzwDQFe7jRAqtFHfuqtDGKhRVqo2H
+         ZuGeBvsXztd/cNfCDDvSRTQeDhhX4LYTVEXTLfNLOjAT0MCTwqp/9N7HEXX6JRp74I9V
+         ysQTDMZlAz08c42No50ZStBzDDVDcVXcpv/aU0/QKfAw0h9QhW2lKSR4Z1sK3v8I3rB4
+         rVMg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=5SnNR6SPjZP/q7ltogEYEL19C6NJbf7FbpwoRT2hjaQ=;
-        b=kfKTUoa/zG2v9qYw4IePaSaJdZf12Z/mCVHHeA9mhG7kKje697HU2s97AfDvMyhQqx
-         hY6tZHiRDH4alQfPVSQVMqRkjHisL+XFVhnl1FX5dRC0FF9VgjPERYcQM76v/HNsry5K
-         opwIB6kNEJH4ulfPD0yhON4WRN4kAFRHhBWeF7/DyhcnPrEsnuX42I1VOZN+0/4o1a28
-         5BIRtZ0QRZg1IdiWWFZt+jcBZDHBT4mqwa7Nv0xm4CMgk2XvZe5OsD08HWTOt7AOVQYH
-         IGUKr5W7I0mbosatj+apZWU232bCbWn4C3uL+pvMwxS9TCSh+fVrUU23atyWuCjJX91q
-         KcuQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:references:mime-version
+         :importance:to:from:message-id:subject:date:dkim-signature;
+        bh=OLR/fC0NggBW50FcktlFKVdIAStkAIzUisW2FLHI+1E=;
+        b=Iv4GoFaHqg/e0UnqFIYwz3wkHttH0XvPf/aL44mErSNESU3uQHgenIA619Zk6zZ9x4
+         VZbo0cBVET2Ft3l7H8RRMQAnKNU850FmgcGM7pY47Yt+/ehLEneDxukaCZwe1pM81ouP
+         pzYPReZMJvQQsPJOfSodRuV7Ar/Fhcb4yqYxuQxMqO9UeMTfidL9lZWdRc+JCNIqyVrS
+         IYL3q7l8ATZMZljUxNCvSiXt+BsLZY0RteenuWL53MZ5/15WbRJIADGgWfZTAY2E7Rzf
+         Fg1uyZz6eGZwVoPvJ07dr+eeumRPNhI4RX/YFY5cTAwWQIQhFVH2MCDs0hQ6JfWn0vHf
+         GUpA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@yahoo.com.hk header.s=s2048 header.b=mia7TaeC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com.hk
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g11si10046770ybq.121.2021.03.29.01.11.43
+        by mx.google.com with ESMTPS id x32si8419053ybd.397.2021.03.29.01.39.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 29 Mar 2021 01:11:43 -0700 (PDT)
+        Mon, 29 Mar 2021 01:39:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:50424 helo=lists1p.gnu.org)
+       dkim=pass header.i=@yahoo.com.hk header.s=s2048 header.b=mia7TaeC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com.hk
+Received: from localhost ([::1]:35048 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lQmzv-0004ri-48
-	for alex.bennee@linaro.org; Mon, 29 Mar 2021 04:11:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34000)
+	id 1lQnR8-0004PZ-6k
+	for alex.bennee@linaro.org; Mon, 29 Mar 2021 04:39:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52498)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1lQmzT-0004rR-JP
- for qemu-arm@nongnu.org; Mon, 29 Mar 2021 04:11:16 -0400
-Received: from 9.mo51.mail-out.ovh.net ([46.105.48.137]:58397)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1lQmzK-0004Df-Ru
- for qemu-arm@nongnu.org; Mon, 29 Mar 2021 04:11:15 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.138.109])
- by mo51.mail-out.ovh.net (Postfix) with ESMTPS id 1DB892655DD;
- Mon, 29 Mar 2021 10:10:54 +0200 (CEST)
-Received: from kaod.org (37.59.142.103) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2106.2; Mon, 29 Mar
- 2021 10:10:46 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-103G0053527f1ab-c79a-4640-b0ee-60b89973fcda,
- 8BF819BD6DA5614ACA9E0FB600EB83BC0C5CC0F8) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Subject: Re: [PATCH v3 1/2] aspeed: Add Scater-Gather support for HACE Hash
-To: Klaus Heinrich Kiwi <klaus@linux.vnet.ibm.com>, <qemu-arm@nongnu.org>,
- <qemu-devel@nongnu.org>
-References: <20210326193745.13558-1-klaus@linux.vnet.ibm.com>
- <20210326193745.13558-2-klaus@linux.vnet.ibm.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <2c432f9c-7d57-068a-302d-2ced8f54c520@kaod.org>
-Date: Mon, 29 Mar 2021 10:10:45 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.0
+ (Exim 4.90_1) (envelope-from <pkt_1@yahoo.com.hk>)
+ id 1lQmBp-0007Wx-Hp
+ for qemu-arm@nongnu.org; Mon, 29 Mar 2021 03:19:57 -0400
+Received: from sonic314-21.consmr.mail.sg3.yahoo.com ([106.10.240.145]:43793)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <pkt_1@yahoo.com.hk>)
+ id 1lQmBm-0006I5-On
+ for qemu-arm@nongnu.org; Mon, 29 Mar 2021 03:19:56 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com.hk; s=s2048;
+ t=1617002386; bh=OLR/fC0NggBW50FcktlFKVdIAStkAIzUisW2FLHI+1E=;
+ h=Date:Subject:From:To:References:From:Subject:Reply-To;
+ b=mia7TaeCmqnxEQYnu1lMB7MNB3Y+QfeWXwD0HtLcwrC0bNG+4PBZKV+okac2BMfYkqaEf8fXNni+3a2V25LFkE4h2Yl3o+eR58sb7Gk1fPaV+V2SieeygdGxtJUj29XFV2kakvhjBUXAShVpy94uiK31OHSq3mwYluOPDcJKgCs8XpaYGdH+RFLKE7RtwnrTTouMSNr94qD1wh/UwqvyBxNBZof84HUbF28RQrzID5HmST4hCxP1c2cowdWXxyBmmDufTlsi5Mmy55TUq8IbzTqIlr5j8zLRcOM9bmdGeM6xXI02niOzkaTebikgBNttQBQG8g4ZYG2C64p5pqx35Q==
+X-SONIC-DKIM-SIGN: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
+ t=1617002386; bh=PwSREJb9nkfajwIDLppNIVLhBZ/rMAz/suBrPKxu7GS=;
+ h=X-Sonic-MF:Date:Subject:From:To:From:Subject;
+ b=mCqkp/kLPEfe0GrIMkbIW7nhhLyawjTciSCa7ndzx6Ha/yw/2E3j6ke97nbhACoELe7hbgKLtjpulJB7KFZSDReiqkarb4X/D87nH454eQabs42XZ2MncoDlOsLjW5oU04vmLgBo7p1fibB5dubKZ8Hn+JBLkBx6l4hww7rpp2ZN7FImxIncePa+cFCFomRAESfWNuci40si8Vc/xz5jpk/S38mfYreMaO2izMjxIxsV4pLP1Q9KDRCyd5fnOC70cAgs6AQKNy35m60x3t8+hKi3k/YkQkH3yXvR4xZ1yVjAxVzIkZNGLpu3e5RKNmwa/FGpiR5bEEU91ee61TyIPA==
+X-YMail-OSG: .2h3UDkVM1n15y3UtTYTkkiRSlokfH.A3SbdAXyLG129fz3yFtR3Xvg49GlTzHA
+ L6UC6gmZ4UJGMtM1DNbcjf.vAvM2lTK65tmUECg1ZmmsPwAkdaFLhwCKZI1HDrA6XoAP54d170CF
+ bqS6kR3joYsKklV60YUdLY.mS5QF6669.VIyAJ8x6YzzoLMOCyfbti7M6Ak5VrxtD.1z4fLBjnbR
+ Cs4cpo7_S_VM2nUgmH01GoT_M.MT83PSqPnljs0phIp7InhuwiQOWNxMS5837YR3J0bu_raWTRqN
+ axG3mZsAmDYSoy5dAhotMuvQyN2jcak63x8NxznmxQ08OBHG95kDjaYzh4Y8QH0Jmzfwu1UhuIks
+ xb7mc1ua_sb2tDQh2twCrA89xZ7MWb9Y2XeK5EzAqhnYhlZzjGy_mWO.0qzcxKlmOqVizOpVFzMs
+ PWYhF6Bm.NLTbnSphpHriSUULFFGGXFbI9SBaTot3eMer8SO8dckUiVBtrMeJTK6gLELCswVhvbx
+ Avy37vwKdZrGrZIShQE4c5AI6_4qWWhcE1XkQTxs1rsCGftx1YALKgiEDBXXQfw.V8dN93kC4S3c
+ 3VPAAndvZobmCTHz9.k739jzE_W6oj6UUnrDby0NdDonPlIMbES6FqJd8kZLb7AUS71XvKS8bJNB
+ yORXB3y39zufeSWStHJRI71pp4gpWrF12Rw2mo0gMhAQmbO1kxg4DgW1CVgwtqI2dFwLHG3knLLe
+ .BWuotRyNMG8c7cBBlnLz4Ryz1qbvmXghtAdwVfvCVirEbkG.hs42nXXieWybFa2Ele.08bS4Jhr
+ wrGbb2LZm5ivxe39lrSlc9WaFM4DJ_fcxF2arF4JGhTgO9O6f9CSh_nslP6itsUnGyec3b6mi3gt
+ r67syhWWFL6nyF7JPhS7GR6Y4MF4xKSrVmbCh0S31xmginT7o7GjukZGTFhwUQ5gNk65LBMNsI7q
+ _EVyfjpJnQx.rGwFmdCUbdolxC9QujwhRZzc0ujEKrJSPV3VJNp17orUw3HSeovdm9C8qIJjGNZ2
+ hpjqxbnXj2A8AB2dsne_lZ2VzrsaMZ.qczma.4HcOpyO41uyBtSyERbHVN1OWzdxqhgE6vDgH.6j
+ 4ExJDqZgrjWseRAfhpwPl3A8nqPmr_fPFgu8tJJUzMP2HjlXd2cJ_ewUxJgtt2YXpeI11.rgoKfU
+ oF5KYJOzU7FtNOFOsvWyJHeDE1WNzVv206i1dAW3CsxBIKrg_6HU5G4dGoFtJ8cFfC.YWY_R7jKP
+ _7BUOnqljvOnpVT9bYOb2ji1rMgkAmq3vLF9XDg9N2LKUaMOaQScls1Gy0sZYSo7CxmxDBAXwY5w
+ QE4OmSwRVY2IocH7VfbR_.NIvh6SXgctzvOtm2bgeMvPW.OTgrAUf2.V7AETzNXRcDGNwaGw4TOf
+ xCRadiOKuAHbi52ZWhmRMSKqM4vmGmxtxeqxtrf_xhoVmZVNWHkyyS3BqSDLdDtzn1LUl_SHix0q
+ bDacLeP7R7ttkEIbYR1ehifIPyMZFP12UD50xzDPfSDmZsLSZsyTlIi0R2V2IfKRy27SePPInsCA
+ DKS70yPWfmh2crS1z7g9S8iSaRNv417ioZfJXs3KeJ9b5nZcISOVoT35yV4NmlPV7r6IIHy2ERIu
+ t_C.4Lojwdrh9b0O9xHzDNKvH5qtZRVXakwloEo2Xj5Mrt_XOII0aZxi2rWi1U_fT0HbtihA0S2W
+ TDqGHdoGAdJqoLAlA3mlGenHXjS0PRJ89n4YgPdOJOywsXl.MR10t00Hk3JmMwUN_K_6Tw8BUL_4
+ N519K10XganAFSOTlM4Dqwc5gtdk5YCz5f7.tWYMSp3NLgYzRc.bdU0jBOmUDT_s0TcJ2ZQ9T.Al
+ qVKkoaWED8w8szs_EgphAh8iJP89Dlllgy6tr.hfFMkUb5F8pDFXjK19oTC0yd.gnKYq4RiOiki9
+ 7IpCyvqgJ3Kp4ImuH0nQ0gXKH4RmCWUg52zEJ.Utk5Q.BeX78Vs0BAzxXZy6hC6FbxOYn3VqWy.2
+ UoGkG8Z_v44eIKEwu62m9PCiZEY5I50NyW6E7wNfvE5YBiQvGIqkb5ONCOOf2Sgu3RYHynO7fc_s
+ gGEK_d8UHuNj5No.56OOnLRjgiwJ3B1gnDeMpszASrAWeTAwldH7fSrrnRnWqK0ABt2T8fm3MIqh
+ 3z54U2Z4CQTPj2HU0oxvrq.zc.Z3m4YoU._W4Z2Svrh4Msueul2HBf9_d_k81k.OufHK.Vz.n6yv
+ o9gnRhw1jC8INup3Yl3nFam9BhWas6M6Vp..syQ3Zntlz79gK8_cVqPeA7.TjzZyEl_D62Q93c6C
+ Cnncqpql44lBKVQst8rF5ImZSt3PIrnmXcd8Qp54AwMx0OuZbc8jH5CFg4_k.KHVE0ux.k89e4fZ
+ YlqQ_2AW_bV5h4DtTnMzCuoADJz4Dt7.G6mEnMpLEAAxjPTcnMNxFVTY3yQV_xR5HGQNFUyR5gqH
+ lxq2dVjVUiNtFc_WmEEtSfTYqcqr9mFnjV008fzf5htF_0z38nev.vH.sk5zYUg--
+X-Sonic-MF: <pkt_1@yahoo.com.hk>
+Received: from sonic.gate.mail.ne1.yahoo.com by
+ sonic314.consmr.mail.sg3.yahoo.com with HTTP; Mon, 29 Mar 2021 07:19:46 +0000
+Received: by smtp410.mail.sg3.yahoo.com (VZM Hermes SMTP Server) with ESMTPA
+ ID f26805c7992f713fd0e92004abb54fd7; 
+ Mon, 29 Mar 2021 07:19:45 +0000 (UTC)
+Date: Mon, 29 Mar 2021 15:19:39 +0800
+Subject: cannot start  my machine due to an network error
+Message-ID: <c5daddc3-e1f4-46cc-8724-d7d44fe32868@email.android.com>
+X-Android-Message-ID: <c5daddc3-e1f4-46cc-8724-d7d44fe32868@email.android.com>
+From: =?UTF-8?B?5r2Y5pmv5rOw5YWI55Sf?= <pkt_1@yahoo.com.hk>
+To: qemu-arm@nongnu.org
+Importance: Normal
+X-Priority: 3
+X-MSMail-Priority: Normal
 MIME-Version: 1.0
-In-Reply-To: <20210326193745.13558-2-klaus@linux.vnet.ibm.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.103]
-X-ClientProxiedBy: DAG9EX1.mxp5.local (172.16.2.81) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 81700482-f4b8-41d7-8b47-2ec454da569d
-X-Ovh-Tracer-Id: 10053723221702970159
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduledrudehjedguddviecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgihesthejredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeegvdeijeefvdfhudfhffeuveehledufffhvdekheelgedttddthfeigeevgefhffenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtfeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepkhhlrghusheslhhinhhugidrvhhnvghtrdhisghmrdgtohhm
-Received-SPF: pass client-ip=46.105.48.137; envelope-from=clg@kaod.org;
- helo=9.mo51.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+Content-Type: multipart/mixed; boundary="--_com.android.email_238436569487140"
+References: <c5daddc3-e1f4-46cc-8724-d7d44fe32868.ref@email.android.com>
+X-Mailer: WebService/1.1.17936
+ mail.backend.jedi.jws.acl:role.jedi.acl.token.atz.jws.hermes.yahoo
+ Apache-HttpAsyncClient/4.1.4 (Java/11.0.9.1)
+Received-SPF: pass client-ip=106.10.240.145; envelope-from=pkt_1@yahoo.com.hk;
+ helo=sonic314-21.consmr.mail.sg3.yahoo.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Mon, 29 Mar 2021 04:39:23 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -101,54 +138,40 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <lvivier@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
- Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CgZkfg1NbLNw
+X-TUID: HuiQ4zbSg4X5
 
-On 3/26/21 8:37 PM, Klaus Heinrich Kiwi wrote:
-> Complement the Aspeed HACE support with Scatter-Gather hash support for
-> sha256 and sha512. Scatter-Gather is only supported on AST2600-series.
+----_com.android.email_238436569487140
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: base64
 
-...
+PGRpdiBkaXI9J2F1dG8nPmhpIGFsbCw8ZGl2IGRpcj0iYXV0byI+aSBhbSBjcmVhdGluZyBteSBx
+ZW11IHZpcnR1YWwgbWFjaGluZSBidXQgZ2V0cyBhbiBwcm9ibGVtLiB0aGUgc2NyaXB0IGFzIGlu
+IGF0dGFjaG1lbnQuPC9kaXY+PGRpdiBkaXI9ImF1dG8iPndlIHNlZW4gc28gbWFueSBwZW9wbGUg
+Y2FuIGZvd2FyZCBob3N0IHRvIGd1ZXN0IGJ1dCBubyBvbmUgc2hvdyBvbiBzdGFja3h4eCB3aGlj
+aCBzYXlzIGhvdyB0byB1c2UgLW5ldCB1c2VyIG9wdGlvbnMgdG8gZm93YXJkIG15IHRoaW5ncyBm
+cm9tIGd1ZXN0IHRvIGhvc3QuIHBsZWFzZSBoZWxwLjwvZGl2PjxkaXYgZGlyPSJhdXRvIj5hbGlj
+ZTwvZGl2PjwvZGl2Pg==
+----_com.android.email_238436569487140
+Content-Type: text/x-sh;
+ name="launch.sh"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment;
+ filename="launch.sh";
+ size=568
 
->  static uint64_t aspeed_hace_read(void *opaque, hwaddr addr, unsigned int size)
->  {
-> @@ -187,11 +303,6 @@ static void aspeed_hace_write(void *opaque, hwaddr addr, uint64_t data,
->                            "%s: HMAC engine command mode %"PRIx64" not implemented",
->                            __func__, (data & HASH_HMAC_MASK) >> 8);
->          }
-> -        if (data & HASH_SG_EN) {
-> -            qemu_log_mask(LOG_UNIMP,
-> -                          "%s: Hash scatter gather mode not implemented",
-> -                          __func__);
-> -        }
+cWVtdS1zeXN0ZW0tYWFyY2g2NCAtTSB2aXJ0IC1ib290IGQgLWNkcm9tICcyMTM0My4xMDAwLmFy
+bTY0LklTTycgLWhkYSAnV2luZG93cyAxMCBFbnRlcnByaXNlIGFybTY0LnZoZHgnIC1zZXJpYWwg
+bW9uOnN0ZGlvIC1kZXZpY2UgdXNiLW1vdXNlIC1zb3VuZGh3IGhkYSAtbmljIHVzZXIsbW9kZWw9
+dmlydGlvLW5ldC1wY2kgLW5ldCB1c2VyLGhvc3Rmd2Q9dGNwOjEwLjAuMi4yOjMzODktOmxvY2Fs
+aG9zdDozMzg5LGhvc3Rmd2Q9dGNwOjEwLjAuMi4yOjQ0NS06bG9jYWxob3N0OjQ0NSxob3N0Zndk
+PXVkcDoxMC4wLjIuMjozMzg5LTo6bG9jYWxob3N0OjMzODksaG9zdGZ3ZD11ZHA6MTAuMC4yLjI6
+NDQ1LTpsb2NhbGhvc3Q6NDQ1LGd1ZXN0ZndkPXRjcDo6MzM4OS06OjMzODksZ3Vlc3Rmd2Q9dGNw
+Ojo0NDUtOjo0NDUsZ3Vlc3Rmd2Q9dWRwOjozMzg5LTo6MzM4OSxndWVzdGZ3ZD11ZHA6OjQ0NS06
+OjQ0NSAtb3ZlcmNvbW1pdCBtZW0tbG9jaz1vZmYsY3B1LXBtPW9uIC10cG1kZXYgcGFzc3Rocm91
+Z2gsaWQ9dHBtMCAtdm5jICc6MicNCg==
 
-Could we check the SoC type and emit an error if not ast2600 ? 
 
->          if (data & BIT(1)) {
->              qemu_log_mask(LOG_UNIMP,
->                            "%s: Cascaded mode not implemented",
-> @@ -204,7 +315,10 @@ static void aspeed_hace_write(void *opaque, hwaddr addr, uint64_t data,
->                          __func__, data & ahc->hash_mask);
->                  break;
->          }
-> -        do_hash_operation(s, algo);
-> +        if (data & HASH_SG_EN)
-> +            do_hash_sg_operation(s, algo);
-> +        else
-> +            do_hash_operation(s, algo);
-
-patchew should complain for the lack of { }.
-
-Thanks,
-
-C. 
-
->          if (data & HASH_IRQ_EN) {
->              qemu_irq_raise(s->irq);
-> 
+----_com.android.email_238436569487140--
 

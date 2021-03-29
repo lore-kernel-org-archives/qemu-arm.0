@@ -1,163 +1,253 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp619663lfg;
-        Thu, 25 Mar 2021 10:25:12 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyTPKgHKfDpibTvfBGnE6QpP/d+i0HN/MJak5nlGiGAGOiGUEPZjxeNsBdcnLkmRGPOn1RL
-X-Received: by 2002:a92:3003:: with SMTP id x3mr7521076ile.124.1616693112626;
-        Thu, 25 Mar 2021 10:25:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1616693112; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3342152lfg;
+        Sun, 28 Mar 2021 21:23:19 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxbH/U498wLkpegigir9bF2J4CJB7w6B8Oo8qXFmEaV8PD56a1wgTLpiuldzDY5ryk3Q/WG
+X-Received: by 2002:a25:8442:: with SMTP id r2mr36848495ybm.221.1616991799340;
+        Sun, 28 Mar 2021 21:23:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1616991799; cv=none;
         d=google.com; s=arc-20160816;
-        b=q+fDVMOKK0Fh0vW4Kjia2sso7YqpVeD+XznovssO7LOHFRzJFngbyg7sjBpBfVZQ+c
-         4TNq4sUyH8a6FbhM1hCynZ7TtdHqDHOllpOsA6K0a1+5GRHZLOMy+zKPJ/U/pOrEtZc9
-         HxXCSx0fcU4GmMa7EbVdklhFJMCy+jVMbzRa/oJXG/wjzrVv1QITuBrzUL4MNwlmzISH
-         eehvVvqGP4jEKeMzNaWnXayp8eFQFgPClfd+/Xtcv+k8ujtKsIkLgn8P9x/8yXsVfsuL
-         EQ2L/WYDHj7NqZ6ctbvBO+GsDdmFg40O1gKEXYDEz0LZMcz9g3QsjVa51sSh6gqCEOmB
-         6Q7Q==
+        b=dqNn4Aqog7v+qoB9a/v3e8m1mr+olZ71+yD7iOh668r/jdWG7YvBGpp3qQXbYtxWxd
+         wofN9c+3wGxR5GvRr2uXoLzWpNu+g2W88vLN+zFeeOT68EkNmZR/Roxg0y4WWigL4QJi
+         t53XcZAqKhWbvxrltHllUbNR+HofRJEjoOpq9WUBt0/zLDH12qFu320OZg858lhifDc2
+         yr45KZHOwcd2zB4H9qKCdGkc3WbIKwxIqdBig/mF2BgZwQbWF1HE2oZCQ5wxNyCBIfXN
+         5Ptuf8Ac8jQOqyvoM6FdP0jpufiEDu5UInp0FxA2UFdY1o25HY7FRcv59635UYacSI/X
+         72ZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=ru5PzNr2MjMlIEGAQZefHTXR7pnRnJs108TQosZ5raM=;
-        b=S84XWyqVFAw0QC63d/zhjCNvcIJE5O0HuCXX3W15aSE8Zcs2rfbVq4og+zq5Fx2HU1
-         7fUAMANr14KxuubjH2vL1NM9nkInE6TZvCMFNol3dm/dK9rZeI9eT4R1htCTK9gK/Djy
-         HZkcY9njJ5YWkov+3LXB6P4yMi5C5Es7+UH6P5UVFwSrNw38SpgKwEtlurnaxcKBIKLX
-         4Xt+gRSGel3+GFV5SXP2KsR7Kd9i60L4SlN3NaE4GuBLJOW77tvxj2MzwuNA9MeuimhI
-         H8HThb5FwFMTqP+rBbYDaDiBQ1Wz/LYugxv+kDFBkePBJztdpMOWZrXZ4NP/rZfERvG/
-         u5NA==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=gtW7kdbv6kke7wlYRIzj604qe7gXtCW8IZqs2auSM3o=;
+        b=hUU3OcgaZQMAVDyN6blrQyEdnFzRIT9tMpQOcBVrdVMztClRWHcR5r3p/N7Z6ywduw
+         oLK8rvHiyXZ951yFc2vsnILnVks1Qw/8lkqYn67q5s7r7KbnJpg1V2hrEZ0ZlYWNrBzW
+         Dfc0dGW8uh1INm7fz2Xq7m3K69VcX61YUXzIJWW0SfqHzMxNfShYfzEYWzWw+pWEsPyD
+         fl7sAc+ntKKg0+5lMTqnWkfDGlkzTyEGzSSgCxIuaE3kgq0Q/csaMxkk2hK7AFWZ5TQ8
+         PkhPqFLqoAeoB9fWjiFTk7w94VQuJtxbGa6whODnH+ANhwn8y+l8QAN5dqNTBtltG/49
+         /2AQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Dz/m+1vh";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=TKJyZR42;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q12si2102332ior.61.2021.03.25.10.25.12
+        by mx.google.com with ESMTPS id j18si15969998ybp.489.2021.03.28.21.23.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Mar 2021 10:25:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 28 Mar 2021 21:23:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Dz/m+1vh";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:41794 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=TKJyZR42;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:42666 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lPTjL-0002Z5-NT
-	for alex.bennee@linaro.org; Thu, 25 Mar 2021 13:25:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50882)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lQjQs-0002Fy-LH
+	for alex.bennee@linaro.org; Mon, 29 Mar 2021 00:23:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48646)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lPTiE-0001z4-CU
- for qemu-arm@nongnu.org; Thu, 25 Mar 2021 13:24:02 -0400
-Received: from mail-oi1-x236.google.com ([2607:f8b0:4864:20::236]:38806)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lPTiB-0007gp-UL
- for qemu-arm@nongnu.org; Thu, 25 Mar 2021 13:24:01 -0400
-Received: by mail-oi1-x236.google.com with SMTP id f9so2891070oiw.5
- for <qemu-arm@nongnu.org>; Thu, 25 Mar 2021 10:23:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=ru5PzNr2MjMlIEGAQZefHTXR7pnRnJs108TQosZ5raM=;
- b=Dz/m+1vh0HyS90DNJ1fHg+dPL/87QdJEQ5+n3nFXV+f2UT7oJYi0Ex0wPjybxBjA2g
- fGX1uNG94/WwDokLAZiGFKphXYrisqMezJWRJxxBNejCApEyuGDbKGFcv5k88+ixYMB+
- 4trqmGZv1/O3KaDsnsw98Q0OxkatBLq39uYpRm+30sI1LangfiyeP/Nww2Pr9bwAq/KL
- K/jOd3TqRIwOK3TOko0CI7qA0Tq/Lb6OCr+8UaOjXZKvHXfpSt9Hp7dYRXbzmf0CBatP
- nOHWItxDXeuV4xsKpZTeGgeWVzvPU1ojQ9h2GH5Kik594yhWAGr/v7hegiBRGtgMAQdW
- 1uWA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=ru5PzNr2MjMlIEGAQZefHTXR7pnRnJs108TQosZ5raM=;
- b=JRd/+B7R9Bd8bfXLVjZ7mxJv9/Z5q9e5WwWC+sbSOJHpV2YyM49ubsWootYMCDY9G6
- UOOrGL4/94buvy1vTAcuAv1jYaGjyWaA6cAHUrw9uPvc+GU4pJ2B3yLx5EDlqQ9QHHre
- ua/8z8Pdnag0TF4OKVJ3LksKXvKiUWdcYAXnWBZbNf63iglYTexOUc3A0H6z/PlHScsY
- vCWYUe+uZo6dNMd2ruwxkMdddjQMRLawCWLEWmQMN0vbvlHBxpVPQieAxBvtKYyx4lYK
- 7zDO8cCrgtWF7ZNJER8xBsGW4YbxVnF0Am4/V6vttcG5wsgZJqfabaEvYnKe7jg61cVC
- KodQ==
-X-Gm-Message-State: AOAM533FNarvsue30dx2LXH5cqaKgMlyH/mPCdEbJwqHW4hHTDB4wbX6
- 87SZ6XXh8OQE9E3Vko5K+A3mWQ==
-X-Received: by 2002:a54:4703:: with SMTP id k3mr6969458oik.26.1616693038198;
- Thu, 25 Mar 2021 10:23:58 -0700 (PDT)
-Received: from [172.24.51.127] (168.189-204-159.bestelclientes.com.mx.
- [189.204.159.168])
- by smtp.gmail.com with ESMTPSA id o64sm1182013oif.50.2021.03.25.10.23.56
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 25 Mar 2021 10:23:57 -0700 (PDT)
-Subject: Re: [PATCH for-6.0 0/4] Don't treat all sysbus devices as hotpluggable
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20210325153310.9131-1-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <dbe71306-a4d9-c2a2-095b-e9d538810518@linaro.org>
-Date: Thu, 25 Mar 2021 11:23:55 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.1
+ (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
+ id 1lQjOZ-0007uH-CW; Mon, 29 Mar 2021 00:20:55 -0400
+Received: from ozlabs.org ([203.11.71.1]:53129)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
+ id 1lQjOW-00005U-6S; Mon, 29 Mar 2021 00:20:55 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+ id 4F7zs91fqxz9sVw; Mon, 29 Mar 2021 15:20:44 +1100 (AEDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=gibson.dropbear.id.au; s=201602; t=1616991645;
+ bh=KOTKqRAxgQ9s/I9AykcTB7cJ0k0ebUWJZHSa0SI2H6k=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=TKJyZR42MuyKAffqE90XJpcOdnlW78psCiDV1lX/OQ2xDaz50c6gpA4iemvGJzYD9
+ 7f7D5tYSo+hB/A6WqMlAvgyKs1jszWFOa+FjRQxMl6JfuqyG0Rqlt07Y2skWJaUp4t
+ RgMiaENSk1zKQPotou4sN9rW29Reo+LneTmluiCM=
+Date: Mon, 29 Mar 2021 15:11:28 +1100
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Subject: Re: [PATCH-for-6.1 06/10] hw/block/pflash_cfi02: Remove
+ pflash_setup_mappings()
+Message-ID: <YGFTcPHZ+reDwK+T@yekko.fritz.box>
+References: <20210326002728.1069834-1-f4bug@amsat.org>
+ <20210326002728.1069834-7-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <20210325153310.9131-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::236;
- envelope-from=richard.henderson@linaro.org; helo=mail-oi1-x236.google.com
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="bxLY1v2094gJllAS"
+Content-Disposition: inline
+In-Reply-To: <20210326002728.1069834-7-f4bug@amsat.org>
+Received-SPF: pass client-ip=203.11.71.1; envelope-from=dgibson@ozlabs.org;
+ helo=ozlabs.org
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <ehabkost@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Greg Kurz <groug@kaod.org>,
- qemu-ppc@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 85dUjUX88Nyh
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ "open list:Block layer core" <qemu-block@nongnu.org>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Alistair Francis <alistair@alistair23.me>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ Laurent Vivier <laurent@vivier.eu>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Max Reitz <mreitz@redhat.com>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Htvw184zA/5i
 
-On 3/25/21 9:33 AM, Peter Maydell wrote:
-> On the two machines which have the "platform bus" (ppc e500 and arm
-> virt) we currently treat all TYPE_SYS_BUS_DEVICE devices as being
-> hotpluggable in the device callbacks, and try to plug those devices
-> into the platform bus.  This is far too broad, because only a handful
-> of devices are actually valid to plug into the platform bus.
-> Moreover, if a device which is pluggable for some other reason (like
-> a PCI device) happens to use a sysbus device internally as part of
-> its implementation, the hotplug callback will incorrectly grab that
-> sysbus device, probably resulting in an assertion failure.
-> 
-> Mostly PCI devices don't use sysbus devices internally, so the only
-> case we've encountered so far is the not-valid-anyway
->   qemu-system-ppc64 -M ppce500 -device macio-oldworld
-> but we might create more in future.
-> 
-> This series restricts hotpluggability of sysbus devices on these
-> platforms to those devices which are on the dynamic sysbus whitelist
 
-s/whitelist/allowlist/g ?
+--bxLY1v2094gJllAS
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
->    include/hw/boards.h: Document machine_class_allow_dynamic_sysbus_dev()
->    machine: Provide a function to check the dynamic sysbus whitelist
->    hw/arm/virt: Only try to add valid dynamic sysbus devices to platform
->      bus
->    hw/ppc/e500plat: Only try to add valid dynamic sysbus devices to
->      platform bus
+On Fri, Mar 26, 2021 at 01:27:24AM +0100, Philippe Mathieu-Daud=E9 wrote:
+> All boards calling pflash_cfi02_register() use nb_mappings=3D1,
+> which does not do any mapping:
+>=20
+>   $ git grep -wl pflash_cfi02_register hw/
+>   hw/arm/xilinx_zynq.c
+>   hw/block/pflash_cfi02.c
+>   hw/lm32/lm32_boards.c
+>   hw/ppc/ppc405_boards.c
+>   hw/sh4/r2d.c
+>=20
+> We can remove this now unneeded code.
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
 
-Otherwise,
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
 
-r~
+> ---
+>  hw/block/pflash_cfi02.c | 35 ++---------------------------------
+>  1 file changed, 2 insertions(+), 33 deletions(-)
+>=20
+> diff --git a/hw/block/pflash_cfi02.c b/hw/block/pflash_cfi02.c
+> index 02c514fb6e0..6f4b3e3c3fe 100644
+> --- a/hw/block/pflash_cfi02.c
+> +++ b/hw/block/pflash_cfi02.c
+> @@ -75,7 +75,6 @@ struct PFlashCFI02 {
+>      uint32_t nb_blocs[PFLASH_MAX_ERASE_REGIONS];
+>      uint32_t sector_len[PFLASH_MAX_ERASE_REGIONS];
+>      uint32_t chip_len;
+> -    uint8_t mappings;
+>      uint8_t width;
+>      uint8_t be;
+>      int wcycle; /* if 0, the flash is read normally */
+> @@ -92,13 +91,6 @@ struct PFlashCFI02 {
+>      uint16_t unlock_addr1;
+>      uint8_t cfi_table[0x4d];
+>      QEMUTimer timer;
+> -    /*
+> -     * The device replicates the flash memory across its memory space.  =
+Emulate
+> -     * that by having a container (.mem) filled with an array of aliases
+> -     * (.mem_mappings) pointing to the flash memory (.orig_mem).
+> -     */
+> -    MemoryRegion mem;
+> -    MemoryRegion *mem_mappings;    /* array; one per mapping */
+>      MemoryRegion orig_mem;
+>      bool rom_mode;
+>      int read_counter; /* used for lazy switch-back to rom mode */
+> @@ -158,23 +150,6 @@ static inline void toggle_dq2(PFlashCFI02 *pfl)
+>      pfl->status ^=3D 0x04;
+>  }
+> =20
+> -/*
+> - * Set up replicated mappings of the same region.
+> - */
+> -static void pflash_setup_mappings(PFlashCFI02 *pfl)
+> -{
+> -    unsigned i;
+> -    hwaddr size =3D memory_region_size(&pfl->orig_mem);
+> -
+> -    memory_region_init(&pfl->mem, OBJECT(pfl), "pflash", pfl->mappings *=
+ size);
+> -    pfl->mem_mappings =3D g_new(MemoryRegion, pfl->mappings);
+> -    for (i =3D 0; i < pfl->mappings; ++i) {
+> -        memory_region_init_alias(&pfl->mem_mappings[i], OBJECT(pfl),
+> -                                 "pflash-alias", &pfl->orig_mem, 0, size=
+);
+> -        memory_region_add_subregion(&pfl->mem, i * size, &pfl->mem_mappi=
+ngs[i]);
+> -    }
+> -}
+> -
+>  static void pflash_reset_state_machine(PFlashCFI02 *pfl)
+>  {
+>      trace_pflash_reset(pfl->name);
+> @@ -917,12 +892,7 @@ static void pflash_cfi02_realize(DeviceState *dev, E=
+rror **errp)
+>      pfl->sector_erase_map =3D bitmap_new(pfl->total_sectors);
+> =20
+>      pfl->rom_mode =3D true;
+> -    if (pfl->mappings > 1) {
+> -        pflash_setup_mappings(pfl);
+> -        sysbus_init_mmio(SYS_BUS_DEVICE(dev), &pfl->mem);
+> -    } else {
+> -        sysbus_init_mmio(SYS_BUS_DEVICE(dev), &pfl->orig_mem);
+> -    }
+> +    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &pfl->orig_mem);
+> =20
+>      timer_init_ns(&pfl->timer, QEMU_CLOCK_VIRTUAL, pflash_timer, pfl);
+>      pfl->status =3D 0;
+> @@ -950,7 +920,6 @@ static Property pflash_cfi02_properties[] =3D {
+>      DEFINE_PROP_UINT32("num-blocks3", PFlashCFI02, nb_blocs[3], 0),
+>      DEFINE_PROP_UINT32("sector-length3", PFlashCFI02, sector_len[3], 0),
+>      DEFINE_PROP_UINT8("width", PFlashCFI02, width, 0),
+> -    DEFINE_PROP_UINT8("mappings", PFlashCFI02, mappings, 0),
+>      DEFINE_PROP_UINT8("big-endian", PFlashCFI02, be, 0),
+>      DEFINE_PROP_UINT16("id0", PFlashCFI02, ident0, 0),
+>      DEFINE_PROP_UINT16("id1", PFlashCFI02, ident1, 0),
+> @@ -1008,6 +977,7 @@ PFlashCFI02 *pflash_cfi02_register(hwaddr base,
+>  {
+>      DeviceState *dev =3D qdev_new(TYPE_PFLASH_CFI02);
+> =20
+> +    assert(nb_mappings <=3D 1);
+>      if (blk) {
+>          qdev_prop_set_drive(dev, "drive", blk);
+>      }
+> @@ -1015,7 +985,6 @@ PFlashCFI02 *pflash_cfi02_register(hwaddr base,
+>      qdev_prop_set_uint32(dev, "num-blocks", size / sector_len);
+>      qdev_prop_set_uint32(dev, "sector-length", sector_len);
+>      qdev_prop_set_uint8(dev, "width", width);
+> -    qdev_prop_set_uint8(dev, "mappings", nb_mappings);
+>      qdev_prop_set_uint8(dev, "big-endian", !!be);
+>      qdev_prop_set_uint16(dev, "id0", id0);
+>      qdev_prop_set_uint16(dev, "id1", id1);
+
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--bxLY1v2094gJllAS
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAmBhU24ACgkQbDjKyiDZ
+s5IBFxAArAuwkHR5sJlFAfbjUGS5g33rJ8CpeOpYzpT+V29MaS9xffkTtARS11Xb
+lt7Z/8dmaqNChWHyW5oBto0FoT7XDx/z7U4a/6FRUV4rIrjCD2xWfPeAB1/pGqkt
+CPa672aQE78kSc2tIvWUMbSAGKDLlBiu6519s6/1HuRg4hTt9p5OmmKvtNO7724j
+KhkeXBxMt4hWXG/p/8AlZcvgCyZBfx5/3lvdMpXRt+hCLWJBrvW+N13iyhCRajh9
+H8JTeGgcF50qvzpQ1zDzU1fQm2tZ9hDASpgKMVIOcttEVQXNREezqxSOY1esi9Y9
+0mVXeTC2VwFJsDTl2CI2gFELHzStZXoN36Z5Ps39e+qQOCuXOESAVJ+szFkiNwLS
+v6gx2TRf24ZUD2yqtotToNA5/FbvY7lpaf7gtLB+HZqLKmZ8/7groDNMfJ57Uwox
+HjskrhGK4Ic593wDy5xpfJNz7NMdX/8RvyLZI/ABavGuMEhCXL0G9QxRMhXylWfN
+YKVkcmpwk1tcju3cmFTK7eDtPr4aMBPixq8rAm7mSza3NvLusQJIsbLBC7rfnffN
+gX+OPI3NSsI2KEGtVUYfg8nrlHRtcBUoJN9kD/mruq/N4aiMVmDnkDyb871Tod4o
++FDFgijYfybNi28Z0Vw28FMopwLEdEfERX5aZFE2GXQi98cuVgc=
+=8Neu
+-----END PGP SIGNATURE-----
+
+--bxLY1v2094gJllAS--

@@ -1,580 +1,193 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id u16-20020a05600c19d000b00411d640085csm3030215wmq.43.2024.02.23.08.28.47
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 23 Feb 2024 08:28:52 -0800 (PST)
-Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id C5D385F93A;
-	Fri, 23 Feb 2024 16:22:04 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Song Gao <gaosong@loongson.cn>,
-	qemu-s390x@nongnu.org,
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
-	Thomas Huth <thuth@redhat.com>,
-	Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
-	Bin Meng <bin.meng@windriver.com>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	Laurent Vivier <laurent@vivier.eu>,
-	qemu-ppc@nongnu.org,
-	David Hildenbrand <david@redhat.com>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Ilya Leoshkevich <iii@linux.ibm.com>,
-	Cleber Rosa <crosa@redhat.com>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Alexandre Iooss <erdnaxe@crans.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	qemu-arm@nongnu.org,
-	qemu-riscv@nongnu.org,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Mahmoud Mandour <ma.mandourr@gmail.com>,
-	John Snow <jsnow@redhat.com>,
-	Weiwei Li <liwei1518@gmail.com>,
-	Alistair Francis <alistair.francis@wdc.com>,
-	Yoshinori Sato <ysato@users.sourceforge.jp>,
-	Brian Cain <bcain@quicinc.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Michael Rolnik <mrolnik@gmail.com>,
-	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH v2 24/27] contrib/plugins: extend execlog to track register changes
-Date: Fri, 23 Feb 2024 16:21:59 +0000
-Message-Id: <20240223162202.1936541-25-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240223162202.1936541-1-alex.bennee@linaro.org>
-References: <20240223162202.1936541-1-alex.bennee@linaro.org>
+Received: by 2002:a0c:9b97:0:0:0:0:0 with SMTP id o23csp175165qve;
+        Tue, 30 Mar 2021 12:50:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzhfC4dArIvJbGZ50n7L6bb/u/TQp3TCUadfWtPdmaCTBn2P2HPDQzuHP6IlJmUizLj6Qk/
+X-Received: by 2002:a6b:8b16:: with SMTP id n22mr26210788iod.79.1617133805434;
+        Tue, 30 Mar 2021 12:50:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617133805; cv=none;
+        d=google.com; s=arc-20160816;
+        b=gVeDGvIJqHZG6AbjqLWya+iXabrc4CAYH39siwpWMPkCH//yJG8Vta+z0CMhDL0CR3
+         eM1ALIcRJTBHJk1G0mNhFxUnfD1SrZ+qWlTosLLSCOacqKkuMEI53qWkqgTA3303YUpt
+         pT0J8TJGY3bgGTDKBBpTu25onm09tfQP+pejk9eV3jTJkvymB7H06ek1y5sGUob7bnwc
+         UhlPk3nC7fOiHvTajXNmxnhEOUHYvfqQhcLKVZmuyBQbbDyhUkLtnSaX1M9a2ucBOJf1
+         RfRhrDhOe0wP3D1OmzeUl1klnqsHJATuDnhS1QdbhrKUTHu3KRnOu0NxluijUJYBOozo
+         Z1Fw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=yK/NKdQiNaoZI7ey2aqBTCy6u8EIOuJy45NdyRfEZyw=;
+        b=OEpfl8ix+Glrd/MzGET+dNIG/hrlmB3QsmlUd4fYbKJujWS0YfSUS18QgJWhtNvnue
+         P9KJDJXZ+ItPgb97MD0VE3FJ/go8CDxr+GWXWQK4lBmaQ0tDHPohEAj2Uwmfb4Y5qYjJ
+         maCUwGZ/ys+iu1fJfB4srdK3teFrMNBNZEEmtxzOhgwoCYCKXFfVXVvrlZidgv8PoVjF
+         mx/51XXYpeq/8yQeibPoUnas9WfFIJmWl4FqwlENiKdl4FLnswfoZGcSp5UEyjORif0R
+         M4MjcHTPAiUx4UqzmBvjLgFl8Xra8g0ur2OBYqwQQrEc+DjplXtDUUVsGOlsuCZliUB2
+         XyYQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=sgTG0AAn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id g12si16914112ilc.71.2021.03.30.12.50.05
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 30 Mar 2021 12:50:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=sgTG0AAn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:51506 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lRKNI-0004tZ-Rh
+	for alex.bennee@linaro.org; Tue, 30 Mar 2021 15:50:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59926)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1lRKNA-0004tO-VF
+ for qemu-arm@nongnu.org; Tue, 30 Mar 2021 15:49:57 -0400
+Received: from mail-pg1-x52e.google.com ([2607:f8b0:4864:20::52e]:37581)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1lRKN6-0003sk-JR
+ for qemu-arm@nongnu.org; Tue, 30 Mar 2021 15:49:56 -0400
+Received: by mail-pg1-x52e.google.com with SMTP id k8so3324981pgf.4
+ for <qemu-arm@nongnu.org>; Tue, 30 Mar 2021 12:49:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=yK/NKdQiNaoZI7ey2aqBTCy6u8EIOuJy45NdyRfEZyw=;
+ b=sgTG0AAnoQWCg+JlXjxhX5mMUBaL55ezeCTxdkzQpUJDEzOoHq1BkGSFBrgX8dp9SO
+ bhpH+TR0tN62Z5KDSriyRrA0w7iJXFYfoXysuMIZBMjLKJQZywnYsNrvh45Fch1EBMwb
+ 5ujOvAT5XsgqCY1R/JgWm0mDbaJ0JJsWtCyH0Y5V8F2Jog2IxviPLLa/jmNbpX3CxQyS
+ GQD9JOgOsjh1mCBnq20qN9V3g+/NTnuT7xoKYyvnco7Gt2RSLPhzzhk7ykGhYkGtKrOT
+ LCI2+apjJZT5rH3/dIdDXCQaPOLcYDUsCh6pCKFS99kXbUT5w9L5B6hBocnjsGA5zGMU
+ swWA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=yK/NKdQiNaoZI7ey2aqBTCy6u8EIOuJy45NdyRfEZyw=;
+ b=d19ILWbkGC6WSv1vw5i1TXtt/vWu374TftCGxdxDKl31BHuTFapoBAi0WHqmE0vrab
+ 31jYkwSHjXB4py5h5nND7Kl85lX41OHyPo4jU115L5+YF6OIhUJGbPDRI225E+fkN8Vk
+ PI7UN0d5dU3o55e13ey3zSs1U0ppWea5ajeaF3f1ykBDyzaWK0p85vCcZ7dgBOmdVQZu
+ FHegbfVu9bnQrm0Y0Ij82B7331itEYl2yw9jM2HU9qOxst7fr6JlBQoRzjgYg11MVQgw
+ woLIYzax2AS0O/a6huvb3LYfkijBXgiPbk/jVCwHvEVmOJk5VeN2k40U0cyV9f+NQUpB
+ /VXQ==
+X-Gm-Message-State: AOAM532FjSzpl6EIIPQU6V6J+xo9jizZoO0LrDUeZPZVuuFiAwyGgddl
+ nneGY44bvtpa02hjNZqncTbhqg==
+X-Received: by 2002:a63:5807:: with SMTP id m7mr29657295pgb.73.1617133791024; 
+ Tue, 30 Mar 2021 12:49:51 -0700 (PDT)
+Received: from [192.168.1.11] ([71.212.131.83])
+ by smtp.gmail.com with ESMTPSA id w188sm21359542pfb.4.2021.03.30.12.49.50
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 30 Mar 2021 12:49:50 -0700 (PDT)
+Subject: Re: AUTIA authentication sometimes fails
+To: Peter Maydell <peter.maydell@linaro.org>,
+ Derrick McKee <derrick.mckee@gmail.com>
+References: <CAJoBWHx5DM=zhj10j1ai5T_LO9ScAhFzUezuhGu6a73vn=4_Rg@mail.gmail.com>
+ <CAFEAcA8KCJTwsb2YYoU3d_PbO=KW_ytSJXHLZZTkukVX6YzCPQ@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <82f550a0-7ef0-acd0-bbe1-5fae9b7fbcff@linaro.org>
+Date: Tue, 30 Mar 2021 12:49:48 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: pCLDVz1cpxW7
+In-Reply-To: <CAFEAcA8KCJTwsb2YYoU3d_PbO=KW_ytSJXHLZZTkukVX6YzCPQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "open list:ARM" <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: POjc03Pwv8FP
 
-With the new plugin register API we can now track changes to register
-values. Currently the implementation is fairly dumb which will slow
-down if a large number of register values are being tracked. This
-could be improved by only instrumenting instructions which mention
-registers we are interested in tracking.
+On 3/29/21 3:04 PM, Peter Maydell wrote:
+> On Mon, 29 Mar 2021 at 21:07, Derrick McKee <derrick.mckee@gmail.com> wrote:
+>>
+>> Hi,
+>>
+>> I am running across a scenario where a PAC signed code pointer (using
+>> pacia) sometimes does not successfully authenticate despite the signed
+>> pointer and the salt used to sign the pointer are correctly given to a
+>> autia instruction.  Only one particular pointer fails, while others
+>> are correctly authenticated.  Unfortunately, I can't provide a simple
+>> use case, because the behavior is part of a running kernel, and all
+>> the pointers involved are kernel space pointers.  An example of what I
+>> am seeing (not guaranteeing correct assembly, just a gist):
+>>
+>> mov x9, 0xffff800009200000
+>> mov x10, 0x20001
+>> pacia x9, x10  // x9 contains 0xff90800009200000
+>> ...
+>> mov x9, 0xff90800009200000
+>> mov x10 0x20001
+>> autia x9, x10  // x9 contains invalid pointer
+>>
+>> However, this same code with different pointer values correctly
+>> authenticate.  Is there something specific about the kernel and PAC
+>> authentication that I am missing?  Thanks.
+> 
+> cc'ing Richard, but I suspect you'll need to provide more detail...
 
-Example usage:
+Definitely.
 
-  ./qemu-aarch64 -D plugin.log -d plugin \
-     -cpu max,sve256=on \
-     -plugin contrib/plugins/libexeclog.so,reg=sp,reg=z\* \
-     ./tests/tcg/aarch64-linux-user/sha512-sve
+I transliterated your code above into a stand-alone test case:
 
-will display in the execlog any changes to the stack pointer (sp) and
-the SVE Z registers.
+#include <assert.h>
+#include <stdio.h>
 
-As testing registers every instruction will be quite a heavy operation
-there is an additional flag which attempts to optimise the register
-tracking by only instrumenting instructions which are likely to change
-its value. This relies on the QEMU disassembler showing up the register
-names in disassembly so is an explicit opt-in.
+int main()
+{
+     unsigned long p0 = 0xffff800009200000ul;
+     unsigned long salt = 0x20001;
+     unsigned long p1, p2;
 
-Message-Id: <20240103173349.398526-41-alex.bennee@linaro.org>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Cc: Akihiko Odaki <akihiko.odaki@daynix.com>
-Based-On: <20231025093128.33116-19-akihiko.odaki@daynix.com>
+     asm("pacia %0, %1" : "=r"(p1) : "r"(salt), "0"(p0));
+     asm("autia %0, %1" : "=r"(p2) : "r"(salt), "0"(p1));
+     assert(p2 == p0);
 
----
-v3
-  - just use a GArray for the CPU array
-  - drop duplicate of cpu_index
-v4
-  - rebase and api fixups
-  - I accidentally squashed the optimisation last round so update
-  commit message with the details.
----
- docs/devel/tcg-plugins.rst |  17 +-
- contrib/plugins/execlog.c  | 316 +++++++++++++++++++++++++++++++------
- 2 files changed, 281 insertions(+), 52 deletions(-)
+     printf("%016lx\n%016lx\n", p0, p1);
+     return 0;
+}
 
-diff --git a/docs/devel/tcg-plugins.rst b/docs/devel/tcg-plugins.rst
-index 81dcd43a612..fa7421279f5 100644
---- a/docs/devel/tcg-plugins.rst
-+++ b/docs/devel/tcg-plugins.rst
-@@ -497,6 +497,22 @@ arguments if required::
-   $ qemu-system-arm $(QEMU_ARGS) \
-     -plugin ./contrib/plugins/libexeclog.so,ifilter=st1w,afilter=0x40001808 -d plugin
- 
-+This plugin can also dump registers when they change value. Specify the name of the
-+registers with multiple ``reg`` options. You can also use glob style matching if you wish::
-+
-+  $ qemu-system-arm $(QEMU_ARGS) \
-+    -plugin ./contrib/plugins/libexeclog.so,reg=\*_el2,reg=sp -d plugin
-+
-+Be aware that each additional register to check will slow down
-+execution quite considerably. You can optimise the number of register
-+checks done by using the rdisas option. This will only instrument
-+instructions that mention the registers in question in disassembly.
-+This is not foolproof as some instructions implicitly change
-+instructions. You can use the ifilter to catch these cases:
-+
-+  $ qemu-system-arm $(QEMU_ARGS) \
-+    -plugin ./contrib/plugins/libexeclog.so,ifilter=msr,ifilter=blr,reg=x30,reg=\*_el1,rdisas=on
-+
- - contrib/plugins/cache.c
- 
- Cache modelling plugin that measures the performance of a given L1 cache
-@@ -583,4 +599,3 @@ The following API is generated from the inline documentation in
- include the full kernel-doc annotations.
- 
- .. kernel-doc:: include/qemu/qemu-plugin.h
--
-diff --git a/contrib/plugins/execlog.c b/contrib/plugins/execlog.c
-index f262e5555eb..dd7168cb548 100644
---- a/contrib/plugins/execlog.c
-+++ b/contrib/plugins/execlog.c
-@@ -1,7 +1,7 @@
- /*
-  * Copyright (C) 2021, Alexandre Iooss <erdnaxe@crans.org>
-  *
-- * Log instruction execution with memory access.
-+ * Log instruction execution with memory access and register changes
-  *
-  * License: GNU GPL, version 2 or later.
-  *   See the COPYING file in the top-level directory.
-@@ -15,29 +15,40 @@
- 
- #include <qemu-plugin.h>
- 
-+typedef struct {
-+    struct qemu_plugin_register *handle;
-+    GByteArray *last;
-+    GByteArray *new;
-+    const char *name;
-+} Register;
-+
-+typedef struct CPU {
-+    /* Store last executed instruction on each vCPU as a GString */
-+    GString *last_exec;
-+    /* Ptr array of Register */
-+    GPtrArray *registers;
-+} CPU;
-+
- QEMU_PLUGIN_EXPORT int qemu_plugin_version = QEMU_PLUGIN_VERSION;
- 
--/* Store last executed instruction on each vCPU as a GString */
--static GPtrArray *last_exec;
-+static GArray *cpus;
- static GRWLock expand_array_lock;
- 
- static GPtrArray *imatches;
- static GArray *amatches;
-+static GPtrArray *rmatches;
-+static bool disas_assist;
-+static GMutex add_reg_name_lock;
-+static GPtrArray *all_reg_names;
- 
--/*
-- * Expand last_exec array.
-- *
-- * As we could have multiple threads trying to do this we need to
-- * serialise the expansion under a lock.
-- */
--static void expand_last_exec(int cpu_index)
-+static CPU *get_cpu(int vcpu_index)
- {
--    g_rw_lock_writer_lock(&expand_array_lock);
--    while (cpu_index >= last_exec->len) {
--        GString *s = g_string_new(NULL);
--        g_ptr_array_add(last_exec, s);
--    }
--    g_rw_lock_writer_unlock(&expand_array_lock);
-+    CPU *c;
-+    g_rw_lock_reader_lock(&expand_array_lock);
-+    c = &g_array_index(cpus, CPU, vcpu_index);
-+    g_rw_lock_reader_unlock(&expand_array_lock);
-+
-+    return c;
- }
- 
- /**
-@@ -46,13 +57,10 @@ static void expand_last_exec(int cpu_index)
- static void vcpu_mem(unsigned int cpu_index, qemu_plugin_meminfo_t info,
-                      uint64_t vaddr, void *udata)
- {
--    GString *s;
-+    CPU *c = get_cpu(cpu_index);
-+    GString *s = c->last_exec;
- 
-     /* Find vCPU in array */
--    g_rw_lock_reader_lock(&expand_array_lock);
--    g_assert(cpu_index < last_exec->len);
--    s = g_ptr_array_index(last_exec, cpu_index);
--    g_rw_lock_reader_unlock(&expand_array_lock);
- 
-     /* Indicate type of memory access */
-     if (qemu_plugin_mem_is_store(info)) {
-@@ -73,32 +81,91 @@ static void vcpu_mem(unsigned int cpu_index, qemu_plugin_meminfo_t info,
- }
- 
- /**
-- * Log instruction execution
-+ * Log instruction execution, outputting the last one.
-+ *
-+ * vcpu_insn_exec() is a copy and paste of vcpu_insn_exec_with_regs()
-+ * without the checking of register values when we've attempted to
-+ * optimise with disas_assist.
-  */
--static void vcpu_insn_exec(unsigned int cpu_index, void *udata)
-+static void insn_check_regs(CPU *cpu)
- {
--    GString *s;
-+    for (int n = 0; n < cpu->registers->len; n++) {
-+        Register *reg = cpu->registers->pdata[n];
-+        int sz;
- 
--    /* Find or create vCPU in array */
--    g_rw_lock_reader_lock(&expand_array_lock);
--    if (cpu_index >= last_exec->len) {
--        g_rw_lock_reader_unlock(&expand_array_lock);
--        expand_last_exec(cpu_index);
--        g_rw_lock_reader_lock(&expand_array_lock);
-+        g_byte_array_set_size(reg->new, 0);
-+        sz = qemu_plugin_read_register(reg->handle, reg->new);
-+        g_assert(sz == reg->last->len);
-+
-+        if (memcmp(reg->last->data, reg->new->data, sz)) {
-+            GByteArray *temp = reg->last;
-+            g_string_append_printf(cpu->last_exec, ", %s -> 0x", reg->name);
-+            /* TODO: handle BE properly */
-+            for (int i = sz; i >= 0; i--) {
-+                g_string_append_printf(cpu->last_exec, "%02x",
-+                                       reg->new->data[i]);
-+            }
-+            reg->last = reg->new;
-+            reg->new = temp;
-+        }
-+    }
-+}
-+
-+/* Log last instruction while checking registers */
-+static void vcpu_insn_exec_with_regs(unsigned int cpu_index, void *udata)
-+{
-+    CPU *cpu = get_cpu(cpu_index);
-+
-+    /* Print previous instruction in cache */
-+    if (cpu->last_exec->len) {
-+        if (cpu->registers) {
-+            insn_check_regs(cpu);
-+        }
-+
-+        qemu_plugin_outs(cpu->last_exec->str);
-+        qemu_plugin_outs("\n");
-+    }
-+
-+    /* Store new instruction in cache */
-+    /* vcpu_mem will add memory access information to last_exec */
-+    g_string_printf(cpu->last_exec, "%u, ", cpu_index);
-+    g_string_append(cpu->last_exec, (char *)udata);
-+}
-+
-+/* Log last instruction while checking registers, ignore next */
-+static void vcpu_insn_exec_only_regs(unsigned int cpu_index, void *udata)
-+{
-+    CPU *cpu = get_cpu(cpu_index);
-+
-+    /* Print previous instruction in cache */
-+    if (cpu->last_exec->len) {
-+        if (cpu->registers) {
-+            insn_check_regs(cpu);
-+        }
-+
-+        qemu_plugin_outs(cpu->last_exec->str);
-+        qemu_plugin_outs("\n");
-     }
--    s = g_ptr_array_index(last_exec, cpu_index);
--    g_rw_lock_reader_unlock(&expand_array_lock);
-+
-+    /* reset */
-+    cpu->last_exec->len = 0;
-+}
-+
-+/* Log last instruction without checking regs, setup next */
-+static void vcpu_insn_exec(unsigned int cpu_index, void *udata)
-+{
-+    CPU *cpu = get_cpu(cpu_index);
- 
-     /* Print previous instruction in cache */
--    if (s->len) {
--        qemu_plugin_outs(s->str);
-+    if (cpu->last_exec->len) {
-+        qemu_plugin_outs(cpu->last_exec->str);
-         qemu_plugin_outs("\n");
-     }
- 
-     /* Store new instruction in cache */
-     /* vcpu_mem will add memory access information to last_exec */
--    g_string_printf(s, "%u, ", cpu_index);
--    g_string_append(s, (char *)udata);
-+    g_string_printf(cpu->last_exec, "%u, ", cpu_index);
-+    g_string_append(cpu->last_exec, (char *)udata);
- }
- 
- /**
-@@ -111,6 +178,8 @@ static void vcpu_tb_trans(qemu_plugin_id_t id, struct qemu_plugin_tb *tb)
- {
-     struct qemu_plugin_insn *insn;
-     bool skip = (imatches || amatches);
-+    bool check_regs_this = rmatches;
-+    bool check_regs_next = false;
- 
-     size_t n = qemu_plugin_tb_n_insns(tb);
-     for (size_t i = 0; i < n; i++) {
-@@ -131,7 +200,8 @@ static void vcpu_tb_trans(qemu_plugin_id_t id, struct qemu_plugin_tb *tb)
-         /*
-          * If we are filtering we better check out if we have any
-          * hits. The skip "latches" so we can track memory accesses
--         * after the instruction we care about.
-+         * after the instruction we care about. Also enable register
-+         * checking on the next instruction.
-          */
-         if (skip && imatches) {
-             int j;
-@@ -139,6 +209,7 @@ static void vcpu_tb_trans(qemu_plugin_id_t id, struct qemu_plugin_tb *tb)
-                 char *m = g_ptr_array_index(imatches, j);
-                 if (g_str_has_prefix(insn_disas, m)) {
-                     skip = false;
-+                    check_regs_next = rmatches;
-                 }
-             }
-         }
-@@ -153,8 +224,39 @@ static void vcpu_tb_trans(qemu_plugin_id_t id, struct qemu_plugin_tb *tb)
-             }
-         }
- 
-+        /*
-+         * Check the disassembly to see if a register we care about
-+         * will be affected by this instruction. This relies on the
-+         * dissembler doing something sensible for the registers we
-+         * care about.
-+         */
-+        if (disas_assist && rmatches) {
-+            check_regs_next = false;
-+            gchar *args = g_strstr_len(insn_disas, -1, " ");
-+            for (int n = 0; n < all_reg_names->len; n++) {
-+                gchar *reg = g_ptr_array_index(all_reg_names, n);
-+                if (g_strrstr(args, reg)) {
-+                    check_regs_next = true;
-+                    skip = false;
-+                }
-+            }
-+        }
-+
-+        /*
-+         * We now have 3 choices:
-+         *
-+         * - Log insn
-+         * - Log insn while checking registers
-+         * - Don't log this insn but check if last insn changed registers
-+         */
-+
-         if (skip) {
--            g_free(insn_disas);
-+            if (check_regs_this) {
-+                qemu_plugin_register_vcpu_insn_exec_cb(insn,
-+                                                       vcpu_insn_exec_only_regs,
-+                                                       QEMU_PLUGIN_CB_R_REGS,
-+                                                       NULL);
-+            }
-         } else {
-             uint32_t insn_opcode;
-             insn_opcode = *((uint32_t *)qemu_plugin_insn_data(insn));
-@@ -167,30 +269,124 @@ static void vcpu_tb_trans(qemu_plugin_id_t id, struct qemu_plugin_tb *tb)
-                                              QEMU_PLUGIN_MEM_RW, NULL);
- 
-             /* Register callback on instruction */
--            qemu_plugin_register_vcpu_insn_exec_cb(insn, vcpu_insn_exec,
--                                                   QEMU_PLUGIN_CB_NO_REGS, output);
-+            if (check_regs_this) {
-+                qemu_plugin_register_vcpu_insn_exec_cb(
-+                    insn, vcpu_insn_exec_with_regs,
-+                    QEMU_PLUGIN_CB_R_REGS,
-+                    output);
-+            } else {
-+                qemu_plugin_register_vcpu_insn_exec_cb(
-+                    insn, vcpu_insn_exec,
-+                    QEMU_PLUGIN_CB_NO_REGS,
-+                    output);
-+            }
- 
-             /* reset skip */
-             skip = (imatches || amatches);
-         }
- 
-+        /* set regs for next */
-+        if (disas_assist && rmatches) {
-+            check_regs_this = check_regs_next;
-+        }
-+
-+        g_free(insn_disas);
-     }
- }
- 
-+static Register *init_vcpu_register(qemu_plugin_reg_descriptor *desc)
-+{
-+    Register *reg = g_new0(Register, 1);
-+    g_autofree gchar *lower = g_utf8_strdown(desc->name, -1);
-+    int r;
-+
-+    reg->handle = desc->handle;
-+    reg->name = g_intern_string(lower);
-+    reg->last = g_byte_array_new();
-+    reg->new = g_byte_array_new();
-+
-+    /* read the initial value */
-+    r = qemu_plugin_read_register(reg->handle, reg->last);
-+    g_assert(r > 0);
-+    return reg;
-+}
-+
-+static GPtrArray *registers_init(int vcpu_index)
-+{
-+    g_autoptr(GPtrArray) registers = g_ptr_array_new();
-+    g_autoptr(GArray) reg_list = qemu_plugin_get_registers();
-+
-+    if (rmatches && reg_list && reg_list->len) {
-+        /*
-+         * Go through each register in the complete list and
-+         * see if we want to track it.
-+         */
-+        for (int r = 0; r < reg_list->len; r++) {
-+            qemu_plugin_reg_descriptor *rd = &g_array_index(
-+                reg_list, qemu_plugin_reg_descriptor, r);
-+            for (int p = 0; p < rmatches->len; p++) {
-+                g_autoptr(GPatternSpec) pat = g_pattern_spec_new(rmatches->pdata[p]);
-+                g_autofree gchar *rd_lower = g_utf8_strdown(rd->name, -1);
-+                if (g_pattern_match_string(pat, rd->name) ||
-+                    g_pattern_match_string(pat, rd_lower)) {
-+                    Register *reg = init_vcpu_register(rd);
-+                    g_ptr_array_add(registers, reg);
-+
-+                    /* we need a list of regnames at TB translation time */
-+                    if (disas_assist) {
-+                        g_mutex_lock(&add_reg_name_lock);
-+                        if (!g_ptr_array_find(all_reg_names, reg->name, NULL)) {
-+                            g_ptr_array_add(all_reg_names, reg->name);
-+                        }
-+                        g_mutex_unlock(&add_reg_name_lock);
-+                    }
-+                }
-+            }
-+        }
-+    }
-+
-+    return registers->len ? g_steal_pointer(&registers) : NULL;
-+}
-+
-+/*
-+ * Initialise a new vcpu/thread with:
-+ *   - last_exec tracking data
-+ *   - list of tracked registers
-+ *   - initial value of registers
-+ *
-+ * As we could have multiple threads trying to do this we need to
-+ * serialise the expansion under a lock.
-+ */
-+static void vcpu_init(qemu_plugin_id_t id, unsigned int vcpu_index)
-+{
-+    CPU *c;
-+
-+    g_rw_lock_writer_lock(&expand_array_lock);
-+    if (vcpu_index >= cpus->len) {
-+        g_array_set_size(cpus, vcpu_index + 1);
-+    }
-+    g_rw_lock_writer_unlock(&expand_array_lock);
-+
-+    c = get_cpu(vcpu_index);
-+    c->last_exec = g_string_new(NULL);
-+    c->registers = registers_init(vcpu_index);
-+}
-+
- /**
-  * On plugin exit, print last instruction in cache
-  */
- static void plugin_exit(qemu_plugin_id_t id, void *p)
- {
-     guint i;
--    GString *s;
--    for (i = 0; i < last_exec->len; i++) {
--        s = g_ptr_array_index(last_exec, i);
--        if (s->str) {
--            qemu_plugin_outs(s->str);
-+    g_rw_lock_reader_lock(&expand_array_lock);
-+    for (i = 0; i < cpus->len; i++) {
-+        CPU *c = get_cpu(i);
-+        if (c->last_exec && c->last_exec->str) {
-+            qemu_plugin_outs(c->last_exec->str);
-             qemu_plugin_outs("\n");
-         }
-     }
-+    g_rw_lock_reader_unlock(&expand_array_lock);
- }
- 
- /* Add a match to the array of matches */
-@@ -212,6 +408,18 @@ static void parse_vaddr_match(char *match)
-     g_array_append_val(amatches, v);
- }
- 
-+/*
-+ * We have to wait until vCPUs are started before we can check the
-+ * patterns find anything.
-+ */
-+static void add_regpat(char *regpat)
-+{
-+    if (!rmatches) {
-+        rmatches = g_ptr_array_new();
-+    }
-+    g_ptr_array_add(rmatches, g_strdup(regpat));
-+}
-+
- /**
-  * Install the plugin
-  */
-@@ -223,11 +431,8 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
-      * Initialize dynamic array to cache vCPU instruction. In user mode
-      * we don't know the size before emulation.
-      */
--    if (info->system_emulation) {
--        last_exec = g_ptr_array_sized_new(info->system.max_vcpus);
--    } else {
--        last_exec = g_ptr_array_new();
--    }
-+    cpus = g_array_sized_new(true, true, sizeof(CPU),
-+                             info->system_emulation ? info->system.max_vcpus : 1);
- 
-     for (int i = 0; i < argc; i++) {
-         char *opt = argv[i];
-@@ -236,13 +441,22 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
-             parse_insn_match(tokens[1]);
-         } else if (g_strcmp0(tokens[0], "afilter") == 0) {
-             parse_vaddr_match(tokens[1]);
-+        } else if (g_strcmp0(tokens[0], "reg") == 0) {
-+            add_regpat(tokens[1]);
-+        } else if (g_strcmp0(tokens[0], "rdisas") == 0) {
-+            if (!qemu_plugin_bool_parse(tokens[0], tokens[1], &disas_assist)) {
-+                fprintf(stderr, "boolean argument parsing failed: %s\n", opt);
-+                return -1;
-+            }
-+            all_reg_names = g_ptr_array_new();
-         } else {
-             fprintf(stderr, "option parsing failed: %s\n", opt);
-             return -1;
-         }
-     }
- 
--    /* Register translation block and exit callbacks */
-+    /* Register init, translation block and exit callbacks */
-+    qemu_plugin_register_vcpu_init_cb(id, vcpu_init);
-     qemu_plugin_register_vcpu_tb_trans_cb(id, vcpu_tb_trans);
-     qemu_plugin_register_atexit_cb(id, plugin_exit, NULL);
- 
--- 
-2.39.2
+In your comments above, 0xff90800009200000 is the signed pointer, with the top 
+16 bits (ff90) bearing the signature.  This exact value cannot be obtained 
+without knowing the contents of the encryption key and will of course vary from 
+run to run.
+
+The test case above does not fail.
+
+So: more details about the context are required.
+
+I must say that my first guess is that you're signing with one encryption key 
+and authenticating with a different encryption key, with the kernel having 
+performed a context switch in the interim.
+
+
+r~

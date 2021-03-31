@@ -1,89 +1,107 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp541449lfg;
-        Wed, 31 Mar 2021 07:39:33 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyZqfi7usN/rkP6sCovzz+YKFjDP1Ditf6mPBglBMYDkkf2hRp3n2aX/LTk0D9WFbPIYPGv
-X-Received: by 2002:a92:6a06:: with SMTP id f6mr2817496ilc.19.1617201573336;
-        Wed, 31 Mar 2021 07:39:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617201573; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp601664lfg;
+        Wed, 31 Mar 2021 08:54:10 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxZjUDHKOhDQZvZUvO03wdDQstBRq/OgtxSI4tPNPURFgcztSPXC7HkbPmY2Z5tGLAJJv7h
+X-Received: by 2002:a92:d68e:: with SMTP id p14mr2975934iln.0.1617206050065;
+        Wed, 31 Mar 2021 08:54:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617206050; cv=none;
         d=google.com; s=arc-20160816;
-        b=O8mb0OlXF8wcDscIXxBH4nbn0xDqqqFaW2GEGcOiDs3zWKuoS/apnwCK7FPmepeXYJ
-         xxM3Z9Ls6CaoL1wQQBxBB1Lf2ODCOwmGTUGe98VOu/hFlZ8wV1xyd216K7Rw7Saxao5C
-         abd5RRfNaxxY0YB1cLkR8dbntp4G1Ftlu5Qk4/zWZPtTvMbymNmk2hbShXIsfLFweItO
-         lzZVvyvfH+Q8xhudoA2nETgpQl+eUzM/nrAViDethXr0jCNChciJ9kosGaWiKd4DE8AG
-         I6Kx1+VPjtJjxfQ+EVqFSmx4t+4HVSITAtrDuXDA1Yxmu8qOIv8ZmIvelBJgshcQdIMX
-         8NJA==
+        b=Lm66W5TMj0Xki7v7fc1EaUIkct2g4byvwISIP5OUVB3uSUdBi74phu+T/Fu4c3ptz9
+         aXW+eNE89STk8zUVO0+33GvVXTU4QD2fy80P8fPQ+ev9PjM5X28gdryyuiNcv8opQVRM
+         4nzNO1/TML5U2QeZz7GfgPC7eTyoC7w4Ts7nkAzNQi2kOk3iiE7LDbk+fuG3aB4qipDI
+         hFhvk+FlAHRVLREb4t5Fp2Lz24dOS+g9Ln8z8bWszpMkTkHjKKUe0Do1eg8xwSEragBF
+         cdbHMPLZTYJU2xNSwVaivuz2/M8wc5skDJm+a+ciikhyKR7P8eJnxLdejFnMsUS6/SDQ
+         k1pA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:to:from:date;
-        bh=tWWzuw2rzntAmneTVZ+BKL1LidmCGfZJzTW5NfBVfug=;
-        b=u6dxpmRCXgbqS0TroeFrjIY2Toqe9Ym+VasuGONKObvtJf0mON6P1kaYfoPL1y7g4c
-         rYV8wRoTp+j6QeTtEiJ9EYE81gWgT07mrH9y3eiIVi7cc0RTnwbOJnk1Bkq0tjpfJFY5
-         LOrIKABAgS+iEBobfBrSfzud9uHuwa0HYS5dwNELrAbqHgWEkSQoFDclhp8l5ee8gP+A
-         pf9voAzTPYakQRe+ll9mL44zn7TG93wGfWDJAmkkUnwnCx3vBj8YNzkr6xPDsuaN/c2r
-         BTonNovABQM9XlceATr84+DC79UgUU/S4FHjxVh2ba3CwGmFLnOuUvaBc/JrUa5xwJvy
-         wKFw==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=2HTH7bfVRFqZSDteSdGJ0DTQfjTvfEroWHTNBGdjjDs=;
+        b=KzzkyJTcED3VBBeE7EXa5FojrzyD6TykE19cpOc1x5b7CSBKeqAHFbd0UUp5/9yPC8
+         VGHVEq7u1nVi+JnUCf8C5KRF5Mz0Ijy0NOn1uW8/BSaU5F5LcdM1XZ4yIwailkPXGotJ
+         PMBKYuD2hFr4vOJvUUmJ5Lvu9RgznN3bmLp3OyUhjv2BShri1NzP9Md5QOLqtY6azJMp
+         RqE/UcRWuO5AUuZPhoOrlja0n52VTZOcFPTybOM0Bt+3SZ6fqYICB7z7L1AmwZJvbhMB
+         UqQkQc6jZGeuIOuaksdZiuPl0doVzPEfiejKrJ++qe3szjBe8gYRi01rJ2t31vHUgrlN
+         v+oA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=ypcLvtZ0;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t9si1828288ilu.69.2021.03.31.07.39.33
+        by mx.google.com with ESMTPS id v13si1808031ilj.59.2021.03.31.08.54.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 31 Mar 2021 07:39:33 -0700 (PDT)
+        Wed, 31 Mar 2021 08:54:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:49592 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=ypcLvtZ0;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:52656 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lRc0K-0002UW-Hr
-	for alex.bennee@linaro.org; Wed, 31 Mar 2021 10:39:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37294)
+	id 1lRdAX-0000Ti-AM
+	for alex.bennee@linaro.org; Wed, 31 Mar 2021 11:54:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60966)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groug@kaod.org>)
- id 1lRc09-0002UH-As; Wed, 31 Mar 2021 10:39:21 -0400
-Received: from 3.mo51.mail-out.ovh.net ([188.165.32.156]:34866)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groug@kaod.org>)
- id 1lRc04-0004IX-Pl; Wed, 31 Mar 2021 10:39:20 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.20.2])
- by mo51.mail-out.ovh.net (Postfix) with ESMTPS id 0DB4E27A80A;
- Wed, 31 Mar 2021 16:39:01 +0200 (CEST)
-Received: from kaod.org (37.59.142.99) by DAG8EX1.mxp5.local (172.16.2.71)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2106.2; Wed, 31 Mar
- 2021 16:39:00 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-99G0036fc58b45-ff78-4824-af7d-a93de646668b,
- 9D8442807461E38AC8E896D56D3346AE12FD8989) smtp.auth=groug@kaod.org
-X-OVh-ClientIp: 78.197.208.248
-Date: Wed, 31 Mar 2021 16:38:59 +0200
-From: Greg Kurz <groug@kaod.org>
-To: Cornelia Huck <cohuck@redhat.com>
-Subject: Re: [PATCH for-6.1] hw: add compat machines for 6.1
-Message-ID: <20210331163859.4976e907@bahia.lan>
-In-Reply-To: <20210331111900.118274-1-cohuck@redhat.com>
-References: <20210331111900.118274-1-cohuck@redhat.com>
-X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lRd55-00033f-Tc
+ for qemu-arm@nongnu.org; Wed, 31 Mar 2021 11:48:31 -0400
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:33323)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lRd52-0003YE-AG
+ for qemu-arm@nongnu.org; Wed, 31 Mar 2021 11:48:31 -0400
+Received: by mail-wr1-x42f.google.com with SMTP id o16so20220285wrn.0
+ for <qemu-arm@nongnu.org>; Wed, 31 Mar 2021 08:48:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=2HTH7bfVRFqZSDteSdGJ0DTQfjTvfEroWHTNBGdjjDs=;
+ b=ypcLvtZ05HCLKZnwwSqVJwsKbH2CtWYaz9sds5aR7cYPjqQnv8jZUGl1UvB2S/QbuM
+ 5MjXiL2tjnDQ87D2sW/5L7jl9vw/qM6gOs+LJfLbR68M+OEp53VED86J2yJcDTf8ixW9
+ zZTWM0i85Wqv5+3RDln9EiOJTJzjg2w/qsjZ4ujjiz/y3GeHTROpJwfjte30pH9yxdCb
+ dt68odwmQvkEsX3cweP0x9TMSB1LU2/xk9EplB6G9ISvw0jV9XZiz6TM11r7lfLGyZkm
+ bMNMJ0DyBoWuPvA6z/rqJ0ol/uhXr4fk25YOMwF2bmDzRZzKw9MMk+N7IsLMFwzGPX/j
+ JtMg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=2HTH7bfVRFqZSDteSdGJ0DTQfjTvfEroWHTNBGdjjDs=;
+ b=eRtl6ZuY/FTVrq4jfXzQAheb1EX/k59+EbMi4m1hjYxKLkt/52F9JtWiU5M83p5gk8
+ PpaINruzfIMMvRzQ2iLSKmPDYQYQowEI3M2P/VT/jLzYmfnP5IOB9F2qn7/vNnbpqlM9
+ UAq0hnw1UIG8AMFNCq9yd8mcFtCSIOuGPD6Hs+oYwnNFZI2qeX23idGhY6xJFDwhmdya
+ 8aZf31ehqgJEhkXLXNxKgVlEVaUIEd0yIBtQQuQedxJuAlXc/tlXLKWRWQCez93ZRDaQ
+ zKb41O6KkhUvoLJYC9ZtUc2rJAkovU08lcKleXEAYYbKfeceoZyc5Oiq8mdEsNjLBNLT
+ bU1Q==
+X-Gm-Message-State: AOAM533ot+LnPUGObBFJpgcQCD+urQAmMinllW7TB17DzTs2GaLeBp9w
+ e+pOn2OC6bczuDsGteTZ7eikNOCM9wN+fitD
+X-Received: by 2002:a5d:6048:: with SMTP id j8mr4599251wrt.115.1617205706755; 
+ Wed, 31 Mar 2021 08:48:26 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id e17sm6400815wra.65.2021.03.31.08.48.25
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 31 Mar 2021 08:48:26 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH for-6.0] Revert "target/arm: Make number of counters in PMCR
+ follow the CPU"
+Date: Wed, 31 Mar 2021 16:48:22 +0100
+Message-Id: <20210331154822.23332-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.99]
-X-ClientProxiedBy: DAG5EX2.mxp5.local (172.16.2.42) To DAG8EX1.mxp5.local
- (172.16.2.71)
-X-Ovh-Tracer-GUID: 5a15dab5-502c-4e8c-9050-ccee492d84e4
-X-Ovh-Tracer-Id: 9909326557342439812
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduledrudeivddgkedvucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepfffhvffukfgjfhfogggtgfhisehtjeertdertddvnecuhfhrohhmpefirhgvghcumfhurhiiuceoghhrohhugheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeefuddtieejjeevheekieeltefgleetkeetheettdeifeffvefhffelffdtfeeljeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleelnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpehgrhhouhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqshefledtgiesnhhonhhgnhhurdhorhhg
-Received-SPF: pass client-ip=188.165.32.156; envelope-from=groug@kaod.org;
- helo=3.mo51.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -96,246 +114,215 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- David Hildenbrand <david@redhat.com>, Richard
- Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>
+Cc: Zenghui Yu <yuzenghui@huawei.com>,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+ Leif Lindholm <leif@nuviainc.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: B4dE+SLMCf23
+X-TUID: NjNC9KPcSyLv
 
-On Wed, 31 Mar 2021 13:19:00 +0200
-Cornelia Huck <cohuck@redhat.com> wrote:
+This reverts commit f7fb73b8cdd3f77e26f9fcff8cf24ff1b58d200f.
 
-> Add 6.1 machine types for arm/i440fx/q35/s390x/spapr.
-> 
-> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
-> ---
->  hw/arm/virt.c              |  7 ++++++-
->  hw/core/machine.c          |  3 +++
->  hw/i386/pc.c               |  3 +++
->  hw/i386/pc_piix.c          | 14 +++++++++++++-
->  hw/i386/pc_q35.c           | 13 ++++++++++++-
->  hw/ppc/spapr.c             | 15 +++++++++++++--
+This change turned out to be a bit half-baked, and doesn't
+work with KVM, which fails with the error:
+   "qemu-system-aarch64: Failed to retrieve host CPU features"
 
-For the ppc part,
+because KVM does not allow accessing of the PMCR_EL0 value in
+the scratch "query CPU ID registers" VM unless we have first
+set the KVM_ARM_VCPU_PMU_V3 feature on the VM.
 
-Acked-by: Greg Kurz <groug@kaod.org>
+Revert the change for 6.0.
 
->  hw/s390x/s390-virtio-ccw.c | 14 +++++++++++++-
->  include/hw/boards.h        |  3 +++
->  include/hw/i386/pc.h       |  3 +++
->  9 files changed, 69 insertions(+), 6 deletions(-)
-> 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index aa2bbd14e090..d2645f4752af 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -2753,10 +2753,15 @@ static void machvirt_machine_init(void)
->  }
->  type_init(machvirt_machine_init);
->  
-> +static void virt_machine_6_1_options(MachineClass *mc)
-> +{
-> +}
-> +DEFINE_VIRT_MACHINE_AS_LATEST(6, 1)
-> +
->  static void virt_machine_6_0_options(MachineClass *mc)
->  {
->  }
-> -DEFINE_VIRT_MACHINE_AS_LATEST(6, 0)
-> +DEFINE_VIRT_MACHINE(6, 0)
->  
->  static void virt_machine_5_2_options(MachineClass *mc)
->  {
-> diff --git a/hw/core/machine.c b/hw/core/machine.c
-> index 9935c6ddd564..4dac3197008e 100644
-> --- a/hw/core/machine.c
-> +++ b/hw/core/machine.c
-> @@ -36,6 +36,9 @@
->  #include "hw/virtio/virtio.h"
->  #include "hw/virtio/virtio-pci.h"
->  
-> +GlobalProperty hw_compat_6_0[] = {};
-> +const size_t hw_compat_6_0_len = G_N_ELEMENTS(hw_compat_6_0);
-> +
->  GlobalProperty hw_compat_5_2[] = {
->      { "ICH9-LPC", "smm-compat", "on"},
->      { "PIIX4_PM", "smm-compat", "on"},
-> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-> index 8a84b25a031e..364816efc9d2 100644
-> --- a/hw/i386/pc.c
-> +++ b/hw/i386/pc.c
-> @@ -96,6 +96,9 @@
->  #include "trace.h"
->  #include CONFIG_DEVICES
->  
-> +GlobalProperty pc_compat_6_0[] = {};
-> +const size_t pc_compat_6_0_len = G_N_ELEMENTS(pc_compat_6_0);
-> +
->  GlobalProperty pc_compat_5_2[] = {
->      { "ICH9-LPC", "x-smi-cpu-hotunplug", "off" },
->  };
-> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-> index 46cc951073b4..4e8edffeaf66 100644
-> --- a/hw/i386/pc_piix.c
-> +++ b/hw/i386/pc_piix.c
-> @@ -415,7 +415,7 @@ static void pc_i440fx_machine_options(MachineClass *m)
->      machine_class_allow_dynamic_sysbus_dev(m, TYPE_VMBUS_BRIDGE);
->  }
->  
-> -static void pc_i440fx_6_0_machine_options(MachineClass *m)
-> +static void pc_i440fx_6_1_machine_options(MachineClass *m)
->  {
->      PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
->      pc_i440fx_machine_options(m);
-> @@ -424,6 +424,18 @@ static void pc_i440fx_6_0_machine_options(MachineClass *m)
->      pcmc->default_cpu_version = 1;
->  }
->  
-> +DEFINE_I440FX_MACHINE(v6_1, "pc-i440fx-6.1", NULL,
-> +                      pc_i440fx_6_1_machine_options);
-> +
-> +static void pc_i440fx_6_0_machine_options(MachineClass *m)
-> +{
-> +    pc_i440fx_6_1_machine_options(m);
-> +    m->alias = NULL;
-> +    m->is_default = false;
-> +    compat_props_add(m->compat_props, hw_compat_6_0, hw_compat_6_0_len);
-> +    compat_props_add(m->compat_props, pc_compat_6_0, pc_compat_6_0_len);
-> +}
-> +
->  DEFINE_I440FX_MACHINE(v6_0, "pc-i440fx-6.0", NULL,
->                        pc_i440fx_6_0_machine_options);
->  
-> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-> index 53450190f549..458ed41c65de 100644
-> --- a/hw/i386/pc_q35.c
-> +++ b/hw/i386/pc_q35.c
-> @@ -345,7 +345,7 @@ static void pc_q35_machine_options(MachineClass *m)
->      m->max_cpus = 288;
->  }
->  
-> -static void pc_q35_6_0_machine_options(MachineClass *m)
-> +static void pc_q35_6_1_machine_options(MachineClass *m)
->  {
->      PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
->      pc_q35_machine_options(m);
-> @@ -353,6 +353,17 @@ static void pc_q35_6_0_machine_options(MachineClass *m)
->      pcmc->default_cpu_version = 1;
->  }
->  
-> +DEFINE_Q35_MACHINE(v6_1, "pc-q35-6.1", NULL,
-> +                   pc_q35_6_1_machine_options);
-> +
-> +static void pc_q35_6_0_machine_options(MachineClass *m)
-> +{
-> +    pc_q35_6_1_machine_options(m);
-> +    m->alias = NULL;
-> +    compat_props_add(m->compat_props, hw_compat_6_0, hw_compat_6_0_len);
-> +    compat_props_add(m->compat_props, pc_compat_6_0, pc_compat_6_0_len);
-> +}
-> +
->  DEFINE_Q35_MACHINE(v6_0, "pc-q35-6.0", NULL,
->                     pc_q35_6_0_machine_options);
->  
-> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-> index d56418ca2942..fbc3aa9b3a15 100644
-> --- a/hw/ppc/spapr.c
-> +++ b/hw/ppc/spapr.c
-> @@ -4596,15 +4596,26 @@ static void spapr_machine_latest_class_options(MachineClass *mc)
->      }                                                                \
->      type_init(spapr_machine_register_##suffix)
->  
-> +/*
-> + * pseries-6.1
-> + */
-> +static void spapr_machine_6_1_class_options(MachineClass *mc)
-> +{
-> +    /* Defaults for the latest behaviour inherited from the base class */
-> +}
-> +
-> +DEFINE_SPAPR_MACHINE(6_1, "6.1", true);
-> +
->  /*
->   * pseries-6.0
->   */
->  static void spapr_machine_6_0_class_options(MachineClass *mc)
->  {
-> -    /* Defaults for the latest behaviour inherited from the base class */
-> +    spapr_machine_6_1_class_options(mc);
-> +    compat_props_add(mc->compat_props, hw_compat_6_0, hw_compat_6_0_len);
->  }
->  
-> -DEFINE_SPAPR_MACHINE(6_0, "6.0", true);
-> +DEFINE_SPAPR_MACHINE(6_0, "6.0", false);
->  
->  /*
->   * pseries-5.2
-> diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
-> index 2972b607f364..56b52d2d3091 100644
-> --- a/hw/s390x/s390-virtio-ccw.c
-> +++ b/hw/s390x/s390-virtio-ccw.c
-> @@ -795,14 +795,26 @@ bool css_migration_enabled(void)
->      }                                                                         \
->      type_init(ccw_machine_register_##suffix)
->  
-> +static void ccw_machine_6_1_instance_options(MachineState *machine)
-> +{
-> +}
-> +
-> +static void ccw_machine_6_1_class_options(MachineClass *mc)
-> +{
-> +}
-> +DEFINE_CCW_MACHINE(6_1, "6.1", true);
-> +
->  static void ccw_machine_6_0_instance_options(MachineState *machine)
->  {
-> +    ccw_machine_6_1_instance_options(machine);
->  }
->  
->  static void ccw_machine_6_0_class_options(MachineClass *mc)
->  {
-> +    ccw_machine_6_1_class_options(mc);
-> +    compat_props_add(mc->compat_props, hw_compat_6_0, hw_compat_6_0_len);
->  }
-> -DEFINE_CCW_MACHINE(6_0, "6.0", true);
-> +DEFINE_CCW_MACHINE(6_0, "6.0", false);
->  
->  static void ccw_machine_5_2_instance_options(MachineState *machine)
->  {
-> diff --git a/include/hw/boards.h b/include/hw/boards.h
-> index 4a90549ad855..d209601a8b8a 100644
-> --- a/include/hw/boards.h
-> +++ b/include/hw/boards.h
-> @@ -314,6 +314,9 @@ struct MachineState {
->      } \
->      type_init(machine_initfn##_register_types)
->  
-> +extern GlobalProperty hw_compat_6_0[];
-> +extern const size_t hw_compat_6_0_len;
-> +
->  extern GlobalProperty hw_compat_5_2[];
->  extern const size_t hw_compat_5_2_len;
->  
-> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-> index dcf060b79185..1522a3359a93 100644
-> --- a/include/hw/i386/pc.h
-> +++ b/include/hw/i386/pc.h
-> @@ -197,6 +197,9 @@ bool pc_system_ovmf_table_find(const char *entry, uint8_t **data,
->  void pc_madt_cpu_entry(AcpiDeviceIf *adev, int uid,
->                         const CPUArchIdList *apic_ids, GArray *entry);
->  
-> +extern GlobalProperty pc_compat_6_0[];
-> +extern const size_t pc_compat_6_0_len;
-> +
->  extern GlobalProperty pc_compat_5_2[];
->  extern const size_t pc_compat_5_2_len;
->  
+Reported-by: Zenghui Yu <yuzenghui@huawei.com>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+I suspect the changes required to make KVM work are not very
+complicated -- it's going to look pretty much like the way we
+deal with getting SVE vector lengths, where we do it after
+we have decided we need to enable the feature. But I don't
+have time to work on this right now, hence punting to 6.1.
+---
+ target/arm/cpu.h     |  1 -
+ target/arm/cpu64.c   |  3 ---
+ target/arm/cpu_tcg.c |  5 -----
+ target/arm/helper.c  | 29 ++++++++++++-----------------
+ target/arm/kvm64.c   |  2 --
+ 5 files changed, 12 insertions(+), 28 deletions(-)
+
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index fe68f464b3a..193a49ec7fa 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -942,7 +942,6 @@ struct ARMCPU {
+         uint64_t id_aa64mmfr2;
+         uint64_t id_aa64dfr0;
+         uint64_t id_aa64dfr1;
+-        uint64_t reset_pmcr_el0;
+     } isar;
+     uint64_t midr;
+     uint32_t revidr;
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 5d9d56a33c3..f0a9e968c9c 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -141,7 +141,6 @@ static void aarch64_a57_initfn(Object *obj)
+     cpu->gic_num_lrs = 4;
+     cpu->gic_vpribits = 5;
+     cpu->gic_vprebits = 5;
+-    cpu->isar.reset_pmcr_el0 = 0x41013000;
+     define_arm_cp_regs(cpu, cortex_a72_a57_a53_cp_reginfo);
+ }
+ 
+@@ -195,7 +194,6 @@ static void aarch64_a53_initfn(Object *obj)
+     cpu->gic_num_lrs = 4;
+     cpu->gic_vpribits = 5;
+     cpu->gic_vprebits = 5;
+-    cpu->isar.reset_pmcr_el0 = 0x41033000;
+     define_arm_cp_regs(cpu, cortex_a72_a57_a53_cp_reginfo);
+ }
+ 
+@@ -247,7 +245,6 @@ static void aarch64_a72_initfn(Object *obj)
+     cpu->gic_num_lrs = 4;
+     cpu->gic_vpribits = 5;
+     cpu->gic_vprebits = 5;
+-    cpu->isar.reset_pmcr_el0 = 0x41023000;
+     define_arm_cp_regs(cpu, cortex_a72_a57_a53_cp_reginfo);
+ }
+ 
+diff --git a/target/arm/cpu_tcg.c b/target/arm/cpu_tcg.c
+index 8252fd29f90..046e476f65f 100644
+--- a/target/arm/cpu_tcg.c
++++ b/target/arm/cpu_tcg.c
+@@ -301,7 +301,6 @@ static void cortex_a8_initfn(Object *obj)
+     cpu->ccsidr[1] = 0x2007e01a; /* 16k L1 icache. */
+     cpu->ccsidr[2] = 0xf0000000; /* No L2 icache. */
+     cpu->reset_auxcr = 2;
+-    cpu->isar.reset_pmcr_el0 = 0x41002000;
+     define_arm_cp_regs(cpu, cortexa8_cp_reginfo);
+ }
+ 
+@@ -374,7 +373,6 @@ static void cortex_a9_initfn(Object *obj)
+     cpu->clidr = (1 << 27) | (1 << 24) | 3;
+     cpu->ccsidr[0] = 0xe00fe019; /* 16k L1 dcache. */
+     cpu->ccsidr[1] = 0x200fe019; /* 16k L1 icache. */
+-    cpu->isar.reset_pmcr_el0 = 0x41093000;
+     define_arm_cp_regs(cpu, cortexa9_cp_reginfo);
+ }
+ 
+@@ -445,7 +443,6 @@ static void cortex_a7_initfn(Object *obj)
+     cpu->ccsidr[0] = 0x701fe00a; /* 32K L1 dcache */
+     cpu->ccsidr[1] = 0x201fe00a; /* 32K L1 icache */
+     cpu->ccsidr[2] = 0x711fe07a; /* 4096K L2 unified cache */
+-    cpu->isar.reset_pmcr_el0 = 0x41072000;
+     define_arm_cp_regs(cpu, cortexa15_cp_reginfo); /* Same as A15 */
+ }
+ 
+@@ -488,7 +485,6 @@ static void cortex_a15_initfn(Object *obj)
+     cpu->ccsidr[0] = 0x701fe00a; /* 32K L1 dcache */
+     cpu->ccsidr[1] = 0x201fe00a; /* 32K L1 icache */
+     cpu->ccsidr[2] = 0x711fe07a; /* 4096K L2 unified cache */
+-    cpu->isar.reset_pmcr_el0 = 0x410F3000;
+     define_arm_cp_regs(cpu, cortexa15_cp_reginfo);
+ }
+ 
+@@ -721,7 +717,6 @@ static void cortex_r5_initfn(Object *obj)
+     cpu->isar.id_isar6 = 0x0;
+     cpu->mp_is_up = true;
+     cpu->pmsav7_dregion = 16;
+-    cpu->isar.reset_pmcr_el0 = 0x41151800;
+     define_arm_cp_regs(cpu, cortexr5_cp_reginfo);
+ }
+ 
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 8fb6cc96e4d..d9220be7c5a 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -38,6 +38,7 @@
+ #endif
+ 
+ #define ARM_CPU_FREQ 1000000000 /* FIXME: 1 GHz, should be configurable */
++#define PMCR_NUM_COUNTERS 4 /* QEMU IMPDEF choice */
+ 
+ #ifndef CONFIG_USER_ONLY
+ 
+@@ -1148,9 +1149,7 @@ static const ARMCPRegInfo v6_cp_reginfo[] = {
+ 
+ static inline uint32_t pmu_num_counters(CPUARMState *env)
+ {
+-    ARMCPU *cpu = env_archcpu(env);
+-
+-    return (cpu->isar.reset_pmcr_el0 & PMCRN_MASK) >> PMCRN_SHIFT;
++  return (env->cp15.c9_pmcr & PMCRN_MASK) >> PMCRN_SHIFT;
+ }
+ 
+ /* Bits allowed to be set/cleared for PMCNTEN* and PMINTEN* */
+@@ -5754,6 +5753,13 @@ static const ARMCPRegInfo el2_cp_reginfo[] = {
+       .resetvalue = 0,
+       .writefn = gt_hyp_ctl_write, .raw_writefn = raw_write },
+ #endif
++    /* The only field of MDCR_EL2 that has a defined architectural reset value
++     * is MDCR_EL2.HPMN which should reset to the value of PMCR_EL0.N.
++     */
++    { .name = "MDCR_EL2", .state = ARM_CP_STATE_BOTH,
++      .opc0 = 3, .opc1 = 4, .crn = 1, .crm = 1, .opc2 = 1,
++      .access = PL2_RW, .resetvalue = PMCR_NUM_COUNTERS,
++      .fieldoffset = offsetof(CPUARMState, cp15.mdcr_el2), },
+     { .name = "HPFAR", .state = ARM_CP_STATE_AA32,
+       .cp = 15, .opc1 = 4, .crn = 6, .crm = 0, .opc2 = 4,
+       .access = PL2_RW, .accessfn = access_el3_aa32ns,
+@@ -6683,7 +6689,7 @@ static void define_pmu_regs(ARMCPU *cpu)
+      * field as main ID register, and we implement four counters in
+      * addition to the cycle count register.
+      */
+-    unsigned int i, pmcrn = pmu_num_counters(&cpu->env);
++    unsigned int i, pmcrn = PMCR_NUM_COUNTERS;
+     ARMCPRegInfo pmcr = {
+         .name = "PMCR", .cp = 15, .crn = 9, .crm = 12, .opc1 = 0, .opc2 = 0,
+         .access = PL0_RW,
+@@ -6698,10 +6704,10 @@ static void define_pmu_regs(ARMCPU *cpu)
+         .access = PL0_RW, .accessfn = pmreg_access,
+         .type = ARM_CP_IO,
+         .fieldoffset = offsetof(CPUARMState, cp15.c9_pmcr),
+-        .resetvalue = cpu->isar.reset_pmcr_el0,
++        .resetvalue = (cpu->midr & 0xff000000) | (pmcrn << PMCRN_SHIFT) |
++                      PMCRLC,
+         .writefn = pmcr_write, .raw_writefn = raw_write,
+     };
+-
+     define_one_arm_cp_reg(cpu, &pmcr);
+     define_one_arm_cp_reg(cpu, &pmcr64);
+     for (i = 0; i < pmcrn; i++) {
+@@ -7819,17 +7825,6 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+               .fieldoffset = offsetof(CPUARMState, cp15.vmpidr_el2) },
+             REGINFO_SENTINEL
+         };
+-        /*
+-         * The only field of MDCR_EL2 that has a defined architectural reset
+-         * value is MDCR_EL2.HPMN which should reset to the value of PMCR_EL0.N.
+-         */
+-        ARMCPRegInfo mdcr_el2 = {
+-            .name = "MDCR_EL2", .state = ARM_CP_STATE_BOTH,
+-            .opc0 = 3, .opc1 = 4, .crn = 1, .crm = 1, .opc2 = 1,
+-            .access = PL2_RW, .resetvalue = pmu_num_counters(env),
+-            .fieldoffset = offsetof(CPUARMState, cp15.mdcr_el2),
+-        };
+-        define_one_arm_cp_reg(cpu, &mdcr_el2);
+         define_arm_cp_regs(cpu, vpidr_regs);
+         define_arm_cp_regs(cpu, el2_cp_reginfo);
+         if (arm_feature(env, ARM_FEATURE_V8)) {
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index 581335e49d3..dff85f6db94 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -566,8 +566,6 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+                               ARM64_SYS_REG(3, 0, 0, 7, 1));
+         err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64mmfr2,
+                               ARM64_SYS_REG(3, 0, 0, 7, 2));
+-        err |= read_sys_reg64(fdarray[2], &ahcf->isar.reset_pmcr_el0,
+-                              ARM64_SYS_REG(3, 3, 9, 12, 0));
+ 
+         /*
+          * Note that if AArch32 support is not present in the host,
+-- 
+2.20.1
 

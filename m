@@ -1,70 +1,72 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp336003lfg;
-        Wed, 31 Mar 2021 03:14:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxeKXjqJ0qcJLwr4LVBJt91cSO98y6ikHd3pAhEka4CXs9zBin7E573W4pZXQzKKABH+p28
-X-Received: by 2002:a25:af49:: with SMTP id c9mr3632546ybj.335.1617185664639;
-        Wed, 31 Mar 2021 03:14:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617185664; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp336285lfg;
+        Wed, 31 Mar 2021 03:14:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwOsji01/3MlCOhSy5MmLeZsxnJLOtsutRAmNTXBKaLg5jaxFGj+5dYzD2RLyxbiIJoHf1Q
+X-Received: by 2002:a5e:a508:: with SMTP id 8mr1756283iog.135.1617185692779;
+        Wed, 31 Mar 2021 03:14:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617185692; cv=none;
         d=google.com; s=arc-20160816;
-        b=ow+OKCpHWwZYevXJDeS3OKcexJU/QtoAg3knCu5k3ZucSC4d3whsijz6Qo2IRcq4bg
-         RgNTMiSTifouqghpM+FfXQ1lqH1tUQJC2tz+ITj1nJx6Li/P3qQVMO/KIXjmpPiu4s9k
-         XK2PeNg9qFkAShiwvN2bSjmyMTOM4S2oWWzPA6pJjuFB0uShFeGfZz8Xpi2h4MJh/c22
-         M5VAADw3GDoznszkSOw5yLiRyhOQYpduhHgW2a6MH15/KC7hzBZzpbKlA792D+xW9yXa
-         7v7rZzIHI53B6O+f/0wvW+7xJRkfodxOYe/ftIl/9OjG5lgdrbw0I1S5NQSEkkNYJntS
-         Qvfg==
+        b=l/V6O1TEgvgjghLfY8FZF1wqAH1KamiBn0rf6H5H1Wssee5wcCPAPPexOGHoZJflF2
+         Ynytjl6TapHJtMeQM7koYU/oALUcGUppn99XJY15qiie5V2HYIwtLiUM76yGAyxfgeNP
+         xcK04lqhqercHw7gnWi8rQX1yROTuQOZHHybfRBNlQdSgVHkt+w1sQnEE8Qg2lLFRL3u
+         WmKxc8xz7uHm++MH0p9Mx7xZqJC3vuwcLml75XtqWr3DVBMWQgZpAOYgz6gUhqdU3c8X
+         98/l8810fwJv13aTac+FWNYRYdg+XHmzaklGixcvfW5nePDhxiGDS+5X+NJ1pa+PBsnP
+         iNug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from;
-        bh=kNpi0tcfh9UDXAzqYYc2za5gCV3ledT1iYulwCPsUms=;
-        b=yiTXEePs1BZ9LAyRZvfceM059rwLilHuSEybJcJUx0eH/J2UTwC33BsYMHF+o5x8Ti
-         gY+8ileWvptXiNPLxBGLY9j3boAPbwtvpcXn4bH47UBu00vlIqcQIKZdqLFtfSCjq1tg
-         MU8uly8KJLU6t/3o7z2UnCq6Qb3NaW1G/ETcPmIHDXpfGl4ov6Yj3QUv8PEAH7Z/3DVa
-         dV4wj/0V1BBf62axF3CqrmV9sN7mI+1GeASnhwNzXoOhoTK/qbbM0jCSpFkE1yOte26m
-         15sTZ6v8jbCT7gkeliLV2ysIPvCQ4o4ZZx9XlvsLuc4Q0wzz3nO60lcgTIEP+JjV66+S
-         RgLg==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=jMLQBH9nqoQ0/Lg8nw+ls07p0AACJPYr4QSxSVYSFJk=;
+        b=TW8eBNxBDDagXkEW0a6c2BxPa4NFEtQ+ptaREf3e5ITeZ+UYH8HMd9+rKzH2TlvDlB
+         BnMmqJrV6pEyEp+DkVkPS1w5ekMmH1cUP4YTWEI5gEqD/442zERx9MuZpLaO3Nz41x/s
+         6AQuBzcKtqnhykwDzMZ4Ygv9VWgHFPatS3yC/LQMaL6nrbqLh9u9gwbeMX0lSe2d4Vxy
+         lW6w2EuUOL+2FwUpBqANhUZqQRR3npxVXn5ou68IPd7grBAIxK7GesI2vT2oJIBlu4PL
+         FNFJFSdJVo3n5sbUijSmGuuFoX/SLdo0rHv9YnQ8PwNPfiM5AcvlaITgaAq24JUK9yuQ
+         1uuw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d11si1780851ybq.66.2021.03.31.03.14.24
+        by mx.google.com with ESMTPS id w29si1095105iox.12.2021.03.31.03.14.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 31 Mar 2021 03:14:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 31 Mar 2021 03:14:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:45382 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46264 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lRXrj-0003KU-UB
-	for alex.bennee@linaro.org; Wed, 31 Mar 2021 06:14:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56292)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lRXsC-0003g5-4a
+	for alex.bennee@linaro.org; Wed, 31 Mar 2021 06:14:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56310)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jiangkunkun@huawei.com>)
- id 1lRXqr-0002O6-SB; Wed, 31 Mar 2021 06:13:29 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:4309)
+ id 1lRXr1-0002U3-4B; Wed, 31 Mar 2021 06:13:40 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:4310)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jiangkunkun@huawei.com>)
- id 1lRXqp-0005bJ-73; Wed, 31 Mar 2021 06:13:29 -0400
+ id 1lRXqw-0005iF-Jz; Wed, 31 Mar 2021 06:13:38 -0400
 Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4F9MX26Bc3znWZN;
- Wed, 31 Mar 2021 18:10:42 +0800 (CST)
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4F9MXF1lGKznVL4;
+ Wed, 31 Mar 2021 18:10:53 +0800 (CST)
 Received: from DESKTOP-6NKE0BC.china.huawei.com (10.174.185.210) by
  DGGEMS409-HUB.china.huawei.com (10.3.19.209) with Microsoft SMTP Server id
- 14.3.498.0; Wed, 31 Mar 2021 18:13:15 +0800
+ 14.3.498.0; Wed, 31 Mar 2021 18:13:21 +0800
 From: Kunkun Jiang <jiangkunkun@huawei.com>
 To: Eric Auger <eric.auger@redhat.com>, Peter Maydell
  <peter.maydell@linaro.org>, Alex Williamson <alex.williamson@redhat.com>,
  <kevin.tian@intel.com>, Yi Sun <yi.y.sun@linux.intel.com>, "open list:ARM
  SMMU" <qemu-arm@nongnu.org>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>
-Subject: [RFC PATCH v2 0/4] Add migration support for VFIO PCI devices in
- SMMUv3 nested stage mode
-Date: Wed, 31 Mar 2021 18:12:55 +0800
-Message-ID: <20210331101259.2153-1-jiangkunkun@huawei.com>
+Subject: [RFC PATCH v2 1/4] vfio: Introduce helpers to mark dirty pages of a
+ RAM section
+Date: Wed, 31 Mar 2021 18:12:56 +0800
+Message-ID: <20210331101259.2153-2-jiangkunkun@huawei.com>
 X-Mailer: git-send-email 2.26.2.windows.1
+In-Reply-To: <20210331101259.2153-1-jiangkunkun@huawei.com>
+References: <20210331101259.2153-1-jiangkunkun@huawei.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
@@ -79,80 +81,80 @@ X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Liu Yi L <yi.l.liu@intel.com>, shameerali.kolothum.thodi@huawei.com,
  Kirti Wankhede <kwankhede@nvidia.com>, Zenghui Yu <yuzenghui@huawei.com>,
  wanghaibin.wang@huawei.com, Keqian Zhu <zhukeqian1@huawei.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Dm8OA7D+qj41
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: QUj4Fpv44cqL
 
-Hi all,
+Extract part of the code from vfio_sync_dirty_bitmap to form a
+new helper, which allows to mark dirty pages of a RAM section.
+This helper will be called for nested stage.
 
-Since the SMMUv3's nested translation stages[1] has been introduced by Eric, we
-need to pay attention to the migration of VFIO PCI devices in SMMUv3 nested stage
-mode. At present, it is not yet supported in QEMU. There are two problems in the
-existing framework.
+Signed-off-by: Kunkun Jiang <jiangkunkun@huawei.com>
+---
+ hw/vfio/common.c | 22 ++++++++++++++--------
+ 1 file changed, 14 insertions(+), 8 deletions(-)
 
-First, the current way to get dirty pages is not applicable to nested stage mode.
-Because of the "Caching Mode", VTD can map the RAM through the host single stage
-(giova->hpa). "vfio_listener_log_sync" gets dirty pages by transferring "giova"
-to the kernel for the RAM block section of mapped MMIO region. In nested stage
-mode, we setup the stage 2 (gpa->hpa) and the stage 1(giova->gpa) separately. So
-it is inapplicable to get dirty pages by the current way in nested stage mode.
-
-Second, it also need to pass stage 1 configurations to the destination host after
-the migration. In Eric's patch, it passes the stage 1 configuration to the host on
-each STE update for the devices set the PASID PciOps. The configuration will be
-applied at physical level. But the data of physical level will not be sent to the
-destination host. So we have to pass stage 1 configurations to the destination
-host after the migration.
-
-Best Regards,
-Kunkun Jiang
-
-[1] [RFC,v8,00/28] vSMMUv3/pSMMUv3 2 stage VFIO integration
-http://patchwork.ozlabs.org/project/qemu-devel/cover/20210225105233.650545-1-eric.auger@redhat.com/
-
-This Patch set includes patches as below:
-Patch 1-2:
-- Refactor the vfio_listener_log_sync and added a new function to get dirty pages
-in nested stage mode.
-
-Patch 3:
-- Added global_log_start/stop interface in vfio_memory_prereg_listener
-
-Patch 4:
-- Added the post_load function to vmstate_smmuv3 for passing stage 1 configuration
-to the destination host after the migration.
-
-History:
-
-v1 -> v2:
-- Add global_log_start/stop interface in vfio_memory_prereg_listener
-- Add support for repass stage 1 configs with multiple CDs to the host
-
-Kunkun Jiang (4):
-  vfio: Introduce helpers to mark dirty pages of a RAM section
-  vfio: Add vfio_prereg_listener_log_sync in nested stage
-  vfio: Add vfio_prereg_listener_global_log_start/stop in nested stage
-  hw/arm/smmuv3: Post-load stage 1 configurations to the host
-
- hw/arm/smmuv3.c     | 62 +++++++++++++++++++++++++++++++++++++++
- hw/arm/trace-events |  1 +
- hw/vfio/common.c    | 71 ++++++++++++++++++++++++++++++++++++++++-----
- 3 files changed, 126 insertions(+), 8 deletions(-)
-
+diff --git a/hw/vfio/common.c b/hw/vfio/common.c
+index 7da1e95b43..3117979307 100644
+--- a/hw/vfio/common.c
++++ b/hw/vfio/common.c
+@@ -1271,6 +1271,19 @@ err_out:
+     return ret;
+ }
+ 
++static int vfio_dma_sync_ram_section_dirty_bitmap(VFIOContainer *container,
++                                                  MemoryRegionSection *section)
++{
++    ram_addr_t ram_addr;
++
++    ram_addr = memory_region_get_ram_addr(section->mr) +
++               section->offset_within_region;
++
++    return vfio_get_dirty_bitmap(container,
++                    REAL_HOST_PAGE_ALIGN(section->offset_within_address_space),
++                    int128_get64(section->size), ram_addr);
++}
++
+ typedef struct {
+     IOMMUNotifier n;
+     VFIOGuestIOMMU *giommu;
+@@ -1312,8 +1325,6 @@ static void vfio_iommu_map_dirty_notify(IOMMUNotifier *n, IOMMUTLBEntry *iotlb)
+ static int vfio_sync_dirty_bitmap(VFIOContainer *container,
+                                   MemoryRegionSection *section)
+ {
+-    ram_addr_t ram_addr;
+-
+     if (memory_region_is_iommu(section->mr)) {
+         VFIOGuestIOMMU *giommu;
+ 
+@@ -1342,12 +1353,7 @@ static int vfio_sync_dirty_bitmap(VFIOContainer *container,
+         return 0;
+     }
+ 
+-    ram_addr = memory_region_get_ram_addr(section->mr) +
+-               section->offset_within_region;
+-
+-    return vfio_get_dirty_bitmap(container,
+-                   REAL_HOST_PAGE_ALIGN(section->offset_within_address_space),
+-                   int128_get64(section->size), ram_addr);
++    return vfio_dma_sync_ram_section_dirty_bitmap(container, section);
+ }
+ 
+ static void vfio_listener_log_sync(MemoryListener *listener,
 -- 
 2.23.0
 

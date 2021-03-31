@@ -1,85 +1,89 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp338107lfg;
-        Wed, 31 Mar 2021 03:17:27 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzH55giXWxk+Aor95JtZY51p5EoqFmzrJmfk5m0oXG5wR31WhcXy6KCI5vGvxREJFTo+351
-X-Received: by 2002:a05:6602:1689:: with SMTP id s9mr1665331iow.171.1617185847197;
-        Wed, 31 Mar 2021 03:17:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617185847; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp541449lfg;
+        Wed, 31 Mar 2021 07:39:33 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyZqfi7usN/rkP6sCovzz+YKFjDP1Ditf6mPBglBMYDkkf2hRp3n2aX/LTk0D9WFbPIYPGv
+X-Received: by 2002:a92:6a06:: with SMTP id f6mr2817496ilc.19.1617201573336;
+        Wed, 31 Mar 2021 07:39:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617201573; cv=none;
         d=google.com; s=arc-20160816;
-        b=NWnpewh9R0/P4U5VYSN7I4tk8XR7yf1RfrQdycSgOb+UZnPZWDPu8CQIZIKzNjJscn
-         elylRf5GASAJ4+1iiM/0Vg90QsqU/bMiQFdLDs+EzJSSUHlupovrf3+3d1n3EBGHk28P
-         cbZsRisVUkzMDli+tttSjXJbD+/D5YHiTuaaSbQya7Zk4Z1iEuHAKnQqEk4inaPexa3a
-         I2unh3ujmL6RoosR1Py5mf8U+UArVHekDak2u7JEaAVufLyo6IRSYY7WjKD8pxQzaK4i
-         +nScSkV9TGeCdrFiM2lHcc2KtS+B6lMIoEcIWTBtxAlL3A43ER8/wDlswM37TW8VkV4U
-         VYxQ==
+        b=O8mb0OlXF8wcDscIXxBH4nbn0xDqqqFaW2GEGcOiDs3zWKuoS/apnwCK7FPmepeXYJ
+         xxM3Z9Ls6CaoL1wQQBxBB1Lf2ODCOwmGTUGe98VOu/hFlZ8wV1xyd216K7Rw7Saxao5C
+         abd5RRfNaxxY0YB1cLkR8dbntp4G1Ftlu5Qk4/zWZPtTvMbymNmk2hbShXIsfLFweItO
+         lzZVvyvfH+Q8xhudoA2nETgpQl+eUzM/nrAViDethXr0jCNChciJ9kosGaWiKd4DE8AG
+         I6Kx1+VPjtJjxfQ+EVqFSmx4t+4HVSITAtrDuXDA1Yxmu8qOIv8ZmIvelBJgshcQdIMX
+         8NJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=Wd/LNLzH/B5LIrkjQpQpI069Xz3QxI3LbFznEjlUcCM=;
-        b=ERumc5M5oMLmbFu9iD6qaBl/24BowAX0Y3FCV4j8L7yP6CS9zSXMbrHElHDE2/gqYo
-         Taemap16L6IsCeC/ugXP+vgMwHHaLRwCBMdln4jisDGB66WbN1SWEHoJQ/S5UbG0xgIh
-         5pCdhgNcrTR2l6Q3Mcp9fWVNadIMEzlx9Ip8vX/ToYEkulON5HaMdSXLR7kMmqEPdkmX
-         /fAFYtbIFy+t5GePM/CcDOVTIt5f2KmDvbd0WHG9DtxRUb4+8cJdjDrGe1EC/D2/fstK
-         tct9lDguFBaJIYVVlguBmvsXPVxwn/7Z3jZ2qngzients3b4aF8i8DyFTZhBm+L3Z9mM
-         ZYrg==
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date;
+        bh=tWWzuw2rzntAmneTVZ+BKL1LidmCGfZJzTW5NfBVfug=;
+        b=u6dxpmRCXgbqS0TroeFrjIY2Toqe9Ym+VasuGONKObvtJf0mON6P1kaYfoPL1y7g4c
+         rYV8wRoTp+j6QeTtEiJ9EYE81gWgT07mrH9y3eiIVi7cc0RTnwbOJnk1Bkq0tjpfJFY5
+         LOrIKABAgS+iEBobfBrSfzud9uHuwa0HYS5dwNELrAbqHgWEkSQoFDclhp8l5ee8gP+A
+         pf9voAzTPYakQRe+ll9mL44zn7TG93wGfWDJAmkkUnwnCx3vBj8YNzkr6xPDsuaN/c2r
+         BTonNovABQM9XlceATr84+DC79UgUU/S4FHjxVh2ba3CwGmFLnOuUvaBc/JrUa5xwJvy
+         wKFw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q19si1575292jat.59.2021.03.31.03.17.27
+        by mx.google.com with ESMTPS id t9si1828288ilu.69.2021.03.31.07.39.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 31 Mar 2021 03:17:27 -0700 (PDT)
+        Wed, 31 Mar 2021 07:39:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:53612 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:49592 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lRXug-0006lW-Ho
-	for alex.bennee@linaro.org; Wed, 31 Mar 2021 06:17:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56336)
+	id 1lRc0K-0002UW-Hr
+	for alex.bennee@linaro.org; Wed, 31 Mar 2021 10:39:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37294)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jiangkunkun@huawei.com>)
- id 1lRXr5-0002X4-MB; Wed, 31 Mar 2021 06:13:43 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:4842)
+ (Exim 4.90_1) (envelope-from <groug@kaod.org>)
+ id 1lRc09-0002UH-As; Wed, 31 Mar 2021 10:39:21 -0400
+Received: from 3.mo51.mail-out.ovh.net ([188.165.32.156]:34866)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jiangkunkun@huawei.com>)
- id 1lRXr0-0005iE-0N; Wed, 31 Mar 2021 06:13:43 -0400
-Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4F9MXt33c5z1BG04;
- Wed, 31 Mar 2021 18:11:26 +0800 (CST)
-Received: from DESKTOP-6NKE0BC.china.huawei.com (10.174.185.210) by
- DGGEMS409-HUB.china.huawei.com (10.3.19.209) with Microsoft SMTP Server id
- 14.3.498.0; Wed, 31 Mar 2021 18:13:25 +0800
-From: Kunkun Jiang <jiangkunkun@huawei.com>
-To: Eric Auger <eric.auger@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, Alex Williamson <alex.williamson@redhat.com>,
- <kevin.tian@intel.com>, Yi Sun <yi.y.sun@linux.intel.com>, "open list:ARM
- SMMU" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-Subject: [RFC PATCH v2 2/4] vfio: Add vfio_prereg_listener_log_sync in nested
- stage
-Date: Wed, 31 Mar 2021 18:12:57 +0800
-Message-ID: <20210331101259.2153-3-jiangkunkun@huawei.com>
-X-Mailer: git-send-email 2.26.2.windows.1
-In-Reply-To: <20210331101259.2153-1-jiangkunkun@huawei.com>
-References: <20210331101259.2153-1-jiangkunkun@huawei.com>
+ (Exim 4.90_1) (envelope-from <groug@kaod.org>)
+ id 1lRc04-0004IX-Pl; Wed, 31 Mar 2021 10:39:20 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.20.2])
+ by mo51.mail-out.ovh.net (Postfix) with ESMTPS id 0DB4E27A80A;
+ Wed, 31 Mar 2021 16:39:01 +0200 (CEST)
+Received: from kaod.org (37.59.142.99) by DAG8EX1.mxp5.local (172.16.2.71)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2106.2; Wed, 31 Mar
+ 2021 16:39:00 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-99G0036fc58b45-ff78-4824-af7d-a93de646668b,
+ 9D8442807461E38AC8E896D56D3346AE12FD8989) smtp.auth=groug@kaod.org
+X-OVh-ClientIp: 78.197.208.248
+Date: Wed, 31 Mar 2021 16:38:59 +0200
+From: Greg Kurz <groug@kaod.org>
+To: Cornelia Huck <cohuck@redhat.com>
+Subject: Re: [PATCH for-6.1] hw: add compat machines for 6.1
+Message-ID: <20210331163859.4976e907@bahia.lan>
+In-Reply-To: <20210331111900.118274-1-cohuck@redhat.com>
+References: <20210331111900.118274-1-cohuck@redhat.com>
+X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.174.185.210]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190;
- envelope-from=jiangkunkun@huawei.com; helo=szxga04-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.99]
+X-ClientProxiedBy: DAG5EX2.mxp5.local (172.16.2.42) To DAG8EX1.mxp5.local
+ (172.16.2.71)
+X-Ovh-Tracer-GUID: 5a15dab5-502c-4e8c-9050-ccee492d84e4
+X-Ovh-Tracer-Id: 9909326557342439812
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduledrudeivddgkedvucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepfffhvffukfgjfhfogggtgfhisehtjeertdertddvnecuhfhrohhmpefirhgvghcumfhurhiiuceoghhrohhugheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeefuddtieejjeevheekieeltefgleetkeetheettdeifeffvefhffelffdtfeeljeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleelnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpehgrhhouhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqshefledtgiesnhhonhhgnhhurdhorhhg
+Received-SPF: pass client-ip=188.165.32.156; envelope-from=groug@kaod.org;
+ helo=3.mo51.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -92,78 +96,246 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Liu Yi L <yi.l.liu@intel.com>, shameerali.kolothum.thodi@huawei.com,
- Kirti Wankhede <kwankhede@nvidia.com>, Zenghui Yu <yuzenghui@huawei.com>,
- wanghaibin.wang@huawei.com, Keqian Zhu <zhukeqian1@huawei.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ David Hildenbrand <david@redhat.com>, Richard
+ Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xIZyk8h7gR7K
+X-TUID: B4dE+SLMCf23
 
-On Intel, the DMA mapped through the host single stage. Instead
-we set up the stage 2 and stage 1 separately in nested mode as there
-is no "Caching Mode".
+On Wed, 31 Mar 2021 13:19:00 +0200
+Cornelia Huck <cohuck@redhat.com> wrote:
 
-Legacy vfio_listener_log_sync cannot be used in nested stage as we
-don't need to pay close attention to stage 1 mapping. This patch adds
-vfio_prereg_listener_log_sync to mark dirty pages in nested mode.
+> Add 6.1 machine types for arm/i440fx/q35/s390x/spapr.
+> 
+> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+> ---
+>  hw/arm/virt.c              |  7 ++++++-
+>  hw/core/machine.c          |  3 +++
+>  hw/i386/pc.c               |  3 +++
+>  hw/i386/pc_piix.c          | 14 +++++++++++++-
+>  hw/i386/pc_q35.c           | 13 ++++++++++++-
+>  hw/ppc/spapr.c             | 15 +++++++++++++--
 
-Signed-off-by: Kunkun Jiang <jiangkunkun@huawei.com>
----
- hw/vfio/common.c | 27 +++++++++++++++++++++++++++
- 1 file changed, 27 insertions(+)
+For the ppc part,
 
-diff --git a/hw/vfio/common.c b/hw/vfio/common.c
-index 3117979307..86722814d4 100644
---- a/hw/vfio/common.c
-+++ b/hw/vfio/common.c
-@@ -1284,6 +1284,22 @@ static int vfio_dma_sync_ram_section_dirty_bitmap(VFIOContainer *container,
-                     int128_get64(section->size), ram_addr);
- }
- 
-+static void vfio_prereg_listener_log_sync(MemoryListener *listener,
-+                                          MemoryRegionSection *section)
-+{
-+    VFIOContainer *container =
-+        container_of(listener, VFIOContainer, prereg_listener);
-+
-+    if (!memory_region_is_ram(section->mr) ||
-+        !container->dirty_pages_supported) {
-+        return;
-+    }
-+
-+    if (vfio_devices_all_dirty_tracking(container)) {
-+        vfio_dma_sync_ram_section_dirty_bitmap(container, section);
-+    }
-+}
-+
- typedef struct {
-     IOMMUNotifier n;
-     VFIOGuestIOMMU *giommu;
-@@ -1328,6 +1344,16 @@ static int vfio_sync_dirty_bitmap(VFIOContainer *container,
-     if (memory_region_is_iommu(section->mr)) {
-         VFIOGuestIOMMU *giommu;
- 
-+        /*
-+         * In nested mode, stage 2 (gpa->hpa) and stage 1 (giova->gpa) are
-+         * set up separately. It is inappropriate to pass 'giova' to kernel
-+         * to get dirty pages. We only need to focus on stage 2 mapping when
-+         * marking dirty pages.
-+         */
-+        if (container->iommu_type == VFIO_TYPE1_NESTING_IOMMU) {
-+            return 0;
-+        }
-+
-         QLIST_FOREACH(giommu, &container->giommu_list, giommu_next) {
-             if (MEMORY_REGION(giommu->iommu) == section->mr &&
-                 giommu->n.start == section->offset_within_region) {
-@@ -1382,6 +1408,7 @@ static const MemoryListener vfio_memory_listener = {
- static MemoryListener vfio_memory_prereg_listener = {
-     .region_add = vfio_prereg_listener_region_add,
-     .region_del = vfio_prereg_listener_region_del,
-+    .log_sync = vfio_prereg_listener_log_sync,
- };
- 
- static void vfio_listener_release(VFIOContainer *container)
--- 
-2.23.0
+Acked-by: Greg Kurz <groug@kaod.org>
+
+>  hw/s390x/s390-virtio-ccw.c | 14 +++++++++++++-
+>  include/hw/boards.h        |  3 +++
+>  include/hw/i386/pc.h       |  3 +++
+>  9 files changed, 69 insertions(+), 6 deletions(-)
+> 
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index aa2bbd14e090..d2645f4752af 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -2753,10 +2753,15 @@ static void machvirt_machine_init(void)
+>  }
+>  type_init(machvirt_machine_init);
+>  
+> +static void virt_machine_6_1_options(MachineClass *mc)
+> +{
+> +}
+> +DEFINE_VIRT_MACHINE_AS_LATEST(6, 1)
+> +
+>  static void virt_machine_6_0_options(MachineClass *mc)
+>  {
+>  }
+> -DEFINE_VIRT_MACHINE_AS_LATEST(6, 0)
+> +DEFINE_VIRT_MACHINE(6, 0)
+>  
+>  static void virt_machine_5_2_options(MachineClass *mc)
+>  {
+> diff --git a/hw/core/machine.c b/hw/core/machine.c
+> index 9935c6ddd564..4dac3197008e 100644
+> --- a/hw/core/machine.c
+> +++ b/hw/core/machine.c
+> @@ -36,6 +36,9 @@
+>  #include "hw/virtio/virtio.h"
+>  #include "hw/virtio/virtio-pci.h"
+>  
+> +GlobalProperty hw_compat_6_0[] = {};
+> +const size_t hw_compat_6_0_len = G_N_ELEMENTS(hw_compat_6_0);
+> +
+>  GlobalProperty hw_compat_5_2[] = {
+>      { "ICH9-LPC", "smm-compat", "on"},
+>      { "PIIX4_PM", "smm-compat", "on"},
+> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> index 8a84b25a031e..364816efc9d2 100644
+> --- a/hw/i386/pc.c
+> +++ b/hw/i386/pc.c
+> @@ -96,6 +96,9 @@
+>  #include "trace.h"
+>  #include CONFIG_DEVICES
+>  
+> +GlobalProperty pc_compat_6_0[] = {};
+> +const size_t pc_compat_6_0_len = G_N_ELEMENTS(pc_compat_6_0);
+> +
+>  GlobalProperty pc_compat_5_2[] = {
+>      { "ICH9-LPC", "x-smi-cpu-hotunplug", "off" },
+>  };
+> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+> index 46cc951073b4..4e8edffeaf66 100644
+> --- a/hw/i386/pc_piix.c
+> +++ b/hw/i386/pc_piix.c
+> @@ -415,7 +415,7 @@ static void pc_i440fx_machine_options(MachineClass *m)
+>      machine_class_allow_dynamic_sysbus_dev(m, TYPE_VMBUS_BRIDGE);
+>  }
+>  
+> -static void pc_i440fx_6_0_machine_options(MachineClass *m)
+> +static void pc_i440fx_6_1_machine_options(MachineClass *m)
+>  {
+>      PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
+>      pc_i440fx_machine_options(m);
+> @@ -424,6 +424,18 @@ static void pc_i440fx_6_0_machine_options(MachineClass *m)
+>      pcmc->default_cpu_version = 1;
+>  }
+>  
+> +DEFINE_I440FX_MACHINE(v6_1, "pc-i440fx-6.1", NULL,
+> +                      pc_i440fx_6_1_machine_options);
+> +
+> +static void pc_i440fx_6_0_machine_options(MachineClass *m)
+> +{
+> +    pc_i440fx_6_1_machine_options(m);
+> +    m->alias = NULL;
+> +    m->is_default = false;
+> +    compat_props_add(m->compat_props, hw_compat_6_0, hw_compat_6_0_len);
+> +    compat_props_add(m->compat_props, pc_compat_6_0, pc_compat_6_0_len);
+> +}
+> +
+>  DEFINE_I440FX_MACHINE(v6_0, "pc-i440fx-6.0", NULL,
+>                        pc_i440fx_6_0_machine_options);
+>  
+> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+> index 53450190f549..458ed41c65de 100644
+> --- a/hw/i386/pc_q35.c
+> +++ b/hw/i386/pc_q35.c
+> @@ -345,7 +345,7 @@ static void pc_q35_machine_options(MachineClass *m)
+>      m->max_cpus = 288;
+>  }
+>  
+> -static void pc_q35_6_0_machine_options(MachineClass *m)
+> +static void pc_q35_6_1_machine_options(MachineClass *m)
+>  {
+>      PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
+>      pc_q35_machine_options(m);
+> @@ -353,6 +353,17 @@ static void pc_q35_6_0_machine_options(MachineClass *m)
+>      pcmc->default_cpu_version = 1;
+>  }
+>  
+> +DEFINE_Q35_MACHINE(v6_1, "pc-q35-6.1", NULL,
+> +                   pc_q35_6_1_machine_options);
+> +
+> +static void pc_q35_6_0_machine_options(MachineClass *m)
+> +{
+> +    pc_q35_6_1_machine_options(m);
+> +    m->alias = NULL;
+> +    compat_props_add(m->compat_props, hw_compat_6_0, hw_compat_6_0_len);
+> +    compat_props_add(m->compat_props, pc_compat_6_0, pc_compat_6_0_len);
+> +}
+> +
+>  DEFINE_Q35_MACHINE(v6_0, "pc-q35-6.0", NULL,
+>                     pc_q35_6_0_machine_options);
+>  
+> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+> index d56418ca2942..fbc3aa9b3a15 100644
+> --- a/hw/ppc/spapr.c
+> +++ b/hw/ppc/spapr.c
+> @@ -4596,15 +4596,26 @@ static void spapr_machine_latest_class_options(MachineClass *mc)
+>      }                                                                \
+>      type_init(spapr_machine_register_##suffix)
+>  
+> +/*
+> + * pseries-6.1
+> + */
+> +static void spapr_machine_6_1_class_options(MachineClass *mc)
+> +{
+> +    /* Defaults for the latest behaviour inherited from the base class */
+> +}
+> +
+> +DEFINE_SPAPR_MACHINE(6_1, "6.1", true);
+> +
+>  /*
+>   * pseries-6.0
+>   */
+>  static void spapr_machine_6_0_class_options(MachineClass *mc)
+>  {
+> -    /* Defaults for the latest behaviour inherited from the base class */
+> +    spapr_machine_6_1_class_options(mc);
+> +    compat_props_add(mc->compat_props, hw_compat_6_0, hw_compat_6_0_len);
+>  }
+>  
+> -DEFINE_SPAPR_MACHINE(6_0, "6.0", true);
+> +DEFINE_SPAPR_MACHINE(6_0, "6.0", false);
+>  
+>  /*
+>   * pseries-5.2
+> diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
+> index 2972b607f364..56b52d2d3091 100644
+> --- a/hw/s390x/s390-virtio-ccw.c
+> +++ b/hw/s390x/s390-virtio-ccw.c
+> @@ -795,14 +795,26 @@ bool css_migration_enabled(void)
+>      }                                                                         \
+>      type_init(ccw_machine_register_##suffix)
+>  
+> +static void ccw_machine_6_1_instance_options(MachineState *machine)
+> +{
+> +}
+> +
+> +static void ccw_machine_6_1_class_options(MachineClass *mc)
+> +{
+> +}
+> +DEFINE_CCW_MACHINE(6_1, "6.1", true);
+> +
+>  static void ccw_machine_6_0_instance_options(MachineState *machine)
+>  {
+> +    ccw_machine_6_1_instance_options(machine);
+>  }
+>  
+>  static void ccw_machine_6_0_class_options(MachineClass *mc)
+>  {
+> +    ccw_machine_6_1_class_options(mc);
+> +    compat_props_add(mc->compat_props, hw_compat_6_0, hw_compat_6_0_len);
+>  }
+> -DEFINE_CCW_MACHINE(6_0, "6.0", true);
+> +DEFINE_CCW_MACHINE(6_0, "6.0", false);
+>  
+>  static void ccw_machine_5_2_instance_options(MachineState *machine)
+>  {
+> diff --git a/include/hw/boards.h b/include/hw/boards.h
+> index 4a90549ad855..d209601a8b8a 100644
+> --- a/include/hw/boards.h
+> +++ b/include/hw/boards.h
+> @@ -314,6 +314,9 @@ struct MachineState {
+>      } \
+>      type_init(machine_initfn##_register_types)
+>  
+> +extern GlobalProperty hw_compat_6_0[];
+> +extern const size_t hw_compat_6_0_len;
+> +
+>  extern GlobalProperty hw_compat_5_2[];
+>  extern const size_t hw_compat_5_2_len;
+>  
+> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+> index dcf060b79185..1522a3359a93 100644
+> --- a/include/hw/i386/pc.h
+> +++ b/include/hw/i386/pc.h
+> @@ -197,6 +197,9 @@ bool pc_system_ovmf_table_find(const char *entry, uint8_t **data,
+>  void pc_madt_cpu_entry(AcpiDeviceIf *adev, int uid,
+>                         const CPUArchIdList *apic_ids, GArray *entry);
+>  
+> +extern GlobalProperty pc_compat_6_0[];
+> +extern const size_t pc_compat_6_0_len;
+> +
+>  extern GlobalProperty pc_compat_5_2[];
+>  extern const size_t pc_compat_5_2_len;
+>  
 

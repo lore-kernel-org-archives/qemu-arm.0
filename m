@@ -1,77 +1,80 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp322521lfg;
-        Wed, 31 Mar 2021 02:54:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyUT4F6APrv89ioy8VSExGbByqEZOlirng23y3LMzlGZZA2NFOWrzkeWEfZu70ytVARNnKw
-X-Received: by 2002:a25:c745:: with SMTP id w66mr3567096ybe.439.1617184471835;
-        Wed, 31 Mar 2021 02:54:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617184471; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp322777lfg;
+        Wed, 31 Mar 2021 02:55:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxJGQ3z69Y5G9hyMuhLr3Q8xz+izc5eeko1eInnZTSoaBnzPMl6AMHnczDuN8PEsFzLBqE7
+X-Received: by 2002:a25:c68d:: with SMTP id k135mr2947895ybf.479.1617184503470;
+        Wed, 31 Mar 2021 02:55:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617184503; cv=none;
         d=google.com; s=arc-20160816;
-        b=y1LhOEkOqfojnWaTHrNsVI7v8ZCeV+sLhM/zEfUVoybWVW8sFZ7awI9WtbFUEXG6cK
-         K6e0xEhXW2Vh1zC+UhQLk1/OXmJjWPGktgdNAYxVMZnZPVZ/DnKQHGF2hLeMGI1UsETk
-         VZrNo4Z9BEUoV8UScG4vuDCRyRy6ydpkl0tbT56mhHfI8jB7rlaoBpo558HSLQbEVrOa
-         /un6fGzIAgBTH9ha0qBfdW572XXE2euE0Abl8pkiuzTJpmDaSu0SuQGQMdPmcraasNA4
-         l5zZaP6zuZv2Fpm59sUZOgoTp64VCH5b8q2m6xWCRXmFUTdFBlMSZGA9xZmZ9gmqerSX
-         90vQ==
+        b=ARtVNQ5SY21gXvgzB5eN40ivNHsJxRcVhrJnNJi8h7q6JxnOc1VzrwRo6wCFmmSVpo
+         Nnqd6SStWJfCE9De1lFXC8eR8Hy0K2WANtpVbh1TwLGdZwFGjk5iCCg7F3i3kCt++EQG
+         RUuv635oFPdZ+wOxSA67GkMMh8Tj0EoxL77D4yv43Y8eUHvpRlIEzv7NnBvYNz5IkX4k
+         BkV/bCjdmpbYlEm75Z0WKBRlgMV6+YLAdG7iyTJnVch6FRef/pGXwuokkkD5SdwpShfL
+         /JZT75shskbMlLMstjW8+2nQKDxQdFiNNmW+pac49c8za0D9snYUrpe/gz+uINVZyEvQ
+         Mk+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
-         :subject:to:from;
-        bh=5gqbgNk0uuxMBz0xUZ3vzfd7MmVQesYbOGuXnSPowb0=;
-        b=SQ+7YDczXI6ArYQzuglPDrZecLefkFFqla432cO7hIyYW37HctuxR3XLhdp+OLt1JE
-         rK+9ob17bNReP177XElDrSdHai1wFXWItq0RYq3Unxi4n+C8rnZ7S3xcrJOr2YUVJ5IO
-         qOcq016ad3peoz9dYmhQuSGcmMK5LbnC6wqtSKB3tx7eGPhWe004AZHvTzTkTR0vsiQm
-         tkS/JhwCf7i0KDWVW2RdTMJtc5WkT3J7r8313gs6s3AXp47q4pFiq39d9ovo9q0ReS50
-         kXD/5eNlklupXl/o0FlznAvb2VFvg5frb27EHXIntTQtHAFbAebGGxyGy0f6zUtBmqIq
-         pHDg==
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :in-reply-to:message-id:date:subject:to:from;
+        bh=Ox3XmUot3xM8soF4nbj4ZVXUEgmy4Z3fpFG/7oz9ChM=;
+        b=JFac3QEyc5od/zxIU10VsxLDL3A46WNYRiZIkq2ceWA8Gb1FBvdt3o7x+bsWY5WS7u
+         SvkIxT523z6yORs2Yey/Idm33KmLX5YimCiBNl5BhLfUFcvfVDWRCp6MmZrNjKUr8G6p
+         S1wRm/+9Z4EkKEBxV3XSAlFYTvQBzXe2Gy80cCeKwgSwWiATSOk0dNJDlgqdorTJQ/0f
+         sjgHubXRYtmEQ9zPRTvE+0ZcQ/bkTko2F2trYhqczIY5t98f1BhPLeR4yX9hvxB3m7Yg
+         YMpJAhafSKtXSJD27rN/hYhY5btMITzxurqKafEVdFh2MOyxZy8DZ6APyQeuAzfN9dBP
+         Df9Q==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v144si1773628ybb.141.2021.03.31.02.54.31
+        by mx.google.com with ESMTPS id y125si1751320yby.486.2021.03.31.02.55.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 31 Mar 2021 02:54:31 -0700 (PDT)
+        Wed, 31 Mar 2021 02:55:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:60576 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33522 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lRXYV-0002ih-2t
-	for alex.bennee@linaro.org; Wed, 31 Mar 2021 05:54:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52046)
+	id 1lRXZ0-0003Ef-R4
+	for alex.bennee@linaro.org; Wed, 31 Mar 2021 05:55:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52186)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1lRXYB-0002dE-4r; Wed, 31 Mar 2021 05:54:12 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:4840)
+ id 1lRXYL-0002ku-In; Wed, 31 Mar 2021 05:54:21 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:4060)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1lRXY3-0002Xx-MS; Wed, 31 Mar 2021 05:54:10 -0400
-Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4F9M6F6Y7qz1BFy0;
- Wed, 31 Mar 2021 17:51:49 +0800 (CST)
+ id 1lRXY5-0002av-Ci; Wed, 31 Mar 2021 05:54:18 -0400
+Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4F9M6p0JsbzlWlP;
+ Wed, 31 Mar 2021 17:52:18 +0800 (CST)
 Received: from DESKTOP-TMVL5KK.china.huawei.com (10.174.187.128) by
  DGGEMS409-HUB.china.huawei.com (10.3.19.209) with Microsoft SMTP Server id
- 14.3.498.0; Wed, 31 Mar 2021 17:53:45 +0800
+ 14.3.498.0; Wed, 31 Mar 2021 17:53:49 +0800
 From: Yanan Wang <wangyanan55@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-Subject: [RFC PATCH 0/6] Introduce cluster cpu topology support
-Date: Wed, 31 Mar 2021 17:53:37 +0800
-Message-ID: <20210331095343.12172-1-wangyanan55@huawei.com>
+Subject: [RFC PATCH 3/6] hw/arm/virt: Parse cluster cpu topology for ARM
+ machines
+Date: Wed, 31 Mar 2021 17:53:40 +0800
+Message-ID: <20210331095343.12172-4-wangyanan55@huawei.com>
 X-Mailer: git-send-email 2.8.4.windows.1
+In-Reply-To: <20210331095343.12172-1-wangyanan55@huawei.com>
+References: <20210331095343.12172-1-wangyanan55@huawei.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Originating-IP: [10.174.187.128]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190;
- envelope-from=wangyanan55@huawei.com; helo=szxga04-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.32;
+ envelope-from=wangyanan55@huawei.com; helo=szxga06-in.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
 X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -96,116 +99,102 @@ Cc: Barry Song <song.bao.hua@hisilicon.com>,
  Jiajie Li <lijiajie11@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oWfVjEXRH6eb
+X-TUID: bwErcWzUPWu4
 
-Hi,
-This series introduces the cluster cpu topology support, besides now
-existing sockets, cores, and threads.
+There is a separate function virt_smp_parse() in hw/virt/arm.c used
+to parse cpu topology for the ARM machines. And there are some ARM
+implementations that have the concept of cluster, for example, ARM64
+server chip Kunpeng 920 has 6 or 8 clusters in each NUMA node and each
+cluster has 4 cores. All clusters share L3 cache data while the cores
+within each cluster share L2 cache. So parse cluster cpu topology for
+ARM machines, then guest kernel will take advantages of it for better
+scheduling performance.
 
-A cluster means a group of cores that share some resources (e.g. cache)
-among them under the LLC. For example, ARM64 server chip Kunpeng 920 has
-6 or 8 clusters in each NUMA, and each cluster has 4 cores. All clusters
-share L3 cache data while cores within each cluster share the L2 cache.
+In virt_smp_parse(), the computing logic of missing values prefers
+cores over sockets over threads. And the value of clusters will be
+set as default 1 if not explictly specified, so that it will not
+impact the parsing results of machines that won't specify "clusters="
+in -smp command line because they just don't support it.
 
-Also, there are some x86 CPU implementations (e.g. Jacobsville) where L2
-cache is shared among a cluster of cores instead of being exclusive to
-one single core. For example, on Jacobsville there are 6 clusters of 4
-Atom cores, each cluster sharing a separate L2, and 24 cores sharing L3).
+Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
+---
+ hw/arm/virt.c | 31 +++++++++++++++++--------------
+ 1 file changed, 17 insertions(+), 14 deletions(-)
 
-The cache affinity of cluster has been proved to improve the Linux kernel
-scheduling performance and a patchset [1] has already been posted, where
-a general sched_domain for clusters was added and a cluster level was
-added in the arch-neutral cpu topology struct like below.
-struct cpu_topology {
-    int thread_id;
-    int core_id;
-    int cluster_id;
-    int package_id;
-    int llc_id;
-    cpumask_t thread_sibling;
-    cpumask_t core_sibling;
-    cpumask_t cluster_sibling;
-    cpumask_t llc_sibling;
-};
-
-Also Kernel Doc [2]: Documentation/devicetree/bindings/cpu/cpu-topology.txt
-defines a four-level CPU topology hierarchy like socket/cluster/core/thread.
-According to the context, a socket node's child nodes must be one or more
-cluster nodes and a cluster node's child nodes must be one or more cluster
-nodes/one or more core nodes.
-
-So let's add the arch-neutral -smp, clusters=* command line support, so that
-future guest os could make use of cluster cpu topology for better scheduling
-performance. And whichever architecture that has groups of cpus sharing some
-separate resources(e.g. L2 cache) internely under LLC can use this command
-line parameter to define a VM with cluster level cpu topology.
-
-For ARM machines, a four-level cpu hierarchy can be defined and it will be
-sockets/clusters/cores/threads. For PC machines, a five-level cpu hierarchy
-can be defined and it will be sockets/dies/clusters/cores/threads.
-
-About this series:
-Note that, this series was implemented based on [3] and [4]. Although they
-have not merged into qemu mainline for now, it's still meaning to post this
-series to express the thoughts first. So a RFC is sent and any comments are
-welcomed and appreciated.
-
-Test results:
-With command line: -smp 96,sockets=2,clusters=6,cores=4,threads=2, VM's cpu
-topology description shows as below.
-lscpu:
-Architecture:        aarch64
-Byte Order:          Little Endian
-CPU(s):              96
-On-line CPU(s) list: 0-95
-Thread(s) per core:  2
-Core(s) per socket:  24
-Socket(s):           2
-NUMA node(s):        1
-Vendor ID:           0x48
-Model:               0
-Stepping:            0x1
-BogoMIPS:            200.00
-L1d cache:           unknown size
-L1i cache:           unknown size
-L2 cache:            unknown size
-NUMA node0 CPU(s):   0-95
-
-Topology information of clusters can also be got:
-cat /sys/devices/system/cpu/cpu0/topology/cluster_cpus_list: 0-7
-cat /sys/devices/system/cpu/cpu0/topology/cluster_id: 56
-
-cat /sys/devices/system/cpu/cpu8/topology/cluster_cpus_list: 8-15
-cat /sys/devices/system/cpu/cpu8/topology/cluster_id: 316
-...
-cat /sys/devices/system/cpu/cpu95/topology/cluster_cpus_list: 88-95
-cat /sys/devices/system/cpu/cpu95/topology/cluster_id: 2936
-
-Links:
-[1] https://patchwork.kernel.org/project/linux-arm-kernel/cover/20210319041618.14316-1-song.bao.hua@hisilicon.com/
-[2] https://github.com/torvalds/linux/blob/master/Documentation/devicetree/bindings/cpu/cpu-topology.txt
-[3] https://patchwork.kernel.org/project/qemu-devel/cover/20210225085627.2263-1-fangying1@huawei.com/
-[4] https://patchwork.kernel.org/project/qemu-devel/patch/20201109030452.2197-4-fangying1@huawei.com/
-
-Yanan Wang (6):
-  vl.c: Add arch-neutral -smp, clusters=* command line support
-  hw/core/machine: Parse cluster cpu topology in smp_parse()
-  hw/arm/virt: Parse cluster cpu topology for ARM machines
-  hw/i386/pc: Parse cluster cpu topology for PC machines
-  hw/arm/virt-acpi-build: Add cluster level for ARM PPTT table
-  hw/arm/virt: Add cluster level for ARM device tree
-
- hw/acpi/aml-build.c         | 11 +++++++++
- hw/arm/virt-acpi-build.c    | 43 ++++++++++++++++++++---------------
- hw/arm/virt.c               | 45 ++++++++++++++++++++++---------------
- hw/core/machine.c           | 32 +++++++++++++++-----------
- hw/i386/pc.c                | 31 +++++++++++++++----------
- include/hw/acpi/aml-build.h |  2 ++
- include/hw/boards.h         |  4 +++-
- qemu-options.hx             | 27 +++++++++++++---------
- softmmu/vl.c                |  3 +++
- 9 files changed, 125 insertions(+), 73 deletions(-)
-
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 911ad7d3aa..c9ad76ff64 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -2608,35 +2608,37 @@ static void virt_smp_parse(MachineState *ms, QemuOpts *opts)
+     if (opts) {
+         unsigned cpus    = qemu_opt_get_number(opts, "cpus", 0);
+         unsigned sockets = qemu_opt_get_number(opts, "sockets", 0);
++        unsigned clusters = qemu_opt_get_number(opts, "clusters", 1);
+         unsigned cores   = qemu_opt_get_number(opts, "cores", 0);
+         unsigned threads = qemu_opt_get_number(opts, "threads", 0);
+ 
+         /*
+-         * Compute missing values; prefer cores over sockets and
+-         * sockets over threads.
++         * Compute missing values, prefer cores over sockets
++         * and sockets over threads. The value of clusters has
++         * been be set as default 1 if not explicitly specified.
+          */
+         if (cpus == 0 || cores == 0) {
+             sockets = sockets > 0 ? sockets : 1;
+             threads = threads > 0 ? threads : 1;
+             if (cpus == 0) {
+                 cores = cores > 0 ? cores : 1;
+-                cpus = cores * threads * sockets;
++                cpus = sockets * clusters * cores * threads;
+             } else {
+                 ms->smp.max_cpus = qemu_opt_get_number(opts, "maxcpus", cpus);
+-                cores = ms->smp.max_cpus / (sockets * threads);
++                cores = ms->smp.max_cpus / (sockets * clusters * threads);
+             }
+         } else if (sockets == 0) {
+             threads = threads > 0 ? threads : 1;
+-            sockets = cpus / (cores * threads);
++            sockets = cpus / (clusters * cores * threads);
+             sockets = sockets > 0 ? sockets : 1;
+         } else if (threads == 0) {
+-            threads = cpus / (cores * sockets);
++            threads = cpus / (sockets * clusters * cores);
+             threads = threads > 0 ? threads : 1;
+-        } else if (sockets * cores * threads < cpus) {
++        } else if (sockets * clusters * cores * threads < cpus) {
+             error_report("cpu topology: "
+-                         "sockets (%u) * cores (%u) * threads (%u) < "
+-                         "smp_cpus (%u)",
+-                         sockets, cores, threads, cpus);
++                         "sockets (%u) * clusters (%u) * cores (%u) * "
++                         "threads (%u) < smp_cpus (%u)",
++                         sockets, clusters, cores, threads, cpus);
+             exit(1);
+         }
+ 
+@@ -2647,16 +2649,17 @@ static void virt_smp_parse(MachineState *ms, QemuOpts *opts)
+             exit(1);
+         }
+ 
+-        if (sockets * cores * threads != ms->smp.max_cpus) {
++        if (sockets * clusters * cores * threads != ms->smp.max_cpus) {
+             error_report("cpu topology: "
+-                         "sockets (%u) * cores (%u) * threads (%u)"
+-                         "!= maxcpus (%u)",
+-                         sockets, cores, threads,
++                         "sockets (%u) * clusters(%u) * cores (%u) * "
++                         "threads (%u) != maxcpus (%u)",
++                         sockets, clusters, cores, threads,
+                          ms->smp.max_cpus);
+             exit(1);
+         }
+ 
+         ms->smp.cpus = cpus;
++        ms->smp.clusters = clusters;
+         ms->smp.cores = cores;
+         ms->smp.threads = threads;
+         ms->smp.sockets = sockets;
 -- 
 2.19.1
 

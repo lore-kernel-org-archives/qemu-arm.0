@@ -1,69 +1,69 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp337025lfg;
-        Wed, 31 Mar 2021 03:15:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyH87bHyaXA0z5SckmvdluOlt5Xhw7ohQS25zA+BYhdttk1JziIPh0ZnXNEZR2ja3Lz6Xba
-X-Received: by 2002:a05:6e02:b41:: with SMTP id f1mr2049089ilu.297.1617185752390;
-        Wed, 31 Mar 2021 03:15:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617185752; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp338107lfg;
+        Wed, 31 Mar 2021 03:17:27 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzH55giXWxk+Aor95JtZY51p5EoqFmzrJmfk5m0oXG5wR31WhcXy6KCI5vGvxREJFTo+351
+X-Received: by 2002:a05:6602:1689:: with SMTP id s9mr1665331iow.171.1617185847197;
+        Wed, 31 Mar 2021 03:17:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617185847; cv=none;
         d=google.com; s=arc-20160816;
-        b=Jzn/8FCejFOvDh/UtteFMHmNIkKiGzveBOxuieITKmCGE5JOk27Nl8opNFbL94STel
-         uoAXKdjsFghNEAUmesqgJKjbZv032FHXAJwCL+GyzxZuEuSacP5Y+JkXn0OIs3ersRbY
-         bOD+ryWrBsF6JJjfWQl37pS437XxmzM4/kh1yhSN6273rJe9JMfA+IU6p20STSmB+P7w
-         Fxw6Z+0lkf4BirOoJGzUwX5RolYhXa+Mz7MBcHOMBAsafrotFQCpGQa/YfZ1K6PSGAf6
-         ogIbzsOYaGIrRDptwEv5JVDxec3+NGHsp+ZLF4lIiZKmYhKtDu2n/hd3xJKa+x88EBeJ
-         eqng==
+        b=NWnpewh9R0/P4U5VYSN7I4tk8XR7yf1RfrQdycSgOb+UZnPZWDPu8CQIZIKzNjJscn
+         elylRf5GASAJ4+1iiM/0Vg90QsqU/bMiQFdLDs+EzJSSUHlupovrf3+3d1n3EBGHk28P
+         cbZsRisVUkzMDli+tttSjXJbD+/D5YHiTuaaSbQya7Zk4Z1iEuHAKnQqEk4inaPexa3a
+         I2unh3ujmL6RoosR1Py5mf8U+UArVHekDak2u7JEaAVufLyo6IRSYY7WjKD8pxQzaK4i
+         +nScSkV9TGeCdrFiM2lHcc2KtS+B6lMIoEcIWTBtxAlL3A43ER8/wDlswM37TW8VkV4U
+         VYxQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=bOxz6/H8ZKGrq1dhuw4YPqmAjy7bSaP6shHOpluIELU=;
-        b=khwI8iXmuE/nOYGa9tdBbt84MkOgQsw0Q/YzXFIwv3IcuLtmVDl4QBIuP4J7AgQY+h
-         yLKHeZ2WNw0n/kJ93UuYY/ac7G1ej2515F7znOrghFLCCKgnythG2Uxj7mKIvbp9Keq1
-         9d7vfNg043h+348fTPykx6paqEZBpJFe7dUMOqnEWRY+eH7ji2lwIhyj/Kin9ToZW4Y+
-         KjtCyNFrp1nF0yz5pqyRzBxKk14Nyx4wT1tlVzd0IIzaHB6J5+mqH4H1E3Ffkp68e50l
-         G6BL4GLoeiemnIi8xPsBnuW0u9E9nrBZzKxO8VxPqFSz2R63JoIzyBzpqSo/HXnqdh0T
-         DBSQ==
+        bh=Wd/LNLzH/B5LIrkjQpQpI069Xz3QxI3LbFznEjlUcCM=;
+        b=ERumc5M5oMLmbFu9iD6qaBl/24BowAX0Y3FCV4j8L7yP6CS9zSXMbrHElHDE2/gqYo
+         Taemap16L6IsCeC/ugXP+vgMwHHaLRwCBMdln4jisDGB66WbN1SWEHoJQ/S5UbG0xgIh
+         5pCdhgNcrTR2l6Q3Mcp9fWVNadIMEzlx9Ip8vX/ToYEkulON5HaMdSXLR7kMmqEPdkmX
+         /fAFYtbIFy+t5GePM/CcDOVTIt5f2KmDvbd0WHG9DtxRUb4+8cJdjDrGe1EC/D2/fstK
+         tct9lDguFBaJIYVVlguBmvsXPVxwn/7Z3jZ2qngzients3b4aF8i8DyFTZhBm+L3Z9mM
+         ZYrg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c4si1184095ioa.65.2021.03.31.03.15.52
+        by mx.google.com with ESMTPS id q19si1575292jat.59.2021.03.31.03.17.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 31 Mar 2021 03:15:52 -0700 (PDT)
+        Wed, 31 Mar 2021 03:17:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:49944 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53612 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lRXt9-0005FU-O9
-	for alex.bennee@linaro.org; Wed, 31 Mar 2021 06:15:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56352)
+	id 1lRXug-0006lW-Ho
+	for alex.bennee@linaro.org; Wed, 31 Mar 2021 06:17:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56336)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jiangkunkun@huawei.com>)
- id 1lRXr7-0002a4-EW; Wed, 31 Mar 2021 06:13:45 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:4492)
+ id 1lRXr5-0002X4-MB; Wed, 31 Mar 2021 06:13:43 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:4842)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jiangkunkun@huawei.com>)
- id 1lRXr5-0005kV-8j; Wed, 31 Mar 2021 06:13:45 -0400
-Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4F9MXz4YfJzyNQb;
- Wed, 31 Mar 2021 18:11:31 +0800 (CST)
+ id 1lRXr0-0005iE-0N; Wed, 31 Mar 2021 06:13:43 -0400
+Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4F9MXt33c5z1BG04;
+ Wed, 31 Mar 2021 18:11:26 +0800 (CST)
 Received: from DESKTOP-6NKE0BC.china.huawei.com (10.174.185.210) by
  DGGEMS409-HUB.china.huawei.com (10.3.19.209) with Microsoft SMTP Server id
- 14.3.498.0; Wed, 31 Mar 2021 18:13:27 +0800
+ 14.3.498.0; Wed, 31 Mar 2021 18:13:25 +0800
 From: Kunkun Jiang <jiangkunkun@huawei.com>
 To: Eric Auger <eric.auger@redhat.com>, Peter Maydell
  <peter.maydell@linaro.org>, Alex Williamson <alex.williamson@redhat.com>,
  <kevin.tian@intel.com>, Yi Sun <yi.y.sun@linux.intel.com>, "open list:ARM
  SMMU" <qemu-arm@nongnu.org>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>
-Subject: [RFC PATCH v2 3/4] vfio: Add
- vfio_prereg_listener_global_log_start/stop in nested stage
-Date: Wed, 31 Mar 2021 18:12:58 +0800
-Message-ID: <20210331101259.2153-4-jiangkunkun@huawei.com>
+Subject: [RFC PATCH v2 2/4] vfio: Add vfio_prereg_listener_log_sync in nested
+ stage
+Date: Wed, 31 Mar 2021 18:12:57 +0800
+Message-ID: <20210331101259.2153-3-jiangkunkun@huawei.com>
 X-Mailer: git-send-email 2.26.2.windows.1
 In-Reply-To: <20210331101259.2153-1-jiangkunkun@huawei.com>
 References: <20210331101259.2153-1-jiangkunkun@huawei.com>
@@ -72,8 +72,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [10.174.185.210]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191;
- envelope-from=jiangkunkun@huawei.com; helo=szxga05-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.190;
+ envelope-from=jiangkunkun@huawei.com; helo=szxga04-in.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
@@ -97,68 +97,73 @@ Cc: Liu Yi L <yi.l.liu@intel.com>, shameerali.kolothum.thodi@huawei.com,
  wanghaibin.wang@huawei.com, Keqian Zhu <zhukeqian1@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HnwdSsdq1hDp
+X-TUID: xIZyk8h7gR7K
 
-In nested mode, we set up the stage 2 and stage 1 separately. In my
-opinion, vfio_memory_prereg_listener is used for stage 2 and
-vfio_memory_listener is used for stage 1. So it feels weird to call
-the global_log_start/stop interface in vfio_memory_listener to switch
-dirty tracking, although this won't cause any errors. Add
-global_log_start/stop interface in vfio_memory_prereg_listener
-can separate stage 2 from stage 1.
+On Intel, the DMA mapped through the host single stage. Instead
+we set up the stage 2 and stage 1 separately in nested mode as there
+is no "Caching Mode".
+
+Legacy vfio_listener_log_sync cannot be used in nested stage as we
+don't need to pay close attention to stage 1 mapping. This patch adds
+vfio_prereg_listener_log_sync to mark dirty pages in nested mode.
 
 Signed-off-by: Kunkun Jiang <jiangkunkun@huawei.com>
 ---
- hw/vfio/common.c | 22 ++++++++++++++++++++++
- 1 file changed, 22 insertions(+)
+ hw/vfio/common.c | 27 +++++++++++++++++++++++++++
+ 1 file changed, 27 insertions(+)
 
 diff --git a/hw/vfio/common.c b/hw/vfio/common.c
-index 86722814d4..efea252e46 100644
+index 3117979307..86722814d4 100644
 --- a/hw/vfio/common.c
 +++ b/hw/vfio/common.c
-@@ -1209,6 +1209,16 @@ static void vfio_listener_log_global_start(MemoryListener *listener)
- {
-     VFIOContainer *container = container_of(listener, VFIOContainer, listener);
+@@ -1284,6 +1284,22 @@ static int vfio_dma_sync_ram_section_dirty_bitmap(VFIOContainer *container,
+                     int128_get64(section->size), ram_addr);
+ }
  
-+    if (container->iommu_type != VFIO_TYPE1_NESTING_IOMMU) {
-+        vfio_set_dirty_page_tracking(container, true);
-+    }
-+}
-+
-+static void vfio_prereg_listener_log_global_start(MemoryListener *listener)
++static void vfio_prereg_listener_log_sync(MemoryListener *listener,
++                                          MemoryRegionSection *section)
 +{
 +    VFIOContainer *container =
 +        container_of(listener, VFIOContainer, prereg_listener);
 +
-     vfio_set_dirty_page_tracking(container, true);
- }
- 
-@@ -1216,6 +1226,16 @@ static void vfio_listener_log_global_stop(MemoryListener *listener)
- {
-     VFIOContainer *container = container_of(listener, VFIOContainer, listener);
- 
-+    if (container->iommu_type != VFIO_TYPE1_NESTING_IOMMU) {
-+        vfio_set_dirty_page_tracking(container, false);
++    if (!memory_region_is_ram(section->mr) ||
++        !container->dirty_pages_supported) {
++        return;
++    }
++
++    if (vfio_devices_all_dirty_tracking(container)) {
++        vfio_dma_sync_ram_section_dirty_bitmap(container, section);
 +    }
 +}
 +
-+static void vfio_prereg_listener_log_global_stop(MemoryListener *listener)
-+{
-+    VFIOContainer *container =
-+        container_of(listener, VFIOContainer, prereg_listener);
-+
-     vfio_set_dirty_page_tracking(container, false);
- }
+ typedef struct {
+     IOMMUNotifier n;
+     VFIOGuestIOMMU *giommu;
+@@ -1328,6 +1344,16 @@ static int vfio_sync_dirty_bitmap(VFIOContainer *container,
+     if (memory_region_is_iommu(section->mr)) {
+         VFIOGuestIOMMU *giommu;
  
-@@ -1408,6 +1428,8 @@ static const MemoryListener vfio_memory_listener = {
++        /*
++         * In nested mode, stage 2 (gpa->hpa) and stage 1 (giova->gpa) are
++         * set up separately. It is inappropriate to pass 'giova' to kernel
++         * to get dirty pages. We only need to focus on stage 2 mapping when
++         * marking dirty pages.
++         */
++        if (container->iommu_type == VFIO_TYPE1_NESTING_IOMMU) {
++            return 0;
++        }
++
+         QLIST_FOREACH(giommu, &container->giommu_list, giommu_next) {
+             if (MEMORY_REGION(giommu->iommu) == section->mr &&
+                 giommu->n.start == section->offset_within_region) {
+@@ -1382,6 +1408,7 @@ static const MemoryListener vfio_memory_listener = {
  static MemoryListener vfio_memory_prereg_listener = {
      .region_add = vfio_prereg_listener_region_add,
      .region_del = vfio_prereg_listener_region_del,
-+    .log_global_start = vfio_prereg_listener_log_global_start,
-+    .log_global_stop = vfio_prereg_listener_log_global_stop,
-     .log_sync = vfio_prereg_listener_log_sync,
++    .log_sync = vfio_prereg_listener_log_sync,
  };
  
+ static void vfio_listener_release(VFIOContainer *container)
 -- 
 2.23.0
 

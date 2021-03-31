@@ -1,157 +1,179 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp294024lfg;
-        Wed, 31 Mar 2021 02:03:30 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx2TCeWns6CHRmww5WeXNjq70QJy/6tAbqdy6cjGIxfquu24qFMTqnZNOTMOWM7Z6KYM6x4
-X-Received: by 2002:a5e:d907:: with SMTP id n7mr1623582iop.177.1617181410023;
-        Wed, 31 Mar 2021 02:03:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617181410; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp316866lfg;
+        Wed, 31 Mar 2021 02:43:44 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJytJuxm11wo5atKJQVwrgQJf9qnJQOdDZvuCktqK/pxM/8ru28RcP6RRsD+s3i+eYDaOipt
+X-Received: by 2002:a37:a9cf:: with SMTP id s198mr2119573qke.143.1617183823831;
+        Wed, 31 Mar 2021 02:43:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617183823; cv=none;
         d=google.com; s=arc-20160816;
-        b=xhNDxrq5KaOBS1FX2cZj3R+l4GXXcJxKUDx2Q8m/sjjVjLHamYTK4BXe0s8B++uOBK
-         0RWVptjnVOhB8gYOCDHksOucRBHnlPnU2zgGnw1/JysK3F7TWr0XlH8DBpEVrYkrthDR
-         neJneQSZIhWEcdl2c78Nv03GvKQQ2F/SOlWXFW6hZMSaGUwn4EMQrEObJJFfCs3pN4/I
-         5Y9Ie9kXomuJ7PTXFSyMBkZzxEmhmTwgcS3dt1SCGsUVN+0bpcFaKtqqz4Ei4zPkPmUv
-         nJ8nSc94SIH4L1+tkvhofoI+dzu8cvXbsLxPDALeuU5D5WKai19AHwMQtNc5HTa/qavw
-         D+dg==
+        b=bSfUABdTTrlzXBbioHR+QbuN/+Q1di9fm2WJNdbeOYtFUsHHwygo/ZEKtB50ma2Vxv
+         pQWS4nth6MXcedRu6Sj2x6XrPCTYqM+XM5lT411hPA+LzQB8r+e8YWtoHzhXlAFa98gH
+         1OHdsYo+oCybieMNI4SZAxQ91lg5DLApBsk4X4Csx3L2Ywp+6VE5WOA4p9XiS8LhFo46
+         4nU5eGdLoYpWd3fSGYLf9cmUKzxZYx8sEVdqZa/ikmnypKILn5mtFaUFpfy7/lBaY/AQ
+         S7DMdCrS6EcAtk5K6W28kIrs3wdSvrXvKZZRO8tERSJy11XMsI2g4+Z6mhzCaXuGnT7c
+         yrHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:subject:from:references:to;
-        bh=gx6bImNSSpOakJasfMQUoHlQRYK3cL10fIXm9XNT9Ls=;
-        b=mC7VasfhQKcYIEflNzyWZ+xGHVrW45/KvSreiZErtZEbIlcau4Pw6KVSFpJrPbR6Ry
-         +a2KxgLlE9vCDfszSZnS3e/C7lB3P7wlfw9g6uGKaU8wutIJhbqOBTZyHjtHybr0Cm/0
-         4qTAzo4fpJRwvHeQTvf0mQbFI9215tACwVkZcVHigwf+xKW9g3p6gyfbA8e/Y7z9Cy8q
-         5FP0cCaS5MQe7R5yv4Sjx/e+ltAGiSOqKmQd+qpchWN+YLv7kZiAjYka413VRY+de91s
-         l+mUrf0jE1xgTEJzMrYZOGVjc9xrFXWM9r90HQXQ+LHtWV9Hco2iZ+u45i3Thc1rkIQ2
-         jVEA==
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=TeJZ80USA9+4z8IENXBjdmr09owzKAPnmCDhLA/HD64=;
+        b=Bb5T4PU5c3BaFNh5B8bFV8T3OxC1g/eEsT9wkk0pWmSIK30087cRaYFRKLjqgQmFN0
+         FNMGZkkT2IKRPIksWWeVZNGPzdB/dwOPo/w5rMO8kFKxOEJST+LlkoHIH/d1uqNiwvOU
+         FFKM3F+lxmC7J39M1gDJsKe69xVnaEgGcFAhXAKIyb7x4ITn7PKXgO35o/BzZiQDx9xa
+         v0L8Rcd0/PixTjivXeeqVT9cDt17PThWMJ9nhrWSmXx7a2xBJFE55nolwU+BfsWMIs79
+         /gdbi+UYlWbiw6Arg3GQTdEV+QRbw3cEjou/gqW9yswK3aRwHd8wd5DRdcR4X3lj5AbJ
+         9KAQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w19si1108907iot.31.2021.03.31.02.03.29
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 31 Mar 2021 02:03:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=lwObbBzU;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id u19si969297qvj.52.2021.03.31.02.43.43;
+        Wed, 31 Mar 2021 02:43:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:45988 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lRWl7-0008JO-C6
-	for alex.bennee@linaro.org; Wed, 31 Mar 2021 05:03:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39600)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangxingang5@huawei.com>)
- id 1lRWiU-0006Y8-CC; Wed, 31 Mar 2021 05:00:46 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:4403)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangxingang5@huawei.com>)
- id 1lRWiJ-0004Lw-Od; Wed, 31 Mar 2021 05:00:45 -0400
-Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4F9KwX0zlmz1BFsX;
- Wed, 31 Mar 2021 16:58:20 +0800 (CST)
-Received: from [10.174.185.226] (10.174.185.226) by
- DGGEMS409-HUB.china.huawei.com (10.3.19.209) with Microsoft SMTP Server id
- 14.3.498.0; Wed, 31 Mar 2021 17:00:17 +0800
-To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
- <shannon.zhaosl@gmail.com>, <imammedo@redhat.com>, <mst@redhat.com>,
- <marcel.apfelbaum@gmail.com>, <peter.maydell@linaro.org>,
- <ehabkost@redhat.com>, <richard.henderson@linaro.org>, <pbonzini@redhat.com>
-References: <1616656965-23328-1-git-send-email-wangxingang5@huawei.com>
-From: Wang Xingang <wangxingang5@huawei.com>
-Subject: Re: [PATCH RFC RESEND v2 0/6] Introduce IOMMU Option For PCI Root Bus
-Message-ID: <43d4c60f-f290-8b6e-08ec-9974265b9f62@huawei.com>
-Date: Wed, 31 Mar 2021 17:00:06 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.5.1
+       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=lwObbBzU;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 55DF74B39C;
+	Wed, 31 Mar 2021 05:43:43 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: 0.909
+X-Spam-Level: 
+X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
+	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
+	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
+Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
+	(fail, message has been altered) header.i=@linaro.org
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id gU+B+qosMfTo; Wed, 31 Mar 2021 05:43:42 -0400 (EDT)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 498C94B39F;
+	Wed, 31 Mar 2021 05:43:42 -0400 (EDT)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 943664B39A
+ for <kvmarm@lists.cs.columbia.edu>; Wed, 31 Mar 2021 05:43:40 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 3nDlaWm1hfJe for <kvmarm@lists.cs.columbia.edu>;
+ Wed, 31 Mar 2021 05:43:39 -0400 (EDT)
+Received: from mail-ej1-f50.google.com (mail-ej1-f50.google.com
+ [209.85.218.50])
+ by mm01.cs.columbia.edu (Postfix) with ESMTPS id 73F2B4B38F
+ for <kvmarm@lists.cs.columbia.edu>; Wed, 31 Mar 2021 05:43:39 -0400 (EDT)
+Received: by mail-ej1-f50.google.com with SMTP id ce10so29112938ejb.6
+ for <kvmarm@lists.cs.columbia.edu>; Wed, 31 Mar 2021 02:43:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=YMiE+kC04pZeOxkIHTZ5n+tBWqrLCoxGcq+JX9IvLEo=;
+ b=lwObbBzUMPtuNRTAfP+9LHPHy1w1N5WKNsRnTjJJGrzVo4LVAvJCNgNftqwGzM3PIH
+ lIbKDnRu3gq1Nd5T2ch28v4b5Qkn/0b5UzaiiLkYDH1MCoSZ7kthlpc5G6RYMyyEsrQy
+ O6Sa4pbZ2CsfpMZVY95ZulHz9ZbNa2cL4KVsXQWER+/xH1Lvr6KGD0tLpeDqkDdx5gKh
+ 4asJXZS1MvYwi574DOLJELleYJgFVTiYrTqtekDmOuvwHgtDRSGL/3K8eqW/FHipwU2p
+ 7KFj7xJJ7OfLBLnWkbLyQ8WCaUxXc9WD8zKn6ypNe6DQ/F3GtDUOEPEg3kc4m4ltT3ZF
+ zbcg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=YMiE+kC04pZeOxkIHTZ5n+tBWqrLCoxGcq+JX9IvLEo=;
+ b=PkrwwTxpbXlELFAf9NYTMbvk85DjbgTxUA0XgkdNRGEKpfnhg7w/c+5D+j9RvYsOEO
+ Rk2KgsS+t29TrqkaCoXCJlgDoFmWFGUdNFMpbs5UYwtuuMpMUUM2HyvBLbnWLaWy5NEs
+ XDLGjXnBhx3yLuLbsLugvgtb5JT0aqNfjGIcDO+dBEwEZCiH51dGq/Y5dQsxuVcGfI2b
+ wZaejkMdsHbcBRylLtDjPGSbZ69B0hsjgxQk6oQFjHDytZU81L5qXi+Gxm9MP+yddSDm
+ qHV2KgR9JaiSuhSTGJ5AWlGV2Il/xvgvrOwv0bbj4r38La2/DX/WyzW4g7lW73+Qu4Zz
+ KsUg==
+X-Gm-Message-State: AOAM532ugohxChMTae3a5FCGWwno8zewQevMI8rh9GzwyQ9ta8DBiCSq
+ O9l5j0bZxUzt/k6zTVHfkhYBnLqqcrOHIhQDvVNqiQ==
+X-Received: by 2002:a17:906:8a65:: with SMTP id
+ hy5mr2641138ejc.250.1617183818442; 
+ Wed, 31 Mar 2021 02:43:38 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <1616656965-23328-1-git-send-email-wangxingang5@huawei.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.174.185.226]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190;
- envelope-from=wangxingang5@huawei.com; helo=szxga04-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
+References: <20210311165947.27470-1-peter.maydell@linaro.org>
+ <431943c3-a603-7426-273f-b5a00f10ce41@huawei.com>
+In-Reply-To: <431943c3-a603-7426-273f-b5a00f10ce41@huawei.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 31 Mar 2021 09:43:06 +0000
+Message-ID: <CAFEAcA-tyxfiJ_BXOkm9SOApOnOh-hXi+dvjOP0-SqASjt5bhQ@mail.gmail.com>
+Subject: Re: [PATCH] target/arm: Make number of counters in PMCR follow the CPU
+To: Zenghui Yu <yuzenghui@huawei.com>
+Cc: Marc Zyngier <maz@kernel.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Leif Lindholm <leif@nuviainc.com>,
+ kvmarm <kvmarm@lists.cs.columbia.edu>
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: xieyingtai@huawei.com, cenjiahui@huawei.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8SD1mczYmVIH
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: YTovMzpOHI1w
 
-Hi, everyone!
+On Wed, 31 Mar 2021 at 09:59, Zenghui Yu <yuzenghui@huawei.com> wrote:
+>
+> [+kvmarm, Marc]
+>
+> On 2021/3/12 0:59, Peter Maydell wrote:
+> > Currently we give all the v7-and-up CPUs a PMU with 4 counters.  This
+> > means that we don't provide the 6 counters that are required by the
+> > Arm BSA (Base System Architecture) specification if the CPU supports
+> > the Virtualization extensions.
 
-Do you have any suggestions about this iommu configuration feature?
-Please help review these patches, thanks very much.
+> So I've tested it with kvm and I get the following error before
+> VM startup:
+>
+>    "qemu-system-aarch64: Failed to retrieve host CPU features"
+>
+> > ---
+> >   target/arm/cpu.h     |  1 +
+> >   target/arm/cpu64.c   |  3 +++
+> >   target/arm/cpu_tcg.c |  5 +++++
+> >   target/arm/helper.c  | 29 +++++++++++++++++------------
+> >   target/arm/kvm64.c   |  2 ++
+> >   5 files changed, 28 insertions(+), 12 deletions(-)
+>
+> [...]
+>
+> > diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+> > index dff85f6db94..581335e49d3 100644
+> > --- a/target/arm/kvm64.c
+> > +++ b/target/arm/kvm64.c
+> > @@ -566,6 +566,8 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+> >                                 ARM64_SYS_REG(3, 0, 0, 7, 1));
+> >           err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64mmfr2,
+> >                                 ARM64_SYS_REG(3, 0, 0, 7, 2));
+> > +        err |= read_sys_reg64(fdarray[2], &ahcf->isar.reset_pmcr_el0,
+> > +                              ARM64_SYS_REG(3, 3, 9, 12, 0));
+>
+> Looks like we tried to access PMCR_EL0 *before* telling kvm that
+> KVM_ARM_VCPU_PMU_V3 feature should be supported, which is now
+> refused by kvm [*].
+>
+> [*] https://git.kernel.org/torvalds/c/11663111cd49
 
-On 2021/3/25 15:22, Wang Xingang wrote:
-> From: Xingang Wang <wangxingang5@huawei.com>
-> 
-> These patches add support for configure iommu on/off for pci root bus,
-> including primary bus and pxb root bus. At present, All root bus
-> will go through iommu when iommu is configured, which is not flexible.
-> 
-> So this add option to enable/disable iommu for primary bus and pxb
-> root bus.  When iommu is enabled for the root bus, devices attached to it
-> will go through iommu. When iommu is disabled for the root bus, devices
-> will not go through iommu accordingly.
-> 
-> The option example for iommu configuration is like the following:
-> 
-> primary root bus option:
-> arm: -machine virt iommu=smmuv3,primary_bus_iommu=false(or true)
-> x86: -machine q35,primary_bus_iommu=false(or true)
-> 
-> pxb root bus:
->   -device pxb-pcie,bus_nr=0x10,id=pci.10,bus=pcie.0,addr=0x3.0x1,iommu=false
-> 
-> History:
-> 
-> v1 -> v2:
-> - rebase on top of v6.0.0-rc0
-> - Fix some issues
-> - Took into account Eric's comments, and remove the PCI_BUS_IOMMU flag,
->    replace it with a property in PCIHostState.
-> - Add support for x86 iommu option
-> 
-> Xingang Wang (6):
->    hw/pci/pci_host: Add iommu property for pci host
->    hw/pci: Add iommu option for pci root bus
->    hw/pci: Add pci_root_bus_max_bus
->    hw/arm/virt-acpi-build: Add explicit idmap info in IORT table
->    hw/i386/acpi-build: Add explicit scope in DMAR table
->    hw/i386/acpi-build: Add iommu filter in IVRS table
-> 
->   hw/arm/virt-acpi-build.c            | 103 ++++++++++++++++++++++------
->   hw/arm/virt.c                       |  25 +++++++
->   hw/i386/acpi-build.c                |  70 ++++++++++++++++++-
->   hw/i386/pc.c                        |  19 +++++
->   hw/pci-bridge/pci_expander_bridge.c |   3 +
->   hw/pci-host/q35.c                   |   1 +
->   hw/pci/pci.c                        |  52 +++++++++++++-
->   hw/pci/pci_host.c                   |   2 +
->   include/hw/arm/virt.h               |   1 +
->   include/hw/i386/pc.h                |   1 +
->   include/hw/pci/pci.h                |   2 +
->   include/hw/pci/pci_host.h           |   1 +
->   12 files changed, 254 insertions(+), 26 deletions(-)
-> 
+Oops, that's embarrassing. I should have tested with KVM, and
+I forgot the PMU needs special enablement :-(
+
+I'm on holiday right now so I probably won't have time to
+look at a fix for rc2. I might just revert this commit.
+
+thanks
+-- PMM
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

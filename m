@@ -1,179 +1,211 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp316866lfg;
-        Wed, 31 Mar 2021 02:43:44 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJytJuxm11wo5atKJQVwrgQJf9qnJQOdDZvuCktqK/pxM/8ru28RcP6RRsD+s3i+eYDaOipt
-X-Received: by 2002:a37:a9cf:: with SMTP id s198mr2119573qke.143.1617183823831;
-        Wed, 31 Mar 2021 02:43:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617183823; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp322521lfg;
+        Wed, 31 Mar 2021 02:54:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyUT4F6APrv89ioy8VSExGbByqEZOlirng23y3LMzlGZZA2NFOWrzkeWEfZu70ytVARNnKw
+X-Received: by 2002:a25:c745:: with SMTP id w66mr3567096ybe.439.1617184471835;
+        Wed, 31 Mar 2021 02:54:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617184471; cv=none;
         d=google.com; s=arc-20160816;
-        b=bSfUABdTTrlzXBbioHR+QbuN/+Q1di9fm2WJNdbeOYtFUsHHwygo/ZEKtB50ma2Vxv
-         pQWS4nth6MXcedRu6Sj2x6XrPCTYqM+XM5lT411hPA+LzQB8r+e8YWtoHzhXlAFa98gH
-         1OHdsYo+oCybieMNI4SZAxQ91lg5DLApBsk4X4Csx3L2Ywp+6VE5WOA4p9XiS8LhFo46
-         4nU5eGdLoYpWd3fSGYLf9cmUKzxZYx8sEVdqZa/ikmnypKILn5mtFaUFpfy7/lBaY/AQ
-         S7DMdCrS6EcAtk5K6W28kIrs3wdSvrXvKZZRO8tERSJy11XMsI2g4+Z6mhzCaXuGnT7c
-         yrHw==
+        b=y1LhOEkOqfojnWaTHrNsVI7v8ZCeV+sLhM/zEfUVoybWVW8sFZ7awI9WtbFUEXG6cK
+         K6e0xEhXW2Vh1zC+UhQLk1/OXmJjWPGktgdNAYxVMZnZPVZ/DnKQHGF2hLeMGI1UsETk
+         VZrNo4Z9BEUoV8UScG4vuDCRyRy6ydpkl0tbT56mhHfI8jB7rlaoBpo558HSLQbEVrOa
+         /un6fGzIAgBTH9ha0qBfdW572XXE2euE0Abl8pkiuzTJpmDaSu0SuQGQMdPmcraasNA4
+         l5zZaP6zuZv2Fpm59sUZOgoTp64VCH5b8q2m6xWCRXmFUTdFBlMSZGA9xZmZ9gmqerSX
+         90vQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=TeJZ80USA9+4z8IENXBjdmr09owzKAPnmCDhLA/HD64=;
-        b=Bb5T4PU5c3BaFNh5B8bFV8T3OxC1g/eEsT9wkk0pWmSIK30087cRaYFRKLjqgQmFN0
-         FNMGZkkT2IKRPIksWWeVZNGPzdB/dwOPo/w5rMO8kFKxOEJST+LlkoHIH/d1uqNiwvOU
-         FFKM3F+lxmC7J39M1gDJsKe69xVnaEgGcFAhXAKIyb7x4ITn7PKXgO35o/BzZiQDx9xa
-         v0L8Rcd0/PixTjivXeeqVT9cDt17PThWMJ9nhrWSmXx7a2xBJFE55nolwU+BfsWMIs79
-         /gdbi+UYlWbiw6Arg3GQTdEV+QRbw3cEjou/gqW9yswK3aRwHd8wd5DRdcR4X3lj5AbJ
-         9KAQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :subject:to:from;
+        bh=5gqbgNk0uuxMBz0xUZ3vzfd7MmVQesYbOGuXnSPowb0=;
+        b=SQ+7YDczXI6ArYQzuglPDrZecLefkFFqla432cO7hIyYW37HctuxR3XLhdp+OLt1JE
+         rK+9ob17bNReP177XElDrSdHai1wFXWItq0RYq3Unxi4n+C8rnZ7S3xcrJOr2YUVJ5IO
+         qOcq016ad3peoz9dYmhQuSGcmMK5LbnC6wqtSKB3tx7eGPhWe004AZHvTzTkTR0vsiQm
+         tkS/JhwCf7i0KDWVW2RdTMJtc5WkT3J7r8313gs6s3AXp47q4pFiq39d9ovo9q0ReS50
+         kXD/5eNlklupXl/o0FlznAvb2VFvg5frb27EHXIntTQtHAFbAebGGxyGy0f6zUtBmqIq
+         pHDg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=lwObbBzU;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id u19si969297qvj.52.2021.03.31.02.43.43;
-        Wed, 31 Mar 2021 02:43:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id v144si1773628ybb.141.2021.03.31.02.54.31
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 31 Mar 2021 02:54:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=lwObbBzU;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 55DF74B39C;
-	Wed, 31 Mar 2021 05:43:43 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: 0.909
-X-Spam-Level: 
-X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
-	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
-	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
-Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
-	(fail, message has been altered) header.i=@linaro.org
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gU+B+qosMfTo; Wed, 31 Mar 2021 05:43:42 -0400 (EDT)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 498C94B39F;
-	Wed, 31 Mar 2021 05:43:42 -0400 (EDT)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 943664B39A
- for <kvmarm@lists.cs.columbia.edu>; Wed, 31 Mar 2021 05:43:40 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3nDlaWm1hfJe for <kvmarm@lists.cs.columbia.edu>;
- Wed, 31 Mar 2021 05:43:39 -0400 (EDT)
-Received: from mail-ej1-f50.google.com (mail-ej1-f50.google.com
- [209.85.218.50])
- by mm01.cs.columbia.edu (Postfix) with ESMTPS id 73F2B4B38F
- for <kvmarm@lists.cs.columbia.edu>; Wed, 31 Mar 2021 05:43:39 -0400 (EDT)
-Received: by mail-ej1-f50.google.com with SMTP id ce10so29112938ejb.6
- for <kvmarm@lists.cs.columbia.edu>; Wed, 31 Mar 2021 02:43:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=YMiE+kC04pZeOxkIHTZ5n+tBWqrLCoxGcq+JX9IvLEo=;
- b=lwObbBzUMPtuNRTAfP+9LHPHy1w1N5WKNsRnTjJJGrzVo4LVAvJCNgNftqwGzM3PIH
- lIbKDnRu3gq1Nd5T2ch28v4b5Qkn/0b5UzaiiLkYDH1MCoSZ7kthlpc5G6RYMyyEsrQy
- O6Sa4pbZ2CsfpMZVY95ZulHz9ZbNa2cL4KVsXQWER+/xH1Lvr6KGD0tLpeDqkDdx5gKh
- 4asJXZS1MvYwi574DOLJELleYJgFVTiYrTqtekDmOuvwHgtDRSGL/3K8eqW/FHipwU2p
- 7KFj7xJJ7OfLBLnWkbLyQ8WCaUxXc9WD8zKn6ypNe6DQ/F3GtDUOEPEg3kc4m4ltT3ZF
- zbcg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=YMiE+kC04pZeOxkIHTZ5n+tBWqrLCoxGcq+JX9IvLEo=;
- b=PkrwwTxpbXlELFAf9NYTMbvk85DjbgTxUA0XgkdNRGEKpfnhg7w/c+5D+j9RvYsOEO
- Rk2KgsS+t29TrqkaCoXCJlgDoFmWFGUdNFMpbs5UYwtuuMpMUUM2HyvBLbnWLaWy5NEs
- XDLGjXnBhx3yLuLbsLugvgtb5JT0aqNfjGIcDO+dBEwEZCiH51dGq/Y5dQsxuVcGfI2b
- wZaejkMdsHbcBRylLtDjPGSbZ69B0hsjgxQk6oQFjHDytZU81L5qXi+Gxm9MP+yddSDm
- qHV2KgR9JaiSuhSTGJ5AWlGV2Il/xvgvrOwv0bbj4r38La2/DX/WyzW4g7lW73+Qu4Zz
- KsUg==
-X-Gm-Message-State: AOAM532ugohxChMTae3a5FCGWwno8zewQevMI8rh9GzwyQ9ta8DBiCSq
- O9l5j0bZxUzt/k6zTVHfkhYBnLqqcrOHIhQDvVNqiQ==
-X-Received: by 2002:a17:906:8a65:: with SMTP id
- hy5mr2641138ejc.250.1617183818442; 
- Wed, 31 Mar 2021 02:43:38 -0700 (PDT)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Received: from localhost ([::1]:60576 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lRXYV-0002ih-2t
+	for alex.bennee@linaro.org; Wed, 31 Mar 2021 05:54:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52046)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1lRXYB-0002dE-4r; Wed, 31 Mar 2021 05:54:12 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:4840)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1lRXY3-0002Xx-MS; Wed, 31 Mar 2021 05:54:10 -0400
+Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.60])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4F9M6F6Y7qz1BFy0;
+ Wed, 31 Mar 2021 17:51:49 +0800 (CST)
+Received: from DESKTOP-TMVL5KK.china.huawei.com (10.174.187.128) by
+ DGGEMS409-HUB.china.huawei.com (10.3.19.209) with Microsoft SMTP Server id
+ 14.3.498.0; Wed, 31 Mar 2021 17:53:45 +0800
+From: Yanan Wang <wangyanan55@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+Subject: [RFC PATCH 0/6] Introduce cluster cpu topology support
+Date: Wed, 31 Mar 2021 17:53:37 +0800
+Message-ID: <20210331095343.12172-1-wangyanan55@huawei.com>
+X-Mailer: git-send-email 2.8.4.windows.1
 MIME-Version: 1.0
-References: <20210311165947.27470-1-peter.maydell@linaro.org>
- <431943c3-a603-7426-273f-b5a00f10ce41@huawei.com>
-In-Reply-To: <431943c3-a603-7426-273f-b5a00f10ce41@huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 31 Mar 2021 09:43:06 +0000
-Message-ID: <CAFEAcA-tyxfiJ_BXOkm9SOApOnOh-hXi+dvjOP0-SqASjt5bhQ@mail.gmail.com>
-Subject: Re: [PATCH] target/arm: Make number of counters in PMCR follow the CPU
-To: Zenghui Yu <yuzenghui@huawei.com>
-Cc: Marc Zyngier <maz@kernel.org>, QEMU Developers <qemu-devel@nongnu.org>,
- Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- qemu-arm <qemu-arm@nongnu.org>, Leif Lindholm <leif@nuviainc.com>,
- kvmarm <kvmarm@lists.cs.columbia.edu>
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
+Content-Type: text/plain
+X-Originating-IP: [10.174.187.128]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.190;
+ envelope-from=wangyanan55@huawei.com; helo=szxga04-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: YTovMzpOHI1w
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Barry Song <song.bao.hua@hisilicon.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+ Eduardo
+ Habkost <ehabkost@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>,
+ wanghaibin.wang@huawei.com, Richard Henderson <richard.henderson@linaro.org>,
+ Yanan Wang <wangyanan55@huawei.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, yuzenghui@huawei.com,
+ Igor Mammedov <imammedo@redhat.com>, zhukeqian1@huawei.com,
+ Jiajie Li <lijiajie11@huawei.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: oWfVjEXRH6eb
 
-On Wed, 31 Mar 2021 at 09:59, Zenghui Yu <yuzenghui@huawei.com> wrote:
->
-> [+kvmarm, Marc]
->
-> On 2021/3/12 0:59, Peter Maydell wrote:
-> > Currently we give all the v7-and-up CPUs a PMU with 4 counters.  This
-> > means that we don't provide the 6 counters that are required by the
-> > Arm BSA (Base System Architecture) specification if the CPU supports
-> > the Virtualization extensions.
+Hi,
+This series introduces the cluster cpu topology support, besides now
+existing sockets, cores, and threads.
 
-> So I've tested it with kvm and I get the following error before
-> VM startup:
->
->    "qemu-system-aarch64: Failed to retrieve host CPU features"
->
-> > ---
-> >   target/arm/cpu.h     |  1 +
-> >   target/arm/cpu64.c   |  3 +++
-> >   target/arm/cpu_tcg.c |  5 +++++
-> >   target/arm/helper.c  | 29 +++++++++++++++++------------
-> >   target/arm/kvm64.c   |  2 ++
-> >   5 files changed, 28 insertions(+), 12 deletions(-)
->
-> [...]
->
-> > diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-> > index dff85f6db94..581335e49d3 100644
-> > --- a/target/arm/kvm64.c
-> > +++ b/target/arm/kvm64.c
-> > @@ -566,6 +566,8 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-> >                                 ARM64_SYS_REG(3, 0, 0, 7, 1));
-> >           err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64mmfr2,
-> >                                 ARM64_SYS_REG(3, 0, 0, 7, 2));
-> > +        err |= read_sys_reg64(fdarray[2], &ahcf->isar.reset_pmcr_el0,
-> > +                              ARM64_SYS_REG(3, 3, 9, 12, 0));
->
-> Looks like we tried to access PMCR_EL0 *before* telling kvm that
-> KVM_ARM_VCPU_PMU_V3 feature should be supported, which is now
-> refused by kvm [*].
->
-> [*] https://git.kernel.org/torvalds/c/11663111cd49
+A cluster means a group of cores that share some resources (e.g. cache)
+among them under the LLC. For example, ARM64 server chip Kunpeng 920 has
+6 or 8 clusters in each NUMA, and each cluster has 4 cores. All clusters
+share L3 cache data while cores within each cluster share the L2 cache.
 
-Oops, that's embarrassing. I should have tested with KVM, and
-I forgot the PMU needs special enablement :-(
+Also, there are some x86 CPU implementations (e.g. Jacobsville) where L2
+cache is shared among a cluster of cores instead of being exclusive to
+one single core. For example, on Jacobsville there are 6 clusters of 4
+Atom cores, each cluster sharing a separate L2, and 24 cores sharing L3).
 
-I'm on holiday right now so I probably won't have time to
-look at a fix for rc2. I might just revert this commit.
+The cache affinity of cluster has been proved to improve the Linux kernel
+scheduling performance and a patchset [1] has already been posted, where
+a general sched_domain for clusters was added and a cluster level was
+added in the arch-neutral cpu topology struct like below.
+struct cpu_topology {
+    int thread_id;
+    int core_id;
+    int cluster_id;
+    int package_id;
+    int llc_id;
+    cpumask_t thread_sibling;
+    cpumask_t core_sibling;
+    cpumask_t cluster_sibling;
+    cpumask_t llc_sibling;
+};
 
-thanks
--- PMM
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm
+Also Kernel Doc [2]: Documentation/devicetree/bindings/cpu/cpu-topology.txt
+defines a four-level CPU topology hierarchy like socket/cluster/core/thread.
+According to the context, a socket node's child nodes must be one or more
+cluster nodes and a cluster node's child nodes must be one or more cluster
+nodes/one or more core nodes.
+
+So let's add the arch-neutral -smp, clusters=* command line support, so that
+future guest os could make use of cluster cpu topology for better scheduling
+performance. And whichever architecture that has groups of cpus sharing some
+separate resources(e.g. L2 cache) internely under LLC can use this command
+line parameter to define a VM with cluster level cpu topology.
+
+For ARM machines, a four-level cpu hierarchy can be defined and it will be
+sockets/clusters/cores/threads. For PC machines, a five-level cpu hierarchy
+can be defined and it will be sockets/dies/clusters/cores/threads.
+
+About this series:
+Note that, this series was implemented based on [3] and [4]. Although they
+have not merged into qemu mainline for now, it's still meaning to post this
+series to express the thoughts first. So a RFC is sent and any comments are
+welcomed and appreciated.
+
+Test results:
+With command line: -smp 96,sockets=2,clusters=6,cores=4,threads=2, VM's cpu
+topology description shows as below.
+lscpu:
+Architecture:        aarch64
+Byte Order:          Little Endian
+CPU(s):              96
+On-line CPU(s) list: 0-95
+Thread(s) per core:  2
+Core(s) per socket:  24
+Socket(s):           2
+NUMA node(s):        1
+Vendor ID:           0x48
+Model:               0
+Stepping:            0x1
+BogoMIPS:            200.00
+L1d cache:           unknown size
+L1i cache:           unknown size
+L2 cache:            unknown size
+NUMA node0 CPU(s):   0-95
+
+Topology information of clusters can also be got:
+cat /sys/devices/system/cpu/cpu0/topology/cluster_cpus_list: 0-7
+cat /sys/devices/system/cpu/cpu0/topology/cluster_id: 56
+
+cat /sys/devices/system/cpu/cpu8/topology/cluster_cpus_list: 8-15
+cat /sys/devices/system/cpu/cpu8/topology/cluster_id: 316
+...
+cat /sys/devices/system/cpu/cpu95/topology/cluster_cpus_list: 88-95
+cat /sys/devices/system/cpu/cpu95/topology/cluster_id: 2936
+
+Links:
+[1] https://patchwork.kernel.org/project/linux-arm-kernel/cover/20210319041618.14316-1-song.bao.hua@hisilicon.com/
+[2] https://github.com/torvalds/linux/blob/master/Documentation/devicetree/bindings/cpu/cpu-topology.txt
+[3] https://patchwork.kernel.org/project/qemu-devel/cover/20210225085627.2263-1-fangying1@huawei.com/
+[4] https://patchwork.kernel.org/project/qemu-devel/patch/20201109030452.2197-4-fangying1@huawei.com/
+
+Yanan Wang (6):
+  vl.c: Add arch-neutral -smp, clusters=* command line support
+  hw/core/machine: Parse cluster cpu topology in smp_parse()
+  hw/arm/virt: Parse cluster cpu topology for ARM machines
+  hw/i386/pc: Parse cluster cpu topology for PC machines
+  hw/arm/virt-acpi-build: Add cluster level for ARM PPTT table
+  hw/arm/virt: Add cluster level for ARM device tree
+
+ hw/acpi/aml-build.c         | 11 +++++++++
+ hw/arm/virt-acpi-build.c    | 43 ++++++++++++++++++++---------------
+ hw/arm/virt.c               | 45 ++++++++++++++++++++++---------------
+ hw/core/machine.c           | 32 +++++++++++++++-----------
+ hw/i386/pc.c                | 31 +++++++++++++++----------
+ include/hw/acpi/aml-build.h |  2 ++
+ include/hw/boards.h         |  4 +++-
+ qemu-options.hx             | 27 +++++++++++++---------
+ softmmu/vl.c                |  3 +++
+ 9 files changed, 125 insertions(+), 73 deletions(-)
+
+-- 
+2.19.1
+

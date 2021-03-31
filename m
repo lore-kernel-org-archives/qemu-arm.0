@@ -1,69 +1,69 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp336378lfg;
-        Wed, 31 Mar 2021 03:14:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJziQ01sr/vR/wihrFoaLZGmszQmoHfuPlfzzwAK2uhjaTKXPxGtde1IOmXQkmD0FBAgkrF2
-X-Received: by 2002:a92:2c04:: with SMTP id t4mr2017137ile.99.1617185698936;
-        Wed, 31 Mar 2021 03:14:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617185698; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp337025lfg;
+        Wed, 31 Mar 2021 03:15:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyH87bHyaXA0z5SckmvdluOlt5Xhw7ohQS25zA+BYhdttk1JziIPh0ZnXNEZR2ja3Lz6Xba
+X-Received: by 2002:a05:6e02:b41:: with SMTP id f1mr2049089ilu.297.1617185752390;
+        Wed, 31 Mar 2021 03:15:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617185752; cv=none;
         d=google.com; s=arc-20160816;
-        b=uEbBQTB/UizvgbL1fD/NU5x77EygDqjvxyBXvtic8g9iNWrl8sMBVeN+CCy48mf4Hz
-         iT8EFXwUr+f4+tOCgUVQlNvvawyX3Y7kP5SxhpbFq7GvO6q0mhrUG/zLj0lWzoL2AdkB
-         LfiS8X/QjwRcrL2uEMz8MY+8FVYa923m+oKrhAWRbQeTcuYPhf/KwhKqueUrtM099yfZ
-         IrVs5NZ7b7ObRLQpe7r7jnEveKQO+gamv86pu5523nzKo3p1BjEgz54P42Z+fA1antvI
-         WEuLvykSclrp/dT5muJQiNWdC1cPvaRuZwLvDO84zVNJIu3BbQQ9Kl70bedpOZUyL/o5
-         Cddg==
+        b=Jzn/8FCejFOvDh/UtteFMHmNIkKiGzveBOxuieITKmCGE5JOk27Nl8opNFbL94STel
+         uoAXKdjsFghNEAUmesqgJKjbZv032FHXAJwCL+GyzxZuEuSacP5Y+JkXn0OIs3ersRbY
+         bOD+ryWrBsF6JJjfWQl37pS437XxmzM4/kh1yhSN6273rJe9JMfA+IU6p20STSmB+P7w
+         Fxw6Z+0lkf4BirOoJGzUwX5RolYhXa+Mz7MBcHOMBAsafrotFQCpGQa/YfZ1K6PSGAf6
+         ogIbzsOYaGIrRDptwEv5JVDxec3+NGHsp+ZLF4lIiZKmYhKtDu2n/hd3xJKa+x88EBeJ
+         eqng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=JFc4iUl+TF1Kv/+g9sxHerbPugYuCc1plpVbH0DQub4=;
-        b=NQL1EmT4NRshPCQsnKFDsmWfGauFG8Tv2TQxCncrBOnG1yYFG45nZRtltDuYq18d1C
-         VdO6yUDcO586m3nOTGBKiE8+DV/qT8pz+iMek+ZUkR5eEX2hfo11nGU/K4qt4WcCKmrA
-         uhkNsAu6vxQs/6OiC0E4jTcjp+0qeiFcbdB8Gkq/0RjIGvrzT/L42GNhAKqaohRvIU3c
-         4eNQImqVSq7l4EkWMgxMH4TbqWvdpN8mAHAUlEnkPRir7tpV/F0rcGMHrPCN6EgyCvDM
-         Yzl6isWYxYUJFY2OtPRjkiXX7UFM/SfN4vMrWEZ+9JZNF2xHu0Nr80eFGBbEiGGWSBLB
-         vGww==
+        bh=bOxz6/H8ZKGrq1dhuw4YPqmAjy7bSaP6shHOpluIELU=;
+        b=khwI8iXmuE/nOYGa9tdBbt84MkOgQsw0Q/YzXFIwv3IcuLtmVDl4QBIuP4J7AgQY+h
+         yLKHeZ2WNw0n/kJ93UuYY/ac7G1ej2515F7znOrghFLCCKgnythG2Uxj7mKIvbp9Keq1
+         9d7vfNg043h+348fTPykx6paqEZBpJFe7dUMOqnEWRY+eH7ji2lwIhyj/Kin9ToZW4Y+
+         KjtCyNFrp1nF0yz5pqyRzBxKk14Nyx4wT1tlVzd0IIzaHB6J5+mqH4H1E3Ffkp68e50l
+         G6BL4GLoeiemnIi8xPsBnuW0u9E9nrBZzKxO8VxPqFSz2R63JoIzyBzpqSo/HXnqdh0T
+         DBSQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a4si1450591jat.82.2021.03.31.03.14.58
+        by mx.google.com with ESMTPS id c4si1184095ioa.65.2021.03.31.03.15.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 31 Mar 2021 03:14:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 31 Mar 2021 03:15:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:46798 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49944 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lRXsI-0003st-9J
-	for alex.bennee@linaro.org; Wed, 31 Mar 2021 06:14:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56362)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lRXt9-0005FU-O9
+	for alex.bennee@linaro.org; Wed, 31 Mar 2021 06:15:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56352)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jiangkunkun@huawei.com>)
- id 1lRXr8-0002dk-Uh; Wed, 31 Mar 2021 06:13:46 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:4491)
+ id 1lRXr7-0002a4-EW; Wed, 31 Mar 2021 06:13:45 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:4492)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jiangkunkun@huawei.com>)
- id 1lRXr5-0005kU-AL; Wed, 31 Mar 2021 06:13:46 -0400
+ id 1lRXr5-0005kV-8j; Wed, 31 Mar 2021 06:13:45 -0400
 Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4F9MXz4wbQzyNQh;
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4F9MXz4YfJzyNQb;
  Wed, 31 Mar 2021 18:11:31 +0800 (CST)
 Received: from DESKTOP-6NKE0BC.china.huawei.com (10.174.185.210) by
  DGGEMS409-HUB.china.huawei.com (10.3.19.209) with Microsoft SMTP Server id
- 14.3.498.0; Wed, 31 Mar 2021 18:13:30 +0800
+ 14.3.498.0; Wed, 31 Mar 2021 18:13:27 +0800
 From: Kunkun Jiang <jiangkunkun@huawei.com>
 To: Eric Auger <eric.auger@redhat.com>, Peter Maydell
  <peter.maydell@linaro.org>, Alex Williamson <alex.williamson@redhat.com>,
  <kevin.tian@intel.com>, Yi Sun <yi.y.sun@linux.intel.com>, "open list:ARM
  SMMU" <qemu-arm@nongnu.org>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>
-Subject: [RFC PATCH v2 4/4] hw/arm/smmuv3: Post-load stage 1 configurations to
- the host
-Date: Wed, 31 Mar 2021 18:12:59 +0800
-Message-ID: <20210331101259.2153-5-jiangkunkun@huawei.com>
+Subject: [RFC PATCH v2 3/4] vfio: Add
+ vfio_prereg_listener_global_log_start/stop in nested stage
+Date: Wed, 31 Mar 2021 18:12:58 +0800
+Message-ID: <20210331101259.2153-4-jiangkunkun@huawei.com>
 X-Mailer: git-send-email 2.26.2.windows.1
 In-Reply-To: <20210331101259.2153-1-jiangkunkun@huawei.com>
 References: <20210331101259.2153-1-jiangkunkun@huawei.com>
@@ -81,127 +81,83 @@ X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Liu Yi L <yi.l.liu@intel.com>, shameerali.kolothum.thodi@huawei.com,
  Kirti Wankhede <kwankhede@nvidia.com>, Zenghui Yu <yuzenghui@huawei.com>,
  wanghaibin.wang@huawei.com, Keqian Zhu <zhukeqian1@huawei.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: x6veKu6VTvk7
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: HnwdSsdq1hDp
 
-In nested mode, we call the set_pasid_table() callback on each STE
-update to pass the guest stage 1 configuration to the host and
-apply it at physical level.
-
-In the case of live migration, we need to manual call the
-set_pasid_table() to load the guest stage 1 configurations to the
-host. If this operation is fail, the migration is fail.
+In nested mode, we set up the stage 2 and stage 1 separately. In my
+opinion, vfio_memory_prereg_listener is used for stage 2 and
+vfio_memory_listener is used for stage 1. So it feels weird to call
+the global_log_start/stop interface in vfio_memory_listener to switch
+dirty tracking, although this won't cause any errors. Add
+global_log_start/stop interface in vfio_memory_prereg_listener
+can separate stage 2 from stage 1.
 
 Signed-off-by: Kunkun Jiang <jiangkunkun@huawei.com>
 ---
- hw/arm/smmuv3.c     | 62 +++++++++++++++++++++++++++++++++++++++++++++
- hw/arm/trace-events |  1 +
- 2 files changed, 63 insertions(+)
+ hw/vfio/common.c | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
 
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 55aa6ad874..4d28ca3777 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -1534,6 +1534,67 @@ static void smmu_realize(DeviceState *d, Error **errp)
-     smmu_init_irq(s, dev);
+diff --git a/hw/vfio/common.c b/hw/vfio/common.c
+index 86722814d4..efea252e46 100644
+--- a/hw/vfio/common.c
++++ b/hw/vfio/common.c
+@@ -1209,6 +1209,16 @@ static void vfio_listener_log_global_start(MemoryListener *listener)
+ {
+     VFIOContainer *container = container_of(listener, VFIOContainer, listener);
+ 
++    if (container->iommu_type != VFIO_TYPE1_NESTING_IOMMU) {
++        vfio_set_dirty_page_tracking(container, true);
++    }
++}
++
++static void vfio_prereg_listener_log_global_start(MemoryListener *listener)
++{
++    VFIOContainer *container =
++        container_of(listener, VFIOContainer, prereg_listener);
++
+     vfio_set_dirty_page_tracking(container, true);
  }
  
-+static int smmuv3_manual_set_pci_device_pasid_table(SMMUDevice *sdev)
-+{
-+#ifdef __linux__
-+    IOMMUMemoryRegion *mr = &(sdev->iommu);
-+    int sid = smmu_get_sid(sdev);
-+    SMMUEventInfo event = {.type = SMMU_EVT_NONE, .sid = sid,
-+                           .inval_ste_allowed = true};
-+    IOMMUConfig iommu_config = {};
-+    SMMUTransCfg *cfg;
-+    int ret = -1;
-+
-+    cfg = smmuv3_get_config(sdev, &event);
-+    if (!cfg) {
-+        return ret;
+@@ -1216,6 +1226,16 @@ static void vfio_listener_log_global_stop(MemoryListener *listener)
+ {
+     VFIOContainer *container = container_of(listener, VFIOContainer, listener);
+ 
++    if (container->iommu_type != VFIO_TYPE1_NESTING_IOMMU) {
++        vfio_set_dirty_page_tracking(container, false);
 +    }
-+
-+    iommu_config.pasid_cfg.argsz = sizeof(struct iommu_pasid_table_config);
-+    iommu_config.pasid_cfg.version = PASID_TABLE_CFG_VERSION_1;
-+    iommu_config.pasid_cfg.format = IOMMU_PASID_FORMAT_SMMUV3;
-+    iommu_config.pasid_cfg.base_ptr = cfg->s1ctxptr;
-+    iommu_config.pasid_cfg.pasid_bits = cfg->s1cdmax;
-+    iommu_config.pasid_cfg.vendor_data.smmuv3.version = PASID_TABLE_SMMUV3_CFG_VERSION_1;
-+    iommu_config.pasid_cfg.vendor_data.smmuv3.s1fmt = cfg->s1fmt;
-+    iommu_config.pasid_cfg.vendor_data.smmuv3.s1dss = cfg->s1dss;
-+
-+    if (cfg->disabled || cfg->bypassed) {
-+        iommu_config.pasid_cfg.config = IOMMU_PASID_CONFIG_BYPASS;
-+    } else if (cfg->aborted) {
-+        iommu_config.pasid_cfg.config = IOMMU_PASID_CONFIG_ABORT;
-+    } else {
-+        iommu_config.pasid_cfg.config = IOMMU_PASID_CONFIG_TRANSLATE;
-+    }
-+
-+    ret = pci_device_set_pasid_table(sdev->bus, sdev->devfn, &iommu_config);
-+    if (ret) {
-+        error_report("Failed to pass PASID table to host for iommu mr %s (%m)",
-+                     mr->parent_obj.name);
-+    }
-+
-+    return ret;
-+#endif
 +}
 +
-+static int smmuv3_post_load(void *opaque, int version_id)
++static void vfio_prereg_listener_log_global_stop(MemoryListener *listener)
 +{
-+    SMMUv3State *s3 = opaque;
-+    SMMUState *s = &(s3->smmu_state);
-+    SMMUDevice *sdev;
-+    int ret = 0;
++    VFIOContainer *container =
++        container_of(listener, VFIOContainer, prereg_listener);
 +
-+    QLIST_FOREACH(sdev, &s->devices_with_notifiers, next) {
-+        trace_smmuv3_post_load_sdev(sdev->devfn, sdev->iommu.parent_obj.name);
-+        ret = smmuv3_manual_set_pci_device_pasid_table(sdev);
-+        if (ret) {
-+            break;
-+        }
-+    }
-+
-+    return ret;
-+}
-+
- static const VMStateDescription vmstate_smmuv3_queue = {
-     .name = "smmuv3_queue",
-     .version_id = 1,
-@@ -1552,6 +1613,7 @@ static const VMStateDescription vmstate_smmuv3 = {
-     .version_id = 1,
-     .minimum_version_id = 1,
-     .priority = MIG_PRI_IOMMU,
-+    .post_load = smmuv3_post_load,
-     .fields = (VMStateField[]) {
-         VMSTATE_UINT32(features, SMMUv3State),
-         VMSTATE_UINT8(sid_size, SMMUv3State),
-diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-index b0b0030d24..2f093286ec 100644
---- a/hw/arm/trace-events
-+++ b/hw/arm/trace-events
-@@ -54,4 +54,5 @@ smmuv3_notify_flag_add(const char *iommu) "ADD SMMUNotifier node for iommu mr=%s
- smmuv3_notify_flag_del(const char *iommu) "DEL SMMUNotifier node for iommu mr=%s"
- smmuv3_inv_notifiers_iova(const char *name, uint16_t asid, uint64_t iova, uint8_t tg, uint64_t num_pages) "iommu mr=%s asid=%d iova=0x%"PRIx64" tg=%d num_pages=0x%"PRIx64
- smmuv3_notify_config_change(const char *name, uint8_t config, uint64_t s1ctxptr) "iommu mr=%s config=%d s1ctxptr=0x%"PRIx64
-+smmuv3_post_load_sdev(int devfn, const char *name) "sdev devfn=%d iommu mr=%s"PRIx64
+     vfio_set_dirty_page_tracking(container, false);
+ }
+ 
+@@ -1408,6 +1428,8 @@ static const MemoryListener vfio_memory_listener = {
+ static MemoryListener vfio_memory_prereg_listener = {
+     .region_add = vfio_prereg_listener_region_add,
+     .region_del = vfio_prereg_listener_region_del,
++    .log_global_start = vfio_prereg_listener_log_global_start,
++    .log_global_stop = vfio_prereg_listener_log_global_stop,
+     .log_sync = vfio_prereg_listener_log_sync,
+ };
  
 -- 
 2.23.0

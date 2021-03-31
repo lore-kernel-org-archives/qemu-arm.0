@@ -1,122 +1,84 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp626816ejf;
-        Fri, 23 Feb 2024 07:20:49 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWA6eUNPv0D7Y+179iQ+F4SLOOF1JQ6Ov8UH3yX9LdnVgtmU1unCcjnUzzkioeKQlGZwglZ5hjTytSNcYOOd/s7OIK+RD2c
-X-Google-Smtp-Source: AGHT+IGJ4Id8icbZ96BdgFOw9ZqqOvvgdSNNgctsyDrS+E1dDpuuY6dJse/E31i+vH0KM9zdsMDL
-X-Received: by 2002:a05:6830:20c3:b0:6e4:81c2:a794 with SMTP id z3-20020a05683020c300b006e481c2a794mr128258otq.12.1708701648988;
-        Fri, 23 Feb 2024 07:20:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708701648; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp212460lfg;
+        Tue, 30 Mar 2021 23:48:16 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxmCIravnk2peUSN3pf3Fiou6l3LTO4tpV8Nq7LABKYdweNkNkvrKDoxGA3xC11gSMAJztM
+X-Received: by 2002:a05:6e02:b25:: with SMTP id e5mr1583562ilu.119.1617173296437;
+        Tue, 30 Mar 2021 23:48:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617173296; cv=none;
         d=google.com; s=arc-20160816;
-        b=LizviKxuxHRdt6o9169bLWXKVXS+rRzzjLVizOIpdKK2s9HLREyjGML+l91u1Yv0Wk
-         sah88C8TDKulDFak/Wk+a2nxVMr7S37wKr6Hn5Y+c8/DNqcaIci762/J5ZBggTRaKcXM
-         03mu4BSNBQBQ+Nz4dlOHZni6KLzfbBlTZYS4V37i7T7cG1t1iuMIgWQwO0DumSAZr3gm
-         CvuJcm3bo7SybGBN/lnjf8CWT2kzfk4+FPaOCDM69i+n7NnDbBi4xFT+/DW22Oyesu6V
-         TLwsCyj9h50fHUF+cmUWXKnB6UweN76kJ5YTMtLtaU4XcLbjCkCioSguPmdIENmeCbUG
-         /u9g==
+        b=mKjnEWN5R1LEtz9ba10+RGq2L0GVp8y/jFX0CrL8b/wQB7h2LH+BJ3TypAU1bVFTKT
+         mHPzDJP337W79e0pXldzMctGI4RXYWYPHKtjBtM+DJdh1FYqMY6amVody0l8a4k0Zq2w
+         0jYjOuhwenycNqnjxqP8nXULNejpAbvOej6X6aCaZ7XVn1OrweQ9nq4fcBeS1+ekdcN2
+         Wr5Yayk+MQ01Fk+NPmGaQZdqr8/iADQqxtkQtsr7LGES6pIwR6zuxpkiRpAjmSzBkV8A
+         qAu6k/c5KRcYhsIg0F4WgcqMcx7sdXmTFPDmwep4avFpRGyAAg7hOtI9ZcAKliI6dmi1
+         zFHA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=oIv1Gk06z9tD/JisRcZsFGEjcZYehPqjDSC/Xnt5HDE=;
-        fh=P2qEowBANoz7W3TASvgjWQ3Kpno1ihvvDShSbjIoRU8=;
-        b=OJWrq2YjC0T0wUFJgOfdqTy27qBK2hDxTAe2AFxbGCmA9TCKVlyL7sdaHPOcYj2Hub
-         /iEDHYvZKVbZdL6O1OtvXMhV9YRt86yEuZOwnRQR2OmoA26coai0mleSNPHofNc/cOJV
-         eplYns3d4xDnZGd4h24x0pvbyPiVD8zvF8DW58+bFrrjdjGuFKx94ltmN032nyqJI0f3
-         anL5h9Zw5gTpbypXwNFlRCMRfDAbzmSex4uwUG2Q7gXGrO5lgcidli5LOYJ/X3eYbJlr
-         b1tbPQUDGHJ8m4QShKLgg1Uu+HjaGMRYgKLQuUkiovqYUqLHr0DUFvcNdZsU0Uf0RQ0m
-         /tXQ==;
-        dara=google.com
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from;
+        bh=HXf5wyJ5slHiBxyeB5IikBY0qHYLcpEPDLdji+/73jQ=;
+        b=YX+N++Acc/EWlfTskhkG/eVC9iLkwqOBaynCH6YtYp7IOynLQ+r/e5O51N08N8q24v
+         sTh9gFf1ypRElUg7ufaoh4AcC9CJbVxifGVtHsJY1/kSXoQoNgctgUwL+UhrEb99DSEK
+         Jr4IHPccU5lA2HcqGMvzE+4F9o4chQrnDgEvMbHNUJMILal6b+01tn//bl6YK7Cr11zY
+         CldQAe7OPoxitHTx8z4SmWH1YUidoyUa4qSKotjym2cY5fxNoMXjy+LUeaEWo939Lqcy
+         eWRvXGgqobmObNRBOdIhsfXizzYkYZPvEsNPYLv2WRko4nV5hAMhRNSqq9GkxOAUZpC4
+         wzfg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Qoe//JRj";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ee16-20020a05620a801000b00787510a3df2si15348128qkb.384.2024.02.23.07.20.48
+        by mx.google.com with ESMTPS id u28si1113838jaq.75.2021.03.30.23.48.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 Feb 2024 07:20:48 -0800 (PST)
+        Tue, 30 Mar 2021 23:48:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Qoe//JRj";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Received: from localhost ([::1]:38924 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rdXLu-0002R0-RG; Fri, 23 Feb 2024 10:20:43 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lRUeF-0000b2-Ny
+	for alex.bennee@linaro.org; Wed, 31 Mar 2021 02:48:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41182)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rdX9Y-0003yr-Pn
- for qemu-arm@nongnu.org; Fri, 23 Feb 2024 10:07:57 -0500
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rdX9X-00008y-Ah
- for qemu-arm@nongnu.org; Fri, 23 Feb 2024 10:07:56 -0500
-Received: by mail-ed1-x52b.google.com with SMTP id
- 4fb4d7f45d1cf-5640fef9fa6so1194993a12.0
- for <qemu-arm@nongnu.org>; Fri, 23 Feb 2024 07:07:53 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708700872; x=1709305672; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=oIv1Gk06z9tD/JisRcZsFGEjcZYehPqjDSC/Xnt5HDE=;
- b=Qoe//JRjwV6wk5fUAyiqD5ayaZDoLHEec8lq43e+5yBAWlAIewzhP6a7KAYcyo4HvZ
- oz8Xq3P7LPzV7WA2MPrThZHWsNw6JV+S0sSkeX2C5xx2MpOHvwYJHX7agWTsZKB6CubE
- MN93nM1G1tQOHsubpcmAYhu1eeLaqiJ+3hqW3Cx0JTQ2Igt0IjLq7/Z4/l36snT+Y74r
- zGy5IYX28UQx1QVRrQw8vttgdVQVHsy5kNbYsJ+Y7ITCH0Ud/Sh5j+ysCwVeEZN2WSOK
- XS+GdqDo303qqz/acaR8E7xIRqVtwW0yDSDbyRMKBtrp/B9KiodS4LtmXeGKPTQOeXy5
- CEkg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708700872; x=1709305672;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=oIv1Gk06z9tD/JisRcZsFGEjcZYehPqjDSC/Xnt5HDE=;
- b=YEr5hs+lvVDoTbUctm8wLggMlde8/qf03tsvGpQgnwgRWyRosY4Pa4wbVkR8A9M9v4
- fwCaBrk0lX/wIbY6D9gm5j4s9f1K12JM+VMmmCvSdnH3zrGDuWNEVPW/NlSW0HnZwsq4
- YWvTBV1AJfJF0KEzO4V4rRbul/j8dhxF2ArW/aY8wKf9wBmdfK3LJPTLC4E+rMDaE23S
- 8ZUI+JK1EvyFcnjcrfbCeuwidgOewxTWr5uCS9gvySy+Mb1B24tCNVzCBkqplX+Hi2hD
- b7v3rwdogC6sWUI0Hg/BPNfV+EsYu2OBzf3d1fgBLtoHLRWzMBJv8oCn3PO8kvlldnsv
- Fx2Q==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUY1NPlUse3eXmlRHW29W/U2qy/PzpsTfCF1M0qxS1M0hABiJHSb9Y2zt9h+q9i73B+Nv6EYexfvA34kDzkcfsf8v7b
-X-Gm-Message-State: AOJu0YxWXfmNtKS1qdQfz6/jO5/CEI+tC+J4duzsDhqK0HrUiQ/t9Itw
- RCqk5Ikcwtc4p9xl+W7sPyj7d3kcUuesQsP7GTxwx4N6HO5ryOxGPo+JtnsMHfuzMTYnoH1fXZR
- iD6mA7BGxWV9nbN02dLg4NlgVRagCTpeqxywPpg==
-X-Received: by 2002:aa7:d912:0:b0:565:6c31:9a47 with SMTP id
- a18-20020aa7d912000000b005656c319a47mr88048edr.39.1708700872202; Fri, 23 Feb
- 2024 07:07:52 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <jiangkunkun@huawei.com>)
+ id 1lRUe5-0000ag-J2; Wed, 31 Mar 2021 02:48:05 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:4057)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jiangkunkun@huawei.com>)
+ id 1lRUe3-0005fT-AZ; Wed, 31 Mar 2021 02:48:05 -0400
+Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4F9H015lNhzlWh0;
+ Wed, 31 Mar 2021 14:46:09 +0800 (CST)
+Received: from DESKTOP-6NKE0BC.china.huawei.com (10.174.185.210) by
+ DGGEMS412-HUB.china.huawei.com (10.3.19.212) with Microsoft SMTP Server id
+ 14.3.498.0; Wed, 31 Mar 2021 14:47:40 +0800
+From: Kunkun Jiang <jiangkunkun@huawei.com>
+To: Eric Auger <eric.auger@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, "open list:ARM SMMU" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ <shameerali.kolothum.thodi@huawei.com>
+Subject: [PATCH] hw/arm/smmuv3: Support 16K translation granule
+Date: Wed, 31 Mar 2021 14:47:13 +0800
+Message-ID: <20210331064713.1782-1-jiangkunkun@huawei.com>
+X-Mailer: git-send-email 2.26.2.windows.1
 MIME-Version: 1.0
-References: <20240219200908.49551-1-arnaud.minier@telecom-paris.fr>
-In-Reply-To: <20240219200908.49551-1-arnaud.minier@telecom-paris.fr>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 23 Feb 2024 15:07:40 +0000
-Message-ID: <CAFEAcA9Lhw3KLEKwra86JskDrNgvi8N91efTH1aZO=YTHUknAA@mail.gmail.com>
-Subject: Re: [PATCH v5 0/8] Add device STM32L4x5 RCC
-To: Arnaud Minier <arnaud.minier@telecom-paris.fr>
-Cc: qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>, 
- Laurent Vivier <lvivier@redhat.com>,
- =?UTF-8?B?SW7DqHMgVmFyaG9s?= <ines.varhol@telecom-paris.fr>, 
- Samuel Tardieu <samuel.tardieu@telecom-paris.fr>, qemu-arm@nongnu.org, 
- Alistair Francis <alistair@alistair23.me>, Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.174.185.210]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.32;
+ envelope-from=jiangkunkun@huawei.com; helo=szxga06-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
+X-Mailman-Version: 2.1.23
 Precedence: list
 List-Id: <qemu-arm.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
@@ -126,42 +88,51 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Zenghui Yu <yuzenghui@huawei.com>, wanghaibin.wang@huawei.com,
+ Keqian Zhu <zhukeqian1@huawei.com>, Peter Xu <peterx@redhat.com>,
+ jasonwang@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: NZHIktiYuk71
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: zddB01xrI3Bl
 
-On Mon, 19 Feb 2024 at 20:09, Arnaud Minier
-<arnaud.minier@telecom-paris.fr> wrote:
->
-> This patch adds the STM32L4x5 RCC (Reset and Clock Control) device and is=
- part
-> of a series implementing the STM32L4x5 with a few peripherals.
->
-> Due to the high number of lines, I tried to split the patch into several =
-independent commits.
-> Each commit compiles on its own but I had to add temporary workarounds in=
- intermediary commits to allow them to compile even if some functions are n=
-ot used. However, they have been removed once the functions were used. Tell=
- me if this is ok or if I should remove them.
->
-> Also, the tests are not very exhaustive for the moment. I have not found =
-a way to test the clocks' frequency from the qtests, which limits severely =
-the exhaustiveness of the tests.
+The driver can query some bits in SMMUv3 IDR5 to learn which
+translation granules are supported. Arm recommends that SMMUv3
+implementations support at least 4K and 64K granules. But in
+the vSMMUv3, there seems to be no reason not to support 16K
+translation granule. In addition, if 16K is not supported,
+vSVA will failed to be enabled in the future for 16K guest
+kernel. So it'd better to support it.
 
-Where you have a device connected to an output clock that produces some
-useful behaviour dependent on the clock frequency it is given (eg if
-it is a timer device that has a timer count register you can read or
-which will fire an interrupt or set a status bit after a certain time),
-you can do something like:
- * configure the RCC for a given frequency
- * advance the simulation time with clock_step()
- * check that the device connected to that clock has changed
-   in the way you expect it to
+Signed-off-by: Kunkun Jiang <jiangkunkun@huawei.com>
+---
+ hw/arm/smmuv3.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-But you're right that we don't have any handy way to look specifically
-at the outputs of a clock-controller to check the frequency they're set to.
-It would probably be possible to add one, but we'd need to enhance
-the qtest protocol to add a "for the Clock specified by this QOM path,
-return the period it's currently set to".
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index 3b87324ce2..0a483b0bab 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -259,8 +259,9 @@ static void smmuv3_init_regs(SMMUv3State *s)
+     s->idr[3] = FIELD_DP32(s->idr[3], IDR3, RIL, 1);
+     s->idr[3] = FIELD_DP32(s->idr[3], IDR3, HAD, 1);
+ 
+-   /* 4K and 64K granule support */
++    /* 4K, 16K and 64K granule support */
+     s->idr[5] = FIELD_DP32(s->idr[5], IDR5, GRAN4K, 1);
++    s->idr[5] = FIELD_DP32(s->idr[5], IDR5, GRAN16K, 1);
+     s->idr[5] = FIELD_DP32(s->idr[5], IDR5, GRAN64K, 1);
+     s->idr[5] = FIELD_DP32(s->idr[5], IDR5, OAS, SMMU_IDR5_OAS); /* 44 bits */
+ 
+@@ -503,7 +504,8 @@ static int decode_cd(SMMUTransCfg *cfg, CD *cd, SMMUEventInfo *event)
+ 
+         tg = CD_TG(cd, i);
+         tt->granule_sz = tg2granule(tg, i);
+-        if ((tt->granule_sz != 12 && tt->granule_sz != 16) || CD_ENDI(cd)) {
++        if ((tt->granule_sz != 12 && tt->granule_sz != 14 &&
++             tt->granule_sz != 16) || CD_ENDI(cd)) {
+             goto bad_cd;
+         }
+ 
+-- 
+2.19.1
 
--- PMM

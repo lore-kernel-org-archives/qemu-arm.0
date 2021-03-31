@@ -1,346 +1,629 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp381242lfg;
-        Wed, 31 Mar 2021 04:19:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyrQaUM8Kyucn/zCRcKkO+6CbuG3yXPsLo/9XJIAJiapBQKhjjNBfb0lypcb74SPDkJJiyJ
-X-Received: by 2002:a5d:8453:: with SMTP id w19mr1891309ior.25.1617189574379;
-        Wed, 31 Mar 2021 04:19:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617189574; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp647546lfg;
+        Wed, 31 Mar 2021 09:48:17 -0700 (PDT)
+X-Received: by 2002:ae9:d60a:: with SMTP id r10mr3853441qkk.411.1617209297551;
+        Wed, 31 Mar 2021 09:48:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617209297; cv=none;
         d=google.com; s=arc-20160816;
-        b=kWbXSptr3Uq/M/h/LUWsBuNlNzyeI38S8+0YgVG6VgSSYUeFdDRNFD481UjQvzMxMA
-         HjluESydM9wBPJOmtFGVIErAcl+beN83bYX4w87g6icF5TGG15amynJhIdboFmTiaTn9
-         vaGHpV7pPRnoWBvC/oiiSxM8yuXWTjhIZnXhRa4ycDJMwd9MLvnHo7yNNL9DNitp9A+L
-         L9L3YnWKqflnbGVBmMQYCf7KrPYX1wL6ZobUT80t1A6IidJ4brJOx/RWFKXOytTOBXKg
-         2Emgy/Q26dbOUDCbIl/KINA1hKXUhjvQp4PaOPKroDdnP1xZdxLXtzbUz1KE4Omh2Qct
-         aY9A==
+        b=xiv2w+/+1ZCC3fAnq9Rkr/jFFgyBXZSU7Nbq3Nu6JmykrHCPwQcWn3WuTULttOgqYb
+         ahnnVlN3D8V8eQpRPVS0DeJg1nMLV6mRVDXrVlQ3I5m/qMeKQCpp1uMCUziY2odsY9d3
+         v0wg+6OXsQJ403uvwvEmuzOqKvRFPPq0xRTNRkeyCEv+1NVNjzMg/1lowkzzpgQzvfui
+         LlKhkLHOFRfwXih8TXoayWhSP+UmZOZvr+yWEJtdWhJ6Geif4ZC/ifcQTLefJeYpPwsz
+         3B+QXLAQWtLziGscyzsJ7DksGs7yrJvhQjPw3NgP+jyeiT7+VZ/EsO3kT4ARuzDzYbdp
+         oO2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=VdW3BX9PQEuyFzP34FQkIc6tkOMd9xRBVXAttnNcl2s=;
-        b=QZ8NnBjBP0PGZpiXuBns/iMztQTxNllPODbE5gdKob59hT7kaxuT4RJvY5p5Lw3Dtn
-         AKRhsgri6jw1fGcTq1FBzCst3Ai/yjvgKM3wGyk+ZS5tJjOvyaME8YRimttmF+sKJRK+
-         gMsSo+6vBU31VkzxScDvAHohsWeO86Ox1W+ByNL3cUMeEJH5OK1C0UcYFAaHnIJs9PgA
-         J8P9NJpCijlyf1vUFCXpy5O7BKdU3bMS5UGnXlLzIxmh77ZC1r5bX6L+F6151/q0FJpx
-         m1aGJfZpV1A/5poepBa1LhgXbx9sB11HhPp05TUVE1AagTXMpiEnKxhVqSCDe5rcmCGB
-         bgIA==
+        h=content-transfer-encoding:mime-version:references:in-reply-to:date
+         :cc:to:from:subject:message-id:dkim-signature;
+        bh=BrmnjGY9rSiZddWV346h4yTdcmLnWqqZAebcGSlU9uA=;
+        b=riUR7cmiMQ+1S9yN+1xm68rVXBTMOe8vnHQW9wtLXPq2DDf2a+0Kv5MTfHZMA95Mlh
+         o82eGJR21NAI/UatDm/TQa+WFPObzk37hyw+x9UCA2zB5joTFtiqtAr4egHmvw+ZRWuP
+         hOe/S4rCz4xdHUfZJQybd7165IwfmRDwSqmnBXwXmzIaDg69XVkvRJBRjf6cuZaK6vfb
+         anu6N2unfXRQUqUYU+F3V5ehqf9DJ06UbmyqFbEMyDa87TJr6qou4meSa5QWuFiYnolu
+         o4mFgCcVWuuIZrFkWWtt60v2GyKaME26qpUkwWKl/TAxm6Z+uUHY0CMF1tBu9D6PM8Nn
+         vxkQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=L40+WQWC;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a3si1460401ilp.162.2021.03.31.04.19.34
+       dkim=pass header.i=@linaro.org header.s=google header.b=JEiQ4C7G;
+       spf=pass (google.com: domain of shashi.mallela@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=shashi.mallela@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <shashi.mallela@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 77sor1097894qkl.24.2021.03.31.09.48.17
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 31 Mar 2021 04:19:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Wed, 31 Mar 2021 09:48:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shashi.mallela@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=L40+WQWC;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34024 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lRYsn-0001IO-LA
-	for alex.bennee@linaro.org; Wed, 31 Mar 2021 07:19:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42972)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1lRYsd-0001G0-87
- for qemu-arm@nongnu.org; Wed, 31 Mar 2021 07:19:23 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:26997)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1lRYsZ-0001rS-Fw
- for qemu-arm@nongnu.org; Wed, 31 Mar 2021 07:19:22 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1617189557;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=VdW3BX9PQEuyFzP34FQkIc6tkOMd9xRBVXAttnNcl2s=;
- b=L40+WQWCa8P/dZoBU4vuMTiViTo+uVRgmu7Au9f/VO9j3kI/x/W29e4Yminxlht87Jbq9D
- EpM3dz2olVTJZ1PR1JRmWiLO01rkfAmYeZCR9rIpX0ix7uDp9l53QFwKaf82ail7e6WmY+
- iYiIOnyzzuUdkVIInHMgvw1QQn00diA=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-144-4U2tunQsPMy7H-22OC54cw-1; Wed, 31 Mar 2021 07:19:15 -0400
-X-MC-Unique: 4U2tunQsPMy7H-22OC54cw-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C98968DFFC0;
- Wed, 31 Mar 2021 11:19:13 +0000 (UTC)
-Received: from gondolin.redhat.com (ovpn-113-187.ams2.redhat.com
- [10.36.113.187])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 901ED6F985;
- Wed, 31 Mar 2021 11:19:03 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH for-6.1] hw: add compat machines for 6.1
-Date: Wed, 31 Mar 2021 13:19:00 +0200
-Message-Id: <20210331111900.118274-1-cohuck@redhat.com>
-MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=cohuck@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=JEiQ4C7G;
+       spf=pass (google.com: domain of shashi.mallela@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=shashi.mallela@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=message-id:subject:from:to:cc:date:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=BrmnjGY9rSiZddWV346h4yTdcmLnWqqZAebcGSlU9uA=;
+        b=JEiQ4C7GvFYFhI3GPfedozUMWeRDhKhP6ZQQ9DjPYuuXkT+s0vlvIyd1iGi0ffmbWs
+         HlohaYPdI80XiRva+mB5CvJDM9FS8C5n49s9nbiPm2rIO3pxNVjKqALFvmy3NqZlB8xM
+         WZ8DNqlfv8GR65o+QiB/Qi37IyeeI9K0BLZKUYVPEqgvbg3rnIWI7o5YRHFNiedaFZgN
+         J+IwfyXYi3MRAaE8rONfW3nRHdFj736dOCv3b705FwefXt55dXTtMdKoPQY5YEPMp+JM
+         yI13Qh16VPYBgz4ARls8gTFOX4DN69Xx+CsjjKsPVuEUgTiAjo9uMqrNeAFoXromcLXx
+         JMBw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=BrmnjGY9rSiZddWV346h4yTdcmLnWqqZAebcGSlU9uA=;
+        b=uEcyLxClkRHvHspD8XUaC7L3wmHkg+M8de2KbI4lSLzDciTTaCGwI98Z7vqlxocoIg
+         ALHF5Qfc2Z7/tCAU9FeyZhJsaCjXtJZ162scYn8wponbBqHVybkvc+xF+BKq5bxrScw+
+         dNGM1D3zB6zMghBzVb5m7nNSV5spf5C8ekhu1Vvdf/A1qLDcOFGIxL0VPJlsS/8Id/Zd
+         wnXxjpwVM3dQysujRL8gLp/53H5YbSQ1cwUILzWfv9z3cPDOuD31pR5a/f79ev1coPtL
+         cZwxZ7PyWTPnpeUii2O4xsBPNEhjIzeEqtDE7TdweYz+zpPyabuCPCNR3ZBmrvP4lZox
+         Kt2A==
+X-Gm-Message-State: AOAM533PyaZTw6oebkrpK2U5pR8LcqjEVcihaqYzvtWWH/96mm7u0y5D
+	2KDk3Z2LpeqqpqgMSYTJxH/cUk9ITzVFzGoQ
+X-Google-Smtp-Source: ABdhPJw1D/PPnrtsrXL0B02nlF550XEWRDSPxoDb5eq42gSIBM/BO4c+a0hohhqhEWuFdMKiD8eSkA==
+X-Received: by 2002:ae9:e40b:: with SMTP id q11mr4120024qkc.318.1617209296982;
+        Wed, 31 Mar 2021 09:48:16 -0700 (PDT)
+Return-Path: <shashi.mallela@linaro.org>
+Received: from localhost.localdomain (bras-base-stsvon1503w-grc-23-174-92-28-28.dsl.bell.ca. [174.92.28.28])
+        by smtp.gmail.com with ESMTPSA id z89sm1764484qtd.5.2021.03.31.09.48.14
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 31 Mar 2021 09:48:16 -0700 (PDT)
+Message-ID: <35e6e1b000a4aae059b95ff24e83e66995e2917b.camel@linaro.org>
+Subject: Re: [PATCH v1 2/8] hw/intc: GICv3 ITS register definitions added
+From: shashi.mallela@linaro.org
+To: Alex =?ISO-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
+Cc: peter.maydell@linaro.org, leif@nuviainc.com, rad@semihalf.com, 
+	qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Date: Wed, 31 Mar 2021 12:48:14 -0400
+In-Reply-To: <87mtur10mu.fsf@linaro.org>
+References: <20210323041238.133835-1-shashi.mallela@linaro.org>
+	 <20210323041238.133835-3-shashi.mallela@linaro.org>
+	 <87mtur10mu.fsf@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5 (3.28.5-14.el8) 
+Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=cohuck@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Cornelia Huck <cohuck@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, David Hildenbrand <david@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +chaZ1JqBJyo
+X-TUID: prcbFsksze0a
 
-Add 6.1 machine types for arm/i440fx/q35/s390x/spapr.
-
-Signed-off-by: Cornelia Huck <cohuck@redhat.com>
----
- hw/arm/virt.c              |  7 ++++++-
- hw/core/machine.c          |  3 +++
- hw/i386/pc.c               |  3 +++
- hw/i386/pc_piix.c          | 14 +++++++++++++-
- hw/i386/pc_q35.c           | 13 ++++++++++++-
- hw/ppc/spapr.c             | 15 +++++++++++++--
- hw/s390x/s390-virtio-ccw.c | 14 +++++++++++++-
- include/hw/boards.h        |  3 +++
- include/hw/i386/pc.h       |  3 +++
- 9 files changed, 69 insertions(+), 6 deletions(-)
-
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index aa2bbd14e090..d2645f4752af 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -2753,10 +2753,15 @@ static void machvirt_machine_init(void)
- }
- type_init(machvirt_machine_init);
- 
-+static void virt_machine_6_1_options(MachineClass *mc)
-+{
-+}
-+DEFINE_VIRT_MACHINE_AS_LATEST(6, 1)
-+
- static void virt_machine_6_0_options(MachineClass *mc)
- {
- }
--DEFINE_VIRT_MACHINE_AS_LATEST(6, 0)
-+DEFINE_VIRT_MACHINE(6, 0)
- 
- static void virt_machine_5_2_options(MachineClass *mc)
- {
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index 9935c6ddd564..4dac3197008e 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -36,6 +36,9 @@
- #include "hw/virtio/virtio.h"
- #include "hw/virtio/virtio-pci.h"
- 
-+GlobalProperty hw_compat_6_0[] = {};
-+const size_t hw_compat_6_0_len = G_N_ELEMENTS(hw_compat_6_0);
-+
- GlobalProperty hw_compat_5_2[] = {
-     { "ICH9-LPC", "smm-compat", "on"},
-     { "PIIX4_PM", "smm-compat", "on"},
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index 8a84b25a031e..364816efc9d2 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -96,6 +96,9 @@
- #include "trace.h"
- #include CONFIG_DEVICES
- 
-+GlobalProperty pc_compat_6_0[] = {};
-+const size_t pc_compat_6_0_len = G_N_ELEMENTS(pc_compat_6_0);
-+
- GlobalProperty pc_compat_5_2[] = {
-     { "ICH9-LPC", "x-smi-cpu-hotunplug", "off" },
- };
-diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-index 46cc951073b4..4e8edffeaf66 100644
---- a/hw/i386/pc_piix.c
-+++ b/hw/i386/pc_piix.c
-@@ -415,7 +415,7 @@ static void pc_i440fx_machine_options(MachineClass *m)
-     machine_class_allow_dynamic_sysbus_dev(m, TYPE_VMBUS_BRIDGE);
- }
- 
--static void pc_i440fx_6_0_machine_options(MachineClass *m)
-+static void pc_i440fx_6_1_machine_options(MachineClass *m)
- {
-     PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
-     pc_i440fx_machine_options(m);
-@@ -424,6 +424,18 @@ static void pc_i440fx_6_0_machine_options(MachineClass *m)
-     pcmc->default_cpu_version = 1;
- }
- 
-+DEFINE_I440FX_MACHINE(v6_1, "pc-i440fx-6.1", NULL,
-+                      pc_i440fx_6_1_machine_options);
-+
-+static void pc_i440fx_6_0_machine_options(MachineClass *m)
-+{
-+    pc_i440fx_6_1_machine_options(m);
-+    m->alias = NULL;
-+    m->is_default = false;
-+    compat_props_add(m->compat_props, hw_compat_6_0, hw_compat_6_0_len);
-+    compat_props_add(m->compat_props, pc_compat_6_0, pc_compat_6_0_len);
-+}
-+
- DEFINE_I440FX_MACHINE(v6_0, "pc-i440fx-6.0", NULL,
-                       pc_i440fx_6_0_machine_options);
- 
-diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-index 53450190f549..458ed41c65de 100644
---- a/hw/i386/pc_q35.c
-+++ b/hw/i386/pc_q35.c
-@@ -345,7 +345,7 @@ static void pc_q35_machine_options(MachineClass *m)
-     m->max_cpus = 288;
- }
- 
--static void pc_q35_6_0_machine_options(MachineClass *m)
-+static void pc_q35_6_1_machine_options(MachineClass *m)
- {
-     PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
-     pc_q35_machine_options(m);
-@@ -353,6 +353,17 @@ static void pc_q35_6_0_machine_options(MachineClass *m)
-     pcmc->default_cpu_version = 1;
- }
- 
-+DEFINE_Q35_MACHINE(v6_1, "pc-q35-6.1", NULL,
-+                   pc_q35_6_1_machine_options);
-+
-+static void pc_q35_6_0_machine_options(MachineClass *m)
-+{
-+    pc_q35_6_1_machine_options(m);
-+    m->alias = NULL;
-+    compat_props_add(m->compat_props, hw_compat_6_0, hw_compat_6_0_len);
-+    compat_props_add(m->compat_props, pc_compat_6_0, pc_compat_6_0_len);
-+}
-+
- DEFINE_Q35_MACHINE(v6_0, "pc-q35-6.0", NULL,
-                    pc_q35_6_0_machine_options);
- 
-diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-index d56418ca2942..fbc3aa9b3a15 100644
---- a/hw/ppc/spapr.c
-+++ b/hw/ppc/spapr.c
-@@ -4596,15 +4596,26 @@ static void spapr_machine_latest_class_options(MachineClass *mc)
-     }                                                                \
-     type_init(spapr_machine_register_##suffix)
- 
-+/*
-+ * pseries-6.1
-+ */
-+static void spapr_machine_6_1_class_options(MachineClass *mc)
-+{
-+    /* Defaults for the latest behaviour inherited from the base class */
-+}
-+
-+DEFINE_SPAPR_MACHINE(6_1, "6.1", true);
-+
- /*
-  * pseries-6.0
-  */
- static void spapr_machine_6_0_class_options(MachineClass *mc)
- {
--    /* Defaults for the latest behaviour inherited from the base class */
-+    spapr_machine_6_1_class_options(mc);
-+    compat_props_add(mc->compat_props, hw_compat_6_0, hw_compat_6_0_len);
- }
- 
--DEFINE_SPAPR_MACHINE(6_0, "6.0", true);
-+DEFINE_SPAPR_MACHINE(6_0, "6.0", false);
- 
- /*
-  * pseries-5.2
-diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
-index 2972b607f364..56b52d2d3091 100644
---- a/hw/s390x/s390-virtio-ccw.c
-+++ b/hw/s390x/s390-virtio-ccw.c
-@@ -795,14 +795,26 @@ bool css_migration_enabled(void)
-     }                                                                         \
-     type_init(ccw_machine_register_##suffix)
- 
-+static void ccw_machine_6_1_instance_options(MachineState *machine)
-+{
-+}
-+
-+static void ccw_machine_6_1_class_options(MachineClass *mc)
-+{
-+}
-+DEFINE_CCW_MACHINE(6_1, "6.1", true);
-+
- static void ccw_machine_6_0_instance_options(MachineState *machine)
- {
-+    ccw_machine_6_1_instance_options(machine);
- }
- 
- static void ccw_machine_6_0_class_options(MachineClass *mc)
- {
-+    ccw_machine_6_1_class_options(mc);
-+    compat_props_add(mc->compat_props, hw_compat_6_0, hw_compat_6_0_len);
- }
--DEFINE_CCW_MACHINE(6_0, "6.0", true);
-+DEFINE_CCW_MACHINE(6_0, "6.0", false);
- 
- static void ccw_machine_5_2_instance_options(MachineState *machine)
- {
-diff --git a/include/hw/boards.h b/include/hw/boards.h
-index 4a90549ad855..d209601a8b8a 100644
---- a/include/hw/boards.h
-+++ b/include/hw/boards.h
-@@ -314,6 +314,9 @@ struct MachineState {
-     } \
-     type_init(machine_initfn##_register_types)
- 
-+extern GlobalProperty hw_compat_6_0[];
-+extern const size_t hw_compat_6_0_len;
-+
- extern GlobalProperty hw_compat_5_2[];
- extern const size_t hw_compat_5_2_len;
- 
-diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-index dcf060b79185..1522a3359a93 100644
---- a/include/hw/i386/pc.h
-+++ b/include/hw/i386/pc.h
-@@ -197,6 +197,9 @@ bool pc_system_ovmf_table_find(const char *entry, uint8_t **data,
- void pc_madt_cpu_entry(AcpiDeviceIf *adev, int uid,
-                        const CPUArchIdList *apic_ids, GArray *entry);
- 
-+extern GlobalProperty pc_compat_6_0[];
-+extern const size_t pc_compat_6_0_len;
-+
- extern GlobalProperty pc_compat_5_2[];
- extern const size_t pc_compat_5_2_len;
- 
--- 
-2.26.3
-
+On Thu, 2021-03-25 at 19:34 +0000, Alex Bennée wrote:
+> Shashi Mallela <shashi.mallela@linaro.org> writes:
+> 
+> > Defined descriptors for ITS device table,collection table and ITS
+> > command queue entities.Implemented register read/write functions,
+> > extract ITS table parameters and command queue parameters,extended
+> > gicv3 common to capture qemu address space(which host the ITS table
+> > platform memories required for subsequent ITS processing) and
+> > initialize the same in its device.
+> > 
+> > Signed-off-by: Shashi Mallela <shashi.mallela@linaro.org>
+> > ---
+> >  hw/intc/arm_gicv3_its.c            | 356 ++++++++++++++++++++
+> >  include/hw/intc/arm_gicv3_common.h |   4 +
+> >  2 files changed, 360 insertions(+)
+> > 
+> > diff --git a/hw/intc/arm_gicv3_its.c b/hw/intc/arm_gicv3_its.c
+> > index 34e49b4d63..4895d32e67 100644
+> > --- a/hw/intc/arm_gicv3_its.c
+> > +++ b/hw/intc/arm_gicv3_its.c
+> > @@ -23,11 +23,179 @@ typedef struct GICv3ITSClass GICv3ITSClass;
+> >  DECLARE_OBJ_CHECKERS(GICv3ITSState, GICv3ITSClass,
+> >                       ARM_GICV3_ITS, TYPE_ARM_GICV3_ITS)
+> >  
+> > +typedef struct {
+> > +    bool valid;
+> > +    bool indirect;
+> > +    uint16_t entry_sz;
+> > +    uint32_t max_entries;
+> > +    uint32_t max_devids;
+> > +    uint64_t base_addr;
+> > +} DevTableDesc;
+> > +
+> > +typedef struct {
+> > +    bool valid;
+> > +    bool indirect;
+> > +    uint16_t entry_sz;
+> > +    uint32_t max_entries;
+> > +    uint32_t max_collids;
+> > +    uint64_t base_addr;
+> > +} CollTableDesc;
+> > +
+> > +typedef struct {
+> > +    bool valid;
+> > +    uint32_t max_entries;
+> > +    uint64_t base_addr;
+> > +} CmdQDesc;
+> > +
+> >  struct GICv3ITSClass {
+> >      GICv3ITSCommonClass parent_class;
+> >      void (*parent_reset)(DeviceState *dev);
+> > +
+> > +    DevTableDesc  dt;
+> > +    CollTableDesc ct;
+> > +    CmdQDesc      cq;
+> >  };
+> >  
+> > +static bool extract_table_params(GICv3ITSState *s, int index)
+> > +{
+> > +    GICv3ITSClass *c = ARM_GICV3_ITS_GET_CLASS(s);
+> > +    uint16_t num_pages = 0;
+> > +    uint8_t  page_sz_type;
+> > +    uint8_t type;
+> > +    uint32_t page_sz = 0;
+> > +    uint64_t value = s->baser[index];
+> > +
+> > +    num_pages = (value & GITS_BASER_SIZE);
+> > +    page_sz_type = (value >> GITS_BASER_PAGESIZE_OFFSET) &
+> > +                        GITS_BASER_PAGESIZE_MASK;
+> 
+> So these definitions can come in the header on the same patch where
+> they
+> are used. Also with the FIELD macros this then becomes:
+> 
+>   num_pages = FIELD_EX64(value, GITS_BASER, SIZE);
+>   page_sz_type = FIELD_EX64(value, GITS_BASER, PAGESIZE);
+> 
+> etc...
+> 
+> basically anywhere where you are shift and masking you should be
+> using
+> the FIELD macros (or at the least the extract/deposit functions).
+> 
+> > +
+> > +    if (page_sz_type == 0) {
+> > +        page_sz = GITS_ITT_PAGE_SIZE_0;
+> > +    } else if (page_sz_type == 0) {
+> > +        page_sz = GITS_ITT_PAGE_SIZE_1;
+> > +    } else if (page_sz_type == 2) {
+> > +        page_sz = GITS_ITT_PAGE_SIZE_2;
+> > +    } else {
+> > +        return false;
+> > +    }
+> > +
+> > +    type = (value >> GITS_BASER_TYPE_OFFSET) &
+> > +                        GITS_BASER_TYPE_MASK;
+> > +
+> > +    if (type == GITS_ITT_TYPE_DEVICE) {
+> > +        c->dt.valid = (value >> GITS_BASER_VALID) &
+> > GITS_BASER_VALID_MASK;
+> > +
+> > +        if (c->dt.valid) {
+> > +            c->dt.indirect = (value >> GITS_BASER_INDIRECT_OFFSET)
+> > &
+> > +                                       GITS_BASER_INDIRECT_MASK;
+> > +            c->dt.entry_sz = (value >>
+> > GITS_BASER_ENTRYSIZE_OFFSET) &
+> > +                                   GITS_BASER_ENTRYSIZE_MASK;
+> > +
+> > +            if (!c->dt.indirect) {
+> > +                c->dt.max_entries = ((num_pages + 1) * page_sz) /
+> > +                                                       c-
+> > >dt.entry_sz;
+> > +            } else {
+> > +                c->dt.max_entries = ((((num_pages + 1) * page_sz)
+> > /
+> > +                                        L1TABLE_ENTRY_SIZE) *
+> > +                                    (page_sz / c->dt.entry_sz));
+> > +            }
+> > +
+> > +            c->dt.max_devids = (1UL << (((value >>
+> > GITS_TYPER_DEVBITS_OFFSET) &
+> > +                                           GITS_TYPER_DEVBITS_MASK
+> > ) + 1));
+> > +
+> > +            if ((page_sz == GITS_ITT_PAGE_SIZE_0) ||
+> > +                    (page_sz == GITS_ITT_PAGE_SIZE_1)) {
+> > +                c->dt.base_addr = (value >>
+> > GITS_BASER_PHYADDR_OFFSET) &
+> > +                                        GITS_BASER_PHYADDR_MASK;
+> > +                c->dt.base_addr <<= GITS_BASER_PHYADDR_OFFSET;
+> > +            } else if (page_sz == GITS_ITT_PAGE_SIZE_2) {
+> > +                c->dt.base_addr = ((value >>
+> > GITS_BASER_PHYADDR_OFFSETL_64K) &
+> > +                                   GITS_BASER_PHYADDR_MASKL_64K)
+> > <<
+> > +                                     GITS_BASER_PHYADDR_OFFSETL_64
+> > K;
+> > +                c->dt.base_addr |= ((value >>
+> > GITS_BASER_PHYADDR_OFFSET) &
+> > +                                    GITS_BASER_PHYADDR_MASKH_64K)
+> > <<
+> > +                                     GITS_BASER_PHYADDR_OFFSETH_64
+> > K;
+> > +            }
+> > +        }
+> > +    } else if (type == GITS_ITT_TYPE_COLLECTION) {
+> > +        c->ct.valid = (value >> GITS_BASER_VALID) &
+> > GITS_BASER_VALID_MASK;
+> > +
+> > +        /*
+> > +         * GITS_TYPER.HCC is 0 for this implementation
+> > +         * hence writes are discarded if ct.valid is 0
+> > +         */
+> > +        if (c->ct.valid) {
+> > +            c->ct.indirect = (value >> GITS_BASER_INDIRECT_OFFSET)
+> > &
+> > +                                       GITS_BASER_INDIRECT_MASK;
+> > +            c->ct.entry_sz = (value >>
+> > GITS_BASER_ENTRYSIZE_OFFSET) &
+> > +                                    GITS_BASER_ENTRYSIZE_MASK;
+> > +
+> > +            if (!c->ct.indirect) {
+> > +                c->ct.max_entries = ((num_pages + 1) * page_sz) /
+> > +                                      c->ct.entry_sz;
+> > +            } else {
+> > +                c->ct.max_entries = ((((num_pages + 1) * page_sz)
+> > /
+> > +                                      L1TABLE_ENTRY_SIZE) *
+> > +                                      (page_sz / c->ct.entry_sz));
+> > +            }
+> > +
+> > +            if ((value >> GITS_TYPER_CIL_OFFSET) &
+> > GITS_TYPER_CIL_MASK) {
+> > +                c->ct.max_collids = (1UL << (((value >>
+> > +                                               GITS_TYPER_CIDBITS_
+> > OFFSET) &
+> > +                                               GITS_TYPER_CIDBITS_
+> > MASK) + 1));
+> > +            } else {
+> > +                /* 16-bit CollectionId supported when CIL == 0 */
+> > +                c->ct.max_collids = (1UL << 16);
+> > +            }
+> > +
+> > +            if ((page_sz == GITS_ITT_PAGE_SIZE_0) ||
+> > +                 (page_sz == GITS_ITT_PAGE_SIZE_1)) {
+> > +                c->ct.base_addr = (value >>
+> > GITS_BASER_PHYADDR_OFFSET) &
+> > +                                            GITS_BASER_PHYADDR_MAS
+> > K;
+> > +                c->ct.base_addr <<= GITS_BASER_PHYADDR_OFFSET;
+> > +            } else if (page_sz == GITS_ITT_PAGE_SIZE_2) {
+> > +                c->ct.base_addr = ((value >>
+> > GITS_BASER_PHYADDR_OFFSETL_64K) &
+> > +                                   GITS_BASER_PHYADDR_MASKL_64K)
+> > <<
+> > +                                    GITS_BASER_PHYADDR_OFFSETL_64K
+> > ;
+> > +                c->ct.base_addr |= ((value >>
+> > GITS_BASER_PHYADDR_OFFSET) &
+> > +                                    GITS_BASER_PHYADDR_MASKH_64K)
+> > <<
+> > +                                    GITS_BASER_PHYADDR_OFFSETH_64K
+> > ;
+> > +            }
+> > +        }
+> > +    } else {
+> > +        /* unsupported ITS table type */
+> > +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Unsupported ITS table
+> > type %d",
+> > +                         __func__, type);
+> 
+> LOG_UNIMP
+> this is not LOG_UNIMP but error indication
+> 
+> > +        return false;
+> > +    }
+> > +    return true;
+> > +}
+> > +
+> > +static bool extract_cmdq_params(GICv3ITSState *s)
+> > +{
+> > +    GICv3ITSClass *c = ARM_GICV3_ITS_GET_CLASS(s);
+> > +    uint16_t num_pages = 0;
+> > +    uint64_t value = s->cbaser;
+> > +
+> > +    num_pages = (value & GITS_CBASER_SIZE);
+> > +
+> > +    c->cq.valid = (value >> GITS_CBASER_VALID_OFFSET) &
+> > +                                GITS_CBASER_VALID_MASK;
+> > +
+> > +    if (!num_pages || !c->cq.valid) {
+> > +        return false;
+> > +    }
+> > +
+> > +    if (c->cq.valid) {
+> > +        c->cq.max_entries = ((num_pages + 1) *
+> > GITS_ITT_PAGE_SIZE_0) /
+> > +                                                GITS_CMDQ_ENTRY_SI
+> > ZE;
+> > +        c->cq.base_addr = (value >> GITS_CBASER_PHYADDR_OFFSET) &
+> > +                                    GITS_CBASER_PHYADDR_MASK;
+> > +        c->cq.base_addr <<= GITS_CBASER_PHYADDR_OFFSET;
+> > +    }
+> > +    return true;
+> > +}
+> > +
+> >  static MemTxResult its_trans_writew(GICv3ITSState *s, hwaddr
+> > offset,
+> >                                 uint64_t value, MemTxAttrs attrs)
+> >  {
+> > @@ -126,7 +294,75 @@ static MemTxResult its_writel(GICv3ITSState
+> > *s, hwaddr offset,
+> >                                 uint64_t value, MemTxAttrs attrs)
+> >  {
+> >      MemTxResult result = MEMTX_OK;
+> > +    int index;
+> > +    uint64_t temp = 0;
+> >  
+> > +    switch (offset) {
+> > +    case GITS_CTLR:
+> > +        s->ctlr |= (value & ~(s->ctlr));
+> > +        break;
+> > +    case GITS_CBASER:
+> > +        /* GITS_CBASER register becomes RO if ITS is already
+> > enabled */
+> > +        if (!(s->ctlr & GITS_CTLR_ENABLED)) {
+> > +            s->cbaser = deposit64(s->cbaser, 0, 32, value);
+> > +            s->creadr = 0;
+> > +        }
+> > +        break;
+> > +    case GITS_CBASER + 4:
+> > +        /* GITS_CBASER register becomes RO if ITS is already
+> > enabled */
+> > +        if (!(s->ctlr & GITS_CTLR_ENABLED)) {
+> > +            s->cbaser = deposit64(s->cbaser, 32, 32, value);
+> > +            if (!extract_cmdq_params(s)) {
+> > +                qemu_log_mask(LOG_GUEST_ERROR,
+> > +                       "%s: error extracting GITS_CBASER
+> > parameters "
+> > +                       TARGET_FMT_plx "\n", __func__, offset);
+> > +                s->cbaser = 0;
+> > +                result = MEMTX_ERROR;
+> 
+> LOG_UNIMP?
+> this is not LOG_UNIMP but error indication
+> 
+> > +            } else {
+> > +                s->creadr = 0;
+> > +            }
+> > +        }
+> > +        break;
+> > +    case GITS_CWRITER:
+> > +        s->cwriter = deposit64(s->cwriter, 0, 32, value);
+> > +        break;
+> > +    case GITS_CWRITER + 4:
+> > +        s->cwriter = deposit64(s->cwriter, 32, 32, value);
+> > +        break;
+> > +    case GITS_BASER ... GITS_BASER + 0x3f:
+> > +        /* GITS_BASERn registers become RO if ITS is already
+> > enabled */
+> > +        if (!(s->ctlr & GITS_CTLR_ENABLED)) {
+> > +            index = (offset - GITS_BASER) / 8;
+> > +
+> > +            if (offset & 7) {
+> > +                temp = s->baser[index];
+> > +                temp = deposit64(temp, 32, 32, (value &
+> > ~GITS_BASER_VAL_MASK));
+> > +                s->baser[index] |= temp;
+> > +
+> > +                if (!extract_table_params(s, index)) {
+> > +                    qemu_log_mask(LOG_GUEST_ERROR,
+> > +                        "%s: error extracting GITS_BASER
+> > parameters "
+> > +                        TARGET_FMT_plx "\n", __func__, offset);
+> 
+> LOG_UNIMP again?
+> this is not LOG_UNIMP but error indication
+> 
+> > +                    s->baser[index] = 0;
+> > +                    result = MEMTX_ERROR;
+> > +                }
+> > +            } else {
+> > +                s->baser[index] =  deposit64(s->baser[index], 0,
+> > 32, value);
+> > +            }
+> > +        }
+> > +        break;
+> > +    case GITS_IIDR:
+> > +    case GITS_TYPER:
+> > +    case GITS_CREADR:
+> > +        /* RO registers, ignore the write */
+> > +        qemu_log_mask(LOG_GUEST_ERROR,
+> > +            "%s: invalid guest write to RO register at offset "
+> > +            TARGET_FMT_plx "\n", __func__, offset);
+> > +        break;
+> > +    default:
+> > +        result = MEMTX_ERROR;
+> > +        break;
+> > +    }
+> >      return result;
+> >  }
+> >  
+> > @@ -134,7 +370,54 @@ static MemTxResult its_readl(GICv3ITSState *s,
+> > hwaddr offset,
+> >                                 uint64_t *data, MemTxAttrs attrs)
+> >  {
+> >      MemTxResult result = MEMTX_OK;
+> > +    int index;
+> >  
+> > +    switch (offset) {
+> > +    case GITS_CTLR:
+> > +        *data = s->ctlr;
+> > +        break;
+> > +    case GITS_IIDR:
+> > +        *data = s->iidr;
+> > +        break;
+> > +    case GITS_PIDR2:
+> > +        *data = 0x30; /* GICv3 */
+> > +        break;
+> > +    case GITS_TYPER:
+> > +        *data = extract64(s->typer, 0, 32);
+> > +        break;
+> > +    case GITS_TYPER + 4:
+> > +        *data = extract64(s->typer, 32, 32);
+> > +        break;
+> > +    case GITS_CBASER:
+> > +        *data = extract64(s->cbaser, 0, 32);
+> > +        break;
+> > +    case GITS_CBASER + 4:
+> > +        *data = extract64(s->cbaser, 32, 32);
+> > +        break;
+> > +    case GITS_CREADR:
+> > +        *data = extract64(s->creadr, 0, 32);
+> > +        break;
+> > +    case GITS_CREADR + 4:
+> > +        *data = extract64(s->creadr, 32, 32);
+> > +        break;
+> > +    case GITS_CWRITER:
+> > +        *data = extract64(s->cwriter, 0, 32);
+> > +        break;
+> > +    case GITS_CWRITER + 4:
+> > +        *data = extract64(s->cwriter, 32, 32);
+> > +        break;
+> > +    case GITS_BASER ... GITS_BASER + 0x3f:
+> > +        index = (offset - GITS_BASER) / 8;
+> > +        if (offset & 7) {
+> > +            *data = s->baser[index] >> 32;
+> > +        } else {
+> > +            *data = (uint32_t)s->baser[index];
+> > +        }
+> > +        break;
+> > +    default:
+> > +        result = MEMTX_ERROR;
+> > +        break;
+> > +    }
+> >      return result;
+> >  }
+> >  
+> > @@ -142,7 +425,52 @@ static MemTxResult its_writell(GICv3ITSState
+> > *s, hwaddr offset,
+> >                                 uint64_t value, MemTxAttrs attrs)
+> >  {
+> >      MemTxResult result = MEMTX_OK;
+> > +    int index;
+> >  
+> > +    switch (offset) {
+> > +    case GITS_BASER ... GITS_BASER + 0x3f:
+> > +        /* GITS_BASERn registers become RO if ITS is already
+> > enabled */
+> > +        if (!(s->ctlr & GITS_CTLR_ENABLED)) {
+> > +            index = (offset - GITS_BASER) / 8;
+> > +            s->baser[index] |= (value & ~GITS_BASER_VAL_MASK);
+> > +            if (!extract_table_params(s, index)) {
+> > +                qemu_log_mask(LOG_GUEST_ERROR,
+> > +                        "%s: error extracting GITS_BASER
+> > parameters "
+> > +                        TARGET_FMT_plx "\n", __func__, offset);
+> > +                s->baser[index] = 0;
+> > +                result = MEMTX_ERROR;
+> > +            }
+> > +        }
+> > +        break;
+> > +    case GITS_CBASER:
+> > +        /* GITS_CBASER register becomes RO if ITS is already
+> > enabled */
+> > +        if (!(s->ctlr & GITS_CTLR_ENABLED)) {
+> > +            s->cbaser = value;
+> > +            if (!extract_cmdq_params(s)) {
+> > +                qemu_log_mask(LOG_GUEST_ERROR,
+> > +                       "%s: error extracting GITS_CBASER
+> > parameters "
+> > +                       TARGET_FMT_plx "\n", __func__, offset);
+> 
+> So are these all LOG_UNIMP or are they a programming failure on our
+> part?
+they are not LOG_UNIMP but error indications during processing which
+could be due to invalid parameters passed from the driver
+> 
+> > +                s->cbaser = 0;
+> > +                result = MEMTX_ERROR;
+> > +            } else {
+> > +                s->creadr = 0;
+> > +            }
+> > +        }
+> > +        break;
+> > +    case GITS_CWRITER:
+> > +        s->cwriter = value;
+> > +        break;
+> > +    case GITS_TYPER:
+> > +    case GITS_CREADR:
+> > +        /* RO register, ignore the write */
+> > +        qemu_log_mask(LOG_GUEST_ERROR,
+> > +                      "%s: invalid guest write to RO register at
+> > offset "
+> > +                      TARGET_FMT_plx "\n", __func__, offset);
+> > +        break;
+> > +    default:
+> > +        result = MEMTX_ERROR;
+> > +        break;
+> > +    }
+> >      return result;
+> >  }
+> >  
+> > @@ -150,7 +478,29 @@ static MemTxResult its_readll(GICv3ITSState
+> > *s, hwaddr offset,
+> >                                 uint64_t *data, MemTxAttrs attrs)
+> >  {
+> >      MemTxResult result = MEMTX_OK;
+> > +    int index;
+> >  
+> > +    switch (offset) {
+> > +    case GITS_TYPER:
+> > +        *data = s->typer;
+> > +        break;
+> > +    case GITS_BASER ... GITS_BASER + 0x3f:
+> > +        index = (offset - GITS_BASER) / 8;
+> > +        *data = s->baser[index];
+> > +        break;
+> > +    case GITS_CBASER:
+> > +        *data = s->cbaser;
+> > +        break;
+> > +    case GITS_CREADR:
+> > +        *data = s->creadr;
+> > +        break;
+> > +    case GITS_CWRITER:
+> > +        *data = s->cwriter;
+> > +        break;
+> > +    default:
+> > +        result = MEMTX_ERROR;
+> > +        break;
+> > +    }
+> >      return result;
+> >  }
+> >  
+> > @@ -250,6 +600,9 @@ static void gicv3_arm_its_realize(DeviceState
+> > *dev, Error **errp)
+> >      GICv3ITSState *s = ARM_GICV3_ITS_COMMON(dev);
+> >  
+> >      gicv3_its_init_mmio(s, &gicv3_its_control_ops,
+> > &gicv3_its_trans_ops);
+> > +
+> > +    address_space_init(&s->gicv3->sysmem_as, s->gicv3->sysmem,
+> > +                        "gicv3-its-sysmem");
+> >  }
+> >  
+> >  static void gicv3_its_reset(DeviceState *dev)
+> > @@ -259,6 +612,9 @@ static void gicv3_its_reset(DeviceState *dev)
+> >  
+> >      if (s->gicv3->cpu->gicr_typer & GICR_TYPER_PLPIS) {
+> >          c->parent_reset(dev);
+> > +        memset(&c->dt, 0 , sizeof(c->dt));
+> > +        memset(&c->ct, 0 , sizeof(c->ct));
+> > +        memset(&c->cq, 0 , sizeof(c->cq));
+> >  
+> >          /* set the ITS default features supported */
+> >          s->typer = GITS_TYPER_PHYSICAL |
+> > (GITS_TYPER_ITT_ENTRY_SIZE <<
+> > diff --git a/include/hw/intc/arm_gicv3_common.h
+> > b/include/hw/intc/arm_gicv3_common.h
+> > index 91491a2f66..b0f2414fa3 100644
+> > --- a/include/hw/intc/arm_gicv3_common.h
+> > +++ b/include/hw/intc/arm_gicv3_common.h
+> > @@ -226,12 +226,16 @@ struct GICv3State {
+> >      int dev_fd; /* kvm device fd if backed by kvm vgic support */
+> >      Error *migration_blocker;
+> >  
+> > +    MemoryRegion *sysmem;
+> > +    AddressSpace sysmem_as;
+> > +
+> >      /* Distributor */
+> >  
+> >      /* for a GIC with the security extensions the NS banked
+> > version of this
+> >       * register is just an alias of bit 1 of the S banked version.
+> >       */
+> >      uint32_t gicd_ctlr;
+> > +    uint32_t gicd_typer;
+> >      uint32_t gicd_statusr[2];
+> >      GIC_DECLARE_BITMAP(group);        /* GICD_IGROUPR */
+> >      GIC_DECLARE_BITMAP(grpmod);       /* GICD_IGRPMODR */
+> 
+> 

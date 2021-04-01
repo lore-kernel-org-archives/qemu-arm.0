@@ -1,107 +1,87 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp714077lfg;
-        Thu, 1 Apr 2021 10:54:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwxD9V4QdTa5ZSeHNTkz91efIVyiQ72U42pjMQOmSuMe7ZgEm1q/g6PHm7vBOLbsy9KgsXb
-X-Received: by 2002:a05:6830:30a5:: with SMTP id g5mr232133ots.175.1617299648479;
-        Thu, 01 Apr 2021 10:54:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617299648; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp825314lfg;
+        Thu, 1 Apr 2021 13:30:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy7QVHOKmIj2Z5WSM5avXdZKnWW2+f2U+ry8QiPe5ON8ewwRyZzFndS//O/whdAIfxqM6nc
+X-Received: by 2002:a05:6e02:5ab:: with SMTP id k11mr8439892ils.236.1617309004865;
+        Thu, 01 Apr 2021 13:30:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617309004; cv=none;
         d=google.com; s=arc-20160816;
-        b=kx0ac6ve/9hSGkhNBsmGij7rIbI4z8/Aj4ac9YdUx3TCqxUrfZyvzklOBiIWxqPgWW
-         GWuFjY/KAW6KGIhU/VfOHMLkDTFGzTYFbJ+mtFUfZcr6xFaHb+5b2d2bCDXMCx+gCRID
-         He3DP5T4cpA7SQNG+HzIIM/LaK9wB1geMPLbzwarsJ7xSmgaOJSPPvyprfaE/uewLtq/
-         RNW8IeKTJxE9/HdoksnBlZCi3ZIfVjrlbaTnOzA7HTEk5zmtjBTHIHY2MMZaTDalOHDT
-         PDD52NdgL0F+KDwsPvgREGGy1pE2oufCc0SI+MRCFPhBdtVAjNcEn7Hc6Gow7YmoggSA
-         kAJA==
+        b=sko0LeCiKktKU8fLEpFluEly3PZKFAR4jDQtSrK4kK0nuwtLHLUH21HET4rezSXpaU
+         NYH2KzBl2Pru7bzlBK2AQHJZYu7hj0J4+u371TqqX/75hlevxF6yvEFrGxRCzAUR6ZjV
+         WbDnf8M3jQV4EqfG/buJsbwMlk8cBPTScSd8d4esus/xU51gr02bhZGP6pJjYPutigvw
+         SyOs9sZ8R+++sBtgEED4k6us6tLlVIifb86o345rxYwSs9ho7fAkgjtywWGsjShbLkIX
+         SEqmE42PvkeO9QrlQHi5R4vZR7mWRPrJzTX7Plq+ub5aVH8MX2MHordtNwl59iNmEv6W
+         uqjw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:references:in-reply-to:date:to:from:subject
-         :message-id:dkim-signature;
-        bh=tCVuFGx6htuo6vh9EcFAsRLD5r0NdZVC9QNpsmxAQSA=;
-        b=Drp/+nApv2Mar41tXP45Lqn9POvKj38vHebpgcYD7Y6mmMjVLqCExN+hsEXfD0itUe
-         k7N8U1IZWWX6+v10ND6LNA/cDVs9K3CriH0GKMna5w7JFr/ojPPjZQKFCw1p199LF/ax
-         ni7EPIXWb2oTxiPoT2GLY7wU7LUMjqdIAEBdpKjYY+oztM7mymYIim6uqdPzRGD18iz0
-         ZAt8htUXW3YtBLl9+pt6e+LtW9/ymgiDM4aSXyrjBY4l6lksIsBfEoubG9UzwZu7IcPE
-         CLLvSKKjrJNrui3j//90JfyUPICWcw8CiWzCJW7apPXA8WsmgHFmkucfwzxCl9CIm+Cx
-         Ukpw==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=9JcjLFS68nY7nsJBwcM9etKUAxkJcmOJVxT50ldH0TM=;
+        b=YakYPrjycu1xktzqJVVxPMpB2n2EiSkcITfnOht3tSjiP5v10rLOzGYMYRwtCDUIE3
+         /960tr9OcFnSjsxy/b/mNHop/NK2E2oiEKlQI/9krT47H3mNF7bIL+Kx3O9+y9vO5kNo
+         9A8UJ7+Nwee6deZFzIITxtPC4RnaisSP4/COi6HP7CRScVt4KuzaH9uXHJIRq6M+uvx3
+         LPHkgeJVFY6Yy3Uj+lvyC2556YI5WRIjmQ9D4FJ1C5ZfEHk5r18KxwV15QeVRqrprdOz
+         rqhZWuHpkBLVm3UzKJ4yKSdn5qXJ2aHD46u8ZNfumn8Ps4+jZTqgeohCZLiD4Xr/Ddri
+         tV0g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=EuyPU9oF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@mutex.one header.s=default header.b=JEso691m;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v26si4906963oth.179.2021.04.01.10.54.08
+        by mx.google.com with ESMTPS id o4si5675894ilf.144.2021.04.01.13.30.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 01 Apr 2021 10:54:08 -0700 (PDT)
+        Thu, 01 Apr 2021 13:30:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=EuyPU9oF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37908 helo=lists1p.gnu.org)
+       dkim=fail header.i=@mutex.one header.s=default header.b=JEso691m;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:52634 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lS1WB-0000c9-Nj
-	for alex.bennee@linaro.org; Thu, 01 Apr 2021 13:54:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54712)
+	id 1lS3x6-0000af-4C
+	for alex.bennee@linaro.org; Thu, 01 Apr 2021 16:30:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60652)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <abologna@redhat.com>)
- id 1lS1W0-0000be-Th
- for qemu-arm@nongnu.org; Thu, 01 Apr 2021 13:53:57 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:39774)
+ (Exim 4.90_1) (envelope-from <marian@mutex.one>)
+ id 1lS3wu-0000Zz-Ih; Thu, 01 Apr 2021 16:29:52 -0400
+Received: from mail.mutex.one ([62.77.152.124]:59956)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <abologna@redhat.com>)
- id 1lS1Vw-0000dn-CG
- for qemu-arm@nongnu.org; Thu, 01 Apr 2021 13:53:55 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1617299629;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=tCVuFGx6htuo6vh9EcFAsRLD5r0NdZVC9QNpsmxAQSA=;
- b=EuyPU9oFf1qJvf1Kx+iNfZx88WNXb7fNCzOpQAzbZFeMojDUiOYku4V9Bq3j9HM6isFIML
- vhrHmML7Qg61YmK1xGUmx07SQE6eiiilkH+ZrYV2Br70Lkxefg6n4Ox0aCZBveCFd955/j
- mSgpG3ELLtMSB2mOMmoAHwRbuu8gmXU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-18-7O-KI34UMe-lPIH5HEj_4g-1; Thu, 01 Apr 2021 13:53:47 -0400
-X-MC-Unique: 7O-KI34UMe-lPIH5HEj_4g-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (Exim 4.90_1) (envelope-from <marian@mutex.one>)
+ id 1lS3ws-0005fo-HF; Thu, 01 Apr 2021 16:29:52 -0400
+Received: from localhost (localhost.localdomain [127.0.0.1])
+ by mail.mutex.one (Postfix) with ESMTP id 8BE88BF4059C;
+ Thu,  1 Apr 2021 23:29:46 +0300 (EEST)
+X-Virus-Scanned: Debian amavisd-new at mail.mutex.one
+Received: from mail.mutex.one ([127.0.0.1])
+ by localhost (mail.mutex.one [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Yr3EOOYWDrWt; Thu,  1 Apr 2021 23:29:45 +0300 (EEST)
+Received: [127.0.0.1] (localhost [127.0.0.1])nknown [109.103.89.101])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5448C501F8;
- Thu,  1 Apr 2021 17:53:46 +0000 (UTC)
-Received: from harajuku.usersys.redhat.com (unknown [10.40.193.50])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id DA0D359468;
- Thu,  1 Apr 2021 17:53:43 +0000 (UTC)
-Message-ID: <7f8146ebba9234d8d21beaa8a1ab8996ae5c63d4.camel@redhat.com>
-Subject: Re: [PATCH RESEND v2 0/6] target/arm: Add nested virtualization
- support
-From: Andrea Bolognani <abologna@redhat.com>
-To: Haibo Xu <haibo.xu@linaro.org>, qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Date: Thu, 01 Apr 2021 19:53:40 +0200
-In-Reply-To: <cover.1617281290.git.haibo.xu@linaro.org>
-References: <cover.1617281290.git.haibo.xu@linaro.org>
-User-Agent: Evolution 3.36.5 (3.36.5-2.fc32)
+ by mail.mutex.one (Postfix) with ESMTPSA id 5594ABF404E3;
+ Thu,  1 Apr 2021 23:29:45 +0300 (EEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mutex.one; s=default;
+ t=1617308985; bh=+gA+9ZBo1HGb7T9YAPVuaEzDSqI1KeS7DY0mJHuWT84=;
+ h=From:To:Cc:Subject:Date:From;
+ b=JEso691mQuaRGLgzfAW8pnZjjyjPzthMNmSATsgDQz4h8aUBJOG2o3jGO9mQrYFbC
+ 0EZL1ezNdn5W89BOXu/HK+RbBMqRTVy31QuGUHfTpbS1qiqqH/UDX62ZLuybLsdpAF
+ 9siQuobuIZj3rISL5SA2XdgRddOKBZf/9iiyYARA=
+From: Marian Postevca <posteuca@mutex.one>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v4 0/1] Rework ACPI OEM fields handling to simplify code (was:
+ acpi: Remove duplicated code handling OEM ID and OEM table ID fields)
+Date: Thu,  1 Apr 2021 23:29:27 +0300
+Message-Id: <20210401202928.16082-1-posteuca@mutex.one>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=abologna@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=abologna@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=62.77.152.124; envelope-from=marian@mutex.one;
+ helo=mail.mutex.one
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -114,30 +94,75 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, richard.henderson@linaro.org,
- philmd@redhat.com
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Dongjiu Geng <gengdongjiu@huawei.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Xiang Zheng <zhengxiang9@huawei.com>, qemu-arm@nongnu.org,
+ Marian Postevca <posteuca@mutex.one>, Igor Mammedov <imammedo@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mTwbKGOgJk9A
+X-TUID: fr+0+FO8yayl
 
-On Thu, 2021-04-01 at 12:55 +0000, Haibo Xu wrote:
-> v2:
->   - Move the NV to a CPU feature flag(Andrea&Andrew)
->   - Add CPU feature 'el2' test(Andrew)
-> 
-> Many thanks to Andrea and Andrew for their comments!
-> 
-> This series add support for ARMv8.3/8.4 nested virtualization support
-> in KVM mode. It's based on Marc Zyngier's kernel KVM patches[1], and 
-> has been tested on a FVP model to run a L2 guest with Qemu. Now the 
-> feature can be enabled by "-M virt,accel=kvm -cpu host,el2=on" when
-> starting a VM. 
+This patch consolidates ACPI OEM fields handling
+by:
+- Moving common code in PC and MICROVM to X86.
+- Changes unnecessary dynamic memory allocation to static allocation
+- Uses dedicated structure to keep values of fields instead of two
+  separate strings
+- Adds helper functions to initialize the structure
 
-This looks good from the user interface point of view, thanks for
-addressing the concerns that were raised!
+v2:
+- Move the setters/getters of OEM fields to X86MachineState to
+  remove duplication
+- Change commit message to make it clear the second commit is
+  a re-factor
 
-I'll leave Drew to review the actual code changes :)
+v3:
+- Rebase "acpi: Consolidate the handling of OEM ID and OEM
+          Table ID fields to latest" to latest HEAD
+- Dropped "acpi: Move setters/getters of oem fields to
+           X86MachineState" since it was accepted already
+
+v4:
+- Drop helper macros and use static inline functions instead
+- Removed variables starting with __
+- Used consistent naming for helper functions that start with ACPI_BUILD_OEM_*
+- Didn't drop the defines ACPI_BUILD_APPNAME6 and ACPI_BUILD_APPNAME8 since
+  ACPI_BUILD_APPNAME8 is still used in build_header() in aml-build.c and it
+  feels better to keep them defined together. But if others prefer to drop the
+  ACPI_BUILD_APPNAME6 define, will resend the patch.
+
+Marian Postevca (1):
+  acpi: Consolidate the handling of OEM ID and OEM Table ID fields
+
+ hw/acpi/hmat.h                   |  2 +-
+ hw/i386/acpi-common.h            |  2 +-
+ include/hw/acpi/acpi-build-oem.h | 61 +++++++++++++++++++++++++
+ include/hw/acpi/aml-build.h      | 15 +++---
+ include/hw/acpi/ghes.h           |  2 +-
+ include/hw/acpi/pci.h            |  2 +-
+ include/hw/acpi/vmgenid.h        |  2 +-
+ include/hw/arm/virt.h            |  4 +-
+ include/hw/i386/x86.h            |  4 +-
+ include/hw/mem/nvdimm.h          |  4 +-
+ hw/acpi/aml-build.c              | 27 ++++++-----
+ hw/acpi/ghes.c                   |  5 +-
+ hw/acpi/hmat.c                   |  4 +-
+ hw/acpi/nvdimm.c                 | 22 +++++----
+ hw/acpi/pci.c                    |  4 +-
+ hw/acpi/vmgenid.c                |  6 ++-
+ hw/arm/virt-acpi-build.c         | 40 ++++++----------
+ hw/arm/virt.c                    | 16 +++----
+ hw/i386/acpi-build.c             | 78 +++++++++++++++-----------------
+ hw/i386/acpi-common.c            |  4 +-
+ hw/i386/acpi-microvm.c           | 13 ++----
+ hw/i386/x86.c                    | 19 ++++----
+ 22 files changed, 188 insertions(+), 148 deletions(-)
+ create mode 100644 include/hw/acpi/acpi-build-oem.h
 
 -- 
-Andrea Bolognani / Red Hat / Virtualization
+2.26.2
 

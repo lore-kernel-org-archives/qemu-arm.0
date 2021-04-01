@@ -1,96 +1,96 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp474548lfg;
-        Thu, 1 Apr 2021 06:16:05 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwMdJVyrfg/21d3opFp0vPxXNZDDkedkWTT17Fa8eABWXO3gF5aLGzsqgCS9Et+mPXvO/nB
-X-Received: by 2002:a05:6512:3390:: with SMTP id h16mr5485983lfg.479.1617282965099;
-        Thu, 01 Apr 2021 06:16:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617282965; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp485364lfg;
+        Thu, 1 Apr 2021 06:28:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwnwVLNWRxnZiWxqS1zrxZYaNp943n2wPIuiJstD5+8HNjNwC+xLI0xPErZ7tR5kU/1xj18
+X-Received: by 2002:a05:6638:2a3:: with SMTP id d3mr8208126jaq.42.1617283701296;
+        Thu, 01 Apr 2021 06:28:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617283701; cv=none;
         d=google.com; s=arc-20160816;
-        b=RkFp17pcxuHQWmPG+hWL1L9m756zIzdX5REfySMokH414MEEFvR7DVOtod2OKp7/N2
-         OeaDC3qh9RlBTKtJ1MDbbw7cm0QfxAPogBjsy4lmO+31TgTWVHYZd5e34Z8esuiOWYex
-         fgWn4/O3MFhwW/MN25M38lx/ShvUEBjpcgUOnmUm+n1HSOjecgPQiYEYsgAGmho99ZCX
-         uEFkCBiTUDpTS0mvDaTdYCcGTyg18RJXNjj4D1w3e1zREIEn74kXSIIVZFGF92nPDxcY
-         i8DEYkcBdW69olh3gM0rY3m2pHD25Y4ZmJwHjlw9wUDfCeVBsqtDAYjbHhWX58PTuWcp
-         vLtA==
+        b=CGbIhUM1AkgKHG3El7fGvzVu9DG525fpAfx4XRh7hOIHjOldd1YJxe7HoRgpY66KQq
+         E46L1oRCtqTCcHuMRCYjhTrP/LR6jh2UKlya5BQ1F9HboEiylLWDk7///4I3n/O1FBLh
+         D3j3do0C3guKK0ye8BzutGGxLq/eWSDkTMeAh/q/xlyRO6Fy/e9O5+kG8ZetkQBus2a1
+         sH0kxYSf+7PZxBwFDjdOyAmYmGGD+cdgOJ/ztbJGs4PuUevgxujc9CksZh9frzVkG9Pw
+         qgmESp7b7cgDZiK2DM0OH2M8gNbWT0gJcXCq9Yj8me+22Rz8MLnmNj8PA3BAkhkd48kX
+         YvsQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=AWKPTT8bNs5FG2jpgPpLGL6k9c9hv8L6LF1Nt8/Fn00=;
-        b=npA94qObatZkfNca36WzCpnmGFzPibnLDBpQHAPEz/hhJ8CgAimpuMNtMl8IvHbKMP
-         FSCTDqRRnm5HltCiSLwyo1Ne19F67GN4+jxjRCsVwMZpHI0rDQVW/ryX9k2imqqVPEHO
-         j7LynhjiisgSsGOnfC3Z06tDtmlI5B3wzGlRtDORIMyDN7CPZHaL1YLGhXgvWg91dLVu
-         BPviOpCFty6SHZkFxPm/86bPRT1JkDslv0CVnBCnpb2ksHpkf7G6SxsPdlPRe/H+5u+w
-         iEVwfm3y7Uvd0nIsnFNPktaYpEMlTrxf4vboqvnFAmdz29c9lTbjMDUVyyKHbW0NwCip
-         Aq2A==
+        bh=Yd/fvxHCn/BsFdv4/yg+B+DPng9MSeB6yTC7R4W1v1M=;
+        b=027/rLi7h7DVhoZsuPsAWhXv/Gr+Mj2OdHrZHK8O6ZZwmOIDuh3MPlZC8m9YdygrC8
+         nQrjjm6vfyzaqbHJdbfOyzXSZwxb6Ha0EtFrQjn22PvjqrHbxWQaIJfaW1C9vmX70TQn
+         TsKmPUapDm4CfWBv8l9MSyF/ABTHQzs9BTckcyR/DxzCBRs6dWYkHEubuF/QE48119FB
+         D2TLBcwyGGpR6idc4c251vVp2S/XmlLekw1atf5W/xlizIqKzXAefN2oOjcHMEjYJ/bM
+         UrLzYIOzZ/PxN/8Wn8OSoAmt9FYYdcqOGH50S3/Y+njcgmMKOR3G5Ih7lNsg5vQLUsiI
+         myYg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Gt7LsmAW;
+       dkim=fail header.i=@linaro.org header.s=google header.b=fOl3bmpI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j8si5066236lfk.544.2021.04.01.06.16.05
+        by mx.google.com with ESMTPS id j4si4252324jaq.98.2021.04.01.06.28.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 01 Apr 2021 06:16:05 -0700 (PDT)
+        Thu, 01 Apr 2021 06:28:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Gt7LsmAW;
+       dkim=fail header.i=@linaro.org header.s=google header.b=fOl3bmpI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46998 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45934 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lRxB5-0005sR-RV
-	for alex.bennee@linaro.org; Thu, 01 Apr 2021 09:16:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35690)
+	id 1lRxMy-0000dB-EQ
+	for alex.bennee@linaro.org; Thu, 01 Apr 2021 09:28:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40464)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <haibo.xu@linaro.org>)
- id 1lRx8J-0002q1-Ja
- for qemu-arm@nongnu.org; Thu, 01 Apr 2021 09:13:11 -0400
-Received: from mail-io1-xd2d.google.com ([2607:f8b0:4864:20::d2d]:41563)
+ id 1lRxM2-0000Ku-68
+ for qemu-arm@nongnu.org; Thu, 01 Apr 2021 09:27:22 -0400
+Received: from mail-io1-xd2b.google.com ([2607:f8b0:4864:20::d2b]:42579)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <haibo.xu@linaro.org>)
- id 1lRx8H-0004gh-9P
- for qemu-arm@nongnu.org; Thu, 01 Apr 2021 09:13:11 -0400
-Received: by mail-io1-xd2d.google.com with SMTP id z3so2131857ioc.8
- for <qemu-arm@nongnu.org>; Thu, 01 Apr 2021 06:13:08 -0700 (PDT)
+ id 1lRxLz-0003m6-Lq
+ for qemu-arm@nongnu.org; Thu, 01 Apr 2021 09:27:21 -0400
+Received: by mail-io1-xd2b.google.com with SMTP id r193so2172024ior.9
+ for <qemu-arm@nongnu.org>; Thu, 01 Apr 2021 06:27:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=AWKPTT8bNs5FG2jpgPpLGL6k9c9hv8L6LF1Nt8/Fn00=;
- b=Gt7LsmAWwFEZ294snmu51+HyNPR1JdtvagV1IKcTy+GXhh5eW0ZSce0V7BKiVFhOVg
- WRmV70Et46St0hSf/lWU18pQvyaukWHzGLIsIXiJdoQnQdLDHUEJTtyN1FSmZUsYw2UL
- lyTopcR5s5O7dc/b9eHCol2djM20wfVwFuI0eITJoHjSffP4SdkgWwa+131JpObS3eSf
- umSmKYDxddEHtSNliDi2W43HwwVV3Jmp8PnQillyPMF5fSc8TVAdvkK4f8jprdGw3Cpm
- vkRFSJAh+MPBtGPQp72QnGWWUac/kcDFk2wMl9qkcDPCBjqL6/FJOH5v6wug69Ox1+d7
- MyrQ==
+ :cc; bh=Yd/fvxHCn/BsFdv4/yg+B+DPng9MSeB6yTC7R4W1v1M=;
+ b=fOl3bmpIon3Zl/8naJOLH91ZMu+tQ6w5U0/KzUEHSRJLuJsu3U45jMe5M6F3hsYdlG
+ G3RfMB/QMwX7V/Ir2ggdzGPOPOvpfIGEfvIlU7fZxdTORwVq0D0QRI4PoyQQO2BaAhZB
+ F+gLhwddNKeOPD6SJgbDgu4iZinxk65z8Gm9Lt5lNuDWG/cw/tWrSZyLkNRXOSKvukNB
+ PAhojXdvxI7Uin6o5eQNP3SmHGc8gyWTRKy3BecJm3WVvKjqDzy3M3naZv2ozf/8iCGU
+ GYgJEwhCY6Wk07xGbEPIbZpN6q3c5bI5uNXI+7sCgbxFK/LUb60AfwHTXhXQnGu0xCwn
+ tEEw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=AWKPTT8bNs5FG2jpgPpLGL6k9c9hv8L6LF1Nt8/Fn00=;
- b=MUAX1d66Ct1U/ULroxM/ArgZ6nqu6DtKK7Ubjua7in9hOXoABDINmiRB4e1Pmb0M+k
- tFoAn1au8tvnSv1HWNkcqPX0edKvf9FZFXhrV0hl97+sleEk2THTEkQ6eqdKpEhqwy5T
- OIy8aUBIUubK8cD1dqA4VdACGhXMpRjogVS3RPCamNyEcyiyFMQO617m7fJz/Vsn9o19
- Qwz130ZmhvUTRE1MXqHvyWqvUOpAOKbGnfzGbN4WgVE0oiP1kAbJirHsgIyyZe2+fQtl
- DvirE2K/K8vsVpCZAbORUiCPp9upGPrYSlQDwYB2v6ZpggZm7tORaIMzOjk0rNhJuwd9
- sZRw==
-X-Gm-Message-State: AOAM531fchH3jwSgs1LqrKtumfCpOk5hoLY7GR3R0a4Qnuw0UzYyake4
- hhi4nb2VOIscT741KFQhyiZMrvoWUTGGS4FUQsfx
-X-Received: by 2002:a02:a303:: with SMTP id q3mr7975812jai.32.1617282787054;
- Thu, 01 Apr 2021 06:13:07 -0700 (PDT)
+ bh=Yd/fvxHCn/BsFdv4/yg+B+DPng9MSeB6yTC7R4W1v1M=;
+ b=X441G4w87zLcV31LgDzuakAH27WOvR2iHzxLFWtLGST07O2RUEScTIq6fb243Mx9U8
+ TUt7DbSlXzVm3yxYNSYW9Mh+DWGATCjUdm2M5+6Tde6medhzpJJSBOoDhU8Mh7e5MRt+
+ PQ0tqwoGCTV9fu7i+WxA/NA3GqSJZ+Ts+ua9egbt9vGGQOoPw1o1CaKQXHBsB7NTOzkm
+ ghiMutyrXXu9Fas7P5DPHiw2ZiitP7HaL+RvactGxMjdYtgJwuXxPwZvEAhOEza1CEZR
+ Kah0JHg2kV/GW8/dgNWO/HZEneyxqfvlNfFgwe9soaUQ1ginBryFL7ugCpsxiNrzfvA7
+ uLZA==
+X-Gm-Message-State: AOAM530YM1Xps9978P83w1r2gdk3q/MfHlWywTwph2Po2NbSE3OZoXMB
+ U2Sl/mCk51RE/QDjAOrJkxQ4tCK3fmnXTgvQ2h/W
+X-Received: by 2002:a5d:9e09:: with SMTP id h9mr6946541ioh.178.1617283630409; 
+ Thu, 01 Apr 2021 06:27:10 -0700 (PDT)
 MIME-Version: 1.0
 References: <cover.1615972140.git.haibo.xu@linaro.org>
- <5f269099f5f06c23f11d41b45d64f77eca23a8ff.1615972140.git.haibo.xu@linaro.org>
- <87tuozo28v.fsf@secure.mitica>
-In-Reply-To: <87tuozo28v.fsf@secure.mitica>
+ <881871e8394fa18a656dfb105d42e6099335c721.1615972140.git.haibo.xu@linaro.org>
+ <87y2ebmegw.fsf@secure.mitica>
+In-Reply-To: <87y2ebmegw.fsf@secure.mitica>
 From: Haibo Xu <haibo.xu@linaro.org>
-Date: Thu, 1 Apr 2021 21:12:55 +0800
-Message-ID: <CAJc+Z1EzD_5gXHMSbWBh0aEj-LC+yYT0acya8AvrQRmPcE4aFA@mail.gmail.com>
-Subject: Re: [RFC PATCH v2 3/5] Add APIs to get/set MTE tags
+Date: Thu, 1 Apr 2021 21:26:58 +0800
+Message-ID: <CAJc+Z1GLPxWhoTJqh77QddmO9Rg3=djsrAX_3WiWPDS+_=ZDgQ@mail.gmail.com>
+Subject: Re: [RFC PATCH v2 4/5] Add migration support for KVM guest with MTE
 To: Juan Quintela <quintela@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d2d;
- envelope-from=haibo.xu@linaro.org; helo=mail-io1-xd2d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d2b;
+ envelope-from=haibo.xu@linaro.org; helo=mail-io1-xd2b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -117,92 +117,158 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
  =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9DGkjQSyRdeO
+X-TUID: b1QGihwmturS
 
-On Thu, 25 Mar 2021 at 20:18, Juan Quintela <quintela@redhat.com> wrote:
+On Thu, 25 Mar 2021 at 23:37, Juan Quintela <quintela@redhat.com> wrote:
 >
 > Haibo Xu <haibo.xu@linaro.org> wrote:
-> > MTE spec provide instructions to retrieve the memory tags:
-> > (1) LDG, at 16 bytes granularity, and available in both user
-> >     and kernel space;
-> > (2) LDGM, at 256 bytes granularity in maximum, and only
-> >     available in kernel space
+> > To make it easier to keep the page tags sync with
+> > the page data, tags for one page are appended to
+> > the data during ram save iteration.
 > >
-> > To improve the performance, KVM has exposed the LDGM capability
-> > to user space by providing a new APIs. This patch is just a
-> > wrapper for the KVM APIs.
+> > This patch only add the pre-copy migration support.
+> > Post-copy and compress as well as zero page saving
+> > are not supported yet.
 > >
 > > Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
-> > ---
-> >  target/arm/kvm64.c   | 24 ++++++++++++++++++++++++
-> >  target/arm/kvm_arm.h |  2 ++
-> >  2 files changed, 26 insertions(+)
-> >
-> > diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-> > index 73a191f8e1..3157025316 100644
-> > --- a/target/arm/kvm64.c
-> > +++ b/target/arm/kvm64.c
-> > @@ -1606,3 +1606,27 @@ bool kvm_arm_verify_ext_dabt_pending(CPUState *cs)
-> >      }
-> >      return false;
-> >  }
-> > +
-> > +int kvm_arm_mte_get_tags(uint64_t ipa, uint64_t len, uint8_t *buf)
+>
+>
+> >  #define RAM_SAVE_FLAG_XBZRLE   0x40
+> >  /* 0x80 is reserved in migration.h start with 0x100 next */
+> >  #define RAM_SAVE_FLAG_COMPRESS_PAGE    0x100
+> > +#define RAM_SAVE_FLAG_MTE              0x200
+>
+> Flags are really a scarce resource.  You are using one here, when you
+> know that you will always have the feature enable (or not), so you can
+> do better during negotiation IMHO.
+>
+
+Yes, any suggestions are welcomed to finalize the MTE migration support!
+
+>
+> > +void precopy_enable_metadata_migration(void)
 > > +{
-> > +    struct kvm_arm_copy_mte_tags args = {
-> > +        .guest_ipa = ipa,
-> > +        .length = len,
-> > +        .addr = buf,
-> > +        .flags = KVM_ARM_TAGS_FROM_GUEST,
-> > +    };
+> > +    if (!ram_state) {
+> > +        return;
+> > +    }
 > > +
-> > +    return kvm_vm_ioctl(kvm_state, KVM_ARM_MTE_COPY_TAGS, &args);
+> > +    ram_state->metadata_enabled = true;
+> > +}
 >
-> Just a question, how fast/slow are this calls?
+> My understanding is that in your following patch, if mte is enabled, you
+> will always sent mte tags, for all pages needed, right?
+
+Yes, for the current kernel support, we can't tell whether the MTE was enabled
+for a specific page.
+
+>
+> > +static int save_normal_page_mte_tags(QEMUFile *f, uint8_t *addr)
+> > +{
+> > +    uint8_t *tag_buf = NULL;
+> > +    uint64_t ipa;
+> > +    int size = TARGET_PAGE_SIZE / MTE_GRANULE_SIZE;
+> > +
+> > +    if (kvm_physical_memory_addr_from_host(kvm_state, addr, &ipa)) {
+> > +        /* Buffer for the page tags(one byte per tag) */
+> > +        tag_buf = g_try_malloc0(size);
+>
+> size of the buffer is known at start of migration.  Just get a buffer
+> and reuse it?
+
+Yes, we can pre-allocate the buffer during the migration setup time
+
+>
+> Do zero pages have mte tags?  From migration point of view, a zero page
+> is a page that is just full of zeros, i.e. nothing else special.
+> Because you are not sending any for them.
 >
 
-There is no performance data for this API yet, but at least it's more
-efficient than that
-to only be able to access a single tag by the EL0 "LDG" instruction.
-We will try to
-collect some performance data for this KVM API later.
+Yes, I think we can do some optimization for the zero page migration support.
 
-> My understanding is that we are making a kvm call for each page that we
-> want to migrate, right?
+>
+>
+> > @@ -1148,6 +1219,10 @@ static bool control_save_page(RAMState *rs, RAMBlock *block, ram_addr_t offset,
+> >  static int save_normal_page(RAMState *rs, RAMBlock *block, ram_addr_t offset,
+> >                              uint8_t *buf, bool async)
+> >  {
+> > +    if (rs->metadata_enabled) {
+> > +        offset |= RAM_SAVE_FLAG_MTE;
+>
+> You don't really need the flag, for you normal pages are just
+> TARGET_PAGE_SIZE + (TARGET_PAGE_SIZE/MTE_)
 >
 
-Yes, currently I chose to append the tag values to the page data
-during the migration.
+So you suggest to use the size field to indicate whether tags are available?
 
-> Each time that we want to send it.
 >
+> > +    }
+> > +
+> >      ram_counters.transferred += save_page_header(rs, rs->f, block,
+> >                                                   offset | RAM_SAVE_FLAG_PAGE);
+> >      if (async) {
+> > @@ -1159,6 +1234,11 @@ static int save_normal_page(RAMState *rs, RAMBlock *block, ram_addr_t offset,
+> >      }
+> >      ram_counters.transferred += TARGET_PAGE_SIZE;
+> >      ram_counters.normal++;
+> > +
+> > +    if (rs->metadata_enabled) {
+>
+> See?  You are not checking the flag, you are checking the bool setup at
+> the beggining of migration.
+
+The idea is to only migrate the memory tags when MTE was enabled for the VM.
+Could you be more elaborate on "You are not checking the flag"?
+
+>
+> > +        ram_counters.transferred += save_normal_page_mte_tags(rs->f, buf);
+> > +    }
+> > +
+> >      return 1;
+> >  }
+> >
+> > @@ -2189,6 +2269,7 @@ static void ram_state_reset(RAMState *rs)
+> >      rs->last_version = ram_list.version;
+> >      rs->ram_bulk_stage = true;
+> >      rs->fpo_enabled = false;
+> > +    rs->metadata_enabled = false;
+> >  }
+> >
+> >  #define MAX_WAIT 50 /* ms, half buffered_file limit */
+> > @@ -3779,7 +3860,7 @@ static int ram_load_precopy(QEMUFile *f)
+> >              trace_ram_load_loop(block->idstr, (uint64_t)addr, flags, host);
+> >          }
+> >
+> > -        switch (flags & ~RAM_SAVE_FLAG_CONTINUE) {
+> > +        switch (flags & ~(RAM_SAVE_FLAG_CONTINUE | RAM_SAVE_FLAG_MTE)) {
+>
+> Creating the flag is hurting you here also.
+>
+> >          case RAM_SAVE_FLAG_MEM_SIZE:
+> >              /* Synchronize RAM block list */
+> >              total_ram_bytes = addr;
+> > @@ -3849,6 +3930,9 @@ static int ram_load_precopy(QEMUFile *f)
+> >
+> >          case RAM_SAVE_FLAG_PAGE:
+> >              qemu_get_buffer(f, host, TARGET_PAGE_SIZE);
+> > +            if (flags & RAM_SAVE_FLAG_MTE) {
+> > +                load_normal_page_mte_tags(f, host);
+> > +            }
+>
+> I don't claim to understand the MTE, but my understanding is that if we
+> are using MTE, all pages have to have MTE flags, right?
+>
+> So, somtehing like
+>
+> is_mte_enabled()
+>
+> that I told in the other thread looks like a good idea.
+>
+
+Yes, we do need a function like this.
+
 > Later, Juan.
 >
->
-> > +}
-> > +
-> > +int kvm_arm_mte_set_tags(uint64_t ipa, uint64_t len, uint8_t *buf)
-> > +{
-> > +    struct kvm_arm_copy_mte_tags args = {
-> > +        .guest_ipa = ipa,
-> > +        .length = len,
-> > +        .addr = buf,
-> > +        .flags = KVM_ARM_TAGS_TO_GUEST,
-> > +    };
-> > +
-> > +    return kvm_vm_ioctl(kvm_state, KVM_ARM_MTE_COPY_TAGS, &args);
-> > +}
-> > diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-> > index 34f8daa377..bbb833d6c6 100644
-> > --- a/target/arm/kvm_arm.h
-> > +++ b/target/arm/kvm_arm.h
-> > @@ -360,6 +360,8 @@ int kvm_arm_vgic_probe(void);
+> >              break;
 > >
-> >  void kvm_arm_pmu_set_irq(CPUState *cs, int irq);
-> >  void kvm_arm_pmu_init(CPUState *cs);
-> > +int kvm_arm_mte_get_tags(uint64_t ipa, uint64_t len, uint8_t *buf);
-> > +int kvm_arm_mte_set_tags(uint64_t ipa, uint64_t len, uint8_t *buf);
-> >
-> >  /**
-> >   * kvm_arm_pvtime_init:
+> >          case RAM_SAVE_FLAG_COMPRESS_PAGE:
 >

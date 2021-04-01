@@ -1,104 +1,104 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp361060lfg;
-        Thu, 1 Apr 2021 03:43:41 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz6xy+BJAXWWwI7QlPZE6crnvkEWlTWoOYTSu4s8idG+mYdhY2u5Xf1vduPdFTa7qAQ1POR
-X-Received: by 2002:a37:5b43:: with SMTP id p64mr7581575qkb.131.1617273821715;
-        Thu, 01 Apr 2021 03:43:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617273821; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp361358lfg;
+        Thu, 1 Apr 2021 03:44:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz3sVlKAuG6Y49sug5wdO6eGGwNYkeWe8KAuu2WeRfYoxzPeZ5NtHC+hyWjP89Qp3eaMdib
+X-Received: by 2002:aca:1014:: with SMTP id 20mr5632652oiq.40.1617273851570;
+        Thu, 01 Apr 2021 03:44:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617273851; cv=none;
         d=google.com; s=arc-20160816;
-        b=s7J43PTv/sNI7sXBpOV3sAcLPCUbL68IdFjVQqvnRwPGU6kgDmsAhMyiTNNp90f5Bb
-         OkqGKbKdK4KrnTnxrr7Q7qvPQS7+Bj5DTOkZRQFQAIDAEeht9egQ4bf+CzGPytxKj8uQ
-         AgSM6rbKyngGn8zsN0JdwFKzMG4FitbUCGzwV/meaPcTgqa8eK5xvVm2Jzy4N8oYgiit
-         /xikBDe9SYVKL2xmXxSen7ZtKc861m0QukoNmvlTkSKsQ3UWVctjImenkD1qRkrEv4K+
-         KlJQMJs6mKW2jLZhdniBGaV8h3tggcLgeJDxIuVPPZadWyUZDKsWWblhxFCfX5YNgWZi
-         vUFw==
+        b=w3QxMUTEXXqMi3q3tIdEf2MjYrbAGnADB7KKaDO+M0WE+/88MRPxyK1o1j78wfJOj7
+         n/bdb4nHU1sgmnel9+wTkhOf3TH3kO/xPHCVRjv6DqSCWmGav188H/kmxXWwV5bgOffv
+         NwWekyAa7uTCHoxjO2V39yBk5uJJg0wNOca+g+8sJy1cToJybCxnSic3ODeQ2F4JS8ix
+         9/gv2u+9EuiI9q4Mv6AVAD3uVjLyUNYVWieILatXr92zFGK2pmM5OUN1yhftR75NJ2Kv
+         TYD7st24Spll681pg8jFJvXIQvnRwsnVzAu76wS/1CSiSWshp1iASftVme8LYoR4YJ8g
+         cY2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=+OpEDkbIB7gVmSFeUBZiFRPGe0lGXnIYEfiFDB8srwo=;
-        b=W6BpOcXuXvPpVNDi9LhIVXLqDgboORh2QfVBVcAmbupXPa1Vw5dexAP24txgj3ac7B
-         5Y31Nm2yHz4rIoa3d6m9DdqrcwZUP1eJoCvRQSGxbpefzcBEuFSXF8gw52ws8U3QkB+Y
-         GtDg3yBekSWGTMlA9jvH9Ls9p3MImqTA8Ww3PEYLcOP/FSypAZtfN6njrzs0ZFQeHjwl
-         glqyNBwuqQ93tc9Bg9qKQuoksS7nJAx8nUGzV/IZebjICSr/jMkRx3X7vbvqTjxk5W58
-         mq3Av/ol3VWBeQpUJqHhfdeIJ//aS2EoOaXoELdGtQ5GhznEhUoIYayLG/GpOgQuFtwN
-         QQzQ==
+        bh=JjlPaXyuxmJc78UBaRD26ugJ56+ZZ/y7y6+y5dorLqk=;
+        b=KFvzZTxAoXg/8DvjoL5UwaVz17FQfClmwj4pYHxuZKKey9edv+EJDcu6kNbe/i07Ie
+         gPOAdkfP4pbHLWFG+6Pxs93VFGnvTQcVG3r0wvsDeSI3+dFXdN0lAdTZRGkV69YuMfzT
+         CiVNjHT2f+1prpD6gn/Sw52ulQM2TZi8xtOnQyrd4IPqBy5v6MU5PmLf0T6yQhzfJtMz
+         n/6m9RWnu0kj+zaWD37NX8CF5JR0t3KcwfILW8FTLUYMfJqMbWZg9CLWP3TEsDF4PTti
+         eGQtFjRxLSxLSWvY5QNOtniwF45ClzcFZffQDAYPreaUFvYSnfvSnDWrA0JVsqsiq/YA
+         Iqsw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=yBPfJBcT;
+       dkim=fail header.i=@linaro.org header.s=google header.b=vYCxZJgC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 206si2825206qkk.380.2021.04.01.03.43.41
+        by mx.google.com with ESMTPS id d24si4334930oti.304.2021.04.01.03.44.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 01 Apr 2021 03:43:41 -0700 (PDT)
+        Thu, 01 Apr 2021 03:44:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=yBPfJBcT;
+       dkim=fail header.i=@linaro.org header.s=google header.b=vYCxZJgC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54928 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56226 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lRund-0001pq-05
-	for alex.bennee@linaro.org; Thu, 01 Apr 2021 06:43:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46694)
+	id 1lRuo6-0002Of-SR
+	for alex.bennee@linaro.org; Thu, 01 Apr 2021 06:44:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46804)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <haibo.xu@linaro.org>)
- id 1lRulJ-00074y-Jo
- for qemu-arm@nongnu.org; Thu, 01 Apr 2021 06:41:17 -0400
-Received: from mail-oo1-xc34.google.com ([2607:f8b0:4864:20::c34]:35400)
+ id 1lRulM-0007Dh-O2
+ for qemu-arm@nongnu.org; Thu, 01 Apr 2021 06:41:20 -0400
+Received: from mail-ot1-x335.google.com ([2607:f8b0:4864:20::335]:33483)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <haibo.xu@linaro.org>)
- id 1lRulH-0002OV-N2
- for qemu-arm@nongnu.org; Thu, 01 Apr 2021 06:41:17 -0400
-Received: by mail-oo1-xc34.google.com with SMTP id
- i20-20020a4a8d940000b02901bc71746525so453977ook.2
- for <qemu-arm@nongnu.org>; Thu, 01 Apr 2021 03:41:15 -0700 (PDT)
+ id 1lRulK-0002Qw-Cl
+ for qemu-arm@nongnu.org; Thu, 01 Apr 2021 06:41:20 -0400
+Received: by mail-ot1-x335.google.com with SMTP id
+ s11-20020a056830124bb029021bb3524ebeso1762106otp.0
+ for <qemu-arm@nongnu.org>; Thu, 01 Apr 2021 03:41:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=+OpEDkbIB7gVmSFeUBZiFRPGe0lGXnIYEfiFDB8srwo=;
- b=yBPfJBcTU5P/NHP0A4PrO7SZY2KygV9ZaEVBnzrf8K1c5UB1z/xjklQqOHpwTvF0Tk
- ykcZIBzEdbuDTc1a3tjRldR8upaIQytvmf5t1IvmCFLQacf8tywoXHMp1/qhrpZNx3qE
- i6acTlkhPmIGADG8dr4H7HbbjcB+sMbX1cNpfffavEMBeYKYWQ6QUI5jG37MI365Y0kV
- WSrXR9OwJ7EFeS6KlEMSz37smoOBqHunUEyQpnIJT0LP0TNRLDBC/D7UQ5njfNCH48Il
- ZkZTW4uPdCMDW+lZnTgvJZHpmAFWiMnMJiEM7IznJ5vKLPz3pIl5YEzEh47AUsyT/6Us
- oVng==
+ bh=JjlPaXyuxmJc78UBaRD26ugJ56+ZZ/y7y6+y5dorLqk=;
+ b=vYCxZJgC9IYUahRmaA1hiotepZBdCe/oSE2KE5ADOywUfuk97sQdRFvGPI8sSh6TOP
+ uPJjSnzNicVOqN0084yEIY3u7409qZ4v0UevAmVvjo1H9q5roEvkZTPVsvmvuDAOSVIq
+ 7xzHwvQX9SSTVMq1cnlmM8o7XRSFwekvqtbMDZvN3TJC953Ny3gJCZm8I8F7RHvwVbbt
+ 76VpQpRjoMnd4bhBVTKOjDuKZcZno+W/ZSD531u2tiyYvofepvB3KoVd7hjY3044O6yx
+ cy5GjeOQLL5SQSuJAsk0gn6IWGTdm+RiFzlMlULJPFwakQajxzSm1NIv1fRK2wQutVhS
+ dc6A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=+OpEDkbIB7gVmSFeUBZiFRPGe0lGXnIYEfiFDB8srwo=;
- b=jn9i8gAaY3WmEsko3aqv4AKfC3vGhtz+dCGVQOueqYsxWa8StmAA9/Ne02I8vKFcT1
- XhFvIeEjYbgYI8NP3tVDymop3RbuO44OXkNQNHxtf6K44VhL7dZ5Tak+BkQILxmiQUrQ
- 5n+oWs8lG9OpWIe0XNYZqBoScvSbbVYNLnU+2DQJyIORrXw90spu+4muIrPS1g2O3pTl
- sNvzAPuRkyuIUox/l9lDP71pwxyLHF4kJ+XWaMSz+s3IkAcal1ejZLtDwTmGMldpw8/Z
- mPdigpfSBm6hkJj1dp34Zt7cpW3pHgTl7rwYbuHGZJLyxI5AJsZZX4nud52we1W6ZANz
- JBEQ==
-X-Gm-Message-State: AOAM532gzROuvtQt9/8Nz9A63/anbfpuRUUumyyvcS1fYpw9edsG4zHD
- bkzkEGTesrgvQyWv/a8wT37N
-X-Received: by 2002:a4a:ca94:: with SMTP id x20mr6626942ooq.86.1617273674654; 
- Thu, 01 Apr 2021 03:41:14 -0700 (PDT)
+ bh=JjlPaXyuxmJc78UBaRD26ugJ56+ZZ/y7y6+y5dorLqk=;
+ b=rp0bjAJNNqqp5wPOdpbSU0bv+T5PZYuBhBK8DdfzyxdcGGzhZYUkF3kWgZiJRW0c8I
+ X8WA8quFcZKDuD487/W3r1DXqylPOf1CVSg/3419qz/3pRkk7zssQsFujKfuqI8bpKoh
+ IcSdOayiXgTSByETISx+TLeJo3sHyGTlxxRoHSJuFLz6WHN9Y+JOQdaeVGbFPBY3o8Tu
+ Ff7HDoaU69XeKUmty52HocwTHwMkYVf3nGW3sYfj7NYrFoSYPwHsMMf62UeKNXMmox5b
+ joi9E+kaiMg4F+lSPdTtugYMzQunCPr80yxun1Xd0b3Nld6gaC48V4LehaRLBMQvSG2Z
+ jwNw==
+X-Gm-Message-State: AOAM5339vtQlBjxS99F/HMoRwid9BSFKiQnYMgTwGLNKJTsUhuR6ebJq
+ DdzWf+3JfXbk3Q3D8rkmHPlfz3QwTuBDz6s=
+X-Received: by 2002:a05:6830:401c:: with SMTP id
+ h28mr5936899ots.347.1617273677386; 
+ Thu, 01 Apr 2021 03:41:17 -0700 (PDT)
 Received: from localhost.localdomain ([147.75.106.138])
- by smtp.gmail.com with ESMTPSA id a6sm1069066otq.79.2021.04.01.03.41.13
+ by smtp.gmail.com with ESMTPSA id a6sm1069066otq.79.2021.04.01.03.41.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 01 Apr 2021 03:41:14 -0700 (PDT)
+ Thu, 01 Apr 2021 03:41:17 -0700 (PDT)
 From: Haibo Xu <haibo.xu@linaro.org>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org
-Subject: [PATCH v2 3/6] target/arm/kvm: Add an option to turn on/off el2
- support
-Date: Thu,  1 Apr 2021 10:40:55 +0000
-Message-Id: <80d8bac17a21b41b36cde3eec6c9681b93f43d7c.1617272690.git.haibo.xu@linaro.org>
+Subject: [PATCH v2 6/6] target/arm: Add vCPU feature 'el2' test.
+Date: Thu,  1 Apr 2021 10:40:58 +0000
+Message-Id: <50db1700b4df48acbecfda077b2220a0e3cf6b49.1617272690.git.haibo.xu@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <cover.1617272690.git.haibo.xu@linaro.org>
 References: <cover.1617272690.git.haibo.xu@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::c34;
- envelope-from=haibo.xu@linaro.org; helo=mail-oo1-xc34.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::335;
+ envelope-from=haibo.xu@linaro.org; helo=mail-ot1-x335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -122,136 +122,70 @@ Cc: peter.maydell@linaro.org, drjones@redhat.com, richard.henderson@linaro.org,
  abologna@redhat.com, Haibo Xu <haibo.xu@linaro.org>, philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vdbhF0mhScaN
-
-Adds an el2=[on/off] option to enable/disable el2(nested virtualization)
-support in KVM guest vCPU.
+X-TUID: YYGASlQEpWDu
 
 Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
 ---
- target/arm/cpu.c   | 11 ++++++++++
- target/arm/cpu.h   |  4 ++++
- target/arm/cpu64.c | 52 ++++++++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 67 insertions(+)
+ target/arm/monitor.c           | 2 +-
+ tests/qtest/arm-cpu-features.c | 9 +++++++++
+ 2 files changed, 10 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index ae04884408..30cc330f50 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1349,6 +1349,17 @@ void arm_cpu_finalize_features(ARMCPU *cpu, Error **errp)
-                 return;
-             }
+diff --git a/target/arm/monitor.c b/target/arm/monitor.c
+index 80c64fa355..6c39238925 100644
+--- a/target/arm/monitor.c
++++ b/target/arm/monitor.c
+@@ -90,7 +90,7 @@ QEMU_BUILD_BUG_ON(ARM_MAX_VQ > 16);
+  * then the order that considers those dependencies must be used.
+  */
+ static const char *cpu_model_advertised_features[] = {
+-    "aarch64", "pmu", "sve",
++    "aarch64", "pmu", "sve", "el2",
+     "sve128", "sve256", "sve384", "sve512",
+     "sve640", "sve768", "sve896", "sve1024", "sve1152", "sve1280",
+     "sve1408", "sve1536", "sve1664", "sve1792", "sve1920", "sve2048",
+diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
+index 8252b85bb8..be07bf0c76 100644
+--- a/tests/qtest/arm-cpu-features.c
++++ b/tests/qtest/arm-cpu-features.c
+@@ -509,6 +509,7 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
+     if (g_str_equal(qtest_get_arch(), "aarch64")) {
+         bool kvm_supports_steal_time;
+         bool kvm_supports_sve;
++        bool kvm_supports_el2;
+         char max_name[8], name[8];
+         uint32_t max_vq, vq;
+         uint64_t vls;
+@@ -533,10 +534,12 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
+          */
+         assert_has_feature(qts, "host", "kvm-steal-time");
+         assert_has_feature(qts, "host", "sve");
++        assert_has_feature(qts, "host", "el2");
+ 
+         resp = do_query_no_props(qts, "host");
+         kvm_supports_steal_time = resp_get_feature(resp, "kvm-steal-time");
+         kvm_supports_sve = resp_get_feature(resp, "sve");
++        kvm_supports_el2 = resp_get_feature(resp, "el2");
+         vls = resp_get_sve_vls(resp);
+         qobject_unref(resp);
+ 
+@@ -602,11 +605,17 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
+         } else {
+             g_assert(vls == 0);
          }
 +
-+        /*
-+         * Currently, vCPU feature 'el2' only supported in KVM mode.
-+         */
-+        if (kvm_enabled()) {
-+            arm_cpu_el2_finalize(cpu, &local_err);
-+            if (local_err != NULL) {
-+                error_propagate(errp, local_err);
-+                return;
-+            }
++        if (kvm_supports_el2) {
++            assert_set_feature(qts, "host", "el2", false);
++            assert_set_feature(qts, "host", "el2", true);
 +        }
+     } else {
+         assert_has_not_feature(qts, "host", "aarch64");
+         assert_has_not_feature(qts, "host", "pmu");
+         assert_has_not_feature(qts, "host", "sve");
+         assert_has_not_feature(qts, "host", "kvm-steal-time");
++        assert_has_not_feature(qts, "host", "el2");
      }
  
-     if (kvm_enabled()) {
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 193a49ec7f..19fa9cfbfd 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -203,10 +203,12 @@ typedef struct {
- # define ARM_MAX_VQ    16
- void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp);
- void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp);
-+void arm_cpu_el2_finalize(ARMCPU *cpu, Error **errp);
- #else
- # define ARM_MAX_VQ    1
- static inline void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp) { }
- static inline void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp) { }
-+static inline void arm_cpu_el2_finalize(ARMCPU *cpu, Error **errp) { }
- #endif
- 
- typedef struct ARMVectorReg {
-@@ -1058,6 +1060,7 @@ void aarch64_sve_narrow_vq(CPUARMState *env, unsigned vq);
- void aarch64_sve_change_el(CPUARMState *env, int old_el,
-                            int new_el, bool el0_a64);
- void aarch64_add_sve_properties(Object *obj);
-+void aarch64_add_el2_properties(Object *obj);
- 
- /*
-  * SVE registers are encoded in KVM's memory in an endianness-invariant format.
-@@ -1089,6 +1092,7 @@ static inline void aarch64_sve_change_el(CPUARMState *env, int o,
-                                          int n, bool a)
- { }
- static inline void aarch64_add_sve_properties(Object *obj) { }
-+static inline void aarch64_add_el2_properties(Object *obj) { }
- #endif
- 
- void aarch64_sync_32_to_64(CPUARMState *env);
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index f0a9e968c9..3f3f2c5495 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -603,6 +603,58 @@ static Property arm_cpu_pauth_property =
- static Property arm_cpu_pauth_impdef_property =
-     DEFINE_PROP_BOOL("pauth-impdef", ARMCPU, prop_pauth_impdef, false);
- 
-+void arm_cpu_el2_finalize(ARMCPU *cpu, Error **errp)
-+{
-+    if (cpu->has_el2) {
-+        if (!kvm_enabled() || !kvm_arm_el2_supported()) {
-+            error_setg(errp, "'el2' cannot be enabled on this host");
-+            return;
-+        }
-+    }
-+
-+    if (cpu->has_el2) {
-+        set_feature(&cpu->env, ARM_FEATURE_EL2);
-+    } else {
-+        unset_feature(&cpu->env, ARM_FEATURE_EL2);
-+    }
-+}
-+
-+static bool arm_get_el2(Object *obj, Error **errp)
-+{
-+    ARMCPU *cpu = ARM_CPU(obj);
-+
-+    return cpu->has_el2;
-+}
-+
-+static void arm_set_el2(Object *obj, bool value, Error **errp)
-+{
-+    ARMCPU *cpu = ARM_CPU(obj);
-+
-+    if (value) {
-+        if (!kvm_enabled() || !kvm_arm_el2_supported()) {
-+            error_setg(errp, "'el2' cannot be enabled on this host");
-+            return;
-+        }
-+        set_feature(&cpu->env, ARM_FEATURE_EL2);
-+    } else {
-+        unset_feature(&cpu->env, ARM_FEATURE_EL2);
-+    }
-+
-+    cpu->has_el2 = value;
-+}
-+
-+void aarch64_add_el2_properties(Object *obj)
-+{
-+    /*
-+     * vCPU feature 'el2' is only available in KVM mode, and is
-+     * disabled by default to keep in line with that in TCG mode.
-+     */
-+    ARM_CPU(obj)->has_el2 = false;
-+    object_property_add_bool(obj, "el2", arm_get_el2, arm_set_el2);
-+    object_property_set_description(obj, "el2", "Set off to disable "
-+                                    "nested virtulization.");
-+}
-+
- /* -cpu max: if KVM is enabled, like -cpu host (best possible with this host);
-  * otherwise, a CPU with as many features enabled as our emulation supports.
-  * The version of '-cpu max' for qemu-system-arm is defined in cpu.c;
+     qtest_quit(qts);
 -- 
 2.17.1
 

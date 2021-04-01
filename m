@@ -1,90 +1,109 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp282938lfg;
-        Thu, 1 Apr 2021 01:43:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzSqhCCVxhib5x/yv4hAHYmAorddm0xp0mWwelwKvQpdKvtnLxZQtQdHzCln2HcZ6wntu1M
-X-Received: by 2002:a05:6602:2102:: with SMTP id x2mr5993428iox.83.1617266612374;
-        Thu, 01 Apr 2021 01:43:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617266612; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp359563lfg;
+        Thu, 1 Apr 2021 03:41:27 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxFbssFV6zzkYY3jjDU7tCkWd5Ge0lhsfM0EWs0sa+u1W0k6WUrTZeQyECsLiNu0VE7iGz5
+X-Received: by 2002:a92:c56f:: with SMTP id b15mr5916560ilj.41.1617273687690;
+        Thu, 01 Apr 2021 03:41:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617273687; cv=none;
         d=google.com; s=arc-20160816;
-        b=Az/VO7Rq0N5yjLNWoH5BRajGU5PU3qQTx+/t+yGd64jjo/0zJwjq1ffX1fG5mEVlZ1
-         I3CFD/dqCS1ikaFv2lYzhlrMTVtvuCtJ/67TLiI1/+EIfy8eC8KHgc+ed8FXtbhi1ZWP
-         IOL8OrH74FLs7kEwFjWUun5ccKzuNyyTJ099sq+OkljTn24Ba6MB3iR0egnLs1q/hDvG
-         +jTge0x+5NgjGZsUw8EdNvuOJjawtGrVETXr/a+d5LxCAeqgbWgdWOruXuIj8FsAwHlD
-         7h6i90SC2Zs28yXSp36vE0bZYsLmviBFj9pmCZZMVHeT+WzNMnVGNqX268eAmFpyVzPq
-         Dpcw==
+        b=O/qGEZmBSwcwFIWrNf80jyNPvWQLl+OJVyeehFZSG1DopKzfWcAkh3gfcGULzET3DN
+         r6uCf7pxXMPhmAtXl2Ax7x7iejyhTtt9QUOt597NLW3cuv529GlY3TweAZ1h5ozOy2dq
+         //SruysLPOuHeQJsN079WTOkTH2Lrl/k0C3yw4PavRixtFljsVvRq8ss/gqaIkwnFZw1
+         S/r3diwetXITELnfVn3kD0i5Q7+SqiwAm6odSqx37Q2k+gho6ccgP2yXjlGEAdV3RzNo
+         5TpA4rig1DOUzy1Xl0fKeHMMBr2m/bimhrsgJ86zkzo+scSv1FPZSHXKe8Su7XOx2jOD
+         U9kA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=ij0gWq0nYme4eo+ynSTjyBMPKvvXBSE9IbwRbxJohT0=;
-        b=p9YC3ksZdVfOpP/HVSeYqCAJNsoRYQ+/G9YHVxCdPgXw3jIe1DjQ4ZxX/ymLPPUVn+
-         /sIOxsA6GSSyqn3xah45Fj/BSxcgsCY3/c/8v9gVBnQAxM7Qua9jb3YHYl+hQ+CYfLDf
-         Ach0PDTEN3NHCVURGYBFFTXzdf7hR89O4fJQjUTHQA1qs0nmhRMSEirxIYZp6A2obH4x
-         bgnLtfC2yZr44kAOucnUqzVmgXcCFDqcGbCYmvEMEl0M8kWChpDfVLBP6KeDaiI6eW+9
-         EGF+dl2OtuiCDC1kbCK6yRd9RWRhHp2GlqrWKVhyHbPmXe7Z/Mu0agza5W+vsDlpklpb
-         BmXQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=3J/atxW6sPYnXqaJSp9SobS3v6A+MNQfu9eol6wNQ30=;
+        b=lgA6y1MjIFr5TYvnGryymqoKYTE/NrUJuBAI2c+xnRMyXMLkL7nMqbZn7P3NLwHgTS
+         ZL2avjivg35iYaVc8Zanvyvv2SYjVl8m8SKtGwqjgvHiJ7a53D9YP5DvuiK/7MntNekC
+         7zZW9SI1Z34ZkINkRL2WYdRVp81jZS2jb162GYcY7sQfSN9pwj2AzHng2Q4IPg/9+BSm
+         3g/n7Q8kh8W16ZLz7SEB0IojMSqTJdg3Dts/eV1kPsQSiTWvwwfbhq0kieYoCESFnph4
+         L1/EWmwgw/ArR1pJua2xEtWcyMHNHNqCrw6VqlN2iqDE5ViJc+z8Dc1O7JJTL09ULxXj
+         TvwQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=dpKvgMHT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a14si4508252ilm.112.2021.04.01.01.43.31
+        by mx.google.com with ESMTPS id i24si4572295jan.109.2021.04.01.03.41.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 01 Apr 2021 01:43:32 -0700 (PDT)
+        Thu, 01 Apr 2021 03:41:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=dpKvgMHT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:40536 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:47126 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lRsvL-0007hR-G5
-	for alex.bennee@linaro.org; Thu, 01 Apr 2021 04:43:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41948)
+	id 1lRulT-00074h-1I
+	for alex.bennee@linaro.org; Thu, 01 Apr 2021 06:41:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46646)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1lRsvB-0007ew-LH; Thu, 01 Apr 2021 04:43:21 -0400
-Received: from szxga02-in.huawei.com ([45.249.212.188]:2133)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1lRsv3-0008VL-Nq; Thu, 01 Apr 2021 04:43:20 -0400
-Received: from DGGEML404-HUB.china.huawei.com (unknown [172.30.72.56])
- by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4F9xV507Xwz5ktx;
- Thu,  1 Apr 2021 16:41:01 +0800 (CST)
-Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
- DGGEML404-HUB.china.huawei.com (10.3.17.39) with Microsoft SMTP Server (TLS)
- id 14.3.498.0; Thu, 1 Apr 2021 16:43:06 +0800
-Received: from [10.174.187.128] (10.174.187.128) by
- dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
- 15.1.2106.2; Thu, 1 Apr 2021 16:43:05 +0800
-Subject: Re: [RFC PATCH 0/6] Introduce cluster cpu topology support
-To: Paolo Bonzini <pbonzini@redhat.com>, <qemu-devel@nongnu.org>,
- <qemu-arm@nongnu.org>
-References: <20210331095343.12172-1-wangyanan55@huawei.com>
- <20162bd1-b31e-e180-8792-81934e0d005b@redhat.com>
-From: "wangyanan (Y)" <wangyanan55@huawei.com>
-Message-ID: <1cddde6a-3338-70f0-1d4c-d6fd5d634bb3@huawei.com>
-Date: Thu, 1 Apr 2021 16:43:05 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+ (Exim 4.90_1) (envelope-from <haibo.xu@linaro.org>)
+ id 1lRulI-00073O-GD
+ for qemu-arm@nongnu.org; Thu, 01 Apr 2021 06:41:16 -0400
+Received: from mail-ot1-x335.google.com ([2607:f8b0:4864:20::335]:42624)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <haibo.xu@linaro.org>)
+ id 1lRulG-0002NK-Ov
+ for qemu-arm@nongnu.org; Thu, 01 Apr 2021 06:41:16 -0400
+Received: by mail-ot1-x335.google.com with SMTP id
+ c24-20020a9d6c980000b02902662e210895so1192088otr.9
+ for <qemu-arm@nongnu.org>; Thu, 01 Apr 2021 03:41:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=3J/atxW6sPYnXqaJSp9SobS3v6A+MNQfu9eol6wNQ30=;
+ b=dpKvgMHTPSzyIKbJhiri2sFTjWxsjGFao1XKwc+U6eEhNSxfpoO7HhWzqAGch+d7TV
+ /A9rsjXl4aHUH6N4zrjhhZof+Kd06pyFSVBpgNl+Lj/FmlZtMxEf5gMQtAKGPk8Jl0d8
+ NREr0VOGv4u830hUNq18l0SWNdEWal6zrLckKCUzNWlCCSqWgXvyZ9yCEVOoixnlLZQl
+ ocG1uyHZv4AVKqJyHTjqKH38Oh2HsRdXp0UlxyqtNkM9XrtfoBf3EFQLlfapItdUJojs
+ q3MLJIHDhZAAZkLPab0eGzG37trWEDyO5+sRrEUVIRn9Sir/g5nhLjwrWpnXdVKeANZI
+ b/ug==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=3J/atxW6sPYnXqaJSp9SobS3v6A+MNQfu9eol6wNQ30=;
+ b=kCKFEL4QCsYQ4s165Rbq82jtWYmltFp1oXdS5vlh3wEGM1cuBdaMYdwieGoD6SXs1c
+ ANYdAd4SkdwxtOL+dkJhY7WzABwhXuAe8efz1Ne9wdblwvAPPhovsErW0d/hXHekIW2p
+ EbwZNaRoHTGV62X04dDVra9PUdjnUKarGAXmvjhuBcEXDrMsGGezCeA6hfKYW7lTIvUv
+ NSQCqV5hCeuiD3PILtZ5kqa6uMstx/HEO9q5EdCvyldWPQ93yPCI3roxlzVRvHKLhe/q
+ 42QA40knS6QGS9AARGE9qJZbMWu5NAIa4npoU56BLBrJOaUoXg6iJK0lkeCkphMe9Wdu
+ 8JjQ==
+X-Gm-Message-State: AOAM530uJ2/IKj9844QboecXSWSSSQi0g74WE6viu7PliJBOpcocVZuW
+ FsGyqpDyiCM772pqoLxYSb4b
+X-Received: by 2002:a9d:798a:: with SMTP id h10mr6297800otm.170.1617273673703; 
+ Thu, 01 Apr 2021 03:41:13 -0700 (PDT)
+Received: from localhost.localdomain ([147.75.106.138])
+ by smtp.gmail.com with ESMTPSA id a6sm1069066otq.79.2021.04.01.03.41.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 01 Apr 2021 03:41:13 -0700 (PDT)
+From: Haibo Xu <haibo.xu@linaro.org>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org
+Subject: [PATCH v2 2/6] target/arm/kvm: Add helper to detect el2 when using KVM
+Date: Thu,  1 Apr 2021 10:40:54 +0000
+Message-Id: <65b8771bfecada08bf02c9cf87c2f0f9cdf943b3.1617272690.git.haibo.xu@linaro.org>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <cover.1617272690.git.haibo.xu@linaro.org>
+References: <cover.1617272690.git.haibo.xu@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20162bd1-b31e-e180-8792-81934e0d005b@redhat.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-Content-Language: en-US
-X-Originating-IP: [10.174.187.128]
-X-ClientProxiedBy: dggeme717-chm.china.huawei.com (10.1.199.113) To
- dggpemm500023.china.huawei.com (7.185.36.83)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.188;
- envelope-from=wangyanan55@huawei.com; helo=szxga02-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::335;
+ envelope-from=haibo.xu@linaro.org; helo=mail-ot1-x335.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -98,56 +117,65 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Barry Song <song.bao.hua@hisilicon.com>,
- Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
- Eduardo
- Habkost <ehabkost@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, wanghaibin.wang@huawei.com,
- yuzenghui@huawei.com, Igor Mammedov <imammedo@redhat.com>,
- zhukeqian1@huawei.com, Jiajie Li <lijiajie11@huawei.com>
+Cc: peter.maydell@linaro.org, drjones@redhat.com, richard.henderson@linaro.org,
+ abologna@redhat.com, Haibo Xu <haibo.xu@linaro.org>, philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fhbrabcsY0Dy
+X-TUID: 0B11DtbH0t9F
 
-Hi Paolo,
+Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
+---
+ target/arm/kvm64.c   |  5 +++++
+ target/arm/kvm_arm.h | 13 +++++++++++++
+ 2 files changed, 18 insertions(+)
 
-On 2021/3/31 18:00, Paolo Bonzini wrote:
-> On 31/03/21 11:53, Yanan Wang wrote:
->> A cluster means a group of cores that share some resources (e.g. cache)
->> among them under the LLC. For example, ARM64 server chip Kunpeng 920 has
->> 6 or 8 clusters in each NUMA, and each cluster has 4 cores. All clusters
->> share L3 cache data while cores within each cluster share the L2 cache.
->
-> Is this different from what we already have with "-smp dies"?
-As far as I know, yes. I think they are two architecture concepts of 
-different levels.
-A cpu socket/package can consist of multiple dies, and each die can 
-consist of
-multiple clusters, which means dies are parent for clusters. And this 
-kind of cpu
-hierarchy structure is normal in ARM64 platform.
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index dff85f6db9..9cacaf2eb8 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -721,6 +721,11 @@ bool kvm_arm_steal_time_supported(void)
+     return kvm_check_extension(kvm_state, KVM_CAP_STEAL_TIME);
+ }
+ 
++bool kvm_arm_el2_supported(void)
++{
++    return kvm_check_extension(kvm_state, KVM_CAP_ARM_EL2);
++}
++
+ QEMU_BUILD_BUG_ON(KVM_ARM64_SVE_VQ_MIN != 1);
+ 
+ void kvm_arm_sve_get_vls(CPUState *cs, unsigned long *map)
+diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+index 34f8daa377..7d7fc7981b 100644
+--- a/target/arm/kvm_arm.h
++++ b/target/arm/kvm_arm.h
+@@ -285,6 +285,14 @@ void kvm_arm_steal_time_finalize(ARMCPU *cpu, Error **errp);
+  */
+ bool kvm_arm_steal_time_supported(void);
+ 
++/**
++ * kvm_arm_el2_supported:
++ *
++ * Returns: true if KVM can enable el2(nested virtualization)
++ * and false otherwise.
++ */
++bool kvm_arm_el2_supported(void);
++
+ /**
+  * kvm_arm_aarch32_supported:
+  *
+@@ -398,6 +406,11 @@ static inline bool kvm_arm_steal_time_supported(void)
+     return false;
+ }
+ 
++static inline bool kvm_arm_el2_supported(void)
++{
++    return false;
++}
++
+ /*
+  * These functions should never actually be called without KVM support.
+  */
+-- 
+2.17.1
 
-Still take above ARM64 server chip Kunpeng 920 as an example, there 
-totally are
-2 sockets, 2 dies in each socket, 6 or 8 clusters in each die, and 4 
-cores in each
-cluster. Since it also supports NUMA architecture, then each NUMA actually
-represents one die.
-
-Although there is already "-smp dies=*" command line parameter for PC 
-Machines,
-a cluster level can be added for x86 architecture if meaningful and 
-there will be more
-work to do in qemu to make use of it. And I am sure that ARM needs this 
-level.
-
-If there is something wrong above, please correct me, thanks!
-
-Thanks,
-Yanan
->
-> Paolo
->
-> .

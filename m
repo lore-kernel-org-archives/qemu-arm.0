@@ -1,103 +1,103 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp455026lfg;
-        Thu, 1 Apr 2021 05:56:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyknwET3OhP6K9vjxAFzHdxmgjDu3672Ieleo2ZGuvMTR6lY14WUA+0pEH5JUTTFgeZEIZ1
-X-Received: by 2002:a92:c50c:: with SMTP id r12mr6642962ilg.52.1617281781742;
-        Thu, 01 Apr 2021 05:56:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617281781; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp455139lfg;
+        Thu, 1 Apr 2021 05:56:33 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxEmHmEnjvtAG5MxkOZNxP2soCXE9K3sB7jEnT4c9l4IZhwzAFyPSO9pFeYyalAWNTNsLiW
+X-Received: by 2002:a05:6638:58f:: with SMTP id a15mr7540113jar.35.1617281793628;
+        Thu, 01 Apr 2021 05:56:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617281793; cv=none;
         d=google.com; s=arc-20160816;
-        b=OJl52EtY6riUw8LSWHl69v9z+SjAFEYRmUR8x9+ZeXoMNIEYhdHsYejMW2ekffPT0n
-         DUPZ8pIAuaCpLrnKoVcKJAbtqOU8XqWP9ie6gzKCTX4UbCMOgKbSyYq1NqIVQLDB0wb3
-         cehVOBISqqu6eZVcBE5/nZy/w/TkY6O4jImr2xfktC03Ml+lSUoj7hRW49iqzezwqFCM
-         D52KtuUiiouuHCQ7VG6/e4awIBp/uZ/crGhjt3kwnVESoB0/DYPw/Fuc0JF9eUpeMyCX
-         jPqUmu9cpQlDGMpq1g97zliXtuw86LVvc6B8i9vC+z14rEo9M/Td8gqUStqUFij42WTC
-         CGdg==
+        b=WohcQ9G7Oc7ga/c2BQwpROTnTfg2pampr/6bQYvdqazIenKC+1Irv5JSBF2RTt+L/V
+         //B1PxZmbExV/L7d5lwHKZ8xaVLNOzwX+q6XMOa0tyrG128Ra9R+Zq6wwX97PVElBru/
+         jrXuBK6IrA4GtAyqhqLhBSsMhmYV6XRM/e0mCokojvah0vT99Q4TW6le5Ab7UeLSfQY+
+         FnESEDgzQ2XdpHld0hIqYORrm/SovrQszAX5EGKkHbdudSHtEMziQQ0igChqpo0CuCei
+         89hxIT3y+dBfcb2AoMG53ke6pnFBsV2XbXnrbLb41dhaUM2JX1T94vzweDNr4DVogBjF
+         jDLQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=3J/atxW6sPYnXqaJSp9SobS3v6A+MNQfu9eol6wNQ30=;
-        b=R4HJLdBHS8o8SFJFSChR9NDLfE1mEPywEt/wZ52QUuccjbBzUBh6jJm0/A+T5WtNd3
-         yLUhi85mjmDC8ODL6uyh5ivuPo8FdtP15S08+gYgPJluSOxXOpz++wtWWAY9o2JqqRnX
-         9bpO2gVWFmykIon76G1ieQvw/5wA2MUrIPUNVzAhl/k9IMLytqNPS8E5/b4jXg2XMzeC
-         JHdALbVB2YT5zXQx6shZUjk51PjMSKaUTQtA2ep9ZtGLZybvJ0dGXE/CCyV3QPC848Ut
-         9Bm1Y2MG6r7EqeQaLApZX4p1GdEgB4Hb58tlwFSWmEpMwAnYJ1cNxKn9QXEAWXsNm0BU
-         c1bw==
+        bh=ZOQB26mZhLmXCQu+JfKJIpuDxvkGsibNUVfx4FrnidQ=;
+        b=INj1JxM30QJO26Mig21E1XmAPPOX6HnGmnEavc01ghyheMqIhB66wUpwYCOMrqWQPq
+         emcIVCeBR305d8rOnbRKjHWDDsJXb0n3GiwBA7ZTbgrEk627g8i/lc0sJ3TdwvsKr7GU
+         wUEANJbw9GtkoVm/Ng2b4GBoC+GY8t5i5IV+7btFRfsBv46MGHkzw29rcT3SI7Oew/Fd
+         TuVxffWV32KeL9HTjqafENenSoSPx9ZlSsPMMUS5buAShCnhjljwOmQs5zdQ/CqrffSM
+         UDq7zAduKwySjAK/DdCTZPiVof52OuqBxkZm4TJgrLIV0wplikV/t2sW3QYU6+ff6yVc
+         akXw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=KLY2oOlZ;
+       dkim=fail header.i=@linaro.org header.s=google header.b=KEvABx0N;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v5si4547597ilm.155.2021.04.01.05.56.21
+        by mx.google.com with ESMTPS id z6si4547696ilb.14.2021.04.01.05.56.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 01 Apr 2021 05:56:21 -0700 (PDT)
+        Thu, 01 Apr 2021 05:56:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=KLY2oOlZ;
+       dkim=fail header.i=@linaro.org header.s=google header.b=KEvABx0N;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53370 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54514 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lRws1-0001lW-22
-	for alex.bennee@linaro.org; Thu, 01 Apr 2021 08:56:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57144)
+	id 1lRwsC-0002Gx-Un
+	for alex.bennee@linaro.org; Thu, 01 Apr 2021 08:56:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57202)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <haibo.xu@linaro.org>)
- id 1lRwrY-0001i0-KB
- for qemu-arm@nongnu.org; Thu, 01 Apr 2021 08:55:52 -0400
-Received: from mail-oi1-x229.google.com ([2607:f8b0:4864:20::229]:33729)
+ id 1lRwra-0001kw-6T
+ for qemu-arm@nongnu.org; Thu, 01 Apr 2021 08:55:54 -0400
+Received: from mail-oi1-x22f.google.com ([2607:f8b0:4864:20::22f]:46956)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <haibo.xu@linaro.org>)
- id 1lRwrW-0002y9-2I
- for qemu-arm@nongnu.org; Thu, 01 Apr 2021 08:55:52 -0400
-Received: by mail-oi1-x229.google.com with SMTP id w70so1717082oie.0
- for <qemu-arm@nongnu.org>; Thu, 01 Apr 2021 05:55:49 -0700 (PDT)
+ id 1lRwrY-0002zs-3V
+ for qemu-arm@nongnu.org; Thu, 01 Apr 2021 08:55:53 -0400
+Received: by mail-oi1-x22f.google.com with SMTP id m13so1634481oiw.13
+ for <qemu-arm@nongnu.org>; Thu, 01 Apr 2021 05:55:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=3J/atxW6sPYnXqaJSp9SobS3v6A+MNQfu9eol6wNQ30=;
- b=KLY2oOlZTJhTWb3UIrY7e18uqGaEK2xvaLysjy7MJtXDUs070MMjii5B4pBurCYFB9
- qySEVXiBaIzM0zCr1wF5LRLFklKjryKdF4V+Ug1skqIkv8ikHCHm+kZ5tpmWtdi5UGu2
- /97WcZu7SwcIDTJ9VvhwmCa4kSEfeYP9+39Ih4ic7s689TE6ePHfbRFrhhF6w6lgZUkI
- ZLw+KHl7q9hCrNC0agH+YU+Yts7W4j2ihJVWC4h/P2XxEFxRwJdARNVx+zRc61IRYOMr
- 5pYDPuQG8slq6+QpGrJpgfKnqoe9JhyDu/ob63LNibEFpMHwzlMII2tepurVV8KyYQge
- lNcA==
+ bh=ZOQB26mZhLmXCQu+JfKJIpuDxvkGsibNUVfx4FrnidQ=;
+ b=KEvABx0NXKVvdh/cTK6KT1oo5zefKnn3hc69TWi2rxtInPtUacKaYNk3KgfhtWfjeo
+ T4hCRoMYyjI2dGOe3OC37nXT2yKt8gTN8ewT+BjAqHOBfGsEinutKx3SNXezLAT0wO5K
+ x11QqEEBzG5DSKKkNUnXZoifcye78z/7qtA++R4W51qS9Sgzc9Opq83NeFJ8BI4ijXFp
+ waTiFea9FnnYxoEtL23AehWyXbDZnNd413K4o2vca32gnjZ+kxy1gAc96mBv+F20bMnn
+ pAgjWwMgEB/vR2jYWj0f+PjF60b5zWNvbQZxbixcob4cw0S3K7O9IjLdkPLn5CJ2DkQn
+ OewQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=3J/atxW6sPYnXqaJSp9SobS3v6A+MNQfu9eol6wNQ30=;
- b=OADIBlmIPryrn5/daeznaRUMONBLeCgJgSDEwhIRabU28/iq5MPqHpk24MD7aJn55G
- mqWjAu+1ekyFV0L6HeO2zYG7ydZlZUdY/nR8Z51GjGZY4yklBj+6mTsG77vvdxBHDJ1B
- zteiBsZ+1LhQZ/KkYpQHEQoAuVcSv8/a5jR4p0UykIFEwiwUWlqKqZeJYRa813p72pY/
- bK3GolSrP8x5oHkqEbhZREEHE/EloYP5sOjHs4sE+1axPaAeUE11yPIktD1Pm2NN8UUZ
- bEPPWtWFnNBxjWsttCbVa0NQluJDiU/BcTtMrxE1Wwwh7EDUkh7AhAJPQ/iyW8mlEKTe
- aIkQ==
-X-Gm-Message-State: AOAM53117A3N1m0MFqgD7fZ4/xuombABqRQnoEjwh9lkr6AM3Q8iG/RK
- 7KIyjyfDUnWS29qTga7+sQRE
-X-Received: by 2002:aca:d514:: with SMTP id m20mr5850356oig.47.1617281749029; 
- Thu, 01 Apr 2021 05:55:49 -0700 (PDT)
+ bh=ZOQB26mZhLmXCQu+JfKJIpuDxvkGsibNUVfx4FrnidQ=;
+ b=DDqu+sUgi12hekP7SJ2yyt3/Xp9kctWeZqEvLUHgj4WgDnlBjvLCnh5zkZTXc/3okw
+ 16Tehs9F1NXSdKSKco73eYcFe1U5eMAUyntoXsIk+anyhKoC/1H37MVc6Pu/NImAoFsq
+ lal3+rF/4550FxWQwLqNsc7D5j10llVUpZ+UTa51OrSzgfwKttkwBDYb8aJSIYETVfQ5
+ SMOHyhyV6wqlFc7n+gv8QOuGqRYFThvb+Y2ihPZc/HJ8JF1e6znOy0AnaCiSV7zF1pWh
+ zaj9gci1C5nSuApbfxcnxA+nFLCyGwHP2kTuROt5Fqn7dwZqX8lv3j7d9A+wB8irS5Yr
+ IMOg==
+X-Gm-Message-State: AOAM532Bk0l1T0tBGYsdYGWqwmg5mUiCE/0wB+wz2Foex0bl5eA3+Rhf
+ 5JFuzgcT4GUwTdrp4urZ3De3wWB69ko3F64=
+X-Received: by 2002:aca:4c48:: with SMTP id z69mr6220512oia.61.1617281750888; 
+ Thu, 01 Apr 2021 05:55:50 -0700 (PDT)
 Received: from localhost.localdomain ([147.75.106.138])
- by smtp.gmail.com with ESMTPSA id w11sm1082245ooc.35.2021.04.01.05.55.48
+ by smtp.gmail.com with ESMTPSA id w11sm1082245ooc.35.2021.04.01.05.55.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 01 Apr 2021 05:55:48 -0700 (PDT)
+ Thu, 01 Apr 2021 05:55:50 -0700 (PDT)
 From: Haibo Xu <haibo.xu@linaro.org>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org
-Subject: [PATCH RESEND v2 2/6] target/arm/kvm: Add helper to detect el2 when
- using KVM
-Date: Thu,  1 Apr 2021 12:55:34 +0000
-Message-Id: <65b8771bfecada08bf02c9cf87c2f0f9cdf943b3.1617281290.git.haibo.xu@linaro.org>
+Subject: [PATCH RESEND v2 4/6] hw/intc/arm_gicv3: Enable support for setting
+ vGIC maintenance IRQ
+Date: Thu,  1 Apr 2021 12:55:36 +0000
+Message-Id: <49a4944e2f148c56938380b981afe154b7a8b7ee.1617281290.git.haibo.xu@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <cover.1617281290.git.haibo.xu@linaro.org>
 References: <cover.1617281290.git.haibo.xu@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::229;
- envelope-from=haibo.xu@linaro.org; helo=mail-oi1-x229.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::22f;
+ envelope-from=haibo.xu@linaro.org; helo=mail-oi1-x22f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -121,61 +121,87 @@ Cc: peter.maydell@linaro.org, drjones@redhat.com, richard.henderson@linaro.org,
  abologna@redhat.com, Haibo Xu <haibo.xu@linaro.org>, philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AxCLTwAkr9zz
+X-TUID: gVPV91onFEDB
+
+Using the new VGIC KVM device attribute to set the maintenance IRQ.
+This is fixed to use IRQ 25(PPI 9), as a platform decision matching
+the arm64 SBSA recommendation.
 
 Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
 ---
- target/arm/kvm64.c   |  5 +++++
- target/arm/kvm_arm.h | 13 +++++++++++++
- 2 files changed, 18 insertions(+)
+ hw/arm/virt.c                      |  5 +++++
+ hw/intc/arm_gicv3_common.c         |  1 +
+ hw/intc/arm_gicv3_kvm.c            | 16 ++++++++++++++++
+ include/hw/intc/arm_gicv3_common.h |  1 +
+ 4 files changed, 23 insertions(+)
 
-diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index dff85f6db9..9cacaf2eb8 100644
---- a/target/arm/kvm64.c
-+++ b/target/arm/kvm64.c
-@@ -721,6 +721,11 @@ bool kvm_arm_steal_time_supported(void)
-     return kvm_check_extension(kvm_state, KVM_CAP_STEAL_TIME);
- }
- 
-+bool kvm_arm_el2_supported(void)
-+{
-+    return kvm_check_extension(kvm_state, KVM_CAP_ARM_EL2);
-+}
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index aa2bbd14e0..92d46ebcfe 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -663,6 +663,11 @@ static void create_gic(VirtMachineState *vms)
+             qdev_prop_set_uint32(vms->gic, "redist-region-count[1]",
+                 MIN(smp_cpus - redist0_count, redist1_capacity));
+         }
 +
- QEMU_BUILD_BUG_ON(KVM_ARM64_SVE_VQ_MIN != 1);
++        if (kvm_irqchip_in_kernel()) {
++            bool el2 = object_property_get_bool(OBJECT(first_cpu), "el2", NULL);
++            qdev_prop_set_bit(vms->gic, "has-virtualization-extensions", el2);
++        }
+     } else {
+         if (!kvm_irqchip_in_kernel()) {
+             qdev_prop_set_bit(vms->gic, "has-virtualization-extensions",
+diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
+index 58ef65f589..3ac10c8e61 100644
+--- a/hw/intc/arm_gicv3_common.c
++++ b/hw/intc/arm_gicv3_common.c
+@@ -495,6 +495,7 @@ static Property arm_gicv3_common_properties[] = {
+     DEFINE_PROP_UINT32("num-irq", GICv3State, num_irq, 32),
+     DEFINE_PROP_UINT32("revision", GICv3State, revision, 3),
+     DEFINE_PROP_BOOL("has-security-extensions", GICv3State, security_extn, 0),
++    DEFINE_PROP_BOOL("has-virtualization-extensions", GICv3State, virt_extn, 0),
+     DEFINE_PROP_ARRAY("redist-region-count", GICv3State, nb_redist_regions,
+                       redist_region_count, qdev_prop_uint32, uint32_t),
+     DEFINE_PROP_END_OF_LIST(),
+diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
+index 65a4c880a3..1e1ca66e2c 100644
+--- a/hw/intc/arm_gicv3_kvm.c
++++ b/hw/intc/arm_gicv3_kvm.c
+@@ -826,6 +826,22 @@ static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
+     kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_CTRL,
+                       KVM_DEV_ARM_VGIC_CTRL_INIT, NULL, true, &error_abort);
  
- void kvm_arm_sve_get_vls(CPUState *cs, unsigned long *map)
-diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index 34f8daa377..7d7fc7981b 100644
---- a/target/arm/kvm_arm.h
-+++ b/target/arm/kvm_arm.h
-@@ -285,6 +285,14 @@ void kvm_arm_steal_time_finalize(ARMCPU *cpu, Error **errp);
-  */
- bool kvm_arm_steal_time_supported(void);
- 
-+/**
-+ * kvm_arm_el2_supported:
-+ *
-+ * Returns: true if KVM can enable el2(nested virtualization)
-+ * and false otherwise.
-+ */
-+bool kvm_arm_el2_supported(void);
++    if (s->virt_extn) {
++        bool maint_irq_allowed;
++        uint32_t maint_irq = 25;
 +
- /**
-  * kvm_arm_aarch32_supported:
-  *
-@@ -398,6 +406,11 @@ static inline bool kvm_arm_steal_time_supported(void)
-     return false;
- }
- 
-+static inline bool kvm_arm_el2_supported(void)
-+{
-+    return false;
-+}
++        maint_irq_allowed =
++            kvm_device_check_attr(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_MAINT_IRQ, 0);
++        if (!maint_irq_allowed) {
++            error_setg(errp, "VGICv3 setting maintenance IRQ are not "
++                             "supported by this host kernel");
++            return;
++        }
 +
- /*
-  * These functions should never actually be called without KVM support.
-  */
++        kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_MAINT_IRQ,
++                          0, &maint_irq, true, &error_abort);
++    }
++
+     kvm_arm_register_device(&s->iomem_dist, -1, KVM_DEV_ARM_VGIC_GRP_ADDR,
+                             KVM_VGIC_V3_ADDR_TYPE_DIST, s->dev_fd, 0);
+ 
+diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
+index 91491a2f66..921ddc2c5f 100644
+--- a/include/hw/intc/arm_gicv3_common.h
++++ b/include/hw/intc/arm_gicv3_common.h
+@@ -220,6 +220,7 @@ struct GICv3State {
+     uint32_t num_irq;
+     uint32_t revision;
+     bool security_extn;
++    bool virt_extn;
+     bool irq_reset_nonsecure;
+     bool gicd_no_migration_shift_bug;
+ 
 -- 
 2.17.1
 

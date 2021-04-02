@@ -1,103 +1,104 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1745578lfg;
-        Fri, 2 Apr 2021 14:42:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxciEhfTEQ4IF5vuPTyR8aPwH7/LsxMow7SHclOc0oMzsd7xOO1NUNSAx8XSNWBvbwUvGj+
-X-Received: by 2002:a25:d041:: with SMTP id h62mr20823524ybg.107.1617399775814;
-        Fri, 02 Apr 2021 14:42:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617399775; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1745900lfg;
+        Fri, 2 Apr 2021 14:43:45 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxZnLF5IfZOj+RuymxeRSQ/f7+K8e1WkhRknFegCBi3sCX2Ai4RW7sH31Vib92SYIz15uoE
+X-Received: by 2002:a25:5d6:: with SMTP id 205mr22818727ybf.344.1617399825031;
+        Fri, 02 Apr 2021 14:43:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617399825; cv=none;
         d=google.com; s=arc-20160816;
-        b=hLr1d+FrFpGCH5sNx2vtwZMc69GDy+ElDeirttiHq5stCEF3N+wEvGt3+z8Q16oD7b
-         Lul/HX6eTnrhHMrXuoDYRTF5W6ImJYO+U2aOTqdLMyd1y1KYSdhJ/iCLpuXLe69ZY4v6
-         m5A8nJClN49CbMSp33Oxo1TJYNH2p2S9laWE7YWGP//PUftmMjEeNMUwwNn5W3yqt0Nx
-         +VjAaa/UQgCvGeHGOkDBesiBIz8AfjTqg+CtfuSZeOYxcRKoLouQpITdaNSiHX3qmxs9
-         6Re9hRk++Qe7LgrXhT4MVjYocKyjC1K1qzaK2M9H95HY5ca9cLKvZ6B3NyFlNX1GHQ+x
-         aHZQ==
+        b=SRM+PDWi8G6d20OYKz/wTtqr11YtZYIAyulp7rhpQ6Hz3tfic47/jQRAeJt6d7PKq7
+         KbKT//5Lg4KZWpdbz3cENYct0dv+Rs9iSlHVwwt9SGH/ViQVQ2yzjOuuF870e8q+hbK1
+         Sj9iXv+a1sK/tf0E4HbwuAoZNBz2qtn3cDQsqZElFlZMW2Ly2IW8/wjoA942V+M2eGUT
+         Xt98fct4av9e4f9DyzpAXUqyulDZznc4LEQf5Izg+8i+dcYNA7M7prGXunhltVGQ7N3Y
+         6LU5pnfQVejvI8wEV2E5Ba6LE9Y6aiMmWSB03TLx500+JxR19Nuh+fEUAyoug1TGxzIO
+         7ruw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=OVt5iR1dmccHY0b49ovqyPgeianDpRHBCkX5yRWRcH8=;
-        b=yl5dBhQy6rGzq5cXOHDTjketN7IRiAbeOyKiKbqrw0Onb8suHj7BDCVjouLaa64bWL
-         vJnxpXred2DYNcVuaJsi62zxtxovJxc1pCLT6rC5N/kTj+RDgK8LWSP44Jf1Tcm9IrkT
-         HN534HXd7YJsZGJWsEVNbG48lMjaxiqQzYCE4rpfbhMJ8Ji5bOnWRk2yE5DwJ6He34mz
-         Bt0WqWasaWeQmSJzh4gjWTaSCHyC1JjjIuF6YzIqZdwukmcVFci0scSQM+2a8gRqFdHd
-         vZLhqPdJf+3VVuIW6z0OjqVoQDLgp17Wix2i2N/FzfX7uoLG7rS5yEvDYvM+hYK4skIM
-         xbIg==
+        bh=N2mWsQLvcKb8vumKiyJlzF6R6pJ22LkeGfPO+NZbgZA=;
+        b=012Gs0C3ATFYz/3WXqSVdaZV/WcsX65RTrv4E2zDEpRuE3rL5UVZux/TWil4xjV1xE
+         EnzB0gRh6L669Nn/ZObFOeY5WhxMVZcCAU+GpEo1iP8qe/bPiWMphSSpvFQ9iwXd9DXB
+         B/j8HzSSHEtdmw+FkNsLmVsPJn+fpL5oYSwyc0sm/BLB48c1shgNqoC1yWpTXztv2li6
+         DjDhcslumtsvyr6NRJeCSUB1rK9rxRPXqwbiZ2k21cdetHOWwyODZdiuUscu2Yt8c1n5
+         WeW4RioVhGEHYGvGw/C1nS5I16g65MlDtuc4kF9WRA1yHdOwlUSv/uCOO8PR2Zc3SWgK
+         LEyA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vwN9kpi0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=jRGIYKyk;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a7si9797058ybp.480.2021.04.02.14.42.55
+        by mx.google.com with ESMTPS id s38si9951659ybi.282.2021.04.02.14.43.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 02 Apr 2021 14:42:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 02 Apr 2021 14:43:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vwN9kpi0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=jRGIYKyk;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35104 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38086 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lSRZ9-0000ox-28
-	for alex.bennee@linaro.org; Fri, 02 Apr 2021 17:42:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35612)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lSRZw-0001zN-9O
+	for alex.bennee@linaro.org; Fri, 02 Apr 2021 17:43:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35584)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lSRYi-0000GQ-CS
- for qemu-arm@nongnu.org; Fri, 02 Apr 2021 17:42:28 -0400
-Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631]:35828)
+ id 1lSRYg-0000EO-Uf
+ for qemu-devel@nongnu.org; Fri, 02 Apr 2021 17:42:27 -0400
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030]:52206)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lSRYg-0007h6-Jo
- for qemu-arm@nongnu.org; Fri, 02 Apr 2021 17:42:28 -0400
-Received: by mail-pl1-x631.google.com with SMTP id e14so3032957plj.2
- for <qemu-arm@nongnu.org>; Fri, 02 Apr 2021 14:42:26 -0700 (PDT)
+ id 1lSRYd-0007ey-RZ
+ for qemu-devel@nongnu.org; Fri, 02 Apr 2021 17:42:26 -0400
+Received: by mail-pj1-x1030.google.com with SMTP id s21so3243943pjq.1
+ for <qemu-devel@nongnu.org>; Fri, 02 Apr 2021 14:42:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=OVt5iR1dmccHY0b49ovqyPgeianDpRHBCkX5yRWRcH8=;
- b=vwN9kpi0tXz2ObvJkmlLlmFzhTVZA7Gf7gL+20qLlfZUh1SSBH8hB/iQWbCAivgbH1
- 0m9tF9D0fcO3UqXeZXj08+GH9LJqEFEfcTAhY+ldMMCHqkfWOnNlMdPIo3hK8rx19jyJ
- dGTfwul7XufzyOwkHspRFMjxbK11Q3pSZI8nIapDdpwuvhgn2AhXZXSlOPFAHoHs7kpQ
- nmLX33E/D6ndpoHTV7VjXCU3C58DBJf6G6gVe89VX14Hs6OHyJwfEfyD3zElmGDR/NYv
- FDANZG3pU4CIwUmO7REKa1gLK+TFkiLGDeR+KT8DEo3fMhMZRTIbYgIQZvsXyHCYu+gh
- JgVw==
+ bh=N2mWsQLvcKb8vumKiyJlzF6R6pJ22LkeGfPO+NZbgZA=;
+ b=jRGIYKyktAmAMtRjWC//5Lo6aThqkDvCSnkbMxtOTMqUXFcsCxr14G09idSVY4ea5H
+ 1ICE8SDyLt0vYS4CHKGuz6qWwVaeTtf53nX5QibSgeAUlIWpjub4NTqpN3RZWwPiiORJ
+ Xf2xR7tUHIomWxLb02inIKLEOW/20x7LX3ph+FHbcN2VOFnpe2TY3Ul6NPRruE7z1B4h
+ 0NHTeN9/4np6k4tY3VDhqZPiMP/UAd/lB8YFWjoT3jD4wre1UJfLUZArO5Hp6C/w/7NT
+ SH/9qh5Xr/TARs+HegXkZfXWrvNZnEzdjP6vrIq9jfua4K96Q/0ASy0rD6mZNjBgEKm8
+ 2/gA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=OVt5iR1dmccHY0b49ovqyPgeianDpRHBCkX5yRWRcH8=;
- b=jT8K4Adf/lAXjyRQ/v00h3o6l1ZBiiy2DzvWdzPqQ1n+/skCMHz7lXOlLCXlqta7P3
- YqN7N3ivGi1vKDWyrq1mEwMiv6/blzN6Lfp9tbeMhC0BTp1h/1ZZVb/xn0Vi7O2x5zAf
- GVJEWtaae6rNE6QhAH7SVbpWBTJrsKh1+RDe45hHhSgW4ybTiPa+jKRVZk40LztGDSvc
- WHZQJZ90QQwXHFlgnpIjzZP/fVNu5/Xtct6ogHJqcEl2YtTMmy8ta9xXMwdPON/dTbWj
- gi79hgVz8B4ADZjj0o42f/WadhHKG4PgU0mJCoYPSRy18EDUP58YLWKyNmlwS/bDrWnu
- ykEg==
-X-Gm-Message-State: AOAM530glMBfGdbeWQIwZnhpp0VyzhJScBXOcOU5NOgZrST2JYoOVGvH
- 7ggLDdkkv7Gqq9ffN/I2Iq1F2HCR9Q3GCw==
-X-Received: by 2002:a17:90a:990a:: with SMTP id
- b10mr15548299pjp.178.1617399745303; 
- Fri, 02 Apr 2021 14:42:25 -0700 (PDT)
+ bh=N2mWsQLvcKb8vumKiyJlzF6R6pJ22LkeGfPO+NZbgZA=;
+ b=C3pPnqIB1hGuZ8rkzWG8EDP2o1natw8lqvUvbbTDbvXZgKnMleXTTd+HtfsG5xjPRX
+ 5xGQDvwxtQAJQy2k1CG2H4iqry3t5NHlDDbddEF8SqNmLoM61dfLFI2M9oXBrJLFj3pr
+ QIosE10ZJNVwJFtVYiO23osmdnbtuJrO2+ry/qyF0e4T4+TNbetsNUwIDGpwcb33pge+
+ dRbk33oWrltjfzERx3c4jmFQ4oCDVtEbIo0wJh8tVLqLhZ2s2ymwIxeWTBN3kHWEeOJo
+ iQiXjc6OwZzyY+b14MxHUV7TRseuXTklpU+pMFP6ofM/y9bDZgh/K80H8jMwmD1p1bz0
+ CqlQ==
+X-Gm-Message-State: AOAM533wgzBHAX2+hNfJbLuL404VTjbPoI6lqZDZD12TgaJjMbfaumxW
+ BSPkmuorNt+pevsxyH6pNzOA9f+bEcb+rg==
+X-Received: by 2002:a17:90a:b108:: with SMTP id
+ z8mr1310978pjq.77.1617399741751; 
+ Fri, 02 Apr 2021 14:42:21 -0700 (PDT)
 Received: from localhost.localdomain
  (h216-228-167-147.bendor.dedicated.static.tds.net. [216.228.167.147])
- by smtp.gmail.com with ESMTPSA id f16sm7923329pfj.220.2021.04.02.14.42.24
+ by smtp.gmail.com with ESMTPSA id f16sm7923329pfj.220.2021.04.02.14.42.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 02 Apr 2021 14:42:24 -0700 (PDT)
+ Fri, 02 Apr 2021 14:42:21 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 04/11] target/arm: Split out mte_probe_int
-Date: Fri,  2 Apr 2021 14:42:10 -0700
-Message-Id: <20210402214217.422585-5-richard.henderson@linaro.org>
+Subject: [PATCH v3 01/11] accel/tcg: Preserve PAGE_ANON when changing page
+ permissions
+Date: Fri,  2 Apr 2021 14:42:07 -0700
+Message-Id: <20210402214217.422585-2-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210402214217.422585-1-richard.henderson@linaro.org>
 References: <20210402214217.422585-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x631.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1030;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1030.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,140 +107,142 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: weZphAFOAIgl
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, Stephen Long <steplong@quicinc.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: CoT3/O13ZJR6
 
-Split out a helper function from mte_checkN to perform
-all of the checking and address manpulation.  So far,
-just use this in mte_checkN itself.
+Using mprotect() to change PROT_* does not change the MAP_ANON
+previously set with mmap().  Our linux-user version of MTE only
+works with MAP_ANON pages, so losing PAGE_ANON caused MTE to
+stop working.
 
+Reported-by: Stephen Long <steplong@quicinc.com>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/mte_helper.c | 52 +++++++++++++++++++++++++++++++----------
- 1 file changed, 40 insertions(+), 12 deletions(-)
+ tests/tcg/aarch64/mte.h           |  3 ++-
+ accel/tcg/translate-all.c         |  9 +++++--
+ tests/tcg/aarch64/mte-6.c         | 43 +++++++++++++++++++++++++++++++
+ tests/tcg/aarch64/Makefile.target |  2 +-
+ 4 files changed, 53 insertions(+), 4 deletions(-)
+ create mode 100644 tests/tcg/aarch64/mte-6.c
 
-diff --git a/target/arm/mte_helper.c b/target/arm/mte_helper.c
-index 473d84cee2..179846b463 100644
---- a/target/arm/mte_helper.c
-+++ b/target/arm/mte_helper.c
-@@ -753,33 +753,45 @@ static int checkN(uint8_t *mem, int odd, int cmp, int count)
-     return n;
+diff --git a/tests/tcg/aarch64/mte.h b/tests/tcg/aarch64/mte.h
+index 141cef522c..0805676b11 100644
+--- a/tests/tcg/aarch64/mte.h
++++ b/tests/tcg/aarch64/mte.h
+@@ -48,7 +48,8 @@ static void enable_mte(int tcf)
+     }
  }
  
--uint64_t mte_checkN(CPUARMState *env, uint32_t desc,
--                    uint64_t ptr, uintptr_t ra)
-+/*
-+ * mte_probe_int:
-+ * @env: CPU environment
-+ * @desc: MTEDESC descriptor
-+ * @ptr: virtual address of the base of the access
-+ * @fault: return virtual address of the first check failure
-+ *
-+ * Internal routine for both mte_probe and mte_check.
-+ * Return zero on failure, filling in *fault.
-+ * Return negative on trivial success for tbi disabled.
-+ * Return positive on success with tbi enabled.
-+ */
-+static int mte_probe_int(CPUARMState *env, uint32_t desc, uint64_t ptr,
-+                         uintptr_t ra, uint32_t total, uint64_t *fault)
+-static void *alloc_mte_mem(size_t size)
++static void * alloc_mte_mem(size_t size) __attribute__((unused));
++static void * alloc_mte_mem(size_t size)
  {
-     int mmu_idx, ptr_tag, bit55;
-     uint64_t ptr_last, prev_page, next_page;
-     uint64_t tag_first, tag_end;
-     uint64_t tag_byte_first, tag_byte_end;
--    uint32_t total, tag_count, tag_size, n, c;
-+    uint32_t tag_count, tag_size, n, c;
-     uint8_t *mem1, *mem2;
-     MMUAccessType type;
+     void *p = mmap(NULL, size, PROT_READ | PROT_WRITE | PROT_MTE,
+                    MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
+diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
+index f32df8b240..ba6ab09790 100644
+--- a/accel/tcg/translate-all.c
++++ b/accel/tcg/translate-all.c
+@@ -2714,6 +2714,8 @@ void page_set_flags(target_ulong start, target_ulong end, int flags)
+        a missing call to h2g_valid.  */
+     assert(end - 1 <= GUEST_ADDR_MAX);
+     assert(start < end);
++    /* Only set PAGE_ANON with new mappings. */
++    assert(!(flags & PAGE_ANON) || (flags & PAGE_RESET));
+     assert_memory_lock();
  
-     bit55 = extract64(ptr, 55, 1);
-+    *fault = ptr;
- 
-     /* If TBI is disabled, the access is unchecked, and ptr is not dirty. */
-     if (unlikely(!tbi_check(desc, bit55))) {
--        return ptr;
-+        return -1;
-     }
- 
-     ptr_tag = allocation_tag_from_addr(ptr);
- 
-     if (tcma_check(desc, bit55, ptr_tag)) {
--        goto done;
-+        return 1;
-     }
- 
-     mmu_idx = FIELD_EX32(desc, MTEDESC, MIDX);
-     type = FIELD_EX32(desc, MTEDESC, WRITE) ? MMU_DATA_STORE : MMU_DATA_LOAD;
--    total = FIELD_EX32(desc, MTEDESC, TSIZE);
- 
-     /* Find the addr of the end of the access, and of the last element. */
-     ptr_last = ptr + total - 1;
-@@ -803,7 +815,7 @@ uint64_t mte_checkN(CPUARMState *env, uint32_t desc,
-         mem1 = allocation_tag_mem(env, mmu_idx, ptr, type, total,
-                                   MMU_DATA_LOAD, tag_size, ra);
-         if (!mem1) {
--            goto done;
-+            return 1;
+     start = start & TARGET_PAGE_MASK;
+@@ -2737,11 +2739,14 @@ void page_set_flags(target_ulong start, target_ulong end, int flags)
+             p->first_tb) {
+             tb_invalidate_phys_page(addr, 0);
          }
-         /* Perform all of the comparisons. */
-         n = checkN(mem1, ptr & TAG_GRANULE, ptr_tag, tag_count);
-@@ -829,23 +841,39 @@ uint64_t mte_checkN(CPUARMState *env, uint32_t desc,
+-        if (reset_target_data && p->target_data) {
++        if (reset_target_data) {
+             g_free(p->target_data);
+             p->target_data = NULL;
++            p->flags = flags;
++        } else {
++            /* Using mprotect on a page does not change MAP_ANON. */
++            p->flags = (p->flags & PAGE_ANON) | flags;
          }
-         if (n == c) {
-             if (!mem2) {
--                goto done;
-+                return 1;
-             }
-             n += checkN(mem2, 0, ptr_tag, tag_count - c);
-         }
+-        p->flags = flags;
      }
- 
-+    if (likely(n == tag_count)) {
-+        return 1;
-+    }
-+
-     /*
-      * If we failed, we know which granule.  For the first granule, the
-      * failure address is @ptr, the first byte accessed.  Otherwise the
-      * failure address is the first byte of the nth granule.
-      */
--    if (unlikely(n < tag_count)) {
--        uint64_t fault = (n == 0 ? ptr : tag_first + n * TAG_GRANULE);
--        mte_check_fail(env, desc, fault, ra);
-+    if (n > 0) {
-+        *fault = tag_first + n * TAG_GRANULE;
-     }
-+    return 0;
-+}
- 
-- done:
-+uint64_t mte_checkN(CPUARMState *env, uint32_t desc,
-+                    uint64_t ptr, uintptr_t ra)
-+{
-+    uint64_t fault;
-+    uint32_t total = FIELD_EX32(desc, MTEDESC, TSIZE);
-+    int ret = mte_probe_int(env, desc, ptr, ra, total, &fault);
-+
-+    if (unlikely(ret == 0)) {
-+        mte_check_fail(env, desc, fault, ra);
-+    } else if (ret < 0) {
-+        return ptr;
-+    }
-     return useronly_clean_ptr(ptr);
  }
+ 
+diff --git a/tests/tcg/aarch64/mte-6.c b/tests/tcg/aarch64/mte-6.c
+new file mode 100644
+index 0000000000..60d51d18be
+--- /dev/null
++++ b/tests/tcg/aarch64/mte-6.c
+@@ -0,0 +1,43 @@
++#include "mte.h"
++
++void pass(int sig, siginfo_t *info, void *uc)
++{
++    assert(info->si_code == SEGV_MTESERR);
++    exit(0);
++}
++
++int main(void)
++{
++    enable_mte(PR_MTE_TCF_SYNC);
++
++    void *brk = sbrk(16);
++    if (brk == (void *)-1) {
++        perror("sbrk");
++        return 2;
++    }
++
++    if (mprotect(brk, 16, PROT_READ | PROT_WRITE | PROT_MTE)) {
++        perror("mprotect");
++        return 2;
++    }
++
++    int *p1, *p2;
++    long excl = 1;
++
++    asm("irg %0,%1,%2" : "=r"(p1) : "r"(brk), "r"(excl));
++    asm("gmi %0,%1,%0" : "+r"(excl) : "r"(p1));
++    asm("irg %0,%1,%2" : "=r"(p2) : "r"(brk), "r"(excl));
++    asm("stg %0,[%0]" : : "r"(p1));
++
++    *p1 = 0;
++
++    struct sigaction sa;
++    memset(&sa, 0, sizeof(sa));
++    sa.sa_sigaction = pass;
++    sa.sa_flags = SA_SIGINFO;
++    sigaction(SIGSEGV, &sa, NULL);
++
++    *p2 = 0;
++
++    abort();
++}
+diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+index 56e48f4b34..05b2622bfc 100644
+--- a/tests/tcg/aarch64/Makefile.target
++++ b/tests/tcg/aarch64/Makefile.target
+@@ -37,7 +37,7 @@ AARCH64_TESTS += bti-2
+ 
+ # MTE Tests
+ ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_ARMV8_MTE),)
+-AARCH64_TESTS += mte-1 mte-2 mte-3 mte-4
++AARCH64_TESTS += mte-1 mte-2 mte-3 mte-4 mte-6
+ mte-%: CFLAGS += -march=armv8.5-a+memtag
+ endif
  
 -- 
 2.25.1

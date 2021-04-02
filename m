@@ -1,146 +1,140 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1274995lfg;
-        Fri, 2 Apr 2021 03:06:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx6Vy++H6NVR/8/TNIGOLVoPBrorLqVPI0eqfZVvUJkpSDl6Eri1oT1re9uyjYHgRd1yRHw
-X-Received: by 2002:ab0:7316:: with SMTP id v22mr7907873uao.134.1617357994509;
-        Fri, 02 Apr 2021 03:06:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617357994; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1515479lfg;
+        Fri, 2 Apr 2021 08:45:46 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxvLINlVh3l0UmlJ1KV6QOnBtY+aTIym1tdlfeFT4w85k2bmYwvPl+bNeFym1ATJGm7+ZcC
+X-Received: by 2002:a05:6638:35a2:: with SMTP id v34mr13577679jal.94.1617378346657;
+        Fri, 02 Apr 2021 08:45:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617378346; cv=none;
         d=google.com; s=arc-20160816;
-        b=klPNBBfsURgnGEdothjMc+UYcvoieqU9qyZsn27N/zdoIxhgIVXx9q4JXTddzsTNk/
-         CDZqr8Wm7s0H3wxqAFnPNdIk6JtVzuC7PGEAA9PteJud0/GPwZRGPir8FgrmqO2+uS2x
-         x/Sdryca4y2wGgTVdRUIiiS3SJ/QN3O6ihi/VyhNHTGSAlpiJ2W4Hnsd8oWIfCZUX5Si
-         liZF308Re+l1BQcw161d5xJ6F9nTlIREIp2aHxoPJ+S4RM17HjVM4zBEQZhTaYLrx1ij
-         Xg2Wz2WD+7PVTNWDwjd3+JWCeJaGc//pCyHt/9UcK+GfvtTBFVjpCZqZtuXn1yVS66P4
-         HWoA==
+        b=rj9+79godDQxRn2LflnsvMFM/SLTjU1MEOiWWBkba1KQuL8VJOeq2aXGwXwvFwnK71
+         2IzZmhhuwOHgMJolC23FT/NRLiyz0qL2TpnD2dCFBeqWg4g4+oxF7pKU8a+jMQ9JXlcl
+         wSdpvARmIWm8v+p0Vt+jQ9JhR0Naszd6lZ/BcnEDYnpT2cs0KOQ94lIBxED89ueGEW9H
+         0GsHalj2tsT6lL8cLFOrQpZI8stJciYCF73mIlPoC5fWpvTJbe+zgsKwATmeTLuYETWv
+         qLi1Z+/Sy+wCCKma0JE2aZgtNVmb0HaQ9aImYCkWzVlQMprWJtNZ2Ub1khiNzaJ4OCpN
+         vMRA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from;
-        bh=8bNvV5ohHuOEJMXQHmTAuS7JTmdOnOrzQWQYUQGg6+M=;
-        b=Tv5WS3OuNSMsk44v1qRAARafm/kGx6ll0ul+HD7skaAY05IPJjaTsgCQSl6I/rytkR
-         dHFf2DE48Glxb7nE9hTRhJyWMbzMagLaR0L65UT/F2txnAKmzyjWt3MDd9Y5Kh9Zfdig
-         oao7efYaQAYEDN15oTNY9TFV5aQjxyp2wEB5b07/yzFojgxKiPWW6bCs/EoqwVWIr3s/
-         ibfMq6PYFf90UyRaGiQkls9mnL6opiinQRxGvpN55n9KdKfaCj3JgXak7PZrjvXEpPTQ
-         spVCodim2ug7jnm0xgvc1bAI83IERR4ys3oiueLf/RRdGtgLmX3FvbJ8jJ5Lv/ic/L3y
-         eM2w==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:references:to:from:subject:dkim-signature;
+        bh=m4Nyo3cgWJ+EvWnab7e+xuz5UrCzk1vnRp9FBEsyv5g=;
+        b=prRZnDMP3UmX2ZjYVyig7avfIZY8NwIjFYCnO4RvO8r8d3rokjSp/2fKmm/+YX3Wcq
+         w8LOuyMcRvmYrWhrUu8W//4C9r4r7+rWUkjTM3sHkOynZr03/RjbVKxpyBWrc2ajNnEB
+         wkC4lslOurYxqwXA6uKlMxfydAEDhHts5bJW43jbpWNtDdZTHLWeqku24bfMbQEnohz+
+         yLonWBjBX6NLZptEnzTr+BV7MCqzd+R8Q/kLXL2JG04zR+kHKKyY8iMTviJtJNLrwGo5
+         2+ykfCCEvVnT+qDOn1zsRUq+0SwB/vTz9TikjeylUQokPq1mrlmVI/56hn9SmaKI6arD
+         GUdg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=d1Gq7XcA;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r16si2089055uae.115.2021.04.02.03.06.34
+        by mx.google.com with ESMTPS id z17si8392551jat.122.2021.04.02.08.45.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 02 Apr 2021 03:06:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 02 Apr 2021 08:45:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:43822 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=d1Gq7XcA;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:54452 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lSGhF-0000eS-Pd
-	for alex.bennee@linaro.org; Fri, 02 Apr 2021 06:06:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33544)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lSLzV-0004Tk-US
+	for alex.bennee@linaro.org; Fri, 02 Apr 2021 11:45:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34044)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yuzenghui@huawei.com>)
- id 1lSGgK-0000Fg-Lh; Fri, 02 Apr 2021 06:05:37 -0400
-Received: from szxga07-in.huawei.com ([45.249.212.35]:4105)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yuzenghui@huawei.com>)
- id 1lSGg8-0004hq-U2; Fri, 02 Apr 2021 06:05:34 -0400
-Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4FBbGH3PHZz9vwQ;
- Fri,  2 Apr 2021 18:03:03 +0800 (CST)
-Received: from DESKTOP-8RFUVS3.china.huawei.com (10.174.185.179) by
- DGGEMS411-HUB.china.huawei.com (10.3.19.211) with Microsoft SMTP Server id
- 14.3.498.0; Fri, 2 Apr 2021 18:05:03 +0800
-From: Zenghui Yu <yuzenghui@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
- <peter.maydell@linaro.org>
-Subject: [PATCH] hw/arm/smmuv3: Emulate CFGI_STE_RANGE for an aligned range of
- StreamIDs
-Date: Fri, 2 Apr 2021 18:04:49 +0800
-Message-ID: <20210402100449.528-1-yuzenghui@huawei.com>
-X-Mailer: git-send-email 2.23.0.windows.1
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1lSLxt-0003ch-4M
+ for qemu-devel@nongnu.org; Fri, 02 Apr 2021 11:44:05 -0400
+Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634]:36433)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1lSLxr-0006bd-FZ
+ for qemu-devel@nongnu.org; Fri, 02 Apr 2021 11:44:04 -0400
+Received: by mail-pl1-x634.google.com with SMTP id ay2so2687732plb.3
+ for <qemu-devel@nongnu.org>; Fri, 02 Apr 2021 08:44:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:from:to:cc:references:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=m4Nyo3cgWJ+EvWnab7e+xuz5UrCzk1vnRp9FBEsyv5g=;
+ b=d1Gq7XcAN/T4OBV99dSGTKRwMPwChjGyTtY1/eLMAb0SmbJFyZfk+16DQjr3j3TNyH
+ GC0yau0aWAwY9yLueCWIcU/j79Js8uivLomC2cy/WNGzUFNVVn0r6MBs/oFAX4cVQelq
+ HKIosq5hPCm5i7NtLo5A3ahzo5EWvE+DrGem1OixcDl2b62mD9U1oY3SfKp1SJh7VIN3
+ +SVuP2F6J3ezKd1ffRcOiKpSPhzaqkVTO+gzL+qmdM9C15fqOroS46Rb7FDGlVbNZUqH
+ L41/keAl5eeSHtWzR88Eaxnkee4HRz7UdhbL3jgtGMofhz5vB3z3D3LERh7+HD9BbsMb
+ ppdw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:from:to:cc:references:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=m4Nyo3cgWJ+EvWnab7e+xuz5UrCzk1vnRp9FBEsyv5g=;
+ b=IUSJh1q8s8rAGeFPHlDbrFPWj29b8g5+gfNLA4pcZoV/wHh6F+zWOntr4k+TQmEy5J
+ tp+hVv90iOhDdvFTicoQC7ijIA04aAjIM5bw1NKiCFXjUucKSsNXEtH64MxVI+pw1K+F
+ i9XefFY942zga38LPhMzQePIhMFFrea5kSIVPdI8usKs5TgYP9YzKyNentWrLfpGm9xz
+ DVgtZo33BDI8uUM3nl5Cn55jD6JbnYMhG5LGdne97C7X6PG/Sr9Oj2U0SMn8dz15Aiv4
+ Hbjrkr7z/oRTtw+GsxAQAxAqqEi5uf9Unk3uxz1qEPWDYHG8aphhvXXE9Usj7hmN3ze6
+ G+xA==
+X-Gm-Message-State: AOAM530n1fTRYqPnXDXTNgd6oDjDq/kPnZw74qY6MSYqssfDt4zK5idM
+ rpz6GuB3O20Em1zNOSvkv6k1xw==
+X-Received: by 2002:a17:90b:d85:: with SMTP id
+ bg5mr14366095pjb.230.1617378241681; 
+ Fri, 02 Apr 2021 08:44:01 -0700 (PDT)
+Received: from [192.168.44.35]
+ (h216-228-167-147.bendor.dedicated.static.tds.net. [216.228.167.147])
+ by smtp.gmail.com with ESMTPSA id a191sm8755036pfa.115.2021.04.02.08.44.00
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 02 Apr 2021 08:44:01 -0700 (PDT)
+Subject: Re: [PATCH 2/2] target/arm: Fix unaligned mte checks
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+References: <20210402053728.265173-1-richard.henderson@linaro.org>
+ <20210402053728.265173-3-richard.henderson@linaro.org>
+Message-ID: <a1b871d0-8190-5c27-b35d-55da78094ad1@linaro.org>
+Date: Fri, 2 Apr 2021 08:43:56 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.1
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.174.185.179]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.35; envelope-from=yuzenghui@huawei.com;
- helo=szxga07-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+In-Reply-To: <20210402053728.265173-3-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::634;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x634.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Zenghui Yu <yuzenghui@huawei.com>, wanghaibin.wang@huawei.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6QkodLemn3S3
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: CqXJd9MS42cQ
 
-In emulation of the CFGI_STE_RANGE command, we now take StreamID as the
-start of the invalidation range, regardless of whatever the Range is,
-whilst the spec clearly states that
+On 4/1/21 10:37 PM, Richard Henderson wrote:
+>   TCGv_i64 gen_mte_checkN(DisasContext *s, TCGv_i64 addr, bool is_write,
+> -                        bool tag_checked, int log2_esize, int total_size)
+> +                        bool tag_checked, int total_size)
+>   {
+> -    if (tag_checked && s->mte_active[0] && total_size != (1 << log2_esize)) {
 
- - "Invalidation is performed for an *aligned* range of 2^(Range+1)
-    StreamIDs."
+Doh, lost part of this check.
 
- - "The bottom Range+1 bits of the StreamID parameter are IGNORED,
-    aligning the range to its size."
 
-Take CFGI_ALL (where Range == 31) as an example, if there are some random
-bits in the StreamID field, we'll fail to perform the full invalidation but
-get a strange range (e.g., SMMUSIDRange={.start=1, .end=0}) instead. Rework
-the emulation a bit to get rid of the discrepancy with the spec.
-
-Signed-off-by: Zenghui Yu <yuzenghui@huawei.com>
----
- hw/arm/smmuv3.c | 12 ++++++++----
- 1 file changed, 8 insertions(+), 4 deletions(-)
-
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 3b87324ce2..8705612535 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -980,16 +980,20 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
-         }
-         case SMMU_CMD_CFGI_STE_RANGE: /* same as SMMU_CMD_CFGI_ALL */
-         {
--            uint32_t start = CMD_SID(&cmd);
-+            uint32_t sid = CMD_SID(&cmd), mask;
-             uint8_t range = CMD_STE_RANGE(&cmd);
--            uint64_t end = start + (1ULL << (range + 1)) - 1;
--            SMMUSIDRange sid_range = {start, end};
-+            SMMUSIDRange sid_range;
- 
-             if (CMD_SSEC(&cmd)) {
-                 cmd_error = SMMU_CERROR_ILL;
-                 break;
-             }
--            trace_smmuv3_cmdq_cfgi_ste_range(start, end);
-+
-+            mask = (1ULL << (range + 1)) - 1;
-+            sid_range.start = sid & ~mask;
-+            sid_range.end = sid_range.start + mask;
-+
-+            trace_smmuv3_cmdq_cfgi_ste_range(sid_range.start, sid_range.end);
-             g_hash_table_foreach_remove(bs->configs, smmuv3_invalidate_ste,
-                                         &sid_range);
-             break;
--- 
-2.19.1
-
+r~

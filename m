@@ -1,65 +1,79 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1133069lfg;
-        Thu, 1 Apr 2021 22:46:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyoxX9Oc/OzKQM/Rmo4okKeI1NX8WTc0AZMtRYEJrfG1awGazWkQD1N/hBwoFAYLgYhYwn7
-X-Received: by 2002:a25:2544:: with SMTP id l65mr16365893ybl.304.1617342368615;
-        Thu, 01 Apr 2021 22:46:08 -0700 (PDT)
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1231629lfg;
+        Fri, 2 Apr 2021 01:48:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwSGiSG4FIkOhKwrMDDIAXyndeTNlyV3FCQSa/q2jX9/1AW84kGwQ4Lciu/4uaPX/tWIeDm
+X-Received: by 2002:a25:ab03:: with SMTP id u3mr17602060ybi.347.1617353304334;
+        Fri, 02 Apr 2021 01:48:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617353304; cv=none;
+        d=google.com; s=arc-20160816;
+        b=D+KwFraCes+PWOQkjXukHNjq9DLyP8iaJl5jAo1baCXlcr0VyG/ptsJw0FRkKJhKZy
+         O1/vjd88+csrS0VVjIlIivdhGilbE8PGc8hd1aUTC5ZgxppINyMfdWricReX5oq5FFLY
+         eeX/2RV9UjBdpms6zvUvbVYDRas8xnfpXXDoXwtcg3Td2RihEm12RVqQ2SOSzhelZBRl
+         bw4fjaIPHDp1RkhUCHLcoV9HjAHcoh85EkYRFGNCsUmStyqB2fOYcbIGPuekRmf0HY9N
+         BFrlVYh3ggwfb2Yj26z2Mp9AlI1WM2FmUSYnZf+ENf5liZibfDxguK8YmqN1fFXkyeKc
+         6QOg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from;
+        bh=yOZwuDKIU8q5RKDUlR1a7gZbm7aAMAjQ9LYFeSHkn8k=;
+        b=IZw+B1AxG4/RiRI4LmUSpG7BWkkoKt0lgmZv3JthBTqERqZDMnstaBGzoj7nsW7/ch
+         qJRQ7/o2vGBTWKcVtBlYeJojV28uJYYoFmg/PNddMEn1ebPXUybVV0paj4q9TgwPQI4C
+         KEkZZwAPJUQgqcF4Acl7bDz7aAZ/AzZ+Qx4/9HwGaMKoDcmmT9hkyrSpNTz/TnbXKyk1
+         cuvsK9p1ySWLNx/pqxVZ8feLoNjqs3ZG/DsdYosT9A1pRf1Zdzgp7k0F/yNjx2p93Ha5
+         T6jqaPXohmUo0LM8tRF+MnLo3oiHDGvRvl+tAuoyWti8pLYVw4BCPHQVvmHI3pgIN67R
+         +iRw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 80si8117614ybl.150.2021.04.01.22.46.08
+        by mx.google.com with ESMTPS id r13si7871956ybl.296.2021.04.02.01.48.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 01 Apr 2021 22:46:08 -0700 (PDT)
+        Fri, 02 Apr 2021 01:48:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54500 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Received: from localhost ([::1]:38266 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lSCdD-00013s-Tv
-	for alex.bennee@linaro.org; Fri, 02 Apr 2021 01:46:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41992)
+	id 1lSFTb-0006SV-NN
+	for alex.bennee@linaro.org; Fri, 02 Apr 2021 04:48:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45146)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1lSCd4-000138-Hd; Fri, 02 Apr 2021 01:45:59 -0400
-Resent-Date: Fri, 02 Apr 2021 01:45:58 -0400
-Resent-Message-Id: <E1lSCd4-000138-Hd@lists.gnu.org>
-Received: from sender4-of-o53.zoho.com ([136.143.188.53]:21326)
+ (Exim 4.90_1) (envelope-from <yuzenghui@huawei.com>)
+ id 1lSFTP-0006S3-Du; Fri, 02 Apr 2021 04:48:11 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:4061)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1lSCcz-0001LR-Ku; Fri, 02 Apr 2021 01:45:58 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1617342347; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=jXFSX8Lg6tUm362hZOPy2QoIONaXcmz+t7uOmg4SMDPO8TLub3weQ6R/eoGFp/5cW6zyfnQLrrbGscFpqOxspMdbEpXVnjA5yztqdAC0nFqMJ0Bz5ZlrDvm2pykPvhpOQEMf/uhI/YqzxmmnF4bI57LdFprxRswd1d7PCtDV0KQ=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1617342347;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=CJ7SyOqqusaG7bpsRIKqMGzFiIRz7GLPzXb3jbqgwxM=; 
- b=jPHkCl1pZ8HIUWSGXHCkJkKji9l/T4juKl1goytdVgJnHxx1x4p+zhPiIQaJCBWVrAkVlVZzfwkpH8Yv+T1wy3mgp8L0zolnX6XlWgXV1yaax1m/8WwooHlG7J/C/qY5vARj6DZ8GFyBwHhswThW7FfIlKz2oAj0d136IJw7VL0=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1617342345128806.1525745752201;
- Thu, 1 Apr 2021 22:45:45 -0700 (PDT)
-In-Reply-To: <20210402053728.265173-1-richard.henderson@linaro.org>
-Subject: Re: [PATCH 0/2] target/arm: Fix unaligned mte checks
-Message-ID: <161734234410.1406.5525591858338700008@72b6d80f974b>
+ (Exim 4.90_1) (envelope-from <yuzenghui@huawei.com>)
+ id 1lSFTM-0006Yr-Ug; Fri, 02 Apr 2021 04:48:10 -0400
+Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.60])
+ by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4FBYYb3MygzkhFT;
+ Fri,  2 Apr 2021 16:46:11 +0800 (CST)
+Received: from DESKTOP-8RFUVS3.china.huawei.com (10.174.185.179) by
+ DGGEMS404-HUB.china.huawei.com (10.3.19.204) with Microsoft SMTP Server id
+ 14.3.498.0; Fri, 2 Apr 2021 16:47:47 +0800
+From: Zenghui Yu <yuzenghui@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
+ <peter.maydell@linaro.org>, <eric.auger@redhat.com>,
+ <prem.mallappa@broadcom.com>, <shannon.zhaosl@gmail.com>
+Subject: [PATCH] hw/arm/virt-acpi-build: Fix GSIV values of the {GERR,
+ Sync} interrupts
+Date: Fri, 2 Apr 2021 16:47:31 +0800
+Message-ID: <20210402084731.93-1-yuzenghui@huawei.com>
+X-Mailer: git-send-email 2.23.0.windows.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: richard.henderson@linaro.org
-Date: Thu, 1 Apr 2021 22:45:45 -0700 (PDT)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.53; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o53.zoho.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.174.185.179]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.32; envelope-from=yuzenghui@huawei.com;
+ helo=szxga06-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -74,58 +88,36 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: Zenghui Yu <yuzenghui@huawei.com>, wanghaibin.wang@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3Z997f7Au+ND
+X-TUID: LOXA477bQrqQ
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIxMDQwMjA1MzcyOC4yNjUx
-NzMtMS1yaWNoYXJkLmhlbmRlcnNvbkBsaW5hcm8ub3JnLwoKCgpIaSwKClRoaXMgc2VyaWVzIHNl
-ZW1zIHRvIGhhdmUgc29tZSBjb2Rpbmcgc3R5bGUgcHJvYmxlbXMuIFNlZSBvdXRwdXQgYmVsb3cg
-Zm9yCm1vcmUgaW5mb3JtYXRpb246CgpUeXBlOiBzZXJpZXMKTWVzc2FnZS1pZDogMjAyMTA0MDIw
-NTM3MjguMjY1MTczLTEtcmljaGFyZC5oZW5kZXJzb25AbGluYXJvLm9yZwpTdWJqZWN0OiBbUEFU
-Q0ggMC8yXSB0YXJnZXQvYXJtOiBGaXggdW5hbGlnbmVkIG10ZSBjaGVja3MKCj09PSBURVNUIFND
-UklQVCBCRUdJTiA9PT0KIyEvYmluL2Jhc2gKZ2l0IHJldi1wYXJzZSBiYXNlID4gL2Rldi9udWxs
-IHx8IGV4aXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVsaW1pdCAwCmdpdCBjb25m
-aWcgLS1sb2NhbCBkaWZmLnJlbmFtZXMgVHJ1ZQpnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5hbGdv
-cml0aG0gaGlzdG9ncmFtCi4vc2NyaXB0cy9jaGVja3BhdGNoLnBsIC0tbWFpbGJhY2sgYmFzZS4u
-Cj09PSBURVNUIFNDUklQVCBFTkQgPT09CgpVcGRhdGluZyAzYzhjZjVhOWMyMWZmODc4MjE2NGQx
-ZGVmN2Y0NGJkODg4NzEzMzg0CkZyb20gaHR0cHM6Ly9naXRodWIuY29tL3BhdGNoZXctcHJvamVj
-dC9xZW11CiAgIDAwMDg0YmEuLjQxNWZhMmYgIG1hc3RlciAgICAgLT4gbWFzdGVyCiAtIFt0YWcg
-dXBkYXRlXSAgICAgIHBhdGNoZXcvMjAyMTA0MDExMjU4MDguODkyNDEtMS1mYW53ZW50YW8uMDEz
-MEBieXRlZGFuY2UuY29tIC0+IHBhdGNoZXcvMjAyMTA0MDExMjU4MDguODkyNDEtMS1mYW53ZW50
-YW8uMDEzMEBieXRlZGFuY2UuY29tCiAqIFtuZXcgdGFnXSAgICAgICAgIHBhdGNoZXcvMjAyMTA0
-MDIwNTM3MjguMjY1MTczLTEtcmljaGFyZC5oZW5kZXJzb25AbGluYXJvLm9yZyAtPiBwYXRjaGV3
-LzIwMjEwNDAyMDUzNzI4LjI2NTE3My0xLXJpY2hhcmQuaGVuZGVyc29uQGxpbmFyby5vcmcKU3dp
-dGNoZWQgdG8gYSBuZXcgYnJhbmNoICd0ZXN0Jwo3NzMwMDMwIHRhcmdldC9hcm06IEZpeCB1bmFs
-aWduZWQgbXRlIGNoZWNrcwplZjFhYzk3IHRhcmdldC9hcm06IENoZWNrIFBBR0VfV1JJVEVfT1JH
-IGZvciBNVEUgd3JpdGVhYmlsaXR5Cgo9PT0gT1VUUFVUIEJFR0lOID09PQoxLzIgQ2hlY2tpbmcg
-Y29tbWl0IGVmMWFjOTc4YTAwMyAodGFyZ2V0L2FybTogQ2hlY2sgUEFHRV9XUklURV9PUkcgZm9y
-IE1URSB3cml0ZWFiaWxpdHkpCldBUk5JTkc6IGxpbmUgb3ZlciA4MCBjaGFyYWN0ZXJzCiMyODog
-RklMRTogdGFyZ2V0L2FybS9tdGVfaGVscGVyLmM6ODY6CisgICAgaWYgKCEoZmxhZ3MgJiAocHRy
-X2FjY2VzcyA9PSBNTVVfREFUQV9TVE9SRSA/IFBBR0VfV1JJVEVfT1JHIDogUEFHRV9SRUFEKSkp
-IHsKCnRvdGFsOiAwIGVycm9ycywgMSB3YXJuaW5ncywgOCBsaW5lcyBjaGVja2VkCgpQYXRjaCAx
-LzIgaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVy
-cm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBz
-ZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KMi8yIENoZWNraW5nIGNvbW1pdCA3NzMwMDMw
-MGZhOTEgKHRhcmdldC9hcm06IEZpeCB1bmFsaWduZWQgbXRlIGNoZWNrcykKVXNlIG9mIHVuaW5p
-dGlhbGl6ZWQgdmFsdWUgJGFjcGlfdGVzdGV4cGVjdGVkIGluIHN0cmluZyBlcSBhdCAuL3Njcmlw
-dHMvY2hlY2twYXRjaC5wbCBsaW5lIDE1MjkuCkVSUk9SOiBzcGFjZXMgcmVxdWlyZWQgYXJvdW5k
-IHRoYXQgJyonIChjdHg6V3hWKQojNDA3OiBGSUxFOiB0YXJnZXQvYXJtL3N2ZV9oZWxwZXIuYzo0
-NDM4OgorICAgICAgICAgICAgICAgc3ZlX2xkc3QxX3RsYl9mbiAqdGxiX2ZuKQogICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICBeCgpFUlJPUjogc3BhY2VzIHJlcXVpcmVkIGFyb3VuZCB0
-aGF0ICcqJyAoY3R4Old4VikKIzUxNzogRklMRTogdGFyZ2V0L2FybS9zdmVfaGVscGVyLmM6NTA2
-MzoKKyAgICAgICAgICAgICAgIHN2ZV9sZHN0MV90bGJfZm4gKnRsYl9mbikKICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgXgoKV0FSTklORzogYWRkZWQsIG1vdmVkIG9yIGRlbGV0ZWQg
-ZmlsZShzKSwgZG9lcyBNQUlOVEFJTkVSUyBuZWVkIHVwZGF0aW5nPwojNzg3OiAKbmV3IGZpbGUg
-bW9kZSAxMDA2NDQKCnRvdGFsOiAyIGVycm9ycywgMSB3YXJuaW5ncywgNzE5IGxpbmVzIGNoZWNr
-ZWQKClBhdGNoIDIvMiBoYXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkg
-b2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1h
-aW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgoKPT09IE9VVFBVVCBFTkQg
-PT09CgpUZXN0IGNvbW1hbmQgZXhpdGVkIHdpdGggY29kZTogMQoKClRoZSBmdWxsIGxvZyBpcyBh
-dmFpbGFibGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAyMTA0MDIwNTM3MjguMjY1MTcz
-LTEtcmljaGFyZC5oZW5kZXJzb25AbGluYXJvLm9yZy90ZXN0aW5nLmNoZWNrcGF0Y2gvP3R5cGU9
-bWVzc2FnZS4KLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0
-dHBzOi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3
-LWRldmVsQHJlZGhhdC5jb20=
+The GSIV values in SMMUv3 IORT node are not correct as they don't match
+the SMMUIrq enumeration, which describes the IRQ<->PIN mapping used by
+our emulated vSMMU.
+
+Fixes: a703b4f6c1ee ("hw/arm/virt-acpi-build: Add smmuv3 node in IORT table")
+Signed-off-by: Zenghui Yu <yuzenghui@huawei.com>
+---
+ hw/arm/virt-acpi-build.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index f5a2b2d4cb..60fe2e65a7 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -292,8 +292,8 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+         smmu->flags = cpu_to_le32(ACPI_IORT_SMMU_V3_COHACC_OVERRIDE);
+         smmu->event_gsiv = cpu_to_le32(irq);
+         smmu->pri_gsiv = cpu_to_le32(irq + 1);
+-        smmu->gerr_gsiv = cpu_to_le32(irq + 2);
+-        smmu->sync_gsiv = cpu_to_le32(irq + 3);
++        smmu->sync_gsiv = cpu_to_le32(irq + 2);
++        smmu->gerr_gsiv = cpu_to_le32(irq + 3);
+ 
+         /* Identity RID mapping covering the whole input RID range */
+         idmap = &smmu->id_mapping_array[0];
+-- 
+2.19.1
+

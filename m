@@ -1,104 +1,103 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1745475lfg;
-        Fri, 2 Apr 2021 14:42:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx6jRg7K+FMBfCKbQhk+mTKVfWgBXNCg1ZcVYxNn94zqAkT9JTVH1logrI55E2M0qLdEZpm
-X-Received: by 2002:a25:600a:: with SMTP id u10mr12559334ybb.392.1617399760479;
-        Fri, 02 Apr 2021 14:42:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617399760; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1745578lfg;
+        Fri, 2 Apr 2021 14:42:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxciEhfTEQ4IF5vuPTyR8aPwH7/LsxMow7SHclOc0oMzsd7xOO1NUNSAx8XSNWBvbwUvGj+
+X-Received: by 2002:a25:d041:: with SMTP id h62mr20823524ybg.107.1617399775814;
+        Fri, 02 Apr 2021 14:42:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617399775; cv=none;
         d=google.com; s=arc-20160816;
-        b=vENDut4kwGAd10EaESwrOPwahTMvv07VKMUTjy1FScwtgw0e6UJRq9Rcb1TSKqHQuG
-         saFoYJGKnleHsIqsO8thAHl7pG6VBecxUL93WoSgbrEMlY9ctOJ3Y08WdSkhKifRy5+5
-         Tn9yxFKiArE2GQnhAUNPoJyf9EuhKWUwMwTlFP5eRwEfxAvQG3GrkqR3ScXcTYpEnNVr
-         t3JgtUg4Ot43P9uxZXQkfts5uWb0DUaquOl1ufoYYYwciFPwgx8mOaNuLuRY6m4Y140q
-         Xey5fnduUf+Ou5vyMgONaVE54pYELjIqJ+agiwnF3zFC6dOrDfMFaiVlZTnA+Z8O3Un9
-         pkLg==
+        b=hLr1d+FrFpGCH5sNx2vtwZMc69GDy+ElDeirttiHq5stCEF3N+wEvGt3+z8Q16oD7b
+         Lul/HX6eTnrhHMrXuoDYRTF5W6ImJYO+U2aOTqdLMyd1y1KYSdhJ/iCLpuXLe69ZY4v6
+         m5A8nJClN49CbMSp33Oxo1TJYNH2p2S9laWE7YWGP//PUftmMjEeNMUwwNn5W3yqt0Nx
+         +VjAaa/UQgCvGeHGOkDBesiBIz8AfjTqg+CtfuSZeOYxcRKoLouQpITdaNSiHX3qmxs9
+         6Re9hRk++Qe7LgrXhT4MVjYocKyjC1K1qzaK2M9H95HY5ca9cLKvZ6B3NyFlNX1GHQ+x
+         aHZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=fmCgzHtzk5qDGe2eGqNAc4vF9R/bc/UzkhnNYf8s1aw=;
-        b=uKzBoAA5sKKVk8GPdSHsvIpPLEDicIE9QXDynRG7bx2JRobZd21YqRagwErPLDKu0h
-         pr2KJVuBGJrhi60+J4iH3Gch6rHL4RjdNnTlS5ob5crDVimRgNakXY75OsETt2RtRk/t
-         Y0npT3hJi15znaNOaFdVUtuHhNmefQr4+NIaC389Q8F1la7dQ3cVZjwFqto20cuyXfT+
-         wnKr83LkbXpIHS4KU40pN5AzJ7XCAnUHQXTkowtUh6F35xkSWjYcE05BU2krkz2l6SEQ
-         PJ38TL2ffSCXwOQeIUOPILw4KKef4OspzAiXSJHhedyG51rClPcCtAhiiChzcgXoctuQ
-         LP5Q==
+        bh=OVt5iR1dmccHY0b49ovqyPgeianDpRHBCkX5yRWRcH8=;
+        b=yl5dBhQy6rGzq5cXOHDTjketN7IRiAbeOyKiKbqrw0Onb8suHj7BDCVjouLaa64bWL
+         vJnxpXred2DYNcVuaJsi62zxtxovJxc1pCLT6rC5N/kTj+RDgK8LWSP44Jf1Tcm9IrkT
+         HN534HXd7YJsZGJWsEVNbG48lMjaxiqQzYCE4rpfbhMJ8Ji5bOnWRk2yE5DwJ6He34mz
+         Bt0WqWasaWeQmSJzh4gjWTaSCHyC1JjjIuF6YzIqZdwukmcVFci0scSQM+2a8gRqFdHd
+         vZLhqPdJf+3VVuIW6z0OjqVoQDLgp17Wix2i2N/FzfX7uoLG7rS5yEvDYvM+hYK4skIM
+         xbIg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hLAgx1JV;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vwN9kpi0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d4si10646188ybm.220.2021.04.02.14.42.40
+        by mx.google.com with ESMTPS id a7si9797058ybp.480.2021.04.02.14.42.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 02 Apr 2021 14:42:40 -0700 (PDT)
+        Fri, 02 Apr 2021 14:42:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hLAgx1JV;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vwN9kpi0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33866 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35104 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lSRYt-0000F3-OV
-	for alex.bennee@linaro.org; Fri, 02 Apr 2021 17:42:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35556)
+	id 1lSRZ9-0000ox-28
+	for alex.bennee@linaro.org; Fri, 02 Apr 2021 17:42:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35612)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lSRYf-0000D6-Rs
- for qemu-arm@nongnu.org; Fri, 02 Apr 2021 17:42:25 -0400
-Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031]:38692)
+ id 1lSRYi-0000GQ-CS
+ for qemu-arm@nongnu.org; Fri, 02 Apr 2021 17:42:28 -0400
+Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631]:35828)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lSRYe-0007gF-8V
- for qemu-arm@nongnu.org; Fri, 02 Apr 2021 17:42:25 -0400
-Received: by mail-pj1-x1031.google.com with SMTP id
- k23-20020a17090a5917b02901043e35ad4aso5122213pji.3
- for <qemu-arm@nongnu.org>; Fri, 02 Apr 2021 14:42:23 -0700 (PDT)
+ id 1lSRYg-0007h6-Jo
+ for qemu-arm@nongnu.org; Fri, 02 Apr 2021 17:42:28 -0400
+Received: by mail-pl1-x631.google.com with SMTP id e14so3032957plj.2
+ for <qemu-arm@nongnu.org>; Fri, 02 Apr 2021 14:42:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=fmCgzHtzk5qDGe2eGqNAc4vF9R/bc/UzkhnNYf8s1aw=;
- b=hLAgx1JVOhYAcJL9otyWbmwpWTmOyjSybBwxjW5y6nQJNKCYJEFEm4yPcTfRTdd8ch
- 76w/7QBUQxbJLa/NbOAG4Lzq7UdeJ1yHFOCcAVANZx/IxUXx5p9m00yu5S1+LeqcvfT1
- LNzl+goP+LXE8QlqdjLnlbmh7f9lqnjm2HGwgxnB2CggfNamhp/UZ0lfJu+ixkiY3nfN
- qNWh2C6XfCJS5s4rtotaUIvKfaRpUigVs4xlZWAgxwV+U8TPjpGyh9CbWebluUfeQyTy
- dqBol5D/NhtnsIJL/BfK4KXYnsCKrexcK8MQAtKBPNOqjTiCGxXVk6EYWJFgm6TvN1fF
- Mnfg==
+ bh=OVt5iR1dmccHY0b49ovqyPgeianDpRHBCkX5yRWRcH8=;
+ b=vwN9kpi0tXz2ObvJkmlLlmFzhTVZA7Gf7gL+20qLlfZUh1SSBH8hB/iQWbCAivgbH1
+ 0m9tF9D0fcO3UqXeZXj08+GH9LJqEFEfcTAhY+ldMMCHqkfWOnNlMdPIo3hK8rx19jyJ
+ dGTfwul7XufzyOwkHspRFMjxbK11Q3pSZI8nIapDdpwuvhgn2AhXZXSlOPFAHoHs7kpQ
+ nmLX33E/D6ndpoHTV7VjXCU3C58DBJf6G6gVe89VX14Hs6OHyJwfEfyD3zElmGDR/NYv
+ FDANZG3pU4CIwUmO7REKa1gLK+TFkiLGDeR+KT8DEo3fMhMZRTIbYgIQZvsXyHCYu+gh
+ JgVw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=fmCgzHtzk5qDGe2eGqNAc4vF9R/bc/UzkhnNYf8s1aw=;
- b=CyOYL/mVYsHy+cyWZJ3Mzzgl2c/DOPNpOBYpqn5/fZqsD7MKVzBePkXQy4/fnS7o27
- ijr4YRK+6kYKXqFZr72KAT4qMjrMVgqT3LVGGamIQ5CuMoBPlyOZBN9mfuHIC/i6SaIl
- 2IEnpOIlmeh73n9Fs0l0zDdzhGTG8zpyuuIn1scSxa1Iwcq6pPExUbff3Cs52nQPmWcP
- 1hmk5fwHAn//WWJLpH8F9LlMeBSl0jMHZUDKqwVVvt2GBi/CVvK0un+IQTeFkE9K6Pln
- uAMEROlP5xSulKCrBQ7Tjt29YKK0lf3Tu0ZAb7Dd0cPsIxF5swxd6htQ2zjb94fRq6FG
- htnA==
-X-Gm-Message-State: AOAM530yjDyemyJqtmSu5PJeJk2wi9jDnsZ89NrW0x/PakjJhBZYVpoS
- 8JutUvx1/N7PlVu6fj6f5+Zdfg==
-X-Received: by 2002:a17:90a:1f49:: with SMTP id
- y9mr16122803pjy.69.1617399742926; 
- Fri, 02 Apr 2021 14:42:22 -0700 (PDT)
+ bh=OVt5iR1dmccHY0b49ovqyPgeianDpRHBCkX5yRWRcH8=;
+ b=jT8K4Adf/lAXjyRQ/v00h3o6l1ZBiiy2DzvWdzPqQ1n+/skCMHz7lXOlLCXlqta7P3
+ YqN7N3ivGi1vKDWyrq1mEwMiv6/blzN6Lfp9tbeMhC0BTp1h/1ZZVb/xn0Vi7O2x5zAf
+ GVJEWtaae6rNE6QhAH7SVbpWBTJrsKh1+RDe45hHhSgW4ybTiPa+jKRVZk40LztGDSvc
+ WHZQJZ90QQwXHFlgnpIjzZP/fVNu5/Xtct6ogHJqcEl2YtTMmy8ta9xXMwdPON/dTbWj
+ gi79hgVz8B4ADZjj0o42f/WadhHKG4PgU0mJCoYPSRy18EDUP58YLWKyNmlwS/bDrWnu
+ ykEg==
+X-Gm-Message-State: AOAM530glMBfGdbeWQIwZnhpp0VyzhJScBXOcOU5NOgZrST2JYoOVGvH
+ 7ggLDdkkv7Gqq9ffN/I2Iq1F2HCR9Q3GCw==
+X-Received: by 2002:a17:90a:990a:: with SMTP id
+ b10mr15548299pjp.178.1617399745303; 
+ Fri, 02 Apr 2021 14:42:25 -0700 (PDT)
 Received: from localhost.localdomain
  (h216-228-167-147.bendor.dedicated.static.tds.net. [216.228.167.147])
- by smtp.gmail.com with ESMTPSA id f16sm7923329pfj.220.2021.04.02.14.42.22
+ by smtp.gmail.com with ESMTPSA id f16sm7923329pfj.220.2021.04.02.14.42.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 02 Apr 2021 14:42:22 -0700 (PDT)
+ Fri, 02 Apr 2021 14:42:24 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 02/11] target/arm: Check PAGE_WRITE_ORG for MTE writeability
-Date: Fri,  2 Apr 2021 14:42:08 -0700
-Message-Id: <20210402214217.422585-3-richard.henderson@linaro.org>
+Subject: [PATCH v3 04/11] target/arm: Split out mte_probe_int
+Date: Fri,  2 Apr 2021 14:42:10 -0700
+Message-Id: <20210402214217.422585-5-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210402214217.422585-1-richard.henderson@linaro.org>
 References: <20210402214217.422585-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1031;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1031.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x631.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -121,32 +120,127 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gOYxEe6KAfM+
+X-TUID: weZphAFOAIgl
 
-We can remove PAGE_WRITE when (internally) marking a page
-read-only because it contains translated code.
-
-This can be triggered by tests/tcg/aarch64/bti-2, after
-having serviced SIGILL trampolines on the stack.
+Split out a helper function from mte_checkN to perform
+all of the checking and address manpulation.  So far,
+just use this in mte_checkN itself.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/mte_helper.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ target/arm/mte_helper.c | 52 +++++++++++++++++++++++++++++++----------
+ 1 file changed, 40 insertions(+), 12 deletions(-)
 
 diff --git a/target/arm/mte_helper.c b/target/arm/mte_helper.c
-index 0bbb9ec346..8be17e1b70 100644
+index 473d84cee2..179846b463 100644
 --- a/target/arm/mte_helper.c
 +++ b/target/arm/mte_helper.c
-@@ -83,7 +83,7 @@ static uint8_t *allocation_tag_mem(CPUARMState *env, int ptr_mmu_idx,
-     uint8_t *tags;
-     uintptr_t index;
+@@ -753,33 +753,45 @@ static int checkN(uint8_t *mem, int odd, int cmp, int count)
+     return n;
+ }
  
--    if (!(flags & (ptr_access == MMU_DATA_STORE ? PAGE_WRITE : PAGE_READ))) {
-+    if (!(flags & (ptr_access == MMU_DATA_STORE ? PAGE_WRITE_ORG : PAGE_READ))) {
-         /* SIGSEGV */
-         arm_cpu_tlb_fill(env_cpu(env), ptr, ptr_size, ptr_access,
-                          ptr_mmu_idx, false, ra);
+-uint64_t mte_checkN(CPUARMState *env, uint32_t desc,
+-                    uint64_t ptr, uintptr_t ra)
++/*
++ * mte_probe_int:
++ * @env: CPU environment
++ * @desc: MTEDESC descriptor
++ * @ptr: virtual address of the base of the access
++ * @fault: return virtual address of the first check failure
++ *
++ * Internal routine for both mte_probe and mte_check.
++ * Return zero on failure, filling in *fault.
++ * Return negative on trivial success for tbi disabled.
++ * Return positive on success with tbi enabled.
++ */
++static int mte_probe_int(CPUARMState *env, uint32_t desc, uint64_t ptr,
++                         uintptr_t ra, uint32_t total, uint64_t *fault)
+ {
+     int mmu_idx, ptr_tag, bit55;
+     uint64_t ptr_last, prev_page, next_page;
+     uint64_t tag_first, tag_end;
+     uint64_t tag_byte_first, tag_byte_end;
+-    uint32_t total, tag_count, tag_size, n, c;
++    uint32_t tag_count, tag_size, n, c;
+     uint8_t *mem1, *mem2;
+     MMUAccessType type;
+ 
+     bit55 = extract64(ptr, 55, 1);
++    *fault = ptr;
+ 
+     /* If TBI is disabled, the access is unchecked, and ptr is not dirty. */
+     if (unlikely(!tbi_check(desc, bit55))) {
+-        return ptr;
++        return -1;
+     }
+ 
+     ptr_tag = allocation_tag_from_addr(ptr);
+ 
+     if (tcma_check(desc, bit55, ptr_tag)) {
+-        goto done;
++        return 1;
+     }
+ 
+     mmu_idx = FIELD_EX32(desc, MTEDESC, MIDX);
+     type = FIELD_EX32(desc, MTEDESC, WRITE) ? MMU_DATA_STORE : MMU_DATA_LOAD;
+-    total = FIELD_EX32(desc, MTEDESC, TSIZE);
+ 
+     /* Find the addr of the end of the access, and of the last element. */
+     ptr_last = ptr + total - 1;
+@@ -803,7 +815,7 @@ uint64_t mte_checkN(CPUARMState *env, uint32_t desc,
+         mem1 = allocation_tag_mem(env, mmu_idx, ptr, type, total,
+                                   MMU_DATA_LOAD, tag_size, ra);
+         if (!mem1) {
+-            goto done;
++            return 1;
+         }
+         /* Perform all of the comparisons. */
+         n = checkN(mem1, ptr & TAG_GRANULE, ptr_tag, tag_count);
+@@ -829,23 +841,39 @@ uint64_t mte_checkN(CPUARMState *env, uint32_t desc,
+         }
+         if (n == c) {
+             if (!mem2) {
+-                goto done;
++                return 1;
+             }
+             n += checkN(mem2, 0, ptr_tag, tag_count - c);
+         }
+     }
+ 
++    if (likely(n == tag_count)) {
++        return 1;
++    }
++
+     /*
+      * If we failed, we know which granule.  For the first granule, the
+      * failure address is @ptr, the first byte accessed.  Otherwise the
+      * failure address is the first byte of the nth granule.
+      */
+-    if (unlikely(n < tag_count)) {
+-        uint64_t fault = (n == 0 ? ptr : tag_first + n * TAG_GRANULE);
+-        mte_check_fail(env, desc, fault, ra);
++    if (n > 0) {
++        *fault = tag_first + n * TAG_GRANULE;
+     }
++    return 0;
++}
+ 
+- done:
++uint64_t mte_checkN(CPUARMState *env, uint32_t desc,
++                    uint64_t ptr, uintptr_t ra)
++{
++    uint64_t fault;
++    uint32_t total = FIELD_EX32(desc, MTEDESC, TSIZE);
++    int ret = mte_probe_int(env, desc, ptr, ra, total, &fault);
++
++    if (unlikely(ret == 0)) {
++        mte_check_fail(env, desc, fault, ra);
++    } else if (ret < 0) {
++        return ptr;
++    }
+     return useronly_clean_ptr(ptr);
+ }
+ 
 -- 
 2.25.1
 

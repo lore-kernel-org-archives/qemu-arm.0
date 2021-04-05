@@ -1,451 +1,169 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2481130lfg;
-        Sat, 3 Apr 2021 15:30:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzZFqahzGH1nIuWMe9VRbDZVeXyL/wOoN3Yu3JcHZItA3HUQpfOUeZEFkzqmLU6+JO1S9VF
-X-Received: by 2002:a02:768b:: with SMTP id z133mr17766460jab.82.1617489055261;
-        Sat, 03 Apr 2021 15:30:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617489055; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp821790lfr;
+        Mon, 5 Apr 2021 12:59:04 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyYUr/OZF+DXOgUxdh71M4BW1/zwxm6gVOnReIAERsyOko/wVZqzS/JvivXk80qkbuEC00w
+X-Received: by 2002:a05:6638:2044:: with SMTP id t4mr26131450jaj.12.1617652744706;
+        Mon, 05 Apr 2021 12:59:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617652744; cv=none;
         d=google.com; s=arc-20160816;
-        b=chvK9oKZQww2gcP4t7tUZXqvYKbG53H2JLlYplqNDcObLBuZ7aEF+WNNR9w5GHB907
-         MzQVF27ZArX+7hfBjFWbbjsSVqdIefl8sTR3mqAtEgB8XV9niyaxJxLs4PhA+vn3T3/+
-         xTk0rsyeB2r1tV76EaiKFC6capMRmBJPRfKT+uKUO3LVCKHLqYc75ekcK6A+j4TkacbU
-         cdd5yEUK5iu8z1Vu6s4CzIPBWdlBsmIpkRg2sUHE1DV3iPsWzqhtzCCd2QlbSyE2rJw8
-         krQQvjWWt7fH3IT3fG2zYwjtVXtR5MZtTB8CmDCo3fqk+Tyqm5aHfcceLdmLGPhJIxXq
-         Qgww==
+        b=af1j+QYPi9jOo7/GC/PKGse7tZAlnVKHKgHMtg0I5jakfuKWDMXvU0x1h6twgqNsok
+         46HrI36npSup0zFk9VitqGv6cuHuf38xwgvG/1AQQHNmsgfURIo+hFfYwWijvUN0Louo
+         B2RLz4FYXVhrmY9Nw4KzyhD9BaukdtghLSVjtmvJ1fW7O+42kMS6AyF1Qe40D86Yrjzi
+         JMNas+BJKdKUDAefo9JR2jdzvUups4/qFjxg74fETFIFzLuG7sSVmVOkEq5610e+v/iT
+         pduaWvtRc4lR3VOfmo7gUWbPc0lnzu+ZmG+3TCQXHOdAOaYOqlCdttjBsTna/ZbIqxch
+         LaRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:references
-         :mime-version:message-id:in-reply-to:date:dkim-signature;
-        bh=9Rr9JYnLZhIsJpXVKMtSmriKFQyc6Y0e2KboV1hbcLc=;
-        b=gJxR1bd9vZmZdu+Ys7F/H5EuHzQcIyi/6LOntbS45BCkZmGrNLkC/WLAvL+dev+pWI
-         ohM0jHFT1uHmraWU/rEYLuzhUFdXGEb8FcTTEssF09gjx17rH8N0CEhmTrVdYCoE/zMb
-         6MZbeJP7HnED6xXE93ZRPlzNEeUMQzftaF+H62O9zXGbMCO038Y++aziXUqn0S8VQt/y
-         ZLni+KYkqd4ml16wnyx+du/uVusROaS3khFthYJYm0DvBIO2i4vKXINg/5JkCvRveFYX
-         WQ8/dkI5nH8nIIMUDtUBln3IKE8T4QL3gVrOz0xMjg/HtX/LskaPVdSrfMtjz/yh+Tka
-         L2HA==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=/IugjbICpfQcKtT7503fgZpKtCUS1q/Qdia330voPx4=;
+        b=NAv0eyMZEf0s8VNvnZysrjNpnCMvYu4KhpAW7YTaunI2P2q+24Wu8sVYZo26oJPn7l
+         xx5rNAE8wq0bYkYy2DLjfKl0gicrkyt4fJJSHY26WWRC+nwN5Y1EeHWNqoU67+Pgp9Vx
+         ZtStLHha5nuKbZqwJ2uBKo/oT/5oAjpyQ59uyx47JivjF4gj1i9yuKxomaHKdf2sX2HS
+         CV7fcgNJRGgCqnbjvfftDybusw+WN+YfNrKVFy2ZWGUfHNVXo7cTQgpyzVPg3vaMYb0x
+         KimU52dIB2gQgRYJ2CY8/oP4FaFj8tflhmiyyNKuT2loWX4co1wms07SmSRKlh3xT7cS
+         yHmA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=YiX0mdKC;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@mvista-com.20150623.gappssmtp.com header.s=20150623 header.b=Pq3soCOh;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h2si10982797iov.19.2021.04.03.15.30.55
+        by mx.google.com with ESMTPS id g2si14898371ile.30.2021.04.05.12.59.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 03 Apr 2021 15:30:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 05 Apr 2021 12:59:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=YiX0mdKC;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:48982 helo=lists1p.gnu.org)
+       dkim=fail header.i=@mvista-com.20150623.gappssmtp.com header.s=20150623 header.b=Pq3soCOh;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:59808 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lSon8-0006rl-IO
-	for alex.bennee@linaro.org; Sat, 03 Apr 2021 18:30:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35698)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lTVNI-00065K-1a
+	for alex.bennee@linaro.org; Mon, 05 Apr 2021 15:59:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59672)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3DuxoYAcKCpMI1AGHE13BB381.zB9D19H-01I18ABA3AH.BE3@flex--venture.bounces.google.com>)
- id 1lSol1-0004XM-JH
- for qemu-devel@nongnu.org; Sat, 03 Apr 2021 18:28:44 -0400
-Received: from mail-yb1-xb4a.google.com ([2607:f8b0:4864:20::b4a]:42670)
+ (Exim 4.90_1) (envelope-from <cminyard@mvista.com>)
+ id 1lTVMz-00064l-0o
+ for qemu-arm@nongnu.org; Mon, 05 Apr 2021 15:58:45 -0400
+Received: from mail-oi1-x22b.google.com ([2607:f8b0:4864:20::22b]:37612)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3DuxoYAcKCpMI1AGHE13BB381.zB9D19H-01I18ABA3AH.BE3@flex--venture.bounces.google.com>)
- id 1lSokr-0002qb-Ms
- for qemu-devel@nongnu.org; Sat, 03 Apr 2021 18:28:41 -0400
-Received: by mail-yb1-xb4a.google.com with SMTP id v6so13020794ybk.9
- for <qemu-devel@nongnu.org>; Sat, 03 Apr 2021 15:28:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=date:in-reply-to:message-id:mime-version:references:subject:from:to
- :cc; bh=9Rr9JYnLZhIsJpXVKMtSmriKFQyc6Y0e2KboV1hbcLc=;
- b=YiX0mdKCIDkL6MkHKCii3Ynh4PUSia4/bEzshjGpXjnLK3nDtV4NLhq1nNU1v0oVLT
- vPmQwwAGjxNFtBi6Mt3i1TvMTC5U2N2gCjyE61CTavV8L5oNmvrQ/sV4m4rijcGvG3+6
- k5OoJpXFBN1KavC0eMxRA6Pel4CaUAdvHz+MZrH9wEdr8fDF6ZEoIad40E5Tx6cxTuZd
- h0WKcO61Z5zh+TKqfGghA2lmz6BlJmqkQ2kyqlBfmQlmlbHJmU5EYs0oElPhcTRw9+yM
- k5xCm93A+ei8trYve2kOwQ2U4EV88MFPizuW1DQ9b+Sbd84bgojrRnIsvHTVgZv3jMaO
- 9bfg==
+ (Exim 4.90_1) (envelope-from <cminyard@mvista.com>)
+ id 1lTVMs-0004X2-Lh
+ for qemu-arm@nongnu.org; Mon, 05 Apr 2021 15:58:44 -0400
+Received: by mail-oi1-x22b.google.com with SMTP id k25so12723496oic.4
+ for <qemu-arm@nongnu.org>; Mon, 05 Apr 2021 12:58:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mvista-com.20150623.gappssmtp.com; s=20150623;
+ h=date:from:to:cc:subject:message-id:reply-to:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=/IugjbICpfQcKtT7503fgZpKtCUS1q/Qdia330voPx4=;
+ b=Pq3soCOhVWbhdHZ208e7Tv7wVA11dd1yYMqV8cYJSbAAIhN8DrI/kvj5uqDNn9/AXM
+ Kdf8Ya2THYcQsIhI5YRBm4ge0Rgg56MpYnArqEtelhHtpi1mU/b1W04UyUSs2GS23L1e
+ Mmxwdrgt6QFKitGooH33n+SrSmVEjVL6ZEHIjn/hIjsIBmw5/3cJ8QwRbCsaXUlkN0nm
+ +/dMSZM5+OQo2tlUnovlrLaIVYFif8+jFdb/LCdB3N3xnxFZq9QC/eOVxEYCSyjVZwoY
+ J3GJ2EkinpDEmgiM7ABKaTcmpJR3HgsiaU1ZEQns0P7JxOizxdMnP+w2lBC+37j5JIAn
+ P44w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:in-reply-to:message-id:mime-version
- :references:subject:from:to:cc;
- bh=9Rr9JYnLZhIsJpXVKMtSmriKFQyc6Y0e2KboV1hbcLc=;
- b=UossRLtj1huQrHTNyYMY98wqkTWcW7G7hreaFs6TFp1Wqq/L2PEf7JAbvqbYhbQyhV
- X0vwBpHKH32/Cy1wVI3Xxafq0EBtgueJijGeSrWJ2eBbmjPSi3YpCVUD5l5Je4hrTnkJ
- o32P1Rdi8QlAW4aQdp8WW0c6BT8YUXg7DP440YZZoxDIVChZBKYFyqWjZ6r2vzIVmnYl
- o/v/zvndpR0qnBCh0WTeBkm8knSBbYNH7EsXJAFjwNihNkBwDHzJP/qrow1c97+jFAqH
- HWVhieD4U5oBhrHrC6sYh2k01nddu7iyW1IICM8dil9JUa1Aw19FAafFGnJTVkL5J0Om
- bikg==
-X-Gm-Message-State: AOAM532a3bnPdHM6fE3JjwER/ymQ140UL6S5hUJTKMX2VXJU3lMxhd4l
- P7FbzYHHqKwy0CFCv2VEDGpTUHI34E3G
-X-Received: from venture.svl.corp.google.com
- ([2620:15c:2a3:200:bcbb:2e0c:25df:d735])
- (user=venture job=sendgmr) by 2002:a25:424c:: with SMTP id
- p73mr27279461yba.192.1617488910866; Sat, 03 Apr 2021 15:28:30 -0700 (PDT)
-Date: Sat,  3 Apr 2021 15:28:10 -0700
-In-Reply-To: <20210403222810.3481372-1-venture@google.com>
-Message-Id: <20210403222810.3481372-3-venture@google.com>
-Mime-Version: 1.0
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:reply-to
+ :references:mime-version:content-disposition:in-reply-to;
+ bh=/IugjbICpfQcKtT7503fgZpKtCUS1q/Qdia330voPx4=;
+ b=bSoBcOhKy0dmhS7irwVbzMtwNTnxTOk4y3sSUi8gxUXY2TOIjOXlwPpYYODQjM67Qs
+ pDNpMg9MKVC0sqYsYEgLzfzcRMpZYWOM5jw5uBuZ9b7yUNOsDZpUtyj1UcazuU6cOcj5
+ LGPtSmFhMzaqhCkhckFqAR0CBwzBpZNTICcNQlzKue2KgjR5qjnFAZzOBMj0L+6lRtle
+ jhwWJ69EiSUlgIIbBjW7eNXOo9xZOcR1Rdlqorc1BDZl3mzGMw4rWo+9MWvCa7/ibBCp
+ Wh4c1db5kxQ1v8vuNm/srrFTcqzt7EvAVQhO7MlaSyi4qUoEHrEO+UBe6F7KVRt4WJXH
+ IXww==
+X-Gm-Message-State: AOAM533nluaT+Hq2OLEA5fIjxI6JxfVWgYlfKbNncuKYJp03PmfM5tPe
+ ZuCKTDexc/HNHrtXmv9UB8C2tw==
+X-Received: by 2002:aca:d4d1:: with SMTP id l200mr552925oig.119.1617652716565; 
+ Mon, 05 Apr 2021 12:58:36 -0700 (PDT)
+Received: from minyard.net ([2001:470:b8f6:1b:8492:1f61:a64c:bf6d])
+ by smtp.gmail.com with ESMTPSA id p22sm4322446otf.25.2021.04.05.12.58.35
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 05 Apr 2021 12:58:36 -0700 (PDT)
+Date: Mon, 5 Apr 2021 14:58:34 -0500
+From: Corey Minyard <cminyard@mvista.com>
+To: Patrick Venture <venture@google.com>
+Subject: Re: [PATCH 0/2] hw/i2c: Adds pca954x i2c mux switch device
+Message-ID: <20210405195834.GF7167@minyard.net>
 References: <20210403222810.3481372-1-venture@google.com>
-X-Mailer: git-send-email 2.31.0.208.g409f899ff0-goog
-Subject: [PATCH 2/2] hw/i2c: add pca954x i2c-mux switch
-From: Patrick Venture <venture@google.com>
-To: cminyard@mvista.com, wuhaotsh@google.com, hskinnemoen@google.com
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- Patrick Venture <venture@google.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b4a;
- envelope-from=3DuxoYAcKCpMI1AGHE13BB381.zB9D19H-01I18ABA3AH.BE3@flex--venture.bounces.google.com;
- helo=mail-yb1-xb4a.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20210403222810.3481372-1-venture@google.com>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::22b;
+ envelope-from=cminyard@mvista.com; helo=mail-oi1-x22b.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: C49Tw14M34tT
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: cminyard@mvista.com
+Cc: wuhaotsh@google.com, qemu-arm@nongnu.org, hskinnemoen@google.com,
+ qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: uxr4qhKGMAYk
 
-The pca954x is an i2c mux, and this adds support for two variants of
-this device: the pca9546 and pca9548.
+On Sat, Apr 03, 2021 at 03:28:08PM -0700, Patrick Venture wrote:
+> The i2c mux device pca954x implements two devices:
+>  - the pca9546 and pca9548.
+> 
+> Patrick Venture (2):
+>   hw/i2c/core: add reachable state boolean
+>   hw/i2c: add pca954x i2c-mux switch
 
-This device is very common on BMCs to route a different channel to each
-PCIe i2c bus downstream from the BMC.
+Looking this over, the code looks good, but I have a few general
+questions:
 
-Signed-off-by: Patrick Venture <venture@google.com>
-Reviewed-by: Havard Skinnemoen <hskinnemoen@google.com>
-Reviewed-by: Hao Wu <wuhaotsh@google.com>
----
- MAINTAINERS                      |   6 +
- hw/i2c/Kconfig                   |   4 +
- hw/i2c/i2c_mux_pca954x.c         | 182 +++++++++++++++++++++++++++++++
- hw/i2c/meson.build               |   1 +
- hw/i2c/trace-events              |   5 +
- include/hw/i2c/i2c_mux_pca954x.h |  60 ++++++++++
- 6 files changed, 258 insertions(+)
- create mode 100644 hw/i2c/i2c_mux_pca954x.c
- create mode 100644 include/hw/i2c/i2c_mux_pca954x.h
+* Can you register the same slave address on different channels?  That's
+  something you could do with real hardware and might be required at
+  some time.  It looks like to me that you can't with this patch set,
+  but maybe I'm missing something.
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 69003cdc3c..6cec2a9320 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -2040,6 +2040,12 @@ S: Maintained
- F: hw/net/tulip.c
- F: hw/net/tulip.h
- 
-+pca954x
-+M: Patrick Venture <venture@google.com>
-+S: Maintained
-+F: hw/i2c/i2c_mux_pca954x.c
-+F: include/hw/i2c/i2c_mux_pca954x.h
-+
- Generic Loader
- M: Alistair Francis <alistair@alistair23.me>
- S: Maintained
-diff --git a/hw/i2c/Kconfig b/hw/i2c/Kconfig
-index 09642a6dcb..8d120a25d5 100644
---- a/hw/i2c/Kconfig
-+++ b/hw/i2c/Kconfig
-@@ -28,3 +28,7 @@ config IMX_I2C
- config MPC_I2C
-     bool
-     select I2C
-+
-+config PCA954X
-+    bool
-+    select I2C
-diff --git a/hw/i2c/i2c_mux_pca954x.c b/hw/i2c/i2c_mux_pca954x.c
-new file mode 100644
-index 0000000000..8017913637
---- /dev/null
-+++ b/hw/i2c/i2c_mux_pca954x.c
-@@ -0,0 +1,182 @@
-+/*
-+ * I2C multiplexer for PCA954x series of I2C multiplexer/switch chips.
-+ *
-+ * Copyright 2021 Google LLC
-+ *
-+ * This program is free software; you can redistribute it and/or modify it
-+ * under the terms of the GNU General Public License as published by the
-+ * Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful, but WITHOUT
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-+ * for more details.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "hw/i2c/i2c_mux_pca954x.h"
-+#include "hw/i2c/smbus_slave.h"
-+#include "hw/qdev-core.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "qemu/queue.h"
-+#include "trace.h"
-+
-+int pca954x_add_child(I2CSlave *mux, uint8_t channel, I2CSlave *child)
-+{
-+    g_autofree char *name = NULL;
-+    /*
-+     * Ok, so we need to try to add the i2c_dev to channel for mux.
-+     * A channel can have multiple devices, we need a list for each channel.
-+     */
-+    Pca954xClass *pc = PCA954X_GET_CLASS(mux);
-+    Pca954xState *pca954x = PCA954X(mux);
-+    PcaMuxChild *controlled_device;
-+
-+    /* Is the channel legal? */
-+    if (channel >= pc->nchans) {
-+        return -1;
-+    }
-+
-+    controlled_device = g_new0(PcaMuxChild, 1);
-+    controlled_device->channel = channel;
-+    controlled_device->child = child;
-+    object_ref(OBJECT(controlled_device->child));
-+
-+    /* Hide the device. */
-+    child->reachable = 0;
-+
-+    QSLIST_INSERT_HEAD(&pca954x->children, controlled_device, sibling);
-+
-+    name = g_strdup_printf("i2c@%u-child[%u]", channel,
-+                           pca954x->count[channel]);
-+    object_property_add_link(OBJECT(mux), name,
-+                             object_get_typename(OBJECT(child)),
-+                             (Object **)&controlled_device->child,
-+                             NULL, /* read-only property */
-+                             0);
-+    pca954x->count[channel]++;
-+
-+    return 0;
-+}
-+
-+static void pca954x_enable_channel(Pca954xState *s, uint8_t enable_mask)
-+{
-+    PcaMuxChild *kid;
-+    I2CSlave *child;
-+
-+    /*
-+     * For each child, check if their bit is set in data and if yes, enable
-+     * them, otherwise disable, hide them.
-+     */
-+    QSLIST_FOREACH(kid, &s->children, sibling) {
-+        child = I2C_SLAVE(kid->child);
-+        if (enable_mask & (1 << kid->channel)) {
-+            child->reachable = true;
-+        } else {
-+            child->reachable = false;
-+        }
-+    }
-+}
-+
-+static void pca954x_write(Pca954xState *s, uint8_t data)
-+{
-+    s->control = data;
-+    pca954x_enable_channel(s, data);
-+
-+    trace_pca954x_write_bytes(data);
-+}
-+
-+static int pca954x_write_data(SMBusDevice *d, uint8_t *buf, uint8_t len)
-+{
-+    Pca954xState *s = PCA954X(d);
-+
-+    if (len == 0) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: writing empty data\n", __func__);
-+        return -1;
-+    }
-+
-+    /*
-+     * len should be 1, because they write one byte to enable/disable channels.
-+     */
-+    if (len > 1) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+            "%s: extra data after channel selection mask\n",
-+            __func__);
-+        return -1;
-+    }
-+
-+    pca954x_write(s, buf[0]);
-+    return 0;
-+}
-+
-+static uint8_t pca954x_read_byte(SMBusDevice *d)
-+{
-+    Pca954xState *s = PCA954X(d);
-+    uint8_t data = s->control;
-+    trace_pca954x_read_data(data);
-+    return data;
-+}
-+
-+static void pca9546_class_init(ObjectClass *oc, void *data)
-+{
-+    Pca954xClass *s = PCA954X_CLASS(oc);
-+    s->nchans = PCA9546_CHANNEL_COUNT;
-+}
-+
-+static void pca9548_class_init(ObjectClass *oc, void *data)
-+{
-+    Pca954xClass *s = PCA954X_CLASS(oc);
-+    s->nchans = PCA9548_CHANNEL_COUNT;
-+}
-+
-+static void pca954x_enter_reset(Object *obj, ResetType type)
-+{
-+    Pca954xState *s = PCA954X(obj);
-+    /* Reset will disable all channels. */
-+    pca954x_write(s, 0);
-+}
-+
-+static void pca954x_init(Object *obj)
-+{
-+    Pca954xState *s = PCA954X(obj);
-+    memset(s->count, 0x00, sizeof(s->count));
-+}
-+
-+static void pca954x_class_init(ObjectClass *klass, void *data)
-+{
-+    ResettableClass *rc = RESETTABLE_CLASS(klass);
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    SMBusDeviceClass *k = SMBUS_DEVICE_CLASS(klass);
-+
-+    dc->desc = "Pca954x i2c-mux";
-+    k->write_data = pca954x_write_data;
-+    k->receive_byte = pca954x_read_byte;
-+    rc->phases.enter = pca954x_enter_reset;
-+}
-+
-+static const TypeInfo pca954x_info[] = {
-+    {
-+        .name          = TYPE_PCA954X,
-+        .parent        = TYPE_SMBUS_DEVICE,
-+        .instance_size = sizeof(Pca954xState),
-+        .instance_init = pca954x_init,
-+        .class_size    = sizeof(Pca954xClass),
-+        .class_init    = pca954x_class_init,
-+        .abstract      = true,
-+    },
-+    {
-+        .name          = TYPE_PCA9546,
-+        .parent        = TYPE_PCA954X,
-+        .class_init    = pca9546_class_init,
-+    },
-+    {
-+        .name          = TYPE_PCA9548,
-+        .parent        = TYPE_PCA954X,
-+        .class_init    = pca9548_class_init,
-+    },
-+};
-+
-+DEFINE_TYPES(pca954x_info)
-diff --git a/hw/i2c/meson.build b/hw/i2c/meson.build
-index cdcd694a7f..dd3aef02b2 100644
---- a/hw/i2c/meson.build
-+++ b/hw/i2c/meson.build
-@@ -14,4 +14,5 @@ i2c_ss.add(when: 'CONFIG_SMBUS_EEPROM', if_true: files('smbus_eeprom.c'))
- i2c_ss.add(when: 'CONFIG_VERSATILE_I2C', if_true: files('versatile_i2c.c'))
- i2c_ss.add(when: 'CONFIG_OMAP', if_true: files('omap_i2c.c'))
- i2c_ss.add(when: 'CONFIG_PPC4XX', if_true: files('ppc4xx_i2c.c'))
-+i2c_ss.add(when: 'CONFIG_PCA954X', if_true: files('i2c_mux_pca954x.c'))
- softmmu_ss.add_all(when: 'CONFIG_I2C', if_true: i2c_ss)
-diff --git a/hw/i2c/trace-events b/hw/i2c/trace-events
-index 82fe6f965f..82f19e6a2d 100644
---- a/hw/i2c/trace-events
-+++ b/hw/i2c/trace-events
-@@ -26,3 +26,8 @@ npcm7xx_smbus_recv_byte(const char *id, uint8_t value) "%s recv byte: 0x%02x"
- npcm7xx_smbus_stop(const char *id) "%s stopping"
- npcm7xx_smbus_nack(const char *id) "%s nacking"
- npcm7xx_smbus_recv_fifo(const char *id, uint8_t received, uint8_t expected) "%s recv fifo: received %u, expected %u"
-+
-+# i2c-mux-pca954x.c
-+
-+pca954x_write_bytes(uint8_t value) "PCA954X write data: 0x%02x"
-+pca954x_read_data(uint8_t value) "PCA954X read data: 0x%02x"
-diff --git a/include/hw/i2c/i2c_mux_pca954x.h b/include/hw/i2c/i2c_mux_pca954x.h
-new file mode 100644
-index 0000000000..4ea240af26
---- /dev/null
-+++ b/include/hw/i2c/i2c_mux_pca954x.h
-@@ -0,0 +1,60 @@
-+#ifndef QEMU_I2C_MUX_PCA954X
-+#define QEMU_I2C_MUX_PCA954X
-+
-+#include "hw/qdev-core.h"
-+#include "hw/i2c/i2c.h"
-+#include "hw/i2c/smbus_slave.h"
-+
-+#define PCA9548_CHANNEL_COUNT 8
-+#define PCA9546_CHANNEL_COUNT 4
-+
-+/* The i2c mux shares ownership of a bus child. */
-+typedef struct PcaMuxChild {
-+    I2CSlave *child;
-+
-+    /* The channel on which this child lives. */
-+    uint8_t channel;
-+
-+    QSLIST_ENTRY(PcaMuxChild) sibling;
-+} PcaMuxChild;
-+
-+typedef struct Pca954xState {
-+    SMBusDevice parent;
-+
-+    uint8_t control;
-+
-+    /* The children this mux co-owns with its parent bus. */
-+    QSLIST_HEAD(, PcaMuxChild) children;
-+
-+    /* The number of children per channel. */
-+    unsigned int count[PCA9548_CHANNEL_COUNT];
-+} Pca954xState;
-+
-+typedef struct Pca954xClass {
-+    SMBusDeviceClass parent;
-+
-+    /* The number of channels this mux has. */
-+    uint8_t nchans;
-+} Pca954xClass;
-+
-+#define TYPE_PCA9546 "pca9546"
-+#define TYPE_PCA9548 "pca9548"
-+
-+#define TYPE_PCA954X "pca954x"
-+
-+#define PCA954X(obj) OBJECT_CHECK(Pca954xState, (obj), TYPE_PCA954X)
-+#define PCA954X_CLASS(klass)                                                   \
-+     OBJECT_CLASS_CHECK(Pca954xClass, (klass), TYPE_PCA954X)
-+#define PCA954X_GET_CLASS(obj)                                                 \
-+     OBJECT_GET_CLASS(Pca954xClass, (obj), TYPE_PCA954X)
-+
-+/**
-+ * pca954x_add_child - Adds a child i2c device to the mux device on the
-+ * specified channel.
-+ * @mux - The i2c mux to control this child.
-+ * @channel - The channel of the i2c mux that gates this child.
-+ * @child - The i2c child device to add to the mux.
-+ */
-+int pca954x_add_child(I2CSlave *mux, uint8_t channel, I2CSlave *child);
-+
-+#endif
--- 
-2.31.0.208.g409f899ff0-goog
+* Can you add devices to the secondary I2C busses on the mux using the
+  standard QEMU device model, or is the function call required?
 
+I ask because I did a pca9540 and pca9541 device, but I've never
+submitted it because I didn't think it would ever be needed.  It takes a
+different tack on the problem; it creates the secondary busses as
+standard QEMU I2C busses and bridges them.  You can see it at
+
+   github.com:cminyard/qemu.git master-i2c-rebase
+
+If you design can do the things I ask, then it's better.  If not, then
+I'm not sure.
+
+-corey
+
+> 
+>  MAINTAINERS                      |   6 +
+>  hw/i2c/Kconfig                   |   4 +
+>  hw/i2c/core.c                    |   6 +
+>  hw/i2c/i2c_mux_pca954x.c         | 182 +++++++++++++++++++++++++++++++
+>  hw/i2c/meson.build               |   1 +
+>  hw/i2c/trace-events              |   5 +
+>  include/hw/i2c/i2c.h             |   3 +
+>  include/hw/i2c/i2c_mux_pca954x.h |  60 ++++++++++
+>  8 files changed, 267 insertions(+)
+>  create mode 100644 hw/i2c/i2c_mux_pca954x.c
+>  create mode 100644 include/hw/i2c/i2c_mux_pca954x.h
+> 
+> -- 
+> 2.31.0.208.g409f899ff0-goog
+> 

@@ -1,207 +1,302 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp1693317lfr;
-        Tue, 6 Apr 2021 10:49:57 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx9vCdUK8UqvUB2RKlHTaKkIY/fs/zhZtFezIfEUNpsFgO1vrRso7eyAxxw5Yz8W5jGeL9O
-X-Received: by 2002:a05:6638:528:: with SMTP id j8mr2628537jar.108.1617731397023;
-        Tue, 06 Apr 2021 10:49:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617731397; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp1694402lfr;
+        Tue, 6 Apr 2021 10:51:18 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxkLhr806kqSYOoHc8WhGeiI15BjAKNg0wd+z2ZITHCxJaUmbizHtupdPtouydieW3y6i3m
+X-Received: by 2002:a92:6810:: with SMTP id d16mr26239616ilc.88.1617731478576;
+        Tue, 06 Apr 2021 10:51:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617731478; cv=none;
         d=google.com; s=arc-20160816;
-        b=YZCGffZttr9E174pJfoONUxMzDMOtd/O2FZyDsPgOaL12nSRuemjkFumZvS/Cr7/M/
-         zm4hfrZAvCbIJ6P0W/ELubAT5cGdXpJGAYVO0zYALWLCz3vck31qLNDepobjoGUySBSh
-         GT8PErGtCNfIj/8v8y6aNVH31LaxzL87ZQpnH4jBGrtQ49AcTfXdEpvYRxGZiF0f7Zyj
-         bO+a21KAKxKmByZMBCNU1TEpy9vdoNJ32s9NaykUDjJd/S8sX9trFA/C/Z2IJt/hWhBL
-         NoNtodB/Y/Ve44MXvzM2fUkN9Ssg1wuCmvIXD8DpFSPZNhmEoJ4Rs9tCc46pQ9UZ2dkq
-         WOQw==
+        b=DW0CBQHkMhI3ziRm76d8fjhNxmnV4qlc9z6OAR2xygj1HJHA2oukNUqFsxL+5B9CcW
+         WZI2ir31EtmaAeaozR0CFrWBnQMTZoqBm1OLMdIu2EFWnKnS3F42uWOF2ahDRT2VSwsz
+         ixB94e7C6bsDZP6cXL+suS7jul4TaqAJdoEbsiinCbzZS7tHDQN/aBy1keHqwPLUsHih
+         tEgJZB2rqnLWdYEh5uusLIEUZRtnYcPPxQ9zZSmjFTLTVSF70hjolYXuyINTKSoaIrds
+         JMM5AclNTVi5U1dZeW0e1CizakLtmvVEbInq18lzhOZ8MOLPfz5t1+3rPWOLEQy3kdUD
+         tQxA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=P65R6awgu2+jcma22h8y387cCYyU3w5GvnO8K3vdbOs=;
-        b=jN/8pOgIev35LkMCnNj15/31aNPMO7eHFetFiaW+j+xiMHdLJCobtHyUhZWwOhg5Mz
-         D5og11Yxb2i99KBIr9ag1BhGESu9Nx5iR60FUKOYlI0Kpp3UQl0ZxRxC13tu0wOVn6ny
-         TY5dmsvJO3CIwerxsu6G27qA30uwWbFHqFBZ+icGMfAcMlFAQp6MvJrjuO5BKHgIOg0c
-         FusROKVl/fARIRk0TyFknsam7PTw1GKpf2IPOtnH5W+my/dQA3YayXTFCoCDT6V9Vlzm
-         ZzKtsoSbsnWVDRExgWHnw89OVqHIlQJdHcYH0diwMrZ9vN8AAS4QdOXp7HKjzRhSr6C0
-         qFqQ==
+        bh=LL8587X7Os3xdf3l0BqHuyEB+e25QF1YaQmXQfCxQ2k=;
+        b=lf4/y9GBSZ46jDabyN2raD72uAMvrDDx28hkfzJqs0It3/E34DKvxFGnIs5VkqctiP
+         RomvOHd5tbLD4pL1MN98m9Xni+53fycI9NNj4AudjWZf2zB3ICpRY3iJ8L5NotMS+29E
+         uiIaqU2CgdQ2v5oIM/xSMYjt+aKjkhedhLY34go4f+qgAuVGQ0THnCYbnnGFZN/uDtqG
+         6H6KokD5hebkcD4Vzz7eZL0HpbBJ6uzR44vcgsF94yA1AXiQ1s5fT0/xlCHeQhfjhjr7
+         aQbJsRDk1tfsPtI6RDrlG4lKDGitxIx25Jaq91Jzx2fLqDeH60JpUvdL6eqAddzhxGF7
+         utZw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XJxzJFhv;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=R47hCUDi;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g12si20387987iow.63.2021.04.06.10.49.56
+        by mx.google.com with ESMTPS id m13si18679773jat.62.2021.04.06.10.51.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 Apr 2021 10:49:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 06 Apr 2021 10:51:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XJxzJFhv;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=R47hCUDi;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:41246 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46374 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lTpps-0003je-A7
-	for alex.bennee@linaro.org; Tue, 06 Apr 2021 13:49:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45964)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lTprB-0005t5-QJ
+	for alex.bennee@linaro.org; Tue, 06 Apr 2021 13:51:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45928)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lTph1-0001sU-D4
- for qemu-devel@nongnu.org; Tue, 06 Apr 2021 13:40:47 -0400
-Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f]:47047)
+ id 1lTph0-0001px-DU
+ for qemu-arm@nongnu.org; Tue, 06 Apr 2021 13:40:46 -0400
+Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631]:33464)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lTpgx-0006OE-PU
- for qemu-devel@nongnu.org; Tue, 06 Apr 2021 13:40:47 -0400
-Received: by mail-pf1-x42f.google.com with SMTP id d124so2116144pfa.13
- for <qemu-devel@nongnu.org>; Tue, 06 Apr 2021 10:40:43 -0700 (PDT)
+ id 1lTpgw-0006Nf-EM
+ for qemu-arm@nongnu.org; Tue, 06 Apr 2021 13:40:45 -0400
+Received: by mail-pl1-x631.google.com with SMTP id p10so2776395pld.0
+ for <qemu-arm@nongnu.org>; Tue, 06 Apr 2021 10:40:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=P65R6awgu2+jcma22h8y387cCYyU3w5GvnO8K3vdbOs=;
- b=XJxzJFhvQ+qKpRYv3+KlnCvl6Zoxf+3xYr/5Q8REfVGnjRYr2f+3LrY/3jYzk1odna
- bGljYDg5EMIOGXDb8S7bhmDJpNcXdvfsImjH1PdsHDkJYfzQB+CelDx5zvTYvT/Fmf3f
- B+swJwkbcu5OKUDIy1x7RTTK3YQz2jlqQobG+6yGelybSy0c96Fof7UKmrj6hruxPrRD
- VYWhqefi/uWBVZo6cg7QEbNFe8qa49N696VitbWU2X4Z2mCjDUFnIBmgKBAYEKpzI+Xl
- jT0ux+lHLjtGEaowpfP8CwpugHMGyIx0WO+N/AGOJ/BF/1F+WuHy4vNQ2cFKAZcpArMA
- czQg==
+ bh=LL8587X7Os3xdf3l0BqHuyEB+e25QF1YaQmXQfCxQ2k=;
+ b=R47hCUDikZpySXSqs07cj4Vj/zq0/6ho/o0Tx3UZC+US8Qv5kQhiALz7ZTrK1uSX7N
+ LL7/jo4fFcsH9EyppyW1uwic23TAOC34/NowW53f7n1rK1di7ch+/xrtXPtxFfb+lb6X
+ gJdG6CsHiLyaFoDqTjuDXBlzYgfK4usilnB2c5pamFYNyqnQ+MoBAh+Jp2e+d2fYY9ar
+ AxYN4OQgWzziiFlXJfelDXWvlU6TsvhSwrPhwtGhIq6yRydvzXT3w5ePcyVhsygHadg/
+ vkfXsfmolEgz2X7QpmkNJwkVvQeX7jmSF+9O27UA2nLeqPf9NdzMjoEOcf1McvG5dShU
+ Gh2Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=P65R6awgu2+jcma22h8y387cCYyU3w5GvnO8K3vdbOs=;
- b=grPlKO3FLoA5XNTswn1zI3Ha7lkupI5BoGhlGc8ntHp/S8FLdIvnObqqPGGiAAs97l
- 1EBvdH7Y1HfMTZrzv8BVTp8ZF0SPc9OZ1B/CEKq7VEfmrjG9OcCxvZDoKl1kJYKrFwV9
- 9HwwbA8befSyCuMh+cENsWanJOnvA2kIdycM5s6PB8Gfh6y0bCerGMJMOXeAOW1IlV50
- ssIwVY450nM+DJVmeyH3WfANcMkjRj4hVB8w+eTXW0Ks41lbyiSfAc283WlaSiqXi7Le
- HsdCuefCp9lMOnA4L48vyuj/xbNtYr19qy3rEcvXarm7RQH3C4d460UJx+6KUJdqm3so
- 2SNg==
-X-Gm-Message-State: AOAM5310Pqlom0MC32ppBTdRQRiWbK45Y8lyjUb+vcePBHGi3m7zO8rN
- blB7comWl2hkfhXRcCHkdPhdi3xIFyJSoQ==
-X-Received: by 2002:a63:703:: with SMTP id 3mr28597454pgh.253.1617730842113;
- Tue, 06 Apr 2021 10:40:42 -0700 (PDT)
-Received: from localhost.localdomain ([71.212.131.83])
- by smtp.gmail.com with ESMTPSA id h15sm19148056pfo.20.2021.04.06.10.40.41
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ bh=LL8587X7Os3xdf3l0BqHuyEB+e25QF1YaQmXQfCxQ2k=;
+ b=odEWWA57Rg/BeMSVWPNzIm102ZODbB3BOhqmhTWiA3wCkldEtAJyOWgp8hUvQA19Bq
+ 7RgNW5/Nst6R6xnqYH4lNfCaJz8cWbjzrLVZu7DC0a5J2VtF5LNKTPjC5nldA4rP8ECK
+ Lt3GEq09wal2DknF6lmp9QeKvugvjjKWAmRimgBFQ8vsVKFYVsGF1cro/L/nCw/aSUDZ
+ /YH4fPrpiqP+UifRC1dQPkDaJc4e0HjGLKT4+/qztPENLMvMcko5K48BcdP7TGyf1TcE
+ yJdgtclqXkcem6btRs5oHh8tP3KZhTtYvRxKn/pvqKqWUOGnPC8XOIlRPWqXd20jcNky
+ C6BQ==
+X-Gm-Message-State: AOAM533xy0S//f78La1c/dKG3nIPqckSGZ3KxskEvsyYfi8+nc9RDD2C
+ 5FK4E2HpHWwW0NUY3dR7HMv/TA==
+X-Received: by 2002:a17:902:8482:b029:e6:325b:5542 with SMTP id
+ c2-20020a1709028482b02900e6325b5542mr29793314plo.70.1617730841090; 
  Tue, 06 Apr 2021 10:40:41 -0700 (PDT)
+Received: from localhost.localdomain ([71.212.131.83])
+ by smtp.gmail.com with ESMTPSA id h15sm19148056pfo.20.2021.04.06.10.40.40
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 06 Apr 2021 10:40:40 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v4 09/12] target/arm: Rename mte_probe1 to mte_probe
-Date: Tue,  6 Apr 2021 10:40:28 -0700
-Message-Id: <20210406174031.64299-10-richard.henderson@linaro.org>
+Subject: [PATCH v4 08/12] target/arm: Merge mte_check1, mte_checkN
+Date: Tue,  6 Apr 2021 10:40:27 -0700
+Message-Id: <20210406174031.64299-9-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210406174031.64299-1-richard.henderson@linaro.org>
 References: <20210406174031.64299-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42f;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x631.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AqLoNQqWYo0E
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ltLarwhmrGA+
 
-For consistency with the mte_check1 + mte_checkN merge
-to mte_check, rename the probe function as well.
+The mte_check1 and mte_checkN functions are now identical.
+Drop mte_check1 and rename mte_checkN to mte_check.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/internals.h  | 2 +-
- target/arm/mte_helper.c | 6 +++---
- target/arm/sve_helper.c | 6 +++---
- 3 files changed, 7 insertions(+), 7 deletions(-)
+ target/arm/helper-a64.h    |  3 +--
+ target/arm/internals.h     |  5 +----
+ target/arm/mte_helper.c    | 26 +++-----------------------
+ target/arm/sve_helper.c    | 14 +++++++-------
+ target/arm/translate-a64.c |  4 ++--
+ 5 files changed, 14 insertions(+), 38 deletions(-)
 
+diff --git a/target/arm/helper-a64.h b/target/arm/helper-a64.h
+index c139fa81f9..7b706571bb 100644
+--- a/target/arm/helper-a64.h
++++ b/target/arm/helper-a64.h
+@@ -104,8 +104,7 @@ DEF_HELPER_FLAGS_3(autdb, TCG_CALL_NO_WG, i64, env, i64, i64)
+ DEF_HELPER_FLAGS_2(xpaci, TCG_CALL_NO_RWG_SE, i64, env, i64)
+ DEF_HELPER_FLAGS_2(xpacd, TCG_CALL_NO_RWG_SE, i64, env, i64)
+ 
+-DEF_HELPER_FLAGS_3(mte_check1, TCG_CALL_NO_WG, i64, env, i32, i64)
+-DEF_HELPER_FLAGS_3(mte_checkN, TCG_CALL_NO_WG, i64, env, i32, i64)
++DEF_HELPER_FLAGS_3(mte_check, TCG_CALL_NO_WG, i64, env, i32, i64)
+ DEF_HELPER_FLAGS_3(mte_check_zva, TCG_CALL_NO_WG, i64, env, i32, i64)
+ DEF_HELPER_FLAGS_3(irg, TCG_CALL_NO_RWG, i64, env, i64, i64)
+ DEF_HELPER_FLAGS_4(addsubg, TCG_CALL_NO_RWG_SE, i64, env, i64, s32, i32)
 diff --git a/target/arm/internals.h b/target/arm/internals.h
-index af1db2cd9c..886db56b58 100644
+index 2c77f2d50f..af1db2cd9c 100644
 --- a/target/arm/internals.h
 +++ b/target/arm/internals.h
-@@ -1145,7 +1145,7 @@ FIELD(MTEDESC, TCMA,  6, 2)
- FIELD(MTEDESC, WRITE, 8, 1)
+@@ -1146,10 +1146,7 @@ FIELD(MTEDESC, WRITE, 8, 1)
  FIELD(MTEDESC, SIZEM1, 9, SIMD_DATA_BITS - 9)  /* size - 1 */
  
--bool mte_probe1(CPUARMState *env, uint32_t desc, uint64_t ptr);
-+bool mte_probe(CPUARMState *env, uint32_t desc, uint64_t ptr);
- uint64_t mte_check(CPUARMState *env, uint32_t desc, uint64_t ptr, uintptr_t ra);
+ bool mte_probe1(CPUARMState *env, uint32_t desc, uint64_t ptr);
+-uint64_t mte_check1(CPUARMState *env, uint32_t desc,
+-                    uint64_t ptr, uintptr_t ra);
+-uint64_t mte_checkN(CPUARMState *env, uint32_t desc,
+-                    uint64_t ptr, uintptr_t ra);
++uint64_t mte_check(CPUARMState *env, uint32_t desc, uint64_t ptr, uintptr_t ra);
  
  static inline int allocation_tag_from_addr(uint64_t ptr)
+ {
 diff --git a/target/arm/mte_helper.c b/target/arm/mte_helper.c
-index 04479f33a1..6ac1d21318 100644
+index 9dfbb14358..04479f33a1 100644
 --- a/target/arm/mte_helper.c
 +++ b/target/arm/mte_helper.c
-@@ -121,7 +121,7 @@ static uint8_t *allocation_tag_mem(CPUARMState *env, int ptr_mmu_idx,
-      * exception for inaccessible pages, and resolves the virtual address
-      * into the softmmu tlb.
-      *
--     * When RA == 0, this is for mte_probe1.  The page is expected to be
-+     * When RA == 0, this is for mte_probe.  The page is expected to be
-      * valid.  Indicate to probe_access_flags no-fault, then assert that
-      * we received a valid page.
-      */
-@@ -808,12 +808,12 @@ uint64_t HELPER(mte_check)(CPUARMState *env, uint32_t desc, uint64_t ptr)
+@@ -789,8 +789,7 @@ static int mte_probe_int(CPUARMState *env, uint32_t desc, uint64_t ptr,
+     return 0;
+ }
+ 
+-uint64_t mte_checkN(CPUARMState *env, uint32_t desc,
+-                    uint64_t ptr, uintptr_t ra)
++uint64_t mte_check(CPUARMState *env, uint32_t desc, uint64_t ptr, uintptr_t ra)
+ {
+     uint64_t fault;
+     int ret = mte_probe_int(env, desc, ptr, ra, &fault);
+@@ -803,28 +802,9 @@ uint64_t mte_checkN(CPUARMState *env, uint32_t desc,
+     return useronly_clean_ptr(ptr);
+ }
+ 
+-uint64_t HELPER(mte_checkN)(CPUARMState *env, uint32_t desc, uint64_t ptr)
++uint64_t HELPER(mte_check)(CPUARMState *env, uint32_t desc, uint64_t ptr)
+ {
+-    return mte_checkN(env, desc, ptr, GETPC());
+-}
+-
+-uint64_t mte_check1(CPUARMState *env, uint32_t desc,
+-                    uint64_t ptr, uintptr_t ra)
+-{
+-    uint64_t fault;
+-    int ret = mte_probe_int(env, desc, ptr, ra, &fault);
+-
+-    if (unlikely(ret == 0)) {
+-        mte_check_fail(env, desc, fault, ra);
+-    } else if (ret < 0) {
+-        return ptr;
+-    }
+-    return useronly_clean_ptr(ptr);
+-}
+-
+-uint64_t HELPER(mte_check1)(CPUARMState *env, uint32_t desc, uint64_t ptr)
+-{
+-    return mte_check1(env, desc, ptr, GETPC());
++    return mte_check(env, desc, ptr, GETPC());
  }
  
  /*
-- * No-fault version of mte_check1, to be used by SVE for MemSingleNF.
-+ * No-fault version of mte_check, to be used by SVE for MemSingleNF.
-  * Returns false if the access is Checked and the check failed.  This
-  * is only intended to probe the tag -- the validity of the page must
-  * be checked beforehand.
-  */
--bool mte_probe1(CPUARMState *env, uint32_t desc, uint64_t ptr)
-+bool mte_probe(CPUARMState *env, uint32_t desc, uint64_t ptr)
- {
-     uint64_t fault;
-     int ret = mte_probe_int(env, desc, ptr, 0, &fault);
 diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
-index b63ddfc7f9..982240d104 100644
+index fd6c58f96a..b63ddfc7f9 100644
 --- a/target/arm/sve_helper.c
 +++ b/target/arm/sve_helper.c
-@@ -4869,7 +4869,7 @@ void sve_ldnfff1_r(CPUARMState *env, void *vg, const target_ulong addr,
-                 /* Watchpoint hit, see below. */
-                 goto do_fault;
-             }
--            if (mtedesc && !mte_probe1(env, mtedesc, addr + mem_off)) {
-+            if (mtedesc && !mte_probe(env, mtedesc, addr + mem_off)) {
-                 goto do_fault;
-             }
-             /*
-@@ -4919,7 +4919,7 @@ void sve_ldnfff1_r(CPUARMState *env, void *vg, const target_ulong addr,
-                      & BP_MEM_READ)) {
-                     goto do_fault;
+@@ -4442,7 +4442,7 @@ static void sve_cont_ldst_mte_check1(SVEContLdSt *info, CPUARMState *env,
+                                      uintptr_t ra)
+ {
+     sve_cont_ldst_mte_check_int(info, env, vg, addr, esize, msize,
+-                                mtedesc, ra, mte_check1);
++                                mtedesc, ra, mte_check);
+ }
+ 
+ static void sve_cont_ldst_mte_checkN(SVEContLdSt *info, CPUARMState *env,
+@@ -4451,7 +4451,7 @@ static void sve_cont_ldst_mte_checkN(SVEContLdSt *info, CPUARMState *env,
+                                      uintptr_t ra)
+ {
+     sve_cont_ldst_mte_check_int(info, env, vg, addr, esize, msize,
+-                                mtedesc, ra, mte_checkN);
++                                mtedesc, ra, mte_check);
+ }
+ 
+ 
+@@ -4826,7 +4826,7 @@ void sve_ldnfff1_r(CPUARMState *env, void *vg, const target_ulong addr,
+     if (fault == FAULT_FIRST) {
+         /* Trapping mte check for the first-fault element.  */
+         if (mtedesc) {
+-            mte_check1(env, mtedesc, addr + mem_off, retaddr);
++            mte_check(env, mtedesc, addr + mem_off, retaddr);
+         }
+ 
+         /*
+@@ -5373,7 +5373,7 @@ void sve_ld1_z(CPUARMState *env, void *vd, uint64_t *vg, void *vm,
+                                              info.attrs, BP_MEM_READ, retaddr);
+                     }
+                     if (mtedesc && arm_tlb_mte_tagged(&info.attrs)) {
+-                        mte_check1(env, mtedesc, addr, retaddr);
++                        mte_check(env, mtedesc, addr, retaddr);
+                     }
+                     host_fn(&scratch, reg_off, info.host);
+                 } else {
+@@ -5386,7 +5386,7 @@ void sve_ld1_z(CPUARMState *env, void *vd, uint64_t *vg, void *vm,
+                                              BP_MEM_READ, retaddr);
+                     }
+                     if (mtedesc && arm_tlb_mte_tagged(&info.attrs)) {
+-                        mte_check1(env, mtedesc, addr, retaddr);
++                        mte_check(env, mtedesc, addr, retaddr);
+                     }
+                     tlb_fn(env, &scratch, reg_off, addr, retaddr);
                  }
--                if (mtedesc && !mte_probe1(env, mtedesc, addr + mem_off)) {
-+                if (mtedesc && !mte_probe(env, mtedesc, addr + mem_off)) {
-                     goto do_fault;
-                 }
-                 host_fn(vd, reg_off, host + mem_off);
-@@ -5588,7 +5588,7 @@ void sve_ldff1_z(CPUARMState *env, void *vd, uint64_t *vg, void *vm,
-                 }
-                 if (mtedesc &&
-                     arm_tlb_mte_tagged(&info.attrs) &&
--                    !mte_probe1(env, mtedesc, addr)) {
-+                    !mte_probe(env, mtedesc, addr)) {
-                     goto fault;
+@@ -5552,7 +5552,7 @@ void sve_ldff1_z(CPUARMState *env, void *vd, uint64_t *vg, void *vm,
+      */
+     addr = base + (off_fn(vm, reg_off) << scale);
+     if (mtedesc) {
+-        mte_check1(env, mtedesc, addr, retaddr);
++        mte_check(env, mtedesc, addr, retaddr);
+     }
+     tlb_fn(env, vd, reg_off, addr, retaddr);
+ 
+@@ -5773,7 +5773,7 @@ void sve_st1_z(CPUARMState *env, void *vd, uint64_t *vg, void *vm,
                  }
  
+                 if (mtedesc && arm_tlb_mte_tagged(&info.attrs)) {
+-                    mte_check1(env, mtedesc, addr, retaddr);
++                    mte_check(env, mtedesc, addr, retaddr);
+                 }
+             }
+             i += 1;
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index 3af00ae90e..a68d5dd5d1 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -276,7 +276,7 @@ static TCGv_i64 gen_mte_check1_mmuidx(DisasContext *s, TCGv_i64 addr,
+         tcg_desc = tcg_const_i32(desc);
+ 
+         ret = new_tmp_a64(s);
+-        gen_helper_mte_check1(ret, cpu_env, tcg_desc, addr);
++        gen_helper_mte_check(ret, cpu_env, tcg_desc, addr);
+         tcg_temp_free_i32(tcg_desc);
+ 
+         return ret;
+@@ -310,7 +310,7 @@ TCGv_i64 gen_mte_checkN(DisasContext *s, TCGv_i64 addr, bool is_write,
+         tcg_desc = tcg_const_i32(desc);
+ 
+         ret = new_tmp_a64(s);
+-        gen_helper_mte_checkN(ret, cpu_env, tcg_desc, addr);
++        gen_helper_mte_check(ret, cpu_env, tcg_desc, addr);
+         tcg_temp_free_i32(tcg_desc);
+ 
+         return ret;
 -- 
 2.25.1
 

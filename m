@@ -1,119 +1,111 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp1359739lfr;
-        Tue, 6 Apr 2021 04:14:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxPfqDuuy6YnJ1QBU8PECmrnOfN0qTEAtZCDZhynRnjX8pdE3i7neP80ZliEqRzKr+iv8u2
-X-Received: by 2002:a05:6e02:219c:: with SMTP id j28mr23440619ila.229.1617707694760;
-        Tue, 06 Apr 2021 04:14:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617707694; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp1303930lfr;
+        Tue, 6 Apr 2021 02:57:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwa42u8fQ67MU5BBXk+n4gZt1NB14XLk8waapYWop94nGF6YQQukv9ePZh0FlnveTNjNGZ5
+X-Received: by 2002:a5e:dd0c:: with SMTP id t12mr22504857iop.50.1617703071610;
+        Tue, 06 Apr 2021 02:57:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617703071; cv=none;
         d=google.com; s=arc-20160816;
-        b=Qu8a8cVs+cdReyZph6TkNJxDYFY/THF2rx4dKLkyR2jdPdmLQ6NRAXiQ9N82XK/hHK
-         Cs+9D4nT1N11raRblxUPDVNRgz0FZrekXiHUbhw2/qUsV/3ZJ2h8ayKnlcj+LUbyT2eX
-         V4QQhgN06cu/imNsBaAQx4RzPuqjwaMaiqkuIICPkel6XIjGpRF9CGdk9JTY2EM5hY+i
-         DInPmK+831JNDCkBwmE3MQA+uo8sqW0me/MO9lCRYlJuWjtWGbXhZ6+TO6KRjMvNURta
-         S3EEOpn6H1u1klZxzhe7ihZAuJ5p0ykBVwV00ejEUgVdG5plWlquQ9Xt/1USENKKgDS0
-         UkEg==
+        b=krvxIzRyAm+dY1pbtHSn7gDzcEb8YsqctpTwtpUO9srKR6QTVZhgRmcEtC+/FZDmPs
+         FNUKyck05jtgVuQowJELoo00SW3Y88/dsv90iWyL0vCMqZI0gk4WkgdiyqkLaPdChkbR
+         1d0K+JWb11DVGam/HnOtLzkrA443VeHGFeBiFIRpZ4ZDzjVe7R1ifi8uCWBh+tmuiX2V
+         3WbCwuBr34mJ9T6m4dW5v6CM20cf8LnS5IXxLlNMD/UBwBWf4QkCRH0HC+qSRZTQC2Tq
+         kBvxBRm7sI/+SVP6Ijy3lYeEz5FlSi6Hu8x6COlxIo/558SOAiTxwDA5672kOoSrD3jN
+         7peQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=86rFKf/dpnhWd5MFpmO2yEWECsP2Q5v5meodLK7mXCw=;
-        b=Ipjyb4y95xgPN72nhZ9xm4Af4RbiwsU858Y/vO2pqacKRdT+4MJRctZcfWnzwg8sEj
-         h+NO372CCOdWXVozCPZr0liOSyV4aUz0w+B537AiWi/dXdN62rV0j7YgqdRj9AV+C93M
-         42blSYcbtuuuSAiNUhgvjSJ/z1FTJzh7UG/KT9+ge/ER986vTu1TsRIXvcm4Rt04g0/a
-         gREg1NisMwyHT9TM2J/SMNqB+yWnJsxIom8LLfKSIcMv4+y0dZ0KpEOPIOg1O1ihHW5M
-         svjWElWKIsxrbamWyssAYvbtba/ZJh0lo+vG72J8g6sleH5hiUjniLpXKD6JACDH6s9t
-         rTaA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=W/6nFjEZzf5Mt/a4GRZ/lGtFOoV/eUOKpfYMtsn+KCM=;
+        b=p/KC/8gxkri+qGGqfTSevjZRPqahOWghhTlq9JYr/ngBXv6HskXPPFPVGUU7n3lvtj
+         PB2wBdNSHTzZ5UeRJC42FLcfvk8LwDXpa79vy/Wvq7coZ3rhlzCS57zQD1wwFIRIk0Os
+         Qu9gNzBWmlE1dc12wgN/IpRUwd0bO3njX0II40VN9DuwiHXhgrFg3pgFBCGH8DPQvGA0
+         dxlANoSxO+ADSB52Ml+eZqFSdMkbTh8b9eBubBBuHsHw/phQ4bXtfo8kr0j3HY1+y9Gs
+         ozub2pun/NBBstolWJvRfL++IG0/cYoWYSpVoUesIczAEdCgbW6k01pn0st0ZMhmJwE5
+         b42g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=d9WIzlvM;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EHPfVmTj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x11si17893851iog.76.2021.04.06.04.14.54
+        by mx.google.com with ESMTPS id d17si18363279ilu.106.2021.04.06.02.57.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 Apr 2021 04:14:54 -0700 (PDT)
+        Tue, 06 Apr 2021 02:57:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=d9WIzlvM;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EHPfVmTj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43798 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:34074 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lTjfZ-0000W4-W5
-	for alex.bennee@linaro.org; Tue, 06 Apr 2021 07:14:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48630)
+	id 1lTiT0-0005VI-UJ
+	for alex.bennee@linaro.org; Tue, 06 Apr 2021 05:57:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53392)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1lTjf5-0000UJ-Eb
- for qemu-arm@nongnu.org; Tue, 06 Apr 2021 07:14:23 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:54778)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1lTiRF-0004aq-EQ
+ for qemu-arm@nongnu.org; Tue, 06 Apr 2021 05:56:01 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:57955)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1lTjf3-0005vR-Hx
- for qemu-arm@nongnu.org; Tue, 06 Apr 2021 07:14:23 -0400
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1lTiR7-0004g6-SZ
+ for qemu-arm@nongnu.org; Tue, 06 Apr 2021 05:56:00 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1617707660;
+ s=mimecast20190719; t=1617702951;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=86rFKf/dpnhWd5MFpmO2yEWECsP2Q5v5meodLK7mXCw=;
- b=d9WIzlvMnJAYDtLGvq4/Zi8IyjCF1F/Mkxjj9qUJTPz4PYmUe3C3wUC7Z1ViySnsgPbCGN
- GlQgdS6AdHmOF4kn9sQ9+xUEIt+kKTAivojT67IgtYAtBdsUvyr3m0EipPw/5ggW8um94F
- 9/50EA0uWeqBzuw/tkVSmzHLfqWfa4c=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-502-KKG0YSsjOLufT0pLHDuAhg-1; Tue, 06 Apr 2021 07:14:18 -0400
-X-MC-Unique: KKG0YSsjOLufT0pLHDuAhg-1
-Received: by mail-wm1-f69.google.com with SMTP id a65so73389wme.5
- for <qemu-arm@nongnu.org>; Tue, 06 Apr 2021 04:14:17 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=86rFKf/dpnhWd5MFpmO2yEWECsP2Q5v5meodLK7mXCw=;
- b=c2SCA0uliLZtmyjJ3/i47eo30w5wvQ9f5+a2S7F/jtVHPKkP39Efjsi+Faofrll3xe
- GAQWp23MoXmeUwuhkL8Mpur00swXRlXyzcCUvGiL8hLuKb+MZuZwrpkVcbvMDBd0K+hC
- ZXmlGqvs03boTI07Xc6Db8tKQ984/zfk4F990+erNzCv5HWr/VtOPQAgfrPuCV8SCmE+
- aAsuXQaqbia5EloAK1WW8x9RVbB7VVMYWeyYsn9BWD7Gr91RaWS45/fTOi7bJlncfyF2
- HahEjotjKREdTgZbnsiXkl3XiGrtvaOAoZfWN/W7w3OurLBj0EGBt61JgfrdXvyksWJU
- 1W6g==
-X-Gm-Message-State: AOAM532w/hUN05RWmvqbgbgZQ38kVIr1EZfobQxoXuCL62XfLrQVDCGT
- sLBR/lzzq5q3WFdpIww5SkCsB3ie5swnq1Em5MqK+F2Cqp6w2IAh+smGJjZnvR/IAo7SarqVoVE
- EjCC64QLQepXM
-X-Received: by 2002:adf:e7c2:: with SMTP id e2mr35814641wrn.338.1617707656991; 
- Tue, 06 Apr 2021 04:14:16 -0700 (PDT)
-X-Received: by 2002:adf:e7c2:: with SMTP id e2mr35814617wrn.338.1617707656824; 
- Tue, 06 Apr 2021 04:14:16 -0700 (PDT)
-Received: from redhat.com (bzq-79-183-252-180.red.bezeqint.net.
- [79.183.252.180])
- by smtp.gmail.com with ESMTPSA id o1sm4834072wrw.23.2021.04.06.04.14.15
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 06 Apr 2021 04:14:16 -0700 (PDT)
-Date: Tue, 6 Apr 2021 07:14:14 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PULL 1/2] x86: rename oem-id and oem-table-id properties
-Message-ID: <20210406111359.302193-2-mst@redhat.com>
-References: <20210406111359.302193-1-mst@redhat.com>
+ bh=W/6nFjEZzf5Mt/a4GRZ/lGtFOoV/eUOKpfYMtsn+KCM=;
+ b=EHPfVmTjGwzcD01zibQFgxpFxi6RPhd86rV2+s4fIuFPbViGGig3Yvu1uNPJaLputv/p9N
+ fW7z+xy6UrqHPEY3LenPgV02ETlxdQlS1PNQ4dAi5N6WHyzlnwzjA8XgO3OYmv3fyPCjja
+ 1mhdcJ4qf6pfFEhHRy+6yov70zLFHXg=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-533-xUWV8oEsNF-9l2OYk79HOg-1; Tue, 06 Apr 2021 05:55:48 -0400
+X-MC-Unique: xUWV8oEsNF-9l2OYk79HOg-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5E603107ACCA;
+ Tue,  6 Apr 2021 09:55:47 +0000 (UTC)
+Received: from [10.36.112.13] (ovpn-112-13.ams2.redhat.com [10.36.112.13])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id E9B2F7095B;
+ Tue,  6 Apr 2021 09:55:45 +0000 (UTC)
+Subject: Re: [PATCH] hw/arm/smmuv3: Emulate CFGI_STE_RANGE for an aligned
+ range of StreamIDs
+To: Zenghui Yu <yuzenghui@huawei.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, peter.maydell@linaro.org
+References: <20210402100449.528-1-yuzenghui@huawei.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <bb65638c-2fbf-6d42-f155-afcdeca6b265@redhat.com>
+Date: Tue, 6 Apr 2021 11:55:44 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.0
 MIME-Version: 1.0
-In-Reply-To: <20210406111359.302193-1-mst@redhat.com>
-X-Mailer: git-send-email 2.27.0.106.g8ac3dc51b1
-X-Mutt-Fcc: =sent
+In-Reply-To: <20210402100449.528-1-yuzenghui@huawei.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -126,90 +118,67 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>
+Cc: wanghaibin.wang@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ovLcDi1itpXp
+X-TUID: UoQYixG9vpfy
 
-From: Paolo Bonzini <pbonzini@redhat.com>
+Hi Zenghui,
 
-After introducing non-scalar machine properties, it would be preferrable
-to have a single acpitable property which includes both generic
-information (such as the OEM ids) and custom tables currently
-passed via -acpitable.
+On 4/2/21 12:04 PM, Zenghui Yu wrote:
+> In emulation of the CFGI_STE_RANGE command, we now take StreamID as the
+> start of the invalidation range, regardless of whatever the Range is,
+> whilst the spec clearly states that
+> 
+>  - "Invalidation is performed for an *aligned* range of 2^(Range+1)
+>     StreamIDs."
+> 
+>  - "The bottom Range+1 bits of the StreamID parameter are IGNORED,
+>     aligning the range to its size."
+> 
+> Take CFGI_ALL (where Range == 31) as an example, if there are some random
+> bits in the StreamID field, we'll fail to perform the full invalidation but
+> get a strange range (e.g., SMMUSIDRange={.start=1, .end=0}) instead. Rework
+> the emulation a bit to get rid of the discrepancy with the spec.
+> 
+> Signed-off-by: Zenghui Yu <yuzenghui@huawei.com>
+Acked-by: Eric Auger <eric.auger@redhat.com>
 
-Do not saddle ourselves with legacy oem-id and oem-table-id
-properties, instead mark them as experimental.
+Thanks!
 
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-Message-Id: <20210402082128.13854-1-pbonzini@redhat.com>
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
----
- include/hw/i386/x86.h          | 4 ++--
- hw/arm/virt.c                  | 8 ++++----
- tests/qtest/bios-tables-test.c | 2 +-
- 3 files changed, 7 insertions(+), 7 deletions(-)
-
-diff --git a/include/hw/i386/x86.h b/include/hw/i386/x86.h
-index 26c9cc45a4..c09b648dff 100644
---- a/include/hw/i386/x86.h
-+++ b/include/hw/i386/x86.h
-@@ -78,8 +78,8 @@ struct X86MachineState {
- 
- #define X86_MACHINE_SMM              "smm"
- #define X86_MACHINE_ACPI             "acpi"
--#define X86_MACHINE_OEM_ID           "oem-id"
--#define X86_MACHINE_OEM_TABLE_ID     "oem-table-id"
-+#define X86_MACHINE_OEM_ID           "x-oem-id"
-+#define X86_MACHINE_OEM_TABLE_ID     "x-oem-table-id"
- 
- #define TYPE_X86_MACHINE   MACHINE_TYPE_NAME("x86")
- OBJECT_DECLARE_TYPE(X86MachineState, X86MachineClass, X86_MACHINE)
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index aa2bbd14e0..bc5f948367 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -2670,19 +2670,19 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
-                                           "Set on/off to enable/disable "
-                                           "ITS instantiation");
- 
--    object_class_property_add_str(oc, "oem-id",
-+    object_class_property_add_str(oc, "x-oem-id",
-                                   virt_get_oem_id,
-                                   virt_set_oem_id);
--    object_class_property_set_description(oc, "oem-id",
-+    object_class_property_set_description(oc, "x-oem-id",
-                                           "Override the default value of field OEMID "
-                                           "in ACPI table header."
-                                           "The string may be up to 6 bytes in size");
- 
- 
--    object_class_property_add_str(oc, "oem-table-id",
-+    object_class_property_add_str(oc, "x-oem-table-id",
-                                   virt_get_oem_table_id,
-                                   virt_set_oem_table_id);
--    object_class_property_set_description(oc, "oem-table-id",
-+    object_class_property_set_description(oc, "x-oem-table-id",
-                                           "Override the default value of field OEM Table ID "
-                                           "in ACPI table header."
-                                           "The string may be up to 8 bytes in size");
-diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
-index e020c83d2a..156d4174aa 100644
---- a/tests/qtest/bios-tables-test.c
-+++ b/tests/qtest/bios-tables-test.c
-@@ -73,7 +73,7 @@
- 
- #define OEM_ID             "TEST"
- #define OEM_TABLE_ID       "OEM"
--#define OEM_TEST_ARGS      "-machine oem-id="OEM_ID",oem-table-id="OEM_TABLE_ID
-+#define OEM_TEST_ARGS      "-machine x-oem-id="OEM_ID",x-oem-table-id="OEM_TABLE_ID
- 
- typedef struct {
-     bool tcg_only;
--- 
-MST
+Eric
+> ---
+>  hw/arm/smmuv3.c | 12 ++++++++----
+>  1 file changed, 8 insertions(+), 4 deletions(-)
+> 
+> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+> index 3b87324ce2..8705612535 100644
+> --- a/hw/arm/smmuv3.c
+> +++ b/hw/arm/smmuv3.c
+> @@ -980,16 +980,20 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
+>          }
+>          case SMMU_CMD_CFGI_STE_RANGE: /* same as SMMU_CMD_CFGI_ALL */
+>          {
+> -            uint32_t start = CMD_SID(&cmd);
+> +            uint32_t sid = CMD_SID(&cmd), mask;
+>              uint8_t range = CMD_STE_RANGE(&cmd);
+> -            uint64_t end = start + (1ULL << (range + 1)) - 1;
+> -            SMMUSIDRange sid_range = {start, end};
+> +            SMMUSIDRange sid_range;
+>  
+>              if (CMD_SSEC(&cmd)) {
+>                  cmd_error = SMMU_CERROR_ILL;
+>                  break;
+>              }
+> -            trace_smmuv3_cmdq_cfgi_ste_range(start, end);
+> +
+> +            mask = (1ULL << (range + 1)) - 1;
+> +            sid_range.start = sid & ~mask;
+> +            sid_range.end = sid_range.start + mask;
+> +
+> +            trace_smmuv3_cmdq_cfgi_ste_range(sid_range.start, sid_range.end);
+>              g_hash_table_foreach_remove(bs->configs, smmuv3_invalidate_ste,
+>                                          &sid_range);
+>              break;
+> 
 

@@ -1,109 +1,89 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp1696170lfr;
-        Tue, 6 Apr 2021 10:53:56 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwx3SERGvV3E1FCt3J9AYbbOK0ZrYEH7+B+tunMwam1w0YVguvjoQX8vLPCV+jcb36OZK+Z
-X-Received: by 2002:a02:230d:: with SMTP id u13mr30669934jau.53.1617731636699;
-        Tue, 06 Apr 2021 10:53:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617731636; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp1718868lfr;
+        Tue, 6 Apr 2021 11:22:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx3zzm2YvXGeUxUBGLtuyYag5OClKmILpJvvpCjtwF18cKQsNpFQNds+pvo/fH/yKTGfvjW
+X-Received: by 2002:a92:c545:: with SMTP id a5mr25152230ilj.209.1617733362207;
+        Tue, 06 Apr 2021 11:22:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617733362; cv=none;
         d=google.com; s=arc-20160816;
-        b=PrcGEvgdWNo8/HLP0ms49nkSpq7eRyV/XHrj5MMWAWD5o1ShYnYa4r8wJMoYqtZgTI
-         MbnYziHPz8es/XUsJhypc9RJI1TtymfXeQrgsJjSkyrEnFLxNNFKZN1nTYpK7ZfS6hlC
-         AhRqzJtBGOOB5gIq/ATaHkmoYvsZmUT7P3VPWd65vJkIXzJIE0vBkMDm6Skpwvbu7Fsx
-         bT/PUQTuDbn8womlydSwn4Ig5L6I28qyLsA3PXacafnhG9qT+Mobeudn0NJQz6CyqY0z
-         HF4AhM2zDQQ5E+paDL+5q41ro8w/L12ZEZUHzxIc5wIB2QDizRb0Jjyfrrg1psKT6elj
-         f/SA==
+        b=Ty/8MiOu7zBY429S8He+b9jSDQBT/gjpl2Ov8tZohk41JP8f9AMDVVpF2dQHA31sgl
+         6Xf9Nu4k3eGvJYy2fgx/OFw2WdMDhKzLt9yjANOSep6XhnWN2rZgiJ159umaIBMO+Auc
+         pPuVZXGDMXlY6FSLBEJuFdqdqUJE+D24GP37fZl3aHLDPXDK0FWdhbTs6NIvsWUDdCFv
+         LoRRB2hLVIgQBqEOyO6Eamx13RuwCKaKgJfmbsO2ZbU/KqiRyczm1+kFz2yMWePuM974
+         eFwPx6iyxJELIB3rZSDkraySr5jjNZT8mKcbn7uJJtrL/EfQkRU23ToRJLyN8oa9Z+LN
+         tshg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=KoBTGUZmyMctY5haXIfN8TiPwOcc2SyNXLP6NLjWLR4=;
-        b=v2AxxmebL9zQCvX7BglxH5dK8m1KXUHKF/Pfht5OO3fjrhKMkNQzbTtdXRvHEA2O/t
-         sHPs9oH88AjCVPGIYW9lHMA4kjIa0vE6bFRIgTCg6G3bPCUzBNNKg8v4Y9wJbk5hrpP0
-         WjDdro4KBgAnYW5GgDS3HEmfej238/zcIYvBaBuc5XgTF3IMGduWmCDETE8kYf/M1Ve6
-         1JKwmuexZxB5g6Sc0Fad6wDLWNqAzHnu7LhKvAUy3/dRcY3NVwKkEb7QFVjCuqqSpNsj
-         fvYjcrgM4tPbG0tUCtlD7MVOVtcT/PUb23Xi3nZ8bWfAs+nEWNNyFV4E0O/b8TRNM2NX
-         dXew==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=seeZtAk69fndiTST/nzY6I/VxJw8koeAz6+3J448bho=;
+        b=OkA7P2/CtIr01SzTuUcXBDlkbLYNii4L2Xf/+oafceh6pAV/2edT1PJxFQUGofePvY
+         tbAN3lK97MY3CFMuYihqShbuRsuXAoSP2ZewQmuu3dkKh6H19wYKVDXIQU0V2dmDAbCP
+         iDkWPhly/BL1y4WZ+Kd3ZnEAFb4y+DY1rLIu5stsbRdcxaf7Obgueh81J7K2DU+QQPAB
+         id10+zYpLdmYQDLGXOIyia4kwE47uR1gT+vMyDCPXpxliDa+77Tu/liynpfyYy9sfudn
+         P26G5f/ZGIqx68gke//JNYukt0rw+fjSHLVzcUjgMUstfjiPI+GUeaWt0J7YtOf3Mcor
+         VCug==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ca6yD3Kd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g25si18318784ioc.83.2021.04.06.10.53.56
+        by mx.google.com with ESMTPS id c11si18986813iow.87.2021.04.06.11.22.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 Apr 2021 10:53:56 -0700 (PDT)
+        Tue, 06 Apr 2021 11:22:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ca6yD3Kd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52864 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:48216 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lTptj-00006y-VI
-	for alex.bennee@linaro.org; Tue, 06 Apr 2021 13:53:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46068)
+	id 1lTqLZ-0002sf-Fd
+	for alex.bennee@linaro.org; Tue, 06 Apr 2021 14:22:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56250)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lTph5-00023b-Kj
- for qemu-arm@nongnu.org; Tue, 06 Apr 2021 13:40:52 -0400
-Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b]:53771)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lTph0-0006Rg-RM
- for qemu-arm@nongnu.org; Tue, 06 Apr 2021 13:40:51 -0400
-Received: by mail-pj1-x102b.google.com with SMTP id t23so5093636pjy.3
- for <qemu-arm@nongnu.org>; Tue, 06 Apr 2021 10:40:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=KoBTGUZmyMctY5haXIfN8TiPwOcc2SyNXLP6NLjWLR4=;
- b=ca6yD3KdlP5KFU0u/1D3iFM2QN7G3MjvEwrFRF8iha8PtBfAge2O/p93CLrpXj0eZk
- egGV14FHEq/Mkd4A8xss3iig3FBbSS+PURlN5U2fPFgUq6XzlVjhNZlwHlnARPhZURyG
- w3lDdmjnzIxS1Y39bPn0ILIqE7PXpmIyh6RISEgMJ1CHijW91Su/UxLAoY/Ij6pp7qRe
- HQ7eyEqa018XdG8x1fLe/nN2qlZ00zAJQMQguEfwit65bbW3bN5CyY4h8PKXGAwTK5ul
- yUqQ5LKIuNkYFQPjXF7uzBC2AwtYTUcMbcgoYhlMs2g9oJ8GRRv9Df027x95BpTzGPkR
- YLKA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=KoBTGUZmyMctY5haXIfN8TiPwOcc2SyNXLP6NLjWLR4=;
- b=BCg2Wa73jfLJdN83P5EgkCTnG8Iy0y8efajcqlhdXZHVeegqshqa6AFcvd0Zk3Qv0A
- p1apaULj+MUxUYWkr6x2Syhc8jJd8/UQeyXUVlz5ZpRlOPODBS9Avdi25yMyEKOed11S
- 7P3x9uC7Ae5uzUskIZkcANhlnTerwmDgfNyXG2G6M0aURfBpryB5r17BXdy5YyahnMnL
- AEMQXK8Yo3Yvd1XgxqUyORsdfWi+uMaydi+R6tHazNA65lISl3MMK3oYK2x6tNi4W5iA
- MvOqTKugDwVcx+qSo59kgIe6uryFr8A5g6qxhiPZls46/4SiQ1sGZ5xjYcJijOtLOXCk
- Q4jQ==
-X-Gm-Message-State: AOAM533mLILhRXfLu3E6VPqVxH84VRUXq0/Qdi9YmcFMRSmJ6T32a6JL
- Uk6Hu8rTUf0a/WRJW+EyoNY3LdGH0xTN9w==
-X-Received: by 2002:a17:903:2306:b029:e7:1c8d:63fc with SMTP id
- d6-20020a1709032306b02900e71c8d63fcmr30115307plh.35.1617730845171; 
- Tue, 06 Apr 2021 10:40:45 -0700 (PDT)
-Received: from localhost.localdomain ([71.212.131.83])
- by smtp.gmail.com with ESMTPSA id h15sm19148056pfo.20.2021.04.06.10.40.44
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 06 Apr 2021 10:40:44 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v4 12/12] exec: Fix overlap of PAGE_ANON and PAGE_TARGET_1
-Date: Tue,  6 Apr 2021 10:40:31 -0700
-Message-Id: <20210406174031.64299-13-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210406174031.64299-1-richard.henderson@linaro.org>
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1lTqKv-0002rx-Lh; Tue, 06 Apr 2021 14:22:01 -0400
+Received: from mout.kundenserver.de ([217.72.192.73]:52463)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1lTqKt-0003Jg-JZ; Tue, 06 Apr 2021 14:22:01 -0400
+Received: from [192.168.100.1] ([82.142.14.126]) by mrelayeu.kundenserver.de
+ (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1Mi23L-1m7b0M3vur-00e3EV; Tue, 06 Apr 2021 20:21:56 +0200
+Subject: Re: [PATCH v4 12/12] exec: Fix overlap of PAGE_ANON and PAGE_TARGET_1
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
 References: <20210406174031.64299-1-richard.henderson@linaro.org>
+ <20210406174031.64299-13-richard.henderson@linaro.org>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <ce14d154-f2b6-2f3b-1aea-9c72f9b1c945@vivier.eu>
+Date: Tue, 6 Apr 2021 20:21:54 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
+In-Reply-To: <20210406174031.64299-13-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: fr
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Provags-ID: V03:K1:uIN/N7/kdKMQ5cfsufW537P7vuhhmlRwNMnv2QjWe2o3G9GbW+A
+ uNjpDJju1cLkdTRgfkARSC9KKCkzmyalT8NwfIYiy2dAVckSodQh3nmtgM2X4QxuvUAdEPF
+ LXaaobrJnEzn+qNtT06D+YsfBbyltVuixVsVgfL+KJsn3xekHCMIu/bt+yqk/Kxdac/gKh3
+ /DwzLqPL/GV2MNPXBGVxA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:+S9Y/tm41io=:KuAmDIW2N52Ff606g135rq
+ KT08m3MUkO6IH7+I5WAwiphMl887sSiyewJUVHfPKDv8lThypVTl26YJeoLyOMR0fJ3vpIIqO
+ kmL1HHJLV4LSboBcJaQJ+9fe0dDOKQ0Wlq3elBt48jZVOmh0IwXrr/+I+EohqXvBpJs9/BCx1
+ rvcsMxB1FKac9WRhRCFnV8voCkaWaiUgzLwbpIfc37GRHAm9zTsqulwCIyLtsJ4F62O5HE6Vx
+ ThB1TEDyd/0nTj30OoAJFS62ILWOnNJpaBA5FLcZST7w/41T6Ry5ByzSWVVM0LlViyub6lC+5
+ lJ6dixkM021oJUbVH3LpYR0p54rm0ZZzxTkqP6OVosZsgcNjyBjN7t0yWOd/zSjZSVP0ubXPI
+ nzfLYCk4N08GubGO3sjAgXZKTMsaaWhQuiYXCEAvWVWkHQn999lWW7L1rBhsq8UfLBVHxON00
+ Fq5iUMxD6FHKaDGrRuIiOJsHIQ8CQq1/7kqyT+12NxaQbSu/o5tE
+Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -116,38 +96,39 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, Laurent Vivier <laurent@vivier.eu>
+Cc: qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AiK6vFSKdqen
+X-TUID: G9Rhq7TUbOS4
 
-Unfortuately, the elements of PAGE_* were not in numerical
-order and so PAGE_ANON was added to an "unused" bit.
-As an arbitrary choice, move PAGE_TARGET_{1,2} together.
+Le 06/04/2021 à 19:40, Richard Henderson a écrit :
+> Unfortuately, the elements of PAGE_* were not in numerical
+> order and so PAGE_ANON was added to an "unused" bit.
+> As an arbitrary choice, move PAGE_TARGET_{1,2} together.
+> 
+> Cc: Laurent Vivier <laurent@vivier.eu>
+> Fixes: 26bab757d41b ("linux-user: Introduce PAGE_ANON")
+> Buglink: https://bugs.launchpad.net/bugs/1922617
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  include/exec/cpu-all.h | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
+> index d76b0b9e02..32cfb634c6 100644
+> --- a/include/exec/cpu-all.h
+> +++ b/include/exec/cpu-all.h
+> @@ -268,8 +268,8 @@ extern intptr_t qemu_host_page_mask;
+>  #define PAGE_RESERVED  0x0100
+>  #endif
+>  /* Target-specific bits that will be used via page_get_flags().  */
+> -#define PAGE_TARGET_1  0x0080
+> -#define PAGE_TARGET_2  0x0200
+> +#define PAGE_TARGET_1  0x0200
+> +#define PAGE_TARGET_2  0x0400
+>  
+>  #if defined(CONFIG_USER_ONLY)
+>  void page_dump(FILE *f);
+> 
 
-Cc: Laurent Vivier <laurent@vivier.eu>
-Fixes: 26bab757d41b ("linux-user: Introduce PAGE_ANON")
-Buglink: https://bugs.launchpad.net/bugs/1922617
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- include/exec/cpu-all.h | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
-index d76b0b9e02..32cfb634c6 100644
---- a/include/exec/cpu-all.h
-+++ b/include/exec/cpu-all.h
-@@ -268,8 +268,8 @@ extern intptr_t qemu_host_page_mask;
- #define PAGE_RESERVED  0x0100
- #endif
- /* Target-specific bits that will be used via page_get_flags().  */
--#define PAGE_TARGET_1  0x0080
--#define PAGE_TARGET_2  0x0200
-+#define PAGE_TARGET_1  0x0200
-+#define PAGE_TARGET_2  0x0400
- 
- #if defined(CONFIG_USER_ONLY)
- void page_dump(FILE *f);
--- 
-2.25.1
-
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>

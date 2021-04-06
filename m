@@ -1,106 +1,118 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp1423352lfr;
-        Tue, 6 Apr 2021 05:40:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzZgmVLMAhIsRfXVtG9r67lZ8SjR6WuKLPhVDmELHPc5g6NBAlQhDzeEuG31LVouRCU9HeH
-X-Received: by 2002:a05:6602:2056:: with SMTP id z22mr24067896iod.21.1617712803649;
-        Tue, 06 Apr 2021 05:40:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617712803; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp1518181lfr;
+        Tue, 6 Apr 2021 07:28:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw+OQkwQHx2wAzkrgd5xLVhY3oA8bZNAIuY/dkbK51fon4H6kioCTPvxvXWRpc8G4DqHJa/
+X-Received: by 2002:a92:da12:: with SMTP id z18mr23882010ilm.189.1617719283223;
+        Tue, 06 Apr 2021 07:28:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617719283; cv=none;
         d=google.com; s=arc-20160816;
-        b=hVy9KV+B+cFSHulqWjHIzoi+4a7wayhpLnrt7QGOcLvDTqqiYC0ijh4lRHVi0ZWFnj
-         MN9IeXlhYeBcpCKcYQBzDKnWkTqdzJmXQAOC5Uy1Vm8VqsJPAXJNGK3JUExKQjv6/EEb
-         qyG+AbLicGa3EwNszF06mj3aLElGNGqYvGN8MVE93/PI6WmILaFdKka4u3nOntgjiRP8
-         414il9lpSm5yF8xZ+jNXxGJsy6RrSknHnfxVpknSfa0K1FkxJB4cFOGQJbf6jlpc83EK
-         V/cgW1Ny1pkcAy9yeHrTVFUKvD9RQg0P95ZUfBShwx8wm6i1EGYBvncgglrJOLOtZWmw
-         kMDw==
+        b=DGx9CWe9NJuupCYLGgRMkfLyJPfOCSR3f0l/YNOPC6hada15Zqc93ykBDwti4vg/jZ
+         vD28sOPDE+8/kmRU8E/IthRaavJvsWyRzS9qJBZd7xUtIyHK/EfQx0VbbLlzvVzbj14K
+         E6ObBPwwlZkEOUnjV0BLF3HGLNY5aTf7rjCE1UixPsSA28ouJftspotAj00rr8oYL/lD
+         yhUzIGLcLS3RdFlRs64dq9RaFpPHcsHqRvSKYgeZ0FHWZUAenq9VXknsY0z/JYZQd5uf
+         bTyBY/Ly0NPBj7LEKZyr8U7/7aJoilW93PLcH9XFGl2WdE1wmGSsalS2ZMM+fWUK0b+2
+         bVlg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=/WE/0+VKoxu51PDqovmV0vWeK9VNfpOOjbCpw7K6nJc=;
-        b=xK+gAZfzqSXalwFl28S9YptS6izr6f9S+l+DN8mwtjGgPfK+/lqQOihaRjiZEE8k5a
-         BTqUlfZtkPTZ0bQSld0FDpOuRQXn8Q73uK6UmvXB50eg1AZ91ICHiHHv0jSNpBxjp1qU
-         M6uouzpWqIvApR4nh9SqjULiNsJ2AFdMq9ekLezAZ2VXknS5aY/9xXZ//D4MtMDS8b4V
-         RxaFaX/Bh+BO017vLQv8UtinYC9Zr/+xhc7oaWsM0mxZWuH6qFiuNOY0aQxDc41HOYRx
-         WutJsrk0+LU4QhuM2jojxtGz2+IXidlpui3wOmlCO4BdtaONLPTRGtQPZSs+WVmhuSIF
-         ziUw==
+        bh=WK/+Q636j9NbcjKaUJ90ilbbbJkCMwCKcdTntGnBjDU=;
+        b=w1oKQg2bCyz8Eh9Kogg6Cu5SomI37x4mW6Kg5BrE5572xXOLx1UNijRTdSdidlQOVo
+         tvPte7MVgm3oGNf9Pz2lOdNyq/zAoRsD+LtDnviWbo9T/AZ2ugm4WA5XdaEyk93gyQxt
+         ijMO/Qlu+JZzUpWPHd7tGOw6oSVnwpj8z6p4URxlHI6kWkpoOEdv3+JN2LfKh8TATPG8
+         tgtvQHn+ye6fCEaWfddwwBHr6IEOrrEwj1sKp3Y2HsXJ1aQVhJZiPk9aHUIuDeiVyuEr
+         qn1dyN7t48BLYkiRPB3U/LBHVTOaoXLNBQnDmhM3OcQYPs5zu+7Loh6BTdZFd9XX6HXN
+         lcJA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="SF/IgJmK";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ikBHWj0b;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j11si18874242ila.124.2021.04.06.05.40.03
+        by mx.google.com with ESMTPS id a6si8474538ilb.85.2021.04.06.07.28.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 Apr 2021 05:40:03 -0700 (PDT)
+        Tue, 06 Apr 2021 07:28:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="SF/IgJmK";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ikBHWj0b;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35788 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:40114 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lTkzy-0002VE-TM
-	for alex.bennee@linaro.org; Tue, 06 Apr 2021 08:40:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39832)
+	id 1lTmgU-0003fR-IU
+	for alex.bennee@linaro.org; Tue, 06 Apr 2021 10:28:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42100)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lTkxR-0006yv-VF
- for qemu-arm@nongnu.org; Tue, 06 Apr 2021 08:37:25 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:30873)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lTmfn-0002ti-N6
+ for qemu-arm@nongnu.org; Tue, 06 Apr 2021 10:27:19 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:43448)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lTkxL-0002rm-AQ
- for qemu-arm@nongnu.org; Tue, 06 Apr 2021 08:37:23 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lTmfi-0002DF-TC
+ for qemu-arm@nongnu.org; Tue, 06 Apr 2021 10:27:19 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1617712638;
+ s=mimecast20190719; t=1617719234;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=/WE/0+VKoxu51PDqovmV0vWeK9VNfpOOjbCpw7K6nJc=;
- b=SF/IgJmK1Y99NhFpIq4y5P692jlGrDz1rAaN4k3D0PmK4eOA2sXUBwb8Tj+PactXYl2ufv
- 7Ojo3/JNzfuXiu043sgGzqK3zeMcCgDptxkWtwnPxb4jcDKJOYcnDYh189WNnewAYwTGZM
- o8xKqfm5XT2YhD11UMd3Ojdv0bjiXSg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-288-OHmF_feFPIevwriBWq8UMQ-1; Tue, 06 Apr 2021 08:37:14 -0400
-X-MC-Unique: OHmF_feFPIevwriBWq8UMQ-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 91CC2107ACCD;
- Tue,  6 Apr 2021 12:37:13 +0000 (UTC)
-Received: from [10.36.112.13] (ovpn-112-13.ams2.redhat.com [10.36.112.13])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id E062160C33;
- Tue,  6 Apr 2021 12:37:11 +0000 (UTC)
-Subject: Re: [PATCH] hw/arm/virt-acpi-build: Fix GSIV values of the {GERR,
- Sync} interrupts
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20210402084731.93-1-yuzenghui@huawei.com>
- <7f42bc9f-3fb8-d24d-d9e4-9b93784504a6@redhat.com>
- <CAFEAcA-87+rOJa6kBZU2J2ACO07h1DDZe6MTcBCUrx_Zwp3UHg@mail.gmail.com>
- <24c077d2-0e0e-02bc-0f92-4086be7e8982@redhat.com>
- <CAFEAcA-ehqeCw4kEFKXHefaT9_9GDO=xSG9cG_SOgedOpCoE5Q@mail.gmail.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <f7dda3fe-bfc2-35b1-6928-adb5e1278728@redhat.com>
-Date: Tue, 6 Apr 2021 14:37:10 +0200
+ bh=WK/+Q636j9NbcjKaUJ90ilbbbJkCMwCKcdTntGnBjDU=;
+ b=ikBHWj0bKKNWD+0UjPBQidM79USM5yIfgpaPMiJCBqb3LJ1z+g04tP0dzbgjv4oLBVVtr3
+ 09ga/DRLDZl+f0oV9lvS+0T8vxZpdOCew3jDy8bPrxvGB43oQ8JLqVm0ecCsuQ062sSC1c
+ 14I6Ke7isgAgHu9GECUnV6uoBIv/dlE=
+Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
+ [209.85.218.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-463-8dpz_MsmPFqWnMFiwIX7DQ-1; Tue, 06 Apr 2021 10:27:10 -0400
+X-MC-Unique: 8dpz_MsmPFqWnMFiwIX7DQ-1
+Received: by mail-ej1-f72.google.com with SMTP id o11so1846506ejx.23
+ for <qemu-arm@nongnu.org>; Tue, 06 Apr 2021 07:27:10 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=WK/+Q636j9NbcjKaUJ90ilbbbJkCMwCKcdTntGnBjDU=;
+ b=labfrJEQhtPQu6nDo+d8tMAw/mBPGyTbT6FNVHnh+/w1HsVUNcvmVMs6H32ZXDlbYe
+ 8lBQOFzUzAY3Mm1xR1ntbDT4KoIOyKQWvRP8zpe+2D99JVmCIppGKd9CEdgNvugOGRHy
+ 7JZsmhr3u5DD0fLcALbn7oktsUXMVdImGibCKX56a9L3dx1H26wjZzhF6DkLJeQekLa2
+ 78768zi+pVvJAj39CTY/1UVT6Jy1COilAzda9kVVIt3RfYqfbb9p7SFqNnua2u1Wa1gU
+ J0pt8SSR0XnOMV5KjYC1YhVPm9ZBclKyy1+xYOw13EKuJbz8hPRlHsJtiCRRcCa/vQrC
+ 3SLQ==
+X-Gm-Message-State: AOAM532g0k/2Ick43+sOwix9DJav+0FnmhSnj0LmjcS1nCK3CUhYR+b2
+ JIYADbW7sp3k/NIVnFgFE70XDQRfjxqtIfI6oQFzhlLco/XCIOVviYUoHSiHcR321NpqzB9IjjS
+ OYv4oTy9cMisU
+X-Received: by 2002:a17:906:1f89:: with SMTP id
+ t9mr5727154ejr.144.1617719229188; 
+ Tue, 06 Apr 2021 07:27:09 -0700 (PDT)
+X-Received: by 2002:a17:906:1f89:: with SMTP id
+ t9mr5727120ejr.144.1617719228860; 
+ Tue, 06 Apr 2021 07:27:08 -0700 (PDT)
+Received: from [192.168.1.36] (17.red-88-21-201.staticip.rima-tde.net.
+ [88.21.201.17])
+ by smtp.gmail.com with ESMTPSA id t15sm14132064edw.84.2021.04.06.07.27.07
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 06 Apr 2021 07:27:08 -0700 (PDT)
+Subject: Re: [PATCH-for-6.0 1/2] disas/arm-a64.cc: Fix build error
+To: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org,
+ Eric Blake <eblake@redhat.com>
+References: <20210320041854.68668-1-gshan@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <06a9d6c3-b0e6-9aac-0d97-979ef319d353@redhat.com>
+Date: Tue, 6 Apr 2021 16:27:06 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.0
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-ehqeCw4kEFKXHefaT9_9GDO=xSG9cG_SOgedOpCoE5Q@mail.gmail.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+In-Reply-To: <20210320041854.68668-1-gshan@redhat.com>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
@@ -108,7 +120,7 @@ X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
  RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -121,56 +133,68 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- Zenghui Yu <yuzenghui@huawei.com>, wanghaibin.wang@huawei.com,
- Prem Mallappa <prem.mallappa@broadcom.com>
+Cc: peter.maydell@linaro.org, Kamil Rytarowski <kamil@netbsd.org>,
+ richard.henderson@linaro.org, qemu-devel@nongnu.org, shan.gavin@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 30zsr3bFumDu
+X-TUID: 7eS/EEYOnB7m
 
-Hi Peter,
+Still worth 6.0 IMO.
 
-On 4/6/21 2:31 PM, Peter Maydell wrote:
-> On Tue, 6 Apr 2021 at 13:23, Auger Eric <eric.auger@redhat.com> wrote:
->>
->> Hi Peter,
->>
->> On 4/6/21 12:44 PM, Peter Maydell wrote:
->>> On Tue, 6 Apr 2021 at 11:10, Auger Eric <eric.auger@redhat.com> wrote:
->>>>
->>>> Hi Zenghui,
->>>>
->>>> On 4/2/21 10:47 AM, Zenghui Yu wrote:
->>>>> The GSIV values in SMMUv3 IORT node are not correct as they don't match
->>>>> the SMMUIrq enumeration, which describes the IRQ<->PIN mapping used by
->>>>> our emulated vSMMU.
->>>>>
->>>>> Fixes: a703b4f6c1ee ("hw/arm/virt-acpi-build: Add smmuv3 node in IORT table")
->>>>> Signed-off-by: Zenghui Yu <yuzenghui@huawei.com>
->>>> Acked-by: Eric Auger <eric.auger@redhat.com>
->>>
->>> Eric, when you send an acked-by tag do you mean to say that you've
->>> reviewed the patch, or merely that you think it's basically the
->>> right thing but you haven't actually looked at the details?
->>
->> I mean I have reviewed the patch carefully and I think it is good to go.
->> I thought that as a maintainer for the arm smmu component I was supposed
->> to send an A-b instead of an R-b.
+On 3/20/21 5:18 AM, Gavin Shan wrote:
+> This fixes the following build error with gcc v11.0.0:
 > 
-> The usual meaning I think is that "Acked-by" means "I'm the maintainer,
-> I've seen this going by, and I'm basically OK with this" (ie it's you
-> saying "I'm not NAKing it") -- so it's not as "strong" as a "Reviewed-by"
-> tag (which means "I've reviewed it").
-
-Hum OK, I thought it was stronger than the R-b. So in the future, wrt
-the SMMU component, I will give an R-b as I always do a proper review.
-
-Thanks
-
-Eric
+>   # gcc --version
+>   gcc (GCC) 11.0.0 20210210 (Red Hat 11.0.0-0)
 > 
-> thanks
-> -- PMM
+>   [969/2604] Compiling C++ object libcommon.fa.p/disas_arm-a64.cc.o
+>   FAILED: libcommon.fa.p/disas_arm-a64.cc.o
+>     :
+>   In file included from /usr/include/glib-2.0/glib/gmacros.h:241,
+>                    from /usr/lib64/glib-2.0/include/glibconfig.h:9,
+>                    from /usr/include/glib-2.0/glib/gtypes.h:32,
+>                    from /usr/include/glib-2.0/glib/galloca.h:32,
+>                    from /usr/include/glib-2.0/glib.h:30,
+>                    from /home/gavin/sandbox/qemu.main/include/glib-compat.h:32,
+>                    from /home/gavin/sandbox/qemu.main/include/qemu/osdep.h:126,
+>                    from ../disas/arm-a64.cc:21:
+>   /usr/include/c++/11/type_traits:56:3: error: template with C linkage
+>      56 |   template<typename _Tp, _Tp __v>
+>         |   ^~~~~~~~
+>   ../disas/arm-a64.cc:20:1: note: ‘extern "C"’ linkage started here
+>      20 | extern "C" {
+>         | ^~~~~~~~~~
+
++Kamil & Eric for:
+
+https://lists.nongnu.org/archive/html/qemu-devel/2017-05/msg03321.html
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg450478.html
+
+> 
+> Signed-off-by: Gavin Shan <gshan@redhat.com>
+> ---
+>  disas/arm-a64.cc | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/disas/arm-a64.cc b/disas/arm-a64.cc
+> index 9fa779e175..8545c04038 100644
+> --- a/disas/arm-a64.cc
+> +++ b/disas/arm-a64.cc
+> @@ -17,13 +17,13 @@
+>   * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+>   */
+>  
+> +#include "vixl/a64/disasm-a64.h"
+> +
+>  extern "C" {
+>  #include "qemu/osdep.h"
+>  #include "disas/dis-asm.h"
+>  }
+>  
+> -#include "vixl/a64/disasm-a64.h"
+> -
+>  using namespace vixl;
+>  
+>  static Decoder *vixl_decoder = NULL;
 > 
 

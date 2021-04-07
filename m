@@ -1,131 +1,115 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp796029lfr;
-        Wed, 7 Apr 2021 13:29:36 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyWlRrBLi8KzPG/o2vxLaTIU/YgUx0w6ULmpUHvMLK6APgtUgF5vA24GMV+T8waEyQACOmP
-X-Received: by 2002:a05:6e02:4:: with SMTP id h4mr3996831ilr.137.1617827376438;
-        Wed, 07 Apr 2021 13:29:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617827376; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp834938lfr;
+        Wed, 7 Apr 2021 14:22:56 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxPKfMHv1lN0nIrvCIINJ2j84YXa4XwXMV3xaylQpmDFJC+C2Lz7jBys+wIukemnxNnmHlJ
+X-Received: by 2002:a92:c545:: with SMTP id a5mr4338044ilj.209.1617830575735;
+        Wed, 07 Apr 2021 14:22:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617830575; cv=none;
         d=google.com; s=arc-20160816;
-        b=Jn98zoq3UgGaR8oywIYs2xlnrwSt49yLqTeAEptdJ293shomo8BfkWIilKoZur1yLh
-         ncuPmCSnNBrgGnGW9YFiiglytFC4hUjtYj4GP5hYkrdpSh8gUWUNuOK3LI3p285Rgbad
-         ah1cVR8Oh+SG9YAICYEQOna6rMeeuFS5PaSuBzDNjkXWRc0Qw9Fdql4u3S/8MX+cnMvF
-         xhanNlFDkHFA7aWvpVoN4hTxEOa6HSKuA9u3f2OGw4dOVZCfY1LUmXKxmGF4xkjNUJHk
-         mfpsGyCaWXC63e8dNz/aMVkEySJMXrb4gIlrd2MMAd8DXxVGaVvr7ct8q1LlkVqQPmLT
-         B94Q==
+        b=ATKW0S7j1UqFSOExOoqRxHTLOMtSaAgCQ8wJBt7i2EJBAcuy1Q6q0eLTf2TPAUiUHR
+         PJ1Tw9R0vV6twZFSKOfYzD24U+tfwSsnE+4CaBBM5mGQ+oSLRCvflO/sPJD3h+wfE2VW
+         vYN/I1UFdUiKuPHoGSwb11bFtHt4pRYBayycNYboGtelxbL9OfJoYeKZ4VswZlpF+XzI
+         Zqin5B0vnNHibZA0TTEY6CiWIlTD4V13zC+RqxV6CdBvLoTRxlWuwybeX+cGvoKcGuFx
+         Svw1M6jfHfos/Lmq3tkjeWsLApwx90A0fzmO6VXi20Q2mFSIruyuPy2PNsWe2gGCyJqj
+         MMLw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:organization:references:in-reply-to:date:to:from
-         :subject:message-id:dkim-signature;
-        bh=FNrZXGdGATpqTaN3EdS09LqNE5NE1sMRSEVIlIThm+g=;
-        b=Rz4NpL/zkUwsYDpyVlYtxn2JGKSBSUf9pHwa2DAWWUZtVUxXXW3Dmj08PwcJU+FVNx
-         oyoG+APolyH9zBgND7saCtp7mJsRCuI//mWEaHL4HGPBhioFKNEXyeOsdktOFtvY95J0
-         y+XoWcJmCNZ4VZXpvRxbboeq5LtnCVJmsEgBbONsClR4rzCVSAf23gFcw6JdMsNPImNo
-         EgqTS81ACaaP2r1xuF2A0kSWKopiRktS96meQ63yYDjVxKLKU6n6kxNxP+Sfsk3+AakS
-         iR0mXFxIEtSMrfkCFKLaKLZ3rPMI4Io6NqXBKnKEt/sbkVbzhoHkN78DzhhhSN5+GOrL
-         3mGQ==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=bxSRo5Lz05Q2oAUlevfKffQ7CI3Qlu00OtRTpMt4uQk=;
+        b=x2U2zHk4W4D5iVlBv3CDqB999zOdbzZ/e1pWrZDvny/8u5BQ3h8abVAXvCSqZVl917
+         yftTy8d/AysassrdFMRyfT+wQojumVhPv6l6upKPfWebwKRNEoL4w4agijx36Y2f/2xi
+         Jcmiin1j80dG7h41amc+iBv4qR1MnJkhEpwNYwoBxeO9K++TWvtg0ndEftC7oiu1kUeJ
+         sdhhwsIgzy0B9LxdQOCazFTPh5vJxYN+Q3Hw8qMOSreEIj/i9l0nA2c9zE3m4ZF1LRjA
+         wsXxjH0akEJ5oFLwz4GVzzpMobPEApF4mM0rG4ptEzMR11EFS/BcrrQQbqS1zs89X4FC
+         fyxA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@ibm.com header.s=pp1 header.b=P5+WX1a7;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Y3OBmh1N;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n19si22896843jat.39.2021.04.07.13.29.36
+        by mx.google.com with ESMTPS id q15si20752392ilo.109.2021.04.07.14.22.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Apr 2021 13:29:36 -0700 (PDT)
+        Wed, 07 Apr 2021 14:22:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@ibm.com header.s=pp1 header.b=P5+WX1a7;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Y3OBmh1N;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Received: from localhost ([::1]:33824 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:41640 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lUEnv-00034O-K4
-	for alex.bennee@linaro.org; Wed, 07 Apr 2021 16:29:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60130)
+	id 1lUFdX-0005ce-0X
+	for alex.bennee@linaro.org; Wed, 07 Apr 2021 17:22:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45420)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eajames@linux.ibm.com>)
- id 1lUEnm-00033w-G7; Wed, 07 Apr 2021 16:29:26 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:48350)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eajames@linux.ibm.com>)
- id 1lUEnb-00085r-2p; Wed, 07 Apr 2021 16:29:26 -0400
-Received: from pps.filterd (m0187473.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 137K3gKF146311; Wed, 7 Apr 2021 16:29:06 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : subject :
- from : to : cc : date : in-reply-to : references : content-type :
- mime-version : content-transfer-encoding; s=pp1;
- bh=FNrZXGdGATpqTaN3EdS09LqNE5NE1sMRSEVIlIThm+g=;
- b=P5+WX1a7GHOIDc48sRxU6s9n7D1dMhQEuU7oXMQLMcAUf6tb0hlmj3Vx71uxFYrZHhtf
- rJZZXKirQucXpFhmB8umtE+QV4qpwRnbwNhf34wLxBbgXU3MH+BPuk3dt+X6oiez00a3
- lkCed6Xn+ocCj6Nz4bHVFgNCeu8W5/KhJy+yMdOAnO0OoBJTbs98ViENufUOI1wPNxj6
- A4IQhAiaLGgrnWPY8eUC4mo/23/jKz8dYh2m771pOjiGz+dwMtWk96AaPx8fQobes/Sc
- vTVMo3iSnqaivTHbTkSlEWGxoKZJGougJzZwi8rGi7e080bDxNf4Fs4LfEfT0mRKnAWO PA== 
-Received: from ppma02wdc.us.ibm.com (aa.5b.37a9.ip4.static.sl-reverse.com
- [169.55.91.170])
- by mx0a-001b2d01.pphosted.com with ESMTP id 37rvn0vfky-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 07 Apr 2021 16:29:06 -0400
-Received: from pps.filterd (ppma02wdc.us.ibm.com [127.0.0.1])
- by ppma02wdc.us.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 137KSEL9013900;
- Wed, 7 Apr 2021 20:29:04 GMT
-Received: from b01cxnp23032.gho.pok.ibm.com (b01cxnp23032.gho.pok.ibm.com
- [9.57.198.27]) by ppma02wdc.us.ibm.com with ESMTP id 37ryqc6xrd-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 07 Apr 2021 20:29:04 +0000
-Received: from b01ledav004.gho.pok.ibm.com (b01ledav004.gho.pok.ibm.com
- [9.57.199.109])
- by b01cxnp23032.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 137KT4uc30015908
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 7 Apr 2021 20:29:04 GMT
-Received: from b01ledav004.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 521EA112061;
- Wed,  7 Apr 2021 20:29:04 +0000 (GMT)
-Received: from b01ledav004.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id A0A28112062;
- Wed,  7 Apr 2021 20:29:03 +0000 (GMT)
-Received: from v0005c16 (unknown [9.211.105.252])
- by b01ledav004.gho.pok.ibm.com (Postfix) with ESMTP;
- Wed,  7 Apr 2021 20:29:03 +0000 (GMT)
-Message-ID: <5f0d0a86266582660d4d6a60fe8d9777b150c62b.camel@linux.ibm.com>
-Subject: Re: [PATCH 13/24] hw/misc/aspeed_xdma: Add AST2600 support
-From: Eddie James <eajames@linux.ibm.com>
-To: =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>
-Date: Wed, 07 Apr 2021 15:29:03 -0500
-In-Reply-To: <20210407171637.777743-14-clg@kaod.org>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lUFd8-0005cD-ID; Wed, 07 Apr 2021 17:22:30 -0400
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634]:39534)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lUFd7-0007Cl-2m; Wed, 07 Apr 2021 17:22:30 -0400
+Received: by mail-ej1-x634.google.com with SMTP id qo10so19624376ejb.6;
+ Wed, 07 Apr 2021 14:22:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=bxSRo5Lz05Q2oAUlevfKffQ7CI3Qlu00OtRTpMt4uQk=;
+ b=Y3OBmh1N0eU0CkwjVex+NKlE3szvHjV9qreKyWAgR7B7Cvz2bBIH5gUUy7C5Jgsuf2
+ 1pw9p/ZPSls6iiK3Rwz4j5YXAMiS00UfkiDClzzkeyZfBQt0nQUP2+x6kgtDY7E/uV/7
+ j/1U00dy/NZqNUoE+QSv9akD0o7b96sDj0QNoxLJBf4OVIA6denXW2AvP9h/4LetMFyV
+ 6xwtlIO/XuMdTLkYB8aR5HQ+kMgwzOGYFGP3j65NGXMAvsCCnl3mX1zfxuQhWPLpZ0oX
+ 6TD7oPWO0MfWQEiudwD4nhReVPkuIn7PnoernnmSdvN9XEE3oLwrJCZvyFp3nypKAU8w
+ 1QQg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=bxSRo5Lz05Q2oAUlevfKffQ7CI3Qlu00OtRTpMt4uQk=;
+ b=kDSbMOctFUVvlRb5NM8Go+4IJBhf4z/C8UrNcP3ytLJbD5wp+SmraeSEhKI2n8T/Ve
+ FD++GmWNZRcU4SRfK+PvzV1vLBm57QqpW0yKdSgns9iI7HzLoUUtXbCC0gQDxVxsIdQn
+ 0HYAhmP2offZxkFLUH7bZHrICnvEJmrKpyyepqW44hzOOG+HNJZ8HPUU5iF6/yUnMX4N
+ Tsm/J6g/ffpZm+JFeteu+zgqb6YWGjlNCy8SxmuG2iZjRtgWitHNUQBosp1yIy9OZCDt
+ Hz9kFQ7wGKb2QdtWQaq0fGXirE/E3DPbqU+53PgSrpiHTrFLN/SDawYBRaxHjN2cYYg4
+ i2Tw==
+X-Gm-Message-State: AOAM533qK6rP5aRN0desscX+ghjOioBtK6e1wESfXV21vrvLd0UqLTb9
+ GaJPzmOdZ/t67a5mP939rZUIP5Eu3GHsLw==
+X-Received: by 2002:a17:906:8a65:: with SMTP id
+ hy5mr6258106ejc.250.1617830547328; 
+ Wed, 07 Apr 2021 14:22:27 -0700 (PDT)
+Received: from [192.168.1.36] (17.red-88-21-201.staticip.rima-tde.net.
+ [88.21.201.17])
+ by smtp.gmail.com with ESMTPSA id v5sm8531043eds.69.2021.04.07.14.22.26
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 07 Apr 2021 14:22:26 -0700 (PDT)
+Subject: Re: [PATCH 03/24] aspeed/i2c: Fix DMA address mask
+To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Peter Maydell <peter.maydell@linaro.org>
 References: <20210407171637.777743-1-clg@kaod.org>
- <20210407171637.777743-14-clg@kaod.org>
-Organization: IBM
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5 (3.28.5-14.el8) 
-Mime-Version: 1.0
+ <20210407171637.777743-4-clg@kaod.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <aeee3229-19fc-1bbb-19b4-a72be1c454c6@amsat.org>
+Date: Wed, 7 Apr 2021 23:22:25 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
+MIME-Version: 1.0
+In-Reply-To: <20210407171637.777743-4-clg@kaod.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: -o9GFAAlc4j3YSwB9pzq7QDhVD47U6ev
-X-Proofpoint-ORIG-GUID: -o9GFAAlc4j3YSwB9pzq7QDhVD47U6ev
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.761
- definitions=2021-04-07_10:2021-04-07,
- 2021-04-07 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- clxscore=1011 phishscore=0
- mlxlogscore=999 bulkscore=0 lowpriorityscore=0 suspectscore=0 adultscore=0
- spamscore=0 mlxscore=0 malwarescore=0 impostorscore=0 priorityscore=1501
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2104060000
- definitions=main-2104070140
-Received-SPF: pass client-ip=148.163.156.1; envelope-from=eajames@linux.ibm.com;
- helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
-X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::634;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x634.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -139,313 +123,36 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
+ qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AT/NymPZQt4B
+X-TUID: y2/HTHAGl5PP
 
-On Wed, 2021-04-07 at 19:16 +0200, Cédric Le Goater wrote:
-> When we introduced support for the AST2600 SoC, the XDMA controller
-> was forgotten. It went unnoticed because it's not used under
-> emulation.
-> But the register layout being different, the reset procedure is bogus
-> and this breaks kexec.
+Hi Cédric,
+
+On 4/7/21 7:16 PM, Cédric Le Goater wrote:
+> The RAM memory region is now used for DMAs accesses instead of the
+> memory address space region. Mask off the top bits of the DMA address
+> to reflect this change.
 > 
-> Add a AspeedXDMAClass to take into account the register differences.
-
-Thanks Cedric!
-
-Reviewed-by: Eddie James <eajames@linux.ibm.com>
-
-> 
-> Cc: Eddie James <eajames@linux.ibm.com>
+> Cc: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > Signed-off-by: Cédric Le Goater <clg@kaod.org>
 > ---
->  include/hw/misc/aspeed_xdma.h |  17 ++++-
->  hw/arm/aspeed_ast2600.c       |   3 +-
->  hw/arm/aspeed_soc.c           |   3 +-
->  hw/misc/aspeed_xdma.c         | 124 +++++++++++++++++++++++++++-----
-> --
->  4 files changed, 121 insertions(+), 26 deletions(-)
+>  hw/i2c/aspeed_i2c.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/include/hw/misc/aspeed_xdma.h
-> b/include/hw/misc/aspeed_xdma.h
-> index a2dea96984f3..b1478fd1c681 100644
-> --- a/include/hw/misc/aspeed_xdma.h
-> +++ b/include/hw/misc/aspeed_xdma.h
-> @@ -13,7 +13,10 @@
->  #include "qom/object.h"
->  
->  #define TYPE_ASPEED_XDMA "aspeed.xdma"
-> -OBJECT_DECLARE_SIMPLE_TYPE(AspeedXDMAState, ASPEED_XDMA)
-> +#define TYPE_ASPEED_2400_XDMA TYPE_ASPEED_XDMA "-ast2400"
-> +#define TYPE_ASPEED_2500_XDMA TYPE_ASPEED_XDMA "-ast2500"
-> +#define TYPE_ASPEED_2600_XDMA TYPE_ASPEED_XDMA "-ast2600"
-> +OBJECT_DECLARE_TYPE(AspeedXDMAState, AspeedXDMAClass, ASPEED_XDMA)
->  
->  #define ASPEED_XDMA_NUM_REGS (ASPEED_XDMA_REG_SIZE /
-> sizeof(uint32_t))
->  #define ASPEED_XDMA_REG_SIZE 0x7C
-> @@ -28,4 +31,16 @@ struct AspeedXDMAState {
->      uint32_t regs[ASPEED_XDMA_NUM_REGS];
->  };
->  
-> +struct AspeedXDMAClass {
-> +    SysBusDeviceClass parent_class;
-> +
-> +    uint8_t cmdq_endp;
-> +    uint8_t cmdq_wrp;
-> +    uint8_t cmdq_rdp;
-> +    uint8_t intr_ctrl;
-> +    uint32_t intr_ctrl_mask;
-> +    uint8_t intr_status;
-> +    uint32_t intr_complete;
-> +};
-> +
->  #endif /* ASPEED_XDMA_H */
-> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-> index e0fbb020c770..c60824bfeecb 100644
-> --- a/hw/arm/aspeed_ast2600.c
-> +++ b/hw/arm/aspeed_ast2600.c
-> @@ -187,7 +187,8 @@ static void aspeed_soc_ast2600_init(Object *obj)
->          object_initialize_child(obj, "mii[*]", &s->mii[i],
-> TYPE_ASPEED_MII);
->      }
->  
-> -    object_initialize_child(obj, "xdma", &s->xdma,
-> TYPE_ASPEED_XDMA);
-> +    snprintf(typename, sizeof(typename), TYPE_ASPEED_XDMA "-%s",
-> socname);
-> +    object_initialize_child(obj, "xdma", &s->xdma, typename);
->  
->      snprintf(typename, sizeof(typename), "aspeed.gpio-%s", socname);
->      object_initialize_child(obj, "gpio", &s->gpio, typename);
-> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-> index 8ed29113f79f..4a95d27d9d63 100644
-> --- a/hw/arm/aspeed_soc.c
-> +++ b/hw/arm/aspeed_soc.c
-> @@ -199,7 +199,8 @@ static void aspeed_soc_init(Object *obj)
->                                  TYPE_FTGMAC100);
->      }
->  
-> -    object_initialize_child(obj, "xdma", &s->xdma,
-> TYPE_ASPEED_XDMA);
-> +    snprintf(typename, sizeof(typename), TYPE_ASPEED_XDMA "-%s",
-> socname);
-> +    object_initialize_child(obj, "xdma", &s->xdma, typename);
->  
->      snprintf(typename, sizeof(typename), "aspeed.gpio-%s", socname);
->      object_initialize_child(obj, "gpio", &s->gpio, typename);
-> diff --git a/hw/misc/aspeed_xdma.c b/hw/misc/aspeed_xdma.c
-> index 533d237e3ce2..1c21577c98c9 100644
-> --- a/hw/misc/aspeed_xdma.c
-> +++ b/hw/misc/aspeed_xdma.c
-> @@ -30,6 +30,19 @@
->  #define  XDMA_IRQ_ENG_STAT_US_COMP BIT(4)
->  #define  XDMA_IRQ_ENG_STAT_DS_COMP BIT(5)
->  #define  XDMA_IRQ_ENG_STAT_RESET   0xF8000000
-> +
-> +#define XDMA_AST2600_BMC_CMDQ_ADDR   0x14
-> +#define XDMA_AST2600_BMC_CMDQ_ENDP   0x18
-> +#define XDMA_AST2600_BMC_CMDQ_WRP    0x1c
-> +#define XDMA_AST2600_BMC_CMDQ_RDP    0x20
-> +#define XDMA_AST2600_IRQ_CTRL        0x38
-> +#define  XDMA_AST2600_IRQ_CTRL_US_COMP    BIT(16)
-> +#define  XDMA_AST2600_IRQ_CTRL_DS_COMP    BIT(17)
-> +#define  XDMA_AST2600_IRQ_CTRL_W_MASK     0x017003FF
-> +#define XDMA_AST2600_IRQ_STATUS      0x3c
-> +#define  XDMA_AST2600_IRQ_STATUS_US_COMP  BIT(16)
-> +#define  XDMA_AST2600_IRQ_STATUS_DS_COMP  BIT(17)
-> +
->  #define XDMA_MEM_SIZE              0x1000
->  
->  #define TO_REG(addr) ((addr) / sizeof(uint32_t))
-> @@ -52,56 +65,48 @@ static void aspeed_xdma_write(void *opaque,
-> hwaddr addr, uint64_t val,
->      unsigned int idx;
->      uint32_t val32 = (uint32_t)val;
->      AspeedXDMAState *xdma = opaque;
-> +    AspeedXDMAClass *axc = ASPEED_XDMA_GET_CLASS(xdma);
->  
->      if (addr >= ASPEED_XDMA_REG_SIZE) {
->          return;
->      }
->  
-> -    switch (addr) {
-> -    case XDMA_BMC_CMDQ_ENDP:
-> +    if (addr == axc->cmdq_endp) {
->          xdma->regs[TO_REG(addr)] = val32 & XDMA_BMC_CMDQ_W_MASK;
-> -        break;
-> -    case XDMA_BMC_CMDQ_WRP:
-> +    } else if (addr == axc->cmdq_wrp) {
->          idx = TO_REG(addr);
->          xdma->regs[idx] = val32 & XDMA_BMC_CMDQ_W_MASK;
-> -        xdma->regs[TO_REG(XDMA_BMC_CMDQ_RDP)] = xdma->regs[idx];
-> +        xdma->regs[TO_REG(axc->cmdq_rdp)] = xdma->regs[idx];
->  
->          trace_aspeed_xdma_write(addr, val);
->  
->          if (xdma->bmc_cmdq_readp_set) {
->              xdma->bmc_cmdq_readp_set = 0;
->          } else {
-> -            xdma->regs[TO_REG(XDMA_IRQ_ENG_STAT)] |=
-> -                XDMA_IRQ_ENG_STAT_US_COMP |
-> XDMA_IRQ_ENG_STAT_DS_COMP;
-> +            xdma->regs[TO_REG(axc->intr_status)] |= axc-
-> >intr_complete;
->  
-> -            if (xdma->regs[TO_REG(XDMA_IRQ_ENG_CTRL)] &
-> -                (XDMA_IRQ_ENG_CTRL_US_COMP |
-> XDMA_IRQ_ENG_CTRL_DS_COMP))
-> +            if (xdma->regs[TO_REG(axc->intr_ctrl)] & axc-
-> >intr_complete) {
->                  qemu_irq_raise(xdma->irq);
-> +            }
+> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+> index 518a3f5c6f9d..e7133528899f 100644
+> --- a/hw/i2c/aspeed_i2c.c
+> +++ b/hw/i2c/aspeed_i2c.c
+> @@ -601,7 +601,7 @@ static void aspeed_i2c_bus_write(void *opaque, hwaddr offset,
+>              break;
 >          }
-> -        break;
-> -    case XDMA_BMC_CMDQ_RDP:
-> +    } else if (addr == axc->cmdq_rdp) {
->          trace_aspeed_xdma_write(addr, val);
 >  
->          if (val32 == XDMA_BMC_CMDQ_RDP_MAGIC) {
->              xdma->bmc_cmdq_readp_set = 1;
->          }
-> -        break;
-> -    case XDMA_IRQ_ENG_CTRL:
-> -        xdma->regs[TO_REG(addr)] = val32 & XDMA_IRQ_ENG_CTRL_W_MASK;
-> -        break;
-> -    case XDMA_IRQ_ENG_STAT:
-> +    } else if (addr == axc->intr_ctrl) {
-> +        xdma->regs[TO_REG(addr)] = val32 & axc->intr_ctrl_mask;
-> +    } else if (addr == axc->intr_status) {
->          trace_aspeed_xdma_write(addr, val);
->  
->          idx = TO_REG(addr);
-> -        if (val32 & (XDMA_IRQ_ENG_STAT_US_COMP |
-> XDMA_IRQ_ENG_STAT_DS_COMP)) {
-> -            xdma->regs[idx] &=
-> -                ~(XDMA_IRQ_ENG_STAT_US_COMP |
-> XDMA_IRQ_ENG_STAT_DS_COMP);
-> +        if (val32 & axc->intr_complete) {
-> +            xdma->regs[idx] &= ~axc->intr_complete;
->              qemu_irq_lower(xdma->irq);
->          }
-> -        break;
-> -    default:
-> +    } else {
->          xdma->regs[TO_REG(addr)] = val32;
-> -        break;
->      }
->  }
->  
-> @@ -127,10 +132,11 @@ static void aspeed_xdma_realize(DeviceState
-> *dev, Error **errp)
->  static void aspeed_xdma_reset(DeviceState *dev)
->  {
->      AspeedXDMAState *xdma = ASPEED_XDMA(dev);
-> +    AspeedXDMAClass *axc = ASPEED_XDMA_GET_CLASS(xdma);
->  
->      xdma->bmc_cmdq_readp_set = 0;
->      memset(xdma->regs, 0, ASPEED_XDMA_REG_SIZE);
-> -    xdma->regs[TO_REG(XDMA_IRQ_ENG_STAT)] = XDMA_IRQ_ENG_STAT_RESET;
-> +    xdma->regs[TO_REG(axc->intr_status)] = XDMA_IRQ_ENG_STAT_RESET;
->  
->      qemu_irq_lower(xdma->irq);
->  }
-> @@ -144,6 +150,73 @@ static const VMStateDescription
-> aspeed_xdma_vmstate = {
->      },
->  };
->  
-> +static void aspeed_2600_xdma_class_init(ObjectClass *klass, void
-> *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +    AspeedXDMAClass *axc = ASPEED_XDMA_CLASS(klass);
-> +
-> +    dc->desc = "ASPEED 2600 XDMA Controller";
-> +
-> +    axc->cmdq_endp = XDMA_AST2600_BMC_CMDQ_ENDP;
-> +    axc->cmdq_wrp = XDMA_AST2600_BMC_CMDQ_WRP;
-> +    axc->cmdq_rdp = XDMA_AST2600_BMC_CMDQ_RDP;
-> +    axc->intr_ctrl = XDMA_AST2600_IRQ_CTRL;
-> +    axc->intr_ctrl_mask = XDMA_AST2600_IRQ_CTRL_W_MASK;
-> +    axc->intr_status = XDMA_AST2600_IRQ_STATUS;
-> +    axc->intr_complete = XDMA_AST2600_IRQ_STATUS_US_COMP |
-> +        XDMA_AST2600_IRQ_STATUS_DS_COMP;
-> +}
-> +
-> +static const TypeInfo aspeed_2600_xdma_info = {
-> +    .name = TYPE_ASPEED_2600_XDMA,
-> +    .parent = TYPE_ASPEED_XDMA,
-> +    .class_init = aspeed_2600_xdma_class_init,
-> +};
-> +
-> +static void aspeed_2500_xdma_class_init(ObjectClass *klass, void
-> *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +    AspeedXDMAClass *axc = ASPEED_XDMA_CLASS(klass);
-> +
-> +    dc->desc = "ASPEED 2500 XDMA Controller";
-> +
-> +    axc->cmdq_endp = XDMA_BMC_CMDQ_ENDP;
-> +    axc->cmdq_wrp = XDMA_BMC_CMDQ_WRP;
-> +    axc->cmdq_rdp = XDMA_BMC_CMDQ_RDP;
-> +    axc->intr_ctrl = XDMA_IRQ_ENG_CTRL;
-> +    axc->intr_ctrl_mask = XDMA_IRQ_ENG_CTRL_W_MASK;
-> +    axc->intr_status = XDMA_IRQ_ENG_STAT;
-> +    axc->intr_complete = XDMA_IRQ_ENG_STAT_US_COMP |
-> XDMA_IRQ_ENG_STAT_DS_COMP;
-> +};
-> +
-> +static const TypeInfo aspeed_2500_xdma_info = {
-> +    .name = TYPE_ASPEED_2500_XDMA,
-> +    .parent = TYPE_ASPEED_XDMA,
-> +    .class_init = aspeed_2500_xdma_class_init,
-> +};
-> +
-> +static void aspeed_2400_xdma_class_init(ObjectClass *klass, void
-> *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +    AspeedXDMAClass *axc = ASPEED_XDMA_CLASS(klass);
-> +
-> +    dc->desc = "ASPEED 2400 XDMA Controller";
-> +
-> +    axc->cmdq_endp = XDMA_BMC_CMDQ_ENDP;
-> +    axc->cmdq_wrp = XDMA_BMC_CMDQ_WRP;
-> +    axc->cmdq_rdp = XDMA_BMC_CMDQ_RDP;
-> +    axc->intr_ctrl = XDMA_IRQ_ENG_CTRL;
-> +    axc->intr_ctrl_mask = XDMA_IRQ_ENG_CTRL_W_MASK;
-> +    axc->intr_status = XDMA_IRQ_ENG_STAT;
-> +    axc->intr_complete = XDMA_IRQ_ENG_STAT_US_COMP |
-> XDMA_IRQ_ENG_STAT_DS_COMP;
-> +};
-> +
-> +static const TypeInfo aspeed_2400_xdma_info = {
-> +    .name = TYPE_ASPEED_2400_XDMA,
-> +    .parent = TYPE_ASPEED_XDMA,
-> +    .class_init = aspeed_2400_xdma_class_init,
-> +};
-> +
->  static void aspeed_xdma_class_init(ObjectClass *classp, void *data)
->  {
->      DeviceClass *dc = DEVICE_CLASS(classp);
-> @@ -158,10 +231,15 @@ static const TypeInfo aspeed_xdma_info = {
->      .parent        = TYPE_SYS_BUS_DEVICE,
->      .instance_size = sizeof(AspeedXDMAState),
->      .class_init    = aspeed_xdma_class_init,
-> +    .class_size    = sizeof(AspeedXDMAClass),
-> +    .abstract      = true,
->  };
->  
->  static void aspeed_xdma_register_type(void)
->  {
->      type_register_static(&aspeed_xdma_info);
-> +    type_register_static(&aspeed_2400_xdma_info);
-> +    type_register_static(&aspeed_2500_xdma_info);
-> +    type_register_static(&aspeed_2600_xdma_info);
->  }
->  type_init(aspeed_xdma_register_type);
+> -        bus->dma_addr = value & 0xfffffffc;
+> +        bus->dma_addr = value & 0x3ffffffc;
 
+This field is migrated (aspeed_i2c_bus_vmstate).
+
+Does the first patch "aspeed/smc: Use the RAM memory region for DMAs"
+break the migration?

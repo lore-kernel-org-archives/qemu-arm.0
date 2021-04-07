@@ -1,91 +1,90 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp660569lfr;
-        Wed, 7 Apr 2021 10:28:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyGdy7EJfES0hmHY2pi5tBxj2J3WXGs5HaJALrFBpC/FHOMgtDdAly+JSRaSCQTOQV3Q48g
-X-Received: by 2002:a05:6e02:e14:: with SMTP id a20mr3646080ilk.282.1617816520045;
-        Wed, 07 Apr 2021 10:28:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617816520; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp660710lfr;
+        Wed, 7 Apr 2021 10:28:50 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyCDUem17hp5g13HHv8KidwsFDeHImdoQRAfHsSKDIQzENRJnCZ9Vp+CKuh8nh9MOKi7o4f
+X-Received: by 2002:a92:1910:: with SMTP id 16mr3588830ilz.201.1617816529425;
+        Wed, 07 Apr 2021 10:28:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617816529; cv=none;
         d=google.com; s=arc-20160816;
-        b=H2eeMwsv7JJpa3pxiFP9CIgML+kLmWcqBDPn0/Ujp/AHHJpVDkmPCE9Px9A1U7VNKK
-         QEl7MBX5TYMxbEYl84+JSd1C0vAwdecLu66qR3GMq74YKFrStFN79RjxFyh7+zzQ+IcI
-         7vkTfYYHf3V9WnMPZhHMdcXW7d/0ICX+ciqC7hHIKbH+9O4ZBCxLeg+/IZSCFWOy2bfF
-         9CDRfHFq8fNQ+HUGtLOkeuDG+dps+pTK8UzZS2etiUXiLgozdznAxLSwYFxEvLv0CHw5
-         UQh9o6A3ncbl9CGArLau9NZDGVwzFbhotqGQo79HW0U+4dLLIBfO8NiR2sqaNy+DI/xu
-         IFLA==
+        b=qCf6+K8F+SWsf7YrXUKeMinuqaYi8yeVt97M/FQoJzm1qnkvmU3ANghiqwQiJe2RzS
+         EpbibcceBIZ2E/Xd2jyOFeAWwjwb67eQ7pEz5sval/SgYblWkGiSKCa1t13wqDZcwpTU
+         8CxMfqfrMPlpBKSGOx4LZ/rtGjDVHykpalHu3ZTmu/GM1DcEtqKu8Hp3JvP/X6QVnLV9
+         UbqgJGmuaCHVZCNJduVdic5EOT6yc/FFhG70GRjMC0dpygWuLNVFgXZsiULX2+fusRas
+         yD9AvkAK8Syoa735aM3SbQORkEcWRPVX9Z0eKvSqN3BxtCCedQZKbsmhpnW72Cxp9LEO
+         1SQw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=xdMbyX+T/8e62T7dLc5KbyNcc1sqHxb4wsdUNPBX3SI=;
-        b=mGJ5pKZI5dpxxXq3i717HIbJki1Fu/22g815oBzYZnlIrvtMynoQZvJ33m0MzkzBUI
-         3qTH0I2/cZW4iHFZ+iXB/GLwP3y5d9yGkW2LYsiDb2DXnB5LGsUVc67UUmpUTiHvgWFv
-         HxPESSphv8O+Krq2Aq/pmhtwG6KnYeZqvswVCa5ML8VGDLazrHFc/3rAWMvJF/LnStwi
-         s0ZOhYM18JNY1XYA5fdukRU5LJ+C4wqqegApCmqb2mOLZK9jcM73exmsf/XHTJ/HA4Kg
-         CY7f4Jl6Z4pnpfn5Zbg88/sqQObp42XZMxLlwjeRINqapcvHy5OVCbvQNkG4kZekl88h
-         yKww==
+        bh=/qjuOuyN8Pz3dGwEGEHhnW3NlsyTdB/+b/HQXOvfrZM=;
+        b=m+9jYPu6YyWYfBoKCOMEldqmib6EImCM/4BVFBue40LQqxH31O2to9+54jIa6I129C
+         e3Cehg8CCBSjwLEWYRBWQF9FJYrMFITZxWNvmfWiha9500wTl7C8dxwEL8Tr93izCoUw
+         2wmd6sRBZK4Z1eOPaHnd4qpeSbdhDNDmiD7xSA5egPbBY7NyxxjVeIdxO71TBK3EFsKB
+         HCYjH3cjuhe72pgpQ1nv3xivbq5XjJG3eHHL5ux9Gk1f+G0AfewpBiJz3XB2fawCKMy1
+         gyhEuVWN62EOMIJNZbIVcaBDtyPOVi15kMWTRhqFh7FkRPIXHQ9DdjYH0IN7/YMP5GA0
+         cN2w==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n5si2752464ili.18.2021.04.07.10.28.39
+        by mx.google.com with ESMTPS id z18si1632561jan.106.2021.04.07.10.28.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Apr 2021 10:28:40 -0700 (PDT)
+        Wed, 07 Apr 2021 10:28:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54740 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55762 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lUByp-00054P-9f
-	for alex.bennee@linaro.org; Wed, 07 Apr 2021 13:28:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39020)
+	id 1lUByy-0005TL-P2
+	for alex.bennee@linaro.org; Wed, 07 Apr 2021 13:28:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39082)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1lUBnj-0007az-T5; Wed, 07 Apr 2021 13:17:12 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:27970
- helo=mx0a-001b2d01.pphosted.com)
+ id 1lUBnl-0007fw-T4; Wed, 07 Apr 2021 13:17:13 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:17832)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1lUBnf-0006nX-Mz; Wed, 07 Apr 2021 13:17:11 -0400
-Received: from pps.filterd (m0098420.ppops.net [127.0.0.1])
- by mx0b-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 137H3qPT124924; Wed, 7 Apr 2021 13:16:58 -0400
-Received: from ppma03fra.de.ibm.com (6b.4a.5195.ip4.static.sl-reverse.com
- [149.81.74.107])
- by mx0b-001b2d01.pphosted.com with ESMTP id 37rvm4rkwh-1
+ id 1lUBnh-0006kj-Q9; Wed, 07 Apr 2021 13:17:13 -0400
+Received: from pps.filterd (m0187473.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
+ 137H3ioQ102181; Wed, 7 Apr 2021 13:16:49 -0400
+Received: from ppma06ams.nl.ibm.com (66.31.33a9.ip4.static.sl-reverse.com
+ [169.51.49.102])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 37rvn0r4tj-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 07 Apr 2021 13:16:57 -0400
-Received: from pps.filterd (ppma03fra.de.ibm.com [127.0.0.1])
- by ppma03fra.de.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 137HCpJB023540;
- Wed, 7 Apr 2021 17:16:56 GMT
-Received: from b06avi18878370.portsmouth.uk.ibm.com
- (b06avi18878370.portsmouth.uk.ibm.com [9.149.26.194])
- by ppma03fra.de.ibm.com with ESMTP id 37rvc1gfyg-1
+ Wed, 07 Apr 2021 13:16:48 -0400
+Received: from pps.filterd (ppma06ams.nl.ibm.com [127.0.0.1])
+ by ppma06ams.nl.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 137HEXZm002980;
+ Wed, 7 Apr 2021 17:16:46 GMT
+Received: from b06cxnps3074.portsmouth.uk.ibm.com
+ (d06relay09.portsmouth.uk.ibm.com [9.149.109.194])
+ by ppma06ams.nl.ibm.com with ESMTP id 37rvbw8w5e-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 07 Apr 2021 17:16:56 +0000
-Received: from d06av24.portsmouth.uk.ibm.com (d06av24.portsmouth.uk.ibm.com
- [9.149.105.60])
- by b06avi18878370.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP
- id 137HGWrE27787558
+ Wed, 07 Apr 2021 17:16:45 +0000
+Received: from d06av25.portsmouth.uk.ibm.com (d06av25.portsmouth.uk.ibm.com
+ [9.149.105.61])
+ by b06cxnps3074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 137HGhWP33489248
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 7 Apr 2021 17:16:32 GMT
-Received: from d06av24.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 9484342042;
- Wed,  7 Apr 2021 17:16:53 +0000 (GMT)
-Received: from d06av24.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 5AD2D4203F;
- Wed,  7 Apr 2021 17:16:53 +0000 (GMT)
+ Wed, 7 Apr 2021 17:16:43 GMT
+Received: from d06av25.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id C8A8B11C050;
+ Wed,  7 Apr 2021 17:16:43 +0000 (GMT)
+Received: from d06av25.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 56EBA11C04C;
+ Wed,  7 Apr 2021 17:16:43 +0000 (GMT)
 Received: from smtp.tlslab.ibm.com (unknown [9.101.4.1])
- by d06av24.portsmouth.uk.ibm.com (Postfix) with SMTP;
- Wed,  7 Apr 2021 17:16:53 +0000 (GMT)
+ by d06av25.portsmouth.uk.ibm.com (Postfix) with SMTP;
+ Wed,  7 Apr 2021 17:16:43 +0000 (GMT)
 Received: from yukon.ibmuc.com (unknown [9.171.70.229])
- by smtp.tlslab.ibm.com (Postfix) with ESMTP id BEBC62200C7;
- Wed,  7 Apr 2021 19:16:52 +0200 (CEST)
+ by smtp.tlslab.ibm.com (Postfix) with ESMTP id 5F328220190;
+ Wed,  7 Apr 2021 19:16:42 +0200 (CEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH 18/24] aspeed: Add support for the rainier-bmc board
-Date: Wed,  7 Apr 2021 19:16:31 +0200
-Message-Id: <20210407171637.777743-19-clg@kaod.org>
+Subject: [PATCH 03/24] aspeed/i2c: Fix DMA address mask
+Date: Wed,  7 Apr 2021 19:16:16 +0200
+Message-Id: <20210407171637.777743-4-clg@kaod.org>
 X-Mailer: git-send-email 2.26.3
 In-Reply-To: <20210407171637.777743-1-clg@kaod.org>
 References: <20210407171637.777743-1-clg@kaod.org>
@@ -93,18 +92,18 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: x99BAhtajh7rS4sOvz0iCXEJHVOXzqyW
-X-Proofpoint-ORIG-GUID: x99BAhtajh7rS4sOvz0iCXEJHVOXzqyW
+X-Proofpoint-GUID: BJiI0AYrpp1pBzXTKZNIdUEuS4Nzhxwh
+X-Proofpoint-ORIG-GUID: BJiI0AYrpp1pBzXTKZNIdUEuS4Nzhxwh
 X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.761
  definitions=2021-04-07_09:2021-04-07,
  2021-04-07 signatures=0
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- malwarescore=0 suspectscore=0
- spamscore=0 phishscore=0 adultscore=0 mlxscore=0 clxscore=1034
- impostorscore=0 priorityscore=1501 mlxlogscore=999 bulkscore=0
- lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2104060000 definitions=main-2104070116
-Received-SPF: softfail client-ip=148.163.158.5; envelope-from=clg@kaod.org;
+ clxscore=1034 phishscore=0
+ mlxlogscore=798 bulkscore=0 lowpriorityscore=0 suspectscore=0 adultscore=0
+ spamscore=0 mlxscore=0 malwarescore=0 impostorscore=0 priorityscore=1501
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2104060000
+ definitions=main-2104070116
+Received-SPF: softfail client-ip=148.163.156.1; envelope-from=clg@kaod.org;
  helo=mx0a-001b2d01.pphosted.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -125,152 +124,38 @@ List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tTI2Z7Vc7n2R
+X-TUID: l3eUU78rdn3J
 
-The Rainer BMC board is a board for the middle range POWER10 IBM systems.
+The RAM memory region is now used for DMAs accesses instead of the
+memory address space region. Mask off the top bits of the DMA address
+to reflect this change.
 
+Cc: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
- hw/arm/aspeed.c | 79 +++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 79 insertions(+)
+ hw/i2c/aspeed_i2c.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 97dcca74feb4..19588e17fec8 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -135,6 +135,10 @@ struct AspeedMachineState {
- #define TACOMA_BMC_HW_STRAP1  0x00000000
- #define TACOMA_BMC_HW_STRAP2  0x00000040
+diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+index 518a3f5c6f9d..e7133528899f 100644
+--- a/hw/i2c/aspeed_i2c.c
++++ b/hw/i2c/aspeed_i2c.c
+@@ -601,7 +601,7 @@ static void aspeed_i2c_bus_write(void *opaque, hwaddr=
+ offset,
+             break;
+         }
 =20
-+/* Rainier hardware value: (QEMU prototype) */
-+#define RAINIER_BMC_HW_STRAP1 0x00000000
-+#define RAINIER_BMC_HW_STRAP2 0x00000000
-+
- /*
-  * The max ram region is for firmwares that scan the address space
-  * with load/store to guess how much RAM the SoC has.
-@@ -589,6 +593,58 @@ static void g220a_bmc_i2c_init(AspeedMachineState *b=
-mc)
-                           eeprom_buf);
- }
+-        bus->dma_addr =3D value & 0xfffffffc;
++        bus->dma_addr =3D value & 0x3ffffffc;
+         break;
 =20
-+static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
-+{
-+    AspeedSoCState *soc =3D &bmc->soc;
-+
-+    /* The rainier expects a TMP275 but a TMP105 is compatible */
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), TYPE_TMP10=
-5,
-+                     0x48);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), TYPE_TMP10=
-5,
-+                     0x49);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), TYPE_TMP10=
-5,
-+                     0x4a);
-+
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5), TYPE_TMP10=
-5,
-+                     0x48);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5), TYPE_TMP10=
-5,
-+                     0x49);
-+
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), TYPE_TMP10=
-5,
-+                     0x48);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), TYPE_TMP10=
-5,
-+                     0x4a);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), TYPE_TMP10=
-5,
-+                     0x4b);
-+
-+    /* Bus 7: TODO dps310@76 */
-+    /* Bus 7: TODO max31785@52 */
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), "pca9552",=
- 0x61);
-+    /* Bus 7: TODO si7021-a20@20 */
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), TYPE_TMP10=
-5,
-+                     0x48);
-+
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), TYPE_TMP10=
-5,
-+                     0x48);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), TYPE_TMP10=
-5,
-+                     0x4a);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), "pca9552",=
- 0x61);
-+    /* Bus 8: ucd90320@11 */
-+    /* Bus 8: ucd90320@b */
-+    /* Bus 8: ucd90320@c */
-+
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "tmp423", =
-0x4c);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "tmp423", =
-0x4d);
-+
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 10), "tmp423",=
- 0x4c);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 10), "tmp423",=
- 0x4d);
-+
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), TYPE_TMP1=
-05,
-+                     0x48);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), TYPE_TMP1=
-05,
-+                     0x49);
-+}
-+
- static bool aspeed_get_mmio_exec(Object *obj, Error **errp)
- {
-     return ASPEED_MACHINE(obj)->mmio_exec;
-@@ -829,6 +885,25 @@ static void aspeed_machine_g220a_class_init(ObjectCl=
-ass *oc, void *data)
-         aspeed_soc_num_cpus(amc->soc_name);
- };
-=20
-+static void aspeed_machine_rainier_class_init(ObjectClass *oc, void *dat=
-a)
-+{
-+    MachineClass *mc =3D MACHINE_CLASS(oc);
-+    AspeedMachineClass *amc =3D ASPEED_MACHINE_CLASS(oc);
-+
-+    mc->desc       =3D "IBM Rainier BMC (Cortex A7)";
-+    amc->soc_name  =3D "ast2600-a1";
-+    amc->hw_strap1 =3D RAINIER_BMC_HW_STRAP1;
-+    amc->hw_strap2 =3D RAINIER_BMC_HW_STRAP2;
-+    amc->fmc_model =3D "mx66l1g45g";
-+    amc->spi_model =3D "mx66l1g45g";
-+    amc->num_cs    =3D 2;
-+    amc->macs_mask  =3D ASPEED_MAC2_ON | ASPEED_MAC3_ON;
-+    amc->i2c_init  =3D rainier_bmc_i2c_init;
-+    mc->default_ram_size =3D 1 * GiB;
-+    mc->default_cpus =3D mc->min_cpus =3D mc->max_cpus =3D
-+        aspeed_soc_num_cpus(amc->soc_name);
-+};
-+
- static const TypeInfo aspeed_machine_types[] =3D {
-     {
-         .name          =3D MACHINE_TYPE_NAME("palmetto-bmc"),
-@@ -866,6 +941,10 @@ static const TypeInfo aspeed_machine_types[] =3D {
-         .name          =3D MACHINE_TYPE_NAME("g220a-bmc"),
-         .parent        =3D TYPE_ASPEED_MACHINE,
-         .class_init    =3D aspeed_machine_g220a_class_init,
-+    }, {
-+        .name          =3D MACHINE_TYPE_NAME("rainier-bmc"),
-+        .parent        =3D TYPE_ASPEED_MACHINE,
-+        .class_init    =3D aspeed_machine_rainier_class_init,
-     }, {
-         .name          =3D TYPE_ASPEED_MACHINE,
-         .parent        =3D TYPE_MACHINE,
+     case I2CD_DMA_LEN:
 --=20
 2.26.3
 

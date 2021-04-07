@@ -1,110 +1,109 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp654449lfr;
-        Wed, 7 Apr 2021 10:20:38 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxg9l8yghhgAtqvORzV6KQkxuAqV9S9oHaff4FfsCjKJF1xbmQWJtvQM/PoKg3lGX3UVhtg
-X-Received: by 2002:a6b:103:: with SMTP id 3mr3447220iob.98.1617816037895;
-        Wed, 07 Apr 2021 10:20:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617816037; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp654800lfr;
+        Wed, 7 Apr 2021 10:21:04 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyUJZ3Ag6PuC+77PTTsXGTlOD5sLfgSjOt/jNSzdUOSTTqvHiiU6TAuqqWmDBW/ziaZRaXW
+X-Received: by 2002:a6b:7a4d:: with SMTP id k13mr3460011iop.39.1617816064032;
+        Wed, 07 Apr 2021 10:21:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617816064; cv=none;
         d=google.com; s=arc-20160816;
-        b=bRK4J9/iQCzUx/FLhOb9jRKDnnGATaZyjJSM0RhdFB9ur/ezn56xa+OfUIWpXU9MhM
-         qksff8NCzXFHHRn3pftesN6uSlzdY1bxGfYmgcOA0Q+PGc+y907/L610o5b1KLGKgS1t
-         ipBnhOpa/OU8UqXLpLwNE8/b2ak4GrEEJKh0CgXXIBsoDtCAGYtZda9kXOjXUX78gXYp
-         thOlpTVICQHkmFxyOBxgQUQ61W8KIb0JbLfkwDUjQi+ZMUc8UCB4aJ/YFLJZbcTWPFaU
-         9QoED5+9JE/egsWXIQliBI5BYhZ43/F6fIKmozms2BArQr84FFjwVDcJJT0A+B4BO5Sb
-         TcvQ==
+        b=0DXt7zm1cud+LRzhRKcabqcK+lAShslA/B6+XmnZk6S4A5HTZ2Pdt6RgxXsvelqrWl
+         URev84h2CYyHKeuGFkIi33nXPm72odsCWnhlEAVpVX4cred1jCV0JNNatf0Nk4nC9isa
+         laSTur5O0lnCIBOJBIEDaYBhHl3KB/YJGMGc/WNrusAWvYWDXU60TXXyO3GgxzFBWD27
+         3FuEnWL/ABid5zH2vpKSnhR0kqFmDe4huUUFXeBurbjM0EosPR/UUzIPQNdjBAJyqnJ9
+         NCCbJ0xk6HAPF+plqCE+nQQbJ4GI/7pTh0NleTQtUVVrpfEjToSMpiyT4i7fT1+hnA+Y
+         uZcA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=q1QiyfKxbX7Lrt87RuJIfuWPBuj7fuxbAoCT9T5oOss=;
-        b=B1eqtXJ0N7pu8/NIWcl3+QGMdmFJLfqQwf9oZkniZxc/AKq9DpsNntwpmLQNLJN1o4
-         HByNWcJNTLSJt3pBcmxtJPHum80yNel2GeA24P8hQW57zl1HxddcLYu9VWPMETJ4ESYB
-         KDePyrgSBEyVLevt5Oz5V54nZBzytRujH8iEFC7XTmeCLvudoxkt7Dki9LVOIQA5zNQI
-         v26mmSOLXBKuRBRJGOFsOYEas7Xm8mXQpJG1qbYTUT9RCmsdTNud4pOjOP+AhLgq2eKp
-         Um7QfQJvn8vdLfqy+Eym47AKpsn9XwUokr+PJdu6IFg/9WQEbzvdbEw8lx7c2Wb6MhTn
-         3xtw==
+         :mime-version:message-id:date:subject:to:from;
+        bh=CC4eaP7u62ECNyELJQJ96qxzw8MJzvnX/pLzIul8h/o=;
+        b=AZ7j3Ay7KAnQWn7iFa/59HW7zPNe51xURV0H1jm5Q/+X4i6izRuFMQ55PBLoVaWdIO
+         GMReyhnCTPmh7wf2WydHL1XVFJPe9P4+0y+zb3CVttiUmYWwsYFb5/uSj8xOzgVkvxoE
+         gl4Sh1cCd1F2PU6GvUSa9gYhCf1hgmx9Wi842AaCn81a4w2Tf+YDy4otcMfsP3ucLfPw
+         hLmI0l24OHopYdYomrHfQysTj2mS6bJa/kqrFMyZBhl09RCFMk2tKk6gZoba/bEgp8Et
+         ykQ0P/KGZNbRgGv91oeAGpDap/sh+661nEIJs8aZmvMIoeL9Q2ouVa+WS2mML2rcdws6
+         MvIg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q12si21275625ior.61.2021.04.07.10.20.37
+        by mx.google.com with ESMTPS id t5si21274222ilu.91.2021.04.07.10.21.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Apr 2021 10:20:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 07 Apr 2021 10:21:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58932 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:58622 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lUBr3-0003Si-3r
-	for alex.bennee@linaro.org; Wed, 07 Apr 2021 13:20:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38906)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lUBrT-0003EW-5I
+	for alex.bennee@linaro.org; Wed, 07 Apr 2021 13:21:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38960)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1lUBng-0007Sz-N0; Wed, 07 Apr 2021 13:17:08 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:52372)
+ id 1lUBni-0007Wl-4w; Wed, 07 Apr 2021 13:17:10 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:20478
+ helo=mx0a-001b2d01.pphosted.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1lUBnc-0006hX-UU; Wed, 07 Apr 2021 13:17:08 -0400
-Received: from pps.filterd (m0098417.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 137H2m4t119130; Wed, 7 Apr 2021 13:16:51 -0400
-Received: from ppma06ams.nl.ibm.com (66.31.33a9.ip4.static.sl-reverse.com
- [169.51.49.102])
- by mx0a-001b2d01.pphosted.com with ESMTP id 37s5xsmr42-1
+ id 1lUBne-0006hn-BF; Wed, 07 Apr 2021 13:17:09 -0400
+Received: from pps.filterd (m0098420.ppops.net [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
+ 137H3tfw125105; Wed, 7 Apr 2021 13:16:46 -0400
+Received: from ppma05fra.de.ibm.com (6c.4a.5195.ip4.static.sl-reverse.com
+ [149.81.74.108])
+ by mx0b-001b2d01.pphosted.com with ESMTP id 37rvm4rksh-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 07 Apr 2021 13:16:50 -0400
-Received: from pps.filterd (ppma06ams.nl.ibm.com [127.0.0.1])
- by ppma06ams.nl.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 137HDJb3001517;
- Wed, 7 Apr 2021 17:16:49 GMT
-Received: from b06avi18878370.portsmouth.uk.ibm.com
- (b06avi18878370.portsmouth.uk.ibm.com [9.149.26.194])
- by ppma06ams.nl.ibm.com with ESMTP id 37rvbw8w5h-1
+ Wed, 07 Apr 2021 13:16:45 -0400
+Received: from pps.filterd (ppma05fra.de.ibm.com [127.0.0.1])
+ by ppma05fra.de.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 137HDSue013339;
+ Wed, 7 Apr 2021 17:16:44 GMT
+Received: from b06cxnps4075.portsmouth.uk.ibm.com
+ (d06relay12.portsmouth.uk.ibm.com [9.149.109.197])
+ by ppma05fra.de.ibm.com with ESMTP id 37rvbvgg0e-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 07 Apr 2021 17:16:49 +0000
-Received: from d06av24.portsmouth.uk.ibm.com (d06av24.portsmouth.uk.ibm.com
- [9.149.105.60])
- by b06avi18878370.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP
- id 137HGQv226411398
+ Wed, 07 Apr 2021 17:16:43 +0000
+Received: from d06av22.portsmouth.uk.ibm.com (d06av22.portsmouth.uk.ibm.com
+ [9.149.105.58])
+ by b06cxnps4075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 137HGfXg65274250
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 7 Apr 2021 17:16:26 GMT
-Received: from d06av24.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id D77C242047;
- Wed,  7 Apr 2021 17:16:46 +0000 (GMT)
-Received: from d06av24.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 3CC084203F;
- Wed,  7 Apr 2021 17:16:46 +0000 (GMT)
+ Wed, 7 Apr 2021 17:16:41 GMT
+Received: from d06av22.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 8845F4C040;
+ Wed,  7 Apr 2021 17:16:41 +0000 (GMT)
+Received: from d06av22.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 4EC184C046;
+ Wed,  7 Apr 2021 17:16:41 +0000 (GMT)
 Received: from smtp.tlslab.ibm.com (unknown [9.101.4.1])
- by d06av24.portsmouth.uk.ibm.com (Postfix) with SMTP;
- Wed,  7 Apr 2021 17:16:46 +0000 (GMT)
+ by d06av22.portsmouth.uk.ibm.com (Postfix) with SMTP;
+ Wed,  7 Apr 2021 17:16:41 +0000 (GMT)
 Received: from yukon.ibmuc.com (unknown [9.171.70.229])
- by smtp.tlslab.ibm.com (Postfix) with ESMTP id 605A7220190;
- Wed,  7 Apr 2021 19:16:45 +0200 (CEST)
+ by smtp.tlslab.ibm.com (Postfix) with ESMTP id A19C52200C7;
+ Wed,  7 Apr 2021 19:16:40 +0200 (CEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH 07/24] aspeed: Integrate HACE
-Date: Wed,  7 Apr 2021 19:16:20 +0200
-Message-Id: <20210407171637.777743-8-clg@kaod.org>
+Subject: [PATCH 00/24] aspeed: fixes and extensions
+Date: Wed,  7 Apr 2021 19:16:13 +0200
+Message-Id: <20210407171637.777743-1-clg@kaod.org>
 X-Mailer: git-send-email 2.26.3
-In-Reply-To: <20210407171637.777743-1-clg@kaod.org>
-References: <20210407171637.777743-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: 5foyrJpqBvpjQUvQKn3ioTFfEg1edg2h
-X-Proofpoint-ORIG-GUID: 5foyrJpqBvpjQUvQKn3ioTFfEg1edg2h
+X-Proofpoint-GUID: J-GtpgTh63IzQpo-0pFBAgIeI092JZ_d
+X-Proofpoint-ORIG-GUID: J-GtpgTh63IzQpo-0pFBAgIeI092JZ_d
 X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.761
  definitions=2021-04-07_09:2021-04-07,
  2021-04-07 signatures=0
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- suspectscore=0 phishscore=0
- malwarescore=0 mlxscore=0 spamscore=0 impostorscore=0 mlxlogscore=999
- bulkscore=0 clxscore=1034 lowpriorityscore=0 priorityscore=1501
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ malwarescore=0 suspectscore=0
+ spamscore=0 phishscore=0 adultscore=0 mlxscore=0 clxscore=1034
+ impostorscore=0 priorityscore=1501 mlxlogscore=999 bulkscore=0
+ lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
  engine=8.12.0-2104060000 definitions=main-2104070116
 Received-SPF: softfail client-ip=148.163.158.5; envelope-from=clg@kaod.org;
- helo=mx0b-001b2d01.pphosted.com
+ helo=mx0a-001b2d01.pphosted.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -112,202 +111,120 @@ X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
  RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: i+F7IR7GaT0r
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 0rDPNA0mCEyC
 
-From: Joel Stanley <joel@jms.id.au>
+Hello,
 
-Add the hash and crypto engine model to the Aspeed socs.
+This is a 6.1 series of changes I have been collecting for the Aspeed
+machines.
 
-Reviewed-by: Andrew Jeffery <andrew@aj.id.au>
-Signed-off-by: Joel Stanley <joel@jms.id.au>
-Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-Message-Id: <20210324070955.125941-3-joel@jms.id.au>
-Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
----
- docs/system/arm/aspeed.rst  |  2 +-
- include/hw/arm/aspeed_soc.h |  3 +++
- hw/arm/aspeed_ast2600.c     | 15 +++++++++++++++
- hw/arm/aspeed_soc.c         | 16 ++++++++++++++++
- 4 files changed, 35 insertions(+), 1 deletion(-)
+We were passing the memory address space region to the I2C and SMC
+controller for DMAs. Passing the RAM memory region simplifies the
+models. Thanks to Philippe.
 
-diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-index d1fb8f25b39c..f9466e6d8245 100644
---- a/docs/system/arm/aspeed.rst
-+++ b/docs/system/arm/aspeed.rst
-@@ -49,6 +49,7 @@ Supported devices
-  * Ethernet controllers
-  * Front LEDs (PCA9552 on I2C bus)
-  * LPC Peripheral Controller (a subset of subdevices are supported)
-+ * Hash/Crypto Engine (HACE) - Hash support only, no scatter-gather
-=20
-=20
- Missing devices
-@@ -59,7 +60,6 @@ Missing devices
-  * PWM and Fan Controller
-  * Slave GPIO Controller
-  * Super I/O Controller
-- * Hash/Crypto Engine
-  * PCI-Express 1 Controller
-  * Graphic Display Controller
-  * PECI Controller
-diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index 9359d6da336d..d9161d26d645 100644
---- a/include/hw/arm/aspeed_soc.h
-+++ b/include/hw/arm/aspeed_soc.h
-@@ -21,6 +21,7 @@
- #include "hw/rtc/aspeed_rtc.h"
- #include "hw/i2c/aspeed_i2c.h"
- #include "hw/ssi/aspeed_smc.h"
-+#include "hw/misc/aspeed_hace.h"
- #include "hw/watchdog/wdt_aspeed.h"
- #include "hw/net/ftgmac100.h"
- #include "target/arm/cpu.h"
-@@ -50,6 +51,7 @@ struct AspeedSoCState {
-     AspeedTimerCtrlState timerctrl;
-     AspeedI2CState i2c;
-     AspeedSCUState scu;
-+    AspeedHACEState hace;
-     AspeedXDMAState xdma;
-     AspeedSMCState fmc;
-     AspeedSMCState spi[ASPEED_SPIS_NUM];
-@@ -133,6 +135,7 @@ enum {
-     ASPEED_DEV_XDMA,
-     ASPEED_DEV_EMMC,
-     ASPEED_DEV_KCS,
-+    ASPEED_DEV_HACE,
- };
-=20
- #endif /* ASPEED_SOC_H */
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index 2a1255b6a042..e0fbb020c770 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -42,6 +42,7 @@ static const hwaddr aspeed_soc_ast2600_memmap[] =3D {
-     [ASPEED_DEV_ETH2]      =3D 0x1E680000,
-     [ASPEED_DEV_ETH4]      =3D 0x1E690000,
-     [ASPEED_DEV_VIC]       =3D 0x1E6C0000,
-+    [ASPEED_DEV_HACE]      =3D 0x1E6D0000,
-     [ASPEED_DEV_SDMC]      =3D 0x1E6E0000,
-     [ASPEED_DEV_SCU]       =3D 0x1E6E2000,
-     [ASPEED_DEV_XDMA]      =3D 0x1E6E7000,
-@@ -102,6 +103,7 @@ static const int aspeed_soc_ast2600_irqmap[] =3D {
-     [ASPEED_DEV_I2C]       =3D 110,   /* 110 -> 125 */
-     [ASPEED_DEV_ETH1]      =3D 2,
-     [ASPEED_DEV_ETH2]      =3D 3,
-+    [ASPEED_DEV_HACE]      =3D 4,
-     [ASPEED_DEV_ETH3]      =3D 32,
-     [ASPEED_DEV_ETH4]      =3D 33,
-     [ASPEED_DEV_KCS]       =3D 138,   /* 138 -> 142 */
-@@ -213,6 +215,9 @@ static void aspeed_soc_ast2600_init(Object *obj)
-                             TYPE_SYSBUS_SDHCI);
-=20
-     object_initialize_child(obj, "lpc", &s->lpc, TYPE_ASPEED_LPC);
-+
-+    snprintf(typename, sizeof(typename), "aspeed.hace-%s", socname);
-+    object_initialize_child(obj, "hace", &s->hace, typename);
- }
-=20
- /*
-@@ -494,6 +499,16 @@ static void aspeed_soc_ast2600_realize(DeviceState *=
-dev, Error **errp)
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_4,
-                        qdev_get_gpio_in(DEVICE(&s->a7mpcore),
-                                 sc->irqmap[ASPEED_DEV_KCS] + aspeed_lpc_=
-kcs_4));
-+
-+    /* HACE */
-+    object_property_set_link(OBJECT(&s->hace), "dram", OBJECT(s->dram_mr=
-),
-+                             &error_abort);
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->hace), errp)) {
-+        return;
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->hace), 0, sc->memmap[ASPEED_DEV_H=
-ACE]);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->hace), 0,
-+                       aspeed_soc_get_irq(s, ASPEED_DEV_HACE));
- }
-=20
- static void aspeed_soc_ast2600_class_init(ObjectClass *oc, void *data)
-diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-index 817f3ba63dfd..8ed29113f79f 100644
---- a/hw/arm/aspeed_soc.c
-+++ b/hw/arm/aspeed_soc.c
-@@ -34,6 +34,7 @@ static const hwaddr aspeed_soc_ast2400_memmap[] =3D {
-     [ASPEED_DEV_VIC]    =3D 0x1E6C0000,
-     [ASPEED_DEV_SDMC]   =3D 0x1E6E0000,
-     [ASPEED_DEV_SCU]    =3D 0x1E6E2000,
-+    [ASPEED_DEV_HACE]   =3D 0x1E6E3000,
-     [ASPEED_DEV_XDMA]   =3D 0x1E6E7000,
-     [ASPEED_DEV_VIDEO]  =3D 0x1E700000,
-     [ASPEED_DEV_ADC]    =3D 0x1E6E9000,
-@@ -65,6 +66,7 @@ static const hwaddr aspeed_soc_ast2500_memmap[] =3D {
-     [ASPEED_DEV_VIC]    =3D 0x1E6C0000,
-     [ASPEED_DEV_SDMC]   =3D 0x1E6E0000,
-     [ASPEED_DEV_SCU]    =3D 0x1E6E2000,
-+    [ASPEED_DEV_HACE]   =3D 0x1E6E3000,
-     [ASPEED_DEV_XDMA]   =3D 0x1E6E7000,
-     [ASPEED_DEV_ADC]    =3D 0x1E6E9000,
-     [ASPEED_DEV_VIDEO]  =3D 0x1E700000,
-@@ -117,6 +119,7 @@ static const int aspeed_soc_ast2400_irqmap[] =3D {
-     [ASPEED_DEV_ETH2]   =3D 3,
-     [ASPEED_DEV_XDMA]   =3D 6,
-     [ASPEED_DEV_SDHCI]  =3D 26,
-+    [ASPEED_DEV_HACE]   =3D 4,
- };
-=20
- #define aspeed_soc_ast2500_irqmap aspeed_soc_ast2400_irqmap
-@@ -212,6 +215,9 @@ static void aspeed_soc_init(Object *obj)
-     }
-=20
-     object_initialize_child(obj, "lpc", &s->lpc, TYPE_ASPEED_LPC);
-+
-+    snprintf(typename, sizeof(typename), "aspeed.hace-%s", socname);
-+    object_initialize_child(obj, "hace", &s->hace, typename);
- }
-=20
- static void aspeed_soc_realize(DeviceState *dev, Error **errp)
-@@ -421,6 +427,16 @@ static void aspeed_soc_realize(DeviceState *dev, Err=
-or **errp)
-=20
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_4,
-                        qdev_get_gpio_in(DEVICE(&s->lpc), aspeed_lpc_kcs_=
-4));
-+
-+    /* HACE */
-+    object_property_set_link(OBJECT(&s->hace), "dram", OBJECT(s->dram_mr=
-),
-+                             &error_abort);
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->hace), errp)) {
-+        return;
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->hace), 0, sc->memmap[ASPEED_DEV_H=
-ACE]);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->hace), 0,
-+                       aspeed_soc_get_irq(s, ASPEED_DEV_HACE));
- }
- static Property aspeed_soc_properties[] =3D {
-     DEFINE_PROP_LINK("dram", AspeedSoCState, dram_mr, TYPE_MEMORY_REGION=
-,
+Then, we have a model for the HACE (Hash And Crypto Engine) device of
+the Aspeed SoC from Joel plus extensions from Klaus. These should be
+ready but I lack a firmware image to check. An extra review would be
+nice to have.
+
+Follow acceptance tests for all SoCs (AST2400, AST2500 and AST2600), a
+fix (kexec) for the XDMA model on the AST2600, an extra feature for
+the SMC model which is required by a SPI driver Aspeed is working on,
+a new machine, the AST2600 rainier-bmc, and the iBT device model that
+I have been keeping for while (2016). It is ready for review now that
+the LPC model (Andrew) is merged.
+
+Finally, a new model from Joel for the DPS310 sensor device which can
+be found on the witherspoon and rainier boards.
+
+Thanks,
+
+C.
+
+C=C3=A9dric Le Goater (12):
+  aspeed/smc: Use the RAM memory region for DMAs
+  aspeed/smc: Remove unused "sdram-base" property
+  aspeed/i2c: Fix DMA address mask
+  aspeed/i2c: Rename DMA address space
+  hw/misc/aspeed_xdma: Add AST2600 support
+  aspeed/smc: Add a 'features' attribute to the object class
+  aspeed/smc: Add extra controls to request DMA
+  tests/qtest: Rename m25p80 test in aspeed_smc test
+  aspeed: Remove swift-bmc machine
+  aspeed: Add support for the rainier-bmc board
+  hw/misc: Add an iBT device model
+  hw/block: m25p80: Add support for mt25qu02g
+
+Joel Stanley (9):
+  hw: Model ASPEED's Hash and Crypto Engine
+  aspeed: Integrate HACE
+  tests/qtest: Add test for Aspeed HACE
+  tests/acceptance: Test ast2400 and ast2500 machines
+  tests/acceptance: Test ast2600 machine
+  aspeed: Emulate the AST2600A3
+  hw/misc: Add Infineon DPS310 sensor model
+  arm/aspeed: Add DPS310 to rainier
+  arm/aspeed: Add DPS310 to witherspoon
+
+Klaus Heinrich Kiwi (2):
+  aspeed: Add Scater-Gather support for HACE Hash
+  tests: Aspeed HACE Scatter-Gather tests
+
+Philippe Mathieu-Daud=C3=A9 (1):
+  hw/arm/aspeed: Do not sysbus-map mmio flash region directly, use alias
+
+ docs/system/arm/aspeed.rst                    |   2 +-
+ include/hw/arm/aspeed_soc.h                   |   5 +
+ include/hw/misc/aspeed_hace.h                 |  43 ++
+ include/hw/misc/aspeed_ibt.h                  |  47 ++
+ include/hw/misc/aspeed_scu.h                  |   2 +
+ include/hw/misc/aspeed_xdma.h                 |  17 +-
+ include/hw/ssi/aspeed_smc.h                   |   7 +-
+ hw/arm/aspeed.c                               | 144 +++--
+ hw/arm/aspeed_ast2600.c                       |  36 +-
+ hw/arm/aspeed_soc.c                           |  35 +-
+ hw/block/m25p80.c                             |   1 +
+ hw/i2c/aspeed_i2c.c                           |   5 +-
+ hw/misc/aspeed_hace.c                         | 480 ++++++++++++++
+ hw/misc/aspeed_ibt.c                          | 596 ++++++++++++++++++
+ hw/misc/aspeed_scu.c                          |  32 +-
+ hw/misc/aspeed_xdma.c                         | 124 +++-
+ hw/misc/dps310.c                              | 339 ++++++++++
+ hw/ssi/aspeed_smc.c                           | 119 +++-
+ tests/qtest/aspeed_hace-test.c                | 469 ++++++++++++++
+ .../{m25p80-test.c =3D> aspeed_smc-test.c}      |  12 +-
+ MAINTAINERS                                   |   1 +
+ hw/arm/Kconfig                                |   1 +
+ hw/misc/Kconfig                               |   4 +
+ hw/misc/meson.build                           |   3 +
+ hw/misc/trace-events                          |   7 +
+ tests/acceptance/boot_linux_console.py        |  68 ++
+ tests/qtest/meson.build                       |   5 +-
+ 27 files changed, 2458 insertions(+), 146 deletions(-)
+ create mode 100644 include/hw/misc/aspeed_hace.h
+ create mode 100644 include/hw/misc/aspeed_ibt.h
+ create mode 100644 hw/misc/aspeed_hace.c
+ create mode 100644 hw/misc/aspeed_ibt.c
+ create mode 100644 hw/misc/dps310.c
+ create mode 100644 tests/qtest/aspeed_hace-test.c
+ rename tests/qtest/{m25p80-test.c =3D> aspeed_smc-test.c} (96%)
+
 --=20
 2.26.3
 

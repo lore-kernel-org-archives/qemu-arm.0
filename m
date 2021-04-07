@@ -1,105 +1,107 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp654800lfr;
-        Wed, 7 Apr 2021 10:21:04 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyUJZ3Ag6PuC+77PTTsXGTlOD5sLfgSjOt/jNSzdUOSTTqvHiiU6TAuqqWmDBW/ziaZRaXW
-X-Received: by 2002:a6b:7a4d:: with SMTP id k13mr3460011iop.39.1617816064032;
-        Wed, 07 Apr 2021 10:21:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617816064; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp654832lfr;
+        Wed, 7 Apr 2021 10:21:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw7PNy1cu5atEEReA1cRXMNmm+tJWpXT0Uz9EdPow6dlxLxbL5apWxqqNLctdMHcS6VdTuQ
+X-Received: by 2002:a92:ac0c:: with SMTP id r12mr3485106ilh.140.1617816065798;
+        Wed, 07 Apr 2021 10:21:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617816065; cv=none;
         d=google.com; s=arc-20160816;
-        b=0DXt7zm1cud+LRzhRKcabqcK+lAShslA/B6+XmnZk6S4A5HTZ2Pdt6RgxXsvelqrWl
-         URev84h2CYyHKeuGFkIi33nXPm72odsCWnhlEAVpVX4cred1jCV0JNNatf0Nk4nC9isa
-         laSTur5O0lnCIBOJBIEDaYBhHl3KB/YJGMGc/WNrusAWvYWDXU60TXXyO3GgxzFBWD27
-         3FuEnWL/ABid5zH2vpKSnhR0kqFmDe4huUUFXeBurbjM0EosPR/UUzIPQNdjBAJyqnJ9
-         NCCbJ0xk6HAPF+plqCE+nQQbJ4GI/7pTh0NleTQtUVVrpfEjToSMpiyT4i7fT1+hnA+Y
-         uZcA==
+        b=ePm7zWVlL9EzRc8Bn8u1vXQaOHxUFuSGNI/bkMa663clgEEwREfHkirLTU/tPvPMum
+         J3n5mq2GGJbgY9N1Idand3NAT+4A9HHBl2xT5uOxuqdH0PWm284UMvsGk82fYTu1uirj
+         OY1ZfrK2NaYrfiu2ew6TBFwcsTsnsgX6+RFWkKQGOaKpCID2exvRDUH3yb2o7ikw98FX
+         b/ZqQjz4rqFyM6UX+ix+do1lE2tyT3dF8WPaLS0VZghdZiFPm1lpQHJXWisCjAAL/Uxi
+         XasMSOYnWPhJo5fIFaa6eVbYVh1jkNg466ZWu91E9sZm65VQe9U5CFj1huU8yU+UvgEC
+         QKqQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from;
-        bh=CC4eaP7u62ECNyELJQJ96qxzw8MJzvnX/pLzIul8h/o=;
-        b=AZ7j3Ay7KAnQWn7iFa/59HW7zPNe51xURV0H1jm5Q/+X4i6izRuFMQ55PBLoVaWdIO
-         GMReyhnCTPmh7wf2WydHL1XVFJPe9P4+0y+zb3CVttiUmYWwsYFb5/uSj8xOzgVkvxoE
-         gl4Sh1cCd1F2PU6GvUSa9gYhCf1hgmx9Wi842AaCn81a4w2Tf+YDy4otcMfsP3ucLfPw
-         hLmI0l24OHopYdYomrHfQysTj2mS6bJa/kqrFMyZBhl09RCFMk2tKk6gZoba/bEgp8Et
-         ykQ0P/KGZNbRgGv91oeAGpDap/sh+661nEIJs8aZmvMIoeL9Q2ouVa+WS2mML2rcdws6
-         MvIg==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=DZSoOrv4h/N/U6sz/LuN40yQTibgNjnvnvetKgfwyUE=;
+        b=M40bUq38li7YADEVNq5Ey++CB+B0ZEmknxD/daHL9DfGJjFhxNj3WRP+whAZJQlOsZ
+         dmAMazcNNQPKsdXRWRHM4yu55JsztPtkKEXz8FyBjdCjRLb29xD66h9lT+lQgIf2UjGo
+         hcM/gyTlHVwhDZsgYcFhsAIXyQ26vjQ05Z1ZJ697UB05YfqH6jgzpKe3evJrKJySlfta
+         NXrMYMtQOiY8K7WVcgbnNEyKawEFopMnl6QTrp+x9+MuPuMuOqwQUuXeyoxcfx5dD0fX
+         75BnS8M/uj+Uk4uUjXungbnymBwzxw2kngMDYtgq1vnblUhd1+75jbqG/ktRdWOof5lW
+         XauA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t5si21274222ilu.91.2021.04.07.10.21.03
+        by mx.google.com with ESMTPS id d2si21081852iod.10.2021.04.07.10.21.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Apr 2021 10:21:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 07 Apr 2021 10:21:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58622 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:60138 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lUBrT-0003EW-5I
-	for alex.bennee@linaro.org; Wed, 07 Apr 2021 13:21:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38960)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lUBrV-0003xl-1s
+	for alex.bennee@linaro.org; Wed, 07 Apr 2021 13:21:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38972)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1lUBni-0007Wl-4w; Wed, 07 Apr 2021 13:17:10 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:20478
+ id 1lUBni-0007Xd-I3; Wed, 07 Apr 2021 13:17:10 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:6248
  helo=mx0a-001b2d01.pphosted.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1lUBne-0006hn-BF; Wed, 07 Apr 2021 13:17:09 -0400
+ id 1lUBnf-0006iv-MN; Wed, 07 Apr 2021 13:17:10 -0400
 Received: from pps.filterd (m0098420.ppops.net [127.0.0.1])
  by mx0b-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 137H3tfw125105; Wed, 7 Apr 2021 13:16:46 -0400
-Received: from ppma05fra.de.ibm.com (6c.4a.5195.ip4.static.sl-reverse.com
- [149.81.74.108])
- by mx0b-001b2d01.pphosted.com with ESMTP id 37rvm4rksh-1
+ 137H3q0Y124916; Wed, 7 Apr 2021 13:16:46 -0400
+Received: from ppma06ams.nl.ibm.com (66.31.33a9.ip4.static.sl-reverse.com
+ [169.51.49.102])
+ by mx0b-001b2d01.pphosted.com with ESMTP id 37rvm4rkss-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 07 Apr 2021 13:16:45 -0400
-Received: from pps.filterd (ppma05fra.de.ibm.com [127.0.0.1])
- by ppma05fra.de.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 137HDSue013339;
- Wed, 7 Apr 2021 17:16:44 GMT
-Received: from b06cxnps4075.portsmouth.uk.ibm.com
- (d06relay12.portsmouth.uk.ibm.com [9.149.109.197])
- by ppma05fra.de.ibm.com with ESMTP id 37rvbvgg0e-1
+ Wed, 07 Apr 2021 13:16:46 -0400
+Received: from pps.filterd (ppma06ams.nl.ibm.com [127.0.0.1])
+ by ppma06ams.nl.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 137HEXZl002980;
+ Wed, 7 Apr 2021 17:16:45 GMT
+Received: from b06cxnps4076.portsmouth.uk.ibm.com
+ (d06relay13.portsmouth.uk.ibm.com [9.149.109.198])
+ by ppma06ams.nl.ibm.com with ESMTP id 37rvbw8w5d-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 07 Apr 2021 17:16:43 +0000
+ Wed, 07 Apr 2021 17:16:44 +0000
 Received: from d06av22.portsmouth.uk.ibm.com (d06av22.portsmouth.uk.ibm.com
  [9.149.105.58])
- by b06cxnps4075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 137HGfXg65274250
+ by b06cxnps4076.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 137HGgbi28508550
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 7 Apr 2021 17:16:41 GMT
+ Wed, 7 Apr 2021 17:16:42 GMT
 Received: from d06av22.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 8845F4C040;
- Wed,  7 Apr 2021 17:16:41 +0000 (GMT)
+ by IMSVA (Postfix) with ESMTP id B5ABF4C044;
+ Wed,  7 Apr 2021 17:16:42 +0000 (GMT)
 Received: from d06av22.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 4EC184C046;
- Wed,  7 Apr 2021 17:16:41 +0000 (GMT)
+ by IMSVA (Postfix) with ESMTP id 6DCCC4C040;
+ Wed,  7 Apr 2021 17:16:42 +0000 (GMT)
 Received: from smtp.tlslab.ibm.com (unknown [9.101.4.1])
  by d06av22.portsmouth.uk.ibm.com (Postfix) with SMTP;
- Wed,  7 Apr 2021 17:16:41 +0000 (GMT)
+ Wed,  7 Apr 2021 17:16:42 +0000 (GMT)
 Received: from yukon.ibmuc.com (unknown [9.171.70.229])
- by smtp.tlslab.ibm.com (Postfix) with ESMTP id A19C52200C7;
- Wed,  7 Apr 2021 19:16:40 +0200 (CEST)
+ by smtp.tlslab.ibm.com (Postfix) with ESMTP id C6F372200C7;
+ Wed,  7 Apr 2021 19:16:41 +0200 (CEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH 00/24] aspeed: fixes and extensions
-Date: Wed,  7 Apr 2021 19:16:13 +0200
-Message-Id: <20210407171637.777743-1-clg@kaod.org>
+Subject: [PATCH 02/24] aspeed/smc: Remove unused "sdram-base" property
+Date: Wed,  7 Apr 2021 19:16:15 +0200
+Message-Id: <20210407171637.777743-3-clg@kaod.org>
 X-Mailer: git-send-email 2.26.3
+In-Reply-To: <20210407171637.777743-1-clg@kaod.org>
+References: <20210407171637.777743-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: J-GtpgTh63IzQpo-0pFBAgIeI092JZ_d
-X-Proofpoint-ORIG-GUID: J-GtpgTh63IzQpo-0pFBAgIeI092JZ_d
+X-Proofpoint-GUID: uPoGLS58xLUBTT_L_KvyfCvbdaWD9RVn
+X-Proofpoint-ORIG-GUID: uPoGLS58xLUBTT_L_KvyfCvbdaWD9RVn
 X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.761
  definitions=2021-04-07_09:2021-04-07,
  2021-04-07 signatures=0
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
  malwarescore=0 suspectscore=0
  spamscore=0 phishscore=0 adultscore=0 mlxscore=0 clxscore=1034
- impostorscore=0 priorityscore=1501 mlxlogscore=999 bulkscore=0
+ impostorscore=0 priorityscore=1501 mlxlogscore=930 bulkscore=0
  lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
  engine=8.12.0-2104060000 definitions=main-2104070116
 Received-SPF: softfail client-ip=148.163.158.5; envelope-from=clg@kaod.org;
@@ -111,120 +113,97 @@ X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
  RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0rDPNA0mCEyC
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 8geXpzlCgclo
 
-Hello,
+Cc: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+---
+ include/hw/ssi/aspeed_smc.h | 3 ---
+ hw/arm/aspeed_ast2600.c     | 4 ----
+ hw/arm/aspeed_soc.c         | 4 ----
+ hw/ssi/aspeed_smc.c         | 1 -
+ 4 files changed, 12 deletions(-)
 
-This is a 6.1 series of changes I have been collecting for the Aspeed
-machines.
-
-We were passing the memory address space region to the I2C and SMC
-controller for DMAs. Passing the RAM memory region simplifies the
-models. Thanks to Philippe.
-
-Then, we have a model for the HACE (Hash And Crypto Engine) device of
-the Aspeed SoC from Joel plus extensions from Klaus. These should be
-ready but I lack a firmware image to check. An extra review would be
-nice to have.
-
-Follow acceptance tests for all SoCs (AST2400, AST2500 and AST2600), a
-fix (kexec) for the XDMA model on the AST2600, an extra feature for
-the SMC model which is required by a SPI driver Aspeed is working on,
-a new machine, the AST2600 rainier-bmc, and the iBT device model that
-I have been keeping for while (2016). It is ready for review now that
-the LPC model (Andrew) is merged.
-
-Finally, a new model from Joel for the DPS310 sensor device which can
-be found on the witherspoon and rainier boards.
-
-Thanks,
-
-C.
-
-C=C3=A9dric Le Goater (12):
-  aspeed/smc: Use the RAM memory region for DMAs
-  aspeed/smc: Remove unused "sdram-base" property
-  aspeed/i2c: Fix DMA address mask
-  aspeed/i2c: Rename DMA address space
-  hw/misc/aspeed_xdma: Add AST2600 support
-  aspeed/smc: Add a 'features' attribute to the object class
-  aspeed/smc: Add extra controls to request DMA
-  tests/qtest: Rename m25p80 test in aspeed_smc test
-  aspeed: Remove swift-bmc machine
-  aspeed: Add support for the rainier-bmc board
-  hw/misc: Add an iBT device model
-  hw/block: m25p80: Add support for mt25qu02g
-
-Joel Stanley (9):
-  hw: Model ASPEED's Hash and Crypto Engine
-  aspeed: Integrate HACE
-  tests/qtest: Add test for Aspeed HACE
-  tests/acceptance: Test ast2400 and ast2500 machines
-  tests/acceptance: Test ast2600 machine
-  aspeed: Emulate the AST2600A3
-  hw/misc: Add Infineon DPS310 sensor model
-  arm/aspeed: Add DPS310 to rainier
-  arm/aspeed: Add DPS310 to witherspoon
-
-Klaus Heinrich Kiwi (2):
-  aspeed: Add Scater-Gather support for HACE Hash
-  tests: Aspeed HACE Scatter-Gather tests
-
-Philippe Mathieu-Daud=C3=A9 (1):
-  hw/arm/aspeed: Do not sysbus-map mmio flash region directly, use alias
-
- docs/system/arm/aspeed.rst                    |   2 +-
- include/hw/arm/aspeed_soc.h                   |   5 +
- include/hw/misc/aspeed_hace.h                 |  43 ++
- include/hw/misc/aspeed_ibt.h                  |  47 ++
- include/hw/misc/aspeed_scu.h                  |   2 +
- include/hw/misc/aspeed_xdma.h                 |  17 +-
- include/hw/ssi/aspeed_smc.h                   |   7 +-
- hw/arm/aspeed.c                               | 144 +++--
- hw/arm/aspeed_ast2600.c                       |  36 +-
- hw/arm/aspeed_soc.c                           |  35 +-
- hw/block/m25p80.c                             |   1 +
- hw/i2c/aspeed_i2c.c                           |   5 +-
- hw/misc/aspeed_hace.c                         | 480 ++++++++++++++
- hw/misc/aspeed_ibt.c                          | 596 ++++++++++++++++++
- hw/misc/aspeed_scu.c                          |  32 +-
- hw/misc/aspeed_xdma.c                         | 124 +++-
- hw/misc/dps310.c                              | 339 ++++++++++
- hw/ssi/aspeed_smc.c                           | 119 +++-
- tests/qtest/aspeed_hace-test.c                | 469 ++++++++++++++
- .../{m25p80-test.c =3D> aspeed_smc-test.c}      |  12 +-
- MAINTAINERS                                   |   1 +
- hw/arm/Kconfig                                |   1 +
- hw/misc/Kconfig                               |   4 +
- hw/misc/meson.build                           |   3 +
- hw/misc/trace-events                          |   7 +
- tests/acceptance/boot_linux_console.py        |  68 ++
- tests/qtest/meson.build                       |   5 +-
- 27 files changed, 2458 insertions(+), 146 deletions(-)
- create mode 100644 include/hw/misc/aspeed_hace.h
- create mode 100644 include/hw/misc/aspeed_ibt.h
- create mode 100644 hw/misc/aspeed_hace.c
- create mode 100644 hw/misc/aspeed_ibt.c
- create mode 100644 hw/misc/dps310.c
- create mode 100644 tests/qtest/aspeed_hace-test.c
- rename tests/qtest/{m25p80-test.c =3D> aspeed_smc-test.c} (96%)
-
+diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
+index 16c03fe64f3b..ccd71d9b534e 100644
+--- a/include/hw/ssi/aspeed_smc.h
++++ b/include/hw/ssi/aspeed_smc.h
+@@ -103,9 +103,6 @@ struct AspeedSMCState {
+     uint8_t r_timings;
+     uint8_t conf_enable_w0;
+=20
+-    /* for DMA support */
+-    uint64_t sdram_base;
+-
+     AddressSpace flash_as;
+     MemoryRegion *dram_mr;
+     AddressSpace dram_as;
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index bc87e754a3cc..2a1255b6a042 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -344,10 +344,6 @@ static void aspeed_soc_ast2600_realize(DeviceState *=
+dev, Error **errp)
+     /* FMC, The number of CS is set at the board level */
+     object_property_set_link(OBJECT(&s->fmc), "dram", OBJECT(s->dram_mr)=
+,
+                              &error_abort);
+-    if (!object_property_set_int(OBJECT(&s->fmc), "sdram-base",
+-                                 sc->memmap[ASPEED_DEV_SDRAM], errp)) {
+-        return;
+-    }
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->fmc), errp)) {
+         return;
+     }
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index 057d053c8478..817f3ba63dfd 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -301,10 +301,6 @@ static void aspeed_soc_realize(DeviceState *dev, Err=
+or **errp)
+     /* FMC, The number of CS is set at the board level */
+     object_property_set_link(OBJECT(&s->fmc), "dram", OBJECT(s->dram_mr)=
+,
+                              &error_abort);
+-    if (!object_property_set_int(OBJECT(&s->fmc), "sdram-base",
+-                                 sc->memmap[ASPEED_DEV_SDRAM], errp)) {
+-        return;
+-    }
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->fmc), errp)) {
+         return;
+     }
+diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+index 6f72fb028e59..884e08aca4e2 100644
+--- a/hw/ssi/aspeed_smc.c
++++ b/hw/ssi/aspeed_smc.c
+@@ -1431,7 +1431,6 @@ static const VMStateDescription vmstate_aspeed_smc =
+=3D {
+ static Property aspeed_smc_properties[] =3D {
+     DEFINE_PROP_UINT32("num-cs", AspeedSMCState, num_cs, 1),
+     DEFINE_PROP_BOOL("inject-failure", AspeedSMCState, inject_failure, f=
+alse),
+-    DEFINE_PROP_UINT64("sdram-base", AspeedSMCState, sdram_base, 0),
+     DEFINE_PROP_LINK("dram", AspeedSMCState, dram_mr,
+                      TYPE_MEMORY_REGION, MemoryRegion *),
+     DEFINE_PROP_END_OF_LIST(),
 --=20
 2.26.3
 

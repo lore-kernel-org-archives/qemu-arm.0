@@ -1,87 +1,90 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp652403lfr;
-        Wed, 7 Apr 2021 10:18:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwZN0cZDKizugOhpSg0XV1JShme3O2VAHhwHMoczOL8m3qPLnX0Aim6ZDqvMcH1GQ74A2t5
-X-Received: by 2002:a05:6e02:1252:: with SMTP id j18mr1542417ilq.125.1617815881754;
-        Wed, 07 Apr 2021 10:18:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617815881; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp652915lfr;
+        Wed, 7 Apr 2021 10:18:45 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyrWQYlvGSz1n0w39PioIK0qT4ysr5NwRDgDw0mHJQrvFRFPN+j7cKkuPoCd2616QILkKus
+X-Received: by 2002:a6b:b216:: with SMTP id b22mr3392482iof.154.1617815925827;
+        Wed, 07 Apr 2021 10:18:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617815925; cv=none;
         d=google.com; s=arc-20160816;
-        b=KXt0fcZ1cwQ+0ru3CIokXwQnKw5e8uxMObeP+mOn/e6EISpHY+HuLeft6dwSZxIoSS
-         rlDgqXEGgs9vtVgDRpqHXrOpXfQwkDYDBBFVnF2k/YJ/Po9N1e3Ybcu+xslk7H229uZG
-         DUdI4kYmNWGqXz5QiWuq49ocY5Hmvqf/9bFTCB9aJx4AqFjzbVJdIvODjWr8rFCipKHj
-         fq6lRkD4pC8HC/b53QTQkYOS1OyXlUKMpMHmTy+cVR+Sdf/3IpzCxar19ceKy3t60Dfm
-         nfYbLvAas4LfisJ7mYybgDGRnbuxWbbrxPF2MQClLAM2F1T2o/m0yW5ZOCGOIjK3/BO9
-         grCg==
+        b=R1LmVoSqzn/y0qQw1Rpm4227AKl53pAgW8rgNiebltAm+08EMFRY/6xZsqODdl5+9a
+         DX6GG5VNqhBvGx5822I3CDbJRO51c+mlRCCFIDtJ9fR6rzlzS9ozun57YaS+LxIRz1/N
+         o6qCwLqlS4dxFgFtJScY9O4gIRSEHwlWGXIPctZXjkd7cqTPYOag9VqqlChbnmSWdOM2
+         DPNNv3zNRjmvDA5mGKZ6Gpn4xxQmWN8JvniX5CAijhLDl7lfi6eW7nmOLDq8PH8t64UP
+         QimdhapS3Li/ZYk2fJhDUag5D1ZA4lraniLQNCCX+B42kKzD02rTMvk107leQQH3pPaT
+         fphw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=PfVSB+sH0Lh9Fca9l0DKRJpQjUeqx47CEmGOrpxuGrk=;
-        b=zoGjDSXsPPRZWBLimmy9JasE4nYa5q4bJWaovqC+yTnbq+RYeTSbFnjkTTNZJzpZV8
-         uslVsoHLIhiT17GngDpStH1VMmpd5pir0FHoNHe2ncxV7VNxevsoLOdPLuD8giOfopHr
-         CLElGVMtrUqtVbH+HMTim0RUtoHFIBdrwwp7JABqKFzE2yVFbuyp7a7G/HQdoYzZ4qt8
-         fgRSnGOyD6jbf5tPcDIW1eszZ6nL+LUIei8n5Bvu+Uy4gmu2ma5HIvFx+iwedsRVl+Rn
-         f3xOsKg/4aCKPs8gRjsq8563suxMQ5B89YSGb+fc50zj1tObRmxwVHFfTTptnnwttozF
-         ipyA==
+        bh=9o4DuKG3syjEU1eEQICiHC1uv4eBayTd+bEclH+kHPE=;
+        b=FOVMKd7uYGWFwtbLZc+Ib6ek2jg3jpU+J+QWqJpOQnp+agEBUFgVTHO4DyRYxYwNXi
+         EyHlKBUTUu2JUdhtIxhwiIP8fwmPrfBYSIheO+idNK4N1DH6Aeiu4QXsGj389NvUtF1h
+         /MCPo7MpGpxiA+eMVIQVMWkNo4u41zj4OsFz9fYoyyigsgUZr7AVsd55p0TMpH4W0J+h
+         pCsnLVcHkYDmJdijxfJ5OPtUMmj6bACQifwJQYR87t91WUIZZ2S0K5Apmi2UBlscUkj0
+         PGxiHA9eWPYoLOzngXDSYwtNFyksfojsF0xItxRRUSXUifjlJwKGDV6HY7C/H732HwBe
+         ZTaw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n14si1404416ilk.90.2021.04.07.10.18.01
+        by mx.google.com with ESMTPS id d18si15597071ios.101.2021.04.07.10.18.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Apr 2021 10:18:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 07 Apr 2021 10:18:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:53452 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:54484 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lUBoW-0000ck-TX
-	for alex.bennee@linaro.org; Wed, 07 Apr 2021 13:18:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38920)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lUBpF-00014N-2w
+	for alex.bennee@linaro.org; Wed, 07 Apr 2021 13:18:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38904)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1lUBnh-0007Tu-3A; Wed, 07 Apr 2021 13:17:09 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:15742)
+ id 1lUBng-0007SW-IG; Wed, 07 Apr 2021 13:17:08 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:60950)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1lUBnc-0006ly-Se; Wed, 07 Apr 2021 13:17:08 -0400
+ id 1lUBnc-0006gn-TR; Wed, 07 Apr 2021 13:17:08 -0400
 Received: from pps.filterd (m0098409.ppops.net [127.0.0.1])
  by mx0a-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 137H3MW9072187; Wed, 7 Apr 2021 13:16:53 -0400
+ 137H3LQt072099; Wed, 7 Apr 2021 13:16:46 -0400
 Received: from ppma03ams.nl.ibm.com (62.31.33a9.ip4.static.sl-reverse.com
  [169.51.49.98])
- by mx0a-001b2d01.pphosted.com with ESMTP id 37rw6kgn2k-1
+ by mx0a-001b2d01.pphosted.com with ESMTP id 37rw6kgn0m-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 07 Apr 2021 13:16:52 -0400
+ Wed, 07 Apr 2021 13:16:46 -0400
 Received: from pps.filterd (ppma03ams.nl.ibm.com [127.0.0.1])
- by ppma03ams.nl.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 137HDcS5031054;
- Wed, 7 Apr 2021 17:16:50 GMT
-Received: from b06cxnps3075.portsmouth.uk.ibm.com
- (d06relay10.portsmouth.uk.ibm.com [9.149.109.195])
- by ppma03ams.nl.ibm.com with ESMTP id 37rvbqgwc4-1
+ by ppma03ams.nl.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 137HD83e029748;
+ Wed, 7 Apr 2021 17:16:44 GMT
+Received: from b06cxnps4075.portsmouth.uk.ibm.com
+ (d06relay12.portsmouth.uk.ibm.com [9.149.109.197])
+ by ppma03ams.nl.ibm.com with ESMTP id 37rvbqgwc2-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 07 Apr 2021 17:16:50 +0000
-Received: from d06av21.portsmouth.uk.ibm.com (d06av21.portsmouth.uk.ibm.com
- [9.149.105.232])
- by b06cxnps3075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 137HGmBN48103848
+ Wed, 07 Apr 2021 17:16:44 +0000
+Received: from d06av25.portsmouth.uk.ibm.com (d06av25.portsmouth.uk.ibm.com
+ [9.149.105.61])
+ by b06cxnps4075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 137HGg0F63635890
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 7 Apr 2021 17:16:48 GMT
-Received: from d06av21.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 38AEE5204F;
- Wed,  7 Apr 2021 17:16:48 +0000 (GMT)
+ Wed, 7 Apr 2021 17:16:42 GMT
+Received: from d06av25.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 1B1D311C04C;
+ Wed,  7 Apr 2021 17:16:42 +0000 (GMT)
+Received: from d06av25.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id D3F0911C04A;
+ Wed,  7 Apr 2021 17:16:41 +0000 (GMT)
 Received: from smtp.tlslab.ibm.com (unknown [9.101.4.1])
- by d06av21.portsmouth.uk.ibm.com (Postfix) with SMTP id EE8F752052;
- Wed,  7 Apr 2021 17:16:47 +0000 (GMT)
+ by d06av25.portsmouth.uk.ibm.com (Postfix) with SMTP;
+ Wed,  7 Apr 2021 17:16:41 +0000 (GMT)
 Received: from yukon.ibmuc.com (unknown [9.171.70.229])
- by smtp.tlslab.ibm.com (Postfix) with ESMTP id 0C5AE220190;
- Wed,  7 Apr 2021 19:16:46 +0200 (CEST)
+ by smtp.tlslab.ibm.com (Postfix) with ESMTP id 39B68220190;
+ Wed,  7 Apr 2021 19:16:41 +0200 (CEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH 09/24] aspeed: Add Scater-Gather support for HACE Hash
-Date: Wed,  7 Apr 2021 19:16:22 +0200
-Message-Id: <20210407171637.777743-10-clg@kaod.org>
+Subject: [PATCH 01/24] aspeed/smc: Use the RAM memory region for DMAs
+Date: Wed,  7 Apr 2021 19:16:14 +0200
+Message-Id: <20210407171637.777743-2-clg@kaod.org>
 X-Mailer: git-send-email 2.26.3
 In-Reply-To: <20210407171637.777743-1-clg@kaod.org>
 References: <20210407171637.777743-1-clg@kaod.org>
@@ -89,14 +92,14 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: u8I3oDBvdfs5CM-OYciVjmDI1T_GSbHZ
-X-Proofpoint-ORIG-GUID: u8I3oDBvdfs5CM-OYciVjmDI1T_GSbHZ
+X-Proofpoint-GUID: YsvJYSNmCVCT_L6pmrrVp0WQMB2q2ZAC
+X-Proofpoint-ORIG-GUID: YsvJYSNmCVCT_L6pmrrVp0WQMB2q2ZAC
 X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.761
  definitions=2021-04-07_09:2021-04-07,
  2021-04-07 signatures=0
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
  adultscore=0 impostorscore=0
- bulkscore=0 priorityscore=1501 mlxscore=0 suspectscore=0 mlxlogscore=721
+ bulkscore=0 priorityscore=1501 mlxscore=0 suspectscore=0 mlxlogscore=548
  clxscore=1034 phishscore=0 spamscore=0 malwarescore=0 lowpriorityscore=0
  classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2104060000
  definitions=main-2104070116
@@ -109,237 +112,65 @@ X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
  RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
- Klaus Heinrich Kiwi <klaus@linux.vnet.ibm.com>, qemu-arm@nongnu.org,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5oiiKZbTFrBT
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Z4cc+Rz03NCU
 
-From: Klaus Heinrich Kiwi <klaus@linux.vnet.ibm.com>
+Instead of passing the memory address space region, simply use the RAM
+memory region instead. This simplifies RAM accesses.
 
-Complement the Aspeed HACE support with Scatter-Gather hash support for
-sha256 and sha512. Scatter-Gather is only supported on AST2600-series.
-
-Signed-off-by: Klaus Heinrich Kiwi <klaus@linux.vnet.ibm.com>
-[ clg: - fixes for checkpatch errors ]
-Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-Message-Id: <20210326193745.13558-2-klaus@linux.vnet.ibm.com>
+Fixes: c4e1f0b48322 ("aspeed/smc: Add support for DMAs")
+Cc: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
- docs/system/arm/aspeed.rst |   2 +-
- hw/misc/aspeed_hace.c      | 133 +++++++++++++++++++++++++++++++++++--
- 2 files changed, 128 insertions(+), 7 deletions(-)
+ hw/arm/aspeed.c     | 2 +-
+ hw/ssi/aspeed_smc.c | 3 +--
+ 2 files changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-index f9466e6d8245..8680fd9409db 100644
---- a/docs/system/arm/aspeed.rst
-+++ b/docs/system/arm/aspeed.rst
-@@ -49,7 +49,7 @@ Supported devices
-  * Ethernet controllers
-  * Front LEDs (PCA9552 on I2C bus)
-  * LPC Peripheral Controller (a subset of subdevices are supported)
-- * Hash/Crypto Engine (HACE) - Hash support only, no scatter-gather
-+ * Hash/Crypto Engine (HACE) - Hash support only
-=20
-=20
- Missing devices
-diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
-index 6e5b447a4835..8b3eebfaec63 100644
---- a/hw/misc/aspeed_hace.c
-+++ b/hw/misc/aspeed_hace.c
-@@ -57,6 +57,14 @@
- /* Other cmd bits */
- #define  HASH_IRQ_EN                    BIT(9)
- #define  HASH_SG_EN                     BIT(18)
-+/* Scatter-gather data list */
-+#define SG_LIST_LEN_SIZE                4
-+#define SG_LIST_LEN_MASK                0x0FFFFFFF
-+#define SG_LIST_LEN_LAST                BIT(31)
-+#define SG_LIST_ADDR_SIZE               4
-+#define SG_LIST_ADDR_MASK               0x7FFFFFFF
-+#define SG_LIST_ENTRY_SIZE              (SG_LIST_LEN_SIZE + SG_LIST_ADDR=
-_SIZE)
-+#define ASPEED_HACE_MAX_SG              256        /* max number of entr=
-ies */
-=20
- static const struct {
-     uint32_t mask;
-@@ -129,6 +137,121 @@ static int do_hash_operation(AspeedHACEState *s, in=
-t algo)
-     return 0;
- }
-=20
-+static int do_hash_sg_operation(AspeedHACEState *s, int algo)
-+{
-+    hwaddr src, dest, req_size;
-+    uint32_t entry_len, entry_addr;
-+    uint8_t *digest_buf =3D NULL;
-+    unsigned int i =3D 0;
-+    MemTxResult result;
-+    struct iovec iov[ASPEED_HACE_MAX_SG];
-+    size_t digest_len =3D 0, size =3D 0;
-+    int rc;
-+
-+    req_size =3D s->regs[R_HASH_SRC_LEN];
-+    dest =3D s->regs[R_HASH_DEST];
-+
-+    while (i < ASPEED_HACE_MAX_SG) {
-+        src =3D s->regs[R_HASH_SRC] + (i * SG_LIST_ENTRY_SIZE);
-+        entry_len =3D address_space_ldl_le(&s->dram_as, src,
-+                                         MEMTXATTRS_UNSPECIFIED, &result=
-);
-+        if (result !=3D MEMTX_OK) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "%s: failed to load SG Array length entry %"PR=
-Iu32
-+                          " from 0x%"HWADDR_PRIx"\n", __func__, i, src);
-+            rc =3D -EACCES;
-+            goto cleanup;
-+        }
-+        entry_addr =3D address_space_ldl_le(&s->dram_as, src + SG_LIST_L=
-EN_SIZE,
-+                                          MEMTXATTRS_UNSPECIFIED, &resul=
-t);
-+        if (result !=3D MEMTX_OK) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "%s: failed to load SG Array address entry %"P=
-RIu32
-+                          " from 0x%"HWADDR_PRIx"\n",
-+                          __func__, i, src + SG_LIST_LEN_SIZE);
-+            rc =3D -EACCES;
-+            goto cleanup;
-+        }
-+
-+        iov[i].iov_len =3D (hwaddr) (entry_len & SG_LIST_LEN_MASK);
-+        iov[i].iov_base =3D address_space_map(&s->dram_as,
-+                                            entry_addr & SG_LIST_ADDR_MA=
-SK,
-+                                            &iov[i].iov_len, false,
-+                                            MEMTXATTRS_UNSPECIFIED);
-+        if (!iov[i].iov_base) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "%s: failed to map dram for SG array entry %"P=
-RIu32
-+                          " for region 0x%"PRIx32", len %"PRIu32"\n",
-+                          __func__, i, entry_addr & SG_LIST_ADDR_MASK,
-+                          entry_len & SG_LIST_LEN_MASK);
-+            rc =3D -EACCES;
-+            goto cleanup;
-+        }
-+        if (iov[i].iov_len !=3D (entry_len & SG_LIST_LEN_MASK))
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                         "%s:  Warning: dram map for SG region entry %"P=
-RIu32
-+                         " requested size %"PRIu32" !=3D mapped size %"P=
-RIu64"\n",
-+                         __func__, i, entry_len & SG_LIST_LEN_MASK,
-+                         iov[i].iov_len);
-+
-+        size +=3D iov[i].iov_len;
-+        i++;
-+
-+        if (entry_len & SG_LIST_LEN_LAST) {
-+            break;
-+        }
-+    }
-+
-+    if (!(entry_len & SG_LIST_LEN_LAST)) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Error: Exhausted maximum of %"PRIu32
-+                      " SG array entries\n",
-+                      __func__, ASPEED_HACE_MAX_SG);
-+        rc =3D -ENOTSUP;
-+        goto cleanup;
-+    }
-+
-+    if (size !=3D req_size)
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Warning: requested SG total size %"PRIu64
-+                      " !=3D actual size %"PRIu64"\n",
-+                      __func__, req_size, size);
-+
-+    rc =3D qcrypto_hash_bytesv(algo, iov, i, &digest_buf, &digest_len,
-+                            &error_fatal);
-+    if (rc < 0) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: qcrypto failed\n",
-+                      __func__);
-+        goto cleanup;
-+    }
-+
-+    rc =3D address_space_write(&s->dram_as, dest, MEMTXATTRS_UNSPECIFIED=
-,
-+                             digest_buf, digest_len);
-+    if (rc)
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: address space write failed\n", __func__);
-+    g_free(digest_buf);
-+
-+cleanup:
-+
-+    for (; i > 0; i--) {
-+        address_space_unmap(&s->dram_as, iov[i - 1].iov_base,
-+                            iov[i - 1].iov_len, false,
-+                            iov[i - 1].iov_len);
-+    }
-+
-+    /*
-+     * Set status bits to indicate completion. Testing shows hardware se=
-ts
-+     * these irrespective of HASH_IRQ_EN.
-+     */
-+    if (!rc) {
-+        s->regs[R_STATUS] |=3D HASH_IRQ;
-+    }
-+
-+    return rc;
-+}
-+
-+
-=20
- static uint64_t aspeed_hace_read(void *opaque, hwaddr addr, unsigned int=
- size)
- {
-@@ -187,11 +310,6 @@ static void aspeed_hace_write(void *opaque, hwaddr a=
-ddr, uint64_t data,
-                           "%s: HMAC engine command mode %"PRIx64" not im=
-plemented",
-                           __func__, (data & HASH_HMAC_MASK) >> 8);
-         }
--        if (data & HASH_SG_EN) {
--            qemu_log_mask(LOG_UNIMP,
--                          "%s: Hash scatter gather mode not implemented"=
-,
--                          __func__);
--        }
-         if (data & BIT(1)) {
-             qemu_log_mask(LOG_UNIMP,
-                           "%s: Cascaded mode not implemented",
-@@ -204,7 +322,10 @@ static void aspeed_hace_write(void *opaque, hwaddr a=
-ddr, uint64_t data,
-                         __func__, data & ahc->hash_mask);
-                 break;
-         }
--        do_hash_operation(s, algo);
-+        if (data & HASH_SG_EN)
-+            do_hash_sg_operation(s, algo);
-+        else
-+            do_hash_operation(s, algo);
-=20
-         if (data & HASH_IRQ_EN) {
-             qemu_irq_raise(s->irq);
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index a17b75f4940a..1cf5a15c8098 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -327,7 +327,7 @@ static void aspeed_machine_init(MachineState *machine=
+)
+     object_property_set_int(OBJECT(&bmc->soc), "num-cs", amc->num_cs,
+                             &error_abort);
+     object_property_set_link(OBJECT(&bmc->soc), "dram",
+-                             OBJECT(&bmc->ram_container), &error_abort);
++                             OBJECT(machine->ram), &error_abort);
+     if (machine->kernel_filename) {
+         /*
+          * When booting with a -kernel command line there is no u-boot
+diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+index 16addee4dc8d..6f72fb028e59 100644
+--- a/hw/ssi/aspeed_smc.c
++++ b/hw/ssi/aspeed_smc.c
+@@ -178,8 +178,7 @@
+  *   0: 4 bytes
+  *   0x7FFFFF: 32M bytes
+  */
+-#define DMA_DRAM_ADDR(s, val)   ((s)->sdram_base | \
+-                                 ((val) & (s)->ctrl->dma_dram_mask))
++#define DMA_DRAM_ADDR(s, val)   ((val) & (s)->ctrl->dma_dram_mask)
+ #define DMA_FLASH_ADDR(s, val)  ((s)->ctrl->flash_window_base | \
+                                 ((val) & (s)->ctrl->dma_flash_mask))
+ #define DMA_LENGTH(val)         ((val) & 0x01FFFFFC)
 --=20
 2.26.3
 

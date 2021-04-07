@@ -1,107 +1,100 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp1938092lfr;
-        Tue, 6 Apr 2021 16:39:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwPYW1U7D/78TK8XeSvNQlHTHSqfpJ/zqJhqMhqDsRGIb248Kx4aMe9sYOyMwEyTFPptkb2
-X-Received: by 2002:a02:9048:: with SMTP id y8mr627025jaf.66.1617752394165;
-        Tue, 06 Apr 2021 16:39:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617752394; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp897780lfr;
+        Wed, 7 Apr 2021 15:56:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzm4KRlW5pH2kPEiAcvvhGZ4UOioONAmDFm/Nr4kLu0rurRCGT8nAAFEIAvD4mKw32kzXCC
+X-Received: by 2002:a05:622a:114:: with SMTP id u20mr4743222qtw.317.1617836183839;
+        Wed, 07 Apr 2021 15:56:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617836183; cv=none;
         d=google.com; s=arc-20160816;
-        b=0UIpxBFqWnh4ZZIKbQDH96XQwFOvar9VVbIjdz8emr0XXBr/lMie1l6dxhO6+O8EGB
-         mKWLHe7DVMKDm/ixOnq9W4ued1wRz4dOc0yqaoGoEOFnvPUU31zb4LGUtHjxEmB1DSP+
-         O+E2emwsANhfzaRrmRCTv3C0buiuVkP3GMNf0CR1Sw+YpLkDvqVxMc0hmNVxN1hCIezH
-         zEkr9JbGDHKBTttqKR8EIFLN77FvlzsTkC76V5JuS9Jb9tDDh7zxDTq3e7qk/RG1nykD
-         td+0/GwULX5IPLZVU0QwJ07yFQdaOy37E/PoZoKtqDOww1bZoj+7BVyYxf/9AyFxMM0m
-         8ciQ==
+        b=wd8OaiojOw77Ua+vi2V45abqSK3uMv+QgSM93kLv9URqw/p0hbR3HaiPevxAymjFar
+         HaOgSYPLZRlLmNfFHk2RJ3Yd01Rx7n++8McgUdsQzMTPje2lLGB6iLDy3xzJZpx5YWCw
+         ss8SyrDttc6qbJgoGePgqNwYu4hEDWLEPFysHYaX4P/VAVJVKong4kEMJPrSYsoKIU5K
+         NaTuMbpUCyOoaPz51dGwGHzQWypX0RhFpgSoVzJX88afZ5p8o+ggGrwvRgZUXvs/FdR+
+         El/oHZRxpPNShAAgVwCGv62N6/GqQZjB/qbk7BEt7oLap4vsJ1cd1M/3SzyAumwFw55B
+         yt6A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=5+Bzu284pB0TBuD58uAa6TVrLT+HRVQxqHHRrO0jjtw=;
-        b=xKSWf7STbJGZd0ISqpLZYqEOsbuYpRqbifx/esF/gSAmlsmS/TXo5sbh9CWiQDOg7Q
-         AGyZAxPvpv46QO48k6CGSvTeWWN1pwNv9J1a4eM7vQJ1fkTV6PQ6dM5aEM5NiF4JL713
-         FYKvp8ZbeMH5uS5VFaC4d+HbiCPvOIsQlSWWRL+zreagrBz90wQDTq1VreEhF+W9PZGA
-         Q3hmhFj+9hPDjq9ju8DHiyeAzvvfflzq36aYf1/xV1n0BvjUj0mWnDrdh87ojJ6hGtcl
-         lMbMW+ovmluUK6HHtOrhwkCZ22cPibQqP9o7JTrDDryI0m3eNGMEPNK5GkpBLZKCnBMZ
-         Ns0w==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=wi3bMRy77Fy5wfLWhEljFj4gYssd4093UZKsi/E/ioU=;
+        b=BDF+3jhWInby3uft1MaqXwLRqvPFfutVJE9rfEwjqz/xwywulfrluiO61xt7zgJBMr
+         1mZ5VmJae5DO0wCVJlYKpeDtCx/2sGGr8TgFol73NSNmtgQXcL13gEIPifm07vq7iA6C
+         brzWEO+BYIHMqJEQvKSf/bhLsZYvIWAeR9pqWG0xjCJ5APv484gioDGotwqiJVAE5hZ4
+         qWrfWsMQTepVmh330fZEK/aJyOgXH4l4m5B9vXgeKMVFdju5y54CrIS4MIMfH3vM7rjS
+         Q5v/IVewc71U/YSsLfPHIkKxVPwCg0tUxVA1FKRmVj5CQM1spAkx/r9qZFcZN+9Ifi54
+         /OOQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hLJjL15P;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=L5U9QzS2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q8si18014817iog.50.2021.04.06.16.39.53
+        by mx.google.com with ESMTPS id m8si12044991qtn.360.2021.04.07.15.56.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 Apr 2021 16:39:54 -0700 (PDT)
+        Wed, 07 Apr 2021 15:56:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hLJjL15P;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:55066 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=L5U9QzS2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:52800 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lTvIX-00067F-6d
-	for alex.bennee@linaro.org; Tue, 06 Apr 2021 19:39:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43148)
+	id 1lUH5z-0005LZ-5L
+	for alex.bennee@linaro.org; Wed, 07 Apr 2021 18:56:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33730)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
- id 1lTvI2-00065a-BX; Tue, 06 Apr 2021 19:39:22 -0400
-Received: from mail-ot1-x331.google.com ([2607:f8b0:4864:20::331]:38779)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lUH5q-0005Ku-M0; Wed, 07 Apr 2021 18:56:14 -0400
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633]:35478)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
- id 1lTvI0-0006Kd-5r; Tue, 06 Apr 2021 19:39:22 -0400
-Received: by mail-ot1-x331.google.com with SMTP id
- w21-20020a9d63950000b02901ce7b8c45b4so16314572otk.5; 
- Tue, 06 Apr 2021 16:39:19 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lUH5p-0007a7-1j; Wed, 07 Apr 2021 18:56:14 -0400
+Received: by mail-ej1-x633.google.com with SMTP id u17so24058044ejk.2;
+ Wed, 07 Apr 2021 15:56:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:date:from:to:cc:subject:message-id:reply-to:references
- :mime-version:content-disposition:in-reply-to;
- bh=5+Bzu284pB0TBuD58uAa6TVrLT+HRVQxqHHRrO0jjtw=;
- b=hLJjL15PBIuVs3rQuugJKNWPUz0Bxx6zymFYljmw/L84WVkifZ9Vr82HSs8ARYEmlf
- cqfUCD8n5mF/O4XMQLuH+4OYMrbIJBaYXxZSEf+R5zPH7Uh2RnW6gs6d4W9KZ6YXtz+y
- mP/9ApqwXvJIAxZm6K9EM9wxSjFRMehUSKshMzUybo+gbjqWpFX6odCsQ1hN/mbBIzCp
- HCCublfWohap8i8YX7GSNbXCVMvEq/0D8WVLNvXnx2jOZctZKOLuRdxYa4bc6LWAayF/
- /ljO6A0+ues8lVCdAZq75N95AdhgkiLJ9SJ+D1f7oyNdyywAfrnuvptK6Xvdmm6b8OQR
- USoQ==
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=wi3bMRy77Fy5wfLWhEljFj4gYssd4093UZKsi/E/ioU=;
+ b=L5U9QzS2iSeRUlwW263zsx5IotFdDZUVd6nugq1/V6wGZATsriajUelwuCEhRndqHQ
+ EETeu8MlaeW9cag2/wQujdz4PKIUDrftwUA4xn0FlUvTuNaOc9FvykZVuWrhEzGUWTk7
+ jSsxghTZfcyJIRtgFZ0vGHaK/uYed5OL3O47atXMDkflEitUJVsxao7qGVr7Seok8GcL
+ vbyDnOSERk/AxYYoEW/pm+bkAGEtCBa+3IzCiiN/fnOQm/Rrofu3HWIEQFGuXL4pBw3M
+ TJjdSEu61YTWbX5xexYp6ABVR6w0Zu5Vq3Kif0YHbWL9Y/BUGJ5l5rmKvRs1X3mp/OTK
+ lSzA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
- :reply-to:references:mime-version:content-disposition:in-reply-to;
- bh=5+Bzu284pB0TBuD58uAa6TVrLT+HRVQxqHHRrO0jjtw=;
- b=rHjxRI9LoruSxcJT7NZkHwnHNOuFhkW8unogFiOdJFziULiqI/CmQBhKNF27i1IvCx
- cU2gedXcnWEImT6CPKkdpU6h4qNxAabaLCEfTx0rFAxO8iJRfn32tnoSKUYIGdMumVro
- MLn6qfxy8EyDRFV5OpFdtT8EKczOyujF2izT/hjFZeNa1CWhUUcOQjJCQBetrdXGw3DW
- 8gUKUj9ZA5ENF6o7n00A449n1P5aMrXBwcdFlk7oQzQ5raFo9t8uU8Q2deUSL7pTO+tT
- P8De4ft7jq6soakZF0yAATTt91jJpRn2CG5Dk5dgzQs3MkUd0YglB3l8qyi+j0t5pv8Y
- JGdg==
-X-Gm-Message-State: AOAM5321lhkGracGclF7j41CWSKquLWxvXKuqIO99s3YRs80yrkybAt0
- VvFQKpuUtuV1r3rnkPiAQQ==
-X-Received: by 2002:a9d:7453:: with SMTP id p19mr440430otk.271.1617752358538; 
- Tue, 06 Apr 2021 16:39:18 -0700 (PDT)
-Received: from serve.minyard.net (serve.minyard.net. [2001:470:b8f6:1b::1])
- by smtp.gmail.com with ESMTPSA id g11sm5021204ots.34.2021.04.06.16.39.17
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=wi3bMRy77Fy5wfLWhEljFj4gYssd4093UZKsi/E/ioU=;
+ b=rCbrG/JQeuCXykW07yCsw/E59Dt4RsS3Gh/JdF+1q8IuxRjvbFH/KoKf0r8bUQxi31
+ ikd1pr5hGvi/cKNAOwoR/e063dmSHDky9pdEpyHnQVNaFhGe59A1YUrnoc57LwTURM7d
+ +CH+f+s1WZg3/Cn8jCOiT7KCq5IaB8DxdHuvpnI5ZuuNtaKfVFUpEcVzWx8OEThk2WTV
+ SPlAMdz/8ejiauYr20R+lViXQtoORN+AVrQ1WDaM/Gne8zmAgRDVzw1Aes1qofnbSJB1
+ XPRsbKESpvFR9M5ALlDzBgaZEpccRBoB0PAeV0qDubstjDBYXnsmZjdRUduB43GXSOn3
+ Q2QQ==
+X-Gm-Message-State: AOAM533FCR0o8WFTI4BxVNnmEOR6pv+ljBIMEJf3cWL8yofhz9RWgCMG
+ zhlaaLRuJM0d/o/RH1aH3cagtqEvdBI3JA==
+X-Received: by 2002:a17:906:811:: with SMTP id
+ e17mr6345560ejd.535.1617836170587; 
+ Wed, 07 Apr 2021 15:56:10 -0700 (PDT)
+Received: from x1w.redhat.com (17.red-88-21-201.staticip.rima-tde.net.
+ [88.21.201.17])
+ by smtp.gmail.com with ESMTPSA id e15sm7069613ejh.56.2021.04.07.15.56.09
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 06 Apr 2021 16:39:17 -0700 (PDT)
-Received: from minyard.net (unknown
- [IPv6:2001:470:b8f6:1b:f584:ff80:e7e9:e850])
- by serve.minyard.net (Postfix) with ESMTPSA id B09D0180053;
- Tue,  6 Apr 2021 23:39:16 +0000 (UTC)
-Date: Tue, 6 Apr 2021 18:39:15 -0500
-From: Corey Minyard <minyard@acm.org>
-To: Patrick Venture <venture@google.com>
-Subject: Re: [PATCH 0/2] hw/i2c: Adds pca954x i2c mux switch device
-Message-ID: <20210406233915.GD7166@minyard.net>
-References: <20210403222810.3481372-1-venture@google.com>
- <20210405195834.GF7167@minyard.net>
- <CAO=notzJbWTn-KNurHs6HdzoLkFQRaKeNSdzBmufSu-eViRfww@mail.gmail.com>
- <CAO=notyrcWX59UqVP4=jueUvenx9b4NiTzk-wifa1s7wPypJsQ@mail.gmail.com>
- <20210406183601.GB7166@minyard.net>
- <CAO=notyM82Xzco4gdpmJBJQxV_CkgH=9i8A_OXaksDdei8HebQ@mail.gmail.com>
+ Wed, 07 Apr 2021 15:56:09 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH-for-6.0?] hw/arm/imx25_pdk: Fix error message for invalid RAM
+ size
+Date: Thu,  8 Apr 2021 00:56:08 +0200
+Message-Id: <20210407225608.1882855-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.3
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAO=notyM82Xzco4gdpmJBJQxV_CkgH=9i8A_OXaksDdei8HebQ@mail.gmail.com>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::331;
- envelope-from=tcminyard@gmail.com; helo=mail-ot1-x331.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::633;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x633.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -122,148 +115,56 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: minyard@acm.org
-Cc: Hao Wu <wuhaotsh@google.com>, Corey Minyard <cminyard@mvista.com>,
- qemu-arm@nongnu.org, Havard Skinnemoen <hskinnemoen@google.com>,
- qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: c5kt5H8ZA9Lg
+X-TUID: QQokgSeDsfu6
 
-On Tue, Apr 06, 2021 at 03:21:18PM -0700, Patrick Venture wrote:
-> On Tue, Apr 6, 2021 at 11:36 AM Corey Minyard <minyard@acm.org> wrote:
-> >
-> > On Tue, Apr 06, 2021 at 08:55:14AM -0700, Patrick Venture wrote:
-> > > On Tue, Apr 6, 2021 at 8:41 AM Patrick Venture <venture@google.com> wrote:
-> > > >
-> > > > On Mon, Apr 5, 2021 at 12:58 PM Corey Minyard <cminyard@mvista.com> wrote:
-> > > > >
-> > > > > On Sat, Apr 03, 2021 at 03:28:08PM -0700, Patrick Venture wrote:
-> > > > > > The i2c mux device pca954x implements two devices:
-> > > > > >  - the pca9546 and pca9548.
-> > > > > >
-> > > > > > Patrick Venture (2):
-> > > > > >   hw/i2c/core: add reachable state boolean
-> > > > > >   hw/i2c: add pca954x i2c-mux switch
-> > > > >
-> > > > > Looking this over, the code looks good, but I have a few general
-> > > > > questions:
-> > > > >
-> > > > > * Can you register the same slave address on different channels?  That's
-> > > > >   something you could do with real hardware and might be required at
-> > > > >   some time.  It looks like to me that you can't with this patch set,
-> > > > >   but maybe I'm missing something.
-> > > >
-> > > > If I understand the hardware's implementation properly you can have
-> > > > collisions, and this allows for collisions.  I'm not sure what you
-> > > > mean by having both accessible.  For instance, on hardware you can
-> > > > have a switch with N channels, and on two of the channels there is an
-> > > > eeprom at 50.  But you're unable to talk to both eeproms at the same
-> > > > time, because the addresses collide -- so how would the hardware know
-> > > > which you're talking to?  My understanding of the behavior in this
-> > > > collision case is that it just talks to the first one that responds
-> > > > and can lead to unexpected things.
-> > > >
-> > > > There is a board, the quanta-q71l where we had to set the
-> > > > idle-disconnect because there were two muxes on the same bus, with
-> > > > conflicting addresses, and so we had to use idle disconnect explicitly
-> > > > to make the software happy talking to the hardware -- not ideal as
-> > > > having two devices behind different channels, but ultimately it's the
-> > > > same idea because the devices are conflicting.
-> > > >
-> > > > >
-> > > > > * Can you add devices to the secondary I2C busses on the mux using the
-> > > > >   standard QEMU device model, or is the function call required?
-> > > >
-> > > > I added the function call because I didn't see a clean way to bridge
-> > > > the issue as well as, the quasi-arbitrary bus numbering used by the
-> > > > kernel isn't how the hardware truly behaves, and my goal was to
-> > > > implement closer to the hardware.  I thought about adding an I2cBus to
-> > > > the device and then you'd be able to access it, but wasn't sure of a
-> > > > nice clean way to plumb that through -- I considered adding/removing
-> > > > devices from the parent i2c bus instead of the boolean reachable, but
-> > > > that seemed way less clean - although do-able.
-> > > >
-> > > > >
-> > > > > I ask because I did a pca9540 and pca9541 device, but I've never
-> > > > > submitted it because I didn't think it would ever be needed.  It takes a
-> > > > > different tack on the problem; it creates the secondary busses as
-> > > > > standard QEMU I2C busses and bridges them.  You can see it at
-> > > > >
-> > > > >    github.com:cminyard/qemu.git master-i2c-rebase
-> > > > >
-> > > >
-> > > > I'll have to take a look at your approach, but the idea that it
-> > > > wouldn't be needed sounds bizarre to me as nearly all BMC-based qemu
-> > > > boards leverage i2c muxes to handle their PCIe slot i2c routing.
-> > > >
-> > > > > If you design can do the things I ask, then it's better.  If not, then
-> > > > > I'm not sure.
-> > >
-> > > Corey,
-> > >
-> > > looking at your design, I should be able to do something similar with
-> > > a small tweak.
-> > >
-> > > I think my design follows the hardware where there can be conflicts,
-> > > etc, but what I didn't know how to do was add the faux I2cBuses in a
-> > > useful way -- but if I add the I2cBuses to the device, and then on
-> > > add/remove it registers the device on the parent bus -- i can still
-> > > use the reachable boolean to control whether it's present.  The faux
-> > > I2cBuses would be a simplification for adding/removing i2c devices --
-> > > and would act as the device list in my object.  So then setting the
-> > > channels would change to walking the devices held by the bus that
-> > > corresponds with the bit -- but _still_ using the reachable boolean.
-> > >
-> > > If you'd like, I can update my patchset to use an i2cbus for the
-> > > purpose above, then it would satisfy the requirement of leveraging the
-> > > normal device process and no longer require the special function call.
-> >
-> > That sounds reasonable.  Your implementation is quite a bit simpler than
-> > mine, which is a bonus.
-> 
-> Corey;
-> 
-> I will send out the updated patches tomorrow, but I had to cherry-pick
-> your patch: https://github.com/cminyard/qemu/commit/c7f696d09af2d55f221a5c22900c8f71bc2244be
-> so that I can get the callbacks for the bus actions, in this case, did
-> you want to send that patch to the mailing list ahead?  Otherwise,
-> I'll try to incorporate it as a predecessor patch.
+The i.MX25 PDK board has 2 banks for SDRAM, each can
+address up to 256 MiB. So the total RAM usable for this
+board is 512M. When we ask for more we get a misleading
+error message:
 
-Go ahead and incorporate it in your set so the reviewers can see why
-it's necessary.
+  $ qemu-system-arm -M imx25-pdk -m 513M
+  qemu-system-arm: Invalid RAM size, should be 128 MiB
 
-It would also be possible to do this by modifying the i2c bus code, but
-I'm not sure what the maintainers there would like.
+Update the error message to better match the reality:
 
--corey
+  $ qemu-system-arm -M imx25-pdk -m 513M
+  qemu-system-arm: RAM size more than 512 MiB is not supported
 
-> 
-> Patrick
-> 
-> >
-> > -corey
-> >
-> > >
-> > > Patrick
-> > >
-> > > > >
-> > > > > -corey
-> > > > >
-> > > > > >
-> > > > > >  MAINTAINERS                      |   6 +
-> > > > > >  hw/i2c/Kconfig                   |   4 +
-> > > > > >  hw/i2c/core.c                    |   6 +
-> > > > > >  hw/i2c/i2c_mux_pca954x.c         | 182 +++++++++++++++++++++++++++++++
-> > > > > >  hw/i2c/meson.build               |   1 +
-> > > > > >  hw/i2c/trace-events              |   5 +
-> > > > > >  include/hw/i2c/i2c.h             |   3 +
-> > > > > >  include/hw/i2c/i2c_mux_pca954x.h |  60 ++++++++++
-> > > > > >  8 files changed, 267 insertions(+)
-> > > > > >  create mode 100644 hw/i2c/i2c_mux_pca954x.c
-> > > > > >  create mode 100644 include/hw/i2c/i2c_mux_pca954x.h
-> > > > > >
-> > > > > > --
-> > > > > > 2.31.0.208.g409f899ff0-goog
-> > > > > >
-> > >
+Fixes: bf350daae02 ("arm/imx25_pdk: drop RAM size fixup")
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/arm/imx25_pdk.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/hw/arm/imx25_pdk.c b/hw/arm/imx25_pdk.c
+index 1c201d0d8ed..51fde71b1bd 100644
+--- a/hw/arm/imx25_pdk.c
++++ b/hw/arm/imx25_pdk.c
+@@ -67,7 +67,6 @@ static struct arm_boot_info imx25_pdk_binfo;
+ 
+ static void imx25_pdk_init(MachineState *machine)
+ {
+-    MachineClass *mc = MACHINE_GET_CLASS(machine);
+     IMX25PDK *s = g_new0(IMX25PDK, 1);
+     unsigned int ram_size;
+     unsigned int alias_offset;
+@@ -79,8 +78,8 @@ static void imx25_pdk_init(MachineState *machine)
+ 
+     /* We need to initialize our memory */
+     if (machine->ram_size > (FSL_IMX25_SDRAM0_SIZE + FSL_IMX25_SDRAM1_SIZE)) {
+-        char *sz = size_to_str(mc->default_ram_size);
+-        error_report("Invalid RAM size, should be %s", sz);
++        char *sz = size_to_str(FSL_IMX25_SDRAM0_SIZE + FSL_IMX25_SDRAM1_SIZE);
++        error_report("RAM size more than %s is not supported", sz);
+         g_free(sz);
+         exit(EXIT_FAILURE);
+     }
+-- 
+2.26.3
+

@@ -1,90 +1,91 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp658828lfr;
-        Wed, 7 Apr 2021 10:26:10 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy7NqseGLlgovJQYFsmBXc3afWXgetmLtFvpP+MxMabFz3iRaPbHK/aARpcvbfTgexCdIA5
-X-Received: by 2002:a92:ce11:: with SMTP id b17mr3515832ilo.286.1617816370137;
-        Wed, 07 Apr 2021 10:26:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617816370; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp659144lfr;
+        Wed, 7 Apr 2021 10:26:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzUKHGGo0A946+bBi8fg5geMepgUpNeeg75fwlMLpj7wI9ZjKpQcyUa5QiUkbuYs+iZbJCz
+X-Received: by 2002:a92:ac0c:: with SMTP id r12mr3502188ilh.140.1617816396244;
+        Wed, 07 Apr 2021 10:26:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617816396; cv=none;
         d=google.com; s=arc-20160816;
-        b=0tR4KcfkIKDvqj2h7cpHCsv+8xdkmcPoTXiVO2MblR1HEJXcSjBulZklxeZAsL1RGW
-         g6NvFYEcYC8KyYe+LRak3ZTh1GC0RwEd1/HAHYIfWUapv/hnZIRUqkG+54XcxKLFOeUr
-         oNunOoTwpsH4NO7EU9VFm5wZ9j1DrMh6BEWLqEJPPqgwG1ddUFlftLQyQpwsE7SYFs7A
-         QquskQMP4bcFPqaBoJaDi5nGAOB/zDVyofYmEawztZ+GMnJTptjf08DhmgIpGLKqH1CV
-         CWsJjH5XxLOaRtga9IwGP2IRjD5E+tmzzCvfMBpv5tQHY93sroVfVt3nkSEQA3WKBIuM
-         0Okg==
+        b=J0kfhODkcenoLTxX4wAWHZbf5bM/C7ibLlWZroMUmkzRJVs9h5k/ayZt6c/98sQzyd
+         O1Ki0t1YaxhH8/OuDrV/nGdx5NnT6E7HxKtwbNgV7LzbHFMK9j9vEGIrb3We5opS0SnI
+         2VC1b06F37b2n+nR+EM/D6djwykbIwXtk4eJFkE/LRGCWckImix5ghLbXzdbMQ3ybLRK
+         35APQPqLNB35QY2Em+1jnpo6fF4epQZWhYCMh/Wvx41kOsQilgi9BpEHrc9DfwMCow+S
+         BzEtwUw/SfC0oOqa43An0YqCMhfe9MOD4kKxJFG1lNpx7bPAvuPqlTVN3gFMFyvk+iyJ
+         NKhA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=b47OVV+6/vo30tBK4Cb5lOqp3R1OZQDMJUol56JbVWY=;
-        b=Y8MP7FG5DxVWHuRxZcwh8URuEEUpKu6H5XpYi3tD9IS6UVAvyewJH0sWNEk0mWbvYQ
-         W0qPXiV2dW9NbFUb1WIHhJB+s+sc4feqL6KymyFR7MVYvaPp4jBel6JI13so7/RF6rCG
-         6eSeSmWGPeBzUSd3rL6WSI+IkPEeUWmh7j9ymGMsd16rllZuwWVBfk1/KiGhUXlQPCt1
-         zKxitt1L1X5OpGPMzflc7czPX2ycyUkRlfNwE9tx0vJvH70IQwGYbrby2hiKAwfDbPjJ
-         +gi9d1vFpT82COd4EbZ+TRxLcqDzdCmV+04XAS0bNIDVFypQIf+L1JzsiRvRsQdlNFAm
-         u5NA==
+        bh=UgljvdRotT6EnU7HL/iubv8BpB8ZI/KAwR5ZU2fgnno=;
+        b=L3nlvEryGzqkfcvblXFazp0AcuxAT7eUimzxn5I36T55+2APpmfbUVZSvS4zHhhjnh
+         +s1jw7YQnMQ3/XRz35pMhcXfap/xuffGm+R5YZFl1T4PlbMNQeHAJVkOuRQ+9h/wgztA
+         t4EqB8DpudqRA4v5LWNf4WAU7zgbEcVEo2+1RMpI/+oIDGd5vhhZtUfPBBaEWfa5vStp
+         8s7ozKwtro6ikm+gO3wiFC6K9oz3pAvu8BvSJvH6ZY2NqCIl1pMe8O4ciH1L4ZnCgSIO
+         uXU80D9heLBu7fYiweEd8HkFvhJokNA38yqU/n3HnwBKjxUW0XX08xht7k3izstUQ/qs
+         DnWw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j7si20998815ila.72.2021.04.07.10.26.09
+        by mx.google.com with ESMTPS id f11si20943579ioc.41.2021.04.07.10.26.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Apr 2021 10:26:10 -0700 (PDT)
+        Wed, 07 Apr 2021 10:26:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:48380 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49538 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lUBwP-0002U4-A0
-	for alex.bennee@linaro.org; Wed, 07 Apr 2021 13:26:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38922)
+	id 1lUBwp-0002xI-Ib
+	for alex.bennee@linaro.org; Wed, 07 Apr 2021 13:26:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38954)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1lUBnh-0007Tx-4X; Wed, 07 Apr 2021 13:17:09 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:52750)
+ id 1lUBnh-0007W4-UO; Wed, 07 Apr 2021 13:17:09 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:62240
+ helo=mx0a-001b2d01.pphosted.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1lUBnc-0006jz-SK; Wed, 07 Apr 2021 13:17:08 -0400
-Received: from pps.filterd (m0098410.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 137H40sK118993; Wed, 7 Apr 2021 13:16:55 -0400
-Received: from ppma06ams.nl.ibm.com (66.31.33a9.ip4.static.sl-reverse.com
- [169.51.49.102])
- by mx0a-001b2d01.pphosted.com with ESMTP id 37rvm0h8sb-1
+ id 1lUBnf-0006iD-92; Wed, 07 Apr 2021 13:17:09 -0400
+Received: from pps.filterd (m0098414.ppops.net [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
+ 137H4OrG034571; Wed, 7 Apr 2021 13:16:48 -0400
+Received: from ppma06fra.de.ibm.com (48.49.7a9f.ip4.static.sl-reverse.com
+ [159.122.73.72])
+ by mx0b-001b2d01.pphosted.com with ESMTP id 37rvy7ftpv-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 07 Apr 2021 13:16:55 -0400
-Received: from pps.filterd (ppma06ams.nl.ibm.com [127.0.0.1])
- by ppma06ams.nl.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 137HDiX6002161;
- Wed, 7 Apr 2021 17:16:53 GMT
-Received: from b06cxnps3074.portsmouth.uk.ibm.com
- (d06relay09.portsmouth.uk.ibm.com [9.149.109.194])
- by ppma06ams.nl.ibm.com with ESMTP id 37rvbw8w5k-1
+ Wed, 07 Apr 2021 13:16:48 -0400
+Received: from pps.filterd (ppma06fra.de.ibm.com [127.0.0.1])
+ by ppma06fra.de.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 137HCZcU031887;
+ Wed, 7 Apr 2021 17:16:46 GMT
+Received: from b06avi18626390.portsmouth.uk.ibm.com
+ (b06avi18626390.portsmouth.uk.ibm.com [9.149.26.192])
+ by ppma06fra.de.ibm.com with ESMTP id 37rvbw0fx2-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 07 Apr 2021 17:16:53 +0000
-Received: from d06av24.portsmouth.uk.ibm.com (d06av24.portsmouth.uk.ibm.com
- [9.149.105.60])
- by b06cxnps3074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 137HGoWc21692814
+ Wed, 07 Apr 2021 17:16:46 +0000
+Received: from d06av26.portsmouth.uk.ibm.com (d06av26.portsmouth.uk.ibm.com
+ [9.149.105.62])
+ by b06avi18626390.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP
+ id 137HGN7d26083584
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 7 Apr 2021 17:16:51 GMT
-Received: from d06av24.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id D53A64204D;
- Wed,  7 Apr 2021 17:16:50 +0000 (GMT)
-Received: from d06av24.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 9808B4203F;
- Wed,  7 Apr 2021 17:16:50 +0000 (GMT)
+ Wed, 7 Apr 2021 17:16:23 GMT
+Received: from d06av26.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 63C49AE045;
+ Wed,  7 Apr 2021 17:16:44 +0000 (GMT)
+Received: from d06av26.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 2D9D4AE04D;
+ Wed,  7 Apr 2021 17:16:44 +0000 (GMT)
 Received: from smtp.tlslab.ibm.com (unknown [9.101.4.1])
- by d06av24.portsmouth.uk.ibm.com (Postfix) with SMTP;
- Wed,  7 Apr 2021 17:16:50 +0000 (GMT)
+ by d06av26.portsmouth.uk.ibm.com (Postfix) with SMTP;
+ Wed,  7 Apr 2021 17:16:44 +0000 (GMT)
 Received: from yukon.ibmuc.com (unknown [9.171.70.229])
- by smtp.tlslab.ibm.com (Postfix) with ESMTP id F0C36220190;
- Wed,  7 Apr 2021 19:16:49 +0200 (CEST)
+ by smtp.tlslab.ibm.com (Postfix) with ESMTP id 4223E2200C7;
+ Wed,  7 Apr 2021 19:16:43 +0200 (CEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH 13/24] hw/misc/aspeed_xdma: Add AST2600 support
-Date: Wed,  7 Apr 2021 19:16:26 +0200
-Message-Id: <20210407171637.777743-14-clg@kaod.org>
+Subject: [PATCH 04/24] aspeed/i2c: Rename DMA address space
+Date: Wed,  7 Apr 2021 19:16:17 +0200
+Message-Id: <20210407171637.777743-5-clg@kaod.org>
 X-Mailer: git-send-email 2.26.3
 In-Reply-To: <20210407171637.777743-1-clg@kaod.org>
 References: <20210407171637.777743-1-clg@kaod.org>
@@ -92,18 +93,18 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: 9r7pVFu0r4BDsPaqi08afsyLPsVO_0QB
-X-Proofpoint-ORIG-GUID: 9r7pVFu0r4BDsPaqi08afsyLPsVO_0QB
+X-Proofpoint-GUID: pQQTU_gLbfCqfk_X28S3X3qjGDXMaiMv
+X-Proofpoint-ORIG-GUID: pQQTU_gLbfCqfk_X28S3X3qjGDXMaiMv
 X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.761
  definitions=2021-04-07_09:2021-04-07,
  2021-04-07 signatures=0
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
  bulkscore=0 suspectscore=0
- spamscore=0 lowpriorityscore=0 impostorscore=0 malwarescore=0 mlxscore=0
- mlxlogscore=999 adultscore=0 priorityscore=1501 clxscore=1034 phishscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2104060000
- definitions=main-2104070116
-Received-SPF: softfail client-ip=148.163.156.1; envelope-from=clg@kaod.org;
+ lowpriorityscore=0 clxscore=1034 adultscore=0 phishscore=0 spamscore=0
+ priorityscore=1501 mlxscore=0 impostorscore=0 mlxlogscore=705
+ malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2104060000 definitions=main-2104070116
+Received-SPF: softfail client-ip=148.163.158.5; envelope-from=clg@kaod.org;
  helo=mx0a-001b2d01.pphosted.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -123,302 +124,35 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Eddie James <eajames@linux.ibm.com>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Joel Stanley <joel@jms.id.au>
+Cc: Andrew Jeffery <andrew@aj.id.au>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FQqK9XK3N+2y
+X-TUID: j+PMQVgx+vCj
 
-When we introduced support for the AST2600 SoC, the XDMA controller
-was forgotten. It went unnoticed because it's not used under emulation.
-But the register layout being different, the reset procedure is bogus
-and this breaks kexec.
+It improves 'info mtree' output.
 
-Add a AspeedXDMAClass to take into account the register differences.
-
-Cc: Eddie James <eajames@linux.ibm.com>
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
- include/hw/misc/aspeed_xdma.h |  17 ++++-
- hw/arm/aspeed_ast2600.c       |   3 +-
- hw/arm/aspeed_soc.c           |   3 +-
- hw/misc/aspeed_xdma.c         | 124 +++++++++++++++++++++++++++-------
- 4 files changed, 121 insertions(+), 26 deletions(-)
+ hw/i2c/aspeed_i2c.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/include/hw/misc/aspeed_xdma.h b/include/hw/misc/aspeed_xdma.=
-h
-index a2dea96984f3..b1478fd1c681 100644
---- a/include/hw/misc/aspeed_xdma.h
-+++ b/include/hw/misc/aspeed_xdma.h
-@@ -13,7 +13,10 @@
- #include "qom/object.h"
-=20
- #define TYPE_ASPEED_XDMA "aspeed.xdma"
--OBJECT_DECLARE_SIMPLE_TYPE(AspeedXDMAState, ASPEED_XDMA)
-+#define TYPE_ASPEED_2400_XDMA TYPE_ASPEED_XDMA "-ast2400"
-+#define TYPE_ASPEED_2500_XDMA TYPE_ASPEED_XDMA "-ast2500"
-+#define TYPE_ASPEED_2600_XDMA TYPE_ASPEED_XDMA "-ast2600"
-+OBJECT_DECLARE_TYPE(AspeedXDMAState, AspeedXDMAClass, ASPEED_XDMA)
-=20
- #define ASPEED_XDMA_NUM_REGS (ASPEED_XDMA_REG_SIZE / sizeof(uint32_t))
- #define ASPEED_XDMA_REG_SIZE 0x7C
-@@ -28,4 +31,16 @@ struct AspeedXDMAState {
-     uint32_t regs[ASPEED_XDMA_NUM_REGS];
- };
-=20
-+struct AspeedXDMAClass {
-+    SysBusDeviceClass parent_class;
-+
-+    uint8_t cmdq_endp;
-+    uint8_t cmdq_wrp;
-+    uint8_t cmdq_rdp;
-+    uint8_t intr_ctrl;
-+    uint32_t intr_ctrl_mask;
-+    uint8_t intr_status;
-+    uint32_t intr_complete;
-+};
-+
- #endif /* ASPEED_XDMA_H */
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index e0fbb020c770..c60824bfeecb 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -187,7 +187,8 @@ static void aspeed_soc_ast2600_init(Object *obj)
-         object_initialize_child(obj, "mii[*]", &s->mii[i], TYPE_ASPEED_M=
-II);
-     }
-=20
--    object_initialize_child(obj, "xdma", &s->xdma, TYPE_ASPEED_XDMA);
-+    snprintf(typename, sizeof(typename), TYPE_ASPEED_XDMA "-%s", socname=
-);
-+    object_initialize_child(obj, "xdma", &s->xdma, typename);
-=20
-     snprintf(typename, sizeof(typename), "aspeed.gpio-%s", socname);
-     object_initialize_child(obj, "gpio", &s->gpio, typename);
-diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-index 8ed29113f79f..4a95d27d9d63 100644
---- a/hw/arm/aspeed_soc.c
-+++ b/hw/arm/aspeed_soc.c
-@@ -199,7 +199,8 @@ static void aspeed_soc_init(Object *obj)
-                                 TYPE_FTGMAC100);
-     }
-=20
--    object_initialize_child(obj, "xdma", &s->xdma, TYPE_ASPEED_XDMA);
-+    snprintf(typename, sizeof(typename), TYPE_ASPEED_XDMA "-%s", socname=
-);
-+    object_initialize_child(obj, "xdma", &s->xdma, typename);
-=20
-     snprintf(typename, sizeof(typename), "aspeed.gpio-%s", socname);
-     object_initialize_child(obj, "gpio", &s->gpio, typename);
-diff --git a/hw/misc/aspeed_xdma.c b/hw/misc/aspeed_xdma.c
-index 533d237e3ce2..1c21577c98c9 100644
---- a/hw/misc/aspeed_xdma.c
-+++ b/hw/misc/aspeed_xdma.c
-@@ -30,6 +30,19 @@
- #define  XDMA_IRQ_ENG_STAT_US_COMP BIT(4)
- #define  XDMA_IRQ_ENG_STAT_DS_COMP BIT(5)
- #define  XDMA_IRQ_ENG_STAT_RESET   0xF8000000
-+
-+#define XDMA_AST2600_BMC_CMDQ_ADDR   0x14
-+#define XDMA_AST2600_BMC_CMDQ_ENDP   0x18
-+#define XDMA_AST2600_BMC_CMDQ_WRP    0x1c
-+#define XDMA_AST2600_BMC_CMDQ_RDP    0x20
-+#define XDMA_AST2600_IRQ_CTRL        0x38
-+#define  XDMA_AST2600_IRQ_CTRL_US_COMP    BIT(16)
-+#define  XDMA_AST2600_IRQ_CTRL_DS_COMP    BIT(17)
-+#define  XDMA_AST2600_IRQ_CTRL_W_MASK     0x017003FF
-+#define XDMA_AST2600_IRQ_STATUS      0x3c
-+#define  XDMA_AST2600_IRQ_STATUS_US_COMP  BIT(16)
-+#define  XDMA_AST2600_IRQ_STATUS_DS_COMP  BIT(17)
-+
- #define XDMA_MEM_SIZE              0x1000
-=20
- #define TO_REG(addr) ((addr) / sizeof(uint32_t))
-@@ -52,56 +65,48 @@ static void aspeed_xdma_write(void *opaque, hwaddr ad=
-dr, uint64_t val,
-     unsigned int idx;
-     uint32_t val32 =3D (uint32_t)val;
-     AspeedXDMAState *xdma =3D opaque;
-+    AspeedXDMAClass *axc =3D ASPEED_XDMA_GET_CLASS(xdma);
-=20
-     if (addr >=3D ASPEED_XDMA_REG_SIZE) {
-         return;
-     }
-=20
--    switch (addr) {
--    case XDMA_BMC_CMDQ_ENDP:
-+    if (addr =3D=3D axc->cmdq_endp) {
-         xdma->regs[TO_REG(addr)] =3D val32 & XDMA_BMC_CMDQ_W_MASK;
--        break;
--    case XDMA_BMC_CMDQ_WRP:
-+    } else if (addr =3D=3D axc->cmdq_wrp) {
-         idx =3D TO_REG(addr);
-         xdma->regs[idx] =3D val32 & XDMA_BMC_CMDQ_W_MASK;
--        xdma->regs[TO_REG(XDMA_BMC_CMDQ_RDP)] =3D xdma->regs[idx];
-+        xdma->regs[TO_REG(axc->cmdq_rdp)] =3D xdma->regs[idx];
-=20
-         trace_aspeed_xdma_write(addr, val);
-=20
-         if (xdma->bmc_cmdq_readp_set) {
-             xdma->bmc_cmdq_readp_set =3D 0;
-         } else {
--            xdma->regs[TO_REG(XDMA_IRQ_ENG_STAT)] |=3D
--                XDMA_IRQ_ENG_STAT_US_COMP | XDMA_IRQ_ENG_STAT_DS_COMP;
-+            xdma->regs[TO_REG(axc->intr_status)] |=3D axc->intr_complete=
-;
-=20
--            if (xdma->regs[TO_REG(XDMA_IRQ_ENG_CTRL)] &
--                (XDMA_IRQ_ENG_CTRL_US_COMP | XDMA_IRQ_ENG_CTRL_DS_COMP))
-+            if (xdma->regs[TO_REG(axc->intr_ctrl)] & axc->intr_complete)=
- {
-                 qemu_irq_raise(xdma->irq);
-+            }
+diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+index e7133528899f..8d276d9ed391 100644
+--- a/hw/i2c/aspeed_i2c.c
++++ b/hw/i2c/aspeed_i2c.c
+@@ -816,7 +816,8 @@ static void aspeed_i2c_realize(DeviceState *dev, Erro=
+r **errp)
+             return;
          }
--        break;
--    case XDMA_BMC_CMDQ_RDP:
-+    } else if (addr =3D=3D axc->cmdq_rdp) {
-         trace_aspeed_xdma_write(addr, val);
 =20
-         if (val32 =3D=3D XDMA_BMC_CMDQ_RDP_MAGIC) {
-             xdma->bmc_cmdq_readp_set =3D 1;
-         }
--        break;
--    case XDMA_IRQ_ENG_CTRL:
--        xdma->regs[TO_REG(addr)] =3D val32 & XDMA_IRQ_ENG_CTRL_W_MASK;
--        break;
--    case XDMA_IRQ_ENG_STAT:
-+    } else if (addr =3D=3D axc->intr_ctrl) {
-+        xdma->regs[TO_REG(addr)] =3D val32 & axc->intr_ctrl_mask;
-+    } else if (addr =3D=3D axc->intr_status) {
-         trace_aspeed_xdma_write(addr, val);
-=20
-         idx =3D TO_REG(addr);
--        if (val32 & (XDMA_IRQ_ENG_STAT_US_COMP | XDMA_IRQ_ENG_STAT_DS_CO=
-MP)) {
--            xdma->regs[idx] &=3D
--                ~(XDMA_IRQ_ENG_STAT_US_COMP | XDMA_IRQ_ENG_STAT_DS_COMP)=
-;
-+        if (val32 & axc->intr_complete) {
-+            xdma->regs[idx] &=3D ~axc->intr_complete;
-             qemu_irq_lower(xdma->irq);
-         }
--        break;
--    default:
-+    } else {
-         xdma->regs[TO_REG(addr)] =3D val32;
--        break;
+-        address_space_init(&s->dram_as, s->dram_mr, "dma-dram");
++        address_space_init(&s->dram_as, s->dram_mr,
++                           TYPE_ASPEED_I2C "-dma-dram");
      }
  }
 =20
-@@ -127,10 +132,11 @@ static void aspeed_xdma_realize(DeviceState *dev, E=
-rror **errp)
- static void aspeed_xdma_reset(DeviceState *dev)
- {
-     AspeedXDMAState *xdma =3D ASPEED_XDMA(dev);
-+    AspeedXDMAClass *axc =3D ASPEED_XDMA_GET_CLASS(xdma);
-=20
-     xdma->bmc_cmdq_readp_set =3D 0;
-     memset(xdma->regs, 0, ASPEED_XDMA_REG_SIZE);
--    xdma->regs[TO_REG(XDMA_IRQ_ENG_STAT)] =3D XDMA_IRQ_ENG_STAT_RESET;
-+    xdma->regs[TO_REG(axc->intr_status)] =3D XDMA_IRQ_ENG_STAT_RESET;
-=20
-     qemu_irq_lower(xdma->irq);
- }
-@@ -144,6 +150,73 @@ static const VMStateDescription aspeed_xdma_vmstate =
-=3D {
-     },
- };
-=20
-+static void aspeed_2600_xdma_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc =3D DEVICE_CLASS(klass);
-+    AspeedXDMAClass *axc =3D ASPEED_XDMA_CLASS(klass);
-+
-+    dc->desc =3D "ASPEED 2600 XDMA Controller";
-+
-+    axc->cmdq_endp =3D XDMA_AST2600_BMC_CMDQ_ENDP;
-+    axc->cmdq_wrp =3D XDMA_AST2600_BMC_CMDQ_WRP;
-+    axc->cmdq_rdp =3D XDMA_AST2600_BMC_CMDQ_RDP;
-+    axc->intr_ctrl =3D XDMA_AST2600_IRQ_CTRL;
-+    axc->intr_ctrl_mask =3D XDMA_AST2600_IRQ_CTRL_W_MASK;
-+    axc->intr_status =3D XDMA_AST2600_IRQ_STATUS;
-+    axc->intr_complete =3D XDMA_AST2600_IRQ_STATUS_US_COMP |
-+        XDMA_AST2600_IRQ_STATUS_DS_COMP;
-+}
-+
-+static const TypeInfo aspeed_2600_xdma_info =3D {
-+    .name =3D TYPE_ASPEED_2600_XDMA,
-+    .parent =3D TYPE_ASPEED_XDMA,
-+    .class_init =3D aspeed_2600_xdma_class_init,
-+};
-+
-+static void aspeed_2500_xdma_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc =3D DEVICE_CLASS(klass);
-+    AspeedXDMAClass *axc =3D ASPEED_XDMA_CLASS(klass);
-+
-+    dc->desc =3D "ASPEED 2500 XDMA Controller";
-+
-+    axc->cmdq_endp =3D XDMA_BMC_CMDQ_ENDP;
-+    axc->cmdq_wrp =3D XDMA_BMC_CMDQ_WRP;
-+    axc->cmdq_rdp =3D XDMA_BMC_CMDQ_RDP;
-+    axc->intr_ctrl =3D XDMA_IRQ_ENG_CTRL;
-+    axc->intr_ctrl_mask =3D XDMA_IRQ_ENG_CTRL_W_MASK;
-+    axc->intr_status =3D XDMA_IRQ_ENG_STAT;
-+    axc->intr_complete =3D XDMA_IRQ_ENG_STAT_US_COMP | XDMA_IRQ_ENG_STAT=
-_DS_COMP;
-+};
-+
-+static const TypeInfo aspeed_2500_xdma_info =3D {
-+    .name =3D TYPE_ASPEED_2500_XDMA,
-+    .parent =3D TYPE_ASPEED_XDMA,
-+    .class_init =3D aspeed_2500_xdma_class_init,
-+};
-+
-+static void aspeed_2400_xdma_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc =3D DEVICE_CLASS(klass);
-+    AspeedXDMAClass *axc =3D ASPEED_XDMA_CLASS(klass);
-+
-+    dc->desc =3D "ASPEED 2400 XDMA Controller";
-+
-+    axc->cmdq_endp =3D XDMA_BMC_CMDQ_ENDP;
-+    axc->cmdq_wrp =3D XDMA_BMC_CMDQ_WRP;
-+    axc->cmdq_rdp =3D XDMA_BMC_CMDQ_RDP;
-+    axc->intr_ctrl =3D XDMA_IRQ_ENG_CTRL;
-+    axc->intr_ctrl_mask =3D XDMA_IRQ_ENG_CTRL_W_MASK;
-+    axc->intr_status =3D XDMA_IRQ_ENG_STAT;
-+    axc->intr_complete =3D XDMA_IRQ_ENG_STAT_US_COMP | XDMA_IRQ_ENG_STAT=
-_DS_COMP;
-+};
-+
-+static const TypeInfo aspeed_2400_xdma_info =3D {
-+    .name =3D TYPE_ASPEED_2400_XDMA,
-+    .parent =3D TYPE_ASPEED_XDMA,
-+    .class_init =3D aspeed_2400_xdma_class_init,
-+};
-+
- static void aspeed_xdma_class_init(ObjectClass *classp, void *data)
- {
-     DeviceClass *dc =3D DEVICE_CLASS(classp);
-@@ -158,10 +231,15 @@ static const TypeInfo aspeed_xdma_info =3D {
-     .parent        =3D TYPE_SYS_BUS_DEVICE,
-     .instance_size =3D sizeof(AspeedXDMAState),
-     .class_init    =3D aspeed_xdma_class_init,
-+    .class_size    =3D sizeof(AspeedXDMAClass),
-+    .abstract      =3D true,
- };
-=20
- static void aspeed_xdma_register_type(void)
- {
-     type_register_static(&aspeed_xdma_info);
-+    type_register_static(&aspeed_2400_xdma_info);
-+    type_register_static(&aspeed_2500_xdma_info);
-+    type_register_static(&aspeed_2600_xdma_info);
- }
- type_init(aspeed_xdma_register_type);
 --=20
 2.26.3
 

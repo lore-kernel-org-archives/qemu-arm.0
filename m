@@ -1,90 +1,90 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp652971lfr;
-        Wed, 7 Apr 2021 10:18:49 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwVnwMeCf2VWM40o4Ik4tZuPStA484G9pwlExvwyhQqiN0FI/ybjMK3wUcNYzf2hdEv8th3
-X-Received: by 2002:a05:6602:8dd:: with SMTP id h29mr3360186ioz.93.1617815929135;
-        Wed, 07 Apr 2021 10:18:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617815929; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp654449lfr;
+        Wed, 7 Apr 2021 10:20:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxg9l8yghhgAtqvORzV6KQkxuAqV9S9oHaff4FfsCjKJF1xbmQWJtvQM/PoKg3lGX3UVhtg
+X-Received: by 2002:a6b:103:: with SMTP id 3mr3447220iob.98.1617816037895;
+        Wed, 07 Apr 2021 10:20:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617816037; cv=none;
         d=google.com; s=arc-20160816;
-        b=YW5EIJj9T2A9TWjg5IfGEt7dZ6KA8tQo8aeZX0flnULHozMbypDYwkL5O4hofzRZhp
-         h2+xit3FD3fWbKPo0oBRNWgUgPhnMMVu1r+Shzx8c0xnFa6H+Rl+p54LfQtQC6MMWf4X
-         d12pbK2LfCcHPrO4Z+Zgf1bc+5Odxq8FO8VAE/OBfIrtirU+Y00AFvH0uKltqc1BqGG+
-         sqn9iy2FnqrQ3QihCoj/OGtLIJ5u1Rn+i25qCALCFXTambO3pLbvQiMXmggdRvvVCau8
-         Jkdiq1wsxax53UkxsLu7pbzA6oatxmbtJ0f6ALJox4IcoACiq9H4JqvVoC4bbZLkaE3Q
-         DmqA==
+        b=bRK4J9/iQCzUx/FLhOb9jRKDnnGATaZyjJSM0RhdFB9ur/ezn56xa+OfUIWpXU9MhM
+         qksff8NCzXFHHRn3pftesN6uSlzdY1bxGfYmgcOA0Q+PGc+y907/L610o5b1KLGKgS1t
+         ipBnhOpa/OU8UqXLpLwNE8/b2ak4GrEEJKh0CgXXIBsoDtCAGYtZda9kXOjXUX78gXYp
+         thOlpTVICQHkmFxyOBxgQUQ61W8KIb0JbLfkwDUjQi+ZMUc8UCB4aJ/YFLJZbcTWPFaU
+         9QoED5+9JE/egsWXIQliBI5BYhZ43/F6fIKmozms2BArQr84FFjwVDcJJT0A+B4BO5Sb
+         TcvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=NY+0qdsppj+t/rgBmDlA3ZPxGI+P6MIS83kBA9BLeSw=;
-        b=Isc9uqPucwfUJ6ompf5XrPDC1fvt++cwS/A6HKGmcLHSyjee+Ak3cQyJxi4SU/qVNH
-         dEon8Wq563hMWV0/sKVqspDFEOPPvkn1Ew2DtUFUrWUc/5vuzYpafI25WYdaEX0ehxqU
-         AEjUJWyegLu309bLzAAqqd5xDfGx8iapYUKzOdLJvxbcInqqzw0h4xo+le/BK14bQ/PZ
-         8iOhABpxsu/yH1yGjvf3OEc4fRJlOYl7gPYYWeuaVW8OTOIkyWxrJkbBSbzuCbd4+PUo
-         npW2a9kMBshKUbYc+9SJQPstQO/a9QIAqB8IbMdYzS0CtGpA4B8upZG/JaRAHXuXx/1q
-         ELjQ==
+        bh=q1QiyfKxbX7Lrt87RuJIfuWPBuj7fuxbAoCT9T5oOss=;
+        b=B1eqtXJ0N7pu8/NIWcl3+QGMdmFJLfqQwf9oZkniZxc/AKq9DpsNntwpmLQNLJN1o4
+         HByNWcJNTLSJt3pBcmxtJPHum80yNel2GeA24P8hQW57zl1HxddcLYu9VWPMETJ4ESYB
+         KDePyrgSBEyVLevt5Oz5V54nZBzytRujH8iEFC7XTmeCLvudoxkt7Dki9LVOIQA5zNQI
+         v26mmSOLXBKuRBRJGOFsOYEas7Xm8mXQpJG1qbYTUT9RCmsdTNud4pOjOP+AhLgq2eKp
+         Um7QfQJvn8vdLfqy+Eym47AKpsn9XwUokr+PJdu6IFg/9WQEbzvdbEw8lx7c2Wb6MhTn
+         3xtw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d5si26030492iow.45.2021.04.07.10.18.48
+        by mx.google.com with ESMTPS id q12si21275625ior.61.2021.04.07.10.20.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Apr 2021 10:18:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 07 Apr 2021 10:20:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54722 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:58932 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lUBpI-0001Bk-CF
-	for alex.bennee@linaro.org; Wed, 07 Apr 2021 13:18:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38854)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lUBr3-0003Si-3r
+	for alex.bennee@linaro.org; Wed, 07 Apr 2021 13:20:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38906)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1lUBnf-0007R0-MQ; Wed, 07 Apr 2021 13:17:07 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:63084)
+ id 1lUBng-0007Sz-N0; Wed, 07 Apr 2021 13:17:08 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:52372)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1lUBnc-0006lv-Ts; Wed, 07 Apr 2021 13:17:06 -0400
+ id 1lUBnc-0006hX-UU; Wed, 07 Apr 2021 13:17:08 -0400
 Received: from pps.filterd (m0098417.ppops.net [127.0.0.1])
  by mx0a-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 137H2mhP119133; Wed, 7 Apr 2021 13:17:00 -0400
-Received: from ppma03ams.nl.ibm.com (62.31.33a9.ip4.static.sl-reverse.com
- [169.51.49.98])
- by mx0a-001b2d01.pphosted.com with ESMTP id 37s5xsmr84-1
+ 137H2m4t119130; Wed, 7 Apr 2021 13:16:51 -0400
+Received: from ppma06ams.nl.ibm.com (66.31.33a9.ip4.static.sl-reverse.com
+ [169.51.49.102])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 37s5xsmr42-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 07 Apr 2021 13:16:59 -0400
-Received: from pps.filterd (ppma03ams.nl.ibm.com [127.0.0.1])
- by ppma03ams.nl.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 137HE6pj031313;
- Wed, 7 Apr 2021 17:16:58 GMT
-Received: from b06cxnps4076.portsmouth.uk.ibm.com
- (d06relay13.portsmouth.uk.ibm.com [9.149.109.198])
- by ppma03ams.nl.ibm.com with ESMTP id 37rvbqgwc7-1
+ Wed, 07 Apr 2021 13:16:50 -0400
+Received: from pps.filterd (ppma06ams.nl.ibm.com [127.0.0.1])
+ by ppma06ams.nl.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 137HDJb3001517;
+ Wed, 7 Apr 2021 17:16:49 GMT
+Received: from b06avi18878370.portsmouth.uk.ibm.com
+ (b06avi18878370.portsmouth.uk.ibm.com [9.149.26.194])
+ by ppma06ams.nl.ibm.com with ESMTP id 37rvbw8w5h-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 07 Apr 2021 17:16:58 +0000
-Received: from d06av26.portsmouth.uk.ibm.com (d06av26.portsmouth.uk.ibm.com
- [9.149.105.62])
- by b06cxnps4076.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 137HGugI38797792
+ Wed, 07 Apr 2021 17:16:49 +0000
+Received: from d06av24.portsmouth.uk.ibm.com (d06av24.portsmouth.uk.ibm.com
+ [9.149.105.60])
+ by b06avi18878370.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP
+ id 137HGQv226411398
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 7 Apr 2021 17:16:56 GMT
-Received: from d06av26.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id F3F69AE053;
- Wed,  7 Apr 2021 17:16:55 +0000 (GMT)
-Received: from d06av26.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id BDACCAE04D;
- Wed,  7 Apr 2021 17:16:55 +0000 (GMT)
+ Wed, 7 Apr 2021 17:16:26 GMT
+Received: from d06av24.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id D77C242047;
+ Wed,  7 Apr 2021 17:16:46 +0000 (GMT)
+Received: from d06av24.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 3CC084203F;
+ Wed,  7 Apr 2021 17:16:46 +0000 (GMT)
 Received: from smtp.tlslab.ibm.com (unknown [9.101.4.1])
- by d06av26.portsmouth.uk.ibm.com (Postfix) with SMTP;
- Wed,  7 Apr 2021 17:16:55 +0000 (GMT)
+ by d06av24.portsmouth.uk.ibm.com (Postfix) with SMTP;
+ Wed,  7 Apr 2021 17:16:46 +0000 (GMT)
 Received: from yukon.ibmuc.com (unknown [9.171.70.229])
- by smtp.tlslab.ibm.com (Postfix) with ESMTP id 302552200C7;
- Wed,  7 Apr 2021 19:16:55 +0200 (CEST)
+ by smtp.tlslab.ibm.com (Postfix) with ESMTP id 605A7220190;
+ Wed,  7 Apr 2021 19:16:45 +0200 (CEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH 22/24] hw/misc: Add Infineon DPS310 sensor model
-Date: Wed,  7 Apr 2021 19:16:35 +0200
-Message-Id: <20210407171637.777743-23-clg@kaod.org>
+Subject: [PATCH 07/24] aspeed: Integrate HACE
+Date: Wed,  7 Apr 2021 19:16:20 +0200
+Message-Id: <20210407171637.777743-8-clg@kaod.org>
 X-Mailer: git-send-email 2.26.3
 In-Reply-To: <20210407171637.777743-1-clg@kaod.org>
 References: <20210407171637.777743-1-clg@kaod.org>
@@ -92,8 +92,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: i1e2s1rUsTjRoJeXO5YhytaGQdm6iAdP
-X-Proofpoint-ORIG-GUID: i1e2s1rUsTjRoJeXO5YhytaGQdm6iAdP
+X-Proofpoint-GUID: 5foyrJpqBvpjQUvQKn3ioTFfEg1edg2h
+X-Proofpoint-ORIG-GUID: 5foyrJpqBvpjQUvQKn3ioTFfEg1edg2h
 X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.761
  definitions=2021-04-07_09:2021-04-07,
  2021-04-07 signatures=0
@@ -112,430 +112,202 @@ X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
  RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vO64pko2AiPz
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: i+F7IR7GaT0r
 
 From: Joel Stanley <joel@jms.id.au>
 
-This contains some hardcoded register values that were obtained from the
-hardware after reading the temperature.
+Add the hash and crypto engine model to the Aspeed socs.
 
-It does enough to test the Linux kernel driver.
-
+Reviewed-by: Andrew Jeffery <andrew@aj.id.au>
 Signed-off-by: Joel Stanley <joel@jms.id.au>
+Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Message-Id: <20210324070955.125941-3-joel@jms.id.au>
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
- hw/misc/dps310.c    | 339 ++++++++++++++++++++++++++++++++++++++++++++
- hw/arm/Kconfig      |   1 +
- hw/misc/Kconfig     |   4 +
- hw/misc/meson.build |   1 +
- 4 files changed, 345 insertions(+)
- create mode 100644 hw/misc/dps310.c
+ docs/system/arm/aspeed.rst  |  2 +-
+ include/hw/arm/aspeed_soc.h |  3 +++
+ hw/arm/aspeed_ast2600.c     | 15 +++++++++++++++
+ hw/arm/aspeed_soc.c         | 16 ++++++++++++++++
+ 4 files changed, 35 insertions(+), 1 deletion(-)
 
-diff --git a/hw/misc/dps310.c b/hw/misc/dps310.c
-new file mode 100644
-index 000000000000..153357b88236
---- /dev/null
-+++ b/hw/misc/dps310.c
-@@ -0,0 +1,339 @@
-+/*
-+ * Infineon DPS310 temperature and himidity sensor
-+ *
-+ * Copyright 2017 IBM Corporation
-+ *
-+ * This code is licensed under the GPL version 2 or later.  See
-+ * the COPYING file in the top-level directory.
-+ *
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/hw.h"
-+#include "hw/i2c/i2c.h"
-+#include "qapi/error.h"
-+#include "qapi/visitor.h"
-+#include "migration/vmstate.h"
-+
-+typedef struct DPS310State {
-+    /*< private >*/
-+    I2CSlave i2c;
-+
-+    /*< public >*/
-+
-+    uint8_t regs[0x30];
-+
-+    int16_t pressure, temperature;
-+
-+    uint8_t len;
-+    uint8_t buf[2];
-+    uint8_t pointer;
-+
-+} DPS310State;
-+
-+typedef struct DPS310Class {
-+    I2CSlaveClass parent_class;
-+} DPS310Class;
-+
-+#define TYPE_DPS310 "dps310"
-+#define DPS310(obj) OBJECT_CHECK(DPS310State, (obj), TYPE_DPS310)
-+
-+#define DPS310_CLASS(klass) \
-+     OBJECT_CLASS_CHECK(DPS310Class, (klass), TYPE_DPS310)
-+#define DPS310_GET_CLASS(obj) \
-+     OBJECT_GET_CLASS(DPS310Class, (obj), TYPE_DPS310)
-+
-+#define DPS310_PRS_B2           0x00
-+#define DPS310_PRS_B1           0x01
-+#define DPS310_PRS_B0           0x02
-+#define DPS310_TMP_B2           0x03
-+#define DPS310_TMP_B1           0x04
-+#define DPS310_TMP_B0           0x05
-+#define DPS310_PRS_CFG          0x06
-+#define DPS310_TMP_CFG          0x07
-+#define  DPS310_TMP_RATE_BITS   GENMASK(6, 4)
-+#define DPS310_MEAS_CFG         0x08
-+#define  DPS310_MEAS_CTRL_BITS  GENMASK(2, 0)
-+#define   DPS310_PRESSURE_EN    BIT(0)
-+#define   DPS310_TEMP_EN        BIT(1)
-+#define   DPS310_BACKGROUND     BIT(2)
-+#define  DPS310_PRS_RDY         BIT(4)
-+#define  DPS310_TMP_RDY         BIT(5)
-+#define  DPS310_SENSOR_RDY      BIT(6)
-+#define  DPS310_COEF_RDY        BIT(7)
-+#define DPS310_RESET            0x0c
-+#define  DPS310_RESET_MAGIC     (BIT(0) | BIT(3))
-+#define DPS310_COEF_BASE        0x10
-+
-+static void dps310_reset(DeviceState *dev)
-+{
-+    DPS310State *s =3D DPS310(dev);
-+
-+    memset(s->regs, 0, sizeof(s->regs));
-+    s->pointer =3D 0;
-+
-+    s->regs[0x00] =3D 0xf3;
-+    s->regs[0x01] =3D 0x4a;
-+    s->regs[0x02] =3D 0xcc;
-+    s->regs[0x03] =3D 0x06;
-+    s->regs[0x04] =3D 0x7b;
-+    s->regs[0x05] =3D 0xf3;
-+    s->regs[0x06] =3D 0x07;
-+    s->regs[0x07] =3D 0x87;
-+    s->regs[0x08] =3D 0xc0;
-+    s->regs[0x09] =3D 0x0c;
-+    s->regs[0x0a] =3D 0x00;
-+    s->regs[0x0b] =3D 0x00;
-+    s->regs[0x0c] =3D 0x00;
-+    s->regs[0x0d] =3D 0x10;
-+    s->regs[0x0e] =3D 0x00;
-+    s->regs[0x0f] =3D 0x00;
-+    s->regs[0x10] =3D 0x0e;
-+    s->regs[0x11] =3D 0x0e;
-+    s->regs[0x12] =3D 0xdb;
-+    s->regs[0x13] =3D 0x13;
-+    s->regs[0x14] =3D 0xca;
-+    s->regs[0x15] =3D 0xff;
-+    s->regs[0x16] =3D 0x35;
-+    s->regs[0x17] =3D 0x10;
-+    s->regs[0x18] =3D 0xf3;
-+    s->regs[0x19] =3D 0x34;
-+    s->regs[0x1a] =3D 0x05;
-+    s->regs[0x1b] =3D 0xc3;
-+    s->regs[0x1c] =3D 0xd6;
-+    s->regs[0x1d] =3D 0x84;
-+    s->regs[0x1e] =3D 0x00;
-+    s->regs[0x1f] =3D 0xa4;
-+    s->regs[0x20] =3D 0xf9;
-+    s->regs[0x21] =3D 0xa9;
-+    s->regs[0x22] =3D 0x00;
-+    s->regs[0x23] =3D 0x00;
-+    s->regs[0x24] =3D 0x20;
-+    s->regs[0x25] =3D 0x49;
-+    s->regs[0x26] =3D 0x4a;
-+    s->regs[0x27] =3D 0x41;
-+    s->regs[0x28] =3D 0x86;
-+    s->regs[0x29] =3D 0x00;
-+    s->regs[0x2a] =3D 0x00;
-+    s->regs[0x2b] =3D 0x00;
-+    s->regs[0x2c] =3D 0x00;
-+    s->regs[0x2d] =3D 0x00;
-+    s->regs[0x2e] =3D 0x00;
-+    s->regs[0x2f] =3D 0x00;
-+
-+    /* TODO: assert these after some timeout ? */
-+    s->regs[DPS310_MEAS_CFG] =3D DPS310_COEF_RDY | DPS310_SENSOR_RDY
-+        | DPS310_TMP_RDY | DPS310_PRS_RDY;
-+
-+}
-+
-+
-+static void dps310_get_pressure(Object *obj, Visitor *v, const char *nam=
-e,
-+                                   void *opaque, Error **errp)
-+{
-+    DPS310State *s =3D DPS310(obj);
-+    int64_t value;
-+
-+    /* TODO */
-+    value =3D s->pressure;
-+
-+    visit_type_int(v, name, &value, errp);
-+}
-+
-+static void dps310_get_temperature(Object *obj, Visitor *v, const char *=
-name,
-+                                   void *opaque, Error **errp)
-+{
-+    DPS310State *s =3D DPS310(obj);
-+    int64_t value;
-+
-+    /* TODO */
-+    value =3D s->temperature;
-+
-+
-+    visit_type_int(v, name, &value, errp);
-+}
-+
-+static void dps310_set_temperature(Object *obj, Visitor *v, const char *=
-name,
-+                                   void *opaque, Error **errp)
-+{
-+    DPS310State *s =3D DPS310(obj);
-+    Error *local_err =3D NULL;
-+    int64_t temp;
-+
-+    visit_type_int(v, name, &temp, &local_err);
-+    if (local_err) {
-+        error_propagate(errp, local_err);
-+        return;
-+    }
-+
-+    /* TODO */
-+    if (temp >=3D 200 || temp < -100) {
-+        error_setg(errp, "value %" PRId64 ".%03" PRIu64 " =C2=B0C is out=
- of range",
-+                   temp / 1000, temp % 1000);
-+        return;
-+    }
-+
-+    s->temperature =3D temp;
-+}
-+
-+static void dps310_set_pressure(Object *obj, Visitor *v, const char *nam=
-e,
-+                                   void *opaque, Error **errp)
-+{
-+    DPS310State *s =3D DPS310(obj);
-+    Error *local_err =3D NULL;
-+    int64_t pres;
-+
-+    visit_type_int(v, name, &pres, &local_err);
-+    if (local_err) {
-+        error_propagate(errp, local_err);
-+        return;
-+    }
-+
-+    /* TODO */
-+    if (pres >=3D 200 || pres < -100) {
-+        error_setg(errp, "value %" PRId64 ".%03" PRIu64 " is out of rang=
-e",
-+                   pres / 1000, pres % 1000);
-+        return;
-+    }
-+
-+    s->pressure =3D pres;
-+}
-+
-+static void dps310_read(DPS310State *s)
-+{
-+    s->len =3D 0;
-+
-+    switch (s->pointer) {
-+    case DPS310_PRS_B2:
-+    case DPS310_PRS_B1:
-+    case DPS310_PRS_B0:
-+    case DPS310_TMP_B2:
-+    case DPS310_TMP_B1:
-+    case DPS310_TMP_B0:
-+    case DPS310_PRS_CFG:
-+    case DPS310_TMP_CFG:
-+    case DPS310_MEAS_CFG:
-+    case DPS310_COEF_BASE:
-+    default:
-+        s->buf[s->len++] =3D s->regs[s->pointer];
-+        break;
-+    }
-+}
-+
-+static void dps310_write(DPS310State *s)
-+{
-+    switch (s->pointer) {
-+    case DPS310_RESET:
-+        if (s->buf[0] =3D=3D DPS310_RESET_MAGIC) {
-+            dps310_reset(DEVICE(s));
-+        }
-+        break;
-+    case DPS310_PRS_CFG:
-+    case DPS310_TMP_CFG:
-+    case DPS310_MEAS_CFG:
-+    case DPS310_COEF_BASE:
-+    default:
-+        s->regs[s->pointer] =3D s->buf[0];
-+        break;
-+    }
-+}
-+
-+static uint8_t dps310_rx(I2CSlave *i2c)
-+{
-+    DPS310State *s =3D DPS310(i2c);
-+
-+    if (s->len < 2) {
-+        return s->buf[s->len++];
-+    } else {
-+        return 0xff;
-+    }
-+}
-+
-+static int dps310_tx(I2CSlave *i2c, uint8_t data)
-+{
-+    DPS310State *s =3D DPS310(i2c);
-+
-+    if (s->len =3D=3D 0) {
-+        /*
-+         * first byte is the register pointer for a read or write
-+         * operation
-+         */
-+        s->pointer =3D data;
-+        s->len++;
-+    } else if (s->len =3D=3D 1) {
-+        /*
-+         * second byte is the data to write. The device only supports
-+         * one byte writes
-+         */
-+        s->buf[0] =3D data;
-+        dps310_write(s);
-+    }
-+
-+    return 0;
-+}
-+
-+static int dps310_event(I2CSlave *i2c, enum i2c_event event)
-+{
-+    DPS310State *s =3D DPS310(i2c);
-+
-+    if (event =3D=3D I2C_START_RECV) {
-+        dps310_read(s);
-+    }
-+
-+    s->len =3D 0;
-+    return 0;
-+}
-+
-+static const VMStateDescription vmstate_dps310 =3D {
-+    .name =3D "DPS310",
-+    .version_id =3D 0,
-+    .minimum_version_id =3D 0,
-+    .fields =3D (VMStateField[]) {
-+        VMSTATE_UINT8(len, DPS310State),
-+        VMSTATE_UINT8_ARRAY(buf, DPS310State, 2),
-+        VMSTATE_UINT8_ARRAY(regs, DPS310State, 0x30),
-+        VMSTATE_UINT8(pointer, DPS310State),
-+        VMSTATE_INT16(temperature, DPS310State),
-+        VMSTATE_INT16(pressure, DPS310State),
-+        VMSTATE_I2C_SLAVE(i2c, DPS310State),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+
-+static void dps310_initfn(Object *obj)
-+{
-+    object_property_add(obj, "temperature", "int",
-+                        dps310_get_temperature,
-+                        dps310_set_temperature, NULL, NULL);
-+    object_property_add(obj, "pressure", "int",
-+                        dps310_get_pressure,
-+                        dps310_set_pressure, NULL, NULL);
-+}
-+
-+static void dps310_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc =3D DEVICE_CLASS(klass);
-+    I2CSlaveClass *k =3D I2C_SLAVE_CLASS(klass);
-+
-+    k->event =3D dps310_event;
-+    k->recv =3D dps310_rx;
-+    k->send =3D dps310_tx;
-+    dc->reset =3D dps310_reset;
-+    dc->vmsd =3D &vmstate_dps310;
-+}
-+
-+static const TypeInfo dps310_info =3D {
-+    .name          =3D TYPE_DPS310,
-+    .parent        =3D TYPE_I2C_SLAVE,
-+    .instance_size =3D sizeof(DPS310State),
-+    .instance_init =3D dps310_initfn,
-+    .class_init    =3D dps310_class_init,
-+};
-+
-+static void dps310_register_types(void)
-+{
-+    type_register_static(&dps310_info);
-+}
-+
-+type_init(dps310_register_types)
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 8c37cf00da74..66532e0e3e82 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -408,6 +408,7 @@ config ASPEED_SOC
-     select DS1338
-     select FTGMAC100
-     select I2C
-+    select DPS310
-     select PCA9552
-     select SERIAL
-     select SMBUS_EEPROM
-diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-index c71ed2582046..016e34790e4f 100644
---- a/hw/misc/Kconfig
-+++ b/hw/misc/Kconfig
-@@ -49,6 +49,10 @@ config EDU
-     default y if TEST_DEVICES
-     depends on PCI && MSI_NONBROKEN
+diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
+index d1fb8f25b39c..f9466e6d8245 100644
+--- a/docs/system/arm/aspeed.rst
++++ b/docs/system/arm/aspeed.rst
+@@ -49,6 +49,7 @@ Supported devices
+  * Ethernet controllers
+  * Front LEDs (PCA9552 on I2C bus)
+  * LPC Peripheral Controller (a subset of subdevices are supported)
++ * Hash/Crypto Engine (HACE) - Hash support only, no scatter-gather
 =20
-+config DPS310
-+    bool
-+    depends on I2C
+=20
+ Missing devices
+@@ -59,7 +60,6 @@ Missing devices
+  * PWM and Fan Controller
+  * Slave GPIO Controller
+  * Super I/O Controller
+- * Hash/Crypto Engine
+  * PCI-Express 1 Controller
+  * Graphic Display Controller
+  * PECI Controller
+diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+index 9359d6da336d..d9161d26d645 100644
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -21,6 +21,7 @@
+ #include "hw/rtc/aspeed_rtc.h"
+ #include "hw/i2c/aspeed_i2c.h"
+ #include "hw/ssi/aspeed_smc.h"
++#include "hw/misc/aspeed_hace.h"
+ #include "hw/watchdog/wdt_aspeed.h"
+ #include "hw/net/ftgmac100.h"
+ #include "target/arm/cpu.h"
+@@ -50,6 +51,7 @@ struct AspeedSoCState {
+     AspeedTimerCtrlState timerctrl;
+     AspeedI2CState i2c;
+     AspeedSCUState scu;
++    AspeedHACEState hace;
+     AspeedXDMAState xdma;
+     AspeedSMCState fmc;
+     AspeedSMCState spi[ASPEED_SPIS_NUM];
+@@ -133,6 +135,7 @@ enum {
+     ASPEED_DEV_XDMA,
+     ASPEED_DEV_EMMC,
+     ASPEED_DEV_KCS,
++    ASPEED_DEV_HACE,
+ };
+=20
+ #endif /* ASPEED_SOC_H */
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index 2a1255b6a042..e0fbb020c770 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -42,6 +42,7 @@ static const hwaddr aspeed_soc_ast2600_memmap[] =3D {
+     [ASPEED_DEV_ETH2]      =3D 0x1E680000,
+     [ASPEED_DEV_ETH4]      =3D 0x1E690000,
+     [ASPEED_DEV_VIC]       =3D 0x1E6C0000,
++    [ASPEED_DEV_HACE]      =3D 0x1E6D0000,
+     [ASPEED_DEV_SDMC]      =3D 0x1E6E0000,
+     [ASPEED_DEV_SCU]       =3D 0x1E6E2000,
+     [ASPEED_DEV_XDMA]      =3D 0x1E6E7000,
+@@ -102,6 +103,7 @@ static const int aspeed_soc_ast2600_irqmap[] =3D {
+     [ASPEED_DEV_I2C]       =3D 110,   /* 110 -> 125 */
+     [ASPEED_DEV_ETH1]      =3D 2,
+     [ASPEED_DEV_ETH2]      =3D 3,
++    [ASPEED_DEV_HACE]      =3D 4,
+     [ASPEED_DEV_ETH3]      =3D 32,
+     [ASPEED_DEV_ETH4]      =3D 33,
+     [ASPEED_DEV_KCS]       =3D 138,   /* 138 -> 142 */
+@@ -213,6 +215,9 @@ static void aspeed_soc_ast2600_init(Object *obj)
+                             TYPE_SYSBUS_SDHCI);
+=20
+     object_initialize_child(obj, "lpc", &s->lpc, TYPE_ASPEED_LPC);
 +
- config PCA9552
-     bool
-     depends on I2C
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index ed8196dc4380..30cb61ec0e31 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -1,4 +1,5 @@
- softmmu_ss.add(when: 'CONFIG_APPLESMC', if_true: files('applesmc.c'))
-+softmmu_ss.add(when: 'CONFIG_DPS310', if_true: files('dps310.c'))
- softmmu_ss.add(when: 'CONFIG_EDU', if_true: files('edu.c'))
- softmmu_ss.add(when: 'CONFIG_FW_CFG_DMA', if_true: files('vmcoreinfo.c')=
-)
- softmmu_ss.add(when: 'CONFIG_ISA_DEBUG', if_true: files('debugexit.c'))
++    snprintf(typename, sizeof(typename), "aspeed.hace-%s", socname);
++    object_initialize_child(obj, "hace", &s->hace, typename);
+ }
+=20
+ /*
+@@ -494,6 +499,16 @@ static void aspeed_soc_ast2600_realize(DeviceState *=
+dev, Error **errp)
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_4,
+                        qdev_get_gpio_in(DEVICE(&s->a7mpcore),
+                                 sc->irqmap[ASPEED_DEV_KCS] + aspeed_lpc_=
+kcs_4));
++
++    /* HACE */
++    object_property_set_link(OBJECT(&s->hace), "dram", OBJECT(s->dram_mr=
+),
++                             &error_abort);
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->hace), errp)) {
++        return;
++    }
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->hace), 0, sc->memmap[ASPEED_DEV_H=
+ACE]);
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->hace), 0,
++                       aspeed_soc_get_irq(s, ASPEED_DEV_HACE));
+ }
+=20
+ static void aspeed_soc_ast2600_class_init(ObjectClass *oc, void *data)
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index 817f3ba63dfd..8ed29113f79f 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -34,6 +34,7 @@ static const hwaddr aspeed_soc_ast2400_memmap[] =3D {
+     [ASPEED_DEV_VIC]    =3D 0x1E6C0000,
+     [ASPEED_DEV_SDMC]   =3D 0x1E6E0000,
+     [ASPEED_DEV_SCU]    =3D 0x1E6E2000,
++    [ASPEED_DEV_HACE]   =3D 0x1E6E3000,
+     [ASPEED_DEV_XDMA]   =3D 0x1E6E7000,
+     [ASPEED_DEV_VIDEO]  =3D 0x1E700000,
+     [ASPEED_DEV_ADC]    =3D 0x1E6E9000,
+@@ -65,6 +66,7 @@ static const hwaddr aspeed_soc_ast2500_memmap[] =3D {
+     [ASPEED_DEV_VIC]    =3D 0x1E6C0000,
+     [ASPEED_DEV_SDMC]   =3D 0x1E6E0000,
+     [ASPEED_DEV_SCU]    =3D 0x1E6E2000,
++    [ASPEED_DEV_HACE]   =3D 0x1E6E3000,
+     [ASPEED_DEV_XDMA]   =3D 0x1E6E7000,
+     [ASPEED_DEV_ADC]    =3D 0x1E6E9000,
+     [ASPEED_DEV_VIDEO]  =3D 0x1E700000,
+@@ -117,6 +119,7 @@ static const int aspeed_soc_ast2400_irqmap[] =3D {
+     [ASPEED_DEV_ETH2]   =3D 3,
+     [ASPEED_DEV_XDMA]   =3D 6,
+     [ASPEED_DEV_SDHCI]  =3D 26,
++    [ASPEED_DEV_HACE]   =3D 4,
+ };
+=20
+ #define aspeed_soc_ast2500_irqmap aspeed_soc_ast2400_irqmap
+@@ -212,6 +215,9 @@ static void aspeed_soc_init(Object *obj)
+     }
+=20
+     object_initialize_child(obj, "lpc", &s->lpc, TYPE_ASPEED_LPC);
++
++    snprintf(typename, sizeof(typename), "aspeed.hace-%s", socname);
++    object_initialize_child(obj, "hace", &s->hace, typename);
+ }
+=20
+ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+@@ -421,6 +427,16 @@ static void aspeed_soc_realize(DeviceState *dev, Err=
+or **errp)
+=20
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_4,
+                        qdev_get_gpio_in(DEVICE(&s->lpc), aspeed_lpc_kcs_=
+4));
++
++    /* HACE */
++    object_property_set_link(OBJECT(&s->hace), "dram", OBJECT(s->dram_mr=
+),
++                             &error_abort);
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->hace), errp)) {
++        return;
++    }
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->hace), 0, sc->memmap[ASPEED_DEV_H=
+ACE]);
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->hace), 0,
++                       aspeed_soc_get_irq(s, ASPEED_DEV_HACE));
+ }
+ static Property aspeed_soc_properties[] =3D {
+     DEFINE_PROP_LINK("dram", AspeedSoCState, dram_mr, TYPE_MEMORY_REGION=
+,
 --=20
 2.26.3
 

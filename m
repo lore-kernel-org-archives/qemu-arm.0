@@ -1,140 +1,444 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp671815lfr;
-        Wed, 7 Apr 2021 10:42:38 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwEVfGuEG3yl5BsgcXM41WuI+OqxE4Gd9GxOCVLiqRU/YLIkYDJdtS/1tUibIgNm1G4RaPB
-X-Received: by 2002:a6b:e809:: with SMTP id f9mr3446310ioh.97.1617817357825;
-        Wed, 07 Apr 2021 10:42:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617817357; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp705082lfr;
+        Wed, 7 Apr 2021 11:24:43 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx9jvC7pwvvdAknHhIrukOVkn/c4+Tdm5UIzidnM+H1Ooi/3abk1YklolvTkZ61UrrGNC0E
+X-Received: by 2002:a05:6e02:1ca2:: with SMTP id x2mr959528ill.128.1617819883647;
+        Wed, 07 Apr 2021 11:24:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617819883; cv=none;
         d=google.com; s=arc-20160816;
-        b=JolNJGyfMbB+bmYac/J+SkYqq1B5xdwRikXyJ4nr1oD/Dqtx0ZmZK6d/sO6c5uZZJh
-         vKg8b/F0SkWLkz0V2m+81ZXlzM5GkkQhB036XmddEZ4xwqNxWxxqWt3tbe4+vIaCNtr4
-         AhV+G1VsKhDUkpq2GustPpssBQOjXRS60NjeDf7qNH64OgdrmLU8XCuTsqwXKK/Y4Ufc
-         ikGWdJutKds8bYd5XaZIPJu5wGSFzDwREwkzfJzOdov/lWUbTIVQvt5e9CR3eHrv2BVT
-         lAnohj/CImbNkhfJyXkFpj/2KKTsDq+2EZyiDIIFh8mBYieFCPa9TmzZ2QNl0lLCFbS6
-         Anmg==
+        b=oQ7+jHUg+KbPd6W464FrhpOi8QehryU10OUPVRpJot43x5BnlwvUeNe9kilVwlH1tO
+         MfOYnUY705IRnGyMtFcBuya/nkIh4OgE7V/u31O1LQ6FQylGZkZe3ZsvHZ2r+IswBEEF
+         EnOxy7zMjXMeVkg48RgY6AXSC9euGPn628JRNj0BxU3DhN4m5DOk0EAGqaC9UHQw1fOg
+         ht1UQs+LsjMz9uohINsHsHd/xxqsK8rc1dOQG34yYv5sCfrq6HJZTnmhPxkepabSPmju
+         kdhtO48RFIfh3YNrqcVoxViMcJ3rDJ+uDbzETqhflz34Vh8NfuZbkReyc0k6OloFyOho
+         d27A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=3gGeJKAQn4t0QM3kXeIrtliFEujc5NX2EP6gqLo4/7w=;
-        b=T9xgzuJ7I4h4k/oAP/lDc2PDMG8DMkHPLlJTYjKL0DxWP3gVNbVE3c+RJeGM3gxV12
-         D0qNh68P2TLS0Bk7RBpYMhWcDPMFfwrK5NRnCxUo9OCLw252FsBQ+DaJ/O0Xp7+N6Pzc
-         mwvloGUSz3r9JbY6SD+0+mLXk7Jg/e8O49HjUUuj70+JCc2HqqIsZVbsVOS027AMByJT
-         OFXhMp8wj+7Vw+Fi18yiUv+jl2EKzWNODXFjUL60A2cPBb2zknNyMWPDr7/OoHZY51Br
-         MAm8eNE7jaOr0LWorg7Wm/2SsoTPnaXxnT+dOzNbCowM05dD+rZMJxUbPA73orrRGzUb
-         Nwpw==
+         :list-unsubscribe:list-id:precedence:message-id:content-disposition
+         :references:date:from:to:subject:in-reply-to:mime-version
+         :dkim-signature;
+        bh=4ZWpEk7VteQTppkwrHNgxXz9gPSMlN5Kn9/iR67lM9I=;
+        b=zhg9+/iINHF39Nphom9zXaQk5Mm5B7icDDyA+IJcCzzrYGsDjOFPrl8kVzU4Jd5ewi
+         sd18ltk27Jn2Qs2+X9GrB85iWKphiyidn24gdOY+U/XmeHe8A/Xp30KdK67go+Idov9U
+         qrNDtDR1CqIDrxorO3keWnvwMiCl5WgQ0Lo1lu0C/JxWSGqL68Py/UyvMXeO1sHM+M20
+         zANewTixLUuguWD+CxrcCqYCl0+3YY31pp4vLBROL0uo3FgoFpsKiRd/Xl+y0jWiKIsv
+         JxczlJuAkOlod3m2e87609mG9jSUGsWZxpEC8+QE1f7l2s35ZwDDvXjv7p4lDoR9TKWo
+         IeXw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=cD93UHGb;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@ibm.com header.s=pp1 header.b=YzR+R7BL;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h9si172793ilh.140.2021.04.07.10.42.37
+        by mx.google.com with ESMTPS id t15si339166jal.2.2021.04.07.11.24.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Apr 2021 10:42:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 07 Apr 2021 11:24:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=cD93UHGb;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:34510 helo=lists1p.gnu.org)
+       dkim=fail header.i=@ibm.com header.s=pp1 header.b=YzR+R7BL;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Received: from localhost ([::1]:42746 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lUCCL-0003Jf-50
-	for alex.bennee@linaro.org; Wed, 07 Apr 2021 13:42:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42606)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lUCr4-00010I-Sl
+	for alex.bennee@linaro.org; Wed, 07 Apr 2021 14:24:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53800)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lUC3m-00045Y-VI; Wed, 07 Apr 2021 13:33:48 -0400
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f]:34608)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lUC3l-0004yY-Ew; Wed, 07 Apr 2021 13:33:46 -0400
-Received: by mail-ej1-x62f.google.com with SMTP id a7so522003eju.1;
- Wed, 07 Apr 2021 10:33:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=3gGeJKAQn4t0QM3kXeIrtliFEujc5NX2EP6gqLo4/7w=;
- b=cD93UHGb7N0CKSQtFJKjIXK2sGq8lKxl/3cLiAvz/lLffXrFZeU2fAeDffIp1uI1/y
- AVAurLA5sUiakgZIMKGmRKlhjOeC82DgX6nJLSAhqTDUchBmMH+GT3PGr5+y7HJOwVZJ
- SYeBwmiIVSvS9WZ9LdzGhb9Vp52ydXG/x3axQLi7kIKaeuBBywS9d2DvXZEGT1oiebx4
- j61MYXUwwQlbHiPTDVmmfTFI+dRG7GzS1MtfKStu2K7xIjKZodm2tB6Ustbt+ha+HvDb
- FBBUatdF1lYGtJkQU5tNxRnfnRgE6vJh+n+SQnLT/8XRk8rLsag5J1EdNG6R506TU7S8
- UTTQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=3gGeJKAQn4t0QM3kXeIrtliFEujc5NX2EP6gqLo4/7w=;
- b=THk/GbBGt6i/8fSiaRCe5vQdK2ahhoGbZFOkd73XffRUnxTpD+LGzQBIhxp5q5LZ/F
- KHm3vXSnx8LCZAcCj2yotJGVaP21momhp/AHzWIG2yB1Qm6gPFLrJ9xq+JLWvpb7PqRL
- xNXFUIT82fW/SriFD6JM42RKoKSGiw0xObGtJNlbbu6+APgvje0nWYq68LL/nL8OWLuV
- GKRhbQPUzuyB2/42iA3PomKvz4Y4RkQngdIjzGH/Lt0XHMj/YO8UqnRvj9MGa7S7Mdyd
- FiiTh6vaSeYC1YjsV4HoADoZ1qjSR4tShwZ4Dk7QXM4ZiuG7D0EoOfx6d/fB2AL4PrnN
- XACQ==
-X-Gm-Message-State: AOAM533oYRkOqGhN6/XDTWj8V4ULmjpaHdsEIkZ9eT1eZzga6aeqQWZA
- QNJZsYShsV8BA9o6tpfQTA7tHjAaSwbnNQ==
-X-Received: by 2002:a17:906:4ad5:: with SMTP id
- u21mr5036938ejt.22.1617816823354; 
- Wed, 07 Apr 2021 10:33:43 -0700 (PDT)
-Received: from [192.168.1.36] (17.red-88-21-201.staticip.rima-tde.net.
- [88.21.201.17])
- by smtp.gmail.com with ESMTPSA id w25sm10936101edq.66.2021.04.07.10.33.42
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 07 Apr 2021 10:33:42 -0700 (PDT)
-Subject: Re: [PATCH 04/24] aspeed/i2c: Rename DMA address space
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20210407171637.777743-1-clg@kaod.org>
- <20210407171637.777743-5-clg@kaod.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <fba7f421-347a-1298-f58e-6f31aa2744a6@amsat.org>
-Date: Wed, 7 Apr 2021 19:33:41 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+ (Exim 4.90_1) (envelope-from <anoo@us.ibm.com>) id 1lUCgC-0002X5-3w
+ for qemu-devel@nongnu.org; Wed, 07 Apr 2021 14:13:28 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:16816)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <anoo@us.ibm.com>) id 1lUCg7-0004yn-CT
+ for qemu-devel@nongnu.org; Wed, 07 Apr 2021 14:13:27 -0400
+Received: from pps.filterd (m0187473.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
+ 137I3hO7144983
+ for <qemu-devel@nongnu.org>; Wed, 7 Apr 2021 14:13:17 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=mime-version :
+ in-reply-to : subject : to : cc : from : date : references : content-type
+ : message-id; s=pp1; bh=4ZWpEk7VteQTppkwrHNgxXz9gPSMlN5Kn9/iR67lM9I=;
+ b=YzR+R7BLXRhh3umNKb1jY2WaxPi6aIp0g+bY/K5kiVYD/eu1YtgzLpS2/HwJSysR++yE
+ dvIeXBevfaxmZJfvxazVedPv5b9QVFpgYgKhSH8mBEC7rt/XUc+6ZOTxePA9QS0szawV
+ Q3A1RHq9BA7IBVzUo/rr89CS47+rFGocb3qMyOl5N+QS5yZ8XJFfb88nj51wlZejPzAY
+ jmF2+b9uFx8RJsvAsJutUHLGsk41frbIwQXGIXdDCclIpp+2iNjBEl+x0twIcqpYQ1vw
+ a+hYo0L2KLwT5USBu40j2dEcT/Fc7xNyhWkocFnPVTjPmpjRS2LKXB8mzjaWzA6v8+Xk EQ== 
+Received: from smtp.notes.na.collabserv.com (smtp.notes.na.collabserv.com
+ [192.155.248.91])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 37rvn0sgjc-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT)
+ for <qemu-devel@nongnu.org>; Wed, 07 Apr 2021 14:13:16 -0400
+Received: from localhost
+ by smtp.notes.na.collabserv.com with smtp.notes.na.collabserv.com ESMTP
+ for <qemu-devel@nongnu.org> from <anoo@us.ibm.com>;
+ Wed, 7 Apr 2021 18:13:16 -0000
+Received: from us1a3-smtp05.a3.dal06.isc4sb.com (10.146.71.159)
+ by smtp.notes.na.collabserv.com (10.106.227.143) with
+ smtp.notes.na.collabserv.com ESMTP; Wed, 7 Apr 2021 18:13:14 -0000
+Received: from us1a3-mail238.a3.dal06.isc4sb.com ([10.146.127.165])
+ by us1a3-smtp05.a3.dal06.isc4sb.com
+ with ESMTP id 2021040718131428-636958 ;
+ Wed, 7 Apr 2021 18:13:14 +0000 
 MIME-Version: 1.0
-In-Reply-To: <20210407171637.777743-5-clg@kaod.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62f;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x62f.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+In-Reply-To: <20210407171637.777743-18-clg@kaod.org>
+Subject: Re: [PATCH 17/24] aspeed: Remove swift-bmc machine
+To: "=?ISO-8859-1?Q?C=E9dric_Le_Goater?=" <clg@kaod.org>
+From: "Adriana Kobylak" <anoo@us.ibm.com>
+Date: Wed, 7 Apr 2021 13:13:13 -0500
+References: <20210407171637.777743-1-clg@kaod.org>
+ <20210407171637.777743-18-clg@kaod.org>
+X-KeepSent: F1F8B76A:481E9BDC-002586B0:0063EAE5;
+ type=4; name=$KeepSent
+X-Mailer: HCL Notes Build V1101FP2_10202020 SHF47 January 30, 2021
+X-LLNOutbound: False
+X-Disclaimed: 46603
+X-TNEFEvaluated: 1
+Content-type: multipart/alternative; 
+ Boundary="0__=8FBB0C23DFF06C758f9e8a93df938690918c8FBB0C23DFF06C75"
+Content-Disposition: inline
+x-cbid: 21040718-2475-0000-0000-0000056480F6
+X-IBM-SpamModules-Scores: BY=0.251817; FL=0; FP=0; FZ=0; HX=0; KW=0; PH=0;
+ SC=0; ST=0; TS=0; UL=0; ISC=; MB=0.000645
+X-IBM-SpamModules-Versions: BY=3.00014940; HX=3.00000242; KW=3.00000007;
+ PH=3.00000004; SC=3.00000296; SDB=6.01526390; UDB=6.00825223; IPR=6.01308321; 
+ MB=3.00036522; MTD=3.00000008; XFM=3.00000015; UTC=2021-04-07 18:13:15
+X-IBM-AV-DETECTION: SAVI=unsuspicious REMOTE=unsuspicious XFE=unused
+X-IBM-AV-VERSION: SAVI=2021-03-22 14:28:52 - 6.00012377
+x-cbparentid: 21040718-2476-0000-0000-0000DC9F84C1
+Message-Id: <OFF1F8B76A.481E9BDC-ON002586B0.0063EAE5-862586B0.00641669@notes.na.collabserv.com>
+X-Proofpoint-GUID: wR2qW17rLI5QSRChspohTd8d02rLmcWv
+X-Proofpoint-ORIG-GUID: wR2qW17rLI5QSRChspohTd8d02rLmcWv
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.761
+ definitions=2021-04-07_09:2021-04-07,
+ 2021-04-07 signatures=0
+X-Proofpoint-Spam-Reason: orgsafe
+Received-SPF: pass client-ip=148.163.156.1; envelope-from=anoo@us.ibm.com;
+ helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
+X-Spam_bar: --
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Approved-At: Wed, 07 Apr 2021 14:22:59 -0400
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cCgNZqLkSVdQ
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ Adriana Kobylak <anoo@us.ibm.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: LhM+JFHLLzf9
 
-On 4/7/21 7:16 PM, Cédric Le Goater wrote:
-> It improves 'info mtree' output.
-> 
-> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+
+--0__=8FBB0C23DFF06C758f9e8a93df938690918c8FBB0C23DFF06C75
+Content-Transfer-Encoding: quoted-printable
+Content-type: text/plain; charset=ISO-8859-1
+
+
+
+"C=E9dric Le Goater" <clg@kaod.org> wrote on 04/07/2021 12:16:30 PM:
+
+> From: "C=E9dric Le Goater" <clg@kaod.org>
+> To: "Peter Maydell" <peter.maydell@linaro.org>
+> Cc: "Andrew Jeffery" <andrew@aj.id.au>, "Joel Stanley"
+> <joel@jms.id.au>, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+> "C=E9dric Le Goater" <clg@kaod.org>, Adriana Kobylak/Austin/IBM@IBM
+> Date: 04/07/2021 12:16 PM
+> Subject: [PATCH 17/24] aspeed: Remove swift-bmc machine
+>
+> The SWIFT machine never came out of the lab and we already have enough
+> AST2500 based OpenPower machines. Remove it.
+>
+> Cc: Adriana Kobylak <anoo@us.ibm.com>
+> Signed-off-by: C=E9dric Le Goater <clg@kaod.org>
+
+Reviewed-by: Adriana Kobylak <anoo@us.ibm.com>
+
 > ---
->  hw/i2c/aspeed_i2c.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
+>  hw/arm/aspeed.c | 61 -------------------------------------------------
+>  1 file changed, 61 deletions(-)
+>
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index 1cf5a15c8098..97dcca74feb4 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -110,17 +110,6 @@ struct AspeedMachineState {
+>          SCU=5FHW=5FSTRAP=5FVGA=5FSIZE=5FSET(VGA=5F16M=5FDRAM) |
+\
+>          SCU=5FAST2500=5FHW=5FSTRAP=5FRESERVED1)
+>
+> -/* Swift hardware value: 0xF11AD206 */
+> -#define SWIFT=5FBMC=5FHW=5FSTRAP1
+(                                           \
+> -        AST2500=5FHW=5FSTRAP1=5FDEFAULTS |
+\
+> -        SCU=5FAST2500=5FHW=5FSTRAP=5FSPI=5FAUTOFETCH=5FENABLE |
+\
+> -        SCU=5FAST2500=5FHW=5FSTRAP=5FGPIO=5FSTRAP=5FENABLE |
+\
+> -        SCU=5FAST2500=5FHW=5FSTRAP=5FUART=5FDEBUG |
+\
+> -        SCU=5FAST2500=5FHW=5FSTRAP=5FDDR4=5FENABLE |
+\
+> -        SCU=5FH=5FPLL=5FBYPASS=5FEN |
+\
+> -        SCU=5FAST2500=5FHW=5FSTRAP=5FACPI=5FENABLE |
+\
+> -        SCU=5FHW=5FSTRAP=5FSPI=5FMODE(SCU=5FHW=5FSTRAP=5FSPI=5FMASTER))
+> -
+>  #define G220A=5FBMC=5FHW=5FSTRAP1 (                                     =
+ \
+>          SCU=5FAST2500=5FHW=5FSTRAP=5FSPI=5FAUTOFETCH=5FENABLE |
+\
+>          SCU=5FAST2500=5FHW=5FSTRAP=5FGPIO=5FSTRAP=5FENABLE |
+\
+> @@ -465,35 +454,6 @@ static void romulus=5Fbmc=5Fi2c=5Finit(AspeedMachine=
+State
+*bmc)
+>      i2c=5Fslave=5Fcreate=5Fsimple(aspeed=5Fi2c=5Fget=5Fbus(&soc->i2c, 11=
+),
+> "ds1338", 0x32);
+>  }
+>
+> -static void swift=5Fbmc=5Fi2c=5Finit(AspeedMachineState *bmc)
+> -{
+> -    AspeedSoCState *soc =3D &bmc->soc;
+> -
+> -    i2c=5Fslave=5Fcreate=5Fsimple(aspeed=5Fi2c=5Fget=5Fbus(&soc->i2c, 3),
+> "pca9552", 0x60);
+> -
+> -    /* The swift board expects a TMP275 but a TMP105 is compatible */
+> -    i2c=5Fslave=5Fcreate=5Fsimple(aspeed=5Fi2c=5Fget=5Fbus(&soc->i2c, 7),
+> "tmp105", 0x48);
+> -    /* The swift board expects a pca9551 but a pca9552 is compatible */
+> -    i2c=5Fslave=5Fcreate=5Fsimple(aspeed=5Fi2c=5Fget=5Fbus(&soc->i2c, 7),
+> "pca9552", 0x60);
+> -
+> -    /* The swift board expects an Epson RX8900 RTC but a ds1338 is
+> compatible */
+> -    i2c=5Fslave=5Fcreate=5Fsimple(aspeed=5Fi2c=5Fget=5Fbus(&soc->i2c, 8),
+> "ds1338", 0x32);
+> -    i2c=5Fslave=5Fcreate=5Fsimple(aspeed=5Fi2c=5Fget=5Fbus(&soc->i2c, 8),
+> "pca9552", 0x60);
+> -
+> -    i2c=5Fslave=5Fcreate=5Fsimple(aspeed=5Fi2c=5Fget=5Fbus(&soc->i2c, 9),
+> "tmp423", 0x4c);
+> -    /* The swift board expects a pca9539 but a pca9552 is compatible */
+> -    i2c=5Fslave=5Fcreate=5Fsimple(aspeed=5Fi2c=5Fget=5Fbus(&soc->i2c, 9),
+> "pca9552", 0x74);
+> -
+> -    i2c=5Fslave=5Fcreate=5Fsimple(aspeed=5Fi2c=5Fget=5Fbus(&soc->i2c, 10=
+),
+> "tmp423", 0x4c);
+> -    /* The swift board expects a pca9539 but a pca9552 is compatible */
+> -    i2c=5Fslave=5Fcreate=5Fsimple(aspeed=5Fi2c=5Fget=5Fbus(&soc->i2c, 10=
+),
+"pca9552",
+> -                     0x74);
+> -
+> -    /* The swift board expects a TMP275 but a TMP105 is compatible */
+> -    i2c=5Fslave=5Fcreate=5Fsimple(aspeed=5Fi2c=5Fget=5Fbus(&soc->i2c, 12=
+),
+> "tmp105", 0x48);
+> -    i2c=5Fslave=5Fcreate=5Fsimple(aspeed=5Fi2c=5Fget=5Fbus(&soc->i2c, 12=
+),
+> "tmp105", 0x4a);
+> -}
+> -
+>  static void sonorapass=5Fbmc=5Fi2c=5Finit(AspeedMachineState *bmc)
+>  {
+>      AspeedSoCState *soc =3D &bmc->soc;
+> @@ -796,23 +756,6 @@ static void
+> aspeed=5Fmachine=5Fsonorapass=5Fclass=5Finit(ObjectClass *oc, void *data)
+>          aspeed=5Fsoc=5Fnum=5Fcpus(amc->soc=5Fname);
+>  };
+>
+> -static void aspeed=5Fmachine=5Fswift=5Fclass=5Finit(ObjectClass *oc, voi=
+d *data)
+> -{
+> -    MachineClass *mc =3D MACHINE=5FCLASS(oc);
+> -    AspeedMachineClass *amc =3D ASPEED=5FMACHINE=5FCLASS(oc);
+> -
+> -    mc->desc       =3D "OpenPOWER Swift BMC (ARM1176)";
+> -    amc->soc=5Fname  =3D "ast2500-a1";
+> -    amc->hw=5Fstrap1 =3D SWIFT=5FBMC=5FHW=5FSTRAP1;
+> -    amc->fmc=5Fmodel =3D "mx66l1g45g";
+> -    amc->spi=5Fmodel =3D "mx66l1g45g";
+> -    amc->num=5Fcs    =3D 2;
+> -    amc->i2c=5Finit  =3D swift=5Fbmc=5Fi2c=5Finit;
+> -    mc->default=5Fram=5Fsize       =3D 512 * MiB;
+> -    mc->default=5Fcpus =3D mc->min=5Fcpus =3D mc->max=5Fcpus =3D
+> -        aspeed=5Fsoc=5Fnum=5Fcpus(amc->soc=5Fname);
+> -};
+> -
+>  static void aspeed=5Fmachine=5Fwitherspoon=5Fclass=5Finit(ObjectClass *o=
+c,
+> void *data)
+>  {
+>      MachineClass *mc =3D MACHINE=5FCLASS(oc);
+> @@ -903,10 +846,6 @@ static const TypeInfo aspeed=5Fmachine=5Ftypes[] =3D=
+ {
+>          .name          =3D MACHINE=5FTYPE=5FNAME("romulus-bmc"),
+>          .parent        =3D TYPE=5FASPEED=5FMACHINE,
+>          .class=5Finit    =3D aspeed=5Fmachine=5Fromulus=5Fclass=5Finit,
+> -    }, {
+> -        .name          =3D MACHINE=5FTYPE=5FNAME("swift-bmc"),
+> -        .parent        =3D TYPE=5FASPEED=5FMACHINE,
+> -        .class=5Finit    =3D aspeed=5Fmachine=5Fswift=5Fclass=5Finit,
+>      }, {
+>          .name          =3D MACHINE=5FTYPE=5FNAME("sonorapass-bmc"),
+>          .parent        =3D TYPE=5FASPEED=5FMACHINE,
+> --
+> 2.26.3
+>
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+--0__=8FBB0C23DFF06C758f9e8a93df938690918c8FBB0C23DFF06C75
+Content-Transfer-Encoding: quoted-printable
+Content-type: text/html; charset=ISO-8859-1
+Content-Disposition: inline
+
+<html><body><p><tt><font size=3D"2">&quot;C=E9dric Le Goater&quot; &lt;clg@=
+kaod.org&gt; wrote on 04/07/2021 12:16:30 PM:<br><br>&gt; From: &quot;C=E9d=
+ric Le Goater&quot; &lt;clg@kaod.org&gt;</font></tt><br><tt><font size=3D"2=
+">&gt; To: &quot;Peter Maydell&quot; &lt;peter.maydell@linaro.org&gt;</font=
+></tt><br><tt><font size=3D"2">&gt; Cc: &quot;Andrew Jeffery&quot; &lt;andr=
+ew@aj.id.au&gt;, &quot;Joel Stanley&quot; <br>&gt; &lt;joel@jms.id.au&gt;, =
+qemu-arm@nongnu.org, qemu-devel@nongnu.org, <br>&gt; &quot;C=E9dric Le Goat=
+er&quot; &lt;clg@kaod.org&gt;, Adriana Kobylak/Austin/IBM@IBM</font></tt><b=
+r><tt><font size=3D"2">&gt; Date: 04/07/2021 12:16 PM</font></tt><br><tt><f=
+ont size=3D"2">&gt; Subject: [PATCH 17/24] aspeed: Remove swift-bmc machine=
+</font></tt><br><tt><font size=3D"2">&gt; <br>&gt; The SWIFT machine never =
+came out of the lab and we already have enough<br>&gt; AST2500 based OpenPo=
+wer machines. Remove it.<br>&gt; <br>&gt; Cc: Adriana Kobylak &lt;anoo@us.i=
+bm.com&gt;<br>&gt; Signed-off-by: C=E9dric Le Goater &lt;clg@kaod.org&gt;</=
+font></tt><br><br><tt><font size=3D"2">Reviewed-by: </font></tt><tt><font s=
+ize=3D"2">Adriana Kobylak &lt;anoo@us.ibm.com&gt;</font></tt><br><tt><font =
+size=3D"2"><br>&gt; ---<br>&gt; &nbsp;hw/arm/aspeed.c | 61 ----------------=
+---------------------------------<br>&gt; &nbsp;1 file changed, 61 deletion=
+s(-)<br>&gt; <br>&gt; diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c<br>&gt=
+; index 1cf5a15c8098..97dcca74feb4 100644<br>&gt; --- a/hw/arm/aspeed.c<br>=
+&gt; +++ b/hw/arm/aspeed.c<br>&gt; @@ -110,17 +110,6 @@ struct AspeedMachin=
+eState {<br>&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;SCU=5FHW=5FSTRAP=5FVGA=
+=5FSIZE=5FSET(VGA=5F16M=5FDRAM) | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; \<br>&gt; &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp;SCU=5FAST2500=5FHW=5FSTRAP=5FRESERVED1)<br>&gt; &nbsp;<br>&gt; -/* Swi=
+ft hardware value: 0xF11AD206 */<br>&gt; -#define SWIFT=5FBMC=5FHW=5FSTRAP1=
+ ( &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &n=
+bsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+\<br>&gt; - &nbsp; &nbsp; &nbsp; &nbsp;AST2500=5FHW=5FSTRAP1=5FDEFAULTS | &=
+nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;\<br>&gt; - &nbsp; &nbsp; =
+&nbsp; &nbsp;SCU=5FAST2500=5FHW=5FSTRAP=5FSPI=5FAUTOFETCH=5FENABLE | &nbsp;=
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; \<br>&gt; -=
+ &nbsp; &nbsp; &nbsp; &nbsp;SCU=5FAST2500=5FHW=5FSTRAP=5FGPIO=5FSTRAP=5FENA=
+BLE | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
+ &nbsp; &nbsp;\<br>&gt; - &nbsp; &nbsp; &nbsp; &nbsp;SCU=5FAST2500=5FHW=5FS=
+TRAP=5FUART=5FDEBUG | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbs=
+p; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; \<br>&gt; - &nbsp; &nbs=
+p; &nbsp; &nbsp;SCU=5FAST2500=5FHW=5FSTRAP=5FDDR4=5FENABLE | &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp;\<br>&gt; - &nbsp; &nbsp; &nbsp; &nbsp;SCU=5FH=5FPLL=5FBYPAS=
+S=5FEN | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nb=
+sp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp; \<br>&gt; - &nbsp; &nbsp; &nbsp; &nbsp;SCU=5FAST2500=5FHW=5FSTRAP=5FA=
+CPI=5FENABLE | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbs=
+p; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;\<br>&gt; - &nbsp; &nbsp; &nbsp=
+; &nbsp;SCU=5FHW=5FSTRAP=5FSPI=5FMODE(SCU=5FHW=5FSTRAP=5FSPI=5FMASTER))<br>=
+&gt; -<br>&gt; &nbsp;#define G220A=5FBMC=5FHW=5FSTRAP1 ( &nbsp; &nbsp; &nbs=
+p; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &n=
+bsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;\<br>&gt; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp;SCU=5FAST2500=5FHW=5FSTRAP=5FSPI=5FAUTOFETCH=5FENABLE | &nbsp; &nbs=
+p; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; \<br>&gt; &nbsp;=
+ &nbsp; &nbsp; &nbsp; &nbsp;SCU=5FAST2500=5FHW=5FSTRAP=5FGPIO=5FSTRAP=5FENA=
+BLE | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
+ &nbsp; &nbsp;\<br>&gt; @@ -465,35 +454,6 @@ static void romulus=5Fbmc=5Fi2=
+c=5Finit(AspeedMachineState *bmc)<br>&gt; &nbsp; &nbsp; &nbsp;i2c=5Fslave=
+=5Fcreate=5Fsimple(aspeed=5Fi2c=5Fget=5Fbus(&amp;soc-&gt;i2c, 11), <br>&gt;=
+ &quot;ds1338&quot;, 0x32);<br>&gt; &nbsp;}<br>&gt; &nbsp;<br>&gt; -static =
+void swift=5Fbmc=5Fi2c=5Finit(AspeedMachineState *bmc)<br>&gt; -{<br>&gt; -=
+ &nbsp; &nbsp;AspeedSoCState *soc =3D &amp;bmc-&gt;soc;<br>&gt; -<br>&gt; -=
+ &nbsp; &nbsp;i2c=5Fslave=5Fcreate=5Fsimple(aspeed=5Fi2c=5Fget=5Fbus(&amp;s=
+oc-&gt;i2c, 3), <br>&gt; &quot;pca9552&quot;, 0x60);<br>&gt; -<br>&gt; - &n=
+bsp; &nbsp;/* The swift board expects a TMP275 but a TMP105 is compatible *=
+/<br>&gt; - &nbsp; &nbsp;i2c=5Fslave=5Fcreate=5Fsimple(aspeed=5Fi2c=5Fget=
+=5Fbus(&amp;soc-&gt;i2c, 7), <br>&gt; &quot;tmp105&quot;, 0x48);<br>&gt; - =
+&nbsp; &nbsp;/* The swift board expects a pca9551 but a pca9552 is compatib=
+le */<br>&gt; - &nbsp; &nbsp;i2c=5Fslave=5Fcreate=5Fsimple(aspeed=5Fi2c=5Fg=
+et=5Fbus(&amp;soc-&gt;i2c, 7), <br>&gt; &quot;pca9552&quot;, 0x60);<br>&gt;=
+ -<br>&gt; - &nbsp; &nbsp;/* The swift board expects an Epson RX8900 RTC bu=
+t a ds1338 is <br>&gt; compatible */<br>&gt; - &nbsp; &nbsp;i2c=5Fslave=5Fc=
+reate=5Fsimple(aspeed=5Fi2c=5Fget=5Fbus(&amp;soc-&gt;i2c, 8), <br>&gt; &quo=
+t;ds1338&quot;, 0x32);<br>&gt; - &nbsp; &nbsp;i2c=5Fslave=5Fcreate=5Fsimple=
+(aspeed=5Fi2c=5Fget=5Fbus(&amp;soc-&gt;i2c, 8), <br>&gt; &quot;pca9552&quot=
+;, 0x60);<br>&gt; -<br>&gt; - &nbsp; &nbsp;i2c=5Fslave=5Fcreate=5Fsimple(as=
+peed=5Fi2c=5Fget=5Fbus(&amp;soc-&gt;i2c, 9), <br>&gt; &quot;tmp423&quot;, 0=
+x4c);<br>&gt; - &nbsp; &nbsp;/* The swift board expects a pca9539 but a pca=
+9552 is compatible */<br>&gt; - &nbsp; &nbsp;i2c=5Fslave=5Fcreate=5Fsimple(=
+aspeed=5Fi2c=5Fget=5Fbus(&amp;soc-&gt;i2c, 9), <br>&gt; &quot;pca9552&quot;=
+, 0x74);<br>&gt; -<br>&gt; - &nbsp; &nbsp;i2c=5Fslave=5Fcreate=5Fsimple(asp=
+eed=5Fi2c=5Fget=5Fbus(&amp;soc-&gt;i2c, 10), <br>&gt; &quot;tmp423&quot;, 0=
+x4c);<br>&gt; - &nbsp; &nbsp;/* The swift board expects a pca9539 but a pca=
+9552 is compatible */<br>&gt; - &nbsp; &nbsp;i2c=5Fslave=5Fcreate=5Fsimple(=
+aspeed=5Fi2c=5Fget=5Fbus(&amp;soc-&gt;i2c, 10), &quot;pca9552&quot;,<br>&gt=
+; - &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 0=
+x74);<br>&gt; -<br>&gt; - &nbsp; &nbsp;/* The swift board expects a TMP275 =
+but a TMP105 is compatible */<br>&gt; - &nbsp; &nbsp;i2c=5Fslave=5Fcreate=
+=5Fsimple(aspeed=5Fi2c=5Fget=5Fbus(&amp;soc-&gt;i2c, 12), <br>&gt; &quot;tm=
+p105&quot;, 0x48);<br>&gt; - &nbsp; &nbsp;i2c=5Fslave=5Fcreate=5Fsimple(asp=
+eed=5Fi2c=5Fget=5Fbus(&amp;soc-&gt;i2c, 12), <br>&gt; &quot;tmp105&quot;, 0=
+x4a);<br>&gt; -}<br>&gt; -<br>&gt; &nbsp;static void sonorapass=5Fbmc=5Fi2c=
+=5Finit(AspeedMachineState *bmc)<br>&gt; &nbsp;{<br>&gt; &nbsp; &nbsp; &nbs=
+p;AspeedSoCState *soc =3D &amp;bmc-&gt;soc;<br>&gt; @@ -796,23 +756,6 @@ st=
+atic void <br>&gt; aspeed=5Fmachine=5Fsonorapass=5Fclass=5Finit(ObjectClass=
+ *oc, void *data)<br>&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;aspeed=5Fsoc=5F=
+num=5Fcpus(amc-&gt;soc=5Fname);<br>&gt; &nbsp;};<br>&gt; &nbsp;<br>&gt; -st=
+atic void aspeed=5Fmachine=5Fswift=5Fclass=5Finit(ObjectClass *oc, void *da=
+ta)<br>&gt; -{<br>&gt; - &nbsp; &nbsp;MachineClass *mc =3D MACHINE=5FCLASS(=
+oc);<br>&gt; - &nbsp; &nbsp;AspeedMachineClass *amc =3D ASPEED=5FMACHINE=5F=
+CLASS(oc);<br>&gt; -<br>&gt; - &nbsp; &nbsp;mc-&gt;desc &nbsp; &nbsp; &nbsp=
+; =3D &quot;OpenPOWER Swift BMC (ARM1176)&quot;;<br>&gt; - &nbsp; &nbsp;amc=
+-&gt;soc=5Fname &nbsp;=3D &quot;ast2500-a1&quot;;<br>&gt; - &nbsp; &nbsp;am=
+c-&gt;hw=5Fstrap1 =3D SWIFT=5FBMC=5FHW=5FSTRAP1;<br>&gt; - &nbsp; &nbsp;amc=
+-&gt;fmc=5Fmodel =3D &quot;mx66l1g45g&quot;;<br>&gt; - &nbsp; &nbsp;amc-&gt=
+;spi=5Fmodel =3D &quot;mx66l1g45g&quot;;<br>&gt; - &nbsp; &nbsp;amc-&gt;num=
+=5Fcs &nbsp; &nbsp;=3D 2;<br>&gt; - &nbsp; &nbsp;amc-&gt;i2c=5Finit &nbsp;=
+=3D swift=5Fbmc=5Fi2c=5Finit;<br>&gt; - &nbsp; &nbsp;mc-&gt;default=5Fram=
+=5Fsize &nbsp; &nbsp; &nbsp; =3D 512 * MiB;<br>&gt; - &nbsp; &nbsp;mc-&gt;d=
+efault=5Fcpus =3D mc-&gt;min=5Fcpus =3D mc-&gt;max=5Fcpus =3D<br>&gt; - &nb=
+sp; &nbsp; &nbsp; &nbsp;aspeed=5Fsoc=5Fnum=5Fcpus(amc-&gt;soc=5Fname);<br>&=
+gt; -};<br>&gt; -<br>&gt; &nbsp;static void aspeed=5Fmachine=5Fwitherspoon=
+=5Fclass=5Finit(ObjectClass *oc, <br>&gt; void *data)<br>&gt; &nbsp;{<br>&g=
+t; &nbsp; &nbsp; &nbsp;MachineClass *mc =3D MACHINE=5FCLASS(oc);<br>&gt; @@=
+ -903,10 +846,6 @@ static const TypeInfo aspeed=5Fmachine=5Ftypes[] =3D {<b=
+r>&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.name &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp;=3D MACHINE=5FTYPE=5FNAME(&quot;romulus-bmc&quot;),<br>&gt; &nbsp; &n=
+bsp; &nbsp; &nbsp; &nbsp;.parent &nbsp; &nbsp; &nbsp; &nbsp;=3D TYPE=5FASPE=
+ED=5FMACHINE,<br>&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.class=5Finit &nbsp=
+; &nbsp;=3D aspeed=5Fmachine=5Fromulus=5Fclass=5Finit,<br>&gt; - &nbsp; &nb=
+sp;}, {<br>&gt; - &nbsp; &nbsp; &nbsp; &nbsp;.name &nbsp; &nbsp; &nbsp; &nb=
+sp; &nbsp;=3D MACHINE=5FTYPE=5FNAME(&quot;swift-bmc&quot;),<br>&gt; - &nbsp=
+; &nbsp; &nbsp; &nbsp;.parent &nbsp; &nbsp; &nbsp; &nbsp;=3D TYPE=5FASPEED=
+=5FMACHINE,<br>&gt; - &nbsp; &nbsp; &nbsp; &nbsp;.class=5Finit &nbsp; &nbsp=
+;=3D aspeed=5Fmachine=5Fswift=5Fclass=5Finit,<br>&gt; &nbsp; &nbsp; &nbsp;}=
+, {<br>&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.name &nbsp; &nbsp; &nbsp; &n=
+bsp; &nbsp;=3D MACHINE=5FTYPE=5FNAME(&quot;sonorapass-bmc&quot;),<br>&gt; &=
+nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.parent &nbsp; &nbsp; &nbsp; &nbsp;=3D TYP=
+E=5FASPEED=5FMACHINE,<br>&gt; -- <br>&gt; 2.26.3<br>&gt; <br></font></tt><B=
+R>
+</body></html>
+
+--0__=8FBB0C23DFF06C758f9e8a93df938690918c8FBB0C23DFF06C75--
 

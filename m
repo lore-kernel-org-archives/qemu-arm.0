@@ -1,224 +1,327 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id j30sm45241976wrj.62.2021.04.07.11.53.49
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 07 Apr 2021 11:53:49 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id DE7741FF7E;
-	Wed,  7 Apr 2021 19:53:48 +0100 (BST)
-References: <20210406174031.64299-1-richard.henderson@linaro.org>
- <20210406174031.64299-4-richard.henderson@linaro.org>
-User-agent: mu4e 1.5.11; emacs 28.0.50
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 1921948@bugs.launchpad.net
-Subject: Re: [PATCH v4 03/12] target/arm: Fix mte_checkN
-Date: Wed, 07 Apr 2021 19:39:29 +0100
-In-reply-to: <20210406174031.64299-4-richard.henderson@linaro.org>
-Message-ID: <877dleuds3.fsf@linaro.org>
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp747205lfr;
+        Wed, 7 Apr 2021 12:22:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx+2g8rD6ph0uD9hVrhnip4u/OjjdyV+QOJpJxy4azjnPOOeX3QvKRUVptVJ7SmJQOE+fmp
+X-Received: by 2002:a05:6e02:1526:: with SMTP id i6mr504599ilu.270.1617823373043;
+        Wed, 07 Apr 2021 12:22:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617823373; cv=none;
+        d=google.com; s=arc-20160816;
+        b=WQu7bcmp4l2wJBBEU1zv2rIcDBOzxDOrAWpZf7VnClTbSkohLrKZ0zuR8NsEShmKOl
+         zGTvtJlwBhFsIXx4xiXx5VOLOubxbvpew+m51EnHyDqIYiplxt4ddodWan+dZyjtfKwD
+         USxyFAXVHsuYWghcL5e5IL+5ZzbCeh8KG2NuzOmALrLnNayLK+E2lopnDojP7y7vBPlc
+         hYyYpC3SlvauGmsgBlg2yusR53dedvC4lfcYbxrudHJocucqE7cKMdrhE1AjY3d1u30+
+         yjnRMFNBHhTHqz+Y4xQ4QA8d/OOsylH+g01FEpdsVEcNAOh7Oe2ueYlLDV0C3YI+aOMg
+         J0Bg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=xuMKxekLP2HfZee202lrBxLdP9quDbPymDl8AVGhBsY=;
+        b=P7o6p40CmB+D1dmGj4IBA7OATaiEZG8qsP85XnDTklS92Cq3Ktao7nz7XQMlZskVPI
+         M3JqpLCZyv7JpyX357y2njOhsNmuAo997ubAlw3iATr0PQlnEKwsEyBMafISdA8/slRy
+         4ezNnu62ia+Ms75yvmCrLwwy5oevZgtGA8W67FcIvCPOQ7jMN1xdlBuosGghnwTcJsYS
+         1DIBdVVpLw9Z/3itFRz2IPfXTacv6+0xCCxOeltMIw7xQBIcnu9Er2bubsXybYR+wNrd
+         v3pT234l87RqBjjB9NwcG44wgEP8BtzDyIfF4OEUq4PaJ/+Ba4HpzEDinFgVQV6dNDS8
+         vsVA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@ibm.com header.s=pp1 header.b=GGs6JDhK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id a15si3242946iok.43.2021.04.07.12.22.52
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 07 Apr 2021 12:22:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=fail header.i=@ibm.com header.s=pp1 header.b=GGs6JDhK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Received: from localhost ([::1]:59928 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lUDlM-0006YZ-7h
+	for alex.bennee@linaro.org; Wed, 07 Apr 2021 15:22:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43668)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <klaus@linux.vnet.ibm.com>)
+ id 1lUDlB-0006YC-UG; Wed, 07 Apr 2021 15:22:41 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:4302)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <klaus@linux.vnet.ibm.com>)
+ id 1lUDl9-0001UF-Ko; Wed, 07 Apr 2021 15:22:41 -0400
+Received: from pps.filterd (m0098421.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
+ 137J3nvi092780; Wed, 7 Apr 2021 15:22:30 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=subject : to : cc :
+ references : from : message-id : date : mime-version : in-reply-to :
+ content-type : content-transfer-encoding; s=pp1;
+ bh=xuMKxekLP2HfZee202lrBxLdP9quDbPymDl8AVGhBsY=;
+ b=GGs6JDhKnVZe0a0sEmQ8mWt0emSOviWq8I/AZFx6zectbJedyCvWu8vCGors8Tsy6avh
+ x0lD8RhQthjcuuO85iwl3327akwK1HVp74Y5INHRyVMHnykhREremd+w9oSe3uLtYrJv
+ 8yGvTUEkEjEfc1tmQ1jW7vIb4rUYdUMMjcSbieKzL7ms09dqFA/1dBN+zvpaL6qYj8xB
+ ytBKkGzO9AuwGmVlahjxmSm5LgQ/Qls84jis62RPHfX2QTufCg/Ee7434RpAif0MGcJX
+ iAf7NA01qmCdhEoKFempe1PvABX9H1BRCRpwSjIUFgWvHrguXFhmlHuxfdPGj0Dj8UXt Og== 
+Received: from ppma04dal.us.ibm.com (7a.29.35a9.ip4.static.sl-reverse.com
+ [169.53.41.122])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 37rvpgkbb0-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 07 Apr 2021 15:22:30 -0400
+Received: from pps.filterd (ppma04dal.us.ibm.com [127.0.0.1])
+ by ppma04dal.us.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 137JHlmp005788;
+ Wed, 7 Apr 2021 19:22:29 GMT
+Received: from b03cxnp08026.gho.boulder.ibm.com
+ (b03cxnp08026.gho.boulder.ibm.com [9.17.130.18])
+ by ppma04dal.us.ibm.com with ESMTP id 37rvc41p1y-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 07 Apr 2021 19:22:29 +0000
+Received: from b03ledav004.gho.boulder.ibm.com
+ (b03ledav004.gho.boulder.ibm.com [9.17.130.235])
+ by b03cxnp08026.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 137JMSd316974084
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 7 Apr 2021 19:22:28 GMT
+Received: from b03ledav004.gho.boulder.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 427CA7805E;
+ Wed,  7 Apr 2021 19:22:28 +0000 (GMT)
+Received: from b03ledav004.gho.boulder.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 85BD078060;
+ Wed,  7 Apr 2021 19:22:26 +0000 (GMT)
+Received: from [9.80.221.20] (unknown [9.80.221.20])
+ by b03ledav004.gho.boulder.ibm.com (Postfix) with ESMTP;
+ Wed,  7 Apr 2021 19:22:26 +0000 (GMT)
+Subject: Re: [PATCH 07/24] aspeed: Integrate HACE
+To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20210407171637.777743-1-clg@kaod.org>
+ <20210407171637.777743-8-clg@kaod.org>
+From: Klaus Heinrich Kiwi <klaus@linux.vnet.ibm.com>
+Message-ID: <e4375f12-e736-b381-1a89-0d30ebecd434@linux.vnet.ibm.com>
+Date: Wed, 7 Apr 2021 16:22:25 -0300
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.9.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: djqJg4M2zr0v
+In-Reply-To: <20210407171637.777743-8-clg@kaod.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: lJiIPERbJQAIyKf6nLICMi-kkeMWkUwB
+X-Proofpoint-GUID: lJiIPERbJQAIyKf6nLICMi-kkeMWkUwB
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.761
+ definitions=2021-04-07_10:2021-04-07,
+ 2021-04-07 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ impostorscore=0
+ mlxlogscore=999 priorityscore=1501 clxscore=1011 malwarescore=0
+ suspectscore=0 bulkscore=0 adultscore=0 mlxscore=0 lowpriorityscore=0
+ spamscore=0 phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2104060000 definitions=main-2104070130
+Received-SPF: none client-ip=148.163.158.5;
+ envelope-from=klaus@linux.vnet.ibm.com; helo=mx0b-001b2d01.pphosted.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
+X-Spam_bar: --
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: C7Ni0aNGS2PX
 
 
-Richard Henderson <richard.henderson@linaro.org> writes:
 
-> We were incorrectly assuming that only the first byte of an MTE access
-> is checked against the tags.  But per the ARM, unaligned accesses are
-> pre-decomposed into single-byte accesses.  So by the time we reach the
-> actual MTE check in the ARM pseudocode, all accesses are aligned.
->
-> Therefore, the first failure is always either the first byte of the
-> access, or the first byte of the granule.
->
-> In addition, some of the arithmetic is off for last-first -> count.
-> This does not become directly visible until a later patch that passes
-> single bytes into this function, so ptr =3D=3D ptr_last.
->
-> Buglink: https://bugs.launchpad.net/bugs/1921948
+On 4/7/2021 2:16 PM, Cédric Le Goater wrote:
+> From: Joel Stanley <joel@jms.id.au>
+> 
+> Add the hash and crypto engine model to the Aspeed socs.
+> 
+> Reviewed-by: Andrew Jeffery <andrew@aj.id.au>
+> Signed-off-by: Joel Stanley <joel@jms.id.au>
+> Reviewed-by: Cédric Le Goater <clg@kaod.org>
+> Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> Message-Id: <20210324070955.125941-3-joel@jms.id.au>
+> Signed-off-by: Cédric Le Goater <clg@kaod.org>
 
-Minor note: you can Cc: Bug 1921948 <1921948@bugs.launchpad.net> to
-automatically copy patches to the appropriate bugs which is useful if
-you don't have the Cc for the reporter.
+Reviewed-by: Klaus Heinrich Kiwi <klaus@linux.vnet.ibm.com>
 
-Anyway I'm trying to get the kasas unit tests running as a way of
-testing this (and maybe expanding with a version of Andrey's test). I
-suspect this may be a PEBCAC issue but I built an MTE enabled kernel
-with:
-
-  CONFIG_HAVE_ARCH_KASAN=3Dy
-  CONFIG_HAVE_ARCH_KASAN_SW_TAGS=3Dy
-  CONFIG_HAVE_ARCH_KASAN_HW_TAGS=3Dy
-  CONFIG_CC_HAS_KASAN_GENERIC=3Dy
-  CONFIG_KASAN=3Dy
-  # CONFIG_KASAN_GENERIC is not set
-  CONFIG_KASAN_HW_TAGS=3Dy
-  CONFIG_KASAN_STACK=3D1
-  CONFIG_KASAN_KUNIT_TEST=3Dm
-  CONFIG_TEST_KASAN_MODULE=3Dm
-
-and was able to boot it. But when I insmod the kasan tests:
-
-  insmod test_kasan.ko
-
-it looks like it just keeps looping failing on the same test:
-
-  Ignoring spurious kernel translation fault at virtual address dead0000000=
-0010a
-  WARNING: CPU: 0 PID: 1444 at arch/arm64/mm/fault.c:364 __do_kernel_fault+=
-0xc4/0x1bc
-  Modules linked in: test_kasan(+)
-  CPU: 0 PID: 1444 Comm: kunit_try_catch Tainted: G    B   W         5.11.0=
--ajb-kasan #3
-  Hardware name: linux,dummy-virt (DT)
-  pstate: 60400009 (nZCv daif +PAN -UAO -TCO BTYPE=3D--)
-  pc : __do_kernel_fault+0xc4/0x1bc
-  lr : __do_kernel_fault+0xc4/0x1bc
-  sp : ffffffc01191b900
-  x29: ffffffc01191b900 x28: fcffff8001f7a880
-  x27: fcffff8001c01e00 x26: 0000000000000000
-  x25: 0000000000000001 x24: 00000000000000f4
-  x23: 0000000020400009 x22: dead00000000010a
-  x21: 0000000000000025 x20: ffffffc01191b9d0
-  x19: 0000000097c08004 x18: 0000000000000000
-  x17: 000000000000000a x16: 000017a83fb75794
-  x15: 0000000000000030 x14: 6c656e72656b2073
-  x13: ffffffc010e21be0 x12: 00000000000001aa
-  x11: 000000000000008e x10: ffffffc010e2d930
-  x9 : 000000000003a6d0 x8 : ffffffc010e21be0
-  x7 : ffffffc010e2cbe0 x6 : 0000000000000d50
-  x5 : ffffff8007f9c850 x4 : ffffffc01191b700
-  x3 : 0000000000000001 x2 : 0000000000000000
-  x1 : 0000000000000000 x0 : fcffff8001f7a880
-  Call trace:
-   __do_kernel_fault+0xc4/0x1bc
-   do_translation_fault+0x98/0xb0
-   do_mem_abort+0x44/0xb0
-   el1_abort+0x40/0x6c
-   el1_sync_handler+0x6c/0xb0
-   el1_sync+0x70/0x100
-   kasan_update_kunit_status+0x6c/0x1ac
-   kasan_report_invalid_free+0x34/0xa0
-   ____kasan_slab_free.constprop.0+0xf8/0x1a0
-   __kasan_slab_free+0x10/0x20
-   slab_free_freelist_hook+0xf8/0x1a0
-   kfree+0x148/0x25c
-   kunit_destroy_resource+0x15c/0x1bc
-   string_stream_destroy+0x20/0x80
-   kunit_do_assertion+0x190/0x1e4
-   kmalloc_double_kzfree+0x158/0x190 [test_kasan]
-   kunit_try_run_case+0x78/0xa4
-   kunit_generic_run_threadfn_adapter+0x20/0x2c
-   kthread+0x134/0x144
-   ret_from_fork+0x10/0x38
-  ---[ end trace 5acd02cdb9b3d3f0 ]---
-
-but maybe I'm using the kunit tests wrong. It's my first time playing
-with them.
-
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->  target/arm/mte_helper.c | 38 +++++++++++++++++---------------------
->  1 file changed, 17 insertions(+), 21 deletions(-)
->
-> diff --git a/target/arm/mte_helper.c b/target/arm/mte_helper.c
-> index 8be17e1b70..c87717127c 100644
-> --- a/target/arm/mte_helper.c
-> +++ b/target/arm/mte_helper.c
-> @@ -757,10 +757,10 @@ uint64_t mte_checkN(CPUARMState *env, uint32_t desc,
->                      uint64_t ptr, uintptr_t ra)
->  {
->      int mmu_idx, ptr_tag, bit55;
-> -    uint64_t ptr_last, ptr_end, prev_page, next_page;
-> -    uint64_t tag_first, tag_end;
-> -    uint64_t tag_byte_first, tag_byte_end;
-> -    uint32_t esize, total, tag_count, tag_size, n, c;
-> +    uint64_t ptr_last, prev_page, next_page;
-> +    uint64_t tag_first, tag_last;
-> +    uint64_t tag_byte_first, tag_byte_last;
-> +    uint32_t total, tag_count, tag_size, n, c;
->      uint8_t *mem1, *mem2;
->      MMUAccessType type;
->=20=20
-> @@ -779,29 +779,27 @@ uint64_t mte_checkN(CPUARMState *env, uint32_t desc,
->=20=20
->      mmu_idx =3D FIELD_EX32(desc, MTEDESC, MIDX);
->      type =3D FIELD_EX32(desc, MTEDESC, WRITE) ? MMU_DATA_STORE : MMU_DAT=
-A_LOAD;
-> -    esize =3D FIELD_EX32(desc, MTEDESC, ESIZE);
->      total =3D FIELD_EX32(desc, MTEDESC, TSIZE);
->=20=20
->      /* Find the addr of the end of the access, and of the last element. =
-*/
-> -    ptr_end =3D ptr + total;
-> -    ptr_last =3D ptr_end - esize;
-> +    ptr_last =3D ptr + total - 1;
->=20=20
->      /* Round the bounds to the tag granule, and compute the number of ta=
-gs. */
->      tag_first =3D QEMU_ALIGN_DOWN(ptr, TAG_GRANULE);
-> -    tag_end =3D QEMU_ALIGN_UP(ptr_last, TAG_GRANULE);
-> -    tag_count =3D (tag_end - tag_first) / TAG_GRANULE;
-> +    tag_last =3D QEMU_ALIGN_DOWN(ptr_last, TAG_GRANULE);
-> +    tag_count =3D ((tag_last - tag_first) / TAG_GRANULE) + 1;
->=20=20
->      /* Round the bounds to twice the tag granule, and compute the bytes.=
- */
->      tag_byte_first =3D QEMU_ALIGN_DOWN(ptr, 2 * TAG_GRANULE);
-> -    tag_byte_end =3D QEMU_ALIGN_UP(ptr_last, 2 * TAG_GRANULE);
-> +    tag_byte_last =3D QEMU_ALIGN_DOWN(ptr_last, 2 * TAG_GRANULE);
->=20=20
->      /* Locate the page boundaries. */
->      prev_page =3D ptr & TARGET_PAGE_MASK;
->      next_page =3D prev_page + TARGET_PAGE_SIZE;
->=20=20
-> -    if (likely(tag_end - prev_page <=3D TARGET_PAGE_SIZE)) {
-> +    if (likely(tag_last - prev_page <=3D TARGET_PAGE_SIZE)) {
->          /* Memory access stays on one page. */
-> -        tag_size =3D (tag_byte_end - tag_byte_first) / (2 * TAG_GRANULE);
-> +        tag_size =3D ((tag_byte_last - tag_byte_first) / (2 * TAG_GRANUL=
-E)) + 1;
->          mem1 =3D allocation_tag_mem(env, mmu_idx, ptr, type, total,
->                                    MMU_DATA_LOAD, tag_size, ra);
->          if (!mem1) {
-> @@ -815,9 +813,9 @@ uint64_t mte_checkN(CPUARMState *env, uint32_t desc,
->          mem1 =3D allocation_tag_mem(env, mmu_idx, ptr, type, next_page -=
- ptr,
->                                    MMU_DATA_LOAD, tag_size, ra);
->=20=20
-> -        tag_size =3D (tag_byte_end - next_page) / (2 * TAG_GRANULE);
-> +        tag_size =3D ((tag_byte_last - next_page) / (2 * TAG_GRANULE)) +=
- 1;
->          mem2 =3D allocation_tag_mem(env, mmu_idx, next_page, type,
-> -                                  ptr_end - next_page,
-> +                                  ptr_last - next_page + 1,
->                                    MMU_DATA_LOAD, tag_size, ra);
->=20=20
->          /*
-> @@ -838,15 +836,13 @@ uint64_t mte_checkN(CPUARMState *env, uint32_t desc,
->      }
->=20=20
->      /*
-> -     * If we failed, we know which granule.  Compute the element that
-> -     * is first in that granule, and signal failure on that element.
-> +     * If we failed, we know which granule.  For the first granule, the
-> +     * failure address is @ptr, the first byte accessed.  Otherwise the
-> +     * failure address is the first byte of the nth granule.
->       */
->      if (unlikely(n < tag_count)) {
-> -        uint64_t fail_ofs;
-> -
-> -        fail_ofs =3D tag_first + n * TAG_GRANULE - ptr;
-> -        fail_ofs =3D ROUND_UP(fail_ofs, esize);
-> -        mte_check_fail(env, desc, ptr + fail_ofs, ra);
-> +        uint64_t fault =3D (n =3D=3D 0 ? ptr : tag_first + n * TAG_GRANU=
-LE);
-> +        mte_check_fail(env, desc, fault, ra);
->      }
->=20=20
->   done:
+>   docs/system/arm/aspeed.rst  |  2 +-
+>   include/hw/arm/aspeed_soc.h |  3 +++
+>   hw/arm/aspeed_ast2600.c     | 15 +++++++++++++++
+>   hw/arm/aspeed_soc.c         | 16 ++++++++++++++++
+>   4 files changed, 35 insertions(+), 1 deletion(-)
+> 
+> diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
+> index d1fb8f25b39c..f9466e6d8245 100644
+> --- a/docs/system/arm/aspeed.rst
+> +++ b/docs/system/arm/aspeed.rst
+> @@ -49,6 +49,7 @@ Supported devices
+>    * Ethernet controllers
+>    * Front LEDs (PCA9552 on I2C bus)
+>    * LPC Peripheral Controller (a subset of subdevices are supported)
+> + * Hash/Crypto Engine (HACE) - Hash support only, no scatter-gather
+>   
+>   
+>   Missing devices
+> @@ -59,7 +60,6 @@ Missing devices
+>    * PWM and Fan Controller
+>    * Slave GPIO Controller
+>    * Super I/O Controller
+> - * Hash/Crypto Engine
+>    * PCI-Express 1 Controller
+>    * Graphic Display Controller
+>    * PECI Controller
+> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+> index 9359d6da336d..d9161d26d645 100644
+> --- a/include/hw/arm/aspeed_soc.h
+> +++ b/include/hw/arm/aspeed_soc.h
+> @@ -21,6 +21,7 @@
+>   #include "hw/rtc/aspeed_rtc.h"
+>   #include "hw/i2c/aspeed_i2c.h"
+>   #include "hw/ssi/aspeed_smc.h"
+> +#include "hw/misc/aspeed_hace.h"
+>   #include "hw/watchdog/wdt_aspeed.h"
+>   #include "hw/net/ftgmac100.h"
+>   #include "target/arm/cpu.h"
+> @@ -50,6 +51,7 @@ struct AspeedSoCState {
+>       AspeedTimerCtrlState timerctrl;
+>       AspeedI2CState i2c;
+>       AspeedSCUState scu;
+> +    AspeedHACEState hace;
+>       AspeedXDMAState xdma;
+>       AspeedSMCState fmc;
+>       AspeedSMCState spi[ASPEED_SPIS_NUM];
+> @@ -133,6 +135,7 @@ enum {
+>       ASPEED_DEV_XDMA,
+>       ASPEED_DEV_EMMC,
+>       ASPEED_DEV_KCS,
+> +    ASPEED_DEV_HACE,
+>   };
+>   
+>   #endif /* ASPEED_SOC_H */
+> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+> index 2a1255b6a042..e0fbb020c770 100644
+> --- a/hw/arm/aspeed_ast2600.c
+> +++ b/hw/arm/aspeed_ast2600.c
+> @@ -42,6 +42,7 @@ static const hwaddr aspeed_soc_ast2600_memmap[] = {
+>       [ASPEED_DEV_ETH2]      = 0x1E680000,
+>       [ASPEED_DEV_ETH4]      = 0x1E690000,
+>       [ASPEED_DEV_VIC]       = 0x1E6C0000,
+> +    [ASPEED_DEV_HACE]      = 0x1E6D0000,
+>       [ASPEED_DEV_SDMC]      = 0x1E6E0000,
+>       [ASPEED_DEV_SCU]       = 0x1E6E2000,
+>       [ASPEED_DEV_XDMA]      = 0x1E6E7000,
+> @@ -102,6 +103,7 @@ static const int aspeed_soc_ast2600_irqmap[] = {
+>       [ASPEED_DEV_I2C]       = 110,   /* 110 -> 125 */
+>       [ASPEED_DEV_ETH1]      = 2,
+>       [ASPEED_DEV_ETH2]      = 3,
+> +    [ASPEED_DEV_HACE]      = 4,
+>       [ASPEED_DEV_ETH3]      = 32,
+>       [ASPEED_DEV_ETH4]      = 33,
+>       [ASPEED_DEV_KCS]       = 138,   /* 138 -> 142 */
+> @@ -213,6 +215,9 @@ static void aspeed_soc_ast2600_init(Object *obj)
+>                               TYPE_SYSBUS_SDHCI);
+>   
+>       object_initialize_child(obj, "lpc", &s->lpc, TYPE_ASPEED_LPC);
+> +
+> +    snprintf(typename, sizeof(typename), "aspeed.hace-%s", socname);
+> +    object_initialize_child(obj, "hace", &s->hace, typename);
+>   }
+>   
+>   /*
+> @@ -494,6 +499,16 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+>       sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_4,
+>                          qdev_get_gpio_in(DEVICE(&s->a7mpcore),
+>                                   sc->irqmap[ASPEED_DEV_KCS] + aspeed_lpc_kcs_4));
+> +
+> +    /* HACE */
+> +    object_property_set_link(OBJECT(&s->hace), "dram", OBJECT(s->dram_mr),
+> +                             &error_abort);
+> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->hace), errp)) {
+> +        return;
+> +    }
+> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->hace), 0, sc->memmap[ASPEED_DEV_HACE]);
+> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->hace), 0,
+> +                       aspeed_soc_get_irq(s, ASPEED_DEV_HACE));
+>   }
+>   
+>   static void aspeed_soc_ast2600_class_init(ObjectClass *oc, void *data)
+> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+> index 817f3ba63dfd..8ed29113f79f 100644
+> --- a/hw/arm/aspeed_soc.c
+> +++ b/hw/arm/aspeed_soc.c
+> @@ -34,6 +34,7 @@ static const hwaddr aspeed_soc_ast2400_memmap[] = {
+>       [ASPEED_DEV_VIC]    = 0x1E6C0000,
+>       [ASPEED_DEV_SDMC]   = 0x1E6E0000,
+>       [ASPEED_DEV_SCU]    = 0x1E6E2000,
+> +    [ASPEED_DEV_HACE]   = 0x1E6E3000,
+>       [ASPEED_DEV_XDMA]   = 0x1E6E7000,
+>       [ASPEED_DEV_VIDEO]  = 0x1E700000,
+>       [ASPEED_DEV_ADC]    = 0x1E6E9000,
+> @@ -65,6 +66,7 @@ static const hwaddr aspeed_soc_ast2500_memmap[] = {
+>       [ASPEED_DEV_VIC]    = 0x1E6C0000,
+>       [ASPEED_DEV_SDMC]   = 0x1E6E0000,
+>       [ASPEED_DEV_SCU]    = 0x1E6E2000,
+> +    [ASPEED_DEV_HACE]   = 0x1E6E3000,
+>       [ASPEED_DEV_XDMA]   = 0x1E6E7000,
+>       [ASPEED_DEV_ADC]    = 0x1E6E9000,
+>       [ASPEED_DEV_VIDEO]  = 0x1E700000,
+> @@ -117,6 +119,7 @@ static const int aspeed_soc_ast2400_irqmap[] = {
+>       [ASPEED_DEV_ETH2]   = 3,
+>       [ASPEED_DEV_XDMA]   = 6,
+>       [ASPEED_DEV_SDHCI]  = 26,
+> +    [ASPEED_DEV_HACE]   = 4,
+>   };
+>   
+>   #define aspeed_soc_ast2500_irqmap aspeed_soc_ast2400_irqmap
+> @@ -212,6 +215,9 @@ static void aspeed_soc_init(Object *obj)
+>       }
+>   
+>       object_initialize_child(obj, "lpc", &s->lpc, TYPE_ASPEED_LPC);
+> +
+> +    snprintf(typename, sizeof(typename), "aspeed.hace-%s", socname);
+> +    object_initialize_child(obj, "hace", &s->hace, typename);
+>   }
+>   
+>   static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+> @@ -421,6 +427,16 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+>   
+>       sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_4,
+>                          qdev_get_gpio_in(DEVICE(&s->lpc), aspeed_lpc_kcs_4));
+> +
+> +    /* HACE */
+> +    object_property_set_link(OBJECT(&s->hace), "dram", OBJECT(s->dram_mr),
+> +                             &error_abort);
+> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->hace), errp)) {
+> +        return;
+> +    }
+> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->hace), 0, sc->memmap[ASPEED_DEV_HACE]);
+> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->hace), 0,
+> +                       aspeed_soc_get_irq(s, ASPEED_DEV_HACE));
+>   }
+>   static Property aspeed_soc_properties[] = {
+>       DEFINE_PROP_LINK("dram", AspeedSoCState, dram_mr, TYPE_MEMORY_REGION,
+> 
 
-
---=20
-Alex Benn=C3=A9e
+-- 
+Klaus Heinrich Kiwi <klaus@linux.vnet.ibm.com>

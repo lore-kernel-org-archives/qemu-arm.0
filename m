@@ -1,91 +1,91 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp654832lfr;
-        Wed, 7 Apr 2021 10:21:05 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw7PNy1cu5atEEReA1cRXMNmm+tJWpXT0Uz9EdPow6dlxLxbL5apWxqqNLctdMHcS6VdTuQ
-X-Received: by 2002:a92:ac0c:: with SMTP id r12mr3485106ilh.140.1617816065798;
-        Wed, 07 Apr 2021 10:21:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617816065; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp656725lfr;
+        Wed, 7 Apr 2021 10:23:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy6UnaBkEy7iNRHZKiHpE51VQcEqodhk0mZTM58R31C1895ZDgLNsPiwkurs00RDbvasIoI
+X-Received: by 2002:a05:6e02:1303:: with SMTP id g3mr3571213ilr.262.1617816191259;
+        Wed, 07 Apr 2021 10:23:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617816191; cv=none;
         d=google.com; s=arc-20160816;
-        b=ePm7zWVlL9EzRc8Bn8u1vXQaOHxUFuSGNI/bkMa663clgEEwREfHkirLTU/tPvPMum
-         J3n5mq2GGJbgY9N1Idand3NAT+4A9HHBl2xT5uOxuqdH0PWm284UMvsGk82fYTu1uirj
-         OY1ZfrK2NaYrfiu2ew6TBFwcsTsnsgX6+RFWkKQGOaKpCID2exvRDUH3yb2o7ikw98FX
-         b/ZqQjz4rqFyM6UX+ix+do1lE2tyT3dF8WPaLS0VZghdZiFPm1lpQHJXWisCjAAL/Uxi
-         XasMSOYnWPhJo5fIFaa6eVbYVh1jkNg466ZWu91E9sZm65VQe9U5CFj1huU8yU+UvgEC
-         QKqQ==
+        b=mE8rHEvc5pqeYOdbEIfD/S9OzBulgwPsbxK0/6ezk6/2BL0iGac041vixSiNgsOxf2
+         tXgAO7UuJGboyINW+t4PL+3Y405/342W2q/p8t3wAicwMw+3Aj1ldM0atARDXCwPJBIj
+         3otCAkqKWJ5soTzBY4BpaRcCvnNSQ/rr8HPnSkGlhmKHvSRCBs8IzsAhTg3ZJHCxIao7
+         4aZ5qQHCn0JgLB2Zg0f9t6n4tnUiu91iTrykq9sZvja/gL2EnUyXjMdHHLlqFbCgNmjZ
+         580by26yFfyWkoZf0mE/mGSZ9EarsRMCKIF9lbGzOHG7tL7v4Qipqf3AlKBYnTF2S8xc
+         LdUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=DZSoOrv4h/N/U6sz/LuN40yQTibgNjnvnvetKgfwyUE=;
-        b=M40bUq38li7YADEVNq5Ey++CB+B0ZEmknxD/daHL9DfGJjFhxNj3WRP+whAZJQlOsZ
-         dmAMazcNNQPKsdXRWRHM4yu55JsztPtkKEXz8FyBjdCjRLb29xD66h9lT+lQgIf2UjGo
-         hcM/gyTlHVwhDZsgYcFhsAIXyQ26vjQ05Z1ZJ697UB05YfqH6jgzpKe3evJrKJySlfta
-         NXrMYMtQOiY8K7WVcgbnNEyKawEFopMnl6QTrp+x9+MuPuMuOqwQUuXeyoxcfx5dD0fX
-         75BnS8M/uj+Uk4uUjXungbnymBwzxw2kngMDYtgq1vnblUhd1+75jbqG/ktRdWOof5lW
-         XauA==
+        bh=ViYGHHJMiRBFSrTHP+3fW+ipuxaUIPATidEbUEBdMcY=;
+        b=OgYX53a7EOEp/XP5oSUxIRlGiULtybjo4htBkEZTbzHhv2bcDTTtiMgB1g9iNn1UEa
+         k4/vpbhiUC7FOpptpBeK+QeypebgU3vgrolCBsKTy4HJqq4k6FeD/kzn3L7UGTQyY3xp
+         TQCxqG/V5P48jA6eS8PxCM17D2CozwBa4nDQo6oM6Gop5hLIn8CcIdY2vKOWF8/OWFLS
+         YdVKwr1m5G3Rwm61/UkvwEOsSG6mqMcR2QLp5NTIZO8l7kgyVEz94+stGGA0I/TGzAHY
+         u2kk6W79Mr8VS38DnxhA71Tu34oNaW+Y2UvULn7O4ajqwmwVgUjolI+xUZTeQKN8sAS2
+         6lRQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d2si21081852iod.10.2021.04.07.10.21.05
+        by mx.google.com with ESMTPS id n14si1418531ilk.90.2021.04.07.10.23.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Apr 2021 10:21:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 07 Apr 2021 10:23:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:60138 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:37296 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lUBrV-0003xl-1s
-	for alex.bennee@linaro.org; Wed, 07 Apr 2021 13:21:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38972)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lUBtS-0006IF-7H
+	for alex.bennee@linaro.org; Wed, 07 Apr 2021 13:23:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39008)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1lUBni-0007Xd-I3; Wed, 07 Apr 2021 13:17:10 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:6248
+ id 1lUBnj-0007a5-Dn; Wed, 07 Apr 2021 13:17:11 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:52142
  helo=mx0a-001b2d01.pphosted.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1lUBnf-0006iv-MN; Wed, 07 Apr 2021 13:17:10 -0400
-Received: from pps.filterd (m0098420.ppops.net [127.0.0.1])
+ id 1lUBnf-0006nV-Mb; Wed, 07 Apr 2021 13:17:11 -0400
+Received: from pps.filterd (m0098413.ppops.net [127.0.0.1])
  by mx0b-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 137H3q0Y124916; Wed, 7 Apr 2021 13:16:46 -0400
-Received: from ppma06ams.nl.ibm.com (66.31.33a9.ip4.static.sl-reverse.com
- [169.51.49.102])
- by mx0b-001b2d01.pphosted.com with ESMTP id 37rvm4rkss-1
+ 137H8oZ2145520; Wed, 7 Apr 2021 13:16:57 -0400
+Received: from ppma03fra.de.ibm.com (6b.4a.5195.ip4.static.sl-reverse.com
+ [149.81.74.107])
+ by mx0b-001b2d01.pphosted.com with ESMTP id 37rw07p5xy-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 07 Apr 2021 13:16:46 -0400
-Received: from pps.filterd (ppma06ams.nl.ibm.com [127.0.0.1])
- by ppma06ams.nl.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 137HEXZl002980;
- Wed, 7 Apr 2021 17:16:45 GMT
-Received: from b06cxnps4076.portsmouth.uk.ibm.com
- (d06relay13.portsmouth.uk.ibm.com [9.149.109.198])
- by ppma06ams.nl.ibm.com with ESMTP id 37rvbw8w5d-1
+ Wed, 07 Apr 2021 13:16:57 -0400
+Received: from pps.filterd (ppma03fra.de.ibm.com [127.0.0.1])
+ by ppma03fra.de.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 137HCBwA023097;
+ Wed, 7 Apr 2021 17:16:55 GMT
+Received: from b06cxnps3075.portsmouth.uk.ibm.com
+ (d06relay10.portsmouth.uk.ibm.com [9.149.109.195])
+ by ppma03fra.de.ibm.com with ESMTP id 37rvc1gfyf-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 07 Apr 2021 17:16:44 +0000
+ Wed, 07 Apr 2021 17:16:55 +0000
 Received: from d06av22.portsmouth.uk.ibm.com (d06av22.portsmouth.uk.ibm.com
  [9.149.105.58])
- by b06cxnps4076.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 137HGgbi28508550
+ by b06cxnps3075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 137HGrbi42664200
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 7 Apr 2021 17:16:42 GMT
+ Wed, 7 Apr 2021 17:16:53 GMT
 Received: from d06av22.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id B5ABF4C044;
- Wed,  7 Apr 2021 17:16:42 +0000 (GMT)
+ by IMSVA (Postfix) with ESMTP id 164A74C044;
+ Wed,  7 Apr 2021 17:16:53 +0000 (GMT)
 Received: from d06av22.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 6DCCC4C040;
- Wed,  7 Apr 2021 17:16:42 +0000 (GMT)
+ by IMSVA (Postfix) with ESMTP id CD4994C04E;
+ Wed,  7 Apr 2021 17:16:52 +0000 (GMT)
 Received: from smtp.tlslab.ibm.com (unknown [9.101.4.1])
  by d06av22.portsmouth.uk.ibm.com (Postfix) with SMTP;
- Wed,  7 Apr 2021 17:16:42 +0000 (GMT)
+ Wed,  7 Apr 2021 17:16:52 +0000 (GMT)
 Received: from yukon.ibmuc.com (unknown [9.171.70.229])
- by smtp.tlslab.ibm.com (Postfix) with ESMTP id C6F372200C7;
- Wed,  7 Apr 2021 19:16:41 +0200 (CEST)
+ by smtp.tlslab.ibm.com (Postfix) with ESMTP id 308B7220190;
+ Wed,  7 Apr 2021 19:16:52 +0200 (CEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH 02/24] aspeed/smc: Remove unused "sdram-base" property
-Date: Wed,  7 Apr 2021 19:16:15 +0200
-Message-Id: <20210407171637.777743-3-clg@kaod.org>
+Subject: [PATCH 17/24] aspeed: Remove swift-bmc machine
+Date: Wed,  7 Apr 2021 19:16:30 +0200
+Message-Id: <20210407171637.777743-18-clg@kaod.org>
 X-Mailer: git-send-email 2.26.3
 In-Reply-To: <20210407171637.777743-1-clg@kaod.org>
 References: <20210407171637.777743-1-clg@kaod.org>
@@ -93,16 +93,16 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: uPoGLS58xLUBTT_L_KvyfCvbdaWD9RVn
-X-Proofpoint-ORIG-GUID: uPoGLS58xLUBTT_L_KvyfCvbdaWD9RVn
+X-Proofpoint-ORIG-GUID: M9oQgShtZh8qby_NctxNli5o97ud9wvN
+X-Proofpoint-GUID: M9oQgShtZh8qby_NctxNli5o97ud9wvN
 X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.761
  definitions=2021-04-07_09:2021-04-07,
  2021-04-07 signatures=0
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- malwarescore=0 suspectscore=0
- spamscore=0 phishscore=0 adultscore=0 mlxscore=0 clxscore=1034
- impostorscore=0 priorityscore=1501 mlxlogscore=930 bulkscore=0
- lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ adultscore=0
+ lowpriorityscore=0 suspectscore=0 phishscore=0 priorityscore=1501
+ bulkscore=0 malwarescore=0 clxscore=1034 impostorscore=0 mlxlogscore=860
+ mlxscore=0 spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
  engine=8.12.0-2104060000 definitions=main-2104070116
 Received-SPF: softfail client-ip=148.163.158.5; envelope-from=clg@kaod.org;
  helo=mx0a-001b2d01.pphosted.com
@@ -113,97 +113,154 @@ X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
  RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Adriana Kobylak <anoo@us.ibm.com>,
  qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8geXpzlCgclo
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: y+JFDw7UCYVJ
 
-Cc: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+The SWIFT machine never came out of the lab and we already have enough
+AST2500 based OpenPower machines. Remove it.
+
+Cc: Adriana Kobylak <anoo@us.ibm.com>
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
- include/hw/ssi/aspeed_smc.h | 3 ---
- hw/arm/aspeed_ast2600.c     | 4 ----
- hw/arm/aspeed_soc.c         | 4 ----
- hw/ssi/aspeed_smc.c         | 1 -
- 4 files changed, 12 deletions(-)
+ hw/arm/aspeed.c | 61 -------------------------------------------------
+ 1 file changed, 61 deletions(-)
 
-diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
-index 16c03fe64f3b..ccd71d9b534e 100644
---- a/include/hw/ssi/aspeed_smc.h
-+++ b/include/hw/ssi/aspeed_smc.h
-@@ -103,9 +103,6 @@ struct AspeedSMCState {
-     uint8_t r_timings;
-     uint8_t conf_enable_w0;
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 1cf5a15c8098..97dcca74feb4 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -110,17 +110,6 @@ struct AspeedMachineState {
+         SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       =
+\
+         SCU_AST2500_HW_STRAP_RESERVED1)
 =20
--    /* for DMA support */
--    uint64_t sdram_base;
+-/* Swift hardware value: 0xF11AD206 */
+-#define SWIFT_BMC_HW_STRAP1 (                                           =
+\
+-        AST2500_HW_STRAP1_DEFAULTS |                                    =
+\
+-        SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE |                     =
+\
+-        SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE |                        =
+\
+-        SCU_AST2500_HW_STRAP_UART_DEBUG |                               =
+\
+-        SCU_AST2500_HW_STRAP_DDR4_ENABLE |                              =
+\
+-        SCU_H_PLL_BYPASS_EN |                                           =
+\
+-        SCU_AST2500_HW_STRAP_ACPI_ENABLE |                              =
+\
+-        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER))
 -
-     AddressSpace flash_as;
-     MemoryRegion *dram_mr;
-     AddressSpace dram_as;
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index bc87e754a3cc..2a1255b6a042 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -344,10 +344,6 @@ static void aspeed_soc_ast2600_realize(DeviceState *=
-dev, Error **errp)
-     /* FMC, The number of CS is set at the board level */
-     object_property_set_link(OBJECT(&s->fmc), "dram", OBJECT(s->dram_mr)=
+ #define G220A_BMC_HW_STRAP1 (                                      \
+         SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE |                     =
+\
+         SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE |                        =
+\
+@@ -465,35 +454,6 @@ static void romulus_bmc_i2c_init(AspeedMachineState =
+*bmc)
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), "ds1338",=
+ 0x32);
+ }
+=20
+-static void swift_bmc_i2c_init(AspeedMachineState *bmc)
+-{
+-    AspeedSoCState *soc =3D &bmc->soc;
+-
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 3), "pca9552",=
+ 0x60);
+-
+-    /* The swift board expects a TMP275 but a TMP105 is compatible */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), "tmp105", =
+0x48);
+-    /* The swift board expects a pca9551 but a pca9552 is compatible */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), "pca9552",=
+ 0x60);
+-
+-    /* The swift board expects an Epson RX8900 RTC but a ds1338 is compa=
+tible */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), "ds1338", =
+0x32);
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), "pca9552",=
+ 0x60);
+-
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "tmp423", =
+0x4c);
+-    /* The swift board expects a pca9539 but a pca9552 is compatible */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "pca9552",=
+ 0x74);
+-
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 10), "tmp423",=
+ 0x4c);
+-    /* The swift board expects a pca9539 but a pca9552 is compatible */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 10), "pca9552"=
 ,
-                              &error_abort);
--    if (!object_property_set_int(OBJECT(&s->fmc), "sdram-base",
--                                 sc->memmap[ASPEED_DEV_SDRAM], errp)) {
--        return;
--    }
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->fmc), errp)) {
-         return;
-     }
-diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-index 057d053c8478..817f3ba63dfd 100644
---- a/hw/arm/aspeed_soc.c
-+++ b/hw/arm/aspeed_soc.c
-@@ -301,10 +301,6 @@ static void aspeed_soc_realize(DeviceState *dev, Err=
-or **errp)
-     /* FMC, The number of CS is set at the board level */
-     object_property_set_link(OBJECT(&s->fmc), "dram", OBJECT(s->dram_mr)=
-,
-                              &error_abort);
--    if (!object_property_set_int(OBJECT(&s->fmc), "sdram-base",
--                                 sc->memmap[ASPEED_DEV_SDRAM], errp)) {
--        return;
--    }
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->fmc), errp)) {
-         return;
-     }
-diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-index 6f72fb028e59..884e08aca4e2 100644
---- a/hw/ssi/aspeed_smc.c
-+++ b/hw/ssi/aspeed_smc.c
-@@ -1431,7 +1431,6 @@ static const VMStateDescription vmstate_aspeed_smc =
-=3D {
- static Property aspeed_smc_properties[] =3D {
-     DEFINE_PROP_UINT32("num-cs", AspeedSMCState, num_cs, 1),
-     DEFINE_PROP_BOOL("inject-failure", AspeedSMCState, inject_failure, f=
-alse),
--    DEFINE_PROP_UINT64("sdram-base", AspeedSMCState, sdram_base, 0),
-     DEFINE_PROP_LINK("dram", AspeedSMCState, dram_mr,
-                      TYPE_MEMORY_REGION, MemoryRegion *),
-     DEFINE_PROP_END_OF_LIST(),
+-                     0x74);
+-
+-    /* The swift board expects a TMP275 but a TMP105 is compatible */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 12), "tmp105",=
+ 0x48);
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 12), "tmp105",=
+ 0x4a);
+-}
+-
+ static void sonorapass_bmc_i2c_init(AspeedMachineState *bmc)
+ {
+     AspeedSoCState *soc =3D &bmc->soc;
+@@ -796,23 +756,6 @@ static void aspeed_machine_sonorapass_class_init(Obj=
+ectClass *oc, void *data)
+         aspeed_soc_num_cpus(amc->soc_name);
+ };
+=20
+-static void aspeed_machine_swift_class_init(ObjectClass *oc, void *data)
+-{
+-    MachineClass *mc =3D MACHINE_CLASS(oc);
+-    AspeedMachineClass *amc =3D ASPEED_MACHINE_CLASS(oc);
+-
+-    mc->desc       =3D "OpenPOWER Swift BMC (ARM1176)";
+-    amc->soc_name  =3D "ast2500-a1";
+-    amc->hw_strap1 =3D SWIFT_BMC_HW_STRAP1;
+-    amc->fmc_model =3D "mx66l1g45g";
+-    amc->spi_model =3D "mx66l1g45g";
+-    amc->num_cs    =3D 2;
+-    amc->i2c_init  =3D swift_bmc_i2c_init;
+-    mc->default_ram_size       =3D 512 * MiB;
+-    mc->default_cpus =3D mc->min_cpus =3D mc->max_cpus =3D
+-        aspeed_soc_num_cpus(amc->soc_name);
+-};
+-
+ static void aspeed_machine_witherspoon_class_init(ObjectClass *oc, void =
+*data)
+ {
+     MachineClass *mc =3D MACHINE_CLASS(oc);
+@@ -903,10 +846,6 @@ static const TypeInfo aspeed_machine_types[] =3D {
+         .name          =3D MACHINE_TYPE_NAME("romulus-bmc"),
+         .parent        =3D TYPE_ASPEED_MACHINE,
+         .class_init    =3D aspeed_machine_romulus_class_init,
+-    }, {
+-        .name          =3D MACHINE_TYPE_NAME("swift-bmc"),
+-        .parent        =3D TYPE_ASPEED_MACHINE,
+-        .class_init    =3D aspeed_machine_swift_class_init,
+     }, {
+         .name          =3D MACHINE_TYPE_NAME("sonorapass-bmc"),
+         .parent        =3D TYPE_ASPEED_MACHINE,
 --=20
 2.26.3
 

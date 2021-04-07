@@ -1,87 +1,91 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp664323lfr;
-        Wed, 7 Apr 2021 10:33:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwCRSAFc0tK/qMTMOGTqpgwvlGXriKtjW2/8cLRtz6DNH7uDVpjYly5fXUATtYYLVhJPhFr
-X-Received: by 2002:a05:6638:22a:: with SMTP id f10mr4754940jaq.38.1617816791337;
-        Wed, 07 Apr 2021 10:33:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617816791; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp665788lfr;
+        Wed, 7 Apr 2021 10:34:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwc46MkiYXQmolQ0DyWeGt0y6g9LbsNhwOI9QDBfy/AvL7Zrbzmhse31+B2CYB2zIzBtm6j
+X-Received: by 2002:a5d:88c1:: with SMTP id i1mr3325066iol.115.1617816893258;
+        Wed, 07 Apr 2021 10:34:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617816893; cv=none;
         d=google.com; s=arc-20160816;
-        b=OnaJ2LIlFe0dGXlxLFv4TE1oxOy1meFABKleyuOoJNTm41Hk4SFDhWzl9X1m5uI32w
-         UBb46/kB0Mb2RxVE6U68AR9XAjSzb8BQOdyWR2N9YVEIiutbeyc7NyrJ5Vn7YZoTbLDQ
-         RvHdK8I5oGjpFJXNQRx55jaouRAOtZSxb7P0WBRabkADLycgr+Gh/BPIvJMEsS6u4nB6
-         C3XlbMT6TJglVyFg9JasUjqa2u/q0/rqTfqBD5wI8qrtZ0lONcpOimE42W3rK1oClwPm
-         +DficYUkLD4gSzKHH/TtCmsrbIS673FIcqp7ORj0pEFCnWHzgRbukgKxUZUtEzCQNYRQ
-         5x4Q==
+        b=kccw78JpBkH8NpBO4+w0kBFNUPD3lmEWAaxNrpyAgaTPn67+gohYH88K/n63prwNyk
+         vG5TKWpJnw2a73eqcUd2r7PSO7B6XcnTG1E9yUO7M0vBs1X5KSvOGmx25qAElblLDS8A
+         1wz7vaZo2bcCN2xuqTE+Ycab4xS361lv0M+DPHAK1+TYjQ23SWaiNChLCYSO4c3tKQkO
+         MkIlfkJEBuWBqAVkojxfwhEiNhb8DW3lE8zR70o4sA09PQ2P4tZPBVKVEI63SirqzgK1
+         TBW+/69iIftC/KHZeh/LJk6I8P6v833cUc0o2RulqYDStNjcN7QjRald/hixsUv35ZlQ
+         FINw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=EfweNHrv+uYEcGOkuwyQ1oen9bWA35Dl6a/q35sCljU=;
-        b=b97OKy2+Lqjtm5HKGU/a7h11wFeCcbXms8b9etpZZJaEaFspNY8T9UwFP8IBlsnoZO
-         bkSEz0TZp6xtxEDrI6TIP5QisELGd5uu+DJU3Ttxam+moSgYUTVlm4aoBqBKDr22DAGx
-         +0UkjL+Uhm6ZSxLZSy7sQ/ABf+tYVByBvP/1BRTQ62TfJYblzS8nBMOMdcNkvJEBvqMM
-         zFPwRRQrkEdwnR+Wbm0Xt40gKp9d0MLeFGZld+aAXGasLhXN4Bbc9wmBz3vCluV+e5vp
-         dI9Nkf8cin4tzFtAmAgobQE65cljHOCWFk/sGtcTc3W66M1D+9tQMYCcSZ0vQY4XxaB4
-         ll1g==
+        bh=oXVl0sThgZ0UMB1UWtH8Fy84Jke2WxOlgTKtxl3E1QA=;
+        b=OX9ik48QyaYCs5fgiqfuHZosDfs1RW++Y1U4yMGjIMWheP9a5u91M6lcOQKVr6sjix
+         HKPcJlywwXw3shjpyzhzGmbYhk7/+1l9n16oqMLz4xFh5QuucsTBYhMvApmy4QbUZ0a4
+         dbCBkp4Zj/WNMpg2adP8cV+Hgszh7g3VBHl0bR1wbtHAr+IS0CjyA1SVe9jYHiKepSyY
+         sBC6J06PmxF6QFzCPMz0E3V0BXQHOpU5N4+PrljOKpYDZkDtst8/aVjZwRbFlTnkKIJv
+         UdJo5ZPzrKzCczYqVNq9pDKE4Twxe9F0OuZctAvSUjw+1aTScYhlrC6set0GoEUtAZsa
+         FQGQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q1si20291051ilv.149.2021.04.07.10.33.10
+        by mx.google.com with ESMTPS id j17si3010146ilo.38.2021.04.07.10.34.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Apr 2021 10:33:11 -0700 (PDT)
+        Wed, 07 Apr 2021 10:34:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41326 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47134 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lUC3C-0002so-B6
-	for alex.bennee@linaro.org; Wed, 07 Apr 2021 13:33:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39188)
+	id 1lUC4q-0005Et-GA
+	for alex.bennee@linaro.org; Wed, 07 Apr 2021 13:34:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39068)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1lUBo3-0008VF-UM; Wed, 07 Apr 2021 13:17:31 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:57926)
+ id 1lUBnl-0007ee-BA; Wed, 07 Apr 2021 13:17:13 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:61390
+ helo=mx0a-001b2d01.pphosted.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1lUBo1-0006oI-Ns; Wed, 07 Apr 2021 13:17:31 -0400
-Received: from pps.filterd (m0098396.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 137H30nB084135; Wed, 7 Apr 2021 13:16:57 -0400
-Received: from ppma05fra.de.ibm.com (6c.4a.5195.ip4.static.sl-reverse.com
- [149.81.74.108])
- by mx0a-001b2d01.pphosted.com with ESMTP id 37rw7jr9qf-1
+ id 1lUBng-0006o3-V7; Wed, 07 Apr 2021 13:17:13 -0400
+Received: from pps.filterd (m0098416.ppops.net [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
+ 137H3R0j025005; Wed, 7 Apr 2021 13:16:58 -0400
+Received: from ppma03ams.nl.ibm.com (62.31.33a9.ip4.static.sl-reverse.com
+ [169.51.49.98])
+ by mx0b-001b2d01.pphosted.com with ESMTP id 37rwf0pvmg-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 07 Apr 2021 13:16:57 -0400
-Received: from pps.filterd (ppma05fra.de.ibm.com [127.0.0.1])
- by ppma05fra.de.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 137HEWUp014041;
- Wed, 7 Apr 2021 17:16:55 GMT
-Received: from b06avi18626390.portsmouth.uk.ibm.com
- (b06avi18626390.portsmouth.uk.ibm.com [9.149.26.192])
- by ppma05fra.de.ibm.com with ESMTP id 37rvbvgg0j-1
+ Wed, 07 Apr 2021 13:16:58 -0400
+Received: from pps.filterd (ppma03ams.nl.ibm.com [127.0.0.1])
+ by ppma03ams.nl.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 137HE6pi031313;
+ Wed, 7 Apr 2021 17:16:57 GMT
+Received: from b06cxnps3074.portsmouth.uk.ibm.com
+ (d06relay09.portsmouth.uk.ibm.com [9.149.109.194])
+ by ppma03ams.nl.ibm.com with ESMTP id 37rvbqgwc6-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 07 Apr 2021 17:16:54 +0000
-Received: from d06av21.portsmouth.uk.ibm.com (d06av21.portsmouth.uk.ibm.com
- [9.149.105.232])
- by b06avi18626390.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP
- id 137HGV9O33358164
+ Wed, 07 Apr 2021 17:16:57 +0000
+Received: from b06wcsmtp001.portsmouth.uk.ibm.com
+ (b06wcsmtp001.portsmouth.uk.ibm.com [9.149.105.160])
+ by b06cxnps3074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 137HGscY41222524
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 7 Apr 2021 17:16:31 GMT
-Received: from d06av21.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 6B9FA5204F;
- Wed,  7 Apr 2021 17:16:52 +0000 (GMT)
+ Wed, 7 Apr 2021 17:16:54 GMT
+Received: from b06wcsmtp001.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id C8529A4054;
+ Wed,  7 Apr 2021 17:16:54 +0000 (GMT)
+Received: from b06wcsmtp001.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 900AFA405F;
+ Wed,  7 Apr 2021 17:16:54 +0000 (GMT)
 Received: from smtp.tlslab.ibm.com (unknown [9.101.4.1])
- by d06av21.portsmouth.uk.ibm.com (Postfix) with SMTP id 34E9D5204E;
- Wed,  7 Apr 2021 17:16:52 +0000 (GMT)
+ by b06wcsmtp001.portsmouth.uk.ibm.com (Postfix) with SMTP;
+ Wed,  7 Apr 2021 17:16:54 +0000 (GMT)
 Received: from yukon.ibmuc.com (unknown [9.171.70.229])
- by smtp.tlslab.ibm.com (Postfix) with ESMTP id A440E2200C7;
- Wed,  7 Apr 2021 19:16:51 +0200 (CEST)
+ by smtp.tlslab.ibm.com (Postfix) with ESMTP id F3D5E2200C7;
+ Wed,  7 Apr 2021 19:16:53 +0200 (CEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH 16/24] tests/qtest: Rename m25p80 test in aspeed_smc test
-Date: Wed,  7 Apr 2021 19:16:29 +0200
-Message-Id: <20210407171637.777743-17-clg@kaod.org>
+Subject: [PATCH 20/24] aspeed: Emulate the AST2600A3
+Date: Wed,  7 Apr 2021 19:16:33 +0200
+Message-Id: <20210407171637.777743-21-clg@kaod.org>
 X-Mailer: git-send-email 2.26.3
 In-Reply-To: <20210407171637.777743-1-clg@kaod.org>
 References: <20210407171637.777743-1-clg@kaod.org>
@@ -89,18 +93,18 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: RgnahnRgqh3M5ezIlAYgzXs60gII4e6o
-X-Proofpoint-ORIG-GUID: RgnahnRgqh3M5ezIlAYgzXs60gII4e6o
+X-Proofpoint-GUID: Tao7OgoFhxDPxuG5D2qNIhqwuLC5vgVh
+X-Proofpoint-ORIG-GUID: Tao7OgoFhxDPxuG5D2qNIhqwuLC5vgVh
 X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.761
  definitions=2021-04-07_09:2021-04-07,
  2021-04-07 signatures=0
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- clxscore=1034 mlxscore=0
- mlxlogscore=685 malwarescore=0 lowpriorityscore=0 suspectscore=0
- phishscore=0 adultscore=0 priorityscore=1501 spamscore=0 impostorscore=0
- bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ clxscore=1034 bulkscore=0
+ malwarescore=0 impostorscore=0 phishscore=0 suspectscore=0
+ lowpriorityscore=0 priorityscore=1501 mlxlogscore=999 mlxscore=0
+ spamscore=0 adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
  engine=8.12.0-2104060000 definitions=main-2104070116
-Received-SPF: softfail client-ip=148.163.156.1; envelope-from=clg@kaod.org;
+Received-SPF: softfail client-ip=148.163.158.5; envelope-from=clg@kaod.org;
  helo=mx0a-001b2d01.pphosted.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -125,69 +129,139 @@ Cc: Andrew Jeffery <andrew@aj.id.au>,
  Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jHWJ6fmvEovd
+X-TUID: shfYQSvy5L91
 
-The m25p80 test depends on the Aspeed SMC controller to test our
-SPI-NOR flash support. Reflect this dependency by changing the name.
+From: Joel Stanley <joel@jms.id.au>
 
+This is the latest revision of the ASPEED 2600 SoC.
+
+Reset values are taken from v8 of the datasheet.
+
+Signed-off-by: Joel Stanley <joel@jms.id.au>
+Message-Id: <20210304124316.164742-1-joel@jms.id.au>
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
- tests/qtest/{m25p80-test.c =3D> aspeed_smc-test.c} | 12 ++++++------
- tests/qtest/meson.build                          |  4 ++--
- 2 files changed, 8 insertions(+), 8 deletions(-)
- rename tests/qtest/{m25p80-test.c =3D> aspeed_smc-test.c} (96%)
+ include/hw/misc/aspeed_scu.h |  2 ++
+ hw/arm/aspeed_ast2600.c      |  2 +-
+ hw/misc/aspeed_scu.c         | 32 +++++++++++++++++++++++++-------
+ 3 files changed, 28 insertions(+), 8 deletions(-)
 
-diff --git a/tests/qtest/m25p80-test.c b/tests/qtest/aspeed_smc-test.c
-similarity index 96%
-rename from tests/qtest/m25p80-test.c
-rename to tests/qtest/aspeed_smc-test.c
-index f860cef5f08f..87b40a0ef186 100644
---- a/tests/qtest/m25p80-test.c
-+++ b/tests/qtest/aspeed_smc-test.c
-@@ -367,12 +367,12 @@ int main(int argc, char **argv)
-                                "-drive file=3D%s,format=3Draw,if=3Dmtd",
-                                tmp_path);
+diff --git a/include/hw/misc/aspeed_scu.h b/include/hw/misc/aspeed_scu.h
+index d49bfb02fbdb..c14aff2bcbb5 100644
+--- a/include/hw/misc/aspeed_scu.h
++++ b/include/hw/misc/aspeed_scu.h
+@@ -43,6 +43,8 @@ struct AspeedSCUState {
+ #define AST2500_A1_SILICON_REV   0x04010303U
+ #define AST2600_A0_SILICON_REV   0x05000303U
+ #define AST2600_A1_SILICON_REV   0x05010303U
++#define AST2600_A2_SILICON_REV   0x05020303U
++#define AST2600_A3_SILICON_REV   0x05030303U
 =20
--    qtest_add_func("/m25p80/read_jedec", test_read_jedec);
--    qtest_add_func("/m25p80/erase_sector", test_erase_sector);
--    qtest_add_func("/m25p80/erase_all",  test_erase_all);
--    qtest_add_func("/m25p80/write_page", test_write_page);
--    qtest_add_func("/m25p80/read_page_mem", test_read_page_mem);
--    qtest_add_func("/m25p80/write_page_mem", test_write_page_mem);
-+    qtest_add_func("/ast2400/smc/read_jedec", test_read_jedec);
-+    qtest_add_func("/ast2400/smc/erase_sector", test_erase_sector);
-+    qtest_add_func("/ast2400/smc/erase_all",  test_erase_all);
-+    qtest_add_func("/ast2400/smc/write_page", test_write_page);
-+    qtest_add_func("/ast2400/smc/read_page_mem", test_read_page_mem);
-+    qtest_add_func("/ast2400/smc/write_page_mem", test_write_page_mem);
+ #define ASPEED_IS_AST2500(si_rev)     ((((si_rev) >> 24) & 0xff) =3D=3D =
+0x04)
 =20
-     ret =3D g_test_run();
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index bb650d31f5ad..c30d0f320c2a 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -533,7 +533,7 @@ static void aspeed_soc_ast2600_class_init(ObjectClass=
+ *oc, void *data)
 =20
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 84b3219c15c6..269a30b217d7 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -164,7 +164,8 @@ qtests_npcm7xx =3D \
-    'npcm7xx_watchdog_timer-test'] + \
-    (slirp.found() ? ['npcm7xx_emc-test'] : [])
- qtests_aspeed =3D \
--  ['aspeed_hace-test']
-+  ['aspeed_hace-test',
-+   'aspeed_smc-test']
- qtests_arm =3D \
-   (config_all_devices.has_key('CONFIG_MPS2') ? ['sse-timer-test'] : []) =
-+ \
-   (config_all_devices.has_key('CONFIG_CMSDK_APB_DUALTIMER') ? ['cmsdk-ap=
-b-dualtimer-test'] : []) + \
-@@ -175,7 +176,6 @@ qtests_arm =3D \
-   (config_all_devices.has_key('CONFIG_NPCM7XX') ? qtests_npcm7xx : []) +=
- \
-   ['arm-cpu-features',
-    'microbit-test',
--   'm25p80-test',
-    'test-arm-mptimer',
-    'boot-serial-test',
-    'hexloader-test']
+     sc->name         =3D "ast2600-a1";
+     sc->cpu_type     =3D ARM_CPU_TYPE_NAME("cortex-a7");
+-    sc->silicon_rev  =3D AST2600_A1_SILICON_REV;
++    sc->silicon_rev  =3D AST2600_A3_SILICON_REV;
+     sc->sram_size    =3D 0x16400;
+     sc->spis_num     =3D 2;
+     sc->ehcis_num    =3D 2;
+diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
+index 40a38ebd8549..3515d6ff6bbf 100644
+--- a/hw/misc/aspeed_scu.c
++++ b/hw/misc/aspeed_scu.c
+@@ -104,11 +104,19 @@
+ #define AST2600_SDRAM_HANDSHAKE   TO_REG(0x100)
+ #define AST2600_HPLL_PARAM        TO_REG(0x200)
+ #define AST2600_HPLL_EXT          TO_REG(0x204)
++#define AST2600_APLL_PARAM        TO_REG(0x210)
++#define AST2600_APLL_EXT          TO_REG(0x214)
++#define AST2600_MPLL_PARAM        TO_REG(0x220)
+ #define AST2600_MPLL_EXT          TO_REG(0x224)
++#define AST2600_EPLL_PARAM        TO_REG(0x240)
+ #define AST2600_EPLL_EXT          TO_REG(0x244)
++#define AST2600_DPLL_PARAM        TO_REG(0x260)
++#define AST2600_DPLL_EXT          TO_REG(0x264)
+ #define AST2600_CLK_SEL           TO_REG(0x300)
+ #define AST2600_CLK_SEL2          TO_REG(0x304)
+-#define AST2600_CLK_SEL3          TO_REG(0x310)
++#define AST2600_CLK_SEL3          TO_REG(0x308)
++#define AST2600_CLK_SEL4          TO_REG(0x310)
++#define AST2600_CLK_SEL5          TO_REG(0x314)
+ #define AST2600_HW_STRAP1         TO_REG(0x500)
+ #define AST2600_HW_STRAP1_CLR     TO_REG(0x504)
+ #define AST2600_HW_STRAP1_PROT    TO_REG(0x508)
+@@ -433,6 +441,8 @@ static uint32_t aspeed_silicon_revs[] =3D {
+     AST2500_A1_SILICON_REV,
+     AST2600_A0_SILICON_REV,
+     AST2600_A1_SILICON_REV,
++    AST2600_A2_SILICON_REV,
++    AST2600_A3_SILICON_REV,
+ };
+=20
+ bool is_supported_silicon_rev(uint32_t silicon_rev)
+@@ -651,16 +661,24 @@ static const MemoryRegionOps aspeed_ast2600_scu_ops=
+ =3D {
+     .valid.unaligned =3D false,
+ };
+=20
+-static const uint32_t ast2600_a1_resets[ASPEED_AST2600_SCU_NR_REGS] =3D =
+{
++static const uint32_t ast2600_a3_resets[ASPEED_AST2600_SCU_NR_REGS] =3D =
+{
+     [AST2600_SYS_RST_CTRL]      =3D 0xF7C3FED8,
+-    [AST2600_SYS_RST_CTRL2]     =3D 0xFFFFFFFC,
++    [AST2600_SYS_RST_CTRL2]     =3D 0x0DFFFFFC,
+     [AST2600_CLK_STOP_CTRL]     =3D 0xFFFF7F8A,
+     [AST2600_CLK_STOP_CTRL2]    =3D 0xFFF0FFF0,
+     [AST2600_SDRAM_HANDSHAKE]   =3D 0x00000000,
+-    [AST2600_HPLL_PARAM]        =3D 0x1000405F,
++    [AST2600_HPLL_PARAM]        =3D 0x1000408F,
++    [AST2600_APLL_PARAM]        =3D 0x1000405F,
++    [AST2600_MPLL_PARAM]        =3D 0x1008405F,
++    [AST2600_EPLL_PARAM]        =3D 0x1004077F,
++    [AST2600_DPLL_PARAM]        =3D 0x1078405F,
++    [AST2600_CLK_SEL]           =3D 0xF3940000,
++    [AST2600_CLK_SEL2]          =3D 0x00700000,
++    [AST2600_CLK_SEL3]          =3D 0x00000000,
++    [AST2600_CLK_SEL4]          =3D 0xF3F40000,
++    [AST2600_CLK_SEL5]          =3D 0x30000000,
+     [AST2600_CHIP_ID0]          =3D 0x1234ABCD,
+     [AST2600_CHIP_ID1]          =3D 0x88884444,
+-
+ };
+=20
+ static void aspeed_ast2600_scu_reset(DeviceState *dev)
+@@ -675,7 +693,7 @@ static void aspeed_ast2600_scu_reset(DeviceState *dev=
+)
+      * of actual revision. QEMU and Linux only support A1 onwards so thi=
+s is
+      * sufficient.
+      */
+-    s->regs[AST2600_SILICON_REV] =3D AST2600_A1_SILICON_REV;
++    s->regs[AST2600_SILICON_REV] =3D AST2600_A3_SILICON_REV;
+     s->regs[AST2600_SILICON_REV2] =3D s->silicon_rev;
+     s->regs[AST2600_HW_STRAP1] =3D s->hw_strap1;
+     s->regs[AST2600_HW_STRAP2] =3D s->hw_strap2;
+@@ -689,7 +707,7 @@ static void aspeed_2600_scu_class_init(ObjectClass *k=
+lass, void *data)
+=20
+     dc->desc =3D "ASPEED 2600 System Control Unit";
+     dc->reset =3D aspeed_ast2600_scu_reset;
+-    asc->resets =3D ast2600_a1_resets;
++    asc->resets =3D ast2600_a3_resets;
+     asc->calc_hpll =3D aspeed_2500_scu_calc_hpll; /* No change since AST=
+2500 */
+     asc->apb_divider =3D 4;
+     asc->nr_regs =3D ASPEED_AST2600_SCU_NR_REGS;
 --=20
 2.26.3
 

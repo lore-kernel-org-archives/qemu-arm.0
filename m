@@ -1,39 +1,160 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id v7sm9296931wme.47.2021.04.07.08.34.56
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 07 Apr 2021 08:34:56 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id A94DB1FF7E;
-	Wed,  7 Apr 2021 16:34:55 +0100 (BST)
-References: <20210406174031.64299-1-richard.henderson@linaro.org>
- <20210406174031.64299-3-richard.henderson@linaro.org>
-User-agent: mu4e 1.5.11; emacs 28.0.50
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH v4 02/12] target/arm: Check PAGE_WRITE_ORG for MTE
- writeability
-Date: Wed, 07 Apr 2021 16:34:49 +0100
-In-reply-to: <20210406174031.64299-3-richard.henderson@linaro.org>
-Message-ID: <87o8equmzk.fsf@linaro.org>
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp676738lfr;
+        Wed, 7 Apr 2021 10:48:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxrOHLzvJlz5ONnXk9rLqSYtip436O+PYeXlUSZHmZ+0jAYcuyJq35UyOT+7wXbEbxFPjFz
+X-Received: by 2002:a05:6638:2605:: with SMTP id m5mr335246jat.97.1617817711213;
+        Wed, 07 Apr 2021 10:48:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617817711; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Jw9N6+ERNjkwUK6MF4VZgfQHn+0xRODSDaTu1Oeruy8ZWH8Q3ydvvUadKj+oN7BaEo
+         3Nf1wl8LfJmzwBnpX43TRGYWosQ55nq6kfIqqPvrTm67zIXdCL/JgzbQkCUWzzgMpG3D
+         J8hatQUwjQw3DXT1CEOCzw6C5dYr4UGdd2j0CjQ7FobwuqBRaRCY6R34Yy/+b64WHdeC
+         EM+lgU/1f4qFuVAqVAlroFwSszMCkhbs/G2GhLlGAKLiyaQZD/IdFAY0xhHQ2exnrXsp
+         DDgz2hBdJFI9hXZ9Vs1GEED+PBrnOQLH9a56qXxKDjGc+xD2P5ZCaal+qV1QdglKJyWL
+         Kcdg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=zF8MahqpSHuNCU/Vb40PI3wP1SoF/nqZHW/Z5QW+ay4=;
+        b=0AomaTkLbmN+YGASU6xKgi42zRn65D61v5wBYggJv1nOQ+aXPYzaDR3JNxOTBe2u7O
+         s7qJZ282ykSGjRKccLlMg6iP3RwKY5jPKP1XOiTs3Xe9CSXTxjyZ1biHk4aHMg6dHRsp
+         WfBXS+VBNxGl4X3b7zOW8CfkxipcA7IPFb8P8StH0sGn8uRns/0z/QG1hPD6eJCK5Yxs
+         bdlmVqxPLvhv9IQvVET+94JPIuxv/DD96FD5X90CCgSJnyhsir2qgvpxX61mlEMiJo4g
+         j6csv08+pz0EVQ/HAm4u+J0U1HSC9BVeJgkRDMtLTjOacYUyqCXGaAwSw23f4Kr6D61F
+         96Zg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=hPCn1I+5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id v20si21666980jal.8.2021.04.07.10.48.31
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 07 Apr 2021 10:48:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=hPCn1I+5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:47574 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lUCI2-0000PB-G2
+	for alex.bennee@linaro.org; Wed, 07 Apr 2021 13:48:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43864)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1lUC8n-0001f7-D9; Wed, 07 Apr 2021 13:38:58 -0400
+Received: from mail-il1-x12b.google.com ([2607:f8b0:4864:20::12b]:35729)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1lUC8j-00072p-Vf; Wed, 07 Apr 2021 13:38:57 -0400
+Received: by mail-il1-x12b.google.com with SMTP id c3so8802503ils.2;
+ Wed, 07 Apr 2021 10:38:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=zF8MahqpSHuNCU/Vb40PI3wP1SoF/nqZHW/Z5QW+ay4=;
+ b=hPCn1I+5Voon1qVOShPBOdRWkCpXgphPkPSC8JjInKHcTU+iIZQvqXe9XCKLSVCGPR
+ 938AZAAZ9rlnS2Tt8nKUCQEh6AfheKd4fctcUgXLjxA4sghe8WgJdeuI2BoyxpTKRfMJ
+ K40rC0BVZ3Lv7AJlSAXsw38M0JnJDkcuOMRyIextJH2UI5gNUsLzr1pv/xlRrTVsTXIx
+ DrhnKOSM9A2FHXT7nPsAR/hEH2KxATPaCl13K/Ymyhx0nE2K9uWeq42Uen+wnvaZthPi
+ 39F0a/vWNiQeqnyyyBBwDpD8aaupHAFsIKFxJliW4V/egRI0RmmMl4Dnn5rPJZyjTQV3
+ Y2qA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=zF8MahqpSHuNCU/Vb40PI3wP1SoF/nqZHW/Z5QW+ay4=;
+ b=Vr08bT10KOh6uYSFNRW0r/WaTIVH11DVlnNQGzdntciCF2/9eR3/mJDrdqfB0mB20D
+ JCQSI4k/lS2k8vr9B0WQmWkUdXgftZom68uMDTcsx5Z3mxH7btWfUUiOINMLF1ekVA95
+ GMj/DVC1N4XTcbLxB+wuT3XAyxgnPi9+ABA/XgMzStMA50m4srLjDTOmNDdXpABIQb00
+ GkWqwQzC7GGFaO7i8zIw/Hpy66HSp9TLuXgscnEkOin5K2MDKjy2Xcl2tSS8zk7rDTZH
+ FmVmqOFDcREV3lpYy5AfLOoLEvc1So/q0dG9fM5ZqX4E78MiKX3srMP1cf9m8/RwDzDN
+ WjFQ==
+X-Gm-Message-State: AOAM533Ra9X+/+Wkh5UcA7eUhRw5CaFxyr0qpuB0DWiLow2MbwqQpdwX
+ lhBDGtMtrzTRZ5bzHVkxJ5owxQqkD2MbNKh1pDHw8dyukDo=
+X-Received: by 2002:a92:d383:: with SMTP id o3mr3493534ilo.131.1617817132522; 
+ Wed, 07 Apr 2021 10:38:52 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+References: <20210407171637.777743-1-clg@kaod.org>
+ <20210407171637.777743-22-clg@kaod.org>
+In-Reply-To: <20210407171637.777743-22-clg@kaod.org>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Wed, 7 Apr 2021 13:36:32 -0400
+Message-ID: <CAKmqyKPjASNO4R7DchGyf+2LE8JuJ06bXi7N8O7FrfEu3VkJMg@mail.gmail.com>
+Subject: Re: [PATCH 21/24] hw/block: m25p80: Add support for mt25qu02g
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: Rqvf8VVN7cFN
+Received-SPF: pass client-ip=2607:f8b0:4864:20::12b;
+ envelope-from=alistair23@gmail.com; helo=mail-il1-x12b.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Francisco Iglesias <francisco.iglesias@xilinx.com>,
+ qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <alistair.francis@wdc.com>,
+ Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: VM1UbEdR11Tj
 
-
-Richard Henderson <richard.henderson@linaro.org> writes:
-
-> We can remove PAGE_WRITE when (internally) marking a page
-> read-only because it contains translated code.
+On Wed, Apr 7, 2021 at 1:35 PM C=C3=A9dric Le Goater <clg@kaod.org> wrote:
 >
-> This can be triggered by tests/tcg/aarch64/bti-2, after
-> having serviced SIGILL trampolines on the stack.
+> The Micron mt25qu02g is a 3V 2Gb serial NOR flash memory supporting
+> dual I/O and quad I/O, 4KB, 32KB, 64KB sector erase. It also supports
+> 4B opcodes.
 >
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> Cc: Alistair Francis <alistair.francis@wdc.com>
+> Cc: Francisco Iglesias <francisco.iglesias@xilinx.com>
+> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+Acked-by: Alistair Francis <alistair.francis@wdc.com>
 
---=20
-Alex Benn=C3=A9e
+Alistair
+
+> ---
+>  hw/block/m25p80.c | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+> index 183d3f44c259..2afb939ae28e 100644
+> --- a/hw/block/m25p80.c
+> +++ b/hw/block/m25p80.c
+> @@ -259,6 +259,7 @@ static const FlashPartInfo known_devices[] =3D {
+>      { INFO_STACKED("n25q00a",   0x20bb21, 0x1000, 64 << 10, 2048, ER_4K,=
+ 4) },
+>      { INFO_STACKED("mt25ql01g", 0x20ba21, 0x1040, 64 << 10, 2048, ER_4K,=
+ 2) },
+>      { INFO_STACKED("mt25qu01g", 0x20bb21, 0x1040, 64 << 10, 2048, ER_4K,=
+ 2) },
+> +    { INFO_STACKED("mt25qu02g", 0x20ba22, 0x1040, 64 << 10, 4096, ER_4K,=
+ 2) },
+>
+>      /* Spansion -- single (large) sector size only, at least
+>       * for the chips listed here (without boot sectors).
+> --
+> 2.26.3
+>
+>

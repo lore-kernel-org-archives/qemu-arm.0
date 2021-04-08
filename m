@@ -1,104 +1,103 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp958297lfr;
-        Wed, 7 Apr 2021 17:21:20 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy+bvmm5ylzvDkM6jjqNIgEgjzFkGpliLNVQXZG2LwxwTEUvdZO5p7uiFo7Au/vY0PWlmgL
-X-Received: by 2002:a9f:35c6:: with SMTP id u6mr4171215uad.42.1617841280473;
-        Wed, 07 Apr 2021 17:21:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617841280; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp958688lfr;
+        Wed, 7 Apr 2021 17:22:00 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwocegeXzCGwctXUySUPWqIdzdy5mE+YS9PhlFfuPA/3MoXK7ipu13zflczzSEm8rcIUaiY
+X-Received: by 2002:ab0:30a3:: with SMTP id b3mr4143574uam.0.1617841320344;
+        Wed, 07 Apr 2021 17:22:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617841320; cv=none;
         d=google.com; s=arc-20160816;
-        b=Jd976uQiALfWSjse5bC0d/8UumAZq1cFU7ADcRd2kTCsPA70RvP+wG9eGTk4afGd7V
-         27fn3nHRIEIUYfvUB35L68bPkBwDm8E/NBCZn0IXs3KI4rF3jqpTTzTLDIimjWd7/2me
-         uCaL8KrXFxp4ty3i3iHHszIcLw+oYSYVYjHttdSs/S5fBDcJJkNSztIzniFp0bEGvKZT
-         tpoLxTBD2wBqNPKoqOTq/1soJLe+rXLLTL+k85IWyQLuKF+/Q2Z8J0amDY/jJ4qmZino
-         Rft59kM6FaWSCk9chTWgdAy7VJCBv3tAvHFv6gR+QzQC6ooGxbiFb0bgEs0c0CZUFgSK
-         aUzQ==
+        b=IpEGjqXsSVnfPgs7zgBQdBKRZZjd9eMVIyvz1PcBqkmve1RPdM2TgqY2Y668K1RDQW
+         WtC2uJREfsGO6ojukE1++GyIMwFNjl2QWAtg1qpM7jOycQekgT9KOkBEVaExBZZexi4L
+         Cklhad2K5emoMj4YhLGBe93zwYFRIExs2gTglZYlQo/fcsrtuYRKpXNrOcHxDrHqZ+F8
+         X+SA8qgm5ivIqBDMrC1/Wn/zEzPtVVwilqlOwjNHDsxAwEZVPXK37Fe1kZ+T26s6yoZa
+         LVWWXeJCWjSuauO/vIAXnMQ9+YKjhWAbQljf4MO1Q6SVGUcY0oCHoGb92ekNo6pnKpt0
+         +OYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=zwZq+t97SgnMqyfF6b0pI8SyhVaDvItExYxxm1cmwZM=;
-        b=DQe4FQ3RAkDaZ3q5Qo9HCySk0WZpAe/A1VxNoL7j71MFFxdKkn4HDf7Sd3L1Pi+vJ4
-         vjecTg0RH7KkoT/lOUPcsFK88oPU1m5BzU5BFwLszE09pTwSKBkSjsOcdKJFXxiPLlVs
-         I5bugt/nqbARHh6cimeDOY/LLn2cscaye7p+AwKZbyM9y4/nVBFVFmD2BidP524K7fsP
-         JbUsxEciSHKKWA7zd9OgnRj+dlkOcKa0esB9mLv5z4ORAo0yB+5f0JwoJYSb+dc7tj9u
-         SSK4Albrva1bBxsk92/uJkciPkgzUlJsvMxgLhZfHZ9oSItHd3nOBu+nVyAGVQBBS8yq
-         xNoA==
+        bh=isLK5SgCVgmU05FBFa6ZughRqyflJB/ni8lS60DTSH8=;
+        b=nUmmCoYIYU6VNY85GQAk8Y9aCjQ6lHKnphBOoiJnh98MqIYsMnqlo5KRgA2j07mshi
+         PfDyw7960Bd2IJ0ba49fBR5kvVIHcgTr5VhTKDapl8bIRKvy+veui+gJNjZ4+9t14lKb
+         ImPRIqoiXh9XFlsEP/4AGfaeyhAyCuITCjevi1MHb6V73ni7i3IeAldcuEuJr+OIkpLc
+         22aNk2xOHWNJnq4VIoOd6AUhoQ1qLn8hSY0kaX6PsepbKEimaqdJPxChKZLHBW91VhA4
+         PBzcVIR/mjmIJK664gNv1g28m157YmtnpWgrwaUEV1sALLTz0wPL6c7jaLO9pKtt8+6p
+         80Iw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=UkXf6WMZ;
+       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b="ErYS/cxl";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s18si4373027vsn.323.2021.04.07.17.21.20
+        by mx.google.com with ESMTPS id v2si1547056vsi.145.2021.04.07.17.21.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Apr 2021 17:21:20 -0700 (PDT)
+        Wed, 07 Apr 2021 17:22:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=UkXf6WMZ;
+       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b="ErYS/cxl";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46298 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47460 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lUIQB-0005Ga-LL
-	for alex.bennee@linaro.org; Wed, 07 Apr 2021 20:21:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46836)
+	id 1lUIQp-0005lV-DH
+	for alex.bennee@linaro.org; Wed, 07 Apr 2021 20:21:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46866)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
- id 1lUIPw-0005Ee-JA
- for qemu-arm@nongnu.org; Wed, 07 Apr 2021 20:21:04 -0400
-Received: from mail-il1-x130.google.com ([2607:f8b0:4864:20::130]:38620)
+ id 1lUIPy-0005HJ-Om
+ for qemu-arm@nongnu.org; Wed, 07 Apr 2021 20:21:06 -0400
+Received: from mail-il1-x129.google.com ([2607:f8b0:4864:20::129]:35441)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
- id 1lUIPm-0002df-Mp
- for qemu-arm@nongnu.org; Wed, 07 Apr 2021 20:21:04 -0400
-Received: by mail-il1-x130.google.com with SMTP id d10so288548ils.5
- for <qemu-arm@nongnu.org>; Wed, 07 Apr 2021 17:20:53 -0700 (PDT)
+ id 1lUIPo-0002e8-Hg
+ for qemu-arm@nongnu.org; Wed, 07 Apr 2021 20:21:06 -0400
+Received: by mail-il1-x129.google.com with SMTP id c3so297612ils.2
+ for <qemu-arm@nongnu.org>; Wed, 07 Apr 2021 17:20:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=zwZq+t97SgnMqyfF6b0pI8SyhVaDvItExYxxm1cmwZM=;
- b=UkXf6WMZ/8gbFj6jsxmC5nVJkvNhIOCWNpXSjU5hNx+g0DkBrSfDFg45hZGRnbkRdi
- unGCBUSWHDgRObSLaMUrYquob1XPTNLVfD5aSaGggbh1qX1RAZO+Mwg/p72EAAn8dP3r
- dPbIOJVV1esvByWBc2iJO5QL+OZ2mgMU0/+UIQikOmhW/6B0ZiIIlEpXJ7U0MKBE6QLT
- +Qlq5j3ohxd/bntYCmOr/Bw7MQfFk3UicZFLcveNj08638tyX/1i1VE4c/KuPyZdrvYe
- u6VNrrzCkFo+HhA2VpPW2QCSHc2+Ag2VaQoum574qrZDgEOeAsdkflLtaA+1/KFXNO61
- fAjw==
+ bh=isLK5SgCVgmU05FBFa6ZughRqyflJB/ni8lS60DTSH8=;
+ b=ErYS/cxlKRt/7iRrNpkSwufmqqtVory0JbMx7VVfIXduiU6oSVQPQVLNASfCYQ6MX0
+ c1nRrXtx6AYfaCluHZTXnOUrBZCMT1QISnSt/ct2KWcJG2Z1pwHkWs35xXPV/g40uWBC
+ NWgsABeRL0EYKY1DcGVWhm13hNEe8Hk9IfxA9NkMBFNh9+Bfe0/0x1AZp7xUINLaqHuh
+ rX0+p/vKuyKPpIvM7Pom3/0c6KHHUQOKMLKaqUIjYsVFtteWLaZIWrQmhhlIGJl4AXyQ
+ vzKxgADMCvcHO6EQ/17IeWimX/7Z1Ixy1nrAvrfpmo9jtN5PDwv1BIQecmDaLlAOKbM2
+ bjww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=zwZq+t97SgnMqyfF6b0pI8SyhVaDvItExYxxm1cmwZM=;
- b=MvJnMOeWTJVp1dqfkP0EvjwwkeFlPQwaph25rc6MEyivRm1kijT2fCB+yloSVeSIqV
- dmbV7tekshM9bYUiVNnGddNsfLt2d+jUIsLpCwpgE2uAdbNuNSneXP+DAsDmK8FNM/p0
- Mq3++SQOzjz6jW+nE7sGVt7s7eq2dW/DrHvGmSQOeQAnIkyWYV37XYn1eR6TME8w64lI
- MLhjwkDlknA+6scm8bP/kXQy6QNSNWLszAEf/uiQWU0OX1/PqL2QjapjS5YGneB0hxGh
- 29XAgJt+9iLzzrXbiMRIi92PyU3lb5+/OLh6FlidcKVoO+m3tB2pKUpwy8OFkjDdP8Sz
- L3Aw==
-X-Gm-Message-State: AOAM533ikEtZLElWCkg+7ceZXUIow/OqBQy3JmWNxsEdroKbKlvlbFqB
- +MAHTbSt7aXDwB7zdCF8NVhKug==
-X-Received: by 2002:a05:6e02:13e2:: with SMTP id
- w2mr4633285ilj.233.1617841252617; 
- Wed, 07 Apr 2021 17:20:52 -0700 (PDT)
+ bh=isLK5SgCVgmU05FBFa6ZughRqyflJB/ni8lS60DTSH8=;
+ b=SrWMj8dgHO7txRNGAwYWFB/RM/AR2uYAvEpbgOxC5CML1ZWjc2VMRBFvn5wafUUHI/
+ 25MlSgnFBFw6YaIF+Ezm2EHplFIsLJU/GOOhzny4fm3bPsog4nr5UuU0DUn0Fkhf1PFn
+ J6yrZdUMa9JGMBwfwlMJapSma1hK+99wdj5xv3mpr6N7ZauijbDfaiKOc8HJGExOTjmA
+ mEKxGcFf6g05zG+Tkuv1Aq3cDDi4QOcXZBQISwWlqchT/YJ1k+hjIgUEyB5sIF8Msy+v
+ zifpBQOjKd/EyyuD46XJGlqQ5hF75+fJDWpbAZ4FQHOoB4o1hKTdBZgBBReZsCnnWhXj
+ 7oJg==
+X-Gm-Message-State: AOAM532LAPjqiXENq4DDgUrPrfBqhLsbmf4ijkArvtf1MQG5tRiisyvD
+ 59AlzriwOrP/drnXZBGFAtH9Ng==
+X-Received: by 2002:a05:6e02:1584:: with SMTP id
+ m4mr4884385ilu.108.1617841254645; 
+ Wed, 07 Apr 2021 17:20:54 -0700 (PDT)
 Received: from cube.nuviainc.com (c-174-52-16-57.hsd1.ut.comcast.net.
  [174.52.16.57])
- by smtp.gmail.com with ESMTPSA id 11sm1818393ilg.53.2021.04.07.17.20.51
+ by smtp.gmail.com with ESMTPSA id 11sm1818393ilg.53.2021.04.07.17.20.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 07 Apr 2021 17:20:52 -0700 (PDT)
+ Wed, 07 Apr 2021 17:20:54 -0700 (PDT)
 From: Rebecca Cran <rebecca@nuviainc.com>
 To: peter.maydell@linaro.org,
 	richard.henderson@linaro.org
-Subject: [PATCH v6 1/4] accel/tcg: Add TLB invalidation support for ranges of
- addresses
-Date: Wed,  7 Apr 2021 18:20:36 -0600
-Message-Id: <20210408002039.18027-2-rebecca@nuviainc.com>
+Subject: [PATCH v6 3/4] target/arm: Add support for FEAT_TLBIOS
+Date: Wed,  7 Apr 2021 18:20:38 -0600
+Message-Id: <20210408002039.18027-4-rebecca@nuviainc.com>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20210408002039.18027-1-rebecca@nuviainc.com>
 References: <20210408002039.18027-1-rebecca@nuviainc.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::130;
- envelope-from=rebecca@nuviainc.com; helo=mail-il1-x130.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::129;
+ envelope-from=rebecca@nuviainc.com; helo=mail-il1-x129.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -121,249 +120,126 @@ Cc: Rebecca Cran <rebecca@nuviainc.com>, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dWYOr+HtNZZ+
+X-TUID: JF3fpnbKDV5Q
 
-Add functions to support the FEAT_TLBIRANGE ARMv8.4 feature that adds
-TLB invalidation instructions to invalidate ranges of addresses.
+ARMv8.4 adds the mandatory FEAT_TLBIOS. It provides TLBI
+maintenance instructions that extend to the Outer Shareable domain.
 
 Signed-off-by: Rebecca Cran <rebecca@nuviainc.com>
 ---
- accel/tcg/cputlb.c      | 130 +++++++++++++++++++-
- include/exec/exec-all.h |  46 +++++++
- 2 files changed, 173 insertions(+), 3 deletions(-)
+ target/arm/cpu.h    |  5 ++
+ target/arm/helper.c | 75 ++++++++++++++++++++
+ 2 files changed, 80 insertions(+)
 
-diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
-index 8a7b779270a4..dc44967dcf8e 100644
---- a/accel/tcg/cputlb.c
-+++ b/accel/tcg/cputlb.c
-@@ -709,7 +709,7 @@ void tlb_flush_page_all_cpus_synced(CPUState *src, target_ulong addr)
-     tlb_flush_page_by_mmuidx_all_cpus_synced(src, addr, ALL_MMUIDX_BITS);
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 32b78a4ef587..272fde83ca4e 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -4043,6 +4043,11 @@ static inline bool isar_feature_aa64_tlbirange(const ARMISARegisters *id)
+     return FIELD_EX64(id->id_aa64isar0, ID_AA64ISAR0, TLB) == 2;
  }
  
--static void tlb_flush_page_bits_locked(CPUArchState *env, int midx,
-+static bool tlb_flush_page_bits_locked(CPUArchState *env, int midx,
-                                        target_ulong page, unsigned bits)
++static inline bool isar_feature_aa64_tlbios(const ARMISARegisters *id)
++{
++    return FIELD_EX64(id->id_aa64isar0, ID_AA64ISAR0, TLB) != 0;
++}
++
+ static inline bool isar_feature_aa64_sb(const ARMISARegisters *id)
  {
-     CPUTLBDesc *d = &env_tlb(env)->d[midx];
-@@ -729,7 +729,7 @@ static void tlb_flush_page_bits_locked(CPUArchState *env, int midx,
-                   TARGET_FMT_lx "/" TARGET_FMT_lx ")\n",
-                   midx, page, mask);
-         tlb_flush_one_mmuidx_locked(env, midx, get_clock_realtime());
--        return;
-+        return true;
-     }
+     return FIELD_EX64(id->id_aa64isar1, ID_AA64ISAR1, SB) != 0;
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index ce913deff490..5b10f179b761 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -7211,6 +7211,78 @@ static const ARMCPRegInfo tlbirange_reginfo[] = {
+     REGINFO_SENTINEL
+ };
  
-     /* Check if we need to flush due to large pages.  */
-@@ -738,13 +738,14 @@ static void tlb_flush_page_bits_locked(CPUArchState *env, int midx,
-                   TARGET_FMT_lx "/" TARGET_FMT_lx ")\n",
-                   midx, d->large_page_addr, d->large_page_mask);
-         tlb_flush_one_mmuidx_locked(env, midx, get_clock_realtime());
--        return;
-+        return true;
-     }
- 
-     if (tlb_flush_entry_mask_locked(tlb_entry(env, midx, page), page, mask)) {
-         tlb_n_used_entries_dec(env, midx);
-     }
-     tlb_flush_vtlb_page_mask_locked(env, midx, page, mask);
-+    return false;
- }
- 
- typedef struct {
-@@ -943,6 +944,129 @@ void tlb_flush_page_bits_by_mmuidx_all_cpus_synced(CPUState *src_cpu,
-     }
- }
- 
-+typedef struct {
-+    target_ulong addr;
-+    target_ulong length;
-+    uint16_t idxmap;
-+    uint16_t bits;
-+}  TLBFlushPageRangeBitsByMMUIdxData;
++static const ARMCPRegInfo tlbios_reginfo[] = {
++    { .name = "TLBI_VMALLE1OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 1, .opc2 = 0,
++      .access = PL1_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_vmalle1is_write },
++    { .name = "TLBI_ASIDE1OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 1, .opc2 = 2,
++      .access = PL1_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_vmalle1is_write },
++    { .name = "TLBI_RVAE1OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 5, .opc2 = 1,
++      .access = PL1_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_rvae1is_write },
++    { .name = "TLBI_RVAAE1OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 5, .opc2 = 3,
++      .access = PL1_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_rvae1is_write },
++   { .name = "TLBI_RVALE1OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 5, .opc2 = 5,
++      .access = PL1_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_rvae1is_write },
++    { .name = "TLBI_RVAALE1OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 5, .opc2 = 7,
++      .access = PL1_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_rvae1is_write },
++    { .name = "TLBI_ALLE2OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 1, .opc2 = 0,
++      .access = PL2_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_alle2is_write },
++   { .name = "TLBI_ALLE1OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 1, .opc2 = 4,
++      .access = PL2_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_alle1is_write },
++    { .name = "TLBI_VMALLS12E1OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 1, .opc2 = 6,
++      .access = PL2_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_alle1is_write },
++    { .name = "TLBI_IPAS2E1OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 0,
++      .access = PL2_W, .type = ARM_CP_NOP },
++    { .name = "TLBI_RIPAS2E1OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 3,
++      .access = PL2_W, .type = ARM_CP_NOP },
++    { .name = "TLBI_IPAS2LE1OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 4,
++      .access = PL2_W, .type = ARM_CP_NOP },
++    { .name = "TLBI_RIPAS2LE1OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 7,
++      .access = PL2_W, .type = ARM_CP_NOP },
++   { .name = "TLBI_RVAE2OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 5, .opc2 = 1,
++      .access = PL2_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_rvae2is_write },
++   { .name = "TLBI_RVALE2OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 5, .opc2 = 5,
++      .access = PL2_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_rvae2is_write },
++    { .name = "TLBI_ALLE3OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 1, .opc2 = 0,
++      .access = PL3_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_alle3is_write },
++   { .name = "TLBI_RVAE3OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 5, .opc2 = 1,
++      .access = PL3_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_rvae3is_write },
++   { .name = "TLBI_RVALE3OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 5, .opc2 = 5,
++      .access = PL3_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_rvae3is_write },
++    REGINFO_SENTINEL
++};
 +
-+static void
-+tlb_flush_page_range_bits_by_mmuidx_async_0(CPUState *cpu,
-+                                            target_ulong addr,
-+                                            target_ulong length,
-+                                            uint16_t idxmap,
-+                                            unsigned bits)
-+{
-+    CPUArchState *env = cpu->env_ptr;
-+    int mmu_idx;
-+    target_ulong l;
-+    target_ulong page = addr;
-+    bool full_flush;
-+
-+    assert_cpu_is_self(cpu);
-+
-+    tlb_debug("page addr:" TARGET_FMT_lx "/%u len: " TARGET_FMT_lx
-+              " mmu_map:0x%x\n",
-+              addr, bits, length, idxmap);
-+
-+    qemu_spin_lock(&env_tlb(env)->c.lock);
-+    for (mmu_idx = 0; mmu_idx < NB_MMU_MODES; mmu_idx++) {
-+        if ((idxmap >> mmu_idx) & 1) {
-+            for (l = 0; l < length; l += TARGET_PAGE_SIZE) {
-+                page = addr + l;
-+                full_flush = tlb_flush_page_bits_locked(env, mmu_idx,
-+                                                        page, bits);
-+                if (full_flush) {
-+                    break;
-+                }
-+            }
-+        }
-+    }
-+    qemu_spin_unlock(&env_tlb(env)->c.lock);
-+
-+    for (l = 0; l < length; l += TARGET_PAGE_SIZE) {
-+        tb_flush_jmp_cache(cpu, page);
-+    }
-+}
-+
-+static void
-+tlb_flush_page_range_bits_by_mmuidx_async_1(CPUState *cpu,
-+                                            run_on_cpu_data data)
-+{
-+    TLBFlushPageRangeBitsByMMUIdxData *d = data.host_ptr;
-+
-+    tlb_flush_page_range_bits_by_mmuidx_async_0(cpu, d->addr, d->length,
-+                                                d->idxmap, d->bits);
-+
-+    g_free(d);
-+}
-+
-+void tlb_flush_page_range_bits_by_mmuidx(CPUState *cpu,
-+                                         target_ulong addr,
-+                                         target_ulong length,
-+                                         uint16_t idxmap,
-+                                         unsigned bits)
-+{
-+    TLBFlushPageRangeBitsByMMUIdxData d;
-+    TLBFlushPageRangeBitsByMMUIdxData *p;
-+
-+    /* This should already be page aligned */
-+    addr &= TARGET_PAGE_BITS;
-+
-+    d.addr = addr & TARGET_PAGE_MASK;
-+    d.idxmap = idxmap;
-+    d.bits = bits;
-+    d.length = length;
-+
-+    if (qemu_cpu_is_self(cpu)) {
-+        tlb_flush_page_range_bits_by_mmuidx_async_0(cpu, addr, length,
-+                                                    idxmap, bits);
-+    } else {
-+        p = g_new(TLBFlushPageRangeBitsByMMUIdxData, 1);
-+
-+        /* Allocate a structure, freed by the worker.  */
-+        *p = d;
-+        async_run_on_cpu(cpu, tlb_flush_page_range_bits_by_mmuidx_async_1,
-+                         RUN_ON_CPU_HOST_PTR(p));
-+    }
-+}
-+
-+void tlb_flush_page_range_bits_by_mmuidx_all_cpus_synced(CPUState *src_cpu,
-+                                                         target_ulong addr,
-+                                                         target_ulong length,
-+                                                         uint16_t idxmap,
-+                                                         unsigned bits)
-+{
-+    TLBFlushPageRangeBitsByMMUIdxData d;
-+    TLBFlushPageRangeBitsByMMUIdxData *p;
-+    CPUState *dst_cpu;
-+
-+    /* This should already be page aligned */
-+    addr &= TARGET_PAGE_BITS;
-+
-+    d.addr = addr;
-+    d.idxmap = idxmap;
-+    d.bits = bits;
-+    d.length = length;
-+
-+    /* Allocate a separate data block for each destination cpu.  */
-+    CPU_FOREACH(dst_cpu) {
-+        if (dst_cpu != src_cpu) {
-+            p = g_new(TLBFlushPageRangeBitsByMMUIdxData, 1);
-+            *p = d;
-+            async_run_on_cpu(dst_cpu,
-+                             tlb_flush_page_range_bits_by_mmuidx_async_1,
-+                             RUN_ON_CPU_HOST_PTR(p));
-+        }
-+    }
-+
-+    p = g_new(TLBFlushPageRangeBitsByMMUIdxData, 1);
-+    *p = d;
-+    async_safe_run_on_cpu(src_cpu, tlb_flush_page_range_bits_by_mmuidx_async_1,
-+                          RUN_ON_CPU_HOST_PTR(p));
-+}
-+
- /* update the TLBs so that writes to code in the virtual page 'addr'
-    can be detected */
- void tlb_protect_code(ram_addr_t ram_addr)
-diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
-index 6b036cae8f65..a7ff35efb865 100644
---- a/include/exec/exec-all.h
-+++ b/include/exec/exec-all.h
-@@ -212,6 +212,37 @@ void tlb_flush_page_by_mmuidx_all_cpus(CPUState *cpu, target_ulong addr,
-  */
- void tlb_flush_page_by_mmuidx_all_cpus_synced(CPUState *cpu, target_ulong addr,
-                                               uint16_t idxmap);
-+/**
-+ * tlb_flush_page_range_by_mmuidx:
-+ * @cpu: CPU whose TLB should be flushed
-+ * @addr: virtual address of start of page range to be flushed
-+ * @length: the number of bytes to be flushed
-+ * @idxmap: bitmap of MMU indexes to flush
-+ *
-+ * Flush a range of pages from the TLB of the specified CPU, for the specified
-+ * MMU indexes.
-+ */
-+void tlb_flush_page_range_bits_by_mmuidx(CPUState *cpu, target_ulong addr,
-+                                         target_ulong length, uint16_t idxmap,
-+                                         unsigned bits);
-+/**
-+ * tlb_flush_page_range_by_mmuidx_all_cpus_synced:
-+ * @cpu: Originating CPU of the flush
-+ * @addr: virtual address of start of page range to be flushed
-+ * @length: the number of bytes to be flushed
-+ * @idxmap: bitmap of MMU indexes to flush
-+ *
-+ * Flush a range of pages from the TLB of all CPUs, for the specified MMU
-+ * indexes like tlb_flush_page_by_mmuidx_all_cpus except the source
-+ * vCPUs work is scheduled as safe work meaning all flushes will be
-+ * complete once the source vCPUs safe work is complete. This will
-+ * depend on when the guests translation ends the TB.
-+ */
-+void tlb_flush_page_range_bits_by_mmuidx_all_cpus_synced(CPUState *cpu,
-+                                                         target_ulong addr,
-+                                                         target_ulong length,
-+                                                         uint16_t idxmap,
-+                                                         unsigned bits);
- /**
-  * tlb_flush_by_mmuidx:
-  * @cpu: CPU whose TLB should be flushed
-@@ -313,6 +344,21 @@ static inline void tlb_flush_page_all_cpus_synced(CPUState *src,
-                                                   target_ulong addr)
+ static uint64_t rndr_readfn(CPUARMState *env, const ARMCPRegInfo *ri)
  {
- }
-+static inline void tlb_flush_page_range_bits_by_mmuidx(CPUState *cpu,
-+                                                       target_ulong addr,
-+                                                       target_ulong length,
-+                                                       uint16_t idxmap,
-+                                                       unsigned bits)
-+{
-+}
-+static inline void
-+tlb_flush_page_range_bits_by_mmuidx_all_cpus_synced(CPUState *src_cpu,
-+                                                    target_ulong addr,
-+                                                    target_ulong length,
-+                                                    uint16_t idxmap,
-+                                                    unsigned bits)
-+{
-+}
- static inline void tlb_flush(CPUState *cpu)
- {
- }
+     Error *err = NULL;
+@@ -8583,6 +8655,9 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+     if (cpu_isar_feature(aa64_tlbirange, cpu)) {
+         define_arm_cp_regs(cpu, tlbirange_reginfo);
+     }
++    if (cpu_isar_feature(aa64_tlbios, cpu)) {
++        define_arm_cp_regs(cpu, tlbios_reginfo);
++    }
+ #ifndef CONFIG_USER_ONLY
+     /* Data Cache clean instructions up to PoP */
+     if (cpu_isar_feature(aa64_dcpop, cpu)) {
 -- 
 2.26.2
 

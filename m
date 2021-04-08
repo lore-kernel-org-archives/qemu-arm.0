@@ -1,149 +1,125 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp235867lfr;
-        Thu, 8 Apr 2021 01:59:07 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyZnA2n7PDrZS28Fv/9omiQlhmuJw8CqEJEjfWMWxdTJxQ8uc1PLFNhefO9Pp4e6ESvGbff
-X-Received: by 2002:a25:bb08:: with SMTP id z8mr9943060ybg.188.1617872346951;
-        Thu, 08 Apr 2021 01:59:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617872346; cv=none;
-        d=google.com; s=arc-20160816;
-        b=uM3o4Ili6kbQ3EGfFTXoPMbIDMaNizUJ+7TytiN3UiNZokgmSYkjVgke/feNoA4drM
-         /FkDs5N+AjT7bcdwHjW7hFYSaRdyHou7ijn8gO5QZX/NcW4QDgDZb4UC4c94OGFHH9eF
-         peceUoMHFDplv5nOqqmNGS9GyVpNFF2NzakE0hDxWfSYNielcXcYufPwlFq0emZfTvu6
-         1TBCBNqqOVgsNeqQyN5pMvDXte0glWLrpNTKWDpbsj8pCbllulz2j9jQf1OmHK3+0anG
-         4+AHyUsnzjEQ1YvrRw/+Cvji1wSUf0R3zxAFAZeRqP5sj2KeK7QK6eGSB1FPr5lhS2F+
-         NH5g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=hyuzOOREB1/MUlPAkT7z3diVwn8DmMOhd3eUDxyin4g=;
-        b=JmL0ZwK/KIBQJMJzjorZnCB4UeeoPDwHNiWrebN1ADNzlq9xaB47zo+ErRdMDJ60hO
-         Xs5m7GGy77SVJH4xX013m4cRb6oz6FNxrjEguK33RXHwCNaJSA1VlO1z/LwElbT1DTpU
-         QoAB+5t5Qc+/IlD3fD+b6f0RlbGt1SZyRgv4b1/7n3qeJruSqQdxLmZTMzZmQbuRsXoh
-         RmgFLRva/PAXy+WSzC7Drj6//XL3XZK3AYYVwe+XdAtCzoNdaWJpM8dxdsXQnT250/5T
-         1uATwK7k3M3iXRJgRmx4giLUrivjF+qhYv0phYLaVLUnVclXmOGYhKI6ah4kQusPHBaO
-         Bakw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x12si4129702ybt.301.2021.04.08.01.59.06
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Apr 2021 01:59:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54432 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lUQVG-0000pw-AH
-	for alex.bennee@linaro.org; Thu, 08 Apr 2021 04:59:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49838)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1lUQUg-0000mk-2N
- for qemu-arm@nongnu.org; Thu, 08 Apr 2021 04:58:30 -0400
-Received: from 4.mo52.mail-out.ovh.net ([178.33.43.201]:54773)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1lUQUe-0006Fp-7p
- for qemu-arm@nongnu.org; Thu, 08 Apr 2021 04:58:29 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.143.167])
- by mo52.mail-out.ovh.net (Postfix) with ESMTPS id 469BD25AC68;
- Thu,  8 Apr 2021 10:58:23 +0200 (CEST)
-Received: from kaod.org (37.59.142.104) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2106.2; Thu, 8 Apr 2021
- 10:58:23 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-104R0054fefcc1c-32c4-4bd0-a769-8359aec65141,
- A36169EE3079FEED08DC2049B229DAFE10CEC3BC) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 88.167.138.64
-Subject: Re: [PATCH 03/24] aspeed/i2c: Fix DMA address mask
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>, Peter Maydell
- <peter.maydell@linaro.org>
-References: <20210407171637.777743-1-clg@kaod.org>
- <20210407171637.777743-4-clg@kaod.org>
- <aeee3229-19fc-1bbb-19b4-a72be1c454c6@amsat.org>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <544318aa-f737-e3da-35d7-5d98b6d78611@kaod.org>
-Date: Thu, 8 Apr 2021 10:58:22 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id j1sm16184289wrq.90.2021.04.08.02.00.17
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 08 Apr 2021 02:00:17 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id D137D1FF7E;
+	Thu,  8 Apr 2021 10:00:16 +0100 (BST)
+References: <20210406174031.64299-1-richard.henderson@linaro.org>
+ <20210406174031.64299-4-richard.henderson@linaro.org>
+ <877dleuds3.fsf@linaro.org>
+ <ade8e2d3-e1a6-3b84-7850-ceb4bcd59758@linaro.org>
+User-agent: mu4e 1.5.11; emacs 28.0.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 1921948@bugs.launchpad.net
+Subject: Re: [PATCH v4 03/12] target/arm: Fix mte_checkN
+Date: Thu, 08 Apr 2021 09:36:17 +0100
+In-reply-to: <ade8e2d3-e1a6-3b84-7850-ceb4bcd59758@linaro.org>
+Message-ID: <87y2dttalb.fsf@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <aeee3229-19fc-1bbb-19b4-a72be1c454c6@amsat.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.104]
-X-ClientProxiedBy: DAG6EX2.mxp5.local (172.16.2.52) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 3b0503ca-dd32-49a9-9849-c370e80d47b7
-X-Ovh-Tracer-Id: 14244604149084490534
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduledrudejledgudduucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepjeekudeuudevleegudeugeekleffveeludejteffiedvledvgfekueefudehheefnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdegnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehfgegsuhhgsegrmhhsrghtrdhorhhg
-Received-SPF: pass client-ip=178.33.43.201; envelope-from=clg@kaod.org;
- helo=4.mo52.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6lCnf5Njtvch
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: jDPQrH5C9hod
 
-On 4/7/21 11:22 PM, Philippe Mathieu-Daudé wrote:
-> Hi Cédric,
-> 
-> On 4/7/21 7:16 PM, Cédric Le Goater wrote:
->> The RAM memory region is now used for DMAs accesses instead of the
->> memory address space region. Mask off the top bits of the DMA address
->> to reflect this change.
->>
->> Cc: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> Signed-off-by: Cédric Le Goater <clg@kaod.org>
->> ---
->>  hw/i2c/aspeed_i2c.c | 2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
->> index 518a3f5c6f9d..e7133528899f 100644
->> --- a/hw/i2c/aspeed_i2c.c
->> +++ b/hw/i2c/aspeed_i2c.c
->> @@ -601,7 +601,7 @@ static void aspeed_i2c_bus_write(void *opaque, hwaddr offset,
->>              break;
->>          }
->>  
->> -        bus->dma_addr = value & 0xfffffffc;
->> +        bus->dma_addr = value & 0x3ffffffc;
-> 
-> This field is migrated (aspeed_i2c_bus_vmstate).
 
-yes.
-> Does the first patch "aspeed/smc: Use the RAM memory region for DMAs"
-> break the migration?
+Richard Henderson <richard.henderson@linaro.org> writes:
 
-You are right it does. Maintaining migration compatibility is overkill 
-for this machine, but I should mention the first patch is breaking it.
+> On 4/7/21 11:39 AM, Alex Benn=C3=A9e wrote:
+>> Richard Henderson <richard.henderson@linaro.org> writes:
+>>=20
+>>> We were incorrectly assuming that only the first byte of an MTE access
+>>> is checked against the tags.  But per the ARM, unaligned accesses are
+>>> pre-decomposed into single-byte accesses.  So by the time we reach the
+>>> actual MTE check in the ARM pseudocode, all accesses are aligned.
+>>>
+>>> Therefore, the first failure is always either the first byte of the
+>>> access, or the first byte of the granule.
+>>>
+<snip>
 
-Thanks,
+I replicated the original test case as a kunit test:
 
-C.
- 
+  static void kmalloc_node_oob_span_right(struct kunit *test)
+  {
+          char *ptr;
+          size_t size =3D 128;
 
+          ptr =3D kmalloc_node(size, GFP_KERNEL, 0);
+          KUNIT_ASSERT_NOT_ERR_OR_NULL(test, ptr);
+
+          KUNIT_EXPECT_KASAN_FAIL(test, *(volatile unsigned long *)(ptr + 1=
+24) =3D 0);
+          kfree(ptr);
+  }
+
+which before this fix triggered:
+
+  [    6.753429]     # kmalloc_node_oob_span_right: EXPECTATION FAILED at l=
+ib/test_kasan.c:163
+  [    6.753429]     Expected ({ do { extern void __compiletime_assert_337(=
+void) __attribute__((__error__("Unsupported access size for {READ,WRITE}_ON=
+CE()."))); if (!((sizeof(
+  fail_data.report_expected) =3D=3D sizeof(char) || sizeof(fail_data.report=
+_expected) =3D=3D sizeof(short) || sizeof(fail_data.report_expected) =3D=3D=
+ sizeof(int) || sizeof(fail_data.repo
+  rt_expected) =3D=3D sizeof(long)) || sizeof(fail_data.report_expected) =
+=3D=3D sizeof(long long))) __compiletime_assert_337(); } while (0); (*(cons=
+t volatile typeof( _Generic((fail_d
+  ata.report_expected), char: (char)0, unsigned char: (unsigned char)0, sig=
+ned char: (signed char)0, unsigned short: (unsigned short)0, signed short: =
+(signed short)0, unsigned
+   int: (unsigned int)0, signed int: (signed int)0, unsigned long: (unsigne=
+d long)0, signed long: (signed long)0, unsigned long long: (unsigned long l=
+ong)0, signed long long:
+  (signed long long)0, default: (fail_data.report_expected))) *
+  [    6.759388]     not ok 4 - kmalloc_node_oob_span_right
+
+And is OK by the end of the series:
+
+  [    6.587381] The buggy address belongs to the object at ffff000003325800
+  [    6.587381]  which belongs to the cache kmalloc-128 of size 128
+  [    6.588372] The buggy address is located 0 bytes to the right of
+  [    6.588372]  128-byte region [ffff000003325800, ffff000003325880)
+  [    6.589354] The buggy address belongs to the page:
+  [    6.589948] page:(____ptrval____) refcount:1 mapcount:0 mapping:000000=
+0000000000 index:0x0 pfn:0x43325
+  [    6.590911] flags: 0x3fffc0000000200(slab)
+  [    6.591648] raw: 03fffc0000000200 dead000000000100 dead000000000122 fd=
+ff000002401200
+  [    6.592346] raw: 0000000000000000 0000000080100010 00000001ffffffff 00=
+00000000000000
+  [    6.593007] page dumped because: kasan: bad access detected
+  [    6.593532]
+  [    6.593775] Memory state around the buggy address:
+  [    6.594360]  ffff000003325600: f3 f3 f3 f3 f3 f3 f3 f3 fe fe fe fe fe =
+fe fe fe
+  [    6.594991]  ffff000003325700: fd fd fd fd fd fd fd fd fe fe fe fe fe =
+fe fe fe
+  [    6.595594] >ffff000003325800: f8 f8 f8 f8 f8 f8 f8 f8 fe fe fe fe fe =
+fe fe fe
+  [    6.596180]                                            ^
+  [    6.596714]  ffff000003325900: f7 f7 f7 f7 fe fe fe fe fe fe fe fe fe =
+fe fe fe
+  [    6.597309]  ffff000003325a00: f4 f4 fe fe fe fe fe fe fe fe fe fe fe =
+fe fe fe
+  [    6.597925] =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+  [    6.598513] Disabling lock debugging due to kernel taint
+  [    6.600353]     ok 1 - kmalloc_node_oob_span_right
+  [    6.600554] ok 1 - kasan
+
+But it still fails this patch until:
+
+ target/arm: Fix unaligned checks for mte_check1, mte_probe1
+
+So I guess that is the one that should have the buglink.
+
+Anyway code wise:
+
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+
+--=20
+Alex Benn=C3=A9e

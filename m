@@ -1,154 +1,170 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp543111lfr;
-        Thu, 8 Apr 2021 07:53:50 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy/cMBd3Qwlocng3eUeUZZq574scZV79tabO37aVnKWOQM+ukeW9ttPCcxcfG16gXhGtUSM
-X-Received: by 2002:a05:6e02:501:: with SMTP id d1mr95769ils.76.1617893630117;
-        Thu, 08 Apr 2021 07:53:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617893630; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp646269lfr;
+        Thu, 8 Apr 2021 09:32:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw9xeQKyspZJTCMc5gNQDlSyYJafOLW86H6o22spD/JhUOXqQg3D9Kh0zZJfNsSZ7Di17Og
+X-Received: by 2002:a5d:97cb:: with SMTP id k11mr7603122ios.204.1617899550896;
+        Thu, 08 Apr 2021 09:32:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617899550; cv=none;
         d=google.com; s=arc-20160816;
-        b=tg9bQ43K+iNjTKZMqNI+t16nAkkAFHAXRdNDf+YdoqDaPGhPPSA9GzC6GSLNMRybpf
-         6Gp5OCw4+py79s8AvEkzSK/3Fa5NonvvAdJ+vyI7NqnN/LY38kJm9RHApdxLSECJgSwT
-         5kpK4TJZc4fEv66VZs85B1OohEutXq9+tChnGP3PucH0w2brJH/I63g7H6vxvRuNmIRV
-         Jd9XHsn56aY9zibgWpo0k1PP/Wou1Djl3aPLtNkqIAcZoUtxvoU4XNYRViRx9JMGhqgP
-         WIICjfJZBo83YN3AcxhM4VxNjeMyTtCLLRDspXt+hqfeNlRnbvmZmoN/y82MOfrH2Vza
-         j4tQ==
+        b=GSvpTb1AZK3pnzhYfOsUdr1L5RxAJBKw+FeKdyxtu8hwCqp6Wt5DhRlLQF6MpONE1i
+         C9UfpW37IeYlGLdjaiVQNq7SKlu5N9IshVCqgHBnUrJjKzXWF+5RsPZL+/W1JWRLPwrB
+         kg/um8mXsfdLizY8bkj01GZpmhFwHv7OEUR8qneGOur+fyU96/i+8jhieol+pfhcgJjd
+         q5PAGRUC89RHtc+nSgSeUcL5qOACXAKFF0wwFbIQnaoKhjdnLaLve+GiYuAJsY5MsUC8
+         o2TJ1CdBLHkGq8p7UwJauABKFe8yqFsnuoD+P6xya7LKvU74SfqZE3ez18/Ed0XdgekU
+         CCRg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=TsfSnsG+JlNwYeYVghuV8BXej27O43KqihMa8JpMyFs=;
-        b=iAMrnr0cYd4xdJ9B7TfM5riVUwJPNBjVm5SEOZce4V00rd6IMBedkYnqjjPWCzjZym
-         CfGo5hSLCXpg/eh2BIu2a77bGS4T88H7ba/j7m61dGCxMHT4exb5smMjEncl9K9OXz2u
-         eCt4W3h5nRZbD/PMt/LXTqFpGh713l5ZUUJT1RFLxAtAfakFgiD84Vy18bq0Tnb5dmad
-         C3F7CuPLsoZf0Dse3NbrHQvZAMODJPI2SzBJkDiPfvD//1NO+G2QG4nzAzqjMHcHDw77
-         5gPo7fWUS10U7xmyPxSeLG7tTttjGy3r0Gg5Xak5zW0b0RmX2orLDJMILFuEYk5RBxBq
-         Y4jw==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=K+poOW94BowNCInGKJvJSDOLc8fjcU95Yt+lwLQ1q/w=;
+        b=h1O+3mFf8KPy2I5/ouStOUUAJWBiS391KbfKEdNOcmZeaQaOL6n1SWJLzY7aDl9/IQ
+         +qIK+fqPfT3+//J2YzfQGIU3ZN/Zegb9Qqv4jsVb4P/vkiWtcANqrA7b35Vhg2Oe+b9X
+         Kc0DracswJsDvSF60CiLN8UPitsK/WfEezePhGmvx85BJ8A5eBkkhELEck+ibHU5j8mj
+         s08zQE+/ZY01MTUM1BjZPbzCbed6kcWxJfEyROcveDamN8jd5HJCPuAUF9sxSoQ4Cg24
+         TdhnDc6a8MQnqazQLAfyJjPBdHIGYOZ5q3CPznEarh8o9u/q53RZiISiN8x7MuQGuwHL
+         fKYg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fWB4KyCG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=Vc5gDIDO;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i5si22290851ilv.96.2021.04.08.07.53.49
+        by mx.google.com with ESMTPS id f21si12593ioo.37.2021.04.08.09.32.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Apr 2021 07:53:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 08 Apr 2021 09:32:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fWB4KyCG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:48280 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=Vc5gDIDO;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:53976 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lUW2X-0000cP-CV
-	for alex.bennee@linaro.org; Thu, 08 Apr 2021 10:53:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51956)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lUXa2-0008EY-5A
+	for alex.bennee@linaro.org; Thu, 08 Apr 2021 12:32:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47452)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lUW2G-0000NV-QD
- for qemu-arm@nongnu.org; Thu, 08 Apr 2021 10:53:32 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:36125)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lUW2E-0000Zq-V3
- for qemu-arm@nongnu.org; Thu, 08 Apr 2021 10:53:32 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1617893610;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=TsfSnsG+JlNwYeYVghuV8BXej27O43KqihMa8JpMyFs=;
- b=fWB4KyCGXXcoLTGSZz2nkOtQZ8Wn8ZIfZQ5N3TbJ6UA8V0pRNQ2oI+9aDbv92H7sQb/DiD
- EXXte/4rfNGuo9h+AvZzNihogs9kTIxqpa8iw3g63dLVsZGGMrX48/w3hGMB+t0CJMf7qB
- c68gH2q/XMT9dA3aq0HNgaTeF6XJzj8=
-Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
- [209.85.208.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-403-ce4PpQ7BPByXBROVArxX4w-1; Thu, 08 Apr 2021 10:53:26 -0400
-X-MC-Unique: ce4PpQ7BPByXBROVArxX4w-1
-Received: by mail-ed1-f69.google.com with SMTP id bo11so1148015edb.21
- for <qemu-arm@nongnu.org>; Thu, 08 Apr 2021 07:53:26 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lUXWr-0006Eu-OE
+ for qemu-devel@nongnu.org; Thu, 08 Apr 2021 12:29:13 -0400
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:37546)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lUXRv-0004kG-Aa
+ for qemu-devel@nongnu.org; Thu, 08 Apr 2021 12:24:09 -0400
+Received: by mail-wr1-x42f.google.com with SMTP id j5so1805421wrn.4
+ for <qemu-devel@nongnu.org>; Thu, 08 Apr 2021 09:24:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=K+poOW94BowNCInGKJvJSDOLc8fjcU95Yt+lwLQ1q/w=;
+ b=Vc5gDIDOn0XJ2DBDn5Tcu/8bbphqogRvcGfpy/GddIrklOd4NM87BxQu00EdqCfUXs
+ xquSrJxV94vnLgtMLK7RFgoDFfUtmBb/s0qn7L7oQdO67GBTGWkwebdhxHiLDcYybU2J
+ umszi5lyyeRNsz6kcXZbFyLz+sZATxS0HuckwMv4qF2CRYy6z0W3AL7gP4MskYPy21V1
+ PixwYWW4KYlalG+fC7XB1wIbsYXVomp6cTzLCXFXMu/dcEyoF33dgpOB7sOAuPJ46+kE
+ D+134yFQcEbX5jeQrM45B8c8RXn08CS2VFBjU5pit6A/bxTrYG+8LiDflKvAcBvIsIuq
+ /ftA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:from:to:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=TsfSnsG+JlNwYeYVghuV8BXej27O43KqihMa8JpMyFs=;
- b=ccvHy5I1KcNUnRxn5cXFmr0Q64mdGWyzzxlbIOY57w1fVJXoO0xZlztX6ZrC0chmw4
- ROFXs+C8pxkuBlhBReTPxHg8pC9Y4cQMFx/WHbNh6A1+oqsMcUDQe3SKSqp/CLIAr2xk
- 4JrCDGJ/X8AicY1z/a5l4EJ3qhY748CGlFePbvZl230930AhOtibvuXUxQUrhkD3ARH6
- 1Q5V7AYf8sGVuWAXWc4fFmd5EjDv36ugWk2Mq533mk8v5AroPs02CKVQ6mT0VzwDoFsW
- 6sfBo0PEXSNwLIEJ0r5VU2OujU0pBXQvOZNoEY5L2Lw7qHjnwnsz3CTeia8rT9ll6cKF
- qJSg==
-X-Gm-Message-State: AOAM531Zb96OXnWEBO1zaDblPdMe+QfeLulQjIUfOog3nyptsR8ysvZV
- 79Mx9NbsDXJjDqSNCVvunrDoqlvG2Z1AlK9kimPlIVOYzZG487NW3ygyOlV+tQSGvejYypH/Vwx
- ajFdKQyOiTI6F
-X-Received: by 2002:a17:907:118c:: with SMTP id
- uz12mr3244200ejb.308.1617893605541; 
- Thu, 08 Apr 2021 07:53:25 -0700 (PDT)
-X-Received: by 2002:a17:907:118c:: with SMTP id
- uz12mr3244180ejb.308.1617893605363; 
- Thu, 08 Apr 2021 07:53:25 -0700 (PDT)
-Received: from [192.168.1.36] (17.red-88-21-201.staticip.rima-tde.net.
- [88.21.201.17])
- by smtp.gmail.com with ESMTPSA id f21sm4352240edq.55.2021.04.08.07.53.24
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 08 Apr 2021 07:53:24 -0700 (PDT)
-Subject: Re: [PATCH] vmstate: Constify some VMStateDescriptions
-To: Keqian Zhu <zhukeqian1@huawei.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, qemu-trivial@nongnu.org
-References: <20210408140706.23412-1-zhukeqian1@huawei.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <ae3656dc-bb31-7881-b87d-c04de07df4d9@redhat.com>
-Date: Thu, 8 Apr 2021 16:53:23 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+ bh=K+poOW94BowNCInGKJvJSDOLc8fjcU95Yt+lwLQ1q/w=;
+ b=HjIuiMQyA0zxUjQ+Em01Q1QPaGLzk+pGu812CtmH9PugCeV35FKgenjOj7/Fuj4+/6
+ T9Fdr5EIOcJKbIBbMv/t3A6U0EcgEmZZQXMIHAUw/cj8iabl51VNvBdf2rZv00Zuw07p
+ 7pls72+p1hlm7q7uI51Gk0LKcekuoJbYU/9MFMTDUQlFTdjqolAnmpHR3Wdc6PAkE+28
+ YTJlQhI7gvLxouFdTIQ34VXCGQtZjHKHNN27A5Afq6iwTZQ7N68LoKCRRoGFgRxGAxTW
+ sYNI2pfWeB+fFlJTIJWMdKFG8tk/3ZgmfFXvtL60QJRFDIMlNqjl95SiuUAFzV8SP4wr
+ Kdsg==
+X-Gm-Message-State: AOAM530ZHcKtCguTJ92Du+VwwC4Dl98FtwgwDsAD28ad7yUEi2U2jLPU
+ tfUbSjR/KuIdseKZuPwZybaosQ==
+X-Received: by 2002:a5d:6345:: with SMTP id b5mr12393705wrw.299.1617899045361; 
+ Thu, 08 Apr 2021 09:24:05 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id x14sm46403428wrw.13.2021.04.08.09.24.04
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 08 Apr 2021 09:24:04 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH] target/arm: Make Thumb store insns UNDEF for Rn==1111
+Date: Thu,  8 Apr 2021 17:24:02 +0100
+Message-Id: <20210408162402.5822-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-In-Reply-To: <20210408140706.23412-1-zhukeqian1@huawei.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>, wanghaibin.wang@huawei.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IC7rI3iXLFta
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: YyWXfaZIEPHw
 
-On 4/8/21 4:07 PM, Keqian Zhu wrote:
-> Constify vmstate_ecc_state and vmstate_x86_cpu.
-> 
-> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
-> ---
->  hw/block/ecc.c           | 2 +-
->  include/hw/block/flash.h | 2 +-
->  target/i386/cpu.h        | 2 +-
->  target/i386/machine.c    | 2 +-
->  4 files changed, 4 insertions(+), 4 deletions(-)
+The Arm ARM specifies that for Thumb encodings of the various plain
+store insns, if the Rn field is 1111 then we must UNDEF.  This is
+different from the Arm encodings, where this case is either
+UNPREDICTABLE or has well-defined behaviour.  The exclusive stores,
+store-release and STRD do not have this UNDEF case for any encoding.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Enforce the UNDEF for this case in the Thumb plain store insns.
+
+Fixes: https://bugs.launchpad.net/qemu/+bug/1922887
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/translate.c | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index 62b1c2081b6..aa4aa9b99a2 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -6476,6 +6476,14 @@ static bool op_store_rr(DisasContext *s, arg_ldst_rr *a,
+     ISSInfo issinfo = make_issinfo(s, a->rt, a->p, a->w) | ISSIsWrite;
+     TCGv_i32 addr, tmp;
+ 
++    /*
++     * In Thumb encodings of stores Rn=1111 is UNDEF; for Arm it
++     * is either UNPREDICTABLE or has defined behaviour
++     */
++    if (s->thumb && a->rn == 15) {
++        return false;
++    }
++
+     addr = op_addr_rr_pre(s, a);
+ 
+     tmp = load_reg(s, a->rt);
+@@ -6620,6 +6628,14 @@ static bool op_store_ri(DisasContext *s, arg_ldst_ri *a,
+     ISSInfo issinfo = make_issinfo(s, a->rt, a->p, a->w) | ISSIsWrite;
+     TCGv_i32 addr, tmp;
+ 
++    /*
++     * In Thumb encodings of stores Rn=1111 is UNDEF; for Arm it
++     * is either UNPREDICTABLE or has defined behaviour
++     */
++    if (s->thumb && a->rn == 15) {
++        return false;
++    }
++
+     addr = op_addr_ri_pre(s, a);
+ 
+     tmp = load_reg(s, a->rt);
+-- 
+2.20.1
 

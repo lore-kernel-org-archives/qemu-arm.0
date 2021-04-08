@@ -1,112 +1,93 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp180536lfr;
-        Thu, 8 Apr 2021 00:28:07 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwl8YaKhbNb4VM4KYiswlOk8T0O3c/Y6jNuSVmm39IqQU8QxNjT0urjulMcbGPT0mqynOZR
-X-Received: by 2002:a05:622a:38a:: with SMTP id j10mr6146538qtx.321.1617866887537;
-        Thu, 08 Apr 2021 00:28:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617866887; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp224655lfr;
+        Thu, 8 Apr 2021 01:40:56 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyHWHVQjDsybPj8TSGE0xeNQvLQk3o86zngRlCFJZNaVU3HWJeaacooeqGdTMmVzjlKt4oT
+X-Received: by 2002:a25:80d3:: with SMTP id c19mr10398182ybm.384.1617871255967;
+        Thu, 08 Apr 2021 01:40:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617871255; cv=none;
         d=google.com; s=arc-20160816;
-        b=q5xk8Ms7eHMKknKyy8BuVzjr/j66Jnd1EHbd31XGGpV2gskarTTRUI4vnQe5/Xsdg/
-         Em0m9GgaMdqUtRO4OFAgU34/k+EYCXFmb4QjnzIIgJJJORN4nRJ1qHV1/hACrIR8iny/
-         EvNRmBHbEvXS4s2eKmqDwsetVX9H0BjcPIDlZfEiMxBARdn7TD/gMIW9XJs5YKXQqZsK
-         DTTMvMz5ctVV5s4zdlEmVfV0wsVD8CXQoFg+B4g0MkvRB7rNx8uZgAqRH58zZdGcYXnG
-         wmHbhs/AqtkHCo/sdmd6MXs4jT9qlfrMPQEwHWttc9Hi0hYQlV5MMOPQaUlsCnHk3h0T
-         cAHQ==
+        b=Xiag2vIj908SgLNa3BP3TN9vsF/1ntatMh0Kh+KNlgDSTMFnG1SPTM2nQLrefJciof
+         YYHQ6kz+z46VXJnxhK/CjUF//Y8amuykMt6rCzpe9QHKI61NviyJIZiMwF3yl0wmPiIZ
+         Z3XMR5wqy6nZhynMk/bswiOjcYn4oCx43RhMKy8NKRXu4AsdypRgA3R9qE7Dzatg0Of8
+         cvbPnV60D30fXOf5egTzviQrodtQNPJbdNTx+T8Jl1QYovekJaEJ0qsLVgi35FxJtOHs
+         kuqbzKopUI+Y3hA7xZhjESPCkCPBuOmFl0urlUVkkStx8veTcHonttz7JSgBcm4py6Yv
+         y50Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=qNj70kud8fNI4ZH8HL0d7dCtnVhpt46oZF7wMQg9hWo=;
-        b=UNdOf5kI0ECF2e/GuU70DRExKh60ABmO3C/TEqWik3YGdsYizS0php+yQCn5GPHtAz
-         q00YKg6jFSkEl0PUJVbmvFu7YigACPsOvRtWoWreAQNyRhpjd+BnkPytklU10azWATh3
-         wIMliEXgsBaGBc1jJCRBjFwEbVAKV8ipIavtazDK88OMGVohJa4Abu+Mf4bEsQEX7Cwq
-         YDhalh7SpNvnkGj/D97uM99lan0ITT0OlrhQABQNTezeTxPOGG08SNODehHzqCJmRCZG
-         elbiDIDZhhT9LHW02TiAQhkr99nNe6uZ/62ealtq4X+lJaTmctRk4J9fOxrSvf70/4kK
-         i/kA==
+         :message-id:from:references:to:subject;
+        bh=SZ7nKdUislznuZzuyPeqqDe+DAr+IlsnIBDcOBJnz88=;
+        b=sugfjeDhfQWOltZIc5TruzPqKmsEL6gXQiaTuthG/Bsw8DENNAixV2KAyqJgx9aVT+
+         xMBFJmfseypgjnM4eXM3MGQC3Rw+wkXpFdYUzQq8yPe8PMtgmnkuzalCjUUvwWnSMscA
+         QInTON7JB3FB3WA70ghKz8qT6qaQzNCUKheAL/y0mVSD2N++nsUN99+NttTSuapX7Big
+         hqr1db8eaym5gHMwGTSCdS5rCMb5BpZOr7baplAYGS5vpuegZ4ZPsjRUYDwrTLaZrrFD
+         3vMjBSPgkHbbOYTjYR52C76Ew7GwCLZv1NiiTMkUmADuZhiL6uajDP7czT+9kN2bWH4Q
+         SMJQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EYgdNPsY;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m15si16319115qkg.2.2021.04.08.00.28.07
+        by mx.google.com with ESMTPS id u188si25030774ybg.247.2021.04.08.01.40.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Apr 2021 00:28:07 -0700 (PDT)
+        Thu, 08 Apr 2021 01:40:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EYgdNPsY;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52870 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:36076 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lUP5C-0005Lw-Jw
-	for alex.bennee@linaro.org; Thu, 08 Apr 2021 03:28:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60226)
+	id 1lUQDf-0000uZ-B4
+	for alex.bennee@linaro.org; Thu, 08 Apr 2021 04:40:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46096)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lUP4z-0005Le-By
- for qemu-arm@nongnu.org; Thu, 08 Apr 2021 03:27:54 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:23398)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1lUQDN-0000tX-00
+ for qemu-arm@nongnu.org; Thu, 08 Apr 2021 04:40:38 -0400
+Received: from 10.mo51.mail-out.ovh.net ([46.105.77.235]:52964)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lUP4v-0003iv-Fx
- for qemu-arm@nongnu.org; Thu, 08 Apr 2021 03:27:52 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1617866867;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=qNj70kud8fNI4ZH8HL0d7dCtnVhpt46oZF7wMQg9hWo=;
- b=EYgdNPsYVaPdSTGWzbKTZ0KxZMf2m7d0M/aHEQFbfXQv4kijKYH29OMRcsv5LVGLzX7dyt
- e8pdhmdL7STLMZ/aT63KdPXGTKFGqgoWm3r/9mUO+ME8P55Yed2dKVUwO9obALz/8nt+Z6
- y/JFMpVlmyuPg94GGQeFFzfQqI/41io=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-502-LkKIH64dPeyi2jX5P54Ruw-1; Thu, 08 Apr 2021 03:27:42 -0400
-X-MC-Unique: LkKIH64dPeyi2jX5P54Ruw-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DE126107ACC7;
- Thu,  8 Apr 2021 07:27:40 +0000 (UTC)
-Received: from [10.36.113.184] (ovpn-113-184.ams2.redhat.com [10.36.113.184])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 7D8191724D;
- Thu,  8 Apr 2021 07:27:38 +0000 (UTC)
-Subject: Re: A question about the translation granule size supported by the
- vSMMU
-To: Kunkun Jiang <jiangkunkun@huawei.com>,
- Peter Maydell <peter.maydell@linaro.org>, linuc.decode@gmail.com
-References: <fa696532-5f04-aeeb-1ba3-6427675c6655@huawei.com>
- <4886d8d0-cca6-d4b2-4139-29ad52020f79@redhat.com>
- <d4b8b381-0883-4301-8967-d924ccc61ea0@huawei.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <0a3ae73c-af3a-9d80-2f30-55424a07d104@redhat.com>
-Date: Thu, 8 Apr 2021 09:27:36 +0200
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1lUQDA-0004sP-Ci
+ for qemu-arm@nongnu.org; Thu, 08 Apr 2021 04:40:36 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.156.3])
+ by mo51.mail-out.ovh.net (Postfix) with ESMTPS id 9555F279366;
+ Thu,  8 Apr 2021 10:40:20 +0200 (CEST)
+Received: from kaod.org (37.59.142.98) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2106.2; Thu, 8 Apr 2021
+ 10:40:19 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-98R00265e66e6e-5b18-4d82-b2c7-1478fe1fda68,
+ A36169EE3079FEED08DC2049B229DAFE10CEC3BC) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 88.167.138.64
+Subject: Re: [PATCH 21/24] hw/block: m25p80: Add support for mt25qu02g
+To: Francisco Iglesias <francisco.iglesias@xilinx.com>
+References: <20210407171637.777743-1-clg@kaod.org>
+ <20210407171637.777743-22-clg@kaod.org>
+ <20210408080001.2r4gxygjsuorvaxs@debian>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <0d5e9101-7ae9-8892-cc00-d83f958ffca8@kaod.org>
+Date: Thu, 8 Apr 2021 10:40:18 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.0
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <d4b8b381-0883-4301-8967-d924ccc61ea0@huawei.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <20210408080001.2r4gxygjsuorvaxs@debian>
+Content-Type: text/plain; charset="utf-8"
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=eric.auger@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+X-Originating-IP: [37.59.142.98]
+X-ClientProxiedBy: DAG8EX1.mxp5.local (172.16.2.71) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 3bc86a52-8722-4f06-871b-9f9f6454aee3
+X-Ovh-Tracer-Id: 13939766749553855337
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduledrudejledgtdejucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepieejgeeggfeileehjeeihedvffeffefhjeejteejvddvkefgvedthfdvtdejfeejnecuffhomhgrihhnpehihhhsrdgtohhmnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdelkeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepfhhrrghntghishgtohdrihhglhgvshhirghsseigihhlihhngidrtghomh
+Received-SPF: pass client-ip=46.105.77.235; envelope-from=clg@kaod.org;
+ helo=10.mo51.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -120,90 +101,77 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Zenghui Yu <yuzenghui@huawei.com>,
- "wanghaibin.wang@huawei.com" <wanghaibin.wang@huawei.com>,
- "open list:ARM SMMU" <qemu-arm@nongnu.org>, Keqian Zhu <zhukeqian1@huawei.com>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Alistair Francis <alistair.francis@wdc.com>, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: V2MQAifmKdnY
+X-TUID: A0T/7O3J2tWo
 
-Hi Kunkun,
-
-On 4/7/21 11:26 AM, Kunkun Jiang wrote:
-> Hi Eric,
+On 4/8/21 10:00 AM, Francisco Iglesias wrote:
+> Hello Cedric!
 > 
-> On 2021/4/7 3:50, Auger Eric wrote:
->> Hi Kunkun,
+> On Wed, Apr 07, 2021 at 07:16:34PM +0200, Cédric Le Goater wrote:
+>> The Micron mt25qu02g is a 3V 2Gb serial NOR flash memory supporting
+>> dual I/O and quad I/O, 4KB, 32KB, 64KB sector erase. It also supports
+>> 4B opcodes.
 >>
->> On 3/27/21 3:24 AM, Kunkun Jiang wrote:
->>> Hi all,
->>>
->>> Recently, I did some tests on SMMU nested mode. Here is
->>> a question about the translation granule size supported by
->>> vSMMU.
->>>
->>> There is such a code in SMMUv3_init_regs():
->>>
->>>>     /* 4K and 64K granule support */
->>>>      s->idr[5] = FIELD_DP32(s->idr[5], IDR5, GRAN4K, 1);
->>>>      s->idr[5] = FIELD_DP32(s->idr[5], IDR5, GRAN64K, 1);
->>>>      s->idr[5] = FIELD_DP32(s->idr[5], IDR5, OAS, SMMU_IDR5_OAS); /* 44
->>>> bits */
->>> Why is the 16K granule not supported? I modified the code
->>> to support it and did not encounter any problems in the
->>> test. Although 4K and 64K minimal granules are "strongly
->>> recommended", I think vSMMU should still support 16K.😉
->>> Are there other reasons why 16K is not supported here?
->> no there aren't any. The main reasons were 16KB support is optional and
->> supporting it increases the test matrix. Also it seems quite a few
->> machines I have access to do support 16KB granule. On the others I get
+>> Cc: Alistair Francis <alistair.francis@wdc.com>
+>> Cc: Francisco Iglesias <francisco.iglesias@xilinx.com>
+>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+>> ---
+>>  hw/block/m25p80.c | 1 +
+>>  1 file changed, 1 insertion(+)
 >>
->> "EFI stub: ERROR: This 16 KB granular kernel is not supported by your
->> CPU".
->>
->> Nevertheless I am not opposed to support it as it seems to work without
->> trouble. Just need to have an extra look at implied validity checks but
->> there shouldn't be much.
->>
->> Thanks
->>
->> Eric
-> Yes, you are right. In my opinion, it is necessary to check whether pSMMU
-> supports 16K to avoid the situation I mentioned below.
-> In SMMU nested mode, if vSMMU supports 16K and set pasid table to
-> pSMMU, it may get errors when pSMMU does translation table walk if
-> pSMMU doesn't support 16K (not tested). Do you think we need to add
-> an interface to get some pSMMU info?>
-> Maybe my consideration was superfluous.😁
-No it is not. At qemu level we have
-memory_region_iommu_set_page_size_mask() that is called from the VFIO
-device. It allows to pass such info to the IOMMU device (qemu
-b91774984249).
-
-iommu_set_page_size_mask() cb needs to be implemented at SMMU QEMU
-device level. Also [PATCH 0/2] Domain nesting info for arm-smmu may
-allow to return other constraints from the pSMMU.
-
-Thanks
-
-Eric
+>> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+>> index 183d3f44c259..2afb939ae28e 100644
+>> --- a/hw/block/m25p80.c
+>> +++ b/hw/block/m25p80.c
+>> @@ -259,6 +259,7 @@ static const FlashPartInfo known_devices[] = {
+>>      { INFO_STACKED("n25q00a",   0x20bb21, 0x1000, 64 << 10, 2048, ER_4K, 4) },
+>>      { INFO_STACKED("mt25ql01g", 0x20ba21, 0x1040, 64 << 10, 2048, ER_4K, 2) },
+>>      { INFO_STACKED("mt25qu01g", 0x20bb21, 0x1040, 64 << 10, 2048, ER_4K, 2) },
+>> +    { INFO_STACKED("mt25qu02g", 0x20ba22, 0x1040, 64 << 10, 4096, ER_4K, 2) },
 > 
-> Thanks,
-> Kunkun Jiang
->>> When in SMMU nested mode, it may get errors if pSMMU
->>> doesn't support 16K but vSMMU supports 16K. But we
->>> can get some settings of pSMMU to avoid this situation.
->>> I found some discussions between Eric and Linu about
->>> this [1], but this idea does not seem to be implemented.
->>>
->>> [1] https://lists.gnu.org/archive/html/qemu-arm/2017-09/msg00149.html
->>>
->>> Best regards,
->>> Kunkun Jiang
->>>
+> Is it possible it should be as below instead?
+> 
+> { INFO_STACKED("mt25qu02g", 0x20bb22, 0x1040, 64 << 10, 4096, ER_4K | ER_32K, 2) },
+> 
+> 's/0x20ba22/0x20bb22/' (or 's/mt25qu02g/mt25ql02g/') since 'u' looks to stand
+> for 1.7-2.0 V and 'bb' for 1.8 V (see page 2 and 32 in [1]).
+
+Here is what I am seeing : 
+
+ mt25ql02g 0x20ba22 3V
+ mt25qu02g 0x20bb22 1.8V
+
+Do we agree ? 
+
+> s/ER_4K/ER_4K | ER_32K/ since ERASE_32K is supported (see page 36). 
+
+yes. I should have added that ! 
+ 
+> If you find above changes ok and go with them please add:
+> 
+> Reviewed-by: Francisco Iglesias <francisco.iglesias@xilinx.com>
+
+Sure,
+
+Thanks,
+
+C.
+
+
+> Best regards,
+> Francisco Iglesias
+> 
+> [1] Micron Serial NOR Flash Memory 1.8V, Multiple I/O, 64KB Sector Erase MT25QU02GCBB
+>     https://4donline.ihs.com/images/VipMasterIC/IC/MICT/MICT-S-A0008500026/MICT-S-A0008511423-1.pdf?hkey=52A5661711E402568146F3353EA87419
+> 
+>>  
+>>      /* Spansion -- single (large) sector size only, at least
+>>       * for the chips listed here (without boot sectors).
+>> -- 
+>> 2.26.3
 >>
->> .
-> 
-> 
 

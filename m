@@ -1,113 +1,106 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp799597lfr;
-        Thu, 8 Apr 2021 12:02:48 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwhyl7fUo7XgmiTXFhruWewPJXsOP15eu658iWneXYSONAeksk+ELTvN7crR/XxMicajYr3
-X-Received: by 2002:a92:da81:: with SMTP id u1mr5770318iln.277.1617908567903;
-        Thu, 08 Apr 2021 12:02:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617908567; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp849794lfr;
+        Thu, 8 Apr 2021 12:59:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxjzg5FMj+o79bXCt7B7IaStURfCtDIMsoOb81rkOtgQvSD20bKHp0zD9OtNee+w/66LLIu
+X-Received: by 2002:a02:9718:: with SMTP id x24mr10979382jai.75.1617911964742;
+        Thu, 08 Apr 2021 12:59:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617911964; cv=none;
         d=google.com; s=arc-20160816;
-        b=dNL9iqeHKVFECrEKEUvCy7HLSwuV9yYkW1hQwMEZNHTMFD7UezqO+TqlOgIaTj0nNK
-         sbEy9I9Ua9Vy2Y0ejA53fTJ46bQE6FtwviHoWmfCpXgLFKuyfxJGOCrer2QdrPctw9tt
-         ULR503AmTbmkR4drl9Q85xYi8rg2jVd+PvImzPb+DVXtzr8SRE3MmItRRj2tJ1yCPNoL
-         sVdRlhAnxPC42XnnBp3ii2EBhEwEMnGmuWELprSgUiyOTNvnqbpHTsYnyPswEK3t7sDj
-         2OA8Wh43zrH1Anh7zLyYx4EInBvb4wgdhoWGNQrEnr9ab9UInn/XjcheN4RnMigql1ev
-         Rl5w==
+        b=FOAAVOyPMZtCPBuRxpiQjcbPP2wZaozHya/etW0PCaajAtn9iA36bDNv3TVzE8/pC+
+         3nuUHOOO5nEacB57SPKFBiWVY0VsyZ+SJTsbWSKAV9Ez5E+SOVBegDOFsq0c3EUWvsEe
+         07gE/0DKhX2XpmhkcvDiv4+AW/6HN3mArCaHTsoXNFIcwmOnZY8CsdU/lqEHk2l+Nuq+
+         n+mntsK8wH9eDhn8CI4Os9XO/xN4c8gEorNnMOsaApXfA+3i3wCnkFcdGL1rddTsYWHi
+         W/OjnvFM+Imh3oW9pIhOG2ymHUSf+6InbYV+fE20RssMNonBunCq0+j0BtN3ZPYVkrbI
+         Pn7A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=/RC2woicAhT9BeFgGt8wkGTSLl8M2IlnXee/9V1qwgg=;
-        b=kFipWxvYqb5Mc4WXC2mZJA/KoZzLj7fm1covt8JWvnLzFgZkwbmXZqx8gok/K6LOuV
-         ngSN4JfibC+AHLRjoIaFio/WiZLoV1q1ssNJ/84SOLIQPN89fO/rPmH8cU0HDNAH83V7
-         RQ6KN3LD1epA4eid+nUT0WhnPOVNzwK03BeIH8s35LOOCXPeev3SRNjwHuPniUcBUDmU
-         g/w8qEOveQROgNWtOkPhKJjRLqv8kxFBxOPejVO5Vit4EdNJXPbh/GxTJag32vwoSTZv
-         qdAQRL0Cm4vhBABEH22+JEcnLEWVw9/J2HKvjDJwufr4zenv3JLzTG8gWUqjIclyypR0
-         rpZQ==
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=cH6dQwZ6YCP+7uE2hsHG8RuSZEYpib8DHunfLn6gtb8=;
+        b=HkXBOrDzklWZGaizMAyRx71MNInoNkGUddt71f3JS/poOnYQP4Rc2bMP9XGqo9TI9M
+         MB8zjSMsK/69kL98eSrRDgpaQXbyx2IaqywZFTtodCxR1W5DfXUHZPCmV2h+WuYaV3Q4
+         IPDKHpXWQcg0bsONYbh/yszCooNw7GLzTnwxREbwHBoS1t8y7OuUc2GsxCQm5agWk61n
+         +fsC0YrnAw+keOQJ1i4SAFIoj/dQ5tEXH+iVtSB6eVG98fMxuT6LHNFW5ihseD6LTugN
+         WJQo5ujFfns1g7VF1DDHT8v4jA6GtXbJB9ZVy5qkqEC4bzSw5kyBz3cPjKRgz9Tj+ZPd
+         8Nkg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cb1cvbIg;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=USy6AhiH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r7si134254jad.72.2021.04.08.12.02.46
+        by mx.google.com with ESMTPS id t14si520947iol.93.2021.04.08.12.59.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Apr 2021 12:02:47 -0700 (PDT)
+        Thu, 08 Apr 2021 12:59:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cb1cvbIg;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=USy6AhiH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45962 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:37668 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lUZvR-0003in-Pp
-	for alex.bennee@linaro.org; Thu, 08 Apr 2021 15:02:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58996)
+	id 1lUaoG-0004hA-2m
+	for alex.bennee@linaro.org; Thu, 08 Apr 2021 15:59:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44756)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lUZv5-0003iQ-Pu
- for qemu-arm@nongnu.org; Thu, 08 Apr 2021 15:02:23 -0400
-Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f]:39882)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lUZv3-00015T-Fj
- for qemu-arm@nongnu.org; Thu, 08 Apr 2021 15:02:23 -0400
-Received: by mail-pg1-x52f.google.com with SMTP id l76so2066943pga.6
- for <qemu-arm@nongnu.org>; Thu, 08 Apr 2021 12:02:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:references:from:message-id:date:user-agent:mime-version
- :in-reply-to:content-language:content-transfer-encoding;
- bh=/RC2woicAhT9BeFgGt8wkGTSLl8M2IlnXee/9V1qwgg=;
- b=cb1cvbIgP3K5xjK+nWLFaet4GCziKVElnHcDQzBzOGgEQHKeUDSugN10Iqi6etfqp9
- 0TkgrmcRXGPFaKMZXYQxi/peo9iXlqVIAGj5tZQXSEOHfQqNTpnjA6wXhDhZKhxIIGqO
- ogs/zrTXsouAdPEcgwkB7jEPDnQ85rO040wWaBFhBcqUhXL75gnyCsAf0d8zd9be6otb
- GeevuZWDzO0g+HfhB9LCV6cGulS84/Iql7LMshFBl9ithwqRDLy5oe2KKOYK8e3/E3T3
- lJ9JjCScW4eHIc66CY5iBFnVKpUtIKtRuVjw9qXDXG6IKHXoDyB3sIoNBGLSZKCXrCKt
- gs9A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=/RC2woicAhT9BeFgGt8wkGTSLl8M2IlnXee/9V1qwgg=;
- b=JsI6s6ou335daSCSjxQJLLI9PF9Ct4GO4Agl7AXUrgsMFSM9lBS58uoMBHWaWggbyW
- 7NK0ASzU1d3OPie8/UlErxmR6C3e7ZWfx6kAcYWcMQ1UKCFcYDJ7+EhuFE08u+vLK/eX
- plRjmuO7E7Xv0+w7KhE5cJsA13JXRJBVV4yLA5R+G2G0EWK+MoY2b1qqBapt3NFXWC5+
- 47YBadEyK5VauKrBfamym1pcljkD3m7bk3iuYceMNED2JygTw1uW5CS8GzpY+qaVfWST
- GsHK2ePSBAiK0Zi4t06EOb0ITtAu9sdIAaWmMERCNb4lv/MIe1pbNKhtghIRFnQmhRIk
- iD+w==
-X-Gm-Message-State: AOAM530KHiNh36kfH/A+f9fwNx517CPg5yxxip0sEc6kKKkh1ZK9swU5
- JyNMmGg6d3W0yYAlHR8q/++pkA==
-X-Received: by 2002:a63:ed49:: with SMTP id m9mr9427606pgk.323.1617908539679; 
- Thu, 08 Apr 2021 12:02:19 -0700 (PDT)
-Received: from [192.168.1.11] ([71.212.131.83])
- by smtp.gmail.com with ESMTPSA id j13sm199211pfn.103.2021.04.08.12.02.18
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 08 Apr 2021 12:02:19 -0700 (PDT)
-Subject: Re: [PATCH] target/arm: Make Thumb store insns UNDEF for Rn==1111
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20210408162402.5822-1-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <547fbc49-7dbd-e250-69e9-1188b85f668a@linaro.org>
-Date: Thu, 8 Apr 2021 12:02:17 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.1
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1lUals-0002Yt-CB
+ for qemu-arm@nongnu.org; Thu, 08 Apr 2021 15:56:56 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:58247)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1lUalq-0007xw-Pu
+ for qemu-arm@nongnu.org; Thu, 08 Apr 2021 15:56:56 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1617911814;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=cH6dQwZ6YCP+7uE2hsHG8RuSZEYpib8DHunfLn6gtb8=;
+ b=USy6AhiHOjR4BL07J/Hcs0UnPuf1Kgmeg5lkF+F3rnu+oOJawIW2X+zTvwOMai53ntIpeI
+ KtRHoOD6moYUTqFfzJ5y827Z3DYbK7YGweY6aPG4an7vNoSnJu5giyHPWVtZxvNB4hk4fJ
+ CRmxMySONrj9AZqRET/HlWurgOb0Jdw=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-456-VzE_JYLDNcCfsfI0N_yhsA-1; Thu, 08 Apr 2021 15:56:50 -0400
+X-MC-Unique: VzE_JYLDNcCfsfI0N_yhsA-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3D3611A7369;
+ Thu,  8 Apr 2021 19:56:49 +0000 (UTC)
+Received: from localhost (unknown [10.40.208.6])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 58F185D9DC;
+ Thu,  8 Apr 2021 19:56:46 +0000 (UTC)
+Date: Thu, 8 Apr 2021 21:56:45 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
+Subject: Re: [PATCH-for-6.0?] hw/arm/imx25_pdk: Fix error message for
+ invalid RAM size
+Message-ID: <20210408215645.09e0d7c0@redhat.com>
+In-Reply-To: <20210407225608.1882855-1-f4bug@amsat.org>
+References: <20210407225608.1882855-1-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <20210408162402.5822-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52f;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -120,25 +113,60 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Jean-Christophe Dubois <jcd@tribudubois.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CdIGIExmRDZ3
+X-TUID: VLUhhbWxuqEo
 
-On 4/8/21 9:24 AM, Peter Maydell wrote:
-> The Arm ARM specifies that for Thumb encodings of the various plain
-> store insns, if the Rn field is 1111 then we must UNDEF.  This is
-> different from the Arm encodings, where this case is either
-> UNPREDICTABLE or has well-defined behaviour.  The exclusive stores,
-> store-release and STRD do not have this UNDEF case for any encoding.
-> 
-> Enforce the UNDEF for this case in the Thumb plain store insns.
-> 
-> Fixes:https://bugs.launchpad.net/qemu/+bug/1922887
-> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
+On Thu,  8 Apr 2021 00:56:08 +0200
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
+
+> The i.MX25 PDK board has 2 banks for SDRAM, each can
+> address up to 256 MiB. So the total RAM usable for this
+> board is 512M. When we ask for more we get a misleading
+> error message:
+>=20
+>   $ qemu-system-arm -M imx25-pdk -m 513M
+>   qemu-system-arm: Invalid RAM size, should be 128 MiB
+>=20
+> Update the error message to better match the reality:
+>=20
+>   $ qemu-system-arm -M imx25-pdk -m 513M
+>   qemu-system-arm: RAM size more than 512 MiB is not supported
+>=20
+> Fixes: bf350daae02 ("arm/imx25_pdk: drop RAM size fixup")
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+
 > ---
->   target/arm/translate.c | 16 ++++++++++++++++
->   1 file changed, 16 insertions(+)
+>  hw/arm/imx25_pdk.c | 5 ++---
+>  1 file changed, 2 insertions(+), 3 deletions(-)
+>=20
+> diff --git a/hw/arm/imx25_pdk.c b/hw/arm/imx25_pdk.c
+> index 1c201d0d8ed..51fde71b1bd 100644
+> --- a/hw/arm/imx25_pdk.c
+> +++ b/hw/arm/imx25_pdk.c
+> @@ -67,7 +67,6 @@ static struct arm_boot_info imx25_pdk_binfo;
+> =20
+>  static void imx25_pdk_init(MachineState *machine)
+>  {
+> -    MachineClass *mc =3D MACHINE_GET_CLASS(machine);
+>      IMX25PDK *s =3D g_new0(IMX25PDK, 1);
+>      unsigned int ram_size;
+>      unsigned int alias_offset;
+> @@ -79,8 +78,8 @@ static void imx25_pdk_init(MachineState *machine)
+> =20
+>      /* We need to initialize our memory */
+>      if (machine->ram_size > (FSL_IMX25_SDRAM0_SIZE + FSL_IMX25_SDRAM1_SI=
+ZE)) {
+> -        char *sz =3D size_to_str(mc->default_ram_size);
+> -        error_report("Invalid RAM size, should be %s", sz);
+> +        char *sz =3D size_to_str(FSL_IMX25_SDRAM0_SIZE + FSL_IMX25_SDRAM=
+1_SIZE);
+> +        error_report("RAM size more than %s is not supported", sz);
+>          g_free(sz);
+>          exit(EXIT_FAILURE);
+>      }
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-
-r~

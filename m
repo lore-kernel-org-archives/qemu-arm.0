@@ -1,163 +1,108 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id g13sm3136830wrr.9.2021.04.08.02.04.33
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 08 Apr 2021 02:04:33 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 8D2771FF7E;
-	Thu,  8 Apr 2021 10:04:32 +0100 (BST)
-References: <20210406174031.64299-1-richard.henderson@linaro.org>
- <20210406174031.64299-5-richard.henderson@linaro.org>
-User-agent: mu4e 1.5.11; emacs 28.0.50
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Subject: Re: [PATCH v4 04/12] target/arm: Split out mte_probe_int
-Date: Thu, 08 Apr 2021 10:01:39 +0100
-In-reply-to: <20210406174031.64299-5-richard.henderson@linaro.org>
-Message-ID: <87v98xtae7.fsf@linaro.org>
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp231584lfr;
+        Thu, 8 Apr 2021 01:51:17 -0700 (PDT)
+X-Received: by 2002:a05:6402:10c6:: with SMTP id p6mr9780253edu.241.1617871877092;
+        Thu, 08 Apr 2021 01:51:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617871877; cv=none;
+        d=google.com; s=arc-20160816;
+        b=vVtkOvgs8w4JYm6eWHolyHal+tox4by0dsYVZH3aULyI2UpeIsPIBMF1C9XXqW/wKB
+         0FKuhu3XisulLyS/DKX+Da2/x5DMcmQDBz50vWWTErOyV2YHUH/KPde0KkByta+Q0G9Z
+         7ND7EUgIPw7ASbuU77ellbkfxr+f9pR/Z0WqeAzBC0nhDG/bCHnNx5uepFb99Yu4kc+S
+         ypekKsZwklmyDa6TWG1USt5jzyHBwLgTFgjYLryvgU6GWq2JAi5sT7N1uOsAXhA20lUm
+         Ric3115DZZMMK2sQQBKchuwMdZPOhzL+PVfnX9EGpjhzj3NQURev4Cyh7mWB3zN6LDMn
+         5kXQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=U+318EFWwHmx9RNFegnCSZS7fLEHu0A0/MzU83yeLu0=;
+        b=n9D1CxSX9jC+iKrbHauFEU2nCH618FcA6+EuvfU4VUFhSxJluz+ROGQat/Z4H9myXT
+         Vaa2807/+pk5AYTp1yyrKeqzhF0MxFJUNCQChzNmmPhzTKfYx5TXyzZ3NjNPf38LwDmU
+         5DuoJ4t5kXksfU84Ybpm51CcBJb6Pn5SY5tTSFownAshrZFbhT/9l9X7+yGuLMnLE43P
+         6ZTpEN31GMm8YKPy807DQ/G/yagev52Ipn1Af953lVfKqFRuRayz8sP0o3+SxWhfXaJv
+         MgMIjeehntTyhdDzgAdsVZEizGLw9qeVoxi36sstVuD7NH6yol3s0H2BgKc4kB8ejdQo
+         L82A==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=rRkf50TV;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id k5sor27054219edo.16.2021.04.08.01.51.17
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Thu, 08 Apr 2021 01:51:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=rRkf50TV;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=U+318EFWwHmx9RNFegnCSZS7fLEHu0A0/MzU83yeLu0=;
+        b=rRkf50TVAWdC9iNmF3R4atOh+g4F/j6AGW/RS9Xz8+XubQNZZpD8bcb0PGh1lWjQjy
+         LpsU2Jmcuv3GxHxHD5TQRETCvIoslhsj40zBhRcgA9/7VMZNzZcVzq2SbJrXW0MQvnj3
+         Uoe9eWAgSYU2vY0gK+B2ZKXNIFddewmo+ich50Yz+Zj6rKD2pJ/5Rhp6U1YudOc4+uEh
+         B979b3gOXUlzsZv5Mk4meGPgZYffnmXnCX9SfY3VbUFVgpZlMvZosCGc1ORulhSK/T4a
+         e2pKexAXcwV7Zn6Bvs+QW2uFv5TO5VsSGIZq5ZZHCTdvWXi4q4bgvct2Uwi+F17TQCXz
+         zqEg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=U+318EFWwHmx9RNFegnCSZS7fLEHu0A0/MzU83yeLu0=;
+        b=aHZLygl8m0UJceMGDEzV9JQ1ir+1J1Dl7bkEAg+Mrii3h8Bix4sFzKtnR6VhJEdE94
+         MoaycwmFqEuYHKMcwxC0/sz1S+9FaTUweSZg2IQFuropV+fenwMVAmd/nW6yKSj/eWF9
+         IzN3xjiSMMa1yS5yNMi3N/8Eb//bKLU7YaR9kO219VRozEi1aXZV0dJ5QAtZCbIprlAC
+         DkZOgPdYuLAbkTgw3ctb6cVqMzpB7AQPRF8ilY7sCEttzfu70VToILiIIlDAa8VTht2Z
+         bNp1Jz6b2wh77Cn1R5X0WLtDmT6gC5e/6OZUCLLcBrKSkMyVPvNS4aDI6W9uKXJhcThb
+         L/fQ==
+X-Gm-Message-State: AOAM533r9zsHZwfEF2Ii+dAtmyb05kgEIWGDEF9Py7PEJZAUuFXPoNXy
+	viDf9XQejkqP/O4S+ckx0xGEvyrQLC2Fxr81fXaa7XSBSiKD3PBz
+X-Google-Smtp-Source: ABdhPJxEGNZikarl8tpW3Kni/wXUPEZhuJWsNtLT/aHZhlmQexuyWoNwMhK1lvvc+0j7PMStODivln3ooW+j3evxFBI=
+X-Received: by 2002:aa7:d843:: with SMTP id f3mr4313620eds.52.1617871876821;
+ Thu, 08 Apr 2021 01:51:16 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+References: <20210406174031.64299-1-richard.henderson@linaro.org>
+ <20210406174031.64299-4-richard.henderson@linaro.org> <877dleuds3.fsf@linaro.org>
+In-Reply-To: <877dleuds3.fsf@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 8 Apr 2021 08:50:36 +0000
+Message-ID: <CAFEAcA9Vc=w9d-3DkwuyY8Vzrj4d=f2zHn4OXauQRc-Vr=oQzQ@mail.gmail.com>
+Subject: Re: [PATCH v4 03/12] target/arm: Fix mte_checkN
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: Richard Henderson <richard.henderson@linaro.org>, 1921948@bugs.launchpad.net, 
+	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: tOzv6UsA2Fk6
+X-TUID: zSbCyRWUuecw
 
-
-Richard Henderson <richard.henderson@linaro.org> writes:
-
-> Split out a helper function from mte_checkN to perform
-> all of the checking and address manpulation.  So far,
-> just use this in mte_checkN itself.
+On Wed, 7 Apr 2021 at 19:54, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
+e:
 >
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/mte_helper.c | 52 +++++++++++++++++++++++++++++++----------
->  1 file changed, 40 insertions(+), 12 deletions(-)
 >
-> diff --git a/target/arm/mte_helper.c b/target/arm/mte_helper.c
-> index c87717127c..144bfa4a51 100644
-> --- a/target/arm/mte_helper.c
-> +++ b/target/arm/mte_helper.c
-> @@ -753,33 +753,45 @@ static int checkN(uint8_t *mem, int odd, int cmp, i=
-nt count)
->      return n;
->  }
->=20=20
-> -uint64_t mte_checkN(CPUARMState *env, uint32_t desc,
-> -                    uint64_t ptr, uintptr_t ra)
-> +/*
-> + * mte_probe_int:
+> Richard Henderson <richard.henderson@linaro.org> writes:
+>
+> > We were incorrectly assuming that only the first byte of an MTE access
+> > is checked against the tags.  But per the ARM, unaligned accesses are
+> > pre-decomposed into single-byte accesses.  So by the time we reach the
+> > actual MTE check in the ARM pseudocode, all accesses are aligned.
+> >
+> > Therefore, the first failure is always either the first byte of the
+> > access, or the first byte of the granule.
+> >
+> > In addition, some of the arithmetic is off for last-first -> count.
+> > This does not become directly visible until a later patch that passes
+> > single bytes into this function, so ptr =3D=3D ptr_last.
+> >
+> > Buglink: https://bugs.launchpad.net/bugs/1921948
+>
+> Minor note: you can Cc: Bug 1921948 <1921948@bugs.launchpad.net> to
+> automatically copy patches to the appropriate bugs which is useful if
+> you don't have the Cc for the reporter.
 
-nit: you might as well go full kernel-doc here as you are documenting
-the helper:
+I'm not sure cc'ing bugs on patches is very useful, though (and especially
+not for big series). I usually prefer to just add a note to the bug with
+the URL of the series in patchew afterwards.
 
-/**
- * mte_probe_int() - helper for mte_probe and mte_check
-
-> + * @env: CPU environment
-> + * @desc: MTEDESC descriptor
-> + * @ptr: virtual address of the base of the access
-> + * @fault: return virtual address of the first check failure
-> + *
-> + * Internal routine for both mte_probe and mte_check.
-> + * Return zero on failure, filling in *fault.
-> + * Return negative on trivial success for tbi disabled.
-> + * Return positive on success with tbi enabled.
-> + */
-> +static int mte_probe_int(CPUARMState *env, uint32_t desc, uint64_t ptr,
-> +                         uintptr_t ra, uint32_t total, uint64_t *fault)
->  {
->      int mmu_idx, ptr_tag, bit55;
->      uint64_t ptr_last, prev_page, next_page;
->      uint64_t tag_first, tag_last;
->      uint64_t tag_byte_first, tag_byte_last;
-> -    uint32_t total, tag_count, tag_size, n, c;
-> +    uint32_t tag_count, tag_size, n, c;
->      uint8_t *mem1, *mem2;
->      MMUAccessType type;
->=20=20
->      bit55 =3D extract64(ptr, 55, 1);
-> +    *fault =3D ptr;
->=20=20
->      /* If TBI is disabled, the access is unchecked, and ptr is not dirty=
-. */
->      if (unlikely(!tbi_check(desc, bit55))) {
-> -        return ptr;
-> +        return -1;
->      }
->=20=20
->      ptr_tag =3D allocation_tag_from_addr(ptr);
->=20=20
->      if (tcma_check(desc, bit55, ptr_tag)) {
-> -        goto done;
-> +        return 1;
->      }
->=20=20
->      mmu_idx =3D FIELD_EX32(desc, MTEDESC, MIDX);
->      type =3D FIELD_EX32(desc, MTEDESC, WRITE) ? MMU_DATA_STORE : MMU_DAT=
-A_LOAD;
-> -    total =3D FIELD_EX32(desc, MTEDESC, TSIZE);
->=20=20
->      /* Find the addr of the end of the access, and of the last element. =
-*/
->      ptr_last =3D ptr + total - 1;
-> @@ -803,7 +815,7 @@ uint64_t mte_checkN(CPUARMState *env, uint32_t desc,
->          mem1 =3D allocation_tag_mem(env, mmu_idx, ptr, type, total,
->                                    MMU_DATA_LOAD, tag_size, ra);
->          if (!mem1) {
-> -            goto done;
-> +            return 1;
->          }
->          /* Perform all of the comparisons. */
->          n =3D checkN(mem1, ptr & TAG_GRANULE, ptr_tag, tag_count);
-> @@ -829,23 +841,39 @@ uint64_t mte_checkN(CPUARMState *env, uint32_t desc,
->          }
->          if (n =3D=3D c) {
->              if (!mem2) {
-> -                goto done;
-> +                return 1;
->              }
->              n +=3D checkN(mem2, 0, ptr_tag, tag_count - c);
->          }
->      }
->=20=20
-> +    if (likely(n =3D=3D tag_count)) {
-> +        return 1;
-> +    }
-> +
->      /*
->       * If we failed, we know which granule.  For the first granule, the
->       * failure address is @ptr, the first byte accessed.  Otherwise the
->       * failure address is the first byte of the nth granule.
->       */
-> -    if (unlikely(n < tag_count)) {
-> -        uint64_t fault =3D (n =3D=3D 0 ? ptr : tag_first + n * TAG_GRANU=
-LE);
-> -        mte_check_fail(env, desc, fault, ra);
-> +    if (n > 0) {
-> +        *fault =3D tag_first + n * TAG_GRANULE;
->      }
-> +    return 0;
-> +}
->=20=20
-> - done:
-> +uint64_t mte_checkN(CPUARMState *env, uint32_t desc,
-> +                    uint64_t ptr, uintptr_t ra)
-> +{
-> +    uint64_t fault;
-> +    uint32_t total =3D FIELD_EX32(desc, MTEDESC, TSIZE);
-> +    int ret =3D mte_probe_int(env, desc, ptr, ra, total, &fault);
-> +
-> +    if (unlikely(ret =3D=3D 0)) {
-> +        mte_check_fail(env, desc, fault, ra);
-> +    } else if (ret < 0) {
-> +        return ptr;
-> +    }
->      return useronly_clean_ptr(ptr);
->  }
-
-Otherwise:
-
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-
---=20
-Alex Benn=C3=A9e
+-- PMM

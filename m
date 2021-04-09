@@ -1,102 +1,101 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp417208lfr;
-        Thu, 8 Apr 2021 05:48:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwjwXemmhOYVGiVVmKAD1MrbZIMr0Puj1vXjUnPQTPlE/2Wwt5k47JyC7ITurO9cFbUn1WR
-X-Received: by 2002:ac5:cb0b:: with SMTP id r11mr5701892vkl.13.1617886089306;
-        Thu, 08 Apr 2021 05:48:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617886089; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp1218783lfr;
+        Thu, 8 Apr 2021 23:56:06 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxVAfwDaLkTj50mAFb1e4bHVP4MN/TEFtbIfo8oNyyQY50UQJ5qLAf7VZdzT5W1hJsWARaP
+X-Received: by 2002:a5b:802:: with SMTP id x2mr11912907ybp.28.1617951366025;
+        Thu, 08 Apr 2021 23:56:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617951366; cv=none;
         d=google.com; s=arc-20160816;
-        b=byn9yqQQMSyozhIQBcS1IGyDMIjroerL4Ye5jmWi8fOP3/VuWQkzHX4jGTabCQnrlT
-         Erfa04LssJRrWGuleTAc4pmvWwlt6p4AfL0Oy1TGy+jhb/bnU5TuvrOAEb45EQIUx2MA
-         hBxhFhze4oVTgjgcvpvH1ty+tFQj49ieqGo7l+RWAJ3xdhYa96KCjxOyU6P8Kl/6JNES
-         gLKcqzVUQ3n0CA7vwHuVO4Ocf8UEkKlftA7r/gaQZfy+tiV7FMekWeWm1L/5CWSRQK1J
-         Ti7WMiyEvvEp/cb9hVz2ws0NeL6VKUAsy0ddxnsNBROCfquL8oshPcZTkF9wZpBqBekC
-         UmfQ==
+        b=DSz0SNi5rGnsQy4icKJ/W1xKpgNyp/C+lTH3TBeTKVKtZUj+OfRWcKb2DDJoJYvSMb
+         E4Lk//zPdsf3hPC3ff1CQS5oUDrIZchT4CFqaXncyNn6LmGC1Nljvxu865TG2w3zuzjN
+         eM0Kcym7B/clTtXIIwGlhqWFw4zL9TwMTIr/Xdt+yDTt3OfNCbwC7ab6DTzpqtoTVEO9
+         W7MQe8+2bC2H+trdE5y41XlrXXmegmQgPi5IvCLNOMSp8zhOok8r3s5fdlSjWe5PgYlu
+         8yQxKcRPoTSRPFI9Xb4FoXJd0vfMIxxVatwncxWtXzuHE+QWN7S3klZDzf8rXnWc+OQg
+         UW4A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=QAYUbw5XgQAHkMiEchtAHmz4INBKE1zAtZGvAkeWZck=;
-        b=sah9KG0nEvslMYB4Zin/nSOb7YPSwCvqjwF6aFjpHnI5WOS76+4oB8ZUxWe/Sjypw/
-         b7wuT3tyjEltpwWiDDBXI1ToYAi78amL+8BXEi2o4qsa33J6ohBKoYoC/rC+RyBOWj/3
-         g1PfjoXdWB+HDAJnDYwfUxlfbQRRBl5/20Oqb5HqkJPcO7ia4RZmW2clQ6l5AQItzeWA
-         3RUFoVuFKcn9OR/h6KirUdwB71hcGfn684ATQ5oulaDsd04i00kRqN6R/VLdn2x48lOG
-         7g0kYlOzBhIcY5XKXYdWvp+6ETzONbXXbYX3WxUlswAkaiDSDaRDmEJLxzeR17PkbimA
-         Parw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=SeuS5VEc+7eSn3Gpyc0iq4wxfVxM3Eyb34hKmKk61uM=;
+        b=c4IVLuD/dvsdLrLl2iwwGgRSNEHkvNBojiC9YqU1gajtZ2PmzrLXu0lRZSrEYAYC8n
+         wSFgiUk8rm8AbQ882pDE8JGVJXcyFPF41VQD840UaYd7hL7h4hMZ2jlqV8SaNx5YFhQO
+         q2pHLAev0vHqD+iuIlp1GRVhD3VNnEoqVzzIC7glcs3V7cEZxNpADx5zY4XVqLFKhklg
+         chHiCmeSjji74vk58mw7k/T644nTOOv+O30Ddk8WlE6eMGWFGSdPT2xhUm+kVszVNcNF
+         qK8n/i88tzR6YRsrWROa5LGcJmuF2xGCSeD3Jz96ZWzqTB0kuXkwgTCzARXJb1CDtvwe
+         UFmQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=aIAvUhPO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@jms.id.au header.s=google header.b=OSY1NE1u;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x12si6043168vss.210.2021.04.08.05.48.09
+        by mx.google.com with ESMTPS id c11si1803858ybq.329.2021.04.08.23.56.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Apr 2021 05:48:09 -0700 (PDT)
+        Thu, 08 Apr 2021 23:56:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=aIAvUhPO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52564 helo=lists1p.gnu.org)
+       dkim=fail header.i=@jms.id.au header.s=google header.b=OSY1NE1u;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:43072 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lUU4u-0002ls-Kc
-	for alex.bennee@linaro.org; Thu, 08 Apr 2021 08:48:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48086)
+	id 1lUl3l-0006zM-7M
+	for alex.bennee@linaro.org; Fri, 09 Apr 2021 02:56:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54630)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lUU4e-0002kE-7t
- for qemu-arm@nongnu.org; Thu, 08 Apr 2021 08:47:52 -0400
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629]:41774)
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1lUl3C-0006y1-6e; Fri, 09 Apr 2021 02:55:30 -0400
+Received: from mail-qk1-x72b.google.com ([2607:f8b0:4864:20::72b]:42546)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lUU4b-0007G9-LS
- for qemu-arm@nongnu.org; Thu, 08 Apr 2021 08:47:52 -0400
-Received: by mail-ej1-x629.google.com with SMTP id g17so44954ejp.8
- for <qemu-arm@nongnu.org>; Thu, 08 Apr 2021 05:47:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1lUl3A-0003PW-FM; Fri, 09 Apr 2021 02:55:29 -0400
+Received: by mail-qk1-x72b.google.com with SMTP id y5so4878018qkl.9;
+ Thu, 08 Apr 2021 23:55:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=QAYUbw5XgQAHkMiEchtAHmz4INBKE1zAtZGvAkeWZck=;
- b=aIAvUhPO7Cq015u6T8+6Q3fP2cnZaJmfcfO875KbHBIt3U38SNILKbl8XhXYeoXc9T
- k4nRoVIZeq5+yQjU7yWJz+ISueSfApNlHPvuPrvEvCAw1rd53MgBnYA48MtB+o8XaumK
- 7+gA1UtROA17rCjSa70L+dKymMV1N4psuVe0VO6NmxJD3yhP3bjO1sKyx0O2eKpD7e6V
- wSIlV4IasAsVvzM3259hwqGCSFyF8Lth39jvQZa0Z91llb1HXwucXsVNgxctXgwczFZW
- WhQNnnTm6noofH0OLNRBI4SP4Z4Xovaj7aIHA4WsXVYjKtLG6aO5HOm9V8gZ/mmhrkkf
- nq7g==
+ :cc:content-transfer-encoding;
+ bh=SeuS5VEc+7eSn3Gpyc0iq4wxfVxM3Eyb34hKmKk61uM=;
+ b=OSY1NE1uk7DLd9s21ItX8bAPsZEcpvLATgppOcrOo1s3aoVXgZmKYNt9pPnpRos7aH
+ 7pEEF9zF2bGsGWsM8JsM018HAJeXEtODIAXtEfVzYnKwCr8QgzmEte5V8Q0YX2TEWTWz
+ uYYkhdGu/+0/4gL3UvKol40wFXYUuNeb/SV48=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=QAYUbw5XgQAHkMiEchtAHmz4INBKE1zAtZGvAkeWZck=;
- b=bfqpSR4675yV2OW0jGXng0j0KlafFXbtvf6tFUrxCbVoRldsbm9TF41Tx09hQ2taLB
- CsXqz/cN/kYzQvxjSBkt4h882vKjGJvewwNesL4Eu8Nnbd9glAqc4xwsl3I7jVTKNLwJ
- bCzb5dIReFrHR5+TOyL9gAyvRhFNxPilx6DPHM0rND2a0YmY6U6jwmWUMFJGKkq5tbyk
- CAE1AVPt4utfzTy7RxHPDJDw2Iz8rhfOnfr1dWO2PKlXRwtbNw9BNaRFOrw7auZ1ilC2
- muYRCAt40YcBdlIbu8IulBZaYr4XENozoF//wawP3MyGw2iRlVjJ5KOPVyCatdzOr6PM
- oaxw==
-X-Gm-Message-State: AOAM530Vr3YH3s+n0iKzQzyhNgNclmWkXqZXO4hhBntH6Pn54HSiuHgn
- 8zd1vdOUgnSIGThfTPlYjzD8fHw5Z/GDjEPKGrA1Xw==
-X-Received: by 2002:a17:906:881:: with SMTP id
- n1mr10323609eje.56.1617886067873; 
- Thu, 08 Apr 2021 05:47:47 -0700 (PDT)
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=SeuS5VEc+7eSn3Gpyc0iq4wxfVxM3Eyb34hKmKk61uM=;
+ b=Z31euujvGMhvSqqq+XA1XVplJeiU7Pa4o/BwqG7Mf29t7pZB4CbKf6tk/HIkVAc9lt
+ D4x3BxIfmMPK/du9P1qdlTJ5icq2fPkV0dXU3FCIKcB+1jXwqV3096H27OiWHS3cGndX
+ 3c7MglThyoX9+h/Fiw5EWerJ6rb44Affr2iUbtBUN/2+WZgEwQiWZZwF/XQpVoML4Jfx
+ PBmne7xk875f7VgiaG3CrUvHP0SkbqFuFb3Kq8MHLrLnWQQ5bbiH4xRCL4rB/I8G5Yzg
+ JIstL8wKycwSF8MkW747Iu50GL3uDh04CDNSKUTA403x4KnIwo3CxKe43Q4XHYK4twrx
+ n26w==
+X-Gm-Message-State: AOAM530B9f7ydUF16Qvnpmw5TqIPhMBD/UaeMlWBPnvIdZz4N3ywTTw7
+ BZtvfTuGNdZw0BfJxMwoU9K8wd5XZPkyt8mgFyE=
+X-Received: by 2002:a05:620a:c11:: with SMTP id
+ l17mr12545938qki.487.1617951326923; 
+ Thu, 08 Apr 2021 23:55:26 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210406174031.64299-1-richard.henderson@linaro.org>
-In-Reply-To: <20210406174031.64299-1-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 8 Apr 2021 12:47:07 +0000
-Message-ID: <CAFEAcA_9v7i1p59EThNPfuJHxXqwgavupV4otqaZMt9Q5d=SsA@mail.gmail.com>
-Subject: Re: [PATCH v4 00/12] target/arm mte fixes
-To: Richard Henderson <richard.henderson@linaro.org>
+References: <20210407171637.777743-1-clg@kaod.org>
+ <20210407171637.777743-15-clg@kaod.org>
+In-Reply-To: <20210407171637.777743-15-clg@kaod.org>
+From: Joel Stanley <joel@jms.id.au>
+Date: Fri, 9 Apr 2021 06:55:14 +0000
+Message-ID: <CACPK8Xe759bbuEHybMnHyN2JsszAp41b=yq-cpnM8PnQU-N-uQ@mail.gmail.com>
+Subject: Re: [PATCH 14/24] aspeed/smc: Add a 'features' attribute to the
+ object class
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::629;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x629.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::72b;
+ envelope-from=joel.stan@gmail.com; helo=mail-qk1-x72b.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -109,41 +108,188 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8sdiduuj5wvt
+X-TUID: soHm7znQnuAj
 
-On Tue, 6 Apr 2021 at 18:41, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+On Wed, 7 Apr 2021 at 17:17, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
 >
-> Changes for v4:
->   * Fix tag count computation error in mte_checkN, which when used
->     by mte_check1 in patch 5, caused all sorts of KASAN failures.
->   * Fix PAGE_ANON / PAGE_TARGET_1 overlap.
+> It will simplify extensions of the SMC model.
 >
->
-> r~
->
->
-> Richard Henderson (12):
->   accel/tcg: Preserve PAGE_ANON when changing page permissions
->   target/arm: Check PAGE_WRITE_ORG for MTE writeability
->   target/arm: Fix mte_checkN
->   target/arm: Split out mte_probe_int
->   target/arm: Fix unaligned checks for mte_check1, mte_probe1
->   test/tcg/aarch64: Add mte-5
->   target/arm: Replace MTEDESC ESIZE+TSIZE with SIZEM1
->   target/arm: Merge mte_check1, mte_checkN
->   target/arm: Rename mte_probe1 to mte_probe
->   target/arm: Simplify sve mte checking
->   target/arm: Remove log2_esize parameter to gen_mte_checkN
->   exec: Fix overlap of PAGE_ANON and PAGE_TARGET_1
+> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 
-So, what should we do with this series for 6.0 ? We'll be at rc3
-next week, and this big a change seems risky at this point
-in the cycle. Is there anything in here that's worth extracting
-as a for-6.0 change? (maybe patches 1, 2, 12?)
+Reviewed-by: Joel Stanley <joel@jms.id.au>
 
-thanks
--- PMM
+> ---
+>  include/hw/ssi/aspeed_smc.h |  2 +-
+>  hw/ssi/aspeed_smc.c         | 44 +++++++++++++++++++++----------------
+>  2 files changed, 26 insertions(+), 20 deletions(-)
+>
+> diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
+> index 6ea2871cd899..07879fd1c4a7 100644
+> --- a/include/hw/ssi/aspeed_smc.h
+> +++ b/include/hw/ssi/aspeed_smc.h
+> @@ -47,7 +47,7 @@ typedef struct AspeedSMCController {
+>      const AspeedSegments *segments;
+>      hwaddr flash_window_base;
+>      uint32_t flash_window_size;
+> -    bool has_dma;
+> +    uint32_t features;
+>      hwaddr dma_flash_mask;
+>      hwaddr dma_dram_mask;
+>      uint32_t nregs;
+> diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+> index 50ea907aef74..4521bbd4864e 100644
+> --- a/hw/ssi/aspeed_smc.c
+> +++ b/hw/ssi/aspeed_smc.c
+> @@ -257,6 +257,12 @@ static uint32_t aspeed_2600_smc_segment_to_reg(const=
+ AspeedSMCState *s,
+>                                                 const AspeedSegments *seg=
+);
+>  static void aspeed_2600_smc_reg_to_segment(const AspeedSMCState *s,
+>                                             uint32_t reg, AspeedSegments =
+*seg);
+> +#define ASPEED_SMC_FEATURE_DMA       0x1
+> +
+> +static inline bool aspeed_smc_has_dma(const AspeedSMCState *s)
+> +{
+> +    return !!(s->ctrl->features & ASPEED_SMC_FEATURE_DMA);
+> +}
+>
+>  static const AspeedSMCController controllers[] =3D {
+>      {
+> @@ -271,7 +277,7 @@ static const AspeedSMCController controllers[] =3D {
+>          .segments          =3D aspeed_segments_legacy,
+>          .flash_window_base =3D ASPEED_SOC_SMC_FLASH_BASE,
+>          .flash_window_size =3D 0x6000000,
+> -        .has_dma           =3D false,
+> +        .features          =3D 0x0,
+>          .nregs             =3D ASPEED_SMC_R_SMC_MAX,
+>          .segment_to_reg    =3D aspeed_smc_segment_to_reg,
+>          .reg_to_segment    =3D aspeed_smc_reg_to_segment,
+> @@ -287,7 +293,7 @@ static const AspeedSMCController controllers[] =3D {
+>          .segments          =3D aspeed_segments_fmc,
+>          .flash_window_base =3D ASPEED_SOC_FMC_FLASH_BASE,
+>          .flash_window_size =3D 0x10000000,
+> -        .has_dma           =3D true,
+> +        .features          =3D ASPEED_SMC_FEATURE_DMA,
+>          .dma_flash_mask    =3D 0x0FFFFFFC,
+>          .dma_dram_mask     =3D 0x1FFFFFFC,
+>          .nregs             =3D ASPEED_SMC_R_MAX,
+> @@ -305,7 +311,7 @@ static const AspeedSMCController controllers[] =3D {
+>          .segments          =3D aspeed_segments_spi,
+>          .flash_window_base =3D ASPEED_SOC_SPI_FLASH_BASE,
+>          .flash_window_size =3D 0x10000000,
+> -        .has_dma           =3D false,
+> +        .features          =3D 0x0,
+>          .nregs             =3D ASPEED_SMC_R_SPI_MAX,
+>          .segment_to_reg    =3D aspeed_smc_segment_to_reg,
+>          .reg_to_segment    =3D aspeed_smc_reg_to_segment,
+> @@ -321,7 +327,7 @@ static const AspeedSMCController controllers[] =3D {
+>          .segments          =3D aspeed_segments_ast2500_fmc,
+>          .flash_window_base =3D ASPEED_SOC_FMC_FLASH_BASE,
+>          .flash_window_size =3D 0x10000000,
+> -        .has_dma           =3D true,
+> +        .features          =3D ASPEED_SMC_FEATURE_DMA,
+>          .dma_flash_mask    =3D 0x0FFFFFFC,
+>          .dma_dram_mask     =3D 0x3FFFFFFC,
+>          .nregs             =3D ASPEED_SMC_R_MAX,
+> @@ -339,7 +345,7 @@ static const AspeedSMCController controllers[] =3D {
+>          .segments          =3D aspeed_segments_ast2500_spi1,
+>          .flash_window_base =3D ASPEED_SOC_SPI_FLASH_BASE,
+>          .flash_window_size =3D 0x8000000,
+> -        .has_dma           =3D false,
+> +        .features          =3D 0x0,
+>          .nregs             =3D ASPEED_SMC_R_MAX,
+>          .segment_to_reg    =3D aspeed_smc_segment_to_reg,
+>          .reg_to_segment    =3D aspeed_smc_reg_to_segment,
+> @@ -355,7 +361,7 @@ static const AspeedSMCController controllers[] =3D {
+>          .segments          =3D aspeed_segments_ast2500_spi2,
+>          .flash_window_base =3D ASPEED_SOC_SPI2_FLASH_BASE,
+>          .flash_window_size =3D 0x8000000,
+> -        .has_dma           =3D false,
+> +        .features          =3D 0x0,
+>          .nregs             =3D ASPEED_SMC_R_MAX,
+>          .segment_to_reg    =3D aspeed_smc_segment_to_reg,
+>          .reg_to_segment    =3D aspeed_smc_reg_to_segment,
+> @@ -371,7 +377,7 @@ static const AspeedSMCController controllers[] =3D {
+>          .segments          =3D aspeed_segments_ast2600_fmc,
+>          .flash_window_base =3D ASPEED26_SOC_FMC_FLASH_BASE,
+>          .flash_window_size =3D 0x10000000,
+> -        .has_dma           =3D true,
+> +        .features          =3D ASPEED_SMC_FEATURE_DMA,
+>          .dma_flash_mask    =3D 0x0FFFFFFC,
+>          .dma_dram_mask     =3D 0x3FFFFFFC,
+>          .nregs             =3D ASPEED_SMC_R_MAX,
+> @@ -389,7 +395,7 @@ static const AspeedSMCController controllers[] =3D {
+>          .segments          =3D aspeed_segments_ast2600_spi1,
+>          .flash_window_base =3D ASPEED26_SOC_SPI_FLASH_BASE,
+>          .flash_window_size =3D 0x10000000,
+> -        .has_dma           =3D true,
+> +        .features          =3D ASPEED_SMC_FEATURE_DMA,
+>          .dma_flash_mask    =3D 0x0FFFFFFC,
+>          .dma_dram_mask     =3D 0x3FFFFFFC,
+>          .nregs             =3D ASPEED_SMC_R_MAX,
+> @@ -407,7 +413,7 @@ static const AspeedSMCController controllers[] =3D {
+>          .segments          =3D aspeed_segments_ast2600_spi2,
+>          .flash_window_base =3D ASPEED26_SOC_SPI2_FLASH_BASE,
+>          .flash_window_size =3D 0x10000000,
+> -        .has_dma           =3D true,
+> +        .features          =3D ASPEED_SMC_FEATURE_DMA,
+>          .dma_flash_mask    =3D 0x0FFFFFFC,
+>          .dma_dram_mask     =3D 0x3FFFFFFC,
+>          .nregs             =3D ASPEED_SMC_R_MAX,
+> @@ -997,11 +1003,11 @@ static uint64_t aspeed_smc_read(void *opaque, hwad=
+dr addr, unsigned int size)
+>          addr =3D=3D R_CE_CMD_CTRL ||
+>          addr =3D=3D R_INTR_CTRL ||
+>          addr =3D=3D R_DUMMY_DATA ||
+> -        (s->ctrl->has_dma && addr =3D=3D R_DMA_CTRL) ||
+> -        (s->ctrl->has_dma && addr =3D=3D R_DMA_FLASH_ADDR) ||
+> -        (s->ctrl->has_dma && addr =3D=3D R_DMA_DRAM_ADDR) ||
+> -        (s->ctrl->has_dma && addr =3D=3D R_DMA_LEN) ||
+> -        (s->ctrl->has_dma && addr =3D=3D R_DMA_CHECKSUM) ||
+> +        (aspeed_smc_has_dma(s) && addr =3D=3D R_DMA_CTRL) ||
+> +        (aspeed_smc_has_dma(s) && addr =3D=3D R_DMA_FLASH_ADDR) ||
+> +        (aspeed_smc_has_dma(s) && addr =3D=3D R_DMA_DRAM_ADDR) ||
+> +        (aspeed_smc_has_dma(s) && addr =3D=3D R_DMA_LEN) ||
+> +        (aspeed_smc_has_dma(s) && addr =3D=3D R_DMA_CHECKSUM) ||
+>          (addr >=3D R_SEG_ADDR0 &&
+>           addr < R_SEG_ADDR0 + s->ctrl->max_peripherals) ||
+>          (addr >=3D s->r_ctrl0 && addr < s->r_ctrl0 + s->ctrl->max_periph=
+erals)) {
+> @@ -1290,13 +1296,13 @@ static void aspeed_smc_write(void *opaque, hwaddr=
+ addr, uint64_t data,
+>          s->regs[addr] =3D value & 0xff;
+>      } else if (addr =3D=3D R_INTR_CTRL) {
+>          s->regs[addr] =3D value;
+> -    } else if (s->ctrl->has_dma && addr =3D=3D R_DMA_CTRL) {
+> +    } else if (aspeed_smc_has_dma(s) && addr =3D=3D R_DMA_CTRL) {
+>          aspeed_smc_dma_ctrl(s, value);
+> -    } else if (s->ctrl->has_dma && addr =3D=3D R_DMA_DRAM_ADDR) {
+> +    } else if (aspeed_smc_has_dma(s) && addr =3D=3D R_DMA_DRAM_ADDR) {
+>          s->regs[addr] =3D DMA_DRAM_ADDR(s, value);
+> -    } else if (s->ctrl->has_dma && addr =3D=3D R_DMA_FLASH_ADDR) {
+> +    } else if (aspeed_smc_has_dma(s) && addr =3D=3D R_DMA_FLASH_ADDR) {
+>          s->regs[addr] =3D DMA_FLASH_ADDR(s, value);
+> -    } else if (s->ctrl->has_dma && addr =3D=3D R_DMA_LEN) {
+> +    } else if (aspeed_smc_has_dma(s) && addr =3D=3D R_DMA_LEN) {
+>          s->regs[addr] =3D DMA_LENGTH(value);
+>      } else {
+>          qemu_log_mask(LOG_UNIMP, "%s: not implemented: 0x%" HWADDR_PRIx =
+"\n",
+> @@ -1412,7 +1418,7 @@ static void aspeed_smc_realize(DeviceState *dev, Er=
+ror **errp)
+>      }
+>
+>      /* DMA support */
+> -    if (s->ctrl->has_dma) {
+> +    if (aspeed_smc_has_dma(s)) {
+>          aspeed_smc_dma_setup(s, errp);
+>      }
+>  }
+> --
+> 2.26.3
+>

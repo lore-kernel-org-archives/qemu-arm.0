@@ -1,103 +1,103 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp1204245lfr;
-        Thu, 8 Apr 2021 23:29:48 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJybq+Z2t0ylNW9mbPyZgbgrAwk9JDHZfQFotSve2v5jJ+PhB/2r9vLFnEO3Za4lARe2beOH
-X-Received: by 2002:a92:ad07:: with SMTP id w7mr8573812ilh.98.1617949787899;
-        Thu, 08 Apr 2021 23:29:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617949787; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp1204338lfr;
+        Thu, 8 Apr 2021 23:29:56 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxw0sl76GTJER7WiV2iU0T6ooLWViBPMQk6oM8KAPaQ5nb16WX5vMsZWwEU/WHq8E83PdRX
+X-Received: by 2002:a05:6638:2591:: with SMTP id s17mr12500778jat.87.1617949795914;
+        Thu, 08 Apr 2021 23:29:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617949795; cv=none;
         d=google.com; s=arc-20160816;
-        b=KPxK25EBmkNvSppsOK/xK2uanjHlnnJYJd8UAFOVDcsUvMm8f1L+nkp58SdOisUx1p
-         b3+hm9rjpKEHgevn2ICwV+tJFYnhzhta5GPi273NjxiC31Uf2e5m2yoFQx+MIeITe9DP
-         G2rxBXz90MhXdyQbCI/1Q9piNUB+SdzK/ZvV65yYQrIEHfZuFiV9Hd9VW5paKPZ4JkmW
-         VsayE0gH9J60L4UFSsfiHq2M5fx17M+VQNVUmGUftIC/VrnArJKFFtSdwRKVPO8ChoR/
-         xql88nBqfmhp5VNXhfklGOyEy8+RCADGg8wIoSpfTA3Z4H6bbiijnWEDEW+OXx4/OM5U
-         6zWQ==
+        b=ixJkIUQsvNd6NEI4yl6W3w/6+OZC8u3i1mqhkCvNVLhHq/ZgArBmGCQFCEu09TIhu7
+         5jaO9V1iBMXcKmc/qZEjmQb5Dtk0CWD1/Pyjg8vIH3IY6j4H8nmoDLVJMx0PYJPAQKT6
+         yLZ6bK/tqLcl4MGJp1bi4Mj0f8POtxb5TIeQbc2YW9GQ7h/0Yk2zb7zficTUlKeheDcf
+         m2Um43Dnkts4AL6avC6m/8LwAmenfvznhr/nsm7mGRfBfLJ1rl2oSDUxVL9Alf7SCttf
+         sLrhJBMztQLxx8I0E+1ToRX3f93RPz7cjR35erGCintSbzkJ1cs4w7LXtHM01FtapT0u
+         4MIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=KM2bACU647mjpsDpzpNgymCuMSg/hlg69APP0D5FAlI=;
-        b=TQtNF0+WXRPmwvwiNT8gKrhgEue5BEFA9BBayUegbP/807NTM2y5HwAGtwI6jqJhkz
-         esBtowc4zduWCenReUNKU1knDcdkyyo45Xs3MxVv23VGVv315O6fqOzc0paLZ9HElLoA
-         9u9aWxP9rym3cIlznK/2F+waprE86RFuoxu7PQB6CzIO79tby4dRZ5FTWoU6byaiYXOi
-         r5G/vBmTfGM10wIPl1dm/JYf9Sj356dBnGdc8KUDZNASyAC3Voh2F0Xr1CAXwB7kCfi2
-         jKIC/QXF+lgGHpEorHZy3p54peJ1NZ5xDqZikFrcGVHJaYHZBNQCIgxIa9LL8EwyfKZV
-         vzpg==
+        bh=Zv8F1mVV51iuCp3WfDxO+akUI3QLMou50E1/QnZlhLk=;
+        b=THey0vd9+ryeGqx/e8oPinYo1rjhMOQV6YY1X2olxL/W1F7xdVX21sVdEI+7Wod14B
+         pyGVRMG82SJmvJkM/QWe1f7JoM4jCtCzp53zLywmZLg4rQswHIXXZFflFQhDYcOcjtbE
+         /OdP+Q/ba++OH/pM2jLMOylSYZzf3DmJmKZl8m5wtUmFekac+VL38rL7DZwgNc+KPoAe
+         tH3oxbQdHj+ur6NWZacbVifiwuJEM9Z/1vhJ3S0Hw7azoplZ7LRzND/Xj+6NNSFPavNT
+         3Vvw/qTDoDZOYNHGgIiSTtAJ0BciaymhbLQLE0SDtivCE620YtydvWHQ7+FJGpEr2Qrp
+         xutA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=sFsdBlHq;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qxd+RzbM;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j8si1657387jat.114.2021.04.08.23.29.47
+        by mx.google.com with ESMTPS id f19si1834908jaq.32.2021.04.08.23.29.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Apr 2021 23:29:47 -0700 (PDT)
+        Thu, 08 Apr 2021 23:29:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=sFsdBlHq;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qxd+RzbM;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:39376 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40128 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lUkeJ-0001Dy-3p
-	for alex.bennee@linaro.org; Fri, 09 Apr 2021 02:29:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47952)
+	id 1lUkeR-0001Wc-7J
+	for alex.bennee@linaro.org; Fri, 09 Apr 2021 02:29:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47924)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lUkZ5-0004V7-ED; Fri, 09 Apr 2021 02:24:23 -0400
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c]:46907)
+ id 1lUkZ4-0004T3-1Y; Fri, 09 Apr 2021 02:24:22 -0400
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635]:35683)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lUkZ3-0001SS-3j; Fri, 09 Apr 2021 02:24:23 -0400
-Received: by mail-ej1-x62c.google.com with SMTP id u21so6814776ejo.13;
- Thu, 08 Apr 2021 23:24:20 -0700 (PDT)
+ id 1lUkZ0-0001R4-Nx; Fri, 09 Apr 2021 02:24:21 -0400
+Received: by mail-ej1-x635.google.com with SMTP id u17so6872816ejk.2;
+ Thu, 08 Apr 2021 23:24:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=KM2bACU647mjpsDpzpNgymCuMSg/hlg69APP0D5FAlI=;
- b=sFsdBlHqI21NWowVevVCbm58EHUNmABa9M6WocYFi0KlG8UcktrHQ6dA24yFL9Kfut
- AGiwUyj51uwNwKBMADtr2QtgftcEzFSQEeP4rLDEmGs5KhG6aq1JOB1TKc9217SujshR
- /DrYAK6bYKUk7fp3PUwZ/ipDa7Kf7qjOIzzZAe3v9Ov4tou288F6U08Hnw1ifN7cxjzm
- H04m9Ed+rzkoxNM/uo0szEazltGW1TG1mU9IXbJv4dveMd0kzwPHy5bVqLCbQLDyiRgk
- 5NoRdDFn/rXkTqnVtPDrXSp7o1EjpMWsFIOspacJrtKqFk9CLjLxvhizxOYJJqvDjmkF
- 7jkA==
+ bh=Zv8F1mVV51iuCp3WfDxO+akUI3QLMou50E1/QnZlhLk=;
+ b=qxd+RzbM5kMKgsvTyLiyNQgr71qrrYTmogHq0FfpuhG+Z3388PwJTdpgz0BAA9q3HH
+ gY5ixnpIn3/gAfn/7axlIoG28w9O23qJkEENiko+LHkKz2NUR3A5/kJAaL4GnFr/qaL1
+ X0RekDtZA88dYcv8cUVPFXCrkPKR4QlGaxjEiBaMLOajIpzf9zyHrvR01HC+Fokp2Zax
+ ULzANGijajblICV5vDONcOpLAFZTkLQ8ZQSqeCqjGT8J+X0qbXDJXwrIpvMH6T4/Jq42
+ r+R4gD4/9qkJfwVAU3P9dSX5Rr5l6M3UwW9CRaPxW+lT2JsHQ1/SrFswd4VWONxcIS68
+ +1/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=KM2bACU647mjpsDpzpNgymCuMSg/hlg69APP0D5FAlI=;
- b=kR2qbPq+Ziw8+v6SI4J3W10L4ex9hAPF/iwaPP0fLNLnfCr66Ihmq7LuYWnTxD7ZgZ
- CZe/OC4HSX5wR5QV5kxk9RUHXtbGht1tDcv/4IYtzGlCirLf0uh9XNqkUGOyuPAJXyT6
- GwRtcsz9k8kebZQMt90kcx0bZEGqzEcQORb3Nho1xUWWQFfSKMjml5HjD1b21PjvL69H
- 5OnkL1KEsfCI6HYtBIjUXIPRdwykgaVvnn4BIm7R5rmYHCfZvbiMSNmJKw82Y64RaeYS
- iZp4Hs4T9CJq8qpRo2Zw1nSV/MGYzPZ7C9RlFhB7Bf4g+lYCqYQbCvIKrmIVHdl5wnZw
- xi5A==
-X-Gm-Message-State: AOAM532IXY9p1lZBrUToq0mb//MRAV6ZB++w2l5chvN6FFVMBFvdyBwr
- VW3ebQDC6N56OX4ybYmPYP9vceg0079mQw==
-X-Received: by 2002:a17:906:eb88:: with SMTP id
- mh8mr14958512ejb.74.1617949459153; 
- Thu, 08 Apr 2021 23:24:19 -0700 (PDT)
+ bh=Zv8F1mVV51iuCp3WfDxO+akUI3QLMou50E1/QnZlhLk=;
+ b=hoZozFaDFlj9RpysN/YBIOwXWh23/d1kGggSeYqVoGRJszsb49PAqdTn9lb1JW4Wog
+ KipvvmK19F48M8nX00xUuqOyjTpbOk6I0ETdk2xnBi2/1SDDM+eRdws3lHtZHqG8QLfv
+ JQl5BQfgB5cOgdv+3+uH8Oi3f1ZavaYPGsunFaEDw8w67F/S//apzpucJIQKlJ9eRub3
+ AK4a/pLW4vhdfhImK/eEoCD3UQWtbyDkGXrpTG0BpC6hcTpWwZ+udHcGhMpduoMMrxa7
+ fmEOrG/2cdIgqQRRhmeLR5qzaDSoqWhnYAWMPo+oOuxz8S1YVbxX9D85RsN8XxBMaqvD
+ hxYw==
+X-Gm-Message-State: AOAM5324tuJPUv/1jm9yash/HnNXrOql/BIWXPTehmlwCFaYghCOZmBN
+ /FV/H4uLHbMCSI5niK7pK/xQKwHqzGowqA==
+X-Received: by 2002:a17:906:6b8c:: with SMTP id
+ l12mr14409061ejr.511.1617949453870; 
+ Thu, 08 Apr 2021 23:24:13 -0700 (PDT)
 Received: from x1w.redhat.com (17.red-88-21-201.staticip.rima-tde.net.
  [88.21.201.17])
- by smtp.gmail.com with ESMTPSA id a9sm846600eda.13.2021.04.08.23.24.17
+ by smtp.gmail.com with ESMTPSA id b24sm719251ejq.75.2021.04.08.23.24.12
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 08 Apr 2021 23:24:18 -0700 (PDT)
+ Thu, 08 Apr 2021 23:24:13 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [RFC PATCH-for-6.1 3/9] hw/arm: Use new
+Subject: [RFC PATCH-for-6.1 2/9] hw/core/machine: Add
  machine_create_constant_clock() helper
-Date: Fri,  9 Apr 2021 08:23:55 +0200
-Message-Id: <20210409062401.2350436-4-f4bug@amsat.org>
+Date: Fri,  9 Apr 2021 08:23:54 +0200
+Message-Id: <20210409062401.2350436-3-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.3
 In-Reply-To: <20210409062401.2350436-1-f4bug@amsat.org>
 References: <20210409062401.2350436-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x62c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::635;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x635.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -125,66 +125,76 @@ Cc: Damien Hedde <damien.hedde@greensocs.com>,
  qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: L3AbjQ5qZZZK
+X-TUID: oG6t/oQlvbxG
 
-Use the newly added machine_create_constant_clock() helper
-to create the SYSCLKs.
+Boards usually have crystal oscillators (at fixed frequency)
+feeding their various clocked components.
+
+Add a helper to create such constant clocks in the machine.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/arm/mps2-tz.c | 6 ++----
- hw/arm/mps2.c    | 3 +--
- hw/arm/musca.c   | 6 ++----
- 3 files changed, 5 insertions(+), 10 deletions(-)
+ include/hw/boards.h | 17 +++++++++++++++++
+ hw/core/machine.c   | 11 +++++++++++
+ 2 files changed, 28 insertions(+)
 
-diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
-index 3fbe3d29f95..86481fbe40d 100644
---- a/hw/arm/mps2-tz.c
-+++ b/hw/arm/mps2-tz.c
-@@ -740,10 +740,8 @@ static void mps2tz_common_init(MachineState *machine)
-     }
+diff --git a/include/hw/boards.h b/include/hw/boards.h
+index ad6c8fd5376..c8100f7a33a 100644
+--- a/include/hw/boards.h
++++ b/include/hw/boards.h
+@@ -11,6 +11,7 @@
+ #include "qemu/module.h"
+ #include "qom/object.h"
+ #include "hw/core/cpu.h"
++#include "hw/clock.h"
  
-     /* These clocks don't need migration because they are fixed-frequency */
--    mms->sysclk = clock_new(OBJECT(machine), "SYSCLK");
--    clock_set_hz(mms->sysclk, mmc->sysclk_frq);
--    mms->s32kclk = clock_new(OBJECT(machine), "S32KCLK");
--    clock_set_hz(mms->s32kclk, S32KCLK_FRQ);
-+    mms->sysclk = machine_create_constant_clock(machine, "SYSCLK", mmc->sysclk_frq);
-+    mms->s32kclk = machine_create_constant_clock(machine, "S32KCLK", S32KCLK_FRQ);
+ #define TYPE_MACHINE_SUFFIX "-machine"
  
-     object_initialize_child(OBJECT(machine), TYPE_IOTKIT, &mms->iotkit,
-                             mmc->armsse_type);
-diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c
-index 81413b7133e..5d9250da615 100644
---- a/hw/arm/mps2.c
-+++ b/hw/arm/mps2.c
-@@ -143,8 +143,7 @@ static void mps2_common_init(MachineState *machine)
-     }
+@@ -83,6 +84,22 @@ bool device_is_dynamic_sysbus(MachineClass *mc, DeviceState *dev);
+ MemoryRegion *machine_consume_memdev(MachineState *machine,
+                                      HostMemoryBackend *backend);
  
-     /* This clock doesn't need migration because it is fixed-frequency */
--    mms->sysclk = clock_new(OBJECT(machine), "SYSCLK");
--    clock_set_hz(mms->sysclk, SYSCLK_FRQ);
-+    mms->sysclk = machine_create_constant_clock(machine, "SYSCLK", SYSCLK_FRQ);
++/**
++ * machine_create_constant_clock:
++ * @machine: the parent machine
++ * @name: the clock object name
++ * @freq_hz: the clock frequency (in Hz)
++ *
++ * Helper function to create a new constant clock (fixed frequency
++ * of @freq_hz) and parent it to @machine. There is no need to call
++ * clock_setup_canonical_path on the returned clock as it is done
++ * by this function.
++ *
++ * @return the newly created clock
++ */
++Clock *machine_create_constant_clock(MachineState *machine,
++                                     const char *name, unsigned freq_hz);
++
+ /**
+  * CPUArchId:
+  * @arch_id - architecture-dependent CPU ID of present or possible CPU
+diff --git a/hw/core/machine.c b/hw/core/machine.c
+index 40def78183a..41baf80559d 100644
+--- a/hw/core/machine.c
++++ b/hw/core/machine.c
+@@ -1233,6 +1233,17 @@ void machine_run_board_init(MachineState *machine)
+     phase_advance(PHASE_MACHINE_INITIALIZED);
+ }
  
-     /* The FPGA images have an odd combination of different RAMs,
-      * because in hardware they are different implementations and
-diff --git a/hw/arm/musca.c b/hw/arm/musca.c
-index 7a83f7dda7d..e15149f3a27 100644
---- a/hw/arm/musca.c
-+++ b/hw/arm/musca.c
-@@ -372,10 +372,8 @@ static void musca_init(MachineState *machine)
-         exit(1);
-     }
++Clock *machine_create_constant_clock(MachineState *machine,
++                                     const char *name, unsigned freq_hz)
++{
++    Clock *clk;
++
++    clk = clock_new(OBJECT(machine), name);
++    clock_set_hz(clk, freq_hz);
++
++    return clk;
++}
++
+ static NotifierList machine_init_done_notifiers =
+     NOTIFIER_LIST_INITIALIZER(machine_init_done_notifiers);
  
--    mms->sysclk = clock_new(OBJECT(machine), "SYSCLK");
--    clock_set_hz(mms->sysclk, SYSCLK_FRQ);
--    mms->s32kclk = clock_new(OBJECT(machine), "S32KCLK");
--    clock_set_hz(mms->s32kclk, S32KCLK_FRQ);
-+    mms->sysclk = machine_create_constant_clock(machine, "SYSCLK", SYSCLK_FRQ);
-+    mms->s32kclk = machine_create_constant_clock(machine, "S32KCLK", S32KCLK_FRQ);
- 
-     object_initialize_child(OBJECT(machine), "sse-200", &mms->sse,
-                             TYPE_SSE200);
 -- 
 2.26.3
 

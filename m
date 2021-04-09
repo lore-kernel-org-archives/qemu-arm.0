@@ -1,350 +1,193 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp2153141lfr;
-        Sat, 10 Apr 2021 00:10:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzeMEuvuCMH5ZhR7XbWJi3SmIbCz3NuFc5ADH5T5eS8vEV8aVD5g74w75h6G0La6jnQQDPq
-X-Received: by 2002:ac8:4c8f:: with SMTP id j15mr2350941qtv.318.1618038602760;
-        Sat, 10 Apr 2021 00:10:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618038602; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp1679973lfr;
+        Fri, 9 Apr 2021 10:21:37 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyvAuxd0fexXTofPU1zyu/8B4t+D2o0KJ9amxZ9IzvJbZJe283lK8Y0d5+RFp1s1oPML0sW
+X-Received: by 2002:a05:6e02:1526:: with SMTP id i6mr8792523ilu.270.1617988897024;
+        Fri, 09 Apr 2021 10:21:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617988897; cv=none;
         d=google.com; s=arc-20160816;
-        b=rdAM9YxHDhySVZUnK8T5ADWZgfk3xx4S8ftAasDrl8GvdTr/f5ZMZzyR7TTqGLhnMH
-         8AtmU6iHfT6bCya3vUSLfMV1s2p5zMar0YOF5QVQ50/XxvYSG6xqQ2vsQZEyt76WBz98
-         +dAQe4gToGEicdlQ+hEWPK3m6+lZlwQP7dZkjP62x5tvYevkJFgxP3Knv36YsaezYast
-         3wGs6AFhnbtjTD9UVumrrsTyiWsDbx0EiqY8qziCfmjky/S+0Xh4hDe6UrsXS9zvfJRd
-         u/mhzvWz6O4dbcznqzbv220fuVB9agJAZ3w6PFIvElV1oqpn+z8Zhbfw/utD7ST3SEqc
-         pZPg==
+        b=fwzCt98aB42IB0HL2Bz3MbJ68fXOtpllY3RubWUmTvndGbFNGmukfeqfCyzyOAusd4
+         /VkMKeWZ2g2buWuEujvpGVOzy2qhk1LLs61gKHvu99kxEAH/7iHrLI1H07TEJm6bUJq/
+         AzT226BDGgjUlqPOzvu4s3KE+zmq1O+mtLeL61mN5u4d69srd23sQZuZoKjSA6ljlWlz
+         ahaLsJ1f8V6a4G8ALUnWSYMFNb1Xxymi65WOQdNsyWoZlrLKtSvV7TiyOFUUWtlS+Mn9
+         O2Jc+FpQHFu5F7Hr8pCJLcwX4bknWi5fXNNB48K/LZmDkYnb9y0kM64ra/vHljbA5q3I
+         hXgA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=6LVRL8FHhR9D/zVFDcuVeFxnlaEU/V6bsajAB3H02x0=;
-        b=ak2Z5et4WSU3Qdf58qQJ+jdk1GH+dH0CjBU4dtpNNwqKXVYhEc7ZCrEqKtGwysKPgc
-         Ay6Vz8SjN30CAqUSZV6MeRj/JJ38MtLtq7QWExLCzpwnkoxIUWtm7RXw5Voxvcs+zzs4
-         zlybUsTLNDx7x1HvmeJZ9+hAX9T7xsCJstwH82Jgk3paEvFwRIMQlMMC6iSi3XqOEmJ3
-         q0ro3Di6u2Rwrh9mkaY4dTNdw2tkyKpKgkJkqUH2MLJxQpNZyM1QaLqnIDGoDFWqp5UU
-         5fuSX5g/HoPzRIZ2VbGmqJUi2jgsGp+XWVeKmLI4DLnRqg+VfqestEaQckJplb9sfxsT
-         73JQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=hzmajchtVFCmXOpBshjeixJ9hUel8QSTHSuBEmd6hzs=;
+        b=zJAV8tiZeWeRbkTVWbD7CFASJTAxzWrCw8WoxnTJuWqJXploGuV/L/romwUoyTzxFr
+         SPRytgzY0Rr+30oJXZ0ROOlZy43LawVWHg/JPSbi4Sz//enjmPwwoiUl9olnWaK2AJuw
+         USsbngZI+uXBPmkGwugQaLS0GiFJif7nTSMThsbY+fYnMV7YKYLEuH4gKkyOhwecslvq
+         eo4kdvofbeuinsJVVhsThhIyi4fn93Lp++FNoyD1eAlJcvsGjZWN0GBAaFI48c/7WKR5
+         OYA2geVwtvThCgQujJygq1KGLcoSG8bBiKzV4UVmIozYFRUt6GmEOSM+v9myYWKIHyWi
+         by3Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@google.com header.s=20161025 header.b=pgBzsnEN;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g7si3724337qtx.318.2021.04.10.00.10.02
+        by mx.google.com with ESMTPS id q13si3098498ilv.154.2021.04.09.10.21.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 10 Apr 2021 00:10:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 09 Apr 2021 10:21:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38850 helo=lists1p.gnu.org)
+       dkim=pass header.i=@google.com header.s=20161025 header.b=pgBzsnEN;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:55458 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lV7ko-00074q-2B
-	for alex.bennee@linaro.org; Sat, 10 Apr 2021 03:10:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53256)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lUup6-0000vr-B0
+	for alex.bennee@linaro.org; Fri, 09 Apr 2021 13:21:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37488)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1lV7jy-0006aa-2W
- for qemu-devel@nongnu.org; Sat, 10 Apr 2021 03:09:10 -0400
-Received: from 9.mo51.mail-out.ovh.net ([46.105.48.137]:47971)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1lV7jv-0001Fe-Gn
- for qemu-devel@nongnu.org; Sat, 10 Apr 2021 03:09:09 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.16.132])
- by mo51.mail-out.ovh.net (Postfix) with ESMTPS id 6F5F428007D;
- Sat, 10 Apr 2021 09:08:55 +0200 (CEST)
-Received: from kaod.org (37.59.142.102) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2106.2; Sat, 10 Apr
- 2021 09:08:54 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-102R004b771e90f-ffea-4338-bbb6-79aa8dbdce18,
- 7DB109D73D331EFE6E6D278AF4DA1FCDEB920233) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 92.136.227.33
-Subject: Re: [PATCH 15/24] aspeed/smc: Add extra controls to request DMA
-To: Joel Stanley <joel@jms.id.au>
-References: <20210407171637.777743-1-clg@kaod.org>
- <20210407171637.777743-16-clg@kaod.org>
- <CACPK8Xfk9dPXdtr=BZq+9yTrFSYg_pyTX+Gk8JbcomjwVpTmjw@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <ba185653-d351-05eb-0b56-92e5fb00e77a@kaod.org>
-Date: Sat, 10 Apr 2021 09:08:52 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+ (Exim 4.90_1) (envelope-from <venture@google.com>)
+ id 1lUuoy-0000tY-HO
+ for qemu-arm@nongnu.org; Fri, 09 Apr 2021 13:21:28 -0400
+Received: from mail-qk1-x729.google.com ([2607:f8b0:4864:20::729]:46006)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <venture@google.com>)
+ id 1lUuov-0001sf-Ks
+ for qemu-arm@nongnu.org; Fri, 09 Apr 2021 13:21:28 -0400
+Received: by mail-qk1-x729.google.com with SMTP id q3so6524969qkq.12
+ for <qemu-arm@nongnu.org>; Fri, 09 Apr 2021 10:21:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=hzmajchtVFCmXOpBshjeixJ9hUel8QSTHSuBEmd6hzs=;
+ b=pgBzsnENr97CpLiUAqLGPjUeSiXvYjpvpGbcod/jhz1hAQes9LPonXrsC84J1FfL1m
+ gnPl7gffEPugFxDsFOrmKgbWwpnqd0CuGEIR3huWKY2MH01Q4FbOj14xVWvv/ahyHicl
+ WqGQhL+BVRQd/dwDlW3STr0fZwOYq5GOdOmAk+GXpP4X9Q1vLV7YUwHmVn3MfE5j8y+K
+ JSQv5EkzHXdvk/dP7x+D3mtUPx1c7sjBVwJSlLP46Y7AF7nKMMWTlc34mdXw1W0sANPi
+ XxQ9M3hTWDx6jMmzB0FNK9XCmycr6O8VTR86no1YJgmlpi1rqU4K0hvLZsnRCiSecfsr
+ mKgg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=hzmajchtVFCmXOpBshjeixJ9hUel8QSTHSuBEmd6hzs=;
+ b=A422xX7yNiWxMGrFuOmT03sJkJ4HsWSw7WD5zRONyn4aJg3d9rOwQync1lOYb232fR
+ Fftfs2luWhEP/tZKYiBRQrURXqADdOZUxESs75s1D90KH3Vy8B6QFIWMUja2xsIlLW2a
+ nRIGZcKEHxpvcTuCvZfXnfuCBW6WmifznPjklTGOvNhQJMFAI4VM0zLtNS+DMlIHGtMq
+ dFY3FqkkvVylo0rckuN0i2dZvJKV7RFx1sBngXJyJxtYeai6Yx+7fE8cFtDUzBJLnTT4
+ ZdB1ufbyXPoo7IcjD2sex+iA9ST91+cw/Q7X+fje2V82MW6FUhDm7iA/Ast/eMi4StvY
+ 0q/A==
+X-Gm-Message-State: AOAM530/NRD4A9fJQFINkJWLNy17Ror2YOS0wP5KpL9l2GdgLuGhROnr
+ MktdafuWhI5cnmUAWGnUL13VTX+RghTEfc9Pth8Ftg==
+X-Received: by 2002:a37:8c1:: with SMTP id 184mr15374733qki.472.1617988883301; 
+ Fri, 09 Apr 2021 10:21:23 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CACPK8Xfk9dPXdtr=BZq+9yTrFSYg_pyTX+Gk8JbcomjwVpTmjw@mail.gmail.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.102]
-X-ClientProxiedBy: DAG9EX2.mxp5.local (172.16.2.82) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 49d78a87-a920-4233-8b50-769d4d3ff1f8
-X-Ovh-Tracer-Id: 5694238781912091430
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduledrudekvddgudduvdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeejkeduueduveelgeduueegkeelffevledujeetffeivdelvdfgkeeufeduheehfeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtvdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepjhhovghlsehjmhhsrdhiugdrrghu
-Received-SPF: pass client-ip=46.105.48.137; envelope-from=clg@kaod.org;
- helo=9.mo51.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20210409162545.3705962-1-venture@google.com>
+ <20210409162545.3705962-5-venture@google.com>
+ <01f6f4c7-9f08-45f5-3e0c-b692c77dc4a5@amsat.org>
+In-Reply-To: <01f6f4c7-9f08-45f5-3e0c-b692c77dc4a5@amsat.org>
+From: Patrick Venture <venture@google.com>
+Date: Fri, 9 Apr 2021 10:21:12 -0700
+Message-ID: <CAO=notxOYxSyVDA9J-uOBio7d0PByvGLgn40GHbU-yQRpic1Jw@mail.gmail.com>
+Subject: Re: [PATCH v2 4/4] hw/i2c: add pca954x i2c-mux switch
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: Corey Minyard <cminyard@mvista.com>, Hao Wu <wuhaotsh@google.com>, 
+ Havard Skinnemoen <hskinnemoen@google.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::729;
+ envelope-from=venture@google.com; helo=mail-qk1-x729.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Aef9E/VuOyNr
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 9kX+eMvt8FDs
 
-On 4/9/21 8:54 AM, Joel Stanley wrote:
-> On Wed, 7 Apr 2021 at 17:17, Cédric Le Goater <clg@kaod.org> wrote:
->>
->> The AST2600 SPI controllers have a set of bits to request/grant DMA
->> access. Add a new SMC feature for these controllers and use it to
->> check access to the DMA registers.
-> 
-> Ah this is why you added the features mask. Makes sense.
+On Fri, Apr 9, 2021 at 9:51 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
+> wrote:
+>
+> Hi Patrick,
+>
+> On 4/9/21 6:25 PM, Patrick Venture wrote:
+> > The pca954x is an i2c mux, and this adds support for two variants of
+> > this device: the pca9546 and pca9548.
+> >
+> > This device is very common on BMCs to route a different channel to each
+> > PCIe i2c bus downstream from the BMC.
+> >
+> > Signed-off-by: Patrick Venture <venture@google.com>
+> > Reviewed-by: Hao Wu <wuhaotsh@google.com>
+> > Reviewed-by: Havard Skinnemoen <hskinnemoen@google.com>
+> > ---
+> >  MAINTAINERS                      |   6 +
+> >  hw/i2c/Kconfig                   |   4 +
+> >  hw/i2c/i2c_mux_pca954x.c         | 290 +++++++++++++++++++++++++++++++
+> >  hw/i2c/meson.build               |   1 +
+> >  hw/i2c/trace-events              |   5 +
+> >  include/hw/i2c/i2c_mux_pca954x.h |  19 ++
+> >  6 files changed, 325 insertions(+)
+> >  create mode 100644 hw/i2c/i2c_mux_pca954x.c
+> >  create mode 100644 include/hw/i2c/i2c_mux_pca954x.h
+>
+> > diff --git a/hw/i2c/Kconfig b/hw/i2c/Kconfig
+> > index 09642a6dcb..8d120a25d5 100644
+> > --- a/hw/i2c/Kconfig
+> > +++ b/hw/i2c/Kconfig
+> > @@ -28,3 +28,7 @@ config IMX_I2C
+> >  config MPC_I2C
+> >      bool
+> >      select I2C
+> > +
+> > +config PCA954X
+> > +    bool
+> > +    select I2C
+>
+> Do you have a circular dependency when also using:
+>
+>        depends on I2C
+>
+> ?
 
-Yes. It's a bit redundant with the dma_ctrl() handler but it looks cleaner. 
+I'm somewhat new to qemu -- I don't know what you mean, since I2C
+doesn't depend on pca954x, I don't imagine there could be a circular
+dependency.
 
-> 
-> Reviewed-by: Joel Stanley <joel@jms.id.au>
+>
+> > +static void pca954x_realize(DeviceState *dev, Error **errp)
+> > +{
+> > +    Pca954xState *s =3D PCA954X(dev);
+> > +    Pca954xClass *c =3D PCA954X_GET_CLASS(s);
+> > +    int i;
+> > +
+> > +    /* SMBus modules. Cannot fail. */
+> > +    for (i =3D 0; i < c->nchans; i++) {
+> > +        Object *obj =3D OBJECT(&s->channel[i]);
+> > +        sysbus_realize(SYS_BUS_DEVICE(obj), &error_abort);
+>
+> No need to cast to Object:
+>
+>            sysbus_realize(SYS_BUS_DEVICE(&s->channel[i]), &error_abort);
+>
 
+Ack, will fix in v3.
 
-Thanks,
-
-C.
-
-
->>
->> Cc: Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>
->> Signed-off-by: Cédric Le Goater <clg@kaod.org>
->> ---
->>  include/hw/ssi/aspeed_smc.h |  1 +
->>  hw/ssi/aspeed_smc.c         | 74 +++++++++++++++++++++++++++++++++----
->>  2 files changed, 68 insertions(+), 7 deletions(-)
->>
->> diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
->> index 07879fd1c4a7..cdaf165300b6 100644
->> --- a/include/hw/ssi/aspeed_smc.h
->> +++ b/include/hw/ssi/aspeed_smc.h
->> @@ -55,6 +55,7 @@ typedef struct AspeedSMCController {
->>                                 const AspeedSegments *seg);
->>      void (*reg_to_segment)(const struct AspeedSMCState *s, uint32_t reg,
->>                             AspeedSegments *seg);
->> +    void (*dma_ctrl)(struct AspeedSMCState *s, uint32_t value);
->>  } AspeedSMCController;
->>
->>  typedef struct AspeedSMCFlash {
->> diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
->> index 4521bbd4864e..189b35637c77 100644
->> --- a/hw/ssi/aspeed_smc.c
->> +++ b/hw/ssi/aspeed_smc.c
->> @@ -127,6 +127,8 @@
->>
->>  /* DMA Control/Status Register */
->>  #define R_DMA_CTRL        (0x80 / 4)
->> +#define   DMA_CTRL_REQUEST      (1 << 31)
->> +#define   DMA_CTRL_GRANT        (1 << 30)
->>  #define   DMA_CTRL_DELAY_MASK   0xf
->>  #define   DMA_CTRL_DELAY_SHIFT  8
->>  #define   DMA_CTRL_FREQ_MASK    0xf
->> @@ -228,6 +230,7 @@ static uint32_t aspeed_smc_segment_to_reg(const AspeedSMCState *s,
->>                                            const AspeedSegments *seg);
->>  static void aspeed_smc_reg_to_segment(const AspeedSMCState *s, uint32_t reg,
->>                                        AspeedSegments *seg);
->> +static void aspeed_smc_dma_ctrl(AspeedSMCState *s, uint32_t value);
->>
->>  /*
->>   * AST2600 definitions
->> @@ -257,7 +260,10 @@ static uint32_t aspeed_2600_smc_segment_to_reg(const AspeedSMCState *s,
->>                                                 const AspeedSegments *seg);
->>  static void aspeed_2600_smc_reg_to_segment(const AspeedSMCState *s,
->>                                             uint32_t reg, AspeedSegments *seg);
->> +static void aspeed_2600_smc_dma_ctrl(AspeedSMCState *s, uint32_t value);
->> +
->>  #define ASPEED_SMC_FEATURE_DMA       0x1
->> +#define ASPEED_SMC_FEATURE_DMA_GRANT 0x2
->>
->>  static inline bool aspeed_smc_has_dma(const AspeedSMCState *s)
->>  {
->> @@ -281,6 +287,7 @@ static const AspeedSMCController controllers[] = {
->>          .nregs             = ASPEED_SMC_R_SMC_MAX,
->>          .segment_to_reg    = aspeed_smc_segment_to_reg,
->>          .reg_to_segment    = aspeed_smc_reg_to_segment,
->> +        .dma_ctrl          = aspeed_smc_dma_ctrl,
->>      }, {
->>          .name              = "aspeed.fmc-ast2400",
->>          .r_conf            = R_CONF,
->> @@ -299,6 +306,7 @@ static const AspeedSMCController controllers[] = {
->>          .nregs             = ASPEED_SMC_R_MAX,
->>          .segment_to_reg    = aspeed_smc_segment_to_reg,
->>          .reg_to_segment    = aspeed_smc_reg_to_segment,
->> +        .dma_ctrl          = aspeed_smc_dma_ctrl,
->>      }, {
->>          .name              = "aspeed.spi1-ast2400",
->>          .r_conf            = R_SPI_CONF,
->> @@ -315,6 +323,7 @@ static const AspeedSMCController controllers[] = {
->>          .nregs             = ASPEED_SMC_R_SPI_MAX,
->>          .segment_to_reg    = aspeed_smc_segment_to_reg,
->>          .reg_to_segment    = aspeed_smc_reg_to_segment,
->> +        .dma_ctrl          = aspeed_smc_dma_ctrl,
->>      }, {
->>          .name              = "aspeed.fmc-ast2500",
->>          .r_conf            = R_CONF,
->> @@ -333,6 +342,7 @@ static const AspeedSMCController controllers[] = {
->>          .nregs             = ASPEED_SMC_R_MAX,
->>          .segment_to_reg    = aspeed_smc_segment_to_reg,
->>          .reg_to_segment    = aspeed_smc_reg_to_segment,
->> +        .dma_ctrl          = aspeed_smc_dma_ctrl,
->>      }, {
->>          .name              = "aspeed.spi1-ast2500",
->>          .r_conf            = R_CONF,
->> @@ -349,6 +359,7 @@ static const AspeedSMCController controllers[] = {
->>          .nregs             = ASPEED_SMC_R_MAX,
->>          .segment_to_reg    = aspeed_smc_segment_to_reg,
->>          .reg_to_segment    = aspeed_smc_reg_to_segment,
->> +        .dma_ctrl          = aspeed_smc_dma_ctrl,
->>      }, {
->>          .name              = "aspeed.spi2-ast2500",
->>          .r_conf            = R_CONF,
->> @@ -365,6 +376,7 @@ static const AspeedSMCController controllers[] = {
->>          .nregs             = ASPEED_SMC_R_MAX,
->>          .segment_to_reg    = aspeed_smc_segment_to_reg,
->>          .reg_to_segment    = aspeed_smc_reg_to_segment,
->> +        .dma_ctrl          = aspeed_smc_dma_ctrl,
->>      }, {
->>          .name              = "aspeed.fmc-ast2600",
->>          .r_conf            = R_CONF,
->> @@ -383,6 +395,7 @@ static const AspeedSMCController controllers[] = {
->>          .nregs             = ASPEED_SMC_R_MAX,
->>          .segment_to_reg    = aspeed_2600_smc_segment_to_reg,
->>          .reg_to_segment    = aspeed_2600_smc_reg_to_segment,
->> +        .dma_ctrl          = aspeed_2600_smc_dma_ctrl,
->>      }, {
->>          .name              = "aspeed.spi1-ast2600",
->>          .r_conf            = R_CONF,
->> @@ -395,12 +408,14 @@ static const AspeedSMCController controllers[] = {
->>          .segments          = aspeed_segments_ast2600_spi1,
->>          .flash_window_base = ASPEED26_SOC_SPI_FLASH_BASE,
->>          .flash_window_size = 0x10000000,
->> -        .features          = ASPEED_SMC_FEATURE_DMA,
->> +        .features          = ASPEED_SMC_FEATURE_DMA |
->> +                             ASPEED_SMC_FEATURE_DMA_GRANT,
->>          .dma_flash_mask    = 0x0FFFFFFC,
->>          .dma_dram_mask     = 0x3FFFFFFC,
->>          .nregs             = ASPEED_SMC_R_MAX,
->>          .segment_to_reg    = aspeed_2600_smc_segment_to_reg,
->>          .reg_to_segment    = aspeed_2600_smc_reg_to_segment,
->> +        .dma_ctrl          = aspeed_2600_smc_dma_ctrl,
->>      }, {
->>          .name              = "aspeed.spi2-ast2600",
->>          .r_conf            = R_CONF,
->> @@ -413,12 +428,14 @@ static const AspeedSMCController controllers[] = {
->>          .segments          = aspeed_segments_ast2600_spi2,
->>          .flash_window_base = ASPEED26_SOC_SPI2_FLASH_BASE,
->>          .flash_window_size = 0x10000000,
->> -        .features          = ASPEED_SMC_FEATURE_DMA,
->> +        .features          = ASPEED_SMC_FEATURE_DMA |
->> +                             ASPEED_SMC_FEATURE_DMA_GRANT,
->>          .dma_flash_mask    = 0x0FFFFFFC,
->>          .dma_dram_mask     = 0x3FFFFFFC,
->>          .nregs             = ASPEED_SMC_R_MAX,
->>          .segment_to_reg    = aspeed_2600_smc_segment_to_reg,
->>          .reg_to_segment    = aspeed_2600_smc_reg_to_segment,
->> +        .dma_ctrl          = aspeed_2600_smc_dma_ctrl,
->>      },
->>  };
->>
->> @@ -1240,7 +1257,7 @@ static void aspeed_smc_dma_done(AspeedSMCState *s)
->>      }
->>  }
->>
->> -static void aspeed_smc_dma_ctrl(AspeedSMCState *s, uint64_t dma_ctrl)
->> +static void aspeed_smc_dma_ctrl(AspeedSMCState *s, uint32_t dma_ctrl)
->>  {
->>      if (!(dma_ctrl & DMA_CTRL_ENABLE)) {
->>          s->regs[R_DMA_CTRL] = dma_ctrl;
->> @@ -1265,6 +1282,46 @@ static void aspeed_smc_dma_ctrl(AspeedSMCState *s, uint64_t dma_ctrl)
->>      aspeed_smc_dma_done(s);
->>  }
->>
->> +static inline bool aspeed_smc_dma_granted(AspeedSMCState *s)
->> +{
->> +    if (!(s->ctrl->features & ASPEED_SMC_FEATURE_DMA_GRANT)) {
->> +        return true;
->> +    }
->> +
->> +    if (!(s->regs[R_DMA_CTRL] & DMA_CTRL_GRANT)) {
->> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: DMA not granted\n",  __func__);
->> +        return false;
->> +    }
->> +
->> +    return true;
->> +}
->> +
->> +static void aspeed_2600_smc_dma_ctrl(AspeedSMCState *s, uint32_t dma_ctrl)
->> +{
->> +    /* Preserve DMA bits  */
->> +    dma_ctrl |= s->regs[R_DMA_CTRL] & (DMA_CTRL_REQUEST | DMA_CTRL_GRANT);
->> +
->> +    if (dma_ctrl == 0xAEED0000) {
->> +        /* automatically grant request */
->> +        s->regs[R_DMA_CTRL] |= (DMA_CTRL_REQUEST | DMA_CTRL_GRANT);
->> +        return;
->> +    }
->> +
->> +    /* clear request */
->> +    if (dma_ctrl == 0xDEEA0000) {
->> +        s->regs[R_DMA_CTRL] &= ~(DMA_CTRL_REQUEST | DMA_CTRL_GRANT);
->> +        return;
->> +    }
->> +
->> +    if (!aspeed_smc_dma_granted(s)) {
->> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: DMA not granted\n",  __func__);
->> +        return;
->> +    }
->> +
->> +    aspeed_smc_dma_ctrl(s, dma_ctrl);
->> +    s->regs[R_DMA_CTRL] &= ~(DMA_CTRL_REQUEST | DMA_CTRL_GRANT);
->> +}
->> +
->>  static void aspeed_smc_write(void *opaque, hwaddr addr, uint64_t data,
->>                               unsigned int size)
->>  {
->> @@ -1297,12 +1354,15 @@ static void aspeed_smc_write(void *opaque, hwaddr addr, uint64_t data,
->>      } else if (addr == R_INTR_CTRL) {
->>          s->regs[addr] = value;
->>      } else if (aspeed_smc_has_dma(s) && addr == R_DMA_CTRL) {
->> -        aspeed_smc_dma_ctrl(s, value);
->> -    } else if (aspeed_smc_has_dma(s) && addr == R_DMA_DRAM_ADDR) {
->> +        s->ctrl->dma_ctrl(s, value);
->> +    } else if (aspeed_smc_has_dma(s) && addr == R_DMA_DRAM_ADDR &&
->> +               aspeed_smc_dma_granted(s)) {
->>          s->regs[addr] = DMA_DRAM_ADDR(s, value);
->> -    } else if (aspeed_smc_has_dma(s) && addr == R_DMA_FLASH_ADDR) {
->> +    } else if (aspeed_smc_has_dma(s) && addr == R_DMA_FLASH_ADDR &&
->> +               aspeed_smc_dma_granted(s)) {
->>          s->regs[addr] = DMA_FLASH_ADDR(s, value);
->> -    } else if (aspeed_smc_has_dma(s) && addr == R_DMA_LEN) {
->> +    } else if (aspeed_smc_has_dma(s) && addr == R_DMA_LEN &&
->> +               aspeed_smc_dma_granted(s)) {
->>          s->regs[addr] = DMA_LENGTH(value);
->>      } else {
->>          qemu_log_mask(LOG_UNIMP, "%s: not implemented: 0x%" HWADDR_PRIx "\n",
->> --
->> 2.26.3
->>
-
+> > +    }
+> > +}

@@ -1,152 +1,629 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp3058021lfr;
-        Sun, 11 Apr 2021 05:19:19 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzf0in1LzJGoUAUP/7xHyNrkzGbshspvxNxf+F1XokwsBAkUJvZWEFAW3LGKxRi/+mC6Jnb
-X-Received: by 2002:a05:6e02:1d0e:: with SMTP id i14mr18373825ila.49.1618143558869;
-        Sun, 11 Apr 2021 05:19:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618143558; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp1000523lfr;
+        Thu, 8 Apr 2021 17:03:58 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJys9Birhqe1tLBAy9DF34QdnOF72P92xPxxMeUCkQKGo6D7cZPrs3ghPVFw9IRId0HoozdJ
+X-Received: by 2002:a67:ca01:: with SMTP id z1mr9124974vsk.20.1617926637906;
+        Thu, 08 Apr 2021 17:03:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617926637; cv=none;
         d=google.com; s=arc-20160816;
-        b=fWx/yyw4uTy1eTzy54gOb9hvieD5HP57X0/vQbjF85Bnlxr3IoEl7sBe1C2HyG6uiN
-         qxTSIOeNvBWxhKEbrDSkf+FigKd6hnePIkznB4q950od6Zpbmvo9ix8p0FYjgXttpZVG
-         73JOeUijKdZvpr1SsE5FYB+oP1Q1JjmJ7lY9JQJkK2c+seHN7cGAHipy5GNzEZssF7kN
-         QYvNyDC7HxLcpKDeN4OHLriSFDrxaOnWaevg95VIov6p9+yFgBvB2rQ1sDShilDWjIqq
-         hep/cpEdWNMQFVW4XVjNQwmDOhfQlv5NCAJWVwID0wafgNp2WtZkXFnBoEUnGIwLKZk4
-         sCDg==
+        b=vpDMZ8UYe937ectPm14gvG8i+73GFuCZEMc1ehWVuYsSbp5hWilIUdwNLCEIPUhBdf
+         duQUaHfmk87uV44QlrXfjussGl+P4T6V1PCc/k186pySlJV7dAu+HF6x9OS6eWpBScM2
+         8OwmdQ1ULZfjWzMcdI6/Aw6GP3eZwm2tCFqtwZd+G0xEF032vJySj++3xvMiXw7j7xIv
+         RR/kAM/tjvChAbhGTqw+1PJdJJm1mVUCAq8gWngh695qWgC1ub/ST10pwvYuO+uXbvJ3
+         VX4cl0evUX/RqBhCnHw+tCXAkEA8A7vtpGfl2tsPhJ2huX7z+aCSvGBnKikfUR+JC2ap
+         baxA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=adWMq36hXFG3/U1wl+mGXph1gW/qyQxxHZUg27bCPMs=;
-        b=q4jy7+eGQwnQZxDJAsdTVqcho29UzgHCOw1Dw083rHUvrKk9xt2qjWNyOFk0+jm8x3
-         vzkRJVOGQh4fzGDUsuW3lxdgdDzg1xcZAL5DekatgJdfsDYEcL2lVg3f4FrNhZuNECRo
-         M1WL2EK/mIUKmHcjM6aCJNAh4BqydC4CxZWF9hfisg8Icghlcyt4IL6jRz8CoFuQbha+
-         KTjf0CASCzLcJMz8VMpC38gyLO09e6fzY7DggVx9MqLvdtppTp7MXNrWBYrhdlRzqo8o
-         vGR8+Ne6sKHw4O5x8WpfKCiGucvaMyKQmaC6BQRC6A2n7DcLXr48Xy4RUlb00AWDI3s1
-         78zg==
+        bh=+C/wJefbfy2aDXpfyY2NDyo6oSSPbSeGWL4PDsdMvp4=;
+        b=pI5Fl3aOpdyCjHS7Ma3lcar9BR3U6xKkRSilX6reV0iK5GjUpFKb+YkjUqsswPf3rF
+         xkoADKCOsL8xeD5Gf75koxuQzYjAM4x8mCiqb2oYPl0uo3eWesMoEimv8Kj6yhxCoTuK
+         ZYZe8dxWstHsXBh70NkvBPDT38WMNtBhDos/AtCFU1N7bsXV5F/YmzbNtd8LLHZ1dA71
+         FovvLEn5ZM5lFzhNbUgisbR32pdfJUks3zGXpHIXmT1r21CIZD8fFrEAcXnThr51btbF
+         m9/P4KxDv7zIxJynwiaKI7OrVgpkDTgEtM/eZO5dtZ0BW0Y5hwDqPU1Q+gT5NMTpwSrB
+         6fWQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Q20t4OoY;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nFQMTtQx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a11si9258613jaq.60.2021.04.11.05.19.18
+        by mx.google.com with ESMTPS id o191si764410vsd.422.2021.04.08.17.03.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 11 Apr 2021 05:19:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 08 Apr 2021 17:03:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Q20t4OoY;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38118 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nFQMTtQx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:40790 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lVZ3e-0006DE-3i
-	for alex.bennee@linaro.org; Sun, 11 Apr 2021 08:19:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47300)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lUecv-0001I8-0M
+	for alex.bennee@linaro.org; Thu, 08 Apr 2021 20:03:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42058)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lVYvR-0000SQ-9R
- for qemu-devel@nongnu.org; Sun, 11 Apr 2021 08:10:49 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:56020)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lVYvO-0002gj-1z
- for qemu-devel@nongnu.org; Sun, 11 Apr 2021 08:10:49 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1618143045;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=adWMq36hXFG3/U1wl+mGXph1gW/qyQxxHZUg27bCPMs=;
- b=Q20t4OoYM6AUx9GvBrsvhLjtXUTIqQQ9aovZ75tFsGk7vm2NBitmF1Kt51d3eQOnIC9oZW
- xcC0lp0VtKtkMxz15XjoYpdCQBhT+3Rng4ygYU1OW/ClKs7+OVcbHGM+A0Bk8LOVZvl6xt
- i1p+O/t5U3/f9WHcRrGlOhKFCgP+JkA=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-468-aS8sC_8oOUGDhU8uHSMs3w-1; Sun, 11 Apr 2021 08:10:44 -0400
-X-MC-Unique: aS8sC_8oOUGDhU8uHSMs3w-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1CB9E107ACC7;
- Sun, 11 Apr 2021 12:10:42 +0000 (UTC)
-Received: from laptop.redhat.com (ovpn-112-22.ams2.redhat.com [10.36.112.22])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 1DAE810023B2;
- Sun, 11 Apr 2021 12:10:26 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, alex.williamson@redhat.com
-Subject: [RFC v9 06/29] hw/arm/smmu-common: Allow domain invalidation for
- NH_ALL/NSNH_ALL
-Date: Sun, 11 Apr 2021 14:08:49 +0200
-Message-Id: <20210411120912.15770-7-eric.auger@redhat.com>
-In-Reply-To: <20210411120912.15770-1-eric.auger@redhat.com>
-References: <20210411120912.15770-1-eric.auger@redhat.com>
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1lUecG-0001HT-Tc; Thu, 08 Apr 2021 20:03:16 -0400
+Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432]:46835)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1lUecE-0005FZ-Nu; Thu, 08 Apr 2021 20:03:16 -0400
+Received: by mail-pf1-x432.google.com with SMTP id d124so2997241pfa.13;
+ Thu, 08 Apr 2021 17:03:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=+C/wJefbfy2aDXpfyY2NDyo6oSSPbSeGWL4PDsdMvp4=;
+ b=nFQMTtQxNY9ngbMN3qEXhkAptwIQrXrr9MN3is+h6PfqtipTmpLKFOwD/KV9D5YdUo
+ LPV7KeLPqi1e2yrKUdGVhbk/TwOl8HflltfKq0EAralPCKQcmvgHlfySwPmMvYbAWWZ8
+ WV1TWJ6dCp7gkJ42mbXQVgocEwP3TtShM7Nt25w3wLi9eKBPiimkktXTP+TW00ni4Ymk
+ FSfwm6cTXqWHYNGuR+uR1GT0sFG1y7XJzT5qcnV7BaN7aEOkvcheYhcTAsdkEVHvj0NX
+ 0kKJTcCzt+0OaZ1Qh4+ZH6OO1/Orh66eZ/Tv9IcTX/yzhtxYA6OLoFHqVMWoHHhgiMAs
+ m+Hg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=+C/wJefbfy2aDXpfyY2NDyo6oSSPbSeGWL4PDsdMvp4=;
+ b=O/qf6elBALKhFixBlNLZ8+8b6IolegtmFu7Y1kzbtzJK9/Nrz6APZ3iq/Jf11FnjMn
+ GEJDVqW0di0QUTcyeazAX7TD72wujcSVT8WFU4gOeevwl/zGGpa0FXi0xKz7B6f4lRI5
+ AJCVCVgIRXXeO9fV7Rqp4Va83QrF+KZ6dcpyXX7tic81kgAPwNUDN75tDA3uubPj0TUq
+ YU++PeoxxbSsD+aT0aAXiaPHKLQePOlPj6PK0vjDnfBXOppBjmcF1owqcPBIKiEYdK1I
+ Bo0ZRMvvedHLZOw92cZ4c/sgDc9FI9y3gWi5ZEAz5Qfe4INPkhhsn0JzYjS1BiHsHr2z
+ cd0w==
+X-Gm-Message-State: AOAM531BWhPgbbWibXlc4dobZVIch8lqvFa5jBoVjkFEkqFDPc0S2Oms
+ Guxyw4rN+tmBAPf/621C0V4=
+X-Received: by 2002:a63:6d83:: with SMTP id i125mr10131263pgc.12.1617926592958; 
+ Thu, 08 Apr 2021 17:03:12 -0700 (PDT)
+Received: from voyager.lan ([45.124.203.14])
+ by smtp.gmail.com with ESMTPSA id f17sm393406pfk.184.2021.04.08.17.03.09
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 08 Apr 2021 17:03:12 -0700 (PDT)
+From: Joel Stanley <joel@jms.id.au>
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PATCH v5 1/3] hw: Model ASPEED's Hash and Crypto Engine
+Date: Fri,  9 Apr 2021 09:32:51 +0930
+Message-Id: <20210409000253.1475587-2-joel@jms.id.au>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20210409000253.1475587-1-joel@jms.id.au>
+References: <20210409000253.1475587-1-joel@jms.id.au>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::432;
+ envelope-from=joel.stan@gmail.com; helo=mail-pf1-x432.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, jacob.jun.pan@linux.intel.com,
- jean-philippe@linaro.org, tn@semihalf.com, chenxiang66@hisilicon.com,
- jiangkunkun@huawei.com, shameerali.kolothum.thodi@huawei.com,
- nicoleotsuka@gmail.com, vivek.gautam@arm.com, vdumpa@nvidia.com,
- yi.l.liu@intel.com, peterx@redhat.com, zhangfei.gao@gmail.com,
- yuzenghui@huawei.com, zhukeqian1@huawei.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: I9DmXM3LWhas
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org, Klaus Heinrich Kiwi <klaus@linux.vnet.ibm.com>,
+ qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: lytQdOSYguYf
 
-NH_ALL/NSNH_ALL corresponds to a domain granularity invalidation,
-ie. all the notifier range gets invalidation, whatever the ASID.
-So let's set the granularity to IOMMU_INV_GRAN_DOMAIN to allow
-the consumer to benefit from the info if it can.
+The HACE (Hash and Crypto Engine) is a device that offloads MD5, SHA1,
+SHA2, RSA and other cryptographic algorithms.
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Suggested-by: chenxiang (M) <chenxiang66@hisilicon.com>
+This initial model implements a subset of the device's functionality;
+currently only MD5/SHA hashing, and on the ast2600's scatter gather
+engine.
+
+Co-developed-by: Klaus Heinrich Kiwi <klaus@linux.vnet.ibm.com>
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Signed-off-by: Joel Stanley <joel@jms.id.au>
 ---
- hw/arm/smmu-common.c | 1 +
- 1 file changed, 1 insertion(+)
+v3:
+ - rebase on upstream to fix meson.build conflict
+v2:
+ - reorder register defines
+ - mask src/dest/len registers according to hardware
+v4:
+ - Fix typos in comments
+ - Remove sdram base address; new memory region fixes mean this is not
+   required
+ - Use PRIx64
+ - Add Object Classes for soc familiy specific features
+ - Convert big switch statement to a lookup in a struct
+v5:
+ - Support scatter gather mode
+---
+ docs/system/arm/aspeed.rst    |   1 +
+ include/hw/misc/aspeed_hace.h |  43 ++++
+ hw/misc/aspeed_hace.c         | 389 ++++++++++++++++++++++++++++++++++
+ hw/misc/meson.build           |   1 +
+ 4 files changed, 434 insertions(+)
+ create mode 100644 include/hw/misc/aspeed_hace.h
+ create mode 100644 hw/misc/aspeed_hace.c
 
-diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-index 0ba3dca3b8..c33d03de67 100644
---- a/hw/arm/smmu-common.c
-+++ b/hw/arm/smmu-common.c
-@@ -478,6 +478,7 @@ static void smmu_unmap_notifier_range(IOMMUNotifier *n)
-     event.entry.iova = n->start;
-     event.entry.perm = IOMMU_NONE;
-     event.entry.addr_mask = n->end - n->start;
-+    event.entry.granularity = IOMMU_INV_GRAN_DOMAIN;
+diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
+index d1fb8f25b39c..23a1468cd175 100644
+--- a/docs/system/arm/aspeed.rst
++++ b/docs/system/arm/aspeed.rst
+@@ -49,6 +49,7 @@ Supported devices
+  * Ethernet controllers
+  * Front LEDs (PCA9552 on I2C bus)
+  * LPC Peripheral Controller (a subset of subdevices are supported)
++ * Hash/Crypto Engine (HACE) - Hash support only. TODO: HMAC and RSA
  
-     memory_region_notify_iommu_one(n, &event);
- }
+ 
+ Missing devices
+diff --git a/include/hw/misc/aspeed_hace.h b/include/hw/misc/aspeed_hace.h
+new file mode 100644
+index 000000000000..94d5ada95fa2
+--- /dev/null
++++ b/include/hw/misc/aspeed_hace.h
+@@ -0,0 +1,43 @@
++/*
++ * ASPEED Hash and Crypto Engine
++ *
++ * Copyright (C) 2021 IBM Corp.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#ifndef ASPEED_HACE_H
++#define ASPEED_HACE_H
++
++#include "hw/sysbus.h"
++
++#define TYPE_ASPEED_HACE "aspeed.hace"
++#define TYPE_ASPEED_AST2400_HACE TYPE_ASPEED_HACE "-ast2400"
++#define TYPE_ASPEED_AST2500_HACE TYPE_ASPEED_HACE "-ast2500"
++#define TYPE_ASPEED_AST2600_HACE TYPE_ASPEED_HACE "-ast2600"
++OBJECT_DECLARE_TYPE(AspeedHACEState, AspeedHACEClass, ASPEED_HACE)
++
++#define ASPEED_HACE_NR_REGS (0x64 >> 2)
++
++struct AspeedHACEState {
++    SysBusDevice parent;
++
++    MemoryRegion iomem;
++    qemu_irq irq;
++
++    uint32_t regs[ASPEED_HACE_NR_REGS];
++
++    MemoryRegion *dram_mr;
++    AddressSpace dram_as;
++};
++
++
++struct AspeedHACEClass {
++    SysBusDeviceClass parent_class;
++
++    uint32_t src_mask;
++    uint32_t dest_mask;
++    uint32_t hash_mask;
++};
++
++#endif /* _ASPEED_HACE_H_ */
+diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
+new file mode 100644
+index 000000000000..be7f99ea7947
+--- /dev/null
++++ b/hw/misc/aspeed_hace.c
+@@ -0,0 +1,389 @@
++/*
++ * ASPEED Hash and Crypto Engine
++ *
++ * Copyright (C) 2021 IBM Corp.
++ *
++ * Joel Stanley <joel@jms.id.au>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "qemu/error-report.h"
++#include "hw/misc/aspeed_hace.h"
++#include "qapi/error.h"
++#include "migration/vmstate.h"
++#include "crypto/hash.h"
++#include "hw/qdev-properties.h"
++#include "hw/irq.h"
++
++#define R_CRYPT_CMD     (0x10 / 4)
++
++#define R_STATUS        (0x1c / 4)
++#define HASH_IRQ        BIT(9)
++#define CRYPT_IRQ       BIT(12)
++#define TAG_IRQ         BIT(15)
++
++#define R_HASH_SRC      (0x20 / 4)
++#define R_HASH_DEST     (0x24 / 4)
++#define R_HASH_SRC_LEN  (0x2c / 4)
++
++#define R_HASH_CMD      (0x30 / 4)
++/* Hash algorithm selection */
++#define  HASH_ALGO_MASK                 (BIT(4) | BIT(5) | BIT(6))
++#define  HASH_ALGO_MD5                  0
++#define  HASH_ALGO_SHA1                 BIT(5)
++#define  HASH_ALGO_SHA224               BIT(6)
++#define  HASH_ALGO_SHA256               (BIT(4) | BIT(6))
++#define  HASH_ALGO_SHA512_SERIES        (BIT(5) | BIT(6))
++/* SHA512 algorithm selection */
++#define  SHA512_HASH_ALGO_MASK          (BIT(10) | BIT(11) | BIT(12))
++#define  HASH_ALGO_SHA512_SHA512        0
++#define  HASH_ALGO_SHA512_SHA384        BIT(10)
++#define  HASH_ALGO_SHA512_SHA256        BIT(11)
++#define  HASH_ALGO_SHA512_SHA224        (BIT(10) | BIT(11))
++/* HMAC modes */
++#define  HASH_HMAC_MASK                 (BIT(7) | BIT(8))
++#define  HASH_DIGEST                    0
++#define  HASH_DIGEST_HMAC               BIT(7)
++#define  HASH_DIGEST_ACCUM              BIT(8)
++#define  HASH_HMAC_KEY                  (BIT(7) | BIT(8))
++/* Cascaded operation modes */
++#define  HASH_ONLY                      0
++#define  HASH_ONLY2                     BIT(0)
++#define  HASH_CRYPT_THEN_HASH           BIT(1)
++#define  HASH_HASH_THEN_CRYPT           (BIT(0) | BIT(1))
++/* Other cmd bits */
++#define  HASH_IRQ_EN                    BIT(9)
++#define  HASH_SG_EN                     BIT(18)
++/* Scatter-gather data list */
++#define SG_LIST_LEN_SIZE                4
++#define SG_LIST_LEN_MASK                0x0FFFFFFF
++#define SG_LIST_LEN_LAST                BIT(31)
++#define SG_LIST_ADDR_SIZE               4
++#define SG_LIST_ADDR_MASK               0x7FFFFFFF
++#define SG_LIST_ENTRY_SIZE              (SG_LIST_LEN_SIZE + SG_LIST_ADDR_SIZE)
++#define ASPEED_HACE_MAX_SG              256        /* max number of entries */
++
++static const struct {
++    uint32_t mask;
++    QCryptoHashAlgorithm algo;
++} hash_algo_map[] = {
++    { HASH_ALGO_MD5, QCRYPTO_HASH_ALG_MD5 },
++    { HASH_ALGO_SHA1, QCRYPTO_HASH_ALG_SHA1 },
++    { HASH_ALGO_SHA224, QCRYPTO_HASH_ALG_SHA224 },
++    { HASH_ALGO_SHA256, QCRYPTO_HASH_ALG_SHA256 },
++    { HASH_ALGO_SHA512_SERIES | HASH_ALGO_SHA512_SHA512, QCRYPTO_HASH_ALG_SHA512 },
++    { HASH_ALGO_SHA512_SERIES | HASH_ALGO_SHA512_SHA384, QCRYPTO_HASH_ALG_SHA384 },
++    { HASH_ALGO_SHA512_SERIES | HASH_ALGO_SHA512_SHA256, QCRYPTO_HASH_ALG_SHA256 },
++};
++
++static int hash_algo_lookup(uint32_t reg)
++{
++    int i;
++
++    reg &= HASH_ALGO_MASK | SHA512_HASH_ALGO_MASK;
++
++    for (i = 0; i < ARRAY_SIZE(hash_algo_map); i++) {
++        if (reg == hash_algo_map[i].mask) {
++            return hash_algo_map[i].algo;
++        }
++    }
++
++    return -1;
++}
++
++static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode)
++{
++    struct iovec iov[ASPEED_HACE_MAX_SG];
++    g_autofree uint8_t *digest_buf;
++    size_t digest_len = 0;
++    int i;
++
++    if (sg_mode) {
++        uint32_t len = 0;
++
++        for (i = 0; !(len & SG_LIST_LEN_LAST); i++) {
++            uint32_t addr, src;
++
++            if (i == ASPEED_HACE_MAX_SG) {
++                qemu_log_mask(LOG_GUEST_ERROR,
++                        "aspeed_hace: guest failed to set end of sg list marker\n");
++                break;
++            }
++
++            src = s->regs[R_HASH_SRC] + (i * SG_LIST_ENTRY_SIZE);
++
++            len = address_space_ldl_le(&s->dram_as, src,
++                                       MEMTXATTRS_UNSPECIFIED, NULL);
++
++            addr = address_space_ldl_le(&s->dram_as, src + SG_LIST_LEN_SIZE,
++                                        MEMTXATTRS_UNSPECIFIED, NULL);
++            addr &= SG_LIST_ADDR_MASK;
++
++            iov[i].iov_len = len & SG_LIST_LEN_MASK;
++            iov[i].iov_base = address_space_map(&s->dram_as,
++                                                addr,
++                                                &iov[i].iov_len, false,
++                                                MEMTXATTRS_UNSPECIFIED);
++        }
++    } else {
++        hwaddr len = s->regs[R_HASH_SRC_LEN];
++
++        iov[0].iov_len = len;
++        iov[0].iov_base = address_space_map(&s->dram_as, s->regs[R_HASH_SRC],
++                                            &len, false,
++                                            MEMTXATTRS_UNSPECIFIED);
++        i = 1;
++    }
++
++    if (qcrypto_hash_bytesv(algo, iov, i, &digest_buf, &digest_len, NULL) < 0) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: qcrypto failed\n", __func__);
++        return;
++    }
++
++    if (address_space_write(&s->dram_as, s->regs[R_HASH_DEST],
++                            MEMTXATTRS_UNSPECIFIED,
++                            digest_buf, digest_len)) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "aspeed_hace: address space write failed\n");
++    }
++
++    for (; i > 0; i--) {
++        address_space_unmap(&s->dram_as, iov[i - 1].iov_base,
++                            iov[i - 1].iov_len, false,
++                            iov[i - 1].iov_len);
++    }
++
++    /*
++     * Set status bits to indicate completion. Testing shows hardware sets
++     * these irrespective of HASH_IRQ_EN.
++     */
++    s->regs[R_STATUS] |= HASH_IRQ;
++}
++
++static uint64_t aspeed_hace_read(void *opaque, hwaddr addr, unsigned int size)
++{
++    AspeedHACEState *s = ASPEED_HACE(opaque);
++
++    addr >>= 2;
++
++    if (addr >= ASPEED_HACE_NR_REGS) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Out-of-bounds read at offset 0x%" HWADDR_PRIx "\n",
++                      __func__, addr << 2);
++        return 0;
++    }
++
++    return s->regs[addr];
++}
++
++static void aspeed_hace_write(void *opaque, hwaddr addr, uint64_t data,
++                              unsigned int size)
++{
++    AspeedHACEState *s = ASPEED_HACE(opaque);
++    AspeedHACEClass *ahc = ASPEED_HACE_GET_CLASS(s);
++
++    addr >>= 2;
++
++    if (addr >= ASPEED_HACE_NR_REGS) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Out-of-bounds write at offset 0x%" HWADDR_PRIx "\n",
++                      __func__, addr << 2);
++        return;
++    }
++
++    switch (addr) {
++    case R_STATUS:
++        if (data & HASH_IRQ) {
++            data &= ~HASH_IRQ;
++
++            if (s->regs[addr] & HASH_IRQ) {
++                qemu_irq_lower(s->irq);
++            }
++        }
++        break;
++    case R_HASH_SRC:
++        data &= ahc->src_mask;
++        break;
++    case R_HASH_DEST:
++        data &= ahc->dest_mask;
++        break;
++    case R_HASH_SRC_LEN:
++        data &= 0x0FFFFFFF;
++        break;
++    case R_HASH_CMD: {
++        int algo;
++        data &= ahc->hash_mask;
++
++        if ((data & HASH_HMAC_MASK)) {
++            qemu_log_mask(LOG_UNIMP,
++                          "%s: HMAC engine command mode %"PRIx64" not implemented",
++                          __func__, (data & HASH_HMAC_MASK) >> 8);
++        }
++        if (data & BIT(1)) {
++            qemu_log_mask(LOG_UNIMP,
++                          "%s: Cascaded mode not implemented",
++                          __func__);
++        }
++        algo = hash_algo_lookup(data);
++        if (algo < 0) {
++                qemu_log_mask(LOG_GUEST_ERROR,
++                        "%s: Invalid hash algorithm selection 0x%"PRIx64"\n",
++                        __func__, data & ahc->hash_mask);
++                break;
++        }
++        do_hash_operation(s, algo, data & HASH_SG_EN);
++
++        if (data & HASH_IRQ_EN) {
++            qemu_irq_raise(s->irq);
++        }
++        break;
++    }
++    case R_CRYPT_CMD:
++        qemu_log_mask(LOG_UNIMP, "%s: Crypt commands not implemented\n",
++                       __func__);
++        break;
++    default:
++        break;
++    }
++
++    s->regs[addr] = data;
++}
++
++static const MemoryRegionOps aspeed_hace_ops = {
++    .read = aspeed_hace_read,
++    .write = aspeed_hace_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .valid = {
++        .min_access_size = 1,
++        .max_access_size = 4,
++    },
++};
++
++static void aspeed_hace_reset(DeviceState *dev)
++{
++    struct AspeedHACEState *s = ASPEED_HACE(dev);
++
++    memset(s->regs, 0, sizeof(s->regs));
++}
++
++static void aspeed_hace_realize(DeviceState *dev, Error **errp)
++{
++    AspeedHACEState *s = ASPEED_HACE(dev);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
++
++    sysbus_init_irq(sbd, &s->irq);
++
++    memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_hace_ops, s,
++            TYPE_ASPEED_HACE, 0x1000);
++
++    if (!s->dram_mr) {
++        error_setg(errp, TYPE_ASPEED_HACE ": 'dram' link not set");
++        return;
++    }
++
++    address_space_init(&s->dram_as, s->dram_mr, "dram");
++
++    sysbus_init_mmio(sbd, &s->iomem);
++}
++
++static Property aspeed_hace_properties[] = {
++    DEFINE_PROP_LINK("dram", AspeedHACEState, dram_mr,
++                     TYPE_MEMORY_REGION, MemoryRegion *),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
++
++static const VMStateDescription vmstate_aspeed_hace = {
++    .name = TYPE_ASPEED_HACE,
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT32_ARRAY(regs, AspeedHACEState, ASPEED_HACE_NR_REGS),
++        VMSTATE_END_OF_LIST(),
++    }
++};
++
++static void aspeed_hace_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->realize = aspeed_hace_realize;
++    dc->reset = aspeed_hace_reset;
++    device_class_set_props(dc, aspeed_hace_properties);
++    dc->vmsd = &vmstate_aspeed_hace;
++}
++
++static const TypeInfo aspeed_hace_info = {
++    .name = TYPE_ASPEED_HACE,
++    .parent = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(AspeedHACEState),
++    .class_init = aspeed_hace_class_init,
++    .class_size = sizeof(AspeedHACEClass)
++};
++
++static void aspeed_ast2400_hace_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    AspeedHACEClass *ahc = ASPEED_HACE_CLASS(klass);
++
++    dc->desc = "AST2400 Hash and Crypto Engine";
++
++    ahc->src_mask = 0x0FFFFFFF;
++    ahc->dest_mask = 0x0FFFFFF8;
++    ahc->hash_mask = 0x000003ff; /* No SG or SHA512 modes */
++}
++
++static const TypeInfo aspeed_ast2400_hace_info = {
++    .name = TYPE_ASPEED_AST2400_HACE,
++    .parent = TYPE_ASPEED_HACE,
++    .class_init = aspeed_ast2400_hace_class_init,
++};
++
++static void aspeed_ast2500_hace_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    AspeedHACEClass *ahc = ASPEED_HACE_CLASS(klass);
++
++    dc->desc = "AST2500 Hash and Crypto Engine";
++
++    ahc->src_mask = 0x3fffffff;
++    ahc->dest_mask = 0x3ffffff8;
++    ahc->hash_mask = 0x000003ff; /* No SG or SHA512 modes */
++}
++
++static const TypeInfo aspeed_ast2500_hace_info = {
++    .name = TYPE_ASPEED_AST2500_HACE,
++    .parent = TYPE_ASPEED_HACE,
++    .class_init = aspeed_ast2500_hace_class_init,
++};
++
++static void aspeed_ast2600_hace_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    AspeedHACEClass *ahc = ASPEED_HACE_CLASS(klass);
++
++    dc->desc = "AST2600 Hash and Crypto Engine";
++
++    ahc->src_mask = 0x7FFFFFFF;
++    ahc->dest_mask = 0x7FFFFFF8;
++    ahc->hash_mask = 0x00147FFF;
++}
++
++static const TypeInfo aspeed_ast2600_hace_info = {
++    .name = TYPE_ASPEED_AST2600_HACE,
++    .parent = TYPE_ASPEED_HACE,
++    .class_init = aspeed_ast2600_hace_class_init,
++};
++
++static void aspeed_hace_register_types(void)
++{
++    type_register_static(&aspeed_ast2400_hace_info);
++    type_register_static(&aspeed_ast2500_hace_info);
++    type_register_static(&aspeed_ast2600_hace_info);
++    type_register_static(&aspeed_hace_info);
++}
++
++type_init(aspeed_hace_register_types);
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index 21034dc60a81..1e7b8b064bd1 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -109,6 +109,7 @@ softmmu_ss.add(when: 'CONFIG_PVPANIC_ISA', if_true: files('pvpanic-isa.c'))
+ softmmu_ss.add(when: 'CONFIG_PVPANIC_PCI', if_true: files('pvpanic-pci.c'))
+ softmmu_ss.add(when: 'CONFIG_AUX', if_true: files('auxbus.c'))
+ softmmu_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
++  'aspeed_hace.c',
+   'aspeed_lpc.c',
+   'aspeed_scu.c',
+   'aspeed_sdmc.c',
 -- 
-2.26.3
+2.30.2
 

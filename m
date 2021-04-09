@@ -1,103 +1,103 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp1206668lfr;
-        Thu, 8 Apr 2021 23:33:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxWxMFODLPva1KGgry0AyfhvppZq7s99Pt34tCuiluAQNXWWdhFeDMXZgKMxSpsReWsQx4h
-X-Received: by 2002:a37:a644:: with SMTP id p65mr12369810qke.20.1617950015767;
-        Thu, 08 Apr 2021 23:33:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617950015; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp1208430lfr;
+        Thu, 8 Apr 2021 23:36:45 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwRw6QlfpU7brr8yswhSjm6YRHFn166QGPkDOQfbyJ5T+rAaABPiWHx5zlmieAah9YSkM1o
+X-Received: by 2002:a05:6638:14d0:: with SMTP id l16mr11860415jak.41.1617950205537;
+        Thu, 08 Apr 2021 23:36:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617950205; cv=none;
         d=google.com; s=arc-20160816;
-        b=Oz5KX3TRksPyr2xHrnv+87T2Y6LLTPE2Y53Vdb1/Qrhh9P7eHMAkz6nZ5LGziSk33h
-         vM1ncj7S98680uifVPhHEDt/TmSFRza6cqMB/7xsDtrFfv1HFXklVniuCQ8+UYZ2OQEg
-         Y39RoxLlI9ic3NcrwVME5vJcmXIvwfFAXFBtVRMHDOmLrJsoLSgAtGR1R17VIRexu8jS
-         nEiS3IWkHtynIemhdm1bVfVJN1sFD/pPCnyP/K5hnLAHR+mLEA6E9UTiC/vEQWAUm5Pr
-         0eQG/ZqiFZKDVIgH0zvPgSJwOTn+yhKS7+pS0OwKm5r46SVkpH1SvZRc5T0xRkDxX4Ll
-         ZgaQ==
+        b=eX6UrxNSVE+oorTvEyVvVMt0CY3cQ9DNrVddGNeU8T6HBSPntk9E1KEokGdp8Yh5rE
+         9ZPE4SRLbt0UR5WCWwCbqnw9lpUF/UdhjQxbWTZBfI1RkCvW61r7vxl7dF4eyexbrC5g
+         KveoZ4uRBQ08VgX9tU5FTM37QhziGi3NAoanv3MGJF7btl9xabH0MZMQeCVcJxOrPExR
+         Ch+bpVjTpqzBHRlMpfyMsv1QsXxwG6G4k8HTeuCTiCDifZaCoO/RD/EzDghRnTJG2Upb
+         HP/hoMSRGToe5DlM3xkUBeK5o/XtT5wI3ay0gvYR/D/4wYLTUleRv5XAyCY4HIplZSaq
+         H0+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=zRoQYNlkLYyE9AlFcEvCS75qivi0ECZWMEXZijy0geo=;
-        b=G3DeD/Q05Kls2NroRl4Df64Aq3EXC6avoDY0kAtju7eg62SKK0MNxx6tWcd4JzHJ+i
-         GqvaqTPYckyJdKsi6KgrC9ozmrd8Ire04XmzGWPMHYj3Bl+FxvE83e2/zzaJVqOLGAvH
-         VLmGE0BpJEJMkvu2VY+sanRC2+9H+Mrm1/limX5UgmgVgFz5pvL45KZQS1N7QbWnvBKc
-         KDc9GNqPae46CVlJv/9pSjicOZZbA9uUxSaDnMdktIpMGr+3e0uaZfPs5mIkYRoWQblX
-         iJVu9RNlaLdhfiUghAZWfRhB7pFTOowFV+XaZcHhDat5debgvL0Gbn6qLj/Pmzv6sd5Y
-         Erpw==
+        bh=/OEqLEQHCmytseRt1FhXxp+Rob399wNsde0XeRnkGgQ=;
+        b=sjip+gKNN4bEw/TjBSgzDrUE8yIe3g+VE3xQLNNralxG2tLsVBYweWnl+tFNE+x0Fn
+         UFVerLLFx97ROE7rxIKdW80X8epUckiZ9TYEYcT/5RpVq6+xetuv8gzIf8rK06fu2IKP
+         YNxVg2hK6mJDB5dak/3/uiLeWh3Hg1P+X7ZupEKGAta6fvwn9ySH3J1VtUTLE+Z1XfBe
+         WuPPTnFHZ9mBUofgvCaCwP90ATFiGzO8cXCm9igLxJ+XyqVb5RC2k45bpBvWcr0C0oUS
+         /ll4pfMsGGg82ENuYGNOZz3u8T0IpfOoE86kdZbSEwtmY9jXFI8sON20A1m5g24rMn6q
+         rXxQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jZtsq9Fa;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ltZ+3820;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a7si1236384qvm.177.2021.04.08.23.33.35
+        by mx.google.com with ESMTPS id y18si2166621ili.52.2021.04.08.23.36.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Apr 2021 23:33:35 -0700 (PDT)
+        Thu, 08 Apr 2021 23:36:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jZtsq9Fa;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ltZ+3820;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:45982 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53972 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lUkhz-00046I-3F
-	for alex.bennee@linaro.org; Fri, 09 Apr 2021 02:33:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47986)
+	id 1lUkl2-0007NG-TN
+	for alex.bennee@linaro.org; Fri, 09 Apr 2021 02:36:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48020)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lUkZA-0004aD-3T; Fri, 09 Apr 2021 02:24:29 -0400
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533]:43800)
+ id 1lUkZM-0004ff-0c; Fri, 09 Apr 2021 02:24:40 -0400
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b]:46053)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lUkZ8-0001W1-Jr; Fri, 09 Apr 2021 02:24:27 -0400
-Received: by mail-ed1-x533.google.com with SMTP id e7so5168244edu.10;
- Thu, 08 Apr 2021 23:24:25 -0700 (PDT)
+ id 1lUkZJ-0001bZ-Rr; Fri, 09 Apr 2021 02:24:39 -0400
+Received: by mail-ej1-x62b.google.com with SMTP id mh7so6822290ejb.12;
+ Thu, 08 Apr 2021 23:24:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=zRoQYNlkLYyE9AlFcEvCS75qivi0ECZWMEXZijy0geo=;
- b=jZtsq9FagTXfsvqDf7W34eslAdCA4mGEvi2srm/7/nc6zymz7fBhbd7tT+4090WqQ7
- RNVKiEaLFwYUqEOOGDgwwzEVTB/qgNKRNnqHO/UJyiNiiQHOiL9h+El+jVjh75LrEAXg
- oPaDjM51orhXfYGwrQUnzsINS7hPjwfyaHv+m7Ox2qefMSheSaGUUstZHZXZoKbQPJR+
- 6g/elCbzJpocQoUSiady8qamz0sFai1WheOpOjBGb5tYv8p0Td4pe2YZr67HM4VNf45z
- rYk4nQqsGZPs0uLXF2xuErE75GsuwSEDXrVr8TzLA/ym5ScTillo03rkbMgNO4ExKQwO
- ilPQ==
+ bh=/OEqLEQHCmytseRt1FhXxp+Rob399wNsde0XeRnkGgQ=;
+ b=ltZ+3820lLw6oC8xOjK05tEQA2ZV7Fjzd8OCarI9OfHsTY+NUKyaoYnOxRPhtsSRQm
+ 8uGBBx3oMvSTowr3SN33+jgx5Wp+bCKEKx4LqgyNCmlQISba3rl04LV+cot9vw8rNO92
+ NobHeCeMMbo9VZFaZZl3Foopgh42a555jALD5/rqJ1fO7k8VwVdoQ3IRh/30Mcwor4l6
+ sRCR2ONs8ovaSJGtwNawSnhFxVgd9K4ZdP3FI1t/ZDtpy9z4m8mhy5kkFLr5YpwoaJeF
+ Cbd9OTiZCfRkCWBGki4i8JE31x093/IQUIwLmvu/PnzjT6F4BSZwXsK+8KVHL+wHyCBQ
+ EHCg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=zRoQYNlkLYyE9AlFcEvCS75qivi0ECZWMEXZijy0geo=;
- b=LBSYwbYR9fCFT6pfyRrWC3bI66KvxQz2+2BwwNjtYb9hrr3Ee35ITyr3EQDHECt4Sv
- IvYcwwXtTyPK8kogoZFI4NyY1hKvSaREQ6S5OLoYTeXLw+yq7LKYg2OiTXGddblxsZ5H
- xHWfy0e47iltyYLz9LBGbuaUQLHCsE350+FIJg1vMJBevtydhtfjmvv5GVQCFf+6y9fg
- QAwj1UKhp0Cd5fJNLTXKwuvj3chmi+OU6lMfxMqRb7L3VYeP8w9Qv01RAReTKBWbs0qA
- hbBOFPzI5115E/pokcbQZy/H9EyaWOSYHbzEhWnu0H0FRoU8K7U19l44n8aa4d1q7tor
- Vf9g==
-X-Gm-Message-State: AOAM532MjIJwouHgbjOgIJ0lxzZcjAkenk2fj4C+yZfehQjhLcFLq4o2
- DS6ufwREbl7Ym9n35itozoreOsB8kHfTrg==
-X-Received: by 2002:a05:6402:26c9:: with SMTP id
- x9mr15630569edd.322.1617949464597; 
- Thu, 08 Apr 2021 23:24:24 -0700 (PDT)
+ bh=/OEqLEQHCmytseRt1FhXxp+Rob399wNsde0XeRnkGgQ=;
+ b=WMkVUPNypia5wYXssGgnQKJugGjE7XUurjxu74acreS70t9nTBrRLWZabwP4G7I0bm
+ IoQCxpD8T3Y2V5vpnW/L4sYOUMETj0QZ4UGSEfvBQpLGEby9V5Jr6THlaXDloPk8Lvl7
+ okLtYThEujMisblNYaWNo2lOsbQ2YWwVFzk11p1syXqd+rVeJOw+HKkgGOXXV0wJjHp7
+ wzyafrXnrNN5SsCbXWtkqhWveOGv8gNwgwRdO7/7OzXklzv73L8NtYpS+m1v7yjfXBLN
+ oSEiFB8jouCwhcVBL9xykSZZGnNzgvjVUl4eAZbvv2z5FGELkW5PiUHF5WtHOkQxuGtu
+ F5ww==
+X-Gm-Message-State: AOAM530dypJuvtEwn80wHsqMFxgTWCrkKXI/81k+hKpxC5vI0UoyhVhl
+ 9gy2h1rGrappENpXXE2MmuAF2cBlWey2EA==
+X-Received: by 2002:a17:906:170d:: with SMTP id
+ c13mr14302431eje.491.1617949474885; 
+ Thu, 08 Apr 2021 23:24:34 -0700 (PDT)
 Received: from x1w.redhat.com (17.red-88-21-201.staticip.rima-tde.net.
  [88.21.201.17])
- by smtp.gmail.com with ESMTPSA id 28sm816854edw.82.2021.04.08.23.24.23
+ by smtp.gmail.com with ESMTPSA id ay3sm845372edb.2.2021.04.08.23.24.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 08 Apr 2021 23:24:24 -0700 (PDT)
+ Thu, 08 Apr 2021 23:24:34 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [RFC PATCH-for-6.1 4/9] hw/mips: Use new
- machine_create_constant_clock() helper
-Date: Fri,  9 Apr 2021 08:23:56 +0200
-Message-Id: <20210409062401.2350436-5-f4bug@amsat.org>
+Subject: [RFC PATCH-for-6.1 6/9] hw/misc/bcm2835_cprman: Use
+ qdev_ground_clock() helper
+Date: Fri,  9 Apr 2021 08:23:58 +0200
+Message-Id: <20210409062401.2350436-7-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.3
 In-Reply-To: <20210409062401.2350436-1-f4bug@amsat.org>
 References: <20210409062401.2350436-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::533;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x533.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x62b.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -119,95 +119,69 @@ List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Damien Hedde <damien.hedde@greensocs.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, Luc Michel <luc@lmichel.fr>,
- Eduardo Habkost <ehabkost@redhat.com>, Huacai Chen <chenhuacai@kernel.org>,
+ Peter Maydell <peter.maydell@linaro.org>, Luc Michel <luc@lmichel.fr>,
+ Eduardo Habkost <ehabkost@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- qemu-arm@nongnu.org,
- =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+ Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UgsHEYcqMruw
+X-TUID: DvaqlYjbhGch
 
-Use the newly added machine_create_constant_clock() helper
-to create the CPU reference clocks.
+The ground clock isn't really an internal component of the CPRMAN
+peripheral. Use the qdev_ground_clock() helper to access the board
+ground plane.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/mips/fuloong2e.c      | 4 ++--
- hw/mips/jazz.c           | 6 +++---
- hw/mips/loongson3_virt.c | 4 ++--
- hw/mips/mipssim.c        | 7 ++++---
- 4 files changed, 11 insertions(+), 10 deletions(-)
+ include/hw/misc/bcm2835_cprman.h | 1 -
+ hw/misc/bcm2835_cprman.c         | 7 ++-----
+ 2 files changed, 2 insertions(+), 6 deletions(-)
 
-diff --git a/hw/mips/fuloong2e.c b/hw/mips/fuloong2e.c
-index 4f61f2c873b..72dc5702727 100644
---- a/hw/mips/fuloong2e.c
-+++ b/hw/mips/fuloong2e.c
-@@ -259,8 +259,8 @@ static void mips_fuloong2e_init(MachineState *machine)
-     CPUMIPSState *env;
-     DeviceState *dev;
+diff --git a/include/hw/misc/bcm2835_cprman.h b/include/hw/misc/bcm2835_cprman.h
+index 3df4ceedd2e..2996ccb4632 100644
+--- a/include/hw/misc/bcm2835_cprman.h
++++ b/include/hw/misc/bcm2835_cprman.h
+@@ -204,7 +204,6 @@ struct BCM2835CprmanState {
+     uint32_t xosc_freq;
  
--    cpuclk = clock_new(OBJECT(machine), "cpu-refclk");
--    clock_set_hz(cpuclk, 533080000); /* ~533 MHz */
-+    cpuclk = machine_create_constant_clock(machine, "cpu-refclk",
-+                                           533080000); /* ~533 MHz */
+     Clock *xosc;
+-    Clock *gnd;
+ };
  
-     /* init CPUs */
-     cpu = mips_cpu_create_with_clock(machine->cpu_type, cpuclk);
-diff --git a/hw/mips/jazz.c b/hw/mips/jazz.c
-index 1a0888a0fd5..3c220b4df6b 100644
---- a/hw/mips/jazz.c
-+++ b/hw/mips/jazz.c
-@@ -185,9 +185,9 @@ static void mips_jazz_init(MachineState *machine,
-         exit(EXIT_FAILURE);
+ #endif
+diff --git a/hw/misc/bcm2835_cprman.c b/hw/misc/bcm2835_cprman.c
+index 75e6c574d46..5039b7632b4 100644
+--- a/hw/misc/bcm2835_cprman.c
++++ b/hw/misc/bcm2835_cprman.c
+@@ -678,9 +678,6 @@ static void cprman_init(Object *obj)
      }
  
--    cpuclk = clock_new(OBJECT(machine), "cpu-refclk");
--    clock_set_hz(cpuclk, ext_clk[jazz_model].freq_hz
--                         * ext_clk[jazz_model].pll_mult);
-+    cpuclk = machine_create_constant_clock(machine, "cpu-refclk",
-+                                           ext_clk[jazz_model].freq_hz
-+                                           * ext_clk[jazz_model].pll_mult);
+     s->xosc = clock_new(obj, "xosc");
+-    s->gnd = clock_new(obj, "gnd");
+-
+-    clock_set(s->gnd, 0);
  
-     /* init CPUs */
-     cpu = mips_cpu_create_with_clock(machine->cpu_type, cpuclk);
-diff --git a/hw/mips/loongson3_virt.c b/hw/mips/loongson3_virt.c
-index b15071defc6..b9f18ecd911 100644
---- a/hw/mips/loongson3_virt.c
-+++ b/hw/mips/loongson3_virt.c
-@@ -530,8 +530,8 @@ static void mips_loongson3_virt_init(MachineState *machine)
-     sysbus_create_simple("goldfish_rtc", virt_memmap[VIRT_RTC].base,
-                          qdev_get_gpio_in(liointc, RTC_IRQ));
+     memory_region_init_io(&s->iomem, obj, &cprman_ops,
+                           s, "bcm2835-cprman", 0x2000);
+@@ -697,7 +694,7 @@ static void connect_mux_sources(BCM2835CprmanState *s,
  
--    cpuclk = clock_new(OBJECT(machine), "cpu-refclk");
--    clock_set_hz(cpuclk, DEF_LOONGSON3_FREQ);
-+    cpuclk = machine_create_constant_clock(machine, "cpu-refclk",
-+                                           DEF_LOONGSON3_FREQ);
+     /* For sources from 0 to 3. Source 4 to 9 are mux specific */
+     Clock * const CLK_SRC_MAPPING[] = {
+-        [CPRMAN_CLOCK_SRC_GND] = s->gnd,
++        [CPRMAN_CLOCK_SRC_GND] = qdev_ground_clock(),
+         [CPRMAN_CLOCK_SRC_XOSC] = s->xosc,
+         [CPRMAN_CLOCK_SRC_TD0] = td0,
+         [CPRMAN_CLOCK_SRC_TD1] = td1,
+@@ -708,7 +705,7 @@ static void connect_mux_sources(BCM2835CprmanState *s,
+         Clock *src;
  
-     for (i = 0; i < machine->smp.cpus; i++) {
-         int ip;
-diff --git a/hw/mips/mipssim.c b/hw/mips/mipssim.c
-index f5d0da05aa1..af11cf9ac25 100644
---- a/hw/mips/mipssim.c
-+++ b/hw/mips/mipssim.c
-@@ -153,11 +153,12 @@ mips_mipssim_init(MachineState *machine)
-     ResetData *reset_info;
-     int bios_size;
- 
--    cpuclk = clock_new(OBJECT(machine), "cpu-refclk");
- #ifdef TARGET_MIPS64
--    clock_set_hz(cpuclk, 6000000); /* 6 MHz */
-+    cpuclk = machine_create_constant_clock(machine, "cpu-refclk",
-+                                           6000000); /* 6 MHz */
- #else
--    clock_set_hz(cpuclk, 12000000); /* 12 MHz */
-+    cpuclk = machine_create_constant_clock(machine, "cpu-refclk",
-+                                           12000000); /* 12 MHz */
- #endif
- 
-     /* Init CPUs. */
+         if (mapping == CPRMAN_CLOCK_SRC_FORCE_GROUND) {
+-            src = s->gnd;
++            src = qdev_ground_clock();
+         } else if (mapping == CPRMAN_CLOCK_SRC_DSI0HSCK) {
+             src = s->dsi0hsck_mux.out;
+         } else if (i < CPRMAN_CLOCK_SRC_PLLA) {
 -- 
 2.26.3
 

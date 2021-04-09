@@ -1,141 +1,518 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp1646216lfr;
-        Fri, 9 Apr 2021 09:37:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwVboDimfOC5vzTZbkCU77Iw2Rsj/MvYBpKRwTmkX0mOyg4Amyc4KFmMV1w1P4ysxUWCtNc
-X-Received: by 2002:a6b:bf07:: with SMTP id p7mr12204852iof.15.1617986248449;
-        Fri, 09 Apr 2021 09:37:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617986248; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp1646393lfr;
+        Fri, 9 Apr 2021 09:37:43 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz7qvbHAwDa6uPnbR/6oEhVw3yLNfONrFsDGpDI1l5nDGY9kN+V9GD6qE0WdKs+/dqeav7n
+X-Received: by 2002:a05:6602:228f:: with SMTP id d15mr11402245iod.141.1617986263035;
+        Fri, 09 Apr 2021 09:37:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617986263; cv=none;
         d=google.com; s=arc-20160816;
-        b=By0Jy2LaafzSFctuNS1rEalfN3HGBn2VLsnqKuppMCrmpdFjlB4K5j4TypadKNe58r
-         IV2WHmFnUA0uSCIGy/KpHMfSCPjmGhss9HAKFWnRrOYSVf1eHu79PK1dEbolPNTmd7i5
-         IjLnGlo5kPgQ5aH6VomgMlUqps5rSANXiMKd7tLAgNcgzjvXdQtDl+A4DvYwRt+Eq1O4
-         RFFNhwLS4w4xMtGnUhqYiO/wk54qZ1dh/vJ8iOgOo+MCcHKYSv9lMwWDixhgCMZqi6oy
-         jDtJLAlFATochF8SBi72hBEU6EZj83pd8ug7UlrcqDM9iIcyoGTRIX1mImFxHA26UmvH
-         AiNw==
+        b=JRjlcsCkVnSJ/zsN3RIFm/sEdUwXFO1u4hW7XkHlOZcFQ5hOD1rwVkQOxDyG3x1avE
+         leeBorNDun7Q00f18s/DgxdZMMhUQlp4EARoXpi7HKponAGEVJsa5KCOrqV4B5m4ycy3
+         4QKTT3wagRCoib0XG+B+WBbb2uSIdZYq2/8gjwp1rFPglYXT19oefggcx0QBFSMzWif5
+         o3mxyzwZDac4WEdpbU2Zffy5L+AMX3g64otsbailcgTte71gyIdwg07sh88lVJsgEt/S
+         Qk2TFGJH5Vwc4ObBv3Kcm7jHx4KqXnMyXVaKvVcRtRkwqyUd22rJpKSuDg7J4MmhPCqY
+         PMOg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=vGf5PfG/yc4+TnlGhSXrYr2kEiIyr1bnG4XG+vvXUvI=;
-        b=ePJAhvs1q67pq/URD3LOTmBtv6LCM7dJb5RK7+g1A5jzJkCKC6WXBha4DGddauO9Bx
-         4qgynUz7C33PgRiAfgRjrHjqAIg2NFntgXmEcHI0r+73/JtpkM6pe2JRQfeOQYMxgu9z
-         40UGDO5tP0VmYZ1tS4DbIY1lEI4jlpJjcOnNAvIwBTD6Lre9GPZ3bffR8rFNOcY523Dr
-         fQbuUCO6PiDYR5/Grr4KgoENawV7m+SkP+1kPuV+kh94GGcNfOY0vNIWFOb7J4HrTM7I
-         6gg5jPZphUq6b0ppey65rYHhRIALEa4MsdEyr/cdyEp0y39PL0SnR5ldfFWeo+88xAD2
-         3u7A==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:from:subject:references
+         :mime-version:message-id:in-reply-to:date:dkim-signature;
+        bh=YO+Zvt0AtBbWt5MP37NcZ81dk50FI5KwQpEaO6YAPac=;
+        b=b5glnLQ1Kn9cQT7dFzeAbkyVsvSK3fXoqeQcH9qorHlaHKdzzi+Cdd+C5Lrwu+R8lU
+         Tvx0y2ody5CwgsdGq/eqbls9EuXDCbzjVZyz6suAR2eV51wp+1XsqDLmF23ba4UKTQ0W
+         LEiPUk/PQ75O+5Hw+AwiB9rayQxC8m1veHcDzlJcQe3oy2wNzVWU/3oA/kDxNtr2tNFe
+         irGo2suUaZpuDmIEVIwjsmTRaJ2SjSwYL2TiEIc2Avkfm4nQ0MH7Of9ybLEnwlI0WTr9
+         dKWPzwKbQL8JOPt8UTPTZ4YPaHIBtC80jX9Az3EAXpQHSUR40K+L5JfaTsod0Iqwhhe4
+         VW8Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=e330eHLD;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@google.com header.s=20161025 header.b=kD4Sz2+R;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x2si3107398ilm.71.2021.04.09.09.37.28
+        by mx.google.com with ESMTPS id f19si3190284jat.55.2021.04.09.09.37.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 09 Apr 2021 09:37:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 09 Apr 2021 09:37:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=e330eHLD;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:56646 helo=lists1p.gnu.org)
+       dkim=pass header.i=@google.com header.s=20161025 header.b=kD4Sz2+R;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:56152 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lUu8N-00088h-Ny
-	for alex.bennee@linaro.org; Fri, 09 Apr 2021 12:37:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54900)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lUu8c-0007uC-99
+	for alex.bennee@linaro.org; Fri, 09 Apr 2021 12:37:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52642)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lUu7k-00083q-E0; Fri, 09 Apr 2021 12:36:50 -0400
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532]:44806)
+ (Exim 4.90_1) (envelope-from
+ <3IYBwYAcKCuwjSbhifSUccUZS.QcaeSai-RSjSZbcbUbi.cfU@flex--venture.bounces.google.com>)
+ id 1lUtxW-0005ZS-JR
+ for qemu-devel@nongnu.org; Fri, 09 Apr 2021 12:26:14 -0400
+Received: from mail-yb1-xb4a.google.com ([2607:f8b0:4864:20::b4a]:46088)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lUu7i-0002XO-T9; Fri, 09 Apr 2021 12:36:48 -0400
-Received: by mail-ed1-x532.google.com with SMTP id f8so7275600edd.11;
- Fri, 09 Apr 2021 09:36:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=vGf5PfG/yc4+TnlGhSXrYr2kEiIyr1bnG4XG+vvXUvI=;
- b=e330eHLD08J9X55WCD8KZ9wi07wpCYSS2RjXH+2++tbvcdZcv6+fyw4hAHbs2895JT
- fkwAWMeKjPigV7Z+e8tSFj4/ETQkw6KkObcdeAveCaKUYQUKqTeYgA2I6Ykyk/t/wW+V
- 4Ud2QqWFRQmj11bFUYNNg/eg7/JTMk5OGtEhiRpfOK9keOZ6d/9J9t2WXUngTX/s072E
- yRUSxHlsN1Ga4/ZFfviehIVQ7hKyfjzgIJecxCvMTkhTh/JYWbkMYUOKdWoUeijXojUa
- WL2X0Ux810RxtPr0Kz0OLDK5z7Nsr2jD3cDnjaPZiv4KE+QMJnGJXwib44xZwaXPjSD5
- o4nA==
+ (Exim 4.90_1) (envelope-from
+ <3IYBwYAcKCuwjSbhifSUccUZS.QcaeSai-RSjSZbcbUbi.cfU@flex--venture.bounces.google.com>)
+ id 1lUtxT-0007VS-IW
+ for qemu-devel@nongnu.org; Fri, 09 Apr 2021 12:26:14 -0400
+Received: by mail-yb1-xb4a.google.com with SMTP id g7so5808393ybm.13
+ for <qemu-devel@nongnu.org>; Fri, 09 Apr 2021 09:26:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=date:in-reply-to:message-id:mime-version:references:subject:from:to
+ :cc; bh=YO+Zvt0AtBbWt5MP37NcZ81dk50FI5KwQpEaO6YAPac=;
+ b=kD4Sz2+R4tz6sWNMav7uIgsmpD0oQ8K0KNxlCNoLtWqZeDHBdK228wpFfR3AVqr3cK
+ CP3/IEIyHr66ylSM01cMTAl4SGhP4ZE/dFczkVc324sXa53fzCo4kEYU1qSiEf7SIAEZ
+ Uot39p3JlbXinu5Zmz3ZrrzbfuOIlZAQ5pUz25U4bg+dY5ND6/qwFJ2OAgB3dD9Ss12/
+ 8ohsRFSd2cl+tjPOvjRDfwYqjIj/++9p1WDA3APOuY48zm/E/Vs7KbAtW5nV743tyFbR
+ z/j0ArcJDT0x1HaZ2qibJClPeaDZpSFX0Yis7RZL/7lkSuYy5OmjP6UnXjlgm7+zGr33
+ lEBw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=vGf5PfG/yc4+TnlGhSXrYr2kEiIyr1bnG4XG+vvXUvI=;
- b=ORWUtgdPCdpBdrBjXdXsmFfbay6esb3WwGmTh5fAiEKnNhk+M6GhzSGNK7wRmW9iAn
- QkZLFQBeReQb/f9zarwQOKIbmivdJeBpz7G9ktcBcutcEGJOTtkO/puK8R+2bK79V9aO
- gtEm7VmdI48FNiOp9VHpeXVhZqji2LEn8FSJOo6fQEJJUmLKxvEqu2jEFX13+mzVIfs1
- p/sjzwsMzyDh6I6r5y61a6BuZsBz7ttrypxP+inufIfnoR+haTJSlvHwrbfMLQtcP1R2
- +tNk5JQUx/9GNOOCZfpHSj6i35cAMIjniwgycN8BVNKPoftAuCzqqX+kHynlH+tlh9oV
- C23Q==
-X-Gm-Message-State: AOAM531rRAt7UitAGq/39jd171YQ+4sr6c/BPrbgqlb0TqaCgzyzqgrT
- kP/DlvZnEa4l+5ENW73fpdQL6Iy3KM8WHg==
-X-Received: by 2002:aa7:d78a:: with SMTP id s10mr18079154edq.226.1617986203966; 
- Fri, 09 Apr 2021 09:36:43 -0700 (PDT)
-Received: from [192.168.1.36] (17.red-88-21-201.staticip.rima-tde.net.
- [88.21.201.17])
- by smtp.gmail.com with ESMTPSA id o17sm1692493edt.10.2021.04.09.09.36.42
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 09 Apr 2021 09:36:43 -0700 (PDT)
-Subject: Re: [PATCH v2 1/4] hw/i2c: name I2CNode list in I2CBus
-To: Patrick Venture <venture@google.com>, cminyard@mvista.com,
- wuhaotsh@google.com, hskinnemoen@google.com
+ h=x-gm-message-state:date:in-reply-to:message-id:mime-version
+ :references:subject:from:to:cc;
+ bh=YO+Zvt0AtBbWt5MP37NcZ81dk50FI5KwQpEaO6YAPac=;
+ b=hoc3Ue7/Syk+mxB38gHADf7FiKHtY/juncW12Y65vTdt5f2s5O2u+UeWEdSpBBywg9
+ 6WI5rE0MCRRBBMiGvGix2vHZBw+lSng50PybykHx6MjMByBQ9AFPJMKQaDUEEjQn8Mbe
+ 1KLYU7KWjMWQuIUROTtLWt9e7dIfotbqPPLJRfo4v1kADLj6Q6SE0VFi1kpsGqAcMO1j
+ QcfW5U8YfPiWnR0bEu02FJflZ1YmOc5rsGldHsl9+RbGLPDfsRzCkL+Yf5BDGgVB2lkZ
+ EjCVfy7QK6cCRPaH+kaZqqwM4KuCMN6BetyL0O9uG+Fn1xkwGo5MxLo8if5A1qTiXLD5
+ 6jTA==
+X-Gm-Message-State: AOAM530KbKRGiXbioib6q6vjHk/6j6/G/jas9Z4hylWv0wM+or2Ccom/
+ Cnc+VLQCrrW2ENxsUTGVInlnovICEfY4
+X-Received: from venture.svl.corp.google.com
+ ([2620:15c:2a3:200:6985:9b01:e10b:b119])
+ (user=venture job=sendgmr) by 2002:a25:6c85:: with SMTP id
+ h127mr18096816ybc.341.1617985569457; Fri, 09 Apr 2021 09:26:09 -0700 (PDT)
+Date: Fri,  9 Apr 2021 09:25:45 -0700
+In-Reply-To: <20210409162545.3705962-1-venture@google.com>
+Message-Id: <20210409162545.3705962-5-venture@google.com>
+Mime-Version: 1.0
 References: <20210409162545.3705962-1-venture@google.com>
- <20210409162545.3705962-2-venture@google.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <da217b1d-52f8-16f9-7079-3042425eeb86@amsat.org>
-Date: Fri, 9 Apr 2021 18:36:41 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
-MIME-Version: 1.0
-In-Reply-To: <20210409162545.3705962-2-venture@google.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::532;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x532.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Mailer: git-send-email 2.31.1.295.g9ea45b61b8-goog
+Subject: [PATCH v2 4/4] hw/i2c: add pca954x i2c-mux switch
+From: Patrick Venture <venture@google.com>
+To: cminyard@mvista.com, wuhaotsh@google.com, hskinnemoen@google.com
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+ Patrick Venture <venture@google.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b4a;
+ envelope-from=3IYBwYAcKCuwjSbhifSUccUZS.QcaeSai-RSjSZbcbUbi.cfU@flex--venture.bounces.google.com;
+ helo=mail-yb1-xb4a.google.com
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LEs5waOMhyKB
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 4BTXY7ys9WEF
 
-On 4/9/21 6:25 PM, Patrick Venture wrote:
-> To enable passing the current_devs field as a parameter, we need to use
-> a named struct type.
-> 
-> Tested: BMC firmware with i2c devices booted to userspace.
-> 
-> Signed-off-by: Patrick Venture <venture@google.com>
-> Reviewed-by: Hao Wu <wuhaotsh@google.com>
-> ---
->  include/hw/i2c/i2c.h | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
+The pca954x is an i2c mux, and this adds support for two variants of
+this device: the pca9546 and pca9548.
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+This device is very common on BMCs to route a different channel to each
+PCIe i2c bus downstream from the BMC.
+
+Signed-off-by: Patrick Venture <venture@google.com>
+Reviewed-by: Hao Wu <wuhaotsh@google.com>
+Reviewed-by: Havard Skinnemoen <hskinnemoen@google.com>
+---
+ MAINTAINERS                      |   6 +
+ hw/i2c/Kconfig                   |   4 +
+ hw/i2c/i2c_mux_pca954x.c         | 290 +++++++++++++++++++++++++++++++
+ hw/i2c/meson.build               |   1 +
+ hw/i2c/trace-events              |   5 +
+ include/hw/i2c/i2c_mux_pca954x.h |  19 ++
+ 6 files changed, 325 insertions(+)
+ create mode 100644 hw/i2c/i2c_mux_pca954x.c
+ create mode 100644 include/hw/i2c/i2c_mux_pca954x.h
+
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 58f342108e..5ea0b60b8a 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -2039,6 +2039,12 @@ S: Maintained
+ F: hw/net/tulip.c
+ F: hw/net/tulip.h
+ 
++pca954x
++M: Patrick Venture <venture@google.com>
++S: Maintained
++F: hw/i2c/i2c_mux_pca954x.c
++F: include/hw/i2c/i2c_mux_pca954x.h
++
+ Generic Loader
+ M: Alistair Francis <alistair@alistair23.me>
+ S: Maintained
+diff --git a/hw/i2c/Kconfig b/hw/i2c/Kconfig
+index 09642a6dcb..8d120a25d5 100644
+--- a/hw/i2c/Kconfig
++++ b/hw/i2c/Kconfig
+@@ -28,3 +28,7 @@ config IMX_I2C
+ config MPC_I2C
+     bool
+     select I2C
++
++config PCA954X
++    bool
++    select I2C
+diff --git a/hw/i2c/i2c_mux_pca954x.c b/hw/i2c/i2c_mux_pca954x.c
+new file mode 100644
+index 0000000000..9aa1a8872f
+--- /dev/null
++++ b/hw/i2c/i2c_mux_pca954x.c
+@@ -0,0 +1,290 @@
++/*
++ * I2C multiplexer for PCA954x series of I2C multiplexer/switch chips.
++ *
++ * Copyright 2021 Google LLC
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU General Public License as published by the
++ * Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
++ * for more details.
++ */
++
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "hw/i2c/i2c.h"
++#include "hw/i2c/i2c_mux_pca954x.h"
++#include "hw/i2c/smbus_slave.h"
++#include "hw/qdev-core.h"
++#include "hw/sysbus.h"
++#include "qemu/log.h"
++#include "qemu/module.h"
++#include "qemu/queue.h"
++#include "qom/object.h"
++#include "trace.h"
++
++#define PCA9548_CHANNEL_COUNT 8
++#define PCA9546_CHANNEL_COUNT 4
++
++/*
++ * struct Pca954xChannel - The i2c mux device will have N of these states
++ * that own the i2c channel bus.
++ * @bus: The owned channel bus.
++ * @enabled: Is this channel active?
++ */
++typedef struct Pca954xChannel {
++    SysBusDevice parent;
++
++    I2CBus       *bus;
++
++    bool         enabled;
++} Pca954xChannel;
++
++#define TYPE_PCA954X_CHANNEL "pca954x-channel"
++#define PCA954X_CHANNEL(obj) \
++    OBJECT_CHECK(Pca954xChannel, (obj), TYPE_PCA954X_CHANNEL)
++
++/*
++ * struct Pca954xState - The pca954x state object.
++ * @control: The value written to the mux control.
++ * @channel: The set of i2c channel buses that act as channels which own the
++ * i2c children.
++ */
++typedef struct Pca954xState {
++    SMBusDevice parent;
++
++    uint8_t control;
++
++    /* The channel i2c buses. */
++    Pca954xChannel channel[PCA9548_CHANNEL_COUNT];
++} Pca954xState;
++
++/*
++ * struct Pca954xClass - The pca954x class object.
++ * @nchans: The number of i2c channels this device has.
++ */
++typedef struct Pca954xClass {
++    SMBusDeviceClass parent;
++
++    uint8_t nchans;
++} Pca954xClass;
++
++#define TYPE_PCA954X "pca954x"
++OBJECT_DECLARE_TYPE(Pca954xState, Pca954xClass, PCA954X)
++
++/*
++ * For each channel, if it's enabled, recursively call match on those children.
++ */
++static bool pca954x_match(I2CSlave *candidate, uint8_t address,
++                          bool broadcast,
++                          I2CNodeList *current_devs)
++{
++    Pca954xState *mux = PCA954X(candidate);
++    Pca954xClass *mc = PCA954X_GET_CLASS(mux);
++    int i;
++
++    /* They are talking to the mux itself (or all devices enabled. */
++    if ((candidate->address == address) || broadcast) {
++        I2CNode *node = g_malloc(sizeof(struct I2CNode));
++        node->elt = candidate;
++        QLIST_INSERT_HEAD(current_devs, node, next);
++        if (!broadcast) {
++            return true;
++        }
++    }
++
++    for (i = 0; i < mc->nchans; i++) {
++        if (!mux->channel[i].enabled) {
++            continue;
++        }
++
++        if (i2c_scan_bus(mux->channel[i].bus, address, broadcast)) {
++            if (!broadcast) {
++                return true;
++            }
++        }
++    }
++
++    /* If we arrived here we didn't find a match, return broadcast. */
++    return broadcast;
++}
++
++static void pca954x_enable_channel(Pca954xState *s, uint8_t enable_mask)
++{
++    Pca954xClass *mc = PCA954X_GET_CLASS(s);
++    int i;
++
++    /*
++     * For each channel, check if their bit is set in enable_mask and if yes,
++     * enable it, otherwise disable, hide it.
++     */
++    for (i = 0; i < mc->nchans; i++) {
++        if (enable_mask & (1 << i)) {
++            s->channel[i].enabled = true;
++        } else {
++            s->channel[i].enabled = false;
++        }
++    }
++}
++
++static void pca954x_write(Pca954xState *s, uint8_t data)
++{
++    s->control = data;
++    pca954x_enable_channel(s, data);
++
++    trace_pca954x_write_bytes(data);
++}
++
++static int pca954x_write_data(SMBusDevice *d, uint8_t *buf, uint8_t len)
++{
++    Pca954xState *s = PCA954X(d);
++
++    if (len == 0) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: writing empty data\n", __func__);
++        return -1;
++    }
++
++    /*
++     * len should be 1, because they write one byte to enable/disable channels.
++     */
++    if (len > 1) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++            "%s: extra data after channel selection mask\n",
++            __func__);
++        return -1;
++    }
++
++    pca954x_write(s, buf[0]);
++    return 0;
++}
++
++static uint8_t pca954x_read_byte(SMBusDevice *d)
++{
++    Pca954xState *s = PCA954X(d);
++    uint8_t data = s->control;
++    trace_pca954x_read_data(data);
++    return data;
++}
++
++static void pca954x_enter_reset(Object *obj, ResetType type)
++{
++    Pca954xState *s = PCA954X(obj);
++    /* Reset will disable all channels. */
++    pca954x_write(s, 0);
++}
++
++I2CBus *pca954x_i2c_get_bus(I2CSlave *mux, uint8_t channel)
++{
++    Pca954xClass *pc = PCA954X_GET_CLASS(mux);
++    Pca954xState *pca954x = PCA954X(mux);
++
++    g_assert(channel < pc->nchans);
++    return I2C_BUS(qdev_get_child_bus(DEVICE(&pca954x->channel[channel]),
++                                      "i2c-bus"));
++}
++
++static void pca954x_smbus_init(Object *obj)
++{
++    Pca954xChannel *s = PCA954X_CHANNEL(obj);
++    s->bus = i2c_init_bus(DEVICE(s), "i2c-bus");
++
++    /* Start all channels as disabled. */
++    s->enabled = false;
++}
++
++static void pca954x_channel_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    dc->desc = "Pca954x Channel";
++}
++
++static void pca9546_class_init(ObjectClass *klass, void *data)
++{
++    Pca954xClass *s = PCA954X_CLASS(klass);
++    s->nchans = PCA9546_CHANNEL_COUNT;
++}
++
++static void pca9548_class_init(ObjectClass *oc, void *data)
++{
++    Pca954xClass *s = PCA954X_CLASS(oc);
++    s->nchans = PCA9548_CHANNEL_COUNT;
++}
++
++static void pca954x_realize(DeviceState *dev, Error **errp)
++{
++    Pca954xState *s = PCA954X(dev);
++    Pca954xClass *c = PCA954X_GET_CLASS(s);
++    int i;
++
++    /* SMBus modules. Cannot fail. */
++    for (i = 0; i < c->nchans; i++) {
++        Object *obj = OBJECT(&s->channel[i]);
++        sysbus_realize(SYS_BUS_DEVICE(obj), &error_abort);
++    }
++}
++
++static void pca954x_init(Object *obj)
++{
++    int i;
++    Pca954xState *s = PCA954X(obj);
++    Pca954xClass *c = PCA954X_GET_CLASS(obj);
++
++    /* Only initialize the children we expect. */
++    for (i = 0; i < c->nchans; i++) {
++        object_initialize_child(obj, "channel[*]", &s->channel[i],
++                                TYPE_PCA954X_CHANNEL);
++    }
++}
++
++static void pca954x_class_init(ObjectClass *klass, void *data)
++{
++    I2CSlaveClass *sc = I2C_SLAVE_CLASS(klass);
++    ResettableClass *rc = RESETTABLE_CLASS(klass);
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    SMBusDeviceClass *k = SMBUS_DEVICE_CLASS(klass);
++
++    sc->match_and_add = pca954x_match;
++
++    rc->phases.enter = pca954x_enter_reset;
++
++    dc->desc = "Pca954x i2c-mux";
++    dc->realize = pca954x_realize;
++
++    k->write_data = pca954x_write_data;
++    k->receive_byte = pca954x_read_byte;
++}
++
++static const TypeInfo pca954x_info[] = {
++    {
++        .name          = TYPE_PCA954X,
++        .parent        = TYPE_SMBUS_DEVICE,
++        .instance_size = sizeof(Pca954xState),
++        .instance_init = pca954x_init,
++        .class_size    = sizeof(Pca954xClass),
++        .class_init    = pca954x_class_init,
++        .abstract      = true,
++    },
++    {
++        .name          = TYPE_PCA9546,
++        .parent        = TYPE_PCA954X,
++        .class_init    = pca9546_class_init,
++    },
++    {
++        .name          = TYPE_PCA9548,
++        .parent        = TYPE_PCA954X,
++        .class_init    = pca9548_class_init,
++    },
++    {
++        .name = TYPE_PCA954X_CHANNEL,
++        .parent = TYPE_SYS_BUS_DEVICE,
++        .class_init = pca954x_channel_class_init,
++        .instance_size = sizeof(Pca954xChannel),
++        .instance_init = pca954x_smbus_init,
++    }
++};
++
++DEFINE_TYPES(pca954x_info)
+diff --git a/hw/i2c/meson.build b/hw/i2c/meson.build
+index cdcd694a7f..dd3aef02b2 100644
+--- a/hw/i2c/meson.build
++++ b/hw/i2c/meson.build
+@@ -14,4 +14,5 @@ i2c_ss.add(when: 'CONFIG_SMBUS_EEPROM', if_true: files('smbus_eeprom.c'))
+ i2c_ss.add(when: 'CONFIG_VERSATILE_I2C', if_true: files('versatile_i2c.c'))
+ i2c_ss.add(when: 'CONFIG_OMAP', if_true: files('omap_i2c.c'))
+ i2c_ss.add(when: 'CONFIG_PPC4XX', if_true: files('ppc4xx_i2c.c'))
++i2c_ss.add(when: 'CONFIG_PCA954X', if_true: files('i2c_mux_pca954x.c'))
+ softmmu_ss.add_all(when: 'CONFIG_I2C', if_true: i2c_ss)
+diff --git a/hw/i2c/trace-events b/hw/i2c/trace-events
+index 82fe6f965f..82f19e6a2d 100644
+--- a/hw/i2c/trace-events
++++ b/hw/i2c/trace-events
+@@ -26,3 +26,8 @@ npcm7xx_smbus_recv_byte(const char *id, uint8_t value) "%s recv byte: 0x%02x"
+ npcm7xx_smbus_stop(const char *id) "%s stopping"
+ npcm7xx_smbus_nack(const char *id) "%s nacking"
+ npcm7xx_smbus_recv_fifo(const char *id, uint8_t received, uint8_t expected) "%s recv fifo: received %u, expected %u"
++
++# i2c-mux-pca954x.c
++
++pca954x_write_bytes(uint8_t value) "PCA954X write data: 0x%02x"
++pca954x_read_data(uint8_t value) "PCA954X read data: 0x%02x"
+diff --git a/include/hw/i2c/i2c_mux_pca954x.h b/include/hw/i2c/i2c_mux_pca954x.h
+new file mode 100644
+index 0000000000..8aaf9bbc39
+--- /dev/null
++++ b/include/hw/i2c/i2c_mux_pca954x.h
+@@ -0,0 +1,19 @@
++#ifndef QEMU_I2C_MUX_PCA954X
++#define QEMU_I2C_MUX_PCA954X
++
++#include "hw/i2c/i2c.h"
++
++#define TYPE_PCA9546 "pca9546"
++#define TYPE_PCA9548 "pca9548"
++
++/**
++ * Retrieves the i2c bus associated with the specified channel on this i2c
++ * mux.
++ * @mux: an i2c mux device.
++ * @channel: the i2c channel requested
++ *
++ * Returns: a pointer to the associated i2c bus.
++ */
++I2CBus *pca954x_i2c_get_bus(I2CSlave *mux, uint8_t channel);
++
++#endif
+-- 
+2.31.1.295.g9ea45b61b8-goog
+

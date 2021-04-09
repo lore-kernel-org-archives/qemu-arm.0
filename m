@@ -1,170 +1,174 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp646269lfr;
-        Thu, 8 Apr 2021 09:32:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw9xeQKyspZJTCMc5gNQDlSyYJafOLW86H6o22spD/JhUOXqQg3D9Kh0zZJfNsSZ7Di17Og
-X-Received: by 2002:a5d:97cb:: with SMTP id k11mr7603122ios.204.1617899550896;
-        Thu, 08 Apr 2021 09:32:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617899550; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp1000467lfr;
+        Thu, 8 Apr 2021 17:03:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyYeywvOxd38IoKfa/0awB4LLeWEStz+jfyEDI/o15TZPch2/pS5oGwf26LiTtcomXPMhGn
+X-Received: by 2002:a1f:c148:: with SMTP id r69mr9200851vkf.17.1617926635465;
+        Thu, 08 Apr 2021 17:03:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617926635; cv=none;
         d=google.com; s=arc-20160816;
-        b=GSvpTb1AZK3pnzhYfOsUdr1L5RxAJBKw+FeKdyxtu8hwCqp6Wt5DhRlLQF6MpONE1i
-         C9UfpW37IeYlGLdjaiVQNq7SKlu5N9IshVCqgHBnUrJjKzXWF+5RsPZL+/W1JWRLPwrB
-         kg/um8mXsfdLizY8bkj01GZpmhFwHv7OEUR8qneGOur+fyU96/i+8jhieol+pfhcgJjd
-         q5PAGRUC89RHtc+nSgSeUcL5qOACXAKFF0wwFbIQnaoKhjdnLaLve+GiYuAJsY5MsUC8
-         o2TJ1CdBLHkGq8p7UwJauABKFe8yqFsnuoD+P6xya7LKvU74SfqZE3ez18/Ed0XdgekU
-         CCRg==
+        b=bJ83UZuQWuRnQ4uHSDKkPKdUxSPAuyqxocFh1G7Y7fHYQf+7I+qdxYyX2jdqYyENoO
+         eoBkmwVdqzGg58mdfDcGlCzmRdVCwZbgAAxW7VmQr8+es2+pvXQIOG7ROxTnT2eMU0nc
+         6Hp79dnLUQSqjipUj+tytwqBFzFUQmp2OG68qQO0OWybsb/WBl9omSgL75P9ks9avraO
+         20ss2XLo7N60NOjcHYAGc7dAc3MudesEWz2LVYSavSwFolI30WfksLiLxLK9+kBAljzS
+         4031+wlpJLrd+Oucl1UiuAUyYdt2dd81aXuvnGBQUUE7XEqy9rJmzVQKHLFtCS8ePlPt
+         qRwA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=K+poOW94BowNCInGKJvJSDOLc8fjcU95Yt+lwLQ1q/w=;
-        b=h1O+3mFf8KPy2I5/ouStOUUAJWBiS391KbfKEdNOcmZeaQaOL6n1SWJLzY7aDl9/IQ
-         +qIK+fqPfT3+//J2YzfQGIU3ZN/Zegb9Qqv4jsVb4P/vkiWtcANqrA7b35Vhg2Oe+b9X
-         Kc0DracswJsDvSF60CiLN8UPitsK/WfEezePhGmvx85BJ8A5eBkkhELEck+ibHU5j8mj
-         s08zQE+/ZY01MTUM1BjZPbzCbed6kcWxJfEyROcveDamN8jd5HJCPuAUF9sxSoQ4Cg24
-         TdhnDc6a8MQnqazQLAfyJjPBdHIGYOZ5q3CPznEarh8o9u/q53RZiISiN8x7MuQGuwHL
-         fKYg==
+        bh=6EQ33cLsvaMdyk9vZ1RjmmWSEqY5Z0Yx1WWV7OjMVSY=;
+        b=ZuZKZ75LQbqsWqX4ItDgKlkcFYYTdN+xoon+0XKvgfb/rXMoIbh8O/B1jZDN/uz3GU
+         3SsCKJKBRSqVbtv71rvppXpFBIA+7VOUYfcjfOfWkIvBsyCjpuBMqTjT/X2EidhHZFsS
+         qRppiMG2PhiQUZqSa2dx/y/jNdDMnlvbzBdN5UExjDbu9lh6SIU5ntR6RbQPsnvpLo3o
+         fNBLQ7DwtLIyR32TT1gBBIF1gcfiut5cXrr/Cecyg5GaPHcpB0wBcK/EHv38CnNvF1dO
+         kl4dQnkeF0b22rvjn7kqCRzmx79ucf5z371CijRGeFbAMb1GArbgDAid1+K6p2N+Srt5
+         xSQQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Vc5gDIDO;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=cwfOIOV5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f21si12593ioo.37.2021.04.08.09.32.30
+        by mx.google.com with ESMTPS id j124si723627vkc.82.2021.04.08.17.03.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Apr 2021 09:32:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 08 Apr 2021 17:03:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Vc5gDIDO;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53976 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=cwfOIOV5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:40740 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lUXa2-0008EY-5A
-	for alex.bennee@linaro.org; Thu, 08 Apr 2021 12:32:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47452)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lUecs-0001GK-HH
+	for alex.bennee@linaro.org; Thu, 08 Apr 2021 20:03:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42046)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lUXWr-0006Eu-OE
- for qemu-devel@nongnu.org; Thu, 08 Apr 2021 12:29:13 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:37546)
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1lUecC-0001Fr-MC; Thu, 08 Apr 2021 20:03:12 -0400
+Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434]:35335)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lUXRv-0004kG-Aa
- for qemu-devel@nongnu.org; Thu, 08 Apr 2021 12:24:09 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id j5so1805421wrn.4
- for <qemu-devel@nongnu.org>; Thu, 08 Apr 2021 09:24:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:mime-version
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1lUecA-0005Ce-Ks; Thu, 08 Apr 2021 20:03:12 -0400
+Received: by mail-pf1-x434.google.com with SMTP id n38so3044659pfv.2;
+ Thu, 08 Apr 2021 17:03:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=K+poOW94BowNCInGKJvJSDOLc8fjcU95Yt+lwLQ1q/w=;
- b=Vc5gDIDOn0XJ2DBDn5Tcu/8bbphqogRvcGfpy/GddIrklOd4NM87BxQu00EdqCfUXs
- xquSrJxV94vnLgtMLK7RFgoDFfUtmBb/s0qn7L7oQdO67GBTGWkwebdhxHiLDcYybU2J
- umszi5lyyeRNsz6kcXZbFyLz+sZATxS0HuckwMv4qF2CRYy6z0W3AL7gP4MskYPy21V1
- PixwYWW4KYlalG+fC7XB1wIbsYXVomp6cTzLCXFXMu/dcEyoF33dgpOB7sOAuPJ46+kE
- D+134yFQcEbX5jeQrM45B8c8RXn08CS2VFBjU5pit6A/bxTrYG+8LiDflKvAcBvIsIuq
- /ftA==
+ bh=6EQ33cLsvaMdyk9vZ1RjmmWSEqY5Z0Yx1WWV7OjMVSY=;
+ b=cwfOIOV5NeQ0atG6S3nvh1PPBzKcBBAe1NIsxIeFXhlxU8DK7I/uLkBDFemC6HqSD0
+ yu9GCyvFQFO4vHV2J9vP0d+kIEz2mQGDxrta5FHGZkr29/rBCJWEKUYgro9lBimlqXHT
+ C5OU2G3QkxwReJwTyc7VOF7GtdJIz1eTAI1hbxgj2XlqUFI+UYLrkcH/Vk914WzON/fW
+ DeA5N6Fvpq6nxoxMcweAttgxKZ8eDsNkDBrwv6SDABgNNj9h3Uc2LTiXBJwPPU7kIWkk
+ XTrsJtRNv+fDSuaUYgzrnIFA4UOeDYazFQ5/5ZWabgjgFtoth50FZ4++tCYMURkIyMRK
+ Kyrw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=K+poOW94BowNCInGKJvJSDOLc8fjcU95Yt+lwLQ1q/w=;
- b=HjIuiMQyA0zxUjQ+Em01Q1QPaGLzk+pGu812CtmH9PugCeV35FKgenjOj7/Fuj4+/6
- T9Fdr5EIOcJKbIBbMv/t3A6U0EcgEmZZQXMIHAUw/cj8iabl51VNvBdf2rZv00Zuw07p
- 7pls72+p1hlm7q7uI51Gk0LKcekuoJbYU/9MFMTDUQlFTdjqolAnmpHR3Wdc6PAkE+28
- YTJlQhI7gvLxouFdTIQ34VXCGQtZjHKHNN27A5Afq6iwTZQ7N68LoKCRRoGFgRxGAxTW
- sYNI2pfWeB+fFlJTIJWMdKFG8tk/3ZgmfFXvtL60QJRFDIMlNqjl95SiuUAFzV8SP4wr
- Kdsg==
-X-Gm-Message-State: AOAM530ZHcKtCguTJ92Du+VwwC4Dl98FtwgwDsAD28ad7yUEi2U2jLPU
- tfUbSjR/KuIdseKZuPwZybaosQ==
-X-Received: by 2002:a5d:6345:: with SMTP id b5mr12393705wrw.299.1617899045361; 
- Thu, 08 Apr 2021 09:24:05 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id x14sm46403428wrw.13.2021.04.08.09.24.04
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=6EQ33cLsvaMdyk9vZ1RjmmWSEqY5Z0Yx1WWV7OjMVSY=;
+ b=jPfeL6i0IU+iBFr3RvGYaMABhLTTS3FshQ9hmt17yV5oEylzFS9c+ycQJ8DRGuRFVN
+ UES9DkQqQt8PPuESpwRSKz4pIGsBh57ARcidjWiDiDowPbYXv9aqmg0i/jNj8X9JTUB2
+ bPeHnSh8JAMtsU0j+1tfMO/LvMWuvCFNUUv5ktW4bLVJYmU8MximgNJcX4M8iBef7v7F
+ zLu3FUmBVPKAKl0qFhej53y76LQ3vIk64ZHZedpeEqqAksX6VSiSHA2MklbRWCCAK8kq
+ bGGj+Xhw7Vra4akXbxIGAsWGDLhTP7WzyvGi7Xq0gnB7hDQVVl7WOONlk+CJJ7+VZ/SX
+ 41xg==
+X-Gm-Message-State: AOAM533cspRI1dzSMo6Odg/CkSYkLdVMKwtStKlZk9C8JaoBwr9dh5Me
+ WtUkVlX59D7uam4wMNF4frk=
+X-Received: by 2002:a63:62c4:: with SMTP id
+ w187mr10045122pgb.173.1617926588724; 
+ Thu, 08 Apr 2021 17:03:08 -0700 (PDT)
+Received: from voyager.lan ([45.124.203.14])
+ by smtp.gmail.com with ESMTPSA id f17sm393406pfk.184.2021.04.08.17.03.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 08 Apr 2021 09:24:04 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH] target/arm: Make Thumb store insns UNDEF for Rn==1111
-Date: Thu,  8 Apr 2021 17:24:02 +0100
-Message-Id: <20210408162402.5822-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
+ Thu, 08 Apr 2021 17:03:07 -0700 (PDT)
+From: Joel Stanley <joel@jms.id.au>
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PATCH v5 0/3] hw/misc: Model ASPEED hash and crypto engine
+Date: Fri,  9 Apr 2021 09:32:50 +0930
+Message-Id: <20210409000253.1475587-1-joel@jms.id.au>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::434;
+ envelope-from=joel.stan@gmail.com; helo=mail-pf1-x434.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YyWXfaZIEPHw
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Klaus Heinrich Kiwi <klaus@linux.vnet.ibm.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: SraYQLpozHwd
 
-The Arm ARM specifies that for Thumb encodings of the various plain
-store insns, if the Rn field is 1111 then we must UNDEF.  This is
-different from the Arm encodings, where this case is either
-UNPREDICTABLE or has well-defined behaviour.  The exclusive stores,
-store-release and STRD do not have this UNDEF case for any encoding.
+This version of the series adds the cleanups Cédric made and the scatter
+gather feature that Klaus implemented. I took inspiration from Klaus's
+patches and reworked the direct hashing mode to easier implement both sg
+and direct modes.
 
-Enforce the UNDEF for this case in the Thumb plain store insns.
+The r-b tags are preserved as the changes were minor. I welcome further
+review though if you have time.
 
-Fixes: https://bugs.launchpad.net/qemu/+bug/1922887
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/translate.c | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+v5: Merge scatter gather feature
+v4: Rebase on Philippe's memory region cleanup series [1]
+    Address feedback from Cédric
+    Rework qtest to run on ast2400, ast2500 and ast2600
+v3: Rework qtest to not use libqtest-single.h, rebase to avoid LPC
+conflicts.
+v2: Address review from Andrew and Philippe. Adds a qtest.
 
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 62b1c2081b6..aa4aa9b99a2 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -6476,6 +6476,14 @@ static bool op_store_rr(DisasContext *s, arg_ldst_rr *a,
-     ISSInfo issinfo = make_issinfo(s, a->rt, a->p, a->w) | ISSIsWrite;
-     TCGv_i32 addr, tmp;
- 
-+    /*
-+     * In Thumb encodings of stores Rn=1111 is UNDEF; for Arm it
-+     * is either UNPREDICTABLE or has defined behaviour
-+     */
-+    if (s->thumb && a->rn == 15) {
-+        return false;
-+    }
-+
-     addr = op_addr_rr_pre(s, a);
- 
-     tmp = load_reg(s, a->rt);
-@@ -6620,6 +6628,14 @@ static bool op_store_ri(DisasContext *s, arg_ldst_ri *a,
-     ISSInfo issinfo = make_issinfo(s, a->rt, a->p, a->w) | ISSIsWrite;
-     TCGv_i32 addr, tmp;
- 
-+    /*
-+     * In Thumb encodings of stores Rn=1111 is UNDEF; for Arm it
-+     * is either UNPREDICTABLE or has defined behaviour
-+     */
-+    if (s->thumb && a->rn == 15) {
-+        return false;
-+    }
-+
-     addr = op_addr_ri_pre(s, a);
- 
-     tmp = load_reg(s, a->rt);
+[1] https://lore.kernel.org/qemu-devel/20210312182851.1922972-1-f4bug@amsat.org/
+
+This adds a model for the ASPEED hash and crypto engine (HACE) found on
+all supported ASPEED SoCs.
+
+The model uses Qemu's gcrypto API to perform the SHA and MD5 hashing
+directly in the machine's emulated memory space, which I found a neat
+use of Qemu's features.
+
+It has been tested using u-boot and from Linux userspace, and adds a
+qtest for the model running as part of the ast2600-evb, ast2500-evb and
+palmetto-bmc (to test ast2400) machines.
+
+Note that the tests will fail without Philippe/Cédric's memory region series.
+
+Joel Stanley (3):
+  hw: Model ASPEED's Hash and Crypto Engine
+  aspeed: Integrate HACE
+  tests/qtest: Add test for Aspeed HACE
+
+ docs/system/arm/aspeed.rst     |   2 +-
+ include/hw/arm/aspeed_soc.h    |   3 +
+ include/hw/misc/aspeed_hace.h  |  43 +++
+ hw/arm/aspeed_ast2600.c        |  15 ++
+ hw/arm/aspeed_soc.c            |  16 ++
+ hw/misc/aspeed_hace.c          | 389 +++++++++++++++++++++++++++
+ tests/qtest/aspeed_hace-test.c | 469 +++++++++++++++++++++++++++++++++
+ MAINTAINERS                    |   1 +
+ hw/misc/meson.build            |   1 +
+ tests/qtest/meson.build        |   3 +
+ 10 files changed, 941 insertions(+), 1 deletion(-)
+ create mode 100644 include/hw/misc/aspeed_hace.h
+ create mode 100644 hw/misc/aspeed_hace.c
+ create mode 100644 tests/qtest/aspeed_hace-test.c
+
 -- 
-2.20.1
+2.30.2
 

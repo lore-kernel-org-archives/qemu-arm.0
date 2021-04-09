@@ -1,167 +1,149 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp1569362lfr;
-        Fri, 9 Apr 2021 08:05:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyCUzEWSgsQy/cBxDhF3oelr2XMQRPb0QCWCocOnzuhhdBvsjQQi3/wgj+HpAsqFfj8M8gC
-X-Received: by 2002:a05:6602:1592:: with SMTP id e18mr11337909iow.49.1617980754497;
-        Fri, 09 Apr 2021 08:05:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617980754; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp1590580lfr;
+        Fri, 9 Apr 2021 08:30:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz5eFgqHSUhCsziXfZgPCbd30lzGGR9RmtsC5Cp6UTvzLlhPr/wbpE6pHoFj7uaO+V2R038
+X-Received: by 2002:a54:4507:: with SMTP id l7mr10093765oil.165.1617982203211;
+        Fri, 09 Apr 2021 08:30:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617982203; cv=none;
         d=google.com; s=arc-20160816;
-        b=N31qowSGjYy89X8r8S1WA06R6KmNDurSZ1dipXlrEsUcWxmuXc4fqkYpAD6uWhAq/j
-         U52NQLnCAZ/DHwbwh1RQJUnNsOkkWNpW6KSgXIr4zvdrCoQME9kp0OU5tPWYXZ+cx/nt
-         H20ymWoctWwbWBUSDH8PVNwyhccW88uHEU2shkebABwt1R2Go4PgdnKotQ5MCtm8VZeD
-         0wWQB1FKJU8kr5KfDPTPYjr1Tt/q2Kgte6x6Q79NjS8bZGcuKlC8AjsPb/ak91MmZhAm
-         ndxU9lm94EMqL2iWVP+S+Ul/C0aoLLj1lYDWptwMCO7zFcoOrM6/ZN0mPa61HP+uCn1p
-         a0ZQ==
+        b=f05SNc4H77MmHzKGYU7+jCVECpC0ihO9hkF/ltFFxb6ee+mezCVEbUroYzQw2AL/0O
+         IuHvCg2BeIb1i+Ypp4sf8JsaXDtP8yJNuPZ/O1MeA7ZFoUerSRBU1w+g3DCxxLNEzAII
+         fMRhNLchjPyOMGiAYiKozidfET7cW+4MXS85sOcz3GhDq1AHH6rjFPoQH4OnBbBQiCy4
+         9ACFGHD6JcWcn2c7sY8Ruh0Lfgx+g/g6trdu96Wg5lYGre9VfJqEV2SgrHWyB7ZbXaS/
+         ye1p7UCd2DZK/2EjaCrMWHl/RxXYcSCca6ZrIu5TvexZJOQGYdWwBA4wm3oPf/ao7qaw
+         k1Hg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=reJEPf1Ear5sT/gFdxp/wDkAg24YTHHfbcML4QVdPq8=;
-        b=HnWTXMh0VR8cOp9k7UlsvI25lRwNe2m3IE7WEVCDtl1v0lWNlSckw5/uW6sHnCenH0
-         bIrq7BPTO7Vfa+Fh/il1tc+qRt0BevZ0OHaOkV3254TlPJPqpQ4KDxhlHLXU3vZNQsK1
-         GZLGQ80Vu6+Uyr6QNIHV3lT9oL9pDEZSG8Tke7sFvRcXQ1przakDUA1LIW4mHVlBKX4W
-         3+O+Ioh1LOs1YMdb1WFOIhc7MWINuTkOvJNOAAFxaOO1dm67444fRywoOx/HZVVuVCXR
-         CW90eFO8obE3Bg4RLttfEQWLz6h93GSih4Q3Val0weQ4Xcv2V6/Gzmbv3Kk8JFefVBUQ
-         LDnQ==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=+PcFtvgS/H1OuNkpXEruorytMDgYsldeOiA9KrjFnO4=;
+        b=Wwjx6+aQvQpWLm/SD6akd9fzGUI7EHdnyTYSpFe9hnntlyHS73jBp/GiAYqf2/xpdy
+         QPuqw1voijNTaA1Z56zq7tfSBQ5BN2PzLqdCv2CUSS2YeWmGdt0+hT+4hfrKLkR6wMS3
+         2pLckDtrbCaADx34MAfeOtUnKmg29+8UWhMINnCWh3JPJM3Xfuqg4FlAXeGTQ56uCYom
+         hyKo2XejHbrWphY82vqJH+EqWh6ZRBHLXdVbpj5cY2/Zgc/l43D1+lzqnBN5DvYuwYKv
+         ekezhv52vc98zx2BIXkZsRNuVNZr0gLUYAYwFr6i3TPBBGYWq/EkhMoUumgXjQQvShd6
+         la7A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=yxbsFrt4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=B5y5gw4Q;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k3si3223213iop.67.2021.04.09.08.05.54
+        by mx.google.com with ESMTPS id w20si3263311ooc.75.2021.04.09.08.30.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 09 Apr 2021 08:05:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 09 Apr 2021 08:30:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=yxbsFrt4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46356 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=B5y5gw4Q;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:58718 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lUshl-0002ez-N8
-	for alex.bennee@linaro.org; Fri, 09 Apr 2021 11:05:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60222)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lUt58-0004rF-89
+	for alex.bennee@linaro.org; Fri, 09 Apr 2021 11:30:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37538)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lUshT-0002at-2R
- for qemu-arm@nongnu.org; Fri, 09 Apr 2021 11:05:35 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:41929)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lUt3p-0003Zg-G8; Fri, 09 Apr 2021 11:28:41 -0400
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a]:37549)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lUshR-0004TT-EU
- for qemu-arm@nongnu.org; Fri, 09 Apr 2021 11:05:34 -0400
-Received: by mail-wr1-x431.google.com with SMTP id a6so5952987wrw.8
- for <qemu-arm@nongnu.org>; Fri, 09 Apr 2021 08:05:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:in-reply-to:references:mime-version
- :content-transfer-encoding;
- bh=reJEPf1Ear5sT/gFdxp/wDkAg24YTHHfbcML4QVdPq8=;
- b=yxbsFrt4Rh/ZBiGQX4zsAuiagmjzYX5B3PzpupcWwaPlG2bOkU7aFuiP4F5DqOzN7h
- 7+vih3S/9oQAyLiyZMy61SyVGaLHYfYMM4NGJHFJ/mo+xgFIr4O6v/a3f5TfJm2GdQy9
- Rcdat3JtW2lbenyVOtQbZrSFEELq51tMbOjCswh0NbtZBumgUVYP3yP1pqpKbHVOWN74
- 4SH/PjPTJEXji/PHcV06ceFWN9DdGJxIr1shMNu7Pfn8SX1/zi5uclZs/KVls9cMLN+B
- NkZK97vyVF6I5eiiQjx2scnl6cRnmcMe9wgJeYv0yRykEgCnXwz3iORYauOzxPOCC/zv
- +o7w==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lUt3m-0006w1-Tu; Fri, 09 Apr 2021 11:28:40 -0400
+Received: by mail-ed1-x52a.google.com with SMTP id s15so7028879edd.4;
+ Fri, 09 Apr 2021 08:28:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=+PcFtvgS/H1OuNkpXEruorytMDgYsldeOiA9KrjFnO4=;
+ b=B5y5gw4QQ/1U2ra8ycW6hPOKVTnSd139PaGNARL79dLQ//DTYw1Dg6OrqIwUN2IU+q
+ eZsG8Q1By1Zjp4neoGIKzYXDz2fAYWDAKdB8StiLzv7u5nW+cfUh5GiKIiXwJAnQ9fXp
+ HkHI0O/Z6Y/XCELQ6Dv+5oEyQd24aAdpkTk5L6FpT8qEZulJcTJK//a5ekjDZzjo+l/3
+ vnP3uukAE70JL6AacFqHBu7YSRTf87ygPw9ME7+WyUmLj2Mr8kozboo61lk+g5T2tK8F
+ h6JmrgkzAPL10hF+7v32VPC+menIDS0g67djdw5N05Uwexuw03vA+cpzlfCFRFnlIhGu
+ mLnA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=reJEPf1Ear5sT/gFdxp/wDkAg24YTHHfbcML4QVdPq8=;
- b=c4Zt18pdNmC/xXeJBYVpQZJ3DJAtrwexxMs04rFyiMtmxiGxxt6rvZt4V2oCSA4Eic
- sy6Q6EmEvPLi0eB3DmcUF+iXhjyoHp3Fn2a4xkmKfZSHbxytoS+29rd9BTlGebLMDFuR
- 1q52yoZGF9c5iz8bT/+I79Dx3GBmn2Bo2npQfF8G+QEMuEKlXf2YQWk14y06TVKz8gwY
- xtiK+EXuZQnw3fWvX2vYJSAP3cvCUZWOy3yN/lwAyvE4c5m9HFgGvhvB2/nQ/+rKG60v
- zszMNoAuGUGNbmEPq6cODxLL+RMCw0aQremwLDJCEOv5eMEnkAIALiyp+tK//TIMjTo7
- IAjA==
-X-Gm-Message-State: AOAM5330oPVZ8bsaNa4+jtX3jGTcUEH8BLvpcrPJDS5NFBtQmlkh5FHS
- UOubcY6sWP7G7FvhjpMDMu12mafIYWvE054X
-X-Received: by 2002:a5d:4579:: with SMTP id a25mr9947609wrc.160.1617980732166; 
- Fri, 09 Apr 2021 08:05:32 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id c18sm5048094wrp.33.2021.04.09.08.05.30
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 09 Apr 2021 08:05:30 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH for-6.0 2/2] hw/arm/mps2-tz: Assert if more than one RAM is
- attached to an MPC
-Date: Fri,  9 Apr 2021 16:05:27 +0100
-Message-Id: <20210409150527.15053-3-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210409150527.15053-1-peter.maydell@linaro.org>
+ h=x-gm-message-state:sender:subject:to:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=+PcFtvgS/H1OuNkpXEruorytMDgYsldeOiA9KrjFnO4=;
+ b=PkphhvCwfKzCmofcT1w5TwcDk6KrHox761i3sHrpINIIYNAZdOXyQ43SF1ppPoK58i
+ tTKEAKpy/6hbRi4Rn0+dQXi0BdFu4uu8difuZMH7/qqg/JvqrYFgRYIei6k3yu3HDaJ+
+ /Htyx/VqNbELl9gh7hVpIWPUmghkL/4kB+Eozhg9w2QuH99uMYBILsp/GlM6VtomCV8J
+ TCanX9qVXgJRs2UGmxidm/NXvW3Kaflu8WLmG8L4SXaMWX9Ybd0XqH5PZlu/KsoTZ+zc
+ md4D55PA17SSep5B5rX2IvbY2JMPytLrkIb4p3TU72WY+DMBJDvBny5ro/gFQRcZPbST
+ eWRQ==
+X-Gm-Message-State: AOAM530LwdHhf+xHVWibSHp36P0Y9sXc7gxUT6l6HimuUZ+2KwniL3tu
+ FKZoad3sSDwqNyjTQeFAjTM38+zkcvPQdg==
+X-Received: by 2002:a50:ed08:: with SMTP id j8mr18515644eds.351.1617982116573; 
+ Fri, 09 Apr 2021 08:28:36 -0700 (PDT)
+Received: from [192.168.1.36] (17.red-88-21-201.staticip.rima-tde.net.
+ [88.21.201.17])
+ by smtp.gmail.com with ESMTPSA id cy5sm1672008edb.46.2021.04.09.08.28.35
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 09 Apr 2021 08:28:36 -0700 (PDT)
+Subject: Re: [PATCH for-6.0 1/2] hw/arm/mps2-tz: Fix MPC setting for AN524
+ SRAM block
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
 References: <20210409150527.15053-1-peter.maydell@linaro.org>
+ <20210409150527.15053-2-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <7a8f28e9-ad01-6798-787f-398cf5befa54@amsat.org>
+Date: Fri, 9 Apr 2021 17:28:34 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
+In-Reply-To: <20210409150527.15053-2-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x431.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x52a.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gMt6HVe+LKRs
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 7Oi4X5zDaT/n
 
-Each board in mps2-tz.c specifies a RAMInfo[] array providing
-information about each RAM in the board.  The .mpc field of the
-RAMInfo struct specifies which MPC, if any, the RAM is attached to.
-We already assert if the array doesn't have any entry for an MPC, but
-we don't diagnose the error of using the same MPC number twice (which
-is quite easy to do by accident if copy-and-pasting structure
-entries).
+On 4/9/21 5:05 PM, Peter Maydell wrote:
+> The AN524 has three MPCs: one for the BRAM, one for the QSPI flash,
+> and one for the DDR.  We incorrectly set the .mpc field in the
+> RAMInfo struct for the SRAM block to 1, giving it the same MPC we are
+> using for the QSPI.  The effect of this was that the QSPI didn't get
+> mapped into the system address space at all, via an MPC or otherwise,
+> and guest programs which tried to read from the QSPI would get a bus
+> error.  Correct the SRAM RAMInfo to indicate that it does not have an
+> associated MPC.
+> 
 
-Enhance find_raminfo_for_mpc() so that it detects multiple entries
-for the MPC as well as missing entries.
+Fixes: 25ff112a8cc ("hw/arm/mps2-tz: Add new mps3-an524 board")
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/arm/mps2-tz.c | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
-index 5ebd671bf83..25016e464d9 100644
---- a/hw/arm/mps2-tz.c
-+++ b/hw/arm/mps2-tz.c
-@@ -306,14 +306,18 @@ static const RAMInfo *find_raminfo_for_mpc(MPS2TZMachineState *mms, int mpc)
- {
-     MPS2TZMachineClass *mmc = MPS2TZ_MACHINE_GET_CLASS(mms);
-     const RAMInfo *p;
-+    const RAMInfo *found = NULL;
- 
-     for (p = mmc->raminfo; p->name; p++) {
-         if (p->mpc == mpc && !(p->flags & IS_ALIAS)) {
--            return p;
-+            /* There should only be one entry in the array for this MPC */
-+            g_assert(!found);
-+            found = p;
-         }
-     }
-     /* if raminfo array doesn't have an entry for each MPC this is a bug */
--    g_assert_not_reached();
-+    assert(found);
-+    return found;
- }
- 
- static MemoryRegion *mr_for_raminfo(MPS2TZMachineState *mms,
--- 
-2.20.1
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
+> ---
+>  hw/arm/mps2-tz.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 

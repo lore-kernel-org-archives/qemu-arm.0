@@ -1,103 +1,102 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp1202777lfr;
-        Thu, 8 Apr 2021 23:27:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxhowHkIRk8oUgE3IxE0gPXj/6vh9bINAO7f53A7r/LlB1R8/v0vzx3Isuxb/fnFAXhF6Og
-X-Received: by 2002:a25:780a:: with SMTP id t10mr16796083ybc.446.1617949651791;
-        Thu, 08 Apr 2021 23:27:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617949651; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp1203286lfr;
+        Thu, 8 Apr 2021 23:28:09 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzS34Y1WTzHhAjik0L6JsKoqllgqTJhlclZwAFa0uDiAUUGSlnItUAI28L3O1lCWWscUals
+X-Received: by 2002:a6b:7e02:: with SMTP id i2mr9869049iom.120.1617949689479;
+        Thu, 08 Apr 2021 23:28:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617949689; cv=none;
         d=google.com; s=arc-20160816;
-        b=bKEDCt5k4mTW2rb7xmAtOSt9WhpjYSTRa3IiJgUUDHw+k1gOf7MvRkTtSvzhL9AgGB
-         xjy4XBSJ6w5KZM0n+GjHKcEsh7FPHP4wOvsdu4Aq/oeaIex7B8c8Cgq6B66zn4xRloyf
-         GDMsH4ekpdpQwS7FybT9XtKPKVzrr9pcx7WRYCTNpyhKIHKHUibtPXpWWJTpCr8+qvvp
-         43FTvuUf/zjFv+b6O8caYy+MDuijmXiORFvLavxjBs54HBQJHxw2LMtWjXq36Hcq8LDz
-         P63U1OpWMeiyN/wMG1pj9v2hOacnm4ukIxuCik3j5nHbvQ9uS63JjqZqMs15Ffz6dl3m
-         4GvA==
+        b=z0SyxQzSxfvtBxluXqX4pRWZLMDbq9FsH82m/Ep279/4tAtq0/3pxPzkOzBtTwKGrV
+         b23dE9v4UJFTnsOx5do3s+IIFODKv6QdbWx5SuB+EkgOAqYDlIm2uDSK3M9jfYQ2dAMy
+         YwTNLMhhe1HXW0cuRNqs7i71PF/UnTLPz588Q8L/izWIkzHORqCYhvexI6AZTghgwuf9
+         OQDH2ex5cvX7dMj18TRysx0eLf5rKabGb+kM+OSmxgJMDSyfYOws/mvWXihfA9XA4Fyf
+         PDAhr3Yf3Xm22jIEyxY0xrVojEEZp6vxrBX9ZLxgW/2qFVY8FYyl46atPAUxx1zrRRcR
+         rxGQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=+QFZRjfiDBXxrw9xt50MWOZpl0I5gXE/SA7o167QDWg=;
-        b=dtTL/PjP39lfStZZbjKdicVzwdhJOF9+BhqDidQWPhjA/C/w28z0m758C/zsW7pu8i
-         ypNIspFICzCfbhFi1WEJYjgwN+s/BNH7rqHVSKOdCAg6OaT93cGMIf3ozn3/c+O7oDX2
-         kuGmT3itqi/u1VNgsh7SSU7Gl268kE8CMqThRLTRqjudfapHcHrYkRRo1Z/jMNfwxGEQ
-         ZP0uNbfzV0q9Pwh8gGTFrQiza/LPOyyB0Jz7CRlxyBU36/e19qD4/jcklwJ3PQT6KpzT
-         iBSt57qiRhee/BBNW7u8HRsahyzexeb1+whLAw5dfchqg6e02ISjwXDCIRut/3PnyTBl
-         i1qw==
+        bh=nDFbUJf+zSiSog/LYin0LAf7wyvK1G5JKV9wmLaTU9M=;
+        b=I5HBLWlPZWf9XJAXFTok2pMn9tCUSfXHu5JhR4GaFqJqX3F8H1ig1AAdrEluRmixqA
+         Wyg+hS5sWcjGzWh/fL5S0Iq447t13DJcHknJ9Virws/nz6D4rH0kucuxEaU+gpS+djZJ
+         tY4C3JrSsRf+NSf1aZzAzgdE7yf0DGplS4/CKnsGgAUS6nvE882sO78DxE3QgpVBGh0F
+         /ZmCWUdWgB+I4IKIGIFN0CNSJjXXZhFZr0ga6HfnDz3T1CaDi6mJSazvT8OletxreC42
+         xeK6LFbM/IQCu7LfCRwXeYxkkPBrFmkXNSz1CYLnsUCexsbo7T8oDb4LexoJq3/4IAsV
+         n2Dg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KuSpfrH9;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="uuS4Pk/V";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a6si1787312ybe.431.2021.04.08.23.27.31
+        by mx.google.com with ESMTPS id h23si2043852iob.7.2021.04.08.23.28.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Apr 2021 23:27:31 -0700 (PDT)
+        Thu, 08 Apr 2021 23:28:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KuSpfrH9;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="uuS4Pk/V";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:60026 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34468 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lUkc6-0006OO-RD
-	for alex.bennee@linaro.org; Fri, 09 Apr 2021 02:27:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47896)
+	id 1lUkci-0007el-Nu
+	for alex.bennee@linaro.org; Fri, 09 Apr 2021 02:28:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48050)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lUkZ0-0004QI-8n; Fri, 09 Apr 2021 02:24:18 -0400
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633]:41493)
+ id 1lUkZX-0004me-CK; Fri, 09 Apr 2021 02:24:51 -0400
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d]:44935)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lUkYs-0001Oq-Rn; Fri, 09 Apr 2021 02:24:16 -0400
-Received: by mail-ej1-x633.google.com with SMTP id g17so4075689ejp.8;
- Thu, 08 Apr 2021 23:24:09 -0700 (PDT)
+ id 1lUkZT-0001hJ-PY; Fri, 09 Apr 2021 02:24:50 -0400
+Received: by mail-ej1-x62d.google.com with SMTP id e14so6828213ejz.11;
+ Thu, 08 Apr 2021 23:24:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=+QFZRjfiDBXxrw9xt50MWOZpl0I5gXE/SA7o167QDWg=;
- b=KuSpfrH94JzrHSUNpQx8QtXxszv230tbET93dTvso5XdxyyYyDCLZpwDdOA+fnmTow
- qnEuYIJRi6Llc3zkVn18tdWA44/eXFdHs/gtZIaZ/p4GmV7FUbtSDA0c71iZCpqMDnj8
- vg1SZ3DSmfEwBLHktCW95CMBQldQZ1gK6j2P6XlCG0IRY6dDrLyRNCMQmF6M40hWeApz
- VGfpvy/Vs71w7AdtRLzSbm+BzYUdriVkvVflOdQjiSbJyR6sLb3tFUYGMiHPttcNtmiG
- sNgTVsgj1aMRU0BsEx6rghWf1JoKiAZOF1cG2pOSE3ncFzVVSLkhnCb376AZovGj/DXo
- 0vFw==
+ bh=nDFbUJf+zSiSog/LYin0LAf7wyvK1G5JKV9wmLaTU9M=;
+ b=uuS4Pk/VAJDOp6Pwxln8iW/mJ4KnaTDRn50NXb+1N5XW12GifvULQ/vjj0op//bMN7
+ LkAj7c+hNguynBubJgAGCMtSqcXeqwzU8Lmv/GvTxql7KWHFodLx6pLXHBGM2+1PPuZR
+ bfp/fDE5JrTqZ4cznaVDktC2aFy763BbFLvHcOWIMY29k+RvphJ3OEO5fDrfUJsvmMHm
+ /I/IlUxBd8J6ts3c2rxPitHPTCXyogm2DpZ7HKnnQpI9PT1iI/T9d+iwsFtWI9bdU5aV
+ 0kDhAi9dMXLgqAFr03CWuSNjEy2us7nTo42cd+/iYlWT/3AD2MVabsaqyxhyxKfeKB/w
+ 714Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=+QFZRjfiDBXxrw9xt50MWOZpl0I5gXE/SA7o167QDWg=;
- b=UOHFal/yUztkOdraeuPy1sb062wcuKPDmsvw6lDt4ZqjEbWltxcqyJZwIRLVveCJUc
- ohaCzFXV/Q7oh1sqKfuWFZtzR+lqx16vNaIPw4e1CNn40o2rUie/KJXEe64TWXCow2xG
- 5BCdhGwLzt4fILxxAHiVXW5gVgaWRfmII2dbr8JEvXdJJBmnrdR/SxV8V4g+ntVq+E2G
- 8w+fr7LaN158EKmN8RbeF3vDhIWojrjf4mAK03VAyhcdBifeXlrehu/GTeNcmrzDfuWm
- tHpYsm2KAprGZ9kx+NuxvWnM+qmAaLg9qq6I0gc61ekDa0bPlwZgGsCgdjWanGI7MfNK
- Y4zQ==
-X-Gm-Message-State: AOAM531Jk5tVIdrDxVB4Eke2WCDQ6qQvtriNaoEOKvrGDJEb8wuJ4x0Y
- PAOvnpsf46ygdxKmOGRpvSkrZJB9CbgpgQ==
-X-Received: by 2002:a17:907:984a:: with SMTP id
- jj10mr14474275ejc.180.1617949448673; 
- Thu, 08 Apr 2021 23:24:08 -0700 (PDT)
+ bh=nDFbUJf+zSiSog/LYin0LAf7wyvK1G5JKV9wmLaTU9M=;
+ b=PqQYJzJnhidbsAxLEU+0f3LK/MDUTk1VE/xCX+PM0lhIL+5roZZT4vgsPZHTxup+m+
+ FBbZEkoMoGE1841F0eos7G5vncCKCh26S5kFzhZ4VWAtwPz22EnsRp4VvZ3uID5tAUnP
+ VJ+Dk34sVS0WkGLvK3GO7tI1fejtkWEXCtwdJ//W0fG+AXGk+tErhM+9ApRlSJTESQtz
+ q3MKMIZ0SP3AA17DKdzUq3PvyAnawQOoQxnkq3NI18fvgHE51sl5q0TAVk9egNLuV30h
+ BbtFbGtLpYQ8e0hVVvrmWa3FtJoIcfxw1z3dIXJ5QnsWQ6q5jOHw/fPFBbr5VQTgUqZy
+ o5VQ==
+X-Gm-Message-State: AOAM53053BwLNk2dwH8ZXyASsjZzDwcmH1nUuxJzaOX2hXCDjEB9ncVr
+ Hewi1oqQiRZkrHHPHvqn6S/dyswYwCW9Gw==
+X-Received: by 2002:a17:906:e0b:: with SMTP id
+ l11mr14989236eji.111.1617949485397; 
+ Thu, 08 Apr 2021 23:24:45 -0700 (PDT)
 Received: from x1w.redhat.com (17.red-88-21-201.staticip.rima-tde.net.
  [88.21.201.17])
- by smtp.gmail.com with ESMTPSA id y2sm721771ejf.30.2021.04.08.23.24.07
+ by smtp.gmail.com with ESMTPSA id b21sm711872ejz.123.2021.04.08.23.24.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 08 Apr 2021 23:24:08 -0700 (PDT)
+ Thu, 08 Apr 2021 23:24:44 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [RFC PATCH-for-6.1 1/9] hw/core/clock: Increase clock propagation
- trace events verbosity
-Date: Fri,  9 Apr 2021 08:23:53 +0200
-Message-Id: <20210409062401.2350436-2-f4bug@amsat.org>
+Subject: [RFC PATCH-for-6.1 8/9] hw/clock: Declare clock_new() internally
+Date: Fri,  9 Apr 2021 08:24:00 +0200
+Message-Id: <20210409062401.2350436-9-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.3
 In-Reply-To: <20210409062401.2350436-1-f4bug@amsat.org>
 References: <20210409062401.2350436-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::633;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x633.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x62d.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -122,61 +121,144 @@ Cc: Damien Hedde <damien.hedde@greensocs.com>,
  Peter Maydell <peter.maydell@linaro.org>, Luc Michel <luc@lmichel.fr>,
  Eduardo Habkost <ehabkost@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+ qemu-arm@nongnu.org,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7dMfaAeaMtYd
+X-TUID: aRAEmr3jZPPK
 
-Move the 'clock_propagate' trace event to clock_propagate_period()
-to display the recursive propagation, and add 'propagate_children'
-event to closely look at the clock propagation for each children
-in the clock tree.
+To enforce correct API usage, restrict the clock creation to
+hw/core/. The only possible ways to create a clock are:
+
+- Constant clock at the board level
+  Using machine_create_constant_clock() in machine_init()
+
+- Propagated clock in QDev
+  Using qdev_init_clock_in() or qdev_init_clock_out() in
+  TYPE_DEVICE instance_init().
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/core/clock.c      | 8 +++++++-
- hw/core/trace-events | 3 ++-
- 2 files changed, 9 insertions(+), 2 deletions(-)
+ hw/core/clock-internal.h | 32 ++++++++++++++++++++++++++++++++
+ include/hw/clock.h       | 13 -------------
+ hw/core/clock.c          |  1 +
+ hw/core/machine.c        |  1 +
+ hw/core/qdev-clock.c     |  1 +
+ MAINTAINERS              |  1 +
+ 6 files changed, 36 insertions(+), 13 deletions(-)
+ create mode 100644 hw/core/clock-internal.h
 
+diff --git a/hw/core/clock-internal.h b/hw/core/clock-internal.h
+new file mode 100644
+index 00000000000..2207be74c0f
+--- /dev/null
++++ b/hw/core/clock-internal.h
+@@ -0,0 +1,32 @@
++/*
++ * Hardware Clocks
++ *
++ * Copyright GreenSocs 2016-2020
++ *
++ * Authors:
++ *  Frederic Konrad
++ *  Damien Hedde
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ */
++
++#ifndef QEMU_HW_CLOCK_INTERNAL_H
++#define QEMU_HW_CLOCK_INTERNAL_H
++
++#include "hw/clock.h"
++
++/**
++ * clock_new:
++ * @parent: the clock parent
++ * @name: the clock object name
++ *
++ * Helper function to create a new clock and parent it to @parent. There is no
++ * need to call clock_setup_canonical_path on the returned clock as it is done
++ * by this function.
++ *
++ * @return the newly created clock
++ */
++Clock *clock_new(Object *parent, const char *name);
++
++#endif
+diff --git a/include/hw/clock.h b/include/hw/clock.h
+index a7187eab95e..47cb65edb32 100644
+--- a/include/hw/clock.h
++++ b/include/hw/clock.h
+@@ -109,19 +109,6 @@ extern const VMStateDescription vmstate_clock;
+  */
+ void clock_setup_canonical_path(Clock *clk);
+ 
+-/**
+- * clock_new:
+- * @parent: the clock parent
+- * @name: the clock object name
+- *
+- * Helper function to create a new clock and parent it to @parent. There is no
+- * need to call clock_setup_canonical_path on the returned clock as it is done
+- * by this function.
+- *
+- * @return the newly created clock
+- */
+-Clock *clock_new(Object *parent, const char *name);
+-
+ /**
+  * clock_set_callback:
+  * @clk: the clock to register the callback into
 diff --git a/hw/core/clock.c b/hw/core/clock.c
-index fc5a99683f8..a42dc3c3d29 100644
+index a42dc3c3d29..bfa54ca0a93 100644
 --- a/hw/core/clock.c
 +++ b/hw/core/clock.c
-@@ -79,7 +79,14 @@ static void clock_propagate_period(Clock *clk, bool call_callbacks)
- {
-     Clock *child;
+@@ -14,6 +14,7 @@
+ #include "qemu/osdep.h"
+ #include "qemu/cutils.h"
+ #include "hw/clock.h"
++#include "clock-internal.h"
+ #include "trace.h"
  
-+    trace_clock_propagate(CLOCK_PATH(clk),
-+                          CLOCK_PERIOD_TO_HZ(clk->period),
-+                          call_callbacks);
-     QLIST_FOREACH(child, &clk->children, sibling) {
-+        trace_clock_propagate_children(CLOCK_PATH(clk),
-+                                       CLOCK_PERIOD_TO_HZ(clk->period),
-+                                       CLOCK_PATH(child),
-+                                       CLOCK_PERIOD_TO_HZ(child->period));
-         if (child->period != clk->period) {
-             if (call_callbacks) {
-                 clock_call_callback(child, ClockPreUpdate);
-@@ -99,7 +106,6 @@ static void clock_propagate_period(Clock *clk, bool call_callbacks)
- void clock_propagate(Clock *clk)
- {
-     assert(clk->source == NULL);
--    trace_clock_propagate(CLOCK_PATH(clk));
-     clock_propagate_period(clk, true);
- }
+ #define CLOCK_PATH(_clk) (_clk->canonical_path)
+diff --git a/hw/core/machine.c b/hw/core/machine.c
+index 41baf80559d..e8bdcd10854 100644
+--- a/hw/core/machine.c
++++ b/hw/core/machine.c
+@@ -35,6 +35,7 @@
+ #include "exec/confidential-guest-support.h"
+ #include "hw/virtio/virtio.h"
+ #include "hw/virtio/virtio-pci.h"
++#include "clock-internal.h"
  
-diff --git a/hw/core/trace-events b/hw/core/trace-events
-index 360ddeb2c87..22df6789918 100644
---- a/hw/core/trace-events
-+++ b/hw/core/trace-events
-@@ -32,5 +32,6 @@ resettable_transitional_function(void *obj, const char *objtype) "obj=%p(%s)"
- clock_set_source(const char *clk, const char *src) "'%s', src='%s'"
- clock_disconnect(const char *clk) "'%s'"
- clock_set(const char *clk, uint64_t old, uint64_t new) "'%s', %"PRIu64"Hz->%"PRIu64"Hz"
--clock_propagate(const char *clk) "'%s'"
-+clock_propagate(const char *src, uint64_t src_hz, int cb) "src='%s' val=%"PRIu64"Hz cb=%d"
-+clock_propagate_children(const char *src, uint64_t src_hz, const char *clk, uint64_t clk_hz) "src='%s'@%"PRIu64"Hz -> clk='%s'@%"PRIu64"Hz"
- clock_update(const char *clk, const char *src, uint64_t hz, int cb) "'%s', src='%s', val=%"PRIu64"Hz cb=%d"
+ GlobalProperty hw_compat_5_2[] = {
+     { "ICH9-LPC", "smm-compat", "on"},
+diff --git a/hw/core/qdev-clock.c b/hw/core/qdev-clock.c
+index a46384a84b7..09e14009fcd 100644
+--- a/hw/core/qdev-clock.c
++++ b/hw/core/qdev-clock.c
+@@ -16,6 +16,7 @@
+ #include "hw/qdev-clock.h"
+ #include "hw/qdev-core.h"
+ #include "qapi/error.h"
++#include "clock-internal.h"
+ 
+ /*
+  * qdev_init_clocklist:
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 58f342108e9..2b10744169c 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -2925,6 +2925,7 @@ S: Maintained
+ F: include/hw/clock.h
+ F: include/hw/qdev-clock.h
+ F: hw/core/clock.c
++F: hw/core/clock-internal.h
+ F: hw/core/clock-vmstate.c
+ F: hw/core/qdev-clock.c
+ F: docs/devel/clocks.rst
 -- 
 2.26.3
 

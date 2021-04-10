@@ -1,109 +1,94 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp1646393lfr;
-        Fri, 9 Apr 2021 09:37:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz7qvbHAwDa6uPnbR/6oEhVw3yLNfONrFsDGpDI1l5nDGY9kN+V9GD6qE0WdKs+/dqeav7n
-X-Received: by 2002:a05:6602:228f:: with SMTP id d15mr11402245iod.141.1617986263035;
-        Fri, 09 Apr 2021 09:37:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617986263; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp2153141lfr;
+        Sat, 10 Apr 2021 00:10:02 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzeMEuvuCMH5ZhR7XbWJi3SmIbCz3NuFc5ADH5T5eS8vEV8aVD5g74w75h6G0La6jnQQDPq
+X-Received: by 2002:ac8:4c8f:: with SMTP id j15mr2350941qtv.318.1618038602760;
+        Sat, 10 Apr 2021 00:10:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618038602; cv=none;
         d=google.com; s=arc-20160816;
-        b=JRjlcsCkVnSJ/zsN3RIFm/sEdUwXFO1u4hW7XkHlOZcFQ5hOD1rwVkQOxDyG3x1avE
-         leeBorNDun7Q00f18s/DgxdZMMhUQlp4EARoXpi7HKponAGEVJsa5KCOrqV4B5m4ycy3
-         4QKTT3wagRCoib0XG+B+WBbb2uSIdZYq2/8gjwp1rFPglYXT19oefggcx0QBFSMzWif5
-         o3mxyzwZDac4WEdpbU2Zffy5L+AMX3g64otsbailcgTte71gyIdwg07sh88lVJsgEt/S
-         Qk2TFGJH5Vwc4ObBv3Kcm7jHx4KqXnMyXVaKvVcRtRkwqyUd22rJpKSuDg7J4MmhPCqY
-         PMOg==
+        b=rdAM9YxHDhySVZUnK8T5ADWZgfk3xx4S8ftAasDrl8GvdTr/f5ZMZzyR7TTqGLhnMH
+         8AtmU6iHfT6bCya3vUSLfMV1s2p5zMar0YOF5QVQ50/XxvYSG6xqQ2vsQZEyt76WBz98
+         +dAQe4gToGEicdlQ+hEWPK3m6+lZlwQP7dZkjP62x5tvYevkJFgxP3Knv36YsaezYast
+         3wGs6AFhnbtjTD9UVumrrsTyiWsDbx0EiqY8qziCfmjky/S+0Xh4hDe6UrsXS9zvfJRd
+         u/mhzvWz6O4dbcznqzbv220fuVB9agJAZ3w6PFIvElV1oqpn+z8Zhbfw/utD7ST3SEqc
+         pZPg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:references
-         :mime-version:message-id:in-reply-to:date:dkim-signature;
-        bh=YO+Zvt0AtBbWt5MP37NcZ81dk50FI5KwQpEaO6YAPac=;
-        b=b5glnLQ1Kn9cQT7dFzeAbkyVsvSK3fXoqeQcH9qorHlaHKdzzi+Cdd+C5Lrwu+R8lU
-         Tvx0y2ody5CwgsdGq/eqbls9EuXDCbzjVZyz6suAR2eV51wp+1XsqDLmF23ba4UKTQ0W
-         LEiPUk/PQ75O+5Hw+AwiB9rayQxC8m1veHcDzlJcQe3oy2wNzVWU/3oA/kDxNtr2tNFe
-         irGo2suUaZpuDmIEVIwjsmTRaJ2SjSwYL2TiEIc2Avkfm4nQ0MH7Of9ybLEnwlI0WTr9
-         dKWPzwKbQL8JOPt8UTPTZ4YPaHIBtC80jX9Az3EAXpQHSUR40K+L5JfaTsod0Iqwhhe4
-         VW8Q==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=6LVRL8FHhR9D/zVFDcuVeFxnlaEU/V6bsajAB3H02x0=;
+        b=ak2Z5et4WSU3Qdf58qQJ+jdk1GH+dH0CjBU4dtpNNwqKXVYhEc7ZCrEqKtGwysKPgc
+         Ay6Vz8SjN30CAqUSZV6MeRj/JJ38MtLtq7QWExLCzpwnkoxIUWtm7RXw5Voxvcs+zzs4
+         zlybUsTLNDx7x1HvmeJZ9+hAX9T7xsCJstwH82Jgk3paEvFwRIMQlMMC6iSi3XqOEmJ3
+         q0ro3Di6u2Rwrh9mkaY4dTNdw2tkyKpKgkJkqUH2MLJxQpNZyM1QaLqnIDGoDFWqp5UU
+         5fuSX5g/HoPzRIZ2VbGmqJUi2jgsGp+XWVeKmLI4DLnRqg+VfqestEaQckJplb9sfxsT
+         73JQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=kD4Sz2+R;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f19si3190284jat.55.2021.04.09.09.37.42
+        by mx.google.com with ESMTPS id g7si3724337qtx.318.2021.04.10.00.10.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 09 Apr 2021 09:37:43 -0700 (PDT)
+        Sat, 10 Apr 2021 00:10:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=kD4Sz2+R;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:56152 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:38850 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lUu8c-0007uC-99
-	for alex.bennee@linaro.org; Fri, 09 Apr 2021 12:37:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52642)
+	id 1lV7ko-00074q-2B
+	for alex.bennee@linaro.org; Sat, 10 Apr 2021 03:10:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53256)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3IYBwYAcKCuwjSbhifSUccUZS.QcaeSai-RSjSZbcbUbi.cfU@flex--venture.bounces.google.com>)
- id 1lUtxW-0005ZS-JR
- for qemu-devel@nongnu.org; Fri, 09 Apr 2021 12:26:14 -0400
-Received: from mail-yb1-xb4a.google.com ([2607:f8b0:4864:20::b4a]:46088)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3IYBwYAcKCuwjSbhifSUccUZS.QcaeSai-RSjSZbcbUbi.cfU@flex--venture.bounces.google.com>)
- id 1lUtxT-0007VS-IW
- for qemu-devel@nongnu.org; Fri, 09 Apr 2021 12:26:14 -0400
-Received: by mail-yb1-xb4a.google.com with SMTP id g7so5808393ybm.13
- for <qemu-devel@nongnu.org>; Fri, 09 Apr 2021 09:26:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=date:in-reply-to:message-id:mime-version:references:subject:from:to
- :cc; bh=YO+Zvt0AtBbWt5MP37NcZ81dk50FI5KwQpEaO6YAPac=;
- b=kD4Sz2+R4tz6sWNMav7uIgsmpD0oQ8K0KNxlCNoLtWqZeDHBdK228wpFfR3AVqr3cK
- CP3/IEIyHr66ylSM01cMTAl4SGhP4ZE/dFczkVc324sXa53fzCo4kEYU1qSiEf7SIAEZ
- Uot39p3JlbXinu5Zmz3ZrrzbfuOIlZAQ5pUz25U4bg+dY5ND6/qwFJ2OAgB3dD9Ss12/
- 8ohsRFSd2cl+tjPOvjRDfwYqjIj/++9p1WDA3APOuY48zm/E/Vs7KbAtW5nV743tyFbR
- z/j0ArcJDT0x1HaZ2qibJClPeaDZpSFX0Yis7RZL/7lkSuYy5OmjP6UnXjlgm7+zGr33
- lEBw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:in-reply-to:message-id:mime-version
- :references:subject:from:to:cc;
- bh=YO+Zvt0AtBbWt5MP37NcZ81dk50FI5KwQpEaO6YAPac=;
- b=hoc3Ue7/Syk+mxB38gHADf7FiKHtY/juncW12Y65vTdt5f2s5O2u+UeWEdSpBBywg9
- 6WI5rE0MCRRBBMiGvGix2vHZBw+lSng50PybykHx6MjMByBQ9AFPJMKQaDUEEjQn8Mbe
- 1KLYU7KWjMWQuIUROTtLWt9e7dIfotbqPPLJRfo4v1kADLj6Q6SE0VFi1kpsGqAcMO1j
- QcfW5U8YfPiWnR0bEu02FJflZ1YmOc5rsGldHsl9+RbGLPDfsRzCkL+Yf5BDGgVB2lkZ
- EjCVfy7QK6cCRPaH+kaZqqwM4KuCMN6BetyL0O9uG+Fn1xkwGo5MxLo8if5A1qTiXLD5
- 6jTA==
-X-Gm-Message-State: AOAM530KbKRGiXbioib6q6vjHk/6j6/G/jas9Z4hylWv0wM+or2Ccom/
- Cnc+VLQCrrW2ENxsUTGVInlnovICEfY4
-X-Received: from venture.svl.corp.google.com
- ([2620:15c:2a3:200:6985:9b01:e10b:b119])
- (user=venture job=sendgmr) by 2002:a25:6c85:: with SMTP id
- h127mr18096816ybc.341.1617985569457; Fri, 09 Apr 2021 09:26:09 -0700 (PDT)
-Date: Fri,  9 Apr 2021 09:25:45 -0700
-In-Reply-To: <20210409162545.3705962-1-venture@google.com>
-Message-Id: <20210409162545.3705962-5-venture@google.com>
-Mime-Version: 1.0
-References: <20210409162545.3705962-1-venture@google.com>
-X-Mailer: git-send-email 2.31.1.295.g9ea45b61b8-goog
-Subject: [PATCH v2 4/4] hw/i2c: add pca954x i2c-mux switch
-From: Patrick Venture <venture@google.com>
-To: cminyard@mvista.com, wuhaotsh@google.com, hskinnemoen@google.com
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- Patrick Venture <venture@google.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b4a;
- envelope-from=3IYBwYAcKCuwjSbhifSUccUZS.QcaeSai-RSjSZbcbUbi.cfU@flex--venture.bounces.google.com;
- helo=mail-yb1-xb4a.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1lV7jy-0006aa-2W
+ for qemu-devel@nongnu.org; Sat, 10 Apr 2021 03:09:10 -0400
+Received: from 9.mo51.mail-out.ovh.net ([46.105.48.137]:47971)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1lV7jv-0001Fe-Gn
+ for qemu-devel@nongnu.org; Sat, 10 Apr 2021 03:09:09 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.16.132])
+ by mo51.mail-out.ovh.net (Postfix) with ESMTPS id 6F5F428007D;
+ Sat, 10 Apr 2021 09:08:55 +0200 (CEST)
+Received: from kaod.org (37.59.142.102) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2106.2; Sat, 10 Apr
+ 2021 09:08:54 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-102R004b771e90f-ffea-4338-bbb6-79aa8dbdce18,
+ 7DB109D73D331EFE6E6D278AF4DA1FCDEB920233) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 92.136.227.33
+Subject: Re: [PATCH 15/24] aspeed/smc: Add extra controls to request DMA
+To: Joel Stanley <joel@jms.id.au>
+References: <20210407171637.777743-1-clg@kaod.org>
+ <20210407171637.777743-16-clg@kaod.org>
+ <CACPK8Xfk9dPXdtr=BZq+9yTrFSYg_pyTX+Gk8JbcomjwVpTmjw@mail.gmail.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <ba185653-d351-05eb-0b56-92e5fb00e77a@kaod.org>
+Date: Sat, 10 Apr 2021 09:08:52 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
+MIME-Version: 1.0
+In-Reply-To: <CACPK8Xfk9dPXdtr=BZq+9yTrFSYg_pyTX+Gk8JbcomjwVpTmjw@mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.102]
+X-ClientProxiedBy: DAG9EX2.mxp5.local (172.16.2.82) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 49d78a87-a920-4233-8b50-769d4d3ff1f8
+X-Ovh-Tracer-Id: 5694238781912091430
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduledrudekvddgudduvdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeejkeduueduveelgeduueegkeelffevledujeetffeivdelvdfgkeeufeduheehfeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtvdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepjhhovghlsehjmhhsrdhiugdrrghu
+Received-SPF: pass client-ip=46.105.48.137; envelope-from=clg@kaod.org;
+ helo=9.mo51.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -116,403 +101,250 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+ Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4BTXY7ys9WEF
+X-TUID: Aef9E/VuOyNr
 
-The pca954x is an i2c mux, and this adds support for two variants of
-this device: the pca9546 and pca9548.
+On 4/9/21 8:54 AM, Joel Stanley wrote:
+> On Wed, 7 Apr 2021 at 17:17, Cédric Le Goater <clg@kaod.org> wrote:
+>>
+>> The AST2600 SPI controllers have a set of bits to request/grant DMA
+>> access. Add a new SMC feature for these controllers and use it to
+>> check access to the DMA registers.
+> 
+> Ah this is why you added the features mask. Makes sense.
 
-This device is very common on BMCs to route a different channel to each
-PCIe i2c bus downstream from the BMC.
+Yes. It's a bit redundant with the dma_ctrl() handler but it looks cleaner. 
 
-Signed-off-by: Patrick Venture <venture@google.com>
-Reviewed-by: Hao Wu <wuhaotsh@google.com>
-Reviewed-by: Havard Skinnemoen <hskinnemoen@google.com>
----
- MAINTAINERS                      |   6 +
- hw/i2c/Kconfig                   |   4 +
- hw/i2c/i2c_mux_pca954x.c         | 290 +++++++++++++++++++++++++++++++
- hw/i2c/meson.build               |   1 +
- hw/i2c/trace-events              |   5 +
- include/hw/i2c/i2c_mux_pca954x.h |  19 ++
- 6 files changed, 325 insertions(+)
- create mode 100644 hw/i2c/i2c_mux_pca954x.c
- create mode 100644 include/hw/i2c/i2c_mux_pca954x.h
+> 
+> Reviewed-by: Joel Stanley <joel@jms.id.au>
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 58f342108e..5ea0b60b8a 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -2039,6 +2039,12 @@ S: Maintained
- F: hw/net/tulip.c
- F: hw/net/tulip.h
- 
-+pca954x
-+M: Patrick Venture <venture@google.com>
-+S: Maintained
-+F: hw/i2c/i2c_mux_pca954x.c
-+F: include/hw/i2c/i2c_mux_pca954x.h
-+
- Generic Loader
- M: Alistair Francis <alistair@alistair23.me>
- S: Maintained
-diff --git a/hw/i2c/Kconfig b/hw/i2c/Kconfig
-index 09642a6dcb..8d120a25d5 100644
---- a/hw/i2c/Kconfig
-+++ b/hw/i2c/Kconfig
-@@ -28,3 +28,7 @@ config IMX_I2C
- config MPC_I2C
-     bool
-     select I2C
-+
-+config PCA954X
-+    bool
-+    select I2C
-diff --git a/hw/i2c/i2c_mux_pca954x.c b/hw/i2c/i2c_mux_pca954x.c
-new file mode 100644
-index 0000000000..9aa1a8872f
---- /dev/null
-+++ b/hw/i2c/i2c_mux_pca954x.c
-@@ -0,0 +1,290 @@
-+/*
-+ * I2C multiplexer for PCA954x series of I2C multiplexer/switch chips.
-+ *
-+ * Copyright 2021 Google LLC
-+ *
-+ * This program is free software; you can redistribute it and/or modify it
-+ * under the terms of the GNU General Public License as published by the
-+ * Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful, but WITHOUT
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-+ * for more details.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "hw/i2c/i2c.h"
-+#include "hw/i2c/i2c_mux_pca954x.h"
-+#include "hw/i2c/smbus_slave.h"
-+#include "hw/qdev-core.h"
-+#include "hw/sysbus.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "qemu/queue.h"
-+#include "qom/object.h"
-+#include "trace.h"
-+
-+#define PCA9548_CHANNEL_COUNT 8
-+#define PCA9546_CHANNEL_COUNT 4
-+
-+/*
-+ * struct Pca954xChannel - The i2c mux device will have N of these states
-+ * that own the i2c channel bus.
-+ * @bus: The owned channel bus.
-+ * @enabled: Is this channel active?
-+ */
-+typedef struct Pca954xChannel {
-+    SysBusDevice parent;
-+
-+    I2CBus       *bus;
-+
-+    bool         enabled;
-+} Pca954xChannel;
-+
-+#define TYPE_PCA954X_CHANNEL "pca954x-channel"
-+#define PCA954X_CHANNEL(obj) \
-+    OBJECT_CHECK(Pca954xChannel, (obj), TYPE_PCA954X_CHANNEL)
-+
-+/*
-+ * struct Pca954xState - The pca954x state object.
-+ * @control: The value written to the mux control.
-+ * @channel: The set of i2c channel buses that act as channels which own the
-+ * i2c children.
-+ */
-+typedef struct Pca954xState {
-+    SMBusDevice parent;
-+
-+    uint8_t control;
-+
-+    /* The channel i2c buses. */
-+    Pca954xChannel channel[PCA9548_CHANNEL_COUNT];
-+} Pca954xState;
-+
-+/*
-+ * struct Pca954xClass - The pca954x class object.
-+ * @nchans: The number of i2c channels this device has.
-+ */
-+typedef struct Pca954xClass {
-+    SMBusDeviceClass parent;
-+
-+    uint8_t nchans;
-+} Pca954xClass;
-+
-+#define TYPE_PCA954X "pca954x"
-+OBJECT_DECLARE_TYPE(Pca954xState, Pca954xClass, PCA954X)
-+
-+/*
-+ * For each channel, if it's enabled, recursively call match on those children.
-+ */
-+static bool pca954x_match(I2CSlave *candidate, uint8_t address,
-+                          bool broadcast,
-+                          I2CNodeList *current_devs)
-+{
-+    Pca954xState *mux = PCA954X(candidate);
-+    Pca954xClass *mc = PCA954X_GET_CLASS(mux);
-+    int i;
-+
-+    /* They are talking to the mux itself (or all devices enabled. */
-+    if ((candidate->address == address) || broadcast) {
-+        I2CNode *node = g_malloc(sizeof(struct I2CNode));
-+        node->elt = candidate;
-+        QLIST_INSERT_HEAD(current_devs, node, next);
-+        if (!broadcast) {
-+            return true;
-+        }
-+    }
-+
-+    for (i = 0; i < mc->nchans; i++) {
-+        if (!mux->channel[i].enabled) {
-+            continue;
-+        }
-+
-+        if (i2c_scan_bus(mux->channel[i].bus, address, broadcast)) {
-+            if (!broadcast) {
-+                return true;
-+            }
-+        }
-+    }
-+
-+    /* If we arrived here we didn't find a match, return broadcast. */
-+    return broadcast;
-+}
-+
-+static void pca954x_enable_channel(Pca954xState *s, uint8_t enable_mask)
-+{
-+    Pca954xClass *mc = PCA954X_GET_CLASS(s);
-+    int i;
-+
-+    /*
-+     * For each channel, check if their bit is set in enable_mask and if yes,
-+     * enable it, otherwise disable, hide it.
-+     */
-+    for (i = 0; i < mc->nchans; i++) {
-+        if (enable_mask & (1 << i)) {
-+            s->channel[i].enabled = true;
-+        } else {
-+            s->channel[i].enabled = false;
-+        }
-+    }
-+}
-+
-+static void pca954x_write(Pca954xState *s, uint8_t data)
-+{
-+    s->control = data;
-+    pca954x_enable_channel(s, data);
-+
-+    trace_pca954x_write_bytes(data);
-+}
-+
-+static int pca954x_write_data(SMBusDevice *d, uint8_t *buf, uint8_t len)
-+{
-+    Pca954xState *s = PCA954X(d);
-+
-+    if (len == 0) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: writing empty data\n", __func__);
-+        return -1;
-+    }
-+
-+    /*
-+     * len should be 1, because they write one byte to enable/disable channels.
-+     */
-+    if (len > 1) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+            "%s: extra data after channel selection mask\n",
-+            __func__);
-+        return -1;
-+    }
-+
-+    pca954x_write(s, buf[0]);
-+    return 0;
-+}
-+
-+static uint8_t pca954x_read_byte(SMBusDevice *d)
-+{
-+    Pca954xState *s = PCA954X(d);
-+    uint8_t data = s->control;
-+    trace_pca954x_read_data(data);
-+    return data;
-+}
-+
-+static void pca954x_enter_reset(Object *obj, ResetType type)
-+{
-+    Pca954xState *s = PCA954X(obj);
-+    /* Reset will disable all channels. */
-+    pca954x_write(s, 0);
-+}
-+
-+I2CBus *pca954x_i2c_get_bus(I2CSlave *mux, uint8_t channel)
-+{
-+    Pca954xClass *pc = PCA954X_GET_CLASS(mux);
-+    Pca954xState *pca954x = PCA954X(mux);
-+
-+    g_assert(channel < pc->nchans);
-+    return I2C_BUS(qdev_get_child_bus(DEVICE(&pca954x->channel[channel]),
-+                                      "i2c-bus"));
-+}
-+
-+static void pca954x_smbus_init(Object *obj)
-+{
-+    Pca954xChannel *s = PCA954X_CHANNEL(obj);
-+    s->bus = i2c_init_bus(DEVICE(s), "i2c-bus");
-+
-+    /* Start all channels as disabled. */
-+    s->enabled = false;
-+}
-+
-+static void pca954x_channel_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    dc->desc = "Pca954x Channel";
-+}
-+
-+static void pca9546_class_init(ObjectClass *klass, void *data)
-+{
-+    Pca954xClass *s = PCA954X_CLASS(klass);
-+    s->nchans = PCA9546_CHANNEL_COUNT;
-+}
-+
-+static void pca9548_class_init(ObjectClass *oc, void *data)
-+{
-+    Pca954xClass *s = PCA954X_CLASS(oc);
-+    s->nchans = PCA9548_CHANNEL_COUNT;
-+}
-+
-+static void pca954x_realize(DeviceState *dev, Error **errp)
-+{
-+    Pca954xState *s = PCA954X(dev);
-+    Pca954xClass *c = PCA954X_GET_CLASS(s);
-+    int i;
-+
-+    /* SMBus modules. Cannot fail. */
-+    for (i = 0; i < c->nchans; i++) {
-+        Object *obj = OBJECT(&s->channel[i]);
-+        sysbus_realize(SYS_BUS_DEVICE(obj), &error_abort);
-+    }
-+}
-+
-+static void pca954x_init(Object *obj)
-+{
-+    int i;
-+    Pca954xState *s = PCA954X(obj);
-+    Pca954xClass *c = PCA954X_GET_CLASS(obj);
-+
-+    /* Only initialize the children we expect. */
-+    for (i = 0; i < c->nchans; i++) {
-+        object_initialize_child(obj, "channel[*]", &s->channel[i],
-+                                TYPE_PCA954X_CHANNEL);
-+    }
-+}
-+
-+static void pca954x_class_init(ObjectClass *klass, void *data)
-+{
-+    I2CSlaveClass *sc = I2C_SLAVE_CLASS(klass);
-+    ResettableClass *rc = RESETTABLE_CLASS(klass);
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    SMBusDeviceClass *k = SMBUS_DEVICE_CLASS(klass);
-+
-+    sc->match_and_add = pca954x_match;
-+
-+    rc->phases.enter = pca954x_enter_reset;
-+
-+    dc->desc = "Pca954x i2c-mux";
-+    dc->realize = pca954x_realize;
-+
-+    k->write_data = pca954x_write_data;
-+    k->receive_byte = pca954x_read_byte;
-+}
-+
-+static const TypeInfo pca954x_info[] = {
-+    {
-+        .name          = TYPE_PCA954X,
-+        .parent        = TYPE_SMBUS_DEVICE,
-+        .instance_size = sizeof(Pca954xState),
-+        .instance_init = pca954x_init,
-+        .class_size    = sizeof(Pca954xClass),
-+        .class_init    = pca954x_class_init,
-+        .abstract      = true,
-+    },
-+    {
-+        .name          = TYPE_PCA9546,
-+        .parent        = TYPE_PCA954X,
-+        .class_init    = pca9546_class_init,
-+    },
-+    {
-+        .name          = TYPE_PCA9548,
-+        .parent        = TYPE_PCA954X,
-+        .class_init    = pca9548_class_init,
-+    },
-+    {
-+        .name = TYPE_PCA954X_CHANNEL,
-+        .parent = TYPE_SYS_BUS_DEVICE,
-+        .class_init = pca954x_channel_class_init,
-+        .instance_size = sizeof(Pca954xChannel),
-+        .instance_init = pca954x_smbus_init,
-+    }
-+};
-+
-+DEFINE_TYPES(pca954x_info)
-diff --git a/hw/i2c/meson.build b/hw/i2c/meson.build
-index cdcd694a7f..dd3aef02b2 100644
---- a/hw/i2c/meson.build
-+++ b/hw/i2c/meson.build
-@@ -14,4 +14,5 @@ i2c_ss.add(when: 'CONFIG_SMBUS_EEPROM', if_true: files('smbus_eeprom.c'))
- i2c_ss.add(when: 'CONFIG_VERSATILE_I2C', if_true: files('versatile_i2c.c'))
- i2c_ss.add(when: 'CONFIG_OMAP', if_true: files('omap_i2c.c'))
- i2c_ss.add(when: 'CONFIG_PPC4XX', if_true: files('ppc4xx_i2c.c'))
-+i2c_ss.add(when: 'CONFIG_PCA954X', if_true: files('i2c_mux_pca954x.c'))
- softmmu_ss.add_all(when: 'CONFIG_I2C', if_true: i2c_ss)
-diff --git a/hw/i2c/trace-events b/hw/i2c/trace-events
-index 82fe6f965f..82f19e6a2d 100644
---- a/hw/i2c/trace-events
-+++ b/hw/i2c/trace-events
-@@ -26,3 +26,8 @@ npcm7xx_smbus_recv_byte(const char *id, uint8_t value) "%s recv byte: 0x%02x"
- npcm7xx_smbus_stop(const char *id) "%s stopping"
- npcm7xx_smbus_nack(const char *id) "%s nacking"
- npcm7xx_smbus_recv_fifo(const char *id, uint8_t received, uint8_t expected) "%s recv fifo: received %u, expected %u"
-+
-+# i2c-mux-pca954x.c
-+
-+pca954x_write_bytes(uint8_t value) "PCA954X write data: 0x%02x"
-+pca954x_read_data(uint8_t value) "PCA954X read data: 0x%02x"
-diff --git a/include/hw/i2c/i2c_mux_pca954x.h b/include/hw/i2c/i2c_mux_pca954x.h
-new file mode 100644
-index 0000000000..8aaf9bbc39
---- /dev/null
-+++ b/include/hw/i2c/i2c_mux_pca954x.h
-@@ -0,0 +1,19 @@
-+#ifndef QEMU_I2C_MUX_PCA954X
-+#define QEMU_I2C_MUX_PCA954X
-+
-+#include "hw/i2c/i2c.h"
-+
-+#define TYPE_PCA9546 "pca9546"
-+#define TYPE_PCA9548 "pca9548"
-+
-+/**
-+ * Retrieves the i2c bus associated with the specified channel on this i2c
-+ * mux.
-+ * @mux: an i2c mux device.
-+ * @channel: the i2c channel requested
-+ *
-+ * Returns: a pointer to the associated i2c bus.
-+ */
-+I2CBus *pca954x_i2c_get_bus(I2CSlave *mux, uint8_t channel);
-+
-+#endif
--- 
-2.31.1.295.g9ea45b61b8-goog
+
+Thanks,
+
+C.
+
+
+>>
+>> Cc: Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>
+>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+>> ---
+>>  include/hw/ssi/aspeed_smc.h |  1 +
+>>  hw/ssi/aspeed_smc.c         | 74 +++++++++++++++++++++++++++++++++----
+>>  2 files changed, 68 insertions(+), 7 deletions(-)
+>>
+>> diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
+>> index 07879fd1c4a7..cdaf165300b6 100644
+>> --- a/include/hw/ssi/aspeed_smc.h
+>> +++ b/include/hw/ssi/aspeed_smc.h
+>> @@ -55,6 +55,7 @@ typedef struct AspeedSMCController {
+>>                                 const AspeedSegments *seg);
+>>      void (*reg_to_segment)(const struct AspeedSMCState *s, uint32_t reg,
+>>                             AspeedSegments *seg);
+>> +    void (*dma_ctrl)(struct AspeedSMCState *s, uint32_t value);
+>>  } AspeedSMCController;
+>>
+>>  typedef struct AspeedSMCFlash {
+>> diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+>> index 4521bbd4864e..189b35637c77 100644
+>> --- a/hw/ssi/aspeed_smc.c
+>> +++ b/hw/ssi/aspeed_smc.c
+>> @@ -127,6 +127,8 @@
+>>
+>>  /* DMA Control/Status Register */
+>>  #define R_DMA_CTRL        (0x80 / 4)
+>> +#define   DMA_CTRL_REQUEST      (1 << 31)
+>> +#define   DMA_CTRL_GRANT        (1 << 30)
+>>  #define   DMA_CTRL_DELAY_MASK   0xf
+>>  #define   DMA_CTRL_DELAY_SHIFT  8
+>>  #define   DMA_CTRL_FREQ_MASK    0xf
+>> @@ -228,6 +230,7 @@ static uint32_t aspeed_smc_segment_to_reg(const AspeedSMCState *s,
+>>                                            const AspeedSegments *seg);
+>>  static void aspeed_smc_reg_to_segment(const AspeedSMCState *s, uint32_t reg,
+>>                                        AspeedSegments *seg);
+>> +static void aspeed_smc_dma_ctrl(AspeedSMCState *s, uint32_t value);
+>>
+>>  /*
+>>   * AST2600 definitions
+>> @@ -257,7 +260,10 @@ static uint32_t aspeed_2600_smc_segment_to_reg(const AspeedSMCState *s,
+>>                                                 const AspeedSegments *seg);
+>>  static void aspeed_2600_smc_reg_to_segment(const AspeedSMCState *s,
+>>                                             uint32_t reg, AspeedSegments *seg);
+>> +static void aspeed_2600_smc_dma_ctrl(AspeedSMCState *s, uint32_t value);
+>> +
+>>  #define ASPEED_SMC_FEATURE_DMA       0x1
+>> +#define ASPEED_SMC_FEATURE_DMA_GRANT 0x2
+>>
+>>  static inline bool aspeed_smc_has_dma(const AspeedSMCState *s)
+>>  {
+>> @@ -281,6 +287,7 @@ static const AspeedSMCController controllers[] = {
+>>          .nregs             = ASPEED_SMC_R_SMC_MAX,
+>>          .segment_to_reg    = aspeed_smc_segment_to_reg,
+>>          .reg_to_segment    = aspeed_smc_reg_to_segment,
+>> +        .dma_ctrl          = aspeed_smc_dma_ctrl,
+>>      }, {
+>>          .name              = "aspeed.fmc-ast2400",
+>>          .r_conf            = R_CONF,
+>> @@ -299,6 +306,7 @@ static const AspeedSMCController controllers[] = {
+>>          .nregs             = ASPEED_SMC_R_MAX,
+>>          .segment_to_reg    = aspeed_smc_segment_to_reg,
+>>          .reg_to_segment    = aspeed_smc_reg_to_segment,
+>> +        .dma_ctrl          = aspeed_smc_dma_ctrl,
+>>      }, {
+>>          .name              = "aspeed.spi1-ast2400",
+>>          .r_conf            = R_SPI_CONF,
+>> @@ -315,6 +323,7 @@ static const AspeedSMCController controllers[] = {
+>>          .nregs             = ASPEED_SMC_R_SPI_MAX,
+>>          .segment_to_reg    = aspeed_smc_segment_to_reg,
+>>          .reg_to_segment    = aspeed_smc_reg_to_segment,
+>> +        .dma_ctrl          = aspeed_smc_dma_ctrl,
+>>      }, {
+>>          .name              = "aspeed.fmc-ast2500",
+>>          .r_conf            = R_CONF,
+>> @@ -333,6 +342,7 @@ static const AspeedSMCController controllers[] = {
+>>          .nregs             = ASPEED_SMC_R_MAX,
+>>          .segment_to_reg    = aspeed_smc_segment_to_reg,
+>>          .reg_to_segment    = aspeed_smc_reg_to_segment,
+>> +        .dma_ctrl          = aspeed_smc_dma_ctrl,
+>>      }, {
+>>          .name              = "aspeed.spi1-ast2500",
+>>          .r_conf            = R_CONF,
+>> @@ -349,6 +359,7 @@ static const AspeedSMCController controllers[] = {
+>>          .nregs             = ASPEED_SMC_R_MAX,
+>>          .segment_to_reg    = aspeed_smc_segment_to_reg,
+>>          .reg_to_segment    = aspeed_smc_reg_to_segment,
+>> +        .dma_ctrl          = aspeed_smc_dma_ctrl,
+>>      }, {
+>>          .name              = "aspeed.spi2-ast2500",
+>>          .r_conf            = R_CONF,
+>> @@ -365,6 +376,7 @@ static const AspeedSMCController controllers[] = {
+>>          .nregs             = ASPEED_SMC_R_MAX,
+>>          .segment_to_reg    = aspeed_smc_segment_to_reg,
+>>          .reg_to_segment    = aspeed_smc_reg_to_segment,
+>> +        .dma_ctrl          = aspeed_smc_dma_ctrl,
+>>      }, {
+>>          .name              = "aspeed.fmc-ast2600",
+>>          .r_conf            = R_CONF,
+>> @@ -383,6 +395,7 @@ static const AspeedSMCController controllers[] = {
+>>          .nregs             = ASPEED_SMC_R_MAX,
+>>          .segment_to_reg    = aspeed_2600_smc_segment_to_reg,
+>>          .reg_to_segment    = aspeed_2600_smc_reg_to_segment,
+>> +        .dma_ctrl          = aspeed_2600_smc_dma_ctrl,
+>>      }, {
+>>          .name              = "aspeed.spi1-ast2600",
+>>          .r_conf            = R_CONF,
+>> @@ -395,12 +408,14 @@ static const AspeedSMCController controllers[] = {
+>>          .segments          = aspeed_segments_ast2600_spi1,
+>>          .flash_window_base = ASPEED26_SOC_SPI_FLASH_BASE,
+>>          .flash_window_size = 0x10000000,
+>> -        .features          = ASPEED_SMC_FEATURE_DMA,
+>> +        .features          = ASPEED_SMC_FEATURE_DMA |
+>> +                             ASPEED_SMC_FEATURE_DMA_GRANT,
+>>          .dma_flash_mask    = 0x0FFFFFFC,
+>>          .dma_dram_mask     = 0x3FFFFFFC,
+>>          .nregs             = ASPEED_SMC_R_MAX,
+>>          .segment_to_reg    = aspeed_2600_smc_segment_to_reg,
+>>          .reg_to_segment    = aspeed_2600_smc_reg_to_segment,
+>> +        .dma_ctrl          = aspeed_2600_smc_dma_ctrl,
+>>      }, {
+>>          .name              = "aspeed.spi2-ast2600",
+>>          .r_conf            = R_CONF,
+>> @@ -413,12 +428,14 @@ static const AspeedSMCController controllers[] = {
+>>          .segments          = aspeed_segments_ast2600_spi2,
+>>          .flash_window_base = ASPEED26_SOC_SPI2_FLASH_BASE,
+>>          .flash_window_size = 0x10000000,
+>> -        .features          = ASPEED_SMC_FEATURE_DMA,
+>> +        .features          = ASPEED_SMC_FEATURE_DMA |
+>> +                             ASPEED_SMC_FEATURE_DMA_GRANT,
+>>          .dma_flash_mask    = 0x0FFFFFFC,
+>>          .dma_dram_mask     = 0x3FFFFFFC,
+>>          .nregs             = ASPEED_SMC_R_MAX,
+>>          .segment_to_reg    = aspeed_2600_smc_segment_to_reg,
+>>          .reg_to_segment    = aspeed_2600_smc_reg_to_segment,
+>> +        .dma_ctrl          = aspeed_2600_smc_dma_ctrl,
+>>      },
+>>  };
+>>
+>> @@ -1240,7 +1257,7 @@ static void aspeed_smc_dma_done(AspeedSMCState *s)
+>>      }
+>>  }
+>>
+>> -static void aspeed_smc_dma_ctrl(AspeedSMCState *s, uint64_t dma_ctrl)
+>> +static void aspeed_smc_dma_ctrl(AspeedSMCState *s, uint32_t dma_ctrl)
+>>  {
+>>      if (!(dma_ctrl & DMA_CTRL_ENABLE)) {
+>>          s->regs[R_DMA_CTRL] = dma_ctrl;
+>> @@ -1265,6 +1282,46 @@ static void aspeed_smc_dma_ctrl(AspeedSMCState *s, uint64_t dma_ctrl)
+>>      aspeed_smc_dma_done(s);
+>>  }
+>>
+>> +static inline bool aspeed_smc_dma_granted(AspeedSMCState *s)
+>> +{
+>> +    if (!(s->ctrl->features & ASPEED_SMC_FEATURE_DMA_GRANT)) {
+>> +        return true;
+>> +    }
+>> +
+>> +    if (!(s->regs[R_DMA_CTRL] & DMA_CTRL_GRANT)) {
+>> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: DMA not granted\n",  __func__);
+>> +        return false;
+>> +    }
+>> +
+>> +    return true;
+>> +}
+>> +
+>> +static void aspeed_2600_smc_dma_ctrl(AspeedSMCState *s, uint32_t dma_ctrl)
+>> +{
+>> +    /* Preserve DMA bits  */
+>> +    dma_ctrl |= s->regs[R_DMA_CTRL] & (DMA_CTRL_REQUEST | DMA_CTRL_GRANT);
+>> +
+>> +    if (dma_ctrl == 0xAEED0000) {
+>> +        /* automatically grant request */
+>> +        s->regs[R_DMA_CTRL] |= (DMA_CTRL_REQUEST | DMA_CTRL_GRANT);
+>> +        return;
+>> +    }
+>> +
+>> +    /* clear request */
+>> +    if (dma_ctrl == 0xDEEA0000) {
+>> +        s->regs[R_DMA_CTRL] &= ~(DMA_CTRL_REQUEST | DMA_CTRL_GRANT);
+>> +        return;
+>> +    }
+>> +
+>> +    if (!aspeed_smc_dma_granted(s)) {
+>> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: DMA not granted\n",  __func__);
+>> +        return;
+>> +    }
+>> +
+>> +    aspeed_smc_dma_ctrl(s, dma_ctrl);
+>> +    s->regs[R_DMA_CTRL] &= ~(DMA_CTRL_REQUEST | DMA_CTRL_GRANT);
+>> +}
+>> +
+>>  static void aspeed_smc_write(void *opaque, hwaddr addr, uint64_t data,
+>>                               unsigned int size)
+>>  {
+>> @@ -1297,12 +1354,15 @@ static void aspeed_smc_write(void *opaque, hwaddr addr, uint64_t data,
+>>      } else if (addr == R_INTR_CTRL) {
+>>          s->regs[addr] = value;
+>>      } else if (aspeed_smc_has_dma(s) && addr == R_DMA_CTRL) {
+>> -        aspeed_smc_dma_ctrl(s, value);
+>> -    } else if (aspeed_smc_has_dma(s) && addr == R_DMA_DRAM_ADDR) {
+>> +        s->ctrl->dma_ctrl(s, value);
+>> +    } else if (aspeed_smc_has_dma(s) && addr == R_DMA_DRAM_ADDR &&
+>> +               aspeed_smc_dma_granted(s)) {
+>>          s->regs[addr] = DMA_DRAM_ADDR(s, value);
+>> -    } else if (aspeed_smc_has_dma(s) && addr == R_DMA_FLASH_ADDR) {
+>> +    } else if (aspeed_smc_has_dma(s) && addr == R_DMA_FLASH_ADDR &&
+>> +               aspeed_smc_dma_granted(s)) {
+>>          s->regs[addr] = DMA_FLASH_ADDR(s, value);
+>> -    } else if (aspeed_smc_has_dma(s) && addr == R_DMA_LEN) {
+>> +    } else if (aspeed_smc_has_dma(s) && addr == R_DMA_LEN &&
+>> +               aspeed_smc_dma_granted(s)) {
+>>          s->regs[addr] = DMA_LENGTH(value);
+>>      } else {
+>>          qemu_log_mask(LOG_UNIMP, "%s: not implemented: 0x%" HWADDR_PRIx "\n",
+>> --
+>> 2.26.3
+>>
 

@@ -1,162 +1,226 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp2426335lfr;
-        Sat, 10 Apr 2021 08:18:00 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzuFN7bQ93DQvR5OnG0iHR8mFv5NqIUeNTVipwFWs6OICPYdePj4abebd1k1RIxCeoW0cjZ
-X-Received: by 2002:a6b:650f:: with SMTP id z15mr15902034iob.128.1618067880651;
-        Sat, 10 Apr 2021 08:18:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618067880; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp2718127lfr;
+        Sat, 10 Apr 2021 17:55:25 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx/I2+1MEsIKNRepCh5Ejxw7C5DGVZG+qZYkRe3FD/CFwsj5bt4Z8vEEBDW6B5S57szHH1Q
+X-Received: by 2002:a05:6638:2388:: with SMTP id q8mr3205100jat.127.1618102525004;
+        Sat, 10 Apr 2021 17:55:25 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1618102525; cv=pass;
         d=google.com; s=arc-20160816;
-        b=rU5heMH90+YOAkIGKt+VGmnnYuSo8T2+AJLox52Xvev/HTh70ZF2yIDNvgqRqWzOB6
-         A4cbApJa+TR0JbUYHq98CI7vKmUWJhjvs0G7qyHQKZbkFs1kXVk35a19jAZnx9R8M8m2
-         nAVM0KsJgWPJWnrof6LV3GIMHW8EbyU2S0SD0wpNsuxYvFhORejY72dK4xT7VeEF9Hu5
-         9JwZ+DjM7So6Z143nVnNC5Oxqt4UtyUCp2YWOt4IawM5XI0NIfv+w8LjaS+roO+mFKSu
-         IaXWkyEdplcwMGZS2aRJcMApDy4+G/lIntcAKIcg1cOoAYHpoz/UDSTR8nfYlvUKGk7q
-         AsZQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=HJd3Eo4uWc/wrXwLXLN2+q5ZPyNGInFCPTrmmQy9K6Q=;
-        b=b+pDUgmVjqUg8U5fdqS4ylNINE07xLj5KbijVeC9e3VtT55PQ3bfK7NqAFXe/FfLin
-         HKECbG+60rQFCEux6QkDNUFLEmV9fufzUdCjchHYnxSC1LSm/ocdQDQYpASsmqgqtlM1
-         s8P1lTmRQK5Pj7BJpVBhD6JdTpiJCtRUXLaq0SFas6agO65IJvHR0EBvuipQQYSuCOQ+
-         5dDFC266+dZx+VvKOEaKmXX44awnudU8RwL44nqY5KIGpgktoaaUwAilDhfCHfZC2Yve
-         6cozBy0FAolYxBn22w5A6CsH809BiEOBLSD2meBh4u8RLvmTco0t59p9iiegPmadv4Qa
-         PWiA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=uRYeF0k3;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+        b=I4PHGYVJO8KjyYSakfITULvM0J4m+CEKr5yLkMlufxIKrfJh2nMbwk85ydQmt0Jng3
+         coerzmtUjbpnOxi4xw+vN065ZQb2VLIpcBpjUTOQ4DuGRIPwleDbCiS0SFi7zAvztuIf
+         L3Gr4K4jmNixLH+WfnVaMj5cryQqLDAsZf8OaoLSZhjf3WQoibXVNFMj29TybaQQbWy2
+         21dCAbPst09uZkf76/FkknUDq5ZdDCdTmgZYwf0QncKZsT6ko3NLMg/u2Lij9kNbJfLk
+         005GFwdftLH1uDI3l958cLPviFp7jlWOyZrVlr+k/Hli5qidtndU4PJVkceRFw2uRDZj
+         dupw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:content-language
+         :accept-language:message-id:date:thread-index:thread-topic:subject
+         :to:from;
+        bh=1I0fkhhqtZwmQtFSZJg/8AMsW8MX2dPLIKLDdvuu9/8=;
+        b=xovZxtwgGGBKJ7idcp3k6IJLYL2LP3LOfeRmE0bPgNothUOjGkj8zy93ineJjIP3Qc
+         Z7mS0lOY0SaN0yUJwG95YnCOYg8DbD2mDSTsyBIcBWLF2wV/M6G+Rt0p65a4zFJ6NxZ+
+         rxikAyYg8vkCciUm4/0eHSs3YPcm7uroX99vXrgSwvxaCVuJTNHfPw7xbxrJQWkEQa78
+         OPcR2QGrTztN/Ve/cTV0yvAAYD6BCOjr6c26AWtgRjF1BlKSJRSbnsSH6xfiwwW8/Odh
+         QGRZhN4UDbjLWpyLvnOBc0uaM0wx9czobVYL1vMoXYJm0L2z7Z6cWHigg72tuBgcOnbQ
+         b1bQ==
+ARC-Authentication-Results: i=2; mx.google.com;
+       arc=pass (i=1);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=hotmail.fr
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l18si6053396jaj.96.2021.04.10.08.18.00
+        by mx.google.com with ESMTPS id h13si8215172iow.73.2021.04.10.17.55.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 10 Apr 2021 08:18:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 10 Apr 2021 17:55:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=uRYeF0k3;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33452 helo=lists1p.gnu.org)
+       arc=pass (i=1);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=hotmail.fr
+Received: from localhost ([::1]:53126 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lVFN1-0005uc-Oi
-	for alex.bennee@linaro.org; Sat, 10 Apr 2021 11:17:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46694)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lVONo-0001L2-AG
+	for alex.bennee@linaro.org; Sat, 10 Apr 2021 20:55:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55560)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lVFLO-0005Qv-H1
- for qemu-devel@nongnu.org; Sat, 10 Apr 2021 11:16:18 -0400
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e]:40783)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lVFLM-0000V5-Le
- for qemu-devel@nongnu.org; Sat, 10 Apr 2021 11:16:18 -0400
-Received: by mail-ed1-x52e.google.com with SMTP id w23so9886099edx.7
- for <qemu-devel@nongnu.org>; Sat, 10 Apr 2021 08:16:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=HJd3Eo4uWc/wrXwLXLN2+q5ZPyNGInFCPTrmmQy9K6Q=;
- b=uRYeF0k3XDIZy3+0Ss9r7fSgGm8fMCF60xDi9TFVVwAtrE+tPpA9TMnnoCA8qWz886
- G5hYQU3S982Lcc7pwakyPfIiND9kGLPescKGttmmiHmfwMYTlQHoDC5Qg2nkeSuXBLNv
- V2Qm8rv9SHcBuHpaxu/yj26JXdxnITCLDNwlRKTBMPtviuhvgaWOi2CapZoM2hlRI0Dk
- p8fjnaAl9zzadzkI1HwHiBxHtXiUz6Z9kcwfpZCqwJlC8lFG4kiGPw4QNyufOUaasI3W
- lfqBsrphRzB+GUjtDC5MgT9Y106E7ZmMM5As+6skm99/S9eXrQNXE5Ht9tb21a695at7
- djrQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=HJd3Eo4uWc/wrXwLXLN2+q5ZPyNGInFCPTrmmQy9K6Q=;
- b=CdBVqvlrT7gKqHuE7JyyaaMlEcq8Dqnk2to/YihAsODsjvHB0Lkd8MhBs5hBVYP7wB
- outuZGW2XcFBEIYKF6Ta7NfPbnVxWAZezG7jwoPwW5YCyQgN3NN0XXjZ3UGilsnbYM/y
- +rLOmRqgIghBOaJs3RFcZJr5mIS62I34KCX7IZsiBtUsado02sH8U3B/HCrPEgqGbK+J
- qZWXGVz8ZYIuJSNzTjPgnzfE0HO6oio5GRPHsR3t00+S8se5JrUCpkJpsD8OKMUNX4KV
- bbUEnOX164e3Crt5hOZgRh8sCpc/NasqNcig+mt5zvnwG548/R8iMtcHe2RhvH7vMhgu
- dI7Q==
-X-Gm-Message-State: AOAM532OkTPIFKvKQrbN7W1YItGaPPZWPk61nCRbmxOf3mR1T6NA/PN0
- PIC41Fmq7Nrp+7ZrN5nByWdh2gPL2M7mNL+pitwCTQ==
-X-Received: by 2002:aa7:cb0a:: with SMTP id s10mr21971655edt.36.1618067774406; 
- Sat, 10 Apr 2021 08:16:14 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <mikael.esposito@hotmail.fr>)
+ id 1lVMP0-0006zH-3U
+ for qemu-arm@nongnu.org; Sat, 10 Apr 2021 18:48:30 -0400
+Received: from mail-oln040092075033.outbound.protection.outlook.com
+ ([40.92.75.33]:64993 helo=EUR04-VI1-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mikael.esposito@hotmail.fr>)
+ id 1lVMOy-0006xb-JN
+ for qemu-arm@nongnu.org; Sat, 10 Apr 2021 18:48:29 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=JzTkMJrGmFYoMaggA5fA6Jdz9rKIGotxxN8NMwGkes5g3EeYhU444i90lQisplhmaNr6sR4tARLvdtdwho5rVjR738kNKIAg6GbmdgY5ALRTpx0XmqyKhnAPm2g4F2Jwibr9+hGyskr9y+k6cEudeZmDZhKbgDgDyAnv4Y2q9mUne47659yJeyhX2NjRtC8Leo1LEmImLe/FvgDuthphkj4Iu2h+Y011rmBQ1HDkxSW1Ji7sVG20DMYKQOa+PfKhEQrbi/eMJd1Dfhb192u4RUXMqzI9s80a9ZY1vwHEl32tAibU3mWPXVcb4l4JsgAEk/ZidqjjeWAo3BrLLosgAA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=1I0fkhhqtZwmQtFSZJg/8AMsW8MX2dPLIKLDdvuu9/8=;
+ b=aCTgpgHnsppRRT1UjQEB6v6OzSYt5T1b0mhkVYkkul35Em8welbFqtXk6z2anR4WeHR2I6bOt2qLGgt4wCuiwKPdp8/EswHePFYm/ZzaRVJDs6VmpDeUps8d4jayEchXnM2aMT8eNmgu4qSMjvw/kX8g8XAc7Cikoawq9oaaOU+YdB0cVJ+Z2LvM4v5WIcHSPJ0LMTKtophM5UvbVwlqmRO8WjCQAhjWCBS0eEtoL2WV5uHX5nbf9Mn247Qq7D/NEuZrunlUPPfzpTkQ6w2XLYHpFRpyXxuvs6xtFAexqapgTkM3iPSkFjO00bAh9GqhWnRNaUdyxdqNNNtzOd8FQA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+Received: from VI1EUR04FT027.eop-eur04.prod.protection.outlook.com
+ (2a01:111:e400:7e0e::4f) by
+ VI1EUR04HT205.eop-eur04.prod.protection.outlook.com (2a01:111:e400:7e0e::400)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4020.17; Sat, 10 Apr
+ 2021 22:33:23 +0000
+Received: from VI1PR02MB5872.eurprd02.prod.outlook.com
+ (2a01:111:e400:7e0e::51) by VI1EUR04FT027.mail.protection.outlook.com
+ (2a01:111:e400:7e0e::323) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4020.17 via Frontend
+ Transport; Sat, 10 Apr 2021 22:33:23 +0000
+Received: from VI1PR02MB5872.eurprd02.prod.outlook.com
+ ([fe80::bd6e:707f:ee88:2c20]) by VI1PR02MB5872.eurprd02.prod.outlook.com
+ ([fe80::bd6e:707f:ee88:2c20%5]) with mapi id 15.20.4020.022; Sat, 10 Apr 2021
+ 22:33:23 +0000
+From: esposito mikael <mikael.esposito@hotmail.fr>
+To: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Subject: Question about harddrive
+Thread-Topic: Question about harddrive
+Thread-Index: AQHXLllzcJQhW2BzFEWItpvFMRZR9g==
+Date: Sat, 10 Apr 2021 22:33:23 +0000
+Message-ID: <VI1PR02MB58723834F2B01A718885B0DA9B729@VI1PR02MB5872.eurprd02.prod.outlook.com>
+Accept-Language: fr-FR, en-US
+Content-Language: fr-FR
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-incomingtopheadermarker: OriginalChecksum:C4AB70AAD8C188CACDEA5F25A93CCFA4228ACB752CDF4B4E73B82FD79CDAE9B5;
+ UpperCasedChecksum:68EA249F17BD7FCA6FD168BB9F6B0E743FA59EEF01F8A95C9DF6B96E2D30573A;
+ SizeAsReceived:6770; Count:41
+x-tmn: [JhWv6S1z7PrGWltpo3LRKaTVddK6wL3RbHmwbeDNoeiMk1yGDRLkltA2T20u/Ifw]
+x-ms-publictraffictype: Email
+x-incomingheadercount: 41
+x-eopattributedmessage: 0
+x-ms-office365-filtering-correlation-id: d0913c9d-fbb2-4bd4-b1cd-08d8fc70a68f
+x-ms-traffictypediagnostic: VI1EUR04HT205:
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: hhzAvHebjjrEZf8FcoLi3rIDav/0vvFPcHZN67sT0zmqIGXu6Ey7rDgHtgZOTzAYOf2VG1xXh6BA5hbTNMkCrUYIvQHBCH511/X6A9pprXNsgE8ELNb8ncspR3kbj/Hq7oANrT5H8issz2OipIvNAVAV11Jo9OU/trGl0McO95vDQo+vmift0H6jJ5fYq9/viMAEDGS/2VlGyopGYr6LdRSvThevPlwfKoi6JSzFjZkPzKSM+stmVW/OBRAhMKdP6eAPR3xQvHcpXwOtwmFreRsT/zsK6oz1Ov/35tYgq2lMzYaR6WmyLy1qA1nuDZk5EKZBN2Cjz4kilL6NDIpEAgz5FUVMu/qcVaGaUYabfWYP8SJuBsntnRmQLxkvEJuS
+x-ms-exchange-antispam-messagedata: oexZKqO9onxQ+dmGp2jg1Vsv5lE7BUHEi8Svw9Gd54SH5Mgp++95PQxQH58GqoLgX2glBg2etcTO6lvFOO0h8/cjucVPUdDGn2Ljqf8dqU8ikmLQ+w+GuDQUuqSFUIeg4vpj1c8bq6qjBk1fPmP9wyYCMv+q4bMhLE9nsuqbn/c4hyXKca9vfsmeaKz28/S5rPAKAQagNiPsaGBQ3f3zRA==
+x-ms-exchange-transport-forked: True
+Content-Type: multipart/alternative;
+ boundary="_000_VI1PR02MB58723834F2B01A718885B0DA9B729VI1PR02MB5872eurp_"
 MIME-Version: 1.0
-References: <20210409062401.2350436-1-f4bug@amsat.org>
- <20210410131932.i6no5tvvaldyomvp@sekoia-pc.home.lmichel.fr>
- <09a63c3e-aa68-0d2d-b447-db9cd84dab09@amsat.org>
-In-Reply-To: <09a63c3e-aa68-0d2d-b447-db9cd84dab09@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 10 Apr 2021 16:15:31 +0100
-Message-ID: <CAFEAcA9rqx97D_ZN7MzqqJtz9ajFNK=AAeQu9z65+g35SHD_NA@mail.gmail.com>
-Subject: Re: [RFC PATCH-for-6.1 0/9] hw/clock: Strengthen machine (non-qdev)
- clock propagation
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-OriginatorOrg: outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-AuthSource: VI1EUR04FT027.eop-eur04.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-CrossTenant-Network-Message-Id: d0913c9d-fbb2-4bd4-b1cd-08d8fc70a68f
+X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Apr 2021 22:33:23.3384 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Internet
+X-MS-Exchange-CrossTenant-id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-rms-persistedconsumerorg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1EUR04HT205
+Received-SPF: pass client-ip=40.92.75.33;
+ envelope-from=mikael.esposito@hotmail.fr;
+ helo=EUR04-VI1-obe.outbound.protection.outlook.com
+X-Spam_score_int: 0
+X-Spam_score: -0.0
+X-Spam_bar: /
+X-Spam_report: (-0.0 / 5.0 requ) BAYES_20=-0.001, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Approved-At: Sat, 10 Apr 2021 20:55:14 -0400
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Damien Hedde <damien.hedde@greensocs.com>, Luc Michel <luc@lmichel.fr>,
- Eduardo Habkost <ehabkost@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SZ6uInnqRpw9
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: F10TdWPCqKQo
 
-On Sat, 10 Apr 2021 at 14:53, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
- wrote:
->
-> Hi Luc,
->
-> On 4/10/21 3:19 PM, Luc Michel wrote:
-> > Note that clock propagation during reset has always been a complicated
-> > problem. Calling clock_propagate is forbidden during the reset's enter
-> > phase because of the side effects it can introduce.
->
-> Ah... Maybe this is related to the generic reset problem in QEMU :(
+--_000_VI1PR02MB58723834F2B01A718885B0DA9B729VI1PR02MB5872eurp_
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 
-I do wonder if we got the clock-propagation-during-reset part of this
-wrong -- it seemed right to me at the time but trying to use the
-clock API recently I did run into some unhelpful-seeming results
-(I forget the details now, though).
+Hi,
 
-> > I find your API modification a bit restrictive. I think creating a
-> > standalone clock can be useful, e.g. in complicated devices that may
-> > want to use internal "intermediate" clocks. I would not remove this
-> > possibility to the API users.
->
-> Well, this is the point. I can't see a justification to have a clock
-> on a non-qdev object. We should be able to model complicated devices
-> with qdev.
+I have juste a little question, i just start to use qemu for emulate arm co=
+mputer. And i can't change the hard drive description for change QEMU HARDD=
+ISK for something like DELL.
 
-The obvious reason is that machine objects are not qdev devices (ie
-TYPE_MACHINE inherits directly from TYPE_OBJECT, not from TYPE_DEVICE),
-but it's a reasonable thing to say "this machine has a fixed frequency
-clock which it connects to the SoC".
+For information, i don't use a virtualise storage i boot from a modified im=
+g file.
 
-I do wonder if the right fix to that would be to make TYPE_MACHINE
-be a subtype of TYPE_DEVICE, though -- machines not being subtypes
-of device has other annoying effects, like their not having reset
-methods or being able to register vmstate structs. There might be
-some unanticipated side effects of making that change, though.
+Thx for your help.
+Best regard
+Cordialement,
+Mikael Esposito
 
-thanks
--- PMM
+
+--_000_VI1PR02MB58723834F2B01A718885B0DA9B729VI1PR02MB5872eurp_
+Content-Type: text/html; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
+1">
+<style type=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bo=
+ttom:0;} </style>
+</head>
+<body dir=3D"ltr">
+<div style=3D"font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;=
+ color: rgb(0, 0, 0);">
+</div>
+<span style=3D"margin:0px;font-size:12pt;background-color:rgb(255, 255, 255=
+)">Hi,</span>
+<div style=3D"margin:0px;font-size:12pt;background-color:rgb(255, 255, 255)=
+"><br>
+</div>
+<div style=3D"margin:0px;font-size:12pt;background-color:rgb(255, 255, 255)=
+">I have juste a little question, i just start to use qemu for emulate arm =
+computer. And i can't change the hard drive description for change QEMU HAR=
+DDISK for something like DELL.&nbsp;</div>
+<div style=3D"margin:0px;font-size:12pt;background-color:rgb(255, 255, 255)=
+"><br>
+</div>
+<div style=3D"margin:0px;font-size:12pt;background-color:rgb(255, 255, 255)=
+">For information, i don't use a virtualise storage i boot from a modified =
+img file.</div>
+<div style=3D"margin:0px;font-size:12pt;background-color:rgb(255, 255, 255)=
+"><br>
+</div>
+<div style=3D"margin:0px;font-size:12pt;background-color:rgb(255, 255, 255)=
+">Thx for your help.</div>
+<div style=3D"margin:0px;font-size:12pt;background-color:rgb(255, 255, 255)=
+">Best regard&nbsp;</div>
+<div style=3D"margin:0px;font-size:15px;font-family:&quot;Segoe UI&quot;, &=
+quot;Segoe UI Web (West European)&quot;, &quot;Segoe UI&quot;, -apple-syste=
+m, BlinkMacSystemFont, Roboto, &quot;Helvetica Neue&quot;, sans-serif;color=
+:rgb(32, 31, 30);background-color:rgb(255, 255, 255)">
+<div style=3D"margin:0px">
+<div style=3D"margin:0px">
+<div style=3D"margin:0px;font-size:12pt;font-family:Calibri, Helvetica, san=
+s-serif;color:rgb(0, 0, 0)">
+<b>Cordialement,</b></div>
+<span style=3D"margin:0px;font-size:12pt;font-family:Calibri, Helvetica, sa=
+ns-serif;color:rgb(0, 0, 0)"><b>Mikael Esposito</b></span></div>
+</div>
+</div>
+<div>
+<div id=3D"Signature">
+<div>
+<div style=3D"font-family:Calibri,Helvetica,sans-serif; font-size:12pt; col=
+or:rgb(0,0,0)">
+<b></b><br>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
+
+--_000_VI1PR02MB58723834F2B01A718885B0DA9B729VI1PR02MB5872eurp_--

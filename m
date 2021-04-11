@@ -1,87 +1,87 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp3067988lfr;
-        Sun, 11 Apr 2021 05:37:56 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyfZdZhwrY/X22Ywz6E8QaFChjZmFvnb+9+Hw6sgMfYva3IDZZrHF6dCiNlTU0CywXYPRY7
-X-Received: by 2002:a05:6e02:1c83:: with SMTP id w3mr2843877ill.125.1618144676638;
-        Sun, 11 Apr 2021 05:37:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618144676; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp3068377lfr;
+        Sun, 11 Apr 2021 05:38:39 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyJMlL0f4hiooDmV6O21yPjmZ1H09FtgIZnf6Qs7gabdZH1AFa/1AA3EVnCyJIA1F8WmKv4
+X-Received: by 2002:a05:6e02:1e01:: with SMTP id g1mr485034ila.83.1618144719602;
+        Sun, 11 Apr 2021 05:38:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618144719; cv=none;
         d=google.com; s=arc-20160816;
-        b=EWRWR9Zuw0isFcqZfXAGvP+b48ApgjIOowIXxmKNxt+aIotQS5BkAv/bauszYpOF1c
-         SFekObQBr4tSyMLCV7tfTkFe33NxA1IK5C2oRVpi07daMmy7y/42mXLiQdO+gVDBsDFd
-         zvcQQ3VXG1z5TG2PQAhIjUf1aJJifXsp3h3TOxQypy7EwQDqnPE98hbspmc3DmXvZnto
-         vWZ7ynnvKeeBGfSqj7a1OGJ95KL8h6+khvCgcx4d+BgKksh+S6DZtJezCNm2eiQq8NIy
-         AO7NP7aTwn0ZSa1KDBVZYOMg3qn7iMNvyFUVL5L1JIjFikPbPgnrGCFkQFN20LV3l8+x
-         omtA==
+        b=HvRH+ua7lcVPHnov8B+OnQ1oDuw83wwM5VGYk2+U7zqXwOM1bYNgW8KLH2DddL4b91
+         1Ga6RkqxWWL0jy+He1yWiqJ1fHoOeon34okSbK10V8qUP4XImizXi895Ur7Pg/6tMC1l
+         4QSinCoke5or3gt6PvCy5ywiNpY52RXP/bAsnaMJ6Z+jQf4evOjVqItSMBx58w0mWKmm
+         KTFlKE2IWziNgo9yq70i9REUZv5rXzmb0ov2TEXOjPd2P87eNo71bR/wV/Lw5U1yeYEC
+         Gly2bDTvFAYAX3eWChZW8FouQ3u2LGrgI8hBi7PLoNwqk/gZmAngAPQR2V7ypqg94gmL
+         kSHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=bpdfwharVRRZNZ8tRxaDF2nnn3xcygp3iaBf6U4q/i0=;
-        b=v2oLKVjAq5ZVoDW0BnLyYZm3kvS4u0/MAQzPw9hGZDM63DRAzRcH9TmcOaNtwNineK
-         IXv/JM+OzTFDF5qM2g2Gahiysqbx47lEeiRW/RDg8V+veswXtksfhSOzYrUjK8tASGbj
-         C81qvltzwNjSycsxet13qRA6C5oPIiIcE2tQpOOj1BdUw6Qbmaph5d7TF1ib6K1RJPxc
-         e7N7akx32PDgZIeu/y915lfCHUB/vR9rlN5Yj5M9/lQfiZYzpH6P3lGJx8xftFKhetPa
-         Ev66Zw9+TtZVUtNmJxEdGp2RMnjZmI/fPojZgoJ8UbCmXy4pFGEIlukdC+FyYyIjBjoM
-         64/g==
+        bh=c1lC2N5qYUFS9onSXcWFEDQCeOdGmtYQEEeqJjMIgro=;
+        b=s+Pya+4xD85YQBIepqFeThXSRr4hRcKy3iamHN5HIzezXsm6FFWmb+LU0oLSFEXST4
+         vYms3DPOsUjJxBpxQ+1oYa/E7BQxeAkg7ZKfMiJaLMriIgwnBMNzIwABBkeMXY95N49J
+         R5DqJR6o++Nhe3VxZiB0U+4ALCeoRg7F+Q1HNcWPsmIGqOGuMs33d8Oe3FpW+QdImNdd
+         GSQJEBJ1nbRYVmoj4r/EOUXX+wVM1ayn9/lfgzn79Fg9aNTNcCcdAHZu7rWFUBcK+ZQc
+         IDpdPtJu4FOVhO1GldlNbcHPQ/b7CSMkV1YjND4lAtufSD32sa/jjDtvtS5r0qHuMkWH
+         4DwQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GovKNNOK;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HRb73IzI;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u5si6865124ilk.19.2021.04.11.05.37.56
+        by mx.google.com with ESMTPS id y11si10921328ill.115.2021.04.11.05.38.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 11 Apr 2021 05:37:56 -0700 (PDT)
+        Sun, 11 Apr 2021 05:38:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GovKNNOK;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HRb73IzI;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54940 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57216 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lVZLf-0008Ad-UG
-	for alex.bennee@linaro.org; Sun, 11 Apr 2021 08:37:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48206)
+	id 1lVZMM-0000h3-Td
+	for alex.bennee@linaro.org; Sun, 11 Apr 2021 08:38:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48188)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lVYzF-0003eN-D8
- for qemu-devel@nongnu.org; Sun, 11 Apr 2021 08:14:47 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:20050)
+ id 1lVYzD-0003dS-5U
+ for qemu-devel@nongnu.org; Sun, 11 Apr 2021 08:14:45 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:45718)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lVYzC-0004IM-Tf
- for qemu-devel@nongnu.org; Sun, 11 Apr 2021 08:14:44 -0400
+ id 1lVYyw-0004EH-Lq
+ for qemu-devel@nongnu.org; Sun, 11 Apr 2021 08:14:41 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1618143281;
+ s=mimecast20190719; t=1618143265;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=bpdfwharVRRZNZ8tRxaDF2nnn3xcygp3iaBf6U4q/i0=;
- b=GovKNNOKX28w3a0WUCa0VZ/QCq1K5rFVVWfMgBneFxIBun2TCYeVyBHoeQ1boLTMFWTlie
- 6u5Kxs6Be4AiMUUl7GmNRWzUQnK5UWx1t8cwtZPanjvVrCLqT/yRIzC77RlxirjssleeNM
- o6SOrks16+oZf/9TWizL0SXg5u8JFUo=
+ bh=c1lC2N5qYUFS9onSXcWFEDQCeOdGmtYQEEeqJjMIgro=;
+ b=HRb73IzIrBTgfBvORRbSCcEe6x/n+jQQjUIbBA4/t0kMLdf8vyipw/A3U0gMxaEpdMsWht
+ cpGvw9D/9j7kg07Unvjs/QH8/4vy+urqljV2XF/oq5Zg3YkO4l6CVGC7ZBYKAK535gNYAw
+ R+63xV0k40KpeR8TZRnpSaqtV6cx8gU=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-523-hgPzYYz7PNO7xe2TAntF3w-1; Sun, 11 Apr 2021 08:14:40 -0400
-X-MC-Unique: hgPzYYz7PNO7xe2TAntF3w-1
+ us-mta-98-UCK3eHolOpSSLzIJPamQLg-1; Sun, 11 Apr 2021 08:14:24 -0400
+X-MC-Unique: UCK3eHolOpSSLzIJPamQLg-1
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
  [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id F394318397A0;
- Sun, 11 Apr 2021 12:14:37 +0000 (UTC)
-Received: from laptop.redhat.com (ovpn-112-22.ams2.redhat.com [10.36.112.22])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 88F9C10023B2;
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1CA3810054F6;
  Sun, 11 Apr 2021 12:14:22 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-112-22.ams2.redhat.com [10.36.112.22])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 4476A10023B2;
+ Sun, 11 Apr 2021 12:14:14 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, alex.williamson@redhat.com
-Subject: [RFC v9 27/29] hw/arm/smmuv3: Allow MAP notifiers
-Date: Sun, 11 Apr 2021 14:09:10 +0200
-Message-Id: <20210411120912.15770-28-eric.auger@redhat.com>
+Subject: [RFC v9 26/29] hw/arm/smmuv3: Implement fault injection
+Date: Sun, 11 Apr 2021 14:09:09 +0200
+Message-Id: <20210411120912.15770-27-eric.auger@redhat.com>
 In-Reply-To: <20210411120912.15770-1-eric.auger@redhat.com>
 References: <20210411120912.15770-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -92,7 +92,7 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=216.205.24.124;
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
@@ -121,36 +121,113 @@ Cc: peter.maydell@linaro.org, jacob.jun.pan@linux.intel.com,
  yuzenghui@huawei.com, zhukeqian1@huawei.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pnZmxZ1x+Q2A
+X-TUID: fNVGQechdZsK
 
-We now have all bricks to support nested paging. This
-uses MAP notifiers to map the MSIs. So let's allow MAP
-notifiers to be registered.
+We convert iommu_fault structs received from the kernel
+into the data struct used by the emulation code and record
+the evnts into the virtual event queue.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
+
 ---
- hw/arm/smmuv3.c | 8 --------
- 1 file changed, 8 deletions(-)
+
+v3 -> v4:
+- fix compil issue on mingw
+
+Exhaustive mapping remains to be done
+---
+ hw/arm/smmuv3.c | 71 +++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 71 insertions(+)
 
 diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 53b71c895c..ca690513e6 100644
+index aefc55a607..53b71c895c 100644
 --- a/hw/arm/smmuv3.c
 +++ b/hw/arm/smmuv3.c
-@@ -1620,14 +1620,6 @@ static int smmuv3_notify_flag_changed(IOMMUMemoryRegion *iommu,
-         return -EINVAL;
-     }
+@@ -1652,6 +1652,76 @@ static int smmuv3_get_attr(IOMMUMemoryRegion *iommu,
+     return -EINVAL;
+ }
  
--    if (new & IOMMU_NOTIFIER_MAP) {
--        error_setg(errp,
--                   "device %02x.%02x.%x requires iommu MAP notifier which is "
--                   "not currently supported", pci_bus_num(sdev->bus),
--                   PCI_SLOT(sdev->devfn), PCI_FUNC(sdev->devfn));
--        return -EINVAL;
--    }
--
-     if (old == IOMMU_NOTIFIER_NONE) {
-         trace_smmuv3_notify_flag_add(iommu->parent_obj.name);
-         QLIST_INSERT_HEAD(&s->devices_with_notifiers, sdev, next);
++struct iommu_fault;
++
++static inline int
++smmuv3_inject_faults(IOMMUMemoryRegion *iommu_mr, int count,
++                     struct iommu_fault *buf)
++{
++#ifdef __linux__
++    SMMUDevice *sdev = container_of(iommu_mr, SMMUDevice, iommu);
++    SMMUv3State *s3 = sdev->smmu;
++    uint32_t sid = smmu_get_sid(sdev);
++    int i;
++
++    for (i = 0; i < count; i++) {
++        SMMUEventInfo info = {};
++        struct iommu_fault_unrecoverable *record;
++
++        if (buf[i].type != IOMMU_FAULT_DMA_UNRECOV) {
++            continue;
++        }
++
++        info.sid = sid;
++        record = &buf[i].event;
++
++        switch (record->reason) {
++        case IOMMU_FAULT_REASON_PASID_INVALID:
++            info.type = SMMU_EVT_C_BAD_SUBSTREAMID;
++            /* TODO further fill info.u.c_bad_substream */
++            break;
++        case IOMMU_FAULT_REASON_PASID_FETCH:
++            info.type = SMMU_EVT_F_CD_FETCH;
++            break;
++        case IOMMU_FAULT_REASON_BAD_PASID_ENTRY:
++            info.type = SMMU_EVT_C_BAD_CD;
++            /* TODO further fill info.u.c_bad_cd */
++            break;
++        case IOMMU_FAULT_REASON_WALK_EABT:
++            info.type = SMMU_EVT_F_WALK_EABT;
++            info.u.f_walk_eabt.addr = record->addr;
++            info.u.f_walk_eabt.addr2 = record->fetch_addr;
++            break;
++        case IOMMU_FAULT_REASON_PTE_FETCH:
++            info.type = SMMU_EVT_F_TRANSLATION;
++            info.u.f_translation.addr = record->addr;
++            break;
++        case IOMMU_FAULT_REASON_OOR_ADDRESS:
++            info.type = SMMU_EVT_F_ADDR_SIZE;
++            info.u.f_addr_size.addr = record->addr;
++            break;
++        case IOMMU_FAULT_REASON_ACCESS:
++            info.type = SMMU_EVT_F_ACCESS;
++            info.u.f_access.addr = record->addr;
++            break;
++        case IOMMU_FAULT_REASON_PERMISSION:
++            info.type = SMMU_EVT_F_PERMISSION;
++            info.u.f_permission.addr = record->addr;
++            break;
++        default:
++            warn_report("%s Unexpected fault reason received from host: %d",
++                        __func__, record->reason);
++            continue;
++        }
++
++        smmuv3_record_event(s3, &info);
++    }
++    return 0;
++#else
++    return -1;
++#endif
++}
++
+ static void smmuv3_iommu_memory_region_class_init(ObjectClass *klass,
+                                                   void *data)
+ {
+@@ -1660,6 +1730,7 @@ static void smmuv3_iommu_memory_region_class_init(ObjectClass *klass,
+     imrc->translate = smmuv3_translate;
+     imrc->notify_flag_changed = smmuv3_notify_flag_changed;
+     imrc->get_attr = smmuv3_get_attr;
++    imrc->inject_faults = smmuv3_inject_faults;
+ }
+ 
+ static const TypeInfo smmuv3_type_info = {
 -- 
 2.26.3
 

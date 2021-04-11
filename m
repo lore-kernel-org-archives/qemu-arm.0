@@ -1,85 +1,89 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp3052602lfr;
-        Sun, 11 Apr 2021 05:10:14 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxsdEYsmk9b0hyCZrpX+bsUoQ9ZzDPzvc/g5vnbBZ7P6WHeUpsbmz31AwCOfhA7dWkfv8ls
-X-Received: by 2002:a67:ed4e:: with SMTP id m14mr17127811vsp.40.1618143013906;
-        Sun, 11 Apr 2021 05:10:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618143013; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp3053517lfr;
+        Sun, 11 Apr 2021 05:11:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxbRiM3v2MpZ+6iUeP1nwZmgAhgYctgFS7GwvzZSxNNZPAKKvPkIcwMhcHlUsY2ILuBBHz5
+X-Received: by 2002:a05:6102:322f:: with SMTP id x15mr17549062vsf.9.1618143090636;
+        Sun, 11 Apr 2021 05:11:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618143090; cv=none;
         d=google.com; s=arc-20160816;
-        b=NMDEDTIOhxRGsqgNzDVFtq7xQ6xfUOCpF1MtkKw0aAbmfoNHRfl2K4uk9t7/sqNvA1
-         VE6LYEqrvzJia3RBZgCvybK9t4P5pocw6evgTN9aIzsHicNETfKBd38ezD7ZeOhw2KQ7
-         2YnaC558jXEL/c0A5JSuXndydjWj8k2fNW0BmYoMOHSAaevivfls7JaYGyCQ7qKwlzEQ
-         RTkjQic0L2rZx/ZX4zV49dqKVF8yyeFp1gOzIyyn92HPb5rAQ6BwtEFp4fqd2mYbcn1I
-         Fv5b2eWibLpuUIE1VhrlFm/6Ur8tWEGXnYax6E7dLvR5EsTVCszfiFeM9tO9wshPDftw
-         +02A==
+        b=mhXjO5a+3t7gOBR2bWhrlU8Eokuyw4x26Zvkrwq8glOyxm3rRW76SeNHeBfEChw6H4
+         JUvUv/quMRlheBhHyL97ncgv/xnpo537aGUHI1fDbqcWr4w/IhOP60OFR6oiebnUg3j7
+         C/Frz7BZee4v8u6R6fkCPGifcX3M9CEtQi3AoWGc22JvRnThtAM2SD+bGR6SwBxYSbtD
+         p8RYsd1D4G+psSrY5+5qV3PBhC638x10JcHSGjwb3TM4FCyKTNfrz8La9Z0jv6uoWlBE
+         1Z4hou3akYdaj8wvfwrNZNWD9U7mZ4g1BIWpdKCmLvze5x6Zgn1pAYVWaMb9a5APL/mo
+         ceQw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=GOuV0CIDjCcOWa3rY5nawUX4wz8HR/h1vZ8RpKSRMZQ=;
-        b=jbMx0U5ukhMWBa2LQZ3aRgWFmRaFChnTD1bZHOtP5eHSYmjZVhsQP7X2u1/VkMqKj0
-         t6f8GAnwR9irLvLTuafTL8btAQVx8E+X4d4gSvoMCY5kur4kjjj8s2PO7VgGVGnIfzl1
-         4+Zmlg+pglwRRtXXmw/kPmyAC/I71K3okiw71YKKeBeiX0e/iyog7VjcgN8eExAbG6KD
-         SqglaW0hzlOFiXckYp7asQnc38Jlk42uE6JrLYGNSwsl+AHy8CHY7DL+hVxh2mRwvVzu
-         moRlB2mIfiZaabdg066wvx8iUBDnI4heiwdqLuT1mLjZ8TSJT8eTkdfMVjWJLbObA67X
-         yfyg==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=gUPdqG39IAdI6T4NBb4oDISMmuZJFkN0aqb0exvi/aw=;
+        b=YWjEsmP6JgtjkTz8UTXuIJZKctiCcptLs1VwU48w984ORWgJaFrMzv5qDOohHwGG2+
+         AkSv4Gh5LBTX14iKpYhxRZF1/OjyOYlpOiTTAMccdJWPFlPDhj6SIL3ssKJbcLKjnKBQ
+         IPYX/myU7PUQHkbPBqFiKvF/jHpNq8qWLbKwt2p5Z8ryLXwVtxiXDj7ycSs5hPBx63Ka
+         Lb9ieHrKMyoeDGpkyhOdvV/Jnwyw6doDPLWd7MYA79tJWHKDB6ZuQEmfJsKRVdaNmHYr
+         7qzioi/ydqap49hRLXq8Ryhj2wDDm+36uKnH7e1uJX3Nv0D28LFLRu7/QO66YYSEOFGI
+         cwrQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=O81CIvsc;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KZ4Mr00I;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h14si684837ual.181.2021.04.11.05.10.13
+        by mx.google.com with ESMTPS id t6si3182053uar.127.2021.04.11.05.11.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 11 Apr 2021 05:10:13 -0700 (PDT)
+        Sun, 11 Apr 2021 05:11:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=O81CIvsc;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KZ4Mr00I;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51348 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52580 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lVYur-00089h-3L
-	for alex.bennee@linaro.org; Sun, 11 Apr 2021 08:10:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46900)
+	id 1lVYw5-0000Km-Oq
+	for alex.bennee@linaro.org; Sun, 11 Apr 2021 08:11:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47178)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lVYuK-00088h-68
- for qemu-arm@nongnu.org; Sun, 11 Apr 2021 08:09:40 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:34358)
+ id 1lVYvA-0000Hg-Br
+ for qemu-arm@nongnu.org; Sun, 11 Apr 2021 08:10:32 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:21210)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lVYuH-00025S-C6
- for qemu-arm@nongnu.org; Sun, 11 Apr 2021 08:09:39 -0400
+ id 1lVYv5-0002ZG-96
+ for qemu-arm@nongnu.org; Sun, 11 Apr 2021 08:10:32 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1618142976;
+ s=mimecast20190719; t=1618143026;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=GOuV0CIDjCcOWa3rY5nawUX4wz8HR/h1vZ8RpKSRMZQ=;
- b=O81CIvscLKQpJ+xiqWe++9WsfBZRSqIKeTIhD3Cp8o9RiFeAKiTiQsysD54J9O58OKi8eJ
- ryIab3rdNHxSKHDhfBj1nZ+GvOOQoQsHHgiUrYrHTcpG2C8l3Y9B5Eve0lnF+GXBElyy0u
- UlgmNp0Wy/10EgfGo4gz1/uVnyjMh4M=
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=gUPdqG39IAdI6T4NBb4oDISMmuZJFkN0aqb0exvi/aw=;
+ b=KZ4Mr00I3yXafH7EFKfwZI2XpfJjCBLwffitbqKpaguDU8GMluTtzKvXh+4+spLSETQsyg
+ 0BhiwdTpQjbBdBMvBs+IyPwqQShq1iKuqIPDZH1WuPoK0XUB5oNjig99HvuE9GXuIxbdcC
+ mNKViSpDgsKmm6P72828N43dcBzkYCc=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-480-ReniJGHxPCi1x43XZwMSxw-1; Sun, 11 Apr 2021 08:09:34 -0400
-X-MC-Unique: ReniJGHxPCi1x43XZwMSxw-1
+ us-mta-20-JSALiwR8Ok2RPBXNx--jmw-1; Sun, 11 Apr 2021 08:10:22 -0400
+X-MC-Unique: JSALiwR8Ok2RPBXNx--jmw-1
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
  [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 782E7802B40;
- Sun, 11 Apr 2021 12:09:32 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2E7268015B6;
+ Sun, 11 Apr 2021 12:10:20 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-112-22.ams2.redhat.com [10.36.112.22])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 5D445101E5AF;
- Sun, 11 Apr 2021 12:09:16 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 8182E10023B2;
+ Sun, 11 Apr 2021 12:10:01 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, alex.williamson@redhat.com
-Subject: [RFC v9 00/29] vSMMUv3/pSMMUv3 2 stage VFIO integration
-Date: Sun, 11 Apr 2021 14:08:43 +0200
-Message-Id: <20210411120912.15770-1-eric.auger@redhat.com>
+Subject: [RFC v9 04/29] memory: Add new fields in IOTLBEntry
+Date: Sun, 11 Apr 2021 14:08:47 +0200
+Message-Id: <20210411120912.15770-5-eric.auger@redhat.com>
+In-Reply-To: <20210411120912.15770-1-eric.auger@redhat.com>
+References: <20210411120912.15770-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 Authentication-Results: relay.mimecast.com;
@@ -117,146 +121,188 @@ Cc: peter.maydell@linaro.org, jacob.jun.pan@linux.intel.com,
  yuzenghui@huawei.com, zhukeqian1@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pPl4GZludF34
+X-TUID: e2EjL/QsY6++
 
-Up to now vSMMUv3 has not been integrated with VFIO. VFIO
-integration requires to program the physical IOMMU consistently
-with the guest mappings. However, as opposed to VTD, SMMUv3 has
-no "Caching Mode" which allows easy trapping of guest mappings.
-This means the vSMMUV3 cannot use the same VFIO integration as VTD.
+The current IOTLBEntry becomes too simple to interact with
+some physical IOMMUs. IOTLBs can be invalidated with different
+granularities: domain, pasid, addr. Current IOTLB entry only offers
+page selective invalidation. Let's add a granularity field
+that conveys this information.
 
-However SMMUv3 has 2 translation stages. This was devised with
-virtualization use case in mind where stage 1 is "owned" by the
-guest whereas the host uses stage 2 for VM isolation.
+TLB entries are usually tagged with some ids such as the asid
+or pasid. When propagating an invalidation command from the
+guest to the host, we need to pass those IDs.
 
-This series sets up this nested translation stage. It only works
-if there is one physical SMMUv3 used along with QEMU vSMMUv3 (in
-other words, it does not work if there is a physical SMMUv2).
+Also we add a leaf field which indicates, in case of invalidation
+notification, whether only cache entries for the last level of
+translation are required to be invalidated.
 
-- We force the host to use stage 2 instead of stage 1, when we
-  detect a vSMMUV3 is behind a VFIO device. For a VFIO device
-  without any virtual IOMMU, we still use stage 1 as many existing
-  SMMUs expect this behavior.
-- We use PCIPASIDOps to propage guest stage1 config changes on
-  STE (Stream Table Entry) changes.
-- We implement a specific UNMAP notifier that conveys guest
-  IOTLB invalidations to the host
-- We register MSI IOVA/GPA bindings to the host so that this latter
-  can build a nested stage translation
-- As the legacy MAP notifier is not called anymore, we must make
-  sure stage 2 mappings are set. This is achieved through another
-  prereg memory listener.
-- Physical SMMU stage 1 related faults are reported to the guest
-  via en eventfd mechanism and exposed trhough a dedicated VFIO-PCI
-  region. Then they are reinjected into the guest.
+A flag field is introduced to inform whether those fields are set.
 
-Best Regards
+To enforce all existing users do not use those new fields,
+initialize the IOMMUTLBEvents when needed.
 
-Eric
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
-All the patches can be found at:
-https://github.com/eauger/qemu/tree/v6.0.0-rc2-2stage-rfcv9
-
-Previous version:
-v8: https://github.com/eauger/qemu/tree/v5.2.0-2stage-rfcv8
-
-Kernel Dependencies:
-[1] [PATCH v15 00/12] SMMUv3 Nested Stage Setup (IOMMU part)
-[2] [PATCH v13 00/13] SMMUv3 Nested Stage Setup (VFIO part)
-branch containing both:
-https://github.com/eauger/linux/tree/v5.12-rc6-jean-iopf-14-2stage-v15
-
-History:
-
-v8 -> v9:
-- added
-  hw/arm/smmu-common: Allow domain invalidation for NH_ALL/NSNH_ALL
-  following Chenxiang's report
+---
 
 v7 -> v8:
-- adapt to changes to the kernel uapi
-- Fix unregistration of MSI bindings
-- applies on top of range invalidation fixes
-- changes in IOTLBEntry (flags)
-- addressed all the comments from reviewers/testers I hope.
-  Many thanks to all of you! see individual logs
+- add pasid, granularity and flags
+---
+ include/exec/memory.h    | 36 +++++++++++++++++++++++++++++++++++-
+ hw/arm/smmu-common.c     |  2 +-
+ hw/arm/smmuv3.c          |  2 +-
+ hw/i386/intel_iommu.c    |  6 +++---
+ hw/ppc/spapr_iommu.c     |  2 +-
+ hw/virtio/virtio-iommu.c |  4 ++--
+ 6 files changed, 43 insertions(+), 9 deletions(-)
 
-
-Eric Auger (28):
-  hw/vfio/common: trace vfio_connect_container operations
-  update-linux-headers: Import iommu.h
-  header update against 5.12-rc6 and IOMMU/VFIO nested stage APIs
-  memory: Add new fields in IOTLBEntry
-  hw/arm/smmuv3: Improve stage1 ASID invalidation
-  hw/arm/smmu-common: Allow domain invalidation for NH_ALL/NSNH_ALL
-  memory: Add IOMMU_ATTR_VFIO_NESTED IOMMU memory region attribute
-  memory: Add IOMMU_ATTR_MSI_TRANSLATE IOMMU memory region attribute
-  memory: Introduce IOMMU Memory Region inject_faults API
-  iommu: Introduce generic header
-  vfio: Force nested if iommu requires it
-  vfio: Introduce hostwin_from_range helper
-  vfio: Introduce helpers to DMA map/unmap a RAM section
-  vfio: Set up nested stage mappings
-  vfio: Pass stage 1 MSI bindings to the host
-  vfio: Helper to get IRQ info including capabilities
-  vfio/pci: Register handler for iommu fault
-  vfio/pci: Set up the DMA FAULT region
-  vfio/pci: Implement the DMA fault handler
-  hw/arm/smmuv3: Advertise MSI_TRANSLATE attribute
-  hw/arm/smmuv3: Store the PASID table GPA in the translation config
-  hw/arm/smmuv3: Fill the IOTLBEntry arch_id on NH_VA invalidation
-  hw/arm/smmuv3: Fill the IOTLBEntry leaf field on NH_VA invalidation
-  hw/arm/smmuv3: Pass stage 1 configurations to the host
-  hw/arm/smmuv3: Implement fault injection
-  hw/arm/smmuv3: Allow MAP notifiers
-  pci: Add return_page_response pci ops
-  vfio/pci: Implement return_page_response page response callback
-
-Liu Yi L (1):
-  pci: introduce PCIPASIDOps to PCIDevice
-
- hw/arm/smmu-internal.h                        |   1 +
- hw/vfio/pci.h                                 |  11 +
- include/exec/memory.h                         |  64 +-
- include/hw/arm/smmu-common.h                  |   1 +
- include/hw/iommu/iommu.h                      |  36 ++
- include/hw/pci/pci.h                          |  15 +
- include/hw/vfio/vfio-common.h                 |  19 +
- include/standard-headers/drm/drm_fourcc.h     |  23 +-
- include/standard-headers/linux/ethtool.h      |  54 +-
- include/standard-headers/linux/fuse.h         |   3 +-
- include/standard-headers/linux/input.h        |   2 +-
- .../standard-headers/rdma/vmw_pvrdma-abi.h    |   7 +
- linux-headers/asm-generic/unistd.h            |   4 +-
- linux-headers/asm-mips/unistd_n32.h           |   1 +
- linux-headers/asm-mips/unistd_n64.h           |   1 +
- linux-headers/asm-mips/unistd_o32.h           |   1 +
- linux-headers/asm-powerpc/kvm.h               |   2 +
- linux-headers/asm-powerpc/unistd_32.h         |   1 +
- linux-headers/asm-powerpc/unistd_64.h         |   1 +
- linux-headers/asm-s390/unistd_32.h            |   1 +
- linux-headers/asm-s390/unistd_64.h            |   1 +
- linux-headers/asm-x86/kvm.h                   |   1 +
- linux-headers/asm-x86/unistd_32.h             |   1 +
- linux-headers/asm-x86/unistd_64.h             |   1 +
- linux-headers/asm-x86/unistd_x32.h            |   1 +
- linux-headers/linux/kvm.h                     |  89 +++
- linux-headers/linux/vfio.h                    | 169 +++++-
- hw/arm/smmu-common.c                          |   3 +-
- hw/arm/smmuv3.c                               | 224 ++++++-
- hw/i386/intel_iommu.c                         |   6 +-
- hw/pci/pci.c                                  |  50 ++
- hw/ppc/spapr_iommu.c                          |   2 +-
- hw/vfio/common.c                              | 565 ++++++++++++++----
- hw/vfio/pci.c                                 | 415 ++++++++++++-
- hw/virtio/virtio-iommu.c                      |   4 +-
- softmmu/memory.c                              |  10 +
- hw/arm/trace-events                           |   2 +
- hw/vfio/trace-events                          |  11 +-
- scripts/update-linux-headers.sh               |   2 +-
- 39 files changed, 1626 insertions(+), 179 deletions(-)
- create mode 100644 include/hw/iommu/iommu.h
-
+diff --git a/include/exec/memory.h b/include/exec/memory.h
+index 5728a681b2..94b9157249 100644
+--- a/include/exec/memory.h
++++ b/include/exec/memory.h
+@@ -75,14 +75,48 @@ typedef enum {
+     IOMMU_RW   = 3,
+ } IOMMUAccessFlags;
+ 
++/* Granularity of the cache invalidation */
++typedef enum {
++    IOMMU_INV_GRAN_ADDR = 0,
++    IOMMU_INV_GRAN_PASID,
++    IOMMU_INV_GRAN_DOMAIN,
++} IOMMUInvGranularity;
++
+ #define IOMMU_ACCESS_FLAG(r, w) (((r) ? IOMMU_RO : 0) | ((w) ? IOMMU_WO : 0))
+ 
++/**
++ * IOMMUTLBEntry - IOMMU TLB entry
++ *
++ * Structure used when performing a translation or when notifying MAP or
++ * UNMAP (invalidation) events
++ *
++ * @target_as: target address space
++ * @iova: IO virtual address (input)
++ * @translated_addr: translated address (output)
++ * @addr_mask: address mask (0xfff means 4K binding), must be multiple of 2
++ * @perm: permission flag of the mapping (NONE encodes no mapping or
++ * invalidation notification)
++ * @granularity: granularity of the invalidation
++ * @flags: informs whether the following fields are set
++ * @arch_id: architecture specific ID tagging the TLB
++ * @pasid: PASID tagging the TLB
++ * @leaf: when @perm is NONE, indicates whether only caches for the last
++ * level of translation need to be invalidated.
++ */
+ struct IOMMUTLBEntry {
+     AddressSpace    *target_as;
+     hwaddr           iova;
+     hwaddr           translated_addr;
+-    hwaddr           addr_mask;  /* 0xfff = 4k translation */
++    hwaddr           addr_mask;
+     IOMMUAccessFlags perm;
++    IOMMUInvGranularity granularity;
++#define IOMMU_INV_FLAGS_PASID  (1 << 0)
++#define IOMMU_INV_FLAGS_ARCHID (1 << 1)
++#define IOMMU_INV_FLAGS_LEAF   (1 << 2)
++    uint32_t         flags;
++    uint32_t         arch_id;
++    uint32_t         pasid;
++    bool             leaf;
+ };
+ 
+ /*
+diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+index 84d2c62c26..0ba3dca3b8 100644
+--- a/hw/arm/smmu-common.c
++++ b/hw/arm/smmu-common.c
+@@ -471,7 +471,7 @@ IOMMUMemoryRegion *smmu_iommu_mr(SMMUState *s, uint32_t sid)
+ /* Unmap the whole notifier's range */
+ static void smmu_unmap_notifier_range(IOMMUNotifier *n)
+ {
+-    IOMMUTLBEvent event;
++    IOMMUTLBEvent event = {};
+ 
+     event.type = IOMMU_NOTIFIER_UNMAP;
+     event.entry.target_as = &address_space_memory;
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index 3b87324ce2..d037d6df5b 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -801,7 +801,7 @@ static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
+                                uint8_t tg, uint64_t num_pages)
+ {
+     SMMUDevice *sdev = container_of(mr, SMMUDevice, iommu);
+-    IOMMUTLBEvent event;
++    IOMMUTLBEvent event = {};
+     uint8_t granule;
+ 
+     if (!tg) {
+diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
+index 6be8f32918..1c5b43f902 100644
+--- a/hw/i386/intel_iommu.c
++++ b/hw/i386/intel_iommu.c
+@@ -1195,7 +1195,7 @@ static int vtd_page_walk_level(dma_addr_t addr, uint64_t start,
+     uint32_t offset;
+     uint64_t slpte;
+     uint64_t subpage_size, subpage_mask;
+-    IOMMUTLBEvent event;
++    IOMMUTLBEvent event = {};
+     uint64_t iova = start;
+     uint64_t iova_next;
+     int ret = 0;
+@@ -2427,7 +2427,7 @@ static bool vtd_process_device_iotlb_desc(IntelIOMMUState *s,
+                                           VTDInvDesc *inv_desc)
+ {
+     VTDAddressSpace *vtd_dev_as;
+-    IOMMUTLBEvent event;
++    IOMMUTLBEvent event = {};
+     struct VTDBus *vtd_bus;
+     hwaddr addr;
+     uint64_t sz;
+@@ -3483,7 +3483,7 @@ static void vtd_address_space_unmap(VTDAddressSpace *as, IOMMUNotifier *n)
+     size = remain = end - start + 1;
+ 
+     while (remain >= VTD_PAGE_SIZE) {
+-        IOMMUTLBEvent event;
++        IOMMUTLBEvent event = {};
+         uint64_t mask = dma_aligned_pow2_mask(start, end, s->aw_bits);
+         uint64_t size = mask + 1;
+ 
+diff --git a/hw/ppc/spapr_iommu.c b/hw/ppc/spapr_iommu.c
+index 24537ffcbd..1ad3709e34 100644
+--- a/hw/ppc/spapr_iommu.c
++++ b/hw/ppc/spapr_iommu.c
+@@ -450,7 +450,7 @@ static void spapr_tce_reset(DeviceState *dev)
+ static target_ulong put_tce_emu(SpaprTceTable *tcet, target_ulong ioba,
+                                 target_ulong tce)
+ {
+-    IOMMUTLBEvent event;
++    IOMMUTLBEvent event = {};
+     hwaddr page_mask = IOMMU_PAGE_MASK(tcet->page_shift);
+     unsigned long index = (ioba - tcet->bus_offset) >> tcet->page_shift;
+ 
+diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
+index 1b23e8e18c..83ed2b82e6 100644
+--- a/hw/virtio/virtio-iommu.c
++++ b/hw/virtio/virtio-iommu.c
+@@ -129,7 +129,7 @@ static void virtio_iommu_notify_map(IOMMUMemoryRegion *mr, hwaddr virt_start,
+                                     hwaddr virt_end, hwaddr paddr,
+                                     uint32_t flags)
+ {
+-    IOMMUTLBEvent event;
++    IOMMUTLBEvent event = {};
+     IOMMUAccessFlags perm = IOMMU_ACCESS_FLAG(flags & VIRTIO_IOMMU_MAP_F_READ,
+                                               flags & VIRTIO_IOMMU_MAP_F_WRITE);
+ 
+@@ -154,7 +154,7 @@ static void virtio_iommu_notify_map(IOMMUMemoryRegion *mr, hwaddr virt_start,
+ static void virtio_iommu_notify_unmap(IOMMUMemoryRegion *mr, hwaddr virt_start,
+                                       hwaddr virt_end)
+ {
+-    IOMMUTLBEvent event;
++    IOMMUTLBEvent event = {};
+     uint64_t delta = virt_end - virt_start;
+ 
+     if (!(mr->iommu_notify_flags & IOMMU_NOTIFIER_UNMAP)) {
 -- 
 2.26.3
 

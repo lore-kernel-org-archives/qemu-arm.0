@@ -1,87 +1,87 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp3072109lfr;
-        Sun, 11 Apr 2021 05:46:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyAAdjMwFed0lB80Ep9mqvsg/B1dRLDCnzDxk2aaIezZq4QvdNHp1FhZQLv+5m1l15EbDtT
-X-Received: by 2002:a37:385:: with SMTP id 127mr377831qkd.199.1618145163115;
-        Sun, 11 Apr 2021 05:46:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618145163; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp3058044lfr;
+        Sun, 11 Apr 2021 05:19:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwkKh/hSoAEnNFs9Ic9YEHbvz+aF5Cbb8CnkTxaRMnriZYFSlDx+ws4Z8Hmmwz3yl9oNVEZ
+X-Received: by 2002:a5e:9b08:: with SMTP id j8mr1545499iok.128.1618143561594;
+        Sun, 11 Apr 2021 05:19:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618143561; cv=none;
         d=google.com; s=arc-20160816;
-        b=dMa6hg1t+71pR21hSh2bIg1drIS1kfbg6mUBzMfD8/WCtqkS2RsdgNGpXCtaGOdKZY
-         whlK92ooTdv7suMEmnrRwr84O1rBsnpa1NU9pcE6EhZbC1PAdD5GHUXQB5XQ6deB3HUo
-         NjgqIt/DRvsPHPfwXOzP+PtFcg9udcv78k1fi3usAk6IUHw1bkNGY+2EjVwU9mQ1xjWW
-         KM6jAde5iHpApzRFDUlvbtyrrGsQQSDIkNKtNVZPzvwQDrFSoMtB8WhHd/Y56AcwR97V
-         hwlVzG50P79cVqgzGKGemzWprHUgS2gRBPxgAEs7OBYBYEZC0f51zPoFyJGNSHUNbizN
-         k9mQ==
+        b=tTlPdLPUQT23DRK7Rw/H5baI9TD0IN1CXh9n10M34VeDro3GjefYc97O6+5l1eYOwh
+         LQyeRhj/iG7BZbMSc93/fhFTGBzg1ye0h1bfIN0bqYS+SFSqHWx5dAzWs/W2P7YxjDUI
+         ZD9aT7NCVMoiHu76p5zxcG/Ta50sgja6D0I1v4cQpmnEe1pHoCtIC/m48LZ3B9cSA6XA
+         F0UmO/JLVtERUPkOimnyJ7W1YDhGYNPbr9yNfvKlsB9/jbjODnzyOacFy5ERK/kXQ/cM
+         wQwzt5XiHxbFPSUKjDWwxaWKNNu3waNut1Lk8HHRE2UYPfpEEWksEsB+OHz7nQliL3hY
+         WOYA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=cQoVTCy02cIkgXblNeF8iRaLv9T/LbhHnEaAOWVsAB4=;
-        b=VtmYCcNik2AF/4YSKNmDCAchdp748kpLXTIzNnSLaiKFd5LK/g+QdRd/i6YywcT4wp
-         nJaTWTMV5XXNcEGnInOH/nEf5cM+t+tC3gxPow7RBC6hw0tu1j2SfYQxmc1+itD6mo4M
-         KCp8RpEZO8RWEYs9irvsPHaMd03vvZgGQz4ec24K9Rlc0kvy3NPy9ZFrvtGoUVAkRDfd
-         J6f/jMPfjC4/4W1KaRI46DEeoxXLr+eP3NzF8aNUEgb9en6pZ6nuKe+QE/q5hohJedTw
-         NvN0/ysyUWqlSSN3xRmne0b9STBDPvYUaiwmllaykRRjZeIUxgoMkQ7MZ6WRfUD4uyA1
-         nxng==
+        bh=Usj1o9+LH/mQywntpTt9ANnjH2cCumgHVjdCvTPVRPs=;
+        b=IKq/aHjKWDmN1vGmluPqxEZAlGsf9OnIRdGNgog6h73mhat7r+p4r1Bw2MEMFs6GhU
+         OCafIoe2KOHAAAa+XMkwfeikyy6pV7aitv7hi9Nf+P8aCCM72DeLo6TMLbsZCtYhVeGm
+         /l9S7t8utgzcHVJr0TGJWVIwTupyBk9JPPS3llgzEeEscpgznqpW/1p9BRFmEIA8x4EI
+         I4eCMEe2Yw7RC5FKP+NyiF5FuKm1uqwRIIhR0WjhJkLulJTpdhnlQ4cyXm+bJ/DsnAer
+         ExgIGKyveov0O/ttuMfCUpDdeZUafXdeOO30zjPPSPKpT0i207+mSS7luxqhOOfNg8bD
+         yoDQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=e+a3EnW6;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=dM649roo;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j9si6170577qka.222.2021.04.11.05.46.02
+        by mx.google.com with ESMTPS id a2si5923806ili.98.2021.04.11.05.19.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 11 Apr 2021 05:46:03 -0700 (PDT)
+        Sun, 11 Apr 2021 05:19:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=e+a3EnW6;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=dM649roo;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47048 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38426 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lVZTW-0008KF-3C
-	for alex.bennee@linaro.org; Sun, 11 Apr 2021 08:46:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48168)
+	id 1lVZ3g-0006Ku-Qd
+	for alex.bennee@linaro.org; Sun, 11 Apr 2021 08:19:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47498)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lVYz3-0003bj-14
- for qemu-devel@nongnu.org; Sun, 11 Apr 2021 08:14:36 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:49117)
+ id 1lVYwK-0001CP-FN
+ for qemu-devel@nongnu.org; Sun, 11 Apr 2021 08:11:44 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:45716)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lVYyu-0004Cp-02
- for qemu-devel@nongnu.org; Sun, 11 Apr 2021 08:14:28 -0400
+ id 1lVYwI-00032a-HR
+ for qemu-devel@nongnu.org; Sun, 11 Apr 2021 08:11:44 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1618143259;
+ s=mimecast20190719; t=1618143098;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=cQoVTCy02cIkgXblNeF8iRaLv9T/LbhHnEaAOWVsAB4=;
- b=e+a3EnW6+TOU5kU+h1pzXu2ngAPHhWZrPSBFp4lhzazm0v03u1/aylh46kLiiYnzl4KIh+
- c0W64J2Y+hh0Pcf2LOTv/ocUeEsNzEVh7GhUfVSHkNPx6XjEyF12Yfvurpnwb3cQwIkK24
- fBPr5hlu9H7BmY6nHnNWWzZzTyAZt8Q=
+ bh=Usj1o9+LH/mQywntpTt9ANnjH2cCumgHVjdCvTPVRPs=;
+ b=dM649roos1iJPto4XDnjvYyqynRlrkitqGIyFJ7bZ9HTNE20Lh8iutO7+u8mH8wJ5OyvE5
+ ivLpuEGDMoJl7Pz9MEoYVe0L1p8su/3uaQwVDELeMgkbUi/GW+WJ647zoH4r8uyRqMA0Zc
+ zglFYAN7UQQ8xuB0tlUppQgqOWX2RJw=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-558-S_vqlPSoMrCrhfuh81LoGw-1; Sun, 11 Apr 2021 08:14:15 -0400
-X-MC-Unique: S_vqlPSoMrCrhfuh81LoGw-1
+ us-mta-552-KMiwLIm3OQi9D-YXWyX4ag-1; Sun, 11 Apr 2021 08:11:36 -0400
+X-MC-Unique: KMiwLIm3OQi9D-YXWyX4ag-1
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
  [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E09F9817469;
- Sun, 11 Apr 2021 12:14:13 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3102780D69E;
+ Sun, 11 Apr 2021 12:11:34 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-112-22.ams2.redhat.com [10.36.112.22])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 92AE510023B2;
- Sun, 11 Apr 2021 12:14:01 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id C526810023B2;
+ Sun, 11 Apr 2021 12:11:25 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, alex.williamson@redhat.com
-Subject: [RFC v9 25/29] hw/arm/smmuv3: Pass stage 1 configurations to the host
-Date: Sun, 11 Apr 2021 14:09:08 +0200
-Message-Id: <20210411120912.15770-26-eric.auger@redhat.com>
+Subject: [RFC v9 11/29] pci: introduce PCIPASIDOps to PCIDevice
+Date: Sun, 11 Apr 2021 14:08:54 +0200
+Message-Id: <20210411120912.15770-12-eric.auger@redhat.com>
 In-Reply-To: <20210411120912.15770-1-eric.auger@redhat.com>
 References: <20210411120912.15770-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -121,183 +121,128 @@ Cc: peter.maydell@linaro.org, jacob.jun.pan@linux.intel.com,
  yuzenghui@huawei.com, zhukeqian1@huawei.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: P/r4Hb5Ut0ZC
+X-TUID: LKflG7A8QC5I
 
-In case PASID PciOps are set for the device we call
-the set_pasid_table() callback on each STE update.
+From: Liu Yi L <yi.l.liu@intel.com>
 
-This allows to pass the guest stage 1 configuration
-to the host and apply it at physical level.
+This patch introduces PCIPASIDOps for IOMMU related operations.
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
+https://lists.gnu.org/archive/html/qemu-devel/2018-03/msg00078.html
+https://lists.gnu.org/archive/html/qemu-devel/2018-03/msg00940.html
 
+So far, to setup virt-SVA for assigned SVA capable device, needs to
+configure host translation structures for specific pasid. (e.g. bind
+guest page table to host and enable nested translation in host).
+Besides, vIOMMU emulator needs to forward guest's cache invalidation
+to host since host nested translation is enabled. e.g. on VT-d, guest
+owns 1st level translation table, thus cache invalidation for 1st
+level should be propagated to host.
+
+This patch adds two functions: alloc_pasid and free_pasid to support
+guest pasid allocation and free. The implementations of the callbacks
+would be device passthru modules. Like vfio.
+
+Cc: Kevin Tian <kevin.tian@intel.com>
+Cc: Jacob Pan <jacob.jun.pan@linux.intel.com>
+Cc: Peter Xu <peterx@redhat.com>
+Cc: Eric Auger <eric.auger@redhat.com>
+Cc: Yi Sun <yi.y.sun@linux.intel.com>
+Cc: David Gibson <david@gibson.dropbear.id.au>
+Signed-off-by: Liu Yi L <yi.l.liu@intel.com>
+Signed-off-by: Yi Sun <yi.y.sun@linux.intel.com>
 ---
+ include/hw/pci/pci.h | 11 +++++++++++
+ hw/pci/pci.c         | 34 ++++++++++++++++++++++++++++++++++
+ 2 files changed, 45 insertions(+)
 
-v4 -> v5:
-- Use PciOps instead of config notifiers
-
-v3 -> v4:
-- fix compile issue with mingw
-
-v2 -> v3:
-- adapt to pasid_cfg field changes. Use local variable
-- add trace event
-- set version fields
-- use CONFIG_PASID
-
-v1 -> v2:
-- do not notify anymore on CD change. Anyway the smmuv3 linux
-  driver is not sending any CD invalidation commands. If we were
-  to propagate CD invalidation commands, we would use the
-  CACHE_INVALIDATE VFIO ioctl.
-- notify a precise config flags to prepare for addition of new
-  flags
----
- hw/arm/smmu-internal.h |  1 +
- hw/arm/smmuv3.c        | 72 ++++++++++++++++++++++++++++++++++++------
- hw/arm/trace-events    |  1 +
- 3 files changed, 64 insertions(+), 10 deletions(-)
-
-diff --git a/hw/arm/smmu-internal.h b/hw/arm/smmu-internal.h
-index 2d75b31953..5ef8c598c6 100644
---- a/hw/arm/smmu-internal.h
-+++ b/hw/arm/smmu-internal.h
-@@ -105,6 +105,7 @@ typedef struct SMMUIOTLBPageInvInfo {
- } SMMUIOTLBPageInvInfo;
+diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
+index 6be4e0c460..1f73c04975 100644
+--- a/include/hw/pci/pci.h
++++ b/include/hw/pci/pci.h
+@@ -9,6 +9,7 @@
  
- typedef struct SMMUSIDRange {
-+    SMMUState *state;
-     uint32_t start;
-     uint32_t end;
- } SMMUSIDRange;
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 74a6408146..aefc55a607 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -16,6 +16,10 @@
-  * with this program; if not, see <http://www.gnu.org/licenses/>.
-  */
+ #include "hw/pci/pcie.h"
+ #include "qom/object.h"
++#include "hw/iommu/iommu.h"
  
-+#ifdef __linux__
-+#include "linux/iommu.h"
-+#endif
+ extern bool pci_available;
+ 
+@@ -265,6 +266,11 @@ struct PCIReqIDCache {
+ };
+ typedef struct PCIReqIDCache PCIReqIDCache;
+ 
++struct PCIPASIDOps {
++    int (*set_pasid_table)(PCIBus *bus, int32_t devfn, IOMMUConfig *config);
++};
++typedef struct PCIPASIDOps PCIPASIDOps;
 +
- #include "qemu/osdep.h"
- #include "qemu/bitops.h"
- #include "hw/irq.h"
-@@ -925,6 +929,61 @@ static void smmuv3_s1_range_inval(SMMUState *s, Cmd *cmd)
-     }
+ struct PCIDevice {
+     DeviceState qdev;
+     bool partially_hotplugged;
+@@ -360,6 +366,7 @@ struct PCIDevice {
+     /* ID of standby device in net_failover pair */
+     char *failover_pair_id;
+     uint32_t acpi_index;
++    PCIPASIDOps *pasid_ops;
+ };
+ 
+ void pci_register_bar(PCIDevice *pci_dev, int region_num,
+@@ -491,6 +498,10 @@ typedef AddressSpace *(*PCIIOMMUFunc)(PCIBus *, void *, int);
+ AddressSpace *pci_device_iommu_address_space(PCIDevice *dev);
+ void pci_setup_iommu(PCIBus *bus, PCIIOMMUFunc fn, void *opaque);
+ 
++void pci_setup_pasid_ops(PCIDevice *dev, PCIPASIDOps *ops);
++bool pci_device_is_pasid_ops_set(PCIBus *bus, int32_t devfn);
++int pci_device_set_pasid_table(PCIBus *bus, int32_t devfn, IOMMUConfig *config);
++
+ static inline void
+ pci_set_byte(uint8_t *config, uint8_t val)
+ {
+diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+index 8f35e13a0c..114855a0ac 100644
+--- a/hw/pci/pci.c
++++ b/hw/pci/pci.c
+@@ -2731,6 +2731,40 @@ void pci_setup_iommu(PCIBus *bus, PCIIOMMUFunc fn, void *opaque)
+     bus->iommu_opaque = opaque;
  }
  
-+static void smmuv3_notify_config_change(SMMUState *bs, uint32_t sid)
++void pci_setup_pasid_ops(PCIDevice *dev, PCIPASIDOps *ops)
 +{
-+#ifdef __linux__
-+    IOMMUMemoryRegion *mr = smmu_iommu_mr(bs, sid);
-+    SMMUEventInfo event = {.type = SMMU_EVT_NONE, .sid = sid,
-+                           .inval_ste_allowed = true};
-+    IOMMUConfig iommu_config = {};
-+    SMMUTransCfg *cfg;
-+    SMMUDevice *sdev;
-+
-+    if (!mr) {
-+        return;
-+    }
-+
-+    sdev = container_of(mr, SMMUDevice, iommu);
-+
-+    /* flush QEMU config cache */
-+    smmuv3_flush_config(sdev);
-+
-+    if (!pci_device_is_pasid_ops_set(sdev->bus, sdev->devfn)) {
-+        return;
-+    }
-+
-+    cfg = smmuv3_get_config(sdev, &event);
-+
-+    if (!cfg) {
-+        return;
-+    }
-+
-+    iommu_config.pasid_cfg.argsz = sizeof(struct iommu_pasid_table_config);
-+    iommu_config.pasid_cfg.version = PASID_TABLE_CFG_VERSION_1;
-+    iommu_config.pasid_cfg.format = IOMMU_PASID_FORMAT_SMMUV3;
-+    iommu_config.pasid_cfg.base_ptr = cfg->s1ctxptr;
-+    iommu_config.pasid_cfg.pasid_bits = 0;
-+    iommu_config.pasid_cfg.vendor_data.smmuv3.version = PASID_TABLE_SMMUV3_CFG_VERSION_1;
-+
-+    if (cfg->disabled || cfg->bypassed) {
-+        iommu_config.pasid_cfg.config = IOMMU_PASID_CONFIG_BYPASS;
-+    } else if (cfg->aborted) {
-+        iommu_config.pasid_cfg.config = IOMMU_PASID_CONFIG_ABORT;
-+    } else {
-+        iommu_config.pasid_cfg.config = IOMMU_PASID_CONFIG_TRANSLATE;
-+    }
-+
-+    trace_smmuv3_notify_config_change(mr->parent_obj.name,
-+                                      iommu_config.pasid_cfg.config,
-+                                      iommu_config.pasid_cfg.base_ptr);
-+
-+    if (pci_device_set_pasid_table(sdev->bus, sdev->devfn, &iommu_config)) {
-+        error_report("Failed to pass PASID table to host for iommu mr %s (%m)",
-+                     mr->parent_obj.name);
-+    }
-+#endif
++    assert(ops && !dev->pasid_ops);
++    dev->pasid_ops = ops;
 +}
 +
- static gboolean
- smmuv3_invalidate_ste(gpointer key, gpointer value, gpointer user_data)
++bool pci_device_is_pasid_ops_set(PCIBus *bus, int32_t devfn)
++{
++    PCIDevice *dev;
++
++    if (!bus) {
++        return false;
++    }
++
++    dev = bus->devices[devfn];
++    return !!(dev && dev->pasid_ops);
++}
++
++int pci_device_set_pasid_table(PCIBus *bus, int32_t devfn,
++                               IOMMUConfig *config)
++{
++    PCIDevice *dev;
++
++    if (!bus) {
++        return -EINVAL;
++    }
++
++    dev = bus->devices[devfn];
++    if (dev && dev->pasid_ops && dev->pasid_ops->set_pasid_table) {
++        return dev->pasid_ops->set_pasid_table(bus, devfn, config);
++    }
++    return -ENOENT;
++}
++
+ static void pci_dev_get_w64(PCIBus *b, PCIDevice *dev, void *opaque)
  {
-@@ -935,6 +994,7 @@ smmuv3_invalidate_ste(gpointer key, gpointer value, gpointer user_data)
-     if (sid < sid_range->start || sid > sid_range->end) {
-         return false;
-     }
-+    smmuv3_notify_config_change(sid_range->state, sid);
-     trace_smmuv3_config_cache_inv(sid);
-     return true;
- }
-@@ -1005,22 +1065,14 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
-         case SMMU_CMD_CFGI_STE:
-         {
-             uint32_t sid = CMD_SID(&cmd);
--            IOMMUMemoryRegion *mr = smmu_iommu_mr(bs, sid);
--            SMMUDevice *sdev;
- 
-             if (CMD_SSEC(&cmd)) {
-                 cmd_error = SMMU_CERROR_ILL;
-                 break;
-             }
- 
--            if (!mr) {
--                break;
--            }
--
-             trace_smmuv3_cmdq_cfgi_ste(sid);
--            sdev = container_of(mr, SMMUDevice, iommu);
--            smmuv3_flush_config(sdev);
--
-+            smmuv3_notify_config_change(bs, sid);
-             break;
-         }
-         case SMMU_CMD_CFGI_STE_RANGE: /* same as SMMU_CMD_CFGI_ALL */
-@@ -1028,7 +1080,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
-             uint32_t start = CMD_SID(&cmd);
-             uint8_t range = CMD_STE_RANGE(&cmd);
-             uint64_t end = start + (1ULL << (range + 1)) - 1;
--            SMMUSIDRange sid_range = {start, end};
-+            SMMUSIDRange sid_range = {bs, start, end};
- 
-             if (CMD_SSEC(&cmd)) {
-                 cmd_error = SMMU_CERROR_ILL;
-diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-index 8e530ba79d..b0b0030d24 100644
---- a/hw/arm/trace-events
-+++ b/hw/arm/trace-events
-@@ -53,4 +53,5 @@ smmuv3_config_cache_inv(uint32_t sid) "Config cache INV for sid=0x%x"
- smmuv3_notify_flag_add(const char *iommu) "ADD SMMUNotifier node for iommu mr=%s"
- smmuv3_notify_flag_del(const char *iommu) "DEL SMMUNotifier node for iommu mr=%s"
- smmuv3_inv_notifiers_iova(const char *name, uint16_t asid, uint64_t iova, uint8_t tg, uint64_t num_pages) "iommu mr=%s asid=%d iova=0x%"PRIx64" tg=%d num_pages=0x%"PRIx64
-+smmuv3_notify_config_change(const char *name, uint8_t config, uint64_t s1ctxptr) "iommu mr=%s config=%d s1ctxptr=0x%"PRIx64
- 
+     Range *range = opaque;
 -- 
 2.26.3
 

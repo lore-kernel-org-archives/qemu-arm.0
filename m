@@ -1,109 +1,94 @@
-Received: by 2002:a05:6214:9cd:0:0:0:0 with SMTP id dp13csp2097232qvb;
-        Mon, 12 Apr 2021 06:45:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJypNBaNGGe9ziSVIujihX9HJyqy8t1bro6Ufp5HKWk/wM+H3fCZHLATus4+YEdAcoxbOcTK
-X-Received: by 2002:a05:6e02:1488:: with SMTP id n8mr9241923ilk.158.1618235102888;
-        Mon, 12 Apr 2021 06:45:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618235102; cv=none;
+Received: by 2002:a05:6214:9cd:0:0:0:0 with SMTP id dp13csp2098557qvb;
+        Mon, 12 Apr 2021 06:46:29 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzJs1rQZHwdg0oRvp7K07bqx7COeJwh8kpYrmYJKHz1y/KEdKWqqfSOLZqPULHcrNZv/GcO
+X-Received: by 2002:a92:740c:: with SMTP id p12mr22896710ilc.68.1618235189480;
+        Mon, 12 Apr 2021 06:46:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618235189; cv=none;
         d=google.com; s=arc-20160816;
-        b=y6IQYkVk/OMcpqj6hl9UKGXFhiP5X7W9QNvTBUOIg2o+iF6Ovg0W1sM5ZVc1YwjX8f
-         YshK7oeWcdIblDebh31cmQ9ozWlzmO/DHkj7iQCCVt2SMecFX/Gpbd+Ppc4fNML7JywL
-         DaUspZ0u+1m5i48CfgJw84Ft8Fj3qfkmTTib6XFswY4XlD5x/1+AcA86M4bXAluGK1tk
-         vXSldqc6ropTUJoBRQPkvfO5z3m+bMG/rrcLxSAncJAADRiKKj0Nxm5/SebHqFbQ2PjP
-         3EB5ucrsQvT9zJfKwhP99eCv2iruaiJ/QMWEDUmRy2wF49dmm3oaSTgt660Tw3qRQvGa
-         0SrA==
+        b=DL5ucApQ4H88rOPVTl+sWU08HwmP6e3wckvijkM/KGu6CDkl34UwKa+IlZ8wrHb7cP
+         XjlZ+zrONf3ZrDPpTw5R5gR6VT6dePihDPIfK6J+FmF+fWyAres6rVXmwV+4KQAauQO7
+         zb2C+sfpuRW/EVlmmLgQ++ok/dYybzUgTaL94vb3ffMK1jhbTyYAciCCtypcouEu7c6g
+         iFh+7lAJI9JV2Y7IGgV5EjumtMyh3evZGadP29xa/TghzUYjxRq7kQhiHiC/CcxBgnRV
+         feF3ZG1nwBayEoRlB9zDm8dIawVft2UZa5GrxVEP8yy65c1SvSZiGzf31as1+GRDeIuA
+         3S0g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=wq0OT0PY2a3GAqSAuPZbj6T1qul6+1IC1OKz3Ec1t68=;
-        b=PXK8w1gIjsbzNYghMzRs9tIotY7SewZX9dDCHZ5VnxLLO+++IxvjA4fuzQ1XavjiTF
-         B+Y+ITQB11AvfpY0PcRlzO/RODecpzuxu588HPvdLL74v0fv7s6xDg5MOQX21Mu8+1h6
-         aSvUeCxk0YD2BEsYG8NJlYDq8mrgMHRB3H/MHtWq1NAa1y9rb95C7sRpvDrlywlH4dZq
-         ieb/9rzMxKAoXrUfpt2kQkniCLMB/neUeWE2pfimQpgz2PaUIw8+vJxTn31fIdS4czfz
-         DqOQuJLWNuyKAg9/+PD/QfaQUai9Dj7rMW/tyR0ueVRhs1qX34GdZSdqNIs2aNhVaMtc
-         KpWQ==
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=H2DnHIVpjQAr0mLztlqE5MjbLp1elUm8Qx1KRM4piV0=;
+        b=JxrrGQbWs3aXnqu13x17V7dcR97zRuLrWCusrCSKIRO9lY4xb+8JhDUJnJOBEljzDQ
+         zRXoUfiY5H8JfFuZOaGEdaNVuMR46dY0uRKOebP+/7oNLJXbLY9KoevIUxCEClcTN0gy
+         JnX7k/SHO0B45OmSf7ENz1fMXaGiuxfRSDshZmIOq9tbLXcDoH3Mq5dPCvk31sOO4Avw
+         tHV9yCRuo1hsTRn2f7ZlZsCEWPpBuwSIrTxfikQ1m+DjyByl6O9Rdlrlu4e+APqeedw6
+         1Vx7a3qSAmJKtESnIhOCIzFir9M7qEL2yIXvoHh/X4o1hYYTRcderTof5qwbELCJ2Z2h
+         CAsw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FdvJnUOt;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u5si12048157ill.119.2021.04.12.06.45.02
+        by mx.google.com with ESMTPS id a5si10285357ilv.74.2021.04.12.06.46.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Apr 2021 06:45:02 -0700 (PDT)
+        Mon, 12 Apr 2021 06:46:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FdvJnUOt;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45892 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Received: from localhost ([::1]:47220 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lVwsA-0006tR-8Q
-	for alex.bennee@linaro.org; Mon, 12 Apr 2021 09:45:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58574)
+	id 1lVwtY-0007Z3-U0
+	for alex.bennee@linaro.org; Mon, 12 Apr 2021 09:46:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59242)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lVwqc-0004MQ-8m
- for qemu-arm@nongnu.org; Mon, 12 Apr 2021 09:43:26 -0400
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434]:40698)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lVwqY-0003Np-S4
- for qemu-arm@nongnu.org; Mon, 12 Apr 2021 09:43:26 -0400
-Received: by mail-wr1-x434.google.com with SMTP id 12so13007494wrz.7
- for <qemu-arm@nongnu.org>; Mon, 12 Apr 2021 06:43:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=wq0OT0PY2a3GAqSAuPZbj6T1qul6+1IC1OKz3Ec1t68=;
- b=FdvJnUOt41BmJASNa0XdL8SJcOdHPJwf0l96LYc/Y4/LP0w49SW+lSffJl2eyFIN+A
- DtmS/gx4DV3/Sl3u6qaBnmE6KQ/FsLUt5fSk1U68fFLPx6li8o+D8wPhDNT0XAjDav7b
- Gy5a8X2RURDh/ezoNBazYqyy+iWrO9wzmsvdI2ilqvulpXnJ+NUMjvQXXUdzKbptbFw7
- d4HDAT3nBQYdtO6WCWH6yLTIzMYBWADZhhP3aW80h14MFrIpAFVJ9HQ0dUTX43bJGNoF
- grZ5hRWNUjcW6vB3Uy4Eshq2sb7++iJfpZ6xHgNqhN3ShGGQ/nJ8656X+8JilneqGAOm
- U48A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=wq0OT0PY2a3GAqSAuPZbj6T1qul6+1IC1OKz3Ec1t68=;
- b=Y0WUnTRtElpm/Cn3lKcIokdmUruC0bPwZ+r9OEWJ9t4r6zLLmAbd0LE/qMdq3RM1KE
- 8bq8kc60QC6hu1ULdrWtPWyJabA8fQve0ie+gqu/K4rRO9tRISln4PHco5Gp18sCS7oU
- bZlZkAjYl5qfDPJ6MldcWddlIAI49aNiqOgT7DKdfetSRNewrKNdZNI98XsX/NYHnsqB
- 2Y3hdMsesC6v+qoUJ9gGXfUtXTywEro1KoMzoAlA452CoWUlJXpz/DP/e66jUkrr2hs/
- qtTF2kox4B7CrNjT8R05GrLXCQz30l86LM5sww14AKQdMJXzTJcJoCyRo5oAqBgcofkt
- h+BA==
-X-Gm-Message-State: AOAM531GKMbBsIcvmaZXBCO21LL0V5Sy4HxyAses6E7qGxGMY9Xs8rzN
- 3N5iY6bmPKn40tyK/uVjW+RCL4KCflJRNACj
-X-Received: by 2002:a05:6000:1a8a:: with SMTP id
- f10mr31054900wry.232.1618235001546; 
- Mon, 12 Apr 2021 06:43:21 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id p16sm19574680wrt.54.2021.04.12.06.43.20
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Apr 2021 06:43:21 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 2/3] hw/misc/mps2-scc: Support using CFG0 bit 0 for remapping
-Date: Mon, 12 Apr 2021 14:43:16 +0100
-Message-Id: <20210412134317.12501-3-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210412134317.12501-1-peter.maydell@linaro.org>
-References: <20210412134317.12501-1-peter.maydell@linaro.org>
+ (Exim 4.90_1) (envelope-from <jiangkunkun@huawei.com>)
+ id 1lVwtA-0007XX-Nk; Mon, 12 Apr 2021 09:46:04 -0400
+Received: from szxga03-in.huawei.com ([45.249.212.189]:2199)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jiangkunkun@huawei.com>)
+ id 1lVwt3-0004lJ-5f; Mon, 12 Apr 2021 09:46:02 -0400
+Received: from DGGEML403-HUB.china.huawei.com (unknown [172.30.72.55])
+ by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4FJqgT6z7lz5ptB;
+ Mon, 12 Apr 2021 21:43:01 +0800 (CST)
+Received: from dggema765-chm.china.huawei.com (10.1.198.207) by
+ DGGEML403-HUB.china.huawei.com (10.3.17.33) with Microsoft SMTP Server (TLS)
+ id 14.3.498.0; Mon, 12 Apr 2021 21:45:52 +0800
+Received: from [10.174.185.210] (10.174.185.210) by
+ dggema765-chm.china.huawei.com (10.1.198.207) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.2106.2; Mon, 12 Apr 2021 21:45:52 +0800
+Subject: Re: [RFC PATCH 2/3] vfio: Add vfio_prereg_listener_log_sync in nested
+ stage
+To: Auger Eric <eric.auger@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Alex Williamson <alex.williamson@redhat.com>,
+ "open list:ARM SMMU" <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
+References: <20210219094230.231-1-jiangkunkun@huawei.com>
+ <20210219094230.231-3-jiangkunkun@huawei.com>
+ <c6ee5401-ccb6-1259-f7db-c3f97ff39256@redhat.com>
+From: Kunkun Jiang <jiangkunkun@huawei.com>
+Message-ID: <89bef82f-7ec4-63ea-f0c0-95b45d425c83@huawei.com>
+Date: Mon, 12 Apr 2021 21:45:51 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x434.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+In-Reply-To: <c6ee5401-ccb6-1259-f7db-c3f97ff39256@redhat.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+X-Originating-IP: [10.174.185.210]
+X-ClientProxiedBy: dggeme705-chm.china.huawei.com (10.1.199.101) To
+ dggema765-chm.china.huawei.com (10.1.198.207)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.189;
+ envelope-from=jiangkunkun@huawei.com; helo=szxga03-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -117,108 +102,101 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Kumar Gala <kumar.gala@linaro.org>,
- Kevin Townsend <kevin.townsend@linaro.org>
+Cc: Zenghui Yu <yuzenghui@huawei.com>, wanghaibin.wang@huawei.com, Keqian
+ Zhu <zhukeqian1@huawei.com>, shameerali.kolothum.thodi@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aj7Af9F1HG2s
+X-TUID: BxJi8G8FM3I8
 
-On some boards, SCC config register CFG0 bit 0 controls whether
-parts of the board memory map are remapped. Support this with:
- * a device property scc-cfg0 so the board can specify the
-   initial value of the CFG0 register
- * an outbound GPIO line which tracks bit 0 and which the board
-   can wire up to provide the remapping
+Hi Eric,
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- include/hw/misc/mps2-scc.h |  9 +++++++++
- hw/misc/mps2-scc.c         | 13 ++++++++++---
- 2 files changed, 19 insertions(+), 3 deletions(-)
+On 2021/4/8 21:56, Auger Eric wrote:
+> Hi Kunkun,
+>
+> On 2/19/21 10:42 AM, Kunkun Jiang wrote:
+>> On Intel, the DMA mapped through the host single stage. Instead
+>> we set up the stage 2 and stage 1 separately in nested mode as there
+>> is no "Caching Mode".
+> You need to rewrite the above sentences, Missing ARM and also the 1st
+> sentences misses a verb.
+Thanks for your review! I will fix it in the next version.
+>> Legacy vfio_listener_log_sync cannot be used in nested stage as we
+>> don't need to pay close attention to stage 1 mapping. This patch adds
+>> vfio_prereg_listener_log_sync to mark dirty pages in nested mode.
+>>
+>> Signed-off-by: Kunkun Jiang <jiangkunkun@huawei.com>
+>> ---
+>>   hw/vfio/common.c | 25 +++++++++++++++++++++++++
+>>   1 file changed, 25 insertions(+)
+>>
+>> diff --git a/hw/vfio/common.c b/hw/vfio/common.c
+>> index 7c50905856..af333e0dee 100644
+>> --- a/hw/vfio/common.c
+>> +++ b/hw/vfio/common.c
+>> @@ -1216,6 +1216,22 @@ static int vfio_dma_sync_ram_section_dirty_bitmap(VFIOContainer *container,
+>>                          int128_get64(section->size), ram_addr);
+>>   }
+>>   
+>> +static void vfio_prereg_listener_log_sync(MemoryListener *listener,
+>> +                                          MemoryRegionSection *section)
+>> +{
+>> +    VFIOContainer *container =
+>> +        container_of(listener, VFIOContainer, prereg_listener);
+>> +
+>> +    if (!memory_region_is_ram(section->mr) ||
+>> +        !container->dirty_pages_supported) {
+>> +        return;
+>> +    }
+>> +
+>> +    if (vfio_devices_all_saving(container)) {
+> I fail to see where is this defined?
+Keqian modified vfio_devices_all_saving to vfio_devices_all_dirty_tracking
+in 758b96b61d5.
 
-diff --git a/include/hw/misc/mps2-scc.h b/include/hw/misc/mps2-scc.h
-index ea261ea30d6..3b2d13ac9c3 100644
---- a/include/hw/misc/mps2-scc.h
-+++ b/include/hw/misc/mps2-scc.h
-@@ -18,8 +18,14 @@
-  *  + QOM property "scc-cfg4": value of the read-only CFG4 register
-  *  + QOM property "scc-aid": value of the read-only SCC_AID register
-  *  + QOM property "scc-id": value of the read-only SCC_ID register
-+ *  + QOM property "scc-cfg0": reset value of the CFG0 register
-  *  + QOM property array "oscclk": reset values of the OSCCLK registers
-  *    (which are accessed via the SYS_CFG channel provided by this device)
-+ *  + named GPIO output "remap": this tracks the value of CFG0 register
-+ *    bit 0. Boards where this bit controls memory remapping should
-+ *    connect this GPIO line to a function performing that mapping.
-+ *    Boards where bit 0 has no special function should leave the GPIO
-+ *    output disconnected.
-  */
- #ifndef MPS2_SCC_H
- #define MPS2_SCC_H
-@@ -55,6 +61,9 @@ struct MPS2SCC {
-     uint32_t num_oscclk;
-     uint32_t *oscclk;
-     uint32_t *oscclk_reset;
-+    uint32_t cfg0_reset;
-+
-+    qemu_irq remap;
- };
- 
- #endif
-diff --git a/hw/misc/mps2-scc.c b/hw/misc/mps2-scc.c
-index c56aca86ad5..b3b42a792cd 100644
---- a/hw/misc/mps2-scc.c
-+++ b/hw/misc/mps2-scc.c
-@@ -23,6 +23,7 @@
- #include "qemu/bitops.h"
- #include "trace.h"
- #include "hw/sysbus.h"
-+#include "hw/irq.h"
- #include "migration/vmstate.h"
- #include "hw/registerfields.h"
- #include "hw/misc/mps2-scc.h"
-@@ -186,10 +187,13 @@ static void mps2_scc_write(void *opaque, hwaddr offset, uint64_t value,
-     switch (offset) {
-     case A_CFG0:
-         /*
--         * TODO on some boards bit 0 controls RAM remapping;
--         * on others bit 1 is CPU_WAIT.
-+         * On some boards bit 0 controls board-specific remapping;
-+         * we always reflect bit 0 in the 'remap' GPIO output line,
-+         * and let the board wire it up or not as it chooses.
-+         * TODO on some boards bit 1 is CPU_WAIT.
-          */
-         s->cfg0 = value;
-+        qemu_set_irq(s->remap, s->cfg0 & 1);
-         break;
-     case A_CFG1:
-         s->cfg1 = value;
-@@ -283,7 +287,7 @@ static void mps2_scc_reset(DeviceState *dev)
-     int i;
- 
-     trace_mps2_scc_reset();
--    s->cfg0 = 0;
-+    s->cfg0 = s->cfg0_reset;
-     s->cfg1 = 0;
-     s->cfg2 = 0;
-     s->cfg5 = 0;
-@@ -308,6 +312,7 @@ static void mps2_scc_init(Object *obj)
- 
-     memory_region_init_io(&s->iomem, obj, &mps2_scc_ops, s, "mps2-scc", 0x1000);
-     sysbus_init_mmio(sbd, &s->iomem);
-+    qdev_init_gpio_out_named(DEVICE(obj), &s->remap, "remap", 1);
- }
- 
- static void mps2_scc_realize(DeviceState *dev, Error **errp)
-@@ -353,6 +358,8 @@ static Property mps2_scc_properties[] = {
-     DEFINE_PROP_UINT32("scc-cfg4", MPS2SCC, cfg4, 0),
-     DEFINE_PROP_UINT32("scc-aid", MPS2SCC, aid, 0),
-     DEFINE_PROP_UINT32("scc-id", MPS2SCC, id, 0),
-+    /* Reset value for CFG0 register */
-+    DEFINE_PROP_UINT32("scc-cfg0", MPS2SCC, cfg0_reset, 0),
-     /*
-      * These are the initial settings for the source clocks on the board.
-      * In hardware they can be configured via a config file read by the
--- 
-2.20.1
+When I posted this series patches, it was vfio_devices_all_saving. In 
+v2[1], I
+have updated it based on the lasted qemu.
+
+[1] 
+https://lore.kernel.org/qemu-devel/20210331101259.2153-3-jiangkunkun@huawei.com/
+
+Thanks,
+Kunkun Jiang
+>> +        vfio_dma_sync_ram_section_dirty_bitmap(container, section);
+>> +    }
+>> +}
+>> +
+>>   typedef struct {
+>>       IOMMUNotifier n;
+>>       VFIOGuestIOMMU *giommu;
+>> @@ -1260,6 +1276,14 @@ static int vfio_sync_dirty_bitmap(VFIOContainer *container,
+>>       if (memory_region_is_iommu(section->mr)) {
+>>           VFIOGuestIOMMU *giommu;
+>>   
+>> +        /*
+>> +         * In nested mode, stage 2 and stage 1 are set up separately. We
+>> +         * only need to focus on stage 2 mapping when marking dirty pages.
+>> +         */
+>> +        if (container->iommu_type == VFIO_TYPE1_NESTING_IOMMU) {
+>> +            return 0;
+>> +        }
+>> +
+>>           QLIST_FOREACH(giommu, &container->giommu_list, giommu_next) {
+>>               if (MEMORY_REGION(giommu->iommu) == section->mr &&
+>>                   giommu->n.start == section->offset_within_region) {
+>> @@ -1312,6 +1336,7 @@ static const MemoryListener vfio_memory_listener = {
+>>   static MemoryListener vfio_memory_prereg_listener = {
+>>       .region_add = vfio_prereg_listener_region_add,
+>>       .region_del = vfio_prereg_listener_region_del,
+>> +    .log_sync = vfio_prereg_listener_log_sync,
+>>   };
+>>   
+>>   static void vfio_listener_release(VFIOContainer *container)
+>>
+> Thanks
+>
+> Eric
+>
+> .
+
 

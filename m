@@ -1,114 +1,110 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp4206305lfr;
-        Mon, 12 Apr 2021 12:48:29 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxKuVh/ZczFXFuHB/QkUyRo9zxkxAwl//Myq4mUMBz/hIP3J6MkynRF2Zi7R2N3zxXSA3IO
-X-Received: by 2002:a05:6e02:1b01:: with SMTP id i1mr6583506ilv.280.1618256909638;
-        Mon, 12 Apr 2021 12:48:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618256909; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp4206539lfr;
+        Mon, 12 Apr 2021 12:48:46 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxtQ6q8XpYdl9dOJnX1f2YKD/E6bN1hQkowM/QmKuxhoBQhIRxZ6IYxCYNKxaNBKTnO+9lY
+X-Received: by 2002:a05:6e02:20ef:: with SMTP id q15mr20187054ilv.167.1618256926307;
+        Mon, 12 Apr 2021 12:48:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618256926; cv=none;
         d=google.com; s=arc-20160816;
-        b=GU8y9c2AKZMbGhFAh9ej6DWhVKmmTqsV7xHylRJ7Sy1n/Bh/qoLJ0JdC/ZzmXtJ4eS
-         ZcdG6XeUP3klj6K0N8gDuh25nQeeZdkkZJ/4J3tYnSmqqTo3JvhJNAGbBOx4OgXw19IZ
-         faupYVkCVvzx/tcLLExW0JmabcMiA7PdDk/61h285426hG23AJeQRxTuBOTtxX574tvK
-         PNqjqUFO8qgszqnvOG/VfP8/RS2TP2QLG/TccYFo+bTyRK4QRSm4AQ8HlJ9v29ekgF4T
-         HEcX6z3SriNSgc7tKMd+d+o1ljTJjHMVUvRbprBy5rSnumotV/VfmXUfCMDqcKw5y1jL
-         PfdQ==
+        b=F0AH7MHvEYeD3PkfhriDjcUx7o5nrr5NOyf4lUUaziLkejZFmP7tUyw7OPGFO+efhx
+         nG5ycWJTlxmFGIJFh1iZsH3XHgRxQQiES62GwfZmJUMSmMp/cqaDRR9g8JslRYkY2le/
+         R0MEIFtZYxhAzwuUYsM/5nhc/56N/3Lb8g3yH+kGIMNBf6diA3hpd+xKWBkPOGgVjeNY
+         3tqdxk9Iz4C0Bdx7d7tazdw4/dEnCSQFBCvi+LxQM+BcAxrfIgu794QmzhH/pmjLLZrb
+         u8J/UqIbkAdDMu/UPeA+qatQOuDn9n2OPmUOHDM08YNhKuSKTNRjzkplaTiRZ0/II0nd
+         4Weg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :from:subject:references:mime-version:message-id:in-reply-to:date
-         :dkim-signature;
-        bh=nv+8xvdz3LSmpwi61uacfMflzrGYkLHq1FKAJV3U2w4=;
-        b=Z4eU8De5C/GYG1sTlBnb/gprnE45aCsa7Mckk9HEBl5tcnhSe3UzFTsfPr5WIRtlK2
-         kK5ikOrSz0lI1EcT41kdBD/cvb/TJXosmGfRqJZRymCyqhenEsF4KpXdJgPZuTei7ndL
-         ab72G5mQ7cF1Tzh92OSsvGYKjHArTOiWkglpqTwSOmzLi7r7SOF9L4urNHexmUNHrsud
-         PM2ziMYDfhEcnfwGUKeNn8GR6Fjvf/PsSGdcNDKwhPozbJMYL4o4CNdAzDUY7Pn1bhy+
-         5LbMWuM9GWOLbRCzz2l1px6vVoLWcGekTMCRBqEQY6ED/eliG5RR2KpWIBKqr0mankYp
-         d5VQ==
+         :list-unsubscribe:list-id:precedence:cc:to:from:subject:references
+         :mime-version:message-id:in-reply-to:date:dkim-signature;
+        bh=vTNQZph+mmhx41KVFmqkH1vkW23g4F/59TyxIDVYtpA=;
+        b=ayjWz1lkn0cc3zvGKeXIOF7YPTjFqiH2BTdadFm1b2SAUx0jEjtXoVGBxaO6/hEe6O
+         p5lrYQkw7dFhaWWjQ1QUfHnDihi0reMlt4nMx14FPkXaYWP37iESnvyFgbTTiFDBps8q
+         ZHT+XO9Kwu0C1xTorv0YBvRHBFX0+LNby4m4UPWjlP9yGuFBZCGuFw5/lP68BXhr/JbW
+         /FUj1DHTcm6VrMjHp8f2DRaf/tzEodxHJMdwyanWVww86xSHtzT1PQAayd+v2qYQeRG6
+         3SOVE5AAoXSVHybqtc7RGpDsYT3C+tjMEWmvVwvIoMkENIHcRGrPIjfJFE0g0ALKdczQ
+         Pf2g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=AMwECp1y;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=eI6gqLjj;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d4si14391830ila.29.2021.04.12.12.48.29
+        by mx.google.com with ESMTPS id l127si13502676ioa.2.2021.04.12.12.48.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Apr 2021 12:48:29 -0700 (PDT)
+        Mon, 12 Apr 2021 12:48:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=AMwECp1y;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=eI6gqLjj;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:39906 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41316 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lW2Xs-0000nb-TR
-	for alex.bennee@linaro.org; Mon, 12 Apr 2021 15:48:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60928)
+	id 1lW2Y9-0001O2-GG
+	for alex.bennee@linaro.org; Mon, 12 Apr 2021 15:48:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32770)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3ZaN0YAcKCog7qz563qs00sxq.o0y2qy6-pq7qxz0zsz6.03s@flex--venture.bounces.google.com>)
- id 1lW2VE-0007Qc-IS
- for qemu-devel@nongnu.org; Mon, 12 Apr 2021 15:45:44 -0400
-Received: from mail-yb1-xb4a.google.com ([2607:f8b0:4864:20::b4a]:45308)
+ <3aqN0YAcKCo0Cv4AB8vx55x2v.t537v3B-uvCv2454x4B.58x@flex--venture.bounces.google.com>)
+ id 1lW2VK-0007c0-Jk
+ for qemu-devel@nongnu.org; Mon, 12 Apr 2021 15:45:50 -0400
+Received: from mail-qv1-xf4a.google.com ([2607:f8b0:4864:20::f4a]:55685)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3ZaN0YAcKCog7qz563qs00sxq.o0y2qy6-pq7qxz0zsz6.03s@flex--venture.bounces.google.com>)
- id 1lW2VD-0006Xy-5o
- for qemu-devel@nongnu.org; Mon, 12 Apr 2021 15:45:44 -0400
-Received: by mail-yb1-xb4a.google.com with SMTP id u128so13637968ybf.12
- for <qemu-devel@nongnu.org>; Mon, 12 Apr 2021 12:45:41 -0700 (PDT)
+ <3aqN0YAcKCo0Cv4AB8vx55x2v.t537v3B-uvCv2454x4B.58x@flex--venture.bounces.google.com>)
+ id 1lW2VI-0006c4-KW
+ for qemu-devel@nongnu.org; Mon, 12 Apr 2021 15:45:50 -0400
+Received: by mail-qv1-xf4a.google.com with SMTP id c3so1782728qvz.22
+ for <qemu-devel@nongnu.org>; Mon, 12 Apr 2021 12:45:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=date:in-reply-to:message-id:mime-version:references:subject:from:to
- :cc:content-transfer-encoding;
- bh=nv+8xvdz3LSmpwi61uacfMflzrGYkLHq1FKAJV3U2w4=;
- b=AMwECp1yhFnpg5jsW+SOF8SvVvkraZtEFL4sYtd+oNEI4rPtJIYIBE5SvJLY2WlkAz
- n9V9dHxQ1hUWiaXW9MZFTMvzLDj8WbU9gPTVtBnridJ5qrtAblA8h2gocZTuLAVyOWMx
- x8ngCO7i97o4KZGCgwlQFtEeskURKjmrxwKQJ4ptAMsW3J2ZwEnrUJnCT6BeeUfa25AC
- ilgMj3Q/Yzy9YQuFzxUNn0k4o1m88rCEq5Y0/6ymHHv5Ro21vQ4XR+JytJvUM4H0byn5
- kWAbUww9Xt6wjrakWsFtmGZkKh6O7XL+gOOmU1+qFVQw7QBX2VnX9cCdbzf0Z4nl5KWn
- KPyg==
+ :cc; bh=vTNQZph+mmhx41KVFmqkH1vkW23g4F/59TyxIDVYtpA=;
+ b=eI6gqLjj4kfJh7AW+txjVbqcuLDZU4IASnv7F/HPWGAI1xXDwR7WMhcS5RWNnLNtA/
+ 6vOf56h8EXJ6cnpZhxmOdFU7JzGVwRFHKqVSTuP5TieOvAAd/RLx6vYINHVG0m0bjrsW
+ z7Ua0fsHmuJszs+DT7lSrCunMP7DMsHqShDdqvyXAqbFG7xxnM+SfMV607IEhwmf2RoU
+ 8U6Ck4y2hQ/2GWo4VMS/flT3bbbBh47IT1+I1Bz8YkT0DmcVt3efjS79pdHKYkvRSC8X
+ Xw07HJ2fVu02lqC+1Fy6ZIVTPGZlxPSF3Xy9+wTCxxfz1yxJr8V18y61eHnIGH+NFH74
+ b/cQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:in-reply-to:message-id:mime-version
- :references:subject:from:to:cc:content-transfer-encoding;
- bh=nv+8xvdz3LSmpwi61uacfMflzrGYkLHq1FKAJV3U2w4=;
- b=I+vZY2b/mwWCGEb9uloq9+JXR1G/g9322pblbk67BMPTU+vIRIJJ77l60Xz+gliEeG
- 7/RijVDlCi14QZK9K1hROOT6qlfgIvyhZEQTa4MH4292kkLMrc4E5ODYSbbzviMJvaqV
- XehN0KG6HEdAEMZjO6cxhtWLCDhs2TI/VYSzlifS8ob5Svv7EoDP4z29qwI2YhQ7vN6q
- +cuIaJyWbvB1G+GLS19y9DyzhF4yrwh2C94RwJyng0y7Ypa1uanepw0wBogPNvh8ksFC
- korVVrwot7z8HymeJBuQSrZdG7QQrI8w6SYFxyGXiG/8S2mmBqt2+k/NbglFApnd9uhL
- vRww==
-X-Gm-Message-State: AOAM531yeBSLRkhb4GRApdJ+45H+d//5BFkFHmIXs2wUzymxmGavD4IR
- 6RUbB3KariHlWYyJVcZGO/EKeVG0f9Fw
+ :references:subject:from:to:cc;
+ bh=vTNQZph+mmhx41KVFmqkH1vkW23g4F/59TyxIDVYtpA=;
+ b=hl61SA1HYkIqfUtBcmQvmJh9CvwUYOLvcltsJjkpyvqopXncyL8Oq9WEvTITGa/mOr
+ f4AraHBp5XQMdSJX88MCrjlbcjqC24MdwhcE0PMZRHNtxdNfvxUe7fU4XfQ5T1X/j5ts
+ cFGYJAlhcEhB0p/D0iVFTqvU67m0uc9BH7DV8GVdfX2FlXwTdhjmWCEXvsD5vp2CHdiR
+ BIHEQoF3QlwaY83M4sTltyym/6PJQW1mKVPlMA3u/5QW8QNqB8QgQZi/vk0Oiz24sT3D
+ TjI7PCH92NywFAIWV40M8ppZDTM//Pxu2v8USqhBsEGde/bhNeJko8+/v29FxBytRNdG
+ YrHA==
+X-Gm-Message-State: AOAM532eLHriWNr/BYh5Smq/b6ej+CpNoNOS+JlCvs711NVCiJFYbiox
+ 1PO9Scwb3P8ghxjfxcZVc6FnLXdmZ6Tc
 X-Received: from venture.svl.corp.google.com
  ([2620:15c:2a3:200:7285:fb47:eb76:b9a4])
- (user=venture job=sendgmr) by 2002:a5b:788:: with SMTP id
- b8mr37441653ybq.66.1618256741246; 
- Mon, 12 Apr 2021 12:45:41 -0700 (PDT)
-Date: Mon, 12 Apr 2021 12:45:19 -0700
+ (user=venture job=sendgmr) by 2002:a05:6214:ca4:: with SMTP id
+ s4mr29167512qvs.44.1618256746748; Mon, 12 Apr 2021 12:45:46 -0700 (PDT)
+Date: Mon, 12 Apr 2021 12:45:21 -0700
 In-Reply-To: <20210412194522.664594-1-venture@google.com>
-Message-Id: <20210412194522.664594-2-venture@google.com>
+Message-Id: <20210412194522.664594-4-venture@google.com>
 Mime-Version: 1.0
 References: <20210412194522.664594-1-venture@google.com>
 X-Mailer: git-send-email 2.31.1.295.g9ea45b61b8-goog
-Subject: [PATCH v4 1/4] hw/i2c: name I2CNode list in I2CBus
+Subject: [PATCH v4 3/4] hw/i2c: move search to i2c_scan_bus method
 From: Patrick Venture <venture@google.com>
 To: cminyard@mvista.com, wuhaotsh@google.com, hskinnemoen@google.com, 
  f4bug@amsat.org
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
  Patrick Venture <venture@google.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b4a;
- envelope-from=3ZaN0YAcKCog7qz563qs00sxq.o0y2qy6-pq7qxz0zsz6.03s@flex--venture.bounces.google.com;
- helo=mail-yb1-xb4a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::f4a;
+ envelope-from=3aqN0YAcKCo0Cv4AB8vx55x2v.t537v3B-uvCv2454x4B.58x@flex--venture.bounces.google.com;
+ helo=mail-qv1-xf4a.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
 X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -123,37 +119,98 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zYhQo3kDim1K
+X-TUID: 8kwIfGtECBBC
 
-To enable passing the current_devs field as a parameter, we need to use
-a named struct type.
+Moves the search for matching devices on an i2c bus into a separate
+method.  This allows for an object that owns an I2CBus can avoid
+duplicating this method.
 
-Tested: BMC firmware with i2c devices booted to userspace.
+Tested: A BMC firmware was booted to userspace and i2c devices were
+detected.
 
 Signed-off-by: Patrick Venture <venture@google.com>
 Reviewed-by: Hao Wu <wuhaotsh@google.com>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 ---
- include/hw/i2c/i2c.h | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ hw/i2c/core.c        | 38 ++++++++++++++++++++++++++------------
+ include/hw/i2c/i2c.h |  2 ++
+ 2 files changed, 28 insertions(+), 12 deletions(-)
 
+diff --git a/hw/i2c/core.c b/hw/i2c/core.c
+index d03b0eea5c..3a7bae311d 100644
+--- a/hw/i2c/core.c
++++ b/hw/i2c/core.c
+@@ -77,6 +77,30 @@ int i2c_bus_busy(I2CBus *bus)
+     return !QLIST_EMPTY(&bus->current_devs);
+ }
+ 
++bool i2c_scan_bus(I2CBus *bus, uint8_t address, bool broadcast,
++                  I2CNodeList *current_devs)
++{
++    BusChild *kid;
++
++    QTAILQ_FOREACH(kid, &bus->qbus.children, sibling) {
++        DeviceState *qdev = kid->child;
++        I2CSlave *candidate = I2C_SLAVE(qdev);
++        I2CSlaveClass *sc = I2C_SLAVE_GET_CLASS(candidate);
++
++        if (sc->match_and_add(candidate, address, broadcast, current_devs)) {
++            if (!broadcast) {
++                return true;
++            }
++        }
++    }
++
++    /*
++     * If broadcast was true, and the list was full or empty, return true. If
++     * broadcast was false, return false.
++     */
++    return broadcast;
++}
++
+ /* TODO: Make this handle multiple masters.  */
+ /*
+  * Start or continue an i2c transaction.  When this is called for the
+@@ -93,7 +117,6 @@ int i2c_bus_busy(I2CBus *bus)
+  */
+ int i2c_start_transfer(I2CBus *bus, uint8_t address, int recv)
+ {
+-    BusChild *kid;
+     I2CSlaveClass *sc;
+     I2CNode *node;
+     bool bus_scanned = false;
+@@ -115,17 +138,8 @@ int i2c_start_transfer(I2CBus *bus, uint8_t address, int recv)
+      * terminating the previous transaction.
+      */
+     if (QLIST_EMPTY(&bus->current_devs)) {
+-        QTAILQ_FOREACH(kid, &bus->qbus.children, sibling) {
+-            DeviceState *qdev = kid->child;
+-            I2CSlave *candidate = I2C_SLAVE(qdev);
+-            sc = I2C_SLAVE_GET_CLASS(candidate);
+-            if (sc->match_and_add(candidate, address, bus->broadcast,
+-                                  &bus->current_devs)) {
+-                if (!bus->broadcast) {
+-                    break;
+-                }
+-            }
+-        }
++        /* Disregard whether devices were found. */
++        (void)i2c_scan_bus(bus, address, bus->broadcast, &bus->current_devs);
+         bus_scanned = true;
+     }
+ 
 diff --git a/include/hw/i2c/i2c.h b/include/hw/i2c/i2c.h
-index 277dd9f2d6..1f7c268c86 100644
+index 9b8b95ff4a..ff4129ea70 100644
 --- a/include/hw/i2c/i2c.h
 +++ b/include/hw/i2c/i2c.h
-@@ -58,9 +58,11 @@ struct I2CNode {
-     QLIST_ENTRY(I2CNode) next;
- };
-=20
-+typedef QLIST_HEAD(I2CNodeList, I2CNode) I2CNodeList;
-+
- struct I2CBus {
-     BusState qbus;
--    QLIST_HEAD(, I2CNode) current_devs;
-+    I2CNodeList current_devs;
-     uint8_t saved_address;
-     bool broadcast;
- };
---=20
+@@ -87,6 +87,8 @@ void i2c_nack(I2CBus *bus);
+ int i2c_send_recv(I2CBus *bus, uint8_t *data, bool send);
+ int i2c_send(I2CBus *bus, uint8_t data);
+ uint8_t i2c_recv(I2CBus *bus);
++bool i2c_scan_bus(I2CBus *bus, uint8_t address, bool broadcast,
++                  I2CNodeList *current_devs);
+ 
+ /**
+  * Create an I2C slave device on the heap.
+-- 
 2.31.1.295.g9ea45b61b8-goog
 

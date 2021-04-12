@@ -1,111 +1,119 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp3491886lfr;
-        Sun, 11 Apr 2021 19:12:27 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzxiXicxhj1YNa0xdDgd1iIjl4vL8jfk7yjb0Z/0vCbnPjZOFQ3UazveiuxPpjtHKLDFYig
-X-Received: by 2002:a05:622a:c3:: with SMTP id p3mr23142005qtw.43.1618193546964;
-        Sun, 11 Apr 2021 19:12:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618193546; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp3776870lfr;
+        Mon, 12 Apr 2021 03:31:41 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwbZWAxP3ZZHkmZNiaRvSybNixpdscJHJT/bCx9rPqfMbavAhAjr4t5XC0vl1ZhLN9wN2ky
+X-Received: by 2002:a05:6602:2ac4:: with SMTP id m4mr21740638iov.41.1618223501396;
+        Mon, 12 Apr 2021 03:31:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618223501; cv=none;
         d=google.com; s=arc-20160816;
-        b=TLd2bNm2z2pt7VBNvS3rjxPoiCH6QnOwK4wgSpH7uh3+4Zhv5vBgpmTjjMtWL5dKof
-         4MvnIoL3tF/RynAdmsvtB91+JMoxKEJGhQ1MVR5gnIKA7q4DTvJEg+hJWwhLEpvtUtWd
-         e1wWPZfu6G6NiXumcmqNGPjyGIdtXl1QFUKPkcjLBN3at/vsF/LnwEH+Fg0XRjwugwis
-         5/eYXg/mhhgzUHwtM6SD2Ypb2MT0cg0OqQiGIpjZ0xBEvOr7P7i7UPUsZX9tjVzJcAnF
-         r33ZRC+hq9kspiE1G866AFcvZAs6jc7pN624VaKdfsqdDBY3lRC++jTocg4AsSRNgIL/
-         xg5w==
+        b=w5pm68r4GklatV67plGdHruk6AM+48c+nyPFBfH4WCJ7ph6QUrM73Rq6I3bU3plXHE
+         fOZ/QF8gCMNSZ9Aem4TCXgBVXmmEhlyE481250nU0k+xW/WVjkSRxAB6Zbp4kpp/qy4E
+         WBGL/s4Yf+D7rhS7n1V6Qm91gYqfip6xz36GQevYz535K6UczxKncitEmSMSssuLaHSz
+         B1Merb9zg9XV9rlcQSTJy/QktpXzxBxXzHH5+iFkmWd5gBOQTKEDp+f2iKXC9WsZTjFM
+         OgnPpow9KZuVvfGkKumXXgIVmkdhsbJ1Wc8FPZ8tr41Y+ZnPHjzIVc5EXaocen7ymMb+
+         v20Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:subject
-         :dkim-signature;
-        bh=b3VdiBlwFBNTfs65yJhoM4BSBwKRbU/s/QhJhSQWuoA=;
-        b=PZMeJXkAwHAqIoxd3XwPOdA1m2fTAZVRdCxCui22+ZEuJeUSoH/De0oycAuIxeNMSr
-         lPYTY+LUi4FJFaolZjTFBZF9LRsKD4nLjwbsNmMR+iA3OaLFKEHT0agdmBK3fzzz/XR5
-         opffpBmZxIVGpfKmBTgM0Vlgygmg+YXlVMQQgGC0aAnAlutDnQ5oGsMliJVWcHaYDSGT
-         LksUAF6FlJn1zsmTl1ZqKwtL8oJYN4v0gwRfo+IfbguoOHA66DSsQe4fcqZDGul7vFuK
-         EmADvKGyZ1UsuqrDOFCCixx4iKn+rmWcylTTS+1RH2VfTnm4WTByyb34fwpQyzFtwh52
-         FqCA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=l4pcouo8LIApS4Y4u7W5iJnsHZElBrCJsNPIm7qOCNc=;
+        b=gSVmH4DhtoUdk2FXvxsgyeLjQ5OJt8lzIdFrcbsu5Jv/Bdr6ttNwOSAhl0PVz2/M66
+         vDxNpPgOaeJ2enwasmoTkLR7QNxe6I+DVqCwPhKePDiGYmUYHW9YQsto3tBT4jFC1/k4
+         /tnLBsq8gPWLIe0BHmdixkOc2XkmSWPg34KJqviZgQ7Dgv0PJmOm80q9NckmljrnxqEJ
+         9v3n1hMzTaTJA4lB5IUO0J7QKtBnPJx60n3XJEapzqfVDK8boxJmbirUs9pRKHnF3QdM
+         B+xpXgS/fDNOPcgkH6gofsx3D6q1WsQdKqgcWFUErn809Va+B/yMXhbW95BUUHOqsQj7
+         r/VA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=du5HZHzC;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GcOfTTEF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m8si7566245qvf.4.2021.04.11.19.12.26
+        by mx.google.com with ESMTPS id t11si12707565jai.115.2021.04.12.03.31.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 11 Apr 2021 19:12:26 -0700 (PDT)
+        Mon, 12 Apr 2021 03:31:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=du5HZHzC;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GcOfTTEF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46380 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:44576 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lVm3u-0007UK-9z
-	for alex.bennee@linaro.org; Sun, 11 Apr 2021 22:12:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51556)
+	id 1lVtr2-0006AW-Mv
+	for alex.bennee@linaro.org; Mon, 12 Apr 2021 06:31:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34782)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1lVm3k-0007SF-K9
- for qemu-arm@nongnu.org; Sun, 11 Apr 2021 22:12:16 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:34351)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1lVm3i-0003tg-2K
- for qemu-arm@nongnu.org; Sun, 11 Apr 2021 22:12:16 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1618193533;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=b3VdiBlwFBNTfs65yJhoM4BSBwKRbU/s/QhJhSQWuoA=;
- b=du5HZHzC1I1rdKkdnnM8RLXu0pZ+RxroG6Gco6PsIIFggIZRqO90IoIKjqcsg4RDJkYf22
- GmXd+JNhqg47ODFdDBCE/ToHWzwTSXAOwipwn3BKCpQ2gxyuD6wQZ5GdaJnU02D6lIoy1A
- 5wWTx06OIGILo+mBoNCH5OAbBSfeJuc=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-516-FMMoYOUfPZewXTM6NRvhLQ-1; Sun, 11 Apr 2021 22:12:09 -0400
-X-MC-Unique: FMMoYOUfPZewXTM6NRvhLQ-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 938255B364;
- Mon, 12 Apr 2021 02:12:08 +0000 (UTC)
-Received: from [10.64.54.68] (vpn2-54-68.bne.redhat.com [10.64.54.68])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id AD5635C3E4;
- Mon, 12 Apr 2021 02:12:05 +0000 (UTC)
-Subject: Re: [PATCH 2/2] target/arm: Initlaize PMU feature for scratch vcpu
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lVtqt-0006AN-N7; Mon, 12 Apr 2021 06:31:31 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a]:41568)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lVtqs-0008R7-5C; Mon, 12 Apr 2021 06:31:31 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ t5-20020a1c77050000b029010e62cea9deso6588881wmi.0; 
+ Mon, 12 Apr 2021 03:31:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=l4pcouo8LIApS4Y4u7W5iJnsHZElBrCJsNPIm7qOCNc=;
+ b=GcOfTTEFN0xTdzZalfAcz/Mp+J1rgmzi42ruSTSbP/N3Mb/rJL7X+1dq1Sry+P/Frv
+ HHHvmiJACaPrNGSo8/mZOjEs6lD3v1/okd+/JJ72dZ08q/Ch/xSYUz0cVs3dtJ7PHicq
+ 90EuggnQNfKYj5wbXKdmgPBw5XH2kVwwrPOfQ001M3EpLf0wb+IzIDgcbi0wo4X38r54
+ nRQEIPAKMXB4czVzJGsw6uAVqS3ECth7qezUtaNBrFrIRT65GVBw/fUHd+I3PI+9BLZp
+ t7771SuCz4DI0AkWn8Ef5DnVu1udD+tmsUx41Lhc45M1LGvdfUG+uYqiu203N3D3obeW
+ t3XA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=l4pcouo8LIApS4Y4u7W5iJnsHZElBrCJsNPIm7qOCNc=;
+ b=CGWi+FAtwrwjPcaJiutuxhvbzrd0A4SW7ME0A0JRGvZcfcmb2f0TyTJTzxvhjicxjt
+ l3qbmRghUptdSXy7+FrnpGStWdc2rRfhZxTZftWx5IoflILoo5PS8e78U1WLP6uksSO4
+ 5NlX5qS7vd/6mB1t+Xw1l17Xq36GiHHPOwuFrEygt/o9sFB5jvPlmIEq2gYNSCMO8BYH
+ EUtYu/DHcGpm+XblI3jPWWHmGwrraWkm5IX+wbsroA9qHzUmwH9B2BYIraLFYYSZMAvf
+ KWXlpuvzc5PExk2gl2FqWsQih9sbxkV6JgqqkTtDsn0eKc9b6lE7gx5ZfwFVkkO8MGLg
+ EjSg==
+X-Gm-Message-State: AOAM5328FT2c0Xpkd9aG+JMs0oEruvQuw6ZVBNB6J3NTUY/UTzqP/Tfz
+ 3ful9Df//KPrSrH/nK5bJWM=
+X-Received: by 2002:a05:600c:378c:: with SMTP id
+ o12mr26075322wmr.69.1618223487580; 
+ Mon, 12 Apr 2021 03:31:27 -0700 (PDT)
+Received: from [192.168.1.36] (63.red-83-51-208.dynamicip.rima-tde.net.
+ [83.51.208.63])
+ by smtp.gmail.com with ESMTPSA id j30sm17299056wrj.62.2021.04.12.03.31.26
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 12 Apr 2021 03:31:26 -0700 (PDT)
+Subject: Re: [RFC PATCH-for-6.1 0/9] hw/clock: Strengthen machine (non-qdev)
+ clock propagation
 To: Peter Maydell <peter.maydell@linaro.org>
-References: <20210407040100.9933-1-gshan@redhat.com>
- <20210407040100.9933-2-gshan@redhat.com>
- <CAFEAcA_-cmCFDgaqVsZEFT5w56g0LLr3aCzjCf1Od4iov6eWiA@mail.gmail.com>
-From: Gavin Shan <gshan@redhat.com>
-Message-ID: <5bc4cb38-6af4-e6e6-c2bf-d89463b28540@redhat.com>
-Date: Mon, 12 Apr 2021 14:11:53 +1000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.0
+References: <20210409062401.2350436-1-f4bug@amsat.org>
+ <20210410131932.i6no5tvvaldyomvp@sekoia-pc.home.lmichel.fr>
+ <09a63c3e-aa68-0d2d-b447-db9cd84dab09@amsat.org>
+ <CAFEAcA9rqx97D_ZN7MzqqJtz9ajFNK=AAeQu9z65+g35SHD_NA@mail.gmail.com>
+ <CAFEAcA-5h5ZjXyX6WbdQ8n=pqNSXTHfrt3fQSQzp6EYJY_zXLg@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <ab8fcac0-eb15-3f59-1b14-ef6b4cba6e03@amsat.org>
+Date: Mon, 12 Apr 2021 12:31:26 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_-cmCFDgaqVsZEFT5w56g0LLr3aCzjCf1Od4iov6eWiA@mail.gmail.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=gshan@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <CAFEAcA-5h5ZjXyX6WbdQ8n=pqNSXTHfrt3fQSQzp6EYJY_zXLg@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=gshan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=-0.01,
- RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32a.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,43 +126,60 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Gavin Shan <gshan@redhat.com>
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- qemu-arm <qemu-arm@nongnu.org>, Shan Gavin <shan.gavin@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>
+Cc: Damien Hedde <damien.hedde@greensocs.com>, Luc Michel <luc@lmichel.fr>,
+ Eduardo Habkost <ehabkost@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sZ9OPDNmN9sZ
+X-TUID: mQTJqEh07USh
 
 Hi Peter,
 
-On 4/7/21 5:38 PM, Peter Maydell wrote:
-> On Wed, 7 Apr 2021 at 03:01, Gavin Shan <gshan@redhat.com> wrote:
->>
->> If the scratch vCPU is initialized without PMU feature, we receive
->> error on reading PMCR_EL0 as it's invisible in this case. It leads
->> to host probing failure.
->>
->> This fixes the issue by initializing the scratch vcpu with the PMU
->> feature enabled and reading PMCR_EL0 from host. Otherwise, its value
->> is set according to the detected target.
->>
->> Fixes: f7fb73b8cdd3 ("target/arm: Make number of counters in PMCR follow the CPU")
+On 4/12/21 12:11 PM, Peter Maydell wrote:
+> On Sat, 10 Apr 2021 at 16:15, Peter Maydell <peter.maydell@linaro.org> wrote:
+>> I do wonder if the right fix to that would be to make TYPE_MACHINE
+>> be a subtype of TYPE_DEVICE, though -- machines not being subtypes
+>> of device has other annoying effects, like their not having reset
+>> methods or being able to register vmstate structs.
 > 
-> This commit has been reverted...
-> 
-> I couldn't find a cover letter for these patches, so it's
-> hard to tell what you're aiming to do with them. Could you
-> make sure you always send a cover letter with a multiple-patch
-> series, please ? This also helps with our automated tooling.
-> 
+> I wasn't quite right about this -- turns out that machines can
+> have a reset method, but it is a weird special case method
+> MachineClass::reset that isn't like device reset. (We use it
+> in a few machine types; if implemented, it is responsible for
+> calling qemu_devices_reset() to kick off device reset. Probably
+> MachineClass ought to implement TYPE_RESETTABLE_INTERFACE
+> instead.)
 
-Sorry for the delay. Yep, I will always include cover letter for
-a series. For this particular series, it's invalid since f7fb73b8cdd3
-has been reverted. So please ignore this series.
+TIL MachineClass::reset().
 
-Thanks,
-Gavin
+- hw/hppa/machine.c
+- hw/i386/pc.c
 
+  Used to reset CPUs manually because CPUs aren't sysbus-reset.
+
+- hw/i386/microvm.c
+
+  Removing the microvm_fix_kernel_cmdline() call which is suspicious
+  at reset (should be enough once in realize time), the is the same
+  previous "Used to reset CPUs manually ..."
+
+- hw/ppc/pnv.c
+
+  "Reset BMC simulator" seems a legitimate case of machine reset.
+
+  Next is 'fdt = pnv_dt_create()'. So guest has changed hardware state
+  and we need to refresh the DT for the next guest boots. Could be.
+
+- hw/ppc/spapr.c
+
+  Similar previous "Used to reset CPUs manually ..."
+
+  Similar previous "update DT after hardware physically changed".
+
+
+Am I correct than half of these handlers code is to kludge the fact
+that CPU aren't reset such device reset?
+
+Regards,
+
+Phil.

@@ -1,101 +1,92 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp4454708lfr;
-        Mon, 12 Apr 2021 19:28:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyugh8wF/HZ3QKbRpqrLLk6N/VqqlpX+ZJjkHxqj9++rpHSGrBATlArhehisEv4OpiBS7+c
-X-Received: by 2002:a25:316:: with SMTP id 22mr1338535ybd.523.1618280918977;
-        Mon, 12 Apr 2021 19:28:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618280918; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp4009546lfr;
+        Mon, 12 Apr 2021 08:27:45 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw5g+8RUgNy0LuRlBIpRY5zZxH/zFwJhwfFveRiED8Kc369S6bZGGQ+D52v3cgBRFdeoXq3
+X-Received: by 2002:a4a:9e42:: with SMTP id w2mr16293317ook.4.1618241264928;
+        Mon, 12 Apr 2021 08:27:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618241264; cv=none;
         d=google.com; s=arc-20160816;
-        b=L6DFX3hjmcRpRC7mkR5HphAywVan/Kstd9hqNKetneNmTCCCMRTYxarh/hpkWRrDzY
-         VdmpHpy+BGCoFjY/JX/ku/+BA+xfTCYhBVGR8m2nUEpRja7gQPIw5Tgsv4iFbRZX4Zib
-         rTrxbUatRkc3XvpNh7gUOr6vzZ9FUZoPIwRyySUAa/hJnqTu0Ucz4HNGTnzp6gV6qQ3A
-         q6dS/TU15yPo0YS32XcYQjYi4qT5dzShEXKufScUGyqi+QnD1IlE0KsbfriH8AmkKnsk
-         bTPje5d11Ig/AmkaHfvwRox0qMuJkUJTHp5HDp3LLFhGRqjg5byWj9OJjKyfB25nc34R
-         IOfg==
+        b=VLRqRzf01Vpp/3x7QQVr44WKXDKLjrKcINQU0jyHcCMyRemCSZvRVCf/qb/l8Tqy97
+         J4u9ZMVdABL1k3mF/V8W2LD6oGTJ+3mZFGLJK/KIZvQ+BYOgpLp3A1NTtJ3s9Nu944ae
+         H7Sy9P1zjOCUqVWPyM7gLKyL0Qeyx7KohyjAMclhHeTn71MwG+wHDFl0GyJpL3+wf1qw
+         adzaUIQvzm8Xhz7cTtb0KhSfo5qdPPtFRUjO02ZOM5T66FccNB0yB67n609iwNAlypHL
+         iFpXRh/YfhEgsOeJoVVW7UmhqLdRav0T3FjOV57d2PpG/lavNCx6sP8ZKTtMK26h/zpD
+         gIiw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=x7IRPUZjaNzkRN+O5MK9Zb81XDytBP70BW5Qu6Pbod4=;
-        b=IIQRSX9V/kyZ2dC5lVm2+sGZwVWOWwn6Fk7s1Mx7fBTeVqFXlq0bf/ZROtZvmn1PIb
-         7/2Wfwdf7+vGtYSsEfsstSoUFfDcQ/VyWVqHmJ1fDlvj3FVchuk4jROe70Bhz3UDrAEi
-         GCpKmuFMlDmh77tAgUCovqZg+3sgbpHWS9NETAX9kfLwScmHA39oPWQmQ+nOCskovy1v
-         +SP+VCxSgNNgatzUUbtTBrYIOMyVFtWrH4Akf48mf2kvizVRZQqMZiQU4uSg4Md+GS3L
-         nm+UKMuWZ4Bbe0dc/jOG3LPMKWTmGvMDQNfmnYeZ+K3jqKW5ZQQV3JlYecoUYChIGwuB
-         qf3g==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=z6QGT3hms4zmKPzwZlwZ+siJL7RcwTac0S0Y2/SOr8Y=;
+        b=iTQGTrVxovYvcwxfWlAVAHV2Q7cZqp9fQouDxk0marrXDJwYvrbHn0MDjosu2XSxcn
+         +6As15HBankPHWlmfNHviY+RBf/iNqyLG0njjELiZ+7A1hf2UNxry8qzn+WkRzTSGMI+
+         4Xa9ng9AY/gpRaIXLfJ+U7W1sKZiboAC1mbBMDchwI3leaYODMT1EGgTHLp2cNQpE1wu
+         6SPf+TxD2UzY3F6AuEfPn2QRmjc2C4gPCC3TpaKEm7bgIgLNh+/SjUw2BRg3XtzBebvK
+         m6eome7C3y7SYgiImY2ykQIYVEaCJHJwg02hSfY1ATsE6YusROfZRF3/1ZfNC3OfbdMw
+         BewQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=NccNQUSr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h16si11011875ybg.444.2021.04.12.19.28.38
+        by mx.google.com with ESMTPS id b81si12800583oii.249.2021.04.12.08.27.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Apr 2021 19:28:38 -0700 (PDT)
+        Mon, 12 Apr 2021 08:27:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=NccNQUSr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40292 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57364 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lW8n8-00036S-5j
-	for alex.bennee@linaro.org; Mon, 12 Apr 2021 22:28:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38594)
+	id 1lVyTY-0006uE-4P
+	for alex.bennee@linaro.org; Mon, 12 Apr 2021 11:27:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58980)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1lW8mg-00034P-57; Mon, 12 Apr 2021 22:28:10 -0400
-Received: from mail-qv1-xf2b.google.com ([2607:f8b0:4864:20::f2b]:44756)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1lW8md-0000cG-0g; Mon, 12 Apr 2021 22:28:09 -0400
-Received: by mail-qv1-xf2b.google.com with SMTP id o11so7376066qvh.11;
- Mon, 12 Apr 2021 19:28:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=x7IRPUZjaNzkRN+O5MK9Zb81XDytBP70BW5Qu6Pbod4=;
- b=NccNQUSr6fhtm5jWIlJD+EIhH0ddx5JEhDJowi1Z6JGpvp6T9GvTawSH821vt/STYv
- kLGR7ZYAAVHK2Qa1lYGGJSv+skSGfD0qr6sEkAZC+CROqAA9N/LDC7lin5J5coE8/gvq
- hmpjOhNMYEHULMzyvZXAEdC6gCzy9utI5tDcE=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=x7IRPUZjaNzkRN+O5MK9Zb81XDytBP70BW5Qu6Pbod4=;
- b=A+Ce9lVA4XvExRHdOYVkMOKkTwFIOJbNI3hAj6k5JPNyvk3z46ZISx83vW5JuUqMC/
- 1q7kRDXA7FxRjRRGGvxWoAVRnunbidElEmBg8sBXbqznLegtzNZ1nnDR1VTUXRbS8G/u
- +leugA1PxE4yyAxlJIB+m0TqIYhOKrIUs+HB4JXD0VHLIAo83h6ddnpDbXVxZRYJK0dz
- zDmVjBi/GMEWzwCkvPYvBbaOT2L2+y5cr/VMxiYwwsLkjl38LQD/L7LGqh/dkzu01j8m
- 5QLbb39YxJLaMnJM/EoEXCTZ9M0DwD21XD7VREImb8BBuJUOadv0e7y/5eEu8HtVlg3v
- w6Ig==
-X-Gm-Message-State: AOAM53129VbkVNawlIKhCUP5LrbTAS/5ZjjU5IlIDCneqN7uDOeXJ4Ar
- nfjnMZ1wJwOeuSpyIzTraGH5c6AJme647f8SZz4=
-X-Received: by 2002:a05:6214:2607:: with SMTP id
- gu7mr30325889qvb.18.1618280885201; 
- Mon, 12 Apr 2021 19:28:05 -0700 (PDT)
-MIME-Version: 1.0
-References: <20210304124316.164742-1-joel@jms.id.au>
- <9c004931-648c-3215-6720-647fe35a50c7@kaod.org>
- <66ef55f5-de03-46b1-ada0-089246e0dad1@www.fastmail.com>
-In-Reply-To: <66ef55f5-de03-46b1-ada0-089246e0dad1@www.fastmail.com>
-From: Joel Stanley <joel@jms.id.au>
-Date: Tue, 13 Apr 2021 02:27:52 +0000
-Message-ID: <CACPK8XdD7xMM-ncxZG7i7QZdpJSvSPVLgSCX+tCgf2g1=Ctx-Q@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1lVyTE-0006tz-PT; Mon, 12 Apr 2021 11:27:24 -0400
+Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:34377)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1lVyTC-0004YT-LC; Mon, 12 Apr 2021 11:27:24 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.156.216])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 0444A9999079;
+ Mon, 12 Apr 2021 17:27:17 +0200 (CEST)
+Received: from kaod.org (37.59.142.99) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2106.2; Mon, 12 Apr
+ 2021 17:27:16 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-99G0038c395076-8eb1-44fe-9bf7-b10b4a61e669,
+ 30B7ACC6D8DC628EDB1EBF85A4A81F2E60AF40AB) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 90.89.73.13
 Subject: Re: [PATCH] aspeed: Emulate the AST2600A3
-To: Andrew Jeffery <andrew@aj.id.au>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f2b;
- envelope-from=joel.stan@gmail.com; helo=mail-qv1-xf2b.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
+To: Joel Stanley <joel@jms.id.au>
+References: <20210304124316.164742-1-joel@jms.id.au>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <9c004931-648c-3215-6720-647fe35a50c7@kaod.org>
+Date: Mon, 12 Apr 2021 17:27:10 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
+MIME-Version: 1.0
+In-Reply-To: <20210304124316.164742-1-joel@jms.id.au>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.99]
+X-ClientProxiedBy: DAG8EX1.mxp5.local (172.16.2.71) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 2a61ed81-537d-495a-bacf-e697c8870768
+X-Ovh-Tracer-Id: 7409828763966671779
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduledrudekjedgkeelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtjeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepgedvieejfedvhfduhfffueevheeludffhfdvkeehleegtddttdfhieegveeghfffnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdelleenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepjhhovghlsehjmhhsrdhiugdrrghu
+Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo529.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -108,41 +99,140 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Cameron Esfahani via <qemu-devel@nongnu.org>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ycK0rkt/e5pP
+X-TUID: d3cN9v3yFpq3
 
-On Mon, 12 Apr 2021 at 22:57, Andrew Jeffery <andrew@aj.id.au> wrote:
->
->
->
-> On Tue, 13 Apr 2021, at 00:57, C=C3=A9dric Le Goater wrote:
-> > On 3/4/21 1:43 PM, Joel Stanley wrote:
-> > > This is the latest revision of the ASPEED 2600 SoC.
-> >
-> > Should we change all machines to use the new SoC ?
-> >
-> > I would prefer if we introduced an "ast2600-a3" Aspeed SoC, that we wou=
-ld
-> > use for the newer rainier machine, and leave the tacoma-bmc and ast2600=
--evb
-> > machines as they are.
->
-> I think we just change them all. We're not going to see pre-A3 chips in
-> production systems.
+On 3/4/21 1:43 PM, Joel Stanley wrote:
+> This is the latest revision of the ASPEED 2600 SoC.
 
-We should split this patch into two. The A3 support is not yet present
-in any u-boot tree, so it would be premature to update any socs to
-emulate the A3. We can expect support in the coming months, and when
-that lands we can consider updating.
+Should we change all machines to use the new SoC ? 
 
-However filling out some of the clock register reset values is
-important for guests to calculate sensible clock rates, so we should
-do that now for the A1.
+I would prefer if we introduced an "ast2600-a3" Aspeed SoC, that we would 
+use for the newer rainier machine, and leave the tacoma-bmc and ast2600-evb 
+machines as they are.
 
-Cheers,
+Thanks,
 
-Joel
+C. 
+
+> Reset values are taken from v8 of the datasheet.
+> 
+> Signed-off-by: Joel Stanley <joel@jms.id.au>
+> ---
+>  include/hw/misc/aspeed_scu.h |  2 ++
+>  hw/arm/aspeed_ast2600.c      |  2 +-
+>  hw/misc/aspeed_scu.c         | 32 +++++++++++++++++++++++++-------
+>  3 files changed, 28 insertions(+), 8 deletions(-)
+> 
+> diff --git a/include/hw/misc/aspeed_scu.h b/include/hw/misc/aspeed_scu.h
+> index d49bfb02fbdb..c14aff2bcbb5 100644
+> --- a/include/hw/misc/aspeed_scu.h
+> +++ b/include/hw/misc/aspeed_scu.h
+> @@ -43,6 +43,8 @@ struct AspeedSCUState {
+>  #define AST2500_A1_SILICON_REV   0x04010303U
+>  #define AST2600_A0_SILICON_REV   0x05000303U
+>  #define AST2600_A1_SILICON_REV   0x05010303U
+> +#define AST2600_A2_SILICON_REV   0x05020303U
+> +#define AST2600_A3_SILICON_REV   0x05030303U
+>  
+>  #define ASPEED_IS_AST2500(si_rev)     ((((si_rev) >> 24) & 0xff) == 0x04)
+>  
+> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+> index bf31ca351feb..8c42dafe8583 100644
+> --- a/hw/arm/aspeed_ast2600.c
+> +++ b/hw/arm/aspeed_ast2600.c
+> @@ -480,7 +480,7 @@ static void aspeed_soc_ast2600_class_init(ObjectClass *oc, void *data)
+>  
+>      sc->name         = "ast2600-a1";
+>      sc->cpu_type     = ARM_CPU_TYPE_NAME("cortex-a7");
+> -    sc->silicon_rev  = AST2600_A1_SILICON_REV;
+> +    sc->silicon_rev  = AST2600_A3_SILICON_REV;
+>      sc->sram_size    = 0x16400;
+>      sc->spis_num     = 2;
+>      sc->ehcis_num    = 2;
+> diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
+> index 40a38ebd8549..3515d6ff6bbf 100644
+> --- a/hw/misc/aspeed_scu.c
+> +++ b/hw/misc/aspeed_scu.c
+> @@ -104,11 +104,19 @@
+>  #define AST2600_SDRAM_HANDSHAKE   TO_REG(0x100)
+>  #define AST2600_HPLL_PARAM        TO_REG(0x200)
+>  #define AST2600_HPLL_EXT          TO_REG(0x204)
+> +#define AST2600_APLL_PARAM        TO_REG(0x210)
+> +#define AST2600_APLL_EXT          TO_REG(0x214)
+> +#define AST2600_MPLL_PARAM        TO_REG(0x220)
+>  #define AST2600_MPLL_EXT          TO_REG(0x224)
+> +#define AST2600_EPLL_PARAM        TO_REG(0x240)
+>  #define AST2600_EPLL_EXT          TO_REG(0x244)
+> +#define AST2600_DPLL_PARAM        TO_REG(0x260)
+> +#define AST2600_DPLL_EXT          TO_REG(0x264)
+>  #define AST2600_CLK_SEL           TO_REG(0x300)
+>  #define AST2600_CLK_SEL2          TO_REG(0x304)
+> -#define AST2600_CLK_SEL3          TO_REG(0x310)
+> +#define AST2600_CLK_SEL3          TO_REG(0x308)
+> +#define AST2600_CLK_SEL4          TO_REG(0x310)
+> +#define AST2600_CLK_SEL5          TO_REG(0x314)
+>  #define AST2600_HW_STRAP1         TO_REG(0x500)
+>  #define AST2600_HW_STRAP1_CLR     TO_REG(0x504)
+>  #define AST2600_HW_STRAP1_PROT    TO_REG(0x508)
+> @@ -433,6 +441,8 @@ static uint32_t aspeed_silicon_revs[] = {
+>      AST2500_A1_SILICON_REV,
+>      AST2600_A0_SILICON_REV,
+>      AST2600_A1_SILICON_REV,
+> +    AST2600_A2_SILICON_REV,
+> +    AST2600_A3_SILICON_REV,
+>  };
+>  
+>  bool is_supported_silicon_rev(uint32_t silicon_rev)
+> @@ -651,16 +661,24 @@ static const MemoryRegionOps aspeed_ast2600_scu_ops = {
+>      .valid.unaligned = false,
+>  };
+>  
+> -static const uint32_t ast2600_a1_resets[ASPEED_AST2600_SCU_NR_REGS] = {
+> +static const uint32_t ast2600_a3_resets[ASPEED_AST2600_SCU_NR_REGS] = {
+>      [AST2600_SYS_RST_CTRL]      = 0xF7C3FED8,
+> -    [AST2600_SYS_RST_CTRL2]     = 0xFFFFFFFC,
+> +    [AST2600_SYS_RST_CTRL2]     = 0x0DFFFFFC,
+>      [AST2600_CLK_STOP_CTRL]     = 0xFFFF7F8A,
+>      [AST2600_CLK_STOP_CTRL2]    = 0xFFF0FFF0,
+>      [AST2600_SDRAM_HANDSHAKE]   = 0x00000000,
+> -    [AST2600_HPLL_PARAM]        = 0x1000405F,
+> +    [AST2600_HPLL_PARAM]        = 0x1000408F,
+> +    [AST2600_APLL_PARAM]        = 0x1000405F,
+> +    [AST2600_MPLL_PARAM]        = 0x1008405F,
+> +    [AST2600_EPLL_PARAM]        = 0x1004077F,
+> +    [AST2600_DPLL_PARAM]        = 0x1078405F,
+> +    [AST2600_CLK_SEL]           = 0xF3940000,
+> +    [AST2600_CLK_SEL2]          = 0x00700000,
+> +    [AST2600_CLK_SEL3]          = 0x00000000,
+> +    [AST2600_CLK_SEL4]          = 0xF3F40000,
+> +    [AST2600_CLK_SEL5]          = 0x30000000,
+>      [AST2600_CHIP_ID0]          = 0x1234ABCD,
+>      [AST2600_CHIP_ID1]          = 0x88884444,
+> -
+>  };
+>  
+>  static void aspeed_ast2600_scu_reset(DeviceState *dev)
+> @@ -675,7 +693,7 @@ static void aspeed_ast2600_scu_reset(DeviceState *dev)
+>       * of actual revision. QEMU and Linux only support A1 onwards so this is
+>       * sufficient.
+>       */
+> -    s->regs[AST2600_SILICON_REV] = AST2600_A1_SILICON_REV;
+> +    s->regs[AST2600_SILICON_REV] = AST2600_A3_SILICON_REV;
+>      s->regs[AST2600_SILICON_REV2] = s->silicon_rev;
+>      s->regs[AST2600_HW_STRAP1] = s->hw_strap1;
+>      s->regs[AST2600_HW_STRAP2] = s->hw_strap2;
+> @@ -689,7 +707,7 @@ static void aspeed_2600_scu_class_init(ObjectClass *klass, void *data)
+>  
+>      dc->desc = "ASPEED 2600 System Control Unit";
+>      dc->reset = aspeed_ast2600_scu_reset;
+> -    asc->resets = ast2600_a1_resets;
+> +    asc->resets = ast2600_a3_resets;
+>      asc->calc_hpll = aspeed_2500_scu_calc_hpll; /* No change since AST2500 */
+>      asc->apb_divider = 4;
+>      asc->nr_regs = ASPEED_AST2600_SCU_NR_REGS;
+> 
+

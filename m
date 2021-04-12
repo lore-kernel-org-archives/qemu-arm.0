@@ -1,100 +1,102 @@
-Received: by 2002:a05:6214:9cd:0:0:0:0 with SMTP id dp13csp2096147qvb;
-        Mon, 12 Apr 2021 06:43:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxyy31Wi6Leb79eea/eNd9HD/Up2JOL8Vv4EHCgWBHkMIg6zun76E2F1mamGmLsFi+BC1Tn
-X-Received: by 2002:a05:6e02:144f:: with SMTP id p15mr4630125ilo.143.1618235015484;
-        Mon, 12 Apr 2021 06:43:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618235015; cv=none;
+Received: by 2002:a05:6214:9cd:0:0:0:0 with SMTP id dp13csp2097012qvb;
+        Mon, 12 Apr 2021 06:44:44 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzZTJWFMlG3vRL+6qBsy+RFOTorE/zxKI7zF7ChfLS8531objEbmgyakXQoQISuMri4dlLs
+X-Received: by 2002:a05:6e02:160a:: with SMTP id t10mr13077142ilu.261.1618235084622;
+        Mon, 12 Apr 2021 06:44:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618235084; cv=none;
         d=google.com; s=arc-20160816;
-        b=dQYcnofl7xz+s8axlcTsa1P1pvKlTwecrwkI9ApH02OXTCsUtBHheSCvRCJguv7+OU
-         uuSZJt+gprLUcvBbmyI4e6iSnvdERYatKgfAto+IxAlVYlA5uHHRHtRcl+sa6cGHq/BG
-         rULNUCtGQlu9i4PBVFwc3hNOQ/LHK1eLOQum6/daGZbsSsx5RVXk8ZKYMQjAzK2wGg3O
-         Oc2dHa7wSCTQN+q+FM15HdlZb8nKxTM4JRS538vM2uuALUfX0CQskBcflKrOSl3Ws5Om
-         u5QswtHtwaQbsgK4SWRui49wdRtiA1iAn6xPcgng0eFlPnrHKJYbEBsfoyYj7OeUz5uf
-         VNhw==
+        b=FHL+qjKSc75kaKX+5/giSzvWJTfzqpMoNSOjuZfYvoHHouD/BeU6vqSPFyH7ucWUVk
+         qQMmIGdPUAQETEsYmrb7ScgchPD7aK70m4ppXKiQsHJ3cfreYzFirkR5WCDQHIgOH9TW
+         6Hl8sXzk/9TMDgVlk95ijf8D3INuBiQMBrZ1QnxYBcVyyJOJZsQWq3Hme/592M3JNl1K
+         /rOParrQucrFDrZive3ge7PGyCfx45bP9bSQTnodvIgzs+EtEDIV3F4npXE4ppuw4VB9
+         63U0w+fHAWhUAdVqUuxt6KGGawDbcUrJK5NdCjytD1XhzNvFhiyvinztRZ6BghmdDeLA
+         +/lg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=coR5qfcj7HbN5UNgt4/UQCpFaRvRt8MSF2O7M15ACS8=;
-        b=FLx3ekf3oOQU9WalZSBE+aeHpcVRieCkenc44NpnAo7vNxaBwFdvVjF7rKTytStbXq
-         FYoUIlN+YaWHBTovkv1XBZKKSx9URN4DU0IPzBaVS0Re82OA9eHsQI+Xw3ihhOK8Yovt
-         z+u13K5XKPsOnLFBhjUA4tcb4Saduye4U8KLwRlTdMJtl7PVhqS+oassaWqxv3vaOW43
-         rDQ62PbSvL1VE/gbQ5QFqBKm6BuW8iSYXQr8R2CbPUAUsd3bDNC3Od0tbBkQtOZmP70z
-         qkILPC0osCRa7vsAiPMa45cYuBqiUA0M8eyDWF3lFzHRPoeyfUSqcJms+hktjv6KVCOj
-         f8ng==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=J5x2+PDQQAl8Qw/oP7RNvJGs/sHvZewjNi5ZG9bocOk=;
+        b=FdjcrRWh689zhtSkYhDAPNUeiXNdu1i1Eb6y+QrisOMrOI4GVpEXzZFUW29hOOfHDQ
+         5+iEGJb1HQOygOhpGL0vGVkxxy0D89AgLd3oFvd5wouL1NW8TQSXrEDF6uQ+rwo9Qvpv
+         SC9fv70QBQJpV3Ss/b1XuX5O7BODyLQDJziQUDr1jmw8hhPtOphRwU85q64ld2XPNJXe
+         NaIRyvtRLs6FM616mQmQoQqAVxrsgchjvkszwteyxklrme/4g5sLliQ4b13BeQGQ2x9n
+         fuz3mxEhifDePswgvgx07nt/d32Bxd4nBiqi7WmHvoTT552X1pmWCwWGbFPNm1vQeMqg
+         nCqQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BMUfEZPw;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=R4jSIXGw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w29si12747700iox.12.2021.04.12.06.43.35
+        by mx.google.com with ESMTPS id r13si6855769ilg.23.2021.04.12.06.44.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Apr 2021 06:43:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 12 Apr 2021 06:44:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BMUfEZPw;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=R4jSIXGw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39608 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43430 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lVwqk-0004NV-RQ
-	for alex.bennee@linaro.org; Mon, 12 Apr 2021 09:43:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58560)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lVwrs-0005vj-1G
+	for alex.bennee@linaro.org; Mon, 12 Apr 2021 09:44:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58568)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lVwqb-0004Kp-Dn
- for qemu-arm@nongnu.org; Mon, 12 Apr 2021 09:43:25 -0400
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e]:36508)
+ id 1lVwqb-0004Lo-V4
+ for qemu-devel@nongnu.org; Mon, 12 Apr 2021 09:43:25 -0400
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d]:45015)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lVwqX-0003N2-TP
- for qemu-arm@nongnu.org; Mon, 12 Apr 2021 09:43:25 -0400
-Received: by mail-wr1-x42e.google.com with SMTP id m9so264066wrx.3
- for <qemu-arm@nongnu.org>; Mon, 12 Apr 2021 06:43:21 -0700 (PDT)
+ id 1lVwqY-0003Nb-50
+ for qemu-devel@nongnu.org; Mon, 12 Apr 2021 09:43:25 -0400
+Received: by mail-wr1-x42d.google.com with SMTP id e7so4038319wrs.11
+ for <qemu-devel@nongnu.org>; Mon, 12 Apr 2021 06:43:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=coR5qfcj7HbN5UNgt4/UQCpFaRvRt8MSF2O7M15ACS8=;
- b=BMUfEZPwGnUS8HE7k/U/fh4/0ucrzzjeMHFpoYRDqJoOqkRJMoaJRp6RMRUK47fN3S
- M/0CZAzeskwp/Kunx0UcRSKJUocnrKmaxwRyRxol5IsbHA8Xu5dMMEqJ2rDE6qu1UoGR
- 5Junhb83gJzKiVY/ixs/74DIT8jegYMkEDCiLheiG7bgy9h6TgN5sIltBqarIsCiC71w
- nLT8VYBV4szL7mu+07eoYnkZVscKez4n+sfZGDKxEncNCcQsYizRtRmYo3LJZw/Vekc5
- Y67u3LLUOxFRSHDl96l759f1xFWgOFwdZKiefCE8IEQG7jvYZabr+8G4eCEwwb6eYfaT
- iz4A==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=J5x2+PDQQAl8Qw/oP7RNvJGs/sHvZewjNi5ZG9bocOk=;
+ b=R4jSIXGwwt9JoyvsAdQbw/IVQWlLw/IgSOHn05WwnFMESby8qKBlQl0rPQBhv8+1l3
+ XFCmiOCAvFu3EAQGPoZBaLRj32sf4t3EjSR0ImIBc0tskicApHZQUN7vgaFsHEZHLhxN
+ QeVm8Ou8FoJSc7ehPOBdrmnKehz4zNbmM9jarDHzYD5FkPNA/te86922i0UqCuR5Shwu
+ PDYOps76dU2wqwIz+q87+RxMrslvsHykUhvDOU4fu98ZCvxHSqVEWXhza8VTomHQZ4i6
+ xGivgScYwniePng+atdVw9prVihU6F6uzrKLsaTY0T7wvkib9NPYWCudzqdg13eWcTPs
+ Wgmw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=coR5qfcj7HbN5UNgt4/UQCpFaRvRt8MSF2O7M15ACS8=;
- b=ChmJQOFBzopjTbnbq7aA1eQhGie7KOGhjA9NL2eje7yGc8az4LL8ZwWvFchEQj0gL7
- hEybeqZht1PTpo2apG7kBL4/vZ0SqTH1LB+CWFiCwHrQZ1Sh2GnUVjZqQOCu/G2LhU25
- 1iRit2R5+Tho7ONpyYSHNIPjpBw0upy28kS6AejdePiru3bkllCnz2Plau2jwXkOcXOv
- O7ezqRlguqW3O7tHn7eOcYzCb742rTPqGOqzhJPZczK+mGYXHhowRSM768Bjue/rMcOF
- jRXms1emn3TaFZKXAo4YqTlCSnQDcttwFkYY3D1aUArohlL6myabUErbQ6nwqfdn4yjq
- CizQ==
-X-Gm-Message-State: AOAM531cMgTPd4KYnTPR7p7gt4UOB7XBc28ii4kfQP3PY+uVroVOnHj9
- OiDEL7jy1EsGezwjSlKdmrn1zyRrhxKyrJ/x
-X-Received: by 2002:a05:6000:1102:: with SMTP id
- z2mr9914770wrw.333.1618235000055; 
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=J5x2+PDQQAl8Qw/oP7RNvJGs/sHvZewjNi5ZG9bocOk=;
+ b=LS5ZLFrG+FFgDpjR/BVLxWEJ10UEAYl/AeBd45mOurtGikJCaXBjIW7WuzbEaGgtXw
+ Jqd2CysaGLsLwpP1Uu9hTRIa1r7uT3zS+73s9/Jnaaip2TbTp/VAA19u26fd5rRqjsFW
+ 2uTVfDDu1QgVm/WuRxBJHy9cmTt9deOZYxnns/x/yuGpdLji27KKKmbOmTJEDAPW5/dI
+ 9Dz9s8JZG4heAxlrPhdVhK8jNSbHsR3iVx1W/QHB3+4B4Oova1pQwi8CiKB5EKLxL6Vt
+ zPCtoWR2j3aLbn2YMHjq0qveAeiE6JqXNL4tkOCh7J77euTFo3zCN4BB0uYSFbibAlCS
+ y28w==
+X-Gm-Message-State: AOAM530bz1KY14yov8Z0Bxw6t/IOOfNsAHG0GuSBCpHsUe/0PDyY0L7T
+ aLqtL4YzC62sntchnTdMowzLBQ==
+X-Received: by 2002:a5d:6881:: with SMTP id h1mr23749826wru.121.1618235000790; 
  Mon, 12 Apr 2021 06:43:20 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id p16sm19574680wrt.54.2021.04.12.06.43.19
+ by smtp.gmail.com with ESMTPSA id p16sm19574680wrt.54.2021.04.12.06.43.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Apr 2021 06:43:19 -0700 (PDT)
+ Mon, 12 Apr 2021 06:43:20 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 0/3] mps3-an524: support memory remapping
-Date: Mon, 12 Apr 2021 14:43:14 +0100
-Message-Id: <20210412134317.12501-1-peter.maydell@linaro.org>
+Subject: [PATCH 1/3] hw/misc/mps2-scc: Add "QEMU interface" comment
+Date: Mon, 12 Apr 2021 14:43:15 +0100
+Message-Id: <20210412134317.12501-2-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20210412134317.12501-1-peter.maydell@linaro.org>
+References: <20210412134317.12501-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -103,58 +105,54 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Kumar Gala <kumar.gala@linaro.org>,
  Kevin Townsend <kevin.townsend@linaro.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: srM9wygqgxA9
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: U5G0Xlu7pXJ3
 
-The AN524 FPGA image supports two memory maps, which differ
-in where the QSPI and BRAM are. In the default map, the BRAM
-is at 0x0000_0000, and the QSPI at 0x2800_0000. In the second
-map, they are the other way around.
+The MPS2 SCC device doesn't have any documentation of its properties;
+add a "QEMU interface" format comment describing them.
 
-In hardware, the initial mapping can be selected by the user
-by writing either "REMAP: BRAM" (the default) or "REMAP: QSPI"
-in the board configuration file. The guest can also dynamically
-change the mapping via the SCC CFG_REG0 register.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ include/hw/misc/mps2-scc.h | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-This patchset adds support for the feature to QEMU's model;
-the user-sets-the-initial-mapping part is a new machine property
-which can be set with "-M remap=QSPI".
-
-This is needed for some guest images -- for instance the
-Arm TF-M binaries -- which assume they have the QSPI layout.
-
-Based-on: 20210409150527.15053-1-peter.maydell@linaro.org
-("mps3-an524: Fix MPC setting for SRAM block")
-though any conflict/dependency would be minor and purely textual.
-
-thanks
--- PMM
-
-Peter Maydell (3):
-  hw/misc/mps2-scc: Add "QEMU interface" comment
-  hw/misc/mps2-scc: Support using CFG0 bit 0 for remapping
-  hw/arm/mps2-tz: Implement AN524 memory remapping via machine property
-
- docs/system/arm/mps2.rst   |  10 ++++
- include/hw/misc/mps2-scc.h |  21 ++++++++
- hw/arm/mps2-tz.c           | 106 ++++++++++++++++++++++++++++++++++++-
- hw/misc/mps2-scc.c         |  13 +++--
- 4 files changed, 146 insertions(+), 4 deletions(-)
-
+diff --git a/include/hw/misc/mps2-scc.h b/include/hw/misc/mps2-scc.h
+index 49d070616aa..ea261ea30d6 100644
+--- a/include/hw/misc/mps2-scc.h
++++ b/include/hw/misc/mps2-scc.h
+@@ -9,6 +9,18 @@
+  *  (at your option) any later version.
+  */
+ 
++/*
++ * This is a model of the Serial Communication Controller (SCC)
++ * block found in most MPS FPGA images.
++ *
++ * QEMU interface:
++ *  + sysbus MMIO region 0: the register bank
++ *  + QOM property "scc-cfg4": value of the read-only CFG4 register
++ *  + QOM property "scc-aid": value of the read-only SCC_AID register
++ *  + QOM property "scc-id": value of the read-only SCC_ID register
++ *  + QOM property array "oscclk": reset values of the OSCCLK registers
++ *    (which are accessed via the SYS_CFG channel provided by this device)
++ */
+ #ifndef MPS2_SCC_H
+ #define MPS2_SCC_H
+ 
 -- 
 2.20.1
 

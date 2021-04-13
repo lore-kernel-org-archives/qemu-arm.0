@@ -1,216 +1,197 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp5026186lfr;
-        Tue, 13 Apr 2021 09:27:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxGWaXSs9jejXxVTO9h6bPnoh103UkK2AEhjetcMBE/2VP2fycQTKalRoG06iqtOMAxHxqM
-X-Received: by 2002:a05:6602:2d04:: with SMTP id c4mr28250978iow.182.1618331262903;
-        Tue, 13 Apr 2021 09:27:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618331262; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp5030679lfr;
+        Tue, 13 Apr 2021 09:33:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwmNclyAeNDq6Iwo5PDQG17HseWRt/nXe0n3CSOoRlW7wNXx9UTLjVFjL570yN50juFJJWX
+X-Received: by 2002:a05:6602:1689:: with SMTP id s9mr26835168iow.171.1618331603405;
+        Tue, 13 Apr 2021 09:33:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618331603; cv=none;
         d=google.com; s=arc-20160816;
-        b=DbnE6xXOyglYrpwlCLmt0TwmvBidg/3rkIUr13irbZsyFAdFWRnGoYJzWdBRHxKsSy
-         bX/E6tMs8dtJyjE1fedo2xTWxMOZ8MiWwaboWWFc4UzfkUwAuZYVu5OnDQCO9VjHVpDM
-         SaQ2xwDsVDgSWhddCHEwsaZM5S90xhtP/RD3kpFueotI0ZWYO1Z3JbpwwDFvJPzPz0tt
-         OzcP4fyiYlOXNulpHdvfkqsPUt/P6xRLc+rc9aU18lSoeW9Gjj8buW0AwcDOSPmFbOfO
-         huMqTYZIj5q+tw6iUfX/VS7pnZBnh1Ic1xLDSIr0YWfVEIAOU5I5T3d8ZcYFkrsJnt36
-         B+Iw==
+        b=czXhcIJmE5PsAm2XmO4uQTdKxRvDqTPGqWgSWm8Rj0D6M/Rs8ZMTgZa0vrVt0vknEe
+         hnJNpPrG8RP+jaM9zgcBvsxWaC3KZgRLE6jsx8tF27e64INI3CNdKRUOBziHsBwXCYTM
+         wywhcdQzApOufQ1We59vqSSCejEkTe19ArymUXxhfZ04T7JdNHXtTCqpD6v7LuTHKfzP
+         fwak5tDRy4F75vx/4h4iFATk9cBosnvIwXveh/Q7lF42E15YuqMrPsHAXBvW1ONY0jwP
+         MyUMWmcArAHULuRIC/Z8wD+Uiq+4oz+o4nGnjN+VQ+GHM/0ze8l6ZGfXSx9V8OTbBuQ9
+         A2Iw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=zJftxWeOf1waFo8PZ0HmoXVAIrP81e+QKyBtFEMWQ/s=;
-        b=lovE6avzglA3ehORXdxq7gpaadM76gFjVBTeyq5U2iFYjoIRTG1tLFWRAFm+9dLMzq
-         KF0p02wMLc8KgA4X9nF/bnPywQpbz+4ffd4fB6XcgTew0G02UhczwibUovwYm1HvDMTb
-         b4lgWia3g5bMOtU12U6vjSih0anMvoEC5LM1OZGfcwvacZHEl0xw6/XPgIsrdAZa534/
-         UH3AL6hjw81XMnw7sNt7qn5b3pYh0DAYaySaStpM/G5nQC2P4Sz+AxaZDPaEFeXsdP2Z
-         62WcbDOokT/E0AXysxL+sCn4B5U8aMf1Hpy8QsuR9+Ts2NmI+oYOOP2y15jS5qnO+Tem
-         5H4w==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=sAyZDV8ez0Fyur5MK2rJoUhbTVyXT9k2cb019Jq9DjI=;
+        b=isT5eYc9JNk1wab/SJhxPt4W6ipiGpLuFXUkLgkiOIqVNKEMFTuKxv7D3EJOmT3+gH
+         yRSfmcgU3TMV2d0iFPLrvmIbJv4nRD4Fn03duNMgNyo8KesRZmHJE1lCtUPTRMmjfGy9
+         EJKIlVFTIELfpYE65di74Kp+2/Ls3T5OF65buoTYhDOvILGLkhTrj2pqiss+EHfnpxKz
+         hn/+cMiLKbWzn4rN3/3NvNtZfg4VrAyk1ED98YzLsSMR7+COUm+6/Fd2i1nl7Mym263h
+         rTe+JWGbza7Xk7d+oSKSAkyY/mOqBBPL2Ixq7LqysiRewjd8nbtMw9h+6N0oho5GPj/p
+         Y+LQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GwPvgcUv;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ezrL2qGW;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d2si16884203ios.97.2021.04.13.09.27.42
+        by mx.google.com with ESMTPS id r4si16445990jai.85.2021.04.13.09.33.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 Apr 2021 09:27:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 13 Apr 2021 09:33:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GwPvgcUv;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37448 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ezrL2qGW;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:46312 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lWLt8-000477-72
-	for alex.bennee@linaro.org; Tue, 13 Apr 2021 12:27:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41738)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lWLyc-0007n7-JR
+	for alex.bennee@linaro.org; Tue, 13 Apr 2021 12:33:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46916)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lWLaZ-0006T4-Sy
- for qemu-arm@nongnu.org; Tue, 13 Apr 2021 12:08:31 -0400
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435]:46852)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lWLut-00068Q-Cp; Tue, 13 Apr 2021 12:29:31 -0400
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333]:37728)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lWLaS-0006wV-1x
- for qemu-arm@nongnu.org; Tue, 13 Apr 2021 12:08:31 -0400
-Received: by mail-wr1-x435.google.com with SMTP id c15so8060739wro.13
- for <qemu-arm@nongnu.org>; Tue, 13 Apr 2021 09:08:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:in-reply-to:references:mime-version
- :content-transfer-encoding;
- bh=zJftxWeOf1waFo8PZ0HmoXVAIrP81e+QKyBtFEMWQ/s=;
- b=GwPvgcUv2Xgb/pCrm6mHysuUBo4ESzHXBIgJkjg4WEm6o9713WHrxJnxPFpOsQK7uc
- Zj7nj8tF1bRrDH/ukaStJiyvgeiNrZa50tCrdcioqeqts/WrRXql9sQHQtYFF0O/WrnR
- EVoW4GUMfCBoOID6vB6HzfsR5o1+du3CYQN4gmHOOV41VmMUETVXujlGy8fbz0LiqjYQ
- kM3JjF5QlHMfV7g0Tu7sXwLGzb6wQMH7oNzuUIgbXeKhVw+KMRcRHwkF/0Tu9lzrQwfP
- yfhBjdvdG3re1I3K57Ngct/qL0azj7gqOSeX/qVdugiBWXPFGg3I1G1rTKYtjBR627jG
- Yu7Q==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lWLur-0000AP-K1; Tue, 13 Apr 2021 12:29:31 -0400
+Received: by mail-wm1-x333.google.com with SMTP id
+ g66-20020a1c39450000b0290125d187ba22so8752733wma.2; 
+ Tue, 13 Apr 2021 09:29:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=sAyZDV8ez0Fyur5MK2rJoUhbTVyXT9k2cb019Jq9DjI=;
+ b=ezrL2qGWE5rmuSdoJIvwN6cqSAtqkcJuKT50ENwTkYC5e3nHP18fAVU2Pfby+iCYFf
+ 6xKemIXjPFsRc2P3T9KFIat4LtIEnb1ZB/uKQ5Y9EfhBWe5kfE2w3Lasu8sx5jF7VTkf
+ BA0DrYjr3c5szYy792/fXNRPC8fMe8bhog6No1knxBGjE2CjdboEvILCP6lISKEONNsi
+ B5ByzI4KIH7Mp8+1HKqkpIbVg/1Mk6rswFw7IruC783lqifUsmCgcZw2ZI261owv3eEp
+ AAw3z4C++Vxj2Uu63IKonf1CnATUQcyfjfIKuJ3rsxvEb7p6AdVy8vq8lswojyGmavgM
+ qM1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=zJftxWeOf1waFo8PZ0HmoXVAIrP81e+QKyBtFEMWQ/s=;
- b=JuiXBviMm63UODaIjFN57xolajUS6s7HN3Ypaq56xxh4yl2dm09n3qOtRazRAw5hRi
- 70KGJPYaNDARNhjMXi971dh4TEaviaxW+bcjD7puPvVc86T79X/Lbv6oqvM7ZMBs+8FJ
- N+7Qk5qhQ5LC8UUVjYTHIScdeIP6mY7zbyzLBHfKLb9mo148W+mVu+7lBIndvLEHeSmj
- pnCyIjDEl+EJvWFr+UJCboAiYA4SmGHas8VffmowwKf87QGAhmJw4htH3d9wodZHjAF4
- S9WHV/BVL0AF0x11MM6cmB7ZKWnuIb5uCJvgZNhw2Ipu9pnUuvKvczElJi9H5NtfCkbx
- UMrQ==
-X-Gm-Message-State: AOAM53260X7kzViqo/w6yojus9Q8mR1stm+2dQb5MN6T3jvunVhpISoX
- yaFn5U2W4GCbEwOy1jeSlmwts+WRiMxbNebM
-X-Received: by 2002:a5d:6682:: with SMTP id l2mr13269224wru.306.1618330102357; 
- Tue, 13 Apr 2021 09:08:22 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id b1sm20810888wru.90.2021.04.13.09.08.21
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 13 Apr 2021 09:08:22 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 13/13] target/arm: Make translate-neon.c.inc its own
- compilation unit
-Date: Tue, 13 Apr 2021 17:07:59 +0100
-Message-Id: <20210413160759.5917-14-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210413160759.5917-1-peter.maydell@linaro.org>
-References: <20210413160759.5917-1-peter.maydell@linaro.org>
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=sAyZDV8ez0Fyur5MK2rJoUhbTVyXT9k2cb019Jq9DjI=;
+ b=jYUYL1f7FzWxnUFyJlTUQsocg2G9w/mbGFDlyx0ki35MbLOvlyxV5aQF4fZGs6YvQF
+ 11iC3SDhKZ6/Wxf+z08fhDwkBvGVV4d8PqldLU6LCvOf3ezWkVoWJWM6/lQVtBE59ASf
+ SS8zTNR0/VSaMSOpjXDFFvXg3vX3dqqHyzl/Jb9MS/mq5sdqgfb3ZesVk36ZryetAxkx
+ LluWI9kxpEhGtyJP82KeYCwdITbOpdk9nBs6sL09yufR5yXdeuj9KLfgQGZPszjUR3BL
+ Y8VHhcCiywc6KAgKM3KL/RzoIRI8Lyd4Y8W1D24ahmaLS+YgLgIYMTX572vod7ztFz3q
+ PoPA==
+X-Gm-Message-State: AOAM530GAJ3wMlbzqyNJdaq4+qShE/oQv8JAa0ZuhL0ZCiStXySsrcB+
+ 84TtaE/szJmFzW6pj0+3yP0=
+X-Received: by 2002:a1c:750d:: with SMTP id o13mr822778wmc.76.1618331367711;
+ Tue, 13 Apr 2021 09:29:27 -0700 (PDT)
+Received: from [192.168.1.36] (39.red-81-40-121.staticip.rima-tde.net.
+ [81.40.121.39])
+ by smtp.gmail.com with ESMTPSA id z15sm14354959wrv.39.2021.04.13.09.29.26
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 13 Apr 2021 09:29:26 -0700 (PDT)
+Subject: Re: [PATCH 0/3] mps3-an524: support memory remapping
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20210412134317.12501-1-peter.maydell@linaro.org>
+ <5ae470a2-d10a-13a3-4dc6-62490a940e13@amsat.org>
+ <CAFEAcA8wTdQpYhsDzcXZQG=yqxoQumoZj4TgPjEZjM6GgHmTvQ@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <fab25109-f8c9-f8e2-4d56-ba76c5c79341@amsat.org>
+Date: Tue, 13 Apr 2021 18:29:25 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
+In-Reply-To: <CAFEAcA8wTdQpYhsDzcXZQG=yqxoQumoZj4TgPjEZjM6GgHmTvQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::435;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x435.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x333.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NwBkDV4nxuwR
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Kumar Gala <kumar.gala@linaro.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Kevin Townsend <kevin.townsend@linaro.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: wrevc2ySOGbB
 
-Switch translate-neon.c.inc from being #included into translate.c
-to being its own compilation unit.
+Hi Peter,
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/translate-a32.h                           |  3 +++
- .../arm/{translate-neon.c.inc => translate-neon.c}   | 12 +++++++-----
- target/arm/translate.c                               |  3 ---
- target/arm/meson.build                               |  7 ++++---
- 4 files changed, 14 insertions(+), 11 deletions(-)
- rename target/arm/{translate-neon.c.inc => translate-neon.c} (99%)
+On 4/12/21 4:48 PM, Peter Maydell wrote:
+> On Mon, 12 Apr 2021 at 15:37, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>> On 4/12/21 3:43 PM, Peter Maydell wrote:
+>>> The AN524 FPGA image supports two memory maps, which differ
+>>> in where the QSPI and BRAM are. In the default map, the BRAM
+>>> is at 0x0000_0000, and the QSPI at 0x2800_0000. In the second
+>>> map, they are the other way around.
+>>>
+>>> In hardware, the initial mapping can be selected by the user
+>>> by writing either "REMAP: BRAM" (the default) or "REMAP: QSPI"
+>>> in the board configuration file. The guest can also dynamically
+>>> change the mapping via the SCC CFG_REG0 register.
+>>>
+>>> This patchset adds support for the feature to QEMU's model;
+>>> the user-sets-the-initial-mapping part is a new machine property
+>>> which can be set with "-M remap=QSPI".
+>>>
+>>> This is needed for some guest images -- for instance the
+>>> Arm TF-M binaries -- which assume they have the QSPI layout.
+>>
+>> I tend to see machine property set on the command line similar
+>> to hardware wire jumpers, externally set (by an operator having
+>> access to the hardware, not guest code).
+>>
+>> Here the remap behavior you described is triggered by the guest.
+>> Usually this is done by a bootloader code before running the
+>> guest code.
+>> Couldn't we have the same result using a booloader (like -bios
+>> cmd line option) rather than modifying internal peripheral state?
+> 
 
-diff --git a/target/arm/translate-a32.h b/target/arm/translate-a32.h
-index f165f15cc47..d3aeb5a19c9 100644
---- a/target/arm/translate-a32.h
-+++ b/target/arm/translate-a32.h
-@@ -24,6 +24,9 @@
- bool disas_m_nocp(DisasContext *dc, uint32_t insn);
- bool disas_vfp(DisasContext *s, uint32_t insn);
- bool disas_vfp_uncond(DisasContext *s, uint32_t insn);
-+bool disas_neon_dp(DisasContext *s, uint32_t insn);
-+bool disas_neon_ls(DisasContext *s, uint32_t insn);
-+bool disas_neon_shared(DisasContext *s, uint32_t insn);
- 
- void load_reg_var(DisasContext *s, TCGv_i32 var, int reg);
- void arm_gen_condlabel(DisasContext *s);
-diff --git a/target/arm/translate-neon.c.inc b/target/arm/translate-neon.c
-similarity index 99%
-rename from target/arm/translate-neon.c.inc
-rename to target/arm/translate-neon.c
-index c6f8bc259a1..6532d69f134 100644
---- a/target/arm/translate-neon.c.inc
-+++ b/target/arm/translate-neon.c
-@@ -20,11 +20,13 @@
-  * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-  */
- 
--/*
-- * This file is intended to be included from translate.c; it uses
-- * some macros and definitions provided by that file.
-- * It might be possible to convert it to a standalone .c file eventually.
-- */
-+#include "qemu/osdep.h"
-+#include "tcg/tcg-op.h"
-+#include "tcg/tcg-op-gvec.h"
-+#include "exec/exec-all.h"
-+#include "exec/gen-icount.h"
-+#include "translate.h"
-+#include "translate-a32.h"
- 
- static inline int plus1(DisasContext *s, int x)
- {
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index f6d71d03a3a..b00344b933d 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -1149,9 +1149,6 @@ void write_neon_element64(TCGv_i64 src, int reg, int ele, MemOp memop)
- 
- #define ARM_CP_RW_BIT   (1 << 20)
- 
--/* Include the Neon decoder */
--#include "translate-neon.c.inc"
--
- static inline void iwmmxt_load_reg(TCGv_i64 var, int reg)
- {
-     tcg_gen_ld_i64(var, cpu_env, offsetof(CPUARMState, iwmmxt.regs[reg]));
-diff --git a/target/arm/meson.build b/target/arm/meson.build
-index f6360f33f11..5bfaf43b500 100644
---- a/target/arm/meson.build
-+++ b/target/arm/meson.build
-@@ -1,8 +1,8 @@
- gen = [
-   decodetree.process('sve.decode', extra_args: '--decode=disas_sve'),
--  decodetree.process('neon-shared.decode', extra_args: '--static-decode=disas_neon_shared'),
--  decodetree.process('neon-dp.decode', extra_args: '--static-decode=disas_neon_dp'),
--  decodetree.process('neon-ls.decode', extra_args: '--static-decode=disas_neon_ls'),
-+  decodetree.process('neon-shared.decode', extra_args: '--decode=disas_neon_shared'),
-+  decodetree.process('neon-dp.decode', extra_args: '--decode=disas_neon_dp'),
-+  decodetree.process('neon-ls.decode', extra_args: '--decode=disas_neon_ls'),
-   decodetree.process('vfp.decode', extra_args: '--decode=disas_vfp'),
-   decodetree.process('vfp-uncond.decode', extra_args: '--decode=disas_vfp_uncond'),
-   decodetree.process('m-nocp.decode', extra_args: '--decode=disas_m_nocp'),
-@@ -27,6 +27,7 @@ arm_ss.add(files(
-   'tlb_helper.c',
-   'translate.c',
-   'translate-m-nocp.c',
-+  'translate-neon.c',
-   'translate-vfp.c',
-   'vec_helper.c',
-   'vfp_helper.c',
--- 
-2.20.1
+(
 
+> In the real hardware, the handling of the board configuration
+> file is done by the "Motherboard Configuration Controller", which
+> is an entirely separate microcontroller on the dev board but outside
+> the FPGA, and which is responsible for things like loading image
+> files off the SD card and writing them to memory, setting a bunch
+> of initial configuration including the remap setting but also
+> things like setting the oscillators to the values that this
+> particular FPGA image needs. It's also what makes the board
+> appear to a connected computer as a USB mass storage device so
+> you can update the SD card files via USB cable rather than doing
+> lots of plugging and unplugging, and it is what loads the FPGA
+> image off SD card and into the FPGA in the first place.
+
+) [*]
+
+> QEMU is never going to implement the MCC as a real emulated
+> guest CPU; instead our models hard-code some of the things it
+> does. I think that a machine property (a thing set externally
+> to the guest CPU and valid before any guest CPU code executes)
+> is a reasonable way to implement the remap setting, which from
+> the point of view of the CPU inside the FPGA is a thing set
+> externally and valid before any guest CPU code executes.
+
+OK now I understand the picture, the MCC is external. In that case
+the machine property is a clean way to address that.
+
+Could you add the first paragraph of your answer ([*]) in patch 3
+description (before the current comment) to make it clearer?
+
+Thanks for the clarification,
+
+Phil.

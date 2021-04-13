@@ -1,108 +1,109 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp5030778lfr;
-        Tue, 13 Apr 2021 09:33:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzbQuqM8H8ExQAjIpefw2fCm1jMaRXyejGXRFAn7C4EgoedIR5Vy44mCZbqPvkfwr4+BBGj
-X-Received: by 2002:a92:c944:: with SMTP id i4mr27604406ilq.305.1618331611529;
-        Tue, 13 Apr 2021 09:33:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618331611; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp5032925lfr;
+        Tue, 13 Apr 2021 09:36:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxzPY1ubMXo9oLd7EeWbEbi9mk1D9NyVMAFz4smAbVP5W/RXx++jo4WyjrPjlcO5sUcj/O2
+X-Received: by 2002:a05:6e02:1ca7:: with SMTP id x7mr12753271ill.10.1618331776906;
+        Tue, 13 Apr 2021 09:36:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618331776; cv=none;
         d=google.com; s=arc-20160816;
-        b=Hx2LAfaHQ9zsca+S9dXZNcoDGdi7J1JEM5xa2dTTC9iVrFG9BuC7MMknJdWL0f+dqM
-         XKPNYjBgA0PMIk3m/i4zUvb4bcCOBXzsgASwL90kc/O6xVtDhqqA+SgpjVpDWEauDdTA
-         nbqml4el2TunqyucYE+QWCN+/TVz1e4AmYG3vDrUHmoiBAB9slcerhwjXdlFLAwWdQ33
-         Ftmhlo6etFKk0oD2c/oUZJdPWL+/i1soZcDuWdMMekx6Wg8vASktGWcbM/65ndnWc22P
-         94X6S+uFIR4a05VEuFU/Cz4kN263VhzoodKRF4RdfUhAe0KUuEc1Su+gU7uoDz9y/tc3
-         O3ng==
+        b=Vwf/dDQ4jQI+b0ikbk+WFHIJ5kwsaYHhsBz4EIVFjs5cFVHEaHl89CMdym2dDSWZ9n
+         JnTHMg1mtRSRLPH0xLl2sSNm5wBZjAUlfD+0vHvWdnngr2hNJ3l/lAkaI2dCU5yZuqsy
+         3tUoiZpxPpk6kNw+6sfRI6rfFFmRmdeVrrQlv61GR5DsnbCuAAqDZWs6mtXzxzfpaOHh
+         CK6m+uy8ow5dHFIVsCnYTuj/N177r8mn9ZLB+lNdcDS+mNBa8bVx4bZhiqAGlM5bMUO3
+         eRKvofTJ5MCQkENnj2IVJeu9Lw4D1ik92c/UB4r+45o63nwOAcRKaAdCLojZtKWTtTZN
+         eylw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=I0l0jYvm/Zwc1PRODJG5t1CPdLK7bgLlhLtJy7UP1hs=;
-        b=TQqalsfClepx1UZiSIIU5H29Ir85TVVYWZCBfRdBQAKfKk9gK18D3Su9kN8ACR08l7
-         u5nQUBFpZQKTYJQnOeU8vNtKXfMiLIsVct7lRgAEBQ5HkmWlF5Zpr9KZ92SHsUruxUTN
-         USOdCSzLSeElwefViReaAHLwjmAr7LhBxu+zV5CkfQlnxq11+G7FT+fcvu7zfCowsFl3
-         nJbAJRPhFMIB3M9kOwqIjbgdhmZKaqk+KlenXnOp7Zl2SveFmO8cqzaVyyyMJoE/RMij
-         VMvurl0eq01THr04QJjP1mtUissQA489kl+OxSHbVv6qEBFehaqkGZ9FODH/h5S7igzd
-         i/WQ==
+         :message-id:references:to:from:subject:dkim-signature;
+        bh=ShcJIwLf+DJeSIT4SOEIOCjKV8zLCBHFlcKwgWIF+Q0=;
+        b=s3N+glPQRLM/61ogdBNrmp5HaQMqWXR1fzqjN8Y2ltV/lMs/gkAl0vhPoet4C9Qnla
+         NwFbUenJIfBkMNlbptSWNdZHfx4hLoCn9lLxeLJf87mCNOqCYXJMrtZkbM4yna3R1F4Y
+         dqiEq3bIVJjBkTSO/ZWDjuU0YhFfbhGYBzu+AejHJXjayTqhosKDpMsTOh5+RgnIHqzn
+         3J0UfZZNbHyZglJgrQgAdQqMAICoirYRWZ5zrnRspCNTL2DezR90jlSuppPnkFA5/UdQ
+         NrfJ8RrFt7VUhtt43A/oh0uupf/LDgGqrMuxlsrqc+jB0tAq9qyb/NYbry0cHcj1oZuu
+         I7Cw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AiwIyOLo;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YWq5YDUX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t15si6983411ioj.58.2021.04.13.09.33.31
+        by mx.google.com with ESMTPS id f19si18019120jat.55.2021.04.13.09.36.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 Apr 2021 09:33:31 -0700 (PDT)
+        Tue, 13 Apr 2021 09:36:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AiwIyOLo;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YWq5YDUX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:48368 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51364 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lWLyk-0000Dg-QU
-	for alex.bennee@linaro.org; Tue, 13 Apr 2021 12:33:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47108)
+	id 1lWM1Q-0001ax-5B
+	for alex.bennee@linaro.org; Tue, 13 Apr 2021 12:36:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47796)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lWLwB-0006pq-41; Tue, 13 Apr 2021 12:30:51 -0400
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a]:41696)
+ id 1lWLyr-0000rB-GK; Tue, 13 Apr 2021 12:33:37 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332]:47081)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lWLw9-0000o0-MP; Tue, 13 Apr 2021 12:30:50 -0400
-Received: by mail-wm1-x32a.google.com with SMTP id
- s10-20020a05600c318ab029012d7c83637bso539652wmp.0; 
- Tue, 13 Apr 2021 09:30:48 -0700 (PDT)
+ id 1lWLyp-0001ug-Ty; Tue, 13 Apr 2021 12:33:37 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ z24-20020a1cf4180000b029012463a9027fso9078289wma.5; 
+ Tue, 13 Apr 2021 09:33:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ h=sender:subject:from:to:cc:references:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=I0l0jYvm/Zwc1PRODJG5t1CPdLK7bgLlhLtJy7UP1hs=;
- b=AiwIyOLoNIF6WoimD4sbZPPO+OC9GvKwjcpaFjLd0hyIMApTFLZxSUz3WVNDkVzjUg
- EcmyO2VHNy38LVTpb9zWZPo2F5kS4ZzHAdot1b52tNTYubqKmiT+FTGmuKYH+Sx5U8lB
- gKOK90rGEx8KBp6LNvKT1m06uoEbvR4k0uN8dDD4WyaV6euriQYyqFa+ojBwECReD1A1
- ACxHD1PgZ+q7BlS9iukMkAfkWvb2tDH7ZJ6DQdG3pCsA8+6V1DNTa4t39Ri3o9gikmtq
- ESlJ36jiqBBmC0LNeJcWOIKU3MYJH+wdheyLF8vX8CSCQDbdcGsvqP3qtbux5Ow8Fyed
- qwcA==
+ bh=ShcJIwLf+DJeSIT4SOEIOCjKV8zLCBHFlcKwgWIF+Q0=;
+ b=YWq5YDUX8ESVQfioduxYGLNG2RX7aPeWBTJJP2afvrR7jl9GVp8ApJTwWrtXHI7IC6
+ xbhagSr5bd1OtVXkxhhYDzbcFdcesbfODYLVjMM40q5mLCX0CML5f4p2h1hx890reecD
+ /gne38TZaNx3MZudi/iKyvWKz/A99HJPs6NsfaAaWSrTf/cE46UvSJhJ6CYU7T77klda
+ LaUznA/ioxtpzviSuAff/m4D2T+z/KYOnac0J3ddXqkYBUGxUxGOLC5hVdc+YLTxndK3
+ lOoS0CN7n4pI8m/x2wibjs4yBOp303bqoWXWbwHyFyiD9f+VbRgxG6rqLlu7zdrigVUv
+ NYXw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ h=x-gm-message-state:sender:subject:from:to:cc:references:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=I0l0jYvm/Zwc1PRODJG5t1CPdLK7bgLlhLtJy7UP1hs=;
- b=qnU2dfoHtokgMN0y7ZnEjAM6LgdInP4csrR8smmT7SprhiBCkfMNbzTOZl+3hyBYB6
- TLEw9ylQGpZWbXYo8nxzwGyrd1LLHFwfMKbjr0ued6z/9d+ZAISZXd5+iXgulB035f4H
- w4r1Rr6SyenBSJiHzPeHbDl2XgUENQlbMqyAIVQJFTQN8rHB/E1DZZo/BaNvm0UHqpDR
- a0FmPsjcM42IkTJPUAAS9goR1AGBYrhCONUrkHHcmU38BQZW4fz2JLr80azHNX+0KupV
- oS70jE3IoGZYCkM17xkw0XwSLIcOYcH+I6eNuQEF7oIEzZmiixwdCgBoK3QoaXaplOce
- EHWw==
-X-Gm-Message-State: AOAM532R/0tyojRk/iyQQV7SQ75l8uib1/XRft/GAvuCOchAQXTPHfkP
- GdURaaoTytNWA/hDee+lyGBDm2+tWHw=
-X-Received: by 2002:a7b:ce09:: with SMTP id m9mr838243wmc.150.1618331447864;
- Tue, 13 Apr 2021 09:30:47 -0700 (PDT)
+ bh=ShcJIwLf+DJeSIT4SOEIOCjKV8zLCBHFlcKwgWIF+Q0=;
+ b=kWX7lMIznJFqW0JAyTVgalpSU0JBbFWFVkKn/pZCSvRHQP9vy/xH3LcgRIjU4Ddmhj
+ 3pSdVeLX24Yn2NJVBP7CjdNPuMHg7T+wgxbtybtAUyiaxLsHQHzvp1EOLK18jrvsYsMv
+ ME/aVAXcdEp0CM0hcEJXTdCWDrLhSwbNYHXG6vneZ/+ZvlAkNLQ4jyXTQyE9jrjxLGLm
+ 8/9FiAXAXlT/v61dhMmAEan5ha1w1/foQfmiW95dey46YK4IqZi1Z1l8Mdh9wF21r8dJ
+ 2t01KTGhlDlH0HitE8t0P3VVYZMbDWRoxOXYPIRJ3ibc0O6qMwIpO9STeEVzve2WVh2f
+ 1dVg==
+X-Gm-Message-State: AOAM532xEsTYUz2fmafpYkscsSGYky1yfIi9iBZdSsG14rowv/OuN109
+ dyrTMwjgYMdrInpFG+S109VoaTWhgSo=
+X-Received: by 2002:a05:600c:35c1:: with SMTP id
+ r1mr823384wmq.143.1618331614324; 
+ Tue, 13 Apr 2021 09:33:34 -0700 (PDT)
 Received: from [192.168.1.36] (39.red-81-40-121.staticip.rima-tde.net.
  [81.40.121.39])
- by smtp.gmail.com with ESMTPSA id h2sm3034947wmc.24.2021.04.13.09.30.46
+ by smtp.gmail.com with ESMTPSA id z66sm3054386wmc.4.2021.04.13.09.33.32
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 13 Apr 2021 09:30:47 -0700 (PDT)
-Subject: Re: [PATCH 2/3] hw/misc/mps2-scc: Support using CFG0 bit 0 for
- remapping
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20210412134317.12501-1-peter.maydell@linaro.org>
- <20210412134317.12501-3-peter.maydell@linaro.org>
+ Tue, 13 Apr 2021 09:33:33 -0700 (PDT)
+Subject: Re: [PATCH 0/3] mps3-an524: support memory remapping
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <6979704a-842b-0691-f02d-c921ed00b730@amsat.org>
-Date: Tue, 13 Apr 2021 18:30:46 +0200
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20210412134317.12501-1-peter.maydell@linaro.org>
+ <5ae470a2-d10a-13a3-4dc6-62490a940e13@amsat.org>
+ <CAFEAcA8wTdQpYhsDzcXZQG=yqxoQumoZj4TgPjEZjM6GgHmTvQ@mail.gmail.com>
+ <fab25109-f8c9-f8e2-4d56-ba76c5c79341@amsat.org>
+Message-ID: <6c6bca82-ba03-62dc-0c74-2efc85fa160e@amsat.org>
+Date: Tue, 13 Apr 2021 18:33:32 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <20210412134317.12501-3-peter.maydell@linaro.org>
+In-Reply-To: <fab25109-f8c9-f8e2-4d56-ba76c5c79341@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -123,24 +124,73 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Kumar Gala <kumar.gala@linaro.org>,
- Kevin Townsend <kevin.townsend@linaro.org>
+Cc: Kumar Gala <kumar.gala@linaro.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Kevin Townsend <kevin.townsend@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 67k++M+W3AJ2
+X-TUID: fQyijDvaNckf
 
-On 4/12/21 3:43 PM, Peter Maydell wrote:
-> On some boards, SCC config register CFG0 bit 0 controls whether
-> parts of the board memory map are remapped. Support this with:
->  * a device property scc-cfg0 so the board can specify the
->    initial value of the CFG0 register
->  * an outbound GPIO line which tracks bit 0 and which the board
->    can wire up to provide the remapping
+On 4/13/21 6:29 PM, Philippe Mathieu-Daudé wrote:> On 4/12/21 4:48 PM,
+Peter Maydell wrote:
+>> On Mon, 12 Apr 2021 at 15:37, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>>> On 4/12/21 3:43 PM, Peter Maydell wrote:
+>>>> The AN524 FPGA image supports two memory maps, which differ
+>>>> in where the QSPI and BRAM are. In the default map, the BRAM
+>>>> is at 0x0000_0000, and the QSPI at 0x2800_0000. In the second
+>>>> map, they are the other way around.
+>>>>
+>>>> In hardware, the initial mapping can be selected by the user
+>>>> by writing either "REMAP: BRAM" (the default) or "REMAP: QSPI"
+>>>> in the board configuration file. The guest can also dynamically
+>>>> change the mapping via the SCC CFG_REG0 register.
+>>>>
+>>>> This patchset adds support for the feature to QEMU's model;
+>>>> the user-sets-the-initial-mapping part is a new machine property
+>>>> which can be set with "-M remap=QSPI".
+>>>>
+>>>> This is needed for some guest images -- for instance the
+>>>> Arm TF-M binaries -- which assume they have the QSPI layout.
+>>>
+>>> I tend to see machine property set on the command line similar
+>>> to hardware wire jumpers, externally set (by an operator having
+>>> access to the hardware, not guest code).
+>>>
+>>> Here the remap behavior you described is triggered by the guest.
+>>> Usually this is done by a bootloader code before running the
+>>> guest code.
+>>> Couldn't we have the same result using a booloader (like -bios
+>>> cmd line option) rather than modifying internal peripheral state?
+>>
 > 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  include/hw/misc/mps2-scc.h |  9 +++++++++
->  hw/misc/mps2-scc.c         | 13 ++++++++++---
->  2 files changed, 19 insertions(+), 3 deletions(-)
+> (
+> 
+>> In the real hardware, the handling of the board configuration
+>> file is done by the "Motherboard Configuration Controller", which
+>> is an entirely separate microcontroller on the dev board but outside
+>> the FPGA, and which is responsible for things like loading image
+>> files off the SD card and writing them to memory, setting a bunch
+>> of initial configuration including the remap setting but also
+>> things like setting the oscillators to the values that this
+>> particular FPGA image needs. It's also what makes the board
+>> appear to a connected computer as a USB mass storage device so
+>> you can update the SD card files via USB cable rather than doing
+>> lots of plugging and unplugging, and it is what loads the FPGA
+>> image off SD card and into the FPGA in the first place.
+> 
+> ) [*]
+> 
+>> QEMU is never going to implement the MCC as a real emulated
+>> guest CPU; instead our models hard-code some of the things it
+>> does. I think that a machine property (a thing set externally
+>> to the guest CPU and valid before any guest CPU code executes)
+>> is a reasonable way to implement the remap setting, which from
+>> the point of view of the CPU inside the FPGA is a thing set
+>> externally and valid before any guest CPU code executes.
+> 
+> OK now I understand the picture, the MCC is external. In that case
+> the machine property is a clean way to address that.
+> 
+> Could you add the first paragraph of your answer ([*]) in patch 3
+> description (before the current comment) to make it clearer?
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+(In case you agree, no need to respin).

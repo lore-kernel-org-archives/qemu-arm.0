@@ -1,105 +1,89 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp3975701lfr;
-        Mon, 12 Apr 2021 07:49:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyHPdFCJIxCtncDUEREFxnjm7P885ICWkymlL5nHCfUVDhPHpOXwhYdkqaerMGDc12cWMDs
-X-Received: by 2002:a6b:7c42:: with SMTP id b2mr23258730ioq.125.1618238983162;
-        Mon, 12 Apr 2021 07:49:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618238983; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp4486915lfr;
+        Mon, 12 Apr 2021 20:26:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwzWgXZ9rEXLOFrRB8Cugcg/yPzVn/LiuxCDbhC2cUHp0ky/5VQIctj1yv/4loHMUQX6DvS
+X-Received: by 2002:a0c:f489:: with SMTP id i9mr102180qvm.41.1618284402710;
+        Mon, 12 Apr 2021 20:26:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618284402; cv=none;
         d=google.com; s=arc-20160816;
-        b=Lm362hXBwLuu2pWcCYa62UBFNUGqknNiX+k5q3qef39LOqyCkqxcSoTA9sxT/UrA4z
-         XDcRXGMTPVEuw/B8m9iQZ1m/Xomt2vpabYW7NVSlXOonQqZ9+Ficx5QPPK6lDgKr8rK+
-         PbnSCg3z/D3TB7jw7aCyDEcL6B7rbZOrh/4W9I4BLXI2kZ6Ma2z3duMsnoafg38v7sqv
-         mVY5GAHQFf7MDjjg2yfwJ365Ad2bPPVRyPkah7PcWt0f9FI2E6Z7kW7O1DKpFK6LF1fa
-         eLTNs/UQerIkjOserYh1nSZO6w5avuRxcjA1nMksuHJr5RH7jdnAxec83uwRX6w75Yvn
-         bNtQ==
+        b=Ua5oqDIIri67KnoOwFaN9Cj6qYlCAEBL62sjXWiujG2LU5vzl4ZQkHT0wCUZW64mEZ
+         AYS1Jnrrb7F5h/sYSZkAjvQSkD4z8dQZZFZQU5ct/yNWaVMd6UWamLL4v51QEZ69LLtn
+         sxisY5dnmUj8N97iqUxhQwuzGDNUJG5FtDvQGknuXnMy8AaLPc61tmUJQYZxOJv2nQkD
+         WcfGO2+ZcpcZDbNmUJ3iypSWDUhP5BneGGD3fCYoq3O5LwtWhf6cwR6zpmvijU/OBAa4
+         EXTyMe3tliyGz39K3Xs6mj+nmv23VPGPOvYGW6Y5DAHiOT8oR7LgOlTrBZM+ZqD98b1U
+         GPmg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=YBQjV6Tlf7l4baWwDrLI9ZK5m9k22UcI+TNM7YMe8MA=;
-        b=VFUvQmCD1lhNgJdWgpeNVLQYieB8AMrxi/msifySbs5dWseW90Kc9rSLyZs2LMpSgV
-         SS3+FUzjxeD2dFkRrP15vyvwp4jcL3GVk3QOLZ1rMiDk91eDK7q8EHHcjUO+4UM4gXka
-         Tj8O0I780jatWLcemVu9ouhirPpT5spslvpqobYkMXEOoFCbIB1egg4UN+3e670Rc3nP
-         jm7Ntmu2kHoTrEnMl2Kf+SrCm3/UNVYC/AmhlH9ccxfgoSCo4he/eHHNMICm0p++zhTl
-         8DwryrnAnFqQgsH9U0+30AP2ES4b+B2GxxhW11LRb+utBmu6w3Ypk7qXcCwsWXPT5Pu1
-         GZEw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:subject:from:references:to;
+        bh=BVejbYNnZ3hi/a59prl7by88cYd7ib6XImMuktbRw+E=;
+        b=IyQxCc2PxZnwIzKVHfLGSdq7MwNh5/W4QTpi3vukzvShSK4BLyGiMTmEDCEbySJkX/
+         KC1HgLmNoKvhsMg2OEW6NlmV81B+B2sNmSVfGfDUAwTzlZtt8waVtAqBYKiv+rhSDq2y
+         uJkpGK2w/ad4B3c5MaS13L94tLV1IvqK4gK3cJP3u2x7PKYtI8woniiykL/8b3Alv1ZP
+         FasuEm5ceq7uJl/we/XalTAPNPZ1frArWaU0990X6/0Ns8CBIV47HYOP9Y8s3EM3GAAe
+         YLbrh5LI6xkr44x0MgHoY4fCkl44mItKIq8BIKlBf+5fjct4SDL3LjbhWIyaLgBwPdbC
+         iVVw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="e01fa8/2";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l11si13951994ils.61.2021.04.12.07.49.42
+        by mx.google.com with ESMTPS id g4si1287143qtg.59.2021.04.12.20.26.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Apr 2021 07:49:43 -0700 (PDT)
+        Mon, 12 Apr 2021 20:26:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="e01fa8/2";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54256 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Received: from localhost ([::1]:48284 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lVxsk-0006w2-FB
-	for alex.bennee@linaro.org; Mon, 12 Apr 2021 10:49:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49130)
+	id 1lW9hK-0004Uh-1V
+	for alex.bennee@linaro.org; Mon, 12 Apr 2021 23:26:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48496)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lVxsX-0006tk-7F
- for qemu-arm@nongnu.org; Mon, 12 Apr 2021 10:49:29 -0400
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533]:45679)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lVxsT-0007YK-Kb
- for qemu-arm@nongnu.org; Mon, 12 Apr 2021 10:49:28 -0400
-Received: by mail-ed1-x533.google.com with SMTP id bx20so14264052edb.12
- for <qemu-arm@nongnu.org>; Mon, 12 Apr 2021 07:49:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=YBQjV6Tlf7l4baWwDrLI9ZK5m9k22UcI+TNM7YMe8MA=;
- b=e01fa8/2dkLTAoue5I+4ZFyPNvNStxyuYcxmWMSeFUbC4uNoO8MIFDzNmcLa1gz30o
- ocDVAzq0E/BLeFeQZCDIcUrSXRFtKaXBE4UO0bsCCI9ut+k3mcl4pJrNMz53BtG3aijU
- Ezhnf4v4KXHYZ5l1Ikw0nyQo/+l1LgbAu2PlzKKpNlEMzrX8NXUDCDhT0r9p1kcNyKEW
- hACQfd5y/uJwtTzecksWS5gMEJx8m3uBiImDdhQjr/D4b5VBTSkoaoNld3JET/p79XMC
- naZdxWQlUpi8iJxjoYH9YvjGWxGl0O7pz/I/bcd0XwDW5Kh/z1v1pSdkn0aR1RX7yKDo
- 90FA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=YBQjV6Tlf7l4baWwDrLI9ZK5m9k22UcI+TNM7YMe8MA=;
- b=jD7SoShM1ljX1/H+Q4iroLhdYoYd0UtLDrJCsMSw+qo9kG61EqgZBfxlQFgWRRYub0
- +iY4NVj4gksALGpjPI3LCt6xv6trnefUqFpnkXf2hiUxeVk9xcupDcU7mP+1VYLF4fIf
- s4tGjcSZW7NwuO/8u3weFLlSvSx7EmbRX074KnunbWA7rxfp3ktpMVm98ad4vagnxu9L
- YSkHY2JkvWVgnG2ba6zv92Ya54IkP6KcXWKEhzRzmI9lKnPiFe6J7/ybt+UEMtNFSwT3
- NutdC4rZpqxyLyesGq0ivaWpFQ6t+lIUhoRdr92rx+X0Er0O3mNjgm1XCyC2ZptQiJPr
- 8feQ==
-X-Gm-Message-State: AOAM531C1XcprSQED/waVIipyXyqyFapqn2gyepg4ltSz9pUY4A9KX0c
- Mm22g93y/0/BXYGYUQ8ctiNX5dXXz5h7r2jETmmiQg==
-X-Received: by 2002:aa7:cb0a:: with SMTP id s10mr29424403edt.36.1618238964234; 
- Mon, 12 Apr 2021 07:49:24 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <wangxingang5@huawei.com>)
+ id 1lW9h2-0004UV-Vx; Mon, 12 Apr 2021 23:26:25 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:5028)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <wangxingang5@huawei.com>)
+ id 1lW9gy-0000Fh-IK; Mon, 12 Apr 2021 23:26:24 -0400
+Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4FK9v355y5zlX2D;
+ Tue, 13 Apr 2021 11:24:15 +0800 (CST)
+Received: from [10.174.185.226] (10.174.185.226) by
+ DGGEMS406-HUB.china.huawei.com (10.3.19.206) with Microsoft SMTP Server id
+ 14.3.498.0; Tue, 13 Apr 2021 11:25:59 +0800
+To: Auger Eric <eric.auger@redhat.com>, <qemu-devel@nongnu.org>,
+ <qemu-arm@nongnu.org>, <shannon.zhaosl@gmail.com>, <imammedo@redhat.com>,
+ <mst@redhat.com>, <marcel.apfelbaum@gmail.com>, <peter.maydell@linaro.org>,
+ <ehabkost@redhat.com>, <richard.henderson@linaro.org>, <pbonzini@redhat.com>
+References: <1616656965-23328-1-git-send-email-wangxingang5@huawei.com>
+ <1616656965-23328-2-git-send-email-wangxingang5@huawei.com>
+ <6e6a276f-86b2-2f32-f3e0-9552f3d28a21@redhat.com>
+From: Wang Xingang <wangxingang5@huawei.com>
+Subject: Re: [PATCH RFC RESEND v2 1/6] hw/pci/pci_host: Add iommu property for
+ pci host
+Message-ID: <f4f4d975-5e9a-6677-02a4-bc0310e9e0f9@huawei.com>
+Date: Tue, 13 Apr 2021 11:25:48 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.5.1
 MIME-Version: 1.0
-References: <20210412134317.12501-1-peter.maydell@linaro.org>
- <5ae470a2-d10a-13a3-4dc6-62490a940e13@amsat.org>
-In-Reply-To: <5ae470a2-d10a-13a3-4dc6-62490a940e13@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 12 Apr 2021 15:48:39 +0100
-Message-ID: <CAFEAcA8wTdQpYhsDzcXZQG=yqxoQumoZj4TgPjEZjM6GgHmTvQ@mail.gmail.com>
-Subject: Re: [PATCH 0/3] mps3-an524: support memory remapping
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::533;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x533.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <6e6a276f-86b2-2f32-f3e0-9552f3d28a21@redhat.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.174.185.226]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.32;
+ envelope-from=wangxingang5@huawei.com; helo=szxga06-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -112,66 +96,126 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Kumar Gala <kumar.gala@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Kevin Townsend <kevin.townsend@linaro.org>
+Cc: xieyingtai@huawei.com, cenjiahui@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3/IxsTbeck7F
+X-TUID: kZirvOeEQXEX
 
-On Mon, 12 Apr 2021 at 15:37, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
- wrote:
->
-> Hi Peter,
->
-> On 4/12/21 3:43 PM, Peter Maydell wrote:
-> > The AN524 FPGA image supports two memory maps, which differ
-> > in where the QSPI and BRAM are. In the default map, the BRAM
-> > is at 0x0000_0000, and the QSPI at 0x2800_0000. In the second
-> > map, they are the other way around.
-> >
-> > In hardware, the initial mapping can be selected by the user
-> > by writing either "REMAP: BRAM" (the default) or "REMAP: QSPI"
-> > in the board configuration file. The guest can also dynamically
-> > change the mapping via the SCC CFG_REG0 register.
-> >
-> > This patchset adds support for the feature to QEMU's model;
-> > the user-sets-the-initial-mapping part is a new machine property
-> > which can be set with "-M remap=3DQSPI".
-> >
-> > This is needed for some guest images -- for instance the
-> > Arm TF-M binaries -- which assume they have the QSPI layout.
->
-> I tend to see machine property set on the command line similar
-> to hardware wire jumpers, externally set (by an operator having
-> access to the hardware, not guest code).
->
-> Here the remap behavior you described is triggered by the guest.
-> Usually this is done by a bootloader code before running the
-> guest code.
-> Couldn't we have the same result using a booloader (like -bios
-> cmd line option) rather than modifying internal peripheral state?
+Hi Eric,
 
-In the real hardware, the handling of the board configuration
-file is done by the "Motherboard Configuration Controller", which
-is an entirely separate microcontroller on the dev board but outside
-the FPGA, and which is responsible for things like loading image
-files off the SD card and writing them to memory, setting a bunch
-of initial configuration including the remap setting but also
-things like setting the oscillators to the values that this
-particular FPGA image needs. It's also what makes the board
-appear to a connected computer as a USB mass storage device so
-you can update the SD card files via USB cable rather than doing
-lots of plugging and unplugging, and it is what loads the FPGA
-image off SD card and into the FPGA in the first place.
+On 2021/4/13 1:36, Auger Eric wrote:
+> Hi Wang,
+> 
+> On 3/25/21 8:22 AM, Wang Xingang wrote:
+>> From: Xingang Wang <wangxingang5@huawei.com>
+>>
+>> The pci host iommu property is useful to check whether
+>> the iommu is enabled on the pci root bus.
+>>
+>> Signed-off-by: Xingang Wang <wangxingang5@huawei.com>
+>> Signed-off-by: Jiahui Cen <cenjiahui@huawei.com>
+>> ---
+>>   hw/pci/pci.c              | 18 +++++++++++++++++-
+>>   hw/pci/pci_host.c         |  2 ++
+>>   include/hw/pci/pci.h      |  1 +
+>>   include/hw/pci/pci_host.h |  1 +
+>>   4 files changed, 21 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+>> index ac9a24889c..e17aa9075f 100644
+>> --- a/hw/pci/pci.c
+>> +++ b/hw/pci/pci.c
+>> @@ -417,6 +417,22 @@ const char *pci_root_bus_path(PCIDevice *dev)
+>>       return rootbus->qbus.name;
+>>   }
+>>   
+>> +bool pci_root_bus_has_iommu(PCIBus *bus)
+> "has_iommu" is misleading as it does not mean an IOMMU is actually
+> instantiated but rather that if there is any, it will translate
+> transactions coming from this primary bus
+> 
+> I would rather inverse the logic and have a
+> 
+> "bypass_iommu" property defaulting to false
+> 
+> and this function dubbed something like pci_root_bus_bypass_iommu
+>> +{
+>> +    PCIBus *rootbus = bus;
+>> +    PCIHostState *host_bridge;
+>> +
+>> +    if (!pci_bus_is_root(bus)) {
+>> +        rootbus = pci_device_root_bus(bus->parent_dev);
+>> +    }
+>> +
+>> +    host_bridge = PCI_HOST_BRIDGE(rootbus->qbus.parent);
+>> +
+>> +    assert(host_bridge->bus == rootbus);
+>> +
+>> +    return host_bridge->iommu;
+>> +}
+>> +
 
-QEMU is never going to implement the MCC as a real emulated
-guest CPU; instead our models hard-code some of the things it
-does. I think that a machine property (a thing set externally
-to the guest CPU and valid before any guest CPU code executes)
-is a reasonable way to implement the remap setting, which from
-the point of view of the CPU inside the FPGA is a thing set
-externally and valid before any guest CPU code executes.
+Thanks for your advice, it is misleading, i will replace this.
 
-thanks
--- PMM
+>>   static void pci_root_bus_init(PCIBus *bus, DeviceState *parent,
+>>                                 MemoryRegion *address_space_mem,
+>>                                 MemoryRegion *address_space_io,
+>> @@ -2716,7 +2732,7 @@ AddressSpace *pci_device_iommu_address_space(PCIDevice *dev)
+>>   
+>>           iommu_bus = parent_bus;
+>>       }
+>> -    if (iommu_bus && iommu_bus->iommu_fn) {
+>> +    if (pci_root_bus_has_iommu(bus) && iommu_bus && iommu_bus->iommu_fn) {
+>>           return iommu_bus->iommu_fn(bus, iommu_bus->iommu_opaque, devfn);
+>>       }
+>>       return &address_space_memory;
+>> diff --git a/hw/pci/pci_host.c b/hw/pci/pci_host.c
+>> index 8ca5fadcbd..92ce213b18 100644
+>> --- a/hw/pci/pci_host.c
+>> +++ b/hw/pci/pci_host.c
+>> @@ -222,6 +222,8 @@ const VMStateDescription vmstate_pcihost = {
+>>   static Property pci_host_properties_common[] = {
+>>       DEFINE_PROP_BOOL("x-config-reg-migration-enabled", PCIHostState,
+>>                        mig_enabled, true),
+>> +    DEFINE_PROP_BOOL("pci-host-iommu-enabled", PCIHostState,
+>> +                     iommu, true),
+>>       DEFINE_PROP_END_OF_LIST(),
+>>   };
+>>   
+>> diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
+>> index 6be4e0c460..718b5a454a 100644
+>> --- a/include/hw/pci/pci.h
+>> +++ b/include/hw/pci/pci.h
+>> @@ -480,6 +480,7 @@ void pci_for_each_bus(PCIBus *bus,
+>>   
+>>   PCIBus *pci_device_root_bus(const PCIDevice *d);
+>>   const char *pci_root_bus_path(PCIDevice *dev);
+>> +bool pci_root_bus_has_iommu(PCIBus *bus);
+>>   PCIDevice *pci_find_device(PCIBus *bus, int bus_num, uint8_t devfn);
+>>   int pci_qdev_find_device(const char *id, PCIDevice **pdev);
+>>   void pci_bus_get_w64_range(PCIBus *bus, Range *range);
+>> diff --git a/include/hw/pci/pci_host.h b/include/hw/pci/pci_host.h
+>> index 52e038c019..64128e3a19 100644
+>> --- a/include/hw/pci/pci_host.h
+>> +++ b/include/hw/pci/pci_host.h
+>> @@ -43,6 +43,7 @@ struct PCIHostState {
+>>       uint32_t config_reg;
+>>       bool mig_enabled;
+>>       PCIBus *bus;
+>> +    bool iommu;
+>>   
+>>       QLIST_ENTRY(PCIHostState) next;
+>>   };
+>>
+> Thanks
+> 
+> Eric
+> 
+> .
+> 
+
+Thanks
+
+Xingang
+
+.

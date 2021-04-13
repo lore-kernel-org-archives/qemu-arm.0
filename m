@@ -1,107 +1,108 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp5052850lfr;
-        Tue, 13 Apr 2021 10:00:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw2ZTjarnupyArt8GCaWibWjx8d6O1Pui7D+FeTU/vDeI5py2L/1MGkDH+nxt+7HK135tuU
-X-Received: by 2002:a6b:3118:: with SMTP id j24mr27282125ioa.205.1618333208538;
-        Tue, 13 Apr 2021 10:00:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618333208; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp5055069lfr;
+        Tue, 13 Apr 2021 10:02:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyWXnrhELcYXY6VwBQc4d917RPWscIoDHywjEfKSdAfZWjEU6B5vfdFFX562Gmin8hEHsti
+X-Received: by 2002:a05:6602:46:: with SMTP id z6mr15953480ioz.79.1618333330997;
+        Tue, 13 Apr 2021 10:02:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618333330; cv=none;
         d=google.com; s=arc-20160816;
-        b=t10iC954dRCN6T5Oth/ATkfCAO67MzwPCfMKTTlEOyAUjGuKW3zdd/6fGiX1KquYFk
-         pe2s3D5x57gOZtk/m7qfNH5BctsfLgjaCw/IqH7qD+DqtkKrbWI1QuKpzwpAf8vCA8iQ
-         s/CauyuS6UXTrFiKrty9gnUJdyasA5PYmn6nAbZXueTHNid6ArzTWd6hPCqcPJ2PDihW
-         b+m08RJyH7j2ZdeDg+C2U4Cd+lwaCzJEl7IunF5cBJGHHNm+Gm2Os3xATWN2yBlsfF3e
-         /AYrtaWmY0V+dKCjNn60Bi4dDbEtTkGmWMOLiNMbtFYTo0A7nb6EY4/A6jRIyrhXB0QO
-         u1ng==
+        b=jw+QtpHvyrAMPfnowIds9xwZt6Z/3QWgFJveMZqNWry/d/4wue5BHGCkC2DERmEZP8
+         9903ZaTKjkJEgfZCPz1VEI9qtMkXJqjif6J9ODkV/ykD2ePzllokDNc2ugKyhKK+NYa8
+         hihamVmSTAfFDjVq/ZTurofGxznLuQx02FGDkNt35pylrS6y5ObLBki2MUYL/bond3+w
+         rWe7CdVD+ObdVSY4VxTbAX1HsghyyZNjHWa9J+ZMA3PkRPVsh302p/xDZoRzVFyH52WS
+         3dKErRlUbacBmoTRs8aRg6/sHzT/hjujwWYa+46fCMX5/0/Iy0Yql+GsRbn8P7vbPCxh
+         k5lQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=9wT8spic4/COFYq9REm81WEt576wS2+k8OYTy4X+org=;
-        b=mb4vgS1Yl/7Yxexd0EWT5gbkk6zX49/lQ7OVUWy0fHalfOOUiZxxTEv6/t1bu/+l8+
-         6gxz9UqizGLbNajQrExWbWtW/KxBeqO8ak/gkvBqcGVulIIHb0D2+ubIoXCCMzdQCkmW
-         FCny8seTHimtgciioVFN7kcsFfVxnnPHa15qQcTYHSdYhLzr/jTkhoetkBOBY8JDUIQi
-         ABx2BvgUb+I/kCmPRxyRue1ii7rMkqcaMDteJRC10t73nfBEwy/VjIfPeTKf6NTnV4aY
-         gW4hfildS0QTw7cHMQ/PK3W51xPAxiApru+umIe3ADzEWUWC2Jv6vwboaQFrg/t/UCxF
-         Uesw==
+        bh=1X5XjOMRQtIAYRhbGdGWwYFc8Tzv+3JDwJddZF6ch3Y=;
+        b=u8SqJRTuDYgS6l9wGMFaNY9eyNkEOvap76CywUsE4WPyNwAdyJVSGdYWKA3eKwtHH6
+         sPsdZQz035aWMWT1Co2YTGx81PsvnEyVeYiOUaJEUgzqcW9cos8l2q2YcxTs85mcwQoK
+         TGoSMQZMpkfxubEKUWNd8hjRE2Zs2gJSH8ewRzmdr88gBPn+SNVkiEzIhKGy4ijMscTR
+         uH2Ptp6uwYQvYWOaiJXjRe3DKNcudpFaUwxM+82hIjKomYUWWRpFg9QAAhy3D3Gpw0PA
+         YmQjrxP0BXtHyPbq1P4CzNGapgzO0MJl8+dM9AjORLAfp2bFTOqmETtcfafR90r6VEq3
+         zrmA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=NuccolTn;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=c2rew7Gs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z11si17725389ioq.81.2021.04.13.10.00.07
+        by mx.google.com with ESMTPS id n125si20228738iof.55.2021.04.13.10.02.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 Apr 2021 10:00:08 -0700 (PDT)
+        Tue, 13 Apr 2021 10:02:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=NuccolTn;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=c2rew7Gs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:49934 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52778 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lWMOV-00066Z-6M
-	for alex.bennee@linaro.org; Tue, 13 Apr 2021 13:00:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54596)
+	id 1lWMQU-0007NN-3Z
+	for alex.bennee@linaro.org; Tue, 13 Apr 2021 13:02:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55094)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lWMOI-00063N-Us; Tue, 13 Apr 2021 12:59:54 -0400
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b]:44028)
+ id 1lWMQ3-0007Jp-6U; Tue, 13 Apr 2021 13:01:43 -0400
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e]:39806)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lWMOG-00062v-Oq; Tue, 13 Apr 2021 12:59:54 -0400
-Received: by mail-wr1-x42b.google.com with SMTP id x7so17141964wrw.10;
- Tue, 13 Apr 2021 09:59:51 -0700 (PDT)
+ id 1lWMQ1-0006r9-P5; Tue, 13 Apr 2021 13:01:42 -0400
+Received: by mail-wr1-x42e.google.com with SMTP id s7so17049424wru.6;
+ Tue, 13 Apr 2021 10:01:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:references:cc:from:message-id:date:user-agent
+ h=sender:subject:to:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=9wT8spic4/COFYq9REm81WEt576wS2+k8OYTy4X+org=;
- b=NuccolTneCghrWk6uKHqyDNUos90MeBDLMRGNT2uIC/ZWMXJvHEe4b0Sn+t3eV7jCl
- ByIS3utpGwMJqlfpS1RMi6NklkJH55NuSSuUDcTBtHBTFfZKvpSNroVqVje+uNToOf3d
- VUTe1oCE8XSf2LdCL7/na7uemwLFg4448v6lDc4rM5rfRTeRcQoQXYPDorTTrfjUHLRh
- cDzSRlGjF53bPKFE0jNC/ACeXn3sPTlguFylinLMHvctlbCI/07Q68X82Vr/LRsfF3SI
- 1dWXHkgoIOPaAJJoh/t+oee3V5sdHrRpddv2+/7Yp8RsgMC99S2/ZwobuTKRzXP6o27w
- G+WQ==
+ bh=1X5XjOMRQtIAYRhbGdGWwYFc8Tzv+3JDwJddZF6ch3Y=;
+ b=c2rew7GsWMH71IEEG0DJXYWM4x383jWauQCQPZv8kgaysA1Tye7dv1Snzo7bpUc8kW
+ N8CxjtfWvwHLPIRn/M1vVkQ1yLL2y7Pob3aGp/aWaQblZKiY6yTIXlfT2c3v3uynOmep
+ 1gp+TorvYxqi4WylYtViRN24hdx2wXs+sZS0NDlWV3JOBVmkGL14s27MGhIjl8p5hggm
+ Msbgf6iR1mV6MvZsW2cAaW6dhs/Nmq/kX24gMOYRPv66Xx/cr6N2JAzG6W/29eIjPij/
+ KmcT2SOG7gWlRc7dGUV+XRCv2kJW5NBQFUiXhXkVEfGS0BFBNRtUZnzrEnNz7l6ZGpkZ
+ 1Z1Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
+ h=x-gm-message-state:sender:subject:to:references:from:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=9wT8spic4/COFYq9REm81WEt576wS2+k8OYTy4X+org=;
- b=M0ar8noXH8lYncJbIVSm2vfBEC2ykNL8kRNdKMiUGoUKfNDl16t1uxQEapQjkXFOau
- 16McNQRW4Tk7eOJ0IuRmam7U7QubdJsnQ9UebRVVAgQRp88/OgMg+P6acK6/HXJxH0sl
- 77kdpkt5YimdLNbBXDoO//Xxe3iazQRa8leQAoQHhrs/Ts0wUFiFcFCztjaajAikqIV5
- ULnh6cjwuitCNmk55TunZkt1tRz0GE2RoqbQ1H5LhVTRiq6FBVRiiioB9ymLOz3AwZ29
- ilcfVIoVuI7Xr/5ZCuA+CZkDOMy+RjoVYKEAjG11LfM8p7edKBQ8wApnVazOw8tBczFP
- Dcpw==
-X-Gm-Message-State: AOAM530ZDe7avrZflfTeKFdde/Ju3OyDqggT+Ve1wY5b+vptoCr4/KIB
- uwrIU8mB0v18/nckmyBpEoM=
-X-Received: by 2002:a05:6000:1813:: with SMTP id
- m19mr9393746wrh.122.1618333189757; 
- Tue, 13 Apr 2021 09:59:49 -0700 (PDT)
+ bh=1X5XjOMRQtIAYRhbGdGWwYFc8Tzv+3JDwJddZF6ch3Y=;
+ b=haSlGRF82MmvCaEl58I3KxdaEuyzJLcaZvCesf9gKS9YHc47sAlCaY3/pPBkcxJdFl
+ eFfvNmc75lwgCPzstsYpmDuWBaK2n2V9OSsf62EO2cGiEkVw624TSQFF9MUSVssINvPW
+ GLEy/2Av2YJnyvkKV/ZjEXOQ/PNKbCnR0kyde8EGbAy3Z3jSMY9Uzp+S6UKarQM24erW
+ qsp5OGx/DElfyjHfp8cyXZLbkZjKz9JQSq3ZuGaTCXeFrEso5a0rSNMzuKmmXelAubvo
+ kGxgXd11biCv/NWQx59hADSIpzBOfvZP2vbP1ineAyYybIkJb58x+7fkAKIKUXOPouUg
+ z51Q==
+X-Gm-Message-State: AOAM530XbFs1p5opJfCXoWdE+7jB+e0s+QpQO2cOOgMkG8WxjHPVzf1C
+ 1/IFnimjO5E9QnuCiKhFrwVnQubCoOA=
+X-Received: by 2002:a05:6000:12c5:: with SMTP id
+ l5mr27021562wrx.84.1618333299900; 
+ Tue, 13 Apr 2021 10:01:39 -0700 (PDT)
 Received: from [192.168.1.36] (39.red-81-40-121.staticip.rima-tde.net.
  [81.40.121.39])
- by smtp.gmail.com with ESMTPSA id g84sm2979078wmf.30.2021.04.13.09.59.48
+ by smtp.gmail.com with ESMTPSA id x14sm20321920wrw.13.2021.04.13.10.01.38
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 13 Apr 2021 09:59:49 -0700 (PDT)
-Subject: Re: [PATCH 01/13] target/arm: Move constant expanders to translate.h
+ Tue, 13 Apr 2021 10:01:39 -0700 (PDT)
+Subject: Re: [PATCH 07/13] target/arm: Make functions used by translate-vfp
+ global
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20210413160759.5917-1-peter.maydell@linaro.org>
- <20210413160759.5917-2-peter.maydell@linaro.org>
+ <20210413160759.5917-8-peter.maydell@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <021cb1e1-60bb-3a36-e042-612ec447a066@amsat.org>
-Date: Tue, 13 Apr 2021 18:59:48 +0200
+Message-ID: <16651ccc-4adf-d891-f459-6ac2d01d4a18@amsat.org>
+Date: Tue, 13 Apr 2021 19:01:38 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <20210413160759.5917-2-peter.maydell@linaro.org>
+In-Reply-To: <20210413160759.5917-8-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42e.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -122,57 +123,18 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Richard Henderson <richard.henderson@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UHOIiRDCHmqh
+X-TUID: tDgG+zk8Zchl
 
 On 4/13/21 6:07 PM, Peter Maydell wrote:
-> Some of the constant expanders defined in translate.c are generically
-> useful and will be used by the separate C files for VFP and Neon once
-> they are created; move the expander definitions to translate.h.
+> Make the remaining functions which are needed by translate-vfp.c.inc
+> global.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  target/arm/translate.h | 24 ++++++++++++++++++++++++
->  target/arm/translate.c | 24 ------------------------
->  2 files changed, 24 insertions(+), 24 deletions(-)
-> 
-> diff --git a/target/arm/translate.h b/target/arm/translate.h
-> index 423b0e08df0..4c0b6e8fc42 100644
-> --- a/target/arm/translate.h
-> +++ b/target/arm/translate.h
-> @@ -116,6 +116,30 @@ extern TCGv_i32 cpu_NF, cpu_ZF, cpu_CF, cpu_VF;
->  extern TCGv_i64 cpu_exclusive_addr;
->  extern TCGv_i64 cpu_exclusive_val;
->  
-> +/*
-> + * Constant expanders for the decoders.
-> + */
-> +
-> +static inline int negate(DisasContext *s, int x)
-> +{
-> +    return -x;
-> +}
-> +
-> +static inline int plus_2(DisasContext *s, int x)
-> +{
-> +    return x + 2;
-> +}
-> +
-> +static inline int times_2(DisasContext *s, int x)
-> +{
-> +    return x * 2;
-> +}
-> +
-> +static inline int times_4(DisasContext *s, int x)
-> +{
-> +    return x * 4;
-> +}
+>  target/arm/translate-a32.h | 32 ++++++++++++++++++++++++++++++++
+>  target/arm/translate.c     | 37 ++++++-------------------------------
+>  2 files changed, 38 insertions(+), 31 deletions(-)
 
-Being static inlined, I wonder if these shouldn't belong
-to "exec/translator.h" or another generic helper header
-(because I ended using similar helpers in MIPS).
-
-Can be done later tho, so:
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

@@ -1,65 +1,64 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp4647004lfr;
-        Tue, 13 Apr 2021 01:10:57 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwh+z7p86n4bKSGyfottSOzlL5i/6XqyB8IOBiOXyNxcEtuuUSVtoMv7I+7K78uE0A0/JMD
-X-Received: by 2002:a05:622a:14b:: with SMTP id v11mr8081411qtw.33.1618301457493;
-        Tue, 13 Apr 2021 01:10:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618301457; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp4647055lfr;
+        Tue, 13 Apr 2021 01:11:04 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwbAHV2ph2TPpr8+oKt6D+ehzIzW1NGR9LdSjdHG16+hcbVF5dgw99KteI4J4dhMWACxc4s
+X-Received: by 2002:ab0:2456:: with SMTP id g22mr4478347uan.81.1618301464705;
+        Tue, 13 Apr 2021 01:11:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618301464; cv=none;
         d=google.com; s=arc-20160816;
-        b=Wt4VXU8NGsDyfjFe+CndrDwNJE6xH0XSOswh6WLGfSuj1HvYEFxEVT31aq+blcL9Xc
-         FWaS0JP3QFblvt6XIqXc43X3Ow6uQDmoSl73Fa+MDX0ZfXp3IN5WPbLxYpZ76kpwJvQ5
-         G5Cm/Ywv71G2CGlxjK4fuUtIJPFBBx2TZ2eLGqTvXYmnZoZJqWboM/Y51ysfJRiDBM5v
-         jTCtIn8A5CXDsFL8+8Am/B5b/5fl9IHJZDDP3tDp2WlYIhW9HxMxQRZHoI62X5psRQ3I
-         Un7D2dsmq0H38S0tSoPcxbXfqpR7FsWcyTjou2FdKIhWO5CTYITcTU8ouyyiCS4gSVy3
-         MBsQ==
+        b=jYTYU1GupOij1U2t4qS9hzLbJZb8iaFZ6Udd5wmckSOa/GHEhkYEhm74Bdedg3EHvA
+         E/uv9oDm0fsVGj9XUFITaj6l3Hv5X+PNQCIV+3lNHzkrDmmVJkK1al6uIKF2SPSzJwVS
+         jc4NOiixIuudXnyITrX5tlshLv38V/6FhfKH81vElVrpnqXYBwDKy5TK2Ol1iYSyhJBj
+         nZOFY+JYfYZSD0I7NB6iZTDV40D5L3axdV7aadEinT1gauGD3KFGFNtzmL80+HxPF6AI
+         aiMd5xY1WubnOCZE8B822P1Wlb5J0EY/dRkcjGJXDIynM7DDQrfQOea/DiJDei+HN/RJ
+         gJZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:references
          :in-reply-to:message-id:date:subject:to:from;
-        bh=7fPh6pto7IIcyip6WFWo4MJmHZ8/gfa7GTtrHIa6wyk=;
-        b=NKUqeaPlFSuwihwkz0EnIX2S//eon99Y8O2jUahTA8o49PKT/FhDowblz5D5XAfrum
-         BxIk9z60BJptO7lL1X/kzjhiMrvM0zJt0E9pwBA7t8DHHU+/HHbZA29pcea06zToFEw2
-         ZqtjmrYN7smSQNV1EbXKfvPsbALXgaM7Bk15AcDXZfeubGuRcEQY6DSMSPHxwMEFWm1O
-         E4RjLCywBx8WUwl8lDp0/Bn3RU7a3N6/hLDlBUp108qYXMb3yizVs/ptN2RTrkuQD7jM
-         BxfEUoBhANrf8C/II/SQEjiblge/73zy9OLvFOix3lU/kvuYTUT77BPjh0H1ySWOsjIc
-         /N7A==
+        bh=dp9f41L2KQ6bSgapyQUPNDUtxn44ml5XMPfF4TMh5mU=;
+        b=V00Du14FmKIcdG0NT4891FAYc8VEh6LQW98xkAnQgq5sMFOV2c7IWmeAs/9Vs95Sik
+         7BwCG0bf9w0b5Vhq7IK2crQLPEDNO6nONWoY+pAzUiRT2Bgs2EdlmNua1QbwobqR9irj
+         2+QBupQFyKEt8Jf0vbzee+Gz6cMrODEojdppx2ESHuvrmikByQBLM07zY2p/FwsXQUQV
+         IdygnewqjPvLXdhl1WJCgD5M2OEU0GIjGFqTXrqFkoylw4IS1l3/Vq6p65R7hA5YZysq
+         rlMCGSCKDmN+NNWCQPmrwrMz7FYG2aPoMp7kVzGGt7sQRkBEV00aHuohrLsNqFDlIZQi
+         N1OA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jf6si9779635qvb.72.2021.04.13.01.10.57
+        by mx.google.com with ESMTPS id m3si5826960uap.191.2021.04.13.01.11.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 Apr 2021 01:10:57 -0700 (PDT)
+        Tue, 13 Apr 2021 01:11:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:42530 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42768 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lWE8O-0008Pv-PR
-	for alex.bennee@linaro.org; Tue, 13 Apr 2021 04:10:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43922)
+	id 1lWE8V-00006F-W3
+	for alex.bennee@linaro.org; Tue, 13 Apr 2021 04:11:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43928)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1lWE5o-0004FT-UN; Tue, 13 Apr 2021 04:08:16 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:5035)
+ id 1lWE5p-0004He-Kw; Tue, 13 Apr 2021 04:08:17 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:5034)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1lWE5m-0006Yj-Hx; Tue, 13 Apr 2021 04:08:16 -0400
+ id 1lWE5m-0006Yi-Jk; Tue, 13 Apr 2021 04:08:17 -0400
 Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4FKJ8N2FqwzlXZs;
+ by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4FKJ8N30PtzlXdW;
  Tue, 13 Apr 2021 16:06:12 +0800 (CST)
 Received: from DESKTOP-TMVL5KK.china.huawei.com (10.174.187.128) by
  DGGEMS404-HUB.china.huawei.com (10.3.19.204) with Microsoft SMTP Server id
- 14.3.498.0; Tue, 13 Apr 2021 16:07:56 +0800
+ 14.3.498.0; Tue, 13 Apr 2021 16:07:55 +0800
 From: Yanan Wang <wangyanan55@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-Subject: [RFC PATCH v2 6/6] hw/arm/virt: Replace smp_parse with one that
- prefers cores
-Date: Tue, 13 Apr 2021 16:07:45 +0800
-Message-ID: <20210413080745.33004-7-wangyanan55@huawei.com>
+Subject: [RFC PATCH v2 5/6] hw/arm/virt-acpi-build: Add PPTT table
+Date: Tue, 13 Apr 2021 16:07:44 +0800
+Message-ID: <20210413080745.33004-6-wangyanan55@huawei.com>
 X-Mailer: git-send-email 2.8.4.windows.1
 In-Reply-To: <20210413080745.33004-1-wangyanan55@huawei.com>
 References: <20210413080745.33004-1-wangyanan55@huawei.com>
@@ -92,128 +91,150 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
  Yanan Wang <wangyanan55@huawei.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
  Alistair Francis <alistair.francis@wdc.com>, prime.zeng@hisilicon.com,
  yangyicong@huawei.com, yuzenghui@huawei.com,
- Igor Mammedov <imammedo@redhat.com>, zhukeqian1@huawei.com,
- Jiajie Li <lijiajie11@huawei.com>, David Gibson <david@gibson.dropbear.id.au>
+ Igor Mammedov <imammedo@redhat.com>, Ying Fang <fangying1@huawei.com>,
+ zhukeqian1@huawei.com, Jiajie Li <lijiajie11@huawei.com>,
+ David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iRpQkrDzUfO7
+X-TUID: NTh1y6i80HaE
 
-From: Andrew Jones <drjones@redhat.com>
+Add the Processor Properties Topology Table (PPTT) to present
+CPU topology information to ACPI guests. Note, while a DT boot
+Linux guest with a non-flat CPU topology will see socket and
+core IDs being sequential integers starting from zero, e.g.
+with -smp 4,sockets=2,cores=2,threads=1
 
-The virt machine type has never used the CPU topology parameters, other
-than number of online CPUs and max CPUs. When choosing how to allocate
-those CPUs the default has been to assume cores. In preparation for
-using the other CPU topology parameters let's use an smp_parse that
-prefers cores over sockets. We can also enforce the topology matches
-max_cpus check because we have no legacy to preserve.
+a DT boot produces
 
+ cpu:  0 package_id:  0 core_id:  0
+ cpu:  1 package_id:  0 core_id:  1
+ cpu:  2 package_id:  1 core_id:  0
+ cpu:  3 package_id:  1 core_id:  1
+
+an ACPI boot produces
+
+ cpu:  0 package_id: 36 core_id:  0
+ cpu:  1 package_id: 36 core_id:  1
+ cpu:  2 package_id: 96 core_id:  2
+ cpu:  3 package_id: 96 core_id:  3
+
+This is due to several reasons:
+
+ 1) DT cpu nodes do not have an equivalent field to what the PPTT
+    ACPI Processor ID must be, i.e. something equal to the MADT CPU
+    UID or equal to the UID of an ACPI processor container. In both
+    ACPI cases those are platform dependant IDs assigned by the
+    vendor.
+
+ 2) While QEMU is the vendor for a guest, if the topology specifies
+    SMT (> 1 thread), then, with ACPI, it is impossible to assign a
+    core-id the same value as a package-id, thus it is not possible
+    to have package-id=0 and core-id=0. This is because package and
+    core containers must be in the same ACPI namespace and therefore
+    must have unique UIDs.
+
+ 3) ACPI processor containers are not required for PPTT tables to
+    be used and, due to the limitations of which IDs are selected
+    described above in (2), they are not helpful for QEMU, so we
+    don't build them with this patch. In the absence of them, Linux
+    assigns its own unique IDs. The maintainers have chosen not to use
+    counters from zero, but rather ACPI table offsets, which explains
+    why the numbers are so much larger than with DT.
+
+ 4) When there is no SMT (threads=1) the core IDs for ACPI boot guests
+    match the logical CPU IDs, because these IDs must be equal to the
+    MADT CPU UID (as no processor containers are present), and QEMU
+    uses the logical CPU ID for these MADT IDs.
+
+Tested-by: Jiajie Li <lijiajie11@huawei.com>
 Signed-off-by: Andrew Jones <drjones@redhat.com>
+Signed-off-by: Ying Fang <fangying1@huawei.com>
 Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
 ---
- hw/arm/virt.c | 76 +++++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 76 insertions(+)
+ hw/arm/virt-acpi-build.c | 63 ++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 63 insertions(+)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 3e5d9b6f26..57ef961cb5 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -79,6 +79,8 @@
- #include "hw/virtio/virtio-iommu.h"
- #include "hw/char/pl011.h"
- #include "qemu/guest-random.h"
-+#include "qapi/qmp/qerror.h"
-+#include "sysemu/replay.h"
- 
- #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
-     static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
-@@ -2625,6 +2627,79 @@ static int virt_kvm_type(MachineState *ms, const char *type_str)
-     return fixed_ipa ? 0 : requested_pa_size;
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 2ad5dad1bf..03fd812d5a 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -436,6 +436,64 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+                  vms->oem_table_id);
  }
  
-+/*
-+ * Unlike smp_parse() in hw/core/machine.c, we prefer cores over sockets,
-+ * e.g. '-smp 8' creates 1 socket with 8 cores.  Whereas '-smp 8' with
-+ * hw/core/machine.c's smp_parse() creates 8 sockets, each with 1 core.
-+ * Additionally, we can enforce the topology matches max_cpus check,
-+ * because we have no legacy to preserve.
-+ */
-+static void virt_smp_parse(MachineState *ms, QemuOpts *opts)
++/* PPTT */
++static void
++build_pptt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
 +{
-+    if (opts) {
-+        unsigned cpus = qemu_opt_get_number(opts, "cpus", 0);
-+        unsigned sockets = qemu_opt_get_number(opts, "sockets", 0);
-+        unsigned cores = qemu_opt_get_number(opts, "cores", 0);
-+        unsigned threads = qemu_opt_get_number(opts, "threads", 0);
++    int pptt_start = table_data->len;
++    int uid = 0, cpus = 0, socket = 0;
++    MachineState *ms = MACHINE(vms);
++    unsigned int smp_cores = ms->smp.cores;
++    unsigned int smp_threads = ms->smp.threads;
 +
-+        /*
-+         * Compute missing values; prefer cores over sockets and
-+         * sockets over threads.
-+         */
-+        if (cpus == 0 || cores == 0) {
-+            sockets = sockets > 0 ? sockets : 1;
-+            threads = threads > 0 ? threads : 1;
-+            if (cpus == 0) {
-+                cores = cores > 0 ? cores : 1;
-+                cpus = cores * threads * sockets;
++    acpi_data_push(table_data, sizeof(AcpiTableHeader));
++
++    for (socket = 0; cpus < ms->possible_cpus->len; socket++) {
++        uint32_t socket_offset = table_data->len - pptt_start;
++        int core;
++
++        build_processor_hierarchy_node(
++            table_data, 1, /* Physical package */
++            0, socket, /* No parent */
++            NULL, 0);  /* No private resources */
++
++        for (core = 0; core < smp_cores; core++) {
++            uint32_t core_offset = table_data->len - pptt_start;
++            int thread;
++
++            if (smp_threads <= 1) {
++                build_processor_hierarchy_node(
++                    table_data,
++                    (1 << 1) | /* ACPI Processor ID valid */
++                    (1 << 3),  /* ACPI 6.3 - Node is a Leaf */
++                    socket_offset, uid++, /* Parent is a Socket */
++                    NULL, 0);  /* No private resources */
 +            } else {
-+                ms->smp.max_cpus = qemu_opt_get_number(opts, "maxcpus", cpus);
-+                cores = ms->smp.max_cpus / (sockets * threads);
++                build_processor_hierarchy_node(
++                    table_data, 0,
++                    socket_offset, core, /* Parent is a Socket */
++                    NULL, 0); /* No private resources */
++
++                for (thread = 0; thread < smp_threads; thread++) {
++                    build_processor_hierarchy_node(
++                        table_data,
++                        (1 << 1) | /* ACPI Processor ID valid */
++                        (1 << 2) | /* ACPI 6.3 - Processor is a Thread */
++                        (1 << 3),  /* ACPI 6.3 - Node is a Leaf */
++                        core_offset, uid++, /* Parent is a Core */
++                        NULL, 0);  /* No private resources */
++                }
 +            }
-+        } else if (sockets == 0) {
-+            threads = threads > 0 ? threads : 1;
-+            sockets = cpus / (cores * threads);
-+            sockets = sockets > 0 ? sockets : 1;
-+        } else if (threads == 0) {
-+            threads = cpus / (cores * sockets);
-+            threads = threads > 0 ? threads : 1;
-+        } else if (sockets * cores * threads < cpus) {
-+            error_report("cpu topology: "
-+                         "sockets (%u) * cores (%u) * threads (%u) < "
-+                         "smp_cpus (%u)",
-+                         sockets, cores, threads, cpus);
-+            exit(1);
 +        }
-+
-+        ms->smp.max_cpus = qemu_opt_get_number(opts, "maxcpus", cpus);
-+
-+        if (ms->smp.max_cpus < cpus) {
-+            error_report("maxcpus must be equal to or greater than smp");
-+            exit(1);
-+        }
-+
-+        if (sockets * cores * threads != ms->smp.max_cpus) {
-+            error_report("cpu topology: "
-+                         "sockets (%u) * cores (%u) * threads (%u)"
-+                         "!= maxcpus (%u)",
-+                         sockets, cores, threads,
-+                         ms->smp.max_cpus);
-+            exit(1);
-+        }
-+
-+        ms->smp.cpus = cpus;
-+        ms->smp.cores = cores;
-+        ms->smp.threads = threads;
-+        ms->smp.sockets = sockets;
++        cpus += smp_cores * smp_threads;
 +    }
 +
-+    if (ms->smp.cpus > 1) {
-+        Error *blocker = NULL;
-+        error_setg(&blocker, QERR_REPLAY_NOT_SUPPORTED, "smp");
-+        replay_add_blocker(blocker);
-+    }
++    build_header(linker, table_data,
++                 (void *)(table_data->data + pptt_start), "PPTT",
++                 table_data->len - pptt_start, 2,
++                 vms->oem_id, vms->oem_table_id);
 +}
 +
- static void virt_machine_class_init(ObjectClass *oc, void *data)
- {
-     MachineClass *mc = MACHINE_CLASS(oc);
-@@ -2650,6 +2725,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
-     mc->cpu_index_to_instance_props = virt_cpu_index_to_props;
-     mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a15");
-     mc->get_default_cpu_node_id = virt_get_default_cpu_node_id;
-+    mc->smp_parse = virt_smp_parse;
-     mc->kvm_type = virt_kvm_type;
-     assert(!mc->get_hotplug_handler);
-     mc->get_hotplug_handler = virt_machine_get_hotplug_handler;
+ /* GTDT */
+ static void
+ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+@@ -707,6 +765,11 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+     acpi_add_table(table_offsets, tables_blob);
+     build_madt(tables_blob, tables->linker, vms);
+ 
++    if (ms->smp.cpus > 1 && !vmc->no_cpu_topology) {
++        acpi_add_table(table_offsets, tables_blob);
++        build_pptt(tables_blob, tables->linker, vms);
++    }
++
+     acpi_add_table(table_offsets, tables_blob);
+     build_gtdt(tables_blob, tables->linker, vms);
+ 
 -- 
 2.19.1
 

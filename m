@@ -1,65 +1,64 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp4645517lfr;
-        Tue, 13 Apr 2021 01:08:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz9wG/kRRCEH81aGHXhazYRodb5gsamr0xFEqta3e5bggsJLo1aRMHiSBjAXloEuKB52wWx
-X-Received: by 2002:a0c:de03:: with SMTP id t3mr22530567qvk.58.1618301303765;
-        Tue, 13 Apr 2021 01:08:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618301303; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp4645555lfr;
+        Tue, 13 Apr 2021 01:08:26 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxYGItBgMpYB0Lt+nngqrxRnwdn57IS+vfkrdj9hHUZsTuA4+Wmdc2/OKW//hjsmxvF/PNv
+X-Received: by 2002:ac5:c0c8:: with SMTP id b8mr9436204vkk.18.1618301306584;
+        Tue, 13 Apr 2021 01:08:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618301306; cv=none;
         d=google.com; s=arc-20160816;
-        b=0h1Ikn4Tl09UDYiEY6k3IKaWvxpnD5TfCMUliyWASGL/KeNwYyfBU51N/ZVDiUvjHe
-         vZWr6NKDKwMtFfckQb0xYTtIeHnVzE4zMcw3TN+7iYIlVvZuPWuJh5P5n+1N2EcwvyAl
-         fVRhDsygJLLlsq//l8ECEacMJ4Hfn3qeKuImkU+Ul2TyvtA7L56d0x1OJ6cW6byq3doG
-         ydIzYtU3a7dCuyZj5XJQATc/4ugfOpVAU9FgSxePRq9U7RGgRkkTZxsH6LUmQQkQB6Id
-         5c7Gl/01mE7cWOTR8GTaMIJ/Ei1RZoPbQxf/bCb9DaelErHn7A893iB0OpoRyBpyQ7Ch
-         /CaQ==
+        b=A+mAVRHyACEICd9ASUX9Jo4hmLfo4aWNEpTic2/fWTNT/5qQlFDYcppKS7yxdxW3GP
+         qczVttfhRsGTswFVca9b6mLh7WfyDwqzY51bksBG8zCfEfJfOWoRCqpqXocgWDEbjfgn
+         Bk+XYCKKc8o56vh3EVXcudiCGCThzQgn3uvKLBGnh59zFWR9DY59VlQS7YFWuOhTsd6R
+         M3Ja89LIb1TIPxJ0MfcoDvzb8ejrwgsLfMxs89SHDcsRMTMMfViM5idAavTtV0+0L+fL
+         TnbX+RBzVPXsOHfadvjcUzNJHhV6S5FMDMkWOc6cucdn/GYPLKKtqj5CrQ7YMciTn2KT
+         XZ2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:references
          :in-reply-to:message-id:date:subject:to:from;
-        bh=uSE7BU2bJDqPtvwLkY+3tdx4RJTr5NonBI7q1u0QE18=;
-        b=AQDTFBzrq27ZUj3KwkBfdAxtDYJwB7G52sYpxiPT0t0IIvlYqF6dm8klV9mf62UHV3
-         edAxHdrLSN/14lEeMWQ2b7K8qLa4dFKrL0ruI7slOOt0RSQhqBsstcJO0gx5pPLyFTPU
-         pa12emn/M2GdYL4xQZ+1XxQ9YKe6QaRW3Gbvd0yP5X3eoN5J3vOqNTrFz5cKDaITfj0F
-         SQzUA7ISuJgfFJzbVuKHTlhGcWvF5VjME0PVcraZr8Ur7LkuI9jP5jWYTUyA+UPOFB79
-         BzBJ/zrveg+jg1G3dk40kjbAtZtF9z0Gn8oCUa5tGX109rFQwj9H1eM6qL1SFXybk4vE
-         UaIQ==
+        bh=mXnwdtTVR8iXPHkftY93JoueAV9w+gERgLcoDNLqaS8=;
+        b=Aly9OQKyAhDTs5WSYW/nAVmFsU5wQ2fO9+IlubuQ91Tiz7Y1+6P3kDAcJowm3TkZkW
+         N8YcUYUTJY4rkyWpE5GsI4m9iRczI0sbgNdulT2JmI/o81t8U+sSQd2FiEtmYqQoMdqQ
+         oxGJNKks5RHvEfCUu572YSNZZIxD8x++jak38WRwVO0F9J2z5/ZxbyW/3+XxQervTliO
+         qhB3/lMJmxFsWH5AIU2Pvrg+AS4QXiCYC9pgUH+LVd9Q//nAGj+ab07GpYrreaEJcMTI
+         u1O5cpVg1Bbu2OliRbqaHWc90A3D2qUhZ6S1uuwTgAPyx0ZikgqO2aE19WTJl3qK5zMt
+         z3Ow==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k16si1967179qke.3.2021.04.13.01.08.23
+        by mx.google.com with ESMTPS id c17si5483023vsl.69.2021.04.13.01.08.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 Apr 2021 01:08:23 -0700 (PDT)
+        Tue, 13 Apr 2021 01:08:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:60136 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60376 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lWE5v-00047T-11
-	for alex.bennee@linaro.org; Tue, 13 Apr 2021 04:08:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43816)
+	id 1lWE5x-0004EZ-R7
+	for alex.bennee@linaro.org; Tue, 13 Apr 2021 04:08:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43860)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1lWE5k-00045x-Gj; Tue, 13 Apr 2021 04:08:12 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:5032)
+ id 1lWE5m-00048x-BZ; Tue, 13 Apr 2021 04:08:14 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:5029)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1lWE5h-0006Qh-77; Tue, 13 Apr 2021 04:08:12 -0400
+ id 1lWE5h-0006Pu-8t; Tue, 13 Apr 2021 04:08:14 -0400
 Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4FKJ8H3Jb8zlXd8;
+ by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4FKJ8H320rzlXcY;
  Tue, 13 Apr 2021 16:06:07 +0800 (CST)
 Received: from DESKTOP-TMVL5KK.china.huawei.com (10.174.187.128) by
  DGGEMS404-HUB.china.huawei.com (10.3.19.204) with Microsoft SMTP Server id
- 14.3.498.0; Tue, 13 Apr 2021 16:07:52 +0800
+ 14.3.498.0; Tue, 13 Apr 2021 16:07:49 +0800
 From: Yanan Wang <wangyanan55@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-Subject: [RFC PATCH v2 3/6] hw/arm/virt-acpi-build: Distinguish possible and
- present cpus
-Date: Tue, 13 Apr 2021 16:07:42 +0800
-Message-ID: <20210413080745.33004-4-wangyanan55@huawei.com>
+Subject: [RFC PATCH v2 1/6] device_tree: Add qemu_fdt_add_path
+Date: Tue, 13 Apr 2021 16:07:40 +0800
+Message-ID: <20210413080745.33004-2-wangyanan55@huawei.com>
 X-Mailer: git-send-email 2.8.4.windows.1
 In-Reply-To: <20210413080745.33004-1-wangyanan55@huawei.com>
 References: <20210413080745.33004-1-wangyanan55@huawei.com>
@@ -92,96 +91,102 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
  Yanan Wang <wangyanan55@huawei.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
  Alistair Francis <alistair.francis@wdc.com>, prime.zeng@hisilicon.com,
  yangyicong@huawei.com, yuzenghui@huawei.com,
- Igor Mammedov <imammedo@redhat.com>, Ying Fang <fangying1@huawei.com>,
- zhukeqian1@huawei.com, Jiajie Li <lijiajie11@huawei.com>,
- David Gibson <david@gibson.dropbear.id.au>
+ Igor Mammedov <imammedo@redhat.com>, zhukeqian1@huawei.com,
+ Jiajie Li <lijiajie11@huawei.com>, David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /O57zyGxH2GL
+X-TUID: IG1wH+zf+0Of
 
-From: Ying Fang <fangying1@huawei.com>
+From: Andrew Jones <drjones@redhat.com>
 
-When building ACPI tables regarding CPUs we should always build
-them for the number of possible CPUs, not the number of present
-CPUs. We then ensure only the present CPUs are enabled in MADT.
-Furthermore, it is also needed if we are going to support CPU
-hotplug in the future.
+qemu_fdt_add_path() works like qemu_fdt_add_subnode(), except
+it also adds any missing subnodes in the path. We also tweak
+an error message of qemu_fdt_add_subnode().
 
-This patch is a rework based on Andrew Jones's contribution at
-https://lists.gnu.org/archive/html/qemu-arm/2018-07/msg00076.html
+We'll make use of this new function in a coming patch.
 
-Signed-off-by: Ying Fang <fangying1@huawei.com>
+Signed-off-by: Andrew Jones <drjones@redhat.com>
 Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
 ---
- hw/arm/virt-acpi-build.c | 14 ++++++++++----
- hw/arm/virt.c            |  3 +++
- 2 files changed, 13 insertions(+), 4 deletions(-)
+ include/sysemu/device_tree.h |  1 +
+ softmmu/device_tree.c        | 45 ++++++++++++++++++++++++++++++++++--
+ 2 files changed, 44 insertions(+), 2 deletions(-)
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index f5a2b2d4cb..2ad5dad1bf 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -61,13 +61,16 @@
+diff --git a/include/sysemu/device_tree.h b/include/sysemu/device_tree.h
+index 8a2fe55622..ef060a9759 100644
+--- a/include/sysemu/device_tree.h
++++ b/include/sysemu/device_tree.h
+@@ -121,6 +121,7 @@ uint32_t qemu_fdt_get_phandle(void *fdt, const char *path);
+ uint32_t qemu_fdt_alloc_phandle(void *fdt);
+ int qemu_fdt_nop_node(void *fdt, const char *node_path);
+ int qemu_fdt_add_subnode(void *fdt, const char *name);
++int qemu_fdt_add_path(void *fdt, const char *path);
  
- static void acpi_dsdt_add_cpus(Aml *scope, VirtMachineState *vms)
- {
--    MachineState *ms = MACHINE(vms);
-+    CPUArchIdList *possible_cpus = MACHINE(vms)->possible_cpus;
-     uint16_t i;
+ #define qemu_fdt_setprop_cells(fdt, node_path, property, ...)                 \
+     do {                                                                      \
+diff --git a/softmmu/device_tree.c b/softmmu/device_tree.c
+index 2691c58cf6..8592c7aa1b 100644
+--- a/softmmu/device_tree.c
++++ b/softmmu/device_tree.c
+@@ -541,8 +541,8 @@ int qemu_fdt_add_subnode(void *fdt, const char *name)
  
--    for (i = 0; i < ms->smp.cpus; i++) {
-+    for (i = 0; i < possible_cpus->len; i++) {
-         Aml *dev = aml_device("C%.03X", i);
-         aml_append(dev, aml_name_decl("_HID", aml_string("ACPI0007")));
-         aml_append(dev, aml_name_decl("_UID", aml_int(i)));
-+        if (possible_cpus->cpus[i].cpu == NULL) {
-+            aml_append(dev, aml_name_decl("_STA", aml_int(0)));
-+        }
-         aml_append(scope, dev);
+     retval = fdt_add_subnode(fdt, parent, basename);
+     if (retval < 0) {
+-        error_report("FDT: Failed to create subnode %s: %s", name,
+-                     fdt_strerror(retval));
++        error_report("%s: Failed to create subnode %s: %s",
++                     __func__, name, fdt_strerror(retval));
+         exit(1);
      }
+ 
+@@ -550,6 +550,47 @@ int qemu_fdt_add_subnode(void *fdt, const char *name)
+     return retval;
  }
-@@ -479,6 +482,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-     const int *irqmap = vms->irqmap;
-     AcpiMadtGenericDistributor *gicd;
-     AcpiMadtGenericMsiFrame *gic_msi;
-+    CPUArchIdList *possible_cpus = MACHINE(vms)->possible_cpus;
-     int i;
  
-     acpi_data_push(table_data, sizeof(AcpiMultipleApicTable));
-@@ -489,7 +493,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-     gicd->base_address = cpu_to_le64(memmap[VIRT_GIC_DIST].base);
-     gicd->version = vms->gic_version;
- 
--    for (i = 0; i < MACHINE(vms)->smp.cpus; i++) {
-+    for (i = 0; i < possible_cpus->len; i++) {
-         AcpiMadtGenericCpuInterface *gicc = acpi_data_push(table_data,
-                                                            sizeof(*gicc));
-         ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(i));
-@@ -504,7 +508,9 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-         gicc->cpu_interface_number = cpu_to_le32(i);
-         gicc->arm_mpidr = cpu_to_le64(armcpu->mp_affinity);
-         gicc->uid = cpu_to_le32(i);
--        gicc->flags = cpu_to_le32(ACPI_MADT_GICC_ENABLED);
-+        if (possible_cpus->cpus[i].cpu != NULL) {
-+            gicc->flags = cpu_to_le32(ACPI_MADT_GICC_ENABLED);
-+        }
- 
-         if (arm_feature(&armcpu->env, ARM_FEATURE_PMU)) {
-             gicc->performance_interrupt = cpu_to_le32(PPI(VIRTUAL_PMU_IRQ));
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index f4ae60ded9..3e5d9b6f26 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -2063,6 +2063,9 @@ static void machvirt_init(MachineState *machine)
-         }
- 
-         qdev_realize(DEVICE(cpuobj), NULL, &error_fatal);
++/*
++ * Like qemu_fdt_add_subnode(), but will add all missing
++ * subnodes in the path.
++ */
++int qemu_fdt_add_path(void *fdt, const char *path)
++{
++    char *dupname, *basename, *p;
++    int parent, retval = -1;
 +
-+        /* Initialize cpu member here since cpu hotplug is not supported yet */
-+        machine->possible_cpus->cpus[n].cpu = cpuobj;
-         object_unref(cpuobj);
-     }
-     fdt_add_timer_nodes(vms);
++    if (path[0] != '/') {
++        return retval;
++    }
++
++    parent = fdt_path_offset(fdt, "/");
++    p = dupname = g_strdup(path);
++
++    while (p) {
++        *p = '/';
++        basename = p + 1;
++        p = strchr(p + 1, '/');
++        if (p) {
++            *p = '\0';
++        }
++        retval = fdt_path_offset(fdt, dupname);
++        if (retval < 0 && retval != -FDT_ERR_NOTFOUND) {
++            error_report("%s: Invalid path %s: %s",
++                         __func__, path, fdt_strerror(retval));
++            exit(1);
++        } else if (retval == -FDT_ERR_NOTFOUND) {
++            retval = fdt_add_subnode(fdt, parent, basename);
++            if (retval < 0) {
++                break;
++            }
++        }
++        parent = retval;
++    }
++
++    g_free(dupname);
++    return retval;
++}
++
+ void qemu_fdt_dumpdtb(void *fdt, int size)
+ {
+     const char *dumpdtb = current_machine->dumpdtb;
 -- 
 2.19.1
 

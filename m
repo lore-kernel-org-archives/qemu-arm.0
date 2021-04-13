@@ -1,112 +1,79 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp4644149lfr;
-        Tue, 13 Apr 2021 01:06:30 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzlgwmMbnm9pg8PgCKVlWG511bVyPtKP7jIEkc//Xty7/GE0KM5qZEig7k2+i0kOqasVYNR
-X-Received: by 2002:ab0:c2:: with SMTP id 60mr21241914uaj.123.1618301189975;
-        Tue, 13 Apr 2021 01:06:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618301189; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp4645517lfr;
+        Tue, 13 Apr 2021 01:08:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz9wG/kRRCEH81aGHXhazYRodb5gsamr0xFEqta3e5bggsJLo1aRMHiSBjAXloEuKB52wWx
+X-Received: by 2002:a0c:de03:: with SMTP id t3mr22530567qvk.58.1618301303765;
+        Tue, 13 Apr 2021 01:08:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618301303; cv=none;
         d=google.com; s=arc-20160816;
-        b=nze+QkTdejItVuU/wsRzg6PKkJgEjg1iZKOvCgjD1OCIXXKWe9WyOAz+1zGWs8mBop
-         TDOqvNB00/PIhS1eGr25oO8lpYZomf387wO2/QZpsvIIL05s/pFHd7s4VXea47RM0PIr
-         spq726x5+/MZheUnV5tRUFNA6M/nEp1HZfVZY9DovRfadLw9KsglAvRvwPvOttzUPb9E
-         1QV60HRrHZF1gSPsAXOCT/D+ddhz1Q4gsWLjoT8c2eXHOQ9QyEOZVekLI5WsgSjtJuFt
-         u5w0wXyar/Q1xxekwVn9/4dmLfg2fERdFEear+PhWvFh8S/wJC0CJxEZADEmX7Y029gZ
-         TlUA==
+        b=0h1Ikn4Tl09UDYiEY6k3IKaWvxpnD5TfCMUliyWASGL/KeNwYyfBU51N/ZVDiUvjHe
+         vZWr6NKDKwMtFfckQb0xYTtIeHnVzE4zMcw3TN+7iYIlVvZuPWuJh5P5n+1N2EcwvyAl
+         fVRhDsygJLLlsq//l8ECEacMJ4Hfn3qeKuImkU+Ul2TyvtA7L56d0x1OJ6cW6byq3doG
+         ydIzYtU3a7dCuyZj5XJQATc/4ugfOpVAU9FgSxePRq9U7RGgRkkTZxsH6LUmQQkQB6Id
+         5c7Gl/01mE7cWOTR8GTaMIJ/Ei1RZoPbQxf/bCb9DaelErHn7A893iB0OpoRyBpyQ7Ch
+         /CaQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=AXZsNf/Po+VAIbmTCzQlWtQaasfbMF34wWpevfywJwM=;
-        b=ZBIvm7i7qKoyiMqMVQgqw58P1Tw7nI8nKT9bR3doNqxfnpifjsPPMPCkJNYA96NPOg
-         9vQwDaBYodPdyrZ96uCR4Fn5Nf1QvCpPjfnpjoHjgzcXQynKU9QeRrKhqOdcZgElBlmc
-         hDQ6hKBWpcGrizVEp2kXezOlR398iNZ0X2hu2UzyDpcWGL2a1ejYNExdMpN5k+55sMiM
-         LaC9rMkdnDhGLhQvfGtEwlrKI2AePm4VPtp/eNshYWKmlgX+USy9Ns0xicRzHyVsQwrm
-         8hGJyLs+bcIPQtKi4FmIlY6GnTisww57z4VftbQx/5+az9gAT6asxzFPtSeasQdTxxTL
-         DUww==
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :in-reply-to:message-id:date:subject:to:from;
+        bh=uSE7BU2bJDqPtvwLkY+3tdx4RJTr5NonBI7q1u0QE18=;
+        b=AQDTFBzrq27ZUj3KwkBfdAxtDYJwB7G52sYpxiPT0t0IIvlYqF6dm8klV9mf62UHV3
+         edAxHdrLSN/14lEeMWQ2b7K8qLa4dFKrL0ruI7slOOt0RSQhqBsstcJO0gx5pPLyFTPU
+         pa12emn/M2GdYL4xQZ+1XxQ9YKe6QaRW3Gbvd0yP5X3eoN5J3vOqNTrFz5cKDaITfj0F
+         SQzUA7ISuJgfFJzbVuKHTlhGcWvF5VjME0PVcraZr8Ur7LkuI9jP5jWYTUyA+UPOFB79
+         BzBJ/zrveg+jg1G3dk40kjbAtZtF9z0Gn8oCUa5tGX109rFQwj9H1eM6qL1SFXybk4vE
+         UaIQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XmGJ6Ftf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x72si1351595vsc.384.2021.04.13.01.06.29
+        by mx.google.com with ESMTPS id k16si1967179qke.3.2021.04.13.01.08.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 Apr 2021 01:06:29 -0700 (PDT)
+        Tue, 13 Apr 2021 01:08:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XmGJ6Ftf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57548 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Received: from localhost ([::1]:60136 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lWE45-00031P-9Z
-	for alex.bennee@linaro.org; Tue, 13 Apr 2021 04:06:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43332)
+	id 1lWE5v-00047T-11
+	for alex.bennee@linaro.org; Tue, 13 Apr 2021 04:08:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43816)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lWE3l-0002wB-Ig
- for qemu-arm@nongnu.org; Tue, 13 Apr 2021 04:06:09 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:56105)
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1lWE5k-00045x-Gj; Tue, 13 Apr 2021 04:08:12 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:5032)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lWE3i-0005Ks-Gg
- for qemu-arm@nongnu.org; Tue, 13 Apr 2021 04:06:08 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1618301165;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=AXZsNf/Po+VAIbmTCzQlWtQaasfbMF34wWpevfywJwM=;
- b=XmGJ6Ftfutng3h7117mY8Wy8MqbeUin2ejhjYv+V1FGWj1WJpR7kpoyB9ni8/ApOhh/h/Z
- /i2kI9XpxOjaGM4066HZh6WNkCctbFvAjoToEE4PMHD2lLXrvv8Q9rY6sVJMT8LUTZMgAR
- JCNAaZexkxujUhu5XWLbxKSrewNbOKg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-23-WP6L-9qZNh2tb6kp_nvGeg-1; Tue, 13 Apr 2021 04:06:01 -0400
-X-MC-Unique: WP6L-9qZNh2tb6kp_nvGeg-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 73B1080A19E;
- Tue, 13 Apr 2021 08:05:59 +0000 (UTC)
-Received: from [10.36.113.20] (ovpn-113-20.ams2.redhat.com [10.36.113.20])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id A95DC5C233;
- Tue, 13 Apr 2021 08:05:49 +0000 (UTC)
-Subject: Re: [PATCH RFC RESEND v2 3/6] hw/pci: Add pci_root_bus_max_bus
-To: Wang Xingang <wangxingang5@huawei.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, shannon.zhaosl@gmail.com, imammedo@redhat.com,
- mst@redhat.com, marcel.apfelbaum@gmail.com, peter.maydell@linaro.org,
- ehabkost@redhat.com, richard.henderson@linaro.org, pbonzini@redhat.com
-References: <1616656965-23328-1-git-send-email-wangxingang5@huawei.com>
- <1616656965-23328-4-git-send-email-wangxingang5@huawei.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <f0cc7d43-70bd-7a65-3cba-213f258c57b4@redhat.com>
-Date: Tue, 13 Apr 2021 10:05:47 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.0
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1lWE5h-0006Qh-77; Tue, 13 Apr 2021 04:08:12 -0400
+Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.60])
+ by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4FKJ8H3Jb8zlXd8;
+ Tue, 13 Apr 2021 16:06:07 +0800 (CST)
+Received: from DESKTOP-TMVL5KK.china.huawei.com (10.174.187.128) by
+ DGGEMS404-HUB.china.huawei.com (10.3.19.204) with Microsoft SMTP Server id
+ 14.3.498.0; Tue, 13 Apr 2021 16:07:52 +0800
+From: Yanan Wang <wangyanan55@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+Subject: [RFC PATCH v2 3/6] hw/arm/virt-acpi-build: Distinguish possible and
+ present cpus
+Date: Tue, 13 Apr 2021 16:07:42 +0800
+Message-ID: <20210413080745.33004-4-wangyanan55@huawei.com>
+X-Mailer: git-send-email 2.8.4.windows.1
+In-Reply-To: <20210413080745.33004-1-wangyanan55@huawei.com>
+References: <20210413080745.33004-1-wangyanan55@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <1616656965-23328-4-git-send-email-wangxingang5@huawei.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=216.205.24.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain
+X-Originating-IP: [10.174.187.128]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.32;
+ envelope-from=wangyanan55@huawei.com; helo=szxga06-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -120,89 +87,101 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: xieyingtai@huawei.com, cenjiahui@huawei.com
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+ "Michael S . Tsirkin" <mst@redhat.com>, wanghaibin.wang@huawei.com,
+ Yanan Wang <wangyanan55@huawei.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Alistair Francis <alistair.francis@wdc.com>, prime.zeng@hisilicon.com,
+ yangyicong@huawei.com, yuzenghui@huawei.com,
+ Igor Mammedov <imammedo@redhat.com>, Ying Fang <fangying1@huawei.com>,
+ zhukeqian1@huawei.com, Jiajie Li <lijiajie11@huawei.com>,
+ David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: idGOkp5V8lH6
+X-TUID: /O57zyGxH2GL
 
-Hi Xingang,
+From: Ying Fang <fangying1@huawei.com>
 
-On 3/25/21 8:22 AM, Wang Xingang wrote:
-> From: Xingang Wang <wangxingang5@huawei.com>
-> 
-> This helps to find max bus number of a root bus.
-s/max bus number of a root bus/highest bus number of a bridge hierarchy?
-> 
-> Signed-off-by: Xingang Wang <wangxingang5@huawei.com>
-> Signed-off-by: Jiahui Cen <cenjiahui@huawei.com>
-> ---
->  hw/pci/pci.c         | 34 ++++++++++++++++++++++++++++++++++
->  include/hw/pci/pci.h |  1 +
->  2 files changed, 35 insertions(+)
-> 
-> diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-> index e17aa9075f..c7957cbf7c 100644
-> --- a/hw/pci/pci.c
-> +++ b/hw/pci/pci.c
-> @@ -538,6 +538,40 @@ int pci_bus_num(PCIBus *s)
->      return PCI_BUS_GET_CLASS(s)->bus_num(s);
->  }
->  
-> +int pci_root_bus_max_bus(PCIBus *bus)
-> +{
-> +    PCIHostState *host;
-> +    PCIDevice *dev;
-> +    int max_bus = 0;
-> +    int type, devfn;
-> +    uint8_t subordinate;
-> +
-> +    if (!pci_bus_is_root(bus)) {
-> +        return 0;
-> +    }
-> +
-> +    host = PCI_HOST_BRIDGE(BUS(bus)->parent);
-> +    max_bus = pci_bus_num(host->bus);
-> +
-> +    for (devfn = 0; devfn < ARRAY_SIZE(host->bus->devices); devfn++) {
-> +        dev = host->bus->devices[devfn];
-> +
-> +        if (!dev) {
-> +            continue;
-> +        }
-> +
-> +        type = dev->config[PCI_HEADER_TYPE] & ~PCI_HEADER_TYPE_MULTI_FUNCTION;
-Seems there is PCI_DEVICE_GET_CLASS(dev)->is_bridge (see
-pci_root_bus_in_range). Can't that be used instead?
-> +        if (type == PCI_HEADER_TYPE_BRIDGE) {
-> +            subordinate = dev->config[PCI_SUBORDINATE_BUS];
-> +            if (subordinate > max_bus) {
-> +                max_bus = subordinate;
-what about the secondary bus number, it is always less than the others?
+When building ACPI tables regarding CPUs we should always build
+them for the number of possible CPUs, not the number of present
+CPUs. We then ensure only the present CPUs are enabled in MADT.
+Furthermore, it is also needed if we are going to support CPU
+hotplug in the future.
 
-Thanks
+This patch is a rework based on Andrew Jones's contribution at
+https://lists.gnu.org/archive/html/qemu-arm/2018-07/msg00076.html
 
-Eric
-> +            }
-> +        }
-> +    }
-> +
-> +    return max_bus;
-> +}
-> +
->  int pci_bus_numa_node(PCIBus *bus)
->  {
->      return PCI_BUS_GET_CLASS(bus)->numa_node(bus);
-> diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
-> index 718b5a454a..e0c69534f4 100644
-> --- a/include/hw/pci/pci.h
-> +++ b/include/hw/pci/pci.h
-> @@ -450,6 +450,7 @@ static inline PCIBus *pci_get_bus(const PCIDevice *dev)
->      return PCI_BUS(qdev_get_parent_bus(DEVICE(dev)));
->  }
->  int pci_bus_num(PCIBus *s);
-> +int pci_root_bus_max_bus(PCIBus *bus);
->  static inline int pci_dev_bus_num(const PCIDevice *dev)
->  {
->      return pci_bus_num(pci_get_bus(dev));
-> 
+Signed-off-by: Ying Fang <fangying1@huawei.com>
+Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
+---
+ hw/arm/virt-acpi-build.c | 14 ++++++++++----
+ hw/arm/virt.c            |  3 +++
+ 2 files changed, 13 insertions(+), 4 deletions(-)
+
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index f5a2b2d4cb..2ad5dad1bf 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -61,13 +61,16 @@
+ 
+ static void acpi_dsdt_add_cpus(Aml *scope, VirtMachineState *vms)
+ {
+-    MachineState *ms = MACHINE(vms);
++    CPUArchIdList *possible_cpus = MACHINE(vms)->possible_cpus;
+     uint16_t i;
+ 
+-    for (i = 0; i < ms->smp.cpus; i++) {
++    for (i = 0; i < possible_cpus->len; i++) {
+         Aml *dev = aml_device("C%.03X", i);
+         aml_append(dev, aml_name_decl("_HID", aml_string("ACPI0007")));
+         aml_append(dev, aml_name_decl("_UID", aml_int(i)));
++        if (possible_cpus->cpus[i].cpu == NULL) {
++            aml_append(dev, aml_name_decl("_STA", aml_int(0)));
++        }
+         aml_append(scope, dev);
+     }
+ }
+@@ -479,6 +482,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     const int *irqmap = vms->irqmap;
+     AcpiMadtGenericDistributor *gicd;
+     AcpiMadtGenericMsiFrame *gic_msi;
++    CPUArchIdList *possible_cpus = MACHINE(vms)->possible_cpus;
+     int i;
+ 
+     acpi_data_push(table_data, sizeof(AcpiMultipleApicTable));
+@@ -489,7 +493,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     gicd->base_address = cpu_to_le64(memmap[VIRT_GIC_DIST].base);
+     gicd->version = vms->gic_version;
+ 
+-    for (i = 0; i < MACHINE(vms)->smp.cpus; i++) {
++    for (i = 0; i < possible_cpus->len; i++) {
+         AcpiMadtGenericCpuInterface *gicc = acpi_data_push(table_data,
+                                                            sizeof(*gicc));
+         ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(i));
+@@ -504,7 +508,9 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+         gicc->cpu_interface_number = cpu_to_le32(i);
+         gicc->arm_mpidr = cpu_to_le64(armcpu->mp_affinity);
+         gicc->uid = cpu_to_le32(i);
+-        gicc->flags = cpu_to_le32(ACPI_MADT_GICC_ENABLED);
++        if (possible_cpus->cpus[i].cpu != NULL) {
++            gicc->flags = cpu_to_le32(ACPI_MADT_GICC_ENABLED);
++        }
+ 
+         if (arm_feature(&armcpu->env, ARM_FEATURE_PMU)) {
+             gicc->performance_interrupt = cpu_to_le32(PPI(VIRTUAL_PMU_IRQ));
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index f4ae60ded9..3e5d9b6f26 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -2063,6 +2063,9 @@ static void machvirt_init(MachineState *machine)
+         }
+ 
+         qdev_realize(DEVICE(cpuobj), NULL, &error_fatal);
++
++        /* Initialize cpu member here since cpu hotplug is not supported yet */
++        machine->possible_cpus->cpus[n].cpu = cpuobj;
+         object_unref(cpuobj);
+     }
+     fdt_add_timer_nodes(vms);
+-- 
+2.19.1
 

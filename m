@@ -1,109 +1,89 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp5010424lfr;
-        Tue, 13 Apr 2021 09:08:49 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwIXMm2A03xWeZjFZMHvD5zlJrZVX3JJQrSgF3ohbjpAxqFmAJnudK5QNFJK6WiimLTWpb9
-X-Received: by 2002:a5e:c00a:: with SMTP id u10mr27296976iol.165.1618330129663;
-        Tue, 13 Apr 2021 09:08:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618330129; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp4797381lfr;
+        Tue, 13 Apr 2021 05:01:39 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJymOe1lxVK3I7G2TJHvxXBPhZ4sIJbRhgjeI7wYtPgPWBxgvU8D3zEacFclBIoeRHBTVZQF
+X-Received: by 2002:a05:6512:3106:: with SMTP id n6mr19128811lfb.209.1618315299236;
+        Tue, 13 Apr 2021 05:01:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618315299; cv=none;
         d=google.com; s=arc-20160816;
-        b=MR4lBg8e7u6ur+k3SM95V9lHLVJGtB8jTmC8Cm1gYzr3x64nIqkqWBbFBpXXM1RrVH
-         FV7ZVy07gUcuiSVW/vYWWARBjYhAf3kdLysy/pTSvv8Z0mQ1DtEhK/PQyoFQDhYDAH8n
-         pr39MxzibanBfwhXvB6RExwPWHXdg0AYfRzcFXiDsNoz8fOZaLqqAJKHfco6mX78bZfT
-         u8iOy69oRX32DgRT7vtnvMibSy2dNLkaXIAJY2a5Yx3V9cISvYadS1i6HuUD/pu6eirc
-         /2gqRiY9DZDsktO2DWgSORRZ3tSPAyZQcMzZLf+BnTBbh7mnOGnbVYI3LGwtb1KmpKH+
-         EJtQ==
+        b=RAX769prF4SdSGnK4qN1VvNIQ9uEoyQCgpfL6nG4Jh4jAMfFrAk+ZegxH2b13hWxH1
+         j4ulBESKw96fjHD+dvlqVXNY2VzRzWxY6S/xcPEUmadB8t96jng/zb0jGF9Ng9Noo3IK
+         Yj80ZAPh2Fnezos3ETWlt0Re3lUrmHkdaO+dLlrsi4Q82lIv2TNQGDAeE4SHztz9n+Oo
+         hw5vyZzY1SZ9gwEObnETt2QxXXY2YNc/5XJHevPh3JOxzmOlRAZ0x9hBcLSpA9x6qGNj
+         Cjdzpgx0hE8dXPzthx0hhDt2wmKxLdtPERb9af3ENHd+Onwec5PAqLA9V7DX4WJ74IMI
+         2YKg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=0ZGdNnOiGwNj8lQaOaIdMrMwuGDxlAwHGTtG4I3LmxA=;
-        b=nfvl3QRZyibW3oyJTdSwS5Sw3yrEIYPAPTK8/DWeQLorNI4Sz2zQtqQqSHfXKMabJs
-         3cUb0ypErSk0fqFmrSQBHAUfWivzSL/b8DiG1lyA4DhEeticYvwAD5p2nY0oKdIfTUc6
-         6vnl+uv3wGsmV5ejAvH3LooKeRhsXdaLKc+08C84AFQOUElIIsYf8Ahh/iRbFYz4FEMj
-         qnvP+tyYXX2Pnwh6XWJtQMcV63m7iHpO4aGO5URhI5sEjbyfEau7ciqkaMBH4iZbPQiN
-         gJop3d5CMIDzXQbWk62xIdZGDFNWHkbS4tV3N6uWqULEzWlo9Z44QWMkDIDMrFkqg6nG
-         7U6w==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:subject:from:references:to;
+        bh=ceWvzBdVMMmjpISxiMz0eW1LG3h/XZ4VuPJq2kKdCaI=;
+        b=RJSA+h0rT83Ui8timW9xOazHTkeWwXieLgYyulq3DTNJQbt9MSPvhNzGXrWjZHpz9V
+         tbk+JK35+nY9wlaIsVAliXWVw5VTnWTGCPi63sXMVZtlsyUPJwDETpx22IbyoXWhJiUS
+         bdY5+87hEBC4/6eiD7xxnc/S9F2Uq2c5r3k+oq87NwIu1uXyXSw7kJ95KcET8GO1HJj0
+         +KDATNB8VpPNlobEX83nFV/UcIStL28bFMddvUF/CaExkQ61Gx/GKWoQ7isLwiDKVUCW
+         g6yEkgInDbXCBT8XWy8+tcyWw6SuY+UoKs5WVecCE7S0S8e14xAragFosYM6ot7JRYZg
+         ex3w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=HwgyFdPQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i5si15453609ilv.96.2021.04.13.09.08.49
+        by mx.google.com with ESMTPS id l7si15332171ljh.299.2021.04.13.05.01.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 Apr 2021 09:08:49 -0700 (PDT)
+        Tue, 13 Apr 2021 05:01:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=HwgyFdPQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39474 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Received: from localhost ([::1]:54424 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lWLaq-0006F1-SC
-	for alex.bennee@linaro.org; Tue, 13 Apr 2021 12:08:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41516)
+	id 1lWHjd-0003uy-Sp
+	for alex.bennee@linaro.org; Tue, 13 Apr 2021 08:01:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46354)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lWLaS-0006C1-EV
- for qemu-arm@nongnu.org; Tue, 13 Apr 2021 12:08:24 -0400
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e]:36797)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lWLaM-0006tB-0E
- for qemu-arm@nongnu.org; Tue, 13 Apr 2021 12:08:23 -0400
-Received: by mail-wr1-x42e.google.com with SMTP id m9so4272996wrx.3
- for <qemu-arm@nongnu.org>; Tue, 13 Apr 2021 09:08:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:in-reply-to:references:mime-version
- :content-transfer-encoding;
- bh=0ZGdNnOiGwNj8lQaOaIdMrMwuGDxlAwHGTtG4I3LmxA=;
- b=HwgyFdPQ4/h8kqEqDsy/hckVOkWdsDk4pk9U4/4dAMZOc5/VTAwUpIjSEBRwI5R/xJ
- l8GRPM0aFhiub4lXtHY0ybeEY7UNaUIbrX4FQ4E1mFZCsu/hJX0Dh6BU/57hCfvyXQqa
- 5GHLyWnsRwvofJ6VoDyT36qx/invI/CQsvzWByalXg0r/lLT55j3uDDbJ2SB0dYf0gsw
- IN533wqdrTvG+huH6d7P6PwO7f9B4uDlm9o4tGdlATwqp2VzVmElNmSpa9XCJA2gZNVA
- gVMRnNN8TquKYDE+SKyvWENVpLe3aHVqs8d0W4eISZmA28yWXQksUoN3VceMkrNYxNcq
- +QRA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=0ZGdNnOiGwNj8lQaOaIdMrMwuGDxlAwHGTtG4I3LmxA=;
- b=K7KsHciJbYDk/9E4PPVyduy2lhoOMR7nPO2SyRjERZvxayp8DOH8UfikvmaLRJK7dq
- A7jk2QXAdRDM1uH0vXKb+sr8Y2onC3HQqVOe24QghVBcjIk++EY2CMrHb08Kf6Mjencv
- dSFyGkAnfWM0HHO058vCTLbgWVuteTBGpXItldoZa8cwg0qWxJgEAhZWpvQCTNkpKIty
- 2QQdm/UJHvAAbjaIRYnVj3Kp+NWcn8wk/E9Cr9dDqI377nc+tzvt22ThLYY8bNTBlz6R
- vi2iwEp9qLvQpFkVaFb3ofHtF5XdtIFzuixT/w6tSs+JrdOnaJN22EnhTh6Ki1xeucNB
- 9EDA==
-X-Gm-Message-State: AOAM530LvxPaJgTz664wxsTmAHkaWBDcB6MfQAvCgj/4iTz0AIDacYpK
- VwRv8/gYdq8frBhVZmxlncpTMYx0VlVHmQoT
-X-Received: by 2002:adf:e50a:: with SMTP id j10mr290376wrm.394.1618330096639; 
- Tue, 13 Apr 2021 09:08:16 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id b1sm20810888wru.90.2021.04.13.09.08.16
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 13 Apr 2021 09:08:16 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 05/13] target/arm: Move gen_aa32 functions to translate-a32.h
-Date: Tue, 13 Apr 2021 17:07:51 +0100
-Message-Id: <20210413160759.5917-6-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210413160759.5917-1-peter.maydell@linaro.org>
-References: <20210413160759.5917-1-peter.maydell@linaro.org>
+ (Exim 4.90_1) (envelope-from <wangxingang5@huawei.com>)
+ id 1lWHiq-0003rD-IY; Tue, 13 Apr 2021 08:00:56 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:4830)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <wangxingang5@huawei.com>)
+ id 1lWHil-0000a1-25; Tue, 13 Apr 2021 08:00:47 -0400
+Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4FKPHT3B5cznZ80;
+ Tue, 13 Apr 2021 19:57:41 +0800 (CST)
+Received: from [10.174.185.226] (10.174.185.226) by
+ DGGEMS409-HUB.china.huawei.com (10.3.19.209) with Microsoft SMTP Server id
+ 14.3.498.0; Tue, 13 Apr 2021 20:00:26 +0800
+To: Auger Eric <eric.auger@redhat.com>, <qemu-devel@nongnu.org>,
+ <qemu-arm@nongnu.org>, <shannon.zhaosl@gmail.com>, <imammedo@redhat.com>,
+ <mst@redhat.com>, <marcel.apfelbaum@gmail.com>, <peter.maydell@linaro.org>,
+ <ehabkost@redhat.com>, <richard.henderson@linaro.org>, <pbonzini@redhat.com>
+References: <1616656965-23328-1-git-send-email-wangxingang5@huawei.com>
+ <1616656965-23328-5-git-send-email-wangxingang5@huawei.com>
+ <ee78ca19-d73d-7c99-38b5-4140e2a9e1b7@redhat.com>
+From: Xingang Wang <wangxingang5@huawei.com>
+Subject: Re: [PATCH RFC RESEND v2 4/6] hw/arm/virt-acpi-build: Add explicit
+ idmap info in IORT table
+Message-ID: <b16bcb84-5fd2-8ee6-9d96-c36f94326132@huawei.com>
+Date: Tue, 13 Apr 2021 20:00:15 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.5.1
 MIME-Version: 1.0
+In-Reply-To: <ee78ca19-d73d-7c99-38b5-4140e2a9e1b7@redhat.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Originating-IP: [10.174.185.226]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.190;
+ envelope-from=wangxingang5@huawei.com; helo=szxga04-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -116,167 +96,224 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: xieyingtai@huawei.com, cenjiahui@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lRHh0dMuRxXh
+X-TUID: sY7byT6DkSkN
 
-Move the various gen_aa32* functions and macros out of translate.c
-and into translate-a32.h.
+Hi Eric,
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/translate-a32.h | 44 ++++++++++++++++++++++++++++++++++
- target/arm/translate.c     | 49 +++++++-------------------------------
- 2 files changed, 52 insertions(+), 41 deletions(-)
+On 2021/4/13 17:03, Auger Eric wrote:
+> Hi Xingang,
+> 
+> On 3/25/21 8:22 AM, Wang Xingang wrote:
+>> From: Xingang Wang <wangxingang5@huawei.com>
+>>
+>> The idmap of smmuv3 and root complex covers the whole RID space for now,
+>> this patch add explicit idmap info according to root bus number range.
+>> This add smmuv3 idmap for certain bus which has enabled the iommu property.
+>>
+>> Signed-off-by: Xingang Wang <wangxingang5@huawei.com>
+>> Signed-off-by: Jiahui Cen <cenjiahui@huawei.com>
+>> ---
+>>   hw/arm/virt-acpi-build.c | 103 ++++++++++++++++++++++++++++++---------
+>>   1 file changed, 81 insertions(+), 22 deletions(-)
+>>
+>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+>> index f5a2b2d4cb..5491036c86 100644
+>> --- a/hw/arm/virt-acpi-build.c
+>> +++ b/hw/arm/virt-acpi-build.c
+>> @@ -44,6 +44,7 @@
+>>   #include "hw/acpi/tpm.h"
+>>   #include "hw/pci/pcie_host.h"
+>>   #include "hw/pci/pci.h"
+>> +#include "hw/pci/pci_bus.h"
+>>   #include "hw/pci-host/gpex.h"
+>>   #include "hw/arm/virt.h"
+>>   #include "hw/mem/nvdimm.h"
+>> @@ -237,6 +238,41 @@ static void acpi_dsdt_add_tpm(Aml *scope, VirtMachineState *vms)
+>>       aml_append(scope, dev);
+>>   }
+>>   
+>> +typedef
+>> +struct AcpiIortMapping {
+>> +    AcpiIortIdMapping idmap;
+>> +    bool iommu;
+>> +} AcpiIortMapping;
+>> +
+>> +/* For all PCI host bridges, walk and insert DMAR scope */
+> this comment should rather be in the caller
+> also DMAR is not the ARM vocable.
+> 
+> I would add the comment for this function:
+> build the ID mapping for aa given PCI host bridge
 
-diff --git a/target/arm/translate-a32.h b/target/arm/translate-a32.h
-index cb451f70a42..e0e03245f6f 100644
---- a/target/arm/translate-a32.h
-+++ b/target/arm/translate-a32.h
-@@ -57,4 +57,48 @@ static inline TCGv_i32 load_reg(DisasContext *s, int reg)
-     return tmp;
- }
- 
-+void gen_aa32_ld_i32(DisasContext *s, TCGv_i32 val, TCGv_i32 a32,
-+                     int index, MemOp opc);
-+void gen_aa32_st_i32(DisasContext *s, TCGv_i32 val, TCGv_i32 a32,
-+                     int index, MemOp opc);
-+void gen_aa32_ld_i64(DisasContext *s, TCGv_i64 val, TCGv_i32 a32,
-+                     int index, MemOp opc);
-+void gen_aa32_st_i64(DisasContext *s, TCGv_i64 val, TCGv_i32 a32,
-+                     int index, MemOp opc);
-+
-+#define DO_GEN_LD(SUFF, OPC)                                             \
-+static inline void gen_aa32_ld##SUFF(DisasContext *s, TCGv_i32 val,      \
-+                                     TCGv_i32 a32, int index)            \
-+{                                                                        \
-+    gen_aa32_ld_i32(s, val, a32, index, OPC | s->be_data);               \
-+}
-+
-+#define DO_GEN_ST(SUFF, OPC)                                             \
-+static inline void gen_aa32_st##SUFF(DisasContext *s, TCGv_i32 val,      \
-+                                     TCGv_i32 a32, int index)            \
-+{                                                                        \
-+    gen_aa32_st_i32(s, val, a32, index, OPC | s->be_data);               \
-+}
-+
-+DO_GEN_LD(8u, MO_UB)
-+DO_GEN_LD(16u, MO_UW)
-+DO_GEN_LD(32u, MO_UL)
-+DO_GEN_ST(8, MO_UB)
-+DO_GEN_ST(16, MO_UW)
-+DO_GEN_ST(32, MO_UL)
-+
-+#undef DO_GEN_LD
-+
-+static inline void gen_aa32_ld64(DisasContext *s, TCGv_i64 val,
-+                                 TCGv_i32 a32, int index)
-+{
-+    gen_aa32_ld_i64(s, val, a32, index, MO_Q | s->be_data);
-+}
-+
-+static inline void gen_aa32_st64(DisasContext *s, TCGv_i64 val,
-+                                 TCGv_i32 a32, int index)
-+{
-+    gen_aa32_st_i64(s, val, a32, index, MO_Q | s->be_data);
-+}
-+
- #endif
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 168427159ab..fd248b101f2 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -879,8 +879,8 @@ static inline TCGv gen_aa32_addr(DisasContext *s, TCGv_i32 a32, MemOp op)
-     return addr;
- }
- 
--static void gen_aa32_ld_i32(DisasContext *s, TCGv_i32 val, TCGv_i32 a32,
--                            int index, MemOp opc)
-+void gen_aa32_ld_i32(DisasContext *s, TCGv_i32 val, TCGv_i32 a32,
-+                     int index, MemOp opc)
- {
-     TCGv addr;
- 
-@@ -894,8 +894,8 @@ static void gen_aa32_ld_i32(DisasContext *s, TCGv_i32 val, TCGv_i32 a32,
-     tcg_temp_free(addr);
- }
- 
--static void gen_aa32_st_i32(DisasContext *s, TCGv_i32 val, TCGv_i32 a32,
--                            int index, MemOp opc)
-+void gen_aa32_st_i32(DisasContext *s, TCGv_i32 val, TCGv_i32 a32,
-+                     int index, MemOp opc)
- {
-     TCGv addr;
- 
-@@ -909,20 +909,6 @@ static void gen_aa32_st_i32(DisasContext *s, TCGv_i32 val, TCGv_i32 a32,
-     tcg_temp_free(addr);
- }
- 
--#define DO_GEN_LD(SUFF, OPC)                                             \
--static inline void gen_aa32_ld##SUFF(DisasContext *s, TCGv_i32 val,      \
--                                     TCGv_i32 a32, int index)            \
--{                                                                        \
--    gen_aa32_ld_i32(s, val, a32, index, OPC | s->be_data);               \
--}
--
--#define DO_GEN_ST(SUFF, OPC)                                             \
--static inline void gen_aa32_st##SUFF(DisasContext *s, TCGv_i32 val,      \
--                                     TCGv_i32 a32, int index)            \
--{                                                                        \
--    gen_aa32_st_i32(s, val, a32, index, OPC | s->be_data);               \
--}
--
- static inline void gen_aa32_frob64(DisasContext *s, TCGv_i64 val)
- {
-     /* Not needed for user-mode BE32, where we use MO_BE instead.  */
-@@ -931,8 +917,8 @@ static inline void gen_aa32_frob64(DisasContext *s, TCGv_i64 val)
-     }
- }
- 
--static void gen_aa32_ld_i64(DisasContext *s, TCGv_i64 val, TCGv_i32 a32,
--                            int index, MemOp opc)
-+void gen_aa32_ld_i64(DisasContext *s, TCGv_i64 val, TCGv_i32 a32,
-+                     int index, MemOp opc)
- {
-     TCGv addr = gen_aa32_addr(s, a32, opc);
-     tcg_gen_qemu_ld_i64(val, addr, index, opc);
-@@ -940,14 +926,8 @@ static void gen_aa32_ld_i64(DisasContext *s, TCGv_i64 val, TCGv_i32 a32,
-     tcg_temp_free(addr);
- }
- 
--static inline void gen_aa32_ld64(DisasContext *s, TCGv_i64 val,
--                                 TCGv_i32 a32, int index)
--{
--    gen_aa32_ld_i64(s, val, a32, index, MO_Q | s->be_data);
--}
--
--static void gen_aa32_st_i64(DisasContext *s, TCGv_i64 val, TCGv_i32 a32,
--                            int index, MemOp opc)
-+void gen_aa32_st_i64(DisasContext *s, TCGv_i64 val, TCGv_i32 a32,
-+                     int index, MemOp opc)
- {
-     TCGv addr = gen_aa32_addr(s, a32, opc);
- 
-@@ -963,19 +943,6 @@ static void gen_aa32_st_i64(DisasContext *s, TCGv_i64 val, TCGv_i32 a32,
-     tcg_temp_free(addr);
- }
- 
--static inline void gen_aa32_st64(DisasContext *s, TCGv_i64 val,
--                                 TCGv_i32 a32, int index)
--{
--    gen_aa32_st_i64(s, val, a32, index, MO_Q | s->be_data);
--}
--
--DO_GEN_LD(8u, MO_UB)
--DO_GEN_LD(16u, MO_UW)
--DO_GEN_LD(32u, MO_UL)
--DO_GEN_ST(8, MO_UB)
--DO_GEN_ST(16, MO_UW)
--DO_GEN_ST(32, MO_UL)
--
- static inline void gen_hvc(DisasContext *s, int imm16)
- {
-     /* The pre HVC helper handles cases when HVC gets trapped
--- 
-2.20.1
+Thanks, I will fix the comment.
 
+>> +static int
+>> +iort_host_bridges(Object *obj, void *opaque)
+>> +{
+>> +    GArray *map_blob = opaque;
+>> +    AcpiIortMapping map;
+>> +    AcpiIortIdMapping *idmap = &map.idmap;
+>> +    int bus_num, max_bus;
+>> +
+>> +    if (object_dynamic_cast(obj, TYPE_PCI_HOST_BRIDGE)) {
+>> +        PCIBus *bus = PCI_HOST_BRIDGE(obj)->bus;
+>> +
+>> +        if (bus) {
+>> +            bus_num = pci_bus_num(bus);
+>> +            max_bus = pci_root_bus_max_bus(bus);
+>> +
+>> +            idmap->input_base = cpu_to_le32(bus_num << 8);
+>> +            idmap->id_count = cpu_to_le32((max_bus - bus_num + 1) << 8);
+>> +            idmap->output_base = cpu_to_le32(bus_num << 8);
+>> +            idmap->flags = cpu_to_le32(0);
+>> +
+>> +            map.iommu = pci_root_bus_has_iommu(bus);
+> if iommu is not set, we don't need to populate the idmap and we may even
+> directly continue, ie. not add the element the map_bap_blob, no?
+Thanks, if we leave the whole range when iommu is not set, this indeed 
+should be dropped in map_blob.
+>> +            g_array_append_val(map_blob, map);
+>> +        }
+>> +    }
+>> +
+>> +    return 0;
+>> +}
+>> +
+>>   static void
+>>   build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>>   {
+>> @@ -247,6 +283,21 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>>       AcpiIortSmmu3 *smmu;
+>>       size_t node_size, iort_node_offset, iort_length, smmu_offset = 0;
+>>       AcpiIortRC *rc;
+>> +    int smmu_mapping_count;
+>> +    GArray *map_blob = g_array_new(false, true, sizeof(AcpiIortMapping));
+>> +    AcpiIortMapping *map;
+>> +
+>> +    /* pci_for_each_bus(vms->bus, insert_map, map_blob); */
+> comment to be removed
+Done.
+>> +    object_child_foreach_recursive(object_get_root(),
+>> +                                   iort_host_bridges, map_blob);
+>> +
+>> +    smmu_mapping_count = 0;
+>> +    for (int i = 0; i < map_blob->len; i++) {
+>> +        map = &g_array_index(map_blob, AcpiIortMapping, i);
+>> +        if (map->iommu) {
+>> +            smmu_mapping_count++;
+>> +        }
+>> +    }
+>>   
+>>       iort = acpi_data_push(table_data, sizeof(*iort));
+>>   
+>> @@ -280,13 +331,13 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>>   
+>>           /* SMMUv3 node */
+>>           smmu_offset = iort_node_offset + node_size;
+>> -        node_size = sizeof(*smmu) + sizeof(*idmap);
+>> +        node_size = sizeof(*smmu) + sizeof(*idmap) * smmu_mapping_count;
+>>           iort_length += node_size;
+>>           smmu = acpi_data_push(table_data, node_size);
+>>   
+>>           smmu->type = ACPI_IORT_NODE_SMMU_V3;
+>>           smmu->length = cpu_to_le16(node_size);
+>> -        smmu->mapping_count = cpu_to_le32(1);
+>> +        smmu->mapping_count = cpu_to_le32(smmu_mapping_count);
+>>           smmu->mapping_offset = cpu_to_le32(sizeof(*smmu));
+>>           smmu->base_address = cpu_to_le64(vms->memmap[VIRT_SMMU].base);
+>>           smmu->flags = cpu_to_le32(ACPI_IORT_SMMU_V3_COHACC_OVERRIDE);
+>> @@ -295,23 +346,28 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>>           smmu->gerr_gsiv = cpu_to_le32(irq + 2);
+>>           smmu->sync_gsiv = cpu_to_le32(irq + 3);
+>>   
+>> -        /* Identity RID mapping covering the whole input RID range */
+>> -        idmap = &smmu->id_mapping_array[0];
+>> -        idmap->input_base = 0;
+>> -        idmap->id_count = cpu_to_le32(0xFFFF);
+>> -        idmap->output_base = 0;
+>> -        /* output IORT node is the ITS group node (the first node) */
+>> -        idmap->output_reference = cpu_to_le32(iort_node_offset);
+>> +        for (int i = 0, j = 0; i < map_blob->len; i++) {
+>> +            map = &g_array_index(map_blob, AcpiIortMapping, i);
+>> +
+>> +            if (!map->iommu) {
+>> +                continue;
+>> +            }
+>> +
+>> +            idmap = &smmu->id_mapping_array[j++];
+>> +            *idmap = map->idmap;
+>> +            /* output IORT node is the ITS group node (the first node) */
+>> +            idmap->output_reference = cpu_to_le32(iort_node_offset);
+>> +        }
+>>       }
+>>   
+>>       /* Root Complex Node */
+>> -    node_size = sizeof(*rc) + sizeof(*idmap);
+>> +    node_size = sizeof(*rc) + sizeof(*idmap) * map_blob->len;
+>>       iort_length += node_size;
+>>       rc = acpi_data_push(table_data, node_size);
+>>   
+>>       rc->type = ACPI_IORT_NODE_PCI_ROOT_COMPLEX;
+>>       rc->length = cpu_to_le16(node_size);
+>> -    rc->mapping_count = cpu_to_le32(1);
+>> +    rc->mapping_count = cpu_to_le32(map_blob->len);
+>>       rc->mapping_offset = cpu_to_le32(sizeof(*rc));
+>>   
+>>       /* fully coherent device */
+>> @@ -319,20 +375,23 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>>       rc->memory_properties.memory_flags = 0x3; /* CCA = CPM = DCAS = 1 */
+>>       rc->pci_segment_number = 0; /* MCFG pci_segment */
+>>   
+>> -    /* Identity RID mapping covering the whole input RID range */
+>> -    idmap = &rc->id_mapping_array[0];
+>> -    idmap->input_base = 0;
+>> -    idmap->id_count = cpu_to_le32(0xFFFF);
+>> -    idmap->output_base = 0;
+>> +    for (int i = 0; i < map_blob->len; i++) {
+>> +        map = &g_array_index(map_blob, AcpiIortMapping, i);
+>> +        idmap = &rc->id_mapping_array[i];
+>>   
+>> -    if (vms->iommu == VIRT_IOMMU_SMMUV3) {
+>> -        /* output IORT node is the smmuv3 node */
+>> -        idmap->output_reference = cpu_to_le32(smmu_offset);
+>> -    } else {
+>> -        /* output IORT node is the ITS group node (the first node) */
+>> -        idmap->output_reference = cpu_to_le32(iort_node_offset);
+>> +        *idmap = map->idmap;
+> We we descibe the link between SMMU SID and ITS deviceids, shouldn't we
+> leave the whole range? Even if an RID is not translated, it may use MSIs?
+Thanks, I did not take into account of this situation, I will fix this.
+>> +
+>> +        if (vms->iommu == VIRT_IOMMU_SMMUV3 && map->iommu) {
+>> +            /* output IORT node is the smmuv3 node */
+>> +            idmap->output_reference = cpu_to_le32(smmu_offset);
+>> +        } else {
+>> +            /* output IORT node is the ITS group node (the first node) */
+>> +            idmap->output_reference = cpu_to_le32(iort_node_offset);
+> is that case we have a direct mapping between RC and ITS (no
+> instantiated SMMU). Shouldn't the whole RID range being used in that case?
+> 
+> Thanks
+> 
+> Eric
+
+Thanks, I will change the idmap strategy to cover the whole RID range.
+>> +        }
+>>       }
+>>   
+>> +    g_array_free(map_blob, true);
+>> +
+>>       /*
+>>        * Update the pointer address in case table_data->data moves during above
+>>        * acpi_data_push operations.
+>>
+> 
+> .
+> 
+
+Xingang
+
+.

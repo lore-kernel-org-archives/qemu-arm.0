@@ -1,109 +1,138 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp5023879lfr;
-        Tue, 13 Apr 2021 09:24:47 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy/wDVqFMJdAvaItfQ5O5Rf5Nxi9zFyo+M4fLKwHbC6tgXVz52+vPHyLKj2fvrdr848C5Xf
-X-Received: by 2002:a05:6638:4f:: with SMTP id a15mr27686034jap.5.1618331087438;
-        Tue, 13 Apr 2021 09:24:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618331087; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp5855823lfr;
+        Wed, 14 Apr 2021 06:43:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzcKuE/qzA1JSExaip1i1a1pqDUwoeIGrdB51kIqgJDFr/HmnUVDPsq9EzOWDA+c78BCZFD
+X-Received: by 2002:a05:6638:10ee:: with SMTP id g14mr26516468jae.61.1618407801922;
+        Wed, 14 Apr 2021 06:43:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618407801; cv=none;
         d=google.com; s=arc-20160816;
-        b=CmEpwFptx85zqO6pMndfz14fNqNxTiwYfyMxj3+zWET833vV0+InNHpsXFI1GEs/Br
-         fMd7FOSvB7kbVRNoUYvD7pUWUhmiP1i3uBu2q+wAMfvZwdlkrjFlb7fJkQCqP1eJb8yE
-         1CEnjq1h4jVFaxatdDKB7oZU1rNVzPxqPFQNTOkiCrPcrT6OQQRFA4YWDrQHgBERVDBU
-         bbQ818hzxVMLOTr2RZ+ZFy2TYRy0v7gulKENsuYZuH6xEWRNnWifCLUF4xOFpUcDlPX8
-         KM4muPMMnxCG/iG0t4uEjsLsgh072XDyHXoG0aPO3nKG3WgyewxWNmvPDYxWT63hH2WC
-         EtKw==
+        b=XVwoT8XaGI47Nrydj0xXbZBwNHBGDSPnibnRLK1RPVn/3EngTEKn+PBKmi8Ahd9dvO
+         ZmnoztFpFI+VzFhBA1q3oybBbwaCE+9uhFh0RWAyeMYts4IeB5SrRMBCNusCEIYIiLdT
+         LYu295wD6Et/sMxaG6eS3VQ5Djk5uPNiRnzyX0PGJFTwIbCUBix2tDsEewf2rZ/4GR85
+         bWDEshqrJMokjQB1CEMNDV8PZe00oLiN8ujveoyhbEvcU//XmPxcHms51QaMduRosGMI
+         tD2WbDGOILq0CHMBorOUNai9nvz6Q7FFDJzxzQNYJBOyEnEpsknRAupTbxl+hHLRmwqp
+         vP6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=3a6hJI/Z9I/W5ssdG0WCaeNEsNPyYAWvgCozZQou3Pg=;
-        b=In+yhQ+uun2ro6jifnE21IbMcMpR95S+NtVH48El/Tlgz2g1X+Q9gawvX5NzHBAzDj
-         ObFH/bMGyHEPnCOKoEB0op5h94rAEyzPtXaYB9HIoadPcBQoxzFbT0QjBoImU05+wEQC
-         daZFkId/9Y03a7BEC4owkVYRNXZwYlTuVT3BBoSwPKWnTKw1EWyd+othyTCkJHLye2tE
-         qzksDi4h16CfICXObflMhfCm/1j2DBZCUN/PBVnDTBoUQiqIAZvQeyUHSznatbENqetO
-         Z1RMjo9YWkAGZfItZDqBotzhs29oiGlSe9KXjKgB2pyxk9idfuTOxy/IkEEkeibjLFyW
-         p2mQ==
+        bh=HN6gi2waTXJ3xm3yRDbOv4zXp826T0uvvOsNIUyUuHA=;
+        b=F3f1QjWkQiE7HLGazol3d/F0AdDSwTTZ5fpbr0xSLVWZs//pWSO9axCOUyfMGNw/Ig
+         HNZho70di8KbmNezIAY6jW2PgKe+d71FFISfDGIncfiBRMFENLyqPIXAebQdPsGPk6Rx
+         osnWMjrC71piKPWn+nXXXml9F4RYxIzuuwQhPsA1wT7UqQnWKNqcHIllktjuzMauQZA+
+         bXWVWF5/dOw6z8xf/Mr1mtdZOKc2JtAzj+FZ0Gwq3sAQkoLabxkoljMIVUL0sCXLPbLo
+         Wjzd9DmHnU2w9nK9w6CAgouSYdb5EmBuyB8ZBo9krML2Vok5SZnQ+zQguEHF3eZWIztX
+         qlxQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=p2hTKYVN;
+       dkim=fail header.i=@ibm.com header.s=pp1 header.b=favHEisn;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 15si17264187ilz.9.2021.04.13.09.24.47
+        by mx.google.com with ESMTPS id b14si8944296jar.51.2021.04.14.06.43.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 Apr 2021 09:24:47 -0700 (PDT)
+        Wed, 14 Apr 2021 06:43:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=p2hTKYVN;
+       dkim=fail header.i=@ibm.com header.s=pp1 header.b=favHEisn;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57552 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Received: from localhost ([::1]:37836 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lWLqI-0000mv-Nn
-	for alex.bennee@linaro.org; Tue, 13 Apr 2021 12:24:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41592)
+	id 1lWfnd-0005K4-6u
+	for alex.bennee@linaro.org; Wed, 14 Apr 2021 09:43:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56344)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lWLaV-0006J3-Cr
- for qemu-devel@nongnu.org; Tue, 13 Apr 2021 12:08:27 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:40492)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lWLaR-0006vV-1O
- for qemu-devel@nongnu.org; Tue, 13 Apr 2021 12:08:27 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id 12so17030585wrz.7
- for <qemu-devel@nongnu.org>; Tue, 13 Apr 2021 09:08:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:in-reply-to:references:mime-version
- :content-transfer-encoding;
- bh=3a6hJI/Z9I/W5ssdG0WCaeNEsNPyYAWvgCozZQou3Pg=;
- b=p2hTKYVNFhKV2MnrIgAJ9v+JEjwKGWxwAFANv8aPrkb/0FAB830YdQwrpt7ZkOlPVn
- Lh+oOVQoWQ7BbV+C+E2aTH4Y+EGufHMbKdhhYd72c31fG9J/ps2DXMueJefLI0ZH40L6
- nAO86ZzJgadT0LUUkfEVi3G0lpEU/G3www0a2NSzUe47+UkpZVf7vF+T6u+zIA7A8Lpb
- LTQDLnvHpqCF2YyMgSW0gPG6UiDNYQWIlt5J3XOFeOiFPGjsimjqdiBujCcSGHkUxLli
- Kd5aU+3Co9AEHdLm3nCewYcjwt3Pb3BIP23dvVet+Mg8IXpcF2UAq3GEyM9xOd4ch9of
- 3eSg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=3a6hJI/Z9I/W5ssdG0WCaeNEsNPyYAWvgCozZQou3Pg=;
- b=j4Ng/UeJVz6xRYColn0h9H7maKOaX8tZiw4zg4XOAMpXAgPSJW/0XBD7JzKQXnAFb9
- ElTJWdo4+c6/rTh1BOIf2eUTKQZMXexhbK3+aypzEtfEFzzcaq7+kbDWjcGqzqJ7CIU/
- x9PH/Fe5bp9fQV8Wtmtg5MaHEqKiWJfdBI7/yvoALwagZ+ReKbCnmMAtlEVUihMqclsV
- ytlktHEBpLQCQE3EKDBB/qJ574WfhGnOYDHBryTQeohh6ri+aOsdpYg+lsG6q71iNcDO
- A4lLIZHVxRpDfmRMOtPe7HBKWCGvR/SXoqBa8EhsGY6QM0APU60YdgJtCnnImymNjm6y
- UafA==
-X-Gm-Message-State: AOAM533VKaN4k/rg1fmxchmVFyo+yLMOf+Fi/mk5tj2mQF/UFCcBxYiZ
- qgn0uRdwhWbMezIiJhuygYVSWURuOVOCbffZ
-X-Received: by 2002:a5d:400d:: with SMTP id n13mr16631553wrp.372.1618330098864; 
- Tue, 13 Apr 2021 09:08:18 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id b1sm20810888wru.90.2021.04.13.09.08.18
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 13 Apr 2021 09:08:18 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 08/13] target/arm: Make translate-vfp.c.inc its own
- compilation unit
-Date: Tue, 13 Apr 2021 17:07:54 +0100
-Message-Id: <20210413160759.5917-9-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210413160759.5917-1-peter.maydell@linaro.org>
-References: <20210413160759.5917-1-peter.maydell@linaro.org>
+ (Exim 4.90_1) (envelope-from <iii@linux.ibm.com>)
+ id 1lWflr-000402-0L; Wed, 14 Apr 2021 09:41:31 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:60440
+ helo=mx0a-001b2d01.pphosted.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <iii@linux.ibm.com>)
+ id 1lWflk-0003Bh-SA; Wed, 14 Apr 2021 09:41:30 -0400
+Received: from pps.filterd (m0098414.ppops.net [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
+ 13EDY6nD072260; Wed, 14 Apr 2021 09:41:21 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=from : to : cc : subject
+ : date : message-id : in-reply-to : references : mime-version :
+ content-transfer-encoding; s=pp1;
+ bh=HN6gi2waTXJ3xm3yRDbOv4zXp826T0uvvOsNIUyUuHA=;
+ b=favHEisnlbK63p/eP/x+FjXJezEA2nbh2na1xNYo865CFfUMChNhxgTu1Y7n6Aje6Mex
+ ElHxGchXYyhAsB20p7X0IWpIGpeepHjsFdGNyIA4a4y6nG/bmm6OzKFmP6Y4zpyjFjfM
+ 0FJsKoJ6fnPbZSHYqvrn7usaZ8E98pEW5mVt0t2NBIARPFhTpp9JTEa+Hd0W0CX+4bDR
+ KszU1NcCf77uEYw90lHrz7eFk71wg7hIGjf4xt60syFfyYdEFKwytXV2FLDmcuSyi6w2
+ L6JPRWnI1e/GMUHhlrYb601haRe2QdI0ssuLP3OrVXP8hwVCK40XlPcZcEsb5m1AV8dF ug== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com with ESMTP id 37wvvy82ev-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 14 Apr 2021 09:41:21 -0400
+Received: from m0098414.ppops.net (m0098414.ppops.net [127.0.0.1])
+ by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 13EDZ1MX075741;
+ Wed, 14 Apr 2021 09:41:21 -0400
+Received: from ppma04ams.nl.ibm.com (63.31.33a9.ip4.static.sl-reverse.com
+ [169.51.49.99])
+ by mx0b-001b2d01.pphosted.com with ESMTP id 37wvvy82e4-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 14 Apr 2021 09:41:20 -0400
+Received: from pps.filterd (ppma04ams.nl.ibm.com [127.0.0.1])
+ by ppma04ams.nl.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 13EDc836027577;
+ Wed, 14 Apr 2021 13:41:19 GMT
+Received: from b06cxnps3075.portsmouth.uk.ibm.com
+ (d06relay10.portsmouth.uk.ibm.com [9.149.109.195])
+ by ppma04ams.nl.ibm.com with ESMTP id 37u3n8ub2y-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 14 Apr 2021 13:41:19 +0000
+Received: from b06wcsmtp001.portsmouth.uk.ibm.com
+ (b06wcsmtp001.portsmouth.uk.ibm.com [9.149.105.160])
+ by b06cxnps3075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 13EDfGqh49152480
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 14 Apr 2021 13:41:16 GMT
+Received: from b06wcsmtp001.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 4AFDFA4054;
+ Wed, 14 Apr 2021 13:41:16 +0000 (GMT)
+Received: from b06wcsmtp001.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id AAB0AA405B;
+ Wed, 14 Apr 2021 13:41:15 +0000 (GMT)
+Received: from vm.lan (unknown [9.145.157.105])
+ by b06wcsmtp001.portsmouth.uk.ibm.com (Postfix) with ESMTP;
+ Wed, 14 Apr 2021 13:41:15 +0000 (GMT)
+From: Ilya Leoshkevich <iii@linux.ibm.com>
+To: Cornelia Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ David Hildenbrand <david@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v3 2/3] target/arm: Make sure that commpage's tb->size != 0
+Date: Wed, 14 Apr 2021 15:41:11 +0200
+Message-Id: <20210414134112.25620-3-iii@linux.ibm.com>
+X-Mailer: git-send-email 2.29.2
+In-Reply-To: <20210414134112.25620-1-iii@linux.ibm.com>
+References: <20210414134112.25620-1-iii@linux.ibm.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: FFWdwE2--_gdT_qe1xF-GdpPlz3nHUVk
+X-Proofpoint-ORIG-GUID: _y2-rl2qPileUDQLqJbGu_t1fmXeIg1V
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.761
+ definitions=2021-04-14_07:2021-04-14,
+ 2021-04-14 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ mlxscore=0 lowpriorityscore=0
+ clxscore=1015 impostorscore=0 bulkscore=0 priorityscore=1501 spamscore=0
+ phishscore=0 mlxlogscore=999 suspectscore=0 malwarescore=0 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2104060000
+ definitions=main-2104140093
+Received-SPF: pass client-ip=148.163.158.5; envelope-from=iii@linux.ibm.com;
+ helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -117,98 +146,37 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Christian Borntraeger <borntraeger@de.ibm.com>, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Ilya Leoshkevich <iii@linux.ibm.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mDfXh1ZNXM32
+X-TUID: ypmAhx+oOBRP
 
-Switch translate-vfp.c.inc from being #included into translate.c
-to being its own compilation unit.
+tb_gen_code() assumes that tb->size must never be zero, otherwise it
+may produce spurious exceptions. For ARM this may happen when creating
+a translation block for the commpage.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Fix by pretending that commpage translation blocks have at least one
+instruction.
+
+Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
 ---
- target/arm/translate-a32.h                          |  2 ++
- target/arm/{translate-vfp.c.inc => translate-vfp.c} | 12 +++++++-----
- target/arm/translate.c                              |  3 +--
- target/arm/meson.build                              |  5 +++--
- 4 files changed, 13 insertions(+), 9 deletions(-)
- rename target/arm/{translate-vfp.c.inc => translate-vfp.c} (99%)
+ target/arm/translate.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/target/arm/translate-a32.h b/target/arm/translate-a32.h
-index a874253321d..96e6eafbde4 100644
---- a/target/arm/translate-a32.h
-+++ b/target/arm/translate-a32.h
-@@ -22,6 +22,8 @@
- 
- /* Prototypes for autogenerated disassembler functions */
- bool disas_m_nocp(DisasContext *dc, uint32_t insn);
-+bool disas_vfp(DisasContext *s, uint32_t insn);
-+bool disas_vfp_uncond(DisasContext *s, uint32_t insn);
- 
- void load_reg_var(DisasContext *s, TCGv_i32 var, int reg);
- void arm_gen_condlabel(DisasContext *s);
-diff --git a/target/arm/translate-vfp.c.inc b/target/arm/translate-vfp.c
-similarity index 99%
-rename from target/arm/translate-vfp.c.inc
-rename to target/arm/translate-vfp.c
-index 873a6237ea1..a9069458082 100644
---- a/target/arm/translate-vfp.c.inc
-+++ b/target/arm/translate-vfp.c
-@@ -20,11 +20,13 @@
-  * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-  */
- 
--/*
-- * This file is intended to be included from translate.c; it uses
-- * some macros and definitions provided by that file.
-- * It might be possible to convert it to a standalone .c file eventually.
-- */
-+#include "qemu/osdep.h"
-+#include "tcg/tcg-op.h"
-+#include "tcg/tcg-op-gvec.h"
-+#include "exec/exec-all.h"
-+#include "exec/gen-icount.h"
-+#include "translate.h"
-+#include "translate-a32.h"
- 
- /* Include the generated VFP decoder */
- #include "decode-vfp.c.inc"
 diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 9522002d34e..2ed02df05e0 100644
+index 62b1c2081b..885f69b044 100644
 --- a/target/arm/translate.c
 +++ b/target/arm/translate.c
-@@ -1167,8 +1167,7 @@ static TCGv_ptr vfp_reg_ptr(bool dp, int reg)
+@@ -9060,6 +9060,7 @@ static void arm_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
+     unsigned int insn;
  
- #define ARM_CP_RW_BIT   (1 << 20)
+     if (arm_pre_translate_insn(dc)) {
++        dc->base.pc_next += 4;
+         return;
+     }
  
--/* Include the VFP and Neon decoders */
--#include "translate-vfp.c.inc"
-+/* Include the Neon decoder */
- #include "translate-neon.c.inc"
- 
- static inline void iwmmxt_load_reg(TCGv_i64 var, int reg)
-diff --git a/target/arm/meson.build b/target/arm/meson.build
-index bbee1325bc4..f6360f33f11 100644
---- a/target/arm/meson.build
-+++ b/target/arm/meson.build
-@@ -3,8 +3,8 @@ gen = [
-   decodetree.process('neon-shared.decode', extra_args: '--static-decode=disas_neon_shared'),
-   decodetree.process('neon-dp.decode', extra_args: '--static-decode=disas_neon_dp'),
-   decodetree.process('neon-ls.decode', extra_args: '--static-decode=disas_neon_ls'),
--  decodetree.process('vfp.decode', extra_args: '--static-decode=disas_vfp'),
--  decodetree.process('vfp-uncond.decode', extra_args: '--static-decode=disas_vfp_uncond'),
-+  decodetree.process('vfp.decode', extra_args: '--decode=disas_vfp'),
-+  decodetree.process('vfp-uncond.decode', extra_args: '--decode=disas_vfp_uncond'),
-   decodetree.process('m-nocp.decode', extra_args: '--decode=disas_m_nocp'),
-   decodetree.process('a32.decode', extra_args: '--static-decode=disas_a32'),
-   decodetree.process('a32-uncond.decode', extra_args: '--static-decode=disas_a32_uncond'),
-@@ -27,6 +27,7 @@ arm_ss.add(files(
-   'tlb_helper.c',
-   'translate.c',
-   'translate-m-nocp.c',
-+  'translate-vfp.c',
-   'vec_helper.c',
-   'vfp_helper.c',
-   'cpu_tcg.c',
 -- 
-2.20.1
+2.29.2
 

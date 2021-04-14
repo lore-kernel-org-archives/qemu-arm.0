@@ -1,128 +1,128 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp5855830lfr;
-        Wed, 14 Apr 2021 06:43:22 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzB4UyLNAdvIzVgvX0+5IcXbxPvOySTqEah3Svk/j/M0uYx9slUQXthdykbJcSlgtnxZRsA
-X-Received: by 2002:a05:6602:80d:: with SMTP id z13mr30311910iow.17.1618407802191;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp5855848lfr;
+        Wed, 14 Apr 2021 06:43:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxyXB3sldPba1H+YH4MvFsSRloc6SNnHZYH5sH2tzYdYbwmc6Cdw1zT/sJqcZlnSKTKjOy9
+X-Received: by 2002:a02:9701:: with SMTP id x1mr24980759jai.84.1618407802961;
         Wed, 14 Apr 2021 06:43:22 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1618407802; cv=none;
         d=google.com; s=arc-20160816;
-        b=uJdXke9HoradV494wiErcGCE2aesJ4XLbpdNhKdsRmlIQ5Si1V7f8GHOiynCOF29ic
-         GFBfx0+3aXnJoTXV1Eb0WE37DM0bnO8I16moH0lb07Vq8o5T2bB17qSrviAm/4EIfPas
-         sYlBs8Xu1PUO31fHyaJFXdyr7N/i0Yn284j5bD5OeAtmFMj/gV3cR5mKQukNEzaSpOrZ
-         NMKzuPuYAajP/6W10BgCQLzqCstVVTlEL0QDgmDA7pxPoW5KUJ3MLqAt5I3zPMHfAmGq
-         +9uaDf8Vyg+3qM2s9Xos2BrWUzaCCWZcPDTboBBeRVlJS3RQtSuhCjba2k1V01tqAS5B
-         nygA==
+        b=tTYYOUc91WiQW7uXuadbSFiWYfRVCYlJtZPwy2DsiA54yRlu/+EhjQfbulFA0rLM4k
+         uQ53vLEyj3LQbufjI0tor7MDxo59VtT3chmHqS2p8hMKY1Y6yzYE2AioGubZ0QeE/VUs
+         SwsrhPpx8OYknmxsbHTKs2TAHq49LZa4WlKPDsLLeWnGrLw25FaTLG6IXU3+wMkB2pyU
+         2hMwF0GL0f/RUMH/dUL/9Xgn3rc32PiGtBw5P95oq7qayiuc43edlGHFpsqorupq2RRd
+         cCs0D4ZZf6ubCR8C66RyyTtyr9sLnrGRTwnZjFxbPRPH4OpvizUmQEl5OUrRXvLvV/un
+         Uyow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:message-id:date:subject:to:from
          :dkim-signature;
-        bh=Nm0EveWClpCAV/C4SCzoXVH1PQom2Cgmvk2fkNN9ghk=;
-        b=ejjDo0cMzxFo2Z5+Ta0Ex+4LUAiDMTk73w55O7gKWycA8GV3nX6JClFv6GbzZKPVLQ
-         BI4IxMW0g4EYj25mJ6xSmR9QZtJ1WpHLdITMUMZDwWYbdRq9CVa7yWHyeYoG+qtK6mzC
-         Q3am5ewTrCjnOJW8RfEu1YhijmFYNIa3P0elusdYusMQDKrcJczcYzGCUEnf4CqnzCHH
-         mdGzdO5tfTJML0vkG6yz+UtTiWNMOLX1dPdzOVdTDYNhtqdhagF14adaafVqKTtC6ogZ
-         IyCKG6FaT18rwUoDdiaXuy1JHssUnt+RrrNz6rk4ivNKF5ge3rurkzk1u3Bn+bXbvcKT
-         hmpw==
+        bh=4QGsmAKpLsPg+OyPty9+uc+o2xJHgqy74aPBXiXFCOM=;
+        b=AyVx0z8xsPQJQ5vHQx54lT00yTOxAZtZWLyrQDAXXxzssI5o0sSG7ankyiF9wqQTvO
+         CBtV3p7OvFMsTpd/MaCDDJ0VqREJ95QlslwcounO8i4tvEHWi4E4OhItDROfbNPz3KZP
+         dt6k1KOUGYZNWJKK4mCfOyS3zt0yhOzqzKSZcsHwgEImYx18tHVdMLPH/OwHJ6dsVbpE
+         9Hj+HnwHzzWXoruk4c+YM6F9hQnsCVM0xiKDX8griqCEEOlWRy+4foJ/b8tNXMyeBqor
+         FBLpNh5mSFt1Vhzc9MQ7689UzC6QKDXll+oOEX4wdBys1eilsj89iLM+obFWmVTmWDC8
+         f2+g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@ibm.com header.s=pp1 header.b=OHyqeeQC;
+       dkim=fail header.i=@ibm.com header.s=pp1 header.b="ee8zQFQ/";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m4si19223173jap.7.2021.04.14.06.43.22
+        by mx.google.com with ESMTPS id l15si18374659ilh.43.2021.04.14.06.43.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Wed, 14 Apr 2021 06:43:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@ibm.com header.s=pp1 header.b=OHyqeeQC;
+       dkim=fail header.i=@ibm.com header.s=pp1 header.b="ee8zQFQ/";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Received: from localhost ([::1]:37892 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37984 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lWfnd-0005LR-He
-	for alex.bennee@linaro.org; Wed, 14 Apr 2021 09:43:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56358)
+	id 1lWfne-0005Ns-7w
+	for alex.bennee@linaro.org; Wed, 14 Apr 2021 09:43:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56336)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <iii@linux.ibm.com>)
- id 1lWflr-00040W-Uk; Wed, 14 Apr 2021 09:41:31 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:50588)
+ id 1lWflq-0003zv-Nr; Wed, 14 Apr 2021 09:41:30 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:26534)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <iii@linux.ibm.com>)
- id 1lWflm-0003DL-9v; Wed, 14 Apr 2021 09:41:31 -0400
-Received: from pps.filterd (m0098404.ppops.net [127.0.0.1])
+ id 1lWfll-0003B2-Hw; Wed, 14 Apr 2021 09:41:30 -0400
+Received: from pps.filterd (m0098394.ppops.net [127.0.0.1])
  by mx0a-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 13EDecjk048335; Wed, 14 Apr 2021 09:41:24 -0400
+ 13EDXFWX193973; Wed, 14 Apr 2021 09:41:20 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
  h=from : to : cc : subject
- : date : message-id : in-reply-to : references : mime-version :
- content-transfer-encoding; s=pp1;
- bh=Nm0EveWClpCAV/C4SCzoXVH1PQom2Cgmvk2fkNN9ghk=;
- b=OHyqeeQCngQumJHcvxg+VQV80XszWBsz6bf53rOCOQ6kgrDYkuYPUKh4p2Xz2d7dYMa/
- MNHJYVHFJDKyUUmfY6+5TPLFk6GjbW9pMz5qyvkgXTdJrjy7Sy+NKKzBrTZaCvp4vlJX
- +Rd1e53LHsAnUnDU3TsFDj1eFaCjGqXUG0RxDicNnYkn0DpIvxvWjqDseLIkyqn668aY
- iOzG080ohDoG08Goxc6VKEaxRaXhu+yPocG20pSPzTFK0A2Fxp9jgO8bkv+ggz0KJz/L
- nIKL9SGJv2I4H7iC78JSvoLBoxC271QW0K8Nv+cO3JiXyjGUs+80S/fI7d5jZ2j1ishv Xg== 
+ : date : message-id : content-type : content-transfer-encoding :
+ mime-version; s=pp1; bh=4QGsmAKpLsPg+OyPty9+uc+o2xJHgqy74aPBXiXFCOM=;
+ b=ee8zQFQ/NnGwZTLVq5wj0KSr09JTTiS+ltnrXMuaPBtCunjghrDg7KEjiV+oGu5O56tI
+ 9JH8lMVzRxJd1taUXUtuy7r8WMLjvCtz4kH4BoR8xBDR+Tv5qOI3P0fFgbizL3AgHATv
+ cfGXWbVZQRqlTW7t5al/ZNs7VyX9k10Nf6TDQH/C9E9HNzhd7ryadlIaRLAo93CmN0eY
+ 5YFF11SmmypEHsZ9xeBb5Ay4LJutDU8NMKIXxsiv8yEewCol3TZpJ1VeEJ/X/umy/NWN
+ LYBYstOVLG7wvpIJuwYrcOBxFyFabPKsYRBp8Lk8GTWj+bLz28ZhGylPQokcUmOMvgxJ xA== 
 Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com with ESMTP id 37wykr3bgq-1
+ by mx0a-001b2d01.pphosted.com with ESMTP id 37wwn1xtxa-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 14 Apr 2021 09:41:23 -0400
-Received: from m0098404.ppops.net (m0098404.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 13EDfNio053272;
- Wed, 14 Apr 2021 09:41:23 -0400
-Received: from ppma05fra.de.ibm.com (6c.4a.5195.ip4.static.sl-reverse.com
- [149.81.74.108])
- by mx0a-001b2d01.pphosted.com with ESMTP id 37wykr3bg8-1
+ Wed, 14 Apr 2021 09:41:19 -0400
+Received: from m0098394.ppops.net (m0098394.ppops.net [127.0.0.1])
+ by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 13EDXLMs194644;
+ Wed, 14 Apr 2021 09:41:19 -0400
+Received: from ppma06ams.nl.ibm.com (66.31.33a9.ip4.static.sl-reverse.com
+ [169.51.49.102])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 37wwn1xtwb-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 14 Apr 2021 09:41:23 -0400
-Received: from pps.filterd (ppma05fra.de.ibm.com [127.0.0.1])
- by ppma05fra.de.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 13EDcs92013118;
- Wed, 14 Apr 2021 13:41:20 GMT
-Received: from b06cxnps4074.portsmouth.uk.ibm.com
- (d06relay11.portsmouth.uk.ibm.com [9.149.109.196])
- by ppma05fra.de.ibm.com with ESMTP id 37u3n89sfa-1
+ Wed, 14 Apr 2021 09:41:19 -0400
+Received: from pps.filterd (ppma06ams.nl.ibm.com [127.0.0.1])
+ by ppma06ams.nl.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 13EDbHa4028976;
+ Wed, 14 Apr 2021 13:41:17 GMT
+Received: from b06avi18878370.portsmouth.uk.ibm.com
+ (b06avi18878370.portsmouth.uk.ibm.com [9.149.26.194])
+ by ppma06ams.nl.ibm.com with ESMTP id 37u39hkbad-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 14 Apr 2021 13:41:20 +0000
+ Wed, 14 Apr 2021 13:41:16 +0000
 Received: from b06wcsmtp001.portsmouth.uk.ibm.com
  (b06wcsmtp001.portsmouth.uk.ibm.com [9.149.105.160])
- by b06cxnps4074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 13EDfHBq44761412
+ by b06avi18878370.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP
+ id 13EDepUg37814676
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 14 Apr 2021 13:41:17 GMT
+ Wed, 14 Apr 2021 13:40:52 GMT
 Received: from b06wcsmtp001.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 6DF65A4054;
- Wed, 14 Apr 2021 13:41:17 +0000 (GMT)
+ by IMSVA (Postfix) with ESMTP id E27A7A4065;
+ Wed, 14 Apr 2021 13:41:13 +0000 (GMT)
 Received: from b06wcsmtp001.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id C48EDA405B;
- Wed, 14 Apr 2021 13:41:16 +0000 (GMT)
+ by IMSVA (Postfix) with ESMTP id 5097FA405C;
+ Wed, 14 Apr 2021 13:41:13 +0000 (GMT)
 Received: from vm.lan (unknown [9.145.157.105])
  by b06wcsmtp001.portsmouth.uk.ibm.com (Postfix) with ESMTP;
- Wed, 14 Apr 2021 13:41:16 +0000 (GMT)
+ Wed, 14 Apr 2021 13:41:13 +0000 (GMT)
 From: Ilya Leoshkevich <iii@linux.ibm.com>
 To: Cornelia Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  David Hildenbrand <david@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v3 3/3] accel/tcg: Assert that tb->size != 0 after translation
-Date: Wed, 14 Apr 2021 15:41:12 +0200
-Message-Id: <20210414134112.25620-4-iii@linux.ibm.com>
+Subject: [PATCH v3 0/3] accel/tcg: Make sure that tb->size != 0 after
+ translation
+Date: Wed, 14 Apr 2021 15:41:09 +0200
+Message-Id: <20210414134112.25620-1-iii@linux.ibm.com>
 X-Mailer: git-send-email 2.29.2
-In-Reply-To: <20210414134112.25620-1-iii@linux.ibm.com>
-References: <20210414134112.25620-1-iii@linux.ibm.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=UTF-8
 X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: WWi6Ae18nIGEudMgZTwSLnwLn1rApS4p
-X-Proofpoint-GUID: E4kpZITWflGC-SeIK_YdII7RlzmZ1Bal
+X-Proofpoint-GUID: yq5QalstzI98-cPwIFyNzkGpZhFSjB96
+X-Proofpoint-ORIG-GUID: D-G5lZedDSYzqM-Ai-h2dAzkf8ZSLYhS
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+MIME-Version: 1.0
 X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.761
  definitions=2021-04-14_07:2021-04-14,
  2021-04-14 signatures=0
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- adultscore=0 mlxlogscore=999
- spamscore=0 priorityscore=1501 impostorscore=0 suspectscore=0
- malwarescore=0 bulkscore=0 mlxscore=0 phishscore=0 lowpriorityscore=0
- clxscore=1015 classifier=spam adjust=0 reason=mlx scancount=1
+ bulkscore=0 phishscore=0
+ priorityscore=1501 clxscore=1011 suspectscore=0 mlxscore=0
+ lowpriorityscore=0 malwarescore=0 mlxlogscore=999 impostorscore=0
+ spamscore=0 adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
  engine=8.12.0-2104060000 definitions=main-2104140093
 Received-SPF: pass client-ip=148.163.156.1; envelope-from=iii@linux.ibm.com;
  helo=mx0a-001b2d01.pphosted.com
@@ -150,29 +150,33 @@ Cc: Christian Borntraeger <borntraeger@de.ibm.com>, qemu-s390x@nongnu.org,
  Ilya Leoshkevich <iii@linux.ibm.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9Td9LtXOEabW
+X-TUID: H/Ll9gs/BS8C
 
 If arch-specific code generates a translation block of size 0,
-tb_gen_code() may generate a spurious exception. Add an assertion in
-order to catch such situations early.
+tb_gen_code() may generate a spurious exception.
 
-Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
----
- accel/tcg/translate-all.c | 1 +
- 1 file changed, 1 insertion(+)
+Fix s390x (patch 1) and ARM (patch 2) and add an assertion in order to
+catch such situations early (patch 3).
 
-diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
-index ba6ab09790..93b2dae112 100644
---- a/accel/tcg/translate-all.c
-+++ b/accel/tcg/translate-all.c
-@@ -1913,6 +1913,7 @@ TranslationBlock *tb_gen_code(CPUState *cpu,
- 
-     tcg_ctx->cpu = env_cpu(env);
-     gen_intermediate_code(cpu, tb, max_insns);
-+    assert(tb->size != 0);
-     tcg_ctx->cpu = NULL;
-     max_insns = tb->icount;
- 
+v1: https://lists.nongnu.org/archive/html/qemu-devel/2021-04/msg02037.html
+v1 -> v2: Fix target/s390x instead of trying to tolerate tb->size == 0
+          in tb_gen_code().
+
+v2: https://lists.nongnu.org/archive/html/qemu-devel/2021-04/msg02101.html
+v2 -> v3: Split the common code change into a separate patch, add the
+          ARM patch in order to fix
+          https://gitlab.com/cohuck/qemu/-/jobs/1178409450
+
+Ilya Leoshkevich (3):
+  target/s390x: Fix translation exception on illegal instruction
+  target/arm: Make sure that commpage's tb->size != 0
+  accel/tcg: Assert that tb->size != 0 after translation
+
+ accel/tcg/translate-all.c |  1 +
+ target/arm/translate.c    |  1 +
+ target/s390x/translate.c  | 16 +++++++++++-----
+ 3 files changed, 13 insertions(+), 5 deletions(-)
+
 -- 
 2.29.2
 

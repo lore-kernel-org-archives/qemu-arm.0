@@ -1,109 +1,79 @@
-Received: by 2002:a05:6214:9cd:0:0:0:0 with SMTP id dp13csp1635337qvb;
-        Thu, 15 Apr 2021 05:13:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzDmJ+45w2lp4t3vnE4JmEMOkklbSh++TxAg6Wgx4pXtoY9IBYuYu85lY6nKECGh1bNe+QV
-X-Received: by 2002:adf:f410:: with SMTP id g16mr3210084wro.345.1618488832006;
-        Thu, 15 Apr 2021 05:13:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618488832; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp485814lfr;
+        Thu, 15 Apr 2021 05:38:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxWyXvL8uRRYfC2MvVULoJLOduJ1KCDLjZLS1UG4dhyo0fCa3gngSaFRH9qBpUzz29l/Yxo
+X-Received: by 2002:a1f:bf02:: with SMTP id p2mr1743938vkf.20.1618490283252;
+        Thu, 15 Apr 2021 05:38:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618490283; cv=none;
         d=google.com; s=arc-20160816;
-        b=NvrGbszsz2IXEcYFZ7ZWnZj8jwBynPefEtmH+pTu50HKn7WRZXDTA15xkqs/1b9qmk
-         cKt227HnrNfzMpoIwSiVfanlt9ywv2rOy0EH8QcglrWoO5vdI+e1Qr7IWGc6QFIlYdSI
-         uLoPw/VSrVYMMtQJ4puTkhADLCwpD6KSesK3ycPqti8FPQoIg6FbBl2criEaqqTmSYQ/
-         pMhcvaeBaRFM56SahaH50CaWVqymx7fSEltOUuBa8u9H5zji2UxFVw2BDqmdaLmpoF94
-         Lr134f1oNHEkthXm66SEtI4451mPWf8hIK6BOvv5QsdzyaNvtahuoRpJkclVqRcYDTgi
-         R50A==
+        b=DrSAHzGu8zyGgnXW1vWU3txDIm7K6eXxcpXlDpZ1QkPLjKjPV/vdEUGfN+A3ayFo5w
+         NYI/Ox2WW1LbmBmrE4GG7jCmRBDnafiYCMqbjyrDVZjweh+Vo6VyJSaXNl/NDPv+Dchy
+         hgmRWpE7bds9LWxvZRWlsx86SgtJF3kvvQgGkbmBSPDD8XnmIjxN4wIJJJuWIlwRsweH
+         oITAwPLEORSKd2yyc7uYygFzSAXIftOJ5QqjAElf7OQNqsfKlVjLWyxG/if+64oYg6r/
+         g39LQNjEMxsHhv55UuD4LzLTiFI+qcx3lmyiJpNN0FTcpYCcQhs4f31za/vk9NxR60Vl
+         g9Iw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=QvwfhIdUeY4x0QekFaIu/2Bu+Ass4F3AOwVrAAEctoI=;
-        b=NzRFBoSUMOYMZASaG6HoR7gFICjvYT5uhmxVDbkqC5snBJ72GQUU1HFj+MHra9NBGF
-         Qr/0/MPC+ySZbo8ANg+O1UzVW08lctVgbKVc5T59vLxRvXxVdWMv3Yaw+tg8C7OVpL6W
-         8n4zpyusjAFeTXHR5sSK3mtqfpd7p+N+VnP4rxXTFkXNjLMg3/rKtWmm3ZBYMvXT54D0
-         msMHFZ/epIxLXsUnZXA4Z8sJH659dRmiuIYLZa+l855VN0KmuVedGEia4d84+bDfgogV
-         44MC67XITFqa0gccGRU3+t+bklGJ3G0QrHg9OOcAsAdklSgNuNKLSqGqSJ39hk/BL+bl
-         EnXw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=LfTeVXWL5Lt3N6a9IBMJccDOSlHwRPsb4FEVRBXbGDk=;
+        b=li9fK1d01bXeys5AlW1XiZ6gI6XyJyz4NhGXyk8545hiGjnNl47miDu9pgZDK00yKJ
+         tWGzEEhPVfZDiZjvXtGVWsxHPYsw2v4+rRri+OcyAJ3Q8rI47Jh3cc93pKcLFwcSu7eg
+         tOTOd4ENvGA+7HRTpr+rRr+PfTH59zYtBJPVyyhvmd/SL8LWc/zyZws9cFGcs9T0zpUU
+         qmGx0kFcjM5eBbTCmSAsj/g+7+GhRP642eMk/6IwIwPbt+Bi9/FxbRcnjdUuNar0ZOB6
+         vC2pCarhPkwkBrAtqdfXzJom5VdEnHPwcwnJN0VdC+s1T7lIA0Sf/MI3bmRyR/usboWM
+         G2jw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KsZqkozI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o5si2172847wrc.47.2021.04.15.05.13.51
+        by mx.google.com with ESMTPS id b20si812239vsj.326.2021.04.15.05.38.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 15 Apr 2021 05:13:51 -0700 (PDT)
+        Thu, 15 Apr 2021 05:38:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KsZqkozI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:51070 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50664 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lX0sY-0008JM-RY
-	for alex.bennee@linaro.org; Thu, 15 Apr 2021 08:13:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42964)
+	id 1lX1Fy-0004Yu-GH
+	for alex.bennee@linaro.org; Thu, 15 Apr 2021 08:38:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47072)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
- id 1lX0ro-0007Tk-T4; Thu, 15 Apr 2021 08:13:04 -0400
-Received: from mail-ot1-x32c.google.com ([2607:f8b0:4864:20::32c]:39913)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
- id 1lX0rn-0006pV-10; Thu, 15 Apr 2021 08:13:04 -0400
-Received: by mail-ot1-x32c.google.com with SMTP id
- 65-20020a9d03470000b02902808b4aec6dso17606759otv.6; 
- Thu, 15 Apr 2021 05:13:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:date:from:to:cc:subject:message-id:reply-to:references
- :mime-version:content-disposition:in-reply-to;
- bh=QvwfhIdUeY4x0QekFaIu/2Bu+Ass4F3AOwVrAAEctoI=;
- b=KsZqkozIZUcA95BLUfs/23Mky9b3WY0pgEKF9dGCrA2MoR0Dbtxz2BoH7rZvrDPb65
- 61SHd2UkCN/fW5oM9cnH7zlYRiwnJOGreCXTpyBKAnway0HbpxM+I4+uIZkf436+qoQY
- KV0vbaHdeLpDKhxQpu9OcZ/y2Wm+c8nkqMAVa0+D10b/cwrL/ZeX+fIBSivMO2OxYUVd
- bAPZhEsWftm7REHF/XDgZ2xzCA4KFouqAEhBBoxF+1kFkTGaIMHElYsu+5inAboy0r7L
- GrLLbuZqJSlGQH5dUGmM/V9ZTxCUZoFxdfTC86hu1gwTaKi1ZHVdwA827NMXqwpnTgJu
- SWwg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
- :reply-to:references:mime-version:content-disposition:in-reply-to;
- bh=QvwfhIdUeY4x0QekFaIu/2Bu+Ass4F3AOwVrAAEctoI=;
- b=LfbBjyQzBDtDVH9wPESlMzx78TlEXsOOSutyGZ+eaWLfJiDrtHo9pxB9FZzAZtQmFd
- 5Sdzg90832wNr8el5jY0UhXRJbpVpBkCd2QCOlyrTpiE3zmWyf5tQVgc7Grn1GFL9A1U
- xBXWSLqbjKRQx+zlAPy2bk5ZwkUw77iEGQmYyUpWNlQhuMjOHmDXmA9yvyugRlVKZs3p
- U23OrlGl88EcsBgUL/nkyOYpbl1c/JkdFSXeSFhBen0tZtffqrE2KE/lyJtUlIbXkzMR
- E4Aw4bnL/n377AwtDnOadM1qvoT4Kg4aR9lkZyohnhTlM3zSeDKnKLBJ9pnkKXAvNAq+
- 9xBA==
-X-Gm-Message-State: AOAM5335GZZCvWaN8JzobUcwKPzcNxXM/bz2HgHfxV29dEZHA1mUI8ZW
- tQO/6aAIa6XEpGu8d2vInw==
-X-Received: by 2002:a9d:63d5:: with SMTP id e21mr2545180otl.93.1618488780741; 
- Thu, 15 Apr 2021 05:13:00 -0700 (PDT)
-Received: from serve.minyard.net (serve.minyard.net. [2001:470:b8f6:1b::1])
- by smtp.gmail.com with ESMTPSA id z26sm519452oot.25.2021.04.15.05.12.59
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 15 Apr 2021 05:12:59 -0700 (PDT)
-Received: from minyard.net (unknown [IPv6:2001:470:b8f6:1b:5f7:923a:a6cc:a687])
- by serve.minyard.net (Postfix) with ESMTPSA id E9B64180052;
- Thu, 15 Apr 2021 12:12:58 +0000 (UTC)
-Date: Thu, 15 Apr 2021 07:12:57 -0500
-From: Corey Minyard <minyard@acm.org>
-To: Patrick Venture <venture@google.com>
-Subject: Re: [PATCH v4 0/4] hw/i2c: Adds pca954x i2c mux switch device
-Message-ID: <20210415121257.GD5612@minyard.net>
-References: <20210412194522.664594-1-venture@google.com>
+ (Exim 4.90_1) (envelope-from <cfontana@suse.de>)
+ id 1lX18S-000601-53; Thu, 15 Apr 2021 08:30:17 -0400
+Received: from mx2.suse.de ([195.135.220.15]:33138)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <cfontana@suse.de>)
+ id 1lX18K-0007cf-3o; Thu, 15 Apr 2021 08:30:15 -0400
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.221.27])
+ by mx2.suse.de (Postfix) with ESMTP id F2F1FAE56;
+ Thu, 15 Apr 2021 12:30:03 +0000 (UTC)
+Subject: Re: [PATCH v3 0/6] qtests: Check accelerator available at runtime via
+ QMP 'query-accels'
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+References: <20210415122633.4054644-1-philmd@redhat.com>
+From: Claudio Fontana <cfontana@suse.de>
+Message-ID: <7be73164-ab1f-f4c7-f80c-3305a71761a9@suse.de>
+Date: Thu, 15 Apr 2021 14:30:01 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.12.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20210412194522.664594-1-venture@google.com>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::32c;
- envelope-from=tcminyard@gmail.com; helo=mail-ot1-x32c.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+In-Reply-To: <20210415122633.4054644-1-philmd@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=195.135.220.15; envelope-from=cfontana@suse.de;
+ helo=mx2.suse.de
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -116,61 +86,85 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: minyard@acm.org
-Cc: cminyard@mvista.com, qemu-devel@nongnu.org, hskinnemoen@google.com,
- wuhaotsh@google.com, qemu-arm@nongnu.org, f4bug@amsat.org
+Cc: Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?Q?Daniel_P_=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Andrew Jones <drjones@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ qemu-arm@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Igor Mammedov <imammedo@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Eric Blake <eblake@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AVUX2mCMcvFv
+X-TUID: 4vu+qqNMBYQW
 
-On Mon, Apr 12, 2021 at 12:45:18PM -0700, Patrick Venture wrote:
-> The i2c mux device pca954x implements two devices:
->  - the pca9546 and pca9548.
+Hi Philippe,
 
-This looks good, I have pulled it into my queue.  6.0 is about to be
-released, I'll try to remember to request a pull after that.
+does the tests/qtest/arm-cpu-features.c kvm_enabled() function need to be replaced by the use of this new command?
 
-Thanks,
+Maybe something to add to the series?
 
--corey
+The use of "kvm_enabled()" in this function is particularly confused, because it matches the sysemu/kvm.h function name with completely different meaning.
 
+Ciao,
+
+CLaudio
+
+On 4/15/21 2:26 PM, Philippe Mathieu-Daudé wrote:
+> Hi,
 > 
-> v4:
->  - Fixed up bug where the i2c_scan_bus wasn't parameterizing the
->  current_devs list.
->  - Minor consistency changes in the i2c mux pca954x.
+> This series aims at having accelerator-independent qtests
+> by querying a QEMU instance at runtime to check the list
+> of built-in accelerators.
 > 
-> v3:
->  - fixup comment with missing end parenthesis.
->  - removed superfluous object cast.
+> First we add the 'query-accels' QMP command,
+> then we add the qtest_has_accel() method to libqtest,
+> finally we use this new method to allow running
+> bios-tables-test on KVM-only builds.
 > 
-> v2:
->  - the core i2c bus now calls a match method on each i2c child, which
->  by default will only check for a match against itself.
->  - the pca954x device overrides the i2c device match method to search
->  the children for each of its buses that are active.
->  - the pca954x device now owns an i2c bus for each channel, allowing
->  the normal device model to attach devices to the channels.
+> As a bonus we remove CONFIG_TCG in config_host, to avoid
+> building unnecessary objects depending on TCG.
 > 
-> Patrick Venture (4):
->   hw/i2c: name I2CNode list in I2CBus
->   hw/i2c: add match method for device search
->   hw/i2c: move search to i2c_scan_bus method
->   hw/i2c: add pca954x i2c-mux switch
+> Missing review:
+> - #4 qtest/qmp-cmd-test: Make test build-independent from accelerator
+> - #6 tests/meson: Only build softfloat objects if TCG is selected
 > 
->  MAINTAINERS                      |   6 +
->  hw/i2c/Kconfig                   |   4 +
->  hw/i2c/core.c                    |  55 ++++--
->  hw/i2c/i2c_mux_pca954x.c         | 290 +++++++++++++++++++++++++++++++
->  hw/i2c/meson.build               |   1 +
->  hw/i2c/trace-events              |   5 +
->  include/hw/i2c/i2c.h             |  17 +-
->  include/hw/i2c/i2c_mux_pca954x.h |  19 ++
->  8 files changed, 383 insertions(+), 14 deletions(-)
->  create mode 100644 hw/i2c/i2c_mux_pca954x.c
->  create mode 100644 include/hw/i2c/i2c_mux_pca954x.h
+> Since v2:
+> - Addressed Eric & Paolo review comments
 > 
-> -- 
-> 2.31.1.295.g9ea45b61b8-goog
+> Since v1:
+> - kept over-engineered union (I don't how to do simple enum)
+> - dropped arm-cpu-features patches for now
+> - fixed typos (Eric)
+> - rename qtest_has_accel (Thomas)
+> - probe accel with machine none previous qtest (Paolo)
+> - iterate over QAPI enum (Markus)
 > 
+> Eric's suggestion of conditional QAPI didn't worked out,
+> as accelerator definitions are poisoned.
 > 
+> Please review,
+> 
+> Phil.
+> 
+> Philippe Mathieu-Daudé (6):
+>   accel: Introduce 'query-accels' QMP command
+>   tests/qtest: Add qtest_has_accel() method
+>   qtest/bios-tables-test: Make test build-independent from accelerator
+>   qtest/qmp-cmd-test: Make test build-independent from accelerator
+>   tests/qtest: Do not restrict bios-tables-test to Aarch64 hosts anymore
+>   tests/meson: Only build softfloat objects if TCG is selected
+> 
+>  meson.build                    |  1 -
+>  qapi/machine.json              | 49 +++++++++++++++++
+>  tests/qtest/libqos/libqtest.h  |  8 +++
+>  accel/accel-qmp.c              | 49 +++++++++++++++++
+>  tests/qtest/bios-tables-test.c | 99 ++++++++++++++++++----------------
+>  tests/qtest/libqtest.c         | 29 ++++++++++
+>  tests/qtest/qmp-cmd-test.c     | 18 +++++--
+>  accel/meson.build              |  2 +-
+>  tests/qtest/meson.build        |  3 +-
+>  9 files changed, 203 insertions(+), 55 deletions(-)
+>  create mode 100644 accel/accel-qmp.c
+> 
+

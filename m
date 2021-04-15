@@ -1,179 +1,190 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp745395lfr;
-        Thu, 15 Apr 2021 10:45:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwkA3W2xdD8OP/9eJLteNsqanpOHFAb2sn0q3bKvVe+uXH6vCTr3PPP/UXj4uNqI+1XM4Br
-X-Received: by 2002:a02:cc9c:: with SMTP id s28mr427028jap.30.1618508752773;
-        Thu, 15 Apr 2021 10:45:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618508752; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp775315lfr;
+        Thu, 15 Apr 2021 11:27:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwfMOE32Y8QyeeQbhJgX6X2hpRmmtLTFAWU7q7lAprTwl13XReAd5ahzXF0dmcwL06PmGT5
+X-Received: by 2002:a05:6e02:13d3:: with SMTP id v19mr3691449ilj.56.1618511252436;
+        Thu, 15 Apr 2021 11:27:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618511252; cv=none;
         d=google.com; s=arc-20160816;
-        b=rHG7S31r1LugUxij6bSV42yqqiVVRVut1/rgAtJxp8Yzjp95t6zklq6ZGDSGD+AO1C
-         E7kuve6tGj7ShAKmVDuG6OUpu8TcHpjs3ynBfdq6JxZjdQ/7o2yw3/VPNvl/AYszLNC/
-         KgM4t4xHg9Z1BsjxZb1yw4WX9z5ms3h1FQbSiNqf6kcouekZ7gXK7pRCRmM/+EThnR4k
-         q7/Q9OWZeR7X0Qr3/fcFHB9cJOfUX2rcy/0mQTw/XbCNY0X1glY48u9qeMV6iOH/XPlm
-         uPhSN3hZCLhVplL/f98kzDadsuXZzVAdNNrKVQ5nOy/GzJ//TGD5Ul+C5lQq/PJjOOkK
-         WXdg==
+        b=nGcdxjgOAgR+RZQrYuzdNVxd3xW3vTq2dWsDYsSJTWXg+WcDvlvBt5Xxwa5qvPrlLU
+         oC4/LvEvUl3zq6oo5jsWGgJC61YwoDfeShUeW7hg1ZVoVtxYaOne1jdz/gsg0KTqmhEk
+         KWBkDBLqnM25U/HyPkELvY2pmdGU/EGa5N2tO5j4S9l7riqCt9NFwsWmhsOP5nSo1fy2
+         NW+kwNPwEkounXbDuNcvDXA4hsbGG0EqW46/ebbJ1JOGdeWN/xDJNsL9vMdN0CrMtUWw
+         U00sCe3E1kcC96GLJW2z21SvL/+D70R24xWoQUmzUKHbOvgOiBHhigsH9Qg+E2xqxNcq
+         gCCA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=/i7exIOkfzjaGivOrzAfaS8+wOSkmaJkGms6e2vCLj4=;
-        b=iWEowqFP0ZBUm9T2/Zuc37Dbrqp/jM3PcvybkYpkvmffnJabBD5bA/eyjvNLaaKiWZ
-         VtJVnZMf7vve5y6cib/Zzh2ISkTubklN6/sgQwYsTrOYWJQC294WvAw5V8rzjTeM+dPd
-         vlU3v1UCpALlSI/68lAzuVg7Ib+uXKgiATjBLGRMg8qoKLgPuyRBY2AMX8A5ahz9133l
-         qgrq7TAjeOAUpuRZZewlc7tTOwegKcOKztzUbtMsA6t7vW74OALjN/LIttnhhWK74tdp
-         /MUNwjIizs8fzZ16E5LKYk3/7zDOGR9JBRtP8nTRPmeshWmZoI5JgCsGElIBS/lF43Jh
-         6OhA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=juT4twg37Pcety9e36P2vwj5M6pr9ePm6rB/ZDzuhtI=;
+        b=Vq6VjH7x3J/4k0W0lSYT46K4aZw0NpV13AmXMtuNbMYZK2Z9oiCu/6ZVwGC3J6DRXG
+         D/rnRC126oYfuYLK2hHpNd+QPs7voxAJK40wk7xe7ppePW2KYlcv0kk+1a2O6/9CMGkr
+         V6XIk/8EYhVChf6dY0Yy+QSpfLqrOlxgRRI0Xu70KAeCBSKPEc15nNcRnYu2vzC7kKhW
+         tLwUPCUnOMYAbNJQ04reVHYYZzFG2z/3hVOKwrA2r4X5eSX++4/YskQF1eJc6rPkU5rv
+         JJX5IP0nusOt9TEOcsam7EODTJTzwsJk97ZNpUdeIw+SrCRwC25ERtDAEbW0U7+sVrOv
+         5EPw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=cUbCFPjQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=A2rXsORH;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h12si3195778ilc.107.2021.04.15.10.45.52
+        by mx.google.com with ESMTPS id w11si4309446ilu.8.2021.04.15.11.27.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 15 Apr 2021 10:45:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 15 Apr 2021 11:27:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=cUbCFPjQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:42028 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=A2rXsORH;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:49696 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lX63s-0000f0-2P
-	for alex.bennee@linaro.org; Thu, 15 Apr 2021 13:45:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55606)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lX6iB-00029o-MS
+	for alex.bennee@linaro.org; Thu, 15 Apr 2021 14:27:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50028)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <venture@google.com>)
- id 1lX5Zj-0001qe-12
- for qemu-arm@nongnu.org; Thu, 15 Apr 2021 13:14:45 -0400
-Received: from mail-qk1-x731.google.com ([2607:f8b0:4864:20::731]:37482)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lX6ey-0000sz-JP
+ for qemu-devel@nongnu.org; Thu, 15 Apr 2021 14:24:12 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b]:56038)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <venture@google.com>)
- id 1lX5Ze-00068k-Ol
- for qemu-arm@nongnu.org; Thu, 15 Apr 2021 13:14:42 -0400
-Received: by mail-qk1-x731.google.com with SMTP id 130so11754737qkm.4
- for <qemu-arm@nongnu.org>; Thu, 15 Apr 2021 10:14:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=/i7exIOkfzjaGivOrzAfaS8+wOSkmaJkGms6e2vCLj4=;
- b=cUbCFPjQGoHKP8Eq5ZMCVeKk6GZ6EjEz61piJ90R4UKux8MQysMciX9qDJbRfoytce
- ENMkjK/olXuaCzX/G6g9XzQQFy/0S+GteNg7VeTmxDqwnEMGmG4hu3F0eiiEAhhK3PaQ
- i2+EpRQs2ISQHNy4WnVTx3C5H+dx96LPWqYKOZs+nr26Xg/YTdKkkegoAek+QP0SQ03Q
- LG8Kngbf6XmwwgL60rKHlJ+MjcmJPGAytno/qpKPK0+bJuFolIgetNnvHd+KeyaOAF6c
- 0nXLIF3SfDoOJDlV2etR4b+jAwB2/TuoqRnbEJ18U5x5LnA+sPVMKy7kN1WctHUj7lt7
- apdw==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lX6ep-00013t-GX
+ for qemu-devel@nongnu.org; Thu, 15 Apr 2021 14:24:12 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id n127so1190959wmb.5
+ for <qemu-devel@nongnu.org>; Thu, 15 Apr 2021 11:23:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=juT4twg37Pcety9e36P2vwj5M6pr9ePm6rB/ZDzuhtI=;
+ b=A2rXsORHU+GxNuserKOfpcemw3DkjwSQnxJs/7t1y+pUcCHqzg2V1Thrm84McgKuQk
+ uvjAJgSC/nsTl/yrz/pA8rPi8IoEw1bw01kqg59pjSAYJWPb0W6ssI9GW98R19onXXDq
+ rpwWOIGG0vCDOh6eAKxxYE/J9KGBjSwWo/VHYFzZAgjItJ3/XJCc0HYhU7oQLIahlhiA
+ bB4Wd3sNskN6JZFpOB8jBvmdOD5GnKdvOGHa2jaVGJlgQCv+wwODKsxh9nTYNau/2ML6
+ FPyXdbcOy/bWQP0b4X9GMYbUx9m67FEZMOJxMCd5YNF8s8MtxJHgW4kgUl08rSQJySUz
+ 7hHA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=/i7exIOkfzjaGivOrzAfaS8+wOSkmaJkGms6e2vCLj4=;
- b=O6d4qmnXtHxSomSftVAEXvet7xW5RzIKH0ZeZh32jnsTfpEFMPVltKVkLRHwlAcIlP
- 5OaT85DEiDIdU4Li1SR7MEgmhpStgIKvp9BF9mc7OkhWAPf9lcqrYYFg/XJAXY35C0+X
- Juzhi9Yg8r9lATgSfYLxjf57SobwehBZkrXONzNVO+ToNsg4k5btJ5dc9OAVChm+eCh+
- hL+g0Ym603riLpnZigwaa/CH09WvcUrcsCRr+terKyTaom+mOLmQXIbKr8xtXdaL+w3N
- nY340qEC5d0supVuLohUjJHHiV6Ho/TChIxarfw89STc97UzQHD6hh9X2FuDfAQR75Dr
- QyKg==
-X-Gm-Message-State: AOAM532zraS6oWt6iW/xUB5FC6H2yr0nY0VKez82DeoRkxpQ7ElM/B9I
- l1i+rytLUfTFMTl3gH9IulOvzHLaCXMCw8MR1aiQOw==
-X-Received: by 2002:a37:64c3:: with SMTP id y186mr4486943qkb.244.1618506875046; 
- Thu, 15 Apr 2021 10:14:35 -0700 (PDT)
+ h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=juT4twg37Pcety9e36P2vwj5M6pr9ePm6rB/ZDzuhtI=;
+ b=mauvGv1JDq5LnJm9DRGnjf2UMnBb5VVUFdSQ0mwUnm6kaXiFzG/vQP7s4zayIgO7eI
+ szWKKIsSn+SfvInYLudSs2KsxJaxdCrU+XqHufP2dVvr2yN+JE633/xgnXmKYrj9KKhQ
+ zqr2AArYUcQ0DbuamCafzhtswtno8b8UVqIiUzE0QIRfd4SnKf/nPQHlD7qGTbgpew/6
+ uZxPe9bt6v4otpcwrlwDPqOyzh79tqKUt03O85McAy73TX1m/L4HlTFvW+stMXPR5YvD
+ 48qF2U6Q6MmNG3wVZ1b1J7lhQDC1Qj+uD3bvjwXC3upD/8Js5KLuVztOUm+v7pFG3d0l
+ 8EPQ==
+X-Gm-Message-State: AOAM532s1pitNwis7ukFvN9yDbr1LIrpuwcEaZUE2az/T6JrikXLAsWq
+ 5KAn0T4axaPRItCEML0Hwo09aA==
+X-Received: by 2002:a1c:7207:: with SMTP id n7mr4320611wmc.11.1618511035791;
+ Thu, 15 Apr 2021 11:23:55 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id g9sm4182907wmh.21.2021.04.15.11.23.55
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 15 Apr 2021 11:23:55 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH for-6.0?] hw/arm/armsse: Give SSE-300 its own Property array
+Date: Thu, 15 Apr 2021 19:23:53 +0100
+Message-Id: <20210415182353.8173-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-References: <20210412194522.664594-1-venture@google.com>
- <20210415121257.GD5612@minyard.net>
-In-Reply-To: <20210415121257.GD5612@minyard.net>
-From: Patrick Venture <venture@google.com>
-Date: Thu, 15 Apr 2021 10:14:24 -0700
-Message-ID: <CAO=notz+EMXqv+5ndHCGgcwUwGfGMNYt3NCVfx87R9HEutwf2w@mail.gmail.com>
-Subject: Re: [PATCH v4 0/4] hw/i2c: Adds pca954x i2c mux switch device
-To: Corey Minyard <minyard@acm.org>
-Cc: Corey Minyard <cminyard@mvista.com>, Hao Wu <wuhaotsh@google.com>, 
- Havard Skinnemoen <hskinnemoen@google.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::731;
- envelope-from=venture@google.com; helo=mail-qk1-x731.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7FGVrInIo6NI
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: /qPJn62oIDk0
 
-On Thu, Apr 15, 2021 at 5:13 AM Corey Minyard <minyard@acm.org> wrote:
->
-> On Mon, Apr 12, 2021 at 12:45:18PM -0700, Patrick Venture wrote:
-> > The i2c mux device pca954x implements two devices:
-> >  - the pca9546 and pca9548.
->
-> This looks good, I have pulled it into my queue.  6.0 is about to be
-> released, I'll try to remember to request a pull after that.
->
-> Thanks,
->
-> -corey
+SSE-300 currently shares the SSE-200 Property array. This is
+bad principally because the default values of the CPU0_FPU
+and CPU0_DSP properties disable the FPU and DSP on the CPU.
+That is correct for the SSE-300 but not the SSE-200.
+Give the SSE-300 its own Property array with the correct
+SSE-300 specific settings:
+ * SSE-300 has only one CPU, so no CPU1* properties
+ * SSE-300 CPU has FPU and DSP
 
-Thanks, after I see the pull I'll send out a small stack I have of bmc
-boards that can now use this device.
+Buglink: https://bugs.launchpad.net/qemu/+bug/1923861
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+This is a simple and pretty safe fix, but I don't think it quite
+merits doing an rc4 by itself. I think if we do an rc4 for some
+other reason it ought to go in, though.
 
-Patrick
+ hw/arm/armsse.c | 17 ++++++++++++++---
+ 1 file changed, 14 insertions(+), 3 deletions(-)
 
->
-> >
-> > v4:
-> >  - Fixed up bug where the i2c_scan_bus wasn't parameterizing the
-> >  current_devs list.
-> >  - Minor consistency changes in the i2c mux pca954x.
-> >
-> > v3:
-> >  - fixup comment with missing end parenthesis.
-> >  - removed superfluous object cast.
-> >
-> > v2:
-> >  - the core i2c bus now calls a match method on each i2c child, which
-> >  by default will only check for a match against itself.
-> >  - the pca954x device overrides the i2c device match method to search
-> >  the children for each of its buses that are active.
-> >  - the pca954x device now owns an i2c bus for each channel, allowing
-> >  the normal device model to attach devices to the channels.
-> >
-> > Patrick Venture (4):
-> >   hw/i2c: name I2CNode list in I2CBus
-> >   hw/i2c: add match method for device search
-> >   hw/i2c: move search to i2c_scan_bus method
-> >   hw/i2c: add pca954x i2c-mux switch
-> >
-> >  MAINTAINERS                      |   6 +
-> >  hw/i2c/Kconfig                   |   4 +
-> >  hw/i2c/core.c                    |  55 ++++--
-> >  hw/i2c/i2c_mux_pca954x.c         | 290 +++++++++++++++++++++++++++++++
-> >  hw/i2c/meson.build               |   1 +
-> >  hw/i2c/trace-events              |   5 +
-> >  include/hw/i2c/i2c.h             |  17 +-
-> >  include/hw/i2c/i2c_mux_pca954x.h |  19 ++
-> >  8 files changed, 383 insertions(+), 14 deletions(-)
-> >  create mode 100644 hw/i2c/i2c_mux_pca954x.c
-> >  create mode 100644 include/hw/i2c/i2c_mux_pca954x.h
-> >
-> > --
-> > 2.31.1.295.g9ea45b61b8-goog
-> >
-> >
+diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
+index e5aeb9e485f..170dea8632d 100644
+--- a/hw/arm/armsse.c
++++ b/hw/arm/armsse.c
+@@ -84,7 +84,7 @@ static Property iotkit_properties[] = {
+     DEFINE_PROP_END_OF_LIST()
+ };
+ 
+-static Property armsse_properties[] = {
++static Property sse200_properties[] = {
+     DEFINE_PROP_LINK("memory", ARMSSE, board_memory, TYPE_MEMORY_REGION,
+                      MemoryRegion *),
+     DEFINE_PROP_UINT32("EXP_NUMIRQ", ARMSSE, exp_numirq, 64),
+@@ -97,6 +97,17 @@ static Property armsse_properties[] = {
+     DEFINE_PROP_END_OF_LIST()
+ };
+ 
++static Property sse300_properties[] = {
++    DEFINE_PROP_LINK("memory", ARMSSE, board_memory, TYPE_MEMORY_REGION,
++                     MemoryRegion *),
++    DEFINE_PROP_UINT32("EXP_NUMIRQ", ARMSSE, exp_numirq, 64),
++    DEFINE_PROP_UINT32("SRAM_ADDR_WIDTH", ARMSSE, sram_addr_width, 15),
++    DEFINE_PROP_UINT32("init-svtor", ARMSSE, init_svtor, 0x10000000),
++    DEFINE_PROP_BOOL("CPU0_FPU", ARMSSE, cpu_fpu[0], true),
++    DEFINE_PROP_BOOL("CPU0_DSP", ARMSSE, cpu_dsp[0], true),
++    DEFINE_PROP_END_OF_LIST()
++};
++
+ static const ARMSSEDeviceInfo iotkit_devices[] = {
+     {
+         .name = "timer0",
+@@ -519,7 +530,7 @@ static const ARMSSEInfo armsse_variants[] = {
+         .has_cpuid = true,
+         .has_cpu_pwrctrl = false,
+         .has_sse_counter = false,
+-        .props = armsse_properties,
++        .props = sse200_properties,
+         .devinfo = sse200_devices,
+         .irq_is_common = sse200_irq_is_common,
+     },
+@@ -537,7 +548,7 @@ static const ARMSSEInfo armsse_variants[] = {
+         .has_cpuid = true,
+         .has_cpu_pwrctrl = true,
+         .has_sse_counter = true,
+-        .props = armsse_properties,
++        .props = sse300_properties,
+         .devinfo = sse300_devices,
+         .irq_is_common = sse300_irq_is_common,
+     },
+-- 
+2.20.1
+

@@ -1,146 +1,119 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp720389lfr;
-        Thu, 15 Apr 2021 10:13:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzpPvUs6CC6Q+76fvWX19wIf1rDwt8HolV3aSnfPHpzX+GovB9viKmVWz8s7I7VWUT1MadM
-X-Received: by 2002:a92:dcc8:: with SMTP id b8mr3510989ilr.286.1618506819782;
-        Thu, 15 Apr 2021 10:13:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618506819; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp724460lfr;
+        Thu, 15 Apr 2021 10:18:48 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzgxJzQTaagZd0ZDqk8k/GNt/h7YsaJN8nCPH5U1Dt1vw6KrbAmPaX7Dys4hMPfNjZ63qwj
+X-Received: by 2002:a1c:b656:: with SMTP id g83mr4212397wmf.163.1618507127989;
+        Thu, 15 Apr 2021 10:18:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618507127; cv=none;
         d=google.com; s=arc-20160816;
-        b=gDEVEHqENXaEoZ6e5P//vzza0j4CYAHKPVylyWMYFT5AdiSMkvkWGK19274GBrjb7K
-         Zyqn7WAy5dBDYdCeDNUMz6Kkmqn9LlweaPFVQeeWoLLD+PmqA239UH++AMfLYFjO2kQN
-         Bm9gVzQwBMJSTdVA0A0ST3IFJZHSM7FPxvz1DM0QUrRJzNOCF0IWzSCwg6mtjb/rOb4l
-         NVwxP4jzen3ka4x5GmuG4WZNqRoiy4jjkJ3CqXot2PF8z2gdItOyzWDCdoN2wv+4W5oL
-         4sXmaL4Ecs2/rIjJPuJ3MQQhp8ljq3yjVzXxU6YC3mmDKQ8HptzGRKq9FLh9YnQN4hdM
-         t0yA==
+        b=FG6vfZNl9an+Hye0UfxUVblDzG2q5ktBTZsub8oBAcmE+xFY4FVbCt7spcizC02S59
+         1wX/hvOja0grHXhxJZ3m50ypn+EcB+11/gao+Oqwuuq/kV+QBukBwktxeoo7grvM1Rwq
+         OX7w9jtBekghswrOjy1+LFQD+vJQxIj35obKSbrFl7R5BgjfOeNuknJFjphTV9j+eHqB
+         AIljNq0hHFGnH3+0Cy3UTaaoVtyAttWN2zxRbfs0yS07AFgnxbb5di4pSrqVOlypeFUn
+         eKRUExTb0AE6dDCmhuDBA5G5tCwT9cg6fDuFr/xPfolhXLJ1OyB0a2DNZ41mWvUe/Ptt
+         U0+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-disposition:in-reply-to:mime-version:references:message-id
-         :subject:to:from:date:dkim-signature;
-        bh=x5Ys7sRuD4s3PZnXr8+EJKY4p5KaQmgJ4cCnBkyyJFc=;
-        b=r0qMW9oVdzW3IUyDAo4hKJwH/MWkYKj0a4D6st49cGCrE6XBTnw1SBka0OyjpP/fzH
-         Lx6fLCPS51z8f+ylwZhOVgj9zBmwW+0/o29x7BniwRnFntO+sm674Y0YPp3FQVh6v2SL
-         jOIWkg536mNzJauU8tm6L5tt2eBrBqPkBWy21tY5w5xr6sX3clPup/WuQddTWDLt2wVo
-         AN0+hIYdn22Xop/hQLull2QEBJ1QuWMVXeqoUpBsAnGIF/oU0Mu1wEJqzd32eLttCk3l
-         zOr8nQHp+lDFYkBz71No+hi6TBKXPf4PvuonbyAkmPGRpYp7n923EqBmwGGH5QC2rjdn
-         G6iA==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject;
+        bh=Qdqd9NnJK8/Q4kR41Ujr754tOtHRjqeJEBjDkGnT/vs=;
+        b=Lk6MDcdgpHeaKRgUUvqzsfAKuuYRqThsQL0pWZ/L5tlg62SxfRxPdZdVjhjJ7r3PC2
+         UOn3DiSOIvV83AfsGSoHMvEHSRxwnsMavxxkaMOadzJiKe6w70dZSusM1qct1RIcnwVb
+         ReYiekHl47tkC7IFU6/GQz+EhQ8ENHNZVZmc40TB+amHmiSWH0fxP39O1wA4HBtE3PfK
+         l4RdmJo4NKMggeSXj9oZ0terPQFykKjepku3nEXfn3S6qgDVD1Mw9UA78a3p+OdC/0ol
+         QrwsrWjeqsfET8LmnNV+7wHwotfzGLIVgG6KkWGgj279rYyayb0qxOmbA0EdeLs6oUBU
+         ZN1Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SLGqzCjE;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b26si678614jal.123.2021.04.15.10.13.39
+       spf=pass (google.com: domain of clg@kaod.org designates 178.33.254.192 as permitted sender) smtp.mailfrom=clg@kaod.org
+Return-Path: <clg@kaod.org>
+Received: from 3.mo52.mail-out.ovh.net (3.mo52.mail-out.ovh.net. [178.33.254.192])
+        by mx.google.com with ESMTPS id a17si3529122wmd.72.2021.04.15.10.18.47
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 15 Apr 2021 10:13:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 15 Apr 2021 10:18:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of clg@kaod.org designates 178.33.254.192 as permitted sender) client-ip=178.33.254.192;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SLGqzCjE;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43970 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lX5Yh-0000b1-0t
-	for alex.bennee@linaro.org; Thu, 15 Apr 2021 13:13:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44210)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1lX584-00041p-J5
- for qemu-arm@nongnu.org; Thu, 15 Apr 2021 12:46:10 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:30648)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1lX57q-0002RG-H6
- for qemu-arm@nongnu.org; Thu, 15 Apr 2021 12:46:04 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1618505153;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=x5Ys7sRuD4s3PZnXr8+EJKY4p5KaQmgJ4cCnBkyyJFc=;
- b=SLGqzCjEcO2GN81HhP+IjNozPVbpVBN5lWw9ov/8kDTbt0vNCUEktDVP1bc58aowGO9p4J
- /rdB7Hd/ytIC9ZhHFGj9sS+Y1dpS9ythVBdoL4nfGBLZaQ1QUwQy6emzSuBt5kKHTn6ilD
- O43QEnAIZQJqIl7X3n7y/dYSfxClBzE=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-292-Fcl2hWEZMjqs90D2C8WubQ-1; Thu, 15 Apr 2021 12:45:51 -0400
-X-MC-Unique: Fcl2hWEZMjqs90D2C8WubQ-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C82A1107ACC7;
- Thu, 15 Apr 2021 16:45:50 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.40.192.57])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 1D98410074E1;
- Thu, 15 Apr 2021 16:45:43 +0000 (UTC)
-Date: Thu, 15 Apr 2021 18:45:41 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: Re: [PATCH v4 07/12] qtest/arm-cpu-features: Use generic
- qtest_has_accel() to check for TCG
-Message-ID: <20210415164541.4t4yjxclkamsopto@kamzik.brq.redhat.com>
-References: <20210415163304.4120052-1-philmd@redhat.com>
- <20210415163304.4120052-8-philmd@redhat.com>
+       spf=pass (google.com: domain of clg@kaod.org designates 178.33.254.192 as permitted sender) smtp.mailfrom=clg@kaod.org
+Received: from mxplan5.mail.ovh.net (unknown [10.109.143.210])
+	by mo52.mail-out.ovh.net (Postfix) with ESMTPS id 79F9725C5E9;
+	Thu, 15 Apr 2021 19:18:47 +0200 (CEST)
+Received: from kaod.org (37.59.142.103) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2242.4; Thu, 15 Apr
+ 2021 19:18:46 +0200
+Authentication-Results: garm.ovh; auth=pass (GARM-103G005299d6363-7978-4634-8674-a9eb0ed4637f,
+                    223986A87AF8D074E4FEF7B99352A100DDD0E9F0) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 90.89.73.13
+Subject: Re: [EXTERNAL] Re: [PULL 18/23] accel/tcg: re-factor non-RAM
+ execution code
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>, Peter Maydell
+	<peter.maydell@linaro.org>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+	<alex.bennee@linaro.org>, qemu-arm <qemu-arm@nongnu.org>
+CC: Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson
+	<richard.henderson@linaro.org>, QEMU Developers <qemu-devel@nongnu.org>
+References: <20210218094706.23038-1-alex.bennee@linaro.org>
+ <20210218094706.23038-19-alex.bennee@linaro.org>
+ <CAFEAcA8micdrGgwyS-20mnGkdpJ3mMnq=MEJJFZCh3XGx0uMbg@mail.gmail.com>
+ <CAFEAcA9G-WabAM_EdgMzd0Xv6z8xRYjw57DiEqB6Z_Wbj=X1Eg@mail.gmail.com>
+ <87blaflit2.fsf@linaro.org>
+ <CAFEAcA_Uqvc5zyJs8XHWDGR1B_jUZ9jY5EdgHSmaczuOc02ykg@mail.gmail.com>
+ <b989ebfe-1294-5eef-53a2-9599421e0069@amsat.org>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <6597cb54-44d9-0798-0786-098286001fe0@kaod.org>
+Date: Thu, 15 Apr 2021 19:18:45 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <20210415163304.4120052-8-philmd@redhat.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+In-Reply-To: <b989ebfe-1294-5eef-53a2-9599421e0069@amsat.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=drjones@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <lvivier@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Daniel P =?utf-8?B?LiBCZXJyYW5nw6k=?= <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Juan Quintela <quintela@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
- Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
- Claudio Fontana <cfontana@suse.de>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Eric Blake <eblake@redhat.com>, "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gOF1vsYHbWRc
+X-Originating-IP: [37.59.142.103]
+X-ClientProxiedBy: DAG5EX2.mxp5.local (172.16.2.42) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 50e4b46c-3d43-4c0c-a7f2-a452ee3c2f8d
+X-Ovh-Tracer-Id: 8464234028943444841
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduledrudelfedgudduiecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeejkeduueduveelgeduueegkeelffevledujeetffeivdelvdfgkeeufeduheehfeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtfeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepfhegsghughesrghmshgrthdrohhrgh
+X-TUID: kfW/iWpFCbpx
 
-On Thu, Apr 15, 2021 at 06:32:59PM +0200, Philippe Mathieu-Daud� wrote:
-> Now than we can probe if the TCG accelerator is available
-> at runtime with a QMP command, only run these tests if TCG
-> is built into the QEMU binary.
+On 4/15/21 5:55 PM, Philippe Mathieu-Daudé wrote:
+> On 4/15/21 4:54 PM, Peter Maydell wrote:
+>> On Thu, 15 Apr 2021 at 15:32, Alex Bennée <alex.bennee@linaro.org> wrote:
+>>> --8<---------------cut here---------------start------------->8---
+>>> accel/tcg: avoid re-translating one-shot instructions
+>>>
+>>> By definition a single instruction is capable of being an IO
+>>> instruction. This avoids a problem of triggering a cpu_io_recompile on
+>>> a non-cached translation which would only do exactly this anyway.
+>>>
+>>> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+>>>
+>>> 1 file changed, 1 insertion(+), 1 deletion(-)
+>>> accel/tcg/translate-all.c | 2 +-
+>>>
+>>> modified   accel/tcg/translate-all.c
+>>> @@ -1863,7 +1863,7 @@ TranslationBlock *tb_gen_code(CPUState *cpu,
+>>>
+>>>      if (phys_pc == -1) {
+>>>          /* Generate a one-shot TB with 1 insn in it */
+>>> -        cflags = (cflags & ~CF_COUNT_MASK) | 1;
+>>> +        cflags = (cflags & ~CF_COUNT_MASK) | CF_LAST_IO | 1;
+>>>      }
+>>>
+>>>      max_insns = cflags & CF_COUNT_MASK;
+>>> --8<---------------cut here---------------end--------------->8---
+>>
+>> Yes, this fixes the problem. Do we want to put this in for 6.0? My
+>> feeling is that executing from non-RAM is pretty niche, so maybe
+>> if we need an rc4 anyway, but this isn't important enough to cause an
+>> rc4 itself.
 > 
-> Suggested-by: Andrew Jones <drjones@redhat.com>
-> Signed-off-by: Philippe Mathieu-Daud� <philmd@redhat.com>
-> ---
->  tests/qtest/arm-cpu-features.c | 16 +++++++++-------
->  1 file changed, 9 insertions(+), 7 deletions(-)
->
+> Isn't it the default for Aspeed machines (with U-Boot)? (Cc'ing Cédric).
 
-Reviewed-by: Andrew Jones <drjones@redhat.com>
+You need to set the 'execute-in-place' machine option to load/execute the
+instructions from the AHB window of CE0. It's not on by default because 
+boot can be really slow with some recent u-boot which heavily trash the TBs.
 
+But this seems to work fine with -rc3. 
+
+C. 

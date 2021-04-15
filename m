@@ -1,105 +1,106 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp6178458lfr;
-        Wed, 14 Apr 2021 13:33:13 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzCTjYOZ+0f8jjJVm91siTOLWpTVZh0zKbVbWfZ0j8Bsf+yoI+0EYu0PqrN7aVMuGqLQmmR
-X-Received: by 2002:a05:6638:24cc:: with SMTP id y12mr19977455jat.138.1618432393717;
-        Wed, 14 Apr 2021 13:33:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618432393; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp78273lfr;
+        Wed, 14 Apr 2021 18:24:41 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzYQ500NMblS1N3SHzeXctZ2Bnk6FpcPPCLFR6RAJ5XnlVHX6IPqL9IN2P9F2aHx7OPiIy3
+X-Received: by 2002:a92:3644:: with SMTP id d4mr877983ilf.53.1618449880994;
+        Wed, 14 Apr 2021 18:24:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618449880; cv=none;
         d=google.com; s=arc-20160816;
-        b=vLo9Xrdtd+r7IeJSBSeEVf+LxCru4rAnmdRgHbdLFQe9E6V7ikxNu4Xz4f8KV5ryLq
-         dtnZrnsy4gSDFy7P2myGbarYr6tMWQSk2/bq9W18NFE9lB1OWlCcbkBH6p+rL7pXiENO
-         7wPnKW4ffAkgIOvDnog4xR6lINOjQlWCL7zCGRrr3R94Sj6KNE/giuH+7XPdL6chRrky
-         ptAGyltciS+VO5vSdI6hOOcIUgxuIdztcyJKmSkjWYwzeFUO/yGXYRVjGISzF5TiwS63
-         +BonQvXdx63Iuc5Pw50kfk/gYrdnBdv/vXahZp6X7K05KBYNe20v6Q22VW3xGZYU5cjv
-         UuMw==
+        b=VqSKZYOGAy73rbMy2hyM7shatSvHiq98KGC1kUPS/dzlEu27d+vH+jI8D3S4MxgMfr
+         TQ5EZrLoVCbDHOj5k6GwjqFuQ7PtsrOA7Py2U9wmm8IltYRqxYQv6B7M+OcfbxRzH1r6
+         cbdX4yvx0yS0ija/ULcV5G40o7iyVa6h1zui6LhagwpKA9GEoJZ/OLZx+g3QRPfUUAIW
+         Wi2DYtxJALRZCrfYx5RvdlpQlIcOiDI3lfX9KIjTlNXSzM21BBb2Jj8wSh7L5unDAau9
+         GDguIYc1eKzAgLjZYrNU789iz8anzcZ7UbicX3Rvixhjm+QkUg1WdSSMZJiPjogb84xt
+         lWdw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=OLB3+PW+usE0uivpk/5WOQnHeURqQpL1qML3odejfOY=;
-        b=0H1NmfGS0TVCJiQuIKZq8SEIfldLhFbWG9oHKiBadf3SXHBrxAiPUxNUe/mvdSeTC9
-         ub8G6n6mDGw57l3i6I5/U561WA2Ay44gvmrbQUO7D+rZ98dz8mmo3Yvy1u+rsJfDX8qI
-         co6xg+R6Zb+9xdzGix4ssKmGwGI7i5nZgYKlildY/zntUYgPz8EpCtV/XVBUWEX5C574
-         b+5LgGFg+YW1zl/JjSXwaI7PZqf+ev3+0pwINA9U7C4h8Smw+IkaFqPfEjwJ0PniYUmf
-         O5uFK9Mr5JqWrzW2nRRdfpdXMQWY+5T+EnOVbb+cG2vj9eajBc87o4n3n1RDFGLxpaBQ
-         oXqA==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=t+clK8haa/jfJkCf2nTPAp3hRgz37oMSnMj5wVYCaGM=;
+        b=skMyH4ERZTLZS2oGnNlxqLrJq4McJ6JAhOJ9KKQcfw/sDxIK9RvsfHqHWaGW/B9hlF
+         tpvP6S9s4OC1+07CaBd/Xl2vIkhbTlrl16QzDdVm4RPXTMuLQlzcN5rbAZ4pBkZ5YQLM
+         1/tVZimpYDSCEu2G5D6kBYqr2R9sD3lharON7L6chb2rO1Hgc+bM6Hj4wIsmmp+M7lUm
+         8fEzQXXNG2q/xJThGv3kGaEnkLZc+VMR2MZakFeAV++xG80v8Qdeo5JzkjlbNoV2btiM
+         ywa5jRCYBKbLq7xlMzuz5fe7r3tKmJd0T9tbSkUXzW2hcpuStb21vz3ZMRlHdPXE0ilu
+         8Qkw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=xGRSVj4d;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jJUOlnxZ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n9si500427ilt.33.2021.04.14.13.33.13
+        by mx.google.com with ESMTPS id b14si1201969ion.78.2021.04.14.18.24.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 14 Apr 2021 13:33:13 -0700 (PDT)
+        Wed, 14 Apr 2021 18:24:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=xGRSVj4d;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40290 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jJUOlnxZ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:57276 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lWmCG-0005C9-Sx
-	for alex.bennee@linaro.org; Wed, 14 Apr 2021 16:33:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41866)
+	id 1lWqkK-000394-AO
+	for alex.bennee@linaro.org; Wed, 14 Apr 2021 21:24:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33320)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
- id 1lWmBl-0005Bw-PT
- for qemu-arm@nongnu.org; Wed, 14 Apr 2021 16:32:41 -0400
-Received: from mail-qv1-xf42.google.com ([2607:f8b0:4864:20::f42]:45663)
+ (Exim 4.90_1) (envelope-from <jcmvbkbc@gmail.com>)
+ id 1lWqju-000356-Q4; Wed, 14 Apr 2021 21:24:14 -0400
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c]:42563)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
- id 1lWmBj-0004nC-HH
- for qemu-arm@nongnu.org; Wed, 14 Apr 2021 16:32:41 -0400
-Received: by mail-qv1-xf42.google.com with SMTP id bs7so10100146qvb.12
- for <qemu-arm@nongnu.org>; Wed, 14 Apr 2021 13:32:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=OLB3+PW+usE0uivpk/5WOQnHeURqQpL1qML3odejfOY=;
- b=xGRSVj4duVTp2C/wt/+zytLge3Ml/+j8fET56eVD9PZ2bs8kCHIpbdL5FtZJ4RiZFA
- of8gPqtAcXErP8KP9k+KTH8zKd4bI2j77banHjIvds6U8WYdFISgO/r2Z5Ln+dqmORWv
- jp40cEpVaZUbUmZb9MhKWX5V0rHY3HkJJSi7fhhRVWFEYnAnPCCPQIz6XXC+Ldzyc79a
- SPwikrjNaYhsW3ns13e3rtD2avj4o3nPnFpZOKGOLJZiROvfwJpWbYfe+L+pgVOZdLXw
- kQd5PsffSrUF9XX3NgUm92pstr94xRIMyz/sZZRysZmztt+UVhEdoG+nDwtf1wmw24KU
- R9Yw==
+ (Exim 4.90_1) (envelope-from <jcmvbkbc@gmail.com>)
+ id 1lWqjt-0004oe-Dh; Wed, 14 Apr 2021 21:24:14 -0400
+Received: by mail-ed1-x52c.google.com with SMTP id d21so5855818edv.9;
+ Wed, 14 Apr 2021 18:24:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=t+clK8haa/jfJkCf2nTPAp3hRgz37oMSnMj5wVYCaGM=;
+ b=jJUOlnxZdPUyEFJFrxh1fS7H4Ksp9XtM70g9u2zbA+S3yWlGzgnBKiPfzGHBox/hi2
+ YP7LrNdnzAP5o0GK3wHovtNrQqu1nsm5+pzBHr0PB3hlNJ4rGKnYtuzHG8b8f0VIOKWP
+ 8iLeE0uO1lD5/AjOyN3csfm/+1umR7PJs16YzqFPGCQppGm3zmDTminoC8PxCoymYVSB
+ kn+DZlcBPZMsECVFFCk5ASCMIOJJ0kkVb/u7KUk8D7BsxcUKTHronozHY2DpUY559Ymi
+ qfxXQrTu3HLq6zo4sExTZhpABzmxZUWrhFVBoSm9Hxs5CrqR3cFfTr5vipsVRS46nxvH
+ C5Rg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=OLB3+PW+usE0uivpk/5WOQnHeURqQpL1qML3odejfOY=;
- b=cEeMBawjO85lrKfdIHUaPVeaHVp7thqQUTqGF2b0NKgmyDXzWFUPry2bIfh+7bPoDO
- uzwm1vnMlYnc7xHeB3PaYKalLV/3rGtnys9cCeAMOi3g+s6xVspm7+o35zA3/XccI5zA
- 8vbsr/drLsXTLOXrFUN0KYOmwH6HgeR7E01u7QHPebcRHMK05iCgvgIyjgkB81zyPSFN
- A9YXRTdG05chgwFhMX+cxHMhz5KpBXU+M/ikano/i9Ni6H4+2vhdrelUAe8GJml5AilA
- sno2wRxLlXb1RfbraX/hCJssMYBrRQaj7RiS4Di1HWMNJ7xn04SvIqLIkiVowxIPkLD8
- c+0g==
-X-Gm-Message-State: AOAM532iaH3SHsSyXns5yvSP0yFikIzSqO6FwLyt1yWW+ue+5JiWiJRY
- 2KCu8SgCwrpN1QYOpb8zBBkZDA==
-X-Received: by 2002:a0c:e9cd:: with SMTP id q13mr135268qvo.3.1618432357940;
- Wed, 14 Apr 2021 13:32:37 -0700 (PDT)
-Received: from cube.int.bluestop.org (c-174-52-16-57.hsd1.ut.comcast.net.
- [174.52.16.57])
- by smtp.gmail.com with ESMTPSA id q3sm304692qtw.40.2021.04.14.13.32.36
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 14 Apr 2021 13:32:37 -0700 (PDT)
-From: Rebecca Cran <rebecca@nuviainc.com>
-To: peter.maydell@linaro.org,
-	richard.henderson@linaro.org
-Subject: [PATCH v7 0/4] Add support for FEAT_TLBIOS and FEAT_TLBIRANGE
-Date: Wed, 14 Apr 2021 14:32:27 -0600
-Message-Id: <20210414203231.824-1-rebecca@nuviainc.com>
-X-Mailer: git-send-email 2.26.2
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=t+clK8haa/jfJkCf2nTPAp3hRgz37oMSnMj5wVYCaGM=;
+ b=jIPnnmSV6MyjIDi3a0jAGkeGaBJj3dic/mIzpU9SYo7kCYGo5jtn3fhn+A70Ku5Gny
+ zoaV010/zN9yCmL/emVilFIDmpHzFQDTx8YwHGs1ruMp0GX+HV+nzIZpgxMiKJDTiEAY
+ iEga93LCmBjtFueD/NTxrhp5aUBzKm3O5K6UkRnWtmMQwAeUfprrXMguQyX2whn0dMfJ
+ Y7wOmUejp77kHGH9kSNnWZdLdOOiCYb2ggtaqs+6fk9gMQl/A+cNxzOdEbHUVRJw/xai
+ 1qzCav3QQmx0ojYrL18JKPcu7cGP/o/sLBNLtPk0mp43BMPqoWjMeMVoB+V4D/98G9qE
+ wNmQ==
+X-Gm-Message-State: AOAM533ManfwA3f9sVa+XPBr1PxtYbUksTuG9w9mLfqL3KLN8CaAtMVT
+ m83/i6lOANkZCTXyD4ePEXAYQ2mqj3nL8/ns7Ds=
+X-Received: by 2002:aa7:c694:: with SMTP id n20mr1118920edq.51.1618449847580; 
+ Wed, 14 Apr 2021 18:24:07 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f42;
- envelope-from=rebecca@nuviainc.com; helo=mail-qv1-xf42.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20210414134112.25620-1-iii@linux.ibm.com>
+ <20210414134112.25620-4-iii@linux.ibm.com>
+ <d3d690a0-c322-5fbb-26ae-dcbf08173b0a@redhat.com>
+ <28224ba9d61d0d805a162c00903559f3b99bc722.camel@linux.ibm.com>
+ <CAMo8Bf+s4OqYJLTkvyPvfnmH=FwxDSFn60TryKfgErxFyB+2yQ@mail.gmail.com>
+ <cfae4bbd-3068-41f6-ec38-a27cf7381fee@linaro.org>
+In-Reply-To: <cfae4bbd-3068-41f6-ec38-a27cf7381fee@linaro.org>
+From: Max Filippov <jcmvbkbc@gmail.com>
+Date: Wed, 14 Apr 2021 18:23:56 -0700
+Message-ID: <CAMo8BfJNcfAp_tJWHQziUQXxR8WykLcBGTKnHeWS=TtLYwTC=g@mail.gmail.com>
+Subject: Re: [PATCH v3 3/3] accel/tcg: Assert that tb->size != 0 after
+ translation
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
+ envelope-from=jcmvbkbc@gmail.com; helo=mail-ed1-x52c.google.com
+X-Spam_score_int: -5
+X-Spam_score: -0.6
+X-Spam_bar: /
+X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ FROM_LOCAL_NOVOWEL=0.5, HK_RANDOM_ENVFROM=0.001, HK_RANDOM_FROM=0.999,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -112,42 +113,41 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Rebecca Cran <rebecca@nuviainc.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, David Hildenbrand <david@redhat.com>,
+ Cornelia Huck <cohuck@redhat.com>, qemu-devel <qemu-devel@nongnu.org>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, qemu-s390x@nongnu.org,
+ qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: slN/hu166sp6
+X-TUID: PHN+JDJOeYag
 
-ARMv8.4 adds the mandatory FEAT_TLBIOS and FEAT_TLBIRANGE. 
-They provides TLBI maintenance instructions that extend to the Outer
-Shareable domain and that apply to a range of input addresses.
+On Wed, Apr 14, 2021 at 12:43 PM Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> On 4/14/21 11:03 AM, Max Filippov wrote:
+> > On Wed, Apr 14, 2021 at 9:51 AM Ilya Leoshkevich <iii@linux.ibm.com> wrote:
+> >> On Wed, 2021-04-14 at 16:48 +0200, David Hildenbrand wrote:
+> >>> Did you double-check the xtensa issue?
+> >>
+> >> Oh, I'm sorry, I completely forgot about that one. I just ran the
+> >> test locally, and apparently it fails because of this new assert, so
+> >> I'll have to write the 4th patch now. Thanks!
+> >
+> > Just curious, what xtensa issue?
+>
+> Returning from xtensa_tr_translate_insn with tb->size == 0.
+>
+> Basically, dc->base.pc_next needs to be incremented even for illegal
+> instructions, preferably by the number of bytes consumed while determining that
+> the insn is illegal.
 
-Changes from v6 to v7:
-
-o Fixed the tlbi_aa64_rvae1_write the tlbi_aa64_rvae1is_write functions
-  to pass the correct value into functions which use an ARMMMUIdx.
-
-o Fixed comments in helper.c which referred to non-existent instructions.
-
-Testing:
-
-o Booted Linux 5.11 - verified the previous assert failure in qemu is
-  resolved.
-o Ran checkpatch.pl.
-
-Rebecca Cran (4):
-  accel/tcg: Add TLB invalidation support for ranges of addresses
-  target/arm: Add support for FEAT_TLBIRANGE
-  target/arm: Add support for FEAT_TLBIOS
-  target/arm: set ID_AA64ISAR0.TLB to 2 for max AARCH64 CPU type
-
- accel/tcg/cputlb.c      | 130 ++++++-
- include/exec/exec-all.h |  46 +++
- target/arm/cpu.h        |  10 +
- target/arm/cpu64.c      |   1 +
- target/arm/helper.c     | 371 ++++++++++++++++++++
- 5 files changed, 555 insertions(+), 3 deletions(-)
+I see a few places where target/xtensa may do that. E.g. it does that on entry
+to an exception handler to allow for debugging its first instruction.
+No guest code
+is consumed to make this decision, would size 1 work in that case?
+I'll take a look.
 
 -- 
-2.26.2
-
+Thanks.
+-- Max

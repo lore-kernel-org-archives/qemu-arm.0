@@ -1,115 +1,107 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp101470lfr;
-        Thu, 15 Apr 2021 23:24:27 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyBq2qzcRIycovFVd5q9ob67xNlqfBZ3cb+98gjL0osi3OI5CRDBH6irFaROQU7fAuO6gOp
-X-Received: by 2002:a25:2593:: with SMTP id l141mr9502199ybl.348.1618554267023;
-        Thu, 15 Apr 2021 23:24:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618554267; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp745395lfr;
+        Thu, 15 Apr 2021 10:45:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwkA3W2xdD8OP/9eJLteNsqanpOHFAb2sn0q3bKvVe+uXH6vCTr3PPP/UXj4uNqI+1XM4Br
+X-Received: by 2002:a02:cc9c:: with SMTP id s28mr427028jap.30.1618508752773;
+        Thu, 15 Apr 2021 10:45:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618508752; cv=none;
         d=google.com; s=arc-20160816;
-        b=k2Ccyaz9dw8T7srBaeEYccnbsklbfwemD4vrrgosAHQYA8lxSoeXFqyKHVqrFbdo4D
-         U3/2zgz5bnc6MoAbY22YmM1a/sh7AMyX6KAFBdS2FTwRU7iSKTGOg+FYAko2fLUncX9l
-         zy3T/IvgkPAXUf35yrt5eqF0atkH76YLNq2y/vl+lMzth4ZUGT2uZRRKaj3jBjLLSoPX
-         gp9DrX5IYTkLVroOiNGPjVIGLXXPJvaubKfyhexzNFSS0yCdw2Gk02J1nFmrh6CcCDgF
-         cMRbiDquIT6WlX4PA6Wqeaf8w330Vns0kHVcluhZGRN7sTEQvsq8lm4ErW4y+7fgYa9G
-         sXgA==
+        b=rHG7S31r1LugUxij6bSV42yqqiVVRVut1/rgAtJxp8Yzjp95t6zklq6ZGDSGD+AO1C
+         E7kuve6tGj7ShAKmVDuG6OUpu8TcHpjs3ynBfdq6JxZjdQ/7o2yw3/VPNvl/AYszLNC/
+         KgM4t4xHg9Z1BsjxZb1yw4WX9z5ms3h1FQbSiNqf6kcouekZ7gXK7pRCRmM/+EThnR4k
+         q7/Q9OWZeR7X0Qr3/fcFHB9cJOfUX2rcy/0mQTw/XbCNY0X1glY48u9qeMV6iOH/XPlm
+         uPhSN3hZCLhVplL/f98kzDadsuXZzVAdNNrKVQ5nOy/GzJ//TGD5Ul+C5lQq/PJjOOkK
+         WXdg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=/SBDXKDMbFao64focPhNSp5xHUFzymOtjJc1vnARJFw=;
-        b=jbtKMlJkOVidPgQjUeBXGrhLfl7Km7dH0ETkypLWEjgG0iQLFci3+Cl91tt/Ct2F0s
-         bQ6Lf2K4DXMJBXLcqTu0j8ZrwrKNVFj+QESmwsY0wgEBWJEYgPSxI7S7tOMD5/pyeD9y
-         UxaKjzAFsQK2Kk3qRDcZIQ8FNNlYm8ZOyLvLRdkHsd753j93TP5h+Nuwk7jh9wB2U0LP
-         q7BVAvhdWeO6buBzzJQHzKb7Hk9jGgH2lbOlyPJ81/5nFJsPKxvQVs4rUMOjaNlVtC4p
-         +75KClOP0QF/YatcW0ITwms5ztrM+siywpLZ+tZu+wk9Oxu43sgCPydZtrzfAw3+IfeE
-         Uclg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=/i7exIOkfzjaGivOrzAfaS8+wOSkmaJkGms6e2vCLj4=;
+        b=iWEowqFP0ZBUm9T2/Zuc37Dbrqp/jM3PcvybkYpkvmffnJabBD5bA/eyjvNLaaKiWZ
+         VtJVnZMf7vve5y6cib/Zzh2ISkTubklN6/sgQwYsTrOYWJQC294WvAw5V8rzjTeM+dPd
+         vlU3v1UCpALlSI/68lAzuVg7Ib+uXKgiATjBLGRMg8qoKLgPuyRBY2AMX8A5ahz9133l
+         qgrq7TAjeOAUpuRZZewlc7tTOwegKcOKztzUbtMsA6t7vW74OALjN/LIttnhhWK74tdp
+         /MUNwjIizs8fzZ16E5LKYk3/7zDOGR9JBRtP8nTRPmeshWmZoI5JgCsGElIBS/lF43Jh
+         6OhA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ozabp7Kp;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=cUbCFPjQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z8si4591983ybo.383.2021.04.15.23.24.26
+        by mx.google.com with ESMTPS id h12si3195778ilc.107.2021.04.15.10.45.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 15 Apr 2021 23:24:27 -0700 (PDT)
+        Thu, 15 Apr 2021 10:45:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ozabp7Kp;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=cUbCFPjQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:58936 helo=lists1p.gnu.org)
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:42028 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lXHty-0001uO-DL
-	for alex.bennee@linaro.org; Fri, 16 Apr 2021 02:24:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39448)
+	id 1lX63s-0000f0-2P
+	for alex.bennee@linaro.org; Thu, 15 Apr 2021 13:45:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55606)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lXHto-0001so-F7; Fri, 16 Apr 2021 02:24:16 -0400
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a]:34379)
+ (Exim 4.90_1) (envelope-from <venture@google.com>)
+ id 1lX5Zj-0001qe-12
+ for qemu-arm@nongnu.org; Thu, 15 Apr 2021 13:14:45 -0400
+Received: from mail-qk1-x731.google.com ([2607:f8b0:4864:20::731]:37482)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lXHtm-0001rP-4l; Fri, 16 Apr 2021 02:24:16 -0400
-Received: by mail-wr1-x42a.google.com with SMTP id r7so13523672wrm.1;
- Thu, 15 Apr 2021 23:24:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=/SBDXKDMbFao64focPhNSp5xHUFzymOtjJc1vnARJFw=;
- b=ozabp7Kp2kifAfFq/bf3mliF1NwaE06j/UZXTHoMlvurGUvpSeGouMCWmy1HpN6N/n
- MVpROt8Ma3qr911Ph3ltl0zjM9uvRZ/onf54IsX/bkyHxAJKyT3z6zlFdR3azEE1Aa3X
- q+4wDBeKgPUOWDN9knFDWBLuWFNLGJWLRljrqIfqWdXKMzSQtoUsNPA89MpS172ejMQH
- rpjWyQwXNg+nN0ASZPx/11X466f40U+LMeF+vqYPoQBgcUX9caLiON47/XMd+xdjkrqX
- PuWWacmtNe+vs3sLj+2FN97FrwRn/cawJ9TZ3Bb+pnpguwP4TCKk2x+2cY3hWyiW0uJb
- S6Xg==
+ (Exim 4.90_1) (envelope-from <venture@google.com>)
+ id 1lX5Ze-00068k-Ol
+ for qemu-arm@nongnu.org; Thu, 15 Apr 2021 13:14:42 -0400
+Received: by mail-qk1-x731.google.com with SMTP id 130so11754737qkm.4
+ for <qemu-arm@nongnu.org>; Thu, 15 Apr 2021 10:14:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=/i7exIOkfzjaGivOrzAfaS8+wOSkmaJkGms6e2vCLj4=;
+ b=cUbCFPjQGoHKP8Eq5ZMCVeKk6GZ6EjEz61piJ90R4UKux8MQysMciX9qDJbRfoytce
+ ENMkjK/olXuaCzX/G6g9XzQQFy/0S+GteNg7VeTmxDqwnEMGmG4hu3F0eiiEAhhK3PaQ
+ i2+EpRQs2ISQHNy4WnVTx3C5H+dx96LPWqYKOZs+nr26Xg/YTdKkkegoAek+QP0SQ03Q
+ LG8Kngbf6XmwwgL60rKHlJ+MjcmJPGAytno/qpKPK0+bJuFolIgetNnvHd+KeyaOAF6c
+ 0nXLIF3SfDoOJDlV2etR4b+jAwB2/TuoqRnbEJ18U5x5LnA+sPVMKy7kN1WctHUj7lt7
+ apdw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=/SBDXKDMbFao64focPhNSp5xHUFzymOtjJc1vnARJFw=;
- b=FLaTx+pHHb3OS+zEGZaZrv4PazGUsyScRDo9QtRp+J+ktuFeQ0fM9o5s0hMwqtIH55
- IjzCDQf5BzBHkmAcReboliGBqtAkLu5V/LtPodwGoMIYAd/hP5J8DUDCBTlXP/NDqciT
- PQPltV1WZEW9Tn4Kx65PkaowLT6Yt3+5L6dTG8ADXtifrM7u1SMxKN9xh2FPgVAYL5QI
- 3C7X6h9N7GsAM1samaIvVa3JqpbqNCVRqKcb481umb1Ft5fd82tPZajXZEjtxexnEB1b
- JETu/rPX3OJ5Ye7i7rTqopvZ9wRdv4fjkWKl3qmhSbjPsyIMrxHXAETGDuGBn0mHKajA
- w7Aw==
-X-Gm-Message-State: AOAM530eTr9M3RTyIxU+T321z7n1sEUgxWP5Y//l2Z6dO//nmQ/5tpqe
- KZ8hzw06wGksYOeveHtnu54=
-X-Received: by 2002:a5d:6983:: with SMTP id g3mr6976238wru.415.1618554251507; 
- Thu, 15 Apr 2021 23:24:11 -0700 (PDT)
-Received: from [192.168.1.36] (39.red-81-40-121.staticip.rima-tde.net.
- [81.40.121.39])
- by smtp.gmail.com with ESMTPSA id m3sm8185940wme.40.2021.04.15.23.24.10
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 15 Apr 2021 23:24:10 -0700 (PDT)
-Subject: Re: [PATCH 3/5] hw/pci-host/prep: Remove unuseful memory region
- mapping
-To: David Gibson <david@gibson.dropbear.id.au>, Peter Xu <peterx@redhat.com>
-References: <20210312182851.1922972-1-f4bug@amsat.org>
- <20210312182851.1922972-4-f4bug@amsat.org> <20210312203821.GN194839@xz-x1>
- <YFgYYHOroOLHBbm7@yekko.fritz.box>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <095a86c6-1ead-5a6d-54e6-601aa43853bf@amsat.org>
-Date: Fri, 16 Apr 2021 08:24:09 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=/i7exIOkfzjaGivOrzAfaS8+wOSkmaJkGms6e2vCLj4=;
+ b=O6d4qmnXtHxSomSftVAEXvet7xW5RzIKH0ZeZh32jnsTfpEFMPVltKVkLRHwlAcIlP
+ 5OaT85DEiDIdU4Li1SR7MEgmhpStgIKvp9BF9mc7OkhWAPf9lcqrYYFg/XJAXY35C0+X
+ Juzhi9Yg8r9lATgSfYLxjf57SobwehBZkrXONzNVO+ToNsg4k5btJ5dc9OAVChm+eCh+
+ hL+g0Ym603riLpnZigwaa/CH09WvcUrcsCRr+terKyTaom+mOLmQXIbKr8xtXdaL+w3N
+ nY340qEC5d0supVuLohUjJHHiV6Ho/TChIxarfw89STc97UzQHD6hh9X2FuDfAQR75Dr
+ QyKg==
+X-Gm-Message-State: AOAM532zraS6oWt6iW/xUB5FC6H2yr0nY0VKez82DeoRkxpQ7ElM/B9I
+ l1i+rytLUfTFMTl3gH9IulOvzHLaCXMCw8MR1aiQOw==
+X-Received: by 2002:a37:64c3:: with SMTP id y186mr4486943qkb.244.1618506875046; 
+ Thu, 15 Apr 2021 10:14:35 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <YFgYYHOroOLHBbm7@yekko.fritz.box>
-Content-Type: text/plain; charset=windows-1252
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42a.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+References: <20210412194522.664594-1-venture@google.com>
+ <20210415121257.GD5612@minyard.net>
+In-Reply-To: <20210415121257.GD5612@minyard.net>
+From: Patrick Venture <venture@google.com>
+Date: Thu, 15 Apr 2021 10:14:24 -0700
+Message-ID: <CAO=notz+EMXqv+5ndHCGgcwUwGfGMNYt3NCVfx87R9HEutwf2w@mail.gmail.com>
+Subject: Re: [PATCH v4 0/4] hw/i2c: Adds pca954x i2c mux switch device
+To: Corey Minyard <minyard@acm.org>
+Cc: Corey Minyard <cminyard@mvista.com>, Hao Wu <wuhaotsh@google.com>, 
+ Havard Skinnemoen <hskinnemoen@google.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::731;
+ envelope-from=venture@google.com; helo=mail-qk1-x731.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -122,94 +114,66 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
- Greg Kurz <groug@kaod.org>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
- Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VcewCGDG/hTU
+X-TUID: 7FGVrInIo6NI
 
-On 3/22/21 5:09 AM, David Gibson wrote:
-> On Fri, Mar 12, 2021 at 03:38:21PM -0500, Peter Xu wrote:
->> On Fri, Mar 12, 2021 at 07:28:49PM +0100, Philippe Mathieu-Daudé wrote:
->>> The pci_io_non_contiguous region is mapped on top of pci_io
->>> with higher priority, but simply dispatch into this region
->>> address space. Simplify by directly registering the former
->>> region in place, and adapt the address space dispatch offsets.
->>>
->>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->>> ---
->>>  hw/pci-host/prep.c | 11 ++++-------
->>>  1 file changed, 4 insertions(+), 7 deletions(-)
->>>
->>> diff --git a/hw/pci-host/prep.c b/hw/pci-host/prep.c
->>> index 0a9162fba97..00a28c2d18c 100644
->>> --- a/hw/pci-host/prep.c
->>> +++ b/hw/pci-host/prep.c
->>> @@ -159,8 +159,7 @@ static uint64_t raven_io_read(void *opaque, hwaddr addr,
->>>      uint8_t buf[4];
->>>  
->>>      addr = raven_io_address(s, addr);
->>> -    address_space_read(&s->pci_io_as, addr + 0x80000000,
->>> -                       MEMTXATTRS_UNSPECIFIED, buf, size);
->>> +    address_space_read(&s->pci_io_as, addr, MEMTXATTRS_UNSPECIFIED, buf, size);
->>>  
->>>      if (size == 1) {
->>>          return buf[0];
->>> @@ -191,8 +190,7 @@ static void raven_io_write(void *opaque, hwaddr addr,
->>>          g_assert_not_reached();
->>>      }
->>>  
->>> -    address_space_write(&s->pci_io_as, addr + 0x80000000,
->>> -                        MEMTXATTRS_UNSPECIFIED, buf, size);
->>> +    address_space_write(&s->pci_io_as, addr, MEMTXATTRS_UNSPECIFIED, buf, size);
->>
->> This changes access to s->pci_io_as, but below didn't change s->pci_io_as
->> layout at all (below is about address_space_mem).  Is this intended?
->>
->>>  }
->>>  
->>>  static const MemoryRegionOps raven_io_ops = {
->>> @@ -294,9 +292,8 @@ static void raven_pcihost_initfn(Object *obj)
->>>      address_space_init(&s->pci_io_as, &s->pci_io, "raven-io");
->>>  
->>>      /* CPU address space */
->>> -    memory_region_add_subregion(address_space_mem, 0x80000000, &s->pci_io);
->>> -    memory_region_add_subregion_overlap(address_space_mem, 0x80000000,
->>> -                                        &s->pci_io_non_contiguous, 1);
->>> +    memory_region_add_subregion(address_space_mem, 0x80000000,
->>> +                                &s->pci_io_non_contiguous);
->>
->> I don't know any of this code at all... but it seems the two memory regions are
->> not identical in size:
->>
->>     memory_region_init(&s->pci_io, obj, "pci-io", 0x3f800000);
->>     memory_region_init_io(&s->pci_io_non_contiguous, obj, &raven_io_ops, s,
->>                           "pci-io-non-contiguous", 0x00800000);
->>
->> Then it seems the memory access dispatching to (0x00800000, 0x3f800000) would
->> change too, from s->pci_io to nothing.  Raise this up too since I don't know
->> either whether it's intended..
-> 
-> Right, it seems like this removes the mapping of s->pci_io entirely.
+On Thu, Apr 15, 2021 at 5:13 AM Corey Minyard <minyard@acm.org> wrote:
+>
+> On Mon, Apr 12, 2021 at 12:45:18PM -0700, Patrick Venture wrote:
+> > The i2c mux device pca954x implements two devices:
+> >  - the pca9546 and pca9548.
+>
+> This looks good, I have pulled it into my queue.  6.0 is about to be
+> released, I'll try to remember to request a pull after that.
+>
+> Thanks,
+>
+> -corey
 
-Yes, this is on purpose. The dispatching is done via raven_io_ops:
+Thanks, after I see the pull I'll send out a small stack I have of bmc
+boards that can now use this device.
 
-    address_space_init(&s->pci_io_as, &s->pci_io, "raven-io");
+Patrick
 
-raven_io_ops uses raven_io_address() which returns an address in
-"pci-io" range if < 0x800000, else it returns io_mem_unassigned
-because the address is outside the pci_io_as AddressSpace.
-
-Note, the flatview is unchanged with this patch.
-
-My take here is 1/ I squashed too much changes and 2/ I didn't
-documented enough. I'll respin improved.
-
-Thanks for your reviews!
-
-Phil.
+>
+> >
+> > v4:
+> >  - Fixed up bug where the i2c_scan_bus wasn't parameterizing the
+> >  current_devs list.
+> >  - Minor consistency changes in the i2c mux pca954x.
+> >
+> > v3:
+> >  - fixup comment with missing end parenthesis.
+> >  - removed superfluous object cast.
+> >
+> > v2:
+> >  - the core i2c bus now calls a match method on each i2c child, which
+> >  by default will only check for a match against itself.
+> >  - the pca954x device overrides the i2c device match method to search
+> >  the children for each of its buses that are active.
+> >  - the pca954x device now owns an i2c bus for each channel, allowing
+> >  the normal device model to attach devices to the channels.
+> >
+> > Patrick Venture (4):
+> >   hw/i2c: name I2CNode list in I2CBus
+> >   hw/i2c: add match method for device search
+> >   hw/i2c: move search to i2c_scan_bus method
+> >   hw/i2c: add pca954x i2c-mux switch
+> >
+> >  MAINTAINERS                      |   6 +
+> >  hw/i2c/Kconfig                   |   4 +
+> >  hw/i2c/core.c                    |  55 ++++--
+> >  hw/i2c/i2c_mux_pca954x.c         | 290 +++++++++++++++++++++++++++++++
+> >  hw/i2c/meson.build               |   1 +
+> >  hw/i2c/trace-events              |   5 +
+> >  include/hw/i2c/i2c.h             |  17 +-
+> >  include/hw/i2c/i2c_mux_pca954x.h |  19 ++
+> >  8 files changed, 383 insertions(+), 14 deletions(-)
+> >  create mode 100644 hw/i2c/i2c_mux_pca954x.c
+> >  create mode 100644 include/hw/i2c/i2c_mux_pca954x.h
+> >
+> > --
+> > 2.31.1.295.g9ea45b61b8-goog
+> >
+> >

@@ -1,102 +1,101 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp698740lfr;
-        Thu, 15 Apr 2021 09:46:25 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyJxAGBpkWfu/QfwnJ4gWw2IBLOu4Cx3sMYw3ouT5EXn8paEEUzn6slwpvseifPo8MrJS3B
-X-Received: by 2002:a92:cb51:: with SMTP id f17mr3661338ilq.119.1618505185295;
-        Thu, 15 Apr 2021 09:46:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618505185; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp700560lfr;
+        Thu, 15 Apr 2021 09:48:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzj8ycU3jZ7t7qgUKPupHefV7q98qsnhoMymQY2Ncmr8SzUF7SIxybw1YIVajjnUDdZR3IZ
+X-Received: by 2002:a05:6e02:10cf:: with SMTP id s15mr3624450ilj.302.1618505312124;
+        Thu, 15 Apr 2021 09:48:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618505312; cv=none;
         d=google.com; s=arc-20160816;
-        b=hkxggtPs0fCLI0wRQ90805uY9BrsK1CNy46gVvf/waKsXlxFZrZWsFf1v8Ooy3Oq9R
-         m5vQ17MGOAhk1Ah0RoXFJB1ZujVsoLv4A2agSCSEoAiRV+2He8SFRCgTUE4112gUBS5h
-         nRtKODZb9pTOmOMtVKzmzaxwTxtNWo4c0nFpxaH8BozN4buQh5KgFbjL7H/3GhI3FqQw
-         eLgMJjovS9/3YxyUvyzEGgK6ivUeBSHmQxVUpjsFNUXrTrdM1MqKbr4HCg2cCG95vb3W
-         aHB0I4wGaxg8i//uSQ+QBsPbP8urwiVpAgCfrlDPjZ7oCsQAF2RunLrcA6z4TunMKzny
-         iZJg==
+        b=OtXB704BJlk1FFVXG1Nz/IJsAJ+cYGXd/x0Wa5D8wIQOY/J9U4AY6GxMk4NEP1HIv3
+         t3U9qyp6/MJn4wC2KVOCSs2MfJ4wBovI8Mi/6CWw8lTOqF8ZIi2+hwsdf1Im+aooyR8K
+         O3Osl90fuFBDdVneTXyLDJ6fgt6ZIVVRUBSnVJNFso/Vf5xuqOcK5uoDK1bNVZ3hBcrS
+         ieyZwaUqF1j4uotUtp/OJhzPUyHpAoTGxnjU8NvhT1r7YxSRps2Isf4zL3nr07GRDVMK
+         l0b4kmzzG4vw1v4mYsxtKGpPO4ocsIGvP5bp5HIAvQD7yxAM0xPUFkK/lOBHrazsGbrc
+         sHWg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=0Z4+nmTFRYy19cLHZMOV8ZDTm2cOXzGsPlBiJeSnJ14=;
-        b=KV5h6X6o9pDR8IxiETzk48mOLr1jAe1R1TI/LXkHTt/n/ehfQqehMAjlL6FuxK+tqh
-         8rMCWwKR6ak6AsF4AqIqibbufjwRD8/RIDuYLTerUpdeG1z9RZeYzEkRRyRGtg6FdA0J
-         mog62tJ1i/57oU4y9vUBLGHgfHyX6cQZdxlqHm5wGBnMplhoM5uZtHMFgR68qOx9XhS9
-         dIW2TUsu5nao4HoF4EEyk/2sAjO203D4gERs5cf1cy31ccprXJB1mi7POSHU2uJsZlLx
-         wuAibychLyPvoI26VSj6IDa2wLI2Jo7vkjiRoIGHgVu3NtylSaThvMvkZtXZF2xrJK6G
-         Ccyw==
+        bh=NxYz1h0hu+rZ/LwuHs61u9ZCcyihVB9Q3XHDDjiOe3s=;
+        b=KGRlLzW3JqpuHRJLiUdSmkNBXVX+ySxtqme2Ny4xz2oXFKZxd9dbSmTtM9uVTFbtIB
+         Ex0ZV8w/oMlrk3scidS6sALjpXH/QPZ5kwM6SmsqPVOxPM0m3SE/5Tad907kgNXLouAg
+         tb5RJQxwKNPFgNF8zhA8TI4C1qhc12dLwL2HEVm4l5zZ3oHr/NIUNSd+cKlHJHOwP8X1
+         blaCTWvojQwPzG6WgV5tbgKNgAGfExj03eNK3ZlegewtMWIaBXXtceJFB37POR0F/zg0
+         S3gEjNtUFOk7KDd3Vv1A0VYq/lICBvF/3o16fpq9m0hxPZBbiLkWypdZ1ikF0StguApN
+         A1qA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GQkFQUHX;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="GecB4FF/";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 9si3448638ilx.110.2021.04.15.09.46.25
+        by mx.google.com with ESMTPS id s16si2871403jas.113.2021.04.15.09.48.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 15 Apr 2021 09:46:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 15 Apr 2021 09:48:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GQkFQUHX;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="GecB4FF/";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52216 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54624 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lX58K-0003Yj-JI
-	for alex.bennee@linaro.org; Thu, 15 Apr 2021 12:46:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41644)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lX5AM-0004ma-MJ
+	for alex.bennee@linaro.org; Thu, 15 Apr 2021 12:48:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41320)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lX4wY-0003TC-11
- for qemu-arm@nongnu.org; Thu, 15 Apr 2021 12:34:14 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:52333)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lX4vp-00033W-3z
+ for qemu-devel@nongnu.org; Thu, 15 Apr 2021 12:33:29 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:26377)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lX4wR-0006Ih-N9
- for qemu-arm@nongnu.org; Thu, 15 Apr 2021 12:34:13 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lX4vn-00067R-4l
+ for qemu-devel@nongnu.org; Thu, 15 Apr 2021 12:33:28 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1618504441;
+ s=mimecast20190719; t=1618504406;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=0Z4+nmTFRYy19cLHZMOV8ZDTm2cOXzGsPlBiJeSnJ14=;
- b=GQkFQUHXkdCy6elNwNk+PvA2O+bYEM0NV7SWP4FNJUZUjvzUOQRO0auaNl62OiACA5o5Ly
- zHv7zfvYeKlydsimHBIhakkJRkVDGngF9fkzcv8H2HPJDXLZmzRlNH6g22vqE3GC+WUHcL
- sMwYKqFcRJIKsIgFKNKizp+UAEJOpqE=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-601--oGvQ85eNbGxJEHwJS05Iw-1; Thu, 15 Apr 2021 12:33:59 -0400
-X-MC-Unique: -oGvQ85eNbGxJEHwJS05Iw-1
-Received: by mail-wm1-f69.google.com with SMTP id
- z135-20020a1c7e8d0000b02901297f50f20dso2223116wmc.0
- for <qemu-arm@nongnu.org>; Thu, 15 Apr 2021 09:33:59 -0700 (PDT)
+ bh=NxYz1h0hu+rZ/LwuHs61u9ZCcyihVB9Q3XHDDjiOe3s=;
+ b=GecB4FF/h70/NpUE9jLMOGGGpqOYjYC6vb/R9kahihBfb88yBd9FPm0k/7UE55nBXdZ2Nw
+ OdDTfdTAZq62g3h9bGtQHLUtOzWFga3eoDc/K2kRlc6F0ymdMrE75NdZytoXPSlKdgR5PB
+ 7qqaCwnYdcfA23LqwXsAwdEKDzZkdEY=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-598-TQdgCuAkPDe3WtlDeO1UyA-1; Thu, 15 Apr 2021 12:33:24 -0400
+X-MC-Unique: TQdgCuAkPDe3WtlDeO1UyA-1
+Received: by mail-wr1-f70.google.com with SMTP id
+ t14-20020a5d6a4e0000b029010277dcae0fso2986994wrw.22
+ for <qemu-devel@nongnu.org>; Thu, 15 Apr 2021 09:33:23 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=0Z4+nmTFRYy19cLHZMOV8ZDTm2cOXzGsPlBiJeSnJ14=;
- b=sdJkGsSmYhC8vDOhHC3hkHwHjrIQhoBYB8Crn8FijIWxTatO2ld5Wx1G130kgjd6cR
- OqZIhEC40O6BUixyij3iUbXveUoiz2zG7pGohxdm9q1F/IwnVxjjNJbmmJ6pKmwcItmb
- wvLbmZLnQzMmeoV9z54miMaIPuT6FM1gBJMcc3/7+eFdFhyLDSKUex16px8qfMlkUd8m
- U3ex0LJG+aQua14VY6kCC367tLI7by9hxbu1SD6Q5IhQ1LclD5Eyq4AA8JtkakgXfrlu
- Bx9Vf0LZZO3S0PpM7EmKMt1Rf2CpsFOm3/MFB057oT9NHahtkxbQ7fU0fglRoMm25x1d
- jm2w==
-X-Gm-Message-State: AOAM530v37/+iCU/3GNBwxgINe3VQaE6D2qQtiQT4wrmWaDIgN7vL1mr
- FrG+emwbe639zmMvNDBtMQrZtLVwPU1FNnEeKka0wsOW59x7eIg+A/LgsInGunPoLJpCuLT9YaS
- Vu8qqJ1SRPETX
-X-Received: by 2002:a5d:4a0b:: with SMTP id m11mr4459629wrq.418.1618504438568; 
- Thu, 15 Apr 2021 09:33:58 -0700 (PDT)
-X-Received: by 2002:a5d:4a0b:: with SMTP id m11mr4459620wrq.418.1618504438472; 
- Thu, 15 Apr 2021 09:33:58 -0700 (PDT)
+ bh=NxYz1h0hu+rZ/LwuHs61u9ZCcyihVB9Q3XHDDjiOe3s=;
+ b=ei7Whn8E9SFfMREmBOGuEkPh916YLWIyes3vaTQZPfwmpakWPMbaGg6QS/Bd0fVxhh
+ 0lqr4mOKtq1Ru90MwXAQTKi7bmM475Y0APZ6Qy/gd20HyzUZu07MMBx/ec34XajGUxHG
+ Uu73eI2bvM2dRpeBwRqwbNqDWnj4sR7XW/fAkzURr3cgZJ44QMv0yVMIrS70smURXVWS
+ 3k6K0TYB5cezZFQ5C5AdbRjiIm2cWQSQ5CQodCXnjZTec6Y4y1soTeY3U3SE2eTDDZ3Y
+ h/noXLa6CxMx3RNdEsboDREmK4umQ/lkI0bJahlCGe+AF17Y46mzVxosabrlFH428GQ/
+ g0nw==
+X-Gm-Message-State: AOAM533CQlRPDsv9qtlDYJ9q/yXC20lerHBKHH9eM3nFboLGDNLAMPnp
+ 9vZO1CtpsgDod88zOpB7qDBYNruFcpfIcy8fKNiBcqfFj8lA91Qu5qtLHbnqBHVyon9/D6RsxGE
+ 1EiMKBjjH33tLv586Ae0BAtUo+c/XBpYZCEj0nHwgb0Fn18TO+IcBtesqHheQl32E
+X-Received: by 2002:a5d:6410:: with SMTP id z16mr3523500wru.40.1618504402354; 
+ Thu, 15 Apr 2021 09:33:22 -0700 (PDT)
+X-Received: by 2002:a5d:6410:: with SMTP id z16mr3523455wru.40.1618504402125; 
+ Thu, 15 Apr 2021 09:33:22 -0700 (PDT)
 Received: from localhost.localdomain (39.red-81-40-121.staticip.rima-tde.net.
  [81.40.121.39])
- by smtp.gmail.com with ESMTPSA id p14sm4199376wrn.49.2021.04.15.09.33.56
+ by smtp.gmail.com with ESMTPSA id g3sm4369989wrp.46.2021.04.15.09.33.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 15 Apr 2021 09:33:58 -0700 (PDT)
+ Thu, 15 Apr 2021 09:33:21 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v4 09/12] qtest/migration-test: Skip tests if KVM not builtin
- on s390x/ppc64
-Date: Thu, 15 Apr 2021 18:33:01 +0200
-Message-Id: <20210415163304.4120052-10-philmd@redhat.com>
+Subject: [PATCH v4 02/12] accel: Introduce 'query-accels' QMP command
+Date: Thu, 15 Apr 2021 18:32:54 +0200
+Message-Id: <20210415163304.4120052-3-philmd@redhat.com>
 X-Mailer: git-send-email 2.26.3
 In-Reply-To: <20210415163304.4120052-1-philmd@redhat.com>
 References: <20210415163304.4120052-1-philmd@redhat.com>
@@ -107,7 +106,7 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=philmd@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
@@ -117,79 +116,194 @@ X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Eric Blake <eblake@redhat.com>, Juan Quintela <quintela@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- Claudio Fontana <cfontana@suse.de>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Laurent Vivier <lvivier@redhat.com>, Andrew Jones <drjones@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, Greg Kurz <groug@kaod.org>,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- Igor Mammedov <imammedo@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Laurent Vivier <lvivier@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
  =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Cornelia Huck <cohuck@redhat.com>, qemu-ppc@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zF3ZIocJCmxa
+ Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Juan Quintela <quintela@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Markus Armbruster <armbru@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm@nongnu.org,
+ Claudio Fontana <cfontana@suse.de>, Paolo Bonzini <pbonzini@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Igor Mammedov <imammedo@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: rqFsEJmF6v/o
 
-We might have a s390x/ppc64 QEMU binary built without the KVM
-accelerator (configured with --disable-kvm).
-Checking for /dev/kvm accessibility isn't enough, also check for the
-accelerator in the binary.
+Introduce the 'query-accels' QMP command which returns a list
+of built-in accelerator names.
 
+- Accelerator is a QAPI enum of all existing accelerators,
+
+- AcceleratorInfo is a QAPI structure providing accelerator
+  specific information. Currently the common structure base
+  provides the name of the accelerator, while the specific
+  part is empty, but each accelerator can expand it.
+
+- 'query-accels' QMP command returns a list of @AcceleratorInfo
+
+For example on a KVM-only build we get:
+
+    { "execute": "query-accels" }
+    {
+        "return": [
+            {
+                "name": "qtest"
+            },
+            {
+                "name": "kvm"
+            }
+        ]
+    }
+
+Note that we can't make the enum values or union branches conditional
+because of target-specific poisoning of accelerator definitions.
+
+Reviewed-by: Eric Blake <eblake@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
-Cc: David Gibson <david@gibson.dropbear.id.au>
-Cc: Greg Kurz <groug@kaod.org>
-Cc: Halil Pasic <pasic@linux.ibm.com>
-Cc: Cornelia Huck <cohuck@redhat.com>
-Cc: Christian Borntraeger <borntraeger@de.ibm.com>
-Cc: qemu-ppc@nongnu.org
-Cc: qemu-s390x@nongnu.org
+Since v3: Simplify over-engineered AcceleratorInfo (Markus, kept Eric R-b)
+Since v2: @since 6.0 -> 6.1, added note (Eric)
+Since v1: 'type' -> 'name' in comments
 ---
- tests/qtest/migration-test.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ qapi/machine.json | 47 +++++++++++++++++++++++++++++++++++++++++++++
+ accel/accel-qmp.c | 49 +++++++++++++++++++++++++++++++++++++++++++++++
+ accel/meson.build |  2 +-
+ 3 files changed, 97 insertions(+), 1 deletion(-)
+ create mode 100644 accel/accel-qmp.c
 
-diff --git a/tests/qtest/migration-test.c b/tests/qtest/migration-test.c
-index 3a711bb4929..c32a2aa30a2 100644
---- a/tests/qtest/migration-test.c
-+++ b/tests/qtest/migration-test.c
-@@ -1408,7 +1408,7 @@ int main(int argc, char **argv)
-      */
-     if (g_str_equal(qtest_get_arch(), "ppc64") &&
-         (access("/sys/module/kvm_hv", F_OK) ||
--         access("/dev/kvm", R_OK | W_OK))) {
-+         access("/dev/kvm", R_OK | W_OK) || !qtest_has_accel("kvm"))) {
-         g_test_message("Skipping test: kvm_hv not available");
-         return g_test_run();
-     }
-@@ -1419,7 +1419,7 @@ int main(int argc, char **argv)
-      */
-     if (g_str_equal(qtest_get_arch(), "s390x")) {
- #if defined(HOST_S390X)
--        if (access("/dev/kvm", R_OK | W_OK)) {
-+        if (access("/dev/kvm", R_OK | W_OK) || !qtest_has_accel("kvm")) {
-             g_test_message("Skipping test: kvm not available");
-             return g_test_run();
-         }
+diff --git a/qapi/machine.json b/qapi/machine.json
+index 6e90d463fc9..1ef729f6f84 100644
+--- a/qapi/machine.json
++++ b/qapi/machine.json
+@@ -1274,3 +1274,50 @@
+ ##
+ { 'event': 'MEM_UNPLUG_ERROR',
+   'data': { 'device': 'str', 'msg': 'str' } }
++
++##
++# @Accelerator:
++#
++# An enumeration of accelerator names.
++#
++# Since: 6.1
++##
++{ 'enum': 'Accelerator',
++  'data': [ 'qtest', 'tcg', 'kvm', 'hax', 'hvf', 'whpx', 'xen' ] }
++
++##
++# @AcceleratorInfo:
++#
++# Accelerator information.
++#
++# @name: The accelerator name.
++#
++# Since: 6.1
++##
++{ 'struct': 'AcceleratorInfo',
++  'data': { 'name': 'Accelerator' } }
++
++##
++# @query-accels:
++#
++# Get a list of AcceleratorInfo for all built-in accelerators.
++#
++# Returns: a list of @AcceleratorInfo describing each accelerator.
++#
++# Since: 6.1
++#
++# Example:
++#
++# -> { "execute": "query-accels" }
++# <- { "return": [
++#        {
++#            "name": "qtest"
++#        },
++#        {
++#            "name": "kvm"
++#        }
++#    ] }
++#
++##
++{ 'command': 'query-accels',
++  'returns': ['AcceleratorInfo'] }
+diff --git a/accel/accel-qmp.c b/accel/accel-qmp.c
+new file mode 100644
+index 00000000000..426737b3f9a
+--- /dev/null
++++ b/accel/accel-qmp.c
+@@ -0,0 +1,49 @@
++/*
++ * QEMU accelerators, QMP commands
++ *
++ * Copyright (c) 2021 Red Hat Inc.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "qapi/qapi-commands-machine.h"
++
++static const bool accel_builtin_list[ACCELERATOR__MAX] = {
++    [ACCELERATOR_QTEST] = true,
++#ifdef CONFIG_TCG
++    [ACCELERATOR_TCG] = true,
++#endif
++#ifdef CONFIG_KVM
++    [ACCELERATOR_KVM] = true,
++#endif
++#ifdef CONFIG_HAX
++    [ACCELERATOR_HAX] = true,
++#endif
++#ifdef CONFIG_HVF
++    [ACCELERATOR_HVF] = true,
++#endif
++#ifdef CONFIG_WHPX
++    [ACCELERATOR_WHPX] = true,
++#endif
++#ifdef CONFIG_XEN_BACKEND
++    [ACCELERATOR_XEN] = true,
++#endif
++};
++
++AcceleratorInfoList *qmp_query_accels(Error **errp)
++{
++    AcceleratorInfoList *list = NULL, **tail = &list;
++
++    for (Accelerator accel = 0; accel < ACCELERATOR__MAX; accel++) {
++        if (accel_builtin_list[accel]) {
++            AcceleratorInfo *info = g_new0(AcceleratorInfo, 1);
++
++            info->name = accel;
++
++            QAPI_LIST_APPEND(tail, info);
++        }
++    }
++
++    return list;
++}
+diff --git a/accel/meson.build b/accel/meson.build
+index b44ba30c864..7a48f6d568d 100644
+--- a/accel/meson.build
++++ b/accel/meson.build
+@@ -1,4 +1,4 @@
+-specific_ss.add(files('accel-common.c'))
++specific_ss.add(files('accel-common.c', 'accel-qmp.c'))
+ softmmu_ss.add(files('accel-softmmu.c'))
+ user_ss.add(files('accel-user.c'))
+ 
 -- 
 2.26.3
 

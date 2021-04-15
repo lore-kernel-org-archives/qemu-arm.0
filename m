@@ -1,128 +1,171 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp653024lfr;
-        Thu, 15 Apr 2021 08:55:19 -0700 (PDT)
-X-Received: by 2002:adf:bc09:: with SMTP id s9mr4181414wrg.329.1618502119550;
-        Thu, 15 Apr 2021 08:55:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618502119; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp687969lfr;
+        Thu, 15 Apr 2021 09:34:20 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz6ZydU4txtsCHV2U4XNqZbk7e0t/xD+MkDmwxoRCjqFUUA3Zao9ingfpMxAbFP6jSvUCFj
+X-Received: by 2002:a50:d7d7:: with SMTP id m23mr5216858edj.378.1618504460269;
+        Thu, 15 Apr 2021 09:34:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618504460; cv=none;
         d=google.com; s=arc-20160816;
-        b=nUyFmzSKBHZXGLzAVHl5VYBpfTkxU8oBHdlPkZ2l4tVDVFUVPCc40Gx38BKp0rpxJs
-         0BzzC+rEDtkbgmVsWQArhM4z5CvIhzjwlFE0sXuMq5pKhhyV8rCT2EGfB3HGvA4jeX5i
-         hv+RzPpgd8C/3+sAhm3n9vU4VoldP0B2swSy00bW+A/+N4mL0gmEoPeBjdi5W7Mk1ez3
-         pSBTMT6trO4T/cABvzUOq+mWJDS18F1kdXdi4Q7Q85KErizCpLIkybZcoobEe9V8W5Ip
-         f5zHMeGoyACgX47FB7+wzeqpZ5vE4H2oW3FNQQT5DyUlLo0WDzxyl+slv1mMfy++LsIG
-         C8sQ==
+        b=VqW64nkCyBiG/fjjSfqlr5hQMgU9ZWggazZ9Ic8E59j3zhHdBIySOjTT5KT4WRpWJf
+         VFH/PCHVrHzGwXKOyA55QdETTcdF3FGqlrK+EibFnXNU68SK7AtVF/sn7X5yO1qCRbkr
+         0K0iNetI7fT4tfql1fmwGUino8/eGAZuOyfmzUnF8GNgyfOP/HCCEN/q4KGXueNZAO2f
+         2JXpAK6vSrB46VE8opt/TXX3Q9whCP8Zksg5orJlvPywOgkOajuxp3oLsN6OT1i7zpzn
+         6lbEIAlhZJG6oyeLX7CnY53RdifndesNNonFSkoDUGczp8jaLZ7H43wGxxgWyAspXlhW
+         x44g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject:sender
-         :dkim-signature;
-        bh=1iJlHk6v/UUiwwngJCIvEQtApBK1nE4RmsWgnACZLdY=;
-        b=ZmZXcjIqXjJQo2crbmLns7qlb9Hc1J5dpP6iLLEYYH8y5YmuRUg2adTADW0ZwSDp4l
-         ZaQWb+lbkRhPMnsL544smszDiYVCDItN7qmHkNr6yhumXGqK3KGVQrs6nuZCpch/U5/+
-         ZAHPhxchKkNTAgLGt7MQwZX7djE3O7i6TDS4YAZIB/Cfbze5SqaokqjAbd6oZND7fJXn
-         OT6QOIzC0AiiAqPQJZIgI8iNcg7pomOMfIp/216hb8vRcSaL6Ej6E8+mzmnA869pUyy/
-         loFVU6jW14YUNwAocRLcmedAb5vQRN5Po/c0MowxgZJAmRJhgcv0bkPJce3DmYpq1On4
-         cZDw==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=sTefL8KFB03yS8Z+kdiNHNixKSuiXSG+jyZydBtqNkg=;
+        b=z9h56yCM8wel/4aNsmmnRiy9PZ58QfYYyiAnIvTJEYyCIsHD20N+t8UwOdciNeYebF
+         J/V7cGYEDET+kf0IWtxIkj7PVHTmPctoI7Gx/jwGjowFDG/aRrQlWmzWiEmq5hecfhmq
+         R3jkAvj/iI1QkS8/MlRQLeMXjtBqjHLLEiQrITKIm3jGLV9uEWobUWsn2WSbtmWIRzSz
+         fjJjKw8/V7TiOFh/Pj3r+3sFToz4alYu8iIonB/xMSUC6v9tL+HJMqlWNoowQSXiNeE4
+         2l6nXshRwfcei0urbhMbpsWDUfcuytXW29SfHQpcCxDfGLLhDKEw8CUBaF2YnEpEsEol
+         D48Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CiA6EWFa;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id l185sor1514241wml.28.2021.04.15.08.55.19
-        (Google Transport Security);
-        Thu, 15 Apr 2021 08:55:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=L1qVpUBw;
+       spf=pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <philmd@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [63.128.21.124])
+        by mx.google.com with ESMTPS id w8si2486087eje.293.2021.04.15.09.34.19
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 15 Apr 2021 09:34:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) client-ip=63.128.21.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CiA6EWFa;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=sender:subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=1iJlHk6v/UUiwwngJCIvEQtApBK1nE4RmsWgnACZLdY=;
-        b=CiA6EWFazR/n0+oGCWpcZk0q82xrqft8bMsUK6WxO+P/6wyul5H14Av1buND1hEvi0
-         YPuM+enAI3s8/jjadhd9sm2cIt5W5Sau96EjF30C8r04cOQ91m0wgoKzjSJrMh0gsB2J
-         kNpDMfyt1n+Jun7YFPn2byfKF7HlY+twHPDNBI/5kAQE/NJpTOQttzY8SFjUZeMH+PQz
-         tSp8Z+h5bmtl7uoeQ78lhvZDZChZQZLcq8Z46PBIyXk2aLGo4g5sciO2gxgJxjGpEz61
-         qQsHYfcoyX7NIIhgmuPPiB4eijB0QK/Ich3mmyoQ88pYECKWc2x00vIW434Cry81uH6p
-         lsJA==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=L1qVpUBw;
+       spf=pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1618504459;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=sTefL8KFB03yS8Z+kdiNHNixKSuiXSG+jyZydBtqNkg=;
+	b=L1qVpUBw3GsXrcMsBvk5A3voz6nVmvFDiFIg+30RU1wC8PoeHz+Xxig1yOCHKMgPzvZByM
+	TmKESAESFJx8lVwj4i1hlxFV5fHeRlNcSzYgZHHaYCdx+cViv+7elsl0eUmiattwyzXENb
+	3CBQodFusDx+llvyGDbBy/d2kXsyQqU=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-546-GKw2PEIgNCKSMtEfZA3_Lw-1; Thu, 15 Apr 2021 12:34:15 -0400
+X-MC-Unique: GKw2PEIgNCKSMtEfZA3_Lw-1
+Received: by mail-wr1-f69.google.com with SMTP id d15-20020a5d538f0000b02901027c18c581so2971444wrv.3
+        for <alex.bennee@linaro.org>; Thu, 15 Apr 2021 09:34:15 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=1iJlHk6v/UUiwwngJCIvEQtApBK1nE4RmsWgnACZLdY=;
-        b=UK5TbYd3dqxcrYrFk436MMJzFntX8XUfBXe/j6aGdx4JpcCEWWWu2Medd6JpV5Rgq5
-         6tr7+xw7RXjGEhUlV4t6qCEIqis8k0gG38l+NvUxahbqIltMJpJppWWkGzpfn7dTBFgt
-         C/6vuUezVmav5R5qCnJmhkZ48z074yV9kHmVXQHlkbzLmsg09C3+p01pFhBsu8hMjqbp
-         YjU5G+Yf853zURDs0gEGGFcW9HoMHXeIaj7jxrtgM2GqRR5V52XSedasEjHC44taN9tq
-         T7wkzgpN787QSVEMR2q03IbEpM4qTrrccNBTIrYIqRkJWjf2xDF/ZAX6HIKggFmQgjc0
-         rH9w==
-X-Gm-Message-State: AOAM5331/Tpi64j+Bo09k9gwjPk4aqbyeYhOTdCWhCF4h+sSnfAGTwzx
-	MZwDAVh8pCpdH34P+c8/jZ8wOey5DCo=
-X-Google-Smtp-Source: ABdhPJxmXHrZLcCq62I9Q3o0+wqhE+Rlk4V6aHko4Zw3jPt0RyhoT/FARIcmY2uhCkIzdZzsKLiu/Q==
-X-Received: by 2002:a1c:b457:: with SMTP id d84mr3825603wmf.169.1618502119320;
-        Thu, 15 Apr 2021 08:55:19 -0700 (PDT)
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from [192.168.1.36] (39.red-81-40-121.staticip.rima-tde.net. [81.40.121.39])
-        by smtp.gmail.com with ESMTPSA id g132sm3565620wmg.42.2021.04.15.08.55.18
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 15 Apr 2021 08:55:18 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PULL 18/23] accel/tcg: re-factor non-RAM execution code
-To: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Cedric Le Goater <clg@fr.ibm.com>, qemu-arm <qemu-arm@nongnu.org>
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>
-References: <20210218094706.23038-1-alex.bennee@linaro.org>
- <20210218094706.23038-19-alex.bennee@linaro.org>
- <CAFEAcA8micdrGgwyS-20mnGkdpJ3mMnq=MEJJFZCh3XGx0uMbg@mail.gmail.com>
- <CAFEAcA9G-WabAM_EdgMzd0Xv6z8xRYjw57DiEqB6Z_Wbj=X1Eg@mail.gmail.com>
- <87blaflit2.fsf@linaro.org>
- <CAFEAcA_Uqvc5zyJs8XHWDGR1B_jUZ9jY5EdgHSmaczuOc02ykg@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <b989ebfe-1294-5eef-53a2-9599421e0069@amsat.org>
-Date: Thu, 15 Apr 2021 17:55:17 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=sTefL8KFB03yS8Z+kdiNHNixKSuiXSG+jyZydBtqNkg=;
+        b=iGltdd37uVZ2xr9nDoLTnMjbLkWpR9XTJ23yZ+ZfRprsU5y8LWqmtZ7k8RLD3CWBJc
+         4uulpmYR0cVCl42CclzXaa3sMbNCFBC2WpQ9DMIhZ42WWLTIn01rQe2zUEpSkIxtB/S1
+         omV5ZXI81RbQEoHgR3yzaq+zIa7HIK5iVWi8K30/mQnEBNTROSL+t2Vm9uwU7quAntez
+         Smjz8+VToDZQd2IKnKiklq4iJNeeNmn7rSpBzgmC0cmfFglq5ILRunc2AJu+dRBmJ+Ts
+         F6niBoWA8EjGoYUCf/2yiPAVqUXHERqNfnD0FRzFuto6kByFPPbamlETiI0IM4QOOzkC
+         LTpA==
+X-Gm-Message-State: AOAM530fEs/n39/wXgE6h9GBEvJeTYDvsX88QzfEI51GlKCVQuLPrgBz
+	ZJ2CC04wYi1XGC0xLiisktO+cB5a0XBsTngu38Qz9sp+BRDhGPntHm4b0lFL+oxuSmBa3JFU9wT
+	tXMCOuRLjl7iSFfcl
+X-Received: by 2002:a5d:40c1:: with SMTP id b1mr4607880wrq.33.1618504454322;
+        Thu, 15 Apr 2021 09:34:14 -0700 (PDT)
+X-Received: by 2002:a5d:40c1:: with SMTP id b1mr4607861wrq.33.1618504454205;
+        Thu, 15 Apr 2021 09:34:14 -0700 (PDT)
+Return-Path: <philmd@redhat.com>
+Received: from localhost.localdomain (39.red-81-40-121.staticip.rima-tde.net. [81.40.121.39])
+        by smtp.gmail.com with ESMTPSA id f11sm3552479wmc.6.2021.04.15.09.34.12
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 15 Apr 2021 09:34:13 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: "Michael S. Tsirkin" <mst@redhat.com>,
+	Claudio Fontana <cfontana@suse.de>,
+	Igor Mammedov <imammedo@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	qemu-arm@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	=?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	Laurent Vivier <lvivier@redhat.com>,
+	Andrew Jones <drjones@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Juan Quintela <quintela@redhat.com>,
+	Thomas Huth <thuth@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+	Eric Blake <eblake@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	"Emilio G . Cota" <cota@braap.org>
+Subject: [PATCH v4 12/12] tests/meson: Only build softfloat objects if TCG is selected
+Date: Thu, 15 Apr 2021 18:33:04 +0200
+Message-Id: <20210415163304.4120052-13-philmd@redhat.com>
+X-Mailer: git-send-email 2.26.3
+In-Reply-To: <20210415163304.4120052-1-philmd@redhat.com>
+References: <20210415163304.4120052-1-philmd@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_Uqvc5zyJs8XHWDGR1B_jUZ9jY5EdgHSmaczuOc02ykg@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: GDuEiQ6jxKCc
+X-TUID: zmnfT8bCa8FJ
 
-On 4/15/21 4:54 PM, Peter Maydell wrote:
-> On Thu, 15 Apr 2021 at 15:32, Alex Bennée <alex.bennee@linaro.org> wrote:
->> --8<---------------cut here---------------start------------->8---
->> accel/tcg: avoid re-translating one-shot instructions
->>
->> By definition a single instruction is capable of being an IO
->> instruction. This avoids a problem of triggering a cpu_io_recompile on
->> a non-cached translation which would only do exactly this anyway.
->>
->> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
->>
->> 1 file changed, 1 insertion(+), 1 deletion(-)
->> accel/tcg/translate-all.c | 2 +-
->>
->> modified   accel/tcg/translate-all.c
->> @@ -1863,7 +1863,7 @@ TranslationBlock *tb_gen_code(CPUState *cpu,
->>
->>      if (phys_pc == -1) {
->>          /* Generate a one-shot TB with 1 insn in it */
->> -        cflags = (cflags & ~CF_COUNT_MASK) | 1;
->> +        cflags = (cflags & ~CF_COUNT_MASK) | CF_LAST_IO | 1;
->>      }
->>
->>      max_insns = cflags & CF_COUNT_MASK;
->> --8<---------------cut here---------------end--------------->8---
-> 
-> Yes, this fixes the problem. Do we want to put this in for 6.0? My
-> feeling is that executing from non-RAM is pretty niche, so maybe
-> if we need an rc4 anyway, but this isn't important enough to cause an
-> rc4 itself.
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Isn't it the default for Aspeed machines (with U-Boot)? (Cc'ing Cédric).
+The previous attempt (commit f77147cd4de) doesn't work as
+expected, as we still have CONFIG_TCG=1 when using:
+
+  configure --disable-system --disable-user
+
+Now than we have removed the use of CONFIG_TCG from target-dependent
+files in tests/qtest/, we can remove the unconditional definition of
+CONFIG_TCG in config_host.
+
+This avoid to build a bunch of unrequired objects when building with
+--disable-tcg (in particular the softfloat tests):
+
+Before:
+
+  $ make
+  [1/812] Generating trace-qom.h with a custom command
+  ...
+
+After:
+
+  $ make
+  [1/349] Generating trace-qom.h with a custom command
+  ...
+
+A difference of 463 objects...
+
+Reported-by: Claudio Fontana <cfontana@suse.de>
+Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+v3: Include Paolo's feedback:
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg793872.html
+therefore o not include Alex's R-b tag.
+
+Cc: Richard Henderson <richard.henderson@linaro.org>
+Cc: Alex Bennée <alex.bennee@linaro.org>
+Cc: Emilio G. Cota <cota@braap.org>
+---
+ meson.build | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index c6f4b0cf5e8..623cbe50685 100644
+--- a/meson.build
++++ b/meson.build
+@@ -262,7 +262,6 @@
+                         language: ['c', 'cpp', 'objc'])
+ 
+   accelerators += 'CONFIG_TCG'
+-  config_host += { 'CONFIG_TCG': 'y' }
+ endif
+ 
+ if 'CONFIG_KVM' not in accelerators and get_option('kvm').enabled()
+-- 
+2.26.3

@@ -1,511 +1,219 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp99153lfr;
-        Wed, 14 Apr 2021 19:03:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyXhk6wppTjE5lUllQZ180ymfFeRAimY3Rvd4JmFex4/FuZs1KiDL/6KypU4pjx4Pci10mg
-X-Received: by 2002:a67:1447:: with SMTP id 68mr512340vsu.20.1618452217472;
-        Wed, 14 Apr 2021 19:03:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618452217; cv=none;
+Received: by 2002:a05:6214:9cd:0:0:0:0 with SMTP id dp13csp1646777qvb;
+        Thu, 15 Apr 2021 05:29:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJysxus1u8oBaa0Xs8HlayZRmXYUar93b5TvLg4B3r0W9E/e6FlKWqyvi5pJAE4rb3JPy89M
+X-Received: by 2002:a1f:fcc5:: with SMTP id a188mr1652549vki.4.1618489751753;
+        Thu, 15 Apr 2021 05:29:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618489751; cv=none;
         d=google.com; s=arc-20160816;
-        b=zOV77MwA3SrkjSspVVQ0ufz0Yjk5cthBoI7Rh9pRj4uxLN/CuY99cPUHgpGp8qi8l6
-         d6ZI3DS9nBHY66n3JPM90wvx/jxiPFu+vEGI43djsKDyRbE0rdVt9dGxeRgsAmw+5wYK
-         znogPmXbn1mFk+pKkGICg51JzN5xdqHISGKjduARK8IlNPfl3HKn3GjKZUMA2RVTAAns
-         xOS1RzhNxbBHrI2xpwlFCEMm2Qi6qOt6QrK3XumgVwg38yQBRpNmRWR2/JWCdENXYOjy
-         fShTQ6jPTM3sy+SQ/2c3P8xrImuihKCaXhkgqQ3gXBO0l98V9YfDeJsoG+XyOgCKbW16
-         WFpw==
+        b=IgjsAGdEkuIg5mEaUI3FtsEntLI48uZEYzq3JQGYIXZdaqdq8OA5zBCzkbYbrBtfoC
+         QA5jujblD5/sFYwZDaM9s8Jsnijh9kOSDtsOQSIWdr9IcNKh6CnznMZRT2rE4vSNP5bC
+         zS5UrQ89Kmvy2hQZNo6u2fifZVCrUcCj+4K662MAYcmrCDOpT1APTlTSn03bZg6CAhp3
+         E7CbCaQ46eeqJP3MPLnO/LPwL0+EqztlC8E1EMDRtBjRITw0P9PYMF1WnlFUnZRhRnBI
+         aGIi419mMWKecd1RpwulLldnnWs/vUAuiolWpRIYLan1C8xRwY6aUdlmOQDneutdcjWE
+         yuAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=Ns7BIVm6+bX6FLmQ/i536zI8OoOjjaiz+JBS0sLojoc=;
-        b=e2FEeJbSeY80sNo5FZG2WoWO2+nvXtm1uYV07nFuhzrV9Z5TXH4RCB+mnJLEHq8x+0
-         FH6Jf+SRxuXdlUKUft4uJePFfedGqu+y7teUEv9Dj+kWfD6rEDKJ8xxEfE9Z1diVBls8
-         bVnhmRjILGqXLbMby7IddV2enjtGtTy/zdTMSdJEzLhJZ3nMkNhD9W0x/OTYp9xc3VUR
-         a8arZoQlhLhww5ThKH1ti+mrdHBKQIwXiiSOevoCq3LNkxM1/6u9o1omSj6iOXzktKDM
-         pw5NekUGZ6soWMemg6OveiXTrburkmDLuBLga2dZ2wxLZpzxSM5lw8LOq+EGLc3k/Efo
-         6d0A==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=WU1rsuPZSbiXCb5ZUrh9An1Xj0dCMP/3YS/3/3XzJFk=;
+        b=ZIQyecB5sRK7pvUJ7oF9XDiObKWgumv5nAyRAuX2MV74Ga9fabAWwObOsM6iMSDc6Q
+         8Y/SEAXPcKsRbj5MRpXgJ7we8uqICfkrEEM7NBrgu74VuXD1LwjWfKKdsywC61OVqClZ
+         MDbhH1KYwcI1qCof48G6ZJFKeyqcWtTrzaDb7+Z2s4qLdoY7og22xPCbJq5oHNUiEwgC
+         NzLLOX+1OQIlgtF1lDlGpiUY1MErjHukq38h3/uEEmJv3pKzA20WVwa90jH1kHXuIyfS
+         J9Dknoj/H45Qe/pwV5ugwtTM1jux+fEjJ+G5tps32A9To0kTptPFk2dSS9/K/wzn+JpU
+         a8mw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NMH9F2Xz;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x7si785024uar.173.2021.04.14.19.03.37
+        by mx.google.com with ESMTPS id i25si944034ual.62.2021.04.15.05.29.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 14 Apr 2021 19:03:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 15 Apr 2021 05:29:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:39586 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NMH9F2Xz;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:59374 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lWrM0-0002JA-MR
-	for alex.bennee@linaro.org; Wed, 14 Apr 2021 22:03:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38342)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lX17P-0004RE-5i
+	for alex.bennee@linaro.org; Thu, 15 Apr 2021 08:29:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46060)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jiangkunkun@huawei.com>)
- id 1lWrLq-0002IX-K4; Wed, 14 Apr 2021 22:03:26 -0400
-Received: from szxga02-in.huawei.com ([45.249.212.188]:2074)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lX15C-0002x0-0O
+ for qemu-devel@nongnu.org; Thu, 15 Apr 2021 08:26:54 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:26584)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jiangkunkun@huawei.com>)
- id 1lWrLm-0000RS-Rm; Wed, 14 Apr 2021 22:03:26 -0400
-Received: from dggeml406-hub.china.huawei.com (unknown [172.30.72.56])
- by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4FLMyB1DjqzRc3r;
- Thu, 15 Apr 2021 10:01:06 +0800 (CST)
-Received: from dggema765-chm.china.huawei.com (10.1.198.207) by
- dggeml406-hub.china.huawei.com (10.3.17.50) with Microsoft SMTP Server (TLS)
- id 14.3.498.0; Thu, 15 Apr 2021 10:03:12 +0800
-Received: from [10.174.185.210] (10.174.185.210) by
- dggema765-chm.china.huawei.com (10.1.198.207) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.2106.2; Thu, 15 Apr 2021 10:03:12 +0800
-Subject: Re: [RFC v9 15/29] vfio: Set up nested stage mappings
-To: Auger Eric <eric.auger@redhat.com>, <eric.auger.pro@gmail.com>,
- <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <alex.williamson@redhat.com>
-References: <20210411120912.15770-1-eric.auger@redhat.com>
- <20210411120912.15770-16-eric.auger@redhat.com>
- <cea9fd63-18d6-32c5-bed0-d8783af654ce@huawei.com>
- <a844b9fa-40e9-6443-b359-60ca7d9661aa@redhat.com>
- <b5df27a2-5f94-46fd-2c9b-8590fdb8b0a8@huawei.com>
- <3274a074-b258-25d2-5a66-3ff520117189@redhat.com>
-From: Kunkun Jiang <jiangkunkun@huawei.com>
-Message-ID: <e48f1813-8729-a0c2-0f4d-43a6081f0cd8@huawei.com>
-Date: Thu, 15 Apr 2021 10:03:00 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lX159-00060P-NW
+ for qemu-devel@nongnu.org; Thu, 15 Apr 2021 08:26:53 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1618489611;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=WU1rsuPZSbiXCb5ZUrh9An1Xj0dCMP/3YS/3/3XzJFk=;
+ b=NMH9F2XzumnaE3zEHUYPvf3o5kkJ8g0XsbXA/4csCYVfnvFy2m1cKaJDEVYvsVtMRFVOQp
+ 1WjcqIM1BYC1VO0Bz2KgTaoL6d0ByXUi2rpUlER0acV5F9VykJ8GbIlrGa+BRAwhyfJ3yA
+ BgtJHStPqplCxmSxDH396pg/iqISKmQ=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-453-jwDfUz4JOSaxPsQJoMm5GA-1; Thu, 15 Apr 2021 08:26:47 -0400
+X-MC-Unique: jwDfUz4JOSaxPsQJoMm5GA-1
+Received: by mail-wm1-f69.google.com with SMTP id
+ o3-20020a1c75030000b029010f4e02a2f2so2830895wmc.6
+ for <qemu-devel@nongnu.org>; Thu, 15 Apr 2021 05:26:47 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=WU1rsuPZSbiXCb5ZUrh9An1Xj0dCMP/3YS/3/3XzJFk=;
+ b=W1PhiOuS7d8XyfXvV2CYWUD0BT4zlnkFPBjdpNjIrOnz4RttwhEjr9sChRN5MKbEGs
+ JCGvcdvkK3L82cf8S9k/twoImv5lHX0REefoku6t65xVvSch7O7nmR/oad1bWoiQo5uq
+ qvltKhlenCXIxVsdtcy2R7L88kcTTu8qaMEkIGsFEtoI8Fw3tAlJoxjoAneNHsmrikLR
+ cgyr3aoVB/bkCE8/jbrbpKtX6wLWB7wa+d8Hga8DxQBfvuoajXs9g779Yl7OCByuq4AR
+ 2OOw6VuyxIloqM9a/DgbmAUSRAkqlYat0VibBTDY3JeHUAQse+vYVs7g+GjClaBK0JM8
+ alog==
+X-Gm-Message-State: AOAM530czV/vD0o7PNVgy+ANw2wdfbRNoqmRyYLDUpUz+WM9FYN+GhuO
+ hsIuN8/urJbiqdu8D3wDuDbsInlCUnPoGKEdbCy+KUF1t3GWukg9DvHAFM9HaeF0ythcdQXgt9g
+ B4re7E6ThP5MlC5icISQ/3hHIIL/hF5q4OrzQfMFmaIw8RrVc2YB+nreXSOTbWeu2
+X-Received: by 2002:adf:d1ce:: with SMTP id b14mr2619761wrd.159.1618489606443; 
+ Thu, 15 Apr 2021 05:26:46 -0700 (PDT)
+X-Received: by 2002:adf:d1ce:: with SMTP id b14mr2619727wrd.159.1618489606241; 
+ Thu, 15 Apr 2021 05:26:46 -0700 (PDT)
+Received: from localhost.localdomain (39.red-81-40-121.staticip.rima-tde.net.
+ [81.40.121.39])
+ by smtp.gmail.com with ESMTPSA id x17sm1399684wmi.46.2021.04.15.05.26.44
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 15 Apr 2021 05:26:45 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v3 2/6] tests/qtest: Add qtest_has_accel() method
+Date: Thu, 15 Apr 2021 14:26:29 +0200
+Message-Id: <20210415122633.4054644-3-philmd@redhat.com>
+X-Mailer: git-send-email 2.26.3
+In-Reply-To: <20210415122633.4054644-1-philmd@redhat.com>
+References: <20210415122633.4054644-1-philmd@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <3274a074-b258-25d2-5a66-3ff520117189@redhat.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-X-Originating-IP: [10.174.185.210]
-X-ClientProxiedBy: dggeme705-chm.china.huawei.com (10.1.199.101) To
- dggema765-chm.china.huawei.com (10.1.198.207)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.188;
- envelope-from=jiangkunkun@huawei.com; helo=szxga02-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, jacob.jun.pan@linux.intel.com,
- chenxiang66@hisilicon.com, tn@semihalf.com,
- shameerali.kolothum.thodi@huawei.com, nicoleotsuka@gmail.com,
- vivek.gautam@arm.com, vdumpa@nvidia.com, yi.l.liu@intel.com, peterx@redhat.com,
- zhangfei.gao@gmail.com, wanghaibin.wang@huawei.com, yuzenghui@huawei.com,
- jean-philippe@linaro.org, zhukeqian1@huawei.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RclF00A6TQh4
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Andrew Jones <drjones@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ qemu-arm@nongnu.org, Claudio Fontana <cfontana@suse.de>,
+ Igor Mammedov <imammedo@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: MM5cFCQneMbL
 
-Hi Eric,
+Introduce the qtest_has_accel() method which allows a runtime
+query on whether a QEMU instance has an accelerator built-in.
 
-On 2021/4/14 16:05, Auger Eric wrote:
-> Hi Kunkun,
->
-> On 4/14/21 3:45 AM, Kunkun Jiang wrote:
->> On 2021/4/13 20:57, Auger Eric wrote:
->>> Hi Kunkun,
->>>
->>> On 4/13/21 2:10 PM, Kunkun Jiang wrote:
->>>> Hi Eric,
->>>>
->>>> On 2021/4/11 20:08, Eric Auger wrote:
->>>>> In nested mode, legacy vfio_iommu_map_notify cannot be used as
->>>>> there is no "caching" mode and we do not trap on map.
->>>>>
->>>>> On Intel, vfio_iommu_map_notify was used to DMA map the RAM
->>>>> through the host single stage.
->>>>>
->>>>> With nested mode, we need to setup the stage 2 and the stage 1
->>>>> separately. This patch introduces a prereg_listener to setup
->>>>> the stage 2 mapping.
->>>>>
->>>>> The stage 1 mapping, owned by the guest, is passed to the host
->>>>> when the guest invalidates the stage 1 configuration, through
->>>>> a dedicated PCIPASIDOps callback. Guest IOTLB invalidations
->>>>> are cascaded downto the host through another IOMMU MR UNMAP
->>>>> notifier.
->>>>>
->>>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>>>>
->>>>> ---
->>>>>
->>>>> v7 -> v8:
->>>>> - properly handle new IOMMUTLBEntry fields and especially
->>>>>      propagate DOMAIN and PASID based invalidations
->>>>>
->>>>> v6 -> v7:
->>>>> - remove PASID based invalidation
->>>>>
->>>>> v5 -> v6:
->>>>> - add error_report_err()
->>>>> - remove the abort in case of nested stage case
->>>>>
->>>>> v4 -> v5:
->>>>> - use VFIO_IOMMU_SET_PASID_TABLE
->>>>> - use PCIPASIDOps for config notification
->>>>>
->>>>> v3 -> v4:
->>>>> - use iommu_inv_pasid_info for ASID invalidation
->>>>>
->>>>> v2 -> v3:
->>>>> - use VFIO_IOMMU_ATTACH_PASID_TABLE
->>>>> - new user API
->>>>> - handle leaf
->>>>>
->>>>> v1 -> v2:
->>>>> - adapt to uapi changes
->>>>> - pass the asid
->>>>> - pass IOMMU_NOTIFIER_S1_CFG when initializing the config notifier
->>>>> ---
->>>>>     hw/vfio/common.c     | 139
->>>>> +++++++++++++++++++++++++++++++++++++++++--
->>>>>     hw/vfio/pci.c        |  21 +++++++
->>>>>     hw/vfio/trace-events |   2 +
->>>>>     3 files changed, 157 insertions(+), 5 deletions(-)
->>>>>
->>>>> diff --git a/hw/vfio/common.c b/hw/vfio/common.c
->>>>> index 0cd7ef2139..e369d451e7 100644
->>>>> --- a/hw/vfio/common.c
->>>>> +++ b/hw/vfio/common.c
->>>>> @@ -595,6 +595,73 @@ static bool vfio_get_xlat_addr(IOMMUTLBEntry
->>>>> *iotlb, void **vaddr,
->>>>>         return true;
->>>>>     }
->>>>>     +/* Propagate a guest IOTLB invalidation to the host (nested
->>>>> mode) */
->>>>> +static void vfio_iommu_unmap_notify(IOMMUNotifier *n, IOMMUTLBEntry
->>>>> *iotlb)
->>>>> +{
->>>>> +    VFIOGuestIOMMU *giommu = container_of(n, VFIOGuestIOMMU, n);
->>>>> +    struct vfio_iommu_type1_cache_invalidate ustruct = {};
->>>>> +    VFIOContainer *container = giommu->container;
->>>>> +    int ret;
->>>>> +
->>>>> +    assert(iotlb->perm == IOMMU_NONE);
->>>>> +
->>>>> +    ustruct.argsz = sizeof(ustruct);
->>>>> +    ustruct.flags = 0;
->>>>> +    ustruct.info.argsz = sizeof(struct iommu_cache_invalidate_info);
->>>>> +    ustruct.info.version = IOMMU_CACHE_INVALIDATE_INFO_VERSION_1;
->>>>> +    ustruct.info.cache = IOMMU_CACHE_INV_TYPE_IOTLB;
->>>>> +
->>>>> +    switch (iotlb->granularity) {
->>>>> +    case IOMMU_INV_GRAN_DOMAIN:
->>>>> +        ustruct.info.granularity = IOMMU_INV_GRANU_DOMAIN;
->>>>> +        break;
->>>>> +    case IOMMU_INV_GRAN_PASID:
->>>>> +    {
->>>>> +        struct iommu_inv_pasid_info *pasid_info;
->>>>> +        int archid = -1;
->>>>> +
->>>>> +        pasid_info = &ustruct.info.granu.pasid_info;
->>>>> +        ustruct.info.granularity = IOMMU_INV_GRANU_PASID;
->>>>> +        if (iotlb->flags & IOMMU_INV_FLAGS_ARCHID) {
->>>>> +            pasid_info->flags |= IOMMU_INV_ADDR_FLAGS_ARCHID;
->>>>> +            archid = iotlb->arch_id;
->>>>> +        }
->>>>> +        pasid_info->archid = archid;
->>>>> +        trace_vfio_iommu_asid_inv_iotlb(archid);
->>>>> +        break;
->>>>> +    }
->>>>> +    case IOMMU_INV_GRAN_ADDR:
->>>>> +    {
->>>>> +        hwaddr start = iotlb->iova + giommu->iommu_offset;
->>>>> +        struct iommu_inv_addr_info *addr_info;
->>>>> +        size_t size = iotlb->addr_mask + 1;
->>>>> +        int archid = -1;
->>>>> +
->>>>> +        addr_info = &ustruct.info.granu.addr_info;
->>>>> +        ustruct.info.granularity = IOMMU_INV_GRANU_ADDR;
->>>>> +        if (iotlb->leaf) {
->>>>> +            addr_info->flags |= IOMMU_INV_ADDR_FLAGS_LEAF;
->>>>> +        }
->>>>> +        if (iotlb->flags & IOMMU_INV_FLAGS_ARCHID) {
->>>>> +            addr_info->flags |= IOMMU_INV_ADDR_FLAGS_ARCHID;
->>>>> +            archid = iotlb->arch_id;
->>>>> +        }
->>>>> +        addr_info->archid = archid;
->>>>> +        addr_info->addr = start;
->>>>> +        addr_info->granule_size = size;
->>>>> +        addr_info->nb_granules = 1;
->>>>> +        trace_vfio_iommu_addr_inv_iotlb(archid, start, size,
->>>>> +                                        1, iotlb->leaf);
->>>>> +        break;
->>>>> +    }
->>>> Should we pass a size to  host kernel here, even if vSMMU doesn't
->>>> support
->>>> RIL or guest kernel doesn't use RIL?
->>>>
->>>> It will cause TLBI issue in  this scenario: Guest kernel issues a
->>>> TLBI cmd
->>>> without "range" (tg = 0) to invalidate a 2M huge page. Then qemu passed
->>>> the iova and size (4K) to host kernel. Finally, host kernel issues a
->>>> TLBI cmd
->>>> with "range" (4K) which can not invalidate the TLB entry of 2M huge
->>>> page.
->>>> (pSMMU supports RIL)
->>> In that case the guest will loop over all 4K images belonging to the 2M
->>> huge page and invalidate each of them. This should turn into qemu
->>> notifications for each 4kB page, no? This is totally inefficient, hence
->> The guest will not loop over all 4K images belonging to the 2M huge page.
->> The iommu_iotlb_gather->pgsize will be 2M, if a page is 2M huge page. The
->> gather->pgsize will be passed to __arm_smmu_tlb_inv_range as "granule":
->>
->> iommu_iotlb_gather_add_page
->>      iommu_iotlb_sync
->>          domain->ops->iotlb_sync
->>              arm_smmu_iotlb_sync
->>                  arm_smmu_tlb_inv_range_domain
->>                      __arm_smmu_tlb_inv_range
->>
->> In the above mentioned scenario, guest kernel will issue a TLBI cmd only
->> with
->> "iova" (tg = 0).
-> OK I get it now. In that case I think I should do a TG=0 invalidation
-> on host even if the host does support RIL. Does that sound correct?
-Yeah, that's what I thought.
-> The trouble is the uapi struct does not convey such info explicitly.
-> Maybe I should use nb_granules = 0 to detect that case.
-It is troublesome to correct this issue. Using nb_granules = 0 may be
-a good choice.
-> I think for this use case RIL should be supported by the guest. Thoughts?
-Yes. If guest supports RIL, the scenario mentioned above does not exist.
+Reviewed-by: Eric Blake <eblake@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+Since v2:
+- reworded (Eric)
+Since v1:
+- rename qtest_probe_accel() -> qtest_has_accel()
+- run with -machine none before creating QTestState
+---
+ tests/qtest/libqos/libqtest.h |  8 ++++++++
+ tests/qtest/libqtest.c        | 29 +++++++++++++++++++++++++++++
+ 2 files changed, 37 insertions(+)
 
-Thanks,
-Kunkun Jiang
->
-> Thanks
->
-> Eric
->> Thanks,
->> Kunkun Jiang
->>> the support of RIL on guest side and QEMU device.
->>>
->>> What do I miss?
->>>
->>> Thanks
->>>
->>> Eric
->>>> Thanks,
->>>> Kunkun Jiang
->>>>> +    }
->>>>> +
->>>>> +    ret = ioctl(container->fd, VFIO_IOMMU_CACHE_INVALIDATE, &ustruct);
->>>>> +    if (ret) {
->>>>> +        error_report("%p: failed to invalidate CACHE (%d)",
->>>>> container, ret);
->>>>> +    }
->>>>> +}
->>>>> +
->>>>>     static void vfio_iommu_map_notify(IOMMUNotifier *n, IOMMUTLBEntry
->>>>> *iotlb)
->>>>>     {
->>>>>         VFIOGuestIOMMU *giommu = container_of(n, VFIOGuestIOMMU, n);
->>>>> @@ -776,6 +843,35 @@ static void
->>>>> vfio_dma_unmap_ram_section(VFIOContainer *container,
->>>>>         }
->>>>>     }
->>>>>     +static void vfio_prereg_listener_region_add(MemoryListener
->>>>> *listener,
->>>>> +                                            MemoryRegionSection
->>>>> *section)
->>>>> +{
->>>>> +    VFIOContainer *container =
->>>>> +        container_of(listener, VFIOContainer, prereg_listener);
->>>>> +    Error *err = NULL;
->>>>> +
->>>>> +    if (!memory_region_is_ram(section->mr)) {
->>>>> +        return;
->>>>> +    }
->>>>> +
->>>>> +    vfio_dma_map_ram_section(container, section, &err);
->>>>> +    if (err) {
->>>>> +        error_report_err(err);
->>>>> +    }
->>>>> +}
->>>>> +static void vfio_prereg_listener_region_del(MemoryListener *listener,
->>>>> +                                     MemoryRegionSection *section)
->>>>> +{
->>>>> +    VFIOContainer *container =
->>>>> +        container_of(listener, VFIOContainer, prereg_listener);
->>>>> +
->>>>> +    if (!memory_region_is_ram(section->mr)) {
->>>>> +        return;
->>>>> +    }
->>>>> +
->>>>> +    vfio_dma_unmap_ram_section(container, section);
->>>>> +}
->>>>> +
->>>>>     static void vfio_listener_region_add(MemoryListener *listener,
->>>>>                                          MemoryRegionSection *section)
->>>>>     {
->>>>> @@ -879,9 +975,10 @@ static void
->>>>> vfio_listener_region_add(MemoryListener *listener,
->>>>>         memory_region_ref(section->mr);
->>>>>           if (memory_region_is_iommu(section->mr)) {
->>>>> +        IOMMUNotify notify;
->>>>>             VFIOGuestIOMMU *giommu;
->>>>>             IOMMUMemoryRegion *iommu_mr =
->>>>> IOMMU_MEMORY_REGION(section->mr);
->>>>> -        int iommu_idx;
->>>>> +        int iommu_idx, flags;
->>>>>               trace_vfio_listener_region_add_iommu(iova, end);
->>>>>             /*
->>>>> @@ -900,8 +997,18 @@ static void
->>>>> vfio_listener_region_add(MemoryListener *listener,
->>>>>             llend = int128_sub(llend, int128_one());
->>>>>             iommu_idx = memory_region_iommu_attrs_to_index(iommu_mr,
->>>>>                                                          
->>>>> MEMTXATTRS_UNSPECIFIED);
->>>>> -        iommu_notifier_init(&giommu->n, vfio_iommu_map_notify,
->>>>> -                            IOMMU_NOTIFIER_IOTLB_EVENTS,
->>>>> +
->>>>> +        if (container->iommu_type == VFIO_TYPE1_NESTING_IOMMU) {
->>>>> +            /* IOTLB unmap notifier to propagate guest IOTLB
->>>>> invalidations */
->>>>> +            flags = IOMMU_NOTIFIER_UNMAP;
->>>>> +            notify = vfio_iommu_unmap_notify;
->>>>> +        } else {
->>>>> +            /* MAP/UNMAP IOTLB notifier */
->>>>> +            flags = IOMMU_NOTIFIER_IOTLB_EVENTS;
->>>>> +            notify = vfio_iommu_map_notify;
->>>>> +        }
->>>>> +
->>>>> +        iommu_notifier_init(&giommu->n, notify, flags,
->>>>>                                 section->offset_within_region,
->>>>>                                 int128_get64(llend),
->>>>>                                 iommu_idx);
->>>>> @@ -921,7 +1028,9 @@ static void
->>>>> vfio_listener_region_add(MemoryListener *listener,
->>>>>                 goto fail;
->>>>>             }
->>>>>             QLIST_INSERT_HEAD(&container->giommu_list, giommu,
->>>>> giommu_next);
->>>>> -        memory_region_iommu_replay(giommu->iommu, &giommu->n);
->>>>> +        if (flags & IOMMU_NOTIFIER_MAP) {
->>>>> +            memory_region_iommu_replay(giommu->iommu, &giommu->n);
->>>>> +        }
->>>>>               return;
->>>>>         }
->>>>> @@ -1205,10 +1314,16 @@ static const MemoryListener
->>>>> vfio_memory_listener = {
->>>>>         .log_sync = vfio_listener_log_sync,
->>>>>     };
->>>>>     +static MemoryListener vfio_memory_prereg_listener = {
->>>>> +    .region_add = vfio_prereg_listener_region_add,
->>>>> +    .region_del = vfio_prereg_listener_region_del,
->>>>> +};
->>>>> +
->>>>>     static void vfio_listener_release(VFIOContainer *container)
->>>>>     {
->>>>>         memory_listener_unregister(&container->listener);
->>>>> -    if (container->iommu_type == VFIO_SPAPR_TCE_v2_IOMMU) {
->>>>> +    if (container->iommu_type == VFIO_SPAPR_TCE_v2_IOMMU ||
->>>>> +        container->iommu_type == VFIO_TYPE1_NESTING_IOMMU) {
->>>>>             memory_listener_unregister(&container->prereg_listener);
->>>>>         }
->>>>>     }
->>>>> @@ -1858,6 +1973,20 @@ static int vfio_connect_container(VFIOGroup
->>>>> *group, AddressSpace *as,
->>>>>                 vfio_get_iommu_info_migration(container, info);
->>>>>             }
->>>>>             g_free(info);
->>>>> +
->>>>> +        if (container->iommu_type == VFIO_TYPE1_NESTING_IOMMU) {
->>>>> +            container->prereg_listener = vfio_memory_prereg_listener;
->>>>> +            memory_listener_register(&container->prereg_listener,
->>>>> +                                     &address_space_memory);
->>>>> +            if (container->error) {
->>>>> +
->>>>> memory_listener_unregister(&container->prereg_listener);
->>>>> +                ret = -1;
->>>>> +                error_propagate_prepend(errp, container->error,
->>>>> +                                    "RAM memory listener
->>>>> initialization failed "
->>>>> +                                    "for container");
->>>>> +                goto free_container_exit;
->>>>> +            }
->>>>> +        }
->>>>>             break;
->>>>>         }
->>>>>         case VFIO_SPAPR_TCE_v2_IOMMU:
->>>>> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
->>>>> index 5c65aa0a98..cad7deec71 100644
->>>>> --- a/hw/vfio/pci.c
->>>>> +++ b/hw/vfio/pci.c
->>>>> @@ -2773,6 +2773,25 @@ static void
->>>>> vfio_unregister_req_notifier(VFIOPCIDevice *vdev)
->>>>>         vdev->req_enabled = false;
->>>>>     }
->>>>>     +static int vfio_iommu_set_pasid_table(PCIBus *bus, int32_t devfn,
->>>>> +                                      IOMMUConfig *config)
->>>>> +{
->>>>> +    PCIDevice *pdev = bus->devices[devfn];
->>>>> +    VFIOPCIDevice *vdev = DO_UPCAST(VFIOPCIDevice, pdev, pdev);
->>>>> +    VFIOContainer *container = vdev->vbasedev.group->container;
->>>>> +    struct vfio_iommu_type1_set_pasid_table info;
->>>>> +
->>>>> +    info.argsz = sizeof(info);
->>>>> +    info.flags = VFIO_PASID_TABLE_FLAG_SET;
->>>>> +    memcpy(&info.config, &config->pasid_cfg,
->>>>> sizeof(config->pasid_cfg));
->>>>> +
->>>>> +    return ioctl(container->fd, VFIO_IOMMU_SET_PASID_TABLE, &info);
->>>>> +}
->>>>> +
->>>>> +static PCIPASIDOps vfio_pci_pasid_ops = {
->>>>> +    .set_pasid_table = vfio_iommu_set_pasid_table,
->>>>> +};
->>>>> +
->>>>>     static void vfio_realize(PCIDevice *pdev, Error **errp)
->>>>>     {
->>>>>         VFIOPCIDevice *vdev = VFIO_PCI(pdev);
->>>>> @@ -3084,6 +3103,8 @@ static void vfio_realize(PCIDevice *pdev, Error
->>>>> **errp)
->>>>>         vfio_register_req_notifier(vdev);
->>>>>         vfio_setup_resetfn_quirk(vdev);
->>>>>     +    pci_setup_pasid_ops(pdev, &vfio_pci_pasid_ops);
->>>>> +
->>>>>         return;
->>>>>       out_deregister:
->>>>> diff --git a/hw/vfio/trace-events b/hw/vfio/trace-events
->>>>> index 936d29d150..43696afc15 100644
->>>>> --- a/hw/vfio/trace-events
->>>>> +++ b/hw/vfio/trace-events
->>>>> @@ -120,6 +120,8 @@ vfio_region_sparse_mmap_header(const char *name,
->>>>> int index, int nr_areas) "Devic
->>>>>     vfio_region_sparse_mmap_entry(int i, unsigned long start, unsigned
->>>>> long end) "sparse entry %d [0x%lx - 0x%lx]"
->>>>>     vfio_get_dev_region(const char *name, int index, uint32_t type,
->>>>> uint32_t subtype) "%s index %d, %08x/%0x8"
->>>>>     vfio_dma_unmap_overflow_workaround(void) ""
->>>>> +vfio_iommu_addr_inv_iotlb(int asid, uint64_t addr, uint64_t size,
->>>>> uint64_t nb_granules, bool leaf) "nested IOTLB invalidate asid=%d,
->>>>> addr=0x%"PRIx64" granule_size=0x%"PRIx64" nb_granules=0x%"PRIx64"
->>>>> leaf=%d"
->>>>> +vfio_iommu_asid_inv_iotlb(int asid) "nested IOTLB invalidate asid=%d"
->>>>>       # platform.c
->>>>>     vfio_platform_base_device_init(char *name, int groupid) "%s belongs
->>>>> to group #%d"
->>>>
->>> .
->>
-> .
-
+diff --git a/tests/qtest/libqos/libqtest.h b/tests/qtest/libqos/libqtest.h
+index a68dcd79d44..d80c618c18d 100644
+--- a/tests/qtest/libqos/libqtest.h
++++ b/tests/qtest/libqos/libqtest.h
+@@ -763,6 +763,14 @@ void qmp_expect_error_and_unref(QDict *rsp, const char *class);
+  */
+ bool qtest_probe_child(QTestState *s);
+ 
++/**
++ * qtest_has_accel:
++ * @accel_name: Accelerator name to check for.
++ *
++ * Returns: true if the accelerator is built in.
++ */
++bool qtest_has_accel(const char *accel_name);
++
+ /**
+  * qtest_set_expected_status:
+  * @s: QTestState instance to operate on.
+diff --git a/tests/qtest/libqtest.c b/tests/qtest/libqtest.c
+index 71e359efcd3..2156b7e3972 100644
+--- a/tests/qtest/libqtest.c
++++ b/tests/qtest/libqtest.c
+@@ -393,6 +393,35 @@ QTestState *qtest_init_with_serial(const char *extra_args, int *sock_fd)
+     return qts;
+ }
+ 
++bool qtest_has_accel(const char *accel_name)
++{
++    bool has_accel = false;
++    QDict *response;
++    QList *accels;
++    QListEntry *accel;
++    QTestState *qts;
++
++    qts = qtest_initf("-accel qtest -machine none");
++    response = qtest_qmp(qts, "{'execute': 'query-accels'}");
++    accels = qdict_get_qlist(response, "return");
++
++    QLIST_FOREACH_ENTRY(accels, accel) {
++        QDict *accel_dict = qobject_to(QDict, qlist_entry_obj(accel));
++        const char *name = qdict_get_str(accel_dict, "name");
++
++        if (g_str_equal(name, accel_name)) {
++            has_accel = true;
++            break;
++        }
++    }
++    qobject_unref(response);
++
++    qtest_quit(qts);
++
++    return has_accel;
++}
++
++
+ void qtest_quit(QTestState *s)
+ {
+     qtest_remove_abrt_handler(s);
+-- 
+2.26.3
 

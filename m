@@ -1,102 +1,104 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp696559lfr;
-        Thu, 15 Apr 2021 09:44:13 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxe7v0M7DZpAEBlknu3eAzfIt0k2DPVLMJv1/3LdYjLP5xhBT+cewiaNI6uYndKVDhoJ2uT
-X-Received: by 2002:a92:cc02:: with SMTP id s2mr3119453ilp.101.1618505053437;
-        Thu, 15 Apr 2021 09:44:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618505053; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp696926lfr;
+        Thu, 15 Apr 2021 09:44:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwy8oVQueqi3yv6CEGrvhT7ijvq8B1lvU86q+WyGKFonSmUqRGSweVihcjucQaCpMTfLM14
+X-Received: by 2002:a5d:88c1:: with SMTP id i1mr115862iol.115.1618505077965;
+        Thu, 15 Apr 2021 09:44:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618505077; cv=none;
         d=google.com; s=arc-20160816;
-        b=n1Xjl/HNp+Dig7Yb1ft2Oi39wcfRGF3t1tjrgbF+ETs66oASOuVS+M15tttcKhYxFB
-         1gUTgXWmzh5TG1mXGvcuOG7JPJ5zJ6AC1H6khEby11tS6n8ux6cTLzjoEWAE46LRWobU
-         XzTyc3HiYTbawOKZPJ7l98nKK6m9nvuSwRJnF20bKSKlRbREtOeQhw9WuMWe+W35SHZu
-         uQdwyX2YzOe6hQsV7AGRAEibcQRAMeOhBqA44WQFgmqb7j9y+5l2NHLth8OFnC0gsyfJ
-         i3MXbIUmhUQ06wMmCLhH0MNpyK3z6foeB2T7nvtthJ/dRGMVtaO8RBoHa7kxFAzN78UV
-         9Wjg==
+        b=r3VeoA4231GFWnwvat8kLDUbuYmCdhiQFZnwQGCi5VAYU1sMekYgwmpV4rQqD3A2/x
+         hB2JeyQiyIroC1PSEW40qc7llFKIeTlTQtTfjjwkjf+cgwA5WgEruTdAfEKU1LL2wcFB
+         zV7WmlhBzz890M4qsS84D1mMBXQLX4Z/zkJ8T9X0DberJOo+WzvjOrA49US9o8Q6xwv2
+         HV4EGW24c+E+Tg4YFt+NxQ/pRHLXbzPyTU9wm0dVk+z6ogo4u/hsKtrMb0Z33DvlSzAY
+         6dgWYoJjHupqDQ8H2O0BUfu8Ct4vDyjWk0bc5U4BJUqhQCumR8IVWAqMUnxrEMa5/QYt
+         EiTw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=9iw76Yu1vXx1t9abc6WDL1dztK1Y+iaVuos13TsdKz0=;
-        b=BWbFp2PPOiHk2Msxu9g4hrKxFuU7lkg0QpN9Y3C2daeEw0Z20039/9Ra2qLnmN/rke
-         iZtrTBIAzwmgX42630UKXmYLBeFfK7hZ9dVPOOKc6Jm7LDIXJNWhLeLyVKudlPklqUQ1
-         bZRzMj6/YAjzvW5+hSSN3iJnJe+ut9G+YAD47npSIHCPHvBqMKO/LY6CoEMLXpKxLZew
-         wqzJicudkidNQ+pigFggIzXnBA4RH1UmEN1WHcFgqd3Q8NLCR9orxm9anFcIt7VoZMS9
-         dPf+LSLErK0dHA9W8WDd4Wa5h5eKvY/ypma0XOWOXb13l7HyU8u30JvOa+8Yue4znReY
-         MtPw==
+        bh=gXF3I2HiTrXmapky2sFUIdU4HSA6Nendcs7h4VxHKIw=;
+        b=0kYSOuNuTFgpExUsTptzg2NEdoTDuPgFj6qWSaLFZhb5M/+Nf6KmXRH9R0DM49e3a3
+         pLgReLex6/0zk2bGhKL+/VWtHSDXvtAfpqoJz+S0Vxuf+D+cxpdxCS6TioIKkY8C8F6W
+         DSZKvEVcb6vSOzLNE3MHsiMU4VhfevULhBJnNIZRWiuGAlVYukqEaPFCO6pIRInBaUt6
+         be3ikbDeXkQGL62mFr4ztynwry9i7ztm9dBa2umde58/0eO8CN13MRR8Fx+Ot6mGe0dP
+         vzPcYPXZyp79RE7Uj9N8e3G/1qWvp0aiFSbPZUas8SoKzG2lNhcRczm4UxlewI7xWoS5
+         G2dA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=TYOCR86z;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=QpYeCch5;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z11si3064749jan.52.2021.04.15.09.44.13
+        by mx.google.com with ESMTPS id r7si3407581jad.72.2021.04.15.09.44.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 15 Apr 2021 09:44:13 -0700 (PDT)
+        Thu, 15 Apr 2021 09:44:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=TYOCR86z;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=QpYeCch5;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47068 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47604 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lX56C-0001EP-ND
-	for alex.bennee@linaro.org; Thu, 15 Apr 2021 12:44:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41544)
+	id 1lX56b-0001RX-5m
+	for alex.bennee@linaro.org; Thu, 15 Apr 2021 12:44:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41740)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lX4wO-0003PL-Lg
- for qemu-devel@nongnu.org; Thu, 15 Apr 2021 12:34:06 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:41582)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lX4wc-0003aK-7Y
+ for qemu-devel@nongnu.org; Thu, 15 Apr 2021 12:34:18 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:40648)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lX4w8-0006Fu-2p
- for qemu-devel@nongnu.org; Thu, 15 Apr 2021 12:34:03 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lX4wT-0006Jo-G1
+ for qemu-devel@nongnu.org; Thu, 15 Apr 2021 12:34:18 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1618504426;
+ s=mimecast20190719; t=1618504446;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=9iw76Yu1vXx1t9abc6WDL1dztK1Y+iaVuos13TsdKz0=;
- b=TYOCR86z+XPdbtyu1534gN9YrQFZ0BOq+J+SSVrSKyjWKTwlNb47waNRWMdotQRa1xHQys
- Nh5mruBNcsoeMZFSgrYCbAS+fBtqf9iLeQ/uHcBMxbiQ/UIYBnsdGO42WWZRITY7Kw1pDN
- vL+EOMpDwPB5UnZZVTJxu7vwOnBXcOk=
+ bh=gXF3I2HiTrXmapky2sFUIdU4HSA6Nendcs7h4VxHKIw=;
+ b=QpYeCch5sWLnWOI2qZR6N5609QQrppTSPFfoiFgo721HIXFXMmLNxOHy0C2vxccxQrkIaN
+ 7ST/mjZjDgCRuaom1IH6HLF04SOjC4RsVOaXVq/iuodXjK2NZfWf0fm3bMwDWpsKs0OM9A
+ 0pNjljSfWZmCZJZ5OgHdOiSkrc2bY7A=
 Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
  [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-547-oBU9R6xPP8GmJcRFPbhWsw-1; Thu, 15 Apr 2021 12:33:44 -0400
-X-MC-Unique: oBU9R6xPP8GmJcRFPbhWsw-1
+ us-mta-29-HrEDskwINjGZvHQ0h-wpzQ-1; Thu, 15 Apr 2021 12:34:05 -0400
+X-MC-Unique: HrEDskwINjGZvHQ0h-wpzQ-1
 Received: by mail-wr1-f70.google.com with SMTP id
- 91-20020adf82e40000b0290106e67e7bfcso210721wrc.5
- for <qemu-devel@nongnu.org>; Thu, 15 Apr 2021 09:33:44 -0700 (PDT)
+ 33-20020adf80240000b02900f9e2646f9aso2993267wrk.0
+ for <qemu-devel@nongnu.org>; Thu, 15 Apr 2021 09:34:04 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=9iw76Yu1vXx1t9abc6WDL1dztK1Y+iaVuos13TsdKz0=;
- b=NqRhigIu34d7DhlsHqclFmOTv4tTqSugLO3A7JDynQLZYY/0AimKBDtehv4JLy+ya6
- zmQh7lYPhyZ1+R8oG39He/1n6Aav39gvum3XbU8fa06thL0gWs8+shVASMsLyPpd/8+z
- 3HEH6quxvxv1dnsOmgexrOGVFrfmS4aEcnOpi0PZNTJ0YNCLzHf6roXfIE6/PAU2Pdqm
- 2mYibOxWC6TPM94glrSRtm8J6JTN2QYEwnY4Qn9nMLlMwOUVHK8NcM+VHFJya1nGvLpQ
- qZFzHoRFfgjcOuh/Z1feHXlQNYQ6WBm/Svei/tQ1lg1CWYsPqTSc4CvsfcpdpUQpJ3gL
- NKkQ==
-X-Gm-Message-State: AOAM530c91QcYoFEc02Xus99FK5uvcgwKszhSjst8zQRbR5f/dnafF6j
- mxXed0QdmUNIZEcnVM+4CHO83Ml7VJJq0mycy5fddLoVCBdphCSpobGki/noluw6FMIBwz/3USI
- 9YSgB91y8HSqvbYIgx99dpl3gIARLWRTKfvUxN4MFIdnaeEVGheCobmalZ9V4eFVG
-X-Received: by 2002:a5d:678e:: with SMTP id v14mr4516111wru.156.1618504422907; 
- Thu, 15 Apr 2021 09:33:42 -0700 (PDT)
-X-Received: by 2002:a5d:678e:: with SMTP id v14mr4516076wru.156.1618504422714; 
- Thu, 15 Apr 2021 09:33:42 -0700 (PDT)
+ bh=gXF3I2HiTrXmapky2sFUIdU4HSA6Nendcs7h4VxHKIw=;
+ b=lB4Afw2B7+1Ze01hLk2yAUPKT1HJcW3OEFiBkWwLsLBTdqTt/BG44sB5tlbxHCp71F
+ 8M8cpAA8jRzAhPzzJkzx2YCZFtNFpiNxRA3BsbBHIrI5me9q7NO6JgzSgYGa3t6v98wR
+ 9S9iQxHLCZKoO4K3qTk7gdvRp53Dk7OpWcKMN/wF07ETAGzryVObh5IC2i6LiToDtLBW
+ vu1TZ6WYPGgUSpq/oMw4oT+5/PROa6oOaPwIVxslwQxZ8epi1gL2lbSIG/sOVdwPG0Bo
+ pCIJp6k0iDgmrdR+zhGSrOzipHRIKEgnqdzhni3j/Ba0OI14OBJtWWvT8TL1u47C7lrT
+ UZgQ==
+X-Gm-Message-State: AOAM5330OSzp2xMEnkgbPOsaZlb51r4mmie8GwXZSFxhR1ItokjUDMdz
+ KemlrF9w4OE9QqOYHCFleWBZewbQK3dog2M8U3Yh++ad6zK5LFGpSgr9s0xlF/7AHyJhEKnD3PR
+ d9bdfVmmRdyfN0ltQR5s31f/08BNSOqg7fj6D3ssh9tNIzNpA0uIgiqpb83wBIVf3
+X-Received: by 2002:a05:600c:2211:: with SMTP id
+ z17mr4007996wml.41.1618504443711; 
+ Thu, 15 Apr 2021 09:34:03 -0700 (PDT)
+X-Received: by 2002:a05:600c:2211:: with SMTP id
+ z17mr4007963wml.41.1618504443538; 
+ Thu, 15 Apr 2021 09:34:03 -0700 (PDT)
 Received: from localhost.localdomain (39.red-81-40-121.staticip.rima-tde.net.
  [81.40.121.39])
- by smtp.gmail.com with ESMTPSA id n9sm4275510wrq.86.2021.04.15.09.33.41
+ by smtp.gmail.com with ESMTPSA id j12sm4126038wro.29.2021.04.15.09.34.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 15 Apr 2021 09:33:42 -0700 (PDT)
+ Thu, 15 Apr 2021 09:34:03 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v4 06/12] qtest/arm-cpu-features: Remove TCG fallback to KVM
- specific tests
-Date: Thu, 15 Apr 2021 18:32:58 +0200
-Message-Id: <20210415163304.4120052-7-philmd@redhat.com>
+Subject: [PATCH v4 10/12] qtest/qmp-cmd-test: Make test build-independent from
+ accelerator
+Date: Thu, 15 Apr 2021 18:33:02 +0200
+Message-Id: <20210415163304.4120052-11-philmd@redhat.com>
 X-Mailer: git-send-email 2.26.3
 In-Reply-To: <20210415163304.4120052-1-philmd@redhat.com>
 References: <20210415163304.4120052-1-philmd@redhat.com>
@@ -115,7 +117,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -141,31 +143,71 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
  Thomas Huth <thuth@redhat.com>, Igor Mammedov <imammedo@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: j2cv10RAP1cT
+X-TUID: D8WVom8JLhin
 
-sve_tests_sve_off_kvm() and test_query_cpu_model_expansion_kvm()
-tests are now only being run if KVM is available. Drop the TCG
-fallback.
+Now than we can probe if the TCG accelerator is available
+at runtime with a QMP command, do it once at the beginning
+and only register the tests we can run.
+We can then replace the #ifdef'ry by a runtime check.
 
-Suggested-by: Andrew Jones <drjones@redhat.com>
+Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- tests/qtest/arm-cpu-features.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests/qtest/qmp-cmd-test.c | 18 ++++++++++++++----
+ 1 file changed, 14 insertions(+), 4 deletions(-)
 
-diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
-index 66300c3bc20..b1d406542f7 100644
---- a/tests/qtest/arm-cpu-features.c
-+++ b/tests/qtest/arm-cpu-features.c
-@@ -21,7 +21,7 @@
- #define SVE_MAX_VQ 16
+diff --git a/tests/qtest/qmp-cmd-test.c b/tests/qtest/qmp-cmd-test.c
+index c98b78d0339..8902d2f169f 100644
+--- a/tests/qtest/qmp-cmd-test.c
++++ b/tests/qtest/qmp-cmd-test.c
+@@ -21,19 +21,24 @@ const char common_args[] = "-nodefaults -machine none";
  
- #define MACHINE     "-machine virt,gic-version=max -accel tcg "
--#define MACHINE_KVM "-machine virt,gic-version=max -accel kvm -accel tcg "
-+#define MACHINE_KVM "-machine virt,gic-version=max -accel kvm "
- #define QUERY_HEAD  "{ 'execute': 'query-cpu-model-expansion', " \
-                     "  'arguments': { 'type': 'full', "
- #define QUERY_TAIL  "}}"
+ /* Query smoke tests */
+ 
++static bool tcg_accel_available;
++
+ static int query_error_class(const char *cmd)
+ {
+-    static struct {
++    static const struct {
+         const char *cmd;
+         int err_class;
++        /*
++         * Pointer to boolean.
++         * If non-NULL and value is %true, the error class is skipped.
++         */
++        bool *skip_err_class;
+     } fails[] = {
+         /* Success depends on build configuration: */
+ #ifndef CONFIG_SPICE
+         { "query-spice", ERROR_CLASS_COMMAND_NOT_FOUND },
+ #endif
+-#ifndef CONFIG_TCG
+-        { "query-replay", ERROR_CLASS_COMMAND_NOT_FOUND },
+-#endif
++        { "query-replay", ERROR_CLASS_COMMAND_NOT_FOUND, &tcg_accel_available },
+ #ifndef CONFIG_VNC
+         { "query-vnc", ERROR_CLASS_GENERIC_ERROR },
+         { "query-vnc-servers", ERROR_CLASS_GENERIC_ERROR },
+@@ -51,6 +56,9 @@ static int query_error_class(const char *cmd)
+     int i;
+ 
+     for (i = 0; fails[i].cmd; i++) {
++        if (fails[i].skip_err_class && *fails[i].skip_err_class) {
++            continue;
++        }
+         if (!strcmp(cmd, fails[i].cmd)) {
+             return fails[i].err_class;
+         }
+@@ -334,6 +342,8 @@ int main(int argc, char *argv[])
+     QmpSchema schema;
+     int ret;
+ 
++    tcg_accel_available = qtest_has_accel("tcg");
++
+     g_test_init(&argc, &argv, NULL);
+ 
+     qmp_schema_init(&schema);
 -- 
 2.26.3
 

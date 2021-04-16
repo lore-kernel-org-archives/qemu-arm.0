@@ -1,85 +1,102 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp789214lfb;
-        Sun, 18 Apr 2021 20:09:46 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxuSrjRH+uaVWhVWTYDZgCWoA/2cin8EJs3Y3u02RoAe5rixr7ztVDZMr6+eeLxG8wpHwaF
-X-Received: by 2002:a05:6e02:d41:: with SMTP id h1mr15650525ilj.0.1618801785852;
-        Sun, 18 Apr 2021 20:09:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618801785; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp423220lfr;
+        Fri, 16 Apr 2021 07:11:18 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzOnKIYbAmg0wHAiYPNWRiALiLqIU0S3LuUV4mQPwxz3Gl8ewu23NbdxBRHXe5Te7sCXtrF
+X-Received: by 2002:adf:ef84:: with SMTP id d4mr9385734wro.74.1618582278220;
+        Fri, 16 Apr 2021 07:11:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618582278; cv=none;
         d=google.com; s=arc-20160816;
-        b=WmO+un6x8GLhA1HknhhTCw9oRT9k7v0ozCV7VhQ+aZB0kVyneNot2RuEXwhJHDlihj
-         JUH3qqwMDKmmvqLUOU78Oxsw6xnTX48mpZ8EYjuhnMW5SosYoY0Z8iHk0b0mSZWX1fAK
-         EPhAH28+poD39+t5G+/Q1q4Y9l/YKV3MWbsF1rng/n4drHYN+8H5atPFs5QksD+JsdOK
-         f3qvGlSjzulZPygp43I6nEoqFCFjZJBKCevnpNmU8BCiD7GFg2L6Hsbhf/hbB4nQcfYU
-         cqSsNRZ/pGiqawsYgjifYioEd741UMlq6vfBv2A7naNCqrXtIAlVML7V+yvkHuPTZirF
-         IKTw==
+        b=rvdz4aYgTge35zpNBOqHrreAv8zoTT1LHuy4OAZ84ETKOLjsCN4+6RUpmhsEfOU2fb
+         u6wFkMoruLAT7l3Ig6JSPOwoenJVw4jZ/BaOYwQC7dqocM7Ov82M8QEggFrchEGxguK0
+         AX8MusU0HW8ai/Yw7u8qcsc5xe11dzLzlJsOxe30vpFwsbQZabjsk0w3Be01lhlHnbRO
+         IqcpoM9J6YUFZ5torS6HNoICuO5rrU+1zR0HL0wwI0ofx0uwgkXqrYrN0EROqWqDVLPe
+         5V9piiqvx2ejnVZ9IWMvvvQ2bWgWwXDIRiN3gtww1MOT4QpOprQQT17YUShYQn6JITj9
+         GHdg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=0IxQjyqQkppqAKQi7XKFUXa3DK5yZyGlRdWIGeKmHFs=;
-        b=cgQRmxqsJYxZlvlya+HmUXNQAZxDUkJG9RRXe036w1r6vNTyA5rNs6VOxG+XcyWps2
-         vsZrPueN/hr4yzNxjo9Gd+iRZrr93pQZwUJQnaMIIfOWT4oEXv3oWlYdRPY27rVT/ykX
-         5/p4VYt+dut3vMuf7SNdiuQVHw0e776NwIeZH78MMxYdcpmyiRfJtzeZQCbrUjQB+itW
-         LKH3Ov0NKsJu0k8FXqS4d4B1mXMRckyUYBzf4DPw3UpWTkIHEA9S0VSb9XxrZhkF1JWm
-         DrLx+Ssm6CfFGIzB9+GxPiHE9ceXf0zgpEQ9oXi1rzSeuA1oQr1nPw25CIUxQ8t8mTMJ
-         xIIg==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=IPZpvGks/i5oe8yrSf39bSTkCfi5w1ciO0y9KaI0XgY=;
+        b=cAG4i7DhwcKNHCCYiDdA2bgobRAj0RyJGJcqEWeK2WV5ykTNWX7nUGBmX4kHtFCPl1
+         fIWHQwH+CpfOySuWJ9rxF/5ud6jCbtVOu/lzk1NwqeROTDPWDb7je+NCawky7qr4RDkE
+         TlCbrTIjRhmyZbHFojVniqRV/Ywbm1/iKsuABuOG5I7b9ARL//apzssIa5LL7rv2cgyh
+         g8/wG5b3L8AYXzZSIIskN6GZgWt2b8qesoAannR5z8KP100n0oZYuXA5RkI+9KCF4IbZ
+         +EyLf4HD8C6HXwgPQHARw3WuLTaGo3Uj0Tm+j6/jIM73k72eZdkFV1BPemNSYgjmjho4
+         UN4g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=hd5dC4rM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@linaro.org header.s=google header.b=Mqv5Nb+j;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w11si19707091ilu.8.2021.04.18.20.09.45
+        by mx.google.com with ESMTPS id m1si7596339wrn.81.2021.04.16.07.11.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 18 Apr 2021 20:09:45 -0700 (PDT)
+        Fri, 16 Apr 2021 07:11:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=hd5dC4rM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56046 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=Mqv5Nb+j;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:49330 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lYKID-00085U-7g
-	for alex.bennee@linaro.org; Sun, 18 Apr 2021 23:09:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44602)
+	id 1lXPBl-0008E6-4q
+	for alex.bennee@linaro.org; Fri, 16 Apr 2021 10:11:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40904)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1lYKGP-0006rR-Fb; Sun, 18 Apr 2021 23:07:53 -0400
-Received: from ozlabs.org ([203.11.71.1]:52311)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1lYKGL-00051c-Pv; Sun, 18 Apr 2021 23:07:53 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
- id 4FNsFD25l3z9vFw; Mon, 19 Apr 2021 13:07:44 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1618801664;
- bh=w2UaCUrwMSDTeRtzF21Fd2RxFtLOu1xUGwpvcG2RF2o=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=hd5dC4rMMSiD5WlJK+uZ7FgCOAbseeKpfaDowCWZeWafQh1tYvgOFOJ0QFwQt4Pi3
- O6Ee6qnQeTLGaR/SeI0OoWVkswZwUh8cKZgqKCSiDgpljNHz+C4EnPH25SAQ4yhB+0
- n+cRlT0vpjbCTIJXTj0utbjfGzi/PRtW0vrPRWlA=
-Date: Mon, 19 Apr 2021 11:13:10 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: "wangyanan (Y)" <wangyanan55@huawei.com>
-Subject: Re: [RFC PATCH v2 1/6] device_tree: Add qemu_fdt_add_path
-Message-ID: <YHzZJvH/9CiYWia4@yekko.fritz.box>
-References: <20210413080745.33004-1-wangyanan55@huawei.com>
- <20210413080745.33004-2-wangyanan55@huawei.com>
- <YHkYD+cCl9/GCxwJ@yekko.fritz.box>
- <cd3408c2-6025-7a44-bbf6-d675467c5749@huawei.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lXPBc-0008Dz-RS
+ for qemu-arm@nongnu.org; Fri, 16 Apr 2021 10:11:08 -0400
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c]:42886)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lXPBZ-0005en-PK
+ for qemu-arm@nongnu.org; Fri, 16 Apr 2021 10:11:08 -0400
+Received: by mail-ed1-x52c.google.com with SMTP id d21so12342228edv.9
+ for <qemu-arm@nongnu.org>; Fri, 16 Apr 2021 07:11:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=IPZpvGks/i5oe8yrSf39bSTkCfi5w1ciO0y9KaI0XgY=;
+ b=Mqv5Nb+jql35jT4dsOicYtQkucptk9EjTWclgkt+ZvQO2+aUpGvU2jwxYQUu/V/BP+
+ 8oGBlGSY4GGA4Au9eMQdtGvkBfLb01ZwRmLOlcfzrk4P34blz3isXSp+L3YKiAq3Dx+E
+ 57TvvE3s7/xtn1wNi36vczOrs12nkcTaC6NBiOrZvESwEXxVQtOEY/+l82odBF0obd8D
+ Nh1uUer8JTR5VymcPApQiBpkHc+HW7V6b4piHpivcUjoMvPrKSPDNN78VceKVCGmzl9s
+ H3OMOP3085Z+HJHm9ElbKE99l9NbHtxo8JDUVgDs5j7h2MZMVYF02kRPI9b6vsu/cRr6
+ Po7w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=IPZpvGks/i5oe8yrSf39bSTkCfi5w1ciO0y9KaI0XgY=;
+ b=Y0z1WDfrIRuyfC2/moQ0XEAuheL/HEV4cqC3nYzLqC52Zv35bxV04i6IeII9ySrXQy
+ 6g14/A+QsqVPGr87ZlhSkEbZZDLbgGlPAEJGo9RDNx0Xh11azlrFs3KC+J2FPbz5AMKu
+ m9LvYguoqzGg7eIG7o35wNT3cnFpGGTVytUoSeB8OVROaw7XaaFKuzsfmsZEndBK5fSs
+ +lt1Iurlcp5MItCINY5BIslGiAK9Hh5RKBwU4d2uS8awGkVPETfBXDrARrppvC6suRCe
+ 8+ZgabhqCEQPFkcrnVwkFWI/6U1Wzpo9XV1xAazWh5Jj5b6QAWLbKaOQtI4THgVKRr6n
+ YmOQ==
+X-Gm-Message-State: AOAM533hKwbrMJd2Cz/Gr3k6CVQmn6eaLZzedxhKzL7o2Gk8DJZqof12
+ MrGMTCKW41ygHD9BuvSG0P+Fd32IugIRP0YDNY8fnA==
+X-Received: by 2002:aa7:cb0a:: with SMTP id s10mr10155918edt.36.1618582263941; 
+ Fri, 16 Apr 2021 07:11:03 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="8G0E95ZjzJYq2SwN"
-Content-Disposition: inline
-In-Reply-To: <cd3408c2-6025-7a44-bbf6-d675467c5749@huawei.com>
-Received-SPF: pass client-ip=203.11.71.1; envelope-from=dgibson@ozlabs.org;
- helo=ozlabs.org
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+References: <20210415130305.28640-1-iii@linux.ibm.com>
+ <20210415130305.28640-3-iii@linux.ibm.com>
+In-Reply-To: <20210415130305.28640-3-iii@linux.ibm.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 16 Apr 2021 15:10:15 +0100
+Message-ID: <CAFEAcA-8yh2GNEdP5yuY=_rKG_g4TLHauU=nYfGR_O-fT-2oMw@mail.gmail.com>
+Subject: Re: [PATCH v4 2/4] target/arm: Make sure that commpage's tb->size != 0
+To: Ilya Leoshkevich <iii@linux.ibm.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -92,192 +109,45 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
- "Michael S . Tsirkin" <mst@redhat.com>, wanghaibin.wang@huawei.com,
- qemu-devel@nongnu.org, Shannon Zhao <shannon.zhaosl@gmail.com>,
- qemu-arm@nongnu.org, Alistair Francis <alistair.francis@wdc.com>,
- prime.zeng@hisilicon.com, yangyicong@huawei.com, yuzenghui@huawei.com,
- Igor Mammedov <imammedo@redhat.com>, zhukeqian1@huawei.com,
- Jiajie Li <lijiajie11@huawei.com>
+Cc: Thomas Huth <thuth@redhat.com>, David Hildenbrand <david@redhat.com>,
+ Cornelia Huck <cohuck@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, Max Filippov <jcmvbkbc@gmail.com>,
+ qemu-s390x <qemu-s390x@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rMdzBWvt2zTw
+X-TUID: Z9FYCj8yp/ZR
 
+On Thu, 15 Apr 2021 at 14:03, Ilya Leoshkevich <iii@linux.ibm.com> wrote:
+>
+> tb_gen_code() assumes that tb->size must never be zero, otherwise it
+> may produce spurious exceptions. For ARM this may happen when creating
+> a translation block for the commpage.
+>
+> Fix by pretending that commpage translation blocks have at least one
+> instruction.
+>
+> Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
+> ---
+>  target/arm/translate.c | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/target/arm/translate.c b/target/arm/translate.c
+> index 62b1c2081b..885f69b044 100644
+> --- a/target/arm/translate.c
+> +++ b/target/arm/translate.c
+> @@ -9060,6 +9060,7 @@ static void arm_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
+>      unsigned int insn;
+>
+>      if (arm_pre_translate_insn(dc)) {
+> +        dc->base.pc_next += 4;
+>          return;
+>      }
 
---8G0E95ZjzJYq2SwN
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Why does the call to arm_pre_translate_insn() in arm_tr_translate_insn() need
+this change but not the one in thumb_tr_translate_insn() ?
 
-On Sat, Apr 17, 2021 at 10:36:20AM +0800, wangyanan (Y) wrote:
-> Hi David,
->=20
-> On 2021/4/16 12:52, David Gibson wrote:
-> > On Tue, Apr 13, 2021 at 04:07:40PM +0800, Yanan Wang wrote:
-> > > From: Andrew Jones <drjones@redhat.com>
-> > >=20
-> > > qemu_fdt_add_path() works like qemu_fdt_add_subnode(), except
-> > > it also adds any missing subnodes in the path. We also tweak
-> > > an error message of qemu_fdt_add_subnode().
-> > >=20
-> > > We'll make use of this new function in a coming patch.
-> > >=20
-> > > Signed-off-by: Andrew Jones <drjones@redhat.com>
-> > > Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
-> > > ---
-> > >   include/sysemu/device_tree.h |  1 +
-> > >   softmmu/device_tree.c        | 45 +++++++++++++++++++++++++++++++++=
-+--
-> > >   2 files changed, 44 insertions(+), 2 deletions(-)
-> > >=20
-> > > diff --git a/include/sysemu/device_tree.h b/include/sysemu/device_tre=
-e.h
-> > > index 8a2fe55622..ef060a9759 100644
-> > > --- a/include/sysemu/device_tree.h
-> > > +++ b/include/sysemu/device_tree.h
-> > > @@ -121,6 +121,7 @@ uint32_t qemu_fdt_get_phandle(void *fdt, const ch=
-ar *path);
-> > >   uint32_t qemu_fdt_alloc_phandle(void *fdt);
-> > >   int qemu_fdt_nop_node(void *fdt, const char *node_path);
-> > >   int qemu_fdt_add_subnode(void *fdt, const char *name);
-> > > +int qemu_fdt_add_path(void *fdt, const char *path);
-> > >   #define qemu_fdt_setprop_cells(fdt, node_path, property, ...)      =
-           \
-> > >       do {                                                           =
-           \
-> > > diff --git a/softmmu/device_tree.c b/softmmu/device_tree.c
-> > > index 2691c58cf6..8592c7aa1b 100644
-> > > --- a/softmmu/device_tree.c
-> > > +++ b/softmmu/device_tree.c
-> > > @@ -541,8 +541,8 @@ int qemu_fdt_add_subnode(void *fdt, const char *n=
-ame)
-> > >       retval =3D fdt_add_subnode(fdt, parent, basename);
-> > >       if (retval < 0) {
-> > > -        error_report("FDT: Failed to create subnode %s: %s", name,
-> > > -                     fdt_strerror(retval));
-> > > +        error_report("%s: Failed to create subnode %s: %s",
-> > > +                     __func__, name, fdt_strerror(retval));
-> > >           exit(1);
-> > >       }
-> > > @@ -550,6 +550,47 @@ int qemu_fdt_add_subnode(void *fdt, const char *=
-name)
-> > >       return retval;
-> > >   }
-> > > +/*
-> > > + * Like qemu_fdt_add_subnode(), but will add all missing
-> > > + * subnodes in the path.
-> > > + */
-> > > +int qemu_fdt_add_path(void *fdt, const char *path)
-> > > +{
-> > > +    char *dupname, *basename, *p;
-> > > +    int parent, retval =3D -1;
-> > > +
-> > > +    if (path[0] !=3D '/') {
-> > > +        return retval;
-> > > +    }
-> > > +
-> > > +    parent =3D fdt_path_offset(fdt, "/");
-> > Getting the offset for "/" is never needed - it's always 0.
-> Thanks, will fix it.
-> > > +    p =3D dupname =3D g_strdup(path);
-> > You shouldn't need the strdup(), see below.
-> >=20
-> > > +
-> > > +    while (p) {
-> > > +        *p =3D '/';
-> > > +        basename =3D p + 1;
-> > > +        p =3D strchr(p + 1, '/');
-> > > +        if (p) {
-> > > +            *p =3D '\0';
-> > > +        }
-> > > +        retval =3D fdt_path_offset(fdt, dupname);
-> > The fdt_path_offset_namelen() function exists *exactly* so that you
-> > can look up partial parths without having to mangle your input
-> > string.  Just set the namelen right, and it will ignore anything to
-> > the right of that.
-> Function fdt_path_offset_namelen() seems more reasonable.
->=20
-> After we call qemu_fdt_add_path() to add "/cpus/cpu-map/socket0/core0"
-> successfully,
-> if we want to add another path like "/cpus/cpu-map/socket0/core1" we will
-> get the error
-> -FDT_ERR_NOTFOUND for each partial path. But actually
-> "/cpus/cpu-map/socket0"
-> already exists, so by using fdt_path_offset_namelen() with right namelen =
-we
-> can avoid
-> the error retval for this part.
-
-I don't quite follow what you're saying here.  AFAICT your logic was
-correct - it just involved a lot of mangling the given path (adding
-and removing \0s) which becomes unnecessary with
-fdt_path_offset_namelen().
-
-> > > +        if (retval < 0 && retval !=3D -FDT_ERR_NOTFOUND) {
-> > > +            error_report("%s: Invalid path %s: %s",
-> > > +                         __func__, path, fdt_strerror(retval));
-> > If you're getting an error other than FDT_ERR_NOTFOUND here, chances
-> > are it's not an invalid path, but a corrupted fdt blob or something
-> > else.
->=20
-> Right, there can be variable reasons for the fail in addition to the inva=
-lid
-> path.
->=20
-> > > +            exit(1);
-> > > +        } else if (retval =3D=3D -FDT_ERR_NOTFOUND) {
-> > > +            retval =3D fdt_add_subnode(fdt, parent, basename);
-> > > +            if (retval < 0) {
-> > > +                break;
-> > > +            }
-> I found another question here. If path "/cpus/cpu-map/socket0/core0" has
-> already
-> been added, when we want to add another path "/cpus/cpu-map/socket0/core1"
-> and go here with retval =3D fdt_add_subnode(fdt, parent, "cpus"), then re=
-tval
-> will
-> be -FDT_ERR_EXISTS, but we can't just break the loop in this case.
->=20
-> Am I right of the explanation ?
-
-Not exactly.  If you called that fdt_add_subnode() in that case you
-would get FDT_ERR_EXISTS.  However, because the previous
-fdt_path_offset() has returned -FDT_ERR_NOTFOUND, you've already
-established that the partial path doesn't exist, so if you got an
-FDT_ERR_EXISTS here something has gone very strangely wrong (such as
-concurrent access to the flat tree, which would very likely corrupt
-it).
-
-Note that the repeated use of fdt_path_offset() in this function will
-repeatedly rescan the whole fdt from the beginning.  If you're
-concerned about performance (which you might well not be), then a more
-efficient approach would be to take your input path component by
-component and use fdt_subnode_offset() directly.
-
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---8G0E95ZjzJYq2SwN
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAmB82SQACgkQbDjKyiDZ
-s5JDGQ/7Bw68dswDolWwWE40+GPvT7OzbEAkm4mLenyi/WZblSUwG7adnvjJJcd9
-DbfhR3L8z+NwfkklduAqkE8iVzMZJwfZmuB78p7aZ4JwllaZUP8CN2GkSFdY92mg
-luFThSxNbXOzksvDi9ou1QawrAAeRNiQmNVpNM33veoT59+3CRikeNCL7x+4HTpB
-CmyETwb1+FhraVhG98DMswj5pjtzt8cdqks4hwg9dKmr/I43N1c+pfcfjPe2h0on
-Uoe+Le8bEGG4t0a7wpD/pJD1s5tK2umKtACTHaNzzLea+uaGUTLBXJBUgQEwmkcS
-ojCVrVVtxr9FYdQkTVdsqPE324eYFRQuOByulpB66jHirCxGwQA9qmnozj2XjZ4h
-VJdDWWarbu+mTmysey3wAKg9nsOLuNWnUn6jSj6GQHdKUpX1fJwNR3xu8Kx7Wt62
-SdYt/D/vlPINQeagL34ptVEAQTkirhiXf5uHoREqEFb4EcW3PzjJCoStWAj89htd
-lsEcdNqHD4MXCNtHYT3La+yVqKpq20+gsRl/1Zoa/BmS3KJMfRhdTsWOTEcGBY0S
-DsGkJLUAT+fZfHzv7c4MhUaJ6j0zm5fuTGRzLnPhELWJDL/gdAdnHRDetU9p0LaK
-EG7EwjIDIG+doSqf2vBkCGfSudv4HfSADGylwUv+oNt6KX6ehh8=
-=Y8lR
------END PGP SIGNATURE-----
-
---8G0E95ZjzJYq2SwN--
+thanks
+-- PMM

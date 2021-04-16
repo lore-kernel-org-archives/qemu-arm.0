@@ -1,146 +1,109 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp520654lfr;
-        Fri, 16 Apr 2021 09:06:56 -0700 (PDT)
-X-Received: by 2002:a17:906:e949:: with SMTP id jw9mr9409898ejb.433.1618589215995;
-        Fri, 16 Apr 2021 09:06:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618589215; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp521647lfr;
+        Fri, 16 Apr 2021 09:07:59 -0700 (PDT)
+X-Received: by 2002:a17:90a:4b8c:: with SMTP id i12mr10481744pjh.66.1618589279639;
+        Fri, 16 Apr 2021 09:07:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618589279; cv=none;
         d=google.com; s=arc-20160816;
-        b=z3qgzmaUS3HZGZscx90gwlN9HMW3xVNrJiIIK8V0x7Rvna86nuZveoVAeLxgdskPYp
-         vugnJa0WKeiZhzOjjUk6W1hq1niMX3I6rKgmCxI1IHmSGqAjjv4Co2Z/+hFdd6APLcNz
-         SbdnII6JLWzeHy5k+5Tx9/mflxu/Nm9EPZ2R0aJSrX5bSiN2qYeoJtFarCVA5+d4Qk7L
-         /ELcW9PfZ6UfiSJ26ibrnMWE/i/OpQvWdZhOudN27UFi7I5OT4bbsfeqgQT4yz6Gfe7A
-         E8TIN3qwJTHJnPwD/BEsGcVWgkxb9Of6JSUr59o5YTwmHCmFAiWkvaxBFmWDMahP0jn0
-         PbbQ==
+        b=EyFdcTW7P+z6BsWLbK6XZvU08dm+Pbo7eLevi1EwjAOHS0FpDdz4VfyKAWN09QG0eb
+         mXiMROBEm4Hy43P1bYQqLz4KKTpTBuUMRGACFhENX7ipwUJc7uQHEuILQDULcbGUWZ19
+         /JTt3ko07nBCdfxZik99Qa3D7t3lWPbQFpGQm3No2hbNlxuZgk39MzviQsoh9xbITP1L
+         Vo7RbK3a09bw4PcGt1STaovwGsU1464u0JJIJgzo/QHbvpGmnR8TaSmmaqzwzjx5fdys
+         S7g4h0zp7C2K41scPNbF2uAWc2cEjNtyuHCio8v2gY0N8Jsp9u3fLbMQPjPgh3ho3OOh
+         N4pg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=Zoxxo4HldSkZ1gqc5kBkjBHOS87a3eWa93bTMsHIzUQ=;
-        b=tHU5+3fYiVIv+S7RAddAUxh5DDK1cJrhhyibkXKQkNn2kdsP80bhNDboJLlO+oc7az
-         AtlZ7A4QvaSFhwtP14bJB3Or1qqbpG3BYuS9xzfgizh2Hmm3r7wsDzu8tvvjLXIRhkqK
-         1/1V1dZxzVjQlC6u7wZdBwrgQ5gyXG4vxlJvw9dLqsy3V0dbb7fO6XiEcZS7pYm/F4ty
-         q6UwWwh9Gae0Afs4ekLlTJBSj/9ks9MNwgVa21jXb8A/+0Mepn7x2+X0CxjsdEzT2xQL
-         HdrjuDPtgnkWkoUmyiwE51eeDsTn+CxM5iR024SResCHKjLdyYocTngmOB+mJ3AAiihf
-         MRgw==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=WkFBCkkkicIKnBE9nNBDT9WuWGWcL0lUZBXFEw9pw8M=;
+        b=KAfbmVsyukb+jxOzKMywOrj1l6qrGlIIyRTX3eQ7eOLYU/zYfd0tAjup/UKhqNmK4y
+         4SYA69X+DXDA028HyIis53k6p3537Ht+CMlZ1x1gs7v28yIPQpbMWnyMIu3NpEKJ4eM/
+         6WpK/7ZgTksmeeHatc5Gcc4XxPbFl4psB0Y0sSSvgo5DpeGh4KNFg6753joX6vVs9ybC
+         qXKEGv/oifPXwOXA3XGn7XQf8JRBMX9YrI0alDaQFY+trVaB0RKD7RFJFTfWcPVIgZoo
+         aIhuz/wlYzmDqX3xnK8zwaBaiENTDAtyE8CP7q5WOMlOxQ7TEjpn3bYPe8Fe7eE/tDM2
+         /OuA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="yifA/OMm";
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=bFAcaHHj;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
+Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id r11sor3955678ejj.44.2021.04.16.09.06.55
+        by mx.google.com with SMTPS id y8sor3264151pfe.45.2021.04.16.09.07.59
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 16 Apr 2021 09:06:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Fri, 16 Apr 2021 09:07:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="yifA/OMm";
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=bFAcaHHj;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=Zoxxo4HldSkZ1gqc5kBkjBHOS87a3eWa93bTMsHIzUQ=;
-        b=yifA/OMmcEzdBZt/LMxb1W+foc2mE4Vh9rzla0deE3gQ5T2LCfb/SBYZcnb+YDot7P
-         p+mQGROEbNMTYa8r1FirmKI6WzUhkqhK5hEPH6Eb8KSDhH2UjfFDrj7LsVMoJZ1EA9Qs
-         lyjIhnm+NIImmWQRvmw0MjbmipXUf9zxAPkL/hYhB3Kh4o9cT/XE7cYB2FdUpPCFbiId
-         tAHtWoZYd4tblqCWmdeK3J6BBg7/TEN1qufO+0VOLbMMbWakto0J5cruTFwmv44oklP1
-         5k358cwOFUCdBccx1gXbNr0INHxo894QfyXzzqhU6prbf0rS23wqd2G4nerFJBNZ3F/R
-         XyGw==
+        h=subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=WkFBCkkkicIKnBE9nNBDT9WuWGWcL0lUZBXFEw9pw8M=;
+        b=bFAcaHHjGxiVrow+BpJJW0h/YsGs0kVXjQxOqpEJbE55J+/JIWkMi7LKklFTjSrB/l
+         OV4pBBS+186wIHUrLIq0hWKqpEyTPec6fJL2DJHvig161bpvAesinoED/gDIdyKq1/+1
+         ieEkAHur9IJixv/ZNwPYiK3Fj77A/zJijbK/VkODSvVXvE4NNtf7CdTyOt/u9vrI5tkJ
+         qCfclic8LGRdliJ9PVz1N/oMOwusvbpee2sr/A47NMH9ms3nOxqlwuDtxVGei0QUM1ac
+         PZKa2du27CfSWTjWzdu6PtB3chV4T3GGH0CHaOz+PCpmGkxBj1BJwME/eLtzisIh8Bu2
+         ljOQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=Zoxxo4HldSkZ1gqc5kBkjBHOS87a3eWa93bTMsHIzUQ=;
-        b=iPzcH2VXD8rs1hXM2tRiWvmaq6SjpNQVr1UkyfZIjxTey/GRgoksjGoOdqZ8ketvqL
-         6OnxjbY6T0llOa76Wpj3dndTFgcP8FTU2Zt49bOJ7ETUqP/uwdlAUDKQ4iAw7L/vEa76
-         Q+/ZLUtXJfwXAEjDaR8qYy1fMDoZaQ5TTVAKITzTnm9aiN09HaEx4jkhUOePWJqvmqYR
-         cF43Q6rGYCBNaJOgjTq6XPW3lOR3zhv4mAUb6Ho4xe0GT0pIS6eGgx9XJ3kv6V8m92Tu
-         cxxulxHbirq1+yV6lmqko9j3auJjIk9wPTLvXVUhxhStSNELKloT8ycK9gzhZFaK5vEE
-         LazQ==
-X-Gm-Message-State: AOAM530/YrtGZ6Pw/Dqx6wnChoFsRkIq8t4Tl+hT/MgPXHtAfhhD6zGA
-	sbhhI7VK7+/ExHDvojktBwgp5Mq2GvIUtSFxhPtqVCDm/GYWiDkH
-X-Google-Smtp-Source: ABdhPJwM2ias87249zz9diZ1jelihuM3AL1UkkBjIGsz0UTnljHe/ohRsAbgI6wKqivqxI65zjBnI338PWsXTxv3btk=
-X-Received: by 2002:a17:907:629e:: with SMTP id nd30mr8995333ejc.407.1618589214863;
- Fri, 16 Apr 2021 09:06:54 -0700 (PDT)
-MIME-Version: 1.0
-References: <20210416154908.21673-1-alex.bennee@linaro.org>
-In-Reply-To: <20210416154908.21673-1-alex.bennee@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 16 Apr 2021 17:06:06 +0100
-Message-ID: <CAFEAcA-kO0Zs8eDQHheJyf2Top9GWYTW66XUw_aknx2DSYtf4g@mail.gmail.com>
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=WkFBCkkkicIKnBE9nNBDT9WuWGWcL0lUZBXFEw9pw8M=;
+        b=kgQAyq2Mmgej/TPoZgSIjUtJiTm5iTeeNuO1MNVdCML1ww/IQVoDbksAp/Ac4EOssT
+         4dOybysTjL1gh4Hec+vJ0Lpt3M1SCzRSKiQzq7hfSqNPhSDtVfX6wfS+vSL627rfVYNt
+         xxO2HHllL29t0MVu6RUdghYtb82XEZUBVMMByunioeBAeOCEBDWWVl+G/48FVk4Qd4e7
+         /apa0H8HJmPkAr7iOgbGkRI63w3zWpIaQQkF3we9ZoI1n1bC+RNYgiuAXCTxPrOxfuZw
+         2Xf65QNCG+Cb85vty+oQvEoJXxZrGJNIX1andsbqYmtvGJ6YZ1aTvPp99xevLdT/2hOG
+         ruVw==
+X-Gm-Message-State: AOAM531lr0gf/QxWgmovGD/So7cDUm+P39pjLC+7kH5shOp/T5VpCHlh
+	9sn0OGw2lBEakgULhrFIAHYxT6Na
+X-Google-Smtp-Source: ABdhPJz/NYNWyovFx2/O4+pJloC5xRhAvX9MkaPBjyAs7NCCsxEGTOooQMQMccga7SnSYlnH9vKSvw==
+X-Received: by 2002:a62:6585:0:b029:241:cf5d:93b2 with SMTP id z127-20020a6265850000b0290241cf5d93b2mr8647186pfb.15.1618589279093;
+        Fri, 16 Apr 2021 09:07:59 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.1.11] ([71.212.131.83])
+        by smtp.gmail.com with ESMTPSA id h16sm5158682pfo.191.2021.04.16.09.07.58
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 16 Apr 2021 09:07:58 -0700 (PDT)
 Subject: Re: [RFC PATCH] target/arm: drop CF_LAST_IO/dc->condjump check
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
-	"open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: nN+UT+ErTR+0
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+References: <20210416154908.21673-1-alex.bennee@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <0f27dc8f-c62c-fd8e-4f4e-3ad4b51122fa@linaro.org>
+Date: Fri, 16 Apr 2021 09:07:56 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.1
+MIME-Version: 1.0
+In-Reply-To: <20210416154908.21673-1-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: Ixi/GLRNhULZ
 
-On Fri, 16 Apr 2021 at 16:49, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
-te:
->
+On 4/16/21 8:49 AM, Alex Bennée wrote:
 > This is a left over erroneous check from the days front-ends handled
 > io start/end themselves. Regardless just because IO could be performed
 > on the last instruction doesn't obligate the front end to do so.
->
+> 
 > This fixes an abort faced by the aspeed execute-in-place support which
 > will necessarily trigger this state (even before the one-shot
 > CF_LAST_IO fix). The test still seems to hang once it attempts to boot
 > the Linux kernel but I suspect this is an unrelated issue with icount
 > and the timer handling code.
->
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> Cc: C=C3=A9dric Le Goater <clg@kaod.org>
-
-Here's some expanded text explaining why this is safe to remove,
-which I think would be useful to include in the commit message:
-
-=3D=3D=3D=3Dbegin=3D=3D=3D
-The original intention of the cpu_abort (added in commit 2e70f6efa8b9
-when the icount stuff was first added) seems to have been to act as
-an assert() to catch an unhandled corner case where the generated code
-would be something like:
-    conditional branch to condlabel if its cc failed
-    implementation of the insn (a conditional branch or trap)
-    code emitted by gen_io_end()
- condlabel:
-    gen_goto_tb or equivalent thing to go to next insn
-
-At runtime the cc-failed case would skip over the code emitted by
-gen_io_end(), leaving the can_do_io flag incorrectly set.
-
-In commit ba3e7926691ed33 we switched to an implementation which
-always clears can_do_io at the start of the following TB instead
-of trying to clear it at the end of a TB that did IO. So the corner
-case that this cpu_abort() was trying to flag is no longer possible,
-because the gen_io_end() call has been deleted. We can therefore
-safely remove the no-longer-valid assertion.
-=3D=3D=3Dendit=3D=3D=3D
-
+> 
+> Signed-off-by: Alex Bennée<alex.bennee@linaro.org>
+> Cc: Cédric Le Goater<clg@kaod.org>
 > ---
->  target/arm/translate.c | 5 -----
->  1 file changed, 5 deletions(-)
->
-> diff --git a/target/arm/translate.c b/target/arm/translate.c
-> index 62b1c2081b..7103da2d7a 100644
-> --- a/target/arm/translate.c
-> +++ b/target/arm/translate.c
-> @@ -9199,11 +9199,6 @@ static void arm_tr_tb_stop(DisasContextBase *dcbas=
-e, CPUState *cpu)
->  {
->      DisasContext *dc =3D container_of(dcbase, DisasContext, base);
->
-> -    if (tb_cflags(dc->base.tb) & CF_LAST_IO && dc->condjmp) {
-> -        /* FIXME: This can theoretically happen with self-modifying code=
-. */
-> -        cpu_abort(cpu, "IO on conditional branch instruction");
-> -    }
-> -
->      /* At this stage dc->condjmp will only be set when the skipped
->         instruction was a conditional branch or trap, and the PC has
->         already been written.  */
+>   target/arm/translate.c | 5 -----
+>   1 file changed, 5 deletions(-)
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-thanks
--- PMM
+r~

@@ -1,105 +1,110 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp643425lfr;
-        Thu, 15 Apr 2021 08:42:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyJLMXCwWOA6wg4nk3cOW1XCNJ/SIma6HOf/TZdYOnjOKvN33VSlI3FERt9nE6f57RAVsgU
-X-Received: by 2002:a02:c85c:: with SMTP id r28mr3530675jao.80.1618501362259;
-        Thu, 15 Apr 2021 08:42:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618501362; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp734989lfr;
+        Fri, 16 Apr 2021 14:18:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzewn7DhKLd9oRJSIiU0cbfADbXMj1EF7NKuhovPgcUbqfhjF3n5OtxcNwPI8u4jkDZWF4a
+X-Received: by 2002:aca:ab44:: with SMTP id u65mr7824142oie.173.1618607891332;
+        Fri, 16 Apr 2021 14:18:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618607891; cv=none;
         d=google.com; s=arc-20160816;
-        b=wQoXw4IFGWaJlV7a3W9km3vtuJyURYf374efouFk4Dc6eOQwvwc6PcJSY7nbwh4s32
-         TSvJpX0IQh8lF0AcudJubUUxolxUQ+Jp1qT1+TVH4IyUqKU1381iHOlJ+LxzaaOHhFez
-         4vA2UNzYkX5hYKOSIphz8Gb/tYVCMHS6rXZAFQ5Xk8f0+OrEzsPAmcIiNmeVb+L5mj9C
-         sPa3YFF1Vk+1hZDPT26iuhnMlU3BE2qb18kV5EDKiXK2eC1l+ZLlXbB5//DdDw/OgW6N
-         PPPC17nWAKk9NiYAEVW/HWnaMssfMnaLwVOCrMz7bg0czN7XW19t4l++F1g2v/EnVZZA
-         Z5Ng==
+        b=WKCfWXhS+jGf3EztDrldEZiW1Xe9IhnRN3MPAXWPpOmegtTbS8bzsN009CtvOhvVO7
+         Eijj8mIlC2a0G5eeA3WW2mygsSQcKoX8mAl0YWM81NdFXV25CoGud41HyY32H8yvsDHe
+         P6/3M9UtG/J287Cb8HU+39aLmPTKb+H+sdC3BAugkdaes8Q9XnmoHKqrPokYTvv7ZtG8
+         Zq26rincfkdfAhMVZQ1GsWhtJI4CJs/XdMC34veu7hVeKDAjZ9n/EMqzGrdfsafeqGTH
+         emrKIFdfZqaD4ejvPMOueB1iCEMyIZXpZ5iOf3EroWjxmOWFqwmqB7iAN2tVqTiV2ItW
+         QYfA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:organization:references:in-reply-to:message-id:subject
-         :to:from:date:dkim-signature;
-        bh=vWO1gZWU09hxFCSjX5sUUWS2VVLAw3+VmP6JjjO9SBA=;
-        b=h1jbe20L9lGae2/nu996BXVjjRAzTl69uK2f+ws7PQL0ln5rGzoika/hyOju5nzpSK
-         O3wOLr4jlsbiJtHRPzl+41OWNz7wUHWnaIN1De3AZJbcVNBLWjxNT4ijVXQNlecYK87E
-         CppTyLAcpOmjyGP5C9vqKejCcKYKLMIc6/szn2byJJN1OS2N766822BURiZkn7I1rjoN
-         7sFyDt0BfCZ7C7W5j36TCZOcz5zhZAUHUejZOBKIQ/lyjOV5otZgxz+XgkZzSA9rCOS4
-         iKjhZx8Jqt+ivwZo8HMXmCY+GeZSY2uwhQ0JaXnJgBTuNX8lMXF1QufGfKtOwUb3lvWI
-         X5Fw==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=iA5YdMPlGGiyhjKxfBQbY6+WZzBPtERwoPFsnw8+g+g=;
+        b=gBMoQIDlbU7PN7jV9Bg/vy/3Jy4rGS1yRpkXt+Xc8PzjwIaWKX4nKT5QBOfs/xD2h9
+         frKwFS5UjxzeBbc+YBHw75mVXzMFblcxdoY4nlUpgPFKlnABDvWllvZsoc1ZT+ReC4qk
+         uJ9FZi6qPmcreZofXoM2kP8WP03eiSkECgkRZX+60LPYajigPALcZegTFy3AZJXZc4od
+         5WKXBGwU9gKa6U2fNevL3J+H4VIhrgiLe26UIIEsAe3k1Ag7suIa6zW/S9pBSkAx6FWB
+         FfIYfu54BpBtJ7JTFQ3Lh4DLH/9KvhOwzw8nq6PLz6/ORrDE7OZ9cpQXfQlDtfkhOo/w
+         Z1fg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KXhm5JO+;
+       dkim=pass header.i=@linaro.org header.s=google header.b=qVtSCigk;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z10si1385137ilp.153.2021.04.15.08.42.42
+        by mx.google.com with ESMTPS id x132si6982861oia.179.2021.04.16.14.18.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 15 Apr 2021 08:42:42 -0700 (PDT)
+        Fri, 16 Apr 2021 14:18:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KXhm5JO+;
+       dkim=pass header.i=@linaro.org header.s=google header.b=qVtSCigk;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55776 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:58652 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lX48f-0005c2-FA
-	for alex.bennee@linaro.org; Thu, 15 Apr 2021 11:42:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54998)
+	id 1lXVqs-0006Zg-GG
+	for alex.bennee@linaro.org; Fri, 16 Apr 2021 17:18:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43696)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1lX45Y-0003q4-2D
- for qemu-devel@nongnu.org; Thu, 15 Apr 2021 11:39:28 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:36542)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1lX45T-00075s-Vr
- for qemu-devel@nongnu.org; Thu, 15 Apr 2021 11:39:27 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1618501153;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=vWO1gZWU09hxFCSjX5sUUWS2VVLAw3+VmP6JjjO9SBA=;
- b=KXhm5JO+MQTdsFQGNrzDRIfWY2Gvqq22Hqmszyh9mIhRp7tCjea7+7SJXG0dMIT1xPYRXt
- lObNtxTB+I7fwGbW+gTVFlkr7hmKdMpL8CU+Eq+8vtf1Wh4EJns1adpzTNfxIku+k4lUCA
- iJKEHleMCmb68IkoQpmh2EACd5066hU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-83-IBq1PptdOV-wc52GnhrKEw-1; Thu, 15 Apr 2021 11:39:10 -0400
-X-MC-Unique: IBq1PptdOV-wc52GnhrKEw-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 232608030D6;
- Thu, 15 Apr 2021 15:39:09 +0000 (UTC)
-Received: from gondolin (ovpn-112-220.ams2.redhat.com [10.36.112.220])
- by smtp.corp.redhat.com (Postfix) with ESMTP id E7C742AC81;
- Thu, 15 Apr 2021 15:39:02 +0000 (UTC)
-Date: Thu, 15 Apr 2021 17:39:00 +0200
-From: Cornelia Huck <cohuck@redhat.com>
-To: Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: Re: [PATCH v4 0/4] accel/tcg: Make sure that tb->size != 0 after
- translation
-Message-ID: <20210415173900.7062f159.cohuck@redhat.com>
-In-Reply-To: <20210415130305.28640-1-iii@linux.ibm.com>
-References: <20210415130305.28640-1-iii@linux.ibm.com>
-Organization: Red Hat GmbH
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1lXVcG-0004Fi-Ok
+ for qemu-devel@nongnu.org; Fri, 16 Apr 2021 17:03:05 -0400
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635]:46910)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1lXVcC-00017v-TU
+ for qemu-devel@nongnu.org; Fri, 16 Apr 2021 17:03:04 -0400
+Received: by mail-pl1-x635.google.com with SMTP id m18so12422458plc.13
+ for <qemu-devel@nongnu.org>; Fri, 16 Apr 2021 14:02:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=iA5YdMPlGGiyhjKxfBQbY6+WZzBPtERwoPFsnw8+g+g=;
+ b=qVtSCigkmfUUIWMlUv/xWy5wyGybOVkvin/qQGn0C+X/33q0Q6GBZVT3AINiixpkpj
+ 3ad5VSuUdR/1Xm5iZPfOJu5D3kfcwkSeniXut+iBwuSzLT2JeUOyjP0/DvSaDzkzUu8r
+ hfeeDalO5Qtoj5fxf2Ny9WEunql/l01BI0gphd+1LO26RZ48ff7NtPVAgYc5w3CEqFlr
+ aCngRWOYJzaUUVbLDC9T3r5uiLPv6F2Tpk8IBtsXMWYBbxI7MKJODouponvlyebIh8KV
+ 5+WDsrdzbl/9hJs1Y7oWd++hXxubdZefH8D2l0ZJFVlWlrD/CJf8eUtq6qPpABq1EXQC
+ Rbqw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=iA5YdMPlGGiyhjKxfBQbY6+WZzBPtERwoPFsnw8+g+g=;
+ b=fFe9fiSs2ZSrLTszGYmftTDMABN4lguicf/AJFTh1+sLfJedM/8r2rN4n+Mv0IVEzk
+ BqvzG9sGuZrb90GjWgEZGfuBNKea3nepBQf6kpH7oLXgiQhcC0w33o2+zbRGT8ye+Myv
+ FqOJnFW+Y0onppI0Y2r+WHrlZoc555GhFBoHsW4bzU2ECun8DX+NKVlUyGvCgQ7PDy8G
+ 8xzDWmVezv02Lv0I7BkFAncZtEgw0s19z5nsJtP4NQSvvLSwvdboHRiH3bPjkbazZOaU
+ 1BVpoBWUYqDmf5UhVHI+Xbj0tGh0v5rcJkyrms0GHcU3MJ+7rM7N07TVUAViPoAWk8I8
+ 642w==
+X-Gm-Message-State: AOAM530YrHW25pjWnkUsYc/zM/+8njoCn8FnngFDFzPP+Jg13ndpnGGB
+ m81kRsJwP8KRcVPxqLgfK3dls1KDb5zh1g==
+X-Received: by 2002:a17:90a:ec03:: with SMTP id
+ l3mr11261635pjy.61.1618606979004; 
+ Fri, 16 Apr 2021 14:02:59 -0700 (PDT)
+Received: from localhost.localdomain ([71.212.131.83])
+ by smtp.gmail.com with ESMTPSA id m15sm5920640pjz.36.2021.04.16.14.02.58
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 16 Apr 2021 14:02:58 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v5 16/81] target/arm: Implement SVE2 bitwise exclusive-or
+ interleaved
+Date: Fri, 16 Apr 2021 14:01:35 -0700
+Message-Id: <20210416210240.1591291-17-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20210416210240.1591291-1-richard.henderson@linaro.org>
+References: <20210416210240.1591291-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=cohuck@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=cohuck@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x635.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -112,54 +117,106 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- David Hildenbrand <david@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
- Max Filippov <jcmvbkbc@gmail.com>, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>
+Cc: qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QpI7jO2Nhvnq
+X-TUID: RoVovWpjMHyS
 
-On Thu, 15 Apr 2021 15:03:01 +0200
-Ilya Leoshkevich <iii@linux.ibm.com> wrote:
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/helper-sve.h    |  5 +++++
+ target/arm/sve.decode      |  5 +++++
+ target/arm/sve_helper.c    | 20 ++++++++++++++++++++
+ target/arm/translate-sve.c | 19 +++++++++++++++++++
+ 4 files changed, 49 insertions(+)
 
-> If arch-specific code generates a translation block of size 0,
-> tb_gen_code() may generate a spurious exception.
-> 
-> Fix s390x (patch 1), ARM (patch 2) and xtensa (patch 3) and add an
-> assertion in order to catch such situations earlier (patch 4).
-> 
-> v1: https://lists.nongnu.org/archive/html/qemu-devel/2021-04/msg02037.html
-> v1 -> v2: Fix target/s390x instead of trying to tolerate tb->size == 0
->           in tb_gen_code().
-> 
-> v2: https://lists.nongnu.org/archive/html/qemu-devel/2021-04/msg02101.html
-> v2 -> v3: Split the common code change into a separate patch, add the
->           ARM patch in order to fix
->           https://gitlab.com/cohuck/qemu/-/jobs/1178409450
-> 
-> v3: https://lists.nongnu.org/archive/html/qemu-devel/2021-04/msg02332.html
-> v3 -> v4: Add the xtensa patch in order to fix
->           https://gitlab.com/cohuck/qemu/-/jobs/1178409540
-> 
-> Ilya Leoshkevich (4):
->   target/s390x: Fix translation exception on illegal instruction
->   target/arm: Make sure that commpage's tb->size != 0
->   target/xtensa: Make sure that tb->size != 0
->   accel/tcg: Assert that tb->size != 0 after translation
-> 
->  accel/tcg/translate-all.c |  1 +
->  target/arm/translate.c    |  1 +
->  target/s390x/translate.c  | 16 +++++++++++-----
->  target/xtensa/translate.c |  3 +++
->  4 files changed, 16 insertions(+), 5 deletions(-)
-> 
-
-FWIW, this now has passed CI for me.
-
-If all is good, who will merge it? I can merge through the s390x tree,
-if I get acks on the patches for the other architectures, or I can give
-my ack on the s390x patch, if somebody else is going to take it.
+diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
+index 740939e7a8..f65818da05 100644
+--- a/target/arm/helper-sve.h
++++ b/target/arm/helper-sve.h
+@@ -2372,3 +2372,8 @@ DEF_HELPER_FLAGS_3(sve2_sshll_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_3(sve2_ushll_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_3(sve2_ushll_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_3(sve2_ushll_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_4(sve2_eoril_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_eoril_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_eoril_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_eoril_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+diff --git a/target/arm/sve.decode b/target/arm/sve.decode
+index a3191eba7b..0922a44829 100644
+--- a/target/arm/sve.decode
++++ b/target/arm/sve.decode
+@@ -1215,3 +1215,8 @@ SSHLLB          01000101 .. 0 ..... 1010 00 ..... .....  @rd_rn_tszimm_shl
+ SSHLLT          01000101 .. 0 ..... 1010 01 ..... .....  @rd_rn_tszimm_shl
+ USHLLB          01000101 .. 0 ..... 1010 10 ..... .....  @rd_rn_tszimm_shl
+ USHLLT          01000101 .. 0 ..... 1010 11 ..... .....  @rd_rn_tszimm_shl
++
++## SVE2 bitwise exclusive-or interleaved
++
++EORBT           01000101 .. 0 ..... 10010 0 ..... .....  @rd_rn_rm
++EORTB           01000101 .. 0 ..... 10010 1 ..... .....  @rd_rn_rm
+diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
+index 73aa670a77..1de0a9bdc3 100644
+--- a/target/arm/sve_helper.c
++++ b/target/arm/sve_helper.c
+@@ -1221,6 +1221,26 @@ DO_ZZZ_WTB(sve2_usubw_d, uint64_t, uint32_t,     , H1_4, DO_SUB)
+ 
+ #undef DO_ZZZ_WTB
+ 
++#define DO_ZZZ_NTB(NAME, TYPE, H, OP)                                   \
++void HELPER(NAME)(void *vd, void *vn, void *vm, uint32_t desc)          \
++{                                                                       \
++    intptr_t i, opr_sz = simd_oprsz(desc);                              \
++    intptr_t sel1 = extract32(desc, SIMD_DATA_SHIFT, 1) * sizeof(TYPE); \
++    intptr_t sel2 = extract32(desc, SIMD_DATA_SHIFT + 1, 1) * sizeof(TYPE); \
++    for (i = 0; i < opr_sz; i += 2 * sizeof(TYPE)) {                    \
++        TYPE nn = *(TYPE *)(vn + H(i + sel1));                          \
++        TYPE mm = *(TYPE *)(vm + H(i + sel2));                          \
++        *(TYPE *)(vd + H(i + sel1)) = OP(nn, mm);                       \
++    }                                                                   \
++}
++
++DO_ZZZ_NTB(sve2_eoril_b, uint8_t, H1, DO_EOR)
++DO_ZZZ_NTB(sve2_eoril_h, uint16_t, H1_2, DO_EOR)
++DO_ZZZ_NTB(sve2_eoril_s, uint32_t, H1_4, DO_EOR)
++DO_ZZZ_NTB(sve2_eoril_d, uint64_t,     , DO_EOR)
++
++#undef DO_ZZZ_NTB
++
+ #define DO_ZZI_SHLL(NAME, TYPEW, TYPEN, HW, HN) \
+ void HELPER(NAME)(void *vd, void *vn, uint32_t desc)           \
+ {                                                              \
+diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
+index afd208212b..509b3bc68c 100644
+--- a/target/arm/translate-sve.c
++++ b/target/arm/translate-sve.c
+@@ -6030,6 +6030,25 @@ DO_SVE2_ZZZ_TB(SMULLT_zzz, smull_zzz, true, true)
+ DO_SVE2_ZZZ_TB(UMULLB_zzz, umull_zzz, false, false)
+ DO_SVE2_ZZZ_TB(UMULLT_zzz, umull_zzz, true, true)
+ 
++static bool do_eor_tb(DisasContext *s, arg_rrr_esz *a, bool sel1)
++{
++    static gen_helper_gvec_3 * const fns[4] = {
++        gen_helper_sve2_eoril_b, gen_helper_sve2_eoril_h,
++        gen_helper_sve2_eoril_s, gen_helper_sve2_eoril_d,
++    };
++    return do_sve2_zzw_ool(s, a, fns[a->esz], (!sel1 << 1) | sel1);
++}
++
++static bool trans_EORBT(DisasContext *s, arg_rrr_esz *a)
++{
++    return do_eor_tb(s, a, false);
++}
++
++static bool trans_EORTB(DisasContext *s, arg_rrr_esz *a)
++{
++    return do_eor_tb(s, a, true);
++}
++
+ static bool do_trans_pmull(DisasContext *s, arg_rrr_esz *a, bool sel)
+ {
+     static gen_helper_gvec_3 * const fns[4] = {
+-- 
+2.25.1
 

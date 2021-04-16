@@ -1,102 +1,102 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp650349lfr;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp650357lfr;
         Fri, 16 Apr 2021 12:03:07 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxLv3YBQnMeG9vc6drLr05GqV3RNuNwV7877TehyOKWSA1jPHfdbPyaU8kGpvL2nFAM+zgi
-X-Received: by 2002:a5e:c319:: with SMTP id a25mr4521346iok.55.1618599786867;
-        Fri, 16 Apr 2021 12:03:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618599786; cv=none;
+X-Google-Smtp-Source: ABdhPJzwgBLrlPxhZEi5kAbNy31XJcVrZ36xYsjNhbjDmVOioIwIM5wleAYPOwIvBH4ERmWn7hE6
+X-Received: by 2002:a6b:b4d1:: with SMTP id d200mr3793778iof.162.1618599787387;
+        Fri, 16 Apr 2021 12:03:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618599787; cv=none;
         d=google.com; s=arc-20160816;
-        b=Io8B1mRvCjU49gvUx47pNl0L4xgTK04cSAOCpiRGhJRK9xDxMqMw7qnfP5RXEBkl59
-         iWlganP340At6ahSuGbySlh8KRmurqTh+rtaipg6AXvo49rAJGGnz9qqifuAw7TQXXq/
-         TDiOWVx+TEXydq1Ru/oiGSpbNSMS6ig+pMpfQ46tWL8TiWvfv0Pv4D22govxYUKUs4rN
-         PasCTJkYBiXeyscBoI6N25CZMYYFQITyHnrSfBCJsyHMNVOgi6anZe5YxtY5EkXXDU2E
-         jpa/MbxyLTZiLCinkGx3oZErlJN7Aom2H8VH9NDmuHq3JWDmzbS9uFCjMmQ29cFdxZoE
-         QF+w==
+        b=tqqzdvPTrsnPo3dn0F9jpf1ttaqSw8Nb6Bw83irilYuXRkIa4NKX5YWvXXfHy/wau+
+         eHl3M2seOnBUnUcJXbT0Vn5GSIwKV7EVkHTZJZcDzWT6gbEml/mrn0GYw8O6aPD4l1vc
+         J8YfyH0V0BnrOZHmYU6bpov325pVvs3jLmhRtXFhG951f7rc61TGcpMVVG+d+qeCIfnz
+         GOR+LHcfRz2SnwXnqoXu8/e6qELlrjCGUziOtHFa4YA7Yzax1A4Tcja65zaiCD0n7i3k
+         +TLzgKoGw1qS4AJwgL9DL300HtDncNKG2B4vkqWO7OVKjhBsZIR2ATmMqyB39DKYX3b6
+         YBRg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=8XIA/+X37AvNazV2jisISm3ZiIWDvYr5zvekcj4Rlqc=;
-        b=TYeKpTTO5SqHVK0EnWDgDqVlMbjndIJvSHz5d8x7C7PxobDJz4WCPk1beZCYbF8zR6
-         04c1gGO8DqIJyoqh8yhibaKVMw6wiXMlnykJvbHZGISI56acCoRLzbCPRqaTF4W3qqvv
-         p9mABwWOEcgsRo0R6a7OY7BgMwpF1InkYuogp7Aa72umIUHIxhJA0hkIZHuYEqU7oslD
-         r6FSIu1O0BKLTMXKzhUpcGiroQvGBG0ehu9kp4cylC6f9pHuxPeE0LBhGn/hyVcTDBg5
-         oaHcG6UMym2p8QezUpAm2h/WBKD7Oevd23F5mvVgDYaFk6sbpUJesmOsTezwkTmtX1qz
-         97lg==
+        bh=pMgL2a+prtbBPdSaIs5ct/RTVDgGVnnynJ69Tr1rM+o=;
+        b=oG4sbfQUzIvIVZwjaJa1c7kpUWIxKNpVxJh48GUrujqEa0PF+1KSRs1pxar1OYSZbK
+         yicE+C8YJoCgnpraRgfSO3RLcJvQwJGch5SPZ2Mal0AA3QEacTJUJZpDuwDh6PW9GeDe
+         WtpDtvZSgKv9Zex4/Rn5ymJtdT2GQbgGDiyFvQamvRiTTH5cscONZwKejPg9WNwlN8Fl
+         UYREYNVg+RtJvnsREt/MnIrVq7O7MgPWl0soBb0oIZCWYLOhOMWa1HjUZGV2lihZdAQQ
+         TifTzfiyUnsZeTMAqo7DxMj21bSYu0YyzswL9WgTCsjhkyFJFXLY0cHNjw/EuWwMjUA+
+         EJ5g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=mqcwaLZi;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NJ8l0cHR;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m19si4199393jat.16.2021.04.16.12.03.06
+        by mx.google.com with ESMTPS id h11si6569186ila.129.2021.04.16.12.03.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Apr 2021 12:03:06 -0700 (PDT)
+        Fri, 16 Apr 2021 12:03:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=mqcwaLZi;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NJ8l0cHR;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37064 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:37082 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lXTkA-0005U8-5W
+	id 1lXTkA-0005UW-Lc
 	for alex.bennee@linaro.org; Fri, 16 Apr 2021 15:03:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49880)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49874)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lXThK-0003PD-J0
+ id 1lXThK-0003PC-Gs
  for qemu-devel@nongnu.org; Fri, 16 Apr 2021 15:00:10 -0400
-Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533]:37499)
+Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c]:44896)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lXThD-0004Bz-6k
+ id 1lXThF-0004E9-3N
  for qemu-devel@nongnu.org; Fri, 16 Apr 2021 15:00:09 -0400
-Received: by mail-pg1-x533.google.com with SMTP id p2so4354150pgh.4
- for <qemu-devel@nongnu.org>; Fri, 16 Apr 2021 12:00:02 -0700 (PDT)
+Received: by mail-pg1-x52c.google.com with SMTP id y32so19807024pga.11
+ for <qemu-devel@nongnu.org>; Fri, 16 Apr 2021 12:00:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=8XIA/+X37AvNazV2jisISm3ZiIWDvYr5zvekcj4Rlqc=;
- b=mqcwaLZi+d0arlLA76I0vNPvphyZbetckfBnxaXTcWRftAQ2HzZJ9PqkWxg4SRPlaN
- ECBpjIC4VE+g/A+TitNpkDchAKtSmvBiV6gbSq8HMSqTFUF/yTlNy8xUis0hi51HBkRq
- zvYon89rXn/aqgB80ArZPQ+YyCgnDF3PG6RR+iLwAI8kTQ/jAzE55darLNtnZIT6Wy3G
- 5kFmj0DgViXe8tjDT9dsR/dbUC2MYRDL81xlypJC47FQ82oQ8VDWKR2XTQfIs+QQpU2m
- 7VM0RCVY9Vkgt5h3HzuzUKCMJbJkebF88GjXtkz+ietmoWwG1sxhPcKBrSfndUrEBM/E
- xATQ==
+ bh=pMgL2a+prtbBPdSaIs5ct/RTVDgGVnnynJ69Tr1rM+o=;
+ b=NJ8l0cHRm5UHxiRi092lgHcoMuwyF2SZu569arSzfd6gfcf1Z/22kg9xqJcGe1nlfL
+ sqPEsTj/hlQEz3vgRWZBL8vQPkyXgzpCxkA+dBz4/CLF7B71iTu1WOjw4w3+783i8trI
+ ODvlYIDpv1J9gCEFVa5fCoiGBYta6iugewsh7lOCpXF9c26Z5lH/S+SCudemU0Tkgq/5
+ jegPIndNjG1atOTGZ9+4K23n5Y58w8thTKUrpmtkmJmPqze4PJasYgrIdSTvlFghq2Ah
+ rdPXahM95Pr3AUzfqntQ+gAJhCplSuOrzQyw2A5mpoanjBzxPle3bhGS+sFtGvKJuI3/
+ lBrg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=8XIA/+X37AvNazV2jisISm3ZiIWDvYr5zvekcj4Rlqc=;
- b=h+0/duOYFUmqYO8RobVExAnO92mR30+t461QgO6Ag3rw2dTqRrSs2yO9hYkJFMrI7V
- XduKYT6PYHN+d9qwkjvmF2abIxwHcCq1ljqln8gGzPBc3qn1zKXEyN3Zz5NGul87J6TX
- JYLUfLjZC3r2jpT7jGOvTig+N7VGDiwpXrSeOJ6e749UOJgBb30er9qjEOTkwlDFgcvQ
- ly6PXOZlC7tSJdcfRBWxHSEgYikwxDh8BzBLLquR9wIbqiPHNL0oiZLgg+z4wYwq282R
- GiX8vrz7JWkcGCWJY3a1wjXdaSJF3zVDkE6M2rs4soNB3Pd7zA7F0R8ScjjD8wOOwSHg
- oZTQ==
-X-Gm-Message-State: AOAM531LiIWNu399p7oKdAxXMisY/wlJsjVN+83MEyN9TfZ4RIEtK7Cw
- jzLyCKHfOeVr5X6+hhKEWfK8/EVXthHGxA==
-X-Received: by 2002:aa7:8c57:0:b029:246:730a:5607 with SMTP id
- e23-20020aa78c570000b0290246730a5607mr9355991pfd.74.1618599601816; 
- Fri, 16 Apr 2021 12:00:01 -0700 (PDT)
+ bh=pMgL2a+prtbBPdSaIs5ct/RTVDgGVnnynJ69Tr1rM+o=;
+ b=KsJPs3Z1kYi0Gab3udZJPs1CeNnHH10UIbVxNxJIsowPd6lABahWf+8LK/WlIUdYR5
+ LM/ZAV7bLanOOxGn7fGPdePOElKG6sL4WMZrZcDvIwETWNBz6+QPdUzVzoC+PBySSyWT
+ XBuwLNipvzhyPlTbs5TqPrxxRKJ/9NV0U8qZO3k4G7RFRf68bwBnk6tgojcDLknyTAkz
+ 34f42+hafHDG2n4FXfXC55z99ylFsG7/XcM2/Jxh2qw5QY/HvcdrlxOZq9mInJ+yReFF
+ BnjRQEO6fR5WpY1YIPU90hLi0PgRpS/OGCXoEtsJO0yOjIQr6auWgy19nSRy23p1dXAl
+ QIhg==
+X-Gm-Message-State: AOAM530GSkXzhUSwhWDoquUzF0KKHz1vgBeg24YANWICFt0E66VwQ/n0
+ u3F6ZkUI+xgkXiet6HiXwCwY+JhykExgGA==
+X-Received: by 2002:a62:f210:0:b029:24a:c8f:c1bf with SMTP id
+ m16-20020a62f2100000b029024a0c8fc1bfmr8927789pfh.47.1618599603497; 
+ Fri, 16 Apr 2021 12:00:03 -0700 (PDT)
 Received: from localhost.localdomain ([71.212.131.83])
- by smtp.gmail.com with ESMTPSA id d7sm1988337pfv.197.2021.04.16.12.00.01
+ by smtp.gmail.com with ESMTPSA id d7sm1988337pfv.197.2021.04.16.12.00.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 16 Apr 2021 12:00:01 -0700 (PDT)
+ Fri, 16 Apr 2021 12:00:03 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v4 01/30] target/arm: Fix decode of align in VLDST_single
-Date: Fri, 16 Apr 2021 11:59:30 -0700
-Message-Id: <20210416185959.1520974-2-richard.henderson@linaro.org>
+Subject: [PATCH v4 03/30] target/arm: Rename TBFLAG_ANY, PSTATE_SS
+Date: Fri, 16 Apr 2021 11:59:32 -0700
+Message-Id: <20210416185959.1520974-4-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210416185959.1520974-1-richard.henderson@linaro.org>
 References: <20210416185959.1520974-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::533;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x533.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -116,58 +116,82 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Cc: qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0Yj4bK/lXtEY
+X-TUID: de2jvQ0dL8Tp
 
-The encoding of size = 2 and size = 3 had the incorrect decode
-for align, overlapping the stride field.  This error was hidden
-by what should have been unnecessary masking in translate.
+We're about to rearrange the macro expansion surrounding tbflags,
+and this field name will be expanded using the bit definition of
+the same name, resulting in a token pasting error.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+So PSTATE_SS -> PSTATE__SS in the uses, and document it.
+
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/neon-ls.decode       | 4 ++--
- target/arm/translate-neon.c.inc | 4 ++--
- 2 files changed, 4 insertions(+), 4 deletions(-)
+ target/arm/cpu.h           | 2 +-
+ target/arm/helper.c        | 4 ++--
+ target/arm/translate-a64.c | 2 +-
+ target/arm/translate.c     | 2 +-
+ 4 files changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/target/arm/neon-ls.decode b/target/arm/neon-ls.decode
-index c17f5019e3..0a2a0e15db 100644
---- a/target/arm/neon-ls.decode
-+++ b/target/arm/neon-ls.decode
-@@ -46,7 +46,7 @@ VLD_all_lanes  1111 0100 1 . 1 0 rn:4 .... 11 n:2 size:2 t:1 a:1 rm:4 \
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 304e0a6af3..4cbf2db3e3 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -3396,7 +3396,7 @@ typedef ARMCPU ArchCPU;
+  */
+ FIELD(TBFLAG_ANY, AARCH64_STATE, 31, 1)
+ FIELD(TBFLAG_ANY, SS_ACTIVE, 30, 1)
+-FIELD(TBFLAG_ANY, PSTATE_SS, 29, 1)     /* Not cached. */
++FIELD(TBFLAG_ANY, PSTATE__SS, 29, 1)    /* Not cached. */
+ FIELD(TBFLAG_ANY, BE_DATA, 28, 1)
+ FIELD(TBFLAG_ANY, MMUIDX, 24, 4)
+ /* Target EL if we take a floating-point-disabled exception */
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 556b9d4f0a..cd8dec126f 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -13333,11 +13333,11 @@ void cpu_get_tb_cpu_state(CPUARMState *env, target_ulong *pc,
+      *     0            x       Inactive (the TB flag for SS is always 0)
+      *     1            0       Active-pending
+      *     1            1       Active-not-pending
+-     * SS_ACTIVE is set in hflags; PSTATE_SS is computed every TB.
++     * SS_ACTIVE is set in hflags; PSTATE__SS is computed every TB.
+      */
+     if (FIELD_EX32(flags, TBFLAG_ANY, SS_ACTIVE) &&
+         (env->pstate & PSTATE_SS)) {
+-        flags = FIELD_DP32(flags, TBFLAG_ANY, PSTATE_SS, 1);
++        flags = FIELD_DP32(flags, TBFLAG_ANY, PSTATE__SS, 1);
+     }
  
- VLDST_single   1111 0100 1 . l:1 0 rn:4 .... 00 n:2 reg_idx:3 align:1 rm:4 \
-                vd=%vd_dp size=0 stride=1
--VLDST_single   1111 0100 1 . l:1 0 rn:4 .... 01 n:2 reg_idx:2 align:2 rm:4 \
-+VLDST_single   1111 0100 1 . l:1 0 rn:4 .... 01 n:2 reg_idx:2 . align:1 rm:4 \
-                vd=%vd_dp size=1 stride=%imm1_5_p1
--VLDST_single   1111 0100 1 . l:1 0 rn:4 .... 10 n:2 reg_idx:1 align:3 rm:4 \
-+VLDST_single   1111 0100 1 . l:1 0 rn:4 .... 10 n:2 reg_idx:1 . align:2 rm:4 \
-                vd=%vd_dp size=2 stride=%imm1_6_p1
-diff --git a/target/arm/translate-neon.c.inc b/target/arm/translate-neon.c.inc
-index f6c68e30ab..0e5828744b 100644
---- a/target/arm/translate-neon.c.inc
-+++ b/target/arm/translate-neon.c.inc
-@@ -606,7 +606,7 @@ static bool trans_VLDST_single(DisasContext *s, arg_VLDST_single *a)
-     switch (nregs) {
-     case 1:
-         if (((a->align & (1 << a->size)) != 0) ||
--            (a->size == 2 && ((a->align & 3) == 1 || (a->align & 3) == 2))) {
-+            (a->size == 2 && (a->align == 1 || a->align == 2))) {
-             return false;
-         }
-         break;
-@@ -621,7 +621,7 @@ static bool trans_VLDST_single(DisasContext *s, arg_VLDST_single *a)
-         }
-         break;
-     case 4:
--        if ((a->size == 2) && ((a->align & 3) == 3)) {
-+        if (a->size == 2 && a->align == 3) {
-             return false;
-         }
-         break;
+     *pflags = flags;
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index f35a5e8174..64b3a5200c 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -14733,7 +14733,7 @@ static void aarch64_tr_init_disas_context(DisasContextBase *dcbase,
+      *   end the TB
+      */
+     dc->ss_active = FIELD_EX32(tb_flags, TBFLAG_ANY, SS_ACTIVE);
+-    dc->pstate_ss = FIELD_EX32(tb_flags, TBFLAG_ANY, PSTATE_SS);
++    dc->pstate_ss = FIELD_EX32(tb_flags, TBFLAG_ANY, PSTATE__SS);
+     dc->is_ldex = false;
+     dc->debug_target_el = FIELD_EX32(tb_flags, TBFLAG_ANY, DEBUG_TARGET_EL);
+ 
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index 9feb572792..45e320f4b3 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -8909,7 +8909,7 @@ static void arm_tr_init_disas_context(DisasContextBase *dcbase, CPUState *cs)
+      *   end the TB
+      */
+     dc->ss_active = FIELD_EX32(tb_flags, TBFLAG_ANY, SS_ACTIVE);
+-    dc->pstate_ss = FIELD_EX32(tb_flags, TBFLAG_ANY, PSTATE_SS);
++    dc->pstate_ss = FIELD_EX32(tb_flags, TBFLAG_ANY, PSTATE__SS);
+     dc->is_ldex = false;
+ 
+     dc->page_start = dc->base.pc_first & TARGET_PAGE_MASK;
 -- 
 2.25.1
 

@@ -1,137 +1,112 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp497638lfr;
-        Fri, 16 Apr 2021 08:38:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxNFGDH75xs/2HuorDa3N7UR6ubYINWMd6nqA2jGdp94/yQUfpDEz9XEfAe+nJ3J0pogkH3
-X-Received: by 2002:a05:6808:9ae:: with SMTP id e14mr7008430oig.125.1618587539106;
-        Fri, 16 Apr 2021 08:38:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618587539; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp487007lfr;
+        Fri, 16 Apr 2021 08:26:12 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzzn9Yoq2HLQdCRLZyqmIaQqCWF/W4mqWPFKpxqb32Ppkss1aqS7viWcC/omjzViXaDxOC1
+X-Received: by 2002:a92:2906:: with SMTP id l6mr7821397ilg.94.1618586772715;
+        Fri, 16 Apr 2021 08:26:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618586772; cv=none;
         d=google.com; s=arc-20160816;
-        b=KG5NpNxoUMrZ5wQCXtFny80Z+b0EKYuPGP7PK2culkYdtcej/5qBZznFDJ4RK2VKX3
-         OQUlPLR4tT/F3koW4zcDYSh8/aY515oRjupEwP3lV5hw8/eqBqOQ78gJJX50EO1UxqSo
-         S25a7/FIhYJBIS5oy6oMJ9rCn8+lMyw4KAsMnVdvosMCQJkooR+3rQafS14vbOw8fynV
-         LioiL1buwdE8eCpYczux1SDOXELEqDmsBhIsSq9Va4yQSexE+YBLn+dlIzA+S/Ubzu87
-         gFvRJmdkWNJkRHmY1KAT01Lbfie3FqgARH+saezHhW6O051SuRmNftLgYGq7Q+KmeEXn
-         L+rg==
+        b=CF42ScanoLoz+lgeKudc0eXyBEa/HuGBub7Hk8vZVXc3s/PbMEMerI6QA6Qa+nMv5N
+         /TwF2BVsSCgwGwoV9mhQuo608tRD5647fJvFSCl966tPCYMvP/hDX6f5+xYUS9xXYAoe
+         XZ9lqbYxNr8SBMhoF+gXHG1/p0SsvVuQF0QQzXjWibt+j7w2867ORcXkDrY4okxMsPuV
+         N89BaInwuTQ45deAJr+8cujZBWE5ua4qhf6VHuJr6Q7VG+vkwZoxCjMh1xsmykSigNWH
+         qiL4DLawFl4r70evEd3u2gaKS5K0GYhHPUQBRa3OzjM4Mg7XmlRWgxUp43/3uvo7ojS5
+         Vs7w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:references:in-reply-to:date:to:from:subject
-         :message-id:dkim-signature;
-        bh=e2SU2g2/zCBueh66b1Oqp1fW2nAVAIzTaSB+N0Avwbk=;
-        b=xx+rQ2JE1W45CSDrReZYH1gIwsoBTedpsJhTP1PM2ffqQ1yP7omYRyTeti7KtvBENs
-         6IGMSxQcLaiFl9jTNnKLw1lx0qNqdgm6F/yLNgw8cHPfvJ4Tw5lmqFXUmb+q0a75Sc2u
-         VdAapNLXYogeEi6W0/IT/3Aa8xJxyZWvWFnbP53pPC1CmVqQGkOesoAj/QXhHvKivlNS
-         z3qgGpDif8IQdDiV61e8bijmzBm3Nolov7Kzxq167ANGKYNKoJe3SCF++Hmv00hIaVNv
-         XY9vXPjYnwv4lAiyv6RkOhQwx91X0uJ/FjdVRrasYC57XbToRsaojIeh+7ihws9nfL6m
-         xExw==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=NnuoOxPPrHMSCIm4Zej+9wfvlkfgebd1GmyNbptrKCk=;
+        b=sRj+9vhzyyrNcHSwv2OMIIcUWHUEG40xcwAFx/om5nvQtzx1HgKmS3/qO6mUjixFWh
+         NzfB/v/qo07QrYxE5f8mIYZwbD8p2E/9xjyOib3Dp12orA9ODDcEeBhvt1n+Gf11YteU
+         YispYxncHNeXvxIZ9mcVnH0HN8A5zgyARPrwR2KA/hAQQAX7Yw3AdgyGAuVT04D3CCFd
+         74G38YuJ96xb+asl0BBpyeOgEwHLgSg7BSDrge0C3fYNkzPmtc2DbktMjgFkWW1HbCv8
+         RmoMSDNOnlMHDnUAvfubP/yVB8LIgLT3t0gLKQdmzIpnyDq/6+8b4sJUtdppO3qLlfj2
+         6Kfg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=K8IHvE3X;
+       dkim=pass header.i=@linaro.org header.s=google header.b=hOKJhL2Y;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l19si6705954otf.144.2021.04.16.08.38.58
+        by mx.google.com with ESMTPS id l5si6507920ion.8.2021.04.16.08.26.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Apr 2021 08:38:59 -0700 (PDT)
+        Fri, 16 Apr 2021 08:26:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=K8IHvE3X;
+       dkim=pass header.i=@linaro.org header.s=google header.b=hOKJhL2Y;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Received: from localhost ([::1]:58322 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:41416 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lXQYc-0001vE-EO
-	for alex.bennee@linaro.org; Fri, 16 Apr 2021 11:38:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34390)
+	id 1lXQMG-0002nU-1Q
+	for alex.bennee@linaro.org; Fri, 16 Apr 2021 11:26:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60206)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <iii@linux.ibm.com>)
- id 1lXQYD-0001sz-Uc; Fri, 16 Apr 2021 11:38:33 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:13414)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <iii@linux.ibm.com>)
- id 1lXQY9-0003Lb-Nf; Fri, 16 Apr 2021 11:38:33 -0400
-Received: from pps.filterd (m0098394.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 13GFXcOx039498; Fri, 16 Apr 2021 11:38:26 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : subject :
- from : to : cc : date : in-reply-to : references : content-type :
- mime-version : content-transfer-encoding; s=pp1;
- bh=e2SU2g2/zCBueh66b1Oqp1fW2nAVAIzTaSB+N0Avwbk=;
- b=K8IHvE3X+051R+TOAsTRsGRBLxm28Ft4+nN2Ldii3B4bkpPXjdMlcAScmsH3yY/IUa5g
- mNt9kV7Znf+kGaTvgXPXpNPWiw35coJw8SRpZ6pQWrrMQxEdcH9vxK7L7frBomn8yJjZ
- yAQ01uu6uVwkjgcX7i0NyQpN4MQ19H9MvQUFNMRlyxNJte9LGjFBn38xUia302uREUjo
- 6gKBzqB5mGL2Gg4bK1OMtJffFVEPQRZiyf3OGn67wVfhaLM6LUhXofBhUxizprV7Cp29
- pBWT31lv468ND8heiUoyzNd87QiKG3ztySpVz5WxfKinpMQqbhiOFLfPIaf2oQhxw5Qn 0w== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com with ESMTP id 37yan15f6f-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 16 Apr 2021 11:38:26 -0400
-Received: from m0098394.ppops.net (m0098394.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 13GFZAAe045774;
- Fri, 16 Apr 2021 11:38:26 -0400
-Received: from ppma01fra.de.ibm.com (46.49.7a9f.ip4.static.sl-reverse.com
- [159.122.73.70])
- by mx0a-001b2d01.pphosted.com with ESMTP id 37yan15f5q-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 16 Apr 2021 11:38:26 -0400
-Received: from pps.filterd (ppma01fra.de.ibm.com [127.0.0.1])
- by ppma01fra.de.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 13GFcNSd013843;
- Fri, 16 Apr 2021 15:38:23 GMT
-Received: from b06cxnps4074.portsmouth.uk.ibm.com
- (d06relay11.portsmouth.uk.ibm.com [9.149.109.196])
- by ppma01fra.de.ibm.com with ESMTP id 37u3n8af59-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 16 Apr 2021 15:38:23 +0000
-Received: from d06av22.portsmouth.uk.ibm.com (d06av22.portsmouth.uk.ibm.com
- [9.149.105.58])
- by b06cxnps4074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 13GFcLTv40239462
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 16 Apr 2021 15:38:21 GMT
-Received: from d06av22.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 1C5974C044;
- Fri, 16 Apr 2021 15:38:21 +0000 (GMT)
-Received: from d06av22.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 215914C040;
- Fri, 16 Apr 2021 15:38:20 +0000 (GMT)
-Received: from sig-9-145-157-105.de.ibm.com (unknown [9.145.157.105])
- by d06av22.portsmouth.uk.ibm.com (Postfix) with ESMTP;
- Fri, 16 Apr 2021 15:38:20 +0000 (GMT)
-Message-ID: <367a0f58dec6295474bd765b9cb2010e3e43e3cf.camel@linux.ibm.com>
-Subject: Re: [PATCH v4 2/4] target/arm: Make sure that commpage's tb->size != 0
-From: Ilya Leoshkevich <iii@linux.ibm.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 16 Apr 2021 17:38:19 +0200
-In-Reply-To: <CAFEAcA-8yh2GNEdP5yuY=_rKG_g4TLHauU=nYfGR_O-fT-2oMw@mail.gmail.com>
-References: <20210415130305.28640-1-iii@linux.ibm.com>
- <20210415130305.28640-3-iii@linux.ibm.com>
- <CAFEAcA-8yh2GNEdP5yuY=_rKG_g4TLHauU=nYfGR_O-fT-2oMw@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.38.4 (3.38.4-1.fc33) 
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1lXQM6-0002lw-H4
+ for qemu-arm@nongnu.org; Fri, 16 Apr 2021 11:26:02 -0400
+Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535]:42946)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1lXQM4-00062I-Tv
+ for qemu-arm@nongnu.org; Fri, 16 Apr 2021 11:26:02 -0400
+Received: by mail-pg1-x535.google.com with SMTP id g35so19389372pgg.9
+ for <qemu-arm@nongnu.org>; Fri, 16 Apr 2021 08:26:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:references:from:message-id:date:user-agent:mime-version
+ :in-reply-to:content-language:content-transfer-encoding;
+ bh=NnuoOxPPrHMSCIm4Zej+9wfvlkfgebd1GmyNbptrKCk=;
+ b=hOKJhL2YKrcucXA3tAuJ+F1usvMZoIFZe75RHTIU4J2MbYF2/byyVOGFO/TsOtkLw1
+ wbzqLPv9XVO3d/3DNfjL/xQjQmuR4Bu9GHCxMXKheN3sqbkPxD/Z2x4tncG10OLv0dFe
+ X0w9hig2FoyMr88nQg/sZ2b2SBD5bH/VKALXJWML6tfOkkE28wcg8CiSGJhSZvx9X/TH
+ eKm044ywALTRAjqFUg4YuIx3nhttOZzY0qGfSDDPQ0iw4UxcV6Kg0Gb3nC0k+Sl7iSmu
+ DnJIhm6Ztdwug4H+jTOal3vzNADm8HSU52RYWhHvpMflxrR9X1zjk9MgwLWi1qXGXGkj
+ vfYg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=NnuoOxPPrHMSCIm4Zej+9wfvlkfgebd1GmyNbptrKCk=;
+ b=p12q9UxecrNkrJDSztNMLkQjwaq9kvmwaKn6Aw7Wbuct13YLPQWu7Ll4zgqNVVbmiO
+ 1ipNTBtFCNiMQ+dVYfqOZtHiYxAonNuhNQseZWGXiL65eI3kGKCS+3THVUcDgoi3JEEB
+ LLIgpOgTz4yyz03Iyds9LP2utI3s89B6ccY/TGz42IxdbJIhJsq2tm2jE7N/61Z6jEqu
+ yk9v73TUEercuplIFk9KdmBH1YuB9nOdAAT4AtTFUSXCYi8xI1CFNjiDGDG96+kwOks0
+ IEPAg93yYgGWcEPYOqzzaDIYECIimXQUdVCt+h/oW6l4naTunA1QBMRRGYoNbJmla+wa
+ QhnA==
+X-Gm-Message-State: AOAM533ZF1kadb2A7uWDmVkK/PGnN07odBJHVF++59KH7ZNomRnOzaQo
+ HPzR71dk1F+pfID+HxJCBm6pfuGstIc51Q==
+X-Received: by 2002:a63:5301:: with SMTP id h1mr8402956pgb.109.1618586759408; 
+ Fri, 16 Apr 2021 08:25:59 -0700 (PDT)
+Received: from [192.168.1.11] ([71.212.131.83])
+ by smtp.gmail.com with ESMTPSA id c5sm5012941pfp.183.2021.04.16.08.25.58
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 16 Apr 2021 08:25:58 -0700 (PDT)
+Subject: Re: [PATCH for-6.0?] hw/arm/armsse: Make SSE-300 use Cortex-M55
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20210416104010.13228-1-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <4bf90c87-fb1e-c7bf-5a2f-dfc5d56eaa00@linaro.org>
+Date: Fri, 16 Apr 2021 08:25:56 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.1
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: CcpTy7wTcHWYepGH6ADNZ2i8H7i1UVQ-
-X-Proofpoint-ORIG-GUID: FijzFKZiYCMv358IswAFoya2G544m_yX
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.761
- definitions=2021-04-16_08:2021-04-16,
- 2021-04-16 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- adultscore=0 mlxlogscore=999
- impostorscore=0 phishscore=0 mlxscore=0 priorityscore=1501
- lowpriorityscore=0 spamscore=0 malwarescore=0 clxscore=1015 bulkscore=0
- suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2104060000 definitions=main-2104160112
-Received-SPF: pass client-ip=148.163.156.1; envelope-from=iii@linux.ibm.com;
- helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
+In-Reply-To: <20210416104010.13228-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::535;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x535.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -145,57 +120,24 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Thomas Huth <thuth@redhat.com>, David Hildenbrand <david@redhat.com>,
- Cornelia Huck <cohuck@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, Max Filippov <jcmvbkbc@gmail.com>,
- qemu-s390x <qemu-s390x@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ryZDjGxeSLQi
+X-TUID: sgIy0vUIRPX3
 
-On Fri, 2021-04-16 at 15:10 +0100, Peter Maydell wrote:
-> On Thu, 15 Apr 2021 at 14:03, Ilya Leoshkevich <iii@linux.ibm.com>
-> wrote:
-> > 
-> > tb_gen_code() assumes that tb->size must never be zero, otherwise
-> > it
-> > may produce spurious exceptions. For ARM this may happen when
-> > creating
-> > a translation block for the commpage.
-> > 
-> > Fix by pretending that commpage translation blocks have at least
-> > one
-> > instruction.
-> > 
-> > Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
-> > ---
-> >  target/arm/translate.c | 1 +
-> >  1 file changed, 1 insertion(+)
-> > 
-> > diff --git a/target/arm/translate.c b/target/arm/translate.c
-> > index 62b1c2081b..885f69b044 100644
-> > --- a/target/arm/translate.c
-> > +++ b/target/arm/translate.c
-> > @@ -9060,6 +9060,7 @@ static void
-> > arm_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
-> >      unsigned int insn;
-> > 
-> >      if (arm_pre_translate_insn(dc)) {
-> > +        dc->base.pc_next += 4;
-> >          return;
-> >      }
+On 4/16/21 3:40 AM, Peter Maydell wrote:
+> The SSE-300 has a Cortex-M55 (which was the whole reason for us
+> modelling it), but we forgot to actually update the code to let it
+> have a different CPU type from the IoTKit and SSE-200.  Add CPU type
+> as a field for ARMSSEInfo instead of hardcoding it to always use a
+> Cortex-M33.
 > 
-> Why does the call to arm_pre_translate_insn() in
-> arm_tr_translate_insn() need
-> this change but not the one in thumb_tr_translate_insn() ?
-> 
-> thanks
-> -- PMM
-> 
+> Buglink:https://bugs.launchpad.net/qemu/+bug/1923861
+> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
+> ---
+> This is a rather embarrassing bug. None of the test code I ran
+> on the a547 model actually cared about the CPU specifically being
+> an M55... Another one for the "maybe in rc4" bucket.
 
-My bad: the regtest did not hit it, and I haven't thought about it.
-I will send a v5 with `dc->base.pc_next += 2;` there.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
+r~

@@ -1,93 +1,109 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp599788lfr;
-        Fri, 16 Apr 2021 10:47:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyqMxiUfyfASU9CZ6BhFkVnA7j+nJpt07r8hDmfAXjqiaz6pV2T/mBXjPLx6UF9T2gcdecF
-X-Received: by 2002:a5e:db4b:: with SMTP id r11mr4532363iop.21.1618595244756;
-        Fri, 16 Apr 2021 10:47:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618595244; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp612448lfr;
+        Fri, 16 Apr 2021 11:05:47 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzPOmOOHM9ZvdFdd65LHaMslodwz/MYqRVTIW2eo9jGg9iqRN/oxtNgDcjgzlh9OA6ToXN/
+X-Received: by 2002:a05:6602:1612:: with SMTP id x18mr4494674iow.139.1618596347123;
+        Fri, 16 Apr 2021 11:05:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618596347; cv=none;
         d=google.com; s=arc-20160816;
-        b=F2JgLdQs9oVb4XzOoEmOJywkSlsNDwRGsUyxW+FNdg6dW7VioWsW02InRlIUi0dz1D
-         uZG2yhq1mpugftueEx5KNOOznOS15aP6uXA8+BYZLmAwD1T285Jm330oq4icmfoT/FBP
-         NlfDyiSOBtl4UH7nJyIqjAtNcqO2q7aBJkhTtl3tpEEVfI4yU6PpEFyePomNkbF2IuSg
-         nPn2aaz5McHkc6W7UdO4GgelDXbVTWWt/AWkbCXd188+e028fm0ecv/jwFWWDAXJqD3E
-         21rmaIsnKCFcgyp4gKYDmJUogQxm5ljptWzR05Raar+WAnUeTmQyaDcEdO1SpnAaYdJx
-         OMbQ==
+        b=kZlmGLtr9Xwo4xmiwn3PDTgwl3b8a3r7KhmLinMthfIhk/xjTxDh2ur63qxOQXdbGn
+         IvwdAflQKET8jkbul625NNGk/LwTBg+G129dHQQKNIaNaVwWJqhbt/QuWIdmYczzmQhi
+         6CiEEKV466vzjajSNaG6L0kby8PHV774+rqXV3jwkBHFe1Wh89V1/qjDqQfaB8swLK31
+         QEC4UigvSiuEhEqVf8iv+/crSnWJkXvUwHVRNl3S92enzTNIT3SIN1RKsjC0vcx4g13p
+         lfidYSA6u5tiAD/F3de9ggGoUku5eIxbwG1YH2MYUH+VoYf2TYI+3uA697KJCj98SckW
+         IN5Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=y6dFn6Z3wC5E3tAG1YdQHOKEo2fg0ZYb2jXFXpXbJIY=;
-        b=rbcyyeGdhasJFU0U3wtQuub1m95SiCGgZiL6G546ieK/whaKDXP/SClJFS4oH4loLd
-         CoKRenGUAHJ1vBx3w3YAc4fC0k0V9bo045d72Dx0vYEKCCslgBFdGQ7ioA8S6ZzmN6f7
-         JO5xraJlzPP+zbGojok1ev5Gtg/dyU+RJETuEJUlSuwMk2HSdqvWKxkbC4hjW/mjnnuY
-         3I+9SetmKDmdWxsRJlYi46tWOVOyjJ7CtlkeuaWiDDwWUJk+YoehzdT/b4eVjNTs1vHd
-         QvKKsgipBEFfdDOMct0ygHjD5wrgOAFP9397MguHLGcPjgzeMTLnWKRL2zTKutpAdFrv
-         Jfyw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=hz9a4hjciu21TFOJCSK8kwYsTaHAfAEQqBxTY2sg6/I=;
+        b=oP3+zCh+hIwzrMYseOK5oOt73EjtJjmR2fm0SHFjcpMJy299U+ucOLkbQZnzWImNMM
+         OTxvsmCyKQDWBycEpzbDS/mAp5ClE6iNgXEjMIFtEXBL97+NaEQfsKERreOWIlBuQVXJ
+         MJxoE4Fc4zqUj6QiT/T8Naw0jiGjJnlSORByTl6LRgpPHpPVCKF9ufPvwgUy57xoFHS9
+         4ESGwHQ5EM3pWwQzyICtbQCGrzuheVcNiaai94ELhg7ibgwCMI6R89rP3s5IxXd6VSW5
+         RjEa6EoxBQv9bQG4gZFJlBNc1QJlDpDwGkty5c04Wu0tyfmNAadLQMZ65wLSvbFODlcP
+         yT7Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@google.com header.s=20161025 header.b=UZcPmgJh;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j24si6688382jaq.83.2021.04.16.10.47.24
+        by mx.google.com with ESMTPS id m16si6263632iln.75.2021.04.16.11.05.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Apr 2021 10:47:24 -0700 (PDT)
+        Fri, 16 Apr 2021 11:05:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:39076 helo=lists1p.gnu.org)
+       dkim=pass header.i=@google.com header.s=20161025 header.b=UZcPmgJh;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:37964 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lXSYs-0003WM-SL
-	for alex.bennee@linaro.org; Fri, 16 Apr 2021 13:47:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49498)
+	id 1lXSqg-0001Fp-Ah
+	for alex.bennee@linaro.org; Fri, 16 Apr 2021 14:05:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60490)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1lXRWT-0000Cq-Sw; Fri, 16 Apr 2021 12:40:50 -0400
-Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:60845)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1lXRWL-0006Yn-06; Fri, 16 Apr 2021 12:40:47 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.143.58])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 37CBE9AD5B91;
- Fri, 16 Apr 2021 18:40:36 +0200 (CEST)
-Received: from kaod.org (37.59.142.98) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2242.4; Fri, 16 Apr
- 2021 18:40:35 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-98R002b11849c2-2740-452e-9983-4ab8ddb79c9f,
- 98643AE5B40D77660504470F9E4DE59E1F602129) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 90.89.73.13
-Subject: Re: [PATCH] aspeed: Add support for the quanta-q7l1-bmc board
-To: Patrick Venture <venture@google.com>, <peter.maydell@linaro.org>,
- <andrew@aj.id.au>, <joel@jms.id.au>
-References: <20210416162426.3217033-1-venture@google.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <4e5592b1-ea5b-0ef6-c837-1c7ac1476696@kaod.org>
-Date: Fri, 16 Apr 2021 18:40:34 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+ (Exim 4.90_1) (envelope-from <venture@google.com>)
+ id 1lXSQA-0005C2-25
+ for qemu-devel@nongnu.org; Fri, 16 Apr 2021 13:38:22 -0400
+Received: from mail-qk1-x734.google.com ([2607:f8b0:4864:20::734]:45637)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <venture@google.com>)
+ id 1lXSQ7-0007uJ-TF
+ for qemu-devel@nongnu.org; Fri, 16 Apr 2021 13:38:21 -0400
+Received: by mail-qk1-x734.google.com with SMTP id d23so17611248qko.12
+ for <qemu-devel@nongnu.org>; Fri, 16 Apr 2021 10:38:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=hz9a4hjciu21TFOJCSK8kwYsTaHAfAEQqBxTY2sg6/I=;
+ b=UZcPmgJhAkT1R/KHF/UgdvXzeOuL4PkGIgpC7O7D8NfiOzE96dk8t1KEjHZQwHiheM
+ wy2k2CLfYPDcDpuKAfbS6a7r2vL+LI0DdswbTUUDYkG08j8/0UBH85Suvh5eZN2cw1m9
+ lWzh3+qt2keEUgHCVPoUdaDj6Vl2l0PO5uVWJDIKb4IJBNIAVqYJ2rGFPC0vjNoGycyi
+ M/3lXL4OnxqUPHrN/4CHhFDHzav9vtVjlMfmZboKvAd/UQg70uY4ARHMqdqP56A+p4w/
+ RWYe74spLbluPYkSBlfwL3T4aHd4IP63evt/8q9J5ASZ8NNrtJCZk1JJipcHFQ16gn2p
+ Y6mA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=hz9a4hjciu21TFOJCSK8kwYsTaHAfAEQqBxTY2sg6/I=;
+ b=dm8+0Ri5DC1PFkzpskn9AtzEp1sxFlHvB1bXsp552HWabsMHXJBCoTC0f1Gr/gohVv
+ EnQdJZ9g9u0SYU5zB+5eVhCiE0spI3d4Gyqejp06CcSoYe11YEkv6vBXZhuu/1WrrXZ3
+ 5i/hk5BN8Cgd5P4VRhmbfhHxz9RVp7ypigCPU1cVl6BHYB9sKwUYJP/PARqOZEwmCNu1
+ Oo8k3LbeID3qoWvEN5pIp7byRy8GeKPO235l897J53Mk59Kgk8tD/yvXh1MSvrn9DcQk
+ LgIuZ7hg6quZEeGvcTGmhw4e8nghiQBMLEY7vvBkzCP+imk5P9NxSZ2v5zUPic4gdlO2
+ tD6Q==
+X-Gm-Message-State: AOAM5306t8a3XA9rfiu5JWTRubwRThHfJmOFJP35vsPP5+KOZkez51AP
+ +V2FaLna/Op27IPfnb4yLiNAHLE7AsrHJY2pJ9uhXA==
+X-Received: by 2002:a37:2ec4:: with SMTP id u187mr354995qkh.472.1618594697648; 
+ Fri, 16 Apr 2021 10:38:17 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20210416162426.3217033-1-venture@google.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.98]
-X-ClientProxiedBy: DAG2EX2.mxp5.local (172.16.2.12) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: c1b53316-44f5-4c77-8917-19b5c97873be
-X-Ovh-Tracer-Id: 13692068769463503721
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduledrudelhedguddtiecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeejkeduueduveelgeduueegkeelffevledujeetffeivdelvdfgkeeufeduheehfeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleeknecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehvvghnthhurhgvsehgohhoghhlvgdrtghomh
-Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
- helo=smtpout1.mo529.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20210416162426.3217033-1-venture@google.com>
+ <4e5592b1-ea5b-0ef6-c837-1c7ac1476696@kaod.org>
+In-Reply-To: <4e5592b1-ea5b-0ef6-c837-1c7ac1476696@kaod.org>
+From: Patrick Venture <venture@google.com>
+Date: Fri, 16 Apr 2021 10:38:06 -0700
+Message-ID: <CAO=notw0zZZt7U1-tyg9h8oC_TngRCNddEgmNbz=NnLojdYUYg@mail.gmail.com>
+Subject: Re: [PATCH] aspeed: Add support for the quanta-q7l1-bmc board
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+ Hao Wu <wuhaotsh@google.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::734;
+ envelope-from=venture@google.com; helo=mail-qk1-x734.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -100,134 +116,164 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Hao Wu <wuhaotsh@google.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: etEdIOlBaUH2
+X-TUID: 3D1eDK45vl9B
 
-Patrick,
+On Fri, Apr 16, 2021 at 9:40 AM C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+>
+> Patrick,
+>
+> On 4/16/21 6:24 PM, Patrick Venture wrote:
+> > The Quanta-Q71l BMC board is a board supported by OpenBMC.
+> >
+> > Tested: Booted quanta-q71l firmware.
+> > Signed-off-by: Patrick Venture <venture@google.com>
+> > Reviewed-by: Hao Wu <wuhaotsh@google.com>
+>
+> This looks good.
+>
+> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+>
+> Some comments below,
+>
+>
+> > ---
+> >  hw/arm/aspeed.c | 62 +++++++++++++++++++++++++++++++++++++++++++++++++
+> >  1 file changed, 62 insertions(+)
+> >
+> > diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> > index a17b75f494..4611996d21 100644
+> > --- a/hw/arm/aspeed.c
+> > +++ b/hw/arm/aspeed.c
+> > @@ -138,6 +138,19 @@ struct AspeedMachineState {
+> >  /* Witherspoon hardware value: 0xF10AD216 (but use romulus definition)=
+ */
+> >  #define WITHERSPOON_BMC_HW_STRAP1 ROMULUS_BMC_HW_STRAP1
+> >
+> > +/* Quanta-Q71l hardware value */
+> > +#define QUANTA_Q71L_BMC_HW_STRAP1 (                                   =
+  \
+> > +        SCU_AST2400_HW_STRAP_DRAM_SIZE(DRAM_SIZE_128MB) |             =
+  \
+> > +        SCU_AST2400_HW_STRAP_DRAM_CONFIG(2/* DDR3 with CL=3D6, CWL=3D5=
+ */) | \
+> > +        SCU_AST2400_HW_STRAP_ACPI_DIS |                               =
+  \
+> > +        SCU_AST2400_HW_STRAP_SET_CLK_SOURCE(AST2400_CLK_24M_IN) |     =
+  \
+> > +        SCU_HW_STRAP_VGA_CLASS_CODE |                                 =
+  \
+> > +        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_PASS_THROUGH) |        =
+  \
+> > +        SCU_AST2400_HW_STRAP_SET_CPU_AHB_RATIO(AST2400_CPU_AHB_RATIO_2=
+_1) | \
+> > +        SCU_HW_STRAP_SPI_WIDTH |                                      =
+  \
+> > +        SCU_HW_STRAP_VGA_SIZE_SET(VGA_8M_DRAM) |                      =
+  \
+> > +        SCU_AST2400_HW_STRAP_BOOT_MODE(AST2400_SPI_BOOT))
+> > +
+> >  /* AST2600 evb hardware value */
+> >  #define AST2600_EVB_HW_STRAP1 0x000000C0
+> >  #define AST2600_EVB_HW_STRAP2 0x00000003
+> > @@ -433,6 +446,34 @@ static void palmetto_bmc_i2c_init(AspeedMachineSta=
+te *bmc)
+> >      object_property_set_int(OBJECT(dev), "temperature3", 110000, &erro=
+r_abort);
+> >  }
+> >
+> > +static void quanta_q71l_bmc_i2c_init(AspeedMachineState *bmc)
+> > +{
+> > +    AspeedSoCState *soc =3D &bmc->soc;
+> > +
+> > +    /*
+> > +     * The quanta-q71l platform expects tmp75s which are compatible wi=
+th
+> > +     * tmp105s.
+> > +     */
+> > +    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105"=
+, 0x4c);
+> > +    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105"=
+, 0x4e);
+> > +    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105"=
+, 0x4f);
+> > +
+> > +    /* TODO: i2c-1: Add baseboard FRU eeprom@54 24c64 */
+>
+> Why not add the eeprom devices ?
 
-On 4/16/21 6:24 PM, Patrick Venture wrote:
-> The Quanta-Q71l BMC board is a board supported by OpenBMC.
-> 
-> Tested: Booted quanta-q71l firmware.
-> Signed-off-by: Patrick Venture <venture@google.com>
-> Reviewed-by: Hao Wu <wuhaotsh@google.com>
+I wanted to provide this ahead of filling it all out, I also have the
+pca954x staged, and some other devices to add.  If you want, I can add
+those and make this into a patch series instead of a one-off.
 
-This looks good. 
+>
+> > +    /* TODO: i2c-1: Add Frontpanel FRU eeprom@57 24c64 */
+> > +    /* TODO: Add Memory Riser i2c mux and eeproms. */
+> > +
+> > +    /* TODO: i2c-2: pca9546@74 */
+> > +    /* TODO: i2c-2: pca9548@77 */
+> > +    /* TODO: i2c-3: Add BIOS FRU eeprom@56 24c64 */
+> > +    /* TODO: i2c-7: Add pca9546@70 */
+> > +    /*        - i2c@0: pmbus@59 */
+> > +    /*        - i2c@1: pmbus@58 */
+> > +    /*        - i2c@2: pmbus@58 */
+> > +    /*        - i2c@3: pmbus@59 */
+> > +    /* TODO: i2c-7: Add PDB FRU eeprom@52 */
+> > +    /* TODO: i2c-8: Add BMC FRU eeprom@50 */
+> > +}
+> > +
+> >  static void ast2500_evb_i2c_init(AspeedMachineState *bmc)
+> >  {
+> >      AspeedSoCState *soc =3D &bmc->soc;
+> > @@ -728,6 +769,23 @@ static void aspeed_machine_palmetto_class_init(Obj=
+ectClass *oc, void *data)
+> >          aspeed_soc_num_cpus(amc->soc_name);
+> >  };
+> >
+> > +static void aspeed_machine_quanta_q71l_class_init(ObjectClass *oc, voi=
+d *data)
+> > +{
+> > +    MachineClass *mc =3D MACHINE_CLASS(oc);
+> > +    AspeedMachineClass *amc =3D ASPEED_MACHINE_CLASS(oc);
+> > +
+> > +    mc->desc       =3D "Quanta-Q71l BMC (ARM926EJ-S)";
+> > +    amc->soc_name  =3D "ast2400-a1";
+> > +    amc->hw_strap1 =3D QUANTA_Q71L_BMC_HW_STRAP1;
+> > +    amc->fmc_model =3D "n25q256a";
+> > +    amc->spi_model =3D "mx25l25635e";
+> > +    amc->num_cs    =3D 1;
+> > +    amc->i2c_init  =3D quanta_q71l_bmc_i2c_init;
+> > +    mc->default_ram_size       =3D 128 * MiB;
+>
+> I thought the board had more RAM ?
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
+It does not :(  Trying to maintain OpenBMC with such little memory
+overhead has been less than fun, but it's do-able.
 
-Some comments below, 
-
-
-> ---
->  hw/arm/aspeed.c | 62 +++++++++++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 62 insertions(+)
-> 
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index a17b75f494..4611996d21 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -138,6 +138,19 @@ struct AspeedMachineState {
->  /* Witherspoon hardware value: 0xF10AD216 (but use romulus definition) */
->  #define WITHERSPOON_BMC_HW_STRAP1 ROMULUS_BMC_HW_STRAP1
->  
-> +/* Quanta-Q71l hardware value */
-> +#define QUANTA_Q71L_BMC_HW_STRAP1 (                                     \
-> +        SCU_AST2400_HW_STRAP_DRAM_SIZE(DRAM_SIZE_128MB) |               \
-> +        SCU_AST2400_HW_STRAP_DRAM_CONFIG(2/* DDR3 with CL=6, CWL=5 */) | \
-> +        SCU_AST2400_HW_STRAP_ACPI_DIS |                                 \
-> +        SCU_AST2400_HW_STRAP_SET_CLK_SOURCE(AST2400_CLK_24M_IN) |       \
-> +        SCU_HW_STRAP_VGA_CLASS_CODE |                                   \
-> +        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_PASS_THROUGH) |          \
-> +        SCU_AST2400_HW_STRAP_SET_CPU_AHB_RATIO(AST2400_CPU_AHB_RATIO_2_1) | \
-> +        SCU_HW_STRAP_SPI_WIDTH |                                        \
-> +        SCU_HW_STRAP_VGA_SIZE_SET(VGA_8M_DRAM) |                        \
-> +        SCU_AST2400_HW_STRAP_BOOT_MODE(AST2400_SPI_BOOT))
-> +
->  /* AST2600 evb hardware value */
->  #define AST2600_EVB_HW_STRAP1 0x000000C0
->  #define AST2600_EVB_HW_STRAP2 0x00000003
-> @@ -433,6 +446,34 @@ static void palmetto_bmc_i2c_init(AspeedMachineState *bmc)
->      object_property_set_int(OBJECT(dev), "temperature3", 110000, &error_abort);
->  }
->  
-> +static void quanta_q71l_bmc_i2c_init(AspeedMachineState *bmc)
-> +{
-> +    AspeedSoCState *soc = &bmc->soc;
-> +
-> +    /*
-> +     * The quanta-q71l platform expects tmp75s which are compatible with
-> +     * tmp105s.
-> +     */
-> +    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105", 0x4c);
-> +    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105", 0x4e);
-> +    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105", 0x4f);
-> +
-> +    /* TODO: i2c-1: Add baseboard FRU eeprom@54 24c64 */
-
-Why not add the eeprom devices ? 
-
-> +    /* TODO: i2c-1: Add Frontpanel FRU eeprom@57 24c64 */
-> +    /* TODO: Add Memory Riser i2c mux and eeproms. */
-> +
-> +    /* TODO: i2c-2: pca9546@74 */
-> +    /* TODO: i2c-2: pca9548@77 */
-> +    /* TODO: i2c-3: Add BIOS FRU eeprom@56 24c64 */
-> +    /* TODO: i2c-7: Add pca9546@70 */
-> +    /*        - i2c@0: pmbus@59 */
-> +    /*        - i2c@1: pmbus@58 */
-> +    /*        - i2c@2: pmbus@58 */
-> +    /*        - i2c@3: pmbus@59 */
-> +    /* TODO: i2c-7: Add PDB FRU eeprom@52 */
-> +    /* TODO: i2c-8: Add BMC FRU eeprom@50 */
-> +}
-> +
->  static void ast2500_evb_i2c_init(AspeedMachineState *bmc)
->  {
->      AspeedSoCState *soc = &bmc->soc;
-> @@ -728,6 +769,23 @@ static void aspeed_machine_palmetto_class_init(ObjectClass *oc, void *data)
->          aspeed_soc_num_cpus(amc->soc_name);
->  };
->  
-> +static void aspeed_machine_quanta_q71l_class_init(ObjectClass *oc, void *data)
-> +{
-> +    MachineClass *mc = MACHINE_CLASS(oc);
-> +    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
-> +
-> +    mc->desc       = "Quanta-Q71l BMC (ARM926EJ-S)";
-> +    amc->soc_name  = "ast2400-a1";
-> +    amc->hw_strap1 = QUANTA_Q71L_BMC_HW_STRAP1;
-> +    amc->fmc_model = "n25q256a";
-> +    amc->spi_model = "mx25l25635e";
-> +    amc->num_cs    = 1;
-> +    amc->i2c_init  = quanta_q71l_bmc_i2c_init;
-> +    mc->default_ram_size       = 128 * MiB;
-
-I thought the board had more RAM ? 
-
-Thanks,
-
-C.
-
-> +    mc->default_cpus = mc->min_cpus = mc->max_cpus =
-> +        aspeed_soc_num_cpus(amc->soc_name);
-> +}
-> +
->  static void aspeed_machine_supermicrox11_bmc_class_init(ObjectClass *oc,
->                                                          void *data)
->  {
-> @@ -927,6 +985,10 @@ static const TypeInfo aspeed_machine_types[] = {
->          .name          = MACHINE_TYPE_NAME("g220a-bmc"),
->          .parent        = TYPE_ASPEED_MACHINE,
->          .class_init    = aspeed_machine_g220a_class_init,
-> +    }, {
-> +        .name          = MACHINE_TYPE_NAME("quanta-q71l-bmc"),
-> +        .parent        = TYPE_ASPEED_MACHINE,
-> +        .class_init    = aspeed_machine_quanta_q71l_class_init,
->      }, {
->          .name          = TYPE_ASPEED_MACHINE,
->          .parent        = TYPE_MACHINE,
-> 
-
+>
+> Thanks,
+>
+> C.
+>
+> > +    mc->default_cpus =3D mc->min_cpus =3D mc->max_cpus =3D
+> > +        aspeed_soc_num_cpus(amc->soc_name);
+> > +}
+> > +
+> >  static void aspeed_machine_supermicrox11_bmc_class_init(ObjectClass *o=
+c,
+> >                                                          void *data)
+> >  {
+> > @@ -927,6 +985,10 @@ static const TypeInfo aspeed_machine_types[] =3D {
+> >          .name          =3D MACHINE_TYPE_NAME("g220a-bmc"),
+> >          .parent        =3D TYPE_ASPEED_MACHINE,
+> >          .class_init    =3D aspeed_machine_g220a_class_init,
+> > +    }, {
+> > +        .name          =3D MACHINE_TYPE_NAME("quanta-q71l-bmc"),
+> > +        .parent        =3D TYPE_ASPEED_MACHINE,
+> > +        .class_init    =3D aspeed_machine_quanta_q71l_class_init,
+> >      }, {
+> >          .name          =3D TYPE_ASPEED_MACHINE,
+> >          .parent        =3D TYPE_MACHINE,
+> >
+>

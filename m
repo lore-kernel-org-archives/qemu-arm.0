@@ -1,102 +1,104 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp652382lfr;
-        Fri, 16 Apr 2021 12:05:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyUHmIWTjYhbukeBqGij1UkVwlkozTLl6gh26DShQAZslrAaJ3SHple3j5lMeDWqHcR05OC
-X-Received: by 2002:a92:6a06:: with SMTP id f6mr8033441ilc.19.1618599939791;
-        Fri, 16 Apr 2021 12:05:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618599939; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp654439lfr;
+        Fri, 16 Apr 2021 12:08:20 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyTRnEnjZCWUUoIeaLzI3HqbKakKsVp1VTozl9qNZZVgY8q35usufiMUNUqvYvL2EQWDdo7
+X-Received: by 2002:a6b:cd08:: with SMTP id d8mr4703397iog.69.1618600100316;
+        Fri, 16 Apr 2021 12:08:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618600100; cv=none;
         d=google.com; s=arc-20160816;
-        b=naB5IQ6sSai9HWYnvrg1MAJ1ZtYBUQ25Fr0Z6kZjdGRrMPmVU8uni2uUuV68WzD7jz
-         2oSKMwXFoMorip4cm/bhb/+Jxz9jzDHAHSHtUJhX+tuQLmFsUMblMBwCCzo7GH9w+A5X
-         yir2KFrtlLnutVvuAWVgEhd0egXVERhDz6nruOFudDGPi+hQdhdjT+3sRutP+PNSSLSQ
-         NPtjRPHL279qvjpgYfN366sKQa1vY5osEqmk3gkS/qf/i2c1UepvaloZBmK7XdJ43uM8
-         S9FveY4B3DHlz0BiXARepv9cVtR80sJhVpxlDRiNlsuoKFO1RHYU2br+jsEehHZCQ6JA
-         d9NA==
+        b=IfqyTF2U84hWfSDdbYt43/j5GrqbVt0HTUzI9FHOksnN6OKPVwTmc6Kq6zRrkRW+hM
+         EdyameaPOPnx4tRxJ+02eU1sityIFIYK9tKsqVkZY4li7fNsfQWviS4mAgtNeX5Myus/
+         po7LnnyPqy1L7HqaoUc+ndhtYpcyALjHblyP2uev+CBdadRRHILxyfnjHdPBjfMuE4G6
+         WzLnuUlm7ykOHknnwKe3KVVxOogwkCqGBkBwEGCh2CkRBRM6cjOm7ZgiE7I5jL5FoLPk
+         2L99k0tTyyW1RVsUOVH+WVbw/od5fJGlQ86QpJpL+S+0KufMDBDpkMl5TE0VRrWh6K6B
+         XXqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=bDMvl+749g2gHgGetA4XPQIS7uWfkEL7qLXDdrTbRa4=;
-        b=cPWRaJI4rBTMsWOqcaaR02DMhCoKtzMWwBr5ZfxCLMSqJNjKzL1pqwvghwSXlkGlT/
-         9Ke7tBUdY/YzhsdUQT8inO/AXq98UsuWHf7bSYIGYFrY1MyGl84mJNy+RzZuti17/F1W
-         g18QzUD2E6rBgda4sFftRdtwQAYQ6y2HDjMkHgcMDhCtCFRM9tJlzUGh7sCNIFK81Fs1
-         gCdm87PNz0/7gRGRbERnQX82tf75acFHNqyyJ4xOC3dwDnSCQOuENNBSXZ9auf4ZxXp/
-         SQXAdefbtU3Wd0JPSjwobabIQ3tipZMNP11M/g50kqfXwkbV+RQ4Lf++rbgGa9obHw6x
-         8jZQ==
+        bh=MMkcYruCLlbuVyp3rgi2e1FgoVe00zt1vg+jkG6WDEw=;
+        b=Na1zrq2tkwG16AiDa/bO2s6F6iEq05ZlGM1mrkfXanxIr685x0sy9dysRDz+q2/xV8
+         TDF1UlBiMhYl2/Yh2wE5E+tcc0HX87cToH4ZYMycRo2BoaFdxKUbYRbe9rQrXrTKJOGY
+         es0IhxS4wcNaZSVo7bsrTMufeLnVAP1UiLUD3x/rNU1EiFoqGzpZ6nL6xxNN2s7WOh3q
+         SPaxn1yb60xjFSmGTgY0wfRhTt1s3wjGO5gKjBWB817WmQyXLdSORj7MJPISbsyyO2yA
+         Qg+XgMHNQYJacdyGWCz6tGbgaHz8oidF9utMy6eTmiUy9CbSNKGdnf2bRR1CTBz9L3J4
+         MMMg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Wed6EZOs;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=WtAMmV4l;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q17si7196974jar.77.2021.04.16.12.05.39
+        by mx.google.com with ESMTPS id p16si2061896ioj.48.2021.04.16.12.08.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Apr 2021 12:05:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 16 Apr 2021 12:08:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Wed6EZOs;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46344 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=WtAMmV4l;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:52802 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lXTmc-0000vP-SQ
-	for alex.bennee@linaro.org; Fri, 16 Apr 2021 15:05:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49980)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lXTpD-0003j1-Jx
+	for alex.bennee@linaro.org; Fri, 16 Apr 2021 15:08:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50208)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lXThS-0003QG-Vj
- for qemu-arm@nongnu.org; Fri, 16 Apr 2021 15:00:20 -0400
-Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430]:35588)
+ id 1lXThf-0003aU-Ag
+ for qemu-devel@nongnu.org; Fri, 16 Apr 2021 15:00:31 -0400
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030]:41548)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lXThG-0004FT-NS
- for qemu-arm@nongnu.org; Fri, 16 Apr 2021 15:00:16 -0400
-Received: by mail-pf1-x430.google.com with SMTP id h15so1257196pfv.2
- for <qemu-arm@nongnu.org>; Fri, 16 Apr 2021 12:00:06 -0700 (PDT)
+ id 1lXThP-0004K4-2y
+ for qemu-devel@nongnu.org; Fri, 16 Apr 2021 15:00:30 -0400
+Received: by mail-pj1-x1030.google.com with SMTP id
+ z22-20020a17090a0156b029014d4056663fso15127995pje.0
+ for <qemu-devel@nongnu.org>; Fri, 16 Apr 2021 12:00:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=bDMvl+749g2gHgGetA4XPQIS7uWfkEL7qLXDdrTbRa4=;
- b=Wed6EZOsZy1yKcS98o9YTbBK75ky/cFMBa6fnpUIWByC1KzcRluLfH2+0zbGiEKFnn
- xI52qEaP5vLOx4qTsDegmKwYJ9BCy+h4z3lT98lIVQ2jWa4TZrBvNIS6QRJiuYRWumQD
- X/WYF/NZe/KcjF4BVsPAkPgPXLmfKnMcI0bxfrING/y9MCDruTrcFSBGaptM7RxSgnmv
- DW9F1pRcBl1dVHClSiTV+0NFzoIhEl28AEEWrjriRKvbcYjIIDAGHRhedPvqzrNyjqSI
- wta2uOt2v6pz7aTz5+nmh3Q9eEwIkRWMr6/7W802qTYNQzDlxxkA7BRL5AZg/cWVyO2L
- I7CA==
+ bh=MMkcYruCLlbuVyp3rgi2e1FgoVe00zt1vg+jkG6WDEw=;
+ b=WtAMmV4l3G0pRz/bHX9xRlPZxa4CxzSjCeXCOAerdN1F4fDiPyiU66bhe434NmvhRn
+ BZzr+8RhhpehBdEr6+xoyeOkDrYrlyOjbjQLo8tvXUrwjVDvfLZL4MaKBaam4/isA5Ow
+ 01mymTYpFrYTKZlF1phS2wqez+BMhwhYPqURsk123nHebZwNFSsNa9XhRcxBYyEbSQZP
+ 0TWt0adHz9ZspSWOHHKR+QohxsAz4LF+pxRKJ/XsWEk+duNWpjRUbQZglqrwrIdDCBAZ
+ vrDOSihVlLwa3rTd3upwggmyL+WGO54mpwQayHwXhha1n2NuOc6iSMAp9YX/M6Q6ziAm
+ jY4g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=bDMvl+749g2gHgGetA4XPQIS7uWfkEL7qLXDdrTbRa4=;
- b=V/cIynFAOxyyniqKxq9A6dPmz2EvZx/47IdNL7i3uMhL5aF3B4lixDa8EXcYaiuFTV
- OushGnUOeAnIkY/4tlHj76IqCwsCkENXF/Vu7J9ixP9IO1B+BzS4ALEb+LHW8wfjGuT1
- 9+GX7vhHYsnYI+jEESMsIO7GzOjG7pXiQwoAL1S6D21gHkUWcxK/cSkN9LJ9Kthf6lWv
- kAcmzMWdcarfcm/pUZZ0qIyMBwqveXGk0CjgvQGN1Aw+164JwwHKyTEMzMVjBSLGVjuH
- W8rQ44AkmQIlAp3XfUJiTJdjy/1RiMO82p5YIhCtbQMyal0avb/juaZu3mpC+ZPYGC1H
- qPXQ==
-X-Gm-Message-State: AOAM532pAWwic4RFfCah2LwgKiFRftEjswZpQIz0vp/mAaPRl2iOha5q
- 6VMgxFY3QTRckRx7tifa+LzTDw==
-X-Received: by 2002:a05:6a00:212b:b029:259:73ac:7217 with SMTP id
- n11-20020a056a00212bb029025973ac7217mr5750045pfj.20.1618599605313; 
- Fri, 16 Apr 2021 12:00:05 -0700 (PDT)
+ bh=MMkcYruCLlbuVyp3rgi2e1FgoVe00zt1vg+jkG6WDEw=;
+ b=fB/eD8zMED7k7Dj7OkGyAiIL+hq/2F8zwCDq8xdlZ7aS71RKN13A8LcupGWkeZzWBm
+ QabFcn/KWlYhNYlqah4iytTkVtnvwIxUMk2SxsC9KE0YrwNdmxDk7lwM1JOMQHYdIaLv
+ bRuWt7xfW9EJWpyzAodjC3EoosINkxApFPBzqAJrxn796rZ3ZusbldMzjNKZJc4t4Y8U
+ Lb3LmviNMRgtH98LSXGbl5WxEEPJxK6Nh5n0INfQVh66WpBg5F0yy9wixlqpnAKopF9Q
+ uyaUAzNIU1uqDsyqy5g4UTyV0cCWWukZHLhuKMNKopD4yYyuQ8wtovdLQkQh8oWuWWGj
+ dZgw==
+X-Gm-Message-State: AOAM532C9nSrifMu+sFXjdnY7Fa/Mgj7Py4XH0L2gy8fA2oawBjOUjyN
+ kUGEXy9NK5v40HrVMANteeUiHV0P3FvBdA==
+X-Received: by 2002:a17:90b:4384:: with SMTP id
+ in4mr8258671pjb.188.1618599611076; 
+ Fri, 16 Apr 2021 12:00:11 -0700 (PDT)
 Received: from localhost.localdomain ([71.212.131.83])
- by smtp.gmail.com with ESMTPSA id d7sm1988337pfv.197.2021.04.16.12.00.04
+ by smtp.gmail.com with ESMTPSA id d7sm1988337pfv.197.2021.04.16.12.00.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 16 Apr 2021 12:00:04 -0700 (PDT)
+ Fri, 16 Apr 2021 12:00:10 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v4 05/30] target/arm: Introduce CPUARMTBFlags
-Date: Fri, 16 Apr 2021 11:59:34 -0700
-Message-Id: <20210416185959.1520974-6-richard.henderson@linaro.org>
+Subject: [PATCH v4 11/30] target/arm: Merge gen_aa32_frob64 into
+ gen_aa32_ld_i64
+Date: Fri, 16 Apr 2021 11:59:40 -0700
+Message-Id: <20210416185959.1520974-12-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210416185959.1520974-1-richard.henderson@linaro.org>
 References: <20210416185959.1520974-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::430;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x430.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1030;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1030.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,301 +107,104 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: y6msN3iNnF2l
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: axTiqWYk1eow
 
-In preparation for splitting tb->flags across multiple
-fields, introduce a structure to hold the value(s).
-So far this only migrates the one uint32_t and fixes
-all of the places that require adjustment to match.
+This is the only caller.  Adjust some commentary to talk
+about SCTLR_B instead of the vanishing function.
 
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu.h           | 26 +++++++++++---------
- target/arm/translate.h     | 11 +++++++++
- target/arm/helper.c        | 50 +++++++++++++++++++++-----------------
- target/arm/translate-a64.c |  2 +-
- target/arm/translate.c     |  7 +++---
- 5 files changed, 59 insertions(+), 37 deletions(-)
+ target/arm/translate.c | 37 ++++++++++++++++---------------------
+ 1 file changed, 16 insertions(+), 21 deletions(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index b798ff8115..79af9a7c62 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -225,6 +225,10 @@ typedef struct ARMPACKey {
- } ARMPACKey;
- #endif
- 
-+/* See the commentary above the TBFLAG field definitions.  */
-+typedef struct CPUARMTBFlags {
-+    uint32_t flags;
-+} CPUARMTBFlags;
- 
- typedef struct CPUARMState {
-     /* Regs for current mode.  */
-@@ -253,7 +257,7 @@ typedef struct CPUARMState {
-     uint32_t aarch64; /* 1 if CPU is in aarch64 state; inverse of PSTATE.nRW */
- 
-     /* Cached TBFLAGS state.  See below for which bits are included.  */
--    uint32_t hflags;
-+    CPUARMTBFlags hflags;
- 
-     /* Frequently accessed CPSR bits are stored separately for efficiency.
-        This contains all the other bits.  Use cpsr_{read,write} to access
-@@ -3466,21 +3470,21 @@ FIELD(TBFLAG_A64, MTE0_ACTIVE, 19, 1)
-  * Helpers for using the above.
-  */
- #define DP_TBFLAG_ANY(DST, WHICH, VAL) \
--    (DST = FIELD_DP32(DST, TBFLAG_ANY, WHICH, VAL))
-+    (DST.flags = FIELD_DP32(DST.flags, TBFLAG_ANY, WHICH, VAL))
- #define DP_TBFLAG_A64(DST, WHICH, VAL) \
--    (DST = FIELD_DP32(DST, TBFLAG_A64, WHICH, VAL))
-+    (DST.flags = FIELD_DP32(DST.flags, TBFLAG_A64, WHICH, VAL))
- #define DP_TBFLAG_A32(DST, WHICH, VAL) \
--    (DST = FIELD_DP32(DST, TBFLAG_A32, WHICH, VAL))
-+    (DST.flags = FIELD_DP32(DST.flags, TBFLAG_A32, WHICH, VAL))
- #define DP_TBFLAG_M32(DST, WHICH, VAL) \
--    (DST = FIELD_DP32(DST, TBFLAG_M32, WHICH, VAL))
-+    (DST.flags = FIELD_DP32(DST.flags, TBFLAG_M32, WHICH, VAL))
- #define DP_TBFLAG_AM32(DST, WHICH, VAL) \
--    (DST = FIELD_DP32(DST, TBFLAG_AM32, WHICH, VAL))
-+    (DST.flags = FIELD_DP32(DST.flags, TBFLAG_AM32, WHICH, VAL))
- 
--#define EX_TBFLAG_ANY(IN, WHICH)   FIELD_EX32(IN, TBFLAG_ANY, WHICH)
--#define EX_TBFLAG_A64(IN, WHICH)   FIELD_EX32(IN, TBFLAG_A64, WHICH)
--#define EX_TBFLAG_A32(IN, WHICH)   FIELD_EX32(IN, TBFLAG_A32, WHICH)
--#define EX_TBFLAG_M32(IN, WHICH)   FIELD_EX32(IN, TBFLAG_M32, WHICH)
--#define EX_TBFLAG_AM32(IN, WHICH)  FIELD_EX32(IN, TBFLAG_AM32, WHICH)
-+#define EX_TBFLAG_ANY(IN, WHICH)   FIELD_EX32(IN.flags, TBFLAG_ANY, WHICH)
-+#define EX_TBFLAG_A64(IN, WHICH)   FIELD_EX32(IN.flags, TBFLAG_A64, WHICH)
-+#define EX_TBFLAG_A32(IN, WHICH)   FIELD_EX32(IN.flags, TBFLAG_A32, WHICH)
-+#define EX_TBFLAG_M32(IN, WHICH)   FIELD_EX32(IN.flags, TBFLAG_M32, WHICH)
-+#define EX_TBFLAG_AM32(IN, WHICH)  FIELD_EX32(IN.flags, TBFLAG_AM32, WHICH)
- 
- /**
-  * cpu_mmu_index:
-diff --git a/target/arm/translate.h b/target/arm/translate.h
-index 423b0e08df..f30287e554 100644
---- a/target/arm/translate.h
-+++ b/target/arm/translate.h
-@@ -394,6 +394,17 @@ typedef void CryptoThreeOpIntFn(TCGv_ptr, TCGv_ptr, TCGv_i32);
- typedef void CryptoThreeOpFn(TCGv_ptr, TCGv_ptr, TCGv_ptr);
- typedef void AtomicThreeOpFn(TCGv_i64, TCGv_i64, TCGv_i64, TCGArg, MemOp);
- 
-+/**
-+ * arm_tbflags_from_tb:
-+ * @tb: the TranslationBlock
-+ *
-+ * Extract the flag values from @tb.
-+ */
-+static inline CPUARMTBFlags arm_tbflags_from_tb(const TranslationBlock *tb)
-+{
-+    return (CPUARMTBFlags){ tb->flags };
-+}
-+
- /*
-  * Enum for argument to fpstatus_ptr().
-  */
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 2769e6fd35..9070b773a9 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -12984,8 +12984,9 @@ ARMMMUIdx arm_stage1_mmu_idx(CPUARMState *env)
- }
- #endif
- 
--static uint32_t rebuild_hflags_common(CPUARMState *env, int fp_el,
--                                      ARMMMUIdx mmu_idx, uint32_t flags)
-+static CPUARMTBFlags
-+rebuild_hflags_common(CPUARMState *env, int fp_el,
-+                      ARMMMUIdx mmu_idx, CPUARMTBFlags flags)
- {
-     DP_TBFLAG_ANY(flags, FPEXC_EL, fp_el);
-     DP_TBFLAG_ANY(flags, MMUIDX, arm_to_core_mmu_idx(mmu_idx));
-@@ -12996,8 +12997,9 @@ static uint32_t rebuild_hflags_common(CPUARMState *env, int fp_el,
-     return flags;
- }
- 
--static uint32_t rebuild_hflags_common_32(CPUARMState *env, int fp_el,
--                                         ARMMMUIdx mmu_idx, uint32_t flags)
-+static CPUARMTBFlags
-+rebuild_hflags_common_32(CPUARMState *env, int fp_el,
-+                         ARMMMUIdx mmu_idx, CPUARMTBFlags flags)
- {
-     bool sctlr_b = arm_sctlr_b(env);
- 
-@@ -13012,10 +13014,10 @@ static uint32_t rebuild_hflags_common_32(CPUARMState *env, int fp_el,
-     return rebuild_hflags_common(env, fp_el, mmu_idx, flags);
- }
- 
--static uint32_t rebuild_hflags_m32(CPUARMState *env, int fp_el,
--                                   ARMMMUIdx mmu_idx)
-+static CPUARMTBFlags
-+rebuild_hflags_m32(CPUARMState *env, int fp_el, ARMMMUIdx mmu_idx)
- {
--    uint32_t flags = 0;
-+    CPUARMTBFlags flags = {};
- 
-     if (arm_v7m_is_handler_mode(env)) {
-         DP_TBFLAG_M32(flags, HANDLER, 1);
-@@ -13035,18 +13037,19 @@ static uint32_t rebuild_hflags_m32(CPUARMState *env, int fp_el,
-     return rebuild_hflags_common_32(env, fp_el, mmu_idx, flags);
- }
- 
--static uint32_t rebuild_hflags_aprofile(CPUARMState *env)
-+static CPUARMTBFlags
-+rebuild_hflags_aprofile(CPUARMState *env)
- {
--    int flags = 0;
-+    CPUARMTBFlags flags = {};
- 
-     DP_TBFLAG_ANY(flags, DEBUG_TARGET_EL, arm_debug_target_el(env));
-     return flags;
- }
- 
--static uint32_t rebuild_hflags_a32(CPUARMState *env, int fp_el,
--                                   ARMMMUIdx mmu_idx)
-+static CPUARMTBFlags
-+rebuild_hflags_a32(CPUARMState *env, int fp_el, ARMMMUIdx mmu_idx)
- {
--    uint32_t flags = rebuild_hflags_aprofile(env);
-+    CPUARMTBFlags flags = rebuild_hflags_aprofile(env);
- 
-     if (arm_el_is_aa64(env, 1)) {
-         DP_TBFLAG_A32(flags, VFPEN, 1);
-@@ -13060,10 +13063,10 @@ static uint32_t rebuild_hflags_a32(CPUARMState *env, int fp_el,
-     return rebuild_hflags_common_32(env, fp_el, mmu_idx, flags);
- }
- 
--static uint32_t rebuild_hflags_a64(CPUARMState *env, int el, int fp_el,
--                                   ARMMMUIdx mmu_idx)
-+static CPUARMTBFlags
-+rebuild_hflags_a64(CPUARMState *env, int el, int fp_el, ARMMMUIdx mmu_idx)
- {
--    uint32_t flags = rebuild_hflags_aprofile(env);
-+    CPUARMTBFlags flags = rebuild_hflags_aprofile(env);
-     ARMMMUIdx stage1 = stage_1_mmu_idx(mmu_idx);
-     uint64_t tcr = regime_tcr(env, mmu_idx)->raw_tcr;
-     uint64_t sctlr;
-@@ -13179,7 +13182,7 @@ static uint32_t rebuild_hflags_a64(CPUARMState *env, int el, int fp_el,
-     return rebuild_hflags_common(env, fp_el, mmu_idx, flags);
- }
- 
--static uint32_t rebuild_hflags_internal(CPUARMState *env)
-+static CPUARMTBFlags rebuild_hflags_internal(CPUARMState *env)
- {
-     int el = arm_current_el(env);
-     int fp_el = fp_exception_el(env, el);
-@@ -13208,6 +13211,7 @@ void HELPER(rebuild_hflags_m32_newel)(CPUARMState *env)
-     int el = arm_current_el(env);
-     int fp_el = fp_exception_el(env, el);
-     ARMMMUIdx mmu_idx = arm_mmu_idx_el(env, el);
-+
-     env->hflags = rebuild_hflags_m32(env, fp_el, mmu_idx);
- }
- 
-@@ -13228,6 +13232,7 @@ void HELPER(rebuild_hflags_a32_newel)(CPUARMState *env)
-     int el = arm_current_el(env);
-     int fp_el = fp_exception_el(env, el);
-     ARMMMUIdx mmu_idx = arm_mmu_idx_el(env, el);
-+
-     env->hflags = rebuild_hflags_a32(env, fp_el, mmu_idx);
- }
- 
-@@ -13250,12 +13255,12 @@ void HELPER(rebuild_hflags_a64)(CPUARMState *env, int el)
- static inline void assert_hflags_rebuild_correctly(CPUARMState *env)
- {
- #ifdef CONFIG_DEBUG_TCG
--    uint32_t env_flags_current = env->hflags;
--    uint32_t env_flags_rebuilt = rebuild_hflags_internal(env);
-+    CPUARMTBFlags c = env->hflags;
-+    CPUARMTBFlags r = rebuild_hflags_internal(env);
- 
--    if (unlikely(env_flags_current != env_flags_rebuilt)) {
-+    if (unlikely(c.flags != r.flags)) {
-         fprintf(stderr, "TCG hflags mismatch (current:0x%08x rebuilt:0x%08x)\n",
--                env_flags_current, env_flags_rebuilt);
-+                c.flags, r.flags);
-         abort();
-     }
- #endif
-@@ -13264,10 +13269,11 @@ static inline void assert_hflags_rebuild_correctly(CPUARMState *env)
- void cpu_get_tb_cpu_state(CPUARMState *env, target_ulong *pc,
-                           target_ulong *cs_base, uint32_t *pflags)
- {
--    uint32_t flags = env->hflags;
-+    CPUARMTBFlags flags;
- 
-     *cs_base = 0;
-     assert_hflags_rebuild_correctly(env);
-+    flags = env->hflags;
- 
-     if (EX_TBFLAG_ANY(flags, AARCH64_STATE)) {
-         *pc = env->pc;
-@@ -13333,7 +13339,7 @@ void cpu_get_tb_cpu_state(CPUARMState *env, target_ulong *pc,
-         DP_TBFLAG_ANY(flags, PSTATE__SS, 1);
-     }
- 
--    *pflags = flags;
-+    *pflags = flags.flags;
- }
- 
- #ifdef TARGET_AARCH64
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 05d83a5f7a..b32ff56666 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -14670,7 +14670,7 @@ static void aarch64_tr_init_disas_context(DisasContextBase *dcbase,
-     DisasContext *dc = container_of(dcbase, DisasContext, base);
-     CPUARMState *env = cpu->env_ptr;
-     ARMCPU *arm_cpu = env_archcpu(env);
--    uint32_t tb_flags = dc->base.tb->flags;
-+    CPUARMTBFlags tb_flags = arm_tbflags_from_tb(dc->base.tb);
-     int bound, core_mmu_idx;
- 
-     dc->isar = &arm_cpu->isar;
 diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 6774d17e8f..5cec3966d6 100644
+index 5e6c40022f..91a19bc4f4 100644
 --- a/target/arm/translate.c
 +++ b/target/arm/translate.c
-@@ -8836,7 +8836,7 @@ static void arm_tr_init_disas_context(DisasContextBase *dcbase, CPUState *cs)
-     DisasContext *dc = container_of(dcbase, DisasContext, base);
-     CPUARMState *env = cs->env_ptr;
-     ARMCPU *cpu = env_archcpu(env);
--    uint32_t tb_flags = dc->base.tb->flags;
-+    CPUARMTBFlags tb_flags = arm_tbflags_from_tb(dc->base.tb);
-     uint32_t condexec, core_mmu_idx;
+@@ -975,20 +975,17 @@ static void gen_aa32_st_i32(DisasContext *s, TCGv_i32 val, TCGv_i32 a32,
+         gen_aa32_st_i32(s, val, a32, index, OPC);                       \
+     }
  
-     dc->isar = &cpu->isar;
-@@ -9348,12 +9348,13 @@ void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int max_insns)
+-static inline void gen_aa32_frob64(DisasContext *s, TCGv_i64 val)
+-{
+-    /* Not needed for user-mode BE32, where we use MO_BE instead.  */
+-    if (!IS_USER_ONLY && s->sctlr_b) {
+-        tcg_gen_rotri_i64(val, val, 32);
+-    }
+-}
+-
+ static void gen_aa32_ld_i64(DisasContext *s, TCGv_i64 val, TCGv_i32 a32,
+                             int index, MemOp opc)
  {
-     DisasContext dc = { };
-     const TranslatorOps *ops = &arm_translator_ops;
-+    CPUARMTBFlags tb_flags = arm_tbflags_from_tb(tb);
+     TCGv addr = gen_aa32_addr(s, a32, opc);
+     tcg_gen_qemu_ld_i64(val, addr, index, opc);
+-    gen_aa32_frob64(s, val);
++
++    /* Not needed for user-mode BE32, where we use MO_BE instead.  */
++    if (!IS_USER_ONLY && s->sctlr_b) {
++        tcg_gen_rotri_i64(val, val, 32);
++    }
++
+     tcg_temp_free(addr);
+ }
  
--    if (EX_TBFLAG_AM32(tb->flags, THUMB)) {
-+    if (EX_TBFLAG_AM32(tb_flags, THUMB)) {
-         ops = &thumb_translator_ops;
-     }
- #ifdef TARGET_AARCH64
--    if (EX_TBFLAG_ANY(tb->flags, AARCH64_STATE)) {
-+    if (EX_TBFLAG_ANY(tb_flags, AARCH64_STATE)) {
-         ops = &aarch64_translator_ops;
-     }
- #endif
+@@ -4987,16 +4984,13 @@ static void gen_load_exclusive(DisasContext *s, int rt, int rt2,
+         TCGv_i32 tmp2 = tcg_temp_new_i32();
+         TCGv_i64 t64 = tcg_temp_new_i64();
+ 
+-        /* For AArch32, architecturally the 32-bit word at the lowest
++        /*
++         * For AArch32, architecturally the 32-bit word at the lowest
+          * address is always Rt and the one at addr+4 is Rt2, even if
+          * the CPU is big-endian. That means we don't want to do a
+-         * gen_aa32_ld_i64(), which invokes gen_aa32_frob64() as if
+-         * for an architecturally 64-bit access, but instead do a
+-         * 64-bit access using MO_BE if appropriate and then split
+-         * the two halves.
+-         * This only makes a difference for BE32 user-mode, where
+-         * frob64() must not flip the two halves of the 64-bit data
+-         * but this code must treat BE32 user-mode like BE32 system.
++         * gen_aa32_ld_i64(), which checks SCTLR_B as if for an
++         * architecturally 64-bit access, but instead do a 64-bit access
++         * using MO_BE if appropriate and then split the two halves.
+          */
+         TCGv taddr = gen_aa32_addr(s, addr, opc);
+ 
+@@ -5056,14 +5050,15 @@ static void gen_store_exclusive(DisasContext *s, int rd, int rt, int rt2,
+         TCGv_i64 n64 = tcg_temp_new_i64();
+ 
+         t2 = load_reg(s, rt2);
+-        /* For AArch32, architecturally the 32-bit word at the lowest
++
++        /*
++         * For AArch32, architecturally the 32-bit word at the lowest
+          * address is always Rt and the one at addr+4 is Rt2, even if
+          * the CPU is big-endian. Since we're going to treat this as a
+          * single 64-bit BE store, we need to put the two halves in the
+          * opposite order for BE to LE, so that they end up in the right
+-         * places.
+-         * We don't want gen_aa32_frob64() because that does the wrong
+-         * thing for BE32 usermode.
++         * places.  We don't want gen_aa32_st_i64, because that checks
++         * SCTLR_B as if for an architectural 64-bit access.
+          */
+         if (s->be_data == MO_BE) {
+             tcg_gen_concat_i32_i64(n64, t2, t1);
 -- 
 2.25.1
 

@@ -1,138 +1,138 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp508790lfr;
-        Fri, 16 Apr 2021 08:52:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw/D/KxorxYzy/LVgs+677HLfLfaAfrQ0L7JH4jILbittmT34vTMc8XfOO9urqG1Cv0DMEs
-X-Received: by 2002:a05:6e02:156c:: with SMTP id k12mr5121098ilu.49.1618588372726;
-        Fri, 16 Apr 2021 08:52:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618588372; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp510834lfr;
+        Fri, 16 Apr 2021 08:55:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyuZNQ49Fmm+/+O21Kr+get0EcePueuDx8FxlJv6yYbMfiQIsj9QhmC+GTEXhXCYBs0ZdT9
+X-Received: by 2002:a05:6638:2044:: with SMTP id t4mr4813567jaj.12.1618588549202;
+        Fri, 16 Apr 2021 08:55:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618588549; cv=none;
         d=google.com; s=arc-20160816;
-        b=dKpq/mzsG8CoBDsXmi93F6nKe2gyllrddtbYR9eCO4dAkbWDMRICSC6A91yFI87x2r
-         FQuFCEGbgKtHu+OWnlm066Js08hWEccwCrOrdpn8oyB3S8L7LNMKJDcLPLQktGpcKsaD
-         TdtFUcSNvKf+8T+a/NCxD+6xBxB/cEC7203OpEjnpMzCeIPOqZCYqgalT5X/qiFtOpSI
-         deYJ1bNbj+PKPTHv7XV/99oPqitXuQkarlnQTdt3pPNreA1bGgQF7H2CCpsqo2z/Sdex
-         KXyJfr1XxCJfaOuxIDdOHfL1jrlSKm6C5I0TUtMGc0yQk4wWft3hfjLr6oWh9N3P8dz2
-         4Zrw==
+        b=A6vK9kX5fHg+fpBEn0dLE7FBuC04pa3Fv8+Q0T6kYLNZ3AQzk9yWaOfvmDb2YMbE1S
+         wd423yVmaZ3LIuTVsMwMnYOSXWYcjMaEzWFawFmJbEBJzvMtijGVvug7x63WEp0fX0GE
+         X7QKcR6fZF/VVl6ctTz6pcTm1U89TaSL9d4DWqmxCDeGHcd2PElSYD2+M/rp0zHWbHHm
+         b/KO8PEXo4llGSD3ZizHAnp3BUSbSywZaKnCDm1vSqEVSHSWzNJNOSAD00TlqGmvowBM
+         GZR2r+/VrpPRnhA0YQwsfq/NprkaPqItYw/36o69/UCGFzIUIZQZXv+Y7eaDmm8gbJAw
+         ljcQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=noW5sQQCRmg+yeWGQnejM9mslGtD7xpsjveru2Pctc0=;
-        b=i7koUiGXjYPY51GG4me+rcAgHpo3IwGhL0DMo2gBKxL68KzxKOYDP7c0dQoUKyQDAX
-         mVgspAkwZT/gb7QaA/5UiIjhp9mrV3A2b9k2/kJy21e2Jm1QAirxailWFc6MECp2wlgN
-         mYLtyrgPK9CiCotIHnVaFy2c2eQiApj5OPlje8K1A5zVKwHWDRlRhzWBDpUnAziDo069
-         wVoSzsJgHim+p9x3snua5/XWU2EVQnSMIcVtd9mPuo8CyyKbzOuWm8McPqYzpKrnMGFq
-         nwpt/nMECiNnOHG8yiPQBGZLcS2/xTlseCJTQjNDCYBXXZYtzvGRY2irkmkzFhxzJr8f
-         j81g==
+        bh=s+xocQN6xiHTQK3frx/YTOYIPSoAczd3F8sE78d4gjE=;
+        b=Ujs/At5q5OqKot0FAjoaJgtXEqdB3HTyhUkLy+uhromjbOAlETA+R6OfguwRRXgo3c
+         VFCWH0/5F3w4OEg/L6ZMWszMOp2d5vIzQp/87QA1O6okHiSOPrPdVOqel1Cf3nPvVJ0Z
+         W+pNxrvJzOaqzGOG2+5LjLh7qbXQe2xZffqj0lD3Rs6pwymsIoDUaxQGIUlvAYHQ//Oh
+         ssqT825gsgP565kmxhlEnZLMAsOUOOHaIpjw5xf/KQDt/MOEcb9wIOtj4Lk1cBWYVLsn
+         uDTUg/SkDqshV50ZJ1+SV0suFSMabTILytA5/FR3huVTIwMb389DnCROcAc4eCpyFYO+
+         vE1A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@ibm.com header.s=pp1 header.b="cg8F/jys";
+       dkim=fail header.i=@ibm.com header.s=pp1 header.b=Z2aQmGE6;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c15si2104427jag.124.2021.04.16.08.52.52
+        by mx.google.com with ESMTPS id a8si6617574ilj.99.2021.04.16.08.55.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Apr 2021 08:52:52 -0700 (PDT)
+        Fri, 16 Apr 2021 08:55:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@ibm.com header.s=pp1 header.b="cg8F/jys";
+       dkim=fail header.i=@ibm.com header.s=pp1 header.b=Z2aQmGE6;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Received: from localhost ([::1]:56304 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35570 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lXQm4-00053E-11
-	for alex.bennee@linaro.org; Fri, 16 Apr 2021 11:52:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36694)
+	id 1lXQou-00089b-Gq
+	for alex.bennee@linaro.org; Fri, 16 Apr 2021 11:55:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36738)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <iii@linux.ibm.com>)
- id 1lXQjA-00033s-8O; Fri, 16 Apr 2021 11:49:52 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:64850
- helo=mx0a-001b2d01.pphosted.com)
+ id 1lXQjC-00039S-Tu; Fri, 16 Apr 2021 11:49:54 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:64480)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <iii@linux.ibm.com>)
- id 1lXQj8-000085-GT; Fri, 16 Apr 2021 11:49:51 -0400
-Received: from pps.filterd (m0098419.ppops.net [127.0.0.1])
- by mx0b-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 13GFY0ia065465; Fri, 16 Apr 2021 11:49:48 -0400
+ id 1lXQj8-000087-Rg; Fri, 16 Apr 2021 11:49:54 -0400
+Received: from pps.filterd (m0098409.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
+ 13GFY8YY089936; Fri, 16 Apr 2021 11:49:48 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
  h=from : to : cc : subject
  : date : message-id : in-reply-to : references : mime-version :
  content-transfer-encoding; s=pp1;
- bh=noW5sQQCRmg+yeWGQnejM9mslGtD7xpsjveru2Pctc0=;
- b=cg8F/jysqjSbb7PeucDArGIptbmlBdPtiYacJHiGdbWcrii1qyricN9B+iszb47TJ8+j
- HUPRtTo+hqI3E0mxTbqxkWMiopaxW1rk5OatWaR6QiuvJ154K3IbX/ccbIpIjretUkbA
- gqYvbFTpA7i++fapDAmqheuxTjfGZu5Ok1OWtBCXi5ZllB9fUyDPXWUzbv8MSgzk3xDN
- F/MNkejimUHMD/FvG/FmLUA01SbFctYYS8teEKU6vlTM29xR1uYQyUygFFrk7v8ttYR4
- 9tffG3VdQX7nQQZL9P2LevtPSlVk8g8W05fg5gSAp4mnCTNhSG2+qoqYC1zQgTa9mRDs Qg== 
+ bh=s+xocQN6xiHTQK3frx/YTOYIPSoAczd3F8sE78d4gjE=;
+ b=Z2aQmGE6togKSwKC1E5MzwWyx35igdTQvyyi3PBrVf2s6BX7CzEl/etFyKWCDgKKHeHF
+ d5yF0aiTK3J2jmLBTvpb2r59yoUBYtQxCw+Fa3Su9FW+OooRGnErqHiJMTu8BdLtLNPa
+ mdYKxKDRDGdpWhmLWQBri8LNCkKEVjRZc/bLEzdDPN+GbI5iK9OI9xZQ7KMwhO2kDNR0
+ iRD+E4L1RdHJjnwsyNDzC4BV/aAmhopekYQOrOEgSu/739aRnkfUthCOcelKx+wwWUKC
+ 9uFkrOXTiOYlJdIEGSownQudT/7mG04ibG8QCt9lOm1Xaq2NHknXx3gcWpTILfNCrXBb 8Q== 
 Received: from pps.reinject (localhost [127.0.0.1])
- by mx0b-001b2d01.pphosted.com with ESMTP id 37xxnpq9rc-1
+ by mx0a-001b2d01.pphosted.com with ESMTP id 37y7babrnq-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
  Fri, 16 Apr 2021 11:49:48 -0400
-Received: from m0098419.ppops.net (m0098419.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 13GFYUHM067985;
- Fri, 16 Apr 2021 11:49:48 -0400
-Received: from ppma01fra.de.ibm.com (46.49.7a9f.ip4.static.sl-reverse.com
- [159.122.73.70])
- by mx0b-001b2d01.pphosted.com with ESMTP id 37xxnpq9qv-1
+Received: from m0098409.ppops.net (m0098409.ppops.net [127.0.0.1])
+ by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 13GFYhCB091628;
+ Fri, 16 Apr 2021 11:49:47 -0400
+Received: from ppma05fra.de.ibm.com (6c.4a.5195.ip4.static.sl-reverse.com
+ [149.81.74.108])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 37y7babrmy-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 16 Apr 2021 11:49:48 -0400
-Received: from pps.filterd (ppma01fra.de.ibm.com [127.0.0.1])
- by ppma01fra.de.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 13GFcoDE014255;
- Fri, 16 Apr 2021 15:49:46 GMT
-Received: from b06cxnps3074.portsmouth.uk.ibm.com
- (d06relay09.portsmouth.uk.ibm.com [9.149.109.194])
- by ppma01fra.de.ibm.com with ESMTP id 37u3n8af7q-1
+ Fri, 16 Apr 2021 11:49:47 -0400
+Received: from pps.filterd (ppma05fra.de.ibm.com [127.0.0.1])
+ by ppma05fra.de.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 13GFf6kr013259;
+ Fri, 16 Apr 2021 15:49:45 GMT
+Received: from b06cxnps4074.portsmouth.uk.ibm.com
+ (d06relay11.portsmouth.uk.ibm.com [9.149.109.196])
+ by ppma05fra.de.ibm.com with ESMTP id 37u3n8af9f-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 16 Apr 2021 15:49:46 +0000
+ Fri, 16 Apr 2021 15:49:45 +0000
 Received: from d06av25.portsmouth.uk.ibm.com (d06av25.portsmouth.uk.ibm.com
  [9.149.105.61])
- by b06cxnps3074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 13GFnhiW23462286
+ by b06cxnps4074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 13GFng4h35717400
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 16 Apr 2021 15:49:43 GMT
+ Fri, 16 Apr 2021 15:49:42 GMT
 Received: from d06av25.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 1B4E711C04C;
- Fri, 16 Apr 2021 15:49:43 +0000 (GMT)
-Received: from d06av25.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 7C00111C050;
+ by IMSVA (Postfix) with ESMTP id 0ACBE11C04A;
  Fri, 16 Apr 2021 15:49:42 +0000 (GMT)
+Received: from d06av25.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 74B9A11C04C;
+ Fri, 16 Apr 2021 15:49:41 +0000 (GMT)
 Received: from vm.lan (unknown [9.145.157.105])
  by d06av25.portsmouth.uk.ibm.com (Postfix) with ESMTP;
- Fri, 16 Apr 2021 15:49:42 +0000 (GMT)
+ Fri, 16 Apr 2021 15:49:41 +0000 (GMT)
 From: Ilya Leoshkevich <iii@linux.ibm.com>
 To: Cornelia Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  David Hildenbrand <david@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, Max Filippov <jcmvbkbc@gmail.com>
-Subject: [PATCH v5 2/4] target/arm: Make sure that commpage's tb->size != 0
-Date: Fri, 16 Apr 2021 17:49:37 +0200
-Message-Id: <20210416154939.32404-3-iii@linux.ibm.com>
+Subject: [PATCH v5 1/4] target/s390x: Fix translation exception on illegal
+ instruction
+Date: Fri, 16 Apr 2021 17:49:36 +0200
+Message-Id: <20210416154939.32404-2-iii@linux.ibm.com>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210416154939.32404-1-iii@linux.ibm.com>
 References: <20210416154939.32404-1-iii@linux.ibm.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: vmJfguCAx6tIG_ESjfhEJnw66f8i9uXT
-X-Proofpoint-ORIG-GUID: QpSuOqeBSt0GW49ex5au31BXOt4bM06M
+X-Proofpoint-ORIG-GUID: 87dxqVT9DS7zwBacRqnfZf9O_8-n7WJF
+X-Proofpoint-GUID: HRz2lxJcTEQUMQLkKGkFScSUER62jKm-
 X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.761
  definitions=2021-04-16_08:2021-04-16,
  2021-04-16 signatures=0
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- suspectscore=0 phishscore=0
- mlxscore=0 impostorscore=0 spamscore=0 malwarescore=0 clxscore=1015
- adultscore=0 lowpriorityscore=0 bulkscore=0 priorityscore=1501
- mlxlogscore=999 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2104060000 definitions=main-2104160113
-Received-SPF: pass client-ip=148.163.158.5; envelope-from=iii@linux.ibm.com;
+ mlxscore=0 phishscore=0
+ clxscore=1015 impostorscore=0 priorityscore=1501 bulkscore=0
+ lowpriorityscore=0 mlxlogscore=999 malwarescore=0 spamscore=0
+ suspectscore=0 adultscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.12.0-2104060000 definitions=main-2104160113
+Received-SPF: pass client-ip=148.163.156.1; envelope-from=iii@linux.ibm.com;
  helo=mx0a-001b2d01.pphosted.com
 X-Spam_score_int: -26
 X-Spam_score: -2.7
 X-Spam_bar: --
 X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -151,40 +151,93 @@ Cc: Christian Borntraeger <borntraeger@de.ibm.com>, qemu-s390x@nongnu.org,
  Ilya Leoshkevich <iii@linux.ibm.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ur2qSc43tUVA
+X-TUID: 7Nx02c2j+tYz
 
-tb_gen_code() assumes that tb->size must never be zero, otherwise it
-may produce spurious exceptions. For ARM this may happen when creating
-a translation block for the commpage.
+Hitting an uretprobe in a s390x TCG guest causes a SIGSEGV. What
+happens is:
 
-Fix by pretending that commpage translation blocks have at least one
-instruction.
+* uretprobe maps a userspace page containing an invalid instruction.
+* uretprobe replaces the target function's return address with the
+  address of that page.
+* When tb_gen_code() is called on that page, tb->size ends up being 0
+  (because the page starts with the invalid instruction), which causes
+  virt_page2 to point to the previous page.
+* The previous page is not mapped, so this causes a spurious
+  translation exception.
+
+tb->size must never be 0: even if there is an illegal instruction, the
+instruction bytes that have been looked at must count towards tb->size.
+So adjust s390x's translate_one() to act this way for both illegal
+instructions and instructions that are known to generate exceptions.
 
 Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
+Reviewed-by: David Hildenbrand <david@redhat.com>
 ---
- target/arm/translate.c | 2 ++
- 1 file changed, 2 insertions(+)
+ target/s390x/translate.c | 16 +++++++++++-----
+ 1 file changed, 11 insertions(+), 5 deletions(-)
 
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 62b1c2081b..cb9e30c341 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -9060,6 +9060,7 @@ static void arm_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
-     unsigned int insn;
- 
-     if (arm_pre_translate_insn(dc)) {
-+        dc->base.pc_next += 4;
-         return;
+diff --git a/target/s390x/translate.c b/target/s390x/translate.c
+index 4f953ddfba..e243624d2a 100644
+--- a/target/s390x/translate.c
++++ b/target/s390x/translate.c
+@@ -6412,7 +6412,8 @@ static DisasJumpType translate_one(CPUS390XState *env, DisasContext *s)
+         qemu_log_mask(LOG_UNIMP, "unimplemented opcode 0x%02x%02x\n",
+                       s->fields.op, s->fields.op2);
+         gen_illegal_opcode(s);
+-        return DISAS_NORETURN;
++        ret = DISAS_NORETURN;
++        goto out;
      }
  
-@@ -9129,6 +9130,7 @@ static void thumb_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
-     bool is_16bit;
+ #ifndef CONFIG_USER_ONLY
+@@ -6428,7 +6429,8 @@ static DisasJumpType translate_one(CPUS390XState *env, DisasContext *s)
+         /* privileged instruction */
+         if ((s->base.tb->flags & FLAG_MASK_PSTATE) && (insn->flags & IF_PRIV)) {
+             gen_program_exception(s, PGM_PRIVILEGED);
+-            return DISAS_NORETURN;
++            ret = DISAS_NORETURN;
++            goto out;
+         }
  
-     if (arm_pre_translate_insn(dc)) {
-+        dc->base.pc_next += 2;
-         return;
+         /* if AFP is not enabled, instructions and registers are forbidden */
+@@ -6455,7 +6457,8 @@ static DisasJumpType translate_one(CPUS390XState *env, DisasContext *s)
+             }
+             if (dxc) {
+                 gen_data_exception(dxc);
+-                return DISAS_NORETURN;
++                ret = DISAS_NORETURN;
++                goto out;
+             }
+         }
+ 
+@@ -6463,7 +6466,8 @@ static DisasJumpType translate_one(CPUS390XState *env, DisasContext *s)
+         if (insn->flags & IF_VEC) {
+             if (!((s->base.tb->flags & FLAG_MASK_VECTOR))) {
+                 gen_data_exception(0xfe);
+-                return DISAS_NORETURN;
++                ret = DISAS_NORETURN;
++                goto out;
+             }
+         }
+ 
+@@ -6484,7 +6488,8 @@ static DisasJumpType translate_one(CPUS390XState *env, DisasContext *s)
+             (insn->spec & SPEC_r1_f128 && !is_fp_pair(get_field(s, r1))) ||
+             (insn->spec & SPEC_r2_f128 && !is_fp_pair(get_field(s, r2)))) {
+             gen_program_exception(s, PGM_SPECIFICATION);
+-            return DISAS_NORETURN;
++            ret = DISAS_NORETURN;
++            goto out;
+         }
      }
  
+@@ -6544,6 +6549,7 @@ static DisasJumpType translate_one(CPUS390XState *env, DisasContext *s)
+     }
+ #endif
+ 
++out:
+     /* Advance to the next instruction.  */
+     s->base.pc_next = s->pc_tmp;
+     return ret;
 -- 
 2.29.2
 

@@ -1,192 +1,111 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp511325lfr;
-        Fri, 16 Apr 2021 08:56:30 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyGj1qdvAs//U3SnRaz2OywQGhVxyurfWF08gDuPmWMp7GpdephPJrNW6xHW82La2nBNc/m
-X-Received: by 2002:a02:6a09:: with SMTP id l9mr4653355jac.57.1618588590589;
-        Fri, 16 Apr 2021 08:56:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618588590; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp538896lfr;
+        Fri, 16 Apr 2021 09:28:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxI2Vb8HuMBFL34GhV9hG0W0rD4qgEDYeckuA7xKSFyjE1WqMn/uJtLrs8qs0N/VTx0U2e7
+X-Received: by 2002:a05:600c:4f8e:: with SMTP id n14mr9233645wmq.34.1618590483398;
+        Fri, 16 Apr 2021 09:28:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618590483; cv=none;
         d=google.com; s=arc-20160816;
-        b=xHH59BSb3LkdRH9Tf5PatVZrJKemtGMIas5j9aXDVq417mG3fEn9H+cLy8qUCopiuP
-         hKdqjmg8JPaPtFRvFc35EMGTkGwr0phTzQ5rXXpuUbvgjsjBI9fDTwk4nsFPd2nozLJo
-         vscqbLMUU8vF9RH84IGzWcv98sYLI2ZwPllGQ+beYZf/UcpM0cjojS3Uad0V+0gIBHYc
-         aoLAiiqrW6TbOG89/lkYEpjFMtw40KYUrFeNWhBGKUgkjYeHqFvZPOTH4UN6mAKqQDWy
-         t2yDsR9ei5dODuDJxffh7UENfAIIG63EkIvfFbNbEDRb8QXwNeAO92tSi62qO5MUR2Uf
-         vgbA==
+        b=LJW8N3jy470DAbsR4JKomEdevXLjAS3Xibi89WHY+3WUNqJxLQv1Nzhge/4A9E8psE
+         4Y5TD1QGH0izBJ+GKFwlRVhD3xEzWBHz1jlyzR7IBJ+NT61mOQlJJElcrEzIoAchKAfl
+         uycw64V4RQ1KgoUx2JH3MGmCHHc+ZWJ2M9XGVD454vsL8vc46tzkhD1px0+JsI37Fs4U
+         Zd6+CSzk4OMEjBteiCUoieId9pHCZiHLVRlS8JnKAOxTRbl1HZPaGKXa/sNRljquiFpP
+         kqMPxTpRP3xB9pWYsoHIUjMH4pfg8gYMq0lhDvtiiOX3Hpon78miIx2U+Ua0X468mlrF
+         +kaw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=3t2srugeftu7HAyHW8NUSjtAWg61QVEYVODVxFRV/qE=;
-        b=M8C1+ruYcuJxMWCCLTf8WOD/LJILPfD/RLbPYmS/EecMQp95B+OgFcMMNvM+lgLU/A
-         SYd1C1AHxSwnQTh2++WPgzon4nXxfkX5ycJL2GOANEECXTzvRke4xWGzmwF4fhTPXw6U
-         QfIOeR73ZAMyg9+0q4JhT/BIVMLWmJkEC6hT194hVxNAiAnmjBDK65bE9NuDJr8H985H
-         EdL+T9f3Uk9ledsVJaFP0h6LMKiWNp4wmOKsa+IIenpatPSaJlF8h98NTdabYng6bOWG
-         C+xD/aBlKC5J1ZIoB+1OCjdGNIWLCmgCuqsGaDQ9EG5afMPwAM0vVNHEpuwvwCv1ZZqv
-         BBkw==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject;
+        bh=CdQEvpHwNN3g4Co+9NoEWMSwBRIc95BWO+n1fpb1UVY=;
+        b=IeYz7YYlpuUnz07RkFphl0fwZ3zVioTZUDrF9UuOpA3HDTnckMKEL3VLtLZDRMxUUK
+         SvD7f2WBf29ik5WpjPs6KE9Y6ga28q639XyaKihooCJGGYylwcf5pbByMLt2ppPMrz5c
+         QxNGlv8wjIaC/hhs4PNGSFCuVMYF7n8crZwQ8JH5Yk9GU4yEPK153aDsiV2++RGccwiF
+         1LWpA0Dvbl2M2dbcaALYpItWxK5PUxtWqFU6zH/rJ8mCV9fvUiKmwaTIlyhU9ff32WMv
+         cmv3nRhgZhuFDMmzD6Kg+uXcQNGGj0rNP1tkV14vKzpnELr12lEK5+qzYg1eKsBLCrcl
+         qY7Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@ibm.com header.s=pp1 header.b=pHc7ptXM;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w11si8132602ilu.8.2021.04.16.08.56.30
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Apr 2021 08:56:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of clg@kaod.org designates 188.165.49.222 as permitted sender) smtp.mailfrom=clg@kaod.org
+Return-Path: <clg@kaod.org>
+Received: from 6.mo52.mail-out.ovh.net (6.mo52.mail-out.ovh.net. [188.165.49.222])
+        by mx.google.com with ESMTPS id u18si6634194wml.193.2021.04.16.09.28.03
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 16 Apr 2021 09:28:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of clg@kaod.org designates 188.165.49.222 as permitted sender) client-ip=188.165.49.222;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@ibm.com header.s=pp1 header.b=pHc7ptXM;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Received: from localhost ([::1]:36968 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lXQpZ-0000Ip-Sh
-	for alex.bennee@linaro.org; Fri, 16 Apr 2021 11:56:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36696)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <iii@linux.ibm.com>)
- id 1lXQjA-00034B-D5; Fri, 16 Apr 2021 11:49:52 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:37564)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <iii@linux.ibm.com>)
- id 1lXQj8-000080-HF; Fri, 16 Apr 2021 11:49:52 -0400
-Received: from pps.filterd (m0187473.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 13GFYgq1091398; Fri, 16 Apr 2021 11:49:47 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=from : to : cc : subject
- : date : message-id : content-transfer-encoding : mime-version; s=pp1;
- bh=3t2srugeftu7HAyHW8NUSjtAWg61QVEYVODVxFRV/qE=;
- b=pHc7ptXMZnC+eXRtkTieKUh//aYcxRqoIgdRLsHpg+Ayooe3Kkx2rmCsGYHwbFgSi/2w
- q0NgsDSPGCvQb4LCpDJaEi1DVXuS/4DPVgWJrSx7tfFcbpMCblbri3bHsnn2XGorStjG
- uJXfVMECevzyGABevLB7v78kASofn9jTVn+ByyXAf+iO+t1mu60l8V+sX1EjoS/iofCp
- lzDcC1gT7YnTJkFR/i8Orj63EcEi9uyKnbtYA00EdtOu3hP3JdjqlhX/3OmTdnz9WQMK
- T2fJYH3l7GRskZ0nv/8VMWtaO45YehIGZpjlwQtWrpPHIcEdzb7+yc0CsO5NF6aDig6S bA== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com with ESMTP id 37y7wv2mtk-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 16 Apr 2021 11:49:47 -0400
-Received: from m0187473.ppops.net (m0187473.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 13GFZEGv094392;
- Fri, 16 Apr 2021 11:49:46 -0400
-Received: from ppma06fra.de.ibm.com (48.49.7a9f.ip4.static.sl-reverse.com
- [159.122.73.72])
- by mx0a-001b2d01.pphosted.com with ESMTP id 37y7wv2mt2-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 16 Apr 2021 11:49:46 -0400
-Received: from pps.filterd (ppma06fra.de.ibm.com [127.0.0.1])
- by ppma06fra.de.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 13GFd0uF029134;
- Fri, 16 Apr 2021 15:49:44 GMT
-Received: from b06avi18626390.portsmouth.uk.ibm.com
- (b06avi18626390.portsmouth.uk.ibm.com [9.149.26.192])
- by ppma06fra.de.ibm.com with ESMTP id 37u39haf07-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 16 Apr 2021 15:49:44 +0000
-Received: from d06av25.portsmouth.uk.ibm.com (d06av25.portsmouth.uk.ibm.com
- [9.149.105.61])
- by b06avi18626390.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP
- id 13GFnIIu31981914
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 16 Apr 2021 15:49:18 GMT
-Received: from d06av25.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id E054D11C04C;
- Fri, 16 Apr 2021 15:49:40 +0000 (GMT)
-Received: from d06av25.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 0525E11C050;
- Fri, 16 Apr 2021 15:49:40 +0000 (GMT)
-Received: from vm.lan (unknown [9.145.157.105])
- by d06av25.portsmouth.uk.ibm.com (Postfix) with ESMTP;
- Fri, 16 Apr 2021 15:49:39 +0000 (GMT)
-From: Ilya Leoshkevich <iii@linux.ibm.com>
-To: Cornelia Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- David Hildenbrand <david@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Max Filippov <jcmvbkbc@gmail.com>
-Subject: [PATCH v5 0/4] accel/tcg: Make sure that tb->size != 0 after
- translation
-Date: Fri, 16 Apr 2021 17:49:35 +0200
-Message-Id: <20210416154939.32404-1-iii@linux.ibm.com>
-X-Mailer: git-send-email 2.29.2
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: NdW9b8RPf2yoyIKcWS8poAYp30qLEa4N
-X-Proofpoint-ORIG-GUID: tM-Y3PHzr_ig3Cq3uKU1rz8xF4B4LSkZ
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+       spf=pass (google.com: domain of clg@kaod.org designates 188.165.49.222 as permitted sender) smtp.mailfrom=clg@kaod.org
+Received: from mxplan5.mail.ovh.net (unknown [10.108.1.114])
+	by mo52.mail-out.ovh.net (Postfix) with ESMTPS id DB86C25DD68;
+	Fri, 16 Apr 2021 18:28:02 +0200 (CEST)
+Received: from kaod.org (37.59.142.102) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2242.4; Fri, 16 Apr
+ 2021 18:28:02 +0200
+Authentication-Results: garm.ovh; auth=pass (GARM-102R004d6a67272-8e9a-431b-9531-619e7147866a,
+                    98643AE5B40D77660504470F9E4DE59E1F602129) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 90.89.73.13
+Subject: Re: [RFC PATCH] target/arm: drop CF_LAST_IO/dc->condjump check
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+	<qemu-devel@nongnu.org>
+CC: <peter.maydell@linaro.org>, "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
+References: <20210416154908.21673-1-alex.bennee@linaro.org>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <9e52582e-a010-5426-a645-5046d2eb0f32@kaod.org>
+Date: Fri, 16 Apr 2021 18:28:01 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.761
- definitions=2021-04-16_08:2021-04-16,
- 2021-04-16 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- clxscore=1015
- lowpriorityscore=0 mlxscore=0 priorityscore=1501 phishscore=0
- malwarescore=0 impostorscore=0 adultscore=0 bulkscore=0 suspectscore=0
- spamscore=0 mlxlogscore=999 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.12.0-2104060000 definitions=main-2104160112
-Received-SPF: pass client-ip=148.163.156.1; envelope-from=iii@linux.ibm.com;
- helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
-X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Christian Borntraeger <borntraeger@de.ibm.com>, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Ilya Leoshkevich <iii@linux.ibm.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mCVgFs+8usgF
+In-Reply-To: <20210416154908.21673-1-alex.bennee@linaro.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.102]
+X-ClientProxiedBy: DAG9EX1.mxp5.local (172.16.2.81) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: d47737ef-bb41-44b9-a130-e7ef56d21d3c
+X-Ovh-Tracer-Id: 13479836636903017440
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduledrudelhedguddtfecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeejkeduueduveelgeduueegkeelffevledujeetffeivdelvdfgkeeufeduheehfeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtvdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtoheprghlvgigrdgsvghnnhgvvgeslhhinhgrrhhordhorhhg
+X-TUID: 4bAsCsVAsyIf
 
-If arch-specific code generates a translation block of size 0,
-tb_gen_code() may generate a spurious exception.
+On 4/16/21 5:49 PM, Alex Bennée wrote:
+> This is a left over erroneous check from the days front-ends handled
+> io start/end themselves. Regardless just because IO could be performed
+> on the last instruction doesn't obligate the front end to do so.
+> 
+> This fixes an abort faced by the aspeed execute-in-place support which
+> will necessarily trigger this state (even before the one-shot
+> CF_LAST_IO fix). The test still seems to hang once it attempts to boot
+> the Linux kernel but I suspect this is an unrelated issue with icount
+> and the timer handling code.
+> 
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Cc: Cédric Le Goater <clg@kaod.org>
 
-Fix s390x (patch 1), ARM (patch 2) and xtensa (patch 3) and add an
-assertion in order to catch such situations earlier (patch 4).
 
-v1: https://lists.nongnu.org/archive/html/qemu-devel/2021-04/msg02037.html
-v1 -> v2: Fix target/s390x instead of trying to tolerate tb->size == 0
-          in tb_gen_code().
+Tested-by: Cédric Le Goater <clg@kaod.org>
 
-v2: https://lists.nongnu.org/archive/html/qemu-devel/2021-04/msg02101.html
-v2 -> v3: Split the common code change into a separate patch, add the
-          ARM patch in order to fix
-          https://gitlab.com/cohuck/qemu/-/jobs/1178409450
+Thanks,
 
-v3: https://lists.nongnu.org/archive/html/qemu-devel/2021-04/msg02332.html
-v3 -> v4: Add the xtensa patch in order to fix
-          https://gitlab.com/cohuck/qemu/-/jobs/1178409540
+C. 
 
-v4: https://lists.nongnu.org/archive/html/qemu-devel/2021-04/msg02592.html
-v4 -> v5: Handle thumb: the following C code triggers the assertion:
-          typedef void (*funcptr)(void);
-          int main() { funcptr f = (funcptr)0xffff0001; f(); }
 
-Ilya Leoshkevich (4):
-  target/s390x: Fix translation exception on illegal instruction
-  target/arm: Make sure that commpage's tb->size != 0
-  target/xtensa: Make sure that tb->size != 0
-  accel/tcg: Assert that tb->size != 0 after translation
-
- accel/tcg/translate-all.c |  1 +
- target/arm/translate.c    |  2 ++
- target/s390x/translate.c  | 16 +++++++++++-----
- target/xtensa/translate.c |  3 +++
- 4 files changed, 17 insertions(+), 5 deletions(-)
-
--- 
-2.29.2
-
+> ---
+>  target/arm/translate.c | 5 -----
+>  1 file changed, 5 deletions(-)
+> 
+> diff --git a/target/arm/translate.c b/target/arm/translate.c
+> index 62b1c2081b..7103da2d7a 100644
+> --- a/target/arm/translate.c
+> +++ b/target/arm/translate.c
+> @@ -9199,11 +9199,6 @@ static void arm_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
+>  {
+>      DisasContext *dc = container_of(dcbase, DisasContext, base);
+>  
+> -    if (tb_cflags(dc->base.tb) & CF_LAST_IO && dc->condjmp) {
+> -        /* FIXME: This can theoretically happen with self-modifying code. */
+> -        cpu_abort(cpu, "IO on conditional branch instruction");
+> -    }
+> -
+>      /* At this stage dc->condjmp will only be set when the skipped
+>         instruction was a conditional branch or trap, and the PC has
+>         already been written.  */
+> 

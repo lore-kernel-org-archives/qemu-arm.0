@@ -1,179 +1,146 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp513748lfr;
-        Fri, 16 Apr 2021 08:59:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz2FfKxgnvm+LuXT7uZiXF/OsYqdPEOXqtnvWA1zjN9iEDFX7ibXnBGDCzmqV+/VdRSX6w/
-X-Received: by 2002:a02:cbcd:: with SMTP id u13mr4689424jaq.67.1618588773874;
-        Fri, 16 Apr 2021 08:59:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618588773; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp520654lfr;
+        Fri, 16 Apr 2021 09:06:56 -0700 (PDT)
+X-Received: by 2002:a17:906:e949:: with SMTP id jw9mr9409898ejb.433.1618589215995;
+        Fri, 16 Apr 2021 09:06:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618589215; cv=none;
         d=google.com; s=arc-20160816;
-        b=jBDncmEyUS5yC+C5D5yjdmoYSb+sECAdMLa9GZy+hxu/7jHLXqy2nUrnymSwd0HJVm
-         eY9SoMStqq/GE95mCxyFPwL1ePh7icYKuggHkwHHN6//nTVpXCFEKOUISYw6wyAx5Y74
-         4+cLM/98pCipt7Lq83n1YCr569WnA0WBuvo3ZS2R9zL7phx6JinxFnUy6YGG3/LT8VUI
-         wVDXVebQYi66xhJEvtcZI3Mn+KRbvgzFeOpcuvnuWkRKG0kmZEnEnyTidGZgeRAIqYu6
-         PPnW4YVOZMQHS8pEJWH59VdjU2SVri802DOupEDtfdbt3m2AhsNcHRvePZ8Z/QqQ0/dl
-         h7qg==
+        b=z3qgzmaUS3HZGZscx90gwlN9HMW3xVNrJiIIK8V0x7Rvna86nuZveoVAeLxgdskPYp
+         vugnJa0WKeiZhzOjjUk6W1hq1niMX3I6rKgmCxI1IHmSGqAjjv4Co2Z/+hFdd6APLcNz
+         SbdnII6JLWzeHy5k+5Tx9/mflxu/Nm9EPZ2R0aJSrX5bSiN2qYeoJtFarCVA5+d4Qk7L
+         /ELcW9PfZ6UfiSJ26ibrnMWE/i/OpQvWdZhOudN27UFi7I5OT4bbsfeqgQT4yz6Gfe7A
+         E8TIN3qwJTHJnPwD/BEsGcVWgkxb9Of6JSUr59o5YTwmHCmFAiWkvaxBFmWDMahP0jn0
+         PbbQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=BW7u4WcPkobkkMRidYkYfR+F2b4Woa8iJkWP89Rsaw0=;
-        b=wRV5SISEBZrn4Fo38ziiDytAVVfi/bNXCSfMvwJoIsUnT7t6MTIOnSK4eMIH1RTAbe
-         ekv+E452s0wXR5x3E8UPQ9DCbxg4vqr1/TZvWq7hcGXVS/ffIz38VjB9WV2KAcjF0wH+
-         RvJdeyJiXenVdlXY6pCB2qD+Hwzh7EcWVyrvmhnGsMxL1fr6fLMiCW0wrVHUl5XcSEVp
-         Oi2thRGMubSvb9x35t5dP5ze9aYaG5tKS0o6VKeIZBOlUIfPfcBOA0w36jZ7dy8TPBqm
-         Z67lfubysDVjpmjQmfA846+KpFucovKceHpvXQXN6tPKjAvxQ6fga/fMAk0/3VI+VCIX
-         REEw==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=Zoxxo4HldSkZ1gqc5kBkjBHOS87a3eWa93bTMsHIzUQ=;
+        b=tHU5+3fYiVIv+S7RAddAUxh5DDK1cJrhhyibkXKQkNn2kdsP80bhNDboJLlO+oc7az
+         AtlZ7A4QvaSFhwtP14bJB3Or1qqbpG3BYuS9xzfgizh2Hmm3r7wsDzu8tvvjLXIRhkqK
+         1/1V1dZxzVjQlC6u7wZdBwrgQ5gyXG4vxlJvw9dLqsy3V0dbb7fO6XiEcZS7pYm/F4ty
+         q6UwWwh9Gae0Afs4ekLlTJBSj/9ks9MNwgVa21jXb8A/+0Mepn7x2+X0CxjsdEzT2xQL
+         HdrjuDPtgnkWkoUmyiwE51eeDsTn+CxM5iR024SResCHKjLdyYocTngmOB+mJ3AAiihf
+         MRgw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@ibm.com header.s=pp1 header.b=rhmZSRad;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k3si6526479jan.58.2021.04.16.08.59.33
+       dkim=pass header.i=@linaro.org header.s=google header.b="yifA/OMm";
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id r11sor3955678ejj.44.2021.04.16.09.06.55
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Apr 2021 08:59:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Fri, 16 Apr 2021 09:06:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@ibm.com header.s=pp1 header.b=rhmZSRad;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Received: from localhost ([::1]:45704 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lXQsX-00042m-5G
-	for alex.bennee@linaro.org; Fri, 16 Apr 2021 11:59:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36756)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <iii@linux.ibm.com>)
- id 1lXQjE-0003Ci-D4; Fri, 16 Apr 2021 11:49:56 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:31264)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <iii@linux.ibm.com>)
- id 1lXQjC-0000AL-L2; Fri, 16 Apr 2021 11:49:56 -0400
-Received: from pps.filterd (m0098396.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 13GFYH3J053283; Fri, 16 Apr 2021 11:49:51 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=from : to : cc : subject
- : date : message-id : in-reply-to : references : mime-version :
- content-transfer-encoding; s=pp1;
- bh=BW7u4WcPkobkkMRidYkYfR+F2b4Woa8iJkWP89Rsaw0=;
- b=rhmZSRadD7SxyXstfcChiE0CWc8PebalfuVyct+eGWEFuzPREaK8B+pyVyN9/BAmTJp/
- 4yoe7yDMT/EyNMZ4jnGQsoal+XinlDMjAHrIzpzbRiGp5f5aprr0Gl7ptrceknwSRQT+
- oI4NMCrvHdrr4NcIi9Qw5GSkKb7cqf8VI+C7+hILkam8gPIllOHvBchQ5aEzCe7h09nI
- o+2l06UDYSrVyvMK/Qz5B2cBYVx3pv5L1P1YK9sH0aH2nV9E1j3BRl3ytsDPapJS0Nnt
- mCqAYUmMDgJL6pryrXn+lEyYmDqW6xni3OfvCTMLQzc9qoUkGvJhKJL0r/mgHmniI5+S Nw== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com with ESMTP id 37xtt557v3-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 16 Apr 2021 11:49:51 -0400
-Received: from m0098396.ppops.net (m0098396.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 13GFZrsN057861;
- Fri, 16 Apr 2021 11:49:50 -0400
-Received: from ppma06ams.nl.ibm.com (66.31.33a9.ip4.static.sl-reverse.com
- [169.51.49.102])
- by mx0a-001b2d01.pphosted.com with ESMTP id 37xtt557uc-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 16 Apr 2021 11:49:50 -0400
-Received: from pps.filterd (ppma06ams.nl.ibm.com [127.0.0.1])
- by ppma06ams.nl.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 13GFbxE7006087;
- Fri, 16 Apr 2021 15:49:48 GMT
-Received: from b06cxnps4076.portsmouth.uk.ibm.com
- (d06relay13.portsmouth.uk.ibm.com [9.149.109.198])
- by ppma06ams.nl.ibm.com with ESMTP id 37u39hmjcj-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 16 Apr 2021 15:49:48 +0000
-Received: from d06av25.portsmouth.uk.ibm.com (d06av25.portsmouth.uk.ibm.com
- [9.149.105.61])
- by b06cxnps4076.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 13GFnjBL41156866
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 16 Apr 2021 15:49:45 GMT
-Received: from d06av25.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 4E96511C04A;
- Fri, 16 Apr 2021 15:49:45 +0000 (GMT)
-Received: from d06av25.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 6F77311C04C;
- Fri, 16 Apr 2021 15:49:44 +0000 (GMT)
-Received: from vm.lan (unknown [9.145.157.105])
- by d06av25.portsmouth.uk.ibm.com (Postfix) with ESMTP;
- Fri, 16 Apr 2021 15:49:44 +0000 (GMT)
-From: Ilya Leoshkevich <iii@linux.ibm.com>
-To: Cornelia Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- David Hildenbrand <david@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Max Filippov <jcmvbkbc@gmail.com>
-Subject: [PATCH v5 4/4] accel/tcg: Assert that tb->size != 0 after translation
-Date: Fri, 16 Apr 2021 17:49:39 +0200
-Message-Id: <20210416154939.32404-5-iii@linux.ibm.com>
-X-Mailer: git-send-email 2.29.2
-In-Reply-To: <20210416154939.32404-1-iii@linux.ibm.com>
-References: <20210416154939.32404-1-iii@linux.ibm.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b="yifA/OMm";
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=Zoxxo4HldSkZ1gqc5kBkjBHOS87a3eWa93bTMsHIzUQ=;
+        b=yifA/OMmcEzdBZt/LMxb1W+foc2mE4Vh9rzla0deE3gQ5T2LCfb/SBYZcnb+YDot7P
+         p+mQGROEbNMTYa8r1FirmKI6WzUhkqhK5hEPH6Eb8KSDhH2UjfFDrj7LsVMoJZ1EA9Qs
+         lyjIhnm+NIImmWQRvmw0MjbmipXUf9zxAPkL/hYhB3Kh4o9cT/XE7cYB2FdUpPCFbiId
+         tAHtWoZYd4tblqCWmdeK3J6BBg7/TEN1qufO+0VOLbMMbWakto0J5cruTFwmv44oklP1
+         5k358cwOFUCdBccx1gXbNr0INHxo894QfyXzzqhU6prbf0rS23wqd2G4nerFJBNZ3F/R
+         XyGw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=Zoxxo4HldSkZ1gqc5kBkjBHOS87a3eWa93bTMsHIzUQ=;
+        b=iPzcH2VXD8rs1hXM2tRiWvmaq6SjpNQVr1UkyfZIjxTey/GRgoksjGoOdqZ8ketvqL
+         6OnxjbY6T0llOa76Wpj3dndTFgcP8FTU2Zt49bOJ7ETUqP/uwdlAUDKQ4iAw7L/vEa76
+         Q+/ZLUtXJfwXAEjDaR8qYy1fMDoZaQ5TTVAKITzTnm9aiN09HaEx4jkhUOePWJqvmqYR
+         cF43Q6rGYCBNaJOgjTq6XPW3lOR3zhv4mAUb6Ho4xe0GT0pIS6eGgx9XJ3kv6V8m92Tu
+         cxxulxHbirq1+yV6lmqko9j3auJjIk9wPTLvXVUhxhStSNELKloT8ycK9gzhZFaK5vEE
+         LazQ==
+X-Gm-Message-State: AOAM530/YrtGZ6Pw/Dqx6wnChoFsRkIq8t4Tl+hT/MgPXHtAfhhD6zGA
+	sbhhI7VK7+/ExHDvojktBwgp5Mq2GvIUtSFxhPtqVCDm/GYWiDkH
+X-Google-Smtp-Source: ABdhPJwM2ias87249zz9diZ1jelihuM3AL1UkkBjIGsz0UTnljHe/ohRsAbgI6wKqivqxI65zjBnI338PWsXTxv3btk=
+X-Received: by 2002:a17:907:629e:: with SMTP id nd30mr8995333ejc.407.1618589214863;
+ Fri, 16 Apr 2021 09:06:54 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: J43xLxcyno3JKawLUFbfMJnbOCA4Pm7t
-X-Proofpoint-GUID: A_0AMjkrKDxv1E7V4_Suz2htj5rdtSqp
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.761
- definitions=2021-04-16_08:2021-04-16,
- 2021-04-16 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- mlxscore=0 priorityscore=1501
- mlxlogscore=999 malwarescore=0 phishscore=0 clxscore=1015 suspectscore=0
- bulkscore=0 impostorscore=0 adultscore=0 spamscore=0 lowpriorityscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2104060000
- definitions=main-2104160113
-Received-SPF: pass client-ip=148.163.156.1; envelope-from=iii@linux.ibm.com;
- helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
-X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Christian Borntraeger <borntraeger@de.ibm.com>, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Ilya Leoshkevich <iii@linux.ibm.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0m/n8rd+fpiI
+References: <20210416154908.21673-1-alex.bennee@linaro.org>
+In-Reply-To: <20210416154908.21673-1-alex.bennee@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 16 Apr 2021 17:06:06 +0100
+Message-ID: <CAFEAcA-kO0Zs8eDQHheJyf2Top9GWYTW66XUw_aknx2DSYtf4g@mail.gmail.com>
+Subject: Re: [RFC PATCH] target/arm: drop CF_LAST_IO/dc->condjump check
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+	"open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: nN+UT+ErTR+0
 
-If arch-specific code generates a translation block of size 0,
-tb_gen_code() may generate a spurious exception. Add an assertion in
-order to catch such situations early.
+On Fri, 16 Apr 2021 at 16:49, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
+>
+> This is a left over erroneous check from the days front-ends handled
+> io start/end themselves. Regardless just because IO could be performed
+> on the last instruction doesn't obligate the front end to do so.
+>
+> This fixes an abort faced by the aspeed execute-in-place support which
+> will necessarily trigger this state (even before the one-shot
+> CF_LAST_IO fix). The test still seems to hang once it attempts to boot
+> the Linux kernel but I suspect this is an unrelated issue with icount
+> and the timer handling code.
+>
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> Cc: C=C3=A9dric Le Goater <clg@kaod.org>
 
-Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
-Reviewed-by: David Hildenbrand <david@redhat.com>
----
- accel/tcg/translate-all.c | 1 +
- 1 file changed, 1 insertion(+)
+Here's some expanded text explaining why this is safe to remove,
+which I think would be useful to include in the commit message:
 
-diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
-index ba6ab09790..93b2dae112 100644
---- a/accel/tcg/translate-all.c
-+++ b/accel/tcg/translate-all.c
-@@ -1913,6 +1913,7 @@ TranslationBlock *tb_gen_code(CPUState *cpu,
- 
-     tcg_ctx->cpu = env_cpu(env);
-     gen_intermediate_code(cpu, tb, max_insns);
-+    assert(tb->size != 0);
-     tcg_ctx->cpu = NULL;
-     max_insns = tb->icount;
- 
--- 
-2.29.2
+=3D=3D=3D=3Dbegin=3D=3D=3D
+The original intention of the cpu_abort (added in commit 2e70f6efa8b9
+when the icount stuff was first added) seems to have been to act as
+an assert() to catch an unhandled corner case where the generated code
+would be something like:
+    conditional branch to condlabel if its cc failed
+    implementation of the insn (a conditional branch or trap)
+    code emitted by gen_io_end()
+ condlabel:
+    gen_goto_tb or equivalent thing to go to next insn
 
+At runtime the cc-failed case would skip over the code emitted by
+gen_io_end(), leaving the can_do_io flag incorrectly set.
+
+In commit ba3e7926691ed33 we switched to an implementation which
+always clears can_do_io at the start of the following TB instead
+of trying to clear it at the end of a TB that did IO. So the corner
+case that this cpu_abort() was trying to flag is no longer possible,
+because the gen_io_end() call has been deleted. We can therefore
+safely remove the no-longer-valid assertion.
+=3D=3D=3Dendit=3D=3D=3D
+
+> ---
+>  target/arm/translate.c | 5 -----
+>  1 file changed, 5 deletions(-)
+>
+> diff --git a/target/arm/translate.c b/target/arm/translate.c
+> index 62b1c2081b..7103da2d7a 100644
+> --- a/target/arm/translate.c
+> +++ b/target/arm/translate.c
+> @@ -9199,11 +9199,6 @@ static void arm_tr_tb_stop(DisasContextBase *dcbas=
+e, CPUState *cpu)
+>  {
+>      DisasContext *dc =3D container_of(dcbase, DisasContext, base);
+>
+> -    if (tb_cflags(dc->base.tb) & CF_LAST_IO && dc->condjmp) {
+> -        /* FIXME: This can theoretically happen with self-modifying code=
+. */
+> -        cpu_abort(cpu, "IO on conditional branch instruction");
+> -    }
+> -
+>      /* At this stage dc->condjmp will only be set when the skipped
+>         instruction was a conditional branch or trap, and the PC has
+>         already been written.  */
+
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+thanks
+-- PMM

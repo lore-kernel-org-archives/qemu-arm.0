@@ -1,320 +1,199 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp629296lfr;
-        Fri, 16 Apr 2021 11:31:16 -0700 (PDT)
-X-Received: by 2002:aa7:87d5:0:b029:25a:b5f8:15ab with SMTP id i21-20020aa787d50000b029025ab5f815abmr2641359pfo.22.1618597876367;
-        Fri, 16 Apr 2021 11:31:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618597876; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp629306lfr;
+        Fri, 16 Apr 2021 11:31:17 -0700 (PDT)
+X-Received: by 2002:a17:90a:8b16:: with SMTP id y22mr10828606pjn.191.1618597877240;
+        Fri, 16 Apr 2021 11:31:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618597877; cv=none;
         d=google.com; s=arc-20160816;
-        b=kCApvy9WaY91cPZM6CGo5ioo7XriJ8AhtZLIQVjjUkgHzsm2oLO+WzVvVzmEKFiPYN
-         ejY9/WTn0dMI9ZVTouXaWqqszqhYJFEcJoqtkGBNWWcN45NQLkeiTfFVOGrmiIMsLWyW
-         uhVrcxCatwKNytR9hQg3msHw9mT8YfxqRShrbgvtlmSr6MY/vi+IsCiWWfQg/dI+rWuM
-         mLU617p24VDXnbYt/OtJPxf9bBet/fR7ZdsKvYuDDkF4NaWd4lYpBwz51hNIAPTkNROj
-         NLARo25UbvfboWsBbqjp0iOKAod/n3qXrhgScX+pYSx7l3Q+Nfm6noDQaGQ75XOvHDFZ
-         dfIg==
+        b=clwgamlytF00cUDF930ph7GSiaLsL439RsNuXG3SMdcNCJpk0jEHQoJZWz/KFtSkSP
+         jsdok18nuo5cTI9ytTyQPewmTk62jVqLVNNMspHRsr8MSDzTpNPtrukNmJYr5eFt2/wB
+         5r961asKIDRwsoPOpDEH0lnUukQkhvpFLnTgGgaOMlZzaxXguWqZAwuhCWzvPTt12DLz
+         8sBJlzpmdOZeo7+zgRxm+HT6NfQOVJsma54lX3oFZPeaQ1I7LIOZRty1JzfNlSY7ZV/x
+         9Ku4lMnM2wteu2d2L1VRg8EnKWRrt2KUu9pdz/DUdkyv6/L5cu1Fok/lEzJzKpnonJnT
+         9GjA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=8Qvhuw34Dusu23xRHrsMIFmgKEs+N9tm6FJ3fDOSwZQ=;
-        b=U1iGOuWMJ8Y1FgqRDPIhsTTNMIYtvNHD99WPWe7CHQZJaJJi7KtrOVtnHevFvuPl8q
-         ddnG/Zfl4VBiLogczpkWcrafBY6BZbc7oYQjNVi04FoXaEYsGZGTDf41QjnNVj3rBhlM
-         zvr1g7sTXnVk/rREp+jM6ESzM98uhT3c82ED4DQIFy8Buotn46bAZrxJdzFpnMSq4uuX
-         FxpTXSl5FqHh/MSaYOp0zPD6uVTFJht7NbrsMQ7Lx4jE/Bx7WjcYG5zO/NiYDJJsACuV
-         dn9XDnNd0TY3KcVlDJXrBTgF3L0hyUYHl/rHgzJS5/0PAq7CsziJQJP35v+022XWKoTi
-         scvA==
+        bh=1NtJeZCZXJQVsZg4wkjWgi0tGTthzJlM6W10jtA+8DA=;
+        b=UMD93xF1SN+MNIOCDdTRmSk17G70Yoq9fcjQc3cBYasBbKyMlnwi+RwQo03duEDTvJ
+         fX+hNu1ipfAEALphiio/pxsheZXPNpEC/Ll8Ltdl5bCFcC3Rn+tgFkkUnSOVGtz5cvLo
+         LUHexT17mnnGfdkFMdlvb80PrJwB0dbkCkHtrB0Ms+NIcoRyKT9i0jTr+OlIcuOnFPGn
+         1/awIxXZ4AAE5KiHPCfZyAo77uZzU45pciTuh3lS5aekBZNjqR++z9/BjyuOFGtMdk7y
+         IDCrsLbnVVq5dPBDbeF6/Mj23oP6UHGezwuwNdMhj/3fTpa5fUVzBCTDsks5rEe46f24
+         n1Uw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="r71H/evk";
+       dkim=pass header.i=@linaro.org header.s=google header.b=PrRBuiSs;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id t14sor3483502pgu.40.2021.04.16.11.31.16
+        by mx.google.com with SMTPS id j3sor3360425pgp.82.2021.04.16.11.31.17
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 16 Apr 2021 11:31:16 -0700 (PDT)
+        Fri, 16 Apr 2021 11:31:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="r71H/evk";
+       dkim=pass header.i=@linaro.org header.s=google header.b=PrRBuiSs;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=8Qvhuw34Dusu23xRHrsMIFmgKEs+N9tm6FJ3fDOSwZQ=;
-        b=r71H/evkjlmm7kTPZiLuLgY3lwkKHQ1aCYC3tJ4pj4Up0xJma1vrnDaKVfgPvMzgb0
-         BxlSK14IeM6Ti0po4tti8Lck516zZL2mlXMYnQw3bMS2km1m9pT+1ZJhGyjkOY2HRA/e
-         AJJ1lnjTOkHn3KfG8MroH8XS5fb+RmO3pv7AF3zonTBNKhuw+lZ8hhLKodEAHM+nsA1s
-         BcY7k4GQQqg/wqkjCBNQ14s32IwAHmQ+E7GAFDx4v24bS5PzFn/IPxpMa3alR8CBMvI+
-         CoASXtEAJMoKZrJGnRWsE0AZYS/zniS2S9onge19XLrFc8AJN70rPZHeBMPUjppu1cVN
-         sqZw==
+        bh=1NtJeZCZXJQVsZg4wkjWgi0tGTthzJlM6W10jtA+8DA=;
+        b=PrRBuiSsFoG/gXJHsn2xvFk27mF53yOWkk7C/lze+EwBxaZXwcJEWpzpkya4qZU6oy
+         T7oE+9Ud9Sp8fE48GlN6VWtpEwuUOVnNUdUBte0LasroWG/69ZRr5GaYZj8rZzMmKXi9
+         KB5Ds1DpVrcrXfQY0Jyy8t3X5atmnN6aMqqCN7CQKAJ3DosfKPLrIJeqr2H//MdnOpXK
+         cgO+aPZyMTs++Y8zHEiVVM0QgZerngNcWuWMWmdxo1q5uOZQzf4or9BTtdim5OP+oe32
+         GviuM6BNyj84Nd6XpppwSPc332mbJTonSQ12ugR1sLLtrd+uLQ9UpoK+0+IY5XFOHNns
+         nURg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=8Qvhuw34Dusu23xRHrsMIFmgKEs+N9tm6FJ3fDOSwZQ=;
-        b=RrrMoM4DWSdVDhtwKGV9IItu5zmITSQipfL27d+8/j/dsfBdeSpx7qznZDFkbkyq8x
-         GcEhOe59K04/knanAAw75XKlY9CxaIBNo/PVmDvvpW3ZWCsLGN5Sn0hUiH8E1aohQSPZ
-         PVmNwtl7Q3c4OZVnphJsOy1O32qUNYDZ4sVuHRTrRj4N3XHg2Cfezc1P6XmxR3u8OSK4
-         KFmTXfVW9iL7hTa3dhDaHOYN03lC7agya5LF3Cn28/xIYKBPGzbe6MvPohjSWFJnZUTQ
-         u6vcHLN2MHWXHiI9yULBXX8PVybV8rMSQj/rY9yI+/7noAZokvaZbO17mwZRlvFx++pe
-         H/Hg==
-X-Gm-Message-State: AOAM531a0L1wTj+dD7gbyLSs7Iyv/SjtkI1pgSGXTPIsoA81PsBQtvpY
-	Yv5G6yTPMaPSWYrASwUw8XTM4LWM9W02tYw9
-X-Google-Smtp-Source: ABdhPJx3BLyE6y4Z8ZD3g9Lmj+KHGfgwRPNekzMcpoa4EgP55W2aklhQPoCTE/YPH8bQphdQIXvQOg==
-X-Received: by 2002:a63:120e:: with SMTP id h14mr406926pgl.48.1618597875781;
-        Fri, 16 Apr 2021 11:31:15 -0700 (PDT)
+        bh=1NtJeZCZXJQVsZg4wkjWgi0tGTthzJlM6W10jtA+8DA=;
+        b=ONufdhfmnPin18yBoBqC68iH/iv/uXNKU7Y92xNL2gFXiWpnhz1v0BVSDjMiFD4WBO
+         zTy5shpib+iL9TNP0NMnVZ0onydUxWUzu1QdB7Rkcg4rwerwpxRKRppDGq/wSYPZXE29
+         8V7omRoZQNrKg04KqXAkkRK0Dcmoag0NsdA3krFsprI1/HF8eTbkui8KLvZ4BWV+Mp0b
+         21mJoDQ/YcFOnQlqUCRANJDc1DgwFr8gzA3jKJ9CourYqqBNyHb/VKuyemWUtSm9nmqW
+         Coegzx/7dD100DLHfbT9hnYtwDdYnx30ifpfNrHl06s+na+Ry6XuKnj6aPZb2tlpQoNh
+         lnrQ==
+X-Gm-Message-State: AOAM530BGN52URx46J879LBSSEJKjdYX9BS3dhpZe6idP5SQqD0/s4hB
+	jAkR4vBqhRN2KE/RCBC/P+tk0xc8
+X-Google-Smtp-Source: ABdhPJyQ+nV377F9u+ktmo4ERWBcgX9Jl24SrONm/yD36xY79eWUS23PUksWkWGkP3jhwVaFDUrpvQ==
+X-Received: by 2002:a63:4644:: with SMTP id v4mr394897pgk.316.1618597876798;
+        Fri, 16 Apr 2021 11:31:16 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from localhost.localdomain ([71.212.131.83])
-        by smtp.gmail.com with ESMTPSA id p18sm3057307pju.3.2021.04.16.11.31.15
+        by smtp.gmail.com with ESMTPSA id p18sm3057307pju.3.2021.04.16.11.31.16
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 16 Apr 2021 11:31:15 -0700 (PDT)
+        Fri, 16 Apr 2021 11:31:16 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v5 8/9] target/arm: Simplify sve mte checking
-Date: Fri, 16 Apr 2021 11:31:05 -0700
-Message-Id: <20210416183106.1516563-9-richard.henderson@linaro.org>
+Subject: [PATCH v5 9/9] target/arm: Remove log2_esize parameter to gen_mte_checkN
+Date: Fri, 16 Apr 2021 11:31:06 -0700
+Message-Id: <20210416183106.1516563-10-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210416183106.1516563-1-richard.henderson@linaro.org>
 References: <20210416183106.1516563-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: RAVrr8RhwrYa
+X-TUID: JJnZ4D0FNMeT
 
-Now that mte_check1 and mte_checkN have been merged, we can
-merge sve_cont_ldst_mte_check1 and sve_cont_ldst_mte_checkN.
+The log2_esize parameter is not used except trivially.
+Drop the parameter and the deferral to gen_mte_check1.
 
-Which means that we can eliminate the function pointer into
-sve_ldN_r and sve_stN_r, calling sve_cont_ldst_mte_check directly.
+This fixes a bug in that the parameters as documented
+in the header file were the reverse from those in the
+implementation.  Which meant that translate-sve.c was
+passing the parameters in the wrong order.
 
 Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/sve_helper.c | 84 +++++++++++++----------------------------
- 1 file changed, 26 insertions(+), 58 deletions(-)
+ target/arm/translate-a64.h |  2 +-
+ target/arm/translate-a64.c | 15 +++++++--------
+ target/arm/translate-sve.c |  4 ++--
+ 3 files changed, 10 insertions(+), 11 deletions(-)
 
-diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
-index 982240d104..c068dfa0d5 100644
---- a/target/arm/sve_helper.c
-+++ b/target/arm/sve_helper.c
-@@ -4382,13 +4382,9 @@ static void sve_cont_ldst_watchpoints(SVEContLdSt *info, CPUARMState *env,
- #endif
- }
+diff --git a/target/arm/translate-a64.h b/target/arm/translate-a64.h
+index 3668b671dd..868d355048 100644
+--- a/target/arm/translate-a64.h
++++ b/target/arm/translate-a64.h
+@@ -44,7 +44,7 @@ TCGv_i64 clean_data_tbi(DisasContext *s, TCGv_i64 addr);
+ TCGv_i64 gen_mte_check1(DisasContext *s, TCGv_i64 addr, bool is_write,
+                         bool tag_checked, int log2_size);
+ TCGv_i64 gen_mte_checkN(DisasContext *s, TCGv_i64 addr, bool is_write,
+-                        bool tag_checked, int count, int log2_esize);
++                        bool tag_checked, int size);
  
--typedef uint64_t mte_check_fn(CPUARMState *, uint32_t, uint64_t, uintptr_t);
--
--static inline QEMU_ALWAYS_INLINE
--void sve_cont_ldst_mte_check_int(SVEContLdSt *info, CPUARMState *env,
--                                 uint64_t *vg, target_ulong addr, int esize,
--                                 int msize, uint32_t mtedesc, uintptr_t ra,
--                                 mte_check_fn *check)
-+static void sve_cont_ldst_mte_check(SVEContLdSt *info, CPUARMState *env,
-+                                    uint64_t *vg, target_ulong addr, int esize,
-+                                    int msize, uint32_t mtedesc, uintptr_t ra)
- {
-     intptr_t mem_off, reg_off, reg_last;
- 
-@@ -4405,7 +4401,7 @@ void sve_cont_ldst_mte_check_int(SVEContLdSt *info, CPUARMState *env,
-             uint64_t pg = vg[reg_off >> 6];
-             do {
-                 if ((pg >> (reg_off & 63)) & 1) {
--                    check(env, mtedesc, addr, ra);
-+                    mte_check(env, mtedesc, addr, ra);
-                 }
-                 reg_off += esize;
-                 mem_off += msize;
-@@ -4422,7 +4418,7 @@ void sve_cont_ldst_mte_check_int(SVEContLdSt *info, CPUARMState *env,
-             uint64_t pg = vg[reg_off >> 6];
-             do {
-                 if ((pg >> (reg_off & 63)) & 1) {
--                    check(env, mtedesc, addr, ra);
-+                    mte_check(env, mtedesc, addr, ra);
-                 }
-                 reg_off += esize;
-                 mem_off += msize;
-@@ -4431,30 +4427,6 @@ void sve_cont_ldst_mte_check_int(SVEContLdSt *info, CPUARMState *env,
-     }
- }
- 
--typedef void sve_cont_ldst_mte_check_fn(SVEContLdSt *info, CPUARMState *env,
--                                        uint64_t *vg, target_ulong addr,
--                                        int esize, int msize, uint32_t mtedesc,
--                                        uintptr_t ra);
--
--static void sve_cont_ldst_mte_check1(SVEContLdSt *info, CPUARMState *env,
--                                     uint64_t *vg, target_ulong addr,
--                                     int esize, int msize, uint32_t mtedesc,
--                                     uintptr_t ra)
--{
--    sve_cont_ldst_mte_check_int(info, env, vg, addr, esize, msize,
--                                mtedesc, ra, mte_check);
--}
--
--static void sve_cont_ldst_mte_checkN(SVEContLdSt *info, CPUARMState *env,
--                                     uint64_t *vg, target_ulong addr,
--                                     int esize, int msize, uint32_t mtedesc,
--                                     uintptr_t ra)
--{
--    sve_cont_ldst_mte_check_int(info, env, vg, addr, esize, msize,
--                                mtedesc, ra, mte_check);
--}
--
--
- /*
-  * Common helper for all contiguous 1,2,3,4-register predicated stores.
+ /* We should have at some point before trying to access an FP register
+  * done the necessary access check, so assert that
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index a68d5dd5d1..f35a5e8174 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -295,9 +295,9 @@ TCGv_i64 gen_mte_check1(DisasContext *s, TCGv_i64 addr, bool is_write,
+  * For MTE, check multiple logical sequential accesses.
   */
-@@ -4463,8 +4435,7 @@ void sve_ldN_r(CPUARMState *env, uint64_t *vg, const target_ulong addr,
-                uint32_t desc, const uintptr_t retaddr,
-                const int esz, const int msz, const int N, uint32_t mtedesc,
-                sve_ldst1_host_fn *host_fn,
--               sve_ldst1_tlb_fn *tlb_fn,
--               sve_cont_ldst_mte_check_fn *mte_check_fn)
-+               sve_ldst1_tlb_fn *tlb_fn)
+ TCGv_i64 gen_mte_checkN(DisasContext *s, TCGv_i64 addr, bool is_write,
+-                        bool tag_checked, int log2_esize, int total_size)
++                        bool tag_checked, int size)
  {
-     const unsigned rd = simd_data(desc);
-     const intptr_t reg_max = simd_oprsz(desc);
-@@ -4493,9 +4464,9 @@ void sve_ldN_r(CPUARMState *env, uint64_t *vg, const target_ulong addr,
-      * Handle mte checks for all active elements.
-      * Since TBI must be set for MTE, !mtedesc => !mte_active.
-      */
--    if (mte_check_fn && mtedesc) {
--        mte_check_fn(&info, env, vg, addr, 1 << esz, N << msz,
--                     mtedesc, retaddr);
-+    if (mtedesc) {
-+        sve_cont_ldst_mte_check(&info, env, vg, addr, 1 << esz, N << msz,
-+                                mtedesc, retaddr);
-     }
+-    if (tag_checked && s->mte_active[0] && total_size != (1 << log2_esize)) {
++    if (tag_checked && s->mte_active[0]) {
+         TCGv_i32 tcg_desc;
+         TCGv_i64 ret;
+         int desc = 0;
+@@ -306,7 +306,7 @@ TCGv_i64 gen_mte_checkN(DisasContext *s, TCGv_i64 addr, bool is_write,
+         desc = FIELD_DP32(desc, MTEDESC, TBI, s->tbid);
+         desc = FIELD_DP32(desc, MTEDESC, TCMA, s->tcma);
+         desc = FIELD_DP32(desc, MTEDESC, WRITE, is_write);
+-        desc = FIELD_DP32(desc, MTEDESC, SIZEM1, total_size - 1);
++        desc = FIELD_DP32(desc, MTEDESC, SIZEM1, size - 1);
+         tcg_desc = tcg_const_i32(desc);
  
-     flags = info.page[0].flags | info.page[1].flags;
-@@ -4621,8 +4592,7 @@ void sve_ldN_r_mte(CPUARMState *env, uint64_t *vg, target_ulong addr,
-         mtedesc = 0;
-     }
+         ret = new_tmp_a64(s);
+@@ -315,7 +315,7 @@ TCGv_i64 gen_mte_checkN(DisasContext *s, TCGv_i64 addr, bool is_write,
  
--    sve_ldN_r(env, vg, addr, desc, ra, esz, msz, N, mtedesc, host_fn, tlb_fn,
--              N == 1 ? sve_cont_ldst_mte_check1 : sve_cont_ldst_mte_checkN);
-+    sve_ldN_r(env, vg, addr, desc, ra, esz, msz, N, mtedesc, host_fn, tlb_fn);
+         return ret;
+     }
+-    return gen_mte_check1(s, addr, is_write, tag_checked, log2_esize);
++    return clean_data_tbi(s, addr);
  }
  
- #define DO_LD1_1(NAME, ESZ)                                             \
-@@ -4630,7 +4600,7 @@ void HELPER(sve_##NAME##_r)(CPUARMState *env, void *vg,                 \
-                             target_ulong addr, uint32_t desc)           \
- {                                                                       \
-     sve_ldN_r(env, vg, addr, desc, GETPC(), ESZ, MO_8, 1, 0,            \
--              sve_##NAME##_host, sve_##NAME##_tlb, NULL);               \
-+              sve_##NAME##_host, sve_##NAME##_tlb);                     \
- }                                                                       \
- void HELPER(sve_##NAME##_r_mte)(CPUARMState *env, void *vg,             \
-                                 target_ulong addr, uint32_t desc)       \
-@@ -4644,22 +4614,22 @@ void HELPER(sve_##NAME##_le_r)(CPUARMState *env, void *vg,              \
-                                target_ulong addr, uint32_t desc)        \
- {                                                                       \
-     sve_ldN_r(env, vg, addr, desc, GETPC(), ESZ, MSZ, 1, 0,             \
--              sve_##NAME##_le_host, sve_##NAME##_le_tlb, NULL);         \
-+              sve_##NAME##_le_host, sve_##NAME##_le_tlb);               \
- }                                                                       \
- void HELPER(sve_##NAME##_be_r)(CPUARMState *env, void *vg,              \
-                                target_ulong addr, uint32_t desc)        \
- {                                                                       \
-     sve_ldN_r(env, vg, addr, desc, GETPC(), ESZ, MSZ, 1, 0,             \
--              sve_##NAME##_be_host, sve_##NAME##_be_tlb, NULL);         \
-+              sve_##NAME##_be_host, sve_##NAME##_be_tlb);               \
- }                                                                       \
- void HELPER(sve_##NAME##_le_r_mte)(CPUARMState *env, void *vg,          \
--                                 target_ulong addr, uint32_t desc)      \
-+                                   target_ulong addr, uint32_t desc)    \
- {                                                                       \
-     sve_ldN_r_mte(env, vg, addr, desc, GETPC(), ESZ, MSZ, 1,            \
-                   sve_##NAME##_le_host, sve_##NAME##_le_tlb);           \
- }                                                                       \
- void HELPER(sve_##NAME##_be_r_mte)(CPUARMState *env, void *vg,          \
--                                 target_ulong addr, uint32_t desc)      \
-+                                   target_ulong addr, uint32_t desc)    \
- {                                                                       \
-     sve_ldN_r_mte(env, vg, addr, desc, GETPC(), ESZ, MSZ, 1,            \
-                   sve_##NAME##_be_host, sve_##NAME##_be_tlb);           \
-@@ -4693,7 +4663,7 @@ void HELPER(sve_ld##N##bb_r)(CPUARMState *env, void *vg,                \
-                              target_ulong addr, uint32_t desc)          \
- {                                                                       \
-     sve_ldN_r(env, vg, addr, desc, GETPC(), MO_8, MO_8, N, 0,           \
--              sve_ld1bb_host, sve_ld1bb_tlb, NULL);                     \
-+              sve_ld1bb_host, sve_ld1bb_tlb);                           \
- }                                                                       \
- void HELPER(sve_ld##N##bb_r_mte)(CPUARMState *env, void *vg,            \
-                                  target_ulong addr, uint32_t desc)      \
-@@ -4707,13 +4677,13 @@ void HELPER(sve_ld##N##SUFF##_le_r)(CPUARMState *env, void *vg,         \
-                                     target_ulong addr, uint32_t desc)   \
- {                                                                       \
-     sve_ldN_r(env, vg, addr, desc, GETPC(), ESZ, ESZ, N, 0,             \
--              sve_ld1##SUFF##_le_host, sve_ld1##SUFF##_le_tlb, NULL);   \
-+              sve_ld1##SUFF##_le_host, sve_ld1##SUFF##_le_tlb);         \
- }                                                                       \
- void HELPER(sve_ld##N##SUFF##_be_r)(CPUARMState *env, void *vg,         \
-                                     target_ulong addr, uint32_t desc)   \
- {                                                                       \
-     sve_ldN_r(env, vg, addr, desc, GETPC(), ESZ, ESZ, N, 0,             \
--              sve_ld1##SUFF##_be_host, sve_ld1##SUFF##_be_tlb, NULL);   \
-+              sve_ld1##SUFF##_be_host, sve_ld1##SUFF##_be_tlb);         \
- }                                                                       \
- void HELPER(sve_ld##N##SUFF##_le_r_mte)(CPUARMState *env, void *vg,     \
-                                         target_ulong addr, uint32_t desc) \
-@@ -5090,8 +5060,7 @@ void sve_stN_r(CPUARMState *env, uint64_t *vg, target_ulong addr,
-                uint32_t desc, const uintptr_t retaddr,
-                const int esz, const int msz, const int N, uint32_t mtedesc,
-                sve_ldst1_host_fn *host_fn,
--               sve_ldst1_tlb_fn *tlb_fn,
--               sve_cont_ldst_mte_check_fn *mte_check_fn)
-+               sve_ldst1_tlb_fn *tlb_fn)
- {
-     const unsigned rd = simd_data(desc);
-     const intptr_t reg_max = simd_oprsz(desc);
-@@ -5117,9 +5086,9 @@ void sve_stN_r(CPUARMState *env, uint64_t *vg, target_ulong addr,
-      * Handle mte checks for all active elements.
-      * Since TBI must be set for MTE, !mtedesc => !mte_active.
+ typedef struct DisasCompare64 {
+@@ -2965,8 +2965,7 @@ static void disas_ldst_pair(DisasContext *s, uint32_t insn)
+     }
+ 
+     clean_addr = gen_mte_checkN(s, dirty_addr, !is_load,
+-                                (wback || rn != 31) && !set_tag,
+-                                size, 2 << size);
++                                (wback || rn != 31) && !set_tag, 2 << size);
+ 
+     if (is_vector) {
+         if (is_load) {
+@@ -3713,7 +3712,7 @@ static void disas_ldst_multiple_struct(DisasContext *s, uint32_t insn)
+      * promote consecutive little-endian elements below.
       */
--    if (mte_check_fn && mtedesc) {
--        mte_check_fn(&info, env, vg, addr, 1 << esz, N << msz,
--                     mtedesc, retaddr);
-+    if (mtedesc) {
-+        sve_cont_ldst_mte_check(&info, env, vg, addr, 1 << esz, N << msz,
-+                                mtedesc, retaddr);
-     }
+     clean_addr = gen_mte_checkN(s, tcg_rn, is_store, is_postidx || rn != 31,
+-                                size, total);
++                                total);
  
-     flags = info.page[0].flags | info.page[1].flags;
-@@ -5233,8 +5202,7 @@ void sve_stN_r_mte(CPUARMState *env, uint64_t *vg, target_ulong addr,
-         mtedesc = 0;
-     }
+     /*
+      * Consecutive little-endian elements from a single register
+@@ -3866,7 +3865,7 @@ static void disas_ldst_single_struct(DisasContext *s, uint32_t insn)
+     tcg_rn = cpu_reg_sp(s, rn);
  
--    sve_stN_r(env, vg, addr, desc, ra, esz, msz, N, mtedesc, host_fn, tlb_fn,
--              N == 1 ? sve_cont_ldst_mte_check1 : sve_cont_ldst_mte_checkN);
-+    sve_stN_r(env, vg, addr, desc, ra, esz, msz, N, mtedesc, host_fn, tlb_fn);
- }
+     clean_addr = gen_mte_checkN(s, tcg_rn, !is_load, is_postidx || rn != 31,
+-                                scale, total);
++                                total);
  
- #define DO_STN_1(N, NAME, ESZ)                                          \
-@@ -5242,7 +5210,7 @@ void HELPER(sve_st##N##NAME##_r)(CPUARMState *env, void *vg,            \
-                                  target_ulong addr, uint32_t desc)      \
- {                                                                       \
-     sve_stN_r(env, vg, addr, desc, GETPC(), ESZ, MO_8, N, 0,            \
--              sve_st1##NAME##_host, sve_st1##NAME##_tlb, NULL);         \
-+              sve_st1##NAME##_host, sve_st1##NAME##_tlb);               \
- }                                                                       \
- void HELPER(sve_st##N##NAME##_r_mte)(CPUARMState *env, void *vg,        \
-                                      target_ulong addr, uint32_t desc)  \
-@@ -5256,13 +5224,13 @@ void HELPER(sve_st##N##NAME##_le_r)(CPUARMState *env, void *vg,         \
-                                     target_ulong addr, uint32_t desc)   \
- {                                                                       \
-     sve_stN_r(env, vg, addr, desc, GETPC(), ESZ, MSZ, N, 0,             \
--              sve_st1##NAME##_le_host, sve_st1##NAME##_le_tlb, NULL);   \
-+              sve_st1##NAME##_le_host, sve_st1##NAME##_le_tlb);         \
- }                                                                       \
- void HELPER(sve_st##N##NAME##_be_r)(CPUARMState *env, void *vg,         \
-                                     target_ulong addr, uint32_t desc)   \
- {                                                                       \
-     sve_stN_r(env, vg, addr, desc, GETPC(), ESZ, MSZ, N, 0,             \
--              sve_st1##NAME##_be_host, sve_st1##NAME##_be_tlb, NULL);   \
-+              sve_st1##NAME##_be_host, sve_st1##NAME##_be_tlb);         \
- }                                                                       \
- void HELPER(sve_st##N##NAME##_le_r_mte)(CPUARMState *env, void *vg,     \
-                                         target_ulong addr, uint32_t desc) \
+     tcg_ebytes = tcg_const_i64(1 << scale);
+     for (xs = 0; xs < selem; xs++) {
+diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
+index 5179c1f836..584c4d047c 100644
+--- a/target/arm/translate-sve.c
++++ b/target/arm/translate-sve.c
+@@ -4264,7 +4264,7 @@ static void do_ldr(DisasContext *s, uint32_t vofs, int len, int rn, int imm)
+ 
+     dirty_addr = tcg_temp_new_i64();
+     tcg_gen_addi_i64(dirty_addr, cpu_reg_sp(s, rn), imm);
+-    clean_addr = gen_mte_checkN(s, dirty_addr, false, rn != 31, len, MO_8);
++    clean_addr = gen_mte_checkN(s, dirty_addr, false, rn != 31, len);
+     tcg_temp_free_i64(dirty_addr);
+ 
+     /*
+@@ -4352,7 +4352,7 @@ static void do_str(DisasContext *s, uint32_t vofs, int len, int rn, int imm)
+ 
+     dirty_addr = tcg_temp_new_i64();
+     tcg_gen_addi_i64(dirty_addr, cpu_reg_sp(s, rn), imm);
+-    clean_addr = gen_mte_checkN(s, dirty_addr, false, rn != 31, len, MO_8);
++    clean_addr = gen_mte_checkN(s, dirty_addr, false, rn != 31, len);
+     tcg_temp_free_i64(dirty_addr);
+ 
+     /* Note that unpredicated load/store of vector/predicate registers
 -- 
 2.25.1

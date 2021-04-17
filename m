@@ -1,103 +1,102 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp1148531lfr;
-        Sat, 17 Apr 2021 03:33:53 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzjpWCPlrXlDvppHec5Yr4hrlVr569kYdq+kvCXd8kpTpTQPEAtJlhHXPCMklPVIjaQHxpH
-X-Received: by 2002:a05:6e02:1c83:: with SMTP id w3mr10643949ill.125.1618655633775;
-        Sat, 17 Apr 2021 03:33:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618655633; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp1148905lfr;
+        Sat, 17 Apr 2021 03:34:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxl0cldGOyuMf/wCcg6Ayz1f0Kjp8rkWDXaIZTvSjoG+4wGhCY4mvewtH41xnwzWykHSwn9
+X-Received: by 2002:a5b:191:: with SMTP id r17mr4817152ybl.297.1618655678185;
+        Sat, 17 Apr 2021 03:34:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618655678; cv=none;
         d=google.com; s=arc-20160816;
-        b=Le1uFxXm8XzS5Nt93Sm5Dy+bDMWUInIkVaV3/2n5e18tccFvWxCJDehPR+myeVCoVg
-         5w34PWgO3VeIn9pUgDHQSg1zDGWkcqlig4rNTPHd3HXxwkRwH2hxBgCegaMpfBiC5TKE
-         UNJUSfGx0umxYEEzRdZJqAiIqGhNEVea55ZAt8oQ58nG8jPRAxar0jyicAHKqkTRqBOk
-         4XWiJFpgASc55WiNGlMYPqpTBCZlZRhuh9+857bRVFNE8a1GY+FQ8jwxJazFBYB0KgZn
-         xgLmBLhinE8dlmEQvgc85LL1LqWUVjynD0xviXA5W/tmw3mhNkcbsfFbHZXDR5BffYeS
-         PrPw==
+        b=XvJQ2c/rXSy3+5XSxlR2khzgBnJrTrYLEZ0wpE75HqB3YmjGU/Dg+x8RtAFv0LGgAI
+         nVjAYOSJqd5Mj2iVCy9MI1PwGT/BJvsyMZLGDAdI1VxLbCGOI5lw49nFZtgkfAFNbPfh
+         c/Ul4IxBMJZ4tHs7No5PmYbJXBlUM0ZWzFmxFfiVh52GruY1xbBIplJl3jraSPfscVAX
+         dPNIVClG2pj5KQBqPBiE8BMlJn4WnUXJaeqZYwAQ1xiuMEENf4hCcYpIn1CgyYlqFVto
+         AGZj59wSxLykLiMPIQvSW1zk6fTPAkiCJUB6wOa33wY6Sj9TwS1aBGRXFmg9pRgKNEhp
+         dp8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=YqA3p/T6rcC/vVj1HlfKqNVV1sNmO1FDscy1JV4DYeo=;
-        b=eNtLBENJ3pmIIqrN7q56WEX3N00IoPC+RLpvjVfjqk8IRutSFI14LnoniwU/d5nGkY
-         ouA4G1j8Vaaf8TEK2IkjaVMD0asfyWzpcBceF1WCHZQdS068lcWbWODproC1b5kIDmFV
-         UAgUww9s81A6gChFMQelM1v0aFv89qwboyHvCXtuxNYOnqP9TzFkfjw7hiRrrpDUBwt/
-         LWtiAiu2ABVGTlxlCCZECoD9jC4BzW8BYVSnUStUL3YIfcdAmEGrmrOtgewTo9Fee2tv
-         AMhF7B5aaILSyxouVdR34mV0JS1zeEsBiY/g2XDyb0EjTqIy0NXZLatVVHKv1gl7u2gn
-         8O+g==
+        bh=L5A08oqJfnwHuu4IIvHVyo2CuhBx8oIfeNWXxwFL7uE=;
+        b=eq1H6/M8xy3aPEvs0PQv7X3GgqSAYq+v6qLKLyshhEGpvyBKjSKzamPfsibMMRR6E5
+         aDNA0J5FHaQ50ph/gMfoH9mGUC9kEV+C6xi4aSg8KEVSFiPBkWqdk8rD/zO91Zfec+xM
+         TE+0t881I5cuUJyhmmEADpVsHpSR0buKxHN77c7efIjNxUAB3ai0u0HeFpQcJSH1ZubN
+         Q3kmDKypvDkrrh2Q50a8t0KhQ59hSWOsYc1iOaMBUH39EaoyyouZKcZy+zvz4XIHnVII
+         FNmkaWwt58YVfXJY04+emAIi+VLAiKnZVv2d7XXZF/bha5b2b/0ox7tPJ9czZ7JFYorO
+         qgUg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XI7cLY00;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=QvJcVwgj;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n19si8447301jam.4.2021.04.17.03.33.53
+        by mx.google.com with ESMTPS id w33si9271200ybi.45.2021.04.17.03.34.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 17 Apr 2021 03:33:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 17 Apr 2021 03:34:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XI7cLY00;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=QvJcVwgj;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:53226 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56060 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lXiGv-00048N-1M
-	for alex.bennee@linaro.org; Sat, 17 Apr 2021 06:33:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58678)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lXiHd-0005RS-DV
+	for alex.bennee@linaro.org; Sat, 17 Apr 2021 06:34:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58744)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lXiDy-0001Tk-R2; Sat, 17 Apr 2021 06:30:51 -0400
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335]:43656)
+ id 1lXiEI-0001q5-PK; Sat, 17 Apr 2021 06:31:11 -0400
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429]:46612)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lXiDx-0000ox-BU; Sat, 17 Apr 2021 06:30:50 -0400
-Received: by mail-wm1-x335.google.com with SMTP id
- u5-20020a7bcb050000b029010e9316b9d5so15433446wmj.2; 
- Sat, 17 Apr 2021 03:30:47 -0700 (PDT)
+ id 1lXiEG-0000zk-Vw; Sat, 17 Apr 2021 06:31:10 -0400
+Received: by mail-wr1-x429.google.com with SMTP id c15so20075330wro.13;
+ Sat, 17 Apr 2021 03:31:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=YqA3p/T6rcC/vVj1HlfKqNVV1sNmO1FDscy1JV4DYeo=;
- b=XI7cLY00hk+yXTbKsmzHu/oYlxDQQudJzwQwG/hcVHrLJn4wjSHjyhSWTAjNoFYuLm
- L62JpBkacfuh/kDvtxF2qpEpmiO4QT+ryMz7V17W0nksdqYlhJS6a/81r30rC7IPTyKT
- 40oCZLHrDhuDlKjMNBmvtuPGp1lQi/PSizj2aYJypM/Lo5Z5LiBPASpWWec1JmynZwZ4
- nWeqv0QH3ppLJrdPfv4+ePy2/dOxuDDkl9Dcf6o/Jd1Cy/iz3D8F2D31ovASvesEXPxm
- 6x1/rO+U6vfW1vf8dO+4zzyym4ZLtlfg6hCWG79N0N4w8nFDV5c1yNVHuYUz2P5O+dzL
- PJHQ==
+ bh=L5A08oqJfnwHuu4IIvHVyo2CuhBx8oIfeNWXxwFL7uE=;
+ b=QvJcVwgjwo/yqaRENhIL6JYzDNYm0QfGCfHXA36JgYq698gGRG+bGZ98BrpmcbPNen
+ 9odV19fsxLa5woaotQsV3fOExc/BH1OAuBeBFw9QzsTmvda50Sf/6FDp3vQzzY7y6LRP
+ R+0eFzWsDEyJT6Ytd17YwAgDxYM4TIwtYVSZT5wiQIwi8rB6a/YJSHvaDwWMDF4XPzUx
+ Fe91kag1X1/M4+sm2NrLWGTohS82XGvrTulAE/E1/kdlpcliBPm61JzWF/iHOqcIa5qr
+ qGE2TeEUWovktEIt4IFjuc09jrlBFV+13jHwPApoB5Kc3jVyx6gycNo91+Ma5UKvm3wj
+ H03A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=YqA3p/T6rcC/vVj1HlfKqNVV1sNmO1FDscy1JV4DYeo=;
- b=qb6qoUWX4k0f+0fllzoZsE4BsII7mCpcuvYEaKv04Y4oFWug/dxBZ8fiHmxlBbi8xk
- QKMvnMpFM8ikkm8JSEloPCmrn4uIhwjLZjH8TZLDZrgMf6oX88PTaZSV7nyM7rdgi7Yu
- 2o/J9afaf4mBlIrLZWdmFqOsuR9td3IAtSDcGoShzmDmpHCqu2BgjOt/UzSI6IaME2JT
- IAij5VmtwQCDK6SlZJwSrNEZoBB/vWppYhXx4tifHJ8nfgHHbIBL6LSYNOzxhSDRNk6I
- talEWYpYjf7XWTuYUIomYjJMeLhv9K6f+smc9QBBFa8ij17zMchDAkzO5N5ky9AJE3UM
- xW/A==
-X-Gm-Message-State: AOAM532RcZX9squRN5RdvhVaNqc0OP08BHnlusWnQcyuaCpCyqN+2Vfw
- ahtaFvAafuxP0zQLMAg24SMbKcGCxdk=
-X-Received: by 2002:a7b:cb42:: with SMTP id v2mr11996034wmj.120.1618655446702; 
- Sat, 17 Apr 2021 03:30:46 -0700 (PDT)
+ bh=L5A08oqJfnwHuu4IIvHVyo2CuhBx8oIfeNWXxwFL7uE=;
+ b=qfQ7tgeLlgRDcDy2DB8D8tFvnHs4yGsvKCouNQ3CnVh9nkZkYQ8V5NIgAlLqsaOoSG
+ yDwKf9Tz2twsBQl7YKUXkJE7cmMpPA6DSyvg9Qq52+9fqhfP/ETXPqCOMdbI5QxsCG/q
+ 6SF5MjxVLqUFJzpETQqWSm9h6D+Nd3F28JAmTlVdJBh3jB6D9CFbLmkdr/dk0t58k2nm
+ ithrQzQdbIoxjDRW4fv8Lg/VQmL/a0YUt/EPBQCSyjKi97nXa9vxyJvwkRRis2H/0G+F
+ sw6sC9x4oKMGyBNzX5NEMJfx3Ql+gHTBHDMbHll4E3fVUKKq55ujZ+3hXX7GaWbPJJxx
+ orew==
+X-Gm-Message-State: AOAM530yhmDyr3kpe7KMCFAu2D2fjgsGJKg3owYF/b4D+R8BSS9aW2OT
+ MFRpKIU+hHwDv4j5a1ath/o2yNxlFQs=
+X-Received: by 2002:adf:dc8d:: with SMTP id r13mr3655698wrj.339.1618655466854; 
+ Sat, 17 Apr 2021 03:31:06 -0700 (PDT)
 Received: from localhost.localdomain (39.red-81-40-121.staticip.rima-tde.net.
  [81.40.121.39])
- by smtp.gmail.com with ESMTPSA id y17sm14860403wrq.76.2021.04.17.03.30.45
+ by smtp.gmail.com with ESMTPSA id n9sm11795815wmo.27.2021.04.17.03.31.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 17 Apr 2021 03:30:46 -0700 (PDT)
+ Sat, 17 Apr 2021 03:31:06 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 03/11] hw/arm/aspeed: Do not sysbus-map mmio flash region
- directly, use alias
-Date: Sat, 17 Apr 2021 12:30:20 +0200
-Message-Id: <20210417103028.601124-4-f4bug@amsat.org>
+Subject: [PATCH v2 07/11] hw/pci-host/raven: Use MR alias for AS root,
+ not sysbus mapped MR
+Date: Sat, 17 Apr 2021 12:30:24 +0200
+Message-Id: <20210417103028.601124-8-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.3
 In-Reply-To: <20210417103028.601124-1-f4bug@amsat.org>
 References: <20210417103028.601124-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x335.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x429.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -107,80 +106,111 @@ X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- Alistair Francis <alistair@alistair23.me>,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Peter Xu <peterx@redhat.com>, Joel Stanley <joel@jms.id.au>,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Peter Xu <peterx@redhat.com>, Greg Kurz <groug@kaod.org>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
  David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: z+VLPGs/l3CE
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 5hSkSw1ZvaYU
 
-The flash mmio region is exposed as an AddressSpace.
-AddressSpaces must not be sysbus-mapped, therefore map
-the region using an alias.
+The PCI I/O region is exposed as AddressSpace. AddressSpaces must
+not be sysbus-mapped (to be zero-based), therefore map the region
+using an alias.
+
+As the new AdressSpace root memory region is now zero-based, we do not
+need anymore to add the PCI I/O base address to the MemoryRegionOps
+handlers. Update the temporary assertion and its comment.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-[ clg : Fix DMA_FLASH_ADDR() ]
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
-Message-Id: <20210312182851.1922972-3-f4bug@amsat.org>
 ---
- include/hw/ssi/aspeed_smc.h | 1 +
- hw/ssi/aspeed_smc.c         | 7 ++++---
- 2 files changed, 5 insertions(+), 3 deletions(-)
+ hw/pci-host/raven.c | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
 
-diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
-index 16c03fe64f3..e3c96cecbd8 100644
---- a/include/hw/ssi/aspeed_smc.h
-+++ b/include/hw/ssi/aspeed_smc.h
-@@ -84,6 +84,7 @@ struct AspeedSMCState {
+diff --git a/hw/pci-host/raven.c b/hw/pci-host/raven.c
+index 36652122424..7bbb7ef0a29 100644
+--- a/hw/pci-host/raven.c
++++ b/hw/pci-host/raven.c
+@@ -67,6 +67,7 @@ struct PRePPCIState {
+     PCIBus pci_bus;
+     AddressSpace pci_io_as;
+     MemoryRegion pci_io;
++    MemoryRegion pci_io_alias;
+     MemoryRegion pci_io_non_contiguous;
+     MemoryRegion pci_memory;
+     MemoryRegion pci_intack;
+@@ -143,14 +144,13 @@ static inline hwaddr raven_io_address(PREPPCIState *s,
+ {
+     /*
+      * We shouldn't access AddressSpace internals. However this assert
+-     * is temporarily introduced to prove a subtle inconsistency from
+-     * commit 1ae1dc5ba24 ("raven: Set a correct PCI I/O memory region"):
+-     * AddressSpace root region must be zero-based, but the Raven use is not.
++     * is temporarily used to prove a subtle inconsistency from commit
++     * 1ae1dc5ba24 ("raven: Set a correct PCI I/O memory region") which
++     * expected the PCI I/O root region base address to be 0x80000000.
+      *
+-     * Assert the root region is based on physical address 0x80000000
+-     * until the issue is fixed.
++     * We now use an alias memory region as root, which is zero-based.
+      */
+-    assert(s->pci_io_as.root->addr == PCI_IO_BASE_ADDR);
++    assert(s->pci_io_as.root->addr == 0);
  
-     MemoryRegion mmio;
-     MemoryRegion mmio_flash;
-+    MemoryRegion mmio_flash_alias;
+     if (s->contiguous_map == 0) {
+         /* 64 KB contiguous space for IOs */
+@@ -172,8 +172,7 @@ static uint64_t raven_io_read(void *opaque, hwaddr addr,
+     uint8_t buf[4];
  
-     qemu_irq irq;
-     int irqline;
-diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-index 6f72fb028e5..e06a3b0c5bd 100644
---- a/hw/ssi/aspeed_smc.c
-+++ b/hw/ssi/aspeed_smc.c
-@@ -179,8 +179,7 @@
-  *   0x7FFFFF: 32M bytes
-  */
- #define DMA_DRAM_ADDR(s, val)   ((val) & (s)->ctrl->dma_dram_mask)
--#define DMA_FLASH_ADDR(s, val)  ((s)->ctrl->flash_window_base | \
--                                ((val) & (s)->ctrl->dma_flash_mask))
-+#define DMA_FLASH_ADDR(s, val)  ((val) & (s)->ctrl->dma_flash_mask)
- #define DMA_LENGTH(val)         ((val) & 0x01FFFFFC)
+     addr = raven_io_address(s, addr);
+-    address_space_read(&s->pci_io_as, addr + PCI_IO_BASE_ADDR,
+-                       MEMTXATTRS_UNSPECIFIED, buf, size);
++    address_space_read(&s->pci_io_as, addr, MEMTXATTRS_UNSPECIFIED, buf, size);
  
- /* Flash opcodes. */
-@@ -1385,7 +1384,9 @@ static void aspeed_smc_realize(DeviceState *dev, Error **errp)
-     memory_region_init_io(&s->mmio_flash, OBJECT(s),
-                           &aspeed_smc_flash_default_ops, s, name,
-                           s->ctrl->flash_window_size);
--    sysbus_init_mmio(sbd, &s->mmio_flash);
-+    memory_region_init_alias(&s->mmio_flash_alias, OBJECT(s), name,
-+                             &s->mmio_flash, 0, s->ctrl->flash_window_size);
-+    sysbus_init_mmio(sbd, &s->mmio_flash_alias);
+     if (size == 1) {
+         return buf[0];
+@@ -204,8 +203,7 @@ static void raven_io_write(void *opaque, hwaddr addr,
+         g_assert_not_reached();
+     }
  
-     s->flashes = g_new0(AspeedSMCFlash, s->ctrl->max_peripherals);
+-    address_space_write(&s->pci_io_as, addr + PCI_IO_BASE_ADDR,
+-                        MEMTXATTRS_UNSPECIFIED, buf, size);
++    address_space_write(&s->pci_io_as, addr, MEMTXATTRS_UNSPECIFIED, buf, size);
+ }
  
+ static const MemoryRegionOps raven_io_ops = {
+@@ -301,6 +299,8 @@ static void raven_pcihost_initfn(Object *obj)
+     DeviceState *pci_dev;
+ 
+     memory_region_init(&s->pci_io, obj, "pci-io", 0x3f800000);
++    memory_region_init_alias(&s->pci_io_alias, obj, "pci-io",
++                             &s->pci_io, 0, memory_region_size(&s->pci_io));
+     memory_region_init_io(&s->pci_io_non_contiguous, obj, &raven_io_ops, s,
+                           "pci-io-non-contiguous", 0x00800000);
+     memory_region_init(&s->pci_memory, obj, "pci-memory", 0x3f000000);
+@@ -308,7 +308,7 @@ static void raven_pcihost_initfn(Object *obj)
+ 
+     /* CPU address space */
+     memory_region_add_subregion(address_space_mem, PCI_IO_BASE_ADDR,
+-                                &s->pci_io);
++                                &s->pci_io_alias);
+     memory_region_add_subregion_overlap(address_space_mem, PCI_IO_BASE_ADDR,
+                                         &s->pci_io_non_contiguous, 1);
+     memory_region_add_subregion(address_space_mem, 0xc0000000, &s->pci_memory);
 -- 
 2.26.3
 

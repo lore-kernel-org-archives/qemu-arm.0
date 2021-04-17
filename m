@@ -1,99 +1,102 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp1147933lfr;
-        Sat, 17 Apr 2021 03:32:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx9Z48Y+FJOqODGBVc7X/6UVBhX1CKrzdOCeZhc/jUJTNPMLz74eJpfugsaQdyITA0dgSk/
-X-Received: by 2002:a6b:b491:: with SMTP id d139mr6878688iof.152.1618655559003;
-        Sat, 17 Apr 2021 03:32:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618655558; cv=none;
+Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp1148131lfr;
+        Sat, 17 Apr 2021 03:33:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwD7G1RkQu3bzCbUEOQfjgMgD2F/a45gY3bUi0Em+OMjMBPycGI3JQ01mYx3XngwxibYCMn
+X-Received: by 2002:a6b:7e0c:: with SMTP id i12mr7052626iom.196.1618655583788;
+        Sat, 17 Apr 2021 03:33:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618655583; cv=none;
         d=google.com; s=arc-20160816;
-        b=v2dz3GgKUcXnYOK4ERePqjJKwCYpYGIWtJHO6mZ/qAVEJ8sfwoMTWQOwPoy2oIiwN5
-         4ZqdPRBoyMJ4NhqaSlYkKACS0UR5v99/QFQL4chFgVS5czKsu565vbSNzpazeVlgrxUC
-         8y6TWID6xFm4StSZKjmx8taC5ffqFOND27qp4m32rLv1cIQ35BfEdrnR9f4obxrWrC1n
-         o3Nhg+VYpKwqk7k1pESP4Vmc+i1quwYCZWZY9UtkAZw3xnVN+KU/dIOR1lOnhpWH+qyy
-         RmD2zNryknqiP4S2jT4OmiyDhIYi76qBvUxtEXgxlDMlnZF+11QFKWBddTiPFXEOOs/k
-         Qoig==
+        b=02U1Q9bPjj6VCp6Rp9evYYOyorI8SM0pOQ08he49oTq4vvYA2EYvxLJLRhzPUutkyN
+         e/wzMx2lE955/MF1bjs8HPSaPXUvhalIrfg3EeNziTXvxY1KcKzmbvBcK16QsflRpVWO
+         x2A46SqliS9wLBdc+hGKwxzfbiydLl1fF9IKiEIn0bLRCibFeVkt57IoXyjO5FCFPeCV
+         8rLLxBwZdfbM9nldDXvRm2yCNExm5QsOp6meaILkRoNhSqqCiPxuTzyMnZsXHmVJjQcS
+         /kxFbotjx9TfoZFvFGpXQw4uYxDuGSivQczwc0m02oNV+dWCXML4UIi0pcQTHubqB/56
+         ci7A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=RQcCnrkki2wULF0Ux+64ovXIK00r70LiEXiOjNlziVQ=;
-        b=Q3UIKAlRMXoiJg9xefm42j8JG/51CSh42dlm0neVdwJB/BNeZ87oJ68KfqHsCFaDpR
-         w/mY+Cc2w2+u/rlPYzXbyc9Ci2Ldfaet93lWQhG58tekSTy2RfwU6O1Dzq9wr8SPKjX3
-         IAL5NEmOwFRhoe4uBsOYGMSDKilwvDvwybq/3FBa7kWSKlUBpyhMMVJJoyTyQc1AMFXF
-         jH9bHcU36NNlZYxPGFtR3p8AYZhjC7NUzNT7G1zaZT8ZD8Lfjgvskf1sIhrxXZIsHIAp
-         NtZM9UtEreKa5/mLGzKvfhhV8c3yAgMiOl23+i8mqI/6m/k6nVCk6QcOOCjoyFcpy1FR
-         2NKg==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=Qo9mc7C04yVXRYuUPrtzG1r/qxsKimgZXzxtcjqOeGs=;
+        b=RGbN9krI1i4RBwVjRbEgVWNQ3vimJjCW701BtQlcFUHTpeZldt5q9AHGgKWBgOf8ww
+         efeiJ0TsOvb7YvuxMbguxiCBVLV0b3ikKw1UiCz98skVsjLr4VpBTwjTddrcj7OHyj1d
+         H25Tz9SWdqHfuFoEIlzbPrdME6HwEF8+v4S8bse3ApOINgqSXOSl11UFxKdfEPBjhn2B
+         VZ98MQpYcYYy/jKczvFiR3S8FRrV0JTZO3HikvgyY8NJBwYk7Q8J/K7GrLM4fJiCGXzM
+         bLWYD+/c63O+IhtAofkW+BbX8AHc59oa4GPUo/9syeMCHeKRUK3SyDwLfAgUSZYL6l7V
+         1Y5g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qwtuGwtN;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=C9Kb5qhb;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x13si5190054ilg.80.2021.04.17.03.32.38
+        by mx.google.com with ESMTPS id e9si8640431ilu.109.2021.04.17.03.33.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 17 Apr 2021 03:32:38 -0700 (PDT)
+        Sat, 17 Apr 2021 03:33:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qwtuGwtN;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=C9Kb5qhb;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:50498 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51478 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lXiFi-00031W-Bj
-	for alex.bennee@linaro.org; Sat, 17 Apr 2021 06:32:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58638)
+	id 1lXiG5-0003Q2-AA
+	for alex.bennee@linaro.org; Sat, 17 Apr 2021 06:33:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58698)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lXiDj-0001Gu-K2; Sat, 17 Apr 2021 06:30:35 -0400
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e]:34636)
+ id 1lXiE3-0001Xa-Qc; Sat, 17 Apr 2021 06:30:57 -0400
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329]:33635)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lXiDh-0000fF-Pu; Sat, 17 Apr 2021 06:30:35 -0400
-Received: by mail-wr1-x42e.google.com with SMTP id r7so17019985wrm.1;
- Sat, 17 Apr 2021 03:30:32 -0700 (PDT)
+ id 1lXiE2-0000rn-BH; Sat, 17 Apr 2021 06:30:55 -0400
+Received: by mail-wm1-x329.google.com with SMTP id
+ q123-20020a1c43810000b029012c7d852459so6269614wma.0; 
+ Sat, 17 Apr 2021 03:30:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=RQcCnrkki2wULF0Ux+64ovXIK00r70LiEXiOjNlziVQ=;
- b=qwtuGwtNQyip9L2Z9LS33y0TYKmZcKyPKRpe/xXnCkLbBlu51+0HfSrWdMvotw+uAC
- abY87EALdyAOMRzSsGovYbhPEmrDuNfCV5tBhg4/rsvVQSZGBPWgN4A2jkbGL99+NqtC
- AbmK1gqpPTER+NFjDrz0YealRi+oqnAO6IaYmjgUf+45TJ1+n+gwqbXC/QA8pb/zT/HN
- 8C4kOkweoseKHOyAGjCyXdWLhBRCVd2UUP/6kXmJB3yHvsql8ubpKsfr4fwrd/W6DV5O
- 7qv2hIk2+eD7je4YgqB+v0cS9bTO3h9tDDdHWakOo5c/dhK10kdPbd+F9ny33fUoYI7U
- 8ijg==
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=Qo9mc7C04yVXRYuUPrtzG1r/qxsKimgZXzxtcjqOeGs=;
+ b=C9Kb5qhbFu0DU2JQIy6zdLf/jnz7EfMekOWbA1c4qigXSRO69yKPL8AiQFaysa5AYY
+ oH/3RDr8jm0vLo1nsCaKbEy5wcWmg58oyb/+KZNZfPOfFcFZLDzkoVuQ4ea0XkxMCyVG
+ tHt11QMT6I1LZgdrqnbg1t9odjYY3OeO1nnrskcxFN0xBmGXw4wT1ZNDJbiN30vrApO1
+ gOgGME64aQq3Isfav6g0s/yJf5Lbsj/CCU8EutZQyYxzl4abisDn9hoqpBRX6LU0b3BF
+ UHESzjZ6fo2LKUIyaLEMOIWhPCOfkFCb34UhnXrPy40TkaKGPG1tqrWd8enwFEzcqQFl
+ H1ng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=RQcCnrkki2wULF0Ux+64ovXIK00r70LiEXiOjNlziVQ=;
- b=YLfNEJzBue+o4S7Ukr42NJonB5m81xnM3teq4RmytVA+siFIJA6/oGODqNWHqdpqCs
- 1XNe+Cp7m80YcUbqG1wtvU/r8fFlSivdVW9BrwjiPWurSFBtHzCpqpxcNMdBvQ4fPfU7
- HkkgWYbyTWlD1SqB1odpMYvTKuXD76EweQFqzejD22ZYigg+YcDQZq5ywJEpphjalun7
- +wyf0t8FH0YCjjkA95h03lRgGn6QU18KpcyU6cJGVwLriCo9ccoNFR7rApdaS+ws1JyK
- fFeKIzpyKlsWV43IeDdJSGxThV4EstGrX0uLcskwSaIi2CemSD9i6I3wqzngvuLpjNwX
- l8IQ==
-X-Gm-Message-State: AOAM532GNixh/kuU4xwVES23c1H+NKZ03dtl9YNfyUSRlXBIKFecfnGM
- oUkTrtggJ4VoluOTfcCyKAbOD0HRhU0=
-X-Received: by 2002:a05:6000:1449:: with SMTP id
- v9mr3744346wrx.295.1618655431257; 
- Sat, 17 Apr 2021 03:30:31 -0700 (PDT)
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=Qo9mc7C04yVXRYuUPrtzG1r/qxsKimgZXzxtcjqOeGs=;
+ b=DggTiXIu+OprQX8McVT9WyyxWVYTCu1R1W+KxOR7AwAbcz2e3neliWx2cdRJStFDSD
+ ZmtmdHbK1QMkiorS5g0a2ggBdck16ykA3qcJQAqQrVgiUcThBh+tRf+M1RfvV2PZmYuY
+ ma51zq710+bKQplJ34J3BcvSH+ClUG4oqSrmShsPkL29i6iq0xCn+2nuiTZw+VG6RRSR
+ nuj2IDFIZ/CUW50/QNixEeuJ7yALqk+4BSNg0cqGAF0T+9xdd52vT4SFb+8La3IBevB/
+ KBgs3nR/2tiNB0BGxQ4BaXASyB3jQWBQ1j2DSsXhzF1USbeJAfvMotxk7cjdvSOflnmU
+ 37Iw==
+X-Gm-Message-State: AOAM531O+uiuvfY53yWwN0Lzf11HiPf0aioOT19dOxtRB8C3Mx0Hz3xS
+ 4OxY1kh6puw2S9mFX8RlCoRjaMslZbw=
+X-Received: by 2002:a1c:f20f:: with SMTP id s15mr12523015wmc.61.1618655451744; 
+ Sat, 17 Apr 2021 03:30:51 -0700 (PDT)
 Received: from localhost.localdomain (39.red-81-40-121.staticip.rima-tde.net.
  [81.40.121.39])
- by smtp.gmail.com with ESMTPSA id 200sm12554254wmb.1.2021.04.17.03.30.30
+ by smtp.gmail.com with ESMTPSA id y17sm14860750wrq.76.2021.04.17.03.30.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 17 Apr 2021 03:30:30 -0700 (PDT)
+ Sat, 17 Apr 2021 03:30:51 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 00/11] memory: Forbid mapping AddressSpace root MemoryRegion
-Date: Sat, 17 Apr 2021 12:30:17 +0200
-Message-Id: <20210417103028.601124-1-f4bug@amsat.org>
+Subject: [PATCH v2 04/11] hw/pci-host: Rename Raven ASIC PCI bridge as raven.c
+Date: Sat, 17 Apr 2021 12:30:21 +0200
+Message-Id: <20210417103028.601124-5-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.3
+In-Reply-To: <20210417103028.601124-1-f4bug@amsat.org>
+References: <20210417103028.601124-1-f4bug@amsat.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42e.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -116,64 +119,85 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Peter Xu <peterx@redhat.com>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Peter Xu <peterx@redhat.com>, Greg Kurz <groug@kaod.org>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
  David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oLSKrpbPwFdO
+X-TUID: PVzQnMu2DAfx
 
-Hi,=0D
-=0D
-This series is the result of a long thread with Peter:=0D
-https://www.mail-archive.com/qemu-devel@nongnu.org/msg788366.html=0D
-and IRC chats...=0D
-=0D
-AddressSpace are physical address view and shouldn't be using=0D
-non-zero base address. The correct way to map a MR used as AS=0D
-root is to use a MR alias.=0D
-=0D
-Fix the current incorrect uses, then forbid further use.=0D
-=0D
-Since v1:=0D
-- Split the Raven patch in multiple changes, easier to follow/review=0D
-  (https://www.mail-archive.com/qemu-devel@nongnu.org/msg791116.html)=0D
-=0D
-Note, the Aspeed patches are already queued in C=C3=A9dric tree. I had=0D
-to cherry-pick them from his tree to have the series pass CI.=0D
-=0D
-C=C3=A9dric Le Goater (1):=0D
-  hw/aspeed/smc: Use the RAM memory region for DMAs=0D
-=0D
-Peter Xu (1):=0D
-  memory: Make sure root MR won't be added as subregion=0D
-=0D
-Philippe Mathieu-Daud=C3=A9 (9):=0D
-  hw/arm/aspeed: Do not directly map ram container onto main address bus=0D
-  hw/arm/aspeed: Do not sysbus-map mmio flash region directly, use alias=0D
-  hw/pci-host: Rename Raven ASIC PCI bridge as raven.c=0D
-  hw/pci-host/raven: Add PCI_IO_BASE_ADDR definition=0D
-  hw/pci-host/raven: Assert PCI I/O AddressSpace is based at 0x80000000=0D
-  hw/pci-host/raven: Use MR alias for AS root, not sysbus mapped MR=0D
-  hw/pci-host/raven: Remove pointless alias mapping onto system bus=0D
-  hw/pci-host/prep: Do not directly map bus-master region onto main bus=0D
-  hw/pci-host/raven: Remove temporary assertion 'root MR is zero-based'=0D
-=0D
- include/exec/memory.h           |  1 +=0D
- include/hw/ssi/aspeed_smc.h     |  1 +=0D
- hw/arm/aspeed.c                 |  8 ++++++--=0D
- hw/pci-host/{prep.c =3D> raven.c} | 19 ++++++++++---------=0D
- hw/ssi/aspeed_smc.c             | 10 +++++-----=0D
- softmmu/memory.c                |  2 ++=0D
- MAINTAINERS                     |  2 +-=0D
- hw/pci-host/Kconfig             |  2 +-=0D
- hw/pci-host/meson.build         |  2 +-=0D
- hw/ppc/Kconfig                  |  2 +-=0D
- 10 files changed, 29 insertions(+), 20 deletions(-)=0D
- rename hw/pci-host/{prep.c =3D> raven.c} (96%)=0D
-=0D
--- =0D
-2.26.3=0D
-=0D
+The ASIC PCI bridge chipset from Motorola is named 'Raven'.
+This chipset is used in the PowerPC Reference Platform (PReP),
+but not restricted to it. Rename it accordingly.
+
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/pci-host/{prep.c => raven.c} | 0
+ MAINTAINERS                     | 2 +-
+ hw/pci-host/Kconfig             | 2 +-
+ hw/pci-host/meson.build         | 2 +-
+ hw/ppc/Kconfig                  | 2 +-
+ 5 files changed, 4 insertions(+), 4 deletions(-)
+ rename hw/pci-host/{prep.c => raven.c} (100%)
+
+diff --git a/hw/pci-host/prep.c b/hw/pci-host/raven.c
+similarity index 100%
+rename from hw/pci-host/prep.c
+rename to hw/pci-host/raven.c
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 36055f14c59..0e8f9cbc2ab 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1302,7 +1302,7 @@ S: Maintained
+ F: hw/ppc/prep.c
+ F: hw/ppc/prep_systemio.c
+ F: hw/ppc/rs6000_mc.c
+-F: hw/pci-host/prep.[hc]
++F: hw/pci-host/raven.c
+ F: hw/isa/i82378.c
+ F: hw/isa/pc87312.c
+ F: hw/dma/i82374.c
+diff --git a/hw/pci-host/Kconfig b/hw/pci-host/Kconfig
+index 2ccc96f02ce..593d90e5588 100644
+--- a/hw/pci-host/Kconfig
++++ b/hw/pci-host/Kconfig
+@@ -6,7 +6,7 @@ config XEN_IGD_PASSTHROUGH
+     default y
+     depends on XEN && PCI_I440FX
+ 
+-config PREP_PCI
++config RAVEN_PCI
+     bool
+     select PCI
+     select OR_IRQ
+diff --git a/hw/pci-host/meson.build b/hw/pci-host/meson.build
+index 87a896973e7..2460f365471 100644
+--- a/hw/pci-host/meson.build
++++ b/hw/pci-host/meson.build
+@@ -13,7 +13,7 @@
+ pci_ss.add(when: 'CONFIG_SH_PCI', if_true: files('sh_pci.c'))
+ 
+ # PPC devices
+-pci_ss.add(when: 'CONFIG_PREP_PCI', if_true: files('prep.c'))
++pci_ss.add(when: 'CONFIG_RAVEN_PCI', if_true: files('raven.c'))
+ pci_ss.add(when: 'CONFIG_GRACKLE_PCI', if_true: files('grackle.c'))
+ # NewWorld PowerMac
+ pci_ss.add(when: 'CONFIG_UNIN_PCI', if_true: files('uninorth.c'))
+diff --git a/hw/ppc/Kconfig b/hw/ppc/Kconfig
+index d11dc30509d..ebbe95eb90f 100644
+--- a/hw/ppc/Kconfig
++++ b/hw/ppc/Kconfig
+@@ -73,7 +73,7 @@ config PREP
+     imply PCI_DEVICES
+     imply TEST_DEVICES
+     select CS4231A
+-    select PREP_PCI
++    select RAVEN_PCI
+     select I82378
+     select LSI_SCSI_PCI
+     select M48T59
+-- 
+2.26.3
+

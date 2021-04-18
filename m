@@ -1,182 +1,231 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp772540lfr;
-        Fri, 16 Apr 2021 15:25:16 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxiKp/XsyYcWjoro2ETVf4Ba7MsISuks5st/yzIbcFhbpi+f6ojjVQzCt3BFBxwdGs/G2Qn
-X-Received: by 2002:a5d:8453:: with SMTP id w19mr5257022ior.25.1618611915859;
-        Fri, 16 Apr 2021 15:25:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618611915; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp625387lfb;
+        Sun, 18 Apr 2021 14:21:41 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwi45kyWVuQO4OR5jStdBwkZ5Rhp/a4XuoRxWq/ECUew9T/Q8vTfWoCB2jsOtfaCTJWdH2T
+X-Received: by 2002:a6b:3c1a:: with SMTP id k26mr11950165iob.113.1618780900938;
+        Sun, 18 Apr 2021 14:21:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618780900; cv=none;
         d=google.com; s=arc-20160816;
-        b=Sd0fhOViF1ilPvzuA4bs6XYbgx7igYyEnb2UeA516mTKhQl/vVpf+NRWB02inmtSVu
-         x2dh/OI+Y5dSTo8sX9VFtvyBnWy5EGnmu9UPY0DmtPC0PCPW+2SG2ej6+WSpkQFFk79m
-         Ul4NZehQgCLYc/Q+ocQe9t4Kpm9EmNV4yCBqMVHS0Beet7KIi5qWzUgRhBhOCzp42P58
-         /UhPer3isvboaOLu8gDb1gEqqSuSpU2H/C/lRx0HKgVJ4pRPR4qgBoMZjM584xb+eZQb
-         kNL3KhTFW/I96HArvBXmvqwcS6fMHy67Yf2LEzjSZDegW14INfjXMDpWmmJAa6MYwY29
-         CnAg==
+        b=bB0nK5EnpVjkEJWIdYLTqdAx7ypbb9RckpLmjNO9iyBHet8FDISJ1YzrIMrbQnmeDr
+         782G/d2KPv39P4VAgPOluKDx/mKM3j0064uRa23YAQKq9r0WRqxE6dB1FVOECZhuJIFM
+         e4FtXQJLhWlWsuUtXiJonE9lXQr4DH2tT3d4sooMM30ldp730dw+0pyq8B4GMKQAWoSq
+         6uEInE3qtaYeMmsI/FblgD6xZJo/kSnuHubz7Yn5ey83576bm/zQ0v7wYBPG+g4jkezS
+         i0zwa0D60lLrkrStWgW9zK6SZBAYLEY6uOFir/Eo6CmXNIxWqrOmx2E3xjd1PWUeRlNJ
+         rOCg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=0MbRdnRJn0x9uVTH+qro7/oyKU7eLBQcZeSxN6NVvH4=;
-        b=NS1eK6huv8TGf/n/WvVfhZFhYyuRjKIfYHuhhnGU6avYZNFWNJprR8QD7p1vZ/F4Nq
-         H94Bf1Eckyjh3F6ZCuTPNbwkKb16Dyng/nqAtE2IQOBU2qF6vKgI28adj98CFgNCJe/m
-         kDsfLFj4OrY5oj0ClJlSkeMSGl0hRoovXUxle8W1tVeDwCbXkUH9OENkpZdxpsjrW3mD
-         PwDZwNTEvtSMYw2zUu95+9bfUt4L5IkcK3GZB1z1Nj0lBrmU4nhNAQFj/VOrAIYjPH3L
-         7XZaBpCUy+LKkSz1o/iaiduPva6kOiy8L0s6VTdE8dPT/noQqWgah+56VsQ6sVswGcbZ
-         GnPg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-language:in-reply-to
+         :mime-version:user-agent:date:message-id:from:references:to:subject;
+        bh=VTUtPAKLl+cHGz7IP3jrAdan1m6JYGLiFL3QX3jluWM=;
+        b=TUgWSkTiG0aK19dNvHTsP6H+9K7uiRK09HsZRDH0zI2A2MRx0somdhqzmGnrOcoaD6
+         HktVUZ/Icoc8YFQS3OuUidO/IIQZ9tXGYVKki/zPPjVXu4UN5giItMqShZB6cdG5AXwW
+         U8VkafCL29uvY2ZLV2iUpnpWWes0roLa+xuHz4ENO7n+FySK4aUOo73jjuRgixi2ydLX
+         ANJae9BqS/BaDR0nsfiwSGPfSZG9wAouo3wqUxZ/H4cGRVJRjYcG76KMunyGIfGKqlQc
+         NVo711X1PtLjUT4GHhz7DQ18tgrGYZDmBluohGVDNiQ53vcKp0BF6Q6K7oyvdt0ENeKv
+         pE0Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qaXmsrGp;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v15si3882205ion.84.2021.04.16.15.25.15
+        by mx.google.com with ESMTPS id s6si16895477ilu.124.2021.04.18.14.21.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Apr 2021 15:25:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 18 Apr 2021 14:21:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qaXmsrGp;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54326 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:49212 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lXWtn-0003sR-8S
-	for alex.bennee@linaro.org; Fri, 16 Apr 2021 18:25:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47978)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lYErM-0000MH-6o
+	for alex.bennee@linaro.org; Sun, 18 Apr 2021 17:21:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58364)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lXVsJ-0001IK-15
- for qemu-devel@nongnu.org; Fri, 16 Apr 2021 17:19:39 -0400
-Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432]:37557)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lXVsH-0001kO-AY
- for qemu-devel@nongnu.org; Fri, 16 Apr 2021 17:19:38 -0400
-Received: by mail-pf1-x432.google.com with SMTP id o123so19166532pfb.4
- for <qemu-devel@nongnu.org>; Fri, 16 Apr 2021 14:19:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=0MbRdnRJn0x9uVTH+qro7/oyKU7eLBQcZeSxN6NVvH4=;
- b=qaXmsrGpI9i5K8Edy6l7VAnAbkhP/t+MCdGi+211l8uLRVZYWu38GBc8aq5kqgtCTR
- 8qPnoZlRs2qP36+W9LhuS/8sUhpsvNuGRUAyKQXYHKTO8340E5+QFkZ+7G4sMTakAaqI
- 2VUWK1ZlLN7N8pu1EvXmuFzAYDjILxnUVaN9btg6rB1kp7Z0OyfRVJELzMsIK91+SqT8
- 0iRrllnrFHVAVF4lfMZFWGm/lXYnw/5MEmqbt7gQTTuUOKT4pPJ7fTDPGbzKlPgMxwYj
- SwieOtpt0EV+HkqPPdi4DB0EAK7oBQqA5FVd4tNMOv86uSBQmng5alA4XA1Cms2vKoLo
- iJxA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=0MbRdnRJn0x9uVTH+qro7/oyKU7eLBQcZeSxN6NVvH4=;
- b=Ulc9OZdBCX0QUf4UGi0+fhAHIPytKe2z5SKsASoam40zvWZAZVav8tD5I+Yph8eq9x
- MIc3psj7nuXsBRkbcc3X4UP7Dxveq8Y7WivA+L5anb+ZySOC5VNN2s/FFp74vmpBoIT8
- mS2pvFJjSH9rVHji6qGgBz0ntzkaArBdPVC5ygDGYHkRW+hxO2CSskCA7mOAXQOwtDcj
- ZMZZVQ6L5c1orduhBilpGXBfemAwFG6x+r2aRYtmfd0CluGjZQ+LnqrEHcCi4VCIeoTu
- iS9y7V4muw32sZkePC1D6kijJLdptO5g9fnlgz88SFI+CQBTcG58prRlU69Fd56CjwVY
- 1Eng==
-X-Gm-Message-State: AOAM533O8Fqj2R1s5VaiNhPffDQFI2boKunj2KQ338v9e5DAvUhKHA4c
- LdIqBBa/LkgZ5GLa86yqjw8ZDyQU2vq+0w==
-X-Received: by 2002:a62:4e96:0:b029:248:effc:9a4d with SMTP id
- c144-20020a624e960000b0290248effc9a4dmr9428224pfb.71.1618607976014; 
- Fri, 16 Apr 2021 14:19:36 -0700 (PDT)
-Received: from localhost.localdomain ([71.212.131.83])
- by smtp.gmail.com with ESMTPSA id i28sm5648479pgi.42.2021.04.16.14.19.35
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 16 Apr 2021 14:19:35 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v5 81/81] target/arm: Enable SVE2 and some extensions
-Date: Fri, 16 Apr 2021 14:19:34 -0700
-Message-Id: <20210416211934.1591764-1-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210416210240.1591291-1-richard.henderson@linaro.org>
-References: <20210416210240.1591291-1-richard.henderson@linaro.org>
+ (Exim 4.90_1) (envelope-from <steve@freyder.net>) id 1lYEr3-0000LF-Em
+ for qemu-arm@nongnu.org; Sun, 18 Apr 2021 17:21:22 -0400
+Received: from mailman.freyder.net ([45.27.155.9]:43026)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <steve@freyder.net>) id 1lYEqy-0001aF-7C
+ for qemu-arm@nongnu.org; Sun, 18 Apr 2021 17:21:19 -0400
+Received: from mailgate.local.freyder.com (mailgate [192.168.1.207])
+ by mailman.freyder.net (Postfix) with ESMTP id 207C46601A6;
+ Sun, 18 Apr 2021 16:21:13 -0500 (CDT)
+Received: from mailgate.local.freyder.com (localhost.localdomain [127.0.0.1])
+ by mailgate.local.freyder.com (Proxmox) with ESMTP id 14F3A81133;
+ Sun, 18 Apr 2021 16:21:13 -0500 (CDT)
+Received: from kungpow.freyder.net (kungpow [192.168.1.204])
+ by mailgate.local.freyder.com (Proxmox) with ESMTP id 0043C80766;
+ Sun, 18 Apr 2021 16:21:12 -0500 (CDT)
+Received: from [127.0.0.1] (kungpow.freyder.net [192.168.1.204])
+ by kungpow.freyder.net (Postfix) with ESMTP id C70B5440341;
+ Sun, 18 Apr 2021 16:21:12 -0500 (CDT)
+Subject: Re: Emulation of armv7+e1000e+/dev/sda or /dev/mmcblk0 devices
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-arm list <qemu-arm@nongnu.org>
+References: <b5aa5292-5088-fb31-24b4-c8fc202413fd@freyder.net>
+ <f553a91f-5f7a-f7a1-242b-00406e43dc20@amsat.org>
+From: steve freyder <steve@freyder.net>
+Message-ID: <3bd08e56-6857-2216-002a-94f1c551724d@freyder.net>
+Date: Sun, 18 Apr 2021 16:21:11 -0500
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.9.1
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::432;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x432.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+In-Reply-To: <f553a91f-5f7a-f7a1-242b-00406e43dc20@amsat.org>
+Content-Type: multipart/alternative;
+ boundary="------------DECBBE1B112FE5119CE63209"
+Content-Language: en-US
+Received-SPF: pass client-ip=45.27.155.9; envelope-from=steve@freyder.net;
+ helo=mailman.freyder.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, HTML_MESSAGE=0.001,
+ NICE_REPLY_A=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: j7nfxhVmFsgn
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: MUccuMCSnfa0
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/cpu.c   |  1 +
- target/arm/cpu64.c | 13 +++++++++++++
- 2 files changed, 14 insertions(+)
+This is a multi-part message in MIME format.
+--------------DECBBE1B112FE5119CE63209
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 0dd623e590..30fd5d5ff7 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1464,6 +1464,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
- 
-         u = cpu->isar.id_isar6;
-         u = FIELD_DP32(u, ID_ISAR6, JSCVT, 0);
-+        u = FIELD_DP32(u, ID_ISAR6, I8MM, 0);
-         cpu->isar.id_isar6 = u;
- 
-         u = cpu->isar.mvfr0;
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index f0a9e968c9..379f90fab8 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -662,6 +662,7 @@ static void aarch64_max_initfn(Object *obj)
-         t = FIELD_DP64(t, ID_AA64ISAR1, SPECRES, 1);
-         t = FIELD_DP64(t, ID_AA64ISAR1, FRINTTS, 1);
-         t = FIELD_DP64(t, ID_AA64ISAR1, LRCPC, 2); /* ARMv8.4-RCPC */
-+        t = FIELD_DP64(t, ID_AA64ISAR1, I8MM, 1);
-         cpu->isar.id_aa64isar1 = t;
- 
-         t = cpu->isar.id_aa64pfr0;
-@@ -702,6 +703,17 @@ static void aarch64_max_initfn(Object *obj)
-         t = FIELD_DP64(t, ID_AA64MMFR2, ST, 1); /* TTST */
-         cpu->isar.id_aa64mmfr2 = t;
- 
-+        t = cpu->isar.id_aa64zfr0;
-+        t = FIELD_DP64(t, ID_AA64ZFR0, SVEVER, 1);
-+        t = FIELD_DP64(t, ID_AA64ZFR0, AES, 2);  /* PMULL */
-+        t = FIELD_DP64(t, ID_AA64ZFR0, BITPERM, 1);
-+        t = FIELD_DP64(t, ID_AA64ZFR0, SHA3, 1);
-+        t = FIELD_DP64(t, ID_AA64ZFR0, SM4, 1);
-+        t = FIELD_DP64(t, ID_AA64ZFR0, I8MM, 1);
-+        t = FIELD_DP64(t, ID_AA64ZFR0, F32MM, 1);
-+        t = FIELD_DP64(t, ID_AA64ZFR0, F64MM, 1);
-+        cpu->isar.id_aa64zfr0 = t;
-+
-         /* Replicate the same data to the 32-bit id registers.  */
-         u = cpu->isar.id_isar5;
-         u = FIELD_DP32(u, ID_ISAR5, AES, 2); /* AES + PMULL */
-@@ -718,6 +730,7 @@ static void aarch64_max_initfn(Object *obj)
-         u = FIELD_DP32(u, ID_ISAR6, FHM, 1);
-         u = FIELD_DP32(u, ID_ISAR6, SB, 1);
-         u = FIELD_DP32(u, ID_ISAR6, SPECRES, 1);
-+        u = FIELD_DP32(u, ID_ISAR6, I8MM, 1);
-         cpu->isar.id_isar6 = u;
- 
-         u = cpu->isar.id_pfr0;
--- 
-2.25.1
+
+On 4/18/2021 12:37 AM, Philippe Mathieu-Daudé wrote:
+> Hi Steve,
+>
+> On 4/18/21 3:42 AM, steve freyder wrote:
+>> Greetings qemu-arm group,
+>>
+>>
+>> I'm a new qemu-arm list member and looking to get an emulation of an
+>> armv7 processor with a PCI bus, supporting an e1000e NIC, and some form
+>> of storage device preferably SATA and [e]MMC - I have an iMX6 SOM custom
+>> board with an e1000e on the carrier board via PCI that I'm attempting to
+>> approximate.  I want to boot U-Boot (I've built U-Boot 5.2 with support
+>> for MMC, SATA, and e100e networking).
+> Did you look at the SABRE Lite board (which use a i.MX6) as a start?
+> https://qemu-project.gitlab.io/qemu/system/arm/sabrelite.html
+>
+>>    I have the "virt" machine able to
+>> boot U-Boot and see the e1000e, but I have found nothing that allows the
+>> booted U-Boot see any MMC or SATA devices.  All attempts to use -sd, or
+>> -drive to create some kind of MMC/SATA device have failed with what
+>> appear to be (as I have been able to understand) the standard reasons,
+>> missing busses, missing properties, etc, etc. A majority of searches
+>> result in documentation from developers that's 5-10 or more years old,
+>> so I'm hard-pressed to determine whether this is my own lack of
+>> knowledge (probably YES), or whether I'm simply looking at stuff that's
+>> been overcome by events.
+>>
+>>
+>> I apologize in advance if this is not the proper forum for this, and
+>> will happily take this to a different forum, but is there any chance
+>> someone could give me a clue about the right way to look at all of this,
+>> and whether there's any machine or system definition out there that
+>> would support (or be a starting point for supporting) what I'm looking for.
+>>
+>>
+>> Thanks in advance,
+>>
+>> Steve
+>
+Philippe,
+
+
+Thanks for the quick answer, yes, I did try the sabrelite, but when I 
+attempted to add a SATA controller or an E1000 it complained that there 
+was no PCI bus.
+
+
+
+--------------DECBBE1B112FE5119CE63209
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 8bit
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+  <body>
+    <br>
+    <div class="moz-cite-prefix">On 4/18/2021 12:37 AM, Philippe
+      Mathieu-Daudé wrote:<br>
+    </div>
+    <blockquote type="cite"
+      cite="mid:f553a91f-5f7a-f7a1-242b-00406e43dc20@amsat.org">
+      <pre class="moz-quote-pre" wrap="">Hi Steve,
+
+On 4/18/21 3:42 AM, steve freyder wrote:
+</pre>
+      <blockquote type="cite">
+        <pre class="moz-quote-pre" wrap="">Greetings qemu-arm group,
+
+
+I'm a new qemu-arm list member and looking to get an emulation of an
+armv7 processor with a PCI bus, supporting an e1000e NIC, and some form
+of storage device preferably SATA and [e]MMC - I have an iMX6 SOM custom
+board with an e1000e on the carrier board via PCI that I'm attempting to
+approximate.  I want to boot U-Boot (I've built U-Boot 5.2 with support
+for MMC, SATA, and e100e networking).
+</pre>
+      </blockquote>
+      <pre class="moz-quote-pre" wrap="">
+Did you look at the SABRE Lite board (which use a i.MX6) as a start?
+<a class="moz-txt-link-freetext" href="https://qemu-project.gitlab.io/qemu/system/arm/sabrelite.html">https://qemu-project.gitlab.io/qemu/system/arm/sabrelite.html</a>
+
+</pre>
+      <blockquote type="cite">
+        <pre class="moz-quote-pre" wrap="">  I have the "virt" machine able to
+boot U-Boot and see the e1000e, but I have found nothing that allows the
+booted U-Boot see any MMC or SATA devices.  All attempts to use -sd, or
+-drive to create some kind of MMC/SATA device have failed with what
+appear to be (as I have been able to understand) the standard reasons,
+missing busses, missing properties, etc, etc. A majority of searches
+result in documentation from developers that's 5-10 or more years old,
+so I'm hard-pressed to determine whether this is my own lack of
+knowledge (probably YES), or whether I'm simply looking at stuff that's
+been overcome by events.
+
+
+I apologize in advance if this is not the proper forum for this, and
+will happily take this to a different forum, but is there any chance
+someone could give me a clue about the right way to look at all of this,
+and whether there's any machine or system definition out there that
+would support (or be a starting point for supporting) what I'm looking for.
+
+
+Thanks in advance,
+
+Steve
+</pre>
+      </blockquote>
+      <br>
+    </blockquote>
+    <font face="Courier New, Courier, monospace">Philippe,<br>
+      <br>
+      <br>
+    </font>
+    <p><font face="Courier New, Courier, monospace">Thanks for the quick
+        answer, yes, I did try the sabrelite, but when I attempted to
+        add a SATA controller or an E1000 it complained that there was
+        no PCI bus.</font></p>
+    <p><font face="Courier New, Courier, monospace"><br>
+      </font></p>
+  </body>
+</html>
+
+--------------DECBBE1B112FE5119CE63209--
 

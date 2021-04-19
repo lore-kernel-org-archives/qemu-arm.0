@@ -1,97 +1,96 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp1348241lfb;
-        Mon, 19 Apr 2021 10:06:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwUmpjZO4MqEOMX/O79VheKBv+x2lUPceh+fXp2xEc+SW19e1XVOLjCIsrxbklwqUQCm06m
-X-Received: by 2002:a92:cd85:: with SMTP id r5mr18696793ilb.169.1618851999263;
-        Mon, 19 Apr 2021 10:06:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618851999; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp1048854lfb;
+        Mon, 19 Apr 2021 03:55:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyhhYgs26S3DhFt9H0s8uVBrHy26e6ndrFWwiNYgUPCcaLflu4cW2QP4Jy2zJKjjV1vwj6R
+X-Received: by 2002:a05:6638:24c2:: with SMTP id y2mr15684675jat.9.1618829722710;
+        Mon, 19 Apr 2021 03:55:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618829722; cv=none;
         d=google.com; s=arc-20160816;
-        b=NKtnjmFpA2SBcIviRKRaplZsNn+z2/GeXoO5bB9Rj5VoyfyPfqIXRFT9DH42W3mQ65
-         NWcCZuKgTK69AWWIOpLD9u3EfELJgj87mu0Zk8UrIDsZVYutQJsos5whdj2aPVVsim3t
-         SLa+51bhJkgyBaCURips/5HtiXoahGL0d3N4FmNBtEJZbOJofd+Ssyml+XlpG83CErXc
-         TZUEIEg9jrlIseXgwGK5S8X4yTHD43SWstPcQRx76atoPsWBhjzEQKtS1oFZFntWfkio
-         vtWT7jpmvPVliRwuoGWX4JpTs38m7Sk8VhLVyNdyzIjGuJucfVvglpG7WEXk16KhIqJa
-         s2Gg==
+        b=gPcMOsToPt7BpW4ZXFMDIZTqe8OuQZn2y75ADtLnqlJexNRjCGObyvX0mYGppkMD4N
+         9HzzadL9yktdJ3jbinC+ZCfdaHUl+vLC9Xkp0pvwnwiJQX94Qp2063pHF67rQ5Clj4jV
+         oyp++Pdnyn9+Z8pLG+Co7MTiQQa3HGTcKD8HWbH/syP70e/dcCiB03k60omTEfKZN9W2
+         fwSK1u3o1NxLVNSdbFAz0sw6TEv1RJCB9jBqonOkkQO7bATEJow91hYdk3rXerxMIM1L
+         wEqxi+Z/sgsqAM35loQ0VbSB8GorW28ZKWKY6wg8qvXWgDOcLxUoZnx41wdbj2y9ACYz
+         XAnQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=htfy3zuaRIRYvd+1WLz7TqkKq5Lj15GMTXVKjcjCNiA=;
-        b=QbhSdMLgTUprdz9ZFxp9BRNY44SOQJmgsqw3kEyCKgY7WQbjS/IppDwrrxHvY9Oq85
-         g6IEByWjormEpXEtZlVc6ZeBCk0Kqpe5wVmHJBfKfVNIIbaXw9QXsAgP/2GnUg8aIJh0
-         cl9nev2qLO52JCMKeDemoAor73AZn/ebaAAJG8OO3StnWdaQr2kQPS9Qny2RhBe/HCFV
-         OCtG4XEFHKWE8OB45MsyEugJNxOL9OYg4gD7SWlzAXh0EAlTTI1poUyvkx/DLF3eXQ8s
-         JStIl6pg6CXVsENQ3tr9ijlKfCjB/OTEJjRQM+R2U4dqg+Wo9ukAYrmQqMdk3PEIf/PO
-         lufw==
+        bh=jsX03qnFQOIJnCC+Y5/8FahHkH0bjmqKU0P7LClenvA=;
+        b=z/n6Yt5LXcjAlcIfMVDFpzHA7w+wqCyufUAIbBEKCZAMG2JWmiHYnbiZC2v6l5hXCx
+         qetHNOga6gS/+DbpAr5rvDhAZ3hFhDR2C1jQUwbrdpkXSXBJSp4ajzaaHgob8MrSpY1G
+         /QY99TsIOmYvuHdAFK8s8zT1hOLii3yesJUplQkg9dtwVySmm9V1stIdteplsqmsQqNO
+         RWJVpNwMH7QNmJW6qBm6tWcwORloSEGT3awMF9LkQeDehV9R7tz+ARcnuEQ61n5WbJHw
+         /8Z+JuQgcRBJw49qQtEfBx/E780F6ZOGrJsCEusSCMjT4vAoAYzV54BXLkLX1HQGWL4V
+         P2zg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=nzHVY81S;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=LqBU4aPi;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g7si26180434jat.67.2021.04.19.10.06.39
+        by mx.google.com with ESMTPS id k13si15319858iow.46.2021.04.19.03.55.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 19 Apr 2021 10:06:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 19 Apr 2021 03:55:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=nzHVY81S;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=LqBU4aPi;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45840 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46588 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lYXM6-0005qy-IU
-	for alex.bennee@linaro.org; Mon, 19 Apr 2021 13:06:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47820)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lYRYn-0005xY-UJ
+	for alex.bennee@linaro.org; Mon, 19 Apr 2021 06:55:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39284)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lYXLA-0004W6-5I
- for qemu-arm@nongnu.org; Mon, 19 Apr 2021 13:05:41 -0400
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535]:44876)
+ id 1lYRWL-0004EM-4s
+ for qemu-devel@nongnu.org; Mon, 19 Apr 2021 06:52:49 -0400
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633]:41606)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lYXL7-0004jc-8M
- for qemu-arm@nongnu.org; Mon, 19 Apr 2021 13:05:39 -0400
-Received: by mail-ed1-x535.google.com with SMTP id z5so5129826edr.11
- for <qemu-arm@nongnu.org>; Mon, 19 Apr 2021 10:05:34 -0700 (PDT)
+ id 1lYRWG-0001nP-SR
+ for qemu-devel@nongnu.org; Mon, 19 Apr 2021 06:52:48 -0400
+Received: by mail-ej1-x633.google.com with SMTP id mh2so30635521ejb.8
+ for <qemu-devel@nongnu.org>; Mon, 19 Apr 2021 03:52:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=htfy3zuaRIRYvd+1WLz7TqkKq5Lj15GMTXVKjcjCNiA=;
- b=nzHVY81Sre870loX7bjTx+CPfQmog/WzVgAoGRGgNAILXA2DOfcWIPSLQxA++2uldP
- 8Y1UtZX1g81g7OMF7Jj1ivnTeobELnZtQOtIQ+odH6k6mfbibfeVw/H+OxYf7GuDXgwv
- Mt5XKBhiNo+CZQNQ9T0joqozKeEIQj1W/mQchm1D852WzmEf8lLfDPjkVBh3ZHbB3zTO
- mjj8pfJv78DSQtXF2y6ublJDQuUw2P+vS0zuhML1EmuWo7qVisylbaM0/8j3isuLH7re
- RPbVx424rVGk+aYkVaySmBwpfUOoceT87cVZ8VBCzceGlqEKYwi0rnaQ1LAk/RtkQYxp
- CC3A==
+ :cc; bh=jsX03qnFQOIJnCC+Y5/8FahHkH0bjmqKU0P7LClenvA=;
+ b=LqBU4aPic+vBUG8rrS3uROd8X6xTr6pbPPPzcfEwZxcXweyzpmJnwnu663slI5kEya
+ HroH75LZ6mWpsL1WD9BZlVL+57De0NTBj2rUklJtnintzh54Nh2kFCnbx+jmd6Xjdnjo
+ 2jrNsEs++Uqsf3cnhixgfrY1ya7+knxNo+m7OKOH+9C8IR4DQ5u6zkDeEs0SeUJJSsDR
+ gSK7OgApxZfaA8xpiTHpmJsWuQrj24y1F9LbKQegO+TMfSW7WOfLu6kEUWBjW8+JlrQb
+ xsuoj3xLW78I/Wg3LcuZqFfd7DF51YFYXyXmTazwbGsvcbmpVt0bK8/C1+IyZApS2YnQ
+ a2GQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=htfy3zuaRIRYvd+1WLz7TqkKq5Lj15GMTXVKjcjCNiA=;
- b=FHsBvKHEcRWKbeb8JbTm97jVIK8YbyyMmEMtbhLL54yU0M1sJtqeNYi5kDTZnNOXtC
- 2XEoagd0mwCfEM+r+/1+7Wt1xZaME2fX+i0v8DyupYac0G7W+vo0DEpzpLQYSdqTx+S/
- TE9XKwp9vYoEDZqW4UCLOZX7fMRdzinAwdLROsh2ngHvSjqO+50qmLXo+jGrekJ/PaYQ
- hx+kDEJcLnihVHin4iKsdavK8wsq+x1mbjRTm6I4Rn6i0a4Nel4bjhqsoiX0qUjdVqEN
- 6yc53tGzgiF2GgzOxilJT6PYBHtBIWcJbsswn+bhI41WikCBdLQixETmz+3dixn5Km8t
- f3Ng==
-X-Gm-Message-State: AOAM531nfcW/m7AQzR2ns4KtSihYyKsPy6TlGz4jXbfkH+QsCWlGF5Zr
- h8uZYfWqRNKcWT0ssY3UQSo9DXal/lr834yr+7c//jZrNCc=
-X-Received: by 2002:a05:6402:c:: with SMTP id
- d12mr26421771edu.100.1618851933835; 
- Mon, 19 Apr 2021 10:05:33 -0700 (PDT)
+ bh=jsX03qnFQOIJnCC+Y5/8FahHkH0bjmqKU0P7LClenvA=;
+ b=N7PBUMyJaXkcnammT5vmEgalslS2NB3LERoXXWy2MSB9lTEs/ziR6EEdcc98rT4pm/
+ fjM6fJq6nyy9UTjG2r2HbDshfVlIHQgv6IFQejCW6ilAnQh59/UjSpg+y3X9QGKVKRDp
+ Y/OiIud7fm8gfNMxdMICLUvt6dNRytfXAlVuoCH/NBcWF5cBKMVu1PLoN12AJ3WPzqU5
+ giZcuGDgLYV3/rEoVloyjBuRbvlCDxgvLMUhU9Don5QFVq2O6cbwV656zTPJr0RmbPDa
+ rCtLBvGjE/jaHn5Yp2MtdIUwySL9wf8yX45ho1a6zFpLRMA5t7hsIfjU/tZzn5zlmx84
+ ANkg==
+X-Gm-Message-State: AOAM533IOmsciuek+4mJgtSP9saxX+ZNssANguMKZl3XAhaITo9O/5M4
+ ddKPDJzqHuqINnTowqGAoogyEra3ElQo7D53Z3idjQ==
+X-Received: by 2002:a17:906:29ca:: with SMTP id
+ y10mr21972327eje.250.1618829563204; 
+ Mon, 19 Apr 2021 03:52:43 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210416185959.1520974-1-richard.henderson@linaro.org>
- <20210416185959.1520974-5-richard.henderson@linaro.org>
-In-Reply-To: <20210416185959.1520974-5-richard.henderson@linaro.org>
+References: <20210401024152.203896-1-shashi.mallela@linaro.org>
+ <20210401024152.203896-6-shashi.mallela@linaro.org>
+In-Reply-To: <20210401024152.203896-6-shashi.mallela@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 19 Apr 2021 18:04:42 +0100
-Message-ID: <CAFEAcA9hGnqB2Ztsk=kUQ5djZONRO541+XvnmUCK8FA+BCCVng@mail.gmail.com>
-Subject: Re: [PATCH v4 04/30] target/arm: Add wrapper macros for accessing
- tbflags
-To: Richard Henderson <richard.henderson@linaro.org>
+Date: Mon, 19 Apr 2021 11:51:51 +0100
+Message-ID: <CAFEAcA_ppzeWMaViry4LrLCVjJVHwChTu3d5J3bZLxZ7wK8TRg@mail.gmail.com>
+Subject: Re: [PATCH v2 5/8] hw/intc: GICv3 ITS Feature enablement
+To: Shashi Mallela <shashi.mallela@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::535;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x535.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::633;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x633.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -100,39 +99,292 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /+2CRyNcThv7
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Leif Lindholm <leif@nuviainc.com>, QEMU Developers <qemu-devel@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Radoslaw Biernacki <rad@semihalf.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: jpr1orB7PoMa
 
-On Fri, 16 Apr 2021 at 20:04, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+On Thu, 1 Apr 2021 at 03:41, Shashi Mallela <shashi.mallela@linaro.org> wrote:
 >
-> We're about to split tbflags into two parts.  These macros
-> will ensure that the correct part is used with the correct
-> set of bits.
+> Added properties to enable ITS feature and define qemu system
+> address space memory in gicv3 common,setup distributor and
+> redistributor registers to indicate LPI support.
 >
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> Signed-off-by: Shashi Mallela <shashi.mallela@linaro.org>
 > ---
->  target/arm/cpu.h           | 22 +++++++++-
->  target/arm/helper-a64.c    |  2 +-
->  target/arm/helper.c        | 85 +++++++++++++++++---------------------
->  target/arm/translate-a64.c | 36 ++++++++--------
->  target/arm/translate.c     | 48 ++++++++++-----------
->  5 files changed, 101 insertions(+), 92 deletions(-)
+>  hw/intc/arm_gicv3_common.c         | 16 ++++++++++++++++
+>  hw/intc/arm_gicv3_dist.c           | 22 ++++++++++++++++++++--
+>  hw/intc/arm_gicv3_redist.c         | 28 +++++++++++++++++++++++++---
+>  hw/intc/gicv3_internal.h           | 17 +++++++++++++++++
+>  include/hw/intc/arm_gicv3_common.h |  8 ++++++++
+>  5 files changed, 86 insertions(+), 5 deletions(-)
+>
+> diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
+> index 58ef65f589..3bfc52f7fa 100644
+> --- a/hw/intc/arm_gicv3_common.c
+> +++ b/hw/intc/arm_gicv3_common.c
+> @@ -156,6 +156,7 @@ static const VMStateDescription vmstate_gicv3_cpu = {
+>          VMSTATE_UINT32(gicr_waker, GICv3CPUState),
+>          VMSTATE_UINT64(gicr_propbaser, GICv3CPUState),
+>          VMSTATE_UINT64(gicr_pendbaser, GICv3CPUState),
+> +        VMSTATE_BOOL(lpi_outofrange, GICv3CPUState),
+>          VMSTATE_UINT32(gicr_igroupr0, GICv3CPUState),
+>          VMSTATE_UINT32(gicr_ienabler0, GICv3CPUState),
+>          VMSTATE_UINT32(gicr_ipendr0, GICv3CPUState),
+> @@ -227,6 +228,7 @@ static const VMStateDescription vmstate_gicv3 = {
+>      .priority = MIG_PRI_GICV3,
+>      .fields = (VMStateField[]) {
+>          VMSTATE_UINT32(gicd_ctlr, GICv3State),
+> +        VMSTATE_UINT32(gicd_typer, GICv3State),
+>          VMSTATE_UINT32_ARRAY(gicd_statusr, GICv3State, 2),
+>          VMSTATE_UINT32_ARRAY(group, GICv3State, GICV3_BMP_SIZE),
+>          VMSTATE_UINT32_ARRAY(grpmod, GICv3State, GICV3_BMP_SIZE),
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+You can't add fields to an existing VMStateDescription like this
+without extra effort to handle migration compatibility.
+What are we trying to achieve with the extra fields?
+GICD_TYPER is read-only, I think.
+I don't think we need an lpi_outofrange flag: we should just naturally
+handle this as part of working with the GITR_PROPBASER.IDbits field.
+
+> @@ -381,6 +383,16 @@ static void arm_gicv3_common_realize(DeviceState *dev, Error **errp)
+>              (1 << 24) |
+>              (i << 8) |
+>              (last << 4);
+> +
+> +        if (s->lpi_enable) {
+> +            s->cpu[i].gicr_typer |= GICR_TYPER_PLPIS;
+> +
+> +            if (!s->sysmem) {
+> +                error_setg(errp,
+> +                    "Redist-ITS: Guest 'sysmem' reference link not set");
+> +                return;
+> +            }
+> +        }
+>      }
+>  }
+>
+> @@ -406,6 +418,7 @@ static void arm_gicv3_common_reset(DeviceState *dev)
+>          cs->gicr_waker = GICR_WAKER_ProcessorSleep | GICR_WAKER_ChildrenAsleep;
+>          cs->gicr_propbaser = 0;
+>          cs->gicr_pendbaser = 0;
+> +        cs->lpi_outofrange = false;
+>          /* If we're resetting a TZ-aware GIC as if secure firmware
+>           * had set it up ready to start a kernel in non-secure, we
+>           * need to set interrupts to group 1 so the kernel can use them.
+> @@ -494,9 +507,12 @@ static Property arm_gicv3_common_properties[] = {
+>      DEFINE_PROP_UINT32("num-cpu", GICv3State, num_cpu, 1),
+>      DEFINE_PROP_UINT32("num-irq", GICv3State, num_irq, 32),
+>      DEFINE_PROP_UINT32("revision", GICv3State, revision, 3),
+> +    DEFINE_PROP_BOOL("has-lpi", GICv3State, lpi_enable, 0),
+>      DEFINE_PROP_BOOL("has-security-extensions", GICv3State, security_extn, 0),
+>      DEFINE_PROP_ARRAY("redist-region-count", GICv3State, nb_redist_regions,
+>                        redist_region_count, qdev_prop_uint32, uint32_t),
+> +    DEFINE_PROP_LINK("sysmem", GICv3State, sysmem, TYPE_MEMORY_REGION,
+> +                     MemoryRegion *),
+>      DEFINE_PROP_END_OF_LIST(),
+>  };
+>
+> diff --git a/hw/intc/arm_gicv3_dist.c b/hw/intc/arm_gicv3_dist.c
+> index b65f56f903..96a317a8ef 100644
+> --- a/hw/intc/arm_gicv3_dist.c
+> +++ b/hw/intc/arm_gicv3_dist.c
+> @@ -366,12 +366,15 @@ static MemTxResult gicd_readl(GICv3State *s, hwaddr offset,
+>          return MEMTX_OK;
+>      case GICD_TYPER:
+>      {
+> +        bool lpi_supported = false;
+>          /* For this implementation:
+>           * No1N == 1 (1-of-N SPI interrupts not supported)
+>           * A3V == 1 (non-zero values of Affinity level 3 supported)
+>           * IDbits == 0xf (we support 16-bit interrupt identifiers)
+>           * DVIS == 0 (Direct virtual LPI injection not supported)
+> -         * LPIS == 0 (LPIs not supported)
+> +         * LPIS == 1 (LPIs are supported if affinity routing is enabled)
+> +         * num_LPIs == 0b00000 (bits [15:11],Number of LPIs as indicated
+> +         *                      by GICD_TYPER.IDbits)
+
+We support LPIs, but we have none ? That doesn't sound right, and it's
+not what the code below reports.
+
+>           * MBIS == 0 (message-based SPIs not supported)
+>           * SecurityExtn == 1 if security extns supported
+>           * CPUNumber == 0 since for us ARE is always 1
+> @@ -385,8 +388,23 @@ static MemTxResult gicd_readl(GICv3State *s, hwaddr offset,
+>           */
+>          bool sec_extn = !(s->gicd_ctlr & GICD_CTLR_DS);
+>
+> +        /*
+> +         * With securityextn on,LPIs are supported when affinity routing
+
+(missing space after comma)
+
+> +         * is enabled for non-secure state and if off LPIs are supported
+> +         * when affinity routing is enabled.
+> +         */
+> +        if (s->lpi_enable) {
+> +            if (sec_extn) {
+> +                lpi_supported = (s->gicd_ctlr & GICD_CTLR_ARE_NS);
+> +            } else {
+> +                lpi_supported = (s->gicd_ctlr & GICD_CTLR_ARE);
+> +            }
+> +        }
+> +
+>          *data = (1 << 25) | (1 << 24) | (sec_extn << 10) |
+> -            (0xf << 19) | itlinesnumber;
+> +            (lpi_supported << GICD_TYPER_LPIS_OFFSET) | (GICD_TYPER_IDBITS <<
+> +            GICD_TYPER_IDBITS_OFFSET) | itlinesnumber;
+> +        s->gicd_typer = *data;
+>          return MEMTX_OK;
+>      }
+>      case GICD_IIDR:
+> diff --git a/hw/intc/arm_gicv3_redist.c b/hw/intc/arm_gicv3_redist.c
+> index 8645220d61..325b974e70 100644
+> --- a/hw/intc/arm_gicv3_redist.c
+> +++ b/hw/intc/arm_gicv3_redist.c
+> @@ -248,10 +248,16 @@ static MemTxResult gicr_writel(GICv3CPUState *cs, hwaddr offset,
+>      case GICR_CTLR:
+>          /* For our implementation, GICR_TYPER.DPGS is 0 and so all
+>           * the DPG bits are RAZ/WI. We don't do anything asynchronously,
+> -         * so UWP and RWP are RAZ/WI. And GICR_TYPER.LPIS is 0 (we don't
+> -         * implement LPIs) so Enable_LPIs is RES0. So there are no writable
+> -         * bits for us.
+> +         * so UWP and RWP are RAZ/WI. GICR_TYPER.LPIS is 1 (we
+> +         * implement LPIs) so Enable_LPIs is programmable.
+>           */
+> +        if (cs->gicr_typer & GICR_TYPER_PLPIS) {
+> +            if (value & GICR_CTLR_ENABLE_LPIS) {
+> +                cs->gicr_ctlr |= GICR_CTLR_ENABLE_LPIS;
+> +            } else {
+> +                cs->gicr_ctlr &= ~GICR_CTLR_ENABLE_LPIS;
+> +            }
+> +        }
+>          return MEMTX_OK;
+>      case GICR_STATUSR:
+>          /* RAZ/WI for our implementation */
+> @@ -275,6 +281,14 @@ static MemTxResult gicr_writel(GICv3CPUState *cs, hwaddr offset,
+>          cs->gicr_waker = value;
+>          return MEMTX_OK;
+>      case GICR_PROPBASER:
+> +        if (FIELD_EX64(value, GICR_PROPBASER, IDBITS) <
+> +            GICR_PROPBASER_IDBITS_THRESHOLD) {
+> +            cs->lpi_outofrange = true;
+
+I don't think you should need to special case this. It just means "turns out
+that the LPI table is effectively zero length". When code doing LPI table
+lookups calculates the LPI table size (which it needs to do anyway) it can
+just catch the "turns out to be negative" case then.
+
+> +        }
+> +        if (FIELD_EX64(value, GICR_PROPBASER, IDBITS) > GICD_TYPER_IDBITS) {
+> +            value &= ~R_GICR_PROPBASER_IDBITS_MASK;
+> +            value |= GICD_TYPER_IDBITS;
+> +        }
+
+This isn't what the spec says happens. It says that if the value the
+guest writes
+in this field is larger than GICD_TYPER.IDbits, then the GICD_TYPER.IDBits value
+applies. That doesn't mean the value reads back as GICD_TYPER.IDBits.
+
+How you want to handle this depends on what's going on, but it probably mostly
+looks like "code that cares about GICR_PROPBASER.IDBits will do
+MIN(field_value, GICD_TYPER_IDBITS) to find the effective value of the field".
+
+>          cs->gicr_propbaser = deposit64(cs->gicr_propbaser, 0, 32, value);
+>          return MEMTX_OK;
+>      case GICR_PROPBASER + 4:
+> @@ -397,6 +411,14 @@ static MemTxResult gicr_writell(GICv3CPUState *cs, hwaddr offset,
+>  {
+>      switch (offset) {
+>      case GICR_PROPBASER:
+> +        if (FIELD_EX64(value, GICR_PROPBASER, IDBITS) <
+> +            GICR_PROPBASER_IDBITS_THRESHOLD) {
+> +            cs->lpi_outofrange = true;
+> +        }
+> +        if (FIELD_EX64(value, GICR_PROPBASER, IDBITS) > GICD_TYPER_IDBITS) {
+> +            value &= ~R_GICR_PROPBASER_IDBITS_MASK;
+> +            value |= GICD_TYPER_IDBITS;
+> +        }
+
+Same comments as above.
+
+>          cs->gicr_propbaser = value;
+>          return MEMTX_OK;
+>      case GICR_PENDBASER:
+> diff --git a/hw/intc/gicv3_internal.h b/hw/intc/gicv3_internal.h
+> index e9f9aa6722..a2718704d4 100644
+> --- a/hw/intc/gicv3_internal.h
+> +++ b/hw/intc/gicv3_internal.h
+> @@ -68,6 +68,9 @@
+>  #define GICD_CTLR_E1NWF             (1U << 7)
+>  #define GICD_CTLR_RWP               (1U << 31)
+>
+> +#define GICD_TYPER_LPIS_OFFSET         17
+> +#define GICD_TYPER_IDBITS_OFFSET       19
+> +#define GICD_TYPER_IDBITS_MASK       0x1f
+>  /* 16 bits EventId */
+>  #define GICD_TYPER_IDBITS            0xf
+>
+> @@ -126,6 +129,20 @@
+>  #define GICR_WAKER_ProcessorSleep    (1U << 1)
+>  #define GICR_WAKER_ChildrenAsleep    (1U << 2)
+>
+> +FIELD(GICR_PROPBASER, IDBITS, 0, 5)
+> +FIELD(GICR_PROPBASER, INNERCACHE, 7, 3)
+> +FIELD(GICR_PROPBASER, SHAREABILITY, 10, 2)
+> +FIELD(GICR_PROPBASER, PHYADDR, 12, 40)
+> +FIELD(GICR_PROPBASER, OUTERCACHE, 56, 3)
+> +
+> +#define GICR_PROPBASER_IDBITS_THRESHOLD          0xd
+> +
+> +FIELD(GICR_PENDBASER, INNERCACHE, 7, 3)
+> +FIELD(GICR_PENDBASER, SHAREABILITY, 10, 2)
+> +FIELD(GICR_PENDBASER, PHYADDR, 16, 36)
+> +FIELD(GICR_PENDBASER, OUTERCACHE, 56, 3)
+> +FIELD(GICR_PENDBASER, PTZ, 62, 1)
+> +
+>  #define ICC_CTLR_EL1_CBPR           (1U << 0)
+>  #define ICC_CTLR_EL1_EOIMODE        (1U << 1)
+>  #define ICC_CTLR_EL1_PMHE           (1U << 6)
+> diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
+> index 3a710592a9..db3989484d 100644
+> --- a/include/hw/intc/arm_gicv3_common.h
+> +++ b/include/hw/intc/arm_gicv3_common.h
+> @@ -175,6 +175,13 @@ struct GICv3CPUState {
+>      uint32_t gicr_nsacr;
+>      uint8_t gicr_ipriorityr[GIC_INTERNAL];
+>
+> +    /*
+> +     * flag to indicate LPIs are out of range
+> +     * since IDbits from GICR_PROPBASER is less
+> +     * than 0b1101
+> +     */
+> +    bool lpi_outofrange;
+> +
+>      /* CPU interface */
+>      uint64_t icc_sre_el1;
+>      uint64_t icc_ctlr_el1[2];
+> @@ -221,6 +228,7 @@ struct GICv3State {
+>      uint32_t num_cpu;
+>      uint32_t num_irq;
+>      uint32_t revision;
+> +    bool lpi_enable;
+>      bool security_extn;
+>      bool irq_reset_nonsecure;
+>      bool gicd_no_migration_shift_bug;
 
 thanks
 -- PMM

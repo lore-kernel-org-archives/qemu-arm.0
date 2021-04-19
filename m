@@ -1,96 +1,100 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp1049816lfb;
-        Mon, 19 Apr 2021 03:57:00 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJynfo5g8AEmDUSRv4M1JJXfYQe0gd0vvcxOvU3hYtSANGU1Ajz/EMwIgWTMtUAcXzghXbr3
-X-Received: by 2002:a5b:106:: with SMTP id 6mr6794420ybx.414.1618829820178;
-        Mon, 19 Apr 2021 03:57:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618829820; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp1182181lfb;
+        Mon, 19 Apr 2021 06:43:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxmEV6qb+vNZc+CffqKKfBUdrjWN3FRe3Z0Sst1/MfLVMGw8dwUXO40wKRhgMgKHs6V3q5m
+X-Received: by 2002:a5e:930d:: with SMTP id k13mr14571801iom.61.1618839809716;
+        Mon, 19 Apr 2021 06:43:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618839809; cv=none;
         d=google.com; s=arc-20160816;
-        b=x2bhJrAWVOBqp0PKdhwiRjfVj0WI/N6Zst/YoDL76M9T9HL1RnBS9iz5m7ySYQKaHt
-         pRDX3tSs3nwAx0dQwigucp/M8DDAUd69E4MzOr0kYHGlsDk/p2h6JiDOnWBSGxjAmQj9
-         SCEifSNFzRYKvqxdKx4QKlJPeQkbotikCY15ReGbzQJAT/+aaaIMBf/14MlNMxSDiHpR
-         LEHnH8RSltuztVxRzNGP6ModdbOqG1SSagyWv0ByVmIhoTo9+NSkd10Zs7GwSwJrci7/
-         nnW2WIX0rG41957F17UFNs+VV/Q5UZeUq3AKXeBHVVh7O9YHjL3erv23BitWsJRdwaS/
-         XIyg==
+        b=ZfUzofWBSywcnuZ4Ks85G423x8fll2IDRF2/reQQv9FJ1ri1XUY1SbUgCkF9mwuCDj
+         tkyVCZ0vGQhWpIVArT+3ak/BFWuYEgMkaH+Xd/84p+y0ztJTKs/ig2ZP4LHnKEqmM+Qr
+         9Htbt54cBKgN3z9YCp53SQhL6zzI9hVf6r1iC3lfblvMHB1HanecDOyETrgE0O1i+kXI
+         oA/dXj8NkNtw6oQ9wnwNIZpY5MLFbUnk8okqPtaowLlfrg621sFb5wJQZJqolW2u9UF7
+         bgU46Jco9ybl8xAm145JuC+Gquhy6r9Ey9pq7hUULQyDlURaLMU1Ka8KCXPXCoJuIYZx
+         BPRA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=Bu+zjAEDaXiEuZU0hJIM5htPhm4/PXN02Kgo3lKBffc=;
-        b=rRYfxjnAef/nCOEx/h4iz7J1t58OP5p4lMIgCYuklK0DUz8+Zn9Wdop8TDZVQ7pmJ0
-         zq4H48zl3PwQk0Zb+Qpa5dpZXFpMRBdtwo05gefVTdmRAgktY2cTVgWE5bhOmDfCF1kA
-         daaFwMNN74zH8HVZLSSC5VBR9VByrhjzFNRuBqL7Pf6igaOdcly7Hl3Eo5qVfUkLoXnU
-         Ew3I5rd8fXAV0e7QU9B50W+fVPhxyz9uG45BVeXHhtd2VK/D8KkD05Jc1e65L+EcQY1D
-         PBUya1kYYGuRVxxrxViLCvg5I1ZTrvPRJlgkYYnJuFw+hj/8Fb/l2xJJt2rJPexFcLMQ
-         Z/dw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=lYas/TlTAS1s1f3CGkoMY6n2QFtVAZSR0X8+2blwnYU=;
+        b=ToHtHvvEllFXauVpthkFN3/U1DiAa62C1tQikl5RBLRNFGE4Wtn9fiJAP6y5CP2p/U
+         BiadCQU3j97jFCDZ/dFKtaeqJjkBVv7uxZ6uBtgXMGSwxtiZFs72o1oOmk8YRQWJm5lQ
+         bNMXcOjiB0iIAASh199eRfmulnH6G1l9PESXQSuIhhGADHQXLp5/KzWDKaM7W1TvFUyJ
+         rcTr/2eVerFEuug1jSxlkIIYmhnFpGGsCNQ+NWBst9y0H3WbgMKHi7GM2pJk0DugQnwZ
+         RRh79Mwrku/KOvhTps7iW/f8nLGB2U+Jy83rjAOxj/DvqYoc2wTJLBWaKMqRrg6eap34
+         69uw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="HI/U/QFr";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=Fc6iNaLg;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v133si15844727ybe.267.2021.04.19.03.56.59
+        by mx.google.com with ESMTPS id r5si13774954ilc.82.2021.04.19.06.43.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 19 Apr 2021 03:57:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 19 Apr 2021 06:43:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="HI/U/QFr";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=Fc6iNaLg;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50080 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51572 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lYRaN-0007Qy-GF
-	for alex.bennee@linaro.org; Mon, 19 Apr 2021 06:56:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36366)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lYUBV-0007lP-11
+	for alex.bennee@linaro.org; Mon, 19 Apr 2021 09:43:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52764)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lYRKW-00006X-8f
- for qemu-devel@nongnu.org; Mon, 19 Apr 2021 06:40:36 -0400
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c]:39838)
+ id 1lYUBH-0007ju-AC
+ for qemu-arm@nongnu.org; Mon, 19 Apr 2021 09:43:15 -0400
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d]:43542)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lYRKS-0003RU-Mh
- for qemu-devel@nongnu.org; Mon, 19 Apr 2021 06:40:35 -0400
-Received: by mail-ej1-x62c.google.com with SMTP id v6so50839552ejo.6
- for <qemu-devel@nongnu.org>; Mon, 19 Apr 2021 03:40:32 -0700 (PDT)
+ id 1lYUBF-00058C-7b
+ for qemu-arm@nongnu.org; Mon, 19 Apr 2021 09:43:15 -0400
+Received: by mail-ed1-x52d.google.com with SMTP id e7so40664606edu.10
+ for <qemu-arm@nongnu.org>; Mon, 19 Apr 2021 06:43:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Bu+zjAEDaXiEuZU0hJIM5htPhm4/PXN02Kgo3lKBffc=;
- b=HI/U/QFrt9RLAFaWME9V2gCAlwjHdh3NOvEbvlq1vJ+c9Jn4q6dOv7RiQ1IXBzNEqg
- AOF+MO3er8FC61vDqS1t/m91JJ0kd0eWy1sJ0dAK+4CErHoOr/OqfyklQy651IdKmD6P
- KCyK3mblZHcb9tBXWaZW1df/hBEjjeLMCAnUWwK9pCEgaSKKlHMvdEyvDAodX39M5ERq
- VnTGngQsnKDp7MlNXBJX+o/KM5OaLv5HM0W4c2oqpBICgeLuc/6jEMeRqW1ryZHlxHZ8
- TXOxMSqRff2Cm7P76N+84iNK3WcdJQ4CC+JrPOUnq6+EWFHUPVlSoW0aEzQ0xZXaDA2K
- IUOg==
+ :cc:content-transfer-encoding;
+ bh=lYas/TlTAS1s1f3CGkoMY6n2QFtVAZSR0X8+2blwnYU=;
+ b=Fc6iNaLgYxA1QB0mO3bjzQTsYAz6bcilhMn10fYTAo/6q/hxbIOjgTcNPpC6HuWP2V
+ 9dhCUKDMR10a0niG6K0/MRswVmEJHdeqCzpAkaCIo279ah4R8w2kI6e38l9cjAHvhq4j
+ /gOh1yD7pIQOhoCXvpFrR6caKU0TEqP3hp10y9eWLzXUVxtg0jt/2X89c3C7roA7A7lX
+ +B7TxqEY+ueuJZ6ohifnUDHjwXt5japUYukTTOeGedPtBCTS1tX5suLkNpUs8N44HXre
+ ErCqoM7RO9VcI82o2D9Rgohqho8JWlpVKONehCw5KIO45QJPtwTna+IVp/3OmK7oiFNw
+ nlSQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Bu+zjAEDaXiEuZU0hJIM5htPhm4/PXN02Kgo3lKBffc=;
- b=FRtko5q+EqXSDpuc9Obbc3jr67O3CAcya+pAM5EHIi9Nl8vTeNGUzlPoixan5y/Ni+
- wbEEtlnjLIO/zNf+vhKUnpITPgwzvWJou1k/iovLdZaI6mEIOM/vl5kEOM2Ogh+rr4nr
- lUAgnIhAb3poaio/GmwEflRBP6K2RHX+nzy1EUtfnpgURu97Ss5bvki62RkF3SMD0s/R
- Bg7UOwPCq83Wi4bsf7Gu7fSjU3XhQAKcFPnIsCQ1tXg0UNtBUkRz3nJ9u55KDYbdVXhQ
- cJ9dpTlFeIwm1UW03T6gC/Jybzv3wBhVXm4RYimJVZUu+DuFi2CymevHMbIk6z7pUXF7
- p24g==
-X-Gm-Message-State: AOAM530osc8i04A8H83FG8rouuqFpOZZgjOXFbj+2K+X/M/Dq3OY+KJx
- FAgQ3dAVSaIz0HQMY4FxKlbu7dJce0um7Z1twR2PlXYBQ5o=
-X-Received: by 2002:a17:906:c301:: with SMTP id
- s1mr20972257ejz.382.1618828830982; 
- Mon, 19 Apr 2021 03:40:30 -0700 (PDT)
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=lYas/TlTAS1s1f3CGkoMY6n2QFtVAZSR0X8+2blwnYU=;
+ b=iggM3ubZ/aPM/3jeJqnHZ06H59pDhTfDad61WnHbiYb9klRlaSa4lnrNfukUs5SQh+
+ gVNf/TRqxOh9k3veOhhhUyK4xXO5ZPfAIsceSSQvqjz5+Ph+V/38/b5dglPMJZcJm3Pz
+ /otC2tVzRh3XPzXsvPO50o/87thGGt/XgjoLN5daX3OFrOsgOXyQaX1uyX1ylC23mKVT
+ hmeDigkiP23EclJluD2sDqx5hNYAtDGXVOVp3moWltQtPMuZfL8i4Q3FCsoTtEz8Nwv9
+ oJj9IHBVns2hznGts8LwFAAcWdsIu5CSrQH3pPvLqDyDsF2/QD6Gbe1+gkJTP6bPqpHb
+ gq8w==
+X-Gm-Message-State: AOAM533h8W0ntPJHf4Vv4VBECRWPxb5x+R0WZIuNFJDMYyECb2sQ8evc
+ JlGRy4nSqaqRs0yc49cvNcZqdnybRXj59N7ZxHhHiA==
+X-Received: by 2002:a05:6402:51d0:: with SMTP id
+ r16mr22320562edd.52.1618839791160; 
+ Mon, 19 Apr 2021 06:43:11 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210401024152.203896-1-shashi.mallela@linaro.org>
- <20210401024152.203896-5-shashi.mallela@linaro.org>
-In-Reply-To: <20210401024152.203896-5-shashi.mallela@linaro.org>
+References: <20210325163315.27724-1-peter.maydell@linaro.org>
+ <1df78911-9858-b747-b22b-7e5254cd3cac@amsat.org>
+In-Reply-To: <1df78911-9858-b747-b22b-7e5254cd3cac@amsat.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 19 Apr 2021 11:39:39 +0100
-Message-ID: <CAFEAcA96Rq6D8P0eo=4a2q6F4f3EqFvYOx+iuwPvF7mBZsjALA@mail.gmail.com>
-Subject: Re: [PATCH v2 4/8] hw/intc: GICv3 ITS Command processing
-To: Shashi Mallela <shashi.mallela@linaro.org>
+Date: Mon, 19 Apr 2021 14:42:19 +0100
+Message-ID: <CAFEAcA_TuKCJ31xsv_j49oQfOFuEipmMnsNb2czPZRMPTN=wxg@mail.gmail.com>
+Subject: Re: [PATCH v2 for-6.0?] hw/pci-host/gpex: Don't fault for unmapped
+ parts of MMIO and PIO windows
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62c.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -99,516 +103,178 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Leif Lindholm <leif@nuviainc.com>, QEMU Developers <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>, Radoslaw Biernacki <rad@semihalf.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vP2C7vxEy8c+
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "open list:RISC-V" <qemu-riscv@nongnu.org>, Arnd Bergmann <arnd@arndb.de>,
+ "Michael S. Tsirkin" <mst@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Dmitry Vyukov <dvyukov@google.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Xp0IUX8/byqz
 
-On Thu, 1 Apr 2021 at 03:41, Shashi Mallela <shashi.mallela@linaro.org> wrote:
+On Thu, 25 Mar 2021 at 18:14, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
+ wrote:
 >
-> Added ITS command queue handling for MAPTI,MAPI commands,handled ITS
-> translation which triggers an LPI via INT command as well as write
-> to GITS_TRANSLATER register,defined enum to differentiate between ITS
-> command interrupt trigger and GITS_TRANSLATER based interrupt trigger.
-> Each of these commands make use of other functionalities implemented to
-> get device table entry,collection table entry or interrupt translation
-> table entry required for their processing.
+> Hi Peter,
 >
-> Signed-off-by: Shashi Mallela <shashi.mallela@linaro.org>
-> ---
->  hw/intc/arm_gicv3_its.c            | 360 ++++++++++++++++++++++++++++-
->  hw/intc/gicv3_internal.h           |   7 +
->  include/hw/intc/arm_gicv3_common.h |   2 +
->  3 files changed, 368 insertions(+), 1 deletion(-)
+> On 3/25/21 5:33 PM, Peter Maydell wrote:
+> > Currently the gpex PCI controller implements no special behaviour for
+> > guest accesses to areas of the PIO and MMIO where it has not mapped
+> > any PCI devices, which means that for Arm you end up with a CPU
+> > exception due to a data abort.
+> >
+> > Most host OSes expect "like an x86 PC" behaviour, where bad accesses
+> > like this return -1 for reads and ignore writes.  In the interests of
+> > not being surprising, make host CPU accesses to these windows behave
+> > as -1/discard where there's no mapped PCI device.
+> >
+> > The old behaviour generally didn't cause any problems, because
+> > almost always the guest OS will map the PCI devices and then only
+> > access where it has mapped them. One corner case where you will see
+> > this kind of access is if Linux attempts to probe legacy ISA
+> > devices via a PIO window access. So far the only case where we've
+> > seen this has been via the syzkaller fuzzer.
+> >
+> > Reported-by: Dmitry Vyukov <dvyukov@google.com>
+> > Fixes: https://bugs.launchpad.net/qemu/+bug/1918917
+> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> > ---
+> > v1->v2 changes: put in the hw_compat machinery.
+> >
+> > Still not sure if I want to put this in 6.0 or not.
+> >
+> >  include/hw/pci-host/gpex.h |  4 +++
+> >  hw/core/machine.c          |  1 +
+> >  hw/pci-host/gpex.c         | 56 ++++++++++++++++++++++++++++++++++++--
+> >  3 files changed, 58 insertions(+), 3 deletions(-)
+> >
+> > diff --git a/include/hw/pci-host/gpex.h b/include/hw/pci-host/gpex.h
+> > index d48a020a952..fcf8b638200 100644
+> > --- a/include/hw/pci-host/gpex.h
+> > +++ b/include/hw/pci-host/gpex.h
+> > @@ -49,8 +49,12 @@ struct GPEXHost {
+> >
+> >      MemoryRegion io_ioport;
+> >      MemoryRegion io_mmio;
+> > +    MemoryRegion io_ioport_window;
+> > +    MemoryRegion io_mmio_window;
+> >      qemu_irq irq[GPEX_NUM_IRQS];
+> >      int irq_num[GPEX_NUM_IRQS];
+> > +
+> > +    bool allow_unmapped_accesses;
+> >  };
+> >
+> >  struct GPEXConfig {
+> > diff --git a/hw/core/machine.c b/hw/core/machine.c
+> > index 257a664ea2e..9750fad7435 100644
+> > --- a/hw/core/machine.c
+> > +++ b/hw/core/machine.c
+> > @@ -41,6 +41,7 @@ GlobalProperty hw_compat_5_2[] =3D {
+> >      { "PIIX4_PM", "smm-compat", "on"},
+> >      { "virtio-blk-device", "report-discard-granularity", "off" },
+> >      { "virtio-net-pci", "vectors", "3"},
+> > +    { "gpex-pcihost", "allow-unmapped-accesses", "false" },
+> >  };
+> >  const size_t hw_compat_5_2_len =3D G_N_ELEMENTS(hw_compat_5_2);
+> >
+> > diff --git a/hw/pci-host/gpex.c b/hw/pci-host/gpex.c
+> > index 2bdbe7b4561..a6752fac5e8 100644
+> > --- a/hw/pci-host/gpex.c
+> > +++ b/hw/pci-host/gpex.c
+> > @@ -83,12 +83,51 @@ static void gpex_host_realize(DeviceState *dev, Err=
+or **errp)
+> >      int i;
+> >
+> >      pcie_host_mmcfg_init(pex, PCIE_MMCFG_SIZE_MAX);
+> > +    sysbus_init_mmio(sbd, &pex->mmio);
+> > +
+> > +    /*
+> > +     * Note that the MemoryRegions io_mmio and io_ioport that we pass
+> > +     * to pci_register_root_bus() are not the same as the
+> > +     * MemoryRegions io_mmio_window and io_ioport_window that we
+> > +     * expose as SysBus MRs. The difference is in the behaviour of
+> > +     * accesses to addresses where no PCI device has been mapped.
+> > +     *
+> > +     * io_mmio and io_ioport are the underlying PCI view of the PCI
+> > +     * address space, and when a PCI device does a bus master access
+> > +     * to a bad address this is reported back to it as a transaction
+> > +     * failure.
+> > +     *
+> > +     * io_mmio_window and io_ioport_window implement "unmapped
+> > +     * addresses read as -1 and ignore writes"; this is traditional
+> > +     * x86 PC behaviour, which is not mandated by the PCI spec proper
+> > +     * but expected by much PCI-using guest software, including Linux.
 >
-> diff --git a/hw/intc/arm_gicv3_its.c b/hw/intc/arm_gicv3_its.c
-> index fcac33c836..0e3f176809 100644
-> --- a/hw/intc/arm_gicv3_its.c
-> +++ b/hw/intc/arm_gicv3_its.c
-> @@ -28,6 +28,152 @@ struct GICv3ITSClass {
->      void (*parent_reset)(DeviceState *dev);
->  };
->
-> +typedef enum ItsCmdType {
-> +    NONE = 0, /* internal indication for GITS_TRANSLATER write */
-> +    CLEAR = 1,
-> +    DISCARD = 2,
-> +    INT = 3,
-> +} ItsCmdType;
-> +
-> +static bool get_cte(GICv3ITSState *s, uint16_t icid, uint64_t *cte)
-> +{
-> +    AddressSpace *as = &s->gicv3->sysmem_as;
-> +    uint8_t  page_sz_type;
-> +    uint64_t l2t_addr;
-> +    uint64_t value;
-> +    bool valid_l2t;
-> +    uint32_t l2t_id;
-> +    uint32_t page_sz = 0;
-> +    uint32_t max_l2_entries;
-> +    bool status = false;
-> +
-> +    if (s->ct.indirect) {
-> +        /* 2 level table */
-> +        page_sz_type = FIELD_EX64(s->baser[1], GITS_BASER, PAGESIZE);
-> +
-> +        if (page_sz_type == 0) {
-> +            page_sz = GITS_ITT_PAGE_SIZE_0;
-> +        } else if (page_sz_type == 1) {
-> +            page_sz = GITS_ITT_PAGE_SIZE_1;
-> +        } else if (page_sz_type == 2) {
-> +            page_sz = GITS_ITT_PAGE_SIZE_2;
-> +        }
-> +
-> +        l2t_id = icid / (page_sz / L1TABLE_ENTRY_SIZE);
-> +
-> +        value = address_space_ldq_le(as,
-> +                                     s->ct.base_addr +
-> +                                     (l2t_id * L1TABLE_ENTRY_SIZE),
-> +                                     MEMTXATTRS_UNSPECIFIED, NULL);
-> +
-> +        valid_l2t = (value >> VALID_SHIFT) & VALID_MASK;
-> +
-> +        if (valid_l2t) {
-> +            max_l2_entries = page_sz / s->ct.entry_sz;
-> +
-> +            l2t_addr = (value >> page_sz_type) &
-> +                        ((1ULL << (51 - page_sz_type)) - 1);
-> +
-> +            address_space_read(as, l2t_addr +
-> +                                 ((icid % max_l2_entries) * GITS_CTE_SIZE),
-> +                                 MEMTXATTRS_UNSPECIFIED,
-> +                                 cte, sizeof(*cte));
-> +       }
-> +    } else {
-> +        /* Flat level table */
-> +        address_space_read(as, s->ct.base_addr + (icid * GITS_CTE_SIZE),
-> +                            MEMTXATTRS_UNSPECIFIED, cte,
-> +                            sizeof(*cte));
-> +    }
-> +
-> +    if (*cte & VALID_MASK) {
-> +        status = true;
-> +    }
->
+> I suspect PCI-ISA bridges to provide an EISA bus.
 
-Most of the remarks about update_cte() apply here too (including
-the endianness issue).
+I'm not sure what you mean here -- there isn't an ISA bridge
+or an EISA bus involved here. This is purely about the behaviour
+of the memory window the PCI host controller exposes to the CPU
+(and in particular the window for when a PCI device's BAR is
+set to "IO" rather than "MMIO"), though we change both here.
 
-+
-> +    return status;
-> +}
-> +
-> +static bool get_ite(GICv3ITSState *s, uint32_t eventid, uint64_t dte,
-> +                      uint16_t *icid, uint32_t *pIntid)
-> +{
-> +    AddressSpace *as = &s->gicv3->sysmem_as;
-> +    uint8_t buff[ITS_ITT_ENTRY_SIZE];
-> +    uint64_t itt_addr;
-> +    bool status = false;
-> +
-> +    itt_addr = (dte >> 6ULL) & ITTADDR_MASK;
-> +    itt_addr <<= ITTADDR_OFFSET; /* 256 byte aligned */
-> +
-> +    address_space_read(as, itt_addr + (eventid * sizeof(buff)),
-> +                MEMTXATTRS_UNSPECIFIED, &buff,
-> +                sizeof(buff));
-> +
-> +    if (buff[0] & VALID_MASK) {
-> +        if ((buff[0] >> 1U) & GITS_TYPE_PHYSICAL) {
-> +            memcpy(pIntid, &buff[1], 3);
-> +            memcpy(icid, &buff[7], sizeof(*icid));
+> > +     * In the interests of not being unnecessarily surprising, we
+> > +     * implement it in the gpex PCI host controller, by providing the
+> > +     * _window MRs, which are containers with io ops that implement
+> > +     * the 'background' behaviour and which hold the real PCI MRs as
+> > +     * subregions.
+> > +     */
+> >      memory_region_init(&s->io_mmio, OBJECT(s), "gpex_mmio", UINT64_MAX=
+);
+> >      memory_region_init(&s->io_ioport, OBJECT(s), "gpex_ioport", 64 * 1=
+024);
+> >
+> > -    sysbus_init_mmio(sbd, &pex->mmio);
+> > -    sysbus_init_mmio(sbd, &s->io_mmio);
+> > -    sysbus_init_mmio(sbd, &s->io_ioport);
+> > +    if (s->allow_unmapped_accesses) {
+> > +        memory_region_init_io(&s->io_mmio_window, OBJECT(s),
+> > +                              &unassigned_io_ops, OBJECT(s),
+> > +                              "gpex_mmio_window", UINT64_MAX);
+>
+> EISA -> 4 * GiB
+>
+> unassigned_io_ops allows 64-bit accesses. Here we want up to 32.
+>
+> Maybe we don't care.
+>
+> > +        memory_region_init_io(&s->io_ioport_window, OBJECT(s),
+> > +                              &unassigned_io_ops, OBJECT(s),
+> > +                              "gpex_ioport_window", 64 * 1024);
+>
+> Ditto, unassigned_io_ops accepts 64-bit accesses.
 
-You can't memcpy() values from guest memory into host variables
-like this: it will give the wrong results on big-endian hosts.
+These are just using the same sizes as the io_mmio and io_ioport
+MRs which the existing code creates.
 
-> +            status = true;
-> +        }
-> +    }
-> +
-> +    return status;
-> +}
-> +
-> +static uint64_t get_dte(GICv3ITSState *s, uint32_t devid)
-> +{
-> +    AddressSpace *as = &s->gicv3->sysmem_as;
-> +    uint8_t  page_sz_type;
-> +    uint64_t l2t_addr;
-> +    uint64_t value;
-> +    bool valid_l2t;
-> +    uint32_t l2t_id;
-> +    uint32_t page_sz = 0;
-> +    uint32_t max_l2_entries;
-> +
-> +    if (s->dt.indirect) {
-> +        /* 2 level table */
-> +        page_sz_type = FIELD_EX64(s->baser[0], GITS_BASER, PAGESIZE);
-> +
-> +        if (page_sz_type == 0) {
-> +            page_sz = GITS_ITT_PAGE_SIZE_0;
-> +        } else if (page_sz_type == 1) {
-> +            page_sz = GITS_ITT_PAGE_SIZE_1;
-> +        } else if (page_sz_type == 2) {
-> +            page_sz = GITS_ITT_PAGE_SIZE_2;
-> +        }
-> +
-> +        l2t_id = devid / (page_sz / L1TABLE_ENTRY_SIZE);
-> +
-> +        value = address_space_ldq_le(as,
-> +                                     s->dt.base_addr +
-> +                                     (l2t_id * L1TABLE_ENTRY_SIZE),
-> +                                     MEMTXATTRS_UNSPECIFIED, NULL);
-> +
-> +        valid_l2t = (value >> VALID_SHIFT) & VALID_MASK;
-> +
-> +        if (valid_l2t) {
-> +            max_l2_entries = page_sz / s->dt.entry_sz;
-> +
-> +            l2t_addr = (value >> page_sz_type) &
-> +                        ((1ULL << (51 - page_sz_type)) - 1);
-> +
-> +            value = 0;
-> +            address_space_read(as, l2t_addr +
-> +                                 ((devid % max_l2_entries) * GITS_DTE_SIZE),
-> +                                 MEMTXATTRS_UNSPECIFIED,
-> +                                 &value, sizeof(value));
-> +        }
-> +    } else {
-> +        /* Flat level table */
-> +        value = 0;
-> +        address_space_read(as, s->dt.base_addr + (devid * GITS_DTE_SIZE),
-> +                            MEMTXATTRS_UNSPECIFIED, &value,
-> +                            sizeof(value));
-> +    }
-> +
-> +    return value;
-> +}
-> +
->  static MemTxResult process_sync(GICv3ITSState *s, uint32_t offset)
->  {
->      AddressSpace *as = &s->gicv3->sysmem_as;
-> @@ -66,6 +212,187 @@ static MemTxResult process_sync(GICv3ITSState *s, uint32_t offset)
->      return res;
->  }
+> >  static void gpex_host_class_init(ObjectClass *klass, void *data)
+> >  {
+> >      DeviceClass *dc =3D DEVICE_CLASS(klass);
+> > @@ -117,6 +166,7 @@ static void gpex_host_class_init(ObjectClass *klass=
+, void *data)
+> >      dc->realize =3D gpex_host_realize;
+> >      set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+> >      dc->fw_name =3D "pci";
+> > +    device_class_set_props(dc, gpex_host_properties);
 >
-> +static MemTxResult process_int(GICv3ITSState *s, uint64_t value,
-> +                                uint32_t offset, ItsCmdType cmd)
-> +{
-> +    AddressSpace *as = &s->gicv3->sysmem_as;
-> +    uint32_t devid, eventid;
-> +    MemTxResult res = MEMTX_OK;
-> +    bool dte_valid;
-> +    uint64_t dte = 0;
-> +    uint32_t max_eventid;
-> +    uint16_t icid = 0;
-> +    uint32_t pIntid = 0;
-> +    bool ite_valid = false;
-> +    uint64_t cte = 0;
-> +    bool cte_valid = false;
-> +    uint8_t buff[ITS_ITT_ENTRY_SIZE];
-> +    uint64_t itt_addr;
-> +
-> +    if (cmd == NONE) {
-> +        devid = offset;
-> +    } else {
-> +        devid = (value >> DEVID_OFFSET) & DEVID_MASK;
-> +
-> +        offset += NUM_BYTES_IN_DW;
-> +        value = address_space_ldq_le(as, s->cq.base_addr + offset,
-> +                                 MEMTXATTRS_UNSPECIFIED, &res);
-> +    }
-> +
-> +    eventid = (value & EVENTID_MASK);
-> +
-> +    dte = get_dte(s, devid);
-> +    dte_valid = dte & VALID_MASK;
-> +
-> +    if (dte_valid) {
-> +        max_eventid = (1UL << (((dte >> 1U) & SIZE_MASK) + 1));
-> +
-> +        ite_valid = get_ite(s, eventid, dte, &icid, &pIntid);
-> +
-> +        if (ite_valid) {
-> +            cte_valid = get_cte(s, icid, &cte);
-> +        }
-> +    }
-> +
-> +    if ((devid > s->dt.max_devids) || !dte_valid || !ite_valid ||
-> +            !cte_valid || (eventid > max_eventid)) {
-> +        if (FIELD_EX64(s->typer, GITS_TYPER, SEIS)) {
-> +            /*
-> +             * Generate System Error here if supported
-> +             * for each of the individual error cases
-> +             */
-> +        }
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +            "%s: invalid interrupt translation table attributes "
-> +            "devid %d or eventid %d\n",
-> +            __func__, devid, eventid);
-> +        /*
-> +         * in this implementation,in case of error
-> +         * we ignore this command and move onto the next
-> +         * command in the queue
-> +         */
-> +    } else {
-> +        if (FIELD_EX64(s->typer, GITS_TYPER, PTA)) {
-> +            /*
-> +             * only bits[47:16] are considered instead of bits [51:16]
-> +             * since with a physical address the target address must be
-> +             * 64KB aligned
-> +             */
-> +
-> +            /*
-> +             * Current implementation only supports rdbase == procnum
-> +             * Hence rdbase physical address is ignored
-> +             */
+> IMO this change belongs to the parent bridges,
+> TYPE_PCI_HOST_BRIDGE and TYPE_PCIE_HOST_BRIDGE.
 
-As noted earlier, just delete this and write code which assumes PTA=0.
-
-> +        } else {
-> +
-> +            if (cmd == DISCARD) {
-> +                /* remove mapping from interrupt translation table */
-> +                memset(buff, 0, sizeof(buff));
-> +
-> +                itt_addr = (dte >> 6ULL) & ITTADDR_MASK;
-> +                itt_addr <<= ITTADDR_OFFSET; /* 256 byte aligned */
-> +
-> +                address_space_write(as, itt_addr + (eventid * sizeof(buff)),
-> +                                    MEMTXATTRS_UNSPECIFIED, &buff,
-> +                                    sizeof(buff));
-
-Please abstract this out into a function so that the code dealing
-with the format of the ITT is not mixed in with this function.
-
-> +            }
-> +        }
-> +    }
-> +
-> +    if (cmd != NONE) {
-> +        offset += NUM_BYTES_IN_DW;
-> +        offset += NUM_BYTES_IN_DW;
-> +    }
-> +
-> +    return res;
-> +}
-> +
-> +static MemTxResult process_mapti(GICv3ITSState *s, uint64_t value,
-> +                                    uint32_t offset, bool ignore_pInt)
-> +{
-> +    AddressSpace *as = &s->gicv3->sysmem_as;
-> +    uint32_t devid, eventid;
-> +    uint32_t pIntid = 0;
-> +    uint32_t max_eventid, max_Intid;
-> +    bool dte_valid;
-> +    MemTxResult res = MEMTX_OK;
-> +    uint16_t icid = 0;
-> +    uint64_t dte = 0;
-> +    uint64_t itt_addr;
-> +    uint8_t buff[ITS_ITT_ENTRY_SIZE];
-> +    uint32_t int_spurious = INTID_SPURIOUS;
-> +
-> +    devid = (value >> DEVID_OFFSET) & DEVID_MASK;
-> +    offset += NUM_BYTES_IN_DW;
-> +    value = address_space_ldq_le(as, s->cq.base_addr + offset,
-> +                                 MEMTXATTRS_UNSPECIFIED, &res);
-> +
-> +    eventid = (value & EVENTID_MASK);
-> +
-> +    if (!ignore_pInt) {
-> +        pIntid = (value >> pINTID_OFFSET) & pINTID_MASK;
-> +    }
-> +
-> +    offset += NUM_BYTES_IN_DW;
-> +    value = address_space_ldq_le(as, s->cq.base_addr + offset,
-> +                                 MEMTXATTRS_UNSPECIFIED, &res);
-> +
-> +    icid = value & ICID_MASK;
-> +
-> +    dte = get_dte(s, devid);
-> +    dte_valid = dte & VALID_MASK;
-> +
-> +    max_eventid = (1UL << (((dte >> 1U) & SIZE_MASK) + 1));
-> +
-> +    if (!ignore_pInt) {
-> +        max_Intid = (1UL << (FIELD_EX64(s->typer, GITS_TYPER, IDBITS) + 1));
-> +    }
-> +
-> +    if ((devid > s->dt.max_devids) || (icid > s->ct.max_collids) ||
-> +            !dte_valid || (eventid > max_eventid) ||
-> +            (!ignore_pInt && ((pIntid < GICV3_LPI_INTID_START) ||
-> +               (pIntid > max_Intid)))) {
-> +        if (FIELD_EX64(s->typer, GITS_TYPER, SEIS)) {
-> +            /*
-> +             * Generate System Error here if supported
-> +             * for each of the individual error cases
-> +             */
-> +        }
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +            "%s: invalid interrupt translation table attributes "
-> +            "devid %d or icid %d or eventid %d or pIntid %d\n",
-> +            __func__, devid, icid, eventid, pIntid);
-> +        /*
-> +         * in this implementation,in case of error
-> +         * we ignore this command and move onto the next
-> +         * command in the queue
-> +         */
-> +    } else {
-> +        /* add entry to interrupt translation table */
-> +        memset(buff, 0, sizeof(buff));
-> +        buff[0] = (dte_valid & VALID_MASK) | (GITS_TYPE_PHYSICAL << 1U);
-> +        if (ignore_pInt) {
-> +            memcpy(&buff[1], &eventid, 3);
-> +        } else {
-> +            memcpy(&buff[1], &pIntid, 3);
-> +        }
-> +        memcpy(&buff[4], &int_spurious, 3);
-> +        memcpy(&buff[7], &icid, sizeof(icid));
-
-Memcpy of host variables into guest memory isn't endian-agnostic.
-
-> +
-> +        itt_addr = (dte >> 6ULL) & ITTADDR_MASK;
-> +        itt_addr <<= ITTADDR_OFFSET; /* 256 byte aligned */
-> +
-> +        address_space_write(as, itt_addr + (eventid * sizeof(buff)),
-> +                    MEMTXATTRS_UNSPECIFIED, &buff,
-> +                    sizeof(buff));
-
-Again, abstract this out, please.
-
-> +    }
-> +
-> +    offset += NUM_BYTES_IN_DW;
-> +    offset += NUM_BYTES_IN_DW;
-> +
-> +    return res;
-> +}
-> +
->  static void update_cte(GICv3ITSState *s, uint16_t icid, uint64_t cte)
->  {
->      AddressSpace *as = &s->gicv3->sysmem_as;
-> @@ -239,7 +566,7 @@ static void update_dte(GICv3ITSState *s, uint32_t devid, uint64_t dte)
->  }
->
->  static MemTxResult process_mapd(GICv3ITSState *s, uint64_t value,
-> -                                 uint32_t offset)
-> +                                  uint32_t offset)
->  {
->      AddressSpace *as = &s->gicv3->sysmem_as;
->      uint32_t devid;
-> @@ -335,8 +662,10 @@ static MemTxResult process_cmdq(GICv3ITSState *s)
->
->          switch (cmd) {
->          case GITS_CMD_INT:
-> +            res = process_int(s, data, cq_offset, INT);
->              break;
->          case GITS_CMD_CLEAR:
-> +            res = process_int(s, data, cq_offset, CLEAR);
->              break;
->          case GITS_CMD_SYNC:
->              res = process_sync(s, cq_offset);
-> @@ -348,10 +677,13 @@ static MemTxResult process_cmdq(GICv3ITSState *s)
->              res = process_mapc(s, cq_offset);
->              break;
->          case GITS_CMD_MAPTI:
-> +            res = process_mapti(s, data, cq_offset, false);
->              break;
->          case GITS_CMD_MAPI:
-> +            res = process_mapti(s, data, cq_offset, true);
->              break;
->          case GITS_CMD_DISCARD:
-> +            res = process_int(s, data, cq_offset, DISCARD);
->              break;
->          default:
->              break;
-> @@ -498,7 +830,20 @@ static MemTxResult its_trans_writew(GICv3ITSState *s, hwaddr offset,
->                                 uint64_t value, MemTxAttrs attrs)
->  {
->      MemTxResult result = MEMTX_OK;
-> +    uint32_t devid = 0;
->
-> +    switch (offset) {
-> +    case GITS_TRANSLATER:
-> +        if (s->ctlr & ITS_CTLR_ENABLED) {
-> +            s->translater = (value & 0x0000FFFFU);
-> +            devid = attrs.requester_id;
-> +            result = process_int(s, s->translater, devid, NONE);
-> +        }
-> +        break;
-> +    default:
-> +        result = MEMTX_ERROR;
-> +        break;
-> +    }
->      return result;
->  }
->
-> @@ -506,7 +851,20 @@ static MemTxResult its_trans_writel(GICv3ITSState *s, hwaddr offset,
->                                 uint64_t value, MemTxAttrs attrs)
->  {
->      MemTxResult result = MEMTX_OK;
-> +    uint32_t devid = 0;
->
-> +    switch (offset) {
-> +    case GITS_TRANSLATER:
-> +        if (s->ctlr & ITS_CTLR_ENABLED) {
-> +            s->translater = value;
-> +            devid = attrs.requester_id;
-> +            result = process_int(s, s->translater, devid, NONE);
-> +        }
-> +        break;
-> +    default:
-> +        result = MEMTX_ERROR;
-> +        break;
-> +    }
->      return result;
->  }
->
-> diff --git a/hw/intc/gicv3_internal.h b/hw/intc/gicv3_internal.h
-> index 7e1ff426ef..e9f9aa6722 100644
-> --- a/hw/intc/gicv3_internal.h
-> +++ b/hw/intc/gicv3_internal.h
-> @@ -323,6 +323,13 @@ FIELD(GITS_TYPER, CIL, 36, 1)
->  #define ITTADDR_MASK              ((1ULL << ITTADDR_LEN) - 1)
->  #define SIZE_MASK                 0x1f
->
-> +/* MAPI command fields */
-> +#define EVENTID_MASK              ((1ULL << 32) - 1)
-> +
-> +/* MAPTI command fields */
-> +#define pINTID_OFFSET              32
-> +#define pINTID_MASK               ((1ULL << 32) - 1)
-> +
->  #define VALID_SHIFT               63
->  #define VALID_MASK                0x1
->
-> diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
-> index b0f2414fa3..3a710592a9 100644
-> --- a/include/hw/intc/arm_gicv3_common.h
-> +++ b/include/hw/intc/arm_gicv3_common.h
-> @@ -36,6 +36,8 @@
->  #define GICV3_MAXIRQ 1020
->  #define GICV3_MAXSPI (GICV3_MAXIRQ - GIC_INTERNAL)
->
-> +#define GICV3_LPI_INTID_START 8192
-> +
->  #define GICV3_REDIST_SIZE 0x20000
->
->  /* Number of SGI target-list bits */
-> --
-> 2.27.0
+Arnd had a look through the kernel sources and apparently not
+all PCI host controllers do this -- there are a few SoCs where the
+kernel has to put in special case code to allow for the fact that
+it will get a bus error for accesses to unmapped parts of the
+window. So I concluded that the specific controller implementation
+was the right place for it.
 
 thanks
 -- PMM

@@ -1,105 +1,130 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp1485471lfb;
-        Mon, 19 Apr 2021 13:24:10 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzjXvLDIwrQpS8MXBiFBY9ZzAnvpBXti//NiIQKFwf+vzENYkdtuJgTWC7SiEifuHU99oS7
-X-Received: by 2002:a92:d092:: with SMTP id h18mr19245609ilh.62.1618863850801;
-        Mon, 19 Apr 2021 13:24:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618863850; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp1475160lfb;
+        Mon, 19 Apr 2021 13:07:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyxB6lIhfm7lETo2jzWem39I1VHAlhgpIrUkOH1dYareK60Se+/1e/QU2xXbD+IeXFS+IPd
+X-Received: by 2002:a05:6602:2043:: with SMTP id z3mr16133610iod.77.1618862855362;
+        Mon, 19 Apr 2021 13:07:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618862855; cv=none;
         d=google.com; s=arc-20160816;
-        b=IwL3H910uP5lCcv/47561xjNKK8P1ASvuV4cmu+FCtMC6fNKOI6OhGrDrOVHC1jkfl
-         CGhws1Lown/On+VubwoOp7d+y9FqDQZeC4GgJc/5yTZ+SwABth77S3BhpjfIsu7IgIHo
-         3ULJzV+GS0hA3yCPYjA1DRAgb3iETaeOfoBLiB3MzRKc9CbYFlUiVtD6A8OoXVavW7Fn
-         VwYOFFvXjb3qr6cj91S9lT5Bbf92QzPGQ/RF/XSE61cIAQA8thophsoJyObl180yZwCd
-         VzXTXiqSPzWd8P/F62o2mRUqZrOds0tM0Gdz+Og1Qib0ZoS/EHwvTUWP84UWmWzMWOG3
-         7s0Q==
+        b=p2OmfRgCAX6OGmCvvRjjt057qhPcUAeNAtLcrNMdCD8Yhdig9jZjjt+NmBrHN+d2CU
+         1ZWWCcGDfM0QiNCKIabejyjDrE1ZTiSAb+/Jngn/l+8EEOu4C24yhntSjs2NEPyW+401
+         +hdihwmQcpVZvYpXJShkfEevVH2e6aHh+YIfeCqwZT+B6HV6tiCZIOyoiWU23KYXppwi
+         5mtOzu35STkg+VNLpPja1ewsflr84/+LkG55sICjHjJINgGXCQ9Vp7+vDo9+GElFGpW+
+         V9JURVOeEGdWxiHkL5uaWtGGguiTcvGfTIW/id3EYQe3o+7/D7E/axiQwZppUVh2ipt9
+         XL2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=S8pTxmjqmypJlm05IkYCrfC0EqI2gnIIgQU/dMJ+5k4=;
-        b=cLBYHuufTk7L+b+pc8eJBjezOydMpyz4NLVDoT+Ipyi4BQiO09HVCQNBXgfNRsQxjY
-         iqundJS+PU7eOPAqpLlwQwsltT6wuUMHhxVq6ruZcPXp/qwxXsd4haRn1if3pG1bNkiH
-         UPSDLhztBCUYBk6iA8UMcgzxBhz5x+Q7VcT6zfI5+pj6AYeQss9CO0HWmpZPzmjkYhsG
-         jcBuzKj3hf80e0ODhkKZbYCkPQervPDuxA7vxpI6dsFrPIJ+pL10gpM5pKsixqXyVr8b
-         zNsL7oWQjRnN+JxxFkAuVAm31kTH63yaCAYXfYOrUC10XpeFfdLrTWyn36o4tQrznjAW
-         P/nA==
+         :list-unsubscribe:list-id:precedence:subject:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:dkim-signature;
+        bh=YQA6ZLQjkvtpH8vumzoquEs9A8ZoVpkt7pnrPnA76G8=;
+        b=0Qtm3mXSuXXr4fqgrcZiglsHFU8rnkRZYI6+mF7dzkCwg7qzpr2oaBOqptBlFf+wQ6
+         qFkaXb4Bpz+g4Oa/BLDzUG99mTv2LqOC3PvDXzYF6NVk/X8Pq0pG8vm6ZF2m6ySmqkcO
+         3qL8pz4lspMSzy+SDeD1oieCBP9RdnZRQNNKE78ihDnZZTL8ZkEuSV4cEy23RNhW+XK2
+         u7jTAYHO25yex+7eQLFJh3d+JVC5TM7uJIcHJ2JIt4fSRi3Vs68ZxEuZ3JCdxlB05Icb
+         DRI+PVAL++5wkiz4eqDUI+bna4lH+jObDQ9r8gOuUtaEDiBnTbi6Fc03AYpGrlLPmGLm
+         5E7A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=brNsas9P;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail (test mode) header.i=@bsdio.com header.s=xmission header.b=BFGrf8NJ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h19si17662399ila.70.2021.04.19.13.24.10
+        by mx.google.com with ESMTPS id u10si13493547ilv.5.2021.04.19.13.07.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 19 Apr 2021 13:24:10 -0700 (PDT)
+        Mon, 19 Apr 2021 13:07:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=brNsas9P;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53494 helo=lists1p.gnu.org)
+       dkim=fail (test mode) header.i=@bsdio.com header.s=xmission header.b=BFGrf8NJ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:51934 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lYaRG-0007th-5B
-	for alex.bennee@linaro.org; Mon, 19 Apr 2021 16:24:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33446)
+	id 1lYaBC-0003I8-HE
+	for alex.bennee@linaro.org; Mon, 19 Apr 2021 16:07:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58202)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lYaQC-0006bx-41
- for qemu-devel@nongnu.org; Mon, 19 Apr 2021 16:23:04 -0400
-Received: from mail-qk1-x72b.google.com ([2607:f8b0:4864:20::72b]:45644)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lYaQA-0002Mk-BY
- for qemu-devel@nongnu.org; Mon, 19 Apr 2021 16:23:03 -0400
-Received: by mail-qk1-x72b.google.com with SMTP id d19so1475738qkk.12
- for <qemu-devel@nongnu.org>; Mon, 19 Apr 2021 13:23:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=S8pTxmjqmypJlm05IkYCrfC0EqI2gnIIgQU/dMJ+5k4=;
- b=brNsas9Pj2zSnHW4u1AA1t+49kwNjsJG8Eo7Y7RPkYAnPMaTWA3MqNzCsGWExA2Sim
- pJWtvEL/QcyqVi4/5SwW4QHhoEdWLPQHaw+OQRQcBJrwBDuwl0A/APrPsyJ2csLVP9qk
- IZ46apmog29qt9vf4ale8AFz3372mTYb1RYeiLJm19KcfoDARUWcdkWHfnKR7U/5wV92
- GeftJhZkHt3peS2vOM9GH5MbLy8oz2oYGpbgqyIHW/UpeVa9MiuP138t/hQAZ4ZF8W1m
- cbP0GUOC52B9niHcla9FV9roklm7coVTCk6UGT72Z+ZMxsvvEQ9XI/NehOGkNpeXYNXT
- axqQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=S8pTxmjqmypJlm05IkYCrfC0EqI2gnIIgQU/dMJ+5k4=;
- b=kUnEdZSivsopJ5tuUa0Khk/QNykdmufKsuFRwQk2mfmHIC5nzNOpVArA4oNZi4oSSw
- BH/vLc5khiJfAIs5T5OWpTMPdRFjjH8a8xQ+bKe/9lotp6KmU9MQKU7oOfi+vU806JBq
- iuWFVKXV9v+u53oZrm+1iIfrLD7UMbDYLjmcEHLCSHQLpa72vSmlg7b/XV/bGB0yfOwm
- fSyVDi9jKQWzzc4i5UwJcJmZ56r+/bNIMH/RFpQIsD6EqoHZNvgdsMoEI03BcXLLLG7I
- Qu5qb8fCi/wcc+WfJMSm8OiNGGh6Y9QPy4VgSP5CHhKgbAFyiwwpKPJV9S3Vc/qBWAdy
- MPPA==
-X-Gm-Message-State: AOAM531HCt96cZlD7zndvEsUqtIDgbOYkg4CTXYge6nTnX8azsM5VkUy
- mg0L6VfIT1tJ3gAeCQMx/8TAuEmJuPewFQ==
-X-Received: by 2002:a37:6508:: with SMTP id z8mr657133qkb.159.1618863781241;
- Mon, 19 Apr 2021 13:23:01 -0700 (PDT)
-Received: from localhost.localdomain ([2607:fb90:80c7:aba4:3594:91a:8889:c77a])
- by smtp.gmail.com with ESMTPSA id c23sm10007835qtm.46.2021.04.19.13.23.00
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 19 Apr 2021 13:23:01 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v5 00/31] target/arm: enforce alignment
-Date: Mon, 19 Apr 2021 13:22:26 -0700
-Message-Id: <20210419202257.161730-1-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.25.1
+ (Exim 4.90_1) (envelope-from <rebecca@bsdio.com>)
+ id 1lYa9H-0002Ew-Ka; Mon, 19 Apr 2021 16:05:35 -0400
+Received: from out03.mta.xmission.com ([166.70.13.233]:49514)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <rebecca@bsdio.com>)
+ id 1lYa9F-0003mx-SG; Mon, 19 Apr 2021 16:05:35 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=simple/simple; d=bsdio.com;
+ s=xmission; h=Subject:Content-Transfer-Encoding:Content-Type:In-Reply-To:
+ MIME-Version:Date:Message-ID:From:References:Cc:To:Sender:Reply-To:Content-ID
+ :Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:
+ Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe
+ :List-Post:List-Owner:List-Archive;
+ bh=H4h1DjIrtL0Fa0Yb5MbMUk1vUd2pdYsnrYWOLJ1HKeY=; b=BFGrf8NJgqM+wqT/Rnn7dmSL3V
+ bUDCGs2Rh5MoWcVv7aZt6tSOLTGFYC6DgdUDIiZtDKjFacDX9pIwRWOkF7owmhTlvqCq1CWUKFRr7
+ pfK8N0CyrgZlm7MlAFZWxLARgGmSoq0HI8xFoO1eY8YSR9ok0YBREPSup1GuTjg1lLP0=;
+Received: from in02.mta.xmission.com ([166.70.13.52])
+ by out03.mta.xmission.com with esmtps (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.93)
+ (envelope-from <rebecca@bsdio.com>)
+ id 1lYa8w-00H0Mp-OS; Mon, 19 Apr 2021 14:05:14 -0600
+Received: from mta5.zcs.xmission.com ([166.70.13.69])
+ by in02.mta.xmission.com with esmtps (TLS1.2) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.93)
+ (envelope-from <rebecca@bsdio.com>)
+ id 1lYa8n-004OAv-At; Mon, 19 Apr 2021 14:05:14 -0600
+Received: from localhost (localhost [127.0.0.1])
+ by mta5.zcs.xmission.com (Postfix) with ESMTP id 27C0C1281072;
+ Mon, 19 Apr 2021 14:05:05 -0600 (MDT)
+X-Amavis-Modified: Mail body modified (using disclaimer) -
+ mta5.zcs.xmission.com
+Received: from mta5.zcs.xmission.com ([127.0.0.1])
+ by localhost (mta5.zcs.xmission.com [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id UWHD52ZwvfEy; Mon, 19 Apr 2021 14:05:05 -0600 (MDT)
+Received: from [10.0.10.120] (c-174-52-16-57.hsd1.ut.comcast.net
+ [174.52.16.57])
+ by mta5.zcs.xmission.com (Postfix) with ESMTPSA id D12C9128131C;
+ Mon, 19 Apr 2021 14:05:04 -0600 (MDT)
+To: Rebecca Cran <rebecca@nuviainc.com>, peter.maydell@linaro.org,
+ richard.henderson@linaro.org
+References: <20210414203231.824-1-rebecca@nuviainc.com>
+From: Rebecca Cran <rebecca@bsdio.com>
+Message-ID: <9f0792fd-3b5a-3315-26bd-7c8307e7dae0@bsdio.com>
+Date: Mon, 19 Apr 2021 14:05:04 -0600
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.9.1
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::72b;
- envelope-from=richard.henderson@linaro.org; helo=mail-qk1-x72b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+In-Reply-To: <20210414203231.824-1-rebecca@nuviainc.com>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+X-XM-SPF: eid=1lYa8n-004OAv-At; ; ;
+ mid=<9f0792fd-3b5a-3315-26bd-7c8307e7dae0@bsdio.com>; ; ;
+ hst=in02.mta.xmission.com; ; ; ip=166.70.13.69; ; ; frm=rebecca@bsdio.com; ; ;
+ spf=none
+X-SA-Exim-Connect-IP: 166.70.13.69
+X-SA-Exim-Mail-From: rebecca@bsdio.com
+X-Spam-DCC: XMission; sa05 1397; IP=ok Body=1 Fuz1=1 Fuz2=1 
+X-Spam-Combo: *; Rebecca Cran <rebecca@nuviainc.com>, peter.maydell@linaro.org,
+ richard.henderson@linaro.org
+X-Spam-Relay-Country: 
+X-Spam-Timing: total 9000 ms - load_scoreonly_sql: 0.16 (0.0%),
+ signal_user_changed: 14 (0.2%), b_tie_ro: 11 (0.1%), parse: 2.2 (0.0%),
+ extract_message_metadata: 23 (0.3%), get_uri_detail_list: 2.1 (0.0%),
+ tests_pri_-1000: 7 (0.1%), tests_pri_-950: 2.1 (0.0%), tests_pri_-900:
+ 1.64 (0.0%), tests_pri_-90: 60 (0.7%), check_bayes: 57 (0.6%),
+ b_tokenize: 9 (0.1%), b_tok_get_all: 7 (0.1%), b_comp_prob: 3.2 (0.0%),
+ b_tok_touch_all: 34 (0.4%), b_finish: 1.17 (0.0%), tests_pri_0: 848
+ (9.4%), check_dkim_signature: 0.90 (0.0%), check_dkim_adsp: 97 (1.1%),
+ poll_dns_idle: 8099 (90.0%), tests_pri_10: 2.3 (0.0%), tests_pri_500:
+ 8036 (89.3%), rewrite_mail: 0.00 (0.0%)
+Subject: Re: [PATCH v7 0/4] Add support for FEAT_TLBIOS and FEAT_TLBIRANGE
+X-SA-Exim-Version: 4.2.1 (built Sat, 08 Feb 2020 21:53:50 +0000)
+X-SA-Exim-Scanned: Yes (on in02.mta.xmission.com)
+Received-SPF: none client-ip=166.70.13.233; envelope-from=rebecca@bsdio.com;
+ helo=out03.mta.xmission.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -112,70 +137,54 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eSM5t+WvHx2N
+X-TUID: pvr/WhTyjpCI
 
-Based-on: 20210416183106.1516563-1-richard.henderson@linaro.org
-("[PATCH v5 for-6.1 0/9] target/arm mte fixes")
-
-Changes for v5:
-  * Address review issues.
-  * Use cpu_abort in assert_hflags_rebuild_correctly
-
-The only patch lacking review is the new one:
-07-target-arm-Use-cpu_abort-in-assert_hflags_rebuild.patch
+Hi Richard,
 
 
-r~
+Could you review this patch series again please?
 
+I've fixed several issues recently, and am interested to know if it's 
+ready to commit or would need further changes.
 
-Richard Henderson (31):
-  target/arm: Fix decode of align in VLDST_single
-  target/arm: Rename TBFLAG_A32, SCTLR_B
-  target/arm: Rename TBFLAG_ANY, PSTATE_SS
-  target/arm: Add wrapper macros for accessing tbflags
-  target/arm: Introduce CPUARMTBFlags
-  target/arm: Move mode specific TB flags to tb->cs_base
-  target/arm: Use cpu_abort in assert_hflags_rebuild_correctly
-  target/arm: Move TBFLAG_AM32 bits to the top
-  target/arm: Move TBFLAG_ANY bits to the bottom
-  target/arm: Add ALIGN_MEM to TBFLAG_ANY
-  target/arm: Adjust gen_aa32_{ld,st}_i32 for align+endianness
-  target/arm: Merge gen_aa32_frob64 into gen_aa32_ld_i64
-  target/arm: Fix SCTLR_B test for TCGv_i64 load/store
-  target/arm: Adjust gen_aa32_{ld,st}_i64 for align+endianness
-  target/arm: Enforce word alignment for LDRD/STRD
-  target/arm: Enforce alignment for LDA/LDAH/STL/STLH
-  target/arm: Enforce alignment for LDM/STM
-  target/arm: Enforce alignment for RFE
-  target/arm: Enforce alignment for SRS
-  target/arm: Enforce alignment for VLDM/VSTM
-  target/arm: Enforce alignment for VLDR/VSTR
-  target/arm: Enforce alignment for VLDn (all lanes)
-  target/arm: Enforce alignment for VLDn/VSTn (multiple)
-  target/arm: Enforce alignment for VLDn/VSTn (single)
-  target/arm: Use finalize_memop for aa64 gpr load/store
-  target/arm: Use finalize_memop for aa64 fpr load/store
-  target/arm: Enforce alignment for aa64 load-acq/store-rel
-  target/arm: Use MemOp for size + endian in aa64 vector ld/st
-  target/arm: Enforce alignment for aa64 vector LDn/STn (multiple)
-  target/arm: Enforce alignment for aa64 vector LDn/STn (single)
-  target/arm: Enforce alignment for sve LD1R
-
- target/arm/cpu.h                | 105 ++++++++-----
- target/arm/translate.h          |  38 +++++
- target/arm/neon-ls.decode       |   4 +-
- target/arm/helper-a64.c         |   2 +-
- target/arm/helper.c             | 163 ++++++++++----------
- target/arm/translate-a64.c      | 214 +++++++++++++-------------
- target/arm/translate-sve.c      |   2 +-
- target/arm/translate.c          | 258 +++++++++++++++++---------------
- target/arm/translate-neon.c.inc | 117 ++++++++++++---
- target/arm/translate-vfp.c.inc  |  20 +--
- 10 files changed, 556 insertions(+), 367 deletions(-)
 
 -- 
-2.25.1
+
+Rebecca Cran
+
+
+On 4/14/2021 2:32 PM, Rebecca Cran wrote:
+> ARMv8.4 adds the mandatory FEAT_TLBIOS and FEAT_TLBIRANGE.
+> They provides TLBI maintenance instructions that extend to the Outer
+> Shareable domain and that apply to a range of input addresses.
+>
+> Changes from v6 to v7:
+>
+> o Fixed the tlbi_aa64_rvae1_write the tlbi_aa64_rvae1is_write functions
+>    to pass the correct value into functions which use an ARMMMUIdx.
+>
+> o Fixed comments in helper.c which referred to non-existent instructions.
+>
+> Testing:
+>
+> o Booted Linux 5.11 - verified the previous assert failure in qemu is
+>    resolved.
+> o Ran checkpatch.pl.
+>
+> Rebecca Cran (4):
+>    accel/tcg: Add TLB invalidation support for ranges of addresses
+>    target/arm: Add support for FEAT_TLBIRANGE
+>    target/arm: Add support for FEAT_TLBIOS
+>    target/arm: set ID_AA64ISAR0.TLB to 2 for max AARCH64 CPU type
+>
+>   accel/tcg/cputlb.c      | 130 ++++++-
+>   include/exec/exec-all.h |  46 +++
+>   target/arm/cpu.h        |  10 +
+>   target/arm/cpu64.c      |   1 +
+>   target/arm/helper.c     | 371 ++++++++++++++++++++
+>   5 files changed, 555 insertions(+), 3 deletions(-)
+>
 

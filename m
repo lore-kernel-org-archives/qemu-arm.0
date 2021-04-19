@@ -1,106 +1,93 @@
-Received: by 2002:ac2:5e6c:0:0:0:0:0 with SMTP id a12csp536334lfr;
-        Fri, 16 Apr 2021 09:24:53 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyOjnOVbLJKLZSmAW56HbVOVUSt8wVYtiom5xpjnE7Oj87OiKf6Hnz+O5+h8HvpIudH8wQz
-X-Received: by 2002:a92:cd8a:: with SMTP id r10mr7764117ilb.282.1618590293302;
-        Fri, 16 Apr 2021 09:24:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618590293; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp906336lfb;
+        Mon, 19 Apr 2021 00:03:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxxmOM5gC1z3Ww1iwbZGF4xp726fdlj+ojUrEMoNm8h/hH/I4xoEi6pBEIks0sbD2lyw/ti
+X-Received: by 2002:ab0:57ca:: with SMTP id u10mr5926729uac.71.1618815802505;
+        Mon, 19 Apr 2021 00:03:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618815802; cv=none;
         d=google.com; s=arc-20160816;
-        b=l2tlipU3ztP05eqOGYobC/VA0n4snoBT9c6mh15yo1rKm6t/w0j4TUBzCvy9NoeeJm
-         CdRsTugudpFAvg3DYkRmEPzovNndmb7O4JCaEZNIbzKoc1LRZ44scGeiszmVz/mfqo4B
-         EUxUVMiN+2+jQvIdRReV2j+5yJYx4OxreZHeNS8Jr9tInlbMNA1EcY1Wqpgp4VTyddkw
-         Jp2ITn98vsXD8PvYtVCxd5HsB8Bn9HYlcWVsC81Vu+EzjyHpj3tpvQm77lQ6EXMdHoOr
-         nyvKbx+nCm1AXtgr79CETzYE2drH7rUP4W50B0nTKBj1h6YrbkSOwcg3xvWU5S18XJYA
-         WFKA==
+        b=EudQYYvIioLFPh832D0+2xaPQJr70W4q8574HPKATAa1fth6wGahNVpCj3R86Ru5KA
+         itBSATfTKQ9W8APKYbtWAddv6Fv+HEusAoDclxFI70L3xDR0NvBvEqqNyrxM+4znbMOR
+         o4R9GO4rbukGz22KOzvCgtWV7M/ZeVvUlcLfn4kI0aEnpeHe3zHQnfRtHdhWs4N90tA8
+         M9tgZ/ZT9/rjdIjU8CjaoAeiEmD94OtAqKWfscRFuHV6SToYM0dT6OORKwiDnfqDIFtp
+         O+C3L16b3aN4i2rOIvFSRgtWenU4Ic3fdbc53SsscoZamrnmZa+y4pHiIdgKl5aISA1M
+         Nstw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:mime-version
-         :message-id:date:dkim-signature;
-        bh=G5qTrKtWflOMOAHzpRZ3MGKi+kEZJpERJ2RBhE2G/zY=;
-        b=r9X5fVyx046+D69D4l1H8ZeRl3lSmSscJYoyqR5NucWj+n9jgU/ZBFDumyvc2z2CEn
-         x115l5L5b5CsxvmNmfpjBL9Wl+4dUVm0XZQjwm0mARPni+Fp4SqPMxlDdWDO70GKuT3u
-         COQJ3ELi6mB/PeGGR/8cY2idLqv1NyPPKMVD+Yjz02D5kSYHizFchevEjE155uaarUoS
-         1xfQYWM+yIJAHz1x5ACtjt7pKWaewVCBodH4YpqVR/rBHyYAlFIRa5WORfcGSIET1VQ6
-         ulqkZs7+9Hxa9ks9YzzMee6E2BHc06QWOsfZKT7AKgDOIKB5VUxe+R6SpI231RGpxQZf
-         Sgww==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=+NAQ/VvShzB9lc3tO06EJwzHAmZPdDhz0EoOD+ers8k=;
+        b=ST1LRPB059R/6gG7tUtFKUV81QRVr6iBKh3aDhUh3VDuwkoqrMyixPO1FKMUxsOa77
+         9RbvqY1aq7ffhLY3F0WKnhNFFNvpDJYPfh0pSgkYy6tg+6CZRa5BPyZHP1mq+08MFM3g
+         znEf2NBfWPKf+DL56AQBUFXFKojB3QBBLBhMTygNIPyAm1X5wTmdTtrNqVckkecxcDI2
+         5yCdQGtBu6pPKbuqdfwedPcnGGkVQsPP8kSeXdctODqY71U/y5kwPe/Niq4sJvF5RPPh
+         bATYp3r/nnaLXD/eOWBc7tSV5zq4OIpbrNO+MzJLNn+37aByz9GOTRnx2/2Pncy0908A
+         MKKg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=YXo0IROM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r5si6781402ilg.18.2021.04.16.09.24.53
+        by mx.google.com with ESMTPS id e193si684195vsc.88.2021.04.19.00.03.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Apr 2021 09:24:53 -0700 (PDT)
+        Mon, 19 Apr 2021 00:03:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=YXo0IROM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:58522 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Received: from localhost ([::1]:52334 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lXRH2-0006zx-Gf
-	for alex.bennee@linaro.org; Fri, 16 Apr 2021 12:24:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44684)
+	id 1lYNwH-0002OE-Ri
+	for alex.bennee@linaro.org; Mon, 19 Apr 2021 03:03:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49432)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3Qrp5YAcKCKccLUabYLNVVNSL.JVTXLTb-HYTUVUNUb.VYN@flex--venture.bounces.google.com>)
- id 1lXRGr-0006yY-9r
- for qemu-arm@nongnu.org; Fri, 16 Apr 2021 12:24:41 -0400
-Received: from mail-yb1-xb4a.google.com ([2607:f8b0:4864:20::b4a]:41036)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3Qrp5YAcKCKccLUabYLNVVNSL.JVTXLTb-HYTUVUNUb.VYN@flex--venture.bounces.google.com>)
- id 1lXRGn-0007rq-6b
- for qemu-arm@nongnu.org; Fri, 16 Apr 2021 12:24:40 -0400
-Received: by mail-yb1-xb4a.google.com with SMTP id p75so6734037ybc.8
- for <qemu-arm@nongnu.org>; Fri, 16 Apr 2021 09:24:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=date:message-id:mime-version:subject:from:to:cc;
- bh=G5qTrKtWflOMOAHzpRZ3MGKi+kEZJpERJ2RBhE2G/zY=;
- b=YXo0IROMRBoAQ18/O86PVaGAZueeOEALr/AvRltdYYJWvZjjG7z4/2sYDlkqafWsxK
- +KxnhgJtJH7P5h5wN4j8N7Z7BI8A340Hsh5ek3hhsVppSpvwKnmk8M79PqxIAMwgcZB2
- 8HOiG6WrcNod+Q2rzhd50Hz937KWhVPAAP0c1PEJ/gPioCqPXHvU0efdwDxC7rmH6jo8
- LjlZGgwJ/HbPtNED8K5O3sMkyyuPFZ126hbTbNVprBqrNC64vmnjh06tihmJnM2HkXv3
- SkOBts7QO9ZVpWO9GEJTAbAROA1LB6uSATff+r+cbOzJ5nMSVJwzveRxd8O3/IgUMoOj
- P/Aw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
- bh=G5qTrKtWflOMOAHzpRZ3MGKi+kEZJpERJ2RBhE2G/zY=;
- b=EA1wDufXh40iMfarzwfuO9cDLmkyfeK0NEtUSxOgCyOlU6WnFelUqzCJvewL/tMEyj
- mnZZFuMpj5BiooqyfyvnfLr4+RgGwtudbm6udOyjrZumMtZO/nUOXD1ZDSEhDbk0hPwQ
- NARTmppQ3pt3y6+Vj+XNIy5993BqdF4yYSAAlEi8/eqpgR6d7fuVXth1PQ2WOc060yTE
- he/hr/abv7SIwS0xSFSwROWvfgkoWs2L78BPobUrzUsK111SUTakWDc8K0coHtYOVWHE
- 160he/mSHpIIjpWRkl00iFwBC0N13NNWAtdTw/a9p7QGQtI5612BZ2wzT7Gj0/Eo5Ace
- CBiA==
-X-Gm-Message-State: AOAM531cUshHTvN3W1c5pHkO0ma3yyaK/vBrcjLM9ADYuxj5OunjhWSE
- cb0XOlrIj/U4PTMoBveANvwtSDW/zbtO
-X-Received: from venture.svl.corp.google.com
- ([2620:15c:2a3:200:87b7:e98a:2eda:186])
- (user=venture job=sendgmr) by 2002:a25:cf08:: with SMTP id
- f8mr12960591ybg.88.1618590274476; Fri, 16 Apr 2021 09:24:34 -0700 (PDT)
-Date: Fri, 16 Apr 2021 09:24:25 -0700
-Message-Id: <20210416162426.3217033-1-venture@google.com>
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.31.1.368.gbe11c130af-goog
-Subject: [PATCH] aspeed: Add support for the quanta-q7l1-bmc board
-From: Patrick Venture <venture@google.com>
-To: clg@kaod.org, peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- Patrick Venture <venture@google.com>, Hao Wu <wuhaotsh@google.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b4a;
- envelope-from=3Qrp5YAcKCKccLUabYLNVVNSL.JVTXLTb-HYTUVUNUb.VYN@flex--venture.bounces.google.com;
- helo=mail-yb1-xb4a.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1lYNw3-0002Mo-Vj; Mon, 19 Apr 2021 03:03:08 -0400
+Received: from szxga02-in.huawei.com ([45.249.212.188]:2134)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1lYNvy-0007RD-Cc; Mon, 19 Apr 2021 03:03:07 -0400
+Received: from DGGEML402-HUB.china.huawei.com (unknown [172.30.72.56])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4FNyPl5hs3z5qNQ;
+ Mon, 19 Apr 2021 15:00:27 +0800 (CST)
+Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
+ DGGEML402-HUB.china.huawei.com (10.3.17.38) with Microsoft SMTP Server (TLS)
+ id 14.3.498.0; Mon, 19 Apr 2021 15:02:48 +0800
+Received: from [10.174.187.128] (10.174.187.128) by
+ dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
+ 15.1.2176.2; Mon, 19 Apr 2021 15:02:47 +0800
+Subject: Re: [RFC PATCH v2 1/6] device_tree: Add qemu_fdt_add_path
+To: David Gibson <david@gibson.dropbear.id.au>
+References: <20210413080745.33004-1-wangyanan55@huawei.com>
+ <20210413080745.33004-2-wangyanan55@huawei.com>
+ <YHkYD+cCl9/GCxwJ@yekko.fritz.box>
+ <cd3408c2-6025-7a44-bbf6-d675467c5749@huawei.com>
+ <YHzZJvH/9CiYWia4@yekko.fritz.box>
+From: "wangyanan (Y)" <wangyanan55@huawei.com>
+Message-ID: <85a55b54-e5c2-4a4c-2a51-ebae841d6c4f@huawei.com>
+Date: Mon, 19 Apr 2021 15:02:46 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
+MIME-Version: 1.0
+In-Reply-To: <YHzZJvH/9CiYWia4@yekko.fritz.box>
+Content-Type: text/plain; charset="windows-1252"; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+X-Originating-IP: [10.174.187.128]
+X-ClientProxiedBy: dggeme714-chm.china.huawei.com (10.1.199.110) To
+ dggpemm500023.china.huawei.com (7.185.36.83)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.188;
+ envelope-from=wangyanan55@huawei.com; helo=szxga02-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -113,113 +100,155 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+ "Michael S . Tsirkin" <mst@redhat.com>, wanghaibin.wang@huawei.com,
+ qemu-devel@nongnu.org, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ qemu-arm@nongnu.org, Alistair
+ Francis <alistair.francis@wdc.com>, prime.zeng@hisilicon.com,
+ yangyicong@huawei.com, yuzenghui@huawei.com,
+ Igor Mammedov <imammedo@redhat.com>, zhukeqian1@huawei.com,
+ Jiajie Li <lijiajie11@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dWGK9+HMTbot
+X-TUID: sWLddhJzucWp
 
-The Quanta-Q71l BMC board is a board supported by OpenBMC.
+Hi David,
 
-Tested: Booted quanta-q71l firmware.
-Signed-off-by: Patrick Venture <venture@google.com>
-Reviewed-by: Hao Wu <wuhaotsh@google.com>
----
- hw/arm/aspeed.c | 62 +++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 62 insertions(+)
+On 2021/4/19 9:13, David Gibson wrote:
+> On Sat, Apr 17, 2021 at 10:36:20AM +0800, wangyanan (Y) wrote:
+>> Hi David,
+>>
+>> On 2021/4/16 12:52, David Gibson wrote:
+>>> On Tue, Apr 13, 2021 at 04:07:40PM +0800, Yanan Wang wrote:
+>>>> From: Andrew Jones <drjones@redhat.com>
+>>>>
+>>>> qemu_fdt_add_path() works like qemu_fdt_add_subnode(), except
+>>>> it also adds any missing subnodes in the path. We also tweak
+>>>> an error message of qemu_fdt_add_subnode().
+>>>>
+>>>> We'll make use of this new function in a coming patch.
+>>>>
+>>>> Signed-off-by: Andrew Jones <drjones@redhat.com>
+>>>> Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
+>>>> ---
+>>>>    include/sysemu/device_tree.h |  1 +
+>>>>    softmmu/device_tree.c        | 45 ++++++++++++++++++++++++++++++++++--
+>>>>    2 files changed, 44 insertions(+), 2 deletions(-)
+>>>>
+>>>> diff --git a/include/sysemu/device_tree.h b/include/sysemu/device_tree.h
+>>>> index 8a2fe55622..ef060a9759 100644
+>>>> --- a/include/sysemu/device_tree.h
+>>>> +++ b/include/sysemu/device_tree.h
+>>>> @@ -121,6 +121,7 @@ uint32_t qemu_fdt_get_phandle(void *fdt, const char *path);
+>>>>    uint32_t qemu_fdt_alloc_phandle(void *fdt);
+>>>>    int qemu_fdt_nop_node(void *fdt, const char *node_path);
+>>>>    int qemu_fdt_add_subnode(void *fdt, const char *name);
+>>>> +int qemu_fdt_add_path(void *fdt, const char *path);
+>>>>    #define qemu_fdt_setprop_cells(fdt, node_path, property, ...)                 \
+>>>>        do {                                                                      \
+>>>> diff --git a/softmmu/device_tree.c b/softmmu/device_tree.c
+>>>> index 2691c58cf6..8592c7aa1b 100644
+>>>> --- a/softmmu/device_tree.c
+>>>> +++ b/softmmu/device_tree.c
+>>>> @@ -541,8 +541,8 @@ int qemu_fdt_add_subnode(void *fdt, const char *name)
+>>>>        retval = fdt_add_subnode(fdt, parent, basename);
+>>>>        if (retval < 0) {
+>>>> -        error_report("FDT: Failed to create subnode %s: %s", name,
+>>>> -                     fdt_strerror(retval));
+>>>> +        error_report("%s: Failed to create subnode %s: %s",
+>>>> +                     __func__, name, fdt_strerror(retval));
+>>>>            exit(1);
+>>>>        }
+>>>> @@ -550,6 +550,47 @@ int qemu_fdt_add_subnode(void *fdt, const char *name)
+>>>>        return retval;
+>>>>    }
+>>>> +/*
+>>>> + * Like qemu_fdt_add_subnode(), but will add all missing
+>>>> + * subnodes in the path.
+>>>> + */
+>>>> +int qemu_fdt_add_path(void *fdt, const char *path)
+>>>> +{
+>>>> +    char *dupname, *basename, *p;
+>>>> +    int parent, retval = -1;
+>>>> +
+>>>> +    if (path[0] != '/') {
+>>>> +        return retval;
+>>>> +    }
+>>>> +
+>>>> +    parent = fdt_path_offset(fdt, "/");
+>>> Getting the offset for "/" is never needed - it's always 0.
+>> Thanks, will fix it.
+>>>> +    p = dupname = g_strdup(path);
+>>> You shouldn't need the strdup(), see below.
+>>>
+>>>> +
+>>>> +    while (p) {
+>>>> +        *p = '/';
+>>>> +        basename = p + 1;
+>>>> +        p = strchr(p + 1, '/');
+>>>> +        if (p) {
+>>>> +            *p = '\0';
+>>>> +        }
+>>>> +        retval = fdt_path_offset(fdt, dupname);
+>>> The fdt_path_offset_namelen() function exists *exactly* so that you
+>>> can look up partial parths without having to mangle your input
+>>> string.  Just set the namelen right, and it will ignore anything to
+>>> the right of that.
+>> Function fdt_path_offset_namelen() seems more reasonable.
+>>
+>> After we call qemu_fdt_add_path() to add "/cpus/cpu-map/socket0/core0"
+>> successfully,
+>> if we want to add another path like "/cpus/cpu-map/socket0/core1" we will
+>> get the error
+>> -FDT_ERR_NOTFOUND for each partial path. But actually
+>> "/cpus/cpu-map/socket0"
+>> already exists, so by using fdt_path_offset_namelen() with right namelen we
+>> can avoid
+>> the error retval for this part.
+> I don't quite follow what you're saying here.  AFAICT your logic was
+> correct - it just involved a lot of mangling the given path (adding
+> and removing \0s) which becomes unnecessary with
+> fdt_path_offset_namelen().
+Right.
+>>>> +        if (retval < 0 && retval != -FDT_ERR_NOTFOUND) {
+>>>> +            error_report("%s: Invalid path %s: %s",
+>>>> +                         __func__, path, fdt_strerror(retval));
+>>> If you're getting an error other than FDT_ERR_NOTFOUND here, chances
+>>> are it's not an invalid path, but a corrupted fdt blob or something
+>>> else.
+>> Right, there can be variable reasons for the fail in addition to the invalid
+>> path.
+>>
+>>>> +            exit(1);
+>>>> +        } else if (retval == -FDT_ERR_NOTFOUND) {
+>>>> +            retval = fdt_add_subnode(fdt, parent, basename);
+>>>> +            if (retval < 0) {
+>>>> +                break;
+>>>> +            }
+>> I found another question here. If path "/cpus/cpu-map/socket0/core0" has
+>> already
+>> been added, when we want to add another path "/cpus/cpu-map/socket0/core1"
+>> and go here with retval = fdt_add_subnode(fdt, parent, "cpus"), then retval
+>> will
+>> be -FDT_ERR_EXISTS, but we can't just break the loop in this case.
+>>
+>> Am I right of the explanation ?
+> Not exactly.  If you called that fdt_add_subnode() in that case you
+> would get FDT_ERR_EXISTS.  However, because the previous
+> fdt_path_offset() has returned -FDT_ERR_NOTFOUND, you've already
+> established that the partial path doesn't exist, so if you got an
+> FDT_ERR_EXISTS here something has gone very strangely wrong (such as
+> concurrent access to the flat tree, which would very likely corrupt
+> it).
+Thanks for the analysis, I was wrong...
+> Note that the repeated use of fdt_path_offset() in this function will
+> repeatedly rescan the whole fdt from the beginning.  If you're
+> concerned about performance (which you might well not be), then a more
+> efficient approach would be to take your input path component by
+> component and use fdt_subnode_offset() directly.
+I will try to address your comments and have some rework for this patch 
+in next version.
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index a17b75f494..4611996d21 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -138,6 +138,19 @@ struct AspeedMachineState {
- /* Witherspoon hardware value: 0xF10AD216 (but use romulus definition) */
- #define WITHERSPOON_BMC_HW_STRAP1 ROMULUS_BMC_HW_STRAP1
- 
-+/* Quanta-Q71l hardware value */
-+#define QUANTA_Q71L_BMC_HW_STRAP1 (                                     \
-+        SCU_AST2400_HW_STRAP_DRAM_SIZE(DRAM_SIZE_128MB) |               \
-+        SCU_AST2400_HW_STRAP_DRAM_CONFIG(2/* DDR3 with CL=6, CWL=5 */) | \
-+        SCU_AST2400_HW_STRAP_ACPI_DIS |                                 \
-+        SCU_AST2400_HW_STRAP_SET_CLK_SOURCE(AST2400_CLK_24M_IN) |       \
-+        SCU_HW_STRAP_VGA_CLASS_CODE |                                   \
-+        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_PASS_THROUGH) |          \
-+        SCU_AST2400_HW_STRAP_SET_CPU_AHB_RATIO(AST2400_CPU_AHB_RATIO_2_1) | \
-+        SCU_HW_STRAP_SPI_WIDTH |                                        \
-+        SCU_HW_STRAP_VGA_SIZE_SET(VGA_8M_DRAM) |                        \
-+        SCU_AST2400_HW_STRAP_BOOT_MODE(AST2400_SPI_BOOT))
-+
- /* AST2600 evb hardware value */
- #define AST2600_EVB_HW_STRAP1 0x000000C0
- #define AST2600_EVB_HW_STRAP2 0x00000003
-@@ -433,6 +446,34 @@ static void palmetto_bmc_i2c_init(AspeedMachineState *bmc)
-     object_property_set_int(OBJECT(dev), "temperature3", 110000, &error_abort);
- }
- 
-+static void quanta_q71l_bmc_i2c_init(AspeedMachineState *bmc)
-+{
-+    AspeedSoCState *soc = &bmc->soc;
-+
-+    /*
-+     * The quanta-q71l platform expects tmp75s which are compatible with
-+     * tmp105s.
-+     */
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105", 0x4c);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105", 0x4e);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105", 0x4f);
-+
-+    /* TODO: i2c-1: Add baseboard FRU eeprom@54 24c64 */
-+    /* TODO: i2c-1: Add Frontpanel FRU eeprom@57 24c64 */
-+    /* TODO: Add Memory Riser i2c mux and eeproms. */
-+
-+    /* TODO: i2c-2: pca9546@74 */
-+    /* TODO: i2c-2: pca9548@77 */
-+    /* TODO: i2c-3: Add BIOS FRU eeprom@56 24c64 */
-+    /* TODO: i2c-7: Add pca9546@70 */
-+    /*        - i2c@0: pmbus@59 */
-+    /*        - i2c@1: pmbus@58 */
-+    /*        - i2c@2: pmbus@58 */
-+    /*        - i2c@3: pmbus@59 */
-+    /* TODO: i2c-7: Add PDB FRU eeprom@52 */
-+    /* TODO: i2c-8: Add BMC FRU eeprom@50 */
-+}
-+
- static void ast2500_evb_i2c_init(AspeedMachineState *bmc)
- {
-     AspeedSoCState *soc = &bmc->soc;
-@@ -728,6 +769,23 @@ static void aspeed_machine_palmetto_class_init(ObjectClass *oc, void *data)
-         aspeed_soc_num_cpus(amc->soc_name);
- };
- 
-+static void aspeed_machine_quanta_q71l_class_init(ObjectClass *oc, void *data)
-+{
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
-+
-+    mc->desc       = "Quanta-Q71l BMC (ARM926EJ-S)";
-+    amc->soc_name  = "ast2400-a1";
-+    amc->hw_strap1 = QUANTA_Q71L_BMC_HW_STRAP1;
-+    amc->fmc_model = "n25q256a";
-+    amc->spi_model = "mx25l25635e";
-+    amc->num_cs    = 1;
-+    amc->i2c_init  = quanta_q71l_bmc_i2c_init;
-+    mc->default_ram_size       = 128 * MiB;
-+    mc->default_cpus = mc->min_cpus = mc->max_cpus =
-+        aspeed_soc_num_cpus(amc->soc_name);
-+}
-+
- static void aspeed_machine_supermicrox11_bmc_class_init(ObjectClass *oc,
-                                                         void *data)
- {
-@@ -927,6 +985,10 @@ static const TypeInfo aspeed_machine_types[] = {
-         .name          = MACHINE_TYPE_NAME("g220a-bmc"),
-         .parent        = TYPE_ASPEED_MACHINE,
-         .class_init    = aspeed_machine_g220a_class_init,
-+    }, {
-+        .name          = MACHINE_TYPE_NAME("quanta-q71l-bmc"),
-+        .parent        = TYPE_ASPEED_MACHINE,
-+        .class_init    = aspeed_machine_quanta_q71l_class_init,
-     }, {
-         .name          = TYPE_ASPEED_MACHINE,
-         .parent        = TYPE_MACHINE,
--- 
-2.31.1.368.gbe11c130af-goog
-
+Thanks,
+Yanan
+>

@@ -1,101 +1,92 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp1048854lfb;
-        Mon, 19 Apr 2021 03:55:22 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyhhYgs26S3DhFt9H0s8uVBrHy26e6ndrFWwiNYgUPCcaLflu4cW2QP4Jy2zJKjjV1vwj6R
-X-Received: by 2002:a05:6638:24c2:: with SMTP id y2mr15684675jat.9.1618829722710;
-        Mon, 19 Apr 2021 03:55:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618829722; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp1133687lfb;
+        Mon, 19 Apr 2021 05:45:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzfW2XklWZVc01fzgfkSCB9gTqdJZowE27L2PdhcEj8ombpkAZsfCNlDPITtpgkwZUZkysL
+X-Received: by 2002:a05:6602:17cf:: with SMTP id z15mr4005772iox.162.1618836323524;
+        Mon, 19 Apr 2021 05:45:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618836323; cv=none;
         d=google.com; s=arc-20160816;
-        b=gPcMOsToPt7BpW4ZXFMDIZTqe8OuQZn2y75ADtLnqlJexNRjCGObyvX0mYGppkMD4N
-         9HzzadL9yktdJ3jbinC+ZCfdaHUl+vLC9Xkp0pvwnwiJQX94Qp2063pHF67rQ5Clj4jV
-         oyp++Pdnyn9+Z8pLG+Co7MTiQQa3HGTcKD8HWbH/syP70e/dcCiB03k60omTEfKZN9W2
-         fwSK1u3o1NxLVNSdbFAz0sw6TEv1RJCB9jBqonOkkQO7bATEJow91hYdk3rXerxMIM1L
-         wEqxi+Z/sgsqAM35loQ0VbSB8GorW28ZKWKY6wg8qvXWgDOcLxUoZnx41wdbj2y9ACYz
-         XAnQ==
+        b=PbP7J+Nl25pivfbzdOA30x6wc/jxGu3NefJTd24X6PVegkeQl81oWeao6xEjcDBSE8
+         oX5QUCVNitm3cLoxtjpSQ2FlXTsE/aQfU3/BSI+J1zUr3kBTRCz0zvRQ1KZlrGRYmnAG
+         LZ4DErcqrdOv9M7GViyGU/SRGT4dYwcHFBT/m3EPpIlwtaq3Y0g+0Sqz+ANt1/QoMZ1Q
+         o9o9sJt3ERcBZi3EJYM7Dhun5WqGnS9+S+dqzLl/Q4DEOGgE/7bvlGpsN2pNcqR7Insx
+         zloM2J5AA+DnN64BQz5daWe9QQC3nCgPBqUClzMhr7b1Z7K9yG6dbMbn1odSYv14I1A3
+         4pyw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=jsX03qnFQOIJnCC+Y5/8FahHkH0bjmqKU0P7LClenvA=;
-        b=z/n6Yt5LXcjAlcIfMVDFpzHA7w+wqCyufUAIbBEKCZAMG2JWmiHYnbiZC2v6l5hXCx
-         qetHNOga6gS/+DbpAr5rvDhAZ3hFhDR2C1jQUwbrdpkXSXBJSp4ajzaaHgob8MrSpY1G
-         /QY99TsIOmYvuHdAFK8s8zT1hOLii3yesJUplQkg9dtwVySmm9V1stIdteplsqmsQqNO
-         RWJVpNwMH7QNmJW6qBm6tWcwORloSEGT3awMF9LkQeDehV9R7tz+ARcnuEQ61n5WbJHw
-         /8Z+JuQgcRBJw49qQtEfBx/E780F6ZOGrJsCEusSCMjT4vAoAYzV54BXLkLX1HQGWL4V
-         P2zg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=gU/d/hkHVWJixSoW1wNYY9k42bR+VXMwhZTbUXkzY2M=;
+        b=pTm9vtqB15xRn4f3FFF20kQ81dut4xAoBmtc+e3wFBSAE+Zv6aPs1vu/kY54dLsNjk
+         gK0rthb7NLdxT+VqWKIKKlazLlhq6ijFrOIjVdoODYBrdYuKisOEHNT0lZeqt3rGTpJy
+         Uj9Lt8NnLAHauoO1ihY5MDJnxYdWLCO1/JoAmnkpav4ZIE2j3lR1a+nUicJnWz4RKiep
+         yvI/fFtN0NxbZB2ZnlRfOxf267eXK9sV+koMdkMBEvTDIm/Os7x0wrrCOEzeKaJSC7KU
+         WlrT4VD1M0TSs5ttbiwl3ihxhJ90GPDPPCpU7rn17AOx8J4wSuX4hG30WHsyX3upiUtp
+         rrYg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=LqBU4aPi;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k13si15319858iow.46.2021.04.19.03.55.22
+        by mx.google.com with ESMTPS id m18si14397340ilj.155.2021.04.19.05.45.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 19 Apr 2021 03:55:22 -0700 (PDT)
+        Mon, 19 Apr 2021 05:45:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=LqBU4aPi;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46588 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:51786 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lYRYn-0005xY-UJ
-	for alex.bennee@linaro.org; Mon, 19 Apr 2021 06:55:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39284)
+	id 1lYTHG-000720-PQ
+	for alex.bennee@linaro.org; Mon, 19 Apr 2021 08:45:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36034)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lYRWL-0004EM-4s
- for qemu-devel@nongnu.org; Mon, 19 Apr 2021 06:52:49 -0400
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633]:41606)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lYRWG-0001nP-SR
- for qemu-devel@nongnu.org; Mon, 19 Apr 2021 06:52:48 -0400
-Received: by mail-ej1-x633.google.com with SMTP id mh2so30635521ejb.8
- for <qemu-devel@nongnu.org>; Mon, 19 Apr 2021 03:52:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=jsX03qnFQOIJnCC+Y5/8FahHkH0bjmqKU0P7LClenvA=;
- b=LqBU4aPic+vBUG8rrS3uROd8X6xTr6pbPPPzcfEwZxcXweyzpmJnwnu663slI5kEya
- HroH75LZ6mWpsL1WD9BZlVL+57De0NTBj2rUklJtnintzh54Nh2kFCnbx+jmd6Xjdnjo
- 2jrNsEs++Uqsf3cnhixgfrY1ya7+knxNo+m7OKOH+9C8IR4DQ5u6zkDeEs0SeUJJSsDR
- gSK7OgApxZfaA8xpiTHpmJsWuQrj24y1F9LbKQegO+TMfSW7WOfLu6kEUWBjW8+JlrQb
- xsuoj3xLW78I/Wg3LcuZqFfd7DF51YFYXyXmTazwbGsvcbmpVt0bK8/C1+IyZApS2YnQ
- a2GQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=jsX03qnFQOIJnCC+Y5/8FahHkH0bjmqKU0P7LClenvA=;
- b=N7PBUMyJaXkcnammT5vmEgalslS2NB3LERoXXWy2MSB9lTEs/ziR6EEdcc98rT4pm/
- fjM6fJq6nyy9UTjG2r2HbDshfVlIHQgv6IFQejCW6ilAnQh59/UjSpg+y3X9QGKVKRDp
- Y/OiIud7fm8gfNMxdMICLUvt6dNRytfXAlVuoCH/NBcWF5cBKMVu1PLoN12AJ3WPzqU5
- giZcuGDgLYV3/rEoVloyjBuRbvlCDxgvLMUhU9Don5QFVq2O6cbwV656zTPJr0RmbPDa
- rCtLBvGjE/jaHn5Yp2MtdIUwySL9wf8yX45ho1a6zFpLRMA5t7hsIfjU/tZzn5zlmx84
- ANkg==
-X-Gm-Message-State: AOAM533IOmsciuek+4mJgtSP9saxX+ZNssANguMKZl3XAhaITo9O/5M4
- ddKPDJzqHuqINnTowqGAoogyEra3ElQo7D53Z3idjQ==
-X-Received: by 2002:a17:906:29ca:: with SMTP id
- y10mr21972327eje.250.1618829563204; 
- Mon, 19 Apr 2021 03:52:43 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1lYTFr-0006So-I4
+ for qemu-devel@nongnu.org; Mon, 19 Apr 2021 08:43:55 -0400
+Received: from 2.mo51.mail-out.ovh.net ([178.33.255.19]:48467)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1lYTFn-0001IT-Vv
+ for qemu-devel@nongnu.org; Mon, 19 Apr 2021 08:43:55 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.146.59])
+ by mo51.mail-out.ovh.net (Postfix) with ESMTPS id 5837F28298B;
+ Mon, 19 Apr 2021 14:43:47 +0200 (CEST)
+Received: from kaod.org (37.59.142.102) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2242.4; Mon, 19 Apr
+ 2021 14:43:46 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-102R004d232e25d-b5a3-4645-8e91-b1cc07e4eba9,
+ B4D035A2DC807FE66533091DC87546D0F6B6CAAF) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 90.89.73.13
+Subject: Re: [PATCH] aspeed: Add support for the quanta-q7l1-bmc board
+To: Patrick Venture <venture@google.com>
+References: <20210416162426.3217033-1-venture@google.com>
+ <4e5592b1-ea5b-0ef6-c837-1c7ac1476696@kaod.org>
+ <CAO=notw0zZZt7U1-tyg9h8oC_TngRCNddEgmNbz=NnLojdYUYg@mail.gmail.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <4b079131-84ce-daa3-5bc7-f78985b6b104@kaod.org>
+Date: Mon, 19 Apr 2021 14:43:45 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-References: <20210401024152.203896-1-shashi.mallela@linaro.org>
- <20210401024152.203896-6-shashi.mallela@linaro.org>
-In-Reply-To: <20210401024152.203896-6-shashi.mallela@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 19 Apr 2021 11:51:51 +0100
-Message-ID: <CAFEAcA_ppzeWMaViry4LrLCVjJVHwChTu3d5J3bZLxZ7wK8TRg@mail.gmail.com>
-Subject: Re: [PATCH v2 5/8] hw/intc: GICv3 ITS Feature enablement
-To: Shashi Mallela <shashi.mallela@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::633;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x633.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+In-Reply-To: <CAO=notw0zZZt7U1-tyg9h8oC_TngRCNddEgmNbz=NnLojdYUYg@mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.102]
+X-ClientProxiedBy: DAG3EX1.mxp5.local (172.16.2.21) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 5ea3bb04-7289-44ed-a2df-f67619e5982c
+X-Ovh-Tracer-Id: 8863928494237977449
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduledrvddtgedgheeiucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepjeekudeuudevleegudeugeekleffveeludejteffiedvledvgfekueefudehheefnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutddvnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehvvghnthhurhgvsehgohhoghhlvgdrtghomh
+Received-SPF: pass client-ip=178.33.255.19; envelope-from=clg@kaod.org;
+ helo=2.mo51.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -110,281 +101,156 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Leif Lindholm <leif@nuviainc.com>, QEMU Developers <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>, Radoslaw Biernacki <rad@semihalf.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ qemu-devel@nongnu.org, Hao Wu <wuhaotsh@google.com>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jpr1orB7PoMa
+X-TUID: jDyzFcweqPPn
 
-On Thu, 1 Apr 2021 at 03:41, Shashi Mallela <shashi.mallela@linaro.org> wrote:
->
-> Added properties to enable ITS feature and define qemu system
-> address space memory in gicv3 common,setup distributor and
-> redistributor registers to indicate LPI support.
->
-> Signed-off-by: Shashi Mallela <shashi.mallela@linaro.org>
-> ---
->  hw/intc/arm_gicv3_common.c         | 16 ++++++++++++++++
->  hw/intc/arm_gicv3_dist.c           | 22 ++++++++++++++++++++--
->  hw/intc/arm_gicv3_redist.c         | 28 +++++++++++++++++++++++++---
->  hw/intc/gicv3_internal.h           | 17 +++++++++++++++++
->  include/hw/intc/arm_gicv3_common.h |  8 ++++++++
->  5 files changed, 86 insertions(+), 5 deletions(-)
->
-> diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
-> index 58ef65f589..3bfc52f7fa 100644
-> --- a/hw/intc/arm_gicv3_common.c
-> +++ b/hw/intc/arm_gicv3_common.c
-> @@ -156,6 +156,7 @@ static const VMStateDescription vmstate_gicv3_cpu = {
->          VMSTATE_UINT32(gicr_waker, GICv3CPUState),
->          VMSTATE_UINT64(gicr_propbaser, GICv3CPUState),
->          VMSTATE_UINT64(gicr_pendbaser, GICv3CPUState),
-> +        VMSTATE_BOOL(lpi_outofrange, GICv3CPUState),
->          VMSTATE_UINT32(gicr_igroupr0, GICv3CPUState),
->          VMSTATE_UINT32(gicr_ienabler0, GICv3CPUState),
->          VMSTATE_UINT32(gicr_ipendr0, GICv3CPUState),
-> @@ -227,6 +228,7 @@ static const VMStateDescription vmstate_gicv3 = {
->      .priority = MIG_PRI_GICV3,
->      .fields = (VMStateField[]) {
->          VMSTATE_UINT32(gicd_ctlr, GICv3State),
-> +        VMSTATE_UINT32(gicd_typer, GICv3State),
->          VMSTATE_UINT32_ARRAY(gicd_statusr, GICv3State, 2),
->          VMSTATE_UINT32_ARRAY(group, GICv3State, GICV3_BMP_SIZE),
->          VMSTATE_UINT32_ARRAY(grpmod, GICv3State, GICV3_BMP_SIZE),
+On 4/16/21 7:38 PM, Patrick Venture wrote:
+> On Fri, Apr 16, 2021 at 9:40 AM Cédric Le Goater <clg@kaod.org> wrote:
+>>
+>> Patrick,
+>>
+>> On 4/16/21 6:24 PM, Patrick Venture wrote:
+>>> The Quanta-Q71l BMC board is a board supported by OpenBMC.
+>>>
+>>> Tested: Booted quanta-q71l firmware.
+>>> Signed-off-by: Patrick Venture <venture@google.com>
+>>> Reviewed-by: Hao Wu <wuhaotsh@google.com>
+>>
+>> This looks good.
+>>
+>> Reviewed-by: Cédric Le Goater <clg@kaod.org>
+>>
+>> Some comments below,
+>>
+>>
+>>> ---
+>>>  hw/arm/aspeed.c | 62 +++++++++++++++++++++++++++++++++++++++++++++++++
+>>>  1 file changed, 62 insertions(+)
+>>>
+>>> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+>>> index a17b75f494..4611996d21 100644
+>>> --- a/hw/arm/aspeed.c
+>>> +++ b/hw/arm/aspeed.c
+>>> @@ -138,6 +138,19 @@ struct AspeedMachineState {
+>>>  /* Witherspoon hardware value: 0xF10AD216 (but use romulus definition) */
+>>>  #define WITHERSPOON_BMC_HW_STRAP1 ROMULUS_BMC_HW_STRAP1
+>>>
+>>> +/* Quanta-Q71l hardware value */
+>>> +#define QUANTA_Q71L_BMC_HW_STRAP1 (                                     \
+>>> +        SCU_AST2400_HW_STRAP_DRAM_SIZE(DRAM_SIZE_128MB) |               \
+>>> +        SCU_AST2400_HW_STRAP_DRAM_CONFIG(2/* DDR3 with CL=6, CWL=5 */) | \
+>>> +        SCU_AST2400_HW_STRAP_ACPI_DIS |                                 \
+>>> +        SCU_AST2400_HW_STRAP_SET_CLK_SOURCE(AST2400_CLK_24M_IN) |       \
+>>> +        SCU_HW_STRAP_VGA_CLASS_CODE |                                   \
+>>> +        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_PASS_THROUGH) |          \
+>>> +        SCU_AST2400_HW_STRAP_SET_CPU_AHB_RATIO(AST2400_CPU_AHB_RATIO_2_1) | \
+>>> +        SCU_HW_STRAP_SPI_WIDTH |                                        \
+>>> +        SCU_HW_STRAP_VGA_SIZE_SET(VGA_8M_DRAM) |                        \
+>>> +        SCU_AST2400_HW_STRAP_BOOT_MODE(AST2400_SPI_BOOT))
+>>> +
+>>>  /* AST2600 evb hardware value */
+>>>  #define AST2600_EVB_HW_STRAP1 0x000000C0
+>>>  #define AST2600_EVB_HW_STRAP2 0x00000003
+>>> @@ -433,6 +446,34 @@ static void palmetto_bmc_i2c_init(AspeedMachineState *bmc)
+>>>      object_property_set_int(OBJECT(dev), "temperature3", 110000, &error_abort);
+>>>  }
+>>>
+>>> +static void quanta_q71l_bmc_i2c_init(AspeedMachineState *bmc)
+>>> +{
+>>> +    AspeedSoCState *soc = &bmc->soc;
+>>> +
+>>> +    /*
+>>> +     * The quanta-q71l platform expects tmp75s which are compatible with
+>>> +     * tmp105s.
+>>> +     */
+>>> +    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105", 0x4c);
+>>> +    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105", 0x4e);
+>>> +    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105", 0x4f);
+>>> +
+>>> +    /* TODO: i2c-1: Add baseboard FRU eeprom@54 24c64 */
+>>
+>> Why not add the eeprom devices ?
+> 
+> I wanted to provide this ahead of filling it all out, I also have the
+> pca954x staged, and some other devices to add.  If you want, I can add
+> those and make this into a patch series instead of a one-off.
+
+This is s fine. Devices can come later. I have queued this machine for 6.1.
+
+Thanks,
+
+C. 
 
 
-You can't add fields to an existing VMStateDescription like this
-without extra effort to handle migration compatibility.
-What are we trying to achieve with the extra fields?
-GICD_TYPER is read-only, I think.
-I don't think we need an lpi_outofrange flag: we should just naturally
-handle this as part of working with the GITR_PROPBASER.IDbits field.
+>>
+>>> +    /* TODO: i2c-1: Add Frontpanel FRU eeprom@57 24c64 */
+>>> +    /* TODO: Add Memory Riser i2c mux and eeproms. */
+>>> +
+>>> +    /* TODO: i2c-2: pca9546@74 */
+>>> +    /* TODO: i2c-2: pca9548@77 */
+>>> +    /* TODO: i2c-3: Add BIOS FRU eeprom@56 24c64 */
+>>> +    /* TODO: i2c-7: Add pca9546@70 */
+>>> +    /*        - i2c@0: pmbus@59 */
+>>> +    /*        - i2c@1: pmbus@58 */
+>>> +    /*        - i2c@2: pmbus@58 */
+>>> +    /*        - i2c@3: pmbus@59 */
+>>> +    /* TODO: i2c-7: Add PDB FRU eeprom@52 */
+>>> +    /* TODO: i2c-8: Add BMC FRU eeprom@50 */
+>>> +}
+>>> +
+>>>  static void ast2500_evb_i2c_init(AspeedMachineState *bmc)
+>>>  {
+>>>      AspeedSoCState *soc = &bmc->soc;
+>>> @@ -728,6 +769,23 @@ static void aspeed_machine_palmetto_class_init(ObjectClass *oc, void *data)
+>>>          aspeed_soc_num_cpus(amc->soc_name);
+>>>  };
+>>>
+>>> +static void aspeed_machine_quanta_q71l_class_init(ObjectClass *oc, void *data)
+>>> +{
+>>> +    MachineClass *mc = MACHINE_CLASS(oc);
+>>> +    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+>>> +
+>>> +    mc->desc       = "Quanta-Q71l BMC (ARM926EJ-S)";
+>>> +    amc->soc_name  = "ast2400-a1";
+>>> +    amc->hw_strap1 = QUANTA_Q71L_BMC_HW_STRAP1;
+>>> +    amc->fmc_model = "n25q256a";
+>>> +    amc->spi_model = "mx25l25635e";
+>>> +    amc->num_cs    = 1;
+>>> +    amc->i2c_init  = quanta_q71l_bmc_i2c_init;
+>>> +    mc->default_ram_size       = 128 * MiB;
+>>
+>> I thought the board had more RAM ?
+> 
+> It does not :(  Trying to maintain OpenBMC with such little memory
+> overhead has been less than fun, but it's do-able.
+> 
+>>
+>> Thanks,
+>>
+>> C.
+>>
+>>> +    mc->default_cpus = mc->min_cpus = mc->max_cpus =
+>>> +        aspeed_soc_num_cpus(amc->soc_name);
+>>> +}
+>>> +
+>>>  static void aspeed_machine_supermicrox11_bmc_class_init(ObjectClass *oc,
+>>>                                                          void *data)
+>>>  {
+>>> @@ -927,6 +985,10 @@ static const TypeInfo aspeed_machine_types[] = {
+>>>          .name          = MACHINE_TYPE_NAME("g220a-bmc"),
+>>>          .parent        = TYPE_ASPEED_MACHINE,
+>>>          .class_init    = aspeed_machine_g220a_class_init,
+>>> +    }, {
+>>> +        .name          = MACHINE_TYPE_NAME("quanta-q71l-bmc"),
+>>> +        .parent        = TYPE_ASPEED_MACHINE,
+>>> +        .class_init    = aspeed_machine_quanta_q71l_class_init,
+>>>      }, {
+>>>          .name          = TYPE_ASPEED_MACHINE,
+>>>          .parent        = TYPE_MACHINE,
+>>>
+>>
 
-> @@ -381,6 +383,16 @@ static void arm_gicv3_common_realize(DeviceState *dev, Error **errp)
->              (1 << 24) |
->              (i << 8) |
->              (last << 4);
-> +
-> +        if (s->lpi_enable) {
-> +            s->cpu[i].gicr_typer |= GICR_TYPER_PLPIS;
-> +
-> +            if (!s->sysmem) {
-> +                error_setg(errp,
-> +                    "Redist-ITS: Guest 'sysmem' reference link not set");
-> +                return;
-> +            }
-> +        }
->      }
->  }
->
-> @@ -406,6 +418,7 @@ static void arm_gicv3_common_reset(DeviceState *dev)
->          cs->gicr_waker = GICR_WAKER_ProcessorSleep | GICR_WAKER_ChildrenAsleep;
->          cs->gicr_propbaser = 0;
->          cs->gicr_pendbaser = 0;
-> +        cs->lpi_outofrange = false;
->          /* If we're resetting a TZ-aware GIC as if secure firmware
->           * had set it up ready to start a kernel in non-secure, we
->           * need to set interrupts to group 1 so the kernel can use them.
-> @@ -494,9 +507,12 @@ static Property arm_gicv3_common_properties[] = {
->      DEFINE_PROP_UINT32("num-cpu", GICv3State, num_cpu, 1),
->      DEFINE_PROP_UINT32("num-irq", GICv3State, num_irq, 32),
->      DEFINE_PROP_UINT32("revision", GICv3State, revision, 3),
-> +    DEFINE_PROP_BOOL("has-lpi", GICv3State, lpi_enable, 0),
->      DEFINE_PROP_BOOL("has-security-extensions", GICv3State, security_extn, 0),
->      DEFINE_PROP_ARRAY("redist-region-count", GICv3State, nb_redist_regions,
->                        redist_region_count, qdev_prop_uint32, uint32_t),
-> +    DEFINE_PROP_LINK("sysmem", GICv3State, sysmem, TYPE_MEMORY_REGION,
-> +                     MemoryRegion *),
->      DEFINE_PROP_END_OF_LIST(),
->  };
->
-> diff --git a/hw/intc/arm_gicv3_dist.c b/hw/intc/arm_gicv3_dist.c
-> index b65f56f903..96a317a8ef 100644
-> --- a/hw/intc/arm_gicv3_dist.c
-> +++ b/hw/intc/arm_gicv3_dist.c
-> @@ -366,12 +366,15 @@ static MemTxResult gicd_readl(GICv3State *s, hwaddr offset,
->          return MEMTX_OK;
->      case GICD_TYPER:
->      {
-> +        bool lpi_supported = false;
->          /* For this implementation:
->           * No1N == 1 (1-of-N SPI interrupts not supported)
->           * A3V == 1 (non-zero values of Affinity level 3 supported)
->           * IDbits == 0xf (we support 16-bit interrupt identifiers)
->           * DVIS == 0 (Direct virtual LPI injection not supported)
-> -         * LPIS == 0 (LPIs not supported)
-> +         * LPIS == 1 (LPIs are supported if affinity routing is enabled)
-> +         * num_LPIs == 0b00000 (bits [15:11],Number of LPIs as indicated
-> +         *                      by GICD_TYPER.IDbits)
-
-We support LPIs, but we have none ? That doesn't sound right, and it's
-not what the code below reports.
-
->           * MBIS == 0 (message-based SPIs not supported)
->           * SecurityExtn == 1 if security extns supported
->           * CPUNumber == 0 since for us ARE is always 1
-> @@ -385,8 +388,23 @@ static MemTxResult gicd_readl(GICv3State *s, hwaddr offset,
->           */
->          bool sec_extn = !(s->gicd_ctlr & GICD_CTLR_DS);
->
-> +        /*
-> +         * With securityextn on,LPIs are supported when affinity routing
-
-(missing space after comma)
-
-> +         * is enabled for non-secure state and if off LPIs are supported
-> +         * when affinity routing is enabled.
-> +         */
-> +        if (s->lpi_enable) {
-> +            if (sec_extn) {
-> +                lpi_supported = (s->gicd_ctlr & GICD_CTLR_ARE_NS);
-> +            } else {
-> +                lpi_supported = (s->gicd_ctlr & GICD_CTLR_ARE);
-> +            }
-> +        }
-> +
->          *data = (1 << 25) | (1 << 24) | (sec_extn << 10) |
-> -            (0xf << 19) | itlinesnumber;
-> +            (lpi_supported << GICD_TYPER_LPIS_OFFSET) | (GICD_TYPER_IDBITS <<
-> +            GICD_TYPER_IDBITS_OFFSET) | itlinesnumber;
-> +        s->gicd_typer = *data;
->          return MEMTX_OK;
->      }
->      case GICD_IIDR:
-> diff --git a/hw/intc/arm_gicv3_redist.c b/hw/intc/arm_gicv3_redist.c
-> index 8645220d61..325b974e70 100644
-> --- a/hw/intc/arm_gicv3_redist.c
-> +++ b/hw/intc/arm_gicv3_redist.c
-> @@ -248,10 +248,16 @@ static MemTxResult gicr_writel(GICv3CPUState *cs, hwaddr offset,
->      case GICR_CTLR:
->          /* For our implementation, GICR_TYPER.DPGS is 0 and so all
->           * the DPG bits are RAZ/WI. We don't do anything asynchronously,
-> -         * so UWP and RWP are RAZ/WI. And GICR_TYPER.LPIS is 0 (we don't
-> -         * implement LPIs) so Enable_LPIs is RES0. So there are no writable
-> -         * bits for us.
-> +         * so UWP and RWP are RAZ/WI. GICR_TYPER.LPIS is 1 (we
-> +         * implement LPIs) so Enable_LPIs is programmable.
->           */
-> +        if (cs->gicr_typer & GICR_TYPER_PLPIS) {
-> +            if (value & GICR_CTLR_ENABLE_LPIS) {
-> +                cs->gicr_ctlr |= GICR_CTLR_ENABLE_LPIS;
-> +            } else {
-> +                cs->gicr_ctlr &= ~GICR_CTLR_ENABLE_LPIS;
-> +            }
-> +        }
->          return MEMTX_OK;
->      case GICR_STATUSR:
->          /* RAZ/WI for our implementation */
-> @@ -275,6 +281,14 @@ static MemTxResult gicr_writel(GICv3CPUState *cs, hwaddr offset,
->          cs->gicr_waker = value;
->          return MEMTX_OK;
->      case GICR_PROPBASER:
-> +        if (FIELD_EX64(value, GICR_PROPBASER, IDBITS) <
-> +            GICR_PROPBASER_IDBITS_THRESHOLD) {
-> +            cs->lpi_outofrange = true;
-
-I don't think you should need to special case this. It just means "turns out
-that the LPI table is effectively zero length". When code doing LPI table
-lookups calculates the LPI table size (which it needs to do anyway) it can
-just catch the "turns out to be negative" case then.
-
-> +        }
-> +        if (FIELD_EX64(value, GICR_PROPBASER, IDBITS) > GICD_TYPER_IDBITS) {
-> +            value &= ~R_GICR_PROPBASER_IDBITS_MASK;
-> +            value |= GICD_TYPER_IDBITS;
-> +        }
-
-This isn't what the spec says happens. It says that if the value the
-guest writes
-in this field is larger than GICD_TYPER.IDbits, then the GICD_TYPER.IDBits value
-applies. That doesn't mean the value reads back as GICD_TYPER.IDBits.
-
-How you want to handle this depends on what's going on, but it probably mostly
-looks like "code that cares about GICR_PROPBASER.IDBits will do
-MIN(field_value, GICD_TYPER_IDBITS) to find the effective value of the field".
-
->          cs->gicr_propbaser = deposit64(cs->gicr_propbaser, 0, 32, value);
->          return MEMTX_OK;
->      case GICR_PROPBASER + 4:
-> @@ -397,6 +411,14 @@ static MemTxResult gicr_writell(GICv3CPUState *cs, hwaddr offset,
->  {
->      switch (offset) {
->      case GICR_PROPBASER:
-> +        if (FIELD_EX64(value, GICR_PROPBASER, IDBITS) <
-> +            GICR_PROPBASER_IDBITS_THRESHOLD) {
-> +            cs->lpi_outofrange = true;
-> +        }
-> +        if (FIELD_EX64(value, GICR_PROPBASER, IDBITS) > GICD_TYPER_IDBITS) {
-> +            value &= ~R_GICR_PROPBASER_IDBITS_MASK;
-> +            value |= GICD_TYPER_IDBITS;
-> +        }
-
-Same comments as above.
-
->          cs->gicr_propbaser = value;
->          return MEMTX_OK;
->      case GICR_PENDBASER:
-> diff --git a/hw/intc/gicv3_internal.h b/hw/intc/gicv3_internal.h
-> index e9f9aa6722..a2718704d4 100644
-> --- a/hw/intc/gicv3_internal.h
-> +++ b/hw/intc/gicv3_internal.h
-> @@ -68,6 +68,9 @@
->  #define GICD_CTLR_E1NWF             (1U << 7)
->  #define GICD_CTLR_RWP               (1U << 31)
->
-> +#define GICD_TYPER_LPIS_OFFSET         17
-> +#define GICD_TYPER_IDBITS_OFFSET       19
-> +#define GICD_TYPER_IDBITS_MASK       0x1f
->  /* 16 bits EventId */
->  #define GICD_TYPER_IDBITS            0xf
->
-> @@ -126,6 +129,20 @@
->  #define GICR_WAKER_ProcessorSleep    (1U << 1)
->  #define GICR_WAKER_ChildrenAsleep    (1U << 2)
->
-> +FIELD(GICR_PROPBASER, IDBITS, 0, 5)
-> +FIELD(GICR_PROPBASER, INNERCACHE, 7, 3)
-> +FIELD(GICR_PROPBASER, SHAREABILITY, 10, 2)
-> +FIELD(GICR_PROPBASER, PHYADDR, 12, 40)
-> +FIELD(GICR_PROPBASER, OUTERCACHE, 56, 3)
-> +
-> +#define GICR_PROPBASER_IDBITS_THRESHOLD          0xd
-> +
-> +FIELD(GICR_PENDBASER, INNERCACHE, 7, 3)
-> +FIELD(GICR_PENDBASER, SHAREABILITY, 10, 2)
-> +FIELD(GICR_PENDBASER, PHYADDR, 16, 36)
-> +FIELD(GICR_PENDBASER, OUTERCACHE, 56, 3)
-> +FIELD(GICR_PENDBASER, PTZ, 62, 1)
-> +
->  #define ICC_CTLR_EL1_CBPR           (1U << 0)
->  #define ICC_CTLR_EL1_EOIMODE        (1U << 1)
->  #define ICC_CTLR_EL1_PMHE           (1U << 6)
-> diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
-> index 3a710592a9..db3989484d 100644
-> --- a/include/hw/intc/arm_gicv3_common.h
-> +++ b/include/hw/intc/arm_gicv3_common.h
-> @@ -175,6 +175,13 @@ struct GICv3CPUState {
->      uint32_t gicr_nsacr;
->      uint8_t gicr_ipriorityr[GIC_INTERNAL];
->
-> +    /*
-> +     * flag to indicate LPIs are out of range
-> +     * since IDbits from GICR_PROPBASER is less
-> +     * than 0b1101
-> +     */
-> +    bool lpi_outofrange;
-> +
->      /* CPU interface */
->      uint64_t icc_sre_el1;
->      uint64_t icc_ctlr_el1[2];
-> @@ -221,6 +228,7 @@ struct GICv3State {
->      uint32_t num_cpu;
->      uint32_t num_irq;
->      uint32_t revision;
-> +    bool lpi_enable;
->      bool security_extn;
->      bool irq_reset_nonsecure;
->      bool gicd_no_migration_shift_bug;
-
-thanks
--- PMM

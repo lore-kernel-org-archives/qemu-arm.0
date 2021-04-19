@@ -1,280 +1,135 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp1182181lfb;
-        Mon, 19 Apr 2021 06:43:30 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxmEV6qb+vNZc+CffqKKfBUdrjWN3FRe3Z0Sst1/MfLVMGw8dwUXO40wKRhgMgKHs6V3q5m
-X-Received: by 2002:a5e:930d:: with SMTP id k13mr14571801iom.61.1618839809716;
-        Mon, 19 Apr 2021 06:43:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618839809; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp1332183lfb;
+        Mon, 19 Apr 2021 09:44:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwbFlOCbE3Fl56w+1M+QHegoiRmeBSofMNAAYVPtP/uBIyeU7BEwIpGWrkimpp4v7fgqvA4
+X-Received: by 2002:a05:6e02:1062:: with SMTP id q2mr18446539ilj.194.1618850692854;
+        Mon, 19 Apr 2021 09:44:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618850692; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZfUzofWBSywcnuZ4Ks85G423x8fll2IDRF2/reQQv9FJ1ri1XUY1SbUgCkF9mwuCDj
-         tkyVCZ0vGQhWpIVArT+3ak/BFWuYEgMkaH+Xd/84p+y0ztJTKs/ig2ZP4LHnKEqmM+Qr
-         9Htbt54cBKgN3z9YCp53SQhL6zzI9hVf6r1iC3lfblvMHB1HanecDOyETrgE0O1i+kXI
-         oA/dXj8NkNtw6oQ9wnwNIZpY5MLFbUnk8okqPtaowLlfrg621sFb5wJQZJqolW2u9UF7
-         bgU46Jco9ybl8xAm145JuC+Gquhy6r9Ey9pq7hUULQyDlURaLMU1Ka8KCXPXCoJuIYZx
-         BPRA==
+        b=rLVF8H10GhpJyIn991+8G/1nxREeJcgu/bPvF3CZ9tAQoBetzVisKCw92cVqLR8Y3u
+         iGHF2Lg6RAWmHzwLGPkuwFgsqbBGX+yHIl0zj0ArqSX1xsjknozDF+p0VHC998MFlwX0
+         RaELIUQv+MpnGcfznzhGIqctMZT6lLP1iNPiUdPRMT3wdf9FJzeZIc3LNsYWgiKKJNP5
+         6kQtvTybfDnqtVHK6Cesp3W7lTnYc7AQNXY1JEuNuQh/BRG2y1bGt5J/dNdGJIW1lP7F
+         YXVhyXH4vraHutGGEUj5Td+KEe0HSZRo5Ij3UhktJjUJyGCk6hJPymKcq5R7B/uzJeUV
+         86xA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=lYas/TlTAS1s1f3CGkoMY6n2QFtVAZSR0X8+2blwnYU=;
-        b=ToHtHvvEllFXauVpthkFN3/U1DiAa62C1tQikl5RBLRNFGE4Wtn9fiJAP6y5CP2p/U
-         BiadCQU3j97jFCDZ/dFKtaeqJjkBVv7uxZ6uBtgXMGSwxtiZFs72o1oOmk8YRQWJm5lQ
-         bNMXcOjiB0iIAASh199eRfmulnH6G1l9PESXQSuIhhGADHQXLp5/KzWDKaM7W1TvFUyJ
-         rcTr/2eVerFEuug1jSxlkIIYmhnFpGGsCNQ+NWBst9y0H3WbgMKHi7GM2pJk0DugQnwZ
-         RRh79Mwrku/KOvhTps7iW/f8nLGB2U+Jy83rjAOxj/DvqYoc2wTJLBWaKMqRrg6eap34
-         69uw==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=vv7nwbcaznpBm9E4QAvbrTyclFMpSz5+qEibl7lPpS0=;
+        b=aFIIE/3FuKn5rV7M26nsZwiCqZWeZlPGSfykIPd39R1+MWeM+mbw3dGjm/wCNwntC9
+         oexWichmxIt/AZZ46AUCAA1kE1c5pPzPtGyJWiCmY+esitC8wj9Vbs29kInOrhkI/NVi
+         a7pOtj9GjApY1kIWPQ9i+CU5w1n6R1Q9HunX2T/jwnEAE44ImX9cDoN0aVyZcwUp+lOm
+         Qp6XTfAbn0ybx7gr6TMRSxDAutug0z8bD7WPOjcMQokjUomfhvkex/ZMXv/HKZCkKY4i
+         PPlnW5DiwYjtM1BmsuJjKq6E6+0MvXvTOA6Vfg3b8qGh/Wf6KH8VGhah+nmffQMd6Nvi
+         Qgbw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Fc6iNaLg;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=qoUD+Wq4;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r5si13774954ilc.82.2021.04.19.06.43.29
+        by mx.google.com with ESMTPS id u10si17533006ill.76.2021.04.19.09.44.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 19 Apr 2021 06:43:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 19 Apr 2021 09:44:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Fc6iNaLg;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=qoUD+Wq4;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51572 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46458 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lYUBV-0007lP-11
-	for alex.bennee@linaro.org; Mon, 19 Apr 2021 09:43:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52764)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lYX12-0001HW-6s
+	for alex.bennee@linaro.org; Mon, 19 Apr 2021 12:44:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42600)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lYUBH-0007ju-AC
- for qemu-arm@nongnu.org; Mon, 19 Apr 2021 09:43:15 -0400
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d]:43542)
+ id 1lYWyE-0008IA-DA
+ for qemu-devel@nongnu.org; Mon, 19 Apr 2021 12:41:58 -0400
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631]:43615)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lYUBF-00058C-7b
- for qemu-arm@nongnu.org; Mon, 19 Apr 2021 09:43:15 -0400
-Received: by mail-ed1-x52d.google.com with SMTP id e7so40664606edu.10
- for <qemu-arm@nongnu.org>; Mon, 19 Apr 2021 06:43:12 -0700 (PDT)
+ id 1lYWyC-0002OS-NO
+ for qemu-devel@nongnu.org; Mon, 19 Apr 2021 12:41:58 -0400
+Received: by mail-ej1-x631.google.com with SMTP id l4so53906321ejc.10
+ for <qemu-devel@nongnu.org>; Mon, 19 Apr 2021 09:41:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=lYas/TlTAS1s1f3CGkoMY6n2QFtVAZSR0X8+2blwnYU=;
- b=Fc6iNaLgYxA1QB0mO3bjzQTsYAz6bcilhMn10fYTAo/6q/hxbIOjgTcNPpC6HuWP2V
- 9dhCUKDMR10a0niG6K0/MRswVmEJHdeqCzpAkaCIo279ah4R8w2kI6e38l9cjAHvhq4j
- /gOh1yD7pIQOhoCXvpFrR6caKU0TEqP3hp10y9eWLzXUVxtg0jt/2X89c3C7roA7A7lX
- +B7TxqEY+ueuJZ6ohifnUDHjwXt5japUYukTTOeGedPtBCTS1tX5suLkNpUs8N44HXre
- ErCqoM7RO9VcI82o2D9Rgohqho8JWlpVKONehCw5KIO45QJPtwTna+IVp/3OmK7oiFNw
- nlSQ==
+ :cc; bh=vv7nwbcaznpBm9E4QAvbrTyclFMpSz5+qEibl7lPpS0=;
+ b=qoUD+Wq4w+lFdX+GCMgzzmdKJCXde6rPRz1IR459Pro0Hbneu6yd2FewU7SG82IVpP
+ lAh2OeuUCgngdsWCoYepksEG07R9RVbZkK8pnaTqi91tSyt8bCawn45qpcSMeHU7k6/S
+ dZKngusV5u+KrNQCtRGTwQ9U033NTePR0ka7Gvifc/ymHNeP1Mfjabg82eEN7bDTCRZ1
+ /Sd69Q9jJgdmPhpkwcnAKEEdzLEIBEy6wcMZBfp3lk9dkKfzAb6TQ1Df+7jdgrHVc2gt
+ RuidGvxVDV4WtWw89uZ+hQ+mrszUy1xTvszcCsWP3S9fQE8jaHIoXTs1H0qo5B6a8f2C
+ 3MTw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=lYas/TlTAS1s1f3CGkoMY6n2QFtVAZSR0X8+2blwnYU=;
- b=iggM3ubZ/aPM/3jeJqnHZ06H59pDhTfDad61WnHbiYb9klRlaSa4lnrNfukUs5SQh+
- gVNf/TRqxOh9k3veOhhhUyK4xXO5ZPfAIsceSSQvqjz5+Ph+V/38/b5dglPMJZcJm3Pz
- /otC2tVzRh3XPzXsvPO50o/87thGGt/XgjoLN5daX3OFrOsgOXyQaX1uyX1ylC23mKVT
- hmeDigkiP23EclJluD2sDqx5hNYAtDGXVOVp3moWltQtPMuZfL8i4Q3FCsoTtEz8Nwv9
- oJj9IHBVns2hznGts8LwFAAcWdsIu5CSrQH3pPvLqDyDsF2/QD6Gbe1+gkJTP6bPqpHb
- gq8w==
-X-Gm-Message-State: AOAM533h8W0ntPJHf4Vv4VBECRWPxb5x+R0WZIuNFJDMYyECb2sQ8evc
- JlGRy4nSqaqRs0yc49cvNcZqdnybRXj59N7ZxHhHiA==
-X-Received: by 2002:a05:6402:51d0:: with SMTP id
- r16mr22320562edd.52.1618839791160; 
- Mon, 19 Apr 2021 06:43:11 -0700 (PDT)
+ :message-id:subject:to:cc;
+ bh=vv7nwbcaznpBm9E4QAvbrTyclFMpSz5+qEibl7lPpS0=;
+ b=IbemKiPQ+CY0tmRqJjymxVma79S207PMz8c1rrWah74Mg6Ucpr+R42GCzQ4Mdwhq42
+ 6ttN/o0Iin8xvgyuV+QvUr3njhlhGgDEkUQ/CoFLok5Q6ZRfvGbwic6+3ljJjKbeh6ex
+ eW2AhsC8+8gXJw7f3ill79QgsEdGqxu4fXPU2BaWd4U3KQsECS748nGdbAEYj0FfGTmA
+ ib9KtabNTeD+mpFHnFbh8ShnKULJ11aWL+R29JQ4L1EFLbNXH1nG3tsB3Bwlu8aanXgs
+ tCFWBHdAjWbK/WQJODLtQh098tATmnyrNcHdIgqd0WPZ6wWDDW+sllKXXrKyoDMg5+Bk
+ I7Cw==
+X-Gm-Message-State: AOAM5308davjo4mIcbaOX6tL7G1zm+A8OOAHJSA6WX87NNtb83u/X89h
+ Cq44txcem2xXTe3rwvbARqfar9DwPAxebx0IoQTjtg==
+X-Received: by 2002:a17:907:629e:: with SMTP id
+ nd30mr22827236ejc.407.1618850515227; 
+ Mon, 19 Apr 2021 09:41:55 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210325163315.27724-1-peter.maydell@linaro.org>
- <1df78911-9858-b747-b22b-7e5254cd3cac@amsat.org>
-In-Reply-To: <1df78911-9858-b747-b22b-7e5254cd3cac@amsat.org>
+References: <20210416183106.1516563-1-richard.henderson@linaro.org>
+In-Reply-To: <20210416183106.1516563-1-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 19 Apr 2021 14:42:19 +0100
-Message-ID: <CAFEAcA_TuKCJ31xsv_j49oQfOFuEipmMnsNb2czPZRMPTN=wxg@mail.gmail.com>
-Subject: Re: [PATCH v2 for-6.0?] hw/pci-host/gpex: Don't fault for unmapped
- parts of MMIO and PIO windows
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Date: Mon, 19 Apr 2021 17:41:04 +0100
+Message-ID: <CAFEAcA_5FKb_BO8TK4_HQLYBWi7zhSGHuSARi6KGDSwWKTMO3g@mail.gmail.com>
+Subject: Re: [PATCH v5 for-6.1 0/9] target/arm mte fixes
+To: Richard Henderson <richard.henderson@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::631;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x631.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "open list:RISC-V" <qemu-riscv@nongnu.org>, Arnd Bergmann <arnd@arndb.de>,
- "Michael S. Tsirkin" <mst@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>, Dmitry Vyukov <dvyukov@google.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Xp0IUX8/byqz
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: THYnlKIyaxbT
 
-On Thu, 25 Mar 2021 at 18:14, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
- wrote:
+On Fri, 16 Apr 2021 at 19:31, Richard Henderson
+<richard.henderson@linaro.org> wrote:
 >
-> Hi Peter,
+> Changes for v5:
+>   * Rebase.  Three patches upstream and a minor conflict fixed.
 >
-> On 3/25/21 5:33 PM, Peter Maydell wrote:
-> > Currently the gpex PCI controller implements no special behaviour for
-> > guest accesses to areas of the PIO and MMIO where it has not mapped
-> > any PCI devices, which means that for Arm you end up with a CPU
-> > exception due to a data abort.
-> >
-> > Most host OSes expect "like an x86 PC" behaviour, where bad accesses
-> > like this return -1 for reads and ignore writes.  In the interests of
-> > not being surprising, make host CPU accesses to these windows behave
-> > as -1/discard where there's no mapped PCI device.
-> >
-> > The old behaviour generally didn't cause any problems, because
-> > almost always the guest OS will map the PCI devices and then only
-> > access where it has mapped them. One corner case where you will see
-> > this kind of access is if Linux attempts to probe legacy ISA
-> > devices via a PIO window access. So far the only case where we've
-> > seen this has been via the syzkaller fuzzer.
-> >
-> > Reported-by: Dmitry Vyukov <dvyukov@google.com>
-> > Fixes: https://bugs.launchpad.net/qemu/+bug/1918917
-> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> > ---
-> > v1->v2 changes: put in the hw_compat machinery.
-> >
-> > Still not sure if I want to put this in 6.0 or not.
-> >
-> >  include/hw/pci-host/gpex.h |  4 +++
-> >  hw/core/machine.c          |  1 +
-> >  hw/pci-host/gpex.c         | 56 ++++++++++++++++++++++++++++++++++++--
-> >  3 files changed, 58 insertions(+), 3 deletions(-)
-> >
-> > diff --git a/include/hw/pci-host/gpex.h b/include/hw/pci-host/gpex.h
-> > index d48a020a952..fcf8b638200 100644
-> > --- a/include/hw/pci-host/gpex.h
-> > +++ b/include/hw/pci-host/gpex.h
-> > @@ -49,8 +49,12 @@ struct GPEXHost {
-> >
-> >      MemoryRegion io_ioport;
-> >      MemoryRegion io_mmio;
-> > +    MemoryRegion io_ioport_window;
-> > +    MemoryRegion io_mmio_window;
-> >      qemu_irq irq[GPEX_NUM_IRQS];
-> >      int irq_num[GPEX_NUM_IRQS];
-> > +
-> > +    bool allow_unmapped_accesses;
-> >  };
-> >
-> >  struct GPEXConfig {
-> > diff --git a/hw/core/machine.c b/hw/core/machine.c
-> > index 257a664ea2e..9750fad7435 100644
-> > --- a/hw/core/machine.c
-> > +++ b/hw/core/machine.c
-> > @@ -41,6 +41,7 @@ GlobalProperty hw_compat_5_2[] =3D {
-> >      { "PIIX4_PM", "smm-compat", "on"},
-> >      { "virtio-blk-device", "report-discard-granularity", "off" },
-> >      { "virtio-net-pci", "vectors", "3"},
-> > +    { "gpex-pcihost", "allow-unmapped-accesses", "false" },
-> >  };
-> >  const size_t hw_compat_5_2_len =3D G_N_ELEMENTS(hw_compat_5_2);
-> >
-> > diff --git a/hw/pci-host/gpex.c b/hw/pci-host/gpex.c
-> > index 2bdbe7b4561..a6752fac5e8 100644
-> > --- a/hw/pci-host/gpex.c
-> > +++ b/hw/pci-host/gpex.c
-> > @@ -83,12 +83,51 @@ static void gpex_host_realize(DeviceState *dev, Err=
-or **errp)
-> >      int i;
-> >
-> >      pcie_host_mmcfg_init(pex, PCIE_MMCFG_SIZE_MAX);
-> > +    sysbus_init_mmio(sbd, &pex->mmio);
-> > +
-> > +    /*
-> > +     * Note that the MemoryRegions io_mmio and io_ioport that we pass
-> > +     * to pci_register_root_bus() are not the same as the
-> > +     * MemoryRegions io_mmio_window and io_ioport_window that we
-> > +     * expose as SysBus MRs. The difference is in the behaviour of
-> > +     * accesses to addresses where no PCI device has been mapped.
-> > +     *
-> > +     * io_mmio and io_ioport are the underlying PCI view of the PCI
-> > +     * address space, and when a PCI device does a bus master access
-> > +     * to a bad address this is reported back to it as a transaction
-> > +     * failure.
-> > +     *
-> > +     * io_mmio_window and io_ioport_window implement "unmapped
-> > +     * addresses read as -1 and ignore writes"; this is traditional
-> > +     * x86 PC behaviour, which is not mandated by the PCI spec proper
-> > +     * but expected by much PCI-using guest software, including Linux.
+> Changes for v4:
+>   * Fix tag count computation error in mte_checkN, which when used
+>     by mte_check1 in patch 5, caused all sorts of KASAN failures.
+>   * Fix PAGE_ANON / PAGE_TARGET_1 overlap.
 >
-> I suspect PCI-ISA bridges to provide an EISA bus.
 
-I'm not sure what you mean here -- there isn't an ISA bridge
-or an EISA bus involved here. This is purely about the behaviour
-of the memory window the PCI host controller exposes to the CPU
-(and in particular the window for when a PCI device's BAR is
-set to "IO" rather than "MMIO"), though we change both here.
-
-> > +     * In the interests of not being unnecessarily surprising, we
-> > +     * implement it in the gpex PCI host controller, by providing the
-> > +     * _window MRs, which are containers with io ops that implement
-> > +     * the 'background' behaviour and which hold the real PCI MRs as
-> > +     * subregions.
-> > +     */
-> >      memory_region_init(&s->io_mmio, OBJECT(s), "gpex_mmio", UINT64_MAX=
-);
-> >      memory_region_init(&s->io_ioport, OBJECT(s), "gpex_ioport", 64 * 1=
-024);
-> >
-> > -    sysbus_init_mmio(sbd, &pex->mmio);
-> > -    sysbus_init_mmio(sbd, &s->io_mmio);
-> > -    sysbus_init_mmio(sbd, &s->io_ioport);
-> > +    if (s->allow_unmapped_accesses) {
-> > +        memory_region_init_io(&s->io_mmio_window, OBJECT(s),
-> > +                              &unassigned_io_ops, OBJECT(s),
-> > +                              "gpex_mmio_window", UINT64_MAX);
->
-> EISA -> 4 * GiB
->
-> unassigned_io_ops allows 64-bit accesses. Here we want up to 32.
->
-> Maybe we don't care.
->
-> > +        memory_region_init_io(&s->io_ioport_window, OBJECT(s),
-> > +                              &unassigned_io_ops, OBJECT(s),
-> > +                              "gpex_ioport_window", 64 * 1024);
->
-> Ditto, unassigned_io_ops accepts 64-bit accesses.
-
-These are just using the same sizes as the io_mmio and io_ioport
-MRs which the existing code creates.
-
-> >  static void gpex_host_class_init(ObjectClass *klass, void *data)
-> >  {
-> >      DeviceClass *dc =3D DEVICE_CLASS(klass);
-> > @@ -117,6 +166,7 @@ static void gpex_host_class_init(ObjectClass *klass=
-, void *data)
-> >      dc->realize =3D gpex_host_realize;
-> >      set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
-> >      dc->fw_name =3D "pci";
-> > +    device_class_set_props(dc, gpex_host_properties);
->
-> IMO this change belongs to the parent bridges,
-> TYPE_PCI_HOST_BRIDGE and TYPE_PCIE_HOST_BRIDGE.
-
-Arnd had a look through the kernel sources and apparently not
-all PCI host controllers do this -- there are a few SoCs where the
-kernel has to put in special case code to allow for the fact that
-it will get a bus error for accesses to unmapped parts of the
-window. So I concluded that the specific controller implementation
-was the right place for it.
+Since this is fully reviewed other than the minor comment tweak
+I suggested in patch 1, I'm going to apply it to target-arm.next
+(for 6.1) and make that comment change there rather than asking
+for a respin.
 
 thanks
 -- PMM

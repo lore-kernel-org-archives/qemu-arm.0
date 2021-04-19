@@ -1,108 +1,109 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp1496216lfb;
-        Mon, 19 Apr 2021 13:41:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyRxtiCGfiN6WdBsBTN/urF6J5x4Vf3LZmBwH6+6P+OAjnFh+KqiGs/gKrgue6j0gJDj/iH
-X-Received: by 2002:a05:6602:1223:: with SMTP id z3mr6648743iot.36.1618864912548;
-        Mon, 19 Apr 2021 13:41:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618864912; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp1496501lfb;
+        Mon, 19 Apr 2021 13:42:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxZRXoHlre64fCAk6zt0dVWBkqKFdIPqPHQfqU9OmI6DuDrHN8FqAJqH/ChCvBtnpO/UebP
+X-Received: by 2002:a5d:8c89:: with SMTP id g9mr16196421ion.27.1618864941685;
+        Mon, 19 Apr 2021 13:42:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618864941; cv=none;
         d=google.com; s=arc-20160816;
-        b=b9PChyhhQ9+ncwsIcwB9aaqR28UG88+lD1gZ5LlRSNqS3LsRciM61aBhT/Gesjpo8p
-         Fl+woPQOnESUioVR1g8s3s+5fCCvSzTadtVBdHxA3IeLmddSw6RfLOuNrlT6N5wPGwMs
-         lPJty64SLsdhdPY450LZ9PACif5kOyXCtxFfe5cKehiKlFxU88zYF4xGFR33peci2bgl
-         9I06o2lXlXGeIqvT9Fu7at1etF1qrT+u68T+nSArFL2iXqFfKJ324RASrt/IkwvNa/wR
-         qoxarpCXFSG0k0MU86m8U4ZzyYPgx8wtyxU2mGVkoYjlySd2Ivob/XGHLft4J9AKohpG
-         214g==
+        b=t2eHvkI7Ndg7air0RLPjF/IW0qHbplh6hE64AUUE6B/XWkKV63QjoMEXtl67i46Sch
+         W6lLpJwGjzRc3MZ3glP52DcjTsj2pbmBiB+8Flt7O8F1gV8yhMwSwVv2UbXQnPqgL6sp
+         4ZFWROgfHN2eh/si7g0bYO/zDPgBTePQy8PocjonM3JF8jJnkgkqhRfGo0Yj6hJNe5MM
+         RXqmhI4/kpXusbF6OukUYl4gv3QFBpfbVIqgb0feJEy+weW+vveOKXL3fPX1/Ig6N4jX
+         HhM3IwiXns1JmwaVsY3dtTUBqxwwIZ3K3u3ZxXtTxCtyRWz6lHd8U4v4DZceTWoSfeRE
+         sCeQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=PxZGDd3JlBDpDCLbYsDYq94kYNQcx3dkagpb2Omjk8Q=;
-        b=jcvMlU8xHGkusPGL3OagTkVMKi63AWgHv3/3p22ZVdxkJSsP6bdOvigffv8y0vzyMd
-         Y9j9oVmgwE6BliOAN+Nwjn0BpGiFo7cvyoGc95T4Tj7yQh+PyDbItNpoxTLBDRXzo7bC
-         kXir72b7RYF1qpeVmBR68/k5neWfzJISFARhTPV+FTWC/uxCoFIs+zmWXQ7bZoSod4UY
-         5ywKNw9Okz//IT/VuYfmQyDkl9AoK5KHTZcx1N9XKRcY4ZzqIj1LhUhFxfpHkbzG4+92
-         KblExKgW/O9a6KEbCJdLe3IrsAPn9jvtfqX+83tFzRxCWfxmC75xlhz8LEPsxS6DKDZC
-         fUwg==
+        bh=pF6fmfH76/v510dCB18bQqtlH7/Yj+pRg8bcSl8DNoE=;
+        b=z0Ovec0jexQN4tWCXNepQXE6C2KARk1tzbZFYM5gEUFuOQ+i+3+UwcbwBnmcuo+vPc
+         iiV6oU9/JJ8XP5/CwfhQLQYcfsEdkXVEfApPr0ngIfaX1HYYddK6pqBmOSdLhSuzSctN
+         w1tLnhTr5iGQaIhuS/40Dv6Wn4Kwkfb8U/hgO95hDOsmGTsGNChnHlesWI1VSqnf98+p
+         OvajG8hX8qRkweRWkZ2lAVPK9U/76a3s5ZZ/7baJDI+xIjMl1ugpuk5Kak6S0EZoHG5e
+         itf23ZjRrMdsHB6JMM/aWQQ/W0ue0JRS/Lvypi6dtvyYU69EnK22sEvY1kpkpEdWZ0hj
+         J7xg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=dJrYzQUj;
+       dkim=fail header.i=@linaro.org header.s=google header.b=e9U3+aMY;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x8si17195364jas.59.2021.04.19.13.41.52
+        by mx.google.com with ESMTPS id d4si13412769ila.29.2021.04.19.13.42.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 19 Apr 2021 13:41:52 -0700 (PDT)
+        Mon, 19 Apr 2021 13:42:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=dJrYzQUj;
+       dkim=fail header.i=@linaro.org header.s=google header.b=e9U3+aMY;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40234 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41042 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lYaiN-0000xy-Rd
-	for alex.bennee@linaro.org; Mon, 19 Apr 2021 16:41:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33978)
+	id 1lYaiq-0001NY-Uq
+	for alex.bennee@linaro.org; Mon, 19 Apr 2021 16:42:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34088)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lYaQd-0007Sa-1Q
- for qemu-devel@nongnu.org; Mon, 19 Apr 2021 16:23:31 -0400
-Received: from mail-qv1-xf2e.google.com ([2607:f8b0:4864:20::f2e]:33472)
+ id 1lYaQj-0007ef-8C
+ for qemu-devel@nongnu.org; Mon, 19 Apr 2021 16:23:37 -0400
+Received: from mail-qt1-x82c.google.com ([2607:f8b0:4864:20::82c]:38618)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lYaQa-0002b5-JN
- for qemu-devel@nongnu.org; Mon, 19 Apr 2021 16:23:30 -0400
-Received: by mail-qv1-xf2e.google.com with SMTP id ef17so11886449qvb.0
- for <qemu-devel@nongnu.org>; Mon, 19 Apr 2021 13:23:28 -0700 (PDT)
+ id 1lYaQh-0002f0-Lx
+ for qemu-devel@nongnu.org; Mon, 19 Apr 2021 16:23:36 -0400
+Received: by mail-qt1-x82c.google.com with SMTP id j7so27111991qtx.5
+ for <qemu-devel@nongnu.org>; Mon, 19 Apr 2021 13:23:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=PxZGDd3JlBDpDCLbYsDYq94kYNQcx3dkagpb2Omjk8Q=;
- b=dJrYzQUjMhz8ExSmjRETVN/Spn7xYrtUcgOvv8urWeQamODO3t86k7U6T22XcMT3ri
- s9wN8XprHN/Qil5glODuWjce+sVu6MLS+DyyeXauJT936HijRbS5C9t9o9tMPt+wqGih
- wVoHkRj+/o0hKSnBOo+UG0iRMguG2BggqRkYK0Wob0Z6zq/2pKcWBGGr+yh4vgqLOS7d
- L4M7q9oqHhgwbfSqNMYhcrYmUi7SL+8dwSL+BpS4HubuRCNRd6tlqxIUzszflhqTA3vY
- 5cC6TVxtNaZIqc7lgyIz9+VCaEEyl0aid7EOQ3r4N5/q3wojnVvIbGjkXU0maVAVIHdP
- oDPw==
+ bh=pF6fmfH76/v510dCB18bQqtlH7/Yj+pRg8bcSl8DNoE=;
+ b=e9U3+aMYpZ1GqYCJnVskuDvuGKIylM0V9ZMPlrechq07ay4ZvUy5I13oFsTifc6jSK
+ 2VSFYVC+Ml/5n8edwkzk+Z9yxvpUl3Cd1ziUuRGVz98s4lhXiTIMtjER9jMvsXeltpJf
+ yneHyVXsZQpzCeoEEEwwmDYEbfUP2aXumWv1zg9pmBK2x6m4ZCyh/YMpHKtgIEHaS3KY
+ +eFQFY6CkREk1HNwWBoZHKihPkTfSm3NtTGx5h2OiBwjoanWaOdIHofqsAhV2G2GOuvr
+ qdE4CBafK4CFy+GukdQhc6D2B1BzcA4Yl+uqqdZs2JexQ6Mg1DYeLRNUIiv9p1vumkuE
+ GpYQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=PxZGDd3JlBDpDCLbYsDYq94kYNQcx3dkagpb2Omjk8Q=;
- b=IWWqKln2AjT0iadJg/KEpAmAvrIHIjaz/2OwzGcxB1a6iMIw7nl/5lftDijqpRZcdP
- ywV/gFGgM5boMwvkAcOY8YH3FMJFesyUKGNm3izll2uRK0CSZFijZDTPE+QmnihnI5cE
- uXnkEVE5lb2LXl0S6NvJ43QZqNKFL/tTbfZ63eXylzhUam19ars0d5kIOKRI6gZ5Qyi8
- GS8mFSIB8SXr/DoNkFOtUBr97j0/LOfnx2xHHZfKJ4P7uTlJXBPwazHYm0ThpxhVBKgx
- TAOfrG23tvq5L96w0pMK7YPWMb/FdouGhz2DaeKnm+P1KYoUf+ctS9nEsxJ2ah5deHDa
- XyAw==
-X-Gm-Message-State: AOAM531vsz3k3+GgzvP2dZwOTKQGrsblfkns84iH7CmnhbkKhyYtNNxf
- hnraFECBv88lPo8HeIzZrq+42hcppS7ieSoh
-X-Received: by 2002:ad4:522b:: with SMTP id r11mr23537378qvq.6.1618863807824; 
- Mon, 19 Apr 2021 13:23:27 -0700 (PDT)
+ bh=pF6fmfH76/v510dCB18bQqtlH7/Yj+pRg8bcSl8DNoE=;
+ b=R4eDm/SL6MmQ1ve4faPdN5U/XHDIwmRfMZG+li0i6zbvtybX/WcNFbmQNvMvXleYNu
+ ck1RmqsBqq8on/Li++d3vDxYVVLDGnaohBRd76If3KWFblw22gPDz4vZAdhMCvEfwNPE
+ SF+4tFWdFYAGp/zIJlTxSKFKmZ9z9Gg39ms2miUCCs9QD2/+oyhnim63ofNMUL4P2l/w
+ aSjzFtEQh4Al6crK8mGVZ3W2UKVtUjhRep0ZaFdJP4lvXzTb1Kw+y/j0bMPfDxuIrfp/
+ uho04vLXW6StufuA9Mey72rm9QVaHoPMPbPWQYAp/tIOW48G+QonKSfp6L9mf9vf/1B3
+ 9NzA==
+X-Gm-Message-State: AOAM530gxS+NFQ0UEFXY7Pqk2e2wC+3VliU4CyvSRbSuxgoMih65p4nr
+ ahniqzXGoWxerG/r+TE+i5TIWo4WAvmtJEml
+X-Received: by 2002:a05:622a:170e:: with SMTP id
+ h14mr13291322qtk.287.1618863814785; 
+ Mon, 19 Apr 2021 13:23:34 -0700 (PDT)
 Received: from localhost.localdomain ([2607:fb90:80c7:aba4:3594:91a:8889:c77a])
- by smtp.gmail.com with ESMTPSA id c23sm10007835qtm.46.2021.04.19.13.23.26
+ by smtp.gmail.com with ESMTPSA id c23sm10007835qtm.46.2021.04.19.13.23.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 19 Apr 2021 13:23:27 -0700 (PDT)
+ Mon, 19 Apr 2021 13:23:34 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v5 15/31] target/arm: Enforce word alignment for LDRD/STRD
-Date: Mon, 19 Apr 2021 13:22:41 -0700
-Message-Id: <20210419202257.161730-16-richard.henderson@linaro.org>
+Subject: [PATCH v5 19/31] target/arm: Enforce alignment for SRS
+Date: Mon, 19 Apr 2021 13:22:45 -0700
+Message-Id: <20210419202257.161730-20-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210419202257.161730-1-richard.henderson@linaro.org>
 References: <20210419202257.161730-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f2e;
- envelope-from=richard.henderson@linaro.org; helo=mail-qv1-xf2e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::82c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-qt1-x82c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,83 +119,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kL5TM1lFIYfa
+X-TUID: mdfnVOCkrrbg
 
-Buglink: https://bugs.launchpad.net/qemu/+bug/1905356
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/translate.c | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+ target/arm/translate.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 6171347d6d..1b0951c45b 100644
+index 2cdf58daa1..4decb2610e 100644
 --- a/target/arm/translate.c
 +++ b/target/arm/translate.c
-@@ -6512,13 +6512,13 @@ static bool trans_LDRD_rr(DisasContext *s, arg_ldst_rr *a)
-     addr = op_addr_rr_pre(s, a);
- 
-     tmp = tcg_temp_new_i32();
--    gen_aa32_ld_i32(s, tmp, addr, mem_idx, MO_UL);
-+    gen_aa32_ld_i32(s, tmp, addr, mem_idx, MO_UL | MO_ALIGN);
-     store_reg(s, a->rt, tmp);
- 
-     tcg_gen_addi_i32(addr, addr, 4);
- 
-     tmp = tcg_temp_new_i32();
--    gen_aa32_ld_i32(s, tmp, addr, mem_idx, MO_UL);
-+    gen_aa32_ld_i32(s, tmp, addr, mem_idx, MO_UL | MO_ALIGN);
-     store_reg(s, a->rt + 1, tmp);
- 
-     /* LDRD w/ base writeback is undefined if the registers overlap.  */
-@@ -6541,13 +6541,13 @@ static bool trans_STRD_rr(DisasContext *s, arg_ldst_rr *a)
-     addr = op_addr_rr_pre(s, a);
- 
-     tmp = load_reg(s, a->rt);
--    gen_aa32_st_i32(s, tmp, addr, mem_idx, MO_UL);
-+    gen_aa32_st_i32(s, tmp, addr, mem_idx, MO_UL | MO_ALIGN);
+@@ -5200,11 +5200,11 @@ static void gen_srs(DisasContext *s,
+     }
+     tcg_gen_addi_i32(addr, addr, offset);
+     tmp = load_reg(s, 14);
+-    gen_aa32_st32(s, tmp, addr, get_mem_index(s));
++    gen_aa32_st_i32(s, tmp, addr, get_mem_index(s), MO_UL | MO_ALIGN);
      tcg_temp_free_i32(tmp);
- 
+     tmp = load_cpu_field(spsr);
      tcg_gen_addi_i32(addr, addr, 4);
- 
-     tmp = load_reg(s, a->rt + 1);
--    gen_aa32_st_i32(s, tmp, addr, mem_idx, MO_UL);
-+    gen_aa32_st_i32(s, tmp, addr, mem_idx, MO_UL | MO_ALIGN);
+-    gen_aa32_st32(s, tmp, addr, get_mem_index(s));
++    gen_aa32_st_i32(s, tmp, addr, get_mem_index(s), MO_UL | MO_ALIGN);
      tcg_temp_free_i32(tmp);
- 
-     op_addr_rr_post(s, a, addr, -4);
-@@ -6649,13 +6649,13 @@ static bool op_ldrd_ri(DisasContext *s, arg_ldst_ri *a, int rt2)
-     addr = op_addr_ri_pre(s, a);
- 
-     tmp = tcg_temp_new_i32();
--    gen_aa32_ld_i32(s, tmp, addr, mem_idx, MO_UL);
-+    gen_aa32_ld_i32(s, tmp, addr, mem_idx, MO_UL | MO_ALIGN);
-     store_reg(s, a->rt, tmp);
- 
-     tcg_gen_addi_i32(addr, addr, 4);
- 
-     tmp = tcg_temp_new_i32();
--    gen_aa32_ld_i32(s, tmp, addr, mem_idx, MO_UL);
-+    gen_aa32_ld_i32(s, tmp, addr, mem_idx, MO_UL | MO_ALIGN);
-     store_reg(s, rt2, tmp);
- 
-     /* LDRD w/ base writeback is undefined if the registers overlap.  */
-@@ -6688,13 +6688,13 @@ static bool op_strd_ri(DisasContext *s, arg_ldst_ri *a, int rt2)
-     addr = op_addr_ri_pre(s, a);
- 
-     tmp = load_reg(s, a->rt);
--    gen_aa32_st_i32(s, tmp, addr, mem_idx, MO_UL);
-+    gen_aa32_st_i32(s, tmp, addr, mem_idx, MO_UL | MO_ALIGN);
-     tcg_temp_free_i32(tmp);
- 
-     tcg_gen_addi_i32(addr, addr, 4);
- 
-     tmp = load_reg(s, rt2);
--    gen_aa32_st_i32(s, tmp, addr, mem_idx, MO_UL);
-+    gen_aa32_st_i32(s, tmp, addr, mem_idx, MO_UL | MO_ALIGN);
-     tcg_temp_free_i32(tmp);
- 
-     op_addr_ri_post(s, a, addr, -4);
+     if (writeback) {
+         switch (amode) {
 -- 
 2.25.1
 

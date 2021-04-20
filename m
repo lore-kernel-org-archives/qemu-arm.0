@@ -1,112 +1,122 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp2135737lfb;
-        Tue, 20 Apr 2021 06:49:19 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzEw0YPHtxmejFVYE3WJ0XBGhdwJZV8B+k8aBDRgJzjRFJ8nVuE93Q7BdDOJ12vmH5RHseU
-X-Received: by 2002:a92:d688:: with SMTP id p8mr21578518iln.268.1618926559457;
-        Tue, 20 Apr 2021 06:49:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618926559; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp2387395lfb;
+        Tue, 20 Apr 2021 12:07:44 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJygRALguuBjPwzdnTW9ID5YdKBn1qGwlO4lyk9Pu5e/ChlfH79kn/edWPj2yvYOHGjewPC3
+X-Received: by 2002:a5d:97cb:: with SMTP id k11mr20392588ios.204.1618945664586;
+        Tue, 20 Apr 2021 12:07:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618945664; cv=none;
         d=google.com; s=arc-20160816;
-        b=0GVXT9wCCZUGNJemFv/YFCrRBoe8/BJlaCi4N0TTaQZJcYjI7UrFNfvpBty8U8f5JM
-         0s+7WxX/4uD7thQUN4trg7yP7CAH573xy00y5/TfWoLpXwZObYgbXojRvBYYxAd0d3h7
-         NIp4U+8bK8+eB9KIo4gvB24KGxXlrmH+S2F8yQZDWktg1QiUxsYBPDuEkq8GaG/CqfUL
-         P9o4ZMMkoUOLNTfySitjsdau0WVMLaaKC7Vd7Ywng5O0dQaf+dA5yF/+x0penTMMLIjc
-         pPWhCD8t+gCGKruZ1hiprpb68zZmUs+tsR76ICIn/QG6iIrAnt5CpYyyXogX69+8anKA
-         5hBw==
+        b=iMNtI70oEFO6rzyy6mfoZZc5xRw9grvw7dpTPFoPpdPWMGcWbgoQfJLamk+o2JaaTG
+         /NlfzG7VwL4fZiaxKP/WjB9baHZSeo5n1HNNG+JJpciNxfzrLYqpJQv6Y18dte9MjYd5
+         cp1uAxsw+KLdxJDNAUb7TCTIuxkBFr/wDHImQAmFA6HH4wHrqjB4maVmTHleVI/+Fnpy
+         qKDP6rb3SKRDw6Bm0uZ3bx9KqAqgOqS1HYpd6vzGGViKah20S2AUHLCIl1A1h6UcMvq4
+         07BVwcBC7UsyVedxwQCd4llfFE+IMS2B/MrkMPcN5gCloHwRIeoblaO2yIf/MRdIZnma
+         7U/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=LvkpkY5KJdJUvplp80QAEfKZKhwkydoye7tz53Sgu5k=;
-        b=a5QdC9Vz4fxPmP+md/WA21ea5WXr8eKZNoe4/N5V8b9U+aBNnJgfMC+2330Thz31Yn
-         ehlzebc9itQvYE+MywSl3SdfjToHry7PzX7r/dzywUlqd3XBjEzqhDAC8VMbH39cxeVE
-         xYo/cAbaRSCKodtuBIllH02SgRdbIrZ3LcbxY0OdfIbjA2hcN8g2fduyD6vePmCO5b+V
-         Mr9R/6AIq4SMblzOrwKxME+EmscEQaB+JHSrGq/OuCHmEQJSpLbysazXMjp5pFWoEvOJ
-         yZCCRZGXFyUfFc0mUmY+LQM0oWWQGG38bK60KZuMZT2Y9rwFjHQaG5kosBJMp4iup32s
-         Gd9Q==
+         :content-disposition:in-reply-to:mime-version:references:message-id
+         :subject:to:from:date:dkim-signature;
+        bh=Z+GqaHEE98VpsfTBpc6n0WESBAyIBmrUSF4SZxsZHMI=;
+        b=XmD1LX8WlZQP1xEvVNGMVJeaOPaQnxkrL3+Jm8lMIlZlPXK67EzTxLfh+bWPPEx/A2
+         mw/lVe9+0LzRxqyeO2sPPk6zAxGMLBBFDPa1KwhQQjUjfw0+Y6mW+UhBvWPARoZoAhhx
+         3NIe6nLC0USUcLNGpEtFENn39ET0H2KFpjCc+T+oQ+MmhyKWUcocKIJYXSP5h9n692Vk
+         DbO/2h6H1Okg7J8iMZxlaYQcFkpDGPzd4zwiIKytYPsSXHdO2czSYh/wsxTjG6r/8GQa
+         /bxESTAKG8tgStmxu2lzr0GkayM9+dSXWYDlrwCIi+sBXP1DaxgK0HKZP59RdMCindh8
+         EBVw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=Ovegm4AW;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=EMpDal56;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d18si18458821ilo.12.2021.04.20.06.49.19
+        by mx.google.com with ESMTPS id d25si4893546ioh.30.2021.04.20.12.07.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 Apr 2021 06:49:19 -0700 (PDT)
+        Tue, 20 Apr 2021 12:07:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=Ovegm4AW;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56694 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=EMpDal56;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:34648 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lYqkg-0004Zr-Oy
-	for alex.bennee@linaro.org; Tue, 20 Apr 2021 09:49:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45390)
+	id 1lYvip-0005RR-UI
+	for alex.bennee@linaro.org; Tue, 20 Apr 2021 15:07:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45366)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
- id 1lYqjt-0003wN-2Z
- for qemu-arm@nongnu.org; Tue, 20 Apr 2021 09:48:30 -0400
-Received: from mail-qt1-x82a.google.com ([2607:f8b0:4864:20::82a]:34548)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
- id 1lYqjm-0005XS-2u
- for qemu-arm@nongnu.org; Tue, 20 Apr 2021 09:48:28 -0400
-Received: by mail-qt1-x82a.google.com with SMTP id c6so28680213qtc.1
- for <qemu-arm@nongnu.org>; Tue, 20 Apr 2021 06:48:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
- h=subject:to:references:from:message-id:date:user-agent:mime-version
- :in-reply-to:content-language:content-transfer-encoding;
- bh=LvkpkY5KJdJUvplp80QAEfKZKhwkydoye7tz53Sgu5k=;
- b=Ovegm4AWSbg7x0ierMIyWc8jzE7GieoLNvX79bDgu/4WPxOmkM1JhP77/4rYdHjhRf
- I5Uzwl/S7A+tpUVSBK8nX63btYgJzTKuOHO7GfThSXNE7JyjsNpKDBZThHJcnURJgybQ
- DPAotDbLjGiWXnuOHWZX8BGmmUTZQH+XSySHmw+4W1l2d0nhgdzOsgxBAo0R21ab4mAP
- GkCVxGfsz3s0ouZWuD5o+RPmLv6FJjAgVnVm7Vz5kOjFuWDlEPPqX26WnWqZYr24zbTr
- VpSjd05mn2gaCT+BqQtN5CruifnrvqDKKcYxe8qBzk41T3w+5r54VRrYM2dGRpQVDaTW
- fC6Q==
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1lYviQ-0005QD-A0
+ for qemu-arm@nongnu.org; Tue, 20 Apr 2021 15:07:18 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:41327)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1lYviO-00025c-Ns
+ for qemu-arm@nongnu.org; Tue, 20 Apr 2021 15:07:18 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1618945636;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Z+GqaHEE98VpsfTBpc6n0WESBAyIBmrUSF4SZxsZHMI=;
+ b=EMpDal56Efmk1XLlPYwXKRpFIaTcb78Ck7e757niJmg8TEeng0VB1UQH+RnQPr2QglO+VF
+ /NEPo4TbJt+V5xyboctH859KJGFrBnfu0saLraAmkiI8GtV5+WW4rLOIWcobpRNdC4PWfu
+ 9HATSRV2SFVnM1SvuQGnN5tietznrOQ=
+Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com
+ [209.85.219.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-377-5ZLY3ehpMtaeHk4npp_RKQ-1; Tue, 20 Apr 2021 15:07:12 -0400
+X-MC-Unique: 5ZLY3ehpMtaeHk4npp_RKQ-1
+Received: by mail-qv1-f71.google.com with SMTP id
+ m19-20020a0cdb930000b029019a25080c40so12087693qvk.11
+ for <qemu-arm@nongnu.org>; Tue, 20 Apr 2021 12:07:12 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=LvkpkY5KJdJUvplp80QAEfKZKhwkydoye7tz53Sgu5k=;
- b=nfQxaAjIYqPrCzlbbzzYWpYpxauevVQgR6whG8VHzGEIIMMeRPCRJ++ZCfs1RUHda0
- qT/iZczARo/TnwRQwfHnXz08ArirHjn65M+6EKQpQjLHc5Pu5PhU6wf2y9w6d57NjoZu
- GXgvCW5QAeBPt0PAQdvoatE+Sbb1gen9TxHWonPpPn+Ab+Qi+DoEyiQGbLmZkdU3t37X
- 5mBeQlJ9tK1e/TBOFbmuN+/3HDBb6bOsZBFV/8fwdgI7Ru1/yuoBKuxatQF0iVF055k4
- LJ0maQkm2KUznl+LDQTQSuQ6lLON+3w0OTYHZuLp8Wb4Z3YHRSIJndQ4yscNjm98TotZ
- 3QHg==
-X-Gm-Message-State: AOAM530fn5hW3Fd/DDStZCoU5IYqgWCxKzLeM9frKE75faPV1pY2jGeR
- wDG5LrYKELcwpnHoiHgY4teQzA==
-X-Received: by 2002:ac8:5f10:: with SMTP id x16mr17218030qta.6.1618926498798; 
- Tue, 20 Apr 2021 06:48:18 -0700 (PDT)
-Received: from [10.0.10.142] (c-174-52-16-57.hsd1.ut.comcast.net.
- [174.52.16.57])
- by smtp.gmail.com with ESMTPSA id b3sm10178463qkd.29.2021.04.20.06.48.18
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 20 Apr 2021 06:48:18 -0700 (PDT)
-Subject: Re: [PATCH] target/arm: Flush correct TLBs in tlbi_aa64_vae2is_write()
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20210420123106.10861-1-peter.maydell@linaro.org>
-From: Rebecca Cran <rebecca@nuviainc.com>
-Message-ID: <d4a6e840-9b5a-6417-6dec-201976c5efbd@nuviainc.com>
-Date: Tue, 20 Apr 2021 07:48:16 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.0
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=Z+GqaHEE98VpsfTBpc6n0WESBAyIBmrUSF4SZxsZHMI=;
+ b=sZ6PdHNoZfCT/cHojztj8q/H4HzpjjTDfrLkEBoqMSJCh7GqRZ3p7N/74FszLPR1Ss
+ fNjNkDdupWQ0DErDmGVSAydo6ZFMeen3eFIZ5l97DZXOzseEVTAoVaCfqWNDzOtVoSZ8
+ MFW0AC/hcEnM8PqokmLjxgHS9Ld2L0y4aoHMtZCIskp7/nOqKo0OOzfZl/V+mY8FwW9u
+ MNixbqMNFd20dPrZBgJtXv/F/KJKLDodNtWFBcxAzPbZAI5i7XPtEiWv8lknNRxdK2eo
+ BR2lAIvElmAoiiLZIteBT7vhKiDjZ+b67qDHMVAt+Vstx76CH2ZBvcvWxIH6yZuZG8Nz
+ 4jRw==
+X-Gm-Message-State: AOAM533k7AEtaahdbkZuxZqDdJ1te4CJoHnSlflhgq/H+HkqXFKmRbcv
+ 8ss65Y+XmymrCvwDSTRdmQ8bEOj5EINcKyjrIze+1UTcF4sOBIUQa7QHAv2fW3icfDitVSGGckz
+ clnLlcDMulX17
+X-Received: by 2002:a0c:9b82:: with SMTP id o2mr28862694qve.47.1618945632100; 
+ Tue, 20 Apr 2021 12:07:12 -0700 (PDT)
+X-Received: by 2002:a0c:9b82:: with SMTP id o2mr28862675qve.47.1618945631831; 
+ Tue, 20 Apr 2021 12:07:11 -0700 (PDT)
+Received: from xz-x1 (bras-base-toroon474qw-grc-88-174-93-75-154.dsl.bell.ca.
+ [174.93.75.154])
+ by smtp.gmail.com with ESMTPSA id h193sm3024624qke.90.2021.04.20.12.07.10
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 20 Apr 2021 12:07:11 -0700 (PDT)
+Date: Tue, 20 Apr 2021 15:07:09 -0400
+From: Peter Xu <peterx@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: Re: [PATCH v2 00/11] memory: Forbid mapping AddressSpace root
+ MemoryRegion
+Message-ID: <20210420190709.GE4440@xz-x1>
+References: <20210417103028.601124-1-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <20210420123106.10861-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::82a;
- envelope-from=rebecca@nuviainc.com; helo=mail-qt1-x82a.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20210417103028.601124-1-f4bug@amsat.org>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=peterx@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=peterx@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -119,37 +129,68 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?utf-8?B?SGVydsOp?= Poussineau <hpoussin@reactos.org>,
+ David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LHCZq/wDYWHN
+X-TUID: AJMVy5c1i5e+
 
-On 4/20/21 6:31 AM, Peter Maydell wrote:
-> In tlbi_aa64_vae2is_write() the calculation
->    bits = tlbbits_for_regime(env, secure ? ARMMMUIdx_E2 : ARMMMUIdx_SE2,
->                              pageaddr)
-> 
-> has the two arms of the ?: expression reversed. Fix the bug.
-> 
-> Fixes: b6ad6062f1e5
-> Reported-by: Rebecca Cran <rebecca@nuviainc.com>
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->   target/arm/helper.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index d9220be7c5a..957f4247010 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -4742,7 +4742,7 @@ static void tlbi_aa64_vae2is_write(CPUARMState *env, const ARMCPRegInfo *ri,
->       uint64_t pageaddr = sextract64(value << 12, 0, 56);
->       bool secure = arm_is_secure_below_el3(env);
->       int mask = secure ? ARMMMUIdxBit_SE2 : ARMMMUIdxBit_E2;
-> -    int bits = tlbbits_for_regime(env, secure ? ARMMMUIdx_E2 : ARMMMUIdx_SE2,
-> +    int bits = tlbbits_for_regime(env, secure ? ARMMMUIdx_SE2 : ARMMMUIdx_E2,
->                                     pageaddr);
->   
->       tlb_flush_page_bits_by_mmuidx_all_cpus_synced(cs, pageaddr, mask, bits);
-> 
+On Sat, Apr 17, 2021 at 12:30:17PM +0200, Philippe Mathieu-Daudé wrote:
+> AddressSpace are physical address view and shouldn't be using
+> non-zero base address. The correct way to map a MR used as AS
+> root is to use a MR alias.
 
-Reviewed-by: Rebecca Cran <rebecca@nuviainc.com>
+Today when I rethink this, I figured another way (maybe easier?) to fix the
+issue.
+
+The major problem so far we had is that mr->addr can be anything for a root mr
+if it's added as subregion of another mr.
+
+E.g. in current implementation of mtree_print_mr() MR.addr is constantly used
+as an offset value:
+
+    cur_start = base + mr->addr;
+
+However afaict mr->addr is defined as "relative offset of this mr to its
+container", as in memory_region_add_subregion_common().  Say, mr->addr is
+undefined from that pov if mr->container==NULL, as this MR belongs to nobody.
+And if it's defined, it's only meaning is in its container's context (or say,
+address space) only.
+
+That said, when we do mtree_print_mr(), another solution could be as simple as,
+not referencing mr->addr if we _know_ we're working on the root mr, as this is
+definitely _not_ in the context of the mr's container, even if it has one
+container after all:
+
+---8<---
+diff --git a/softmmu/memory.c b/softmmu/memory.c
+index d4493ef9e43..d71fb8ecc89 100644
+--- a/softmmu/memory.c
++++ b/softmmu/memory.c
+@@ -2940,7 +2940,7 @@ static void mtree_print_mr(const MemoryRegion *mr, unsigned int level,
+         return;
+     }
+ 
+-    cur_start = base + mr->addr;
++    cur_start = base + (level == 1) ? 0 : mr->addr;
+     cur_end = cur_start + MR_SIZE(mr->size);
+ 
+     /*
+---8<---
+
+Phil, do you think it'll work too to fix the strange offset value dumped in
+"info mtree"?
+
+I don't know (even if it works, perhaps I've missed something) which is better,
+as current series seems cleaner, then any mr will either belong to a AS or a MR
+(never both!), but just raise it up.
+
+Thanks,
+
+--
+Peter Xu
+

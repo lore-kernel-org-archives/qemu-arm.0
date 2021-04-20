@@ -1,107 +1,120 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp1221894lfb;
-        Mon, 19 Apr 2021 07:30:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxsN8bfm4uKZS3mw8bNl3kOXDARAs9CVAVGLIJQK4u4ZAhgxzqf7zea6EpOsnyq2gfIZEu9
-X-Received: by 2002:a05:6e02:1ca1:: with SMTP id x1mr17504575ill.86.1618842611685;
-        Mon, 19 Apr 2021 07:30:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618842611; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp1974890lfb;
+        Tue, 20 Apr 2021 03:25:25 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwN+BKomasWuCBo5EHsUDw7wPAOyu1d7sax8DbX2MUefgYMdPoaO+/l1Sv2n+R1TrCw0NIR
+X-Received: by 2002:a05:6102:a0b:: with SMTP id t11mr19178761vsa.24.1618914325647;
+        Tue, 20 Apr 2021 03:25:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618914325; cv=none;
         d=google.com; s=arc-20160816;
-        b=U4PrMu0z72HcJry6JjXySCAJim/jyvxB8EMq7tC0ohpo2Nr48wU4Sv0YGbTOJSYefk
-         7FDZg8hqyrQbLGDw53ZltkGTwW9y6k+XwzoALPq3Uh+w7wNS7Tj2/qXRHm7ctx1d+jHN
-         DprWyVMysJhUMKQXiMeUbuKq25JywpT3EKh9e67Og8HVocOvJzmXtEVZgG8FYjbu5bvR
-         hy5cmS9wKDk5pT6J04Le+d0yr+XiIITUyZW/B15OvGXUDxXRx9ZBkfSjLsnjTXkrAcYO
-         5NAjjEhCESAeJIxmVYlUiz/KOCDuvpCDeYeVPuluxfrVmUI6oYtEJ/3NakFcqU6D4GZ0
-         z1Dg==
+        b=ENRZ8VOahmkatOMsjpxixaK5P3kjjmknN73RJbe/LRrQrmS05Bj9p2fKomkd4o4P4o
+         YoBBFpTWpcmgG4jh45hqD/lGqc/xxQEfWt8vJOwNub5WEEurayr6+K02OKV3ouIha0TP
+         Lf1gHDdhQuesNxRPun4O8HBMc/kUeuJ6YXKG7pTpWXCLC+8FJbk1G3CGvcF2wa+3ck0v
+         3u+n6kGeJxRpXGlB1CWox0Zb2asxcllyCx+WEeUSDgo8N7iMgDZmQqxGz+6DlJvIr3cX
+         FEgpn4dJaN5mFazZqj6+D6gNJMvyl92oHi+xfzeaHGbwVoKc4Arz9uov/C3N8NpRu9CG
+         J2EQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=Vn8ttxvU1uZLhGd3j4uqhbl/CWQ5aFOsoM4eJo5C9+Q=;
-        b=JghuXm0Nd59UY/PQCdfxA8p4Zh30qc6YjsHHCXQsREzeSXmYsC4EMVvQvz+BylWMEw
-         RG0O/HuhS6ADt3Q7XgV7VdV3mlbuM2OxR6nA8Nrb3C7aorbK2KXNC0rQFqYFpw3apR96
-         cSfv7DrfeT5RcuwAPdcukKuF6eoWW+1mxCpzuupUDJzx6zSC5117wEpU1LDQPaz18ghS
-         82PBkuLzCBeD0XCTx7raPqSwzFnSzZEs9hE1efhKDCo3Dg+5inc7fjjhD+h/9y1bZALV
-         wVs44pUIaWyrqW0g9le30PpecEszjhiXhzYohbSQ1Roq2S29k2EKqeb65LxZp9rqZGq2
-         m57g==
+        bh=UzlMlCY0WRFXaPEEeGEAB9ltmYX9QPJYFNCEUH3SBXU=;
+        b=1HqlR2XADsqgc+LNl86Vtl2s4WFJC5nz61iOZhc6q37DMVshoOoxPsWSZrSn7W1Z/B
+         F/ZWOWXNlqhvqhnjAYVSN6TZqtWKmXcAdl+CI3GcMWDawEMKNpA5DxMgaQiSM6hNUMpg
+         +82tKo/91KLNCj/KvYt6zAz72tBMXFj6YM4DnyGlz6EZAjW9Ux8vWfS1/z/moks5P0Ks
+         CPrGVywBb3mgGeJ2iaIy6vGlKWj8xEBqHfMKc8FlgRuefM3iPB8f0Srg1D+DCBi78LDZ
+         Pk59IsQCrLXiU/wgsWCO+jIy/CyC06bjpPmZ7pwOe6NVNnNoKqea36OmEPk75Ogi0vvC
+         6TWw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=LowJQSAz;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IoqbIDcY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a25si12034810jam.32.2021.04.19.07.30.11
+        by mx.google.com with ESMTPS id i22si7307985vsj.34.2021.04.20.03.25.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 19 Apr 2021 07:30:11 -0700 (PDT)
+        Tue, 20 Apr 2021 03:25:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=LowJQSAz;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IoqbIDcY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46462 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:42028 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lYUuh-0005mL-0a
-	for alex.bennee@linaro.org; Mon, 19 Apr 2021 10:30:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37286)
+	id 1lYnZM-0005cj-Rt
+	for alex.bennee@linaro.org; Tue, 20 Apr 2021 06:25:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50712)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lYUtO-0004VB-KA
- for qemu-arm@nongnu.org; Mon, 19 Apr 2021 10:28:50 -0400
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636]:37386)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lYUtM-0008El-Fs
- for qemu-arm@nongnu.org; Mon, 19 Apr 2021 10:28:50 -0400
-Received: by mail-ej1-x636.google.com with SMTP id w3so53282553ejc.4
- for <qemu-arm@nongnu.org>; Mon, 19 Apr 2021 07:28:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=Vn8ttxvU1uZLhGd3j4uqhbl/CWQ5aFOsoM4eJo5C9+Q=;
- b=LowJQSAzVkeRhtYWECzgOJIv0dr09A2fuEwh0l2ejE566KPWwh7BUXBIoMUR63s0VF
- kAypN6nK/JyIdi/S0M5DormS2euOIJ6wJ5qZ532ZK+bQgviLShzPr8Domrnfv6j+eCK4
- 1qXH29dMCBHB9znaI/NqFNJKCdWknFS3cG47fgEy8Q4DO3Refia3wnyIwdQxKmT4be8L
- 0IjFlFESVWEufOtgyskREfnwpM4qiStfejbMggVi9AzYglMj2Sj530cCkd74qTUTV7Aj
- r0BuuHuSoxXC0VT2hFKrtVosJDx/2KHw6NuIGqfH7kZpV2j2Qc28MgBcfdBiMoMlO12t
- 0kXg==
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1lYnYc-0005bP-Rf
+ for qemu-arm@nongnu.org; Tue, 20 Apr 2021 06:24:38 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:29820)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1lYnYW-0004yI-9b
+ for qemu-arm@nongnu.org; Tue, 20 Apr 2021 06:24:38 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1618914271;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=UzlMlCY0WRFXaPEEeGEAB9ltmYX9QPJYFNCEUH3SBXU=;
+ b=IoqbIDcY0vSGRZVESbBJzZM7zLocAQXLY8TLMHv5FboCMkSBN2jIMGqCDPh5ooiYx+GUlz
+ 4zHbrJj6zpn+bWHUDaYZAsPkaqzoDmTHVf4tD7nG1VTtX/buBS2jYaWvhbSvzhar6EAuy5
+ E0qsdxT25uPxZxyFgNmYoRFdZGsWA1Y=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-19-njEu_CMgOXC-HF8CDamfHg-1; Tue, 20 Apr 2021 06:24:28 -0400
+X-MC-Unique: njEu_CMgOXC-HF8CDamfHg-1
+Received: by mail-wr1-f69.google.com with SMTP id
+ o14-20020a5d474e0000b029010298882dadso10631233wrs.2
+ for <qemu-arm@nongnu.org>; Tue, 20 Apr 2021 03:24:28 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=Vn8ttxvU1uZLhGd3j4uqhbl/CWQ5aFOsoM4eJo5C9+Q=;
- b=QMwfboDelWqs+6t9cNAL7qhz8bv0yVOGx4BdwbcYxmcfYHdFPsc/Lce6WAgZDih1RU
- oL2ZoN4JEhm0jn37nNGSvbg5ePwK2NfqpMnSl8EHNSUw72MmTvkIWwkj+kQ/Cr6RobhJ
- VlZ8hSD2mwfZe9jwIQ5sVbc5CEVnLf2SMPSNZE9nyfv17A3Qn3IL2xBWyq/u4zclgJJf
- KWETdc6GLyho82xREaYjJJDKv6DfZhZzXV1yxiE6aM2h7KYtpai7ivimEPKOSiNUP1cg
- egUWIybEqQPZB/fG7OkJU7Yo8ZN3LPZDjmsA3CRKrSEeXVfWGg+HGQI1zoKV7N4H3xSD
- AZKw==
-X-Gm-Message-State: AOAM532yF8SOS4HmFKQpjlkFWbMV6J3Yicp57laKpm/1Nt7rIfQTYPyl
- gvv8//gW/cAnLYwKROJaKePqlO2peoO7dscFuqG5lQ==
-X-Received: by 2002:a17:906:953:: with SMTP id
- j19mr22696665ejd.56.1618842526949; 
- Mon, 19 Apr 2021 07:28:46 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=UzlMlCY0WRFXaPEEeGEAB9ltmYX9QPJYFNCEUH3SBXU=;
+ b=OXcSX8PMV6lnLVX45ADVWoQYZyDx5RsOUfU4Qohi6yADMsAoRlOaCIacVIrUZ0NkAJ
+ yPov/DVEne0rexqWa08SQ373x1LNtPsFEOQQRL5pbm8FEwx5GUGQIRKtIwM5LS58kQHh
+ UafMhyyyp9B44Ejd015Q73bV2SCrssB1FG1+mfw9nzzH+APtJwjkuFCcoJl2FPFrnMMT
+ dS6gasc63LGXfLQCz0Kvg1oXlOlQLsv1iiQjhuCMTq/YJdLx9BUuGAOvmo3c6EtE1I4G
+ jtxp8dmRK+1RT7PLP10BgxSChZVY2yf9zhEuSKeY6mxqWfbhS0FVKdW1XMx+OaA4bcuu
+ euBg==
+X-Gm-Message-State: AOAM5300VZhiEVhh/7RmecENi/JtuLseEDZHP5FtdxmE65fDS0mChw8u
+ QSLmgTOZ6ZpoXNgTGyZ+fZJls4n8yXwDw7hjtugTTHfi6eW7VacP7VPyA34WtQEdK2+3O6O613J
+ Wu89yg/e1aYcS
+X-Received: by 2002:a05:6000:1449:: with SMTP id
+ v9mr20040192wrx.295.1618914266683; 
+ Tue, 20 Apr 2021 03:24:26 -0700 (PDT)
+X-Received: by 2002:a05:6000:1449:: with SMTP id
+ v9mr20040168wrx.295.1618914266457; 
+ Tue, 20 Apr 2021 03:24:26 -0700 (PDT)
+Received: from redhat.com ([2a10:800a:cdef:0:114d:2085:61e4:7b41])
+ by smtp.gmail.com with ESMTPSA id c18sm26661591wrn.92.2021.04.20.03.24.24
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 20 Apr 2021 03:24:25 -0700 (PDT)
+Date: Tue, 20 Apr 2021 06:24:22 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH v2 for-6.0?] hw/pci-host/gpex: Don't fault for unmapped
+ parts of MMIO and PIO windows
+Message-ID: <20210420062357-mutt-send-email-mst@kernel.org>
+References: <20210325163315.27724-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-References: <20210409062401.2350436-1-f4bug@amsat.org>
- <20210409062401.2350436-10-f4bug@amsat.org>
-In-Reply-To: <20210409062401.2350436-10-f4bug@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 19 Apr 2021 15:27:55 +0100
-Message-ID: <CAFEAcA8-Nd7MNU1pWB0JvnaiHN_o2_iQqhL+j8B_5DVBDh9nSw@mail.gmail.com>
-Subject: Re: [RFC PATCH-for-6.1 9/9] hw/core/machine: Reset machine clocks
- using qemu_register_reset()
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::636;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x636.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+In-Reply-To: <20210325163315.27724-1-peter.maydell@linaro.org>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -114,64 +127,164 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Damien Hedde <damien.hedde@greensocs.com>, Luc Michel <luc@lmichel.fr>,
- Eduardo Habkost <ehabkost@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>
+Cc: Arnd Bergmann <arnd@arndb.de>, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
+ qemu-devel@nongnu.org, Dmitry Vyukov <dvyukov@google.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lKruFBT+Bxro
+X-TUID: 8fULA07Iv1NB
 
-On Fri, 9 Apr 2021 at 07:24, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =
-wrote:
->
-> While the documentation mentions:
->
->   Note that if you are creating a clock with a fixed period which
->   will never change (for example the main clock source of a board),
->   then you'll have nothing else to do. This value will be propagated
->   to other clocks when connecting the clocks together and devices
->   will fetch the right value during the first reset.
->
-> the clocks created in machine_init() aren't propagating their value
-> because they are never reset (not part of the reset tree, such
-> TYPE_DEVICE).
->
-> Register a generic reset handler to have them properly reset.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+On Thu, Mar 25, 2021 at 04:33:15PM +0000, Peter Maydell wrote:
+> Currently the gpex PCI controller implements no special behaviour for
+> guest accesses to areas of the PIO and MMIO where it has not mapped
+> any PCI devices, which means that for Arm you end up with a CPU
+> exception due to a data abort.
+> 
+> Most host OSes expect "like an x86 PC" behaviour, where bad accesses
+> like this return -1 for reads and ignore writes.  In the interests of
+> not being surprising, make host CPU accesses to these windows behave
+> as -1/discard where there's no mapped PCI device.
+> 
+> The old behaviour generally didn't cause any problems, because
+> almost always the guest OS will map the PCI devices and then only
+> access where it has mapped them. One corner case where you will see
+> this kind of access is if Linux attempts to probe legacy ISA
+> devices via a PIO window access. So far the only case where we've
+> seen this has been via the syzkaller fuzzer.
+> 
+> Reported-by: Dmitry Vyukov <dvyukov@google.com>
+> Fixes: https://bugs.launchpad.net/qemu/+bug/1918917
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+
+
+Looks ok superficially
+
+Acked-by: Michael S. Tsirkin <mst@redhat.com>
+
+Peter pls merge if appropriate.
+
 > ---
->  hw/core/machine.c | 8 ++++++++
->  1 file changed, 8 insertions(+)
->
+> v1->v2 changes: put in the hw_compat machinery.
+> 
+> Still not sure if I want to put this in 6.0 or not.
+> 
+>  include/hw/pci-host/gpex.h |  4 +++
+>  hw/core/machine.c          |  1 +
+>  hw/pci-host/gpex.c         | 56 ++++++++++++++++++++++++++++++++++++--
+>  3 files changed, 58 insertions(+), 3 deletions(-)
+> 
+> diff --git a/include/hw/pci-host/gpex.h b/include/hw/pci-host/gpex.h
+> index d48a020a952..fcf8b638200 100644
+> --- a/include/hw/pci-host/gpex.h
+> +++ b/include/hw/pci-host/gpex.h
+> @@ -49,8 +49,12 @@ struct GPEXHost {
+>  
+>      MemoryRegion io_ioport;
+>      MemoryRegion io_mmio;
+> +    MemoryRegion io_ioport_window;
+> +    MemoryRegion io_mmio_window;
+>      qemu_irq irq[GPEX_NUM_IRQS];
+>      int irq_num[GPEX_NUM_IRQS];
+> +
+> +    bool allow_unmapped_accesses;
+>  };
+>  
+>  struct GPEXConfig {
 > diff --git a/hw/core/machine.c b/hw/core/machine.c
-> index e8bdcd10854..2817fe6a567 100644
+> index 257a664ea2e..9750fad7435 100644
 > --- a/hw/core/machine.c
 > +++ b/hw/core/machine.c
-> @@ -1234,6 +1234,13 @@ void machine_run_board_init(MachineState *machine)
->      phase_advance(PHASE_MACHINE_INITIALIZED);
+> @@ -41,6 +41,7 @@ GlobalProperty hw_compat_5_2[] = {
+>      { "PIIX4_PM", "smm-compat", "on"},
+>      { "virtio-blk-device", "report-discard-granularity", "off" },
+>      { "virtio-net-pci", "vectors", "3"},
+> +    { "gpex-pcihost", "allow-unmapped-accesses", "false" },
+>  };
+>  const size_t hw_compat_5_2_len = G_N_ELEMENTS(hw_compat_5_2);
+>  
+> diff --git a/hw/pci-host/gpex.c b/hw/pci-host/gpex.c
+> index 2bdbe7b4561..a6752fac5e8 100644
+> --- a/hw/pci-host/gpex.c
+> +++ b/hw/pci-host/gpex.c
+> @@ -83,12 +83,51 @@ static void gpex_host_realize(DeviceState *dev, Error **errp)
+>      int i;
+>  
+>      pcie_host_mmcfg_init(pex, PCIE_MMCFG_SIZE_MAX);
+> +    sysbus_init_mmio(sbd, &pex->mmio);
+> +
+> +    /*
+> +     * Note that the MemoryRegions io_mmio and io_ioport that we pass
+> +     * to pci_register_root_bus() are not the same as the
+> +     * MemoryRegions io_mmio_window and io_ioport_window that we
+> +     * expose as SysBus MRs. The difference is in the behaviour of
+> +     * accesses to addresses where no PCI device has been mapped.
+> +     *
+> +     * io_mmio and io_ioport are the underlying PCI view of the PCI
+> +     * address space, and when a PCI device does a bus master access
+> +     * to a bad address this is reported back to it as a transaction
+> +     * failure.
+> +     *
+> +     * io_mmio_window and io_ioport_window implement "unmapped
+> +     * addresses read as -1 and ignore writes"; this is traditional
+> +     * x86 PC behaviour, which is not mandated by the PCI spec proper
+> +     * but expected by much PCI-using guest software, including Linux.
+> +     *
+> +     * In the interests of not being unnecessarily surprising, we
+> +     * implement it in the gpex PCI host controller, by providing the
+> +     * _window MRs, which are containers with io ops that implement
+> +     * the 'background' behaviour and which hold the real PCI MRs as
+> +     * subregions.
+> +     */
+>      memory_region_init(&s->io_mmio, OBJECT(s), "gpex_mmio", UINT64_MAX);
+>      memory_region_init(&s->io_ioport, OBJECT(s), "gpex_ioport", 64 * 1024);
+>  
+> -    sysbus_init_mmio(sbd, &pex->mmio);
+> -    sysbus_init_mmio(sbd, &s->io_mmio);
+> -    sysbus_init_mmio(sbd, &s->io_ioport);
+> +    if (s->allow_unmapped_accesses) {
+> +        memory_region_init_io(&s->io_mmio_window, OBJECT(s),
+> +                              &unassigned_io_ops, OBJECT(s),
+> +                              "gpex_mmio_window", UINT64_MAX);
+> +        memory_region_init_io(&s->io_ioport_window, OBJECT(s),
+> +                              &unassigned_io_ops, OBJECT(s),
+> +                              "gpex_ioport_window", 64 * 1024);
+> +
+> +        memory_region_add_subregion(&s->io_mmio_window, 0, &s->io_mmio);
+> +        memory_region_add_subregion(&s->io_ioport_window, 0, &s->io_ioport);
+> +        sysbus_init_mmio(sbd, &s->io_mmio_window);
+> +        sysbus_init_mmio(sbd, &s->io_ioport_window);
+> +    } else {
+> +        sysbus_init_mmio(sbd, &s->io_mmio);
+> +        sysbus_init_mmio(sbd, &s->io_ioport);
+> +    }
+> +
+>      for (i = 0; i < GPEX_NUM_IRQS; i++) {
+>          sysbus_init_irq(sbd, &s->irq[i]);
+>          s->irq_num[i] = -1;
+> @@ -108,6 +147,16 @@ static const char *gpex_host_root_bus_path(PCIHostState *host_bridge,
+>      return "0000:00";
 >  }
->
-> +static void constant_clock_reset(void *opaque)
-> +{
-> +    Clock *clk =3D opaque;
+>  
+> +static Property gpex_host_properties[] = {
+> +    /*
+> +     * Permit CPU accesses to unmapped areas of the PIO and MMIO windows
+> +     * (discarding writes and returning -1 for reads) rather than aborting.
+> +     */
+> +    DEFINE_PROP_BOOL("allow-unmapped-accesses", GPEXHost,
+> +                     allow_unmapped_accesses, true),
+> +    DEFINE_PROP_END_OF_LIST(),
+> +};
 > +
-> +    clock_propagate(clk);
-> +}
-> +
->  Clock *machine_create_constant_clock(MachineState *machine,
->                                       const char *name, unsigned freq_hz)
+>  static void gpex_host_class_init(ObjectClass *klass, void *data)
 >  {
-> @@ -1241,6 +1248,7 @@ Clock *machine_create_constant_clock(MachineState *=
-machine,
->
->      clk =3D clock_new(OBJECT(machine), name);
->      clock_set_hz(clk, freq_hz);
-> +    qemu_register_reset(constant_clock_reset, clk);
+>      DeviceClass *dc = DEVICE_CLASS(klass);
+> @@ -117,6 +166,7 @@ static void gpex_host_class_init(ObjectClass *klass, void *data)
+>      dc->realize = gpex_host_realize;
+>      set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+>      dc->fw_name = "pci";
+> +    device_class_set_props(dc, gpex_host_properties);
+>  }
+>  
+>  static void gpex_host_initfn(Object *obj)
+> -- 
+> 2.20.1
 
-You mention this in the cover letter, but I agree that this
-isn't really very nice. The machine's reset method ought to
-reset the clocks (either explicitly or maybe some day implicitly).
-
-thanks
--- PMM

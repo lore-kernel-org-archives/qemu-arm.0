@@ -1,144 +1,162 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp1472810lfb;
-        Mon, 19 Apr 2021 13:04:18 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy0K8tPAXPEhe1A1vme3m1V2q8zkcNcxx6fxd/GqvygmoPyk1iQqHax8RX0XWKyCMrdrH4C
-X-Received: by 2002:a05:6638:10e:: with SMTP id x14mr9965064jao.116.1618862658303;
-        Mon, 19 Apr 2021 13:04:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618862658; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp1937039lfb;
+        Tue, 20 Apr 2021 02:28:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwhz5FheO2hdnBtljJje3Nnu3huBRA4ahpFFTRJmL+oRX30iThSkbjrFst7CO/yHmbszdFr
+X-Received: by 2002:a67:ea92:: with SMTP id f18mr75221vso.35.1618910911325;
+        Tue, 20 Apr 2021 02:28:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618910911; cv=none;
         d=google.com; s=arc-20160816;
-        b=SIe2wveHuU6oOORZ6En9ftgFSBT4q2n9foUqnCprGZVrvTpVllRG+sBYiAAr34JBTV
-         lCSu1MH4cvBJ3dRf/x3xKTWCUZVFsnFWk1uHi47mKkVoO1n4lFvWAuCIiooKGDTDewRc
-         z11KuJ0biPN14B7bX7my0yPBSrvhyGK0WHZzbAD/dvFBXHLfZ6Z1rqipFm7IeegrmIFB
-         ao4hVYp0odtIWnxK918uOm06rTUwxZRq4BUftxyPpeNlMtJNSTxpP5i+bPEJIrOmLbeP
-         PFRN+w+/42VqIID6z2LIzkBMfWUxCmSkjXltgWLFysfTz6NjdrymACdbfr9ID/u+Me10
-         mzfw==
+        b=Ff4TiUqcOlqAwizVOvAc3+lgAVNsyE57u5Sep5egKMjGP8ix5/DpXrmOmKhkFtyqkR
+         qDSxBKY/9HaKAx36vm9fBfLd8MFI33H8aToXafrwVV1fEB93qN8xpPAcu2owpx5XVuNO
+         MuZQRQhVEiUGziVnIs11bRkN5JUpQ3zP6BosT1x0ZBWgymAIOPzfDWeFQnhvzoWMqhCo
+         LKC5W+nAfOBg6I+dirfDnexYI2hiUBhfJdJ47UaTgbZtPm4VoQrH+JeO8hBHpZgCaYKn
+         ezyn0IJViAeiKMhm9QAjMLg/Kfc+1v0+rKj9cXKwX5MBxxG6H1/qWjbWQu4FrCBXdUbQ
+         LO+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:to:from:date:dkim-signature;
-        bh=0OjnwcJPbwVPbe2ImHKCwLE35rVyNGSXOVVDYhYEYm0=;
-        b=xm+OyXXEK1zY30h/oxu7xXv8QE03HasFdeQn2xR/tl3oZCbSOz89aMv7MW1WHPjbsa
-         lxLHfVbQm1VNKs0j74UWW2jpvFnFHTMMRvZwBjhuf6qfmUvRwt1ul8afT18rLGR52Cae
-         ELR5qzj77Q01q5k4jwihagJWgpTB/tPTECichRydn+8lyPgXMIcH/at2NpAxajRda5fg
-         Tt7HOx7waZ50XHkpOJJVV4sM4U5V00b9dL38GQW9iZjIU5Pxr9jYIFlH1Zf5ACvnadq5
-         6/y8e0wEysot1oZf50lRF/JGoyh0HE+13qnFP9AVtEoZPNZrlzeiV6y9+WzvemreTJ55
-         ZcIA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=VxwcDm3t/hwTT2d5JXzT6X0NF/ww5PIXjlcSJSzU3KU=;
+        b=GjdIH0JrNYNbG4dCsRec+oiO35EWvD3OuzWXpfGDCzysl5O6g4YmoTA9R+pQ7jRFqf
+         6fgB9YSBU3LlW1v+Z9GeWQKExqPLDbKfackD1bBvPRnYMbZGiUfY6gWrWPj0c36QyLG9
+         7e/sQSupGnT+oll0bzr04tRGMaXgDZRbjos0OIgtaMqxa1mrZhqdhXBtedNRHRMXYW/W
+         nBuhmdpC7uaMlVduj/2h5LZ3VfT383ORRcSEEnoFRrToe9qJqL7wVYOk6PMauD0rXukX
+         ilC7fmu3jK3+l6li5fwZH/SCmYDJeebKvsnxp9Fu9Z+1Q8hy8Vrlr1HMe6Bqn6b9xX6S
+         LGmw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@lmichel.fr header.s=pharaoh header.b=EErzK9Vc;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ETWzlpo2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k25si15227994iom.55.2021.04.19.13.04.18
+        by mx.google.com with ESMTPS id r3si1254586uat.95.2021.04.20.02.28.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 19 Apr 2021 13:04:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 20 Apr 2021 02:28:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@lmichel.fr header.s=pharaoh header.b=EErzK9Vc;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
-Received: from localhost ([::1]:46868 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ETWzlpo2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:42822 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lYa81-0000zO-Kw
-	for alex.bennee@linaro.org; Mon, 19 Apr 2021 16:04:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53248)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lYmgI-0004oO-Je
+	for alex.bennee@linaro.org; Tue, 20 Apr 2021 05:28:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35498)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1lYZjL-0003fQ-RI; Mon, 19 Apr 2021 15:38:48 -0400
-Received: from pharaoh.lmichel.fr ([149.202.28.74]:38784)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1lYZjI-0001FL-Ux; Mon, 19 Apr 2021 15:38:47 -0400
-Received: from localhost (sekoia-pc.home.lmichel.fr [192.168.61.100])
- by pharaoh.lmichel.fr (Postfix) with ESMTPSA id 09342C602E6;
- Mon, 19 Apr 2021 21:38:40 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
- t=1618861120;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=0OjnwcJPbwVPbe2ImHKCwLE35rVyNGSXOVVDYhYEYm0=;
- b=EErzK9VcBuZGqfilX4HTUnBteaoSl4q06AQD8tyLM3ZMXR27ESfQrpBh0Ws5O2zxiC0WB8
- EISFQ5JaLYA/4I0Ql/vihaQ+Sw9zIl2KP/bt0odTr9MVFK+syzJEfswJeQoabjbwNVsHjZ
- f4U6Y+6XLZLNI7/mWCSK/jp4P69iqnAhAeWtKNLwrLoOTdDDRv973nHJHa56wfX7Yzm/h+
- 0dXAk3ItPO4rtkLfmyuGJuxbNUnYxjaO01P4QbkrJc0fCS72D+hNQ/gJUw94lJu9puzB1I
- wzwip8HLjt6E0Avvy9sZVpVjmUSk1sRNWxnkUIXeCmn/5FoTOQdL+BY3awGQ8w==
-Date: Mon, 19 Apr 2021 21:39:47 +0200
-From: Luc Michel <luc@lmichel.fr>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: Re: [RFC PATCH-for-6.1 0/9] hw/clock: Strengthen machine (non-qdev)
- clock propagation
-Message-ID: <20210419193947.lc6nyxubrtxwpiy3@sekoia-pc.home.lmichel.fr>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lYmfU-0004np-56; Tue, 20 Apr 2021 05:27:44 -0400
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432]:37876)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lYmfS-0004OP-N7; Tue, 20 Apr 2021 05:27:39 -0400
+Received: by mail-wr1-x432.google.com with SMTP id j5so35887425wrn.4;
+ Tue, 20 Apr 2021 02:27:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=VxwcDm3t/hwTT2d5JXzT6X0NF/ww5PIXjlcSJSzU3KU=;
+ b=ETWzlpo26xNysnybPIaq6N3DuEKUaxhIuSvjqZ5dGctut6zOhxl/i1w34kihzss5Ky
+ LgeLdX80VuOITfOzTQxPWA+AG5FocSvb8yIwZ2iPwUp4oQyomExIxubudCjar89epbed
+ S0VSgtUp2+Lebmam4nxxBkSNQ5zHeVNtPVadvY3D5PLriP8hIakDJSE9St7XlNrNDPpC
+ PNY1FFrCo3B88a38QZqV35O2DfxJSAl6A0HaXOg7l0Dl55rfBfgsexEFd2hl45/Ki0uo
+ pDfE6h535h9N5oTzbMYlpo6RkMwZ+FgzI0urH97vp73HLjfxCTO5d+UZH9NUtxNCuQ6W
+ dNcg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=VxwcDm3t/hwTT2d5JXzT6X0NF/ww5PIXjlcSJSzU3KU=;
+ b=V5mLCDQFP9yVBn3aqPhG7Q2wcPbEBIY55/7TvYUdboJRplzn9KyC6EttlgDjrY60MF
+ hzFExSpPAAG327MHGXMz1rmp3FxzcGyDc3wnxI1QrLxvv+LWQgGx4EJ73FfGu+WlDcaB
+ 8n/uJIzu398+ilZA/qKOD/Zy/gaVBqx11awqbBD0S1h2kBsroEbgiOKf3unkyyonw5LN
+ srlrWN18ETGj3nJOqM+UwqYZ1jqjsxYTLXIDuaxz18qBt9mMTNeFeCVsHfY5n7olvy8X
+ tmJCJP0mWPzrRqnYcB+Z29fdSXJkCpuxdLbzWW5jSplfvP5LnGjvlggIvkvjiAZAF1nl
+ xL2Q==
+X-Gm-Message-State: AOAM531kAmntP9r8koHUMCQgQllJwDCE4xCDXLnX+eZzYLMwbeATHSFc
+ lWSiDYjFvrmkAMpXnDgZXrU=
+X-Received: by 2002:a5d:534e:: with SMTP id t14mr19131063wrv.239.1618910856392; 
+ Tue, 20 Apr 2021 02:27:36 -0700 (PDT)
+Received: from [192.168.1.36] (39.red-81-40-121.staticip.rima-tde.net.
+ [81.40.121.39])
+ by smtp.gmail.com with ESMTPSA id b15sm16180965wrt.57.2021.04.20.02.27.35
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 20 Apr 2021 02:27:35 -0700 (PDT)
+Subject: Re: [RFC PATCH-for-6.1 8/9] hw/clock: Declare clock_new() internally
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <20210409062401.2350436-1-f4bug@amsat.org>
- <20210410131932.i6no5tvvaldyomvp@sekoia-pc.home.lmichel.fr>
- <09a63c3e-aa68-0d2d-b447-db9cd84dab09@amsat.org>
+ <20210409062401.2350436-9-f4bug@amsat.org>
+ <CAFEAcA9s2hJdRrpa6-qBTaWs6v2AmhyjhOSs7kFrtE28+oFmWA@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <42b1385f-c264-a6ce-0dba-ab9edbfef5d3@amsat.org>
+Date: Tue, 20 Apr 2021 11:27:34 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
+In-Reply-To: <CAFEAcA9s2hJdRrpa6-qBTaWs6v2AmhyjhOSs7kFrtE28+oFmWA@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <09a63c3e-aa68-0d2d-b447-db9cd84dab09@amsat.org>
-Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
- helo=pharaoh.lmichel.fr
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x432.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Damien Hedde <damien.hedde@greensocs.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rAK0JXjP81SC
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Luc Michel <luc@lmichel.fr>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: RBdLpWJUcPuw
 
-On 15:53 Sat 10 Apr     , Philippe Mathieu-Daudé wrote:
-> Hi Luc,
+On 4/19/21 4:26 PM, Peter Maydell wrote:
+> On Fri, 9 Apr 2021 at 07:24, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>>
+>> To enforce correct API usage, restrict the clock creation to
+>> hw/core/. The only possible ways to create a clock are:
+>>
+>> - Constant clock at the board level
+>>   Using machine_create_constant_clock() in machine_init()
+>>
+>> - Propagated clock in QDev
+>>   Using qdev_init_clock_in() or qdev_init_clock_out() in
+>>   TYPE_DEVICE instance_init().
 > 
-> On 4/10/21 3:19 PM, Luc Michel wrote:
-> > On 08:23 Fri 09 Apr     , Philippe Mathieu-Daudé wrote:
-> >> I've been debugging some odd issue with the clocks:
-> >> a clock created in the machine (IOW, not a qdev clock) isn't
-> >> always resetted, thus propagating its value.
-> >> "not always" is the odd part. In the MPS2 board, the machine
-> >> clock is propagated. Apparently because the peripherals are
-> >> created directly in the machine_init() handler. When moving
-> >> them out in a SoC QOM container, the clock isn't... I'm still
-> >> having hard time to understand what is going on.
-> > 
-> > I think there is a misunderstanding on how the clock API works. If I
-> > understand correctly your issue, you expect the callback of an input
-> > clock connected to your constant "main oscillator" clock to be called on
-> > machine reset.
-> > 
-> > If I'm not mistaken this is not the way the API has been designed. The
-> > callback is called only when the clock period changes. A constant clock
-> > does not change on reset, so the callback of child clocks should not be
-> > called.
-> 
-> They why the children of a clock tree fed with constant clock stay with
-> a clock of 0? Who is responsible of setting their clock to the constant
-> value?
+> Why isn't it OK to have a constant clock inside a device ?
 
-I think we expect the child to be set when we call clock_set_source. In
-this function the child period is set to the parent one. Maybe you have
-a case where clock_set_source is called before clock_set on the parent?
+I'm not an electronic engineer, so I guessed because I never used
+a component which generate a clock source without being externally
+excited by a crystal or oscillator. Such exciters are components
+on the board. I might be wrong.
 
--- 
-Luc
+Using clock source out of qdev is giving us headache... So I'm
+trying to enforce all clocks being used via qdev. Looking at the
+resting cases and thinking about hardware, my understanding is
+what's left belong to the "(constant) clock source on the board",
+added this machine_create_constant_clock() method to complete the
+enforced API.
+
+Maybe what I'm trying to fix is a side-effect of the non-qdev reset
+problem, and if we get a QOM tree reset, then a clock on a non-qdev
+object would properly propagate its constant value to its children.

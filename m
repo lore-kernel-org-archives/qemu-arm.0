@@ -1,97 +1,106 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp2068150lfb;
-        Tue, 20 Apr 2021 05:27:22 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx0QCmJr5bvMQ+9P/H+A2mV9XbbG9JMnQhkgfX2T1pWFCSY/XBSU+BKUX0EeXoR9c3ZzUif
-X-Received: by 2002:a05:6102:36c:: with SMTP id f12mr12336164vsa.10.1618921642442;
-        Tue, 20 Apr 2021 05:27:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618921642; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp2072280lfb;
+        Tue, 20 Apr 2021 05:32:25 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzltpIvYsBAAPFk5HZlkir4AaT17BHeesqf36YoD1tmLWddZARnISKYCzkpF0lw1b9q8ZsP
+X-Received: by 2002:a17:906:5487:: with SMTP id r7mr27484193ejo.550.1618921945004;
+        Tue, 20 Apr 2021 05:32:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618921944; cv=none;
         d=google.com; s=arc-20160816;
-        b=celBPa7sBxSfE3SA3/rTJmUikWX9QzB9D56CdJqNwTTPUhq/E4JmdEMBov550PTZxa
-         Cea6R5l7RyAPzJR9euWQMPpuZXH5qX+TJXgO/BjjvLidVqXd8BHnu/UOyupK7YRHM+cc
-         pU9coNghpgRs8PcEG+FQ6LxaVFd6oNRXNP9aqi030AYhpnfODrhQPje1UE9B3hhM2Rsz
-         beYu1pnkzDLKJotWuEM5gb8NItKx8k3ySSIOBb7sZb5iC3r7fo5B4f0odLphHgld+Bq2
-         8zO9jM9tMFJI9hHZyfocpJBSwP+pfU1QOeYpNU0wKrzlrrIFWUqcTTHIebWNl2+QTVpI
-         VTTA==
+        b=kYqwVzizD8meesmbA8lZrOe5LCE5WJhhbMS4O0eF1pwbkYwSYokV+Sx0MTKlnic0fy
+         1O5tI62ZJ9CuXthgGo00teC9b4dsy4+9BcRKQjDxodxVcz3Ls6KTsHRArSq61lttaO6b
+         XdEYboNYK0A1TeRfw0JKTgJHJdMAhy6Fu+G0iP+XBVKxzayc/k79+3GJVAo7L5GBP9EI
+         EOSKVm27od7QY8JXBx++v2XlOB7mohqlfFbg6BbfOBvSnHD0ouzoBCVxticuwT/jvjft
+         NmlaEbVmRXvfDYXm0mzAuQLayRJUHo0igNspPmF+7KJbeR3jby4SYXUMNxDwLV3nZMv+
+         Xrgw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version;
-        bh=3rf9qH1hIgO9EAOBj5x7qqbEG4JRe4TMVy+Pck/+z0M=;
-        b=RGDYias3bbHKyqqSCd2JbqpbKgL0oJUzAOcXP071H3wxAUyyyRPqdQhdSiPfJ47n/t
-         /QxZzLZotiXpkayQeO6rZWc0utYqd4u5p/YPJNSgzUuTexouc3J8QUM4IYDqEfsoCBEj
-         C1hXDTVLTk96fY81ruhQi6YRxx2AnzhmVuEZyuF+Nt47d3XqShm2kH1Qd5YYQB6heag2
-         xpTcysBsBppbowH4iEKzHXft20MYSSmhgIfaesGIqsrPa+vp8RlzzctYobTMIZapX5Z1
-         G5EY8ah7UE4eCB8BG0qRFBodRevmST/w1QuJ9IMGo4e5RKdlb0An+R8Z0ag7m0cayRX8
-         CqnQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=c2oZS2Tl5B0ndAM3GGIWJ8vO0djFNZfzyu4Gas/2FyI=;
+        b=Mk/gsLDUKwOKDj8tFRvmwJ8lgYpIiBWUaAgaHnCrgDOyKwdYyBSH+R4wsKWbNjpwm/
+         se6nBjMJJvilPQYD3OQ3jy/sYHVGegleNsnG2ZoUx1qk9ymrSC2ndqVg4UK9DVq/7mDo
+         +FTRVXKwrmI4pRJ9rO6sbke5WyC6tyz1dUEMsdTE13eSIv6JqyIIbRDrENzQdRlt63QZ
+         Uh/reDx6nrRpdE1zlxu4IG5h1DYwoMtDM8KmN/T58rwlStBNAxkbw0SDCrqW/NGYUsfq
+         0xZX0BlGIPhxHdBkSgNh4zLB0JEEdI8AsDTEi+vqBjENeVqQXoVgfTvhkG6NkTDBBB+b
+         ZJFA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=S2umNBC9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h8si109881vkn.59.2021.04.20.05.27.22
+        by mx.google.com with ESMTPS id e7si4472233ejj.140.2021.04.20.05.32.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 Apr 2021 05:27:22 -0700 (PDT)
+        Tue, 20 Apr 2021 05:32:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33306 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=S2umNBC9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:36786 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lYpTN-0006ct-PF
-	for alex.bennee@linaro.org; Tue, 20 Apr 2021 08:27:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57242)
+	id 1lYpYF-0008JO-UN
+	for alex.bennee@linaro.org; Tue, 20 Apr 2021 08:32:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59856)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <arnd@arndb.de>)
- id 1lYpT8-0006b0-Ug; Tue, 20 Apr 2021 08:27:07 -0400
-Received: from mout.kundenserver.de ([217.72.192.73]:45597)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <arnd@arndb.de>)
- id 1lYpSx-0000hx-MH; Tue, 20 Apr 2021 08:27:05 -0400
-Received: from mail-wm1-f49.google.com ([209.85.128.49]) by
- mrelayeu.kundenserver.de (mreue109 [213.165.67.113]) with ESMTPSA (Nemesis)
- id 1MoNyA-1lsX6a1Gxs-00omXw; Tue, 20 Apr 2021 14:26:44 +0200
-Received: by mail-wm1-f49.google.com with SMTP id
- t14-20020a05600c198eb029012eeb3edfaeso10100419wmq.2; 
- Tue, 20 Apr 2021 05:26:44 -0700 (PDT)
-X-Gm-Message-State: AOAM5319zJ97QzqnE5bPMz5hvlW+wZZmb8ik4F1Kx6vtCBTbEvgXfcws
- g97F8cIX/GyJ4OG7SjQAkdzK3XrkcZ0913wkYUE=
-X-Received: by 2002:a1c:6382:: with SMTP id x124mr4257008wmb.142.1618921603890; 
- Tue, 20 Apr 2021 05:26:43 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lYpX8-0008I7-1G
+ for qemu-arm@nongnu.org; Tue, 20 Apr 2021 08:31:14 -0400
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435]:46914)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lYpX4-00033q-Ds
+ for qemu-arm@nongnu.org; Tue, 20 Apr 2021 08:31:13 -0400
+Received: by mail-wr1-x435.google.com with SMTP id c15so28481916wro.13
+ for <qemu-arm@nongnu.org>; Tue, 20 Apr 2021 05:31:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=c2oZS2Tl5B0ndAM3GGIWJ8vO0djFNZfzyu4Gas/2FyI=;
+ b=S2umNBC9XacFHKm3V3QsrbOwdrXbwufgH6PBgmH3MRHgq2NLm5aXb9FhRrxa1RasYJ
+ T5myZ3lkrkIeiR+4agRm2MGorFptbHIbl0Apcb21ovua4pZQqRkMbJvqDXPNiYuy+C9Z
+ CTT4W7qJ73hpkevdgExb7PtY964fB3+Y7chd/bfZIJhuiExtYZFYKc37FMT+glcB2h+W
+ xKarRFj8/NhSdH6aRDZMN5kKMW5B4nZC8IZ6b4PpyOC3gthn9M+nUuHtU035yIMZ0rZM
+ HCI5nzDSFQ0VAWk0wjuhJeaRiksBNJTEC00hcHU/EQAheROEbHKAziNEGOy4mwUT8Q7G
+ jylg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=c2oZS2Tl5B0ndAM3GGIWJ8vO0djFNZfzyu4Gas/2FyI=;
+ b=K10C6Xq+VBb1TzGNy+e3+RlbvJQ+j55zVaWxtq+EWqaXdoEEZe8DKbwBiUtFZYQExP
+ tA+mRPR5EOEBRr/6VnHqZPMqY61jsIGlSk3TxwxPIZbnH/jdaCYBvk9yj4WiTcEMfAnn
+ c8oBl5+eZsvqEaGiQM1MGtNubkSuGVDEK94C+Lh7BPOnyvTdz52wzUCne+4pGlro+tui
+ cGsSzcz9le52JAYmRtvTdKgNN5i1QlrljRxoYTvhqUuXQcgLj0F2UECRcAcYkRo+9/i5
+ scCTWC0OHHh/4HkkDSXUN+BJ/ublzKrnbPWDLS7PfHpKJhFtYEV7OGS8jh1swMNbs+0E
+ x53g==
+X-Gm-Message-State: AOAM531xtQy3j7zkgAkTT/Uc2waVBYOJJPX2eRl69kVIKroUb5A/leBF
+ VNoFB88SnpdZIGE863ronW0tqh6MUlgdiV0e
+X-Received: by 2002:adf:f106:: with SMTP id r6mr20082012wro.214.1618921868757; 
+ Tue, 20 Apr 2021 05:31:08 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id a15sm26647252wrr.53.2021.04.20.05.31.08
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 20 Apr 2021 05:31:08 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH] target/arm: Flush correct TLBs in tlbi_aa64_vae2is_write()
+Date: Tue, 20 Apr 2021 13:31:06 +0100
+Message-Id: <20210420123106.10861-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-References: <20210325163315.27724-1-peter.maydell@linaro.org>
- <1df78911-9858-b747-b22b-7e5254cd3cac@amsat.org>
- <CAFEAcA_TuKCJ31xsv_j49oQfOFuEipmMnsNb2czPZRMPTN=wxg@mail.gmail.com>
- <bb3cc932-5111-c388-2770-3c1110dbc89f@amsat.org>
-In-Reply-To: <bb3cc932-5111-c388-2770-3c1110dbc89f@amsat.org>
-From: Arnd Bergmann <arnd@arndb.de>
-Date: Tue, 20 Apr 2021 14:26:27 +0200
-X-Gmail-Original-Message-ID: <CAK8P3a3zeYC0wiT2Or3RicPbVBY4TJCOTa6ZN3rT=e4XGR-eCA@mail.gmail.com>
-Message-ID: <CAK8P3a3zeYC0wiT2Or3RicPbVBY4TJCOTa6ZN3rT=e4XGR-eCA@mail.gmail.com>
-Subject: Re: [PATCH v2 for-6.0?] hw/pci-host/gpex: Don't fault for unmapped
- parts of MMIO and PIO windows
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:w3zfaopnzGc6TlSPbWcxcOzN1AvR0c0ZRp0tG6M7CugebnJmTNI
- TpSVEOv9QVLBjQryMKL5rQBRXKb+N8xL3V4gwkfOhJRH40+R5F0jMbvfjwBE2mnbej+twz3
- fBkwb2evNUB6hstnnEmqTDHMOwm1ekI/MqnLfqJK1utAFaj8mrimtC6ibEgSQSwzZDdlTVh
- kPn2OGdIIDuhaUj1kajTA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:sJyoyYzSyMU=:qH9ALZbYpNQyIC9y1HVMDK
- fxbESdtOeE1Om9GhQ8gKvZvYGOKrCfyInf6mq0cI7uH9bqwvZdIhAlvnj9zg9hYF3VvklFlGz
- Z6oj4BJPVAdiwhdHkrS5time8QchCAehWNTeNJ2VtnmzXQ5vJwOJGYroz3j88jPc1Wfxhwuxq
- iyEbOglmhzNPtbv2FAWPfKi4b/W1ym2D4kqB6keYF2P5SISy1GX/PNcysHprAqLhybMjBt/5c
- kHY96oJmyKviJr6GJLLteCg/OtYKX7VQlyDMNDpVixJv+lkPHXs+DTdzbK0So3G16nUNrhOE6
- H+cq6ahjeGm4eWdlG88mZrmvfiflC2W0OKrHM7ANqZQSAZ4yc7o6ilSOkvFS+o5WDOsNUM8sI
- dzxwBbOJQm/ZBKBYszP6G18iB56xOm5gVMxK/oOdOXSAft9Imtb9lDwYpwL6hllOIvAUvA5wQ
- ndwRTFOlmJk8HmYSDHXBvJeQesRVtJDnMJo025r2eBp5kZ8mDVCWKFOa2DnCOWifZ3Mzn9zSJ
- stNO9JVkRZ33XusOuHpa8w=
-Received-SPF: none client-ip=217.72.192.73; envelope-from=arnd@arndb.de;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x435.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -104,50 +113,37 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "open list:RISC-V" <qemu-riscv@nongnu.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>, Dmitry Vyukov <dvyukov@google.com>
+Cc: Rebecca Cran <rebecca@nuviainc.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QctOZJ8YWkcH
+X-TUID: oWMlscNMEgU6
 
-On Tue, Apr 20, 2021 at 1:52 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
-g> wrote:
-> On 4/19/21 3:42 PM, Peter Maydell wrote:
-> >>
-> >> I suspect PCI-ISA bridges to provide an EISA bus.
-> >
-> > I'm not sure what you mean here -- there isn't an ISA bridge
-> > or an EISA bus involved here. This is purely about the behaviour
-> > of the memory window the PCI host controller exposes to the CPU
-> > (and in particular the window for when a PCI device's BAR is
-> > set to "IO" rather than "MMIO"), though we change both here.
->
-> I guess I always interpreted the IO BAR were here to address ISA
-> backward compatibility. I don't know well PCI so I'll study it
-> more. Sorry for my confused comment.
+In tlbi_aa64_vae2is_write() the calculation
+  bits = tlbbits_for_regime(env, secure ? ARMMMUIdx_E2 : ARMMMUIdx_SE2,
+                            pageaddr)
 
-It is mostly for compatibility, but there are many layers of it:
+has the two arms of the ?: expression reversed. Fix the bug.
 
-- PCI supports actual ISA/EISA/VLB/PCMCIA/LPC/PC104/... style
-  devices behind a bridge, using I/O ports at their native address.
+Fixes: b6ad6062f1e5
+Reported-by: Rebecca Cran <rebecca@nuviainc.com>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/helper.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-- PCI devices themselves can have fixed I/O ports at well-known
-  addresses, e.g. VGA or IDE/ATA adapters
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index d9220be7c5a..957f4247010 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -4742,7 +4742,7 @@ static void tlbi_aa64_vae2is_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     uint64_t pageaddr = sextract64(value << 12, 0, 56);
+     bool secure = arm_is_secure_below_el3(env);
+     int mask = secure ? ARMMMUIdxBit_SE2 : ARMMMUIdxBit_E2;
+-    int bits = tlbbits_for_regime(env, secure ? ARMMMUIdx_E2 : ARMMMUIdx_SE2,
++    int bits = tlbbits_for_regime(env, secure ? ARMMMUIdx_SE2 : ARMMMUIdx_E2,
+                                   pageaddr);
+ 
+     tlb_flush_page_bits_by_mmuidx_all_cpus_synced(cs, pageaddr, mask, bits);
+-- 
+2.20.1
 
-- PCI devices can behave like legacy devices using port I/O
-  but use PCI resource assignment to pick an arbitrary port
-  number outside of the legacy range
-
-- PCIe can support all of the above by virtue of being backwards
-  compatible with PCI and allowing PCI buses behind bridges,
-  though port I/O is deprecated here and often not supported at all
-
-The first two are very rare these days, but Linux still support them
-in order to run on old hardware, and any driver for these that
-assumes a hardcoded port number can crash the kernel if the
-PCI host bridge causes an asynchronous external abort or
-similar.
-
-       Arnd

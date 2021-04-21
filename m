@@ -1,89 +1,88 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp647699lfb;
-        Wed, 21 Apr 2021 10:46:27 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzmtOJTKOamjAWpgWz8y3UShEb6GuuyeUM+5IK1Ofi1nOtdQVKeaHmHsjT//HefSvDMHTWY
-X-Received: by 2002:a67:ef1a:: with SMTP id j26mr18318271vsr.11.1619027187605;
-        Wed, 21 Apr 2021 10:46:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619027187; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp645121lfb;
+        Wed, 21 Apr 2021 10:42:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxHq9GDEfI15PXBM+Ic2Um6O+r5OMlpDq9z6A1il1lGvr2V/lHOi0h+AhVROuFm1uLv3gYr
+X-Received: by 2002:a92:da8c:: with SMTP id u12mr14186152iln.19.1619026941838;
+        Wed, 21 Apr 2021 10:42:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619026941; cv=none;
         d=google.com; s=arc-20160816;
-        b=KvIDNAeMGvQ16tO9MwHTvHpDnE1+ytCPJPB2qlGA3mKyFL0JmzSdPkAjTVxcZP5Set
-         ePuI1ehaKMTzJX1pk62niT8NR5rVS8Af8xMlI10QwafFa7qL8Q0uUFJhGZVD0IqlXPQi
-         VUma4a5cTqUiN5eiXnQqvi8lHP6AjHfY9734VB3UoYM9bdpW0PT0c7yTBrzjb+V32rIA
-         BxsYOAbvESFwQWz/ImKW6e/8kC8Yut0+4HX4fHsZ16vg0g/IFm924TH+qT+7BU9hgtg6
-         19wt5WZwU/ko4p2At1NarBNvK/HlYd6UA/rtvYMHEJh5vuoGP4auH+JdlrPhucdstVq+
-         1MRQ==
+        b=nR/+ijbNDSMoY2DzmV/V9lLD2ktKvnWTHhtdT+JjIVF5rMT5RGT92CQ2CFP1IDSlcz
+         XaLtLsCfCjJ0Kz+/Xn5NSmizGaNzicSSDqim8b68ODPzcoxBntgqSvd2n5wq/8XoveMo
+         6kLSFZWhGevXnMEr1a8WlNZx9Y6xrKQMPpVKKmJ3IjalNKPtL92kIR8goKjqVDLYX2XG
+         CjqJqEWTtBpH4RECW1j2Kx3gO4OTYi3fhmCO2FoV9EmuoVzGRMpxkEiZoH/LybV80xRP
+         7lmVEPAEXoRXzhBXXdM64Cq8odvcBpG5AFpCa9Xjs8YJeA2G1Bz3P+djgdUPUyQ7PL9D
+         o2rg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=md56RVqrkvru1eSirIMb3jx38DNn+7pEvVDSJSXXGQU=;
-        b=IEC4HlnhlOqya160L9Ksv4gyERvS2XXg3MP+iYz3rkyOTKaeXu02x+r/QJwRU5dUF1
-         aF+FfoGiPrVinFZYG9a2vMlbJOBB1V5qCKDvyDnn04Ku2YrjLflBEUPUWfQ5svPYsyvu
-         jREljhGUpgqBUaj5BVw9qQkY87pOfokYA6Qu6nmli9KS4fAwUvez2A/53Ue5mAojyz6M
-         OBLEkr50mmCnk1to6wYYLrZWMVC1pd1oCxvX/6UtsPKzTU2P6BSGXFUHWG+lt/Bzuctp
-         DEaDoqhYpCeu9oO475dY1fQkN5Ww3ArYpDunYYWInl0H4NKVfp8NAEDliQIlfb3wtmd4
-         gwTw==
+        bh=sl5IM3JcF5e310W4L+gwHgv6Za1BAPYcoJRNKSOE8Wo=;
+        b=bIcxf/ktzA4Y16DqsdsYIdVxS20098adAMUibgiNFfVOtC+6ZlcId/rI1iRbYfGCUK
+         ug0T+AVl0uFyU9xnffilnBEvjphkNEqprr29gDwYpcxB9oZ6EBB+U0vWP1lnWoUz9DRT
+         WnqQaKHBEMOjcgPSn6m+aUwYQ4Z65mdOU+rmrui+Mpl0x0WRNsdTauG5k34abtY4ULwX
+         PN9jQ/nAQBKcD4XeU06mfiP6ho9BeyfZ491JnalmJ6yP5lEMSckCbEIcVSHD/o1gud9k
+         1KWKM2BmSj4y/m6ipfgGmO4lkt1TXtDwcdR7rijugJ/a+AmoE86RkP2dNvPqnFcudEgO
+         GEuA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ih10eqkJ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QwQH5v8I;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f20si1444717vsl.255.2021.04.21.10.46.27
+        by mx.google.com with ESMTPS id r9si188635ilo.79.2021.04.21.10.42.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 21 Apr 2021 10:46:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 21 Apr 2021 10:42:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ih10eqkJ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QwQH5v8I;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45930 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38272 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lZGvi-0007Wt-HU
-	for alex.bennee@linaro.org; Wed, 21 Apr 2021 13:46:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51076)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lZGrl-0004Dx-3Y
+	for alex.bennee@linaro.org; Wed, 21 Apr 2021 13:42:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51202)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lZGqq-0003qb-Ds
- for qemu-devel@nongnu.org; Wed, 21 Apr 2021 13:41:24 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:38718)
+ id 1lZGr0-00048c-2F
+ for qemu-arm@nongnu.org; Wed, 21 Apr 2021 13:41:34 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:34313)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lZGqn-0007J1-Ej
- for qemu-devel@nongnu.org; Wed, 21 Apr 2021 13:41:23 -0400
+ id 1lZGqv-0007SG-SL
+ for qemu-arm@nongnu.org; Wed, 21 Apr 2021 13:41:33 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1619026879;
+ s=mimecast20190719; t=1619026889;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=md56RVqrkvru1eSirIMb3jx38DNn+7pEvVDSJSXXGQU=;
- b=Ih10eqkJo73X1BNvYlztHEB6h7lVqovkzU++PKpL2xk3RmH5M/CE9Y/5Udkzday5ogSNhe
- +w2CnbHt/PlX3EyucCDfEH3gqV29FjoJNxlp3p0GxuiTt8e1Si/IWXFRSgZloVFm2kV3fr
- ifOxgAKI6IAWMIiQA+iZEafrFliGZY8=
+ bh=sl5IM3JcF5e310W4L+gwHgv6Za1BAPYcoJRNKSOE8Wo=;
+ b=QwQH5v8I0MomayuQEAkWAq4J5PYOPUJg7HhVvhFFu8nywuIN7ae54djcGFsIP3zfV0KMCi
+ pjfgBqenxAtH8a0xuKX+o8GwF4uwFOa/TB4oS3/XIa4ZqGFLIx9aLlYqqP3HXp/fmSgC8/
+ K+PaiXqnFnHNh7cGdYp/8mOXl8VA9+s=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-495-eabxj9pPNkmiYhyj3f621A-1; Wed, 21 Apr 2021 13:41:17 -0400
-X-MC-Unique: eabxj9pPNkmiYhyj3f621A-1
+ us-mta-3-S-IMFNwqP2-xczbQ87yiPA-1; Wed, 21 Apr 2021 13:41:20 -0400
+X-MC-Unique: S-IMFNwqP2-xczbQ87yiPA-1
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
  [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6D74C108BD0A;
- Wed, 21 Apr 2021 17:41:16 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C292687504F;
+ Wed, 21 Apr 2021 17:41:19 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-115-49.ams2.redhat.com [10.36.115.49])
- by smtp.corp.redhat.com (Postfix) with ESMTP id CDA7819D80;
- Wed, 21 Apr 2021 17:41:13 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 00F1819D80;
+ Wed, 21 Apr 2021 17:41:16 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, philmd@redhat.com, peter.maydell@linaro.org,
  crosa@redhat.com, wainersm@redhat.com
-Subject: [PATCH v2 1/2] Acceptance Tests: Add default kernel params and
- pxeboot url to the KNOWN_DISTROS collection
-Date: Wed, 21 Apr 2021 19:40:57 +0200
-Message-Id: <20210421174058.12201-2-eric.auger@redhat.com>
+Subject: [PATCH v2 2/2] avocado_qemu: Add SMMUv3 tests
+Date: Wed, 21 Apr 2021 19:40:58 +0200
+Message-Id: <20210421174058.12201-3-eric.auger@redhat.com>
 In-Reply-To: <20210421174058.12201-1-eric.auger@redhat.com>
 References: <20210421174058.12201-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -104,107 +103,182 @@ X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: so+CdLQ69taT
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: YSNS+dPHCy+r
 
-When running LinuxTests we may need to run the guest with
-custom params. It is practical to store the pxeboot URL
-and the default kernel params so that the
-tests just need to fetch those and augment the kernel params.
+Add new tests checking the good behavior of the SMMUv3 protecting
+2 virtio pci devices (block and net). We check the guest boots and
+we are able to install a package. Different guest configs are tested:
+standard, passthrough an strict=0. This is tested with both fedora 31 and
+33. The former uses a 5.3 kernel without range invalidation whereas the
+latter uses a 5.8 kernel that features range invalidation.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- tests/acceptance/avocado_qemu/__init__.py | 46 +++++++++++++++++++++--
- 1 file changed, 42 insertions(+), 4 deletions(-)
 
-diff --git a/tests/acceptance/avocado_qemu/__init__.py b/tests/acceptance/avocado_qemu/__init__.py
-index 6fd0016917..e6801102aa 100644
---- a/tests/acceptance/avocado_qemu/__init__.py
-+++ b/tests/acceptance/avocado_qemu/__init__.py
-@@ -1,6 +1,3 @@
--# Test class and utilities for functional tests
--#
--# Copyright (c) 2018 Red Hat, Inc.
- #
- # Author:
- #  Cleber Rosa <crosa@redhat.com>
-@@ -306,15 +303,50 @@ def ssh_command(self, command):
-             'x86_64':
-             {'checksum': 'e3c1b309d9203604922d6e255c2c5d098a309c2d46215d8fc026954f3c5c27a0'},
-             'aarch64':
--            {'checksum': '1e18d9c0cf734940c4b5d5ec592facaed2af0ad0329383d5639c997fdf16fe49'},
-+            {'checksum': '1e18d9c0cf734940c4b5d5ec592facaed2af0ad0329383d5639c997fdf16fe49',
-+             'pxeboot_url': "https://archives.fedoraproject.org/pub/archive/fedora/"
-+                            "linux/releases/31/Everything/aarch64/os/images/pxeboot/",
-+             'kernel_params': "root=UUID=b6950a44-9f3c-4076-a9c2-355e8475b0a7 ro "
-+                              "earlyprintk=pl011,0x9000000 ignore_loglevel "
-+                              "no_timer_check printk.time=1 rd_NO_PLYMOUTH "
-+                              "console=ttyAMA0 "},
-             'ppc64':
-             {'checksum': '7c3528b85a3df4b2306e892199a9e1e43f991c506f2cc390dc4efa2026ad2f58'},
-             's390x':
-             {'checksum': '4caaab5a434fd4d1079149a072fdc7891e354f834d355069ca982fdcaf5a122d'},
-             }
-+        ,
-+        '32': {
-+            'aarch64':
-+            { 'kernel_params': "root=UUID=3df75b65-be8d-4db4-8655-14d95c0e90c5 ro "
-+                              "no_timer_check net.ifnames=0 console=tty1 "
-+                              "console=ttyS0,115200n8 ",
-+              'pxeboot_url':  "https://ftp.lip6.fr/ftp/pub/linux/distributions/fedora/releases/"
-+                              "32/Server/aarch64/os/images/pxeboot/"},
-+            }
-+        ,
-+        '33': {
-+            'aarch64':
-+            { 'kernel_params': "root=UUID=d20b3ffa-6397-4a63-a734-1126a0208f8a ro "
-+                              "no_timer_check net.ifnames=0 console=tty1 "
-+                              "console=ttyS0,115200n8 console=tty0 ",
-+              'pxeboot_url':  "https://ftp.lip6.fr/ftp/pub/linux/distributions/fedora/releases/"
-+                              "33/Server/aarch64/os/images/pxeboot/"},
-+            }
-         }
-     }
- 
-+def get_known_distro_kernel_params(distro, distro_version, arch):
-+    try:
-+        return KNOWN_DISTROS.get(distro).get(distro_version).get(arch).get('kernel_params')
-+    except AttributeError:
-+        return None
+---
+
+v1 -> v2:
+- removed ssh import
+- combined add_command_args() and common_vm_setup()
+- moved tags in class' docstring and added tags=arch:aarch64
+- use self.get_default_kernel_params()
+- added RIL tests with fed33 + introduce new tags
+---
+ tests/acceptance/smmu.py | 133 +++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 133 insertions(+)
+ create mode 100644 tests/acceptance/smmu.py
+
+diff --git a/tests/acceptance/smmu.py b/tests/acceptance/smmu.py
+new file mode 100644
+index 0000000000..bcb5416a56
+--- /dev/null
++++ b/tests/acceptance/smmu.py
+@@ -0,0 +1,133 @@
++# SMMUv3 Functional tests
++#
++# Copyright (c) 2021 Red Hat, Inc.
++#
++# Author:
++#  Eric Auger <eric.auger@redhat.com>
++#
++# This work is licensed under the terms of the GNU GPL, version 2 or
++# later.  See the COPYING file in the top-level directory.
 +
-+def get_known_distro_pxeboot_url(distro, distro_version, arch):
-+    try:
-+        return KNOWN_DISTROS.get(distro).get(distro_version).get(arch).get('pxeboot_url')
-+    except AttributeError:
-+        return None
- 
- def get_known_distro_checksum(distro, distro_version, arch):
-     try:
-@@ -448,6 +480,12 @@ def set_up_cloudinit(self, ssh_pubkey=None):
-         cloudinit_iso = self.prepare_cloudinit(ssh_pubkey)
-         self.vm.add_args('-drive', 'file=%s,format=raw' % cloudinit_iso)
- 
-+    def get_default_kernel_params(self):
-+        return get_known_distro_kernel_params(self.distro, self.distro_version, self.arch)
++import os
 +
-+    def get_pxeboot_url(self):
-+        return get_known_distro_pxeboot_url(self.distro, self.distro_version, self.arch)
++from avocado_qemu import LinuxTest, BUILD_DIR
 +
-     def launch_and_wait(self, set_up_ssh_connection=True):
-         self.vm.set_console()
-         self.vm.launch()
++class SMMU(LinuxTest):
++    """
++    :avocado: tags=accel:kvm
++    :avocado: tags=cpu:host
++    :avocado: tags=arch:aarch64
++    :avocado: tags=smmu
++    """
++
++    IOMMU_ADDON = ',iommu_platform=on,disable-modern=off,disable-legacy=on'
++    kernel_path = None
++    initrd_path = None
++    kernel_params = None
++
++    def set_up_boot(self):
++        path = self.download_boot()
++        self.vm.add_args('-device', 'virtio-blk-pci,bus=pcie.0,scsi=off,' +
++                         'drive=drv0,id=virtio-disk0,bootindex=1,'
++                         'werror=stop,rerror=stop' + self.IOMMU_ADDON)
++        self.vm.add_args('-drive',
++                         'file=%s,if=none,cache=writethrough,id=drv0' % path)
++
++    def setUp(self):
++        super(SMMU, self).setUp(None, 'virtio-net-pci' + self.IOMMU_ADDON)
++
++    def common_vm_setup(self, custom_kernel=None):
++        self.require_accelerator("kvm")
++        self.vm.add_args("-machine", "virt")
++        self.vm.add_args("-accel", "kvm")
++        self.vm.add_args("-cpu", "host")
++        self.vm.add_args("-smp", "8")
++        self.vm.add_args("-m", "4096")
++        self.vm.add_args("-machine", "iommu=smmuv3")
++        self.vm.add_args("-d", "guest_errors")
++        self.vm.add_args('-bios', os.path.join(BUILD_DIR, 'pc-bios',
++                         'edk2-aarch64-code.fd'))
++        self.vm.add_args('-device', 'virtio-rng-pci,rng=rng0')
++        self.vm.add_args('-object',
++                         'rng-random,id=rng0,filename=/dev/urandom')
++
++        if custom_kernel is None:
++            return
++
++        kernel_url = self.get_pxeboot_url() + 'vmlinuz'
++        initrd_url = self.get_pxeboot_url() + 'initrd.img'
++        self.kernel_path = self.fetch_asset(kernel_url)
++        self.initrd_path = self.fetch_asset(initrd_url)
++
++    def run_and_check(self):
++        if self.kernel_path:
++            self.vm.add_args('-kernel', self.kernel_path,
++                             '-append', self.kernel_params,
++                             '-initrd', self.initrd_path)
++        self.launch_and_wait()
++        self.ssh_command('cat /proc/cmdline')
++        self.ssh_command('dnf -y install numactl-devel')
++
++
++    # 5.3 kernel without RIL #
++
++    def test_smmu_noril(self):
++        """
++        :avocado: tags=smmu_noril
++        :avocado: tags=smmu_noril_tests
++        :avocado: tags=distro_version:31
++        """
++        self.common_vm_setup()
++        self.run_and_check()
++
++    def test_smmu_noril_passthrough(self):
++        """
++        :avocado: tags=smmu_noril_passthrough
++        :avocado: tags=smmu_noril_tests
++        :avocado: tags=distro_version:31
++        """
++        self.common_vm_setup(True)
++        self.kernel_params = self.get_default_kernel_params() + ' iommu.passthrough=on'
++        self.run_and_check()
++
++    def test_smmu_noril_nostrict(self):
++        """
++        :avocado: tags=smmu_noril_nostrict
++        :avocado: tags=smmu_noril_tests
++        :avocado: tags=distro_version:31
++        """
++        self.common_vm_setup(True)
++        self.kernel_params = self.get_default_kernel_params() + ' iommu.strict=0'
++        self.run_and_check()
++
++    # 5.8 kernel featuring range invalidation
++    # >= v5.7 kernel
++
++    def test_smmu_ril(self):
++        """
++        :avocado: tags=smmu_ril
++        :avocado: tags=smmu_ril_tests
++        :avocado: tags=distro_version:33
++        """
++        self.common_vm_setup()
++        self.run_and_check()
++
++    def test_smmu_ril_passthrough(self):
++        """
++        :avocado: tags=smmu_ril_passthrough
++        :avocado: tags=smmu_ril_tests
++        :avocado: tags=distro_version:33
++        """
++        self.common_vm_setup(True)
++        self.kernel_params = self.get_default_kernel_params() + ' iommu.passthrough=on'
++        self.run_and_check()
++
++    def test_smmu_ril_nostrict(self):
++        """
++        :avocado: tags=smmu_ril_nostrict
++        :avocado: tags=smmu_ril_tests
++        :avocado: tags=distro_version:33
++        """
++        self.common_vm_setup(True)
++        self.kernel_params = self.get_default_kernel_params() + ' iommu.strict=0'
++        self.run_and_check()
 -- 
 2.26.3
 

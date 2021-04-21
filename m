@@ -1,82 +1,102 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp220167lfb;
-        Wed, 21 Apr 2021 01:10:45 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyhYn29JGu1owbH54tGprQQz6ywJ3TfKpORfqolx35VzVIQnnBIClinY9TofGHLN2ZP6MBM
-X-Received: by 2002:a05:6102:104e:: with SMTP id h14mr19466878vsq.38.1618992645210;
-        Wed, 21 Apr 2021 01:10:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618992645; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp636132lfb;
+        Wed, 21 Apr 2021 10:30:00 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyFyEr/hsauH4vtuf8k20+D7W2ywTI7d8O2kZsKa63icHpTuoVylmMqjY3bGYCxxSmfOZQ/
+X-Received: by 2002:a92:2e13:: with SMTP id v19mr26440613ile.198.1619026200416;
+        Wed, 21 Apr 2021 10:30:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619026200; cv=none;
         d=google.com; s=arc-20160816;
-        b=CHy0d8uuVTEDpTnxVUwkyqtfD/xSMEdjrtEiBTCgWRraWXzpvQYHPO8556FwWna4Dx
-         StCob47kLaOEMiAQsV/Omlvj4QQgNyCcOeRzMpAyKBwuXRCiWZJO4YDj/CvHHXoKdfTU
-         dSrnDUpyFvKxQqBffI5KdheH+NYM/QHK0k99m8oXnT2Gpa9O0oxYaet8iHSdM9dtDK0k
-         gbXq3ndjEpnuH78WFbHQZ8KE8Y5y4/GavtGzXWfGgcQrMZx51/H7pdCy9kn85T78yptQ
-         e7uDdRVTKOKSUNylBO/RhiyIUdbq0FHhC7/ruYnmAUOPTM7WTc5zkNfgu4js/FtYhji0
-         kymQ==
+        b=zOsbvFyg2FaNFl4IbbFLMhhhMhDr6D/N14NigZ7i/RgE/O5kdvzn0JlD/ScVapFRmb
+         sM/0uUL+achjhgEK+zactdUkoZ+ZaTx2hL7oi8D9oc227qK3NCopbgF2ihoQRS37oRht
+         beb4HeHKgT4CfeFVC1IOxuTxP+WZC2bZSSU+Gwk1VDWEmAvmqeq5eAY1xZNY2p8NY9/9
+         EhYtDlzprDaBXpaNX/4e7ObsWgo01AJpmJezQ6KlhLjYGNm4KL4nn0esvn8nkToeGWrH
+         Gud2p4Noradb2JQeJRih51LaohnqEfjozTfLK6wFgurVgXHiGTRQRNi24qbTUrIT9Ryd
+         SHKg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :in-reply-to:message-id:date:subject:to:from;
-        bh=cIeu9AtVckP4D0BV47YVIO9WlJ5wRgbQNv7wfU7eW8A=;
-        b=QqELuzTJcilc7Hx9PtnFortezFaBSBxgNSAvzlj0xVATF7vaUEopjxJdWDofaON6i4
-         ss75NlPUnZAy6TkRVPgbYwWO34+vRK0cWmkObjaRhhY/6D9Lkm7JXe9V4copsd7cSPzI
-         K2UGn8PRO67BLPd+T1M/Foia7JU2dST/yS2by6eeKqY/cS18jpOB1mPzuVbVF8P+XaM+
-         8y06pl6Ovl3txUhAOQ1/r8/2LVbxHTvJZ4q/jcEMN1jtRHVWebgCqzktFW6YHQw8HJ2G
-         frW7OyggD5VEkDGvdkq2tKjSprypyuIkIiGO/3H7ij+WHyrFFcKymVhp8jpXByEQMoAK
-         EfBg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=LmH3UiCnOzEvX29/GWJbJW16iziKOjnKP8unqL+2MPM=;
+        b=PFfylKSBahE5J3L/bLqY8+3HcyXHUNfgbCv7PGQByAVye/IRwkcxueNQhNpTjUBvdU
+         AVLnig7/1+PN1lTQK7Cert3Y401kyUdzAeE8+WWWWUzys6NQVw8v3UnotkmHAFUTa74q
+         zhdGYEfZZ7eu5+gar/uI9Iv/3IOj4VdCPzYHxSgd75vkRlMXaQFJo0V+8Uuw5QSE5pk8
+         zHMihg70tt9HFNOTEOPiNtbHw4e/b4f6m6e77N0f0q8Ohysxh2NLKGSa1rTvhE+q+Ik8
+         3LMDPebQts0AWmChPkLRFEDZG+PQi272LTa+E1faj0281hWc4oX2t3X3zoZhAt0VT7Bv
+         A+wQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=A+PBKL51;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c8si590083vsq.295.2021.04.21.01.10.45
+        by mx.google.com with ESMTPS id v13si193280iln.4.2021.04.21.10.30.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 21 Apr 2021 01:10:45 -0700 (PDT)
+        Wed, 21 Apr 2021 10:30:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=A+PBKL51;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:53680 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:57794 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lZ7wa-0007w2-Gq
-	for alex.bennee@linaro.org; Wed, 21 Apr 2021 04:10:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51948)
+	id 1lZGfn-0008Oe-Gp
+	for alex.bennee@linaro.org; Wed, 21 Apr 2021 13:29:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48552)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangxingang5@huawei.com>)
- id 1lZ7re-0001JC-U1; Wed, 21 Apr 2021 04:05:38 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:5041)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1lZGfL-0008Lx-8U
+ for qemu-arm@nongnu.org; Wed, 21 Apr 2021 13:29:31 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:44199)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangxingang5@huawei.com>)
- id 1lZ7rd-0002CI-4P; Wed, 21 Apr 2021 04:05:38 -0400
-Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4FQCjW6LXtzlYrY;
- Wed, 21 Apr 2021 16:03:27 +0800 (CST)
-Received: from huawei.com (10.174.185.226) by DGGEMS411-HUB.china.huawei.com
- (10.3.19.211) with Microsoft SMTP Server id 14.3.498.0; Wed, 21 Apr 2021
- 16:05:14 +0800
-From: Wang Xingang <wangxingang5@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
- <shannon.zhaosl@gmail.com>, <imammedo@redhat.com>, <mst@redhat.com>,
- <marcel.apfelbaum@gmail.com>, <peter.maydell@linaro.org>,
- <ehabkost@redhat.com>, <richard.henderson@linaro.org>, <pbonzini@redhat.com>
-Subject: [PATCH RFC v3 2/8] hw/pxb: Add a bypass iommu property
-Date: Wed, 21 Apr 2021 08:04:57 +0000
-Message-ID: <1618992303-19556-3-git-send-email-wangxingang5@huawei.com>
-X-Mailer: git-send-email 2.6.4.windows.1
-In-Reply-To: <1618992303-19556-1-git-send-email-wangxingang5@huawei.com>
-References: <1618992303-19556-1-git-send-email-wangxingang5@huawei.com>
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1lZGfI-0000Zw-Av
+ for qemu-arm@nongnu.org; Wed, 21 Apr 2021 13:29:30 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1619026166;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=LmH3UiCnOzEvX29/GWJbJW16iziKOjnKP8unqL+2MPM=;
+ b=A+PBKL51IL61+AeVhG1IsNa25+PPVNyhsvXk9rDEsBlUB58BuJfdwz9bUcy3LXFXzStxdt
+ aK6cr6FaY49MZXq/VLLq53ROWediANS9B9ViInKoO8+UxojLy4oz9RBlyavqb25jg5KcaJ
+ CWJoTjkBCkFWEMjhYJ7YunOOh2g12Qg=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-589-DJ_GhvWvMGeWXT3HI07fZg-1; Wed, 21 Apr 2021 13:29:25 -0400
+X-MC-Unique: DJ_GhvWvMGeWXT3HI07fZg-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AF9A31898296;
+ Wed, 21 Apr 2021 17:29:23 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-115-49.ams2.redhat.com [10.36.115.49])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 7786B6085A;
+ Wed, 21 Apr 2021 17:29:15 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, peter.maydell@linaro.org
+Subject: [PATCH] hw/arm/smmuv3: Another range invalidation fix
+Date: Wed, 21 Apr 2021 19:29:10 +0200
+Message-Id: <20210421172910.11832-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.174.185.226]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.32;
- envelope-from=wangxingang5@huawei.com; helo=szxga06-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="US-ASCII"
+Received-SPF: pass client-ip=216.205.24.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -89,51 +109,104 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: xieyingtai@huawei.com, cenjiahui@huawei.com, wangxingang5@huawei.com
+Cc: jiangkunkun@huawei.com, peterx@redhat.com,
+ shameerali.kolothum.thodi@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 66wtgFANFtzl
+X-TUID: C+RtGzLRF8B1
 
-From: Xingang Wang <wangxingang5@huawei.com>
+6d9cd115b9 ("hw/arm/smmuv3: Enforce invalidation on a power of two range")
+failed to completely fix misalignment issues with range
+invalidation. For instance invalidations patterns like "invalidate 32
+4kB pages starting from 0xff395000 are not correctly handled" due
+to the fact the previous fix only made sure the number of invalidated
+pages were a power of 2 but did not properly handle the start
+address was not aligned with the range. This can be noticed when
+boothing a fedora 33 with protected virtio-blk-pci.
 
-This add a bypass_iommu property for pci_expander_bridge.
-The property can be used as:
-qemu -device pxb-pcie,bus_nr=0x10,addr=0x1,bypass_iommu=true
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Fixes: 6d9cd115b9 ("hw/arm/smmuv3: Enforce invalidation on a power of two range")
 
-Signed-off-by: Xingang Wang <wangxingang5@huawei.com>
-Signed-off-by: Jiahui Cen <cenjiahui@huawei.com>
 ---
- hw/pci-bridge/pci_expander_bridge.c | 3 +++
- 1 file changed, 3 insertions(+)
 
-diff --git a/hw/pci-bridge/pci_expander_bridge.c b/hw/pci-bridge/pci_expander_bridge.c
-index aedded1064..7112dc3062 100644
---- a/hw/pci-bridge/pci_expander_bridge.c
-+++ b/hw/pci-bridge/pci_expander_bridge.c
-@@ -57,6 +57,7 @@ struct PXBDev {
+This bug was found with SMMU RIL avocado-qemu acceptance tests
+---
+ hw/arm/smmuv3.c | 49 +++++++++++++++++++++++++------------------------
+ 1 file changed, 25 insertions(+), 24 deletions(-)
+
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index 8705612535..16f285a566 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -856,43 +856,44 @@ static void smmuv3_inv_notifiers_iova(SMMUState *s, int asid, dma_addr_t iova,
  
-     uint8_t bus_nr;
-     uint16_t numa_node;
-+    bool bypass_iommu;
- };
+ static void smmuv3_s1_range_inval(SMMUState *s, Cmd *cmd)
+ {
+-    uint8_t scale = 0, num = 0, ttl = 0;
+-    dma_addr_t addr = CMD_ADDR(cmd);
++    dma_addr_t end, addr = CMD_ADDR(cmd);
+     uint8_t type = CMD_TYPE(cmd);
+     uint16_t vmid = CMD_VMID(cmd);
++    uint8_t scale = CMD_SCALE(cmd);
++    uint8_t num = CMD_NUM(cmd);
++    uint8_t ttl = CMD_TTL(cmd);
+     bool leaf = CMD_LEAF(cmd);
+     uint8_t tg = CMD_TG(cmd);
+-    uint64_t first_page = 0, last_page;
+-    uint64_t num_pages = 1;
++    uint64_t num_pages;
++    uint8_t granule;
+     int asid = -1;
  
- static PXBDev *convert_to_pxb(PCIDevice *dev)
-@@ -255,6 +256,7 @@ static void pxb_dev_realize_common(PCIDevice *dev, bool pcie, Error **errp)
-     bus->map_irq = pxb_map_irq_fn;
+-    if (tg) {
+-        scale = CMD_SCALE(cmd);
+-        num = CMD_NUM(cmd);
+-        ttl = CMD_TTL(cmd);
+-        num_pages = (num + 1) * BIT_ULL(scale);
+-    }
+-
+     if (type == SMMU_CMD_TLBI_NH_VA) {
+         asid = CMD_ASID(cmd);
+     }
  
-     PCI_HOST_BRIDGE(ds)->bus = bus;
-+    PCI_HOST_BRIDGE(ds)->bypass_iommu = pxb->bypass_iommu;
++    if (!tg) {
++        trace_smmuv3_s1_range_inval(vmid, asid, addr, tg, 1, ttl, leaf);
++        smmuv3_inv_notifiers_iova(s, asid, addr, tg, 1);
++        smmu_iotlb_inv_iova(s, asid, addr, tg, 1, ttl);
++    }
++
++    /* RIL in use */
++
++    num_pages = (num + 1) * BIT_ULL(scale);
++    granule = tg * 2 + 10;
++
+     /* Split invalidations into ^2 range invalidations */
+-    last_page = num_pages - 1;
+-    while (num_pages) {
+-        uint8_t granule = tg * 2 + 10;
+-        uint64_t mask, count;
++    end = addr + (num_pages << granule) - 1;
  
-     pxb_register_bus(dev, bus, &local_err);
-     if (local_err) {
-@@ -301,6 +303,7 @@ static Property pxb_dev_properties[] = {
-     /* Note: 0 is not a legal PXB bus number. */
-     DEFINE_PROP_UINT8("bus_nr", PXBDev, bus_nr, 0),
-     DEFINE_PROP_UINT16("numa_node", PXBDev, numa_node, NUMA_NODE_UNASSIGNED),
-+    DEFINE_PROP_BOOL("bypass_iommu", PXBDev, bypass_iommu, false),
-     DEFINE_PROP_END_OF_LIST(),
- };
+-        mask = dma_aligned_pow2_mask(first_page, last_page, 64 - granule);
+-        count = mask + 1;
++    while (addr != end + 1) {
++        uint64_t mask = dma_aligned_pow2_mask(addr, end, 64);
+ 
+-        trace_smmuv3_s1_range_inval(vmid, asid, addr, tg, count, ttl, leaf);
+-        smmuv3_inv_notifiers_iova(s, asid, addr, tg, count);
+-        smmu_iotlb_inv_iova(s, asid, addr, tg, count, ttl);
+-
+-        num_pages -= count;
+-        first_page += count;
+-        addr += count * BIT_ULL(granule);
++        num_pages = (mask + 1) >> granule;
++        trace_smmuv3_s1_range_inval(vmid, asid, addr, tg, num_pages, ttl, leaf);
++        smmuv3_inv_notifiers_iova(s, asid, addr, tg, num_pages);
++        smmu_iotlb_inv_iova(s, asid, addr, tg, num_pages, ttl);
++        addr += mask + 1;
+     }
+ }
  
 -- 
-2.19.1
+2.26.3
 

@@ -1,88 +1,82 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp271943lfb;
-        Wed, 21 Apr 2021 02:34:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx8RADH0EDlQSHkUihQUjW3pDmMNT+fhBzTSBRlowhHmHgR8BC8dd12rmgRgtiLQ+MfF+5M
-X-Received: by 2002:a05:6122:33:: with SMTP id q19mr24408493vkd.23.1618997675479;
-        Wed, 21 Apr 2021 02:34:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618997675; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp217665lfb;
+        Wed, 21 Apr 2021 01:07:12 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxH4uyWUqnstKjf2Zwa/ZbP4xHtaKvtDWqEz7rcwFQ9nAwf0ztC1zfY8tOiRwEiZ61H9ijV
+X-Received: by 2002:a67:1447:: with SMTP id 68mr23339340vsu.20.1618992432101;
+        Wed, 21 Apr 2021 01:07:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618992432; cv=none;
         d=google.com; s=arc-20160816;
-        b=SxyOZ6TsAK5kuwaOK7SYe/8Aj0UNbbrUEMGo9IxvhWm071R6f85HyGIqRkIUwmkzuv
-         iZ9LVnJPX+ECwdWeyR+nhTQF4G5jEx2lTaDhRZtHcfXrtGawUPmY/OPricrZzV5qMXY8
-         X2Rg5mbxrkr9tHDmBsZJEN9O0MeaXz1fkzUrCuvSIg+giwoSnhI+Foge5+b+tPrYwgiu
-         vZE16OKPOASnEUquvl6FGPlqCGInphd5C6q/jARN1whraaib1rx1K+ImMF7+voKbPuhH
-         d7eMIjiJQIJFfIbXL1qa5+psqrW6Wzqvea+XL9pIzCTsqQVzSEGOZAt2Qvdsxjd+JBG2
-         HdAA==
+        b=hxxdGfmhqv3UCkKWp4lDYcofyQ3ysIuPb/wD2P896yGAYSRYVgs6cCYdALCTt2baUr
+         gUAsH4zTjmuRvOaROC1KT9dUsUAvgztKczt5n8QGSPDrt0yPxJSEVJopPNI7nbGUkbAg
+         jpqIsYFsmWEyRP1hsifdt7q7isAetl5ETg4wduP1pzsrkUZcohK0sKvmX0IIZl47pKvR
+         nMDMy/osOyUU8HYYhuqOF7vxTzU4zB6GyBMc2TgkZbdFrAxf4WVBzJHhQAmOi7I57h/f
+         6/Oo3Pa3gTQvxJrfN6ZQ1H1cJ6uJ2x0PIwHn0OS8ULjJJyt/Fo2PuQHOpfQFPX//sYKX
+         Lnsg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=6otTyKVuY/+pGcKWhlxh6he85kHaNev9jehBxfxpNvo=;
-        b=GahIYnlzTVMV9q53CCIco48qwF3sIVRhLJkAbfbc46oipweNm+LuUteWqP94vKOeKS
-         CSP8tQVeDnkRDVna1y61uic/ts9kAatX28/eO8hscC9DLyywob4eQY4Smq4UHZDdkyH7
-         5i5q/d+3JQENuenXkIxJfdtnT125exDIOGbkuOvb8ED8eIGG1KjTrfk8ahMWIjOS5JxR
-         GaUdGdS9yn9rlLdb+1H75WLUh2+5iAnTn4uQOsZS0nF0g+Y+HmeCWCG2nZ8iK9+o5oVr
-         PGKoHQ9yDT0uvuZdzza3vNw/Ni0CbBKJzzrF9JvGmauTxow6sDleK3GYAH4geVrWVtxQ
-         BorA==
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :in-reply-to:message-id:date:subject:to:from;
+        bh=IgkES0x0XqSgKMn9zj8yYIwWt9ECmRj4znnq23Oleyk=;
+        b=nZSG464O+aKTd4wW75ybzh0oB9KX76+KoUvvJnQH84LIKTqBGHfdrF1t9Vp2SpztaM
+         ONx+sYpQnwE/DtQKghMp9XmYwXSpAk/kwccLswt/WWMBBiIiHTyymFpP8LCA0Mukf/py
+         qVBBBcX4kZ8+57NkJtD2euexohfClIehuvYUVAvcMsIpwWyJANlz68c/FgBbXdHDlNH3
+         nroUZYL+2Z+eeWsZ0KYBvU8p3ChLR5/7lR0TOBeJXLP+GrnTUGK7O0V+/9cNT7zpU2eZ
+         fwy78i1nhjEqN4kh/eZU4aRCRotcOglBgMnM7qiuk9h6uT7y7KcBUvlye2cVAKcG1UTR
+         fLlw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l13si745983vsh.259.2021.04.21.02.34.35
+        by mx.google.com with ESMTPS id k3si606056uae.18.2021.04.21.01.07.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 21 Apr 2021 02:34:35 -0700 (PDT)
+        Wed, 21 Apr 2021 01:07:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:51296 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40580 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lZ9Fi-0000e3-Qk
-	for alex.bennee@linaro.org; Wed, 21 Apr 2021 05:34:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40462)
+	id 1lZ7t9-0002gG-Df
+	for alex.bennee@linaro.org; Wed, 21 Apr 2021 04:07:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51884)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1lZ9DE-0007fD-Qq; Wed, 21 Apr 2021 05:32:01 -0400
-Received: from szxga02-in.huawei.com ([45.249.212.188]:2076)
+ (Exim 4.90_1) (envelope-from <wangxingang5@huawei.com>)
+ id 1lZ7ra-000197-Am; Wed, 21 Apr 2021 04:05:34 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:5019)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1lZ9DB-0004Pn-OY; Wed, 21 Apr 2021 05:32:00 -0400
-Received: from DGGEML402-HUB.china.huawei.com (unknown [172.30.72.55])
- by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4FQFcx6XTdzRX8V;
- Wed, 21 Apr 2021 17:29:37 +0800 (CST)
-Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
- DGGEML402-HUB.china.huawei.com (10.3.17.38) with Microsoft SMTP Server (TLS)
- id 14.3.498.0; Wed, 21 Apr 2021 17:31:49 +0800
-Received: from [10.174.187.128] (10.174.187.128) by
- dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
- 15.1.2176.2; Wed, 21 Apr 2021 17:31:48 +0800
-Subject: Re: [RFC PATCH v2 0/6] hw/arm/virt: Introduce cpu topology support
-To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-References: <20210413080745.33004-1-wangyanan55@huawei.com>
-From: "wangyanan (Y)" <wangyanan55@huawei.com>
-Message-ID: <9162b10a-9dc2-3230-b4c1-62c343c5c50b@huawei.com>
-Date: Wed, 21 Apr 2021 17:31:48 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+ (Exim 4.90_1) (envelope-from <wangxingang5@huawei.com>)
+ id 1lZ7rX-00028E-Pi; Wed, 21 Apr 2021 04:05:34 -0400
+Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.59])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4FQCj65sBlztVWy;
+ Wed, 21 Apr 2021 16:03:06 +0800 (CST)
+Received: from huawei.com (10.174.185.226) by DGGEMS411-HUB.china.huawei.com
+ (10.3.19.211) with Microsoft SMTP Server id 14.3.498.0; Wed, 21 Apr 2021
+ 16:05:18 +0800
+From: Wang Xingang <wangxingang5@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
+ <shannon.zhaosl@gmail.com>, <imammedo@redhat.com>, <mst@redhat.com>,
+ <marcel.apfelbaum@gmail.com>, <peter.maydell@linaro.org>,
+ <ehabkost@redhat.com>, <richard.henderson@linaro.org>, <pbonzini@redhat.com>
+Subject: [PATCH RFC v3 8/8] hw/i386/acpi-build: Add bypass_iommu check when
+ building IVRS table
+Date: Wed, 21 Apr 2021 08:05:03 +0000
+Message-ID: <1618992303-19556-9-git-send-email-wangxingang5@huawei.com>
+X-Mailer: git-send-email 2.6.4.windows.1
+In-Reply-To: <1618992303-19556-1-git-send-email-wangxingang5@huawei.com>
+References: <1618992303-19556-1-git-send-email-wangxingang5@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20210413080745.33004-1-wangyanan55@huawei.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-Content-Language: en-US
-X-Originating-IP: [10.174.187.128]
-X-ClientProxiedBy: dggeme706-chm.china.huawei.com (10.1.199.102) To
- dggpemm500023.china.huawei.com (7.185.36.83)
+Content-Type: text/plain
+X-Originating-IP: [10.174.185.226]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.188;
- envelope-from=wangyanan55@huawei.com; helo=szxga02-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.191;
+ envelope-from=wangxingang5@huawei.com; helo=szxga05-in.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -96,97 +90,35 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
- "Michael S . Tsirkin" <mst@redhat.com>, wanghaibin.wang@huawei.com,
- Shannon Zhao <shannon.zhaosl@gmail.com>, Alistair
- Francis <alistair.francis@wdc.com>, prime.zeng@hisilicon.com,
- yangyicong@huawei.com, yuzenghui@huawei.com,
- Igor Mammedov <imammedo@redhat.com>, zhukeqian1@huawei.com,
- Jiajie Li <lijiajie11@huawei.com>, David Gibson <david@gibson.dropbear.id.au>
+Cc: xieyingtai@huawei.com, cenjiahui@huawei.com, wangxingang5@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JqmeTqlJq2gm
+X-TUID: eizfsQzdyEtg
 
+From: Xingang Wang <wangxingang5@huawei.com>
 
-On 2021/4/13 16:07, Yanan Wang wrote:
-> Hi,
->
-> This series is a new version of [0] recently posted by Ying Fang
-> to introduce cpu topology support for ARM platform. I have taken
-> over his work about this now, thanks for his contribution.
->
-> Description:
-> An accurate cpu topology may help improve the cpu scheduler's decision
-> making when dealing with multi-core system. So cpu topology description
-> is helpful to provide guest with the right view. Dario Faggioli's talk
-> in [1] also shows the virtual topology could have impact on scheduling
-> performace. Thus this patch series introduces cpu topology support for
-> ARM platform.
->
-> This series originally comes from Andrew Jones's patches [2], but with
-> some re-arrangement. Thanks for Andrew's contribution. In this series,
-> both fdt and ACPI PPTT table are introduced to present cpu topology to
-> the guest. And a new function virt_smp_parse() not like the default
-> smp_parse() is introduced, which prefers cores over sockets.
->
-> [0] https://patchwork.kernel.org/project/qemu-devel/cover/20210225085627.2263-1-fangying1@huawei.com/
-> [1] https://kvmforum2020.sched.com/event/eE1y/virtual-topology-for-virtual-machines-friend-or-foe-dario-faggioli-suse
-> [2] https://github.com/rhdrjones/qemu/commit/ecfc1565f22187d2c715a99bbcd35cf3a7e428fa
->
-> Test results:
-> After applying this patch series, launch a guest with virt-6.0 and cpu
-> topology configured with: -smp 96,sockets=2,clusters=6,cores=4,threads=2,
-Fix the incorrect statement:
-Here the command line was "-smp 96, sockets=2, cores=24,threads=2" in 
-reality.
+When building IVRS table, only devices which go through iommu
+will be scanned, and the corresponding ivhd will be inserted.
 
-Thanks,
-Yanan
-> VM's cpu topology description shows as below.
->
-> Architecture:        aarch64
-> Byte Order:          Little Endian
-> CPU(s):              96
-> On-line CPU(s) list: 0-95
-> Thread(s) per core:  2
-> Core(s) per socket:  24
-> Socket(s):           2
-> NUMA node(s):        1
-> Vendor ID:           0x48
-> Model:               0
-> Stepping:            0x1
-> BogoMIPS:            200.00
-> NUMA node0 CPU(s):   0-95
->
-> ---
->
-> Changelogs:
-> v1->v2:
-> - Address Andrew Jones's comments
-> - Address Michael S. Tsirkin's comments
-> - Pick up one more patch(patch#6) of Andrew Jones
-> - Rebased on v6.0.0-rc2 release
->
-> ---
->
-> Andrew Jones (3):
->    device_tree: Add qemu_fdt_add_path
->    hw/arm/virt: DT: Add cpu-map
->    hw/arm/virt: Replace smp_parse with one that prefers cores
->
-> Yanan Wang (2):
->    hw/acpi/aml-build: Add processor hierarchy node structure
->    hw/arm/virt-acpi-build: Add PPTT table
->
-> Ying Fang (1):
->    hw/arm/virt-acpi-build: Distinguish possible and present cpus
->
->   hw/acpi/aml-build.c          |  27 ++++++++
->   hw/arm/virt-acpi-build.c     |  77 ++++++++++++++++++++--
->   hw/arm/virt.c                | 120 ++++++++++++++++++++++++++++++++++-
->   include/hw/acpi/aml-build.h  |   4 ++
->   include/hw/arm/virt.h        |   1 +
->   include/sysemu/device_tree.h |   1 +
->   softmmu/device_tree.c        |  45 ++++++++++++-
->   7 files changed, 268 insertions(+), 7 deletions(-)
->
+Signed-off-by: Xingang Wang <wangxingang5@huawei.com>
+Signed-off-by: Jiahui Cen <cenjiahui@huawei.com>
+---
+ hw/i386/acpi-build.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+index fdb26682cb..71fb95737c 100644
+--- a/hw/i386/acpi-build.c
++++ b/hw/i386/acpi-build.c
+@@ -2229,7 +2229,7 @@ ivrs_host_bridges(Object *obj, void *opaque)
+     if (object_dynamic_cast(obj, TYPE_PCI_HOST_BRIDGE)) {
+         PCIBus *bus = PCI_HOST_BRIDGE(obj)->bus;
+ 
+-        if (bus) {
++        if (bus && !pci_bus_bypass_iommu(bus)) {
+             pci_for_each_device(bus, pci_bus_num(bus), insert_ivhd, ivhd_blob);
+         }
+     }
+-- 
+2.19.1
+

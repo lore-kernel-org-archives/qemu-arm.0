@@ -1,68 +1,67 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp218552lfb;
-        Wed, 21 Apr 2021 01:08:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzzh31B9mrw2EXQrzUqZEZ761EFU0Pt3EsW4iHmyojn2wsYIFRD69eSRmB6WNBTBkN4FjNK
-X-Received: by 2002:ab0:2248:: with SMTP id z8mr16007328uan.91.1618992507918;
-        Wed, 21 Apr 2021 01:08:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618992507; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp220144lfb;
+        Wed, 21 Apr 2021 01:10:43 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyYknJIyICiNBE2MqthumbA2rAWJo7uk3Au5IKmUNepxw5OljzKS76TKGkjxlzmoAxCfO/v
+X-Received: by 2002:a67:65c6:: with SMTP id z189mr11341355vsb.17.1618992643464;
+        Wed, 21 Apr 2021 01:10:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618992643; cv=none;
         d=google.com; s=arc-20160816;
-        b=zRFkxzBOCQlHWToOO4IpLczLjQ0p+/bjXkKIuE4hMuZ/77tjL+lVnVjGpglKeMtccA
-         0yn1yJdmdWKAoi+oj58uFoN1Z8Tp9XBjvWOMsfDQQeZQgF+n22mFhBDhxJKkz14kVDn1
-         ykvDSA5BgE83UvLh8sbAYNccs9WMX9BB4tUAhYiwqQ1SAQyVwfY4wbOkDMISA8RyjnEk
-         8O8Oxxswbydbgc7wOvL2KvbXMwkkO+bb62tjypyeunZ6XYQl3LyESM9i+b2cSyqyMHmK
-         9rlGyDboQQYEXRIFgsrHYsew7Oyc5abhuLBRFw0Q6WGoylbFNBYRrvzVI9Mn0sQvQdOW
-         EpGg==
+        b=kSOv4rRjj/WB0esSMRZt8jORfpW0U2FP1Sr7CamSWOc80tAQGg2Rd/zmAnNC88jGSs
+         bKTjuF2OoLGnd4Ec294Dlic0U3BDU4sxDbznq/hbJkfcnrMRibvfQ1dg1sQtUgw2RS1f
+         QXUNgHTa7E57B3wGnFETjhpbPZ03TeV9coLpcsEdKMPML1mx26atk91kS0Y4arGh4VAx
+         NojO5Xh9epvFwyuQ8f2CjZQ09tiHTj35kqcCxUMPK//PyRAdlzMEomDGE4S/yWt3U6o1
+         NE7lS+yEfc3FgaEmIjqdo9CbuRrKSY5qmIatvc/OOlJxgEwDX1WODaTUisJgLw0UtGco
+         pByA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:references
          :in-reply-to:message-id:date:subject:to:from;
-        bh=d6dZFzP/cwP4DI65KsK9EPMH8aPg1vVuhSDKqGB8xNk=;
-        b=si+rgpihMeeYVcV1ZEWwvybGpeLtBlOfjyqA55qIOfDRaQFfE5HWadOCuTnTr9bR63
-         dsAa6BERSj8CHutE9INdm7mELzB/DzTZkVoNHMdCqnkmYVF8kqrLIhZEAcO+3ooAJYX1
-         Da49smGYlMzg+TLBnUOW+WNumSeuzvUjo4ddCV9UqIQzE52my4De27MAP9idHY04ZqHp
-         QtzYN+uy5zINXMXNEhgwxC2uGXgridA4nT02jyF+pio7/NexrTl8No1QlD0exWSr5XYr
-         stotaKk37aKGNov0KQ6QvEthnJOBGMJy4zUBbZI657PDoucQ9gVDBNNG76azKD2Dmzki
-         G5Yw==
+        bh=Ikvs8YNGqDGi/pJ6zE/dzsCCbjU5EwI3Ytn9W38XtEU=;
+        b=gCBoWxOgIriQC+kanX7BlStx8EB/6mjLRM28MZNgwg5oltfc/3mTPuq4+zxv7csaZy
+         v7MveDRDPkjmhCQ04srPNLrEIClkIkhdEsLAzc8vFyjdZOeR2vkMhzwKmBmYeWBZRYiQ
+         +ueajoSBFZIeMxDV0QDygU1DlD8/aD3ufzZhpgZBpf0fJ08NbqyJNGBp6XP5dJXiHo71
+         D/xZddUTEeCPXWW469xqyv2bku996QAqaDVx7AuM3CkGilK4JhU+JrBPO4VrwaN9ZqDi
+         iwGJ2+gmB+B0qscShtmCeWbb3JZM/mhOOM86vo/m8DCYAcGd3xsBamHH/B+zeDKTKjOk
+         ob+A==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m6si566019vko.20.2021.04.21.01.08.27
+        by mx.google.com with ESMTPS id l2si547397vkg.88.2021.04.21.01.10.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 21 Apr 2021 01:08:27 -0700 (PDT)
+        Wed, 21 Apr 2021 01:10:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:47154 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53522 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lZ7uN-0005JX-7b
-	for alex.bennee@linaro.org; Wed, 21 Apr 2021 04:08:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51932)
+	id 1lZ7wY-0007sH-Pz
+	for alex.bennee@linaro.org; Wed, 21 Apr 2021 04:10:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51894)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangxingang5@huawei.com>)
- id 1lZ7rd-0001FF-6y; Wed, 21 Apr 2021 04:05:37 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:5036)
+ id 1lZ7ra-00019W-Mj; Wed, 21 Apr 2021 04:05:34 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:5040)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangxingang5@huawei.com>)
- id 1lZ7rZ-00023t-Td; Wed, 21 Apr 2021 04:05:36 -0400
+ id 1lZ7rY-00023y-4X; Wed, 21 Apr 2021 04:05:34 -0400
 Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4FQCjW4ND3zlYZg;
+ by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4FQCjW61nrzlYrH;
  Wed, 21 Apr 2021 16:03:27 +0800 (CST)
 Received: from huawei.com (10.174.185.226) by DGGEMS411-HUB.china.huawei.com
  (10.3.19.211) with Microsoft SMTP Server id 14.3.498.0; Wed, 21 Apr 2021
- 16:05:18 +0800
+ 16:05:16 +0800
 From: Wang Xingang <wangxingang5@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
  <shannon.zhaosl@gmail.com>, <imammedo@redhat.com>, <mst@redhat.com>,
  <marcel.apfelbaum@gmail.com>, <peter.maydell@linaro.org>,
  <ehabkost@redhat.com>, <richard.henderson@linaro.org>, <pbonzini@redhat.com>
-Subject: [PATCH RFC v3 7/8] hw/i386/acpi-build: Add explicit scope in DMAR
- table
-Date: Wed, 21 Apr 2021 08:05:02 +0000
-Message-ID: <1618992303-19556-8-git-send-email-wangxingang5@huawei.com>
+Subject: [PATCH RFC v3 5/8] hw/pci: Add pci_bus_range to get bus number range
+Date: Wed, 21 Apr 2021 08:05:00 +0000
+Message-ID: <1618992303-19556-6-git-send-email-wangxingang5@huawei.com>
 X-Mailer: git-send-email 2.6.4.windows.1
 In-Reply-To: <1618992303-19556-1-git-send-email-wangxingang5@huawei.com>
 References: <1618992303-19556-1-git-send-email-wangxingang5@huawei.com>
@@ -93,120 +92,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: xieyingtai@huawei.com, cenjiahui@huawei.com, wangxingang5@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ee1De65VVYAr
+X-TUID: 3upjEPFrMJ1T
 
 From: Xingang Wang <wangxingang5@huawei.com>
 
-In DMAR table, the drhd is set to cover all pci devices when intel_iommu
-is on. This patch add explicit scope data, including only the pci devices
-that go through iommu.
+This helps to get the bus number range of a pci bridge hierarchy.
 
 Signed-off-by: Xingang Wang <wangxingang5@huawei.com>
 Signed-off-by: Jiahui Cen <cenjiahui@huawei.com>
 ---
- hw/i386/acpi-build.c | 68 ++++++++++++++++++++++++++++++++++++++++++--
- 1 file changed, 66 insertions(+), 2 deletions(-)
+ hw/pci/pci.c         | 15 +++++++++++++++
+ include/hw/pci/pci.h |  1 +
+ 2 files changed, 16 insertions(+)
 
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index de98750aef..fdb26682cb 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -1988,6 +1988,56 @@ build_srat(GArray *table_data, BIOSLinker *linker, MachineState *machine)
-                  x86ms->oem_table_id);
+diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+index 301addfb35..2ac3b8d76c 100644
+--- a/hw/pci/pci.c
++++ b/hw/pci/pci.c
+@@ -538,6 +538,21 @@ int pci_bus_num(PCIBus *s)
+     return PCI_BUS_GET_CLASS(s)->bus_num(s);
  }
  
-+/*
-+ * Insert DMAR scope for PCI bridges and endpoint devcie
-+ */
-+static void
-+insert_scope(PCIBus *bus, PCIDevice *dev, void *opaque)
++void pci_bus_range(PCIBus *bus, int *min_bus, int *max_bus)
 +{
-+    GArray *scope_blob = opaque;
-+    AcpiDmarDeviceScope *scope = NULL;
++    int i;
++    *min_bus = *max_bus = pci_bus_num(bus);
 +
-+    if (object_dynamic_cast(OBJECT(dev), TYPE_PCI_BRIDGE)) {
-+        /* Dmar Scope Type: 0x02 for PCI Bridge */
-+        build_append_int_noprefix(scope_blob, 0x02, 1);
-+    } else {
-+        /* Dmar Scope Type: 0x01 for PCI Endpoint Device */
-+        build_append_int_noprefix(scope_blob, 0x01, 1);
-+    }
++    for (i = 0; i < ARRAY_SIZE(bus->devices); ++i) {
++        PCIDevice *dev = bus->devices[i];
 +
-+    /* length */
-+    build_append_int_noprefix(scope_blob,
-+                              sizeof(*scope) + sizeof(scope->path[0]), 1);
-+    /* reserved */
-+    build_append_int_noprefix(scope_blob, 0, 2);
-+    /* enumeration_id */
-+    build_append_int_noprefix(scope_blob, 0, 1);
-+    /* bus */
-+    build_append_int_noprefix(scope_blob, pci_bus_num(bus), 1);
-+    /* device */
-+    build_append_int_noprefix(scope_blob, PCI_SLOT(dev->devfn), 1);
-+    /* function */
-+    build_append_int_noprefix(scope_blob, PCI_FUNC(dev->devfn), 1);
-+}
-+
-+/* For a given PCI host bridge, walk and insert DMAR scope */
-+static int
-+dmar_host_bridges(Object *obj, void *opaque)
-+{
-+    GArray *scope_blob = opaque;
-+
-+    if (object_dynamic_cast(obj, TYPE_PCI_HOST_BRIDGE)) {
-+        PCIBus *bus = PCI_HOST_BRIDGE(obj)->bus;
-+
-+        if (bus && !pci_bus_bypass_iommu(bus)) {
-+            pci_for_each_device(bus, pci_bus_num(bus), insert_scope,
-+                                scope_blob);
++        if (dev && PCI_DEVICE_GET_CLASS(dev)->is_bridge) {
++            *min_bus = MIN(*min_bus, dev->config[PCI_SECONDARY_BUS]);
++            *max_bus = MAX(*max_bus, dev->config[PCI_SUBORDINATE_BUS]);
 +        }
 +    }
-+
-+    return 0;
 +}
 +
- /*
-  * VT-d spec 8.1 DMA Remapping Reporting Structure
-  * (version Oct. 2014 or later)
-@@ -2007,6 +2057,15 @@ build_dmar_q35(GArray *table_data, BIOSLinker *linker, const char *oem_id,
-     /* Root complex IOAPIC use one path[0] only */
-     size_t ioapic_scope_size = sizeof(*scope) + sizeof(scope->path[0]);
-     IntelIOMMUState *intel_iommu = INTEL_IOMMU_DEVICE(iommu);
-+    GArray *scope_blob = g_array_new(false, true, 1);
-+
-+    /*
-+     * A PCI bus walk, for each PCI host bridge.
-+     * Insert scope for each PCI bridge and endpoint device which
-+     * is attached to a bus with iommu enabled.
-+     */
-+    object_child_foreach_recursive(object_get_root(),
-+                                   dmar_host_bridges, scope_blob);
- 
-     assert(iommu);
-     if (x86_iommu_ir_supported(iommu)) {
-@@ -2020,8 +2079,9 @@ build_dmar_q35(GArray *table_data, BIOSLinker *linker, const char *oem_id,
-     /* DMAR Remapping Hardware Unit Definition structure */
-     drhd = acpi_data_push(table_data, sizeof(*drhd) + ioapic_scope_size);
-     drhd->type = cpu_to_le16(ACPI_DMAR_TYPE_HARDWARE_UNIT);
--    drhd->length = cpu_to_le16(sizeof(*drhd) + ioapic_scope_size);
--    drhd->flags = ACPI_DMAR_INCLUDE_PCI_ALL;
-+    drhd->length =
-+        cpu_to_le16(sizeof(*drhd) + ioapic_scope_size + scope_blob->len);
-+    drhd->flags = 0;            /* Don't include all pci device */
-     drhd->pci_segment = cpu_to_le16(0);
-     drhd->address = cpu_to_le64(Q35_HOST_BRIDGE_IOMMU_ADDR);
- 
-@@ -2035,6 +2095,10 @@ build_dmar_q35(GArray *table_data, BIOSLinker *linker, const char *oem_id,
-     scope->path[0].device = PCI_SLOT(Q35_PSEUDO_DEVFN_IOAPIC);
-     scope->path[0].function = PCI_FUNC(Q35_PSEUDO_DEVFN_IOAPIC);
- 
-+    /* Add scope found above */
-+    g_array_append_vals(table_data, scope_blob->data, scope_blob->len);
-+    g_array_free(scope_blob, true);
-+
-     if (iommu->dt_supported) {
-         atsr = acpi_data_push(table_data, sizeof(*atsr));
-         atsr->type = cpu_to_le16(ACPI_DMAR_TYPE_ATSR);
+ int pci_bus_numa_node(PCIBus *bus)
+ {
+     return PCI_BUS_GET_CLASS(bus)->numa_node(bus);
+diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
+index f4d51b672b..d0f4266e37 100644
+--- a/include/hw/pci/pci.h
++++ b/include/hw/pci/pci.h
+@@ -450,6 +450,7 @@ static inline PCIBus *pci_get_bus(const PCIDevice *dev)
+     return PCI_BUS(qdev_get_parent_bus(DEVICE(dev)));
+ }
+ int pci_bus_num(PCIBus *s);
++void pci_bus_range(PCIBus *bus, int *min_bus, int *max_bus);
+ static inline int pci_dev_bus_num(const PCIDevice *dev)
+ {
+     return pci_bus_num(pci_get_bus(dev));
 -- 
 2.19.1
 

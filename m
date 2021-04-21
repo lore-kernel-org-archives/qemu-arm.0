@@ -1,122 +1,96 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp2387395lfb;
-        Tue, 20 Apr 2021 12:07:44 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJygRALguuBjPwzdnTW9ID5YdKBn1qGwlO4lyk9Pu5e/ChlfH79kn/edWPj2yvYOHGjewPC3
-X-Received: by 2002:a5d:97cb:: with SMTP id k11mr20392588ios.204.1618945664586;
-        Tue, 20 Apr 2021 12:07:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618945664; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp141513lfb;
+        Tue, 20 Apr 2021 22:53:34 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxXNOeFSI+pbiCP14o7q6cEHW/lBl0/1vvbH7DOkcG837xDzkDZhFfP2Nu/1HaPkFPJ/nO1
+X-Received: by 2002:a37:c41:: with SMTP id 62mr19380644qkm.66.1618984414726;
+        Tue, 20 Apr 2021 22:53:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618984414; cv=none;
         d=google.com; s=arc-20160816;
-        b=iMNtI70oEFO6rzyy6mfoZZc5xRw9grvw7dpTPFoPpdPWMGcWbgoQfJLamk+o2JaaTG
-         /NlfzG7VwL4fZiaxKP/WjB9baHZSeo5n1HNNG+JJpciNxfzrLYqpJQv6Y18dte9MjYd5
-         cp1uAxsw+KLdxJDNAUb7TCTIuxkBFr/wDHImQAmFA6HH4wHrqjB4maVmTHleVI/+Fnpy
-         qKDP6rb3SKRDw6Bm0uZ3bx9KqAqgOqS1HYpd6vzGGViKah20S2AUHLCIl1A1h6UcMvq4
-         07BVwcBC7UsyVedxwQCd4llfFE+IMS2B/MrkMPcN5gCloHwRIeoblaO2yIf/MRdIZnma
-         7U/A==
+        b=TO+FdI7n6/APTlFhm+ZzLUTTnJoyUniBywA/J1TH8+AYql895F5/eSwG9xXVB/Oipl
+         6Ko55NmgSVfxWUH6N8N3CF3fO++W6+hGQFqP4BDci53e304hJFvBW/rE/9VDSt1AfMiK
+         EOdEyF0qcQdV7toLInO6wN22vCkf3/ecdyZD8Bjr/e7NB4VOwljJ61pElPxwp30kZ4gG
+         OBNe67p6mdSrfWmTVbKv/hRypUxvTJJkJcqzDh/mLmQ2q5o8mwCXOxuwCxlc4Hu89Gc9
+         XmrrK++nS2R8lnyadYRNNEMgINseAScn27nkj6obujrwS8+fuae1O447ADcU5/N5FuZR
+         Ztww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-disposition:in-reply-to:mime-version:references:message-id
-         :subject:to:from:date:dkim-signature;
-        bh=Z+GqaHEE98VpsfTBpc6n0WESBAyIBmrUSF4SZxsZHMI=;
-        b=XmD1LX8WlZQP1xEvVNGMVJeaOPaQnxkrL3+Jm8lMIlZlPXK67EzTxLfh+bWPPEx/A2
-         mw/lVe9+0LzRxqyeO2sPPk6zAxGMLBBFDPa1KwhQQjUjfw0+Y6mW+UhBvWPARoZoAhhx
-         3NIe6nLC0USUcLNGpEtFENn39ET0H2KFpjCc+T+oQ+MmhyKWUcocKIJYXSP5h9n692Vk
-         DbO/2h6H1Okg7J8iMZxlaYQcFkpDGPzd4zwiIKytYPsSXHdO2czSYh/wsxTjG6r/8GQa
-         /bxESTAKG8tgStmxu2lzr0GkayM9+dSXWYDlrwCIi+sBXP1DaxgK0HKZP59RdMCindh8
-         EBVw==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=liWm7wyZoMBjUh+wLj7peqdJSpA80KX3CClfcFnsBx4=;
+        b=A9OFVVW/cEeJ/met6W6sApGMJj/ZJCaKPbthNSYHHLB9BHt4rrjR6hc/8HLxnrWEY4
+         7Tqac09IwvR8Leql05LOhmduS2Q9/Muly3LV4yNbMbnx4SzH3Rowf6Bm48kbY0PrtU9b
+         ZWmS4Zv8KQdadHQLWbMKQO+ZB5ugkoGvnqaZjZVxl6rlqzS98s68DtbDSg7/RDKDAcjh
+         V7wvye4jaywYxhHBIuOuUwM0GFK+K//1gnPB4ruPRN8yrD7YWpGfHPb0ftlaRRZavoye
+         nyM9qTGMEaapHJ3jv691X93if09ErVTknNfUkt8J6LKhgDx6eSOXItO3HVI4ycxOv3ZV
+         v2Cg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=EMpDal56;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d25si4893546ioh.30.2021.04.20.12.07.44
+        by mx.google.com with ESMTPS id l8si926477qvb.179.2021.04.20.22.53.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 Apr 2021 12:07:44 -0700 (PDT)
+        Tue, 20 Apr 2021 22:53:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=EMpDal56;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34648 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:54942 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lYvip-0005RR-UI
-	for alex.bennee@linaro.org; Tue, 20 Apr 2021 15:07:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45366)
+	id 1lZ5nq-00082s-3Q
+	for alex.bennee@linaro.org; Wed, 21 Apr 2021 01:53:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53434)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1lYviQ-0005QD-A0
- for qemu-arm@nongnu.org; Tue, 20 Apr 2021 15:07:18 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:41327)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1lZ5nh-000824-O9; Wed, 21 Apr 2021 01:53:25 -0400
+Received: from smtpout1.mo3005.mail-out.ovh.net ([79.137.123.220]:57849
+ helo=smtpout1.3005.mail-out.ovh.net)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1lYviO-00025c-Ns
- for qemu-arm@nongnu.org; Tue, 20 Apr 2021 15:07:18 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1618945636;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Z+GqaHEE98VpsfTBpc6n0WESBAyIBmrUSF4SZxsZHMI=;
- b=EMpDal56Efmk1XLlPYwXKRpFIaTcb78Ck7e757niJmg8TEeng0VB1UQH+RnQPr2QglO+VF
- /NEPo4TbJt+V5xyboctH859KJGFrBnfu0saLraAmkiI8GtV5+WW4rLOIWcobpRNdC4PWfu
- 9HATSRV2SFVnM1SvuQGnN5tietznrOQ=
-Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com
- [209.85.219.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-377-5ZLY3ehpMtaeHk4npp_RKQ-1; Tue, 20 Apr 2021 15:07:12 -0400
-X-MC-Unique: 5ZLY3ehpMtaeHk4npp_RKQ-1
-Received: by mail-qv1-f71.google.com with SMTP id
- m19-20020a0cdb930000b029019a25080c40so12087693qvk.11
- for <qemu-arm@nongnu.org>; Tue, 20 Apr 2021 12:07:12 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=Z+GqaHEE98VpsfTBpc6n0WESBAyIBmrUSF4SZxsZHMI=;
- b=sZ6PdHNoZfCT/cHojztj8q/H4HzpjjTDfrLkEBoqMSJCh7GqRZ3p7N/74FszLPR1Ss
- fNjNkDdupWQ0DErDmGVSAydo6ZFMeen3eFIZ5l97DZXOzseEVTAoVaCfqWNDzOtVoSZ8
- MFW0AC/hcEnM8PqokmLjxgHS9Ld2L0y4aoHMtZCIskp7/nOqKo0OOzfZl/V+mY8FwW9u
- MNixbqMNFd20dPrZBgJtXv/F/KJKLDodNtWFBcxAzPbZAI5i7XPtEiWv8lknNRxdK2eo
- BR2lAIvElmAoiiLZIteBT7vhKiDjZ+b67qDHMVAt+Vstx76CH2ZBvcvWxIH6yZuZG8Nz
- 4jRw==
-X-Gm-Message-State: AOAM533k7AEtaahdbkZuxZqDdJ1te4CJoHnSlflhgq/H+HkqXFKmRbcv
- 8ss65Y+XmymrCvwDSTRdmQ8bEOj5EINcKyjrIze+1UTcF4sOBIUQa7QHAv2fW3icfDitVSGGckz
- clnLlcDMulX17
-X-Received: by 2002:a0c:9b82:: with SMTP id o2mr28862694qve.47.1618945632100; 
- Tue, 20 Apr 2021 12:07:12 -0700 (PDT)
-X-Received: by 2002:a0c:9b82:: with SMTP id o2mr28862675qve.47.1618945631831; 
- Tue, 20 Apr 2021 12:07:11 -0700 (PDT)
-Received: from xz-x1 (bras-base-toroon474qw-grc-88-174-93-75-154.dsl.bell.ca.
- [174.93.75.154])
- by smtp.gmail.com with ESMTPSA id h193sm3024624qke.90.2021.04.20.12.07.10
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 20 Apr 2021 12:07:11 -0700 (PDT)
-Date: Tue, 20 Apr 2021 15:07:09 -0400
-From: Peter Xu <peterx@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: Re: [PATCH v2 00/11] memory: Forbid mapping AddressSpace root
- MemoryRegion
-Message-ID: <20210420190709.GE4440@xz-x1>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1lZ5nf-0006DS-VV; Wed, 21 Apr 2021 01:53:25 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.143.134])
+ by mo3005.mail-out.ovh.net (Postfix) with ESMTPS id A0178140180;
+ Wed, 21 Apr 2021 05:53:11 +0000 (UTC)
+Received: from kaod.org (37.59.142.105) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2242.4; Wed, 21 Apr
+ 2021 07:53:10 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-105G006542725c2-c883-490c-9cca-65290617475c,
+ 3FD145AD23CDC28BEDADD0458B38E3079EC5C648) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 90.89.73.13
+Subject: Re: [PATCH v2 01/11] hw/arm/aspeed: Do not directly map ram container
+ onto main address bus
+To: Peter Xu <peterx@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <f4bug@amsat.org>
 References: <20210417103028.601124-1-f4bug@amsat.org>
+ <20210417103028.601124-2-f4bug@amsat.org> <20210420182819.GD4440@xz-x1>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <1c21cbf3-c80b-4e65-485e-334ae84cefe0@kaod.org>
+Date: Wed, 21 Apr 2021 07:53:09 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <20210417103028.601124-1-f4bug@amsat.org>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=peterx@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+In-Reply-To: <20210420182819.GD4440@xz-x1>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=peterx@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Originating-IP: [37.59.142.105]
+X-ClientProxiedBy: DAG3EX1.mxp5.local (172.16.2.21) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 61b27d41-c59b-40a7-9f65-98c2aa499aa5
+X-Ovh-Tracer-Id: 13674898794892725237
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduledrvddtjedgleekucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepjeekudeuudevleegudeugeekleffveeludejteffiedvledvgfekueefudehheefnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdehnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehpvghtvghrgiesrhgvughhrghtrdgtohhm
+Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
+ helo=smtpout1.3005.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -129,68 +103,37 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?utf-8?B?SGVydsOp?= Poussineau <hpoussin@reactos.org>,
- David Gibson <david@gibson.dropbear.id.au>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+ Joel Stanley <joel@jms.id.au>, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-ppc@nongnu.org, David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AJMVy5c1i5e+
+X-TUID: 5VGXfhXQTOAU
 
-On Sat, Apr 17, 2021 at 12:30:17PM +0200, Philippe Mathieu-Daudé wrote:
-> AddressSpace are physical address view and shouldn't be using
-> non-zero base address. The correct way to map a MR used as AS
-> root is to use a MR alias.
-
-Today when I rethink this, I figured another way (maybe easier?) to fix the
-issue.
-
-The major problem so far we had is that mr->addr can be anything for a root mr
-if it's added as subregion of another mr.
-
-E.g. in current implementation of mtree_print_mr() MR.addr is constantly used
-as an offset value:
-
-    cur_start = base + mr->addr;
-
-However afaict mr->addr is defined as "relative offset of this mr to its
-container", as in memory_region_add_subregion_common().  Say, mr->addr is
-undefined from that pov if mr->container==NULL, as this MR belongs to nobody.
-And if it's defined, it's only meaning is in its container's context (or say,
-address space) only.
-
-That said, when we do mtree_print_mr(), another solution could be as simple as,
-not referencing mr->addr if we _know_ we're working on the root mr, as this is
-definitely _not_ in the context of the mr's container, even if it has one
-container after all:
-
----8<---
-diff --git a/softmmu/memory.c b/softmmu/memory.c
-index d4493ef9e43..d71fb8ecc89 100644
---- a/softmmu/memory.c
-+++ b/softmmu/memory.c
-@@ -2940,7 +2940,7 @@ static void mtree_print_mr(const MemoryRegion *mr, unsigned int level,
-         return;
-     }
- 
--    cur_start = base + mr->addr;
-+    cur_start = base + (level == 1) ? 0 : mr->addr;
-     cur_end = cur_start + MR_SIZE(mr->size);
- 
-     /*
----8<---
-
-Phil, do you think it'll work too to fix the strange offset value dumped in
-"info mtree"?
-
-I don't know (even if it works, perhaps I've missed something) which is better,
-as current series seems cleaner, then any mr will either belong to a AS or a MR
-(never both!), but just raise it up.
+On 4/20/21 8:28 PM, Peter Xu wrote:
+> On Sat, Apr 17, 2021 at 12:30:18PM +0200, Philippe Mathieu-Daudé wrote:
+>> The RAM container is exposed as an AddressSpace.
+> 
+> I didn't see where did ram_container got exposed as an address space.
+> 
+> I see it's added as one subregion of get_system_memory(), which looks okay? 
+my version of this patch took a simpler approach. See below.
 
 Thanks,
 
---
-Peter Xu
+C.
+
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -327,7 +327,7 @@ static void aspeed_machine_init(MachineState *machine)
+     object_property_set_int(OBJECT(&bmc->soc), "num-cs", amc->num_cs,
+                             &error_abort);
+     object_property_set_link(OBJECT(&bmc->soc), "dram",
+-                             OBJECT(&bmc->ram_container), &error_abort);
++                             OBJECT(machine->ram), &error_abort);
+     if (machine->kernel_filename) {
+         /*
+          * When booting with a -kernel command line there is no u-boot
 

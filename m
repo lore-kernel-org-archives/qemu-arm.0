@@ -1,139 +1,170 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp141513lfb;
-        Tue, 20 Apr 2021 22:53:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxXNOeFSI+pbiCP14o7q6cEHW/lBl0/1vvbH7DOkcG837xDzkDZhFfP2Nu/1HaPkFPJ/nO1
-X-Received: by 2002:a37:c41:: with SMTP id 62mr19380644qkm.66.1618984414726;
-        Tue, 20 Apr 2021 22:53:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618984414; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp416545lfb;
+        Wed, 21 Apr 2021 06:03:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxSL4ZDJkU8Wl/qbL7Y+FHQXutncQOfSB3A2KGfiO2pqTm+bfKvzsrJU7VS+8CILWQGN1fa
+X-Received: by 2002:a05:6512:203:: with SMTP id a3mr19742224lfo.111.1619010217573;
+        Wed, 21 Apr 2021 06:03:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619010217; cv=none;
         d=google.com; s=arc-20160816;
-        b=TO+FdI7n6/APTlFhm+ZzLUTTnJoyUniBywA/J1TH8+AYql895F5/eSwG9xXVB/Oipl
-         6Ko55NmgSVfxWUH6N8N3CF3fO++W6+hGQFqP4BDci53e304hJFvBW/rE/9VDSt1AfMiK
-         EOdEyF0qcQdV7toLInO6wN22vCkf3/ecdyZD8Bjr/e7NB4VOwljJ61pElPxwp30kZ4gG
-         OBNe67p6mdSrfWmTVbKv/hRypUxvTJJkJcqzDh/mLmQ2q5o8mwCXOxuwCxlc4Hu89Gc9
-         XmrrK++nS2R8lnyadYRNNEMgINseAScn27nkj6obujrwS8+fuae1O447ADcU5/N5FuZR
-         Ztww==
+        b=HG87pbs+9zT3BbekITgLjlPUzLdvi11BoMkH31T8oLoOfZ2MTXRgmQbvVBeWy7jJSR
+         Qo2AabmBNaY8SmPBK/SE1ShmQABfRGU/1XdN5dGlYLNo9VIZmYhGUU9VrnwkHMR2Qq2n
+         AM+04z0YUB7Hakoz5U5yx0yZh4PRtNzhWFYQQNmaLAVKrZ4Za+GbojOl+i9O+TEQSpXV
+         TsFl36/qXY70H0iUw7lINZ+eB/BiuE0wnlT2xqYbyfURGHDpBlJyozKw2s2XpdZm2xwd
+         uIABXlkBQg6j09YiqxUE4aiWDcDR6IvLWR/+5cnnsGlxJk7AW3pLRQlskY9QQye9L32K
+         bQtw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=liWm7wyZoMBjUh+wLj7peqdJSpA80KX3CClfcFnsBx4=;
-        b=A9OFVVW/cEeJ/met6W6sApGMJj/ZJCaKPbthNSYHHLB9BHt4rrjR6hc/8HLxnrWEY4
-         7Tqac09IwvR8Leql05LOhmduS2Q9/Muly3LV4yNbMbnx4SzH3Rowf6Bm48kbY0PrtU9b
-         ZWmS4Zv8KQdadHQLWbMKQO+ZB5ugkoGvnqaZjZVxl6rlqzS98s68DtbDSg7/RDKDAcjh
-         V7wvye4jaywYxhHBIuOuUwM0GFK+K//1gnPB4ruPRN8yrD7YWpGfHPb0ftlaRRZavoye
-         nyM9qTGMEaapHJ3jv691X93if09ErVTknNfUkt8J6LKhgDx6eSOXItO3HVI4ycxOv3ZV
-         v2Cg==
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=Db5rYtKu6pu05hBUlJnA/FTlz8NWsWOpTXGIw2eqMgE=;
+        b=qh+foVGzbDPzCHZZv5wv5SZn+fmkse8ls9G95AjqNMV/7fVPkYn4cLK7K3bKv0Czbo
+         ol05cdaX5oF0zAv+8q3RCvNUeBf6eoj4oa6UfETXdyM8NANLT+CV7n1uB5AV7Dgab5zg
+         yreCvYrdHYYvFy9kAOsEyhwkw3fa6+a1k2rHNqsML73VQDjLFXFg7nYMTnyxNR5ez5pU
+         gqPqBBem6NQO2YVvWH0SIA/ysGs8Y1qxIlnea8+Ey1yt/w8D+PyzIHCp/2tJB1leuTZB
+         9+6n8+3p8kWdOuUkEkY7jfhknATpCm4t9d+OcyyyhyXjse0+sdI8cSdpOgyIByEoWtgA
+         UVcQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ePGsKjww;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l8si926477qvb.179.2021.04.20.22.53.34
+        by mx.google.com with ESMTPS id a12si2220897lfh.169.2021.04.21.06.03.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 Apr 2021 22:53:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 21 Apr 2021 06:03:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54942 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ePGsKjww;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:49430 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lZ5nq-00082s-3Q
-	for alex.bennee@linaro.org; Wed, 21 Apr 2021 01:53:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53434)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lZCW0-0005ck-FR
+	for alex.bennee@linaro.org; Wed, 21 Apr 2021 09:03:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58174)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1lZ5nh-000824-O9; Wed, 21 Apr 2021 01:53:25 -0400
-Received: from smtpout1.mo3005.mail-out.ovh.net ([79.137.123.220]:57849
- helo=smtpout1.3005.mail-out.ovh.net)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1lZ5nf-0006DS-VV; Wed, 21 Apr 2021 01:53:25 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.143.134])
- by mo3005.mail-out.ovh.net (Postfix) with ESMTPS id A0178140180;
- Wed, 21 Apr 2021 05:53:11 +0000 (UTC)
-Received: from kaod.org (37.59.142.105) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2242.4; Wed, 21 Apr
- 2021 07:53:10 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-105G006542725c2-c883-490c-9cca-65290617475c,
- 3FD145AD23CDC28BEDADD0458B38E3079EC5C648) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 90.89.73.13
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lZCV9-0004hX-U8; Wed, 21 Apr 2021 09:02:43 -0400
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629]:41554)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lZCV8-000577-7W; Wed, 21 Apr 2021 09:02:43 -0400
+Received: by mail-ej1-x629.google.com with SMTP id mh2so41837312ejb.8;
+ Wed, 21 Apr 2021 06:02:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=Db5rYtKu6pu05hBUlJnA/FTlz8NWsWOpTXGIw2eqMgE=;
+ b=ePGsKjwwBtXVggEBzd5AHWiAihy5CCa14MiVNSUoWmV4HyrvtXR7cXEjzTgi4P3fAQ
+ Vp0rC6zI3uooQP1zfzBsMp+XgmdYN+GlAwxTw+IrYW42frVKpQatdny9eV/aoPRF30QL
+ +Pc79ozBmC7Rtzb/QNAj/M6Z6vyT08ss35pL8q1Ca8NZVeQgqncmZxPowLWk2SdtFbRe
+ GpuFYye4dGqdivae5L9WJiNkeZBlmQGGwrNreBtPYylzC68QobM9xkiGhPpDHyWXXTtU
+ uP8kAiShBvIjRcMO88LZA0vIthC83JXVLGoI/SIbnG6Mq71rg/I/JtYiqrI3w6ZopMBS
+ krIQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=Db5rYtKu6pu05hBUlJnA/FTlz8NWsWOpTXGIw2eqMgE=;
+ b=j+ZCNMmJfQYgHx+DngZIUB0pO+1lc9VOYG+d2Lqpb668ZuLOwhbkVs/QJzkeqmsD0Y
+ qgf2O2MLHUZnqcSUUW5mzXlNVmt6oFxjyOHlu5bFfa5cMf8sKMuBQKbIgMunzAo7xy/i
+ tiAPtkv3LRYKq8AJKR94irbji6/hRi2eTAgW3DozVZXw+EbY5u5fxA4Vm1nitw5iKXvu
+ 0pK3ll1uDwZ6/Cbmem30NqdtL8GYGj1dUGlvuh/4EnJ9m4vx2pHDftHWTh4ZpKHCdApA
+ Lj+JCKn/+zvbweeHFEvya3vY8uqa3PrdXBFWTMrj2pQvCAWWsEqf6KfQo6v0mvyDDFtJ
+ gxyg==
+X-Gm-Message-State: AOAM5310RY1wecQR93+RHxDWu7O0zyscN4mE9j7uUeN6VDQoElYLIj84
+ jbrhnXjPHgj2xSLF7VJHoIo=
+X-Received: by 2002:a17:906:b28c:: with SMTP id
+ q12mr33220820ejz.284.1619010158009; 
+ Wed, 21 Apr 2021 06:02:38 -0700 (PDT)
+Received: from [192.168.1.36] (39.red-81-40-121.staticip.rima-tde.net.
+ [81.40.121.39])
+ by smtp.gmail.com with ESMTPSA id 9sm2376915ejv.73.2021.04.21.06.02.36
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 21 Apr 2021 06:02:37 -0700 (PDT)
 Subject: Re: [PATCH v2 01/11] hw/arm/aspeed: Do not directly map ram container
  onto main address bus
-To: Peter Xu <peterx@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <f4bug@amsat.org>
+To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Peter Xu <peterx@redhat.com>
 References: <20210417103028.601124-1-f4bug@amsat.org>
  <20210417103028.601124-2-f4bug@amsat.org> <20210420182819.GD4440@xz-x1>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <1c21cbf3-c80b-4e65-485e-334ae84cefe0@kaod.org>
-Date: Wed, 21 Apr 2021 07:53:09 +0200
+ <1c21cbf3-c80b-4e65-485e-334ae84cefe0@kaod.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <c91b3f57-cc2c-7575-3447-715e329a4a42@amsat.org>
+Date: Wed, 21 Apr 2021 15:02:35 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <20210420182819.GD4440@xz-x1>
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <1c21cbf3-c80b-4e65-485e-334ae84cefe0@kaod.org>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.105]
-X-ClientProxiedBy: DAG3EX1.mxp5.local (172.16.2.21) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 61b27d41-c59b-40a7-9f65-98c2aa499aa5
-X-Ovh-Tracer-Id: 13674898794892725237
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduledrvddtjedgleekucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepjeekudeuudevleegudeugeekleffveeludejteffiedvledvgfekueefudehheefnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdehnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehpvghtvghrgiesrhgvughhrghtrdgtohhm
-Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
- helo=smtpout1.3005.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+Received-SPF: pass client-ip=2a00:1450:4864:20::629;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x629.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
  qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
  Joel Stanley <joel@jms.id.au>, Paolo Bonzini <pbonzini@redhat.com>,
  qemu-ppc@nongnu.org, David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5VGXfhXQTOAU
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: YMDnklnrvBGf
 
-On 4/20/21 8:28 PM, Peter Xu wrote:
-> On Sat, Apr 17, 2021 at 12:30:18PM +0200, Philippe Mathieu-Daudé wrote:
->> The RAM container is exposed as an AddressSpace.
+On 4/21/21 7:53 AM, Cédric Le Goater wrote:
+> On 4/20/21 8:28 PM, Peter Xu wrote:
+>> On Sat, Apr 17, 2021 at 12:30:18PM +0200, Philippe Mathieu-Daudé wrote:
+>>> The RAM container is exposed as an AddressSpace.
+>>
+>> I didn't see where did ram_container got exposed as an address space.
+
+I guess I used the wrong base to git-publish and skipped the first patch =)
+
+>> I see it's added as one subregion of get_system_memory(), which looks okay? 
+> my version of this patch took a simpler approach. See below.
 > 
-> I didn't see where did ram_container got exposed as an address space.
+> Thanks,
 > 
-> I see it's added as one subregion of get_system_memory(), which looks okay? 
-my version of this patch took a simpler approach. See below.
+> C.
+> 
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -327,7 +327,7 @@ static void aspeed_machine_init(MachineState *machine)
+>      object_property_set_int(OBJECT(&bmc->soc), "num-cs", amc->num_cs,
+>                              &error_abort);
+>      object_property_set_link(OBJECT(&bmc->soc), "dram",
+> -                             OBJECT(&bmc->ram_container), &error_abort);
+> +                             OBJECT(machine->ram), &error_abort);
 
-Thanks,
+This will work as long as no board maps the main memory elsewhere than
+0x0. Using the alias make it more robust (and also is good API example
+for the usual "use API via copy/pasting" style when adding new board)
+IMHO.
 
-C.
-
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -327,7 +327,7 @@ static void aspeed_machine_init(MachineState *machine)
-     object_property_set_int(OBJECT(&bmc->soc), "num-cs", amc->num_cs,
-                             &error_abort);
-     object_property_set_link(OBJECT(&bmc->soc), "dram",
--                             OBJECT(&bmc->ram_container), &error_abort);
-+                             OBJECT(machine->ram), &error_abort);
-     if (machine->kernel_filename) {
-         /*
-          * When booting with a -kernel command line there is no u-boot
-
+>      if (machine->kernel_filename) {
+>          /*
+>           * When booting with a -kernel command line there is no u-boot
+> 
+> 

@@ -1,113 +1,113 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp503135lfb;
-        Thu, 22 Apr 2021 09:09:16 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyRl1ou3LoozWw+VeijUNILq8KieWv/3vgkKM7jD7PczyxSRjRcrPzX5WUhZwOrHdxspbbC
-X-Received: by 2002:a92:d7c2:: with SMTP id g2mr3502757ilq.265.1619107756271;
-        Thu, 22 Apr 2021 09:09:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619107756; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp480235lfb;
+        Thu, 22 Apr 2021 08:42:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyFI332AUPhs7Anco5/GFsQ8Z9DAzJ+HNC5uDu0EzyqEFgTEKmaKGszE5W6///F3HDjEyp6
+X-Received: by 2002:a92:cd8a:: with SMTP id r10mr3352808ilb.282.1619106151895;
+        Thu, 22 Apr 2021 08:42:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619106151; cv=none;
         d=google.com; s=arc-20160816;
-        b=LE1RBBcoGGb7MolERdaYTnFf2Y7lESoCkAyK84Q9TwIgWlfuXCRaYJ4WMq1QzpH+JC
-         LbuJBfwhSvcV7/Kow7fW1QgGIZ4RtX+IwtfdVvridc9puLGUiN2dmAkA+2jZ8ISRCipv
-         uCDmvg6FLO6qax83Y5XWKxeWVXzZKvEoau9dY6cqJF/Cva9t8GqHMoSvcKCyRsSldb4q
-         8ynuX8E0DpwNBjptXXtRRMYNOHN86E6QVMb/ACNRomY728M/TgtRe1VyiqvHcQiLKTAQ
-         jLjHrk1JxTFss6/vjb6aUvo/8gqyhTl8gjGwcFF/J5upKuhmVzzAB/023tpAv8iZ39HZ
-         3HGg==
+        b=EaLhGhzDN56Q0BHbjy84ZCEhqDn8l8v1WiRN4YuG32Z/UJolMGg8Wz9BktCn7hjKsf
+         ybBydZAUmgMpkk3SWuyZN/IkLsOPY9M1ASQbp3M0CGClnAClzXJWLEut6td24Ftxdbs+
+         +7PYQalU0K8+OCsql1CgtRKdFDPJuqf1VUxDoKrXkBVqOxpKwamuTHccHycId9CfY8FT
+         e+6l76yveMAkWBiKJHCe3XGXDB6O9sifKeb8zlGnznjMd0eitH7ZeBoWhC/t6hckvt5S
+         GkvVDg9aBUWib+96/Hv0jcFWCceqxfvU7M8XfAjxXzbFd8611ep2T3iIZJFGk6OQMmAd
+         Evig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=n5NqJLJyYGIoXsiqv08wQ7Fl4jfG5oa9bCV2tUFpk6Y=;
-        b=IOUqZpqK9/Fw8IghRjutn8pMxAFTnQxi67fDnt1HB0DoMhY3CatV6t4YvZx7XdnZMG
-         50yz+SY9RQG0ld/9cADxeFXPiuvvPzUb6bU5g3SNoTZPbGIx5aHT0u2BNpcF5THyVw9R
-         auT9jHnnrR/YvgPXKH3V0VydRQY/d4an5jDsd4PGTSJVOkqNgFb9yh9vPXZ922mMIdzB
-         EviVKM7UsTknwU/LJe+GmxQ4fczHNEWuB9Ln7fGjGDSNgFU+2+WEIrOLS2ORH+YkNHKV
-         hJOTj1lt6AIcN+3EYwOYb1JvlcByqIuBuLgmzLNnq0bq9Li/fgK9MNjSZsfkFGMwUu1l
-         pfhw==
+        bh=zdwPrYCs6gn/HmvKJUdoJG36ORJX5e0qCIAVYy9yugE=;
+        b=WL7u7R19Tmm7cx6Ns1TEwJqPlJcbXY4OovFhXx2kmQuJwCJL3B+561LlfKcn9LH5MT
+         yhMVKpilF7R/ZGMMuOeetju/Y4kHXrOtdMf1Uk4CIDxJbg/vjOjMHrJrDn0raw/+Qscp
+         dYqQJxAl0oW5eJWkoz5VmPlP+k9VZP8rxdTaP81qzioj0naw9CDQZAkEc/uGSy4M7lEH
+         zC+v5yhzoQcHI7zZyvGBMEoq/OXBgM9XkngDadhpcRram3ZDQ17t7T2Qn8QGW8/bmVZ3
+         q142TFJ77A4tId/Oahqq8I2W1W2LULw0Ly92l+4bIlnicZmE+2k2oiUtNQW4yw5D85JK
+         DIIg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=NBtYdWMq;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="WXze/7wr";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g12si3741522iow.63.2021.04.22.09.09.16
+        by mx.google.com with ESMTPS id a17si3338258ili.88.2021.04.22.08.42.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Apr 2021 09:09:16 -0700 (PDT)
+        Thu, 22 Apr 2021 08:42:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=NBtYdWMq;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="WXze/7wr";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:60416 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40534 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lZbtD-0008Fe-If
-	for alex.bennee@linaro.org; Thu, 22 Apr 2021 12:09:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49198)
+	id 1lZbTL-0003yc-6r
+	for alex.bennee@linaro.org; Thu, 22 Apr 2021 11:42:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43664)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lZbpW-00059I-Ec; Thu, 22 Apr 2021 12:05:26 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336]:38553)
+ id 1lZbSo-0003uY-FO; Thu, 22 Apr 2021 11:41:58 -0400
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433]:46797)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lZbpU-0000G6-O7; Thu, 22 Apr 2021 12:05:26 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- d200-20020a1c1dd10000b02901384767d4a5so3558364wmd.3; 
- Thu, 22 Apr 2021 09:05:23 -0700 (PDT)
+ id 1lZbSm-0006uj-FJ; Thu, 22 Apr 2021 11:41:58 -0400
+Received: by mail-wr1-x433.google.com with SMTP id c15so36328552wro.13;
+ Thu, 22 Apr 2021 08:41:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=n5NqJLJyYGIoXsiqv08wQ7Fl4jfG5oa9bCV2tUFpk6Y=;
- b=NBtYdWMqdOL3X7Bx+Kl08/i3MPf9k/twkDC3IN3FzAbaHrjzM1X0WPnUPmq1+m0wGW
- NX+9/8t+xsKnsMv5gfQqIaSOiU1+a+bwiyTF2gh+vlotNBpRL8FYIO60UtR+q/H6Q+1U
- vrI+rRCeroDle4PDl5eIa//AJZLC0UsQs89S+amj5vXXgmCctQXvrVdez5igEsKoCmfq
- Xmr2O/BpGkGsPHxtlAierbo8Rn7xLZuTbYj6bputqVp91NdTbvNqv04s/j+MllC2c7N4
- 0+v3G+C2fCn36uRpvt4AGFZI9uy9QCv8YHv//Ce3g2idOU87sh5gubhqzqmEWPJGG0Nw
- p9Qg==
+ bh=zdwPrYCs6gn/HmvKJUdoJG36ORJX5e0qCIAVYy9yugE=;
+ b=WXze/7wruRA6jZY5OAH7HI6pWWEyyuTwheI2mKfz4A7CLZ4/7smrymAHBgKZjL6Z7J
+ nc2ZoR7pt8HGASK3IyNzbbInHVGb56c9twtJ38PyA8Th+T5gY9oXC5B6aFsiXL7wqPa8
+ MIwHgUXBDiZf9yVZ1ohIsaZZfWF1/tvldQiOZcD4jSZ+2YPv8YnCTcPlUP011HfIOxRx
+ RYzWwjed/kRioXNzixucAA3Kl2EmOlg5VXtLLyU/MNh54/HzIqa6a0D93i/6AqKnmO87
+ ZfuzrVCYEFDvEyTYrhZUhD2ip44yuG8w/6lXDdYvdQhqzVIDD014isReWxtDT1IiCBKe
+ Cezg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=n5NqJLJyYGIoXsiqv08wQ7Fl4jfG5oa9bCV2tUFpk6Y=;
- b=eXoqWbsSUAnl9SUYzJClITuPhlmY+GkVmXtDRp1cM4heL0YRJURJl0T38jcRUMIpdi
- 82fRb2v/QZxYiiXH0ojVXF2Syg0tejcyZQQKg4iubBYEc/fTunnTslZtaP7SDu2ptLoh
- ZiCdxRKeKl6hCDT7+2XmrtFeUvrndyKWbFtfA98cJO4aOWxk4DvAZZB1lctR+jhVB6F1
- SbU1aZQeeE0K6fnNUuUbeETYJPn6iZVmcQPUnOZDzX4ucuCli0LkA686zt7lxoGDgWuI
- dZOvg8n8/q+ppFL3RR7bv5ZJr1IW3TgZFEK5cGaid31lGuaw9CZ/c+8pznWhulmuHl5W
- zLCw==
-X-Gm-Message-State: AOAM5315kMOaftYohSoGlU26VK1G93JIFBGdg0PNAt9pCL0ozZciGKWs
- SxKFKFB0z2AsHxW5IRvNzoc=
-X-Received: by 2002:a1c:87:: with SMTP id 129mr764044wma.131.1619107521577;
- Thu, 22 Apr 2021 09:05:21 -0700 (PDT)
+ bh=zdwPrYCs6gn/HmvKJUdoJG36ORJX5e0qCIAVYy9yugE=;
+ b=hOe2M4Uj4zHUj/YhkEGMzTPRyZYUGnLLrL8hbV33zDnKzm0wqgAEkST5Caw1ivFf0t
+ hcAQ7k6Qr0lpRvDSonbZc9/2OqLQa+NkNjDHdC2FKT/9lAg7gkUvdIup8To87BuQqc0I
+ UvTamuEJRKBvbdCYacAAS0/h1JnNRAJzINVEQZS4fVUJvOFJfuF1oqvIE3tkGysFEgdB
+ 1mZ/2s7rvhyip81urEjPNtiQq5RFOM8UbTWr7hhURGgPX4Hk0Lp3uG/9KJbhcuvcfYti
+ pmISzxcqE5Jsokw+d0ahN7xEtuAKfU91lPgM9EVca3pJnSMGyEl0TN1uT4flVzt7qxc0
+ V6+g==
+X-Gm-Message-State: AOAM531D0IeQMsldjtMUumALQmFb7ECgHuhqTPn5zFjTuQ0o0Ox2WYJI
+ kc5GFx0MN+arSWPpGNRbcq4=
+X-Received: by 2002:adf:eb0a:: with SMTP id s10mr5015011wrn.6.1619106112770;
+ Thu, 22 Apr 2021 08:41:52 -0700 (PDT)
 Received: from [192.168.1.36] (39.red-81-40-121.staticip.rima-tde.net.
  [81.40.121.39])
- by smtp.gmail.com with ESMTPSA id o17sm4707258wrg.80.2021.04.22.09.05.18
+ by smtp.gmail.com with ESMTPSA id i12sm4198935wrm.77.2021.04.22.08.41.50
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 22 Apr 2021 09:05:20 -0700 (PDT)
+ Thu, 22 Apr 2021 08:41:51 -0700 (PDT)
 Subject: Re: [PATCH v3 01/27] target: Set CPUClass::vmsd instead of
  DeviceClass::vmsd
-To: Peter Maydell <peter.maydell@linaro.org>
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Markus Armbruster <armbru@redhat.com>, Eduardo Habkost
+ <ehabkost@redhat.com>, "Dr. David Alan Gilbert" <dgilbert@redhat.com>
 References: <20210302145818.1161461-1-f4bug@amsat.org>
  <20210302145818.1161461-2-f4bug@amsat.org>
  <20210421220333.bkxo6zriqe6w3rim@habkost.net>
  <cccb8e5c-55cb-3f46-1391-ca96ab7c27ce@amsat.org>
  <CAFEAcA8_cjzAzoA9BFucR7LzQA7KXnrmufH4kp7aNL9bo_5Q5A@mail.gmail.com>
  <6bfaaaab-8045-d8be-4edd-652d500a6c14@amsat.org>
- <280abf24-4e72-78ed-621b-b66495943003@amsat.org>
- <CAFEAcA867BoyAEDfHB8eCXN12X58XBan_v-PzBKLvBK-o=XZDg@mail.gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <02d18aea-4ee2-fe00-ecf9-5a81c7e02a11@amsat.org>
-Date: Thu, 22 Apr 2021 18:05:18 +0200
+Message-ID: <280abf24-4e72-78ed-621b-b66495943003@amsat.org>
+Date: Thu, 22 Apr 2021 17:41:49 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA867BoyAEDfHB8eCXN12X58XBan_v-PzBKLvBK-o=XZDg@mail.gmail.com>
+In-Reply-To: <6bfaaaab-8045-d8be-4edd-652d500a6c14@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x336.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x433.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -128,7 +128,7 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Sarah Harris <S.E.Harris@kent.ac.uk>, Cornelia Huck <cohuck@redhat.com>,
+Cc: Sarah Harris <S.E.Harris@kent.ac.uk>, Chris Wulff <crwulff@gmail.com>,
  Sagar Karandikar <sagark@eecs.berkeley.edu>,
  "Michael S. Tsirkin" <mst@redhat.com>, Anthony Green <green@moxielogic.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
@@ -137,68 +137,131 @@ Cc: Sarah Harris <S.E.Harris@kent.ac.uk>, Cornelia Huck <cohuck@redhat.com>,
  Alistair Francis <Alistair.Francis@wdc.com>, Guan Xuetao <gxt@mprc.pku.edu.cn>,
  Marek Vasut <marex@denx.de>, Yoshinori Sato <ysato@users.sourceforge.jp>,
  Juan Quintela <quintela@redhat.com>, David Hildenbrand <david@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, Claudio Fontana <cfontana@suse.de>,
- qemu-ppc <qemu-ppc@nongnu.org>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, Greg Kurz <groug@kaod.org>,
+ Claudio Fontana <cfontana@suse.de>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Thomas Huth <thuth@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
  qemu-s390x <qemu-s390x@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
  Michael Rolnik <mrolnik@gmail.com>, Stafford Horne <shorne@gmail.com>,
  David Gibson <david@gibson.dropbear.id.au>,
  "open list:RISC-V" <qemu-riscv@nongnu.org>,
  Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Chris Wulff <crwulff@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
- Michael Walle <michael@walle.cc>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Cornelia Huck <cohuck@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ Michael Walle <michael@walle.cc>, qemu-ppc <qemu-ppc@nongnu.org>,
  Paolo Bonzini <pbonzini@redhat.com>,
  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
  Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IRFlQoMpOdMd
+X-TUID: ZYYd/ovS6jML
 
-On 4/22/21 5:53 PM, Peter Maydell wrote:
-> On Thu, 22 Apr 2021 at 16:41, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
->> IOW new targets should use type 1.
+On 4/22/21 1:01 PM, Philippe Mathieu-Daudé wrote:
+> On 4/22/21 12:28 PM, Peter Maydell wrote:
+>> On Thu, 22 Apr 2021 at 10:55, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>>> My guess is CPUState is the only device used in user emulation,
+>>> so it would be a way to restrict the vmstate_dummy to CPU and
+>>> not to any DeviceState?
+>>>
+>>> But looking at the introductory commit:
+>>>
+>>> commit b170fce3dd06372f7bfec9a780ebcb1fce6d57e4
+>>> Author: Andreas Färber <afaerber@suse.de>
+>>> Date:   Sun Jan 20 20:23:22 2013 +0100
+>>>
+>>>     cpu: Register VMStateDescription through CPUState
+>>>
+>>>     In comparison to DeviceClass::vmsd, CPU VMState is split in two,
+>>>     "cpu_common" and "cpu", and uses cpu_index as instance_id instead of -1.
+>>>     Therefore add a CPU-specific CPUClass::vmsd field.
+>>>
+>>>     Unlike the legacy CPUArchState registration, rather register CPUState.
+>>>
+>>> Juan, do you remember?
 >>
+>> Oh yes, I remember this. There are two ways to handle migration for
+>> a CPU object:
 >>
->> Looking at type 2:
->>
->> a) targets added 'recently' with the incorrect type 2:
->>
->> target/avr/cpu.c:216:    cc->vmsd = &vms_avr_cpu;
->> target/riscv/cpu.c:627:    cc->vmsd = &vmstate_riscv_cpu;
->>
->> b) targets where migration isn't really an issue:
->>
->> target/lm32/cpu.c:244:    cc->vmsd = &vmstate_lm32_cpu;
->> target/moxie/cpu.c:125:    cc->vmsd = &vmstate_moxie_cpu;
->>
->> c) targets where migration could be broken:
->>
->> target/mips/cpu.c:723:    cc->vmsd = &vmstate_mips_cpu;
->> target/sparc/cpu.c:892:    cc->vmsd = &vmstate_sparc_cpu;
->>
->> d) KVM targets ("security boundary" or Tier-1) are left:
->>
->> target/arm/cpu.c:1985:    cc->vmsd = &vmstate_arm_cpu;
->> target/i386/cpu.c:7434:    cc->vmsd = &vmstate_x86_cpu;
->> target/ppc/translate_init.c.inc:10923:    cc->vmsd = &vmstate_ppc_cpu;
->> target/s390x/cpu.c:520:    cc->vmsd = &vmstate_s390_cpu;
->>
->>
->> Isn't "machine type" what allows us to change migration stream?
->> All targets in d) do support that.
-> 
-> Versioned machine types allow us to change the migration stream
-> if we do it in a forwards-compatible way (and if we're feeling
-> kind to RH as a downstream perhaps even backwards-compatible);
-> but new QEMU still has to be able to read the migration stream
-> produced by old QEMU for the "virt-5.2" board, or whatever.
-> 
-> In some cases I think we also like to maintain migration
-> compat on a "best-effort" basis; I think Mark likes to handle
-> the SPARC guests that way.
+>>  (1) like any other device, so it has a dc->vmsd that covers
+>> migration for the whole object. As usual for objects that are a
+>> subclass of a parent that has state, the first entry in the
+>> VMStateDescription field list is VMSTATE_CPU(), which migrates
+>> the cpu_common fields, followed by whatever the CPU's own migration
+>> fields are.
 
-What I don't understand if is there is a possibility to eventually
-remove the CPUClass::vmsd (even long and painful), or if it is
-directly impossible and we are doomed to keep maintaining both.
+target/alpha/cpu.c:240:    dc->vmsd = &vmstate_alpha_cpu;
+target/cris/cpu.c:296:    dc->vmsd = &vmstate_cris_cpu;
+target/hppa/cpu.c:165:    dc->vmsd = &vmstate_hppa_cpu;
+target/m68k/cpu.c:537:    dc->vmsd = &vmstate_m68k_cpu;
+target/microblaze/cpu.c:390:    dc->vmsd = &vmstate_mb_cpu;
+target/openrisc/cpu.c:207:    dc->vmsd = &vmstate_openrisc_cpu;
+target/sh4/cpu.c:265:    dc->vmsd = &vmstate_sh_cpu;
+target/unicore32/cpu.c:149:    dc->vmsd = &vmstate_uc32_cpu;
+target/xtensa/cpu.c:221:    dc->vmsd = &vmstate_xtensa_cpu;
+
+>>  (2) a backwards-compatible mechanism for CPUs that were
+>> originally migrated using manual "write fields to the migration
+>> stream structures". The on-the-wire migration format
+>> for those is based on the 'env' pointer (which isn't a QOM object),
+>> and the cpu_common part of the migration data is elsewhere.
+
+target/arm/cpu.c:1985:    cc->vmsd = &vmstate_arm_cpu;
+target/avr/cpu.c:216:    cc->vmsd = &vms_avr_cpu;
+target/i386/cpu.c:7434:    cc->vmsd = &vmstate_x86_cpu;
+target/lm32/cpu.c:244:    cc->vmsd = &vmstate_lm32_cpu;
+target/mips/cpu.c:723:    cc->vmsd = &vmstate_mips_cpu;
+target/moxie/cpu.c:125:    cc->vmsd = &vmstate_moxie_cpu;
+target/ppc/translate_init.c.inc:10923:    cc->vmsd = &vmstate_ppc_cpu;
+target/riscv/cpu.c:627:    cc->vmsd = &vmstate_riscv_cpu;
+target/s390x/cpu.c:520:    cc->vmsd = &vmstate_s390_cpu;
+target/sparc/cpu.c:892:    cc->vmsd = &vmstate_sparc_cpu;
+
+>> cpu_exec_realizefn() handles both possibilities:
+>>  * for type 1, dc->vmsd is set and cc->vmsd is not,
+>>    so cpu_exec_realizefn() does nothing, and the standard
+>>    "register dc->vmsd for a device" code does everything needed
+>>  * for type 2, dc->vmsd is NULL and so we register the vmstate_cpu_common
+>>    directly to handle the cpu-common fields, and the cc->vmsd to handle
+>>    the per-CPU stuff
+>>
+>> You can't change a CPU from one type to the other without breaking
+>> migration compatibility, which is why some guest architectures
+>> are stuck on the cc->vmsd form. New targets should use dc->vmsd.
+
+IOW new targets should use type 1.
+
+
+Looking at type 2:
+
+a) targets added 'recently' with the incorrect type 2:
+
+target/avr/cpu.c:216:    cc->vmsd = &vms_avr_cpu;
+target/riscv/cpu.c:627:    cc->vmsd = &vmstate_riscv_cpu;
+
+b) targets where migration isn't really an issue:
+
+target/lm32/cpu.c:244:    cc->vmsd = &vmstate_lm32_cpu;
+target/moxie/cpu.c:125:    cc->vmsd = &vmstate_moxie_cpu;
+
+c) targets where migration could be broken:
+
+target/mips/cpu.c:723:    cc->vmsd = &vmstate_mips_cpu;
+target/sparc/cpu.c:892:    cc->vmsd = &vmstate_sparc_cpu;
+
+d) KVM targets ("security boundary" or Tier-1) are left:
+
+target/arm/cpu.c:1985:    cc->vmsd = &vmstate_arm_cpu;
+target/i386/cpu.c:7434:    cc->vmsd = &vmstate_x86_cpu;
+target/ppc/translate_init.c.inc:10923:    cc->vmsd = &vmstate_ppc_cpu;
+target/s390x/cpu.c:520:    cc->vmsd = &vmstate_s390_cpu;
+
+
+Isn't "machine type" what allows us to change migration stream?
+All targets in d) do support that.
+
+
+How could we enforce no new type 2 targets?
+
+
+Thanks,
+
+Phil.

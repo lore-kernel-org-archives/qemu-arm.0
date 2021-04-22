@@ -1,109 +1,110 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp944168lfb;
-        Wed, 21 Apr 2021 18:49:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzVx++F3fzxNcuKJ66Wt8BCePPhkddXR0Uq+4Org7ym5+Qipkfb6EoY/fCHcrP4x7+jTcl5
-X-Received: by 2002:a02:94e7:: with SMTP id x94mr1075457jah.106.1619056151138;
-        Wed, 21 Apr 2021 18:49:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619056151; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp944892lfb;
+        Wed, 21 Apr 2021 18:50:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxkM/hreOEg/pcaXgAoG8xmkNvaGaqOk0lYb/v248vcx6ULh2NUweDy0h8OQ2rthi3ZAbL8
+X-Received: by 2002:a5d:848a:: with SMTP id t10mr748413iom.68.1619056231594;
+        Wed, 21 Apr 2021 18:50:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619056231; cv=none;
         d=google.com; s=arc-20160816;
-        b=i5dWd0onSdljgd6tTYLXIto0AFujwCCQAE/kExF9Z/CfYop4ZgBkkz9irfxRM4xwRb
-         Pk3H1kWhMpfsIWqvIrv+spYEylkmUW4b+slWl7yNN6nyGekR9CejUsvy0q5mZLuTCkvI
-         E4gg4TTGxqw3HLnjCs8zdX3Tu1rOAurQaOB7uQVdu2uHXTK06EWhpUdBoWM3b+l4+B75
-         nf3itazIaeh3X1Hz5SA/XhA5bh+ppyu5Gg4/MCbFFe/7mtxBMs5nZHsRKtSimekdFWaV
-         B/A0CTPfr4wUZY2Z4MoYo0ix0bJK1YBkr4W2OynVfhS+8wpd12oM4ExzKNYe65tqv0EU
-         ZMoQ==
+        b=fM0cF0wTKOXADH0ndC2vGJkw1ZDYdWTCQgioC5RyUpR9dMUCMqE+yZMPMt93nytTnz
+         0cO8jUnv0Z6Tp/Lkiug6JvU4d/Uzu34BgWDz11tFirkHUvCZNqCi97ELt96X8BFaXKCa
+         jceQDDK6vbkk4/UVFU7ZvLhcPMTh7NN80yBxBdIRhaLvQ/RWXbm6/hnhoqyZQTPAB/L6
+         JhhNnqmsXi4BAjZV3Mm2we4IBWQ34Bcpst8XUf8V+3JIz+WW6K+d+LJDxmF1GaaDPxa3
+         clHS8ykso1KdwkouLC6Lfe206NfaQ7Jpz3ynVjgUf0S2UjkO23iIJ5NWBo0203MYdTXQ
+         3A9A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=4LhIsUUioY8n/vayD0if1744kDLVa/8Q1z6IXGIiw5s=;
-        b=qK7Dl+8HpY/kshqAM1FBi5VaZKO7e//vp7n2IrsH8HXTib+hbbIqQPCApeV6g+84nu
-         oE29XNx0cfsnVZ0i9fo417f8+FFleQTmH0pFPKylhQ6DjdGPe6RaNEeyCCSepYximvME
-         oplBdGNo4BjzqnJpWqo8caoE+/qTtSMcRxkYtRVhAd6ScvkvzvGVOZxSPXvfLGE4ZrXC
-         EEuJHmIzv/5JCX3jX09wGTPWlB0Ee7+pn300BdvDIt+RSXqtuMiSpO/J+/pvDixkna1D
-         pD1b/L1x4kPQT2vdz27q5un7bEc3uzIH4ff+2GVxCk6/XiUyxEvFokkQQB39RPQQ2dXj
-         nu8g==
+        bh=Qz2MRsTWlPL2yiwSgQiBWdUdUfhdmwUYt7ts9wEHwZs=;
+        b=aq9wy2nQJ36LfY2S+6aQEUb4fGEbGJt7UVwxax8CpL0hzwPaC7CYz3K53YS0DvSwlI
+         Nf5jzMTHo4EwFadM4IrLEhtuTZHSqRI9ngyc707GZhBilOMhawqzssmoa6WaIlKG/0zU
+         nzvtzLMayo1roWm2s3oL0p1atDoZeAgtq9eOpx4WG2NXNCy9jk/+W+UPhwSp5wPWihRo
+         xv9DjdfkbN1M7+CT2UMcHbG15aqQdeUGcrLdzd6Vu8HUZZeIc7bYZtNhcRy3PksJGJiu
+         bJmcRIqNNWav013/3ZLrNANgoAiBWfLSy+njYxRNEyTNIuQR0fWFkCA+YcDD9KwC9iO1
+         t0yw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="X/0tUGkB";
+       dkim=fail header.i=@linaro.org header.s=google header.b=uIe8l4s6;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j2si949283ioj.71.2021.04.21.18.49.10
+        by mx.google.com with ESMTPS id r7si1364731jad.72.2021.04.21.18.50.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 21 Apr 2021 18:49:11 -0700 (PDT)
+        Wed, 21 Apr 2021 18:50:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="X/0tUGkB";
+       dkim=fail header.i=@linaro.org header.s=google header.b=uIe8l4s6;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35360 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37008 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lZOSs-0005Fs-Dk
-	for alex.bennee@linaro.org; Wed, 21 Apr 2021 21:49:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54080)
+	id 1lZOUA-0005vq-UE
+	for alex.bennee@linaro.org; Wed, 21 Apr 2021 21:50:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54354)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lZOQz-0003z8-IH
- for qemu-devel@nongnu.org; Wed, 21 Apr 2021 21:47:13 -0400
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b]:43567)
+ id 1lZOS6-0004ql-Q0
+ for qemu-devel@nongnu.org; Wed, 21 Apr 2021 21:48:22 -0400
+Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d]:43527)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lZOQx-000708-3k
- for qemu-devel@nongnu.org; Wed, 21 Apr 2021 21:47:13 -0400
-Received: by mail-pl1-x62b.google.com with SMTP id u15so14143686plf.10
- for <qemu-devel@nongnu.org>; Wed, 21 Apr 2021 18:47:10 -0700 (PDT)
+ id 1lZOS4-0007UW-C3
+ for qemu-devel@nongnu.org; Wed, 21 Apr 2021 21:48:22 -0400
+Received: by mail-pj1-x102d.google.com with SMTP id
+ f6-20020a17090a6546b029015088cf4a1eso91645pjs.2
+ for <qemu-devel@nongnu.org>; Wed, 21 Apr 2021 18:48:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=4LhIsUUioY8n/vayD0if1744kDLVa/8Q1z6IXGIiw5s=;
- b=X/0tUGkB6S7Ygs9UVHK25PWrOaSRkt3y7APA+HzNLV0/TupXwySGqnl0dzMuvZDN4X
- HQpXbFfYWRAg6AnRprjUbzqQRtxqQX+zVM2p9+s2gVtKm6vlqDSafOCakM7pcTt4sDo5
- RmctS0KUoMI07OT4sDRZxsBRHOEeypKiVOQmqI/IaRXeHQG+1YnLNhf8ol0vRhggzT9s
- 8M09K+CEnMzMswwjyYthNimQWjLgJzPMWUlejiyTfr/cvbefyifgFNAv+Azg6+0WOydF
- hb6pfTKZ6/mjMr6Xv+EUneKvKBqqvbaoe2i89eYileN8ACozAw3ofm3CuB/AkbDPWQpb
- qf8Q==
+ bh=Qz2MRsTWlPL2yiwSgQiBWdUdUfhdmwUYt7ts9wEHwZs=;
+ b=uIe8l4s6/HU5qJ97RTenYxaA+fxuUaohX1nfzKpZArrVswyabIzKFEi3FJP4oGuVB0
+ KtErFrL5Jr9QmLZmjzT/FIptS6ROz7LHwlIb/xKzNCujwlKgfj/HIVMspqUHGjb0l6wL
+ SAcbsLUSNABBvJRygUqYvoRCEziM4y0PL0/O5Lg5Izi9FRA+JQQYpE5xivl+okM5+RAq
+ 9GcQk1PXM7KvjJq4jIUdyLIyXB/q1yO29/Gt8AZBzy0nVHM3lW6w9do5z+vlv8JfVxiE
+ x7Iw6DnuTWdGA1rmfZi9VBeDfkpFDVHi6xdcjl8wXGPleDSpnbR1YbgTixZLFYnpOewJ
+ XY7w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=4LhIsUUioY8n/vayD0if1744kDLVa/8Q1z6IXGIiw5s=;
- b=I7QAbuGi39NS8us+nkrvFfnhWcFaDEt0ObjGLhLZc2VkCjFUsQFCWkhbSAZhZrICVQ
- 6iWUY7DngkQ3rwvU90zOG4zZt+uRSDgbCa/YI1kqOB0or1WiyEPOn21IGCstUh3krk/+
- G3uA3uVDG29Nak4cAx94JDMbYup+rNWUFfIYXn7VhpIF7GNuBBBIaxytjszMWy0ptU+s
- r49xRvQ17oULAUwczWDlV/4O6Qy1CZmfRteui4FQmyyKGGdKGW9mbMohDM9tHDNrkGmJ
- duysuT21fCWLs2CFku5Se4PjIs7GQUinBEjsqJLEBQcDxLwQuQiumep5EHTcJQC1oPWe
- mBvg==
-X-Gm-Message-State: AOAM5339oQUYOgwdAO9B354Lj0rtBOSEpcMtH/acGlAhdWyffHEk3GIx
- T7d0ndpbUWBksXlr1tvesoEmbVUyHfn1Uw==
-X-Received: by 2002:a17:902:b210:b029:eb:535f:852 with SMTP id
- t16-20020a170902b210b02900eb535f0852mr960142plr.80.1619056029706; 
- Wed, 21 Apr 2021 18:47:09 -0700 (PDT)
+ bh=Qz2MRsTWlPL2yiwSgQiBWdUdUfhdmwUYt7ts9wEHwZs=;
+ b=Xj6EogvA6lYE5/V25W469jPgNu3ff9k3lllW9TMC6j2jDW/o24QNTQTpv3D35zCMjO
+ AXNdEpAMmkUduECMP/0hDNFgnn35S8A4GuU+vvmDdAyTBNTXc3mHc/ng2PW7QCVRzNxF
+ YZuGC2CTx0CvduSTNl812JXxrEzgrZWAkiPX0BEc/vlc2RrdXzXjZXDDtgQcxMKIL1+o
+ B9YTQ8c6SYOfJx8+/7jBba2mW0qH7nQ4tA+zUhSNIjrsXWK05yFEVgV/8GplOM3v2Noi
+ MPpRNpBsOkm6SxGJllLQhvZMgvKXEWlSjPW3FYnUoInYJ3/3/9eau4AnUtRiXo2Sj7Nn
+ RvIA==
+X-Gm-Message-State: AOAM533XOFJ0cb2ESkzZzMLThgP/V4fcrW/5LTk2bvamVlPXSSQ3nlHJ
+ m+ke+g7khPo/CxIGrWVBLpCgHQ==
+X-Received: by 2002:a17:902:bb94:b029:eb:7a3e:1fe with SMTP id
+ m20-20020a170902bb94b02900eb7a3e01femr1098659pls.25.1619056098917; 
+ Wed, 21 Apr 2021 18:48:18 -0700 (PDT)
 Received: from [192.168.1.11] ([71.212.131.83])
- by smtp.gmail.com with ESMTPSA id r127sm418325pfr.163.2021.04.21.18.47.09
+ by smtp.gmail.com with ESMTPSA id ge22sm516262pjb.53.2021.04.21.18.48.18
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 21 Apr 2021 18:47:09 -0700 (PDT)
-Subject: Re: [PATCH v2 6/7] hw/block/pflash_cfi02: Remove
- pflash_setup_mappings()
+ Wed, 21 Apr 2021 18:48:18 -0700 (PDT)
+Subject: Re: [PATCH v2 7/7] hw/block/pflash_cfi02: Simplify
+ pflash_cfi02_register() prototype
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  qemu-devel@nongnu.org
 References: <20210419094329.1402767-1-f4bug@amsat.org>
- <20210419094329.1402767-7-f4bug@amsat.org>
+ <20210419094329.1402767-8-f4bug@amsat.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <0cb5d237-df43-e0ca-3914-8516d12838ed@linaro.org>
-Date: Wed, 21 Apr 2021 18:47:07 -0700
+Message-ID: <ca0edda5-4a06-c9b8-c841-f3d3ad2467ce@linaro.org>
+Date: Wed, 21 Apr 2021 18:48:16 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.7.1
 MIME-Version: 1.0
-In-Reply-To: <20210419094329.1402767-7-f4bug@amsat.org>
+In-Reply-To: <20210419094329.1402767-8-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -123,28 +124,26 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Kevin Wolf <kwolf@redhat.com>,
+Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
  Stephen Checkoway <stephen.checkoway@oberlin.edu>, qemu-block@nongnu.org,
- Max Reitz <mreitz@redhat.com>, David Edmondson <david.edmondson@oracle.com>,
- qemu-arm@nongnu.org,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ "open list:405" <qemu-ppc@nongnu.org>,
+ Alistair Francis <alistair@alistair23.me>, Magnus Damm <magnus.damm@gmail.com>,
+ Greg Kurz <groug@kaod.org>, Max Reitz <mreitz@redhat.com>,
+ David Edmondson <david.edmondson@oracle.com>, Michael Walle <michael@walle.cc>,
+ qemu-arm@nongnu.org, Jan Kiszka <jan.kiszka@web.de>,
+ Antony Pavlov <antonynpavlov@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fc7BOX4Iea2b
+X-TUID: rRUlE5pwqcRR
 
 On 4/19/21 2:43 AM, Philippe Mathieu-Daudé wrote:
-> All boards calling pflash_cfi02_register() use nb_mappings=1,
-> which does not do any mapping:
-> 
->    $ git grep -wl pflash_cfi02_register hw/
->    hw/arm/xilinx_zynq.c
->    hw/block/pflash_cfi02.c
->    hw/lm32/lm32_boards.c
->    hw/ppc/ppc405_boards.c
->    hw/sh4/r2d.c
-> 
-> We can remove this now unneeded code.
+> The previous commit removed the mapping code from TYPE_PFLASH_CFI02.
+> pflash_cfi02_register() doesn't use the 'nb_mappings' argument
+> anymore. Simply remove it to simplify.
 > 
 > Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
 > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

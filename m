@@ -1,101 +1,101 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp674234lfb;
-        Thu, 22 Apr 2021 12:48:27 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzkd5W91ii4nowwIjeQJofSn6XQeLy22FGrY5wjP2KqdHpsOiqETs9RamfPDO5VNp0YJrhd
-X-Received: by 2002:a05:6e02:6c5:: with SMTP id p5mr73398ils.193.1619120907391;
-        Thu, 22 Apr 2021 12:48:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619120907; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp674253lfb;
+        Thu, 22 Apr 2021 12:48:28 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyYJHG6tUPbXl0MNstFDnhhSp37woh5qtJSIzNHnNDUGjrfxeHJ46FRhMunkLhLrNe7BpSA
+X-Received: by 2002:a5e:df08:: with SMTP id f8mr489787ioq.60.1619120908321;
+        Thu, 22 Apr 2021 12:48:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619120908; cv=none;
         d=google.com; s=arc-20160816;
-        b=pmDj0+bvtEwmZEm0VL21z0xsHh+J0u1NLhu2w3yd+h8gYgNQm+hWrXBKVvnJ8TMFyH
-         4CDel6Ql2XlO2KzCztguIIGYvsq7CVWISqlLMFkPkxzYUDenkWmxKI4lluKGkhfEaSsc
-         mO68FsCiUroMBBOAj8xXKugV0nksBJHXeQHeBLCMpwmP9X217xHI/W2sUVCeYUO+qmlC
-         eWhzqiL34uInkVkRYjdOrM8ZjGsFxzZaX+8YZJ6jDhowAyHU0vGRP42PgxlblP7NOVbh
-         Zac4AC2Zu87I8jhgdTEpRT1+FLx8tNtg0vIC200xJm7fuz+MoRLi60aumcjvIbnEagv5
-         etwg==
+        b=Vj/ZAuPgWAh+tgEmU2+6MubHOoMRcuu2zTuuCz2OvEEOt7GNmV5ev3I3jxcUzRyDZx
+         t6m93X3exJS/aJpRB0qi9/xGGx67tPZjCsOzIIE+/2/apeHqr3TNTpkrFbFp29GbZu97
+         Jvw1zrN9lJwDzanyPZvqoBrrSuOVDv3E88MGZ4NMzLap0F29n3cPTNGqcWDl3pu3lok+
+         DOsBizZjuQ0HzXBCaGuU8Su76+XSVIBGWdBurnyXBcDI6gznB2IDyzWB1+5yH/iOOtxd
+         dgS3c6LRmPLEjFWvwhGZNx6wZPLocC4tWiMbWASbMVvz3uCesZ88lUk5HlOxoHasXoCY
+         IF/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=uLpgUUvTtmkbS378/dgmetDuRLNqY34+bULmG92CLFU=;
-        b=iaP3f05trQY/jqmrhOunb1RAYGh1D/KbjRxN3uWacM5y5OtapWpMnZvX5VV2ujvDjf
-         E/cHNcB9XQjaemnXbcN5U1X/P0sqMoitT9JoyaU1vLJiJBn9FIeo9ABg6F+TaOvFyHBq
-         YOZ6/UZ4zoGOpVkB4iIC2VhVMr2gUcCA80udoU0WyXD2z8qb3xf/uypNQfQoZ0ZduSx6
-         ei4EoYLKXK1MhYYGYsu4NgmAFg8dMjnZnHb7m44HtnHPPxFO00R4BgPyQyykVSbiYRNo
-         1O3/2JLeKJfnDkMxxbfYHNWxcIEIIYfQUsH4lbcDmJup6hQjkVnY4xgd8dV3uFT4uAwD
-         9R4Q==
+        bh=geK1FL9BfBSzKYrYLCYKzr+Rs4N62lLrBU0a9dBAM/U=;
+        b=0vUgFQ2sNEgZdl/lnk1TNIY1xPf1cbivAoc+9T9TP4S59KDIwGPMdmH4YoofNhFluA
+         H0PQG0tqhikbib2SjHkjktIBPQQNv4pZIuc24g80sFpxFj1wj0MThtzDgWgzJ+dnw7X4
+         UPLIf+80U0YnXHSB4i1kqzTNSi3+OwRws0jFoiY8pNqKlNjLnzRw8lp+z554c79QSpN+
+         830z0JJKdWI146MrFzk2kWRgd40H99UhfoDQxemL/BP4Hg/Q64O5lBEDRvUcjXVZWWlc
+         QnOyFjFPIxjHhBDp88S4MCfarX+Tnljhx04ZpI+bxiSfMDpDCemQoDlFLsI5Inug4KSL
+         hjhA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=b8OAqAl9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Nl0Ytqtt;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t19si3730471jam.106.2021.04.22.12.48.27
+        by mx.google.com with ESMTPS id n6si3795865jaj.115.2021.04.22.12.48.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Apr 2021 12:48:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 22 Apr 2021 12:48:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=b8OAqAl9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Nl0Ytqtt;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:55204 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54008 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lZfJK-0003mW-KH
-	for alex.bennee@linaro.org; Thu, 22 Apr 2021 15:48:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57232)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lZfJL-0003HK-K0
+	for alex.bennee@linaro.org; Thu, 22 Apr 2021 15:48:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57160)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lZfBO-0003C3-GC; Thu, 22 Apr 2021 15:40:15 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:39501)
+ id 1lZfBE-00033P-FA; Thu, 22 Apr 2021 15:40:04 -0400
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:45569)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lZfBL-0005fZ-MQ; Thu, 22 Apr 2021 15:40:13 -0400
-Received: by mail-wr1-x431.google.com with SMTP id s7so45862664wru.6;
- Thu, 22 Apr 2021 12:40:09 -0700 (PDT)
+ id 1lZfBC-0005Zs-37; Thu, 22 Apr 2021 15:40:04 -0400
+Received: by mail-wr1-x42f.google.com with SMTP id h4so36903088wrt.12;
+ Thu, 22 Apr 2021 12:40:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=uLpgUUvTtmkbS378/dgmetDuRLNqY34+bULmG92CLFU=;
- b=b8OAqAl9ljQ5ZYTsPIy6IFqdLayCI/yYsKDOC9fZHCO/poQfztK8RSq3K9FdmStWrE
- Y8qByfa9glVNiWKx9Br+7OsqD9PrfR5qiT2fQX6+oqGg02AP5FsuXB6xDSsaPLN4o21h
- uQLBvB1Ot1sZUcxGiOF9hjjv5fgfFO81pd4nJB1IkjY2VEKMJen7eMgp+k32Cxnx9+iT
- 5HM1hh81nqw3aZ29DLTqhzfOQGY8vz30+JSQ9T8bbv8weukT+341TPBPoebRwnJFvtGc
- J3LDVtsXCXqgtVhHvCPrJEyDlGF7YRQCb3KYmPIL3Za2ZfkeKk928Z3YCwX1uMI9+eXJ
- I+tA==
+ bh=geK1FL9BfBSzKYrYLCYKzr+Rs4N62lLrBU0a9dBAM/U=;
+ b=Nl0YtqttuvNibxtHdC7V16eAWQoec2etPKOGpgf9XnFgw4C678GtTngNMKIiTzwgeM
+ ysjbRL7zNSX6Mk8+DWxFHffkkxUu+K6Y5zGdqNG9NK+BEKz0moFkflHLHCEVKnHSBjlV
+ J6PjIko6hwiH3QjaagwQlhPran8zaVizTmdu2qCHxcuiObrJ9lg1jyW/x7+MZIGQJUZ3
+ SGq5kDTu5Ae7Z66ZqVZGy/2FgzqXhVt6i9hG6okcxh2hxdCaztx2pGs2EmEnyOO2UbvR
+ pkYat6iuR7BxCV2wPNqHTGS+d/HIJihSOs7ryrq8mwsDZnENloiskjiahSQ3aReyY0iQ
+ 4QFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=uLpgUUvTtmkbS378/dgmetDuRLNqY34+bULmG92CLFU=;
- b=R+gMcADyzLziyOkIndX265W4fgmwXefvZY0Y5l1pDDspCagEJuFzF+f/hs4oNBq3M4
- a4kg5aMKPdyZp1NbDjKSDV7H1Z4R+bTujt4JCy9WdAFOorlEMkzhGScLxmDIJnPH1cBO
- 2IDGu1cF3uX9YwGMImCRQn+6NMMG/k0/7zu8Zu9QoetS1jsIj+BT13sRX8zwvzrV7+qk
- G84zYGBrI8tmLhP13anfEzE5TERKsF0Rk1u2Ypd0txDTsBaYGOaa+5CryGfhgrZOMgu3
- LzNXCvDHM+njX4Vn06RFbqyVcq23oFhXRp4FBjrNKpZ7leElExHvWTvhduMfpX4kEmU0
- 1c4w==
-X-Gm-Message-State: AOAM533/pL6LqqTdPjs9iTgs9i5fQ5tciexpkU5vj1i3ywGg3IoZ1GLe
- AKeRhtg8NNNIxO6DQeAtCMuJsNPUoMZ1jA==
-X-Received: by 2002:a5d:4b8e:: with SMTP id b14mr39922wrt.86.1619120408939;
- Thu, 22 Apr 2021 12:40:08 -0700 (PDT)
+ bh=geK1FL9BfBSzKYrYLCYKzr+Rs4N62lLrBU0a9dBAM/U=;
+ b=YJ5pYEkW1yqbYclzRM/jtkThfvSXGw0IPVCIXQk1JJkLXAF1V9jylTNfYjE+Cl1G2c
+ kmacpjswO1iJmM2U5Ix1QZBswW5BgbYaBY/ds0gsws3sK3aVnEygrOqo7ElmDJnKBNQq
+ 4qGaOs/q1f3Qs5VBSpzKsKx1hnueIcLs8nYJze1zbTkMoRJ6yhYeZrCiyu15ihOt1uPQ
+ BYdtKsUB+mhUkshGe/BZNZYNigvZmq1McjTiSOH+9DAO29qLNKG0MCljRC2vzwLAGAom
+ SCU/TaD/DXKQ1nzUVlNyrO96r5xaPQYGrAG7tYz6ivc0c9YnqnIMKfA+2VIUB5qv+5rJ
+ eW5w==
+X-Gm-Message-State: AOAM5335qPp+jAPel9ydVg0XU9pZbis9x6I61mKXNOI/lNE5AJQZuz+7
+ +epNb5v5+/UDHXktZa/cgqF8iCI42/I4Jg==
+X-Received: by 2002:a5d:6487:: with SMTP id o7mr36460wri.152.1619120398751;
+ Thu, 22 Apr 2021 12:39:58 -0700 (PDT)
 Received: from x1w.redhat.com (39.red-81-40-121.staticip.rima-tde.net.
  [81.40.121.39])
- by smtp.gmail.com with ESMTPSA id o17sm4522281wmq.47.2021.04.22.12.40.07
+ by smtp.gmail.com with ESMTPSA id b15sm7470096wmj.46.2021.04.22.12.39.57
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 22 Apr 2021 12:40:08 -0700 (PDT)
+ Thu, 22 Apr 2021 12:39:58 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v6 12/18] cpu: Move CPUClass::get_crash_info to SysemuCPUOps
-Date: Thu, 22 Apr 2021 21:38:56 +0200
-Message-Id: <20210422193902.2644064-13-f4bug@amsat.org>
+Subject: [PATCH v6 10/18] cpu: Move CPUClass::vmsd to SysemuCPUOps
+Date: Thu, 22 Apr 2021 21:38:54 +0200
+Message-Id: <20210422193902.2644064-11-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.3
 In-Reply-To: <20210422193902.2644064-1-f4bug@amsat.org>
 References: <20210422193902.2644064-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x431.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42f.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -105,58 +105,126 @@ X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- qemu-riscv@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>,
- Juan Quintela <quintela@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ David Hildenbrand <david@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ Juan Quintela <quintela@redhat.com>, Claudio Fontana <cfontana@suse.de>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Laurent Vivier <laurent@vivier.eu>, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, Claudio Fontana <cfontana@suse.de>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, David Hildenbrand <david@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7X3pvvc5fvzF
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, Greg Kurz <groug@kaod.org>,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+ David Gibson <david@gibson.dropbear.id.au>, qemu-riscv@nongnu.org,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Cornelia Huck <cohuck@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: oNWGLVoywKyt
 
-cpu_get_crash_info() is called on GUEST_PANICKED events,
-which only occur in system emulation.
+Migration is specific to system emulation.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+- Move the CPUClass::vmsd field to SysemuCPUOps,
+- restrict VMSTATE_CPU() macro to sysemu,
+- vmstate_dummy is now unused, remove it.
+
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/core/cpu.h            | 1 -
- include/hw/core/sysemu-cpu-ops.h | 5 +++++
- hw/core/cpu.c                    | 4 ++--
- target/i386/cpu.c                | 2 +-
- target/s390x/cpu.c               | 2 +-
- 5 files changed, 9 insertions(+), 5 deletions(-)
+Since v3: Merged in patch 1 (Eduardo)
+therefore removed Richard R-b.
+
+'vmsd' is not a 'system operation' prototype but a const
+pointer field, so it belongs to a const structure,
+but maybe this structure could be better named than SysemuCPUOps?
+
+This field comes from:
+
+commit b170fce3dd06372f7bfec9a780ebcb1fce6d57e4
+Author: Andreas Färber <afaerber@suse.de>
+Date:   Sun Jan 20 20:23:22 2013 +0100
+
+    cpu: Register VMStateDescription through CPUState
+
+    In comparison to DeviceClass::vmsd, CPU VMState is split in two,
+    "cpu_common" and "cpu", and uses cpu_index as instance_id instead of -1.
+    Therefore add a CPU-specific CPUClass::vmsd field.
+
+    Unlike the legacy CPUArchState registration, rather register CPUState.
+---
+ include/hw/core/cpu.h            |  8 ++------
+ include/hw/core/sysemu-cpu-ops.h |  5 +++++
+ include/migration/vmstate.h      |  2 --
+ cpu.c                            | 15 +++++++--------
+ stubs/vmstate.c                  |  2 --
+ target/arm/cpu.c                 |  2 +-
+ target/i386/cpu.c                |  2 +-
+ target/mips/cpu.c                |  2 +-
+ target/riscv/cpu.c               |  4 ++--
+ target/s390x/cpu.c               |  2 +-
+ target/sparc/cpu.c               |  2 +-
+ target/ppc/translate_init.c.inc  |  2 +-
+ 12 files changed, 22 insertions(+), 26 deletions(-)
 
 diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index e3c702b8b74..4289cd0d78a 100644
+index 23b718a4a51..bdc702894bf 100644
 --- a/include/hw/core/cpu.h
 +++ b/include/hw/core/cpu.h
-@@ -150,7 +150,6 @@ struct CPUClass {
-     int (*memory_rw_debug)(CPUState *cpu, vaddr addr,
-                            uint8_t *buf, int len, bool is_write);
-     void (*dump_state)(CPUState *cpu, FILE *, int flags);
--    GuestPanicInformation* (*get_crash_info)(CPUState *cpu);
-     void (*dump_statistics)(CPUState *cpu, int flags);
-     int64_t (*get_arch_id)(CPUState *cpu);
-     bool (*get_paging_enabled)(const CPUState *cpu);
+@@ -124,8 +124,6 @@ struct AccelCPUClass;
+  * 32-bit VM coredump.
+  * @write_elf32_qemunote: Callback for writing a CPU- and QEMU-specific ELF
+  * note to a 32-bit VM coredump.
+- * @legacy_vmsd: Legacy state description for migration.
+- *               Do not use in new targets, use #DeviceClass::vmsd instead.
+  * @gdb_num_core_regs: Number of core registers accessible to GDB.
+  * @gdb_core_xml_file: File name for core registers GDB XML description.
+  * @gdb_stop_before_watchpoint: Indicates whether GDB expects the CPU to stop
+@@ -180,7 +178,6 @@ struct CPUClass {
+     int (*write_elf32_qemunote)(WriteCoreDumpFunction f, CPUState *cpu,
+                                 void *opaque);
+ 
+-    const VMStateDescription *legacy_vmsd;
+     const char *gdb_core_xml_file;
+     gchar * (*gdb_arch_name)(CPUState *cpu);
+     const char * (*gdb_get_dynamic_xml)(CPUState *cpu, const char *xmlname);
+@@ -1058,10 +1055,8 @@ bool target_words_bigendian(void);
+ #ifdef NEED_CPU_H
+ 
+ #ifdef CONFIG_SOFTMMU
++
+ extern const VMStateDescription vmstate_cpu_common;
+-#else
+-#define vmstate_cpu_common vmstate_dummy
+-#endif
+ 
+ #define VMSTATE_CPU() {                                                     \
+     .name = "parent_obj",                                                   \
+@@ -1070,6 +1065,7 @@ extern const VMStateDescription vmstate_cpu_common;
+     .flags = VMS_STRUCT,                                                    \
+     .offset = 0,                                                            \
+ }
++#endif /* CONFIG_SOFTMMU */
+ 
+ #endif /* NEED_CPU_H */
+ 
 diff --git a/include/hw/core/sysemu-cpu-ops.h b/include/hw/core/sysemu-cpu-ops.h
-index 1c325d62b94..f7a91a66e06 100644
+index e54a08ea25e..a10d9fbdd16 100644
 --- a/include/hw/core/sysemu-cpu-ops.h
 +++ b/include/hw/core/sysemu-cpu-ops.h
 @@ -16,6 +16,11 @@
@@ -164,68 +232,227 @@ index 1c325d62b94..f7a91a66e06 100644
   */
  typedef struct SysemuCPUOps {
 +    /**
-+     * @get_crash_info: Callback for reporting guest crash information in
-+     * GUEST_PANICKED events.
++     * @legacy_vmsd: Legacy state for migration.
++     *               Do not use in new targets, use #DeviceClass::vmsd instead.
 +     */
-+    GuestPanicInformation* (*get_crash_info)(CPUState *cpu);
-     /**
-      * @virtio_is_big_endian: Callback to return %true if a CPU which supports
-      *       runtime configurable endianness is currently big-endian.
-diff --git a/hw/core/cpu.c b/hw/core/cpu.c
-index 09eaa3fa49f..0aebc18c41f 100644
---- a/hw/core/cpu.c
-+++ b/hw/core/cpu.c
-@@ -220,8 +220,8 @@ GuestPanicInformation *cpu_get_crash_info(CPUState *cpu)
-     CPUClass *cc = CPU_GET_CLASS(cpu);
-     GuestPanicInformation *res = NULL;
++    const VMStateDescription *legacy_vmsd;
+ } SysemuCPUOps;
  
--    if (cc->get_crash_info) {
--        res = cc->get_crash_info(cpu);
-+    if (cc->sysemu_ops->get_crash_info) {
-+        res = cc->sysemu_ops->get_crash_info(cpu);
+ #endif /* SYSEMU_CPU_OPS_H */
+diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
+index 075ee800960..8df7b69f389 100644
+--- a/include/migration/vmstate.h
++++ b/include/migration/vmstate.h
+@@ -194,8 +194,6 @@ struct VMStateDescription {
+     const VMStateDescription **subsections;
+ };
+ 
+-extern const VMStateDescription vmstate_dummy;
+-
+ extern const VMStateInfo vmstate_info_bool;
+ 
+ extern const VMStateInfo vmstate_info_int8;
+diff --git a/cpu.c b/cpu.c
+index c1c9cdebc3e..47eb8c40775 100644
+--- a/cpu.c
++++ b/cpu.c
+@@ -126,7 +126,9 @@ const VMStateDescription vmstate_cpu_common = {
+ 
+ void cpu_exec_realizefn(CPUState *cpu, Error **errp)
+ {
++#ifndef CONFIG_USER_ONLY
+     CPUClass *cc = CPU_GET_CLASS(cpu);
++#endif
+ 
+     cpu_list_add(cpu);
+ 
+@@ -139,26 +141,23 @@ void cpu_exec_realizefn(CPUState *cpu, Error **errp)
+ 
+ #ifdef CONFIG_USER_ONLY
+     assert(qdev_get_vmsd(DEVICE(cpu)) == NULL);
+-    assert(cc->legacy_vmsd == NULL);
+ #else
+     if (qdev_get_vmsd(DEVICE(cpu)) == NULL) {
+         vmstate_register(NULL, cpu->cpu_index, &vmstate_cpu_common, cpu);
      }
-     return res;
+-    if (cc->legacy_vmsd != NULL) {
+-        vmstate_register(NULL, cpu->cpu_index, cc->legacy_vmsd, cpu);
++    if (cc->sysemu_ops->legacy_vmsd != NULL) {
++        vmstate_register(NULL, cpu->cpu_index, cc->sysemu_ops->legacy_vmsd, cpu);
+     }
+ #endif /* CONFIG_USER_ONLY */
  }
+ 
+ void cpu_exec_unrealizefn(CPUState *cpu)
+ {
++#ifndef CONFIG_USER_ONLY
+     CPUClass *cc = CPU_GET_CLASS(cpu);
+ 
+-#ifdef CONFIG_USER_ONLY
+-    assert(cc->legacy_vmsd == NULL);
+-#else
+-    if (cc->legacy_vmsd != NULL) {
+-        vmstate_unregister(NULL, cc->legacy_vmsd, cpu);
++    if (cc->sysemu_ops->legacy_vmsd != NULL) {
++        vmstate_unregister(NULL, cc->sysemu_ops->legacy_vmsd, cpu);
+     }
+     if (qdev_get_vmsd(DEVICE(cpu)) == NULL) {
+         vmstate_unregister(NULL, &vmstate_cpu_common, cpu);
+diff --git a/stubs/vmstate.c b/stubs/vmstate.c
+index cc4fe41dfc2..8513d9204e4 100644
+--- a/stubs/vmstate.c
++++ b/stubs/vmstate.c
+@@ -1,8 +1,6 @@
+ #include "qemu/osdep.h"
+ #include "migration/vmstate.h"
+ 
+-const VMStateDescription vmstate_dummy = {};
+-
+ int vmstate_register_with_alias_id(VMStateIf *obj,
+                                    uint32_t instance_id,
+                                    const VMStateDescription *vmsd,
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index c1943194cf1..9b598bf10a8 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1945,6 +1945,7 @@ static gchar *arm_gdb_arch_name(CPUState *cs)
+ 
+ #ifndef CONFIG_USER_ONLY
+ static const struct SysemuCPUOps arm_sysemu_ops = {
++    .legacy_vmsd = &vmstate_arm_cpu,
+ };
+ #endif
+ 
+@@ -1987,7 +1988,6 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
+ #ifndef CONFIG_USER_ONLY
+     cc->get_phys_page_attrs_debug = arm_cpu_get_phys_page_attrs_debug;
+     cc->asidx_from_attrs = arm_asidx_from_attrs;
+-    cc->legacy_vmsd = &vmstate_arm_cpu;
+     cc->virtio_is_big_endian = arm_cpu_virtio_is_big_endian;
+     cc->write_elf64_note = arm_cpu_write_elf64_note;
+     cc->write_elf32_note = arm_cpu_write_elf32_note;
 diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-index eb96dd42556..ab0c07fe9b4 100644
+index 0920eeef1e7..eb96dd42556 100644
 --- a/target/i386/cpu.c
 +++ b/target/i386/cpu.c
 @@ -7393,6 +7393,7 @@ static Property x86_cpu_properties[] = {
  
  #ifndef CONFIG_USER_ONLY
  static const struct SysemuCPUOps i386_sysemu_ops = {
-+    .get_crash_info = x86_cpu_get_crash_info,
-     .legacy_vmsd = &vmstate_x86_cpu,
++    .legacy_vmsd = &vmstate_x86_cpu,
  };
  #endif
-@@ -7432,7 +7433,6 @@ static void x86_cpu_common_class_init(ObjectClass *oc, void *data)
-     cc->asidx_from_attrs = x86_asidx_from_attrs;
-     cc->get_memory_mapping = x86_cpu_get_memory_mapping;
-     cc->get_phys_page_attrs_debug = x86_cpu_get_phys_page_attrs_debug;
--    cc->get_crash_info = x86_cpu_get_crash_info;
-     cc->write_elf64_note = x86_cpu_write_elf64_note;
+ 
+@@ -7436,7 +7437,6 @@ static void x86_cpu_common_class_init(ObjectClass *oc, void *data)
      cc->write_elf64_qemunote = x86_cpu_write_elf64_qemunote;
      cc->write_elf32_note = x86_cpu_write_elf32_note;
+     cc->write_elf32_qemunote = x86_cpu_write_elf32_qemunote;
+-    cc->legacy_vmsd = &vmstate_x86_cpu;
+     cc->sysemu_ops = &i386_sysemu_ops;
+ #endif /* !CONFIG_USER_ONLY */
+ 
+diff --git a/target/mips/cpu.c b/target/mips/cpu.c
+index 0bbaff3b57a..4023d487669 100644
+--- a/target/mips/cpu.c
++++ b/target/mips/cpu.c
+@@ -682,6 +682,7 @@ static Property mips_cpu_properties[] = {
+ 
+ #ifndef CONFIG_USER_ONLY
+ static const struct SysemuCPUOps mips_sysemu_ops = {
++    .legacy_vmsd = &vmstate_mips_cpu,
+ };
+ #endif
+ 
+@@ -725,7 +726,6 @@ static void mips_cpu_class_init(ObjectClass *c, void *data)
+     cc->gdb_write_register = mips_cpu_gdb_write_register;
+ #ifndef CONFIG_USER_ONLY
+     cc->get_phys_page_debug = mips_cpu_get_phys_page_debug;
+-    cc->legacy_vmsd = &vmstate_mips_cpu;
+     cc->sysemu_ops = &mips_sysemu_ops;
+ #endif
+     cc->disas_set_info = mips_cpu_disas_set_info;
+diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
+index c465695f00d..5514e23c1d2 100644
+--- a/target/riscv/cpu.c
++++ b/target/riscv/cpu.c
+@@ -583,6 +583,8 @@ static const char *riscv_gdb_get_dynamic_xml(CPUState *cs, const char *xmlname)
+ 
+ #ifndef CONFIG_USER_ONLY
+ static const struct SysemuCPUOps riscv_sysemu_ops = {
++    /* For now, mark unmigratable: */
++    .legacy_vmsd = &vmstate_riscv_cpu,
+ };
+ #endif
+ 
+@@ -628,8 +630,6 @@ static void riscv_cpu_class_init(ObjectClass *c, void *data)
+     cc->disas_set_info = riscv_cpu_disas_set_info;
+ #ifndef CONFIG_USER_ONLY
+     cc->get_phys_page_debug = riscv_cpu_get_phys_page_debug;
+-    /* For now, mark unmigratable: */
+-    cc->legacy_vmsd = &vmstate_riscv_cpu;
+     cc->sysemu_ops = &riscv_sysemu_ops;
+     cc->write_elf64_note = riscv_cpu_write_elf64_note;
+     cc->write_elf32_note = riscv_cpu_write_elf32_note;
 diff --git a/target/s390x/cpu.c b/target/s390x/cpu.c
-index 131e7dfdf82..55d7a727602 100644
+index 7503b9e0c8b..131e7dfdf82 100644
 --- a/target/s390x/cpu.c
 +++ b/target/s390x/cpu.c
 @@ -479,6 +479,7 @@ static void s390_cpu_reset_full(DeviceState *dev)
  
  #ifndef CONFIG_USER_ONLY
  static const struct SysemuCPUOps s390_sysemu_ops = {
-+    .get_crash_info = s390_cpu_get_crash_info,
-     .legacy_vmsd = &vmstate_s390_cpu,
++    .legacy_vmsd = &vmstate_s390_cpu,
  };
  #endif
-@@ -523,7 +524,6 @@ static void s390_cpu_class_init(ObjectClass *oc, void *data)
+ 
+@@ -522,7 +523,6 @@ static void s390_cpu_class_init(ObjectClass *oc, void *data)
      cc->gdb_write_register = s390_cpu_gdb_write_register;
  #ifndef CONFIG_USER_ONLY
      cc->get_phys_page_debug = s390_cpu_get_phys_page_debug;
--    cc->get_crash_info = s390_cpu_get_crash_info;
+-    cc->legacy_vmsd = &vmstate_s390_cpu;
+     cc->get_crash_info = s390_cpu_get_crash_info;
      cc->write_elf64_note = s390_cpu_write_elf64_note;
      cc->sysemu_ops = &s390_sysemu_ops;
+diff --git a/target/sparc/cpu.c b/target/sparc/cpu.c
+index 743a7287a4f..543853c24dc 100644
+--- a/target/sparc/cpu.c
++++ b/target/sparc/cpu.c
+@@ -850,6 +850,7 @@ static Property sparc_cpu_properties[] = {
+ 
+ #ifndef CONFIG_USER_ONLY
+ static const struct SysemuCPUOps sparc_sysemu_ops = {
++    .legacy_vmsd = &vmstate_sparc_cpu,
+ };
  #endif
+ 
+@@ -894,7 +895,6 @@ static void sparc_cpu_class_init(ObjectClass *oc, void *data)
+     cc->gdb_write_register = sparc_cpu_gdb_write_register;
+ #ifndef CONFIG_USER_ONLY
+     cc->get_phys_page_debug = sparc_cpu_get_phys_page_debug;
+-    cc->legacy_vmsd = &vmstate_sparc_cpu;
+     cc->sysemu_ops = &sparc_sysemu_ops;
+ #endif
+     cc->disas_set_info = cpu_sparc_disas_set_info;
+diff --git a/target/ppc/translate_init.c.inc b/target/ppc/translate_init.c.inc
+index b15abc36851..e3f2f2fefa3 100644
+--- a/target/ppc/translate_init.c.inc
++++ b/target/ppc/translate_init.c.inc
+@@ -10880,6 +10880,7 @@ static Property ppc_cpu_properties[] = {
+ 
+ #ifndef CONFIG_USER_ONLY
+ static const struct SysemuCPUOps ppc_sysemu_ops = {
++    .legacy_vmsd = &vmstate_ppc_cpu,
+ };
+ #endif
+ 
+@@ -10925,7 +10926,6 @@ static void ppc_cpu_class_init(ObjectClass *oc, void *data)
+     cc->gdb_write_register = ppc_cpu_gdb_write_register;
+ #ifndef CONFIG_USER_ONLY
+     cc->get_phys_page_debug = ppc_cpu_get_phys_page_debug;
+-    cc->legacy_vmsd = &vmstate_ppc_cpu;
+     cc->sysemu_ops = &ppc_sysemu_ops;
+ #endif
+ #if defined(CONFIG_SOFTMMU)
 -- 
 2.26.3
 

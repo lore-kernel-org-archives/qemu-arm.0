@@ -1,397 +1,157 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp686040lfb;
-        Thu, 22 Apr 2021 13:02:48 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwq1CzIp3vy/l2ivGQdcJqPfH9+bssus/jkF2cvibLD0DSct+uSgLgfE95lDYaI9H9oD2j2
-X-Received: by 2002:a92:c844:: with SMTP id b4mr174011ilq.36.1619121768268;
-        Thu, 22 Apr 2021 13:02:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619121768; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp875442lfb;
+        Thu, 22 Apr 2021 18:08:48 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyeX66uS6TZzkpQlQ/hcmECYMG+wJ8eXVddDEjwNiMoPaOZc25RakmT7EzuWRx1ComYTAhk
+X-Received: by 2002:a67:6804:: with SMTP id d4mr1513227vsc.23.1619140128754;
+        Thu, 22 Apr 2021 18:08:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619140128; cv=none;
         d=google.com; s=arc-20160816;
-        b=jkhx2F/Yx8gDHvR/fXyWWyYN4G+jLBcPzdQ4kaHKkOWY5OnyfPL+k9vr275bZg4Whj
-         nPXIVKTl1oVkPTlZ5mkBkcroYwRA1d05XEaCUBBo5hAF54RawR/nPxImOn90/Wz/VwJ6
-         mRciNpbzM5i2/4KdtF6hBt/h3vpgih85bMF1AceDKQ3k5nCF331vpgRH/aMHNTjpSlEm
-         C5X2BL3Z0ACaIgGg2u7sDnnikeuKq0+OEx1swEtXH78NUy1e/gLckUZCxY/zwtIe5NfQ
-         pLh+3w2jIvKLkvVM5mSdU9gzBSrmF3pFGQ+Ol2p7+M6e6iVUKa6JKJzpDuaCFxs9VmUH
-         6FBw==
+        b=fb4S194lx1IWkZ5iQJMM+lg1E6EgFRPymkjIv7t8ZpyoHrjEkcCHB9t41d/T+at5ee
+         j6f6TGChjmvBZnC+F6SjgkSjl7IA8SWyRfCN52WK5KG6rHwEI+iLaSCkzuT8+IsvIp8G
+         E9xOyMtAKlqGL0CF/aXC4w7NOd42AZkJuZBX/QNqKydzMNNoQo9MROj56cwGH3ShqDGd
+         uyeDTrTEikMaeymvBCNtA6skdsS1HrUYxlDkZvSi2jYQopkTWBAqyS1ZSFy/iX8qAuPw
+         8Q7HM4fYx/zrsdnLczuqZvIlDYyalsOhAiecNXfavB75B5BJE7QSXo7d1Lik2KRNWF68
+         YZhg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=AZJBeeNOH22jprJnWdXZAe0tHqvL7WeWaboJ9qAD1UQ=;
-        b=or8qO2bZ6t7EtkhE5ppWewI88aM1PECPNp9mP2ZaKZ1Xc9BHNSsEkpO2s3sL1ijbsg
-         TTSiyizGnZnzATdWEQlCkhsr33Kun4S/nYxQPRsm+jga51WyfD3qTJ68Qb3DKi8LbCKW
-         invTnZGjIlFKOIrGG0HxvKSu/7eBL11AffyKjNxXFXcy21jX4nY/sl2q8U4wEyOBqBrw
-         O3y4ZC0+owf0Gn7Nc6zCVVT9wrBw3iRlOw7PDrzHx9nXRdO0x1SvHzrFhb+yPTt0et9a
-         VSso/lGL2p6BlV2EuAE6NG6c4uNMBTb5snXMxCOvmmHKMa22T3JaLLdPppdy1H4TwRji
-         U4lw==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=MUA1k1tQg1EnwA+MIy/CWrOl/o5O27lSJomM1qJOaAs=;
+        b=gFzZBnn0WybvKQRdzqaH5dPK70NHSeB2iEgtHjDfiFEA+ehAAtDQmhNawJzNJ3nho8
+         DCl02GRtJslPlFaieno3RudTyWlrPdQzuQlSnM2UUKPAedqBgy2j55P2BDjphZRrj8E4
+         Hy1tGLSCtmYxZirCOLDFmciISdMJsK2YFR/zd2bpYY1taiAwNHtM3USV47ZuylFgFnRO
+         J7LrV5MPhVYpkbvqkakoIHyCQ64xXLWIyxx10qRsknzcxWj1iAkFclsL+8/AO3WpE33L
+         xLaW7sMU5It8NFcqSJcC7ETCA2d9i9pHasYw74K13wEMcEbavjLeej822qWCVSNWjy0M
+         eaNg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Z240BZRQ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b="pnT/8bjs";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u12si4219886ilm.67.2021.04.22.13.02.47
+        by mx.google.com with ESMTPS id c8si2306193vsq.295.2021.04.22.18.08.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Apr 2021 13:02:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 22 Apr 2021 18:08:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Z240BZRQ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:57754 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b="pnT/8bjs";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:44040 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lZfXD-0000I2-EW
-	for alex.bennee@linaro.org; Thu, 22 Apr 2021 16:02:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57300)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lZkJM-0005Av-3O
+	for alex.bennee@linaro.org; Thu, 22 Apr 2021 21:08:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55774)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lZfBW-0003DT-0a; Thu, 22 Apr 2021 15:40:22 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b]:41925)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1lZkJB-00058M-R3
+ for qemu-arm@nongnu.org; Thu, 22 Apr 2021 21:08:37 -0400
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e]:33691)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lZfBR-0005i5-Fv; Thu, 22 Apr 2021 15:40:19 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- o21-20020a1c4d150000b029012e52898006so17460wmh.0; 
- Thu, 22 Apr 2021 12:40:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=AZJBeeNOH22jprJnWdXZAe0tHqvL7WeWaboJ9qAD1UQ=;
- b=Z240BZRQryTPhCTTWoxnTx5VdWN+5rgXKu+uoKPVPn17ft+8g6X95bIEXvIWU62eRf
- qxUB7mxiRhQhQQdC8qKtTnslZBqi0Vakdr1qPYKXzGxcslsl0wMsMzovRj8i+2+JmdPz
- IRKzewboYxAc5V4a8LCvD+kS3rWtOhBzbF78blEiTZ0Lbhw7hzePBhsGuRts/62ZkqBI
- JZT4v6EQkBPL2a/MkcOYBFDltuSS6S/8VdYVmiH7XVhVeqoltemcH7kjfhUP01lvUige
- PjBuDUIJQFV0d1ZTjNKqhH/qQeH32O5K0FqqUBdONLE5O+9U6djVnxnjmdVJVu8IAcFb
- Kbrw==
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1lZkJ9-0007r5-1N
+ for qemu-arm@nongnu.org; Thu, 22 Apr 2021 21:08:37 -0400
+Received: by mail-pl1-x62e.google.com with SMTP id n10so13282250plc.0
+ for <qemu-arm@nongnu.org>; Thu, 22 Apr 2021 18:08:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=MUA1k1tQg1EnwA+MIy/CWrOl/o5O27lSJomM1qJOaAs=;
+ b=pnT/8bjsgEEWxFHCr+twW7LgZKTX/tnYgXMyGZQXPlkoJjszgQuw8iiG4f0WO/rLWc
+ cqdCtwRTLIzn8tCtei10iObK9KlCP1xusdV/yWOGIz677PVV0SoH6kLJo/YQk/zFDVQR
+ 4355nYtorcncwkXXerHTBrQpY2XH7WkEjaT3zhomIaIHUbIDqxXdwTljBQnbyRHkJlxI
+ Jc6WDBys67O1H001a6xLJa+VCcL8FHxn+QPLWEyAjZN613eOHq3hytpqSs5q/8lwqVCj
+ VYGRMlT91oN+08vUAFktAVKBdSp9H8AiJqWtSbOsRkSbLprWc5iPNyGGDn6gFaHMtgBO
+ kogQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=AZJBeeNOH22jprJnWdXZAe0tHqvL7WeWaboJ9qAD1UQ=;
- b=Pxt+P3xLq8mdG0e0Nd9JAd0N0IqkthRSgcCiC7F9gVAJmGDaiQzpcS33IQQzwwzyEH
- SltAwrqvPsqthpvQtVW/LsthYZQtg5epT7FJyF2Ms1O5fb/yDIe1c/zyfxYcztFNESET
- 5eNBtn3KXosjoIW85YLyZZD4B9x9kQlycicEpf7nQXoVxs98Tzva1pbo8U+51RObYAv6
- w39QyUOmWySbZI0jGvmZzIRFmwt2PQ1krnZu0TqZsGx8CL22MnGGieJlkCh0JUQpHI1d
- oAmLVlZPbhX85zmWrT3EJ78toBslAotKY0EhAtF9u9haUvdtECYWFb+wQGTiZYH+/Mkv
- hWkA==
-X-Gm-Message-State: AOAM5317KRNdj/ew67gMTApzf98YNuc+rGJvfJvcFwpLdzlJcYkJqLhF
- pCO1XnZDvke1d7mqBhMLlfmV794upNMVCw==
-X-Received: by 2002:a1c:771a:: with SMTP id t26mr398222wmi.96.1619120414533;
- Thu, 22 Apr 2021 12:40:14 -0700 (PDT)
-Received: from x1w.redhat.com (39.red-81-40-121.staticip.rima-tde.net.
- [81.40.121.39])
- by smtp.gmail.com with ESMTPSA id v8sm5291456wrt.71.2021.04.22.12.40.12
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 22 Apr 2021 12:40:14 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v6 13/18] cpu: Move CPUClass::write_elf* to SysemuCPUOps
-Date: Thu, 22 Apr 2021 21:38:57 +0200
-Message-Id: <20210422193902.2644064-14-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.3
-In-Reply-To: <20210422193902.2644064-1-f4bug@amsat.org>
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=MUA1k1tQg1EnwA+MIy/CWrOl/o5O27lSJomM1qJOaAs=;
+ b=AMe/2zjPTLpggLG95cdPyB+mXm/1c8Atm7CB+l8+NNaiAUVUMFXdxRbhIp4yYxRFI5
+ cZbu95aO9jLUbGlSKP9zOPf/o96A4dRNE0ztf07gMwQ9twuIBldgUCzCVMAmxkB5Zz+Y
+ sA4f/IuDqDNdQipBk4M3fENIzfKidegO/82E94gSp5RPbOEOpvJttrOpz1F65sf5l29g
+ HJ4UqZ7ASB14RBFu5HpBxpfUywsCDUEErtYDqZZWHXjt1Z0YbgjqZ8tKE2dF5x7TAcfa
+ GxEkYWSKr1xRNZ6Pzaur5HkDE6UvfeV08ZDi8E+yUy2j6HkpE5CcghVH1Cog8bBiqzYH
+ G3gA==
+X-Gm-Message-State: AOAM533xCwh+uYZyqRVIQoEOnZcbquVsCzxxPCRQSd1yyZerdUlIrlS/
+ QWheHSWGXIyyL7Kun8N0TQ0/IA==
+X-Received: by 2002:a17:90a:5b0a:: with SMTP id
+ o10mr2838923pji.82.1619140113294; 
+ Thu, 22 Apr 2021 18:08:33 -0700 (PDT)
+Received: from [192.168.1.11] ([71.212.131.83])
+ by smtp.gmail.com with ESMTPSA id w7sm3095480pff.208.2021.04.22.18.08.32
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 22 Apr 2021 18:08:32 -0700 (PDT)
+Subject: Re: [PATCH v6 06/18] cpu: Assert DeviceClass::vmsd is NULL on user
+ emulation
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
 References: <20210422193902.2644064-1-f4bug@amsat.org>
+ <20210422193902.2644064-7-f4bug@amsat.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <f53ad5da-3016-229f-9bb0-f6c8f06f4a36@linaro.org>
+Date: Thu, 22 Apr 2021 18:08:30 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20210422193902.2644064-7-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32b.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- David Hildenbrand <david@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Alistair Francis <Alistair.Francis@wdc.com>,
- Juan Quintela <quintela@redhat.com>, Claudio Fontana <cfontana@suse.de>,
- Palmer Dabbelt <palmer@dabbelt.com>, Thomas Huth <thuth@redhat.com>,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-riscv@nongnu.org,
  Eduardo Habkost <ehabkost@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, Greg Kurz <groug@kaod.org>,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- David Gibson <david@gibson.dropbear.id.au>, qemu-riscv@nongnu.org,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Cornelia Huck <cohuck@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eb8r9pzZapuy
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Juan Quintela <quintela@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Laurent Vivier <laurent@vivier.eu>, Max Filippov <jcmvbkbc@gmail.com>,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ Claudio Fontana <cfontana@suse.de>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Guan Xuetao <gxt@mprc.pku.edu.cn>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: SYcFABHrjDMU
 
-The write_elf*() handlers are used to dump vmcore images.
-This feature is only meaningful for system emulation.
+On 4/22/21 12:38 PM, Philippe Mathieu-Daudé wrote:
+> Migration is specific to system emulation.
+> 
+> Restrict current DeviceClass::vmsd to sysemu using #ifdef'ry,
+> and assert in cpu_exec_realizefn() that dc->vmsd not set under
+> user emulation.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé<f4bug@amsat.org>
+> ---
+>   cpu.c                  | 1 +
+>   target/sh4/cpu.c       | 5 +++--
+>   target/unicore32/cpu.c | 4 ++++
+>   target/xtensa/cpu.c    | 4 +++-
+>   4 files changed, 11 insertions(+), 3 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- include/hw/core/cpu.h            | 17 -----------------
- include/hw/core/sysemu-cpu-ops.h | 24 ++++++++++++++++++++++++
- hw/core/cpu.c                    | 16 ++++++++--------
- target/arm/cpu.c                 |  4 ++--
- target/i386/cpu.c                |  8 ++++----
- target/riscv/cpu.c               |  4 ++--
- target/s390x/cpu.c               |  2 +-
- target/ppc/translate_init.c.inc  |  6 ++----
- 8 files changed, 43 insertions(+), 38 deletions(-)
 
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index 4289cd0d78a..b7095bc4192 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -112,14 +112,6 @@ struct AccelCPUClass;
-  *       a memory access with the specified memory transaction attributes.
-  * @gdb_read_register: Callback for letting GDB read a register.
-  * @gdb_write_register: Callback for letting GDB write a register.
-- * @write_elf64_note: Callback for writing a CPU-specific ELF note to a
-- * 64-bit VM coredump.
-- * @write_elf32_qemunote: Callback for writing a CPU- and QEMU-specific ELF
-- * note to a 32-bit VM coredump.
-- * @write_elf32_note: Callback for writing a CPU-specific ELF note to a
-- * 32-bit VM coredump.
-- * @write_elf32_qemunote: Callback for writing a CPU- and QEMU-specific ELF
-- * note to a 32-bit VM coredump.
-  * @gdb_num_core_regs: Number of core registers accessible to GDB.
-  * @gdb_core_xml_file: File name for core registers GDB XML description.
-  * @gdb_stop_before_watchpoint: Indicates whether GDB expects the CPU to stop
-@@ -163,15 +155,6 @@ struct CPUClass {
-     int (*gdb_read_register)(CPUState *cpu, GByteArray *buf, int reg);
-     int (*gdb_write_register)(CPUState *cpu, uint8_t *buf, int reg);
- 
--    int (*write_elf64_note)(WriteCoreDumpFunction f, CPUState *cpu,
--                            int cpuid, void *opaque);
--    int (*write_elf64_qemunote)(WriteCoreDumpFunction f, CPUState *cpu,
--                                void *opaque);
--    int (*write_elf32_note)(WriteCoreDumpFunction f, CPUState *cpu,
--                            int cpuid, void *opaque);
--    int (*write_elf32_qemunote)(WriteCoreDumpFunction f, CPUState *cpu,
--                                void *opaque);
--
-     const char *gdb_core_xml_file;
-     gchar * (*gdb_arch_name)(CPUState *cpu);
-     const char * (*gdb_get_dynamic_xml)(CPUState *cpu, const char *xmlname);
-diff --git a/include/hw/core/sysemu-cpu-ops.h b/include/hw/core/sysemu-cpu-ops.h
-index f7a91a66e06..bdc76d580e9 100644
---- a/include/hw/core/sysemu-cpu-ops.h
-+++ b/include/hw/core/sysemu-cpu-ops.h
-@@ -21,6 +21,30 @@ typedef struct SysemuCPUOps {
-      * GUEST_PANICKED events.
-      */
-     GuestPanicInformation* (*get_crash_info)(CPUState *cpu);
-+    /**
-+     * @write_elf32_note: Callback for writing a CPU-specific ELF note to a
-+     * 32-bit VM coredump.
-+     */
-+    int (*write_elf32_note)(WriteCoreDumpFunction f, CPUState *cpu,
-+                            int cpuid, void *opaque);
-+    /**
-+     * @write_elf64_note: Callback for writing a CPU-specific ELF note to a
-+     * 64-bit VM coredump.
-+     */
-+    int (*write_elf64_note)(WriteCoreDumpFunction f, CPUState *cpu,
-+                            int cpuid, void *opaque);
-+    /**
-+     * @write_elf32_qemunote: Callback for writing a CPU- and QEMU-specific ELF
-+     * note to a 32-bit VM coredump.
-+     */
-+    int (*write_elf32_qemunote)(WriteCoreDumpFunction f, CPUState *cpu,
-+                                void *opaque);
-+    /**
-+     * @write_elf64_qemunote: Callback for writing a CPU- and QEMU-specific ELF
-+     * note to a 64-bit VM coredump.
-+     */
-+    int (*write_elf64_qemunote)(WriteCoreDumpFunction f, CPUState *cpu,
-+                                void *opaque);
-     /**
-      * @virtio_is_big_endian: Callback to return %true if a CPU which supports
-      *       runtime configurable endianness is currently big-endian.
-diff --git a/hw/core/cpu.c b/hw/core/cpu.c
-index 0aebc18c41f..c74390aafbf 100644
---- a/hw/core/cpu.c
-+++ b/hw/core/cpu.c
-@@ -151,10 +151,10 @@ int cpu_write_elf32_qemunote(WriteCoreDumpFunction f, CPUState *cpu,
- {
-     CPUClass *cc = CPU_GET_CLASS(cpu);
- 
--    if (!cc->write_elf32_qemunote) {
-+    if (!cc->sysemu_ops->write_elf32_qemunote) {
-         return 0;
-     }
--    return (*cc->write_elf32_qemunote)(f, cpu, opaque);
-+    return (*cc->sysemu_ops->write_elf32_qemunote)(f, cpu, opaque);
- }
- 
- int cpu_write_elf32_note(WriteCoreDumpFunction f, CPUState *cpu,
-@@ -162,10 +162,10 @@ int cpu_write_elf32_note(WriteCoreDumpFunction f, CPUState *cpu,
- {
-     CPUClass *cc = CPU_GET_CLASS(cpu);
- 
--    if (!cc->write_elf32_note) {
-+    if (!cc->sysemu_ops->write_elf32_note) {
-         return -1;
-     }
--    return (*cc->write_elf32_note)(f, cpu, cpuid, opaque);
-+    return (*cc->sysemu_ops->write_elf32_note)(f, cpu, cpuid, opaque);
- }
- 
- int cpu_write_elf64_qemunote(WriteCoreDumpFunction f, CPUState *cpu,
-@@ -173,10 +173,10 @@ int cpu_write_elf64_qemunote(WriteCoreDumpFunction f, CPUState *cpu,
- {
-     CPUClass *cc = CPU_GET_CLASS(cpu);
- 
--    if (!cc->write_elf64_qemunote) {
-+    if (!cc->sysemu_ops->write_elf64_qemunote) {
-         return 0;
-     }
--    return (*cc->write_elf64_qemunote)(f, cpu, opaque);
-+    return (*cc->sysemu_ops->write_elf64_qemunote)(f, cpu, opaque);
- }
- 
- int cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cpu,
-@@ -184,10 +184,10 @@ int cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cpu,
- {
-     CPUClass *cc = CPU_GET_CLASS(cpu);
- 
--    if (!cc->write_elf64_note) {
-+    if (!cc->sysemu_ops->write_elf64_note) {
-         return -1;
-     }
--    return (*cc->write_elf64_note)(f, cpu, cpuid, opaque);
-+    return (*cc->sysemu_ops->write_elf64_note)(f, cpu, cpuid, opaque);
- }
- 
- static int cpu_common_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg)
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index d071ae72ba3..cbfdb9d0b70 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1945,6 +1945,8 @@ static gchar *arm_gdb_arch_name(CPUState *cs)
- 
- #ifndef CONFIG_USER_ONLY
- static const struct SysemuCPUOps arm_sysemu_ops = {
-+    .write_elf32_note = arm_cpu_write_elf32_note,
-+    .write_elf64_note = arm_cpu_write_elf64_note,
-     .virtio_is_big_endian = arm_cpu_virtio_is_big_endian,
-     .legacy_vmsd = &vmstate_arm_cpu,
- };
-@@ -1989,8 +1991,6 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
- #ifndef CONFIG_USER_ONLY
-     cc->get_phys_page_attrs_debug = arm_cpu_get_phys_page_attrs_debug;
-     cc->asidx_from_attrs = arm_asidx_from_attrs;
--    cc->write_elf64_note = arm_cpu_write_elf64_note;
--    cc->write_elf32_note = arm_cpu_write_elf32_note;
-     cc->sysemu_ops = &arm_sysemu_ops;
- #endif
-     cc->gdb_num_core_regs = 26;
-diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-index ab0c07fe9b4..fd7788907ea 100644
---- a/target/i386/cpu.c
-+++ b/target/i386/cpu.c
-@@ -7394,6 +7394,10 @@ static Property x86_cpu_properties[] = {
- #ifndef CONFIG_USER_ONLY
- static const struct SysemuCPUOps i386_sysemu_ops = {
-     .get_crash_info = x86_cpu_get_crash_info,
-+    .write_elf32_note = x86_cpu_write_elf32_note,
-+    .write_elf64_note = x86_cpu_write_elf64_note,
-+    .write_elf32_qemunote = x86_cpu_write_elf32_qemunote,
-+    .write_elf64_qemunote = x86_cpu_write_elf64_qemunote,
-     .legacy_vmsd = &vmstate_x86_cpu,
- };
- #endif
-@@ -7433,10 +7437,6 @@ static void x86_cpu_common_class_init(ObjectClass *oc, void *data)
-     cc->asidx_from_attrs = x86_asidx_from_attrs;
-     cc->get_memory_mapping = x86_cpu_get_memory_mapping;
-     cc->get_phys_page_attrs_debug = x86_cpu_get_phys_page_attrs_debug;
--    cc->write_elf64_note = x86_cpu_write_elf64_note;
--    cc->write_elf64_qemunote = x86_cpu_write_elf64_qemunote;
--    cc->write_elf32_note = x86_cpu_write_elf32_note;
--    cc->write_elf32_qemunote = x86_cpu_write_elf32_qemunote;
-     cc->sysemu_ops = &i386_sysemu_ops;
- #endif /* !CONFIG_USER_ONLY */
- 
-diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
-index 5514e23c1d2..cacec059754 100644
---- a/target/riscv/cpu.c
-+++ b/target/riscv/cpu.c
-@@ -583,6 +583,8 @@ static const char *riscv_gdb_get_dynamic_xml(CPUState *cs, const char *xmlname)
- 
- #ifndef CONFIG_USER_ONLY
- static const struct SysemuCPUOps riscv_sysemu_ops = {
-+    .write_elf64_note = riscv_cpu_write_elf64_note,
-+    .write_elf32_note = riscv_cpu_write_elf32_note,
-     /* For now, mark unmigratable: */
-     .legacy_vmsd = &vmstate_riscv_cpu,
- };
-@@ -631,8 +633,6 @@ static void riscv_cpu_class_init(ObjectClass *c, void *data)
- #ifndef CONFIG_USER_ONLY
-     cc->get_phys_page_debug = riscv_cpu_get_phys_page_debug;
-     cc->sysemu_ops = &riscv_sysemu_ops;
--    cc->write_elf64_note = riscv_cpu_write_elf64_note;
--    cc->write_elf32_note = riscv_cpu_write_elf32_note;
- #endif
-     cc->gdb_arch_name = riscv_gdb_arch_name;
-     cc->gdb_get_dynamic_xml = riscv_gdb_get_dynamic_xml;
-diff --git a/target/s390x/cpu.c b/target/s390x/cpu.c
-index 55d7a727602..afb55be5c8c 100644
---- a/target/s390x/cpu.c
-+++ b/target/s390x/cpu.c
-@@ -480,6 +480,7 @@ static void s390_cpu_reset_full(DeviceState *dev)
- #ifndef CONFIG_USER_ONLY
- static const struct SysemuCPUOps s390_sysemu_ops = {
-     .get_crash_info = s390_cpu_get_crash_info,
-+    .write_elf64_note = s390_cpu_write_elf64_note,
-     .legacy_vmsd = &vmstate_s390_cpu,
- };
- #endif
-@@ -524,7 +525,6 @@ static void s390_cpu_class_init(ObjectClass *oc, void *data)
-     cc->gdb_write_register = s390_cpu_gdb_write_register;
- #ifndef CONFIG_USER_ONLY
-     cc->get_phys_page_debug = s390_cpu_get_phys_page_debug;
--    cc->write_elf64_note = s390_cpu_write_elf64_note;
-     cc->sysemu_ops = &s390_sysemu_ops;
- #endif
-     cc->disas_set_info = s390_cpu_disas_set_info;
-diff --git a/target/ppc/translate_init.c.inc b/target/ppc/translate_init.c.inc
-index 8d6bc6c0087..b348b08868d 100644
---- a/target/ppc/translate_init.c.inc
-+++ b/target/ppc/translate_init.c.inc
-@@ -10880,6 +10880,8 @@ static Property ppc_cpu_properties[] = {
- 
- #ifndef CONFIG_USER_ONLY
- static const struct SysemuCPUOps ppc_sysemu_ops = {
-+    .write_elf32_note = ppc32_cpu_write_elf32_note,
-+    .write_elf64_note = ppc64_cpu_write_elf64_note,
-     .virtio_is_big_endian = ppc_cpu_is_big_endian,
-     .legacy_vmsd = &vmstate_ppc_cpu,
- };
-@@ -10929,10 +10931,6 @@ static void ppc_cpu_class_init(ObjectClass *oc, void *data)
-     cc->get_phys_page_debug = ppc_cpu_get_phys_page_debug;
-     cc->sysemu_ops = &ppc_sysemu_ops;
- #endif
--#if defined(CONFIG_SOFTMMU)
--    cc->write_elf64_note = ppc64_cpu_write_elf64_note;
--    cc->write_elf32_note = ppc32_cpu_write_elf32_note;
--#endif
- 
-     cc->gdb_num_core_regs = 71;
- #ifndef CONFIG_USER_ONLY
--- 
-2.26.3
-
+r~

@@ -1,108 +1,108 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp880786lfb;
-        Thu, 22 Apr 2021 18:17:10 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzesTpjwbx5fiCR3lFBwhIQB/+BzXxguoFfz6f2StzdnolbpAcVEkNG7WkkSRHol6c4fGcu
-X-Received: by 2002:a05:620a:20d5:: with SMTP id f21mr1603992qka.135.1619140630819;
-        Thu, 22 Apr 2021 18:17:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619140630; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp886351lfb;
+        Thu, 22 Apr 2021 18:25:47 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxdvbHwajljFhMl31Gu7G/Dz5MHpVB5Q9h/8QJX/zi3t8k3y3YIwCDxQmxnRVrtkrgSkgAm
+X-Received: by 2002:ac8:6e89:: with SMTP id c9mr1349768qtv.268.1619141147500;
+        Thu, 22 Apr 2021 18:25:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619141147; cv=none;
         d=google.com; s=arc-20160816;
-        b=x62X6CQhKvGaPmLnKxMDfJtFKh2VAY7PLLOX2wycC5n1EjRHXtasme+7ItYsGl5e65
-         pluitVFXFVgKRKe49HINM0Qb8cxmgC2kpd2oR4+kf0ZwSH8/styGpCzHjyrKZ+ojzOEY
-         uvBM42rrE9qHoEAqlxHQ88qUf83HRoIM7S5QIkaziWbG4CwjMHNPG46sHWaprmW46rj3
-         zXLh2HdgFmWlg1BQuIQDkgH4tujZhTgWXdFoaf7K8owaHLGj4OGm6GVUAm28LwAu25iZ
-         D91zOYFzvNAGrx+NKZRUe0ntrpx8DQXKhKeREVScZLtQeYoHEmk+rEslTEmo3kMcG04I
-         XxcQ==
+        b=r1a9Hp+c8VJSFwsybZ9DuGRgjpAVo9aLu2025LI/NR4SKazZD2Ln2lkB7NgJ0ekT2s
+         WIH8bvy93C3tjhWGbbfr1I8qGn1XXcrkLN+HNAxqYXNFikXOMr7dNZstLnnnOpMgzA6S
+         k+Dxs29UVCNcovjcrKJPMPDiCkI+o7n5ESXsr5WBjjuwNvKcjyjxCX2Fkpmq+pI5WMeZ
+         H2pOyq2iO/kbNBGGtADxBa2svWL1WxGQx+icTmeFX8RQu5X4T40x6xayVTt9Sp9exD4t
+         NxJEUdNH/w9udJPL3LDSKgvgRlHrR6UbUYgYQ5MHHwz7MChsPJsi41pUVXCJ3qQSb2LU
+         bUCQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=O/kCEpTC4yHiCkbdHvM/Imm+Gi/Aq1a3B/+HkgrDKXc=;
-        b=MumWqxkWDpM1TRBMJsQrg0mCqNLVWM/EhlIoUbOwKAqAi2I+xQ/F2nqu9zKsSrpUIG
-         flIVKPLlEjQvbejtvfQLcDb6zsDRuwaN9vz16RS3XdZfSsrvhViNIDqVMGFT9PXV4SCP
-         YHtLFqO10Z68dtwuCpGos1qjDvntkizJ+a7M5WT0hW3/eiqKhH5ESecDOMam2GnzvtLX
-         ki2tVUpnN3uEUul1+WuNINL5bnxE3+s9Ix1+MbRKowtfCMgDgObFwy3wuTI8T8vpuUjU
-         3RtS+tDsmN18m32SVLlJ23VaWd0Fl3LcbVnzKjn3z5HbHUs+kwdiSKXDxyFrIVJXGqkw
-         Zu5w==
+        bh=/v3ueyu767UR2a71ujrmoLFs5EhOGrkoQ0rgfThnahc=;
+        b=OFA0OJcTI5fVuoMMay7e/lc7rM/jh4a8Z9Kk6kVaaQygT9Jt4CgSBX9VS787UQUDzQ
+         SnIyBHNFFRzcaNvPADS+VlzyIe4ky3PVlLg9mKFpB2oItZW6S2q9hOakigayv6KuM1eo
+         HonGLRFTzCiFhP3EvSlr3dDoD7PHFtXN+viAF9CUaMALtZ4q+sdAoDGiWTjpfXLCRZV4
+         w9oraB8zqsx1OPtcwecz8TKw7mW7QktAsfgPAeqSv79YNSzc9H8Pt8zoMI+jslLQHxOY
+         v70BfbxYcH8RfXvghJHm0x6Qxed7HcXKkTZ+5K6TR+tpryiq4/leeqHm4mY1Xq+aUhSg
+         uEJw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=M3Lw0lUQ;
+       dkim=fail header.i=@linaro.org header.s=google header.b="GOR/qFhR";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j20si3017569qtr.276.2021.04.22.18.17.10
+        by mx.google.com with ESMTPS id g15si2953812qka.122.2021.04.22.18.25.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Apr 2021 18:17:10 -0700 (PDT)
+        Thu, 22 Apr 2021 18:25:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=M3Lw0lUQ;
+       dkim=fail header.i=@linaro.org header.s=google header.b="GOR/qFhR";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49844 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52798 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lZkRS-0007uI-68
-	for alex.bennee@linaro.org; Thu, 22 Apr 2021 21:17:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56876)
+	id 1lZkZm-00016i-Qc
+	for alex.bennee@linaro.org; Thu, 22 Apr 2021 21:25:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57900)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lZkR1-0007tZ-1F
- for qemu-arm@nongnu.org; Thu, 22 Apr 2021 21:16:43 -0400
-Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531]:42728)
+ id 1lZkZK-00013j-VA
+ for qemu-arm@nongnu.org; Thu, 22 Apr 2021 21:25:20 -0400
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632]:40833)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lZkQz-0003mV-Fh
- for qemu-arm@nongnu.org; Thu, 22 Apr 2021 21:16:42 -0400
-Received: by mail-pg1-x531.google.com with SMTP id m12so13380281pgr.9
- for <qemu-arm@nongnu.org>; Thu, 22 Apr 2021 18:16:41 -0700 (PDT)
+ id 1lZkZ7-0008NE-F6
+ for qemu-arm@nongnu.org; Thu, 22 Apr 2021 21:25:16 -0400
+Received: by mail-pl1-x632.google.com with SMTP id 20so20496821pll.7
+ for <qemu-arm@nongnu.org>; Thu, 22 Apr 2021 18:25:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=O/kCEpTC4yHiCkbdHvM/Imm+Gi/Aq1a3B/+HkgrDKXc=;
- b=M3Lw0lUQne+7WlSZFuaG93xSzzfshNbxK4sDm20IwhQAZp4BF8hJ5C4MMCHhLjLvv8
- 9jI6309DEIcsKgwyVxkLL5KVzT7do0OyODHC9ooahEAUqa8CAnMtxfF9ulPFnAfmorhz
- p5O+g6IpYRgvLSVkLJ2yTZHpaRpVC06zHv68efvHqpNysWbu/N3IQaIOZD6LstUlxz37
- 20BC9X6Ch64VtyfEe6bld7yGO0FmCLMAmg/sCXZarghNQ6bO8HcoepSJDW3K5dOsx7Hn
- Ad9JzNsaqEC2iq9sN6iG2hpzfQ+aQ9HiS5QkaVutYWuEBcNgdZwy45sd/l176g03l1h1
- eFgQ==
+ bh=/v3ueyu767UR2a71ujrmoLFs5EhOGrkoQ0rgfThnahc=;
+ b=GOR/qFhRZvfu105UOFwvo7fZV2GpZIopkU6A0DRQymL5H6S8SWfAhwHhA4vh0Mlj9K
+ WOWoX7u6oUgLKvN+gZhdn9/9GK7nc62kUjbHIwg0wTcOSRilaLSS499Fy8C2n7PoodJf
+ DBD6x6fuN+950K396NB0LKbNvhW8mk5KZLVPCfzmgD0l375+UEr/ce9TLwl+Yce6mtFe
+ z2QR5bAeWN1n3ERq2e4EtnHkZA9zvA07nD/5XMwSCF6MyXFUOd+ZcLdS59/2OmqEMNFK
+ 4REh5lIk3lM82MiajAFpM3eaS8redxpjanuGAZVuM9sTCOwbVt4Zh5be4IYG4aYBAVeI
+ zSCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=O/kCEpTC4yHiCkbdHvM/Imm+Gi/Aq1a3B/+HkgrDKXc=;
- b=Skp+n3bpWFzBHjQgP5PIJE4L+EwzaZyYffbTOJvd8le/x1ihx2QVORgNYJl6D9AbHb
- 7mojKEWJ/tmRCGJrZsq6fAnZmX3WyWfEOr4K5didCoQUxohcTXskwL4/GaK4DnW3cuFF
- kdfxcUqz9d6dEYKFiyzW5ZPa5OXO+4/ap1bwt2Kgi/VBeyYAomWZGkXNlodmvd0uMr0j
- N1y2JUM0t+BGSkujOMJVojT8YZNNiPqUaXBG9dq2JFAD6hHidq4DfhHd1MiYj072NC/O
- 70X1hKmmo52nRBx18GY+Phkc3N3djQU1JRGVm+g5U50AP3sQnfKxNC80kL/0LuekpAvC
- B6XA==
-X-Gm-Message-State: AOAM532LCmMSxCvcNU9g/3knVMpLMoCfAiECaGwMtM7kAluVxKZehMJ8
- AKxJFPFYeOmun872cI6C4SSwrw==
-X-Received: by 2002:a63:231c:: with SMTP id j28mr1377352pgj.165.1619140600079; 
- Thu, 22 Apr 2021 18:16:40 -0700 (PDT)
+ bh=/v3ueyu767UR2a71ujrmoLFs5EhOGrkoQ0rgfThnahc=;
+ b=MfdcH1f+EXXsZBPjRFqgdEKSP/8Hko41Av5XErQT9Sr7JrjtpGOlXnYIk/H2AA8w3K
+ +KRxdV9zscvdgbZxbN3dT/KCBIJjckgS89mdfCTyMrUPtjJks5YqV+rSS7cZqbaW0QWL
+ 0KIMAPys12fhNDqpGlSArmqbSnqxZxbdn0VqxeNzPv7ep5/CVb8QO3dD1AAXmAcsucG5
+ qXdE6tjldmMROzjRWhIUwEYjfWAfnxRWqhUFavgfFzDCRv/soWfQcFK9uH+dWOJT2/vr
+ F7mUI6FHnWuEwyJC+W4LgFbXZoUCihfvMvIcRiPdWmgRIlnuFKlO1zHpENabevODydzh
+ HT9g==
+X-Gm-Message-State: AOAM5328xnKBruvGsRvQ0+HUphO+JZjNB3IA+4nA3wQXTPw/GmUgTUrv
+ iOTobJPrYQzOpRvC9BeNKyXg3Q==
+X-Received: by 2002:a17:90a:a58f:: with SMTP id
+ b15mr1557539pjq.135.1619141102090; 
+ Thu, 22 Apr 2021 18:25:02 -0700 (PDT)
 Received: from [192.168.1.11] ([71.212.131.83])
- by smtp.gmail.com with ESMTPSA id t21sm2988123pfg.211.2021.04.22.18.16.39
+ by smtp.gmail.com with ESMTPSA id h8sm3215390pjt.17.2021.04.22.18.25.01
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 22 Apr 2021 18:16:39 -0700 (PDT)
-Subject: Re: [PATCH v6 08/18] cpu/{avr, lm32,
- moxie}: Set DeviceClass vmsd field (not CPUClass one)
+ Thu, 22 Apr 2021 18:25:01 -0700 (PDT)
+Subject: Re: [PATCH v6 10/18] cpu: Move CPUClass::vmsd to SysemuCPUOps
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  qemu-devel@nongnu.org
 References: <20210422193902.2644064-1-f4bug@amsat.org>
- <20210422193902.2644064-9-f4bug@amsat.org>
+ <20210422193902.2644064-11-f4bug@amsat.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <eeaa99ae-da4f-d76d-127e-18a8857de8df@linaro.org>
-Date: Thu, 22 Apr 2021 18:16:37 -0700
+Message-ID: <fc8cd5b3-3502-1937-1400-f471078cad9b@linaro.org>
+Date: Thu, 22 Apr 2021 18:24:59 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.7.1
 MIME-Version: 1.0
-In-Reply-To: <20210422193902.2644064-9-f4bug@amsat.org>
+In-Reply-To: <20210422193902.2644064-11-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::531;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x531.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::632;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x632.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -122,34 +122,121 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Michael Walle <michael@walle.cc>,
- qemu-riscv@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>,
- Juan Quintela <quintela@redhat.com>, Anthony Green <green@moxielogic.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Laurent Vivier <laurent@vivier.eu>, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, Claudio Fontana <cfontana@suse.de>,
- Michael Rolnik <mrolnik@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ David Hildenbrand <david@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Thomas Huth <thuth@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ Juan Quintela <quintela@redhat.com>, Claudio Fontana <cfontana@suse.de>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, Greg Kurz <groug@kaod.org>,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+ David Gibson <david@gibson.dropbear.id.au>, qemu-riscv@nongnu.org,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Cornelia Huck <cohuck@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6OoPR+gr6Nie
+X-TUID: HaeukIvmMJg2
 
 On 4/22/21 12:38 PM, Philippe Mathieu-Daudé wrote:
-> See rationale in previous commit. Targets should use the vmsd field
-> of DeviceClass, not CPUClass. As migration is not important on the
-> avr/lm32/moxie targets, break the migration compatibility and set
-> the DeviceClass vmsd field.
+> Migration is specific to system emulation.
 > 
-> Signed-off-by: Philippe Mathieu-Daudé<f4bug@amsat.org>
+> - Move the CPUClass::vmsd field to SysemuCPUOps,
+> - restrict VMSTATE_CPU() macro to sysemu,
+> - vmstate_dummy is now unused, remove it.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->   target/avr/cpu.c   | 2 +-
->   target/lm32/cpu.c  | 2 +-
->   target/moxie/cpu.c | 2 +-
->   3 files changed, 3 insertions(+), 3 deletions(-)
 
-Do you not have to increment the vmstate versions?
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Though I can't see how the version numbers would even get compared, since we're 
-looking for them in different locations?
+>   #ifndef CONFIG_USER_ONLY
+>   static const struct SysemuCPUOps riscv_sysemu_ops = {
+> +    /* For now, mark unmigratable: */
+> +    .legacy_vmsd = &vmstate_riscv_cpu,
+>   };
+>   #endif
+>   
+> @@ -628,8 +630,6 @@ static void riscv_cpu_class_init(ObjectClass *c, void *data)
+>       cc->disas_set_info = riscv_cpu_disas_set_info;
+>   #ifndef CONFIG_USER_ONLY
+>       cc->get_phys_page_debug = riscv_cpu_get_phys_page_debug;
+> -    /* For now, mark unmigratable: */
+> -    cc->legacy_vmsd = &vmstate_riscv_cpu;
+
+I'll note that the comment has been incorrect since f7697f0e629.
 
 
 r~
+
+>       cc->sysemu_ops = &riscv_sysemu_ops;
+>       cc->write_elf64_note = riscv_cpu_write_elf64_note;
+>       cc->write_elf32_note = riscv_cpu_write_elf32_note;
+> diff --git a/target/s390x/cpu.c b/target/s390x/cpu.c
+> index 7503b9e0c8b..131e7dfdf82 100644
+> --- a/target/s390x/cpu.c
+> +++ b/target/s390x/cpu.c
+> @@ -479,6 +479,7 @@ static void s390_cpu_reset_full(DeviceState *dev)
+>   
+>   #ifndef CONFIG_USER_ONLY
+>   static const struct SysemuCPUOps s390_sysemu_ops = {
+> +    .legacy_vmsd = &vmstate_s390_cpu,
+>   };
+>   #endif
+>   
+> @@ -522,7 +523,6 @@ static void s390_cpu_class_init(ObjectClass *oc, void *data)
+>       cc->gdb_write_register = s390_cpu_gdb_write_register;
+>   #ifndef CONFIG_USER_ONLY
+>       cc->get_phys_page_debug = s390_cpu_get_phys_page_debug;
+> -    cc->legacy_vmsd = &vmstate_s390_cpu;
+>       cc->get_crash_info = s390_cpu_get_crash_info;
+>       cc->write_elf64_note = s390_cpu_write_elf64_note;
+>       cc->sysemu_ops = &s390_sysemu_ops;
+> diff --git a/target/sparc/cpu.c b/target/sparc/cpu.c
+> index 743a7287a4f..543853c24dc 100644
+> --- a/target/sparc/cpu.c
+> +++ b/target/sparc/cpu.c
+> @@ -850,6 +850,7 @@ static Property sparc_cpu_properties[] = {
+>   
+>   #ifndef CONFIG_USER_ONLY
+>   static const struct SysemuCPUOps sparc_sysemu_ops = {
+> +    .legacy_vmsd = &vmstate_sparc_cpu,
+>   };
+>   #endif
+>   
+> @@ -894,7 +895,6 @@ static void sparc_cpu_class_init(ObjectClass *oc, void *data)
+>       cc->gdb_write_register = sparc_cpu_gdb_write_register;
+>   #ifndef CONFIG_USER_ONLY
+>       cc->get_phys_page_debug = sparc_cpu_get_phys_page_debug;
+> -    cc->legacy_vmsd = &vmstate_sparc_cpu;
+>       cc->sysemu_ops = &sparc_sysemu_ops;
+>   #endif
+>       cc->disas_set_info = cpu_sparc_disas_set_info;
+> diff --git a/target/ppc/translate_init.c.inc b/target/ppc/translate_init.c.inc
+> index b15abc36851..e3f2f2fefa3 100644
+> --- a/target/ppc/translate_init.c.inc
+> +++ b/target/ppc/translate_init.c.inc
+> @@ -10880,6 +10880,7 @@ static Property ppc_cpu_properties[] = {
+>   
+>   #ifndef CONFIG_USER_ONLY
+>   static const struct SysemuCPUOps ppc_sysemu_ops = {
+> +    .legacy_vmsd = &vmstate_ppc_cpu,
+>   };
+>   #endif
+>   
+> @@ -10925,7 +10926,6 @@ static void ppc_cpu_class_init(ObjectClass *oc, void *data)
+>       cc->gdb_write_register = ppc_cpu_gdb_write_register;
+>   #ifndef CONFIG_USER_ONLY
+>       cc->get_phys_page_debug = ppc_cpu_get_phys_page_debug;
+> -    cc->legacy_vmsd = &vmstate_ppc_cpu;
+>       cc->sysemu_ops = &ppc_sysemu_ops;
+>   #endif
+>   #if defined(CONFIG_SOFTMMU)
+> 
+

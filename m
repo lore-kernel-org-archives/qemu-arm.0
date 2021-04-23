@@ -1,106 +1,106 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp667277lfb;
-        Thu, 22 Apr 2021 12:39:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxlf2v6UNH/UknVJrc+Jdva4hHCTYuNWEIVrX1rq5gwBN0eYswZwvow4CHfKyaC7HTmlw3P
-X-Received: by 2002:a05:6602:1c9:: with SMTP id w9mr399445iot.201.1619120360916;
-        Thu, 22 Apr 2021 12:39:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619120360; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp1216952lfb;
+        Fri, 23 Apr 2021 03:31:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwWsqUwaVG1E+bNUubHtAzpxTfHgs3pT2RH+3mxBOvGTIDdq6W48rwiZ9bLYHCmPixVTY/L
+X-Received: by 2002:a67:483:: with SMTP id 125mr2559143vse.51.1619173913118;
+        Fri, 23 Apr 2021 03:31:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619173913; cv=none;
         d=google.com; s=arc-20160816;
-        b=MuA2gA7mAeOS1krtTqwK07AfKNmPAiudbM1G/nS0dEO6u99+QieKHv6jlK6UnhcSsY
-         EAu6mxLpQdNdsp1JqPdatTopnCOpwv6Cnp9vDFNG60PJdAqlDl0SK3smDlUfiZmhn9Rg
-         m51eG4DTY3w5QfPxINKVvRagwNhZnjBMzkHU7zknGqoRfGVtCriVdNm4zIvGFfTCOijU
-         MpTsIL6YF5BpSSsWC66NYhLr2y0h6J+jlsSm5NlEIEV8E/fbT1lSsEkQ1hMzcZrtgdgH
-         mZaW/yK3mK8quNnYDd9RsC7uW7iy4XEVVY+M2IVfXtm6hOaDnIN+MSoqGGD3blFphYIQ
-         UTNQ==
+        b=aynVw6RoNXtLHRpUVil8c+9EJ5SLvUZVxaOtK9Dxf2tPyxbdM0T0lqcf5e93yR2GsM
+         AA9IBb7lYcbyat60K1MhQt2cbOnefNVniSIOvZ6h34bHyVYsfljxdT3kEj3Pugb7EPxx
+         MPFvpbZ2RYji7IUizn2o04Wqpr3OD+Gzkpwy3N1qID+ksls8Eu32Y8frgy8h2R1KpwBo
+         LN0SUtBdugbRVzLPLAg2C7mgeLC7Tnv3RGVZmiQKe+Nys0zyrAXhn4eq0aPE4zayLgv5
+         lBzParx40xtP8kgEoqbZywrSlb11fVy5L19/nurN5IXSdCYY5WpJvHZaeEOTN/KNKQs4
+         Iuqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=Di5CVuHkPTstCgi4wiTFFGkNABVnXzKxgPBAohmkqxA=;
-        b=Xpw1OrH7sCCjT6VzW+5wNlCuZHSvAQti7FO96TuM0PmmjqSnhpYpWhu5CwBZwVuTdu
-         20Sfp9Ky4j7+xHRFiWc7UgOLjULJO42EoKTtqWKVxQi7xVyBYTp8w3n6b2Jy7KHrj/yH
-         c/Nh4qc1TfkAPxf6VqJLDRjlqhElR1NQQLOlwAH/QWB8VtMGx9zqdgR62bhsqjbNIIw9
-         4DeNEuOGWneH+DlhluYwFjBEuRWTwuiYQXCzKdvbleHWYraPG/QuIXTb9lnTxUJe3hYF
-         0MUGYI7I6+flJeT7FHnUPpNhZQHo3prrpRpAJJ6h+EyVk6Sy2PHdwTfnFz0Jqz90Tlzz
-         d+0A==
+         :mime-version:organization:references:in-reply-to:message-id:subject
+         :to:from:date:dkim-signature;
+        bh=4CzG5FikExKyJ3KZeuGJMNLB8X6KOSfGNoI+Q2FaI6Y=;
+        b=lrsiVf2gtqJajgBBz15sqWNtTruNoud4i5jWsGDOzdnTmUq6h8CRsJYoicwqhXPvXg
+         lY5L1DLh/HWqDHG4WwrF0QD805PB8/OKTH/PD+LvTtdqYp86Bx03yQz+TSU70PsCw0rP
+         1NO/OvsAObhTeoJDL7R4jBaXp5a4yMcl1xYkath9ATqxRx+XKlwGj//QjREpoKrMgxcx
+         M6JN+sUv18pFmD63E/XWk5BhJmcrveoCEwabzfg5bZgqjZkv17Z/imZ3E0liYVIFMELr
+         XM7WNH0zOfxvHuLCdUm1YvcQY3kpwgbgWQ10Bg9YiNd0hZRECOl8tlLwQlSnlAGGKhVs
+         PFlA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VSTdnSak;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bo9ibgGq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r6si3652121jak.28.2021.04.22.12.39.20
+        by mx.google.com with ESMTPS id r10si3056770vke.18.2021.04.23.03.31.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Apr 2021 12:39:20 -0700 (PDT)
+        Fri, 23 Apr 2021 03:31:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VSTdnSak;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bo9ibgGq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:58690 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:34610 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lZfAW-0001Rw-6U
-	for alex.bennee@linaro.org; Thu, 22 Apr 2021 15:39:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56652)
+	id 1lZt6G-0004sE-Dz
+	for alex.bennee@linaro.org; Fri, 23 Apr 2021 06:31:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53078)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lZfAM-0001QL-BH; Thu, 22 Apr 2021 15:39:10 -0400
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a]:46600)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lZfAK-00051M-EM; Thu, 22 Apr 2021 15:39:10 -0400
-Received: by mail-wr1-x42a.google.com with SMTP id c15so37001023wro.13;
- Thu, 22 Apr 2021 12:39:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=Di5CVuHkPTstCgi4wiTFFGkNABVnXzKxgPBAohmkqxA=;
- b=VSTdnSakHaep8OstChohV1qU7S7ATWfEkHMXgubymd9VP84+T06SmAvNobWGCEQkg3
- oEkGF+pPgSueAWEDWVr5vU3AbVqh3Fi1ZmsqfQXdr/T1PJb+B+DvXHdWIQpIvZPjLaDZ
- ko9d2fF5Z9FTi4/vfBJUvAPejb5iM2VI1GYrtPb7SCICOMzrqXXZx+KU4nBiaZvlEDkT
- 1Y94yESqnTzxN1XZ6Ue6CJdwe0wZtdJTxojZ4X0rFfILi5nPfhr9MQiXTQKquWHqAeeu
- BA/gRptNqxCdQNmHv+RvX7SAWqoQfu7lnXgAjhsnsf48GXZCfCZUj+Ln4SoO/uC8DhyW
- hVLA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=Di5CVuHkPTstCgi4wiTFFGkNABVnXzKxgPBAohmkqxA=;
- b=PBrhnY5+QWcdT/RdMr3iOFsjTz4zWmAu74qpWlzTjSUMZ/ahxdbpGaZrw+x43Djr1T
- 9qJW9eR2yP2qmnYWoBoPTTSXXYhAqDlLJ1h8e4IpHDq796KpotQwXE0kHKVkbnAPvVek
- 9CuIBlNZy8ccuyx42jzCR5hgSwVbBhtTqpanku3NIsRehKwu0qDTvcLkAtwJ03WeVrmo
- 9h5jarJsBzbRqAvh1ITAIILP6JkugBpDB4mnuD1eOEC1LKsZtqB2ZX3jvfAhEX8EBu5K
- +F761fqKEFAkZpNXv440GfjwtFTCvgxCQutlFMT55jlj81tRUk4R6sWmkfwDSAwUWkSW
- +1bg==
-X-Gm-Message-State: AOAM5338ynivDMXG0VyotdblbNX0OkBqo5IhnaDzW3hBZ/2hYpzQAila
- hDNi+xYdPD0hovmLSfZxIuPwpJonpsUKnQ==
-X-Received: by 2002:a5d:69ca:: with SMTP id s10mr41174wrw.78.1619120344588;
- Thu, 22 Apr 2021 12:39:04 -0700 (PDT)
-Received: from x1w.redhat.com (39.red-81-40-121.staticip.rima-tde.net.
- [81.40.121.39])
- by smtp.gmail.com with ESMTPSA id f1sm5167228wru.60.2021.04.22.12.39.03
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 22 Apr 2021 12:39:03 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v6 00/18] cpu: Introduce SysemuCPUOps structure
-Date: Thu, 22 Apr 2021 21:38:44 +0200
-Message-Id: <20210422193902.2644064-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.3
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1lZt5t-0004op-Cv
+ for qemu-arm@nongnu.org; Fri, 23 Apr 2021 06:31:29 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:43248)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1lZt5q-0003nt-L5
+ for qemu-arm@nongnu.org; Fri, 23 Apr 2021 06:31:29 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1619173885;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=4CzG5FikExKyJ3KZeuGJMNLB8X6KOSfGNoI+Q2FaI6Y=;
+ b=bo9ibgGqeJrte0nG3V4oR6eMm+oYK2mnJtnjoUKgWmusFUlYwQpm3X2tTodUjStuFSC7/N
+ K7sAoUOl95jTlSQzadqurHOXD2e4N/TmAc1x+uoFRmuWR1cYf9aogGX6nOA4S3f7irh5IC
+ 5ACFxeoMB8MDvR2MBua++5rzTiz7A2c=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-44-XPh2Utw9N6u4K6BCxF9urw-1; Fri, 23 Apr 2021 06:31:22 -0400
+X-MC-Unique: XPh2Utw9N6u4K6BCxF9urw-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C912F107ACCA;
+ Fri, 23 Apr 2021 10:31:20 +0000 (UTC)
+Received: from gondolin.fritz.box (ovpn-113-167.ams2.redhat.com
+ [10.36.113.167])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 5A29B1865D;
+ Fri, 23 Apr 2021 10:31:14 +0000 (UTC)
+Date: Fri, 23 Apr 2021 12:31:11 +0200
+From: Cornelia Huck <cohuck@redhat.com>
+To: Ilya Leoshkevich <iii@linux.ibm.com>
+Subject: Re: [PATCH v5 0/4] accel/tcg: Make sure that tb->size != 0 after
+ translation
+Message-ID: <20210423123111.0575608e.cohuck@redhat.com>
+In-Reply-To: <20210416154939.32404-1-iii@linux.ibm.com>
+References: <20210416154939.32404-1-iii@linux.ibm.com>
+Organization: Red Hat GmbH
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42a.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=cohuck@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=cohuck@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -113,180 +113,57 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-riscv@nongnu.org,
- Eduardo Habkost <ehabkost@redhat.com>, Juan Quintela <quintela@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Laurent Vivier <laurent@vivier.eu>, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, Claudio Fontana <cfontana@suse.de>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ David Hildenbrand <david@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ Max Filippov <jcmvbkbc@gmail.com>, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VWEaeUrZOg3v
+X-TUID: MVMi8VPUhVv5
 
-Missing review: patch 6, 7, 8, 10=0D
-=0D
-Hi,=0D
-=0D
-This series is inspired on Claudio TCG work.=0D
-=0D
-Instead of separate TCG from other accelerators, here we=0D
-separate sysemu operations (system VS user).=0D
-=0D
-Patches 1-5 are generic cleanups.=0D
-Patches 6-14 move from CPUClass to SysemuCPUOps=0D
-Patch   15 restricts SysemuCPUOps to sysemu=0D
-=0D
-Since v5:=0D
-- Rework patch 10 after Peter Maydell explanation on v3:=0D
-  https://www.mail-archive.com/qemu-devel@nongnu.org/msg800849.html=0D
-=0D
-Since v4:=0D
-- Removed watchpoint patches (need more work) (Richard)=0D
-- Merged patch 1 & 7 "Move CPUClass::vmsd to SysemuCPUOps" (Eduardo)=0D
-- Reworded cpu_virtio_is_big_endian description (Greg)=0D
-- Move write_elf() in target/riscv/cpu.c (rebased on top of 43a965888)=0D
-- Added R-b tags=0D
-=0D
-Since v3:=0D
-- SysemuCPUOps const (Richard)=0D
-- added missing xtensa #ifdef'ry=0D
-- added missing aa64/sve #ifdef'ry=0D
-- added Laurent R-b=0D
-=0D
-Since v2:=0D
-- fixed lm32/unicore32=0D
-- remove USER_ONLY ifdef'ry from "cpu.h" (Claudio)=0D
-=0D
-Since v1:=0D
-- Name 'sysemu' (Claudio)=0D
-- change each field progressively (Richard)=0D
-=0D
-$ git backport-diff=0D
-Key:=0D
-[----] : patches are identical=0D
-[####] : number of functional differences between upstream/downstream patch=
-=0D
-[down] : patch is downstream-only=0D
-The flags [FC] indicate (F)unctional and (C)ontextual differences, respecti=
-ve=3D=0D
-ly=0D
-=0D
-001/18:[----] [--] 'cpu: Un-inline cpu_get_phys_page_debug and cpu_asidx_fr=
-om=3D=0D
-_attrs'=0D
-002/18:[----] [--] 'cpu: Introduce cpu_virtio_is_big_endian()'=0D
-003/18:[----] [--] 'cpu: Directly use cpu_write_elf*() fallback handlers in=
- p=3D=0D
-lace'=0D
-004/18:[----] [--] 'cpu: Directly use get_paging_enabled() fallback handler=
-s =3D=0D
-in place'=0D
-005/18:[----] [--] 'cpu: Directly use get_memory_mapping() fallback handler=
-s =3D=0D
-in place'=0D
-006/18:[down] 'cpu: Assert DeviceClass::vmsd is NULL on user emulation'=0D
-007/18:[down] 'cpu: Rename CPUClass vmsd -> legacy_vmsd'=0D
-008/18:[down] 'cpu/{avr,lm32,moxie}: Set DeviceClass vmsd field (not CPUCla=
-ss=3D=0D
- one)'=0D
-009/18:[0010] [FC] 'cpu: Introduce SysemuCPUOps structure'=0D
-010/18:[0118] [FC] 'cpu: Move CPUClass::vmsd to SysemuCPUOps'=0D
-011/18:[----] [-C] 'cpu: Move CPUClass::virtio_is_big_endian to SysemuCPUOp=
-s'=0D
-012/18:[----] [-C] 'cpu: Move CPUClass::get_crash_info to SysemuCPUOps'=0D
-013/18:[----] [-C] 'cpu: Move CPUClass::write_elf* to SysemuCPUOps'=0D
-014/18:[----] [--] 'cpu: Move CPUClass::asidx_from_attrs to SysemuCPUOps'=0D
-015/18:[0002] [FC] 'cpu: Move CPUClass::get_phys_page_debug to SysemuCPUOps=
-'=0D
-016/18:[----] [--] 'cpu: Move CPUClass::get_memory_mapping to SysemuCPUOps'=
-=0D
-017/18:[----] [--] 'cpu: Move CPUClass::get_paging_enabled to SysemuCPUOps'=
-=0D
-018/18:[----] [--] 'cpu: Restrict "hw/core/sysemu-cpu-ops.h" to target/cpu.=
-c'=0D
-=0D
-CI: https://gitlab.com/philmd/qemu/-/pipelines/290833005=0D
-=0D
-Regards,=0D
-=0D
-Phil.=0D
-=0D
-Philippe Mathieu-Daud=3DC3=3DA9 (18):=0D
-  cpu: Un-inline cpu_get_phys_page_debug and cpu_asidx_from_attrs=0D
-  cpu: Introduce cpu_virtio_is_big_endian()=0D
-  cpu: Directly use cpu_write_elf*() fallback handlers in place=0D
-  cpu: Directly use get_paging_enabled() fallback handlers in place=0D
-  cpu: Directly use get_memory_mapping() fallback handlers in place=0D
-  cpu: Assert DeviceClass::vmsd is NULL on user emulation=0D
-  cpu: Rename CPUClass vmsd -> legacy_vmsd=0D
-  cpu/{avr,lm32,moxie}: Set DeviceClass vmsd field (not CPUClass one)=0D
-  cpu: Introduce SysemuCPUOps structure=0D
-  cpu: Move CPUClass::vmsd to SysemuCPUOps=0D
-  cpu: Move CPUClass::virtio_is_big_endian to SysemuCPUOps=0D
-  cpu: Move CPUClass::get_crash_info to SysemuCPUOps=0D
-  cpu: Move CPUClass::write_elf* to SysemuCPUOps=0D
-  cpu: Move CPUClass::asidx_from_attrs to SysemuCPUOps=0D
-  cpu: Move CPUClass::get_phys_page_debug to SysemuCPUOps=0D
-  cpu: Move CPUClass::get_memory_mapping to SysemuCPUOps=0D
-  cpu: Move CPUClass::get_paging_enabled to SysemuCPUOps=0D
-  cpu: Restrict "hw/core/sysemu-cpu-ops.h" to target/cpu.c=0D
-=0D
- include/hw/core/cpu.h            |  92 ++++++-------------------=0D
- include/hw/core/sysemu-cpu-ops.h |  90 ++++++++++++++++++++++++=0D
- include/migration/vmstate.h      |   2 -=0D
- target/alpha/cpu.h               |   3 +=0D
- target/arm/cpu.h                 |   3 +=0D
- target/avr/cpu.h                 |   1 +=0D
- target/cris/cpu.h                |   3 +=0D
- target/hexagon/cpu.h             |   3 +=0D
- target/hppa/cpu.h                |   3 +=0D
- target/i386/cpu.h                |   3 +=0D
- target/lm32/cpu.h                |   3 +=0D
- target/m68k/cpu.h                |   3 +=0D
- target/microblaze/cpu.h          |   1 +=0D
- target/mips/cpu.h                |   3 +=0D
- target/moxie/cpu.h               |   3 +=0D
- target/nios2/cpu.h               |   1 +=0D
- target/openrisc/cpu.h            |   3 +=0D
- target/ppc/cpu.h                 |   3 +=0D
- target/riscv/cpu.h               |   3 +=0D
- target/rx/cpu.h                  |   1 +=0D
- target/s390x/cpu.h               |   3 +=0D
- target/sh4/cpu.h                 |   3 +=0D
- target/sparc/cpu.h               |   3 +=0D
- target/tricore/cpu.h             |   3 +=0D
- target/unicore32/cpu.h           |   3 +=0D
- target/xtensa/cpu.h              |   3 +=0D
- cpu.c                            |  17 ++---=0D
- hw/core/cpu.c                    | 113 +++++++++++++++++--------------=0D
- hw/virtio/virtio.c               |   4 +-=0D
- stubs/vmstate.c                  |   2 -=0D
- target/alpha/cpu.c               |   8 ++-=0D
- target/arm/cpu.c                 |  18 +++--=0D
- target/avr/cpu.c                 |   8 ++-=0D
- target/cris/cpu.c                |   8 ++-=0D
- target/hppa/cpu.c                |   8 ++-=0D
- target/i386/cpu.c                |  28 +++++---=0D
- target/lm32/cpu.c                |  10 ++-=0D
- target/m68k/cpu.c                |   8 ++-=0D
- target/microblaze/cpu.c          |   8 ++-=0D
- target/mips/cpu.c                |  10 ++-=0D
- target/moxie/cpu.c               |   8 ++-=0D
- target/nios2/cpu.c               |   8 ++-=0D
- target/openrisc/cpu.c            |   8 ++-=0D
- target/riscv/cpu.c               |  16 +++--=0D
- target/rx/cpu.c                  |  10 ++-=0D
- target/s390x/cpu.c               |  14 ++--=0D
- target/sh4/cpu.c                 |  11 ++-=0D
- target/sparc/cpu.c               |  10 ++-=0D
- target/tricore/cpu.c             |   6 +-=0D
- target/unicore32/cpu.c           |  10 ++-=0D
- target/xtensa/cpu.c              |  10 ++-=0D
- target/ppc/translate_init.c.inc  |  20 +++---=0D
- 52 files changed, 430 insertions(+), 196 deletions(-)=0D
- create mode 100644 include/hw/core/sysemu-cpu-ops.h=0D
-=0D
---=3D20=0D
-2.26.3=0D
-=0D
+On Fri, 16 Apr 2021 17:49:35 +0200
+Ilya Leoshkevich <iii@linux.ibm.com> wrote:
+
+> If arch-specific code generates a translation block of size 0,
+> tb_gen_code() may generate a spurious exception.
+> 
+> Fix s390x (patch 1), ARM (patch 2) and xtensa (patch 3) and add an
+> assertion in order to catch such situations earlier (patch 4).
+> 
+> v1: https://lists.nongnu.org/archive/html/qemu-devel/2021-04/msg02037.html
+> v1 -> v2: Fix target/s390x instead of trying to tolerate tb->size == 0
+>           in tb_gen_code().
+> 
+> v2: https://lists.nongnu.org/archive/html/qemu-devel/2021-04/msg02101.html
+> v2 -> v3: Split the common code change into a separate patch, add the
+>           ARM patch in order to fix
+>           https://gitlab.com/cohuck/qemu/-/jobs/1178409450
+> 
+> v3: https://lists.nongnu.org/archive/html/qemu-devel/2021-04/msg02332.html
+> v3 -> v4: Add the xtensa patch in order to fix
+>           https://gitlab.com/cohuck/qemu/-/jobs/1178409540
+> 
+> v4: https://lists.nongnu.org/archive/html/qemu-devel/2021-04/msg02592.html
+> v4 -> v5: Handle thumb: the following C code triggers the assertion:
+>           typedef void (*funcptr)(void);
+>           int main() { funcptr f = (funcptr)0xffff0001; f(); }
+> 
+> Ilya Leoshkevich (4):
+>   target/s390x: Fix translation exception on illegal instruction
+>   target/arm: Make sure that commpage's tb->size != 0
+>   target/xtensa: Make sure that tb->size != 0
+>   accel/tcg: Assert that tb->size != 0 after translation
+> 
+>  accel/tcg/translate-all.c |  1 +
+>  target/arm/translate.c    |  2 ++
+>  target/s390x/translate.c  | 16 +++++++++++-----
+>  target/xtensa/translate.c |  3 +++
+>  4 files changed, 17 insertions(+), 5 deletions(-)
+> 
+
+So, what's the way forward here? I can pick this if I get an ack for
+the arm patch. If someone else wants to take this, I'll just ack the
+s390x patch.
+

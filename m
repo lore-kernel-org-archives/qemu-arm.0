@@ -1,102 +1,102 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp1522251lfb;
-        Fri, 23 Apr 2021 09:57:29 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy+xRCKKL3RfVSVGnWuALZmrZExrFP8i5F+Rq+RuRI2/CZ1ayHoiFpu1BdFcSQ0p4GiOLC+
-X-Received: by 2002:a05:6e02:4aa:: with SMTP id e10mr3937983ils.188.1619197049098;
-        Fri, 23 Apr 2021 09:57:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619197049; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp1522468lfb;
+        Fri, 23 Apr 2021 09:57:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyZVmFH9lnJlW5NUhILDSbEfkD6OxX4KnUncfiJ6N1MLAzKMgI172RFigQFc6bG/jb6P9TG
+X-Received: by 2002:a02:7793:: with SMTP id g141mr4587106jac.7.1619197069337;
+        Fri, 23 Apr 2021 09:57:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619197069; cv=none;
         d=google.com; s=arc-20160816;
-        b=cAgK2D29DMKKbVl2AD4YlEyxEyZahJAss+mmrVmCgg0JAHxgzCigtMAB9SNLvWj62Y
-         XRt16CZVlPHm6b06K9VN7c5+vW9uLtADlr4NR6GklMG55q7xOIogbManI2p9NjXbYP2Y
-         TA2MyXD3qBor+k7gePay7QsfWgshzBiye8a9gXgcmfEGbyOWZ+oMtEEjnqegbHNVP1P5
-         aLSLa/e4FfeSJU+bjnq4Y7QVL/2/rKwsuyvdg28jVXVwlqNdZ1cHW2VDsPp2oHTVuHWq
-         RgO0KjgKVuoWNTwDj9qcz/QET6GhiPhCos1aEh6GN67L7Y6mwTRsCf2CIZUtmwalw9pa
-         ngKg==
+        b=xV7vdRoUUOuLgDmJtGr6jFE6vYTKOch+Rg1fwtaMVMLMPfvL/a7bfHCFMSXm8vwxk3
+         CZ6Wt1Xi3/Ec1Oqc7dljQ88SxA4E23fLaLQhwonEoY4DlrkGLzRs1RTOMKTEaCo+bBG6
+         VsmnFFzwZKytjl8jmLOrkTc8U0gn35PNGkaE7zAQz1vxLgJARAW11f5hUKwhfFOznAOI
+         zhXox3KIF81FZ7XnSMvURItSs5rJaP5a+Zb8fPec9RLoPNjj/9w0u9+qFoVopniXhjbE
+         qENdVd54f2U8YHJw2QLQHiGWRYCUjPt46C0zUDllU/xW25d83Xrmd98YsXsRRzfAXP+h
+         M/Vg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=EsXeBdu2JntzVj4lcYbggTf999tBIRhJuC0R8XrcZfo=;
-        b=g13siVAo9cOmwxsaNm8mbLDTPyESIbsvGncRRgOHNskIORm+gpEBEc1c+Vca7dDP92
-         lUl/cccS2jS80s7x49l0hjVuXRih8ykcNPqqstxhFLIOSNTfCep36GTScyW2qKHLjvYc
-         MT0Jrl87P4V1dZpk/JETqkcqNDYy4CriAH9BKz/u1ob2/HOycZf6OOkklm1MyW+giwfh
-         eCIOUuhzJI4O9uK5ImqZTAFo9O/lIah2YXwRBYnbwEorWmYy0zqbaxusN4gI84ySP+je
-         CPHTE7C4vzoavUUQRvOrpO1X8brE5uIBFe6BU8I07serQfkMSSnm4t5EI1hgTyV4RpoK
-         9dmA==
+        bh=0OF9GCiPmwtEZD3+W9XODFXfhzEfD8yc9sVldJzd/aQ=;
+        b=AmOSkNazy9zanARRgBnKGLFA/PoQkZ4WyLnv4dGfnmw0nuAI499+/KgoA/5uNx+Jd3
+         wX84lJ51h++JTpxuvk6p05NO2qe3L3SWvDEYiaFexQRNWJA6aRJG9CpQM/qugljVd/5f
+         MsdJplLRHBucvrPV8pV+mmwOgdFH4I0SPY6npesBJvvzq/41fFfu6XZanvIhSVxYDCxk
+         lAKnb9lE13b3gCF/UngftXVorneHw+RyW1Un7SNUARorYt78v2+59nwDyE+M8bH+mPe6
+         d1j9nsL6umze9F0JHBHc33kdCDIZaL+IwByfqmdDVb2zPPKZEK8IV60kQClvhDR5Wp75
+         T9yQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MV94a6zo;
+       dkim=pass header.i=@linaro.org header.s=google header.b=UWPPqTbP;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i20si7350819ila.16.2021.04.23.09.57.28
+        by mx.google.com with ESMTPS id g17si7058913ioo.77.2021.04.23.09.57.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 Apr 2021 09:57:29 -0700 (PDT)
+        Fri, 23 Apr 2021 09:57:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MV94a6zo;
+       dkim=pass header.i=@linaro.org header.s=google header.b=UWPPqTbP;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42048 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42376 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lZz7Q-0001jW-C5
-	for alex.bennee@linaro.org; Fri, 23 Apr 2021 12:57:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36612)
+	id 1lZz7k-0001rP-IM
+	for alex.bennee@linaro.org; Fri, 23 Apr 2021 12:57:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36686)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lZz4Z-0008M1-E6
- for qemu-devel@nongnu.org; Fri, 23 Apr 2021 12:54:31 -0400
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f]:42520)
+ id 1lZz4f-0008Qw-33
+ for qemu-devel@nongnu.org; Fri, 23 Apr 2021 12:54:37 -0400
+Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036]:55941)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lZz4R-0008BD-Em
- for qemu-devel@nongnu.org; Fri, 23 Apr 2021 12:54:31 -0400
-Received: by mail-pl1-x62f.google.com with SMTP id v13so11913493ple.9
- for <qemu-devel@nongnu.org>; Fri, 23 Apr 2021 09:54:17 -0700 (PDT)
+ id 1lZz4X-0008B0-E4
+ for qemu-devel@nongnu.org; Fri, 23 Apr 2021 12:54:36 -0400
+Received: by mail-pj1-x1036.google.com with SMTP id s14so18571670pjl.5
+ for <qemu-devel@nongnu.org>; Fri, 23 Apr 2021 09:54:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=EsXeBdu2JntzVj4lcYbggTf999tBIRhJuC0R8XrcZfo=;
- b=MV94a6zoAq3XHyIT3U7vYCjunnAHwNGV3qNSWlnKEH9UENIRmBkH680fCdfzqKcx5S
- x4HsinVIvfa29ch00Rdg/SMAQdJ1qRiPk3i09VRe8sCHyeOKkttyM8xMiz+EPm6SuDJS
- seSIu3IM31eo5vF8ZGBqgW+Z9vKvQTozLMglUD+di8ccy/lAweMcLVHN5Fi0x8Y095nW
- mpb+UgaWQelfqQ7QoIzT/0kCBf3bUu1Kcfg+7OTYoVQlFYhBp/PwJCKYHsjY5TmYAR7A
- 6+f9ooLTvxByrPpQrdW4GkRNNNrp94jHgy+wJu6VNYC1kJg6BnYsIHm/c3rh7RveYyOq
- 5cYw==
+ bh=0OF9GCiPmwtEZD3+W9XODFXfhzEfD8yc9sVldJzd/aQ=;
+ b=UWPPqTbPkHndNkGfrbKYTSWVaItFkjIV7WFdH9e3PhSUGmqZaXK5YDBqslg3w7U5Yk
+ A6TF6QIMMhhN0ZJSOOYXUY1tsuJs4OpU8HmlEXeRQo3TndHjo9NafoDvPt+Xizm6MkXQ
+ EJuPD8PkrhY/4xPpHpEZQSI/TNTPG86N6lkyOPi2yzIB74J7DDxCGeQibrba0IIZJ2du
+ HsVTSWJxAoDjkLUCn5d1+yBcccOJxe8DiYN+H5BIChKMwvULHti5xZYzJYH7b5rc1wr4
+ Ag/Xlmk+liryF43FehIJr8761V3Ecg5UoOa1j8kprYfCF7M+elh1nasd23d2yP+kwY3N
+ gFBQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=EsXeBdu2JntzVj4lcYbggTf999tBIRhJuC0R8XrcZfo=;
- b=d9cieg8JhI9ohs2ygLAGtU4fBhtS6/N+N/EIGEPI4su55y8/As7OFMXjQTOGzyrBXC
- Aq5OzLhakQotCYlI54T45UpNN7g4FRRZJzBYsSdQZS9L3ArlTXb29AsMqjPwQAPRJCfM
- monFoj37YdVuK3kqD1iRZ8wdk/P55VLbHhW3+ih/ddHCkSJEFqHTBek44xVHVtVrgI35
- TQv54eeIlVU+AFnfSevAUYBbAmL7T4tqH9bAQv0BTo2eigpjwcV5q2VkdAqAQYQ/x5Pa
- Zp9z3bTLBCW4JKmZm/hkjgx1EFSdAEwPdcoJeW7Gtz2ZwO/u3GZeTd540R7SgbKjorKW
- Fwvw==
-X-Gm-Message-State: AOAM533rRQJzaYM3B9CgsYJ9fDrTrvO3sUcnt8r0PjYr6wZMewfVnNNc
- v1++emImbTW4nh2asiURQeAYKV0vzlt6Aw==
-X-Received: by 2002:a17:90b:238d:: with SMTP id
- mr13mr5509325pjb.23.1619196856212; 
- Fri, 23 Apr 2021 09:54:16 -0700 (PDT)
+ bh=0OF9GCiPmwtEZD3+W9XODFXfhzEfD8yc9sVldJzd/aQ=;
+ b=uG0r1p06sPLocutSTOP5PAbFyyEadsgy8GJNAmJFVEJu98n1X4cbqr+JeHMDWGtYaM
+ vGjnZF9pFBSDZ7fA+7F7aY95jKDkYEuoRM8LADtjbLGnJX10xae5AQ1/98IwpBZSj8YZ
+ VWqSCOdD8I20ngZm/usugg4/BOGsvF3j5cFD/9lY08ODu9E0U4zDfa35VYGAuh++te5e
+ vbZPwFS9thNcBjsaRfzHGH00Z+Ix/s8BFEzkgFWRdMVxs2X69u1yuQfBHfrPuzksKHRY
+ yOTkln/Vzmvlwfepul+WOAszxE1gGBsp55bY6XOK81GA/F4lEUg6Td4n/18vT4gUDomv
+ i03g==
+X-Gm-Message-State: AOAM533s6RETdD7bK9QCmlsa1cvXFZczF7GGg9nMVkgv+n9FDsb4qtiK
+ 3E7y+NDC1aIKwCYshRLIzvPIRjPTn3xxnw==
+X-Received: by 2002:a17:902:9890:b029:ec:8e2a:d6e4 with SMTP id
+ s16-20020a1709029890b02900ec8e2ad6e4mr4671750plp.13.1619196855625; 
+ Fri, 23 Apr 2021 09:54:15 -0700 (PDT)
 Received: from localhost.localdomain ([71.212.144.24])
  by smtp.gmail.com with ESMTPSA id q5sm4918151pfu.5.2021.04.23.09.54.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
  Fri, 23 Apr 2021 09:54:15 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 2/4] linux-user/arm: Do not emulate fpa11 in thumb mode
-Date: Fri, 23 Apr 2021 09:54:11 -0700
-Message-Id: <20210423165413.338259-3-richard.henderson@linaro.org>
+Subject: [PATCH 1/4] linux-user/arm: Split out emulate_arm_fpa11
+Date: Fri, 23 Apr 2021 09:54:10 -0700
+Message-Id: <20210423165413.338259-2-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210423165413.338259-1-richard.henderson@linaro.org>
 References: <20210423165413.338259-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62f;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1036;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1036.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -119,29 +119,195 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hRcDF1YBSm4k
+X-TUID: 65tQ6US06oGz
 
-These antiquated instructions are arm-mode only.
+Pull out the fpa11 emulation to a helper function.
 
-Buglink: https://bugs.launchpad.net/bugs/1925512
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- linux-user/arm/cpu_loop.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ linux-user/arm/cpu_loop.c | 153 +++++++++++++++++++++++---------------
+ 1 file changed, 94 insertions(+), 59 deletions(-)
 
 diff --git a/linux-user/arm/cpu_loop.c b/linux-user/arm/cpu_loop.c
-index 106909c7d8..e2a1496b9f 100644
+index 989d03cd89..106909c7d8 100644
 --- a/linux-user/arm/cpu_loop.c
 +++ b/linux-user/arm/cpu_loop.c
-@@ -347,7 +347,7 @@ void cpu_loop(CPUARMState *env)
+@@ -224,6 +224,92 @@ static bool insn_is_linux_bkpt(uint32_t opcode, bool is_thumb)
+     }
+ }
+ 
++static bool emulate_arm_fpa11(CPUARMState *env, uint32_t opcode)
++{
++    TaskState *ts = env_cpu(env)->opaque;
++    int rc = EmulateAll(opcode, &ts->fpa, env);
++
++    if (rc == 0) {
++        /* Illegal instruction */
++        return false;
++    }
++    if (rc > 0) {
++        /* Everything ok. */
++        env->regs[15] += 4;
++        return true;
++    }
++
++    /* FP exception */
++    int arm_fpe = 0;
++
++    /* Translate softfloat flags to FPSR flags */
++    if (-rc & float_flag_invalid) {
++        arm_fpe |= BIT_IOC;
++    }
++    if (-rc & float_flag_divbyzero) {
++        arm_fpe |= BIT_DZC;
++    }
++    if (-rc & float_flag_overflow) {
++        arm_fpe |= BIT_OFC;
++    }
++    if (-rc & float_flag_underflow) {
++        arm_fpe |= BIT_UFC;
++    }
++    if (-rc & float_flag_inexact) {
++        arm_fpe |= BIT_IXC;
++    }
++
++    /* Exception enabled? */
++    FPSR fpsr = ts->fpa.fpsr;
++    if (fpsr & (arm_fpe << 16)) {
++        target_siginfo_t info;
++
++        info.si_signo = TARGET_SIGFPE;
++        info.si_errno = 0;
++
++        /* ordered by priority, least first */
++        if (arm_fpe & BIT_IXC) {
++            info.si_code = TARGET_FPE_FLTRES;
++        }
++        if (arm_fpe & BIT_UFC) {
++            info.si_code = TARGET_FPE_FLTUND;
++        }
++        if (arm_fpe & BIT_OFC) {
++            info.si_code = TARGET_FPE_FLTOVF;
++        }
++        if (arm_fpe & BIT_DZC) {
++            info.si_code = TARGET_FPE_FLTDIV;
++        }
++        if (arm_fpe & BIT_IOC) {
++            info.si_code = TARGET_FPE_FLTINV;
++        }
++
++        info._sifields._sigfault._addr = env->regs[15];
++        queue_signal(env, info.si_signo, QEMU_SI_FAULT, &info);
++    } else {
++        env->regs[15] += 4;
++    }
++
++    /* Accumulate unenabled exceptions */
++    if ((!(fpsr & BIT_IXE)) && (arm_fpe & BIT_IXC)) {
++        fpsr |= BIT_IXC;
++    }
++    if ((!(fpsr & BIT_UFE)) && (arm_fpe & BIT_UFC)) {
++        fpsr |= BIT_UFC;
++    }
++    if ((!(fpsr & BIT_OFE)) && (arm_fpe & BIT_OFC)) {
++        fpsr |= BIT_OFC;
++    }
++    if ((!(fpsr & BIT_DZE)) && (arm_fpe & BIT_DZC)) {
++        fpsr |= BIT_DZC;
++    }
++    if ((!(fpsr & BIT_IOE)) && (arm_fpe & BIT_IOC)) {
++        fpsr |= BIT_IOC;
++    }
++    ts->fpa.fpsr = fpsr;
++    return true;
++}
++
+ void cpu_loop(CPUARMState *env)
+ {
+     CPUState *cs = env_cpu(env);
+@@ -244,9 +330,7 @@ void cpu_loop(CPUARMState *env)
+         case EXCP_NOCP:
+         case EXCP_INVSTATE:
+             {
+-                TaskState *ts = cs->opaque;
+                 uint32_t opcode;
+-                int rc;
+ 
+                 /* we handle the FPU emulation here, as Linux */
+                 /* we get the opcode */
+@@ -263,64 +347,15 @@ void cpu_loop(CPUARMState *env)
                      goto excp_debug;
                  }
  
--                if (emulate_arm_fpa11(env, opcode)) {
-+                if (!env->thumb && emulate_arm_fpa11(env, opcode)) {
-                     break;
+-                rc = EmulateAll(opcode, &ts->fpa, env);
+-                if (rc == 0) { /* illegal instruction */
+-                    info.si_signo = TARGET_SIGILL;
+-                    info.si_errno = 0;
+-                    info.si_code = TARGET_ILL_ILLOPN;
+-                    info._sifields._sigfault._addr = env->regs[15];
+-                    queue_signal(env, info.si_signo, QEMU_SI_FAULT, &info);
+-                } else if (rc < 0) { /* FP exception */
+-                    int arm_fpe=0;
+-
+-                    /* translate softfloat flags to FPSR flags */
+-                    if (-rc & float_flag_invalid)
+-                      arm_fpe |= BIT_IOC;
+-                    if (-rc & float_flag_divbyzero)
+-                      arm_fpe |= BIT_DZC;
+-                    if (-rc & float_flag_overflow)
+-                      arm_fpe |= BIT_OFC;
+-                    if (-rc & float_flag_underflow)
+-                      arm_fpe |= BIT_UFC;
+-                    if (-rc & float_flag_inexact)
+-                      arm_fpe |= BIT_IXC;
+-
+-                    FPSR fpsr = ts->fpa.fpsr;
+-                    //printf("fpsr 0x%x, arm_fpe 0x%x\n",fpsr,arm_fpe);
+-
+-                    if (fpsr & (arm_fpe << 16)) { /* exception enabled? */
+-                      info.si_signo = TARGET_SIGFPE;
+-                      info.si_errno = 0;
+-
+-                      /* ordered by priority, least first */
+-                      if (arm_fpe & BIT_IXC) info.si_code = TARGET_FPE_FLTRES;
+-                      if (arm_fpe & BIT_UFC) info.si_code = TARGET_FPE_FLTUND;
+-                      if (arm_fpe & BIT_OFC) info.si_code = TARGET_FPE_FLTOVF;
+-                      if (arm_fpe & BIT_DZC) info.si_code = TARGET_FPE_FLTDIV;
+-                      if (arm_fpe & BIT_IOC) info.si_code = TARGET_FPE_FLTINV;
+-
+-                      info._sifields._sigfault._addr = env->regs[15];
+-                      queue_signal(env, info.si_signo, QEMU_SI_FAULT, &info);
+-                    } else {
+-                      env->regs[15] += 4;
+-                    }
+-
+-                    /* accumulate unenabled exceptions */
+-                    if ((!(fpsr & BIT_IXE)) && (arm_fpe & BIT_IXC))
+-                      fpsr |= BIT_IXC;
+-                    if ((!(fpsr & BIT_UFE)) && (arm_fpe & BIT_UFC))
+-                      fpsr |= BIT_UFC;
+-                    if ((!(fpsr & BIT_OFE)) && (arm_fpe & BIT_OFC))
+-                      fpsr |= BIT_OFC;
+-                    if ((!(fpsr & BIT_DZE)) && (arm_fpe & BIT_DZC))
+-                      fpsr |= BIT_DZC;
+-                    if ((!(fpsr & BIT_IOE)) && (arm_fpe & BIT_IOC))
+-                      fpsr |= BIT_IOC;
+-                    ts->fpa.fpsr=fpsr;
+-                } else { /* everything OK */
+-                    /* increment PC */
+-                    env->regs[15] += 4;
++                if (emulate_arm_fpa11(env, opcode)) {
++                    break;
                  }
- 
++
++                info.si_signo = TARGET_SIGILL;
++                info.si_errno = 0;
++                info.si_code = TARGET_ILL_ILLOPN;
++                info._sifields._sigfault._addr = env->regs[15];
++                queue_signal(env, info.si_signo, QEMU_SI_FAULT, &info);
+             }
+             break;
+         case EXCP_SWI:
 -- 
 2.25.1
 

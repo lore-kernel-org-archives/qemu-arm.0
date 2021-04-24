@@ -1,110 +1,99 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp2512706lfb;
-        Sat, 24 Apr 2021 15:24:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwGrjnYq805ddhEgu7BMmflZstMvfoGCgTEoZLf1p6ubecdv+lJHTHSx34/oMjBX1/gYtO0
-X-Received: by 2002:a92:d684:: with SMTP id p4mr8159442iln.150.1619303078968;
-        Sat, 24 Apr 2021 15:24:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619303078; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp2523463lfb;
+        Sat, 24 Apr 2021 15:45:07 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxOUWCcjOX1GZFEh2lZH7zJcXGQK+BKVQfQrW3X8XNvnN7hWY618Kz5n3nG/2TrRfOVOpBU
+X-Received: by 2002:a05:6e02:10cf:: with SMTP id s15mr8151019ilj.302.1619304307649;
+        Sat, 24 Apr 2021 15:45:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619304307; cv=none;
         d=google.com; s=arc-20160816;
-        b=qD/96O4RAYasRhF2z9x1YhHNIILGZo+VRX+7SlTxQHGgs3L1OXjg4nMnwTVdwkfkBF
-         dpvXOfbwy7LGSMiRBEz2fzXHINpRMxs7tsOyycq111+zbGlXngsXAkKWTVRBScWsh/eo
-         fcJmuIU1kEjiaxiT/lecvUEPuGgASPh4sRNWFsywqOG4lGwTYQisTQlfnS0/JTsG2Rd0
-         3AW8s8+fq6rLBnjXbNaG60lzgESHQQAKZVDNo9goljhP57qGurORXt3w2FnGY323nE/h
-         o56tCN0argXXe4A+cm3eXscofsRlPVjIcK/836QLrKk7fwx7meAONvrGDkxy/9hTA+Ri
-         0Teg==
+        b=KF6Sm1+fYFZDFJ+YmaN/S/KCs34H7ePs/bevi4gRMgiWoF6wuudw0PLdx06GY6JOCK
+         LXRIuUYE9ps+nepqrij8wbK+tlgbi86Pcb6jKuQQJMzsWEDsGkoZXcgmdmqzOMn3rrc0
+         n8d0zk/i/TA2mFhaIQO1qtws4PVYZI84T0SrbCaLnUkanPQ5YxztSluIKjnPFP3x6+B4
+         taPB+FITKR1IblQAMsFxfWXmJIxUzj6rpa6T6OYgwIUX13gv4g1fPDZuc7SrrzG5s5Do
+         aHYHhXLRE9GHDbwrBiJAzo7CujT+ATPzuc7Zh93241yYqKeBKsaKiBB26QIs4oUS/Ee/
+         ab1g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=3+dFOkI8bPZaiK79ThIQ9LdlMB5G45m7AJVe6I7EqgU=;
-        b=x2jg228ll+ZXvFuHfUrSroKhXnuHvCckp/r7wjRmphljSVSjxBqWQhqQc6KMegcx76
-         2J4lvAddmDEo6o5rlb0H0sB+eD+1lGuwttC4mrwwvzNFJTdHmT/9wVjIIQ4aP27NxtnU
-         nQnCDxt17O20gLeNhi0XvxtxS2e4CJitOUQBLzgtbb3YG8m4sXJjGyed060+Cri35Bso
-         XHHvCQyQmWcawF2FlH+BBnSFo1V5nwIyWVvNkI+g5g1c1UZ5H5R7sox+2w3074tKWth4
-         hZxcMaVJ9WJWaI1o8KsnSFbwTCFqWG50IgeJ+9TrW3JQR986YcSPMYfRz06uXG01+VOe
-         mSGg==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=lGKEH25oXZhV/wB7tTCMsqzbq40wd9v4aa9d7Z6HulE=;
+        b=cmlS8PvXJHcCYYTIB4PUklnEi9eDTq1ptSFvG2VVlheLzMbvsSnwJGppKXfEnSCzwk
+         bXbJu5RBuBtGW5nrE2khfoTcwzDTEnwHL8Sw7UmcCMmE5f5sSxOBBSPoVxC1o4zOidIo
+         UChAPqtSjM4V92w2YDFPBhC8Q0xvViS11L8U6F2puIWKHYrASrAlxjIogXywGeIklQb8
+         svNYJ0AWmrRsoQPQsUwSJ5HkCncO2d4YPB68AI6SYhSLOwIMpUhM2BZbYV7PvnyE3gRz
+         xYcwY9VBj2/+NMGTkRafAxJzSyyC5/Yib9Y5WcKKf+2oGGdiaeivnyw8RubcvaFwNFJh
+         HsWg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LUPFyRfY;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b=C2yLjdFK;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l4si11217308iok.62.2021.04.24.15.24.38
+        by mx.google.com with ESMTPS id j16si11648946jak.24.2021.04.24.15.45.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 24 Apr 2021 15:24:38 -0700 (PDT)
+        Sat, 24 Apr 2021 15:45:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LUPFyRfY;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:50232 helo=lists1p.gnu.org)
+       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b=C2yLjdFK;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:43060 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1laQha-0004Y6-Bu
-	for alex.bennee@linaro.org; Sat, 24 Apr 2021 18:24:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54104)
+	id 1laR1P-0005lR-0U
+	for alex.bennee@linaro.org; Sat, 24 Apr 2021 18:45:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58432)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1laQeI-00017n-Nk; Sat, 24 Apr 2021 18:21:15 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:43888)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1laQzo-0004Q1-ES
+ for qemu-devel@nongnu.org; Sat, 24 Apr 2021 18:43:28 -0400
+Received: from mail-qk1-x736.google.com ([2607:f8b0:4864:20::736]:33617)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1laQeH-0005k3-Dc; Sat, 24 Apr 2021 18:21:14 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id x7so51929917wrw.10;
- Sat, 24 Apr 2021 15:21:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=3+dFOkI8bPZaiK79ThIQ9LdlMB5G45m7AJVe6I7EqgU=;
- b=LUPFyRfYd/6E9Dz/JYPhuaS7QsXcfHwnogWrO2VNOxv8WJ53TRL6sdZUar37d8BdwE
- MLEXd9qmGwNW3xUUGtzE0lq1UX2z+cOKneEMvypSqZMdPvtQZAT9spyl8kwUI9V43/8n
- Xwvxu9oWElqw1N1RCfIplnw7MAPE4NunfULzgVQU8z0+h1MLC3LdJN9XcKrqDhOmlMwr
- g3vWAWxZBeOU72NTqHNsiHPBBiUYT8v0Uto1w0FILUQaWu4Lyz4tFDIalZBM3dLCDk/R
- SR/aZM1njmOtO3gaajKHjddgDH4mmLz+pAM50Qer+mrO5KS57+4drJkWM0md0kwnuCNX
- L4Rg==
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1laQzl-0002Sd-KI
+ for qemu-devel@nongnu.org; Sat, 24 Apr 2021 18:43:28 -0400
+Received: by mail-qk1-x736.google.com with SMTP id o5so53188178qkb.0
+ for <qemu-devel@nongnu.org>; Sat, 24 Apr 2021 15:43:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=bsdimp-com.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=lGKEH25oXZhV/wB7tTCMsqzbq40wd9v4aa9d7Z6HulE=;
+ b=C2yLjdFKwDLAbE/+0tY9lJn2cIodcZusgnzrwgYqAxXtToFaQ1viueFfNc1OwTwidK
+ UUo0Vl/UGuOYzhsIKQ8avdVZKemvYfCGRZ3o3g4/Az0EbZWlvG7Rz/YEG+iMB4K7L7l+
+ +RPA/q2DgAN5e4iPdmKwGWYI229VMX7hfQEOJ3/sySAYpu2oiPdWmG4/SkMtWSsMf8yO
+ ksMwa7ze4IPxqLGLdYWrLjLY7fnYlseUKRvfYLqOivG7driDXv8rc7ah428c6IyQ36nt
+ rlPe4n6vuKb+LUsv4LvZckMxNV0Lgu5kQXqQ8ZwLpIbqSCMvGBvCZZv6ugwU70NazUgc
+ nynA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=3+dFOkI8bPZaiK79ThIQ9LdlMB5G45m7AJVe6I7EqgU=;
- b=C21sqHoBiJpISB1FKjCPj9kFq6r+ai9RA68tkwnBXm5dt0q9x2Xz3qazGaSO4f9Piz
- iXggJQP0s/DkhFmi73adO14hhIlYj5+EGdYjpPpu7Dkm06KxXpLrSA/APFha2dIDPf96
- CiU5YXvW6Tnn2yyPkJ3Hunqct2vcTTC12nvuNrDYkh3hLAFF9AgmahcMaXw2U4n0KNrs
- ApEfsgTAeTxcGal+Dk/OhAXDH2AoKXNDi22EkweSSFpKmMEqSJhuY/sPKPB1OteRR297
- ZEcZY+w0je/wiJKET5gBLrmDg9Emzm3XtZpgivrd3u4hpxBVuBZKqCjygWARzM/qLEM3
- WaZQ==
-X-Gm-Message-State: AOAM5315RBIV7eRjs0VRD38wnSnyTaRJbs5Gjli9VnwPkobRaST6BVhb
- RRggQHjHYuzoZLybH02C55JSbU4Yy3D6ow==
-X-Received: by 2002:a05:6000:1a41:: with SMTP id
- t1mr45309wry.265.1619302870880; 
- Sat, 24 Apr 2021 15:21:10 -0700 (PDT)
-Received: from x1w.redhat.com (39.red-81-40-121.staticip.rima-tde.net.
- [81.40.121.39])
- by smtp.gmail.com with ESMTPSA id m14sm13589558wrh.28.2021.04.24.15.21.09
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 24 Apr 2021 15:21:10 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH 2/3] hw/ide: Add Kconfig dependency MICRODRIVE -> PCMCIA
-Date: Sun, 25 Apr 2021 00:20:56 +0200
-Message-Id: <20210424222057.3434459-3-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.3
-In-Reply-To: <20210424222057.3434459-1-f4bug@amsat.org>
-References: <20210424222057.3434459-1-f4bug@amsat.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=lGKEH25oXZhV/wB7tTCMsqzbq40wd9v4aa9d7Z6HulE=;
+ b=Pct07PmAXGsQ8sKclAErd1KdG+T0gii4IXb3EV8YTMtJg0njcEqyQg7fqna/J92kTv
+ D521QTE1lnbY0jEHpGpID+0SXuQAW6QdQUgG3hPT/dEwTW3Z+qCBmdj0G07pZYbUeait
+ la3E4/kD7x9GPo5dzQCS/DLhm9t3zZ5z+s/SLRCwMQYXIsv6edJmUG/TgvyMTdBZ11CI
+ sTBScLrIYsFxQxwckv3BvpMGAS8e60b9KmRSHdeUU49Q7fVwl08xTwMIlq7yc4zVeSNM
+ W2jo2KWMG0Y6ubt9QWP8GbIYGqoVXThUIzb1O5GekMBJ4UQk/9xp6SG5qnlHyFKuRamG
+ LcyQ==
+X-Gm-Message-State: AOAM531BtofTrC5+337Wsg6zPXvTiy58htCLfERh3ez+gqQQOIkER01q
+ w9RGOvqJl2AhybpzAi8y9mz5nq5e7eoczMpZdH57Vw==
+X-Received: by 2002:a05:620a:242:: with SMTP id
+ q2mr10195929qkn.206.1619304203838; 
+ Sat, 24 Apr 2021 15:43:23 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42f.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
+References: <20210424222057.3434459-1-f4bug@amsat.org>
+ <20210424222057.3434459-2-f4bug@amsat.org>
+In-Reply-To: <20210424222057.3434459-2-f4bug@amsat.org>
+From: Warner Losh <imp@bsdimp.com>
+Date: Sat, 24 Apr 2021 16:43:13 -0600
+Message-ID: <CANCZdfqOpg4yGseP72MtsgpcMNQ8G_BVzEpBAdmww2NK4vFz9A@mail.gmail.com>
+Subject: Re: [PATCH 1/3] hw/arm/pxa2xx: Declare PCMCIA bus with Kconfig
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: multipart/alternative; boundary="000000000000da79b705c0bfa39f"
+Received-SPF: none client-ip=2607:f8b0:4864:20::736;
+ envelope-from=wlosh@bsdimp.com; helo=mail-qk1-x736.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,34 +107,96 @@ List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- qemu-block@nongnu.org, qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- qemu-arm@nongnu.org, Miroslav Rezanina <mrezanin@redhat.com>,
- John Snow <jsnow@redhat.com>
+ "open list:Block layer core" <qemu-block@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm@nongnu.org,
+ Miroslav Rezanina <mrezanin@redhat.com>, John Snow <jsnow@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3ToE/7UCRm1j
+X-TUID: ayon5DpKyPJx
 
-The Microdrive Compact Flash can be plugged on a PCMCIA bus.
-Express the dependency using the 'depends on' Kconfig expression.
+--000000000000da79b705c0bfa39f
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/ide/Kconfig | 1 +
- 1 file changed, 1 insertion(+)
+On Sat, Apr 24, 2021 at 4:22 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g>
+wrote:
 
-diff --git a/hw/ide/Kconfig b/hw/ide/Kconfig
-index 5d9106b1ac2..8e2c8934549 100644
---- a/hw/ide/Kconfig
-+++ b/hw/ide/Kconfig
-@@ -41,6 +41,7 @@ config IDE_VIA
- config MICRODRIVE
-     bool
-     select IDE_QDEV
-+    depends on PCMCIA
- 
- config AHCI
-     bool
--- 
-2.26.3
+> The Intel XScale PXA chipsets provide a PCMCIA controller,
+> which expose a PCMCIA (IDE) bus. Express this dependency using
+> the Kconfig 'select' expression.
+>
 
+I'd consider dropping the (IDE) in the description of the PCMCIA
+bus since I think it's more confusing than helpful...
+
+Reviewed-by: Warner Losh <imp@bsdimp.com>
+
+
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>  hw/arm/Kconfig | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index 8c37cf00da7..b887f6a5b17 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -142,6 +142,7 @@ config PXA2XX
+>      select SD
+>      select SSI
+>      select USB_OHCI
+> +    select PCMCIA
+>
+>  config GUMSTIX
+>      bool
+> --
+> 2.26.3
+>
+>
+>
+
+--000000000000da79b705c0bfa39f
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div><br></div><br><div class=3D"gmail_quote"><div dir=3D"=
+ltr" class=3D"gmail_attr">On Sat, Apr 24, 2021 at 4:22 PM Philippe Mathieu-=
+Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat.org">f4bug@amsat.org</a>&gt; w=
+rote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0p=
+x 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">The Intel =
+XScale PXA chipsets provide a PCMCIA controller,<br>
+which expose a PCMCIA (IDE) bus. Express this dependency using<br>
+the Kconfig &#39;select&#39; expression.<br></blockquote><div><br></div><di=
+v>I&#39;d consider dropping the (IDE) in the description of the PCMCIA</div=
+><div>bus since I think it&#39;s more confusing than helpful...</div><div><=
+br></div><div>Reviewed-by: Warner Losh &lt;<a href=3D"mailto:imp@bsdimp.com=
+">imp@bsdimp.com</a>&gt;</div><div>=C2=A0</div><blockquote class=3D"gmail_q=
+uote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,2=
+04);padding-left:1ex">
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsa=
+t.org" target=3D"_blank">f4bug@amsat.org</a>&gt;<br>
+---<br>
+=C2=A0hw/arm/Kconfig | 1 +<br>
+=C2=A01 file changed, 1 insertion(+)<br>
+<br>
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig<br>
+index 8c37cf00da7..b887f6a5b17 100644<br>
+--- a/hw/arm/Kconfig<br>
++++ b/hw/arm/Kconfig<br>
+@@ -142,6 +142,7 @@ config PXA2XX<br>
+=C2=A0 =C2=A0 =C2=A0select SD<br>
+=C2=A0 =C2=A0 =C2=A0select SSI<br>
+=C2=A0 =C2=A0 =C2=A0select USB_OHCI<br>
++=C2=A0 =C2=A0 select PCMCIA<br>
+<br>
+=C2=A0config GUMSTIX<br>
+=C2=A0 =C2=A0 =C2=A0bool<br>
+-- <br>
+2.26.3<br>
+<br>
+<br>
+</blockquote></div></div>
+
+--000000000000da79b705c0bfa39f--

@@ -1,157 +1,177 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp2338339lfb;
-        Sat, 24 Apr 2021 09:51:49 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwgpSqOp2MGxe7DofBfHF2Mz8GgRSLiwzqLGx70JRWSBuhRfmKhiibujD8GnOAR+3ntvs/F
-X-Received: by 2002:a05:6e02:12a7:: with SMTP id f7mr7762109ilr.181.1619283108848;
-        Sat, 24 Apr 2021 09:51:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619283108; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp3171361lfb;
+        Sun, 25 Apr 2021 11:38:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzWqt+v0U+SyZ9ormgY10LHAj9V+hRJBF+9GEOW27icEibMkYqlkpfiq+oAtHkM3Oh94LrZ
+X-Received: by 2002:a05:6e02:1a4b:: with SMTP id u11mr10801390ilv.258.1619375935223;
+        Sun, 25 Apr 2021 11:38:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619375935; cv=none;
         d=google.com; s=arc-20160816;
-        b=KaBq7SC856X8QI3HdOegMjFoYoNDxjTxAUrGRHAWMsfkVdD60nUZ/GbfJMoJYLX7RB
-         6NSHQ7IzupluLDPom9UMLrteSZkRi5uc9WUVggnPq/V9aoYIz2pvGZhftjQqT7FRgWBg
-         9sfD8AuePi42BZNWI3CpFOcLfxtFvkfDBILGWTekN1TPp9kyzFbMMYQ1iDnBe0WrESmY
-         0oSj437yj9Ca6zzln6HpT+6DQ/m3QFnYXU+VGFa9O3wbu3bUy2CnlR6suN8aoFaobrGi
-         sPCTL7IsuBJs0bpqVcrx846K27yBLPew6HgAK4PAXp3XfHGc4ciF6emvvHiPn5heiysW
-         UpZg==
+        b=mpiAgG7gxep+1ix8WR1PeuAWjfoiAvtIdo8bNrppdM7TfPtLR7oqpwhiW7/nNaTmu3
+         ZqiZ99iu6WCB83HiUe2ZWGC+S8Sanodkzz9kmPGjJ+g3WwAjlFySOT1Iz6VWZ3ubv3fY
+         +WZWx6h2hKbsjNqH7drGIlQU8zl89JDHWypE2ED/GpPTWMR9LM0jozCX0EAA4DgXiVkx
+         QyvPXg9JnHkegkt4TSZhy6GFq/QOJUdiMNDYSXt2blfJRmjfwHwFMyJ+c2nN/63/2XSH
+         wcKKQQ4v0MbQhy2zAKM61JR40YNcVTF5/D+/T3w7DfbvEFNr4ndWamNlISuNOSjqXqr0
+         OfAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=YeGCMDACSQTp0mRPeTtaNv5FzsBb7YC30+puu/9npP0=;
-        b=vun+oZQeUeQgqIReqCil0gwGgolil+LIIJPNJvBNS/eqakXVtrjBZux9eCMW112Vmb
-         2K6/yFIVkT8Nvyt5y2Vj1S0jD5NVhrJME6KjzkZVl5DHCkN5V8AikT25KIPsGAJDjh6z
-         obOgoGVA+7mJ4Lx68vfJphYnUCHt14p1o5b2JpE7fbJHrpTBvOki2T1nI2ITkxvDJFyV
-         sT5QIhwCELUeV28sOqF5/oDThAc+lKdlW8JPaNe6CWgVZxnVi1Se8vtqpNNdmW3MObEL
-         Mlb1U0v9SmQKnAIlvKFEjW92RmS2LUOOSXjc/EpT62h6rk1Bqjl9MNI+doHIWbcJg9DJ
-         /OGw==
+        bh=a10iXpHggY1pPFPu4cpj6hoidaqPYdTsUtgMEkNcZZg=;
+        b=oRyLlH+0S7H5PwovZUD4dzunXL+gvpqHC2RrDcl3D4r8eFheFe9/CI7eTOpLsr3iNx
+         JRDT34yAxg9KhCsid3DO0NRdgghYbqhQ6mTyvyFtLYXKGfMsO47qq+53FV0nYlVuT1T/
+         AQFkbIXksNB+twxGwuJfDVwUueGXrdyvmXzDtV32JwD2bxybe9qqIbhHJql448ibUslV
+         nPbWKoQ+2uCkBxjNVRbOg+e0q0MLT+urCusidCVFLGRVcHBwJxSNS73t1K0o7FXrBhh7
+         okxr07OVjiLsjzKOEi0m6N7uF0LIAg1mWQb95VjTArCkJb/WhiXwftvHzuV8tQxxbyYs
+         wx6Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XuLXwqSX;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=YHMql7ai;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a8si10990987ilj.99.2021.04.24.09.51.48
+        by mx.google.com with ESMTPS id n6si16218158ilk.9.2021.04.25.11.38.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 24 Apr 2021 09:51:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 25 Apr 2021 11:38:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XuLXwqSX;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:56594 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=YHMql7ai;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:49442 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1laLVU-0002no-52
-	for alex.bennee@linaro.org; Sat, 24 Apr 2021 12:51:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54038)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lajeg-0006La-JT
+	for alex.bennee@linaro.org; Sun, 25 Apr 2021 14:38:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52184)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1laL3f-0000fY-G7; Sat, 24 Apr 2021 12:23:03 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432]:33644)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lajd5-0005BQ-Ae
+ for qemu-arm@nongnu.org; Sun, 25 Apr 2021 14:37:16 -0400
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634]:34773)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1laL3e-0004QM-17; Sat, 24 Apr 2021 12:23:03 -0400
-Received: by mail-wr1-x432.google.com with SMTP id g9so35399398wrx.0;
- Sat, 24 Apr 2021 09:23:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=YeGCMDACSQTp0mRPeTtaNv5FzsBb7YC30+puu/9npP0=;
- b=XuLXwqSX9rVMrGPsE/vDcT0Whkr/0C2J8zlWGD7B0VMbvH/uZ5A8x2YeEgS5nly5R7
- KRHGCwZwYIbloJ8L1a8KRyX4+3c8Uv9XPbBiwKY1EOW6+1/6oUvPjpfanmxx2EsD+MeW
- d9xaBbrD5if6RI8hTDpX8YIJwhERxWnNS8ynTOLuAjmqCd3/nXWIFAiXZB6XgB5fZtaw
- DBj3UgysifTr3GUbZOVz0fMwRsAUAPKi+X/JPzA75Jj+b9taUb1kXebeGO7nF5o667ai
- V3k8DV8+71d8vhWIws10QIQqLDgeT0Im/DrDeik2xWkW+9MmzaiXVfD9AStM+J31+vkd
- mmeA==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lajd2-0001tF-9I
+ for qemu-arm@nongnu.org; Sun, 25 Apr 2021 14:37:14 -0400
+Received: by mail-ej1-x634.google.com with SMTP id n21so4885538eji.1
+ for <qemu-arm@nongnu.org>; Sun, 25 Apr 2021 11:37:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=a10iXpHggY1pPFPu4cpj6hoidaqPYdTsUtgMEkNcZZg=;
+ b=YHMql7aiYthLz3cXHenjBtJLYsUX71VLKWi9X2/EPYWSE9L9Y7x6sPJlZeHkOFMN+Y
+ epAqzvoTKIp+kektTW6oY0/a1tS9D3PiRYgEB5+2cckv+mOtNH1IBfTn5+UkZ1tf3+Ag
+ KfTt3YiGPuUoI7t+/g565y0mc3ExFgQ/2WjReTMabbZnfoHB3l+94ZT/L1QVNsEPfl1u
+ nDxd+3mtQaI14PLUuiE+ACM1+6E1S/yfDaEq24KqM0kykrWg20t9EYWwI3uJaNUdgCTF
+ VsCk3DASV3CLgpZgRxupSErXCczudI7Qveq/EhFyDlBkPoCqWb+xXeDEDgSEppdSSPa7
+ n3Nw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=YeGCMDACSQTp0mRPeTtaNv5FzsBb7YC30+puu/9npP0=;
- b=JuGhPAZhu+/5G4au0upVjdGeQpIQOUE2jG4YQcjx/Y9HRhPdmWxB14Qq13fS4Ovn/r
- g2QrFnleGE/IdjkjfwdTJ9mMVV7NkLcyOUNN1bgg+5fYMzGl+iXFpGsORH5hGUKdIUs7
- kfLKc8udimkmmrudnyqu8ezWwMa8c3TnSWWeueHhtSNL/olq7NKUUqMxCz4UNYI4K/kP
- oARiQ5dscZC32UFGI/N12tSPueC9NfkDjfBZBi7shxkuPjhbveI/OeBxlqr6Ftz8y7x8
- ZcpUIP7igFVfwQg6rpevVVQVrnu4mWQiSCpDSyn8dlLErSLxWdGHDK/8mVdUe04JfZxq
- Sesw==
-X-Gm-Message-State: AOAM530Fk8SfMUkH+e0+LB8Z3C+w3QM4yXN5UDAEm0vvrTmuGWsRGwQe
- Q1uoGJlkVE0S8Nwoa/MUzdiNKIFt1z4iIg==
-X-Received: by 2002:a5d:49ca:: with SMTP id t10mr11947552wrs.395.1619281379519; 
- Sat, 24 Apr 2021 09:22:59 -0700 (PDT)
-Received: from x1w.redhat.com (39.red-81-40-121.staticip.rima-tde.net.
- [81.40.121.39])
- by smtp.gmail.com with ESMTPSA id t63sm10998616wma.20.2021.04.24.09.22.57
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 24 Apr 2021 09:22:58 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH 5/5] hw/arm/armsse: Manually reset the OR_IRQ devices
-Date: Sat, 24 Apr 2021 18:22:29 +0200
-Message-Id: <20210424162229.3312116-6-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.3
-In-Reply-To: <20210424162229.3312116-1-f4bug@amsat.org>
-References: <20210424162229.3312116-1-f4bug@amsat.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=a10iXpHggY1pPFPu4cpj6hoidaqPYdTsUtgMEkNcZZg=;
+ b=SDM4YuqrjBKAT83PGyCCOP9V+T3qSamPKPQnjvLjQvtRUf15udL5LVg2/DUak4WUeb
+ w6MxT67GdPSzMJjR9xY+hPb5ZMAViiguhTtSTdGOZyqAUY6Z5gPqU8O0a89H/hl+AbKI
+ Bh2n2sQh+kv13XMdyLAUFo9MUjet8ZPdpFloF27UfytudncYb9pRUTpP/nblymokdaWY
+ SVXSt93x8+HVseNg3wg/66hScCMZo9XqEBQMR5w9CnqBlGJPR5mZmtBIIoBEP7w2lmXZ
+ WbfcevZR2UU6U+8BtBrcxauXtVeARFo4V83q2dsCHvbtd/z4YbAnBT3GlO4UbcyKsnPS
+ QpwA==
+X-Gm-Message-State: AOAM5326zZS0nkBkzhAW5VvnjUk39WfiAUu3HJG2vnHDKR030HucJ2BP
+ tJVJytUsSlFsQQ2PjaRCcU7wtOW6kgTPxEnX82z40Q==
+X-Received: by 2002:a17:906:29ca:: with SMTP id
+ y10mr15133614eje.250.1619375830691; 
+ Sun, 25 Apr 2021 11:37:10 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x432.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+References: <20210424162229.3312116-1-f4bug@amsat.org>
+ <20210424162229.3312116-3-f4bug@amsat.org>
+In-Reply-To: <20210424162229.3312116-3-f4bug@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sun, 25 Apr 2021 19:36:13 +0100
+Message-ID: <CAFEAcA8=YAABLQL+n1gDXafhoZeUo9emmjCmi_BTqvH=3NS6GA@mail.gmail.com>
+Subject: Re: [PATCH 2/5] hw/pcmcia/microdrive: Register machine reset handler
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::634;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x634.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- qemu-block@nongnu.org, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Markus Armbruster <armbru@redhat.com>, Greg Kurz <groug@kaod.org>,
- qemu-arm@nongnu.org,
- =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- qemu-ppc@nongnu.org, Max Reitz <mreitz@redhat.com>,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Kevin Wolf <kwolf@redhat.com>, Qemu-block <qemu-block@nongnu.org>,
+ Markus Armbruster <armbru@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Greg Kurz <groug@kaod.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+ qemu-ppc <qemu-ppc@nongnu.org>, Max Reitz <mreitz@redhat.com>,
  David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: T1KKiYMgaZIe
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: tvn92FsQJGuN
 
-The OR_IRQ device is bus-less, thus isn't reset automatically.
-Manually reset the OR IRQs in the armsse_reset() handler.
+On Sat, 24 Apr 2021 at 17:22, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
+ wrote:
+>
+> The abstract PCMCIA_CARD is a bus-less TYPE_DEVICE, so devices
+> implementing it are not reset automatically.
+> Register a reset handler so children get reset on machine reset.
+>
+> Note, the DSCM-1XXXX device (TYPE_DSCM1XXXX) which inherits
+> TYPE_MICRODRIVE and PCMCIA_CARD reset itself when a disk is
+> attached or detached, but was not resetting itself on machine
+> reset.
+>
+> It doesn't seem to be an issue because it is that way since the
+> device QDev'ifycation 8 years ago, in commit d1f2c96a81a
+> ("pcmcia: QOM'ify PCMCIACardState and MicroDriveState").
+> Still, correct to have a proper API usage.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>  hw/pcmcia/pcmcia.c | 25 +++++++++++++++++++++++++
+>  1 file changed, 25 insertions(+)
+>
+> diff --git a/hw/pcmcia/pcmcia.c b/hw/pcmcia/pcmcia.c
+> index 03d13e7d670..73656257227 100644
+> --- a/hw/pcmcia/pcmcia.c
+> +++ b/hw/pcmcia/pcmcia.c
+> @@ -6,14 +6,39 @@
+>
+>  #include "qemu/osdep.h"
+>  #include "qemu/module.h"
+> +#include "sysemu/reset.h"
+>  #include "hw/pcmcia.h"
+>
+> +static void pcmcia_card_reset_handler(void *dev)
+> +{
+> +    device_legacy_reset(DEVICE(dev));
+> +}
+> +
+> +static void pcmcia_card_realize(DeviceState *dev, Error **errp)
+> +{
+> +    qemu_register_reset(pcmcia_card_reset_handler, dev);
+> +}
+> +
+> +static void pcmcia_card_unrealize(DeviceState *dev)
+> +{
+> +    qemu_unregister_reset(pcmcia_card_reset_handler, dev);
+> +}
 
-Fixes: bb75e16d5e6 ("hw/arm/iotkit: Wire up MPC interrupt lines")
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/arm/armsse.c | 4 ++++
- 1 file changed, 4 insertions(+)
+Why isn't a pcmcia card something that plugs into a bus ?
 
-diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
-index 2e5d0679e7b..7fd3fb77620 100644
---- a/hw/arm/armsse.c
-+++ b/hw/arm/armsse.c
-@@ -1668,6 +1668,10 @@ static void armsse_reset(DeviceState *dev)
-     ARMSSE *s = ARM_SSE(dev);
- 
-     s->nsccfg = 0;
-+
-+    device_legacy_reset(DEVICE(&s->mpc_irq_orgate));
-+    device_legacy_reset(DEVICE(&s->ppc_irq_orgate));
-+    device_legacy_reset(DEVICE(&s->sec_resp_splitter));
- }
- 
- static void armsse_class_init(ObjectClass *klass, void *data)
--- 
-2.26.3
-
+-- PMM

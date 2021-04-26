@@ -1,106 +1,108 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp3171361lfb;
-        Sun, 25 Apr 2021 11:38:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzWqt+v0U+SyZ9ormgY10LHAj9V+hRJBF+9GEOW27icEibMkYqlkpfiq+oAtHkM3Oh94LrZ
-X-Received: by 2002:a05:6e02:1a4b:: with SMTP id u11mr10801390ilv.258.1619375935223;
-        Sun, 25 Apr 2021 11:38:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619375935; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp3663771lfb;
+        Mon, 26 Apr 2021 03:01:58 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw80twnfqi5CduRrObvsrcITYkRxBQwzxEFz+QN3DO1Jategmv1uYzZbwDFhhl3PRxKfuoQ
+X-Received: by 2002:aa7:c789:: with SMTP id n9mr20574641eds.352.1619431318540;
+        Mon, 26 Apr 2021 03:01:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619431318; cv=none;
         d=google.com; s=arc-20160816;
-        b=mpiAgG7gxep+1ix8WR1PeuAWjfoiAvtIdo8bNrppdM7TfPtLR7oqpwhiW7/nNaTmu3
-         ZqiZ99iu6WCB83HiUe2ZWGC+S8Sanodkzz9kmPGjJ+g3WwAjlFySOT1Iz6VWZ3ubv3fY
-         +WZWx6h2hKbsjNqH7drGIlQU8zl89JDHWypE2ED/GpPTWMR9LM0jozCX0EAA4DgXiVkx
-         QyvPXg9JnHkegkt4TSZhy6GFq/QOJUdiMNDYSXt2blfJRmjfwHwFMyJ+c2nN/63/2XSH
-         wcKKQQ4v0MbQhy2zAKM61JR40YNcVTF5/D+/T3w7DfbvEFNr4ndWamNlISuNOSjqXqr0
-         OfAg==
+        b=r6i6KJsheZUrdT4RQ1K6ihAcDX+Neq+TuxVYJPD1jU8ppLpXISMfPxeeFKTViiLKUA
+         7OlpPvkshdQLSmga7DNzCU0QuQwwpejTzsXHVuuEqn20LPoDhEV9gDmPJAefoeaaQPjg
+         tjxSDS7gVGi6EyppuWxT4HDRZI6vSVWuUk9L7wav/MAZc9HiBXguFXwtvOhN7NTtZqzP
+         PcZIdnhEc7YCXg1Lk3+ALK3+N1WI9HoFBTAR6BdWBy0gJonEQxHbcn2kCGMmj1uFhqa4
+         fosUUb6Brham3jc2mbVsh8L6fb5GwItannYauYHdrblwcbAMLcWuOAznsJfshqM/3qbv
+         7SZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=a10iXpHggY1pPFPu4cpj6hoidaqPYdTsUtgMEkNcZZg=;
-        b=oRyLlH+0S7H5PwovZUD4dzunXL+gvpqHC2RrDcl3D4r8eFheFe9/CI7eTOpLsr3iNx
-         JRDT34yAxg9KhCsid3DO0NRdgghYbqhQ6mTyvyFtLYXKGfMsO47qq+53FV0nYlVuT1T/
-         AQFkbIXksNB+twxGwuJfDVwUueGXrdyvmXzDtV32JwD2bxybe9qqIbhHJql448ibUslV
-         nPbWKoQ+2uCkBxjNVRbOg+e0q0MLT+urCusidCVFLGRVcHBwJxSNS73t1K0o7FXrBhh7
-         okxr07OVjiLsjzKOEi0m6N7uF0LIAg1mWQb95VjTArCkJb/WhiXwftvHzuV8tQxxbyYs
-         wx6Q==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:organization:references:in-reply-to:message-id:subject
+         :to:from:date:dkim-signature;
+        bh=PA74sfXqj6QSgV1uSz6eLUNwRV4rMujeeQpw07g5tto=;
+        b=RB7a8UqtBCnJjyz0hx/2gFXzEzmNWkTvl0iszSERgs1NZp2DWO2xEbxFl0Fukw8wJK
+         sWAoRHGiOiLkFqj5TDb/pBWyXm2mozHiIq9JpYhtv9bTBhte+3CavArBzR3vW1l6t5+9
+         qNPyHtAISnXGOJdGf3BD7BKYAUpdOyB580wuO8NFoGFbp6K2MhqPSgdtHc2+f33nm1vl
+         Aqys+DG4Y64NjdmsuzInoeHxBYfxtE2ywOZo13uDgAYXwm4Sedcft/wv9QatMMvwJVYm
+         yzi5nhehMEZduOllLeEZD4hJOJalCe6gsTyNqfaWRAIgnk1p/fThItKXyJax+Pnf5XYs
+         Xcfg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=YHMql7ai;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="XwLKaPv/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n6si16218158ilk.9.2021.04.25.11.38.55
+        by mx.google.com with ESMTPS id z4si13243576ejr.490.2021.04.26.03.01.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 25 Apr 2021 11:38:55 -0700 (PDT)
+        Mon, 26 Apr 2021 03:01:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=YHMql7ai;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="XwLKaPv/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49442 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:45630 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lajeg-0006La-JT
-	for alex.bennee@linaro.org; Sun, 25 Apr 2021 14:38:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52184)
+	id 1lay3x-0002bO-Au
+	for alex.bennee@linaro.org; Mon, 26 Apr 2021 06:01:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46956)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lajd5-0005BQ-Ae
- for qemu-arm@nongnu.org; Sun, 25 Apr 2021 14:37:16 -0400
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634]:34773)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lajd2-0001tF-9I
- for qemu-arm@nongnu.org; Sun, 25 Apr 2021 14:37:14 -0400
-Received: by mail-ej1-x634.google.com with SMTP id n21so4885538eji.1
- for <qemu-arm@nongnu.org>; Sun, 25 Apr 2021 11:37:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=a10iXpHggY1pPFPu4cpj6hoidaqPYdTsUtgMEkNcZZg=;
- b=YHMql7aiYthLz3cXHenjBtJLYsUX71VLKWi9X2/EPYWSE9L9Y7x6sPJlZeHkOFMN+Y
- epAqzvoTKIp+kektTW6oY0/a1tS9D3PiRYgEB5+2cckv+mOtNH1IBfTn5+UkZ1tf3+Ag
- KfTt3YiGPuUoI7t+/g565y0mc3ExFgQ/2WjReTMabbZnfoHB3l+94ZT/L1QVNsEPfl1u
- nDxd+3mtQaI14PLUuiE+ACM1+6E1S/yfDaEq24KqM0kykrWg20t9EYWwI3uJaNUdgCTF
- VsCk3DASV3CLgpZgRxupSErXCczudI7Qveq/EhFyDlBkPoCqWb+xXeDEDgSEppdSSPa7
- n3Nw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=a10iXpHggY1pPFPu4cpj6hoidaqPYdTsUtgMEkNcZZg=;
- b=SDM4YuqrjBKAT83PGyCCOP9V+T3qSamPKPQnjvLjQvtRUf15udL5LVg2/DUak4WUeb
- w6MxT67GdPSzMJjR9xY+hPb5ZMAViiguhTtSTdGOZyqAUY6Z5gPqU8O0a89H/hl+AbKI
- Bh2n2sQh+kv13XMdyLAUFo9MUjet8ZPdpFloF27UfytudncYb9pRUTpP/nblymokdaWY
- SVXSt93x8+HVseNg3wg/66hScCMZo9XqEBQMR5w9CnqBlGJPR5mZmtBIIoBEP7w2lmXZ
- WbfcevZR2UU6U+8BtBrcxauXtVeARFo4V83q2dsCHvbtd/z4YbAnBT3GlO4UbcyKsnPS
- QpwA==
-X-Gm-Message-State: AOAM5326zZS0nkBkzhAW5VvnjUk39WfiAUu3HJG2vnHDKR030HucJ2BP
- tJVJytUsSlFsQQ2PjaRCcU7wtOW6kgTPxEnX82z40Q==
-X-Received: by 2002:a17:906:29ca:: with SMTP id
- y10mr15133614eje.250.1619375830691; 
- Sun, 25 Apr 2021 11:37:10 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1lay2y-0002Wh-Tn
+ for qemu-arm@nongnu.org; Mon, 26 Apr 2021 06:01:00 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:54560)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1lay2v-0000Ff-B9
+ for qemu-arm@nongnu.org; Mon, 26 Apr 2021 06:00:55 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1619431250;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=PA74sfXqj6QSgV1uSz6eLUNwRV4rMujeeQpw07g5tto=;
+ b=XwLKaPv/nfRTs1JAP+D691HqrB8lS2dVOVfLyGfin4UUNVabz8O7ZhnjaYfdwxcfqy5DMX
+ 0Or8hPL7h3YwIK2Y1oK6S6BInPioPtCHfbDFTdU80P74uq8m6SMgUOsBxxWVKR9osEA5fW
+ J5JlxR5jYH0jPgjLt9NNUkj0xihLhnY=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-488-PwYyZubiOeGYrwyuePTBFQ-1; Mon, 26 Apr 2021 06:00:48 -0400
+X-MC-Unique: PwYyZubiOeGYrwyuePTBFQ-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9A51C1008062;
+ Mon, 26 Apr 2021 10:00:47 +0000 (UTC)
+Received: from gondolin.fritz.box (ovpn-113-150.ams2.redhat.com
+ [10.36.113.150])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 3BE0269FB1;
+ Mon, 26 Apr 2021 10:00:41 +0000 (UTC)
+Date: Mon, 26 Apr 2021 12:00:38 +0200
+From: Cornelia Huck <cohuck@redhat.com>
+To: Richard Henderson <richard.henderson@linaro.org>
+Subject: Re: [PATCH v5 0/4] accel/tcg: Make sure that tb->size != 0 after
+ translation
+Message-ID: <20210426120038.5919f026.cohuck@redhat.com>
+In-Reply-To: <f84d413f-6f25-eca0-e963-dc11e446f38a@linaro.org>
+References: <20210416154939.32404-1-iii@linux.ibm.com>
+ <20210423123111.0575608e.cohuck@redhat.com>
+ <f84d413f-6f25-eca0-e963-dc11e446f38a@linaro.org>
+Organization: Red Hat GmbH
 MIME-Version: 1.0
-References: <20210424162229.3312116-1-f4bug@amsat.org>
- <20210424162229.3312116-3-f4bug@amsat.org>
-In-Reply-To: <20210424162229.3312116-3-f4bug@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sun, 25 Apr 2021 19:36:13 +0100
-Message-ID: <CAFEAcA8=YAABLQL+n1gDXafhoZeUo9emmjCmi_BTqvH=3NS6GA@mail.gmail.com>
-Subject: Re: [PATCH 2/5] hw/pcmcia/microdrive: Register machine reset handler
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::634;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x634.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=cohuck@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=cohuck@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.219,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -113,65 +115,29 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Kevin Wolf <kwolf@redhat.com>, Qemu-block <qemu-block@nongnu.org>,
- Markus Armbruster <armbru@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Greg Kurz <groug@kaod.org>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
- qemu-ppc <qemu-ppc@nongnu.org>, Max Reitz <mreitz@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, David Hildenbrand <david@redhat.com>,
+ qemu-devel@nongnu.org, Max Filippov <jcmvbkbc@gmail.com>,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tvn92FsQJGuN
+X-TUID: 0PomkUnax26e
 
-On Sat, 24 Apr 2021 at 17:22, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
- wrote:
->
-> The abstract PCMCIA_CARD is a bus-less TYPE_DEVICE, so devices
-> implementing it are not reset automatically.
-> Register a reset handler so children get reset on machine reset.
->
-> Note, the DSCM-1XXXX device (TYPE_DSCM1XXXX) which inherits
-> TYPE_MICRODRIVE and PCMCIA_CARD reset itself when a disk is
-> attached or detached, but was not resetting itself on machine
-> reset.
->
-> It doesn't seem to be an issue because it is that way since the
-> device QDev'ifycation 8 years ago, in commit d1f2c96a81a
-> ("pcmcia: QOM'ify PCMCIACardState and MicroDriveState").
-> Still, correct to have a proper API usage.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  hw/pcmcia/pcmcia.c | 25 +++++++++++++++++++++++++
->  1 file changed, 25 insertions(+)
->
-> diff --git a/hw/pcmcia/pcmcia.c b/hw/pcmcia/pcmcia.c
-> index 03d13e7d670..73656257227 100644
-> --- a/hw/pcmcia/pcmcia.c
-> +++ b/hw/pcmcia/pcmcia.c
-> @@ -6,14 +6,39 @@
->
->  #include "qemu/osdep.h"
->  #include "qemu/module.h"
-> +#include "sysemu/reset.h"
->  #include "hw/pcmcia.h"
->
-> +static void pcmcia_card_reset_handler(void *dev)
-> +{
-> +    device_legacy_reset(DEVICE(dev));
-> +}
-> +
-> +static void pcmcia_card_realize(DeviceState *dev, Error **errp)
-> +{
-> +    qemu_register_reset(pcmcia_card_reset_handler, dev);
-> +}
-> +
-> +static void pcmcia_card_unrealize(DeviceState *dev)
-> +{
-> +    qemu_unregister_reset(pcmcia_card_reset_handler, dev);
-> +}
+On Fri, 23 Apr 2021 10:50:59 -0700
+Richard Henderson <richard.henderson@linaro.org> wrote:
 
-Why isn't a pcmcia card something that plugs into a bus ?
+> On 4/23/21 3:31 AM, Cornelia Huck wrote:
+> > So, what's the way forward here? I can pick this if I get an ack for
+> > the arm patch. If someone else wants to take this, I'll just ack the
+> > s390x patch.  
+> 
+> You've volunteered, so that means you get it, I think.  ;-)
+> 
+> 
+> r~
+> 
 
--- PMM
+I guessed as much :) Thanks for your review!
+

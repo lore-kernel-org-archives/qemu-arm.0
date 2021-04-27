@@ -1,139 +1,255 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp4621431lfb;
-        Tue, 27 Apr 2021 02:46:22 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzUXCr8PFpYRxYKBZsz0yDxJm+QLncumBJFTRV6VwUJ+/4fhhJLkx0/y3k/6S3LHVR2GzsW
-X-Received: by 2002:a5b:bd1:: with SMTP id c17mr31779433ybr.62.1619516781999;
-        Tue, 27 Apr 2021 02:46:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619516781; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp4622147lfb;
+        Tue, 27 Apr 2021 02:47:40 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw2cGUvXNe1GK7H6JibYJSneSo7TxU9g92STPsph10sgF2SoL5TiG4DJbKBKhX+fA+KlIaG
+X-Received: by 2002:a25:c08e:: with SMTP id c136mr25977252ybf.103.1619516860680;
+        Tue, 27 Apr 2021 02:47:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619516860; cv=none;
         d=google.com; s=arc-20160816;
-        b=TFVamb9rzLq7jOjqiboKetZEIW4aCv/EG736UPkG+GwmfZU3c9QIRv8zIPhGvPHkGZ
-         XWXZqQdsRL8dmH0ocUa6rXuPivPkzVavicfdSFsUzArG63Xf7C56p6BR6MXUlWk5K9fo
-         euqnAyDYR3mfyaFZqVxYaKVTRTqtupMYiOxl/jAEPh18Msu640GfKLno6WkPhETXAhcG
-         1vmZIMhG0AaogEz6rLfqbz9/SMmYv4ANe3M18XpW3bkIU4ITczhk0iaQkgtinH/6EGUS
-         ODHed74h7lhaTZbczpkbS5kOJCXB57OiqaVEXW/JuNLZJSCbWRDu3JFc8LrpwczrpWzZ
-         tquA==
+        b=m+OoMfUt3uh6U9pqn0pp4qRPyvLBvIeD/xAQvUxhEmK/6+0xegdJFRnSMIc1mTgmFE
+         9joxcnp3nNV+QsY31O93GZkWX2f2kUG+VhdZxqSIcp6bHRzg0liR/130NVpWHFfF1jfu
+         2+erUks712mv8cfoPKXtI4nq7TS9BhvV1q76cZXTYa6Q4vobickj9vQ+4D86JjneVE6a
+         VJpm4MA3slTonbQKswNNy+ooYk95/bu6pHLNcF6c8W787vp3vlrqvQ/sSZTCSURVgxFN
+         9gYuv+eX79glzHJmUV+Sx/TN6kfa4Zdm03mtm7/1PqNo2lnpie64PySosHnnu9yW4BW+
+         Ynng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=6tZRjbUP0WYjN89PnE7p3uYzofbPvoxLzp2E2WJcMXQ=;
-        b=TjJYlBZlUF9ZeYN4D4eth3LqKULL9f9nSo2XvDK3+kzchOQ3TMZJLomSb8K98fCCDX
-         En9CUkZcReVtRCP8tUbeMzpqKX4VnpHyfFayrAPfZweO/oDHhs+vSSNVQR31ClJdOXbQ
-         EJLNYKy6NNq5FzMB6oqprImW4DVnRhJ839DQMykdpCHEse69ym/+N+ve+41woo15H7L8
-         3IKWO7vXX4tthdDTLscNP18P/n9+qfeZjL4lHi//tKot2F8ma35OfC//INxm2omFwSMN
-         dJgUKcMh6ZldRMtAhwuq8yy1G9XYUyihWqqM/AjRXxvRn0NhvRIa9oqcqq6Cq006F1JE
-         SL1g==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=krFmCDcJxLT5+gaPetSe7BYsvCcjKk2OQhbuBjS8Cmk=;
+        b=hg32D1UKD5N4mlvJU5PMrkvFXw3sh4NgE/QZSKS+bVzXP1wb1DpfJ3VHU8z71gSXeL
+         FBAMKGEhEDDqVPgqmYqcOlf92p7pTxyy0RMOcTQAmjpdTLoQY+ofYUTy5hP6lA4F81kK
+         dQhaF/PiZOUmWneT/hAhe2cjpQrMtw8SKXtMRCerAqYTEy4tiewkCHYGhZsJlv76sxXP
+         e+pPG/rjuoSyynqUWvgdTi0BWuKabV4wngyUPeVwTVtBPIBzcsqrzd+WptErDxqiKZdY
+         9mQY5OJhyECvG7dqotvKQJbs/2k+qO7bhVEOSoGywcHAq2WJshEhh4yRVOvvANBtN69A
+         UGEQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=gvbM+okl;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=e0j+0yJ6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e11si3779842ybn.170.2021.04.27.02.46.21
+        by mx.google.com with ESMTPS id i9si19562692ybj.95.2021.04.27.02.47.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 27 Apr 2021 02:46:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 27 Apr 2021 02:47:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=gvbM+okl;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45386 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=e0j+0yJ6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:47292 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lbKIP-0007DD-6Z
-	for alex.bennee@linaro.org; Tue, 27 Apr 2021 05:46:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55780)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lbKJf-00083g-VN
+	for alex.bennee@linaro.org; Tue, 27 Apr 2021 05:47:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56348)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lbKFX-0005n2-UJ
- for qemu-devel@nongnu.org; Tue, 27 Apr 2021 05:43:24 -0400
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a]:41537)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lbKFS-0003sL-8e
- for qemu-devel@nongnu.org; Tue, 27 Apr 2021 05:43:23 -0400
-Received: by mail-ej1-x62a.google.com with SMTP id zg3so6994681ejb.8
- for <qemu-devel@nongnu.org>; Tue, 27 Apr 2021 02:43:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=6tZRjbUP0WYjN89PnE7p3uYzofbPvoxLzp2E2WJcMXQ=;
- b=gvbM+oklVwBTeNJYHKovRABrzgUUobjl4fuqRialwb5cJ0NfoIEU4FAjEZ01JtJX5X
- KjCm7agMP0hR1aeEXla5nVu0fN1PTo9MY/Ou9hP9rAoFePLTNgdmRoc92enILy4+bZoK
- pSvtfXU51os5XnqSNyLKrrJZxWKGHs2qC1/Pz1vnHENMN9gGXS3IZnbgQEy4AaENhq7v
- pFmBpwcSIDUZah+s/yR8Ypks4vTGvs1ovepueJQjoGB2mA/R51cFErl+E7B10y133GOf
- 0KGBVs7IHszJVUSMnLzOtximsPx3Nj3FIpCuNdH9RZ0Kx9LwaXi2voiy48yL1y5XWkt/
- L++w==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lbKJT-00082C-JH
+ for qemu-arm@nongnu.org; Tue, 27 Apr 2021 05:47:28 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:30181)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lbKJQ-0005m3-2F
+ for qemu-arm@nongnu.org; Tue, 27 Apr 2021 05:47:27 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1619516842;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=krFmCDcJxLT5+gaPetSe7BYsvCcjKk2OQhbuBjS8Cmk=;
+ b=e0j+0yJ6S7O3mRSz2qO3aHxcLnSZZDqhFzbxDHAwFP7tPI2/5s8g+6sOW/93RKrwOcMGg1
+ UdkZx3U3FCvKL3dvswQTb8R4PKNqKJAVkxM0LnKaEdnETd59y/zJjz/Ua8CHrIVqJQ5Gdc
+ T8u9jGvrc5bHyHhnF1Mpqq1ZsasVmME=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-106-VRWdoHs1M2eFcpTsJl02RQ-1; Tue, 27 Apr 2021 05:47:20 -0400
+X-MC-Unique: VRWdoHs1M2eFcpTsJl02RQ-1
+Received: by mail-wr1-f69.google.com with SMTP id
+ 89-20020adf83e20000b029010c35eb9917so2520464wre.1
+ for <qemu-arm@nongnu.org>; Tue, 27 Apr 2021 02:47:19 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=6tZRjbUP0WYjN89PnE7p3uYzofbPvoxLzp2E2WJcMXQ=;
- b=uf1G677MO2O9v9tPxHB0rzyPCssddI+DMpLMiV35/pa4+7h6OAHBmzTSrQ1LYp/w3p
- X1+01pEf2faFlcKOYHrw3Q1oL+tES58jnvotlvIo2gIFM2dNzVFh291iJhPbzrk9Fh4S
- +LXFYaJ826Ut3NO4ybHExCG9yy3ulLBNMQTQ/25brbQfXoy7W08x+cUs4nCI4Q4mVX02
- xX5we215tiU1pefbERlvp0ON1uxQ1qXy78G9u0Tlu7VSV2VLNTLimw5eBzuO6zilP+LO
- JaJ0hInTa5DoXWNBmwayodFob8GwDNYzJRDrYYcbC2bE/bvQUjUUSaDVSP9FCl1fGVwi
- EW/w==
-X-Gm-Message-State: AOAM530yxOa1WYBcmOqwjHZzH+tZPJsyiPEGf8GgKMaI0FAFF8b8Tc07
- CPwWxnwsyaHQOLgYgAm+7Alqk9tWIE8uwnfMZ+CSIw==
-X-Received: by 2002:a17:906:953:: with SMTP id
- j19mr22727676ejd.56.1619516596772; 
- Tue, 27 Apr 2021 02:43:16 -0700 (PDT)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=krFmCDcJxLT5+gaPetSe7BYsvCcjKk2OQhbuBjS8Cmk=;
+ b=YAhFNsXlUrht4vWER8P4qGvMBbyyyZAndnAqT88Q+93MrNRstEy5SiTrJv5P1LuUrQ
+ AIztBvj0f1yP4uf1ln6ivO1tV9mJQasl7pOPVAUQlDQNr8KNWv8pv1m/8f38GcANAf71
+ 40FSKTzrRSm2J302Jb7hZWvzTI3Y22qinEZ55FpjkeeOyoTsCUO7W+EkyrSRK+oD98x0
+ jmYNTDsCW1t6kE6skQ1nysG1ur3OnF4elh7F+IC5haYhJJWMBRnts+nnWnN2m2P+JYuF
+ 5Zk+VotZ3Fhkod/cikBOQ/hzl1jt9KygZGxkcJyp7DotibQYFlnH73n6LSoaRcGUUe0h
+ ZH2w==
+X-Gm-Message-State: AOAM531C1yCzxgM2GGmTW/K9OY8WQoYTyLBNwT1onqWxF8Jp/cGwpuJn
+ sHIp+XDOi8Qs8A6/eUF6t70zrHdHk2VjvtNbxOEe0A4ztjO0EAE77H05iH1gSCxTGGDMU5/dlO9
+ BlA6rOjSVs8bc
+X-Received: by 2002:a5d:4c87:: with SMTP id z7mr14793871wrs.144.1619516838973; 
+ Tue, 27 Apr 2021 02:47:18 -0700 (PDT)
+X-Received: by 2002:a5d:4c87:: with SMTP id z7mr14793846wrs.144.1619516838736; 
+ Tue, 27 Apr 2021 02:47:18 -0700 (PDT)
+Received: from [192.168.1.36] (39.red-81-40-121.staticip.rima-tde.net.
+ [81.40.121.39])
+ by smtp.gmail.com with ESMTPSA id h8sm18116193wmq.19.2021.04.27.02.47.17
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 27 Apr 2021 02:47:18 -0700 (PDT)
+Subject: Re: [RFC PATCH v2 2/6] hw/arm/virt: DT: Add cpu-map
+To: Yanan Wang <wangyanan55@huawei.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, Andrew Jones <drjones@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>
+References: <20210413080745.33004-1-wangyanan55@huawei.com>
+ <20210413080745.33004-3-wangyanan55@huawei.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <648ff988-35f6-1857-2194-0d3e11e0d15c@redhat.com>
+Date: Tue, 27 Apr 2021 11:47:17 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-References: <cover.1617281290.git.haibo.xu@linaro.org>
-In-Reply-To: <cover.1617281290.git.haibo.xu@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 27 Apr 2021 10:42:18 +0100
-Message-ID: <CAFEAcA8a53rCGBGVr_mb0fVJPXFaCShGTJE0bh=L5Nvw6ATz6A@mail.gmail.com>
-Subject: Re: [PATCH RESEND v2 0/6] target/arm: Add nested virtualization
- support
-To: Haibo Xu <haibo.xu@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+In-Reply-To: <20210413080745.33004-3-wangyanan55@huawei.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.219,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Andrea Bolognani <abologna@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: I66E+MeiPG8i
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, Igor Mammedov <imammedo@redhat.com>,
+ Alistair Francis <alistair.francis@wdc.com>, prime.zeng@hisilicon.com,
+ yangyicong@huawei.com, yuzenghui@huawei.com, wanghaibin.wang@huawei.com,
+ zhukeqian1@huawei.com, Jiajie Li <lijiajie11@huawei.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: u6dJVFTMAvEc
 
-On Thu, 1 Apr 2021 at 13:55, Haibo Xu <haibo.xu@linaro.org> wrote:
-> This series add support for ARMv8.3/8.4 nested virtualization support
-> in KVM mode. It's based on Marc Zyngier's kernel KVM patches[1], and
-> has been tested on a FVP model to run a L2 guest with Qemu. Now the
-> feature can be enabled by "-M virt,accel=kvm -cpu host,el2=on" when
-> starting a VM.
+Hi Yanan, Drew,
 
-Why are we making the UI for "enable EL2 guest with KVM" different
-from that for "enable EL2 guest with TCG" ? Currently an EL2
-TCG guest is set up with "-M virt,virtualization=on", which then
-does everything it needs to enable virtualization on all the
-components on the board including the CPU.
+On 4/13/21 10:07 AM, Yanan Wang wrote:
+> From: Andrew Jones <drjones@redhat.com>
+> 
+> Support device tree CPU topology descriptions.
+> 
+> Signed-off-by: Andrew Jones <drjones@redhat.com>
+> Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
+> ---
+>  hw/arm/virt.c         | 41 ++++++++++++++++++++++++++++++++++++++++-
+>  include/hw/arm/virt.h |  1 +
+>  2 files changed, 41 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 9f01d9041b..f4ae60ded9 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -352,10 +352,11 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
+>      int cpu;
+>      int addr_cells = 1;
+>      const MachineState *ms = MACHINE(vms);
+> +    const VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
+>      int smp_cpus = ms->smp.cpus;
+>  
+>      /*
+> -     * From Documentation/devicetree/bindings/arm/cpus.txt
+> +     *  See Linux Documentation/devicetree/bindings/arm/cpus.yaml
+>       *  On ARM v8 64-bit systems value should be set to 2,
+>       *  that corresponds to the MPIDR_EL1 register size.
+>       *  If MPIDR_EL1[63:32] value is equal to 0 on all CPUs
+> @@ -408,8 +409,45 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
+>                  ms->possible_cpus->cpus[cs->cpu_index].props.node_id);
+>          }
+>  
+> +        if (ms->smp.cpus > 1 && !vmc->no_cpu_topology) {
+> +            qemu_fdt_setprop_cell(ms->fdt, nodename, "phandle",
+> +                                  qemu_fdt_alloc_phandle(ms->fdt));
+> +        }
+> +
+>          g_free(nodename);
+>      }
+> +
+> +    if (ms->smp.cpus > 1 && !vmc->no_cpu_topology) {
+> +        /*
+> +         * See Linux Documentation/devicetree/bindings/cpu/cpu-topology.txt
+> +         * In a SMP system, the hierarchy of CPUs is defined through four
+> +         * entities that are used to describe the layout of physical CPUs
+> +         * in the system: socket/cluster/core/thread.
+> +         */
+> +        qemu_fdt_add_subnode(ms->fdt, "/cpus/cpu-map");
+> +
+> +        for (cpu = ms->smp.cpus - 1; cpu >= 0; cpu--) {
+> +            char *cpu_path = g_strdup_printf("/cpus/cpu@%d", cpu);
+> +            char *map_path;
+> +
+> +            if (ms->smp.threads > 1) {
+> +                map_path = g_strdup_printf(
+> +                    "/cpus/cpu-map/%s%d/%s%d/%s%d",
+> +                    "socket", cpu / (ms->smp.cores * ms->smp.threads),
+> +                    "core", (cpu / ms->smp.threads) % ms->smp.cores,
+> +                    "thread", cpu % ms->smp.threads);
+> +            } else {
+> +                map_path = g_strdup_printf(
+> +                    "/cpus/cpu-map/%s%d/%s%d",
+> +                    "socket", cpu / ms->smp.cores,
+> +                    "core", cpu % ms->smp.cores);
+> +            }
+> +            qemu_fdt_add_path(ms->fdt, map_path);
+> +            qemu_fdt_setprop_phandle(ms->fdt, map_path, "cpu", cpu_path);
+> +            g_free(map_path);
+> +            g_free(cpu_path);
+> +        }
+> +    }
+>  }
+>  
+>  static void fdt_add_its_gic_node(VirtMachineState *vms)
+> @@ -2769,6 +2807,7 @@ static void virt_machine_5_2_options(MachineClass *mc)
+>      virt_machine_6_0_options(mc);
+>      compat_props_add(mc->compat_props, hw_compat_5_2, hw_compat_5_2_len);
+>      vmc->no_secure_gpio = true;
+> +    vmc->no_cpu_topology = true;
 
-Unless there's a strong technical reason why KVM EL2 has to
-be different, I think we should use the same switch.
+Bare with me because "machine versioning" is something new to me, I was
+expecting it to be only related to migrated fields.
+Why do we need to care about not adding the FDT node in older machines?
+Shouldn't the guest skip unknown FDT nodes?
 
-thanks
--- PMM
+Thanks,
+
+Phil.
+
+>  }
+>  DEFINE_VIRT_MACHINE(5, 2)
+>  
+> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> index 921416f918..4a4b98e4a7 100644
+> --- a/include/hw/arm/virt.h
+> +++ b/include/hw/arm/virt.h
+> @@ -129,6 +129,7 @@ struct VirtMachineClass {
+>      bool no_kvm_steal_time;
+>      bool acpi_expose_flash;
+>      bool no_secure_gpio;
+> +    bool no_cpu_topology;
+>  };
+>  
+>  struct VirtMachineState {
+> 
+

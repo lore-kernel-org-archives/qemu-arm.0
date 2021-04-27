@@ -1,105 +1,122 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp4726981lfb;
-        Tue, 27 Apr 2021 05:16:56 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyHXdSx7R6tGMJw8N7va++TCLL4in1IlCEH1QjD03o3+gXHuxChek+Z4k6VdA2HAB0PUeOI
-X-Received: by 2002:a05:6402:1c0b:: with SMTP id ck11mr3995557edb.264.1619525816893;
-        Tue, 27 Apr 2021 05:16:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619525816; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp4829516lfb;
+        Tue, 27 Apr 2021 07:19:20 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwu9df7qUDKNRM9OczFpX0R3VjqrHpdM5049t1n65G8kog9ZZ9rB4Aiz1KmjMoZB6KwWTtJ
+X-Received: by 2002:a02:708e:: with SMTP id f136mr21760365jac.50.1619533160039;
+        Tue, 27 Apr 2021 07:19:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619533160; cv=none;
         d=google.com; s=arc-20160816;
-        b=MDMUlbeeXreX/gp3pfyFcVN99DZCTEGYwkmhMLkU+yA2kqiEJTO88u3BzheeRJyFMS
-         hx5pZo09QHnWuFP1mlq7LCMozS7wZwKz8r8d6g1iX9vrabqic9kGvKXxlrC6vT0SGaJS
-         da83zw2QCHPzQCpGg5wdiX5zpS6NtYGl358XVkHncAi60s7xCB9QPyoiSl6XVquxPTLO
-         XP7jy00gmzJNi9L99ZNj5PMrgkWVKIvVwW0zMElrLjDLzw2Rej/4DaP84PR19l/0pILM
-         wxMOEJG3NKiyFKjl4EILsvWjJXhATPeHbj8WOv19bxts/8woezUspWd5uFsyjCGt3ycE
-         TbWg==
+        b=QG66IOXrEdCIlGjZHii15WjlhIQ2bbgkfqDfKdjNDxFmr8u59KlAXE6KwfmCNFDyJJ
+         uvgXMiCptW3eB1HI47cFdLRXkhuZvDkI8Tn57hkBQO/f1er51GbiA6OfdxDGysHDNUHq
+         Q3lxx1aen9/EGBKeovRqS9uQK1uNZqLfliRuhEJtr/XTLbRQuVMK55FMj7ZiXxsfsY9R
+         ZTYOKGZLfejhmeIB8z74/agaxXLdI48ZhtZWFewYUSkodFlSU95kF+ByX3xCPCD3Smbq
+         a5IxlOLqkp7gtce06hnMrufnT33QN6ycbXJXs17StJr3KvKKIl818wnbKnu1TyTBYvO9
+         58mA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=iOHl+WXov6I35hiaUgGBs0hZxf5f3OFbwgK2AgpIoOY=;
-        b=vCv4qEfQIrJeT5ltAX03nbd80mvAUfzxJN7L8RYEgPs/Z2+d0fvltRTnTbBv5thcm7
-         bJr/WsrIwviut3YDsxCpgjSZjkqADox8S61XizNdB8Yc8913uIIN4D9ANSRdUi4cv1b6
-         dNz+pQMkXz8UHF58jKh4gIgCkhPmZj6sHuZO8LkVpy0by4bqdaPn23+4mYSTkEJcCy4D
-         ZvQfQB6WnRDxsOb6c0yTchaD+wTt8YFjnK2KtnteEpbkE0P5StMp8AfXJ/rHxOBabOwC
-         HwqInTWNSVwtPtYpnqCs15FQYtE+xwmCfklMg/tYIVCsTBbeLBldIC56q1InKCf1Dy44
-         c4Cg==
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=vmklFrTme3j0cpI76YQOwmiCsVzozfL1t3CKehJnu5w=;
+        b=M7Yle95maU18ICNuG8WhJkmNPbtE0BxjtnFNSqSZBYHeLJ/SYHkYgUhwuFnyvccYLH
+         wC9a387KbeC4ey6TaRuzLgbOwAuqlMB1oG/ZTZL2DU/10621nmekgRv+obQXkroO1RbR
+         6O4jMpTw8qpfjKz8qQraazAyCBpKoo1ZU4x/PvVsa0sw5+BGLJqGwxYkgD9Kxn719UyJ
+         /iv3ea1Y+QghfOnGch5OPeFtgaRQKVBNPJ3tiFMv7VB4GoUWx7M9TNaRizwGG0R8EuOd
+         gyKiWVg2zBnU/QqaifOE2qNH/1jw6IRIpXDr8nssP+6ld3vcnr7jNTGPqLKg2x2M+A8+
+         CjYg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=J0Ql2aSS;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RJ6rYCwl;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c10si2404561ede.84.2021.04.27.05.16.56
+        by mx.google.com with ESMTPS id a18si3423882ilc.120.2021.04.27.07.19.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 27 Apr 2021 05:16:56 -0700 (PDT)
+        Tue, 27 Apr 2021 07:19:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=J0Ql2aSS;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RJ6rYCwl;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57520 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:50202 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lbMe8-0000fG-0n
-	for alex.bennee@linaro.org; Tue, 27 Apr 2021 08:16:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36098)
+	id 1lbOYZ-0002Eq-B4
+	for alex.bennee@linaro.org; Tue, 27 Apr 2021 10:19:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40758)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lbMdg-0000cK-Nw
- for qemu-arm@nongnu.org; Tue, 27 Apr 2021 08:16:29 -0400
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e]:45852)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lbMdd-0002eV-E3
- for qemu-arm@nongnu.org; Tue, 27 Apr 2021 08:16:28 -0400
-Received: by mail-ej1-x62e.google.com with SMTP id u3so10501056eja.12
- for <qemu-arm@nongnu.org>; Tue, 27 Apr 2021 05:16:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=iOHl+WXov6I35hiaUgGBs0hZxf5f3OFbwgK2AgpIoOY=;
- b=J0Ql2aSSUdrJGXv13R/IIFbQ/0g0HNid0CL3JRBmKeFUjv3mveZqFe9tp8hdOQbwJO
- UanxUxkmQBHIE9750Zb2R6bMLANA2q4k3dnQoDxyG+hpy3GD62iARBC8gXw7HIKWAI58
- B+GAgccIIMJ0+gG+sns5IDDtP76EQo6b4vcQlsbU3GLQ8MT8Y0oRjTuQTJQ/rBXIZYVG
- Y50x7K9jOJbv1BBVj5jj19uqQm9GrTbViyfq5fzSvGbEc2EP/dM0JqK33srJEJD60kcl
- g12/i3qV+oEmjgf7hTSVL5suY+CUxnkuDkG79vZkK+Pkzfw6xrXlAm9fHfgXl0mha8G/
- eLKQ==
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1lbOWL-0000iL-DU
+ for qemu-arm@nongnu.org; Tue, 27 Apr 2021 10:17:05 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:42036)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1lbOWC-0004rg-Vl
+ for qemu-arm@nongnu.org; Tue, 27 Apr 2021 10:16:58 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1619533011;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=vmklFrTme3j0cpI76YQOwmiCsVzozfL1t3CKehJnu5w=;
+ b=RJ6rYCwlmA01DB/32ONgxQplhzWKTUYqaVw+akNt4cLaDYtvEmoNNvWroTzadm0D6g+JuZ
+ Uhm7dolRuYKnXd5JfcMW3dmjTwORX03i+JoKrO5uFYrh6KujMajWjl0+qbF19NoPae9jfy
+ R++EvYYXcBB/0t/cMUBQN7qFCU3Sk1Q=
+Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
+ [209.85.208.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-298-NKmvtW3DMsWHkZNG2Jj0HA-1; Tue, 27 Apr 2021 10:16:48 -0400
+X-MC-Unique: NKmvtW3DMsWHkZNG2Jj0HA-1
+Received: by mail-ed1-f72.google.com with SMTP id
+ w15-20020a056402268fb02903828f878ec5so24989845edd.5
+ for <qemu-arm@nongnu.org>; Tue, 27 Apr 2021 07:16:48 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=iOHl+WXov6I35hiaUgGBs0hZxf5f3OFbwgK2AgpIoOY=;
- b=l6h2fPuALEIRuGRZmnoVLYexBTLdLIZnssb9VecHWoFDsXCmwqjKJrm8wN1W6mVWUw
- 6+usZprYfAlXZcyk+lr5hJ3pgM/NHg9jFCIKlhLhWz2rjHd+xd7uBfxDQbofQJX1czMp
- D/cBRsabf+U2UxxqBQFvUGKWG90GZOg/G5pWT7GYp4YK7kBedkfVwwTjyy6mjhB7BIWL
- yF/qTmqSLZkMXN947phtqxuFMzCAZiLLX1GyS0JMUK3i+gGZeZGUAD5Y26sfam3fPbCl
- rh3F/OhEOZli8xcnCYoLdUaozkGwncRe5C5pblKw37VelJ34fSWY1U8P6ImK/XnMgZhh
- xUTg==
-X-Gm-Message-State: AOAM530fGovjrMUVOvgdAq4tMxwflO2o2SIETFgJj7Dc3CxjZFMmtemK
- nQsZ4ODK1nKJ9UAePaoa8rli/ZhFNoLz0bHqP/1JZA==
-X-Received: by 2002:a17:906:6d41:: with SMTP id
- a1mr23314144ejt.482.1619525783656; 
- Tue, 27 Apr 2021 05:16:23 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=vmklFrTme3j0cpI76YQOwmiCsVzozfL1t3CKehJnu5w=;
+ b=kGjxCtyfheMxk7oJHHrgE/ek6wR97/sgmYr0laFGmWSfaTU7hYmenSWtYle57OqVFh
+ OnShuXYOwWerDvG8qxvhhxKjF4DdrSlFr0Gnm+dz/C1Y/+xiSX5iXTh8Up6s87QeSaj3
+ /6FHm1P0l+OHYhtGQxEO+2D6nY3Ld/n29gIAAM3vgR9jXqZPC8QcIA10bYubY8ULsE6I
+ H4fn0JIaTM8VJGsgefXwxn1QbF3s4HtyXgbw33B4nKUDxSQVBPYFNROZUZ/ms3XdsL+S
+ ZW0m4pbrxzMNqBri2JlkF17DzRdw3AUZ/m1YgLqIZeYg/fFUjb0nxKgrLRSCIC69MP11
+ 4txw==
+X-Gm-Message-State: AOAM530Cy2bgdAC03uL7X3xzNGwij80/MyfZYZwh6RoMAZAR3iAWfepj
+ LDTVfedCkg3QDsG2AR2khDKH6gIRZ60SL/tHkjP4oa9tzQG492yiBNlMviP48Fe0DqGBR/D48Og
+ fjKQNydXn8nKP
+X-Received: by 2002:a17:906:7942:: with SMTP id
+ l2mr23262591ejo.314.1619533007402; 
+ Tue, 27 Apr 2021 07:16:47 -0700 (PDT)
+X-Received: by 2002:a17:906:7942:: with SMTP id
+ l2mr23262569ejo.314.1619533007182; 
+ Tue, 27 Apr 2021 07:16:47 -0700 (PDT)
+Received: from gator.home (cst2-174-132.cust.vodafone.cz. [31.30.174.132])
+ by smtp.gmail.com with ESMTPSA id me3sm40082ejb.49.2021.04.27.07.16.46
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 27 Apr 2021 07:16:46 -0700 (PDT)
+Date: Tue, 27 Apr 2021 16:16:44 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Yanan Wang <wangyanan55@huawei.com>
+Subject: Re: [RFC PATCH v2 5/6] hw/arm/virt-acpi-build: Add PPTT table
+Message-ID: <20210427141644.n6vw5fprgjhrymfw@gator.home>
+References: <20210413080745.33004-1-wangyanan55@huawei.com>
+ <20210413080745.33004-6-wangyanan55@huawei.com>
 MIME-Version: 1.0
-References: <cover.1617281290.git.haibo.xu@linaro.org>
- <CAFEAcA8a53rCGBGVr_mb0fVJPXFaCShGTJE0bh=L5Nvw6ATz6A@mail.gmail.com>
- <20210427095458.3hbckyqbmfztcmge@gator.home>
-In-Reply-To: <20210427095458.3hbckyqbmfztcmge@gator.home>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 27 Apr 2021 13:15:24 +0100
-Message-ID: <CAFEAcA82VJqgD+B4gCr1M0n5oV869rBdoTzNS6xSs0f2f8iFvw@mail.gmail.com>
-Subject: Re: [PATCH RESEND v2 0/6] target/arm: Add nested virtualization
- support
-To: Andrew Jones <drjones@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20210413080745.33004-6-wangyanan55@huawei.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=drjones@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.218,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -112,51 +129,218 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Andrea Bolognani <abologna@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
- Haibo Xu <haibo.xu@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S . Tsirkin" <mst@redhat.com>, wanghaibin.wang@huawei.com,
+ qemu-devel@nongnu.org, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ qemu-arm@nongnu.org, Alistair Francis <alistair.francis@wdc.com>,
+ prime.zeng@hisilicon.com, yangyicong@huawei.com, yuzenghui@huawei.com,
+ Igor Mammedov <imammedo@redhat.com>, Ying Fang <fangying1@huawei.com>,
+ zhukeqian1@huawei.com, Jiajie Li <lijiajie11@huawei.com>,
+ David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UEkuSxM7fAzv
+X-TUID: aOGpoZ3jvVNR
 
-On Tue, 27 Apr 2021 at 10:55, Andrew Jones <drjones@redhat.com> wrote:
+On Tue, Apr 13, 2021 at 04:07:44PM +0800, Yanan Wang wrote:
+> Add the Processor Properties Topology Table (PPTT) to present
+> CPU topology information to ACPI guests. Note, while a DT boot
+> Linux guest with a non-flat CPU topology will see socket and
+> core IDs being sequential integers starting from zero, e.g.
+> with -smp 4,sockets=2,cores=2,threads=1
+> 
+> a DT boot produces
+> 
+>  cpu:  0 package_id:  0 core_id:  0
+>  cpu:  1 package_id:  0 core_id:  1
+>  cpu:  2 package_id:  1 core_id:  0
+>  cpu:  3 package_id:  1 core_id:  1
+> 
+> an ACPI boot produces
+> 
+>  cpu:  0 package_id: 36 core_id:  0
+>  cpu:  1 package_id: 36 core_id:  1
+>  cpu:  2 package_id: 96 core_id:  2
+>  cpu:  3 package_id: 96 core_id:  3
+> 
+> This is due to several reasons:
+> 
+>  1) DT cpu nodes do not have an equivalent field to what the PPTT
+>     ACPI Processor ID must be, i.e. something equal to the MADT CPU
+>     UID or equal to the UID of an ACPI processor container. In both
+>     ACPI cases those are platform dependant IDs assigned by the
+>     vendor.
+> 
+>  2) While QEMU is the vendor for a guest, if the topology specifies
+>     SMT (> 1 thread), then, with ACPI, it is impossible to assign a
+>     core-id the same value as a package-id, thus it is not possible
+>     to have package-id=0 and core-id=0. This is because package and
+>     core containers must be in the same ACPI namespace and therefore
+>     must have unique UIDs.
+> 
+>  3) ACPI processor containers are not required for PPTT tables to
+>     be used and, due to the limitations of which IDs are selected
+>     described above in (2), they are not helpful for QEMU, so we
+>     don't build them with this patch. In the absence of them, Linux
+>     assigns its own unique IDs. The maintainers have chosen not to use
+>     counters from zero, but rather ACPI table offsets, which explains
+>     why the numbers are so much larger than with DT.
+> 
+>  4) When there is no SMT (threads=1) the core IDs for ACPI boot guests
+>     match the logical CPU IDs, because these IDs must be equal to the
+>     MADT CPU UID (as no processor containers are present), and QEMU
+>     uses the logical CPU ID for these MADT IDs.
+> 
+> Tested-by: Jiajie Li <lijiajie11@huawei.com>
+> Signed-off-by: Andrew Jones <drjones@redhat.com>
+> Signed-off-by: Ying Fang <fangying1@huawei.com>
+> Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
+> ---
+>  hw/arm/virt-acpi-build.c | 63 ++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 63 insertions(+)
+> 
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index 2ad5dad1bf..03fd812d5a 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -436,6 +436,64 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>                   vms->oem_table_id);
+>  }
+>  
+> +/* PPTT */
+
+Please point out the ACPI spec section "5.2.29 Processor Properties
+Topology Table"
+
+> +static void
+> +build_pptt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+
+QEMU doesn't do this style, please write as
+
+static void build_pptt(GArray *table_data, BIOSLinker *linker,
+                       VirtMachineState *vms)
+
+> +{
+> +    int pptt_start = table_data->len;
+> +    int uid = 0, cpus = 0, socket = 0;
+> +    MachineState *ms = MACHINE(vms);
+> +    unsigned int smp_cores = ms->smp.cores;
+> +    unsigned int smp_threads = ms->smp.threads;
+> +
+> +    acpi_data_push(table_data, sizeof(AcpiTableHeader));
+> +
+> +    for (socket = 0; cpus < ms->possible_cpus->len; socket++) {
+
+Why not iterate from zero to ms->smp.sockets? With this type of loop if
+the number of sockets doesn't correctly fit the number of possible cpus,
+then you'll magically create new sockets that the user didn't want. That
+case shouldn't be able to happen, though, because the smp parsing should
+catch it. In any case, iterating sockets between zero it's number would
+make more sense.
+
+> +        uint32_t socket_offset = table_data->len - pptt_start;
+> +        int core;
+> +
+> +        build_processor_hierarchy_node(
+> +            table_data, 1, /* Physical package */
+
+If we want to pass the flags with in-argument-list comments, then please
+make sure the flags are on separate lines. See below.
+
+> +            0, socket, /* No parent */
+> +            NULL, 0);  /* No private resources */
+
+We don't need the 'No parent' and 'No private resources' comments.
+
+        build_processor_hierarchy_node(table_data,
+            (1 << 0), /* ACPI 6.2: Physical package */
+            0, socket, NULL, 0);
+
+> +
+> +        for (core = 0; core < smp_cores; core++) {
+> +            uint32_t core_offset = table_data->len - pptt_start;
+> +            int thread;
+> +
+> +            if (smp_threads <= 1) {
+> +                build_processor_hierarchy_node(
+> +                    table_data,
+> +                    (1 << 1) | /* ACPI Processor ID valid */
+> +                    (1 << 3),  /* ACPI 6.3 - Node is a Leaf */
+> +                    socket_offset, uid++, /* Parent is a Socket */
+> +                    NULL, 0);  /* No private resources */
+
+Now I see why you were calling out 6.3 in the previous patch. I suggest
+still keeping the function of the previous patch referencing 6.2, but
+also keep referencing 6.3 here, like you already do
+
+                build_processor_hierarchy_node(table_data,
+                    (1 << 1) | /* ACPI Processor ID valid */
+                    (1 << 3),  /* ACPI 6.3 - Node is a Leaf */
+                    socket_offset, uid++, NULL, 0);
+
+> +            } else {
+> +                build_processor_hierarchy_node(
+> +                    table_data, 0,
+> +                    socket_offset, core, /* Parent is a Socket */
+> +                    NULL, 0); /* No private resources */
+
+No need for these in-argument-comments that don't match up with the spec.
+
+> +
+> +                for (thread = 0; thread < smp_threads; thread++) {
+> +                    build_processor_hierarchy_node(
+> +                        table_data,
+> +                        (1 << 1) | /* ACPI Processor ID valid */
+> +                        (1 << 2) | /* ACPI 6.3 - Processor is a Thread */
+> +                        (1 << 3),  /* ACPI 6.3 - Node is a Leaf */
+
+This looks good.
+
+> +                        core_offset, uid++, /* Parent is a Core */
+> +                        NULL, 0);  /* No private resources */
+
+Don't need these comments.
+
+> +                }
+> +            }
+> +        }
+> +        cpus += smp_cores * smp_threads;
+
+As stated above, we don't want this.
+
+> +    }
+> +
+> +    build_header(linker, table_data,
+> +                 (void *)(table_data->data + pptt_start), "PPTT",
+> +                 table_data->len - pptt_start, 2,
+> +                 vms->oem_id, vms->oem_table_id);
+> +}
+> +
+>  /* GTDT */
+>  static void
+>  build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> @@ -707,6 +765,11 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+>      acpi_add_table(table_offsets, tables_blob);
+>      build_madt(tables_blob, tables->linker, vms);
+>  
+> +    if (ms->smp.cpus > 1 && !vmc->no_cpu_topology) {
+> +        acpi_add_table(table_offsets, tables_blob);
+> +        build_pptt(tables_blob, tables->linker, vms);
+> +    }
+> +
+>      acpi_add_table(table_offsets, tables_blob);
+>      build_gtdt(tables_blob, tables->linker, vms);
+>  
+> -- 
+> 2.19.1
 >
-> On Tue, Apr 27, 2021 at 10:42:18AM +0100, Peter Maydell wrote:
-> > Why are we making the UI for "enable EL2 guest with KVM" different
-> > from that for "enable EL2 guest with TCG" ? Currently an EL2
-> > TCG guest is set up with "-M virt,virtualization=on", which then
-> > does everything it needs to enable virtualization on all the
-> > components on the board including the CPU.
-> >
-> > Unless there's a strong technical reason why KVM EL2 has to
-> > be different, I think we should use the same switch.
->
-> I agree we should use the same switch, but I think I'd prefer it be the
-> CPU switch instead of the machine switch, as it's a CPU feature. There are
-> some board properties too, like the maintenance interrupt, but we tend to
-> call a feature a CPU feature when it shows up in the CPU manual, e.g. the
-> PMU is also a CPU feature, even though it has a PPI.
 
-This is mostly not how we've generally opted to handle this kind of thing on
-the virt board where there is something that is not merely a CPU feature
-but also has effects on the wider system: look at 'virtualization',
-'secure' and 'mte'. Granted, the effects of 'virtualization' on the wider
-system are less significant than those of 'secure' or 'mte' -- but I think
-we implemented 'virtualization' on the same pattern as 'secure'.
+Besides some changes that I think should be changed back and the 6.3
+flags, this patch looks very similar to [1], so I'd prefer my
+authorship be maintained. However, if my authorship is dropped, then
+my s-o-b should be replaced with a Co-developed-by.
 
-If you want to propose changing how we handle those things, including
-a backward-compatibility setup so we don't break existing command lines,
-I guess we can have that discussion. But we should either *first* do that
-change-of-course and *then* implement KVM EL2 to fit into that, or we should
-just implement KVM EL2 to fit into the design we have today (and then do
-the redesign later if we decide to do that). I don't think we should add
-KVM EL2 support's command line switches using a new design that we haven't
-committed to and which leaves it completely out of line with what the TCG
-handling of the exact same feature is. And I don't feel strongly enough
-that our current approach is wrong that I want to impose a "first do this
-big rework" precondition on landing the KVM EL2 support.
+[1] https://github.com/rhdrjones/qemu/commit/439b38d67ca1f2cbfa5b9892a822b651ebd05c11 
 
-thanks
--- PMM
+Thanks,
+drew
+

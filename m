@@ -1,122 +1,127 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp4829516lfb;
-        Tue, 27 Apr 2021 07:19:20 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwu9df7qUDKNRM9OczFpX0R3VjqrHpdM5049t1n65G8kog9ZZ9rB4Aiz1KmjMoZB6KwWTtJ
-X-Received: by 2002:a02:708e:: with SMTP id f136mr21760365jac.50.1619533160039;
-        Tue, 27 Apr 2021 07:19:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619533160; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp4743073lfb;
+        Tue, 27 Apr 2021 05:37:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz7DGUgdGY3w3feVMc+4cl2COIl4MpV2x3Uqw5ZUEX+Nmwi7bucceyMrC0tVDFszFXJoT92
+X-Received: by 2002:a92:ce43:: with SMTP id a3mr9077732ilr.12.1619527034392;
+        Tue, 27 Apr 2021 05:37:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619527034; cv=none;
         d=google.com; s=arc-20160816;
-        b=QG66IOXrEdCIlGjZHii15WjlhIQ2bbgkfqDfKdjNDxFmr8u59KlAXE6KwfmCNFDyJJ
-         uvgXMiCptW3eB1HI47cFdLRXkhuZvDkI8Tn57hkBQO/f1er51GbiA6OfdxDGysHDNUHq
-         Q3lxx1aen9/EGBKeovRqS9uQK1uNZqLfliRuhEJtr/XTLbRQuVMK55FMj7ZiXxsfsY9R
-         ZTYOKGZLfejhmeIB8z74/agaxXLdI48ZhtZWFewYUSkodFlSU95kF+ByX3xCPCD3Smbq
-         a5IxlOLqkp7gtce06hnMrufnT33QN6ycbXJXs17StJr3KvKKIl818wnbKnu1TyTBYvO9
-         58mA==
+        b=VRQtnkObwm9lWbXA/uDFT1BTp56dCFkR2uIA9GYvqto2imfv6UN6EZ6T1Be3he+EC6
+         QUDTU1symBGM+L6PKoxS6YCfqb1CXVyOk7d0BNZCbqK7VXbtccXuvONMvQhOlvBUvrs1
+         WmlL4JOde08dqiJCzOXkQGrmIRzTwRaebxlZhQJ5MYYGA3Uq9b4TUK3d3N5bUUWGNlkb
+         52ir+kntZM6ZOSwa23nQL6fChobmtfK+P82bXZyTSHQlphvtvtM55K8di6lW7tkbfu/0
+         QndSZUEpMJPiL5dorw7UVkRZwW0DELDbfqFQtRt7tDtB6pxtxsH2OEG2UqUi7f9U9sRg
+         wlfw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=vmklFrTme3j0cpI76YQOwmiCsVzozfL1t3CKehJnu5w=;
-        b=M7Yle95maU18ICNuG8WhJkmNPbtE0BxjtnFNSqSZBYHeLJ/SYHkYgUhwuFnyvccYLH
-         wC9a387KbeC4ey6TaRuzLgbOwAuqlMB1oG/ZTZL2DU/10621nmekgRv+obQXkroO1RbR
-         6O4jMpTw8qpfjKz8qQraazAyCBpKoo1ZU4x/PvVsa0sw5+BGLJqGwxYkgD9Kxn719UyJ
-         /iv3ea1Y+QghfOnGch5OPeFtgaRQKVBNPJ3tiFMv7VB4GoUWx7M9TNaRizwGG0R8EuOd
-         gyKiWVg2zBnU/QqaifOE2qNH/1jw6IRIpXDr8nssP+6ld3vcnr7jNTGPqLKg2x2M+A8+
-         CjYg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=O6l5h5dE6OceQRG27UFTeSJIxH+26NuQa8PS5ZNSi54=;
+        b=kSxzTrGLsgNXkRjCFhP/2OnRfFWqcaR+h68HPSisRknS9+nhMPkcBpajav2XHspM7s
+         aWfangHo+4Mc/awMLS0/RCk1Vu7M3qHxaCCyjFVHXx+efNdfRps7onMF3vOTI45wxkoX
+         bJfV4yRdcZctrDi5USZ+GbTAhuvcar7h2sHoq+HMjPmAcFkoBYdXyHzTXj6XT1NsQfIQ
+         d2pQRNIPj9ZIlmiTSC6qNKW9vDiUWcExOPxj0dJT91LMjG7mmajB6hCLipORjVev+Wih
+         gFwt3oXN71JKcvp+Wmzk3v4dwbUcHIe39TRr5sEqmi6KSAItEUiPpceEvNzsJUzrLiOa
+         lT3w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RJ6rYCwl;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=QIKy5V19;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a18si3423882ilc.120.2021.04.27.07.19.19
+        by mx.google.com with ESMTPS id m12si22029653ioj.96.2021.04.27.05.37.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 27 Apr 2021 07:19:20 -0700 (PDT)
+        Tue, 27 Apr 2021 05:37:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RJ6rYCwl;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=QIKy5V19;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50202 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59280 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lbOYZ-0002Eq-B4
-	for alex.bennee@linaro.org; Tue, 27 Apr 2021 10:19:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40758)
+	id 1lbMxl-0005AK-Lg
+	for alex.bennee@linaro.org; Tue, 27 Apr 2021 08:37:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40282)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1lbOWL-0000iL-DU
- for qemu-arm@nongnu.org; Tue, 27 Apr 2021 10:17:05 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:42036)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lbMxb-00057u-LQ
+ for qemu-arm@nongnu.org; Tue, 27 Apr 2021 08:37:03 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:48009)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1lbOWC-0004rg-Vl
- for qemu-arm@nongnu.org; Tue, 27 Apr 2021 10:16:58 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lbMxY-0005Lm-My
+ for qemu-arm@nongnu.org; Tue, 27 Apr 2021 08:37:03 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1619533011;
+ s=mimecast20190719; t=1619527020;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=vmklFrTme3j0cpI76YQOwmiCsVzozfL1t3CKehJnu5w=;
- b=RJ6rYCwlmA01DB/32ONgxQplhzWKTUYqaVw+akNt4cLaDYtvEmoNNvWroTzadm0D6g+JuZ
- Uhm7dolRuYKnXd5JfcMW3dmjTwORX03i+JoKrO5uFYrh6KujMajWjl0+qbF19NoPae9jfy
- R++EvYYXcBB/0t/cMUBQN7qFCU3Sk1Q=
-Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
- [209.85.208.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-298-NKmvtW3DMsWHkZNG2Jj0HA-1; Tue, 27 Apr 2021 10:16:48 -0400
-X-MC-Unique: NKmvtW3DMsWHkZNG2Jj0HA-1
-Received: by mail-ed1-f72.google.com with SMTP id
- w15-20020a056402268fb02903828f878ec5so24989845edd.5
- for <qemu-arm@nongnu.org>; Tue, 27 Apr 2021 07:16:48 -0700 (PDT)
+ bh=O6l5h5dE6OceQRG27UFTeSJIxH+26NuQa8PS5ZNSi54=;
+ b=QIKy5V19s9BKG1Fs2MjpgXOYLKicELqLaBCfVY9Vbi5JYr3ruJpIVnEiCyW3G7RamVfQ+v
+ CrBgiWB3kfn4nOnCoWy3Bd/+9UoQ6s8TJIKoS4J08b23gySECAKlEnnC7BA3106U/HyRnK
+ 7FIngikBZqlRaKdeZvjQbXiGNmJRtCA=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-521-YuDxzic-NcGUA7ck60U5-Q-1; Tue, 27 Apr 2021 08:36:58 -0400
+X-MC-Unique: YuDxzic-NcGUA7ck60U5-Q-1
+Received: by mail-wr1-f72.google.com with SMTP id
+ 60-20020adf85420000b0290109440de5e9so4926347wrh.10
+ for <qemu-arm@nongnu.org>; Tue, 27 Apr 2021 05:36:57 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=vmklFrTme3j0cpI76YQOwmiCsVzozfL1t3CKehJnu5w=;
- b=kGjxCtyfheMxk7oJHHrgE/ek6wR97/sgmYr0laFGmWSfaTU7hYmenSWtYle57OqVFh
- OnShuXYOwWerDvG8qxvhhxKjF4DdrSlFr0Gnm+dz/C1Y/+xiSX5iXTh8Up6s87QeSaj3
- /6FHm1P0l+OHYhtGQxEO+2D6nY3Ld/n29gIAAM3vgR9jXqZPC8QcIA10bYubY8ULsE6I
- H4fn0JIaTM8VJGsgefXwxn1QbF3s4HtyXgbw33B4nKUDxSQVBPYFNROZUZ/ms3XdsL+S
- ZW0m4pbrxzMNqBri2JlkF17DzRdw3AUZ/m1YgLqIZeYg/fFUjb0nxKgrLRSCIC69MP11
- 4txw==
-X-Gm-Message-State: AOAM530Cy2bgdAC03uL7X3xzNGwij80/MyfZYZwh6RoMAZAR3iAWfepj
- LDTVfedCkg3QDsG2AR2khDKH6gIRZ60SL/tHkjP4oa9tzQG492yiBNlMviP48Fe0DqGBR/D48Og
- fjKQNydXn8nKP
-X-Received: by 2002:a17:906:7942:: with SMTP id
- l2mr23262591ejo.314.1619533007402; 
- Tue, 27 Apr 2021 07:16:47 -0700 (PDT)
-X-Received: by 2002:a17:906:7942:: with SMTP id
- l2mr23262569ejo.314.1619533007182; 
- Tue, 27 Apr 2021 07:16:47 -0700 (PDT)
-Received: from gator.home (cst2-174-132.cust.vodafone.cz. [31.30.174.132])
- by smtp.gmail.com with ESMTPSA id me3sm40082ejb.49.2021.04.27.07.16.46
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 27 Apr 2021 07:16:46 -0700 (PDT)
-Date: Tue, 27 Apr 2021 16:16:44 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Yanan Wang <wangyanan55@huawei.com>
-Subject: Re: [RFC PATCH v2 5/6] hw/arm/virt-acpi-build: Add PPTT table
-Message-ID: <20210427141644.n6vw5fprgjhrymfw@gator.home>
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=O6l5h5dE6OceQRG27UFTeSJIxH+26NuQa8PS5ZNSi54=;
+ b=PoR9rTLSQj8ZfFnEktYdvlCZZcwUfXsSj0AZzUFzFADnL2C+2/eUGlYrEawIIAlvSz
+ upbF6lUrZH/wLn1PiQk4VM19F0LH9nZFhQdWZsp2wmHorzfmUAl8BCp4TOYNy4DdEkl5
+ veuS51B47a6PN9MULCX/fBEUqP9IRjNfChO9s/etPVyHsrybyJI27ZKee/Q8sktIWdNF
+ tDWTpHNFsbLDdSCZJfapNBJc6hWQzs9SeXM5H3Oql29XuOT3ioXNJ7nbgDqmQhXRmM0e
+ ZGAdsBN7jSnz4gzXSeo3UPF5Kb86d/lONy/Pbz398oRt7inIueVm6fYhE+RobroCzvjU
+ u2Vw==
+X-Gm-Message-State: AOAM532OCPFYp058iBHgMbVzvEdiCnfAvKshvrsN5deiNlSrmr3c91bm
+ b3QS7VjGIaxJFSPpCQ59J9yunKn/YbHEOAK8muRR9AebGDZkaLmOfu9OLqg7TuK7Dmb0iSoz3kr
+ tb74OBYwerd1T
+X-Received: by 2002:a5d:6d41:: with SMTP id k1mr30246207wri.66.1619527016913; 
+ Tue, 27 Apr 2021 05:36:56 -0700 (PDT)
+X-Received: by 2002:a5d:6d41:: with SMTP id k1mr30246167wri.66.1619527016716; 
+ Tue, 27 Apr 2021 05:36:56 -0700 (PDT)
+Received: from [192.168.1.36] (39.red-81-40-121.staticip.rima-tde.net.
+ [81.40.121.39])
+ by smtp.gmail.com with ESMTPSA id 61sm4043528wrm.52.2021.04.27.05.36.55
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 27 Apr 2021 05:36:56 -0700 (PDT)
+Subject: Re: [RFC PATCH v2 2/6] hw/arm/virt: DT: Add cpu-map
+To: Andrew Jones <drjones@redhat.com>
 References: <20210413080745.33004-1-wangyanan55@huawei.com>
- <20210413080745.33004-6-wangyanan55@huawei.com>
+ <20210413080745.33004-3-wangyanan55@huawei.com>
+ <648ff988-35f6-1857-2194-0d3e11e0d15c@redhat.com>
+ <20210427100442.elz3bjgl6mcntevc@gator.home>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <afe6dbd6-d026-3fd4-b794-01fe566e27a3@redhat.com>
+Date: Tue, 27 Apr 2021 14:36:54 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <20210413080745.33004-6-wangyanan55@huawei.com>
+In-Reply-To: <20210427100442.elz3bjgl6mcntevc@gator.home>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=drjones@redhat.com;
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -29
 X-Spam_score: -3.0
 X-Spam_bar: ---
 X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.218,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -130,217 +135,132 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S . Tsirkin" <mst@redhat.com>, wanghaibin.wang@huawei.com,
- qemu-devel@nongnu.org, Shannon Zhao <shannon.zhaosl@gmail.com>,
- qemu-arm@nongnu.org, Alistair Francis <alistair.francis@wdc.com>,
- prime.zeng@hisilicon.com, yangyicong@huawei.com, yuzenghui@huawei.com,
- Igor Mammedov <imammedo@redhat.com>, Ying Fang <fangying1@huawei.com>,
+ "Michael S . Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
+ Yanan Wang <wangyanan55@huawei.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org,
+ Alistair Francis <alistair.francis@wdc.com>, prime.zeng@hisilicon.com,
+ yangyicong@huawei.com, yuzenghui@huawei.com, wanghaibin.wang@huawei.com,
  zhukeqian1@huawei.com, Jiajie Li <lijiajie11@huawei.com>,
  David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aOGpoZ3jvVNR
+X-TUID: MqnRmQ0vGxbs
 
-On Tue, Apr 13, 2021 at 04:07:44PM +0800, Yanan Wang wrote:
-> Add the Processor Properties Topology Table (PPTT) to present
-> CPU topology information to ACPI guests. Note, while a DT boot
-> Linux guest with a non-flat CPU topology will see socket and
-> core IDs being sequential integers starting from zero, e.g.
-> with -smp 4,sockets=2,cores=2,threads=1
+On 4/27/21 12:04 PM, Andrew Jones wrote:
+> On Tue, Apr 27, 2021 at 11:47:17AM +0200, Philippe Mathieu-Daudé wrote:
+>> Hi Yanan, Drew,
+>>
+>> On 4/13/21 10:07 AM, Yanan Wang wrote:
+>>> From: Andrew Jones <drjones@redhat.com>
+>>>
+>>> Support device tree CPU topology descriptions.
+>>>
+>>> Signed-off-by: Andrew Jones <drjones@redhat.com>
+>>> Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
+>>> ---
+>>>  hw/arm/virt.c         | 41 ++++++++++++++++++++++++++++++++++++++++-
+>>>  include/hw/arm/virt.h |  1 +
+>>>  2 files changed, 41 insertions(+), 1 deletion(-)
+>>>
+>>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>>> index 9f01d9041b..f4ae60ded9 100644
+>>> --- a/hw/arm/virt.c
+>>> +++ b/hw/arm/virt.c
+>>> @@ -352,10 +352,11 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
+>>>      int cpu;
+>>>      int addr_cells = 1;
+>>>      const MachineState *ms = MACHINE(vms);
+>>> +    const VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
+>>>      int smp_cpus = ms->smp.cpus;
+>>>  
+>>>      /*
+>>> -     * From Documentation/devicetree/bindings/arm/cpus.txt
+>>> +     *  See Linux Documentation/devicetree/bindings/arm/cpus.yaml
+>>>       *  On ARM v8 64-bit systems value should be set to 2,
+>>>       *  that corresponds to the MPIDR_EL1 register size.
+>>>       *  If MPIDR_EL1[63:32] value is equal to 0 on all CPUs
+>>> @@ -408,8 +409,45 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
+>>>                  ms->possible_cpus->cpus[cs->cpu_index].props.node_id);
+>>>          }
+>>>  
+>>> +        if (ms->smp.cpus > 1 && !vmc->no_cpu_topology) {
+>>> +            qemu_fdt_setprop_cell(ms->fdt, nodename, "phandle",
+>>> +                                  qemu_fdt_alloc_phandle(ms->fdt));
+>>> +        }
+>>> +
+>>>          g_free(nodename);
+>>>      }
+>>> +
+>>> +    if (ms->smp.cpus > 1 && !vmc->no_cpu_topology) {
+>>> +        /*
+>>> +         * See Linux Documentation/devicetree/bindings/cpu/cpu-topology.txt
+>>> +         * In a SMP system, the hierarchy of CPUs is defined through four
+>>> +         * entities that are used to describe the layout of physical CPUs
+>>> +         * in the system: socket/cluster/core/thread.
+>>> +         */
+>>> +        qemu_fdt_add_subnode(ms->fdt, "/cpus/cpu-map");
+>>> +
+>>> +        for (cpu = ms->smp.cpus - 1; cpu >= 0; cpu--) {
+>>> +            char *cpu_path = g_strdup_printf("/cpus/cpu@%d", cpu);
+>>> +            char *map_path;
+>>> +
+>>> +            if (ms->smp.threads > 1) {
+>>> +                map_path = g_strdup_printf(
+>>> +                    "/cpus/cpu-map/%s%d/%s%d/%s%d",
+>>> +                    "socket", cpu / (ms->smp.cores * ms->smp.threads),
+>>> +                    "core", (cpu / ms->smp.threads) % ms->smp.cores,
+>>> +                    "thread", cpu % ms->smp.threads);
+>>> +            } else {
+>>> +                map_path = g_strdup_printf(
+>>> +                    "/cpus/cpu-map/%s%d/%s%d",
+>>> +                    "socket", cpu / ms->smp.cores,
+>>> +                    "core", cpu % ms->smp.cores);
+>>> +            }
+>>> +            qemu_fdt_add_path(ms->fdt, map_path);
+>>> +            qemu_fdt_setprop_phandle(ms->fdt, map_path, "cpu", cpu_path);
+>>> +            g_free(map_path);
+>>> +            g_free(cpu_path);
+>>> +        }
+>>> +    }
+>>>  }
+>>>  
+>>>  static void fdt_add_its_gic_node(VirtMachineState *vms)
+>>> @@ -2769,6 +2807,7 @@ static void virt_machine_5_2_options(MachineClass *mc)
+>>>      virt_machine_6_0_options(mc);
+>>>      compat_props_add(mc->compat_props, hw_compat_5_2, hw_compat_5_2_len);
+>>>      vmc->no_secure_gpio = true;
+>>> +    vmc->no_cpu_topology = true;
+>>
+>> Bare with me because "machine versioning" is something new to me, I was
+>> expecting it to be only related to migrated fields.
+>> Why do we need to care about not adding the FDT node in older machines?
+>> Shouldn't the guest skip unknown FDT nodes?
 > 
-> a DT boot produces
-> 
->  cpu:  0 package_id:  0 core_id:  0
->  cpu:  1 package_id:  0 core_id:  1
->  cpu:  2 package_id:  1 core_id:  0
->  cpu:  3 package_id:  1 core_id:  1
-> 
-> an ACPI boot produces
-> 
->  cpu:  0 package_id: 36 core_id:  0
->  cpu:  1 package_id: 36 core_id:  1
->  cpu:  2 package_id: 96 core_id:  2
->  cpu:  3 package_id: 96 core_id:  3
-> 
-> This is due to several reasons:
-> 
->  1) DT cpu nodes do not have an equivalent field to what the PPTT
->     ACPI Processor ID must be, i.e. something equal to the MADT CPU
->     UID or equal to the UID of an ACPI processor container. In both
->     ACPI cases those are platform dependant IDs assigned by the
->     vendor.
-> 
->  2) While QEMU is the vendor for a guest, if the topology specifies
->     SMT (> 1 thread), then, with ACPI, it is impossible to assign a
->     core-id the same value as a package-id, thus it is not possible
->     to have package-id=0 and core-id=0. This is because package and
->     core containers must be in the same ACPI namespace and therefore
->     must have unique UIDs.
-> 
->  3) ACPI processor containers are not required for PPTT tables to
->     be used and, due to the limitations of which IDs are selected
->     described above in (2), they are not helpful for QEMU, so we
->     don't build them with this patch. In the absence of them, Linux
->     assigns its own unique IDs. The maintainers have chosen not to use
->     counters from zero, but rather ACPI table offsets, which explains
->     why the numbers are so much larger than with DT.
-> 
->  4) When there is no SMT (threads=1) the core IDs for ACPI boot guests
->     match the logical CPU IDs, because these IDs must be equal to the
->     MADT CPU UID (as no processor containers are present), and QEMU
->     uses the logical CPU ID for these MADT IDs.
-> 
-> Tested-by: Jiajie Li <lijiajie11@huawei.com>
-> Signed-off-by: Andrew Jones <drjones@redhat.com>
-> Signed-off-by: Ying Fang <fangying1@huawei.com>
-> Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
-> ---
->  hw/arm/virt-acpi-build.c | 63 ++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 63 insertions(+)
-> 
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 2ad5dad1bf..03fd812d5a 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -436,6 +436,64 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->                   vms->oem_table_id);
->  }
->  
-> +/* PPTT */
+> It probably should, the question is whether it would. Also, the nodes may
+> not be unknown, so the guest will read the information and set up its
+> topology as instructed. That topology may not be the same as what was
+> getting used by default without the topology description. It's possible
+> that a user's application has a dependency on the topology and if that
+> topology gets changed under its feat it'll behave differently.
 
-Please point out the ACPI spec section "5.2.29 Processor Properties
-Topology Table"
+[*]
 
-> +static void
-> +build_pptt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+I see.
 
-QEMU doesn't do this style, please write as
+> In short, machine versioning isn't just about vmstate, it's also about
+> keeping a machine type looking the same to the guest.
 
-static void build_pptt(GArray *table_data, BIOSLinker *linker,
-                       VirtMachineState *vms)
+Yes, TIL.
 
-> +{
-> +    int pptt_start = table_data->len;
-> +    int uid = 0, cpus = 0, socket = 0;
-> +    MachineState *ms = MACHINE(vms);
-> +    unsigned int smp_cores = ms->smp.cores;
-> +    unsigned int smp_threads = ms->smp.threads;
-> +
-> +    acpi_data_push(table_data, sizeof(AcpiTableHeader));
-> +
-> +    for (socket = 0; cpus < ms->possible_cpus->len; socket++) {
+> Now, it's possible that we're being overly cautious here, but this compat
+> variable doesn't complicate code too much. So I think I'd prefer to use it
+> than not.
 
-Why not iterate from zero to ms->smp.sockets? With this type of loop if
-the number of sockets doesn't correctly fit the number of possible cpus,
-then you'll magically create new sockets that the user didn't want. That
-case shouldn't be able to happen, though, because the smp parsing should
-catch it. In any case, iterating sockets between zero it's number would
-make more sense.
-
-> +        uint32_t socket_offset = table_data->len - pptt_start;
-> +        int core;
-> +
-> +        build_processor_hierarchy_node(
-> +            table_data, 1, /* Physical package */
-
-If we want to pass the flags with in-argument-list comments, then please
-make sure the flags are on separate lines. See below.
-
-> +            0, socket, /* No parent */
-> +            NULL, 0);  /* No private resources */
-
-We don't need the 'No parent' and 'No private resources' comments.
-
-        build_processor_hierarchy_node(table_data,
-            (1 << 0), /* ACPI 6.2: Physical package */
-            0, socket, NULL, 0);
-
-> +
-> +        for (core = 0; core < smp_cores; core++) {
-> +            uint32_t core_offset = table_data->len - pptt_start;
-> +            int thread;
-> +
-> +            if (smp_threads <= 1) {
-> +                build_processor_hierarchy_node(
-> +                    table_data,
-> +                    (1 << 1) | /* ACPI Processor ID valid */
-> +                    (1 << 3),  /* ACPI 6.3 - Node is a Leaf */
-> +                    socket_offset, uid++, /* Parent is a Socket */
-> +                    NULL, 0);  /* No private resources */
-
-Now I see why you were calling out 6.3 in the previous patch. I suggest
-still keeping the function of the previous patch referencing 6.2, but
-also keep referencing 6.3 here, like you already do
-
-                build_processor_hierarchy_node(table_data,
-                    (1 << 1) | /* ACPI Processor ID valid */
-                    (1 << 3),  /* ACPI 6.3 - Node is a Leaf */
-                    socket_offset, uid++, NULL, 0);
-
-> +            } else {
-> +                build_processor_hierarchy_node(
-> +                    table_data, 0,
-> +                    socket_offset, core, /* Parent is a Socket */
-> +                    NULL, 0); /* No private resources */
-
-No need for these in-argument-comments that don't match up with the spec.
-
-> +
-> +                for (thread = 0; thread < smp_threads; thread++) {
-> +                    build_processor_hierarchy_node(
-> +                        table_data,
-> +                        (1 << 1) | /* ACPI Processor ID valid */
-> +                        (1 << 2) | /* ACPI 6.3 - Processor is a Thread */
-> +                        (1 << 3),  /* ACPI 6.3 - Node is a Leaf */
-
-This looks good.
-
-> +                        core_offset, uid++, /* Parent is a Core */
-> +                        NULL, 0);  /* No private resources */
-
-Don't need these comments.
-
-> +                }
-> +            }
-> +        }
-> +        cpus += smp_cores * smp_threads;
-
-As stated above, we don't want this.
-
-> +    }
-> +
-> +    build_header(linker, table_data,
-> +                 (void *)(table_data->data + pptt_start), "PPTT",
-> +                 table_data->len - pptt_start, 2,
-> +                 vms->oem_id, vms->oem_table_id);
-> +}
-> +
->  /* GTDT */
->  static void
->  build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-> @@ -707,6 +765,11 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
->      acpi_add_table(table_offsets, tables_blob);
->      build_madt(tables_blob, tables->linker, vms);
->  
-> +    if (ms->smp.cpus > 1 && !vmc->no_cpu_topology) {
-> +        acpi_add_table(table_offsets, tables_blob);
-> +        build_pptt(tables_blob, tables->linker, vms);
-> +    }
-> +
->      acpi_add_table(table_offsets, tables_blob);
->      build_gtdt(tables_blob, tables->linker, vms);
->  
-> -- 
-> 2.19.1
->
-
-Besides some changes that I think should be changed back and the 6.3
-flags, this patch looks very similar to [1], so I'd prefer my
-authorship be maintained. However, if my authorship is dropped, then
-my s-o-b should be replaced with a Co-developed-by.
-
-[1] https://github.com/rhdrjones/qemu/commit/439b38d67ca1f2cbfa5b9892a822b651ebd05c11 
+No problem. Could you or Yanan add your first paragraph ([*], reworded
+in the commit description? I don't think a comment in the code is
+useful, but having it in the commit is helpful IMO.
 
 Thanks,
-drew
+
+Phil.
 

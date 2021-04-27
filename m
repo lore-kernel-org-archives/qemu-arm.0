@@ -1,104 +1,122 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp4612517lfb;
-        Tue, 27 Apr 2021 02:31:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxPlEcET4S48UIBdr4Y/ggk+7vw2Y2Qv/dXCTGM5OcTT+B+1iWLMpHVvmsbGUsUGVARUAKp
-X-Received: by 2002:a67:e902:: with SMTP id c2mr16311193vso.42.1619515888217;
-        Tue, 27 Apr 2021 02:31:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619515888; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp4616789lfb;
+        Tue, 27 Apr 2021 02:38:07 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzelLoFb9mdX2z78B8G88WHhXyzZ2fA8gJzL6KMVfVpgmnEFEUf45GNX72ZigsIFlbc3k5N
+X-Received: by 2002:ab0:2712:: with SMTP id s18mr16259383uao.88.1619516287036;
+        Tue, 27 Apr 2021 02:38:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619516287; cv=none;
         d=google.com; s=arc-20160816;
-        b=u3RV6PwLkw0okee31bFI2BnCNFTgllrnSmgIsQw+Vcbtk/w/XQOsgvRUhlie8iPmoC
-         zNjaHLZNvdmElmZHEsIFW4EXaOwo5VNF1SVlJZazfjQIcIbABBcsPJbamLYshk21zx0L
-         zRdxyvaRlJDSRsvB/0jwn4acbcdRTwLDvIySexQuSgsj76k/GNevHTdfUuRcERbhe479
-         MHshjlHcS1oAd1k3Rbp5el9hsYocUYGLFTYhIlmVr716m31Szi1tLAplX8BOGxI3yZaB
-         8JlVi80kzYCidnAVP/+xRC+hwVzrYILknD5/jYYyzGXHJeSZOPz6OkXVB4xYIAr/d7IG
-         5TJA==
+        b=nv63fBszQWLNhAnE3AD7ABTRUISBkGGH7qgIRw8zsFv+1B7c7A7ae7dEr1ip6+kNiI
+         f8j7XDts6ef+Ft8UHeWtHfGwHez6tdmUeC82LfmXHwuBn/M/XdyDOYXz3zF4vsV9jlRQ
+         HSGrbAQujGU21+FT54AOqjgtYvaeMj41+lNwJIBEu22ejVtRWEKzFgTz61myy3S8B4jy
+         Pkulz4OggKTKIWHxTdra/VKrrpwOb0o9XJKCusEVKNE/HEkPjYtONsrWB9Eo4VSgYYv2
+         tv1CR8423f9FWABxjNKAqECljL0XaTrcUU4aLnGdJWSoa0zqIcGu6WcVKjaeha64l5+e
+         2pGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=k9u2x5D3SOubZEe3RPaRcH6N4VCiHCuSYmkbJnihiIk=;
-        b=n8H0j9tsdghGT9Klbgg+Co4lh1Yy2bf9Lt0DfZ6AmbZHGQSSF+hso2lO6rFGZOAl8j
-         hZ24VlgL9QHpRPGRYcrqCzKQLvIEMsNrATSAPhQXRY5vyifscfIAZQuF9rJTqODX49Lp
-         dMZdLMZREoAX8CYno3XgE+kzYeXCth+dBU4RQi3FUASTCuHWu+7adKs/n2Y+qfo0tE74
-         8Tpkvnfi33GHGEzwBV9BrhdLeiLV4nrFQyGsKW/xvZwWT74Epod/BC4HehW5un3L/dwH
-         f8sPHeRVaaICS2BM/P4MkB9V82gB1OYWIeAmdIWJgyNohB0FUUaT+KrtcgSKXQR6DFun
-         CINA==
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=OuZcYfksTtMkbmUbEwMw8fM0Xj0JA3dRB9TriGd+laM=;
+        b=ZkeRi95/S3t780jYJ/AgpKOJb7tBDG4HWKdHVCp8mCiC6aepwpGEyUGjH10fGLSg2W
+         /gtfffeuz+Cg2gMYq0OtpcW48vqTHCfKOEf67iRvuX933HasuiDVefFrJq7r65IJaLAC
+         i4oxi5RND+hTglzrkRPSY1gqTiUx+L+OlglU/lfI+JFUPI53KCXmIWO6Q9qyjbpDzzj+
+         ANcnOeAb6GW3Ia2mxQok2NIm6lEtRvjB5lI1LRTIQQBU7md42++rB5TTlAhoDo6DerzH
+         LUpmdo79uCWkbCNsDbPLElqi4N7Yel3A244sYSExoo4EAEG41ePVzENVUqg/robnoeyG
+         07TQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=UvSLacxn;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HuMKkq7T;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n8si1809541vsj.206.2021.04.27.02.31.28
+        by mx.google.com with ESMTPS id o29si1710011vsl.284.2021.04.27.02.38.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 27 Apr 2021 02:31:28 -0700 (PDT)
+        Tue, 27 Apr 2021 02:38:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=UvSLacxn;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HuMKkq7T;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48520 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:59272 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lbK3z-0004kK-Hi
-	for alex.bennee@linaro.org; Tue, 27 Apr 2021 05:31:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52696)
+	id 1lbKAQ-00012q-CW
+	for alex.bennee@linaro.org; Tue, 27 Apr 2021 05:38:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54250)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lbK2o-0004jj-Sh
- for qemu-arm@nongnu.org; Tue, 27 Apr 2021 05:30:16 -0400
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b]:33482)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lbK2m-00052I-MD
- for qemu-arm@nongnu.org; Tue, 27 Apr 2021 05:30:14 -0400
-Received: by mail-ej1-x62b.google.com with SMTP id t4so5268019ejo.0
- for <qemu-arm@nongnu.org>; Tue, 27 Apr 2021 02:30:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=k9u2x5D3SOubZEe3RPaRcH6N4VCiHCuSYmkbJnihiIk=;
- b=UvSLacxnw2uKejNpLSUzJnZITiwpJusQp0SCD/z0aZ+5reuuo5go0MstucPbi6LBcE
- 0qnOZ2vcnzV4N3xPW5jfPK3sIZpp2yJhGIMB4zZB3m9aLvw5i8YRpOng0p9xw5RQgIEM
- 8o5WHBAsh0lSOFAciZH3gMSeO/cxiRObCrojN01F+QuKWk7ltqaCW5BteME3ukxejRI8
- tsU4Uyl5325f6YPXhu1A4oSs8f1GvbW3diiXKQLSDtmK05Y1GVzoOVBsF9iUHDYQ20aq
- qgpsaFAnxek+xTBFWqB8BdSIpxbV/LWLyzEAZQd5Ho1YzYUnjVwzDADjLAa5annEvAms
- Ixvg==
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1lbKA5-000124-1Q
+ for qemu-arm@nongnu.org; Tue, 27 Apr 2021 05:37:45 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:43439)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1lbK9z-0000ks-V2
+ for qemu-arm@nongnu.org; Tue, 27 Apr 2021 05:37:43 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1619516257;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=OuZcYfksTtMkbmUbEwMw8fM0Xj0JA3dRB9TriGd+laM=;
+ b=HuMKkq7TCwGy0AyFa3NlIh0hl/Gf7Nu8KL0KgI+YEaVM3SoKFRHms5a0MBSiocAsPIptlI
+ 4eOMZLDwxoRowc3UF62mEHQE+pCQrVzOYSbzKp4fSS3fJc5odV51HWDFutxQUhHDf1rhE8
+ Q42UwAKsjbRfv2Kn6DPYM8fOTkh+92k=
+Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
+ [209.85.218.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-45-zktlXjJuP7es9nx-NYBL3Q-1; Tue, 27 Apr 2021 05:37:35 -0400
+X-MC-Unique: zktlXjJuP7es9nx-NYBL3Q-1
+Received: by mail-ej1-f70.google.com with SMTP id
+ n10-20020a1709061d0ab029037caa96b8c5so11113660ejh.23
+ for <qemu-arm@nongnu.org>; Tue, 27 Apr 2021 02:37:35 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=k9u2x5D3SOubZEe3RPaRcH6N4VCiHCuSYmkbJnihiIk=;
- b=RMNsju3QBN2rrydqQdiRGUEfhA/UGKoFpAOkZC7F+iMNuIvmI/2GaQHf+3u3W/sCa7
- rFRk5OYE2kU0aQFFD6wsiyzdxq52hpnn2liz2723DKk6Zcqz1OoJIfB1nDWtcmjcpvgo
- 2i4q6kIoUZfAqPbRLCjp1QA6kbARi0GX1Ji8i0q4GtJiHXnQ/qBG3FDx+J3Wlza1OyCu
- bsNLjKwB2faUBq/lOVK3AC2JVzFISnqCwBbte+2VWPvbbWbg0Gk6GEQXReJUSflxUEbx
- 8veVusQGlFW6UPRohKAqEdn2yDgK4ox7uS2jq4cK4zEzRxUZoDWInzeFch0Ok7ts3opy
- 4HHw==
-X-Gm-Message-State: AOAM532QW2weoyN/en9aQnu3n+jF86uaF+MxVtYxhvYsqLa+nUC0uq/3
- pQWhxCSAAqDO6THvxQDAdYg0xYyR4rSnP+X7ozQENQ==
-X-Received: by 2002:a17:906:6d41:: with SMTP id
- a1mr22721695ejt.482.1619515810486; 
- Tue, 27 Apr 2021 02:30:10 -0700 (PDT)
-MIME-Version: 1.0
-References: <cover.1617281290.git.haibo.xu@linaro.org>
- <80d8bac17a21b41b36cde3eec6c9681b93f43d7c.1617281290.git.haibo.xu@linaro.org>
-In-Reply-To: <80d8bac17a21b41b36cde3eec6c9681b93f43d7c.1617281290.git.haibo.xu@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 27 Apr 2021 10:29:11 +0100
-Message-ID: <CAFEAcA93EC1+ctNi3uh7vXP3F+zV8kunEXdXTHkBHqd5L1Q-2w@mail.gmail.com>
-Subject: Re: [PATCH RESEND v2 3/6] target/arm/kvm: Add an option to turn
- on/off el2 support
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=OuZcYfksTtMkbmUbEwMw8fM0Xj0JA3dRB9TriGd+laM=;
+ b=twcthvmOvfovjWoHs+xBiUmttKvfrDKl8fPGokC4+oCAo0ibwKzFVQRbVhnxt15SLM
+ i2jlfolSconyDkT6/pTVhhrV6xqQRPrEA/vCbWYZgtUXDkjiRU4IGWjB1jLvUmSkALRO
+ swvzbMDgqqJgtrqFpxvR/4R5eo1PQiDpNsIUO6umC0At3jDwld5WMSrXxtufLzHdibgl
+ owT0IGW1+Oay9MEuqF7/7liO3jhU9+HLVmoYD7eIXW+61ojCVcELBv4crG+LU3EVLQmg
+ 6yrEK41ihHdAHuerFCCnwAV+9oBhfWRkICwaVFOuwElxqTH/8W+7S+5Oul5IB+UAxOGK
+ fpHg==
+X-Gm-Message-State: AOAM530dWY3Bdo9HfTQ3MzmxnKw5zQrOmaxzD7JIGaMHOyIqPb+Am89Z
+ oH7T5rZF9otoEcndg7nOZZvTa8rUNb5Xeh1UDsqDMF3bMMrvhsVVRYjTxxr/F5abwFSCAilq2W+
+ /XhE0iwCedR3f
+X-Received: by 2002:a17:906:a851:: with SMTP id
+ dx17mr6721889ejb.364.1619516254173; 
+ Tue, 27 Apr 2021 02:37:34 -0700 (PDT)
+X-Received: by 2002:a17:906:a851:: with SMTP id
+ dx17mr6721872ejb.364.1619516253944; 
+ Tue, 27 Apr 2021 02:37:33 -0700 (PDT)
+Received: from gator.home (cst2-174-132.cust.vodafone.cz. [31.30.174.132])
+ by smtp.gmail.com with ESMTPSA id r25sm1928907edv.78.2021.04.27.02.37.32
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 27 Apr 2021 02:37:33 -0700 (PDT)
+Date: Tue, 27 Apr 2021 11:37:31 +0200
+From: Andrew Jones <drjones@redhat.com>
 To: Haibo Xu <haibo.xu@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Subject: Re: [PATCH RESEND v2 6/6] target/arm: Add vCPU feature 'el2' test.
+Message-ID: <20210427093731.suz7sgunxcdxrwjm@gator.home>
+References: <cover.1617281290.git.haibo.xu@linaro.org>
+ <50db1700b4df48acbecfda077b2220a0e3cf6b49.1617281290.git.haibo.xu@linaro.org>
+MIME-Version: 1.0
+In-Reply-To: <50db1700b4df48acbecfda077b2220a0e3cf6b49.1617281290.git.haibo.xu@linaro.org>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=drjones@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.219,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -111,48 +129,101 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Andrea Bolognani <abologna@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
+ qemu-devel@nongnu.org, abologna@redhat.com, qemu-arm@nongnu.org,
+ philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XBi8n+SyFYqH
+X-TUID: IkGBbJ34blEa
 
-On Thu, 1 Apr 2021 at 13:55, Haibo Xu <haibo.xu@linaro.org> wrote:
->
-> Adds an el2=[on/off] option to enable/disable el2(nested virtualization)
-> support in KVM guest vCPU.
->
+On Thu, Apr 01, 2021 at 05:55:38AM -0700, Haibo Xu wrote:
 > Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
 > ---
->  target/arm/cpu.c   | 11 ++++++++++
->  target/arm/cpu.h   |  4 ++++
->  target/arm/cpu64.c | 52 ++++++++++++++++++++++++++++++++++++++++++++++
->  3 files changed, 67 insertions(+)
->
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index ae04884408..30cc330f50 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -1349,6 +1349,17 @@ void arm_cpu_finalize_features(ARMCPU *cpu, Error **errp)
->                  return;
->              }
+>  target/arm/monitor.c           | 2 +-
+>  tests/qtest/arm-cpu-features.c | 9 +++++++++
+>  2 files changed, 10 insertions(+), 1 deletion(-)
+> 
+> diff --git a/target/arm/monitor.c b/target/arm/monitor.c
+> index 80c64fa355..6c39238925 100644
+> --- a/target/arm/monitor.c
+> +++ b/target/arm/monitor.c
+
+The patch summary says we're adding a test, but here we're touching
+monitor code. Adding 'el2' to this monitor list should happen in the
+patch where el2 is introduced.
+
+> @@ -90,7 +90,7 @@ QEMU_BUILD_BUG_ON(ARM_MAX_VQ > 16);
+>   * then the order that considers those dependencies must be used.
+>   */
+>  static const char *cpu_model_advertised_features[] = {
+> -    "aarch64", "pmu", "sve",
+> +    "aarch64", "pmu", "sve", "el2",
+
+It doesn't really matter, but I'd rather not add a new feature between
+'sve' and 'sve128'. Why not just add it to the front or back of the list?
+
+>      "sve128", "sve256", "sve384", "sve512",
+>      "sve640", "sve768", "sve896", "sve1024", "sve1152", "sve1280",
+>      "sve1408", "sve1536", "sve1664", "sve1792", "sve1920", "sve2048",
+> diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
+> index 8252b85bb8..be07bf0c76 100644
+> --- a/tests/qtest/arm-cpu-features.c
+> +++ b/tests/qtest/arm-cpu-features.c
+> @@ -509,6 +509,7 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
+>      if (g_str_equal(qtest_get_arch(), "aarch64")) {
+>          bool kvm_supports_steal_time;
+>          bool kvm_supports_sve;
+> +        bool kvm_supports_el2;
+>          char max_name[8], name[8];
+>          uint32_t max_vq, vq;
+>          uint64_t vls;
+> @@ -533,10 +534,12 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
+>           */
+>          assert_has_feature(qts, "host", "kvm-steal-time");
+>          assert_has_feature(qts, "host", "sve");
+> +        assert_has_feature(qts, "host", "el2");
+>  
+>          resp = do_query_no_props(qts, "host");
+>          kvm_supports_steal_time = resp_get_feature(resp, "kvm-steal-time");
+>          kvm_supports_sve = resp_get_feature(resp, "sve");
+> +        kvm_supports_el2 = resp_get_feature(resp, "el2");
+
+Isn't this feature disabled by default whether the host supports it or
+not? If so, this will always be false. I think the test should
+
+ 1) confirm the feature is disabled by default
+ 2) attempt to enable it without asserting on failure
+ 3) if it gets enabled, then attempt to disable it, asserting on failure
+
+>          vls = resp_get_sve_vls(resp);
+>          qobject_unref(resp);
+>  
+> @@ -602,11 +605,17 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
+>          } else {
+>              g_assert(vls == 0);
 >          }
 > +
-> +        /*
-> +         * Currently, vCPU feature 'el2' only supported in KVM mode.
-> +         */
-> +        if (kvm_enabled()) {
-> +            arm_cpu_el2_finalize(cpu, &local_err);
-> +            if (local_err != NULL) {
-> +                error_propagate(errp, local_err);
-> +                return;
-> +            }
+> +        if (kvm_supports_el2) {
+> +            assert_set_feature(qts, "host", "el2", false);
+> +            assert_set_feature(qts, "host", "el2", true);
+
+For the steps outlined above, you can drop this extra re-enabling test.
+
 > +        }
+>      } else {
+>          assert_has_not_feature(qts, "host", "aarch64");
+>          assert_has_not_feature(qts, "host", "pmu");
+>          assert_has_not_feature(qts, "host", "sve");
+>          assert_has_not_feature(qts, "host", "kvm-steal-time");
+> +        assert_has_not_feature(qts, "host", "el2");
+>      }
+>  
+>      qtest_quit(qts);
+> -- 
+> 2.17.1
+> 
+>
 
-I don't understand this. EL2 is supported in TCG as well...
+Thanks,
+drew
 
-thanks
--- PMM

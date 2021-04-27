@@ -1,153 +1,428 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp4948715lfb;
-        Tue, 27 Apr 2021 09:37:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzLzdXyAJflpsy6p9xqbmRoxFpb44Ko/6METjs8L9efXjqcfrmWjIbuD3xDjdsbYPAae4qv
-X-Received: by 2002:a05:6402:1109:: with SMTP id u9mr5648356edv.174.1619541475786;
-        Tue, 27 Apr 2021 09:37:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619541475; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp4841348lfb;
+        Tue, 27 Apr 2021 07:33:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxuZbwOSi7Pun7+mTbC/31VW2Km/yhFwQLcImfgB8ZNYubbltK4l2uiwIIok1/t6vENkp8r
+X-Received: by 2002:a05:6e02:168f:: with SMTP id f15mr20305557ila.264.1619533994500;
+        Tue, 27 Apr 2021 07:33:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619533994; cv=none;
         d=google.com; s=arc-20160816;
-        b=BVMBQvUabSdhTekkIz2H2GmI5kvJlwIM9+RhBoqj+7fdTWFh4ftqk+hoYQAdksRE2p
-         n4RVKiOGjc9f+n7NHAU2yje1+XJg2dCK8a8pMiG2KbOQkg5MxXv5uO/b1essrucALF/S
-         J1rQMwTZfQo4aS/2BLPT+F+e3RDF25M2LhjCl6t4AHMNH4lCglG4M8OvGNU14xa//Q/+
-         mbFxPPe7WUqsccYbMK8QoImpM9OacmYm0MdXrmSaslMr2J2RwBZrxtNX3vytjxfJxRwu
-         aQKcPttSh+fPz/AUTpPPjRrjP7jOXUJZZNMbCUadx1PJyw4NdEj7+irxNlM/K/jtIFmq
-         7NUw==
+        b=JehXKXHRwtkoq6F1Sgvu/vDc/WgrQ7n9Ty+0DZhwtoH1A2mdCWLGDbSzJ+etjJYYAb
+         V7921P2lkI82Xg07N/kH0xrDaiz1Ht5o6zFs6+P9v56gFVbvFLx0frEgkRZQ5U9WYrbx
+         jl3qt2y5QQkJNLZhfxh9Jb/tmXux6Y/E94ZTke6yIp3AMJS7cM8ZQbphKl43+sXu/kvd
+         A6jp+CEvO0nQzB2iS0Y4tTEXGk8k+jvpbV/WakgzeXFFTqmyQFfoG0gIRtFVHmjbOTHm
+         jpPfKBuFceky7XiRWya8KgtifJGTDOdrxpJpmO5lUC1UDU0xvXj6aJmavbflrn8c3X0Y
+         SoXQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=HVbZI0B7gwo0bC+Yq+PhormUBPIYJKo1dipvxa++kXI=;
-        b=skPhtiuFMzyiJztZYXUO4Xv53U5LmvHTxYQvtaPRWkh2vYyZacRvzoxl/kPTWjR+1g
-         CKWMEzH7p9jaV2esZRKs/YHzT8vpjnfbwKBC0IVdnZ1H9B9HW1MrsE3mojmJnR8AgbZv
-         /lVmECnqBfMOOsgZBIVopsmHzQmCbGHwLdRW2EjyckzpWL3US+Du5RvUyyJ4MrKCXMBG
-         1PC2BRrGDq4/527sbVay5MBmdov81cE2a91AwY+4BZReCdlRMzEyzWINjSRAP4Wf9kgE
-         H1TGdFUUCytILclOl548ehs0pRqavx1WdA5xhlQjwzHtHgyVcSZvkc99IFN8IN67D/96
-         2K1A==
+         :message-id:from:references:to:subject;
+        bh=Hu8eyTMfC3m7k7GeOGwSwFEP+0AjbHWxsOM+xJIf8AI=;
+        b=XlCD9wLzfiv97BtP7/zYUaVxDCMdqfa8sWCf/EIkIT50Nmbx6iRuacGVRbN+jqARgS
+         UmCPTATLUJzfoqSC8Toa5sUGHN0N+qJYTeqn20A16NHRfgq/HXSUwTKY3O3pOYzcLNRT
+         fyssO+HkJR42OLqMUT9QuKUumPoRlh5YVrZhWC2KJGp8YHLHmG3tD4v4qWef9XucsUYG
+         ksUwkFoLpPquSGQ9XEQt8w2QYSM5M5jIjPpJ0q0cnXXm6Gn8L4XznKiOS8+onvA+APS1
+         jgNMrC2FkoKnW46mHORcZc92pj+E3647xtL7u1SW43TEC1WP5PaCv81FW+H3Atca5HW7
+         SiYg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="G2NvXXP/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id de36si336973ejc.92.2021.04.27.09.37.55
+        by mx.google.com with ESMTPS id s12si19593258ioj.23.2021.04.27.07.33.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 27 Apr 2021 09:37:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 27 Apr 2021 07:33:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="G2NvXXP/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:36364 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:39076 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lbQig-00012O-Mb
-	for alex.bennee@linaro.org; Tue, 27 Apr 2021 12:37:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57494)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lbOm1-0001WX-Oi
+	for alex.bennee@linaro.org; Tue, 27 Apr 2021 10:33:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45594)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lbQhM-000084-Ua
- for qemu-devel@nongnu.org; Tue, 27 Apr 2021 12:36:34 -0400
-Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032]:53999)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lbQhH-0002TD-83
- for qemu-devel@nongnu.org; Tue, 27 Apr 2021 12:36:32 -0400
-Received: by mail-pj1-x1032.google.com with SMTP id p17so3335200pjz.3
- for <qemu-devel@nongnu.org>; Tue, 27 Apr 2021 09:36:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:references:from:message-id:date:user-agent:mime-version
- :in-reply-to:content-language:content-transfer-encoding;
- bh=HVbZI0B7gwo0bC+Yq+PhormUBPIYJKo1dipvxa++kXI=;
- b=G2NvXXP/ZB7Mj/qacxtyBqIFIYq+pEWUff6/H3pMvkKsWXbRmdoBl0/dh18ncdVIYc
- tnPjDzC1MDvnCOAAB2+dkQDkVVyJ4pw7yjySzzcIPS/CcjZwje5VJE+UISldpgqExy2k
- 9hYpVpamWnEabciWUIHP0fARMhDD7pQyvRHfmqW3lZuQNe95TN5PiR5fhZRGp6IBKwN5
- f01NXusmaFusg5jpfsChy6e9aTl2ZjfV6Dewq0Dn9UdGxNCXF1oBtugvbYt8SYgGuc9y
- /EnsaUWSP5wN7q0Eqk/rgq9c5Vm/cOB107UeYpc++mRvmKR6uF4H1gqxHg1wnjbNyjol
- W+iA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=HVbZI0B7gwo0bC+Yq+PhormUBPIYJKo1dipvxa++kXI=;
- b=RlJoh1qTd1tB/xZxvGe87iyQ94quwO1gRrhlOJbSSKl0W4n42EIX91YYhCHtmPQJnO
- ZmHQeI0cEQYJWRU+tJ27MxBXw4jTYgu96WE3YQ6GC/6hYr0gLw+tBdmsl9SXfSJRavVQ
- T+THJbtd4As3e37EV0YhakGxTa2/xQFjy14tgTYUefiZy7zWVwXOqTHxo5FD4AVI1vaB
- hfFA1JYjwZD7utkelZpxW3owt1dCIzmfEMFhp+XTeVR9bD3ypfmeRdoarung1kNisPr0
- Qo9t8Jn68fgccH2rKxIXyfJJJueNxaube9RnBNd58hoXLzm+q7JhyisBF2Y6p/Iw/Q/Z
- CdzQ==
-X-Gm-Message-State: AOAM533WN5xoUk2U2fAo0PKz5SUfwS8IGv6MdBI9R58BP1tTEaodztFf
- 4Pmem2zPHiFeVZxfjp+IQgIbnFKW74PuEQ==
-X-Received: by 2002:a17:90a:f3d3:: with SMTP id
- ha19mr251271pjb.166.1619541385141; 
- Tue, 27 Apr 2021 09:36:25 -0700 (PDT)
-Received: from [192.168.1.11] ([71.212.144.24])
- by smtp.gmail.com with ESMTPSA id 17sm250206pgd.34.2021.04.27.09.36.24
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 27 Apr 2021 09:36:24 -0700 (PDT)
-Subject: Re: [PATCH 02/13] target/arm: Share unallocated_encoding() and
- gen_exception_insn()
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20210413160759.5917-1-peter.maydell@linaro.org>
- <20210413160759.5917-3-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <aec6a7e6-ae1f-279c-a770-5bce4f4d6e0a@linaro.org>
-Date: Tue, 27 Apr 2021 09:36:23 -0700
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1lbOlQ-0001MM-OQ; Tue, 27 Apr 2021 10:32:36 -0400
+Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:46987)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1lbOlG-0005Wy-C5; Tue, 27 Apr 2021 10:32:36 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.146.239])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 2E53A9E03621;
+ Tue, 27 Apr 2021 16:32:16 +0200 (CEST)
+Received: from kaod.org (37.59.142.95) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2242.4; Tue, 27 Apr
+ 2021 16:32:15 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-95G0019ccebc01-a118-43b3-a2a9-97fb2e5fcb9d,
+ 671BB6CE1365292EF2314968BE3D1B8EC1165850) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Subject: Re: [PATCH 0/9] hw/block: m25p80: Fix the mess of dummy bytes needed
+ for fast read commands
+To: Francisco Iglesias <frasse.iglesias@gmail.com>, Alistair Francis
+ <alistair23@gmail.com>
+References: <20210118100557.GA11373@fralle-msi>
+ <CAEUhbmWT50o8OV_QAimhs5itWq3pFd6CTKup6PFpvSs2KYpf2w@mail.gmail.com>
+ <20210119130113.GA28306@fralle-msi>
+ <CAEUhbmUBAgF4D__jsfbE7yGd++5ZH3YOutTiOBOot52sNCV-eg@mail.gmail.com>
+ <20210121085006.GA10391@fralle-msi>
+ <CAEUhbmUh54vqXmtkjnTzk7Y6U+oZEbw-O3ode+CdKbfZ0Qs+9Q@mail.gmail.com>
+ <20210121141844.GC10391@fralle-msi>
+ <CAEUhbmWT9QPa-EFRdQme2L9hiUJSYWZWfmzQTShQN86WMW93ew@mail.gmail.com>
+ <CAEUhbmXwq-7mwbuwp_29iXDT4AZYTBE4PFDxhaHoZkrCRumCaw@mail.gmail.com>
+ <CAKmqyKMkgR6p7G3MscSvVHHZuYF2p4piq9W1o+Ye9SSuOqszOA@mail.gmail.com>
+ <20210427085433.GA9656@fralle-msi>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <1fe8a69c-df7b-c924-69c6-c9db905f8f95@kaod.org>
+Date: Tue, 27 Apr 2021 16:32:14 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.1
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <20210413160759.5917-3-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <20210427085433.GA9656@fralle-msi>
+Content-Type: text/plain; charset="utf-8"
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1032;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1032.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.95]
+X-ClientProxiedBy: DAG4EX2.mxp5.local (172.16.2.32) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 86d792aa-9505-43fd-b09f-d0324d5efd67
+X-Ovh-Tracer-Id: 2337368207548910538
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduledrvddvtddgjeekucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepgfefledtieeuheefkeduvdejhfeiteejhfdvleefhfejteegfeejiedtjeefvdfgnecuffhomhgrihhnpeigihhlihhngidrtghomhdpkhgvrhhnvghlrdhorhhgnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdelheenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepfhhrrghsshgvrdhighhlvghsihgrshesghhmrghilhdrtghomh
+Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo529.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +E9lv2um6Lkm
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Qemu-block <qemu-block@nongnu.org>, Andrew Jeffery <andrew@aj.id.au>,
+ Bin Meng <bin.meng@windriver.com>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ Tyrone Ting <kfting@nuvoton.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Alistair Francis <Alistair.Francis@wdc.com>, Joel Stanley <joel@jms.id.au>,
+ Joe Komlodi <komlodi@xilinx.com>, Havard Skinnemoen <hskinnemoen@google.com>,
+ Bin Meng <bmeng.cn@gmail.com>, Max Reitz <mreitz@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 5DTPiZ7xuMnj
 
-On 4/13/21 9:07 AM, Peter Maydell wrote:
-> The unallocated_encoding() function is the same in both
-> translate-a64.c and translate.c; make the translate.c function global
-> and drop the translate-a64.c version.  To do this we need to also
-> share gen_exception_insn(), which currently exists in two slightly
-> different versions for A32 and A64: merge those into a single
-> function that can work for both.
+Hello,
+
+On 4/27/21 10:54 AM, Francisco Iglesias wrote:
+> On [2021 Apr 27] Tue 15:56:10, Alistair Francis wrote:
+>> On Fri, Apr 23, 2021 at 4:46 PM Bin Meng <bmeng.cn@gmail.com> wrote:
+>>>
+>>> On Mon, Feb 8, 2021 at 10:41 PM Bin Meng <bmeng.cn@gmail.com> wrote:
+>>>>
+>>>> On Thu, Jan 21, 2021 at 10:18 PM Francisco Iglesias
+>>>> <frasse.iglesias@gmail.com> wrote:
+>>>>>
+>>>>> Hi Bin,
+>>>>>
+>>>>> On [2021 Jan 21] Thu 16:59:51, Bin Meng wrote:
+>>>>>> Hi Francisco,
+>>>>>>
+>>>>>> On Thu, Jan 21, 2021 at 4:50 PM Francisco Iglesias
+>>>>>> <frasse.iglesias@gmail.com> wrote:
+>>>>>>>
+>>>>>>> Dear Bin,
+>>>>>>>
+>>>>>>> On [2021 Jan 20] Wed 22:20:25, Bin Meng wrote:
+>>>>>>>> Hi Francisco,
+>>>>>>>>
+>>>>>>>> On Tue, Jan 19, 2021 at 9:01 PM Francisco Iglesias
+>>>>>>>> <frasse.iglesias@gmail.com> wrote:
+>>>>>>>>>
+>>>>>>>>> Hi Bin,
+>>>>>>>>>
+>>>>>>>>> On [2021 Jan 18] Mon 20:32:19, Bin Meng wrote:
+>>>>>>>>>> Hi Francisco,
+>>>>>>>>>>
+>>>>>>>>>> On Mon, Jan 18, 2021 at 6:06 PM Francisco Iglesias
+>>>>>>>>>> <frasse.iglesias@gmail.com> wrote:
+>>>>>>>>>>>
+>>>>>>>>>>> Hi Bin,
+>>>>>>>>>>>
+>>>>>>>>>>> On [2021 Jan 15] Fri 22:38:18, Bin Meng wrote:
+>>>>>>>>>>>> Hi Francisco,
+>>>>>>>>>>>>
+>>>>>>>>>>>> On Fri, Jan 15, 2021 at 8:26 PM Francisco Iglesias
+>>>>>>>>>>>> <frasse.iglesias@gmail.com> wrote:
+>>>>>>>>>>>>>
+>>>>>>>>>>>>> Hi Bin,
+>>>>>>>>>>>>>
+>>>>>>>>>>>>> On [2021 Jan 15] Fri 10:07:52, Bin Meng wrote:
+>>>>>>>>>>>>>> Hi Francisco,
+>>>>>>>>>>>>>>
+>>>>>>>>>>>>>> On Fri, Jan 15, 2021 at 2:13 AM Francisco Iglesias
+>>>>>>>>>>>>>> <frasse.iglesias@gmail.com> wrote:
+>>>>>>>>>>>>>>>
+>>>>>>>>>>>>>>> Hi Bin,
+>>>>>>>>>>>>>>>
+>>>>>>>>>>>>>>> On [2021 Jan 14] Thu 23:08:53, Bin Meng wrote:
+>>>>>>>>>>>>>>>> From: Bin Meng <bin.meng@windriver.com>
+>>>>>>>>>>>>>>>>
+>>>>>>>>>>>>>>>> The m25p80 model uses s->needed_bytes to indicate how many follow-up
+>>>>>>>>>>>>>>>> bytes are expected to be received after it receives a command. For
+>>>>>>>>>>>>>>>> example, depending on the address mode, either 3-byte address or
+>>>>>>>>>>>>>>>> 4-byte address is needed.
+>>>>>>>>>>>>>>>>
+>>>>>>>>>>>>>>>> For fast read family commands, some dummy cycles are required after
+>>>>>>>>>>>>>>>> sending the address bytes, and the dummy cycles need to be counted
+>>>>>>>>>>>>>>>> in s->needed_bytes. This is where the mess began.
+>>>>>>>>>>>>>>>>
+>>>>>>>>>>>>>>>> As the variable name (needed_bytes) indicates, the unit is in byte.
+>>>>>>>>>>>>>>>> It is not in bit, or cycle. However for some reason the model has
+>>>>>>>>>>>>>>>> been using the number of dummy cycles for s->needed_bytes. The right
+>>>>>>>>>>>>>>>> approach is to convert the number of dummy cycles to bytes based on
+>>>>>>>>>>>>>>>> the SPI protocol, for example, 6 dummy cycles for the Fast Read Quad
+>>>>>>>>>>>>>>>> I/O (EBh) should be converted to 3 bytes per the formula (6 * 4 / 8).
+>>>>>>>>>>>>>>>
+>>>>>>>>>>>>>>> While not being the original implementor I must assume that above solution was
+>>>>>>>>>>>>>>> considered but not chosen by the developers due to it is inaccuracy (it
+>>>>>>>>>>>>>>> wouldn't be possible to model exacly 6 dummy cycles, only a multiple of 8,
+>>>>>>>>>>>>>>> meaning that if the controller is wrongly programmed to generate 7 the error
+>>>>>>>>>>>>>>> wouldn't be caught and the controller will still be considered "correct"). Now
+>>>>>>>>>>>>>>> that we have this detail in the implementation I'm in favor of keeping it, this
+>>>>>>>>>>>>>>> also because the detail is already in use for catching exactly above error.
+>>>>>>>>>>>>>>>
+>>>>>>>>>>>>>>
+>>>>>>>>>>>>>> I found no clue from the commit message that my proposed solution here
+>>>>>>>>>>>>>> was ever considered, otherwise all SPI controller models supporting
+>>>>>>>>>>>>>> software generation should have been found out seriously broken long
+>>>>>>>>>>>>>> time ago!
+>>>>>>>>>>>>>
+>>>>>>>>>>>>>
+>>>>>>>>>>>>> The controllers you are referring to might lack support for commands requiring
+>>>>>>>>>>>>> dummy clock cycles but I really hope they work with the other commands? If so I
+>>>>>>>>>>>>
+>>>>>>>>>>>> I am not sure why you view dummy clock cycles as something special
+>>>>>>>>>>>> that needs some special support from the SPI controller. For the case
+>>>>>>>>>>>> 1 controller, it's nothing special from the controller perspective,
+>>>>>>>>>>>> just like sending out a command, or address bytes, or data. The
+>>>>>>>>>>>> controller just shifts data bit by bit from its tx fifo and that's it.
+>>>>>>>>>>>> In the Xilinx GQSPI controller case, the dummy cycles can either be
+>>>>>>>>>>>> sent via a regular data (the case 1 controller) in the tx fifo, or
+>>>>>>>>>>>> automatically generated (case 2 controller) by the hardware.
+>>>>>>>>>>>
+>>>>>>>>>>> Ok, I'll try to explain my view point a little differently. For that we also
+>>>>>>>>>>> need to keep in mind that QEMU models HW, and any binary that runs on a HW
+>>>>>>>>>>> board supported in QEMU should ideally run on that board inside QEMU aswell
+>>>>>>>>>>> (this can be a bare metal application equaly well as a modified u-boot/Linux
+>>>>>>>>>>> using SPI commands with a non multiple of 8 number of dummy clock cycles).
+>>>>>>>>>>>
+>>>>>>>>>>> Once functionality has been introduced into QEMU it is not easy to know which
+>>>>>>>>>>> intentional or untentional features provided by the functionality are being
+>>>>>>>>>>> used by users. One of the (perhaps not well known) features I'm aware of that
+>>>>>>>>>>> is in use and is provided by the accurate dummy clock cycle modeling inside
+>>>>>>>>>>> m25p80 is the be ability to test drivers accurately regarding the dummy clock
+>>>>>>>>>>> cycles (even when using commands with a non-multiple of 8 number of dummy clock
+>>>>>>>>>>> cycles), but there might be others aswell. So by removing this functionality
+>>>>>>>>>>> above use case will brake, this since those test will not be reliable.
+>>>>>>>>>>> Furthermore, since users tend to be creative it is not possible to know if
+>>>>>>>>>>> there are other use cases that will be affected. This means that in case [1]
+>>>>>>>>>>> needs to be followed the safe path is to add functionality instead of removing.
+>>>>>>>>>>> Luckily it also easier in this case, see below.
+>>>>>>>>>>
+>>>>>>>>>> I understand there might be users other than U-Boot/Linux that use an
+>>>>>>>>>> odd number of dummy bits (not multiple of 8). If your concern was
+>>>>>>>>>> about model behavior changes, sure I can update
+>>>>>>>>>> qemu/docs/system/deprecated.rst to mention that some flashes in the
+>>>>>>>>>> m25p80 model now implement dummy cycles as bytes.
+>>>>>>>>>
+>>>>>>>>> Yes, something like that. My concern is that since this functionality has been
+>>>>>>>>> in tree for while, users have found known or unknown features that got
+>>>>>>>>> introduced by it. By removing the functionality (and the known/uknown features)
+>>>>>>>>> we are riscing to brake our user's use cases (currently I'm aware of one
+>>>>>>>>> feature/use case but it is not unlikely that there are more). [1] states that
+>>>>>>>>> "In general features are intended to be supported indefinitely once introduced
+>>>>>>>>> into QEMU", to me that makes very much sense because the opposite would mean
+>>>>>>>>> that we were not reliable. So in case [1] needs to be honored it looks to be
+>>>>>>>>> safer to add functionality instead of removing (and riscing the removal of use
+>>>>>>>>> cases/features). Luckily I still believe in this case that it will be easier to
+>>>>>>>>> go forward (even if I also agree on what you are saying below about what I
+>>>>>>>>> proposed).
+>>>>>>>>>
+>>>>>>>>
+>>>>>>>> Even if the implementation is buggy and we need to keep the buggy
+>>>>>>>> implementation forever? I think that's why
+>>>>>>>> qemu/docs/system/deprecated.rst was created for deprecating such
+>>>>>>>> feature.
+>>>>>>>
+>>>>>>> With the RFC I posted all commands in m25p80 are working for both the case 1
+>>>>>>> controller (using a txfifo) and the case 2 controller (no txfifo, as GQSPI).
+>>>>>>> Because of this, I, with all respect, will have to disagree that this is buggy.
+>>>>>>
+>>>>>> Well, the existing m25p80 implementation that uses dummy cycle
+>>>>>> accuracy for those flashes prevents all SPI controllers that use tx
+>>>>>> fifo to work with those flashes. Hence it is buggy.
+>>>>>>
+>>>>>>>
+>>>>>>>>
+>>>>>>>>>>
+>>>>>>>>>>>>
+>>>>>>>>>>>>> don't think it is fair to call them 'seriously broken' (and else we should
+>>>>>>>>>>>>> probably let the maintainers know about it). Most likely the lack of support
+>>>>>>>>>>>>
+>>>>>>>>>>>> I called it "seriously broken" because current implementation only
+>>>>>>>>>>>> considered one type of SPI controllers while completely ignoring the
+>>>>>>>>>>>> other type.
+>>>>>>>>>>>
+>>>>>>>>>>> If we change view and see this from the perspective of m25p80, it models the
+>>>>>>>>>>> commands a certain way and provides an API that the SPI controllers need to
+>>>>>>>>>>> implement for interacting with it. It is true that there are SPI controllers
+>>>>>>>>>>> referred to above that do not support the portion of that API that corresponds
+>>>>>>>>>>> to commands with dummy clock cycles, but I don't think it is true that this is
+>>>>>>>>>>> broken since there is also one SPI controller that has a working implementation
+>>>>>>>>>>> of m25p80's full API also when transfering through a tx fifo (use case 1). But
+>>>>>>>>>>> as mentioned above, by doing a minor extension and improvement to m25p80's API
+>>>>>>>>>>> and allow for toggling the accuracy from dummy clock cycles to dummy bytes [1]
+>>>>>>>>>>> will still be honored as in the same time making it possible to have full
+>>>>>>>>>>> support for the API in the SPI controllers that currently do not (please reread
+>>>>>>>>>>> the proposal in my previous reply that attempts to do this). I myself see this
+>>>>>>>>>>> as win/win situation, also because no controller should need modifications.
+>>>>>>>>>>>
+>>>>>>>>>>
+>>>>>>>>>> I am afraid your proposal does not work. Your proposed new device
+>>>>>>>>>> property 'model_dummy_bytes' to select to convert the accurate dummy
+>>>>>>>>>> clock cycle count to dummy bytes inside m25p80, is hard to justify as
+>>>>>>>>>> a property to the flash itself, as the behavior is tightly coupled to
+>>>>>>>>>> how the SPI controller works.
+>>>>>>>>>
+>>>>>>>>> I agree on above. I decided though that instead of posting sample code in here
+>>>>>>>>> I'll post an RFC with hopefully an improved proposal. I'll cc you. About below,
+>>>>>>>>> Xilinx ZynqMP GQSPI should not need any modication in a first step.
+>>>>>>>>>
+>>>>>>>>
+>>>>>>>> Wait, (see below)
+>>>>>>>>
+>>>>>>>>>>
+>>>>>>>>>> Please take a look at the Xilinx GQSPI controller, which supports both
+>>>>>>>>>> use cases, that the dummy cycles can be transferred via tx fifo, or
+>>>>>>>>>> generated by the controller automatically. Please read the example
+>>>>>>>>>> given in:
+>>>>>>>>>>
+>>>>>>>>>>     table 24‐22, an example of Generic FIFO Contents for Quad I/O Read
+>>>>>>>>>> Command (EBh)
+>>>>>>>>>>
+>>>>>>>>>> in https://www.xilinx.com/support/documentation/user_guides/ug1085-zynq-ultrascale-trm.pdf
+>>>>>>>>>>
+>>>>>>>>>> If you choose to set the m25p80 device property 'model_dummy_bytes' to
+>>>>>>>>>> true when working with the Xilinx GQSPI controller, you are bound to
+>>>>>>>>>> only allow guest software to use tx fifo to transfer the dummy cycles,
+>>>>>>>>>> and this is wrong.
+>>>>>>>>>>
+>>>>>>>>
+>>>>>>>> You missed this part. I looked at your RFC, and as I mentioned above
+>>>>>>>> your proposal cannot support the complicated controller like Xilinx
+>>>>>>>> GQSPI. Please read the example of table 24-22. With your RFC, you
+>>>>>>>> mandate guest software's GQSPI driver to only use hardware dummy cycle
+>>>>>>>> generation, which is wrong.
+>>>>>>>>
+>>>>>>>
+>>>>>>> First, thank you very much for looking into the RFC series, very much
+>>>>>>> appreciated. Secondly, about above, the GQSPI model in QEMU transfers from 2
+>>>>>>> locations in the file, in 1 location the transfer referred to above is done, in
+>>>>>>> another location the transfer through the txfifo is done. The location where
+>>>>>>> transfer referred to above is done will not need any modifications (and will
+>>>>>>> thus work equally well as it does currently).
+>>>>>>
+>>>>>> Please explain this a little bit. How does your RFC series handle
+>>>>>> cases as described in table 24-22, where the 6 dummy cycles are split
+>>>>>> into 2 transfers, with one transfer using tx fifo, and the other one
+>>>>>> using hardware dummy cycle generation?
+>>>>>
+>>>>> Sorry, I missunderstod. You are right, that won't work.
+>>>>
+>>>> +Edgar E. Iglesias
+>>>>
+>>>> So it looks by far the only way to implement dummy cycles correctly to
+>>>> work with all SPI controller models is what I proposed here in this
+>>>> patch series.
+>>>>
+>>>> Maintainers are quite silent, so I would like to hear your thoughts.
+>>>>
+>>>> @Alistair Francis @Philippe Mathieu-Daudé @Peter Maydell would you
+>>>> please share your thoughts since you are the one who reviewed the
+>>>> existing dummy implementation (based on commits history)
+>>
+>> I agree with Edgar, in that Francisco and Bin know this better than me
+>> and that modelling things in cycles is a pain.
 > 
-> This will be useful for splitting up translate.c, which will require
-> unallocated_encoding() to no longer be file-local.  It's also
-> hopefully less confusing to have only one version of the function
-> rather than two.
+> Hi Alistair,
 > 
-> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
-> ---
->   target/arm/translate-a64.h |  2 --
->   target/arm/translate.h     |  3 +++
->   target/arm/translate-a64.c | 15 ---------------
->   target/arm/translate.c     | 14 +++++++++-----
->   4 files changed, 12 insertions(+), 22 deletions(-)
+>>
+>> As Bin points out it seems like currently we should be modelling bytes
+>> (from the variable name) so it makes sense to keep it in bytes. I
+>> would be in favour of this series in that case. Do we know what use
+>> cases this will break? I know it's hard to answer but I don't think
+>> there are too many SSI users in QEMU so it might not be too hard to
+>> test most of the possible use cases.
+> 
+> The use case I'm aware of is regression testing of drivers. Ex: if a
+> driver is using 10 dummy clock cycles with the commands and a patch
+> accidentaly changes the driver to use 11 dummy clock cycles QEMU currently
+> finds the problem, that won't be possible with this series. It's difficult
+> to say but it is not impossible there are other use cases also.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-r~
+It was breaking the Aspeed machines :
+
+  https://lore.kernel.org/qemu-devel/78a12882-1303-dd6d-6619-96c5e2cbf531@kaod.org/
+
+QEMU 6.1 should have acceptance tests that will help in detecting
+regressions in this area.
+
+Thanks,
+
+C.
+ 
+
+
+
+> 
+> More importantly IMO though is that the current use cases can be keept
+> while still providing support for commands with dummy clock cycles into
+> the QEMU SPI controllers lacking at the moment.
+> 
+> (If I recall correctly this series might also have another issue regarding
+> the GQSPI SPI mode configuration, with that it is possible transmit 8
+> dummy clock cycles as 1 data byte, 2 data bytes or 4 data bytes, so I
+> think some form of calculation might be needed inside m25p80).
+> 
+> Best regards,
+> Francisco
+> 
+> 
+>>
+>> Alistair
+>>
+>>>
+>>> Hello maintainers,
+>>>
+>>> We apparently missed the 6.0 window to address this mess of the m25p80
+>>> model. Please provide your inputs on this before I start working on
+>>> the v2.
+>>>
+>>> Regards,
+>>> Bin
+>>>
+

@@ -1,104 +1,92 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp4617424lfb;
-        Tue, 27 Apr 2021 02:39:16 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxXUBzZwvx0WctHVPRI+6biSi1EdreDMegDfYwQvv+jRG5yGD2s+Y7DaB1Q/u2YHipOE8Wv
-X-Received: by 2002:ab0:2a8d:: with SMTP id h13mr16544822uar.24.1619516356687;
-        Tue, 27 Apr 2021 02:39:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619516356; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp4816698lfb;
+        Tue, 27 Apr 2021 07:06:06 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxn94ZvMWecWFvGM/YWOpeTBfO0J0PQRZDjt/HWMVUIP5wg44PZJi1ptEbPWIW/1cF/yQqA
+X-Received: by 2002:a05:6512:3583:: with SMTP id m3mr16549121lfr.329.1619532366871;
+        Tue, 27 Apr 2021 07:06:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619532366; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZoWjukeYzXoUFqwPapjDIrME8GCot/zlNZ4AOzJa7wubZLOq9Mbgg1uXiOKNgGXv6J
-         unv4DdsAytlsaCs2f83O5VEwUjJt5Te9Tb6aG/v94HVo/r2GW2sGGIuDDNHc3ZQ0jW5E
-         3HQ+4BrdVz2PzZUHDzX2Wr14zgRPCc5P7v+wcIJIRnx4j+o5lCggzHyBwCSB56qQLRpU
-         SbHH3w+crNQ/YoheJpuCk9JVwnMK4HDAsZ+nLlB9XLhVVSxb5FN47xvrPFU8uCUvRNSO
-         9VEYTbIj3EK+mRP8ee5p9ngIUx7blg7tWG4kolYnJjEWPtB5uWbFJwb9ZdKuCj23qomw
-         D6Pg==
+        b=1E3EWA/raWgsp4259drrBrs6842WOsIvSTSdle25a+COlWXJDqGaYf+vBtuVAnaHgs
+         p7SJubMr21Ep3XLVB+p8eTS0mVMFD3MHXDmiKbsZQirj66dY5PyxKgp+9NAipJTACfSk
+         LkyP+JlV05re8XXCmt97VLEW5PHHelWVGodbGkTrT6Z9lRD+zyT1HH89YGYhAzqTuZSg
+         kkLGkAJ84IQZp2KLf3nH4bTLNorj7JP2PchljiAlPTkKbEy/N2WIP3kItzz6TrtBeAoW
+         BYdTtaymoa5N0sw5qyI+c3XskBWOSGP68vAVHo3FurMIigDRhNYdzu1Ho5VJjQgo8YJ1
+         FaHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=BYG1qizbeqBNYv12CSgZVkDlBFgKN/kaa4esTB+OyoQ=;
-        b=r3TLn4GE/PJw0FVTZhXh8mxaiW7cANh90zQ0z89uz9h/fxSfKr1cWZsPUHjxg6XzzT
-         DG4TeyFRE8MP5v1RIptCqQABNxt6pQdDa4KXB8iCl0dEZucwGpDnWKXiRlLnSL3P+sOc
-         bdCkOWGKvTTX3dr41K38xbq0nhTLCvrWf2r4jL+XolTkmNlovS3Su10qV73R7dvGg5ij
-         ZTbZQr+ZYbuDM4qjPxcnhZN4c7rslbzawaCu9kWH0IN0kONJ6MxDApAl7XxOW/xBoBMj
-         tqAeEce8eUbi1k0C4WtocdbSe7mExLoEqS0XlCixjCplwCG+r1ofZZqrx2BCjk+9Bni2
-         GjNQ==
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=eEOEX5jd2FZ2J6agfFdwNtSLAwz2W8dl7KNAbPJO7xM=;
+        b=zittzpP7xJ+Gra4PE2Gstm3x+Jb+RaRl606rAOQdOdRpaVbNYfmR5vWwhQ2zt8mlWH
+         cFUjQXEr22U2asVEDtkdKZ9uFy85Xpuxu2SxkX8e/YwUlm92fqV7M3L36LMKEPyf7c5n
+         cZ9gXj/HW+rLtD3C6wQ1FKqtNvXoAmauWenfi+8StKzwWMAbUKesPi+JqCeorDY+bBmo
+         vbkKA7x7dCLKB91Pmc5uE5WbfQxh2C9SFNoL5zr699nahGkdKkWwP9LbDHdX4oXp8Rfw
+         TaFiEgo3b4+rBeCYo8aBjBGKfBDwYtrZwLjXnJN9uJlPnmseM8Dwhf+2MGlimeGJQr1B
+         5kZg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=br9XcAjY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v7si9078862uak.216.2021.04.27.02.39.16
+        by mx.google.com with ESMTPS id u27si20050915lfq.259.2021.04.27.07.06.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 27 Apr 2021 02:39:16 -0700 (PDT)
+        Tue, 27 Apr 2021 07:06:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=br9XcAjY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:32980 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Received: from localhost ([::1]:60430 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lbKBY-0001rf-1D
-	for alex.bennee@linaro.org; Tue, 27 Apr 2021 05:39:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54538)
+	id 1lbOLj-0002Rd-PY
+	for alex.bennee@linaro.org; Tue, 27 Apr 2021 10:06:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35940)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lbKBL-0001pu-Gz
- for qemu-arm@nongnu.org; Tue, 27 Apr 2021 05:39:03 -0400
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535]:42570)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lbKBJ-0001Pv-8n
- for qemu-arm@nongnu.org; Tue, 27 Apr 2021 05:39:03 -0400
-Received: by mail-ed1-x535.google.com with SMTP id j28so5133662edy.9
- for <qemu-arm@nongnu.org>; Tue, 27 Apr 2021 02:39:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=BYG1qizbeqBNYv12CSgZVkDlBFgKN/kaa4esTB+OyoQ=;
- b=br9XcAjY9vZ3lG/lDh9FIbroCOgHWELK1bbdli+9P8YvbACYI8WQqOLiFwQJ4ftECS
- QuXssKIn0lM0qFSRKwAMxCI3+RYbouCgWzoBb71DyF+YxZfoK+3wtnCpTIQJY8X8dBtP
- ziqkuv2ztBx1eHfW/6ttry5dXAORdXKmwFgQPBDzI3zm7NTescxVRDckoZQ/teEiStlo
- DYGekNLa9mYOXHrLsouejQPftkjlqFpzlybu9rigr5JNzKQm++4/pvcXHRtPnHIazmkA
- EI/oD3L1eOHmIWh+DLY6/iq33WVofRcqwUFYJ+TqqxaH9TFFvVvEal7Z9poG7cQ0h4s5
- JvaQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=BYG1qizbeqBNYv12CSgZVkDlBFgKN/kaa4esTB+OyoQ=;
- b=CLrmo1hhA7fL4otaey/Kn9aOD7slqlesD1lXEmHOo5WP+8IBjx6yiYYmFvP1K8Fbsw
- pr7wdIsrcBpVwF1CFyyss0M0WQPMtXCeYsX/JA3pGmv5DwTXsnsnvXOMcjtMfrcRwxu2
- AG5u9mm0tachwqhkk6jyZixDbeOadPR73Wc0UfP6AuZ3dE3WCu4ouEFpY8ZpPvE3jU1v
- IDq1s5S2qLi5K4WWBxYseVRyryQDOzuYAA2Wp80TZ1vqXIVvIDyJOBhhUpJMGIIvOdki
- sTkNhqXceaYKX7K9jKUIh++ydo+UOIn5Hde8rGcmIpCh+g6KFyYIYKuPnia0neQc0Q/t
- bcDg==
-X-Gm-Message-State: AOAM532+YiumXGaq5Gu2AKG0gLKqh0GL8oVVQb8NHFVNsbtFFTw23NQH
- Sdiz9XPPyIH6hC76SufYgMc8vMP1H4n1/VG1ZW2A6w==
-X-Received: by 2002:a05:6402:c:: with SMTP id
- d12mr3233495edu.100.1619516339568; 
- Tue, 27 Apr 2021 02:38:59 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <jiangkunkun@huawei.com>)
+ id 1lbOLI-0002PH-Nh; Tue, 27 Apr 2021 10:05:36 -0400
+Received: from szxga01-in.huawei.com ([45.249.212.187]:2504)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jiangkunkun@huawei.com>)
+ id 1lbOLE-0006CM-5A; Tue, 27 Apr 2021 10:05:36 -0400
+Received: from dggeml709-chm.china.huawei.com (unknown [172.30.72.56])
+ by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4FV3Mq5rBKzWcHm;
+ Tue, 27 Apr 2021 22:01:27 +0800 (CST)
+Received: from dggema765-chm.china.huawei.com (10.1.198.207) by
+ dggeml709-chm.china.huawei.com (10.3.17.139) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.2176.2; Tue, 27 Apr 2021 22:05:23 +0800
+Received: from [10.174.185.210] (10.174.185.210) by
+ dggema765-chm.china.huawei.com (10.1.198.207) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.2176.2; Tue, 27 Apr 2021 22:05:22 +0800
+Subject: Re: [RFC v9 14/29] vfio: Introduce helpers to DMA map/unmap a RAM
+ section
+To: Eric Auger <eric.auger@redhat.com>, <eric.auger.pro@gmail.com>,
+ <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <alex.williamson@redhat.com>
+References: <20210411120912.15770-1-eric.auger@redhat.com>
+ <20210411120912.15770-15-eric.auger@redhat.com>
+From: Kunkun Jiang <jiangkunkun@huawei.com>
+Message-ID: <7e3defd3-50b5-c2df-77a7-9fa85fc3a448@huawei.com>
+Date: Tue, 27 Apr 2021 22:05:11 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-References: <cover.1617281290.git.haibo.xu@linaro.org>
- <37df1b1872f15086dd1d066e53dc1eedaf114051.1617281290.git.haibo.xu@linaro.org>
- <20210427092423.q3ktw4kkd5xhapad@gator.home>
-In-Reply-To: <20210427092423.q3ktw4kkd5xhapad@gator.home>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 27 Apr 2021 10:38:00 +0100
-Message-ID: <CAFEAcA9+VpFp70rwZ5rWEQX9TxPH558jCiSU6Z=qPnUfieSukA@mail.gmail.com>
-Subject: Re: [PATCH RESEND v2 5/6] target/arm/cpu: Enable 'el2' to work with
- host/max cpu
-To: Andrew Jones <drjones@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::535;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x535.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+In-Reply-To: <20210411120912.15770-15-eric.auger@redhat.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+Content-Language: en-US
+X-Originating-IP: [10.174.185.210]
+X-ClientProxiedBy: dggeme718-chm.china.huawei.com (10.1.199.114) To
+ dggema765-chm.china.huawei.com (10.1.198.207)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.187;
+ envelope-from=jiangkunkun@huawei.com; helo=szxga01-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -112,48 +100,329 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Andrea Bolognani <abologna@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
- Haibo Xu <haibo.xu@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: peter.maydell@linaro.org, jacob.jun.pan@linux.intel.com,
+ jean-philippe@linaro.org, tn@semihalf.com, chenxiang66@hisilicon.com,
+ shameerali.kolothum.thodi@huawei.com, nicoleotsuka@gmail.com,
+ vivek.gautam@arm.com, vdumpa@nvidia.com, yi.l.liu@intel.com, peterx@redhat.com,
+ zhangfei.gao@gmail.com, yuzenghui@huawei.com, zhukeqian1@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PhoSgaZCVqKP
+X-TUID: 3ITczMCvSRdE
 
-On Tue, 27 Apr 2021 at 10:24, Andrew Jones <drjones@redhat.com> wrote:
-> I feel like there are way too many ways to track this feature now. If I
-> didn't lose count we have
+Hi Eric,
+
+On 2021/4/11 20:08, Eric Auger wrote:
+> Let's introduce two helpers that allow to DMA map/unmap a RAM
+> section. Those helpers will be called for nested stage setup in
+> another call site. Also the vfio_listener_region_add/del()
+> structure may be clearer.
 >
->  1) cpu->has_el2
->  2) cpu->env & ARM_FEATURE_EL2
->  3) (for mach-virt) vms->virt
->  4) possibly (and probably should) some ID register bits
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 >
-> I realize the first three are already in use for TCG, but I'm guessing
-> we'll want to clean those up. What's the plan going forward? I presume
-> it'll be (4), but maybe something like (1) and/or (3) will stick around
-> for convenience. I'm pretty sure we want to avoid (2).
+> ---
+>
+> v8 -> v9
+> - rebase on top of
+>    1eb7f642750c ("vfio: Support host translation granule size")
+>
+> v5 -> v6:
+> - add Error **
+> ---
+>   hw/vfio/common.c     | 199 +++++++++++++++++++++++++------------------
+>   hw/vfio/trace-events |   4 +-
+>   2 files changed, 119 insertions(+), 84 deletions(-)
+>
+> diff --git a/hw/vfio/common.c b/hw/vfio/common.c
+> index a8f835328e..0cd7ef2139 100644
+> --- a/hw/vfio/common.c
+> +++ b/hw/vfio/common.c
+> @@ -662,13 +662,126 @@ hostwin_from_range(VFIOContainer *container, hwaddr iova, hwaddr end)
+>       return NULL;
+>   }
+>   
+> +static int vfio_dma_map_ram_section(VFIOContainer *container,
+> +                                    MemoryRegionSection *section, Error **err)
+> +{
+> +    VFIOHostDMAWindow *hostwin;
+> +    Int128 llend, llsize;
+> +    hwaddr iova, end;
+> +    void *vaddr;
+> +    int ret;
+> +
+> +    assert(memory_region_is_ram(section->mr));
+> +
+> +    iova = TARGET_PAGE_ALIGN(section->offset_within_address_space);
+> +    llend = int128_make64(section->offset_within_address_space);
+> +    llend = int128_add(llend, section->size);
+> +    llend = int128_and(llend, int128_exts64(TARGET_PAGE_MASK));
+> +    end = int128_get64(int128_sub(llend, int128_one()));
+> +
+> +    vaddr = memory_region_get_ram_ptr(section->mr) +
+> +            section->offset_within_region +
+> +            (iova - section->offset_within_address_space);
+> +
+> +    hostwin = hostwin_from_range(container, iova, end);
+> +    if (!hostwin) {
+> +        error_setg(err, "Container %p can't map guest IOVA region"
+> +                   " 0x%"HWADDR_PRIx"..0x%"HWADDR_PRIx, container, iova, end);
+> +        return -EFAULT;
+> +    }
+> +
+> +    trace_vfio_dma_map_ram(iova, end, vaddr);
+> +
+> +    llsize = int128_sub(llend, int128_make64(iova));
+> +
+> +    if (memory_region_is_ram_device(section->mr)) {
+> +        hwaddr pgmask = (1ULL << ctz64(hostwin->iova_pgsizes)) - 1;
+> +
+> +        if ((iova & pgmask) || (int128_get64(llsize) & pgmask)) {
+> +            trace_vfio_listener_region_add_no_dma_map(
+> +                memory_region_name(section->mr),
+> +                section->offset_within_address_space,
+> +                int128_getlo(section->size),
+> +                pgmask + 1);
+> +            return 0;
+> +        }
+> +    }
+> +
+> +    ret = vfio_dma_map(container, iova, int128_get64(llsize),
+> +                       vaddr, section->readonly);
+> +    if (ret) {
+> +        error_setg(err, "vfio_dma_map(%p, 0x%"HWADDR_PRIx", "
+> +                   "0x%"HWADDR_PRIx", %p) = %d (%m)",
+> +                   container, iova, int128_get64(llsize), vaddr, ret);
+> +        if (memory_region_is_ram_device(section->mr)) {
+> +            /* Allow unexpected mappings not to be fatal for RAM devices */
+> +            error_report_err(*err);
+> +            return 0;
+> +        }
+> +        return ret;
+> +    }
+> +    return 0;
+> +}
+> +
+> +static void vfio_dma_unmap_ram_section(VFIOContainer *container,
+> +                                       MemoryRegionSection *section)
+> +{
+> +    Int128 llend, llsize;
+> +    hwaddr iova, end;
+> +    bool try_unmap = true;
+> +    int ret;
+> +
+> +    iova = REAL_HOST_PAGE_ALIGN(section->offset_within_address_space);
+> +    llend = int128_make64(section->offset_within_address_space);
+> +    llend = int128_add(llend, section->size);
+> +    llend = int128_and(llend, int128_exts64(qemu_real_host_page_mask));
+> +
+> +    if (int128_ge(int128_make64(iova), llend)) {
+> +        return;
+> +    }
+> +    end = int128_get64(int128_sub(llend, int128_one()));
+> +
+> +    llsize = int128_sub(llend, int128_make64(iova));
+> +
+> +    trace_vfio_dma_unmap_ram(iova, end);
+> +
+> +    if (memory_region_is_ram_device(section->mr)) {
+> +        hwaddr pgmask;
+> +        VFIOHostDMAWindow *hostwin = hostwin_from_range(container, iova, end);
+> +
+> +        assert(hostwin); /* or region_add() would have failed */
+> +
+> +        pgmask = (1ULL << ctz64(hostwin->iova_pgsizes)) - 1;
+> +        try_unmap = !((iova & pgmask) || (int128_get64(llsize) & pgmask));
+> +    }
+> +
+> +    if (try_unmap) {
+> +        if (int128_eq(llsize, int128_2_64())) {
+> +            /* The unmap ioctl doesn't accept a full 64-bit span. */
+> +            llsize = int128_rshift(llsize, 1);
+> +            ret = vfio_dma_unmap(container, iova, int128_get64(llsize), NULL);
+> +            if (ret) {
+> +                error_report("vfio_dma_unmap(%p, 0x%"HWADDR_PRIx", "
+> +                             "0x%"HWADDR_PRIx") = %d (%m)",
+> +                             container, iova, int128_get64(llsize), ret);
+> +            }
+> +            iova += int128_get64(llsize);
+> +        }
+> +        ret = vfio_dma_unmap(container, iova, int128_get64(llsize), NULL);
+> +        if (ret) {
+> +            error_report("vfio_dma_unmap(%p, 0x%"HWADDR_PRIx", "
+> +                         "0x%"HWADDR_PRIx") = %d (%m)",
+> +                         container, iova, int128_get64(llsize), ret);
+> +        }
+> +    }
+> +}
+> +
+>   static void vfio_listener_region_add(MemoryListener *listener,
+>                                        MemoryRegionSection *section)
+>   {
+>       VFIOContainer *container = container_of(listener, VFIOContainer, listener);
+>       hwaddr iova, end;
+> -    Int128 llend, llsize;
+> -    void *vaddr;
+> +    Int128 llend;
+>       int ret;
+>       VFIOHostDMAWindow *hostwin;
+>       Error *err = NULL;
+> @@ -814,39 +927,7 @@ static void vfio_listener_region_add(MemoryListener *listener,
+>       }
+>   
+>       /* Here we assume that memory_region_is_ram(section->mr)==true */
+> -
+> -    vaddr = memory_region_get_ram_ptr(section->mr) +
+> -            section->offset_within_region +
+> -            (iova - section->offset_within_address_space);
+> -
+> -    trace_vfio_listener_region_add_ram(iova, end, vaddr);
+> -
+> -    llsize = int128_sub(llend, int128_make64(iova));
+> -
+> -    if (memory_region_is_ram_device(section->mr)) {
+> -        hwaddr pgmask = (1ULL << ctz64(hostwin->iova_pgsizes)) - 1;
+> -
+> -        if ((iova & pgmask) || (int128_get64(llsize) & pgmask)) {
+> -            trace_vfio_listener_region_add_no_dma_map(
+> -                memory_region_name(section->mr),
+> -                section->offset_within_address_space,
+> -                int128_getlo(section->size),
+> -                pgmask + 1);
+> -            return;
+> -        }
+> -    }
+> -
+> -    ret = vfio_dma_map(container, iova, int128_get64(llsize),
+> -                       vaddr, section->readonly);
+> -    if (ret) {
+> -        error_setg(&err, "vfio_dma_map(%p, 0x%"HWADDR_PRIx", "
+> -                   "0x%"HWADDR_PRIx", %p) = %d (%m)",
+> -                   container, iova, int128_get64(llsize), vaddr, ret);
+> -        if (memory_region_is_ram_device(section->mr)) {
+> -            /* Allow unexpected mappings not to be fatal for RAM devices */
+> -            error_report_err(err);
+> -            return;
+> -        }
+> +    if (vfio_dma_map_ram_section(container, section, &err)) {
+>           goto fail;
+>       }
+>   
+> @@ -880,10 +961,6 @@ static void vfio_listener_region_del(MemoryListener *listener,
+>                                        MemoryRegionSection *section)
+>   {
+>       VFIOContainer *container = container_of(listener, VFIOContainer, listener);
+> -    hwaddr iova, end;
+> -    Int128 llend, llsize;
+> -    int ret;
+> -    bool try_unmap = true;
+>   
+>       if (vfio_listener_skipped_section(section)) {
+>           trace_vfio_listener_region_del_skip(
+> @@ -923,49 +1000,7 @@ static void vfio_listener_region_del(MemoryListener *listener,
+>            */
+>       }
+There are some codes of vfio_listener_region_del() that just doesn't 
+show up.
+I post it below.
 
-For new features added we want to use ID register bits. However,
-a lot of older pre-existing features are keyed off ARM_FEATURE_FOO
-flag bits. Trying to convert an ARM_FEATURE flag to use ID registers
-isn't necessarily 100% trivial (for instance, the ARM_FEATURE flag
-is always checkable regardless of AArch64 vs AArch32, but the ID
-register checks often need to be split up into separate ones checking
-the AArch32 or the AArch64 ID register value). So we aren't really
-doing conversion of existing flags. (I did a few which were easy
-because there were only a handful of checks of them.) As a side note,
-some features really can't be checked in ID registers, like
-ARM_FEATURE_V8_1M, so env->features is not going to go away completely.
+> if (memory_region_is_iommu(section->mr)) {
+>         VFIOGuestIOMMU *giommu;
+>
+>         QLIST_FOREACH(giommu, &container->giommu_list, giommu_next) {
+>             if (MEMORY_REGION(giommu->iommu) == section->mr &&
+>                 giommu->n.start == section->offset_within_region) {
+> memory_region_unregister_iommu_notifier(section->mr,
+> &giommu->n);
+>                 QLIST_REMOVE(giommu, giommu_next);
+>                 g_free(giommu);
+>                 break;
+>             }
+>         }
+>
+>         /*
+>          * FIXME: We assume the one big unmap below is adequate to
+>          * remove any individual page mappings in the IOMMU which
+>          * might have been copied into VFIO. This works for a page table
+>          * based IOMMU where a big unmap flattens a large range of 
+> IO-PTEs.
+>          * That may not be true for all IOMMU types.
+>          */
+>     }
+I think we need a check here. If it is nested mode, just return after
+g_free(giommu). Because in nested mode, stage 2 (gpa->hpa) and the
+stage 1 (giova->gpa) are set separately.
 
-The only use of cpu->has_foo should be for the QOM property -- the
-arm_cpu_realizefn() should look at it and then either clear the
-ARM_FEATURE flag or update the ID register bits depending on
-which one the feature is using.
+When hot delete a pci device,  we are going to call
+vfio_listener_region_del() and vfio_prereg_listener_region_del().
+So it's not appropriate to unmap RAM section in
+vfio_listener_region_del(). The RAM section will be unmap in
+vfio_prereg_listener_region_del().
 
-vms->virt is for the board code (and controls more things than
-just whether the CPU itself has EL2).
+Thanks,
+Kunkun Jiang
+>   
+> -    iova = REAL_HOST_PAGE_ALIGN(section->offset_within_address_space);
+> -    llend = int128_make64(section->offset_within_address_space);
+> -    llend = int128_add(llend, section->size);
+> -    llend = int128_and(llend, int128_exts64(qemu_real_host_page_mask));
+> -
+> -    if (int128_ge(int128_make64(iova), llend)) {
+> -        return;
+> -    }
+> -    end = int128_get64(int128_sub(llend, int128_one()));
+> -
+> -    llsize = int128_sub(llend, int128_make64(iova));
+> -
+> -    trace_vfio_listener_region_del(iova, end);
+> -
+> -    if (memory_region_is_ram_device(section->mr)) {
+> -        hwaddr pgmask;
+> -        VFIOHostDMAWindow *hostwin = hostwin_from_range(container, iova, end);
+> -
+> -        assert(hostwin); /* or region_add() would have failed */
+> -
+> -        pgmask = (1ULL << ctz64(hostwin->iova_pgsizes)) - 1;
+> -        try_unmap = !((iova & pgmask) || (int128_get64(llsize) & pgmask));
+> -    }
+> -
+> -    if (try_unmap) {
+> -        if (int128_eq(llsize, int128_2_64())) {
+> -            /* The unmap ioctl doesn't accept a full 64-bit span. */
+> -            llsize = int128_rshift(llsize, 1);
+> -            ret = vfio_dma_unmap(container, iova, int128_get64(llsize), NULL);
+> -            if (ret) {
+> -                error_report("vfio_dma_unmap(%p, 0x%"HWADDR_PRIx", "
+> -                             "0x%"HWADDR_PRIx") = %d (%m)",
+> -                             container, iova, int128_get64(llsize), ret);
+> -            }
+> -            iova += int128_get64(llsize);
+> -        }
+> -        ret = vfio_dma_unmap(container, iova, int128_get64(llsize), NULL);
+> -        if (ret) {
+> -            error_report("vfio_dma_unmap(%p, 0x%"HWADDR_PRIx", "
+> -                         "0x%"HWADDR_PRIx") = %d (%m)",
+> -                         container, iova, int128_get64(llsize), ret);
+> -        }
+> -    }
+> +    vfio_dma_unmap_ram_section(container, section);
+>   
+>       memory_region_unref(section->mr);
+>   
+> diff --git a/hw/vfio/trace-events b/hw/vfio/trace-events
+> index 2a41326c0f..936d29d150 100644
+> --- a/hw/vfio/trace-events
+> +++ b/hw/vfio/trace-events
+> @@ -99,10 +99,10 @@ vfio_iommu_map_notify(const char *op, uint64_t iova_start, uint64_t iova_end) "i
+>   vfio_listener_region_add_skip(uint64_t start, uint64_t end) "SKIPPING region_add 0x%"PRIx64" - 0x%"PRIx64
+>   vfio_spapr_group_attach(int groupfd, int tablefd) "Attached groupfd %d to liobn fd %d"
+>   vfio_listener_region_add_iommu(uint64_t start, uint64_t end) "region_add [iommu] 0x%"PRIx64" - 0x%"PRIx64
+> -vfio_listener_region_add_ram(uint64_t iova_start, uint64_t iova_end, void *vaddr) "region_add [ram] 0x%"PRIx64" - 0x%"PRIx64" [%p]"
+> +vfio_dma_map_ram(uint64_t iova_start, uint64_t iova_end, void *vaddr) "region_add [ram] 0x%"PRIx64" - 0x%"PRIx64" [%p]"
+>   vfio_listener_region_add_no_dma_map(const char *name, uint64_t iova, uint64_t size, uint64_t page_size) "Region \"%s\" 0x%"PRIx64" size=0x%"PRIx64" is not aligned to 0x%"PRIx64" and cannot be mapped for DMA"
+>   vfio_listener_region_del_skip(uint64_t start, uint64_t end) "SKIPPING region_del 0x%"PRIx64" - 0x%"PRIx64
+> -vfio_listener_region_del(uint64_t start, uint64_t end) "region_del 0x%"PRIx64" - 0x%"PRIx64
+> +vfio_dma_unmap_ram(uint64_t start, uint64_t end) "region_del 0x%"PRIx64" - 0x%"PRIx64
+>   vfio_disconnect_container(int fd) "close container->fd=%d"
+>   vfio_connect_existing_container(int groupid, int container_fd) "group=%d existing container fd=%d"
+>   vfio_connect_new_container(int groupid, int container_fd) "group=%d new container fd=%d"
 
-thanks
--- PMM
+

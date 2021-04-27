@@ -1,113 +1,114 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp4573122lfb;
-        Tue, 27 Apr 2021 01:27:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzNN6nIUHbpkFhgmzwcqyhCdnKf2SglK30mtH/Typ2TYOFVXWn0LN2uqltH1E0Hg7FnloEG
-X-Received: by 2002:a25:3c1:: with SMTP id 184mr22489838ybd.76.1619512051601;
-        Tue, 27 Apr 2021 01:27:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619512051; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp4619836lfb;
+        Tue, 27 Apr 2021 02:43:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyXnfR95Oiq8ZUqAb4CmcJa6qOnzrmIXehtTo9QvoQdO066SZGV6gDfizbBgVEYj5XBq7y/
+X-Received: by 2002:ac8:4b41:: with SMTP id e1mr20470382qts.180.1619516629798;
+        Tue, 27 Apr 2021 02:43:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619516629; cv=none;
         d=google.com; s=arc-20160816;
-        b=AzuZqN/ut3LKLZUWc1kFcV8QQ3sMWKichRC9iyPbWw8bAVWax5yf/6N+z1zHJK4LJm
-         VYLUU35d2ZRfrSY8ODw+DM5bVxTwqOXFBoo6lW8pFkoQSOf/ujTAFlxoM/GUAGXULlTe
-         rxduQTsW/lw2yeO7G86irBbpEhh9LWGRkQQQfGdYmg/v75tRcMM7amhCYezkx3N95v9o
-         8+744USNFvaU5jMFq/kCiJqFa3fCfbryFDaA39GE6aX7tWebXkcMISBG1XrRXYt0fPmL
-         2/8f6eFTe2tn5+QHWSRl7mFsqCzBVZwXMZjelBIzzQoRWUmi/cm91ELuwOxa8QqUBfkU
-         hvAw==
+        b=Kz39XTm8p2rSJetz15qc1YIsbejZTMg0mfN66cRw6kikmIAyMEJ0PDFg+8+H/BPHW+
+         36CQnSOohYgagVHl7D8bi5KMbvhRdjebttoNdeVZQENHzRkVR3jqvfDHicU/UA3gCzTY
+         8mwSpHWa5xM2NiJPXwK3Dp/DfT7wpXlYLFUs5vRK6OmmGkYZiTPfx3L6AnQVr118I0Oi
+         wIRjNUvJSHyKnC88F/YNVvV3YPo5rPg0o/LMYp5mXjxJeA8/jifUGdBNQCW3KYtK19Fu
+         YAOWXIT+JolFQJKLBC6PVxwG15VBVgeVZgG9VxzDVsCXqeRueZP7emi4DzyAA2SEzoHq
+         sU6w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
          :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=h02zWZVZ0wy/MS60LG8WdzUDH1c3ZTHhixBtflejkCU=;
-        b=y4Rae5Yr5c3h2qr0UmGLfZHIfEtKi/56/hr2wAdTTUeayqoFcc98KVT5Im6g8NXnVh
-         Ki+2XwUQermyYsgf9IkZlkDbg4/cbv9eE3rU3byAN6EVD01aqnHMaHJBETHBcKqE3J2I
-         CkUzqL/aUBo7Eo9dPaxR4Kn+hXbIn7qfHmvq0J73w2om2aL77rPcVG6P+AmF3XrL9YUD
-         LurQ18czwSv2w1b+4it3L6eaEKNx1gLLPRDMEO/EPvZdl0ioCdN10tJ6zdoIsXc8N6Q0
-         KLQ9mE67FwSnsalVRDKac9w0lQOwQ1dIymBf/OfvYq2kGwgDwDzGjMh/FnA0N36QyKqz
-         MU5Q==
+        bh=SCJdhqg0vNgtqxyw+htojD9FTXENHPVX3MX6GeBFltM=;
+        b=wlT8nGdYrXOufn0jmv0pQ97ZBvHNEZIBmDCjdRB+clMdLLLx4/Po8/VMLgbmZlDD9W
+         KUb02PFKdG5fOSwKgJYqQHLp/2JIIS9PoUBiX7Krlhwian8QnR3RqBk+cRjdeD8Gn1MM
+         v33Jh6Y5I4mhRHvrhIuQJBHuKOK2MApG/7vqZH+nLpH+asmbBxD8126dBqCxnmUKu38i
+         YcZDL0Q7VjhdHYF/0F7l01Q+J1DR0V/0qEsQAHVQb48HP4Rh8yQRUDSosNh4a1P/OD65
+         hEkHTMafmKGQw7vOB6DfI0Q45OXFS2WX5SMDm/gez3mwCLP51UJp2lkkwYn5IVZZelii
+         kPOQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="TFKnv/vj";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="GWph5XG/";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u15si20094958ybc.315.2021.04.27.01.27.31
+        by mx.google.com with ESMTPS id o12si2002556qvs.109.2021.04.27.02.43.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 27 Apr 2021 01:27:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 27 Apr 2021 02:43:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="TFKnv/vj";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="GWph5XG/";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58348 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40842 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lbJ46-0005OE-Vk
-	for alex.bennee@linaro.org; Tue, 27 Apr 2021 04:27:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40474)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lbKFx-0005DZ-6f
+	for alex.bennee@linaro.org; Tue, 27 Apr 2021 05:43:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54946)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1lbJ3s-0005Kd-Va
- for qemu-arm@nongnu.org; Tue, 27 Apr 2021 04:27:17 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:23218)
+ id 1lbKCw-00036E-Ja
+ for qemu-devel@nongnu.org; Tue, 27 Apr 2021 05:40:44 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:25318)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1lbJ3q-0001WD-Mq
- for qemu-arm@nongnu.org; Tue, 27 Apr 2021 04:27:16 -0400
+ id 1lbKCs-0002Ko-Os
+ for qemu-devel@nongnu.org; Tue, 27 Apr 2021 05:40:42 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1619512033;
+ s=mimecast20190719; t=1619516438;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=h02zWZVZ0wy/MS60LG8WdzUDH1c3ZTHhixBtflejkCU=;
- b=TFKnv/vjD/nN0u3HG+NHmD4SphMXbKrFn/BgTecf4wLBtz0Sgo8GE9TiJtGGEsAM9UIbXA
- De07poRQflrt6UizS9R0KACbZKupKcSoBAwi/8kBDDq7wrNqprEb1qQDEG2580wXLAJg0s
- ACWVD0pnd8d2bg4teMOTEeB664e1JE0=
-Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
- [209.85.208.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-442-u8-aniBxMdqCMsqNS5Zw0g-1; Tue, 27 Apr 2021 04:27:10 -0400
-X-MC-Unique: u8-aniBxMdqCMsqNS5Zw0g-1
-Received: by mail-ed1-f72.google.com with SMTP id
- h13-20020a05640250cdb02903790a9c55acso24445762edb.4
- for <qemu-arm@nongnu.org>; Tue, 27 Apr 2021 01:27:09 -0700 (PDT)
+ bh=SCJdhqg0vNgtqxyw+htojD9FTXENHPVX3MX6GeBFltM=;
+ b=GWph5XG/9LJ42YxxulFPcXdWTWhN0GL7ZNJdExHQRhi0+zV3FYCNUxe36Mcgy1MAz54qUv
+ 7UXzZG2tDqtkTT/laK8flpkN5QfWY4V9OE3HXtaIp1FG31IYwLn3DggA7208y/ATr8wRsi
+ ZG4xjD9mBs3avV/fIkGyC05m+kOmdcg=
+Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
+ [209.85.218.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-463-t0wkiX4pOwmarNdeC2hw4w-1; Tue, 27 Apr 2021 05:40:36 -0400
+X-MC-Unique: t0wkiX4pOwmarNdeC2hw4w-1
+Received: by mail-ej1-f70.google.com with SMTP id
+ n10-20020a1709061d0ab029037caa96b8c5so11115523ejh.23
+ for <qemu-devel@nongnu.org>; Tue, 27 Apr 2021 02:40:36 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=h02zWZVZ0wy/MS60LG8WdzUDH1c3ZTHhixBtflejkCU=;
- b=TDSb9r0JP/pKhboyUHINvXBobccU5aEoAnADrom3MYeNdjFZcE/DSiQOTs90LaG83B
- y4kBtumyZYOSOtzWZrHjmUgiMcoQDC+LOLcH+qGQ57XiWa0EIACsRm6670UYOcfduM+Q
- K+BnYi47N0GJfSvnYg73V/7AB19j11oqZ/Vb0NYSmztTJGlsyBXQm2Ll7W5CCxJJmGxZ
- jfG+0CV5MKUIsqaCHMQdGwwBk6hVOlcTtHrJhLSLwMZT56ng3/UzvqpTdrSBvaqkfiI9
- H69U0G80uNQjJ8ou0zYZMtBzHvmBU2VjRIvS3Mv0FyHhM8sQbDXaW6RHSXCVuTDHtd67
- RIcA==
-X-Gm-Message-State: AOAM5316EBqtcP0IFgLxCTQw0DyghBLt6s1DrZ31/VG3joTMQIQVICCB
- HhgugQPnxrlt+5x0krSpjvxFiat4/ZVO5UksVaABYXMSZ+EbE2B+V3jztaq5ZRhePPD532mUY3e
- ztXtruoJUigDh
-X-Received: by 2002:aa7:cd83:: with SMTP id x3mr2866637edv.373.1619512029002; 
- Tue, 27 Apr 2021 01:27:09 -0700 (PDT)
-X-Received: by 2002:aa7:cd83:: with SMTP id x3mr2866619edv.373.1619512028822; 
- Tue, 27 Apr 2021 01:27:08 -0700 (PDT)
+ bh=SCJdhqg0vNgtqxyw+htojD9FTXENHPVX3MX6GeBFltM=;
+ b=UxjAioN+ewBBbc1H9mdhVmxLXJrqduZEiNyqmDIYpMyDGIJxSH/1rogNJYwTqAJUjw
+ 9gN56l2hTJko5rVZujhFGdLe9qJPz291wx7Wj3nkphhHjaEH6E6UIwyHIaK51FAQPVi+
+ 1vkcejo4hmDJKFWVyYCVALo1nA7OPh4c/EVJCN/D73L6lUHu37YLCC6VIBEE/8vf3Byw
+ kbNXAvVsPCiANbW3N93CUwCT5gFbjj1rhcXx6AzaP1YjlO3MtJJwHbmkk+W3rrFjZSob
+ AiTAjboqxIKga/uBT+rzgkZUnoPNALxX+BhchQ7ZAog4KeWYIQeJAae/cbW/Xz3anSzn
+ ugyQ==
+X-Gm-Message-State: AOAM531qXzNNZPyGbyZFT1Q1krM3qp3RLTWJyaDNYN7jr8yeZQPp33Tr
+ EqZjOR/RLruN72dKhkq7yREWkBWu/NgHOFNi85NHtNASIiCuYucKR66Rg3EWFKe1OVwzkfcTJ90
+ vnVV4SqFjP0eSSUY=
+X-Received: by 2002:a05:6402:5107:: with SMTP id
+ m7mr3220086edd.75.1619516435314; 
+ Tue, 27 Apr 2021 02:40:35 -0700 (PDT)
+X-Received: by 2002:a05:6402:5107:: with SMTP id
+ m7mr3220066edd.75.1619516435130; 
+ Tue, 27 Apr 2021 02:40:35 -0700 (PDT)
 Received: from gator.home (cst2-174-132.cust.vodafone.cz. [31.30.174.132])
- by smtp.gmail.com with ESMTPSA id p9sm1764617edu.79.2021.04.27.01.27.07
+ by smtp.gmail.com with ESMTPSA id v8sm1868003edc.30.2021.04.27.02.40.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 27 Apr 2021 01:27:08 -0700 (PDT)
-Date: Tue, 27 Apr 2021 10:27:06 +0200
+ Tue, 27 Apr 2021 02:40:34 -0700 (PDT)
+Date: Tue, 27 Apr 2021 11:40:32 +0200
 From: Andrew Jones <drjones@redhat.com>
 To: Haibo Xu <haibo.xu@linaro.org>
-Subject: Re: [PATCH RESEND v2 2/6] target/arm/kvm: Add helper to detect el2
- when using KVM
-Message-ID: <20210427082706.phzeothsgj66mnp5@gator.home>
+Subject: Re: [PATCH RESEND v2 0/6] target/arm: Add nested virtualization
+ support
+Message-ID: <20210427094032.awefmueute7gek2d@gator.home>
 References: <cover.1617281290.git.haibo.xu@linaro.org>
- <65b8771bfecada08bf02c9cf87c2f0f9cdf943b3.1617281290.git.haibo.xu@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <65b8771bfecada08bf02c9cf87c2f0f9cdf943b3.1617281290.git.haibo.xu@linaro.org>
+In-Reply-To: <cover.1617281290.git.haibo.xu@linaro.org>
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=drjones@redhat.com;
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=drjones@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -29
 X-Spam_score: -3.0
@@ -115,87 +116,56 @@ X-Spam_bar: ---
 X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.219,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
  qemu-devel@nongnu.org, abologna@redhat.com, qemu-arm@nongnu.org,
  philmd@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cuRZuQVpCaBU
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: IuYZyR8GFvTg
 
-On Thu, Apr 01, 2021 at 05:55:34AM -0700, Haibo Xu wrote:
-> Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
-> ---
->  target/arm/kvm64.c   |  5 +++++
->  target/arm/kvm_arm.h | 13 +++++++++++++
->  2 files changed, 18 insertions(+)
+On Thu, Apr 01, 2021 at 05:55:32AM -0700, Haibo Xu wrote:
+> v2:
+>   - Move the NV to a CPU feature flag(Andrea&Andrew)
+>   - Add CPU feature 'el2' test(Andrew)
 > 
-> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-> index dff85f6db9..9cacaf2eb8 100644
-> --- a/target/arm/kvm64.c
-> +++ b/target/arm/kvm64.c
-> @@ -721,6 +721,11 @@ bool kvm_arm_steal_time_supported(void)
->      return kvm_check_extension(kvm_state, KVM_CAP_STEAL_TIME);
->  }
->  
-> +bool kvm_arm_el2_supported(void)
-> +{
-> +    return kvm_check_extension(kvm_state, KVM_CAP_ARM_EL2);
-> +}
-> +
->  QEMU_BUILD_BUG_ON(KVM_ARM64_SVE_VQ_MIN != 1);
->  
->  void kvm_arm_sve_get_vls(CPUState *cs, unsigned long *map)
-> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-> index 34f8daa377..7d7fc7981b 100644
-> --- a/target/arm/kvm_arm.h
-> +++ b/target/arm/kvm_arm.h
-> @@ -285,6 +285,14 @@ void kvm_arm_steal_time_finalize(ARMCPU *cpu, Error **errp);
->   */
->  bool kvm_arm_steal_time_supported(void);
->  
-> +/**
-> + * kvm_arm_el2_supported:
-> + *
-> + * Returns: true if KVM can enable el2(nested virtualization)
-                                         ^ please add a space
-> + * and false otherwise.
-> + */
-> +bool kvm_arm_el2_supported(void);
-> +
->  /**
->   * kvm_arm_aarch32_supported:
->   *
-> @@ -398,6 +406,11 @@ static inline bool kvm_arm_steal_time_supported(void)
->      return false;
->  }
->  
-> +static inline bool kvm_arm_el2_supported(void)
-> +{
-> +    return false;
-> +}
-> +
->  /*
->   * These functions should never actually be called without KVM support.
->   */
-> -- 
-> 2.17.1
+> Many thanks to Andrea and Andrew for their comments!
 > 
+> This series add support for ARMv8.3/8.4 nested virtualization support
+> in KVM mode. It's based on Marc Zyngier's kernel KVM patches[1], and 
+> has been tested on a FVP model to run a L2 guest with Qemu. Now the 
+> feature can be enabled by "-M virt,accel=kvm -cpu host,el2=on" when
+> starting a VM. 
 > 
+> [1] https://git.kernel.org/pub/scm/linux/kernel/git/maz/arm-platforms.git/log/?h=kvm-arm64/nv-5.12-WIP
+> 
+> Haibo Xu (6):
+>   Update linux header with new arm64 NV macro
+>   target/arm/kvm: Add helper to detect el2 when using KVM
+>   target/arm/kvm: Add an option to turn on/off el2 support
+>   hw/intc/arm_gicv3: Enable support for setting vGIC maintenance IRQ
+>   target/arm/cpu: Enable 'el2' to work with host/max cpu
+>   target/arm: Add vCPU feature 'el2' test.
 
-Otherwise
+Hi Haibo,
 
-Reviewed-by: Andrew Jones <drjones@redhat.com>
+Thank you for this new feature.
+
+Please also update docs/system/arm/cpu-features.rst in the next version of
+this patch series.
+
+Thanks,
+drew
 

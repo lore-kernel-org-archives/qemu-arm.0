@@ -1,126 +1,93 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp4627845lfb;
-        Tue, 27 Apr 2021 02:57:30 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw8Yr+EgiWDlG2FSpVsRkOWFAwBdU4MajXpzx9O+wmEJ827j8NwvVQ81ttpebkyndmUXWd+
-X-Received: by 2002:a25:d750:: with SMTP id o77mr26573648ybg.442.1619517450186;
-        Tue, 27 Apr 2021 02:57:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619517450; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp4742282lfb;
+        Tue, 27 Apr 2021 05:36:08 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwCRCiSnhqXcRIY+oLRvSu25DeCLJwoQoLA2qat5VJMOjACCOWy39dVJYs+P3BwGQixdVPq
+X-Received: by 2002:a67:c80d:: with SMTP id u13mr17622776vsk.27.1619526968445;
+        Tue, 27 Apr 2021 05:36:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619526968; cv=none;
         d=google.com; s=arc-20160816;
-        b=v6t9lW6w1N5MS/8iBQNWH9XclCinJ8VzzA4SrD7psczoHJnlkp5Nl3xu3SuTl22A79
-         wbL8SeLbtILDqfoaXqNcZDQ2b3iobMkC1iH8fgbANPH/XtEsqXbU0IzOzCcxj0movXGr
-         00xQfQ25WZx4jx0LLp6aeWeAXkz9QHGThrAUsflh/v4zHDX0iJNveIjZCZU9UhwaLqH9
-         8cz4AwncOmhkOgp8TjR2v60hvubUcieCPtHdsi/xRpds2SO+3aY1cUXAdkp49XsIPbwc
-         /nsmLvdmB4pY22WEGZlgHnXEDqImF5lBmES2MAYACdabgpZVcb4vmBrSsAZzaGF0wQJg
-         cUdA==
+        b=TC63uVr8AX1PnIJsrHYXcuwjfnFh/Kh5FtbOEqjDJ2PJqilsameG36aXabcGegaxEH
+         DRxGsovV1XfLnTJSx6ye+7KpJ1ovDsGsEk6ZQroejOqe9savGtrffPmub2b1mxRj3/GV
+         nJmlem8oX7bbES4BVIhPojUnC+U/0RPsZcVl8+d9mRJUblgwKkKyMK6QbjyeP5buyMDd
+         kSiOfHYwZDx/+QNf86dxb/1TJZRjabeS7elupin+yX2wysgq2YnurPeLKYZpa3HHd034
+         wnjVoOV0UsbrSV3m7FIOzoz1VOlX0M3u2vg7JFV/MYRec7C8HYMztrG71OWFRI8Erpn3
+         6nvA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=NdOPgJLgsTuktuVTWGp1N3xlJm8UY9kHn5krS5lw/iE=;
-        b=l6FoljNs+jNrsDbQCZDUJuhIHeYlk1/MlmzODWRAIeGrOqo90kBRATqCzvIbTJgA5+
-         hx4ClMBJ/YnwTi6JS7vk+E3fj6RHwB97Ikcne17NFXRuqEikJowGF23Ks49qxFUmB0uR
-         XjH+oLczNfIok3iLTqVrK0y+fE7TzuO9TYVjpmpehInv2Rh8mxxXN2JWPmlFmr+kBn3Y
-         duIXPlnWrbqGp5H5UlG8KZEBMCeU9eyjaOdSO02kQ6JVCbA8bwJEEqLlYgN3mY5koCWg
-         pGKGfRM+Idpbo6gqUTNQOG8q7970+j2tInn6700r62JUso9oHKibXbPcdka3EfFydJ2Y
-         oRbQ==
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=kkS0PMDkxsFuE0XBhh+dsS8QFN+urR2/FUOBy2nlZR0=;
+        b=lvYaeUlFKmrI9KoUK51tRTawgnxuX3V8+ihGlh2D+euZ0Q75/R0iQ+0u5gBef2zV2S
+         1yLL9xewwBFm1iba3K+ynLGUIJniwIs4uXZlO5AZEyEb9kiIDmZGaBD7h+j9QfQuywgy
+         mUIMCaeO42SU8yRk/eF/S67yTyclVaMmPKhXd39SKR0g1c694CaZECvijGJ8N6npWVV3
+         cUWq8gb9yrXbUE/Op2MahEsAjZU9VStmtKpUNbTO6nBAD932CG2j83gBVmVQgC/qm9ZX
+         wPJW0XV+jDmxnuLNF/ZTRqSXI+qoQ5sbFPXnKX0GpqkqPGFKFkucaJmWh6V/F1ETTX37
+         oyRw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LHNFPtrp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s18si19166176ybp.425.2021.04.27.02.57.30
+        by mx.google.com with ESMTPS id i15si1849395vsp.182.2021.04.27.05.36.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 27 Apr 2021 02:57:30 -0700 (PDT)
+        Tue, 27 Apr 2021 05:36:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LHNFPtrp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:32776 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Received: from localhost ([::1]:56482 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lbKTB-0005bi-K6
-	for alex.bennee@linaro.org; Tue, 27 Apr 2021 05:57:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58370)
+	id 1lbMwh-0003wP-PS
+	for alex.bennee@linaro.org; Tue, 27 Apr 2021 08:36:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40022)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lbKSq-0005ao-Iy
- for qemu-arm@nongnu.org; Tue, 27 Apr 2021 05:57:09 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:42156)
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1lbMvg-0003QW-Ch; Tue, 27 Apr 2021 08:35:04 -0400
+Received: from szxga02-in.huawei.com ([45.249.212.188]:2078)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lbKSo-0003Fb-V8
- for qemu-arm@nongnu.org; Tue, 27 Apr 2021 05:57:08 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1619517426;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=NdOPgJLgsTuktuVTWGp1N3xlJm8UY9kHn5krS5lw/iE=;
- b=LHNFPtrpSCb+CiNSw0XvyJi9/cm52bCwgctIKGaqkwFgWvT5QHmYiW2hW56PCnmjH5SyMO
- RyHsw9nSV/ruiEN4adglQvlj7VKXrAoORlZ4TUg12McpXfDx2AOLMreebgDS1fUV8CKNa9
- e3SWwmPlc3EOOx35G6HgBetH953wj3Q=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-56-_aIKyt6eMMChpBt8stTPWg-1; Tue, 27 Apr 2021 05:57:04 -0400
-X-MC-Unique: _aIKyt6eMMChpBt8stTPWg-1
-Received: by mail-wr1-f70.google.com with SMTP id
- i43-20020adf90ae0000b029010a6364cdbaso3931184wri.18
- for <qemu-arm@nongnu.org>; Tue, 27 Apr 2021 02:57:04 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=NdOPgJLgsTuktuVTWGp1N3xlJm8UY9kHn5krS5lw/iE=;
- b=IISRKWd6cekNANladi3oDHOiclURHQIRNy93oPK64tnmlPRynpFsuDnJbvHNO3L6YM
- 1sFKAtRbp7ozG2gisIow2t5aHIhm4QJTyz0fCq/UTm4SzLSXGHDAcWn9ptPyKlkyMWa5
- 15qN6tiXWhiaVlmLFYGJdi4dRtGyDqWLQot4Aw6PEx7NRxSv66FIdx+YGPV2O8Ym+TqH
- 1pizAroOKMQzTnraXGp0/wM4XDH3tC8Zr6Ke5EkXmTAKqC/XZFN8PMQRCSRl9tagTmzH
- Noqi1z9Wy40pxwdLl4UDhMlzWLgeTrHmf7E0vRmapmWD4XwIG5NjLNVWtESgGp/Ou64F
- 1xXw==
-X-Gm-Message-State: AOAM533jscaJFDAWObln07BUSp0UD6ynrficfuyxs/8mafeOaPQJkir7
- gJH1mAD0r60CI0xusrMx+Wqqn9gZmXimyC9mqSppHjzknnpyUM2JAl0oqGausgoNR502bk8NOX2
- QNmBR3TXKrFmA
-X-Received: by 2002:a05:600c:228a:: with SMTP id
- 10mr24464191wmf.115.1619517423587; 
- Tue, 27 Apr 2021 02:57:03 -0700 (PDT)
-X-Received: by 2002:a05:600c:228a:: with SMTP id
- 10mr24464155wmf.115.1619517423335; 
- Tue, 27 Apr 2021 02:57:03 -0700 (PDT)
-Received: from [192.168.1.36] (39.red-81-40-121.staticip.rima-tde.net.
- [81.40.121.39])
- by smtp.gmail.com with ESMTPSA id f7sm3125511wrp.48.2021.04.27.02.57.02
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 27 Apr 2021 02:57:02 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1lbMvd-00043E-8D; Tue, 27 Apr 2021 08:35:04 -0400
+Received: from dggeml755-chm.china.huawei.com (unknown [172.30.72.55])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4FV1PM2s9NzYd85;
+ Tue, 27 Apr 2021 20:32:39 +0800 (CST)
+Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
+ dggeml755-chm.china.huawei.com (10.1.199.136) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.2176.2; Tue, 27 Apr 2021 20:34:55 +0800
+Received: from [10.174.187.128] (10.174.187.128) by
+ dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
+ 15.1.2176.2; Tue, 27 Apr 2021 20:34:55 +0800
 Subject: Re: [RFC PATCH 0/6] Introduce cluster cpu topology support
-To: Yanan Wang <wangyanan55@huawei.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
 References: <20210331095343.12172-1-wangyanan55@huawei.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <13983bec-8b6b-4277-288a-e243d096bfb3@redhat.com>
-Date: Tue, 27 Apr 2021 11:57:01 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+ <13983bec-8b6b-4277-288a-e243d096bfb3@redhat.com>
+ <a883cf7e-b820-9d20-6424-e2add3007e9b@huawei.com>
+ <d21d4ec0-9b2a-c881-5e2c-0542b4166704@redhat.com>
+From: "wangyanan (Y)" <wangyanan55@huawei.com>
+Message-ID: <9de0a498-89c6-d124-dfff-cf23567bc565@huawei.com>
+Date: Tue, 27 Apr 2021 20:34:54 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
-In-Reply-To: <20210331095343.12172-1-wangyanan55@huawei.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <d21d4ec0-9b2a-c881-5e2c-0542b4166704@redhat.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Transfer-Encoding: 8bit
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.219,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+X-Originating-IP: [10.174.187.128]
+X-ClientProxiedBy: dggeme714-chm.china.huawei.com (10.1.199.110) To
+ dggpemm500023.china.huawei.com (7.185.36.83)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.188;
+ envelope-from=wangyanan55@huawei.com; helo=szxga02-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -136,7 +103,8 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Barry Song <song.bao.hua@hisilicon.com>,
  Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>,
+ Eduardo
+ Habkost <ehabkost@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Shannon Zhao <shannon.zhaosl@gmail.com>, Igor Mammedov <imammedo@redhat.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
@@ -145,41 +113,68 @@ Cc: Barry Song <song.bao.hua@hisilicon.com>,
  Jiajie Li <lijiajie11@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UBeyk5Ar3Arf
+X-TUID: sObCzuRFQAGl
 
-Hi Yanan,
 
-On 3/31/21 11:53 AM, Yanan Wang wrote:
-> Hi,
-> This series introduces the cluster cpu topology support, besides now
-> existing sockets, cores, and threads.
-> 
-> A cluster means a group of cores that share some resources (e.g. cache)
-> among them under the LLC. For example, ARM64 server chip Kunpeng 920 has
-> 6 or 8 clusters in each NUMA, and each cluster has 4 cores. All clusters
-> share L3 cache data while cores within each cluster share the L2 cache.
-> 
-> Also, there are some x86 CPU implementations (e.g. Jacobsville) where L2
-> cache is shared among a cluster of cores instead of being exclusive to
-> one single core. For example, on Jacobsville there are 6 clusters of 4
-> Atom cores, each cluster sharing a separate L2, and 24 cores sharing L3).
+On 2021/4/27 20:08, Philippe Mathieu-Daudé wrote:
+> On 4/27/21 1:00 PM, wangyanan (Y) wrote:
+>> On 2021/4/27 17:57, Philippe Mathieu-Daudé wrote:
+>>> On 3/31/21 11:53 AM, Yanan Wang wrote:
+>>>> Hi,
+>>>> This series introduces the cluster cpu topology support, besides now
+>>>> existing sockets, cores, and threads.
+>>>>
+>>>> A cluster means a group of cores that share some resources (e.g. cache)
+>>>> among them under the LLC. For example, ARM64 server chip Kunpeng 920 has
+>>>> 6 or 8 clusters in each NUMA, and each cluster has 4 cores. All clusters
+>>>> share L3 cache data while cores within each cluster share the L2 cache.
+>>>>
+>>>> Also, there are some x86 CPU implementations (e.g. Jacobsville) where L2
+>>>> cache is shared among a cluster of cores instead of being exclusive to
+>>>> one single core. For example, on Jacobsville there are 6 clusters of 4
+>>>> Atom cores, each cluster sharing a separate L2, and 24 cores sharing
+>>>> L3).
+>>>> About this series:
+>>>> Note that, this series was implemented based on [3] and [4]. Although
+>>>> they
+>>>> have not merged into qemu mainline for now, it's still meaning to
+>>>> post this
+>>>> series to express the thoughts first. So a RFC is sent and any
+>>>> comments are
+>>>> welcomed and appreciated.
+>>> At a glance: tests/unit/test-x86-cpuid.c should be adapted to be generic
+>>> (but still supporting target-specific sub-tests) and some aarch64 tests
+>>> added.
+>>>
+>>> Similarly the ARM PPTT tables tested in tests/qtest/bios-tables-test.c.
+>>>
+>>> Otherwise, the overall series looks good and coherent, but it isn't my
+>>> area :)
+>> Thank you for the reminder of the related tests. :)
+>> I will have some work to make them cover the new features introduced
+>> by this series.
+> BTW if after 4 weeks and 2 pings nobody sent negative feedback or
+> NAcked your series, it usually means the community is not against
+> your purposal, but has some doubts this feature is necessary or
+> well designed. Tests help to show your work is safe, as it doesn't
+> break anything. You might need to better explain why this feature
+> is needed, and what are the limitations of what is currently
+> possible.
+>
+> OTOH QEMU has been in "feature freeze" for the next v6.0 release
+> for the same amount of time, so maybe the maintainers/reviewers
+> were busy with bugs and still have your series in their TODO list.
+I fully understand your point, and thanks for the explanations.
 
-> About this series:
-> Note that, this series was implemented based on [3] and [4]. Although they
-> have not merged into qemu mainline for now, it's still meaning to post this
-> series to express the thoughts first. So a RFC is sent and any comments are
-> welcomed and appreciated.
+I will just patiently wait for some feedback, and of course on the same 
+time,
+will also refine the solution with some convincing tests for later new 
+version.
 
-At a glance: tests/unit/test-x86-cpuid.c should be adapted to be generic
-(but still supporting target-specific sub-tests) and some aarch64 tests
-added.
-
-Similarly the ARM PPTT tables tested in tests/qtest/bios-tables-test.c.
-
-Otherwise, the overall series looks good and coherent, but it isn't my
-area :)
-
-Regards,
-
-Phil.
-
+Thanks,
+Yanan
+> Regards,
+>
+> Phil.
+>
+> .

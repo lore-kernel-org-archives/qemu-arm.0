@@ -1,129 +1,105 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp4726147lfb;
-        Tue, 27 Apr 2021 05:16:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJznc/qV8NUzBtOpqYiPVzEs2JPXL+QWPOIbsyE/1ZyHHeACOYtRHGQy1f/pyrhomzjlq6gw
-X-Received: by 2002:a17:906:6789:: with SMTP id q9mr23265080ejp.295.1619525768529;
-        Tue, 27 Apr 2021 05:16:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619525768; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp4726981lfb;
+        Tue, 27 Apr 2021 05:16:56 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyHXdSx7R6tGMJw8N7va++TCLL4in1IlCEH1QjD03o3+gXHuxChek+Z4k6VdA2HAB0PUeOI
+X-Received: by 2002:a05:6402:1c0b:: with SMTP id ck11mr3995557edb.264.1619525816893;
+        Tue, 27 Apr 2021 05:16:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619525816; cv=none;
         d=google.com; s=arc-20160816;
-        b=wydF01CSr7yOsNNRj3KX5vIwzLFRwZTWIm+O8d3Sl+m9kxMeKaJIoLksYXphGsX2Qa
-         x4zCpZmcSUiiFOK7cJWronTxJJfiQUitqWYBSsWrC9HMqtFrFXfeea5DsaAASKlsbh1y
-         NdmqwTKCZDcoSoe4meJImitMMHDjCk49go6psfIC/5zDn6GU+keB5duFYWwXaU948UXn
-         CdjXo4+dvgRURkQPzDRVa5MUv09yxE/HQZQU2PKbD8opNKbvHnD439rwaciCDhEefjX7
-         NTO6BY1NmfnsgIfd4la3rW05j53eVI412LM6DaPGDXXVu1+Kl0ViKAXYpavvRsF2RJSo
-         /MWw==
+        b=MDMUlbeeXreX/gp3pfyFcVN99DZCTEGYwkmhMLkU+yA2kqiEJTO88u3BzheeRJyFMS
+         hx5pZo09QHnWuFP1mlq7LCMozS7wZwKz8r8d6g1iX9vrabqic9kGvKXxlrC6vT0SGaJS
+         da83zw2QCHPzQCpGg5wdiX5zpS6NtYGl358XVkHncAi60s7xCB9QPyoiSl6XVquxPTLO
+         XP7jy00gmzJNi9L99ZNj5PMrgkWVKIvVwW0zMElrLjDLzw2Rej/4DaP84PR19l/0pILM
+         wxMOEJG3NKiyFKjl4EILsvWjJXhATPeHbj8WOv19bxts/8woezUspWd5uFsyjCGt3ycE
+         TbWg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=mWpk78itXvEXOeGAQa5LeLTvdGlpzh0HH/9BHTsSuBY=;
-        b=msXSEh3RDI3JRF6/Cpoyj5EFLsElaWdWfdw5LKDrVJ33i2/kWQCTMDlDXcT/afC8dZ
-         XbXPCvXHBek3L0XrqUP/+F6C22Xyn+hY3XqYxipWmvBQyTr4OpbUCqSdI2wXhSUWv1FF
-         7LgTf+I15nVrDYoh5+B6Bt7uxSCUWG2GwgZkaJGKDwJ+i4Brr3bcV82cFnI2aY+5xe8R
-         kXdCYnqVpwbmggfZ4ojV4apebGB7DAoDFF2sC5NMXhHj2CkkWj/rprnsrKX9QsMA2xtf
-         opU+Pvfu8EtJsaKqZ447Ax98ON5oRSi8/2UyIfG+UZYwmEhTMiOZxzPDS1VmhkRJK57q
-         bPxg==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=iOHl+WXov6I35hiaUgGBs0hZxf5f3OFbwgK2AgpIoOY=;
+        b=vCv4qEfQIrJeT5ltAX03nbd80mvAUfzxJN7L8RYEgPs/Z2+d0fvltRTnTbBv5thcm7
+         bJr/WsrIwviut3YDsxCpgjSZjkqADox8S61XizNdB8Yc8913uIIN4D9ANSRdUi4cv1b6
+         dNz+pQMkXz8UHF58jKh4gIgCkhPmZj6sHuZO8LkVpy0by4bqdaPn23+4mYSTkEJcCy4D
+         ZvQfQB6WnRDxsOb6c0yTchaD+wTt8YFjnK2KtnteEpbkE0P5StMp8AfXJ/rHxOBabOwC
+         HwqInTWNSVwtPtYpnqCs15FQYtE+xwmCfklMg/tYIVCsTBbeLBldIC56q1InKCf1Dy44
+         c4Cg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WTXVqa7H;
+       dkim=fail header.i=@linaro.org header.s=google header.b=J0Ql2aSS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q10si16011830ejy.742.2021.04.27.05.16.08
+        by mx.google.com with ESMTPS id c10si2404561ede.84.2021.04.27.05.16.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 27 Apr 2021 05:16:08 -0700 (PDT)
+        Tue, 27 Apr 2021 05:16:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WTXVqa7H;
+       dkim=fail header.i=@linaro.org header.s=google header.b=J0Ql2aSS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56188 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:57520 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lbMdL-0008Qw-K7
-	for alex.bennee@linaro.org; Tue, 27 Apr 2021 08:16:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33956)
+	id 1lbMe8-0000fG-0n
+	for alex.bennee@linaro.org; Tue, 27 Apr 2021 08:16:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36098)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lbMVz-0005yC-K6
- for qemu-arm@nongnu.org; Tue, 27 Apr 2021 08:08:31 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:21898)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lbMVv-0006Qt-A9
- for qemu-arm@nongnu.org; Tue, 27 Apr 2021 08:08:31 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1619525306;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=mWpk78itXvEXOeGAQa5LeLTvdGlpzh0HH/9BHTsSuBY=;
- b=WTXVqa7HIi5VD5i9yh0wBr4rXn5SP32P+Dw7A0YNsiaeH7AqtY9nIt54l21GBQyuEhZqa/
- bVe+gEMzCMjzWiobBkk1tQfsF1I5dJCdTyeui2KoBhUBhWNzQs607q9YNIdItejmHatGY4
- juu36UaF4/+zpHEgf27Lx+vYCzpPR0k=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-586-DozuZEKzPGeSgObJRxWWOA-1; Tue, 27 Apr 2021 08:08:24 -0400
-X-MC-Unique: DozuZEKzPGeSgObJRxWWOA-1
-Received: by mail-wr1-f72.google.com with SMTP id
- t14-20020a5d6a4e0000b029010277dcae0fso20528697wrw.22
- for <qemu-arm@nongnu.org>; Tue, 27 Apr 2021 05:08:23 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lbMdg-0000cK-Nw
+ for qemu-arm@nongnu.org; Tue, 27 Apr 2021 08:16:29 -0400
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e]:45852)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lbMdd-0002eV-E3
+ for qemu-arm@nongnu.org; Tue, 27 Apr 2021 08:16:28 -0400
+Received: by mail-ej1-x62e.google.com with SMTP id u3so10501056eja.12
+ for <qemu-arm@nongnu.org>; Tue, 27 Apr 2021 05:16:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=iOHl+WXov6I35hiaUgGBs0hZxf5f3OFbwgK2AgpIoOY=;
+ b=J0Ql2aSSUdrJGXv13R/IIFbQ/0g0HNid0CL3JRBmKeFUjv3mveZqFe9tp8hdOQbwJO
+ UanxUxkmQBHIE9750Zb2R6bMLANA2q4k3dnQoDxyG+hpy3GD62iARBC8gXw7HIKWAI58
+ B+GAgccIIMJ0+gG+sns5IDDtP76EQo6b4vcQlsbU3GLQ8MT8Y0oRjTuQTJQ/rBXIZYVG
+ Y50x7K9jOJbv1BBVj5jj19uqQm9GrTbViyfq5fzSvGbEc2EP/dM0JqK33srJEJD60kcl
+ g12/i3qV+oEmjgf7hTSVL5suY+CUxnkuDkG79vZkK+Pkzfw6xrXlAm9fHfgXl0mha8G/
+ eLKQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=mWpk78itXvEXOeGAQa5LeLTvdGlpzh0HH/9BHTsSuBY=;
- b=MkOzwqR1ElxuELeU5wQsfBe5UOxCoAUVw+WEzyvRHyqR7uaKhg7JQK+PGTDS3q1aUo
- Za/r4TWSq3dSzCLZP1dFWWj2AHGw4+uVFWYFdleU1wSlBleTA/pE+9XzJke5OvItGgpL
- sWIAkhADNYgwPuAGvVFrMceemL8ddkrLn5z/hlXhQdJ2ZjPo0UNjp3Xht2Y1LgDHbXPP
- FiGiOXLnIXTZfkfE+g4PdvDL2mahsnrjgmoZJNAITrhb7zpEKwWNOr4+nSFNhOwFUk4p
- AS4+QsTWyxDQthSbj9xbaaIR/rTtlRnwgXv5gv2LlGgFvKi46n8PpvgsOx2CbABKPi9Y
- ma9g==
-X-Gm-Message-State: AOAM532MdwsXxGw2ro5mwupweII+gSa/dpI7n76cCCtBUus304fj/PfJ
- dIQG2z9IgIOujx+JqiEhQic2bKkvoGrKu7Jo/noiJ25lOtEM3hBSNTJzkmnuVZPPVK3bp4214PX
- 3TxTATUQQDdyo
-X-Received: by 2002:a05:6000:114e:: with SMTP id
- d14mr28752936wrx.281.1619525302908; 
- Tue, 27 Apr 2021 05:08:22 -0700 (PDT)
-X-Received: by 2002:a05:6000:114e:: with SMTP id
- d14mr28752923wrx.281.1619525302778; 
- Tue, 27 Apr 2021 05:08:22 -0700 (PDT)
-Received: from [192.168.1.36] (39.red-81-40-121.staticip.rima-tde.net.
- [81.40.121.39])
- by smtp.gmail.com with ESMTPSA id u6sm3271443wml.6.2021.04.27.05.08.21
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 27 Apr 2021 05:08:22 -0700 (PDT)
-Subject: Re: [RFC PATCH 0/6] Introduce cluster cpu topology support
-To: "wangyanan (Y)" <wangyanan55@huawei.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-References: <20210331095343.12172-1-wangyanan55@huawei.com>
- <13983bec-8b6b-4277-288a-e243d096bfb3@redhat.com>
- <a883cf7e-b820-9d20-6424-e2add3007e9b@huawei.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <d21d4ec0-9b2a-c881-5e2c-0542b4166704@redhat.com>
-Date: Tue, 27 Apr 2021 14:08:21 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=iOHl+WXov6I35hiaUgGBs0hZxf5f3OFbwgK2AgpIoOY=;
+ b=l6h2fPuALEIRuGRZmnoVLYexBTLdLIZnssb9VecHWoFDsXCmwqjKJrm8wN1W6mVWUw
+ 6+usZprYfAlXZcyk+lr5hJ3pgM/NHg9jFCIKlhLhWz2rjHd+xd7uBfxDQbofQJX1czMp
+ D/cBRsabf+U2UxxqBQFvUGKWG90GZOg/G5pWT7GYp4YK7kBedkfVwwTjyy6mjhB7BIWL
+ yF/qTmqSLZkMXN947phtqxuFMzCAZiLLX1GyS0JMUK3i+gGZeZGUAD5Y26sfam3fPbCl
+ rh3F/OhEOZli8xcnCYoLdUaozkGwncRe5C5pblKw37VelJ34fSWY1U8P6ImK/XnMgZhh
+ xUTg==
+X-Gm-Message-State: AOAM530fGovjrMUVOvgdAq4tMxwflO2o2SIETFgJj7Dc3CxjZFMmtemK
+ nQsZ4ODK1nKJ9UAePaoa8rli/ZhFNoLz0bHqP/1JZA==
+X-Received: by 2002:a17:906:6d41:: with SMTP id
+ a1mr23314144ejt.482.1619525783656; 
+ Tue, 27 Apr 2021 05:16:23 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <a883cf7e-b820-9d20-6424-e2add3007e9b@huawei.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.218,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+References: <cover.1617281290.git.haibo.xu@linaro.org>
+ <CAFEAcA8a53rCGBGVr_mb0fVJPXFaCShGTJE0bh=L5Nvw6ATz6A@mail.gmail.com>
+ <20210427095458.3hbckyqbmfztcmge@gator.home>
+In-Reply-To: <20210427095458.3hbckyqbmfztcmge@gator.home>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 27 Apr 2021 13:15:24 +0100
+Message-ID: <CAFEAcA82VJqgD+B4gCr1M0n5oV869rBdoTzNS6xSs0f2f8iFvw@mail.gmail.com>
+Subject: Re: [PATCH RESEND v2 0/6] target/arm: Add nested virtualization
+ support
+To: Andrew Jones <drjones@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -136,69 +112,51 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Barry Song <song.bao.hua@hisilicon.com>,
- Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, Igor Mammedov <imammedo@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, yuzenghui@huawei.com,
- wanghaibin.wang@huawei.com, zhukeqian1@huawei.com,
- Jiajie Li <lijiajie11@huawei.com>
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Andrea Bolognani <abologna@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Haibo Xu <haibo.xu@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /n3DfMFsGyO0
+X-TUID: UEkuSxM7fAzv
 
-On 4/27/21 1:00 PM, wangyanan (Y) wrote:
-> On 2021/4/27 17:57, Philippe Mathieu-Daudé wrote:
->> On 3/31/21 11:53 AM, Yanan Wang wrote:
->>> Hi,
->>> This series introduces the cluster cpu topology support, besides now
->>> existing sockets, cores, and threads.
->>>
->>> A cluster means a group of cores that share some resources (e.g. cache)
->>> among them under the LLC. For example, ARM64 server chip Kunpeng 920 has
->>> 6 or 8 clusters in each NUMA, and each cluster has 4 cores. All clusters
->>> share L3 cache data while cores within each cluster share the L2 cache.
->>>
->>> Also, there are some x86 CPU implementations (e.g. Jacobsville) where L2
->>> cache is shared among a cluster of cores instead of being exclusive to
->>> one single core. For example, on Jacobsville there are 6 clusters of 4
->>> Atom cores, each cluster sharing a separate L2, and 24 cores sharing
->>> L3).
->>> About this series:
->>> Note that, this series was implemented based on [3] and [4]. Although
->>> they
->>> have not merged into qemu mainline for now, it's still meaning to
->>> post this
->>> series to express the thoughts first. So a RFC is sent and any
->>> comments are
->>> welcomed and appreciated.
->> At a glance: tests/unit/test-x86-cpuid.c should be adapted to be generic
->> (but still supporting target-specific sub-tests) and some aarch64 tests
->> added.
->>
->> Similarly the ARM PPTT tables tested in tests/qtest/bios-tables-test.c.
->>
->> Otherwise, the overall series looks good and coherent, but it isn't my
->> area :)
-> Thank you for the reminder of the related tests. :)
-> I will have some work to make them cover the new features introduced
-> by this series.
+On Tue, 27 Apr 2021 at 10:55, Andrew Jones <drjones@redhat.com> wrote:
+>
+> On Tue, Apr 27, 2021 at 10:42:18AM +0100, Peter Maydell wrote:
+> > Why are we making the UI for "enable EL2 guest with KVM" different
+> > from that for "enable EL2 guest with TCG" ? Currently an EL2
+> > TCG guest is set up with "-M virt,virtualization=on", which then
+> > does everything it needs to enable virtualization on all the
+> > components on the board including the CPU.
+> >
+> > Unless there's a strong technical reason why KVM EL2 has to
+> > be different, I think we should use the same switch.
+>
+> I agree we should use the same switch, but I think I'd prefer it be the
+> CPU switch instead of the machine switch, as it's a CPU feature. There are
+> some board properties too, like the maintenance interrupt, but we tend to
+> call a feature a CPU feature when it shows up in the CPU manual, e.g. the
+> PMU is also a CPU feature, even though it has a PPI.
 
-BTW if after 4 weeks and 2 pings nobody sent negative feedback or
-NAcked your series, it usually means the community is not against
-your purposal, but has some doubts this feature is necessary or
-well designed. Tests help to show your work is safe, as it doesn't
-break anything. You might need to better explain why this feature
-is needed, and what are the limitations of what is currently
-possible.
+This is mostly not how we've generally opted to handle this kind of thing on
+the virt board where there is something that is not merely a CPU feature
+but also has effects on the wider system: look at 'virtualization',
+'secure' and 'mte'. Granted, the effects of 'virtualization' on the wider
+system are less significant than those of 'secure' or 'mte' -- but I think
+we implemented 'virtualization' on the same pattern as 'secure'.
 
-OTOH QEMU has been in "feature freeze" for the next v6.0 release
-for the same amount of time, so maybe the maintainers/reviewers
-were busy with bugs and still have your series in their TODO list.
+If you want to propose changing how we handle those things, including
+a backward-compatibility setup so we don't break existing command lines,
+I guess we can have that discussion. But we should either *first* do that
+change-of-course and *then* implement KVM EL2 to fit into that, or we should
+just implement KVM EL2 to fit into the design we have today (and then do
+the redesign later if we decide to do that). I don't think we should add
+KVM EL2 support's command line switches using a new design that we haven't
+committed to and which leaves it completely out of line with what the TCG
+handling of the exact same feature is. And I don't feel strongly enough
+that our current approach is wrong that I want to impose a "first do this
+big rework" precondition on landing the KVM EL2 support.
 
-Regards,
-
-Phil.
-
+thanks
+-- PMM

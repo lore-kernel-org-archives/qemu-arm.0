@@ -1,102 +1,271 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id u2sm5734412wmc.22.2021.04.28.03.18.44
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 28 Apr 2021 03:18:44 -0700 (PDT)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 4D0661FF90;
-	Wed, 28 Apr 2021 11:18:44 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: kvm@vger.kernel.org
-Cc: shashi.mallela@linaro.org,
-	alexandru.elisei@arm.com,
-	eric.auger@redhat.com,
-	qemu-arm@nongnu.org,
-	linux-arm-kernel@lists.infradead.org,
-	kvmarm@lists.cs.columbia.edu,
-	christoffer.dall@arm.com,
-	maz@kernel.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [kvm-unit-tests PATCH v1 4/4] arm64: split its-migrate-unmapped-collection into KVM and TCG variants
-Date: Wed, 28 Apr 2021 11:18:44 +0100
-Message-Id: <20210428101844.22656-5-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210428101844.22656-1-alex.bennee@linaro.org>
-References: <20210428101844.22656-1-alex.bennee@linaro.org>
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp451404lfb;
+        Wed, 28 Apr 2021 03:25:02 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyBLtCDdjrffy9kpJfbeA+SvF3PCHhkdJrq3cXaJ4K4qKn8evaV4hbXIBWXJcB3RRK13WE4
+X-Received: by 2002:adf:e845:: with SMTP id d5mr6972232wrn.96.1619605502407;
+        Wed, 28 Apr 2021 03:25:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619605502; cv=none;
+        d=google.com; s=arc-20160816;
+        b=W9G09KkfLd8o8XCMmlpzycy1pGx0lCh7thLIGLklQGST5vA4TVJFsrchnj+j2beHyi
+         gLGN/73jGK5EYloXeglpBX4UqI2U45Kg4Lv3mgWjUc3o1lgoKAQMRZdMTJ3JmGZdHjld
+         l9t3HmweXDpiNCf6to7oaTPwLjlHPBGJX/veUex99e8VAuP9G/nclttr1ikOKO7U5qjs
+         Fu8DgeJtj/uvJ2bFoykv5xPYT4vXn1Fwp7iK11vzY9s37N+VKyjCEhygEDkDHwo1zkob
+         LSkAYB1TkI5GUYhvFM1W/cAtFE+s4gnN9LaK2mCmRO7oQMIjHKLsGNdWfOYgnEFfFGPS
+         OpcQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=uwMRBwnvqkmhpDezZYn5EKlz+pUMI4hSovctNmwVWao=;
+        b=D/5e3t92iUGoy3O/tXDtg6ER+O6FqIySNXALoEYfTelBnKHj4z1xrPirmBD9PdvCfx
+         TN99393uSA++Q05e9dfSjsrKSgXuZ0lV2OWGnmlgx8ngRpCklSuFxhYUWCHXvfAxisDl
+         /cqbDcAdmGX7Brvz2r7XQIPO/242W711cWb/xPp5zm+yyxH6ga7iIfyPssauU3FGJTce
+         J/sQDLE99AMApXsvTVUagIgqJiw5XS3yTm1a8U4wDTx0OVHaWcwpR9J4XDN7NYujFJeM
+         1TL8IfBF+B+QoI0K0PuTwhzhn8wdj8ghHXvELymIk+YE/QoiDBfEZwwmkEIRCAg4sihJ
+         Jp/w==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=QuZaGYKg;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id c11si7947554wrp.115.2021.04.28.03.25.02
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 28 Apr 2021 03:25:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=QuZaGYKg;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:34264 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lbhNN-0002pP-Bu
+	for alex.bennee@linaro.org; Wed, 28 Apr 2021 06:25:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56028)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1lbhMP-0002Nx-PF
+ for qemu-devel@nongnu.org; Wed, 28 Apr 2021 06:24:02 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:46642)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1lbhMN-0007eD-Nb
+ for qemu-devel@nongnu.org; Wed, 28 Apr 2021 06:24:01 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1619605438;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=uwMRBwnvqkmhpDezZYn5EKlz+pUMI4hSovctNmwVWao=;
+ b=QuZaGYKgL0hZ2ktdlm6Q9aWYVGSMJqpyvxn5/qgSVFQ+77SNREYb2EtScr5n0t5XxThYDo
+ +PJnX0X3U3P1v6xwQrG3nmpxFvyfHc+PaP7OH14DMmEjqDYZhvLnKtKYs3oJq0c05lH+F8
+ Hkt/HkP73NnwNAAAKzNAUsuGexhTpsE=
+Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
+ [209.85.208.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-433-yQRWLndAOXeY2BnbuHPHPQ-1; Wed, 28 Apr 2021 06:23:57 -0400
+X-MC-Unique: yQRWLndAOXeY2BnbuHPHPQ-1
+Received: by mail-ed1-f71.google.com with SMTP id
+ i2-20020a0564020542b02903875c5e7a00so7157133edx.6
+ for <qemu-devel@nongnu.org>; Wed, 28 Apr 2021 03:23:57 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=uwMRBwnvqkmhpDezZYn5EKlz+pUMI4hSovctNmwVWao=;
+ b=ttxNrAKFz+XNwpC6uSNw1SBWNRp3Cy590zSRdrXFnkgmeX4Crzj3sP6hRwu6MPPNRt
+ Y7WEodiVRYTf6zB61rPKXHEnne//Hu5S29cK7rXsS7TC6maYGuCaU1VoWPOde7VUBnnt
+ fBvBusciCSW0pz04jCS7CioyN8S8U5zs4OXAqZQqacs8MhqGLQkH7BikxoTWhvje33lE
+ FgBYA77wVj4W49nZ5VvtQ8LqEkb2Va3lUEZhzgxQLBE33KNGqjQoHDPYKbcYp/+Z7/bv
+ Z6WyMrrEQhJRhakl/HEgQNstyCe6W/Q0GrQcWoKK4sA+Ysnl9Sdeduniz6B6cCiIowQX
+ 6c0Q==
+X-Gm-Message-State: AOAM532MrdF09lxGMau8lA93/DEdbIAa95adDDnx5xlL3y5UL9Y7egsH
+ p9vCHd4cK+OwkxYl4AYYhSL0rrqssRCqXAAlxgijkGxqdxSRKIUzrKmiXtM2Ydp7CcsHRqqeMy8
+ F6AdKXdTHrkeD/Yo=
+X-Received: by 2002:aa7:de8b:: with SMTP id j11mr10213017edv.363.1619605436212; 
+ Wed, 28 Apr 2021 03:23:56 -0700 (PDT)
+X-Received: by 2002:aa7:de8b:: with SMTP id j11mr10212960edv.363.1619605435867; 
+ Wed, 28 Apr 2021 03:23:55 -0700 (PDT)
+Received: from gator (cst2-174-132.cust.vodafone.cz. [31.30.174.132])
+ by smtp.gmail.com with ESMTPSA id j20sm1642810ejc.110.2021.04.28.03.23.54
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 28 Apr 2021 03:23:55 -0700 (PDT)
+Date: Wed, 28 Apr 2021 12:23:53 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Yanan Wang <wangyanan55@huawei.com>
+Subject: Re: [RFC PATCH v2 1/4] vl.c: Add -smp, clusters=* command line
+ support for ARM cpu
+Message-ID: <20210428102353.cfjvzss56c4zwb4y@gator>
+References: <20210413083147.34236-1-wangyanan55@huawei.com>
+ <20210413083147.34236-2-wangyanan55@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: ozKFdx2ujt86
+In-Reply-To: <20210413083147.34236-2-wangyanan55@huawei.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=drjones@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.218,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Barry Song <song.bao.hua@hisilicon.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S . Tsirkin" <mst@redhat.com>, wanghaibin.wang@huawei.com,
+ qemu-devel@nongnu.org, yangyicong@huawei.com,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+ Alistair Francis <alistair.francis@wdc.com>, prime.zeng@hisilicon.com,
+ Igor Mammedov <imammedo@redhat.com>, yuzenghui@huawei.com,
+ Paolo Bonzini <pbonzini@redhat.com>, zhukeqian1@huawei.com,
+ Jiajie Li <lijiajie11@huawei.com>, David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Fn09/lTHG4xo
 
-When running the test in TCG we are basically running on bare metal so
-don't rely on having a particular kernel errata applied.
+On Tue, Apr 13, 2021 at 04:31:44PM +0800, Yanan Wang wrote:
+> A cluster means a group of cores that share some resources (e.g. cache)
+> among them under the LLC. For example, ARM64 server chip Kunpeng 920 has
+> 6 or 8 clusters in each NUMA, and each cluster has 4 cores. All clusters
+> share L3 cache data while cores within each cluster share the L2 cache.
+> 
+> The cache affinity of cluster has been proved to improve the Linux kernel
+> scheduling performance and a patchset has been posted, in which a general
+> sched_domain for clusters was added and a cluster level was added in the
+> arch-neutral cpu topology struct like below.
+> struct cpu_topology {
+>     int thread_id;
+>     int core_id;
+>     int cluster_id;
+>     int package_id;
+>     int llc_id;
+>     cpumask_t thread_sibling;
+>     cpumask_t core_sibling;
+>     cpumask_t cluster_sibling;
+>     cpumask_t llc_sibling;
+> }
+> 
+> Also the Kernel Doc: Documentation/devicetree/bindings/cpu/cpu-topology.txt
+> defines a four-level CPU topology hierarchy like socket/cluster/core/thread.
+> According to the context, a socket node's child nodes must be one or more
+> cluster nodes and a cluster node's child nodes must be one or more cluster
+> nodes/one or more core nodes.
+> 
+> So let's add the -smp, clusters=* command line support for ARM cpu, so that
+> future guest os could make use of cluster cpu topology for better scheduling
+> performance. For ARM machines, a four-level cpu hierarchy can be defined and
+> it will be sockets/clusters/cores/threads. Because we only support clusters
+> for ARM cpu currently, a new member "unsigned smp_clusters" is added to the
+> VirtMachineState structure.
+> 
+> Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
+> ---
+>  include/hw/arm/virt.h |  1 +
+>  qemu-options.hx       | 26 +++++++++++++++-----------
+>  softmmu/vl.c          |  3 +++
+>  3 files changed, 19 insertions(+), 11 deletions(-)
+> 
+> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> index 4a4b98e4a7..5d5d156924 100644
+> --- a/include/hw/arm/virt.h
+> +++ b/include/hw/arm/virt.h
+> @@ -155,6 +155,7 @@ struct VirtMachineState {
+>      char *pciehb_nodename;
+>      const int *irqmap;
+>      int fdt_size;
+> +    unsigned smp_clusters;
+>      uint32_t clock_phandle;
+>      uint32_t gic_phandle;
+>      uint32_t msi_phandle;
+> diff --git a/qemu-options.hx b/qemu-options.hx
+> index fd21002bd6..65343ea23c 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -184,25 +184,29 @@ SRST
+>  ERST
+>  
+>  DEF("smp", HAS_ARG, QEMU_OPTION_smp,
+> -    "-smp [cpus=]n[,maxcpus=cpus][,cores=cores][,threads=threads][,dies=dies][,sockets=sockets]\n"
+> +    "-smp [cpus=]n[,maxcpus=cpus][,clusters=clusters][,cores=cores][,threads=threads][,dies=dies][,sockets=sockets]\n"
 
-You might wonder why we handle this with a totally new test name
-instead of adjusting the append as we have before? Well the
-run_migration shell script uses eval "$@" which unwraps the -append
-leading to any second parameter being split and leaving QEMU very
-confused and the test hanging. This seemed simpler than re-writing all
-the test running logic in something sane ;-)
+Please put clusters directly in front of dies in the above list, like it
+is in the list description below
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Cc: Shashi Mallela <shashi.mallela@linaro.org>
----
- arm/gic.c         |  7 ++++++-
- arm/unittests.cfg | 11 ++++++++++-
- 2 files changed, 16 insertions(+), 2 deletions(-)
+>      "                set the number of CPUs to 'n' [default=1]\n"
+>      "                maxcpus= maximum number of total cpus, including\n"
+>      "                offline CPUs for hotplug, etc\n"
+> -    "                cores= number of CPU cores on one socket (for PC, it's on one die)\n"
+> +    "                cores= number of CPU cores on one socket\n"
+> +    "                (it's on one die for PC, and on one cluster for ARM)\n"
+>      "                threads= number of threads on one CPU core\n"
+> +    "                clusters= number of CPU clusters on one socket (for ARM only)\n"
+>      "                dies= number of CPU dies on one socket (for PC only)\n"
+>      "                sockets= number of discrete sockets in the system\n",
+>          QEMU_ARCH_ALL)
+>  SRST
+> -``-smp [cpus=]n[,cores=cores][,threads=threads][,dies=dies][,sockets=sockets][,maxcpus=maxcpus]``
+> -    Simulate an SMP system with n CPUs. On the PC target, up to 255 CPUs
+> -    are supported. On Sparc32 target, Linux limits the number of usable
+> -    CPUs to 4. For the PC target, the number of cores per die, the
+> -    number of threads per cores, the number of dies per packages and the
+> -    total number of sockets can be specified. Missing values will be
+> -    computed. If any on the three values is given, the total number of
+> -    CPUs n can be omitted. maxcpus specifies the maximum number of
+> -    hotpluggable CPUs.
+> +``-smp [cpus=]n[,maxcpus=cpus][,clusters=clusters][,cores=cores][,threads=threads][,dies=dies][,sockets=sockets]``
 
-diff --git a/arm/gic.c b/arm/gic.c
-index 96a329d..3bc7477 100644
---- a/arm/gic.c
-+++ b/arm/gic.c
-@@ -843,7 +843,7 @@ static void test_migrate_unmapped_collection(void)
- 		goto do_migrate;
- 	}
- 
--	if (!errata(ERRATA_UNMAPPED_COLLECTIONS)) {
-+	if (!errata(ERRATA_UNMAPPED_COLLECTIONS) && !under_tcg) {
- 		report_skip("Skipping test, as this test hangs without the fix. "
- 			    "Set %s=y to enable.", ERRATA_UNMAPPED_COLLECTIONS);
- 		test_skipped = true;
-@@ -1017,6 +1017,11 @@ int main(int argc, char **argv)
- 		report_prefix_push(argv[1]);
- 		test_migrate_unmapped_collection();
- 		report_prefix_pop();
-+	} else if (!strcmp(argv[1], "its-migrate-unmapped-collection-tcg")) {
-+		under_tcg = true;
-+		report_prefix_push(argv[1]);
-+		test_migrate_unmapped_collection();
-+		report_prefix_pop();
- 	} else if (strcmp(argv[1], "its-introspection") == 0) {
- 		report_prefix_push(argv[1]);
- 		test_its_introspection();
-diff --git a/arm/unittests.cfg b/arm/unittests.cfg
-index d4dbc8b..e8f2e74 100644
---- a/arm/unittests.cfg
-+++ b/arm/unittests.cfg
-@@ -214,13 +214,22 @@ extra_params = -machine gic-version=3 -append 'its-pending-migration'
- groups = its migration
- arch = arm64
- 
--[its-migrate-unmapped-collection]
-+[its-migrate-unmapped-collection-kvm]
- file = gic.flat
- smp = $MAX_SMP
-+accel = kvm
- extra_params = -machine gic-version=3 -append 'its-migrate-unmapped-collection'
- groups = its migration
- arch = arm64
- 
-+[its-migrate-unmapped-collection-tcg]
-+file = gic.flat
-+smp = $MAX_SMP
-+accel = tcg
-+extra_params = -machine gic-version=3 -append 'its-migrate-unmapped-collection-tcg'
-+groups = its migration
-+arch = arm64
-+
- # Test PSCI emulation
- [psci]
- file = psci.flat
--- 
-2.20.1
+Also move clusters in this list over in front of dies to match the
+suggested change above.
+
+> +    Simulate an SMP system with n CPUs. On the PC target, up to 255
+> +    CPUs are supported. On the Sparc32 target, Linux limits the number
+> +    of usable CPUs to 4. For the PC target, the number of threads per
+> +    core, the number of cores per die, the number of dies per package
+> +    and the total number of sockets can be specified. For the ARM target,
+> +    the number of threads per core, the number of cores per cluster, the
+> +    number of clusters per socket and the total number of sockets can be
+> +    specified. And missing values will be computed. If any of the five
+> +    values is given, the total number of CPUs n can be omitted. Maxcpus
+> +    specifies the maximum number of hotpluggable CPUs.
+>  ERST
+>  
+>  DEF("numa", HAS_ARG, QEMU_OPTION_numa,
+> diff --git a/softmmu/vl.c b/softmmu/vl.c
+> index aadb526138..46f5b6b575 100644
+> --- a/softmmu/vl.c
+> +++ b/softmmu/vl.c
+> @@ -720,6 +720,9 @@ static QemuOptsList qemu_smp_opts = {
+>          }, {
+>              .name = "dies",
+>              .type = QEMU_OPT_NUMBER,
+> +        }, {
+> +            .name = "clusters",
+> +            .type = QEMU_OPT_NUMBER,
+>          }, {
+>              .name = "cores",
+>              .type = QEMU_OPT_NUMBER,
+> -- 
+> 2.19.1
+>
+
+Thanks,
+drew
+

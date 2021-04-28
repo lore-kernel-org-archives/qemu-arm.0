@@ -1,75 +1,46 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id z18sm8011759wrh.16.2021.04.28.05.07.08
+        by smtp.gmail.com with ESMTPSA id j13sm7873547wrw.93.2021.04.28.06.13.27
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 28 Apr 2021 05:07:08 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id B1ADC1FF7E;
-	Wed, 28 Apr 2021 13:07:07 +0100 (BST)
-References: <20210428101844.22656-1-alex.bennee@linaro.org>
- <20210428101844.22656-2-alex.bennee@linaro.org>
- <eaed3c63988513fe2849c2d6f22937af@kernel.org>
-User-agent: mu4e 1.5.12; emacs 28.0.50
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Marc Zyngier <maz@kernel.org>
-Cc: kvm@vger.kernel.org, shashi.mallela@linaro.org,
- alexandru.elisei@arm.com, eric.auger@redhat.com, qemu-arm@nongnu.org,
- linux-arm-kernel@lists.infradead.org, kvmarm@lists.cs.columbia.edu,
- christoffer.dall@arm.com
-Subject: Re: [kvm-unit-tests PATCH v1 1/4] arm64: split its-trigger test
- into KVM and TCG variants
-Date: Wed, 28 Apr 2021 13:06:18 +0100
-In-reply-to: <eaed3c63988513fe2849c2d6f22937af@kernel.org>
-Message-ID: <87fszasjdg.fsf@linaro.org>
+        Wed, 28 Apr 2021 06:13:27 -0700 (PDT)
+Received: from zen.lan (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id EAC011FF7E;
+	Wed, 28 Apr 2021 14:13:26 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Radoslaw Biernacki <rad@semihalf.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Leif Lindholm <leif@nuviainc.com>,
+	qemu-arm@nongnu.org (open list:SBSA-REF)
+Subject: [PATCH] docs: fix link in sbsa description
+Date: Wed, 28 Apr 2021 14:13:16 +0100
+Message-Id: <20210428131316.31390-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: v2SonhQQ7UMU
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: jhPw8lVEkdWC
 
+A trailing _ makes all the difference to the rendered link.
 
-Marc Zyngier <maz@kernel.org> writes:
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ docs/system/arm/sbsa.rst | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> On 2021-04-28 11:18, Alex Benn=C3=A9e wrote:
->> A few of the its-trigger tests rely on IMPDEF behaviour where caches
->> aren't flushed before invall events. However TCG emulation doesn't
->> model any invall behaviour and as we can't probe for it we need to be
->> told. Split the test into a KVM and TCG variant and skip the invall
->> tests when under TCG.
->> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->> Cc: Shashi Mallela <shashi.mallela@linaro.org>
->> ---
->>  arm/gic.c         | 60 +++++++++++++++++++++++++++--------------------
->>  arm/unittests.cfg | 11 ++++++++-
->>  2 files changed, 45 insertions(+), 26 deletions(-)
->> diff --git a/arm/gic.c b/arm/gic.c
->> index 98135ef..96a329d 100644
->> --- a/arm/gic.c
->> +++ b/arm/gic.c
->> @@ -36,6 +36,7 @@ static struct gic *gic;
->>  static int acked[NR_CPUS], spurious[NR_CPUS];
->>  static int irq_sender[NR_CPUS], irq_number[NR_CPUS];
->>  static cpumask_t ready;
->> +static bool under_tcg;
->>  static void nr_cpu_check(int nr)
->>  {
->> @@ -734,32 +735,38 @@ static void test_its_trigger(void)
->>  	/*
->>  	 * re-enable the LPI but willingly do not call invall
->>  	 * so the change in config is not taken into account.
->> -	 * The LPI should not hit
->> +	 * The LPI should not hit. This does however depend on
->> +	 * implementation defined behaviour - under QEMU TCG emulation
->> +	 * it can quite correctly process the event directly.
->
-> It looks to me that you are using an IMPDEF behaviour of *TCG*
-> here. The programming model mandates that there is an invalidation
-> if you change the configuration of the LPI.
-
-But does it mandate that the LPI cannot be sent until the invalidation?
-
->
->         M.
-
-
---=20
-Alex Benn=C3=A9e
+diff --git a/docs/system/arm/sbsa.rst b/docs/system/arm/sbsa.rst
+index b8ecfdb62f..27b0999aac 100644
+--- a/docs/system/arm/sbsa.rst
++++ b/docs/system/arm/sbsa.rst
+@@ -4,7 +4,7 @@ Arm Server Base System Architecture Reference board (``sbsa-ref``)
+ While the `virt` board is a generic board platform that doesn't match
+ any real hardware the `sbsa-ref` board intends to look like real
+ hardware. The `Server Base System Architecture
+-<https://developer.arm.com/documentation/den0029/latest>` defines a
++<https://developer.arm.com/documentation/den0029/latest>`_ defines a
+ minimum base line of hardware support and importantly how the firmware
+ reports that to any operating system. It is a static system that
+ reports a very minimal DT to the firmware for non-discoverable
+-- 
+2.20.1

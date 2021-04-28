@@ -1,95 +1,123 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp290851lfb;
-        Tue, 27 Apr 2021 23:38:48 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzH1zPsMjYPSN9Ffals6Xf1zYh7HKrWl4Oks5TeBodv526sl3WpcO0vo0pjCfz4Fz4iYhqb
-X-Received: by 2002:a05:6122:2153:: with SMTP id m19mr23180883vkd.4.1619591927988;
-        Tue, 27 Apr 2021 23:38:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619591927; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp464133lfb;
+        Wed, 28 Apr 2021 03:41:58 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxkuhWPb6b5OQXfa+pMAJE1uy1mCv8BSf5hs1/0ijBvUCk+0i500w1tcMlN7EhdTvDzTtIR
+X-Received: by 2002:a1f:1794:: with SMTP id 142mr24341127vkx.25.1619606518027;
+        Wed, 28 Apr 2021 03:41:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619606518; cv=none;
         d=google.com; s=arc-20160816;
-        b=nor9RPGkv7t2FgYH8qOSXHabvqQbXTHc36MG7MXrux38//xHYTty2UhAD8FcFliuyK
-         kAbrkzqy/cDByCNBr6179hsZjBI+m/MrbNCbAtb+toTAj6X4P4/irSD+FjrsOOEmrUfP
-         FcpprjyWkgOHtMD/aU/IIKQlqxqEDk42K/KFSeKJmHrJF7ilR55XwJxaDgV7ZACidddp
-         7wYJw4BJDO8rVtXlGuEKHwejRT6oF7m9dGuT3Ljw5wfBOWoI4PPQ3EfaaEtGO0FpsGox
-         V8i2OYYaL1Ejt9kannbMq/xFegWgD6rZs44jYUC36Bs9vxvX7U9VFr2PcACDrpqmYyeC
-         L6aQ==
+        b=h3khGct+tp4iqBhAXGVuDRUdBO2hS/17MbldY6EQ0w6QeLqKWKO8IwY3I7KKJNY+1W
+         yW3XOureVAh8ty8NJ00cozjKxAbJJjV1LsplknnqT1hCstjyWmcb9b3dg7qmbdeoqcQI
+         RkEAflb3eUmyOUnkEa5yrpHHvGwWaZVu5QCp/ngWaq2dGOUYuhxBeYfty/65NsezVcwq
+         oD0Q36ToNaeJAKOcSC8ielDxrG2Wr2K/VEZW4cyzN4LOOHa+IVY17KVwYuWA6iCDGR0C
+         xw+JHhVwW5vfTbHt5rkO4JEtNyvWUYy9/H13BWkkL32wq3NcNrKfOqOgaHccUj4deuWh
+         HfvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=hGmGCjO946uWv3/mER/DV3U8SxzZPq10ecYi239Z3QY=;
-        b=PcGYyf0AnSOy6ZWkEM9H2l3+KeysDNCQhBYhzRd5lFgKj0hRYpOCI1YMMUPFKW7V4E
-         Cb8uE0h5TsB36PIekEcG9dFx/uutYpU9auJeyZbL/n/YTm30xBJqeWuEAOhze0Ay6YNC
-         pQ2GfOpz8dhH88+THgFDqlqHHsOj7BQqbmee5V1m8BvqlioduLy13eueaIwLH7BhifLH
-         0U4HbCPyGb1dIkzUHDaITROwObo3NvlKE+XTk3sMhZwhJnWLO0eufOKClcFwyPBz+2wv
-         lEHRD9fP8EnDYuHeHepByBPtgtJDZ4r5Vj857cKSUfAEHxI9Y2dtycORz/+uc7G5njI2
-         RWVw==
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=wVr1BRcenpjzOiZ9xw/vOlWRBXUlFYm0CmJkb4xTAB0=;
+        b=AFHVkFhwMRPbhjKu6Dkt0CSf7HzXCotTHylyrEYhcHWyKXPeNso5VStP9KYXrZcw46
+         4eOb/6WP8bIZnuog/eWLH8UpuQh6WiFHL8SKUv9Q9EXnVN7xu0v+kzr6pkjSPGcDFhxq
+         fwuIU1d5AU01ToK0cX+FezmnAafkjB6ri6Nggg9XEwFHQLuYDPw3TWK8YUNB+0YdYg1r
+         74eVQ6pDp1IWFsQE4rBRmMkLPsoG7+o8CBoP3BwaUQBsJqUP5Q4yoZTVLY8EC5aIHMmB
+         fScCR0IRzqoPS2y5BUHZQujFecOovPREsSExBnEqcDFk9ezk3z89ZJGlBoQvBMg4Il/M
+         q9MA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Iu0fSdE6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f30si3903758vsl.31.2021.04.27.23.38.47
+        by mx.google.com with ESMTPS id a2si3069543uaf.205.2021.04.28.03.41.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 27 Apr 2021 23:38:47 -0700 (PDT)
+        Wed, 28 Apr 2021 03:41:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Iu0fSdE6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:60758 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:47748 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lbdqR-0001nn-9U
-	for alex.bennee@linaro.org; Wed, 28 Apr 2021 02:38:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59230)
+	id 1lbhdl-0000qQ-Dp
+	for alex.bennee@linaro.org; Wed, 28 Apr 2021 06:41:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59654)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1lbdoK-0000Gi-7p; Wed, 28 Apr 2021 02:36:36 -0400
-Received: from szxga02-in.huawei.com ([45.249.212.188]:2079)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1lbhdY-0000qK-JL
+ for qemu-arm@nongnu.org; Wed, 28 Apr 2021 06:41:44 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:38591)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1lbdoH-0005Sf-EO; Wed, 28 Apr 2021 02:36:36 -0400
-Received: from dggeml703-chm.china.huawei.com (unknown [172.30.72.57])
- by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4FVTPC1D7MzYfBX;
- Wed, 28 Apr 2021 14:34:07 +0800 (CST)
-Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
- dggeml703-chm.china.huawei.com (10.3.17.136) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.2176.2; Wed, 28 Apr 2021 14:36:24 +0800
-Received: from [10.174.187.128] (10.174.187.128) by
- dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
- 15.1.2176.2; Wed, 28 Apr 2021 14:36:21 +0800
-Subject: Re: [RFC PATCH v2 2/6] hw/arm/virt: DT: Add cpu-map
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>, Andrew Jones
- <drjones@redhat.com>
-References: <20210413080745.33004-1-wangyanan55@huawei.com>
- <20210413080745.33004-3-wangyanan55@huawei.com>
- <648ff988-35f6-1857-2194-0d3e11e0d15c@redhat.com>
- <20210427100442.elz3bjgl6mcntevc@gator.home>
- <afe6dbd6-d026-3fd4-b794-01fe566e27a3@redhat.com>
-From: "wangyanan (Y)" <wangyanan55@huawei.com>
-Message-ID: <942cefdf-6d7c-8463-48b5-108b789988ae@huawei.com>
-Date: Wed, 28 Apr 2021 14:36:20 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1lbhdV-0001hK-7Z
+ for qemu-arm@nongnu.org; Wed, 28 Apr 2021 06:41:43 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1619606497;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=wVr1BRcenpjzOiZ9xw/vOlWRBXUlFYm0CmJkb4xTAB0=;
+ b=Iu0fSdE6BHYiA6n6gIdIIuUuH5BmqRKQopbiBUbOV1BOhR0f9vMxcZUDMWg41Yqg3I4wQL
+ 7/zl3t0kT9k3Ic3fjIK5Q9CDhH9hRFHTdp04KNeQSSGqsTK8foP2YMUW/zFVpkjD61+/pf
+ sMn/FJl4gKQZE31v6dI+I2O2S6n1n5c=
+Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
+ [209.85.208.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-599-XVmJ5ENHN3-a0VglYEo_4Q-1; Wed, 28 Apr 2021 06:41:33 -0400
+X-MC-Unique: XVmJ5ENHN3-a0VglYEo_4Q-1
+Received: by mail-ed1-f72.google.com with SMTP id
+ c15-20020a056402100fb029038518e5afc5so19145589edu.18
+ for <qemu-arm@nongnu.org>; Wed, 28 Apr 2021 03:41:33 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=wVr1BRcenpjzOiZ9xw/vOlWRBXUlFYm0CmJkb4xTAB0=;
+ b=lVN92X55UUlMHfakZDsfqInf6d7mIF6XOFcBpCyxjUelf1du7o2S8h4oK7DJzMKVb4
+ RfenZWI4/62pghRSvY3f4I2QvZnYEGLhMlkfwtrfyy91XjxJDTGTcPcbcObKNQ+GjGOw
+ kBEqSJWeq9NE7RjEdZmu1v7g+8uapEPxCxwtnNserR4OMKdVj3bvgXLujmtXUsDF8lA2
+ wAf77GlLbGmh+k1jCRybT/FhIcb5tKoK+6gynlYxlaUD3yHcP/N+JbDvtnI571dX5zYv
+ 1XkXDIBVx836hCdWUWky9g6ruxuq2vYiA12vE+ZKLaPj+mMfdsvYFuDiVazrco6F41uN
+ I9Rw==
+X-Gm-Message-State: AOAM5310aol9zfH7UzeTyfepl9xCg2YcYnGWjfVqPS4hVR2JHuxHQ+Hb
+ htq0PVqIB4lt4xFkChZKUhVhx3THVUNJTJKkaaGH7wkQZzO0kkBxLYUByvxtQeqhi6YF6iQGtBp
+ RRJzIPNQaIivs
+X-Received: by 2002:a17:907:a044:: with SMTP id
+ gz4mr12244791ejc.55.1619606492602; 
+ Wed, 28 Apr 2021 03:41:32 -0700 (PDT)
+X-Received: by 2002:a17:907:a044:: with SMTP id
+ gz4mr12244762ejc.55.1619606492392; 
+ Wed, 28 Apr 2021 03:41:32 -0700 (PDT)
+Received: from gator (cst2-174-132.cust.vodafone.cz. [31.30.174.132])
+ by smtp.gmail.com with ESMTPSA id i19sm1651706ejd.114.2021.04.28.03.41.31
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 28 Apr 2021 03:41:32 -0700 (PDT)
+Date: Wed, 28 Apr 2021 12:41:25 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Yanan Wang <wangyanan55@huawei.com>
+Subject: Re: [RFC PATCH v2 3/4] hw/arm/virt-acpi-build: Add cluster level for
+ PPTT table
+Message-ID: <20210428104125.tnj53dpohoffdjmu@gator>
+References: <20210413083147.34236-1-wangyanan55@huawei.com>
+ <20210413083147.34236-4-wangyanan55@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <afe6dbd6-d026-3fd4-b794-01fe566e27a3@redhat.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-X-Originating-IP: [10.174.187.128]
-X-ClientProxiedBy: dggeme713-chm.china.huawei.com (10.1.199.109) To
- dggpemm500023.china.huawei.com (7.185.36.83)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.188;
- envelope-from=wangyanan55@huawei.com; helo=szxga02-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20210413083147.34236-4-wangyanan55@huawei.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=drjones@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.22,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -102,135 +130,28 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S . Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
- Shannon Zhao <shannon.zhaosl@gmail.com>, Igor Mammedov <imammedo@redhat.com>,
- qemu-arm@nongnu.org, Alistair Francis <alistair.francis@wdc.com>,
- prime.zeng@hisilicon.com, yangyicong@huawei.com, yuzenghui@huawei.com,
- wanghaibin.wang@huawei.com, zhukeqian1@huawei.com,
+Cc: Barry Song <song.bao.hua@hisilicon.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S . Tsirkin" <mst@redhat.com>, wanghaibin.wang@huawei.com,
+ qemu-devel@nongnu.org, yangyicong@huawei.com,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+ Alistair Francis <alistair.francis@wdc.com>, prime.zeng@hisilicon.com,
+ Igor Mammedov <imammedo@redhat.com>, yuzenghui@huawei.com,
+ Paolo Bonzini <pbonzini@redhat.com>, zhukeqian1@huawei.com,
  Jiajie Li <lijiajie11@huawei.com>, David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: C5lsmW0YlJo6
+X-TUID: Dg3a8ymIBnVp
 
+On Tue, Apr 13, 2021 at 04:31:46PM +0800, Yanan Wang wrote:
+> Add a Processor Hierarchy Node of cluster level between core level
+> and package level for ARM PPTT table.
+> 
+> Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
+> ---
+>  hw/arm/virt-acpi-build.c | 55 ++++++++++++++++++++++++----------------
+>  1 file changed, 33 insertions(+), 22 deletions(-)
+>
 
-On 2021/4/27 20:36, Philippe Mathieu-Daudé wrote:
-> On 4/27/21 12:04 PM, Andrew Jones wrote:
->> On Tue, Apr 27, 2021 at 11:47:17AM +0200, Philippe Mathieu-Daudé wrote:
->>> Hi Yanan, Drew,
->>>
->>> On 4/13/21 10:07 AM, Yanan Wang wrote:
->>>> From: Andrew Jones <drjones@redhat.com>
->>>>
->>>> Support device tree CPU topology descriptions.
->>>>
->>>> Signed-off-by: Andrew Jones <drjones@redhat.com>
->>>> Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
->>>> ---
->>>>   hw/arm/virt.c         | 41 ++++++++++++++++++++++++++++++++++++++++-
->>>>   include/hw/arm/virt.h |  1 +
->>>>   2 files changed, 41 insertions(+), 1 deletion(-)
->>>>
->>>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->>>> index 9f01d9041b..f4ae60ded9 100644
->>>> --- a/hw/arm/virt.c
->>>> +++ b/hw/arm/virt.c
->>>> @@ -352,10 +352,11 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
->>>>       int cpu;
->>>>       int addr_cells = 1;
->>>>       const MachineState *ms = MACHINE(vms);
->>>> +    const VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
->>>>       int smp_cpus = ms->smp.cpus;
->>>>   
->>>>       /*
->>>> -     * From Documentation/devicetree/bindings/arm/cpus.txt
->>>> +     *  See Linux Documentation/devicetree/bindings/arm/cpus.yaml
->>>>        *  On ARM v8 64-bit systems value should be set to 2,
->>>>        *  that corresponds to the MPIDR_EL1 register size.
->>>>        *  If MPIDR_EL1[63:32] value is equal to 0 on all CPUs
->>>> @@ -408,8 +409,45 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
->>>>                   ms->possible_cpus->cpus[cs->cpu_index].props.node_id);
->>>>           }
->>>>   
->>>> +        if (ms->smp.cpus > 1 && !vmc->no_cpu_topology) {
->>>> +            qemu_fdt_setprop_cell(ms->fdt, nodename, "phandle",
->>>> +                                  qemu_fdt_alloc_phandle(ms->fdt));
->>>> +        }
->>>> +
->>>>           g_free(nodename);
->>>>       }
->>>> +
->>>> +    if (ms->smp.cpus > 1 && !vmc->no_cpu_topology) {
->>>> +        /*
->>>> +         * See Linux Documentation/devicetree/bindings/cpu/cpu-topology.txt
->>>> +         * In a SMP system, the hierarchy of CPUs is defined through four
->>>> +         * entities that are used to describe the layout of physical CPUs
->>>> +         * in the system: socket/cluster/core/thread.
->>>> +         */
->>>> +        qemu_fdt_add_subnode(ms->fdt, "/cpus/cpu-map");
->>>> +
->>>> +        for (cpu = ms->smp.cpus - 1; cpu >= 0; cpu--) {
->>>> +            char *cpu_path = g_strdup_printf("/cpus/cpu@%d", cpu);
->>>> +            char *map_path;
->>>> +
->>>> +            if (ms->smp.threads > 1) {
->>>> +                map_path = g_strdup_printf(
->>>> +                    "/cpus/cpu-map/%s%d/%s%d/%s%d",
->>>> +                    "socket", cpu / (ms->smp.cores * ms->smp.threads),
->>>> +                    "core", (cpu / ms->smp.threads) % ms->smp.cores,
->>>> +                    "thread", cpu % ms->smp.threads);
->>>> +            } else {
->>>> +                map_path = g_strdup_printf(
->>>> +                    "/cpus/cpu-map/%s%d/%s%d",
->>>> +                    "socket", cpu / ms->smp.cores,
->>>> +                    "core", cpu % ms->smp.cores);
->>>> +            }
->>>> +            qemu_fdt_add_path(ms->fdt, map_path);
->>>> +            qemu_fdt_setprop_phandle(ms->fdt, map_path, "cpu", cpu_path);
->>>> +            g_free(map_path);
->>>> +            g_free(cpu_path);
->>>> +        }
->>>> +    }
->>>>   }
->>>>   
->>>>   static void fdt_add_its_gic_node(VirtMachineState *vms)
->>>> @@ -2769,6 +2807,7 @@ static void virt_machine_5_2_options(MachineClass *mc)
->>>>       virt_machine_6_0_options(mc);
->>>>       compat_props_add(mc->compat_props, hw_compat_5_2, hw_compat_5_2_len);
->>>>       vmc->no_secure_gpio = true;
->>>> +    vmc->no_cpu_topology = true;
->>> Bare with me because "machine versioning" is something new to me, I was
->>> expecting it to be only related to migrated fields.
->>> Why do we need to care about not adding the FDT node in older machines?
->>> Shouldn't the guest skip unknown FDT nodes?
->> It probably should, the question is whether it would. Also, the nodes may
->> not be unknown, so the guest will read the information and set up its
->> topology as instructed. That topology may not be the same as what was
->> getting used by default without the topology description. It's possible
->> that a user's application has a dependency on the topology and if that
->> topology gets changed under its feat it'll behave differently.
-> [*]
->
-> I see.
->
->> In short, machine versioning isn't just about vmstate, it's also about
->> keeping a machine type looking the same to the guest.
-> Yes, TIL.
->
->> Now, it's possible that we're being overly cautious here, but this compat
->> variable doesn't complicate code too much. So I think I'd prefer to use it
->> than not.
-> No problem. Could you or Yanan add your first paragraph ([*], reworded
-> in the commit description? I don't think a comment in the code is
-> useful, but having it in the commit is helpful IMO.
-Hi Philippe,
+Reviewed-by: Andrew Jones <drjones@redhat.com>
 
-Of course. I think I can do this for the commit description.
-
-Thanks,
-Yanan
-> Thanks,
->
-> Phil.
->
-> .

@@ -1,247 +1,272 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp785221lfb;
-        Wed, 28 Apr 2021 09:33:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzWqv6OUVvUm8Sm3PWZyc8Ng/24j7Va5tYMw2cA7ekEtCQdpV/K/cunm2Jt46sB+e28jE5c
-X-Received: by 2002:a6b:f017:: with SMTP id w23mr5846393ioc.189.1619627632275;
-        Wed, 28 Apr 2021 09:33:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619627632; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp846387lfb;
+        Wed, 28 Apr 2021 10:44:39 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwRBlKZaJxICVmGp+q/n+oEdTDvZNo+5pAnX7YkOX18C5+oD+Mxqo35CMW4bs2+YY189xOQ
+X-Received: by 2002:ac8:5806:: with SMTP id g6mr28278016qtg.152.1619631878522;
+        Wed, 28 Apr 2021 10:44:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619631878; cv=none;
         d=google.com; s=arc-20160816;
-        b=gAUpP2L3Zof3aoH/Z0IfY/LPhK7KB3lkPS8zQ2jg/I4jr2kj7P853vxF0m5t8+uE6l
-         PwtcTM6UJQqjSbC9qz+5hTPZZPSTtWIDmxtHB96B+KW3UyXqimhNrVE7uJPNs4uQuSBk
-         FaLFrfy5fxLqZtVHKjeosqXOtI8MHbyGkbplar5dbzDzfemWfo+f7fIKshu64t+b9WgA
-         VtzM0SCozGcvRZ4RuLUbmo6qDnu0diju4qfaUSrtGu3XlaqKC7tUYvYtt+D+f2+wJXEF
-         7c36rsUq2n4p+ZlpM3THXmTZphxazyqD6glpqH/sPjCPFyQGlYPy6xfoVIrgsuk00w9W
-         t28Q==
+        b=kRwArUnejQWnraxC8/49bYC/5B07EwSjWHvhw3jky+aBpTuDsKSucKqjT99pqFg3zQ
+         1gPCvNauM3QneLuBzpl8QxvNe+MlH1vIh5+OwnAy7kfiAkDcouHnTHmO8F02Z9lOfvXW
+         RGCr7UukKSHL6suYwk02SKMmQDwcPui0mK7SkGTRHoqRW31u9ZuMIJ+Mp0e3jfy3GmwN
+         OC5e8TEaqSc5egzW6JANMmKAopP9P5VLbr4fSkJkOLwWrA0+eceghUZLSwBguaQgeRbp
+         B8ePLidt8QfyMSB1zMaWOn8V9hi4+S4XMeW0nUn78oAU/3+OGkKylcWSEvWhftUJy59Q
+         X5yw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:date:message-id:from
-         :references:to:subject:dkim-signature;
-        bh=NaaL3pZShYuph3XhAb3tj4IZCJjIpT5TogklEYi3w6w=;
-        b=Yq+XChvwpd0LkTaY7TMhqJ7RH36HGqp2EFlWeBIpII9ZS5OIxgIdHtxB1W13798YMg
-         Cj+GTovKJXTklc3eDXv7TQsENYW4+EPC7WDpkQOY3Bi/FkO4DW8cpXufvLPRkxlxHfNe
-         ZM8TU8nXz+9VQ4aLJHM8DJHeFDCfdEHJ8s8YI/Xj2Pru7BM+g39CpRKBeGb72sC6truC
-         YE2d8/UzcQREcX8Bq61BHqLoQhU9aAG05fOXHdAV07RE3oYUtImaZnvJQeYZ4ttdDVk1
-         oQtfTCf6GxlGknJ574aPJA+PyXfylS45jNWxNZbwVKm31im9SSvW/icI7wFMVtnTdTv2
-         OlCA==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=Ft7AsfLT38lKQnO0Vzs1l8qjmjgwtYnPzE/amFKSrLQ=;
+        b=X2jLeyxCPZRu1102WVXdjGL0IjjWAMKH2ZNn+RQ/rYWsOU4+f+8KWUaWipfLJCL5fu
+         krUIKq7G0c4R8sqyxT2vwDQEa0r/xHEhExF2ahh0SdpLy4VwNy995Ylr8xOHwNEgp6nA
+         dsTzW+AK2x+G32NIm2/UoAmH+XUGi3x+YWXPPek9dKpNpoeP6M0/9zeFG9bDm+5hk0SN
+         z466oxY0hdA0gTNVO0Y6Y+XzjPN81cDD11X/N7z+RpFlDNrccQO5qQwCDPtHgtReQa9d
+         cxwWMLo3Xg7TJOu46nPWfbRldHrnL/8orRVw3KaUCobs1uvNs6zbaFWT8onrnUzObPot
+         /heQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="RoaxyOL/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ph6CgyXr;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h13si239726ild.132.2021.04.28.09.33.52
+        by mx.google.com with ESMTPS id t11si315225qkp.144.2021.04.28.10.44.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 28 Apr 2021 09:33:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 28 Apr 2021 10:44:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="RoaxyOL/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ph6CgyXr;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38734 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54546 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lbn8J-0001SB-K7
-	for alex.bennee@linaro.org; Wed, 28 Apr 2021 12:33:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55346)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lboEo-0002Hc-0O
+	for alex.bennee@linaro.org; Wed, 28 Apr 2021 13:44:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46290)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1lbn84-0001QL-85
- for qemu-arm@nongnu.org; Wed, 28 Apr 2021 12:33:36 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:57534)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lbnzz-0004qN-53
+ for qemu-devel@nongnu.org; Wed, 28 Apr 2021 13:29:19 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:23926)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1lbn7z-0000BA-HI
- for qemu-arm@nongnu.org; Wed, 28 Apr 2021 12:33:36 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lbnzv-00087E-9R
+ for qemu-devel@nongnu.org; Wed, 28 Apr 2021 13:29:18 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1619627610;
+ s=mimecast20190719; t=1619630954;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=NaaL3pZShYuph3XhAb3tj4IZCJjIpT5TogklEYi3w6w=;
- b=RoaxyOL/sk/T0vUnsuS5IzLrSdp1GL2RvSErhPO+e+ZEOUNEaBPLJXiLW2xiKbiapvrOtj
- YxBldYBbW0qPiwwWTPOzO0IuXXU0EbMEFLm2fRqFKuVGNJoMLeRSo39Wez5OzCIXLhP9Oe
- qMXqjMxaqcYUNZr7pQnR5IMSkCKba+0=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-443-OyTuH6NaMMOgF5hyA49oEA-1; Wed, 28 Apr 2021 12:33:28 -0400
-X-MC-Unique: OyTuH6NaMMOgF5hyA49oEA-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 421318030DD;
- Wed, 28 Apr 2021 16:33:26 +0000 (UTC)
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-114-188.ams2.redhat.com
- [10.36.114.188])
- by smtp.corp.redhat.com (Postfix) with ESMTP id C2ABD5C224;
- Wed, 28 Apr 2021 16:33:12 +0000 (UTC)
-Subject: Re: [PATCH 5/7] hw: Have machines Kconfig-select FW_CFG
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
+ bh=Ft7AsfLT38lKQnO0Vzs1l8qjmjgwtYnPzE/amFKSrLQ=;
+ b=Ph6CgyXraTlw/GDwHNa5SzID6lq9rzNWDpL1iQ3f2lErG1qKuWisgAEBLNDGcPLO8Ucj4y
+ w7ERAGM5+GeGlb58AhgHyfsJJAF2a6nStbdb9S+pYfQEGoyt2dLYgunDrwSP19XzOomOI2
+ lzjxvX1/nVKZ2SJoyhVGOJrmd2EO7DQ=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-29-0tqeNMe3P2SFGIrk2I6tjA-1; Wed, 28 Apr 2021 13:29:11 -0400
+X-MC-Unique: 0tqeNMe3P2SFGIrk2I6tjA-1
+Received: by mail-wm1-f71.google.com with SMTP id
+ b16-20020a7bc2500000b029014587f5376dso244367wmj.1
+ for <qemu-devel@nongnu.org>; Wed, 28 Apr 2021 10:29:11 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=Ft7AsfLT38lKQnO0Vzs1l8qjmjgwtYnPzE/amFKSrLQ=;
+ b=r8+IcayCgbvX0lVRqGvx6niXL8+tPhz9MNGJnFRBvewApfMp+jp70lFRy1CJganhyY
+ P790aFuFBJ+zGJ8Iu5ahUH3OvnfCqWoFyOYs9MNMuy9IwScxS59iOJQk+MIV880CcKSQ
+ F1/k2jXNgxfe56Px/OVBkwfRdyZ/zHBJ+VBT1WUsZslLbfh5O2OLwFGUgHKf1Urh28b0
+ HcD5zVO3Tj6+alNVyt995qzQU/Qu5Xgl4uMv1IB/Xwg74z11vV48FtDVR+rvkxo0Gou/
+ cv/ValQgWyzFAkJAHu0enNSttkSxgDHAjbjX7N0j0AX5JMvp2urDmiT257V7QdY2e/Ib
+ WT5A==
+X-Gm-Message-State: AOAM533ye8cm2BDev3r320QhuXbUJ7UrWstkzVpZgpo+nl61nDYsU1l7
+ 9xrbRhhjRf3e6+RAIfxwuBjAbSZDKU9UenJ2UKj87ShYAzgS+q2eSuFIIk9yPdrHDC7Bc+4p132
+ Oqj7SJu1yh8XirD4=
+X-Received: by 2002:a05:600c:4e8e:: with SMTP id
+ f14mr978515wmq.177.1619630950651; 
+ Wed, 28 Apr 2021 10:29:10 -0700 (PDT)
+X-Received: by 2002:a05:600c:4e8e:: with SMTP id
+ f14mr978497wmq.177.1619630950420; 
+ Wed, 28 Apr 2021 10:29:10 -0700 (PDT)
+Received: from [192.168.1.36] (39.red-81-40-121.staticip.rima-tde.net.
+ [81.40.121.39])
+ by smtp.gmail.com with ESMTPSA id j22sm520721wra.46.2021.04.28.10.29.09
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 28 Apr 2021 10:29:10 -0700 (PDT)
+Subject: Re: [PATCH 7/7] hw/nvram: Do not build FW_CFG if not required
+To: qemu-devel@nongnu.org, Laszlo Ersek <lersek@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
 References: <20210426193520.4115528-1-philmd@redhat.com>
- <20210426193520.4115528-6-philmd@redhat.com>
-From: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <f2768d1f-9031-fa23-dfd0-aa3108d6e04c@redhat.com>
-Date: Wed, 28 Apr 2021 18:33:11 +0200
+ <20210426193520.4115528-8-philmd@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <9174c9b8-bd6e-fde3-fb70-f563d7f99d58@redhat.com>
+Date: Wed, 28 Apr 2021 19:29:09 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <20210426193520.4115528-6-philmd@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+In-Reply-To: <20210426193520.4115528-8-philmd@redhat.com>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=lersek@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=lersek@redhat.com;
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -29
 X-Spam_score: -3.0
 X-Spam_bar: ---
 X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.22,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- qemu-riscv@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Helge Deller <deller@gmx.de>,
- Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nm9mKFiJdJD8
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-ppc@nongnu.org, Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
+ qemu-riscv@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: rJQL60spHHW0
 
-On 04/26/21 21:35, Philippe Mathieu-Daudé wrote:
-> Beside the loongson3-virt machine (MIPS), the following machines
-> also use the fw_cfg device:
-> 
-> - ARM: virt & sbsa-ref
-> - HPPA: generic machine
-> - X86: ACPI based (pc & microvm)
-
-It's correct, but the way this is formulated is confusing, for me
-anyway. Can you please write "(pc (i440fx, q35) & microvm)"?
-
-Because, we frequently use "pc" interchangeably with "i440fx", and so I
-was missing q35 from the list.
-
-Thanks
-Laszlo
-
-> - PPC64: various
-> - SPARC: sun4m & sun4u
-> 
-> Add their FW_CFG Kconfig dependency.
+On 4/26/21 9:35 PM, Philippe Mathieu-Daudé wrote:
+> If the Kconfig 'FW_CFG' symbol is not selected, it is pointless
+> to build the fw_cfg device. Update the stubs.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->  hw/arm/Kconfig     | 2 ++
->  hw/hppa/Kconfig    | 1 +
->  hw/i386/Kconfig    | 2 ++
->  hw/ppc/Kconfig     | 1 +
->  hw/sparc/Kconfig   | 1 +
->  hw/sparc64/Kconfig | 1 +
->  6 files changed, 8 insertions(+)
-> 
-> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> index 8c37cf00da7..3b2641e39dc 100644
-> --- a/hw/arm/Kconfig
-> +++ b/hw/arm/Kconfig
-> @@ -8,6 +8,7 @@ config ARM_VIRT
->      imply TPM_TIS_SYSBUS
->      select ARM_GIC
->      select ACPI
-> +    select FW_CFG
->      select ARM_SMMUV3
->      select GPIO_KEY
->      select FW_CFG_DMA
-> @@ -216,6 +217,7 @@ config SBSA_REF
->      select PL061 # GPIO
->      select USB_EHCI_SYSBUS
->      select WDT_SBSA
-> +    select FW_CFG
->  
->  config SABRELITE
->      bool
-> diff --git a/hw/hppa/Kconfig b/hw/hppa/Kconfig
-> index 22948db0256..45f40e09224 100644
-> --- a/hw/hppa/Kconfig
-> +++ b/hw/hppa/Kconfig
-> @@ -14,3 +14,4 @@ config DINO
->      select LASIPS2
->      select PARALLEL
->      select ARTIST
-> +    select FW_CFG
-> diff --git a/hw/i386/Kconfig b/hw/i386/Kconfig
-> index 7f91f30877f..9e4039a2dce 100644
-> --- a/hw/i386/Kconfig
-> +++ b/hw/i386/Kconfig
-> @@ -52,6 +52,7 @@ config PC_ACPI
->      select SMBUS_EEPROM
->      select PFLASH_CFI01
->      depends on ACPI_SMBUS
-> +    select FW_CFG
->  
->  config I440FX
->      bool
-> @@ -106,6 +107,7 @@ config MICROVM
->      select ACPI_HW_REDUCED
->      select PCI_EXPRESS_GENERIC_BRIDGE
->      select USB_XHCI_SYSBUS
-> +    select FW_CFG
->  
->  config X86_IOMMU
->      bool
-> diff --git a/hw/ppc/Kconfig b/hw/ppc/Kconfig
-> index d11dc30509d..a7ba8283bf1 100644
-> --- a/hw/ppc/Kconfig
-> +++ b/hw/ppc/Kconfig
-> @@ -131,6 +131,7 @@ config VIRTEX
->  # Only used by 64-bit targets
->  config FW_CFG_PPC
->      bool
-> +    select FW_CFG
->  
->  config FDT_PPC
->      bool
-> diff --git a/hw/sparc/Kconfig b/hw/sparc/Kconfig
-> index 8dcb10086fd..267bf45fa21 100644
-> --- a/hw/sparc/Kconfig
-> +++ b/hw/sparc/Kconfig
-> @@ -15,6 +15,7 @@ config SUN4M
->      select STP2000
->      select CHRP_NVRAM
->      select OR_IRQ
-> +    select FW_CFG
->  
->  config LEON3
->      bool
-> diff --git a/hw/sparc64/Kconfig b/hw/sparc64/Kconfig
-> index 980a201bb73..c17b34b9d5b 100644
-> --- a/hw/sparc64/Kconfig
-> +++ b/hw/sparc64/Kconfig
-> @@ -13,6 +13,7 @@ config SUN4U
->      select PCKBD
->      select SIMBA
->      select CHRP_NVRAM
-> +    select FW_CFG
->  
->  config NIAGARA
->      bool
-> 
+>  stubs/fw_cfg.c       | 49 ++++++++++++++++++++++++++++++++++++++++++--
+>  hw/nvram/meson.build |  2 +-
+>  2 files changed, 48 insertions(+), 3 deletions(-)
+
+Answering here to Laszlo's comment from:
+https://lists.gnu.org/archive/html/qemu-devel/2021-04/msg05858.html
+
+On 4/28/21 6:44 PM, Laszlo Ersek wrote:
+> I don't understand why we need to add *more code* (stubs / boilerplate)
+> if our goal is (apparently) to build QEMU with *fewer* devices.
+
+The list of callers:
+
+hw/acpi/bios-linker-loader.c:177:    return fw_cfg &&
+fw_cfg_dma_enabled(fw_cfg);
+hw/acpi/core.c:640:        fw_cfg_add_file(fw_cfg, "etc/system-states",
+g_memdup(suspend, 6), 6);
+hw/acpi/ghes.c:383:    fw_cfg_add_file(s, ACPI_GHES_ERRORS_FW_CFG_FILE,
+hardware_error->data,
+hw/acpi/ghes.c:387:    fw_cfg_add_file_callback(s,
+ACPI_GHES_DATA_ADDR_FW_CFG_FILE, NULL, NULL,
+hw/acpi/nvdimm.c:912:    fw_cfg_add_file(fw_cfg, NVDIMM_DSM_MEM_FILE,
+state->dsm_mem->data,
+hw/acpi/vmgenid.c:128:    fw_cfg_add_file(s, VMGENID_GUID_FW_CFG_FILE,
+guid->data,
+hw/acpi/vmgenid.c:131:    fw_cfg_add_file_callback(s,
+VMGENID_ADDR_FW_CFG_FILE, NULL, NULL, NULL,
+hw/arm/virt-acpi-build.c:870:    fw_cfg_add_file(vms->fw_cfg,
+ACPI_BUILD_TPMLOG_FILE, tables.tcpalog->data,
+hw/arm/virt.c:1531:        fw_cfg_add_file(vms->fw_cfg,
+"etc/smbios/smbios-tables",
+hw/arm/virt.c:1533:        fw_cfg_add_file(vms->fw_cfg,
+"etc/smbios/smbios-anchor",
+hw/core/loader.c:1017:        fw_cfg_add_file(fw_cfg, fw_file_name,
+data, rom->romsize);
+hw/core/loader.c:1074:        fw_cfg_add_file_callback(fw_cfg, fw_file_name,
+hw/core/loader.c:1254:    fw_cfg_set_order_override(fw_cfg, order);
+hw/core/loader.c:1261:    fw_cfg_reset_order_override(fw_cfg);
+hw/core/loader.c:919:        fw_cfg_modify_file(fw_cfg, id +
+strlen("/rom@"), host, length);
+hw/display/ramfb.c:131:    fw_cfg_add_file_callback(fw_cfg, "etc/ramfb",
+hw/hppa/machine.c:104:    fw_cfg_add_file(fw_cfg,
+"/etc/firmware-min-version",
+hw/hppa/machine.c:108:    fw_cfg_add_file(fw_cfg, "/etc/cpu/tlb_entries",
+hw/hppa/machine.c:112:    fw_cfg_add_file(fw_cfg, "/etc/cpu/btlb_entries",
+hw/hppa/machine.c:116:    fw_cfg_add_file(fw_cfg, "/etc/power-button-addr",
+hw/i386/acpi-build.c:2638:    fw_cfg_add_file(x86ms->fw_cfg,
+ACPI_BUILD_TPMLOG_FILE,
+hw/i386/acpi-build.c:2648:        fw_cfg_add_file(x86ms->fw_cfg,
+"etc/tpm/config",
+hw/i386/acpi-build.c:2667:
+fw_cfg_add_file_callback(x86ms->fw_cfg, ACPI_BUILD_RSDP_FILE,
+hw/i386/fw_cfg.c:130:    fw_cfg_add_file(fw_cfg, "etc/e820", e820_table,
+hw/i386/fw_cfg.c:181:    fw_cfg_add_file(fw_cfg,
+"etc/msr_feature_control", val, sizeof(*val));
+hw/i386/fw_cfg.c:85:        fw_cfg_add_file(fw_cfg,
+"etc/smbios/smbios-tables",
+hw/i386/fw_cfg.c:87:        fw_cfg_add_file(fw_cfg,
+"etc/smbios/smbios-anchor",
+hw/i386/microvm.c:329:    fw_cfg_add_file(fw_cfg, "etc/e820", e820_table,
+hw/i386/pc.c:977:        fw_cfg_add_file(fw_cfg,
+"etc/reserved-memory-end", val, sizeof(*val));
+hw/i386/x86.c:1078:    if (linuxboot_dma_enabled &&
+fw_cfg_dma_enabled(fw_cfg)) {
+hw/isa/lpc_ich9.c:421:        fw_cfg_add_file(fw_cfg,
+"etc/smi/supported-features",
+hw/isa/lpc_ich9.c:428:        fw_cfg_add_file_callback(fw_cfg,
+"etc/smi/requested-features",
+hw/isa/lpc_ich9.c:433:        fw_cfg_add_file_callback(fw_cfg,
+"etc/smi/features-ok",
+hw/misc/pvpanic-isa.c:60:    fw_cfg_add_file(fw_cfg, "etc/pvpanic-port",
+pvpanic_port,
+hw/misc/vmcoreinfo.c:60:    fw_cfg_add_file_callback(fw_cfg,
+FW_CFG_VMCOREINFO_FILENAME,
+hw/ppc/mac_newworld.c:526:            fw_cfg_add_file(fw_cfg,
+"ndrv/qemu_vga.ndrv", ndrv_file, ndrv_size);
+hw/ppc/mac_oldworld.c:371:            fw_cfg_add_file(fw_cfg,
+"ndrv/qemu_vga.ndrv", ndrv_file, ndrv_size);
+hw/vfio/igd.c:565:    fw_cfg_add_file(fw_cfg_find(), "etc/igd-bdsm-size",
+hw/vfio/pci-quirks.c:1201:    fw_cfg_add_file(fw_cfg_find(),
+"etc/igd-opregion",
+softmmu/vl.c:1183:        if (!fw_cfg_add_from_generator(fw_cfg, name,
+gen_id, errp)) {
+softmmu/vl.c:1196:    fw_cfg_set_order_override(fw_cfg,
+FW_CFG_ORDER_OVERRIDE_USER);
+softmmu/vl.c:1197:    fw_cfg_add_file(fw_cfg, name, buf, size);
+softmmu/vl.c:1198:    fw_cfg_reset_order_override(fw_cfg);
+
+From this list,
+
+I'd like to simplify hw/acpi/bios-linker-loader.c, but later.
+
+The remaining core components are hw/core/loader.c and softmmu/vl.c:
+
+hw/core/loader.c:1017:        fw_cfg_add_file(fw_cfg, fw_file_name,
+data, rom->romsize);
+hw/core/loader.c:1074:        fw_cfg_add_file_callback(fw_cfg, fw_file_name,
+hw/core/loader.c:1254:    fw_cfg_set_order_override(fw_cfg, order);
+hw/core/loader.c:1261:    fw_cfg_reset_order_override(fw_cfg);
+hw/core/loader.c:919:        fw_cfg_modify_file(fw_cfg, id +
+strlen("/rom@"), host, length);
+
+softmmu/vl.c:1183:        if (!fw_cfg_add_from_generator(fw_cfg, name,
+gen_id, errp)) {
+softmmu/vl.c:1196:    fw_cfg_set_order_override(fw_cfg,
+FW_CFG_ORDER_OVERRIDE_USER);
+softmmu/vl.c:1197:    fw_cfg_add_file(fw_cfg, name, buf, size);
+softmmu/vl.c:1198:    fw_cfg_reset_order_override(fw_cfg);
+
+Bah, I thought vl.c was generic code, but it is target-specific,
+so we could add '#include CONFIG_DEVICES' and add more #ifdef'ry
+on CONFIG_FW_CFG.
+
+Less stubs VS more #ifdef'ry...
+
+It is not clear to me how to modularize this from the core code.
+
+TBC...
+
+Thanks,
+
+Phil.
 

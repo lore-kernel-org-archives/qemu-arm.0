@@ -1,272 +1,297 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp846387lfb;
-        Wed, 28 Apr 2021 10:44:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwRBlKZaJxICVmGp+q/n+oEdTDvZNo+5pAnX7YkOX18C5+oD+Mxqo35CMW4bs2+YY189xOQ
-X-Received: by 2002:ac8:5806:: with SMTP id g6mr28278016qtg.152.1619631878522;
-        Wed, 28 Apr 2021 10:44:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619631878; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp795188lfb;
+        Wed, 28 Apr 2021 09:45:13 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwnEChcmgg9hLPmWMwdng3C9frTGpwibhenDpgsOeXuKDCbeEYUHuMM5PTbzN5ZWnhlfSzb
+X-Received: by 2002:ae9:dc41:: with SMTP id q62mr28764221qkf.22.1619628312907;
+        Wed, 28 Apr 2021 09:45:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619628312; cv=none;
         d=google.com; s=arc-20160816;
-        b=kRwArUnejQWnraxC8/49bYC/5B07EwSjWHvhw3jky+aBpTuDsKSucKqjT99pqFg3zQ
-         1gPCvNauM3QneLuBzpl8QxvNe+MlH1vIh5+OwnAy7kfiAkDcouHnTHmO8F02Z9lOfvXW
-         RGCr7UukKSHL6suYwk02SKMmQDwcPui0mK7SkGTRHoqRW31u9ZuMIJ+Mp0e3jfy3GmwN
-         OC5e8TEaqSc5egzW6JANMmKAopP9P5VLbr4fSkJkOLwWrA0+eceghUZLSwBguaQgeRbp
-         B8ePLidt8QfyMSB1zMaWOn8V9hi4+S4XMeW0nUn78oAU/3+OGkKylcWSEvWhftUJy59Q
-         X5yw==
+        b=mty+YdMApQfsM3JdAwadDxss+B06Qj/qilZctKPOQbovIYSerFNIr+hDb32RKbLePc
+         QDmaRn7Dy/1zbsSHtVRu+9DOMLhDbKUg9ihBY7HkaGMpLZ1RuWZO2Ufi1dEuwG9AN9P9
+         C/4Ku0AhTa0YjSiapo6+7EKmmknDU6JHJ19JDdGIlXc23rln5Et0JL1EdJ+6lcw9Qset
+         VVCUst8H08jMaD/rQ2ik57qOYXyQnf1TWp1mMA2j6PS5SQrzT1tgPSXfdeDJQWgmrwsr
+         HIEIKBt/2byVqSqFPdpM2ybIwosFwGyhsQAPD/lAor39PkBE6XX3WQtstwVSn61a4425
+         mpdA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=Ft7AsfLT38lKQnO0Vzs1l8qjmjgwtYnPzE/amFKSrLQ=;
-        b=X2jLeyxCPZRu1102WVXdjGL0IjjWAMKH2ZNn+RQ/rYWsOU4+f+8KWUaWipfLJCL5fu
-         krUIKq7G0c4R8sqyxT2vwDQEa0r/xHEhExF2ahh0SdpLy4VwNy995Ylr8xOHwNEgp6nA
-         dsTzW+AK2x+G32NIm2/UoAmH+XUGi3x+YWXPPek9dKpNpoeP6M0/9zeFG9bDm+5hk0SN
-         z466oxY0hdA0gTNVO0Y6Y+XzjPN81cDD11X/N7z+RpFlDNrccQO5qQwCDPtHgtReQa9d
-         cxwWMLo3Xg7TJOu46nPWfbRldHrnL/8orRVw3KaUCobs1uvNs6zbaFWT8onrnUzObPot
-         /heQ==
+         :content-language:in-reply-to:mime-version:date:message-id:from
+         :references:to:subject:dkim-signature;
+        bh=fJEZXICncaqh/Go404E1SX+UKYu0fdxoo0vPvlvBCJs=;
+        b=X+I9alXC/kdVArzfLYHpkChoWl/ZbtTVr71OTFe8CbM6Ikb45txEmg3OUk0v0ZdIBY
+         KrrRcfeffwvdVvzX60a6yCvC/TdP3ay0qJDRiXyDbcYmXPdWZRMhSdnWDpWzfGu/9m64
+         pLzqIMBL+tYvLI/St7TdS+DYXLQAwzW74VUGVHc2jg6Rx9EDZhtbGLaFfkTIZh2TwiL7
+         fg1I+95avqmekEcmkaCnfbW8AgFLegVyfb+EeK2xdzcI2oI3wcp3W00F/z+FQ+iksWqh
+         D/f5TUayUJeGGgpAbecqgZ2th9cO77gIkMgVji7dtF4JGC1vo/lD51+VuRM6v9//Z7wa
+         1c7Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ph6CgyXr;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=E7DMY82E;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t11si315225qkp.144.2021.04.28.10.44.38
+        by mx.google.com with ESMTPS id dr20si188939qvb.54.2021.04.28.09.45.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 28 Apr 2021 10:44:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 28 Apr 2021 09:45:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ph6CgyXr;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=E7DMY82E;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54546 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59024 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lboEo-0002Hc-0O
-	for alex.bennee@linaro.org; Wed, 28 Apr 2021 13:44:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46290)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lbnJG-0001sO-Py
+	for alex.bennee@linaro.org; Wed, 28 Apr 2021 12:45:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60902)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lbnzz-0004qN-53
- for qemu-devel@nongnu.org; Wed, 28 Apr 2021 13:29:19 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:23926)
+ (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1lbnIj-0001qQ-3g
+ for qemu-arm@nongnu.org; Wed, 28 Apr 2021 12:44:38 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:43114)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lbnzv-00087E-9R
- for qemu-devel@nongnu.org; Wed, 28 Apr 2021 13:29:18 -0400
+ (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1lbnIc-0005Ca-Vt
+ for qemu-arm@nongnu.org; Wed, 28 Apr 2021 12:44:36 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1619630954;
+ s=mimecast20190719; t=1619628268;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Ft7AsfLT38lKQnO0Vzs1l8qjmjgwtYnPzE/amFKSrLQ=;
- b=Ph6CgyXraTlw/GDwHNa5SzID6lq9rzNWDpL1iQ3f2lErG1qKuWisgAEBLNDGcPLO8Ucj4y
- w7ERAGM5+GeGlb58AhgHyfsJJAF2a6nStbdb9S+pYfQEGoyt2dLYgunDrwSP19XzOomOI2
- lzjxvX1/nVKZ2SJoyhVGOJrmd2EO7DQ=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-29-0tqeNMe3P2SFGIrk2I6tjA-1; Wed, 28 Apr 2021 13:29:11 -0400
-X-MC-Unique: 0tqeNMe3P2SFGIrk2I6tjA-1
-Received: by mail-wm1-f71.google.com with SMTP id
- b16-20020a7bc2500000b029014587f5376dso244367wmj.1
- for <qemu-devel@nongnu.org>; Wed, 28 Apr 2021 10:29:11 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=Ft7AsfLT38lKQnO0Vzs1l8qjmjgwtYnPzE/amFKSrLQ=;
- b=r8+IcayCgbvX0lVRqGvx6niXL8+tPhz9MNGJnFRBvewApfMp+jp70lFRy1CJganhyY
- P790aFuFBJ+zGJ8Iu5ahUH3OvnfCqWoFyOYs9MNMuy9IwScxS59iOJQk+MIV880CcKSQ
- F1/k2jXNgxfe56Px/OVBkwfRdyZ/zHBJ+VBT1WUsZslLbfh5O2OLwFGUgHKf1Urh28b0
- HcD5zVO3Tj6+alNVyt995qzQU/Qu5Xgl4uMv1IB/Xwg74z11vV48FtDVR+rvkxo0Gou/
- cv/ValQgWyzFAkJAHu0enNSttkSxgDHAjbjX7N0j0AX5JMvp2urDmiT257V7QdY2e/Ib
- WT5A==
-X-Gm-Message-State: AOAM533ye8cm2BDev3r320QhuXbUJ7UrWstkzVpZgpo+nl61nDYsU1l7
- 9xrbRhhjRf3e6+RAIfxwuBjAbSZDKU9UenJ2UKj87ShYAzgS+q2eSuFIIk9yPdrHDC7Bc+4p132
- Oqj7SJu1yh8XirD4=
-X-Received: by 2002:a05:600c:4e8e:: with SMTP id
- f14mr978515wmq.177.1619630950651; 
- Wed, 28 Apr 2021 10:29:10 -0700 (PDT)
-X-Received: by 2002:a05:600c:4e8e:: with SMTP id
- f14mr978497wmq.177.1619630950420; 
- Wed, 28 Apr 2021 10:29:10 -0700 (PDT)
-Received: from [192.168.1.36] (39.red-81-40-121.staticip.rima-tde.net.
- [81.40.121.39])
- by smtp.gmail.com with ESMTPSA id j22sm520721wra.46.2021.04.28.10.29.09
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 28 Apr 2021 10:29:10 -0700 (PDT)
-Subject: Re: [PATCH 7/7] hw/nvram: Do not build FW_CFG if not required
-To: qemu-devel@nongnu.org, Laszlo Ersek <lersek@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>
+ bh=fJEZXICncaqh/Go404E1SX+UKYu0fdxoo0vPvlvBCJs=;
+ b=E7DMY82Ehr0ObWiIBEhIStLAP8ioXby+ULJBrP2nHmykAemGzTDvCpjHXsMqt8t72oZrBj
+ 6PC7VIWInYGAH+rBX+w02TxgNStREY5/IfLbiaUR1BIrNUozmft8hnXoQSviM4BzU1+Oik
+ Gc6BCLmvcdooQyWaOeK4vZaYuikoo3g=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-166-PbmDhwr4P9CjY-oZTgkERg-1; Wed, 28 Apr 2021 12:44:26 -0400
+X-MC-Unique: PbmDhwr4P9CjY-oZTgkERg-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 42458801B1A;
+ Wed, 28 Apr 2021 16:44:25 +0000 (UTC)
+Received: from lacos-laptop-7.usersys.redhat.com (ovpn-114-188.ams2.redhat.com
+ [10.36.114.188])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 8E21E19C45;
+ Wed, 28 Apr 2021 16:44:18 +0000 (UTC)
+Subject: Re: [PATCH 6/7] hw/{arm,hppa,riscv}: Add fw_cfg arch-specific stub
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
 References: <20210426193520.4115528-1-philmd@redhat.com>
- <20210426193520.4115528-8-philmd@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <9174c9b8-bd6e-fde3-fb70-f563d7f99d58@redhat.com>
-Date: Wed, 28 Apr 2021 19:29:09 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+ <20210426193520.4115528-7-philmd@redhat.com>
+From: Laszlo Ersek <lersek@redhat.com>
+Message-ID: <8b8be0b8-1f1a-d0fe-7fd3-682f34043df6@redhat.com>
+Date: Wed, 28 Apr 2021 18:44:17 +0200
 MIME-Version: 1.0
-In-Reply-To: <20210426193520.4115528-8-philmd@redhat.com>
+In-Reply-To: <20210426193520.4115528-7-philmd@redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=lersek@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=lersek@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -29
 X-Spam_score: -3.0
 X-Spam_bar: ---
 X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.22,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-ppc@nongnu.org, Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
- qemu-riscv@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rJQL60spHHW0
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ qemu-riscv@nongnu.org, Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Helge Deller <deller@gmx.de>, Richard Henderson <richard.henderson@linaro.org>,
+ qemu-arm@nongnu.org, qemu-ppc@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: r3DqlRVb/8U/
 
-On 4/26/21 9:35 PM, Philippe Mathieu-Daudé wrote:
-> If the Kconfig 'FW_CFG' symbol is not selected, it is pointless
-> to build the fw_cfg device. Update the stubs.
+On 04/26/21 21:35, Philippe Mathieu-Daudé wrote:
+> The ARM, HPPA and RISC-V architectures don't declare any fw_cfg
+> specific key. To simplify the buildsys machinery and allow building
+> QEMU without the fw_cfg device (in the next commit), first add a
+> per-architecture empty stub defining the fw_cfg_arch_key_name().
+> 
+> Update the MAINTAINERS section to cover the various target-specific
+> fw_cfg.c files.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->  stubs/fw_cfg.c       | 49 ++++++++++++++++++++++++++++++++++++++++++--
->  hw/nvram/meson.build |  2 +-
->  2 files changed, 48 insertions(+), 3 deletions(-)
+>  hw/arm/fw_cfg.c      | 19 +++++++++++++++++++
+>  hw/hppa/fw_cfg.c     | 19 +++++++++++++++++++
+>  hw/riscv/fw_cfg.c    | 19 +++++++++++++++++++
+>  MAINTAINERS          |  2 +-
+>  hw/arm/meson.build   |  1 +
+>  hw/hppa/meson.build  |  1 +
+>  hw/riscv/meson.build |  1 +
+>  7 files changed, 61 insertions(+), 1 deletion(-)
+>  create mode 100644 hw/arm/fw_cfg.c
+>  create mode 100644 hw/hppa/fw_cfg.c
+>  create mode 100644 hw/riscv/fw_cfg.c
 
-Answering here to Laszlo's comment from:
-https://lists.gnu.org/archive/html/qemu-devel/2021-04/msg05858.html
+So, I haven't commented on the Kconfig symbol wrangling yet (my comment
+would be a blanket "Acked-by" anyway... sorry, not really my cup of
+tea), but at this point:
 
-On 4/28/21 6:44 PM, Laszlo Ersek wrote:
-> I don't understand why we need to add *more code* (stubs / boilerplate)
-> if our goal is (apparently) to build QEMU with *fewer* devices.
+I don't understand why we need to add *more code* (stubs / boilerplate)
+if our goal is (apparently) to build QEMU with *fewer* devices.
 
-The list of callers:
+Sorry for being dense. My total knowledge about stubs in QEMU is this:
+for some QMP methods (and for some QGA methods, dependent on OS), we
+need stubs. When they are invoked, they report "sorry, not implemented".
+That's it: all I know about stubs.
 
-hw/acpi/bios-linker-loader.c:177:    return fw_cfg &&
-fw_cfg_dma_enabled(fw_cfg);
-hw/acpi/core.c:640:        fw_cfg_add_file(fw_cfg, "etc/system-states",
-g_memdup(suspend, 6), 6);
-hw/acpi/ghes.c:383:    fw_cfg_add_file(s, ACPI_GHES_ERRORS_FW_CFG_FILE,
-hardware_error->data,
-hw/acpi/ghes.c:387:    fw_cfg_add_file_callback(s,
-ACPI_GHES_DATA_ADDR_FW_CFG_FILE, NULL, NULL,
-hw/acpi/nvdimm.c:912:    fw_cfg_add_file(fw_cfg, NVDIMM_DSM_MEM_FILE,
-state->dsm_mem->data,
-hw/acpi/vmgenid.c:128:    fw_cfg_add_file(s, VMGENID_GUID_FW_CFG_FILE,
-guid->data,
-hw/acpi/vmgenid.c:131:    fw_cfg_add_file_callback(s,
-VMGENID_ADDR_FW_CFG_FILE, NULL, NULL, NULL,
-hw/arm/virt-acpi-build.c:870:    fw_cfg_add_file(vms->fw_cfg,
-ACPI_BUILD_TPMLOG_FILE, tables.tcpalog->data,
-hw/arm/virt.c:1531:        fw_cfg_add_file(vms->fw_cfg,
-"etc/smbios/smbios-tables",
-hw/arm/virt.c:1533:        fw_cfg_add_file(vms->fw_cfg,
-"etc/smbios/smbios-anchor",
-hw/core/loader.c:1017:        fw_cfg_add_file(fw_cfg, fw_file_name,
-data, rom->romsize);
-hw/core/loader.c:1074:        fw_cfg_add_file_callback(fw_cfg, fw_file_name,
-hw/core/loader.c:1254:    fw_cfg_set_order_override(fw_cfg, order);
-hw/core/loader.c:1261:    fw_cfg_reset_order_override(fw_cfg);
-hw/core/loader.c:919:        fw_cfg_modify_file(fw_cfg, id +
-strlen("/rom@"), host, length);
-hw/display/ramfb.c:131:    fw_cfg_add_file_callback(fw_cfg, "etc/ramfb",
-hw/hppa/machine.c:104:    fw_cfg_add_file(fw_cfg,
-"/etc/firmware-min-version",
-hw/hppa/machine.c:108:    fw_cfg_add_file(fw_cfg, "/etc/cpu/tlb_entries",
-hw/hppa/machine.c:112:    fw_cfg_add_file(fw_cfg, "/etc/cpu/btlb_entries",
-hw/hppa/machine.c:116:    fw_cfg_add_file(fw_cfg, "/etc/power-button-addr",
-hw/i386/acpi-build.c:2638:    fw_cfg_add_file(x86ms->fw_cfg,
-ACPI_BUILD_TPMLOG_FILE,
-hw/i386/acpi-build.c:2648:        fw_cfg_add_file(x86ms->fw_cfg,
-"etc/tpm/config",
-hw/i386/acpi-build.c:2667:
-fw_cfg_add_file_callback(x86ms->fw_cfg, ACPI_BUILD_RSDP_FILE,
-hw/i386/fw_cfg.c:130:    fw_cfg_add_file(fw_cfg, "etc/e820", e820_table,
-hw/i386/fw_cfg.c:181:    fw_cfg_add_file(fw_cfg,
-"etc/msr_feature_control", val, sizeof(*val));
-hw/i386/fw_cfg.c:85:        fw_cfg_add_file(fw_cfg,
-"etc/smbios/smbios-tables",
-hw/i386/fw_cfg.c:87:        fw_cfg_add_file(fw_cfg,
-"etc/smbios/smbios-anchor",
-hw/i386/microvm.c:329:    fw_cfg_add_file(fw_cfg, "etc/e820", e820_table,
-hw/i386/pc.c:977:        fw_cfg_add_file(fw_cfg,
-"etc/reserved-memory-end", val, sizeof(*val));
-hw/i386/x86.c:1078:    if (linuxboot_dma_enabled &&
-fw_cfg_dma_enabled(fw_cfg)) {
-hw/isa/lpc_ich9.c:421:        fw_cfg_add_file(fw_cfg,
-"etc/smi/supported-features",
-hw/isa/lpc_ich9.c:428:        fw_cfg_add_file_callback(fw_cfg,
-"etc/smi/requested-features",
-hw/isa/lpc_ich9.c:433:        fw_cfg_add_file_callback(fw_cfg,
-"etc/smi/features-ok",
-hw/misc/pvpanic-isa.c:60:    fw_cfg_add_file(fw_cfg, "etc/pvpanic-port",
-pvpanic_port,
-hw/misc/vmcoreinfo.c:60:    fw_cfg_add_file_callback(fw_cfg,
-FW_CFG_VMCOREINFO_FILENAME,
-hw/ppc/mac_newworld.c:526:            fw_cfg_add_file(fw_cfg,
-"ndrv/qemu_vga.ndrv", ndrv_file, ndrv_size);
-hw/ppc/mac_oldworld.c:371:            fw_cfg_add_file(fw_cfg,
-"ndrv/qemu_vga.ndrv", ndrv_file, ndrv_size);
-hw/vfio/igd.c:565:    fw_cfg_add_file(fw_cfg_find(), "etc/igd-bdsm-size",
-hw/vfio/pci-quirks.c:1201:    fw_cfg_add_file(fw_cfg_find(),
-"etc/igd-opregion",
-softmmu/vl.c:1183:        if (!fw_cfg_add_from_generator(fw_cfg, name,
-gen_id, errp)) {
-softmmu/vl.c:1196:    fw_cfg_set_order_override(fw_cfg,
-FW_CFG_ORDER_OVERRIDE_USER);
-softmmu/vl.c:1197:    fw_cfg_add_file(fw_cfg, name, buf, size);
-softmmu/vl.c:1198:    fw_cfg_reset_order_override(fw_cfg);
+So... the commit message here says "simplify the buildsys", and the next
+commit message says, paraphrased, "don't build fw_cfg unless we need it"
+-- but why does that require more C-language code? It seems like we have
+some function *calls* that shouldn't exist in an fw-cfg-less machine, in
+the first place.
 
-From this list,
+Again, sorry, I'm totally dense on this.
 
-I'd like to simplify hw/acpi/bios-linker-loader.c, but later.
+Thanks
+Laszlo
 
-The remaining core components are hw/core/loader.c and softmmu/vl.c:
-
-hw/core/loader.c:1017:        fw_cfg_add_file(fw_cfg, fw_file_name,
-data, rom->romsize);
-hw/core/loader.c:1074:        fw_cfg_add_file_callback(fw_cfg, fw_file_name,
-hw/core/loader.c:1254:    fw_cfg_set_order_override(fw_cfg, order);
-hw/core/loader.c:1261:    fw_cfg_reset_order_override(fw_cfg);
-hw/core/loader.c:919:        fw_cfg_modify_file(fw_cfg, id +
-strlen("/rom@"), host, length);
-
-softmmu/vl.c:1183:        if (!fw_cfg_add_from_generator(fw_cfg, name,
-gen_id, errp)) {
-softmmu/vl.c:1196:    fw_cfg_set_order_override(fw_cfg,
-FW_CFG_ORDER_OVERRIDE_USER);
-softmmu/vl.c:1197:    fw_cfg_add_file(fw_cfg, name, buf, size);
-softmmu/vl.c:1198:    fw_cfg_reset_order_override(fw_cfg);
-
-Bah, I thought vl.c was generic code, but it is target-specific,
-so we could add '#include CONFIG_DEVICES' and add more #ifdef'ry
-on CONFIG_FW_CFG.
-
-Less stubs VS more #ifdef'ry...
-
-It is not clear to me how to modularize this from the core code.
-
-TBC...
-
-Thanks,
-
-Phil.
+> 
+> diff --git a/hw/arm/fw_cfg.c b/hw/arm/fw_cfg.c
+> new file mode 100644
+> index 00000000000..de2bca9c76c
+> --- /dev/null
+> +++ b/hw/arm/fw_cfg.c
+> @@ -0,0 +1,19 @@
+> +/*
+> + * QEMU fw_cfg helpers (ARM specific)
+> + *
+> + * Copyright (c) 2021 Red Hat, Inc.
+> + *
+> + * Author:
+> + *   Philippe Mathieu-Daudé <philmd@redhat.com>
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "hw/mips/fw_cfg.h"
+> +#include "hw/nvram/fw_cfg.h"
+> +
+> +const char *fw_cfg_arch_key_name(uint16_t key)
+> +{
+> +    return NULL;
+> +}
+> diff --git a/hw/hppa/fw_cfg.c b/hw/hppa/fw_cfg.c
+> new file mode 100644
+> index 00000000000..322b03068c7
+> --- /dev/null
+> +++ b/hw/hppa/fw_cfg.c
+> @@ -0,0 +1,19 @@
+> +/*
+> + * QEMU fw_cfg helpers (HPPA specific)
+> + *
+> + * Copyright (c) 2021 Red Hat, Inc.
+> + *
+> + * Author:
+> + *   Philippe Mathieu-Daudé <philmd@redhat.com>
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "hw/mips/fw_cfg.h"
+> +#include "hw/nvram/fw_cfg.h"
+> +
+> +const char *fw_cfg_arch_key_name(uint16_t key)
+> +{
+> +    return NULL;
+> +}
+> diff --git a/hw/riscv/fw_cfg.c b/hw/riscv/fw_cfg.c
+> new file mode 100644
+> index 00000000000..8e3d2a8bdea
+> --- /dev/null
+> +++ b/hw/riscv/fw_cfg.c
+> @@ -0,0 +1,19 @@
+> +/*
+> + * QEMU fw_cfg helpers (RISC-V specific)
+> + *
+> + * Copyright (c) 2021 Red Hat, Inc.
+> + *
+> + * Author:
+> + *   Philippe Mathieu-Daudé <philmd@redhat.com>
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "hw/mips/fw_cfg.h"
+> +#include "hw/nvram/fw_cfg.h"
+> +
+> +const char *fw_cfg_arch_key_name(uint16_t key)
+> +{
+> +    return NULL;
+> +}
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 36055f14c59..ab8f030d4c0 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -2162,7 +2162,7 @@ R: Laszlo Ersek <lersek@redhat.com>
+>  R: Gerd Hoffmann <kraxel@redhat.com>
+>  S: Supported
+>  F: docs/specs/fw_cfg.txt
+> -F: hw/nvram/fw_cfg*.c
+> +F: hw/*/fw_cfg*.c
+>  F: stubs/fw_cfg.c
+>  F: include/hw/nvram/fw_cfg.h
+>  F: include/standard-headers/linux/qemu_fw_cfg.h
+> diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+> index be39117b9b6..fd278de916f 100644
+> --- a/hw/arm/meson.build
+> +++ b/hw/arm/meson.build
+> @@ -1,6 +1,7 @@
+>  arm_ss = ss.source_set()
+>  arm_ss.add(files('boot.c'), fdt)
+>  arm_ss.add(when: 'CONFIG_PLATFORM_BUS', if_true: files('sysbus-fdt.c'))
+> +arm_ss.add(when: 'CONFIG_FW_CFG', if_true: files('fw_cfg.c'))
+>  arm_ss.add(when: 'CONFIG_ARM_VIRT', if_true: files('virt.c'))
+>  arm_ss.add(when: 'CONFIG_ACPI', if_true: files('virt-acpi-build.c'))
+>  arm_ss.add(when: 'CONFIG_DIGIC', if_true: files('digic_boards.c'))
+> diff --git a/hw/hppa/meson.build b/hw/hppa/meson.build
+> index 1deae83aee8..10494cc24b7 100644
+> --- a/hw/hppa/meson.build
+> +++ b/hw/hppa/meson.build
+> @@ -1,4 +1,5 @@
+>  hppa_ss = ss.source_set()
+>  hppa_ss.add(when: 'CONFIG_DINO', if_true: files('pci.c', 'machine.c', 'dino.c', 'lasi.c'))
+> +hppa_ss.add(when: 'CONFIG_FW_CFG', if_true: files('fw_cfg.c'))
+>  
+>  hw_arch += {'hppa': hppa_ss}
+> diff --git a/hw/riscv/meson.build b/hw/riscv/meson.build
+> index 275c0f7eb7c..ab4d3adb924 100644
+> --- a/hw/riscv/meson.build
+> +++ b/hw/riscv/meson.build
+> @@ -8,5 +8,6 @@
+>  riscv_ss.add(when: 'CONFIG_SIFIVE_U', if_true: files('sifive_u.c'))
+>  riscv_ss.add(when: 'CONFIG_SPIKE', if_true: files('spike.c'))
+>  riscv_ss.add(when: 'CONFIG_MICROCHIP_PFSOC', if_true: files('microchip_pfsoc.c'))
+> +riscv_ss.add(when: 'CONFIG_FW_CFG', if_true: files('fw_cfg.c'))
+>  
+>  hw_arch += {'riscv': riscv_ss}
+> 
 

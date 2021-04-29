@@ -1,328 +1,681 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp290138lfb;
-        Fri, 30 Apr 2021 02:00:00 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwzcuJKh+JiChvng2O7J7i6PVk0RgGjDMaceHP9aupxg4ryKA0TO2YVYJ1DST9O6VZ6rUnf
-X-Received: by 2002:ac8:51c8:: with SMTP id d8mr3608725qtn.370.1619773200538;
-        Fri, 30 Apr 2021 02:00:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619773200; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp2144213lfb;
+        Thu, 29 Apr 2021 16:38:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwYnMyvapsi0ojjLjadeCH9XeGThVQ1pMuxxfwDkFoXjv+z4gb3H2KgJqQ0G6fOQUyBodTj
+X-Received: by 2002:a05:6e02:13c4:: with SMTP id v4mr1911174ilj.240.1619739517883;
+        Thu, 29 Apr 2021 16:38:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619739517; cv=none;
         d=google.com; s=arc-20160816;
-        b=aDVzjOLj11Dmq0Z5VgEx6h1oZCYPeKR8ZMQX4T9mJ5OAwwgDEE9g+QFhZgabgJeahV
-         UmMRCwdCQmENJe8QAhA3qzHan2NasYQAA/9gT8n1uz+Z/M9QlEGdAW1PrAyArXbu7QeY
-         ZspMOXi/stvPf2PhFWoGGpTTtXWAjxdueLKwYM/80O+MBhI6Fk12QBWo+i6XBIR5GI0B
-         uIB3c7WG7ZBcdC7BbzFecigVuhl/f/HZwp42ewHdC8mIuvkuF/79XoYIlPfdd1Lo/IQV
-         PONI+JbtX681XRpD5fS+2AxGIyLbNs3n2ioh9P12xxIW03mjkzMYTb6XS35NSXaX7NIB
-         eaNw==
+        b=WVFqgWdozaQsJOt1h2EaLPt7Bhp76BG4Et7FKpP402gzVtV7crA5VSHzh3HxgJMjnI
+         IyGtiJcCQlih6cLdsBcwLOJInv5+f3ltAaW0XvfBw3dwZ1cPqPa/GTw0H99W5K6Wp1PR
+         zIe0FxYELCqRu8Yz49bFepsd7luIb0UqpPVEs+hhenBL+kZldh535ffRvfZrcCQ+tD03
+         os8jzj/A7rcootTE4XIaY0Pr+YleQCsIGo9v0NxyqMaqO3KvIDWCLehQONQr2RAV6kEU
+         RuM5I5+PYKYZVvkoJ5TUvhKMYbcYDrF8W8576EMwKvgSJaLEzl5zLHDjoEDbfenE2Lf+
+         wgIQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=2rWJqIdl3T6NDbFUxnpl26XbdssqdP66MZ1hO8fX+50=;
-        b=hu2usJ7NgVmJqxZXDx/lXAKdthL0qTtwBJIaUb8OEqiuZLyrioW73EdR5Kme5w0A3W
-         os7PWtO4v1EnPbRUenzTVaS8c72sXSuJTeYqTF6Hx5yjkhdXnKkG8rZqYK4YbQDLXIN5
-         u3JaPgwoLQ98mZGGYRN3CCVtZ25qbOhI1GShJsBpRgeMimpL7AegCExkuXpQpNNd+26G
-         apHWGrfUYbXAQmFopYj9VIp4RC2xEObqy6BCoVBwGavvTPgEw7s4wJE+GNEgEeqTuxLO
-         WOrjoVM3If3DtEOyT4rXRyPMcphnwuA0NT4IZPrI7XGYgqAyBTXcFN94+vSluiM8QXVp
-         8egQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:date:to:from:subject:message-id
+         :dkim-signature;
+        bh=7veU9ku6WjKzQTNgKrZGWNc/gqaHar14RSsOo8l5s4w=;
+        b=AxtogHfi7ByQJS4gedv5ZeND81ztNg+UdAs3/IRto7asc/Wr0cSZkxPedtETf8gytP
+         L9zsFCuURsxN538EwtUIJBxPl+mY9/+oNoY7LUIxcnH8hoJjzEq8cBr54mMkj1Cd+DHz
+         WrzT0oKQqD7LNCp1vnEXSCB0R33/L6c6Lb2DvY7EfQcHJ7mKdZuXhqVCxGpt3LcsH9i/
+         9bH093cOxalxQV/I0GUPlpwUalBkuAU2G5fQa4ALURq1MxThxFY+gxO0B6byCFJnDhBA
+         AZeGIAbmkz9K2d20JmURA0f2nyDaHA0N/ltDM0tdbKO7+DduIlyBJRx602MOPS3PZUWB
+         NyLA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=KdwFy91q;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t13si2056018qtx.267.2021.04.30.02.00.00
+        by mx.google.com with ESMTPS id p10si168013ilp.47.2021.04.29.16.38.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 30 Apr 2021 02:00:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 29 Apr 2021 16:38:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:52218 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=KdwFy91q;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:44342 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lcP0B-0003cC-QE
-	for alex.bennee@linaro.org; Fri, 30 Apr 2021 04:59:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43562)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lcGEv-0003Gr-4w
+	for alex.bennee@linaro.org; Thu, 29 Apr 2021 19:38:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49018)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1lcP02-0003bT-4C; Fri, 30 Apr 2021 04:59:50 -0400
-Received: from szxga01-in.huawei.com ([45.249.212.187]:2977)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1lcOzy-0005HW-E1; Fri, 30 Apr 2021 04:59:49 -0400
-Received: from dggeml757-chm.china.huawei.com (unknown [172.30.72.55])
- by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4FWmTV6b3zzYd14;
- Fri, 30 Apr 2021 16:57:18 +0800 (CST)
-Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
- dggeml757-chm.china.huawei.com (10.1.199.137) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.2176.2; Fri, 30 Apr 2021 16:59:37 +0800
-Received: from [10.174.187.128] (10.174.187.128) by
- dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
- 15.1.2176.2; Fri, 30 Apr 2021 16:59:36 +0800
-Subject: Re: [RFC PATCH v2 2/4] hw/arm/virt: Parse -smp cluster parameter in
- virt_smp_parse
-To: Andrew Jones <drjones@redhat.com>
-References: <20210413083147.34236-1-wangyanan55@huawei.com>
- <20210413083147.34236-3-wangyanan55@huawei.com>
- <20210428103141.5qfhzcqko6hxhxee@gator>
- <262dba57-437c-36aa-7a86-8f0c59751887@huawei.com>
- <20210429071614.lywpbfpeyclqxnke@gator.home>
- <ce557539-ac8f-7245-747b-8212a4857811@huawei.com>
- <20210429110229.7jtz6hfrfvqdkrbx@gator>
- <f5b264ff-58ed-0cd2-3b84-42fa1724b8ac@huawei.com>
- <20210430064125.3b5fjolwqculrjxz@gator.home>
-From: "wangyanan (Y)" <wangyanan55@huawei.com>
-Message-ID: <612c71d5-83cd-d055-48a4-e06153837f8d@huawei.com>
-Date: Fri, 30 Apr 2021 16:59:36 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
-MIME-Version: 1.0
-In-Reply-To: <20210430064125.3b5fjolwqculrjxz@gator.home>
-Content-Type: text/plain; charset="utf-8"; format=flowed
+ (Exim 4.90_1) (envelope-from <shashi.mallela@linaro.org>)
+ id 1lcGD7-0002S6-MZ
+ for qemu-devel@nongnu.org; Thu, 29 Apr 2021 19:36:45 -0400
+Received: from mail-qk1-x736.google.com ([2607:f8b0:4864:20::736]:44939)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shashi.mallela@linaro.org>)
+ id 1lcGD4-0001ln-Ql
+ for qemu-devel@nongnu.org; Thu, 29 Apr 2021 19:36:45 -0400
+Received: by mail-qk1-x736.google.com with SMTP id 190so12358972qkl.11
+ for <qemu-devel@nongnu.org>; Thu, 29 Apr 2021 16:36:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=message-id:subject:from:to:cc:date:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=7veU9ku6WjKzQTNgKrZGWNc/gqaHar14RSsOo8l5s4w=;
+ b=KdwFy91q0DP3RrFhYs1RLO5CyinB0aGUmp3bX2/SR5OF9CEzH0MgmKaCDc+vfvmBaN
+ IWSbaXwkN6Di08F2Qtc1WUh+bxP/b1+tfUh+qSRLHQKFo+0MYkmwgkRX8IClE1bfCK7f
+ WxPcyWCZR/Xfvm1FvJjDSgFCNJ/3GdfQRyQ9k+huybtUp8tWlQt96kvq8Xs+JQpoY+LO
+ 6TrXsD3tJAJ2Cx9IQu071z3o5beeEv02vw/SLswGJDm3zrm9gHH7shj4k4suTL6wiHy6
+ DWnRXqsncrUVBIBO6Wx0w7Aljr6M2Y86TitRRgRQa6zlonaa22n9qd/skCDQTo5upufM
+ NS0Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=7veU9ku6WjKzQTNgKrZGWNc/gqaHar14RSsOo8l5s4w=;
+ b=FL+M2zzpXcJuES5a/Am7WBD3Zt9Mk1uEMLDK6xyQ3Av69QkD0LFPyTIsnSktpsKpFP
+ 2CF3R5rDu494vTuMBGfwOtSRJaWoFUxnZz66FPQ1Kvc6j2cXn3g7I3voJaW/qbXPnWkX
+ 0q9MjfYCdGSzxpru1Gf3ou7NLX1sCmQGyx+Y+F54rPzR3lb+vkCK99vUAfFSXzMAIIL6
+ xsoJ+uxKd9n0mgPQWmdL40yA7dvUaDkPzMRk2wZFpvp6MudxvBAirx22S5CSUZtbe37D
+ xFNbumOC5qA3Fvat5+WkUjECbATle9zlLkm9o/A63n/hXf3zLpD9c0Ht3lfLciss5Nxr
+ 2a+w==
+X-Gm-Message-State: AOAM5332gYiHdz4sS5apLHIGPHWuswsQNzegTom8E4hrFTAPqsaebkbs
+ lPHlq+MSbGnoEz/56vfAlX2Ezg==
+X-Received: by 2002:a37:390:: with SMTP id 138mr2387947qkd.136.1619739400114; 
+ Thu, 29 Apr 2021 16:36:40 -0700 (PDT)
+Received: from localhost.localdomain
+ (bras-base-stsvon1503w-grc-23-174-92-28-28.dsl.bell.ca. [174.92.28.28])
+ by smtp.gmail.com with ESMTPSA id f5sm135779qkk.12.2021.04.29.16.36.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 29 Apr 2021 16:36:39 -0700 (PDT)
+Message-ID: <6e91d0458e38b4e782dc8e61de3ee0f875f8a56a.camel@linaro.org>
+Subject: Re: [PATCH v2 1/8] hw/intc: GICv3 ITS initial framework
+From: shashi.mallela@linaro.org
+To: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 29 Apr 2021 19:36:38 -0400
+In-Reply-To: <CAFEAcA8OCs-sL1Zu-PwkadTvto3pJWO8VLcxfqmH7JGHXdeQuw@mail.gmail.com>
+References: <20210401024152.203896-1-shashi.mallela@linaro.org>
+ <20210401024152.203896-2-shashi.mallela@linaro.org>
+ <CAFEAcA8OCs-sL1Zu-PwkadTvto3pJWO8VLcxfqmH7JGHXdeQuw@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5 (3.28.5-14.el8) 
+Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-Content-Language: en-US
-X-Originating-IP: [10.174.187.128]
-X-ClientProxiedBy: dggeme702-chm.china.huawei.com (10.1.199.98) To
- dggpemm500023.china.huawei.com (7.185.36.83)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.187;
- envelope-from=wangyanan55@huawei.com; helo=szxga01-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::736;
+ envelope-from=shashi.mallela@linaro.org; helo=mail-qk1-x736.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Barry Song <song.bao.hua@hisilicon.com>,
- Peter Maydell <peter.maydell@linaro.org>, "Michael S .
- Tsirkin" <mst@redhat.com>, wanghaibin.wang@huawei.com, qemu-devel@nongnu.org,
- yangyicong@huawei.com, Shannon Zhao <shannon.zhaosl@gmail.com>,
- qemu-arm@nongnu.org, Alistair Francis <alistair.francis@wdc.com>,
- prime.zeng@hisilicon.com, Igor
- Mammedov <imammedo@redhat.com>, yuzenghui@huawei.com,
- Paolo Bonzini <pbonzini@redhat.com>, zhukeqian1@huawei.com,
- Jiajie Li <lijiajie11@huawei.com>, David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: N1S56qcL0nAp
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Leif Lindholm <leif@nuviainc.com>, QEMU Developers <qemu-devel@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Radoslaw Biernacki <rad@semihalf.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: eEpe10QbxRq+
 
+On Fri, 2021-04-16 at 18:21 +0100, Peter Maydell wrote:
+> On Thu, 1 Apr 2021 at 03:41, Shashi Mallela <
+> shashi.mallela@linaro.org> wrote:
+> > Added register definitions relevant to ITS,implemented overall
+> > ITS device framework with stubs for ITS control and translater
+> > regions read/write,extended ITS common to handle mmio init between
+> > existing kvm device and newer qemu device.
+> > 
+> > Signed-off-by: Shashi Mallela <shashi.mallela@linaro.org>
+> > ---
+> >  hw/intc/arm_gicv3_its.c                | 334
+> > +++++++++++++++++++++++++
+> >  hw/intc/arm_gicv3_its_common.c         |  12 +-
+> >  hw/intc/arm_gicv3_its_kvm.c            |   2 +-
+> >  hw/intc/gicv3_internal.h               |  86 ++++++-
+> >  hw/intc/meson.build                    |   1 +
+> >  include/hw/intc/arm_gicv3_its_common.h |  12 +-
+> >  6 files changed, 430 insertions(+), 17 deletions(-)
+> >  create mode 100644 hw/intc/arm_gicv3_its.c
+> 
+> Overall I think the structure of the patchset and of the device
+> is good, so I'm just going to dive into more detailed review
+> comments.
+> 
+> Have accepted and addressed all the comments and will share the
+> updated patch sets soon,responding to comments which need 
+>  clarification in all the relevant patch sets 
+> 
+> > +static MemTxResult its_trans_writew(GICv3ITSState *s, hwaddr
+> > offset,
+> > +                               uint64_t value, MemTxAttrs attrs)
+> > +{
+> > +    MemTxResult result = MEMTX_OK;
+> > +
+> > +    return result;
+> > +}
+> > +
+> > +static MemTxResult its_trans_writel(GICv3ITSState *s, hwaddr
+> > offset,
+> > +                               uint64_t value, MemTxAttrs attrs)
+> > +{
+> > +    MemTxResult result = MEMTX_OK;
+> > +
+> > +    return result;
+> > +}
+> > +
+> > +static MemTxResult gicv3_its_translation_write(void *opaque,
+> > hwaddr offset,
+> > +                               uint64_t data, unsigned size,
+> > MemTxAttrs attrs)
+> > +{
+> > +    GICv3ITSState *s = (GICv3ITSState *)opaque;
+> > +    MemTxResult result;
+> > +
+> > +    switch (size) {
+> > +    case 2:
+> > +        result = its_trans_writew(s, offset, data, attrs);
+> > +        break;
+> > +    case 4:
+> > +        result = its_trans_writel(s, offset, data, attrs);
+> > +        break;
+> > +    default:
+> > +        result = MEMTX_ERROR;
+> > +        break;
+> > +    }
+> > +
+> > +    if (result == MEMTX_ERROR) {
+> > +        qemu_log_mask(LOG_GUEST_ERROR,
+> > +                      "%s: invalid guest write at offset "
+> > TARGET_FMT_plx
+> > +                      "size %u\n", __func__, offset, size);
+> > +        /*
+> > +         * The spec requires that reserved registers are RAZ/WI;
+> > +         * so use MEMTX_ERROR returns from leaf functions as a way
+> > to
+> > +         * trigger the guest-error logging but don't return it to
+> > +         * the caller, or we'll cause a spurious guest data abort.
+> > +         */
+> > +        result = MEMTX_OK;
+> > +    }
+> > +    return result;
+> > +}
+> 
+> There is exactly one register in the translation register frame, so
+> having this generic top level write function that calls out to
+> separate writew and writel functions is overkill and ends up
+> with duplication of code. I would suggest you just fold the
+> implementation into gicv3_its_translation_write(), which would
+> end up looking something like
+> 
+>     switch (offset) {
+>     case GITS_TRANSLATER:
+>         if (s->ctlr & ITS_CTLR_ENABLED) {
+>             /* 16 bit accesses behave as writes with bits [31:16]
+> zero */
+>             s->translater = value;
+>             devid = attrs.requester_id;
+>             process_int(s, s->translater, devid, NONE);
+>         }
+>         break;
+>     default:
+>         break;
+>     }
+>     return MEMTX_OK;
+> 
+> which handles both the 16 and 32 bit case. You can tell the
+> core memory system code not to hand you 8 or 64 bit accesses
+> using fields in the MemoryRegionOps; see below.
+> 
+> > +static MemTxResult gicv3_its_translation_read(void *opaque, hwaddr
+> > offset,
+> > +                              uint64_t *data, unsigned size,
+> > MemTxAttrs attrs)
+> > +{
+> > +    qemu_log_mask(LOG_GUEST_ERROR,
+> > +        "%s: Invalid read from translation register area at offset
+> > "
+> > +        TARGET_FMT_plx "\n", __func__, offset);
+> > +    return MEMTX_ERROR;
+> > +}
+> > +
+> > +static MemTxResult its_writeb(GICv3ITSState *s, hwaddr offset,
+> > +                               uint64_t value, MemTxAttrs attrs)
+> > +{
+> > +    qemu_log_mask(LOG_UNIMP,
+> > +                "%s: unsupported byte write to register at offset
+> > "
+> > +                TARGET_FMT_plx "\n", __func__, offset);
+> > +    return MEMTX_ERROR;
+> > +}
+> > +
+> > +static MemTxResult its_readb(GICv3ITSState *s, hwaddr offset,
+> > +                               uint64_t *data, MemTxAttrs attrs)
+> > +{
+> > +    qemu_log_mask(LOG_UNIMP,
+> > +                "%s: unsupported byte read from register at offset
+> > "
+> > +                TARGET_FMT_plx "\n", __func__, offset);
+> > +    return MEMTX_ERROR;
+> > +}
+> > +
+> > +static MemTxResult its_writew(GICv3ITSState *s, hwaddr offset,
+> > +                               uint64_t value, MemTxAttrs attrs)
+> > +{
+> > +    qemu_log_mask(LOG_UNIMP,
+> > +        "%s: unsupported word write to register at offset "
+> > +        TARGET_FMT_plx "\n", __func__, offset);
+> > +    return MEMTX_ERROR;
+> > +}
+> > +
+> > +static MemTxResult its_readw(GICv3ITSState *s, hwaddr offset,
+> > +                               uint64_t *data, MemTxAttrs attrs)
+> > +{
+> > +    qemu_log_mask(LOG_UNIMP,
+> > +        "%s: unsupported word read from register at offset "
+> > +        TARGET_FMT_plx "\n", __func__, offset);
+> > +    return MEMTX_ERROR;
+> > +}
+> 
+> Similarly, there are no byte or halfword accessible registers
+> on the ITS, so these are unnecessary; just use MemoryRegionOps
+> to cause the core code to reject them.
+> 
+> > +static MemTxResult its_writel(GICv3ITSState *s, hwaddr offset,
+> > +                               uint64_t value, MemTxAttrs attrs)
+> > +{
+> > +    MemTxResult result = MEMTX_OK;
+> > +
+> > +    return result;
+> > +}
+> > +
+> > +static MemTxResult its_readl(GICv3ITSState *s, hwaddr offset,
+> > +                               uint64_t *data, MemTxAttrs attrs)
+> > +{
+> > +    MemTxResult result = MEMTX_OK;
+> > +
+> > +    return result;
+> > +}
+> > +
+> > +static MemTxResult its_writell(GICv3ITSState *s, hwaddr offset,
+> > +                               uint64_t value, MemTxAttrs attrs)
+> > +{
+> > +    MemTxResult result = MEMTX_OK;
+> > +
+> > +    return result;
+> > +}
+> > +
+> > +static MemTxResult its_readll(GICv3ITSState *s, hwaddr offset,
+> > +                               uint64_t *data, MemTxAttrs attrs)
+> > +{
+> > +    MemTxResult result = MEMTX_OK;
+> > +
+> > +    return result;
+> > +}
+> > +
+> > +static MemTxResult gicv3_its_read(void *opaque, hwaddr offset,
+> > uint64_t *data,
+> > +                              unsigned size, MemTxAttrs attrs)
+> > +{
+> > +    GICv3ITSState *s = (GICv3ITSState *)opaque;
+> > +    MemTxResult result;
+> > +
+> > +    switch (size) {
+> > +    case 1:
+> > +        result = its_readb(s, offset, data, attrs);
+> > +        break;
+> > +    case 2:
+> > +        result = its_readw(s, offset, data, attrs);
+> > +        break;
+> > +    case 4:
+> > +        result = its_readl(s, offset, data, attrs);
+> > +        break;
+> > +    case 8:
+> > +        result = its_readll(s, offset, data, attrs);
+> > +        break;
+> > +    default:
+> > +        result = MEMTX_ERROR;
+> > +        break;
+> > +    }
+> > +
+> > +    if (result == MEMTX_ERROR) {
+> > +        qemu_log_mask(LOG_GUEST_ERROR,
+> > +                      "%s: invalid guest read at offset "
+> > TARGET_FMT_plx
+> > +                      "size %u\n", __func__, offset, size);
+> > +        /*
+> > +         * The spec requires that reserved registers are RAZ/WI;
+> > +         * so use MEMTX_ERROR returns from leaf functions as a way
+> > to
+> > +         * trigger the guest-error logging but don't return it to
+> > +         * the caller, or we'll cause a spurious guest data abort.
+> > +         */
+> > +        result = MEMTX_OK;
+> > +        *data = 0;
+> > +    }
+> > +    return result;
+> > +}
+> > +
+> > +static MemTxResult gicv3_its_write(void *opaque, hwaddr offset,
+> > uint64_t data,
+> > +                               unsigned size, MemTxAttrs attrs)
+> > +{
+> > +    GICv3ITSState *s = (GICv3ITSState *)opaque;
+> > +    MemTxResult result;
+> > +
+> > +    switch (size) {
+> > +    case 1:
+> > +        result = its_writeb(s, offset, data, attrs);
+> > +        break;
+> > +    case 2:
+> > +        result = its_writew(s, offset, data, attrs);
+> > +        break;
+> > +    case 4:
+> > +        result = its_writel(s, offset, data, attrs);
+> > +        break;
+> > +    case 8:
+> > +        result = its_writell(s, offset, data, attrs);
+> > +        break;
+> > +    default:
+> > +        result = MEMTX_ERROR;
+> > +        break;
+> > +    }
+> > +
+> > +    if (result == MEMTX_ERROR) {
+> > +        qemu_log_mask(LOG_GUEST_ERROR,
+> > +                      "%s: invalid guest write at offset "
+> > TARGET_FMT_plx
+> > +                      "size %u\n", __func__, offset, size);
+> > +        /*
+> > +         * The spec requires that reserved registers are RAZ/WI;
+> > +         * so use MEMTX_ERROR returns from leaf functions as a way
+> > to
+> > +         * trigger the guest-error logging but don't return it to
+> > +         * the caller, or we'll cause a spurious guest data abort.
+> > +         */
+> > +        result = MEMTX_OK;
+> > +    }
+> > +    return result;
+> > +}
+> > +
+> > +static const MemoryRegionOps gicv3_its_control_ops = {
+> > +    .read_with_attrs = gicv3_its_read,
+> > +    .write_with_attrs = gicv3_its_write,
+> > +    .endianness = DEVICE_NATIVE_ENDIAN,
+> 
+>        .valid.min_access_size = 4,
+>        .valid.max_access_size = 8,
+>        .impl.min_access_size = 4,
+>        .impl.max_access_size = 8,
+> 
+> And then you don't need to handle 1 and 2 in your read/write fns.
+> 
+> 
+> > +};
+> > +
+> > +static const MemoryRegionOps gicv3_its_translation_ops = {
+> > +    .read_with_attrs = gicv3_its_translation_read,
+> > +    .write_with_attrs = gicv3_its_translation_write,
+> > +    .endianness = DEVICE_NATIVE_ENDIAN,
+> 
+> Similarly here set the valid and impl min and max to 2 and 4.
+> 
+> > +};
+> > +
+> > +static void gicv3_arm_its_realize(DeviceState *dev, Error **errp)
+> > +{
+> > +    GICv3ITSState *s = ARM_GICV3_ITS_COMMON(dev);
+> > +
+> > +    gicv3_its_init_mmio(s, &gicv3_its_control_ops,
+> > &gicv3_its_translation_ops);
+> > +}
+> > +
+> > +static void gicv3_its_reset(DeviceState *dev)
+> > +{
+> > +    GICv3ITSState *s = ARM_GICV3_ITS_COMMON(dev);
+> > +    GICv3ITSClass *c = ARM_GICV3_ITS_GET_CLASS(s);
+> > +
+> > +    if (s->gicv3->cpu->gicr_typer & GICR_TYPER_PLPIS) {
+> > +        c->parent_reset(dev);
+> > +
+> > +        /* set the ITS default features supported */
+> > +        s->typer = FIELD_DP64(s->typer, GITS_TYPER, PHYSICAL,
+> > +                                       GITS_TYPE_PHYSICAL);
+> > +        s->typer = FIELD_DP64(s->typer, GITS_TYPER,
+> > ITT_ENTRY_SIZE,
+> > +                                       ITS_ITT_ENTRY_SIZE);
+> > +        s->typer = FIELD_DP64(s->typer, GITS_TYPER, IDBITS,
+> > ITS_IDBITS);
+> > +        s->typer = FIELD_DP64(s->typer, GITS_TYPER, DEVBITS,
+> > ITS_DEVBITS);
+> > +        s->typer = FIELD_DP64(s->typer, GITS_TYPER, CIL, 1);
+> > +        s->typer = FIELD_DP64(s->typer, GITS_TYPER, CIDBITS,
+> > ITS_CIDBITS);
+> 
+> This is a read-only constant value. Two options:
+>  (1) set s->typer in realize, not in reset (this is how we handle
+>      GICR_TYPER)
+>  (2) don't have an s->typer at all, and just return the right
+>      constant value when in the read function (this is how we
+>      handle GICD_TYPER)
+> Implemented option 1
+> 
+> > +
+> > +        /*
+> > +         * We claim to be an ARM r0p0 with a zero ProductID.
+> > +         * This is the same as an r0p0 GIC-500.
+> > +         */
+> > +        s->iidr = gicv3_iidr();
+> 
+> IIDR is constant, so just call gicv3_iidr() to get its value directly
+> in the register read function.
+> 
+> > +
+> > +        /* Quiescent bit reset to 1 */
+> > +        s->ctlr = FIELD_DP32(s->ctlr, GITS_CTLR, QUIESCENT, 1);
+> > +
+> > +        /*
+> > +         * setting GITS_BASER0.Type = 0b001 (Device)
+> > +         *         GITS_BASER1.Type = 0b100 (Collection Table)
+> > +         *         GITS_BASER<n>.Type,where n = 3 to 7 are 0b00
+> > (Unimplemented)
+> > +         *         GITS_BASER<0,1>.Page_Size = 64KB
+> > +         * and default translation table entry size to 16 bytes
+> > +         */
+> > +        s->baser[0] = FIELD_DP64(s->baser[0], GITS_BASER, TYPE,
+> > +                                              GITS_ITT_TYPE_DEVICE
+> > );
+> > +        s->baser[0] = FIELD_DP64(s->baser[0], GITS_BASER,
+> > PAGESIZE,
+> > +                                              GITS_BASER_PAGESIZE_
+> > 64K);
+> > +        s->baser[0] = FIELD_DP64(s->baser[0], GITS_BASER,
+> > ENTRYSIZE,
+> > +                                              GITS_DTE_SIZE);
+> > +
+> > +        s->baser[1] = FIELD_DP64(s->baser[1], GITS_BASER, TYPE,
+> > +                                              GITS_ITT_TYPE_COLLEC
+> > TION);
+> > +        s->baser[1] = FIELD_DP64(s->baser[1], GITS_BASER,
+> > PAGESIZE,
+> > +                                              GITS_BASER_PAGESIZE_
+> > 64K);
+> > +        s->baser[1] = FIELD_DP64(s->baser[1], GITS_BASER,
+> > ENTRYSIZE,
+> > +                                              GITS_CTE_SIZE);
+> > +    }
+> > +}
+> > +
+> > +static Property gicv3_its_props[] = {
+> > +    DEFINE_PROP_LINK("parent-gicv3", GICv3ITSState, gicv3, "arm-
+> > gicv3",
+> > +                     GICv3State *),
+> > +    DEFINE_PROP_END_OF_LIST(),
+> > +};
+> > +
+> > +static void gicv3_its_class_init(ObjectClass *klass, void *data)
+> > +{
+> > +    DeviceClass *dc = DEVICE_CLASS(klass);
+> > +    GICv3ITSClass *ic = ARM_GICV3_ITS_CLASS(klass);
+> > +
+> > +    dc->realize = gicv3_arm_its_realize;
+> > +    device_class_set_props(dc, gicv3_its_props);
+> > +    device_class_set_parent_reset(dc, gicv3_its_reset, &ic-
+> > >parent_reset);
+> > +}
+> > +
+> > +static const TypeInfo gicv3_its_info = {
+> > +    .name = TYPE_ARM_GICV3_ITS,
+> > +    .parent = TYPE_ARM_GICV3_ITS_COMMON,
+> > +    .instance_size = sizeof(GICv3ITSState),
+> > +    .class_init = gicv3_its_class_init,
+> > +    .class_size = sizeof(GICv3ITSClass),
+> > +};
+> > +
+> > +static void gicv3_its_register_types(void)
+> > +{
+> > +    type_register_static(&gicv3_its_info);
+> > +}
+> > +
+> > +type_init(gicv3_its_register_types)
+> > diff --git a/hw/intc/arm_gicv3_its_common.c
+> > b/hw/intc/arm_gicv3_its_common.c
+> > index 66c4c6a188..80cc9ec6d8 100644
+> > --- a/hw/intc/arm_gicv3_its_common.c
+> > +++ b/hw/intc/arm_gicv3_its_common.c
+> > @@ -50,12 +50,16 @@ static int gicv3_its_post_load(void *opaque,
+> > int version_id)
+> > 
+> >  static const VMStateDescription vmstate_its = {
+> >      .name = "arm_gicv3_its",
+> > +    .version_id = 1,
+> > +    .minimum_version_id = 1,
+> >      .pre_save = gicv3_its_pre_save,
+> >      .post_load = gicv3_its_post_load,
+> >      .priority = MIG_PRI_GICV3_ITS,
+> >      .fields = (VMStateField[]) {
+> >          VMSTATE_UINT32(ctlr, GICv3ITSState),
+> > +        VMSTATE_UINT32(translater, GICv3ITSState),
+> >          VMSTATE_UINT32(iidr, GICv3ITSState),
+> > +        VMSTATE_UINT64(typer, GICv3ITSState),
+> 
+> You cannot change a VMStateDescription like this -- you will break
+> migration compatibility. Luckily, in this case there's no need:
+> GITS_TYPER is read-only, so it doesn't need to be migrated, and
+> GITS_TRANSLATER is not a real contains-state register (it's write-
+> only),
+> so there's no new state there either. Neither needs to be a new field
+> in the GICv3ITSState structure either (though typer could be if you
+> prefer).
+> 
+> >          VMSTATE_UINT64(cbaser, GICv3ITSState),
+> >          VMSTATE_UINT64(cwriter, GICv3ITSState),
+> >          VMSTATE_UINT64(creadr, GICv3ITSState),
+> > @@ -99,15 +103,16 @@ static const MemoryRegionOps
+> > gicv3_its_trans_ops = {
+> >      .endianness = DEVICE_NATIVE_ENDIAN,
+> >  };
+> > +/**
+> > + * Default features advertised by this version of ITS
+> > + */
+> > +/* Physical LPIs supported */
+> > +#define GITS_TYPE_PHYSICAL           (1U << 0)
+> > +
+> > +/*
+> > + * 11 bytes Interrupt translation Table Entry size
+> > + * Valid = 1 bit,InterruptType = 1 bit,
+> > + * Size of LPI number space[considering max 24 bits],
+> > + * Size of LPI number space[considering max 24 bits],
+> > + * ICID = 16 bits,
+> > + * vPEID = 16 bits
+> > + */
+> > +#define ITS_ITT_ENTRY_SIZE            0xB
+> > +
+> > +/* 16 bits EventId */
+> > +#define ITS_IDBITS                   GICD_TYPER_IDBITS
+> > +
+> > +/* 16 bits DeviceId */
+> > +#define ITS_DEVBITS                   0xF
+> > +
+> > +/* 16 bits CollectionId */
+> > +#define ITS_CIDBITS                  0xF
+> > +
+> > +/*
+> > + * 8 bytes Device Table Entry size
+> > + * Valid = 1 bit,ITTAddr = 44 bits,Size = 5 bits
+> > + */
+> > +#define GITS_DTE_SIZE                 (0x8ULL)
+> > +
+> > +/*
+> > + * 8 bytes Collection Table Entry size
+> > + * Valid = 1 bit,RDBase = 36 bits(considering max RDBASE)
+> > + */
+> > +#define GITS_CTE_SIZE                 (0x8ULL)
+> > +
+> 
+> Is this the same data structure the in-kernel KVM ITS uses, or is
+> it just one specific to the QEMU emulated implementation ?
+> This is specific to QEMU emulated implementation
+> 
+> >  /* Special interrupt IDs */
+> >  #define INTID_SECURE 1020
+> >  #define INTID_NONSECURE 1021
+> > diff --git a/hw/intc/meson.build b/hw/intc/meson.build
+> > index 1c299039f6..53472239f0 100644
+> > --- a/hw/intc/meson.build
+> > +++ b/hw/intc/meson.build
+> > @@ -8,6 +8,7 @@ softmmu_ss.add(when: 'CONFIG_ARM_GIC', if_true:
+> > files(
+> >    'arm_gicv3_dist.c',
+> >    'arm_gicv3_its_common.c',
+> >    'arm_gicv3_redist.c',
+> > +  'arm_gicv3_its.c',
+> >  ))
+> >  softmmu_ss.add(when: 'CONFIG_ETRAXFS', if_true:
+> > files('etraxfs_pic.c'))
+> >  softmmu_ss.add(when: 'CONFIG_HEATHROW_PIC', if_true:
+> > files('heathrow_pic.c'))
+> > diff --git a/include/hw/intc/arm_gicv3_its_common.h
+> > b/include/hw/intc/arm_gicv3_its_common.h
+> > index 5a0952b404..08bc5652ed 100644
+> > --- a/include/hw/intc/arm_gicv3_its_common.h
+> > +++ b/include/hw/intc/arm_gicv3_its_common.h
+> > @@ -25,17 +25,24 @@
+> >  #include "hw/intc/arm_gicv3_common.h"
+> >  #include "qom/object.h"
+> > 
+> > +#define TYPE_ARM_GICV3_ITS "arm-gicv3-its"
+> > +
+> >  #define ITS_CONTROL_SIZE 0x10000
+> >  #define ITS_TRANS_SIZE   0x10000
+> >  #define ITS_SIZE         (ITS_CONTROL_SIZE + ITS_TRANS_SIZE)
+> > 
+> >  #define GITS_CTLR        0x0
+> >  #define GITS_IIDR        0x4
+> > +#define GITS_TYPER       0x8
+> >  #define GITS_CBASER      0x80
+> >  #define GITS_CWRITER     0x88
+> >  #define GITS_CREADR      0x90
+> >  #define GITS_BASER       0x100
+> > 
+> > +#define GITS_TRANSLATER  0x0040
+> > +
+> > +#define GITS_PIDR2       0xFFE8
+> 
+> You probably don't want an offset for GITS_PIDR2 specifically.
+> Compare handling of GICD_IDREGS in the distributor emulation.
+> Tried re-using the GICD_IDREGS offset for GITS_PIDR2,but from testing
+> observed that the linux kernel driver and kvm-unit-tests both relied
+> on using the 0xFFE8 offset instead of 0xFFD0 (used by GICD & GICR) to
+> complete ITS initialization and setup
+> 
+> thanks
+> -- PMM
 
-On 2021/4/30 14:41, Andrew Jones wrote:
-> On Fri, Apr 30, 2021 at 01:09:00PM +0800, wangyanan (Y) wrote:
->> Hi Drew,
->>
->> On 2021/4/29 19:02, Andrew Jones wrote:
->>> On Thu, Apr 29, 2021 at 04:56:06PM +0800, wangyanan (Y) wrote:
->>>> On 2021/4/29 15:16, Andrew Jones wrote:
->>>>> On Thu, Apr 29, 2021 at 10:14:37AM +0800, wangyanan (Y) wrote:
->>>>>> On 2021/4/28 18:31, Andrew Jones wrote:
->>>>>>> On Tue, Apr 13, 2021 at 04:31:45PM +0800, Yanan Wang wrote:
->>>>>>>>              } else if (sockets == 0) {
->>>>>>>>                  threads = threads > 0 ? threads : 1;
->>>>>>>> -            sockets = cpus / (cores * threads);
->>>>>>>> +            sockets = cpus / (clusters * cores * threads);
->>>>>>>>                  sockets = sockets > 0 ? sockets : 1;
->>>>>>> If we initialize clusters to zero instead of one and add lines in
->>>>>>> 'cpus == 0 || cores == 0' and 'sockets == 0' like
->>>>>>> 'clusters = clusters > 0 ? clusters : 1' as needed, then I think we can
->>>>>>> add
->>>>>>>
->>>>>>>      } else if (clusters == 0) {
->>>>>>>          threads = threads > 0 ? threads : 1;
->>>>>>>          clusters = cpus / (sockets * cores * thread);
->>>>>>>          clusters = clusters > 0 ? clusters : 1;
->>>>>>>      }
->>>>>>>
->>>>>>> here.
->>>>>> I have thought about this kind of format before, but there is a little bit
->>>>>> difference between these two ways. Let's chose the better and more
->>>>>> reasonable one of the two.
->>>>>>
->>>>>> Way A currently in this patch:
->>>>>> If value of clusters is not explicitly specified in -smp command line, we
->>>>>> assume
->>>>>> that users don't want to support clusters, for compatibility we initialized
->>>>>> the
->>>>>> value to 1. So that with cmdline "-smp cpus=24, sockets=2, cores=6", we will
->>>>>> parse out the topology description like below:
->>>>>> cpus=24, sockets=2, clusters=1, cores=6, threads=2
->>>>>>
->>>>>> Way B that you suggested for this patch:
->>>>>> Whether value of clusters is explicitly specified in -smp command line or
->>>>>> not,
->>>>>> we assume that clusters are supported and calculate the value. So that with
->>>>>> cmdline "-smp cpus=24, sockets=2, cores=6", we will parse out the topology
->>>>>> description like below:
->>>>>> cpus =24, sockets=2, clusters=2, cores=6, threads=1
->>>>>>
->>>>>> But I think maybe we should not assume too much about what users think
->>>>>> through the -smp command line. We should just assume that all levels of
->>>>>> cpu topology are supported and calculate them, and users should be more
->>>>>> careful if they want to get the expected results with not so complete
->>>>>> cmdline.
->>>>>> If I'm right, then Way B should be better. :)
->>>>>>
->>>>> Hi Yanan,
->>>>>
->>>>> We're already assuming the user wants to describe clusters to the guest
->>>>> because we require at least one per socket. If we want the user to have a
->>>>> choice between using clusters or not, then I guess we need to change the
->>>>> logic in the PPTT and the cpu-map to only generate the cluster level when
->>>>> the number of clusters is not zero. And then change this parser to not
->>>>> require clusters at all.
->>>> Hi Drew,
->>>>
->>>> I think this kind of change will introduce more complexity and actually is
->>>> not necessary.
->>>> Not generating cluster level at all and generating cluster level (one per
->>>> socket) are same
->>>> to kernel. Without cluster description provided, kernel will initialize all
->>>> cores in the same
->>>> cluster which also means one cluster per socket.
->>> Which kernel? All kernels? One without the cluster support patches [1]?
->>>
->>> [1] https://lore.kernel.org/lkml/20210420001844.9116-1-song.bao.hua@hisilicon.com/#t
->> I'm sorry, I didn't make it clear. :)
->> I actually mean the ARM64 kernel, with or without [1].
->>
->> Without [1]: Kernel doesn't care about cluster. When populating cpu
->> topology, it directly
->> finds the hierarchy node with "physical package flag" as package when
->> parsing ACPI, and
->> finds the core node's parent as package when parsing DT. So even we provide
->> cluster level
->> description (one per socket), the parsing results will be the same as not
->> providing at all.
->>
->> With [1]: Kernel finds the core hierarchy node's parent as cluster when
->> parsing ACPI. So if
->> we don't provide cluster level description, package will be taken as
->> cluster. And if we provide
->> the description (one per socket), the parsing result will also be the same.
->>
->> That's why I said that we just need to provide description of cluster (one
->> per socket) if we
->> don't want to make use of it in VMs.
-> OK, that sounds good.
->
->> [1] https://lore.kernel.org/lkml/20210420001844.9116-1-song.bao.hua@hisilicon.com/#t
->>>> So we should only ensure value of clusters per socket is one if we don't
->>>> want to use clusters,
->>>> and don't need to care about whether or not to generate description in PPTT
->>>> and cpu-map.
->>>> Is this right?
->>> Depends on your answer to my 'which kernel' questions.
->>>
->>>>> I'm not a big fan of these auto-calculated values either, but the
->>>>> documentation says that it'll do that, and it's been done that way
->>>>> forever, so I think we're stuck with it for the -smp option. Hmm, I was
->>>>> just about to say that x86 computes all its values, but I see the most
->>>>> recently added one, 'dies', is implemented the way you're proposing we
->>>>> implement 'clusters', i.e. default to one and don't calculate it when it's
->>>>> missing. I actually consider that either a documentation bug or an smp
->>>>> parsing bug, though.
->>>> My propose originally came from implementation of x86.
->>>>> Another possible option, for Arm, because only the cpus and maxcpus
->>>>> parameters of -smp have ever worked, is to document, for Arm, that if even
->>>>> one parameter other than cpus or maxcpus is provided, then all parameters
->>>>> must be provided. We can still decide if clusters=0 is valid, but we'll
->>>>> enforce that everything is explicit and that the product (with or without
->>>>> clusters) matches maxcpus.
->>>> Requiring every parameter explicitly will be most stable but indeed strict.
->>>>
->>>> Currently all the parsers use way B to calculate value of thread if it is
->>>> not provided explicitly.
->>>> So users should ensure the -smp cmdline they provided can result in that
->>>> parsed threads will
->>>> be 1 if they don't want to support multiple threads in one core.
->>>>
->>>> Very similar to thread, users should also ensure the provided cmdline can
->>>> result in that parsed
->>>> clusters will be 1 if they don't want to support multiple clusters in one
->>>> socket.
->>>>
->>>> So I'm wondering if we can just add some commit in the documentation to tell
->>>> users that they
->>>> should ensure this if they don't want support it. And as for calculation of
->>>> clusters, we follow
->>>> the logic of other parameters as you suggested in way B.
->>>>
->>>> Thanks,
->>>> Yanan
->>>>> Requiring every parameter might be stricter than necessary, though, I
->>>>> think we're mostly concerned with cpus/maxcpus, sockets, and cores.
->>>>> clusters can default to one or zero (whatever we choose and document),
->>>>> threads can default to one, and cpus can default to maxcpus or maxcpus can
->>>>> default to cpus, but at least one of those must be provided. And, if
->>>>> sockets are provided, then cores must be provided and vice versa. If
->>>>> neither sockets nor cores are provided, then nothing else besides cpus and
->>>>> maxcpus may be provided, and that would mean to not generate any topology
->>>>> descriptions for the guest.
->>> I still don't know. I think I prefer making -smp more strict (even for
->>> other architectures, but that's more difficult to do than for Arm.) What I
->>> wrote above isn't that bad. We only require one of cpus or maxcpus (pretty
->>> much everybody already does that anyway), and then, if given sockets
->>> or cores, the other will also be required. I assume anybody who bothers to
->>> specify one or the other would already specify both anyway.
->> I agree to make -smp more strict. We want to expose the cpu topology
->> information
->> to guest kernel, so that it can take advantage of the information for better
->> scheduling.
->>  From this point of view, we hope the topology descriptions are accurately
->> specified
->> but not automatically populated.
->>
->> But I think the requirement for ARM "if even one parameter other than cpus
->> or maxcpus
->> is provided then all parameters must be provided" will be better. This can
->> ensure the
->> whole accurate users-specified topology. As you mentioned, if anybody who
->> bothers
->> to specify one, why not also specify the others.
->>
->> I can add the requirement for ARM in the documentation, and also check the
->> parameters
->> in virt_smp_parse. Will this be fine?
-> We sort of have to support command lines that are missing 'maxcpus' and
-> 'clusters', unless we work together with libvirt to make the change.
-> Currently libvirt will generate '-smp 16,sockets=16,cores=1,threads=1'
-> from '<vcpu placement='static'>16</vcpu>'.
-I see. And libvirt currently doesn't support cluster in xml, which means
-we can not generate complete cmdlines with cluster in it through
-<topology ...> specification in xml.
-> That's sufficient for our
-> stricter, but not completely strict requirements. And, I still think
-> 'threads' could be optional, because there's a good chance the user
-> doesn't want to describe them, so a default of 1 is good enough.
-So the parsing logic can be repeated like this:
-We require at least one of cpus and maxcpus specified explicitly, and 
-default
-cluster/thread to 1 if not explicitly specified. And require both of 
-sockets and
-cores if one of them is specified.
-
-This is consistent with what you mentioned yesterday.
-
-Thanks,
-Yanan
->   Also,
-> given maxcpus, but not cpus, it's pretty obvious that cpus should equal
-> maxcpus.
->
-> Thanks,
-> drew
->
-> .

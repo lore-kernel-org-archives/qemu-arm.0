@@ -1,119 +1,111 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp295104lfg;
-        Fri, 30 Apr 2021 09:53:05 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxcgcWv/CQ3WXl1BDWFmXBPI3TWblK7C7C5kN8Pti8O6b6RL2BOgel+Mu3qyTMghiptBeNc
-X-Received: by 2002:a6b:6f15:: with SMTP id k21mr4703909ioc.76.1619801585248;
-        Fri, 30 Apr 2021 09:53:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619801585; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp296733lfg;
+        Fri, 30 Apr 2021 09:55:18 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyTEbIg+7viVunfssdETXN86tu2YQU/XVvQPmVD7iUhEjglIB1qfZKtQJGRyWrSOFLXM/Xd
+X-Received: by 2002:aca:1312:: with SMTP id e18mr11553955oii.153.1619801718003;
+        Fri, 30 Apr 2021 09:55:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619801718; cv=none;
         d=google.com; s=arc-20160816;
-        b=CVpl3HhwFxuVkGdiOpZyZaOdI5EAVlD9IBjpH+ux0BxxSAxN3b01tdMg6WgJy7y2MV
-         uR/8TAx3sDTXLu6N73Xw/Up6FWeGhOc/ux1eR5jSawAqAZTcgNVE/+aUyNEykRK42i3C
-         21SaQlboxLV1jUXSRZxuF6h/6jMPu903mCAkteG6KqOnkOblDIu2BhvOaykYsp4zOp0G
-         fCfT8u1h37LWG4M7UenUhZ1wifMJAzYlzl94DzZuzmExRYXvUlQC7rgy/khTryUhmk5L
-         tlSRt28xd/ajrquFM5++flX/9JC7fy02nqx7fEkAnzhNiosevFgPSRq9hfbVxKvONqa0
-         hAbg==
+        b=pueRpwxj5TG2D+JpAiGVCzBW7Tcpof8xgyBYrKeFEAKfOhcmb13UVYKSbmL9zVeeTf
+         5unf9N512Qo9AUpFNjqtNUu0LtzDe2QLQxOA2hzrAzGdUbctB2YYB8COsjSYxTouqqJN
+         1f4d1Qqq46NgpqCMnLrDw7+9yCPqJ0V2x8m8D/wbbXMO60wFtX899bLr7HPehsZ3w+Gn
+         EOsXwpKWQiuPi688I8L86PW3fjjjzHqiau0fxBKfZUFbgGB0nvEV4+QEbQ4OJ7mnQcom
+         1DZ1pTAp8q2zUB/6VzkF8MNRpxobQELDzswL25uQNnZmSbnhDmFM6pQuZRgvl9le7P8d
+         EUGw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:references:in-reply-to:message-id:date
-         :subject:to:from;
-        bh=dyDNk4tPIpNGcnUsCvcupOKz7jw1frintGQ96rrscFA=;
-        b=R6RFM39PaP/GufA0Imm7BNYBRpCdZXORWCE7WiT6yGJfOXu0sOxJo7dUJFG80YF0DP
-         dBDeuTRu0jjbSqWMl7m3/tRiHsW209N6Tz5gIGNYDq/ZPBVh+1eYqEscApHEQZ+NYxmy
-         ZFJLgg+5sZjaNex1vVpUPV1d4PFA2/AjFYdENOBsFTnkyEvi9j5Orn6XEf1qGwqXgw2S
-         WPj95gFi+D3eWpmi7Ea05h0bJqslXL2s5PqtSacSXxI4HSQ+HBHhpvqsB090tzcPFcYa
-         64EWQSkYAU5ms6Rg1E6zOMo2jc8ZyaAyQVHtUmxWcsL1TNq3uBaH3b9qR49rE1eIDgQL
-         rTDg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=1lAtnamSW+lxy86Pv0mIBtcx7YcdmWf+fo+qO9F0bJM=;
+        b=gZmDXVVumnhwO7eV5S32SV2yFVpNp9h6WZHrtWCZbo5cEb/E5jiGZub7qXP/9gHI/a
+         S2hQlCwI4+VWx1pE7FVPbSDO+wZnmqOXTuoMyxE2vgQp9VWMLN0GXOUBeG3sNE4lB/IQ
+         R4dqg1mU3WQMD3ArYMc0HdOEkQ99yQjXeyf59U85Cb+BvyyRzYjLLX1nnqjUr2+o1xXU
+         /VcmUlOfBHVnMGBHqLqOSyB6+AXCCzaontOvRZ1GXeltkSj0aIg8cCScMqTX2xpl8qmt
+         S+dOXeLfN4+hSzYTtz75xYG3hxdc6c3zTM2PUVz8zcvi/Hbd8YyJZGRCkFpkmaInVXZu
+         kneg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m3si3878859iol.17.2021.04.30.09.53.05
+        by mx.google.com with ESMTPS id q4si3931664otm.175.2021.04.30.09.55.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 30 Apr 2021 09:53:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 30 Apr 2021 09:55:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:60198 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:39254 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lcWO0-0007PH-Gh
-	for alex.bennee@linaro.org; Fri, 30 Apr 2021 12:53:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59352)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lcWQ9-00023v-10
+	for alex.bennee@linaro.org; Fri, 30 Apr 2021 12:55:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60604)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1lcW5A-0000sH-DQ; Fri, 30 Apr 2021 12:33:36 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:61252)
+ id 1lcW9s-0004MI-FI; Fri, 30 Apr 2021 12:38:28 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:12416
+ helo=mx0a-001b2d01.pphosted.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1lcW53-00072Z-CH; Fri, 30 Apr 2021 12:33:34 -0400
-Received: from pps.filterd (m0098417.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 13UGEVqj154299; Fri, 30 Apr 2021 12:33:23 -0400
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com with ESMTP id 388n868h5x-1
+ id 1lcW9n-0007tv-9Y; Fri, 30 Apr 2021 12:38:28 -0400
+Received: from pps.filterd (m0098416.ppops.net [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
+ 13UGYHpD000691; Fri, 30 Apr 2021 12:38:17 -0400
+Received: from ppma03ams.nl.ibm.com (62.31.33a9.ip4.static.sl-reverse.com
+ [169.51.49.98])
+ by mx0b-001b2d01.pphosted.com with ESMTP id 388n1192g4-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 30 Apr 2021 12:33:23 -0400
-Received: from m0098417.ppops.net (m0098417.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 13UGFGsi159173;
- Fri, 30 Apr 2021 12:33:23 -0400
-Received: from ppma06fra.de.ibm.com (48.49.7a9f.ip4.static.sl-reverse.com
- [159.122.73.72])
- by mx0a-001b2d01.pphosted.com with ESMTP id 388n868h4k-1
+ Fri, 30 Apr 2021 12:38:17 -0400
+Received: from pps.filterd (ppma03ams.nl.ibm.com [127.0.0.1])
+ by ppma03ams.nl.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 13UGNMe7023591;
+ Fri, 30 Apr 2021 16:33:15 GMT
+Received: from b06cxnps4076.portsmouth.uk.ibm.com
+ (d06relay13.portsmouth.uk.ibm.com [9.149.109.198])
+ by ppma03ams.nl.ibm.com with ESMTP id 384ay8kapf-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 30 Apr 2021 12:33:22 -0400
-Received: from pps.filterd (ppma06fra.de.ibm.com [127.0.0.1])
- by ppma06fra.de.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 13UGMwsS026192;
- Fri, 30 Apr 2021 16:33:21 GMT
-Received: from b06avi18878370.portsmouth.uk.ibm.com
- (b06avi18878370.portsmouth.uk.ibm.com [9.149.26.194])
- by ppma06fra.de.ibm.com with ESMTP id 384akh9ueq-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 30 Apr 2021 16:33:20 +0000
-Received: from d06av25.portsmouth.uk.ibm.com (d06av25.portsmouth.uk.ibm.com
- [9.149.105.61])
- by b06avi18878370.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP
- id 13UGWrT612124566
+ Fri, 30 Apr 2021 16:33:15 +0000
+Received: from d06av26.portsmouth.uk.ibm.com (d06av26.portsmouth.uk.ibm.com
+ [9.149.105.62])
+ by b06cxnps4076.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 13UGXD1A41943306
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 30 Apr 2021 16:32:53 GMT
-Received: from d06av25.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 7B10111C05B;
- Fri, 30 Apr 2021 16:33:18 +0000 (GMT)
-Received: from d06av25.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 3730211C04C;
- Fri, 30 Apr 2021 16:33:18 +0000 (GMT)
+ Fri, 30 Apr 2021 16:33:13 GMT
+Received: from d06av26.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 2A340AE056;
+ Fri, 30 Apr 2021 16:33:13 +0000 (GMT)
+Received: from d06av26.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id E2959AE064;
+ Fri, 30 Apr 2021 16:33:12 +0000 (GMT)
 Received: from smtp.tlslab.ibm.com (unknown [9.101.4.1])
- by d06av25.portsmouth.uk.ibm.com (Postfix) with SMTP;
- Fri, 30 Apr 2021 16:33:18 +0000 (GMT)
+ by d06av26.portsmouth.uk.ibm.com (Postfix) with SMTP;
+ Fri, 30 Apr 2021 16:33:12 +0000 (GMT)
 Received: from yukon.ibmuc.com (unknown [9.171.40.192])
- by smtp.tlslab.ibm.com (Postfix) with ESMTP id 67710220193;
- Fri, 30 Apr 2021 18:33:17 +0200 (CEST)
+ by smtp.tlslab.ibm.com (Postfix) with ESMTP id 4D8A022016C;
+ Fri, 30 Apr 2021 18:33:12 +0200 (CEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 09/18] tests/acceptance: Test ast2400 and ast2500 machines
-Date: Fri, 30 Apr 2021 18:33:09 +0200
-Message-Id: <20210430163309.4182922-10-clg@kaod.org>
+Subject: [PULL 02/18] aspeed/smc: Remove unused "sdram-base" property
+Date: Fri, 30 Apr 2021 18:33:02 +0200
+Message-Id: <20210430163309.4182922-3-clg@kaod.org>
 X-Mailer: git-send-email 2.26.3
 In-Reply-To: <20210430163309.4182922-1-clg@kaod.org>
 References: <20210430163309.4182922-1-clg@kaod.org>
-Content-Type: text/plain; charset=UTF-8
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: DhnpDMYI9muBgJtw91FmTEs9r2drkJ6F
-X-Proofpoint-GUID: nmNwED1bNwRPpgJqr12ol6BZ_fv5LHvk
-Content-Transfer-Encoding: quoted-printable
-X-Proofpoint-UnRewURL: 0 URL was un-rewritten
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: I_5otGGKq2Uu41_yZxj4QizN3GpUNF7i
+X-Proofpoint-ORIG-GUID: I_5otGGKq2Uu41_yZxj4QizN3GpUNF7i
 X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.761
  definitions=2021-04-30_10:2021-04-30,
  2021-04-30 signatures=0
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0
- suspectscore=0 priorityscore=1501 spamscore=0 adultscore=0 clxscore=1034
- bulkscore=0 lowpriorityscore=0 mlxlogscore=999 mlxscore=0 phishscore=0
- malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2104060000 definitions=main-2104300108
+ malwarescore=0
+ mlxlogscore=962 spamscore=0 mlxscore=0 bulkscore=0 lowpriorityscore=0
+ clxscore=1034 suspectscore=0 adultscore=0 phishscore=0 impostorscore=0
+ priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2104060000 definitions=main-2104300109
 Received-SPF: softfail client-ip=148.163.158.5; envelope-from=clg@kaod.org;
- helo=mx0b-001b2d01.pphosted.com
+ helo=mx0a-001b2d01.pphosted.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -121,115 +113,98 @@ X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
  RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-devel@nongnu.org, Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Willian Rampazzo <willianr@redhat.com>, qemu-arm@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Cleber Rosa <crosa@redhat.com>, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zYku2i34Qqds
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: mo3mgYBYrDk8
 
-From: Joel Stanley <joel@jms.id.au>
-
-Test MTD images from the OpenBMC project on AST2400 and AST2500 SoCs
-from ASPEED, by booting Palmetto and Romulus BMC machines.
-
-The images are fetched from OpenBMC's release directory on github.
-
-Cc: Cleber Rosa <crosa@redhat.com>
-Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>
-Co-developed-by: C=C3=A9dric Le Goater <clg@kaod.org>
-Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
-Tested-by: C=C3=A9dric Le Goater <clg@kaod.org>
-Signed-off-by: Joel Stanley <joel@jms.id.au>
-Reviewed-by: Cleber Rosa <crosa@redhat.com>
-Tested-by: Cleber Rosa <crosa@redhat.com>
-[ clg : - removed comment
-        - removed ending self.vm.shutdown() ]
+Cc: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-Message-Id: <20210304123951.163411-2-joel@jms.id.au>
-Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-Reviewed-by: Willian Rampazzo <willianr@redhat.com>
-Message-Id: <20210407171637.777743-12-clg@kaod.org>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Message-Id: <20210407171637.777743-3-clg@kaod.org>
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
- tests/acceptance/boot_linux_console.py | 43 ++++++++++++++++++++++++++
- 1 file changed, 43 insertions(+)
+ include/hw/ssi/aspeed_smc.h | 3 ---
+ hw/arm/aspeed_ast2600.c     | 4 ----
+ hw/arm/aspeed_soc.c         | 4 ----
+ hw/ssi/aspeed_smc.c         | 1 -
+ 4 files changed, 12 deletions(-)
 
-diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/boot=
-_linux_console.py
-index 1ca32ecf253b..37bca7358583 100644
---- a/tests/acceptance/boot_linux_console.py
-+++ b/tests/acceptance/boot_linux_console.py
-@@ -1010,6 +1010,49 @@ def test_arm_vexpressa9(self):
-         self.vm.add_args('-dtb', self.workdir + '/day16/vexpress-v2p-ca9.d=
-tb')
-         self.do_test_advcal_2018('16', tar_hash, 'winter.zImage')
+diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
+index 16c03fe64f3b..ccd71d9b534e 100644
+--- a/include/hw/ssi/aspeed_smc.h
++++ b/include/hw/ssi/aspeed_smc.h
+@@ -103,9 +103,6 @@ struct AspeedSMCState {
+     uint8_t r_timings;
+     uint8_t conf_enable_w0;
 =20
-+    def test_arm_ast2400_palmetto_openbmc_v2_9_0(self):
-+        """
-+        :avocado: tags=3Darch:arm
-+        :avocado: tags=3Dmachine:palmetto-bmc
-+        """
-+
-+        image_url =3D ('https://github.com/openbmc/openbmc/releases/downlo=
-ad/2.9.0/'
-+                     'obmc-phosphor-image-palmetto.static.mtd')
-+        image_hash =3D ('3e13bbbc28e424865dc42f35ad672b10f2e82cdb11846bb28=
-fa625b48beafd0d')
-+        image_path =3D self.fetch_asset(image_url, asset_hash=3Dimage_hash,
-+                                      algorithm=3D'sha256')
-+
-+        self.do_test_arm_aspeed(image_path)
-+
-+    def test_arm_ast2500_romulus_openbmc_v2_9_0(self):
-+        """
-+        :avocado: tags=3Darch:arm
-+        :avocado: tags=3Dmachine:romulus-bmc
-+        """
-+
-+        image_url =3D ('https://github.com/openbmc/openbmc/releases/downlo=
-ad/2.9.0/'
-+                     'obmc-phosphor-image-romulus.static.mtd')
-+        image_hash =3D ('820341076803f1955bc31e647a512c79f9add4f5233d06976=
-78bab4604c7bb25')
-+        image_path =3D self.fetch_asset(image_url, asset_hash=3Dimage_hash,
-+                                      algorithm=3D'sha256')
-+
-+        self.do_test_arm_aspeed(image_path)
-+
-+    def do_test_arm_aspeed(self, image):
-+        self.vm.set_console()
-+        self.vm.add_args('-drive', 'file=3D' + image + ',if=3Dmtd,format=
-=3Draw',
-+                         '-net', 'nic')
-+        self.vm.launch()
-+
-+        self.wait_for_console_pattern("U-Boot 2016.07")
-+        self.wait_for_console_pattern("## Loading kernel from FIT Image at=
- 20080000")
-+        self.wait_for_console_pattern("Starting kernel ...")
-+        self.wait_for_console_pattern("Booting Linux on physical CPU 0x0")
-+        self.wait_for_console_pattern(
-+                "aspeed-smc 1e620000.spi: read control register: 203b0641")
-+        self.wait_for_console_pattern("ftgmac100 1e660000.ethernet eth0: i=
-rq ")
-+        self.wait_for_console_pattern("systemd[1]: Set hostname to")
-+
-     def test_m68k_mcf5208evb(self):
-         """
-         :avocado: tags=3Darch:m68k
+-    /* for DMA support */
+-    uint64_t sdram_base;
+-
+     AddressSpace flash_as;
+     MemoryRegion *dram_mr;
+     AddressSpace dram_as;
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index bc87e754a3cc..2a1255b6a042 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -344,10 +344,6 @@ static void aspeed_soc_ast2600_realize(DeviceState *=
+dev, Error **errp)
+     /* FMC, The number of CS is set at the board level */
+     object_property_set_link(OBJECT(&s->fmc), "dram", OBJECT(s->dram_mr)=
+,
+                              &error_abort);
+-    if (!object_property_set_int(OBJECT(&s->fmc), "sdram-base",
+-                                 sc->memmap[ASPEED_DEV_SDRAM], errp)) {
+-        return;
+-    }
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->fmc), errp)) {
+         return;
+     }
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index 057d053c8478..817f3ba63dfd 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -301,10 +301,6 @@ static void aspeed_soc_realize(DeviceState *dev, Err=
+or **errp)
+     /* FMC, The number of CS is set at the board level */
+     object_property_set_link(OBJECT(&s->fmc), "dram", OBJECT(s->dram_mr)=
+,
+                              &error_abort);
+-    if (!object_property_set_int(OBJECT(&s->fmc), "sdram-base",
+-                                 sc->memmap[ASPEED_DEV_SDRAM], errp)) {
+-        return;
+-    }
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->fmc), errp)) {
+         return;
+     }
+diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+index 6f72fb028e59..884e08aca4e2 100644
+--- a/hw/ssi/aspeed_smc.c
++++ b/hw/ssi/aspeed_smc.c
+@@ -1431,7 +1431,6 @@ static const VMStateDescription vmstate_aspeed_smc =
+=3D {
+ static Property aspeed_smc_properties[] =3D {
+     DEFINE_PROP_UINT32("num-cs", AspeedSMCState, num_cs, 1),
+     DEFINE_PROP_BOOL("inject-failure", AspeedSMCState, inject_failure, f=
+alse),
+-    DEFINE_PROP_UINT64("sdram-base", AspeedSMCState, sdram_base, 0),
+     DEFINE_PROP_LINK("dram", AspeedSMCState, dram_mr,
+                      TYPE_MEMORY_REGION, MemoryRegion *),
+     DEFINE_PROP_END_OF_LIST(),
 --=20
 2.26.3
 

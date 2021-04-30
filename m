@@ -1,212 +1,186 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp1871848lfb;
-        Thu, 29 Apr 2021 10:15:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy2HNKcMw+ZpJ5HYxrlnNPUpftTuic2PftTiPux5aswp0Vv11miUdsvmzci+vpldd2pwF+X
-X-Received: by 2002:a5e:a812:: with SMTP id c18mr165527ioa.35.1619716543769;
-        Thu, 29 Apr 2021 10:15:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619716543; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp314859lfb;
+        Fri, 30 Apr 2021 02:34:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxCMM66n8UMWQ+EP4V2ef+8HwkhIrlEZYdqZvTq2sphj9jbP7na4vjgHBNZfyVlxD/ELFx1
+X-Received: by 2002:a1f:4644:: with SMTP id t65mr4527723vka.0.1619775270641;
+        Fri, 30 Apr 2021 02:34:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619775270; cv=none;
         d=google.com; s=arc-20160816;
-        b=fQish7Wodl52ok9P3VtzCjEM06yUbj1ztAgj5wuZOs1Tp5GKp1j/5QM2XRdsQ5lK9w
-         waEioE02AmBzCDJ/10jaGWw3Zgaf6Usz0iY509hnh7ODJ820uDCjraPS+hvtdwyzi5n3
-         rCLJ9RPw1OZs6a5PbjAFPgi4iR8BaPhio3ZTQCIjeYCnTi6MetjSmBYExPjZv//m/grO
-         lwfxQNU2r8KLFocFVQjpvbHHwiLPD47K5j5ngaDXnFrNCeDQdnyuTOPXWx8Q0sswzo7I
-         r4Kcs0edwU/CuMQJVOE63TyOIEoi1AaGugHjehsB+VSaSw6aryfCbwmXRJVH869MOqyU
-         i1MA==
+        b=1DXxnzUhv+gWrU1w40PEls1O4s2dKy6eDF8ZaXGdOtAhPvGVJv2QN7+6Yat/zc8EVH
+         9PLHLQNnCD2WgTcwy4r5sNLYF8W3lZlk1jlaZxY40R+sGpY6lztzcYyj55QrQQA51J5c
+         fq3m+XkPEXoV83IDou4JFX1gMgHedCzF/hTqHDol4XQWcKK7lLUKDrXZufbsBiafqLVS
+         TFpjEoo3o58deptkJEXtpbT8Zy7HV++mueAEL9/YLqMpRBLaHbGcw+TYhAZKInx9V/bk
+         bGQHxzj/vgAEw8uAvALIlkZ67tNhVI8Vxx2Ov+QWHLXu+iyG05AQ6+80uiEPaPCbUhog
+         GN0w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=TKa6vFQRppYLh2+mwZthIR6zPZEfRNZrMya+Tyu1qcg=;
-        b=eXF7CQgO1yRkix8BUx8opd9zuaX8xlb+Jt7TfcXwqC5OnV6gehgYo48oxMms/4NSFN
-         BvO/3RfQzGGDWZ4ofbP6uDP1l95eJI3zQcmWoygTricMxj+DPLWsEUqHR3aSAdiq1Eng
-         RzSNR5e+ZK8rNtyi4FdfMbrYiwOtYSe3qCafAiLpo9/uNhnJYLWqNuc4kO1uUJv28gfv
-         OFq8x/CxxCnLnz/FY85FqcQxJ/iw8VAYeYMdtApMABB/FdknTl9qetrbXKjoNeq6jVpV
-         kDjHL2w6yDf2DCjGpABDojnO3tFBWqugtBqS/469KRiQWWpytU/pKtLYb7qiWHyUtRvb
-         y3MA==
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=K37z9HW1y38oYWhuO05i4ZKANGAsY0IZih55ljj4/Sg=;
+        b=DR2L4rViIj922vXZ4QgqXwfZyHL26bdc6xy47NM5efAida0Q0iVwOF46E/WMOrzpN+
+         Gt4tPLkVhYOOsmF6ybbN+4S4FXiIsQOcTXqe5u5nK844DZumrPueJKsxSQLZ88VkjsaU
+         5Fea0+DllqMTOfPU/3YYN3abQVZBIQUuqbBmLON7CUKYmJhdAptWIR/4zKri4NlXpztY
+         IqHm8z7+6TM+gMdJdfH/G+bEves/A56Mby6sqT9sv8aUOUVq/WjfF5y+k31D7kgn5itK
+         zC8dxIiTlSh1AaqUJ8V/0wyY/5L3eh3Vfdd3OG7PtyhrgKytOG8wX43Fhdb1nzfFUlAv
+         k8lQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@ibm.com header.s=pp1 header.b=TuIWnYI+;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w9si4531431jad.47.2021.04.29.10.15.43
+        by mx.google.com with ESMTPS id k22si991262vkp.15.2021.04.30.02.34.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 29 Apr 2021 10:15:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 30 Apr 2021 02:34:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@ibm.com header.s=pp1 header.b=TuIWnYI+;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Received: from localhost ([::1]:42820 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Received: from localhost ([::1]:33050 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lcAGM-0001dK-VI
-	for alex.bennee@linaro.org; Thu, 29 Apr 2021 13:15:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49206)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lcPXa-0006yd-0o
+	for alex.bennee@linaro.org; Fri, 30 Apr 2021 05:34:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50756)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <aneesh.kumar@linux.ibm.com>)
- id 1lc9b3-0000xg-KF; Thu, 29 Apr 2021 12:33:01 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:14356)
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1lcPX0-0006xx-UX; Fri, 30 Apr 2021 05:33:54 -0400
+Received: from szxga02-in.huawei.com ([45.249.212.188]:2136)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <aneesh.kumar@linux.ibm.com>)
- id 1lc9b1-0008TV-5V; Thu, 29 Apr 2021 12:33:01 -0400
-Received: from pps.filterd (m0098404.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 13TGWciS000811; Thu, 29 Apr 2021 12:32:40 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=subject : to : cc :
- references : from : message-id : date : mime-version : in-reply-to :
- content-type : content-transfer-encoding; s=pp1;
- bh=TKa6vFQRppYLh2+mwZthIR6zPZEfRNZrMya+Tyu1qcg=;
- b=TuIWnYI+ZZIsvN7CbPAbatYU5csnKyf/+0dIyiQxl+bWWfCJxcUEythsxnLFCGQaV5d5
- 0uR0ti6YHNwNeSrZqAxKt2go6uoQ/whl912nDZEXxr3q87npqfoLygIXbsfUZ7UGlTua
- XDVvBLZAu+CuUWU96BP6i20bVMKlxt42Ppb8WdUq9tzkFzQ4fUjxT9+xBqCI048wVl73
- he5JB++KbkJJAqRivqaEc1ylzWRM4mgQNe7nde9BIFyiCDb2gD6o5JLuHh+bWM+TzY+m
- G5U3hUiM/zBxCRgO2w2s9o6oh6kWx2X3ahnI2W71v/YNooYxkChwg14qsNJPYLt7ZUD0 tg== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com with ESMTP id 38807d8av1-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 29 Apr 2021 12:32:40 -0400
-Received: from m0098404.ppops.net (m0098404.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 13TGWdmg000842;
- Thu, 29 Apr 2021 12:32:39 -0400
-Received: from ppma03ams.nl.ibm.com (62.31.33a9.ip4.static.sl-reverse.com
- [169.51.49.98])
- by mx0a-001b2d01.pphosted.com with ESMTP id 38807d8au4-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 29 Apr 2021 12:32:39 -0400
-Received: from pps.filterd (ppma03ams.nl.ibm.com [127.0.0.1])
- by ppma03ams.nl.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 13TGO8Tt010918;
- Thu, 29 Apr 2021 16:32:34 GMT
-Received: from b06cxnps4076.portsmouth.uk.ibm.com
- (d06relay13.portsmouth.uk.ibm.com [9.149.109.198])
- by ppma03ams.nl.ibm.com with ESMTP id 384ay8jhhn-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 29 Apr 2021 16:32:34 +0000
-Received: from b06wcsmtp001.portsmouth.uk.ibm.com
- (b06wcsmtp001.portsmouth.uk.ibm.com [9.149.105.160])
- by b06cxnps4076.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 13TGWVn226738988
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 29 Apr 2021 16:32:31 GMT
-Received: from b06wcsmtp001.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id B697AA4054;
- Thu, 29 Apr 2021 16:32:31 +0000 (GMT)
-Received: from b06wcsmtp001.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 49C57A405F;
- Thu, 29 Apr 2021 16:32:24 +0000 (GMT)
-Received: from [9.85.83.17] (unknown [9.85.83.17])
- by b06wcsmtp001.portsmouth.uk.ibm.com (Postfix) with ESMTP;
- Thu, 29 Apr 2021 16:32:24 +0000 (GMT)
-Subject: Re: [PATCH v4 0/3] nvdimm: Enable sync-dax property for nvdimm
-To: Stefan Hajnoczi <stefanha@redhat.com>,
- Shivaprasad G Bhat <sbhat@linux.ibm.com>
-References: <161966810162.652.13723419108625443430.stgit@17be908f7c1c>
- <YIrW4bwbR1R0CWm/@stefanha-x1.localdomain>
-From: "Aneesh Kumar K.V" <aneesh.kumar@linux.ibm.com>
-Message-ID: <433e352d-5341-520c-5c57-79650277a719@linux.ibm.com>
-Date: Thu, 29 Apr 2021 22:02:23 +0530
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1lcPWv-0007ez-OT; Fri, 30 Apr 2021 05:33:54 -0400
+Received: from dggeml754-chm.china.huawei.com (unknown [172.30.72.57])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4FWnDd2nCJz5vL9;
+ Fri, 30 Apr 2021 17:31:13 +0800 (CST)
+Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
+ dggeml754-chm.china.huawei.com (10.1.199.153) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.2176.2; Fri, 30 Apr 2021 17:33:43 +0800
+Received: from [10.174.187.128] (10.174.187.128) by
+ dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
+ 15.1.2176.2; Fri, 30 Apr 2021 17:33:42 +0800
+Subject: Re: [RFC PATCH v2 2/4] hw/arm/virt: Parse -smp cluster parameter in
+ virt_smp_parse
+To: Andrew Jones <drjones@redhat.com>
+References: <20210413083147.34236-1-wangyanan55@huawei.com>
+ <20210413083147.34236-3-wangyanan55@huawei.com>
+ <20210428103141.5qfhzcqko6hxhxee@gator>
+ <262dba57-437c-36aa-7a86-8f0c59751887@huawei.com>
+ <20210429071614.lywpbfpeyclqxnke@gator.home>
+ <ce557539-ac8f-7245-747b-8212a4857811@huawei.com>
+ <20210429110229.7jtz6hfrfvqdkrbx@gator>
+ <f5b264ff-58ed-0cd2-3b84-42fa1724b8ac@huawei.com>
+ <20210430064125.3b5fjolwqculrjxz@gator.home>
+ <20210430070131.kkavbosw27ze4iuh@gator.home>
+From: "wangyanan (Y)" <wangyanan55@huawei.com>
+Message-ID: <dedb07c3-b6fa-ccb0-9d06-65c7866238db@huawei.com>
+Date: Fri, 30 Apr 2021 17:33:42 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
-In-Reply-To: <YIrW4bwbR1R0CWm/@stefanha-x1.localdomain>
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Language: en-US
+In-Reply-To: <20210430070131.kkavbosw27ze4iuh@gator.home>
+Content-Type: text/plain; charset="utf-8"; format=flowed
 Content-Transfer-Encoding: 7bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: Vs4gmYYnxxjSSi7Ue87hSFLIW-pbo7R3
-X-Proofpoint-ORIG-GUID: JEqIWA59kgKo8hFInSvLjaNQgNU_Sg5Z
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.761
- definitions=2021-04-29_08:2021-04-28,
- 2021-04-29 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- mlxscore=0 clxscore=1011
- adultscore=0 impostorscore=0 lowpriorityscore=0 suspectscore=0
- malwarescore=0 spamscore=0 mlxlogscore=999 phishscore=0 bulkscore=0
- priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2104060000 definitions=main-2104290102
-Received-SPF: pass client-ip=148.163.156.1;
- envelope-from=aneesh.kumar@linux.ibm.com; helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
-X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+Content-Language: en-US
+X-Originating-IP: [10.174.187.128]
+X-ClientProxiedBy: dggeme707-chm.china.huawei.com (10.1.199.103) To
+ dggpemm500023.china.huawei.com (7.185.36.83)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.188;
+ envelope-from=wangyanan55@huawei.com; helo=szxga02-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, mst@redhat.com, qemu-devel@nongnu.org,
- linux-nvdimm@lists.01.org, armbru@redhat.com, bharata@linux.vnet.ibm.com,
- haozhong.zhang@intel.com, ehabkost@redhat.com, richard.henderson@linaro.org,
- groug@kaod.org, kvm-ppc@vger.kernel.org, qemu-arm@nongnu.org,
- imammedo@redhat.com, kwangwoo.lee@sk.com, david@gibson.dropbear.id.au,
- xiaoguangrong.eric@gmail.com, shameerali.kolothum.thodi@huawei.com,
- shivaprasadbhat@gmail.com, qemu-ppc@nongnu.org, pbonzini@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 25Nr4Zi+vFg9
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Barry Song <song.bao.hua@hisilicon.com>,
+ Peter Maydell <peter.maydell@linaro.org>, "Michael S .
+ Tsirkin" <mst@redhat.com>, wanghaibin.wang@huawei.com, qemu-devel@nongnu.org,
+ yangyicong@huawei.com, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ qemu-arm@nongnu.org, Alistair Francis <alistair.francis@wdc.com>,
+ prime.zeng@hisilicon.com, Igor
+ Mammedov <imammedo@redhat.com>, yuzenghui@huawei.com,
+ Paolo Bonzini <pbonzini@redhat.com>, zhukeqian1@huawei.com,
+ Jiajie Li <lijiajie11@huawei.com>, David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: XuwrrAFY7V7t
 
-On 4/29/21 9:25 PM, Stefan Hajnoczi wrote:
-> On Wed, Apr 28, 2021 at 11:48:21PM -0400, Shivaprasad G Bhat wrote:
->> The nvdimm devices are expected to ensure write persistence during power
->> failure kind of scenarios.
+
+On 2021/4/30 15:01, Andrew Jones wrote:
+> On Fri, Apr 30, 2021 at 08:41:25AM +0200, Andrew Jones wrote:
+>> On Fri, Apr 30, 2021 at 01:09:00PM +0800, wangyanan (Y) wrote:
+>>> But I think the requirement for ARM "if even one parameter other than cpus
+>>> or maxcpus
+>>> is provided then all parameters must be provided" will be better. This can
+>>> ensure the
+>>> whole accurate users-specified topology. As you mentioned, if anybody who
+>>> bothers
+>>> to specify one, why not also specify the others.
+>>>
+>>> I can add the requirement for ARM in the documentation, and also check the
+>>> parameters
+>>> in virt_smp_parse. Will this be fine?
+>> We sort of have to support command lines that are missing 'maxcpus' and
+>> 'clusters', unless we work together with libvirt to make the change.
+>> Currently libvirt will generate '-smp 16,sockets=16,cores=1,threads=1'
+>> from '<vcpu placement='static'>16</vcpu>'. That's sufficient for our
+>> stricter, but not completely strict requirements. And, I still think
+>> 'threads' could be optional, because there's a good chance the user
+>> doesn't want to describe them, so a default of 1 is good enough. Also,
+>> given maxcpus, but not cpus, it's pretty obvious that cpus should equal
+>> maxcpus.
 >>
->> The libpmem has architecture specific instructions like dcbf on POWER
->> to flush the cache data to backend nvdimm device during normal writes
->> followed by explicit flushes if the backend devices are not synchronous
->> DAX capable.
->>
->> Qemu - virtual nvdimm devices are memory mapped. The dcbf in the guest
->> and the subsequent flush doesn't traslate to actual flush to the backend
->> file on the host in case of file backed v-nvdimms. This is addressed by
->> virtio-pmem in case of x86_64 by making explicit flushes translating to
->> fsync at qemu.
->>
->> On SPAPR, the issue is addressed by adding a new hcall to
->> request for an explicit flush from the guest ndctl driver when the backend
->> nvdimm cannot ensure write persistence with dcbf alone. So, the approach
->> here is to convey when the hcall flush is required in a device tree
->> property. The guest makes the hcall when the property is found, instead
->> of relying on dcbf.
-> 
-> Sorry, I'm not very familiar with SPAPR. Why add a hypercall when the
-> virtio-nvdimm device already exists?
-> 
+> We also still need just 'cpus' or just 'maxcpus' to work, since that
+> already works now. So, at least these should work
+>
+>   -smp N
+>   -smp maxcpus=N
+>   -smp N,maxcpus=M
+>   -smp N,sockets=N,cores=1,threads=1
+>   -smp N,maxcpus=M,sockets=M,cores=1,threads=1
+>
+> since they work today, even though no topology is described.
+Yes. I forgot this point that we should consider the compat.
+> If we want to
+> describe a topology for the first three, then we'll have to pick one,
+> which brings us back to the sockets over cores stuff. Or, we could choose
+> to just not generate topology descriptions when none is provided.
+I find that both preferring cores over sockets and not generating 
+topology descriptions
+when none is provided can't solve everything. We can only ensure guest 
+will get one
+socket with multiple cores with qemu cmdline "-smp N".
 
-On virtualized ppc64 platforms, guests use papr_scm.ko kernel drive for 
-persistent memory support. This was done such that we can use one kernel 
-driver to support persistent memory with multiple hypervisors. To avoid 
-supporting multiple drivers in the guest, -device nvdimm Qemu 
-command-line results in Qemu using PAPR SCM backend. What this patch 
-series does is to make sure we expose the correct synchronous fault 
-support, when we back such nvdimm device with a file.
+But if we specify N cpus without any other parameters in libvirt xml, a 
+qemu cmdline like
+"-smp N, sockets=N, cores=1,threads=1" will be generated, and as a 
+result guest will get
+N sockets. In this case, we still can't avoid the silent change.
 
-The existing PAPR SCM backend enables persistent memory support with the 
-help of multiple hypercall.
+So maybe we should just prefer sockets over cores like the general 
+smp_parse() and libvirt,
+and let users use "-smp N, sockets=1, cores=N,threads=1" to get what 
+they want if they
+use version 6.0 or later.
 
-#define H_SCM_READ_METADATA     0x3E4
-#define H_SCM_WRITE_METADATA    0x3E8
-#define H_SCM_BIND_MEM          0x3EC
-#define H_SCM_UNBIND_MEM        0x3F0
-#define H_SCM_UNBIND_ALL        0x3FC
-
-Most of them are already implemented in Qemu. This patch series 
-implements H_SCM_FLUSH hypercall.
-
-
-
-
--aneesh
-
+Thanks,
+Yanan
+> Thanks,
+> drew
+>
+> .

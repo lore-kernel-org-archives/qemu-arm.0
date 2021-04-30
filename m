@@ -1,111 +1,113 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp326376lfg;
-        Fri, 30 Apr 2021 10:28:00 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy0J28CtbTJ+NFeORD+j9YSIB+d7zKHq0f/IaukGnhJhM7iceaNPHfdO2tamMGuhesamCvX
-X-Received: by 2002:a17:907:1c01:: with SMTP id nc1mr5598659ejc.283.1619803680235;
-        Fri, 30 Apr 2021 10:28:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619803680; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp329883lfg;
+        Fri, 30 Apr 2021 10:32:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyK7MwmPVYJnpuIwYYTnAqxiOYUGH8BrFdN7X/nwLzcgOoy6VOsnM3KbIrhEiplQIGwXopx
+X-Received: by 2002:a5d:9682:: with SMTP id m2mr4955245ion.20.1619803940961;
+        Fri, 30 Apr 2021 10:32:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619803940; cv=none;
         d=google.com; s=arc-20160816;
-        b=RHimQpRvaPbDLcuZxRlp6NHX6y/K05S7KtMswF4cjbwvyUkOe3KbCDxy4bH4aXLia1
-         CAIUlbTTfQYwjgZr473AFcUwinQhvZCawXd4JiNJFtCSCqQwSkn25x55G0ZO97Dx3wLM
-         3knusenFPWt1BzTK1QwBoqdJ6Vopsz/1I4t/pyvK/J3eFz2arsYe0YUu7a4SZT6XZsU1
-         49DsKRZav1v6EMBLS03z5o6N5el5rxx7mzwbzueaz8Qjt4U4T1Nh5UYeL8cEXSjo93l4
-         3/eLQ6osyqJs0479F5KZJ3UxrImN87FsmZAZYkAnYmHBFjk57Wk0dfxXxeUHocsLYFBc
-         8W4Q==
+        b=kzSa8v74cjDC+p4O02wPFFfPM2rG7adyTZSd/nV2J5d/KAkuUOk+hMBw0i+LhVtXzH
+         /QA1t+2n+hKYtC1Km3Q/s2CQ2i4USzGFNy6o/2jdX4nWHe4PBfMgP9ytk6dwnGstAZNO
+         WIFJr4KxN5xO7BX+ZIktPllXRPQrKX05VHKZ9b47HvzjLvIjF6Gtlvl97n4DrlxtaOkk
+         0my2/omWGvZw9ltaiYeim8+CjL/f7g+ImB6FQQ5qh86ooueh01jBhuXqbe7BpaS+9rkg
+         /q4w0yAzoPUoMt1RpI9pVFBxZSSeyikTGye8Y3Tl62Ic0ZIyK1BSARMULXcAj5QNUDHb
+         fbCA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=CJYR+7lKlJusjWK0o8QUlcKiehoMCzw1P6lU+CRtexM=;
-        b=WmfuQSA8PKjLpobTaxBv1133iS0TSf10LAoqemnK69MrUjoJkx7C2WRKYWySRewp7i
-         RVU1EdbIDg6oG94hRg5MNAxprb9yYeQsyFzTiBoxZh1dczdY1FGY0Ue9NxrPepFPNjvy
-         YwtZTzAN5xP/BDPxpuozYfSTeNPbINYNZmJAFdevI2ozHXbqIJO5Ef0J3SUlOy6n68+H
-         ATIhcPXpAiphyLj9yGBgl9ZDchdGA9QwzBpgS35ozOlv0G5MEZrw4iXYqhBFm1C1JDUI
-         SDa5oDPO4JYoe+vG35ySjYsSbm6BY/QCMP4Arld9PJO3wzq+kNH41cqznLvqO+88nMBS
-         SW4A==
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:message-id:date:subject:to:from;
+        bh=lhpb1MYPA5dScQOkNhcHMXJXOM9vKehg3QVZxXSqalk=;
+        b=iyT873MOuQyEjfRcLggS2/z2PXYwioIbc3bksBEavg3n2IKU9TYdS5S/iG9HSqBnCc
+         3I3hrzWKyHNZVs0MEh0x55dyvi8Pn8dAPHehnoiPgaTc9uf2UPB8OgYXHoa4lf92CMIP
+         qvQs9sjRfkk+NqYWu788FpSSC5LxWmTFSr/oj/Lr7jfmBgGiV9+GrdK017T0Cy0+0D6M
+         57DfK3GH9z1Uqt4rGtBp7/c7y9vz/uluxowvJ5n9XJ6wf7eH370AgAHjg8RbolCsmYh+
+         Wu9IbKW7Di+X510UcADVqHmLZFrA2YGCokNif4KdAblNWpCQnpT6vx7fn/QQuiM4Fr5c
+         40Pg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id qh17si3729416ejb.127.2021.04.30.10.28.00
+        by mx.google.com with ESMTPS id u16si3742085iol.87.2021.04.30.10.32.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 30 Apr 2021 10:28:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 30 Apr 2021 10:32:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57178 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:34358 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lcWvn-0000YJ-2S
-	for alex.bennee@linaro.org; Fri, 30 Apr 2021 13:27:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37440)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lcX00-000328-6z
+	for alex.bennee@linaro.org; Fri, 30 Apr 2021 13:32:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37484)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1lcWW9-0000K1-Fq; Fri, 30 Apr 2021 13:01:32 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:6351
- helo=mx0a-001b2d01.pphosted.com)
+ id 1lcWWE-0000Lk-EW; Fri, 30 Apr 2021 13:01:35 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:47106)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1lcWW6-0002WQ-Dw; Fri, 30 Apr 2021 13:01:28 -0400
-Received: from pps.filterd (m0098420.ppops.net [127.0.0.1])
- by mx0b-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 13UGX8da144722; Fri, 30 Apr 2021 13:01:17 -0400
-Received: from ppma06fra.de.ibm.com (48.49.7a9f.ip4.static.sl-reverse.com
- [159.122.73.72])
- by mx0b-001b2d01.pphosted.com with ESMTP id 388k4bxn2q-1
+ id 1lcWWA-0002YG-4T; Fri, 30 Apr 2021 13:01:34 -0400
+Received: from pps.filterd (m0098421.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
+ 13UGY73d159892; Fri, 30 Apr 2021 13:01:16 -0400
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 388n19sta6-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 30 Apr 2021 13:01:17 -0400
-Received: from pps.filterd (ppma06fra.de.ibm.com [127.0.0.1])
- by ppma06fra.de.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 13UGxpXt023609;
- Fri, 30 Apr 2021 17:01:15 GMT
-Received: from b06cxnps3074.portsmouth.uk.ibm.com
- (d06relay09.portsmouth.uk.ibm.com [9.149.109.194])
- by ppma06fra.de.ibm.com with ESMTP id 384akh9ujs-1
+ Fri, 30 Apr 2021 13:01:15 -0400
+Received: from m0098421.ppops.net (m0098421.ppops.net [127.0.0.1])
+ by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 13UGYRrD161387;
+ Fri, 30 Apr 2021 13:01:15 -0400
+Received: from ppma03ams.nl.ibm.com (62.31.33a9.ip4.static.sl-reverse.com
+ [169.51.49.98])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 388n19st97-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 30 Apr 2021 17:01:14 +0000
-Received: from d06av22.portsmouth.uk.ibm.com (d06av22.portsmouth.uk.ibm.com
- [9.149.105.58])
- by b06cxnps3074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 13UH1Csr32964946
+ Fri, 30 Apr 2021 13:01:15 -0400
+Received: from pps.filterd (ppma03ams.nl.ibm.com [127.0.0.1])
+ by ppma03ams.nl.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 13UGxjge020552;
+ Fri, 30 Apr 2021 17:01:13 GMT
+Received: from b06cxnps3075.portsmouth.uk.ibm.com
+ (d06relay10.portsmouth.uk.ibm.com [9.149.109.195])
+ by ppma03ams.nl.ibm.com with ESMTP id 384ay8kay2-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 30 Apr 2021 17:01:13 +0000
+Received: from d06av21.portsmouth.uk.ibm.com (d06av21.portsmouth.uk.ibm.com
+ [9.149.105.232])
+ by b06cxnps3075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 13UH1ACY31261156
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 30 Apr 2021 17:01:12 GMT
-Received: from d06av22.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 8CF814C059;
- Fri, 30 Apr 2021 17:01:12 +0000 (GMT)
-Received: from d06av22.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 602794C046;
- Fri, 30 Apr 2021 17:01:12 +0000 (GMT)
+ Fri, 30 Apr 2021 17:01:10 GMT
+Received: from d06av21.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 8946652051;
+ Fri, 30 Apr 2021 17:01:10 +0000 (GMT)
 Received: from smtp.tlslab.ibm.com (unknown [9.101.4.1])
- by d06av22.portsmouth.uk.ibm.com (Postfix) with SMTP;
- Fri, 30 Apr 2021 17:01:12 +0000 (GMT)
+ by d06av21.portsmouth.uk.ibm.com (Postfix) with SMTP id 3DBC852057;
+ Fri, 30 Apr 2021 17:01:10 +0000 (GMT)
 Received: from yukon.ibmuc.com (unknown [9.171.40.192])
- by smtp.tlslab.ibm.com (Postfix) with ESMTP id BE07122016C;
- Fri, 30 Apr 2021 19:01:11 +0200 (CEST)
+ by smtp.tlslab.ibm.com (Postfix) with ESMTP id 2DD1822016C;
+ Fri, 30 Apr 2021 19:01:09 +0200 (CEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 14/18] tests/qtest: Rename m25p80 test in aspeed_smc test
-Date: Fri, 30 Apr 2021 19:01:04 +0200
-Message-Id: <20210430170108.10261-5-clg@kaod.org>
+Subject: [PULL 10/18] tests/acceptance: Test ast2600 machine
+Date: Fri, 30 Apr 2021 19:01:00 +0200
+Message-Id: <20210430170108.10261-1-clg@kaod.org>
 X-Mailer: git-send-email 2.26.3
-In-Reply-To: <20210430170108.10261-1-clg@kaod.org>
-References: <20210430170108.10261-1-clg@kaod.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
 X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: W9kvAyKNzLV9SH9Ty8XbYGcrIKtyZbJy
-X-Proofpoint-GUID: W9kvAyKNzLV9SH9Ty8XbYGcrIKtyZbJy
+X-Proofpoint-GUID: lV3bLNhC5S9Xa54sgA2hNY27tp7zfbHJ
+X-Proofpoint-ORIG-GUID: _tYY7andgs5ULmnZEUbsx_pNHkBhNufL
+Content-Transfer-Encoding: quoted-printable
+X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+MIME-Version: 1.0
 X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.761
  definitions=2021-04-30_10:2021-04-30,
  2021-04-30 signatures=0
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- lowpriorityscore=0
- bulkscore=0 phishscore=0 malwarescore=0 suspectscore=0 mlxscore=0
- mlxlogscore=783 adultscore=0 clxscore=1034 impostorscore=0
- priorityscore=1501 spamscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.12.0-2104060000 definitions=main-2104300109
+ malwarescore=0 adultscore=0
+ clxscore=1034 priorityscore=1501 mlxscore=0 phishscore=0 suspectscore=0
+ bulkscore=0 spamscore=0 mlxlogscore=999 impostorscore=0 lowpriorityscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2104060000
+ definitions=main-2104300109
 Received-SPF: softfail client-ip=148.163.158.5; envelope-from=clg@kaod.org;
- helo=mx0a-001b2d01.pphosted.com
+ helo=mx0b-001b2d01.pphosted.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -113,87 +115,93 @@ X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
  RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rOSxE1JUtWk7
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-devel@nongnu.org, Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Willian Rampazzo <willianr@redhat.com>, qemu-arm@nongnu.org,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Cleber Rosa <crosa@redhat.com>, Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ayc0USIVyFRy
 
-The m25p80 test depends on the Aspeed SMC controller to test our
-SPI-NOR flash support. Reflect this dependency by changing the name.
+From: Joel Stanley <joel@jms.id.au>
 
+This tests a Debian multi-soc arm32 Linux kernel on the AST2600 based
+Tacoma BMC machine.
+
+There is no root file system so the test terminates when boot reaches
+the stage where it attempts and fails to mount something.
+
+Cc: Cleber Rosa <crosa@redhat.com>
+Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>
+Signed-off-by: Joel Stanley <joel@jms.id.au>
+Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+Tested-by: C=C3=A9dric Le Goater <clg@kaod.org>
+[ clg : - removed comment
+        - removed ending self.vm.shutdown() ]
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-Reviewed-by: Joel Stanley <joel@jms.id.au>
-Message-Id: <20210407171637.777743-17-clg@kaod.org>
+Message-Id: <20210304123951.163411-3-joel@jms.id.au>
+Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+Reviewed-by: Willian Rampazzo <willianr@redhat.com>
+Message-Id: <20210407171637.777743-13-clg@kaod.org>
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
- tests/qtest/{m25p80-test.c =3D> aspeed_smc-test.c} | 12 ++++++------
- tests/qtest/meson.build                          |  4 ++--
- 2 files changed, 8 insertions(+), 8 deletions(-)
- rename tests/qtest/{m25p80-test.c =3D> aspeed_smc-test.c} (96%)
+ tests/acceptance/boot_linux_console.py | 25 +++++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
 
-diff --git a/tests/qtest/m25p80-test.c b/tests/qtest/aspeed_smc-test.c
-similarity index 96%
-rename from tests/qtest/m25p80-test.c
-rename to tests/qtest/aspeed_smc-test.c
-index f860cef5f08f..87b40a0ef186 100644
---- a/tests/qtest/m25p80-test.c
-+++ b/tests/qtest/aspeed_smc-test.c
-@@ -367,12 +367,12 @@ int main(int argc, char **argv)
-                                "-drive file=3D%s,format=3Draw,if=3Dmtd",
-                                tmp_path);
+diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/boot=
+_linux_console.py
+index 37bca7358583..276a53f14647 100644
+--- a/tests/acceptance/boot_linux_console.py
++++ b/tests/acceptance/boot_linux_console.py
+@@ -1053,6 +1053,31 @@ def do_test_arm_aspeed(self, image):
+         self.wait_for_console_pattern("ftgmac100 1e660000.ethernet eth0: i=
+rq ")
+         self.wait_for_console_pattern("systemd[1]: Set hostname to")
 =20
--    qtest_add_func("/m25p80/read_jedec", test_read_jedec);
--    qtest_add_func("/m25p80/erase_sector", test_erase_sector);
--    qtest_add_func("/m25p80/erase_all",  test_erase_all);
--    qtest_add_func("/m25p80/write_page", test_write_page);
--    qtest_add_func("/m25p80/read_page_mem", test_read_page_mem);
--    qtest_add_func("/m25p80/write_page_mem", test_write_page_mem);
-+    qtest_add_func("/ast2400/smc/read_jedec", test_read_jedec);
-+    qtest_add_func("/ast2400/smc/erase_sector", test_erase_sector);
-+    qtest_add_func("/ast2400/smc/erase_all",  test_erase_all);
-+    qtest_add_func("/ast2400/smc/write_page", test_write_page);
-+    qtest_add_func("/ast2400/smc/read_page_mem", test_read_page_mem);
-+    qtest_add_func("/ast2400/smc/write_page_mem", test_write_page_mem);
-=20
-     ret =3D g_test_run();
-=20
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index f241ba0636a3..966bc93efa43 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -162,7 +162,8 @@ qtests_npcm7xx =3D \
-    'npcm7xx_watchdog_timer-test'] + \
-    (slirp.found() ? ['npcm7xx_emc-test'] : [])
- qtests_aspeed =3D \
--  ['aspeed_hace-test']
-+  ['aspeed_hace-test',
-+   'aspeed_smc-test']
- qtests_arm =3D \
-   (config_all_devices.has_key('CONFIG_MPS2') ? ['sse-timer-test'] : []) =
-+ \
-   (config_all_devices.has_key('CONFIG_CMSDK_APB_DUALTIMER') ? ['cmsdk-ap=
-b-dualtimer-test'] : []) + \
-@@ -173,7 +174,6 @@ qtests_arm =3D \
-   (config_all_devices.has_key('CONFIG_NPCM7XX') ? qtests_npcm7xx : []) +=
- \
-   ['arm-cpu-features',
-    'microbit-test',
--   'm25p80-test',
-    'test-arm-mptimer',
-    'boot-serial-test',
-    'hexloader-test']
++    def test_arm_ast2600_debian(self):
++        """
++        :avocado: tags=3Darch:arm
++        :avocado: tags=3Dmachine:tacoma-bmc
++        """
++        deb_url =3D ('http://snapshot.debian.org/archive/debian/'
++                   '20210302T203551Z/'
++                   'pool/main/l/linux/'
++                   'linux-image-5.10.0-3-armmp_5.10.13-1_armhf.deb')
++        deb_hash =3D 'db40d32fe39255d05482bea48d72467b67d6225bb2a2a4d6f618=
+cb8976f1e09e'
++        deb_path =3D self.fetch_asset(deb_url, asset_hash=3Ddeb_hash,
++                                    algorithm=3D'sha256')
++        kernel_path =3D self.extract_from_deb(deb_path, '/boot/vmlinuz-5.1=
+0.0-3-armmp')
++        dtb_path =3D self.extract_from_deb(deb_path,
++                '/usr/lib/linux-image-5.10.0-3-armmp/aspeed-bmc-opp-tacoma=
+.dtb')
++
++        self.vm.set_console()
++        self.vm.add_args('-kernel', kernel_path,
++                         '-dtb', dtb_path,
++                         '-net', 'nic')
++        self.vm.launch()
++        self.wait_for_console_pattern("Booting Linux on physical CPU 0xf00=
+")
++        self.wait_for_console_pattern("SMP: Total of 2 processors activate=
+d")
++        self.wait_for_console_pattern("No filesystem could mount root")
++
+     def test_m68k_mcf5208evb(self):
+         """
+         :avocado: tags=3Darch:m68k
 --=20
 2.26.3
 

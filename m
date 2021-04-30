@@ -1,280 +1,359 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp414195lfg;
-        Fri, 30 Apr 2021 12:18:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJytv/8BkEEkgzJq4mMx5oG4mHZBReQK6j/JkwENSvwhD8jCLNpJUfpwtRU9JxC/OPjVZwm5
-X-Received: by 2002:a7b:ce19:: with SMTP id m25mr7664781wmc.137.1619810323832;
-        Fri, 30 Apr 2021 12:18:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619810323; cv=none;
+Received: by 2002:a19:ad47:0:0:0:0:0 with SMTP id s7csp414085lfd;
+        Fri, 30 Apr 2021 04:11:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyZFjVUfUHEiZ84x7htWPcPuvAtBPUeOmXL6GoU0XdkuDmDm/rWxVgQWurrObCScLRwFz/1
+X-Received: by 2002:a05:6402:51d4:: with SMTP id r20mr5214360edd.112.1619781081404;
+        Fri, 30 Apr 2021 04:11:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619781081; cv=none;
         d=google.com; s=arc-20160816;
-        b=QLsfgzXtAifvB7sLn+sCK7KaNCJbL5ikjFbeTbjdzsdKU8WRE74ZwRc96TecQoLh3B
-         nKWYa4OxI6zI3KfVdXwWKs4taLwcahDWnakFn06W5qCgGT48ptSzeeid/cvjdHE7esqe
-         19LuqKPP2P1857DORBLmBkMEhG/X5F/eBB0IIo7a7CMn04tllOc0Mialzhmsbl/PBhgJ
-         1LkhKgLx7Jqg7acKshl2yoPL/DTeXpDfzuc9JfqCNi3diJdyF+AiYATevwToDSlKzdAx
-         YoP+TT5fJVhcG6t7FdccuccwwhGK7/oSMEiMLcza9s2K12t4z9iYkANOS+vBSzc4rW3u
-         fwmg==
+        b=CzMVdAEBGPjlTLhYaEv3dqvINfSxsmggLpXnCT37JqhuIJLDCMTGpX9jBLdTmQZL8K
+         k4XPJsIhkhWx24KWNAXKL6/lSia9og+BEKRb3U67w/Gjgd/HLADl8Kv9V/uDR3p3m5Dd
+         ANmbu6bau2+ClwBXhyVjl+rIf5PHYEHOoL2Vjl72Un0I/DDuU2u/lW9DPERCUuul+Zg7
+         bZXaVAHv1R2XrdEWtlhIn3ofZPqs9ccXRnn+VqY6nPuxb+2rwFe9IrQlj8+cclZmqSSJ
+         emMxdajhs05Iw/5DBEV2KgIrfwJte5MyHALgCbTOUsuak1YWXQQsmw6X8sw5FDzhBdOt
+         LNdQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=SVaZEa6T1OlZEI2ZRCjaeg3vEy1Vw6FSwiGIGLqhRiA=;
-        b=QpyKLF9ii+pZc8P2yLepj60JkjFmW0EV0pOYTDqTtyXBQPj7itwZW4AqTbr5qygpC6
-         MnESqESh4VgKlyNZHZkZlaFLRohrsWmz8C/kSbkPC9do2tT6V9IaybXm+Zvh0G1D48VT
-         br792XgM65hCLccCCRws61sGpMBFv9/akLdXcOmyq8dUFxau7bZaBdo6NQc8HEkbzTdO
-         8fkhlhVvG0r/sj6SfEbdItbzJFJa1S0fkXr9GFkCWKSLogrKPE55oH2pRqLOFXn8gPtN
-         mNLUAKgvRrlYa2AprM5+6dnucS/A1n6h2Xh6RxHDbseNdw4J8PnwZLcfuPA5bD5O0INY
-         4Low==
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=4qN7xT7jUuQBpHSq9kM7QceIxAauxx8StpXclF/5CGM=;
+        b=SIhAEGOuknC5iYzuIcrWquo9aoeLrqcruwZpx5tDt4BnESC2MoJSElbaMKji1eR9XX
+         6q1RkI51tbSfLPpDbiMlEu9itG2CRrkEnTDOuBy1tGhM2e/2YLa73DzbfA0yz6vQxxz2
+         AI0xMUSX/S9/tV2wPV8Ndx9dmL0MwhEMmmk3Sjao05btYqBWlkgy6gUh8VEQck2nrXh4
+         BICzyFmFYnKNKjAKNiDblzJLa1LqDSmGzPRfmOh20uEfea6iOP2weWwjO8m0PMjeJ65b
+         4NFOv1F8dHL6Ykfkbys1/NUm1bn8N+QyG+x3MevB1O2CowIE9TLdHaJV7BF1ENX3PeXS
+         IhEg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@intel-com.20150623.gappssmtp.com header.s=20150623 header.b=hSmPGg1w;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=QgJJL9MX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j4si3066418wrr.156.2021.04.30.12.18.43
+        by mx.google.com with ESMTPS id c17si1525247edj.86.2021.04.30.04.11.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 30 Apr 2021 12:18:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 30 Apr 2021 04:11:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@intel-com.20150623.gappssmtp.com header.s=20150623 header.b=hSmPGg1w;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from localhost ([::1]:58222 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=QgJJL9MX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:35384 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lcYew-0008SB-Ca
-	for alex.bennee@linaro.org; Fri, 30 Apr 2021 15:18:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35432)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lcR3H-0005qZ-8q
+	for alex.bennee@linaro.org; Fri, 30 Apr 2021 07:11:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35832)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dan.j.williams@intel.com>)
- id 1lcYbB-0006oY-TL
- for qemu-devel@nongnu.org; Fri, 30 Apr 2021 15:14:49 -0400
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635]:42961)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <dan.j.williams@intel.com>)
- id 1lcYb8-000538-Id
- for qemu-devel@nongnu.org; Fri, 30 Apr 2021 15:14:49 -0400
-Received: by mail-ej1-x635.google.com with SMTP id y7so7948402ejj.9
- for <qemu-devel@nongnu.org>; Fri, 30 Apr 2021 12:14:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=intel-com.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=SVaZEa6T1OlZEI2ZRCjaeg3vEy1Vw6FSwiGIGLqhRiA=;
- b=hSmPGg1woGCWrtib2vDCyHADvNbcXMWY1N4HZoA/Dc0dDn6CIy7oepwfhpSWXQOPAb
- jQSMM2z7PqF5Aeps791PdAuKxHPLHrTIpO3qkwC1U244YOPo3rtC/fJt0zEp+0kh0/qo
- qQWTPvjSFUOLd9HLmgxmuzOXIi2Fh8ruvZrwf1wcv8p1VGQB8KrwlHx5bDb3uHno2BKp
- u9fcgEP+3lbmp+TXxVTo5ZpyBJ4dQUoDggD/ilqOHSP3jjWVembDw/rdFWmcQYId4h3X
- u2LHIta0hJrnJcZFKFPK/ewDqKJGyV+DZxXUPSAeytK2WJI/dZylwU4jqTJr186rjN2b
- fYuw==
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1lcQhb-0008Vt-2H
+ for qemu-arm@nongnu.org; Fri, 30 Apr 2021 06:48:55 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:32825)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1lcQhY-0000UX-5g
+ for qemu-arm@nongnu.org; Fri, 30 Apr 2021 06:48:54 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1619779731;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=4qN7xT7jUuQBpHSq9kM7QceIxAauxx8StpXclF/5CGM=;
+ b=QgJJL9MXJLiPsZh+Jn7q/qxQGzyiPlnXYG7ImjvbuEjMJhu60c5r0+ggDfOIOMmnqe2DUR
+ U3uWuvKga9+VKu52qpD1VdKu2EeQIJogx2NVnVvv0fKD55VQm2WXjdMp/VE7mtsLjED3zr
+ N6ZKj22zsYEuzXpVYiTNfjDCwQNjLDs=
+Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
+ [209.85.208.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-456-3UqPwv1ONNu6wIF5u4byaw-1; Fri, 30 Apr 2021 06:48:47 -0400
+X-MC-Unique: 3UqPwv1ONNu6wIF5u4byaw-1
+Received: by mail-ed1-f70.google.com with SMTP id
+ z12-20020aa7d40c0000b0290388179cc8bfso3938260edq.21
+ for <qemu-arm@nongnu.org>; Fri, 30 Apr 2021 03:48:47 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=SVaZEa6T1OlZEI2ZRCjaeg3vEy1Vw6FSwiGIGLqhRiA=;
- b=TphCYL+6uJTnP5KbjqahK3ZCrSH0kIVOuuE5/KEY2P1ino5IG2i1hIVLcClJhcISAV
- uy3dJl61tdeJ/BI2+HnYIUUiFyx2Nq9oCtMUgvYMw3MzYswcmp0n6G1+84m2ngGq6uTw
- xifripWQW6gdPCEIN5XxmL8d3tgQCj8IvLb1uPdHKUs2WEr/RAGiXwGFvEEEesuWP/VA
- EWcIC2CCcw8nRLgVGGvVOKdBM7xbTxeHO5DxQxAzUuEYmTJ9A1/hwtJubFiLK7zx8061
- QrQN/5QblgVpGE6lxiEXSw4w4EXX1i5BRjUZ4UzgJvIPWJlxgJKMsODC00Ez521JVNF/
- zeNQ==
-X-Gm-Message-State: AOAM532YcXlWcBzVbGOp294AwK2Df0BTzqOTk+rIfxAoSJs/i8ie/fro
- 8oToyJu7mvaWP9qXuE/GUcppR52m34HSN0VRhJSlMw==
-X-Received: by 2002:a17:907:1183:: with SMTP id
- uz3mr6068141ejb.264.1619810077593; 
- Fri, 30 Apr 2021 12:14:37 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=4qN7xT7jUuQBpHSq9kM7QceIxAauxx8StpXclF/5CGM=;
+ b=SAmau6K3lWmi0Vs0haoFy5RSuhD3wTN9DRIfb4cdhmO8oqTzOdaY4w28wEBeo2T1ha
+ h+OBA669jTC55H5uS/6vexWp0oImEgZ9SEKfWTw6ksC6VnMo4xlnbicDCAZO+lA2o2bZ
+ RVdiGGRoCZpzcbuUXyDuLm8OIRURUO1h4Z8EZf70btrwE74T9amFaJp63ay/xAel/D86
+ og60KblrUo1wAEWa9cNdDxg7e2KA4qhWM+c0TLaGGuApe46yNE3qejKJ7T6L17ztRQma
+ 9R8PImzlab/hqlK1138uUbDsTy5qc59Ce6DChaamY9TZyIDn7j55DByzQwppXJNthTVc
+ kQpA==
+X-Gm-Message-State: AOAM532LKYq5OpJTuID1JmvyRbKpd0Poi0l19yernyLpqLk7RpjDgfhI
+ xbp/f3awOCCi40v4kCrra8EhzHeeF4IKe42RE5m+EkeH1LLdMhuAbaru+ONJ6s6nv3fJlY2n2ZY
+ JHB5BSQ3ZoqCt
+X-Received: by 2002:a17:907:969e:: with SMTP id
+ hd30mr3529691ejc.261.1619779726364; 
+ Fri, 30 Apr 2021 03:48:46 -0700 (PDT)
+X-Received: by 2002:a17:907:969e:: with SMTP id
+ hd30mr3529657ejc.261.1619779726009; 
+ Fri, 30 Apr 2021 03:48:46 -0700 (PDT)
+Received: from gator.home (cst2-174-132.cust.vodafone.cz. [31.30.174.132])
+ by smtp.gmail.com with ESMTPSA id t17sm1779900ejs.15.2021.04.30.03.48.44
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 30 Apr 2021 03:48:45 -0700 (PDT)
+Date: Fri, 30 Apr 2021 12:48:43 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: "wangyanan (Y)" <wangyanan55@huawei.com>
+Subject: Re: [RFC PATCH v2 2/4] hw/arm/virt: Parse -smp cluster parameter in
+ virt_smp_parse
+Message-ID: <20210430104843.moejiurgh6n2nkyx@gator.home>
+References: <20210413083147.34236-1-wangyanan55@huawei.com>
+ <20210413083147.34236-3-wangyanan55@huawei.com>
+ <20210428103141.5qfhzcqko6hxhxee@gator>
+ <262dba57-437c-36aa-7a86-8f0c59751887@huawei.com>
+ <20210429071614.lywpbfpeyclqxnke@gator.home>
+ <ce557539-ac8f-7245-747b-8212a4857811@huawei.com>
+ <20210429110229.7jtz6hfrfvqdkrbx@gator>
+ <f5b264ff-58ed-0cd2-3b84-42fa1724b8ac@huawei.com>
+ <20210430064125.3b5fjolwqculrjxz@gator.home>
+ <612c71d5-83cd-d055-48a4-e06153837f8d@huawei.com>
 MIME-Version: 1.0
-References: <161966810162.652.13723419108625443430.stgit@17be908f7c1c>
-In-Reply-To: <161966810162.652.13723419108625443430.stgit@17be908f7c1c>
-From: Dan Williams <dan.j.williams@intel.com>
-Date: Fri, 30 Apr 2021 12:14:37 -0700
-Message-ID: <CAPcyv4gwkyDBG7EZOth-kcZR8Fb+RgGXY=Y9vbuHXAz3PAnLVw@mail.gmail.com>
-Subject: Re: [PATCH v4 0/3] nvdimm: Enable sync-dax property for nvdimm
-To: Shivaprasad G Bhat <sbhat@linux.ibm.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::635;
- envelope-from=dan.j.williams@intel.com; helo=mail-ej1-x635.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <612c71d5-83cd-d055-48a4-e06153837f8d@huawei.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=drjones@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.22,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, "Michael S. Tsirkin" <mst@redhat.com>,
- Qemu Developers <qemu-devel@nongnu.org>,
- linux-nvdimm <linux-nvdimm@lists.01.org>,
- "Aneesh Kumar K.V" <aneesh.kumar@linux.ibm.com>,
- Markus Armbruster <armbru@redhat.com>, bharata@linux.vnet.ibm.com,
- Haozhong Zhang <haozhong.zhang@intel.com>,
- Eduardo Habkost <ehabkost@redhat.com>, richard.henderson@linaro.org,
- Greg Kurz <groug@kaod.org>, kvm-ppc@vger.kernel.org, qemu-arm@nongnu.org,
- Stefan Hajnoczi <stefanha@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- kwangwoo.lee@sk.com, David Gibson <david@gibson.dropbear.id.au>,
- Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
- shameerali.kolothum.thodi@huawei.com, shivaprasadbhat@gmail.com,
- qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wELDZbRjEz45
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Barry Song <song.bao.hua@hisilicon.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S . Tsirkin" <mst@redhat.com>, wanghaibin.wang@huawei.com,
+ qemu-devel@nongnu.org, yangyicong@huawei.com,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+ Alistair Francis <alistair.francis@wdc.com>, prime.zeng@hisilicon.com,
+ Igor Mammedov <imammedo@redhat.com>, yuzenghui@huawei.com,
+ Paolo Bonzini <pbonzini@redhat.com>, zhukeqian1@huawei.com,
+ Jiajie Li <lijiajie11@huawei.com>, David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: V7xbDBoJEJe+
 
-Some corrections to terminology confusion below...
-
-
-On Wed, Apr 28, 2021 at 8:49 PM Shivaprasad G Bhat <sbhat@linux.ibm.com> wrote:
+On Fri, Apr 30, 2021 at 04:59:36PM +0800, wangyanan (Y) wrote:
+> 
+> On 2021/4/30 14:41, Andrew Jones wrote:
+> > On Fri, Apr 30, 2021 at 01:09:00PM +0800, wangyanan (Y) wrote:
+> > > Hi Drew,
+> > > 
+> > > On 2021/4/29 19:02, Andrew Jones wrote:
+> > > > On Thu, Apr 29, 2021 at 04:56:06PM +0800, wangyanan (Y) wrote:
+> > > > > On 2021/4/29 15:16, Andrew Jones wrote:
+> > > > > > On Thu, Apr 29, 2021 at 10:14:37AM +0800, wangyanan (Y) wrote:
+> > > > > > > On 2021/4/28 18:31, Andrew Jones wrote:
+> > > > > > > > On Tue, Apr 13, 2021 at 04:31:45PM +0800, Yanan Wang wrote:
+> > > > > > > > >              } else if (sockets == 0) {
+> > > > > > > > >                  threads = threads > 0 ? threads : 1;
+> > > > > > > > > -            sockets = cpus / (cores * threads);
+> > > > > > > > > +            sockets = cpus / (clusters * cores * threads);
+> > > > > > > > >                  sockets = sockets > 0 ? sockets : 1;
+> > > > > > > > If we initialize clusters to zero instead of one and add lines in
+> > > > > > > > 'cpus == 0 || cores == 0' and 'sockets == 0' like
+> > > > > > > > 'clusters = clusters > 0 ? clusters : 1' as needed, then I think we can
+> > > > > > > > add
+> > > > > > > > 
+> > > > > > > >      } else if (clusters == 0) {
+> > > > > > > >          threads = threads > 0 ? threads : 1;
+> > > > > > > >          clusters = cpus / (sockets * cores * thread);
+> > > > > > > >          clusters = clusters > 0 ? clusters : 1;
+> > > > > > > >      }
+> > > > > > > > 
+> > > > > > > > here.
+> > > > > > > I have thought about this kind of format before, but there is a little bit
+> > > > > > > difference between these two ways. Let's chose the better and more
+> > > > > > > reasonable one of the two.
+> > > > > > > 
+> > > > > > > Way A currently in this patch:
+> > > > > > > If value of clusters is not explicitly specified in -smp command line, we
+> > > > > > > assume
+> > > > > > > that users don't want to support clusters, for compatibility we initialized
+> > > > > > > the
+> > > > > > > value to 1. So that with cmdline "-smp cpus=24, sockets=2, cores=6", we will
+> > > > > > > parse out the topology description like below:
+> > > > > > > cpus=24, sockets=2, clusters=1, cores=6, threads=2
+> > > > > > > 
+> > > > > > > Way B that you suggested for this patch:
+> > > > > > > Whether value of clusters is explicitly specified in -smp command line or
+> > > > > > > not,
+> > > > > > > we assume that clusters are supported and calculate the value. So that with
+> > > > > > > cmdline "-smp cpus=24, sockets=2, cores=6", we will parse out the topology
+> > > > > > > description like below:
+> > > > > > > cpus =24, sockets=2, clusters=2, cores=6, threads=1
+> > > > > > > 
+> > > > > > > But I think maybe we should not assume too much about what users think
+> > > > > > > through the -smp command line. We should just assume that all levels of
+> > > > > > > cpu topology are supported and calculate them, and users should be more
+> > > > > > > careful if they want to get the expected results with not so complete
+> > > > > > > cmdline.
+> > > > > > > If I'm right, then Way B should be better. :)
+> > > > > > > 
+> > > > > > Hi Yanan,
+> > > > > > 
+> > > > > > We're already assuming the user wants to describe clusters to the guest
+> > > > > > because we require at least one per socket. If we want the user to have a
+> > > > > > choice between using clusters or not, then I guess we need to change the
+> > > > > > logic in the PPTT and the cpu-map to only generate the cluster level when
+> > > > > > the number of clusters is not zero. And then change this parser to not
+> > > > > > require clusters at all.
+> > > > > Hi Drew,
+> > > > > 
+> > > > > I think this kind of change will introduce more complexity and actually is
+> > > > > not necessary.
+> > > > > Not generating cluster level at all and generating cluster level (one per
+> > > > > socket) are same
+> > > > > to kernel. Without cluster description provided, kernel will initialize all
+> > > > > cores in the same
+> > > > > cluster which also means one cluster per socket.
+> > > > Which kernel? All kernels? One without the cluster support patches [1]?
+> > > > 
+> > > > [1] https://lore.kernel.org/lkml/20210420001844.9116-1-song.bao.hua@hisilicon.com/#t
+> > > I'm sorry, I didn't make it clear. :)
+> > > I actually mean the ARM64 kernel, with or without [1].
+> > > 
+> > > Without [1]: Kernel doesn't care about cluster. When populating cpu
+> > > topology, it directly
+> > > finds the hierarchy node with "physical package flag" as package when
+> > > parsing ACPI, and
+> > > finds the core node's parent as package when parsing DT. So even we provide
+> > > cluster level
+> > > description (one per socket), the parsing results will be the same as not
+> > > providing at all.
+> > > 
+> > > With [1]: Kernel finds the core hierarchy node's parent as cluster when
+> > > parsing ACPI. So if
+> > > we don't provide cluster level description, package will be taken as
+> > > cluster. And if we provide
+> > > the description (one per socket), the parsing result will also be the same.
+> > > 
+> > > That's why I said that we just need to provide description of cluster (one
+> > > per socket) if we
+> > > don't want to make use of it in VMs.
+> > OK, that sounds good.
+> > 
+> > > [1] https://lore.kernel.org/lkml/20210420001844.9116-1-song.bao.hua@hisilicon.com/#t
+> > > > > So we should only ensure value of clusters per socket is one if we don't
+> > > > > want to use clusters,
+> > > > > and don't need to care about whether or not to generate description in PPTT
+> > > > > and cpu-map.
+> > > > > Is this right?
+> > > > Depends on your answer to my 'which kernel' questions.
+> > > > 
+> > > > > > I'm not a big fan of these auto-calculated values either, but the
+> > > > > > documentation says that it'll do that, and it's been done that way
+> > > > > > forever, so I think we're stuck with it for the -smp option. Hmm, I was
+> > > > > > just about to say that x86 computes all its values, but I see the most
+> > > > > > recently added one, 'dies', is implemented the way you're proposing we
+> > > > > > implement 'clusters', i.e. default to one and don't calculate it when it's
+> > > > > > missing. I actually consider that either a documentation bug or an smp
+> > > > > > parsing bug, though.
+> > > > > My propose originally came from implementation of x86.
+> > > > > > Another possible option, for Arm, because only the cpus and maxcpus
+> > > > > > parameters of -smp have ever worked, is to document, for Arm, that if even
+> > > > > > one parameter other than cpus or maxcpus is provided, then all parameters
+> > > > > > must be provided. We can still decide if clusters=0 is valid, but we'll
+> > > > > > enforce that everything is explicit and that the product (with or without
+> > > > > > clusters) matches maxcpus.
+> > > > > Requiring every parameter explicitly will be most stable but indeed strict.
+> > > > > 
+> > > > > Currently all the parsers use way B to calculate value of thread if it is
+> > > > > not provided explicitly.
+> > > > > So users should ensure the -smp cmdline they provided can result in that
+> > > > > parsed threads will
+> > > > > be 1 if they don't want to support multiple threads in one core.
+> > > > > 
+> > > > > Very similar to thread, users should also ensure the provided cmdline can
+> > > > > result in that parsed
+> > > > > clusters will be 1 if they don't want to support multiple clusters in one
+> > > > > socket.
+> > > > > 
+> > > > > So I'm wondering if we can just add some commit in the documentation to tell
+> > > > > users that they
+> > > > > should ensure this if they don't want support it. And as for calculation of
+> > > > > clusters, we follow
+> > > > > the logic of other parameters as you suggested in way B.
+> > > > > 
+> > > > > Thanks,
+> > > > > Yanan
+> > > > > > Requiring every parameter might be stricter than necessary, though, I
+> > > > > > think we're mostly concerned with cpus/maxcpus, sockets, and cores.
+> > > > > > clusters can default to one or zero (whatever we choose and document),
+> > > > > > threads can default to one, and cpus can default to maxcpus or maxcpus can
+> > > > > > default to cpus, but at least one of those must be provided. And, if
+> > > > > > sockets are provided, then cores must be provided and vice versa. If
+> > > > > > neither sockets nor cores are provided, then nothing else besides cpus and
+> > > > > > maxcpus may be provided, and that would mean to not generate any topology
+> > > > > > descriptions for the guest.
+> > > > I still don't know. I think I prefer making -smp more strict (even for
+> > > > other architectures, but that's more difficult to do than for Arm.) What I
+> > > > wrote above isn't that bad. We only require one of cpus or maxcpus (pretty
+> > > > much everybody already does that anyway), and then, if given sockets
+> > > > or cores, the other will also be required. I assume anybody who bothers to
+> > > > specify one or the other would already specify both anyway.
+> > > I agree to make -smp more strict. We want to expose the cpu topology
+> > > information
+> > > to guest kernel, so that it can take advantage of the information for better
+> > > scheduling.
+> > >  From this point of view, we hope the topology descriptions are accurately
+> > > specified
+> > > but not automatically populated.
+> > > 
+> > > But I think the requirement for ARM "if even one parameter other than cpus
+> > > or maxcpus
+> > > is provided then all parameters must be provided" will be better. This can
+> > > ensure the
+> > > whole accurate users-specified topology. As you mentioned, if anybody who
+> > > bothers
+> > > to specify one, why not also specify the others.
+> > > 
+> > > I can add the requirement for ARM in the documentation, and also check the
+> > > parameters
+> > > in virt_smp_parse. Will this be fine?
+> > We sort of have to support command lines that are missing 'maxcpus' and
+> > 'clusters', unless we work together with libvirt to make the change.
+> > Currently libvirt will generate '-smp 16,sockets=16,cores=1,threads=1'
+> > from '<vcpu placement='static'>16</vcpu>'.
+> I see. And libvirt currently doesn't support cluster in xml, which means
+> we can not generate complete cmdlines with cluster in it through
+> <topology ...> specification in xml.
+> > That's sufficient for our
+> > stricter, but not completely strict requirements. And, I still think
+> > 'threads' could be optional, because there's a good chance the user
+> > doesn't want to describe them, so a default of 1 is good enough.
+> So the parsing logic can be repeated like this:
+> We require at least one of cpus and maxcpus specified explicitly, and
+> default
+> cluster/thread to 1 if not explicitly specified. And require both of sockets
+> and
+> cores if one of them is specified.
+> 
+> This is consistent with what you mentioned yesterday.
 >
-> The nvdimm devices are expected to ensure write persistence during power
-> failure kind of scenarios.
 
-No, QEMU is not expected to make that guarantee. QEMU is free to lie
-to the guest about the persistence guarantees of the guest PMEM
-ranges. It's more accurate to say that QEMU nvdimm devices can emulate
-persistent memory and optionally pass through host power-fail
-persistence guarantees to the guest. The power-fail persistence domain
-can be one of "cpu_cache", or "memory_controller" if the persistent
-memory region is "synchronous". If the persistent range is not
-synchronous, it really isn't "persistent memory"; it's memory mapped
-storage that needs I/O commands to flush.
+Yup, I think this should work for both compatibility concerns, concerns
+with bad assumptions, and with supporting users which would like more
+terse command lines.
 
-> The libpmem has architecture specific instructions like dcbf on POWER
+Thanks,
+drew
 
-Which "libpmem" is this? PMDK is a reference library not a PMEM
-interface... maybe I'm missing what libpmem has to do with QEMU?
-
-> to flush the cache data to backend nvdimm device during normal writes
-> followed by explicit flushes if the backend devices are not synchronous
-> DAX capable.
->
-> Qemu - virtual nvdimm devices are memory mapped. The dcbf in the guest
-> and the subsequent flush doesn't traslate to actual flush to the backend
-
-s/traslate/translate/
-
-> file on the host in case of file backed v-nvdimms. This is addressed by
-> virtio-pmem in case of x86_64 by making explicit flushes translating to
-> fsync at qemu.
-
-Note that virtio-pmem was a proposal for a specific optimization of
-allowing guests to share page cache. The virtio-pmem approach is not
-to be confused with actual persistent memory.
-
-> On SPAPR, the issue is addressed by adding a new hcall to
-> request for an explicit flush from the guest ndctl driver when the backend
-
-What is an "ndctl" driver? ndctl is userspace tooling, do you mean the
-guest pmem driver?
-
-> nvdimm cannot ensure write persistence with dcbf alone. So, the approach
-> here is to convey when the hcall flush is required in a device tree
-> property. The guest makes the hcall when the property is found, instead
-> of relying on dcbf.
->
-> A new device property sync-dax is added to the nvdimm device. When the
-> sync-dax is 'writeback'(default for PPC), device property
-> "hcall-flush-required" is set, and the guest makes hcall H_SCM_FLUSH
-> requesting for an explicit flush.
-
-I'm not sure "sync-dax" is a suitable name for the property of the
-guest persistent memory. There is no requirement that the
-memory-backend file for a guest be a dax-capable file. It's also
-implementation specific what hypercall needs to be invoked for a given
-occurrence of "sync-dax". What does that map to on non-PPC platforms
-for example? It seems to me that an "nvdimm" device presents the
-synchronous usage model and a whole other device type implements an
-async-hypercall setup that the guest happens to service with its
-nvdimm stack, but it's not an "nvdimm" anymore at that point.
-
-> sync-dax is "unsafe" on all other platforms(x86, ARM) and old pseries machines
-> prior to 5.2 on PPC. sync-dax="writeback" on ARM and x86_64 is prevented
-> now as the flush semantics are unimplemented.
-
-"sync-dax" has no meaning on its own, I think this needs an explicit
-mechanism to convey both the "not-sync" property *and* the callback
-method, it shouldn't be inferred by arch type.
-
-> When the backend file is actually synchronous DAX capable and no explicit
-> flushes are required, the sync-dax mode 'direct' is to be used.
->
-> The below demonstration shows the map_sync behavior with sync-dax writeback &
-> direct.
-> (https://github.com/avocado-framework-tests/avocado-misc-tests/blob/master/memory/ndctl.py.data/map_sync.c)
->
-> The pmem0 is from nvdimm with With sync-dax=direct, and pmem1 is from
-> nvdimm with syn-dax=writeback, mounted as
-> /dev/pmem0 on /mnt1 type xfs (rw,relatime,attr2,dax=always,inode64,logbufs=8,logbsize=32k,noquota)
-> /dev/pmem1 on /mnt2 type xfs (rw,relatime,attr2,dax=always,inode64,logbufs=8,logbsize=32k,noquota)
->
-> [root@atest-guest ~]# ./mapsync /mnt1/newfile ----> When sync-dax=unsafe/direct
-> [root@atest-guest ~]# ./mapsync /mnt2/newfile ----> when sync-dax=writeback
-> Failed to mmap  with Operation not supported
->
-> The first patch does the header file cleanup necessary for the
-> subsequent ones. Second patch implements the hcall, adds the necessary
-> vmstate properties to spapr machine structure for carrying the hcall
-> status during save-restore. The nature of the hcall being asynchronus,
-> the patch uses aio utilities to offload the flush. The third patch adds
-> the 'sync-dax' device property and enables the device tree property
-> for the guest to utilise the hcall.
->
-> The kernel changes to exploit this hcall is at
-> https://github.com/linuxppc/linux/commit/75b7c05ebf9026.patch
->
-> ---
-> v3 - https://lists.gnu.org/archive/html/qemu-devel/2021-03/msg07916.html
-> Changes from v3:
->       - Fixed the forward declaration coding guideline violations in 1st patch.
->       - Removed the code waiting for the flushes to complete during migration,
->         instead restart the flush worker on destination qemu in post load.
->       - Got rid of the randomization of the flush tokens, using simple
->         counter.
->       - Got rid of the redundant flush state lock, relying on the BQL now.
->       - Handling the memory-backend-ram usage
->       - Changed the sync-dax symantics from on/off to 'unsafe','writeback' and 'direct'.
->         Added prevention code using 'writeback' on arm and x86_64.
->       - Fixed all the miscellaneous comments.
->
-> v2 - https://lists.gnu.org/archive/html/qemu-devel/2020-11/msg07031.html
-> Changes from v2:
->       - Using the thread pool based approach as suggested
->       - Moved the async hcall handling code to spapr_nvdimm.c along
->         with some simplifications
->       - Added vmstate to preserve the hcall status during save-restore
->         along with pre_save handler code to complete all ongoning flushes.
->       - Added hw_compat magic for sync-dax 'on' on previous machines.
->       - Miscellanious minor fixes.
->
-> v1 - https://lists.gnu.org/archive/html/qemu-devel/2020-11/msg06330.html
-> Changes from v1
->       - Fixed a missed-out unlock
->       - using QLIST_FOREACH instead of QLIST_FOREACH_SAFE while generating token
->
-> Shivaprasad G Bhat (3):
->       spapr: nvdimm: Forward declare and move the definitions
->       spapr: nvdimm: Implement H_SCM_FLUSH hcall
->       nvdimm: Enable sync-dax device property for nvdimm
->
->
->  hw/arm/virt.c                 |   28 ++++
->  hw/i386/pc.c                  |   28 ++++
->  hw/mem/nvdimm.c               |   52 +++++++
->  hw/ppc/spapr.c                |   16 ++
->  hw/ppc/spapr_nvdimm.c         |  285 +++++++++++++++++++++++++++++++++++++++++
->  include/hw/mem/nvdimm.h       |   11 ++
->  include/hw/ppc/spapr.h        |   11 +-
->  include/hw/ppc/spapr_nvdimm.h |   27 ++--
->  qapi/common.json              |   20 +++
->  9 files changed, 455 insertions(+), 23 deletions(-)
->
-> --
-> Signature
-> _______________________________________________
-> Linux-nvdimm mailing list -- linux-nvdimm@lists.01.org
-> To unsubscribe send an email to linux-nvdimm-leave@lists.01.org

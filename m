@@ -1,91 +1,104 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp150351lfg;
-        Fri, 30 Apr 2021 07:11:04 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzx/t20LjkfKq/NOajyaHEXyij6io81eK7j2yHHLv+W8oRxqvcVJPIg6QaIeFaAXwKp4Hgm
-X-Received: by 2002:a19:dc0c:: with SMTP id t12mr3526388lfg.279.1619791864514;
-        Fri, 30 Apr 2021 07:11:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619791864; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp203205lfg;
+        Fri, 30 Apr 2021 08:09:09 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJywwzZM5QeBsX/K20R3kkq/L+c84RCaPOAmLdmnAPcpAy9Vwim0TukIWwc6gcU8bjbx3nIU
+X-Received: by 2002:a02:6654:: with SMTP id l20mr5356100jaf.55.1619795349452;
+        Fri, 30 Apr 2021 08:09:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619795349; cv=none;
         d=google.com; s=arc-20160816;
-        b=LRbhYvB4Q5dg0CVqSaGbma1SltWlVp/TciJ9Kg6gxF7Xls1rlU4iS7pkLlRXV519XQ
-         adVdjO4IHaAA01SOrq83AP7nmPrqd0C/EJVQDIqY73OB3sk+EBqqV9SMPRlKnY+3V/1X
-         ME6DWo9TpWQSXx5zAZmDJxNWPbk+//NsuK6JkZC/wmpuHAROEdw1iZLn8ZF9tdq3+4Lk
-         ADFX/7+CtrgIB5XK+G9Ag0qh8ZXYy7bi0FyjawwcgxQQV3FUn0P3GKx5XcjDcC86mRsX
-         u4uLNmujAecbou2nsEX8l6uo1GMqvq28d4v6QNUpWdpmhaPmIJaTbXGE+ccS+hSxrHwU
-         X6jQ==
+        b=0/WBSJt3TBMoB2ojk4q0GOfPEPF1uByZ8esoGWPwMNonZDW3WEDFH4SyIWYzsGuGel
+         Mh6rAcUIAyQ8bnNSJ5iWi/dLwz1hFfBFQBeS1VG5CxOpMD5tjIOcMeD7e73/j8W9vWBn
+         +1wO0TPjLJm8DfIhjqgvOcbRzILEBmgd0owVPdk/7QcVFnNVp5ffzASrcivN+ZTS2QnW
+         k+vy7vVvh6dMEoGcXZcMXrPBgmQlpHN5YyAzPP6uKvTr4kfvehDN22/igjn4O1VTUPqS
+         zg52KtBnueDwWNMGGn4b8huIe8lX/b3UjoIbZ5YMWREn5WvC9CTKrpQ4RGLIPAejB9zG
+         MPaA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=qZO2zJFZtx85GCGqq8QWj7sa8QBCtZLmCPXj8Giy1a0=;
-        b=Q9E/yiObb5lzDwaVFWftKNQxxmXqbl3KtbY0cUzSmJHe6n+fWj+iKn4ifqpgVAa9A2
-         /6Hp90sA6F1ruk1ZkNBs37pn0M9rKgj+vkjJCPpwHWATKO0stG+NU8msTnG2on2+/hdY
-         I7bx6PdUJJa5m/yXQjKePT9BQPmb34eZfsP59nLeRuyWXD+az/5lDJQIC4H4XNKaRAqp
-         SU8D4DD2rfaFB9H4Jsait/wdfUvdIt5MGd/gNO0knBwto1TLiwE61MS1hZTJhX53sWBl
-         RpwTaDx649onUdWIcX/SWYQpMZcOjlGAzym5fc4E8ynyKvQi2e/9aAOK044VeyJUGtvq
-         iElQ==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=9OmyH1RrzLEXuN3YYBOli7Z1fQZLCvh8PHugvMNpZ5c=;
+        b=pyeSFnuRLRuf4F4CVTpEzodUspTgTnYRJ+1m6jImdy5R5JZpJ1A8BmO25nqmSCyfJ+
+         EHkyc/E7uIah4pw+pvbirtRXdhiaTglsnmjrmDMv5HiU8DZwq1HlcFKw10W2VsdPFiPu
+         vx3uQ+h4jtVMX5uKPT2Hi2Mp19+lq8x9cSUQybnA/ssHI89PoIXbm4LYJWrPy0zSw8MC
+         fJonYSx2uioKQaEaIyQTCmhRwR8lnT/C2ekUbzEzagVr+h+ZISLUyDX09orlx349JwS6
+         642ZkkHqqx+6BBMpzO31SW3qzyf3meEiORbEFGAmY+XJdCa6y5HgcZN0rRuTRpWhY2ZN
+         B5JA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Gh4IrcAY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o22si2356521ljj.163.2021.04.30.07.11.04
+        by mx.google.com with ESMTPS id t3si2332664ilj.139.2021.04.30.08.09.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 30 Apr 2021 07:11:04 -0700 (PDT)
+        Fri, 30 Apr 2021 08:09:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34050 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Gh4IrcAY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:45338 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lcTrD-0002Y5-58
-	for alex.bennee@linaro.org; Fri, 30 Apr 2021 10:11:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37670)
+	id 1lcUlQ-0003FG-Mg
+	for alex.bennee@linaro.org; Fri, 30 Apr 2021 11:09:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40128)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lcT17-0001nz-Gl; Fri, 30 Apr 2021 09:17:13 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:57129)
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1lcUlE-0003DI-8c
+ for qemu-arm@nongnu.org; Fri, 30 Apr 2021 11:08:56 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:46913)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lcT0z-0006Lc-8w; Fri, 30 Apr 2021 09:17:13 -0400
-Received: from [192.168.100.1] ([82.142.15.170]) by mrelayeu.kundenserver.de
- (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MTAJr-1m0VFg3yhj-00UdKs; Fri, 30 Apr 2021 15:16:56 +0200
-Subject: Re: [PATCH 3/3] hw/pcmcia: Do not register PCMCIA type if not required
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-References: <20210424222057.3434459-1-f4bug@amsat.org>
- <20210424222057.3434459-4-f4bug@amsat.org>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <224bb111-585d-fa11-6a36-fb9a9f0eb7c4@vivier.eu>
-Date: Fri, 30 Apr 2021 15:16:54 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1lcUlC-00049L-BN
+ for qemu-arm@nongnu.org; Fri, 30 Apr 2021 11:08:55 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1619795332;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=9OmyH1RrzLEXuN3YYBOli7Z1fQZLCvh8PHugvMNpZ5c=;
+ b=Gh4IrcAYQ1XjqmtayUNp3sHkPkmLBk1Dwv3LuJz2H+jzijfb5w/lNVj6pR8MnGB7ZKj0eS
+ P57RpBU9XiWMqFPcnbLJLVlWOReWTD/Oj7fiOuS35GHttik7thtoDwq/2cpn+AHUuTJVY/
+ xD/kw9aI+Wewpi+QbROKWREPXiwh76E=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-233-TiW5yE8ZNgCa70ECbzFgHg-1; Fri, 30 Apr 2021 11:08:50 -0400
+X-MC-Unique: TiW5yE8ZNgCa70ECbzFgHg-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2FBB679EC2;
+ Fri, 30 Apr 2021 15:08:47 +0000 (UTC)
+Received: from localhost (ovpn-112-107.ams2.redhat.com [10.36.112.107])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 0DFF35D9DD;
+ Fri, 30 Apr 2021 15:08:41 +0000 (UTC)
+Date: Fri, 30 Apr 2021 16:08:40 +0100
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: David Gibson <david@gibson.dropbear.id.au>
+Subject: Re: [PATCH v4 0/3] nvdimm: Enable sync-dax property for nvdimm
+Message-ID: <YIwdeKzh/xJGX7AI@stefanha-x1.localdomain>
+References: <161966810162.652.13723419108625443430.stgit@17be908f7c1c>
+ <YIrW4bwbR1R0CWm/@stefanha-x1.localdomain>
+ <433e352d-5341-520c-5c57-79650277a719@linux.ibm.com>
+ <YIuHJkwkDiHONYwp@yekko>
 MIME-Version: 1.0
-In-Reply-To: <20210424222057.3434459-4-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: fr
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:H4MOLWgczDgmUzBHTynduUDT8i4nCsuxBp5RkxsiJRZyshe4bmE
- r/h/99eyfWH1HwLTvaFvWnTcEjWEgTHlFyOCQJniyyklPEkRosoLcUGwe18KsPlkBgoRpNh
- UCjdIM05vLS3ueInEtgeqp/Ra56aw4ViQTPEhbYrQeowqKoyyednBGibk/HMoWJtF6WoLj4
- 5BW58wVaYoX7enwgAq7RA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:upLJ7otRu7Y=:jRaOx/86aRpz1ky3My0hFy
- VtLrIgUEigHKx699E0n/tY65XEEnHmhZwIKhNIjj5qt88R8ZrF264TfbBPP1CzM1uVOZ7tldl
- 5RQs6VNBydxWaUKObCX8UT2Hr0uuYxg38s5BEfSGpuGfWrgTmT7TWx18f5CfK+bpf58sFLN0p
- ssMK/Nm7E+KXJvfJlKtnDWSmNREgWLfSPp3oyEyHVBsrWHrTUGaEoI0AVKMb5OMo8zd51XR+X
- U/i0gFs0OANYWsY4dc215ZKa7vsRTFWPLbymg5wz+qSxLMEjBul0Oa8cTQ29/LKRMKP0GrxdS
- LlidLAih3DFmnUlE07UTLSAsoDw6iT1E2sxOWQ2S2SeM8wy3yj7NY0uA4vjGuy4iJWAiFrfsC
- 049VnwGmnIkKnaqwM7Iyx0BztC5Cwniwv78HF7ZdKVk2wg8fcm289o6d6f+CycksD6fdxgxjJ
- Q1pEFMZtHIQMiEIaExNql1/g9EUo+TdMfdjNS0QmfwBJ+56aXCW3Mk6r0yHRPUfOuWgipnQS0
- 4mtagkfcLQbqugw95R2XHE=
-Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="VstCjnrIpVAx4Zbs"
+Content-Disposition: inline
+In-Reply-To: <YIuHJkwkDiHONYwp@yekko>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=stefanha@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.22,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -98,35 +111,113 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- qemu-block@nongnu.org, qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
- Miroslav Rezanina <mrezanin@redhat.com>, John Snow <jsnow@redhat.com>
+Cc: peter.maydell@linaro.org, Shivaprasad G Bhat <sbhat@linux.ibm.com>,
+ mst@redhat.com, qemu-devel@nongnu.org, eblake@redhat.com,
+ linux-nvdimm@lists.01.org, "Aneesh Kumar K.V" <aneesh.kumar@linux.ibm.com>,
+ armbru@redhat.com, marcel.apfelbaum@gmail.com, bharata@linux.vnet.ibm.com,
+ haozhong.zhang@intel.com, ehabkost@redhat.com, richard.henderson@linaro.org,
+ groug@kaod.org, kvm-ppc@vger.kernel.org, qemu-arm@nongnu.org,
+ imammedo@redhat.com, kwangwoo.lee@sk.com, xiaoguangrong.eric@gmail.com,
+ shameerali.kolothum.thodi@huawei.com, shivaprasadbhat@gmail.com,
+ qemu-ppc@nongnu.org, pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: T9QhiuJ5MDBO
+X-TUID: uHqxD0OgCPP8
 
-Le 25/04/2021 à 00:20, Philippe Mathieu-Daudé a écrit :
-> If the Kconfig 'PCMCIA' value is not selected, it is pointless
-> to build the PCMCIA core components.
-> 
-> (Currently only one machine of the ARM targets requires this).
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  hw/pcmcia/meson.build | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/pcmcia/meson.build b/hw/pcmcia/meson.build
-> index ab50bd325d6..51f2512b8ed 100644
-> --- a/hw/pcmcia/meson.build
-> +++ b/hw/pcmcia/meson.build
-> @@ -1,2 +1,2 @@
-> -softmmu_ss.add(files('pcmcia.c'))
-> +softmmu_ss.add(when: 'CONFIG_PCMCIA', if_true: files('pcmcia.c'))
->  softmmu_ss.add(when: 'CONFIG_PXA2XX', if_true: files('pxa2xx.c'))
-> 
 
-Applied to my trivial-patches branch.
+--VstCjnrIpVAx4Zbs
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Thanks,
-Laurent
+On Fri, Apr 30, 2021 at 02:27:18PM +1000, David Gibson wrote:
+> On Thu, Apr 29, 2021 at 10:02:23PM +0530, Aneesh Kumar K.V wrote:
+> > On 4/29/21 9:25 PM, Stefan Hajnoczi wrote:
+> > > On Wed, Apr 28, 2021 at 11:48:21PM -0400, Shivaprasad G Bhat wrote:
+> > > > The nvdimm devices are expected to ensure write persistence during =
+power
+> > > > failure kind of scenarios.
+> > > >=20
+> > > > The libpmem has architecture specific instructions like dcbf on POW=
+ER
+> > > > to flush the cache data to backend nvdimm device during normal writ=
+es
+> > > > followed by explicit flushes if the backend devices are not synchro=
+nous
+> > > > DAX capable.
+> > > >=20
+> > > > Qemu - virtual nvdimm devices are memory mapped. The dcbf in the gu=
+est
+> > > > and the subsequent flush doesn't traslate to actual flush to the ba=
+ckend
+> > > > file on the host in case of file backed v-nvdimms. This is addresse=
+d by
+> > > > virtio-pmem in case of x86_64 by making explicit flushes translatin=
+g to
+> > > > fsync at qemu.
+> > > >=20
+> > > > On SPAPR, the issue is addressed by adding a new hcall to
+> > > > request for an explicit flush from the guest ndctl driver when the =
+backend
+> > > > nvdimm cannot ensure write persistence with dcbf alone. So, the app=
+roach
+> > > > here is to convey when the hcall flush is required in a device tree
+> > > > property. The guest makes the hcall when the property is found, ins=
+tead
+> > > > of relying on dcbf.
+> > >=20
+> > > Sorry, I'm not very familiar with SPAPR. Why add a hypercall when the
+> > > virtio-nvdimm device already exists?
+> > >=20
+> >=20
+> > On virtualized ppc64 platforms, guests use papr_scm.ko kernel drive for
+> > persistent memory support. This was done such that we can use one kernel
+> > driver to support persistent memory with multiple hypervisors. To avoid
+> > supporting multiple drivers in the guest, -device nvdimm Qemu command-l=
+ine
+> > results in Qemu using PAPR SCM backend. What this patch series does is =
+to
+> > make sure we expose the correct synchronous fault support, when we back=
+ such
+> > nvdimm device with a file.
+> >=20
+> > The existing PAPR SCM backend enables persistent memory support with the
+> > help of multiple hypercall.
+> >=20
+> > #define H_SCM_READ_METADATA     0x3E4
+> > #define H_SCM_WRITE_METADATA    0x3E8
+> > #define H_SCM_BIND_MEM          0x3EC
+> > #define H_SCM_UNBIND_MEM        0x3F0
+> > #define H_SCM_UNBIND_ALL        0x3FC
+> >=20
+> > Most of them are already implemented in Qemu. This patch series impleme=
+nts
+> > H_SCM_FLUSH hypercall.
+>=20
+> The overall point here is that we didn't define the hypercall.  It was
+> defined in order to support NVDIMM/pmem devices under PowerVM.  For
+> uniformity between PowerVM and KVM guests, we want to support the same
+> hypercall interface on KVM/qemu as well.
+
+Okay, that's fine. Now Linux and QEMU have multiple ways of doing this,
+but it's fair enough if it's an existing platform hypercall.
+
+Stefan
+
+--VstCjnrIpVAx4Zbs
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmCMHXgACgkQnKSrs4Gr
+c8hmgwf/XTtU49hZwgyXRnASpP3xkIjBSe84ajsAUZJpdfEhIcZBTOuQE3kZqu5G
+1Q5Cl+nAJn8r7OfLQv6efwm4Nn4N1lsXf1pecLk1iemBIl9XxZg5pnYvYwIIn71I
+bj2i/Sa8YOzP6NoSpiG8ydV57RC/fwVz8K1wolnS7qS6ysKs10ch/TfUYmsDq3Be
+4mIXx9mh1cWxq5pBYeGMoA3ZEp8ja0jdr6LLqETClhDzP4R4pd0Oh6Zi07x4D0eH
+JZzlQ8CUuomNX1ScXi6XAYGy3reRLeSLr2Rop6KptY3UN+dTQ+isXrUB4CX6fjbG
+YAc8GbInVoW5oIYDPvNnr3wQWPmYZg==
+=yVLh
+-----END PGP SIGNATURE-----
+
+--VstCjnrIpVAx4Zbs--
+

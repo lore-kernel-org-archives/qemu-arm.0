@@ -1,90 +1,88 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp317705lfg;
-        Fri, 30 Apr 2021 10:17:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwVNqiqk442KsUs0438DUZoQFHbMXxvmdf+FSdOAlXOYf26IXuo3TGws6iWwtkkptFsClpd
-X-Received: by 2002:a05:6602:2bc5:: with SMTP id s5mr4500823iov.91.1619803054584;
-        Fri, 30 Apr 2021 10:17:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619803054; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp321939lfg;
+        Fri, 30 Apr 2021 10:22:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyVySK86rI/9jVVSc8trRbSxC05ICBCRwvgrrgNKXZPcRSDTDiJavZ1H9Af6arQzBSt7nts
+X-Received: by 2002:aa7:c049:: with SMTP id k9mr7272148edo.56.1619803355664;
+        Fri, 30 Apr 2021 10:22:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619803355; cv=none;
         d=google.com; s=arc-20160816;
-        b=wOghCUKFyappFNDsq+GzU5ZXRrWo50LgFn/bceI4avFHIUbhwxxSsvnuE9GSTv7qLJ
-         N2aTjo5uqu8+RPqkhQFFwPw/NGbm9P+URnJpbAZt2xa7KBp0+utxbHdYud6AMUpJUjSk
-         E6sOXEpH3pD9pKFk8dGW7ADcMI9CGwQAlm+ySQAqCBJG/+63DIf3w/DFxUvYSIOh08S6
-         X9nKOId9JydLRGUO+hmhg8GE0vjeoODdOQ7vovK+3f4v0UaG1++Orq59igCk5lto+nGa
-         HMMrZGy09OgfYdl/5NpfbCaa+709QcQbUpt6R1kGhlO1P3Gagii5q68u1l0Nz7A23KZ2
-         X48Q==
+        b=wUA9hpAZJmVP2BCCQREDlCM3UKrzyiQ+ovLEUBDeGm3oSm3QLqCr15uC7jAQez3Ppz
+         eBfrflS5oznquq47AEiHsFf6dSbpFuFKcwkvByEjb3OzyrQUGgSIEym+99WoUJf8BZ+y
+         Ee6xfY/yrDZj3TbMk3pEb0m/NSl2UQRAVEBmMED44lCxvceR2UiOxmEvn71hEz3gq/+r
+         M6bxQ1om5KnWod8enmJ97cInjp3zPo8UkmExXyrz7/AAxjsRhYsymxhBs/Ho/oWGS6+U
+         j5tbBIgJOzkMCPoQsZD+58UNQ/JmjBM2X+U/TrZAOnURusr8pDm7hFp7rtVsFBcNaaej
+         1sTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=29bdkjBs2ypC0hwuXTWUa8jR9oBStSzpLMglRF9/Q+U=;
-        b=olICUzqd0AhULfjZckwOpMzbE8sySDFwV8uNhiV6S+Mvxd2Gbq2R/3cwY9xQg/ewJB
-         28g7ty11y99h8jvk2mFOYW+nd6+nbW2MGJml1QGZJXWeUg5cpYRRyyBRQQnHGf6UmTkj
-         1aqZ5bJ8Buo2LM8NVpdJSJrXoVK0/k9ucaKqw2z7iTN/3LJ8cld9pG5X1t1cI+IbKD8/
-         g/buvrma+dIy6qWYz54gf9zqZh6axnv4VW0AoIviQ/e6LjhM6eSUUdBshYboFteQyji6
-         ScuyBi1oft3U+aQBTep5deTXJbQCloMkkGyxbkGEVLdt7EqwFInnzbtGsMMNluYMpiR0
-         lKtg==
+        bh=ZwG3BJm+JwKmZYFsSO9et39JAnRsgij9noMaaeZQJvM=;
+        b=dqtJ6jvzrOQcsImlm+AHa5fUVGOssZUrITtM3gvVexW2lCt6b/uO4X0J0kWLkTil8B
+         HTyttBZUjkpCzQtf7LD3fR3rzI1juQCgv+FQ2IhagBuLWwD8TrBizoBdH0pCefu5q8PI
+         ILtY26uFFKsG+WEo2l6YmD5pCf56TJ8OzRv6/XkRPHS0SKPd1BHZiYUl88+Mgt95Wvws
+         cgDI6VUZWckdixpjcwD/Tyzn/AV87ZoE7xDxOiDRWXV4gVOshxABds+bNEJKCgBUPHk2
+         Fk23lIiwJgQsfqyaFeyB3qXRZ92pp8yc/59TfzFN9fgBL25nhkQU69DwSmv01o9diK2G
+         fa7w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b9si2909950jah.5.2021.04.30.10.17.34
+        by mx.google.com with ESMTPS id cw3si3893944ejb.658.2021.04.30.10.22.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 30 Apr 2021 10:17:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 30 Apr 2021 10:22:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58282 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:38000 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lcWlh-0005qu-Ox
-	for alex.bennee@linaro.org; Fri, 30 Apr 2021 13:17:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37468)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lcWqY-0000z5-Co
+	for alex.bennee@linaro.org; Fri, 30 Apr 2021 13:22:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37348)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1lcWWD-0000Kp-6v; Fri, 30 Apr 2021 13:01:33 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:4748)
+ id 1lcWW4-0000HS-5V; Fri, 30 Apr 2021 13:01:25 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:14156)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1lcWWA-0002Xn-2C; Fri, 30 Apr 2021 13:01:32 -0400
-Received: from pps.filterd (m0098399.ppops.net [127.0.0.1])
+ id 1lcWW2-0002VL-4Z; Fri, 30 Apr 2021 13:01:23 -0400
+Received: from pps.filterd (m0098394.ppops.net [127.0.0.1])
  by mx0a-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 13UGnoIr081905; Fri, 30 Apr 2021 13:01:19 -0400
-Received: from ppma06fra.de.ibm.com (48.49.7a9f.ip4.static.sl-reverse.com
- [159.122.73.72])
- by mx0a-001b2d01.pphosted.com with ESMTP id 388nrsr7v8-1
+ 13UGZrms079489; Fri, 30 Apr 2021 13:01:16 -0400
+Received: from ppma03ams.nl.ibm.com (62.31.33a9.ip4.static.sl-reverse.com
+ [169.51.49.98])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 388me5k2s1-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 30 Apr 2021 13:01:18 -0400
-Received: from pps.filterd (ppma06fra.de.ibm.com [127.0.0.1])
- by ppma06fra.de.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 13UGwNIY022663;
- Fri, 30 Apr 2021 17:01:16 GMT
-Received: from b06avi18626390.portsmouth.uk.ibm.com
- (b06avi18626390.portsmouth.uk.ibm.com [9.149.26.192])
- by ppma06fra.de.ibm.com with ESMTP id 384akh9ujt-1
+ Fri, 30 Apr 2021 13:01:16 -0400
+Received: from pps.filterd (ppma03ams.nl.ibm.com [127.0.0.1])
+ by ppma03ams.nl.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 13UGw9xF019431;
+ Fri, 30 Apr 2021 17:01:13 GMT
+Received: from b06cxnps4074.portsmouth.uk.ibm.com
+ (d06relay11.portsmouth.uk.ibm.com [9.149.109.196])
+ by ppma03ams.nl.ibm.com with ESMTP id 384ay8kay3-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 30 Apr 2021 17:01:16 +0000
-Received: from d06av25.portsmouth.uk.ibm.com (d06av25.portsmouth.uk.ibm.com
- [9.149.105.61])
- by b06avi18626390.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP
- id 13UH0nd633358160
+ Fri, 30 Apr 2021 17:01:13 +0000
+Received: from d06av21.portsmouth.uk.ibm.com (d06av21.portsmouth.uk.ibm.com
+ [9.149.105.232])
+ by b06cxnps4074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 13UH1BW835521008
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 30 Apr 2021 17:00:49 GMT
-Received: from d06av25.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id B613711C050;
- Fri, 30 Apr 2021 17:01:13 +0000 (GMT)
-Received: from d06av25.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 81A6211C054;
- Fri, 30 Apr 2021 17:01:13 +0000 (GMT)
+ Fri, 30 Apr 2021 17:01:11 GMT
+Received: from d06av21.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 5E5015204E;
+ Fri, 30 Apr 2021 17:01:11 +0000 (GMT)
 Received: from smtp.tlslab.ibm.com (unknown [9.101.4.1])
- by d06av25.portsmouth.uk.ibm.com (Postfix) with SMTP;
- Fri, 30 Apr 2021 17:01:13 +0000 (GMT)
+ by d06av21.portsmouth.uk.ibm.com (Postfix) with SMTP id 26E1C5204F;
+ Fri, 30 Apr 2021 17:01:11 +0000 (GMT)
 Received: from yukon.ibmuc.com (unknown [9.171.40.192])
- by smtp.tlslab.ibm.com (Postfix) with ESMTP id DD87322016C;
- Fri, 30 Apr 2021 19:01:12 +0200 (CEST)
+ by smtp.tlslab.ibm.com (Postfix) with ESMTP id 8B95622016C;
+ Fri, 30 Apr 2021 19:01:10 +0200 (CEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 16/18] aspeed: Add support for the rainier-bmc board
-Date: Fri, 30 Apr 2021 19:01:06 +0200
-Message-Id: <20210430170108.10261-7-clg@kaod.org>
+Subject: [PULL 12/18] aspeed/smc: Add a 'features' attribute to the object
+ class
+Date: Fri, 30 Apr 2021 19:01:02 +0200
+Message-Id: <20210430170108.10261-3-clg@kaod.org>
 X-Mailer: git-send-email 2.26.3
 In-Reply-To: <20210430170108.10261-1-clg@kaod.org>
 References: <20210430170108.10261-1-clg@kaod.org>
@@ -92,15 +90,15 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: y5YcHfE3G1-EsDwu_i6ZghNc3Z90gp8U
-X-Proofpoint-ORIG-GUID: y5YcHfE3G1-EsDwu_i6ZghNc3Z90gp8U
+X-Proofpoint-ORIG-GUID: cSEmDbjC8fHzgLgJl542PunKe5Cw9f8n
+X-Proofpoint-GUID: cSEmDbjC8fHzgLgJl542PunKe5Cw9f8n
 X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.761
  definitions=2021-04-30_10:2021-04-30,
  2021-04-30 signatures=0
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- mlxlogscore=999 clxscore=1034
- impostorscore=0 priorityscore=1501 adultscore=0 malwarescore=0 spamscore=0
- phishscore=0 mlxscore=0 lowpriorityscore=0 bulkscore=0 suspectscore=0
+ bulkscore=0 adultscore=0
+ mlxlogscore=999 priorityscore=1501 mlxscore=0 suspectscore=0 clxscore=1034
+ phishscore=0 spamscore=0 malwarescore=0 lowpriorityscore=0 impostorscore=0
  classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2104060000
  definitions=main-2104300109
 Received-SPF: softfail client-ip=148.163.156.1; envelope-from=clg@kaod.org;
@@ -112,167 +110,197 @@ X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
  RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YlP2NC0w38pU
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: AKZk51DHJaAB
 
-The Rainier BMC board is a board for the middle range POWER10 IBM systems=
-.
+It will simplify extensions of the SMC model.
 
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 Reviewed-by: Joel Stanley <joel@jms.id.au>
-Message-Id: <20210407171637.777743-19-clg@kaod.org>
+Message-Id: <20210407171637.777743-15-clg@kaod.org>
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
- hw/arm/aspeed.c | 79 +++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 79 insertions(+)
+ include/hw/ssi/aspeed_smc.h |  2 +-
+ hw/ssi/aspeed_smc.c         | 44 +++++++++++++++++++++----------------
+ 2 files changed, 26 insertions(+), 20 deletions(-)
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index cefa0f13527e..490a8a202239 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -146,6 +146,10 @@ struct AspeedMachineState {
- #define TACOMA_BMC_HW_STRAP1  0x00000000
- #define TACOMA_BMC_HW_STRAP2  0x00000040
-=20
-+/* Rainier hardware value: (QEMU prototype) */
-+#define RAINIER_BMC_HW_STRAP1 0x00000000
-+#define RAINIER_BMC_HW_STRAP2 0x00000000
+diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
+index 6ea2871cd899..07879fd1c4a7 100644
+--- a/include/hw/ssi/aspeed_smc.h
++++ b/include/hw/ssi/aspeed_smc.h
+@@ -47,7 +47,7 @@ typedef struct AspeedSMCController {
+     const AspeedSegments *segments;
+     hwaddr flash_window_base;
+     uint32_t flash_window_size;
+-    bool has_dma;
++    uint32_t features;
+     hwaddr dma_flash_mask;
+     hwaddr dma_dram_mask;
+     uint32_t nregs;
+diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+index 50ea907aef74..4521bbd4864e 100644
+--- a/hw/ssi/aspeed_smc.c
++++ b/hw/ssi/aspeed_smc.c
+@@ -257,6 +257,12 @@ static uint32_t aspeed_2600_smc_segment_to_reg(const=
+ AspeedSMCState *s,
+                                                const AspeedSegments *seg=
+);
+ static void aspeed_2600_smc_reg_to_segment(const AspeedSMCState *s,
+                                            uint32_t reg, AspeedSegments =
+*seg);
++#define ASPEED_SMC_FEATURE_DMA       0x1
 +
- /*
-  * The max ram region is for firmwares that scan the address space
-  * with load/store to guess how much RAM the SoC has.
-@@ -629,6 +633,58 @@ static void g220a_bmc_i2c_init(AspeedMachineState *b=
-mc)
-                           eeprom_buf);
- }
-=20
-+static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
++static inline bool aspeed_smc_has_dma(const AspeedSMCState *s)
 +{
-+    AspeedSoCState *soc =3D &bmc->soc;
-+
-+    /* The rainier expects a TMP275 but a TMP105 is compatible */
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), TYPE_TMP10=
-5,
-+                     0x48);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), TYPE_TMP10=
-5,
-+                     0x49);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), TYPE_TMP10=
-5,
-+                     0x4a);
-+
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5), TYPE_TMP10=
-5,
-+                     0x48);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5), TYPE_TMP10=
-5,
-+                     0x49);
-+
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), TYPE_TMP10=
-5,
-+                     0x48);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), TYPE_TMP10=
-5,
-+                     0x4a);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), TYPE_TMP10=
-5,
-+                     0x4b);
-+
-+    /* Bus 7: TODO dps310@76 */
-+    /* Bus 7: TODO max31785@52 */
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), "pca9552",=
- 0x61);
-+    /* Bus 7: TODO si7021-a20@20 */
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), TYPE_TMP10=
-5,
-+                     0x48);
-+
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), TYPE_TMP10=
-5,
-+                     0x48);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), TYPE_TMP10=
-5,
-+                     0x4a);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), "pca9552",=
- 0x61);
-+    /* Bus 8: ucd90320@11 */
-+    /* Bus 8: ucd90320@b */
-+    /* Bus 8: ucd90320@c */
-+
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "tmp423", =
-0x4c);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "tmp423", =
-0x4d);
-+
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 10), "tmp423",=
- 0x4c);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 10), "tmp423",=
- 0x4d);
-+
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), TYPE_TMP1=
-05,
-+                     0x48);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), TYPE_TMP1=
-05,
-+                     0x49);
++    return !!(s->ctrl->features & ASPEED_SMC_FEATURE_DMA);
 +}
-+
- static bool aspeed_get_mmio_exec(Object *obj, Error **errp)
- {
-     return ASPEED_MACHINE(obj)->mmio_exec;
-@@ -889,6 +945,25 @@ static void aspeed_machine_g220a_class_init(ObjectCl=
-ass *oc, void *data)
-         aspeed_soc_num_cpus(amc->soc_name);
- };
 =20
-+static void aspeed_machine_rainier_class_init(ObjectClass *oc, void *dat=
-a)
-+{
-+    MachineClass *mc =3D MACHINE_CLASS(oc);
-+    AspeedMachineClass *amc =3D ASPEED_MACHINE_CLASS(oc);
-+
-+    mc->desc       =3D "IBM Rainier BMC (Cortex A7)";
-+    amc->soc_name  =3D "ast2600-a1";
-+    amc->hw_strap1 =3D RAINIER_BMC_HW_STRAP1;
-+    amc->hw_strap2 =3D RAINIER_BMC_HW_STRAP2;
-+    amc->fmc_model =3D "mx66l1g45g";
-+    amc->spi_model =3D "mx66l1g45g";
-+    amc->num_cs    =3D 2;
-+    amc->macs_mask  =3D ASPEED_MAC2_ON | ASPEED_MAC3_ON;
-+    amc->i2c_init  =3D rainier_bmc_i2c_init;
-+    mc->default_ram_size =3D 1 * GiB;
-+    mc->default_cpus =3D mc->min_cpus =3D mc->max_cpus =3D
-+        aspeed_soc_num_cpus(amc->soc_name);
-+};
-+
- static const TypeInfo aspeed_machine_types[] =3D {
+ static const AspeedSMCController controllers[] =3D {
      {
-         .name          =3D MACHINE_TYPE_NAME("palmetto-bmc"),
-@@ -930,6 +1005,10 @@ static const TypeInfo aspeed_machine_types[] =3D {
-         .name          =3D MACHINE_TYPE_NAME("g220a-bmc"),
-         .parent        =3D TYPE_ASPEED_MACHINE,
-         .class_init    =3D aspeed_machine_g220a_class_init,
-+    }, {
-+        .name          =3D MACHINE_TYPE_NAME("rainier-bmc"),
-+        .parent        =3D TYPE_ASPEED_MACHINE,
-+        .class_init    =3D aspeed_machine_rainier_class_init,
-     }, {
-         .name          =3D TYPE_ASPEED_MACHINE,
-         .parent        =3D TYPE_MACHINE,
+@@ -271,7 +277,7 @@ static const AspeedSMCController controllers[] =3D {
+         .segments          =3D aspeed_segments_legacy,
+         .flash_window_base =3D ASPEED_SOC_SMC_FLASH_BASE,
+         .flash_window_size =3D 0x6000000,
+-        .has_dma           =3D false,
++        .features          =3D 0x0,
+         .nregs             =3D ASPEED_SMC_R_SMC_MAX,
+         .segment_to_reg    =3D aspeed_smc_segment_to_reg,
+         .reg_to_segment    =3D aspeed_smc_reg_to_segment,
+@@ -287,7 +293,7 @@ static const AspeedSMCController controllers[] =3D {
+         .segments          =3D aspeed_segments_fmc,
+         .flash_window_base =3D ASPEED_SOC_FMC_FLASH_BASE,
+         .flash_window_size =3D 0x10000000,
+-        .has_dma           =3D true,
++        .features          =3D ASPEED_SMC_FEATURE_DMA,
+         .dma_flash_mask    =3D 0x0FFFFFFC,
+         .dma_dram_mask     =3D 0x1FFFFFFC,
+         .nregs             =3D ASPEED_SMC_R_MAX,
+@@ -305,7 +311,7 @@ static const AspeedSMCController controllers[] =3D {
+         .segments          =3D aspeed_segments_spi,
+         .flash_window_base =3D ASPEED_SOC_SPI_FLASH_BASE,
+         .flash_window_size =3D 0x10000000,
+-        .has_dma           =3D false,
++        .features          =3D 0x0,
+         .nregs             =3D ASPEED_SMC_R_SPI_MAX,
+         .segment_to_reg    =3D aspeed_smc_segment_to_reg,
+         .reg_to_segment    =3D aspeed_smc_reg_to_segment,
+@@ -321,7 +327,7 @@ static const AspeedSMCController controllers[] =3D {
+         .segments          =3D aspeed_segments_ast2500_fmc,
+         .flash_window_base =3D ASPEED_SOC_FMC_FLASH_BASE,
+         .flash_window_size =3D 0x10000000,
+-        .has_dma           =3D true,
++        .features          =3D ASPEED_SMC_FEATURE_DMA,
+         .dma_flash_mask    =3D 0x0FFFFFFC,
+         .dma_dram_mask     =3D 0x3FFFFFFC,
+         .nregs             =3D ASPEED_SMC_R_MAX,
+@@ -339,7 +345,7 @@ static const AspeedSMCController controllers[] =3D {
+         .segments          =3D aspeed_segments_ast2500_spi1,
+         .flash_window_base =3D ASPEED_SOC_SPI_FLASH_BASE,
+         .flash_window_size =3D 0x8000000,
+-        .has_dma           =3D false,
++        .features          =3D 0x0,
+         .nregs             =3D ASPEED_SMC_R_MAX,
+         .segment_to_reg    =3D aspeed_smc_segment_to_reg,
+         .reg_to_segment    =3D aspeed_smc_reg_to_segment,
+@@ -355,7 +361,7 @@ static const AspeedSMCController controllers[] =3D {
+         .segments          =3D aspeed_segments_ast2500_spi2,
+         .flash_window_base =3D ASPEED_SOC_SPI2_FLASH_BASE,
+         .flash_window_size =3D 0x8000000,
+-        .has_dma           =3D false,
++        .features          =3D 0x0,
+         .nregs             =3D ASPEED_SMC_R_MAX,
+         .segment_to_reg    =3D aspeed_smc_segment_to_reg,
+         .reg_to_segment    =3D aspeed_smc_reg_to_segment,
+@@ -371,7 +377,7 @@ static const AspeedSMCController controllers[] =3D {
+         .segments          =3D aspeed_segments_ast2600_fmc,
+         .flash_window_base =3D ASPEED26_SOC_FMC_FLASH_BASE,
+         .flash_window_size =3D 0x10000000,
+-        .has_dma           =3D true,
++        .features          =3D ASPEED_SMC_FEATURE_DMA,
+         .dma_flash_mask    =3D 0x0FFFFFFC,
+         .dma_dram_mask     =3D 0x3FFFFFFC,
+         .nregs             =3D ASPEED_SMC_R_MAX,
+@@ -389,7 +395,7 @@ static const AspeedSMCController controllers[] =3D {
+         .segments          =3D aspeed_segments_ast2600_spi1,
+         .flash_window_base =3D ASPEED26_SOC_SPI_FLASH_BASE,
+         .flash_window_size =3D 0x10000000,
+-        .has_dma           =3D true,
++        .features          =3D ASPEED_SMC_FEATURE_DMA,
+         .dma_flash_mask    =3D 0x0FFFFFFC,
+         .dma_dram_mask     =3D 0x3FFFFFFC,
+         .nregs             =3D ASPEED_SMC_R_MAX,
+@@ -407,7 +413,7 @@ static const AspeedSMCController controllers[] =3D {
+         .segments          =3D aspeed_segments_ast2600_spi2,
+         .flash_window_base =3D ASPEED26_SOC_SPI2_FLASH_BASE,
+         .flash_window_size =3D 0x10000000,
+-        .has_dma           =3D true,
++        .features          =3D ASPEED_SMC_FEATURE_DMA,
+         .dma_flash_mask    =3D 0x0FFFFFFC,
+         .dma_dram_mask     =3D 0x3FFFFFFC,
+         .nregs             =3D ASPEED_SMC_R_MAX,
+@@ -997,11 +1003,11 @@ static uint64_t aspeed_smc_read(void *opaque, hwad=
+dr addr, unsigned int size)
+         addr =3D=3D R_CE_CMD_CTRL ||
+         addr =3D=3D R_INTR_CTRL ||
+         addr =3D=3D R_DUMMY_DATA ||
+-        (s->ctrl->has_dma && addr =3D=3D R_DMA_CTRL) ||
+-        (s->ctrl->has_dma && addr =3D=3D R_DMA_FLASH_ADDR) ||
+-        (s->ctrl->has_dma && addr =3D=3D R_DMA_DRAM_ADDR) ||
+-        (s->ctrl->has_dma && addr =3D=3D R_DMA_LEN) ||
+-        (s->ctrl->has_dma && addr =3D=3D R_DMA_CHECKSUM) ||
++        (aspeed_smc_has_dma(s) && addr =3D=3D R_DMA_CTRL) ||
++        (aspeed_smc_has_dma(s) && addr =3D=3D R_DMA_FLASH_ADDR) ||
++        (aspeed_smc_has_dma(s) && addr =3D=3D R_DMA_DRAM_ADDR) ||
++        (aspeed_smc_has_dma(s) && addr =3D=3D R_DMA_LEN) ||
++        (aspeed_smc_has_dma(s) && addr =3D=3D R_DMA_CHECKSUM) ||
+         (addr >=3D R_SEG_ADDR0 &&
+          addr < R_SEG_ADDR0 + s->ctrl->max_peripherals) ||
+         (addr >=3D s->r_ctrl0 && addr < s->r_ctrl0 + s->ctrl->max_periph=
+erals)) {
+@@ -1290,13 +1296,13 @@ static void aspeed_smc_write(void *opaque, hwaddr=
+ addr, uint64_t data,
+         s->regs[addr] =3D value & 0xff;
+     } else if (addr =3D=3D R_INTR_CTRL) {
+         s->regs[addr] =3D value;
+-    } else if (s->ctrl->has_dma && addr =3D=3D R_DMA_CTRL) {
++    } else if (aspeed_smc_has_dma(s) && addr =3D=3D R_DMA_CTRL) {
+         aspeed_smc_dma_ctrl(s, value);
+-    } else if (s->ctrl->has_dma && addr =3D=3D R_DMA_DRAM_ADDR) {
++    } else if (aspeed_smc_has_dma(s) && addr =3D=3D R_DMA_DRAM_ADDR) {
+         s->regs[addr] =3D DMA_DRAM_ADDR(s, value);
+-    } else if (s->ctrl->has_dma && addr =3D=3D R_DMA_FLASH_ADDR) {
++    } else if (aspeed_smc_has_dma(s) && addr =3D=3D R_DMA_FLASH_ADDR) {
+         s->regs[addr] =3D DMA_FLASH_ADDR(s, value);
+-    } else if (s->ctrl->has_dma && addr =3D=3D R_DMA_LEN) {
++    } else if (aspeed_smc_has_dma(s) && addr =3D=3D R_DMA_LEN) {
+         s->regs[addr] =3D DMA_LENGTH(value);
+     } else {
+         qemu_log_mask(LOG_UNIMP, "%s: not implemented: 0x%" HWADDR_PRIx =
+"\n",
+@@ -1412,7 +1418,7 @@ static void aspeed_smc_realize(DeviceState *dev, Er=
+ror **errp)
+     }
+=20
+     /* DMA support */
+-    if (s->ctrl->has_dma) {
++    if (aspeed_smc_has_dma(s)) {
+         aspeed_smc_dma_setup(s, errp);
+     }
+ }
 --=20
 2.26.3
 

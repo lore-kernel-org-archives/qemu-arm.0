@@ -1,110 +1,109 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp304300lfg;
-        Fri, 30 Apr 2021 10:03:26 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxNBdpLGu1rTQfBxg8Ny/IQkz5LWZbSfcwNXuJpXcyjnmlHvdvw6hVhOnyHwAMrz1HtKouB
-X-Received: by 2002:a2e:7d02:: with SMTP id y2mr4248461ljc.393.1619802206641;
-        Fri, 30 Apr 2021 10:03:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619802206; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp316078lfg;
+        Fri, 30 Apr 2021 10:15:44 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw7RsD8EF1tml56n8CxW2r9IJYgn+IBOzWHJVaXCK97vehKVaoXP9tPOtiVA8qrh+AZnBdH
+X-Received: by 2002:a17:906:48d2:: with SMTP id d18mr5601974ejt.9.1619802943866;
+        Fri, 30 Apr 2021 10:15:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619802943; cv=none;
         d=google.com; s=arc-20160816;
-        b=TKC8LeG4J/kNNIrFC6EAbTZjgtDXijyAp25utzLg+0AfvRsidqqMmhBU4+tSd2EPJ8
-         PkO0dM2P/Lqv6NL++Zi/56VRZC9YNmzD8a0e6+hYsUhPIL2r2/bneRs4K7ThwopBqE30
-         88b4aHNvL00VZBHRahbimUQcBDkPu6k1/K+7FGol4p058cpGkIKoXqQAz8KcGW03/JgC
-         ZxIJ7xCEiPyrDmfZHDwDQkSfRV3v4NjtpqTsRiXaZ/ZW5k4+ZNph4m7KaeCmMHQ+AgAt
-         Z77Nw/OHsXaKiQY+SWx6tFiWHZTyis3kkjYiY0JeuPbXog7YDujOUizkiPi/w04rFdDA
-         GeVg==
+        b=sCGP9oIi2ss7fQOgcTzufqmhYQxtlJrtaDa0wHUkFt01ilfReD4qwsbrzyk/i5nlA1
+         WkPLMzTeyn5wUCqRYfAfejgixrL5YZaa+T/KAudp3CkS+88tETN/pBBk7/xZ7DdGyrzr
+         iUSBrVIEAeenMjjuX8+wlOQ3OjbX0yBe16r38pCr9LPSExrUuVxgq/cJ9tXpfpDxGNf3
+         b0Uy1pUlhPIYL8GfQ1J/9f/sWGH5Mo/17f7vT61ydMN0r80tzy8J65LrHp16CgbCdEY7
+         3OePqtnEcxjSNKO4C/RzRbTni66WVQq0H3wvFul+6LGJSCSimnCrwe1SRYJYWZPV4rJq
+         ozSA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=U3DSiURkzuhKCKQKJufJhU9ln+QaV4zHWDSepwNXwDc=;
-        b=DmgvziQO3oZdeckhWaTm/6kW88PdHBJQgd8FJT1tiJKbFN3rFG1anc3QIkP1XFVAcb
-         KJukhU3T8QYfFY3LqNEbkpsB0zjqN68+aSnN/TPl+5CMaSfwv+EAedIf7q2u3zrFEHNh
-         VDhmw6/CMtJL0Ki3M2NLC9THRn/ofJ5zyRhgSf6EpYFIOBdyzFRQ/RsQAg43XbyWUR+g
-         HqkGaIcPVZC/6DWF2k9zzxlrozqU4i2z6v8Q21CW7W/0V1+6buyS1l7kpf1KBsEu/HAO
-         zYIWLHGnHcIi0BorL9FIPxhxIvnUDewVhXA0uHHR95wQsAieUcazhSpUE2R4Z7KZbg9+
-         tWFQ==
+        bh=4I9386SxAvitzQM0GkgLlmi7guYEsC3j935SlP9rg6w=;
+        b=Df9MDlltxudU8ub5oVNxdGiYLnehScyytwhjUGEW+HObQpZFDk0v+kh/glB2pSakZ2
+         aD634c0Or4HopyPWg1Hj/ICl+vF1BqPQx3Bnw6w3KLV3cZua5KgR7qg9m8DMVrpd5LQo
+         Tr8UBd0zd0a08zzw2LQ0pUx2wI+k6h0/5AHiSzAa9xEzKau/cBcdaCW2hJQAHEXvuwLg
+         NntETGZ71SZnGnbx0u8nEgsf9g2FZFi+zKmVaWI7u3nmHTU3xyqFqluMmvD+cAcJnSK4
+         BSgurf3cju/+FJiHWn2qui+lfOCnQYra0DyByT8pR2Qvnxr5+FL0J+TNxIYO6D73S+/9
+         HyEw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v21si2670371ljv.132.2021.04.30.10.03.26
+        by mx.google.com with ESMTPS id v12si2410951edw.452.2021.04.30.10.15.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 30 Apr 2021 10:03:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 30 Apr 2021 10:15:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:55372 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:56018 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lcWY1-0000oe-9X
-	for alex.bennee@linaro.org; Fri, 30 Apr 2021 13:03:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59428)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lcWju-0004lS-Py
+	for alex.bennee@linaro.org; Fri, 30 Apr 2021 13:15:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37458)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1lcW5H-0000zZ-7K; Fri, 30 Apr 2021 12:33:43 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:4814
- helo=mx0a-001b2d01.pphosted.com)
+ id 1lcWWB-0000Kl-FI; Fri, 30 Apr 2021 13:01:33 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:65418)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1lcW5F-00074S-C2; Fri, 30 Apr 2021 12:33:42 -0400
-Received: from pps.filterd (m0098416.ppops.net [127.0.0.1])
- by mx0b-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 13UG3doj049968; Fri, 30 Apr 2021 12:33:21 -0400
-Received: from ppma06fra.de.ibm.com (48.49.7a9f.ip4.static.sl-reverse.com
- [159.122.73.72])
- by mx0b-001b2d01.pphosted.com with ESMTP id 388n118xq6-1
+ id 1lcWW9-0002X1-IJ; Fri, 30 Apr 2021 13:01:30 -0400
+Received: from pps.filterd (m0098394.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
+ 13UGZqga079392; Fri, 30 Apr 2021 13:01:18 -0400
+Received: from ppma04ams.nl.ibm.com (63.31.33a9.ip4.static.sl-reverse.com
+ [169.51.49.99])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 388me5k2sq-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 30 Apr 2021 12:33:21 -0400
-Received: from pps.filterd (ppma06fra.de.ibm.com [127.0.0.1])
- by ppma06fra.de.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 13UGNHMr026635;
- Fri, 30 Apr 2021 16:33:19 GMT
-Received: from b06cxnps4076.portsmouth.uk.ibm.com
- (d06relay13.portsmouth.uk.ibm.com [9.149.109.198])
- by ppma06fra.de.ibm.com with ESMTP id 384akh9uep-1
+ Fri, 30 Apr 2021 13:01:17 -0400
+Received: from pps.filterd (ppma04ams.nl.ibm.com [127.0.0.1])
+ by ppma04ams.nl.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 13UGvVn0014324;
+ Fri, 30 Apr 2021 17:01:15 GMT
+Received: from b06cxnps3075.portsmouth.uk.ibm.com
+ (d06relay10.portsmouth.uk.ibm.com [9.149.109.195])
+ by ppma04ams.nl.ibm.com with ESMTP id 384ay8kaky-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 30 Apr 2021 16:33:19 +0000
-Received: from d06av25.portsmouth.uk.ibm.com (d06av25.portsmouth.uk.ibm.com
- [9.149.105.61])
- by b06cxnps4076.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 13UGXH8t30802292
+ Fri, 30 Apr 2021 17:01:15 +0000
+Received: from d06av22.portsmouth.uk.ibm.com (d06av22.portsmouth.uk.ibm.com
+ [9.149.105.58])
+ by b06cxnps3075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 13UH1DLB31785226
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 30 Apr 2021 16:33:17 GMT
-Received: from d06av25.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 08BE611C054;
- Fri, 30 Apr 2021 16:33:17 +0000 (GMT)
-Received: from d06av25.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id B239D11C04A;
- Fri, 30 Apr 2021 16:33:16 +0000 (GMT)
+ Fri, 30 Apr 2021 17:01:13 GMT
+Received: from d06av22.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 2CB584C04E;
+ Fri, 30 Apr 2021 17:01:13 +0000 (GMT)
+Received: from d06av22.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id EA7AC4C04A;
+ Fri, 30 Apr 2021 17:01:12 +0000 (GMT)
 Received: from smtp.tlslab.ibm.com (unknown [9.101.4.1])
- by d06av25.portsmouth.uk.ibm.com (Postfix) with SMTP;
- Fri, 30 Apr 2021 16:33:16 +0000 (GMT)
+ by d06av22.portsmouth.uk.ibm.com (Postfix) with SMTP;
+ Fri, 30 Apr 2021 17:01:12 +0000 (GMT)
 Received: from yukon.ibmuc.com (unknown [9.171.40.192])
- by smtp.tlslab.ibm.com (Postfix) with ESMTP id D4EE5220193;
- Fri, 30 Apr 2021 18:33:15 +0200 (CEST)
+ by smtp.tlslab.ibm.com (Postfix) with ESMTP id 53147220193;
+ Fri, 30 Apr 2021 19:01:12 +0200 (CEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 07/18] aspeed: Integrate HACE
-Date: Fri, 30 Apr 2021 18:33:07 +0200
-Message-Id: <20210430163309.4182922-8-clg@kaod.org>
+Subject: [PULL 15/18] aspeed: Deprecate the swift-bmc machine
+Date: Fri, 30 Apr 2021 19:01:05 +0200
+Message-Id: <20210430170108.10261-6-clg@kaod.org>
 X-Mailer: git-send-email 2.26.3
-In-Reply-To: <20210430163309.4182922-1-clg@kaod.org>
-References: <20210430163309.4182922-1-clg@kaod.org>
+In-Reply-To: <20210430170108.10261-1-clg@kaod.org>
+References: <20210430170108.10261-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: r5DO3J2W3df0XhJF_7SjGzy6XxQ-CGX3
-X-Proofpoint-ORIG-GUID: r5DO3J2W3df0XhJF_7SjGzy6XxQ-CGX3
+X-Proofpoint-ORIG-GUID: 2UZUUwPOP-lxuvbPiGtHif2i3UDUMebI
+X-Proofpoint-GUID: 2UZUUwPOP-lxuvbPiGtHif2i3UDUMebI
 X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.761
  definitions=2021-04-30_10:2021-04-30,
  2021-04-30 signatures=0
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- malwarescore=0
- mlxlogscore=999 spamscore=0 mlxscore=0 bulkscore=0 lowpriorityscore=0
- clxscore=1034 suspectscore=0 adultscore=0 phishscore=0 impostorscore=0
- priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2104060000 definitions=main-2104300108
-Received-SPF: softfail client-ip=148.163.158.5; envelope-from=clg@kaod.org;
+ bulkscore=0 adultscore=0
+ mlxlogscore=999 priorityscore=1501 mlxscore=0 suspectscore=0 clxscore=1034
+ phishscore=0 spamscore=0 malwarescore=0 lowpriorityscore=0 impostorscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2104060000
+ definitions=main-2104300109
+Received-SPF: softfail client-ip=148.163.156.1; envelope-from=clg@kaod.org;
  helo=mx0a-001b2d01.pphosted.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -113,195 +112,71 @@ X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
  RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Klaus Heinrich Kiwi <klaus@linux.vnet.ibm.com>, qemu-arm@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: I5pAjvPIeacK
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Adriana Kobylak <anoo@us.ibm.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: q5HQR6m+G/SR
 
-From: Joel Stanley <joel@jms.id.au>
+The SWIFT machine never came out of the lab and we already have enough
+AST2500 based OpenPower machines.
 
-Add the hash and crypto engine model to the Aspeed socs.
-
-Reviewed-by: Andrew Jeffery <andrew@aj.id.au>
-Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-Reviewed-by: Klaus Heinrich Kiwi <klaus@linux.vnet.ibm.com>
-Signed-off-by: Joel Stanley <joel@jms.id.au>
-Message-Id: <20210409000253.1475587-3-joel@jms.id.au>
+Cc: Adriana Kobylak <anoo@us.ibm.com>
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
- docs/system/arm/aspeed.rst  |  1 -
- include/hw/arm/aspeed_soc.h |  3 +++
- hw/arm/aspeed_ast2600.c     | 15 +++++++++++++++
- hw/arm/aspeed_soc.c         | 16 ++++++++++++++++
- 4 files changed, 34 insertions(+), 1 deletion(-)
+ docs/system/deprecated.rst | 7 +++++++
+ hw/arm/aspeed.c            | 3 +++
+ 2 files changed, 10 insertions(+)
 
-diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-index 23a1468cd175..a1911f940316 100644
---- a/docs/system/arm/aspeed.rst
-+++ b/docs/system/arm/aspeed.rst
-@@ -60,7 +60,6 @@ Missing devices
-  * PWM and Fan Controller
-  * Slave GPIO Controller
-  * Super I/O Controller
-- * Hash/Crypto Engine
-  * PCI-Express 1 Controller
-  * Graphic Display Controller
-  * PECI Controller
-diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index 9359d6da336d..d9161d26d645 100644
---- a/include/hw/arm/aspeed_soc.h
-+++ b/include/hw/arm/aspeed_soc.h
-@@ -21,6 +21,7 @@
- #include "hw/rtc/aspeed_rtc.h"
- #include "hw/i2c/aspeed_i2c.h"
- #include "hw/ssi/aspeed_smc.h"
-+#include "hw/misc/aspeed_hace.h"
- #include "hw/watchdog/wdt_aspeed.h"
- #include "hw/net/ftgmac100.h"
- #include "target/arm/cpu.h"
-@@ -50,6 +51,7 @@ struct AspeedSoCState {
-     AspeedTimerCtrlState timerctrl;
-     AspeedI2CState i2c;
-     AspeedSCUState scu;
-+    AspeedHACEState hace;
-     AspeedXDMAState xdma;
-     AspeedSMCState fmc;
-     AspeedSMCState spi[ASPEED_SPIS_NUM];
-@@ -133,6 +135,7 @@ enum {
-     ASPEED_DEV_XDMA,
-     ASPEED_DEV_EMMC,
-     ASPEED_DEV_KCS,
-+    ASPEED_DEV_HACE,
+diff --git a/docs/system/deprecated.rst b/docs/system/deprecated.rst
+index 80cae862528a..f9169077aef8 100644
+--- a/docs/system/deprecated.rst
++++ b/docs/system/deprecated.rst
+@@ -245,6 +245,13 @@ The Raspberry Pi machines come in various models (A,=
+ A+, B, B+). To be able
+ to distinguish which model QEMU is implementing, the ``raspi2`` and ``ra=
+spi3``
+ machines have been renamed ``raspi2b`` and ``raspi3b``.
+=20
++Aspeed ``swift-bmc`` machine (since 6.1)
++''''''''''''''''''''''''''''''''''''''''
++
++This machine is deprecated because we have enough AST2500 based OpenPOWE=
+R
++machines. It can be easily replaced by the ``witherspoon-bmc`` or the
++``romulus-bmc`` machines.
++
+ Device options
+ --------------
+=20
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 1cf5a15c8098..cefa0f13527e 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -811,6 +811,9 @@ static void aspeed_machine_swift_class_init(ObjectCla=
+ss *oc, void *data)
+     mc->default_ram_size       =3D 512 * MiB;
+     mc->default_cpus =3D mc->min_cpus =3D mc->max_cpus =3D
+         aspeed_soc_num_cpus(amc->soc_name);
++
++    mc->deprecation_reason =3D "redundant system. Please use a similar "
++        "OpenPOWER BMC, Witherspoon or Romulus.";
  };
 =20
- #endif /* ASPEED_SOC_H */
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index 2a1255b6a042..e0fbb020c770 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -42,6 +42,7 @@ static const hwaddr aspeed_soc_ast2600_memmap[] =3D {
-     [ASPEED_DEV_ETH2]      =3D 0x1E680000,
-     [ASPEED_DEV_ETH4]      =3D 0x1E690000,
-     [ASPEED_DEV_VIC]       =3D 0x1E6C0000,
-+    [ASPEED_DEV_HACE]      =3D 0x1E6D0000,
-     [ASPEED_DEV_SDMC]      =3D 0x1E6E0000,
-     [ASPEED_DEV_SCU]       =3D 0x1E6E2000,
-     [ASPEED_DEV_XDMA]      =3D 0x1E6E7000,
-@@ -102,6 +103,7 @@ static const int aspeed_soc_ast2600_irqmap[] =3D {
-     [ASPEED_DEV_I2C]       =3D 110,   /* 110 -> 125 */
-     [ASPEED_DEV_ETH1]      =3D 2,
-     [ASPEED_DEV_ETH2]      =3D 3,
-+    [ASPEED_DEV_HACE]      =3D 4,
-     [ASPEED_DEV_ETH3]      =3D 32,
-     [ASPEED_DEV_ETH4]      =3D 33,
-     [ASPEED_DEV_KCS]       =3D 138,   /* 138 -> 142 */
-@@ -213,6 +215,9 @@ static void aspeed_soc_ast2600_init(Object *obj)
-                             TYPE_SYSBUS_SDHCI);
-=20
-     object_initialize_child(obj, "lpc", &s->lpc, TYPE_ASPEED_LPC);
-+
-+    snprintf(typename, sizeof(typename), "aspeed.hace-%s", socname);
-+    object_initialize_child(obj, "hace", &s->hace, typename);
- }
-=20
- /*
-@@ -494,6 +499,16 @@ static void aspeed_soc_ast2600_realize(DeviceState *=
-dev, Error **errp)
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_4,
-                        qdev_get_gpio_in(DEVICE(&s->a7mpcore),
-                                 sc->irqmap[ASPEED_DEV_KCS] + aspeed_lpc_=
-kcs_4));
-+
-+    /* HACE */
-+    object_property_set_link(OBJECT(&s->hace), "dram", OBJECT(s->dram_mr=
-),
-+                             &error_abort);
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->hace), errp)) {
-+        return;
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->hace), 0, sc->memmap[ASPEED_DEV_H=
-ACE]);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->hace), 0,
-+                       aspeed_soc_get_irq(s, ASPEED_DEV_HACE));
- }
-=20
- static void aspeed_soc_ast2600_class_init(ObjectClass *oc, void *data)
-diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-index 817f3ba63dfd..8ed29113f79f 100644
---- a/hw/arm/aspeed_soc.c
-+++ b/hw/arm/aspeed_soc.c
-@@ -34,6 +34,7 @@ static const hwaddr aspeed_soc_ast2400_memmap[] =3D {
-     [ASPEED_DEV_VIC]    =3D 0x1E6C0000,
-     [ASPEED_DEV_SDMC]   =3D 0x1E6E0000,
-     [ASPEED_DEV_SCU]    =3D 0x1E6E2000,
-+    [ASPEED_DEV_HACE]   =3D 0x1E6E3000,
-     [ASPEED_DEV_XDMA]   =3D 0x1E6E7000,
-     [ASPEED_DEV_VIDEO]  =3D 0x1E700000,
-     [ASPEED_DEV_ADC]    =3D 0x1E6E9000,
-@@ -65,6 +66,7 @@ static const hwaddr aspeed_soc_ast2500_memmap[] =3D {
-     [ASPEED_DEV_VIC]    =3D 0x1E6C0000,
-     [ASPEED_DEV_SDMC]   =3D 0x1E6E0000,
-     [ASPEED_DEV_SCU]    =3D 0x1E6E2000,
-+    [ASPEED_DEV_HACE]   =3D 0x1E6E3000,
-     [ASPEED_DEV_XDMA]   =3D 0x1E6E7000,
-     [ASPEED_DEV_ADC]    =3D 0x1E6E9000,
-     [ASPEED_DEV_VIDEO]  =3D 0x1E700000,
-@@ -117,6 +119,7 @@ static const int aspeed_soc_ast2400_irqmap[] =3D {
-     [ASPEED_DEV_ETH2]   =3D 3,
-     [ASPEED_DEV_XDMA]   =3D 6,
-     [ASPEED_DEV_SDHCI]  =3D 26,
-+    [ASPEED_DEV_HACE]   =3D 4,
- };
-=20
- #define aspeed_soc_ast2500_irqmap aspeed_soc_ast2400_irqmap
-@@ -212,6 +215,9 @@ static void aspeed_soc_init(Object *obj)
-     }
-=20
-     object_initialize_child(obj, "lpc", &s->lpc, TYPE_ASPEED_LPC);
-+
-+    snprintf(typename, sizeof(typename), "aspeed.hace-%s", socname);
-+    object_initialize_child(obj, "hace", &s->hace, typename);
- }
-=20
- static void aspeed_soc_realize(DeviceState *dev, Error **errp)
-@@ -421,6 +427,16 @@ static void aspeed_soc_realize(DeviceState *dev, Err=
-or **errp)
-=20
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_4,
-                        qdev_get_gpio_in(DEVICE(&s->lpc), aspeed_lpc_kcs_=
-4));
-+
-+    /* HACE */
-+    object_property_set_link(OBJECT(&s->hace), "dram", OBJECT(s->dram_mr=
-),
-+                             &error_abort);
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->hace), errp)) {
-+        return;
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->hace), 0, sc->memmap[ASPEED_DEV_H=
-ACE]);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->hace), 0,
-+                       aspeed_soc_get_irq(s, ASPEED_DEV_HACE));
- }
- static Property aspeed_soc_properties[] =3D {
-     DEFINE_PROP_LINK("dram", AspeedSoCState, dram_mr, TYPE_MEMORY_REGION=
-,
+ static void aspeed_machine_witherspoon_class_init(ObjectClass *oc, void =
+*data)
 --=20
 2.26.3
 

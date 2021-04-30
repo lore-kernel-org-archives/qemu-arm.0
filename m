@@ -1,109 +1,110 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp507207lfg;
-        Fri, 30 Apr 2021 14:23:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyI5iO58CLm4+yUfXmHlo8/+9DMkJx6MtaPLJfmzDjYEVcXz1OB5akne1U6aNOgqNy4FzdF
-X-Received: by 2002:a92:c0c2:: with SMTP id t2mr5617724ilf.210.1619817808391;
-        Fri, 30 Apr 2021 14:23:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619817808; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp507438lfg;
+        Fri, 30 Apr 2021 14:23:50 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwJ9jKp5VgZbGLKYAz0bgsnLRavMQbcBhYNyVDRquIBzKO9b25yCSB6YDlh30Fgu9xKSBsW
+X-Received: by 2002:a5e:9316:: with SMTP id k22mr5494245iom.160.1619817830042;
+        Fri, 30 Apr 2021 14:23:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619817830; cv=none;
         d=google.com; s=arc-20160816;
-        b=IQDTNnQhhiMrC9AzrsOwH7IHe9DGn4CGMTGf25Z1ajrKNHsgbrnT5P8u4uSZgUbL10
-         kBL+CHohCPLA/27i4+DzZ6upz3Dfo6s4Jxywkxx2MGPvFj+gb77lgdajap2dU5wmnVyJ
-         h4Fjo4KJnVGqqCu30Q+5s6AjdaACDv0/2jrsCzax6I7kYLFiLBd0nzFlKvgpga6O99Ce
-         OKVGCiIGzRltfYrjk4kLd6q32ORD13KH38/8p+YJm3yQaSKWDWILM2umKkBgxRyIhpDB
-         gJvDKooYPyHvuRV0ey47OoPWj9Aktng/IqThoJGawPKoAxEBLVCh27L+O2QCAGgJTLez
-         qMoA==
+        b=NRXL+dKq0+J1mLWXQgCRitNKvH2VIUxflBZhlqeNuYJURXIzIvKR4TZ6agoRAtRmEn
+         JBWa0zOYLpd9KMx4kCRZrkEEpeiwkoK38dB2c5BS/TMiB0BxG/GDH1/qJE001BpyWMAX
+         0orSEpoldLwckig2cWyCTBpHbkeaVUINGGD5kilDQYiq+2BZEPfwmONWjTivrAUpZR+9
+         ZJc6vhV86rmKfNPwkDv+gimyU95xSn13FnSzFXKICIhjal4tI9SOfktcrL898rG6Ugw1
+         I4GBMn4QZeFKZhO8kd7g7w16R6P1xD3t7BOP4MWkODBcWcoTDlE/GL0uG0G/6D9ACJrb
+         h0lQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=B/7aU0EzUxhV/kKb8WHkerqUukEIGKD6u5NHmPGNPZk=;
-        b=bKrVlOcSAyp7Vv95Me38vnPnVRZzveBwBQS/5VLwzHbJbIpIBY5paZ/W/3Nae54mvY
-         USfhGZYDY3X/xpmLT+Q1lhws2c2sgnMJvVUcyWJ73sV3t6up1SsrL6gdkk6VIsBQvmFL
-         SvH91BcsoKWUsb0UpEf0DQneNfn4MtZN+84tiOOhC9XzybJzdbBemYhE9QORYhQhmIw1
-         C7GlS+5YbuEjd+aZbHWQSFPYXTRvccKeGwFaSM4POEeRzg7CqVFeHF8rIimirk5G14iu
-         uhbJkVJ4giLKU6zwNTroWH2RRUgzlgSL4u51vDlqhhs2oCVP4ye8GvvUYY/rqtz5Guyi
-         wQqg==
+        bh=1gr+w+D07DwVhmgy58KbkyZwXkW20B50hh9NUpReRmk=;
+        b=Nx6TOr6ScA9ztZlmdwdxgot9tKkgbhoiYEzDN7BDrHcareEpZ3GDfWS+rD6rDL2kte
+         +Z7hfvb/qNWpTQ7bHkFsGRJcD/XxNJw4L38A/mOifLNWsR1Ym4is2eb7m0oSJTmzTRKZ
+         a47EDazGvY/f0nME4dsPTdFEbIUijcS0xPNfvsDY93TcILfbLVlJhMXQ+YMZ7KtuWgm4
+         lI29Du3FWCZ267ZgFbfKipF0COB5df5ZurXDTs5WXuYxb7K9ZUxD4lmlu0XWyAOmP2fi
+         sl5ZWGo482uDHRje3b2eLh0IBrp5eDkD2DM3bXKmbW+kAWoFC/lAhrYZtqpuD0ooRKU9
+         ww8Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xHiPV3FA;
+       dkim=pass header.i=@linaro.org header.s=google header.b="AFO/XDJ/";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a5si3768328ilv.74.2021.04.30.14.23.28
+        by mx.google.com with ESMTPS id m5si3645558ili.151.2021.04.30.14.23.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 30 Apr 2021 14:23:28 -0700 (PDT)
+        Fri, 30 Apr 2021 14:23:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xHiPV3FA;
+       dkim=pass header.i=@linaro.org header.s=google header.b="AFO/XDJ/";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47210 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48908 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lcabf-0000sy-Kz
-	for alex.bennee@linaro.org; Fri, 30 Apr 2021 17:23:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53918)
+	id 1lcac1-0001ZR-8E
+	for alex.bennee@linaro.org; Fri, 30 Apr 2021 17:23:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53458)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lcZn5-0005DX-Fz
- for qemu-devel@nongnu.org; Fri, 30 Apr 2021 16:31:11 -0400
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b]:34690)
+ id 1lcZmN-0004YM-Dk
+ for qemu-devel@nongnu.org; Fri, 30 Apr 2021 16:30:27 -0400
+Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f]:40777)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lcZlx-0007nI-L3
- for qemu-devel@nongnu.org; Fri, 30 Apr 2021 16:31:11 -0400
-Received: by mail-pl1-x62b.google.com with SMTP id h7so8668715plt.1
- for <qemu-devel@nongnu.org>; Fri, 30 Apr 2021 13:29:53 -0700 (PDT)
+ id 1lcZlm-0007jm-Al
+ for qemu-devel@nongnu.org; Fri, 30 Apr 2021 16:30:27 -0400
+Received: by mail-pl1-x62f.google.com with SMTP id 20so33287782pll.7
+ for <qemu-devel@nongnu.org>; Fri, 30 Apr 2021 13:29:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=B/7aU0EzUxhV/kKb8WHkerqUukEIGKD6u5NHmPGNPZk=;
- b=xHiPV3FAQFXx3WWVf2xNqEQAoO8qxfkoqt4t+6zsWr6wGJIzWKO2oyCdxrOE6tUd8E
- gAvcmpoGm2cbP7b0uP6Q+A94808Hx5dNrKMq0rZ7pyTgsbIW+fQmO+jJUJT1aNfaEUdX
- 68PLfmemfMVlq5RtC7zC1zoKY23NI6Y4bFSaZhWGveMjcE7NE/Oh5/UX+6JEVYG8RpJb
- VZupCASnIyoWbTDGIeIYogg9yRS9sjSBCNl13iB2hPiVHAXA+9JSUuDzeySpltR508za
- 14xYIv88lXHgJWQ41eg/86xr7bd/0Ig4nrQt8CixG+sY4R+r9AhPXbwZohEESSxePG+s
- +pfA==
+ bh=1gr+w+D07DwVhmgy58KbkyZwXkW20B50hh9NUpReRmk=;
+ b=AFO/XDJ/e7gTveRun3YiV10LF5JCucqDYRTyWNqdAJgyHMGFp2g6HKrkfWcKA9iUA8
+ oU6SHUpFsrRoeWd7gCOUPpXpv3Qxcb0wqkOju7F8KTJWbYCCy/AAwSCnc1XUCriIWnhB
+ UA+3fwe9JnjCvrnkIWQyvHt/HBITnHWhFVJNQZjONHEFcN2vBnUoxf/rNiIUBpCJBm5c
+ /i6fIYj9XcHB8GLNxbFYeiyXivFt7II0+acugPN+wF58MUnjK6v6TsOAnXuuPNPqyvNr
+ xUFIYesrHFvEeWUmZttw/pmv6fKqQOa/4oek+4RgXNaehqad1eoHVuJmkywn5UeypVNI
+ Uq2w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=B/7aU0EzUxhV/kKb8WHkerqUukEIGKD6u5NHmPGNPZk=;
- b=JJsLcuMf94dt/S2pi77BDX4AGPLMe7Jl0CaIYK3ENNvUTmaQbQ7BSCulhVTGCGLxDo
- tWY4eCGX/m63Y4YUg9S/y69mSMSaCqsATaURwyWJuOhv67nEQwbGbHF5aFURa8JDXWT+
- a2gIyMwAS9k2UP6IGb5YJ2idO1KMBAUIJjnWu3icriWON5NwzLt1XF2tfPZ/oQ8/USaF
- vCL9+DhoxmDLfCvUVrsW+MWegaS3LBThZfSl3ujkSEhmMyx+B6k+p3dzaqr440rKI2aH
- wG6tD0O81PLb4k2OK/G2F2KksP7fS1/IXenApls3E1tuELExk8LZ8HcrV7wCiTpHcj2F
- aDag==
-X-Gm-Message-State: AOAM531LnR94XIf3cKlrK4RcGXr7D4akWS+7WR8w1OhW5U9Hhe+ho8qd
- 2nakaeJBzxZvy/BozHQxwUkYPRG4myk1Qg==
-X-Received: by 2002:a17:902:8604:b029:e6:60ad:6921 with SMTP id
- f4-20020a1709028604b02900e660ad6921mr7276222plo.15.1619814592834; 
- Fri, 30 Apr 2021 13:29:52 -0700 (PDT)
+ bh=1gr+w+D07DwVhmgy58KbkyZwXkW20B50hh9NUpReRmk=;
+ b=llnNqmWzHEYRMxuLg1ztwP+zu8+wkvHXUPKtEjggNM2A/mUaut2Fu9KFRgpiN+81vT
+ aPimC2o/hMc4D6/dAK/P7hKpDPMQnxpDnqeJ9vXVt7NhsX51PLl6FEwSh+5QX93E2SmP
+ dyb9K4XxutlhWjv8fMlVEb6zlRXV5cVUgJSs/HcTyLY+TE6OTkP0/fvDUnjaksUNnDdj
+ kDI9x4oR/WFhIF2Y+Q9msfXC2P8x1fOjNQUUbD5dnht1eHdJuEUXH7UyYREV7lGXHKYB
+ w/fcR5dGl4vPPVT3ymAViQMCgVwmWSYTcb1B8uWn0kuzkp4vNvV9rnv8uH9eAtmYUo74
+ Zp/g==
+X-Gm-Message-State: AOAM531TW5wofVVe17ylYrAB2nc3CBrVDe740nAEKXHAn1rX0Nb618LV
+ oRHCx+dIMFztjkBCoBpbQd0fkNNytqzpQQ==
+X-Received: by 2002:a17:90a:4748:: with SMTP id
+ y8mr6903832pjg.31.1619814585962; 
+ Fri, 30 Apr 2021 13:29:45 -0700 (PDT)
 Received: from localhost.localdomain ([71.212.144.24])
- by smtp.gmail.com with ESMTPSA id q23sm3788781pgt.42.2021.04.30.13.29.52
+ by smtp.gmail.com with ESMTPSA id q23sm3788781pgt.42.2021.04.30.13.29.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 30 Apr 2021 13:29:52 -0700 (PDT)
+ Fri, 30 Apr 2021 13:29:45 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v6 67/82] target/arm: Implement SVE2 FCVTXNT, FCVTX
-Date: Fri, 30 Apr 2021 13:25:55 -0700
-Message-Id: <20210430202610.1136687-68-richard.henderson@linaro.org>
+Subject: [PATCH v6 56/82] target/arm: Implement SVE2 saturating multiply
+ (indexed)
+Date: Fri, 30 Apr 2021 13:25:44 -0700
+Message-Id: <20210430202610.1136687-57-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210430202610.1136687-1-richard.henderson@linaro.org>
 References: <20210430202610.1136687-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62f;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -116,130 +117,143 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, Stephen Long <steplong@quicinc.com>
+Cc: qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gn70UkyVW609
+X-TUID: l6hjAnYnItra
 
-From: Stephen Long <steplong@quicinc.com>
-
-Signed-off-by: Stephen Long <steplong@quicinc.com>
-Message-Id: <20200428174332.17162-4-steplong@quicinc.com>
-[rth: Use do_frint_mode, which avoids a specific runtime helper.]
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/sve.decode      |  2 ++
- target/arm/translate-sve.c | 49 ++++++++++++++++++++++++++++++--------
- 2 files changed, 41 insertions(+), 10 deletions(-)
+ target/arm/helper-sve.h    |  5 +++++
+ target/arm/sve.decode      | 12 ++++++++++++
+ target/arm/sve_helper.c    | 20 ++++++++++++++++++++
+ target/arm/translate-sve.c | 19 +++++++++++++++----
+ 4 files changed, 52 insertions(+), 4 deletions(-)
 
+diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
+index 08398800bd..0be0d90bee 100644
+--- a/target/arm/helper-sve.h
++++ b/target/arm/helper-sve.h
+@@ -2688,3 +2688,8 @@ DEF_HELPER_FLAGS_5(sve2_sqdmlsl_idx_s, TCG_CALL_NO_RWG,
+                    void, ptr, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_5(sve2_sqdmlsl_idx_d, TCG_CALL_NO_RWG,
+                    void, ptr, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_4(sve2_sqdmull_idx_s, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_sqdmull_idx_d, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, i32)
 diff --git a/target/arm/sve.decode b/target/arm/sve.decode
-index fb998f5f34..46153d6a84 100644
+index 8d2709d3cc..a3b9fb95f9 100644
 --- a/target/arm/sve.decode
 +++ b/target/arm/sve.decode
-@@ -1533,6 +1533,8 @@ SM4EKEY         01000101 00 1 ..... 11110 0 ..... .....  @rd_rn_rm_e0
- RAX1            01000101 00 1 ..... 11110 1 ..... .....  @rd_rn_rm_e0
+@@ -255,6 +255,12 @@
+ @rrx_2          ........ .. . index:2 rm:3 ...... rn:5 rd:5  &rrx_esz
+ @rrx_1          ........ .. . index:1 rm:4 ...... rn:5 rd:5  &rrx_esz
  
- ### SVE2 floating-point convert precision odd elements
-+FCVTXNT_ds      01100100 00 0010 10 101 ... ..... .....  @rd_pg_rn_e0
-+FCVTX_ds        01100101 00 0010 10 101 ... ..... .....  @rd_pg_rn_e0
- FCVTNT_sh       01100100 10 0010 00 101 ... ..... .....  @rd_pg_rn_e0
- FCVTLT_hs       01100100 10 0010 01 101 ... ..... .....  @rd_pg_rn_e0
- FCVTNT_ds       01100100 11 0010 10 101 ... ..... .....  @rd_pg_rn_e0
++# Two registers and a scalar by N-bit index, alternate
++@rrx_3a         ........ .. . .. rm:3 ...... rn:5 rd:5 \
++                &rrx_esz index=%index3_19_11
++@rrx_2a         ........ .. . .  rm:4 ...... rn:5 rd:5 \
++                &rrx_esz index=%index2_20_11
++
+ # Three registers and a scalar by N-bit index
+ @rrxr_3         ........ .. . ..      rm:3 ...... rn:5 rd:5 \
+                 &rrxr_esz ra=%reg_movprfx index=%index3_22_19
+@@ -817,6 +823,12 @@ SQDMLSLB_zzxw_d 01000100 11 1 ..... 0011.0 ..... .....   @rrxr_2a esz=3
+ SQDMLSLT_zzxw_s 01000100 10 1 ..... 0011.1 ..... .....   @rrxr_3a esz=2
+ SQDMLSLT_zzxw_d 01000100 11 1 ..... 0011.1 ..... .....   @rrxr_2a esz=3
+ 
++# SVE2 saturating multiply (indexed)
++SQDMULLB_zzx_s  01000100 10 1 ..... 1110.0 ..... .....   @rrx_3a esz=2
++SQDMULLB_zzx_d  01000100 11 1 ..... 1110.0 ..... .....   @rrx_2a esz=3
++SQDMULLT_zzx_s  01000100 10 1 ..... 1110.1 ..... .....   @rrx_3a esz=2
++SQDMULLT_zzx_d  01000100 11 1 ..... 1110.1 ..... .....   @rrx_2a esz=3
++
+ # SVE2 integer multiply (indexed)
+ MUL_zzx_h       01000100 0. 1 ..... 111110 ..... .....   @rrx_3 esz=1
+ MUL_zzx_s       01000100 10 1 ..... 111110 ..... .....   @rrx_2 esz=2
+diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
+index c43c38044b..e8a8425522 100644
+--- a/target/arm/sve_helper.c
++++ b/target/arm/sve_helper.c
+@@ -1560,6 +1560,26 @@ DO_ZZXW(sve2_sqdmlsl_idx_d, int64_t, int32_t,     , H1_4, DO_SQDMLSL_D)
+ 
+ #undef DO_ZZXW
+ 
++#define DO_ZZX(NAME, TYPEW, TYPEN, HW, HN, OP) \
++void HELPER(NAME)(void *vd, void *vn, void *vm, uint32_t desc)            \
++{                                                                         \
++    intptr_t i, j, oprsz = simd_oprsz(desc);                              \
++    intptr_t sel = extract32(desc, SIMD_DATA_SHIFT, 1) * sizeof(TYPEN);   \
++    intptr_t idx = extract32(desc, SIMD_DATA_SHIFT + 1, 3) * sizeof(TYPEN); \
++    for (i = 0; i < oprsz; i += 16) {                                     \
++        TYPEW mm = *(TYPEN *)(vm + i + idx);                              \
++        for (j = 0; j < 16; j += sizeof(TYPEW)) {                         \
++            TYPEW nn = *(TYPEN *)(vn + HN(i + j + sel));                  \
++            *(TYPEW *)(vd + HW(i + j)) = OP(nn, mm);                      \
++        }                                                                 \
++    }                                                                     \
++}
++
++DO_ZZX(sve2_sqdmull_idx_s, int32_t, int16_t, H1_4, H1_2, do_sqdmull_s)
++DO_ZZX(sve2_sqdmull_idx_d, int64_t, int32_t,     , H1_4, do_sqdmull_d)
++
++#undef DO_ZZX
++
+ #define DO_BITPERM(NAME, TYPE, OP) \
+ void HELPER(NAME)(void *vd, void *vn, void *vm, uint32_t desc) \
+ {                                                              \
 diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-index f5bf122204..87e5c8ac63 100644
+index 1915f68af6..acf16c4c43 100644
 --- a/target/arm/translate-sve.c
 +++ b/target/arm/translate-sve.c
-@@ -4715,11 +4715,9 @@ static bool trans_FRINTX(DisasContext *s, arg_rpr_esz *a)
-     return do_zpz_ptr(s, a->rd, a->rn, a->pg, a->esz == MO_16, fns[a->esz - 1]);
- }
+@@ -3840,8 +3840,8 @@ DO_RRXR(trans_UDOT_zzxw_d, gen_helper_gvec_udot_idx_h)
  
--static bool do_frint_mode(DisasContext *s, arg_rpr_esz *a, int mode)
-+static bool do_frint_mode(DisasContext *s, arg_rpr_esz *a,
-+                          int mode, gen_helper_gvec_3_ptr *fn)
+ #undef DO_RRXR
+ 
+-static bool do_sve2_zzx_ool(DisasContext *s, arg_rrx_esz *a,
+-                            gen_helper_gvec_3 *fn)
++static bool do_sve2_zzx_data(DisasContext *s, arg_rrx_esz *a,
++                             gen_helper_gvec_3 *fn, int data)
  {
--    if (a->esz == 0) {
--        return false;
--    }
-     if (sve_access_check(s)) {
-         unsigned vsz = vec_full_reg_size(s);
-         TCGv_i32 tmode = tcg_const_i32(mode);
-@@ -4730,7 +4728,7 @@ static bool do_frint_mode(DisasContext *s, arg_rpr_esz *a, int mode)
-         tcg_gen_gvec_3_ptr(vec_full_reg_offset(s, a->rd),
+     if (fn == NULL || !dc_isar_feature(aa64_sve2, s)) {
+         return false;
+@@ -3851,14 +3851,14 @@ static bool do_sve2_zzx_ool(DisasContext *s, arg_rrx_esz *a,
+         tcg_gen_gvec_3_ool(vec_full_reg_offset(s, a->rd),
                             vec_full_reg_offset(s, a->rn),
-                            pred_full_reg_offset(s, a->pg),
--                           status, vsz, vsz, 0, frint_fns[a->esz - 1]);
-+                           status, vsz, vsz, 0, fn);
- 
-         gen_helper_set_rmode(tmode, tmode, status);
-         tcg_temp_free_i32(tmode);
-@@ -4741,27 +4739,42 @@ static bool do_frint_mode(DisasContext *s, arg_rpr_esz *a, int mode)
- 
- static bool trans_FRINTN(DisasContext *s, arg_rpr_esz *a)
- {
--    return do_frint_mode(s, a, float_round_nearest_even);
-+    if (a->esz == 0) {
-+        return false;
-+    }
-+    return do_frint_mode(s, a, float_round_nearest_even, frint_fns[a->esz - 1]);
- }
- 
- static bool trans_FRINTP(DisasContext *s, arg_rpr_esz *a)
- {
--    return do_frint_mode(s, a, float_round_up);
-+    if (a->esz == 0) {
-+        return false;
-+    }
-+    return do_frint_mode(s, a, float_round_up, frint_fns[a->esz - 1]);
- }
- 
- static bool trans_FRINTM(DisasContext *s, arg_rpr_esz *a)
- {
--    return do_frint_mode(s, a, float_round_down);
-+    if (a->esz == 0) {
-+        return false;
-+    }
-+    return do_frint_mode(s, a, float_round_down, frint_fns[a->esz - 1]);
- }
- 
- static bool trans_FRINTZ(DisasContext *s, arg_rpr_esz *a)
- {
--    return do_frint_mode(s, a, float_round_to_zero);
-+    if (a->esz == 0) {
-+        return false;
-+    }
-+    return do_frint_mode(s, a, float_round_to_zero, frint_fns[a->esz - 1]);
- }
- 
- static bool trans_FRINTA(DisasContext *s, arg_rpr_esz *a)
- {
--    return do_frint_mode(s, a, float_round_ties_away);
-+    if (a->esz == 0) {
-+        return false;
-+    }
-+    return do_frint_mode(s, a, float_round_ties_away, frint_fns[a->esz - 1]);
- }
- 
- static bool trans_FRECPX(DisasContext *s, arg_rpr_esz *a)
-@@ -8202,3 +8215,19 @@ static bool trans_FCVTLT_sd(DisasContext *s, arg_rpr_esz *a)
+                            vec_full_reg_offset(s, a->rm),
+-                           vsz, vsz, a->index, fn);
++                           vsz, vsz, data, fn);
      }
-     return do_zpz_ptr(s, a->rd, a->rn, a->pg, false, gen_helper_sve2_fcvtlt_sd);
+     return true;
  }
+ 
+ #define DO_SVE2_RRX(NAME, FUNC) \
+     static bool NAME(DisasContext *s, arg_rrx_esz *a)  \
+-    { return do_sve2_zzx_ool(s, a, FUNC); }
++    { return do_sve2_zzx_data(s, a, FUNC, a->index); }
+ 
+ DO_SVE2_RRX(trans_MUL_zzx_h, gen_helper_gvec_mul_idx_h)
+ DO_SVE2_RRX(trans_MUL_zzx_s, gen_helper_gvec_mul_idx_s)
+@@ -3866,6 +3866,17 @@ DO_SVE2_RRX(trans_MUL_zzx_d, gen_helper_gvec_mul_idx_d)
+ 
+ #undef DO_SVE2_RRX
+ 
++#define DO_SVE2_RRX_TB(NAME, FUNC, TOP) \
++    static bool NAME(DisasContext *s, arg_rrx_esz *a)  \
++    { return do_sve2_zzx_data(s, a, FUNC, (a->index << 1) | TOP); }
 +
-+static bool trans_FCVTX_ds(DisasContext *s, arg_rpr_esz *a)
-+{
-+    if (!dc_isar_feature(aa64_sve2, s)) {
-+        return false;
-+    }
-+    return do_frint_mode(s, a, float_round_to_odd, gen_helper_sve_fcvt_ds);
-+}
++DO_SVE2_RRX_TB(trans_SQDMULLB_zzx_s, gen_helper_sve2_sqdmull_idx_s, false)
++DO_SVE2_RRX_TB(trans_SQDMULLB_zzx_d, gen_helper_sve2_sqdmull_idx_d, false)
++DO_SVE2_RRX_TB(trans_SQDMULLT_zzx_s, gen_helper_sve2_sqdmull_idx_s, true)
++DO_SVE2_RRX_TB(trans_SQDMULLT_zzx_d, gen_helper_sve2_sqdmull_idx_d, true)
 +
-+static bool trans_FCVTXNT_ds(DisasContext *s, arg_rpr_esz *a)
-+{
-+    if (!dc_isar_feature(aa64_sve2, s)) {
-+        return false;
-+    }
-+    return do_frint_mode(s, a, float_round_to_odd, gen_helper_sve2_fcvtnt_ds);
-+}
++#undef DO_SVE2_RRX_TB
++
+ static bool do_sve2_zzxz_data(DisasContext *s, arg_rrxr_esz *a,
+                               gen_helper_gvec_4 *fn, int data)
+ {
 -- 
 2.25.1
 

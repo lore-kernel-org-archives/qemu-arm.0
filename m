@@ -1,115 +1,105 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp180481lfb;
-        Thu, 29 Apr 2021 23:14:12 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxT//NY5pBhCezSTerTgVnAvoWVdhWTfjU+2nyjHC2Ta44E/InV+grD+izZlCKVJldMt2XE
-X-Received: by 2002:a05:6102:5f7:: with SMTP id w23mr4179881vsf.26.1619763251854;
-        Thu, 29 Apr 2021 23:14:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619763251; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp341108lfb;
+        Fri, 30 Apr 2021 03:10:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyAJQN2DlMYpzr6U5zASpp/IiLlUiTRrZUkATpTN2GBD31sI3uUAl6i6HhUu3JWiD9oI/5u
+X-Received: by 2002:a2e:9707:: with SMTP id r7mr3322602lji.181.1619777430065;
+        Fri, 30 Apr 2021 03:10:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619777430; cv=none;
         d=google.com; s=arc-20160816;
-        b=TtWgeMCf9SUNhndI3SEAf/E56qLmuN7OKQ/0JouDMj14pjj5utcNVsH2njOTtHe8BH
-         jmQYM+GXYVI50mIAVhd8Qv5ioJN2fHzeHUUEtPr79henFl4+1HG8jc8XylDbTA9uaMfw
-         D/BY7J6i3la6UsHgECHiQxExusA2Th+wMkm9hVk7eDE+vlfVgboRzaq7eZPF/So6Piid
-         JVK7NvqxT2io6SE65M7RNEzhseEIP583DxXxqV4ZC/L/MGZUSFFLfnWRhlTwCUhnBsTi
-         c9nAbGkzLNcpY5AuRW/b2fX85R89BqS4RU8NBSeSXMAYUKsWBxXkPrOg7MNkioFqa7x2
-         AgBA==
+        b=T5WASGxjj+NXSfhTknR22DJ74ELTX1JCLiIU3IYWWz4jIKI787z52pubOAHueU4RNO
+         5kiRON9Lz/yaiFGZSyLdVCgDWyEe1xq643r/IQtlU3bU1/HGgJmVbWJSynU185kiKN57
+         OdEfYPGwVPYj87Yt9nTpmhGd2lOF/mT0qz/m0OYxC2K68CSJ++60XBLR6gCnfxWPR0Ut
+         BLgNRzFc39MFkz6efIN1Nm/SbfC8PycRGpHBUcHV8dtllea4iXPRat3lgeuQeVq20ju9
+         VuSOrZ3pavrN4XGIvBaG2GNNAWO4gF2EbD7J/cgHkVi59JP6lFkNcZCSV2LDFAV47gtZ
+         qjmw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:message-id:in-reply-to:date:references
-         :subject:to:from:dkim-signature;
-        bh=7PY1X3UxjYrQgYnT77dNqi4Fh23S4UjNQ0/L+jJ16YQ=;
-        b=demzJXm/1zl+yTihlvL0KFIUBjj+kUGMV0uoHrI8diyeSPUMIwfBRGDCav8KbT6nCe
-         6IZPmf+Ie2ukm+9ooLvAjv8hexjGRdwiGG3PoDow1w84IKSCONCo4bkP9WDsOF+J8cPS
-         upaxN3As5sNt4vr8xFSY6XDivf9R9BC4CYizHioD00rQWKjMOysflIsQ2FxnBB+dy3gB
-         NSTc5BeFBgn4CQtMtdel6JW/RC3Bz9nd3oXaxa9wig4/BzVJhHaMbvKHIMUBHYEr5UO9
-         bB91pOifxyulmJvHlKT30MOWwILEqDVQoMCtfgtp8czLlsuFRA8s0GFHe31CzPfsuHUU
-         t/kw==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=f+RCmHzIM+Ky487r6vtrtuO5U07tnTRET80SM5/e2X4=;
+        b=M+LBFUUiNULRquQrKmKjJD2oV6fUTmoCZA/P0iI4CNhv0P+2NTujR29YK9RuC3Fu1+
+         ikgw31SvMDHC+43Gmjhfetr1zzBdzXlwHUzqCDNAtmHJOq0Uho7yn3KzpFxZZu4+Y0CG
+         wtYtgfp/IrlS2163dsRVYpkQ6eYCVVGQNXLcUBwJ9DBxfgqEAndtJKG5QXIkeVrWxkoD
+         7l2wBhUbr36wlQ1z0GazWYoac3GKxsnTZI2uSOVL965s19FySlPcnHfbmLfphLxX2qVt
+         PWPTKDExWq9SmtWn0lmd1q7f4MH8HnO3CbOWNFvI7Y0YtV08OOohoQVXsEVUCjGRs0ft
+         BJfQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cZjFnUJM;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Dr6ePxGL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w5si1871803uaa.86.2021.04.29.23.14.11
+        by mx.google.com with ESMTPS id m12si1988436ljp.198.2021.04.30.03.10.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 29 Apr 2021 23:14:11 -0700 (PDT)
+        Fri, 30 Apr 2021 03:10:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cZjFnUJM;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Dr6ePxGL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57554 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:43770 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lcMPj-0000ia-7H
-	for alex.bennee@linaro.org; Fri, 30 Apr 2021 02:14:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43904)
+	id 1lcQ6P-0007T4-5A
+	for alex.bennee@linaro.org; Fri, 30 Apr 2021 06:10:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57132)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1lcMPZ-0000he-6j
- for qemu-arm@nongnu.org; Fri, 30 Apr 2021 02:14:01 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:42553)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1lcMPW-0001B0-Tv
- for qemu-arm@nongnu.org; Fri, 30 Apr 2021 02:14:00 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1619763238;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=7PY1X3UxjYrQgYnT77dNqi4Fh23S4UjNQ0/L+jJ16YQ=;
- b=cZjFnUJMBZnXHayRL/hO2425EdGw1CtfNWlxDdQvpgYzxcyVghskP3MeVf5QLS+zxgRrZS
- P0D9BY/WYOuir3w/Hr2pQMjoT56Bjk2JHVM8iiGkYoY8XoeqksGyrvk/6vcSwrJdSrPC7L
- 2dE59V9yqdbsYcUXFms8fdDhwaSukag=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-228-1bkxU83HM6mNOnVvXuWfmA-1; Fri, 30 Apr 2021 02:13:54 -0400
-X-MC-Unique: 1bkxU83HM6mNOnVvXuWfmA-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A567D64149;
- Fri, 30 Apr 2021 06:13:53 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-114-17.ams2.redhat.com
- [10.36.114.17])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 1FEB22DAC5;
- Fri, 30 Apr 2021 06:13:50 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 97E79113525D; Fri, 30 Apr 2021 08:13:48 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: Re: [PATCH v4 10/12] qtest/qmp-cmd-test: Make test
- build-independent from accelerator
-References: <20210415163304.4120052-1-philmd@redhat.com>
- <20210415163304.4120052-11-philmd@redhat.com>
- <87lf91ir1m.fsf@dusky.pond.sub.org>
- <1de6b3f8-7d7c-9280-4cd3-633a19dd9b8e@redhat.com>
- <874kfprzrw.fsf@dusky.pond.sub.org>
- <603c7934-ea16-baf8-9ae5-ab221db345c7@redhat.com>
-Date: Fri, 30 Apr 2021 08:13:48 +0200
-In-Reply-To: <603c7934-ea16-baf8-9ae5-ab221db345c7@redhat.com> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Thu, 29 Apr 2021 17:10:15
- +0200")
-Message-ID: <87zgxgnvtv.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lcQ6H-0007SO-Bp
+ for qemu-arm@nongnu.org; Fri, 30 Apr 2021 06:10:21 -0400
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630]:41766)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lcQ6F-0003fF-H5
+ for qemu-arm@nongnu.org; Fri, 30 Apr 2021 06:10:21 -0400
+Received: by mail-ej1-x630.google.com with SMTP id zg3so22811645ejb.8
+ for <qemu-arm@nongnu.org>; Fri, 30 Apr 2021 03:10:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=f+RCmHzIM+Ky487r6vtrtuO5U07tnTRET80SM5/e2X4=;
+ b=Dr6ePxGLHN//G+MuBRjGjY46OcFtq+cujBA3t24W25skYUPCgFsaHCqIz71lJUw5X9
+ wS2JUUHcSZ2Cr+hRrqXdJla5ob5pA+9tVyYeefmPQUZLiTOs/nnewgZQ4wCrUfnZQtuE
+ 8K8scX46iSIfun7vwb4cdd0Ky5jmrnk/vlfeAdK6BgGpKcEvxzt6Nrswf/33If0P9SQ2
+ x7mdINNS4ShiV3X4i4m3iB5HFlqp2HNSTxLIykCfp5uCgK+5rZoK+g27aKIVsK6GAHpl
+ 9MLB6ySS9/7bidyp4vhruciPflJPv7auelwzzGhuetfTWEj1dQMJhwGnBk2+UlKfN80l
+ 3iXw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=f+RCmHzIM+Ky487r6vtrtuO5U07tnTRET80SM5/e2X4=;
+ b=MLqWKqrsB68+70YrpJMtUjbjv5B0h8z1VK2CHWEMU3/GhGjLsghK00T7rWu7ToKZ52
+ HrHDUhWJRoZopQ95FBTiwtpilK4KjTtzsTyRvPZz0cSbqLcK5vWZh1TedLPwWoc/rqPP
+ EkmiekluRaxgRKbg4jU/c5C5wDlFcbLJzhg9+B5qXpa5mKQNZZX8gMdjaR8mUcKmAZ0x
+ bCZbL5fjcUhJ/YVVq2s2BTFM80jlAQuDxds6RFAbJyCDQFFZqHcE9B+NAoGqBpHhVd1x
+ t4I9vBO3ZUlUe+ttvp7xkFgj146JHqV5yc/ZOgD9YMZc0cBWLzD5YSD7q5Je9zzKpmoT
+ HSPQ==
+X-Gm-Message-State: AOAM531DV2OHYmi+NYKFykn/5McG9ByNzDivAByPGJCAd+0I3p4xJJ8N
+ O6SA4M/MREl1D3cHcsjy83q6KYQM76gaPtI+ieWwqA==
+X-Received: by 2002:a17:906:eced:: with SMTP id
+ qt13mr3438649ejb.382.1619777416803; 
+ Fri, 30 Apr 2021 03:10:16 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.22,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+References: <20210401024152.203896-1-shashi.mallela@linaro.org>
+ <20210401024152.203896-2-shashi.mallela@linaro.org>
+ <CAFEAcA8OCs-sL1Zu-PwkadTvto3pJWO8VLcxfqmH7JGHXdeQuw@mail.gmail.com>
+ <6e91d0458e38b4e782dc8e61de3ee0f875f8a56a.camel@linaro.org>
+In-Reply-To: <6e91d0458e38b4e782dc8e61de3ee0f875f8a56a.camel@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 30 Apr 2021 11:09:15 +0100
+Message-ID: <CAFEAcA8EXUu8nfqz2Xn_Rke4Nk+cvdOuZOoFSfGkN6FFeTJ=yQ@mail.gmail.com>
+Subject: Re: [PATCH v2 1/8] hw/intc: GICv3 ITS initial framework
+To: Shashi Mallela <shashi.mallela@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::630;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x630.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -122,67 +112,29 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <lvivier@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Daniel =?utf-8?Q?P=2EBerrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Juan Quintela <quintela@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Andrew Jones <drjones@redhat.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Claudio Fontana <cfontana@suse.de>, Igor Mammedov <imammedo@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, "Dr. David
- Alan Gilbert" <dgilbert@redhat.com>
+Cc: Leif Lindholm <leif@nuviainc.com>, QEMU Developers <qemu-devel@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Radoslaw Biernacki <rad@semihalf.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OpTCAWMgMihg
+X-TUID: XIieA2hqP/Np
 
-Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
-
-> On 4/29/21 3:22 PM, Markus Armbruster wrote:
->> Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
->>>>> Now than we can probe if the TCG accelerator is available
->>>>> at runtime with a QMP command, do it once at the beginning
->>>>> and only register the tests we can run.
->>>>> We can then replace the #ifdef'ry by a runtime check.
->>>>>
->>>>> Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
->>>>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
->>>>
->>>> Please read the last remark first.  The other ones are detail; feel fr=
-ee
->>>> to skip them until we're done with the last one.
->>>>
->>>>> ---
->>>>>  tests/qtest/qmp-cmd-test.c | 18 ++++++++++++++----
->>>>>  1 file changed, 14 insertions(+), 4 deletions(-)
->>>
->>>>> +    tcg_accel_available =3D qtest_has_accel("tcg");
->>>>> +
->>>>
->>>> When does tcg_accel_available differ from defined(CONFIG_TCG)?
->>>
->>> qtest_has_accel("tcg") is a runtime check, while defined(CONFIG_TCG)
->>> is build-time.
->>=20
->> Let me rephrase my question: under what conditions can the values of
->> qtest_has_accel("tcg") and defined(CONFIG_TCG) differ?
+On Fri, 30 Apr 2021 at 00:36, <shashi.mallela@linaro.org> wrote:
 >
-> They are currently the same, so this patch is a no-op. *But* it
-> allows us to remove the global dependence on CONFIG_TCG in the
-> Meson machinery (see the last commit in this series).
->
-> Is that missing part of the commit description?
->
-> "This will allow us to remove the global CONFIG_TCG dependency
-> in our Meson machinery in a pair of commits."?
+> On Fri, 2021-04-16 at 18:21 +0100, Peter Maydell wrote:
+> > On Thu, 1 Apr 2021 at 03:41, Shashi Mallela <
+> > shashi.mallela@linaro.org> wrote:
+> > > +#define GITS_PIDR2       0xFFE8
+> >
+> > You probably don't want an offset for GITS_PIDR2 specifically.
+> > Compare handling of GICD_IDREGS in the distributor emulation.
+> > Tried re-using the GICD_IDREGS offset for GITS_PIDR2,but from testing
+> > observed that the linux kernel driver and kvm-unit-tests both relied
+> > on using the 0xFFE8 offset instead of 0xFFD0 (used by GICD & GICR) to
+> > complete ITS initialization and setup
 
-Do you mean "in the next two commits"?
+I didn't mean "just put PIDR2 at the GICD_IDREGS offset", which
+obviously won't work, I meant "implement the whole set of ID registers
+(of which PIDR2 is one in the middle) in the same way we implement that
+set on the other GIC components".
 
-Please also note that the probing at run-time always gives the same
-result as the compile-time check it replaces.
-
-I don't understand what exactly the conversion to probing enables and
-how, but I believe I don't have to.
-
-[...]
-
+-- PMM

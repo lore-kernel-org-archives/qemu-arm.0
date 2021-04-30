@@ -1,106 +1,103 @@
-Received: by 2002:a19:ad47:0:0:0:0:0 with SMTP id s7csp414085lfd;
-        Fri, 30 Apr 2021 04:11:22 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyZFjVUfUHEiZ84x7htWPcPuvAtBPUeOmXL6GoU0XdkuDmDm/rWxVgQWurrObCScLRwFz/1
-X-Received: by 2002:a05:6402:51d4:: with SMTP id r20mr5214360edd.112.1619781081404;
-        Fri, 30 Apr 2021 04:11:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619781081; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp7851lfg;
+        Fri, 30 Apr 2021 04:21:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyW0R8ryR13vjW0q4fD1avu4C/t4xNkkeQPjMGc3SuTH/vf036dDCVt1WuLg3jjRstidE+7
+X-Received: by 2002:a17:906:e84:: with SMTP id p4mr3777133ejf.248.1619781702289;
+        Fri, 30 Apr 2021 04:21:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619781702; cv=none;
         d=google.com; s=arc-20160816;
-        b=CzMVdAEBGPjlTLhYaEv3dqvINfSxsmggLpXnCT37JqhuIJLDCMTGpX9jBLdTmQZL8K
-         k4XPJsIhkhWx24KWNAXKL6/lSia9og+BEKRb3U67w/Gjgd/HLADl8Kv9V/uDR3p3m5Dd
-         ANmbu6bau2+ClwBXhyVjl+rIf5PHYEHOoL2Vjl72Un0I/DDuU2u/lW9DPERCUuul+Zg7
-         bZXaVAHv1R2XrdEWtlhIn3ofZPqs9ccXRnn+VqY6nPuxb+2rwFe9IrQlj8+cclZmqSSJ
-         emMxdajhs05Iw/5DBEV2KgIrfwJte5MyHALgCbTOUsuak1YWXQQsmw6X8sw5FDzhBdOt
-         LNdQ==
+        b=iaTohhpngKHZ+wQGNXN8CWJsI+AZ0L5KRkqUa3dGRjGO//q/fuc2m+VVXUAfKqXBqC
+         fPMlKyUaqVJZBGW7Gg466PILHx67DzeAL3aiASuEBPRb2B/1OelNzHIu9sQlDlWvWzYo
+         r/jLIFU+gQfC6arYDKA6nU9EVmgnvXdHBZ0Hf5+Ttnw6VODusFrV0t4fBw4ox+zSHofr
+         apjtkbwO+y56TFEd2eJxD+ro+FaFMR/G+GjqQfbY8FjcreNY1TM4yA3BpYTAyS75t2lt
+         14yx7ha2lpCxhF1YwAjjfT8IF18lgxljRoEHZ2xcY+EPoDwnIl2qjIXkxJXYgs/alCzf
+         +3BA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
          :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=4qN7xT7jUuQBpHSq9kM7QceIxAauxx8StpXclF/5CGM=;
-        b=SIhAEGOuknC5iYzuIcrWquo9aoeLrqcruwZpx5tDt4BnESC2MoJSElbaMKji1eR9XX
-         6q1RkI51tbSfLPpDbiMlEu9itG2CRrkEnTDOuBy1tGhM2e/2YLa73DzbfA0yz6vQxxz2
-         AI0xMUSX/S9/tV2wPV8Ndx9dmL0MwhEMmmk3Sjao05btYqBWlkgy6gUh8VEQck2nrXh4
-         BICzyFmFYnKNKjAKNiDblzJLa1LqDSmGzPRfmOh20uEfea6iOP2weWwjO8m0PMjeJ65b
-         4NFOv1F8dHL6Ykfkbys1/NUm1bn8N+QyG+x3MevB1O2CowIE9TLdHaJV7BF1ENX3PeXS
-         IhEg==
+        bh=f4lI9W48YGze8+hoSLaASvFlUv9fGm1sQpXqoYtZp7A=;
+        b=WrN7XhF2dbSNmBp4Zmyb547wasKHCWeHa9Mr0lwSyNe0WOzHct3qr2WiqTjk2f6173
+         NrGsR0/e3H701Fiiwgyitw5Ux1MR7rxrIUfOHeka+XiUCNPtUokr8EgTuPRIwyvtgKWN
+         hMjep5cJuUDRs/y6PfL9H4Cvd/3w9e70NPkbqkVhqhZ3ohIQ6RkXE9naDhe+wGQISypz
+         /dtOBMRr3SaiPaHaGeSDM6hRnD6aI+HkIM1GmFDC+IEyZuwjAGa2FNl35Kq+174qeth0
+         412rq4PllJp9Y/h61C95sOf2ayYZ5Nd+BL2aKbGTAH4Kn4B1zAjix2SgC0IHCyB469Fo
+         9N3Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=QgJJL9MX;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RQA9quZ0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c17si1525247edj.86.2021.04.30.04.11.20
+        by mx.google.com with ESMTPS id g20si3436072ejm.249.2021.04.30.04.21.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 30 Apr 2021 04:11:21 -0700 (PDT)
+        Fri, 30 Apr 2021 04:21:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=QgJJL9MX;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RQA9quZ0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35384 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38386 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lcR3H-0005qZ-8q
-	for alex.bennee@linaro.org; Fri, 30 Apr 2021 07:11:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35832)
+	id 1lcRDJ-0002VJ-6h
+	for alex.bennee@linaro.org; Fri, 30 Apr 2021 07:21:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35954)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1lcQhb-0008Vt-2H
- for qemu-arm@nongnu.org; Fri, 30 Apr 2021 06:48:55 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:32825)
+ id 1lcQiG-0000zD-Jw
+ for qemu-arm@nongnu.org; Fri, 30 Apr 2021 06:49:36 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:59484)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1lcQhY-0000UX-5g
- for qemu-arm@nongnu.org; Fri, 30 Apr 2021 06:48:54 -0400
+ id 1lcQiE-0000p9-7x
+ for qemu-arm@nongnu.org; Fri, 30 Apr 2021 06:49:36 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1619779731;
+ s=mimecast20190719; t=1619779773;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=4qN7xT7jUuQBpHSq9kM7QceIxAauxx8StpXclF/5CGM=;
- b=QgJJL9MXJLiPsZh+Jn7q/qxQGzyiPlnXYG7ImjvbuEjMJhu60c5r0+ggDfOIOMmnqe2DUR
- U3uWuvKga9+VKu52qpD1VdKu2EeQIJogx2NVnVvv0fKD55VQm2WXjdMp/VE7mtsLjED3zr
- N6ZKj22zsYEuzXpVYiTNfjDCwQNjLDs=
-Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
- [209.85.208.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-456-3UqPwv1ONNu6wIF5u4byaw-1; Fri, 30 Apr 2021 06:48:47 -0400
-X-MC-Unique: 3UqPwv1ONNu6wIF5u4byaw-1
-Received: by mail-ed1-f70.google.com with SMTP id
- z12-20020aa7d40c0000b0290388179cc8bfso3938260edq.21
- for <qemu-arm@nongnu.org>; Fri, 30 Apr 2021 03:48:47 -0700 (PDT)
+ bh=f4lI9W48YGze8+hoSLaASvFlUv9fGm1sQpXqoYtZp7A=;
+ b=RQA9quZ0DvatySiIrZ6laGHQXJVhfm0VuNn2I5YgEVA/AzsQyVj43Bgwa/8p5KE4aZGXnY
+ fUvTBpXXySWerMULyEm83bocx/AvYW7XG9sVKzNrX6RukgmkbUZL6uXwm2vOHA2Dvkvski
+ A+k7jMkQx+FUzr7RhcZ+RYrV2sVAjc8=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-544-HOY7pq01NJS7Ra63Ckp-2A-1; Fri, 30 Apr 2021 06:49:31 -0400
+X-MC-Unique: HOY7pq01NJS7Ra63Ckp-2A-1
+Received: by mail-wm1-f71.google.com with SMTP id
+ c2-20020a1cb3020000b029013850c82dbcso704635wmf.5
+ for <qemu-arm@nongnu.org>; Fri, 30 Apr 2021 03:49:31 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=4qN7xT7jUuQBpHSq9kM7QceIxAauxx8StpXclF/5CGM=;
- b=SAmau6K3lWmi0Vs0haoFy5RSuhD3wTN9DRIfb4cdhmO8oqTzOdaY4w28wEBeo2T1ha
- h+OBA669jTC55H5uS/6vexWp0oImEgZ9SEKfWTw6ksC6VnMo4xlnbicDCAZO+lA2o2bZ
- RVdiGGRoCZpzcbuUXyDuLm8OIRURUO1h4Z8EZf70btrwE74T9amFaJp63ay/xAel/D86
- og60KblrUo1wAEWa9cNdDxg7e2KA4qhWM+c0TLaGGuApe46yNE3qejKJ7T6L17ztRQma
- 9R8PImzlab/hqlK1138uUbDsTy5qc59Ce6DChaamY9TZyIDn7j55DByzQwppXJNthTVc
- kQpA==
-X-Gm-Message-State: AOAM532LKYq5OpJTuID1JmvyRbKpd0Poi0l19yernyLpqLk7RpjDgfhI
- xbp/f3awOCCi40v4kCrra8EhzHeeF4IKe42RE5m+EkeH1LLdMhuAbaru+ONJ6s6nv3fJlY2n2ZY
- JHB5BSQ3ZoqCt
-X-Received: by 2002:a17:907:969e:: with SMTP id
- hd30mr3529691ejc.261.1619779726364; 
- Fri, 30 Apr 2021 03:48:46 -0700 (PDT)
-X-Received: by 2002:a17:907:969e:: with SMTP id
- hd30mr3529657ejc.261.1619779726009; 
- Fri, 30 Apr 2021 03:48:46 -0700 (PDT)
+ bh=f4lI9W48YGze8+hoSLaASvFlUv9fGm1sQpXqoYtZp7A=;
+ b=hEiA3gXNw6J/H5cqc78UikDAZ4WinD0zC+kaoQsXbdZaayj8PNZD0UbqaeCXF/P9Vr
+ hZwE16sHuLr4zpPnNoS/W/fEX/9C5L9ddGOGTPDYe85fiAgQNrzARjjiy1YmoJQufwob
+ +r8lM+9UXPuWtu4CJ0aKMpvQ8pHlEQvRtzqtgQZbs1e0/LOYgq9eajhazjDlNBs7Y7Tt
+ 3XOq6/SV875iFgzkhZmMVeKbUBSnaeGmBBI3A/Tf3dm5hf9jp9ot/ImELjHzEwClJUw+
+ i+aE7Z1ENVUh1VUIoabkgsyKdnSPIb7UWmrZrv0pODDVsEaDPQcBCJSobWS8H9fc4uK/
+ cNRQ==
+X-Gm-Message-State: AOAM530qfQe7go9lYzvxBMhLbqTygXVbPmzHz9FVzbIeTjlU5dH8kiVs
+ ZlsV3jBQ5z3ufuhGs/M63iw0PGbXpP/apUPlSftov6zQfGYPMksLMNM5ZAvqtApo8thHQ1uGHtW
+ sTnzusbxCacVM
+X-Received: by 2002:adf:ec0d:: with SMTP id x13mr5913525wrn.281.1619779770488; 
+ Fri, 30 Apr 2021 03:49:30 -0700 (PDT)
+X-Received: by 2002:adf:ec0d:: with SMTP id x13mr5913496wrn.281.1619779770334; 
+ Fri, 30 Apr 2021 03:49:30 -0700 (PDT)
 Received: from gator.home (cst2-174-132.cust.vodafone.cz. [31.30.174.132])
- by smtp.gmail.com with ESMTPSA id t17sm1779900ejs.15.2021.04.30.03.48.44
+ by smtp.gmail.com with ESMTPSA id y5sm1815356wrm.61.2021.04.30.03.49.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 30 Apr 2021 03:48:45 -0700 (PDT)
-Date: Fri, 30 Apr 2021 12:48:43 +0200
+ Fri, 30 Apr 2021 03:49:30 -0700 (PDT)
+Date: Fri, 30 Apr 2021 12:49:27 +0200
 From: Andrew Jones <drjones@redhat.com>
 To: "wangyanan (Y)" <wangyanan55@huawei.com>
 Subject: Re: [RFC PATCH v2 2/4] hw/arm/virt: Parse -smp cluster parameter in
  virt_smp_parse
-Message-ID: <20210430104843.moejiurgh6n2nkyx@gator.home>
-References: <20210413083147.34236-1-wangyanan55@huawei.com>
- <20210413083147.34236-3-wangyanan55@huawei.com>
+Message-ID: <20210430104927.do6cxs6yw6yqlq6e@gator.home>
+References: <20210413083147.34236-3-wangyanan55@huawei.com>
  <20210428103141.5qfhzcqko6hxhxee@gator>
  <262dba57-437c-36aa-7a86-8f0c59751887@huawei.com>
  <20210429071614.lywpbfpeyclqxnke@gator.home>
@@ -108,9 +105,10 @@ References: <20210413083147.34236-1-wangyanan55@huawei.com>
  <20210429110229.7jtz6hfrfvqdkrbx@gator>
  <f5b264ff-58ed-0cd2-3b84-42fa1724b8ac@huawei.com>
  <20210430064125.3b5fjolwqculrjxz@gator.home>
- <612c71d5-83cd-d055-48a4-e06153837f8d@huawei.com>
+ <20210430070131.kkavbosw27ze4iuh@gator.home>
+ <dedb07c3-b6fa-ccb0-9d06-65c7866238db@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <612c71d5-83cd-d055-48a4-e06153837f8d@huawei.com>
+In-Reply-To: <dedb07c3-b6fa-ccb0-9d06-65c7866238db@huawei.com>
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
 X-Mimecast-Spam-Score: 0
@@ -149,210 +147,70 @@ Cc: Barry Song <song.bao.hua@hisilicon.com>,
  Jiajie Li <lijiajie11@huawei.com>, David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: V7xbDBoJEJe+
+X-TUID: +dXSx7pL7yQX
 
-On Fri, Apr 30, 2021 at 04:59:36PM +0800, wangyanan (Y) wrote:
+On Fri, Apr 30, 2021 at 05:33:42PM +0800, wangyanan (Y) wrote:
 > 
-> On 2021/4/30 14:41, Andrew Jones wrote:
-> > On Fri, Apr 30, 2021 at 01:09:00PM +0800, wangyanan (Y) wrote:
-> > > Hi Drew,
-> > > 
-> > > On 2021/4/29 19:02, Andrew Jones wrote:
-> > > > On Thu, Apr 29, 2021 at 04:56:06PM +0800, wangyanan (Y) wrote:
-> > > > > On 2021/4/29 15:16, Andrew Jones wrote:
-> > > > > > On Thu, Apr 29, 2021 at 10:14:37AM +0800, wangyanan (Y) wrote:
-> > > > > > > On 2021/4/28 18:31, Andrew Jones wrote:
-> > > > > > > > On Tue, Apr 13, 2021 at 04:31:45PM +0800, Yanan Wang wrote:
-> > > > > > > > >              } else if (sockets == 0) {
-> > > > > > > > >                  threads = threads > 0 ? threads : 1;
-> > > > > > > > > -            sockets = cpus / (cores * threads);
-> > > > > > > > > +            sockets = cpus / (clusters * cores * threads);
-> > > > > > > > >                  sockets = sockets > 0 ? sockets : 1;
-> > > > > > > > If we initialize clusters to zero instead of one and add lines in
-> > > > > > > > 'cpus == 0 || cores == 0' and 'sockets == 0' like
-> > > > > > > > 'clusters = clusters > 0 ? clusters : 1' as needed, then I think we can
-> > > > > > > > add
-> > > > > > > > 
-> > > > > > > >      } else if (clusters == 0) {
-> > > > > > > >          threads = threads > 0 ? threads : 1;
-> > > > > > > >          clusters = cpus / (sockets * cores * thread);
-> > > > > > > >          clusters = clusters > 0 ? clusters : 1;
-> > > > > > > >      }
-> > > > > > > > 
-> > > > > > > > here.
-> > > > > > > I have thought about this kind of format before, but there is a little bit
-> > > > > > > difference between these two ways. Let's chose the better and more
-> > > > > > > reasonable one of the two.
-> > > > > > > 
-> > > > > > > Way A currently in this patch:
-> > > > > > > If value of clusters is not explicitly specified in -smp command line, we
-> > > > > > > assume
-> > > > > > > that users don't want to support clusters, for compatibility we initialized
-> > > > > > > the
-> > > > > > > value to 1. So that with cmdline "-smp cpus=24, sockets=2, cores=6", we will
-> > > > > > > parse out the topology description like below:
-> > > > > > > cpus=24, sockets=2, clusters=1, cores=6, threads=2
-> > > > > > > 
-> > > > > > > Way B that you suggested for this patch:
-> > > > > > > Whether value of clusters is explicitly specified in -smp command line or
-> > > > > > > not,
-> > > > > > > we assume that clusters are supported and calculate the value. So that with
-> > > > > > > cmdline "-smp cpus=24, sockets=2, cores=6", we will parse out the topology
-> > > > > > > description like below:
-> > > > > > > cpus =24, sockets=2, clusters=2, cores=6, threads=1
-> > > > > > > 
-> > > > > > > But I think maybe we should not assume too much about what users think
-> > > > > > > through the -smp command line. We should just assume that all levels of
-> > > > > > > cpu topology are supported and calculate them, and users should be more
-> > > > > > > careful if they want to get the expected results with not so complete
-> > > > > > > cmdline.
-> > > > > > > If I'm right, then Way B should be better. :)
-> > > > > > > 
-> > > > > > Hi Yanan,
-> > > > > > 
-> > > > > > We're already assuming the user wants to describe clusters to the guest
-> > > > > > because we require at least one per socket. If we want the user to have a
-> > > > > > choice between using clusters or not, then I guess we need to change the
-> > > > > > logic in the PPTT and the cpu-map to only generate the cluster level when
-> > > > > > the number of clusters is not zero. And then change this parser to not
-> > > > > > require clusters at all.
-> > > > > Hi Drew,
-> > > > > 
-> > > > > I think this kind of change will introduce more complexity and actually is
-> > > > > not necessary.
-> > > > > Not generating cluster level at all and generating cluster level (one per
-> > > > > socket) are same
-> > > > > to kernel. Without cluster description provided, kernel will initialize all
-> > > > > cores in the same
-> > > > > cluster which also means one cluster per socket.
-> > > > Which kernel? All kernels? One without the cluster support patches [1]?
+> On 2021/4/30 15:01, Andrew Jones wrote:
+> > On Fri, Apr 30, 2021 at 08:41:25AM +0200, Andrew Jones wrote:
+> > > On Fri, Apr 30, 2021 at 01:09:00PM +0800, wangyanan (Y) wrote:
+> > > > But I think the requirement for ARM "if even one parameter other than cpus
+> > > > or maxcpus
+> > > > is provided then all parameters must be provided" will be better. This can
+> > > > ensure the
+> > > > whole accurate users-specified topology. As you mentioned, if anybody who
+> > > > bothers
+> > > > to specify one, why not also specify the others.
 > > > > 
-> > > > [1] https://lore.kernel.org/lkml/20210420001844.9116-1-song.bao.hua@hisilicon.com/#t
-> > > I'm sorry, I didn't make it clear. :)
-> > > I actually mean the ARM64 kernel, with or without [1].
+> > > > I can add the requirement for ARM in the documentation, and also check the
+> > > > parameters
+> > > > in virt_smp_parse. Will this be fine?
+> > > We sort of have to support command lines that are missing 'maxcpus' and
+> > > 'clusters', unless we work together with libvirt to make the change.
+> > > Currently libvirt will generate '-smp 16,sockets=16,cores=1,threads=1'
+> > > from '<vcpu placement='static'>16</vcpu>'. That's sufficient for our
+> > > stricter, but not completely strict requirements. And, I still think
+> > > 'threads' could be optional, because there's a good chance the user
+> > > doesn't want to describe them, so a default of 1 is good enough. Also,
+> > > given maxcpus, but not cpus, it's pretty obvious that cpus should equal
+> > > maxcpus.
 > > > 
-> > > Without [1]: Kernel doesn't care about cluster. When populating cpu
-> > > topology, it directly
-> > > finds the hierarchy node with "physical package flag" as package when
-> > > parsing ACPI, and
-> > > finds the core node's parent as package when parsing DT. So even we provide
-> > > cluster level
-> > > description (one per socket), the parsing results will be the same as not
-> > > providing at all.
-> > > 
-> > > With [1]: Kernel finds the core hierarchy node's parent as cluster when
-> > > parsing ACPI. So if
-> > > we don't provide cluster level description, package will be taken as
-> > > cluster. And if we provide
-> > > the description (one per socket), the parsing result will also be the same.
-> > > 
-> > > That's why I said that we just need to provide description of cluster (one
-> > > per socket) if we
-> > > don't want to make use of it in VMs.
-> > OK, that sounds good.
+> > We also still need just 'cpus' or just 'maxcpus' to work, since that
+> > already works now. So, at least these should work
 > > 
-> > > [1] https://lore.kernel.org/lkml/20210420001844.9116-1-song.bao.hua@hisilicon.com/#t
-> > > > > So we should only ensure value of clusters per socket is one if we don't
-> > > > > want to use clusters,
-> > > > > and don't need to care about whether or not to generate description in PPTT
-> > > > > and cpu-map.
-> > > > > Is this right?
-> > > > Depends on your answer to my 'which kernel' questions.
-> > > > 
-> > > > > > I'm not a big fan of these auto-calculated values either, but the
-> > > > > > documentation says that it'll do that, and it's been done that way
-> > > > > > forever, so I think we're stuck with it for the -smp option. Hmm, I was
-> > > > > > just about to say that x86 computes all its values, but I see the most
-> > > > > > recently added one, 'dies', is implemented the way you're proposing we
-> > > > > > implement 'clusters', i.e. default to one and don't calculate it when it's
-> > > > > > missing. I actually consider that either a documentation bug or an smp
-> > > > > > parsing bug, though.
-> > > > > My propose originally came from implementation of x86.
-> > > > > > Another possible option, for Arm, because only the cpus and maxcpus
-> > > > > > parameters of -smp have ever worked, is to document, for Arm, that if even
-> > > > > > one parameter other than cpus or maxcpus is provided, then all parameters
-> > > > > > must be provided. We can still decide if clusters=0 is valid, but we'll
-> > > > > > enforce that everything is explicit and that the product (with or without
-> > > > > > clusters) matches maxcpus.
-> > > > > Requiring every parameter explicitly will be most stable but indeed strict.
-> > > > > 
-> > > > > Currently all the parsers use way B to calculate value of thread if it is
-> > > > > not provided explicitly.
-> > > > > So users should ensure the -smp cmdline they provided can result in that
-> > > > > parsed threads will
-> > > > > be 1 if they don't want to support multiple threads in one core.
-> > > > > 
-> > > > > Very similar to thread, users should also ensure the provided cmdline can
-> > > > > result in that parsed
-> > > > > clusters will be 1 if they don't want to support multiple clusters in one
-> > > > > socket.
-> > > > > 
-> > > > > So I'm wondering if we can just add some commit in the documentation to tell
-> > > > > users that they
-> > > > > should ensure this if they don't want support it. And as for calculation of
-> > > > > clusters, we follow
-> > > > > the logic of other parameters as you suggested in way B.
-> > > > > 
-> > > > > Thanks,
-> > > > > Yanan
-> > > > > > Requiring every parameter might be stricter than necessary, though, I
-> > > > > > think we're mostly concerned with cpus/maxcpus, sockets, and cores.
-> > > > > > clusters can default to one or zero (whatever we choose and document),
-> > > > > > threads can default to one, and cpus can default to maxcpus or maxcpus can
-> > > > > > default to cpus, but at least one of those must be provided. And, if
-> > > > > > sockets are provided, then cores must be provided and vice versa. If
-> > > > > > neither sockets nor cores are provided, then nothing else besides cpus and
-> > > > > > maxcpus may be provided, and that would mean to not generate any topology
-> > > > > > descriptions for the guest.
-> > > > I still don't know. I think I prefer making -smp more strict (even for
-> > > > other architectures, but that's more difficult to do than for Arm.) What I
-> > > > wrote above isn't that bad. We only require one of cpus or maxcpus (pretty
-> > > > much everybody already does that anyway), and then, if given sockets
-> > > > or cores, the other will also be required. I assume anybody who bothers to
-> > > > specify one or the other would already specify both anyway.
-> > > I agree to make -smp more strict. We want to expose the cpu topology
-> > > information
-> > > to guest kernel, so that it can take advantage of the information for better
-> > > scheduling.
-> > >  From this point of view, we hope the topology descriptions are accurately
-> > > specified
-> > > but not automatically populated.
-> > > 
-> > > But I think the requirement for ARM "if even one parameter other than cpus
-> > > or maxcpus
-> > > is provided then all parameters must be provided" will be better. This can
-> > > ensure the
-> > > whole accurate users-specified topology. As you mentioned, if anybody who
-> > > bothers
-> > > to specify one, why not also specify the others.
-> > > 
-> > > I can add the requirement for ARM in the documentation, and also check the
-> > > parameters
-> > > in virt_smp_parse. Will this be fine?
-> > We sort of have to support command lines that are missing 'maxcpus' and
-> > 'clusters', unless we work together with libvirt to make the change.
-> > Currently libvirt will generate '-smp 16,sockets=16,cores=1,threads=1'
-> > from '<vcpu placement='static'>16</vcpu>'.
-> I see. And libvirt currently doesn't support cluster in xml, which means
-> we can not generate complete cmdlines with cluster in it through
-> <topology ...> specification in xml.
-> > That's sufficient for our
-> > stricter, but not completely strict requirements. And, I still think
-> > 'threads' could be optional, because there's a good chance the user
-> > doesn't want to describe them, so a default of 1 is good enough.
-> So the parsing logic can be repeated like this:
-> We require at least one of cpus and maxcpus specified explicitly, and
-> default
-> cluster/thread to 1 if not explicitly specified. And require both of sockets
-> and
-> cores if one of them is specified.
+> >   -smp N
+> >   -smp maxcpus=N
+> >   -smp N,maxcpus=M
+> >   -smp N,sockets=N,cores=1,threads=1
+> >   -smp N,maxcpus=M,sockets=M,cores=1,threads=1
+> > 
+> > since they work today, even though no topology is described.
+> Yes. I forgot this point that we should consider the compat.
+> > If we want to
+> > describe a topology for the first three, then we'll have to pick one,
+> > which brings us back to the sockets over cores stuff. Or, we could choose
+> > to just not generate topology descriptions when none is provided.
+> I find that both preferring cores over sockets and not generating topology
+> descriptions
+> when none is provided can't solve everything. We can only ensure guest will
+> get one
+> socket with multiple cores with qemu cmdline "-smp N".
 > 
-> This is consistent with what you mentioned yesterday.
->
+> But if we specify N cpus without any other parameters in libvirt xml, a qemu
+> cmdline like
+> "-smp N, sockets=N, cores=1,threads=1" will be generated, and as a result
+> guest will get
+> N sockets. In this case, we still can't avoid the silent change.
+> 
+> So maybe we should just prefer sockets over cores like the general
+> smp_parse() and libvirt,
+> and let users use "-smp N, sockets=1, cores=N,threads=1" to get what they
+> want if they
+> use version 6.0 or later.
 
-Yup, I think this should work for both compatibility concerns, concerns
-with bad assumptions, and with supporting users which would like more
-terse command lines.
+Rather than doing the preference of sockets over cores thing, let's
+require that sockets, cores, and one of maxcpus or cpus are provided,
+as we discussed in the other mail.
 
 Thanks,
 drew

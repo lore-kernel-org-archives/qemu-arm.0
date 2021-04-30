@@ -1,89 +1,99 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp279941lfg;
-        Fri, 30 Apr 2021 09:33:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw8laVSK0lhmEyFBQGuF6XKPpQ0VzxqFv/EQmblo7eTKIbqdBnnFhUr80qKLBcQxMMZHTlM
-X-Received: by 2002:a05:6512:2246:: with SMTP id i6mr3672270lfu.456.1619800431676;
-        Fri, 30 Apr 2021 09:33:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619800431; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp290138lfb;
+        Fri, 30 Apr 2021 02:00:00 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwzcuJKh+JiChvng2O7J7i6PVk0RgGjDMaceHP9aupxg4ryKA0TO2YVYJ1DST9O6VZ6rUnf
+X-Received: by 2002:ac8:51c8:: with SMTP id d8mr3608725qtn.370.1619773200538;
+        Fri, 30 Apr 2021 02:00:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619773200; cv=none;
         d=google.com; s=arc-20160816;
-        b=DBOM5Q+T4IKC7N//+z5Dr+3/mfdyM3erD5mgMOWFpl9lw07N/I+mxD17HpQH2M77Ra
-         xzCmkliH6Tlq66OXbp+9Ib0d9aJFLtCTSsLiEi6eZoneLhxGvpZGfnZguUR3p7EdRpRf
-         andH9/Bi+CGNninIsTo9qtYrmqEN/O+YEVjv6x0o0vjO2UWXpG//90gF3F+l63pBwpvf
-         dlwNJOzhQeVUNFg/Yi6Q5lhf/6Kp2YuZp5iJdfcN5fR9NU9yeOvAYYICvZNPECb5lVsz
-         Aa34uK/mBkHM0bWEfcR2JKDpvz1SngIXa1GRBaolZ+kuj9l3jHFR35EIIUGQOH5Hj8aq
-         mj+Q==
+        b=aDVzjOLj11Dmq0Z5VgEx6h1oZCYPeKR8ZMQX4T9mJ5OAwwgDEE9g+QFhZgabgJeahV
+         UmMRCwdCQmENJe8QAhA3qzHan2NasYQAA/9gT8n1uz+Z/M9QlEGdAW1PrAyArXbu7QeY
+         ZspMOXi/stvPf2PhFWoGGpTTtXWAjxdueLKwYM/80O+MBhI6Fk12QBWo+i6XBIR5GI0B
+         uIB3c7WG7ZBcdC7BbzFecigVuhl/f/HZwp42ewHdC8mIuvkuF/79XoYIlPfdd1Lo/IQV
+         PONI+JbtX681XRpD5fS+2AxGIyLbNs3n2ioh9P12xxIW03mjkzMYTb6XS35NSXaX7NIB
+         eaNw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject;
-        bh=eAjN+OZFc+Yyc0MORKF4DtN7LNEUZ2aTaHT2wbUSNUI=;
-        b=B7mPrAJmieFgTb80nRESk4e6HgLurAPu/NUb9lh3uZBhOiFuy2gE2kUchj3C4qFUIr
-         yoF8wL0LOHTN/9tyaWXvqwr0V/MynHdXyyKsmXTEZ7l16v3Qd8qnWV/FOKeNiYqdMMuv
-         iJWaJ6TpJ/iZyK7Wvn55r63pqOlxjpj3NO606dSBY/6Oz1wMk0BXgtOSCUdDEAuUtVm5
-         YQqFS+F2i2/GZRFzRGxV7UQOfnDayautlMGJhawZL8k3fqC/mRzfL68IK1qaxxo5Qgj/
-         eXllc37f/v+vubPpNo38O3oCufgEDB0vM11Vyw7tlaEKAS0irSkSTeSFR4Ytd8MUNec5
-         4y9g==
+        bh=2rWJqIdl3T6NDbFUxnpl26XbdssqdP66MZ1hO8fX+50=;
+        b=hu2usJ7NgVmJqxZXDx/lXAKdthL0qTtwBJIaUb8OEqiuZLyrioW73EdR5Kme5w0A3W
+         os7PWtO4v1EnPbRUenzTVaS8c72sXSuJTeYqTF6Hx5yjkhdXnKkG8rZqYK4YbQDLXIN5
+         u3JaPgwoLQ98mZGGYRN3CCVtZ25qbOhI1GShJsBpRgeMimpL7AegCExkuXpQpNNd+26G
+         apHWGrfUYbXAQmFopYj9VIp4RC2xEObqy6BCoVBwGavvTPgEw7s4wJE+GNEgEeqTuxLO
+         WOrjoVM3If3DtEOyT4rXRyPMcphnwuA0NT4IZPrI7XGYgqAyBTXcFN94+vSluiM8QXVp
+         8egQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u22si4803227lfu.88.2021.04.30.09.33.51
+        by mx.google.com with ESMTPS id t13si2056018qtx.267.2021.04.30.02.00.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 30 Apr 2021 09:33:51 -0700 (PDT)
+        Fri, 30 Apr 2021 02:00:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54204 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Received: from localhost ([::1]:52218 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lcW5O-0000oe-9E
-	for alex.bennee@linaro.org; Fri, 30 Apr 2021 12:33:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57928)
+	id 1lcP0B-0003cC-QE
+	for alex.bennee@linaro.org; Fri, 30 Apr 2021 04:59:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43562)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lcVzc-00043R-RH; Fri, 30 Apr 2021 12:27:54 -0400
-Received: from mout.kundenserver.de ([212.227.126.131]:42449)
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1lcP02-0003bT-4C; Fri, 30 Apr 2021 04:59:50 -0400
+Received: from szxga01-in.huawei.com ([45.249.212.187]:2977)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lcVzX-0005Ez-Jq; Fri, 30 Apr 2021 12:27:50 -0400
-Received: from [192.168.100.1] ([82.142.15.170]) by mrelayeu.kundenserver.de
- (mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MmUYD-1lCUd52B29-00iWrt; Fri, 30 Apr 2021 18:27:42 +0200
-Subject: Re: [PATCH] hw: Do not include hw/sysbus.h if it is not necessary
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-References: <20210327082804.2259480-1-thuth@redhat.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <b5be58cf-7229-df29-d14d-6e8dc604b8f5@vivier.eu>
-Date: Fri, 30 Apr 2021 18:27:41 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1lcOzy-0005HW-E1; Fri, 30 Apr 2021 04:59:49 -0400
+Received: from dggeml757-chm.china.huawei.com (unknown [172.30.72.55])
+ by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4FWmTV6b3zzYd14;
+ Fri, 30 Apr 2021 16:57:18 +0800 (CST)
+Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
+ dggeml757-chm.china.huawei.com (10.1.199.137) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.2176.2; Fri, 30 Apr 2021 16:59:37 +0800
+Received: from [10.174.187.128] (10.174.187.128) by
+ dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
+ 15.1.2176.2; Fri, 30 Apr 2021 16:59:36 +0800
+Subject: Re: [RFC PATCH v2 2/4] hw/arm/virt: Parse -smp cluster parameter in
+ virt_smp_parse
+To: Andrew Jones <drjones@redhat.com>
+References: <20210413083147.34236-1-wangyanan55@huawei.com>
+ <20210413083147.34236-3-wangyanan55@huawei.com>
+ <20210428103141.5qfhzcqko6hxhxee@gator>
+ <262dba57-437c-36aa-7a86-8f0c59751887@huawei.com>
+ <20210429071614.lywpbfpeyclqxnke@gator.home>
+ <ce557539-ac8f-7245-747b-8212a4857811@huawei.com>
+ <20210429110229.7jtz6hfrfvqdkrbx@gator>
+ <f5b264ff-58ed-0cd2-3b84-42fa1724b8ac@huawei.com>
+ <20210430064125.3b5fjolwqculrjxz@gator.home>
+From: "wangyanan (Y)" <wangyanan55@huawei.com>
+Message-ID: <612c71d5-83cd-d055-48a4-e06153837f8d@huawei.com>
+Date: Fri, 30 Apr 2021 16:59:36 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
-In-Reply-To: <20210327082804.2259480-1-thuth@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: fr
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:8DjDElMEsAg8uS+Gsz30+yCBJ5DghgY3r3RQZWAxAevaEy6hhNI
- Y4bi7woo9R+a3u0YTycpTWwC8ps6yr2yJDP7mSlltD9Qfq/yd/Tk81S79mCfjg6isAPtOms
- wRgPjHN67piYPRozo0I0l6WF/NkY6Ru97n0dJc/MFKjHDoO93q4zLfmq1t2XmUZacpxCkDO
- VVRZZ8BijfzbXWNume3+w==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:spNRIhRTzXw=:6i98ulHz0A/VK2/VjKER7M
- EixNu2peYfbGdbqv0eVCcWxEyXLV/+2pEihK/hu1HSuIOcwHA2Mh43um9m5NjHxzvfDOHjMl4
- 0XDBrCTbKIcgxgc3rBjIgvKZ79Z1TR2wGcgT78mUnziMSdIDY7zwkIvjJZVUcea5T6UOdkcMg
- O8hcwfgKIo2z+C/spOzW2M8djuUcGS8b6jMBxyye9ZmapRcvGgydYHirzSSvaA8jGxE3czAJh
- FNOkV8FlFQxviQZjZ6UMe9E0Wvcrf4+EgNkvYp5k6cF0s8kY2QZr6M95r8adtgQE4+NzLvmsZ
- FyKzoi41k+G/IfuncskhWpwExgd2mJFzHEdwHANQocdT/ALX1ymkCDjpgRGAQSU3zY7YoTNIh
- VX889/B3Uq4YFe5pQ92eyOFII/GtSoQh3OJMxj8KiRwbRd5zLwSf0rOstjnZ2z6q8PdEQMUUM
- GgrWQc/gVkviPJRv94Pi0hR9zWn/flEkgg+1FpGP1P0yAAz2TWSonxnSZsJHTbKXmkPKmxTfs
- qImRYFJcv02zDnU1MUscYI=
-Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20210430064125.3b5fjolwqculrjxz@gator.home>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+X-Originating-IP: [10.174.187.128]
+X-ClientProxiedBy: dggeme702-chm.china.huawei.com (10.1.199.98) To
+ dggpemm500023.china.huawei.com (7.185.36.83)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.187;
+ envelope-from=wangyanan55@huawei.com; helo=szxga01-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -96,374 +106,223 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-trivial@nongnu.org, qemu-s390x@nongnu.org, qemu-arm@nongnu.org
+Cc: Barry Song <song.bao.hua@hisilicon.com>,
+ Peter Maydell <peter.maydell@linaro.org>, "Michael S .
+ Tsirkin" <mst@redhat.com>, wanghaibin.wang@huawei.com, qemu-devel@nongnu.org,
+ yangyicong@huawei.com, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ qemu-arm@nongnu.org, Alistair Francis <alistair.francis@wdc.com>,
+ prime.zeng@hisilicon.com, Igor
+ Mammedov <imammedo@redhat.com>, yuzenghui@huawei.com,
+ Paolo Bonzini <pbonzini@redhat.com>, zhukeqian1@huawei.com,
+ Jiajie Li <lijiajie11@huawei.com>, David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BmQNywYcdgpG
+X-TUID: N1S56qcL0nAp
 
-Le 27/03/2021 à 09:28, Thomas Huth a écrit :
-> Many files include hw/sysbus.h without needing it. Remove the superfluous
-> include statements.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  hw/arm/cubieboard.c         | 1 -
->  hw/arm/orangepi.c           | 1 -
->  hw/char/riscv_htif.c        | 1 -
->  hw/char/sifive_uart.c       | 1 -
->  hw/char/virtio-serial-bus.c | 1 -
->  hw/core/generic-loader.c    | 1 -
->  hw/core/guest-loader.c      | 1 -
->  hw/ide/ahci_internal.h      | 1 -
->  hw/input/lasips2.c          | 1 -
->  hw/intc/arm_gic_kvm.c       | 1 -
->  hw/intc/arm_gicv3.c         | 1 -
->  hw/intc/arm_gicv3_kvm.c     | 1 -
->  hw/intc/s390_flic_kvm.c     | 1 -
->  hw/isa/lpc_ich9.c           | 1 -
->  hw/isa/piix4.c              | 1 -
->  hw/moxie/moxiesim.c         | 1 -
->  hw/nios2/generic_nommu.c    | 1 -
->  hw/nubus/nubus-bus.c        | 1 -
->  hw/nvram/spapr_nvram.c      | 1 -
->  hw/rx/rx-gdbsim.c           | 1 -
->  hw/s390x/s390-ccw.c         | 1 -
->  hw/s390x/virtio-ccw.c       | 1 -
->  hw/timer/mips_gictimer.c    | 1 -
->  hw/usb/xen-usb.c            | 1 -
->  hw/vfio/ap.c                | 1 -
->  hw/vfio/ccw.c               | 1 -
->  hw/xen/xen-bus-helper.c     | 1 -
->  27 files changed, 27 deletions(-)
-> 
-> diff --git a/hw/arm/cubieboard.c b/hw/arm/cubieboard.c
-> index 9d0d728180..3ec30ca5af 100644
-> --- a/hw/arm/cubieboard.c
-> +++ b/hw/arm/cubieboard.c
-> @@ -20,7 +20,6 @@
->  #include "qapi/error.h"
->  #include "cpu.h"
->  #include "sysemu/sysemu.h"
-> -#include "hw/sysbus.h"
->  #include "hw/boards.h"
->  #include "hw/qdev-properties.h"
->  #include "hw/arm/allwinner-a10.h"
-> diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c
-> index 40cdb5c6d2..b8d38c9e8d 100644
-> --- a/hw/arm/orangepi.c
-> +++ b/hw/arm/orangepi.c
-> @@ -22,7 +22,6 @@
->  #include "exec/address-spaces.h"
->  #include "qapi/error.h"
->  #include "cpu.h"
-> -#include "hw/sysbus.h"
->  #include "hw/boards.h"
->  #include "hw/qdev-properties.h"
->  #include "hw/arm/allwinner-h3.h"
-> diff --git a/hw/char/riscv_htif.c b/hw/char/riscv_htif.c
-> index ba1af1cfc4..ddae738d56 100644
-> --- a/hw/char/riscv_htif.c
-> +++ b/hw/char/riscv_htif.c
-> @@ -23,7 +23,6 @@
->  #include "qemu/osdep.h"
->  #include "qapi/error.h"
->  #include "qemu/log.h"
-> -#include "hw/sysbus.h"
->  #include "hw/char/riscv_htif.h"
->  #include "hw/char/serial.h"
->  #include "chardev/char.h"
-> diff --git a/hw/char/sifive_uart.c b/hw/char/sifive_uart.c
-> index ee7adb8e30..fe12666789 100644
-> --- a/hw/char/sifive_uart.c
-> +++ b/hw/char/sifive_uart.c
-> @@ -19,7 +19,6 @@
->  #include "qemu/osdep.h"
->  #include "qapi/error.h"
->  #include "qemu/log.h"
-> -#include "hw/sysbus.h"
->  #include "chardev/char.h"
->  #include "chardev/char-fe.h"
->  #include "hw/irq.h"
-> diff --git a/hw/char/virtio-serial-bus.c b/hw/char/virtio-serial-bus.c
-> index b20038991a..dd6bc27b3b 100644
-> --- a/hw/char/virtio-serial-bus.c
-> +++ b/hw/char/virtio-serial-bus.c
-> @@ -28,7 +28,6 @@
->  #include "qemu/error-report.h"
->  #include "qemu/queue.h"
->  #include "hw/qdev-properties.h"
-> -#include "hw/sysbus.h"
->  #include "trace.h"
->  #include "hw/virtio/virtio-serial.h"
->  #include "hw/virtio/virtio-access.h"
-> diff --git a/hw/core/generic-loader.c b/hw/core/generic-loader.c
-> index 2b2a7b5e9a..d14f932eea 100644
-> --- a/hw/core/generic-loader.c
-> +++ b/hw/core/generic-loader.c
-> @@ -32,7 +32,6 @@
->  
->  #include "qemu/osdep.h"
->  #include "hw/core/cpu.h"
-> -#include "hw/sysbus.h"
->  #include "sysemu/dma.h"
->  #include "sysemu/reset.h"
->  #include "hw/boards.h"
-> diff --git a/hw/core/guest-loader.c b/hw/core/guest-loader.c
-> index bde44e27b4..d3f9d1a06e 100644
-> --- a/hw/core/guest-loader.c
-> +++ b/hw/core/guest-loader.c
-> @@ -26,7 +26,6 @@
->  
->  #include "qemu/osdep.h"
->  #include "hw/core/cpu.h"
-> -#include "hw/sysbus.h"
->  #include "sysemu/dma.h"
->  #include "hw/loader.h"
->  #include "hw/qdev-properties.h"
-> diff --git a/hw/ide/ahci_internal.h b/hw/ide/ahci_internal.h
-> index 7f32e87731..109de9e2d1 100644
-> --- a/hw/ide/ahci_internal.h
-> +++ b/hw/ide/ahci_internal.h
-> @@ -26,7 +26,6 @@
->  
->  #include "hw/ide/ahci.h"
->  #include "hw/ide/internal.h"
-> -#include "hw/sysbus.h"
->  #include "hw/pci/pci.h"
->  
->  #define AHCI_MEM_BAR_SIZE         0x1000
-> diff --git a/hw/input/lasips2.c b/hw/input/lasips2.c
-> index 60afb94c78..275737842e 100644
-> --- a/hw/input/lasips2.c
-> +++ b/hw/input/lasips2.c
-> @@ -26,7 +26,6 @@
->  #include "hw/qdev-properties.h"
->  #include "hw/input/ps2.h"
->  #include "hw/input/lasips2.h"
-> -#include "hw/sysbus.h"
->  #include "exec/hwaddr.h"
->  #include "sysemu/sysemu.h"
->  #include "trace.h"
-> diff --git a/hw/intc/arm_gic_kvm.c b/hw/intc/arm_gic_kvm.c
-> index 9494185cf4..49f79a8674 100644
-> --- a/hw/intc/arm_gic_kvm.c
-> +++ b/hw/intc/arm_gic_kvm.c
-> @@ -23,7 +23,6 @@
->  #include "qapi/error.h"
->  #include "qemu/module.h"
->  #include "cpu.h"
-> -#include "hw/sysbus.h"
->  #include "migration/blocker.h"
->  #include "sysemu/kvm.h"
->  #include "kvm_arm.h"
-> diff --git a/hw/intc/arm_gicv3.c b/hw/intc/arm_gicv3.c
-> index 66eaa97198..d63f8af604 100644
-> --- a/hw/intc/arm_gicv3.c
-> +++ b/hw/intc/arm_gicv3.c
-> @@ -18,7 +18,6 @@
->  #include "qemu/osdep.h"
->  #include "qapi/error.h"
->  #include "qemu/module.h"
-> -#include "hw/sysbus.h"
->  #include "hw/intc/arm_gicv3.h"
->  #include "gicv3_internal.h"
->  
-> diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
-> index 65a4c880a3..5c09f00dec 100644
-> --- a/hw/intc/arm_gicv3_kvm.c
-> +++ b/hw/intc/arm_gicv3_kvm.c
-> @@ -22,7 +22,6 @@
->  #include "qemu/osdep.h"
->  #include "qapi/error.h"
->  #include "hw/intc/arm_gicv3_common.h"
-> -#include "hw/sysbus.h"
->  #include "qemu/error-report.h"
->  #include "qemu/module.h"
->  #include "sysemu/kvm.h"
-> diff --git a/hw/intc/s390_flic_kvm.c b/hw/intc/s390_flic_kvm.c
-> index b3fb9f8395..d1c8fb8016 100644
-> --- a/hw/intc/s390_flic_kvm.c
-> +++ b/hw/intc/s390_flic_kvm.c
-> @@ -17,7 +17,6 @@
->  #include "qemu/error-report.h"
->  #include "qemu/module.h"
->  #include "qapi/error.h"
-> -#include "hw/sysbus.h"
->  #include "sysemu/kvm.h"
->  #include "hw/s390x/s390_flic.h"
->  #include "hw/s390x/adapter.h"
-> diff --git a/hw/isa/lpc_ich9.c b/hw/isa/lpc_ich9.c
-> index 3963b73520..160bea447a 100644
-> --- a/hw/isa/lpc_ich9.c
-> +++ b/hw/isa/lpc_ich9.c
-> @@ -34,7 +34,6 @@
->  #include "qapi/visitor.h"
->  #include "qemu/range.h"
->  #include "hw/isa/isa.h"
-> -#include "hw/sysbus.h"
->  #include "migration/vmstate.h"
->  #include "hw/irq.h"
->  #include "hw/isa/apm.h"
-> diff --git a/hw/isa/piix4.c b/hw/isa/piix4.c
-> index a50d97834c..d2d9196039 100644
-> --- a/hw/isa/piix4.c
-> +++ b/hw/isa/piix4.c
-> @@ -29,7 +29,6 @@
->  #include "hw/southbridge/piix.h"
->  #include "hw/pci/pci.h"
->  #include "hw/isa/isa.h"
-> -#include "hw/sysbus.h"
->  #include "hw/intc/i8259.h"
->  #include "hw/dma/i8257.h"
->  #include "hw/timer/i8254.h"
-> diff --git a/hw/moxie/moxiesim.c b/hw/moxie/moxiesim.c
-> index f7b57fcae1..196b730589 100644
-> --- a/hw/moxie/moxiesim.c
-> +++ b/hw/moxie/moxiesim.c
-> @@ -29,7 +29,6 @@
->  #include "qemu/error-report.h"
->  #include "qapi/error.h"
->  #include "cpu.h"
-> -#include "hw/sysbus.h"
->  #include "net/net.h"
->  #include "sysemu/reset.h"
->  #include "sysemu/sysemu.h"
-> diff --git a/hw/nios2/generic_nommu.c b/hw/nios2/generic_nommu.c
-> index 19899e2c1e..b70a42dc2f 100644
-> --- a/hw/nios2/generic_nommu.c
-> +++ b/hw/nios2/generic_nommu.c
-> @@ -31,7 +31,6 @@
->  #include "qemu-common.h"
->  #include "cpu.h"
->  
-> -#include "hw/sysbus.h"
->  #include "hw/char/serial.h"
->  #include "hw/boards.h"
->  #include "exec/memory.h"
-> diff --git a/hw/nubus/nubus-bus.c b/hw/nubus/nubus-bus.c
-> index 942a6d5342..5c13452308 100644
-> --- a/hw/nubus/nubus-bus.c
-> +++ b/hw/nubus/nubus-bus.c
-> @@ -10,7 +10,6 @@
->  
->  #include "qemu/osdep.h"
->  #include "hw/nubus/nubus.h"
-> -#include "hw/sysbus.h"
->  #include "qapi/error.h"
->  
->  
-> diff --git a/hw/nvram/spapr_nvram.c b/hw/nvram/spapr_nvram.c
-> index 01f7752014..3bb4654c58 100644
-> --- a/hw/nvram/spapr_nvram.c
-> +++ b/hw/nvram/spapr_nvram.c
-> @@ -33,7 +33,6 @@
->  #include "sysemu/device_tree.h"
->  #include "sysemu/sysemu.h"
->  #include "sysemu/runstate.h"
-> -#include "hw/sysbus.h"
->  #include "migration/vmstate.h"
->  #include "hw/nvram/chrp_nvram.h"
->  #include "hw/ppc/spapr.h"
-> diff --git a/hw/rx/rx-gdbsim.c b/hw/rx/rx-gdbsim.c
-> index 8c611b0a59..9b82feff52 100644
-> --- a/hw/rx/rx-gdbsim.c
-> +++ b/hw/rx/rx-gdbsim.c
-> @@ -22,7 +22,6 @@
->  #include "qapi/error.h"
->  #include "qemu-common.h"
->  #include "cpu.h"
-> -#include "hw/sysbus.h"
->  #include "hw/loader.h"
->  #include "hw/rx/rx62n.h"
->  #include "sysemu/sysemu.h"
-> diff --git a/hw/s390x/s390-ccw.c b/hw/s390x/s390-ccw.c
-> index b497571863..242491a1ae 100644
-> --- a/hw/s390x/s390-ccw.c
-> +++ b/hw/s390x/s390-ccw.c
-> @@ -15,7 +15,6 @@
->  #include <libgen.h>
->  #include "qapi/error.h"
->  #include "qemu/module.h"
-> -#include "hw/sysbus.h"
->  #include "hw/s390x/css.h"
->  #include "hw/s390x/css-bridge.h"
->  #include "hw/s390x/s390-ccw.h"
-> diff --git a/hw/s390x/virtio-ccw.c b/hw/s390x/virtio-ccw.c
-> index 06c0605681..1351aa3db7 100644
-> --- a/hw/s390x/virtio-ccw.c
-> +++ b/hw/s390x/virtio-ccw.c
-> @@ -17,7 +17,6 @@
->  #include "hw/virtio/virtio.h"
->  #include "migration/qemu-file-types.h"
->  #include "hw/virtio/virtio-net.h"
-> -#include "hw/sysbus.h"
->  #include "qemu/bitops.h"
->  #include "qemu/error-report.h"
->  #include "qemu/module.h"
-> diff --git a/hw/timer/mips_gictimer.c b/hw/timer/mips_gictimer.c
-> index bc44cd934e..2b0696d4ac 100644
-> --- a/hw/timer/mips_gictimer.c
-> +++ b/hw/timer/mips_gictimer.c
-> @@ -7,7 +7,6 @@
->   */
->  
->  #include "qemu/osdep.h"
-> -#include "hw/sysbus.h"
->  #include "qemu/timer.h"
->  #include "hw/timer/mips_gictimer.h"
->  
-> diff --git a/hw/usb/xen-usb.c b/hw/usb/xen-usb.c
-> index 4d266d7bb4..0f7369e7ed 100644
-> --- a/hw/usb/xen-usb.c
-> +++ b/hw/usb/xen-usb.c
-> @@ -26,7 +26,6 @@
->  #include "qemu/config-file.h"
->  #include "qemu/main-loop.h"
->  #include "qemu/option.h"
-> -#include "hw/sysbus.h"
->  #include "hw/usb.h"
->  #include "hw/xen/xen-legacy-backend.h"
->  #include "monitor/qdev.h"
-> diff --git a/hw/vfio/ap.c b/hw/vfio/ap.c
-> index 9571c2f91f..f9dbec37da 100644
-> --- a/hw/vfio/ap.c
-> +++ b/hw/vfio/ap.c
-> @@ -14,7 +14,6 @@
->  #include <linux/vfio.h>
->  #include <sys/ioctl.h>
->  #include "qapi/error.h"
-> -#include "hw/sysbus.h"
->  #include "hw/vfio/vfio.h"
->  #include "hw/vfio/vfio-common.h"
->  #include "hw/s390x/ap-device.h"
-> diff --git a/hw/vfio/ccw.c b/hw/vfio/ccw.c
-> index b2df708e4b..e752c845e9 100644
-> --- a/hw/vfio/ccw.c
-> +++ b/hw/vfio/ccw.c
-> @@ -20,7 +20,6 @@
->  #include <sys/ioctl.h>
->  
->  #include "qapi/error.h"
-> -#include "hw/sysbus.h"
->  #include "hw/vfio/vfio.h"
->  #include "hw/vfio/vfio-common.h"
->  #include "hw/s390x/s390-ccw.h"
-> diff --git a/hw/xen/xen-bus-helper.c b/hw/xen/xen-bus-helper.c
-> index b459bb9396..5a1e12b374 100644
-> --- a/hw/xen/xen-bus-helper.c
-> +++ b/hw/xen/xen-bus-helper.c
-> @@ -6,7 +6,6 @@
->   */
->  
->  #include "qemu/osdep.h"
-> -#include "hw/sysbus.h"
->  #include "hw/xen/xen.h"
->  #include "hw/xen/xen-bus.h"
->  #include "hw/xen/xen-bus-helper.h"
-> 
 
-Applied to my trivial-patches branch.
+On 2021/4/30 14:41, Andrew Jones wrote:
+> On Fri, Apr 30, 2021 at 01:09:00PM +0800, wangyanan (Y) wrote:
+>> Hi Drew,
+>>
+>> On 2021/4/29 19:02, Andrew Jones wrote:
+>>> On Thu, Apr 29, 2021 at 04:56:06PM +0800, wangyanan (Y) wrote:
+>>>> On 2021/4/29 15:16, Andrew Jones wrote:
+>>>>> On Thu, Apr 29, 2021 at 10:14:37AM +0800, wangyanan (Y) wrote:
+>>>>>> On 2021/4/28 18:31, Andrew Jones wrote:
+>>>>>>> On Tue, Apr 13, 2021 at 04:31:45PM +0800, Yanan Wang wrote:
+>>>>>>>>              } else if (sockets == 0) {
+>>>>>>>>                  threads = threads > 0 ? threads : 1;
+>>>>>>>> -            sockets = cpus / (cores * threads);
+>>>>>>>> +            sockets = cpus / (clusters * cores * threads);
+>>>>>>>>                  sockets = sockets > 0 ? sockets : 1;
+>>>>>>> If we initialize clusters to zero instead of one and add lines in
+>>>>>>> 'cpus == 0 || cores == 0' and 'sockets == 0' like
+>>>>>>> 'clusters = clusters > 0 ? clusters : 1' as needed, then I think we can
+>>>>>>> add
+>>>>>>>
+>>>>>>>      } else if (clusters == 0) {
+>>>>>>>          threads = threads > 0 ? threads : 1;
+>>>>>>>          clusters = cpus / (sockets * cores * thread);
+>>>>>>>          clusters = clusters > 0 ? clusters : 1;
+>>>>>>>      }
+>>>>>>>
+>>>>>>> here.
+>>>>>> I have thought about this kind of format before, but there is a little bit
+>>>>>> difference between these two ways. Let's chose the better and more
+>>>>>> reasonable one of the two.
+>>>>>>
+>>>>>> Way A currently in this patch:
+>>>>>> If value of clusters is not explicitly specified in -smp command line, we
+>>>>>> assume
+>>>>>> that users don't want to support clusters, for compatibility we initialized
+>>>>>> the
+>>>>>> value to 1. So that with cmdline "-smp cpus=24, sockets=2, cores=6", we will
+>>>>>> parse out the topology description like below:
+>>>>>> cpus=24, sockets=2, clusters=1, cores=6, threads=2
+>>>>>>
+>>>>>> Way B that you suggested for this patch:
+>>>>>> Whether value of clusters is explicitly specified in -smp command line or
+>>>>>> not,
+>>>>>> we assume that clusters are supported and calculate the value. So that with
+>>>>>> cmdline "-smp cpus=24, sockets=2, cores=6", we will parse out the topology
+>>>>>> description like below:
+>>>>>> cpus =24, sockets=2, clusters=2, cores=6, threads=1
+>>>>>>
+>>>>>> But I think maybe we should not assume too much about what users think
+>>>>>> through the -smp command line. We should just assume that all levels of
+>>>>>> cpu topology are supported and calculate them, and users should be more
+>>>>>> careful if they want to get the expected results with not so complete
+>>>>>> cmdline.
+>>>>>> If I'm right, then Way B should be better. :)
+>>>>>>
+>>>>> Hi Yanan,
+>>>>>
+>>>>> We're already assuming the user wants to describe clusters to the guest
+>>>>> because we require at least one per socket. If we want the user to have a
+>>>>> choice between using clusters or not, then I guess we need to change the
+>>>>> logic in the PPTT and the cpu-map to only generate the cluster level when
+>>>>> the number of clusters is not zero. And then change this parser to not
+>>>>> require clusters at all.
+>>>> Hi Drew,
+>>>>
+>>>> I think this kind of change will introduce more complexity and actually is
+>>>> not necessary.
+>>>> Not generating cluster level at all and generating cluster level (one per
+>>>> socket) are same
+>>>> to kernel. Without cluster description provided, kernel will initialize all
+>>>> cores in the same
+>>>> cluster which also means one cluster per socket.
+>>> Which kernel? All kernels? One without the cluster support patches [1]?
+>>>
+>>> [1] https://lore.kernel.org/lkml/20210420001844.9116-1-song.bao.hua@hisilicon.com/#t
+>> I'm sorry, I didn't make it clear. :)
+>> I actually mean the ARM64 kernel, with or without [1].
+>>
+>> Without [1]: Kernel doesn't care about cluster. When populating cpu
+>> topology, it directly
+>> finds the hierarchy node with "physical package flag" as package when
+>> parsing ACPI, and
+>> finds the core node's parent as package when parsing DT. So even we provide
+>> cluster level
+>> description (one per socket), the parsing results will be the same as not
+>> providing at all.
+>>
+>> With [1]: Kernel finds the core hierarchy node's parent as cluster when
+>> parsing ACPI. So if
+>> we don't provide cluster level description, package will be taken as
+>> cluster. And if we provide
+>> the description (one per socket), the parsing result will also be the same.
+>>
+>> That's why I said that we just need to provide description of cluster (one
+>> per socket) if we
+>> don't want to make use of it in VMs.
+> OK, that sounds good.
+>
+>> [1] https://lore.kernel.org/lkml/20210420001844.9116-1-song.bao.hua@hisilicon.com/#t
+>>>> So we should only ensure value of clusters per socket is one if we don't
+>>>> want to use clusters,
+>>>> and don't need to care about whether or not to generate description in PPTT
+>>>> and cpu-map.
+>>>> Is this right?
+>>> Depends on your answer to my 'which kernel' questions.
+>>>
+>>>>> I'm not a big fan of these auto-calculated values either, but the
+>>>>> documentation says that it'll do that, and it's been done that way
+>>>>> forever, so I think we're stuck with it for the -smp option. Hmm, I was
+>>>>> just about to say that x86 computes all its values, but I see the most
+>>>>> recently added one, 'dies', is implemented the way you're proposing we
+>>>>> implement 'clusters', i.e. default to one and don't calculate it when it's
+>>>>> missing. I actually consider that either a documentation bug or an smp
+>>>>> parsing bug, though.
+>>>> My propose originally came from implementation of x86.
+>>>>> Another possible option, for Arm, because only the cpus and maxcpus
+>>>>> parameters of -smp have ever worked, is to document, for Arm, that if even
+>>>>> one parameter other than cpus or maxcpus is provided, then all parameters
+>>>>> must be provided. We can still decide if clusters=0 is valid, but we'll
+>>>>> enforce that everything is explicit and that the product (with or without
+>>>>> clusters) matches maxcpus.
+>>>> Requiring every parameter explicitly will be most stable but indeed strict.
+>>>>
+>>>> Currently all the parsers use way B to calculate value of thread if it is
+>>>> not provided explicitly.
+>>>> So users should ensure the -smp cmdline they provided can result in that
+>>>> parsed threads will
+>>>> be 1 if they don't want to support multiple threads in one core.
+>>>>
+>>>> Very similar to thread, users should also ensure the provided cmdline can
+>>>> result in that parsed
+>>>> clusters will be 1 if they don't want to support multiple clusters in one
+>>>> socket.
+>>>>
+>>>> So I'm wondering if we can just add some commit in the documentation to tell
+>>>> users that they
+>>>> should ensure this if they don't want support it. And as for calculation of
+>>>> clusters, we follow
+>>>> the logic of other parameters as you suggested in way B.
+>>>>
+>>>> Thanks,
+>>>> Yanan
+>>>>> Requiring every parameter might be stricter than necessary, though, I
+>>>>> think we're mostly concerned with cpus/maxcpus, sockets, and cores.
+>>>>> clusters can default to one or zero (whatever we choose and document),
+>>>>> threads can default to one, and cpus can default to maxcpus or maxcpus can
+>>>>> default to cpus, but at least one of those must be provided. And, if
+>>>>> sockets are provided, then cores must be provided and vice versa. If
+>>>>> neither sockets nor cores are provided, then nothing else besides cpus and
+>>>>> maxcpus may be provided, and that would mean to not generate any topology
+>>>>> descriptions for the guest.
+>>> I still don't know. I think I prefer making -smp more strict (even for
+>>> other architectures, but that's more difficult to do than for Arm.) What I
+>>> wrote above isn't that bad. We only require one of cpus or maxcpus (pretty
+>>> much everybody already does that anyway), and then, if given sockets
+>>> or cores, the other will also be required. I assume anybody who bothers to
+>>> specify one or the other would already specify both anyway.
+>> I agree to make -smp more strict. We want to expose the cpu topology
+>> information
+>> to guest kernel, so that it can take advantage of the information for better
+>> scheduling.
+>>  From this point of view, we hope the topology descriptions are accurately
+>> specified
+>> but not automatically populated.
+>>
+>> But I think the requirement for ARM "if even one parameter other than cpus
+>> or maxcpus
+>> is provided then all parameters must be provided" will be better. This can
+>> ensure the
+>> whole accurate users-specified topology. As you mentioned, if anybody who
+>> bothers
+>> to specify one, why not also specify the others.
+>>
+>> I can add the requirement for ARM in the documentation, and also check the
+>> parameters
+>> in virt_smp_parse. Will this be fine?
+> We sort of have to support command lines that are missing 'maxcpus' and
+> 'clusters', unless we work together with libvirt to make the change.
+> Currently libvirt will generate '-smp 16,sockets=16,cores=1,threads=1'
+> from '<vcpu placement='static'>16</vcpu>'.
+I see. And libvirt currently doesn't support cluster in xml, which means
+we can not generate complete cmdlines with cluster in it through
+<topology ...> specification in xml.
+> That's sufficient for our
+> stricter, but not completely strict requirements. And, I still think
+> 'threads' could be optional, because there's a good chance the user
+> doesn't want to describe them, so a default of 1 is good enough.
+So the parsing logic can be repeated like this:
+We require at least one of cpus and maxcpus specified explicitly, and 
+default
+cluster/thread to 1 if not explicitly specified. And require both of 
+sockets and
+cores if one of them is specified.
+
+This is consistent with what you mentioned yesterday.
 
 Thanks,
-Laurent
-
+Yanan
+>   Also,
+> given maxcpus, but not cpus, it's pretty obvious that cpus should equal
+> maxcpus.
+>
+> Thanks,
+> drew
+>
+> .

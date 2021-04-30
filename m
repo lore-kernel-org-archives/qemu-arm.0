@@ -1,196 +1,251 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp402395lfg;
-        Fri, 30 Apr 2021 12:04:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzdZI0pZl7zOB8kdJvxBBpUJA9wgAIsVEdPhLtmWTvhYffrXw+ygkYvHoxRadS1n34Mut/k
-X-Received: by 2002:a05:6638:2a1:: with SMTP id d1mr6329705jaq.52.1619809490960;
-        Fri, 30 Apr 2021 12:04:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619809490; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp466636lfg;
+        Fri, 30 Apr 2021 13:26:34 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy4W4B4ovMoZ7Uw5cJlwFdC9kU6ixeo9NF2j8zZSUBopNT6rn0exuBD8+hmrrafuYl/WBUf
+X-Received: by 2002:a05:6e02:118b:: with SMTP id y11mr5464971ili.163.1619814394470;
+        Fri, 30 Apr 2021 13:26:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619814394; cv=none;
         d=google.com; s=arc-20160816;
-        b=F3AD2Yq6fD2zcYFPSQ/N4XRpfTXP47EHbOGe97+XgWxvQ2YoAc9c0yXF58FIAXTwhk
-         6cZJ2PvQFGi+wLpEt2RTJkclfRITri+hgjEhHLm4niMoDS/jV0MqswcWNJXEJbdci+Jp
-         qA05Z1Vv00/44XmLYF+wqk5QpGqfr1J9bjGAYgUPWNKuN+UBV85kiTNa5QTgHhdtQmK1
-         IPX2g0aMD+zhYmB2DIl4qPAodeJD013hoaPvVoNRe0bNmtgQ+byvQaFF/H7THAjlEnWF
-         xqpwKGiJQyL1HY+zVF0p3LxbtFc2o1qlM0xlGVnp3cIsAJIxtaHGLyW09s2IHyKjTzgi
-         4xFg==
+        b=bm/rFwFj4KXmaOGLJyjEd+YCZqparjnw4qw56fbgqnmtCtoLndDmIQoxRFKVZxOwSI
+         bCmkvqWUimkxswj5Lo8Kk0EW3Mod6s7ABETKzQEwCm3S4bgjVLNbB69b2e60vNe3t4jW
+         +S8AYzk9H197/MIVJciVJneDAo3lzQ8tcGe97vc/1fSsM5Xa3U4q8xY1xwT4jla8iwis
+         ImyeCZI7h39R8vl0U/UqEO29c0eVxiHrOxoSQSwyPdXia2e+3AhISGDxSLYNKBa7IhYm
+         OQ/y9V+0Gktr9/Tqn9u1w/kStZlbXEKIER4gDL9bCDC51gYyENQOZusLKpIACdlHXUmn
+         h/Gw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:organization:from:references:to:subject:dkim-signature;
-        bh=wULjNoWJbFyvYQ4cR/5VMVuemdB3egtk5ThxHhjJVSc=;
-        b=bzhi7e92XilT0u5Z9aXU3V8wl6MYeBSbrod8lq0E9vAS720Ons/PznIjETysR7OKPP
-         TcaeabntG9+FMT1kJk9p3DLHNjO1Lv55PFMzoCMFDBO33hwFYv/+aGvcpk9bSsLX6s5y
-         bX2qzHtzKjOdMSL1hGLQY0C6t2imYrECsVuJb0TLfd7BgrjYOysFLEWcMrBXvo0Amif+
-         8DDY+ungqy769lxnh2BgrOHO40/GkWfaznIiAZqRrim2yjWL92zeQiLMQpdMMNX545o2
-         pZkAbMPaZ4JkZ0gYHmnkzHXM4ZSdKzsY4rQQ4wuStuUeuj2UcKgK7J1MaJG1mNSYeoLJ
-         r0rA==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=TLnAK3F2EuCsyPGbgX4McZcLJW7/N72p142oSUvhLBw=;
+        b=sFo5gabBjmycaIq5MUjy1V7T1Hd3g9oXEd9yn4yn/i8xKvcPX+3JoCWnHL8MCj1PQM
+         hmuoXpXbrfSxSFRKAZrx6FIbaZuyAQgdJWQZKrBu83rcIzgydlcRl9oatjLliO/iXFgL
+         iD2LhNjQqKVkvQSBEdnlTXiL+MI1qhgdK2XwNueHBhMZ1+Lx+RIaeFSmroNRGp5s2CXh
+         U0ePq8aevxnsycW/9jIFgE7VoAH338BVXpt6VDkPPeK7ZdoFDE3wQAeilWDErY+9ITX3
+         fA2j5SpLH+8vL2riwVzVz2msqXl5CeOM4OA7XrVw6UmomGA6Lwod2uh3zRo/zo+xlzv2
+         j1Ew==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="DOu6Q/9f";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b="WhfqXB/v";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j19si2765427ilq.159.2021.04.30.12.04.50
+        by mx.google.com with ESMTPS id n3si1818326ioh.98.2021.04.30.13.26.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 30 Apr 2021 12:04:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 30 Apr 2021 13:26:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="DOu6Q/9f";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44630 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b="WhfqXB/v";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:53060 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lcYRV-0001w0-UY
-	for alex.bennee@linaro.org; Fri, 30 Apr 2021 15:04:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60974)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lcZib-00083g-Nw
+	for alex.bennee@linaro.org; Fri, 30 Apr 2021 16:26:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51278)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1lcYQG-0001Vf-Jp
- for qemu-devel@nongnu.org; Fri, 30 Apr 2021 15:03:32 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:60751)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1lcYQD-0006yM-LM
- for qemu-devel@nongnu.org; Fri, 30 Apr 2021 15:03:32 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1619809408;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=wULjNoWJbFyvYQ4cR/5VMVuemdB3egtk5ThxHhjJVSc=;
- b=DOu6Q/9fz9x9pEoEEnkERklYlJicnSeQdIKcKFpLbmf8sk73R5cnRSoni4nANRwIE/+rRq
- CA/1srln6G0EJNH1UIfTs+Dk3HIY/WNnXR+drhyDoipW+Ub8gjy2TBOGpVm5KXpbmtCNxs
- oIY7/H+wxTJMD0caUpmRolpzhaBatcw=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-513-85MxYV-rPwOcZtLNHERxEQ-1; Fri, 30 Apr 2021 15:03:26 -0400
-X-MC-Unique: 85MxYV-rPwOcZtLNHERxEQ-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id CAB43801107;
- Fri, 30 Apr 2021 19:03:24 +0000 (UTC)
-Received: from [10.3.114.144] (ovpn-114-144.phx2.redhat.com [10.3.114.144])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id F18CB6EF50;
- Fri, 30 Apr 2021 19:03:16 +0000 (UTC)
-Subject: Re: [PATCH v4 02/12] accel: Introduce 'query-accels' QMP command
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-References: <20210415163304.4120052-1-philmd@redhat.com>
- <20210415163304.4120052-3-philmd@redhat.com>
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-Message-ID: <2f6ef548-cff4-273f-5680-f79bda85e197@redhat.com>
-Date: Fri, 30 Apr 2021 14:03:16 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1lcZiJ-00082E-DC
+ for qemu-arm@nongnu.org; Fri, 30 Apr 2021 16:26:15 -0400
+Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532]:36776)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1lcZiH-0005qF-6w
+ for qemu-arm@nongnu.org; Fri, 30 Apr 2021 16:26:14 -0400
+Received: by mail-pg1-x532.google.com with SMTP id j7so40761153pgi.3
+ for <qemu-arm@nongnu.org>; Fri, 30 Apr 2021 13:26:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=TLnAK3F2EuCsyPGbgX4McZcLJW7/N72p142oSUvhLBw=;
+ b=WhfqXB/vz8hEbI8/RNPbQAuQVAMixQjyNw8xs8LimgkhIzsy5abmqCuHVjyiccWHCE
+ aH6at7n5A6ZN9Nn2BbWQgWsqwOaCRrOwNnRQ9zmNpCa+F92lTLiF6+pSxciNjs8CFmX/
+ CaIno4H3ruUhyE3tW3Mdx7JXglsH/02nUzmJ+B3gOR/oY1SOVlgB0BtScIJ2O/rwy1d8
+ 4Wr2rboy/6opJ4T+PuyAfGjn8GIKypGe4mETvI5HSX79idGY17D7mIHASlFbC341XDhV
+ rWKCRtg/X9JV8aqQPX2Cz5iu1laLL669FJmq8VdiULRdaIaizneZR3FhG9w0XfoV6/Sy
+ G1tw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=TLnAK3F2EuCsyPGbgX4McZcLJW7/N72p142oSUvhLBw=;
+ b=YMsMpKI+wnmkL+WZMf4wc9QXfwD0dTXXV7fvcZevRoEGnaTVAhf708uSE5GQJBV9+m
+ eGGTP/3n2I7tIvQDBMbr5eeF74Bz9Xc9U//kpiYUcN4s8WAqffHTtf59Th9Ig4OZaJsc
+ PQ+iBGyoSB5P2GIKWmmNIcgNfLQWtwLi5j7jwIKZFc/9SRz8I9S5eAB8GBx056WvVpKD
+ lK5OJ9uRQqEl8NI5+JkMARCOfx8M+Nn6T6mNsh5H49PlHSEBoxONjrzAtcttP1BMahJ2
+ 4rRvR/DPEipWEpw6dF1DNqo+ekjIN3J+7pdOPeXVxxQWfLlJKoPbegryZFMa3B+Q80sn
+ sA0w==
+X-Gm-Message-State: AOAM5314J/0Ib0Y/sdmgHfT2EfD2Y29VRm34I2eja4VH7QhF4S0c+EGq
+ mdTdfmG5M07wgpehcEykLtluTQEfmmW0Ug==
+X-Received: by 2002:a05:6a00:1687:b029:253:f417:4dba with SMTP id
+ k7-20020a056a001687b0290253f4174dbamr6479649pfc.5.1619814371202; 
+ Fri, 30 Apr 2021 13:26:11 -0700 (PDT)
+Received: from localhost.localdomain ([71.212.144.24])
+ by smtp.gmail.com with ESMTPSA id e6sm2905257pfd.219.2021.04.30.13.26.10
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 30 Apr 2021 13:26:10 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v6 00/82] target/arm: Implement SVE2
+Date: Fri, 30 Apr 2021 13:24:48 -0700
+Message-Id: <20210430202610.1136687-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <20210415163304.4120052-3-philmd@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eblake@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=eblake@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.22,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::532;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x532.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <lvivier@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
- =?UTF-8?Q?Daniel_P_=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Juan Quintela <quintela@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Markus Armbruster <armbru@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm@nongnu.org,
- Claudio Fontana <cfontana@suse.de>, Paolo Bonzini <pbonzini@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Igor Mammedov <imammedo@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mnfe8weRru3R
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: dIYKLSFSwLka
 
-On 4/15/21 11:32 AM, Philippe Mathieu-Daudé wrote:
-> Introduce the 'query-accels' QMP command which returns a list
-> of built-in accelerator names.
-> 
-> - Accelerator is a QAPI enum of all existing accelerators,
-> 
-> - AcceleratorInfo is a QAPI structure providing accelerator
->   specific information. Currently the common structure base
->   provides the name of the accelerator, while the specific
->   part is empty, but each accelerator can expand it.
-> 
-> - 'query-accels' QMP command returns a list of @AcceleratorInfo
-> 
-> For example on a KVM-only build we get:
-> 
->     { "execute": "query-accels" }
->     {
->         "return": [
->             {
->                 "name": "qtest"
->             },
->             {
->                 "name": "kvm"
->             }
->         ]
->     }
-> 
-> Note that we can't make the enum values or union branches conditional
-> because of target-specific poisoning of accelerator definitions.
-> 
-> Reviewed-by: Eric Blake <eblake@redhat.com>
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> ---
-> Since v3: Simplify over-engineered AcceleratorInfo (Markus, kept Eric R-b)
-> Since v2: @since 6.0 -> 6.1, added note (Eric)
-> Since v1: 'type' -> 'name' in comments
+Based-on: 20210430132740.10391-1-peter.maydell@linaro.org
+("target/arm: Split translate-*.c.inc into separate compilation units")
 
-> +++ b/qapi/machine.json
-> @@ -1274,3 +1274,50 @@
->  ##
->  { 'event': 'MEM_UNPLUG_ERROR',
->    'data': { 'device': 'str', 'msg': 'str' } }
-> +
-> +##
-> +# @Accelerator:
-> +#
-> +# An enumeration of accelerator names.
-> +#
-> +# Since: 6.1
-> +##
-> +{ 'enum': 'Accelerator',
-> +  'data': [ 'qtest', 'tcg', 'kvm', 'hax', 'hvf', 'whpx', 'xen' ] }
+Based-on: 20210427214108.88503-1-richard.henderson@linaro.org
+("linux-user/aarch64: Enable hwcap for RND, BTI, and MTE")
 
-There's no requirement for enums to be in any order, although if the
-list is likely to get larger over time, lexicographic order makes it
-easier to know where to insert new entries.  Up to you whether it is
-worth sorting, and your decision does not invalidate my R-b.
+Since I believe Peter has both queued on his target-arm.next,
+and I didn't want to get in the way of his bulk code movement.
+
+Changes for v6:
+  * Rebase as per above.
+  * Rename isar_feature_sve2_{i8mm,f32mm,f64mm} to sve_*,
+    because these extensions do not depend on sve2.
+  * Update hwcap for the many extensions.
+
+
+r~
+
+
+Richard Henderson (64):
+  target/arm: Add ID_AA64ZFR0 fields and isar_feature_aa64_sve2
+  target/arm: Implement SVE2 Integer Multiply - Unpredicated
+  target/arm: Implement SVE2 integer pairwise add and accumulate long
+  target/arm: Implement SVE2 integer unary operations (predicated)
+  target/arm: Split out saturating/rounding shifts from neon
+  target/arm: Implement SVE2 saturating/rounding bitwise shift left
+    (predicated)
+  target/arm: Implement SVE2 integer halving add/subtract (predicated)
+  target/arm: Implement SVE2 integer pairwise arithmetic
+  target/arm: Implement SVE2 saturating add/subtract (predicated)
+  target/arm: Implement SVE2 integer add/subtract long
+  target/arm: Implement SVE2 integer add/subtract interleaved long
+  target/arm: Implement SVE2 integer add/subtract wide
+  target/arm: Implement SVE2 integer multiply long
+  target/arm: Implement PMULLB and PMULLT
+  target/arm: Implement SVE2 bitwise shift left long
+  target/arm: Implement SVE2 bitwise exclusive-or interleaved
+  target/arm: Implement SVE2 bitwise permute
+  target/arm: Implement SVE2 complex integer add
+  target/arm: Implement SVE2 integer absolute difference and accumulate
+    long
+  target/arm: Implement SVE2 integer add/subtract long with carry
+  target/arm: Implement SVE2 bitwise shift right and accumulate
+  target/arm: Implement SVE2 bitwise shift and insert
+  target/arm: Implement SVE2 integer absolute difference and accumulate
+  target/arm: Implement SVE2 saturating extract narrow
+  target/arm: Implement SVE2 SHRN, RSHRN
+  target/arm: Implement SVE2 SQSHRUN, SQRSHRUN
+  target/arm: Implement SVE2 UQSHRN, UQRSHRN
+  target/arm: Implement SVE2 SQSHRN, SQRSHRN
+  target/arm: Implement SVE2 WHILEGT, WHILEGE, WHILEHI, WHILEHS
+  target/arm: Implement SVE2 WHILERW, WHILEWR
+  target/arm: Implement SVE2 bitwise ternary operations
+  target/arm: Implement SVE2 saturating multiply-add long
+  target/arm: Implement SVE2 saturating multiply-add high
+  target/arm: Implement SVE2 integer multiply-add long
+  target/arm: Implement SVE2 complex integer multiply-add
+  target/arm: Implement SVE2 XAR
+  target/arm: Pass separate addend to {U,S}DOT helpers
+  target/arm: Pass separate addend to FCMLA helpers
+  target/arm: Split out formats for 2 vectors + 1 index
+  target/arm: Split out formats for 3 vectors + 1 index
+  target/arm: Implement SVE2 integer multiply (indexed)
+  target/arm: Implement SVE2 integer multiply-add (indexed)
+  target/arm: Implement SVE2 saturating multiply-add high (indexed)
+  target/arm: Implement SVE2 saturating multiply-add (indexed)
+  target/arm: Implement SVE2 saturating multiply (indexed)
+  target/arm: Implement SVE2 signed saturating doubling multiply high
+  target/arm: Implement SVE2 saturating multiply high (indexed)
+  target/arm: Implement SVE mixed sign dot product (indexed)
+  target/arm: Implement SVE mixed sign dot product
+  target/arm: Implement SVE2 crypto unary operations
+  target/arm: Implement SVE2 crypto destructive binary operations
+  target/arm: Implement SVE2 crypto constructive binary operations
+  target/arm: Share table of sve load functions
+  target/arm: Implement SVE2 LD1RO
+  target/arm: Implement 128-bit ZIP, UZP, TRN
+  target/arm: Implement aarch64 SUDOT, USDOT
+  target/arm: Split out do_neon_ddda_fpst
+  target/arm: Remove unused fpst from VDOT_scalar
+  target/arm: Fix decode for VDOT (indexed)
+  target/arm: Split decode of VSDOT and VUDOT
+  target/arm: Implement aarch32 VSUDOT, VUSDOT
+  target/arm: Implement integer matrix multiply accumulate
+  linux-user/aarch64: Enable hwcap bits for sve2 and related extensions
+  target/arm: Enable SVE2 and related extensions
+
+Stephen Long (18):
+  target/arm: Implement SVE2 floating-point pairwise
+  target/arm: Implement SVE2 MATCH, NMATCH
+  target/arm: Implement SVE2 ADDHNB, ADDHNT
+  target/arm: Implement SVE2 RADDHNB, RADDHNT
+  target/arm: Implement SVE2 SUBHNB, SUBHNT
+  target/arm: Implement SVE2 RSUBHNB, RSUBHNT
+  target/arm: Implement SVE2 HISTCNT, HISTSEG
+  target/arm: Implement SVE2 scatter store insns
+  target/arm: Implement SVE2 gather load insns
+  target/arm: Implement SVE2 FMMLA
+  target/arm: Implement SVE2 SPLICE, EXT
+  target/arm: Implement SVE2 TBL, TBX
+  target/arm: Implement SVE2 FCVTNT
+  target/arm: Implement SVE2 FCVTLT
+  target/arm: Implement SVE2 FCVTXNT, FCVTX
+  target/arm: Implement SVE2 FLOGB
+  target/arm: Implement SVE2 bitwise shift immediate
+  target/arm: Implement SVE2 fp multiply-add long
+
+ target/arm/cpu.h              |   66 +
+ target/arm/helper-sve.h       |  681 ++++++-
+ target/arm/helper.h           |  111 +-
+ target/arm/translate-a64.h    |    3 +
+ target/arm/vec_internal.h     |  143 ++
+ target/arm/neon-shared.decode |   24 +-
+ target/arm/sve.decode         |  525 +++++-
+ linux-user/elfload.c          |   10 +
+ target/arm/cpu.c              |    1 +
+ target/arm/cpu64.c            |   13 +
+ target/arm/helper.c           |    3 +-
+ target/arm/kvm64.c            |   11 +
+ target/arm/neon_helper.c      |  507 +-----
+ target/arm/sve_helper.c       | 1904 +++++++++++++++++++-
+ target/arm/translate-a64.c    |  111 +-
+ target/arm/translate-neon.c   |  231 ++-
+ target/arm/translate-sve.c    | 3117 +++++++++++++++++++++++++++++++--
+ target/arm/vec_helper.c       |  854 ++++++++-
+ 18 files changed, 7377 insertions(+), 938 deletions(-)
 
 -- 
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3226
-Virtualization:  qemu.org | libvirt.org
+2.25.1
 

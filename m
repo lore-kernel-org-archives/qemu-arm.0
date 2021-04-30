@@ -1,103 +1,110 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp344234lfg;
-        Fri, 30 Apr 2021 10:48:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzHN5rzgPViFVCKrG1TBK0iL946rfXxb0T53kfD5szomN1lHEfzJMtTcNCHqTe8w0mwbuWK
-X-Received: by 2002:aca:4fc8:: with SMTP id d191mr4878100oib.139.1619804932237;
-        Fri, 30 Apr 2021 10:48:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619804932; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp402395lfg;
+        Fri, 30 Apr 2021 12:04:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzdZI0pZl7zOB8kdJvxBBpUJA9wgAIsVEdPhLtmWTvhYffrXw+ygkYvHoxRadS1n34Mut/k
+X-Received: by 2002:a05:6638:2a1:: with SMTP id d1mr6329705jaq.52.1619809490960;
+        Fri, 30 Apr 2021 12:04:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619809490; cv=none;
         d=google.com; s=arc-20160816;
-        b=NFEkLr0cSZCU+jSP3WAm+o5jwC6byRWV2pYeCxAFc1MN4Ro+cPjmXt91rNl7GOyov5
-         Xllm1zWd4xXYmEb5vDFPD0mu9mrt7CGb0SIEyBQnmaLZ/t5ctxuwjTWYahudQUkoj9ZJ
-         Dxr7F7Ss/OJQzJM/txONKVkywLYRRad0SsZrsiPW7km/WVRGq8pnufepxh/bw7b8wP8I
-         +ijGsoJ6xGrwzrMrXsnZwPNi6sfEe2MtWk1LKpz8e7ecCQIqtYEGCx3kk+bNU5iHI4Qz
-         2TERdxfMBANPFiZVqm/cHNuvTBnQ3WEcHul5D0TlCMGwi8xL4fhPJPM2s41oQJ/g+V5F
-         J90w==
+        b=F3AD2Yq6fD2zcYFPSQ/N4XRpfTXP47EHbOGe97+XgWxvQ2YoAc9c0yXF58FIAXTwhk
+         6cZJ2PvQFGi+wLpEt2RTJkclfRITri+hgjEhHLm4niMoDS/jV0MqswcWNJXEJbdci+Jp
+         qA05Z1Vv00/44XmLYF+wqk5QpGqfr1J9bjGAYgUPWNKuN+UBV85kiTNa5QTgHhdtQmK1
+         IPX2g0aMD+zhYmB2DIl4qPAodeJD013hoaPvVoNRe0bNmtgQ+byvQaFF/H7THAjlEnWF
+         xqpwKGiJQyL1HY+zVF0p3LxbtFc2o1qlM0xlGVnp3cIsAJIxtaHGLyW09s2IHyKjTzgi
+         4xFg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=rmzrusVgHN1xGIhbncWyo3D7BLhWREEULZqFB1i4l3c=;
-        b=X1aRWzG3Wf7SMkJfpXtyPZB+/XJ4ulUG0MY65J5NanAFVYqFq99V37qUvxRD615jkw
-         0CHl1BswSkzxOrmlY64q+NpGnUK6yPkUsYupS/GbN4tdc/FjFEz5oHFZvfKZwu3nCyen
-         8bM5ujEz+1FBzcegbMwr44Vh9U1TiMq2jLISDlOEQk//Q/Hafhv4PkAmkQOE1G1Il5SM
-         EnH2FQhC7UPmiQUH8awPxb1s8HzbxEZiGbbMatquMJjAGq5cRhTWf6w+pu8gegbw7+Kq
-         6qdvn1SyZPDgKsMA3Fb1GtlJESWxmRT7DYhx087pUEyY0KZlUx+EmV2IlL7nzJC6W1lX
-         1GTA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:organization:from:references:to:subject:dkim-signature;
+        bh=wULjNoWJbFyvYQ4cR/5VMVuemdB3egtk5ThxHhjJVSc=;
+        b=bzhi7e92XilT0u5Z9aXU3V8wl6MYeBSbrod8lq0E9vAS720Ons/PznIjETysR7OKPP
+         TcaeabntG9+FMT1kJk9p3DLHNjO1Lv55PFMzoCMFDBO33hwFYv/+aGvcpk9bSsLX6s5y
+         bX2qzHtzKjOdMSL1hGLQY0C6t2imYrECsVuJb0TLfd7BgrjYOysFLEWcMrBXvo0Amif+
+         8DDY+ungqy769lxnh2BgrOHO40/GkWfaznIiAZqRrim2yjWL92zeQiLMQpdMMNX545o2
+         pZkAbMPaZ4JkZ0gYHmnkzHXM4ZSdKzsY4rQQ4wuStuUeuj2UcKgK7J1MaJG1mNSYeoLJ
+         r0rA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sYwOZkAT;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="DOu6Q/9f";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i13si3798657oik.264.2021.04.30.10.48.52
+        by mx.google.com with ESMTPS id j19si2765427ilq.159.2021.04.30.12.04.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 30 Apr 2021 10:48:52 -0700 (PDT)
+        Fri, 30 Apr 2021 12:04:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sYwOZkAT;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="DOu6Q/9f";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42560 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:44630 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lcXFz-0001xp-Dn
-	for alex.bennee@linaro.org; Fri, 30 Apr 2021 13:48:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43142)
+	id 1lcYRV-0001w0-UY
+	for alex.bennee@linaro.org; Fri, 30 Apr 2021 15:04:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60974)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lcWwj-0001ty-RC
- for qemu-devel@nongnu.org; Fri, 30 Apr 2021 13:28:58 -0400
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635]:46932)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lcWwg-00045a-6z
- for qemu-devel@nongnu.org; Fri, 30 Apr 2021 13:28:57 -0400
-Received: by mail-ej1-x635.google.com with SMTP id u21so106436851ejo.13
- for <qemu-devel@nongnu.org>; Fri, 30 Apr 2021 10:28:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=rmzrusVgHN1xGIhbncWyo3D7BLhWREEULZqFB1i4l3c=;
- b=sYwOZkATFmjGxVGqpv7SPc6pkQf2PIfg9Nkke4A7ctZzHDY5uVLFKf18Hh8APnDn1v
- S1/LHOQuslY83JB3P5K+Foe53jx+Gil7tnrJGdnRJoIyad42TrzQoeVkvFYLMOEYQDkh
- PcGQAT9/NgO/a8BExH2Gv4ElV+IOnuOvesaVqS0bnh4zSKzBBEDkjizIkrX4SOaIynG7
- HiVMN0eZZszsVKW9aiY8nruxbH1ieGbMZRKFwBYluGbvfIsC8vGU0uiLKl/EtXRcgmyy
- c6KvyHEq4o9O1wbuCq0G1dlxepmFn/Lhw2NK2Z9Wng2csNcTQ860998bVI2U7mV4v5XZ
- 2hwg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=rmzrusVgHN1xGIhbncWyo3D7BLhWREEULZqFB1i4l3c=;
- b=sMLl3P12B/Mpxsc/CG28UleUk4pFYHfsR/pn8bdOCG0V7P0bJA8cc9oPwWExCIGT1y
- 3e3CyCepX4VSHcl+syARPBDqYAZwi8uRANVFyOQu+uKFOn+LPBohSn+HzEfu3q8sQkhc
- VLtg1imY7yL4CsOc1sbp5WwWEIDUXgqQYrrc8giCg7DSuP8a25SMKG0aIb2SrOJGHlqR
- Lm0v7rHcTBEMB70rL8hlD7vQbfMWifuApJvVDNTwnp5nk3Ru/evlt3MUwslKEFu56Tn/
- vCcovAHBLpwmU87HsE3/lQJQBOiIwbZmgae63ZgEpmFJrrVLwdalT+xnnqYtvlqo40k5
- y3Bg==
-X-Gm-Message-State: AOAM5317871LsfSexQ/6dF01vQyYcWVuap0IjrdkWaBTQroJc3YBq5X6
- HWD5fO9RIXssRfab61qn1/1pgUYFT7ljLfi8kJlHhQ==
-X-Received: by 2002:a17:906:b1cc:: with SMTP id
- bv12mr2785495ejb.407.1619803732347; 
- Fri, 30 Apr 2021 10:28:52 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1lcYQG-0001Vf-Jp
+ for qemu-devel@nongnu.org; Fri, 30 Apr 2021 15:03:32 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:60751)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1lcYQD-0006yM-LM
+ for qemu-devel@nongnu.org; Fri, 30 Apr 2021 15:03:32 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1619809408;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=wULjNoWJbFyvYQ4cR/5VMVuemdB3egtk5ThxHhjJVSc=;
+ b=DOu6Q/9fz9x9pEoEEnkERklYlJicnSeQdIKcKFpLbmf8sk73R5cnRSoni4nANRwIE/+rRq
+ CA/1srln6G0EJNH1UIfTs+Dk3HIY/WNnXR+drhyDoipW+Ub8gjy2TBOGpVm5KXpbmtCNxs
+ oIY7/H+wxTJMD0caUpmRolpzhaBatcw=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-513-85MxYV-rPwOcZtLNHERxEQ-1; Fri, 30 Apr 2021 15:03:26 -0400
+X-MC-Unique: 85MxYV-rPwOcZtLNHERxEQ-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id CAB43801107;
+ Fri, 30 Apr 2021 19:03:24 +0000 (UTC)
+Received: from [10.3.114.144] (ovpn-114-144.phx2.redhat.com [10.3.114.144])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id F18CB6EF50;
+ Fri, 30 Apr 2021 19:03:16 +0000 (UTC)
+Subject: Re: [PATCH v4 02/12] accel: Introduce 'query-accels' QMP command
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+References: <20210415163304.4120052-1-philmd@redhat.com>
+ <20210415163304.4120052-3-philmd@redhat.com>
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+Message-ID: <2f6ef548-cff4-273f-5680-f79bda85e197@redhat.com>
+Date: Fri, 30 Apr 2021 14:03:16 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-References: <20210430162212.825-1-peter.maydell@linaro.org>
- <c9ee41c0-deb1-28ac-3551-e9e03acfb476@linaro.org>
-In-Reply-To: <c9ee41c0-deb1-28ac-3551-e9e03acfb476@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 30 Apr 2021 18:27:49 +0100
-Message-ID: <CAFEAcA_8neSedyEpVWZD-QMi5ih-iWdd_97CvjoEDkC08vAHJw@mail.gmail.com>
-Subject: Re: [PATCH] target/arm: Make WFI a NOP for userspace emulators
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::635;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x635.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+In-Reply-To: <20210415163304.4120052-3-philmd@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eblake@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=eblake@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.22,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -110,53 +117,80 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Laurent Vivier <lvivier@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+ =?UTF-8?Q?Daniel_P_=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Juan Quintela <quintela@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Markus Armbruster <armbru@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm@nongnu.org,
+ Claudio Fontana <cfontana@suse.de>, Paolo Bonzini <pbonzini@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Igor Mammedov <imammedo@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hTy9KzSXKuVF
+X-TUID: mnfe8weRru3R
 
-On Fri, 30 Apr 2021 at 18:18, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> On 4/30/21 9:22 AM, Peter Maydell wrote:
-> > The WFI insn is not system-mode only, though it doesn't usually make
-> > a huge amount of sense for userspace code to execute it.  Currently
-> > if you try it in qemu-arm then the helper function will raise an
-> > EXCP_HLT exception, which is not covered by the switch in cpu_loop()
-> > and results in an abort:
-> >
-> > qemu: unhandled CPU exception 0x10001 - aborting
-> > R00=00000001 R01=408003e4 R02=408003ec R03=000102ec
-> > R04=00010a28 R05=00010158 R06=00087460 R07=00010158
-> > R08=00000000 R09=00000000 R10=00085b7c R11=408002a4
-> > R12=408002b8 R13=408002a0 R14=0001057c R15=000102f8
-> > PSR=60000010 -ZC- A usr32
-> > qemu:handle_cpu_signal received signal outside vCPU context @ pc=0x7fcbfa4f0a12
-> >
-> > Make the WFI helper function return immediately in the usermode
-> > emulator. This turns WFI into a NOP, which is OK because:
-> >   * architecturally "WFI is a NOP" is a permitted implementation
-> >   * aarch64 Linux kernels use the SCTLR_EL1.nTWI bit to trap
-> >     userspace WFI and NOP it (though aarch32 kernels currently
-> >     just let WFI do whatever it would do)
-> >
-> > We could in theory make the translate.c code special case user-mode
-> > emulation and NOP the insn entirely rather than making the helper
-> > do nothing, but because no real world code will be trying to
-> > execute WFI we don't care about efficiency and the helper provides
-> > a single place where we can make the change rather than having
-> > to touch multiple places in translate.c and translate-a64.c.
-> >
-> > Fixes:https://bugs.launchpad.net/qemu/+bug/1926759
-> > Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
-> > ---
-> >   target/arm/op_helper.c | 12 ++++++++++++
-> >   1 file changed, 12 insertions(+)
->
-> You could also ifdef this out in translate, in tb_stop for  DISAS_WFI.
+On 4/15/21 11:32 AM, Philippe Mathieu-Daudé wrote:
+> Introduce the 'query-accels' QMP command which returns a list
+> of built-in accelerator names.
+> 
+> - Accelerator is a QAPI enum of all existing accelerators,
+> 
+> - AcceleratorInfo is a QAPI structure providing accelerator
+>   specific information. Currently the common structure base
+>   provides the name of the accelerator, while the specific
+>   part is empty, but each accelerator can expand it.
+> 
+> - 'query-accels' QMP command returns a list of @AcceleratorInfo
+> 
+> For example on a KVM-only build we get:
+> 
+>     { "execute": "query-accels" }
+>     {
+>         "return": [
+>             {
+>                 "name": "qtest"
+>             },
+>             {
+>                 "name": "kvm"
+>             }
+>         ]
+>     }
+> 
+> Note that we can't make the enum values or union branches conditional
+> because of target-specific poisoning of accelerator definitions.
+> 
+> Reviewed-by: Eric Blake <eblake@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+> Since v3: Simplify over-engineered AcceleratorInfo (Markus, kept Eric R-b)
+> Since v2: @since 6.0 -> 6.1, added note (Eric)
+> Since v1: 'type' -> 'name' in comments
 
-You'd need to do it in both translate.c and translate-a64.c if
-you did it there, though.
+> +++ b/qapi/machine.json
+> @@ -1274,3 +1274,50 @@
+>  ##
+>  { 'event': 'MEM_UNPLUG_ERROR',
+>    'data': { 'device': 'str', 'msg': 'str' } }
+> +
+> +##
+> +# @Accelerator:
+> +#
+> +# An enumeration of accelerator names.
+> +#
+> +# Since: 6.1
+> +##
+> +{ 'enum': 'Accelerator',
+> +  'data': [ 'qtest', 'tcg', 'kvm', 'hax', 'hvf', 'whpx', 'xen' ] }
 
-thanks
--- PMM
+There's no requirement for enums to be in any order, although if the
+list is likely to get larger over time, lexicographic order makes it
+easier to know where to insert new entries.  Up to you whether it is
+worth sorting, and your decision does not invalidate my R-b.
+
+-- 
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3226
+Virtualization:  qemu.org | libvirt.org
+

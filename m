@@ -1,329 +1,300 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp2150075lfb;
-        Thu, 29 Apr 2021 16:48:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwra2fWXbXTA9QEQikYfD3qoBQM4FG9MCH1wi9WjCtxul7EDyEPlJfkoZ6lzga5YrEbdPkh
-X-Received: by 2002:a02:294e:: with SMTP id p75mr2252303jap.34.1619740115536;
-        Thu, 29 Apr 2021 16:48:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619740115; cv=none;
+Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp141411lfb;
+        Thu, 29 Apr 2021 22:09:27 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzQCs6Iq0rkn6YIHDivE46hoOFSMHi2OIJhI5E9vPx5Z47LpC7qfpLudOFsMQP9Xq+J+o+G
+X-Received: by 2002:a0c:8e86:: with SMTP id x6mr3465214qvb.34.1619759367583;
+        Thu, 29 Apr 2021 22:09:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619759367; cv=none;
         d=google.com; s=arc-20160816;
-        b=ObZfmIrYZ/YjjOWs9k/kE7i06rbSnzij31zcEX1cfa2Yy10UKWEg9fwsaHb1ChlZbV
-         F/EdGqiZk3BdOYBuYusWPauKarnubAtulgcpAG4aliX5f27q8ZoHAO2503Al3KBkSA1t
-         Am41bw0hoIUr5dQsoQ9QsxKhXya4RC5AXDOKHELhQ1tr5SweuaKik71KoZDPwpn+rXFl
-         bJyrj8eBR56RMAjrbMfEk4NI1VXPFyATq9+Pfdpm0+Kqywlf0EZTOCv//+5DAYY9KWyE
-         Nu5rKKPh7EyVbkwcu3QiWC4WdpCl4TrKO1y66H1yeNPY1T2LpEvL3oIv1AyIJjvDFA09
-         NVBQ==
+        b=y0SoIe51VKQVilMEoG3OGxzO6S36w5xfYw6V0IbgRiZa4VDHlJ1hzRcpYR3AQ67kRO
+         xgyWH88OEOmYfk51tsVRumzABdd6ZeU3elyz6duMM7upuAn1Yry2zfjy5fNljYdt6F2p
+         lk37ju6OXm4cG76zRmn7Y7WZ9bZhZOj3vNKioIoYKdSFfIekFQWiGvsKBG32awYabHlb
+         wVAzE+qHGDwzvq9dHbDYWBBfM9aJpb5v4g/xIZJRGiLyWqyNqQGQlz5UtJcTCzDvfi7r
+         VTcB8L9rbqSi9fSd9G+8rlq5pqEejLCQx/UmuDsa8qR7VhTaPRumdsLLVW+H4Q4vaxTe
+         DJSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=SxrpV4e31oEDznPH8sP8Z5BnHttfVKwpeRs3n8YtvXg=;
-        b=QUTd5h7WhTmf9BAsd9FioGvFp2P+1gk6941yMpA2XNeLp9N1WTSk+TsGTqd/nK+yD5
-         L+rrOOuqXJCdM0CorJd381L0shxLxR3ng/kFSaZ0XqxmOT+x7tHBeMXh7mbAIsirtO8h
-         sR+8edEwz8HQj9OAuT6eu2+OBUZ+kR/p0GUCjQyTrR7JuQEteRb0EeDaVunfUnZbfIy3
-         gH579LXoevNsAAiLl0mu2aiHiMU3s4wD13iuUw4rSK8dJ9RfPH0Heiy6bWFea1Up0Bhx
-         r1+967K++LFd/nmBSTtCKT3cHqeQscvLWlNeFaGz5XJjRGi68FKjYtgMwZrQ9aTVOQ5Y
-         eA2g==
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=UBFKpfUUHMCcjJHb8VEl1rzSziCOrxzNiTxicLc8NTE=;
+        b=sb1FtjFqylvAjAR77mrSv1YgsaFqupqNI6/5P+HVJadFuMlOKi2uXbMafvND/GkwrP
+         tGHEdMmVp0XEAULh2PmJf2BwEvcDmcDKqMr64K9NMkyYxZXFoHdR6v13oBg9bnXtlDRb
+         m/6vKBCVhnqGinIUs7q8OQETiXJyZ9k75dnjehoagz5bWqHaKNLuBxj3wYOqvYBGGiJr
+         6muzZRN81cwUNKZlAbOjYyoCJnM2f9PjDOgjEoU3GsTMwIxj8WhwX0lT6Jc2BtQA4Xeh
+         ECD/GfUWhe1Nr7M1Ceg5KlcyT11GfZ8NrcVXV4RpqfvPGXEKcVdjbk30ZLHd1ocgWmGT
+         7AzA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gO3GQlB3;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f4si192122ilk.17.2021.04.29.16.48.35
+        by mx.google.com with ESMTPS id k2si822366qko.218.2021.04.29.22.09.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 29 Apr 2021 16:48:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 29 Apr 2021 22:09:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gO3GQlB3;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:38246 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Received: from localhost ([::1]:56984 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lcGOY-00049H-R3
-	for alex.bennee@linaro.org; Thu, 29 Apr 2021 19:48:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49984)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lcLP4-0002YS-Ta
+	for alex.bennee@linaro.org; Fri, 30 Apr 2021 01:09:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35162)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shashi.mallela@linaro.org>)
- id 1lcGIU-0005ka-KO
- for qemu-devel@nongnu.org; Thu, 29 Apr 2021 19:42:19 -0400
-Received: from mail-qv1-xf36.google.com ([2607:f8b0:4864:20::f36]:41799)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shashi.mallela@linaro.org>)
- id 1lcGIJ-0004LT-VO
- for qemu-devel@nongnu.org; Thu, 29 Apr 2021 19:42:18 -0400
-Received: by mail-qv1-xf36.google.com with SMTP id gv2so24254077qvb.8
- for <qemu-devel@nongnu.org>; Thu, 29 Apr 2021 16:42:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=SxrpV4e31oEDznPH8sP8Z5BnHttfVKwpeRs3n8YtvXg=;
- b=gO3GQlB3w1bSOrd/LawofYb86PaWhMknKW6vbZVRdFs110DTULmuXELqOcBkEerCm/
- 3uSM6e16Fyw1fBzpharKeZHKsVSiE8w1n9K3om4Cmnm6+Y2mbfyoWd5u8hIA+L6Uog4f
- SSFCptyvkwJ62SqDWcwEFmJBrNZueGCil0CKQaDcSSZ/sIvGuQcBbMxzz9bWi2UyuaS0
- HC83wi71lzDhlDDRNkIz1bl1k29XDIyWTxRh/J/PWNiIeJiDKhOSaUXtEfZ0tpJT9on/
- O6Nj8qJyhFpIrpDlIFeCLFGu8pL4kuKCh8Bm8rvpBz7BzWRVQQeaVsOXyifXAfETUW8D
- l2IA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=SxrpV4e31oEDznPH8sP8Z5BnHttfVKwpeRs3n8YtvXg=;
- b=pXcOUQbDVU8/y5W3STF0Y00e76XV06js2x/BObQl4xVmYLs9KOWTuwZfIFRuxrH7sl
- 8t5rM8qSWij0bAft5xGv7lcQN+4/XwIMpvV12skAnVI/NGeUlHQC7kq82L9+9KYtYWpa
- bZ0pGh6uyAx/bVjZnlvtq+5a1OmwF/01Y3qPFoXuobrHzHw3JKUz0ZvlPsaNtKmHAcNq
- dtaNjWyn/wz1w0jU06UCBxLDXJdlLOp2tfXY33esa4/C7bKUQ3Q8KTD9qKK+9Oi8u7GP
- bCLgpL4z4AUPPtLycf+LbGTZc2QyJHD/0GpCOAenLplTRaEsU4eUMeE7fiKWuWDd4vZ6
- sDbg==
-X-Gm-Message-State: AOAM533ug6zEqHFVY1qSldukg/tgUNCQDugD3uWMpDNIc8sVT3fEXD2f
- aSv7m0feuj90Jg4R+f+1yOm6OgNwtIPJdA==
-X-Received: by 2002:a0c:b399:: with SMTP id t25mr2257466qve.31.1619739725573; 
- Thu, 29 Apr 2021 16:42:05 -0700 (PDT)
-Received: from localhost.localdomain
- (bras-base-stsvon1503w-grc-23-174-92-28-28.dsl.bell.ca. [174.92.28.28])
- by smtp.googlemail.com with ESMTPSA id i2sm1093229qtg.0.2021.04.29.16.42.05
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 29 Apr 2021 16:42:05 -0700 (PDT)
-From: Shashi Mallela <shashi.mallela@linaro.org>
-To: peter.maydell@linaro.org,
-	leif@nuviainc.com,
-	rad@semihalf.com
-Subject: [PATCH v3 5/8] hw/intc: GICv3 ITS Feature enablement
-Date: Thu, 29 Apr 2021 19:41:58 -0400
-Message-Id: <20210429234201.125565-6-shashi.mallela@linaro.org>
-X-Mailer: git-send-email 2.27.0
-In-Reply-To: <20210429234201.125565-1-shashi.mallela@linaro.org>
-References: <20210429234201.125565-1-shashi.mallela@linaro.org>
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1lcLOw-0002Y6-DB; Fri, 30 Apr 2021 01:09:18 -0400
+Received: from szxga03-in.huawei.com ([45.249.212.189]:2203)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1lcLOt-0008Sq-5Y; Fri, 30 Apr 2021 01:09:18 -0400
+Received: from dggeml762-chm.china.huawei.com (unknown [172.30.72.55])
+ by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4FWgLS15Kqz5gqS;
+ Fri, 30 Apr 2021 13:05:52 +0800 (CST)
+Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
+ dggeml762-chm.china.huawei.com (10.1.199.172) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.2176.2; Fri, 30 Apr 2021 13:09:01 +0800
+Received: from [10.174.187.128] (10.174.187.128) by
+ dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
+ 15.1.2176.2; Fri, 30 Apr 2021 13:09:00 +0800
+Subject: Re: [RFC PATCH v2 2/4] hw/arm/virt: Parse -smp cluster parameter in
+ virt_smp_parse
+To: Andrew Jones <drjones@redhat.com>
+References: <20210413083147.34236-1-wangyanan55@huawei.com>
+ <20210413083147.34236-3-wangyanan55@huawei.com>
+ <20210428103141.5qfhzcqko6hxhxee@gator>
+ <262dba57-437c-36aa-7a86-8f0c59751887@huawei.com>
+ <20210429071614.lywpbfpeyclqxnke@gator.home>
+ <ce557539-ac8f-7245-747b-8212a4857811@huawei.com>
+ <20210429110229.7jtz6hfrfvqdkrbx@gator>
+From: "wangyanan (Y)" <wangyanan55@huawei.com>
+Message-ID: <f5b264ff-58ed-0cd2-3b84-42fa1724b8ac@huawei.com>
+Date: Fri, 30 Apr 2021 13:09:00 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f36;
- envelope-from=shashi.mallela@linaro.org; helo=mail-qv1-xf36.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+In-Reply-To: <20210429110229.7jtz6hfrfvqdkrbx@gator>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+X-Originating-IP: [10.174.187.128]
+X-ClientProxiedBy: dggeme706-chm.china.huawei.com (10.1.199.102) To
+ dggpemm500023.china.huawei.com (7.185.36.83)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.189;
+ envelope-from=wangyanan55@huawei.com; helo=szxga03-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /bE84eMFvdr+
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Barry Song <song.bao.hua@hisilicon.com>,
+ Peter Maydell <peter.maydell@linaro.org>, "Michael S .
+ Tsirkin" <mst@redhat.com>, wanghaibin.wang@huawei.com, qemu-devel@nongnu.org,
+ yangyicong@huawei.com, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ qemu-arm@nongnu.org, Alistair Francis <alistair.francis@wdc.com>,
+ prime.zeng@hisilicon.com, Igor
+ Mammedov <imammedo@redhat.com>, yuzenghui@huawei.com,
+ Paolo Bonzini <pbonzini@redhat.com>, zhukeqian1@huawei.com,
+ Jiajie Li <lijiajie11@huawei.com>, David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ZO344T3CD8P6
 
-Added properties to enable ITS feature and define qemu system
-address space memory in gicv3 common,setup distributor and
-redistributor registers to indicate LPI support.
+Hi Drew,
 
-Signed-off-by: Shashi Mallela <shashi.mallela@linaro.org>
----
- hw/intc/arm_gicv3_common.c         | 13 +++++++++++++
- hw/intc/arm_gicv3_dist.c           | 21 +++++++++++++++++++--
- hw/intc/arm_gicv3_redist.c         | 30 +++++++++++++++++++++++++-----
- hw/intc/gicv3_internal.h           | 17 +++++++++++++++++
- include/hw/intc/arm_gicv3_common.h |  1 +
- 5 files changed, 75 insertions(+), 7 deletions(-)
+On 2021/4/29 19:02, Andrew Jones wrote:
+> On Thu, Apr 29, 2021 at 04:56:06PM +0800, wangyanan (Y) wrote:
+>> On 2021/4/29 15:16, Andrew Jones wrote:
+>>> On Thu, Apr 29, 2021 at 10:14:37AM +0800, wangyanan (Y) wrote:
+>>>> On 2021/4/28 18:31, Andrew Jones wrote:
+>>>>> On Tue, Apr 13, 2021 at 04:31:45PM +0800, Yanan Wang wrote:
+>>>>>>             } else if (sockets == 0) {
+>>>>>>                 threads = threads > 0 ? threads : 1;
+>>>>>> -            sockets = cpus / (cores * threads);
+>>>>>> +            sockets = cpus / (clusters * cores * threads);
+>>>>>>                 sockets = sockets > 0 ? sockets : 1;
+>>>>> If we initialize clusters to zero instead of one and add lines in
+>>>>> 'cpus == 0 || cores == 0' and 'sockets == 0' like
+>>>>> 'clusters = clusters > 0 ? clusters : 1' as needed, then I think we can
+>>>>> add
+>>>>>
+>>>>>     } else if (clusters == 0) {
+>>>>>         threads = threads > 0 ? threads : 1;
+>>>>>         clusters = cpus / (sockets * cores * thread);
+>>>>>         clusters = clusters > 0 ? clusters : 1;
+>>>>>     }
+>>>>>
+>>>>> here.
+>>>> I have thought about this kind of format before, but there is a little bit
+>>>> difference between these two ways. Let's chose the better and more
+>>>> reasonable one of the two.
+>>>>
+>>>> Way A currently in this patch:
+>>>> If value of clusters is not explicitly specified in -smp command line, we
+>>>> assume
+>>>> that users don't want to support clusters, for compatibility we initialized
+>>>> the
+>>>> value to 1. So that with cmdline "-smp cpus=24, sockets=2, cores=6", we will
+>>>> parse out the topology description like below:
+>>>> cpus=24, sockets=2, clusters=1, cores=6, threads=2
+>>>>
+>>>> Way B that you suggested for this patch:
+>>>> Whether value of clusters is explicitly specified in -smp command line or
+>>>> not,
+>>>> we assume that clusters are supported and calculate the value. So that with
+>>>> cmdline "-smp cpus=24, sockets=2, cores=6", we will parse out the topology
+>>>> description like below:
+>>>> cpus =24, sockets=2, clusters=2, cores=6, threads=1
+>>>>
+>>>> But I think maybe we should not assume too much about what users think
+>>>> through the -smp command line. We should just assume that all levels of
+>>>> cpu topology are supported and calculate them, and users should be more
+>>>> careful if they want to get the expected results with not so complete
+>>>> cmdline.
+>>>> If I'm right, then Way B should be better. :)
+>>>>
+>>> Hi Yanan,
+>>>
+>>> We're already assuming the user wants to describe clusters to the guest
+>>> because we require at least one per socket. If we want the user to have a
+>>> choice between using clusters or not, then I guess we need to change the
+>>> logic in the PPTT and the cpu-map to only generate the cluster level when
+>>> the number of clusters is not zero. And then change this parser to not
+>>> require clusters at all.
+>> Hi Drew,
+>>
+>> I think this kind of change will introduce more complexity and actually is
+>> not necessary.
+>> Not generating cluster level at all and generating cluster level (one per
+>> socket) are same
+>> to kernel. Without cluster description provided, kernel will initialize all
+>> cores in the same
+>> cluster which also means one cluster per socket.
+> Which kernel? All kernels? One without the cluster support patches [1]?
+>
+> [1] https://lore.kernel.org/lkml/20210420001844.9116-1-song.bao.hua@hisilicon.com/#t
+I'm sorry, I didn't make it clear. :)
+I actually mean the ARM64 kernel, with or without [1].
 
-diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
-index 58ef65f589..a55e91071a 100644
---- a/hw/intc/arm_gicv3_common.c
-+++ b/hw/intc/arm_gicv3_common.c
-@@ -381,6 +381,16 @@ static void arm_gicv3_common_realize(DeviceState *dev, Error **errp)
-             (1 << 24) |
-             (i << 8) |
-             (last << 4);
-+
-+        if (s->lpi_enable) {
-+            s->cpu[i].gicr_typer |= GICR_TYPER_PLPIS;
-+
-+            if (!s->dma) {
-+                error_setg(errp,
-+                    "Redist-ITS: Guest 'sysmem' reference link not set");
-+                return;
-+            }
-+        }
-     }
- }
- 
-@@ -494,9 +504,12 @@ static Property arm_gicv3_common_properties[] = {
-     DEFINE_PROP_UINT32("num-cpu", GICv3State, num_cpu, 1),
-     DEFINE_PROP_UINT32("num-irq", GICv3State, num_irq, 32),
-     DEFINE_PROP_UINT32("revision", GICv3State, revision, 3),
-+    DEFINE_PROP_BOOL("has-lpi", GICv3State, lpi_enable, 0),
-     DEFINE_PROP_BOOL("has-security-extensions", GICv3State, security_extn, 0),
-     DEFINE_PROP_ARRAY("redist-region-count", GICv3State, nb_redist_regions,
-                       redist_region_count, qdev_prop_uint32, uint32_t),
-+    DEFINE_PROP_LINK("sysmem", GICv3State, dma, TYPE_MEMORY_REGION,
-+                     MemoryRegion *),
-     DEFINE_PROP_END_OF_LIST(),
- };
- 
-diff --git a/hw/intc/arm_gicv3_dist.c b/hw/intc/arm_gicv3_dist.c
-index b65f56f903..43e0ea4367 100644
---- a/hw/intc/arm_gicv3_dist.c
-+++ b/hw/intc/arm_gicv3_dist.c
-@@ -366,12 +366,15 @@ static MemTxResult gicd_readl(GICv3State *s, hwaddr offset,
-         return MEMTX_OK;
-     case GICD_TYPER:
-     {
-+        bool lpi_supported = false;
-         /* For this implementation:
-          * No1N == 1 (1-of-N SPI interrupts not supported)
-          * A3V == 1 (non-zero values of Affinity level 3 supported)
-          * IDbits == 0xf (we support 16-bit interrupt identifiers)
-          * DVIS == 0 (Direct virtual LPI injection not supported)
--         * LPIS == 0 (LPIs not supported)
-+         * LPIS == 1 (LPIs are supported if affinity routing is enabled)
-+         * num_LPIs == 0b00000 (bits [15:11],Number of LPIs as indicated
-+         *                      by GICD_TYPER.IDbits)
-          * MBIS == 0 (message-based SPIs not supported)
-          * SecurityExtn == 1 if security extns supported
-          * CPUNumber == 0 since for us ARE is always 1
-@@ -385,8 +388,22 @@ static MemTxResult gicd_readl(GICv3State *s, hwaddr offset,
-          */
-         bool sec_extn = !(s->gicd_ctlr & GICD_CTLR_DS);
- 
-+        /*
-+         * With securityextn on, LPIs are supported when affinity routing
-+         * is enabled for non-secure state and if off LPIs are supported
-+         * when affinity routing is enabled.
-+         */
-+        if (s->lpi_enable) {
-+            if (sec_extn) {
-+                lpi_supported = (s->gicd_ctlr & GICD_CTLR_ARE_NS);
-+            } else {
-+                lpi_supported = (s->gicd_ctlr & GICD_CTLR_ARE);
-+            }
-+        }
-+
-         *data = (1 << 25) | (1 << 24) | (sec_extn << 10) |
--            (0xf << 19) | itlinesnumber;
-+            (lpi_supported << GICD_TYPER_LPIS_OFFSET) | (GICD_TYPER_IDBITS <<
-+            GICD_TYPER_IDBITS_OFFSET) | itlinesnumber;
-         return MEMTX_OK;
-     }
-     case GICD_IIDR:
-diff --git a/hw/intc/arm_gicv3_redist.c b/hw/intc/arm_gicv3_redist.c
-index 8645220d61..7604ccdc83 100644
---- a/hw/intc/arm_gicv3_redist.c
-+++ b/hw/intc/arm_gicv3_redist.c
-@@ -244,14 +244,22 @@ static MemTxResult gicr_readl(GICv3CPUState *cs, hwaddr offset,
- static MemTxResult gicr_writel(GICv3CPUState *cs, hwaddr offset,
-                                uint64_t value, MemTxAttrs attrs)
- {
-+    uint64_t data;
-+
-     switch (offset) {
-     case GICR_CTLR:
-         /* For our implementation, GICR_TYPER.DPGS is 0 and so all
-          * the DPG bits are RAZ/WI. We don't do anything asynchronously,
--         * so UWP and RWP are RAZ/WI. And GICR_TYPER.LPIS is 0 (we don't
--         * implement LPIs) so Enable_LPIs is RES0. So there are no writable
--         * bits for us.
-+         * so UWP and RWP are RAZ/WI. GICR_TYPER.LPIS is 1 (we
-+         * implement LPIs) so Enable_LPIs is programmable.
-          */
-+        if (cs->gicr_typer & GICR_TYPER_PLPIS) {
-+            if (value & GICR_CTLR_ENABLE_LPIS) {
-+                cs->gicr_ctlr |= GICR_CTLR_ENABLE_LPIS;
-+            } else {
-+                cs->gicr_ctlr &= ~GICR_CTLR_ENABLE_LPIS;
-+            }
-+        }
-         return MEMTX_OK;
-     case GICR_STATUSR:
-         /* RAZ/WI for our implementation */
-@@ -275,7 +283,12 @@ static MemTxResult gicr_writel(GICv3CPUState *cs, hwaddr offset,
-         cs->gicr_waker = value;
-         return MEMTX_OK;
-     case GICR_PROPBASER:
--        cs->gicr_propbaser = deposit64(cs->gicr_propbaser, 0, 32, value);
-+        data = value;
-+        if (FIELD_EX64(data, GICR_PROPBASER, IDBITS) > GICD_TYPER_IDBITS) {
-+            data &= ~R_GICR_PROPBASER_IDBITS_MASK;
-+            data |= GICD_TYPER_IDBITS;
-+        }
-+        cs->gicr_propbaser = deposit64(cs->gicr_propbaser, 0, 32, data);
-         return MEMTX_OK;
-     case GICR_PROPBASER + 4:
-         cs->gicr_propbaser = deposit64(cs->gicr_propbaser, 32, 32, value);
-@@ -395,9 +408,16 @@ static MemTxResult gicr_readll(GICv3CPUState *cs, hwaddr offset,
- static MemTxResult gicr_writell(GICv3CPUState *cs, hwaddr offset,
-                                 uint64_t value, MemTxAttrs attrs)
- {
-+    uint64_t data;
-+
-     switch (offset) {
-     case GICR_PROPBASER:
--        cs->gicr_propbaser = value;
-+        data = value;
-+        if (FIELD_EX64(data, GICR_PROPBASER, IDBITS) > GICD_TYPER_IDBITS) {
-+            data &= ~R_GICR_PROPBASER_IDBITS_MASK;
-+            data |= GICD_TYPER_IDBITS;
-+        }
-+        cs->gicr_propbaser = data;
-         return MEMTX_OK;
-     case GICR_PENDBASER:
-         cs->gicr_pendbaser = value;
-diff --git a/hw/intc/gicv3_internal.h b/hw/intc/gicv3_internal.h
-index e49370224f..c99a05461e 100644
---- a/hw/intc/gicv3_internal.h
-+++ b/hw/intc/gicv3_internal.h
-@@ -68,6 +68,9 @@
- #define GICD_CTLR_E1NWF             (1U << 7)
- #define GICD_CTLR_RWP               (1U << 31)
- 
-+#define GICD_TYPER_LPIS_OFFSET         17
-+#define GICD_TYPER_IDBITS_OFFSET       19
-+#define GICD_TYPER_IDBITS_MASK       0x1f
- /* 16 bits EventId */
- #define GICD_TYPER_IDBITS            0xf
- 
-@@ -126,6 +129,20 @@
- #define GICR_WAKER_ProcessorSleep    (1U << 1)
- #define GICR_WAKER_ChildrenAsleep    (1U << 2)
- 
-+FIELD(GICR_PROPBASER, IDBITS, 0, 5)
-+FIELD(GICR_PROPBASER, INNERCACHE, 7, 3)
-+FIELD(GICR_PROPBASER, SHAREABILITY, 10, 2)
-+FIELD(GICR_PROPBASER, PHYADDR, 12, 40)
-+FIELD(GICR_PROPBASER, OUTERCACHE, 56, 3)
-+
-+#define GICR_PROPBASER_IDBITS_THRESHOLD          0xd
-+
-+FIELD(GICR_PENDBASER, INNERCACHE, 7, 3)
-+FIELD(GICR_PENDBASER, SHAREABILITY, 10, 2)
-+FIELD(GICR_PENDBASER, PHYADDR, 16, 36)
-+FIELD(GICR_PENDBASER, OUTERCACHE, 56, 3)
-+FIELD(GICR_PENDBASER, PTZ, 62, 1)
-+
- #define ICC_CTLR_EL1_CBPR           (1U << 0)
- #define ICC_CTLR_EL1_EOIMODE        (1U << 1)
- #define ICC_CTLR_EL1_PMHE           (1U << 6)
-diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
-index 0715b0bc2a..c1348cc60a 100644
---- a/include/hw/intc/arm_gicv3_common.h
-+++ b/include/hw/intc/arm_gicv3_common.h
-@@ -221,6 +221,7 @@ struct GICv3State {
-     uint32_t num_cpu;
-     uint32_t num_irq;
-     uint32_t revision;
-+    bool lpi_enable;
-     bool security_extn;
-     bool irq_reset_nonsecure;
-     bool gicd_no_migration_shift_bug;
--- 
-2.27.0
+Without [1]: Kernel doesn't care about cluster. When populating cpu 
+topology, it directly
+finds the hierarchy node with "physical package flag" as package when 
+parsing ACPI, and
+finds the core node's parent as package when parsing DT. So even we 
+provide cluster level
+description (one per socket), the parsing results will be the same as 
+not providing at all.
 
+With [1]: Kernel finds the core hierarchy node's parent as cluster when 
+parsing ACPI. So if
+we don't provide cluster level description, package will be taken as 
+cluster. And if we provide
+the description (one per socket), the parsing result will also be the same.
+
+That's why I said that we just need to provide description of cluster 
+(one per socket) if we
+don't want to make use of it in VMs.
+
+[1] 
+https://lore.kernel.org/lkml/20210420001844.9116-1-song.bao.hua@hisilicon.com/#t
+>> So we should only ensure value of clusters per socket is one if we don't
+>> want to use clusters,
+>> and don't need to care about whether or not to generate description in PPTT
+>> and cpu-map.
+>> Is this right?
+> Depends on your answer to my 'which kernel' questions.
+>
+>>> I'm not a big fan of these auto-calculated values either, but the
+>>> documentation says that it'll do that, and it's been done that way
+>>> forever, so I think we're stuck with it for the -smp option. Hmm, I was
+>>> just about to say that x86 computes all its values, but I see the most
+>>> recently added one, 'dies', is implemented the way you're proposing we
+>>> implement 'clusters', i.e. default to one and don't calculate it when it's
+>>> missing. I actually consider that either a documentation bug or an smp
+>>> parsing bug, though.
+>> My propose originally came from implementation of x86.
+>>> Another possible option, for Arm, because only the cpus and maxcpus
+>>> parameters of -smp have ever worked, is to document, for Arm, that if even
+>>> one parameter other than cpus or maxcpus is provided, then all parameters
+>>> must be provided. We can still decide if clusters=0 is valid, but we'll
+>>> enforce that everything is explicit and that the product (with or without
+>>> clusters) matches maxcpus.
+>> Requiring every parameter explicitly will be most stable but indeed strict.
+>>
+>> Currently all the parsers use way B to calculate value of thread if it is
+>> not provided explicitly.
+>> So users should ensure the -smp cmdline they provided can result in that
+>> parsed threads will
+>> be 1 if they don't want to support multiple threads in one core.
+>>
+>> Very similar to thread, users should also ensure the provided cmdline can
+>> result in that parsed
+>> clusters will be 1 if they don't want to support multiple clusters in one
+>> socket.
+>>
+>> So I'm wondering if we can just add some commit in the documentation to tell
+>> users that they
+>> should ensure this if they don't want support it. And as for calculation of
+>> clusters, we follow
+>> the logic of other parameters as you suggested in way B.
+>>
+>> Thanks,
+>> Yanan
+>>> Requiring every parameter might be stricter than necessary, though, I
+>>> think we're mostly concerned with cpus/maxcpus, sockets, and cores.
+>>> clusters can default to one or zero (whatever we choose and document),
+>>> threads can default to one, and cpus can default to maxcpus or maxcpus can
+>>> default to cpus, but at least one of those must be provided. And, if
+>>> sockets are provided, then cores must be provided and vice versa. If
+>>> neither sockets nor cores are provided, then nothing else besides cpus and
+>>> maxcpus may be provided, and that would mean to not generate any topology
+>>> descriptions for the guest.
+> I still don't know. I think I prefer making -smp more strict (even for
+> other architectures, but that's more difficult to do than for Arm.) What I
+> wrote above isn't that bad. We only require one of cpus or maxcpus (pretty
+> much everybody already does that anyway), and then, if given sockets
+> or cores, the other will also be required. I assume anybody who bothers to
+> specify one or the other would already specify both anyway.
+I agree to make -smp more strict. We want to expose the cpu topology 
+information
+to guest kernel, so that it can take advantage of the information for 
+better scheduling.
+ From this point of view, we hope the topology descriptions are 
+accurately specified
+but not automatically populated.
+
+But I think the requirement for ARM "if even one parameter other than 
+cpus or maxcpus
+is provided then all parameters must be provided" will be better. This 
+can ensure the
+whole accurate users-specified topology. As you mentioned, if anybody 
+who bothers
+to specify one, why not also specify the others.
+
+I can add the requirement for ARM in the documentation, and also check 
+the parameters
+in virt_smp_parse. Will this be fine?
+
+Thanks,
+Yanan
+> Thanks,
+> drew
+>
+> .

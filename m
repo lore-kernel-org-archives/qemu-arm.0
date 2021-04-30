@@ -1,109 +1,116 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp478427lfg;
-        Fri, 30 Apr 2021 13:43:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzjHwO+jof/UOQ7g7Nt4/1muXqETD/r1SAAuhWwvNVycONF8CUrD+2onxzJLGccZIeK3B5E
-X-Received: by 2002:a6b:8ec9:: with SMTP id q192mr5583215iod.12.1619815404627;
-        Fri, 30 Apr 2021 13:43:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619815404; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp314921lfg;
+        Fri, 30 Apr 2021 10:14:25 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxL8ShOmEbYhdladqcw/LbrkmDZnTK/Yrz2KvL0DIDt7j+KvPOlh16Pk2xDjtOSX28LB3wl
+X-Received: by 2002:a05:6402:752:: with SMTP id p18mr7301210edy.127.1619802864986;
+        Fri, 30 Apr 2021 10:14:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619802864; cv=none;
         d=google.com; s=arc-20160816;
-        b=Qpzp6Sf4zk9QwIQmK6YD4NJQ5E9ejk3cgFqSPzYJe4mPGIijraHcnfS1mKJ3PxxF75
-         1PJUsCaUn4UumY440HOAbZd61h2Q7P7DBFTCGKrNYkVf46NwuwhoxVpV/CfVL8kgH82q
-         DKlZbIQt+xp4RouhCelmBZhrsGNq+yp15uZrod2O+We22rdeXGE2B7hC5pk8IbdQyaQL
-         0UGiWTlRGqR1Nt7GaIhPXlQCa2TBgjwhblYinGbdOJ5eA/xNdC11FqxPhuUx1BgDdTur
-         wi39VD+mfnmrVx2IIxlfTpr/ZMgEpmEm4vaQz47NiyCmSK43sR0vPPE0aSBZfpaMZiuf
-         1NCQ==
+        b=mAQYgbU64IEhzL96PhQf2tUzolYkY5podY4ISombi3gtlfA6HHYjdZ7KyVHH/56E5J
+         unpRDR4aBdTvLkDXYuKd92QTUQyocZjwSY2U+qMoMvA3Vkqticec77AJkPb9xeOT/1DX
+         7999nnZ+OHeYnFrZz6oHtLv4Tf3hH4B5oxM+JBKZVBmT5WR7wLwH5PHxEq3AYmPptKsW
+         vgszKOmJ+FNpUpXC6bdSTCXGLuVap9E+P/3Loa+TZYfdB94J7XMRQMiNSLQnCbLBsr3g
+         P4Gq7T9w9IyO6lUMlyxb/Rzn4QZpAKzh7g/Wn/WMGpx+njoCKyW3ND0068x/y2YHg63l
+         udgg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=uNqnL76ppa/JptnkZAzi8U8bmGMNrJo5oaqSMO/4t5I=;
-        b=coS6mWK/YDFWs8RyQ3z7SLQtn2FCXRbAPPEf9sCzXkQYXQtwTldbbVSEJ0eOAwwHVF
-         7QgDC0iXvHbmlDJVOU02HBIObU46NTfSz9ncBLfoi771yESTg3ZXz+eYBfUMm+qKoivj
-         yQGUzX2oZd0XwUJ8Yjma0tWRcyuzMApCdVX9EitLBlSuIdp/9OR05dOYvMopFA+h7XMO
-         cPxG4bFIhRTv9fQp0HVTZr6NdVSM6FWVsqh6hBT7sWN354+b2u1oijSzf3VWOkwUjrBR
-         7/8ftGXBjwEh/mJdK8K4Zob7eI83H1bzQbKmBU32rEzwnicIhJTI+c+1eWbh9wB7vwEd
-         c6Jw==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=yLH4jnIvAwExGoKWAvZTJmnOzDvTJ4Fm2XYhgQy1br8=;
+        b=qumC2+IhVpJKVpK0hLhcyt4vTSiqtw8GM8ZU8mYqyzchgcVeo99hlJVf9nkSc4kfhT
+         Dp262DjDXG0jLuCxXn36np3sk8IM9RW4NIwVyvOHU22NKJjEv0/kvYUE4Lbe9eUagJSJ
+         RZAKTQDiSY8sa826HNrJ4qqo43Fi0+l9J+4fqU/BvxuFp0NCazpbMF2LMlWHVOE3w5RR
+         Iyy2AB5uwWwhda3j/+tXtBq45uRLLbDvUBNWOYXShFkic2A/MTlq3qlj6sZRvcXP/q5h
+         AehrP8QKrdy4oX9Ap8M7Jyi4AyakTOxnhWq5I4Y5npDBdcqQxCgK0Oc5OjIjHBJGu2JI
+         PRRQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qZz5qo7q;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o20si3427869jas.19.2021.04.30.13.43.24
+        by mx.google.com with ESMTPS id e12si3890180ejz.266.2021.04.30.10.14.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 30 Apr 2021 13:43:24 -0700 (PDT)
+        Fri, 30 Apr 2021 10:14:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qZz5qo7q;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42190 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:51320 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lcZyt-0002MJ-RK
-	for alex.bennee@linaro.org; Fri, 30 Apr 2021 16:43:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52100)
+	id 1lcWid-0002qd-IB
+	for alex.bennee@linaro.org; Fri, 30 Apr 2021 13:14:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37342)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lcZio-0000K9-3u
- for qemu-devel@nongnu.org; Fri, 30 Apr 2021 16:26:46 -0400
-Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b]:44733)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lcZiV-00067m-7Z
- for qemu-devel@nongnu.org; Fri, 30 Apr 2021 16:26:45 -0400
-Received: by mail-pg1-x52b.google.com with SMTP id y32so50168143pga.11
- for <qemu-devel@nongnu.org>; Fri, 30 Apr 2021 13:26:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=uNqnL76ppa/JptnkZAzi8U8bmGMNrJo5oaqSMO/4t5I=;
- b=qZz5qo7qmWrUMnAtAQUpy/o1d6cjMTo3dfNxSEwkfLGN4/7XIh/W+7A63AbLwAJYRQ
- bKgqIgif7LZYqR4L88mi5RlILMHjtBAKpN4lHmqCAeZiiB18nSq9f4boGIFDdzWK1+7R
- 3RYfOoqMGwmpi2e4CVDhgyurzq4M2PsJiqlJUD+ed/RoDjA2SEq3vRqfuCXpsGy1liFf
- uwX1WMcbaisETbs2//WycEZg8O6HmpOPX4PnNIZ5lei5aA1mzZcHgH0PTjnWcoM8kGge
- iIv/0swPptgJcPVwtCGTRokRTVFH09NEF0WdlESvH5TwypBmzvZK2HayzGCqT0wNvK+x
- TGpg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=uNqnL76ppa/JptnkZAzi8U8bmGMNrJo5oaqSMO/4t5I=;
- b=StaGetddmj1YZsp4M/bJ74yQvhYJF/N0xCFFUSrVcETjUGUkBGxeBC0oPK32EPTmBZ
- TFccGs0JXCiZLE8UiiOnNX59d/86YVt8UMTojuHEWn71b4Sf/vq8C8bsyvE6xbEOwgVy
- z8WHGORlGqrjRcJk+ssDbvyGuwkN4dSI0JUKSqsWDXU9w1ITAzsy/mMkRDyowtSIeaBT
- CzfNdJGGC5i8Le6Z8nqOo7bpQTl3uCNu+kAkCWeDb43GfBSs9jZifP8mSsAoUvSnB7DZ
- XxeTJrh5A1T+AIlwwLMd/5x77EcUnug0Os6jfa2sJTdEU4rLicVMp4PCPsIsUeTiAI4C
- PASw==
-X-Gm-Message-State: AOAM530jGE2Z4MgpIH7HFTf7KBBDiyw8Wg1PVQFFkxgQTqjx0wTgvq7a
- C0zBlJR73u6GwfUlK+dUDrRbh1e+40u8Mw==
-X-Received: by 2002:a62:18d7:0:b029:28c:fdfa:f95b with SMTP id
- 206-20020a6218d70000b029028cfdfaf95bmr3758760pfy.57.1619814385820; 
- Fri, 30 Apr 2021 13:26:25 -0700 (PDT)
-Received: from localhost.localdomain ([71.212.144.24])
- by smtp.gmail.com with ESMTPSA id e6sm2905257pfd.219.2021.04.30.13.26.25
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 30 Apr 2021 13:26:25 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v6 24/82] target/arm: Implement SVE2 saturating extract narrow
-Date: Fri, 30 Apr 2021 13:25:12 -0700
-Message-Id: <20210430202610.1136687-25-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210430202610.1136687-1-richard.henderson@linaro.org>
-References: <20210430202610.1136687-1-richard.henderson@linaro.org>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1lcWW3-0000Gs-St; Fri, 30 Apr 2021 13:01:25 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:52376)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1lcWW1-0002VJ-6B; Fri, 30 Apr 2021 13:01:23 -0400
+Received: from pps.filterd (m0187473.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
+ 13UGXKsV052867; Fri, 30 Apr 2021 13:01:16 -0400
+Received: from ppma06ams.nl.ibm.com (66.31.33a9.ip4.static.sl-reverse.com
+ [169.51.49.102])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 388m5nuvj6-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 30 Apr 2021 13:01:15 -0400
+Received: from pps.filterd (ppma06ams.nl.ibm.com [127.0.0.1])
+ by ppma06ams.nl.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 13UGwtAO008483;
+ Fri, 30 Apr 2021 17:01:13 GMT
+Received: from b06cxnps4074.portsmouth.uk.ibm.com
+ (d06relay11.portsmouth.uk.ibm.com [9.149.109.196])
+ by ppma06ams.nl.ibm.com with ESMTP id 384akhbam6-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 30 Apr 2021 17:01:13 +0000
+Received: from b06wcsmtp001.portsmouth.uk.ibm.com
+ (b06wcsmtp001.portsmouth.uk.ibm.com [9.149.105.160])
+ by b06cxnps4074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 13UH1Aox36241802
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 30 Apr 2021 17:01:11 GMT
+Received: from b06wcsmtp001.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id D3758A4067;
+ Fri, 30 Apr 2021 17:01:10 +0000 (GMT)
+Received: from b06wcsmtp001.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 9D66BA405B;
+ Fri, 30 Apr 2021 17:01:10 +0000 (GMT)
+Received: from smtp.tlslab.ibm.com (unknown [9.101.4.1])
+ by b06wcsmtp001.portsmouth.uk.ibm.com (Postfix) with SMTP;
+ Fri, 30 Apr 2021 17:01:10 +0000 (GMT)
+Received: from yukon.ibmuc.com (unknown [9.171.40.192])
+ by smtp.tlslab.ibm.com (Postfix) with ESMTP id F167B220193;
+ Fri, 30 Apr 2021 19:01:09 +0200 (CEST)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: [PULL 11/18] hw/misc/aspeed_xdma: Add AST2600 support
+Date: Fri, 30 Apr 2021 19:01:01 +0200
+Message-Id: <20210430170108.10261-2-clg@kaod.org>
+X-Mailer: git-send-email 2.26.3
+In-Reply-To: <20210430170108.10261-1-clg@kaod.org>
+References: <20210430170108.10261-1-clg@kaod.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: 9yVj6Pg4B1MXJGWC15r9FTT9ITWXW1xA
+X-Proofpoint-ORIG-GUID: 9yVj6Pg4B1MXJGWC15r9FTT9ITWXW1xA
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.761
+ definitions=2021-04-30_10:2021-04-30,
+ 2021-04-30 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1034
+ priorityscore=1501 suspectscore=0 mlxscore=0 lowpriorityscore=0
+ bulkscore=0 phishscore=0 adultscore=0 mlxlogscore=999 spamscore=0
+ malwarescore=0 impostorscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.12.0-2104060000 definitions=main-2104300109
+Received-SPF: softfail client-ip=148.163.156.1; envelope-from=clg@kaod.org;
+ helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -116,384 +123,303 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org
+Cc: qemu-arm@nongnu.org, Eddie James <eajames@linux.ibm.com>,
+ qemu-devel@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uuTxKwvpTCX6
+X-TUID: 6Zxh+LBf87Ma
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+When we introduced support for the AST2600 SoC, the XDMA controller
+was forgotten. It went unnoticed because it's not used under emulation.
+But the register layout being different, the reset procedure is bogus
+and this breaks kexec.
+
+Add a AspeedXDMAClass to take into account the register differences.
+
+Cc: Eddie James <eajames@linux.ibm.com>
+Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+Reviewed-by: Eddie James <eajames@linux.ibm.com>
+Message-Id: <20210407171637.777743-14-clg@kaod.org>
+Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
- target/arm/helper-sve.h    |  24 ++++
- target/arm/sve.decode      |  12 ++
- target/arm/sve_helper.c    |  56 +++++++++
- target/arm/translate-sve.c | 238 +++++++++++++++++++++++++++++++++++++
- 4 files changed, 330 insertions(+)
+ include/hw/misc/aspeed_xdma.h |  17 ++++-
+ hw/arm/aspeed_ast2600.c       |   3 +-
+ hw/arm/aspeed_soc.c           |   3 +-
+ hw/misc/aspeed_xdma.c         | 124 +++++++++++++++++++++++++++-------
+ 4 files changed, 121 insertions(+), 26 deletions(-)
 
-diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
-index 4a62012850..b302203ce8 100644
---- a/target/arm/helper-sve.h
-+++ b/target/arm/helper-sve.h
-@@ -2419,3 +2419,27 @@ DEF_HELPER_FLAGS_5(sve2_uabal_d, TCG_CALL_NO_RWG,
- 
- DEF_HELPER_FLAGS_5(sve2_adcl_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_5(sve2_adcl_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+diff --git a/include/hw/misc/aspeed_xdma.h b/include/hw/misc/aspeed_xdma.=
+h
+index a2dea96984f3..b1478fd1c681 100644
+--- a/include/hw/misc/aspeed_xdma.h
++++ b/include/hw/misc/aspeed_xdma.h
+@@ -13,7 +13,10 @@
+ #include "qom/object.h"
+=20
+ #define TYPE_ASPEED_XDMA "aspeed.xdma"
+-OBJECT_DECLARE_SIMPLE_TYPE(AspeedXDMAState, ASPEED_XDMA)
++#define TYPE_ASPEED_2400_XDMA TYPE_ASPEED_XDMA "-ast2400"
++#define TYPE_ASPEED_2500_XDMA TYPE_ASPEED_XDMA "-ast2500"
++#define TYPE_ASPEED_2600_XDMA TYPE_ASPEED_XDMA "-ast2600"
++OBJECT_DECLARE_TYPE(AspeedXDMAState, AspeedXDMAClass, ASPEED_XDMA)
+=20
+ #define ASPEED_XDMA_NUM_REGS (ASPEED_XDMA_REG_SIZE / sizeof(uint32_t))
+ #define ASPEED_XDMA_REG_SIZE 0x7C
+@@ -28,4 +31,16 @@ struct AspeedXDMAState {
+     uint32_t regs[ASPEED_XDMA_NUM_REGS];
+ };
+=20
++struct AspeedXDMAClass {
++    SysBusDeviceClass parent_class;
 +
-+DEF_HELPER_FLAGS_3(sve2_sqxtnb_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_3(sve2_sqxtnb_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_3(sve2_sqxtnb_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++    uint8_t cmdq_endp;
++    uint8_t cmdq_wrp;
++    uint8_t cmdq_rdp;
++    uint8_t intr_ctrl;
++    uint32_t intr_ctrl_mask;
++    uint8_t intr_status;
++    uint32_t intr_complete;
++};
 +
-+DEF_HELPER_FLAGS_3(sve2_uqxtnb_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_3(sve2_uqxtnb_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_3(sve2_uqxtnb_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+ #endif /* ASPEED_XDMA_H */
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index e0fbb020c770..c60824bfeecb 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -187,7 +187,8 @@ static void aspeed_soc_ast2600_init(Object *obj)
+         object_initialize_child(obj, "mii[*]", &s->mii[i], TYPE_ASPEED_M=
+II);
+     }
+=20
+-    object_initialize_child(obj, "xdma", &s->xdma, TYPE_ASPEED_XDMA);
++    snprintf(typename, sizeof(typename), TYPE_ASPEED_XDMA "-%s", socname=
+);
++    object_initialize_child(obj, "xdma", &s->xdma, typename);
+=20
+     snprintf(typename, sizeof(typename), "aspeed.gpio-%s", socname);
+     object_initialize_child(obj, "gpio", &s->gpio, typename);
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index 8ed29113f79f..4a95d27d9d63 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -199,7 +199,8 @@ static void aspeed_soc_init(Object *obj)
+                                 TYPE_FTGMAC100);
+     }
+=20
+-    object_initialize_child(obj, "xdma", &s->xdma, TYPE_ASPEED_XDMA);
++    snprintf(typename, sizeof(typename), TYPE_ASPEED_XDMA "-%s", socname=
+);
++    object_initialize_child(obj, "xdma", &s->xdma, typename);
+=20
+     snprintf(typename, sizeof(typename), "aspeed.gpio-%s", socname);
+     object_initialize_child(obj, "gpio", &s->gpio, typename);
+diff --git a/hw/misc/aspeed_xdma.c b/hw/misc/aspeed_xdma.c
+index 533d237e3ce2..1c21577c98c9 100644
+--- a/hw/misc/aspeed_xdma.c
++++ b/hw/misc/aspeed_xdma.c
+@@ -30,6 +30,19 @@
+ #define  XDMA_IRQ_ENG_STAT_US_COMP BIT(4)
+ #define  XDMA_IRQ_ENG_STAT_DS_COMP BIT(5)
+ #define  XDMA_IRQ_ENG_STAT_RESET   0xF8000000
 +
-+DEF_HELPER_FLAGS_3(sve2_sqxtunb_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_3(sve2_sqxtunb_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_3(sve2_sqxtunb_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++#define XDMA_AST2600_BMC_CMDQ_ADDR   0x14
++#define XDMA_AST2600_BMC_CMDQ_ENDP   0x18
++#define XDMA_AST2600_BMC_CMDQ_WRP    0x1c
++#define XDMA_AST2600_BMC_CMDQ_RDP    0x20
++#define XDMA_AST2600_IRQ_CTRL        0x38
++#define  XDMA_AST2600_IRQ_CTRL_US_COMP    BIT(16)
++#define  XDMA_AST2600_IRQ_CTRL_DS_COMP    BIT(17)
++#define  XDMA_AST2600_IRQ_CTRL_W_MASK     0x017003FF
++#define XDMA_AST2600_IRQ_STATUS      0x3c
++#define  XDMA_AST2600_IRQ_STATUS_US_COMP  BIT(16)
++#define  XDMA_AST2600_IRQ_STATUS_DS_COMP  BIT(17)
 +
-+DEF_HELPER_FLAGS_3(sve2_sqxtnt_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_3(sve2_sqxtnt_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_3(sve2_sqxtnt_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
-+
-+DEF_HELPER_FLAGS_3(sve2_uqxtnt_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_3(sve2_uqxtnt_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_3(sve2_uqxtnt_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
-+
-+DEF_HELPER_FLAGS_3(sve2_sqxtunt_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_3(sve2_sqxtunt_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_3(sve2_sqxtunt_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
-diff --git a/target/arm/sve.decode b/target/arm/sve.decode
-index 32b15e4192..19866ec4c6 100644
---- a/target/arm/sve.decode
-+++ b/target/arm/sve.decode
-@@ -1272,3 +1272,15 @@ SLI             01000101 .. 0 ..... 11110 1 ..... .....  @rd_rn_tszimm_shl
- # TODO: Use @rda and %reg_movprfx here.
- SABA            01000101 .. 0 ..... 11111 0 ..... .....  @rd_rn_rm
- UABA            01000101 .. 0 ..... 11111 1 ..... .....  @rd_rn_rm
-+
-+#### SVE2 Narrowing
-+
-+## SVE2 saturating extract narrow
-+
-+# Bits 23, 18-16 are zero, limited in the translator via esz < 3 & imm == 0.
-+SQXTNB          01000101 .. 1 ..... 010 000 ..... .....  @rd_rn_tszimm_shl
-+SQXTNT          01000101 .. 1 ..... 010 001 ..... .....  @rd_rn_tszimm_shl
-+UQXTNB          01000101 .. 1 ..... 010 010 ..... .....  @rd_rn_tszimm_shl
-+UQXTNT          01000101 .. 1 ..... 010 011 ..... .....  @rd_rn_tszimm_shl
-+SQXTUNB         01000101 .. 1 ..... 010 100 ..... .....  @rd_rn_tszimm_shl
-+SQXTUNT         01000101 .. 1 ..... 010 101 ..... .....  @rd_rn_tszimm_shl
-diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
-index 0049ad861f..7dca67785a 100644
---- a/target/arm/sve_helper.c
-+++ b/target/arm/sve_helper.c
-@@ -1264,6 +1264,62 @@ DO_ZZZW_ACC(sve2_uabal_d, uint64_t, uint32_t,     , H1_4, DO_ABD)
- 
- #undef DO_ZZZW_ACC
- 
-+#define DO_XTNB(NAME, TYPE, OP) \
-+void HELPER(NAME)(void *vd, void *vn, uint32_t desc)         \
-+{                                                            \
-+    intptr_t i, opr_sz = simd_oprsz(desc);                   \
-+    for (i = 0; i < opr_sz; i += sizeof(TYPE)) {             \
-+        TYPE nn = *(TYPE *)(vn + i);                         \
-+        nn = OP(nn) & MAKE_64BIT_MASK(0, sizeof(TYPE) * 4);  \
-+        *(TYPE *)(vd + i) = nn;                              \
-+    }                                                        \
-+}
-+
-+#define DO_XTNT(NAME, TYPE, TYPEN, H, OP)                               \
-+void HELPER(NAME)(void *vd, void *vn, uint32_t desc)                    \
-+{                                                                       \
-+    intptr_t i, opr_sz = simd_oprsz(desc), odd = H(sizeof(TYPEN));      \
-+    for (i = 0; i < opr_sz; i += sizeof(TYPE)) {                        \
-+        TYPE nn = *(TYPE *)(vn + i);                                    \
-+        *(TYPEN *)(vd + i + odd) = OP(nn);                              \
-+    }                                                                   \
-+}
-+
-+#define DO_SQXTN_H(n)  do_sat_bhs(n, INT8_MIN, INT8_MAX)
-+#define DO_SQXTN_S(n)  do_sat_bhs(n, INT16_MIN, INT16_MAX)
-+#define DO_SQXTN_D(n)  do_sat_bhs(n, INT32_MIN, INT32_MAX)
-+
-+DO_XTNB(sve2_sqxtnb_h, int16_t, DO_SQXTN_H)
-+DO_XTNB(sve2_sqxtnb_s, int32_t, DO_SQXTN_S)
-+DO_XTNB(sve2_sqxtnb_d, int64_t, DO_SQXTN_D)
-+
-+DO_XTNT(sve2_sqxtnt_h, int16_t, int8_t, H1, DO_SQXTN_H)
-+DO_XTNT(sve2_sqxtnt_s, int32_t, int16_t, H1_2, DO_SQXTN_S)
-+DO_XTNT(sve2_sqxtnt_d, int64_t, int32_t, H1_4, DO_SQXTN_D)
-+
-+#define DO_UQXTN_H(n)  do_sat_bhs(n, 0, UINT8_MAX)
-+#define DO_UQXTN_S(n)  do_sat_bhs(n, 0, UINT16_MAX)
-+#define DO_UQXTN_D(n)  do_sat_bhs(n, 0, UINT32_MAX)
-+
-+DO_XTNB(sve2_uqxtnb_h, uint16_t, DO_UQXTN_H)
-+DO_XTNB(sve2_uqxtnb_s, uint32_t, DO_UQXTN_S)
-+DO_XTNB(sve2_uqxtnb_d, uint64_t, DO_UQXTN_D)
-+
-+DO_XTNT(sve2_uqxtnt_h, uint16_t, uint8_t, H1, DO_UQXTN_H)
-+DO_XTNT(sve2_uqxtnt_s, uint32_t, uint16_t, H1_2, DO_UQXTN_S)
-+DO_XTNT(sve2_uqxtnt_d, uint64_t, uint32_t, H1_4, DO_UQXTN_D)
-+
-+DO_XTNB(sve2_sqxtunb_h, int16_t, DO_UQXTN_H)
-+DO_XTNB(sve2_sqxtunb_s, int32_t, DO_UQXTN_S)
-+DO_XTNB(sve2_sqxtunb_d, int64_t, DO_UQXTN_D)
-+
-+DO_XTNT(sve2_sqxtunt_h, int16_t, int8_t, H1, DO_UQXTN_H)
-+DO_XTNT(sve2_sqxtunt_s, int32_t, int16_t, H1_2, DO_UQXTN_S)
-+DO_XTNT(sve2_sqxtunt_d, int64_t, int32_t, H1_4, DO_UQXTN_D)
-+
-+#undef DO_XTNB
-+#undef DO_XTNT
-+
- void HELPER(sve2_adcl_s)(void *vd, void *vn, void *vm, void *va, uint32_t desc)
+ #define XDMA_MEM_SIZE              0x1000
+=20
+ #define TO_REG(addr) ((addr) / sizeof(uint32_t))
+@@ -52,56 +65,48 @@ static void aspeed_xdma_write(void *opaque, hwaddr ad=
+dr, uint64_t val,
+     unsigned int idx;
+     uint32_t val32 =3D (uint32_t)val;
+     AspeedXDMAState *xdma =3D opaque;
++    AspeedXDMAClass *axc =3D ASPEED_XDMA_GET_CLASS(xdma);
+=20
+     if (addr >=3D ASPEED_XDMA_REG_SIZE) {
+         return;
+     }
+=20
+-    switch (addr) {
+-    case XDMA_BMC_CMDQ_ENDP:
++    if (addr =3D=3D axc->cmdq_endp) {
+         xdma->regs[TO_REG(addr)] =3D val32 & XDMA_BMC_CMDQ_W_MASK;
+-        break;
+-    case XDMA_BMC_CMDQ_WRP:
++    } else if (addr =3D=3D axc->cmdq_wrp) {
+         idx =3D TO_REG(addr);
+         xdma->regs[idx] =3D val32 & XDMA_BMC_CMDQ_W_MASK;
+-        xdma->regs[TO_REG(XDMA_BMC_CMDQ_RDP)] =3D xdma->regs[idx];
++        xdma->regs[TO_REG(axc->cmdq_rdp)] =3D xdma->regs[idx];
+=20
+         trace_aspeed_xdma_write(addr, val);
+=20
+         if (xdma->bmc_cmdq_readp_set) {
+             xdma->bmc_cmdq_readp_set =3D 0;
+         } else {
+-            xdma->regs[TO_REG(XDMA_IRQ_ENG_STAT)] |=3D
+-                XDMA_IRQ_ENG_STAT_US_COMP | XDMA_IRQ_ENG_STAT_DS_COMP;
++            xdma->regs[TO_REG(axc->intr_status)] |=3D axc->intr_complete=
+;
+=20
+-            if (xdma->regs[TO_REG(XDMA_IRQ_ENG_CTRL)] &
+-                (XDMA_IRQ_ENG_CTRL_US_COMP | XDMA_IRQ_ENG_CTRL_DS_COMP))
++            if (xdma->regs[TO_REG(axc->intr_ctrl)] & axc->intr_complete)=
  {
-     intptr_t i, opr_sz = simd_oprsz(desc);
-diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-index ba1953118b..b8ced82e4e 100644
---- a/target/arm/translate-sve.c
-+++ b/target/arm/translate-sve.c
-@@ -6459,3 +6459,241 @@ static bool trans_UABA(DisasContext *s, arg_rrr_esz *a)
- {
-     return do_sve2_fn_zzz(s, a, gen_gvec_uaba);
+                 qemu_irq_raise(xdma->irq);
++            }
+         }
+-        break;
+-    case XDMA_BMC_CMDQ_RDP:
++    } else if (addr =3D=3D axc->cmdq_rdp) {
+         trace_aspeed_xdma_write(addr, val);
+=20
+         if (val32 =3D=3D XDMA_BMC_CMDQ_RDP_MAGIC) {
+             xdma->bmc_cmdq_readp_set =3D 1;
+         }
+-        break;
+-    case XDMA_IRQ_ENG_CTRL:
+-        xdma->regs[TO_REG(addr)] =3D val32 & XDMA_IRQ_ENG_CTRL_W_MASK;
+-        break;
+-    case XDMA_IRQ_ENG_STAT:
++    } else if (addr =3D=3D axc->intr_ctrl) {
++        xdma->regs[TO_REG(addr)] =3D val32 & axc->intr_ctrl_mask;
++    } else if (addr =3D=3D axc->intr_status) {
+         trace_aspeed_xdma_write(addr, val);
+=20
+         idx =3D TO_REG(addr);
+-        if (val32 & (XDMA_IRQ_ENG_STAT_US_COMP | XDMA_IRQ_ENG_STAT_DS_CO=
+MP)) {
+-            xdma->regs[idx] &=3D
+-                ~(XDMA_IRQ_ENG_STAT_US_COMP | XDMA_IRQ_ENG_STAT_DS_COMP)=
+;
++        if (val32 & axc->intr_complete) {
++            xdma->regs[idx] &=3D ~axc->intr_complete;
+             qemu_irq_lower(xdma->irq);
+         }
+-        break;
+-    default:
++    } else {
+         xdma->regs[TO_REG(addr)] =3D val32;
+-        break;
+     }
  }
-+
-+static bool do_sve2_narrow_extract(DisasContext *s, arg_rri_esz *a,
-+                                   const GVecGen2 ops[3])
+=20
+@@ -127,10 +132,11 @@ static void aspeed_xdma_realize(DeviceState *dev, E=
+rror **errp)
+ static void aspeed_xdma_reset(DeviceState *dev)
+ {
+     AspeedXDMAState *xdma =3D ASPEED_XDMA(dev);
++    AspeedXDMAClass *axc =3D ASPEED_XDMA_GET_CLASS(xdma);
+=20
+     xdma->bmc_cmdq_readp_set =3D 0;
+     memset(xdma->regs, 0, ASPEED_XDMA_REG_SIZE);
+-    xdma->regs[TO_REG(XDMA_IRQ_ENG_STAT)] =3D XDMA_IRQ_ENG_STAT_RESET;
++    xdma->regs[TO_REG(axc->intr_status)] =3D XDMA_IRQ_ENG_STAT_RESET;
+=20
+     qemu_irq_lower(xdma->irq);
+ }
+@@ -144,6 +150,73 @@ static const VMStateDescription aspeed_xdma_vmstate =
+=3D {
+     },
+ };
+=20
++static void aspeed_2600_xdma_class_init(ObjectClass *klass, void *data)
 +{
-+    if (a->esz < 0 || a->esz > MO_32 || a->imm != 0 ||
-+        !dc_isar_feature(aa64_sve2, s)) {
-+        return false;
-+    }
-+    if (sve_access_check(s)) {
-+        unsigned vsz = vec_full_reg_size(s);
-+        tcg_gen_gvec_2(vec_full_reg_offset(s, a->rd),
-+                        vec_full_reg_offset(s, a->rn),
-+                        vsz, vsz, &ops[a->esz]);
-+    }
-+    return true;
++    DeviceClass *dc =3D DEVICE_CLASS(klass);
++    AspeedXDMAClass *axc =3D ASPEED_XDMA_CLASS(klass);
++
++    dc->desc =3D "ASPEED 2600 XDMA Controller";
++
++    axc->cmdq_endp =3D XDMA_AST2600_BMC_CMDQ_ENDP;
++    axc->cmdq_wrp =3D XDMA_AST2600_BMC_CMDQ_WRP;
++    axc->cmdq_rdp =3D XDMA_AST2600_BMC_CMDQ_RDP;
++    axc->intr_ctrl =3D XDMA_AST2600_IRQ_CTRL;
++    axc->intr_ctrl_mask =3D XDMA_AST2600_IRQ_CTRL_W_MASK;
++    axc->intr_status =3D XDMA_AST2600_IRQ_STATUS;
++    axc->intr_complete =3D XDMA_AST2600_IRQ_STATUS_US_COMP |
++        XDMA_AST2600_IRQ_STATUS_DS_COMP;
 +}
 +
-+static const TCGOpcode sqxtn_list[] = {
-+    INDEX_op_shli_vec, INDEX_op_smin_vec, INDEX_op_smax_vec, 0
++static const TypeInfo aspeed_2600_xdma_info =3D {
++    .name =3D TYPE_ASPEED_2600_XDMA,
++    .parent =3D TYPE_ASPEED_XDMA,
++    .class_init =3D aspeed_2600_xdma_class_init,
 +};
 +
-+static void gen_sqxtnb_vec(unsigned vece, TCGv_vec d, TCGv_vec n)
++static void aspeed_2500_xdma_class_init(ObjectClass *klass, void *data)
 +{
-+    TCGv_vec t = tcg_temp_new_vec_matching(d);
-+    int halfbits = 4 << vece;
-+    int64_t mask = (1ull << halfbits) - 1;
-+    int64_t min = -1ull << (halfbits - 1);
-+    int64_t max = -min - 1;
++    DeviceClass *dc =3D DEVICE_CLASS(klass);
++    AspeedXDMAClass *axc =3D ASPEED_XDMA_CLASS(klass);
 +
-+    tcg_gen_dupi_vec(vece, t, min);
-+    tcg_gen_smax_vec(vece, d, n, t);
-+    tcg_gen_dupi_vec(vece, t, max);
-+    tcg_gen_smin_vec(vece, d, d, t);
-+    tcg_gen_dupi_vec(vece, t, mask);
-+    tcg_gen_and_vec(vece, d, d, t);
-+    tcg_temp_free_vec(t);
-+}
++    dc->desc =3D "ASPEED 2500 XDMA Controller";
 +
-+static bool trans_SQXTNB(DisasContext *s, arg_rri_esz *a)
-+{
-+    static const GVecGen2 ops[3] = {
-+        { .fniv = gen_sqxtnb_vec,
-+          .opt_opc = sqxtn_list,
-+          .fno = gen_helper_sve2_sqxtnb_h,
-+          .vece = MO_16 },
-+        { .fniv = gen_sqxtnb_vec,
-+          .opt_opc = sqxtn_list,
-+          .fno = gen_helper_sve2_sqxtnb_s,
-+          .vece = MO_32 },
-+        { .fniv = gen_sqxtnb_vec,
-+          .opt_opc = sqxtn_list,
-+          .fno = gen_helper_sve2_sqxtnb_d,
-+          .vece = MO_64 },
-+    };
-+    return do_sve2_narrow_extract(s, a, ops);
-+}
-+
-+static void gen_sqxtnt_vec(unsigned vece, TCGv_vec d, TCGv_vec n)
-+{
-+    TCGv_vec t = tcg_temp_new_vec_matching(d);
-+    int halfbits = 4 << vece;
-+    int64_t mask = (1ull << halfbits) - 1;
-+    int64_t min = -1ull << (halfbits - 1);
-+    int64_t max = -min - 1;
-+
-+    tcg_gen_dupi_vec(vece, t, min);
-+    tcg_gen_smax_vec(vece, n, n, t);
-+    tcg_gen_dupi_vec(vece, t, max);
-+    tcg_gen_smin_vec(vece, n, n, t);
-+    tcg_gen_shli_vec(vece, n, n, halfbits);
-+    tcg_gen_dupi_vec(vece, t, mask);
-+    tcg_gen_bitsel_vec(vece, d, t, d, n);
-+    tcg_temp_free_vec(t);
-+}
-+
-+static bool trans_SQXTNT(DisasContext *s, arg_rri_esz *a)
-+{
-+    static const GVecGen2 ops[3] = {
-+        { .fniv = gen_sqxtnt_vec,
-+          .opt_opc = sqxtn_list,
-+          .load_dest = true,
-+          .fno = gen_helper_sve2_sqxtnt_h,
-+          .vece = MO_16 },
-+        { .fniv = gen_sqxtnt_vec,
-+          .opt_opc = sqxtn_list,
-+          .load_dest = true,
-+          .fno = gen_helper_sve2_sqxtnt_s,
-+          .vece = MO_32 },
-+        { .fniv = gen_sqxtnt_vec,
-+          .opt_opc = sqxtn_list,
-+          .load_dest = true,
-+          .fno = gen_helper_sve2_sqxtnt_d,
-+          .vece = MO_64 },
-+    };
-+    return do_sve2_narrow_extract(s, a, ops);
-+}
-+
-+static const TCGOpcode uqxtn_list[] = {
-+    INDEX_op_shli_vec, INDEX_op_umin_vec, 0
++    axc->cmdq_endp =3D XDMA_BMC_CMDQ_ENDP;
++    axc->cmdq_wrp =3D XDMA_BMC_CMDQ_WRP;
++    axc->cmdq_rdp =3D XDMA_BMC_CMDQ_RDP;
++    axc->intr_ctrl =3D XDMA_IRQ_ENG_CTRL;
++    axc->intr_ctrl_mask =3D XDMA_IRQ_ENG_CTRL_W_MASK;
++    axc->intr_status =3D XDMA_IRQ_ENG_STAT;
++    axc->intr_complete =3D XDMA_IRQ_ENG_STAT_US_COMP | XDMA_IRQ_ENG_STAT=
+_DS_COMP;
 +};
 +
-+static void gen_uqxtnb_vec(unsigned vece, TCGv_vec d, TCGv_vec n)
-+{
-+    TCGv_vec t = tcg_temp_new_vec_matching(d);
-+    int halfbits = 4 << vece;
-+    int64_t max = (1ull << halfbits) - 1;
-+
-+    tcg_gen_dupi_vec(vece, t, max);
-+    tcg_gen_umin_vec(vece, d, n, t);
-+    tcg_temp_free_vec(t);
-+}
-+
-+static bool trans_UQXTNB(DisasContext *s, arg_rri_esz *a)
-+{
-+    static const GVecGen2 ops[3] = {
-+        { .fniv = gen_uqxtnb_vec,
-+          .opt_opc = uqxtn_list,
-+          .fno = gen_helper_sve2_uqxtnb_h,
-+          .vece = MO_16 },
-+        { .fniv = gen_uqxtnb_vec,
-+          .opt_opc = uqxtn_list,
-+          .fno = gen_helper_sve2_uqxtnb_s,
-+          .vece = MO_32 },
-+        { .fniv = gen_uqxtnb_vec,
-+          .opt_opc = uqxtn_list,
-+          .fno = gen_helper_sve2_uqxtnb_d,
-+          .vece = MO_64 },
-+    };
-+    return do_sve2_narrow_extract(s, a, ops);
-+}
-+
-+static void gen_uqxtnt_vec(unsigned vece, TCGv_vec d, TCGv_vec n)
-+{
-+    TCGv_vec t = tcg_temp_new_vec_matching(d);
-+    int halfbits = 4 << vece;
-+    int64_t max = (1ull << halfbits) - 1;
-+
-+    tcg_gen_dupi_vec(vece, t, max);
-+    tcg_gen_umin_vec(vece, n, n, t);
-+    tcg_gen_shli_vec(vece, n, n, halfbits);
-+    tcg_gen_bitsel_vec(vece, d, t, d, n);
-+    tcg_temp_free_vec(t);
-+}
-+
-+static bool trans_UQXTNT(DisasContext *s, arg_rri_esz *a)
-+{
-+    static const GVecGen2 ops[3] = {
-+        { .fniv = gen_uqxtnt_vec,
-+          .opt_opc = uqxtn_list,
-+          .load_dest = true,
-+          .fno = gen_helper_sve2_uqxtnt_h,
-+          .vece = MO_16 },
-+        { .fniv = gen_uqxtnt_vec,
-+          .opt_opc = uqxtn_list,
-+          .load_dest = true,
-+          .fno = gen_helper_sve2_uqxtnt_s,
-+          .vece = MO_32 },
-+        { .fniv = gen_uqxtnt_vec,
-+          .opt_opc = uqxtn_list,
-+          .load_dest = true,
-+          .fno = gen_helper_sve2_uqxtnt_d,
-+          .vece = MO_64 },
-+    };
-+    return do_sve2_narrow_extract(s, a, ops);
-+}
-+
-+static const TCGOpcode sqxtun_list[] = {
-+    INDEX_op_shli_vec, INDEX_op_umin_vec, INDEX_op_smax_vec, 0
++static const TypeInfo aspeed_2500_xdma_info =3D {
++    .name =3D TYPE_ASPEED_2500_XDMA,
++    .parent =3D TYPE_ASPEED_XDMA,
++    .class_init =3D aspeed_2500_xdma_class_init,
 +};
 +
-+static void gen_sqxtunb_vec(unsigned vece, TCGv_vec d, TCGv_vec n)
++static void aspeed_2400_xdma_class_init(ObjectClass *klass, void *data)
 +{
-+    TCGv_vec t = tcg_temp_new_vec_matching(d);
-+    int halfbits = 4 << vece;
-+    int64_t max = (1ull << halfbits) - 1;
++    DeviceClass *dc =3D DEVICE_CLASS(klass);
++    AspeedXDMAClass *axc =3D ASPEED_XDMA_CLASS(klass);
 +
-+    tcg_gen_dupi_vec(vece, t, 0);
-+    tcg_gen_smax_vec(vece, d, n, t);
-+    tcg_gen_dupi_vec(vece, t, max);
-+    tcg_gen_umin_vec(vece, d, d, t);
-+    tcg_temp_free_vec(t);
-+}
++    dc->desc =3D "ASPEED 2400 XDMA Controller";
 +
-+static bool trans_SQXTUNB(DisasContext *s, arg_rri_esz *a)
-+{
-+    static const GVecGen2 ops[3] = {
-+        { .fniv = gen_sqxtunb_vec,
-+          .opt_opc = sqxtun_list,
-+          .fno = gen_helper_sve2_sqxtunb_h,
-+          .vece = MO_16 },
-+        { .fniv = gen_sqxtunb_vec,
-+          .opt_opc = sqxtun_list,
-+          .fno = gen_helper_sve2_sqxtunb_s,
-+          .vece = MO_32 },
-+        { .fniv = gen_sqxtunb_vec,
-+          .opt_opc = sqxtun_list,
-+          .fno = gen_helper_sve2_sqxtunb_d,
-+          .vece = MO_64 },
-+    };
-+    return do_sve2_narrow_extract(s, a, ops);
-+}
++    axc->cmdq_endp =3D XDMA_BMC_CMDQ_ENDP;
++    axc->cmdq_wrp =3D XDMA_BMC_CMDQ_WRP;
++    axc->cmdq_rdp =3D XDMA_BMC_CMDQ_RDP;
++    axc->intr_ctrl =3D XDMA_IRQ_ENG_CTRL;
++    axc->intr_ctrl_mask =3D XDMA_IRQ_ENG_CTRL_W_MASK;
++    axc->intr_status =3D XDMA_IRQ_ENG_STAT;
++    axc->intr_complete =3D XDMA_IRQ_ENG_STAT_US_COMP | XDMA_IRQ_ENG_STAT=
+_DS_COMP;
++};
 +
-+static void gen_sqxtunt_vec(unsigned vece, TCGv_vec d, TCGv_vec n)
-+{
-+    TCGv_vec t = tcg_temp_new_vec_matching(d);
-+    int halfbits = 4 << vece;
-+    int64_t max = (1ull << halfbits) - 1;
++static const TypeInfo aspeed_2400_xdma_info =3D {
++    .name =3D TYPE_ASPEED_2400_XDMA,
++    .parent =3D TYPE_ASPEED_XDMA,
++    .class_init =3D aspeed_2400_xdma_class_init,
++};
 +
-+    tcg_gen_dupi_vec(vece, t, 0);
-+    tcg_gen_smax_vec(vece, n, n, t);
-+    tcg_gen_dupi_vec(vece, t, max);
-+    tcg_gen_umin_vec(vece, n, n, t);
-+    tcg_gen_shli_vec(vece, n, n, halfbits);
-+    tcg_gen_bitsel_vec(vece, d, t, d, n);
-+    tcg_temp_free_vec(t);
-+}
-+
-+static bool trans_SQXTUNT(DisasContext *s, arg_rri_esz *a)
-+{
-+    static const GVecGen2 ops[3] = {
-+        { .fniv = gen_sqxtunt_vec,
-+          .opt_opc = sqxtun_list,
-+          .load_dest = true,
-+          .fno = gen_helper_sve2_sqxtunt_h,
-+          .vece = MO_16 },
-+        { .fniv = gen_sqxtunt_vec,
-+          .opt_opc = sqxtun_list,
-+          .load_dest = true,
-+          .fno = gen_helper_sve2_sqxtunt_s,
-+          .vece = MO_32 },
-+        { .fniv = gen_sqxtunt_vec,
-+          .opt_opc = sqxtun_list,
-+          .load_dest = true,
-+          .fno = gen_helper_sve2_sqxtunt_d,
-+          .vece = MO_64 },
-+    };
-+    return do_sve2_narrow_extract(s, a, ops);
-+}
--- 
-2.25.1
+ static void aspeed_xdma_class_init(ObjectClass *classp, void *data)
+ {
+     DeviceClass *dc =3D DEVICE_CLASS(classp);
+@@ -158,10 +231,15 @@ static const TypeInfo aspeed_xdma_info =3D {
+     .parent        =3D TYPE_SYS_BUS_DEVICE,
+     .instance_size =3D sizeof(AspeedXDMAState),
+     .class_init    =3D aspeed_xdma_class_init,
++    .class_size    =3D sizeof(AspeedXDMAClass),
++    .abstract      =3D true,
+ };
+=20
+ static void aspeed_xdma_register_type(void)
+ {
+     type_register_static(&aspeed_xdma_info);
++    type_register_static(&aspeed_2400_xdma_info);
++    type_register_static(&aspeed_2500_xdma_info);
++    type_register_static(&aspeed_2600_xdma_info);
+ }
+ type_init(aspeed_xdma_register_type);
+--=20
+2.26.3
 

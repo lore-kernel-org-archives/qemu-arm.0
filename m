@@ -1,202 +1,128 @@
-Received: by 2002:a19:ee0d:0:0:0:0:0 with SMTP id g13csp229700lfb;
-        Fri, 30 Apr 2021 00:31:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwXZN8FAFHHa/KcyI/4u5Zq9UG7uG3npaiIWGd8vop2VZcJXXBdqndT93LguSp1H0BYQGmU
-X-Received: by 2002:ab0:758e:: with SMTP id q14mr2197493uap.44.1619767903022;
-        Fri, 30 Apr 2021 00:31:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619767903; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp178196lfg;
+        Fri, 30 Apr 2021 07:41:38 -0700 (PDT)
+X-Received: by 2002:a4a:c689:: with SMTP id m9mr4783560ooq.70.1619793698666;
+        Fri, 30 Apr 2021 07:41:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619793698; cv=none;
         d=google.com; s=arc-20160816;
-        b=qADSA/cSDX02dGWoBi9AQApRVskRvq435UDkEV+C2DZ5VDRjuzIzHEZg4TcT49xY/O
-         aybpDPJVk2QWeuw+EbggndGeTjf42sCaHJjuXeYmUpoopidfkA7GmWJqAJQf0h//Z3kw
-         6wESSqoNtMB0j9Ac0kma7GZMQ9a9i5/5v+JMBNzl25rM6JvMwunVwUd9k7iZosTxXr2/
-         HcW/Z6kkYqvSXhAYbV58JtZCro0jhNRRN9yIvjsTUgMb7axkjZPUpUVOAekkTy4U+hZP
-         VTwwokKQKg/qOm2NR0ENIrfqjhW5DF3qeslZhqZBKSfaSqwu/dlRuPNoKMG8Zd8FzLUa
-         8nEQ==
+        b=CNHwTV+60F6gravJXb+yCao02wi6J2Zmu/yl8guk4xN7cKRu4BAG9iYOkOwG4aUUd7
+         ADifNlL924ofrEucu5HvmS30T0XIXL1G1u0aRT9p3CAMdaQzvwFi46WqsOvM7DdZxo48
+         RM7nec4k5mQ/OlNPjJjAJ1dxOeawP7y7pjKO4I4FquFRyUpI3yHuj3lf27lmCEUFpNuw
+         aEGgHeVsC95BBtspBy59mUkIE+bS1BUTMnOcukIOERKoNwB5Vi5mGlMf9ZE4QlQQ/6qv
+         f4NoqbUBpTE8sgqoN0aSm+M9JKe02Bpvj6SqXAUjAf5Ms87SMSJ7p4pGS+S/SbKsL87x
+         Dw8g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=FZV5Z1MWYd1M1+p6ABec4eoXNr7mfP+kAsOcAUfEa0s=;
-        b=LI060gvBg24bP8FFppV7hDqp/hoQB/HS+4JZwPNBKcS8AjFlYpZ/RO3JuPw6lbpExO
-         IhNCjopHs8VgO3DjBXohi0RxlNDGeJEIrB/Efj1w8vtuxCH2N84aMOizMh3M8gswfiN+
-         oEYqQC0G2Ck0SEPrm6b8cWQL+Ngz7ik/lVB7e+Nt7l5hF+iL6Kcf+/pB9tENf8Ki1EbB
-         RQdgdW7dbILwF+WVwh7ifNksSVo0kbRyZ9eCVK1CqAaV3LD7Iqjbjzwl2B76fGG+OyU7
-         LHW3Cu5Y96h1g2FnuhUgH7BGqmwF3J2qP8/LxtV6h0xUanlbaiys+QjD2DN15LgsfPOL
-         wN4g==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:sender:dkim-signature;
+        bh=eNTH4I8qBqt/u90sZvzopafrVlOwn/Hw03R4BYUX65g=;
+        b=XRHlX9aZCl87+TsOtD7BaEzrngIp3NPVK2aFiUxi+YUHEd5UkT9t8wde6aPYbtVMqf
+         Z2jv8fZH06RuKsBk3mqqKQQ2eIse9h1EMt3flQVX7E6DTAQq424P7GuaQ+wxlktbprE1
+         BKC8CDOBa7YIKsjisb8TCsm470MPbTiBkL4q7fWWcvbUuodibgoaBLmEow7TESTwFU/0
+         SueChW9zHjnY9aEq/Ifoi46oCkEa/qJg4F7KAWHVEpnq2lqM5Kc8l12pGjsw07IEwiPt
+         ClFI86zrHNuz/foH2riF8DgrBig2MWqGOJGELgP+5+HTYmZsU+nvX1/OYqA7YlfrZzcQ
+         LDFg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=bkK4V86J;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d26si596604vkn.44.2021.04.30.00.31.42
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 30 Apr 2021 00:31:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=UNjAC56R;
+       spf=pass (google.com: domain of groeck7@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=groeck7@gmail.com
+Return-Path: <groeck7@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 186sor3309128oob.8.2021.04.30.07.41.38
+        (Google Transport Security);
+        Fri, 30 Apr 2021 07:41:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of groeck7@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=bkK4V86J;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:50916 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lcNck-0003Oi-7v
-	for alex.bennee@linaro.org; Fri, 30 Apr 2021 03:31:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55288)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1lcNaC-0001dz-Hm; Fri, 30 Apr 2021 03:29:04 -0400
-Received: from ozlabs.org ([2401:3900:2:1::2]:43405)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1lcNaA-0001U4-9Z; Fri, 30 Apr 2021 03:29:04 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
- id 4FWkWQ6CW9z9t0G; Fri, 30 Apr 2021 17:28:50 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1619767730;
- bh=gLPJgqKD8Jy0MZ43/eLWhxb9UN2yUXhRzMXzf/L4RqA=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=bkK4V86JuRTxdSdg1PNzLWfbnzF5aA3mWq9gSOaJ9zWZq/3VI/3Jamwq9QCbsHUtJ
- sINIc0FTwhcoOshvMl6yI6RiJdS8BkI5EfMoGSAmP7UqoR9wK6l+au5Aq8IdYJji8l
- kIHavOtWW6jfirQaLdmCPEPOwknnsqQYYdl1MOwQ=
-Date: Fri, 30 Apr 2021 14:27:18 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: "Aneesh Kumar K.V" <aneesh.kumar@linux.ibm.com>
-Subject: Re: [PATCH v4 0/3] nvdimm: Enable sync-dax property for nvdimm
-Message-ID: <YIuHJkwkDiHONYwp@yekko>
-References: <161966810162.652.13723419108625443430.stgit@17be908f7c1c>
- <YIrW4bwbR1R0CWm/@stefanha-x1.localdomain>
- <433e352d-5341-520c-5c57-79650277a719@linux.ibm.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=UNjAC56R;
+       spf=pass (google.com: domain of groeck7@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=groeck7@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=sender:date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=eNTH4I8qBqt/u90sZvzopafrVlOwn/Hw03R4BYUX65g=;
+        b=UNjAC56RqHknwaMiQn4m6Yeb9lwxSWZdKrX2NMq7LHCQppaZI9T3vQSIcbDHOp2/vA
+         xLXPSFoILyGEckEvJcQEkXsRmy1Hvvc794yx+fjXDTTuMLu2PE+e1CU6ZmF+w3wbzIcS
+         d16CFvaDEQV/WOqgOOTCnM6zbvQEFI0dRXoYE8UYuURaA1rHxIbjF4wN8RLRNvm3yHgC
+         mE1DVhZ4FNtT30QymLYrsQqfrHPBfQtRkC4CVcjwUqnjHNhV7Q7fDa8cBG2vGzIicGAq
+         BokO8QZ1MhnO5QifVx3KTpHfcEPEkRBTcLmKTHCyG0mnkRh2ZYYOQAz4cl8Ibg/OWh3q
+         bZSg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+         :references:mime-version:content-disposition:in-reply-to;
+        bh=eNTH4I8qBqt/u90sZvzopafrVlOwn/Hw03R4BYUX65g=;
+        b=qW2xM7Ee+Zj1oulseyLVJEtV77qWvYlp+mP7aas5TKXLfbYqxAU0V8+AsETZLImhYK
+         mvAAfhyVkpT4BWPoWISL3sU86k52eKDYoTGvd9cj59HSbErTbqLr1ohFKIYL3u9YYERu
+         QV0ZnoQ+VH96OOsThpT0reInPvAou4VDbLHO61jRlhY4bBnLy8mZVCtICkm9V0ql/dmW
+         3RHipbK3aXvULflfxS23bGrmNFctdpHzhJiRMCBbydCy5cJoMfzX4fTz0B/yYaef9KPG
+         SzqLYadIKr+XQMz70mH9JSfej1lLj5dM/xrQoh5apnTYWo+SL328ly1J3TahB4wu2bDR
+         TVeg==
+X-Gm-Message-State: AOAM530b2H/FWjA7vyPzRiycjEe2CqupRAbENvLfJtdb0sg/VHRUm+sg
+	aK1tIlgwD0XYUDj3M40djjo=
+X-Google-Smtp-Source: ABdhPJwrEf8Nq0QpfOz4T+zwemm1nmqwlkx/yzLtEeklQLs/6Wl1ZfRX0X9nKGNb1mdPIOB4zlIFfQ==
+X-Received: by 2002:a4a:9706:: with SMTP id u6mr4725656ooi.84.1619793698214;
+        Fri, 30 Apr 2021 07:41:38 -0700 (PDT)
+Return-Path: <groeck7@gmail.com>
+Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+        by smtp.gmail.com with ESMTPSA id a11sm819550oif.52.2021.04.30.07.41.36
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 30 Apr 2021 07:41:37 -0700 (PDT)
+Sender: Guenter Roeck <groeck7@gmail.com>
+Date: Fri, 30 Apr 2021 07:41:36 -0700
+From: Guenter Roeck <linux@roeck-us.net>
+To: Bin Meng <bmeng.cn@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+	Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org, Bin Meng <bin.meng@windriver.com>
+Subject: Re: [PATCH v3 3/4] hw/arm: sabrelite: Connect the Ethernet PHY at
+ address 6
+Message-ID: <20210430144136.GA2880420@roeck-us.net>
+References: <20210106063504.10841-1-bmeng.cn@gmail.com>
+ <20210106063504.10841-4-bmeng.cn@gmail.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="l6FM2Up3jgp91K+8"
-Content-Disposition: inline
-In-Reply-To: <433e352d-5341-520c-5c57-79650277a719@linux.ibm.com>
-Received-SPF: pass client-ip=2401:3900:2:1::2; envelope-from=dgibson@ozlabs.org;
- helo=ozlabs.org
-X-Spam_score_int: -1
-X-Spam_score: -0.2
-X-Spam_bar: /
-X-Spam_report: (-0.2 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_03_06=1.592,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, Shivaprasad G Bhat <sbhat@linux.ibm.com>,
- mst@redhat.com, qemu-devel@nongnu.org, linux-nvdimm@lists.01.org,
- armbru@redhat.com, bharata@linux.vnet.ibm.com, haozhong.zhang@intel.com,
- ehabkost@redhat.com, richard.henderson@linaro.org, groug@kaod.org,
- kvm-ppc@vger.kernel.org, qemu-arm@nongnu.org,
- Stefan Hajnoczi <stefanha@redhat.com>, imammedo@redhat.com,
- kwangwoo.lee@sk.com, xiaoguangrong.eric@gmail.com,
- shameerali.kolothum.thodi@huawei.com, shivaprasadbhat@gmail.com,
- qemu-ppc@nongnu.org, pbonzini@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ompJH0zptqv4
-
-
---l6FM2Up3jgp91K+8
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20210106063504.10841-4-bmeng.cn@gmail.com>
+X-TUID: pm8baQaddtKV
 
-On Thu, Apr 29, 2021 at 10:02:23PM +0530, Aneesh Kumar K.V wrote:
-> On 4/29/21 9:25 PM, Stefan Hajnoczi wrote:
-> > On Wed, Apr 28, 2021 at 11:48:21PM -0400, Shivaprasad G Bhat wrote:
-> > > The nvdimm devices are expected to ensure write persistence during po=
-wer
-> > > failure kind of scenarios.
-> > >=20
-> > > The libpmem has architecture specific instructions like dcbf on POWER
-> > > to flush the cache data to backend nvdimm device during normal writes
-> > > followed by explicit flushes if the backend devices are not synchrono=
-us
-> > > DAX capable.
-> > >=20
-> > > Qemu - virtual nvdimm devices are memory mapped. The dcbf in the guest
-> > > and the subsequent flush doesn't traslate to actual flush to the back=
-end
-> > > file on the host in case of file backed v-nvdimms. This is addressed =
-by
-> > > virtio-pmem in case of x86_64 by making explicit flushes translating =
-to
-> > > fsync at qemu.
-> > >=20
-> > > On SPAPR, the issue is addressed by adding a new hcall to
-> > > request for an explicit flush from the guest ndctl driver when the ba=
-ckend
-> > > nvdimm cannot ensure write persistence with dcbf alone. So, the appro=
-ach
-> > > here is to convey when the hcall flush is required in a device tree
-> > > property. The guest makes the hcall when the property is found, inste=
-ad
-> > > of relying on dcbf.
-> >=20
-> > Sorry, I'm not very familiar with SPAPR. Why add a hypercall when the
-> > virtio-nvdimm device already exists?
-> >=20
->=20
-> On virtualized ppc64 platforms, guests use papr_scm.ko kernel drive for
-> persistent memory support. This was done such that we can use one kernel
-> driver to support persistent memory with multiple hypervisors. To avoid
-> supporting multiple drivers in the guest, -device nvdimm Qemu command-line
-> results in Qemu using PAPR SCM backend. What this patch series does is to
-> make sure we expose the correct synchronous fault support, when we back s=
-uch
-> nvdimm device with a file.
->=20
-> The existing PAPR SCM backend enables persistent memory support with the
-> help of multiple hypercall.
->=20
-> #define H_SCM_READ_METADATA     0x3E4
-> #define H_SCM_WRITE_METADATA    0x3E8
-> #define H_SCM_BIND_MEM          0x3EC
-> #define H_SCM_UNBIND_MEM        0x3F0
-> #define H_SCM_UNBIND_ALL        0x3FC
->=20
-> Most of them are already implemented in Qemu. This patch series implements
-> H_SCM_FLUSH hypercall.
+Hi,
 
-The overall point here is that we didn't define the hypercall.  It was
-defined in order to support NVDIMM/pmem devices under PowerVM.  For
-uniformity between PowerVM and KVM guests, we want to support the same
-hypercall interface on KVM/qemu as well.
+On Wed, Jan 06, 2021 at 02:35:03PM +0800, Bin Meng wrote:
+> From: Bin Meng <bin.meng@windriver.com>
+> 
+> At present, when booting U-Boot on QEMU sabrelite, we see:
+> 
+>   Net:   Board Net Initialization Failed
+>   No ethernet found.
+> 
+> U-Boot scans PHY at address 4/5/6/7 (see board_eth_init() in the
+> U-Boot source: board/boundary/nitrogen6x/nitrogen6x.c). On the real
+> board, the Ethernet PHY is at address 6. Adjust this by updating the
+> "fec-phy-num" property of the fsl_imx6 SoC object.
+> 
+> With this change, U-Boot sees the PHY but complains MAC address:
+> 
+>   Net:   using phy at 6
+>   FEC [PRIME]
+>   Error: FEC address not set.
+> 
+> This is due to U-Boot tries to read the MAC address from the fuse,
+> which QEMU does not have any valid content filled in. However this
+> does not prevent the Ethernet from working in QEMU. We just need to
+> set up the MAC address later in the U-Boot command shell, by:
+> 
+>   => setenv ethaddr 00:11:22:33:44:55
+> 
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
+With this patch in place, the standard Ethernet interface no longer works when
+booting sabrelite Linux images directly (without u-boot) using the following
+qemu command.
+	qemu-system-arm -M sabrelite -kernel arch/arm/boot/zImage
+	...
 
---l6FM2Up3jgp91K+8
-Content-Type: application/pgp-signature; name="signature.asc"
+The Ethernet interface still instantiates, but packet transfer to the host
+no longer works. Reverting this patch fixes the problem for me.
 
------BEGIN PGP SIGNATURE-----
+Is there a qemu command line parameter that is now necessary to instantiate
+the Ethernet interface when booting Linux ?
 
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAmCLhyUACgkQbDjKyiDZ
-s5LgyhAAlNOzpM9+rzQIM9pfnH1Lo94q3+xqmzvHym9PAdeCUa+jekMI00mK5CRI
-buhl3VZG783nan5KYvVEIfblxCN2ENHrcoKM/rVNF6QsGkIQGVfCo1kE2Se1kwZS
-dDxcyXK/ASz+ryFQAIUvA5LA2/pyR3AsMVOqCcX9DgZjXm1JZt6dE2byZu8+CJXg
-oNlXuJab1+vPwBsMV1tITKUic4Zn1WJQSXZ/sn59uEGW69gG1QK113LQtpLqO1r/
-R10btoJgqHquWZMQl807XiDqtLzEs/L+UlKKpmR1uD+jZSRy3L/ir9Rf+QeM4DtL
-eGsYndvYaDkxmuE4rtDCxBOMi2GNragtsPOHUuNUd4PaA4K/r0EWpNDHJbcKG04X
-boMlF+wiM9EyNZyqa6vlULBkDTvgYA3y8MD0QO+jwHggAOsj8UyBIKn2XascQC+u
-mWMJJgeEBgq+IiEhnNj3OfOh5GgJiEUHsRj4FomiAWu125NNN0aNK9uXthhd4DGO
-RcekZfaPQOkPJh2WG+ZOAreNqdt6aEaJ95lVXD4l9yYh5Vn29wuon5BmvPEfCroW
-wUFAbvJSBiXzIXEggoKnQzsPiG6VPenAHanBVTXvHXHN2InCqcNWdwTw5XgrAKn+
-lfTdvqXV93uHpQqbjPiiGMzUGoFsFvQFkvZ6H8NnvOQAS78FXus=
-=86vq
------END PGP SIGNATURE-----
-
---l6FM2Up3jgp91K+8--
+Thanks,
+Guenter

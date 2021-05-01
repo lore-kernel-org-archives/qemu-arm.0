@@ -1,228 +1,170 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp1074003lfg;
-        Sat, 1 May 2021 06:56:45 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzmNeKrardLqLyeV17LgBu6iVUbrDLNlDrc8N9U+EpuiyFk3GjhYhpOvVTi/qnl7jVdxoJx
-X-Received: by 2002:a02:308e:: with SMTP id q136mr9769066jaq.47.1619877404684;
-        Sat, 01 May 2021 06:56:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619877404; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp1303654lfg;
+        Sat, 1 May 2021 13:12:06 -0700 (PDT)
+X-Received: by 2002:aca:4acf:: with SMTP id x198mr2036654oia.111.1619899926718;
+        Sat, 01 May 2021 13:12:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619899926; cv=none;
         d=google.com; s=arc-20160816;
-        b=KpV84x5Kbd0rQ3rBR+smyiD/VAFniaKh57Et0ynkuvWsRvlG0biWrxEtXyiVlCnZb+
-         v0PE5BYQplc0ieTnFvk4YJ/GtpeqUMIn/DE+JUkiJUnGcqywKn4SBFEMRhN5tjczeAxW
-         yFILqWKAxcF4TU3wqHB1cp5VpbMi04e4mNWlLtrhDYN/IM6xtZD2qlD2NQmOaxGRCdBi
-         /zp7vzSEIyEjrplJorTwypwDo6rsqkX3VQYi359BgDVcRVWH26QLagU115lXWm9svQL0
-         FRF33RVzvuQzSO7K3hB5qblunSOV0SWYX0Ne9GlB0ybisM3Nv1msd9cGcXLLYiRlz6zk
-         xk5w==
+        b=O67WyO5dC9x2wNeZ9oDHgUhvAKPnKwMZxk49HnNsR4hzn+ZizwzAt+HpO23IQs3hUp
+         dd+AcOgD8GHY5RbA9wWtjuqrb+dGVHcFpxx1loayAZXtp1sNSuUQPfhhteLWBvbXvWU4
+         bawi6/ypq48zYfqC20VLPzsnD+fAipqRMSW5/R6f5cEobIrGjFvfYX1+K4/FydtGGP5Y
+         e88lZzAt32cxCYJyhvZmIaFFZ427x5bDXFt0fcdj4qMJACzYLmahDcsd8GEE0FhP/EVE
+         TALsyRRh6jTAeOqG0rlrS4mulMnuMic7xvUI+b0DL4Pa9nd7Ft4FlWyNtOuXa3UkyGAU
+         N6Ww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=zfHDntymIWxlMHIRQDwwFhACh84asPFqu9RpJfxBHps=;
-        b=pk2FztC0nh+a9SAoORVDVVEAWI2fZtC1+8K4dWLtHS6y7D9HbRJoTJGawwgl/qB2Ot
-         3wA0w6rxzoaiwsdJPLYG9bDetY+Hx0RpWHnu5ff0IRZsKnJf/UNRBgKb7oZW5QrFC1jZ
-         KBGntzNiNJaV2QCN2X91u0c9hN/WKVjKZE/rCoYaz+Kj1eOHmT1LLnN+T/nDyNvZaQN4
-         iQHIE2TPxdmyHbtX47NlF7ibIi3LxIFwdqxPY1TSl+xVSB55EfCN8zF2U7bgGajXBn+M
-         WQGaSZLlKsiJ5JJNsxDWUZibO7mE4xaFY+GbFZm+WlAFsGtDuNRsf2jrWSn/hkUGmlu9
-         NMnw==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:subject:from:references:cc:to:sender
+         :dkim-signature;
+        bh=wUTupG1ciOFu3wWEybiL9ryNjvgtT6aHKOAzGYFRyMw=;
+        b=yJfhDnqaz1DOib/XKiPu7DldQmcPAkae0zdudNBRDSNf2nOBo874lMV7ya6ljWujIq
+         kx9fnGJoDeYRio1I2q+ly3LeGmSKen0j+DjAaOq2mCNIPfczLRIALuZZM0G6vKoclT7V
+         JLhdJjYonx1o6xoQQ9VgNsTXjERas2KIKg4FouxhvkEymMAKGAy3SQ7Pk93eq0j/M/Lp
+         MqXQ5KHOSbBNWYdHZOnNXaBBf9+whGGcspraAKIa6jx3imjSsi0usOEXgofCuiaRIVag
+         1U4kZWrZ4Aio6Jf4g8/PhLx+GUzLL8hMEymMTtAIDprmHiKm0elzmYS4nhRQPLfbhOiL
+         naBg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@ibm.com header.s=pp1 header.b=n7rQN3we;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m22si8598026jat.1.2021.05.01.06.56.44
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 01 May 2021 06:56:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=IP31ftSy;
+       spf=pass (google.com: domain of groeck7@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=groeck7@gmail.com
+Return-Path: <groeck7@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id e13sor1909017oth.66.2021.05.01.13.12.06
+        (Google Transport Security);
+        Sat, 01 May 2021 13:12:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of groeck7@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@ibm.com header.s=pp1 header.b=n7rQN3we;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Received: from localhost ([::1]:39264 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lcq6u-0005Qg-02
-	for alex.bennee@linaro.org; Sat, 01 May 2021 09:56:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38678)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <aneesh.kumar@linux.ibm.com>)
- id 1lcq6f-0005PH-Hm; Sat, 01 May 2021 09:56:29 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:44570)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <aneesh.kumar@linux.ibm.com>)
- id 1lcq6d-0005nE-Hw; Sat, 01 May 2021 09:56:29 -0400
-Received: from pps.filterd (m0187473.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 141DXOEH043051; Sat, 1 May 2021 09:56:04 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=subject : to : cc :
- references : from : message-id : date : mime-version : in-reply-to :
- content-type : content-transfer-encoding; s=pp1;
- bh=zfHDntymIWxlMHIRQDwwFhACh84asPFqu9RpJfxBHps=;
- b=n7rQN3weXvrCKFBt6ElPWi7qHx5eLAktVxRyy5J4kIKMD6i/fV75C+BH8x/fewMuQYxT
- 9gLw8Z+gxUNSiJVm0ZjaH59EM7L5g56Jq85i69icBcFM/3oKM/27xz6d9na5rbEoJni1
- 54lcCw+e8tFXQT+VypEaJDEQahJthdRcpLUwzMx2C7cRSTNQF8PVs4RgcveNc4ePFGdr
- Sk71s/3EFhlaDw3ebOM0iDG/9QKM5YqjiuDbOVtqpCTASOVfduwaAxHcdsZgaXGDsZJq
- +VzuwDzqK6kj/HbSULbzVM2IRor06S2ONLJ9BMp5OEAOvdG0d9i3yTJE3uKCPaEX/HiK +w== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com with ESMTP id 38979e8ums-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Sat, 01 May 2021 09:56:04 -0400
-Received: from m0187473.ppops.net (m0187473.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 141DXxci047260;
- Sat, 1 May 2021 09:56:03 -0400
-Received: from ppma02fra.de.ibm.com (47.49.7a9f.ip4.static.sl-reverse.com
- [159.122.73.71])
- by mx0a-001b2d01.pphosted.com with ESMTP id 38979e8um9-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Sat, 01 May 2021 09:56:03 -0400
-Received: from pps.filterd (ppma02fra.de.ibm.com [127.0.0.1])
- by ppma02fra.de.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 141DrPv9012695;
- Sat, 1 May 2021 13:56:01 GMT
-Received: from b06cxnps4075.portsmouth.uk.ibm.com
- (d06relay12.portsmouth.uk.ibm.com [9.149.109.197])
- by ppma02fra.de.ibm.com with ESMTP id 388xm882f0-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Sat, 01 May 2021 13:56:01 +0000
-Received: from b06wcsmtp001.portsmouth.uk.ibm.com
- (b06wcsmtp001.portsmouth.uk.ibm.com [9.149.105.160])
- by b06cxnps4075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 141DtwQI53412284
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Sat, 1 May 2021 13:55:58 GMT
-Received: from b06wcsmtp001.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 6A670A405F;
- Sat,  1 May 2021 13:55:58 +0000 (GMT)
-Received: from b06wcsmtp001.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 45A05A4054;
- Sat,  1 May 2021 13:55:53 +0000 (GMT)
-Received: from [9.85.73.140] (unknown [9.85.73.140])
- by b06wcsmtp001.portsmouth.uk.ibm.com (Postfix) with ESMTP;
- Sat,  1 May 2021 13:55:53 +0000 (GMT)
-Subject: Re: [PATCH v4 0/3] nvdimm: Enable sync-dax property for nvdimm
-To: Dan Williams <dan.j.williams@intel.com>,
- Shivaprasad G Bhat <sbhat@linux.ibm.com>
-References: <161966810162.652.13723419108625443430.stgit@17be908f7c1c>
- <CAPcyv4gwkyDBG7EZOth-kcZR8Fb+RgGXY=Y9vbuHXAz3PAnLVw@mail.gmail.com>
-From: "Aneesh Kumar K.V" <aneesh.kumar@linux.ibm.com>
-Message-ID: <5d70bf0e-290f-405a-f525-7b4710408332@linux.ibm.com>
-Date: Sat, 1 May 2021 19:25:52 +0530
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=IP31ftSy;
+       spf=pass (google.com: domain of groeck7@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=groeck7@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=sender:to:cc:references:from:subject:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=wUTupG1ciOFu3wWEybiL9ryNjvgtT6aHKOAzGYFRyMw=;
+        b=IP31ftSyRABTKjhWgAp/tRSg6Ci5mXQT3AGkvQ5NOaaYkVQ+fE7QAZVcT+6hfCcK79
+         WRERFOAAxSwt/2nzM7udbl3bTR0q4v/+XMeKHk9z/c6xg/4jkKPFtWZBLZdBzvrN2uQq
+         2xrNjxafZpaF5z21rkaKUjuDmOccEw7Zz1Fjd2lb42z/892gM3yoqx4byvfrCYMVIB9M
+         WIbK+HT+tUryDSzv80ly6ib1UClN3ONVfiY+XZCrgtfK+hez5cfBoHZRfXYPH7CRkUU7
+         4xRNyPIwxNcfgog4Br7JlX2xgm64V2IFl1T8Vmbihj33N+VgqyI75usoMgycdgfYrikL
+         PVBA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:sender:to:cc:references:from:subject:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=wUTupG1ciOFu3wWEybiL9ryNjvgtT6aHKOAzGYFRyMw=;
+        b=M1K1JV/2M1+ISImNXPkITSih0KRDLvJ3u2tYz3CrN9yfkbgd6urP30FbfU7Xr/WOTF
+         ZgMureMZgQ6h5k+3IBE9nTy4Ed2feoo219nUOR7XSnZ0NMjUQ/+st0KrpDyv/BAaznCi
+         FS2NbUY3ZVH26wCz2mbOL29H4azIhj9NRYtBRXUKhIGqiI/iBzFm6lKpHyy3pyuvV+8c
+         1/V9wGbMnvkWPBurxyzDdLwAE1bIatiD1CCWJ6Z5Up7Gbd7+Uqb8pM/qs+0KErYCXgTL
+         aVkPAtSTSCqNDEQzZhvswuBNNG68IXcVt1neBiMayr2RDgOuSidSdW/ySGgDqp0ShI7z
+         f4Uw==
+X-Gm-Message-State: AOAM532VOBKQrUsLDYY9hzxLwkV7dIeDrs6B/6sW7BlgH17cX01G7uBu
+	+uW/rgE7TeY0h1lpax0NBxc=
+X-Google-Smtp-Source: ABdhPJwONXFZ+Mwlfc9TD3iI8bzpCB/LtIpd9+Eig7O77Vv4w6Sul9HdeurkekD2j9EibrJI+mJm2Q==
+X-Received: by 2002:a9d:a4e:: with SMTP id 72mr8716338otg.229.1619899926174;
+        Sat, 01 May 2021 13:12:06 -0700 (PDT)
+Return-Path: <groeck7@gmail.com>
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+        by smtp.gmail.com with ESMTPSA id i9sm1594595oog.17.2021.05.01.13.12.04
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 01 May 2021 13:12:05 -0700 (PDT)
+Sender: Guenter Roeck <groeck7@gmail.com>
+To: Bin Meng <bmeng.cn@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm
+ <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Bin Meng <bin.meng@windriver.com>
+References: <20210106063504.10841-1-bmeng.cn@gmail.com>
+ <20210106063504.10841-4-bmeng.cn@gmail.com>
+ <20210430144136.GA2880420@roeck-us.net>
+ <CAEUhbmUTLecMcr0=vmBeYJZeK6CdZY4SZcYiOu0E9AawY41+Cg@mail.gmail.com>
+From: Guenter Roeck <linux@roeck-us.net>
+Subject: Re: [PATCH v3 3/4] hw/arm: sabrelite: Connect the Ethernet PHY at
+ address 6
+Message-ID: <72acebfa-be17-cca5-ce6a-443ef4d23fce@roeck-us.net>
+Date: Sat, 1 May 2021 13:12:03 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+ Thunderbird/78.7.1
 MIME-Version: 1.0
-In-Reply-To: <CAPcyv4gwkyDBG7EZOth-kcZR8Fb+RgGXY=Y9vbuHXAz3PAnLVw@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <CAEUhbmUTLecMcr0=vmBeYJZeK6CdZY4SZcYiOu0E9AawY41+Cg@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: 9Gawgb4RCDulWYDsGhHOAhxANDP54XpS
-X-Proofpoint-GUID: uxCnoSiDh3NYfGBrFgcCF0DOw-3ZgAqh
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.761
- definitions=2021-05-01_07:2021-04-30,
- 2021-05-01 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- lowpriorityscore=0
- adultscore=0 bulkscore=0 malwarescore=0 phishscore=0 clxscore=1015
- mlxlogscore=999 impostorscore=0 mlxscore=0 priorityscore=1501
- suspectscore=0 spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2104060000 definitions=main-2105010096
-Received-SPF: pass client-ip=148.163.156.1;
- envelope-from=aneesh.kumar@linux.ibm.com; helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
-X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, "Michael S. Tsirkin" <mst@redhat.com>,
- Qemu Developers <qemu-devel@nongnu.org>, Eric Blake <eblake@redhat.com>,
- linux-nvdimm <linux-nvdimm@lists.01.org>,
- Markus Armbruster <armbru@redhat.com>, marcel.apfelbaum@gmail.com,
- bharata@linux.vnet.ibm.com, Haozhong Zhang <haozhong.zhang@intel.com>,
- Eduardo Habkost <ehabkost@redhat.com>, richard.henderson@linaro.org,
- Greg Kurz <groug@kaod.org>, kvm-ppc@vger.kernel.org, qemu-arm@nongnu.org,
- Stefan Hajnoczi <stefanha@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- kwangwoo.lee@sk.com, David Gibson <david@gibson.dropbear.id.au>,
- Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
- shameerali.kolothum.thodi@huawei.com, shivaprasadbhat@gmail.com,
- qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dBIbpfEgC+zf
+Content-Transfer-Encoding: 8bit
+X-TUID: CtybW1edOZBr
 
-On 5/1/21 12:44 AM, Dan Williams wrote:
-> Some corrections to terminology confusion below...
-
-.......
-
-> 
->> file on the host in case of file backed v-nvdimms. This is addressed by
->> virtio-pmem in case of x86_64 by making explicit flushes translating to
->> fsync at qemu.
-> 
-> Note that virtio-pmem was a proposal for a specific optimization of
-> allowing guests to share page cache. The virtio-pmem approach is not
-> to be confused with actual persistent memory.
-> 
-
-.....
-
+On 4/30/21 9:28 PM, Bin Meng wrote:
+> On Fri, Apr 30, 2021 at 10:41 PM Guenter Roeck <linux@roeck-us.net> wrote:
 >>
->> A new device property sync-dax is added to the nvdimm device. When the
->> sync-dax is 'writeback'(default for PPC), device property
->> "hcall-flush-required" is set, and the guest makes hcall H_SCM_FLUSH
->> requesting for an explicit flush.
+>> Hi,
+>>
+>> On Wed, Jan 06, 2021 at 02:35:03PM +0800, Bin Meng wrote:
+>>> From: Bin Meng <bin.meng@windriver.com>
+>>>
+>>> At present, when booting U-Boot on QEMU sabrelite, we see:
+>>>
+>>>   Net:   Board Net Initialization Failed
+>>>   No ethernet found.
+>>>
+>>> U-Boot scans PHY at address 4/5/6/7 (see board_eth_init() in the
+>>> U-Boot source: board/boundary/nitrogen6x/nitrogen6x.c). On the real
+>>> board, the Ethernet PHY is at address 6. Adjust this by updating the
+>>> "fec-phy-num" property of the fsl_imx6 SoC object.
+>>>
+>>> With this change, U-Boot sees the PHY but complains MAC address:
+>>>
+>>>   Net:   using phy at 6
+>>>   FEC [PRIME]
+>>>   Error: FEC address not set.
+>>>
+>>> This is due to U-Boot tries to read the MAC address from the fuse,
+>>> which QEMU does not have any valid content filled in. However this
+>>> does not prevent the Ethernet from working in QEMU. We just need to
+>>> set up the MAC address later in the U-Boot command shell, by:
+>>>
+>>>   => setenv ethaddr 00:11:22:33:44:55
+>>>
+>>
+>> With this patch in place, the standard Ethernet interface no longer works when
+>> booting sabrelite Linux images directly (without u-boot) using the following
+>> qemu command.
+>>         qemu-system-arm -M sabrelite -kernel arch/arm/boot/zImage
+>>         ...
+>>
+>> The Ethernet interface still instantiates, but packet transfer to the host
+>> no longer works. Reverting this patch fixes the problem for me.
+>>
+>> Is there a qemu command line parameter that is now necessary to instantiate
+>> the Ethernet interface when booting Linux ?
 > 
-> I'm not sure "sync-dax" is a suitable name for the property of the
-> guest persistent memory. There is no requirement that the
-> memory-backend file for a guest be a dax-capable file. It's also
-> implementation specific what hypercall needs to be invoked for a given
-> occurrence of "sync-dax". What does that map to on non-PPC platforms
-> for example? It seems to me that an "nvdimm" device presents the
-> synchronous usage model and a whole other device type implements an
-> async-hypercall setup that the guest happens to service with its
-> nvdimm stack, but it's not an "nvdimm" anymore at that point.
+> Enabling "guest_errors" shows that Linux kernel fec driver is trying
+> to read PHY at address 0, which is not what we want.
+> 
+> [imx.fec.phy]imx_phy_read: Bad phy num 0
+> 
+> The device tree blob of the sabrelite does not contain a node for the
+> ethernet phy specifying phy address, so I suspect Linux kernel driver
+> is using default phy address 0 instead.
+> 
+> Could you please test on a real hardware to see what happens?
 > 
 
-What is attempted here is to use the same guest driver papr_scm.ko 
-support the usecase of sharing page cache from the host instead of 
-depending on a new guest driver virtio-pmem. This also try to correctly 
-indicate to the guest that an usage like
+The problem is that qemu returns 0 when the OS tries to read from a
+non-existing PHY. Linux expects it to return 0xffff, and believes that
+a PHY is there if 0 is returned. This helps:
 
--object memory-backend-file,id=memnvdimm1,mem-path=file_name
--device nvdimm,memdev=memnvdimm1
+diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
+index f03450c028..3c90c38e26 100644
+--- a/hw/net/imx_fec.c
++++ b/hw/net/imx_fec.c
+@@ -285,7 +285,7 @@ static uint32_t imx_phy_read(IMXFECState *s, int reg)
+     if (phy != s->phy_num) {
+         qemu_log_mask(LOG_GUEST_ERROR, "[%s.phy]%s: Bad phy num %u\n",
+                       TYPE_IMX_FEC, __func__, phy);
+-        return 0;
++        return 0xffff;
+     }
 
-correctly indicate to the guest that we are indeed sharing page cache 
-and not really emulating a persistent memory.
+Note that this is not really a guest error; any OS can and likely
+will scan the MII bus for connected phy chips.
 
-W.r.t non ppc platforms, it was discussed earlier and one of the 
-suggestion there was to mark that as "unsafe".
-
-Any suggestion for an alternate property name than "sync-dax"?
-
->> sync-dax is "unsafe" on all other platforms(x86, ARM) and old pseries machines
->> prior to 5.2 on PPC. sync-dax="writeback" on ARM and x86_64 is prevented
->> now as the flush semantics are unimplemented.
-> 
-> "sync-dax" has no meaning on its own, I think this needs an explicit
-> mechanism to convey both the "not-sync" property *and* the callback
-> method, it shouldn't be inferred by arch type.
-
-Won't a non-sync property imply that guest needs to do a callback to 
-ensure persistence? Hence they are related?
-
-
--aneesh
+Guenter

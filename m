@@ -1,106 +1,94 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp794504lfg;
-        Fri, 30 Apr 2021 22:56:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwx+onzG+5yQVAkWh5xi753znkbOHBdofNt1haOwzDu3kRKqh5Nz9qBFUfk1kvFbzZv9h7x
-X-Received: by 2002:a5b:191:: with SMTP id r17mr12411806ybl.297.1619848568633;
-        Fri, 30 Apr 2021 22:56:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619848568; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp866566lfg;
+        Sat, 1 May 2021 01:10:33 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJySTafQEOeY5z+0w8oQ/CvrIuCIszWaiynuB1PA+frfVKKJbYuMu1cbt6uACMRuMn/SrD8N
+X-Received: by 2002:ac8:6799:: with SMTP id b25mr2699358qtp.165.1619856633126;
+        Sat, 01 May 2021 01:10:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619856633; cv=none;
         d=google.com; s=arc-20160816;
-        b=0BftsQdH+mxbmqqoogTs9paJbqa0aeEblKEedMHg29ZpAOI+4MFGJ7/mrVjUS5ijto
-         tpkj3W0uW95OEhrei0NYmuQBmwZjKf9VcYEIkpPwSCuhFOENRKHKf85tG4om9OOQIk5v
-         2vHp9e65L0H/qjp8Q2ETT5sC2eINBR/ZROiDyIoo9+/p4fLvYYNT8ccRwxfQ6vfiI2O/
-         ISJ/D5xnagS3k4UygSMaybbH+oB+1q5uULN4kR+FKW5Mu+d4CRTIERPMpFiR3yywWoL2
-         yNAz6+Qse8zSoOwYMtyg6JQXrJCghYJ3Aw1AYxMJ2XVdtJBw0CEjZlwshRZnjqkGrlSx
-         44kA==
+        b=Co/biJc25hz85GAvL+q3yqyb8qxD82ZZE9HUHhSnxUzBKMvQ3X0RQ1JyRo4VNuk3kv
+         wUsrT6D/zVk2/3k11Y2qRzrrTe2+fCrSW3B+wsWyXzC5w95Ajm0NX2y7JQcEUfVNgw4q
+         xG1ykU8D5lijZK3PjW1mgTgkc2Vp2Kk0KrGbcajmokJOiZjlhPz0jATGEdzsNffEwTmF
+         2JB+DoeqNLWBfEpJiN8u3xVmnd+DIt9FQLWUyIUeC5YmULrZ82eFV4iO1qV7drjEsYkb
+         hplFzbPWQ+yncsXPXpY6beT+PgQF1MeGq2RVhQxVfDoUMvoPQ+lPmVI99PpyQ5EBzeRu
+         Rrsw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:user-agent
-         :message-id:in-reply-to:date:references:subject:to:from
-         :dkim-signature;
-        bh=Lp3SzxNIIur6BIgqLkWqgccUuxu8B6TpWwGS5c9rLo0=;
-        b=EdLjanPmNrFSEM7YgOy/JtacUzAhJcVJcBCvN6rEUkVgwtfbU+ELvFy9C8Cj0v0UrU
-         WzHH9LGT50C3Vc25JuyJeT23PROcIdobqNMNP1+9pyMvpGTo7u5S7PUSGU/F4amj2odd
-         1T6MpW3cFChVQZzpdDnTO+WREpjH627RAvuWUi+7mDUSXa5k+Sw8LuV3aYZhAZHiVVTs
-         OTxiY1hAs+PuZsP80wd7Vj/mgGHuPw8Pqlmnvc/dxGAXA6dAj1LCXfh5jZKylpJ+Y8QX
-         8AW5ZTnUzPjHJ53olHkvilFdPGwNMdfho+D2TIWsjVjlQgoSF/HathHwSE03ONVyhnkn
-         IHzw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=x0aE9HO4fhu8Ff1/FK/WSKgvoVpXJbAMlNkifEzfl54=;
+        b=d4NPTzm+xVGGslJ39SbJR+uRmkmgPNlnoAKuQhWOqxBa1JjFlq3D25CAcBg3vc0mo8
+         /FgI/qqoEdcZHfT0Tz0p3SonoXJEVkqe7UOjo42NB6n1++XK5h5x57c99TazcLkfaow2
+         JO0E3RrVktIcv9HQX4EInzexjhIxb/BMK/c8BbLRfwfoJjZdgPJPyO9s4PUM3KLs1VWs
+         jiLLS9wAlt+U3+ySGRwpHKPLwqOTGv1xWDlqBN5yReciNwTLAzZorG7B48tXh2gJyHGD
+         puU/JW89VkxPvaAJpXTsiCnqizCbysWAH1naCIP4f4uXdVd057O/SveJXyPnfyBg4ZQo
+         55Xg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PlzrWSgq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p125si1248163ybp.239.2021.04.30.22.56.08
+        by mx.google.com with ESMTPS id c21si4302226qtp.187.2021.05.01.01.10.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 30 Apr 2021 22:56:08 -0700 (PDT)
+        Sat, 01 May 2021 01:10:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PlzrWSgq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58932 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:55760 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lcibn-00037y-WA
-	for alex.bennee@linaro.org; Sat, 01 May 2021 01:56:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46818)
+	id 1lckhs-00080M-F2
+	for alex.bennee@linaro.org; Sat, 01 May 2021 04:10:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37062)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1lcibV-00034B-59
- for qemu-arm@nongnu.org; Sat, 01 May 2021 01:55:49 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:41298)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1lckhj-0007z0-96
+ for qemu-arm@nongnu.org; Sat, 01 May 2021 04:10:23 -0400
+Received: from smtpout1.mo3005.mail-out.ovh.net ([79.137.123.220]:44045
+ helo=smtpout1.3005.mail-out.ovh.net)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1lcibS-0004Bc-O6
- for qemu-arm@nongnu.org; Sat, 01 May 2021 01:55:48 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1619848545;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=Lp3SzxNIIur6BIgqLkWqgccUuxu8B6TpWwGS5c9rLo0=;
- b=PlzrWSgqb1QpPKx/NP02Bv1BOx9JTHswgCYRQ3x7G7D8XBwvNZ0LF7N03ilCrigk6qf0gE
- Eo1Qu++W+hTjr7sKXEeCcL3utWXfvkOiPiWsKxxThlfftm5kWLJWE/soEahLeA0EOVIchz
- ViPJ+A0VP4FVkCV7H4lZlAGMCSDWU0E=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-547-ZeNXWcMSO02muxjF-XVf8w-1; Sat, 01 May 2021 01:55:43 -0400
-X-MC-Unique: ZeNXWcMSO02muxjF-XVf8w-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BDBED801B13;
- Sat,  1 May 2021 05:55:42 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-114-17.ams2.redhat.com
- [10.36.114.17])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 794745D9CC;
- Sat,  1 May 2021 05:55:42 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id E53B4113525D; Sat,  1 May 2021 07:55:39 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1lckhh-0004uJ-Cg
+ for qemu-arm@nongnu.org; Sat, 01 May 2021 04:10:23 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.1.31])
+ by mo3005.mail-out.ovh.net (Postfix) with ESMTPS id C06F513FD21;
+ Sat,  1 May 2021 08:10:17 +0000 (UTC)
+Received: from kaod.org (37.59.142.99) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2242.4; Sat, 1 May 2021
+ 10:10:17 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-99G00307e7d3f5-c09f-4ac7-a51d-9ecfefe26d52,
+ FA617379B3376A315B5D78BD2AA444FEBCB316FA) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Subject: Re: [PULL 00/18] aspeed queue
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH] hw/sd/omap_mmc: Use device_cold_reset() instead of
- device_legacy_reset()
-References: <20210430222348.8514-1-peter.maydell@linaro.org>
-Date: Sat, 01 May 2021 07:55:39 +0200
-In-Reply-To: <20210430222348.8514-1-peter.maydell@linaro.org> (Peter Maydell's
- message of "Fri, 30 Apr 2021 23:23:48 +0100")
-Message-ID: <87o8dvknfo.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
+References: <20210430163309.4182922-1-clg@kaod.org>
+ <CAFEAcA9qz1SLh5Ws7C-xUqvnCJWfFyjjwc8STj4mdUxmCw0spw@mail.gmail.com>
+ <CAFEAcA_2fuec2KiY=ayUf6e1y-nEuBtdU4KwL5un_mgaBaXrcw@mail.gmail.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <36a3ed52-cc42-f6a7-69f9-821212ea4635@kaod.org>
+Date: Sat, 1 May 2021 10:10:16 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.22,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+In-Reply-To: <CAFEAcA_2fuec2KiY=ayUf6e1y-nEuBtdU4KwL5un_mgaBaXrcw@mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.99]
+X-ClientProxiedBy: DAG3EX2.mxp5.local (172.16.2.22) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 04937c39-50b8-419c-910b-23780b534e69
+X-Ovh-Tracer-Id: 930274801105996765
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduledrvddvjedgudefvdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgihesthejredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpefhudffveehudetjedtiedtheffjeegffeitdfhfeefhedtgfehfeevvddtvdelffenucffohhmrghinhepghhithhlrggsrdgtohhmnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdelleenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepphgvthgvrhdrmhgrhiguvghllheslhhinhgrrhhordhorhhg
+Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
+ helo=smtpout1.3005.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -114,28 +102,38 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8HA7Kc51GlcT
+X-TUID: LR33lgE6E5tl
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+On 5/1/21 12:18 AM, Peter Maydell wrote:
+> On Fri, 30 Apr 2021 at 23:17, Peter Maydell <peter.maydell@linaro.org> wrote:
+>> Same thing is also a build failure on 32-bit hosts (where the types
+>> are genuinely different sizes):
+>>
+>> ../../hw/misc/aspeed_hace.c: In function 'do_hash_operation':
+>> ../../hw/misc/aspeed_hace.c:128:49: error: passing argument 3 of
+>> 'address_space_map' from incompatible pointer type
+>> [-Werror=incompatible-pointer-types]
+>>                                                  &iov[i].iov_len, false,
+>>                                                  ^
+>> In file included from /home/peter.maydell/qemu/include/hw/sysbus.h:7:0,
+>>                  from /home/peter.maydell/qemu/include/hw/misc/aspeed_hace.h:12,
+>>                  from ../../hw/misc/aspeed_hace.c:14:
+>> /home/peter.maydell/qemu/include/exec/memory.h:2438:7: note: expected
+>> 'hwaddr * {aka long long unsigned int *}' but argument is of type
+>> 'size_t * {aka unsigned int *}'
+>>  void *address_space_map(AddressSpace *as, hwaddr addr,
+>>        ^~~~~~~~~~~~~~~~~
+> 
+> If you like you can repro this on the gitlab CI where we have
+> cross-build jobs for the 32-bit targets, eg:
+> https://gitlab.com/qemu-project/qemu/-/jobs/1227559504
 
-> The omap_mmc_reset() function resets its SD card via
-> device_legacy_reset().  We know that the SD card does not have a qbus
-> of its own, so the new device_cold_reset() function (which resets
-> both the device and its child buses) is equivalent here to
-> device_legacy_reset() and we can just switch to the new API.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> cc'ing Markus who was interested in conversions away from
-> the legacy API. As warned, the conversion patch itself is
-> not very interesting as the difficulty is all in confirming
-> that the device being reset has no qbuses...
+Yes. It is time for me to migrate. I will send a fixed v2
+when this is done.
 
-The commit messsage makes this helpful.  Thanks!
+Thanks,
 
-I wonder whether we should add a hint to device_legacy_reset()'s
-comment.
-
+C. 

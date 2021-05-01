@@ -1,141 +1,164 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp1373975lfg;
-        Sat, 1 May 2021 15:37:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz+7mcsF4qjOE1BWGbnZyvvBdS4geEodwQyfG9+eH6BobRF0831UkNR24R51v16U74pnrA8
-X-Received: by 2002:a17:907:9811:: with SMTP id ji17mr10723020ejc.188.1619908654090;
-        Sat, 01 May 2021 15:37:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619908654; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp1388002lfg;
+        Sat, 1 May 2021 16:06:26 -0700 (PDT)
+X-Received: by 2002:a25:81d1:: with SMTP id n17mr17528494ybm.74.1619910385903;
+        Sat, 01 May 2021 16:06:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619910385; cv=none;
         d=google.com; s=arc-20160816;
-        b=DoMNKQbvhB9mng+r+jwfuhprmFIoXB2ZHSUyFjHmA14SBtafMxeZpt8Ik8aZfRA2aW
-         DOMtngdXpmWQiMwgzpYwewEpiv/9atCEdJc0s+DWK4n0m20ScmlEQZHrLmEJTqK7+e6N
-         YhYgc9yJ9Nbym+fPB8pMyeTt8hlm13YWMSUaQYl7fFcXAhym4BDkxBGuiN/tgyKmXE37
-         mvSSllwYHU+ee6jJxzMCTZ8CL5f9qXojqTqYGPxY2orE1j4ZuhKIgjS1N+bzLgVZEsiM
-         odXxYPEmE0sJRJlHdiZO51B68dw0KmtSipYg3Oz8ZtecYiT3F3meCuVooz1fM/4CetH6
-         ZUmw==
+        b=pWnKou3LtOIFuSptcJoUAX/8P6Uj7jSI9B3/YgQltvAu9R540k5aLww8juY60Jiriy
+         dOvf4Te3iG/ygKk9+8EONsYSR6ISSqs9u6WdXPnwlM4qa8p4Wn+VbR5MA2g8BPu41I3k
+         qA9OuThIAjB6wI2lwjUyz2UndIc3ck9beCZ55jHG3mKumPtbZIfiyI37RbfM3Te5zufs
+         kGJoBe8EuUO4kIWZZmByeNfln+vlUvDLYqVFiCNDZbV9axWLk3ZH7HgsSk0INpejpeel
+         exa357lzaS2zoWgit2R05t9m67MvsDkpl2/omrYfsrNXvSvRvgJFO0RZ5VJEa07F11jI
+         tByw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=piFQVJLRgYVAQ8rwlcVYLrCWu2jTvSW2z8Zq+W/DVsE=;
-        b=CezON61efgoiFUmgPP9UannHgXih0beZPvKxC07DwxCMqsonrQDGJa+KNfUcBtAJZj
-         5uyNajySyvcDvXgycthD+1abqpAR4N4SzX24HbcOHrZT+WkNn4Jd1n5ivKPzaIWtTIif
-         ysd5V85hW5tQejZBoYG44oaBDEIWrrr4fw+D+6wuLMoWo6QZs520frXBpZusaxV3Epno
-         3AtPypCcVXfw0uJ0e/xM5kKh6W+xqLDNQOw600L3LF6NhSjzovceMcuWTUSafP0RD+h8
-         b/EY8JhJlwAOiqL8fHKoveNp2GTCTDBOa60UN7GGxsnnK5XreG/jcMdjn2o7VU1go8Fl
-         idzA==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=YhyySDE4/0eYlFcVpxsrQQUb0N7zOJ+Y6y6McqTQSYo=;
+        b=Nj3hgl7U5lvuUcTmX8eaSN8l9dEiL/Zlrj1da681Ko34p7nprGpGyXHq/ZYc4yAoM1
+         vBOcULJYP9w1A83+xBieaF/Fd7H08V17bvNJvPmJc1t/JJAc3//LI5hyLFP/jOb7qfsu
+         RYjZQMNirnmjyWmUs2P4EJ4XlYV34sxFavV6TtuLg244HY3YaQj9MPhEXk1t+4R3n6JH
+         LflkSZTGmodZfIaA5EOyU0Ji+gRlrc1kA809JcLO3X5fF+KXTQrRo4u7HXHVtUTot9vD
+         tOBHPqhgjfHN/YCtHY3Kh0zXUWQKjuc6UZkpp9l8gVAvWZXMM9Qv5Hj7h0v0pax0fjoU
+         EHUg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QKe1GhUw;
-       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
-        by mx.google.com with ESMTPS id bn4si7060274ejb.702.2021.05.01.15.37.33
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 01 May 2021 15:37:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HDlNKrG9;
+       spf=pass (google.com: domain of bmeng.cn@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=bmeng.cn@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <bmeng.cn@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id s1sor3367175ybq.197.2021.05.01.16.06.25
+        (Google Transport Security);
+        Sat, 01 May 2021 16:06:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bmeng.cn@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QKe1GhUw;
-       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1619908653;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=piFQVJLRgYVAQ8rwlcVYLrCWu2jTvSW2z8Zq+W/DVsE=;
-	b=QKe1GhUw7+bYHWWEEIpotsmqDr8NDNhTNHbEdO2J/09agwKTYbQnIwPQmev/XhS3XbNUWm
-	4iH5FI3BbR/dhdEcp7K7yzY366qLRU4gjfHcfN0iDYw0RdWUMxg3zE5NMbksF3BKux2sfe
-	M6R8x9CG662pfWdyGOhbGOqqSHTeo+g=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-309-MfoRAX62MBKlX00t9rJC-w-1; Sat, 01 May 2021 18:37:31 -0400
-X-MC-Unique: MfoRAX62MBKlX00t9rJC-w-1
-Received: by mail-wr1-f72.google.com with SMTP id 93-20020adf93e60000b029010d9bb1923eso1306588wrp.4
-        for <alex.bennee@linaro.org>; Sat, 01 May 2021 15:37:31 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HDlNKrG9;
+       spf=pass (google.com: domain of bmeng.cn@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=bmeng.cn@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=YhyySDE4/0eYlFcVpxsrQQUb0N7zOJ+Y6y6McqTQSYo=;
+        b=HDlNKrG94ddW40D5JruZ549n2TksJhaEpspU9ZU124lNw8bOOwOLjmqtFiO2T5Uwsn
+         RA8sjcsf5ECnTTaC+IwvvwhuuKtI4TR0l5P8YmpF3SyuCiXqcpyVyVjtu8D7Q15QVqe+
+         RBe3qKYZF8Q5pNXEDy94uLf7rN2oVJgGn0ukBwBe+uQdtFzHC3zor+TMSLGUYsRBMzjA
+         mjBClTp6DKxK428HxxfM+jlRXWXXRmgIl7EaSDAr+HdoD06jm6jV5ahNt3VxlJuZMIX2
+         7kab0PCN0TToQ3Ajb5KBL0YSEbW05EO0dyd6/HRtF4aGw6aFjH4rLvV+cBjT7Lc3HnOA
+         pkZQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=piFQVJLRgYVAQ8rwlcVYLrCWu2jTvSW2z8Zq+W/DVsE=;
-        b=YP2FwiJD9X3mwqIUuToXjAeRQHsA7In42HY1MY/kI4x2vzYg6rPSQh870kh75689YF
-         rdXvNc9nghjLrL822lnKCAHgKhHOOmEX66eE0E6jkLJ6KxClI7Vqi5Jf/JSgqLCOusyU
-         1Qf2VuvozzfJhBcGktmLYPlnFJh3/kSxpPh0LqROVUA8v4E5o6pGUl2yJUWX0xFiDVhC
-         98+EF3evCbpImN+gutiuhhDJdqQ4ERMlMXH0SDxckxPcQwaSoq/JvyHMpsPDWnLOQNqP
-         tAvzBJjpdJNEJ7eavtZwfhlboM5CbdgRw7OPqRdsa7nN+ywtcf+p52XAHi3nWeXB5OUY
-         w71g==
-X-Gm-Message-State: AOAM532B0wmBqpRfJNHBmUxwe1FtO4KYbS4cvCGukNDsg72psY1qDVLU
-	GSFK9RI8EKkwDOKmO9T1Hfx6Z9QvdLVB0TP1dtGIgNsiZYAkoXoNZHZ9hAwiy5+XFlfXhtUGCV0
-	KvSoZO3NXx4K4LpxP
-X-Received: by 2002:a5d:6b50:: with SMTP id x16mr15538110wrw.379.1619908650257;
-        Sat, 01 May 2021 15:37:30 -0700 (PDT)
-X-Received: by 2002:a5d:6b50:: with SMTP id x16mr15538086wrw.379.1619908650140;
-        Sat, 01 May 2021 15:37:30 -0700 (PDT)
-Return-Path: <philmd@redhat.com>
-Received: from localhost.localdomain (anancy-651-1-208-144.w109-217.abo.wanadoo.fr. [109.217.237.144])
-        by smtp.gmail.com with ESMTPSA id m11sm44785wmq.33.2021.05.01.15.37.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 01 May 2021 15:37:29 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>,
-	Juan Quintela <quintela@redhat.com>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Andrew Jones <drjones@redhat.com>,
-	qemu-arm@nongnu.org,
-	Eric Blake <eblake@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Claudio Fontana <cfontana@suse.de>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Laurent Vivier <lvivier@redhat.com>
-Subject: [PATCH v5 10/10] qtest: Do not restrict bios-tables-test to Aarch64 hosts anymore
-Date: Sun,  2 May 2021 00:36:38 +0200
-Message-Id: <20210501223638.510712-11-philmd@redhat.com>
-X-Mailer: git-send-email 2.26.3
-In-Reply-To: <20210501223638.510712-1-philmd@redhat.com>
-References: <20210501223638.510712-1-philmd@redhat.com>
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=YhyySDE4/0eYlFcVpxsrQQUb0N7zOJ+Y6y6McqTQSYo=;
+        b=oemmijw2iX24TrjvmMpzOSJIr7aS3iy+1pVQuLYC+HfHsY7scNBYrfUWR0TZWAVtF9
+         UC1Y3kXycg2Y3qH0wjWZhjA7msJFt6LQZj8eTZWYxd1fasi09ht3+wiG1MxAt0IyU4dt
+         JDo2lbKoANv61QFNXR3kXhLzSjnJ3f+8qUEUrj1gqN+Fpa9YCJfUrxJxPK/fFJtDApBF
+         /HJoKqNl0oaOsCdmeT57gY/jvXkrGyin87R09Ya1Ook6+XcJhti28Dy3r5lGD/M9KylB
+         1kuNHglM8Pa5zoiyDvlrtUYO1aaKL8MNrmCA4U8OmtGUoybkvjf6MGL5vFbqDaHphsNB
+         dceA==
+X-Gm-Message-State: AOAM532xeF9ojJXGkGDU3tGYKS2vDhsvfSrvf7tGIK/U0bq3lMjQ+fcI
+	Z3tLQ8Jx3PsZPfe05/U+BnoFLfhBYD9ZFavTjZ0=
+X-Google-Smtp-Source: ABdhPJzmjq4aFBNvp+6JbTQ+k4rcLTgu/A5u23UAmcbyDMkPvhfsPovzH8RrNMec4l5Q45Zf07L9vEazhyZ0KP53WLQ=
+X-Received: by 2002:a25:56:: with SMTP id 83mr17557021yba.387.1619910385317;
+ Sat, 01 May 2021 16:06:25 -0700 (PDT)
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: cUqp2crkYEvD
+References: <20210106063504.10841-1-bmeng.cn@gmail.com> <20210106063504.10841-4-bmeng.cn@gmail.com>
+ <20210430144136.GA2880420@roeck-us.net> <CAEUhbmUTLecMcr0=vmBeYJZeK6CdZY4SZcYiOu0E9AawY41+Cg@mail.gmail.com>
+ <72acebfa-be17-cca5-ce6a-443ef4d23fce@roeck-us.net>
+In-Reply-To: <72acebfa-be17-cca5-ce6a-443ef4d23fce@roeck-us.net>
+From: Bin Meng <bmeng.cn@gmail.com>
+Date: Sun, 2 May 2021 07:06:15 +0800
+Message-ID: <CAEUhbmUwa+7cANCpT8vD=Dbow6ZCFTYto+fd8Gyrghsd-wgbSg@mail.gmail.com>
+Subject: Re: [PATCH v3 3/4] hw/arm: sabrelite: Connect the Ethernet PHY at
+ address 6
+To: Guenter Roeck <linux@roeck-us.net>
+Cc: Peter Maydell <peter.maydell@linaro.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm <qemu-arm@nongnu.org>, 
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>, Bin Meng <bin.meng@windriver.com>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: hsOtzdxwdHwk
 
-Since commit 82bf7ae84ce ("target/arm: Remove KVM support for
-32-bit Arm hosts") we can remove the comment / check added in
-commit ab6b6a77774 and directly run the bios-tables-test.
+On Sun, May 2, 2021 at 4:12 AM Guenter Roeck <linux@roeck-us.net> wrote:
+>
+> On 4/30/21 9:28 PM, Bin Meng wrote:
+> > On Fri, Apr 30, 2021 at 10:41 PM Guenter Roeck <linux@roeck-us.net> wrote:
+> >>
+> >> Hi,
+> >>
+> >> On Wed, Jan 06, 2021 at 02:35:03PM +0800, Bin Meng wrote:
+> >>> From: Bin Meng <bin.meng@windriver.com>
+> >>>
+> >>> At present, when booting U-Boot on QEMU sabrelite, we see:
+> >>>
+> >>>   Net:   Board Net Initialization Failed
+> >>>   No ethernet found.
+> >>>
+> >>> U-Boot scans PHY at address 4/5/6/7 (see board_eth_init() in the
+> >>> U-Boot source: board/boundary/nitrogen6x/nitrogen6x.c). On the real
+> >>> board, the Ethernet PHY is at address 6. Adjust this by updating the
+> >>> "fec-phy-num" property of the fsl_imx6 SoC object.
+> >>>
+> >>> With this change, U-Boot sees the PHY but complains MAC address:
+> >>>
+> >>>   Net:   using phy at 6
+> >>>   FEC [PRIME]
+> >>>   Error: FEC address not set.
+> >>>
+> >>> This is due to U-Boot tries to read the MAC address from the fuse,
+> >>> which QEMU does not have any valid content filled in. However this
+> >>> does not prevent the Ethernet from working in QEMU. We just need to
+> >>> set up the MAC address later in the U-Boot command shell, by:
+> >>>
+> >>>   => setenv ethaddr 00:11:22:33:44:55
+> >>>
+> >>
+> >> With this patch in place, the standard Ethernet interface no longer works when
+> >> booting sabrelite Linux images directly (without u-boot) using the following
+> >> qemu command.
+> >>         qemu-system-arm -M sabrelite -kernel arch/arm/boot/zImage
+> >>         ...
+> >>
+> >> The Ethernet interface still instantiates, but packet transfer to the host
+> >> no longer works. Reverting this patch fixes the problem for me.
+> >>
+> >> Is there a qemu command line parameter that is now necessary to instantiate
+> >> the Ethernet interface when booting Linux ?
+> >
+> > Enabling "guest_errors" shows that Linux kernel fec driver is trying
+> > to read PHY at address 0, which is not what we want.
+> >
+> > [imx.fec.phy]imx_phy_read: Bad phy num 0
+> >
+> > The device tree blob of the sabrelite does not contain a node for the
+> > ethernet phy specifying phy address, so I suspect Linux kernel driver
+> > is using default phy address 0 instead.
+> >
+> > Could you please test on a real hardware to see what happens?
+> >
+>
+> The problem is that qemu returns 0 when the OS tries to read from a
+> non-existing PHY. Linux expects it to return 0xffff, and believes that
+> a PHY is there if 0 is returned. This helps:
 
-Reviewed-by: Eric Blake <eblake@redhat.com>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Tested-by: Alex Bennée <alex.bennee@linaro.org>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
----
- tests/qtest/meson.build | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+Good catch! Please send a patch for this.
 
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 0c767389217..46de073d155 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -175,14 +175,13 @@
-    'boot-serial-test',
-    'hexloader-test']
- 
--# TODO: once aarch64 TCG is fixed on ARM 32 bit host, make bios-tables-test unconditional
- qtests_aarch64 = \
--  (cpu != 'arm' ? ['bios-tables-test'] : []) +                                                  \
-   (config_all_devices.has_key('CONFIG_TPM_TIS_SYSBUS') ? ['tpm-tis-device-test'] : []) +        \
-   (config_all_devices.has_key('CONFIG_TPM_TIS_SYSBUS') ? ['tpm-tis-device-swtpm-test'] : []) +  \
-   ['arm-cpu-features',
-    'numa-test',
-    'boot-serial-test',
-+   'bios-tables-test',
-    'xlnx-can-test',
-    'migration-test']
- 
--- 
-2.26.3
+>
+> diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
+> index f03450c028..3c90c38e26 100644
+> --- a/hw/net/imx_fec.c
+> +++ b/hw/net/imx_fec.c
+> @@ -285,7 +285,7 @@ static uint32_t imx_phy_read(IMXFECState *s, int reg)
+>      if (phy != s->phy_num) {
+>          qemu_log_mask(LOG_GUEST_ERROR, "[%s.phy]%s: Bad phy num %u\n",
+>                        TYPE_IMX_FEC, __func__, phy);
+> -        return 0;
+> +        return 0xffff;
+>      }
+>
+> Note that this is not really a guest error; any OS can and likely
+> will scan the MII bus for connected phy chips.
+
+Agree.
+
+Regards,
+Bin

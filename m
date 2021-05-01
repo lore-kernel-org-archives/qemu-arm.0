@@ -1,135 +1,141 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp752047lfg;
-        Fri, 30 Apr 2021 21:28:41 -0700 (PDT)
-X-Received: by 2002:a25:a021:: with SMTP id x30mr11956992ybh.128.1619843321730;
-        Fri, 30 Apr 2021 21:28:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619843321; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp794504lfg;
+        Fri, 30 Apr 2021 22:56:08 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwx+onzG+5yQVAkWh5xi753znkbOHBdofNt1haOwzDu3kRKqh5Nz9qBFUfk1kvFbzZv9h7x
+X-Received: by 2002:a5b:191:: with SMTP id r17mr12411806ybl.297.1619848568633;
+        Fri, 30 Apr 2021 22:56:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619848568; cv=none;
         d=google.com; s=arc-20160816;
-        b=cxykrD7eR5iVWAE8BFKbRoRO0JOQigp8gTYuQodBtxgxREgkTSp6hJS7BiPdJ4y/KY
-         up2unnLylblp0xqMJ6nRRkzDZYDbgyWpQEyxe3ZcXQaiQOYCNao6zvv8x1HMTVyE5kol
-         B9TTl0bzCPU8YBiNRTmFP+sIoS9O26h7gctduqo1hg+lRWrR8KTgjPvq1fUiMHvf0dZW
-         vybJnyM/Q2Z1OcGUju295FV+2AmoytD7fLQ8zUpcFunwozPLzoK6phPhHV5LO6CfZMdm
-         +RmMKN5Ul323O/EstMJFemmeqyT306ynqwFlMvwL/SwEKuLTfWuFFs8C/CMWKaBobxfq
-         D4pw==
+        b=0BftsQdH+mxbmqqoogTs9paJbqa0aeEblKEedMHg29ZpAOI+4MFGJ7/mrVjUS5ijto
+         tpkj3W0uW95OEhrei0NYmuQBmwZjKf9VcYEIkpPwSCuhFOENRKHKf85tG4om9OOQIk5v
+         2vHp9e65L0H/qjp8Q2ETT5sC2eINBR/ZROiDyIoo9+/p4fLvYYNT8ccRwxfQ6vfiI2O/
+         ISJ/D5xnagS3k4UygSMaybbH+oB+1q5uULN4kR+FKW5Mu+d4CRTIERPMpFiR3yywWoL2
+         yNAz6+Qse8zSoOwYMtyg6JQXrJCghYJ3Aw1AYxMJ2XVdtJBw0CEjZlwshRZnjqkGrlSx
+         44kA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=KBOrlFh7m+qPBZ0bW2VfLECFPg8kJKYqGnFplvrHa34=;
-        b=HvlTtjzhgBVGtNTAzsxyDARRygxnnDwXQqapHdHJFPL7jVw1mBXn2vnKH1Cj9SNk3M
-         C4NfsHNlAPlGPuP+QYJ1n8LYLYHW98avZWgbO5YK4tIAFRXHuwezcqz4xJLi7jPhAO2x
-         UdMi12eYdPS0pxVQcSVqJ5KGz78GKMNrFF4xzRI/Owzoxz7h6TlL2XE5Oi1cIGk4EddO
-         MQjCLEm+XFxBqF0TekHGk7lA3pypKOB09W704wB7XdJKasHN1dUsdc82hKoHjqPE4I3L
-         BGNT+igOr6+bdfugzGlPyn3jnNcSVB1zElQaMSWKCucZ4icnXBHXQFLFv0dFAhle0wuC
-         vncQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :message-id:in-reply-to:date:references:subject:to:from
+         :dkim-signature;
+        bh=Lp3SzxNIIur6BIgqLkWqgccUuxu8B6TpWwGS5c9rLo0=;
+        b=EdLjanPmNrFSEM7YgOy/JtacUzAhJcVJcBCvN6rEUkVgwtfbU+ELvFy9C8Cj0v0UrU
+         WzHH9LGT50C3Vc25JuyJeT23PROcIdobqNMNP1+9pyMvpGTo7u5S7PUSGU/F4amj2odd
+         1T6MpW3cFChVQZzpdDnTO+WREpjH627RAvuWUi+7mDUSXa5k+Sw8LuV3aYZhAZHiVVTs
+         OTxiY1hAs+PuZsP80wd7Vj/mgGHuPw8Pqlmnvc/dxGAXA6dAj1LCXfh5jZKylpJ+Y8QX
+         8AW5ZTnUzPjHJ53olHkvilFdPGwNMdfho+D2TIWsjVjlQgoSF/HathHwSE03ONVyhnkn
+         IHzw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=uWAaW1Cy;
-       spf=pass (google.com: domain of bmeng.cn@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=bmeng.cn@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <bmeng.cn@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id p9sor2968601ybm.55.2021.04.30.21.28.41
-        (Google Transport Security);
-        Fri, 30 Apr 2021 21:28:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bmeng.cn@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PlzrWSgq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id p125si1248163ybp.239.2021.04.30.22.56.08
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 30 Apr 2021 22:56:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=uWAaW1Cy;
-       spf=pass (google.com: domain of bmeng.cn@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=bmeng.cn@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=KBOrlFh7m+qPBZ0bW2VfLECFPg8kJKYqGnFplvrHa34=;
-        b=uWAaW1CyhSQINLIktbuxRY2oZup04jmk19ET6sNxRRd9xgsPzrS6DZmtGbF/c1+yCQ
-         1bmdtMeb/XldC8v1ilYfdwvoLnpvFMcXGLdNOQLxn/8fTt7MvC+IuphjnEK+OrsPRjNl
-         Wgb8rE6p3jsvXLm0eHyj1C3gWdgWD20bLtTCQL5Blq+6MXh3lj2oApvCMtng0DL3ViL/
-         OKekcRABOZ012DiruUrVVTGcE0iKddKEGbOUM2BwqixGeOUdtxO4C6KA89f4GWOv0iad
-         ZqTWXDCBJViTlGgoT7D7GXfZ1Zwv6kSak2Py8PGbsR0pZcuGWQEZlTqHdeqaHVrZgXYg
-         CHSw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=KBOrlFh7m+qPBZ0bW2VfLECFPg8kJKYqGnFplvrHa34=;
-        b=PBzhPA86J8G+UWVGvv1b2JY+uSY6ORdDGmF3mqjT03dpXX45iyODu32x+w0DbexrFG
-         b1NkBmOMGwbj487zHceoDxzX58gf5B5yyyg7/BCx0u/QuzYP1Xeb5X25KLbvL7G0Oimq
-         RNG6LTauY+rM7h/WYePPjRthO70Z4ZsQJ42aFCT1sm7x2vFbH46A5MrnziwJY/fQintf
-         kpAFzXaJhN//Rctr0IK7CcdGEfj+GT9Gs9PmI8dmt6MGoMZJ3aT+Zvd0IxThghuAgyCS
-         Fc8w29Ix8RkQVWlGbYz0awfbbDrnFyDIbBOX3VK4Bm3t7Lx8S/dfb53Qb35Wj2gHYR+M
-         ++lA==
-X-Gm-Message-State: AOAM5308wmPPGEpFfHGbYHZm0f6PvwsmMaNzVe9Kjf7BPn7r7BQm8Hm6
-	8+KTaKHksuqiww32UvMhXH7ym0yY51eIIpdnLV4=
-X-Google-Smtp-Source: ABdhPJxy7urPtcoIFbbUfYpDKJYZOdjeEcRc+MB44zbEzCmwVKP7LcG5rcYuyhIWusPObDuSNNCC+FlMH8h+woifh7w=
-X-Received: by 2002:a25:db84:: with SMTP id g126mr11812176ybf.122.1619843320843;
- Fri, 30 Apr 2021 21:28:40 -0700 (PDT)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PlzrWSgq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:58932 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lcibn-00037y-WA
+	for alex.bennee@linaro.org; Sat, 01 May 2021 01:56:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46818)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1lcibV-00034B-59
+ for qemu-arm@nongnu.org; Sat, 01 May 2021 01:55:49 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:41298)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1lcibS-0004Bc-O6
+ for qemu-arm@nongnu.org; Sat, 01 May 2021 01:55:48 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1619848545;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=Lp3SzxNIIur6BIgqLkWqgccUuxu8B6TpWwGS5c9rLo0=;
+ b=PlzrWSgqb1QpPKx/NP02Bv1BOx9JTHswgCYRQ3x7G7D8XBwvNZ0LF7N03ilCrigk6qf0gE
+ Eo1Qu++W+hTjr7sKXEeCcL3utWXfvkOiPiWsKxxThlfftm5kWLJWE/soEahLeA0EOVIchz
+ ViPJ+A0VP4FVkCV7H4lZlAGMCSDWU0E=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-547-ZeNXWcMSO02muxjF-XVf8w-1; Sat, 01 May 2021 01:55:43 -0400
+X-MC-Unique: ZeNXWcMSO02muxjF-XVf8w-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BDBED801B13;
+ Sat,  1 May 2021 05:55:42 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-114-17.ams2.redhat.com
+ [10.36.114.17])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 794745D9CC;
+ Sat,  1 May 2021 05:55:42 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id E53B4113525D; Sat,  1 May 2021 07:55:39 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH] hw/sd/omap_mmc: Use device_cold_reset() instead of
+ device_legacy_reset()
+References: <20210430222348.8514-1-peter.maydell@linaro.org>
+Date: Sat, 01 May 2021 07:55:39 +0200
+In-Reply-To: <20210430222348.8514-1-peter.maydell@linaro.org> (Peter Maydell's
+ message of "Fri, 30 Apr 2021 23:23:48 +0100")
+Message-ID: <87o8dvknfo.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
 MIME-Version: 1.0
-References: <20210106063504.10841-1-bmeng.cn@gmail.com> <20210106063504.10841-4-bmeng.cn@gmail.com>
- <20210430144136.GA2880420@roeck-us.net>
-In-Reply-To: <20210430144136.GA2880420@roeck-us.net>
-From: Bin Meng <bmeng.cn@gmail.com>
-Date: Sat, 1 May 2021 12:28:30 +0800
-Message-ID: <CAEUhbmUTLecMcr0=vmBeYJZeK6CdZY4SZcYiOu0E9AawY41+Cg@mail.gmail.com>
-Subject: Re: [PATCH v3 3/4] hw/arm: sabrelite: Connect the Ethernet PHY at
- address 6
-To: Guenter Roeck <linux@roeck-us.net>
-Cc: Peter Maydell <peter.maydell@linaro.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm <qemu-arm@nongnu.org>, 
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>, Bin Meng <bin.meng@windriver.com>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: 7DmIAKEgsiOu
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.22,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 8HA7Kc51GlcT
 
-On Fri, Apr 30, 2021 at 10:41 PM Guenter Roeck <linux@roeck-us.net> wrote:
+Peter Maydell <peter.maydell@linaro.org> writes:
+
+> The omap_mmc_reset() function resets its SD card via
+> device_legacy_reset().  We know that the SD card does not have a qbus
+> of its own, so the new device_cold_reset() function (which resets
+> both the device and its child buses) is equivalent here to
+> device_legacy_reset() and we can just switch to the new API.
 >
-> Hi,
->
-> On Wed, Jan 06, 2021 at 02:35:03PM +0800, Bin Meng wrote:
-> > From: Bin Meng <bin.meng@windriver.com>
-> >
-> > At present, when booting U-Boot on QEMU sabrelite, we see:
-> >
-> >   Net:   Board Net Initialization Failed
-> >   No ethernet found.
-> >
-> > U-Boot scans PHY at address 4/5/6/7 (see board_eth_init() in the
-> > U-Boot source: board/boundary/nitrogen6x/nitrogen6x.c). On the real
-> > board, the Ethernet PHY is at address 6. Adjust this by updating the
-> > "fec-phy-num" property of the fsl_imx6 SoC object.
-> >
-> > With this change, U-Boot sees the PHY but complains MAC address:
-> >
-> >   Net:   using phy at 6
-> >   FEC [PRIME]
-> >   Error: FEC address not set.
-> >
-> > This is due to U-Boot tries to read the MAC address from the fuse,
-> > which QEMU does not have any valid content filled in. However this
-> > does not prevent the Ethernet from working in QEMU. We just need to
-> > set up the MAC address later in the U-Boot command shell, by:
-> >
-> >   => setenv ethaddr 00:11:22:33:44:55
-> >
->
-> With this patch in place, the standard Ethernet interface no longer works when
-> booting sabrelite Linux images directly (without u-boot) using the following
-> qemu command.
->         qemu-system-arm -M sabrelite -kernel arch/arm/boot/zImage
->         ...
->
-> The Ethernet interface still instantiates, but packet transfer to the host
-> no longer works. Reverting this patch fixes the problem for me.
->
-> Is there a qemu command line parameter that is now necessary to instantiate
-> the Ethernet interface when booting Linux ?
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> cc'ing Markus who was interested in conversions away from
+> the legacy API. As warned, the conversion patch itself is
+> not very interesting as the difficulty is all in confirming
+> that the device being reset has no qbuses...
 
-Enabling "guest_errors" shows that Linux kernel fec driver is trying
-to read PHY at address 0, which is not what we want.
+The commit messsage makes this helpful.  Thanks!
 
-[imx.fec.phy]imx_phy_read: Bad phy num 0
+I wonder whether we should add a hint to device_legacy_reset()'s
+comment.
 
-The device tree blob of the sabrelite does not contain a node for the
-ethernet phy specifying phy address, so I suspect Linux kernel driver
-is using default phy address 0 instead.
-
-Could you please test on a real hardware to see what happens?
-
-Regards,
-Bin

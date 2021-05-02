@@ -1,103 +1,103 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp2085994lfg;
-        Sun, 2 May 2021 13:34:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzmYaMEuBzFW3qEISmRlJrdQT9bO3X4aklBtpYH3pGZZidieOXPCbS9jQp2fhVyOjpiM5cR
-X-Received: by 2002:a6b:ea05:: with SMTP id m5mr12066237ioc.77.1619987649307;
-        Sun, 02 May 2021 13:34:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619987649; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp2086520lfg;
+        Sun, 2 May 2021 13:35:15 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz52CxissDPjByiDgTzZ3xxXuXROSA3JUMDWuxUOny7oMZqpooS7+gl5xx4a9q6/OhbREbr
+X-Received: by 2002:a05:6638:dc2:: with SMTP id m2mr15331564jaj.123.1619987715043;
+        Sun, 02 May 2021 13:35:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619987715; cv=none;
         d=google.com; s=arc-20160816;
-        b=r1juDA8HY/JKbKSRZ6Ohlm/lD83fPSXQBqo46kECLqE7GON6Ehf1ucY1owsU4piXdq
-         HWtegZXSQIXtQGxADSMjLU+EzUcPQAkPWNwKeChsmOjymqLOJPNQEJo3BEIuMV4hAxJE
-         Mch8754O1+9U5coUT8adOdHA+8nn3iCt0k/43Yt2OLpL0E/S+OBYpb5A0uYFZIqYo95l
-         xXOEuTfowk2Q4n7rQbP8aHLML7qJeYf7rPHdhb2Gc0ikeCoJUTKvsJHfinVD0Kznxa4x
-         HVlZVcx1SNN89AvKMsAfU30cVrk2b0yzDZuNlzA0gUmP4UDVHEDxE/pKKSck7siDz05d
-         Pp7Q==
+        b=R/4fRYFk1nKdNSupK4Irml0MzNTwmvxXL1kx/7kFM2+khoMfuGTj1jpTeydE+1bYYK
+         kqb85mVCQfbzjjCRikSaU5xxYWp0vv0ezo8KhyuyKhBf5/I6qTCHXim/myy2P4u1mVTP
+         rccuywgUIGFpycBxh4DFTMMtgQrejnTIVL687nwD2/4LF4KbU+mHATjr2awqldRktrlu
+         fiicPRxSEBHaFet9v5kaeRDmJaL7ym841hsgjQGioo4Hlaw7B2xIeQX/v9EP9FRHwMTX
+         PbysI4YdVzLLQDLyeK1ZtV70WAk9l0XoXn+y/DvhO8WzNRbekMiJwn947PQbGmfaAuzy
+         5uuA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=1wLp4aTj+pbMibqvZAxrBIac9OxculfaSC45JDiLwlk=;
-        b=KUQX+de4s8E97iRfrM9474XDemaMmvvrADGQWPdLbRmIGhDYCg/Fl/Q7nBWPZH3mp6
-         FVsXZbV9cBuPOlXmQg2BgQrvm9+La4fQKkrWCDDhHzAAzoWiMiu2dlKEITbdf9P2MV4i
-         wboXvtB0INP5Q+whOD2gBLRgC21vD1CsjSZa0cZ/P5pqDdJws5P6uM30miZqejsObqv7
-         0+tS70ccpgBxWrsafQcV7flqrmTRhS2dNE0IXn3gs02V4qtNrI4E8NdU+JQth6rfkoRE
-         yMkgjWlmcqRaA0VOPXXQcb4ox3lIqPr2GBF9vPOQrIkO6KtXa57YlA6sUFE4R925WAQR
-         VbQg==
+        bh=mAjmyzPT3IwY2l6eFakhdO2wuhU1yMrtB6iL9Jf4M7Y=;
+        b=CR2Y1bNWGGQZ+49QpNmr9dXyTqdoIG2/3ALwQLGshH71CxTg0ezNvBsZVaVkCUgZHh
+         U4hU1PvnRJoNffvPvVsTkhb6eBBxSKroPlY+4pBN6PS2EBjEgKKLwutYFeQLLL0el/SG
+         UmY2zNy3e89uOFMqndor54H2FDa8K/uO3+GCM1aLM5S18xMPLAJv1eNmoq2QwtpzWWge
+         /Kmzvor2c39Qar/CUA4Le0nWVMJdmyOAfAP0hL2VopzBoNcC5NJF/7plLRqSGNABz6g9
+         p7eCcO2ifxoN/SVXcGlO/hwi0nffJ+73j6jMuCbqmHmcamhl3Y4N2lT8Y7nRCG7gvv5O
+         x4Mg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=EqfkNzKe;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="o3LOVQ/d";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g16si11062507iox.5.2021.05.02.13.34.09
+        by mx.google.com with ESMTPS id q13si12677425ilg.125.2021.05.02.13.35.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 02 May 2021 13:34:09 -0700 (PDT)
+        Sun, 02 May 2021 13:35:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=EqfkNzKe;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="o3LOVQ/d";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:46952 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51834 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ldIn2-0003QG-LK
-	for alex.bennee@linaro.org; Sun, 02 May 2021 16:34:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42736)
+	id 1ldIo6-0005N4-1w
+	for alex.bennee@linaro.org; Sun, 02 May 2021 16:35:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42716)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1ldIki-0001NE-GY; Sun, 02 May 2021 16:31:44 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c]:47038)
+ id 1ldIke-0001Ge-5v; Sun, 02 May 2021 16:31:42 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335]:35508)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1ldIkg-0007rS-Rm; Sun, 02 May 2021 16:31:44 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id
- k4-20020a7bc4040000b02901331d89fb83so2341112wmi.5; 
- Sun, 02 May 2021 13:31:40 -0700 (PDT)
+ id 1ldIkb-0007oV-6r; Sun, 02 May 2021 16:31:39 -0400
+Received: by mail-wm1-x335.google.com with SMTP id
+ j3-20020a05600c4843b02901484662c4ebso2951917wmo.0; 
+ Sun, 02 May 2021 13:31:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=1wLp4aTj+pbMibqvZAxrBIac9OxculfaSC45JDiLwlk=;
- b=EqfkNzKeaYNINFqhpz8ytQ7/WyNimPujlp9uzSdRtzVvW+jIPHvbyY1Tp9n4Y/rByc
- H3MaWNP+y4wKsQFSOdmjdbt5ouv+D9yOrzyiDhUEenboOnEZ1Tuzm6mQAEQ74xacWiss
- 0pszIBRxiEnP1ySedB11/IZDzKyrQJapci63HacFAONvjL/cAtuYhrd4efP0od5xTDiT
- WPNfX6q9OkdNwGwaXb2h1UDonh3Ojf6kPcepFu1EnaI+NiLFCaM0yuccM3Ecy+xEs4Dt
- 9DNjOKj2ZNZf1F3V8GoEBHsal9tnZZtnxL+s2tJhlOX9mQyKxhniSPUdR2MxMorYwU8F
- Tyzg==
+ bh=mAjmyzPT3IwY2l6eFakhdO2wuhU1yMrtB6iL9Jf4M7Y=;
+ b=o3LOVQ/dXR7NqPs2/gbNNCwcI027XTM9F3Dx++RyowbKmd0xB0P442jHmJl7qKQf4Y
+ AUCWLWG5HGTAuMBhlxCWxPlj/xuqPwFAriCGkWAb/a5wmNbSphwwfL4ph7TQEEepCM2n
+ q5D1Ees1yGjoLZbrJyAWRYicW88AFNFxBc0fOx1OCG6SEqO7j+xAYTzR1sK7fGpmLore
+ /n9TUGQMWgCh5bjFtqK9rYVGfHQf6O/WnxsD5YxoP14lShs5+Y6C3i4vGmlfyQNG364j
+ RoobFFiwrrKb2paYKvNq02ggVVEfm5CHwlTghTiIRJA/7Mcjl4uJVCKVNPivqHg+7Pf6
+ 6xuQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=1wLp4aTj+pbMibqvZAxrBIac9OxculfaSC45JDiLwlk=;
- b=D4SsSEVASj3pR6Q/4zrLNE1Py1N+5VEMJF80A7JBgCwTH8uUwyl4nldbLFwACr/97P
- EA9a70GM39UTcMWzXIyDgL1SW4BVllwxREo7MsmxnvWLDx5tyrnIaDCmMj606Peyjh3N
- f/aDCwmhnUKKF1QqYpbFatoGIcfwmn4/kbqEwAZa26QkGub6MyZvt+dq0GcU+UimiGlj
- Qna0c2E/5AfTBO2yOEIiwg23Po2YxKyfyJJ2YUFJP45c6msmFYd2CCn2lixiKMCbsW1a
- tnCP3DIbGYQuaAiQT3reAs6iriyzvoecfB42KWT1N+P/hB80S+1DeWEmMCxAEHWy/7Gz
- AtBQ==
-X-Gm-Message-State: AOAM533QbhNimmEd87mpTvdIeVVPdmawB3A1HztP8MZd3DX6pvYPiGe8
- 0Ju/+3DVOuY9g9en7arU/MHHmUaVi9fNZPpq
-X-Received: by 2002:a05:600c:3798:: with SMTP id
- o24mr29222522wmr.12.1619987499074; 
- Sun, 02 May 2021 13:31:39 -0700 (PDT)
+ bh=mAjmyzPT3IwY2l6eFakhdO2wuhU1yMrtB6iL9Jf4M7Y=;
+ b=n9da0F2vI1t5skZX1tWRBiUJX+JR+20o5gcle+eZUwGv1e8RQO09XyzyZ4mDJfKV+r
+ xzK8GNRx3x5IfvGaRR4BUfZzwYRx3u+mVdAzG8Hz+VqIvOWXZyQKWfOFXXCtvHs4Ckbi
+ YXqx2r41ZHEct8n+RUWUq415WZnLT5ERsb+JguAHDK6ho6pRNCG0XzusSmFodZWW2o8i
+ JV86MerHAB3xDnRHi3zG1eewXSom+oFuyhXPSKvzb+Es2IjTG4Q7ceuyCdesH8dn7UjB
+ O4zAwFMt/UDP5E4EYg7ctxZOHnDrR5ft8UhjzP1neiXosVXHq2vW5SSCxf8jEwNn6jBh
+ WKeA==
+X-Gm-Message-State: AOAM530TMufyin+7GvrDADf2lV3mFSJNSylLnk87phEzMS7nu834DL2/
+ fGiOr/4v7oY+BAf0WcXY64qX7dkfc5a9IYjD
+X-Received: by 2002:a05:600c:350f:: with SMTP id
+ h15mr18171455wmq.181.1619987494214; 
+ Sun, 02 May 2021 13:31:34 -0700 (PDT)
 Received: from localhost.localdomain
  (anancy-651-1-208-144.w109-217.abo.wanadoo.fr. [109.217.237.144])
- by smtp.gmail.com with ESMTPSA id f24sm20279883wmb.32.2021.05.02.13.31.38
+ by smtp.gmail.com with ESMTPSA id h8sm9067171wmq.19.2021.05.02.13.31.32
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 02 May 2021 13:31:38 -0700 (PDT)
+ Sun, 02 May 2021 13:31:33 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 3/3] hw/arm/armsse: Manually reset the OR_IRQ devices
-Date: Sun,  2 May 2021 22:31:21 +0200
-Message-Id: <20210502203121.630944-4-f4bug@amsat.org>
+Subject: [PATCH v2 2/3] hw/pci-host/raven: Manually reset the OR_IRQ device
+Date: Sun,  2 May 2021 22:31:20 +0200
+Message-Id: <20210502203121.630944-3-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.3
 In-Reply-To: <20210502203121.630944-1-f4bug@amsat.org>
 References: <20210502203121.630944-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -121,38 +121,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
  qemu-block@nongnu.org, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Markus Armbruster <armbru@redhat.com>, Max Reitz <mreitz@redhat.com>,
- qemu-arm@nongnu.org,
+ Greg Kurz <groug@kaod.org>, qemu-arm@nongnu.org,
  =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- qemu-ppc@nongnu.org,
+ qemu-ppc@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CCoJuUogGXVs
+X-TUID: Gg3NunTu8773
 
 The OR_IRQ device is bus-less, thus isn't reset automatically.
-Manually reset the OR IRQs in the armsse_reset() handler.
+Add the raven_pcihost_reset() handler to manually reset the OR IRQ.
 
-Fixes: bb75e16d5e6 ("hw/arm/iotkit: Wire up MPC interrupt lines")
+Fixes: f40b83a4e31 ("40p: use OR gate to wire up raven PCI interrupts")
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/arm/armsse.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ hw/pci-host/prep.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
-index 2e5d0679e7b..a5f8e89950e 100644
---- a/hw/arm/armsse.c
-+++ b/hw/arm/armsse.c
-@@ -1668,6 +1668,10 @@ static void armsse_reset(DeviceState *dev)
-     ARMSSE *s = ARM_SSE(dev);
- 
-     s->nsccfg = 0;
-+
-+    device_cold_reset(DEVICE(&s->mpc_irq_orgate));
-+    device_cold_reset(DEVICE(&s->ppc_irq_orgate));
-+    device_cold_reset(DEVICE(&s->sec_resp_splitter));
+diff --git a/hw/pci-host/prep.c b/hw/pci-host/prep.c
+index 0a9162fba97..7481bbf99d4 100644
+--- a/hw/pci-host/prep.c
++++ b/hw/pci-host/prep.c
+@@ -230,6 +230,15 @@ static void raven_change_gpio(void *opaque, int n, int level)
+     s->contiguous_map = level;
  }
  
- static void armsse_class_init(ObjectClass *klass, void *data)
++static void raven_pcihost_reset_enter(Object *obj, ResetType type)
++{
++    PREPPCIState *s = RAVEN_PCI_HOST_BRIDGE(obj);
++
++    if (!s->is_legacy_prep) {
++        device_cold_reset(DEVICE(&s->or_irq));
++    }
++}
++
+ static void raven_pcihost_realizefn(DeviceState *d, Error **errp)
+ {
+     SysBusDevice *dev = SYS_BUS_DEVICE(d);
+@@ -419,11 +428,13 @@ static Property raven_pcihost_properties[] = {
+ static void raven_pcihost_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
++    ResettableClass *rc = RESETTABLE_CLASS(klass);
+ 
+     set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+     dc->realize = raven_pcihost_realizefn;
+     device_class_set_props(dc, raven_pcihost_properties);
+     dc->fw_name = "pci";
++    rc->phases.enter = raven_pcihost_reset_enter;
+ }
+ 
+ static const TypeInfo raven_pcihost_info = {
 -- 
 2.26.3
 

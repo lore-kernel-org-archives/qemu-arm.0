@@ -1,177 +1,141 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp2086520lfg;
-        Sun, 2 May 2021 13:35:15 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz52CxissDPjByiDgTzZ3xxXuXROSA3JUMDWuxUOny7oMZqpooS7+gl5xx4a9q6/OhbREbr
-X-Received: by 2002:a05:6638:dc2:: with SMTP id m2mr15331564jaj.123.1619987715043;
-        Sun, 02 May 2021 13:35:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619987715; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp2088921lfg;
+        Sun, 2 May 2021 13:40:34 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzMPfwjqMSP7XYgSu7PKfTDSh13wZrUed3vnhT8nLiTYecdP+RaV3oKLRZsXaBvzQzXXuUa
+X-Received: by 2002:a02:5142:: with SMTP id s63mr15012510jaa.82.1619988034806;
+        Sun, 02 May 2021 13:40:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619988034; cv=none;
         d=google.com; s=arc-20160816;
-        b=R/4fRYFk1nKdNSupK4Irml0MzNTwmvxXL1kx/7kFM2+khoMfuGTj1jpTeydE+1bYYK
-         kqb85mVCQfbzjjCRikSaU5xxYWp0vv0ezo8KhyuyKhBf5/I6qTCHXim/myy2P4u1mVTP
-         rccuywgUIGFpycBxh4DFTMMtgQrejnTIVL687nwD2/4LF4KbU+mHATjr2awqldRktrlu
-         fiicPRxSEBHaFet9v5kaeRDmJaL7ym841hsgjQGioo4Hlaw7B2xIeQX/v9EP9FRHwMTX
-         PbysI4YdVzLLQDLyeK1ZtV70WAk9l0XoXn+y/DvhO8WzNRbekMiJwn947PQbGmfaAuzy
-         5uuA==
+        b=MdF00SBXiz8hVBOMtEF5MBQrp043G8tx+6vJsKdNfkEiI7YVbqB/7Wl147mPeLNt0S
+         SY7EnsxllwFYyLoWQGksAJw4SsBAkJwsKfThArCSflJhAf2a++QHVR7FjlSuYjVBJEhD
+         R0iSjWw9XeFg7HKHPdXxVJjYLIVVVc2IltVqyg0PuLRwuxKs8S+WWY+XiMqtpwRDJ79Y
+         J41nytm63Kqp9nD0Nom/oJbtXJEEcmP1xiFOOWORquEb3uSDTf7PqoNyNuTaBgHyBIbg
+         pWW53a1AdDvwHlGJqvldzkuqX010D5oSKYpJEH7OdCJsC+naJTHyYmgmLM2lXaVCZmBo
+         st1g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=mAjmyzPT3IwY2l6eFakhdO2wuhU1yMrtB6iL9Jf4M7Y=;
-        b=CR2Y1bNWGGQZ+49QpNmr9dXyTqdoIG2/3ALwQLGshH71CxTg0ezNvBsZVaVkCUgZHh
-         U4hU1PvnRJoNffvPvVsTkhb6eBBxSKroPlY+4pBN6PS2EBjEgKKLwutYFeQLLL0el/SG
-         UmY2zNy3e89uOFMqndor54H2FDa8K/uO3+GCM1aLM5S18xMPLAJv1eNmoq2QwtpzWWge
-         /Kmzvor2c39Qar/CUA4Le0nWVMJdmyOAfAP0hL2VopzBoNcC5NJF/7plLRqSGNABz6g9
-         p7eCcO2ifxoN/SVXcGlO/hwi0nffJ+73j6jMuCbqmHmcamhl3Y4N2lT8Y7nRCG7gvv5O
-         x4Mg==
+        bh=wG9xlrA9F8eC54N94UgpXONbV4nPEG5jl49T3e34djg=;
+        b=LUVjDF536znfIdl3BpqrkRFcl3YHWhF87ZiOVe3T+NoXKl5B+Mdemg/S5iDa1tI6XV
+         U3jCG0ZShW4OIXBpztVrm4Xvo8fh/uW7Ui9WrGMAeD3AL/xatgqK+VZtEcnXHYOraW4G
+         BnrX7cmBtzbFQ7yvJMIGxK8YseB8l1WEzw4/GFVYvNwMo+gB4VOUyX0Y0XliLRWg/qvo
+         mroe0K06DcDhbMdzsr390ddXwt47bM9ihit4ZP5YfNCnCHeb1OluxMt+CiprVuw2b76O
+         0BY1fHXdfn1KOkHaJ7y3xls/CAdxJ3G++++kFKhEVN4wA/MAFdY3E+ANWLcLCialKOEh
+         J4VA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="o3LOVQ/d";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=sIz7+GRP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q13si12677425ilg.125.2021.05.02.13.35.14
+        by mx.google.com with ESMTPS id d21si11150292jak.76.2021.05.02.13.40.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 02 May 2021 13:35:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 02 May 2021 13:40:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="o3LOVQ/d";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:51834 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=sIz7+GRP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:54308 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ldIo6-0005N4-1w
-	for alex.bennee@linaro.org; Sun, 02 May 2021 16:35:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42716)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ldItG-0006Y2-6s
+	for alex.bennee@linaro.org; Sun, 02 May 2021 16:40:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43884)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1ldIke-0001Ge-5v; Sun, 02 May 2021 16:31:42 -0400
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335]:35508)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1ldIsq-0006Xc-EE
+ for qemu-arm@nongnu.org; Sun, 02 May 2021 16:40:08 -0400
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633]:43610)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1ldIkb-0007oV-6r; Sun, 02 May 2021 16:31:39 -0400
-Received: by mail-wm1-x335.google.com with SMTP id
- j3-20020a05600c4843b02901484662c4ebso2951917wmo.0; 
- Sun, 02 May 2021 13:31:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=mAjmyzPT3IwY2l6eFakhdO2wuhU1yMrtB6iL9Jf4M7Y=;
- b=o3LOVQ/dXR7NqPs2/gbNNCwcI027XTM9F3Dx++RyowbKmd0xB0P442jHmJl7qKQf4Y
- AUCWLWG5HGTAuMBhlxCWxPlj/xuqPwFAriCGkWAb/a5wmNbSphwwfL4ph7TQEEepCM2n
- q5D1Ees1yGjoLZbrJyAWRYicW88AFNFxBc0fOx1OCG6SEqO7j+xAYTzR1sK7fGpmLore
- /n9TUGQMWgCh5bjFtqK9rYVGfHQf6O/WnxsD5YxoP14lShs5+Y6C3i4vGmlfyQNG364j
- RoobFFiwrrKb2paYKvNq02ggVVEfm5CHwlTghTiIRJA/7Mcjl4uJVCKVNPivqHg+7Pf6
- 6xuQ==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1ldIso-0004d1-IW
+ for qemu-arm@nongnu.org; Sun, 02 May 2021 16:40:08 -0400
+Received: by mail-ej1-x633.google.com with SMTP id l4so4880834ejc.10
+ for <qemu-arm@nongnu.org>; Sun, 02 May 2021 13:40:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=wG9xlrA9F8eC54N94UgpXONbV4nPEG5jl49T3e34djg=;
+ b=sIz7+GRPgXpDDXm28PBCTEZJVs5X/kekA7FcpIOX2r5hECjJrHq/ymdB1nf2cy01Gu
+ Kuzf1U1kvAHIPz6TEi2vNBTdfZ/6Sl4PwBA3UDhzk4PjplTYI8V7VuM2ef/AC1bMnXpH
+ XsEcaQxThJxGTPK+/YHpt8iGBc1IbQni0wesydcrYPkNhJQQjfxXaH5ee6lt5k7f1AVV
+ D9rZzCbUO7OysVip/HopTVp47dclBqt53iXZpBppcB7LNJGmBYlrZ9A3KlVJZFWRLqg5
+ l0+zQ2uDLUOfSioKbhL9ZM5mfhpdhVhuIbBFViT+6ka6YTBAtzls/f8AMVzzNGr0DzHa
+ vErw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=mAjmyzPT3IwY2l6eFakhdO2wuhU1yMrtB6iL9Jf4M7Y=;
- b=n9da0F2vI1t5skZX1tWRBiUJX+JR+20o5gcle+eZUwGv1e8RQO09XyzyZ4mDJfKV+r
- xzK8GNRx3x5IfvGaRR4BUfZzwYRx3u+mVdAzG8Hz+VqIvOWXZyQKWfOFXXCtvHs4Ckbi
- YXqx2r41ZHEct8n+RUWUq415WZnLT5ERsb+JguAHDK6ho6pRNCG0XzusSmFodZWW2o8i
- JV86MerHAB3xDnRHi3zG1eewXSom+oFuyhXPSKvzb+Es2IjTG4Q7ceuyCdesH8dn7UjB
- O4zAwFMt/UDP5E4EYg7ctxZOHnDrR5ft8UhjzP1neiXosVXHq2vW5SSCxf8jEwNn6jBh
- WKeA==
-X-Gm-Message-State: AOAM530TMufyin+7GvrDADf2lV3mFSJNSylLnk87phEzMS7nu834DL2/
- fGiOr/4v7oY+BAf0WcXY64qX7dkfc5a9IYjD
-X-Received: by 2002:a05:600c:350f:: with SMTP id
- h15mr18171455wmq.181.1619987494214; 
- Sun, 02 May 2021 13:31:34 -0700 (PDT)
-Received: from localhost.localdomain
- (anancy-651-1-208-144.w109-217.abo.wanadoo.fr. [109.217.237.144])
- by smtp.gmail.com with ESMTPSA id h8sm9067171wmq.19.2021.05.02.13.31.32
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 02 May 2021 13:31:33 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v2 2/3] hw/pci-host/raven: Manually reset the OR_IRQ device
-Date: Sun,  2 May 2021 22:31:20 +0200
-Message-Id: <20210502203121.630944-3-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.3
-In-Reply-To: <20210502203121.630944-1-f4bug@amsat.org>
-References: <20210502203121.630944-1-f4bug@amsat.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=wG9xlrA9F8eC54N94UgpXONbV4nPEG5jl49T3e34djg=;
+ b=HYp793JIMcniZTaznjv4BhNp0Vkm4Hds4z/SdPaKKq5qT9EGTurEqBGIGogRrXM6Ou
+ mZlj48glVs+JuwO11P95Cz2lsJxvPVSMLp8owhUfgYGnWlrNpLE74Yd+a72ch+NnlfJs
+ 4zc0GuR678xjWFfmPXWIzfzmp+a0Yl7Q4Tv8EhGmzWq6d1YI5X+UP7m9Pn3aqu6RFmbv
+ l08zoj3R1idWcsHW8iqojZShtoW8iuNFuOqS/K6KVkUIWRPnG/WBnLoenNkRZL/nkoVm
+ cYMQq1N214/XvgSLNmzedp215JT1YX/GiCvEpoKPYgBnaUN1bU+rCTsaY3UfseLuKiXZ
+ hClg==
+X-Gm-Message-State: AOAM531Ttcc7pzVtrhLpWf/N1UXaKeOPnqDXtQ5DLX8esdgaVsC0DWu4
+ 9MrfPsBoS9yKVtPZnTfUIJqz5CQeuAR2U+jj2mqEqA==
+X-Received: by 2002:a17:906:1dd3:: with SMTP id
+ v19mr13494082ejh.4.1619988004193; 
+ Sun, 02 May 2021 13:40:04 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x335.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+References: <20210502203121.630944-1-f4bug@amsat.org>
+ <20210502203121.630944-2-f4bug@amsat.org>
+In-Reply-To: <20210502203121.630944-2-f4bug@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sun, 2 May 2021 21:38:59 +0100
+Message-ID: <CAFEAcA_pCcM70-OMaPhaAiW=-V5OK6KbBWSEK8y6AVNxpAtyMA@mail.gmail.com>
+Subject: Re: [PATCH v2 1/3] hw/block/nand: Register machine reset handler
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::633;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x633.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-block@nongnu.org, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Markus Armbruster <armbru@redhat.com>, Max Reitz <mreitz@redhat.com>,
- Greg Kurz <groug@kaod.org>, qemu-arm@nongnu.org,
- =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- qemu-ppc@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Gg3NunTu8773
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Kevin Wolf <kwolf@redhat.com>, Qemu-block <qemu-block@nongnu.org>,
+ Markus Armbruster <armbru@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ QEMU Developers <qemu-devel@nongnu.org>, Max Reitz <mreitz@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+ qemu-ppc <qemu-ppc@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: /aaaBXjuTS0i
 
-The OR_IRQ device is bus-less, thus isn't reset automatically.
-Add the raven_pcihost_reset() handler to manually reset the OR IRQ.
+On Sun, 2 May 2021 at 21:31, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =
+wrote:
+>
+> The TYPE_NAND device is bus-less, thus isn't reset automatically.
+> Register a reset handler to get reset with the machine.
+>
+> Fixed: 7426aa72c36 ("nand: Don't inherit from Sysbus")
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
 
-Fixes: f40b83a4e31 ("40p: use OR gate to wire up raven PCI interrupts")
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/pci-host/prep.c | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+Personally I would just revert 7426aa72c36 rather than introduce
+a new use of qemu_register_reset()...
 
-diff --git a/hw/pci-host/prep.c b/hw/pci-host/prep.c
-index 0a9162fba97..7481bbf99d4 100644
---- a/hw/pci-host/prep.c
-+++ b/hw/pci-host/prep.c
-@@ -230,6 +230,15 @@ static void raven_change_gpio(void *opaque, int n, int level)
-     s->contiguous_map = level;
- }
- 
-+static void raven_pcihost_reset_enter(Object *obj, ResetType type)
-+{
-+    PREPPCIState *s = RAVEN_PCI_HOST_BRIDGE(obj);
-+
-+    if (!s->is_legacy_prep) {
-+        device_cold_reset(DEVICE(&s->or_irq));
-+    }
-+}
-+
- static void raven_pcihost_realizefn(DeviceState *d, Error **errp)
- {
-     SysBusDevice *dev = SYS_BUS_DEVICE(d);
-@@ -419,11 +428,13 @@ static Property raven_pcihost_properties[] = {
- static void raven_pcihost_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-+    ResettableClass *rc = RESETTABLE_CLASS(klass);
- 
-     set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
-     dc->realize = raven_pcihost_realizefn;
-     device_class_set_props(dc, raven_pcihost_properties);
-     dc->fw_name = "pci";
-+    rc->phases.enter = raven_pcihost_reset_enter;
- }
- 
- static const TypeInfo raven_pcihost_info = {
--- 
-2.26.3
-
+thanks
+-- PMM

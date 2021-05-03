@@ -1,83 +1,115 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp2215958lfg;
-        Sun, 2 May 2021 17:40:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw0iAe8ygcYmqEGKPj0WuIYxWYdbDvX+cmzU1t8e/ZKiHKcFBfTA1VwLsdVyvoO9f6IHTvZ
-X-Received: by 2002:a05:6e02:13d0:: with SMTP id v16mr14085824ilj.8.1620002421478;
-        Sun, 02 May 2021 17:40:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620002421; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp2364725lfg;
+        Sun, 2 May 2021 22:27:12 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwJEAO79BuDr3nPGcOZvUyrwbxoZ2sXfrlVb+rf7vfNZO+8pG/E9jPsEbZuf1Pr/a7qgAzL
+X-Received: by 2002:a25:abb0:: with SMTP id v45mr25124649ybi.129.1620019632481;
+        Sun, 02 May 2021 22:27:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620019632; cv=none;
         d=google.com; s=arc-20160816;
-        b=Lci1NRd+i0BE240Ehs24qEkyftqTGNYaEsc9v6/kMVF+eHNMXdSSrg8G3SmI50RMwn
-         kpdGAKWmh7hieCpIhxVnvgZ5bvSMhuYdVYl0iP/kLx/EHwtTZKUURDkC1kCZjb6t+uus
-         DG23ByWvlXTdYE575eQ7HNuTH+cx26gIihrSgdnj78TJuo3bgR6KWQ6FVHrs4WzQR0tX
-         +L0g419FDpmJRU88e6N1de7hsFHE0ahMH/duvknsSRPhPyTJijOeuNUQs52QZe29Phws
-         wxdNpuE8SF4G+iq3+cQ07LZZ1Z7glR2vZr1zpXr29B/KOdLbxWFXdoZMxoevlFqSWca1
-         gn5A==
+        b=jYyRpjAxJhByusUI8G3+yxv8kdzWL48qnRILdvg5UeX/gwcKtB88Wsh8TPHjc4b8a4
+         CvjUO+/D0TdUjF/2S7U0J9rurQe+TEx0x0uv6WgQRk9ZWnqx9R9qoZOZqEuA4JsABDSw
+         la+9+ehAmVEvY53wOQabtNM/J2CrZlwHlJ/i5fbauz0eV2RHTZ+30eIbJq294zIrkhoW
+         tYAhBj6JeASKgNgqSOt7UoVoFtHByWUgT4CBIOIrGlw+QMwi0iGynwBuLQN7WDDdShCH
+         bXK2qN+v3cKChJPUMfIbIKddKQkVRbgRqVYiMPEmFX8VXc7o5acAy9pLJ6V4qw+/UsKT
+         6KGQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=ISWHyAydSoyW7zUDQqskD8Tr9rFGyqH39WbOCOiOWXs=;
-        b=RRj+2Wei5EFXpwg0gxj42wND4RIn6ZT+d8Y289eTdpmyAYCib8EUHxvVqJcg4S5TK1
-         l8xdBNqg4u9agViXsrgI0/2AMKd9zX5k4O/RwkHYKV4J2Z3AWDZjjxFD3duC+cFSnPGX
-         /q+k0ej4ndHmBRQykBaigVvHfb2reLmH9Z0AvHzS9sx+mluD3OWRhB/vHi4qP1wHEt22
-         DvJvnnCz7DKoG1F6yzLPsjGVsCUgLWL4iYslqLWYm3XzAMvYFFDYVHx9Y28niRABHyAP
-         JNM+ZZsmPyfTUXaBJxIdtXRn1gzCYUGuTD9eN0Et17oPFtwr0Y8717PhWFE8FvM6Q0Bs
-         yMjA==
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:message-id:date:subject:to:from;
+        bh=F3O6gINAZzII4bm9pFEmIjjbPg3eNXEDOxagRrehtGs=;
+        b=f/uBV5ju+FJM+27OhCRZ/2Ye3EBYTaoWDupmGlYECXT+9tx8IxLBbE5t/q8a+tTdwa
+         x2ceD2rQqCZYCXiE/SxNJXfNwqfmV+wl2dfTeLAwmoqUL04nREOA02aSwuEKjlqjTuWW
+         TiD40HdKAqJgZXdIr7RBsWhMzaLw8Jw+tuVlmbK5XE1Yb7Dxu12HA8p1r02eElYcXCYU
+         /6uziPoR9A9mo8zgO1DUVlubrWBJUxsrKBoGRlU+o4Pp1Hl6fjG4mhvK8H4ElQFytnKf
+         8b1pAxqdP2w1KXNtmYQXSBS3nhM7fXBeoNVIX/DNy3NRv7KyEJlKj1P56EU6Th1DjeQK
+         W4+A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=A7Jy52v1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f15si13164137iow.16.2021.05.02.17.40.21
+        by mx.google.com with ESMTPS id y10si10813845ybm.116.2021.05.02.22.27.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 02 May 2021 17:40:21 -0700 (PDT)
+        Sun, 02 May 2021 22:27:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=A7Jy52v1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33232 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35794 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ldMdI-00027h-ML
-	for alex.bennee@linaro.org; Sun, 02 May 2021 20:40:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50116)
+	id 1ldR6t-0004rD-MV
+	for alex.bennee@linaro.org; Mon, 03 May 2021 01:27:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57820)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1ldMd4-00027E-Tf; Sun, 02 May 2021 20:40:06 -0400
-Received: from bilbo.ozlabs.org ([203.11.71.1]:37539 helo=ozlabs.org)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1ldR6H-0004pj-9t; Mon, 03 May 2021 01:26:34 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:10026)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1ldMd1-0007PP-Rw; Sun, 02 May 2021 20:40:06 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
- id 4FYPJ6125Zz9sTD; Mon,  3 May 2021 10:39:50 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1620002390;
- bh=Zwledic2kIhKs6Aw12Fliq7h3cIPAKPT/pHAIDt9ymA=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=A7Jy52v1nwGVZclCxbZRYUzH/KsjT2x8MiLVS6WpGpoig62IB3HMztUr+Iegf6fVj
- x6UP3aFFv4RDEWWznzbRTJoEnvmnOnoF7hbgB+IH0aDimz/fBrtLEHvsGb1fIETWb2
- MHekVvV026U+ofHE+GlRiemtHXEIXeVx8s1XLnvE=
-Date: Mon, 3 May 2021 10:18:27 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-Subject: Re: [PATCH v2 2/3] hw/pci-host/raven: Manually reset the OR_IRQ device
-Message-ID: <YI9BU90w8s7akEZF@yekko>
-References: <20210502203121.630944-1-f4bug@amsat.org>
- <20210502203121.630944-3-f4bug@amsat.org>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1ldR6F-0005wv-AV; Mon, 03 May 2021 01:26:33 -0400
+Received: from pps.filterd (m0098417.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
+ 143544pR094980; Mon, 3 May 2021 01:26:12 -0400
+Received: from ppma03fra.de.ibm.com (6b.4a.5195.ip4.static.sl-reverse.com
+ [149.81.74.107])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 38a8c7jnxc-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 03 May 2021 01:26:11 -0400
+Received: from pps.filterd (ppma03fra.de.ibm.com [127.0.0.1])
+ by ppma03fra.de.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 1435MBvr009715;
+ Mon, 3 May 2021 05:26:10 GMT
+Received: from b06avi18626390.portsmouth.uk.ibm.com
+ (b06avi18626390.portsmouth.uk.ibm.com [9.149.26.192])
+ by ppma03fra.de.ibm.com with ESMTP id 388xm889n9-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 03 May 2021 05:26:09 +0000
+Received: from d06av26.portsmouth.uk.ibm.com (d06av26.portsmouth.uk.ibm.com
+ [9.149.105.62])
+ by b06avi18626390.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP
+ id 1435Pggd27197822
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 3 May 2021 05:25:42 GMT
+Received: from d06av26.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id A5287AE051;
+ Mon,  3 May 2021 05:26:07 +0000 (GMT)
+Received: from d06av26.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 77274AE045;
+ Mon,  3 May 2021 05:26:07 +0000 (GMT)
+Received: from smtp.tlslab.ibm.com (unknown [9.101.4.1])
+ by d06av26.portsmouth.uk.ibm.com (Postfix) with SMTP;
+ Mon,  3 May 2021 05:26:07 +0000 (GMT)
+Received: from yukon.ibmuc.com (unknown [9.171.40.192])
+ by smtp.tlslab.ibm.com (Postfix) with ESMTP id C2DA822004E;
+ Mon,  3 May 2021 07:26:06 +0200 (CEST)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: [PULL 00/18] aspeed queue (v2)
+Date: Mon,  3 May 2021 07:25:42 +0200
+Message-Id: <20210503052600.290483-1-clg@kaod.org>
+X-Mailer: git-send-email 2.26.3
+Content-Type: text/plain; charset=UTF-8
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: -HtbO1JJQGK-0IFSDfBifIMlnopwKeGl
+X-Proofpoint-GUID: -HtbO1JJQGK-0IFSDfBifIMlnopwKeGl
+Content-Transfer-Encoding: quoted-printable
+X-Proofpoint-UnRewURL: 0 URL was un-rewritten
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="C/McwL+Wukj8oqWe"
-Content-Disposition: inline
-In-Reply-To: <20210502203121.630944-3-f4bug@amsat.org>
-Received-SPF: pass client-ip=203.11.71.1; envelope-from=dgibson@ozlabs.org;
- helo=ozlabs.org
-X-Spam_score_int: -17
-X-Spam_score: -1.8
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.761
+ definitions=2021-05-03_02:2021-04-30,
+ 2021-05-03 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501
+ suspectscore=0 malwarescore=0 impostorscore=0 adultscore=0 bulkscore=0
+ mlxlogscore=999 phishscore=0 clxscore=1034 lowpriorityscore=0 spamscore=0
+ mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2104060000 definitions=main-2105030033
+Received-SPF: softfail client-ip=148.163.158.5; envelope-from=clg@kaod.org;
+ helo=mx0b-001b2d01.pphosted.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -90,95 +122,85 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-block@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- Max Reitz <mreitz@redhat.com>, Greg Kurz <groug@kaod.org>, qemu-arm@nongnu.org,
- =?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
- qemu-ppc@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ekJlSFVo0iMZ
+X-TUID: YyREFp1o/aU9
 
+The following changes since commit 609d7596524ab204ccd71ef42c9eee4c7c338ea4:
 
---C/McwL+Wukj8oqWe
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+  Update version for v6.0.0 release (2021-04-29 18:05:29 +0100)
 
-On Sun, May 02, 2021 at 10:31:20PM +0200, Philippe Mathieu-Daud=E9 wrote:
-> The OR_IRQ device is bus-less, thus isn't reset automatically.
-> Add the raven_pcihost_reset() handler to manually reset the OR IRQ.
->=20
-> Fixes: f40b83a4e31 ("40p: use OR gate to wire up raven PCI interrupts")
-> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
+are available in the Git repository at:
 
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
+  https://github.com/legoater/qemu/ tags/pull-aspeed-20210503
 
-> ---
->  hw/pci-host/prep.c | 11 +++++++++++
->  1 file changed, 11 insertions(+)
->=20
-> diff --git a/hw/pci-host/prep.c b/hw/pci-host/prep.c
-> index 0a9162fba97..7481bbf99d4 100644
-> --- a/hw/pci-host/prep.c
-> +++ b/hw/pci-host/prep.c
-> @@ -230,6 +230,15 @@ static void raven_change_gpio(void *opaque, int n, i=
-nt level)
->      s->contiguous_map =3D level;
->  }
-> =20
-> +static void raven_pcihost_reset_enter(Object *obj, ResetType type)
-> +{
-> +    PREPPCIState *s =3D RAVEN_PCI_HOST_BRIDGE(obj);
-> +
-> +    if (!s->is_legacy_prep) {
-> +        device_cold_reset(DEVICE(&s->or_irq));
-> +    }
-> +}
-> +
->  static void raven_pcihost_realizefn(DeviceState *d, Error **errp)
->  {
->      SysBusDevice *dev =3D SYS_BUS_DEVICE(d);
-> @@ -419,11 +428,13 @@ static Property raven_pcihost_properties[] =3D {
->  static void raven_pcihost_class_init(ObjectClass *klass, void *data)
->  {
->      DeviceClass *dc =3D DEVICE_CLASS(klass);
-> +    ResettableClass *rc =3D RESETTABLE_CLASS(klass);
-> =20
->      set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
->      dc->realize =3D raven_pcihost_realizefn;
->      device_class_set_props(dc, raven_pcihost_properties);
->      dc->fw_name =3D "pci";
-> +    rc->phases.enter =3D raven_pcihost_reset_enter;
->  }
-> =20
->  static const TypeInfo raven_pcihost_info =3D {
+for you to fetch changes up to 9cccb912cfa865f0bae6b156fa94e2f216dd8835:
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
+  aspeed: Add support for the quanta-q7l1-bmc board (2021-05-01 10:03:52 +0=
+200)
 
---C/McwL+Wukj8oqWe
-Content-Type: application/pgp-signature; name="signature.asc"
+----------------------------------------------------------------
+Aspeed patches :
 
------BEGIN PGP SIGNATURE-----
+* Fixes for the DMA space
+* New model for ASPEED's Hash and Crypto Engine (Joel and Klaus)
+* Acceptance tests (Joel)
+* A fix for the XDMA  model
+* Some extra features for the SMC controller.
+* Two new boards : rainier-bmc and quanta-q7l1-bmc (Patrick)
 
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAmCPQVEACgkQbDjKyiDZ
-s5Jc2xAAk8uUyxWcYVHoquuHLpoTIZF0q25RSmkgMRb/ZznY1XQ9nX2i/ROzTYuq
-ycPJzLzLEIQFL455hPRdpb7vzXdDDM0CGkZfI8ZIwlW5qqqaqP5OBuROJ9PP7XwU
-xFpZqRvGesZs6EQnBlafhw5H6+lQeltP37037mByxXoFjgDSUVn6XxXFRg1F4FVm
-ZRegR9MdGmVvM/W9oRcZMoxTnRsYWmlKP7vkjrib/tKYkU7bOkXtSoxqDkG4m5/4
-o3UrWo/mYYgWdhICvC14P006VqK/qdxH2T0zruaZZP4Y6WIa5BZ9uHhOJRwkwK5G
-e76hM/J1/nj3JenBTB9FRNriaqXMHuGNeDN9uHGfWhrxIIehJx5WjxwGg2sskyo2
-ucP9qsISqR+rAwZiL7YQXk0u6QOCQkqLePnqoHa5kgz27Kjkqf5XCBB3w3Bi16/X
-E3fI6D+lU2RGpO50UD8hzAd6YlgYrL1GxCnvd3ALOEcYY0GBPpWOLpSsiEO1OCxr
-7opnA77Lr6uBU1lRn0WK4oTaMZbR8oOw1fmB3yUAXlC5PzXYu/JZNxeyQeBIcJh5
-8FhDDCgPNL5QHKR2fQZsULcG4HVbsCi7IEHm8Bf6P/r4IH6GKNo5qxgxcCknk3ej
-3B4KAJV7EsKkCNucTS5AC3xFE0GhCEXHaWlYGgWLhWWzdQxNwOQ=
-=OAtD
------END PGP SIGNATURE-----
+----------------------------------------------------------------
+C=C3=A9dric Le Goater (11):
+      aspeed/smc: Use the RAM memory region for DMAs
+      aspeed/smc: Remove unused "sdram-base" property
+      aspeed/i2c: Fix DMA address mask
+      aspeed/i2c: Rename DMA address space
+      hw/misc/aspeed_xdma: Add AST2600 support
+      aspeed/smc: Add a 'features' attribute to the object class
+      aspeed/smc: Add extra controls to request DMA
+      tests/qtest: Rename m25p80 test in aspeed_smc test
+      aspeed: Deprecate the swift-bmc machine
+      aspeed: Add support for the rainier-bmc board
+      hw/block: m25p80: Add support for mt25ql02g and mt25qu02g
 
---C/McwL+Wukj8oqWe--
+Joel Stanley (5):
+      hw: Model ASPEED's Hash and Crypto Engine
+      aspeed: Integrate HACE
+      tests/qtest: Add test for Aspeed HACE
+      tests/acceptance: Test ast2400 and ast2500 machines
+      tests/acceptance: Test ast2600 machine
+
+Patrick Venture (1):
+      aspeed: Add support for the quanta-q7l1-bmc board
+
+Philippe Mathieu-Daud=C3=A9 (1):
+      hw/arm/aspeed: Do not sysbus-map mmio flash region directly, use alias
+
+ docs/system/arm/aspeed.rst                       |   2 +-
+ docs/system/deprecated.rst                       |   7 +
+ include/hw/arm/aspeed_soc.h                      |   3 +
+ include/hw/misc/aspeed_hace.h                    |  43 +++
+ include/hw/misc/aspeed_xdma.h                    |  17 +-
+ include/hw/ssi/aspeed_smc.h                      |   7 +-
+ hw/arm/aspeed.c                                  | 146 ++++++-
+ hw/arm/aspeed_ast2600.c                          |  22 +-
+ hw/arm/aspeed_soc.c                              |  23 +-
+ hw/block/m25p80.c                                |   2 +
+ hw/i2c/aspeed_i2c.c                              |   5 +-
+ hw/misc/aspeed_hace.c                            | 389 +++++++++++++++++++
+ hw/misc/aspeed_xdma.c                            | 124 ++++--
+ hw/ssi/aspeed_smc.c                              | 119 ++++--
+ tests/qtest/aspeed_hace-test.c                   | 469 +++++++++++++++++++=
+++++
+ tests/qtest/{m25p80-test.c =3D> aspeed_smc-test.c} |  12 +-
+ MAINTAINERS                                      |   1 +
+ hw/misc/meson.build                              |   1 +
+ tests/acceptance/boot_linux_console.py           |  68 ++++
+ tests/qtest/meson.build                          |   5 +-
+ 20 files changed, 1389 insertions(+), 76 deletions(-)
+ create mode 100644 include/hw/misc/aspeed_hace.h
+ create mode 100644 hw/misc/aspeed_hace.c
+ create mode 100644 tests/qtest/aspeed_hace-test.c
+ rename tests/qtest/{m25p80-test.c =3D> aspeed_smc-test.c} (96%)

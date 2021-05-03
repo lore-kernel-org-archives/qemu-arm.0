@@ -1,117 +1,109 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp2365608lfg;
-        Sun, 2 May 2021 22:29:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyVd0panfmIlCSJedY7cceGM4rSrU50e2NCRmFKnm++iYd2cGVnCaPoCNwO5WjaDO9L+FKR
-X-Received: by 2002:a05:6638:2a1:: with SMTP id d1mr16971685jaq.52.1620019740918;
-        Sun, 02 May 2021 22:29:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620019740; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp2366680lfg;
+        Sun, 2 May 2021 22:31:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy7I1/C80BCdgyv2nMgwDR+kOTUGqDhf7rnGdXJNoyWk8qscjVEEAtQtHt/vRxAZtI4L/ak
+X-Received: by 2002:a37:a2d5:: with SMTP id l204mr3514048qke.331.1620019865024;
+        Sun, 02 May 2021 22:31:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620019865; cv=none;
         d=google.com; s=arc-20160816;
-        b=P/JfVbwJ+DxPsn2JJpcLOtsExEmdunGpHmP3CjrdN4qfYEO+yjtSuJmZc0nQzIC6KX
-         yQWRaUC8tkpeBLjWaSmpJb5blTcZ28iaq01yM31wL0a5trFPtFlhSQ4eDhTgM5/M5FHB
-         Nt8/gWd7B3s3vIAOLPPRe9luBshemGgKIbSRO1K1iOeIGo7KXR6LJW74yWXM1h5dubqp
-         BdOCWgereQpGpIsuoA6eltNvAGhFFeF3s1usHLy/PUypcsQh5C7WqiusQJ8KnXvVbO8m
-         eh7vg8nE6pcAtmq1wlZONMb2ihuIAzOHj6ZxJMZ5Et8dvDiZKbrtbkA6Ba6JC5VWz/pb
-         AGMw==
+        b=Y/PuPZpVg8/1vf+RPzKaWheGYf7MOE0Nf/JEWqc8xABaw+FVgqRd/aM3wRE3msnwFT
+         +2XZU7go7uNsi4uyk7pNOh5mVmREmCWJpcxqoy/jF/X0x2UfD6PuDHHnmDEy/kC3e/mk
+         +prFtmJ/Rl6zwOE3GOvMwC0Rcr7MI2UfYtP7n8Rwzo9sHi/gsU1EDlZ2PWXR2FqQUPGL
+         x8Uwh5vpIzEnUvJjKvxiajBNjuMqv5q30GcejJ8wfdS8SCMncCcj3ficI33520XZ3Psj
+         X0Y2bcZhNTHWS6Qc3pA7RIWuhZGS2TimpQm2yuPUD8KoAs3LbfMoJy0Edvd2/ygTkueE
+         l/yA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:references:in-reply-to:message-id:date
-         :subject:to:from;
-        bh=lhpb1MYPA5dScQOkNhcHMXJXOM9vKehg3QVZxXSqalk=;
-        b=VS/U0mlzrQdTjvzxRV6NcHCsIjGt1aC1C7ZdF8dDxuT8l0bWufUpg0J6De+1S6IFt5
-         WZmMHNOUNnibDO91Kj6YxdHiyDeT2f47pOScDviChQ4d0wtQ9WCBws+r9AXY6ORlmMAR
-         1hoMFYYnpcMFwaEnaTnHO8faCHLg2y0am6JW7D2uGLMq0KDGJ0Z46fPoquc0HRbm8pYf
-         9p+p3mua6rY4Mpne1XtppkxWoYqgLOdRNSWqIwl9ykLKF4jXgNRK40emyno8+NH9Pk9D
-         KrCJro69vpOZTCZ3puZZYFznrMz81Ua0+On/a3nJbfikxlaUlhMfkiYPnp9ZGs//GDti
-         gcOg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=vKl/8yApfYetLUuNzWv3gLtaA4xNX1ovFXQNe6YhwaE=;
+        b=NWE9xM31eRbIFZMv3ItD98AnHn3Ss+u3mj7hzzWhRfLKr4fBPl42Hh331vO7PMs85x
+         b7vO0rs/kpOYwg9h6WSeXq3yXTUqvy2Yo3mW0NXCDm8h09xev0bQGgIEA998m80ouaUb
+         KRCueW6Jvg5ex8Fe55MfHFNF3OHiehG4x6NSyP8bwYczDO2ZQz8lpyXSD1mnq5T0Soj0
+         WHhD/M5VzXUQLsgKlGhHdJjcNMs3QcYStL5PgzWjnFPBHnIDUAv/ZeTZPiIQc87YJJxi
+         aPaaAPds8C+eSsGX6aIgQ+Ja9qc9kXYp83LRxqvOx93/qQMUlFCgc3zFdJalR8gh4tKS
+         seuQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g19si14032082jat.91.2021.05.02.22.29.00
+        by mx.google.com with ESMTPS id a12si9149354qtw.10.2021.05.02.22.31.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 02 May 2021 22:29:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 02 May 2021 22:31:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44360 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:49492 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ldR8e-0008RH-7W
-	for alex.bennee@linaro.org; Mon, 03 May 2021 01:29:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57876)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ldRAe-00023X-As
+	for alex.bennee@linaro.org; Mon, 03 May 2021 01:31:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57950)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1ldR6J-0004q6-4j; Mon, 03 May 2021 01:26:36 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:11464)
+ id 1ldR6L-0004qh-Km; Mon, 03 May 2021 01:26:38 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:64224)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1ldR6F-000697-Cq; Mon, 03 May 2021 01:26:34 -0400
-Received: from pps.filterd (m0098409.ppops.net [127.0.0.1])
+ id 1ldR6J-00066B-7C; Mon, 03 May 2021 01:26:37 -0400
+Received: from pps.filterd (m0098394.ppops.net [127.0.0.1])
  by mx0a-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 14352jMD156917; Mon, 3 May 2021 01:26:20 -0400
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com with ESMTP id 38a9h29m85-1
+ 1435FDNM068260; Mon, 3 May 2021 01:26:15 -0400
+Received: from ppma06fra.de.ibm.com (48.49.7a9f.ip4.static.sl-reverse.com
+ [159.122.73.72])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 38aav4g54f-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 03 May 2021 01:26:19 -0400
-Received: from m0098409.ppops.net (m0098409.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 143540Dm163027;
- Mon, 3 May 2021 01:26:19 -0400
-Received: from ppma04ams.nl.ibm.com (63.31.33a9.ip4.static.sl-reverse.com
- [169.51.49.99])
- by mx0a-001b2d01.pphosted.com with ESMTP id 38a9h29m7n-1
+ Mon, 03 May 2021 01:26:15 -0400
+Received: from pps.filterd (ppma06fra.de.ibm.com [127.0.0.1])
+ by ppma06fra.de.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 1435HGj5031104;
+ Mon, 3 May 2021 05:26:13 GMT
+Received: from b06cxnps4075.portsmouth.uk.ibm.com
+ (d06relay12.portsmouth.uk.ibm.com [9.149.109.197])
+ by ppma06fra.de.ibm.com with ESMTP id 388x8h89s1-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 03 May 2021 01:26:19 -0400
-Received: from pps.filterd (ppma04ams.nl.ibm.com [127.0.0.1])
- by ppma04ams.nl.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 1435HO13022073;
- Mon, 3 May 2021 05:26:17 GMT
-Received: from b06cxnps4074.portsmouth.uk.ibm.com
- (d06relay11.portsmouth.uk.ibm.com [9.149.109.196])
- by ppma04ams.nl.ibm.com with ESMTP id 388xm8rh6h-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 03 May 2021 05:26:17 +0000
-Received: from d06av25.portsmouth.uk.ibm.com (d06av25.portsmouth.uk.ibm.com
- [9.149.105.61])
- by b06cxnps4074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 1435QEZh25100632
+ Mon, 03 May 2021 05:26:13 +0000
+Received: from d06av22.portsmouth.uk.ibm.com (d06av22.portsmouth.uk.ibm.com
+ [9.149.105.58])
+ by b06cxnps4075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 1435QAYF40632622
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 3 May 2021 05:26:14 GMT
-Received: from d06av25.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id A05B811C052;
- Mon,  3 May 2021 05:26:14 +0000 (GMT)
-Received: from d06av25.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 55B2311C04C;
- Mon,  3 May 2021 05:26:14 +0000 (GMT)
+ Mon, 3 May 2021 05:26:10 GMT
+Received: from d06av22.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id AA9784C046;
+ Mon,  3 May 2021 05:26:10 +0000 (GMT)
+Received: from d06av22.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 74C3B4C040;
+ Mon,  3 May 2021 05:26:10 +0000 (GMT)
 Received: from smtp.tlslab.ibm.com (unknown [9.101.4.1])
- by d06av25.portsmouth.uk.ibm.com (Postfix) with SMTP;
- Mon,  3 May 2021 05:26:14 +0000 (GMT)
+ by d06av22.portsmouth.uk.ibm.com (Postfix) with SMTP;
+ Mon,  3 May 2021 05:26:10 +0000 (GMT)
 Received: from yukon.ibmuc.com (unknown [9.171.40.192])
- by smtp.tlslab.ibm.com (Postfix) with ESMTP id 8B7F522004E;
- Mon,  3 May 2021 07:26:13 +0200 (CEST)
+ by smtp.tlslab.ibm.com (Postfix) with ESMTP id D37E722007C;
+ Mon,  3 May 2021 07:26:09 +0200 (CEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 10/18] tests/acceptance: Test ast2600 machine
-Date: Mon,  3 May 2021 07:25:52 +0200
-Message-Id: <20210503052600.290483-11-clg@kaod.org>
+Subject: [PULL 05/18] hw/arm/aspeed: Do not sysbus-map mmio flash region
+ directly, use alias
+Date: Mon,  3 May 2021 07:25:47 +0200
+Message-Id: <20210503052600.290483-6-clg@kaod.org>
 X-Mailer: git-send-email 2.26.3
 In-Reply-To: <20210503052600.290483-1-clg@kaod.org>
 References: <20210503052600.290483-1-clg@kaod.org>
-Content-Type: text/plain; charset=UTF-8
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: 6ZAazRLahS41cwJGRWjisoKEeaIjscCn
-X-Proofpoint-ORIG-GUID: GS2OaK7wSnSzzBcPwVnSPXYJ76hHU48Q
-Content-Transfer-Encoding: quoted-printable
-X-Proofpoint-UnRewURL: 0 URL was un-rewritten
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: HrTB5ygwYxUixDM5e2eQnGPIrOyjJJJz
+X-Proofpoint-GUID: HrTB5ygwYxUixDM5e2eQnGPIrOyjJJJz
 X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.761
  definitions=2021-05-03_02:2021-04-30,
  2021-05-03 signatures=0
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- suspectscore=0 malwarescore=0
- bulkscore=0 impostorscore=0 mlxlogscore=999 phishscore=0
- lowpriorityscore=0 priorityscore=1501 spamscore=0 clxscore=1034
- adultscore=0 mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2104060000 definitions=main-2105030033
+ bulkscore=0 adultscore=0
+ mlxscore=0 impostorscore=0 phishscore=0 priorityscore=1501 mlxlogscore=640
+ spamscore=0 malwarescore=0 clxscore=1034 suspectscore=0 lowpriorityscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2104060000
+ definitions=main-2105030033
 Received-SPF: softfail client-ip=148.163.156.1; envelope-from=clg@kaod.org;
  helo=mx0a-001b2d01.pphosted.com
 X-Spam_score_int: -18
@@ -121,93 +113,81 @@ X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
  RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-devel@nongnu.org, Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Willian Rampazzo <willianr@redhat.com>, qemu-arm@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Cleber Rosa <crosa@redhat.com>, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pr0rDANa+ZE1
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: mU0ohIwaj164
 
-From: Joel Stanley <joel@jms.id.au>
+From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-This tests a Debian multi-soc arm32 Linux kernel on the AST2600 based
-Tacoma BMC machine.
+The flash mmio region is exposed as an AddressSpace.
+AddressSpaces must not be sysbus-mapped, therefore map
+the region using an alias.
 
-There is no root file system so the test terminates when boot reaches
-the stage where it attempts and fails to mount something.
-
-Cc: Cleber Rosa <crosa@redhat.com>
-Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>
-Signed-off-by: Joel Stanley <joel@jms.id.au>
-Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
-Tested-by: C=C3=A9dric Le Goater <clg@kaod.org>
-[ clg : - removed comment
-        - removed ending self.vm.shutdown() ]
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+[ clg : Fix DMA_FLASH_ADDR() ]
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-Message-Id: <20210304123951.163411-3-joel@jms.id.au>
+Message-Id: <20210312182851.1922972-3-f4bug@amsat.org>
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-Reviewed-by: Willian Rampazzo <willianr@redhat.com>
-Message-Id: <20210407171637.777743-13-clg@kaod.org>
+Message-Id: <20210407171637.777743-6-clg@kaod.org>
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
- tests/acceptance/boot_linux_console.py | 25 +++++++++++++++++++++++++
- 1 file changed, 25 insertions(+)
+ include/hw/ssi/aspeed_smc.h | 1 +
+ hw/ssi/aspeed_smc.c         | 7 ++++---
+ 2 files changed, 5 insertions(+), 3 deletions(-)
 
-diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/boot=
-_linux_console.py
-index 37bca7358583..276a53f14647 100644
---- a/tests/acceptance/boot_linux_console.py
-+++ b/tests/acceptance/boot_linux_console.py
-@@ -1053,6 +1053,31 @@ def do_test_arm_aspeed(self, image):
-         self.wait_for_console_pattern("ftgmac100 1e660000.ethernet eth0: i=
-rq ")
-         self.wait_for_console_pattern("systemd[1]: Set hostname to")
+diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
+index ccd71d9b534e..6ea2871cd899 100644
+--- a/include/hw/ssi/aspeed_smc.h
++++ b/include/hw/ssi/aspeed_smc.h
+@@ -84,6 +84,7 @@ struct AspeedSMCState {
 =20
-+    def test_arm_ast2600_debian(self):
-+        """
-+        :avocado: tags=3Darch:arm
-+        :avocado: tags=3Dmachine:tacoma-bmc
-+        """
-+        deb_url =3D ('http://snapshot.debian.org/archive/debian/'
-+                   '20210302T203551Z/'
-+                   'pool/main/l/linux/'
-+                   'linux-image-5.10.0-3-armmp_5.10.13-1_armhf.deb')
-+        deb_hash =3D 'db40d32fe39255d05482bea48d72467b67d6225bb2a2a4d6f618=
-cb8976f1e09e'
-+        deb_path =3D self.fetch_asset(deb_url, asset_hash=3Ddeb_hash,
-+                                    algorithm=3D'sha256')
-+        kernel_path =3D self.extract_from_deb(deb_path, '/boot/vmlinuz-5.1=
-0.0-3-armmp')
-+        dtb_path =3D self.extract_from_deb(deb_path,
-+                '/usr/lib/linux-image-5.10.0-3-armmp/aspeed-bmc-opp-tacoma=
-.dtb')
-+
-+        self.vm.set_console()
-+        self.vm.add_args('-kernel', kernel_path,
-+                         '-dtb', dtb_path,
-+                         '-net', 'nic')
-+        self.vm.launch()
-+        self.wait_for_console_pattern("Booting Linux on physical CPU 0xf00=
-")
-+        self.wait_for_console_pattern("SMP: Total of 2 processors activate=
-d")
-+        self.wait_for_console_pattern("No filesystem could mount root")
-+
-     def test_m68k_mcf5208evb(self):
-         """
-         :avocado: tags=3Darch:m68k
+     MemoryRegion mmio;
+     MemoryRegion mmio_flash;
++    MemoryRegion mmio_flash_alias;
+=20
+     qemu_irq irq;
+     int irqline;
+diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+index 884e08aca4e2..50ea907aef74 100644
+--- a/hw/ssi/aspeed_smc.c
++++ b/hw/ssi/aspeed_smc.c
+@@ -179,8 +179,7 @@
+  *   0x7FFFFF: 32M bytes
+  */
+ #define DMA_DRAM_ADDR(s, val)   ((val) & (s)->ctrl->dma_dram_mask)
+-#define DMA_FLASH_ADDR(s, val)  ((s)->ctrl->flash_window_base | \
+-                                ((val) & (s)->ctrl->dma_flash_mask))
++#define DMA_FLASH_ADDR(s, val)  ((val) & (s)->ctrl->dma_flash_mask)
+ #define DMA_LENGTH(val)         ((val) & 0x01FFFFFC)
+=20
+ /* Flash opcodes. */
+@@ -1385,7 +1384,9 @@ static void aspeed_smc_realize(DeviceState *dev, Er=
+ror **errp)
+     memory_region_init_io(&s->mmio_flash, OBJECT(s),
+                           &aspeed_smc_flash_default_ops, s, name,
+                           s->ctrl->flash_window_size);
+-    sysbus_init_mmio(sbd, &s->mmio_flash);
++    memory_region_init_alias(&s->mmio_flash_alias, OBJECT(s), name,
++                             &s->mmio_flash, 0, s->ctrl->flash_window_si=
+ze);
++    sysbus_init_mmio(sbd, &s->mmio_flash_alias);
+=20
+     s->flashes =3D g_new0(AspeedSMCFlash, s->ctrl->max_peripherals);
+=20
 --=20
 2.26.3
 

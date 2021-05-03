@@ -1,91 +1,90 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp2365281lfg;
-        Sun, 2 May 2021 22:28:20 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw8c7KbuWToRmejv+Z6KUmm0m04drDZVkmJGJR10xV/nRt1IyLVrUO0OPoAhaOpoJpISGYo
-X-Received: by 2002:a05:6e02:1be2:: with SMTP id y2mr14512417ilv.263.1620019700001;
-        Sun, 02 May 2021 22:28:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620019699; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp2365353lfg;
+        Sun, 2 May 2021 22:28:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyPHils82hH+/BcDcTxJvo39ahx7T+lvCnBtsHygELvk9xeVC190G8h7oRHiKykm+vxj0O7
+X-Received: by 2002:a05:6e02:1d88:: with SMTP id h8mr14945277ila.66.1620019712214;
+        Sun, 02 May 2021 22:28:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620019712; cv=none;
         d=google.com; s=arc-20160816;
-        b=SJpy+13KdWawp/SBy+Cs0odT59quua92PxHrMDKPYdW6CHk/doZ91Wk6lwIc34cFHi
-         sG+b43sHNcUWrWiG8AOL14G5b7Xx3KM0QWtHv9GrNLn1flONcH4xoaL0Ov9zbrqXvDY1
-         wKNmmOEarLzlNMta553buWs5pzde5ob58WlZ4Sh0akRkzh5lvQ3bEwNaGZiEbL4Waj0W
-         QCRP9RzKYykOHQo0e900aN3n8fzNf4DzNTdkOse1kp/W98Kv6REftVcSWAVz89ss7ERz
-         4Laq4zFzW+cFuc8Ov01maHZ+U3rcbeOozEprYipGeW4CRonPfxpXZJiZBy2kXX6pVY7g
-         trpA==
+        b=Q5CA/9pElgOxO+pmyos1hUi4CK/RvtW/aHjbXNUQcUSiRD5z8XYj/DpfU3paYlHR8w
+         NwKsnbEnjZ5IwaL6oUbJsjAdIbkk4Eg44lIyE7Xfi9wFxgNyL5p9zmUdJZsrfIWBIcm7
+         J2eSMTkDl9og8H4YqSDTcjcoSKUk40+n6qU6qB4lp//qfBnLxs0/9Oh9ZEFyM9Id3Qor
+         +4Nd+RCWYDBX87XktfSjZpDzw2LSlEKAA3AMvmMj+dWnKcDdZPQPHB9vVuKT6i8fzsfc
+         kuKJhp5vkqFRk6fuCtLJd3j7YDMfXCqYQPXRzbU0edbRG2a0sCB4Wpv/u484Nszi3sV0
+         E9lw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=VTakIQmdEeQrxV9Y00zlSFtBgw+cWV5VniEoC5jw7C0=;
-        b=bAX2F6ApeDmK2Ky1sf+SMaRklD7bXv5YAVf0L+p2KSrv610NUHLY6W9Z8j2nVKU0Pi
-         YdFYT80aLwng67HYkSymu1UH8hmJEm/KZ+mtf+cS3XXMfVnqeUa3oCFOIRljWOHsHY23
-         luME5glTytiT84qihi1Ahjn0AtTCKy6zjwvtTsAKk4HY45elhZMOFqVQ67VhXZzsQ+1C
-         OpwzDxIxhUmemYvPr5kFQhJ11wJ4mO/uV95iOiSyhOEURK5iKaV7wqIpYh/PnIbyrPpJ
-         9tSJKi3hJxrwvS1DLFrp79JHiStcWFxOIMyqfSoRhA1ST7u4myaWfWk2E3v3oL11Ycks
-         0Okw==
+        bh=s5gdgpuGomYzfek2HEPhynDjlyR7LXLvHh8yiPZprzU=;
+        b=Mm89Csr295OzI1XUJcQXnn1bpHrn58fB5l1Iz9IFiBWPqbsIjtCum38XNvcSI5E+Qa
+         UkSpSOIZSYIvOS8trWbzzSX8wo3z6wGPakJWDx74zluuUnwzfOwI30v9Ke8zPT7S56xa
+         4oaksky6jh+gMpiDKvVHsd8M3IHcTbWgkGVsl8cUqqMWEC2x3e0xXwIH46V70R1i/x7X
+         12WmjtLrFPTeYQm3B8kSXj2BLwXCu9Ok9Tf8MHHdvl8Bg+v8WUu6ejFLtD+F0Ydy/sTX
+         MMfQPOZ8vVUIU5UWEwXbsDOBzZeu7pZsBwovP8tKitvcozyb04L1SyUO6QNSrrUtI7OH
+         uONQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u7si11354597ilg.143.2021.05.02.22.28.19
+        by mx.google.com with ESMTPS id q8si12148007iog.88.2021.05.02.22.28.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 02 May 2021 22:28:19 -0700 (PDT)
+        Sun, 02 May 2021 22:28:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:39848 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40908 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ldR7z-0006cZ-Bh
-	for alex.bennee@linaro.org; Mon, 03 May 2021 01:28:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57862)
+	id 1ldR8B-00073G-Ia
+	for alex.bennee@linaro.org; Mon, 03 May 2021 01:28:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57872)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1ldR6J-0004q1-11; Mon, 03 May 2021 01:26:36 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:29348
- helo=mx0a-001b2d01.pphosted.com)
+ id 1ldR6J-0004q5-3s; Mon, 03 May 2021 01:26:36 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:12696)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1ldR6F-0005ym-G4; Mon, 03 May 2021 01:26:34 -0400
-Received: from pps.filterd (m0098419.ppops.net [127.0.0.1])
- by mx0b-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 14353eSi120475; Mon, 3 May 2021 01:26:12 -0400
+ id 1ldR6F-00069B-Fs; Mon, 03 May 2021 01:26:34 -0400
+Received: from pps.filterd (m0098399.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
+ 14353V0Z103736; Mon, 3 May 2021 01:26:14 -0400
 Received: from ppma04ams.nl.ibm.com (63.31.33a9.ip4.static.sl-reverse.com
  [169.51.49.99])
- by mx0b-001b2d01.pphosted.com with ESMTP id 38aahu0gwn-1
+ by mx0a-001b2d01.pphosted.com with ESMTP id 38aadhgnut-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 03 May 2021 01:26:12 -0400
+ Mon, 03 May 2021 01:26:14 -0400
 Received: from pps.filterd (ppma04ams.nl.ibm.com [127.0.0.1])
- by ppma04ams.nl.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 1435H4jk022045;
- Mon, 3 May 2021 05:26:10 GMT
-Received: from b06cxnps3074.portsmouth.uk.ibm.com
- (d06relay09.portsmouth.uk.ibm.com [9.149.109.194])
- by ppma04ams.nl.ibm.com with ESMTP id 388xm8rh6f-1
+ by ppma04ams.nl.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 1435H0DC022037;
+ Mon, 3 May 2021 05:26:12 GMT
+Received: from b06cxnps4076.portsmouth.uk.ibm.com
+ (d06relay13.portsmouth.uk.ibm.com [9.149.109.198])
+ by ppma04ams.nl.ibm.com with ESMTP id 388xm8rh6g-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 03 May 2021 05:26:10 +0000
-Received: from d06av23.portsmouth.uk.ibm.com (d06av23.portsmouth.uk.ibm.com
- [9.149.105.59])
- by b06cxnps3074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 1435Q8m619661108
+ Mon, 03 May 2021 05:26:12 +0000
+Received: from d06av25.portsmouth.uk.ibm.com (d06av25.portsmouth.uk.ibm.com
+ [9.149.105.61])
+ by b06cxnps4076.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 1435QA6h38928818
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 3 May 2021 05:26:08 GMT
-Received: from d06av23.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 40CA8A404D;
- Mon,  3 May 2021 05:26:08 +0000 (GMT)
-Received: from d06av23.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 0A320A4040;
- Mon,  3 May 2021 05:26:08 +0000 (GMT)
+ Mon, 3 May 2021 05:26:10 GMT
+Received: from d06av25.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 229B311C04C;
+ Mon,  3 May 2021 05:26:10 +0000 (GMT)
+Received: from d06av25.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id E0E2B11C04A;
+ Mon,  3 May 2021 05:26:09 +0000 (GMT)
 Received: from smtp.tlslab.ibm.com (unknown [9.101.4.1])
- by d06av23.portsmouth.uk.ibm.com (Postfix) with SMTP;
- Mon,  3 May 2021 05:26:07 +0000 (GMT)
+ by d06av25.portsmouth.uk.ibm.com (Postfix) with SMTP;
+ Mon,  3 May 2021 05:26:09 +0000 (GMT)
 Received: from yukon.ibmuc.com (unknown [9.171.40.192])
- by smtp.tlslab.ibm.com (Postfix) with ESMTP id 5AE2722007C;
- Mon,  3 May 2021 07:26:07 +0200 (CEST)
+ by smtp.tlslab.ibm.com (Postfix) with ESMTP id 43B1E22004E;
+ Mon,  3 May 2021 07:26:09 +0200 (CEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 01/18] aspeed/smc: Use the RAM memory region for DMAs
-Date: Mon,  3 May 2021 07:25:43 +0200
-Message-Id: <20210503052600.290483-2-clg@kaod.org>
+Subject: [PULL 04/18] aspeed/i2c: Rename DMA address space
+Date: Mon,  3 May 2021 07:25:46 +0200
+Message-Id: <20210503052600.290483-5-clg@kaod.org>
 X-Mailer: git-send-email 2.26.3
 In-Reply-To: <20210503052600.290483-1-clg@kaod.org>
 References: <20210503052600.290483-1-clg@kaod.org>
@@ -93,18 +92,18 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: cP6Rsj7fc653UgWBm4JLynzeO-dTmraj
-X-Proofpoint-ORIG-GUID: cP6Rsj7fc653UgWBm4JLynzeO-dTmraj
+X-Proofpoint-ORIG-GUID: UzV6HFj7lrEM8NWPwyE6MCVkq6vs_Tj3
+X-Proofpoint-GUID: UzV6HFj7lrEM8NWPwyE6MCVkq6vs_Tj3
 X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.761
  definitions=2021-05-03_02:2021-04-30,
  2021-05-03 signatures=0
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- malwarescore=0
- mlxlogscore=539 phishscore=0 lowpriorityscore=0 suspectscore=0 mlxscore=0
- bulkscore=0 priorityscore=1501 spamscore=0 impostorscore=0 clxscore=1034
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ phishscore=0 adultscore=0
+ clxscore=1034 bulkscore=0 mlxlogscore=753 lowpriorityscore=0 spamscore=0
+ mlxscore=0 suspectscore=0 impostorscore=0 priorityscore=1501
+ malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
  engine=8.12.0-2104060000 definitions=main-2105030033
-Received-SPF: softfail client-ip=148.163.158.5; envelope-from=clg@kaod.org;
+Received-SPF: softfail client-ip=148.163.156.1; envelope-from=clg@kaod.org;
  helo=mx0a-001b2d01.pphosted.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -129,52 +128,33 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KD3UrrMBw3dv
+X-TUID: yuAEAG5hYJmz
 
-Instead of passing the memory address space region, simply use the RAM
-memory region instead. This simplifies RAM accesses.
+It improves 'info mtree' output.
 
-This patch breaks migration compatibility.
-
-Fixes: c4e1f0b48322 ("aspeed/smc: Add support for DMAs")
-Cc: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-Message-Id: <20210407171637.777743-2-clg@kaod.org>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Message-Id: <20210407171637.777743-5-clg@kaod.org>
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
- hw/arm/aspeed.c     | 2 +-
- hw/ssi/aspeed_smc.c | 3 +--
- 2 files changed, 2 insertions(+), 3 deletions(-)
+ hw/i2c/aspeed_i2c.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index a17b75f4940a..1cf5a15c8098 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -327,7 +327,7 @@ static void aspeed_machine_init(MachineState *machine=
-)
-     object_property_set_int(OBJECT(&bmc->soc), "num-cs", amc->num_cs,
-                             &error_abort);
-     object_property_set_link(OBJECT(&bmc->soc), "dram",
--                             OBJECT(&bmc->ram_container), &error_abort);
-+                             OBJECT(machine->ram), &error_abort);
-     if (machine->kernel_filename) {
-         /*
-          * When booting with a -kernel command line there is no u-boot
-diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-index 16addee4dc8d..6f72fb028e59 100644
---- a/hw/ssi/aspeed_smc.c
-+++ b/hw/ssi/aspeed_smc.c
-@@ -178,8 +178,7 @@
-  *   0: 4 bytes
-  *   0x7FFFFF: 32M bytes
-  */
--#define DMA_DRAM_ADDR(s, val)   ((s)->sdram_base | \
--                                 ((val) & (s)->ctrl->dma_dram_mask))
-+#define DMA_DRAM_ADDR(s, val)   ((val) & (s)->ctrl->dma_dram_mask)
- #define DMA_FLASH_ADDR(s, val)  ((s)->ctrl->flash_window_base | \
-                                 ((val) & (s)->ctrl->dma_flash_mask))
- #define DMA_LENGTH(val)         ((val) & 0x01FFFFFC)
+diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+index e7133528899f..8d276d9ed391 100644
+--- a/hw/i2c/aspeed_i2c.c
++++ b/hw/i2c/aspeed_i2c.c
+@@ -816,7 +816,8 @@ static void aspeed_i2c_realize(DeviceState *dev, Erro=
+r **errp)
+             return;
+         }
+=20
+-        address_space_init(&s->dram_as, s->dram_mr, "dma-dram");
++        address_space_init(&s->dram_as, s->dram_mr,
++                           TYPE_ASPEED_I2C "-dma-dram");
+     }
+ }
+=20
 --=20
 2.26.3
 

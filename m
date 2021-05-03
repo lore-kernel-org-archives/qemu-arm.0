@@ -1,143 +1,122 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp3432334lfg;
-        Tue, 4 May 2021 02:17:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyFSBDE1T5oQQy+TvcGRqEJgUlgrzTSHTsH/pgi9U4JsvT3YxJ1n110MYFus2rnqL4zcz/9
-X-Received: by 2002:a9f:2183:: with SMTP id 3mr18941387uac.0.1620119842981;
-        Tue, 04 May 2021 02:17:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620119842; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp3012489lfg;
+        Mon, 3 May 2021 14:19:26 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxqPPaiLD6bSM7Tj1g+VXq0rvnB5uBTbK5nJPUiXmD+SxGGjFSiPfNA7OsC1QrFym4yGWKQ
+X-Received: by 2002:a05:6602:24d4:: with SMTP id h20mr16610813ioe.4.1620076766709;
+        Mon, 03 May 2021 14:19:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620076766; cv=none;
         d=google.com; s=arc-20160816;
-        b=QXnCkvyHbmBfzA2Wf/3+UZQGcswAaFPbR8nsCwPQWCQuSqRpIhUVwcpVF9bBrzZd3V
-         hzBy3Hyg0Bytz+wzbh8zid6yYdK4Q/hcQ80owcKVCS8cZcoMJ73RRXy97ASKaxjp509t
-         jsdI46wbn6wRmSivwaQWhiS0LSo+gbih8Fu+NP7jdcY9P1xsqCwLhxtnAsUXYIL4kuVs
-         Ec7YIvHCraptQzXa6tT7evVHmNqUR45w3KcmR9g92SvfbTgh6t+laW++krrPUTbnjQ9s
-         T0RPv77jRFmwt6nm5qj3MICZhp/zTX7AzqC/7QIQmkHNYY6p//H1W3pLaNf5kKEzTgu/
-         SdrQ==
+        b=Kt864XcxtdFV0EpmQToKuisfZe153DPBSOI/dlrbNdeApMd6yc9fZhluKEDJ+HwEcY
+         W90vVKnQaXBvc92jxpqgZ8aczy6YzSkS1KqQecyHp9M/JgT5U8LGwjMfnTpalFNT3Lhv
+         u48mQUuknhrZbxeqf9IRa4xxm37pIky7j+BRFo0s25LodTOlD2B2d8ZvPLwqs2Q6q8jK
+         l6u1sMS8t9dyDfb3MSvCLR/7KcfflFxCaoS+dqBbB3/giHme92zA47mql0vqMycsoe2b
+         +aqS8WbLtxcWBERP1Ab6qzDi72IIzeJBbS4NGM3XSfnaNb+jhrsdMggIxfRmhhuW4aNT
+         KDIg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=hhDEWmzdghAGZtZeuFoepYTZTUQE5WKYZBIlzMAcUTA=;
-        b=MjuHjZb8s3geVEtCHZUsiAmYHMKr15O3uaRwKZEr0p71Z8DDc+58ouwAnBdy8K5I8b
-         hAUblG5XX1DIvx+sluDFoSn6BifDno8+nu+dbyXSnPOepYm2cuiT+jkUre7bSrlteizf
-         hZUKZHNy8WeQyzRFcQoci5t7p6UoLtLHQqPNV9G/TJ2AkVLDbmRguxr/3Zg9jeb//gfm
-         rHG0XMtPrLmRrSvK761QzTIPhk5KBDr1UJeApohHa0WcxkLawibsY/hLHgAAI3gmVaBb
-         NLMPsgoszsp0/zCNIb2Taf+RHoeKd+NmIXn8PgkmOZFQmPTBY8Ss6XcA+3w8+dx9A2fo
-         HSlg==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=lmsGdAeXnbzcEUQtPxKNfenyqUfv4M7E039KtK+jd+o=;
+        b=XxVlQs4HTymPZHthLUxGvE3C1kn1CsXFerlC/LG8Unv4Og06Me+KyKUi8D1Gn/Drs1
+         BjlY0jrW5MXyvM+aARP20GLdvKy5QokeqLa0Xs++7WijvbGx5WUch7wpDwSD8eh0fu7o
+         4ejgNYD7VSXUtGSliDdF5hJF1qvt0fAGhxx9G+HXu3DhE+i0utuqJCnYvsRTaNmVMLEP
+         8pKFMuJHwZW3Ngu5iFq/2JTWYvLbvpT5f67txIx+tODChBPW9QC0cuQ7NSFo0nkCEmzR
+         dr1yfjeZkgiaJD4OBU8SLr737sZlxXQ9Rp8D4v/2gKJPIDV0NwtwPrSGpKKFhsAt8JBA
+         Zqxw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@ibm.com header.s=pp1 header.b=d7+vOBz1;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=APHVwvOW;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s186si6728778vkb.65.2021.05.04.02.17.22
+        by mx.google.com with ESMTPS id t32si14977815jal.79.2021.05.03.14.19.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 May 2021 02:17:22 -0700 (PDT)
+        Mon, 03 May 2021 14:19:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@ibm.com header.s=pp1 header.b=d7+vOBz1;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=APHVwvOW;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Received: from localhost ([::1]:54304 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:52422 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ldrBB-0007PQ-Ux
-	for alex.bennee@linaro.org; Tue, 04 May 2021 05:17:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42270)
+	id 1ldfyQ-0006g8-25
+	for alex.bennee@linaro.org; Mon, 03 May 2021 17:19:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40596)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <aneesh.kumar@linux.ibm.com>)
- id 1ldqxb-0002Ww-JO; Tue, 04 May 2021 05:03:21 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:30824
- helo=mx0a-001b2d01.pphosted.com)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1ldfqa-0005aJ-Q8
+ for qemu-devel@nongnu.org; Mon, 03 May 2021 17:11:20 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:49014)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <aneesh.kumar@linux.ibm.com>)
- id 1ldqxY-0002tP-Lv; Tue, 04 May 2021 05:03:19 -0400
-Received: from pps.filterd (m0098414.ppops.net [127.0.0.1])
- by mx0b-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 1448j0js066751; Tue, 4 May 2021 05:03:01 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=subject : to : cc :
- references : from : message-id : date : mime-version : in-reply-to :
- content-type : content-transfer-encoding; s=pp1;
- bh=hhDEWmzdghAGZtZeuFoepYTZTUQE5WKYZBIlzMAcUTA=;
- b=d7+vOBz1ri3+XgqQR42vv3qJScc1w4ZbNER4dpNQQ6ZglnvFfLQkKXqwrFTa3us9On2c
- pEE98fAtiWC3LY/+ZFZSkiJjRc4CUdOvfCEzlUqZQz8KOhoD08Yj4EWJMs2/9W96TvpW
- iLWMTYUNoOP2nnAdyrLgMbT2MY0MqKjTov6/yGXy+/RHjwmwqSor4HWjyZvD+Z1G1qhE
- dYGuVhF88ksA0/b/b2Kv2hzWj93ZhYnHj0wJb+k1xkOa5LNN4NG1SZhATHlnl7VFeSru
- Dr0VjU6Ap6yKVuAd1P1vO6t4ZESd7TAO+JrSV5B9BgoCQRACMArzuoH8KJ+H9VV6G/kG LQ== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0b-001b2d01.pphosted.com with ESMTP id 38b31g0e92-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 04 May 2021 05:03:01 -0400
-Received: from m0098414.ppops.net (m0098414.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 1448j9SN067112;
- Tue, 4 May 2021 05:03:00 -0400
-Received: from ppma05fra.de.ibm.com (6c.4a.5195.ip4.static.sl-reverse.com
- [149.81.74.108])
- by mx0b-001b2d01.pphosted.com with ESMTP id 38b31g0e85-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 04 May 2021 05:03:00 -0400
-Received: from pps.filterd (ppma05fra.de.ibm.com [127.0.0.1])
- by ppma05fra.de.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 1448xmtx021764;
- Tue, 4 May 2021 09:02:58 GMT
-Received: from b06cxnps3074.portsmouth.uk.ibm.com
- (d06relay09.portsmouth.uk.ibm.com [9.149.109.194])
- by ppma05fra.de.ibm.com with ESMTP id 388xm8gkv8-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 04 May 2021 09:02:58 +0000
-Received: from d06av24.portsmouth.uk.ibm.com (mk.ibm.com [9.149.105.60])
- by b06cxnps3074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 14492ttr32440578
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 4 May 2021 09:02:55 GMT
-Received: from d06av24.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id B1ECE4204D;
- Tue,  4 May 2021 09:02:55 +0000 (GMT)
-Received: from d06av24.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 20EEC42041;
- Tue,  4 May 2021 09:02:51 +0000 (GMT)
-Received: from [9.199.50.4] (unknown [9.199.50.4])
- by d06av24.portsmouth.uk.ibm.com (Postfix) with ESMTP;
- Tue,  4 May 2021 09:02:50 +0000 (GMT)
-Subject: Re: [PATCH v4 0/3] nvdimm: Enable sync-dax property for nvdimm
-To: Pankaj Gupta <pankaj.gupta.linux@gmail.com>
-References: <161966810162.652.13723419108625443430.stgit@17be908f7c1c>
- <CAPcyv4gwkyDBG7EZOth-kcZR8Fb+RgGXY=Y9vbuHXAz3PAnLVw@mail.gmail.com>
- <bca3512d-5437-e8e6-68ae-0c9b887115f9@linux.ibm.com>
- <CAPcyv4hAOC89JOXr-ZCps=n8gEKD5W0jmGU1Enfo8ECVMf3veQ@mail.gmail.com>
- <d21fcac6-6a54-35fd-3088-6c56b85fbf25@linux.ibm.com>
- <CAM9Jb+g8bKF0Z7za4sZpc2tZ01Sp4c4FEaV65He8w1+QOL3_yw@mail.gmail.com>
-From: "Aneesh Kumar K.V" <aneesh.kumar@linux.ibm.com>
-Message-ID: <023e584a-6110-4d17-7fec-ca715226f869@linux.ibm.com>
-Date: Tue, 4 May 2021 14:32:50 +0530
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1ldfqY-0007Wx-4e
+ for qemu-devel@nongnu.org; Mon, 03 May 2021 17:11:20 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1620076277;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=lmsGdAeXnbzcEUQtPxKNfenyqUfv4M7E039KtK+jd+o=;
+ b=APHVwvOWNXnwZQEPkumPTUi+uXZlNkXNNjrCpdgtjJIS1Vig3qwRbrvlsjauZTeE1nc3kw
+ X9N1OvriKHPGo4zHO9jV/v568tgS0Mw/AdUlvnqo8mthuww1PobWxqmKMPbY1qmuaM+U0B
+ ghfhBWUILtuLBEaXUor2oBN74u8Hako=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-335-US6lSkCmNZ64tomjyphDCQ-1; Mon, 03 May 2021 17:11:16 -0400
+X-MC-Unique: US6lSkCmNZ64tomjyphDCQ-1
+Received: by mail-wm1-f71.google.com with SMTP id
+ d9-20020a1cb4090000b02901494f55f719so526030wmf.9
+ for <qemu-devel@nongnu.org>; Mon, 03 May 2021 14:11:15 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=lmsGdAeXnbzcEUQtPxKNfenyqUfv4M7E039KtK+jd+o=;
+ b=gjDM1x84YXXcz50ioodt0cyF2MKl3n8MEOXyy5KLcgg8Ohs4kTaVIA4ribexdQsKhI
+ yA6V9ZJ6x1hQGGLGBL6AT5HGORKYFgEpYipGPXzM6bFsHGpd/N/xu15dlQ0f8IpkExVD
+ LZdltdJGO189ITq6Z9+VdVb//5fSTLY40sCnQUm3eIno4V6l16u+9ZiNHXL6boDnbD7s
+ MQBbqtWD1LW7A9wS7QNoHyhsS1EysreBorJNX8tzOy8YZIpukhXahNzF6MpFcli1VoMO
+ KoxMtE+mmVVl7rkGPYgCOO8hQUBE+EHSEIdq5T9Nlb2hpbgApHg6kjjyIgRx6+asxfpi
+ L70Q==
+X-Gm-Message-State: AOAM532QpEPAyERJLb19Yf1yxAJk6sMK6WFOOA82RPkSIDsCKYQ4fR8f
+ SE7Z5VZhnxfOYcQSKZTmC2ExnfNf3pZqntdupR7g+dO4fOopfqeMZJb8l7C9kjFFL9jiCFJU/Jl
+ HTrxZyqMmGk4xfkJOJQGxIeCFjVnICd1RiB5UcSdaBciK3x8Qd4+aEPL4W8n5BTsX
+X-Received: by 2002:a05:6000:1a41:: with SMTP id
+ t1mr27173556wry.265.1620076273916; 
+ Mon, 03 May 2021 14:11:13 -0700 (PDT)
+X-Received: by 2002:a05:6000:1a41:: with SMTP id
+ t1mr27173524wry.265.1620076273664; 
+ Mon, 03 May 2021 14:11:13 -0700 (PDT)
+Received: from x1w.redhat.com (anancy-651-1-208-144.w109-217.abo.wanadoo.fr.
+ [109.217.237.144])
+ by smtp.gmail.com with ESMTPSA id b12sm13765763wro.28.2021.05.03.14.11.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 03 May 2021 14:11:13 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v6 10/12] qtest/bios-tables-test: Rename TCG specific tests
+Date: Mon,  3 May 2021 23:10:18 +0200
+Message-Id: <20210503211020.894589-11-philmd@redhat.com>
+X-Mailer: git-send-email 2.26.3
+In-Reply-To: <20210503211020.894589-1-philmd@redhat.com>
+References: <20210503211020.894589-1-philmd@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <CAM9Jb+g8bKF0Z7za4sZpc2tZ01Sp4c4FEaV65He8w1+QOL3_yw@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: WyHOa4EB6zQCHAcN_OgqWSEtUI8wMYIe
-X-Proofpoint-ORIG-GUID: KmKW0vgbGyeSeoxKHoyeFcbJvHRk7H6a
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.761
- definitions=2021-05-04_05:2021-05-04,
- 2021-05-04 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- mlxlogscore=999 clxscore=1015
- mlxscore=0 suspectscore=0 spamscore=0 priorityscore=1501
- lowpriorityscore=0 malwarescore=0 phishscore=0 adultscore=0 bulkscore=0
- impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2104060000 definitions=main-2105040062
-Received-SPF: pass client-ip=148.163.158.5;
- envelope-from=aneesh.kumar@linux.ibm.com; helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
-X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -34
+X-Spam_score: -3.5
+X-Spam_bar: ---
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.698,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -150,70 +129,63 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Shivaprasad G Bhat <sbhat@linux.ibm.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Qemu Developers <qemu-devel@nongnu.org>,
- linux-nvdimm <linux-nvdimm@lists.01.org>,
- Markus Armbruster <armbru@redhat.com>, bharata@linux.vnet.ibm.com,
- Haozhong Zhang <haozhong.zhang@intel.com>,
- Eduardo Habkost <ehabkost@redhat.com>, richard.henderson@linaro.org,
- Greg Kurz <groug@kaod.org>, kvm-ppc@vger.kernel.org, qemu-arm@nongnu.org,
- Stefan Hajnoczi <stefanha@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Dan Williams <dan.j.williams@intel.com>, kwangwoo.lee@sk.com,
- David Gibson <david@gibson.dropbear.id.au>,
- Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
- shameerali.kolothum.thodi@huawei.com, shivaprasadbhat@gmail.com,
- qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+Cc: Thomas Huth <thuth@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
+ Igor Mammedov <imammedo@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dnQIsDi5EBEv
+X-TUID: bnkjhYHeZeY2
 
-On 5/4/21 11:13 AM, Pankaj Gupta wrote:
-....
+Some tests require TCG, but don't have '_tcg' in their name,
+while others do. Unify the test names by adding 'tcg' to the
+TCG specific tests.
 
->>
->> What this patch series did was to express that property via a device
->> tree node and guest driver enables a hypercall based flush mechanism to
->> ensure persistence.
-> 
-> Would VIRTIO (entirely asynchronous, no trap at host side) based
-> mechanism is better
-> than hyper-call based? Registering memory can be done any way. We
-> implemented virtio-pmem
-> flush mechanisms with below considerations:
-> 
-> - Proper semantic for guest flush requests.
-> - Efficient mechanism for performance pov.
-> 
+Reported-by: Igor Mammedov <imammedo@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+ tests/qtest/bios-tables-test.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-sure, virio-pmem can be used as an alternative.
+diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+index ce498b3ff48..ad877baeb1b 100644
+--- a/tests/qtest/bios-tables-test.c
++++ b/tests/qtest/bios-tables-test.c
+@@ -1255,7 +1255,7 @@ static void test_acpi_microvm_rtc(void)
+     free_test_data(&data);
+ }
+ 
+-static void test_acpi_microvm_pcie(void)
++static void test_acpi_microvm_pcie_tcg(void)
+ {
+     test_data data;
+ 
+@@ -1475,7 +1475,7 @@ static void test_acpi_oem_fields_microvm(void)
+     g_free(args);
+ }
+ 
+-static void test_acpi_oem_fields_virt(void)
++static void test_acpi_oem_fields_virt_tcg(void)
+ {
+     test_data data = {
+         .machine = "virt",
+@@ -1555,14 +1555,14 @@ int main(int argc, char *argv[])
+         qtest_add_func("acpi/microvm/ioapic2", test_acpi_microvm_ioapic2);
+         qtest_add_func("acpi/microvm/oem-fields", test_acpi_oem_fields_microvm);
+         if (strcmp(arch, "x86_64") == 0) {
+-            qtest_add_func("acpi/microvm/pcie", test_acpi_microvm_pcie);
++            qtest_add_func("acpi/microvm/pcie", test_acpi_microvm_pcie_tcg);
+         }
+     } else if (strcmp(arch, "aarch64") == 0) {
+         qtest_add_func("acpi/virt", test_acpi_virt_tcg);
+         qtest_add_func("acpi/virt/numamem", test_acpi_virt_tcg_numamem);
+         qtest_add_func("acpi/virt/memhp", test_acpi_virt_tcg_memhp);
+         qtest_add_func("acpi/virt/pxb", test_acpi_virt_tcg_pxb);
+-        qtest_add_func("acpi/virt/oem-fields", test_acpi_oem_fields_virt);
++        qtest_add_func("acpi/virt/oem-fields", test_acpi_oem_fields_virt_tcg);
+     }
+     ret = g_test_run();
+     boot_sector_cleanup(disk);
+-- 
+2.26.3
 
-> I am just asking myself if we have platform agnostic mechanism already
-> there, maybe
-> we can extend it to suit our needs? Maybe I am missing some points here.
-> 
-
-What is being attempted in this series is to indicate to the guest OS 
-that the backing device/file used for emulated nvdimm device cannot 
-guarantee the persistence via cpu cache flush instructions.
-
-
->>>> On PPC, the default is "sync-dax=writeback" - so the ND_REGION_ASYNC
->>>>
->>>> is set for the region and the guest makes hcalls to issue fsync on the host.
->>>>
->>>>
->>>> Are you suggesting me to keep it "unsafe" as default for all architectures
->>>>
->>>> including PPC and a user can set it to "writeback" if desired.
->>>
->>> No, I am suggesting that "sync-dax" is insufficient to convey this
->>> property. This behavior warrants its own device type, not an ambiguous
->>> property of the memory-backend-file with implicit architecture
->>> assumptions attached.
->>>
->>
->> Why is it insufficient?  Is it because other architectures don't have an
->> ability express this detail to guest OS? Isn't that an arch limitations?
-
--aneesh

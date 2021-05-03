@@ -1,98 +1,90 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp2369972lfg;
-        Sun, 2 May 2021 22:36:36 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwyvkBj+oC7v3Ajx73ihctpfisagFlqA8qnT+l6t2RNrLSFaMWrUAul0wBGlhp/bTWkoRHU
-X-Received: by 2002:a0c:e486:: with SMTP id n6mr15763043qvl.21.1620020196164;
-        Sun, 02 May 2021 22:36:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620020196; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp2370638lfg;
+        Sun, 2 May 2021 22:37:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzhSPKyzzMjc/GH+7GpugHNxbel78QtKESL2x+SSskPdv8JXNYgYJjDLm0PRM8Y0XBfO4PV
+X-Received: by 2002:a05:6e02:190a:: with SMTP id w10mr14606645ilu.1.1620020273475;
+        Sun, 02 May 2021 22:37:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620020273; cv=none;
         d=google.com; s=arc-20160816;
-        b=sYPUd88iQFr8ZkeM4juHT8d7e/vppcqx1pZPbiNPkznmF81FYtkTB0o54di5ApSVrN
-         Fs/srnKz+z/TmFmsHraIg8YBQq1fHTrOzA7URmVNbMwkVKHaqEpVZTxnRJD/QQnO4lYr
-         q6XOatDkyizV+v+9mrg85xuhq0lExbdRPBPwTnKs8/w3beVLEqyoU/x4orJY9nk46gha
-         t+S8BQuNnFakkfqRRiwzOwq+Vs5K+1x36Vo+ZLak+yw8GdSF9RF2+WhSw9P34ToWJE2z
-         aSyttc5d16wtCGFI/OmeYgClBY5g+RrsRAgcjIfhJ/SopgCbWHadjUgB1MOsyS2es1aW
-         lFJA==
+        b=qX5NqAUujTQhFD/kfsukU8FjFjoygO2NLqDAWud3zxXN/jJyHfY3CKXFn/WH48T9AN
+         pta1hlEks+jTSgvKyUlp9tp0ul2+z97UF0h666SbQamDx2y2WMpeiwgtBkYnNeWX+6jt
+         9jGYxR6pR+u9C499KhY3eOUyY1lLeta/29biCsbPJ3xVhJGUfGNEWElNygBx8jpHCTMa
+         +EBYdx1PltRqEDSxcotVWXgKg2NeQASTjRgvBnh/KIAakmFLCiCTp6WywQDizXK2XEmw
+         LKQwSAG8xCgdUAKTbVhpkykJ3Ylc+xxvsASr7TEXwYkMpxn3gibytYSUDMSFJUho4Pmx
+         k0CA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=Nvwhk8/FRzl+zzCKa9FATPAhKivTKXf1G8JFy+QvxRs=;
-        b=qCUwgZ5Qwj5K3tN9eU7hdPiDGP8HPB8yi2YEbhSNbpZcJ2lzj95NfKVGo2c7lpkzK1
-         QwmhwT8llT1FmlE1CBB/ruZReh86isphAT7gU5LpMZCiQ0bcc1hVo4kOAMj6WLH7Fu9J
-         A//XVamj6KLk8rgzl2MOQ1TXZnihzOIE58LZuKtmflvg8G4u6fNQwbAiSH199uCB/1kc
-         BgJyaSi5Ejf4sBgHGjfC1bXlBdndFADH4PGqgiWNNkQ4kb1cRTtawBig1EOfzpGUvGcI
-         2MtIDBPIM8WemOVYmqAyGKAmLesY9QSOxfAekApU22ej98s7H3bR+D9EQNF2eiB/uMci
-         jhsA==
+        bh=1lAtnamSW+lxy86Pv0mIBtcx7YcdmWf+fo+qO9F0bJM=;
+        b=p1CdKAgmTsUNOljL6ytTvzqsJWMjxiI2jXU9j0OUID4ozF1Rv3GkAdR/1qQqIPrIR0
+         DdTGa2ngw0jTT/WOUzYr8Q+u0QU7kWDCW5mQrtq2rlk5VNVh9zt4Sq71lxLTb7LPY9xE
+         lym68rWoJUV37FYMSbPePFdac4gIADcmZNf6ZVz1/OE/hksCl8GsMAx7pbGrVzjZQEF5
+         0p8B3sqiMT4P5fu4h44XQSmb6zuw5zBWZ7ufkBPC2RKh7fTZYAKdBuhy1kwazR2a8UT0
+         tqoWS4hS1mZ/TjJYQz7Wy+kfs9aeKhKtvXk9RO/CT+pu/y4dKxRNy6PZtlXlwfRusPet
+         g6JA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b16si6566787qkc.175.2021.05.02.22.36.35
+        by mx.google.com with ESMTPS id q8si9581141ilv.144.2021.05.02.22.37.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 02 May 2021 22:36:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 02 May 2021 22:37:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43520 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:47396 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ldRFz-0002iA-9Y
-	for alex.bennee@linaro.org; Mon, 03 May 2021 01:36:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57934)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ldRHE-0004GY-Rl
+	for alex.bennee@linaro.org; Mon, 03 May 2021 01:37:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57940)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1ldR6K-0004qQ-SP; Mon, 03 May 2021 01:26:38 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:9038
- helo=mx0a-001b2d01.pphosted.com)
+ id 1ldR6K-0004qe-V6; Mon, 03 May 2021 01:26:38 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:11422)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1ldR6G-0006B7-I5; Mon, 03 May 2021 01:26:36 -0400
-Received: from pps.filterd (m0098416.ppops.net [127.0.0.1])
- by mx0b-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 14353luF057594; Mon, 3 May 2021 01:26:24 -0400
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0b-001b2d01.pphosted.com with ESMTP id 38aa2x0ww7-1
+ id 1ldR6F-00069D-Ga; Mon, 03 May 2021 01:26:35 -0400
+Received: from pps.filterd (m0098394.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
+ 1435FIJe068689; Mon, 3 May 2021 01:26:13 -0400
+Received: from ppma03ams.nl.ibm.com (62.31.33a9.ip4.static.sl-reverse.com
+ [169.51.49.98])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 38aav4g53y-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 03 May 2021 01:26:24 -0400
-Received: from m0098416.ppops.net (m0098416.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 1435QNf0124868;
- Mon, 3 May 2021 01:26:23 -0400
-Received: from ppma03fra.de.ibm.com (6b.4a.5195.ip4.static.sl-reverse.com
- [149.81.74.107])
- by mx0b-001b2d01.pphosted.com with ESMTP id 38aa2x0wvx-1
+ Mon, 03 May 2021 01:26:13 -0400
+Received: from pps.filterd (ppma03ams.nl.ibm.com [127.0.0.1])
+ by ppma03ams.nl.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 1435IuBw025530;
+ Mon, 3 May 2021 05:26:11 GMT
+Received: from b06cxnps3074.portsmouth.uk.ibm.com
+ (d06relay09.portsmouth.uk.ibm.com [9.149.109.194])
+ by ppma03ams.nl.ibm.com with ESMTP id 388xm8ggw9-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 03 May 2021 01:26:23 -0400
-Received: from pps.filterd (ppma03fra.de.ibm.com [127.0.0.1])
- by ppma03fra.de.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 1435KheS009054;
- Mon, 3 May 2021 05:26:22 GMT
-Received: from b06avi18626390.portsmouth.uk.ibm.com
- (b06avi18626390.portsmouth.uk.ibm.com [9.149.26.192])
- by ppma03fra.de.ibm.com with ESMTP id 388xm889nb-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 03 May 2021 05:26:22 +0000
+ Mon, 03 May 2021 05:26:10 +0000
 Received: from d06av23.portsmouth.uk.ibm.com (d06av23.portsmouth.uk.ibm.com
  [9.149.105.59])
- by b06avi18626390.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP
- id 1435PsJh31457606
+ by b06cxnps3074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 1435Q8EN29884848
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 3 May 2021 05:25:54 GMT
+ Mon, 3 May 2021 05:26:08 GMT
 Received: from d06av23.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 832F3A4053;
- Mon,  3 May 2021 05:26:19 +0000 (GMT)
+ by IMSVA (Postfix) with ESMTP id CA991A4057;
+ Mon,  3 May 2021 05:26:08 +0000 (GMT)
 Received: from d06av23.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 505BCA4057;
- Mon,  3 May 2021 05:26:19 +0000 (GMT)
+ by IMSVA (Postfix) with ESMTP id 949F9A4040;
+ Mon,  3 May 2021 05:26:08 +0000 (GMT)
 Received: from smtp.tlslab.ibm.com (unknown [9.101.4.1])
  by d06av23.portsmouth.uk.ibm.com (Postfix) with SMTP;
- Mon,  3 May 2021 05:26:19 +0000 (GMT)
+ Mon,  3 May 2021 05:26:08 +0000 (GMT)
 Received: from yukon.ibmuc.com (unknown [9.171.40.192])
- by smtp.tlslab.ibm.com (Postfix) with ESMTP id 9FE9D22004E;
- Mon,  3 May 2021 07:26:18 +0200 (CEST)
+ by smtp.tlslab.ibm.com (Postfix) with ESMTP id F1A1722004E;
+ Mon,  3 May 2021 07:26:07 +0200 (CEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 18/18] aspeed: Add support for the quanta-q7l1-bmc board
-Date: Mon,  3 May 2021 07:26:00 +0200
-Message-Id: <20210503052600.290483-19-clg@kaod.org>
+Subject: [PULL 02/18] aspeed/smc: Remove unused "sdram-base" property
+Date: Mon,  3 May 2021 07:25:44 +0200
+Message-Id: <20210503052600.290483-3-clg@kaod.org>
 X-Mailer: git-send-email 2.26.3
 In-Reply-To: <20210503052600.290483-1-clg@kaod.org>
 References: <20210503052600.290483-1-clg@kaod.org>
@@ -100,18 +92,18 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: giIpewnrJOdAPw_l5Fbq58rxljC7mW6O
-X-Proofpoint-ORIG-GUID: VoFccpZm2TGxaLvRjvOGKtG3J8O_980h
+X-Proofpoint-ORIG-GUID: imLGpHOmQnu4B64K4it2k-mv57d-hDCE
+X-Proofpoint-GUID: imLGpHOmQnu4B64K4it2k-mv57d-hDCE
 X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.761
  definitions=2021-05-03_02:2021-04-30,
  2021-05-03 signatures=0
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- lowpriorityscore=0
- bulkscore=0 mlxscore=0 phishscore=0 spamscore=0 adultscore=0
- mlxlogscore=999 priorityscore=1501 clxscore=1034 impostorscore=0
- malwarescore=0 suspectscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.12.0-2104060000 definitions=main-2105030033
-Received-SPF: softfail client-ip=148.163.158.5; envelope-from=clg@kaod.org;
+ bulkscore=0 adultscore=0
+ mlxscore=0 impostorscore=0 phishscore=0 priorityscore=1501 mlxlogscore=967
+ spamscore=0 malwarescore=0 clxscore=1034 suspectscore=0 lowpriorityscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2104060000
+ definitions=main-2105030033
+Received-SPF: softfail client-ip=148.163.156.1; envelope-from=clg@kaod.org;
  helo=mx0a-001b2d01.pphosted.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -120,150 +112,98 @@ X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
  RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Hao Wu <wuhaotsh@google.com>, Patrick Venture <venture@google.com>,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  qemu-arm@nongnu.org, qemu-devel@nongnu.org,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eE7atx5AH2nw
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: SSenxgC4IFZq
 
-From: Patrick Venture <venture@google.com>
-
-The Quanta-Q71l BMC board is a board supported by OpenBMC.
-
-Tested: Booted quanta-q71l firmware.
-Signed-off-by: Patrick Venture <venture@google.com>
-Reviewed-by: Hao Wu <wuhaotsh@google.com>
-Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
-Message-Id: <20210416162426.3217033-1-venture@google.com>
+Cc: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Message-Id: <20210407171637.777743-3-clg@kaod.org>
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
- hw/arm/aspeed.c | 62 +++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 62 insertions(+)
+ include/hw/ssi/aspeed_smc.h | 3 ---
+ hw/arm/aspeed_ast2600.c     | 4 ----
+ hw/arm/aspeed_soc.c         | 4 ----
+ hw/ssi/aspeed_smc.c         | 1 -
+ 4 files changed, 12 deletions(-)
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 490a8a202239..a10909fa8395 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -138,6 +138,19 @@ struct AspeedMachineState {
- /* Witherspoon hardware value: 0xF10AD216 (but use romulus definition) *=
-/
- #define WITHERSPOON_BMC_HW_STRAP1 ROMULUS_BMC_HW_STRAP1
+diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
+index 16c03fe64f3b..ccd71d9b534e 100644
+--- a/include/hw/ssi/aspeed_smc.h
++++ b/include/hw/ssi/aspeed_smc.h
+@@ -103,9 +103,6 @@ struct AspeedSMCState {
+     uint8_t r_timings;
+     uint8_t conf_enable_w0;
 =20
-+/* Quanta-Q71l hardware value */
-+#define QUANTA_Q71L_BMC_HW_STRAP1 (                                     =
-\
-+        SCU_AST2400_HW_STRAP_DRAM_SIZE(DRAM_SIZE_128MB) |               =
-\
-+        SCU_AST2400_HW_STRAP_DRAM_CONFIG(2/* DDR3 with CL=3D6, CWL=3D5 *=
-/) | \
-+        SCU_AST2400_HW_STRAP_ACPI_DIS |                                 =
-\
-+        SCU_AST2400_HW_STRAP_SET_CLK_SOURCE(AST2400_CLK_24M_IN) |       =
-\
-+        SCU_HW_STRAP_VGA_CLASS_CODE |                                   =
-\
-+        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_PASS_THROUGH) |          =
-\
-+        SCU_AST2400_HW_STRAP_SET_CPU_AHB_RATIO(AST2400_CPU_AHB_RATIO_2_1=
-) | \
-+        SCU_HW_STRAP_SPI_WIDTH |                                        =
-\
-+        SCU_HW_STRAP_VGA_SIZE_SET(VGA_8M_DRAM) |                        =
-\
-+        SCU_AST2400_HW_STRAP_BOOT_MODE(AST2400_SPI_BOOT))
-+
- /* AST2600 evb hardware value */
- #define AST2600_EVB_HW_STRAP1 0x000000C0
- #define AST2600_EVB_HW_STRAP2 0x00000003
-@@ -437,6 +450,34 @@ static void palmetto_bmc_i2c_init(AspeedMachineState=
- *bmc)
-     object_property_set_int(OBJECT(dev), "temperature3", 110000, &error_=
-abort);
- }
-=20
-+static void quanta_q71l_bmc_i2c_init(AspeedMachineState *bmc)
-+{
-+    AspeedSoCState *soc =3D &bmc->soc;
-+
-+    /*
-+     * The quanta-q71l platform expects tmp75s which are compatible with
-+     * tmp105s.
-+     */
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105", =
-0x4c);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105", =
-0x4e);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105", =
-0x4f);
-+
-+    /* TODO: i2c-1: Add baseboard FRU eeprom@54 24c64 */
-+    /* TODO: i2c-1: Add Frontpanel FRU eeprom@57 24c64 */
-+    /* TODO: Add Memory Riser i2c mux and eeproms. */
-+
-+    /* TODO: i2c-2: pca9546@74 */
-+    /* TODO: i2c-2: pca9548@77 */
-+    /* TODO: i2c-3: Add BIOS FRU eeprom@56 24c64 */
-+    /* TODO: i2c-7: Add pca9546@70 */
-+    /*        - i2c@0: pmbus@59 */
-+    /*        - i2c@1: pmbus@58 */
-+    /*        - i2c@2: pmbus@58 */
-+    /*        - i2c@3: pmbus@59 */
-+    /* TODO: i2c-7: Add PDB FRU eeprom@52 */
-+    /* TODO: i2c-8: Add BMC FRU eeprom@50 */
-+}
-+
- static void ast2500_evb_i2c_init(AspeedMachineState *bmc)
- {
-     AspeedSoCState *soc =3D &bmc->soc;
-@@ -784,6 +825,23 @@ static void aspeed_machine_palmetto_class_init(Objec=
-tClass *oc, void *data)
-         aspeed_soc_num_cpus(amc->soc_name);
- };
-=20
-+static void aspeed_machine_quanta_q71l_class_init(ObjectClass *oc, void =
-*data)
-+{
-+    MachineClass *mc =3D MACHINE_CLASS(oc);
-+    AspeedMachineClass *amc =3D ASPEED_MACHINE_CLASS(oc);
-+
-+    mc->desc       =3D "Quanta-Q71l BMC (ARM926EJ-S)";
-+    amc->soc_name  =3D "ast2400-a1";
-+    amc->hw_strap1 =3D QUANTA_Q71L_BMC_HW_STRAP1;
-+    amc->fmc_model =3D "n25q256a";
-+    amc->spi_model =3D "mx25l25635e";
-+    amc->num_cs    =3D 1;
-+    amc->i2c_init  =3D quanta_q71l_bmc_i2c_init;
-+    mc->default_ram_size       =3D 128 * MiB;
-+    mc->default_cpus =3D mc->min_cpus =3D mc->max_cpus =3D
-+        aspeed_soc_num_cpus(amc->soc_name);
-+}
-+
- static void aspeed_machine_supermicrox11_bmc_class_init(ObjectClass *oc,
-                                                         void *data)
- {
-@@ -1005,6 +1063,10 @@ static const TypeInfo aspeed_machine_types[] =3D {
-         .name          =3D MACHINE_TYPE_NAME("g220a-bmc"),
-         .parent        =3D TYPE_ASPEED_MACHINE,
-         .class_init    =3D aspeed_machine_g220a_class_init,
-+    }, {
-+        .name          =3D MACHINE_TYPE_NAME("quanta-q71l-bmc"),
-+        .parent        =3D TYPE_ASPEED_MACHINE,
-+        .class_init    =3D aspeed_machine_quanta_q71l_class_init,
-     }, {
-         .name          =3D MACHINE_TYPE_NAME("rainier-bmc"),
-         .parent        =3D TYPE_ASPEED_MACHINE,
+-    /* for DMA support */
+-    uint64_t sdram_base;
+-
+     AddressSpace flash_as;
+     MemoryRegion *dram_mr;
+     AddressSpace dram_as;
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index bc87e754a3cc..2a1255b6a042 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -344,10 +344,6 @@ static void aspeed_soc_ast2600_realize(DeviceState *=
+dev, Error **errp)
+     /* FMC, The number of CS is set at the board level */
+     object_property_set_link(OBJECT(&s->fmc), "dram", OBJECT(s->dram_mr)=
+,
+                              &error_abort);
+-    if (!object_property_set_int(OBJECT(&s->fmc), "sdram-base",
+-                                 sc->memmap[ASPEED_DEV_SDRAM], errp)) {
+-        return;
+-    }
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->fmc), errp)) {
+         return;
+     }
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index 057d053c8478..817f3ba63dfd 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -301,10 +301,6 @@ static void aspeed_soc_realize(DeviceState *dev, Err=
+or **errp)
+     /* FMC, The number of CS is set at the board level */
+     object_property_set_link(OBJECT(&s->fmc), "dram", OBJECT(s->dram_mr)=
+,
+                              &error_abort);
+-    if (!object_property_set_int(OBJECT(&s->fmc), "sdram-base",
+-                                 sc->memmap[ASPEED_DEV_SDRAM], errp)) {
+-        return;
+-    }
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->fmc), errp)) {
+         return;
+     }
+diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+index 6f72fb028e59..884e08aca4e2 100644
+--- a/hw/ssi/aspeed_smc.c
++++ b/hw/ssi/aspeed_smc.c
+@@ -1431,7 +1431,6 @@ static const VMStateDescription vmstate_aspeed_smc =
+=3D {
+ static Property aspeed_smc_properties[] =3D {
+     DEFINE_PROP_UINT32("num-cs", AspeedSMCState, num_cs, 1),
+     DEFINE_PROP_BOOL("inject-failure", AspeedSMCState, inject_failure, f=
+alse),
+-    DEFINE_PROP_UINT64("sdram-base", AspeedSMCState, sdram_base, 0),
+     DEFINE_PROP_LINK("dram", AspeedSMCState, dram_mr,
+                      TYPE_MEMORY_REGION, MemoryRegion *),
+     DEFINE_PROP_END_OF_LIST(),
 --=20
 2.26.3
 

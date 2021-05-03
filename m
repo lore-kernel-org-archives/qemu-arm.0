@@ -1,117 +1,106 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp1373654lfg;
-        Sat, 1 May 2021 15:36:57 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyTTKT2LOmY3DFrfa4JKA8dKunKN5Ze4bPMUHb4nqtohh8BCvcY0qBdRHvqaDZyyFF6VZ9b
-X-Received: by 2002:a05:6602:58d:: with SMTP id v13mr8787285iox.64.1619908617751;
-        Sat, 01 May 2021 15:36:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619908617; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp2562406lfg;
+        Mon, 3 May 2021 03:58:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwsooQfWGpj0pxO7cXsMictrG94LS/qh70ufcoo16uaiUDrva3pMk30siOw/6y6GGxlANHz
+X-Received: by 2002:a92:d383:: with SMTP id o3mr15057517ilo.131.1620039491584;
+        Mon, 03 May 2021 03:58:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620039491; cv=none;
         d=google.com; s=arc-20160816;
-        b=bUGF7D1pCCburE0dNqAEb1oGou9GLftaNSKZVjMhexFLalcNwfhzqJuKZD5UJPPXFw
-         TmVA9l0XPfpBfiDemym6gffocQFc5zOK5iH4l4TiWWq7Ahk+a5VmgO0hJRggnOAMrwDf
-         akuoTh+ZBTjQC7X+onHDM+YtTYEnTZF4q1H6N602qQtX8LapLt6wUP6hd15BU47UqcLG
-         OdApcMaMDD2KLgFRDwRNaL242Bb8kgGs/FCFCGx66ogiVNTqregjt++bPVyztN1m1IRm
-         UQhMrCdVYL8K3VDILwmHVyYLIS6xmyCu2fRJF3EdJ2jK8TVsimZyn7NFOpmYRgOTdYM7
-         HV1A==
+        b=JkYjOpGYcwr3jbsvbRMknGbO0g0R7PdxCcLL2Wu6K0xJ0zRHH1k7y9G0tZvJj81SGE
+         yyvZ9McPinLW9k+YQqHQ5QEejCL0EJjV+NKuGEvnL4VWd69SIAgbfdWLefMrLirRGjOT
+         gCLD5GTHBr3zVLVfkaRAkEUieYPDSOjwFi8coBjiOUPlgJohV0/LldZHsf7pxhYLE2h9
+         cwZ1Zo8NprLk7yizExO8mUMOnbHAVSFx1ugE65yRVDZJgP22ncfCOcv3+QPdo9H3+yNd
+         ovP5Wn5in31xdH00kkTycmTYxko8Uzn+m82hKVdF/qrWwaJxHFh20pF8JfPCpiH6iKUQ
+         1IcA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=IiCOJYLYQjCXUKgsA8xTlklm89DU2HbkMO26QsLfhq8=;
-        b=H1Oce8y0ncBriu0vr/sjkrgGJ6MxR0zkP6IlVqLHMLOJS2SO+8sEFJvzGx8RXj4KHd
-         mABZ7656BZfMe8goVbWFNtmtW7JqXPHdrhOEk94vPMaVhXwc2IeE9+AFQ7/bV2EHalYe
-         mZBPooEV3fQDEJLJ4cNAnkEyE72ohm0+MyLhoFcAb4HdiWU4G1kVuFO+cFHxL0GE4Km+
-         wtqlvLerIYz8e9MMx0NB1YDQrpRJt4w3Wmq4gFnJGm9G3+zEczwYy7t2U/Mbo81pvPwu
-         JFZBdg7NvWdoJHqL/IxPYO4gqBqE31czxp6xl2y0h4uUxvAiV7QZVsEompIKN1vWHMQF
-         lt4Q==
+        bh=OCTLX3eF033BPqeFFzMGdbkKu+ZUIhKDq+RmE3hqCtA=;
+        b=uI+Ttw6uiW7yh0Dz93lueJxA4oHvX6FWoLzQbeLxH4gB5e23zDF2pE9HUx0b2REWRo
+         XQqCyBMxJCa5NQqvZNKWyV1Y5u9av91q+p6R7q0GwXiSCqpaPh4wC4TTYsrw4YJjqQHQ
+         UZ9jtwirlX1MWp5MQoijYU4mStszQUuxk6l3loJIaP0pSiYr4X9i1M798b2UZcnVPj/H
+         MwMUbukzmDOed6l8bCAooB3l8PseR4gYLUJ7Y7gir6bdOwMQOy5sBP7mYUI8cADbeLxE
+         UsPq9QzxvUNnMF/NRl6bsypHLkbjzgYrX5UD6Kh+TafAR9/oGWlbRdZDI9czQNhkBD10
+         C/hQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bXe4VE7Y;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jyk39Jp5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m11si7711494ilu.158.2021.05.01.15.36.57
+        by mx.google.com with ESMTPS id l26si12593445iok.24.2021.05.03.03.58.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 01 May 2021 15:36:57 -0700 (PDT)
+        Mon, 03 May 2021 03:58:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bXe4VE7Y;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jyk39Jp5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45102 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:58906 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lcyEL-00044n-28
-	for alex.bennee@linaro.org; Sat, 01 May 2021 18:36:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49384)
+	id 1ldWHC-0008TW-TP
+	for alex.bennee@linaro.org; Mon, 03 May 2021 06:58:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33290)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lcyEB-00044b-VM
- for qemu-arm@nongnu.org; Sat, 01 May 2021 18:36:47 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:46251)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lcyE9-00083n-4l
- for qemu-arm@nongnu.org; Sat, 01 May 2021 18:36:46 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1619908603;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=IiCOJYLYQjCXUKgsA8xTlklm89DU2HbkMO26QsLfhq8=;
- b=bXe4VE7YRN3m0+HN/7g6qUjW98HThnm51crd0yGtxPEdXI/HxMSG+MxdyyiZTz3N+H/A02
- Vacm2IyMqa0lqOuOGGqwgkIadVNGE3HoKeU0k+V3qX1w927P0EqOqqGFYAUlbvcm8taCah
- 8Ddrm4pVj6At7BzRYDUsN3VxzStgbrU=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-441-mosGgo-yOX-odb84WMloMA-1; Sat, 01 May 2021 18:36:42 -0400
-X-MC-Unique: mosGgo-yOX-odb84WMloMA-1
-Received: by mail-wr1-f69.google.com with SMTP id
- x10-20020adfc18a0000b029010d83c83f2aso1295789wre.8
- for <qemu-arm@nongnu.org>; Sat, 01 May 2021 15:36:41 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1ldWGw-0008Sg-NA; Mon, 03 May 2021 06:57:54 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d]:51916)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1ldWGt-0002lJ-UO; Mon, 03 May 2021 06:57:54 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id n205so2181839wmf.1;
+ Mon, 03 May 2021 03:57:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=OCTLX3eF033BPqeFFzMGdbkKu+ZUIhKDq+RmE3hqCtA=;
+ b=jyk39Jp5pJ+EG+JG5U0bT+P2lDvseVKi08b97dtGgVuyGUr64yNPx5JvTxfuykv4em
+ /H/VxhFqDaSt11gfHYtDQOnA6ePw6SYwbtqeoFM0mdjLI7KaqXUujPrn12T0x4/bmDeV
+ V8V2n3vc17IhglNuwJqimeRWO6BpEbbeowA5uVQNtA3wRWMQajVE+qkH3RUd6l2U8c+v
+ REDZeCcAEoItyNmaGLnCK5JJM9m7JUtxwlZXFH0em2qSJHmcE//YPfMx2NkK0lb9N0J+
+ hVsK48ps2BLoxT/QZgmkZuh2bvnxOFJCif9q8n172O1knt5pu+58dgwInzEfHsh+TAVM
+ nxCQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=IStbyYiATShK5G0B53V5n+qRhn2ARGKs2JBKHFd0JhE=;
- b=f/uut3TJM5pmZImywL9AsK0rFhSEHqE+TJve5MOMov60UvMOug9YwJxRg45ta8BwRq
- hnJpywdxfNo+9BWV9x2cvuFBKDGgfGrTCRVuiddsfDRYrQfc6Jk89t7psh/i/tIAGZPr
- 4NJerhFH1hmUdmmNAhbxqM3AcjZhQ2xVvkTzN7l8gs20G6N9CGSYcMHbx53yPZ1W7TsG
- 5iATxTe1PnpAW14ebWczw4UI/7e224E5lr2OwgZRAu6QoY8uFlN3EKgATjKf7SWlzQgq
- ka7frfifKXNyzcXp5creFLrKCHOfGjkJf9AytP6Qe0MhnRTAbg0LosqkzccTxTzDaRBW
- PSUA==
-X-Gm-Message-State: AOAM530LpInP59ViXFI9ixSCL8Ux6gmdMOPJZBLxJss4jGBLtV37/DzE
- szGC8gO/7JC3XXYzkoZpCjUkenOO19WqvJkSquSVpBfDISesnutp2aDQo5hRK7lRJ+I0Or1dVoF
- 8A97a3EL9SfU8
-X-Received: by 2002:adf:fe8e:: with SMTP id l14mr15445243wrr.305.1619908601127; 
- Sat, 01 May 2021 15:36:41 -0700 (PDT)
-X-Received: by 2002:adf:fe8e:: with SMTP id l14mr15445220wrr.305.1619908600952; 
- Sat, 01 May 2021 15:36:40 -0700 (PDT)
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=OCTLX3eF033BPqeFFzMGdbkKu+ZUIhKDq+RmE3hqCtA=;
+ b=DZAofrY6/qoLWCD5lJuGrcB5IYqG/oSswPm1cqdr0auah2LLr7kpVETgwetGPMORq6
+ zfcKQ00IgSdz4b8O8iB2kRB6F2nf9QQ6TuPxGnU2+5YyUOwGCIMeb8eDbBmxv7rjIMAs
+ QDui1xPweequJONphoFhTr+DVVspHgPnYdL/gADLigO98l6DwrH0KqdzuSmnRAeqx/RR
+ GIS60OMgnUHhHQeTyslBqq7JahpW7C2d49WylXkChG/Tnf7iytl3KDAPFZy29eNDbWhL
+ SYAgDsfUGjYRnZRzH/RKBQ7Hzbce9LdtyzGO2kC9+CP4VFZ+YsHffHEo9sO4fpobZkUw
+ VGGg==
+X-Gm-Message-State: AOAM5304i0p+Mz4GhHeUmFtj4/f80zJ2e/QbJUqRzPIHL+3n3rbZxB1H
+ yJnYn/UBp4PPX2JrKL9uR1Vs5qA9+mcVuwrm
+X-Received: by 2002:a1c:3b44:: with SMTP id i65mr32294725wma.31.1620039469514; 
+ Mon, 03 May 2021 03:57:49 -0700 (PDT)
 Received: from localhost.localdomain
  (anancy-651-1-208-144.w109-217.abo.wanadoo.fr. [109.217.237.144])
- by smtp.gmail.com with ESMTPSA id q19sm17176530wmc.44.2021.05.01.15.36.39
+ by smtp.gmail.com with ESMTPSA id r13sm13053302wrn.2.2021.05.03.03.57.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 01 May 2021 15:36:40 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+ Mon, 03 May 2021 03:57:49 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v5 00/10] qtests: Check accelerator available at runtime via
- QMP 'query-accels'
-Date: Sun,  2 May 2021 00:36:28 +0200
-Message-Id: <20210501223638.510712-1-philmd@redhat.com>
+Subject: [PATCH] hw/arm/raspi: Remove deprecated raspi2/raspi3 aliases
+Date: Mon,  3 May 2021 12:57:47 +0200
+Message-Id: <20210503105747.703149-1-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.3
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.22,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32d.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -124,88 +113,80 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>, Juan Quintela <quintela@redhat.com>,
- Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Thomas Huth <thuth@redhat.com>, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- qemu-arm@nongnu.org, Claudio Fontana <cfontana@suse.de>,
- Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>
+Cc: libvir-list@redhat.com, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ib/Ie4wul9zx
+X-TUID: nqPlPQrRv2r5
 
-Series fully reviewed.=0D
-=0D
-Hi,=0D
-=0D
-This series aims at having accelerator-independent qtests=0D
-by querying a QEMU instance at runtime to check the list=0D
-of built-in accelerators.=0D
-=0D
-First we add the 'query-accels' QMP command,=0D
-then we add the qtest_has_accel() method to libqtest,=0D
-finally we use this new method to allow running=0D
-bios-tables-test on KVM-only builds.=0D
-=0D
-Since v5:=0D
-- Removed patch 10 (Markus, patch justification not clear)=0D
-  'qtest/qmp-cmd-test: Make test build-independent from accelerator'=0D
-- Removed patch 12 (Alex, icount / record/replay issue)=0D
-  'tests/meson: Only build softfloat objects if TCG is selected (again)'=0D
-- Sorted @Accelerator QAPI enum (Eric)=0D
-- Added R-b/T-b=0D
-=0D
-Since v4:=0D
-- Added Markus review comments=0D
-- Added R-b/A-b tags=0D
-=0D
-Since v3:=0D
-- Addressed Markus & Drew review comments=0D
-- Added qtest/migration-test patch=0D
-=0D
-Since v2:=0D
-- Addressed Eric & Paolo review comments=0D
-=0D
-Since v1:=0D
-- kept over-engineered union (I don't how to do simple enum)=0D
-- dropped arm-cpu-features patches for now=0D
-- fixed typos (Eric)=0D
-- rename qtest_has_accel (Thomas)=0D
-- probe accel with machine none previous qtest (Paolo)=0D
-- iterate over QAPI enum (Markus)=0D
-=0D
-Eric's suggestion of conditional QAPI didn't worked out,=0D
-as accelerator definitions are poisoned.=0D
-=0D
-Phil.=0D
-=0D
-Philippe Mathieu-Daud=C3=A9 (10):=0D
-  MAINTAINERS: Add qtest/arm-cpu-features.c to ARM TCG CPUs section=0D
-  accel: Introduce 'query-accels' QMP command=0D
-  tests/qtest: Add qtest_has_accel() method=0D
-  qtest/arm-cpu-features: Use generic qtest_has_accel() to check for KVM=0D
-  qtest/arm-cpu-features: Restrict sve_tests_sve_off_kvm test to KVM=0D
-  qtest/arm-cpu-features: Remove TCG fallback to KVM specific tests=0D
-  qtest/arm-cpu-features: Use generic qtest_has_accel() to check for TCG=0D
-  qtest/bios-tables-test: Make test build-independent from accelerator=0D
-  qtest/migration-test: Skip tests if KVM not builtin on s390x/ppc64=0D
-  qtest: Do not restrict bios-tables-test to Aarch64 hosts anymore=0D
-=0D
- qapi/machine.json              | 47 ++++++++++++++++=0D
- tests/qtest/libqos/libqtest.h  |  8 +++=0D
- accel/accel-qmp.c              | 49 +++++++++++++++++=0D
- tests/qtest/arm-cpu-features.c | 55 ++++++-------------=0D
- tests/qtest/bios-tables-test.c | 99 ++++++++++++++++++----------------=0D
- tests/qtest/libqtest.c         | 29 ++++++++++=0D
- tests/qtest/migration-test.c   |  4 +-=0D
- MAINTAINERS                    |  1 +=0D
- accel/meson.build              |  2 +-=0D
- tests/qtest/meson.build        |  3 +-=0D
- 10 files changed, 207 insertions(+), 90 deletions(-)=0D
- create mode 100644 accel/accel-qmp.c=0D
-=0D
---=20=0D
-2.26.3=0D
-=0D
+Remove the raspi2/raspi3 machine aliases,
+deprecated since commit 155e1c82ed0.
+
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ docs/system/deprecated.rst       | 7 -------
+ docs/system/removed-features.rst | 7 +++++++
+ hw/arm/raspi.c                   | 2 --
+ 3 files changed, 7 insertions(+), 9 deletions(-)
+
+diff --git a/docs/system/deprecated.rst b/docs/system/deprecated.rst
+index 80cae862528..7895bd4d849 100644
+--- a/docs/system/deprecated.rst
++++ b/docs/system/deprecated.rst
+@@ -238,13 +238,6 @@ this CPU is also deprecated.
+ System emulator machines
+ ------------------------
+ 
+-Raspberry Pi ``raspi2`` and ``raspi3`` machines (since 5.2)
+-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+-
+-The Raspberry Pi machines come in various models (A, A+, B, B+). To be able
+-to distinguish which model QEMU is implementing, the ``raspi2`` and ``raspi3``
+-machines have been renamed ``raspi2b`` and ``raspi3b``.
+-
+ Device options
+ --------------
+ 
+diff --git a/docs/system/removed-features.rst b/docs/system/removed-features.rst
+index 29e90601a51..8a8b8ca627b 100644
+--- a/docs/system/removed-features.rst
++++ b/docs/system/removed-features.rst
+@@ -312,6 +312,13 @@ This machine has been renamed ``fuloong2e``.
+ These machine types were very old and likely could not be used for live
+ migration from old QEMU versions anymore. Use a newer machine type instead.
+ 
++Raspberry Pi ``raspi2`` and ``raspi3`` machines (removed in 6.1)
++''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
++
++The Raspberry Pi machines come in various models (A, A+, B, B+). To be able
++to distinguish which model QEMU is implementing, the ``raspi2`` and ``raspi3``
++machines have been renamed ``raspi2b`` and ``raspi3b``.
++
+ 
+ linux-user mode CPUs
+ --------------------
+diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+index 990509d3852..20bba0316f1 100644
+--- a/hw/arm/raspi.c
++++ b/hw/arm/raspi.c
+@@ -342,7 +342,6 @@ static void raspi2b_machine_class_init(ObjectClass *oc, void *data)
+     MachineClass *mc = MACHINE_CLASS(oc);
+     RaspiMachineClass *rmc = RASPI_MACHINE_CLASS(oc);
+ 
+-    mc->alias = "raspi2";
+     rmc->board_rev = 0xa21041;
+     raspi_machine_class_common_init(mc, rmc->board_rev);
+ };
+@@ -362,7 +361,6 @@ static void raspi3b_machine_class_init(ObjectClass *oc, void *data)
+     MachineClass *mc = MACHINE_CLASS(oc);
+     RaspiMachineClass *rmc = RASPI_MACHINE_CLASS(oc);
+ 
+-    mc->alias = "raspi3";
+     rmc->board_rev = 0xa02082;
+     raspi_machine_class_common_init(mc, rmc->board_rev);
+ };
+-- 
+2.26.3
 

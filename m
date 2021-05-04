@@ -1,136 +1,190 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp3761409lfg;
-        Tue, 4 May 2021 09:13:29 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzZMTdkx4qSR/WoqMeULCEzI6C88X6yP/at3e0KfZP+dtc/EMgkpTyYzSCaC0+lneFzl5Wg
-X-Received: by 2002:aa7:d14f:: with SMTP id r15mr26451067edo.71.1620144808658;
-        Tue, 04 May 2021 09:13:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620144808; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp3777152lfg;
+        Tue, 4 May 2021 09:31:33 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJySCpz1xkwY7SQAL9jgT5s+B+2VGF49gt4dFwltVrPYHR4yNYr5IwiVue8MtcAeh1ddopY7
+X-Received: by 2002:a05:6e02:214a:: with SMTP id d10mr20841174ilv.105.1620145893598;
+        Tue, 04 May 2021 09:31:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620145893; cv=none;
         d=google.com; s=arc-20160816;
-        b=xTuSf2owoKXKh8nJkBJmQ3coGcgdCJooE6SPEC1hIIJIwaBmxdhcjVYob9VbPjNQLc
-         ObQZNPHLKvoi3LrWdaBaUrYkpRy3VuPlFyrixMD8eGncl+o43o6wBIVgQh1pHx8e54n5
-         n7ssPNfeJMJLT2WHeoj5z9kyMqR3wigCpeuHrkeht1Q+8N35smEp4ZbKSgiHxkuPp3ma
-         Y5bOVpfu+457pah+OEueymOzQkwRwWubrdJao9GDr+2D9iKrz5bC+p2tTaXLek2hKWjk
-         dFqUbc/MvmwRzkG2eKlBqG7sLT4eI9G1dUo8/Lsc6ly16ygeu7DyPK/e01jC4lURiyTy
-         TcJQ==
+        b=Yr/mbEJTBjBG2MsKsmpTQHxAK8DnXvKZ4DbT9ZM8Fz1nQvTI+I3I10V0oz0fqC6H5g
+         iqlYgk6Cxc/Tqg4/f51lHOuHdRWEo9l0rARzkclAq80QscyH7du7NYiR+CUfXkZqfgvD
+         ZUddryqTcJRVB1b3Y3lFNRynmNXDV3jaMjJ9Y3SyVhHeng92ymqEodOC6PPcNffafO3I
+         GcA631yZy8SEq/a8rPnGTwoVdlPWqRQxhPNINBL9Nv9D6uRm653vL7VUhstWLAJdV2Pj
+         gQbmDNKOpZd6LFqcvTqlyYMSqmk/kdzEoxZxj83KCsfHdoi8sCynG6+C51OcirxTKE3L
+         jJ2A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=WDjH8HUsPkhGMMcrdHjqQzQOQEJ2YcdFedYMSf93gzs=;
-        b=v8vnnhbsVbtGyBDVKuYVGIGzGZDW3guN6jiR1g0O1VE6tIExEeViG4j7sCFtXK1fL4
-         Lc94m1HD6oFWAtL9Z54dhXuXwWzfR3xVt+mwu5BWVzKln1QSF1QGYe97kwdEr7kcUTxp
-         omRRJKpJ5Uyc8u94stPUc6GVTPhKvLAX2qPAI0v9qN++6WmOyWQ88gEZUAl1s4EDpatH
-         HyKXSimQBvvXfEqllwzQOrRQGPNhftc8i6qHqT9C6e7PhtIyQ9pw1BIHpzUp+SY64fSS
-         KqY4LjJRtFsNyQX+hkzwnIA0mMJcPwWue4cjH2dmv1lZ9i3yYMWRa5L+ZUShenrNk1Ok
-         QKug==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :from:subject:mime-version:message-id:date:dkim-signature;
+        bh=+AP6JAThegVPXHNi/RjhLA5mOkHytxECsDnMSnhbSAg=;
+        b=XC6TonZy6GntYlgdlJe4VlKSaFPCbyC8GO9dtyclje9u+V5vL/layelYaFM+IGuFXF
+         bEnmbuaBhMFZdguqaZFSKdT+0mPfQpWJ7h5ks8sxGhD828Lanp//ljIfUQSoKOxZgTZ6
+         wFPDYnQBHhFOca48hBLmQJ0U4v6o85mlaKX5fgDtW3NtmqlwKuqHSTWNnrsuaprGOdOy
+         nWAYexr3VpyB4J3thjx7qJsNYVRYm2sWSorUo1QAbHKbH3LYzuJfDs4zvx3PtvonmiS4
+         WMEpE+HVR2BQwFLuB1DWqszaNMIdBLobEcxR8iExSwKm5rS/l0i5A7QAY7KzrpFY9oYM
+         WtEw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iyBFTTAX;
-       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
-        by mx.google.com with ESMTPS id c14si304525edr.409.2021.05.04.09.13.28
+       dkim=pass header.i=@google.com header.s=20161025 header.b=EM13GmCq;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id e196si17879332jac.30.2021.05.04.09.31.33
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 04 May 2021 09:13:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 04 May 2021 09:31:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iyBFTTAX;
-       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1620144807;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=WDjH8HUsPkhGMMcrdHjqQzQOQEJ2YcdFedYMSf93gzs=;
-	b=iyBFTTAXWFXVrvIYGw95/WVLKDa4Bhlkg+IzZNuEuffVpILg0FLT3RKNkaZwSSTogSlExI
-	OfHQvfU1/QeuJSnfPqbGBj5szwmV6JwyAYyl27NkwtpvyHAhd4pnzmhPclXtQgycZJvlv5
-	S0AXonFggEilFnTxnAgcVq7IleG4UYI=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-105-wEuUV0wLPjOpFupG85bxUQ-1; Tue, 04 May 2021 12:13:26 -0400
-X-MC-Unique: wEuUV0wLPjOpFupG85bxUQ-1
-Received: by mail-wr1-f72.google.com with SMTP id 4-20020adf80040000b029010cab735fdeso5946015wrk.14
-        for <alex.bennee@linaro.org>; Tue, 04 May 2021 09:13:25 -0700 (PDT)
+       dkim=pass header.i=@google.com header.s=20161025 header.b=EM13GmCq;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:46060 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ldxxM-0007un-Rm
+	for alex.bennee@linaro.org; Tue, 04 May 2021 12:31:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33326)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from
+ <3cHaRYAYKCq0gVghfeTbbTYR.PbZdRZh-QRiRYabaTah.beT@flex--titusr.bounces.google.com>)
+ id 1ldxvb-0006ow-6p
+ for qemu-devel@nongnu.org; Tue, 04 May 2021 12:29:43 -0400
+Received: from mail-qk1-x749.google.com ([2607:f8b0:4864:20::749]:43687)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from
+ <3cHaRYAYKCq0gVghfeTbbTYR.PbZdRZh-QRiRYabaTah.beT@flex--titusr.bounces.google.com>)
+ id 1ldxvY-0004IL-Dj
+ for qemu-devel@nongnu.org; Tue, 04 May 2021 12:29:42 -0400
+Received: by mail-qk1-x749.google.com with SMTP id
+ d201-20020ae9efd20000b02902e9e9d8d9dcso3859090qkg.10
+ for <qemu-devel@nongnu.org>; Tue, 04 May 2021 09:29:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=date:message-id:mime-version:subject:from:to:cc
+ :content-transfer-encoding;
+ bh=+AP6JAThegVPXHNi/RjhLA5mOkHytxECsDnMSnhbSAg=;
+ b=EM13GmCq1ylYB4LHq4oOX0XFlGFmNkRQ1urhtAVHkFBJgB7MJvXwzBeN0yjg1ZjMqb
+ 3w2kBUMooW1HiachFku3VViOGeYjEB9o2GuD4nlkjln/lSJsoDTHZFhmzS2Uj6DYywiF
+ sAIZd3A9GbLtcrDaraHcJUMMxd9GI7EQoBdsUanKFGwQ647QOoQldz1l+hnTW8hb7SWK
+ YZ5coba8U/I5Oz770yb9BwfFGqogSofSbYo3wYF1iAQilfA9sFnSfuK4RV14neXjAGg9
+ rVKeSSLdHAtiZHVf41sUHB+9LOrR5FrFWW3JC8Lj2MrS5se3UszY9D8RDlLDEMty9QXC
+ 2GLA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=WDjH8HUsPkhGMMcrdHjqQzQOQEJ2YcdFedYMSf93gzs=;
-        b=LiJ98oCfqAlTvs5FSBHuRwHdrAUQkn5VvppNtTBdPV9i4SgQ2gc3bHjtIeRJYmPlC/
-         Leju5si/jDb7QNI5UxPrseSEmytp4F4TEX3gAhYkt61k9F4XrIZs8/wRxS9NlicHeNsU
-         jsLCpGxT+Y5AMnI//ypJMkXnIhLf7Y3QV8KHmYygZbshvWkG/BVPmfLENR9G3sr0tkhc
-         7CezOt6M9OXBW6dc2e30cdqIXnfrbCdmETbjN+4NkVECt5x/5ohOLL3HVLhPOSim1aCl
-         dWTbaFZN8M9CrOxkznWyereXdjFWx2oTop2RiAQ93qGLmFXa93htYnDtWnA5/0z1sB83
-         8P6w==
-X-Gm-Message-State: AOAM532eQ9Kpc6bAVz5FZvkA1ZYvh3BRBuCbiOTWat11FzqLIDA3OvpQ
-	/yVFk9ktbUOSfbQ+VxIIMyQM+AGInHOWaawvvFnv4TzCMjBs75lgcVG9mFizisZcgISZbf9cPd4
-	7F4wnvUs/rDN9xoNgMm32xd8zy8LKeqBx/lP+RxT0ewYT7SmmscsAV4uZfMS//uJUug==
-X-Received: by 2002:a1c:6646:: with SMTP id a67mr4837517wmc.11.1620144804502;
-        Tue, 04 May 2021 09:13:24 -0700 (PDT)
-X-Received: by 2002:a1c:6646:: with SMTP id a67mr4837479wmc.11.1620144804127;
-        Tue, 04 May 2021 09:13:24 -0700 (PDT)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.19] (astrasbourg-653-1-188-220.w90-13.abo.wanadoo.fr. [90.13.127.220])
-        by smtp.gmail.com with ESMTPSA id s1sm3081836wmj.8.2021.05.04.09.13.23
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 04 May 2021 09:13:23 -0700 (PDT)
-Subject: Re: [PATCH v6 11/12] qtest/bios-tables-test: Make test
- build-independent from accelerator
-To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
-Cc: "Michael S. Tsirkin" <mst@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-References: <20210503211020.894589-1-philmd@redhat.com>
- <20210503211020.894589-12-philmd@redhat.com>
- <8e675e24-fedc-c4df-22d6-b385142e0e4b@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <759a1dfd-371a-7e08-e0cc-15114d5b2b3a@redhat.com>
-Date: Tue, 4 May 2021 18:13:22 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
-MIME-Version: 1.0
-In-Reply-To: <8e675e24-fedc-c4df-22d6-b385142e0e4b@redhat.com>
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: QSvuRUQQTvMS
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc
+ :content-transfer-encoding;
+ bh=+AP6JAThegVPXHNi/RjhLA5mOkHytxECsDnMSnhbSAg=;
+ b=VXoJU/jn1QIDqHZBVONY3d1DiS6846NnotshrB4005x47xSkVR9HIJqXWRmc85mBAk
+ aRrCVdEuZbg1yyv1gmnYyjWi92gjIJEwG6ctYNI//ZT3yXtjNXFEwozgj5/mM/NlwuK6
+ NG1Yc7cOfPYhcYBMTc/dTrfz22sBmFB6LsJk3OPbYCg2qQ6k9i/HUI202WbknPdQ/hER
+ pHI6otP9lfVKn/6N/yuAAxMg7+URYnfi7/5AoqutdAW5FABCbUSIePbHXHeTtLsaMTe5
+ cNfXAjoQIVRENaMleP7vcPQMgrOkMh0DsrGrRDztZoTMDOERzofeKJ2BM1F0fs9oFpYA
+ HkeQ==
+X-Gm-Message-State: AOAM532ie/hTZgri0/Im4x5ekdIRLgRPgfa2WnNx8LnbeNRJL522IrPP
+ eoTsKXjegHLdevBYwLvMoETbHOtfrVw=
+X-Received: from titusr.svl.corp.google.com
+ ([2620:15c:2c5:13:85f8:a1ce:1113:b790])
+ (user=titusr job=sendgmr) by 2002:ad4:4e94:: with SMTP id
+ dy20mr26311812qvb.50.1620145776624; 
+ Tue, 04 May 2021 09:29:36 -0700 (PDT)
+Date: Tue,  4 May 2021 09:28:38 -0700
+Message-Id: <20210504162841.2884846-1-titusr@google.com>
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.31.1.527.g47e6f16901-goog
+Subject: [PATCH 0/3] Add support for PMBus in QEMU
+From: Titus Rwantare <titusr@google.com>
+To: Corey Minyard <cminyard@mvista.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+ Titus Rwantare <titusr@google.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::749;
+ envelope-from=3cHaRYAYKCq0gVghfeTbbTYR.PbZdRZh-QRiRYabaTah.beT@flex--titusr.bounces.google.com;
+ helo=mail-qk1-x749.google.com
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: mriWdVCzRrH8
 
-On 5/3/21 11:19 PM, Eric Blake wrote:
-> On 5/3/21 4:10 PM, Philippe Mathieu-Daudé wrote:
->> Now than we can probe if the TCG accelerator is available
-> 
-> that
+Hello,
 
-Oops. I'll wait for Igor review before respinning.
+This patch series adds an interface to start supporting PMBus devices in QE=
+MU.
+I=E2=80=99ve included two PMBus devices: MAX34451 and ADM1272.
 
-> 
->> at runtime with a QMP command, do it once at the beginning
->> and only register the tests we can run.
->> We can then replace the #ifdef'ry by an assertion.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> ---
->> v5 had:
->> Reviewed-by: Eric Blake <eblake@redhat.com>
->> Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
->>
->> v6 is simplified and keeps the same logic, however since
->> it is different, I'm not keeping the R-b tags.
->> ---
->>  tests/qtest/bios-tables-test.c | 14 ++++++--------
->>  1 file changed, 6 insertions(+), 8 deletions(-)
->>
-> 
-> Reviewed-by: Eric Blake <eblake@redhat.com>
+PMBus is a variant of SMBus meant for digital management of power supplies.
+PMBus adds to the SMBus standard by defining a number of constants and comm=
+ands
+used by compliant devices. The specification for PMBus can be found at:
 
-Thanks!
+https://pmbus.org/specification-archives/
 
-Phil.
+Currently, the goal for these devices is to emulate basic functionality by
+reading and writing registers. Timing, and some logical operation is not
+implemented. This implementation supports nearly all available registers fo=
+r
+PMBus including:
+   - Voltage inputs and outputs
+   - Current inputs and outputs
+   - Temperature sensors
+
+Unimplimented registers get passed through to the device model, and device
+models can opt out of using the standard registers with flags. The included
+devices make use of these fields and illustrate how to interface with the p=
+mbus
+class.
+
+Datasheets for sensors:
+
+https://datasheets.maximintegrated.com/en/ds/MAX34451.pdf
+https://www.analog.com/media/en/technical-documentation/data-sheets/ADM1272=
+.pdf
+
+Thanks for reviewing,
+
+Titus Rwantare
+
+Titus Rwantare (3):
+  hw/i2c: add support for PMBus
+  hw/misc: add ADM1272 device
+  hw/misc: add MAX34451 device
+
+ hw/arm/Kconfig                |    3 +
+ hw/i2c/Kconfig                |    4 +
+ hw/i2c/meson.build            |    1 +
+ hw/i2c/pmbus_device.c         | 1611 +++++++++++++++++++++++++++++++++
+ hw/misc/Kconfig               |    8 +
+ hw/misc/adm1272.c             |  551 +++++++++++
+ hw/misc/max34451.c            |  727 +++++++++++++++
+ hw/misc/meson.build           |    2 +
+ include/hw/i2c/pmbus_device.h |  520 +++++++++++
+ tests/qtest/adm1272-test.c    |  453 +++++++++
+ tests/qtest/max34451-test.c   |  344 +++++++
+ tests/qtest/meson.build       |    2 +
+ 12 files changed, 4226 insertions(+)
+ create mode 100644 hw/i2c/pmbus_device.c
+ create mode 100644 hw/misc/adm1272.c
+ create mode 100644 hw/misc/max34451.c
+ create mode 100644 include/hw/i2c/pmbus_device.h
+ create mode 100644 tests/qtest/adm1272-test.c
+ create mode 100644 tests/qtest/max34451-test.c
+
+--=20
+2.31.1.527.g47e6f16901-goog
+

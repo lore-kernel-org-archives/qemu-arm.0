@@ -1,111 +1,103 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp3556010lfg;
-        Tue, 4 May 2021 05:15:15 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzR5c9wkf8uTq4t2Qse/5D0Bnl7OQ0U/appa6m1iqHkTXFA70d/ICqk5wxZJ9oMmUagHZ2s
-X-Received: by 2002:a05:6402:1357:: with SMTP id y23mr26669744edw.235.1620130515619;
-        Tue, 04 May 2021 05:15:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620130515; cv=none;
+Received: by 2002:a0c:a3a3:0:0:0:0:0 with SMTP id v32csp234425qvv;
+        Tue, 4 May 2021 05:42:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw2ahrG9uKK35a6TmLzrxl/Tzk6rZzVxUIgh0wgkszKQDlT0dNVUHPWppi1k1I4r/sa52Ih
+X-Received: by 2002:a05:6638:3c8:: with SMTP id r8mr22988034jaq.112.1620132144127;
+        Tue, 04 May 2021 05:42:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620132144; cv=none;
         d=google.com; s=arc-20160816;
-        b=a/ti042+NTIpwo2atXNrD2ntqHPSCwASjHMWlD/AdGOwsF2PlDBpd1R/rZa99QmBBS
-         7qCB4r+BefP1Xow/iXTWyRAgczxrtJdH1/l3mXO2U1MIdhCXANgYTnLG9WHlFeETdeFD
-         5MiGCZy6Pjnayqt5dYbQPFhIpr02sS73JyScW+3xe+2qEdUJPzNbasZQtuf0SRGyOVHq
-         4RLh5AHwF4k+t8goqx9D2aTySOHQGyi3BDGC9wRFwm+xo733YcyfZs9LwmUYtykA+din
-         /XTg/tu/0dR7+wV55darcWAJCzexEIfzjk1SIcwRyOXPiq8rrPks+h8E8iHxuC9Fxc6R
-         huxA==
+        b=aU+h8juC2mJ4sD/o7hOTRz/FeOge3xmtrfrE77f5SPCuxcH5rq2gO4rdFeSoUhQupE
+         KWKccQLWZBCszyIZaisSbKfpjUlMa5FWzY+ro2B+2lZktU8fobnEzyxg8Yjh1dpU45VW
+         8awGmwn9tKK7HE1z6g9i7CelsxCA3bwQEw2FyTRuRj1ULdZPk2V0pbDeba/Ww6aM4Xze
+         rILLYhQbp8bwpYlgjYjWB821jOulnX1zhbf2Q4OMTaRNNB3C6Bq1JR1Xbwj3JwBgXdY6
+         xT1gAItaRL9R7fiZqHPMqPYSaQLztuFfW2PBh7WlGqstOSx+v4tO1UgMxOtQ69hRZyYc
+         wVtQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=xtnjRpH/M1p4kG/EfjsDmpeMdCMMHQQ4OMa75O4RxaA=;
-        b=Vbjr1XF+YQIyMYV8MwwnbqIZZAoq/3/BGRM/6HBSHtJ3EKX+ZuooK/r0/eB5Fhfrc6
-         3iiORGihZu8fZpBD03bvo8gpkUC/qhK8oqU0EmUTj9inCB0xYKMRDsULyyM1P2zXhvK0
-         5wp6hMDS/KOy+sLjddbRCK9sAmQBZNJ5htR3pt1h135VejiXhGMNPTH1KZo6jJawBIQG
-         locxog3tE48OpOsp9BENeKJCAtJDzk6n4pOskj/WM3OSEyKFINaRSEPEIoNK5zZLRjMb
-         UzSaPqwF7EaOG6lepM/nvHlSkQnr0DG0YsowC22Ho1C9SiQNr3nY+AqZke+2AGoQgJ+k
-         qXSw==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=ZI/Y5KhzOyVR4Eea+CJes/TjhYkFO1T4zOnnXlLiM4g=;
+        b=drtym+JR/UQPqIhXwFft4uH4NPMUVhebpGYzP+ODz4C88eDt+MNoGy2gafug93fgD/
+         nVHPMNElUudMaQe9PFiWl45XfsF112FtamJChXjJu1tWotqht0LDUkRZZgkolKnZ5+MN
+         nMQDb83F7sQJASo2Q0L7RqJVVx+eLSGVr8CXw476i8d8ezgK+oo1aXiCjPIAq1N3sshi
+         FQyNfopiZbbYABlcXx1L5roDtYPdG9PM8CBTJ6MI8RXTYC8hxyku7DnVBFsOQ9JTmsmZ
+         cIhHTCyQwZDkI2NSSULcrjhsq2/Oe7Thk7d62SnUoHNCB3zw4DvCMPqjEnVWMvP1+rww
+         nHYA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=c2jSyHze;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=apGiFmGt;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h19si2445139ejq.26.2021.05.04.05.15.15
+        by mx.google.com with ESMTPS id a7si3156407ioc.87.2021.05.04.05.42.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 May 2021 05:15:15 -0700 (PDT)
+        Tue, 04 May 2021 05:42:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=c2jSyHze;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53500 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=apGiFmGt;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:52246 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ldtxK-0008PS-L7
-	for alex.bennee@linaro.org; Tue, 04 May 2021 08:15:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50732)
+	id 1lduNb-0003r6-JX
+	for alex.bennee@linaro.org; Tue, 04 May 2021 08:42:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60280)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ldtrg-0005kG-FP
- for qemu-arm@nongnu.org; Tue, 04 May 2021 08:09:24 -0400
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b]:34493)
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1lduN2-0003qs-4t; Tue, 04 May 2021 08:41:48 -0400
+Received: from mail-ot1-x32a.google.com ([2607:f8b0:4864:20::32a]:41545)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ldtrb-0007ac-0q
- for qemu-arm@nongnu.org; Tue, 04 May 2021 08:09:24 -0400
-Received: by mail-wr1-x42b.google.com with SMTP id t18so9148991wry.1
- for <qemu-arm@nongnu.org>; Tue, 04 May 2021 05:09:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=xtnjRpH/M1p4kG/EfjsDmpeMdCMMHQQ4OMa75O4RxaA=;
- b=c2jSyHzeFhabIOAXxQrQg6TaE0SzwuD/dkeHYKUMyPGX+GijSNfA9vVB7LRfo5mFtk
- XCmqc3/Cdm9KeQXG2WWoFGrlANSMZhSIueUBLBGGZ1pMxjGpLfulkVx+UVQLIGvr+ltf
- jGLcpYIzm3caB0YNIdGx3+/F+oVjxpO2AXpmylwAETEbPD91AvDE4U4vOmBkgY23tmH7
- URTv3WPUNd8VuRP1P3G893X2e16ghBlqqRjEdVspyPzJ4zJ865aNMT0X5mFNJGU8j2RJ
- A+YAEfE5LOBN8D9J6mil+6vgNrsIZjNmO5AmU9jHT0qDCzXGczofaLTb5h/8Y2ixWrq+
- 5Psw==
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1lduN0-0007J2-5C; Tue, 04 May 2021 08:41:47 -0400
+Received: by mail-ot1-x32a.google.com with SMTP id
+ c36-20020a05683034a4b02902a5b84b1d12so7671567otu.8; 
+ Tue, 04 May 2021 05:41:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ZI/Y5KhzOyVR4Eea+CJes/TjhYkFO1T4zOnnXlLiM4g=;
+ b=apGiFmGtaGKXkOKKgqywuruqww0FAJZefQhELHIp9Ph64PaNlHxVVD7rEgHLX7XR7D
+ DdI1fhqLLFv9W50Pe8s1prpJt/ZVFef434bNld9luvtVBxniEJNXjmzxiQhQeOKTCbEv
+ qPs/xcsrqzkuMWARzt+vU8FJCS8z8KDuTYoLONnS8SdogQ0fF74uH5IeIPF/Jsdy4+yI
+ OX6XnUYpxId4S7GaBpOulmrqquSHMcUZUs4vnukbIipQx7RwWlkgzhYh26KqVaQT8EPt
+ h3ilbQx3NeAv3oiYNBsivfw1Bx0URrlCdley5ZgmUsS1vdCkQ7iOe55TRydY7lHs15s7
+ JI0A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=xtnjRpH/M1p4kG/EfjsDmpeMdCMMHQQ4OMa75O4RxaA=;
- b=OANF5redpbBLUg6QvwcWgqe6JkIKT9qzX9cO2AIsblEk0kJWJEKlqUTmsYNuqP0vrQ
- qNteyhlvqCrmgiTLmYOUfnH4t4lkGDXZYx6IiUbuaxsUE0Qa0ldDV9f6OYzjOXNO7v2/
- 8h/L6ImmZV40DhXnfHomRSA49/iK2vWuP60N89cYBVOfyJb/pvbtGDkDnioePva6sGKo
- AQXxw9ij/433dJX0e39EpdMkS5v6HIPSmk4X/FU6ezdiNzlHeh35rNRMnKAEF3bBLGK9
- 6TvYIgKnyQyz1x2fnOLseP8kkrZawMxVxUEIuFexHfR/zL0qsSVyK5u88RhwuLAsE73w
- 1viA==
-X-Gm-Message-State: AOAM533LXY9AtfKjwifmyoG9mXCww7PYq0O1cPZERvEJM0xECd3PbK7p
- faCWm3TdctSpM62MrH/vnpEqmVVB1WPIOA==
-X-Received: by 2002:adf:f94c:: with SMTP id q12mr30519071wrr.283.1620130157454; 
- Tue, 04 May 2021 05:09:17 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id g12sm2331937wmh.24.2021.05.04.05.09.16
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=ZI/Y5KhzOyVR4Eea+CJes/TjhYkFO1T4zOnnXlLiM4g=;
+ b=mId01Ybr93fm/bP894uy/xl+V8H+k/1RJseHwFgiZaLMrBp4xwW92YwqnpnzDqzo5t
+ U0QrUvuK5N8fuza+V+TFvTaMQY5Uf88dDS5HOjFCFjdhE0618kvjDkxgLlz/h/0Psvs8
+ 5VYYpWSSzWH4+p4cdmeIm09kE8fPloT0IeD9s6QPg/yiwL8HEXfICGMrQs2EoBYTZNi6
+ XM+qgML6X8UQ46w9sPcffPjkUeG8yl0xurpHKm+1kgb1gS/QII3jnl8IIDkWEqU4NPpd
+ tF7YHJThmeguP9Lcqzh1bUTz8bbXRLauE+lXH9040/xciW06ptBp4TjR0pqAiZqWx9O3
+ Iy3A==
+X-Gm-Message-State: AOAM530Cl9qTf48+G1EcLGObegSoSB6qfPrKd3ETjFuZrY5Zd4poXmqs
+ RFxqwXC1s85BbSRh1/wmRx8=
+X-Received: by 2002:a9d:8cb:: with SMTP id 69mr18789803otf.247.1620132104178; 
+ Tue, 04 May 2021 05:41:44 -0700 (PDT)
+Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id r124sm639703oig.38.2021.05.04.05.41.42
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 04 May 2021 05:09:17 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH v2 3/3] hw/arm/mps2-tz: Implement AN524 memory remapping via
- machine property
-Date: Tue,  4 May 2021 13:09:12 +0100
-Message-Id: <20210504120912.23094-4-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210504120912.23094-1-peter.maydell@linaro.org>
-References: <20210504120912.23094-1-peter.maydell@linaro.org>
+ Tue, 04 May 2021 05:41:43 -0700 (PDT)
+From: Guenter Roeck <linux@roeck-us.net>
+To: "Edgar E . Iglesias" <edgar.iglesias@gmail.com>
+Subject: [PATCH] hw/arm/xlnx: Fix PHY address for xilinx-zynq-a9
+Date: Tue,  4 May 2021 05:41:40 -0700
+Message-Id: <20210504124140.1100346-1-linux@roeck-us.net>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- WEIRD_QUOTING=0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::32a;
+ envelope-from=groeck7@gmail.com; helo=mail-ot1-x32a.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
+ FREEMAIL_FORGED_FROMDOMAIN=0.248, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.248, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,250 +110,48 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>, Bin Meng <bin.meng@windriver.com>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, Guenter Roeck <linux@roeck-us.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EttXrbBkTh/i
+X-TUID: YRXSfoL6czp0
 
-The AN524 FPGA image supports two memory maps, which differ in where
-the QSPI and BRAM are.  In the default map, the BRAM is at
-0x0000_0000, and the QSPI at 0x2800_0000.  In the second map, they
-are the other way around.
+Commit dfc388797cc4 ("hw/arm: xlnx: Set all boards' GEM 'phy-addr'
+property value to 23") configured the PHY address for xilinx-zynq-a9
+to 23. When trying to boot xilinx-zynq-a9 with zynq-zc702.dtb or
+zynq-zc706.dtb, this results in the following error message when
+trying to use the Ethernet interface.
 
-In hardware, the initial mapping can be selected by the user by
-writing either "REMAP: BRAM" (the default) or "REMAP: QSPI" in the
-board configuration file.  The board config file is acted on by the
-"Motherboard Configuration Controller", which is an entirely separate
-microcontroller on the dev board but outside the FPGA.
+macb e000b000.ethernet eth0: Could not attach PHY (-19)
 
-The guest can also dynamically change the mapping via the SCC
-CFG_REG0 register.
+The devicetree files for ZC702 and ZC706 configure PHY address 7. The
+documentation for the ZC702 and ZC706 evaluation boards suggest that the
+PHY address is 7, not 23. Other boards use PHY address 0, 1, 3, or 7.
+I was unable to find a documentation or a devicetree file suggesting
+or using PHY address 23. The Ethernet interface starts working with
+zynq-zc702.dtb and zynq-zc706.dtb when setting the PHY address to 7,
+so let's use it.
 
-Implement this functionality for QEMU, using a machine property
-"remap" with valid values "BRAM" and "QSPI" to allow the user to set
-the initial mapping, in the same way they can on the FPGA, and
-wiring up the bit from the SCC register to also switch the mapping.
-
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Cc: Bin Meng <bin.meng@windriver.com>
+Signed-off-by: Guenter Roeck <linux@roeck-us.net>
 ---
-v2:
- * tweaked commit message to clarify that the MCC is external
- * use memory_region_transaction_begin/commit
- * make remap be bool rather than int
----
- docs/system/arm/mps2.rst |  10 ++++
- hw/arm/mps2-tz.c         | 108 ++++++++++++++++++++++++++++++++++++++-
- 2 files changed, 117 insertions(+), 1 deletion(-)
+ hw/arm/xilinx_zynq.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/docs/system/arm/mps2.rst b/docs/system/arm/mps2.rst
-index f83b1517871..8a75beb3a08 100644
---- a/docs/system/arm/mps2.rst
-+++ b/docs/system/arm/mps2.rst
-@@ -45,3 +45,13 @@ Differences between QEMU and real hardware:
-   flash, but only as simple ROM, so attempting to rewrite the flash
-   from the guest will fail
- - QEMU does not model the USB controller in MPS3 boards
-+
-+Machine-specific options
-+""""""""""""""""""""""""
-+
-+The following machine-specific options are supported:
-+
-+remap
-+  Supported for ``mps3-an524`` only.
-+  Set ``BRAM``/``QSPI`` to select the initial memory mapping. The
-+  default is ``BRAM``.
-diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
-index 25016e464d9..70aa31a7f6c 100644
---- a/hw/arm/mps2-tz.c
-+++ b/hw/arm/mps2-tz.c
-@@ -55,6 +55,7 @@
- #include "hw/boards.h"
- #include "exec/address-spaces.h"
- #include "sysemu/sysemu.h"
-+#include "sysemu/reset.h"
- #include "hw/misc/unimp.h"
- #include "hw/char/cmsdk-apb-uart.h"
- #include "hw/timer/cmsdk-apb-timer.h"
-@@ -72,6 +73,7 @@
- #include "hw/core/split-irq.h"
- #include "hw/qdev-clock.h"
- #include "qom/object.h"
-+#include "hw/irq.h"
- 
- #define MPS2TZ_NUMIRQ_MAX 96
- #define MPS2TZ_RAM_MAX 5
-@@ -153,6 +155,9 @@ struct MPS2TZMachineState {
-     SplitIRQ cpu_irq_splitter[MPS2TZ_NUMIRQ_MAX];
-     Clock *sysclk;
-     Clock *s32kclk;
-+
-+    bool remap;
-+    qemu_irq remap_irq;
- };
- 
- #define TYPE_MPS2TZ_MACHINE "mps2tz"
-@@ -228,6 +233,10 @@ static const RAMInfo an505_raminfo[] = { {
-     },
- };
- 
-+/*
-+ * Note that the addresses and MPC numbering here should match up
-+ * with those used in remap_memory(), which can swap the BRAM and QSPI.
-+ */
- static const RAMInfo an524_raminfo[] = { {
-         .name = "bram",
-         .base = 0x00000000,
-@@ -457,6 +466,7 @@ static MemoryRegion *make_scc(MPS2TZMachineState *mms, void *opaque,
- 
-     object_initialize_child(OBJECT(mms), "scc", scc, TYPE_MPS2_SCC);
-     sccdev = DEVICE(scc);
-+    qdev_prop_set_uint32(sccdev, "scc-cfg0", mms->remap ? 1 : 0);
-     qdev_prop_set_uint32(sccdev, "scc-cfg4", 0x2);
-     qdev_prop_set_uint32(sccdev, "scc-aid", 0x00200008);
-     qdev_prop_set_uint32(sccdev, "scc-id", mmc->scc_id);
-@@ -573,6 +583,52 @@ static MemoryRegion *make_mpc(MPS2TZMachineState *mms, void *opaque,
-     return sysbus_mmio_get_region(SYS_BUS_DEVICE(mpc), 0);
- }
- 
-+static hwaddr boot_mem_base(MPS2TZMachineState *mms)
-+{
-+    /*
-+     * Return the canonical address of the block which will be mapped
-+     * at address 0x0 (i.e. where the vector table is).
-+     * This is usually 0, but if the AN524 alternate memory map is
-+     * enabled it will be the base address of the QSPI block.
-+     */
-+    return mms->remap ? 0x28000000 : 0;
-+}
-+
-+static void remap_memory(MPS2TZMachineState *mms, int map)
-+{
-+    /*
-+     * Remap the memory for the AN524. 'map' is the value of
-+     * SCC CFG_REG0 bit 0, i.e. 0 for the default map and 1
-+     * for the "option 1" mapping where QSPI is at address 0.
-+     *
-+     * Effectively we need to swap around the "upstream" ends of
-+     * MPC 0 and MPC 1.
-+     */
-+    MPS2TZMachineClass *mmc = MPS2TZ_MACHINE_GET_CLASS(mms);
-+    int i;
-+
-+    if (mmc->fpga_type != FPGA_AN524) {
-+        return;
-+    }
-+
-+    memory_region_transaction_begin();
-+    for (i = 0; i < 2; i++) {
-+        TZMPC *mpc = &mms->mpc[i];
-+        MemoryRegion *upstream = sysbus_mmio_get_region(SYS_BUS_DEVICE(mpc), 1);
-+        hwaddr addr = (i ^ map) ? 0x28000000 : 0;
-+
-+        memory_region_set_address(upstream, addr);
-+    }
-+    memory_region_transaction_commit();
-+}
-+
-+static void remap_irq_fn(void *opaque, int n, int level)
-+{
-+    MPS2TZMachineState *mms = opaque;
-+
-+    remap_memory(mms, level);
-+}
-+
- static MemoryRegion *make_dma(MPS2TZMachineState *mms, void *opaque,
-                               const char *name, hwaddr size,
-                               const int *irqs)
-@@ -711,7 +767,7 @@ static uint32_t boot_ram_size(MPS2TZMachineState *mms)
-     MPS2TZMachineClass *mmc = MPS2TZ_MACHINE_GET_CLASS(mms);
- 
-     for (p = mmc->raminfo; p->name; p++) {
--        if (p->base == 0) {
-+        if (p->base == boot_mem_base(mms)) {
-             return p->size;
-         }
+diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
+index 8db6cfd47f..5ac0294f9e 100644
+--- a/hw/arm/xilinx_zynq.c
++++ b/hw/arm/xilinx_zynq.c
+@@ -119,7 +119,7 @@ static void gem_init(NICInfo *nd, uint32_t base, qemu_irq irq)
+         qemu_check_nic_model(nd, TYPE_CADENCE_GEM);
+         qdev_set_nic_properties(dev, nd);
      }
-@@ -1095,6 +1151,16 @@ static void mps2tz_common_init(MachineState *machine)
- 
-     create_non_mpc_ram(mms);
- 
-+    if (mmc->fpga_type == FPGA_AN524) {
-+        /*
-+         * Connect the line from the SCC so that we can remap when the
-+         * guest updates that register.
-+         */
-+        mms->remap_irq = qemu_allocate_irq(remap_irq_fn, mms, 0);
-+        qdev_connect_gpio_out_named(DEVICE(&mms->scc), "remap", 0,
-+                                    mms->remap_irq);
-+    }
-+
-     armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-                        boot_ram_size(mms));
- }
-@@ -1117,12 +1183,47 @@ static void mps2_tz_idau_check(IDAUInterface *ii, uint32_t address,
-     *iregion = region;
- }
- 
-+static char *mps2_get_remap(Object *obj, Error **errp)
-+{
-+    MPS2TZMachineState *mms = MPS2TZ_MACHINE(obj);
-+    const char *val = mms->remap ? "QSPI" : "BRAM";
-+    return g_strdup(val);
-+}
-+
-+static void mps2_set_remap(Object *obj, const char *value, Error **errp)
-+{
-+    MPS2TZMachineState *mms = MPS2TZ_MACHINE(obj);
-+
-+    if (!strcmp(value, "BRAM")) {
-+        mms->remap = false;
-+    } else if (!strcmp(value, "QSPI")) {
-+        mms->remap = true;
-+    } else {
-+        error_setg(errp, "Invalid remap value");
-+        error_append_hint(errp, "Valid values are BRAM and QSPI.\n");
-+    }
-+}
-+
-+static void mps2_machine_reset(MachineState *machine)
-+{
-+    MPS2TZMachineState *mms = MPS2TZ_MACHINE(machine);
-+
-+    /*
-+     * Set the initial memory mapping before triggering the reset of
-+     * the rest of the system, so that the guest image loader and CPU
-+     * reset see the correct mapping.
-+     */
-+    remap_memory(mms, mms->remap);
-+    qemu_devices_reset();
-+}
-+
- static void mps2tz_class_init(ObjectClass *oc, void *data)
- {
-     MachineClass *mc = MACHINE_CLASS(oc);
-     IDAUInterfaceClass *iic = IDAU_INTERFACE_CLASS(oc);
- 
-     mc->init = mps2tz_common_init;
-+    mc->reset = mps2_machine_reset;
-     iic->check = mps2_tz_idau_check;
- }
- 
-@@ -1225,6 +1326,11 @@ static void mps3tz_an524_class_init(ObjectClass *oc, void *data)
-     mmc->raminfo = an524_raminfo;
-     mmc->armsse_type = TYPE_SSE200;
-     mps2tz_set_default_ram_info(mmc);
-+
-+    object_class_property_add_str(oc, "remap", mps2_get_remap, mps2_set_remap);
-+    object_class_property_set_description(oc, "remap",
-+                                          "Set memory mapping. Valid values "
-+                                          "are BRAM (default) and QSPI.");
- }
- 
- static void mps3tz_an547_class_init(ObjectClass *oc, void *data)
+-    object_property_set_int(OBJECT(dev), "phy-addr", 23, &error_abort);
++    object_property_set_int(OBJECT(dev), "phy-addr", 7, &error_abort);
+     s = SYS_BUS_DEVICE(dev);
+     sysbus_realize_and_unref(s, &error_fatal);
+     sysbus_mmio_map(s, 0, base);
 -- 
-2.20.1
+2.25.1
 

@@ -1,191 +1,134 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp3306241lfg;
-        Mon, 3 May 2021 22:47:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyQYnE/7XMTjEAgKCXmnLd3AquVYUHVtKKUwswRBj2tBB0GLHL37d8WlvyPtICqxbL3e1NN
-X-Received: by 2002:a1f:aecf:: with SMTP id x198mr18755660vke.6.1620107221564;
-        Mon, 03 May 2021 22:47:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620107221; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp3487744lfg;
+        Tue, 4 May 2021 03:41:20 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzlV77P2UqCpDSGGN0jMcUWi4Xnum75FM9cwv7qwuFnq+PQT09jzuVt/6EajMgSTAeYGfk+
+X-Received: by 2002:a37:7d84:: with SMTP id y126mr23493687qkc.155.1620124879904;
+        Tue, 04 May 2021 03:41:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620124879; cv=none;
         d=google.com; s=arc-20160816;
-        b=gl+jqbXpcobqj3h8ZDcxJ1SqOGUzM+jlndAZrR+exgAckzqSM2lYBrrI/JCg8jcSO4
-         +5Ow6RwcwxTHlGMdw6n+U2p1K5/hcCcsWROye2a2bUXSOx/5QFyEwqD9/1+U8eIKVcA7
-         qGiLVhr4Um0Au8pp/edYI0vVuHvgSYVrV2WiiM67zCVU8sWcOz6UGsRmsQH/NjgInAZY
-         TTBU4q+7X5i09q6Qx1fwySHsbrBLrvwOZGzylGvFa4yaBnGQ7FXRGYj948rUpGIDUQ+8
-         civJITyQDEReIDaXim6jFThimuHncIvoU8Y2n7QJvPkQPeQihjwlp/e5C3/kRk8EyF29
-         CVYA==
+        b=bqvNl4/yOcMOrQ+/z+XlTtq+XplJHJrpZyJ6H0Po2euVaYAnUSlVqPviFm483oSQbm
+         TAnGoWlpzbM3vqC6fKVw9U3vcv63t3TX4kfDD5ue+eXyhOYlFqyrXrW/6BXXLBSRvhsV
+         CCOiackFqI+Gwi7SK/ThenYakdb6OOVlJ1b/YYpt4QknLYgrrKKppBZ9ACVQkWsS37d3
+         1ZIoxr2JAdTAEeFbxqnQ6Ho+L9hrLVhgIq1/LVGMAeqm1Xs7zsxjdzdgtVh8bkb6HY3W
+         iv7NZR1wZ4uKcDvbZrtUpZ2JkBo7VIcyGPZnWwgB73zWob9ksy6UclA9Uugl+lsGBJ7p
+         eiGQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=G9ESRXefOvFcFU8JizCeiw+vMSlHN+RPYh9AjhBOqb8=;
-        b=UZsIzFqeMSjrZSEmiGOxDzawD4MqspAZHb8gUtpiyeCmtXtYcjokGUQDYqaaCwLYcA
-         KBNVWOriHreg5pwPAHbN73ooiY1e07jaaxFwHtNN8vEAOL8jEDhKEG9dDcOjBh+AyVk6
-         NRGlZRGcb3iA3yfdC6JOGVuADQaTzWaVW9DUDNWC0cq6gsVuQ3z7+/K3SlP8sb4qjKfw
-         PLlp9NCZPP8aku8peX2YeVpy8DB9jtbcs2OMqq9b7KK9N1gYIvl2ZnNHFG+Wkjiv3pkB
-         ZW4RfRs9DB21wR/RJ9iT9TRHpFaPmrQa8Hi6NFbXn0mZOoBxB2TkNUDIPTx3q0zQQJ13
-         ZikQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=oocjvv7hcx3R63GzjXWkQsbiVGktib/UoD97zbPxsp8=;
+        b=QTcqywAxUTfe8JR5OJDY+/SuEWNazagxmtsG7Dr+ISPOJ1yVZ7TQ0NFrj+vSB/6oF/
+         IwnrpqVvP84raFkGQZpjgx6zO9nrD7ZLXqp1k5ui48zbrgs8zVld8fLlg78FlaPwBd6S
+         3+K97c6az6myy0AfabP2aRLJGXdqcazhFNOCn4BbBi3LxFRcX0eZGSsC+1ITDxy+ig2N
+         KvNrwOhFsXimiOs3RXBkYONseA4tIa/1CSInaYLlPrmW4atIp5H8ndBdsklYFxUYdDHb
+         hKdey869FjEfp+fYJAi6TChJrdez9Z6p5y9IMn4qMbTeEvoBfCKMpWrdig4XDXUlFXK0
+         7mnw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=G5DClEfz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=mjZDX3Aa;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t40si1798715uad.14.2021.05.03.22.47.01
+        by mx.google.com with ESMTPS id e9si10295168qvt.63.2021.05.04.03.41.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 May 2021 22:47:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 04 May 2021 03:41:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=G5DClEfz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:41728 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=mjZDX3Aa;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:55890 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ldntc-0002gv-MP
-	for alex.bennee@linaro.org; Tue, 04 May 2021 01:47:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58940)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ldsUR-0004SC-60
+	for alex.bennee@linaro.org; Tue, 04 May 2021 06:41:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33916)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pankaj.gupta.linux@gmail.com>)
- id 1ldnqu-0001qa-0l; Tue, 04 May 2021 01:44:12 -0400
-Received: from mail-il1-x12a.google.com ([2607:f8b0:4864:20::12a]:38882)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1ldsTv-0004Ou-FS
+ for qemu-arm@nongnu.org; Tue, 04 May 2021 06:40:47 -0400
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531]:34642)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pankaj.gupta.linux@gmail.com>)
- id 1ldnqq-0007i4-P4; Tue, 04 May 2021 01:44:11 -0400
-Received: by mail-il1-x12a.google.com with SMTP id c3so5447257ils.5;
- Mon, 03 May 2021 22:44:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1ldsTt-0007Xw-5h
+ for qemu-arm@nongnu.org; Tue, 04 May 2021 06:40:47 -0400
+Received: by mail-ed1-x531.google.com with SMTP id l7so1192961edb.1
+ for <qemu-arm@nongnu.org>; Tue, 04 May 2021 03:40:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=G9ESRXefOvFcFU8JizCeiw+vMSlHN+RPYh9AjhBOqb8=;
- b=G5DClEfzuTVYVNRsJKfQJ2Q1QTCN37SlLVFqqvhciqDzHPQ8XnFr/N9dHmw9TTfN0E
- VggOshctvx5Zzn4ijwk+NXVBCytTblKaq5629URM4CAT21Wbb2K9q3OQm/ndSud7R3pE
- 8cgnqNtHpaIC1YNScouwr2wZWkYcGdwQZSsGoF6WGwomhGjRvhMdi/9TicMzEkGUDxc6
- zJ8OI1WwyGfzkvfPkukevttNOdxFfQwLEtQXFuzGhjhm5GOeN4+Hy6JHPr6Y4VolxemC
- tHlCiWuXhyS3cTMq8rUTYfA5+F1p+otPe2Ke3gKn0kOznsDMJABwwOg5LUijFQ8jZu7y
- Lsxw==
+ :cc:content-transfer-encoding;
+ bh=oocjvv7hcx3R63GzjXWkQsbiVGktib/UoD97zbPxsp8=;
+ b=mjZDX3AaCgqtyw/jP8lt+rBKXEzjiR9gIwhXRoVGUNx2l8K9f+INf8TzelEruFjzZr
+ cqNpkp4QbiHa9Gzp0obTel2o3Mhk0BfQRwvL3GrV3YG9MwEkyMjw5xu4CMvk5zY/D2TG
+ Bv4mNQDURNHTpQZvOhft8D+/+D53i6Y+d1AbIIuw3YR7T5L363fYubZDbJBB8oNDmYch
+ VB+tAsNhVFqO6qogS0OaTqGiqLXe1/i5Ouw3LCynYkml3RsIWvlcl5cWpOERMEmZRlIf
+ zqksLogNNyKUdm2CrYZR8DRz/iAdfB2Dj+GxoEE9X1mmzn4G828Q0VjKJSLmYGpiA84q
+ bdgA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=G9ESRXefOvFcFU8JizCeiw+vMSlHN+RPYh9AjhBOqb8=;
- b=OQ3UGu1u85H7b0pxp1FXoU0Q8E+wji9kG3Gq3eTuJgvrnvvfTgF8f1tt0eFfTEfZ/6
- 3YElvg4cKD6EEwMVD7nOR42VsZAC9DCQCb685/pgcLBN8YQBvzID/CxGOrY66sFRfMqL
- 2c3J36tugvg90idSdtUY+eFRx9wWD2kG+Ypk4X+J3axggtpAIcq9Bfet3npIPJvgP7cu
- H3qxI88Ktgj6LzAYD+m7Gm/CkPnMoOpJkDUQ1vdtmQWR4AZveD6iIsmRD7ZqXcsxf7WV
- bUmZhkEe1Ynue/2mBtUAxoz4gKD4+67r+tAaLkv2bpCPYRa0NlPifDwhjyIehzOXjvBl
- sHDQ==
-X-Gm-Message-State: AOAM533zXixc9JDlrgQxhhKSW0e2c2vYdRgKHgCYS2yWLcDxUn+AIpTp
- ySY2Qh+li196vgNBSZuvkqoEEhAq7EiFlk4ofe4=
-X-Received: by 2002:a05:6e02:160d:: with SMTP id
- t13mr19821606ilu.85.1620107045748; 
- Mon, 03 May 2021 22:44:05 -0700 (PDT)
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=oocjvv7hcx3R63GzjXWkQsbiVGktib/UoD97zbPxsp8=;
+ b=RrU08rr8oOP2OpksjF3m48SLuMgAI1XtIn9RGcJ3OyXrb0KymyIDvL3IAVMKSOkQb+
+ WngbwjTBIjpz7nH9cRxlShlm0z7wOM7mdsvAWKxCv4ZtqarAfMYN4K5nA0t3v/lCCIfT
+ F2f7dICLK938TAimDfiGLEdXiApkCP2bGTKzhZroYVYSFlyLaxZ2Zl5iibErVsTcaFN5
+ luW6i8vVLDJ+BK7szuUD4gGDECwkYOHPefMBL9QJegv6i/hi1aubN8KJM7TAQG3RYQ3Z
+ 49VJpm3v073fBU6K7iGs23ZN6SjeDk8g22bJgJx3Efe0FUAFty2W/gD/6MB2h+HhCfZ/
+ mt+w==
+X-Gm-Message-State: AOAM5330EVJcqNB4WBeQfSHRhJs3ne0ukTxgP1tf1H8usUPfEtApkayl
+ U5Ozap8msLviu6L/uOOQgbwQFL+byistSOVxfokkGw==
+X-Received: by 2002:a05:6402:3548:: with SMTP id
+ f8mr1886881edd.251.1620124843348; 
+ Tue, 04 May 2021 03:40:43 -0700 (PDT)
 MIME-Version: 1.0
-References: <161966810162.652.13723419108625443430.stgit@17be908f7c1c>
- <CAPcyv4gwkyDBG7EZOth-kcZR8Fb+RgGXY=Y9vbuHXAz3PAnLVw@mail.gmail.com>
- <bca3512d-5437-e8e6-68ae-0c9b887115f9@linux.ibm.com>
- <CAPcyv4hAOC89JOXr-ZCps=n8gEKD5W0jmGU1Enfo8ECVMf3veQ@mail.gmail.com>
- <d21fcac6-6a54-35fd-3088-6c56b85fbf25@linux.ibm.com>
-In-Reply-To: <d21fcac6-6a54-35fd-3088-6c56b85fbf25@linux.ibm.com>
-From: Pankaj Gupta <pankaj.gupta.linux@gmail.com>
-Date: Tue, 4 May 2021 07:43:53 +0200
-Message-ID: <CAM9Jb+g8bKF0Z7za4sZpc2tZ01Sp4c4FEaV65He8w1+QOL3_yw@mail.gmail.com>
-Subject: Re: [PATCH v4 0/3] nvdimm: Enable sync-dax property for nvdimm
-To: "Aneesh Kumar K.V" <aneesh.kumar@linux.ibm.com>
+References: <20210407225608.1882855-1-f4bug@amsat.org>
+ <f7138901-3e7d-14ca-87a8-317089d51195@amsat.org>
+In-Reply-To: <f7138901-3e7d-14ca-87a8-317089d51195@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 4 May 2021 11:39:37 +0100
+Message-ID: <CAFEAcA_YzAVXmZDuaP3iThqqdUoknNZcBtqH8xsGukXrjxAVXw@mail.gmail.com>
+Subject: Re: [PATCH-for-6.0?] hw/arm/imx25_pdk: Fix error message for invalid
+ RAM size
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::12a;
- envelope-from=pankaj.gupta.linux@gmail.com; helo=mail-il1-x12a.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::531;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x531.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Shivaprasad G Bhat <sbhat@linux.ibm.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Qemu Developers <qemu-devel@nongnu.org>,
- linux-nvdimm <linux-nvdimm@lists.01.org>,
- Markus Armbruster <armbru@redhat.com>, bharata@linux.vnet.ibm.com,
- Haozhong Zhang <haozhong.zhang@intel.com>,
- Eduardo Habkost <ehabkost@redhat.com>, richard.henderson@linaro.org,
- Greg Kurz <groug@kaod.org>, kvm-ppc@vger.kernel.org, qemu-arm@nongnu.org,
- Stefan Hajnoczi <stefanha@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Dan Williams <dan.j.williams@intel.com>, kwangwoo.lee@sk.com,
- David Gibson <david@gibson.dropbear.id.au>,
- Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
- shameerali.kolothum.thodi@huawei.com, shivaprasadbhat@gmail.com,
- qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SZuYltIYd/7m
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Igor Mammedov <imammedo@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 7fY50HNt/KYb
 
-> > The proposal that "sync-dax=unsafe" for non-PPC architectures, is a
-> > fundamental misrepresentation of how this is supposed to work. Rather
-> > than make "sync-dax" a first class citizen of the device-description
-> > interface I'm proposing that you make this a separate device-type.
-> > This also solves the problem that "sync-dax" with an implicit
-> > architecture backend assumption is not precise, but a new "non-nvdimm"
-> > device type would make it explicit what the host is advertising to the
-> > guest.
-> >
+On Sun, 2 May 2021 at 17:29, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =
+wrote:
 >
-> Currently, users can use a virtualized nvdimm support in Qemu to share
-> host page cache to the guest via the below command
+> Hi Peter,
 >
-> -object memory-backend-file,id=memnvdimm1,mem-path=file_name_in_host_fs
-> -device nvdimm,memdev=memnvdimm1
->
-> Such usage can results in wrong application behavior because there is no
-> hint to the application/guest OS that a cpu cache flush is not
-> sufficient to ensure persistence.
->
-> I understand that virio-pmem is suggested as an alternative for that.
-> But why not fix virtualized nvdimm if platforms can express the details.
->
-> ie, can ACPI indicate to the guest OS that the device need a flush
-> mechanism to ensure persistence in the above case?
->
-> What this patch series did was to express that property via a device
-> tree node and guest driver enables a hypercall based flush mechanism to
-> ensure persistence.
+> Could you take this patch via the ARM tree?
+> It has been reviewed twice.
 
-Would VIRTIO (entirely asynchronous, no trap at host side) based
-mechanism is better
-than hyper-call based? Registering memory can be done any way. We
-implemented virtio-pmem
-flush mechanisms with below considerations:
+Sure; applied to target-arm.next, thanks.
 
-- Proper semantic for guest flush requests.
-- Efficient mechanism for performance pov.
-
-I am just asking myself if we have platform agnostic mechanism already
-there, maybe
-we can extend it to suit our needs? Maybe I am missing some points here.
-
-> >> On PPC, the default is "sync-dax=writeback" - so the ND_REGION_ASYNC
-> >>
-> >> is set for the region and the guest makes hcalls to issue fsync on the host.
-> >>
-> >>
-> >> Are you suggesting me to keep it "unsafe" as default for all architectures
-> >>
-> >> including PPC and a user can set it to "writeback" if desired.
-> >
-> > No, I am suggesting that "sync-dax" is insufficient to convey this
-> > property. This behavior warrants its own device type, not an ambiguous
-> > property of the memory-backend-file with implicit architecture
-> > assumptions attached.
-> >
->
-> Why is it insufficient?  Is it because other architectures don't have an
-> ability express this detail to guest OS? Isn't that an arch limitations?
+-- PMM

@@ -1,117 +1,194 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp3012940lfg;
-        Mon, 3 May 2021 14:20:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw0dcl1gbeWFvHzcAJ9Z2CKm7kJzhO9ZZVSJiMndrgME+o0LjtEN9hCOwoeTlNllXtqj0Gb
-X-Received: by 2002:a05:6402:6cd:: with SMTP id n13mr23173240edy.330.1620076808489;
-        Mon, 03 May 2021 14:20:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620076808; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp3175448lfg;
+        Mon, 3 May 2021 18:44:25 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy6NYe1zCbNJVu88xzwJ6pUAMM857LfRvWdVS6PKStE5mQv8mIxCpPKNZWjk8scGOmxC9ub
+X-Received: by 2002:a05:6638:a2c:: with SMTP id 12mr21064105jao.99.1620092665364;
+        Mon, 03 May 2021 18:44:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620092665; cv=none;
         d=google.com; s=arc-20160816;
-        b=R0sQtByF7w2xxj6rrKvU3NQEJ7AIBNVdT6mrhrEgno7BpA8Mmvziq3wF0zSJBE52tz
-         3ajayl2jX7NgVW2q79OIGMiUbZ52WLu0mZnpr39n8RT8pZ0iudOegScqg6hCofQrODMw
-         SiDfZp1kwH0Hy4RHh6ma07V6XAloQ3aXbJYTCOA8bzNUzNxvzMjlDTnZki3lcyBof3y2
-         5kT8pQhm3CRlHjSs5CqqEfmqTIk72CTRKOjxfH++0OntR6ElG7Eo7GDQSQwmFvsyNgel
-         iRvhGXL5d4yYQw7lrwPze15kpiHeoojCfXba+JebUZ9fqQMcLvZfBjZYPM1FujWCKeOP
-         yXEw==
+        b=oNYgxBzmCbVxld9BL1VnLWY+Wn6mQb3hC1C/Xk+8X2Yzpxz0nf+mKK7OTKnTBIqDFF
+         Zl220/op4SH5nuIQvndWs8ChsEDCz2EAPmE9OAlvZC0Cd5VN0+RWaidtWCNYPbQ3H0Mh
+         EoxKCKmrHZLfD6iG4gB5wdEh03wVmCAeDFvanlETLTofnJbr6mxIHgjnYeF5PMW19GBS
+         qxrfp1q5OpGYOD4p89iItZZljyZuObYMSsO+/VCARlKPLeByKGralaXCJtPEQLbFl9ax
+         UcM0+qoEPs+HmCjk1xve+SG0RsV+++sbsbLSRhAMA3rLeJ/uDILInFO2C8GSkFxH1RBH
+         cqJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:organization:from:references:cc:to
-         :subject:dkim-signature;
-        bh=dR4CBL+r+jnt3++PiVcPHFlP8yj0Hn6hMcvOHJtftO4=;
-        b=ekFmuV84lnyxYjcgzD9Et3hmc3SExJ1oTZ+P0wPxx1cPGTi5HGgf1eBAe/BDa5JYV1
-         BaWw/0wYOSDz35iCZrsAzEtTf1uDyUn50Qeqb5hy/izZiwrhJLzrvIQpicEI5WeYRzdM
-         U8ntVX/RJQik9Wu3TqQGIzij0RXbLMxFwZQsDq3aB40VEbrTiDIZSr4KEPZumJF/CL5t
-         RcHwyLEJZrc9AC4TsIuaEQNPxhRvDqu6ARIkUqTjQqDN5tqlu4PdR0AHjI0tDX50c+Ug
-         gOCfYfcQE0711/ZBtoKATOURH5di8+ckHbWtIGirN6bUk5gjKMgOxrW6fLuHBfOyuBHf
-         ny7A==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=SsYcmApY+WMM2l04RH7oz6sHdszCaEVkIYohZSbnTEc=;
+        b=LTyQsXaebET7D7O2itXHqHJtNNStWF9MwZvwjACoWgbY3FL/xLTPwdPmZxJWWkMyc0
+         x2PluSmsilHFSlg328vjwy4bbAWF80MLVZWM4chcGlFZZQ+hcud0Vvi+lUgtCrBEhDIR
+         wSBIzsh9f8H9TzHzLJFp/sLfpVyGhPMGkUxM5JA9oV+tMlHhKx2NF50YeMOLKmQMmbfD
+         Si9AzeqK3xwSso/1bGgCqJImktp3N++fpKkHysSXxE1TKESwlxWXhLfCEjLONl6Fw6/p
+         9YD70M9CCSd82jaXjm+qsByrD0mMbeLtRolZwOBR+0KHuT8mFcEOTusFGNpWF5vWtwMm
+         O8Dw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QNui+gL5;
-       spf=pass (google.com: domain of eblake@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eblake@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <eblake@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id bz20si1036086ejc.368.2021.05.03.14.20.08
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=P6eZGfba;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id b14si16620490ilv.52.2021.05.03.18.44.25
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 03 May 2021 14:20:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eblake@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 03 May 2021 18:44:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QNui+gL5;
-       spf=pass (google.com: domain of eblake@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eblake@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1620076807;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=dR4CBL+r+jnt3++PiVcPHFlP8yj0Hn6hMcvOHJtftO4=;
-	b=QNui+gL5YNoXLbdENABwU56jz57EwQ1VMrStfn4YL/1oGNyXzde2yKXCAqBOlz1gU+ARY6
-	jkLmPn8FghOJAiUU1haiOqFjO/2BJjcVIMVKysoiaQsJLE5X8LYOLyaMeaeZyvr677W61O
-	iLELwKx/WIqnpPeWbpU0QrGLq9Jf5C8=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-562-uFHWohuOP2OFeqk4NgTPDg-1; Mon, 03 May 2021 17:19:49 -0400
-X-MC-Unique: uFHWohuOP2OFeqk4NgTPDg-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 65B049126B;
-	Mon,  3 May 2021 21:19:48 +0000 (UTC)
-Received: from [10.3.114.144] (ovpn-114-144.phx2.redhat.com [10.3.114.144])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 86E6E5C1C2;
-	Mon,  3 May 2021 21:19:44 +0000 (UTC)
-Subject: Re: [PATCH v6 11/12] qtest/bios-tables-test: Make test
- build-independent from accelerator
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-Cc: "Michael S. Tsirkin" <mst@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-References: <20210503211020.894589-1-philmd@redhat.com>
- <20210503211020.894589-12-philmd@redhat.com>
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-Message-ID: <8e675e24-fedc-c4df-22d6-b385142e0e4b@redhat.com>
-Date: Mon, 3 May 2021 16:19:43 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=P6eZGfba;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:44088 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ldk6q-0004YY-NN
+	for alex.bennee@linaro.org; Mon, 03 May 2021 21:44:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35988)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
+ id 1ldk6T-0004Xm-NF; Mon, 03 May 2021 21:44:01 -0400
+Received: from ozlabs.org ([203.11.71.1]:59411)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
+ id 1ldk6R-0005oy-BS; Mon, 03 May 2021 21:44:01 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+ id 4FZ2gY2NM6z9sT6; Tue,  4 May 2021 11:43:53 +1000 (AEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=gibson.dropbear.id.au; s=201602; t=1620092633;
+ bh=3anFEGHjKRDBJBpGN0aquHD3mJDsI32H2+VnbPLeVOM=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=P6eZGfba00ncrgKhQYsT9pbqX5+fN+lfIhBajc4eYRtRhC+zBvHTJHxp1ONL2GWvv
+ vL/QusApiUEvubSUSiWvtnxRfO096j++RjpxQ48qp615QNLj3iQSXBpRDrtcHYdweN
+ m2o+noyZ5mUla3ZFvFQ/TuEQXMKerGhdCrtOj+kM=
+Date: Tue, 4 May 2021 11:21:13 +1000
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Eric Blake <eblake@redhat.com>
+Subject: Re: [PATCH v4 1/3] spapr: nvdimm: Forward declare and move the
+ definitions
+Message-ID: <YJChiYgt6AAjhnIe@yekko>
+References: <161966810162.652.13723419108625443430.stgit@17be908f7c1c>
+ <161966811094.652.571342595267518155.stgit@17be908f7c1c>
+ <f33dfff6-a1f7-244f-531e-ef0d93ad0c3d@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20210503211020.894589-12-philmd@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eblake@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: cin7UYSyqEV/
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="rqO14lpZiRldN/l1"
+Content-Disposition: inline
+In-Reply-To: <f33dfff6-a1f7-244f-531e-ef0d93ad0c3d@redhat.com>
+Received-SPF: pass client-ip=203.11.71.1; envelope-from=dgibson@ozlabs.org;
+ helo=ozlabs.org
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, Shivaprasad G Bhat <sbhat@linux.ibm.com>,
+ mst@redhat.com, qemu-devel@nongnu.org, linux-nvdimm@lists.01.org,
+ aneesh.kumar@linux.ibm.com, armbru@redhat.com, marcel.apfelbaum@gmail.com,
+ bharata@linux.vnet.ibm.com, haozhong.zhang@intel.com, ehabkost@redhat.com,
+ richard.henderson@linaro.org, groug@kaod.org, kvm-ppc@vger.kernel.org,
+ qemu-arm@nongnu.org, stefanha@redhat.com, imammedo@redhat.com,
+ kwangwoo.lee@sk.com, xiaoguangrong.eric@gmail.com,
+ shameerali.kolothum.thodi@huawei.com, shivaprasadbhat@gmail.com,
+ qemu-ppc@nongnu.org, pbonzini@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: tFj9NenNRgve
 
-On 5/3/21 4:10 PM, Philippe Mathieu-Daudé wrote:
-> Now than we can probe if the TCG accelerator is available
 
-that
+--rqO14lpZiRldN/l1
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> at runtime with a QMP command, do it once at the beginning
-> and only register the tests we can run.
-> We can then replace the #ifdef'ry by an assertion.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> ---
-> v5 had:
-> Reviewed-by: Eric Blake <eblake@redhat.com>
-> Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-> 
-> v6 is simplified and keeps the same logic, however since
-> it is different, I'm not keeping the R-b tags.
-> ---
->  tests/qtest/bios-tables-test.c | 14 ++++++--------
->  1 file changed, 6 insertions(+), 8 deletions(-)
-> 
+On Mon, May 03, 2021 at 01:23:47PM -0500, Eric Blake wrote:
+> On 4/28/21 10:48 PM, Shivaprasad G Bhat wrote:
+> > The subsequent patches add definitions which tend to
+> > get the compilation to cyclic dependency. So, prepare
+> > with forward declarations, move the defitions and clean up.
+>=20
+> definitions
+>=20
+> >=20
+> > Signed-off-by: Shivaprasad G Bhat <sbhat@linux.ibm.com>
+> > ---
+> >  hw/ppc/spapr_nvdimm.c         |   12 ++++++++++++
+> >  include/hw/ppc/spapr_nvdimm.h |   14 ++------------
+> >  2 files changed, 14 insertions(+), 12 deletions(-)
+> >=20
+> > diff --git a/hw/ppc/spapr_nvdimm.c b/hw/ppc/spapr_nvdimm.c
+> > index b46c36917c..8cf3fb2ffb 100644
+> > --- a/hw/ppc/spapr_nvdimm.c
+> > +++ b/hw/ppc/spapr_nvdimm.c
+> > @@ -31,6 +31,18 @@
+> >  #include "qemu/range.h"
+> >  #include "hw/ppc/spapr_numa.h"
+> > =20
+> > +/*
+> > + * The nvdimm size should be aligned to SCM block size.
+> > + * The SCM block size should be aligned to SPAPR_MEMORY_BLOCK_SIZE
+> > + * inorder to have SCM regions not to overlap with dimm memory regions.
+>=20
+> And while at it, even though it is code motion...
 
-Reviewed-by: Eric Blake <eblake@redhat.com>
+It looks like the patch no longer applies clear to ppc-for-6.1, so can
+you rebase and fix up Eric's nitpicks at the same time?
 
--- 
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3226
-Virtualization:  qemu.org | libvirt.org
+>=20
+> > + * The SCM devices can have variable block sizes. For now, fixing the
+> > + * block size to the minimum value.
+> > + */
+> > +#define SPAPR_MINIMUM_SCM_BLOCK_SIZE SPAPR_MEMORY_BLOCK_SIZE
+>=20
+> > +++ b/include/hw/ppc/spapr_nvdimm.h
+> > @@ -11,19 +11,9 @@
+> >  #define HW_SPAPR_NVDIMM_H
+> > =20
+> >  #include "hw/mem/nvdimm.h"
+> > -#include "hw/ppc/spapr.h"
+> > =20
+> > -/*
+> > - * The nvdimm size should be aligned to SCM block size.
+> > - * The SCM block size should be aligned to SPAPR_MEMORY_BLOCK_SIZE
+> > - * inorder to have SCM regions not to overlap with dimm memory regions.
+>=20
+> ... this should be "in order"
+>=20
+
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--rqO14lpZiRldN/l1
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAmCQoYcACgkQbDjKyiDZ
+s5K2XhAAnKMU4fHKY8zYm2UkdJJMJZJlnQtfgO1iJQLrmfFszhFekavJzaRx/xT0
+gudfIWjcqRomM3jzQQq5LbEr/XH4w8ws+PF1kPTetjO7gSQepyO9krepcPmiciJ7
+My58zSnBNmyNDAgMHzRc2fYNBFxr/XSXxo2ZZidUavG8fZS2h2ftIz8JlTepY9pN
+NBOURrUtwcT+gAvpbE7saAVKLFMlRRFN3vU3Aj/vt/1P5gBg7dOEsYhTleDFDske
+njhUdtDB8qy0NZba6Mz0Um6hiUZU/xH+YMS7S1ZZcqA8ne08kTELW5cKzjks1NST
+/AAIlrHuFckRzGo3xHeTNeBoU76rZCUWXNe8TxmCswUHOlQQELLspIqbMW2/BgNP
+XccFpegH/H/qEwe2ZXVM86aOHuSaIwmKmrF96N5sD0WZMLgRA1XXDSc40p+NV67h
+p6uGnKotunrlyHIztASEd+/hwenV6nGAAePeuBP2NLQbD+ZaQRDkzMrTmujN1SRj
+u68z8XYYO/pSk77mWO0oh9Ao42EVZVLEOHnRqyjsdc/YD3iLm0QP4hDXe6Q9c39Q
+sHXBju4en2BPVJme+8yZzobJzHYXKA3E7wJ0PVx57Ra9KToZf7mZdiL7pHffHI1c
+XtqKim8cz5xm4OnCloZTghId9DHNgO9maAHFP+xnroRosQwzD4s=
+=tiiy
+-----END PGP SIGNATURE-----
+
+--rqO14lpZiRldN/l1--

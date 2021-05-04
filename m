@@ -1,107 +1,113 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp3555055lfg;
-        Tue, 4 May 2021 05:14:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzsed7yns84rQzyO3FWebIqV1LbNJtL5yBjkmri3bHvMMx3hRwya5QtHwwuLUzrm/+T9Z8l
-X-Received: by 2002:a17:906:e28c:: with SMTP id gg12mr21518555ejb.483.1620130451161;
-        Tue, 04 May 2021 05:14:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620130451; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp3964273lfg;
+        Tue, 4 May 2021 13:50:58 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxVsZPEplefi4Ce80zwpiE8kbcOGadMDzaYCq6M0SH4wso3COIrldhvguW1RUolo5Bi8G+h
+X-Received: by 2002:a92:1a0a:: with SMTP id a10mr22649686ila.195.1620161457969;
+        Tue, 04 May 2021 13:50:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620161457; cv=none;
         d=google.com; s=arc-20160816;
-        b=06BBlZQkb+paKqXf9G36yxBjfzjwwIvD94g8NVzP6MsHu4ORWgbqtoe8/nSwtYs86T
-         /iibExNarHCZ8yBM8kwRLQsYxSzWHYEz0qwPxJpiVcoYvD/rf/+jxv+9V4J0u+PenlVS
-         vnQzMOAkROiaNDm3I6O3IC41+CPNjuvxps+J604ubzUkAQv46+ovB9e/2vynJ7mXOxPt
-         EE6vq5QbmBSiS8kuO8qkdgrGsDDdxRUxd8YpLqJSLqODl+ck7CzZckT7SynXf3ASgmK1
-         l8KO1hc1GFjGEvU2EaTwPVzbl34Ns/auYTq34VWPt/xhWMU0jf0/rZTKS7F1beXU+TBB
-         RC/g==
+        b=UaARuWjypfSmAlb/2dwiqmk4v3CEy896dzw3za7lcLMFi1nqzUdTGubCk7mCMr3PyW
+         KO794+UzT1qiW8JmhvjkfBKbonl4avJ/egmZndmM5IPEHUdH7DI4eGBUt3Wr4yRp4xE7
+         Zi0gJ+EueZLP81XB+pfODSUDN06O7UncSjbU5ApUmS+LCl3wVTZ+aYYhXIVlF4Tsu8t4
+         01tr6G1g4RTF7F4JmRVB7+9VWIjEz/+/m3Z437JAwgDl3BXhC/xV5XqM75QNRdd18rNV
+         +nFywXi5jpc5qyh5d+8drsEjPzUOIumS4x+51qQuWMOoxvLnRVlQ/Sw69wYd3ZEqDsWw
+         7cvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=7SCknxDIsIgXSgxxIm1m30T9zFqtpsRmbUjjDi3Dris=;
-        b=kVIgsXoBQoKDNN0vgyi3C6K6Z9XIGBYTfHvXJqI8J6DA+zE6eD9kXFbsulwn0l9+xV
-         aMRloJWhS2solVKhdNycYIGv0RyuO2sLNGcr4VC6wee0EkLcpLCotxJW2svoyF/1wQy8
-         UqCGMgUu/xNjN85sC/YCXKqJeItNA/fs4+BM798s694WNUnyCsSypQ9MN1PO3amkes/K
-         6LxIUVaPxjN9+2tKiGPbEjxAX0FKmyzBgpg7P5TfKFvIOu2cULwzlMBhPDM/8NgygvWe
-         2bR1PxVGq4fZpcqRh2phF1VjO1DUmG31Edg9mX0v5qDVs1m+I3b0SAR2/kpyg9bAQoij
-         0rUQ==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=yHS2LqqxmsFxUsJAdbVMpK73ptvKCLvKS048Pl7ppm8=;
+        b=G0O44sb4zEMSY+fCysR3X3EmJL3gRNqBo+0oTHWqV1xyba6O6uz4KAQnBqybCu26wo
+         n5QyZkndpA9nLZ7PWrj1LXovt4QnY0eJUO6z8DSwaXM1D02gRDLuF9X8HbD3fsxRJ/2f
+         eXoTBwFfK8TWLbRtbJ/yi4h8d0wPeC1aomvadPgzFbhX7jEs4vT9Upv4jt+hCcIJkU1O
+         IPInCXQ3/1GF0VdGH7q0CGzF3ZfUvbfoJfucw32rlix7tiy0WK7PmwNg8dpC1Zk9/dyq
+         yfGF/MP8quWvzu3Y5LgtRqrh1EzR4nZDWNbGm4s6x8JxlzJ5bARkik3XgACgtnFtwac2
+         rrIg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=gcD3Mvg6;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=D9U1nyhI;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e18si2382488ejb.261.2021.05.04.05.14.11
+        by mx.google.com with ESMTPS id i21si5491392iov.29.2021.05.04.13.50.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 May 2021 05:14:11 -0700 (PDT)
+        Tue, 04 May 2021 13:50:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=gcD3Mvg6;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=D9U1nyhI;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50674 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:38272 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ldtwI-0007B8-8Y
-	for alex.bennee@linaro.org; Tue, 04 May 2021 08:14:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50664)
+	id 1le20P-00029E-98
+	for alex.bennee@linaro.org; Tue, 04 May 2021 16:50:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38540)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ldtrc-0005f0-W9
- for qemu-devel@nongnu.org; Tue, 04 May 2021 08:09:21 -0400
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e]:42538)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1le1z8-0001Y1-9r; Tue, 04 May 2021 16:49:38 -0400
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e]:51732)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ldtra-0007a9-Vk
- for qemu-devel@nongnu.org; Tue, 04 May 2021 08:09:20 -0400
-Received: by mail-wr1-x42e.google.com with SMTP id l2so9130218wrm.9
- for <qemu-devel@nongnu.org>; Tue, 04 May 2021 05:09:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=7SCknxDIsIgXSgxxIm1m30T9zFqtpsRmbUjjDi3Dris=;
- b=gcD3Mvg6gy7ZJEXMv9/bjUMOSiJz1ClZyc7wW9d88EWgpHc6nQW5W9TCevfsgQD6o8
- mMC18j3YIJx6zlrlDoG2SQ2bGdKZmgVdDVEtB22/WlEBL7W2QpNbz8CM8L0ExsC0sokH
- zVqHM7MkVNmfJ87NcbqOry8pXY3J2McFtedSIiTAt3O/OFGTH+pOM2cQfdg4HZBkLt/G
- sjAZp+jLdrxHnpDVA4ogWJB27JIASBRKyhhU7Vb7zFy3btNm5RHuE22aLJRPxsauHQac
- 5Uevzvv2pkJ183NZfUPyIKc7dpMTnRWlkheZu7Yq4t5ap4QDV062CjQGdwOEDcXCLhsB
- 8z/w==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1le1z6-00051l-M2; Tue, 04 May 2021 16:49:38 -0400
+Received: by mail-wm1-x32e.google.com with SMTP id n205so165343wmf.1;
+ Tue, 04 May 2021 13:49:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=yHS2LqqxmsFxUsJAdbVMpK73ptvKCLvKS048Pl7ppm8=;
+ b=D9U1nyhIJ60ZPRiW03JVeH33L3lV70h7OFZnRx9/xn7MLHf0vNe43iIL3TmD74OiOz
+ oQ6ORboefrrBsFPi/2kOQzcLQlz5x6AiW/TgX0/8htXATUsSFEscsLLi7d0fQaX+CyMG
+ pyXUfJ5kfVuDJxZKUghKKhsNh3DSs8gLUFPndxl1cZS7T4mUEjm9wHqIGNWXfn+r7DNr
+ 4gkuh+jJY+a+Ljen3V6zxR2b1EM8GbjFYAggn7Tzy81LE5GW+z//42eLeCezlmlQ8+ez
+ n/uK0A5LtW2bhtx/dIYJ/N6WxN51b4K/hxchkoIARJ+CG9GRd4X/oQ4rpWEYk2J39Oi+
+ qw6g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=7SCknxDIsIgXSgxxIm1m30T9zFqtpsRmbUjjDi3Dris=;
- b=EQYiimA3NpquUofotcl2/dPrDCIl/0kDrWX+BxzB0utoCqHUN4C9CVg85cC9hXUhTr
- +91Wg3d89fVP4Fl1nPm3uXZKpTXBsS+Lnr7Bh7y7sFJOvuuKcOEtBuhskzvs6kNtkvzN
- h5m0NGkugwS4pS84LZkzD0yE0NZBACX66OWSJx2i3OrYWnR05x2ke9M6TtW3u5gxMCSv
- UVeGcI6YzE3o70srwCzv7HJWOlgLAi+m1oVj3ZrhhlPadhSPRMip4auunUKkkRh0OPZh
- U7OjyRr8dmvN0pOe45Dfcn01d9Bn91NKPDIao0/QcIDtUzly1jsz6tFUccYzKyQfxZQH
- reLQ==
-X-Gm-Message-State: AOAM533U+tYDbtl+JTaYQSUOqzuyvdwF2N/ReH6cnzNAO04g4uON/qGY
- tn2BMYiKpHvRNyxxjrr2DVKqiA==
-X-Received: by 2002:a5d:47a9:: with SMTP id 9mr9621877wrb.298.1620130154927;
- Tue, 04 May 2021 05:09:14 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id g12sm2331937wmh.24.2021.05.04.05.09.14
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 04 May 2021 05:09:14 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH v2 0/3] mps3-an524: support memory remapping
-Date: Tue,  4 May 2021 13:09:09 +0100
-Message-Id: <20210504120912.23094-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
+ bh=yHS2LqqxmsFxUsJAdbVMpK73ptvKCLvKS048Pl7ppm8=;
+ b=poowrQYAe53IZvJ4NyeFSUeVeDwJO4MmfDsejht13ZfKxXy/AccfA5i8TmVA/IJUwa
+ yMLOMNSSLwVfQW0GJdXw6M6PjVISpOIqn+o0/JDjsTsCG8EEavczqLxjyIDqw8gcaXy6
+ f4LmdRn0XBk7NsexCZMxhVIC1IO5OdBv4yUkkRCwT031M9kfAOhYpyeaIPzBBsmA6lr/
+ qjnCYKLwKmehAQE7aMkTdM+srZfliOg+6chUnT6QzYiMJHnZPD4whvSFj+3NqY9QIDmF
+ Oiv+C/aGAE/G0pH/IdW0CuWFGG6HMCdk1fz9U+CS3z4hqelKeSU6v+2mGgyMDmJTk0cL
+ CKNQ==
+X-Gm-Message-State: AOAM533A6nzJfB514/EjjNsANDwldJM/ZQ4FFfp1Va2+mBzumSEmatYv
+ SJcd2oS2dtS+C4jhvo7Inv4=
+X-Received: by 2002:a7b:c312:: with SMTP id k18mr29715859wmj.89.1620161374919; 
+ Tue, 04 May 2021 13:49:34 -0700 (PDT)
+Received: from [192.168.1.19]
+ (astrasbourg-653-1-188-220.w90-13.abo.wanadoo.fr. [90.13.127.220])
+ by smtp.gmail.com with ESMTPSA id h9sm3751008wmb.35.2021.05.04.13.49.33
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 04 May 2021 13:49:33 -0700 (PDT)
+Subject: Re: [PATCH 1/3] hw/i2c: add support for PMBus
+To: Titus Rwantare <titusr@google.com>, Corey Minyard <cminyard@mvista.com>
+References: <20210504162841.2884846-1-titusr@google.com>
+ <20210504162841.2884846-2-titusr@google.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <b0e4ed67-d8fd-3902-6a71-144203b9a9da@amsat.org>
+Date: Tue, 4 May 2021 22:49:32 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+In-Reply-To: <20210504162841.2884846-2-titusr@google.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32e.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -114,51 +120,34 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: Hao Wu <wuhaotsh@google.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hy3bgYYeDjWL
+X-TUID: TyJ8D9t3okCz
 
-The AN524 FPGA image supports two memory maps, which differ
-in where the QSPI and BRAM are. In the default map, the BRAM
-is at 0x0000_0000, and the QSPI at 0x2800_0000. In the second
-map, they are the other way around.
+Hi Titus,
 
-In hardware, the initial mapping can be selected by the user
-by writing either "REMAP: BRAM" (the default) or "REMAP: QSPI"
-in the board configuration file. The guest can also dynamically
-change the mapping via the SCC CFG_REG0 register.
+On 5/4/21 6:28 PM, Titus Rwantare wrote:
+> QEMU has support for SMBus devices, and PMBus is a more specific
+> implementation of SMBus. The additions made in this commit makes it easier to
+> add new PMBus devices to QEMU.
+> 
+> https://pmbus.org/specification-archives/
+> 
+> Reviewed-by: Hao Wu <wuhaotsh@google.com>
+> Signed-off-by: Titus Rwantare <titusr@google.com>
+> ---
+>  hw/arm/Kconfig                |    1 +
+>  hw/i2c/Kconfig                |    4 +
+>  hw/i2c/meson.build            |    1 +
+>  hw/i2c/pmbus_device.c         | 1611 +++++++++++++++++++++++++++++++++
+>  include/hw/i2c/pmbus_device.h |  520 +++++++++++
+>  5 files changed, 2137 insertions(+)
 
-This patchset adds support for the feature to QEMU's model;
-the user-sets-the-initial-mapping part is a new machine property
-which can be set with "-M remap=QSPI".
+TBH this is quite a big patch to digest.
 
-This is needed for some guest images -- for instance the
-Arm TF-M binaries -- which assume they have the QSPI layout.
+Any chance you could split it?
 
-Changes v1->v2: all in patch 3
- * tweaked commit message to clarify that the MCC is external
- * use memory_region_transaction_begin/commit
- * make remap be bool rather than int
+Thanks,
 
-(All patches are reviewed, I'm just posting v2 because it
-has changes made in response to the v1 review.)
-
-thanks
--- PMM
-
-Peter Maydell (3):
-  hw/misc/mps2-scc: Add "QEMU interface" comment
-  hw/misc/mps2-scc: Support using CFG0 bit 0 for remapping
-  hw/arm/mps2-tz: Implement AN524 memory remapping via machine property
-
- docs/system/arm/mps2.rst   |  10 ++++
- include/hw/misc/mps2-scc.h |  21 ++++++++
- hw/arm/mps2-tz.c           | 108 ++++++++++++++++++++++++++++++++++++-
- hw/misc/mps2-scc.c         |  13 +++--
- 4 files changed, 148 insertions(+), 4 deletions(-)
-
--- 
-2.20.1
-
+Phil.

@@ -1,102 +1,104 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp4184250lfg;
-        Tue, 4 May 2021 20:05:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxR7WM2vxqv7ZqO3cK+/4nbjdDkEcC9QtX7YA+b9foztR43fsvCBswbZ0kLop7yCAeShC29
-X-Received: by 2002:a05:6e02:12e9:: with SMTP id l9mr11049554iln.28.1620183959432;
-        Tue, 04 May 2021 20:05:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620183959; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp4184668lfg;
+        Tue, 4 May 2021 20:06:47 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzF4KCi7aXDSPN2qhZjtol81Y3LpxymVW2PvFiu6hDr4Otl7Lm0T2ABBxrb2rHyeNk/hEkn
+X-Received: by 2002:a05:6e02:92c:: with SMTP id o12mr23758588ilt.256.1620184007378;
+        Tue, 04 May 2021 20:06:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620184007; cv=none;
         d=google.com; s=arc-20160816;
-        b=C4xTqFBX/I4SsAvkMp4Q5d8/2DAKWg6IdQbQHlqhPqgsV6UN42/w6C7VwBAg3gC+/f
-         LssVA/DAGCIuml+LUBFC+MYaDDgtqta/5gYgxDxohWif28tWddr/KM+J0VeeEPB9pJeB
-         IT2Gu3cA4raSfEyAcAMXEeddAGsi079IQ/VbwpbW/mjQ9y9dT0O+prJL1+8vDIVAq/uU
-         KuxdRCuRxhcIm85XZoLnEL3Wlglr6mpO/OdZkjDCBbBd+Xcy+0n2NZFBJxw6k7mmGerD
-         VHTZKQ5IJdwhuKKreHMlVNTqGvRV9lt5iXVSvoI74hoDNmDllttH55YNW5CfkKSFdEGE
-         J2zg==
+        b=dyldjEUDJesAuZfjoIxta+59JSDlmFz4avitKbvJQAkhI6Dwl1+InpmfafXgnvem0H
+         HSRi79EOahMdNcNgZPKBO0Uoz3hj3jr2zr2+ebTsD2FeGgb0/0SSVurJ8X9Hul+j1Hy/
+         9ifVlLetUqza1+yvmfVhePXfTSo8vHpApuse1FgxgSGxwkBK9LOkUZpL+eT+z/bzwDma
+         2gksOKgkCPrLz4adRCVBruqlI2+PdHL5uMsWXkT3z5UcY0LTPQenPAlCwAk83R+5JNSo
+         kBzHhsGKLGQ4Qi1q4Oe72XtDV9wcvSo8o3YCxM0L+7x8k0NUKS8+7QuEnoT+ZE7tUzD0
+         Wyxw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=gehSBgjnjQRNmV009q75lCL2iDxHBnM112fEwKMS6aA=;
-        b=iTdNkl15Y1E+Vz+uYuvJnhb53p4Ne30FBM989wTv9klCQ7wN6TDltvPc0yn/SKbiwE
-         K+soH3dZZvrSY1TefjF7sGbiHflCzgpwCSMEteCg5e1QDng4unXJDpj2vx+i/d1XGLtv
-         gZ5YrlW9YDh+4c7BNAgu26+Ury64UVOneJRu+HKpCv2fzC1zhHvwl8ohmgZnTp2Eo0s1
-         gE9AKfeJtTS51bHRgoxAyVryvsL6VzVMScX5Jzmy2asfD30P14m2WX9ZDUX2u5ZAFnCW
-         3GFwfBbqRaRv4ujuHI8YNTJntXNhA+sIm9Jr6yBqNoQhg5Ql/3ZVo6Lw3isn9WgQ/87M
-         8lJQ==
+        bh=uNizM5dd+njefSGglfwPGotA4yVew4h3gSREpFzckEs=;
+        b=DWVM6bx64dydSlO9dr4zrbj2cS45llxhNwyzCeo7711Txv7+cJpijFiyOfFHKrzo2w
+         cNzUc/rFVrrXm7RKI4mkA4lTrZsa6Xc4pGFahGWyh8LY1r5pliLt2aaHxR1XK/KIpnCI
+         e1aWTuQM+BHe4ev0c3TdAPaJzF5q8GXbnlMiwx8KPpUrzf4eAvFvwCwVThkPg70xW3CU
+         RkmZsIALE6CJBxkF+syDybJ5yVP0c898F88VDZVIuEGhPk2dupUJkTj21CIJg6NKn6pT
+         2oP7ywBkVbAyknBhwMeNBETDDzVn5H9BnCaavwFFOqbAfgVQAB31TVFeGY/tHxlGoo3B
+         vCtA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=1u0HBwjO;
+       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=05WXkcw2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w25si6264718ioc.66.2021.05.04.20.05.59
+        by mx.google.com with ESMTPS id p1si16130116jaa.31.2021.05.04.20.06.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 May 2021 20:05:59 -0700 (PDT)
+        Tue, 04 May 2021 20:06:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=1u0HBwjO;
+       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=05WXkcw2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46586 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47750 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1le7rK-0008Eh-C6
-	for alex.bennee@linaro.org; Tue, 04 May 2021 23:05:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39096)
+	id 1le7s6-0000NW-MJ
+	for alex.bennee@linaro.org; Tue, 04 May 2021 23:06:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39100)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
- id 1le7qf-0008Dx-Ek
- for qemu-arm@nongnu.org; Tue, 04 May 2021 23:05:17 -0400
-Received: from mail-qk1-x729.google.com ([2607:f8b0:4864:20::729]:38561)
+ id 1le7qg-0008FL-UZ
+ for qemu-arm@nongnu.org; Tue, 04 May 2021 23:05:18 -0400
+Received: from mail-qk1-x72a.google.com ([2607:f8b0:4864:20::72a]:38562)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
- id 1le7qV-00033Q-Pw
- for qemu-arm@nongnu.org; Tue, 04 May 2021 23:05:17 -0400
-Received: by mail-qk1-x729.google.com with SMTP id v20so305720qkv.5
- for <qemu-arm@nongnu.org>; Tue, 04 May 2021 20:05:07 -0700 (PDT)
+ id 1le7qZ-00034K-DK
+ for qemu-arm@nongnu.org; Tue, 04 May 2021 23:05:18 -0400
+Received: by mail-qk1-x72a.google.com with SMTP id v20so305758qkv.5
+ for <qemu-arm@nongnu.org>; Tue, 04 May 2021 20:05:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=gehSBgjnjQRNmV009q75lCL2iDxHBnM112fEwKMS6aA=;
- b=1u0HBwjOeX8loV5l2xCF4uOZm9BYfKIt56h3Zj5ceAI9wvVFpPfyUJ+kPzxYsAYYqO
- yemDn4h8p+KfIhnUiHQ1Vrqw9j5ZJGyx36hEipNwwVFPk8iptLx87AgHt1wwF6SFAxUy
- 5AFxzf++NIqhcYggNmz2DUh0xnymatg0Uj1x2DOLjz7O8+b5GgywVeXBYUpNTNEW23x+
- EbqkdV6UDMRW+nwUHXaHGGDRpguLBINPubs8t52dg2yKEzb3eXJUBSShT8ckprVdklBS
- xLc/R8Nr48ummOgGEGhKgVhfTdqIjeoVKju7/tHZQ2HPKPaUIPk40yX8twrVIbj21UM5
- s1sQ==
+ bh=uNizM5dd+njefSGglfwPGotA4yVew4h3gSREpFzckEs=;
+ b=05WXkcw2sOlbiq6nu0JNKVFANsscIs2gaD5SDLLLZ56buXsFk0UUyUgHR7GV1gounI
+ XNbucrzS3z+xDT+1buUDiiF/mLuDuao0LcVQnrzwnr9TldqlI2hoRwsl3N6KR25Dfbdv
+ 9n14jqN4ih+adVEXih6Z/fcfcq6ez2sNJXTfm2gROQ4/+4FDh+47YC3xsbXUq84JWIiq
+ i//jIGNHhMibUhrXMHrG9AUAGM6KSXAYw9TWWYq7plQ856QoDAaloSbrfnH/sl+uZpHg
+ zUa3PtTvelX+/Kk7h831r89wJM6nCm51ruTquXX0epcOqlZFRnOoHadBC5zbhUA2OUe0
+ 4BIg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=gehSBgjnjQRNmV009q75lCL2iDxHBnM112fEwKMS6aA=;
- b=R/AxR9kfL5atO/Yz34b88jJR1P+tyTsS1NmrfWtZX38UlmTHyoJNqBkzpoq6qwhtZN
- 0/y//2w3yQAaz0HnxSqx2c3Dm0ryiUEXhcyh46J377+4Izw1Qwgu6r5irR+xAgagw948
- 0s/Ru8dtkRwAmYYfzKw8hicChF3S37dblYWRFS4w3inc6lJMZ8wQR+oqg3wglU3FLeUr
- Q3SYctuKEPDYAkV2aph6L9wUjH0CmqT/a26Eo3Ivcv5/uMf4myEZZ8n1pu7ZxVAXRJxh
- LcuZd5AqB7b+goFtnQYfdzoFTJjWKdITcMkY0qF1e1SvIOk1rNBeUbEf+jLATDBMoErD
- pOTA==
-X-Gm-Message-State: AOAM532PTaL52gL3XFDJC8rxqsqRFksmZjo3nJD55zyNCxd8i+rRJTRB
- IZ0nTe7BEvHQ9MQyci1vx1eDID+9OPNMZw==
-X-Received: by 2002:a37:7944:: with SMTP id u65mr27714555qkc.29.1620183906930; 
- Tue, 04 May 2021 20:05:06 -0700 (PDT)
+ bh=uNizM5dd+njefSGglfwPGotA4yVew4h3gSREpFzckEs=;
+ b=mU1Z2pwWbPNusZ7fI4BrEPukheTcgP25E5t2G0p2vhiXkz3L00tsMhp9gF8QJO6JQL
+ rU43RqGHrnxbPr9THTSHo8aAzCA+r+jMvSGauxRVYsvw8OFXEBjiAjZ6obzPZzxmQMqW
+ FD0sl8rY6LaXkB+fw1KKoXwvTo04v9FfS5U9mckvuYnzLR0itxRDA5HRkd640hzT6aTU
+ SFFFlgPSEMRg7rWaHF4ZnYyfkXolK6fMxDCLo2zU5Obi/Pz/MR9jWsqohtB9cdCE5LTO
+ TjG/xcE0p4nnunVYjJWfymnKz5Ai8MEu99BdjGMPTjzhVvTu7xIa7GI9fSzqSbdzSexT
+ fKIw==
+X-Gm-Message-State: AOAM532T328wMyffAFtQh80G5a1ym8NTbauJ0d1FDBRKYw0cso2sHiZ2
+ WqQsjOON+tQmW1fuxKTB60Xr+g==
+X-Received: by 2002:a37:27cd:: with SMTP id
+ n196mr13036119qkn.420.1620183908054; 
+ Tue, 04 May 2021 20:05:08 -0700 (PDT)
 Received: from cube.int.bluestop.org (c-174-52-16-57.hsd1.ut.comcast.net.
  [174.52.16.57])
- by smtp.gmail.com with ESMTPSA id a63sm12270550qkf.132.2021.05.04.20.05.05
+ by smtp.gmail.com with ESMTPSA id a63sm12270550qkf.132.2021.05.04.20.05.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 04 May 2021 20:05:06 -0700 (PDT)
+ Tue, 04 May 2021 20:05:07 -0700 (PDT)
 From: Rebecca Cran <rebecca@nuviainc.com>
 To: Richard Henderson <richard.henderson@linaro.org>,
  Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v8 3/4] target/arm: Add support for FEAT_TLBIOS
-Date: Tue,  4 May 2021 21:04:42 -0600
-Message-Id: <20210505030443.25310-4-rebecca@nuviainc.com>
+Subject: [PATCH v8 4/4] target/arm: set ID_AA64ISAR0.TLB to 2 for max AARCH64
+ CPU type
+Date: Tue,  4 May 2021 21:04:43 -0600
+Message-Id: <20210505030443.25310-5-rebecca@nuviainc.com>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20210505030443.25310-1-rebecca@nuviainc.com>
 References: <20210505030443.25310-1-rebecca@nuviainc.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::729;
- envelope-from=rebecca@nuviainc.com; helo=mail-qk1-x729.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::72a;
+ envelope-from=rebecca@nuviainc.com; helo=mail-qk1-x72a.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -119,126 +121,29 @@ Cc: Rebecca Cran <rebecca@nuviainc.com>, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +yOZB/y0qud0
+X-TUID: S14xANL0IZJ3
 
-ARMv8.4 adds the mandatory FEAT_TLBIOS. It provides TLBI
-maintenance instructions that extend to the Outer Shareable domain.
+Indicate support for FEAT_TLBIOS and FEAT_TLBIRANGE by setting
+ID_AA64ISAR0.TLB to 2 for the max AARCH64 CPU type.
 
 Signed-off-by: Rebecca Cran <rebecca@nuviainc.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu.h    |  5 ++
- target/arm/helper.c | 75 ++++++++++++++++++++
- 2 files changed, 80 insertions(+)
+ target/arm/cpu64.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 5802798c3069..7986a217acdd 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -4076,6 +4076,11 @@ static inline bool isar_feature_aa64_tlbirange(const ARMISARegisters *id)
-     return FIELD_EX64(id->id_aa64isar0, ID_AA64ISAR0, TLB) == 2;
- }
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index f0a9e968c9c1..f42803ecaf1d 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -651,6 +651,7 @@ static void aarch64_max_initfn(Object *obj)
+         t = FIELD_DP64(t, ID_AA64ISAR0, DP, 1);
+         t = FIELD_DP64(t, ID_AA64ISAR0, FHM, 1);
+         t = FIELD_DP64(t, ID_AA64ISAR0, TS, 2); /* v8.5-CondM */
++        t = FIELD_DP64(t, ID_AA64ISAR0, TLB, 2); /* FEAT_TLBIRANGE */
+         t = FIELD_DP64(t, ID_AA64ISAR0, RNDR, 1);
+         cpu->isar.id_aa64isar0 = t;
  
-+static inline bool isar_feature_aa64_tlbios(const ARMISARegisters *id)
-+{
-+    return FIELD_EX64(id->id_aa64isar0, ID_AA64ISAR0, TLB) != 0;
-+}
-+
- static inline bool isar_feature_aa64_sb(const ARMISARegisters *id)
- {
-     return FIELD_EX64(id->id_aa64isar1, ID_AA64ISAR1, SB) != 0;
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index cb10851efda8..04c4d766adb9 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -7213,6 +7213,78 @@ static const ARMCPRegInfo tlbirange_reginfo[] = {
-     REGINFO_SENTINEL
- };
- 
-+static const ARMCPRegInfo tlbios_reginfo[] = {
-+    { .name = "TLBI_VMALLE1OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 1, .opc2 = 0,
-+      .access = PL1_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_vmalle1is_write },
-+    { .name = "TLBI_ASIDE1OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 1, .opc2 = 2,
-+      .access = PL1_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_vmalle1is_write },
-+    { .name = "TLBI_RVAE1OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 5, .opc2 = 1,
-+      .access = PL1_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_rvae1is_write },
-+    { .name = "TLBI_RVAAE1OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 5, .opc2 = 3,
-+      .access = PL1_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_rvae1is_write },
-+   { .name = "TLBI_RVALE1OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 5, .opc2 = 5,
-+      .access = PL1_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_rvae1is_write },
-+    { .name = "TLBI_RVAALE1OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 5, .opc2 = 7,
-+      .access = PL1_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_rvae1is_write },
-+    { .name = "TLBI_ALLE2OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 1, .opc2 = 0,
-+      .access = PL2_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_alle2is_write },
-+   { .name = "TLBI_ALLE1OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 1, .opc2 = 4,
-+      .access = PL2_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_alle1is_write },
-+    { .name = "TLBI_VMALLS12E1OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 1, .opc2 = 6,
-+      .access = PL2_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_alle1is_write },
-+    { .name = "TLBI_IPAS2E1OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 0,
-+      .access = PL2_W, .type = ARM_CP_NOP },
-+    { .name = "TLBI_RIPAS2E1OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 3,
-+      .access = PL2_W, .type = ARM_CP_NOP },
-+    { .name = "TLBI_IPAS2LE1OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 4,
-+      .access = PL2_W, .type = ARM_CP_NOP },
-+    { .name = "TLBI_RIPAS2LE1OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 7,
-+      .access = PL2_W, .type = ARM_CP_NOP },
-+   { .name = "TLBI_RVAE2OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 5, .opc2 = 1,
-+      .access = PL2_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_rvae2is_write },
-+   { .name = "TLBI_RVALE2OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 5, .opc2 = 5,
-+      .access = PL2_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_rvae2is_write },
-+    { .name = "TLBI_ALLE3OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 1, .opc2 = 0,
-+      .access = PL3_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_alle3is_write },
-+   { .name = "TLBI_RVAE3OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 5, .opc2 = 1,
-+      .access = PL3_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_rvae3is_write },
-+   { .name = "TLBI_RVALE3OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 5, .opc2 = 5,
-+      .access = PL3_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_rvae3is_write },
-+    REGINFO_SENTINEL
-+};
-+
- static uint64_t rndr_readfn(CPUARMState *env, const ARMCPRegInfo *ri)
- {
-     Error *err = NULL;
-@@ -8585,6 +8657,9 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-     if (cpu_isar_feature(aa64_tlbirange, cpu)) {
-         define_arm_cp_regs(cpu, tlbirange_reginfo);
-     }
-+    if (cpu_isar_feature(aa64_tlbios, cpu)) {
-+        define_arm_cp_regs(cpu, tlbios_reginfo);
-+    }
- #ifndef CONFIG_USER_ONLY
-     /* Data Cache clean instructions up to PoP */
-     if (cpu_isar_feature(aa64_dcpop, cpu)) {
 -- 
 2.26.2
 

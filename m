@@ -1,367 +1,134 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp4184610lfg;
-        Tue, 4 May 2021 20:06:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzCCRfiX7/B4zcIah0mB7Qc5I5yv8nRSjs75iW+EH9NKfMrHUSog+Z/f6tT6icanayeFhlr
-X-Received: by 2002:a5d:818b:: with SMTP id u11mr17905285ion.36.1620184000746;
-        Tue, 04 May 2021 20:06:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620184000; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp32049lfg;
+        Wed, 5 May 2021 00:07:57 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzEA/DIJbPV+1SFxpy5OiPZUWb/IQqvzKMC6U2uzQmQvhpoxpTqr0jJuup46cVGSLWvnout
+X-Received: by 2002:a17:907:1b11:: with SMTP id mp17mr26202219ejc.1.1620198477480;
+        Wed, 05 May 2021 00:07:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620198477; cv=none;
         d=google.com; s=arc-20160816;
-        b=VPCEkNUtebUE85k1rj6AzLrCjGCR45qWkEFMrTmbFDfZTlVtNe5U8+RNzWDQWKFQGd
-         DgIO/aV+h3EyXjUex1zi1kXeh9as0tfSonH3axu66RtEPdz0WYL7E7DGv2Kx20ke1ErC
-         r+/Abudi0SlE5qtMaJTtDbxz/N9Kt+goIHetzDn7yKEd2M5QmVMPt9SqouNDDtAPAx67
-         VhnVHSsokM6KpypgOZ3e2JISbuEpf/XXb7LB1+D+Szpaa16mQUflePr0mV016sjXYvy4
-         FqaUTFnikdPISBqyDeH7g5Sootn5rF4XOI5TgMWome/85TAl8IqLoVVPZFJFQAUXHlUm
-         jePQ==
+        b=eBiEwQ0Rif8NypKytFJneVQZd65+FFzlAi1sdRdDkZIuvPwLUzLURJgUW2v5Cz3Hy9
+         Z6Q4Jy4tODdjNrF+dMYMwEQvy5ERMAmaLMmcdcKC14cvg4O8pncsFVxcCzaFc5gkmfZ3
+         v8dXjfVw9wP0SSf3gLzyFj1IcChcnZEfR5mWCscZsW11/ZN5DQRIwOvDGYpxGM2PdatT
+         bNyOB4I7WJFufb7URZrQLtYGkdufvdKUdWNDVMHcE4FC3YBgQpaxrFOcZGSVFErvsxNZ
+         u6Edhl9tO/x/ymWCclDR/GPWzPxFrXsQtFIt0l9jMfBUW3OMZOPQHKySerpHth990iW0
+         d8eg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=btMaGj7ccU0HCYX4NRJ6hUY5JOpjFZjbz479ppWGpb4=;
-        b=nQNIWpQqECtAhlAVeTXx9dEtabRmww9b/PUiC+lp/zpPUHqjiy0loNajtTBdxQt1Mc
-         Ip2eAQllNIRB+6FmwQxvU23GT8lloGGwnLqzAYj573xE4z/9JX+Jl/uBNJDRlRMzy/io
-         J0DCpq2wYQvcFRKmWhex8IsjxDx5VLg9bFzYGHGe0TbY6HxY4ZKFSlrvkDS5z4pkhU6X
-         uX7sUljYpFvaRlFUCNeMwkbTGDxrIpT1I/hyDUm/NLq5W8api9wEztBxBNI+7hbDRahF
-         fOMkWWGyBEx2h9v08SLFAou/ygcBqFFWsljB7MWVvNW2rXw0a1hrGYX15w+3lBJBcxlq
-         3roQ==
+        h=content-transfer-encoding:mime-version:user-agent:message-id
+         :in-reply-to:date:references:subject:cc:to:from:dkim-signature;
+        bh=eTpLyIhDwYuICaVzKPOcBF+ue89WeeJqefHx0UT2uLg=;
+        b=AyeqPeKmPZamI242CukvLJUgttawb+PCympEJ1DR+lnUDYif9oSceIxM5rJOk9HmP1
+         TbRWj5YSSxgvElLs6oK3GTEMz9CR8PW7Rqi//iaN+6+E38r63tllpTXohwQATjgTNhaJ
+         M4JoK3Cr4P9kCv8vOHxdxkfW8FKVkZcLzseMeqoIcHNFrUG3rpJeMqIfaKE9RA8/QKLM
+         FZJS3BVuHOb2KwnKQr9A5Gev23Z5AClsgjjYYLZdhvdEdYaWD3h+KCVlDqHY/SVYygHn
+         y7b/z7FEMe3GCxskesF5LWUWQMdAfqa0PMWYgLTRAlw0Rt2tR3V+2E6xVnGbSJhFttLs
+         fYew==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=COjG2xbT;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l9si17474656ils.131.2021.05.04.20.06.40
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=E7xih+Bm;
+       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <armbru@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id lj17si4561945ejb.535.2021.05.05.00.07.57
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 May 2021 20:06:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 05 May 2021 00:07:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=COjG2xbT;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:47548 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1le7rz-0000IO-Ta
-	for alex.bennee@linaro.org; Tue, 04 May 2021 23:06:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39010)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
- id 1le7qW-0008BW-28
- for qemu-arm@nongnu.org; Tue, 04 May 2021 23:05:08 -0400
-Received: from mail-qk1-x735.google.com ([2607:f8b0:4864:20::735]:41599)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
- id 1le7qT-00031v-Gq
- for qemu-arm@nongnu.org; Tue, 04 May 2021 23:05:07 -0400
-Received: by mail-qk1-x735.google.com with SMTP id l129so291790qke.8
- for <qemu-arm@nongnu.org>; Tue, 04 May 2021 20:05:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=btMaGj7ccU0HCYX4NRJ6hUY5JOpjFZjbz479ppWGpb4=;
- b=COjG2xbTiCbqE5q9t8lNX6MiFZgcmFD/CdZcNJDrCeJdMXfKMnrt6pnJpuzBpL1+OR
- 158crcgWsWR8MK5DslG55/Gv9+vYyOjL3JL1YMHU4l3ShYAnYVDiUHedYsUG6Xr3uEgy
- zcLGZ2vL3SILl+tHSz5npM2P2x+tZqOnaECCNlKZRAo193K5RyupZGeixbOg5JzhoyGP
- xWpYO2LMK/Wt2OKrzPlsgq+7m2ns6uLfEId/UWrRqUxUtJfkkEK5mkZO07K/WRxl/jsV
- hxCcCvdOMayZzk0PKjDxG6jWwJKzp7fFhRsV4wfrAjYTdbek+2C9e8gHr8+ujwjarGlL
- gv9Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=btMaGj7ccU0HCYX4NRJ6hUY5JOpjFZjbz479ppWGpb4=;
- b=F3u6rZ3FXYeCB5zc6FmUL86NE8Utkvvny6pfk8dQr4jKlA1iMP9/tYMcK28XeqtGpG
- i2PLGlrd3lyFNFVHI0CFGCj8OsPAXrNtTixP9fSgJztegZClzfq5ItA7AUivf3jzZNPZ
- o24NWWhLFi1N/ybVCkDkk4KF47v/N5tHVk8GDzVPaNpqit7HC2KTD4lvVr1+DsNT0vWy
- IJ0utXtump5apuPuaSJg5YujlUYJe76DL0bF+KMAxKvU6VNJB9SDBlwFD2FmbgGWNStj
- ucujyjNcP4jgOdVyPm0Ra1uGBvCvcKKNbjvnzmKoaAtdcswYEuXxQXHzS0jWtsy/qjnG
- FBmQ==
-X-Gm-Message-State: AOAM530i0T2hYgSDjAgBGAKCKu/M9jbCUeU7cu2DFi3oR5YDeuaj48zH
- j44SD9nalzqOGqvUAxCyYDR9/g==
-X-Received: by 2002:a05:620a:4a:: with SMTP id
- t10mr28484318qkt.249.1620183904647; 
- Tue, 04 May 2021 20:05:04 -0700 (PDT)
-Received: from cube.int.bluestop.org (c-174-52-16-57.hsd1.ut.comcast.net.
- [174.52.16.57])
- by smtp.gmail.com with ESMTPSA id a63sm12270550qkf.132.2021.05.04.20.05.03
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 04 May 2021 20:05:04 -0700 (PDT)
-From: Rebecca Cran <rebecca@nuviainc.com>
-To: Richard Henderson <richard.henderson@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v8 1/4] accel/tcg: Add TLB invalidation support for ranges of
- addresses
-Date: Tue,  4 May 2021 21:04:40 -0600
-Message-Id: <20210505030443.25310-2-rebecca@nuviainc.com>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20210505030443.25310-1-rebecca@nuviainc.com>
-References: <20210505030443.25310-1-rebecca@nuviainc.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=E7xih+Bm;
+       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1620198476;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=eTpLyIhDwYuICaVzKPOcBF+ue89WeeJqefHx0UT2uLg=;
+	b=E7xih+BmeGxkDL5uFSl2DJI7DlPfa4USFg/yeSt1sz+br46/yp5d/p742l+Q2CR9B27lRc
+	eX+T+F/y1zW1BfmjaU8DMSJxtSISpt/4D8ACzreeLkm+jq6yvx/iJUZeaE7jXHnkPkc9pn
+	s3FYNYofF3D0/iqRQs2FXN/4bQOeXyo=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-148-xL1GAqDbMw--cREhl1m_yw-1; Wed, 05 May 2021 03:07:54 -0400
+X-MC-Unique: xL1GAqDbMw--cREhl1m_yw-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id CE4361926DA1;
+	Wed,  5 May 2021 07:07:53 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-114-17.ams2.redhat.com [10.36.114.17])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 88C935D6D1;
+	Wed,  5 May 2021 07:07:53 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 038791138529; Wed,  5 May 2021 09:07:52 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org,  Andrew Jones <drjones@redhat.com>,  Eduardo
+ Habkost <ehabkost@redhat.com>,  Juan Quintela <quintela@redhat.com>,
+  Richard Henderson <richard.henderson@linaro.org>,  Thomas Huth
+ <thuth@redhat.com>,  "Dr. David Alan Gilbert" <dgilbert@redhat.com>,  Alex
+ =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,  qemu-arm@nongnu.org,
+  Claudio Fontana
+ <cfontana@suse.de>,  Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [PATCH v5 02/10] accel: Introduce 'query-accels' QMP command
+References: <20210501223638.510712-1-philmd@redhat.com>
+	<20210501223638.510712-3-philmd@redhat.com>
+Date: Wed, 05 May 2021 09:07:51 +0200
+In-Reply-To: <20210501223638.510712-3-philmd@redhat.com> ("Philippe
+	=?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Sun, 2 May 2021 00:36:30
+ +0200")
+Message-ID: <87o8dpvet4.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::735;
- envelope-from=rebecca@nuviainc.com; helo=mail-qk1-x735.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Rebecca Cran <rebecca@nuviainc.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9xNfaQH3naP4
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: dEWyrPEXsW0T
 
-Add functions to support the FEAT_TLBIRANGE ARMv8.4 feature that adds
-TLB invalidation instructions to invalidate ranges of addresses.
+Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
 
-Signed-off-by: Rebecca Cran <rebecca@nuviainc.com>
----
- accel/tcg/cputlb.c      | 128 +++++++++++++++++++-
- include/exec/exec-all.h |  46 +++++++
- 2 files changed, 171 insertions(+), 3 deletions(-)
+> Introduce the 'query-accels' QMP command which returns a list
+> of built-in accelerator names.
+>
+> - Accelerator is a QAPI enum of all existing accelerators,
+>
+> - AcceleratorInfo is a QAPI structure providing accelerator
+>   specific information. Currently the common structure base
+>   provides the name of the accelerator, while the specific
+>   part is empty, but each accelerator can expand it.
+>
+> - 'query-accels' QMP command returns a list of @AcceleratorInfo
+>
+> For example on a KVM-only build we get:
+>
+>     { "execute": "query-accels" }
+>     {
+>         "return": [
+>             {
+>                 "name": "qtest"
+>             },
+>             {
+>                 "name": "kvm"
+>             }
+>         ]
+>     }
+>
+> Note that we can't make the enum values or union branches conditional
+> because of target-specific poisoning of accelerator definitions.
 
-diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
-index 8a7b779270a4..9381745f2528 100644
---- a/accel/tcg/cputlb.c
-+++ b/accel/tcg/cputlb.c
-@@ -709,7 +709,7 @@ void tlb_flush_page_all_cpus_synced(CPUState *src, target_ulong addr)
-     tlb_flush_page_by_mmuidx_all_cpus_synced(src, addr, ALL_MMUIDX_BITS);
- }
- 
--static void tlb_flush_page_bits_locked(CPUArchState *env, int midx,
-+static bool tlb_flush_page_bits_locked(CPUArchState *env, int midx,
-                                        target_ulong page, unsigned bits)
- {
-     CPUTLBDesc *d = &env_tlb(env)->d[midx];
-@@ -729,7 +729,7 @@ static void tlb_flush_page_bits_locked(CPUArchState *env, int midx,
-                   TARGET_FMT_lx "/" TARGET_FMT_lx ")\n",
-                   midx, page, mask);
-         tlb_flush_one_mmuidx_locked(env, midx, get_clock_realtime());
--        return;
-+        return true;
-     }
- 
-     /* Check if we need to flush due to large pages.  */
-@@ -738,13 +738,14 @@ static void tlb_flush_page_bits_locked(CPUArchState *env, int midx,
-                   TARGET_FMT_lx "/" TARGET_FMT_lx ")\n",
-                   midx, d->large_page_addr, d->large_page_mask);
-         tlb_flush_one_mmuidx_locked(env, midx, get_clock_realtime());
--        return;
-+        return true;
-     }
- 
-     if (tlb_flush_entry_mask_locked(tlb_entry(env, midx, page), page, mask)) {
-         tlb_n_used_entries_dec(env, midx);
-     }
-     tlb_flush_vtlb_page_mask_locked(env, midx, page, mask);
-+    return false;
- }
- 
- typedef struct {
-@@ -943,6 +944,127 @@ void tlb_flush_page_bits_by_mmuidx_all_cpus_synced(CPUState *src_cpu,
-     }
- }
- 
-+typedef struct {
-+    target_ulong addr;
-+    target_ulong length;
-+    uint16_t idxmap;
-+    uint16_t bits;
-+}  TLBFlushPageRangeBitsByMMUIdxData;
-+
-+static void
-+tlb_flush_page_range_bits_by_mmuidx_async_0(CPUState *cpu,
-+                                            target_ulong addr,
-+                                            target_ulong length,
-+                                            uint16_t idxmap,
-+                                            unsigned bits)
-+{
-+    CPUArchState *env = cpu->env_ptr;
-+    bool full_flush;
-+    int mmu_idx;
-+    target_ulong page;
-+
-+    assert_cpu_is_self(cpu);
-+
-+    tlb_debug("page addr:" TARGET_FMT_lx "/%u len: " TARGET_FMT_lx
-+              " mmu_map:0x%x\n",
-+              addr, bits, length, idxmap);
-+
-+    qemu_spin_lock(&env_tlb(env)->c.lock);
-+    for (mmu_idx = 0; mmu_idx < NB_MMU_MODES; mmu_idx++) {
-+        if ((idxmap >> mmu_idx) & 1) {
-+            for (page = addr; page < (addr + length); page += TARGET_PAGE_SIZE) {
-+                full_flush = tlb_flush_page_bits_locked(env, mmu_idx,
-+                                                        page, bits);
-+                if (full_flush) {
-+                    break;
-+                }
-+            }
-+        }
-+    }
-+    qemu_spin_unlock(&env_tlb(env)->c.lock);
-+
-+    for (page = addr; page < (addr + length); page += TARGET_PAGE_SIZE) {
-+        tb_flush_jmp_cache(cpu, page);
-+    }
-+}
-+
-+static void
-+tlb_flush_page_range_bits_by_mmuidx_async_1(CPUState *cpu,
-+                                            run_on_cpu_data data)
-+{
-+    TLBFlushPageRangeBitsByMMUIdxData *d = data.host_ptr;
-+
-+    tlb_flush_page_range_bits_by_mmuidx_async_0(cpu, d->addr, d->length,
-+                                                d->idxmap, d->bits);
-+
-+    g_free(d);
-+}
-+
-+void tlb_flush_page_range_bits_by_mmuidx(CPUState *cpu,
-+                                         target_ulong addr,
-+                                         target_ulong length,
-+                                         uint16_t idxmap,
-+                                         unsigned bits)
-+{
-+    TLBFlushPageRangeBitsByMMUIdxData d;
-+    TLBFlushPageRangeBitsByMMUIdxData *p;
-+
-+    /* This should already be page aligned */
-+    addr &= TARGET_PAGE_BITS;
-+
-+    d.addr = addr & TARGET_PAGE_MASK;
-+    d.idxmap = idxmap;
-+    d.bits = bits;
-+    d.length = length;
-+
-+    if (qemu_cpu_is_self(cpu)) {
-+        tlb_flush_page_range_bits_by_mmuidx_async_0(cpu, addr, length,
-+                                                    idxmap, bits);
-+    } else {
-+        p = g_new(TLBFlushPageRangeBitsByMMUIdxData, 1);
-+
-+        /* Allocate a structure, freed by the worker.  */
-+        *p = d;
-+        async_run_on_cpu(cpu, tlb_flush_page_range_bits_by_mmuidx_async_1,
-+                         RUN_ON_CPU_HOST_PTR(p));
-+    }
-+}
-+
-+void tlb_flush_page_range_bits_by_mmuidx_all_cpus_synced(CPUState *src_cpu,
-+                                                         target_ulong addr,
-+                                                         target_ulong length,
-+                                                         uint16_t idxmap,
-+                                                         unsigned bits)
-+{
-+    TLBFlushPageRangeBitsByMMUIdxData d;
-+    TLBFlushPageRangeBitsByMMUIdxData *p;
-+    CPUState *dst_cpu;
-+
-+    /* This should already be page aligned */
-+    addr &= TARGET_PAGE_BITS;
-+
-+    d.addr = addr;
-+    d.idxmap = idxmap;
-+    d.bits = bits;
-+    d.length = length;
-+
-+    /* Allocate a separate data block for each destination cpu.  */
-+    CPU_FOREACH(dst_cpu) {
-+        if (dst_cpu != src_cpu) {
-+            p = g_new(TLBFlushPageRangeBitsByMMUIdxData, 1);
-+            *p = d;
-+            async_run_on_cpu(dst_cpu,
-+                             tlb_flush_page_range_bits_by_mmuidx_async_1,
-+                             RUN_ON_CPU_HOST_PTR(p));
-+        }
-+    }
-+
-+    p = g_new(TLBFlushPageRangeBitsByMMUIdxData, 1);
-+    *p = d;
-+    async_safe_run_on_cpu(src_cpu, tlb_flush_page_range_bits_by_mmuidx_async_1,
-+                          RUN_ON_CPU_HOST_PTR(p));
-+}
-+
- /* update the TLBs so that writes to code in the virtual page 'addr'
-    can be detected */
- void tlb_protect_code(ram_addr_t ram_addr)
-diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
-index 6b036cae8f65..a7ff35efb865 100644
---- a/include/exec/exec-all.h
-+++ b/include/exec/exec-all.h
-@@ -212,6 +212,37 @@ void tlb_flush_page_by_mmuidx_all_cpus(CPUState *cpu, target_ulong addr,
-  */
- void tlb_flush_page_by_mmuidx_all_cpus_synced(CPUState *cpu, target_ulong addr,
-                                               uint16_t idxmap);
-+/**
-+ * tlb_flush_page_range_by_mmuidx:
-+ * @cpu: CPU whose TLB should be flushed
-+ * @addr: virtual address of start of page range to be flushed
-+ * @length: the number of bytes to be flushed
-+ * @idxmap: bitmap of MMU indexes to flush
-+ *
-+ * Flush a range of pages from the TLB of the specified CPU, for the specified
-+ * MMU indexes.
-+ */
-+void tlb_flush_page_range_bits_by_mmuidx(CPUState *cpu, target_ulong addr,
-+                                         target_ulong length, uint16_t idxmap,
-+                                         unsigned bits);
-+/**
-+ * tlb_flush_page_range_by_mmuidx_all_cpus_synced:
-+ * @cpu: Originating CPU of the flush
-+ * @addr: virtual address of start of page range to be flushed
-+ * @length: the number of bytes to be flushed
-+ * @idxmap: bitmap of MMU indexes to flush
-+ *
-+ * Flush a range of pages from the TLB of all CPUs, for the specified MMU
-+ * indexes like tlb_flush_page_by_mmuidx_all_cpus except the source
-+ * vCPUs work is scheduled as safe work meaning all flushes will be
-+ * complete once the source vCPUs safe work is complete. This will
-+ * depend on when the guests translation ends the TB.
-+ */
-+void tlb_flush_page_range_bits_by_mmuidx_all_cpus_synced(CPUState *cpu,
-+                                                         target_ulong addr,
-+                                                         target_ulong length,
-+                                                         uint16_t idxmap,
-+                                                         unsigned bits);
- /**
-  * tlb_flush_by_mmuidx:
-  * @cpu: CPU whose TLB should be flushed
-@@ -313,6 +344,21 @@ static inline void tlb_flush_page_all_cpus_synced(CPUState *src,
-                                                   target_ulong addr)
- {
- }
-+static inline void tlb_flush_page_range_bits_by_mmuidx(CPUState *cpu,
-+                                                       target_ulong addr,
-+                                                       target_ulong length,
-+                                                       uint16_t idxmap,
-+                                                       unsigned bits)
-+{
-+}
-+static inline void
-+tlb_flush_page_range_bits_by_mmuidx_all_cpus_synced(CPUState *src_cpu,
-+                                                    target_ulong addr,
-+                                                    target_ulong length,
-+                                                    uint16_t idxmap,
-+                                                    unsigned bits)
-+{
-+}
- static inline void tlb_flush(CPUState *cpu)
- {
- }
--- 
-2.26.2
+Let me try to complete this argument;
 
+  If we did, enum Accelerator could only be used in target-specific
+  code.  But we want to use it in generic code, too.
+
+Which generic code exactly?
+
+> Reviewed-by: Eric Blake <eblake@redhat.com>
+> Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> Tested-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+
+Patch looks good to me.

@@ -1,101 +1,106 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp4023126lfg;
-        Tue, 4 May 2021 15:25:00 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzSbqOHehmRHOh3z3ZM3nS0x6801W55ooPsTudmUHXAmVkGQZsIIeIatqgby7GW2Qbg9sqT
-X-Received: by 2002:a05:6602:2e82:: with SMTP id m2mr17437861iow.190.1620167100758;
-        Tue, 04 May 2021 15:25:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620167100; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp4184186lfg;
+        Tue, 4 May 2021 20:05:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzUqEIyPmqYHeqhkHOCOxB22YKzi2Pttx9YQA2yxl6nOrJuE9ZZfqEINYxX3Q/EFNnhR8qf
+X-Received: by 2002:a02:6d6c:: with SMTP id e44mr5539023jaf.81.1620183953320;
+        Tue, 04 May 2021 20:05:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620183953; cv=none;
         d=google.com; s=arc-20160816;
-        b=vJToVfsFHMRHh5EgKjL/6/DESYle96PPqInp1pG4MOboTc9/8UoLtWWCK2cRcV5M8b
-         YPQvS7r6uqbRD+yFUqDQAaKCvYS7n9qldGWRO2duUoHK248ofEJLO4NBTEjaFtCVcmfo
-         OT+yjLyIbExwQVtIG/TQTLJKq0O18q7pSLAEhT1aIV2840F/29dbe2H3/MIQqH0k9lUC
-         CAPgup+nSlrhon4lzUUc3tHt2MdGMJAswrS7UJTs7KLxjXAT0VOJqW+YN7lPb6F0TKvu
-         Y0b8ZJXIRMErSHvUmZtXbNBI7DRw61JGKBdFv1SxPtpCaMf4yThD4FNfK8u1x+0jRs2M
-         JoVA==
+        b=uV0Z/HbjtwUdowm5jcweb2tVyzonOeFf5Be3lg8XSO9zS3JX8YAd5292YGbDLxhvu4
+         PSQPmO+3j0WuK0+BDmcINb+x8zxprlRI7uoQ1hc1k/eAJ6BsqPEx2GlQLtfOZSMZWgOk
+         xJ+oCdLL2QAwExqbzUxkB0D52C+NM8jC5aDR4BAqBN3rQ/VLaNufTldF15hiK9Gatkic
+         IGRfuGkMaNby3Jm1aTUwU9J2vjsmUF1uWwtkTqKPC3fCbojx6oJIwLhCXTH+ywH88xgh
+         SbiSinZF7e2gdAuLU2wrtmEqvIDIxWJairjs/EuisO4xmAigen+1D843Pdw7YXUe6Mw8
+         pPKg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :mime-version:dkim-signature;
-        bh=8zEqvDLOQGUmEELDITcdacfTRB4e5sHxkcSSlGPcXtI=;
-        b=pbSrSm5VMRNNC3E9LXnPo+8beaiQY5irfkgT6IVXlCSAB7RIeQNoUBzHXAUnZhCRm7
-         DVK6ViQgbUocxu+P1vCIAA/Wa52j15i9bU1Ij3MK0p5t2hgNb4nbC67TmueqSMRJsRnz
-         G3jTxQat9Q6SnrQ0BZd/r6/ZWi+Fz+g+zIv9w3lwRXlX/DcgjJV0ucbwRt/y7+Z4V4NC
-         6yitkOKR2lasVfUGk9B1W0LZlOEknEuQ+Yw0VaPxEM193GRaM4PqJfzA56bvt1Gs3NVZ
-         OflLz1pgDg2VpFwn62sJyoHoEH6ZAikf6t4MXWGe+8oFYVj7kmtLEkKGSQIuzeLJFoSf
-         bLtA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=RmST3+WxP/thv66gQjHNnadA4mfLkZ9vI+xyDvn5FVg=;
+        b=h0pb3KZyAWuhCLK2H1J4HPzUJRoV8YqJrACRjq/2D5B1LxhYXQbCEQQw/wM7gx6PBM
+         SQUAir55pBYWaSYxo79lkULCwWtoZgBoqyNUu9f6uHwtsLCZNsC5gBnRq5lZGctj3DvE
+         W8Uu49d0XJQNfZ1/djKoaAw3/dj3ElWyoozlTzciyj6mKk2URluTdzIL8tPO7j+nlI2f
+         LfRWRs3KqnLK0DL3JaF26Z0Km8c1gSp3e/24vJjQTcReSmOarql8/J7JEPRwDWBKdfHc
+         D+dpNgbps8WOZkH9JA0mPnTu/6QaAJVwQ7ZSDQ7Hned/qpEK9/yc7AOVsst2sQArBuNV
+         Yr7w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XkJQXJYV;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=sYRW4pUk;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p11si17489007ile.154.2021.05.04.15.25.00
+        by mx.google.com with ESMTPS id m21si4908968ioy.78.2021.05.04.20.05.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 May 2021 15:25:00 -0700 (PDT)
+        Tue, 04 May 2021 20:05:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XkJQXJYV;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:47270 helo=lists1p.gnu.org)
+       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=sYRW4pUk;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:46512 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1le3TQ-0005OZ-4W
-	for alex.bennee@linaro.org; Tue, 04 May 2021 18:25:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37934)
+	id 1le7rE-0008Bp-JG
+	for alex.bennee@linaro.org; Tue, 04 May 2021 23:05:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38992)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ovidiu.s.nastai@gmail.com>)
- id 1le1wa-0001E9-Ho
- for qemu-arm@nongnu.org; Tue, 04 May 2021 16:47:00 -0400
-Received: from mail-ot1-x329.google.com ([2607:f8b0:4864:20::329]:36806)
+ (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
+ id 1le7qV-0008BQ-Hp
+ for qemu-arm@nongnu.org; Tue, 04 May 2021 23:05:07 -0400
+Received: from mail-qk1-x730.google.com ([2607:f8b0:4864:20::730]:45984)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <ovidiu.s.nastai@gmail.com>)
- id 1le1wX-0003P5-C4
- for qemu-arm@nongnu.org; Tue, 04 May 2021 16:47:00 -0400
-Received: by mail-ot1-x329.google.com with SMTP id
- n32-20020a9d1ea30000b02902a53d6ad4bdso9499879otn.3
- for <qemu-arm@nongnu.org>; Tue, 04 May 2021 13:46:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:from:date:message-id:subject:to;
- bh=8zEqvDLOQGUmEELDITcdacfTRB4e5sHxkcSSlGPcXtI=;
- b=XkJQXJYVq/LxzD4+baOGciK7OP9RWg9HhdOREppCINGMR9lzpXASsSgpH8JUqmAUID
- CQBnHRN03rWIuMeRtQbLlHECJfz2loAVPghzIr+NDul8UUssZfGsfUdzQ1cxSNo8RtWh
- e6Lar7twMPyl9IEAWMfttWsPnRossFoJGBxl6jXNls8xu+0FsmzZuIRCdCkGuu6Ojgf0
- sZP2PMiHKjWh73NTvyPkFUrOrFlDjH5LPsf84D5+ZOH9s0r/aqsFNqRImrcc4Du/SsL4
- BJGQAhFw8AKGykNNKSLL60dkuOsvEEvyxPM6lgFz4RWV4E/rmcakdCnq6dEXr74CKFRA
- jOAQ==
+ (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
+ id 1le7qT-00030s-GY
+ for qemu-arm@nongnu.org; Tue, 04 May 2021 23:05:07 -0400
+Received: by mail-qk1-x730.google.com with SMTP id 197so279807qkl.12
+ for <qemu-arm@nongnu.org>; Tue, 04 May 2021 20:05:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=RmST3+WxP/thv66gQjHNnadA4mfLkZ9vI+xyDvn5FVg=;
+ b=sYRW4pUk6Gz/vwwMBOo5rrnHDD2fOH59E/TkUWtcbqMtKA1aVK9aX3WgrYT3eGda4W
+ fh1oNAQqqpmtc2GqOGF9bdQjv9hzvK8BmAfKIRsNKbE2dBWg2DvvLXx1DxnfF81KGZZ5
+ x0w7Pnvhz1I89BmIBEDlKO3mYbdbMaa3LK260xqA5iU2Zn8HnVDqF/75berVg0HkRmjL
+ brhuxks/j98da6fD7fg8k6Jnji3mNsANKu19qmLtTHLfemyQJWfAffzrecFQF6ENvAAi
+ wHiLNjaxBNtPuFxpKNMNLg+MaGBc6T2Cz+fkPCyxnMsEwLln9+IXFtjruesxmEZZYAE8
+ PEKg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=8zEqvDLOQGUmEELDITcdacfTRB4e5sHxkcSSlGPcXtI=;
- b=sqK7bb2DEn6AttbNs6S/PEwV5KSwFvQJBNfzsj3nRtvtCrk7vhJOwpCEhyiqUsr7K8
- Iy1uKZAIuVljQ0gB4iSnY1K/GyiInhxgPfxje2pW3hAoWnoZMiEZ/AvdhgHld00AD5Gg
- A3ny3Q0JmuAgvaWU+eKCOijNHtzCpRM/JzksemvyJoLGhP1ZOlFxot+aI/iEhwzpjUar
- bDQ9WJqu/IuFkGp1l57Gyw57ZZUaIS1Pvw0SETKT7qlgSdO0feB/t5tbYM1knKGbMa1D
- 97FKmvQBLhbju4l4uVQ0dWyWSLEpTdUyJIwPvANKydOmYqjvb2MkPj9haxHbYajClXtW
- jzRA==
-X-Gm-Message-State: AOAM530GMtfupSwwYjoXu6qbE93WP8WLf1c7LWFKoTWavIyUt0BIDWiV
- BBPuGyb80XNdE9OLbbOpv72rjvgyPIckgbdf31q0F0+hbSODwg==
-X-Received: by 2002:a9d:2f04:: with SMTP id h4mr21227523otb.364.1620161215252; 
- Tue, 04 May 2021 13:46:55 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=RmST3+WxP/thv66gQjHNnadA4mfLkZ9vI+xyDvn5FVg=;
+ b=DibwnVKbrAUc7zWVa6NQqHzUYNDvWuhLAQD3+IQpYyTLu5zvIhy+ypsY2xmDBE91a4
+ 9mRQqkBgL/ZSjMHIwbBdUGZamGElHnQG0YHfUW3iWUu2Dy2uR0ePHE0Ja7i4eYw0cb/c
+ KDibYA5dxHWlqBK29DlKJQ35odZN1c0YZhqZfWu9n8EiHinC1i7P0NuQeO+8hUW/PRrh
+ k/O12IfKaNwm28FMp//IPp7omlVa68SuKcLABAoGTGy+2xTm6v1yGk6F2/vunubRwnLn
+ Aw/6CiemEtSg4v3q8HcZO9L9v6S6op2XRp01puOHJsAnFo0y6X6I8FQPvWsO3GccmctC
+ khrQ==
+X-Gm-Message-State: AOAM533/LbSn0Job3Cw/osTh3poKww8FVsTEyfTi4WdLSqLdZoZSGJsG
+ 09DyJTAVP+b9MPnuWzWNqU5P7g==
+X-Received: by 2002:a37:a301:: with SMTP id m1mr21727377qke.491.1620183903395; 
+ Tue, 04 May 2021 20:05:03 -0700 (PDT)
+Received: from cube.int.bluestop.org (c-174-52-16-57.hsd1.ut.comcast.net.
+ [174.52.16.57])
+ by smtp.gmail.com with ESMTPSA id a63sm12270550qkf.132.2021.05.04.20.05.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 04 May 2021 20:05:02 -0700 (PDT)
+From: Rebecca Cran <rebecca@nuviainc.com>
+To: Richard Henderson <richard.henderson@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v8 0/4] aarch64: add support for FEAT_TLBIRANGE and FEAT_TLBIOS
+Date: Tue,  4 May 2021 21:04:39 -0600
+Message-Id: <20210505030443.25310-1-rebecca@nuviainc.com>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-From: ovidiu nastai <ovidiu.s.nastai@gmail.com>
-Date: Tue, 4 May 2021 16:46:21 -0400
-Message-ID: <CAA5qdn1D5DMfqdQhG+p26F7cVx=Qy4GstRDqfCrJgbE62yi_Hw@mail.gmail.com>
-Subject: AArch64 code running on QEMU ...
-To: qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary="000000000000b6cad205c1872dcc"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::329;
- envelope-from=ovidiu.s.nastai@gmail.com; helo=mail-ot1-x329.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::730;
+ envelope-from=rebecca@nuviainc.com; helo=mail-qk1-x730.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 04 May 2021 18:24:53 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,55 +112,28 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Rebecca Cran <rebecca@nuviainc.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /Mp3a12B4WvN
+X-TUID: iel97T/OuxdC
 
---000000000000b6cad205c1872dcc
-Content-Type: text/plain; charset="UTF-8"
+Improved readability and fixed a bug in
+tlb_flush_page_range_bits_by_mmuidx_async_0.
 
-Hi,
-Please help me with this, I am new to QEMU: I need to run some AArch64
-code, to verify functional correctness, and code generation. The code
-sources will be mainly high-level syntax (C/C++), then I'll disassemble and
-inspect.
-Question: can I run AArch64 sources on QEMU, that's it, on a x86-64 host
-machine, or, I need an AArch64 host for QEMU, to start with.
+Rebecca Cran (4):
+  accel/tcg: Add TLB invalidation support for ranges of addresses
+  target/arm: Add support for FEAT_TLBIRANGE
+  target/arm: Add support for FEAT_TLBIOS
+  target/arm: set ID_AA64ISAR0.TLB to 2 for max AARCH64 CPU type
 
-I saw this "For example, the aarch64 CPU feature, which, when disabled,
-enables the optional AArch32 CPU feature, is only supported when using the
-KVM accelerator and when running on a host CPU type that supports the
-feature. " at "
-https://qemu-project.gitlab.io/qemu/system/arm/cpu-features.html", and need
-to understand that, before deciding about the tools I will use.
+ accel/tcg/cputlb.c      | 128 ++++++-
+ include/exec/exec-all.h |  46 +++
+ target/arm/cpu.h        |  10 +
+ target/arm/cpu64.c      |   1 +
+ target/arm/helper.c     | 371 ++++++++++++++++++++
+ 5 files changed, 553 insertions(+), 3 deletions(-)
 
-Thanks,
-ovi
+-- 
+2.26.2
 
---000000000000b6cad205c1872dcc
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Hi,<div>Please help me with this, I am new to QEMU: I need=
- to run some AArch64 code, to verify functional correctness, and code gener=
-ation. The code sources will be mainly high-level syntax (C/C++), then I&#3=
-9;ll disassemble and inspect.</div><div>Question: can I run AArch64 sources=
- on QEMU, that&#39;s it, on a x86-64 host machine, or, I need an AArch64 ho=
-st for QEMU, to start with.=C2=A0</div><div><br></div><div>I saw this &quot=
-;<span style=3D"color:rgb(62,67,73);font-family:&quot;goudy old style&quot;=
-,&quot;minion pro&quot;,&quot;bell mt&quot;,Georgia,&quot;Hiragino Mincho P=
-ro&quot;,serif;font-size:17px">For example, the=C2=A0</span><cite style=3D"=
-color:rgb(62,67,73);font-family:&quot;goudy old style&quot;,&quot;minion pr=
-o&quot;,&quot;bell mt&quot;,Georgia,&quot;Hiragino Mincho Pro&quot;,serif;f=
-ont-size:17px">aarch64</cite><span style=3D"color:rgb(62,67,73);font-family=
-:&quot;goudy old style&quot;,&quot;minion pro&quot;,&quot;bell mt&quot;,Geo=
-rgia,&quot;Hiragino Mincho Pro&quot;,serif;font-size:17px">=C2=A0CPU featur=
-e, which, when disabled, enables the optional AArch32 CPU feature, is only =
-supported when using the KVM accelerator and when running on a host CPU typ=
-e that supports the feature.=C2=A0</span>&quot; at &quot;<a href=3D"https:/=
-/qemu-project.gitlab.io/qemu/system/arm/cpu-features.html">https://qemu-pro=
-ject.gitlab.io/qemu/system/arm/cpu-features.html</a>&quot;, and need to und=
-erstand=C2=A0that, before deciding about the tools I will use.</div><div><b=
-r></div><div>Thanks,</div><div>ovi</div><div><br></div></div>
-
---000000000000b6cad205c1872dcc--

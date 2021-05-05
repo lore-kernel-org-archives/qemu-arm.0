@@ -1,96 +1,108 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp4139617lfg;
-        Tue, 4 May 2021 18:42:53 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzuNTxq4+wMoys5RvtOrmyt0jtCvqPMt4Bb1EBtX7o4wFgXoCWqXLDUPK8uFMgLHdXFlqLp
-X-Received: by 2002:a05:6638:101a:: with SMTP id r26mr18164555jab.15.1620178973722;
-        Tue, 04 May 2021 18:42:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620178973; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp4184250lfg;
+        Tue, 4 May 2021 20:05:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxR7WM2vxqv7ZqO3cK+/4nbjdDkEcC9QtX7YA+b9foztR43fsvCBswbZ0kLop7yCAeShC29
+X-Received: by 2002:a05:6e02:12e9:: with SMTP id l9mr11049554iln.28.1620183959432;
+        Tue, 04 May 2021 20:05:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620183959; cv=none;
         d=google.com; s=arc-20160816;
-        b=1AaosXT7doeqo1wuAdP43Cgl3P/f6udRy+ZnIoMIuUitlT9RVINSR+lmS4GkVSLTD0
-         77iAsKp6p2rCsz6eCd2xSd5HDMq+OLxTZgzi29K6e2kKXD0tgLThEmdRhUeXVD8/FURX
-         WTaMkcFy6AtXzqnlVd3K35V3o79/8c3QqGo7SkXuXJq5x+uuSW+jBNWCfg96BdWOiRoa
-         mUmDza0aO0rBvC4204XJ2shbuZUkQi++8JPkArwPVRFVJygng7s5ogdUD4GlVEPokyq1
-         G5QOEzgTocZV1EaC6N5xIfzy1XRcUvLIh5s3kuFTdjnSbwOvBImjUMEfua7rHxkeqMpH
-         s+1w==
+        b=C4xTqFBX/I4SsAvkMp4Q5d8/2DAKWg6IdQbQHlqhPqgsV6UN42/w6C7VwBAg3gC+/f
+         LssVA/DAGCIuml+LUBFC+MYaDDgtqta/5gYgxDxohWif28tWddr/KM+J0VeeEPB9pJeB
+         IT2Gu3cA4raSfEyAcAMXEeddAGsi079IQ/VbwpbW/mjQ9y9dT0O+prJL1+8vDIVAq/uU
+         KuxdRCuRxhcIm85XZoLnEL3Wlglr6mpO/OdZkjDCBbBd+Xcy+0n2NZFBJxw6k7mmGerD
+         VHTZKQ5IJdwhuKKreHMlVNTqGvRV9lt5iXVSvoI74hoDNmDllttH55YNW5CfkKSFdEGE
+         J2zg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=Y1fIDVFNSxPZswI1MhgIs71Bi/WXeW6s6/qftfdRvc4=;
-        b=ibeQvNDwZzrasxTzV0RSJlzgL3ys7XrC9BW/lkcZa9pCoUgfhZNflquIasyT2kogUV
-         KDQ0XctNqH5Fs0XCklTL0QVBql6HYEB53V4y5s3Z4LFlNwJTZCC16A0X/F/+66coN2uy
-         A6KxteYm5TWlARHDufLCnJpzMBSdotbMnVnOQKl5U3pOeOJFP/6u8yPt2vssIkPqBqQu
-         7vIwa9T/a6o3QkQmlWURHDlX8+rx36XvMfknPrEhHxuTqRRr6S+m8JxG6q29zp4utQkW
-         J2jOd2kwaV2OxA/x0kcvmvYo946omJlhWvRj6yP00KEq+YYZiSK24XPPWCfYEp8Arppd
-         UHuA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=gehSBgjnjQRNmV009q75lCL2iDxHBnM112fEwKMS6aA=;
+        b=iTdNkl15Y1E+Vz+uYuvJnhb53p4Ne30FBM989wTv9klCQ7wN6TDltvPc0yn/SKbiwE
+         K+soH3dZZvrSY1TefjF7sGbiHflCzgpwCSMEteCg5e1QDng4unXJDpj2vx+i/d1XGLtv
+         gZ5YrlW9YDh+4c7BNAgu26+Ury64UVOneJRu+HKpCv2fzC1zhHvwl8ohmgZnTp2Eo0s1
+         gE9AKfeJtTS51bHRgoxAyVryvsL6VzVMScX5Jzmy2asfD30P14m2WX9ZDUX2u5ZAFnCW
+         3GFwfBbqRaRv4ujuHI8YNTJntXNhA+sIm9Jr6yBqNoQhg5Ql/3ZVo6Lw3isn9WgQ/87M
+         8lJQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=KaVMYTBw;
+       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=1u0HBwjO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w25si18579067jal.57.2021.05.04.18.42.53
+        by mx.google.com with ESMTPS id w25si6264718ioc.66.2021.05.04.20.05.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 May 2021 18:42:53 -0700 (PDT)
+        Tue, 04 May 2021 20:05:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=KaVMYTBw;
+       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=1u0HBwjO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:32794 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46586 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1le6Yu-0006ns-Tk
-	for alex.bennee@linaro.org; Tue, 04 May 2021 21:42:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54994)
+	id 1le7rK-0008Eh-C6
+	for alex.bennee@linaro.org; Tue, 04 May 2021 23:05:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39096)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1le6YI-0006nf-Ki; Tue, 04 May 2021 21:42:14 -0400
-Received: from mail-qk1-x72f.google.com ([2607:f8b0:4864:20::72f]:33350)
+ (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
+ id 1le7qf-0008Dx-Ek
+ for qemu-arm@nongnu.org; Tue, 04 May 2021 23:05:17 -0400
+Received: from mail-qk1-x729.google.com ([2607:f8b0:4864:20::729]:38561)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1le6YF-0006Mo-HL; Tue, 04 May 2021 21:42:14 -0400
-Received: by mail-qk1-x72f.google.com with SMTP id o5so210381qkb.0;
- Tue, 04 May 2021 18:42:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Y1fIDVFNSxPZswI1MhgIs71Bi/WXeW6s6/qftfdRvc4=;
- b=KaVMYTBwY8LkH6aeiZ0CGas9tAFhAAx9Eq67OOAT3T/r1hZkGdYHO9+RUvpzCbk0lk
- IoNM2ka5RjocVkMRC6R7L8FOFOWJ2ZT8X+wFvq+8SC+XtC0Vhnicc8I6X5oBuN9JwpFS
- hYzwvUDf8FyIv/i66Jw5hVmxQt4L2P01onbT8=
+ (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
+ id 1le7qV-00033Q-Pw
+ for qemu-arm@nongnu.org; Tue, 04 May 2021 23:05:17 -0400
+Received: by mail-qk1-x729.google.com with SMTP id v20so305720qkv.5
+ for <qemu-arm@nongnu.org>; Tue, 04 May 2021 20:05:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=gehSBgjnjQRNmV009q75lCL2iDxHBnM112fEwKMS6aA=;
+ b=1u0HBwjOeX8loV5l2xCF4uOZm9BYfKIt56h3Zj5ceAI9wvVFpPfyUJ+kPzxYsAYYqO
+ yemDn4h8p+KfIhnUiHQ1Vrqw9j5ZJGyx36hEipNwwVFPk8iptLx87AgHt1wwF6SFAxUy
+ 5AFxzf++NIqhcYggNmz2DUh0xnymatg0Uj1x2DOLjz7O8+b5GgywVeXBYUpNTNEW23x+
+ EbqkdV6UDMRW+nwUHXaHGGDRpguLBINPubs8t52dg2yKEzb3eXJUBSShT8ckprVdklBS
+ xLc/R8Nr48ummOgGEGhKgVhfTdqIjeoVKju7/tHZQ2HPKPaUIPk40yX8twrVIbj21UM5
+ s1sQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Y1fIDVFNSxPZswI1MhgIs71Bi/WXeW6s6/qftfdRvc4=;
- b=sJQU59EUA5Vxsl4uDAOLnKVTqIqP01gI4J9QjlYNdQX4d6vEBk9eezIPoCJptbKN3m
- xeCcVM25G0WOnhrGc6C8TtMOehS6VCiD6DO7xxfLMUbHawRl632bIaL9JZsQe/7xGRek
- LeacSjCRMloF60UZBZ6mHdfZE+RdVVzn03RSVWZlfvPFUB2pEXbR9We3N8L9L4pPB3RX
- TALoi14zvVvwmC3WZZ1lhMgv8jEqS1H6UGnQTL2Vn64Ano/v4B0xDfvR0GGDmprLV69C
- DcP4Iwv1/wPW6FKnzd4EH7vBKr3dgM7jOrwd14kBPORr5ERE338vt4xeAH9ch9pfwLT/
- FcMA==
-X-Gm-Message-State: AOAM531gIWfyD/rGSrfqE4FSeBua/uWROGZZWmbmkGCuP+b37rdZ2SH4
- dPPR6fRsX0GsAzXQvVeN8UlEnDRdNapTZbd95NI=
-X-Received: by 2002:a37:f91a:: with SMTP id l26mr27754167qkj.55.1620178928797; 
- Tue, 04 May 2021 18:42:08 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=gehSBgjnjQRNmV009q75lCL2iDxHBnM112fEwKMS6aA=;
+ b=R/AxR9kfL5atO/Yz34b88jJR1P+tyTsS1NmrfWtZX38UlmTHyoJNqBkzpoq6qwhtZN
+ 0/y//2w3yQAaz0HnxSqx2c3Dm0ryiUEXhcyh46J377+4Izw1Qwgu6r5irR+xAgagw948
+ 0s/Ru8dtkRwAmYYfzKw8hicChF3S37dblYWRFS4w3inc6lJMZ8wQR+oqg3wglU3FLeUr
+ Q3SYctuKEPDYAkV2aph6L9wUjH0CmqT/a26Eo3Ivcv5/uMf4myEZZ8n1pu7ZxVAXRJxh
+ LcuZd5AqB7b+goFtnQYfdzoFTJjWKdITcMkY0qF1e1SvIOk1rNBeUbEf+jLATDBMoErD
+ pOTA==
+X-Gm-Message-State: AOAM532PTaL52gL3XFDJC8rxqsqRFksmZjo3nJD55zyNCxd8i+rRJTRB
+ IZ0nTe7BEvHQ9MQyci1vx1eDID+9OPNMZw==
+X-Received: by 2002:a37:7944:: with SMTP id u65mr27714555qkc.29.1620183906930; 
+ Tue, 04 May 2021 20:05:06 -0700 (PDT)
+Received: from cube.int.bluestop.org (c-174-52-16-57.hsd1.ut.comcast.net.
+ [174.52.16.57])
+ by smtp.gmail.com with ESMTPSA id a63sm12270550qkf.132.2021.05.04.20.05.05
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 04 May 2021 20:05:06 -0700 (PDT)
+From: Rebecca Cran <rebecca@nuviainc.com>
+To: Richard Henderson <richard.henderson@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v8 3/4] target/arm: Add support for FEAT_TLBIOS
+Date: Tue,  4 May 2021 21:04:42 -0600
+Message-Id: <20210505030443.25310-4-rebecca@nuviainc.com>
+X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20210505030443.25310-1-rebecca@nuviainc.com>
+References: <20210505030443.25310-1-rebecca@nuviainc.com>
 MIME-Version: 1.0
-References: <20210504162841.2884846-1-titusr@google.com>
- <20210504162841.2884846-2-titusr@google.com>
-In-Reply-To: <20210504162841.2884846-2-titusr@google.com>
-From: Joel Stanley <joel@jms.id.au>
-Date: Wed, 5 May 2021 01:41:56 +0000
-Message-ID: <CACPK8XfYpLpkz8rHmr9A2BcKwZhPA2moyMCRSEsZun_1p+SppA@mail.gmail.com>
-Subject: Re: [PATCH 1/3] hw/i2c: add support for PMBus
-To: Titus Rwantare <titusr@google.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::72f;
- envelope-from=joel.stan@gmail.com; helo=mail-qk1-x72f.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::729;
+ envelope-from=rebecca@nuviainc.com; helo=mail-qk1-x729.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -103,238 +115,130 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Hao Wu <wuhaotsh@google.com>, Corey Minyard <cminyard@mvista.com>,
- qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Rebecca Cran <rebecca@nuviainc.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cXkONp102XRm
+X-TUID: +yOZB/y0qud0
 
-On Tue, 4 May 2021 at 16:30, Titus Rwantare <titusr@google.com> wrote:
->
-> QEMU has support for SMBus devices, and PMBus is a more specific
-> implementation of SMBus. The additions made in this commit makes it easier to
-> add new PMBus devices to QEMU.
->
-> https://pmbus.org/specification-archives/
+ARMv8.4 adds the mandatory FEAT_TLBIOS. It provides TLBI
+maintenance instructions that extend to the Outer Shareable domain.
 
-I'm not a pmbus expert, but I am happy that someone has created a
-framework to model it. I've given them a read and some minor comments
-below.
+Signed-off-by: Rebecca Cran <rebecca@nuviainc.com>
+---
+ target/arm/cpu.h    |  5 ++
+ target/arm/helper.c | 75 ++++++++++++++++++++
+ 2 files changed, 80 insertions(+)
 
-> Reviewed-by: Hao Wu <wuhaotsh@google.com>
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 5802798c3069..7986a217acdd 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -4076,6 +4076,11 @@ static inline bool isar_feature_aa64_tlbirange(const ARMISARegisters *id)
+     return FIELD_EX64(id->id_aa64isar0, ID_AA64ISAR0, TLB) == 2;
+ }
+ 
++static inline bool isar_feature_aa64_tlbios(const ARMISARegisters *id)
++{
++    return FIELD_EX64(id->id_aa64isar0, ID_AA64ISAR0, TLB) != 0;
++}
++
+ static inline bool isar_feature_aa64_sb(const ARMISARegisters *id)
+ {
+     return FIELD_EX64(id->id_aa64isar1, ID_AA64ISAR1, SB) != 0;
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index cb10851efda8..04c4d766adb9 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -7213,6 +7213,78 @@ static const ARMCPRegInfo tlbirange_reginfo[] = {
+     REGINFO_SENTINEL
+ };
+ 
++static const ARMCPRegInfo tlbios_reginfo[] = {
++    { .name = "TLBI_VMALLE1OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 1, .opc2 = 0,
++      .access = PL1_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_vmalle1is_write },
++    { .name = "TLBI_ASIDE1OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 1, .opc2 = 2,
++      .access = PL1_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_vmalle1is_write },
++    { .name = "TLBI_RVAE1OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 5, .opc2 = 1,
++      .access = PL1_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_rvae1is_write },
++    { .name = "TLBI_RVAAE1OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 5, .opc2 = 3,
++      .access = PL1_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_rvae1is_write },
++   { .name = "TLBI_RVALE1OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 5, .opc2 = 5,
++      .access = PL1_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_rvae1is_write },
++    { .name = "TLBI_RVAALE1OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 5, .opc2 = 7,
++      .access = PL1_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_rvae1is_write },
++    { .name = "TLBI_ALLE2OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 1, .opc2 = 0,
++      .access = PL2_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_alle2is_write },
++   { .name = "TLBI_ALLE1OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 1, .opc2 = 4,
++      .access = PL2_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_alle1is_write },
++    { .name = "TLBI_VMALLS12E1OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 1, .opc2 = 6,
++      .access = PL2_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_alle1is_write },
++    { .name = "TLBI_IPAS2E1OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 0,
++      .access = PL2_W, .type = ARM_CP_NOP },
++    { .name = "TLBI_RIPAS2E1OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 3,
++      .access = PL2_W, .type = ARM_CP_NOP },
++    { .name = "TLBI_IPAS2LE1OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 4,
++      .access = PL2_W, .type = ARM_CP_NOP },
++    { .name = "TLBI_RIPAS2LE1OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 7,
++      .access = PL2_W, .type = ARM_CP_NOP },
++   { .name = "TLBI_RVAE2OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 5, .opc2 = 1,
++      .access = PL2_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_rvae2is_write },
++   { .name = "TLBI_RVALE2OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 5, .opc2 = 5,
++      .access = PL2_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_rvae2is_write },
++    { .name = "TLBI_ALLE3OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 1, .opc2 = 0,
++      .access = PL3_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_alle3is_write },
++   { .name = "TLBI_RVAE3OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 5, .opc2 = 1,
++      .access = PL3_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_rvae3is_write },
++   { .name = "TLBI_RVALE3OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 5, .opc2 = 5,
++      .access = PL3_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_rvae3is_write },
++    REGINFO_SENTINEL
++};
++
+ static uint64_t rndr_readfn(CPUARMState *env, const ARMCPRegInfo *ri)
+ {
+     Error *err = NULL;
+@@ -8585,6 +8657,9 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+     if (cpu_isar_feature(aa64_tlbirange, cpu)) {
+         define_arm_cp_regs(cpu, tlbirange_reginfo);
+     }
++    if (cpu_isar_feature(aa64_tlbios, cpu)) {
++        define_arm_cp_regs(cpu, tlbios_reginfo);
++    }
+ #ifndef CONFIG_USER_ONLY
+     /* Data Cache clean instructions up to PoP */
+     if (cpu_isar_feature(aa64_dcpop, cpu)) {
+-- 
+2.26.2
 
-Did this review happen on the mailing list? if not, I recommend doing
-your review on the public lists, so we can see what comments Hao made.
-
-> Signed-off-by: Titus Rwantare <titusr@google.com>
-
-> +++ b/hw/i2c/pmbus_device.c
-> @@ -0,0 +1,1611 @@
-> +/*
-> + * PMBus wrapper over SMBus
-> + *
-> + * Copyright 2021 Google LLC
-> + *
-> + * This program is free software; you can redistribute it and/or modify it
-> + * under the terms of the GNU General Public License as published by the
-> + * Free Software Foundation; either version 2 of the License, or
-> + * (at your option) any later version.
-> + *
-> + * This program is distributed in the hope that it will be useful, but WITHOUT
-> + * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-> + * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-> + * for more details.
-
-You can replace these two paragraphs with a SDPX line:
-
- SPDX-License-Identifier: GPL-2.0-or-later
-
-In addition, add this to your git config to put the .h files on top :
-
-git config diff.orderFile = /some/path/qemu.git/scripts/git.orderfile
-
-It's easier for review.
-
-I'd also suggest putting your tests in a separate patch, following the
-addition of the model, again for easier review.
-
-> + */
-> +#include "qemu/osdep.h"
-> +#include <math.h>
-> +#include <string.h>
-> +#include "hw/i2c/pmbus_device.h"
-> +#include "qemu/module.h"
-> +#include "qemu/log.h"
-> +
-> +uint16_t pmbus_data2direct_mode(PMBusCoefficients c, uint32_t value)
-> +{
-> +    /* R is usually negative to fit large readings into 16 bits */
-> +    uint16_t y = (c.m * value + c.b) * pow(10, c.R);
-> +    return y;
-> +}
-> +
-> +uint32_t pmbus_direct_mode2data(PMBusCoefficients c, uint16_t value)
-> +{
-> +    /* X = (Y * 10^-R - b) / m */
-> +    uint32_t x = (value / pow(10, c.R) - c.b) / c.m;
-> +    return x;
-> +}
-> +
-> +static void pmbus_send(PMBusDevice *pmdev, const uint8_t *data, uint16_t len)
-> +{
-> +    if (pmdev->out_buf_len + len > SMBUS_DATA_MAX_LEN) {
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "PMBus device tried to send too much data");
-> +        len = 0;
-> +    }
-> +
-> +    for (int i = len - 1; i >= 0; i--) {
-> +        pmdev->out_buf[i + pmdev->out_buf_len] = data[len - i - 1];
-> +    }
-> +    pmdev->out_buf_len += len;
-> +}
-> +
-> +/* Internal only, convert unsigned ints to the little endian bus */
-> +static void pmbus_send_uint(PMBusDevice *pmdev, uint64_t data, uint8_t size)
-> +{
-> +    uint8_t bytes[8];
-
-Do you need to assert that size is less than the array size? Probably
-not as all the callers are local.
-
-> +    for (int i = 0; i < size; i++) {
-> +        bytes[i] = data & 0xFF;
-> +        data = data >> 8;
-> +    }
-> +    pmbus_send(pmdev, bytes, size);
-> +}
-> +
-> +void pmbus_send_block(PMBusDevice *pmdev, PMBusBlock block)
-> +{
-> +    pmbus_send(pmdev, block.buf, block.len);
-> +}
-> +
-> +void pmbus_send8(PMBusDevice *pmdev, uint8_t data)
-> +{
-> +    pmbus_send_uint(pmdev, data, 1);
-> +}
-> +
-> +void pmbus_send16(PMBusDevice *pmdev, uint16_t data)
-> +{
-> +    pmbus_send_uint(pmdev, data, 2);
-> +}
-> +
-> +void pmbus_send32(PMBusDevice *pmdev, uint32_t data)
-> +{
-> +    pmbus_send_uint(pmdev, data, 4);
-> +}
-> +
-> +void pmbus_send64(PMBusDevice *pmdev, uint64_t data)
-> +{
-> +    pmbus_send_uint(pmdev, data, 8);
-> +}
-> +
-> +void pmbus_send_string(PMBusDevice *pmdev, const char *data)
-> +{
-> +    size_t len = strlen(data);
-
-Do you need to assert that len is > 0?
-
-> +    g_assert(len + pmdev->out_buf_len < SMBUS_DATA_MAX_LEN);
-> +    pmdev->out_buf[len + pmdev->out_buf_len] = len;
-> +
-> +    for (int i = len - 1; i >= 0; i--) {
-> +        pmdev->out_buf[i + pmdev->out_buf_len] = data[len - 1 - i];
-> +    }
-> +    pmdev->out_buf_len += len + 1;
-> +}
-> +
-> +
-> +static uint64_t pmbus_receive_uint(const uint8_t *buf, uint8_t len)
-> +{
-> +    uint64_t ret = 0;
-> +
-> +    /* Exclude command code from return value */
-> +    buf++;
-> +    len--;
-> +
-> +    for (int i = len - 1; i >= 0; i--) {
-> +        ret = ret << 8 | buf[i];
-> +    }
-> +    return ret;
-> +}
-> +
-> +uint8_t pmbus_receive8(PMBusDevice *pmdev)
-> +{
-> +    if (pmdev->in_buf_len - 1 != 1) {
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "%s: length mismatch. Expected 1 byte, got %d bytes\n",
-> +                      __func__, pmdev->in_buf_len - 1);
-> +    }
-> +    return (uint8_t) pmbus_receive_uint(pmdev->in_buf, pmdev->in_buf_len);
-
-The casts are implicit in C, so you do not need to explicitly cast the
-return types in this and the functions below.
-
-> +}
-> +
-> +uint16_t pmbus_receive16(PMBusDevice *pmdev)
-> +{
-> +    if (pmdev->in_buf_len - 1 != 2) {
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "%s: length mismatch. Expected 2 bytes, got %d bytes\n",
-> +                      __func__, pmdev->in_buf_len - 1);
-> +    }
-> +    return (uint16_t) pmbus_receive_uint(pmdev->in_buf, pmdev->in_buf_len);
-> +}
-> +
-> +uint32_t pmbus_receive32(PMBusDevice *pmdev)
-> +{
-> +    if (pmdev->in_buf_len - 1 != 4) {
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "%s: length mismatch. Expected 4 bytes, got %d bytes\n",
-> +                      __func__, pmdev->in_buf_len - 1);
-> +    }
-> +    return (uint32_t) pmbus_receive_uint(pmdev->in_buf, pmdev->in_buf_len);
-> +}
-> +
-> +uint64_t pmbus_receive64(PMBusDevice *pmdev)
-> +{
-> +    if (pmdev->in_buf_len - 1 != 8) {
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "%s: length mismatch. Expected 8 bytes, got %d bytes\n",
-> +                      __func__, pmdev->in_buf_len - 1);
-> +    }
-> +    return (uint64_t) pmbus_receive_uint(pmdev->in_buf, pmdev->in_buf_len);
-> +}
-> +
-> +PMBusBlock pmbus_receive_block(PMBusDevice *pmdev)
-> +{
-> +    PMBusBlock data = { pmdev->in_buf, pmdev->in_buf_len };
-> +    return data;
-
-Returning the local variable seems like a dangerous function to have.
-You don't have any users of this function in the models you have
-submitted.
-
-
-> +static int pmbus_write_data(SMBusDevice *smd, uint8_t *buf, uint8_t len)
-> +{
-> +    PMBusDevice *pmdev = PMBUS_DEVICE(smd);
-> +    PMBusDeviceClass *pmdc = PMBUS_DEVICE_GET_CLASS(pmdev);
-> +    int ret = 0;
-> +    uint8_t index;
-> +
-> +    if (len == 0) {
-> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: writing empty data\n", __func__);
-> +        return -1;
-> +    }
-
-I was going to suggest you find a meaningful error code to return.
-Poking around at this callback, it seems like there's not much error
-checking going on at the call sites, so it's hard to make a
-suggestion.
-
-Cheers,
-
-Joel

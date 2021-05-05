@@ -1,100 +1,143 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp1337858lfg;
-        Thu, 6 May 2021 07:45:48 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzvLNFoq+5X2OzOac9Er3xOI+VB+fmXmQ06nK1n8w+aQEiIwvJhiRpyUoBgQn5avKQyPWBv
-X-Received: by 2002:a17:906:2c4c:: with SMTP id f12mr4762364ejh.3.1620312348641;
-        Thu, 06 May 2021 07:45:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620312348; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp174621lfg;
+        Wed, 5 May 2021 03:47:34 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx4l55t8sgJwT5mtJSI6p1yO7pTUhka87x9Ee4EHIdwcejQVaIxg4NLjGK331QktSrq13Vs
+X-Received: by 2002:a6b:7413:: with SMTP id s19mr21897682iog.151.1620211654134;
+        Wed, 05 May 2021 03:47:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620211654; cv=none;
         d=google.com; s=arc-20160816;
-        b=nigVTW1+AiFE62hL1AoLpwbQJGKZRRmnsVqyAB5AMDIxhr2N8RRPhDWfOySTPR7Nx5
-         X5h48M+0HfRJGfPe9rMleXw5HbciLoukiEiL0aYkhRZ7Hw3bUq6JvGXmSnMXxlasFp6d
-         bORtehjRLMDMa7WqphGTWnf+By7kKcbEfpIKIRatymevREYLCx034hv0XFlV3NJ51duW
-         WKgdlvShPuK836KIVmdjfa15IPqIxzkOB8LLUT+/Rjjw1SsNY7Gz9ANwFcsmo71t2W/3
-         Mq1jEiwosOZVG+UruDX5uGp57ir/alrSYs38lcv/LV5KPwq+68gOkU1XqmvkASoiqmaj
-         mfyw==
+        b=JW7lb23TUD6figxauhN/G1PDLVORwZzkoKZDuUt5Ro8Eyfk20uHDz1pUayYxl0D0o9
+         1Hw4WO8UqYbjzeg4jl3bVicTnZvdcC26LtZoT/3E2bo/IVepyZPgkL2FL/TbSomVyir+
+         BDHGqfP5omUOmMLRTI7L9DrqZ0QqMW6nDHg7SiWGs0fpTR9LwCZU6c0eKA0uktWyOSsX
+         O9fK7TiwnHXGoYTzfthAfQClrvjIGIU6Nns43uycEBS/Oe/F9yYZXDIFZ4w7e9c/L1gN
+         9T3a1X0wAnk1uzBkUbuM1sjLdkN0FSSKw2EYNzf6r8lXhElTP2bobHzAScywfOS3oHW3
+         ia1A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date;
-        bh=GzByMzi8RPuq1LhwiN12cbY2Ym5XOCFF24Q3UuImpJ0=;
-        b=Q/WN2GgASOjNzXCQAhoPC2y6Z0bwG7jUiHYOSOz1xG69f149REJcR3vHKGvEbyJrQi
-         uUIIYd9MGNXV0aCnNgplzRDQ51sQAGnuAlKVwC+xSIL9fUxn5hateszNsp4Zh6LK5ga+
-         eoUSjvpEVSjMBPas8nZKflXuhZCk2cjInkNGmuQWbr41T+b50XaCfZzYD7uuRxMaXKpx
-         YioqFE4rK5qT9hc0fcihoNgpSQPfDV3T0sMD3m6kiYNoskznCM3PrOct/EtWlkScx/Sn
-         8h9CCG9llsjczJo1VFOeLpj5mtAdKTKktYDncVUDOfLqdtHt7YtPSgJqMQ+ci5KHrEHC
-         UfgQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=THr0mjNKzPmZVI6XM/GT1xMzhTITjljxUc0ohXhalw4=;
+        b=aG5JpnQ29B5zIkFHoyZS2GDzfGBVcx1aSCSWW8rAtTCNFj1m9hDRv2F7yZsPFlJdJe
+         YbIN/1XMlm/o+U0jU8IUIdAZ7HxmPpFO9dYqS1ZoRZd+usjrJ4M/GyjaBvZs7aqpgzCM
+         O2cRCsN26XZpYXMfSi1R87UoW8Xcc4/AnZ2oMW8TujY9Xs1p5axi5cHc6u89nPn1QEXR
+         TKn2NBUfQ/hw/yFN3/0BzDdVubsek2tsQv7/3e2G7EnZBNyiQys6r/QPmPCvNP2KtmWp
+         9ceE7eEboOWIMO5Nb1hEvdw9XTUFFLahWipwdk2z8c7ZXooCW3um8LIRMRBK/8pvK7S1
+         offg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=softfail (google.com: domain of transitioning groug@kaod.org does not designate 205.139.111.44 as permitted sender) smtp.mailfrom=groug@kaod.org
-Return-Path: <groug@kaod.org>
-Received: from us-smtp-delivery-44.mimecast.com (us-smtp-delivery-44.mimecast.com. [205.139.111.44])
-        by mx.google.com with ESMTPS id g28si1003919edf.443.2021.05.06.07.45.48
+       dkim=pass header.i=@linaro.org header.s=google header.b="gdVpW/ON";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id s201si985667ios.76.2021.05.05.03.47.33
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 06 May 2021 07:45:48 -0700 (PDT)
-Received-SPF: softfail (google.com: domain of transitioning groug@kaod.org does not designate 205.139.111.44 as permitted sender) client-ip=205.139.111.44;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 05 May 2021 03:47:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=softfail (google.com: domain of transitioning groug@kaod.org does not designate 205.139.111.44 as permitted sender) smtp.mailfrom=groug@kaod.org
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-602-4Jbjb-DMNXiDclDRdlqWiQ-1; Thu, 06 May 2021 10:45:45 -0400
-X-MC-Unique: 4Jbjb-DMNXiDclDRdlqWiQ-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 337B961242;
-	Thu,  6 May 2021 14:45:43 +0000 (UTC)
-Received: from bahia.lan (ovpn-112-247.ams2.redhat.com [10.36.112.247])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 1045F19D9F;
-	Thu,  6 May 2021 14:45:34 +0000 (UTC)
-Date: Thu, 6 May 2021 16:45:33 +0200
-From: Greg Kurz <groug@kaod.org>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
-Cc: qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-ppc@nongnu.org,
- qemu-arm@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini
- <pbonzini@redhat.com>, Alex =?UTF-8?B?QmVubsOpZQ==?=
- <alex.bennee@linaro.org>, David Gibson <david@gibson.dropbear.id.au>
-Subject: Re: [PATCH v2 9/9] target/ppc/kvm: Replace alloca() by g_malloc()
-Message-ID: <20210506164533.040b8c39@bahia.lan>
-In-Reply-To: <20210506133758.1749233-10-philmd@redhat.com>
-References: <20210506133758.1749233-1-philmd@redhat.com>
-	<20210506133758.1749233-10-philmd@redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b="gdVpW/ON";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:59256 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1leF41-00047S-Dt
+	for alex.bennee@linaro.org; Wed, 05 May 2021 06:47:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41914)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1leF3o-00042q-Qr
+ for qemu-arm@nongnu.org; Wed, 05 May 2021 06:47:20 -0400
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635]:44948)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1leF3l-0004Ne-Rf
+ for qemu-arm@nongnu.org; Wed, 05 May 2021 06:47:20 -0400
+Received: by mail-ej1-x635.google.com with SMTP id gx5so2072040ejb.11
+ for <qemu-arm@nongnu.org>; Wed, 05 May 2021 03:47:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=THr0mjNKzPmZVI6XM/GT1xMzhTITjljxUc0ohXhalw4=;
+ b=gdVpW/ONpDoo3/P1kYIiNw6fvdrNOw4FhIC5cfH3eeSxNVJP/OTOLhcVTw7GbUFlmp
+ bRcXMDzfdplDmSkXAYD/gBxU9UY5kgPHoJ+3uPmpVlth231FumhxzRI+41LbGw4qtPpv
+ 71ngI5DPKEQeFKoHUcFrCFmjt3Mow9FfiehTp56EgJH1pQr85N/bCw/11AkX72elcFEf
+ 7YFOKcpc9CVwN9SmloNF4D9AganJBcsztDb8xtt30F+ds3tzsm9uoNIrMePuFjxsIgeF
+ 7hetphLSFYiL/iSMEJma8WNIWIlv2gNFwKkJnxDhu9UqteuMFVZl6ajllFkL3QxbClzn
+ MVSA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=THr0mjNKzPmZVI6XM/GT1xMzhTITjljxUc0ohXhalw4=;
+ b=WCF5jcZGvMwYkbLuhJmpoEJZRTCJGHo8uUwH4Pz7C5Gwhooy5Fd2wmQLP1A2RHOOAS
+ SwEYMkJ+mqblQvMeiOO2uAKMKwULKm8ULym9PbxdwUgZFayrMcW25ZvJ/kqBDdwNMHu4
+ 6W9vZlg5ODqoh4kR+euvsDSVpbrf0A/8qYP580Yz3LRH6NVnx95zwNMglTqOlvzgcfhx
+ 1yP23ln3Pm8E5BTRBWWBXfIPeu6LheAz2e1RgqRAeKVyKQjgU1IqJ8wCkTC8cox1U5UK
+ eAT+5CO0RwGL0tVwvCSQkkOCaCMHAS8qd2p0zLNzNhZCYX34aUjZ0CwC+cPAsMRWXY6V
+ gK4Q==
+X-Gm-Message-State: AOAM5326kFUxExEn4ZMIUniODLdyhpmEPBImdM1PQUXpU2zwuC3t6U7T
+ QDirAed3LE/Bh98tnHpMfs55f4g3SDHPE1dAcWO/8Q==
+X-Received: by 2002:a17:906:eced:: with SMTP id
+ qt13mr26487351ejb.382.1620211636290; 
+ Wed, 05 May 2021 03:47:16 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: kaod.org
-Content-Type: text/plain; charset=UTF-8
+References: <CAA5qdn1D5DMfqdQhG+p26F7cVx=Qy4GstRDqfCrJgbE62yi_Hw@mail.gmail.com>
+In-Reply-To: <CAA5qdn1D5DMfqdQhG+p26F7cVx=Qy4GstRDqfCrJgbE62yi_Hw@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 5 May 2021 11:46:09 +0100
+Message-ID: <CAFEAcA_rjN_q6pfLa_S9gQROwqhYVjg06DLJFjZXufyR6vWUYA@mail.gmail.com>
+Subject: Re: AArch64 code running on QEMU ...
+To: ovidiu nastai <ovidiu.s.nastai@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: bd+RumD+UP1+
+Received-SPF: pass client-ip=2a00:1450:4864:20::635;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x635.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: PdRAzca6RDG3
 
-On Thu,  6 May 2021 15:37:58 +0200
-Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> wrote:
+On Tue, 4 May 2021 at 23:25, ovidiu nastai <ovidiu.s.nastai@gmail.com> wrot=
+e:
+> Please help me with this, I am new to QEMU: I need to run some AArch64 co=
+de, to verify functional correctness, and code generation. The code sources=
+ will be mainly high-level syntax (C/C++), then I'll disassemble and inspec=
+t.
+> Question: can I run AArch64 sources on QEMU, that's it, on a x86-64 host =
+machine, or, I need an AArch64 host for QEMU, to start with.
 
-> The ALLOCA(3) man-page mentions its "use is discouraged".
->=20
-> Replace it by a g_malloc() call.
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
+Yes, you can emulate AArch64 guest code on an x86 host.
 
-Reviewed-by: Greg Kurz <groug@kaod.org>
+> I saw this "For example, the aarch64 CPU feature, which, when disabled, e=
+nables the optional AArch32 CPU feature, is only supported when using the K=
+VM accelerator and when running on a host CPU type that supports the featur=
+e. " at "https://qemu-project.gitlab.io/qemu/system/arm/cpu-features.html",=
+ and need to understand that, before deciding about the tools I will use.
 
->  target/ppc/kvm.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
->=20
-> diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
-> index 104a308abb5..63c458e2211 100644
-> --- a/target/ppc/kvm.c
-> +++ b/target/ppc/kvm.c
-> @@ -2698,11 +2698,10 @@ int kvmppc_save_htab(QEMUFile *f, int fd, size_t =
-bufsize, int64_t max_ns)
->  int kvmppc_load_htab_chunk(QEMUFile *f, int fd, uint32_t index,
->                             uint16_t n_valid, uint16_t n_invalid, Error *=
-*errp)
->  {
-> -    struct kvm_get_htab_header *buf;
->      size_t chunksize =3D sizeof(*buf) + n_valid * HASH_PTE_SIZE_64;
-> +    g_autofree struct kvm_get_htab_header *buf =3D g_malloc(chunksize);
->      ssize_t rc;
-> =20
-> -    buf =3D alloca(chunksize);
->      buf->index =3D index;
->      buf->n_valid =3D n_valid;
->      buf->n_invalid =3D n_invalid;
+The feature which is not supported here for TCG is
+"create an AArch64 CPU but then run an AArch32 guest kernel on it".
+For TCG, if you want to run an AArch32 guest kernel you need to
+create an AArch32 CPU.
+
+thanks
+-- PMM

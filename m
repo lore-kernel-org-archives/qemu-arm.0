@@ -1,80 +1,80 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp272347lfg;
-        Wed, 5 May 2021 05:58:36 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxCRrUoiHczAlO8y76BrmnRaD26QT4BO37paky/luSzReQudnmM3BtIui719cAcxh+nyXzX
-X-Received: by 2002:a17:906:3e42:: with SMTP id t2mr26828977eji.508.1620219515996;
-        Wed, 05 May 2021 05:58:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620219515; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp272403lfg;
+        Wed, 5 May 2021 05:58:41 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwd3VivIzL9a5tfZCjVgVBGxaSJGPdXxNF9zzOYMUGrIreAgr61C8n4PrWksiVX8LYRSPRm
+X-Received: by 2002:a17:906:ecf4:: with SMTP id qt20mr27349611ejb.59.1620219520886;
+        Wed, 05 May 2021 05:58:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620219520; cv=none;
         d=google.com; s=arc-20160816;
-        b=tpaMu78f4nLwcXDlttcdSz5KVc/CeL/3e1hAlEqowVfemjyeiUzsobX8UmFcYierv+
-         e5acr4wCYibGilEqD0XpH3Jn4apyh5JLbhgvfCjociNR9RLhCpzW7r2rqqZn8Kl/CVkE
-         xJCewHjg1vrOAYAWmWL4jwJIyY8t5cVyFxIYOE1fWnX1YwLM5xRAUCPoilGzv/BWGqwa
-         fw7eJ+g/f8w85R4dczkUtlLkaAzS74+Yr9cQ6Kq2LFyx6P5UbSN7xSjc0W+Ys2vy1tao
-         S7/87gb7MMhnqh9XMhN+Ujs7X+2twLiBg5OMtXm3AtjgRHmJV2Z22Jy9N0w8q7rSsYZl
-         Q5YA==
+        b=MMbcppQBfaKcVH4Grm73ggulc55Bc20QpTjnGoy5vGxFkf7RpUYsdi5huKN38d3Ok+
+         zJOkHtGWFt7iYLPrZaXaIu85g9ROf1yS2EMEnV21ahCFeihgjO7u6j66St4ESWoHzd9/
+         X7a5ZVKgpPukJIfZWm4HJr4MPY42RkUeU1Vkd3JAf4eYR1n44eWGbbzXcbmyOQ507+kn
+         0nXZI+S/lBSddGyXqnW1GgsT7xlbSFyJRHLU8i+NonG2ed9dDi+Urs4zmScmjirT3PV1
+         aDKi/v3yREw4BC939ZZzFwWZ8H/MOIKVXK0ozjOO84z69EGT0yzXoXV3f99gXf2CveLx
+         dj7A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=YUwsAY7j/ecV1UbnP3UC7xEIyUmH3VJq/XNOQQ4OyUg=;
-        b=mpoxQVOB3i3/sb4d428r9PIMWhei2Y+liMjGdFrCT37tUrqZpvOI67E5WjbSov0GB+
-         5KAC5cxmv9Jovt130Gaz5o3zYQC9jD1B0vbrlwkrupvQeyRSoL3FAaxo1IlOUYGLC/5f
-         b5dYQGvqiAQ7cWexmFuQhNQ/94ixbNMHVsNf/ykPk8vwL1gTMRMlOTAMmg8QuVbFayHe
-         R97Z7JWVqGr3MWIXDkwref0c1UXT0oUA5z6SIO/6DbgnnliwDyQLtncMw0oJgbzpPB8S
-         2ldPTuF1z3Hb40ATx8+N5TdJLhR/Y9OVPBVyuJeRSeKNSdnZkMYP4n1Pf8mo+bItCRWq
-         v4Bw==
+        bh=cVrcRnyBOkjPEo/icx3S79OKNawcTbdRmhevRRnT37M=;
+        b=O/q/mMu3OYQ1Z4CvE8wNtkFkSEeku6PcbvEaP40WArcE2y0Sbyvra3jZm5ruAxTdf4
+         UYZShISOvV5aLCCmH+E1y388hpwVMX8JU4PhLu/wA0f8uWFo6Qdy43T4lWhkObUXVayR
+         8abaV99gnjDBNgRZqAEjdzGcbkXX7Q8PjZN4L7NzFgyYz256Eif+1DIasuGnTIj5Pr3C
+         BaauFs7C7ECWMP0jZpoyBJ5oBO7QVlGUEx4AefMA9VrESxKHoL0rCMWZJMAFf+FdnwiV
+         VS8bXbjSmWg6o7ekql+V8djtNBDruOCdQCpdhNjFgMQtie8qg9BJPzHpGQOflh3fPYIU
+         N97w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i6UblkPR;
-       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VYTAsihG;
+       spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
-        by mx.google.com with ESMTPS id e9si6384710ejq.308.2021.05.05.05.58.35
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id r14si8626785edy.200.2021.05.05.05.58.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 05 May 2021 05:58:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
+        Wed, 05 May 2021 05:58:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i6UblkPR;
-       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VYTAsihG;
+       spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1620219515;
+	s=mimecast20190719; t=1620219519;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=YUwsAY7j/ecV1UbnP3UC7xEIyUmH3VJq/XNOQQ4OyUg=;
-	b=i6UblkPR7VJgCSNDx7M+cb0zD9PhoceLfwEz9+j7MkG/yOWNeQy8PyVd1KifyScrsZItfb
-	I3vALcm9oZ+QhTFY4qybr26uhe7rrhY5g0GnO1hhhQLQ3/RNQQ3pllCOXUOker46zlG8jK
-	KDXiDiSli+UX8vqtatPHk/P3Ewhvmxs=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-243-pA5apXrKPImWkiVYHVsmWQ-1; Wed, 05 May 2021 08:58:33 -0400
-X-MC-Unique: pA5apXrKPImWkiVYHVsmWQ-1
-Received: by mail-wr1-f70.google.com with SMTP id 88-20020adf95610000b029010758d8d7e2so652300wrs.19
-        for <alex.bennee@linaro.org>; Wed, 05 May 2021 05:58:33 -0700 (PDT)
+	bh=cVrcRnyBOkjPEo/icx3S79OKNawcTbdRmhevRRnT37M=;
+	b=VYTAsihG6w13TQ4/ssG4GMamEpqfL8v+KJ53+4gHs62FliA4orm2OwTJZ7ZVgBu/m7xK+0
+	SK7qI/+gQ+GkcZfHD6d+LLv8YjOGkhFbNtKeoJL1Ir6lMaOHsaxOT7pXB3CN5ginXnftOO
+	uj+UjqJKuBa3tr0j3Zlsb2kMqtyzRv8=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-394-SgY6Og3EPmmKOOTCG6K9PQ-1; Wed, 05 May 2021 08:58:38 -0400
+X-MC-Unique: SgY6Og3EPmmKOOTCG6K9PQ-1
+Received: by mail-wr1-f72.google.com with SMTP id a12-20020a5d6cac0000b0290109c3c8d66fso663678wra.15
+        for <alex.bennee@linaro.org>; Wed, 05 May 2021 05:58:38 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=YUwsAY7j/ecV1UbnP3UC7xEIyUmH3VJq/XNOQQ4OyUg=;
-        b=pqndNIJF2h5hauldL7EacVjacWvyyicATmkXZFwiaMevT4Gv3TZccfmG8wVTRw7rBB
-         BISTYFZXDawku3Kl6a+Q/+TkjXkmDsOxm184CiqJ9UybM+195HuG3NkGjLtruOc/7Y/G
-         AekxqchsgjZmHgaG1vSRfwEpL2pu8+Xuy3a7KmhvyB3xA1K0JdluVijkxHkxz1NrB09m
-         UZJRBPBO2ndCiNgsOj6grd5KjLiRlw3g/bOwhSICnc6ebLW1WcwMEwMYWk3tJO1tQGzF
-         Mgsq7Nagpp/yjtStMjJoC4j/Va+rM1cRMcCfRBUlylzpM9iJKtJL755ZTAzi4AeaJbUz
-         nA6A==
-X-Gm-Message-State: AOAM532CQAFl8WlSaZPAUVQgMQhmNc69Jl4UB23i0d4ewLfDzqhgdRKT
-	aXDesTg4AAPCK90qaQqX6z+dXnOYMzyBdv65/y+QiTHIU+BqLaXhMnQkzKAfhGnlYvSqMKMAj4A
-	t9+oP8Kj2rKYdNtCu
-X-Received: by 2002:a5d:4412:: with SMTP id z18mr37885714wrq.103.1620219512549;
-        Wed, 05 May 2021 05:58:32 -0700 (PDT)
-X-Received: by 2002:a5d:4412:: with SMTP id z18mr37885692wrq.103.1620219512393;
-        Wed, 05 May 2021 05:58:32 -0700 (PDT)
+        bh=cVrcRnyBOkjPEo/icx3S79OKNawcTbdRmhevRRnT37M=;
+        b=rIWQUbZ+v+N7pX5lL9T8n4qL6BcA2TZ0TpNmtkxNmgwfymxOzVvHHG5DcXZ77GKPMl
+         5oXG4RaFg4/BMbJQZCeY50yADoAzxiNdZfSfU64k+njVGH1VOg57TEWahxpuSrQF+pq8
+         rHBcEwvbawkrwKDDXRkbKxP27drETehHCOsZabcRdbE+iTvsTW45ekVtdk2iLdIlHbKq
+         24+AExV3uHQMkG5xorznWNeWxs+o4B4YtvCwRvHHgosMrxTdWUCVIuMHYk52CsacatYa
+         sS4834kdKHp7eZayoVNT1CQoHpLQCGGJ5xfYTvAv4hdCLtqp5+0Oaf81FnSR09Dk0uvG
+         mWjg==
+X-Gm-Message-State: AOAM533oCIBfrvr3hY8oyFqLwNAnPACPlRlcsNfVj2a4Pg6HLEjlWXKP
+	WXYj3XdqqcQ3KA5LvAWmbti/c/QRA0HKQ0RAM3eIBnpZhkjgg/qcK2iUlStASVYGcz/+xhvbkK2
+	5/8ZIyMbLs/CcOFtH
+X-Received: by 2002:adf:f205:: with SMTP id p5mr29122735wro.170.1620219517316;
+        Wed, 05 May 2021 05:58:37 -0700 (PDT)
+X-Received: by 2002:adf:f205:: with SMTP id p5mr29122720wro.170.1620219517193;
+        Wed, 05 May 2021 05:58:37 -0700 (PDT)
 Return-Path: <philmd@redhat.com>
 Received: from x1w.redhat.com (astrasbourg-653-1-188-220.w90-13.abo.wanadoo.fr. [90.13.127.220])
-        by smtp.gmail.com with ESMTPSA id b6sm5296646wmj.2.2021.05.05.05.58.31
+        by smtp.gmail.com with ESMTPSA id x65sm6912160wmg.36.2021.05.05.05.58.36
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 05 May 2021 05:58:32 -0700 (PDT)
+        Wed, 05 May 2021 05:58:36 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -85,9 +85,9 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
 	Thomas Huth <thuth@redhat.com>,
 	Laurent Vivier <lvivier@redhat.com>,
 	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PATCH v7 05/12] qtest/arm-cpu-features: Restrict sve_tests_sve_off_kvm test to KVM
-Date: Wed,  5 May 2021 14:57:59 +0200
-Message-Id: <20210505125806.1263441-6-philmd@redhat.com>
+Subject: [PATCH v7 06/12] qtest/arm-cpu-features: Remove TCG fallback to KVM specific tests
+Date: Wed,  5 May 2021 14:58:00 +0200
+Message-Id: <20210505125806.1263441-7-philmd@redhat.com>
 X-Mailer: git-send-email 2.26.3
 In-Reply-To: <20210505125806.1263441-1-philmd@redhat.com>
 References: <20210505125806.1263441-1-philmd@redhat.com>
@@ -98,40 +98,32 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: qG+4ZaDOXGfT
+X-TUID: LCRM5vXOw8Ra
 
-The sve_tests_sve_off_kvm() test is KVM specific.
-Only run it if KVM is available.
+sve_tests_sve_off_kvm() and test_query_cpu_model_expansion_kvm()
+tests are now only being run if KVM is available. Drop the TCG
+fallback.
 
 Suggested-by: Andrew Jones <drjones@redhat.com>
 Reviewed-by: Andrew Jones <drjones@redhat.com>
 Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- tests/qtest/arm-cpu-features.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ tests/qtest/arm-cpu-features.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
-index 7f4b2521277..66300c3bc20 100644
+index 66300c3bc20..b1d406542f7 100644
 --- a/tests/qtest/arm-cpu-features.c
 +++ b/tests/qtest/arm-cpu-features.c
-@@ -604,6 +604,8 @@ int main(int argc, char **argv)
-     if (g_str_equal(qtest_get_arch(), "aarch64") && qtest_has_accel("kvm")) {
-         qtest_add_data_func("/arm/kvm/query-cpu-model-expansion",
-                             NULL, test_query_cpu_model_expansion_kvm);
-+        qtest_add_data_func("/arm/kvm/query-cpu-model-expansion/sve-off",
-+                            NULL, sve_tests_sve_off_kvm);
-     }
+@@ -21,7 +21,7 @@
+ #define SVE_MAX_VQ 16
  
-     if (g_str_equal(qtest_get_arch(), "aarch64")) {
-@@ -611,8 +613,6 @@ int main(int argc, char **argv)
-                             NULL, sve_tests_sve_max_vq_8);
-         qtest_add_data_func("/arm/max/query-cpu-model-expansion/sve-off",
-                             NULL, sve_tests_sve_off);
--        qtest_add_data_func("/arm/kvm/query-cpu-model-expansion/sve-off",
--                            NULL, sve_tests_sve_off_kvm);
-     }
- 
-     return g_test_run();
+ #define MACHINE     "-machine virt,gic-version=max -accel tcg "
+-#define MACHINE_KVM "-machine virt,gic-version=max -accel kvm -accel tcg "
++#define MACHINE_KVM "-machine virt,gic-version=max -accel kvm "
+ #define QUERY_HEAD  "{ 'execute': 'query-cpu-model-expansion', " \
+                     "  'arguments': { 'type': 'full', "
+ #define QUERY_TAIL  "}}"
 -- 
 2.26.3

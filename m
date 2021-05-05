@@ -1,472 +1,161 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp4185075lfg;
-        Tue, 4 May 2021 20:07:30 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJywpb+bz2nb7WUlKDuHfxfKSkamndJoeriiW8fKjr7rHCoUpWK15w80d+3mPt4gpR9ge/cw
-X-Received: by 2002:a05:6e02:685:: with SMTP id o5mr13721488ils.93.1620184050289;
-        Tue, 04 May 2021 20:07:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620184050; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp220157lfg;
+        Wed, 5 May 2021 04:49:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxj9grYoB2dIbj/eaW4RmQtPOImNgFsoJc/UPVlOi3YZgH0IIy2InaM+Lg85eJmt/65pECF
+X-Received: by 2002:a17:906:32ce:: with SMTP id k14mr27904948ejk.27.1620215391063;
+        Wed, 05 May 2021 04:49:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620215391; cv=none;
         d=google.com; s=arc-20160816;
-        b=S78QUgyzRNuBY9iHEMk2nBjYes4PEd4ww/xWQxp5+/z/xkqkRFPqlcaLjq1JlhEPgH
-         8oSyzHNFgv+GF+UNnIl74nqbJ5fegBPY1bGgGvKntGBnnXQEbVL+s/euPkE5DIqUOwwS
-         UaxHdYu7C1JsumO2XZ5Zt+muNn+xoFsyeptTmBCAEGEamj2n2OiF+DC3HSZq/8RHzoY+
-         N5/u0cIQyzThz08UUfbObK0vamSYXgsXZGEjRjkL+xN+lLayMJvvBEqSS8o4rvbbDRiv
-         f61enIxNzQEbqZON1uTSOINvt26Tp2t40otKmbFQJiR0zt+nL49obJQ4jeeBwiC6N2Lf
-         Wxkg==
+        b=fwSF6H4/ynyXw3vTDiv3v5vPKIbOHdj2BG4z7IgkLnuObgICJqrudSLp9Zjrof12v1
+         jRInhrJlku1F+g/Smod75iEg7O+9pmD3V56obWh1gcvANShHAlb+ap1tVvqTKc/LVu8r
+         JfmRvecGCJVh4aW9I0mP5+K+rHu/2hAN0LSOQ0CSTb0E8MRnfUSFuTQ+1dSrv6reS8zH
+         zqSEQyKWk4ZZYg2TuP6DrdDx4HDs/gEMBlwKez86e8HYbj4hC3EfOCGVaeMgeaDG1g2L
+         u1EDz4SP87MImZAl3EouKxEtmRyANWjxYctJR6t5riYDcsZcRBxVn9hkeH2pHwIgU31q
+         h7bA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature;
-        bh=jlgETGbZuRzHBHvHlcUoL6xtFf9QKaaxdVGn5r8yTJA=;
-        b=UGO6x4O2rAbaudAjGhO+lkK1AryX3zYytguRwQ2D58uX3DECJQmajBH67kzhw7ewla
-         uZFvnYt/sq7fMPcvSh1QrowXvyUdLtO4J4b2rSV1NkhadHWw8PrJP9YDqGBoV9Bi9IYH
-         Zj6LagNbXfjNVxITBobYyjmObnYkAaeXprklqJ8aaG+xlwnnPV+uWGPHVEefj53EyjVY
-         Z8OOAbcpkWvQmm7HGDvEdgOTpthukELuFYqK/x+sKy/sdzfx3iXPK9wXQQpBMYsrmNqh
-         GlRNfUvgjEh9JLR6x+DbVlcstgWIHnGjBsp6A5w+MMGPzqgxolpSZTgtPESLkojz/xQq
-         6+uA==
+        bh=/Foc+EOorem03bggqAaC3TwgLAf5/22fodFDCT7rTgo=;
+        b=n2UG5v2j735gJJexBwpuCe5eVcbkYrAoE+nBaHR/JIGl9d7dCXWDmfR2QfMQ/nGZwc
+         ciZHTF+om3tFYiQ7/GmU8zEehjnIcYqYsvwGnx8cBeujg6J13i+PrHT0wqJ624QLCOIe
+         K4KT2Uy9kybvfc91JZlqmzeaPLXgS9Wj00+jBlOKjQwzvrzYMZrW+q6jWBkQb9Vc5rYU
+         yjcS4YFG8iq2C8iFmjz5b9YmivHBtZVJVlwjreVgN5g2AoWxc286LBmYOaEGRrbOHGCw
+         bE2JeqAMx7byMY3AMs+PwAbE2PgkPT1Mdyqfwc/yjk2BQpVIRpOiXrX7MeAnH/kMPlF/
+         4pqg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=Gka7U2VP;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b1si12978608jam.78.2021.05.04.20.07.30
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iY1pIAyj;
+       spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <philmd@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id ly14si5213813ejb.79.2021.05.05.04.49.50
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 May 2021 20:07:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 05 May 2021 04:49:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=Gka7U2VP;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:50322 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1le7sn-0001Q3-HG
-	for alex.bennee@linaro.org; Tue, 04 May 2021 23:07:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39090)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
- id 1le7qe-0008Di-VB
- for qemu-arm@nongnu.org; Tue, 04 May 2021 23:05:17 -0400
-Received: from mail-qv1-xf30.google.com ([2607:f8b0:4864:20::f30]:45861)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
- id 1le7qU-00032m-Op
- for qemu-arm@nongnu.org; Tue, 04 May 2021 23:05:15 -0400
-Received: by mail-qv1-xf30.google.com with SMTP id u7so547163qvv.12
- for <qemu-arm@nongnu.org>; Tue, 04 May 2021 20:05:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=jlgETGbZuRzHBHvHlcUoL6xtFf9QKaaxdVGn5r8yTJA=;
- b=Gka7U2VPWD7XS/ZTppMHp81DH3AVgFEmnJCSPQkWFJCKmxh9Vsh69KLMcI25e3alRW
- MSe9PP2ACvY5t+1SPF/6ihyzK+wrmacoa3Cj1upylzQjaESfFe5Rm1fWY6yEgw42UyC0
- /7W/OuM6vr3GC4KPa+C/ZGHstGQhPgeeMY5YoJ8cb6XbLWsSldgSwx91aHcBReEHiVxt
- copkclDr260xff6T2HsdjhC2VZFncKqlCilbPB3wlTuJJ8dH+gIFPrObSv/efE/D1fBa
- yzmEPH4qB1qnlX3zFGp3SGEOia14R+E2pNtjVzXJn3nbZfb51iISFnnSj9kS3DZmxs7V
- oxxA==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iY1pIAyj;
+       spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1620215390;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=/Foc+EOorem03bggqAaC3TwgLAf5/22fodFDCT7rTgo=;
+	b=iY1pIAyjk1vt1ReXeRy1bbBlfyPu08by1KEu3xtE5Fp9K6vOtepQ04ocWFzK9EQ16Okt78
+	XK9GE9x98Ef3aUmfp972DMOAyvHAax+BThIs0ZmDCeyn2kUp6oX+vjctWfTQHtaEEEXUyx
+	pSlQRMlO1njLbizg7j5cDcL2HXxxPe0=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-516-lMUC9XAaNZieSpttL_pkVQ-1; Wed, 05 May 2021 07:49:48 -0400
+X-MC-Unique: lMUC9XAaNZieSpttL_pkVQ-1
+Received: by mail-wr1-f72.google.com with SMTP id i102-20020adf90ef0000b029010dfcfc46c0so608813wri.1
+        for <alex.bennee@linaro.org>; Wed, 05 May 2021 04:49:48 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=jlgETGbZuRzHBHvHlcUoL6xtFf9QKaaxdVGn5r8yTJA=;
- b=OfnhtKa+ZPHFEKv2yDDS+o31sr91BXgGZqBA2n24wnJjFuNdvmDbRevxzJ5DK/1qpg
- S749Sgau5y5Z4G/gdq6TvIoDNwW2xx6gqnTFIzne0la8XbGK6/8QgOCjk02Q3+gvftB9
- wjlVecsLlBXXwf17yMUlT9CeLjG41TfqGJV5qX3pQd2R/Hbi9uerlUxRajO6XbMeX/lo
- 4UhRwIAuxKk9YqR3s4eJd7YFXWC5vI/WFYH+a/K6uouaZbGiysFmz6t2TZb7QkySQGa3
- 6LcVaaUwYI9eJovNn4FOoLCLTCy8LPUL1NhMDxAu9ZBLa8J4OTx8R+qkrt4wytjN8LBc
- EUMw==
-X-Gm-Message-State: AOAM531wISL6dV5LBFTRG8ZI01ayuSqLW1ff+aAqckCFNXn1cJQh8akD
- XS6rWXBmHqvN4XTFD6tiOThyLg==
-X-Received: by 2002:a0c:ca8c:: with SMTP id a12mr28588897qvk.14.1620183905802; 
- Tue, 04 May 2021 20:05:05 -0700 (PDT)
-Received: from cube.int.bluestop.org (c-174-52-16-57.hsd1.ut.comcast.net.
- [174.52.16.57])
- by smtp.gmail.com with ESMTPSA id a63sm12270550qkf.132.2021.05.04.20.05.04
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 04 May 2021 20:05:05 -0700 (PDT)
-From: Rebecca Cran <rebecca@nuviainc.com>
-To: Richard Henderson <richard.henderson@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v8 2/4] target/arm: Add support for FEAT_TLBIRANGE
-Date: Tue,  4 May 2021 21:04:41 -0600
-Message-Id: <20210505030443.25310-3-rebecca@nuviainc.com>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20210505030443.25310-1-rebecca@nuviainc.com>
-References: <20210505030443.25310-1-rebecca@nuviainc.com>
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=/Foc+EOorem03bggqAaC3TwgLAf5/22fodFDCT7rTgo=;
+        b=VXKjjPtUdIubokK7V+0/M360MG372H8GQVbsI1u4TQ5g3PaTpi0srvNFTKT3+gSwFz
+         ubiFGgatbNKiz/y+GgiC82nn2ghu0Wpb2k+AvITE+4qpkL4ShF+5vZF9tzmXyMKTpZYY
+         oXquZLxFFbDEutx9ko2KmBEaF4Y7K2vfo00oPD3O29PaEeudEZlSiEt8n8ygGuoE5qTy
+         PD9gPKtiElO+4myaVsp6+Vac3/+C6IR60GaBlcjhBS7VZ9r5OTFxBXEC7zhJ0t/tp4xS
+         keW0ouOzxIA3ZlYSGhcggMnCnmd3mhSghTDqmHr+TCd4YMUERfxdCRqvy/YqN8rrJQl9
+         43YQ==
+X-Gm-Message-State: AOAM531yjcQnSrHERGVEx7VBj7xUoEIko4b1htbULURsyZANquGNjG8h
+	uUngJz21hqr3J+wH2YegYi9UwPzCm8xLLsdxF1bhnAqolDRUwS9MvQkYQifFZEo2G4H5krrYReD
+	u8DFHHGk2hdG2r3cy
+X-Received: by 2002:adf:c541:: with SMTP id s1mr37556781wrf.370.1620215387439;
+        Wed, 05 May 2021 04:49:47 -0700 (PDT)
+X-Received: by 2002:adf:c541:: with SMTP id s1mr37556763wrf.370.1620215387228;
+        Wed, 05 May 2021 04:49:47 -0700 (PDT)
+Return-Path: <philmd@redhat.com>
+Received: from [192.168.1.19] (astrasbourg-653-1-188-220.w90-13.abo.wanadoo.fr. [90.13.127.220])
+        by smtp.gmail.com with ESMTPSA id m16sm9370290wru.68.2021.05.05.04.49.46
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 05 May 2021 04:49:46 -0700 (PDT)
+Subject: Re: [PATCH v5 02/10] accel: Introduce 'query-accels' QMP command
+To: Markus Armbruster <armbru@redhat.com>
+Cc: qemu-devel@nongnu.org, Andrew Jones <drjones@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Juan Quintela <quintela@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Thomas Huth <thuth@redhat.com>, "Dr. David Alan Gilbert"
+ <dgilbert@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>, qemu-arm@nongnu.org,
+ Claudio Fontana <cfontana@suse.de>, Paolo Bonzini <pbonzini@redhat.com>
+References: <20210501223638.510712-1-philmd@redhat.com>
+ <20210501223638.510712-3-philmd@redhat.com>
+ <87o8dpvet4.fsf@dusky.pond.sub.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <918d1fc1-260c-57b7-2dd9-61f1125a2aa2@redhat.com>
+Date: Wed, 5 May 2021 13:49:45 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
+In-Reply-To: <87o8dpvet4.fsf@dusky.pond.sub.org>
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f30;
- envelope-from=rebecca@nuviainc.com; helo=mail-qv1-xf30.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Rebecca Cran <rebecca@nuviainc.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CzVMiTnSauwo
+X-TUID: basMH8gKguk7
 
-ARMv8.4 adds the mandatory FEAT_TLBIRANGE. It provides TLBI
-maintenance instructions that apply to a range of input addresses.
+On 5/5/21 9:07 AM, Markus Armbruster wrote:
+> Philippe Mathieu-Daudé <philmd@redhat.com> writes:
+> 
+>> Introduce the 'query-accels' QMP command which returns a list
+>> of built-in accelerator names.
+>>
+>> - Accelerator is a QAPI enum of all existing accelerators,
+>>
+>> - AcceleratorInfo is a QAPI structure providing accelerator
+>>   specific information. Currently the common structure base
+>>   provides the name of the accelerator, while the specific
+>>   part is empty, but each accelerator can expand it.
+>>
+>> - 'query-accels' QMP command returns a list of @AcceleratorInfo
+>>
+>> For example on a KVM-only build we get:
+>>
+>>     { "execute": "query-accels" }
+>>     {
+>>         "return": [
+>>             {
+>>                 "name": "qtest"
+>>             },
+>>             {
+>>                 "name": "kvm"
+>>             }
+>>         ]
+>>     }
+>>
+>> Note that we can't make the enum values or union branches conditional
+>> because of target-specific poisoning of accelerator definitions.
+> 
+> Let me try to complete this argument;
+> 
+>   If we did, enum Accelerator could only be used in target-specific
+>   code.  But we want to use it in generic code, too.
+> 
+> Which generic code exactly?
 
-Signed-off-by: Rebecca Cran <rebecca@nuviainc.com>
----
- target/arm/cpu.h    |   5 +
- target/arm/helper.c | 296 ++++++++++++++++++++
- 2 files changed, 301 insertions(+)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 616b39325347..5802798c3069 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -4071,6 +4071,11 @@ static inline bool isar_feature_aa64_pauth_arch(const ARMISARegisters *id)
-     return FIELD_EX64(id->id_aa64isar1, ID_AA64ISAR1, APA) != 0;
- }
- 
-+static inline bool isar_feature_aa64_tlbirange(const ARMISARegisters *id)
-+{
-+    return FIELD_EX64(id->id_aa64isar0, ID_AA64ISAR0, TLB) == 2;
-+}
-+
- static inline bool isar_feature_aa64_sb(const ARMISARegisters *id)
- {
-     return FIELD_EX64(id->id_aa64isar1, ID_AA64ISAR1, SB) != 0;
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 9b1b98705f91..cb10851efda8 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -4759,6 +4759,219 @@ static void tlbi_aa64_vae3is_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                                                   ARMMMUIdxBit_SE3, bits);
- }
- 
-+#ifdef TARGET_AARCH64
-+static uint64_t tlbi_aa64_range_get_length(CPUARMState *env,
-+                                           uint64_t value)
-+{
-+    unsigned int page_shift;
-+    unsigned int page_size_granule;
-+    uint64_t num;
-+    uint64_t scale;
-+    uint64_t exponent;
-+    uint64_t length;
-+
-+    num = extract64(value, 39, 4);
-+    scale = extract64(value, 44, 2);
-+    page_size_granule = extract64(value, 46, 2);
-+
-+    page_shift = page_size_granule * 2 + 10;
-+
-+    if (page_size_granule == 0) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "Invalid page size granule %d\n",
-+                      page_size_granule);
-+        return 0;
-+    }
-+
-+    exponent = (5 * scale) + 1;
-+    length = (num + 1) << (exponent + page_shift);
-+
-+    return length;
-+}
-+
-+static void tlbi_aa64_rvae1_write(CPUARMState *env, const ARMCPRegInfo *ri,
-+                                  uint64_t value)
-+{
-+    /*
-+     * Invalidate by VA range, EL1&0.
-+     * Currently handles all of RVAE1, RVAAE1, RVAALE1 and RVALE1,
-+     * since we don't support flush-for-specific-ASID-only or
-+     * flush-last-level-only.
-+     */
-+    ARMMMUIdx mmu_idx;
-+    int mask;
-+    int bits;
-+    uint64_t pageaddr;
-+    uint64_t length;
-+
-+    CPUState *cs = env_cpu(env);
-+    mask = vae1_tlbmask(env);
-+    mmu_idx = ARM_MMU_IDX_A | ctz32(mask);
-+    if (regime_has_2_ranges(mmu_idx)) {
-+        pageaddr = sextract64(value, 0, 37) << TARGET_PAGE_BITS;
-+    } else {
-+        pageaddr = extract64(value, 0, 37) << TARGET_PAGE_BITS;
-+    }
-+    length = tlbi_aa64_range_get_length(env, value);
-+    bits = tlbbits_for_regime(env, mmu_idx, pageaddr);
-+
-+    if (tlb_force_broadcast(env)) {
-+        tlb_flush_page_range_bits_by_mmuidx_all_cpus_synced(cs, pageaddr,
-+                                                            length, mask,
-+                                                            bits);
-+    } else {
-+        tlb_flush_page_range_bits_by_mmuidx(cs, pageaddr, length, mask,
-+                                            bits);
-+    }
-+}
-+
-+static void tlbi_aa64_rvae1is_write(CPUARMState *env, const ARMCPRegInfo *ri,
-+                                    uint64_t value)
-+{
-+    /*
-+     * Invalidate by VA range, Inner/Outer Shareable EL1&0.
-+     * Currently handles all of RVAE1IS, RVAE1OS, RVAAE1IS, RVAAE1OS,
-+     * RVAALE1IS, RVAALE1OS, RVALE1IS and RVALE1OS, since we don't support
-+     * flush-for-specific-ASID-only, flush-last-level-only or inner/outer
-+     * shareable specific flushes.
-+     */
-+    ARMMMUIdx mmu_idx;
-+    int mask;
-+    int bits;
-+    uint64_t pageaddr;
-+    uint64_t length;
-+
-+    CPUState *cs = env_cpu(env);
-+    mask = vae1_tlbmask(env);
-+    mmu_idx = ARM_MMU_IDX_A | ctz32(mask);
-+    if (regime_has_2_ranges(mmu_idx)) {
-+        pageaddr = sextract64(value, 0, 37) << TARGET_PAGE_BITS;
-+    } else {
-+        pageaddr = extract64(value, 0, 37) << TARGET_PAGE_BITS;
-+    }
-+    length = tlbi_aa64_range_get_length(env, value);
-+    bits = tlbbits_for_regime(env, mmu_idx, pageaddr);
-+
-+    tlb_flush_page_range_bits_by_mmuidx_all_cpus_synced(cs, pageaddr,
-+                                                        length, mask,
-+                                                        bits);
-+}
-+
-+static void tlbi_aa64_rvae2_write(CPUARMState *env, const ARMCPRegInfo *ri,
-+                                  uint64_t value)
-+{
-+    /*
-+     * Invalidate by VA range, EL2.
-+     * Currently handles all of RVAE2 and RVALE2,
-+     * since we don't support flush-for-specific-ASID-only or
-+     * flush-last-level-only.
-+     */
-+    bool secure;
-+    int mask;
-+    int bits;
-+    uint64_t pageaddr;
-+    uint64_t length;
-+
-+    CPUState *cs = env_cpu(env);
-+    secure = arm_is_secure_below_el3(env);
-+    pageaddr = extract64(value, 0, 37) << TARGET_PAGE_BITS;
-+    length = tlbi_aa64_range_get_length(env, value);
-+    mask = secure ? ARMMMUIdxBit_SE2 : ARMMMUIdxBit_E2;
-+    bits = tlbbits_for_regime(env, secure ? ARMMMUIdx_SE2 : ARMMMUIdx_E2,
-+                              pageaddr);
-+
-+    if (tlb_force_broadcast(env)) {
-+        tlb_flush_page_range_bits_by_mmuidx_all_cpus_synced(cs, pageaddr,
-+                                                            length, mask,
-+                                                            bits);
-+    } else {
-+        tlb_flush_page_range_bits_by_mmuidx(cs, pageaddr, length, mask,
-+                                            bits);
-+    }
-+}
-+
-+static void tlbi_aa64_rvae2is_write(CPUARMState *env, const ARMCPRegInfo *ri,
-+                                    uint64_t value)
-+{
-+    /*
-+     * Invalidate by VA range, Inner/Outer Shareable, EL2.
-+     * Currently handles all of RVAE2IS, RVAE2OS, RVALE2IS and RVALE2OS,
-+     * since we don't support flush-for-specific-ASID-only,
-+     * flush-last-level-only or inner/outer shareable specific flushes.
-+     */
-+    bool secure;
-+    int mask;
-+    int bits;
-+    uint64_t pageaddr;
-+    uint64_t length;
-+
-+    CPUState *cs = env_cpu(env);
-+    secure = arm_is_secure_below_el3(env);
-+    pageaddr = extract64(value, 0, 37) << TARGET_PAGE_BITS;
-+    length = tlbi_aa64_range_get_length(env, value);
-+    mask = secure ? ARMMMUIdxBit_SE2 : ARMMMUIdxBit_E2;
-+    bits = tlbbits_for_regime(env, secure ? ARMMMUIdx_SE2 : ARMMMUIdx_E2,
-+                              pageaddr);
-+
-+    tlb_flush_page_range_bits_by_mmuidx_all_cpus_synced(cs, pageaddr,
-+                                                        length, mask,
-+                                                        bits);
-+}
-+
-+static void tlbi_aa64_rvae3_write(CPUARMState *env, const ARMCPRegInfo *ri,
-+                                  uint64_t value)
-+{
-+    /*
-+     * Invalidate by VA range, EL3.
-+     * Currently handles all of RVAE3 and RVALE3,
-+     * since we don't support flush-for-specific-ASID-only or
-+     * flush-last-level-only.
-+     */
-+    int bits;
-+    uint64_t pageaddr;
-+    uint64_t length;
-+
-+    CPUState *cs = env_cpu(env);
-+    pageaddr = extract64(value, 0, 37) << TARGET_PAGE_BITS;
-+    length = tlbi_aa64_range_get_length(env, value);
-+    bits = tlbbits_for_regime(env, ARMMMUIdx_SE3, pageaddr);
-+
-+    if (tlb_force_broadcast(env)) {
-+        tlb_flush_page_range_bits_by_mmuidx_all_cpus_synced(cs, pageaddr,
-+                                                            length,
-+                                                            ARMMMUIdxBit_SE3,
-+                                                            bits);
-+    } else {
-+        tlb_flush_page_range_bits_by_mmuidx(cs, pageaddr, length,
-+                                            ARMMMUIdxBit_SE3,
-+                                            bits);
-+    }
-+}
-+
-+static void tlbi_aa64_rvae3is_write(CPUARMState *env, const ARMCPRegInfo *ri,
-+                                    uint64_t value)
-+{
-+    /*
-+     * Invalidate by VA range, EL3, Inner/Outer Shareable.
-+     * Currently handles all of RVAE3IS, RVAE3OS, RVALE3IS and RVALE3OS,
-+     * since we don't support flush-for-specific-ASID-only,
-+     * flush-last-level-only or inner/outer specific flushes.
-+     */
-+    int bits;
-+    uint64_t pageaddr;
-+    uint64_t length;
-+
-+    CPUState *cs = env_cpu(env);
-+    pageaddr = extract64(value, 0, 37) << TARGET_PAGE_BITS;
-+    length = tlbi_aa64_range_get_length(env, value);
-+    bits = tlbbits_for_regime(env, ARMMMUIdx_SE3, pageaddr);
-+
-+    tlb_flush_page_range_bits_by_mmuidx_all_cpus_synced(cs, pageaddr,
-+                                                        length,
-+                                                        ARMMMUIdxBit_SE3,
-+                                                        bits);
-+}
-+#endif
-+
- static CPAccessResult aa64_zva_access(CPUARMState *env, const ARMCPRegInfo *ri,
-                                       bool isread)
- {
-@@ -6920,6 +7133,86 @@ static const ARMCPRegInfo pauth_reginfo[] = {
-     REGINFO_SENTINEL
- };
- 
-+static const ARMCPRegInfo tlbirange_reginfo[] = {
-+    { .name = "TLBI_RVAE1IS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 2, .opc2 = 1,
-+      .access = PL1_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_rvae1is_write },
-+    { .name = "TLBI_RVAAE1IS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 2, .opc2 = 3,
-+      .access = PL1_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_rvae1is_write },
-+   { .name = "TLBI_RVALE1IS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 2, .opc2 = 5,
-+      .access = PL1_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_rvae1is_write },
-+    { .name = "TLBI_RVAALE1IS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 2, .opc2 = 7,
-+      .access = PL1_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_rvae1is_write },
-+    { .name = "TLBI_RVAE1", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 6, .opc2 = 1,
-+      .access = PL1_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_rvae1_write },
-+    { .name = "TLBI_RVAAE1", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 6, .opc2 = 3,
-+      .access = PL1_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_rvae1_write },
-+   { .name = "TLBI_RVALE1", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 6, .opc2 = 5,
-+      .access = PL1_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_rvae1_write },
-+    { .name = "TLBI_RVAALE1", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 6, .opc2 = 7,
-+      .access = PL1_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_rvae1_write },
-+    { .name = "TLBI_RIPAS2E1IS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 0, .opc2 = 2,
-+      .access = PL2_W, .type = ARM_CP_NOP },
-+    { .name = "TLBI_RIPAS2LE1IS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 0, .opc2 = 6,
-+      .access = PL2_W, .type = ARM_CP_NOP },
-+    { .name = "TLBI_RVAE2IS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 2, .opc2 = 1,
-+      .access = PL2_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_rvae2is_write },
-+   { .name = "TLBI_RVALE2IS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 2, .opc2 = 5,
-+      .access = PL2_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_rvae2is_write },
-+    { .name = "TLBI_RIPAS2E1", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 2,
-+      .access = PL2_W, .type = ARM_CP_NOP },
-+   { .name = "TLBI_RIPAS2LE1", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 6,
-+      .access = PL2_W, .type = ARM_CP_NOP },
-+    { .name = "TLBI_RVAE2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 6, .opc2 = 1,
-+      .access = PL2_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_rvae2_write },
-+   { .name = "TLBI_RVALE2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 6, .opc2 = 5,
-+      .access = PL2_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_rvae2_write },
-+   { .name = "TLBI_RVAE3IS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 2, .opc2 = 1,
-+      .access = PL3_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_rvae3is_write },
-+   { .name = "TLBI_RVALE3IS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 2, .opc2 = 5,
-+      .access = PL3_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_rvae3is_write },
-+   { .name = "TLBI_RVAE3", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 6, .opc2 = 1,
-+      .access = PL3_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_rvae3_write },
-+   { .name = "TLBI_RVALE3", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 6, .opc2 = 5,
-+      .access = PL3_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_rvae3_write },
-+    REGINFO_SENTINEL
-+};
-+
- static uint64_t rndr_readfn(CPUARMState *env, const ARMCPRegInfo *ri)
- {
-     Error *err = NULL;
-@@ -8289,6 +8582,9 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-     if (cpu_isar_feature(aa64_rndr, cpu)) {
-         define_arm_cp_regs(cpu, rndr_reginfo);
-     }
-+    if (cpu_isar_feature(aa64_tlbirange, cpu)) {
-+        define_arm_cp_regs(cpu, tlbirange_reginfo);
-+    }
- #ifndef CONFIG_USER_ONLY
-     /* Data Cache clean instructions up to PoP */
-     if (cpu_isar_feature(aa64_dcpop, cpu)) {
--- 
-2.26.2
+cpu.c:133:#ifdef CONFIG_TCG
+hmp-commands-info.hx:271:#if defined(CONFIG_TCG)
+monitor/misc.c:324:#ifdef CONFIG_TCG
+softmmu/physmem.c:28:#ifdef CONFIG_TCG
 
+and more importantly:
+
+include/exec/cpu-all.h:430:#ifdef CONFIG_TCG
+include/exec/cpu-defs.h:77:#if !defined(CONFIG_USER_ONLY) &&
+defined(CONFIG_TCG)
+include/exec/exec-all.h:25:#ifdef CONFIG_TCG
+include/sysemu/cpu-timers.h:27:#ifdef CONFIG_TCG
+
+Thomas might provide more cases, IIRC he audited this recently.

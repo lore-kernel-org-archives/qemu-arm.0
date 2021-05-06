@@ -1,185 +1,155 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp1354136lfg;
-        Thu, 6 May 2021 08:02:56 -0700 (PDT)
-X-Received: by 2002:a05:620a:14b5:: with SMTP id x21mr4506608qkj.298.1620313375822;
-        Thu, 06 May 2021 08:02:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620313375; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp1364842lfg;
+        Thu, 6 May 2021 08:12:47 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx9vmxBm0g3y3K/gQptgql0LFPVCv5gCtcWuk0lJMqZ/18dNNm2Po2M7mMCt+BENr0O9h6d
+X-Received: by 2002:a17:907:10cb:: with SMTP id rv11mr4977170ejb.379.1620313967513;
+        Thu, 06 May 2021 08:12:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620313967; cv=none;
         d=google.com; s=arc-20160816;
-        b=XQch2kA12tORnvT5OHDeKuqHFAyBSBrwhcfczwD07suWFamUVkU/lNMRmH0zlNfbZy
-         LIGaCX/Loll/h8hPUa6xtuUvwa3UE25J18i8x94gd1oYdQj8s5c15xXvupX6kSzqoEpg
-         b/s397N+h0CTKIc63hSwIkrhXIPDY1XaF2ssRr/AMTL3Mg3e/kAXEjmYJXdD5W1Ut4oa
-         8OFBMbzBLEw9AmlmR8fuuTb6EFFMJDgubxT2/LlInRLwR35latujTYS6mN/0M5qRTW+n
-         7tUrpaAS+neq7+oITSAlLG90g9CW5ArPOvTRGwxL4V7xFCAOsawQypHbEAuLo/S3yow2
-         XNlQ==
+        b=qr0oZzhOPgptZVNO4uUrBohiTccTbYj6Nua7R4/DyY9ckHc+/VStBpslmqcPYxybDL
+         BCC66SzP5lqRqKoiKsnkV9h5Co2D1VvQQimyB0EVgCcGTcrHyp3rqwQBurzbDH3GPodc
+         XQRTv2GGp9zR/52FGkOkElpB7+4oAZH8rsFcqiKB0qdCzQt3cjdGOqArV9ZPR1WvsV3L
+         M2rT58TVlTFg4YZVHM3DWAZiu7PxcXfn89cHYIwaFW+VHBBHLW80jv5cJouTCaYMBGQH
+         yzSJHZ/zOOi47R02FTGFghRsRgz+Knp7A3ZbyNjPkSRjEZVXgseeDDtR++PgHzBrxOra
+         5SCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=MabAK/g5cNmzXRETy3iDaApe00pbCdj4KZbN8L2M0u4=;
-        b=j/v0Pc0ZZa2NLPsE0AfPHe//NZXECQQtlIDJQ9y1calFMnPxNwsFfQ1PSjr3k/FWVK
-         Nd0qYxKW4EAIjuS5dr9pXcBsYRS+ieRSR/eFfw82RvuIlnnPCTGGPWbEZ2ZxAW0mcQdh
-         Hd57B90/vbbDz/8DlaD8tlQM+FCASd4rUvIC/T0GF0lM15pZD9twNHeb4lrA27j4h+2e
-         tOwpsyPlc5ryPsYe15l5vIYGU6kgL4ngt3RlPIku3oqrxAjbP0paZEcgN91+UnxtkRAY
-         PEht3/FO/PtmAwZXGhBiOtl4v8bm4CP3luWrmTn6nYmiZTIO76vdh5M+XBvjtqxOAwYG
-         w12Q==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:subject:organization:from:references:cc
+         :to:dkim-signature;
+        bh=B8tYDSNcv5UzQ/xcUbWrMkGssUcVC3SKIEN1tpM5zmc=;
+        b=IDb4i/2AF7q9dKEWtC75sDz8t99NrIDwE+cEZEqU0AyY3e0/7LLUvK36b3YC1FO8vl
+         87H6UvdvHL1Ghw7DcYjXrj4omLHRKXvu3cB9kUWDXtX6pGi1IqbrOHIMUkQxigev3Pkv
+         cUwmU8Xq5pN4/plggBuPOTJkSO5Q68kjkiFZr9tPf5VicO2tZOQ39JZKSGpIldlaMrhb
+         ACoS7bKBLY0xiUnmPqHx0govfnqfxCZqO9mvtuUJq/mpgvZd/OOkxe3SUBmqMgtS+p41
+         Y2qBVimxjuBBh7D2uPQ8hbrNE6AjZJSdbLBkOWehFOWTOqokVaNQFANxaXr1O7hb1xB3
+         YcLQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b="RVBa/ODy";
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of wlosh@bsdimp.com) smtp.mailfrom=wlosh@bsdimp.com
-Return-Path: <wlosh@bsdimp.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id c81sor1302213qke.192.2021.05.06.08.02.55
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RFytc9Uu;
+       spf=pass (google.com: domain of eblake@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=eblake@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <eblake@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
+        by mx.google.com with ESMTPS id r3si2732435ejs.480.2021.05.06.08.12.47
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 06 May 2021 08:02:55 -0700 (PDT)
-Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of wlosh@bsdimp.com) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 06 May 2021 08:12:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eblake@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b="RVBa/ODy";
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of wlosh@bsdimp.com) smtp.mailfrom=wlosh@bsdimp.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bsdimp-com.20150623.gappssmtp.com; s=20150623;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=MabAK/g5cNmzXRETy3iDaApe00pbCdj4KZbN8L2M0u4=;
-        b=RVBa/ODySJagWuX0iXnRDS3Frmi4+iSDYoJU+4VY+lkI2jiGAIr6T7dvUpnlLU8ETU
-         DsN2sYMqvUxazR2R5E4RYxUcNM8B4P82Fj2rxLDgu0nbvijiL9MdKe05UAXjw6Wa3mK6
-         eEhe/uEZZuNXasK+C7CmQoD/9ji22em2kHfongFTtc5Rg0yASAnagX+Scot1TxaMu2kG
-         o4zR6gugu6lBDE58pmAlX3pGTN4w1ZwdP7rKcvm4YPgOSqU5tjGqVyjM57Qhk/9FWxNd
-         SLAE0HSCQDN6PT1bWGUPx1vRxE8sFV05IMYcHibhLc55EIiiFvUljIxosOe58KTaHpep
-         UpVw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=MabAK/g5cNmzXRETy3iDaApe00pbCdj4KZbN8L2M0u4=;
-        b=sp/gRrpJnUnhiGqeY/dZn2dFxDt81WNDvCaylTA9Rr6Xbhekp5J6IXojJuzxKg5TSC
-         Bf9tnbZXMsj9BWn4ZORtFf492yJpK6snKZ/Sm6d1mrt1OsNbbInWMJKedDyTF1SWz8k2
-         ri8xSe9G9xNgRw0QcOyJWfYHsnN0PYuys712DOyyHzJ5TQBdhh3qNQyag5Xn7EkuilJ5
-         eOE+a8ELKaUO21MXaqB09LAAvKiI7yd0jmts7+YhYw7pF8cC71oUJxyi/CZQlRW07J5L
-         bq5cdp6DLJ2+5+4U9gjE7JSLa4wNOMnsAaFoo3odCkFwtDNVgU+RhBARP4q02/aVF6sn
-         qrFQ==
-X-Gm-Message-State: AOAM532IQlYjMMMyh/aLw68vHJBV4JFz5Odd06iDn6T7G7nXHjUAAxKR
-	nCqCeO549g8+VPWU04J5yl+Snfa+76Cph2jG6XMubA==
-X-Google-Smtp-Source: ABdhPJyq8Xf9IQT/m6wGxmV64FmuX9THavvxcdNC45y4FY5uRbj+gKx3J16lZhCaMT3LmPgxG921QmmdALrcP2uftb4=
-X-Received: by 2002:a37:c444:: with SMTP id h4mr2147609qkm.206.1620313375405;
- Thu, 06 May 2021 08:02:55 -0700 (PDT)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RFytc9Uu;
+       spf=pass (google.com: domain of eblake@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=eblake@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1620313966;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=B8tYDSNcv5UzQ/xcUbWrMkGssUcVC3SKIEN1tpM5zmc=;
+	b=RFytc9UuecDM60pH4KuOsds8+oxO9GEUxLwIY4S+s0VqkJ3N1fiZWdze4lq64aTrzgc2Xt
+	UkxCqS4FFldYYLaOfl6iI/vgpAFKLf2ICnER10D64alo43EwEDgvXMafouZTn4rojXP1/n
+	DAGwW8OZMaHQDMS/DdX5JUaGdO0AVfM=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-549-BrEZIubMPOmG5Z_twMd7xw-1; Thu, 06 May 2021 11:12:43 -0400
+X-MC-Unique: BrEZIubMPOmG5Z_twMd7xw-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1A3DF107ACC7;
+	Thu,  6 May 2021 15:12:42 +0000 (UTC)
+Received: from [10.3.113.56] (ovpn-113-56.phx2.redhat.com [10.3.113.56])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id EA1315D9E3;
+	Thu,  6 May 2021 15:12:27 +0000 (UTC)
+To: Warner Losh <imp@bsdimp.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ kvm-devel <kvm@vger.kernel.org>, Kyle Evans <kevans@freebsd.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ qemu-ppc <qemu-ppc@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>
+References: <20210506133758.1749233-1-philmd@redhat.com>
+ <20210506133758.1749233-5-philmd@redhat.com>
+ <CANCZdfoJWEbPFvZ0605riUfnpVRAeC6Feem5_ahC7FUfO71-AA@mail.gmail.com>
+ <39f12704-af5c-2e4f-d872-a860d9a870d7@redhat.com>
+ <CANCZdfqW0XTa18F+JxuSnhpictWxVJUsu87c=yAwMp6YT60FMg@mail.gmail.com>
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+Subject: Re: [PATCH v2 4/9] bsd-user/syscall: Replace alloca() by g_new()
+Message-ID: <7a96d45e-2bdc-f699-96f7-3fbf607cb06b@redhat.com>
+Date: Thu, 6 May 2021 10:12:27 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.1
 MIME-Version: 1.0
-References: <20210506133758.1749233-1-philmd@redhat.com> <CANCZdfqiHxQoG+g3bq_KL01yWCHUbF5qxJWN=sD37h7UJFMZ7g@mail.gmail.com>
- <476d8b44-cba3-4bf2-d93c-d35736d316c6@redhat.com>
-In-Reply-To: <476d8b44-cba3-4bf2-d93c-d35736d316c6@redhat.com>
-From: Warner Losh <imp@bsdimp.com>
-Date: Thu, 6 May 2021 09:02:44 -0600
-Message-ID: <CANCZdfpix=43UEXh2ojvtcHEKpNmciCgtjHvDYSkxnOUwqbYuA@mail.gmail.com>
-Subject: Re: [PATCH v2 0/9] misc: Replace alloca() by g_malloc()
-To: Eric Blake <eblake@redhat.com>
-Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
-	kvm-devel <kvm@vger.kernel.org>, QEMU Developers <qemu-devel@nongnu.org>, 
-	qemu-arm <qemu-arm@nongnu.org>, qemu-ppc <qemu-ppc@nongnu.org>, 
-	Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Content-Type: multipart/alternative; boundary="0000000000002a962b05c1aa9b29"
-X-TUID: bNfjXQ6RrFRo
+In-Reply-To: <CANCZdfqW0XTa18F+JxuSnhpictWxVJUsu87c=yAwMp6YT60FMg@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-TUID: keWzEZPhpd64
 
---0000000000002a962b05c1aa9b29
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On 5/6/21 9:55 AM, Warner Losh wrote:
 
-On Thu, May 6, 2021 at 8:28 AM Eric Blake <eblake@redhat.com> wrote:
+>>> Where is this freed? Also, alloca just moves a stack pointer, where
+>> malloc
+>>> has complex interactions. Are you sure that's a safe change here?
+>>
+>> It's freed any time the g_autofree variable goes out of scope (that's
+>> what the g_autofree macro is for).  Yes, the change is safe, although
+>> you are right that switching to malloc is going to be a bit more
+>> heavyweight than what alloca used.  What's more, it adds safety: if
+>> count was under user control, a user could pass a value that could cause
+>> alloca to allocate more than 4k and accidentally mess up stack guard
+>> pages, while malloc() uses the heap and therefore cannot cause stack bugs.
+>>
+> 
+> I'm not sure I understand that argument, since we're not compiling bsd-user
+> with the stack-smash-protection stuff enabled, so there's no guard pages
+> involved. The stack can grow quite large and the unmapped page at
+> the end of the stack would catch any overflows. Since these allocations
+> are on the top of the stack, they won't overflow into any other frames
+> and subsequent calls are made with them already in place.
 
-> On 5/6/21 9:22 AM, Warner Losh wrote:
-> > On Thu, May 6, 2021 at 7:39 AM Philippe Mathieu-Daud=C3=A9 <philmd@redh=
-at.com
-> >
-> > wrote:
-> >
-> >> The ALLOCA(3) man-page mentions its "use is discouraged".
-> >> Replace few calls by equivalent GLib malloc().
-> >>
-> >
-> > Except g_alloc and g_malloc are not at all the same, and you can't drop
-> in
-> > replace one with the other.
-> >
-> > g_alloc allocates stack space on the calling frame that's automatically
-> > freed when the function returns.
-> > g_malloc allocates space from the heap, and calls to it must be matched
-> > with calls to g_free().
-> >
-> > These patches don't do the latter, as far as I can tell, and so introdu=
-ce
-> > memory leaks unless there's something I've missed.
->
-> You missed the g_autofree, whose job is to call g_free() on all points
-> in the control flow where the malloc()d memory goes out of scope
-> (equivalent in expressive power to alloca()d memory going out of scope).
->  Although the code is arguably a bit slower (as heap manipulations are
-> not as cheap as stack manipulations), in the long run that speed penalty
-> is worth the safety factor (since stack manipulations under user control
-> are inherently unsafe).
->
+With alloca() on user-controlled size, the user can set up the size to
+be larger than the unmapped guard page, at which point you CANNOT catch
+the stack overflow because the alloca can skip the guard page and wrap
+into other valid memory.  Compiling with stack-smash-protection stuff
+enabled will catch such a bad alloca(); but the issue at hand here is
+not when stack-smash-protection is enabled, but the more common case
+when it is disabled (at which point the only protection you have is the
+guard page, but improper use of alloca() can bypass the guard page).
+Not all alloca() arguments are under user control, but it is easier as a
+matter of policy to blindly avoid alloca() than it is to audit which
+calls have safe sizes and therefore will not risk user control bypassing
+stack guards.
 
-Yea, I had missed that. Too many years of reviewing patches that
-came in for other projects that didn't use that feature. Outside of the
-bsd-user context, I'd agree with you that things are safer this way.
-But emulating system calls has other considerations, that I've gone
-into in another thread.
+> 
+> malloc, on the other hand, involves taking out a number of mutexes
+> and similar things to obtain the memory, which may not necessarily
+> be safe in all the contexts system calls can be called from. System
+> calls are, typically, async safe and can be called from signal handlers.
+> alloca() is async safe, while malloc() is not. So changing the calls
+> from alloca to malloc makes calls to system calls in signal handlers
+> unsafe and potentially introducing buggy behavior as a result.
 
-So please accept my apology for not noticing the g_autofree
-in these. It definitely makes what I said here incorrect and
-it should be ignored...
+Correct, use of malloc() is not safe within signal handlers. But these
+calls are not within signal handlers - or am _I_ missing something?  Is
+the point of *-user code to emulate syscalls that are reachable from
+code installed in a signal handler, at which point introducing an
+async-unsafe call to malloc in our emulation is indeed putting the
+application at risk of a malloc deadlock?
 
-Warner
+Ultimately, we're trading one maintenance headache (determining which
+alloca() size calls might be under user control) for another
+(determining that malloca() calls are not in a signal context), but the
+latter is far more common such that we can use existing tooling to make
+that conversion safely (both in the fact that the compiler has flags to
+warn about alloca() usage, and in the fact that Coverity is good at
+flagging improper uses of malloc() such as within a function reachable
+from something installed in a signal handler).  But I'm not familiar
+enough with the bsd/linux-user code to know if your point about having
+to use only async-safe functionalities is a valid limitation on our
+emulation.
 
---0000000000002a962b05c1aa9b29
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Thu, May 6, 2021 at 8:28 AM Eric B=
-lake &lt;<a href=3D"mailto:eblake@redhat.com">eblake@redhat.com</a>&gt; wro=
-te:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px =
-0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">On 5/6/21 9:=
-22 AM, Warner Losh wrote:<br>
-&gt; On Thu, May 6, 2021 at 7:39 AM Philippe Mathieu-Daud=C3=A9 &lt;<a href=
-=3D"mailto:philmd@redhat.com" target=3D"_blank">philmd@redhat.com</a>&gt;<b=
-r>
-&gt; wrote:<br>
-&gt; <br>
-&gt;&gt; The ALLOCA(3) man-page mentions its &quot;use is discouraged&quot;=
-.<br>
-&gt;&gt; Replace few calls by equivalent GLib malloc().<br>
-&gt;&gt;<br>
-&gt; <br>
-&gt; Except g_alloc and g_malloc are not at all the same, and you can&#39;t=
- drop in<br>
-&gt; replace one with the other.<br>
-&gt; <br>
-&gt; g_alloc allocates stack space on the calling frame that&#39;s automati=
-cally<br>
-&gt; freed when the function returns.<br>
-&gt; g_malloc allocates space from the heap, and calls to it must be matche=
-d<br>
-&gt; with calls to g_free().<br>
-&gt; <br>
-&gt; These patches don&#39;t do the latter, as far as I can tell, and so in=
-troduce<br>
-&gt; memory leaks unless there&#39;s something I&#39;ve missed.<br>
-<br>
-You missed the g_autofree, whose job is to call g_free() on all points<br>
-in the control flow where the malloc()d memory goes out of scope<br>
-(equivalent in expressive power to alloca()d memory going out of scope).<br=
->
-=C2=A0Although the code is arguably a bit slower (as heap manipulations are=
-<br>
-not as cheap as stack manipulations), in the long run that speed penalty<br=
->
-is worth the safety factor (since stack manipulations under user control<br=
->
-are inherently unsafe).<br></blockquote><div><br></div><div>Yea, I had miss=
-ed that. Too many years of reviewing patches that</div><div>came in for oth=
-er projects that didn&#39;t use that feature. Outside of the</div><div>bsd-=
-user context, I&#39;d agree with you that things are safer this way.</div><=
-div>But emulating system calls has other considerations, that I&#39;ve gone=
-</div><div>into in another thread.</div><div><br></div><div>So please accep=
-t my apology for not noticing the g_autofree</div><div>in these. It definit=
-ely=C2=A0makes what I said here incorrect and</div><div>it should be ignore=
-d...</div><div><br></div><div>Warner</div></div></div>
-
---0000000000002a962b05c1aa9b29--
+-- 
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3226
+Virtualization:  qemu.org | libvirt.org

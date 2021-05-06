@@ -1,183 +1,201 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp404592lfg;
-        Wed, 5 May 2021 08:29:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwAUNvCQ9pKiAjZt/JOPx031JACyPzpkEwLEYUm3XlxMEyTvyBjzPGfJipdc3dexu0dXJ0H
-X-Received: by 2002:a05:6402:4305:: with SMTP id m5mr18049225edc.143.1620228542984;
-        Wed, 05 May 2021 08:29:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620228542; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp999456lfg;
+        Thu, 6 May 2021 00:04:50 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyGjJFfyqfJfn4aitPNYPx4AFbnVekozHFY3XYisfXvgBDK06IsCQxsh/0KdwZOCakZ8mAD
+X-Received: by 2002:a1f:3852:: with SMTP id f79mr1567846vka.24.1620284690067;
+        Thu, 06 May 2021 00:04:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620284690; cv=none;
         d=google.com; s=arc-20160816;
-        b=EwqmbopM+C8Z7EJzUgmEiTu5bCremXmdAL40lDrWLe72hwT2HRKFSWzYGVRZcae5Vz
-         abcEZxLHQzJ3yMSUCWpDKneb2uR7kHTDGTarwhoWSrXIVum9OmyMnUImcw+k3HNVG7dA
-         C+Z7wZgtZYLC3xqKwlMkhkSRfU12DAhYlrzVp3Y+BdCG2G/KrKTsatFDsjvmL4Z7rqsN
-         U+eStEDDiyBM1NJJhjkTv8iJlgWbNiiwjzeyqwyyzdJ6JYbRkDQ4qtlDxaVd1AWNOyuO
-         3b+3wkazRoZTOO8pnpko70DMQwYnQ8N1T4vuDnuOHDgAiiQaPNKbC9a70/I3UqPZKeZ9
-         A6Jw==
+        b=fhLattc+40vkeoToNloC9FBSU00zrPVW3ES6GaKzNSlXD6Yh2d2rQ+3sqylaQcTdYo
+         0TH/2IcliH4URyrJ02cpyJfKidzIZHAETBgkV1wKL9vET22xge8dk2mHJSrgEw3zlsc+
+         +1QXKLYPmGv/wVnjHp0M9NQ3r0mQAk92L2QI7Z0mt8QbeQemLE76GF4+Y9DFB3+7zire
+         cyIFAUg2+YEPytWSpARQAuXDApdcuStlczsMmF4H+4oKONt8bWIFQJfo5woHkBAP2WiH
+         f+KTsQsRImukyOWA6myjIGzpSjSlxx6zmg8WOlYuN0gr2GY4VD9me0rf3Gum0jAfp/8q
+         5KLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=wDdpqs3tfIWJVrHbBw8hZ+NCVPTorvGxAt7OMDVgjCo=;
-        b=ntsaxknKapNxhX7NYw8x1tmBPhW5FExET7GSMdHXXHd9Y6Wy+B7jIDsk3oe1+Yy0My
-         VpbpsRHvl0tZnLuu/BZJj93QkfJfXR162pbhuo9a9BdLt5fcOm5ylTlbNO1Xfq1itctg
-         KbGYIfKtZpt/ytW0IW2Vz4FSsbRVU9pbV0MuXhXkjiR8kjI9PeYoojCHvyYXiDP4TBQ4
-         wH07P0nfOjUHPGClETSPs3KWt/1jd4tK0Bn9Dk2B7wtOnYM7vQPxSNVK+x2DaQa1gA8L
-         7c6jxh18xVbCZal6RPeS9ewHLa0tw64XKGQdTmPNpgR9KCJhVFOF6nWyCZcJ3Y6kNdXq
-         bG4Q==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=kLQY1p4XgweU7ySnvSs34NxWe3w9G9QBBj26Y1yUCZc=;
+        b=qV7E9wQOeIltUWLVgcF4ILcODXrRHd0hblKpt76qTeJc9uyDwHnrxBgigm9nceYTfV
+         +sEC1/aKQ0E6vpr/GZArR6UhjgKZC2e6DooqIAaCXoWuthHeSrWCr9PLLzD4fUFe+ZCy
+         jXGy9vUOJAcXtXhJ5pqe4d/MImYIheeF0I9hdzxsFTBJkKYZSLYhZz3QJ8Zo9ZxpAdgd
+         KEeM0f9G5Vuepjd0TB7gvbTLBcRFxz4eug2nRfBLQM69EFubq4kUrQS9ey6FQQahemmb
+         W7RVWSOK6yAflsYCHCb7sjCkBf3eStgG5KE22c/wIZYlWoga039ShvRaTnUX0C43iqh7
+         ml8A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FEX0buyS;
-       spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id hc43si7097894ejc.387.2021.05.05.08.29.02
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id z9si605167vsz.415.2021.05.06.00.04.49
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 05 May 2021 08:29:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 06 May 2021 00:04:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FEX0buyS;
-       spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1620228541;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=wDdpqs3tfIWJVrHbBw8hZ+NCVPTorvGxAt7OMDVgjCo=;
-	b=FEX0buySwUeBMzbl7ZeVUL6vgVecXEntn2tmPb3Pnd/X/lLMkBckulq95Gy07L/JY1FgvG
-	Lh+bO9xlc1e3jDgoc3GVVvbT6rHMTier1B7chmiT0QS/XGkDD3tDN4ohfhL9reNewD0mrv
-	OWetdPhoVFhL1qQy9UD08R80YDD8VJs=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-522-Yd6e-tkXPgSILp1LQ4BdrA-1; Wed, 05 May 2021 11:29:00 -0400
-X-MC-Unique: Yd6e-tkXPgSILp1LQ4BdrA-1
-Received: by mail-wm1-f70.google.com with SMTP id n24-20020a7bcbd80000b029014287841063so459609wmi.3
-        for <alex.bennee@linaro.org>; Wed, 05 May 2021 08:28:59 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=wDdpqs3tfIWJVrHbBw8hZ+NCVPTorvGxAt7OMDVgjCo=;
-        b=DObol+yp9hHHfl0asy70STlA2QUXLbVta6/bmgWRV/IjyzQQlBzRHYdxE5KLW7a8Ec
-         aDq58vTQHrPpftFuqhr0omfHCKY6eFnSvzrw+DOsii6lP/jja/iOeHYSrzRED789wOaH
-         L4YlcquDf230cAcV6/YEGACLoLGkfqmQ+7VEOiSprBapa/anZNvjEQG+HHOvlGfw9ZY+
-         3R04fIwzh+uJFE1U5a8z7U051rw7k8XqDLDSO77bH38R669s73UdQzEv1LnEl9gvJ3ys
-         S5gf9J3JuCWJ+u3e0S8Zc0YEFzcDkwEZqhzjEkm7OQxpCLXxwsKC1hPjgddD10eZax37
-         UZJA==
-X-Gm-Message-State: AOAM5339Az19gUTgaMkQycLuxtUFIhWqBdYo1hOWnTawh6PjLbkNMMpo
-	mfuB31jrzaakcMpNeN2LBkIqzV20yY/MczgHPOy+uyKx5BTRNz1Nco5pZMQ1YBjL9shwc3Ijl0K
-	xoRpAlXUsstQkyadL
-X-Received: by 2002:a1c:e387:: with SMTP id a129mr34177985wmh.61.1620228538875;
-        Wed, 05 May 2021 08:28:58 -0700 (PDT)
-X-Received: by 2002:a1c:e387:: with SMTP id a129mr34177964wmh.61.1620228538695;
-        Wed, 05 May 2021 08:28:58 -0700 (PDT)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.19] (astrasbourg-653-1-188-220.w90-13.abo.wanadoo.fr. [90.13.127.220])
-        by smtp.gmail.com with ESMTPSA id i3sm5716808wmq.28.2021.05.05.08.28.57
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 05 May 2021 08:28:58 -0700 (PDT)
-Subject: Re: [PATCH v5 02/10] accel: Introduce 'query-accels' QMP command
-To: Markus Armbruster <armbru@redhat.com>
-Cc: Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Juan Quintela <quintela@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Andrew Jones <drjones@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, Claudio Fontana <cfontana@suse.de>,
- Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>, "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-References: <20210501223638.510712-1-philmd@redhat.com>
- <20210501223638.510712-3-philmd@redhat.com>
- <87o8dpvet4.fsf@dusky.pond.sub.org>
- <918d1fc1-260c-57b7-2dd9-61f1125a2aa2@redhat.com>
- <87tunhns16.fsf@dusky.pond.sub.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <44333ee1-6096-1fb4-cf95-6e3d74b36bf1@redhat.com>
-Date: Wed, 5 May 2021 17:28:56 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Received: from localhost ([::1]:36794 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1leY41-0004fc-C9
+	for alex.bennee@linaro.org; Thu, 06 May 2021 03:04:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56380)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1leY3t-0004fO-9M; Thu, 06 May 2021 03:04:41 -0400
+Received: from szxga08-in.huawei.com ([45.249.212.255]:2745)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1leY3q-0000p6-6O; Thu, 06 May 2021 03:04:41 -0400
+Received: from dggeml705-chm.china.huawei.com (unknown [172.30.72.53])
+ by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4FbPbg3MsZz19Ldj;
+ Thu,  6 May 2021 15:00:15 +0800 (CST)
+Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
+ dggeml705-chm.china.huawei.com (10.3.17.143) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.2176.2; Thu, 6 May 2021 15:04:22 +0800
+Received: from [10.174.187.128] (10.174.187.128) by
+ dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
+ 15.1.2176.2; Thu, 6 May 2021 15:04:15 +0800
+Subject: Re: [RFC PATCH v2 2/4] hw/arm/virt: Parse -smp cluster parameter in
+ virt_smp_parse
+To: Andrew Jones <drjones@redhat.com>
+References: <20210413083147.34236-3-wangyanan55@huawei.com>
+ <20210428103141.5qfhzcqko6hxhxee@gator>
+ <262dba57-437c-36aa-7a86-8f0c59751887@huawei.com>
+ <20210429071614.lywpbfpeyclqxnke@gator.home>
+ <ce557539-ac8f-7245-747b-8212a4857811@huawei.com>
+ <20210429110229.7jtz6hfrfvqdkrbx@gator>
+ <f5b264ff-58ed-0cd2-3b84-42fa1724b8ac@huawei.com>
+ <20210430064125.3b5fjolwqculrjxz@gator.home>
+ <20210430070131.kkavbosw27ze4iuh@gator.home>
+ <dedb07c3-b6fa-ccb0-9d06-65c7866238db@huawei.com>
+ <20210430104927.do6cxs6yw6yqlq6e@gator.home>
+From: "wangyanan (Y)" <wangyanan55@huawei.com>
+Message-ID: <7fbaedf0-6f21-e131-198d-d39500460ce0@huawei.com>
+Date: Thu, 6 May 2021 15:04:14 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
-In-Reply-To: <87tunhns16.fsf@dusky.pond.sub.org>
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <20210430104927.do6cxs6yw6yqlq6e@gator.home>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Transfer-Encoding: 7bit
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: ueeKMBL8XSUI
+X-Originating-IP: [10.174.187.128]
+X-ClientProxiedBy: dggeme718-chm.china.huawei.com (10.1.199.114) To
+ dggpemm500023.china.huawei.com (7.185.36.83)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.255;
+ envelope-from=wangyanan55@huawei.com; helo=szxga08-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Barry Song <song.bao.hua@hisilicon.com>,
+ Peter Maydell <peter.maydell@linaro.org>, "Michael S .
+ Tsirkin" <mst@redhat.com>, wanghaibin.wang@huawei.com, qemu-devel@nongnu.org,
+ yangyicong@huawei.com, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ qemu-arm@nongnu.org, Alistair Francis <alistair.francis@wdc.com>,
+ prime.zeng@hisilicon.com, Igor
+ Mammedov <imammedo@redhat.com>, yuzenghui@huawei.com,
+ Paolo Bonzini <pbonzini@redhat.com>, zhukeqian1@huawei.com,
+ Jiajie Li <lijiajie11@huawei.com>, David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: A8VpcBro4wzM
 
-On 5/5/21 5:01 PM, Markus Armbruster wrote:
-> Philippe Mathieu-Daudé <philmd@redhat.com> writes:
-> 
->> On 5/5/21 9:07 AM, Markus Armbruster wrote:
->>> Philippe Mathieu-Daudé <philmd@redhat.com> writes:
->>>
->>>> Introduce the 'query-accels' QMP command which returns a list
->>>> of built-in accelerator names.
->>>>
->>>> - Accelerator is a QAPI enum of all existing accelerators,
->>>>
->>>> - AcceleratorInfo is a QAPI structure providing accelerator
->>>>   specific information. Currently the common structure base
->>>>   provides the name of the accelerator, while the specific
->>>>   part is empty, but each accelerator can expand it.
->>>>
->>>> - 'query-accels' QMP command returns a list of @AcceleratorInfo
->>>>
->>>> For example on a KVM-only build we get:
->>>>
->>>>     { "execute": "query-accels" }
->>>>     {
->>>>         "return": [
->>>>             {
->>>>                 "name": "qtest"
->>>>             },
->>>>             {
->>>>                 "name": "kvm"
->>>>             }
->>>>         ]
->>>>     }
->>>>
->>>> Note that we can't make the enum values or union branches conditional
->>>> because of target-specific poisoning of accelerator definitions.
->>>
->>> Let me try to complete this argument;
->>>
->>>   If we did, enum Accelerator could only be used in target-specific
->>>   code.  But we want to use it in generic code, too.
->>>
->>> Which generic code exactly?
->>
->>
->> cpu.c:133:#ifdef CONFIG_TCG
->> hmp-commands-info.hx:271:#if defined(CONFIG_TCG)
->> monitor/misc.c:324:#ifdef CONFIG_TCG
->> softmmu/physmem.c:28:#ifdef CONFIG_TCG
->>
->> and more importantly:
->>
->> include/exec/cpu-all.h:430:#ifdef CONFIG_TCG
->> include/exec/cpu-defs.h:77:#if !defined(CONFIG_USER_ONLY) &&
->> defined(CONFIG_TCG)
->> include/exec/exec-all.h:25:#ifdef CONFIG_TCG
->> include/sysemu/cpu-timers.h:27:#ifdef CONFIG_TCG
->>
->> Thomas might provide more cases, IIRC he audited this recently.
-> 
-> No need, I'm interested in examples, not a complete list.
-> 
-> Please amend the commit message:
-> 
->     Note that we can't make the enum values or union branches conditional
->     because of target-specific poisoning of accelerator definitions.
->     If we did, enum Accelerator could only be used in target-specific
->     code.  But we want to also use it in generic code, such as ...
-> 
-> with ... replaced by one or more references to relevant code.
-> 
-> If we expect readers of the code to later wonder why we're not using
-> QAPI conditionals, then we should add a comment to the QAPI schema,
-> too.  Not a demand, since I'm not sure what to expect.
+Hi Drew,
 
-OK, will do in v8.
+On 2021/4/30 18:49, Andrew Jones wrote:
+> On Fri, Apr 30, 2021 at 05:33:42PM +0800, wangyanan (Y) wrote:
+>> On 2021/4/30 15:01, Andrew Jones wrote:
+>>> On Fri, Apr 30, 2021 at 08:41:25AM +0200, Andrew Jones wrote:
+>>>> On Fri, Apr 30, 2021 at 01:09:00PM +0800, wangyanan (Y) wrote:
+>>>>> But I think the requirement for ARM "if even one parameter other than cpus
+>>>>> or maxcpus
+>>>>> is provided then all parameters must be provided" will be better. This can
+>>>>> ensure the
+>>>>> whole accurate users-specified topology. As you mentioned, if anybody who
+>>>>> bothers
+>>>>> to specify one, why not also specify the others.
+>>>>>
+>>>>> I can add the requirement for ARM in the documentation, and also check the
+>>>>> parameters
+>>>>> in virt_smp_parse. Will this be fine?
+>>>> We sort of have to support command lines that are missing 'maxcpus' and
+>>>> 'clusters', unless we work together with libvirt to make the change.
+>>>> Currently libvirt will generate '-smp 16,sockets=16,cores=1,threads=1'
+>>>> from '<vcpu placement='static'>16</vcpu>'. That's sufficient for our
+>>>> stricter, but not completely strict requirements. And, I still think
+>>>> 'threads' could be optional, because there's a good chance the user
+>>>> doesn't want to describe them, so a default of 1 is good enough. Also,
+>>>> given maxcpus, but not cpus, it's pretty obvious that cpus should equal
+>>>> maxcpus.
+>>>>
+>>> We also still need just 'cpus' or just 'maxcpus' to work, since that
+>>> already works now. So, at least these should work
+>>>
+>>>    -smp N
+>>>    -smp maxcpus=N
+>>>    -smp N,maxcpus=M
+>>>    -smp N,sockets=N,cores=1,threads=1
+>>>    -smp N,maxcpus=M,sockets=M,cores=1,threads=1
+>>>
+>>> since they work today, even though no topology is described.
+>> Yes. I forgot this point that we should consider the compat.
+>>> If we want to
+>>> describe a topology for the first three, then we'll have to pick one,
+>>> which brings us back to the sockets over cores stuff. Or, we could choose
+>>> to just not generate topology descriptions when none is provided.
+>> I find that both preferring cores over sockets and not generating topology
+>> descriptions
+>> when none is provided can't solve everything. We can only ensure guest will
+>> get one
+>> socket with multiple cores with qemu cmdline "-smp N".
+>>
+>> But if we specify N cpus without any other parameters in libvirt xml, a qemu
+>> cmdline like
+>> "-smp N, sockets=N, cores=1,threads=1" will be generated, and as a result
+>> guest will get
+>> N sockets. In this case, we still can't avoid the silent change.
+>>
+>> So maybe we should just prefer sockets over cores like the general
+>> smp_parse() and libvirt,
+>> and let users use "-smp N, sockets=1, cores=N,threads=1" to get what they
+>> want if they
+>> use version 6.0 or later.
+> Rather than doing the preference of sockets over cores thing, let's
+> require that sockets, cores, and one of maxcpus or cpus are provided,
+> as we discussed in the other mail.
+Ok, I see.
+
+Thanks for these discussions about parsing of -smp command line. :)
+Now it seems that a separate virt_smp_parse() function for ARM is still 
+necessary,
+I will implement it in v3 of the other "Introduce cpu topology support" 
+series.
+
+Thanks,
+Yanan
+>
+> Thanks,
+> drew
+>
+> .

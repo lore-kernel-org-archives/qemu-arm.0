@@ -1,100 +1,98 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp999456lfg;
-        Thu, 6 May 2021 00:04:50 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyGjJFfyqfJfn4aitPNYPx4AFbnVekozHFY3XYisfXvgBDK06IsCQxsh/0KdwZOCakZ8mAD
-X-Received: by 2002:a1f:3852:: with SMTP id f79mr1567846vka.24.1620284690067;
-        Thu, 06 May 2021 00:04:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620284690; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp820932lfg;
+        Wed, 5 May 2021 18:59:06 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwS1TjASqwtjXlrWV8dCDaaYVKk8uIEfJYlK1ZF+L8QIxofC0BLfNAsQI32R/7gsPi6FcqG
+X-Received: by 2002:a05:620a:12b1:: with SMTP id x17mr1755354qki.362.1620266346623;
+        Wed, 05 May 2021 18:59:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620266346; cv=none;
         d=google.com; s=arc-20160816;
-        b=fhLattc+40vkeoToNloC9FBSU00zrPVW3ES6GaKzNSlXD6Yh2d2rQ+3sqylaQcTdYo
-         0TH/2IcliH4URyrJ02cpyJfKidzIZHAETBgkV1wKL9vET22xge8dk2mHJSrgEw3zlsc+
-         +1QXKLYPmGv/wVnjHp0M9NQ3r0mQAk92L2QI7Z0mt8QbeQemLE76GF4+Y9DFB3+7zire
-         cyIFAUg2+YEPytWSpARQAuXDApdcuStlczsMmF4H+4oKONt8bWIFQJfo5woHkBAP2WiH
-         f+KTsQsRImukyOWA6myjIGzpSjSlxx6zmg8WOlYuN0gr2GY4VD9me0rf3Gum0jAfp/8q
-         5KLA==
+        b=HJ1UTJ0MZSH5mo+rSKA25rG/FZe0/LTyMHGaUPG5TFQB6krHEMeOoRQ4dqeEU51bWS
+         0PSbFyE3Zx7pzyVxjP84twZwTI42Jsd9nLNx94xssw1ZVRv5oQYMEudylN4y6fGSJlGq
+         3qiQwNxtqeahZzpAps4F7AnSwG/PntP0szaQYi99S60KkeLgfZSLvBtK5BawrHpbUKYS
+         Id9h57xhWfTn6uAeVmAR2Lx7CTa7+sGDfGnjfx+/p2aPgXpFrzjOuZicgtlu+Dh7ICZa
+         sI2RHTr1Sr4KVnnvVvFPZHYG4NNtKZgbj9SHmgQM4AZdvA/9uZOKcXyQ1DbjszYX2eeX
+         kDCg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=kLQY1p4XgweU7ySnvSs34NxWe3w9G9QBBj26Y1yUCZc=;
-        b=qV7E9wQOeIltUWLVgcF4ILcODXrRHd0hblKpt76qTeJc9uyDwHnrxBgigm9nceYTfV
-         +sEC1/aKQ0E6vpr/GZArR6UhjgKZC2e6DooqIAaCXoWuthHeSrWCr9PLLzD4fUFe+ZCy
-         jXGy9vUOJAcXtXhJ5pqe4d/MImYIheeF0I9hdzxsFTBJkKYZSLYhZz3QJ8Zo9ZxpAdgd
-         KEeM0f9G5Vuepjd0TB7gvbTLBcRFxz4eug2nRfBLQM69EFubq4kUrQS9ey6FQQahemmb
-         W7RVWSOK6yAflsYCHCb7sjCkBf3eStgG5KE22c/wIZYlWoga039ShvRaTnUX0C43iqh7
-         ml8A==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=55PulxY+2aI7FSmUytdxrXIbJ7zdhQbJKacth6BW6MQ=;
+        b=QP/GGbZ5CBAu9MLiYuzsgRiQGh83fLspW3gDHlQJ85tFHEDQyQ168jLQQj3c6XEyR7
+         NKzXg/PLrPKxNk4nHiEB5Ea0AXEduTPapYHJ/EWwzq1Y3eNWKm5cK6++ZxGFej1m3VrU
+         2EEehf/jMQ3Cxm8BgFvoTy19n7BGLHdoTygriMU/5m/AehFNcUQMZDr35cFQdSIgd2vG
+         ERDeR5iohtX2blMpqfEfs1X0OFy9izWfccRruZed/c9EMIIn8Q4f3VdBr6CKypMexpWz
+         l3sirUsFotNwlR17w19wjBuO1rX4DaKxSTRPp09yXcGNd0Wdx6u0VkOV3roW8+TrbBLX
+         /TQQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YmlDCjNe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z9si605167vsz.415.2021.05.06.00.04.49
+        by mx.google.com with ESMTPS id o8si727188qtp.249.2021.05.05.18.59.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 May 2021 00:04:50 -0700 (PDT)
+        Wed, 05 May 2021 18:59:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YmlDCjNe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:36794 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:42066 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1leY41-0004fc-C9
-	for alex.bennee@linaro.org; Thu, 06 May 2021 03:04:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56380)
+	id 1leTI9-0005I2-UT
+	for alex.bennee@linaro.org; Wed, 05 May 2021 21:59:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58624)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1leY3t-0004fO-9M; Thu, 06 May 2021 03:04:41 -0400
-Received: from szxga08-in.huawei.com ([45.249.212.255]:2745)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1leY3q-0000p6-6O; Thu, 06 May 2021 03:04:41 -0400
-Received: from dggeml705-chm.china.huawei.com (unknown [172.30.72.53])
- by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4FbPbg3MsZz19Ldj;
- Thu,  6 May 2021 15:00:15 +0800 (CST)
-Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
- dggeml705-chm.china.huawei.com (10.3.17.143) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.2176.2; Thu, 6 May 2021 15:04:22 +0800
-Received: from [10.174.187.128] (10.174.187.128) by
- dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
- 15.1.2176.2; Thu, 6 May 2021 15:04:15 +0800
-Subject: Re: [RFC PATCH v2 2/4] hw/arm/virt: Parse -smp cluster parameter in
- virt_smp_parse
-To: Andrew Jones <drjones@redhat.com>
-References: <20210413083147.34236-3-wangyanan55@huawei.com>
- <20210428103141.5qfhzcqko6hxhxee@gator>
- <262dba57-437c-36aa-7a86-8f0c59751887@huawei.com>
- <20210429071614.lywpbfpeyclqxnke@gator.home>
- <ce557539-ac8f-7245-747b-8212a4857811@huawei.com>
- <20210429110229.7jtz6hfrfvqdkrbx@gator>
- <f5b264ff-58ed-0cd2-3b84-42fa1724b8ac@huawei.com>
- <20210430064125.3b5fjolwqculrjxz@gator.home>
- <20210430070131.kkavbosw27ze4iuh@gator.home>
- <dedb07c3-b6fa-ccb0-9d06-65c7866238db@huawei.com>
- <20210430104927.do6cxs6yw6yqlq6e@gator.home>
-From: "wangyanan (Y)" <wangyanan55@huawei.com>
-Message-ID: <7fbaedf0-6f21-e131-198d-d39500460ce0@huawei.com>
-Date: Thu, 6 May 2021 15:04:14 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1leTHy-0005Hi-Q9; Wed, 05 May 2021 21:58:54 -0400
+Received: from mail-yb1-xb36.google.com ([2607:f8b0:4864:20::b36]:41791)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1leTHw-0001it-W8; Wed, 05 May 2021 21:58:54 -0400
+Received: by mail-yb1-xb36.google.com with SMTP id l7so5315575ybf.8;
+ Wed, 05 May 2021 18:58:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=55PulxY+2aI7FSmUytdxrXIbJ7zdhQbJKacth6BW6MQ=;
+ b=YmlDCjNeYowmqAaWSWt1rSpTyv+nDsZk1UMw6sEQB/Qa1Ld+5EXKjrVs3g11vldlIK
+ wG64IZQhPFSrv1E9zMgzM02xj0/pj5yHA46IWyzuE8PLP5b+IT/i8j5i16CZ3NoXnI3S
+ TUW8eNAq8lbOpdSnx95nkLv+/h2RmAgpZdfo6v8KDUnWUt0i3Q1YINgEqbv2bGfyxQzO
+ poV3vH9PsxfKsU0YR9P3/Q9M0CyE2RENuBjjj/tD3qPNQ4P481DzdnF+HByWGz3fj3GB
+ u3AK/dc01gLtBdj2eaYGG0n7ImhWCo9zU/4uwBWNTBJ2p+AXA+YrwDtPv9Ly/Itw6182
+ RpNw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=55PulxY+2aI7FSmUytdxrXIbJ7zdhQbJKacth6BW6MQ=;
+ b=ETRmh6GvKgGKA5F8kMqIew+s7zNpRx0EnAmN/oKC5WPokHLlyP9pAT05z/EBF5BA/3
+ kMDZzVvzLS4tN9N7k83nb+WS+wLs4R2QM2tgtrqvpIATXehUX5VborgFBynUCPn5mA3U
+ D2QVpjHqzn9xXHD30Pxnlel2O5anlL5QOmrpPZvYtGxjTWsC3MyvSLdvqqEI07SkFH96
+ eulGdp6Z/FQLt6b8WTWs+yBX4+NPnAG2OjZGzJ9sKb68N/WF1MvA0jkSf4C6+zeAGL6Y
+ A89xKqeod5oiB8LRlRa3ry5HNNni7JOkN7hHpLOOvOEE6vu0FupAxvNvewlhMBeRPC2X
+ 8bCA==
+X-Gm-Message-State: AOAM531GPzYoMSrUz0ujGqcYrTmLPa913xn6tLLuJKoyiNQCyndaQGos
+ Wl/jrVubn+3N9bcVzKLvKphAoOIx1rznNlvrDkE=
+X-Received: by 2002:a25:d990:: with SMTP id q138mr2585649ybg.387.1620266331043; 
+ Wed, 05 May 2021 18:58:51 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20210430104927.do6cxs6yw6yqlq6e@gator.home>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-Content-Language: en-US
-X-Originating-IP: [10.174.187.128]
-X-ClientProxiedBy: dggeme718-chm.china.huawei.com (10.1.199.114) To
- dggpemm500023.china.huawei.com (7.185.36.83)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.255;
- envelope-from=wangyanan55@huawei.com; helo=szxga08-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+References: <20210504124140.1100346-1-linux@roeck-us.net>
+In-Reply-To: <20210504124140.1100346-1-linux@roeck-us.net>
+From: Bin Meng <bmeng.cn@gmail.com>
+Date: Thu, 6 May 2021 09:58:39 +0800
+Message-ID: <CAEUhbmVPqHyfZXSR0TS0_E1x-BbfHN869fjZWjWxQx4ASLVGnA@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm/xlnx: Fix PHY address for xilinx-zynq-a9
+To: Guenter Roeck <linux@roeck-us.net>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b36;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb36.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -108,94 +106,65 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Barry Song <song.bao.hua@hisilicon.com>,
- Peter Maydell <peter.maydell@linaro.org>, "Michael S .
- Tsirkin" <mst@redhat.com>, wanghaibin.wang@huawei.com, qemu-devel@nongnu.org,
- yangyicong@huawei.com, Shannon Zhao <shannon.zhaosl@gmail.com>,
- qemu-arm@nongnu.org, Alistair Francis <alistair.francis@wdc.com>,
- prime.zeng@hisilicon.com, Igor
- Mammedov <imammedo@redhat.com>, yuzenghui@huawei.com,
- Paolo Bonzini <pbonzini@redhat.com>, zhukeqian1@huawei.com,
- Jiajie Li <lijiajie11@huawei.com>, David Gibson <david@gibson.dropbear.id.au>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>, Bin Meng <bin.meng@windriver.com>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: A8VpcBro4wzM
+X-TUID: kiBpr8wg2Y5m
 
-Hi Drew,
+Hi Guenter,
 
-On 2021/4/30 18:49, Andrew Jones wrote:
-> On Fri, Apr 30, 2021 at 05:33:42PM +0800, wangyanan (Y) wrote:
->> On 2021/4/30 15:01, Andrew Jones wrote:
->>> On Fri, Apr 30, 2021 at 08:41:25AM +0200, Andrew Jones wrote:
->>>> On Fri, Apr 30, 2021 at 01:09:00PM +0800, wangyanan (Y) wrote:
->>>>> But I think the requirement for ARM "if even one parameter other than cpus
->>>>> or maxcpus
->>>>> is provided then all parameters must be provided" will be better. This can
->>>>> ensure the
->>>>> whole accurate users-specified topology. As you mentioned, if anybody who
->>>>> bothers
->>>>> to specify one, why not also specify the others.
->>>>>
->>>>> I can add the requirement for ARM in the documentation, and also check the
->>>>> parameters
->>>>> in virt_smp_parse. Will this be fine?
->>>> We sort of have to support command lines that are missing 'maxcpus' and
->>>> 'clusters', unless we work together with libvirt to make the change.
->>>> Currently libvirt will generate '-smp 16,sockets=16,cores=1,threads=1'
->>>> from '<vcpu placement='static'>16</vcpu>'. That's sufficient for our
->>>> stricter, but not completely strict requirements. And, I still think
->>>> 'threads' could be optional, because there's a good chance the user
->>>> doesn't want to describe them, so a default of 1 is good enough. Also,
->>>> given maxcpus, but not cpus, it's pretty obvious that cpus should equal
->>>> maxcpus.
->>>>
->>> We also still need just 'cpus' or just 'maxcpus' to work, since that
->>> already works now. So, at least these should work
->>>
->>>    -smp N
->>>    -smp maxcpus=N
->>>    -smp N,maxcpus=M
->>>    -smp N,sockets=N,cores=1,threads=1
->>>    -smp N,maxcpus=M,sockets=M,cores=1,threads=1
->>>
->>> since they work today, even though no topology is described.
->> Yes. I forgot this point that we should consider the compat.
->>> If we want to
->>> describe a topology for the first three, then we'll have to pick one,
->>> which brings us back to the sockets over cores stuff. Or, we could choose
->>> to just not generate topology descriptions when none is provided.
->> I find that both preferring cores over sockets and not generating topology
->> descriptions
->> when none is provided can't solve everything. We can only ensure guest will
->> get one
->> socket with multiple cores with qemu cmdline "-smp N".
->>
->> But if we specify N cpus without any other parameters in libvirt xml, a qemu
->> cmdline like
->> "-smp N, sockets=N, cores=1,threads=1" will be generated, and as a result
->> guest will get
->> N sockets. In this case, we still can't avoid the silent change.
->>
->> So maybe we should just prefer sockets over cores like the general
->> smp_parse() and libvirt,
->> and let users use "-smp N, sockets=1, cores=N,threads=1" to get what they
->> want if they
->> use version 6.0 or later.
-> Rather than doing the preference of sockets over cores thing, let's
-> require that sockets, cores, and one of maxcpus or cpus are provided,
-> as we discussed in the other mail.
-Ok, I see.
-
-Thanks for these discussions about parsing of -smp command line. :)
-Now it seems that a separate virt_smp_parse() function for ARM is still 
-necessary,
-I will implement it in v3 of the other "Introduce cpu topology support" 
-series.
-
-Thanks,
-Yanan
+On Tue, May 4, 2021 at 8:41 PM Guenter Roeck <linux@roeck-us.net> wrote:
 >
-> Thanks,
-> drew
+> Commit dfc388797cc4 ("hw/arm: xlnx: Set all boards' GEM 'phy-addr'
+> property value to 23") configured the PHY address for xilinx-zynq-a9
+> to 23. When trying to boot xilinx-zynq-a9 with zynq-zc702.dtb or
+> zynq-zc706.dtb, this results in the following error message when
+> trying to use the Ethernet interface.
 >
-> .
+> macb e000b000.ethernet eth0: Could not attach PHY (-19)
+>
+> The devicetree files for ZC702 and ZC706 configure PHY address 7. The
+> documentation for the ZC702 and ZC706 evaluation boards suggest that the
+> PHY address is 7, not 23. Other boards use PHY address 0, 1, 3, or 7.
+> I was unable to find a documentation or a devicetree file suggesting
+> or using PHY address 23.
+
+I can't find one neither :(
+
+> The Ethernet interface starts working with
+> zynq-zc702.dtb and zynq-zc706.dtb when setting the PHY address to 7,
+> so let's use it.
+>
+> Cc: Bin Meng <bin.meng@windriver.com>
+> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+> ---
+>  hw/arm/xilinx_zynq.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
+> index 8db6cfd47f..5ac0294f9e 100644
+> --- a/hw/arm/xilinx_zynq.c
+> +++ b/hw/arm/xilinx_zynq.c
+> @@ -119,7 +119,7 @@ static void gem_init(NICInfo *nd, uint32_t base, qemu_irq irq)
+>          qemu_check_nic_model(nd, TYPE_CADENCE_GEM);
+>          qdev_set_nic_properties(dev, nd);
+>      }
+> -    object_property_set_int(OBJECT(dev), "phy-addr", 23, &error_abort);
+> +    object_property_set_int(OBJECT(dev), "phy-addr", 7, &error_abort);
+>      s = SYS_BUS_DEVICE(dev);
+>      sysbus_realize_and_unref(s, &error_fatal);
+>      sysbus_mmio_map(s, 0, base);
+> --
+
+Reviewed-by: Bin Meng <bmeng.cn@gmail.com>
+
+While we are here, could you please create a doc for the target you
+are testing with Linux/U-Boot/etc?
+
+I was having a hard time booting upstream U-Boot/Linux on QEMU zynqmp before.
+
+Regards,
+Bin

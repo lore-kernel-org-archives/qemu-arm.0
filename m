@@ -1,99 +1,112 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp820932lfg;
-        Wed, 5 May 2021 18:59:06 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwS1TjASqwtjXlrWV8dCDaaYVKk8uIEfJYlK1ZF+L8QIxofC0BLfNAsQI32R/7gsPi6FcqG
-X-Received: by 2002:a05:620a:12b1:: with SMTP id x17mr1755354qki.362.1620266346623;
-        Wed, 05 May 2021 18:59:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620266346; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp834878lfg;
+        Wed, 5 May 2021 19:23:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzdfVLVLKyRLwvU4Cd0f931pNb2xIR1Z97VYxOA4//SuDjjoD3UFzOVzb1OjMivwZqjNh6A
+X-Received: by 2002:a92:d5cd:: with SMTP id d13mr1850828ilq.133.1620267814900;
+        Wed, 05 May 2021 19:23:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620267814; cv=none;
         d=google.com; s=arc-20160816;
-        b=HJ1UTJ0MZSH5mo+rSKA25rG/FZe0/LTyMHGaUPG5TFQB6krHEMeOoRQ4dqeEU51bWS
-         0PSbFyE3Zx7pzyVxjP84twZwTI42Jsd9nLNx94xssw1ZVRv5oQYMEudylN4y6fGSJlGq
-         3qiQwNxtqeahZzpAps4F7AnSwG/PntP0szaQYi99S60KkeLgfZSLvBtK5BawrHpbUKYS
-         Id9h57xhWfTn6uAeVmAR2Lx7CTa7+sGDfGnjfx+/p2aPgXpFrzjOuZicgtlu+Dh7ICZa
-         sI2RHTr1Sr4KVnnvVvFPZHYG4NNtKZgbj9SHmgQM4AZdvA/9uZOKcXyQ1DbjszYX2eeX
-         kDCg==
+        b=lCNQnNwqMBXRnm98Q23fied87/iptoavp08vdM46G0SfQkgsyXfK0kXdjy2guhOG+0
+         bvRHJv3CwtpeuIIToLx0mucuXQTFq3tR0Vl9rXzi4F8bGsNo2RdDeMs7kobDsLBdCvSO
+         F0N+IN/JMjM4qQjBKMETcwHVJwC0/F467UO+s49SBA0FtqJ/h1rMOqf7T00GrpPIZOYe
+         tB+VoAIqERJYBu+9p6d0Xq6AACq64K2b6I5SpB3Sq5O+LapFeDWjbMPDi/yhkbu9LAzt
+         8Xy7vV8jsDDNu4Bivc9VTu+gsNKNAQGbn6zPsBU18QrAYh7vKhP/dWFWq/JbAYqI8qiK
+         fQHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=55PulxY+2aI7FSmUytdxrXIbJ7zdhQbJKacth6BW6MQ=;
-        b=QP/GGbZ5CBAu9MLiYuzsgRiQGh83fLspW3gDHlQJ85tFHEDQyQ168jLQQj3c6XEyR7
-         NKzXg/PLrPKxNk4nHiEB5Ea0AXEduTPapYHJ/EWwzq1Y3eNWKm5cK6++ZxGFej1m3VrU
-         2EEehf/jMQ3Cxm8BgFvoTy19n7BGLHdoTygriMU/5m/AehFNcUQMZDr35cFQdSIgd2vG
-         ERDeR5iohtX2blMpqfEfs1X0OFy9izWfccRruZed/c9EMIIn8Q4f3VdBr6CKypMexpWz
-         l3sirUsFotNwlR17w19wjBuO1rX4DaKxSTRPp09yXcGNd0Wdx6u0VkOV3roW8+TrbBLX
-         /TQQ==
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=bCZaueHjHzuRrmWYGlzhJxyAvv1JFj+NH62RnthUGtg=;
+        b=EhxtEKYUacF4GNIiaiDOrJKbeZT8uer1Xo2e0jowupn3cMaQf8Ht7hwwZB5U+O4Wbk
+         9algIYXkFr8v9mgVWSK0DKZCtE0jjh7ZRydFOwEQ2LTB2Fwlo4GNBej2PG/kkQmiWhqS
+         tVZPN4TTTuCUTmzM1VFQGH45pZiBuftMP8v6z2+GWesZoWPiX4EAaf1AbS0WEIsU/3cP
+         mtTHNE8E5sB+aIskqHggLraa9iYGeSFkg31lizfd9LyUGxM8Uqy9TRSbsPkDMbzt7oXR
+         18MK8rXhENHnzJOro00GawEfL+jDa6qnuDaULWSuAr7qxEG1SzfYjI8vqIbup/LvL5Jl
+         /v3A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YmlDCjNe;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Hnsuefr0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o8si727188qtp.249.2021.05.05.18.59.06
+        by mx.google.com with ESMTPS id y15si1366161iow.56.2021.05.05.19.23.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 05 May 2021 18:59:06 -0700 (PDT)
+        Wed, 05 May 2021 19:23:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YmlDCjNe;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Hnsuefr0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:42066 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:53118 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1leTI9-0005I2-UT
-	for alex.bennee@linaro.org; Wed, 05 May 2021 21:59:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58624)
+	id 1leTfq-0005pu-88
+	for alex.bennee@linaro.org; Wed, 05 May 2021 22:23:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33926)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1leTHy-0005Hi-Q9; Wed, 05 May 2021 21:58:54 -0400
-Received: from mail-yb1-xb36.google.com ([2607:f8b0:4864:20::b36]:41791)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1leTHw-0001it-W8; Wed, 05 May 2021 21:58:54 -0400
-Received: by mail-yb1-xb36.google.com with SMTP id l7so5315575ybf.8;
- Wed, 05 May 2021 18:58:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=55PulxY+2aI7FSmUytdxrXIbJ7zdhQbJKacth6BW6MQ=;
- b=YmlDCjNeYowmqAaWSWt1rSpTyv+nDsZk1UMw6sEQB/Qa1Ld+5EXKjrVs3g11vldlIK
- wG64IZQhPFSrv1E9zMgzM02xj0/pj5yHA46IWyzuE8PLP5b+IT/i8j5i16CZ3NoXnI3S
- TUW8eNAq8lbOpdSnx95nkLv+/h2RmAgpZdfo6v8KDUnWUt0i3Q1YINgEqbv2bGfyxQzO
- poV3vH9PsxfKsU0YR9P3/Q9M0CyE2RENuBjjj/tD3qPNQ4P481DzdnF+HByWGz3fj3GB
- u3AK/dc01gLtBdj2eaYGG0n7ImhWCo9zU/4uwBWNTBJ2p+AXA+YrwDtPv9Ly/Itw6182
- RpNw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=55PulxY+2aI7FSmUytdxrXIbJ7zdhQbJKacth6BW6MQ=;
- b=ETRmh6GvKgGKA5F8kMqIew+s7zNpRx0EnAmN/oKC5WPokHLlyP9pAT05z/EBF5BA/3
- kMDZzVvzLS4tN9N7k83nb+WS+wLs4R2QM2tgtrqvpIATXehUX5VborgFBynUCPn5mA3U
- D2QVpjHqzn9xXHD30Pxnlel2O5anlL5QOmrpPZvYtGxjTWsC3MyvSLdvqqEI07SkFH96
- eulGdp6Z/FQLt6b8WTWs+yBX4+NPnAG2OjZGzJ9sKb68N/WF1MvA0jkSf4C6+zeAGL6Y
- A89xKqeod5oiB8LRlRa3ry5HNNni7JOkN7hHpLOOvOEE6vu0FupAxvNvewlhMBeRPC2X
- 8bCA==
-X-Gm-Message-State: AOAM531GPzYoMSrUz0ujGqcYrTmLPa913xn6tLLuJKoyiNQCyndaQGos
- Wl/jrVubn+3N9bcVzKLvKphAoOIx1rznNlvrDkE=
-X-Received: by 2002:a25:d990:: with SMTP id q138mr2585649ybg.387.1620266331043; 
- Wed, 05 May 2021 18:58:51 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
+ id 1leTff-0005nW-Ol
+ for qemu-arm@nongnu.org; Wed, 05 May 2021 22:23:23 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:47601)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
+ id 1leTfc-0007Sg-FA
+ for qemu-arm@nongnu.org; Wed, 05 May 2021 22:23:23 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1620267799;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=bCZaueHjHzuRrmWYGlzhJxyAvv1JFj+NH62RnthUGtg=;
+ b=Hnsuefr0JUd8IGjCA3Fu1GdNjGcUNPhikd5kxOpcC4jBfBH5Y6PXvasMyxZKLzIuGK6/cF
+ e7tYXBo/cKRc7Z3DGrS8eNFPjFb5Md/3vq+dZ542WIgV4OUTanntOGtfapoH7A8IWGOb6I
+ NdAEKasMJxWUGOwsDLGut226ew4HVT0=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-333-Y4V5Tm2FPNK8xJ5i2cSJUw-1; Wed, 05 May 2021 22:23:13 -0400
+X-MC-Unique: Y4V5Tm2FPNK8xJ5i2cSJUw-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 06097107ACC7;
+ Thu,  6 May 2021 02:23:12 +0000 (UTC)
+Received: from wangxiaodeMacBook-Air.local (ovpn-13-159.pek2.redhat.com
+ [10.72.13.159])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id B30BE620DE;
+ Thu,  6 May 2021 02:23:08 +0000 (UTC)
+Subject: Re: [PATCH] hw/net/imx_fec: return 0xffff when accessing non-existing
+ PHY
+To: Guenter Roeck <linux@roeck-us.net>,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20210502160326.1196252-1-linux@roeck-us.net>
+From: Jason Wang <jasowang@redhat.com>
+Message-ID: <e4927ca2-af25-3fa9-629a-8cbc69c01f45@redhat.com>
+Date: Thu, 6 May 2021 10:23:07 +0800
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0)
+ Gecko/20100101 Thunderbird/78.10.0
 MIME-Version: 1.0
-References: <20210504124140.1100346-1-linux@roeck-us.net>
-In-Reply-To: <20210504124140.1100346-1-linux@roeck-us.net>
-From: Bin Meng <bmeng.cn@gmail.com>
-Date: Thu, 6 May 2021 09:58:39 +0800
-Message-ID: <CAEUhbmVPqHyfZXSR0TS0_E1x-BbfHN869fjZWjWxQx4ASLVGnA@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm/xlnx: Fix PHY address for xilinx-zynq-a9
-To: Guenter Roeck <linux@roeck-us.net>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b36;
- envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb36.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20210502160326.1196252-1-linux@roeck-us.net>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jasowang@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=gbk; format=flowed
+Content-Transfer-Encoding: 8bit
+Content-Language: en-US
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=jasowang@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -9
+X-Spam_score: -1.0
+X-Spam_bar: -
+X-Spam_report: (-1.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.693,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ MIME_CHARSET_FARAWAY=2.45, NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -106,65 +119,77 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>, Bin Meng <bin.meng@windriver.com>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>
+Cc: Jean-Christophe Dubois <jcd@tribudubois.net>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Bin Meng <bmeng.cn@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kiBpr8wg2Y5m
+X-TUID: thnHoltg1P8J
 
-Hi Guenter,
 
-On Tue, May 4, 2021 at 8:41 PM Guenter Roeck <linux@roeck-us.net> wrote:
+ÔÚ 2021/5/3 ÉÏÎç12:03, Guenter Roeck Ð´µÀ:
+> If a PHY does not exist, attempts to read from it should return 0xffff.
+> Otherwise the Linux kernel will believe that a PHY is there and select
+> the non-existing PHY. This in turn will result in network errors later
+> on since the real PHY is not selected or configured.
 >
-> Commit dfc388797cc4 ("hw/arm: xlnx: Set all boards' GEM 'phy-addr'
-> property value to 23") configured the PHY address for xilinx-zynq-a9
-> to 23. When trying to boot xilinx-zynq-a9 with zynq-zc702.dtb or
-> zynq-zc706.dtb, this results in the following error message when
-> trying to use the Ethernet interface.
+> Since reading from or writing to a non-existing PHY is not an emulation
+> error, replace guest error messages with traces.
 >
-> macb e000b000.ethernet eth0: Could not attach PHY (-19)
->
-> The devicetree files for ZC702 and ZC706 configure PHY address 7. The
-> documentation for the ZC702 and ZC706 evaluation boards suggest that the
-> PHY address is 7, not 23. Other boards use PHY address 0, 1, 3, or 7.
-> I was unable to find a documentation or a devicetree file suggesting
-> or using PHY address 23.
-
-I can't find one neither :(
-
-> The Ethernet interface starts working with
-> zynq-zc702.dtb and zynq-zc706.dtb when setting the PHY address to 7,
-> so let's use it.
->
-> Cc: Bin Meng <bin.meng@windriver.com>
+> Fixes: 461c51ad4275 ("Add a phy-num property to the i.MX FEC emulator")
+> Cc: Jean-Christophe Dubois <jcd@tribudubois.net>
 > Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+
+
+Applied.
+
+Thanks
+
+
 > ---
->  hw/arm/xilinx_zynq.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>   hw/net/imx_fec.c    | 8 +++-----
+>   hw/net/trace-events | 2 ++
+>   2 files changed, 5 insertions(+), 5 deletions(-)
 >
-> diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
-> index 8db6cfd47f..5ac0294f9e 100644
-> --- a/hw/arm/xilinx_zynq.c
-> +++ b/hw/arm/xilinx_zynq.c
-> @@ -119,7 +119,7 @@ static void gem_init(NICInfo *nd, uint32_t base, qemu_irq irq)
->          qemu_check_nic_model(nd, TYPE_CADENCE_GEM);
->          qdev_set_nic_properties(dev, nd);
->      }
-> -    object_property_set_int(OBJECT(dev), "phy-addr", 23, &error_abort);
-> +    object_property_set_int(OBJECT(dev), "phy-addr", 7, &error_abort);
->      s = SYS_BUS_DEVICE(dev);
->      sysbus_realize_and_unref(s, &error_fatal);
->      sysbus_mmio_map(s, 0, base);
-> --
+> diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
+> index f03450c028..9c7035bc94 100644
+> --- a/hw/net/imx_fec.c
+> +++ b/hw/net/imx_fec.c
+> @@ -283,9 +283,8 @@ static uint32_t imx_phy_read(IMXFECState *s, int reg)
+>       uint32_t phy = reg / 32;
+>   
+>       if (phy != s->phy_num) {
+> -        qemu_log_mask(LOG_GUEST_ERROR, "[%s.phy]%s: Bad phy num %u\n",
+> -                      TYPE_IMX_FEC, __func__, phy);
+> -        return 0;
+> +        trace_imx_phy_read_num(phy, s->phy_num);
+> +        return 0xffff;
+>       }
+>   
+>       reg %= 32;
+> @@ -345,8 +344,7 @@ static void imx_phy_write(IMXFECState *s, int reg, uint32_t val)
+>       uint32_t phy = reg / 32;
+>   
+>       if (phy != s->phy_num) {
+> -        qemu_log_mask(LOG_GUEST_ERROR, "[%s.phy]%s: Bad phy num %u\n",
+> -                      TYPE_IMX_FEC, __func__, phy);
+> +        trace_imx_phy_write_num(phy, s->phy_num);
+>           return;
+>       }
+>   
+> diff --git a/hw/net/trace-events b/hw/net/trace-events
+> index baf25ffa7e..ee77238d9e 100644
+> --- a/hw/net/trace-events
+> +++ b/hw/net/trace-events
+> @@ -413,8 +413,10 @@ i82596_set_multicast(uint16_t count) "Added %d multicast entries"
+>   i82596_channel_attention(void *s) "%p: Received CHANNEL ATTENTION"
+>   
+>   # imx_fec.c
+> +imx_phy_read_num(int phy, int configured) "read request from unconfigured phy %d (configured %d)"
+>   imx_phy_read(uint32_t val, int phy, int reg) "0x%04"PRIx32" <= phy[%d].reg[%d]"
+>   imx_phy_write(uint32_t val, int phy, int reg) "0x%04"PRIx32" => phy[%d].reg[%d]"
+> +imx_phy_write_num(int phy, int configured) "write request to unconfigured phy %d (configured %d)"
+>   imx_phy_update_link(const char *s) "%s"
+>   imx_phy_reset(void) ""
+>   imx_fec_read_bd(uint64_t addr, int flags, int len, int data) "tx_bd 0x%"PRIx64" flags 0x%04x len %d data 0x%08x"
 
-Reviewed-by: Bin Meng <bmeng.cn@gmail.com>
-
-While we are here, could you please create a doc for the target you
-are testing with Linux/U-Boot/etc?
-
-I was having a hard time booting upstream U-Boot/Linux on QEMU zynqmp before.
-
-Regards,
-Bin

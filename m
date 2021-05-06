@@ -1,199 +1,127 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp1316150lfg;
-        Thu, 6 May 2021 07:23:01 -0700 (PDT)
-X-Received: by 2002:ac8:7ee8:: with SMTP id r8mr4484732qtc.56.1620310981210;
-        Thu, 06 May 2021 07:23:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620310981; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp1319023lfg;
+        Thu, 6 May 2021 07:26:07 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxCAT10gqSLH3n9xvEuw4D58OwoIQZqbH7ef1BJy1+BfxAPgVF4Uv1aCaZPtKX8IebfjZIl
+X-Received: by 2002:a50:da88:: with SMTP id q8mr5662094edj.256.1620311167708;
+        Thu, 06 May 2021 07:26:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620311167; cv=none;
         d=google.com; s=arc-20160816;
-        b=FSdmgm9OA6X+wfjjmJ7dRJRlpHLbp4KM/9LwKDJjEzmYJ1rWRPL2Ze4zgaGMNoM9LK
-         M7tQVLRKTaNixA0m1j9r3N4ADQ2RgPRwfQxfoJUFhMFNiWWVlt8SyBIPWK0ZX4qr8lTQ
-         MtZzH+YRc6owh7a5NMppZ9kBpY7JrVxWKVkkhwXIGdEryq37Sorfe0NQfNS0y+W+tsYV
-         0kA0WaJsZV+L0EAZ511FZnFrvEnb16FvfFdB8G2Oig278zJFslPq1r7IOcUCYGN7a6a+
-         PWl8QUigVKD6ycokcTHxtKdVU7M/im2OXcV7+Un19qJpYtecfAxgVWH+gBkVo8Maq+ic
-         3sFA==
+        b=XRFebVsF/Q9GwVoU7xTmnx+vTZYlr4a7U65uaYyfhtQafIgCnQm/QeAomZFbbCk9TU
+         wPBfiiAtVAAkXzXcDx6YbkBp+a5TKGHg7yuoh9eeYM+vzy3vtd87uHQfJ6S02Z0/XQcH
+         7TZhSKj0GvSdqJi7kAIAJ0H6FMTHOvSBPc/oZ45d1sqVaF/AWi6tOEHYegEGPhq+s/PO
+         4t5aglVRKNWCegNVVYBGHdMMM3+o4Qbsj9MajomHPxM8A0erDZuzCMzvZW0I/Gc4wkEO
+         XBAiEtt7gMyPno2B9EBy4tr+Oru28tG0iuciYX74Y7J4bao9x9A1Y4fzadDPWoBUZbql
+         caxQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=dQGJ6Q0wZKhpJ3PZdrsCXdr7zqNBB4FZ2lq1ceu6GQM=;
-        b=evXBNqVxeXtr403jdyD5RHjQZcYSygz+rMjwfcOIxGuSbyNNxehP/bE/rITTbVMEt2
-         VlgGaUEcsOX2WlK0XELBdrJnMSKe/PMD0Lvw8R16MZwIjQwLXixRSauikoFiNPAz0dzN
-         xyEpSKxGTD7o5HUJWUggf7qafeTU3V+6FyLznQLaDIWY2KowVEp2z9p8ymvTWhqDSoJj
-         MrGsVlbEmq5Rraj/m8z7T5S8CPEIpq7/SlFdL7n8KG1cxcnc/gi28q6mOuV9FoZVEMoJ
-         pKfIgdLqWP7J69ta0IOoF9LC2yecEmofqvoxtrtc/Ybndsh5p8gpG57JcnNnt+AOHk3q
-         bJmw==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:organization:from:references:cc:to
+         :subject:dkim-signature;
+        bh=4iuE6eCW+gTRiFvl6fzIAuVjIl3+LmZF9xYYjhbaPYk=;
+        b=QQIse0KM1zdQ4DNQZPFMs4XrlA0O/1/DH/4SfGhmVE7tcirGjeJ53ZU8irdnvz69IA
+         VFTK2UHTZbJpwygCyLAZK+AezeKOr3nqk2qCkLG6buD8QszNtlD1ibDSyc3YmdKTauqr
+         LWuuzXa8D2dok6rbKEkvrXBcgvDzTO7jYq1cWXYrH7NdqItl7QLffcJ/gcC0BVJM3jzt
+         5OHn4NOBHowDwjb7nPe+kMh+HAb1gi+yT4PnRRO974GdPzSJj1fGrUlF75kuh8csIkxI
+         t7eq3sgE4SYehD3bfz11lWu1zaByz0PeJYlYatXcAKtwH1wQKtholoy29zQtb461/H0q
+         jm5g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b=ZL4nPapk;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of wlosh@bsdimp.com) smtp.mailfrom=wlosh@bsdimp.com
-Return-Path: <wlosh@bsdimp.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 99sor2934130qta.16.2021.05.06.07.23.01
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cD5QFNST;
+       spf=pass (google.com: domain of eblake@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eblake@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <eblake@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id dy4si2421724edb.544.2021.05.06.07.26.07
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 06 May 2021 07:23:01 -0700 (PDT)
-Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of wlosh@bsdimp.com) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 06 May 2021 07:26:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eblake@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b=ZL4nPapk;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of wlosh@bsdimp.com) smtp.mailfrom=wlosh@bsdimp.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bsdimp-com.20150623.gappssmtp.com; s=20150623;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=dQGJ6Q0wZKhpJ3PZdrsCXdr7zqNBB4FZ2lq1ceu6GQM=;
-        b=ZL4nPapkQnQzI5hNrqRk4EOdF5UHQXoCYwA+zf3I+5p/OUid0bx8xQwiCfkDY+jFGY
-         aDfo8z/n+Uvb38a499UO1wHo9wIQcmVf/wrEkrAK5OdlG3a+GSssxqtBphd1teZcAlm3
-         hG4GNdvi3lkLzC/eSM78wvOAJLXNsXVo9TY5xUz2LYxZfQEj1wv5+2BXP3agjyOrsGcU
-         h5Q9s6oh62tiJHArrV06sD+1nxZRUV1nrLszulTjOBjMLQ9xhMbH/0Vf2aaDhIlD4vFZ
-         YugV+oq2xItinGwYVBwj7/Q53HOc5UuxgX2DyBpys2whXSIisA+hkqzZNg0T+cx8Kn66
-         R8Mg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=dQGJ6Q0wZKhpJ3PZdrsCXdr7zqNBB4FZ2lq1ceu6GQM=;
-        b=Im8I0186fBr2BqIynP+lw8gxPdfrwuO3QaSUj3fEjwj9KnA5qnzYLJsigWuHW2bY2a
-         /Jf2uXQfHlt4hWPV9OHYAY1HsWqyJ5fIQq9KTDy84Phc9xq/887RjDzFuryB5vyxV6EU
-         Yxd9x+PGUmpcZe00QeHLlLoYAnmevhxck7drTqjmfdfUr4bXKEXdHOHOjR2v6+NqY0PJ
-         qmr2JqabYTWMUtZsSgHIdD9U0ExA2XiEAlUgUmI1MczukCxobY3PNtalIxB2IfQxFO6Q
-         JIp9KwwEIg2DVfWuvIKxTzheP5xmbyzngETWkndAk4vvXyg63Ce7ldkQgUDHK6w6NVJ+
-         h10Q==
-X-Gm-Message-State: AOAM5327aEc3qGSKO78ogtWAwEdnbzKKGgPh/IftZp+ngfPgZYIxo5RO
-	LO33bHpSTE/AkuGv1bo5w/p0coVQEK3gYYLk5B5ydA==
-X-Google-Smtp-Source: ABdhPJyBS//SKMm9JQFUL3tfxRak1+TRpBPcKJh3kB36Zt2GrPL58gzj7r9qDcK1DCjsG8+S0Gfw9DFeN5JYYE60FBI=
-X-Received: by 2002:ac8:675a:: with SMTP id n26mr4557315qtp.101.1620310980656;
- Thu, 06 May 2021 07:23:00 -0700 (PDT)
-MIME-Version: 1.0
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cD5QFNST;
+       spf=pass (google.com: domain of eblake@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eblake@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1620311166;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=4iuE6eCW+gTRiFvl6fzIAuVjIl3+LmZF9xYYjhbaPYk=;
+	b=cD5QFNSTFCvkokRTwxBs4W8HJFqGplf1b7ogA1Of6sky2l+WiT4BxOPzU4ccNmrMBE6gQL
+	L9+49Sh+rmmIUEqLU7rrl/73lrqyS4yejL/h9Cuhb7jz8aeI40bHaUW4W+UaBbO/YRRb38
+	cbp101FHqSoEs6ksH/rpvul9keKJl+A=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-436-VUj96t0uOsKt2Yn_3ajXeQ-1; Thu, 06 May 2021 10:25:57 -0400
+X-MC-Unique: VUj96t0uOsKt2Yn_3ajXeQ-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4465818BA281;
+	Thu,  6 May 2021 14:25:56 +0000 (UTC)
+Received: from [10.3.113.56] (ovpn-113-56.phx2.redhat.com [10.3.113.56])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id E70A95D6D7;
+	Thu,  6 May 2021 14:25:51 +0000 (UTC)
+Subject: Re: [PATCH v2 4/9] bsd-user/syscall: Replace alloca() by g_new()
+To: Warner Losh <imp@bsdimp.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <philmd@redhat.com>
+Cc: kvm@vger.kernel.org, Kyle Evans <kevans@freebsd.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>
 References: <20210506133758.1749233-1-philmd@redhat.com>
-In-Reply-To: <20210506133758.1749233-1-philmd@redhat.com>
-From: Warner Losh <imp@bsdimp.com>
-Date: Thu, 6 May 2021 08:22:49 -0600
-Message-ID: <CANCZdfqiHxQoG+g3bq_KL01yWCHUbF5qxJWN=sD37h7UJFMZ7g@mail.gmail.com>
-Subject: Re: [PATCH v2 0/9] misc: Replace alloca() by g_malloc()
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, kvm@vger.kernel.org, qemu-arm@nongnu.org, 
-	qemu-ppc@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>, 
-	Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Content-Type: multipart/alternative; boundary="0000000000006d95be05c1aa0c4a"
-X-TUID: Nlj0Qto2jJUj
+ <20210506133758.1749233-5-philmd@redhat.com>
+ <CANCZdfoJWEbPFvZ0605riUfnpVRAeC6Feem5_ahC7FUfO71-AA@mail.gmail.com>
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+Message-ID: <39f12704-af5c-2e4f-d872-a860d9a870d7@redhat.com>
+Date: Thu, 6 May 2021 09:25:51 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.1
+MIME-Version: 1.0
+In-Reply-To: <CANCZdfoJWEbPFvZ0605riUfnpVRAeC6Feem5_ahC7FUfO71-AA@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-TUID: 5v5rRHSvcxe7
 
---0000000000006d95be05c1aa0c4a
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On 5/6/21 9:16 AM, Warner Losh wrote:
+> On Thu, May 6, 2021, 7:38 AM Philippe Mathieu-Daudé <philmd@redhat.com>
+> wrote:
+> 
+>> The ALLOCA(3) man-page mentions its "use is discouraged".
+>>
+>> Replace it by a g_new() call.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>> ---
+>>  bsd-user/syscall.c | 3 +--
+>>  1 file changed, 1 insertion(+), 2 deletions(-)
+>>
+>> diff --git a/bsd-user/syscall.c b/bsd-user/syscall.c
+>> index 4abff796c76..dbee0385ceb 100644
+>> --- a/bsd-user/syscall.c
+>> +++ b/bsd-user/syscall.c
+>> @@ -355,9 +355,8 @@ abi_long do_freebsd_syscall(void *cpu_env, int num,
+>> abi_long arg1,
+>>      case TARGET_FREEBSD_NR_writev:
+>>          {
+>>              int count = arg3;
+>> -            struct iovec *vec;
+>> +            g_autofree struct iovec *vec = g_new(struct iovec, count);
+>>
+> 
+> Where is this freed? Also, alloca just moves a stack pointer, where malloc
+> has complex interactions. Are you sure that's a safe change here?
 
-On Thu, May 6, 2021 at 7:39 AM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
-om>
-wrote:
+It's freed any time the g_autofree variable goes out of scope (that's
+what the g_autofree macro is for).  Yes, the change is safe, although
+you are right that switching to malloc is going to be a bit more
+heavyweight than what alloca used.  What's more, it adds safety: if
+count was under user control, a user could pass a value that could cause
+alloca to allocate more than 4k and accidentally mess up stack guard
+pages, while malloc() uses the heap and therefore cannot cause stack bugs.
 
-> The ALLOCA(3) man-page mentions its "use is discouraged".
-> Replace few calls by equivalent GLib malloc().
->
-
-Except g_alloc and g_malloc are not at all the same, and you can't drop in
-replace one with the other.
-
-g_alloc allocates stack space on the calling frame that's automatically
-freed when the function returns.
-g_malloc allocates space from the heap, and calls to it must be matched
-with calls to g_free().
-
-These patches don't do the latter, as far as I can tell, and so introduce
-memory leaks unless there's something I've missed.
-
-Warner
-
-
-
-> Last call site is linux-user/.
->
-> Since v1:
-> - Converted more uses (alsaaudio, tpm, pca9552)
-> - Reworked gdbstub (Alex)
-> - Simplified PPC/KVM (Greg)
->
-> Philippe Mathieu-Daud=C3=A9 (9):
->   audio/alsaaudio: Replace ALSA alloca() by malloc() equivalent
->   backends/tpm: Replace qemu_mutex_lock calls with QEMU_LOCK_GUARD
->   backends/tpm: Replace g_alloca() by g_malloc()
->   bsd-user/syscall: Replace alloca() by g_new()
->   gdbstub: Constify GdbCmdParseEntry
->   gdbstub: Only call cmd_parse_params() with non-NULL command schema
->   gdbstub: Replace alloca() + memset(0) by g_new0()
->   hw/misc/pca9552: Replace g_newa() by g_new()
->   target/ppc/kvm: Replace alloca() by g_malloc()
->
->  audio/alsaaudio.c           | 11 +++++++----
->  backends/tpm/tpm_emulator.c | 35 +++++++++++++++--------------------
->  bsd-user/syscall.c          |  3 +--
->  gdbstub.c                   | 34 +++++++++++++++-------------------
->  hw/misc/pca9552.c           |  2 +-
->  target/ppc/kvm.c            |  3 +--
->  6 files changed, 40 insertions(+), 48 deletions(-)
->
-> --
-> 2.26.3
->
->
->
->
-
---0000000000006d95be05c1aa0c4a
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Thu, May 6, 2021 at 7:39 AM Philip=
-pe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com">philmd@redha=
-t.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"ma=
-rgin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:=
-1ex">The ALLOCA(3) man-page mentions its &quot;use is discouraged&quot;.<br=
->
-Replace few calls by equivalent GLib malloc().<br></blockquote><div><br></d=
-iv><div>Except g_alloc and g_malloc are not at all the same, and you can&#3=
-9;t drop in replace one with the other.</div><div><br></div><div>g_alloc al=
-locates stack space on the calling frame that&#39;s automatically freed whe=
-n the function returns.</div><div>g_malloc allocates space from the heap, a=
-nd calls to it must be matched with calls to g_free().</div><div><br></div>=
-<div>These patches don&#39;t do the latter, as far as I can tell, and so in=
-troduce memory leaks unless there&#39;s something I&#39;ve missed.</div><di=
-v><br></div><div>Warner</div><div><br></div><div>=C2=A0</div><blockquote cl=
-ass=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid=
- rgb(204,204,204);padding-left:1ex">
-Last call site is linux-user/.<br>
-<br>
-Since v1:<br>
-- Converted more uses (alsaaudio, tpm, pca9552)<br>
-- Reworked gdbstub (Alex)<br>
-- Simplified PPC/KVM (Greg)<br>
-<br>
-Philippe Mathieu-Daud=C3=A9 (9):<br>
-=C2=A0 audio/alsaaudio: Replace ALSA alloca() by malloc() equivalent<br>
-=C2=A0 backends/tpm: Replace qemu_mutex_lock calls with QEMU_LOCK_GUARD<br>
-=C2=A0 backends/tpm: Replace g_alloca() by g_malloc()<br>
-=C2=A0 bsd-user/syscall: Replace alloca() by g_new()<br>
-=C2=A0 gdbstub: Constify GdbCmdParseEntry<br>
-=C2=A0 gdbstub: Only call cmd_parse_params() with non-NULL command schema<b=
-r>
-=C2=A0 gdbstub: Replace alloca() + memset(0) by g_new0()<br>
-=C2=A0 hw/misc/pca9552: Replace g_newa() by g_new()<br>
-=C2=A0 target/ppc/kvm: Replace alloca() by g_malloc()<br>
-<br>
-=C2=A0audio/alsaaudio.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 11 ++++++=
-+----<br>
-=C2=A0backends/tpm/tpm_emulator.c | 35 +++++++++++++++--------------------<=
-br>
-=C2=A0bsd-user/syscall.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 3 +--<br=
->
-=C2=A0gdbstub.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0| 34 +++++++++++++++-------------------<br>
-=C2=A0hw/misc/pca9552.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 2 +=
--<br>
-=C2=A0target/ppc/kvm.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 3 +=
---<br>
-=C2=A06 files changed, 40 insertions(+), 48 deletions(-)<br>
-<br>
--- <br>
-2.26.3<br>
-<br>
-<br>
-<br>
-</blockquote></div></div>
-
---0000000000006d95be05c1aa0c4a--
+-- 
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3226
+Virtualization:  qemu.org | libvirt.org

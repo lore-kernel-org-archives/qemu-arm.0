@@ -1,133 +1,115 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp1272197lfg;
-        Thu, 6 May 2021 06:38:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy6gf0u0pwn2Go4Y1MTeBLaAVEiF6fL8GlpdfHT7kB/JvA7gSQ883LH4l8a4OPe8uIov6Ny
-X-Received: by 2002:a17:906:52d7:: with SMTP id w23mr4502606ejn.451.1620308317693;
-        Thu, 06 May 2021 06:38:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620308317; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp1393675lfg;
+        Thu, 6 May 2021 08:43:00 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyoAX+jhF/nEUrlagZI7o292C5L+KXg1fzj5v7ooCovMCSMMxNpV1EpM26ao9+Zgd4gVT20
+X-Received: by 2002:a05:6402:b55:: with SMTP id bx21mr6106340edb.281.1620315780816;
+        Thu, 06 May 2021 08:43:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620315780; cv=none;
         d=google.com; s=arc-20160816;
-        b=zWh1KJsd3+8OWE3UQ/VpFI2iCvGWWmMfcuCAodkDyQQmvTvHsb/yjXNwtWnXFxTWnR
-         rWxZHk0XSNflZygyvKVovyuHprzAzNPPMNPx27+ULNlwj6QLrdcSgOUyu5RSza/ALSca
-         QixSCrFm97crR104QO9bw2Rjh8K5gIgzd91qa703eZP0XAoO2ILf+5aU7q7Z3f4kKHjW
-         eRhSP2Q5yy1xmortLRYLAWhdpqy8luiO3m+6D0aJGxeuJ6ufNlEr8ln/jkwoz8sF3PCt
-         Yxam69U+0JmBaSsM1vsYywajCImxrhf6tVDdpIiMoz4ReOu+IQIL4wjw7fTJi2fMFQpa
-         6hkA==
+        b=KSizAd9R3ueV7S9CqmJ1/g2TumTQ1zlwVyp5auSe3c84DOFfjk6z7zsz5mPG7IQCXo
+         TcXUJvOrzgnHpVsMDu26IwK0fhNpaeTNrfl8ZH64A3iTTckYYZWYyVE/n0muRQUZtPQb
+         nRUFHCPlQiywfnLwxbubltjzLBgr9ILvEGQOZTwKPKyr/9YrAzJXXi+yyS1mfKl0FG0V
+         DVhZKf/vSk8klrJXYhUAt62zpfOzDQHSY/vQ5qCV6t0lE/Mkr4qd7bWHf802B6DhbdoE
+         d45fY3YOgO/ORcv47h3LaI1F5fmuoidYaOyEIuoi1rzxPBB4bm32rq3UZlGPA7hPq4Sh
+         g01A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=k4PLS6ZKiwbiAj4ntOkzSZGX4ZG/Ux0v+1o1vvVJrYM=;
-        b=r8YrFgX3oPZ+UySHM4200OvFxXMl2yaLjY48M3PXyQqJHEmXGVXLHTHnOVmoHZsKCa
-         JexFrNNrdskHMxR+oIquGicLbbkPWsSpSQvs0nQs74hp1M8hbmCOTcKnQH30JpOxK3SV
-         altj/SKY6frMNYVYOOzDGb8XWFvsfXWzZtBSQqUxbQ1N6REQzCX2/quGYo9kmtfKGo3O
-         n4RIJrRT5B2OcnQAG6+8qpTsnMeHY+ag9REWutSV3QQ63KB3IdFU6+3ZtXxNIfTjK6rb
-         U1+L1asS71bcwo3vy+IGtVQFiywWsXrb+qGPtM46wM+4OivyCFmYZoaPrwCsK+/plD/9
-         Q2JA==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:organization:from:references:cc:to
+         :subject:dkim-signature;
+        bh=4KmRXMHEZ+tVNwwgfG0qof+36HnLMbB1FdIrxdalX6M=;
+        b=MPGmRLLOmn9EPLT5MP37WMA7AtmgkBMTMpoujA35UlO+bpzwcww0R346JqSYh3VXeC
+         94f71sT+wEv9QLK1wo87PqbFO723MqAKmzixcaRC2a2/HifIXYcUgM3N0wfpUPwjUf2b
+         czjoEORH8kX0vbs9xqbKUPMil8KmW+Czwpv9MBNo52IZ05qYYFGlk80iYxw9zz67l1vG
+         4CliN7UU97tsmj5T9ruKLE5pqSEfA17Dh5gyst5gkvOmvpo8vZHF+qOWwT9kWfBGRrY4
+         w/dNSNlyYJPItVEb8UoPGgqfIbrOiKffqP3pfveoMTgjXNFOHosxyyjCTiWmD2XuyONy
+         SZDA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="fXK2Y/P9";
-       spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="BquaxmH/";
+       spf=pass (google.com: domain of eblake@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eblake@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
+Return-Path: <eblake@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id f17si604069edx.76.2021.05.06.06.38.37
+        by mx.google.com with ESMTPS id d14si2825237edk.117.2021.05.06.08.43.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 06 May 2021 06:38:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Thu, 06 May 2021 08:43:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eblake@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="fXK2Y/P9";
-       spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="BquaxmH/";
+       spf=pass (google.com: domain of eblake@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eblake@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1620308316;
+	s=mimecast20190719; t=1620315779;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=k4PLS6ZKiwbiAj4ntOkzSZGX4ZG/Ux0v+1o1vvVJrYM=;
-	b=fXK2Y/P9RYah5H5Usg5XD7ROW3+c224PC1hsDZg5WY20szqAyp53YtvBheJC5PVPF5TsU5
-	hgY7bylhkWSMTg6H6RbwlkuzzflSaZqnLEuT/RatR7SE3Y5lPRN6LqyoXJp5TfYW/qwlwA
-	gisZvPU/Vsr4RHGxWQ6Gvt0jGKpBSns=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-452-_PDvlY9-OV--LTAkr-WUkA-1; Thu, 06 May 2021 09:38:35 -0400
-X-MC-Unique: _PDvlY9-OV--LTAkr-WUkA-1
-Received: by mail-wr1-f71.google.com with SMTP id l2-20020adf9f020000b029010d6bb7f1cbso2212086wrf.7
-        for <alex.bennee@linaro.org>; Thu, 06 May 2021 06:38:34 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=k4PLS6ZKiwbiAj4ntOkzSZGX4ZG/Ux0v+1o1vvVJrYM=;
-        b=FnbqxRrp6+6lfQq23nEF/DFB47unGuCscv9ghMJZFu7vwH4Qi9sL8edSuf0dpYqxBT
-         PQBwLHagQx+9Cy8qjbtmns3GvXWJpSSWHemzbOl8rwo3Mv7L+nTqK+fUCxlL2B/dpwDd
-         B+vIKR+XEHA8LL6x3zdHHJbZbT53/51jjX0Fku1OGU5MoEP5pB5I1FFONy4wlLUtmV7d
-         YdNxtKYI6a/u7a5DIiyOeZ8XNuPe7gIrh928uM+iyYIxuEcRwPWejS/b4dH8630JX3N3
-         T4n8KrYXUNg5gyKMW0gzcSoxqaIWFV/DOM8eyiHNHdhJ3Cv/TMfWfSlKqupAIaBU03zz
-         x/MA==
-X-Gm-Message-State: AOAM5335yHe+nLkun5mHI2g20tycadmlzkMJ8kCWEBjgJb4eUAVyTMVv
-	M9eMxMvh7l/194TXY0lc6msZAEL3Tqtaz+bmmL/JIT1mZW87RLc0knBRgeMwZMEIo1U1Dx0nVro
-	q9B/Ck2TJIsC31bi7
-X-Received: by 2002:a5d:4707:: with SMTP id y7mr5273910wrq.137.1620308314030;
-        Thu, 06 May 2021 06:38:34 -0700 (PDT)
-X-Received: by 2002:a5d:4707:: with SMTP id y7mr5273889wrq.137.1620308313868;
-        Thu, 06 May 2021 06:38:33 -0700 (PDT)
-Return-Path: <philmd@redhat.com>
-Received: from localhost.localdomain (astrasbourg-652-1-219-60.w90-40.abo.wanadoo.fr. [90.40.114.60])
-        by smtp.gmail.com with ESMTPSA id j13sm4830339wrd.81.2021.05.06.06.38.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 06 May 2021 06:38:33 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: kvm@vger.kernel.org,
-	qemu-ppc@nongnu.org,
-	qemu-arm@nongnu.org,
-	Gerd Hoffmann <kraxel@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH v2 7/9] gdbstub: Replace alloca() + memset(0) by g_new0()
-Date: Thu,  6 May 2021 15:37:56 +0200
-Message-Id: <20210506133758.1749233-8-philmd@redhat.com>
-X-Mailer: git-send-email 2.26.3
-In-Reply-To: <20210506133758.1749233-1-philmd@redhat.com>
+	bh=4KmRXMHEZ+tVNwwgfG0qof+36HnLMbB1FdIrxdalX6M=;
+	b=BquaxmH/Z5+T/EjIDNfbS4m3MA7rb9E8fgwqHemxL3RDDlmpxSkKySQ4vyK8tSxgbX5gmi
+	Z+8tzyQMDxIl6Ntw0Nls7U+FPIy6Q/+1NreJz45Pxd6HJls9Mfy5azf2wfKiGK3v47C6Ou
+	hxda2q4SWXLBB3wh5HVnM234id5O5NA=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-222-HqYu6-wIOUGL-HnIy_9qew-1; Thu, 06 May 2021 11:42:56 -0400
+X-MC-Unique: HqYu6-wIOUGL-HnIy_9qew-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D196D80ED9B;
+	Thu,  6 May 2021 15:42:54 +0000 (UTC)
+Received: from [10.3.113.56] (ovpn-113-56.phx2.redhat.com [10.3.113.56])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id A7CAE60862;
+	Thu,  6 May 2021 15:42:50 +0000 (UTC)
+Subject: Re: [PATCH v2 4/9] bsd-user/syscall: Replace alloca() by g_new()
+To: Warner Losh <imp@bsdimp.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ kvm-devel <kvm@vger.kernel.org>, Kyle Evans <kevans@freebsd.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ qemu-ppc <qemu-ppc@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>
 References: <20210506133758.1749233-1-philmd@redhat.com>
+ <20210506133758.1749233-5-philmd@redhat.com>
+ <CANCZdfoJWEbPFvZ0605riUfnpVRAeC6Feem5_ahC7FUfO71-AA@mail.gmail.com>
+ <39f12704-af5c-2e4f-d872-a860d9a870d7@redhat.com>
+ <CANCZdfqW0XTa18F+JxuSnhpictWxVJUsu87c=yAwMp6YT60FMg@mail.gmail.com>
+ <7a96d45e-2bdc-f699-96f7-3fbf607cb06b@redhat.com>
+ <CANCZdfrcv9ZUcBv7z+z3JPCjy0uzzY07VLmC4dqr5r8ba_QPLw@mail.gmail.com>
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+Message-ID: <adfc5da4-a615-24d7-0c67-f04d4eaec9a6@redhat.com>
+Date: Thu, 6 May 2021 10:42:50 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.1
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: NlcMbK/i9Dxu
+In-Reply-To: <CANCZdfrcv9ZUcBv7z+z3JPCjy0uzzY07VLmC4dqr5r8ba_QPLw@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-TUID: WdAI0j72ww4h
 
-The ALLOCA(3) man-page mentions its "use is discouraged".
+On 5/6/21 10:30 AM, Warner Losh wrote:
 
-Replace the alloca() and memset(0) calls by g_new0().
+> 
+> But for the real answer, I need to contact the original authors of
+> this part of the code (they are no longer involved day-to-day in
+> the bsd-user efforts) to see if this scenario is possible or not. If
+> it's easy to find out that way, we can either know this is safe to
+> do, or if effort is needed to make it safe. At present, I've seen
+> enough and chatted enough with others to be concerned that
+> the change would break proper emulation.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
----
- gdbstub.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+Do we have a feel for the maximum amount of memory being used by the
+various alloca() replaced in this series?  If so, can we just
+stack-allocate an array of bytes of the maximum size needed?  Then we
+avoid alloca() but also avoid the dynamic memory management that
+malloc() would introduce.  Basically, it boils down to auditing why the
+alloca() is safe, and once we know that, replacing the variable-sized
+precise alloca() with its counterpart statically-sized array allocation,
+at the expense of some wasted stack space when the runtime size does not
+use the full compile-time maximum size.
 
-diff --git a/gdbstub.c b/gdbstub.c
-index 7cee2fb0f1f..666053bf590 100644
---- a/gdbstub.c
-+++ b/gdbstub.c
-@@ -1487,14 +1487,13 @@ static int process_string_cmd(void *user_ctx, const char *data,
-         if (cmd->schema) {
-             int schema_len = strlen(cmd->schema);
-             int max_num_params = schema_len / 2;
-+            g_autofree GdbCmdVariant *params = NULL;
- 
-             if (schema_len % 2) {
-                 return -2;
-             }
- 
--            gdb_ctx.params = (GdbCmdVariant *)alloca(sizeof(*gdb_ctx.params)
--                                                     * max_num_params);
--            memset(gdb_ctx.params, 0, sizeof(*gdb_ctx.params) * max_num_params);
-+            gdb_ctx.params = params = g_new0(GdbCmdVariant, max_num_params);
- 
-             if (cmd_parse_params(&data[strlen(cmd->cmd)], cmd->schema,
-                                  gdb_ctx.params, &gdb_ctx.num_params)) {
 -- 
-2.26.3
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3226
+Virtualization:  qemu.org | libvirt.org

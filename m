@@ -1,80 +1,80 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp451598lfg;
-        Fri, 7 May 2021 07:44:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwe7uu9zul2FJ62QBEBsiZD+eAUOCU/ygu/T77/UK02y0dUZrSX0u4pqS8imB2S7PTJ+0wN
-X-Received: by 2002:a17:906:2c55:: with SMTP id f21mr10722318ejh.41.1620398663765;
-        Fri, 07 May 2021 07:44:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620398663; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp451753lfg;
+        Fri, 7 May 2021 07:44:34 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxEGgZ3l7m0yJY8LCvZ8xsh1yUzWwOMIAJbixCPzwcdqYu3nkXVPO00Z0ng/K4qnnbFLYyB
+X-Received: by 2002:a17:906:4d11:: with SMTP id r17mr10399628eju.217.1620398674211;
+        Fri, 07 May 2021 07:44:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620398674; cv=none;
         d=google.com; s=arc-20160816;
-        b=m45xW5xn0RRZX43ggCINQk+cP5bs/RuXWXjMx9+tKULoaMPL8l9U7w5sAOPFtgxXRG
-         4FWreZA556hSwh29odAwk7LGrvONmw8kOEhl/ul+hv01GaYWd8DUbCWL491pKSFmlgLC
-         JtD0llkesio4KtphYyZFhHD1jqgLw4g02andAsyY+p0Wf7+CeDDtIIS+wHxNHzCVla7j
-         bF6P29g+tw/7wNX/FwS+i1PrsFiU4SmzIN+LeWW5DY8IqvuiULFO+2G7SZEjaQi4yUDs
-         bAYzzO6zglfX6iGcb52U6aJBKbYVaOwsf+S7AnjA2YZv58xlQb9Fupy0Ixxb1FasV53n
-         C20A==
+        b=TQQTkBFPlvB6nkDYmt3hNWqgMxRaaLkCpV8XCpcPKbFIs+TDOivN4Y4ytgS/OjWyf5
+         a1S6XfzxwzapyUN2zhjqWXVFGvIRZcD7ArCFaxnORmb8lqAU6Ou6Y25dkFcmdGgxzr+m
+         WWYzifNU40B8W5JGYhSEfBiCg0GPaCFJojbc8Ih0ok3nRujXxWlTFJSai34PTwKYzhuw
+         0jVitwwwpxbOhwS99jwqf+PrRCH/54Vx+vR22aViTLpcRBhvhPk2hJgU0a6t61MOPaUy
+         wdegtgbjr3GT216HXYUnmiTbvrNwYn0bZdV3PS03jxzYmML/RsQofjvuQ5RaepL/PTuH
+         ylBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=/bdOhY3sBOcIHJeoCe6CkJ1QfZvAaT12hvfPxmFulM0=;
-        b=qvQbgchNZAUFYPBDJMoJljE5HbyacFTf5+44EPuTAFd+ZtFZ538LuS/YghBORwmL5m
-         8Gsh6nsF3kL+KRWdJc22MqXyPeBHQhhOR4ED1vcT/bVkIyyEQacO5zfAyeYXrw/Qtx3B
-         p8c4gMIOro/U01Td49znJG8Y+fsjrVNP1p9PNaB/dkGD/8dJeE88ZEC9M9OESWcQW5En
-         HvXoVJBSJgR/sOO4bKAW25+n+SRaMUIkUYSw6Gm7eYFQ6QS5ghJyFNu25y5DrKbF1w5q
-         QILJ6f6qk7C2YO54b8cmSSWcz54MJVGYqSrIxDpSp5Yfj6kkgWK6k1WQ/58Mb9JR6OAP
-         vNIg==
+        bh=C+MYJWIsLohbCHlMSEIGcZQyDaEDuU9Kl0ow5213YNc=;
+        b=d0jXCTZm2fuMjJYk/3ITjb8zzyPGyJryJ2nC6Tkb/ljg9r5DN2C5NgMAwbWKpwmngj
+         yLJdbVgEb0O8jPFZyNlgEmYy8M6uDojGut/DGX3xg7Fs//OLUsKtuX6e3T7zKIiLUMS9
+         J5i7v9438xFZ8eog2Dj/uFz9C794sVpdmEMwT9Sb3U0nLzZez95985jwgqunuDzJZ6W5
+         QJrrkb5bkqEJOFAszk4XuFOrrlCIxm5W5fJg+jU0mbOyBPDEgJEhsb7NC+djapurkWgC
+         AL9kELXlDOjisg1VbT+HWzUs7bWiG3AaqDQ8+ktZ7S7P+YMJjtiQ9Uh1lguuiBXsefQs
+         DelQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FxMc7nsc;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=T9bqPQ1i;
        spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id gy22si2256911ejb.663.2021.05.07.07.44.23
+        by mx.google.com with ESMTPS id i19si5242799ejv.399.2021.05.07.07.44.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 07 May 2021 07:44:23 -0700 (PDT)
+        Fri, 07 May 2021 07:44:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FxMc7nsc;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=T9bqPQ1i;
        spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1620398662;
+	s=mimecast20190719; t=1620398673;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=/bdOhY3sBOcIHJeoCe6CkJ1QfZvAaT12hvfPxmFulM0=;
-	b=FxMc7nsc5hVkc2bf1iDakhYnkiE51EMMi0wlZuOB3cImBXeHtxgOK+afXgMowFer3Eg5jF
-	n+y5UtntiZSV91TLdzK+8aUYyvy8BvgAdFlU0Ys5sqetRbkxkvuWcocOsp3aKLjzEjBHiW
-	EyYoJuUJoXV3XDtw1COT2M6drXh+3O0=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-432-ZVJRv38ePxG2Hyn_QSL7kQ-1; Fri, 07 May 2021 10:44:06 -0400
-X-MC-Unique: ZVJRv38ePxG2Hyn_QSL7kQ-1
-Received: by mail-wm1-f69.google.com with SMTP id s66-20020a1ca9450000b0290149fce15f03so3986698wme.9
-        for <alex.bennee@linaro.org>; Fri, 07 May 2021 07:44:06 -0700 (PDT)
+	bh=C+MYJWIsLohbCHlMSEIGcZQyDaEDuU9Kl0ow5213YNc=;
+	b=T9bqPQ1iOCtOKzHERhU/iTCRz0QU+fJrVF7VtsJtQ1CCf+nD5fiCd3UL4Tf5Pug+hnXn0A
+	iS6taGJK/KAqmDWOLanVYHlyKIuW8EShZq3IPNpUd9MsmnZ1qhfip1w63fLcuGeZLzqRD3
+	urf2/VDDc9L3+6oZq7q/Vf4Cs3vKot0=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-590-fWKyHACMNtiQUzKstWrdmg-1; Fri, 07 May 2021 10:44:31 -0400
+X-MC-Unique: fWKyHACMNtiQUzKstWrdmg-1
+Received: by mail-wm1-f72.google.com with SMTP id t7-20020a1cc3070000b029014131bbe82eso3991374wmf.3
+        for <alex.bennee@linaro.org>; Fri, 07 May 2021 07:44:31 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=/bdOhY3sBOcIHJeoCe6CkJ1QfZvAaT12hvfPxmFulM0=;
-        b=i8gCzR8MXYK10lklnxfIjHLKLeO4zu5A914Vve8hGw2VLDRq21Qym08ys3FMPH4BNo
-         pVm2hdjuqSxF4JqFX1+i9tWkXzMcye3SMxTWJXVuSdE5IGo9KQp/s2ja37F/GpD/SuFa
-         7q7AVxSctyV1zPxnRmXFFN5Fc2lkgqT8tRcQzEmpqyLUQAxcjCSZQ5J4MAh5NUE7lffm
-         Vpv3TEVvUxf4zY1H5Kiz1zu1JWF+ZswrcUGJfAZvF6gO853l3xn+zkdGWVIKSh+AhfFT
-         ZrQtjCWFf1Xgdnsu4OkAGRv16oaOt73sXiHp9I+HaOMPvG+PPo0x+883rbksTRZAi7mu
-         X10Q==
-X-Gm-Message-State: AOAM532xRljn8NUgaEh/b8T2IE09yd9Jw3+BRSQI21CGQlwVnsBMo2t3
-	iAlPRyFuKYLbrmDm2vfolP74yw9GDX7h4kC0KqmN70ASGHRyvvUQZRQ5bA0Ej+rkqKYMx/ctSgd
-	D7MHaL6I8Ka9IkiCX
-X-Received: by 2002:a5d:4a51:: with SMTP id v17mr9368903wrs.259.1620398645500;
-        Fri, 07 May 2021 07:44:05 -0700 (PDT)
-X-Received: by 2002:a5d:4a51:: with SMTP id v17mr9368879wrs.259.1620398645319;
-        Fri, 07 May 2021 07:44:05 -0700 (PDT)
+        bh=C+MYJWIsLohbCHlMSEIGcZQyDaEDuU9Kl0ow5213YNc=;
+        b=lD/EHb3fAH9tSGMkhgoJXxABSzgS31BmMrR4VYlBxzgvgHpX54nx89T7/hiWL7eogp
+         Vc0FriJTcI8ugse1zbYhw+pfkOWNiSKP84X2cqLLpIe2psOpDoY9fM62dg89B5OGY+lP
+         VOed1qRokR4hEEoReWldo7cOdBYNQusdPD/WLKoGYBG8hInFYOQ9cE+ue3lbVs7J4rKI
+         KqVxQqnsWdXWt8XfStAgQ3B2KSB5SbUrauUO/1EHPmzU/FMdOQw2Cj86CvK5x6aEWOvC
+         et1B+qZvLrVdrV3g+koTOVUq+16jr0tFYCq1VHdvgPIAa+nkiA0cRId3oG6E/yP3Yxry
+         l5dQ==
+X-Gm-Message-State: AOAM532MyXZwVm5hJHjbFIlV71J/CYmXQs6x75nGgcvznA/+JzQ3kyFe
+	A5BQQGxFDsnNv0bOvtQqUkHR7mIHjVN7v+TbJzIAA78BpLFfdTr+wNi+RDgXIRGZTaV6kKa4OIU
+	bPaQmm4jCQo/wMNmV
+X-Received: by 2002:adf:f80f:: with SMTP id s15mr12876033wrp.341.1620398670261;
+        Fri, 07 May 2021 07:44:30 -0700 (PDT)
+X-Received: by 2002:adf:f80f:: with SMTP id s15mr12876009wrp.341.1620398670157;
+        Fri, 07 May 2021 07:44:30 -0700 (PDT)
 Return-Path: <philmd@redhat.com>
 Received: from localhost.localdomain (astrasbourg-652-1-219-60.w90-40.abo.wanadoo.fr. [90.40.114.60])
-        by smtp.gmail.com with ESMTPSA id r5sm7924414wmh.23.2021.05.07.07.44.04
+        by smtp.gmail.com with ESMTPSA id r13sm8833726wrn.2.2021.05.07.07.44.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 07 May 2021 07:44:04 -0700 (PDT)
+        Fri, 07 May 2021 07:44:29 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>,
@@ -84,10 +84,13 @@ Cc: Laurent Vivier <laurent@vivier.eu>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Gerd Hoffmann <kraxel@redhat.com>,
 	qemu-arm@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH v3 10/17] audio/alsaaudio: Replace ALSA alloca() by malloc() equivalent
-Date: Fri,  7 May 2021 16:43:08 +0200
-Message-Id: <20210507144315.1994337-11-philmd@redhat.com>
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	Greg Kurz <groug@kaod.org>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	kvm@vger.kernel.org (open list:Overall KVM CPUs)
+Subject: [PATCH v3 15/17] target/ppc/kvm: Replace alloca() by g_malloc()
+Date: Fri,  7 May 2021 16:43:13 +0200
+Message-Id: <20210507144315.1994337-16-philmd@redhat.com>
 X-Mailer: git-send-email 2.26.3
 In-Reply-To: <20210507144315.1994337-1-philmd@redhat.com>
 References: <20210507144315.1994337-1-philmd@redhat.com>
@@ -98,61 +101,35 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: AEA82z+N5Jtc
+X-TUID: tNvpDB0Nip8s
 
 The ALLOCA(3) man-page mentions its "use is discouraged".
 
-Define the cleanup functions for the snd_pcm_[hw/sw]_params_t types,
-and replace the ALSA alloca() calls by equivalent ALSA malloc().
+Use autofree heap allocation instead, replacing it by a g_malloc call.
 
+Reviewed-by: Greg Kurz <groug@kaod.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- audio/alsaaudio.c | 11 +++++++----
- 1 file changed, 7 insertions(+), 4 deletions(-)
+ target/ppc/kvm.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/audio/alsaaudio.c b/audio/alsaaudio.c
-index fcc2f62864f..f39061ebc42 100644
---- a/audio/alsaaudio.c
-+++ b/audio/alsaaudio.c
-@@ -70,6 +70,9 @@ struct alsa_params_obt {
-     snd_pcm_uframes_t samples;
- };
- 
-+G_DEFINE_AUTOPTR_CLEANUP_FUNC(snd_pcm_hw_params_t, snd_pcm_hw_params_free)
-+G_DEFINE_AUTOPTR_CLEANUP_FUNC(snd_pcm_sw_params_t, snd_pcm_sw_params_free)
-+
- static void GCC_FMT_ATTR (2, 3) alsa_logerr (int err, const char *fmt, ...)
+diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
+index 104a308abb5..23c4ea377e8 100644
+--- a/target/ppc/kvm.c
++++ b/target/ppc/kvm.c
+@@ -2698,11 +2698,11 @@ int kvmppc_save_htab(QEMUFile *f, int fd, size_t bufsize, int64_t max_ns)
+ int kvmppc_load_htab_chunk(QEMUFile *f, int fd, uint32_t index,
+                            uint16_t n_valid, uint16_t n_invalid, Error **errp)
  {
-     va_list ap;
-@@ -410,9 +413,9 @@ static void alsa_dump_info (struct alsa_params_req *req,
- static void alsa_set_threshold (snd_pcm_t *handle, snd_pcm_uframes_t threshold)
- {
-     int err;
--    snd_pcm_sw_params_t *sw_params;
-+    g_autoptr(snd_pcm_sw_params_t) sw_params = NULL;
+-    struct kvm_get_htab_header *buf;
++    g_autofree struct kvm_get_htab_header *buf = NULL;
+     size_t chunksize = sizeof(*buf) + n_valid * HASH_PTE_SIZE_64;
+     ssize_t rc;
  
--    snd_pcm_sw_params_alloca (&sw_params);
-+    snd_pcm_sw_params_malloc(&sw_params);
- 
-     err = snd_pcm_sw_params_current (handle, sw_params);
-     if (err < 0) {
-@@ -444,7 +447,7 @@ static int alsa_open(bool in, struct alsa_params_req *req,
-     AudiodevAlsaOptions *aopts = &dev->u.alsa;
-     AudiodevAlsaPerDirectionOptions *apdo = in ? aopts->in : aopts->out;
-     snd_pcm_t *handle;
--    snd_pcm_hw_params_t *hw_params;
-+    g_autoptr(snd_pcm_hw_params_t) hw_params = NULL;
-     int err;
-     unsigned int freq, nchannels;
-     const char *pcm_name = apdo->has_dev ? apdo->dev : "default";
-@@ -455,7 +458,7 @@ static int alsa_open(bool in, struct alsa_params_req *req,
-     freq = req->freq;
-     nchannels = req->nchannels;
- 
--    snd_pcm_hw_params_alloca (&hw_params);
-+    snd_pcm_hw_params_malloc(&hw_params);
- 
-     err = snd_pcm_open (
-         &handle,
+-    buf = alloca(chunksize);
++    buf = g_malloc(chunksize);
+     buf->index = index;
+     buf->n_valid = n_valid;
+     buf->n_invalid = n_invalid;
 -- 
 2.26.3

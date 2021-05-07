@@ -1,131 +1,150 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp1855626lfg;
-        Thu, 6 May 2021 20:00:47 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxIp/z4M43UBqvNLVGYrZtgkaeudxe+tBFn59lYCHfZo3IHNnBzrggSUgwlWlanK5zDCXj4
-X-Received: by 2002:a05:6e02:c71:: with SMTP id f17mr7309935ilj.176.1620356447107;
-        Thu, 06 May 2021 20:00:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620356447; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp451533lfg;
+        Fri, 7 May 2021 07:44:18 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx0SUcmqEIN60YKsyOk/B+uaJFsEa/nxAnDb1y+xfp6qAr49mwsV1hIF1qDrWtLZoUTIV8x
+X-Received: by 2002:a05:6402:10cd:: with SMTP id p13mr11842977edu.382.1620398658796;
+        Fri, 07 May 2021 07:44:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620398658; cv=none;
         d=google.com; s=arc-20160816;
-        b=Uzissp9B33GJ3lHeaGWlDnXxyes055untVrvK7zVTHp6lSeQAZknKey9lRkFhgKLUo
-         mRrH6Ei2gAB/xdK9zL0VkwPdj8+279gvn6kZBo3f8GdIjUMht+a7N3wyv5N9hwosVRkD
-         038CMYUHEDqzsPLs0SZahxjUy30I8+EJ6JberdJAUJ3x0+gXh8D/h3UVg0BNza5HopTP
-         eUJl7mvkb7T1tKGSzglqMjJOwgGNjEkX3lOP0l4LGZOJaOZrAqS4N/n4LUf4BY0tdJSe
-         zpRBCVgnpVxkad2fpshDSUzpU64iuZWBx+qsEsQafKBrzGsIw/fSMatCduL0v5licWPY
-         uG2w==
+        b=VG9lEDIq05iW80RoSm1WOSetGeuumB51ueHA0e7P8Ro/wmefZbZhGvwVFAMJ5dXaj4
+         i+X4qDz+6gxqal272dLr1Kov8k9AX+D363/SHqgLSegqEGNZk0mz3J5IkQlbva2Fxykh
+         r2F1I+Ve/IwGNM3XG0Hz7uW1jOfg1N0ZvJRP7I9SjjsyH+Uagj1jEsQcB+GYhji+xPnU
+         s9r/V28Nd41OmUFCiSHTfX+HRQunCCaOybi21evKUj+S1xjzRwamgIVcRxikPAIx2eYq
+         1iTKd+lak1PzcKUO+iPmew3G27x7bclkBYX8De+5ETcpGQzsXqVWTNj2NIOhPTfT89Q3
+         TayQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=ggBPMCmmV45tpZ/9UyzDM0qDJugY7T1JEhsB02Tkc9s=;
-        b=pewk/6z6wlL2IoYPmVZvWfz1J8TUsE2zk/lew245Dpcqto8ba6WN/Q5lhOK6fZRI1a
-         oxDGIB+qFqSKscs+eePHK95iJdZ/AcCHL6Gs5w41Y0BnpATVCZEbm2Z/wJycoyu1gFkS
-         SzjdRob89sI/f3lPoRB7/8djwulxad6q1CBT9m/rXfdYDSXjzKytNXzMWlMrb33pM/Ne
-         5IroCTABUwCcI35B+fjRTPHdG3P11jn3gVvEvAzoNC0hUG7ogwYMEBmFSfw+wD6UfID2
-         RvQt7oZ7lcyVuAMQaVRVWkE4Tc3rpX6YCXXIuzlbiK67fKxl/QW77sgE6QbqgqErAnSW
-         FUng==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=B3vDcPc2Lwo5z0s8ItWutJUQDssHj4SCpM1PcCRAn5U=;
+        b=HuKMedrNDtWvNXwhifqo/ByeYRJh0DHh9Xau/lwvDbcF6bVFQXgfB2tcTLXBh9v6kq
+         8Aa489oIXyxbODpob2KdobjJaXkXJ5zY6ZIhI655HAWQoMHToVYVD13u8zX5tiaQS6XZ
+         sgg/j9/xwVEXIpaOxT+p1lYdRuicnFqlKjVQd+5QypPD/OipKWyLTVWXA+D1f+33XUSA
+         ROQ07sfQgB4jpmNoDj8sIhgi6jg86/bVzEk4G7iMacSoDsgVfrGcyzu6jzvtoF39xt8F
+         sMdZNSgF84eZzf/x1RDb+RfNcIhzEH6sep6vhGdDmJBSY/BFNCK0TGjWl9fUrNZiQP83
+         36gg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=edza2Ley;
-       spf=pass (google.com: domain of dgibson@ozlabs.org designates 2401:3900:2:1::2 as permitted sender) smtp.mailfrom=dgibson@ozlabs.org
-Return-Path: <dgibson@ozlabs.org>
-Received: from ozlabs.org (ozlabs.org. [2401:3900:2:1::2])
-        by mx.google.com with ESMTPS id y10si4915389ili.76.2021.05.06.20.00.45
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Dt46niDF;
+       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <philmd@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
+        by mx.google.com with ESMTPS id r21si6319783ejo.341.2021.05.07.07.44.18
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 06 May 2021 20:00:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dgibson@ozlabs.org designates 2401:3900:2:1::2 as permitted sender) client-ip=2401:3900:2:1::2;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 07 May 2021 07:44:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=edza2Ley;
-       spf=pass (google.com: domain of dgibson@ozlabs.org designates 2401:3900:2:1::2 as permitted sender) smtp.mailfrom=dgibson@ozlabs.org
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 4FbwDm2j3Tz9sXS; Fri,  7 May 2021 13:00:40 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1620356440;
-	bh=V3Col8QuO+oqxyxGF4EMsfKrF/pUgQZGNFIpssOh0AI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=edza2LeyxxkxmGtfpPhcz3XklUpdUgN1Aqkrr6AcESVHjA5NDMONhLDq8vdFR0mA9
-	 Ev2aVcmxor+FyG9jCJ03f7dIGIn4hb2rHFiwsWWm+ATaBNAgAA30gKGrnmOTaCbya4
-	 p4Coak2+knhaXxjx8cMB2Ef29JD/zmObxV8j8DFo=
-Date: Fri, 7 May 2021 11:05:35 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Cc: qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-ppc@nongnu.org,
-	qemu-arm@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Dt46niDF;
+       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1620398657;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=B3vDcPc2Lwo5z0s8ItWutJUQDssHj4SCpM1PcCRAn5U=;
+	b=Dt46niDFld6lbPOre/2refLkrp2sAnAxAXyAHzJSCkAZOoRf2MGYgHWkidgcr7OrN8qseo
+	qY6yeY3gASGpIed+A8K44pc/lNnojw5PTOw//9aY4Q+yXc5YIftpaRhnzVtWx8mKcPEWpb
+	FInXrNHnIipVA0H5bOzQLke13KcizPk=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-293-YMKDMK5EOyO_ijmJZ7ffqQ-1; Fri, 07 May 2021 10:44:16 -0400
+X-MC-Unique: YMKDMK5EOyO_ijmJZ7ffqQ-1
+Received: by mail-wm1-f70.google.com with SMTP id n24-20020a7bcbd80000b029014287841063so2328023wmi.3
+        for <alex.bennee@linaro.org>; Fri, 07 May 2021 07:44:16 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=B3vDcPc2Lwo5z0s8ItWutJUQDssHj4SCpM1PcCRAn5U=;
+        b=oQ85vDX7JgIHTuq2EKD04sblVbbE67KM2Pj2rVrNWmVOQifECUvRbHeB9ZicgdB2vX
+         bgmIjm5JQFSKshBZa4cS1+VCGEB2BZfX9iGoOjHCRuvoydzp3B4DLBxF2c4QXKQJtfbJ
+         Az7RtRIr/6Co7NV1tvATKt2DC2GFADgH/xex+awQJrX/pPDAylWsKZzgJ3Cn/IEG1OKD
+         6nSYeGJ+zQcnFta+5bLCWdydNzA6REPukAn3V1HRo5M9oK48UpTB0HP3b6Fl/dtF2De0
+         n/1VGAq8fwQe/x4Jlck2+nPQdz29txkYpV6qSN6v3diQAjfjoi/WnOCTF2uSgo5jHlbb
+         MQPQ==
+X-Gm-Message-State: AOAM531cD6KQJbZpWeUnFnZuaMK6Krd0s/GQWmnGITh/53S/j9dPRrz7
+	2zkaFe6sDecqmPO8sjcmHoYqSWk5vS/BJFnbLlVZiCqh7dK3WFqC3aZiRH+BJ3T5+m3S4FUHukh
+	ZMDFRbVWLMbORWQaP
+X-Received: by 2002:a7b:cc15:: with SMTP id f21mr21011233wmh.86.1620398655113;
+        Fri, 07 May 2021 07:44:15 -0700 (PDT)
+X-Received: by 2002:a7b:cc15:: with SMTP id f21mr21011214wmh.86.1620398654950;
+        Fri, 07 May 2021 07:44:14 -0700 (PDT)
+Return-Path: <philmd@redhat.com>
+Received: from localhost.localdomain (astrasbourg-652-1-219-60.w90-40.abo.wanadoo.fr. [90.40.114.60])
+        by smtp.gmail.com with ESMTPSA id r5sm7924795wmh.23.2021.05.07.07.44.14
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 07 May 2021 07:44:14 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Laurent Vivier <laurent@vivier.eu>,
 	Paolo Bonzini <pbonzini@redhat.com>,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	Greg Kurz <groug@kaod.org>
-Subject: Re: [PATCH v2 9/9] target/ppc/kvm: Replace alloca() by g_malloc()
-Message-ID: <YJSSX1eUIecBpwwX@yekko>
-References: <20210506133758.1749233-1-philmd@redhat.com>
- <20210506133758.1749233-10-philmd@redhat.com>
+	qemu-ppc@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	qemu-arm@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH v3 12/17] gdbstub: Constify GdbCmdParseEntry
+Date: Fri,  7 May 2021 16:43:10 +0200
+Message-Id: <20210507144315.1994337-13-philmd@redhat.com>
+X-Mailer: git-send-email 2.26.3
+In-Reply-To: <20210507144315.1994337-1-philmd@redhat.com>
+References: <20210507144315.1994337-1-philmd@redhat.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="g1x6QJlBgI8sUhxy"
-Content-Disposition: inline
-In-Reply-To: <20210506133758.1749233-10-philmd@redhat.com>
-X-TUID: crkH/xnTqw22
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: vISD2sMhGm9c
 
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+ gdbstub.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
---g1x6QJlBgI8sUhxy
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Thu, May 06, 2021 at 03:37:58PM +0200, Philippe Mathieu-Daud=E9 wrote:
-> The ALLOCA(3) man-page mentions its "use is discouraged".
->=20
-> Replace it by a g_malloc() call.
->=20
-> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
-> ---
->  target/ppc/kvm.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
->=20
-> diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
-> index 104a308abb5..63c458e2211 100644
-> --- a/target/ppc/kvm.c
-> +++ b/target/ppc/kvm.c
-> @@ -2698,11 +2698,10 @@ int kvmppc_save_htab(QEMUFile *f, int fd, size_t =
-bufsize, int64_t max_ns)
->  int kvmppc_load_htab_chunk(QEMUFile *f, int fd, uint32_t index,
->                             uint16_t n_valid, uint16_t n_invalid, Error *=
-*errp)
->  {
-> -    struct kvm_get_htab_header *buf;
->      size_t chunksize =3D sizeof(*buf) + n_valid * HASH_PTE_SIZE_64;
-> +    g_autofree struct kvm_get_htab_header *buf =3D g_malloc(chunksize);
-
-Um.. that doesn't look like it would compile, since you use
-sizeof(*buf) before declaring buf.
-
->      ssize_t rc;
-> =20
-> -    buf =3D alloca(chunksize);
->      buf->index =3D index;
->      buf->n_valid =3D n_valid;
->      buf->n_invalid =3D n_invalid;
-
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---g1x6QJlBgI8sUhxy
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAmCUkl0ACgkQbDjKyiDZ
-s5JeShAAtE6r+nLzXGSDEwW1F4BeqX9QVewuCmaxNGgnLxraxLHuO0ME9IMsp0jM
-xJg2sv+KFC9axYu1o2RZeGeH8+wGBusgofIRlxmL28+jIgYyFeD/VQZM5Fh2C/Qz
-apTpHA6Pjn6Ed6d8qk+6cTCAYj4cEZkq+4PvI7Rf492WLPDJxKMa28DeUdJ4Oe/K
-SsYZIgJMRXrgk8ckPEJ7faYweaBtVxlvIK8yt/dKJuv+u33oHMoFwwqfPJP2i5ed
-LKCl5bN/wEMGkaD5iP39AgPbLf5ICl2W3wB42+jbsewTBwCzr//+Oudl1Qt7Okns
-08kk6GFbK/9jLrSUDUAN8JUblIzPGu0QF+QEsWGaCvgnL+EXHUDBNjv9BtEpupPt
-KauPOUXwA6XA6gEnU3N3S5kP9QlN1sWs9Df0wH0flbJo62cGFAg1A1ZxgCmyayfZ
-H3c7bPsQvTm1lB6YEHAirHe2FB5G9blsNAZU4dtMsxxdm2uOK87rEwuwFzW3XfZY
-aNcENy3aYUbKVLSOWoeRLLlvtVXHAT8afhN1RYtaby+mA8w/fI22IW1F55scEz1B
-AZSDqkJ0ZDmNM3KUY+n6YRJeYvTTQJNIgAO5Lud5533d9hZFxD3HVD7oogXykAaL
-XYG+MJamQEwkV5wZr9VXyy543zqIwRatQdJk7RAxeHPsqt8lYsY=
-=JBda
------END PGP SIGNATURE-----
-
---g1x6QJlBgI8sUhxy--
+diff --git a/gdbstub.c b/gdbstub.c
+index 9103ffc9028..83d47c67325 100644
+--- a/gdbstub.c
++++ b/gdbstub.c
+@@ -1981,7 +1981,7 @@ static void handle_v_kill(GdbCmdContext *gdb_ctx, void *user_ctx)
+     exit(0);
+ }
+ 
+-static GdbCmdParseEntry gdb_v_commands_table[] = {
++static const GdbCmdParseEntry gdb_v_commands_table[] = {
+     /* Order is important if has same prefix */
+     {
+         .handler = handle_v_cont_query,
+@@ -2324,7 +2324,7 @@ static void handle_set_qemu_phy_mem_mode(GdbCmdContext *gdb_ctx, void *user_ctx)
+ }
+ #endif
+ 
+-static GdbCmdParseEntry gdb_gen_query_set_common_table[] = {
++static const GdbCmdParseEntry gdb_gen_query_set_common_table[] = {
+     /* Order is important if has same prefix */
+     {
+         .handler = handle_query_qemu_sstepbits,
+@@ -2342,7 +2342,7 @@ static GdbCmdParseEntry gdb_gen_query_set_common_table[] = {
+     },
+ };
+ 
+-static GdbCmdParseEntry gdb_gen_query_table[] = {
++static const GdbCmdParseEntry gdb_gen_query_table[] = {
+     {
+         .handler = handle_query_curr_tid,
+         .cmd = "C",
+@@ -2420,7 +2420,7 @@ static GdbCmdParseEntry gdb_gen_query_table[] = {
+ #endif
+ };
+ 
+-static GdbCmdParseEntry gdb_gen_set_table[] = {
++static const GdbCmdParseEntry gdb_gen_set_table[] = {
+     /* Order is important if has same prefix */
+     {
+         .handler = handle_set_qemu_sstep,
+-- 
+2.26.3

@@ -1,80 +1,80 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp451767lfg;
-        Fri, 7 May 2021 07:44:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxNhx+9YSilHRPVkW6WLh3gduZw0K3eQ//cBDg0Pih7ZurkMDIKZ8z+NvU68rPhWy3M0FDc
-X-Received: by 2002:a17:906:b5b:: with SMTP id v27mr10434706ejg.40.1620398675127;
-        Fri, 07 May 2021 07:44:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620398675; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp451836lfg;
+        Fri, 7 May 2021 07:44:41 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwSdPkjW07dVbb7qCVGTEzKXLz8kQ9jRKXbrZw4eObK3dBZnyqzhHNi82Z2aWDvrBvowds2
+X-Received: by 2002:a50:cd4e:: with SMTP id d14mr1177150edj.165.1620398681082;
+        Fri, 07 May 2021 07:44:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620398681; cv=none;
         d=google.com; s=arc-20160816;
-        b=RQwNCxGxOvkNfksu/klnz4ds4Ptd6F9vNnA83mOvmCf3z7z4WQnW9q51GMdDCnn7PP
-         O9xjj9owV1SEVwM96arcUb9QzxjYPXwYkGdo1FmVH6W3Pkn1i7X68+f2FUiFkdB9uXhl
-         86tj2KFksGhmh/31kbZywWtQNaWzK5apt66BgiEW31Re36p8owzG+qpFJlJHjcgIqHWI
-         qcPtHrX9HB1RUcmoFocPfOikSdWsMaG4B1NfYFyL7s+B93PkPcYe31MLKq2CL/2a0orY
-         FUV7YQSMDp6aJJjG2LRgiXQ82eUwxpZtib3lbe5zMf7TxM6ogFGDD7+cFY3zDZegpiv0
-         j/mg==
+        b=uPFt8XeQqugX8sYZ2e01Aq/S4kwnIy9/itz+4L6Ng0QLcw3DQYZxvvmH1GgEH3Bb4f
+         i8Ytk2Xub992zpgt6of6UYUTInFYaEYTJKq8uURN79/bL53MMVTnEtvkKBLC3VTGdbRH
+         BtthJQeL+zRYjtnUOsyrw3nLGVcM47qMlPBn7rCJrNCTKtKrHzBIkeu3tEJ4XEQoS3Kb
+         LyN4OOtolD6RH12PAhN4SUpEfpmSNYPsGyi0LoLEmKwmvFeRoSgRKVTO72PPef0pBp0Z
+         ekgLe90skgnpZgvHcFFOVEJVNZSFn9AUT3gIFNjcbNQTt2ra/ULkrp+Sjiw8CZcOCQi1
+         jNzQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=YCw70biCZtmrujveEn0uP9uiPeh7MzcdOYuA3fJ6mTo=;
-        b=ko6sc5dZJcsIdTFfcAaekyxg9DwyMlvmNUAKGCGl3to2rTy3HpF2C5zcGTnxOWXt6S
-         ExMaGSwBHxei08q8OYElwyCGW0fq7LCJfgRkKiKQX5RAOun/o7H6eMGqSJ/iCfbbo16T
-         EefBLsSX6qHzByfyBW3+icJb3EkVU6/WIdRllS9780MD+yf1Trr6sEPsUB/hco+fnVx6
-         EejYR9hBDYRI3DcsLeTUdxcMosDgsQLM2ISdDfSpCAgQ1cB8QF1hBP8SD+FnOpwUSt5v
-         1nX+ds44gulf0yDmCeAAhPcQaqEU4+qwkQmPZZr13rLZs3tBx1eAj3KiIDPMZ9/+cJ/0
-         w5yg==
+        bh=ZhnR5sl6IQkPWyz310rG2u37bBKdYZca+FWR4sH4smk=;
+        b=lsVvK7lMy0jar+wIXUsbPTznE0YYSxazCW/xa6D9Ousa4KU6ccYu8Kmg7orV72ObEU
+         idcG7CqXZ2w+jNxGSMXe39nIVu5cKnl0E8LNeVuZpKP7n2P625z+6uwRER804WKIVNGg
+         fUhkHyOcLjIV2ZLs8z69xH9QHy/69vnVXoC5YMVWne9OT55Rb+O2p35nhb1SMUlHK/hv
+         xnKRF+JE9htHXbbgyS1xWXHHAtBUygxtVg5IWzYeQTHUYWzlgKAyT5+dVBQzviK/g3ja
+         RwaVu76YgWyD0L2ovOEo43XNfjfnAIl/dzBHWaqu/1B9u8tblf9IKrvPzni408F+n5B9
+         h5Cw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GjxZvMm9;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=b+lmaPB1;
        spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id z12si4942507edr.265.2021.05.07.07.44.34
+        by mx.google.com with ESMTPS id v4si5687546ejy.176.2021.05.07.07.44.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 07 May 2021 07:44:35 -0700 (PDT)
+        Fri, 07 May 2021 07:44:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GjxZvMm9;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=b+lmaPB1;
        spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1620398674;
+	s=mimecast20190719; t=1620398680;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=YCw70biCZtmrujveEn0uP9uiPeh7MzcdOYuA3fJ6mTo=;
-	b=GjxZvMm9DYi7vsHGV4SBVjgIYY7olEY1at0+8PqbC3RikU3cHKYNiA+WeiA+3JhecAOUXj
-	E5ovfE0bro5OAt5HDII5FqfrVzT389EOGwYTuJqwFAWkOg7eg0SrsS7dNSk3u/6m5iRzaL
-	jngXPjjjzhpGFT4Aad3aZjvuCkvlTJQ=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-370-YWwytV5PMFCFkVIEinrqxQ-1; Fri, 07 May 2021 10:44:26 -0400
-X-MC-Unique: YWwytV5PMFCFkVIEinrqxQ-1
-Received: by mail-wm1-f70.google.com with SMTP id y193-20020a1c32ca0000b029014cbf30c3f2so3952825wmy.1
-        for <alex.bennee@linaro.org>; Fri, 07 May 2021 07:44:26 -0700 (PDT)
+	bh=ZhnR5sl6IQkPWyz310rG2u37bBKdYZca+FWR4sH4smk=;
+	b=b+lmaPB1mIOv6vsS5qpY+naTHzrYqavCja3GAJVzhVzDXSIIUuYZ3+Br9n5gmwN3wquORh
+	R1aHq/Cagw2mRdgxPqzdg/8juBvhYYGEPvFV6aJ8wMYcDTLYPF+5Co33KdOvE11jdOHNRN
+	/7pzKTOoWmnf+DR9GuXOP7DozqljlHQ=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-246-IRlHvKSbPLuLEhIffN2d1w-1; Fri, 07 May 2021 10:44:36 -0400
+X-MC-Unique: IRlHvKSbPLuLEhIffN2d1w-1
+Received: by mail-wr1-f70.google.com with SMTP id 4-20020adf91840000b029010d9c088599so3698387wri.10
+        for <alex.bennee@linaro.org>; Fri, 07 May 2021 07:44:36 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=YCw70biCZtmrujveEn0uP9uiPeh7MzcdOYuA3fJ6mTo=;
-        b=YJjfHdYba+M4XSUX59+MDnX7PoctWTIFEwJs6DbJSqGD1cDFd2LXcPSOLl3KhLmpFp
-         Ln3ECKwl8QKK9tFgkpU6vPF4u/W9g7o6C8YFgh+/2yEdI/PvuIFyMBhRJnDIxZOXIjI0
-         pC8RKIqc47C5BN6LUi/sJyzmxLi08Fkw8mt0ik5ei9Xex2gK8pnkTVFjMajulAqDaOls
-         Wyv3NAxHxDQ+Nd8V30WlvHkJFCtzIdeuyDemKhWUT3xD9p5R8POObHcWCeLdyQ3+jCko
-         l1pEYMrFOk6vmS4AaJ2NjTdRtONb2JtJlaQGAkIGotG/PdUi3WQRmYQMpHTBagE3wTgh
-         LlAg==
-X-Gm-Message-State: AOAM5310wDCIULRj28RuA616VT33GW9r/jsxUnGSXnO+tEZ2QWDztFi8
-	VxmutALgCOoF5JLi5B67zOc0MdjHMklCXmhWieTsyhstF0iUSjKcmNFkEJwEqgI0diOZNTA593/
-	OepqlRiX2uyV4p4s2
-X-Received: by 2002:adf:eb82:: with SMTP id t2mr9296093wrn.337.1620398665154;
-        Fri, 07 May 2021 07:44:25 -0700 (PDT)
-X-Received: by 2002:adf:eb82:: with SMTP id t2mr9296078wrn.337.1620398665044;
-        Fri, 07 May 2021 07:44:25 -0700 (PDT)
+        bh=ZhnR5sl6IQkPWyz310rG2u37bBKdYZca+FWR4sH4smk=;
+        b=j5kGOitxFhOg13rkdOXeQGieCdBF8Tfyxtm7n1SeKZVF/uLgSOwz+1+1DgNqFnCFQy
+         IIeXS/NLV8M4dWkUdP0O1V/uHIwivr0iVwvjfyylWZr8pzFb6VWZ7spwyUe8uFx3hhcL
+         1xx8kcyBzEzNjXl2J52FwX+5F6lJIOmljIFMVhq6u7qTZqaxOHQ5GuAMDjCO6mosiu9n
+         pRN7oyoYOVnJaFny5R7leaMtOtKLap6g785nQqI/14UOaL08shgtlIMKkoOg5O3PQmKY
+         0RSyhdrTYN9KVzwUqVkSvRK105R9eOcENgNxaeNP+6O8na6nY2vSgHc/3gLy+wYDo+y/
+         bYNg==
+X-Gm-Message-State: AOAM531kU3qghej6dqAKrb0yES5+r6rbn0VddPiVvf8DhUZpoo/V9tF/
+	1BBeujYcSUJ9gVkr5046g5lvo8Ykv/11IwMGBIIJBZfsGWJu/l2XGpthGZTnizNia/AnBcTsTnk
+	/iHo+Bo7O+DojbzTe
+X-Received: by 2002:a5d:6981:: with SMTP id g1mr12599747wru.426.1620398675119;
+        Fri, 07 May 2021 07:44:35 -0700 (PDT)
+X-Received: by 2002:a5d:6981:: with SMTP id g1mr12599729wru.426.1620398674953;
+        Fri, 07 May 2021 07:44:34 -0700 (PDT)
 Return-Path: <philmd@redhat.com>
 Received: from localhost.localdomain (astrasbourg-652-1-219-60.w90-40.abo.wanadoo.fr. [90.40.114.60])
-        by smtp.gmail.com with ESMTPSA id l22sm12827268wmq.28.2021.05.07.07.44.24
+        by smtp.gmail.com with ESMTPSA id v21sm13520162wml.5.2021.05.07.07.44.34
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 07 May 2021 07:44:24 -0700 (PDT)
+        Fri, 07 May 2021 07:44:34 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>,
@@ -84,13 +84,10 @@ Cc: Laurent Vivier <laurent@vivier.eu>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Gerd Hoffmann <kraxel@redhat.com>,
 	qemu-arm@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Andrew Jeffery <andrew@aj.id.au>,
-	Joel Stanley <joel@jms.id.au>
-Subject: [PATCH v3 14/17] hw/misc/pca9552: Replace g_newa() by g_new()
-Date: Fri,  7 May 2021 16:43:12 +0200
-Message-Id: <20210507144315.1994337-15-philmd@redhat.com>
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH v3 16/17] configure: Prohibit alloca() by using -Walloca CPPFLAG
+Date: Fri,  7 May 2021 16:43:14 +0200
+Message-Id: <20210507144315.1994337-17-philmd@redhat.com>
 X-Mailer: git-send-email 2.26.3
 In-Reply-To: <20210507144315.1994337-1-philmd@redhat.com>
 References: <20210507144315.1994337-1-philmd@redhat.com>
@@ -101,29 +98,36 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Gkwi4giV7/hz
+X-TUID: M6udCRyag7Q3
 
-The ALLOCA(3) man-page mentions its "use is discouraged".
+Now that we removed all alloca() calls in the repository, add the
+-Walloca CPPFLAG to trigger a build failure if such stack allocation
+is used.
 
-Use autofree heap allocation instead, replacing g_newa() by g_new().
+Rationale: The ALLOCA(3) man-page mentions its "use is discouraged".
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- hw/misc/pca9552.c | 2 +-
+As there is an alloca() call in libslirp, this patch is pending
+on the following libslirp patch to be merged:
+https://lists.freedesktop.org/archives/slirp/2021-May/000150.html
+(and the submodule updated).
+---
+ configure | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/misc/pca9552.c b/hw/misc/pca9552.c
-index b7686e27d7f..facf103cbfb 100644
---- a/hw/misc/pca9552.c
-+++ b/hw/misc/pca9552.c
-@@ -71,7 +71,7 @@ static void pca955x_display_pins_status(PCA955xState *s,
-         return;
-     }
-     if (trace_event_get_state_backends(TRACE_PCA955X_GPIO_STATUS)) {
--        char *buf = g_newa(char, k->pin_count + 1);
-+        g_autofree char *buf = g_new(char, k->pin_count + 1);
+diff --git a/configure b/configure
+index 4f374b48890..67cb6d5421c 100755
+--- a/configure
++++ b/configure
+@@ -552,7 +552,7 @@ ARFLAGS="${ARFLAGS-rv}"
+ # provides these semantics.)
+ QEMU_CFLAGS="-fno-strict-aliasing -fno-common -fwrapv $QEMU_CFLAGS"
+ QEMU_CFLAGS="-Wundef -Wwrite-strings -Wmissing-prototypes $QEMU_CFLAGS"
+-QEMU_CFLAGS="-Wstrict-prototypes -Wredundant-decls $QEMU_CFLAGS"
++QEMU_CFLAGS="-Wstrict-prototypes -Wredundant-decls -Walloca $QEMU_CFLAGS"
+ QEMU_CFLAGS="-D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE $QEMU_CFLAGS"
  
-         for (i = 0; i < k->pin_count; i++) {
-             if (extract32(pins_status, i, 1)) {
+ # Flags that are needed during configure but later taken care of by Meson
 -- 
 2.26.3

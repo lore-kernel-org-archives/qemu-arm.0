@@ -1,80 +1,80 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp451273lfg;
-        Fri, 7 May 2021 07:43:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwH6R4ZmX2s/x/95M5FvyU+mEQIJXBE/uu6IdHEN/kZepTVE/tE26nWO2ntmLBcawHN+UCg
-X-Received: by 2002:a05:6402:1357:: with SMTP id y23mr12339550edw.235.1620398635791;
-        Fri, 07 May 2021 07:43:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620398635; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp451329lfg;
+        Fri, 7 May 2021 07:44:01 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzK9yToH/mQania0H56qreKhGFoVEd4RQ3FkdP8rbQfGLgQSRC06puVhcgTRQ38oecOKkaD
+X-Received: by 2002:a17:907:c1c:: with SMTP id ga28mr10505378ejc.122.1620398641502;
+        Fri, 07 May 2021 07:44:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620398641; cv=none;
         d=google.com; s=arc-20160816;
-        b=vpfubXWC47MHBxwgYTbzMjuRGBIe3lwrjjo/M+gqx4spwmNKVxHxlynXhrRdYjffD8
-         5q98esjp3s0+H2QHYLATXHD8NGd6sFIQ6yOgNvX+5HlCZxmJlvMAJs4Yto4GNV5rfVfe
-         FynT1YcSOQsy/TMkRf3HTWS+fPTYZHpWtNnVcantqpQ+0oGrHccrV9tWSw98T+uQ27ZS
-         iOuNjnyygwljaBgxzi7iVhQeZlxehSoM+kGZCil5BkJV6zktlkQnLh366naop+T0sfNf
-         i74yn4Llshm65MYWKpnnSLDV2r5Akl4MW8HhhUJ7Yuxqsh30HgKDfKxISJV+Uq0EBzUc
-         m+/A==
+        b=ksTnTay4EtJk47riJiw+2xPuf2FZ3Uwo5nv9ZU5u7higlOjOnjuu5MqiWLVskFGXX+
+         F12Y4pZiNuutQ04Us6tB5MRt7HvC5OUWoFCqkAXcWWHMeRY1fk5cXTRR2FPqiQDqswHU
+         bgtETrFh5yg+YS6pZRqvcuHIQnc7lzPuxvGBtvgsIP7TVSyWbxNCrMz25Addy2JeFcHb
+         nBA2UZwPjo4v6df2iSQloCw8gMlBAy1FNisDy5KmiQGU8nLsrafxYkqHJP64ncjVmfDh
+         DXnKAlqOT1MCo5t8MYdhO+y2+6Z+/iez/BK8/wRaclTt7kvWEMUBcM+vHDdNH4lfjhtg
+         3S/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=9UwtNiSXhDRvxxEBq2bA0+BsvH/APBPHI+6JmS4Uqh4=;
-        b=z4RyCrWX5LpRm+W1G2OhSi1gx5waHGRc4awdRxqUi7r0xQL+waDkeRMKnky4SEIsHp
-         rPf5DVhtlRrHfHy46WL0ic5YuauoxiC55MQsp7zOVhYTaLhUGZ0bSvHv5HuvRRN9GHmy
-         fTBhIZEtjKTzsQtR48EI7wyLtFL1O/5ZcSv2WyqvZy/saUEI8kd30fhBTJ3qzRC7+SxL
-         UH38layr48kMTu+NnT1LGtX1NHxR/1iYFdH35xzyd2uoOuJrrYECjrwIJi1vY+YGvSo8
-         XnhBrjkszH/LHX4SCs+JwxOvANGK4GmF4PijgrS7yc+ZwC71LbMy2JPjM5ueo9gDXjwb
-         v+dA==
+        bh=0aEFCYf2HLWMKyL3vu/hasMYJfVES1sketKqALkOn8E=;
+        b=gbBGCcfXjorxMakiWLECeaFxYQ5W0kVmFhUtRkFuLmZ9S+IadoczXP65zpcQ95r4x+
+         VoM5DhZxRYYA6Y9eh0/yj5CijblVjwGYHxOdmpwxP4X/q3IB+W2FwFc/JPqbulAkiSoh
+         5SJaBU8yAaGmCUcmQaHUf7P1dPrsY/MWz9Ecnq7CIvigwmQdwgL2y/4MUFngUfC/urHj
+         RUz6sRzF4Bn9o00y4vvKOU1783aV2JeOZrBtLgVXhZRiCIHSNE2w/DMTv8x6vuDEDtsR
+         CqnfUwKvT3C+iy95bEKqtn8vAI2shVm8sUizLWuCf90fN2O2T9tvnJzEMNhVbx1WHSY3
+         HHAQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ba0pIw39;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FRnr4im3;
        spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
-        by mx.google.com with ESMTPS id n13si5191365ejk.5.2021.05.07.07.43.55
+        by mx.google.com with ESMTPS id y9si5251754edq.93.2021.05.07.07.44.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 07 May 2021 07:43:55 -0700 (PDT)
+        Fri, 07 May 2021 07:44:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ba0pIw39;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FRnr4im3;
        spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1620398634;
+	s=mimecast20190719; t=1620398640;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=9UwtNiSXhDRvxxEBq2bA0+BsvH/APBPHI+6JmS4Uqh4=;
-	b=ba0pIw39FsH2AzeV8xuN5DnIEiSYjJyNvPT2mgy/9e+WQYps0UUhjxUReMAFiXuqikIJtg
-	br/WpRct94ZKK9GXQVZM7VzOfpU4JR5SpTtkYNhtdOulbCufUAhvx7TB3vgiJlyH9zKx7Y
-	UqrfEzVM63odubiq13gR4zmZa2OXkjs=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-5-Anfa_sK3O8qjHnjMk-krnA-1; Fri, 07 May 2021 10:43:52 -0400
-X-MC-Unique: Anfa_sK3O8qjHnjMk-krnA-1
-Received: by mail-wm1-f70.google.com with SMTP id s66-20020a1ca9450000b0290149fce15f03so3986475wme.9
-        for <alex.bennee@linaro.org>; Fri, 07 May 2021 07:43:51 -0700 (PDT)
+	bh=0aEFCYf2HLWMKyL3vu/hasMYJfVES1sketKqALkOn8E=;
+	b=FRnr4im3S2xBtHFd49O9DhNEsMYlkEOzBgA/MsRyX3ulC0BD30mdDMHR5uaafLvAkNJmqL
+	AeJIcs1/mb8l/Pw2kezoDDnZo/xmWllroTpauu8OyYcob2TbRgHFX7KFw3nlj9RtNDxt4l
+	l6bNwuE4K6wc4aAdpYZlKCBo3i4xzi4=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-377-MUECVFTqMN-MGuBG6y95fw-1; Fri, 07 May 2021 10:43:57 -0400
+X-MC-Unique: MUECVFTqMN-MGuBG6y95fw-1
+Received: by mail-wr1-f72.google.com with SMTP id i102-20020adf90ef0000b029010dfcfc46c0so3707677wri.1
+        for <alex.bennee@linaro.org>; Fri, 07 May 2021 07:43:56 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=9UwtNiSXhDRvxxEBq2bA0+BsvH/APBPHI+6JmS4Uqh4=;
-        b=Edt63cmoVsONT8wvrtczvPEzjR6Xw7CBJlWTmHMse3QzZF7zQ5NjOfMS7auAS0EgCX
-         GCKZDoNYsbhIH3cKRv2p1a0UXryOmCpX7ez32ibDLIvXNXCTf36Ue6luZ5jvuuKbEt7n
-         I9MRonOQC5Z8rHY3XdSluexqzf19EmX2ikQpiE8N7viVRpos8r1zCeW/hzZo0RYEwaqV
-         wY/TpXFWysPZPcqoJua9DRU3qZ89RkuNp7QyCt0rRTXazcXUOjDdfVZ8vF4kgDzfsco9
-         wJ2JHsh7TKdQ3JEuDJpxD++EojTp13/eC60MDJ6rM77LLcuTCnF0ip4ps6BbFUM4I7St
-         4lkQ==
-X-Gm-Message-State: AOAM532vYLiyr+zNRHRJGTM2Dj9bpb/vwF6B0FRToBPsrusdLDWHUbR5
-	6QGg3VaaMKlAdezUJYeTFTVwbNaCIdqm2+kCAvF38G/WLP2Y2pKzuCH3x59yVZ1qa6k7WzIyvSd
-	vV/EllXHWG/BB6ypz
-X-Received: by 2002:a5d:4acc:: with SMTP id y12mr12640286wrs.233.1620398631054;
-        Fri, 07 May 2021 07:43:51 -0700 (PDT)
-X-Received: by 2002:a5d:4acc:: with SMTP id y12mr12640261wrs.233.1620398630869;
-        Fri, 07 May 2021 07:43:50 -0700 (PDT)
+        bh=0aEFCYf2HLWMKyL3vu/hasMYJfVES1sketKqALkOn8E=;
+        b=pmO09u8r/52VISuoxSDQaIVzYuhfZReEEoWhYbCGnS8rq5cvJtmV3YKKs8yXJ1L68N
+         U567Np06IA5i6EbX/V4Mnfp0hf5HMJKKK88jCujanrYv7lAjS0d74cEJ/nOgSRQkYbg2
+         6Ri1svcNrIRN60Alm4bTQZ0rtclmF6omHkWBPfCpwRg1zv3l9C5chs4wB8goN4tw9puZ
+         xhunwdVWoMCDlirNyrGD/4qUxtc3yAbPH2KE2Gn4oDwphTU2trQjNUCO0AIsjZwYreQp
+         DC3rAWJmwaTspF1alcCbXTY3TVvc4gJGzOP1k2hZ/YMwklpxxNbY+oBEelrBWZjg0csz
+         xhfA==
+X-Gm-Message-State: AOAM5309kbzb305ZFgOIz/ZwcMkdSXO1/e0Z0JzIMR441riR/xAONMUM
+	TEAmZ4cxLlPSvbQXPHtGaRHh7Oz83+5wxxzqF+l5kgRXJdn/GkyA7wXGPh2b09THH+ziIYOT8Iv
+	WIZu+JJNXsSk8kHgV
+X-Received: by 2002:a1c:e912:: with SMTP id q18mr21780860wmc.59.1620398635880;
+        Fri, 07 May 2021 07:43:55 -0700 (PDT)
+X-Received: by 2002:a1c:e912:: with SMTP id q18mr21780843wmc.59.1620398635604;
+        Fri, 07 May 2021 07:43:55 -0700 (PDT)
 Return-Path: <philmd@redhat.com>
 Received: from localhost.localdomain (astrasbourg-652-1-219-60.w90-40.abo.wanadoo.fr. [90.40.114.60])
-        by smtp.gmail.com with ESMTPSA id d3sm8221624wri.75.2021.05.07.07.43.49
+        by smtp.gmail.com with ESMTPSA id q12sm9079882wrx.17.2021.05.07.07.43.54
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 07 May 2021 07:43:50 -0700 (PDT)
+        Fri, 07 May 2021 07:43:55 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>,
@@ -85,9 +85,9 @@ Cc: Laurent Vivier <laurent@vivier.eu>,
 	Gerd Hoffmann <kraxel@redhat.com>,
 	qemu-arm@nongnu.org,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH v3 07/17] linux-user: Replace alloca() by g_try_malloc() in various socket syscall
-Date: Fri,  7 May 2021 16:43:05 +0200
-Message-Id: <20210507144315.1994337-8-philmd@redhat.com>
+Subject: [PATCH v3 08/17] linux-user/syscall: Move code around in do_sendrecvmsg_locked()
+Date: Fri,  7 May 2021 16:43:06 +0200
+Message-Id: <20210507144315.1994337-9-philmd@redhat.com>
 X-Mailer: git-send-email 2.26.3
 In-Reply-To: <20210507144315.1994337-1-philmd@redhat.com>
 References: <20210507144315.1994337-1-philmd@redhat.com>
@@ -98,171 +98,57 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: ey6i0c/2jrg8
+X-TUID: efSP93uma8yD
 
-The ALLOCA(3) man-page mentions its "use is discouraged".
+Avoid initializing variables too early, since there is
+2 possible failure points before they get used. Move them
+after the lock_iovec() call.
 
-Use autofree heap allocation instead (returning ENOMEM on failure).
-
-Suggested-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- linux-user/syscall.c | 50 +++++++++++++++++++++++++++++++-------------
- 1 file changed, 35 insertions(+), 15 deletions(-)
+ linux-user/syscall.c | 13 ++++++-------
+ 1 file changed, 6 insertions(+), 7 deletions(-)
 
 diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index a263aea85ff..7c5c821f48d 100644
+index 7c5c821f48d..593241362a9 100644
 --- a/linux-user/syscall.c
 +++ b/linux-user/syscall.c
-@@ -3307,14 +3307,17 @@ static abi_long do_socket(int domain, int type, int protocol)
- static abi_long do_bind(int sockfd, abi_ulong target_addr,
-                         socklen_t addrlen)
- {
--    void *addr;
-+    g_autofree void *addr = NULL;
-     abi_long ret;
+@@ -3379,15 +3379,8 @@ static abi_long do_sendrecvmsg_locked(int fd, struct target_msghdr *msgp,
+         msg.msg_name = NULL;
+         msg.msg_namelen = 0;
+     }
+-    msg.msg_controllen = 2 * tswapal(msgp->msg_controllen);
+-    msg.msg_control = alloca(msg.msg_controllen);
+-    memset(msg.msg_control, 0, msg.msg_controllen);
+-
+-    msg.msg_flags = tswap32(msgp->msg_flags);
  
-     if ((int)addrlen < 0) {
-         return -TARGET_EINVAL;
+     count = tswapal(msgp->msg_iovlen);
+-    target_vec = tswapal(msgp->msg_iov);
+-
+     if (count > IOV_MAX) {
+         /* sendrcvmsg returns a different errno for this condition than
+          * readv/writev, so we must catch it here before lock_iovec() does.
+@@ -3396,14 +3389,20 @@ static abi_long do_sendrecvmsg_locked(int fd, struct target_msghdr *msgp,
+         goto out2;
      }
  
--    addr = alloca(addrlen+1);
-+    addr = g_try_malloc(addrlen + 1);
-+    if (!addr) {
-+        return -TARGET_ENOMEM;
-+    }
- 
-     ret = target_to_host_sockaddr(sockfd, addr, target_addr, addrlen);
-     if (ret)
-@@ -3327,14 +3330,17 @@ static abi_long do_bind(int sockfd, abi_ulong target_addr,
- static abi_long do_connect(int sockfd, abi_ulong target_addr,
-                            socklen_t addrlen)
- {
--    void *addr;
-+    g_autofree void *addr = NULL;
-     abi_long ret;
- 
-     if ((int)addrlen < 0) {
-         return -TARGET_EINVAL;
++    target_vec = tswapal(msgp->msg_iov);
+     vec = lock_iovec(send ? VERIFY_READ : VERIFY_WRITE,
+                      target_vec, count, send);
+     if (vec == NULL) {
+         ret = -host_to_target_errno(errno);
+         goto out2;
      }
- 
--    addr = alloca(addrlen+1);
-+    addr = g_try_malloc(addrlen + 1);
-+    if (!addr) {
-+        return -TARGET_ENOMEM;
-+    }
- 
-     ret = target_to_host_sockaddr(sockfd, addr, target_addr, addrlen);
-     if (ret)
-@@ -3519,7 +3525,7 @@ static abi_long do_accept4(int fd, abi_ulong target_addr,
-                            abi_ulong target_addrlen_addr, int flags)
- {
-     socklen_t addrlen, ret_addrlen;
--    void *addr;
-+    g_autofree void *addr = NULL;
-     abi_long ret;
-     int host_flags;
- 
-@@ -3541,7 +3547,10 @@ static abi_long do_accept4(int fd, abi_ulong target_addr,
-         return -TARGET_EFAULT;
-     }
- 
--    addr = alloca(addrlen);
-+    addr = g_try_malloc(addrlen);
-+    if (!addr) {
-+        return -TARGET_ENOMEM;
-+    }
- 
-     ret_addrlen = addrlen;
-     ret = get_errno(safe_accept4(fd, addr, &ret_addrlen, host_flags));
-@@ -3559,7 +3568,7 @@ static abi_long do_getpeername(int fd, abi_ulong target_addr,
-                                abi_ulong target_addrlen_addr)
- {
-     socklen_t addrlen, ret_addrlen;
--    void *addr;
-+    g_autofree void *addr = NULL;
-     abi_long ret;
- 
-     if (get_user_u32(addrlen, target_addrlen_addr))
-@@ -3573,7 +3582,10 @@ static abi_long do_getpeername(int fd, abi_ulong target_addr,
-         return -TARGET_EFAULT;
-     }
- 
--    addr = alloca(addrlen);
-+    addr = g_try_malloc(addrlen);
-+    if (!addr) {
-+        return -TARGET_ENOMEM;
-+    }
- 
-     ret_addrlen = addrlen;
-     ret = get_errno(getpeername(fd, addr, &ret_addrlen));
-@@ -3591,7 +3603,7 @@ static abi_long do_getsockname(int fd, abi_ulong target_addr,
-                                abi_ulong target_addrlen_addr)
- {
-     socklen_t addrlen, ret_addrlen;
--    void *addr;
-+    g_autofree void *addr = NULL;
-     abi_long ret;
- 
-     if (get_user_u32(addrlen, target_addrlen_addr))
-@@ -3605,7 +3617,10 @@ static abi_long do_getsockname(int fd, abi_ulong target_addr,
-         return -TARGET_EFAULT;
-     }
- 
--    addr = alloca(addrlen);
-+    addr = g_try_malloc(addrlen);
-+    if (!addr) {
-+        return -TARGET_ENOMEM;
-+    }
- 
-     ret_addrlen = addrlen;
-     ret = get_errno(getsockname(fd, addr, &ret_addrlen));
-@@ -3640,7 +3655,6 @@ static abi_long do_socketpair(int domain, int type, int protocol,
- static abi_long do_sendto(int fd, abi_ulong msg, size_t len, int flags,
-                           abi_ulong target_addr, socklen_t addrlen)
- {
--    void *addr;
-     void *host_msg;
-     void *copy_msg = NULL;
-     abi_long ret;
-@@ -3662,7 +3676,11 @@ static abi_long do_sendto(int fd, abi_ulong msg, size_t len, int flags,
-         }
-     }
-     if (target_addr) {
--        addr = alloca(addrlen+1);
-+        g_autofree void *addr = g_try_malloc(addrlen + 1);
 +
-+        if (!addr) {
-+            return -TARGET_ENOMEM;
-+        }
-         ret = target_to_host_sockaddr(fd, addr, target_addr, addrlen);
-         if (ret) {
-             goto fail;
-@@ -3686,7 +3704,7 @@ static abi_long do_recvfrom(int fd, abi_ulong msg, size_t len, int flags,
-                             abi_ulong target_addrlen)
- {
-     socklen_t addrlen, ret_addrlen;
--    void *addr;
-+    g_autofree void *addr = NULL;
-     void *host_msg;
-     abi_long ret;
+     msg.msg_iovlen = count;
+     msg.msg_iov = vec;
++    msg.msg_flags = tswap32(msgp->msg_flags);
++    msg.msg_controllen = 2 * tswapal(msgp->msg_controllen);
++    msg.msg_control = alloca(msg.msg_controllen);
++    memset(msg.msg_control, 0, msg.msg_controllen);
  
-@@ -3707,12 +3725,14 @@ static abi_long do_recvfrom(int fd, abi_ulong msg, size_t len, int flags,
-             ret = -TARGET_EINVAL;
-             goto fail;
-         }
--        addr = alloca(addrlen);
-+        addr = g_try_malloc(addrlen);
-+        if (!addr) {
-+            return -TARGET_ENOMEM;
-+        }
-         ret_addrlen = addrlen;
-         ret = get_errno(safe_recvfrom(fd, host_msg, len, flags,
-                                       addr, &ret_addrlen));
-     } else {
--        addr = NULL; /* To keep compiler quiet.  */
-         addrlen = 0; /* To keep compiler quiet.  */
-         ret = get_errno(safe_recvfrom(fd, host_msg, len, flags, NULL, 0));
-     }
+     if (send) {
+         if (fd_trans_target_to_host_data(fd)) {
 -- 
 2.26.3

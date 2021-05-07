@@ -1,80 +1,80 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp451329lfg;
-        Fri, 7 May 2021 07:44:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzK9yToH/mQania0H56qreKhGFoVEd4RQ3FkdP8rbQfGLgQSRC06puVhcgTRQ38oecOKkaD
-X-Received: by 2002:a17:907:c1c:: with SMTP id ga28mr10505378ejc.122.1620398641502;
-        Fri, 07 May 2021 07:44:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620398641; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp451405lfg;
+        Fri, 7 May 2021 07:44:06 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzHuJPbWxpaEg7aEDwOJAgeGHOLhHVit8iEpFxk3eWMut2LaaFEfmDOmkhH3BfxwEJF0OpO
+X-Received: by 2002:a17:906:5855:: with SMTP id h21mr10553988ejs.522.1620398646566;
+        Fri, 07 May 2021 07:44:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620398646; cv=none;
         d=google.com; s=arc-20160816;
-        b=ksTnTay4EtJk47riJiw+2xPuf2FZ3Uwo5nv9ZU5u7higlOjOnjuu5MqiWLVskFGXX+
-         F12Y4pZiNuutQ04Us6tB5MRt7HvC5OUWoFCqkAXcWWHMeRY1fk5cXTRR2FPqiQDqswHU
-         bgtETrFh5yg+YS6pZRqvcuHIQnc7lzPuxvGBtvgsIP7TVSyWbxNCrMz25Addy2JeFcHb
-         nBA2UZwPjo4v6df2iSQloCw8gMlBAy1FNisDy5KmiQGU8nLsrafxYkqHJP64ncjVmfDh
-         DXnKAlqOT1MCo5t8MYdhO+y2+6Z+/iez/BK8/wRaclTt7kvWEMUBcM+vHDdNH4lfjhtg
-         3S/A==
+        b=ZMDKZjf/7SCxmu7E+dTw/9jTFvNN1BMJdf1LdWJMwBiPG7OJh0SQPL8LWLm69z+wjd
+         pvDgvtNe87qR2PqghjmqvrQXhB8LIE5MK4Izw9xq8n0JWkcHlH5bnCLdn6LzSP7EYdKp
+         lfioBCMIwgOAjO4e4Ir+BYbWKa9j/X8zUB4nXY5a+uYygz5ftJrHxFf/dt+PDj3sXvuA
+         IibYCAhMUbePATHiU8Fmc3IU/UIM8iDbeyNF4li2iPU+V2Yj8iebi5ADkpJm6lxn2uhC
+         JAKM/BjBXlF5GLQBx3cPMIEu0NXPD5R9vrLKJX+Y6UTcVsNcaZyIfVWdaRuFxGiguw2A
+         ArPg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=0aEFCYf2HLWMKyL3vu/hasMYJfVES1sketKqALkOn8E=;
-        b=gbBGCcfXjorxMakiWLECeaFxYQ5W0kVmFhUtRkFuLmZ9S+IadoczXP65zpcQ95r4x+
-         VoM5DhZxRYYA6Y9eh0/yj5CijblVjwGYHxOdmpwxP4X/q3IB+W2FwFc/JPqbulAkiSoh
-         5SJaBU8yAaGmCUcmQaHUf7P1dPrsY/MWz9Ecnq7CIvigwmQdwgL2y/4MUFngUfC/urHj
-         RUz6sRzF4Bn9o00y4vvKOU1783aV2JeOZrBtLgVXhZRiCIHSNE2w/DMTv8x6vuDEDtsR
-         CqnfUwKvT3C+iy95bEKqtn8vAI2shVm8sUizLWuCf90fN2O2T9tvnJzEMNhVbx1WHSY3
-         HHAQ==
+        bh=VXb/SdsglaW/QeR809+FkWbDDukXToeT9LG+jBzD2Ak=;
+        b=jKTeNQw4ft3NnMpoWWJ5M/ReAm1CN8GpGhPPbmXJgYMEDy7Ewm2k9pEDKRDTXvlCYk
+         6AZe2ccv67cIBGV9MHkPbYZBVK5j4iTqrF+ibg4inis9igh+NWmRQXRw7GnLDDmiyx3P
+         7IhsWzhB9L32VRpW78Y1f/6mXm69i91xRoto0ZPvYrCRb65NfjYPVJkzxNeRUWlPkuTG
+         8rvEg/VMi8cDT3WAdliUgJqM307Lg5SbPyY+DIC3dPFpAV1y342jwHX60b+pX1dKb0Ca
+         E6GNnMvk5xCrA7HPMpAD5wwbNN2r3ddXzkkILDFRriViZKBEV6fpYc8pa+6bBlAewqE0
+         laNw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FRnr4im3;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="DBD/Pent";
        spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
-        by mx.google.com with ESMTPS id y9si5251754edq.93.2021.05.07.07.44.01
+        by mx.google.com with ESMTPS id jz27si370656ejc.541.2021.05.07.07.44.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 07 May 2021 07:44:01 -0700 (PDT)
+        Fri, 07 May 2021 07:44:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FRnr4im3;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="DBD/Pent";
        spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1620398640;
+	s=mimecast20190719; t=1620398645;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=0aEFCYf2HLWMKyL3vu/hasMYJfVES1sketKqALkOn8E=;
-	b=FRnr4im3S2xBtHFd49O9DhNEsMYlkEOzBgA/MsRyX3ulC0BD30mdDMHR5uaafLvAkNJmqL
-	AeJIcs1/mb8l/Pw2kezoDDnZo/xmWllroTpauu8OyYcob2TbRgHFX7KFw3nlj9RtNDxt4l
-	l6bNwuE4K6wc4aAdpYZlKCBo3i4xzi4=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-377-MUECVFTqMN-MGuBG6y95fw-1; Fri, 07 May 2021 10:43:57 -0400
-X-MC-Unique: MUECVFTqMN-MGuBG6y95fw-1
-Received: by mail-wr1-f72.google.com with SMTP id i102-20020adf90ef0000b029010dfcfc46c0so3707677wri.1
-        for <alex.bennee@linaro.org>; Fri, 07 May 2021 07:43:56 -0700 (PDT)
+	bh=VXb/SdsglaW/QeR809+FkWbDDukXToeT9LG+jBzD2Ak=;
+	b=DBD/PentXDB9kYFVmt/b39n0lQ6T3ODmnJpfRk0iPANeO2BQbZhYk1GP5X3sz1qbIbCX5T
+	DQRfldFqAU1VkdbuYO9/FMtNyG01aZrsf6rwg4y2bzWzW6cAPovx9+vTuGlz0j6fMLmxH3
+	/O4pusTcxUA6rii6dz8pYhYZj+6Ur9Q=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-285-ivUdI11WNBGIV4n-z_B1sw-1; Fri, 07 May 2021 10:44:01 -0400
+X-MC-Unique: ivUdI11WNBGIV4n-z_B1sw-1
+Received: by mail-wm1-f71.google.com with SMTP id y193-20020a1c32ca0000b029014cbf30c3f2so3952484wmy.1
+        for <alex.bennee@linaro.org>; Fri, 07 May 2021 07:44:01 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=0aEFCYf2HLWMKyL3vu/hasMYJfVES1sketKqALkOn8E=;
-        b=pmO09u8r/52VISuoxSDQaIVzYuhfZReEEoWhYbCGnS8rq5cvJtmV3YKKs8yXJ1L68N
-         U567Np06IA5i6EbX/V4Mnfp0hf5HMJKKK88jCujanrYv7lAjS0d74cEJ/nOgSRQkYbg2
-         6Ri1svcNrIRN60Alm4bTQZ0rtclmF6omHkWBPfCpwRg1zv3l9C5chs4wB8goN4tw9puZ
-         xhunwdVWoMCDlirNyrGD/4qUxtc3yAbPH2KE2Gn4oDwphTU2trQjNUCO0AIsjZwYreQp
-         DC3rAWJmwaTspF1alcCbXTY3TVvc4gJGzOP1k2hZ/YMwklpxxNbY+oBEelrBWZjg0csz
-         xhfA==
-X-Gm-Message-State: AOAM5309kbzb305ZFgOIz/ZwcMkdSXO1/e0Z0JzIMR441riR/xAONMUM
-	TEAmZ4cxLlPSvbQXPHtGaRHh7Oz83+5wxxzqF+l5kgRXJdn/GkyA7wXGPh2b09THH+ziIYOT8Iv
-	WIZu+JJNXsSk8kHgV
-X-Received: by 2002:a1c:e912:: with SMTP id q18mr21780860wmc.59.1620398635880;
-        Fri, 07 May 2021 07:43:55 -0700 (PDT)
-X-Received: by 2002:a1c:e912:: with SMTP id q18mr21780843wmc.59.1620398635604;
-        Fri, 07 May 2021 07:43:55 -0700 (PDT)
+        bh=VXb/SdsglaW/QeR809+FkWbDDukXToeT9LG+jBzD2Ak=;
+        b=oesHo2dRg99C9QCqwQnA2Jrq3NBtrzDCy/c98kZXIQLFZr1VC05zwsHJrQOz8s8HMu
+         xdo2MJvLKV4zMww7DS80v8UGGNrLgtprg8QHMUl6dhuRJZ40I2yafGQVgi00fv5n8n/V
+         nWiKLr9zaKAmM6KwW+h8/q6T0rwI1rEgtKLxr5Q27V6boKtkRKCrM80/0GuTY4u6MGut
+         WKko8Jtid8xFEajbeh7hfioGcN5ZsDbbeLFsfvFTWGmnZDGPMb+IR0FXNSktHAS7lKu5
+         qQ1dNvEhComc7huzTgWqPpBA/v0Kgqc6W8Ng+jvNNf4yN89ytoQZXGFnCyL+2sP4WCHJ
+         OmXg==
+X-Gm-Message-State: AOAM5300onlDTFi5fFxnqz3RrwDpCHlzhSb8F+MpL7Xj9M+O07WGdBvw
+	dgz3Ld4hrtSRpA3ZC1cuBdSLJFiITkgpDLaFWXrpXyBq0vPy5IMw7ISr1NQcW2QemQmPii0R8xU
+	JlO/MMNsRKkhAK+AP
+X-Received: by 2002:adf:f5c6:: with SMTP id k6mr13450296wrp.338.1620398640705;
+        Fri, 07 May 2021 07:44:00 -0700 (PDT)
+X-Received: by 2002:adf:f5c6:: with SMTP id k6mr13450277wrp.338.1620398640536;
+        Fri, 07 May 2021 07:44:00 -0700 (PDT)
 Return-Path: <philmd@redhat.com>
 Received: from localhost.localdomain (astrasbourg-652-1-219-60.w90-40.abo.wanadoo.fr. [90.40.114.60])
-        by smtp.gmail.com with ESMTPSA id q12sm9079882wrx.17.2021.05.07.07.43.54
+        by smtp.gmail.com with ESMTPSA id v13sm8883864wrt.65.2021.05.07.07.43.59
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 07 May 2021 07:43:55 -0700 (PDT)
+        Fri, 07 May 2021 07:44:00 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>,
@@ -85,9 +85,9 @@ Cc: Laurent Vivier <laurent@vivier.eu>,
 	Gerd Hoffmann <kraxel@redhat.com>,
 	qemu-arm@nongnu.org,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH v3 08/17] linux-user/syscall: Move code around in do_sendrecvmsg_locked()
-Date: Fri,  7 May 2021 16:43:06 +0200
-Message-Id: <20210507144315.1994337-9-philmd@redhat.com>
+Subject: [PATCH v3 09/17] linux-user/syscall: Replace alloca() by GLib alloc() in sendrecvmsg
+Date: Fri,  7 May 2021 16:43:07 +0200
+Message-Id: <20210507144315.1994337-10-philmd@redhat.com>
 X-Mailer: git-send-email 2.26.3
 In-Reply-To: <20210507144315.1994337-1-philmd@redhat.com>
 References: <20210507144315.1994337-1-philmd@redhat.com>
@@ -98,55 +98,50 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: efSP93uma8yD
+X-TUID: sbQ2GH7SFYMa
 
-Avoid initializing variables too early, since there is
-2 possible failure points before they get used. Move them
-after the lock_iovec() call.
+The ALLOCA(3) man-page mentions its "use is discouraged".
 
+Use autofree heap allocation instead (returning ENOMEM on failure).
+
+Suggested-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- linux-user/syscall.c | 13 ++++++-------
- 1 file changed, 6 insertions(+), 7 deletions(-)
+ linux-user/syscall.c | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
 
 diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 7c5c821f48d..593241362a9 100644
+index 593241362a9..c88e240ff93 100644
 --- a/linux-user/syscall.c
 +++ b/linux-user/syscall.c
-@@ -3379,15 +3379,8 @@ static abi_long do_sendrecvmsg_locked(int fd, struct target_msghdr *msgp,
-         msg.msg_name = NULL;
-         msg.msg_namelen = 0;
-     }
--    msg.msg_controllen = 2 * tswapal(msgp->msg_controllen);
+@@ -3358,13 +3358,19 @@ static abi_long do_sendrecvmsg_locked(int fd, struct target_msghdr *msgp,
+     abi_ulong count;
+     struct iovec *vec;
+     abi_ulong target_vec;
++    g_autofree void *msg_control = NULL;
+ 
+     if (msgp->msg_name) {
+         msg.msg_namelen = tswap32(msgp->msg_namelen);
+-        msg.msg_name = alloca(msg.msg_namelen+1);
++        msg.msg_name = g_try_malloc(msg.msg_namelen + 1);
++        if (!msg.msg_name) {
++            ret = -TARGET_ENOMEM;
++            goto out2;
++        }
+         ret = target_to_host_sockaddr(fd, msg.msg_name,
+                                       tswapal(msgp->msg_name),
+                                       msg.msg_namelen);
++        g_free(msg.msg_name);
+         if (ret == -TARGET_EFAULT) {
+             /* For connected sockets msg_name and msg_namelen must
+              * be ignored, so returning EFAULT immediately is wrong.
+@@ -3401,8 +3407,7 @@ static abi_long do_sendrecvmsg_locked(int fd, struct target_msghdr *msgp,
+     msg.msg_iov = vec;
+     msg.msg_flags = tswap32(msgp->msg_flags);
+     msg.msg_controllen = 2 * tswapal(msgp->msg_controllen);
 -    msg.msg_control = alloca(msg.msg_controllen);
 -    memset(msg.msg_control, 0, msg.msg_controllen);
--
--    msg.msg_flags = tswap32(msgp->msg_flags);
- 
-     count = tswapal(msgp->msg_iovlen);
--    target_vec = tswapal(msgp->msg_iov);
--
-     if (count > IOV_MAX) {
-         /* sendrcvmsg returns a different errno for this condition than
-          * readv/writev, so we must catch it here before lock_iovec() does.
-@@ -3396,14 +3389,20 @@ static abi_long do_sendrecvmsg_locked(int fd, struct target_msghdr *msgp,
-         goto out2;
-     }
- 
-+    target_vec = tswapal(msgp->msg_iov);
-     vec = lock_iovec(send ? VERIFY_READ : VERIFY_WRITE,
-                      target_vec, count, send);
-     if (vec == NULL) {
-         ret = -host_to_target_errno(errno);
-         goto out2;
-     }
-+
-     msg.msg_iovlen = count;
-     msg.msg_iov = vec;
-+    msg.msg_flags = tswap32(msgp->msg_flags);
-+    msg.msg_controllen = 2 * tswapal(msgp->msg_controllen);
-+    msg.msg_control = alloca(msg.msg_controllen);
-+    memset(msg.msg_control, 0, msg.msg_controllen);
++    msg.msg_control = msg_control = g_malloc0(msg.msg_controllen);
  
      if (send) {
          if (fd_trans_target_to_host_data(fd)) {

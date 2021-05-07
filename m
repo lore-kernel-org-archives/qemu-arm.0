@@ -1,142 +1,151 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp2656488lfg;
-        Sun, 9 May 2021 22:54:00 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwi8M9Ia3uJ2KH7tH0dV0n/raTmQrAjVuuDvgto1sUg1u8rhn0JLjwJq3J+G56Vl/Z53Y11
-X-Received: by 2002:aa7:c914:: with SMTP id b20mr28275218edt.199.1620626040128;
-        Sun, 09 May 2021 22:54:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620626040; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp450876lfg;
+        Fri, 7 May 2021 07:43:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzyp4LL66O+YHzho2TLediame/57vsXLWEK7sRl0yumNvBJXpQOxSrDztgPR2kTpD9lKTIS
+X-Received: by 2002:aa7:cb10:: with SMTP id s16mr11761341edt.313.1620398601499;
+        Fri, 07 May 2021 07:43:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620398601; cv=none;
         d=google.com; s=arc-20160816;
-        b=escdskHAcYwVcunVpEnXRqe9C/7fC4e2qizNEArf7mtM1Bqm46zlDETii5yBdejS9r
-         1lvkY/Q+61j12UGyKeOCfVwYfFlNvN1HH4CzH2W8EZx7v4d85W9fkBlF5L2GRgpQ1iTW
-         evPF0zszGIN4IHL+4OXpy6W1FydhwLJ2fhOmbUyKUZ4GwHx33dZdXjFUeg9tl4n6MgFf
-         3XA6jhBq0r7vOA3EpXarjHmEF3MGvBJE3qwFrpzqvNfiGS6Ht7bgVJHI6gTZ/EOhzGuN
-         owu5qj0tWbov0JQcbKSBZ94bgiCnhORVDih8YIl/eGVrZq3z7jve/XxjjFTN9x0yaxjg
-         Mfdg==
+        b=hESE3+NRw5r6G94h8kN2GsMBpbiDCn2SRTs+6M4utnHg3fZEJqV8BEfUfVTFFrO5lp
+         xe/v6Y/U8JNQu+pez5OliTxpXTqVujdhcIprS6RlR1z4bN8B5I/nXXAUWsUP2Noa6qpa
+         rG3q3ipianpXnUs4U4JSa2T6KarmYSyXq/N04AakimHn2t3bgNRz+hAtjW+mozhgKbGI
+         H1peE6VWsZqTuF4qScgDpDlci6hs2D97uIcbZE7/k5c32ZVoddrc2z2BpMM9R42kw+S8
+         yQPs1bz2BCPrsHuGmykwUcPPU/Gp9zXQZ53x0n5pKDFM8dzS9uEdVCiJdTnQmxw7jC7R
+         zeyg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:in-reply-to:content-disposition:mime-version
-         :references:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=eUgO406bti9wzGMBsSu6lk1TuBnh0IzKEenOV4G/SXo=;
-        b=TVoJWnCumE+D/ax28karGJLL699vB6zvkQWdK+hvnOb1h6yp/ZT2emuuZRW8+dAnXa
-         UfueveyZIR6eFSeJRpGJU714kCF/cs//w7sQT4c3vC+qWxJhJ7GbjdZCLn1OXw4kj3xb
-         3XUOnYjCKX1x/8f5zNYryPun58B1U/BOs/23FLRuqbeU00bEMepDHbhaDhtLzomZs4pT
-         Gt0KOfN2nemV7uK1EEjGOlaw7HAOYsQeUAVMIQI/M30cJVg4pv7TugDFu6I51CRuMcj5
-         caQNUXA21ug+kr17YPvSFTqRK1BNpgnUpBds7iQ6WUiDrT2v2+QQpeQuwBVHsu1aX+W2
-         6wLA==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=EXbOk1AK+h+Zej7kIJqAzPYV2sQD1wcRx6tvZvpWRRs=;
+        b=M9wBFd4GSWYsOnG2/6+98IQf+gTMdBJYUvVgQXUZLYfSHqkDX6TXOROQkWaPZwCRcG
+         aNuQi9hBMHq318+PU0V2Yxp+m6gEN5tFBDO0uUFCbYUyIUr5NTH8fpqU4aPVtAFV9oiy
+         TADrUeM+6R6CM7BUNWiJ+5AlcS/8X8t6Q9kosOJYGXmfapp7QOjIRHplmD78nMJOM3GC
+         ZbMx5YL15xDQKIRzmbUMhKBjtZtAoRT4jougsCJnxsKXikDQn6hDNyFKwUSypliymRG8
+         ZtS2Aolm5BSmp3aD/h/9pztGb6KYCM8oSMPqakecUgDWmo8UCOOS2mqMoG35pSn8jRDM
+         oSCQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=eaquEyrq;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id n24si12306106eds.571.2021.05.09.22.53.59;
-        Sun, 09 May 2021 22:54:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Wml8NScH;
+       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <philmd@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
+        by mx.google.com with ESMTPS id f17si5181157edr.441.2021.05.07.07.43.21
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 07 May 2021 07:43:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=eaquEyrq;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S230031AbhEJFzD (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Mon, 10 May 2021 01:55:03 -0400
-Received: from ozlabs.org ([203.11.71.1]:59731 "EHLO ozlabs.org"
-        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
-        id S229863AbhEJFzC (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 10 May 2021 01:55:02 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
-        id 4FdqxK0Nfbz9vFt; Mon, 10 May 2021 15:53:56 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-        d=gibson.dropbear.id.au; s=201602; t=1620626037;
-        bh=Dex4GpvbUQbXqChv0Q2g0NAer0UcJ6OSYIFxuMVyNHg=;
-        h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-        b=eaquEyrqb9fzb1vK0YO7vT9KISXpfThh7X1MEWp1UAdTmRWjn9Tz6nRTfiK5Od/2C
-         d6DKcxainnV7OOlUMdNpunT9KS10aq6euzLqVqePTx5P2KGXxC05Tk36i+6/Ix3pIC
-         x9VRmH9YjmgSgoErYMqgp7jppB/ga3n3HFmMxWyE=
-Date:   Mon, 10 May 2021 15:38:02 +1000
-From:   David Gibson <david@gibson.dropbear.id.au>
-To:     Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Cc:     qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
-        Paolo Bonzini <pbonzini@redhat.com>, qemu-ppc@nongnu.org,
-        Peter Maydell <peter.maydell@linaro.org>,
-        Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-        Gerd Hoffmann <kraxel@redhat.com>, qemu-arm@nongnu.org,
-        Greg Kurz <groug@kaod.org>,
-        "open list:Overall KVM CPUs" <kvm@vger.kernel.org>
-Subject: Re: [PATCH v3 15/17] target/ppc/kvm: Replace alloca() by g_malloc()
-Message-ID: <YJjGuvsB5r5f7x/F@yekko>
-References: <20210507144315.1994337-1-philmd@redhat.com>
- <20210507144315.1994337-16-philmd@redhat.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Wml8NScH;
+       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1620398600;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=EXbOk1AK+h+Zej7kIJqAzPYV2sQD1wcRx6tvZvpWRRs=;
+	b=Wml8NScHi6M0NZYm5/57+8ERbj2V9nJ+0gGZG2idoFgcvEhOl8rRg/LBeyiM5wMKZjR6Z2
+	HBYEKcI1LU32PgdUDbuQZyGvQflz4zKjcw/AUWtiFFF29E0YEErijhjHMqXfS2RcLfoWqf
+	K0F1ntQgwPTWZ5yKxVYKv1J/622uPAQ=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-561-ecmVMv5uMsyZpNyIashsdQ-1; Fri, 07 May 2021 10:43:18 -0400
+X-MC-Unique: ecmVMv5uMsyZpNyIashsdQ-1
+Received: by mail-wr1-f70.google.com with SMTP id p19-20020adfc3930000b029010e10128a04so3672140wrf.3
+        for <alex.bennee@linaro.org>; Fri, 07 May 2021 07:43:18 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=2JiudAHyKwdcVvgn2Srg79I18dvicfH0KT9PAVjPO2k=;
+        b=tvPfS4C7jVxUY5cP6l4bm+DmWIizJa7VvDvL1g9tqzAdGbekkentPjd1bjoHrRJE6r
+         Ofh4C0vWr3OSTBWTaYq8z6XxpkweE/1ulEomi9Tdw8Z0HUKamGFlY0UG1j4MDmXc2a1K
+         mh88stVGGrYsHIKvYN+RARRIR9RhOb7JOgof9LFANBKCVdgBAWRUA1OSUR7aUoKn8ogA
+         zgghIRtNbdxU9dDpXtR2PxRvlJaEQgQd+cOck54Pp14uIsm8tNIcnqKVLRWLAPzA/lS2
+         Xkci38cv43N7GXfJ+YwQFvlv7g2n8avrnxlvRhtId1yLyyguqC7QrnHQDQSnigEGiUXS
+         nYtQ==
+X-Gm-Message-State: AOAM5307tffegtaYlmzTeW1aS5cKA1JcRTNBa0lVd6YgCR0kUtzbqlCX
+	W78x9XR2EqPm/kHkEz8hNrKWuRE1gH9WY6QLZymbO5tKL3IddNVlp2BShpT6/hjcuNnU3LTZu6X
+	gemxNq89UFBsEfv8p
+X-Received: by 2002:adf:df03:: with SMTP id y3mr13224973wrl.409.1620398597801;
+        Fri, 07 May 2021 07:43:17 -0700 (PDT)
+X-Received: by 2002:adf:df03:: with SMTP id y3mr13224963wrl.409.1620398597683;
+        Fri, 07 May 2021 07:43:17 -0700 (PDT)
+Return-Path: <philmd@redhat.com>
+Received: from localhost.localdomain (astrasbourg-652-1-219-60.w90-40.abo.wanadoo.fr. [90.40.114.60])
+        by smtp.gmail.com with ESMTPSA id m7sm8980967wrv.35.2021.05.07.07.43.16
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 07 May 2021 07:43:17 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Laurent Vivier <laurent@vivier.eu>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	qemu-ppc@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	qemu-arm@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH v3 00/17] misc: Replace alloca() by g_malloc()
+Date: Fri,  7 May 2021 16:42:58 +0200
+Message-Id: <20210507144315.1994337-1-philmd@redhat.com>
+X-Mailer: git-send-email 2.26.3
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-        protocol="application/pgp-signature"; boundary="d0Yk/ttOaOG9s+2E"
-Content-Disposition: inline
-In-Reply-To: <20210507144315.1994337-16-philmd@redhat.com>
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: 6IDPfI1TCmbW
-
-
---d0Yk/ttOaOG9s+2E
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
+X-TUID: ZkhGZuOWV18Y
 
-On Fri, May 07, 2021 at 04:43:13PM +0200, Philippe Mathieu-Daud=E9 wrote:
-> The ALLOCA(3) man-page mentions its "use is discouraged".
->=20
-> Use autofree heap allocation instead, replacing it by a g_malloc call.
->=20
-> Reviewed-by: Greg Kurz <groug@kaod.org>
-> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
-
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
-
-> ---
->  target/ppc/kvm.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->=20
-> diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
-> index 104a308abb5..23c4ea377e8 100644
-> --- a/target/ppc/kvm.c
-> +++ b/target/ppc/kvm.c
-> @@ -2698,11 +2698,11 @@ int kvmppc_save_htab(QEMUFile *f, int fd, size_t =
-bufsize, int64_t max_ns)
->  int kvmppc_load_htab_chunk(QEMUFile *f, int fd, uint32_t index,
->                             uint16_t n_valid, uint16_t n_invalid, Error *=
-*errp)
->  {
-> -    struct kvm_get_htab_header *buf;
-> +    g_autofree struct kvm_get_htab_header *buf =3D NULL;
->      size_t chunksize =3D sizeof(*buf) + n_valid * HASH_PTE_SIZE_64;
->      ssize_t rc;
-> =20
-> -    buf =3D alloca(chunksize);
-> +    buf =3D g_malloc(chunksize);
->      buf->index =3D index;
->      buf->n_valid =3D n_valid;
->      buf->n_invalid =3D n_invalid;
-
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---d0Yk/ttOaOG9s+2E
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAmCYxrgACgkQbDjKyiDZ
-s5ITGQ//cx1kIrgp8Q/IhYmEdRIUtMGVyBCKWYUh37rI50BsqykhIjP6v0MGQUVq
-+vcEanUqTaYiCQxcwG4wj09Peh1Y1ldVGVshKKvfpyTRx7XNQieiUgrcPNH6Z+x3
-X948ERPAlwDCnFT6OUc+wzszjbdLbjiTa1YVBIAP6XPNN+GS4edSJSnmhWQ0owkl
-zSqzxYCR4HLB7ltUy7DLvifuDDM+NIl6eZBfgzy0oC7VBLSgSRGIUMthgJOyXgbh
-XqmzV39VdyTKLhK7b+XMULwTAL+Qxls9ARFjyiCoXR67pEzTE2wglNxDpifi9TPF
-3pV7xQbd5aWPQ7GR7P6sVtzz8091elcUxvaJ9te7Fwiqfj/Oe65vuDDNMnVKO3Rn
-elpNLSCI2uW9SA2AwRUt1nPeN46URQMzYd2wCyXALj8VJhmWwtUSTGfrYOjH0xCM
-M8p8qMf5U2Iutk3fAHTtaybmGY+JCC/34DgVUoh7zKcFyigzQoIp5avZ2/LkspQc
-9xJwLEVP/mHSet9CHMUwu6OFNAJNzGgeCh0y2DqVthQoUOQNhCOMn5Xg9McrmGAv
-5kKOz2Rh/Ibz2mBzxAMkqNOZuCBh0tV5JEgcXL/UZywVwqPG24jNXEL34JR2W75t
-mp7+J0fm280huxEfjQX/F2EfD1i0sWKoGMXriord4Ps+bmLEF7s=
-=9BxG
------END PGP SIGNATURE-----
-
---d0Yk/ttOaOG9s+2E--
+The ALLOCA(3) man-page mentions its "use is discouraged".=0D
+Replace few calls by equivalent GLib malloc().=0D
+=0D
+Since v2:=0D
+- linux-user calls converted=0D
+- bsd-user returns ENOMEM (Peter)=0D
+- built on PPC+KVM host (David)=0D
+- removed tpm mutex cleanup (Christophe)=0D
+- included Alex gdbstub patch=0D
+- added R-b tags=0D
+=0D
+Since v1:=0D
+- Converted more uses (alsaaudio, tpm, pca9552)=0D
+- Reworked gdbstub (Alex)=0D
+- Simplified PPC/KVM (Greg)=0D
+=0D
+Alex Benn=C3=A9e (1):=0D
+  gdbstub: Replace GdbCmdContext with plain g_array()=0D
+=0D
+Philippe Mathieu-Daud=C3=A9 (16):=0D
+  bsd-user/syscall: Replace alloca() by g_try_new()=0D
+  linux-user/elfload: Replace alloca() by g_try_malloc()=0D
+  linux-user/syscall: Replace alloca() by g_try_new()=0D
+  linux-user/syscall: Replace alloca() by g_try_malloc()=0D
+  linux-user: Replace alloca() by g_try_new() in ppoll() syscall=0D
+  linux-user: Replace alloca() by g_try_malloc() in setsockopt() syscall=0D
+  linux-user: Replace alloca() by g_try_malloc() in various socket=0D
+    syscall=0D
+  linux-user/syscall: Move code around in do_sendrecvmsg_locked()=0D
+  linux-user/syscall: Replace alloca() by GLib alloc() in sendrecvmsg=0D
+  audio/alsaaudio: Replace ALSA alloca() by malloc() equivalent=0D
+  backends/tpm: Replace g_alloca() by g_malloc()=0D
+  gdbstub: Constify GdbCmdParseEntry=0D
+  hw/misc/pca9552: Replace g_newa() by g_new()=0D
+  target/ppc/kvm: Replace alloca() by g_malloc()=0D
+  configure: Prohibit alloca() by using -Walloca CPPFLAG=0D
+  configure: libSLiRP buildsys kludge=0D
+=0D
+ configure                   |   8 +=0D
+ audio/alsaaudio.c           |  11 +-=0D
+ backends/tpm/tpm_emulator.c |   3 +-=0D
+ bsd-user/syscall.c          |   7 +-=0D
+ gdbstub.c                   | 322 +++++++++++++++++-------------------=0D
+ hw/misc/pca9552.c           |   2 +-=0D
+ linux-user/elfload.c        |  14 +-=0D
+ linux-user/syscall.c        | 137 ++++++++++-----=0D
+ target/ppc/kvm.c            |   4 +-=0D
+ 9 files changed, 277 insertions(+), 231 deletions(-)=0D
+=0D
+--=20=0D
+2.26.3=0D
+=0D

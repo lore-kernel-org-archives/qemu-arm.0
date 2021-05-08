@@ -1,116 +1,114 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp1407751lfg;
-        Sat, 8 May 2021 08:57:12 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz3hifxCeM84u2PEDU3X83D4YeIHaCmel9Clhmhhp7pjCrlHTDtE4COYkrUxdVcrS4bzY+n
-X-Received: by 2002:a6b:f212:: with SMTP id q18mr12119016ioh.131.1620489432298;
-        Sat, 08 May 2021 08:57:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620489432; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp1435557lfg;
+        Sat, 8 May 2021 09:40:44 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxYaPbjDsnXM2yGdnLM2EEuMRg9bZ6wLDvgdh1rIIencm/V/4gdc6pUEm1bilDLp0tjFNVR
+X-Received: by 2002:a05:6e02:58c:: with SMTP id c12mr14656165ils.152.1620492044676;
+        Sat, 08 May 2021 09:40:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620492044; cv=none;
         d=google.com; s=arc-20160816;
-        b=yFPjTd7LTlyDVlvP5ElUo8HFzRQLs49HPMd97U4Oz1DtJCyZ/q60Ou5IlaX8LQeIl1
-         ktSszspaXi6wmxuFQ3gC7Z4UnBbM+LZD94mwk93LDP2uX8vizcK2zE8DBnK2vbK9AD8w
-         QR5JtoW16AM8+flBBLANXzIFkRKQxJnMGtDyuCKaylONbehsXx6yo3ly4rR/h1JmerDI
-         Tr+WHn+6wkNmzq5iQk4X27/QCtEhZqg19AbloRrYwebNmTZNpNHKsuSmd8rPjvkGh/Ev
-         kwnc/GtENae4CBIV0/MmeeXtYrruUqAjWD+kZDCDErY/QKLfE1A36k+W0Sg3FNQwwY7A
-         mrDQ==
+        b=lt10V390Z9OsMkrnjqd0uXsphwcP+Ki4dRc5UBG8lwADErywNwXQh2NrZYYZmtmINI
+         8T9n2Z3fjuYdAP4GLR/42awu1yNvWYrcgpkZRBfTTveXtoVWC51wBlxreoN7ij9JdYYk
+         eRRkO40HT+bayArRDTg7O5SNAWhqPyw1ILahjb9WBTdWPdEh5X1oG4VQ4VGZrXQrvOwC
+         Hv7CIfhRoJYq1SgTQvijF0q7rvdkE8lebv/a99FAlpS25JZ4wqywVaSdF1ZLNOO6JIEX
+         k8D0A3x1jDYKzBcb1c79NMYYB7+y9P/DscDJIL4oCxtz7nPTmMqgGXOq8oQSmeNgUF1o
+         qUmA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=Bqmx/uvURESBCJv2a/JDqMv6k8Rz/fuc9l3vDY25PZU=;
-        b=JdskFEP0qnKP69oiHo3d5Q3DJEX9ZYAKXnVOVVURRMBU7OpN/UOafoWxZMMjE6C8eA
-         cIYUQDy1V7flCjJE9sOnLanRsnNutF0VDlGqXNydg1cOZuWCVban/3TWCYoRCUBNh0pf
-         SgKV5CK8ZOC0U16GDIuwKQyCDmw1q2dos8zgry1r0lXhYfFvYt8J6fRMHI56e2A5Bzmz
-         3zwuY9rNrmGtmIF0mc3u2vEQouXiU1Mb8WTWaJRFdCc5zubx4xS+wXiTxNCXDGz4ZQng
-         02+B5zEA2Owa1Qvyvb4sLOLRjfRq71lG+sdbwgS0Lu0HRTtpuzUynpPHJ4wrbr0CoZPU
-         3KoQ==
+        bh=KaDh9U24z9oRPqJJH7iC8nCqeSqygL1w8Wfb9a9XXSs=;
+        b=m8RdZdTa3TXwTxr7YX9Jmj/u6K6PA6QjgmypCrlFDQ71dNxPmTrfJMN+4dHaXQn4fB
+         CYkj5ZGCnYYUF3dyvthAbczUP1FKUGUaPUAHQaJIRxI9ksj1WrHK1afjzYDYno8wnXK5
+         gQPlKqZI0hT4d5FuBCjiQLJSsvL3LkK+JJquFAwMHgOVdT98LcPLWygW6cu1LFpQSRbU
+         jnZXnRiwZYFWS2Zc/uAu6qnxWh0T1Ho02+5FNB3T4D5AbDWeGRhffZ7h5AmLy/e7VLNP
+         j9NaYm7p71KeYPpu26rahTWQjlCXaeQWCS2ADbrQHaCi/FwOI+x5P004gtV1z1iHPI0q
+         akNQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=v6+wFY3x;
+       dkim=fail header.i=@linaro.org header.s=google header.b=PIWCcm1R;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g10si9821136iow.86.2021.05.08.08.57.12
+        by mx.google.com with ESMTPS id z8si10224492ilh.46.2021.05.08.09.40.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 08 May 2021 08:57:12 -0700 (PDT)
+        Sat, 08 May 2021 09:40:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=v6+wFY3x;
+       dkim=fail header.i=@linaro.org header.s=google header.b=PIWCcm1R;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52708 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53328 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lfPKJ-0005gy-Jl
-	for alex.bennee@linaro.org; Sat, 08 May 2021 11:57:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56896)
+	id 1lfQ0S-0004FG-1e
+	for alex.bennee@linaro.org; Sat, 08 May 2021 12:40:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36828)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lfPJ4-0004A1-Dv
- for qemu-devel@nongnu.org; Sat, 08 May 2021 11:55:54 -0400
-Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033]:52853)
+ id 1lfPzQ-0003BB-GI
+ for qemu-devel@nongnu.org; Sat, 08 May 2021 12:39:40 -0400
+Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532]:38883)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lfPJ0-0001bI-2J
- for qemu-devel@nongnu.org; Sat, 08 May 2021 11:55:54 -0400
-Received: by mail-pj1-x1033.google.com with SMTP id ge1so6881829pjb.2
- for <qemu-devel@nongnu.org>; Sat, 08 May 2021 08:55:49 -0700 (PDT)
+ id 1lfPzN-0006Tz-Dt
+ for qemu-devel@nongnu.org; Sat, 08 May 2021 12:39:40 -0400
+Received: by mail-pg1-x532.google.com with SMTP id i14so9757138pgk.5
+ for <qemu-devel@nongnu.org>; Sat, 08 May 2021 09:39:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=Bqmx/uvURESBCJv2a/JDqMv6k8Rz/fuc9l3vDY25PZU=;
- b=v6+wFY3xj7YtvLkrkeexidk9IICROCCQ+VAPiWT+mq/ceuQ9lEsgcpBfVAxjuFXmOZ
- Fl70w2AxZWrqvqeCYbCGuDituwU0iiXyGGWil8WvlXVlar4PjgOXdhQyagyXylBbo7w7
- Y0MbVNM1J9td1mXCVgdbMxc0rnLBZfo1zAOJYmMOExjZyW8/ob9bVdY7lEF6tkizTfZS
- nweUDUubYIyu2y6l593MFCHTwzoXWhfOTkepnlbYBH1qDYwvOBa4I0ZxkNXKTuT4gWL/
- O0fHtRZpPq2Cx3htmquyxNDRIQr/Ax19aE+V4nnXq4fN/VJp3fXfJeC1aI7/67MF1K+t
- Rv9w==
+ bh=KaDh9U24z9oRPqJJH7iC8nCqeSqygL1w8Wfb9a9XXSs=;
+ b=PIWCcm1R62BX+XIYdYHLEe39Ff/jIUhyCqRiMenAsWfrpfQEgHjO73gilRoeGmui2g
+ nIvfQuDblkjN9WAIuoyEnCEf48LBNcM3E3nRTD6FMKSc1fCl1HekPjjRabCT+CsD8aHV
+ Wx4sGYLYa7n48kXj5YDezgNo6kV5pGE5lYh5PvgHg/rhLjGSlKCvJJ2OVfbviPrnuH+g
+ JMg+SZvZuLWZ4BHt4lXhnWe2uQgTxtdoXD/mBQ3DJYs1pQGdNtqxSPztyB7C4qCicSYu
+ nlu5X0HP/R0MgExirN+75jDk54LmbpfsEWAmBUVDHiZ5p+sIk4YY6xd8QmrawRV0nKvw
+ gzaw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=Bqmx/uvURESBCJv2a/JDqMv6k8Rz/fuc9l3vDY25PZU=;
- b=SmnzzL0mkpip0N+4jbGV5JOewHcRHP0ejqiHYaWNrorRFqfeIysUXQVo0ytNPNn8bW
- ncS38QnB1KRC2HiAk+dsKipP9cL25+sowhh/KlpC8qqJdRFLn7cP+y+n8dHZ2iQX3teW
- T4IVL831/klYa+p0BllGFwm8eshgVpA2aQclt0OpUzgx5pT7CpjZQnCTmsZoL1wfQwlY
- WdwWIkIJ279WCDlOBeAhzAr8FJm9DLMSf/u+0RW50G6oQZ83d3zywTC5KEpOYXsufXPV
- rJsnekamU+H8njSoP0188o3Ry7vJoURkM4cG4RBUrSN5zvVSJK5ymqgXEX88LcxMsGOC
- tTcg==
-X-Gm-Message-State: AOAM532BrQGYLaj2NLN6xihpwFBfQ5bOc2A1ogIdWr6TURnKXzU9BaU7
- wvrbLGa3SF93Hms8AjnE7xi79g==
-X-Received: by 2002:a17:90b:347:: with SMTP id
- fh7mr17290747pjb.23.1620489348282; 
- Sat, 08 May 2021 08:55:48 -0700 (PDT)
+ bh=KaDh9U24z9oRPqJJH7iC8nCqeSqygL1w8Wfb9a9XXSs=;
+ b=kiUb49APh/PYlel0RO0ORDDeY+/lfqhSOy/WByTERIWW/DSO2LnEK0QbZW5N3Ww0z4
+ tfTp3ruJ9sZw8G5D5yKXQP+NpUJe6KKViGB+prOiaxpJ1ijcKo3rFc1gSJ8eij4blOOg
+ TNrZK58nbAdxnJxLm81aOC9d2e3722N6ItWddAKGd4fP1ku+KfLARwXZKBh3YEG+nfVT
+ zKdsDBLzPspdLbSrF0flExnWbXL5QIAKRG4hCtK3iGP8ytmQPKwIqyy05/mfbwFLSEiV
+ C/84ewU3fI+AbR8Sp/uD+2u9Xep1pjnciHXdQunEoykxgUPVbfefVIqxgjJZ4W/EOBg/
+ TMJA==
+X-Gm-Message-State: AOAM530gvLmDytRvHK14ft852C0bz7YhP5Mvx8lhYn1tCvjERjrcoZnN
+ q5v/uaZQUS66YLLTSfk8dX/F9Q==
+X-Received: by 2002:a63:5a43:: with SMTP id k3mr15987405pgm.308.1620491975809; 
+ Sat, 08 May 2021 09:39:35 -0700 (PDT)
 Received: from [192.168.1.11] ([71.212.144.24])
- by smtp.gmail.com with ESMTPSA id q11sm7135024pjq.6.2021.05.08.08.55.47
+ by smtp.gmail.com with ESMTPSA id b13sm7823717pjl.38.2021.05.08.09.39.34
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 08 May 2021 08:55:47 -0700 (PDT)
-Subject: Re: [PATCH v8 1/4] accel/tcg: Add TLB invalidation support for ranges
- of addresses
+ Sat, 08 May 2021 09:39:35 -0700 (PDT)
+Subject: Re: [PATCH v8 2/4] target/arm: Add support for FEAT_TLBIRANGE
 To: Rebecca Cran <rebecca@nuviainc.com>,
  Peter Maydell <peter.maydell@linaro.org>
 References: <20210505030443.25310-1-rebecca@nuviainc.com>
- <20210505030443.25310-2-rebecca@nuviainc.com>
+ <20210505030443.25310-3-rebecca@nuviainc.com>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <a8cd4710-3de8-15c2-2f2e-3ce273639307@linaro.org>
-Date: Sat, 8 May 2021 08:55:45 -0700
+Message-ID: <a4e9c32f-7812-1ed8-37a0-60612bda7c52@linaro.org>
+Date: Sat, 8 May 2021 09:39:33 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.7.1
 MIME-Version: 1.0
-In-Reply-To: <20210505030443.25310-2-rebecca@nuviainc.com>
+In-Reply-To: <20210505030443.25310-3-rebecca@nuviainc.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1033;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1033.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::532;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x532.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -126,30 +124,117 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Q8+zfPLvVWrT
+X-TUID: AkrWb+ez8eZE
 
 On 5/4/21 8:04 PM, Rebecca Cran wrote:
-> Add functions to support the FEAT_TLBIRANGE ARMv8.4 feature that adds
-> TLB invalidation instructions to invalidate ranges of addresses.
-> 
-> Signed-off-by: Rebecca Cran<rebecca@nuviainc.com>
-> ---
->   accel/tcg/cputlb.c      | 128 +++++++++++++++++++-
->   include/exec/exec-all.h |  46 +++++++
->   2 files changed, 171 insertions(+), 3 deletions(-)
+> +static uint64_t tlbi_aa64_range_get_length(CPUARMState *env,
+> +                                           uint64_t value)
+> +{
+> +    unsigned int page_shift;
+> +    unsigned int page_size_granule;
+> +    uint64_t num;
+> +    uint64_t scale;
+> +    uint64_t exponent;
+> +    uint64_t length;
+> +
+> +    num = extract64(value, 39, 4);
+> +    scale = extract64(value, 44, 2);
+> +    page_size_granule = extract64(value, 46, 2);
+> +
+> +    page_shift = page_size_granule * 2 + 10;
 
-I guess this is ok.
+Should be + 12, for the sequence 12, 14, 16 (4k, 16k, 64k).
 
-I would have switched things around such that tlb_flush_page_bits_locked used 
-tlb_flush_range_locked, passing TARGET_PAGE_SIZE for the length.
+> +static void tlbi_aa64_rvae1_write(CPUARMState *env, const ARMCPRegInfo *ri,
+> +                                  uint64_t value)
+> +{
+> +    /*
+> +     * Invalidate by VA range, EL1&0.
+> +     * Currently handles all of RVAE1, RVAAE1, RVAALE1 and RVALE1,
+> +     * since we don't support flush-for-specific-ASID-only or
+> +     * flush-last-level-only.
+> +     */
+> +    ARMMMUIdx mmu_idx;
+> +    int mask;
+> +    int bits;
+> +    uint64_t pageaddr;
+> +    uint64_t length;
+> +
+> +    CPUState *cs = env_cpu(env);
+> +    mask = vae1_tlbmask(env);
+> +    mmu_idx = ARM_MMU_IDX_A | ctz32(mask);
+> +    if (regime_has_2_ranges(mmu_idx)) {
+> +        pageaddr = sextract64(value, 0, 37) << TARGET_PAGE_BITS;
+> +    } else {
+> +        pageaddr = extract64(value, 0, 37) << TARGET_PAGE_BITS;
+> +    }
 
-I would check for a very long length and flush the whole tlb, lest we spend too 
-long going round and round the same set of tlb entries.
+Let's extract the base address via a helper as well.  Add
 
-I would not skip the third function in the triple, *_all_cpus, which is unused 
-by arm but we have for every other tlb flushing function in this set.
+   /* TODO: ARMv8.7 FEAT_LPA2 */
 
-I'll whip something up and post it.
+as that will change the extracted base address.
+
+I think there's enough replicated between these functions to want a common 
+function.  Something like
+
+static void do_rvae_write(CPUARMState *env, uint64_t value,
+                           int idxmap, bool synced)
+{
+     ARMMMUIdx one_idx = ARM_MMU_IDX_A | ctz32(idxmap);
+     bool two_ranges = regime_has_2_ranges(one_idx);
+     uint64_t baseaddr, length;
+     int bits;
+
+     baseaddr = tlbi_aa64_range_get_base(env, value, two_ranges);
+     length = tlb_aa64_range_get_length(env, value);
+     bits = tlbbits_for_regime(env, one_idx, baseaddr);
+
+     if (synced) {
+         tlb_flush_range_by_mmuidx_all_cpus_synced(...);
+     } else {
+         tlb_flush_range_by_mmuidx(...);
+     }
+}
+
+static void tlbi_aa64_rvae1_write(...)
+{
+     do_rvae_write(env, value, vae1_tlbmask(env),
+                   tlb_force_broadcast(env));
+}
+
+static void tlbi_aa64_rvae1is_write(...)
+{
+     do_rvae_write(env, value, vae1_tlbmask(env), true);
+}
+
+static int vae2_tlbmask(CPUARMState *env)
+{
+     return (arm_is_secure_below_el3(env)
+             ? ARMMMUIdxBit_SE2 : ARMMMUIdxBit_E2);
+}
+
+static void tlbi_aa64_rvae2_write(...)
+{
+     do_rvae_write(env, value, vae2_tlbmask(env),
+                   tlb_force_broadcast(env));
+}
+
+static void tlbi_aa64_rvae2is_write(...)
+{
+     do_rvae_write(env, value, vae2_tlbmask(env), true);
+}
+
+static void tlbi_aa64_rvae3_write(...)
+{
+     do_rvae_write(env, value, ARMMMUIdxBit_SE3,
+                   tlb_force_broadcast(env));
+}
+
+static void tlbi_aa64_rvae3is_write(...)
+{
+     do_rvae_write(env, value, ARMMMUIdxBit_SE3, true);
+}
 
 
 r~

@@ -1,104 +1,102 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp3260040lfg;
-        Mon, 10 May 2021 12:11:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwHJd6KayAOk6h7gXklpzuP8pYij2GLspqM8GI3wuqRDD2Yo2tKVra6KfiONRWDLcC5xEw8
-X-Received: by 2002:a05:6e02:1aaa:: with SMTP id l10mr22905418ilv.29.1620673897479;
-        Mon, 10 May 2021 12:11:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620673897; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp3262016lfg;
+        Mon, 10 May 2021 12:14:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyymCuXV9eymtnbL/By5lvhZ9b7SY9dsDx+OIUpJvItk1QCJDaw8DUDQYbzVSEyKqQ1W9XL
+X-Received: by 2002:a92:ce01:: with SMTP id b1mr18334689ilo.124.1620674054646;
+        Mon, 10 May 2021 12:14:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620674054; cv=none;
         d=google.com; s=arc-20160816;
-        b=Q5GLS9kvWJFqj9NPgN5xWAPi3FkDKNx1zAEHtwlh3v4qx/dNJeBEO4BVoEY7uJ2ZBY
-         SXkPNSt2SB7UhHCQv7aGx73Y0qr93SMPqPPh8NrYgWCqjHJasjWhusWk7No9/Nxfl/6e
-         /yTz0/Dugk810Bfz4Gj6adCHQ1x0glrRBstFq/1sa8S7bGItdT0EhOm1I76zYtg9HxHY
-         fh+hjZTpWAhihixp45nVimsT6hQwyzyRxvKOxGIS2erEs9pvBMvbM7zHmRCe40nzf+Bk
-         p6+5blpG09UrHHPI7kuFYjm8JSHB/xjAqjYTI9oxP8d+6/dgeOoHAG1440+eROAbNWSt
-         MBRg==
+        b=OjkTJdgXpJ9MRBaw54vaGCxe4KLmvIKVST3iOQGK77Gv7bjx4P6AaEqkI5zuJDy3Uj
+         jV7/JlkTQcCisvtsPLR4qkKneaMdFFwhpRWMzACPwmpiT+pTgk9W990BzxDSmcdZBx2B
+         cmgKMMctmi4wz5gUB9tuqyq0RYvd7cTlSokQ0NW0LdYJBAS7ZMc7chvA0JsvxGSXy85S
+         FHfR1YGU8i01iAgxcShpz/MZffq4cpAtGDcjYVyWT4C+92Zo/tl6Jlh8oBsvAdn+iFmM
+         JxIJ7GnTJk71nqrHbpG3RKDyjSCzGPpslOCr3EKgkyNPjA6AUxze41fqdNKeI7xnw4AA
+         S++g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=jPFTO/Pkb0tpTTdt3nZWuAHHHRL642BlgSkp2Crh+Tw=;
-        b=nJQ3Yo0+VXfGras4n9AbdWR3qppuM6Dqu95IIi15AN0zmCHACf4J+ejR2EAywZpo4O
-         VHji9vTl62dm+ZH00OnpoLfUsgPTUb1c5kahUvYcMytopb/JhSGVTH4/X5jBEtHbI2Pr
-         UlgqzmkO2PzMGuINe+KnF6qvP/IdYAUs1DGU1T2gq3hZN3O0S01mYYJ9WVkyVNlnSeyI
-         JrhzIEx/Z6ZZDB6LDJQc3n7aB+WC7vo2cJrv5zPWCyNAXtNB2qvp6Nj7L15pBZ6bYyrC
-         p1O6E/vmY2/8mEw4CneC1wjxUNzB/YHrTNYOL1C3fVZB9vTTP+GaeySdBriOXHicZxQi
-         /YEw==
+        bh=IA8v2i4O86UnUvs9gQRCAZoRczka9Szx0p0QDCUmjDk=;
+        b=TPGZBinDfWHJ1E+FVidSx3Z4xIGLhJHPmXCQMBZXA0b894t+ExNfEsu86Pr+nK2L4r
+         SfqrjIDID9h4bRD4OlHxRw5PEemUryvitzO5gesDsQrN87z+sO936R5khFkbJYDnFVNo
+         SBZw89QROXokfaiEijxHAQDzlrcvbZpA/U+lH/8D45dlOaHZGMF9ohgXPwI1iJvehTds
+         bcXfT71ho89fZNnzI9d43BXjUCmWGqtBI1KGBMm/3RKBC7Bcu38Y8PwJIIz/wcjC6ia5
+         E4vSzCfAkBA3C3wkKnuyYAGR1CYKSUtpk5GV3d/ji2iIzyKDz/IGorvvNtDD6VmMYAeq
+         s5Ag==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=R7JhgUnc;
+       dkim=fail header.i=@linaro.org header.s=google header.b=QIny4iol;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l19si380590jak.75.2021.05.10.12.11.37
+        by mx.google.com with ESMTPS id y17si18116288jap.43.2021.05.10.12.14.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 10 May 2021 12:11:37 -0700 (PDT)
+        Mon, 10 May 2021 12:14:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=R7JhgUnc;
+       dkim=fail header.i=@linaro.org header.s=google header.b=QIny4iol;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35492 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42648 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lgBJY-0002ef-Ot
-	for alex.bennee@linaro.org; Mon, 10 May 2021 15:11:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37408)
+	id 1lgBM5-0007RV-Vm
+	for alex.bennee@linaro.org; Mon, 10 May 2021 15:14:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37294)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lgBH9-0000gf-L6
- for qemu-arm@nongnu.org; Mon, 10 May 2021 15:09:12 -0400
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335]:39796)
+ id 1lgBGw-0000Za-Ru
+ for qemu-arm@nongnu.org; Mon, 10 May 2021 15:08:55 -0400
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435]:36784)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lgBGx-00050R-OU
- for qemu-arm@nongnu.org; Mon, 10 May 2021 15:09:07 -0400
-Received: by mail-wm1-x335.google.com with SMTP id
- l18-20020a1ced120000b029014c1adff1edso11749675wmh.4
- for <qemu-arm@nongnu.org>; Mon, 10 May 2021 12:08:54 -0700 (PDT)
+ id 1lgBGt-0004wX-B9
+ for qemu-arm@nongnu.org; Mon, 10 May 2021 15:08:54 -0400
+Received: by mail-wr1-x435.google.com with SMTP id m9so17739126wrx.3
+ for <qemu-arm@nongnu.org>; Mon, 10 May 2021 12:08:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=jPFTO/Pkb0tpTTdt3nZWuAHHHRL642BlgSkp2Crh+Tw=;
- b=R7JhgUncdY4QoKikAyCvhBR9CiMM1jj5r3eSQCPudffcgFUN0xWwBrL/p6rOYusfk2
- 1WVuaWAjUdi7DO+NJ6pRTKQM+XNhgyt255iltsr5WRpTCily+WJ/61sRmK4yxmYpuMmg
- WQuMFYW6fq6VCH2Cwr3XaAgBu3CpG0R9KWbvgaqCeWiigvq9MKapuKn5I+0zz2MbstcI
- CMRe5XuEZ63xuKyNMecB5CvO/zwB/l2rYGmNPsWcRA7M/eDh+0GPwopYhCcI/goEhpZu
- ezt1UrKMW59SSd0XThzwDwYC9f7bnwixD3ObW20hA15VSPGmg78BTQjzTDVyK1NVqyF9
- JH/Q==
+ bh=IA8v2i4O86UnUvs9gQRCAZoRczka9Szx0p0QDCUmjDk=;
+ b=QIny4iolu9yKKYUTFrdgum0Gv26tKcGF4dPMa59+N/QGC1WPIJOfjMKMLbqX8Zt7Kw
+ shW6eIHUnSgzezRhr/ejiVXYAv6dNKCiYi0wzYzx31oSmCQ4jquzI+1/7oQwq1JgfPFN
+ CeF8dv3rXNE6Z/vTQaqAVYLfotKJ5V8zP2lZgshbJayss9E2JjWLka8f/pk+kf81Ka8k
+ ft9KGnOPHfrb0liIBk+/+SdQ2pccSmO0yQt5uqUgjbT7o04XOoVOJRNFrI7vCX7Sugob
+ NijMVUpiW/UAJtto4vZILd3cvE5ZvjTPpjIWIVQPZpI+1J6bGm8YtsEaxFdAYKixdJaW
+ X2tw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=jPFTO/Pkb0tpTTdt3nZWuAHHHRL642BlgSkp2Crh+Tw=;
- b=Z0lkohWeN01Zg7VJ/TUFuk38SeOu29lVK5cvIC1jKFlfr1BCs/wUMdqVVJh3EbGg44
- ft+9PM9jDhFIFjI5t/5wajDLwadMVChrwDbMhI7N81At8Uwbeg3ke0EoLt7ygEPqgz/m
- A+XmRnRmUmzYQNif06ZHzdHBoBHBfn0Wz5FnAdqjtp4L19QwQOhaXaMPw5ceGZOvuvIW
- 5wIps3Fj/aO9LUfS8vjfK352KRU4DbQRMIHuASvxugZHeCBvu6igqnkCL8EdEP1Of9Mt
- un+4FfMKyX6gL/+72La1FcAO9OoIT2B3/5rSV52XQ4GGFX0Rp1DOI1SdXg4c6kjj6nIU
- Pvwg==
-X-Gm-Message-State: AOAM531Hy02LNnoz+Y+1GRwAPs2Indmpyw7BK+zFUn4PwqHlJTzxFK+x
- k16jfpSSEPcqpDAnOQAFPaWHzbjqw5PjVw==
-X-Received: by 2002:a05:600c:4f93:: with SMTP id
- n19mr733428wmq.100.1620673734048; 
- Mon, 10 May 2021 12:08:54 -0700 (PDT)
+ bh=IA8v2i4O86UnUvs9gQRCAZoRczka9Szx0p0QDCUmjDk=;
+ b=XjoXIcXA0YR+NaNNpfQDiHGJ73NDQ24ZenzaSqTh7GbqaVsd2cbOmHbScvCGtU12YQ
+ OArrSZZ4Fmgs5+cXJzEfpd4fdWlbEth2GDajLK8JynBIRokM5UX/BUKD8kPfwaQGkJMY
+ fgtO0Uq/7lSD0qVoFvxu2QHVnNYhvxBI5iDk9ZPGsToTv7I9+QpV5B5L7iE13B2s0z/g
+ +DwHq5IjgG6QjExHF1XY+QfckvNQZ+HiHDiGaL105e7Us0D9iUYMdOWP299/3zi8pSU1
+ g56Ovh0X++VE5O2DpH0e40Uj2lkD9Ey5ubPf9ww/X5OXG/+G6gkVmtbEduBeB4Jreua1
+ npkg==
+X-Gm-Message-State: AOAM531LEjaxxXq3Ipfk+y2cJaYkHy44HeJQQKZhFrocHb350yFAsnKg
+ SAzsWbV3Sm1C3s4vbmkg4TiP0/V862C+1A==
+X-Received: by 2002:a5d:54c2:: with SMTP id x2mr31703446wrv.278.1620673728710; 
+ Mon, 10 May 2021 12:08:48 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id t23sm463892wmj.31.2021.05.10.12.08.53
+ by smtp.gmail.com with ESMTPSA id t23sm463892wmj.31.2021.05.10.12.08.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 10 May 2021 12:08:53 -0700 (PDT)
+ Mon, 10 May 2021 12:08:48 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 6/6] hw/arm: Model TCMs in the SSE-300, not the AN547
-Date: Mon, 10 May 2021 20:08:44 +0100
-Message-Id: <20210510190844.17799-7-peter.maydell@linaro.org>
+Subject: [PATCH 1/6] hw/arm/mps2-tz: Don't duplicate modelling of SRAM in AN524
+Date: Mon, 10 May 2021 20:08:39 +0100
+Message-Id: <20210510190844.17799-2-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210510190844.17799-1-peter.maydell@linaro.org>
 References: <20210510190844.17799-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x335.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x435.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -124,128 +122,48 @@ Cc: Kumar Gala <kumar.gala@linaro.org>,
  Devaraj Ranganna <devaraj.ranganna@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZFEQWLwCfPbE
+X-TUID: aUTbkOw1Aofy
 
-The SSE-300 has an ITCM at 0x0000_0000 and a DTCM at 0x2000_0000.
-Currently we model these in the AN547 board, but this is conceptually
-wrong, because they are a part of the SSE-300 itself. Move the
-modelling of the TCMs out of mps2-tz.c into sse300.c.
+The SRAM at 0x2000_0000 is part of the SSE-200 itself, and we model
+it that way in hw/arm/armsse.c (along with the associated MPCs).  We
+incorrectly also added an entry to the RAMInfo array for the AN524 in
+hw/arm/mps2-tz.c, which was pointless because the CPU would never see
+it.  Delete it.
 
-This has no guest-visible effects.
+The bug had no guest-visible effect because devices in the SSE-200
+take priority over those in the board model (armsse.c maps
+s->board_memory at priority -2).
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/arm/armsse.h |  2 ++
- hw/arm/armsse.c         | 19 +++++++++++++++++++
- hw/arm/mps2-tz.c        | 12 ------------
- 3 files changed, 21 insertions(+), 12 deletions(-)
+ hw/arm/mps2-tz.c | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
 
-diff --git a/include/hw/arm/armsse.h b/include/hw/arm/armsse.h
-index 36592be62c5..9648e7a4193 100644
---- a/include/hw/arm/armsse.h
-+++ b/include/hw/arm/armsse.h
-@@ -198,6 +198,8 @@ struct ARMSSE {
-     MemoryRegion alias2;
-     MemoryRegion alias3[SSE_MAX_CPUS];
-     MemoryRegion sram[MAX_SRAM_BANKS];
-+    MemoryRegion itcm;
-+    MemoryRegion dtcm;
- 
-     qemu_irq *exp_irqs[SSE_MAX_CPUS];
-     qemu_irq ppc0_irq;
-diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
-index be5aa1f113a..a1456cb0f42 100644
---- a/hw/arm/armsse.c
-+++ b/hw/arm/armsse.c
-@@ -13,6 +13,7 @@
- #include "qemu/log.h"
- #include "qemu/module.h"
- #include "qemu/bitops.h"
-+#include "qemu/units.h"
- #include "qapi/error.h"
- #include "trace.h"
- #include "hw/sysbus.h"
-@@ -70,6 +71,7 @@ struct ARMSSEInfo {
-     bool has_cpuid;
-     bool has_cpu_pwrctrl;
-     bool has_sse_counter;
-+    bool has_tcms;
-     Property *props;
-     const ARMSSEDeviceInfo *devinfo;
-     const bool *irq_is_common;
-@@ -516,6 +518,7 @@ static const ARMSSEInfo armsse_variants[] = {
-         .has_cpuid = false,
-         .has_cpu_pwrctrl = false,
-         .has_sse_counter = false,
-+        .has_tcms = false,
-         .props = iotkit_properties,
-         .devinfo = iotkit_devices,
-         .irq_is_common = sse200_irq_is_common,
-@@ -536,6 +539,7 @@ static const ARMSSEInfo armsse_variants[] = {
-         .has_cpuid = true,
-         .has_cpu_pwrctrl = false,
-         .has_sse_counter = false,
-+        .has_tcms = false,
-         .props = sse200_properties,
-         .devinfo = sse200_devices,
-         .irq_is_common = sse200_irq_is_common,
-@@ -556,6 +560,7 @@ static const ARMSSEInfo armsse_variants[] = {
-         .has_cpuid = true,
-         .has_cpu_pwrctrl = true,
-         .has_sse_counter = true,
-+        .has_tcms = true,
-         .props = sse300_properties,
-         .devinfo = sse300_devices,
-         .irq_is_common = sse300_irq_is_common,
-@@ -1214,6 +1219,20 @@ static void armsse_realize(DeviceState *dev, Error **errp)
-                                     sysbus_mmio_get_region(sbd, 1));
-     }
- 
-+    if (info->has_tcms) {
-+        /* The SSE-300 has an ITCM at 0x0000_0000 and a DTCM at 0x2000_0000 */
-+        memory_region_init_ram(&s->itcm, NULL, "sse300-itcm", 512 * KiB, errp);
-+        if (*errp) {
-+            return;
-+        }
-+        memory_region_init_ram(&s->dtcm, NULL, "sse300-dtcm", 512 * KiB, errp);
-+        if (*errp) {
-+            return;
-+        }
-+        memory_region_add_subregion(&s->container, 0x00000000, &s->itcm);
-+        memory_region_add_subregion(&s->container, 0x20000000, &s->dtcm);
-+    }
-+
-     /* Devices behind APB PPC0:
-      *   0x40000000: timer0
-      *   0x40001000: timer1
 diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
-index 8d921afec14..e23830f4b7d 100644
+index 70aa31a7f6c..77ff83acb06 100644
 --- a/hw/arm/mps2-tz.c
 +++ b/hw/arm/mps2-tz.c
-@@ -265,23 +265,11 @@ static const RAMInfo an524_raminfo[] = { {
- };
- 
- static const RAMInfo an547_raminfo[] = { {
--        .name = "itcm",
--        .base = 0x00000000,
--        .size = 512 * KiB,
--        .mpc = -1,
--        .mrindex = 0,
--    }, {
-         .name = "sram",
-         .base = 0x01000000,
-         .size = 2 * MiB,
+@@ -243,19 +243,13 @@ static const RAMInfo an524_raminfo[] = { {
+         .size = 512 * KiB,
          .mpc = 0,
-         .mrindex = 1,
+         .mrindex = 0,
 -    }, {
--        .name = "dtcm",
+-        .name = "sram",
 -        .base = 0x20000000,
--        .size = 4 * 128 * KiB,
+-        .size = 32 * 4 * KiB,
 -        .mpc = -1,
--        .mrindex = 2,
+-        .mrindex = 1,
      }, {
-         .name = "sram 2",
-         .base = 0x21000000,
+         /* We don't model QSPI flash yet; for now expose it as simple ROM */
+         .name = "QSPI",
+         .base = 0x28000000,
+         .size = 8 * MiB,
+         .mpc = 1,
+-        .mrindex = 2,
++        .mrindex = 1,
+         .flags = IS_ROM,
+     }, {
+         .name = "DDR",
 -- 
 2.20.1
 

@@ -1,167 +1,142 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp305233lfg;
-        Fri, 7 May 2021 04:52:44 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyUsZ3Al7xRQTZHRKpiOrDJE9UYvCho7ncOB9BCmXrcyzGo00d43P6WamDetptrHEkdjM1Z
-X-Received: by 2002:ac8:5781:: with SMTP id v1mr9182561qta.51.1620388364240;
-        Fri, 07 May 2021 04:52:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620388364; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp2656488lfg;
+        Sun, 9 May 2021 22:54:00 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwi8M9Ia3uJ2KH7tH0dV0n/raTmQrAjVuuDvgto1sUg1u8rhn0JLjwJq3J+G56Vl/Z53Y11
+X-Received: by 2002:aa7:c914:: with SMTP id b20mr28275218edt.199.1620626040128;
+        Sun, 09 May 2021 22:54:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620626040; cv=none;
         d=google.com; s=arc-20160816;
-        b=RZcxOBMHkZXDXpm6/RFDcq4ICKkyCY4jyfIHCMe+YFE0g3HOGXE5aLAU36kp4xnW2M
-         WdvwVUTDTUDojXn2ue3XeguDa0JcFcknRe1XHRVBy0gUISn3zkAkQyobRKJ3EyvpSzMH
-         blgP+dvepQGog1PYTzhvp3Wn3Dnu76YQlPXJzx3A9zQBow+7fmSDjNZ3ScjVjw+T8ARM
-         z0dA3mei1N+KueL40UBbu4002iTxPF7VUEglSdA7tGDcAce0RZkXdMG5coCfiebwRJ8R
-         FxNX7GjKdus+/0jDiNoUfcn2baxb0j689iCUJy4Q4ZVYRJxTt3jKhh6r3FhPLwqdxbXt
-         E6gg==
+        b=escdskHAcYwVcunVpEnXRqe9C/7fC4e2qizNEArf7mtM1Bqm46zlDETii5yBdejS9r
+         1lvkY/Q+61j12UGyKeOCfVwYfFlNvN1HH4CzH2W8EZx7v4d85W9fkBlF5L2GRgpQ1iTW
+         evPF0zszGIN4IHL+4OXpy6W1FydhwLJ2fhOmbUyKUZ4GwHx33dZdXjFUeg9tl4n6MgFf
+         3XA6jhBq0r7vOA3EpXarjHmEF3MGvBJE3qwFrpzqvNfiGS6Ht7bgVJHI6gTZ/EOhzGuN
+         owu5qj0tWbov0JQcbKSBZ94bgiCnhORVDih8YIl/eGVrZq3z7jve/XxjjFTN9x0yaxjg
+         Mfdg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=slbWWk2Y39cU/AdGIxISFDdichHsEEYEnOwaEDeM5zM=;
-        b=JKc7YDPPQtC2c1RtJqXetshT/enog6FzqovP8FOjbJ9i15mcdgHib05qJqkdevimsz
-         EVWju21dAf9JdCSHH9I2fiJLup7maYVUlE4dQqrhyIJPkrYMLIYDBTS5RPBMWc2DVbrG
-         3YhtAHRRzRhG6CmQWRTkA6OHx88a50K40maSlZnyU4jgGcxDrY1Vd7e3t5/HXp6LBMYq
-         eauBmA8lBA65L6KQDQ6xH2uangnkDlGwJ/8p8yPWRTO/PXldKeVB0A8wwus3z3Uhfucd
-         Qz+f6ZGOOH+0q0s2ObY5/ZjGLFOI9FkZW3/LljL8pOeEVz4c0WiCtmcfUfTVlUa+OFtB
-         P3+w==
+        h=list-id:precedence:in-reply-to:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=eUgO406bti9wzGMBsSu6lk1TuBnh0IzKEenOV4G/SXo=;
+        b=TVoJWnCumE+D/ax28karGJLL699vB6zvkQWdK+hvnOb1h6yp/ZT2emuuZRW8+dAnXa
+         UfueveyZIR6eFSeJRpGJU714kCF/cs//w7sQT4c3vC+qWxJhJ7GbjdZCLn1OXw4kj3xb
+         3XUOnYjCKX1x/8f5zNYryPun58B1U/BOs/23FLRuqbeU00bEMepDHbhaDhtLzomZs4pT
+         Gt0KOfN2nemV7uK1EEjGOlaw7HAOYsQeUAVMIQI/M30cJVg4pv7TugDFu6I51CRuMcj5
+         caQNUXA21ug+kr17YPvSFTqRK1BNpgnUpBds7iQ6WUiDrT2v2+QQpeQuwBVHsu1aX+W2
+         6wLA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=EcwDgSRF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j5si4399995qta.38.2021.05.07.04.52.44
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 07 May 2021 04:52:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=eaquEyrq;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
+        by mx.google.com with ESMTP id n24si12306106eds.571.2021.05.09.22.53.59;
+        Sun, 09 May 2021 22:54:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=EcwDgSRF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:37882 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lez2B-0004aq-De
-	for alex.bennee@linaro.org; Fri, 07 May 2021 07:52:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48246)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1lez22-0004aa-Mu; Fri, 07 May 2021 07:52:34 -0400
-Received: from mail-lj1-x233.google.com ([2a00:1450:4864:20::233]:34481)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1lez20-00055D-VA; Fri, 07 May 2021 07:52:34 -0400
-Received: by mail-lj1-x233.google.com with SMTP id p12so11210710ljg.1;
- Fri, 07 May 2021 04:52:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=slbWWk2Y39cU/AdGIxISFDdichHsEEYEnOwaEDeM5zM=;
- b=EcwDgSRFnxiQHmTsexe+BvKboWpauVbgrjJHq0t7ntIya+GIFLHu5ocW76P+JRHq3F
- csoueE7vz3SSpHWnU8C6YvaA1jReajhFQBqk9bKqKi7W3Bx0xaZuhga6Mzh7pYihIaTC
- y9j3brw3unehfuNAzmK6GGhNAlZqp/tDEYI0183oBBErvZUAifgThr7kW7I9dmn8rFkm
- 2J9mcTtKVaveq3qAI5XaMtOt/oC3fC7BDLc05kjtpLy6nt2ztEe/9hEkAB4axd+Lj3TD
- FPmOSm9lg+e1nwRwWn25jYE5LTlJMUzd5gdOdWqbzlXvc6wKV3eyM2E7yH+SI+c8kqIu
- wV0A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=slbWWk2Y39cU/AdGIxISFDdichHsEEYEnOwaEDeM5zM=;
- b=tag87mitoGW1gqYUPiQ/SvkYx5sayM9EBMKQd9Q/Prn6gOiP7Nm49OSMnofRTeP1kI
- mG5HQE9r94VSQICMkbUzfi5vD/6msjtP6J1oQYBk791nMdGZJR+ObgBmuVt0p/XlyFqz
- GRPQOwYXAbVHPWZlU5YLlKAVr0gUXRCMWSnep6h5LsMEAptkIsxxwzM5TLtEvumSWab0
- UII0WghS+/lfZVpKzBMl788/umYWgSEQxS2Hnvf+MVlX31jdZic1pVcf/vdp39gNSATh
- GKPxdZD3AWBkPqyU3/jbs5sK9YEqy2SqfOzmT2tqmpfLnKYenSnEPcgww4tIFjBRUc9l
- lJyw==
-X-Gm-Message-State: AOAM533fkJUMYdJTLB4hxsFH5nFbgWWKFgkpXdrTXVuurenTx61UKvLC
- J18JjQiNIa30Cgpm/xevRjA=
-X-Received: by 2002:a2e:1541:: with SMTP id 1mr7538370ljv.80.1620388350201;
- Fri, 07 May 2021 04:52:30 -0700 (PDT)
-Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
- by smtp.gmail.com with ESMTPSA id x207sm1349250lff.234.2021.05.07.04.52.29
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 07 May 2021 04:52:29 -0700 (PDT)
-Date: Fri, 7 May 2021 13:52:28 +0200
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: Guenter Roeck <linux@roeck-us.net>
-Subject: Re: [PATCH] hw/arm/xlnx: Fix PHY address for xilinx-zynq-a9
-Message-ID: <20210507115228.GF477672@toto>
-References: <20210504124140.1100346-1-linux@roeck-us.net>
+       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=eaquEyrq;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S230031AbhEJFzD (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Mon, 10 May 2021 01:55:03 -0400
+Received: from ozlabs.org ([203.11.71.1]:59731 "EHLO ozlabs.org"
+        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
+        id S229863AbhEJFzC (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Mon, 10 May 2021 01:55:02 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+        id 4FdqxK0Nfbz9vFt; Mon, 10 May 2021 15:53:56 +1000 (AEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+        d=gibson.dropbear.id.au; s=201602; t=1620626037;
+        bh=Dex4GpvbUQbXqChv0Q2g0NAer0UcJ6OSYIFxuMVyNHg=;
+        h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+        b=eaquEyrqb9fzb1vK0YO7vT9KISXpfThh7X1MEWp1UAdTmRWjn9Tz6nRTfiK5Od/2C
+         d6DKcxainnV7OOlUMdNpunT9KS10aq6euzLqVqePTx5P2KGXxC05Tk36i+6/Ix3pIC
+         x9VRmH9YjmgSgoErYMqgp7jppB/ga3n3HFmMxWyE=
+Date:   Mon, 10 May 2021 15:38:02 +1000
+From:   David Gibson <david@gibson.dropbear.id.au>
+To:     Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Cc:     qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
+        Paolo Bonzini <pbonzini@redhat.com>, qemu-ppc@nongnu.org,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+        Gerd Hoffmann <kraxel@redhat.com>, qemu-arm@nongnu.org,
+        Greg Kurz <groug@kaod.org>,
+        "open list:Overall KVM CPUs" <kvm@vger.kernel.org>
+Subject: Re: [PATCH v3 15/17] target/ppc/kvm: Replace alloca() by g_malloc()
+Message-ID: <YJjGuvsB5r5f7x/F@yekko>
+References: <20210507144315.1994337-1-philmd@redhat.com>
+ <20210507144315.1994337-16-philmd@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha256;
+        protocol="application/pgp-signature"; boundary="d0Yk/ttOaOG9s+2E"
 Content-Disposition: inline
-In-Reply-To: <20210504124140.1100346-1-linux@roeck-us.net>
-Received-SPF: pass client-ip=2a00:1450:4864:20::233;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-lj1-x233.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Bin Meng <bin.meng@windriver.com>, Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: d4MahC/wTU+a
-
-On Tue, May 04, 2021 at 05:41:40AM -0700, Guenter Roeck wrote:
-> Commit dfc388797cc4 ("hw/arm: xlnx: Set all boards' GEM 'phy-addr'
-> property value to 23") configured the PHY address for xilinx-zynq-a9
-> to 23. When trying to boot xilinx-zynq-a9 with zynq-zc702.dtb or
-> zynq-zc706.dtb, this results in the following error message when
-> trying to use the Ethernet interface.
-> 
-> macb e000b000.ethernet eth0: Could not attach PHY (-19)
-> 
-> The devicetree files for ZC702 and ZC706 configure PHY address 7. The
-> documentation for the ZC702 and ZC706 evaluation boards suggest that the
-> PHY address is 7, not 23. Other boards use PHY address 0, 1, 3, or 7.
-> I was unable to find a documentation or a devicetree file suggesting
-> or using PHY address 23. The Ethernet interface starts working with
-> zynq-zc702.dtb and zynq-zc706.dtb when setting the PHY address to 7,
-> so let's use it.
-> 
-> Cc: Bin Meng <bin.meng@windriver.com>
-> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
-
-Acked-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+In-Reply-To: <20210507144315.1994337-16-philmd@redhat.com>
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: 6IDPfI1TCmbW
 
 
+--d0Yk/ttOaOG9s+2E
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
+On Fri, May 07, 2021 at 04:43:13PM +0200, Philippe Mathieu-Daud=E9 wrote:
+> The ALLOCA(3) man-page mentions its "use is discouraged".
+>=20
+> Use autofree heap allocation instead, replacing it by a g_malloc call.
+>=20
+> Reviewed-by: Greg Kurz <groug@kaod.org>
+> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
+
+Acked-by: David Gibson <david@gibson.dropbear.id.au>
 
 > ---
->  hw/arm/xilinx_zynq.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
-> index 8db6cfd47f..5ac0294f9e 100644
-> --- a/hw/arm/xilinx_zynq.c
-> +++ b/hw/arm/xilinx_zynq.c
-> @@ -119,7 +119,7 @@ static void gem_init(NICInfo *nd, uint32_t base, qemu_irq irq)
->          qemu_check_nic_model(nd, TYPE_CADENCE_GEM);
->          qdev_set_nic_properties(dev, nd);
->      }
-> -    object_property_set_int(OBJECT(dev), "phy-addr", 23, &error_abort);
-> +    object_property_set_int(OBJECT(dev), "phy-addr", 7, &error_abort);
->      s = SYS_BUS_DEVICE(dev);
->      sysbus_realize_and_unref(s, &error_fatal);
->      sysbus_mmio_map(s, 0, base);
-> -- 
-> 2.25.1
-> 
+>  target/ppc/kvm.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
+> index 104a308abb5..23c4ea377e8 100644
+> --- a/target/ppc/kvm.c
+> +++ b/target/ppc/kvm.c
+> @@ -2698,11 +2698,11 @@ int kvmppc_save_htab(QEMUFile *f, int fd, size_t =
+bufsize, int64_t max_ns)
+>  int kvmppc_load_htab_chunk(QEMUFile *f, int fd, uint32_t index,
+>                             uint16_t n_valid, uint16_t n_invalid, Error *=
+*errp)
+>  {
+> -    struct kvm_get_htab_header *buf;
+> +    g_autofree struct kvm_get_htab_header *buf =3D NULL;
+>      size_t chunksize =3D sizeof(*buf) + n_valid * HASH_PTE_SIZE_64;
+>      ssize_t rc;
+> =20
+> -    buf =3D alloca(chunksize);
+> +    buf =3D g_malloc(chunksize);
+>      buf->index =3D index;
+>      buf->n_valid =3D n_valid;
+>      buf->n_invalid =3D n_invalid;
+
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--d0Yk/ttOaOG9s+2E
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAmCYxrgACgkQbDjKyiDZ
+s5ITGQ//cx1kIrgp8Q/IhYmEdRIUtMGVyBCKWYUh37rI50BsqykhIjP6v0MGQUVq
++vcEanUqTaYiCQxcwG4wj09Peh1Y1ldVGVshKKvfpyTRx7XNQieiUgrcPNH6Z+x3
+X948ERPAlwDCnFT6OUc+wzszjbdLbjiTa1YVBIAP6XPNN+GS4edSJSnmhWQ0owkl
+zSqzxYCR4HLB7ltUy7DLvifuDDM+NIl6eZBfgzy0oC7VBLSgSRGIUMthgJOyXgbh
+XqmzV39VdyTKLhK7b+XMULwTAL+Qxls9ARFjyiCoXR67pEzTE2wglNxDpifi9TPF
+3pV7xQbd5aWPQ7GR7P6sVtzz8091elcUxvaJ9te7Fwiqfj/Oe65vuDDNMnVKO3Rn
+elpNLSCI2uW9SA2AwRUt1nPeN46URQMzYd2wCyXALj8VJhmWwtUSTGfrYOjH0xCM
+M8p8qMf5U2Iutk3fAHTtaybmGY+JCC/34DgVUoh7zKcFyigzQoIp5avZ2/LkspQc
+9xJwLEVP/mHSet9CHMUwu6OFNAJNzGgeCh0y2DqVthQoUOQNhCOMn5Xg9McrmGAv
+5kKOz2Rh/Ibz2mBzxAMkqNOZuCBh0tV5JEgcXL/UZywVwqPG24jNXEL34JR2W75t
+mp7+J0fm280huxEfjQX/F2EfD1i0sWKoGMXriord4Ps+bmLEF7s=
+=9BxG
+-----END PGP SIGNATURE-----
+
+--d0Yk/ttOaOG9s+2E--

@@ -1,97 +1,95 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp3793042lfg;
-        Tue, 11 May 2021 02:17:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwn1zjn9xKWqwZUxrqE3EfA041/yILRCygor8wVk9UOlAg0n0fUrzDup+bYh1DU8sqGXWxg
-X-Received: by 2002:ab0:4343:: with SMTP id k61mr24446657uak.35.1620724657435;
-        Tue, 11 May 2021 02:17:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620724657; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp2870069lfg;
+        Mon, 10 May 2021 04:29:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz2NPu77ljs5cZDeJO3Fzz4TNvdWqnZ6PfWNLY99PPkwmenxnbLXpwiC7skH0s7I+FCYPPW
+X-Received: by 2002:a67:f60e:: with SMTP id k14mr19235463vso.48.1620646176204;
+        Mon, 10 May 2021 04:29:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620646176; cv=none;
         d=google.com; s=arc-20160816;
-        b=l+Rqt/F+dOnwRIvyyZQJjIJFkl04lt+TZT37OxJ0ITZLPbHoWtAN9OOVXLOw+mxasc
-         9qHh9D6eF5bPJZkBCAaO93Vbdc2XglUI4EJ8wN0iChCq1V2xF3RSjpY+0pHta4b4Rz+6
-         TldYVpaomc1uWiMrUjD0/RD8UxKqitNHez1xa03drpuNCq+SsIF24IFPqgCTQBuAkt1b
-         gQP2hUz46npBN+EdyIC3Jta73q51y4FLWIX4tN1SGNpJ1gA5v6ceElb1Rhaxo5t1zuFL
-         QwgRMrs/VZK4Y/WKFJDGWgAAkRRdV0+mgcFbX2oCEn3oWYJrb3A0DXbEeM667KfE1mRv
-         O2MQ==
+        b=aHa34e3eTB5zVusRbW5AwPRXcf5Xr/oR19xjySQK4Ydwje3PgnrGixsI7wzr4ArjUU
+         6MQQqnTeKmnKz90pGykpOO6FtsKCuqCmS4EY8lLHc3P7IB5wFOxjZDwk5qY6R0It3IVm
+         F/sARatu3CAIR6cZPoxUUS/hnVFPRV3gr19JG4WaAOMGdpppAT6apWM+Buh3QtHvOF2R
+         tnRWYUgeXcmFNwAojFNEMQc9f1vdoQtXfYS/8wxe2jxT2F4NZM9+iVL8v7t4GDRJL5aN
+         Y/xtVIvGDhes7JWn6pfyu6tt4jMv5HSJFGZhQmSleGEWO5dWh4qJrXT7qjNbgZZ9iHPY
+         NhLQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=l1bl/sxawYntukRgrlubRtqJpmBHcGwA0ZwD8+RoYc0=;
-        b=l2GgzLYfVQh98fZClFAwJDQZCmZMcc+mZ6KfV+rM94RZ+TAD0B9vZNzMvUh2bMUwvd
-         rca9GNkpDOBbGNuMdt705VTJL7aG7oAS0ioaBlnCLaHFevnQ/LlMmKmDFvkaXk0gB2SD
-         bl0Yb6erujyz0nbQmRm7g1pVsykzS4ZTkmk8/8UDw8Nvb2/A42/dlfs4EYWGYSYgYEYx
-         z/DzxWLI8UkE93NG0uibRlpLZa3rkrfxfOUAah+9ifjP2x672s7IP1SACuOETyObG9kE
-         pu5wwDrjvwt1NiIMTYK+sIiD/Vbu53UcKR16+BzU0AnL5YmuvaLTKiu/ccn9afuOnQnG
-         EuEQ==
+        bh=VmX3Sy/J15+xG8+KHEQPLUJrduTufuVYZC9fYZEzTeQ=;
+        b=Qto5MU+Lg7BwDG3IYJk7o3bKN19aeKN/dOhN2ZQHBEfSNaqB8VShySZec7uhGFEH6y
+         Xhnn9a3P9lvumA5Es126n/CyVbDvRP+B7+G09iYe6zrpGeHj1wG2seyHcTyGtZa9L2tr
+         9QP9UXspw5IJKcNzx+pSfSeSlbUBgoK2kCPwHDjw8Drpgo76h4+oGaY+cU9GWroD8KA/
+         +H4+OhWGTrK6+C9YMeD84Rb3bIRcNtO3jI5EiXAYW6/j7Ax71HLuwolBoVwFjsKWRLBa
+         wS68B8kKQTK2o7WiU++fHmYxj8SlXEbzuAXxC/+Vh/5WiXIEhk2ITW/sWzUtVBWJyAjn
+         zO/Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=dIXfMiHa;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=eaoNvTkr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v9si8486572vse.77.2021.05.11.02.17.37
+        by mx.google.com with ESMTPS id a13si5779325vsl.272.2021.05.10.04.29.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 May 2021 02:17:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 10 May 2021 04:29:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=dIXfMiHa;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=eaoNvTkr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42900 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53456 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lgOWG-0002h2-Lo
-	for alex.bennee@linaro.org; Tue, 11 May 2021 05:17:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39908)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lg46R-0004VG-JA
+	for alex.bennee@linaro.org; Mon, 10 May 2021 07:29:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54474)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lgNts-0006vl-7s
- for qemu-devel@nongnu.org; Tue, 11 May 2021 04:37:56 -0400
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a]:35427)
+ id 1lg455-0002Of-3D
+ for qemu-arm@nongnu.org; Mon, 10 May 2021 07:28:12 -0400
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534]:44592)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lgNtq-00065c-84
- for qemu-devel@nongnu.org; Tue, 11 May 2021 04:37:55 -0400
-Received: by mail-ej1-x62a.google.com with SMTP id m12so28569528eja.2
- for <qemu-devel@nongnu.org>; Tue, 11 May 2021 01:37:53 -0700 (PDT)
+ id 1lg453-0003PI-Cr
+ for qemu-arm@nongnu.org; Mon, 10 May 2021 07:28:10 -0400
+Received: by mail-ed1-x534.google.com with SMTP id bf4so18267419edb.11
+ for <qemu-arm@nongnu.org>; Mon, 10 May 2021 04:28:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=l1bl/sxawYntukRgrlubRtqJpmBHcGwA0ZwD8+RoYc0=;
- b=dIXfMiHadfnLTvnr6GOLlx23lTLT+yqEKFvHMZq+7MjNgo4mJxgMjMKdHwbSz03Odm
- HZ6+hl1NHG0Lh9kpXk7bDlzYi2pP0yVpBZrSxeBIfr10bryArCKPVeZ0OVoTLEcT+CUz
- c49kTr38NAU6IBembefHsfxSS4zp9XRaK/e1hfnmfcDHmsIw2vjozsIIfFMtN6Aq4Uzr
- hYNlCFLe2U0qkN7+fPmczoo6qWQ9O0R0BZC8SKQrL8C55Vs75Cv8osM1E/ulG2PdsvzB
- dlcY2wf9uxfdViBKVceFJIICQ/IUb5RFVycYLMB1YTqYkyQdq0Qe+kDrjHlgGXSswuCd
- 2wdA==
+ :cc; bh=VmX3Sy/J15+xG8+KHEQPLUJrduTufuVYZC9fYZEzTeQ=;
+ b=eaoNvTkr1AJZl6hfC1y+E7zDUXV4SsSU9RGaMvpVh/YmWgZ2DQ3STomhgB0oAQq79O
+ nw2crWeNpjrOjKAC3l/8F+27ZKyBmbDQ9pQoMfKdw8mSBkNkKJOjWkt19liaADtpsN6a
+ DFtc8+gm5jc4HuCk3t+qWo/BXE+vzmU517zO85WomqSDv5hLnSxn7o1HxcGZMbQ9PqaE
+ gJkWsqTZwnjSsBLGx4v767f/XLTEIBZtVWgEfaIdPU4lX4K9EF2+i2Nt3FroAivLNsUQ
+ WobKLg9KVkyBn59Fg+qjpjWblXKMSx+nWTagthKUQ2ZUinNEZ5RKjGUlmIHZg4v+yk2j
+ uw4Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=l1bl/sxawYntukRgrlubRtqJpmBHcGwA0ZwD8+RoYc0=;
- b=YQCcjHVMo/8LXcBWurt56sXdEKkcvXxasar6iZskSkZ65IMf30mwJHP0J70J/Wf5Dz
- tYK9eqlu8Zom1W0Kbsdqb9Cb3PaX7VWwusKD/brQ45EA9uacEjzXoV8No43RTduCaTzI
- 6U653nuVeJ3hjuW4pE0lnXNbgDPlAYph0ivn4MexwB+e3s9x3qjujT4bbrOmirymrAAA
- SKpJRvXlJ/6NDjv3tlmkeabr8iQWywiLmdDk5fQw3akXBZ85My9CdUUE1m4SRMsWAcMq
- ILMmAb7tLUXCJPDdnjV08Mm6vMlU4U7QmZDOhpEPKq/N+e5gR8NbUiStLtR+H88Zph3l
- O1Dw==
-X-Gm-Message-State: AOAM5329GeN+TSIARPbhPnj8uLXlqwDPiLZhCTLvY2/cYzP0/rOpRyZH
- gfQxLelGFMNUBSJh1loXIqy0wi1ddAwLdx2oCUZbOQ==
-X-Received: by 2002:a17:906:11cc:: with SMTP id
- o12mr30658795eja.85.1620722272332; 
- Tue, 11 May 2021 01:37:52 -0700 (PDT)
+ bh=VmX3Sy/J15+xG8+KHEQPLUJrduTufuVYZC9fYZEzTeQ=;
+ b=B/yeUMpzonaq64D43BOgbddX8bui8nGGRK/vcg6XU4lT2PWrqrE6sdrhDaOAdjZTjm
+ tDQtbeHvQapcMPXuNU7RMmlu0nsotph5+qyZauGzaiux12h1sv6N5q7RhTUGWrGwrE/A
+ TDNw5joqfj/spLaTPrfEfRxA4qHcogZ55E230SWs08X92cO8ORF+reMz80lVyzJnWSBt
+ xlCdsjznSRtzoMfXPDPDRbFS4x1vkBtGP/b2jOlgYUO8rPJZqa5ltIA7jY8xhJRrC69S
+ Kzn5Uu7iop5oyxWZKv8nL7GDlEX51GB/c64VHFc8NTaDKw8avu1Y0VlxetwlUkX7j+Do
+ TT0A==
+X-Gm-Message-State: AOAM530YZv1YZoQBhHOqtr0DkKCU2ZLZDMTRIDhUBJk5OzUkOtzdW1cX
+ zNXEjPU6pgx/iDTBmJ4uDc4pt/lruEI/aFjGfJZyww==
+X-Received: by 2002:a05:6402:3548:: with SMTP id
+ f8mr28541016edd.251.1620646087790; 
+ Mon, 10 May 2021 04:28:07 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210430202610.1136687-1-richard.henderson@linaro.org>
- <20210430202610.1136687-6-richard.henderson@linaro.org>
-In-Reply-To: <20210430202610.1136687-6-richard.henderson@linaro.org>
+References: <20210504124140.1100346-1-linux@roeck-us.net>
+In-Reply-To: <20210504124140.1100346-1-linux@roeck-us.net>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 11 May 2021 09:36:39 +0100
-Message-ID: <CAFEAcA8wrDyEMTvHR97BinJZm+CozffMWkefAmywU6t2fBbLjQ@mail.gmail.com>
-Subject: Re: [PATCH v6 05/82] target/arm: Split out saturating/rounding shifts
- from neon
-To: Richard Henderson <richard.henderson@linaro.org>
+Date: Mon, 10 May 2021 12:26:56 +0100
+Message-ID: <CAFEAcA-AVo4YNx1kj5YZct0M2kz4_P+fcdCMTbncV+DFwYYxsA@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm/xlnx: Fix PHY address for xilinx-zynq-a9
+To: Guenter Roeck <linux@roeck-us.net>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::534;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x534.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -100,208 +98,66 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: E+PzaLIye52a
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Bin Meng <bin.meng@windriver.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: CMlq0+9F3mMB
 
-On Fri, 30 Apr 2021 at 21:30, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+On Tue, 4 May 2021 at 13:41, Guenter Roeck <linux@roeck-us.net> wrote:
 >
-> Split these operations out into a header that can be shared
-> between neon and sve.  The "sat" pointer acts both as a boolean
-> for control of saturating behavior and controls the difference
-> in behavior between neon and sve -- QC bit or no QC bit.
+> Commit dfc388797cc4 ("hw/arm: xlnx: Set all boards' GEM 'phy-addr'
+> property value to 23") configured the PHY address for xilinx-zynq-a9
+> to 23. When trying to boot xilinx-zynq-a9 with zynq-zc702.dtb or
+> zynq-zc706.dtb, this results in the following error message when
+> trying to use the Ethernet interface.
 >
-> Widen the shift operand in the new helpers, as the SVE2 insns treat
-> the whole input element as significant.  For the neon uses, truncate
-> the shift to int8_t while passing the parameter.
+> macb e000b000.ethernet eth0: Could not attach PHY (-19)
 >
-> Implement right-shift rounding as
+> The devicetree files for ZC702 and ZC706 configure PHY address 7. The
+> documentation for the ZC702 and ZC706 evaluation boards suggest that the
+> PHY address is 7, not 23. Other boards use PHY address 0, 1, 3, or 7.
+> I was unable to find a documentation or a devicetree file suggesting
+> or using PHY address 23. The Ethernet interface starts working with
+> zynq-zc702.dtb and zynq-zc706.dtb when setting the PHY address to 7,
+> so let's use it.
 >
->     tmp = src >> (shift - 1);
->     dst = (tmp >> 1) + (tmp & 1);
->
-> This is the same number of instructions as the current
->
->     tmp = 1 << (shift - 1);
->     dst = (src + tmp) >> shift;
->
-> without any possibility of intermediate overflow.
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> Cc: Bin Meng <bin.meng@windriver.com>
+> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
 > ---
-> v2: Widen the shift operand (laurent desnouges)
-> ---
->  target/arm/vec_internal.h | 138 +++++++++++
->  target/arm/neon_helper.c  | 507 +++++++-------------------------------
->  2 files changed, 221 insertions(+), 424 deletions(-)
+>  hw/arm/xilinx_zynq.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >
-> diff --git a/target/arm/vec_internal.h b/target/arm/vec_internal.h
-> index e3eb3e7a6b..0102547a10 100644
-> --- a/target/arm/vec_internal.h
-> +++ b/target/arm/vec_internal.h
-> @@ -30,4 +30,142 @@ static inline void clear_tail(void *vd, uintptr_t opr_sz, uintptr_t max_sz)
+> diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
+> index 8db6cfd47f..5ac0294f9e 100644
+> --- a/hw/arm/xilinx_zynq.c
+> +++ b/hw/arm/xilinx_zynq.c
+> @@ -119,7 +119,7 @@ static void gem_init(NICInfo *nd, uint32_t base, qemu_irq irq)
+>          qemu_check_nic_model(nd, TYPE_CADENCE_GEM);
+>          qdev_set_nic_properties(dev, nd);
 >      }
->  }
->
-> +static inline int32_t do_sqrshl_bhs(int32_t src, int32_t shift, int bits,
-> +                                    bool round, uint32_t *sat)
-> +{
-> +    if (shift <= -bits) {
-> +        /* Rounding the sign bit always produces 0. */
-> +        if (round) {
-> +            return 0;
-> +        }
-> +        return src >> 31;
-> +    } else if (shift < 0) {
-> +        if (round) {
-> +            src >>= -shift - 1;
-> +            return (src >> 1) + (src & 1);
-> +        }
-> +        return src >> -shift;
-> +    } else if (shift < bits) {
-> +        int32_t val = src << shift;
-> +        if (bits == 32) {
-> +            if (!sat || val >> shift == src) {
-> +                return val;
-> +            }
-> +        } else {
-> +            int32_t extval = sextract32(val, 0, bits);
-> +            if (!sat || val == extval) {
-> +                return extval;
-> +            }
-> +        }
-> +    } else if (!sat || src == 0) {
-> +        return 0;
-> +    }
-> +
-> +    *sat = 1;
-> +    return (1u << (bits - 1)) - (src >= 0);
-> +}
-> +
-> +static inline uint32_t do_uqrshl_bhs(uint32_t src, int32_t shift, int bits,
-> +                                     bool round, uint32_t *sat)
-> +{
-> +    if (shift <= -(bits + round)) {
-> +        return 0;
-> +    } else if (shift < 0) {
-> +        if (round) {
-> +            src >>= -shift - 1;
-> +            return (src >> 1) + (src & 1);
-> +        }
-> +        return src >> -shift;
-> +    } else if (shift < bits) {
-> +        uint32_t val = src << shift;
-> +        if (bits == 32) {
-> +            if (!sat || val >> shift == src) {
-> +                return val;
-> +            }
-> +        } else {
-> +            uint32_t extval = extract32(val, 0, bits);
-> +            if (!sat || val == extval) {
-> +                return extval;
-> +            }
-> +        }
-> +    } else if (!sat || src == 0) {
-> +        return 0;
-> +    }
-> +
-> +    *sat = 1;
-> +    return MAKE_64BIT_MASK(0, bits);
-> +}
-> +
-> +static inline int32_t do_suqrshl_bhs(int32_t src, int32_t shift, int bits,
-> +                                     bool round, uint32_t *sat)
-> +{
-> +    if (src < 0) {
-> +        *sat = 1;
+> -    object_property_set_int(OBJECT(dev), "phy-addr", 23, &error_abort);
+> +    object_property_set_int(OBJECT(dev), "phy-addr", 7, &error_abort);
+>      s = SYS_BUS_DEVICE(dev);
+>      sysbus_realize_and_unref(s, &error_fatal);
+>      sysbus_mmio_map(s, 0, base);
+> --
+> 2.25.1
 
-Shouldn't this check whether sat is NULL ?
 
-> +        return 0;
-> +    }
-> +    return do_uqrshl_bhs(src, shift, bits, round, sat);
-> +}
-> +
-> +static inline int64_t do_sqrshl_d(int64_t src, int64_t shift,
-> +                                  bool round, uint32_t *sat)
-> +{
-> +    if (shift <= -64) {
-> +        /* Rounding the sign bit always produces 0. */
-> +        if (round) {
-> +            return 0;
-> +        }
-> +        return src >> 63;
-> +    } else if (shift < 0) {
-> +        if (round) {
-> +            src >>= -shift - 1;
-> +            return (src >> 1) + (src & 1);
-> +        }
-> +        return src >> -shift;
-> +    } else if (shift < 64) {
-> +        int64_t val = src << shift;
-> +        if (!sat || val >> shift == src) {
-> +            return val;
-> +        }
-> +    } else if (!sat || src == 0) {
-> +        return 0;
-> +    }
-> +
-> +    *sat = 1;
-> +    return src < 0 ? INT64_MIN : INT64_MAX;
-> +}
-> +
-> +static inline uint64_t do_uqrshl_d(uint64_t src, int64_t shift,
-> +                                   bool round, uint32_t *sat)
-> +{
-> +    if (shift <= -(64 + round)) {
-> +        return 0;
-> +    } else if (shift < 0) {
-> +        if (round) {
-> +            src >>= -shift - 1;
-> +            return (src >> 1) + (src & 1);
-> +        }
-> +        return src >> -shift;
-> +    } else if (shift < 64) {
-> +        uint64_t val = src << shift;
-> +        if (!sat || val >> shift == src) {
-> +            return val;
-> +        }
-> +    } else if (!sat || src == 0) {
-> +        return 0;
-> +    }
-> +
-> +    *sat = 1;
-> +    return UINT64_MAX;
-> +}
-> +
-> +static inline int64_t do_suqrshl_d(int64_t src, int64_t shift,
-> +                                   bool round, uint32_t *sat)
-> +{
-> +    if (src < 0) {
-> +        *sat = 1;
 
-Missing NULL check again.
+Applied to target-arm.next, thanks.
 
-> +        return 0;
-> +    }
-> +    return do_uqrshl_d(src, shift, round, sat);
-> +}
-
-Otherwise
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-thanks
 -- PMM

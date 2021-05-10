@@ -1,115 +1,101 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp575409lfg;
-        Fri, 7 May 2021 10:15:16 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzI6MFMTh5ZAN8hUImVpL7OaGLF8VLDYlgPC53T9OmUo87h1wyQC9YWGIh2XK490a+iTFcz
-X-Received: by 2002:a17:906:f1cf:: with SMTP id gx15mr11057268ejb.435.1620407716042;
-        Fri, 07 May 2021 10:15:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620407716; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp2660030lfg;
+        Sun, 9 May 2021 22:59:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwHUw8GYu6xkOd+Efta7Aekpiw2gMOF5RQ1xFPdV34Fy8fkW9nzeqIiHpLSsJwAm1qBxaNk
+X-Received: by 2002:a05:6000:1b8a:: with SMTP id r10mr5972077wru.296.1620626391348;
+        Sun, 09 May 2021 22:59:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620626391; cv=none;
         d=google.com; s=arc-20160816;
-        b=OF+Ug6pC6aOnsnWCpexS0fwd+X2Rhc2D88Tjvvam5hCeiOzrCO1ANJatBB/cJA65iN
-         u3zW6KWvCmIsw+AtdYuSOJPKXlMezQ2wMAF1CsVr3ccCtGbztuR1CQBlGVgH2omX7i3z
-         6TuZL32xUgLkCacuEU/VGKLJQh9gmNr5WH7xTkGUlYv/509iPSk270GlYxs0nVHwTjGo
-         aWHojgoqLOmMkaeOVadZnZNsYaDU0N9iwE+34BaIEsBNXawOgaU5FhlXYM5Pi62hyVo6
-         /kK4DeEVGxRWy2YjUmXnRwqb5uFdAz0DtQem1TvQE1QEcYxJt8PCxjNypONTdduG1c0a
-         z6dg==
+        b=i4vdR4iMvUYDAMT1acotoHy76HXcSY9Jqjhzs6DfSMMpk+g2awfbMENzVePw2j7UOw
+         hXNMwWc4+qNMiOQmOz6+bgCJRoux7qtBx7/Fg2AafJTsD7GePKtsbkZuv+Q72Cv978AI
+         Kz42Td3FziGHS26qs2ZYPG3nxJVqihwGBw2F0XumClp19djW5edGi+kai+1zscTX20Dt
+         R15YXh9h52JNE1E3ckd4fXujZsDc1vxlLjzl0S6Gb9S5CBvg8z8RqCd4xWMOWVoWY8Dj
+         S8Teo/jJHb61t+SHz7F9K0bG1WyCrEruO3dQ76ep1nT+b27Tlfbc+6r3FGczJHO6oAzw
+         0sZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=uTyDKyOPg1mkUq53+v02Ub+Jg9GMqLoeGEEmOXgo2O4=;
-        b=KXzc07zjPKnDPiniv63+wOHkMn1rsEF6yjm0QXVFc055wLatKXLsTRU7v/bPZtuqyR
-         yfKp0mLyQVXRP1XSYZNcb5c4FS2z5l3JYEONrCzayqqzfN+M9Da2vmNVyBN7+I/LcZF7
-         TNAu8gNYODtXqKFCxdLARaHHe+/2gHQ3wpenHpNcJ62b/mDQFEcyGufuGqAveN6Wv5HA
-         Vfp1XU2l3pWWoyE103mepu/b2vw/IBWfAgLY5+TgCNCrCYGKwZE8Prz8iBiax2YL1l2r
-         5RSVZAfIuo96bqwArJBdkiNLKTOwc/qtufZxt9oVqcUB76KJfSEdAddhX2CuuC7k5PgM
-         BcoQ==
+         :user-agent:date:message-id:from:references:cc:to:subject;
+        bh=XmeMG1YFdCHs03dSMH0G4ib5+VOnqOnnQz4ItToS9V0=;
+        b=s82hLGrV0zUHAGobQEq1QQcb/TSLZw7a/QvfbYGrkzLGbBuPF8j2mg/bWfoiAb2Kb9
+         BfKuVEe5eApWoeZkONDXfFmGm8zQgbTdnOtn8c0ebT9p4ZV8gWBVmGggTKZe9gc7Gxsv
+         +oacyCwGqOLlrT3gfgp8Pvws3G8mwFUZptxJESAezU6+idByst6O/TYcNVEryQP9oZ+h
+         YtPB5pZwvwWJMy0eiFJ8vo3FJKyN0L/HKPFRgKq3ok/PsPBmNx6ijXsaf4s3kVjBe6w3
+         0Zwlr7OBg043JAORAOkfL2Kw6aq+B9tXHfnWiXZenOF/Glut87STzw5+VRRgW80UFe0S
+         eJYg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DNlD1MpA;
-       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
-        by mx.google.com with ESMTPS id n10si7114970ejk.556.2021.05.07.10.15.14
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 07 May 2021 10:15:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
+       spf=pass (google.com: domain of clg@kaod.org designates 178.32.125.2 as permitted sender) smtp.mailfrom=clg@kaod.org
+Return-Path: <clg@kaod.org>
+Received: from smtpout1.mo529.mail-out.ovh.net (smtpout1.mo529.mail-out.ovh.net. [178.32.125.2])
+        by mx.google.com with ESMTPS id l15si18072649wrm.513.2021.05.09.22.59.51
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 09 May 2021 22:59:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of clg@kaod.org designates 178.32.125.2 as permitted sender) client-ip=178.32.125.2;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DNlD1MpA;
-       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1620407713;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=uTyDKyOPg1mkUq53+v02Ub+Jg9GMqLoeGEEmOXgo2O4=;
-	b=DNlD1MpAIVkxiQDFuji6Lho2yS2U3pJKlWnBMg+CBZ0LcaDypgfIaqv3NoxNVwmAOhAhlB
-	BgXr86W+AutoGDgeQUADDJlX3cruzL6QB31wmuAL/lplThLgu/0t2lLxC2UvPWkxMzyair
-	Y+KUHDOvka32PygdxM8c7fY0jcmxGF8=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-341-Vk1OjCOJOLGa4uRwK__SzA-1; Fri, 07 May 2021 13:15:10 -0400
-X-MC-Unique: Vk1OjCOJOLGa4uRwK__SzA-1
-Received: by mail-wr1-f70.google.com with SMTP id i102-20020adf90ef0000b029010dfcfc46c0so3876543wri.1
-        for <alex.bennee@linaro.org>; Fri, 07 May 2021 10:15:09 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=uTyDKyOPg1mkUq53+v02Ub+Jg9GMqLoeGEEmOXgo2O4=;
-        b=e95Q3zpiimmeqbO1XZT2FQLqgXunSHW3dK+kiJz95dc9/mhVWt60h8xCo8eM3Ao1cn
-         FnRvSLwr5YZsati2ATsy3qfYhvemmnZZjaXho8bX3sLvscrPvqA2c+m0NQdSVq9RYzkw
-         ZdcSXEP8rehLwiyckrbCRh7jcP0iDFqZO+IBEr4g2690W3Dcw8iSWWAbFhR8hkztgEsq
-         V5snVyDuZbfhm/4FLYjt9IHGj1MXFs86s0iZxSH05gdqkzqjFrAC5iXRMJWRTXOwOxjY
-         gHzRSc0juLr+5psF5+5LW/w9MRUYJwoqSYnHl/4QH5pRneKQGie7j5X6RHogaOnvnAEI
-         OzIg==
-X-Gm-Message-State: AOAM533P4KaVsEkr7Xy0t82CLkyDFXxNyzyCQxLSrBUW+XqkVMjwGxhj
-	thN/9Wn9mFSP4ZHZlLExqA8P5Ds5VmTaiFv2ZVQD7iUksk8DsH4HMGyDNR7/m2NL4Dq2tsUab8+
-	2AuT14t3TZlMCeDTq
-X-Received: by 2002:a05:600c:4f49:: with SMTP id m9mr17638990wmq.78.1620407708958;
-        Fri, 07 May 2021 10:15:08 -0700 (PDT)
-X-Received: by 2002:a05:600c:4f49:: with SMTP id m9mr17638973wmq.78.1620407708837;
-        Fri, 07 May 2021 10:15:08 -0700 (PDT)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.19] (astrasbourg-652-1-219-60.w90-40.abo.wanadoo.fr. [90.40.114.60])
-        by smtp.gmail.com with ESMTPSA id a9sm7539023wmj.1.2021.05.07.10.15.08
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 07 May 2021 10:15:08 -0700 (PDT)
-Subject: Re: [NOTFORMERGE PATCH v3 17/17] configure: libSLiRP buildsys kludge
-To: qemu-devel@nongnu.org
-Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-ppc@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Gerd Hoffmann <kraxel@redhat.com>, qemu-arm@nongnu.org
+       spf=pass (google.com: domain of clg@kaod.org designates 178.32.125.2 as permitted sender) smtp.mailfrom=clg@kaod.org
+Received: from mxplan5.mail.ovh.net (unknown [10.108.4.132])
+	by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 3AA6AA36E862;
+	Mon, 10 May 2021 07:59:49 +0200 (CEST)
+Received: from kaod.org (37.59.142.102) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2242.4; Mon, 10 May
+ 2021 07:59:41 +0200
+Authentication-Results: garm.ovh; auth=pass (GARM-102R0046650abbe-2ab8-44b3-bb76-d83df9c50929,
+                    EC2BFC7B1AED95346F6AF274786A4EFCDB415F6D) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 90.89.73.13
+Subject: Re: [PATCH v3 14/17] hw/misc/pca9552: Replace g_newa() by g_new()
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+	<qemu-devel@nongnu.org>
+CC: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
+	<qemu-ppc@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, Gerd Hoffmann
+	<kraxel@redhat.com>, <qemu-arm@nongnu.org>, Andrew Jeffery <andrew@aj.id.au>,
+	Joel Stanley <joel@jms.id.au>
 References: <20210507144315.1994337-1-philmd@redhat.com>
- <20210507144315.1994337-18-philmd@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <781a5288-f1f7-de29-cdc0-b71fe38e7468@redhat.com>
-Date: Fri, 7 May 2021 19:15:07 +0200
+ <20210507144315.1994337-15-philmd@redhat.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <9dc562b9-ba4d-0832-951a-5040d9d540db@kaod.org>
+Date: Mon, 10 May 2021 07:59:37 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <20210507144315.1994337-18-philmd@redhat.com>
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <20210507144315.1994337-15-philmd@redhat.com>
+Content-Type: text/plain; charset="utf-8"
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: xU2DlSFHw5nh
+X-Originating-IP: [37.59.142.102]
+X-ClientProxiedBy: DAG5EX1.mxp5.local (172.16.2.41) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: ca5f8019-3b94-4721-b6bc-9cee1c76e1ad
+X-Ovh-Tracer-Id: 14687645762622688245
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduledrvdegjedgleelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepjeekudeuudevleegudeugeekleffveeludejteffiedvledvgfekueefudehheefnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutddvnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehphhhilhhmugesrhgvughhrghtrdgtohhm
+X-TUID: HBk52pItjGg9
 
 On 5/7/21 4:43 PM, Philippe Mathieu-Daudé wrote:
-> Only enable -Walloca when libSLiRP is not built.
+> The ALLOCA(3) man-page mentions its "use is discouraged".
+> 
+> Use autofree heap allocation instead, replacing g_newa() by g_new().
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+
+
 > ---
->  configure | 10 +++++++++-
->  1 file changed, 9 insertions(+), 1 deletion(-)
-
-> +# Kludge pending an alloca() call removed from libSLiRP, see:
-> +# https://lists.freedesktop.org/archives/slirp/2021-May/000150.html
-
-FYI it has already been merged, thanks to Marc-André :)
+>  hw/misc/pca9552.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/misc/pca9552.c b/hw/misc/pca9552.c
+> index b7686e27d7f..facf103cbfb 100644
+> --- a/hw/misc/pca9552.c
+> +++ b/hw/misc/pca9552.c
+> @@ -71,7 +71,7 @@ static void pca955x_display_pins_status(PCA955xState *s,
+>          return;
+>      }
+>      if (trace_event_get_state_backends(TRACE_PCA955X_GPIO_STATUS)) {
+> -        char *buf = g_newa(char, k->pin_count + 1);
+> +        g_autofree char *buf = g_new(char, k->pin_count + 1);
+>  
+>          for (i = 0; i < k->pin_count; i++) {
+>              if (extract32(pins_status, i, 1)) {
+> 

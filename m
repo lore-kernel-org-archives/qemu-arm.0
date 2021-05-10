@@ -1,127 +1,222 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp1407604lfg;
-        Thu, 6 May 2021 09:00:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyynmGLssfka+TCS6T3q71+RJ6b7ZQrmGXUOP4wWCeAyHYD07gwYrCYZrWJl9fLUt9b8aIl
-X-Received: by 2002:a63:e1d:: with SMTP id d29mr5150519pgl.175.1620316802938;
-        Thu, 06 May 2021 09:00:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620316802; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp3050987lfg;
+        Mon, 10 May 2021 08:00:37 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwIM8/fSNTovBoBAsa3gG1J1qcFEO+mVAqDgchCvJ4O6Ui37ueU54frntDc4EIz2TyGkt4U
+X-Received: by 2002:a05:6638:134c:: with SMTP id u12mr22210751jad.5.1620658837670;
+        Mon, 10 May 2021 08:00:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620658837; cv=none;
         d=google.com; s=arc-20160816;
-        b=yCYRoNhhBwnbmfp/efLmxrwQmbdNH3yYzSLMsCjQhaN4IdekwW+/iPoMXToraWRX6+
-         dP54PE039jbRJomHI84MQwZZksrua4dCOmpYG6i3SP+PRFMuYb2w01lTMN95kjWj53fo
-         OFZo2sJ2Eb7W6+5cJseORfcPRgxOlDcLXKpX9e/M7F5edHEQk5a7KDUvkFC8FXPCsSDg
-         Jj1OWgpnex1Wcq5rwlbIK1FB+NUJXj6AH432WZcsiA3hU26OylI7uYVeYOtwFr52WI7p
-         Vs96iPiM1PP6ZDtY6h0ZpxD540AVmU/GO0vTMW7e3fcvgfnVwu2Py4Ui1Fqn/AwIL2Pw
-         iQTA==
+        b=x4r2I+25DdxfoBOYhmF6v/lOZM4f8hgq/jFEdCsIXEpYZj4wMq0ZW/JyGjMS+D26my
+         Ajig1oKbtaTRLOJB+JevyNVor6bN9spi2EFqse85DKpXon+Mh8pLG/BLKO3nemRe5D6D
+         kllBrtXcOc/pUfyX1cjC/NLmyCyDXCdbmpxfU091OLQGaOcumpFaQ6hdMZGULDgffq6l
+         3Wxv4BnZLL0LKq6C+APKCXdO8s1lukUsmaq07AmVr03m62FwArjD5AqxcucnAI38hu0D
+         Y0wJimwO0vYkh4mLh+6H2FsxvrGicjNOIjkM8A1Bom7fU3SzaDTT1TPKF+WUnKc9gQea
+         jO5A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:dkim-signature;
-        bh=jjP2tVL8/5fMTkJrtwgNcBDcwQmnwEx/OAkZcrhoFzw=;
-        b=sXR5RSDGtevdc6QmUnMn2+cDPXy1BahiYh0vvbsnWULgpvrYQvupu82rj9KtSU+lLm
-         Mph3eidN4H4zxudQ4AL7DMACzy7AFa/UmcjNBzIV1E1FKJeFfYkw7cPgQcXWFwIR3Jys
-         Hh/vjOWT21IOuGuIlcAPtz5QLWK3157tqLPmarC3owzHW62lkJAOTBPp9EHMU4CryZWN
-         miGFCOVttAca+KWkJW27tOfCvwgVoahYjQUtbEy//TQqazNdSOnzIMbDfuSJ71jvYNlf
-         O9QnHSDblDUbyD48dENO9kpszn6FNiT3BFAAF1ovexqI8nWlkwCNOZRU2g3G/Df2v0H+
-         ROig==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=K/FNff2LAuvSwfSN8kNH1SIRafomx8yjd+eXfYkv1a0=;
+        b=MnmGxeMRpjETyBJvgHiLyGRamnqINjD0QsUQR7p5OJV5+j4M/CfhO9kjU7M0QdzvKQ
+         Eggt9au6VBAg1ojJYapOt87IT1dv0LzaDO45GLQLBiIggt9bCW7HdK8YVoB1X+GMBQeD
+         ztTypet95lhOogqJtCdmfKEDrehyAUE3lauf16mX3xgginGsGcAauSr3IobcA/EcJ+4g
+         akOjpJ/5yFeqDrlgtXnLi27h5iRDgioNJXQFyH44J644rQUYFfHaojyuauZHba54TWuB
+         CO7RtWgFh+qp8SS82u2ENSvzEZEtxKeQPMP1tV2L9vHyXof3uAw2p+oXrz+bu2PN267s
+         LdqQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iYjiLvZX;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=y4O8BTsX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id c5si3650490pfl.247.2021.05.06.09.00.02;
-        Thu, 06 May 2021 09:00:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id s8si9222358ilt.116.2021.05.10.08.00.37
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 10 May 2021 08:00:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iYjiLvZX;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=y4O8BTsX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S235434AbhEFQA7 (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Thu, 6 May 2021 12:00:59 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:39842 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S235482AbhEFQA4 (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 6 May 2021 12:00:56 -0400
-Received: from mail-ed1-x52b.google.com (mail-ed1-x52b.google.com [IPv6:2a00:1450:4864:20::52b])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 3B60DC06138A
-        for <kvm@vger.kernel.org>; Thu,  6 May 2021 08:59:57 -0700 (PDT)
-Received: by mail-ed1-x52b.google.com with SMTP id di13so6788011edb.2
-        for <kvm@vger.kernel.org>; Thu, 06 May 2021 08:59:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=jjP2tVL8/5fMTkJrtwgNcBDcwQmnwEx/OAkZcrhoFzw=;
-        b=iYjiLvZXn8FAfX8V7OtJx1T2eMni4SkjZFTpMgVdft9/9vTih/6KIUqaLSUVKVH2lB
-         rdX96HR+vI+jPQTu0Bg8k4top/RzfLhFCp51C3D3vZwJ3Lx2gN6PMhXB7HNfXmwj2/MS
-         kI5J/U4wGxqiwnePvRvhxDFK7DGjKaKGCQPGY1RxoiMLUcXBImS5YkpyXi+nD4wRRMIG
-         Vd3pxC2/58fTEwi4VMe/tmPN/gEMKkjjO98VLjjlTuAj5j/qH8TyyuQoeRW6QPM2hpq0
-         9h2avyy3pdpoxpVeIAZiywio5CJDgbn931Rl8r2vY2aO2dFJJLuDU5a50WV5oGdB6EFF
-         G12A==
+Received: from localhost ([::1]:40424 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lg7Of-0001HE-0q
+	for alex.bennee@linaro.org; Mon, 10 May 2021 11:00:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44392)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lg7OT-0001Dz-Vs
+ for qemu-arm@nongnu.org; Mon, 10 May 2021 11:00:26 -0400
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:41682)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lg7OO-0004u1-Ms
+ for qemu-arm@nongnu.org; Mon, 10 May 2021 11:00:25 -0400
+Received: by mail-wr1-x42c.google.com with SMTP id d11so16960111wrw.8
+ for <qemu-arm@nongnu.org>; Mon, 10 May 2021 08:00:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=K/FNff2LAuvSwfSN8kNH1SIRafomx8yjd+eXfYkv1a0=;
+ b=y4O8BTsXHQwap60+p6j11NiScwk73IhhFX+F0vVFLwqQzU06QwwIo8+4Tf+idppOdn
+ 0sOj6JG3HDeQ6DY5XnnIf19X2v1uQBUaY3Q7xi+3RtnrjtBIMEADRcqPRVqUOFsL6mhS
+ s0qxjuXPNoD9vbSRzOOHH4u+iJQtAB6hctqHlg6vWQc3h22O+ZGvY+j02l5zPJbzk/wE
+ oyz1boXrW553tjIQcDMzHCUU5tTg6iC9Xi1bjYreJC9yr4PuqeSiJpVTHzXXF2jlKO7r
+ hMJNdKapK+FexCcwTxA8vZaaoZxsa1kD52l8JcgRZXgsdGtzxoEw0+nk5tzXuQ220QsN
+ Kk9A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=jjP2tVL8/5fMTkJrtwgNcBDcwQmnwEx/OAkZcrhoFzw=;
-        b=RXOqZ2O/Reafot2OnhvUrSXXYXD0Ixiy3p5TMhM31SK+lKAaieRHXMMLMVXK+M81Fb
-         hAf9BBaHh/4lkujSmUI627uKJgGPvAbdRmnhqNGDlty+TVgGLEk1K5PIT5lF2ZLde7e3
-         0rG/4EY3xuG8Q/Tljy0OPWgHlKttG28Bj2Si4ka9XqbaezOBDiayZr9Zr6+fYoxpjy/o
-         edTU7gTyJRE3QifUiYIJ+WuHvJPTh4F8B8GFT3hYCIV3zLlBd4RzmmruP2en4qDTA8Ep
-         Pns7w+WhDms5QLd5U7dZgVwn/crIogRhW7N3dT6inirxVbyLwdD+JCLKg8DpvlPOxkRd
-         64lg==
-X-Gm-Message-State: AOAM533oTDA1qiETlZpYksxiUjuuIB+1ApE1WY12pTJj1d0IKSx9gA7S
-        jfymFshjuci5zELh5SjEyP1gI7YG79AE+PCWGVYpCI0KeJw=
-X-Received: by 2002:a05:6402:12d3:: with SMTP id k19mr6095158edx.52.1620316795885;
- Thu, 06 May 2021 08:59:55 -0700 (PDT)
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=K/FNff2LAuvSwfSN8kNH1SIRafomx8yjd+eXfYkv1a0=;
+ b=tt7Y1CfWDq5yUzF+tZAknPH8njJPWmz+kcVYuufUdjm4Z0WqKP3jG8agNuhM3+xBQv
+ J2jUznSEscHLMpUzhbX6MhneG3vwzRt8zwGTr5vXS2fFWVuquE/obMQ8pdR5D/RTK6qH
+ chCxyJq3BrAGDDJnfARd9TTYUj8pj+sdjHLDc9LHK3LrDDzybvZ/zlJ8OzRwJM3Sh3J/
+ 25Lo5hCoZ7ExZovJeB1KEnYKc9xCLuI3TuQ1h3RpK5/odEYxEbxnT5dyfbu+6velWnm6
+ 4G3z+tut+jzY/9GblCWPT0IOsMiVvCS04JQBGWy7uMQ788hGevPHGWFAwZvrR0k5Ysth
+ B/5A==
+X-Gm-Message-State: AOAM5305l++A8X5JoYNGq2a9aK4jYC5pUNp5xfjTkJbO3asNSG7ZGMwr
+ u5td2jSoEXIbraEhc5/NC4DrXTxU8pZfzw==
+X-Received: by 2002:adf:fa4c:: with SMTP id y12mr31165040wrr.393.1620658819088; 
+ Mon, 10 May 2021 08:00:19 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id p10sm22499619wrr.58.2021.05.10.08.00.18
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 10 May 2021 08:00:18 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH] hw/intc/arm_gicv3_cpuif: Fix EOIR write access check logic
+Date: Mon, 10 May 2021 16:00:16 +0100
+Message-Id: <20210510150016.24910-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-References: <20210506133758.1749233-1-philmd@redhat.com> <20210506133758.1749233-5-philmd@redhat.com>
- <CANCZdfoJWEbPFvZ0605riUfnpVRAeC6Feem5_ahC7FUfO71-AA@mail.gmail.com>
- <39f12704-af5c-2e4f-d872-a860d9a870d7@redhat.com> <CANCZdfqW0XTa18F+JxuSnhpictWxVJUsu87c=yAwMp6YT60FMg@mail.gmail.com>
-In-Reply-To: <CANCZdfqW0XTa18F+JxuSnhpictWxVJUsu87c=yAwMp6YT60FMg@mail.gmail.com>
-From:   Peter Maydell <peter.maydell@linaro.org>
-Date:   Thu, 6 May 2021 16:58:47 +0100
-Message-ID: <CAFEAcA-V1DWhsFYuh-y5F2_PbO50KFoCm-XPrcMEYN1V2WHDfA@mail.gmail.com>
-Subject: Re: [PATCH v2 4/9] bsd-user/syscall: Replace alloca() by g_new()
-To:     Warner Losh <imp@bsdimp.com>
-Cc:     Eric Blake <eblake@redhat.com>, kvm-devel <kvm@vger.kernel.org>,
-        Kyle Evans <kevans@freebsd.org>,
-        QEMU Developers <qemu-devel@nongnu.org>,
-        qemu-arm <qemu-arm@nongnu.org>, qemu-ppc <qemu-ppc@nongnu.org>,
-        Gerd Hoffmann <kraxel@redhat.com>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: xC8Cnz+TLHIM
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Chan Kim <ckim@etri.re.kr>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: aijB98kmgREV
 
-On Thu, 6 May 2021 at 15:57, Warner Losh <imp@bsdimp.com> wrote:
-> malloc, on the other hand, involves taking out a number of mutexes
-> and similar things to obtain the memory, which may not necessarily
-> be safe in all the contexts system calls can be called from. System
-> calls are, typically, async safe and can be called from signal handlers.
-> alloca() is async safe, while malloc() is not. So changing the calls
-> from alloca to malloc makes calls to system calls in signal handlers
-> unsafe and potentially introducing buggy behavior as a result.
+In icc_eoir_write() we assume that we can identify the group of the
+IRQ being completed based purely on which register is being written
+to and the current CPU state, and that "CPU state matches group
+indicated by register" is the only necessary access check.
 
-malloc() should definitely be fine in this context. The syscall
-emulation is called after the cpu_loop() in bsd-user has called
-cpu_exec(). cpu_exec() calls into the JIT, which will malloc
-all over the place if it needs to in the course of JITting things.
+This isn't correct: if the CPU is not in Secure state then EOIR1 will
+only complete Group 1 NS IRQs, but if the CPU is in EL3 it can
+complete both Group 1 S and Group 1 NS IRQs.  (The pseudocode
+ICC_EOIR1_EL1 makes this clear.) We were also missing the logic to
+prevent EOIR0 writes completing G0 IRQs when they should not.
 
-This code should never be being called from a (host) signal handler.
-In upstream the signal handling code for bsd-user appears to
-be missing entirely. For linux-user when we take a host signal
-we merely arrange for the guest to take a guest signal, we
-don't try to execute guest code directly from the host handler.
+Rearrange the logic to first identify the group of the current
+highest priority interrupt and then look at whether we should
+complete it or ignore the access based on which register was accessed
+and the state of the CPU.  The resulting behavioural change is:
+ * EL3 can now complete G1NS interrupts
+ * G0 interrupt completion is now ignored if the GIC
+   and the CPU have the security extension enabled and
+   the CPU is not secure
 
-(There are some pretty hairy races in emulated signal handling:
-we did a big overhaul of the linux-user code in that area a
-while back. If your bsd-user code doesn't have the 'safe_syscall'
-stuff it probably needs it. But that's more about races between
-"guest code wants to execute a syscall" and "incoming signal"
-where we could fail to exit EINTR from an emulated syscall if
-the signal arrives in a bad window.)
+Reported-by: Chan Kim <ckim@etri.re.kr>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/intc/arm_gicv3_cpuif.c | 48 ++++++++++++++++++++++++++-------------
+ 1 file changed, 32 insertions(+), 16 deletions(-)
 
-thanks
--- PMM
+diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
+index 43ef1d7a840..81f94c7f4ad 100644
+--- a/hw/intc/arm_gicv3_cpuif.c
++++ b/hw/intc/arm_gicv3_cpuif.c
+@@ -1307,27 +1307,16 @@ static void icc_eoir_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     GICv3CPUState *cs = icc_cs_from_env(env);
+     int irq = value & 0xffffff;
+     int grp;
++    bool is_eoir0 = ri->crm == 8;
+ 
+-    if (icv_access(env, ri->crm == 8 ? HCR_FMO : HCR_IMO)) {
++    if (icv_access(env, is_eoir0 ? HCR_FMO : HCR_IMO)) {
+         icv_eoir_write(env, ri, value);
+         return;
+     }
+ 
+-    trace_gicv3_icc_eoir_write(ri->crm == 8 ? 0 : 1,
++    trace_gicv3_icc_eoir_write(is_eoir0 ? 0 : 1,
+                                gicv3_redist_affid(cs), value);
+ 
+-    if (ri->crm == 8) {
+-        /* EOIR0 */
+-        grp = GICV3_G0;
+-    } else {
+-        /* EOIR1 */
+-        if (arm_is_secure(env)) {
+-            grp = GICV3_G1;
+-        } else {
+-            grp = GICV3_G1NS;
+-        }
+-    }
+-
+     if (irq >= cs->gic->num_irq) {
+         /* This handles two cases:
+          * 1. If software writes the ID of a spurious interrupt [ie 1020-1023]
+@@ -1340,8 +1329,35 @@ static void icc_eoir_write(CPUARMState *env, const ARMCPRegInfo *ri,
+         return;
+     }
+ 
+-    if (icc_highest_active_group(cs) != grp) {
+-        return;
++    grp = icc_highest_active_group(cs);
++    switch (grp) {
++    case GICV3_G0:
++        if (!is_eoir0) {
++            return;
++        }
++        if (!(cs->gic->gicd_ctlr & GICD_CTLR_DS)
++            && arm_feature(env, ARM_FEATURE_EL3) && !arm_is_secure(env)) {
++            return;
++        }
++        break;
++    case GICV3_G1:
++        if (is_eoir0) {
++            return;
++        }
++        if (!arm_is_secure(env)) {
++            return;
++        }
++        break;
++    case GICV3_G1NS:
++        if (is_eoir0) {
++            return;
++        }
++        if (!arm_is_el3_or_mon(env) && arm_is_secure(env)) {
++            return;
++        }
++        break;
++    default:
++        g_assert_not_reached();
+     }
+ 
+     icc_drop_prio(cs, grp);
+-- 
+2.20.1
+

@@ -1,121 +1,104 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp4116113lfg;
-        Tue, 11 May 2021 08:55:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJync44GGLukwTYC1ib6pj/RZXVNZEodSAkj3zYbOMrzCaK/pgPBx2OwkhvndoQoNXxR9PnZ
-X-Received: by 2002:aca:edd1:: with SMTP id l200mr4242465oih.154.1620748502752;
-        Tue, 11 May 2021 08:55:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620748502; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp4120295lfg;
+        Tue, 11 May 2021 08:59:57 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwmRwirkprlXMllw+gTbsu321mr1OYBIzGOzCofyW0FgO4k8WtyxT/Tx6Zq9c2VUnKtD+1e
+X-Received: by 2002:a4a:abc8:: with SMTP id o8mr24046697oon.77.1620748797689;
+        Tue, 11 May 2021 08:59:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620748797; cv=none;
         d=google.com; s=arc-20160816;
-        b=Qc5HhFf9/wnovCHsyHFd9Zfv26CnXRPhkrdU+mCUOlDvgmWLS6XPp9vgGCXaynn09d
-         SPGTJ0WqGvLOHR4i2IR5p49X1QBFZnLTBKhloE/7CVHHwT8Y9AL8doel+UE4Ok/nWGio
-         shPU1DVmGM2+YX0zNLuzIZFiQ+4FCkgfoLKggoH+DIWpSCLxNp81ObMOm0aHmNk34Egd
-         IMcRQaCjIKndW+5fgWY2ToGYc3Je6Mt4IBzFGEtYRGxZfGu1cPwL5NzOckQZmyIXNNY8
-         AtXL+fHtVZUcCoetHsCdwuExnxm/kkeBKStWzXswHmNbSaotuu5zoRzhQoBwK2uASsDZ
-         a5Lw==
+        b=a1sPkJUemDlUpRhs6Q9tBm+RAY5qXvDKN97eCWP2Z6i5iLD81s5gucYMb2BkM6SYIf
+         qdiq0ZQgiWl/HnP8Xr07WdrigbqN2+b8BzpqGuWA4SK2iQxhKz1g0D+gjshxnhruSioE
+         fLmf+JkV3afVNbp3HdMkXwJIXTbpiBjck1AibReNySxB6iAebnypa7jSGkMplCIqplr9
+         v+bS2O4gnZCHrkSmbgiGIsUU1xnto9aqF1Z97fgmz+o87akAKOUwNgMp+xNedtdQfsN7
+         LEJbiXXpF1gcXMIOnE43MGJMiVKyGbg7TEdfvI9OyqGTy0xpnGJud9O03hRT5A/qDUEj
+         ZHxA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=ISzcTyeqpFPJKCkmwsme759uUOl966TzGtwslLb0Jt0=;
-        b=TEDSUQ/OMMhUO8ntjNjWiSxiNWi1JcuJuX89sYR/I383dbZ27zXLz9LDNxb0MaLaxL
-         xozNjv4JkHtzctjTa2o3MwYJym/7DWuQgu1ZdPOFclNANs0WlfgnxlQWj4wdohcDqNvM
-         4a8valafPgqm47hhT1GFs2Oozj4wYo961PkDkSv6SSBFdCz9CVskWyjlyg8nygQ0bawU
-         UTvnzJdijEvnCDPRDPjvK4RDipPCwu1Hy7rZwFoqOs5Onq7xAASbysMT32PE1bX9s66u
-         n74WCC2K0bsfQdQ1MsfAEuVGELysNFTPB30FUBjcwANPLNI+hJAr5uw6pbbx4FWgnv/D
-         raNw==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=m6Bl5/tCat11GY67rSTxhzoWDxtPd1qovms4W2Fq9Dg=;
+        b=UXiDU0YStzgUVMhEjT+OLgtAclLnlfNK4F0eCZXLPTevONuEcZS7w7n+sh5s0LexIA
+         JkLKLd07ZtI8yMxg9jBCpfq6VkoNy9XwP7lA4ufhpjz50zsziI4fJXQHl8uDtUOPg99G
+         cduszA9fpAmT3DQB5KN9eBG9Ab5vIbIM2uanckkgeAjTIGgURCcc6IFEpOZ7tFRtFH96
+         edZ0SU25Dd0h/45En94dWqzJSgqf4qDrfIDABPnhOH4x9hBtri+KE/lyHZgjyq6PHeJ8
+         zbX/qrsLYtqj1unVWZoYlSzUkwH8Vv7UnJCP7zGGMPUD5oDVHkVgm9ZIhoI1M/Tes24p
+         sdmQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ffLVTTpd;
+       dkim=fail header.i=@linaro.org header.s=google header.b=fVAl6+nw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o4si14291750oih.221.2021.05.11.08.55.02
+        by mx.google.com with ESMTPS id w23si17718306otk.130.2021.05.11.08.59.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 May 2021 08:55:02 -0700 (PDT)
+        Tue, 11 May 2021 08:59:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ffLVTTpd;
+       dkim=fail header.i=@linaro.org header.s=google header.b=fVAl6+nw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60892 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:44504 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lgUir-0005d1-TN
-	for alex.bennee@linaro.org; Tue, 11 May 2021 11:55:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38152)
+	id 1lgUnc-0005bp-Up
+	for alex.bennee@linaro.org; Tue, 11 May 2021 11:59:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39164)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lgUiF-0005EN-Cg
- for qemu-arm@nongnu.org; Tue, 11 May 2021 11:54:23 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:46345)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lgUi9-0001TX-Me
- for qemu-arm@nongnu.org; Tue, 11 May 2021 11:54:23 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1620748456;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ISzcTyeqpFPJKCkmwsme759uUOl966TzGtwslLb0Jt0=;
- b=ffLVTTpdrIELUqc9VGJGw5QojycqkFTpcfW94U7piPTRJ/dLrsZDc8eJe4xIDI6VuuHqk0
- JP4wHmQgYGYbHAhAj28WPY96fJvsNfcACQQc+kY5SrVLjC/S5/62+SrYk8wDRZ2e7ioIA2
- L2r/FuUnE67608v0iIUKPEckHDUO8Z8=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-303-MvqVTvj_PamzhigcpyBgWQ-1; Tue, 11 May 2021 11:54:14 -0400
-X-MC-Unique: MvqVTvj_PamzhigcpyBgWQ-1
-Received: by mail-wm1-f70.google.com with SMTP id
- b128-20020a1c1b860000b029015b52bdb65aso42986wmb.5
- for <qemu-arm@nongnu.org>; Tue, 11 May 2021 08:54:14 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lgUmS-0003L1-JZ
+ for qemu-arm@nongnu.org; Tue, 11 May 2021 11:58:44 -0400
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531]:43604)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lgUmN-0003V7-Vq
+ for qemu-arm@nongnu.org; Tue, 11 May 2021 11:58:44 -0400
+Received: by mail-ed1-x531.google.com with SMTP id s6so23454481edu.10
+ for <qemu-arm@nongnu.org>; Tue, 11 May 2021 08:58:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=m6Bl5/tCat11GY67rSTxhzoWDxtPd1qovms4W2Fq9Dg=;
+ b=fVAl6+nwotzd/A1Y6etjaW/OSowRGP1JJ+fbNIG3KxRW8HxDrHzeZnt0nVJPFspbBb
+ OHPLqbOVsHv/xSj+jwNJmzVuhZgnVqIRLwGBArdyI6WKmHJeN+r8KZ9Q20cMkgS/hQBT
+ g4frAfxZie2pAo4Dn60uRcbr69rxqfuThdVWhh0uqgCI62TPJbOc39c4XIaZ8KucbfTY
+ c4uk598ZkhYSke4+1MhRkOlOPUwLazSdhdnrdYyWUYsBZUEYFPdu/+5yPbiq9Uq2usMw
+ +PNpVRs9O3QfhxjJNE3jPXOAfw4UWm7WX6wEFU6DzVNhg8KykNZceHYzkNIcfaejHE/s
+ KfPg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=ISzcTyeqpFPJKCkmwsme759uUOl966TzGtwslLb0Jt0=;
- b=M5J96Dnpy7p674VdKwSHZS8yjx+poiHE49ZJ7by7Rlx/bUgQ2Wo53HIVXEWvjhcPIb
- VHhrl2jXfm6vmvPE0aQbabkAsF08Rb7qtpzZBaceF3QzT/4aV0OdRaVKZBMIAOaSm740
- 9cOr7olv+NEAO0VMCGE+zBjeZQWdowqxH/UAUauo5HD5jCZ2bts+YoeGotBTaGRCc13h
- 6h8n2+aZm0d99Wi0M7g40FlMgrHffH482oQ9j3Qo8zjU/kiLbRmrPIn6WoyAN7UcIqba
- m9L47MfH6/q9IrLrtAvciExR7AJqG7Zi4B4kFKTDy495HVEmbFfzA/kYyM6hjnjDT6lJ
- QxbQ==
-X-Gm-Message-State: AOAM531WPid3Nu2FDPIF1o667PMcDj4jCBoXLN/61tnQGNov+SEg61iX
- nVQbRcUSM1yKO27VMpPI2rRIjeNArrHZI9XnWAWmtU8yP9mFwFiAVgS/Ln/A22cFrP+zHZTWuJq
- dT1eIBTnEN4FQ
-X-Received: by 2002:a1c:ed0a:: with SMTP id l10mr33147472wmh.151.1620748453260; 
- Tue, 11 May 2021 08:54:13 -0700 (PDT)
-X-Received: by 2002:a1c:ed0a:: with SMTP id l10mr33147436wmh.151.1620748453036; 
- Tue, 11 May 2021 08:54:13 -0700 (PDT)
-Received: from localhost.localdomain (39.red-81-40-121.staticip.rima-tde.net.
- [81.40.121.39])
- by smtp.gmail.com with ESMTPSA id n20sm20232505wmk.12.2021.05.11.08.54.11
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 11 May 2021 08:54:12 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [RFC PATCH 1/5] hw/mem/nvdimm: Use Kconfig 'imply' instead of
- 'depends on'
-Date: Tue, 11 May 2021 17:53:50 +0200
-Message-Id: <20210511155354.3069141-2-philmd@redhat.com>
-X-Mailer: git-send-email 2.26.3
-In-Reply-To: <20210511155354.3069141-1-philmd@redhat.com>
-References: <20210511155354.3069141-1-philmd@redhat.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=m6Bl5/tCat11GY67rSTxhzoWDxtPd1qovms4W2Fq9Dg=;
+ b=iDhaw2hVTAQuhsKXLvJD/ozzdX+YO9FcKPSJCYaEHbDE2bELTsQfoq+u4mTlNQecdd
+ 4PDJrYtWyJK2ygd3PleTLAYRv2WH+8KTlQSQnuRgarKdTILcpE86quHsCIOlrzOz7nbG
+ t+9Y2DL+oP1pYzM0ZivfwqnWkmmpTq7WGAdI7FRTTS4ujWWtTP8LWTfv5Q+9ovSrjhN7
+ kxndqLAUVntjGaBhbyXSbVftcZf1qXgUzVKoSybwSWD+gf6mB2mcwEA05BuCJAu40hL6
+ 4rIG0XPtXt2uj+tE3Y1l2iD2xH5qsXnNNCzutFSBduRv/lf1iQCfwbYZn0ukbB6qgjZ2
+ Hr7w==
+X-Gm-Message-State: AOAM530A47PgCt0/WjD2j4Ns1dafj8ZBQ5irUcdjykfaRilyQOD1cj1C
+ iIGfNPEwohGs734HGL8K/fKFYxZX6CtKJUR3nw8BHbqv1Kw=
+X-Received: by 2002:a05:6402:3548:: with SMTP id
+ f8mr36814015edd.251.1620748718521; 
+ Tue, 11 May 2021 08:58:38 -0700 (PDT)
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -34
-X-Spam_score: -3.5
-X-Spam_bar: ---
-X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.699,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20210430202610.1136687-1-richard.henderson@linaro.org>
+ <20210430202610.1136687-22-richard.henderson@linaro.org>
+In-Reply-To: <20210430202610.1136687-22-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 11 May 2021 16:57:26 +0100
+Message-ID: <CAFEAcA9wT3hJh4PGO3BRHbSf+kST71DWT4_2g0Y_UTLHoe-EYQ@mail.gmail.com>
+Subject: Re: [PATCH v6 21/82] target/arm: Implement SVE2 bitwise shift right
+ and accumulate
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::531;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x531.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -128,95 +111,24 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Alexey Kardashevskiy <aik@ozlabs.ru>,
- Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
- Igor Mammedov <imammedo@redhat.com>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>, qemu-ppc@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9+in3G8UXBHb
+X-TUID: c8L1Y10Bduem
 
-Per the kconfig.rst:
+On Fri, 30 Apr 2021 at 21:53, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/sve.decode      |  8 ++++++++
+>  target/arm/translate-sve.c | 34 ++++++++++++++++++++++++++++++++++
+>  2 files changed, 42 insertions(+)
 
-  A device should be listed [...] ``imply`` if (depending on
-  the QEMU command line) the board may or  may not be started
-  without it.
 
-This is the case with the NVDIMM device, so use the 'imply'
-weak reverse dependency to select the symbol.
+Applied, thanks.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
----
- default-configs/devices/ppc64-softmmu.mak | 1 -
- hw/arm/Kconfig                            | 1 +
- hw/i386/Kconfig                           | 1 +
- hw/mem/Kconfig                            | 2 --
- hw/ppc/Kconfig                            | 1 +
- 5 files changed, 3 insertions(+), 3 deletions(-)
+Please update the changelog at https://wiki.qemu.org/ChangeLog/6.1
+for any user-visible changes.
 
-diff --git a/default-configs/devices/ppc64-softmmu.mak b/default-configs/devices/ppc64-softmmu.mak
-index ae0841fa3a1..cca52665d90 100644
---- a/default-configs/devices/ppc64-softmmu.mak
-+++ b/default-configs/devices/ppc64-softmmu.mak
-@@ -8,4 +8,3 @@ CONFIG_POWERNV=y
- 
- # For pSeries
- CONFIG_PSERIES=y
--CONFIG_NVDIMM=y
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index b887f6a5b17..67723d9ea6a 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -6,6 +6,7 @@ config ARM_VIRT
-     imply VFIO_PLATFORM
-     imply VFIO_XGMAC
-     imply TPM_TIS_SYSBUS
-+    imply NVDIMM
-     select ARM_GIC
-     select ACPI
-     select ARM_SMMUV3
-diff --git a/hw/i386/Kconfig b/hw/i386/Kconfig
-index 7f91f30877f..66838fa397b 100644
---- a/hw/i386/Kconfig
-+++ b/hw/i386/Kconfig
-@@ -23,6 +23,7 @@ config PC
-     imply TPM_TIS_ISA
-     imply VGA_PCI
-     imply VIRTIO_VGA
-+    imply NVDIMM
-     select FDC
-     select I8259
-     select I8254
-diff --git a/hw/mem/Kconfig b/hw/mem/Kconfig
-index a0ef2cf648e..8b19fdc49f1 100644
---- a/hw/mem/Kconfig
-+++ b/hw/mem/Kconfig
-@@ -7,6 +7,4 @@ config MEM_DEVICE
- 
- config NVDIMM
-     bool
--    default y
--    depends on (PC || PSERIES || ARM_VIRT)
-     select MEM_DEVICE
-diff --git a/hw/ppc/Kconfig b/hw/ppc/Kconfig
-index e51e0e5e5ac..66e0b15d9ef 100644
---- a/hw/ppc/Kconfig
-+++ b/hw/ppc/Kconfig
-@@ -3,6 +3,7 @@ config PSERIES
-     imply PCI_DEVICES
-     imply TEST_DEVICES
-     imply VIRTIO_VGA
-+    imply NVDIMM
-     select DIMM
-     select PCI
-     select SPAPR_VSCSI
--- 
-2.26.3
-
+-- PMM

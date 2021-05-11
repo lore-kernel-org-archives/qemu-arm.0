@@ -1,95 +1,102 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp4216452lfg;
-        Tue, 11 May 2021 10:51:19 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwr8DZ8KCcyaxnM3P7wlluUk22HI2DxCzTjC3qgtFJNQCUmTVBKVTBnEOTak2FfOm8K283D
-X-Received: by 2002:a65:5c4a:: with SMTP id v10mr31715585pgr.73.1620755479525;
-        Tue, 11 May 2021 10:51:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620755479; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp4304068lfg;
+        Tue, 11 May 2021 12:53:17 -0700 (PDT)
+X-Received: by 2002:aca:3ec6:: with SMTP id l189mr23151866oia.8.1620762797547;
+        Tue, 11 May 2021 12:53:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620762797; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z4l6e5CfZYX7DOiroVMUIaKJGef7AlbE8K2PBWVBFEBpCpT708dy3uu/e1fb6VNeYR
-         3f4aWkICu7hSuYMoU+BSsX/loWLm8qqh7C9weHDtooNMhHh+VChwXPeLfFGXicQxSMkn
-         MvPpzOq9RzC/vG6ABTzHv9fw3Vbgdsays63hDKQ96JclVi7SDpFUMISm4Lo9dQrfxkKf
-         ziv2J4kV11fgjfrkJJL+Et3bQv1ON4mPaPi21ZPS4iRQ6zfx0MrtAIjTPR8weXUR9PAc
-         qEwu8KOvPTygHBF0XudqXsN5Xq11c3LhzCSsfZri4syFUbWVdt8UUL224LRclefAboHc
-         TJ6g==
+        b=SC3BRLufSi1dAMDpZCcH8BI5fQu7dtga9vjEsE6h0hhRhU6Wpa6WUrVVL3E5wjrW5x
+         Rm7CfkN++YYafwvL3qKYRvTqVYz22XCydgBNWSAjVfRBIMtmbW25kU3Wx2+2bLArVcZn
+         rGEC+zNlmo6i4blwGFhw50wB2feqRcSuwHVfqpyJR3APAnA2xK5FE3bzFqqN7ijBddaH
+         f9NXELzKlQzxwa4imBWd/bL9kHIhsejXIMUMlyz8aVBw+x1t/U9lQmyFn+PkUAc8h2PL
+         Ikk64PVwjnsyYzhLRcFVDT+zOnucLl9Y8hij0wFLb5W/iaw5oU9+zbXgxWb8+H7OepD9
+         MBzA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:content-language
-         :accept-language:message-id:date:thread-index:thread-topic:subject
-         :cc:to:from;
-        bh=wbzce9OAjRTCZyTmKIcvFQ2gk5hOPTwPyyXPPnhqYwE=;
-        b=KFfsxT7dCGjIJ7RkhDjku3dPIJrd4KKkEc3J/RuFVUrfuTTMHHRBWlhk+iBQZYsdQJ
-         8hmSDyYEGJ3ZMmygp83Z9sU12OmuVc1KhObhooX7rCB/sQWJuhEzhHojkrk7te4fW6O6
-         WVKmNLtRTgZQmAObVnB2LKMgJqQiRVhHcB6HzTUoE9HkfscCXCfNQkHAjbJ14xN0LH8e
-         7Mv2VcJU+BNlLFRPR5+4ecaOxi1W9GDKl0Q7nTqSUVQhPe4aJZ/JLSx8Nm8ibQH4oCr8
-         QIBwO2hJhA8OCiUeBzTJ96icOctoNYDPsq9MYKqAWld+6kj5Vbr5dBQzJb6y6S7dn4pp
-         hEgg==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=No9d8SHyefe5+pffPLk1H/yT7ajB5YpX5bZ6oy8CoKU=;
+        b=zPROKXPqrGDaHIw5z6xMng/FSQrrP4rKEikiJ/6N2XdeB+v7+9hOfKLrQPb3304AAh
+         YkncTkdyCOnJUsCL6YcziC+hm5nSuNCQPlX0+BkXswGO+8NLU9e7Lhzsd+3xkkGMx3Qr
+         +xFCa7VyCu/uQ86EOR/Gyh8qtEtX1uR3CiHtuZ4mclUKU5HmFZKh56QwMvL4nC8XWeLq
+         /3Zvj+Il4+uiHpuJiRKAfxUlGrA8/S6kwQfPJtrBh56DTroyErJCS2uqtoFPppomGyj6
+         J44ytTDv0OwRJpdj3d8zJOa33Nt5ff38n5DDVzfQfYsPnwGHNWt08QP+GKaKr7ZGGJmF
+         y68Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of andrey.shinkevich@huawei.com designates 45.249.212.187 as permitted sender) smtp.mailfrom=andrey.shinkevich@huawei.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Return-Path: <andrey.shinkevich@huawei.com>
-Received: from szxga01-in.huawei.com (szxga01-in.huawei.com. [45.249.212.187])
-        by mx.google.com with ESMTPS id e17si25132114pgv.491.2021.05.11.10.51.19
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 11 May 2021 10:51:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of andrey.shinkevich@huawei.com designates 45.249.212.187 as permitted sender) client-ip=45.249.212.187;
+       dkim=pass header.i=@linaro.org header.s=google header.b=RECWgyl2;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id m62sor4670393oig.16.2021.05.11.12.53.17
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Tue, 11 May 2021 12:53:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of andrey.shinkevich@huawei.com designates 45.249.212.187 as permitted sender) smtp.mailfrom=andrey.shinkevich@huawei.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from dggeml756-chm.china.huawei.com (unknown [172.30.72.53])
-	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4Ffljg1wjVzWhKk;
-	Wed, 12 May 2021 01:47:03 +0800 (CST)
-Received: from dggpemm100008.china.huawei.com (7.185.36.125) by
- dggeml756-chm.china.huawei.com (10.1.199.158) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.2176.2; Wed, 12 May 2021 01:51:17 +0800
-Received: from dggpemm500011.china.huawei.com (7.185.36.110) by
- dggpemm100008.china.huawei.com (7.185.36.125) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2176.2; Wed, 12 May 2021 01:51:17 +0800
-Received: from dggpemm500011.china.huawei.com ([7.185.36.110]) by
- dggpemm500011.china.huawei.com ([7.185.36.110]) with mapi id 15.01.2176.012;
- Wed, 12 May 2021 01:51:17 +0800
-From: Andrey Shinkevich <andrey.shinkevich@huawei.com>
-To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-CC: "Chengen (William, FixNet)" <chengen@huawei.com>,
-	"peter.maydell@linaro.org" <peter.maydell@linaro.org>, "drjones@redhat.com"
-	<drjones@redhat.com>, "richard.henderson@linaro.org"
-	<richard.henderson@linaro.org>, "alex.bennee@linaro.org"
-	<alex.bennee@linaro.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-Subject: GICv3 for MTTCG
-Thread-Topic: GICv3 for MTTCG
-Thread-Index: AQHXRo49QQoDTg/5kkqOfm/tGkugzg==
-Date: Tue, 11 May 2021 17:51:17 +0000
-Message-ID: <1f157423cc544731beb743287a4be5cb@huawei.com>
-Accept-Language: en-US, zh-CN
-Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-x-originating-ip: [10.227.155.55]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+       dkim=pass header.i=@linaro.org header.s=google header.b=RECWgyl2;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=No9d8SHyefe5+pffPLk1H/yT7ajB5YpX5bZ6oy8CoKU=;
+        b=RECWgyl2ys9WGu9r3Q9TJybueihJqYAlmZx9wdVAoyKuyGUJ/zdoXdLMex2tQi/XIj
+         R3wqY88Ged38vr9XTrLMJwfAR0qEr1fvIsd3Z/Nj/ikt3Yfj9eaxrH83VuXUyOJ+gSW1
+         pCQynxtAyyQ10vFl6vlVw7fAO/BHhpy5VI+OoxP1sOWNF3UI33gD4JEabz6HTTtVB9wP
+         KMel2WXakTG367dHfkzgnY8XCWy84Ym83iJo4jpamAckcgJuh+l1lNiAxDLZ76mxkJdE
+         by5CuwFpA1aUBM42xzZX7nJQs6CRWN30zvmERc6WiHOks/Kb+KsCUqxQbGLB3D0W+Fcn
+         a/tw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=No9d8SHyefe5+pffPLk1H/yT7ajB5YpX5bZ6oy8CoKU=;
+        b=JjwhyrL69JtZqcvQp3BsvX2qEPdjL+GI7Z2gLhjEhFP8TVUGhtAZvSwJLH+5UWv2zK
+         RaB8h+hsnjSxYfF7E0Z3/fYcV/gPWjLn4WRM/z7rNjEOmczB8Cg9wV8TpuL65zsNfV/J
+         w/pSDXXKu4Dk23RGqiX5yQXPKdW4Y78j1GU3vkhk2t5qvQ0UcobRiNNFWP9uuKsfffdu
+         CQOvcqjBo4wD32n58ZQZtpqrmSiCI8N0zGrvI9pUeFfL2ksZN0hcfiJCtkiyIPxyewrL
+         24AkQvKPljAtTngdshjox7vfYtUjJc5s/oyg6IEt8rcMRdzy0sBC7mEGv7GuKbXRtz40
+         0qyQ==
+X-Gm-Message-State: AOAM530laUHSs3aSUufrnWW+qX1WiM904X0XZlfr8p4PzW+eiRbPnydx
+	JU5IXXptwn+vYyw+cbI8fy1vpcso
+X-Google-Smtp-Source: ABdhPJypF7sW51+DKX2GBAagP+UMszsW6HvqfFQAH04ya//ISHHLQ26VIQcWdWjpiZjvbGEo1QcKCg==
+X-Received: by 2002:aca:47ca:: with SMTP id u193mr4851641oia.69.1620762797193;
+        Tue, 11 May 2021 12:53:17 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.180.118] (163.189-204-200.bestelclientes.com.mx. [189.204.200.163])
+        by smtp.gmail.com with ESMTPSA id 68sm3954860otc.54.2021.05.11.12.53.16
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 11 May 2021 12:53:16 -0700 (PDT)
+Subject: Re: GICv3 for MTTCG
+To: Andrey Shinkevich <andrey.shinkevich@huawei.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Cc: "Chengen (William, FixNet)" <chengen@huawei.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "drjones@redhat.com" <drjones@redhat.com>,
+ "alex.bennee@linaro.org" <alex.bennee@linaro.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+References: <1f157423cc544731beb743287a4be5cb@huawei.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <2e85f403-c6a6-d341-55c3-079bac85be2a@linaro.org>
+Date: Tue, 11 May 2021 14:53:14 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-TUID: fMwMfUNkF/XC
+In-Reply-To: <1f157423cc544731beb743287a4be5cb@huawei.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-TUID: eOPrsaLpV3gI
 
-Dear colleagues,=0A=
-=0A=
-I am looking for ways to accelerate the MTTCG for ARM guest on x86-64 host.=
-=0A=
-The maximum number of CPUs for MTTCG that uses GICv2 is limited by 8:=0A=
-=0A=
-include/hw/intc/arm_gic_common.h:#define GIC_NCPU 8=0A=
-=0A=
-The version 3 of the Generic Interrupt Controller (GICv3) is not=0A=
-supported in QEMU for some reason unknown to me. It would allow to=0A=
-increase the limit of CPUs and accelerate the MTTCG performance on a=0A=
-multiple core hypervisor.=0A=
-I have got an idea to implement the Interrupt Translation Service (ITS)=0A=
-for using by MTTCG for ARM architecture.=0A=
-=0A=
-Do you find that idea useful and feasible?=0A=
-If yes, how much time do you estimate for such a project to complete by=0A=
-one developer?=0A=
-If no, what are reasons for not implementing GICv3 for MTTCG in QEMU?=0A=
-=0A=
-Best regards,=0A=
-Andrey Shinkevich=0A=
+On 5/11/21 12:51 PM, Andrey Shinkevich wrote:
+> The version 3 of the Generic Interrupt Controller (GICv3) is not
+> supported in QEMU for some reason unknown to me.
+
+It is supported.  You have to enable it like so:
+
+   -M virt,gic-version=3
+
+
+r~

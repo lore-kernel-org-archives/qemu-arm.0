@@ -1,101 +1,307 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp2660030lfg;
-        Sun, 9 May 2021 22:59:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwHUw8GYu6xkOd+Efta7Aekpiw2gMOF5RQ1xFPdV34Fy8fkW9nzeqIiHpLSsJwAm1qBxaNk
-X-Received: by 2002:a05:6000:1b8a:: with SMTP id r10mr5972077wru.296.1620626391348;
-        Sun, 09 May 2021 22:59:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620626391; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp3793042lfg;
+        Tue, 11 May 2021 02:17:37 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwn1zjn9xKWqwZUxrqE3EfA041/yILRCygor8wVk9UOlAg0n0fUrzDup+bYh1DU8sqGXWxg
+X-Received: by 2002:ab0:4343:: with SMTP id k61mr24446657uak.35.1620724657435;
+        Tue, 11 May 2021 02:17:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620724657; cv=none;
         d=google.com; s=arc-20160816;
-        b=i4vdR4iMvUYDAMT1acotoHy76HXcSY9Jqjhzs6DfSMMpk+g2awfbMENzVePw2j7UOw
-         hXNMwWc4+qNMiOQmOz6+bgCJRoux7qtBx7/Fg2AafJTsD7GePKtsbkZuv+Q72Cv978AI
-         Kz42Td3FziGHS26qs2ZYPG3nxJVqihwGBw2F0XumClp19djW5edGi+kai+1zscTX20Dt
-         R15YXh9h52JNE1E3ckd4fXujZsDc1vxlLjzl0S6Gb9S5CBvg8z8RqCd4xWMOWVoWY8Dj
-         S8Teo/jJHb61t+SHz7F9K0bG1WyCrEruO3dQ76ep1nT+b27Tlfbc+6r3FGczJHO6oAzw
-         0sZg==
+        b=l+Rqt/F+dOnwRIvyyZQJjIJFkl04lt+TZT37OxJ0ITZLPbHoWtAN9OOVXLOw+mxasc
+         9qHh9D6eF5bPJZkBCAaO93Vbdc2XglUI4EJ8wN0iChCq1V2xF3RSjpY+0pHta4b4Rz+6
+         TldYVpaomc1uWiMrUjD0/RD8UxKqitNHez1xa03drpuNCq+SsIF24IFPqgCTQBuAkt1b
+         gQP2hUz46npBN+EdyIC3Jta73q51y4FLWIX4tN1SGNpJ1gA5v6ceElb1Rhaxo5t1zuFL
+         QwgRMrs/VZK4Y/WKFJDGWgAAkRRdV0+mgcFbX2oCEn3oWYJrb3A0DXbEeM667KfE1mRv
+         O2MQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject;
-        bh=XmeMG1YFdCHs03dSMH0G4ib5+VOnqOnnQz4ItToS9V0=;
-        b=s82hLGrV0zUHAGobQEq1QQcb/TSLZw7a/QvfbYGrkzLGbBuPF8j2mg/bWfoiAb2Kb9
-         BfKuVEe5eApWoeZkONDXfFmGm8zQgbTdnOtn8c0ebT9p4ZV8gWBVmGggTKZe9gc7Gxsv
-         +oacyCwGqOLlrT3gfgp8Pvws3G8mwFUZptxJESAezU6+idByst6O/TYcNVEryQP9oZ+h
-         YtPB5pZwvwWJMy0eiFJ8vo3FJKyN0L/HKPFRgKq3ok/PsPBmNx6ijXsaf4s3kVjBe6w3
-         0Zwlr7OBg043JAORAOkfL2Kw6aq+B9tXHfnWiXZenOF/Glut87STzw5+VRRgW80UFe0S
-         eJYg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=l1bl/sxawYntukRgrlubRtqJpmBHcGwA0ZwD8+RoYc0=;
+        b=l2GgzLYfVQh98fZClFAwJDQZCmZMcc+mZ6KfV+rM94RZ+TAD0B9vZNzMvUh2bMUwvd
+         rca9GNkpDOBbGNuMdt705VTJL7aG7oAS0ioaBlnCLaHFevnQ/LlMmKmDFvkaXk0gB2SD
+         bl0Yb6erujyz0nbQmRm7g1pVsykzS4ZTkmk8/8UDw8Nvb2/A42/dlfs4EYWGYSYgYEYx
+         z/DzxWLI8UkE93NG0uibRlpLZa3rkrfxfOUAah+9ifjP2x672s7IP1SACuOETyObG9kE
+         pu5wwDrjvwt1NiIMTYK+sIiD/Vbu53UcKR16+BzU0AnL5YmuvaLTKiu/ccn9afuOnQnG
+         EuEQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of clg@kaod.org designates 178.32.125.2 as permitted sender) smtp.mailfrom=clg@kaod.org
-Return-Path: <clg@kaod.org>
-Received: from smtpout1.mo529.mail-out.ovh.net (smtpout1.mo529.mail-out.ovh.net. [178.32.125.2])
-        by mx.google.com with ESMTPS id l15si18072649wrm.513.2021.05.09.22.59.51
+       dkim=fail header.i=@linaro.org header.s=google header.b=dIXfMiHa;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id v9si8486572vse.77.2021.05.11.02.17.37
+        for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 09 May 2021 22:59:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of clg@kaod.org designates 178.32.125.2 as permitted sender) client-ip=178.32.125.2;
+        Tue, 11 May 2021 02:17:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of clg@kaod.org designates 178.32.125.2 as permitted sender) smtp.mailfrom=clg@kaod.org
-Received: from mxplan5.mail.ovh.net (unknown [10.108.4.132])
-	by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 3AA6AA36E862;
-	Mon, 10 May 2021 07:59:49 +0200 (CEST)
-Received: from kaod.org (37.59.142.102) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2242.4; Mon, 10 May
- 2021 07:59:41 +0200
-Authentication-Results: garm.ovh; auth=pass (GARM-102R0046650abbe-2ab8-44b3-bb76-d83df9c50929,
-                    EC2BFC7B1AED95346F6AF274786A4EFCDB415F6D) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 90.89.73.13
-Subject: Re: [PATCH v3 14/17] hw/misc/pca9552: Replace g_newa() by g_new()
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	<qemu-devel@nongnu.org>
-CC: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
-	<qemu-ppc@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, Gerd Hoffmann
-	<kraxel@redhat.com>, <qemu-arm@nongnu.org>, Andrew Jeffery <andrew@aj.id.au>,
-	Joel Stanley <joel@jms.id.au>
-References: <20210507144315.1994337-1-philmd@redhat.com>
- <20210507144315.1994337-15-philmd@redhat.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <9dc562b9-ba4d-0832-951a-5040d9d540db@kaod.org>
-Date: Mon, 10 May 2021 07:59:37 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+       dkim=fail header.i=@linaro.org header.s=google header.b=dIXfMiHa;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:42900 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lgOWG-0002h2-Lo
+	for alex.bennee@linaro.org; Tue, 11 May 2021 05:17:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39908)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lgNts-0006vl-7s
+ for qemu-devel@nongnu.org; Tue, 11 May 2021 04:37:56 -0400
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a]:35427)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lgNtq-00065c-84
+ for qemu-devel@nongnu.org; Tue, 11 May 2021 04:37:55 -0400
+Received: by mail-ej1-x62a.google.com with SMTP id m12so28569528eja.2
+ for <qemu-devel@nongnu.org>; Tue, 11 May 2021 01:37:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=l1bl/sxawYntukRgrlubRtqJpmBHcGwA0ZwD8+RoYc0=;
+ b=dIXfMiHadfnLTvnr6GOLlx23lTLT+yqEKFvHMZq+7MjNgo4mJxgMjMKdHwbSz03Odm
+ HZ6+hl1NHG0Lh9kpXk7bDlzYi2pP0yVpBZrSxeBIfr10bryArCKPVeZ0OVoTLEcT+CUz
+ c49kTr38NAU6IBembefHsfxSS4zp9XRaK/e1hfnmfcDHmsIw2vjozsIIfFMtN6Aq4Uzr
+ hYNlCFLe2U0qkN7+fPmczoo6qWQ9O0R0BZC8SKQrL8C55Vs75Cv8osM1E/ulG2PdsvzB
+ dlcY2wf9uxfdViBKVceFJIICQ/IUb5RFVycYLMB1YTqYkyQdq0Qe+kDrjHlgGXSswuCd
+ 2wdA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=l1bl/sxawYntukRgrlubRtqJpmBHcGwA0ZwD8+RoYc0=;
+ b=YQCcjHVMo/8LXcBWurt56sXdEKkcvXxasar6iZskSkZ65IMf30mwJHP0J70J/Wf5Dz
+ tYK9eqlu8Zom1W0Kbsdqb9Cb3PaX7VWwusKD/brQ45EA9uacEjzXoV8No43RTduCaTzI
+ 6U653nuVeJ3hjuW4pE0lnXNbgDPlAYph0ivn4MexwB+e3s9x3qjujT4bbrOmirymrAAA
+ SKpJRvXlJ/6NDjv3tlmkeabr8iQWywiLmdDk5fQw3akXBZ85My9CdUUE1m4SRMsWAcMq
+ ILMmAb7tLUXCJPDdnjV08Mm6vMlU4U7QmZDOhpEPKq/N+e5gR8NbUiStLtR+H88Zph3l
+ O1Dw==
+X-Gm-Message-State: AOAM5329GeN+TSIARPbhPnj8uLXlqwDPiLZhCTLvY2/cYzP0/rOpRyZH
+ gfQxLelGFMNUBSJh1loXIqy0wi1ddAwLdx2oCUZbOQ==
+X-Received: by 2002:a17:906:11cc:: with SMTP id
+ o12mr30658795eja.85.1620722272332; 
+ Tue, 11 May 2021 01:37:52 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20210507144315.1994337-15-philmd@redhat.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.102]
-X-ClientProxiedBy: DAG5EX1.mxp5.local (172.16.2.41) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: ca5f8019-3b94-4721-b6bc-9cee1c76e1ad
-X-Ovh-Tracer-Id: 14687645762622688245
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduledrvdegjedgleelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepjeekudeuudevleegudeugeekleffveeludejteffiedvledvgfekueefudehheefnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutddvnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehphhhilhhmugesrhgvughhrghtrdgtohhm
-X-TUID: HBk52pItjGg9
+References: <20210430202610.1136687-1-richard.henderson@linaro.org>
+ <20210430202610.1136687-6-richard.henderson@linaro.org>
+In-Reply-To: <20210430202610.1136687-6-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 11 May 2021 09:36:39 +0100
+Message-ID: <CAFEAcA8wrDyEMTvHR97BinJZm+CozffMWkefAmywU6t2fBbLjQ@mail.gmail.com>
+Subject: Re: [PATCH v6 05/82] target/arm: Split out saturating/rounding shifts
+ from neon
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: E+PzaLIye52a
 
-On 5/7/21 4:43 PM, Philippe Mathieu-Daudé wrote:
-> The ALLOCA(3) man-page mentions its "use is discouraged".
-> 
-> Use autofree heap allocation instead, replacing g_newa() by g_new().
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-
-
+On Fri, 30 Apr 2021 at 21:30, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> Split these operations out into a header that can be shared
+> between neon and sve.  The "sat" pointer acts both as a boolean
+> for control of saturating behavior and controls the difference
+> in behavior between neon and sve -- QC bit or no QC bit.
+>
+> Widen the shift operand in the new helpers, as the SVE2 insns treat
+> the whole input element as significant.  For the neon uses, truncate
+> the shift to int8_t while passing the parameter.
+>
+> Implement right-shift rounding as
+>
+>     tmp = src >> (shift - 1);
+>     dst = (tmp >> 1) + (tmp & 1);
+>
+> This is the same number of instructions as the current
+>
+>     tmp = 1 << (shift - 1);
+>     dst = (src + tmp) >> shift;
+>
+> without any possibility of intermediate overflow.
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->  hw/misc/pca9552.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/misc/pca9552.c b/hw/misc/pca9552.c
-> index b7686e27d7f..facf103cbfb 100644
-> --- a/hw/misc/pca9552.c
-> +++ b/hw/misc/pca9552.c
-> @@ -71,7 +71,7 @@ static void pca955x_display_pins_status(PCA955xState *s,
->          return;
+> v2: Widen the shift operand (laurent desnouges)
+> ---
+>  target/arm/vec_internal.h | 138 +++++++++++
+>  target/arm/neon_helper.c  | 507 +++++++-------------------------------
+>  2 files changed, 221 insertions(+), 424 deletions(-)
+>
+> diff --git a/target/arm/vec_internal.h b/target/arm/vec_internal.h
+> index e3eb3e7a6b..0102547a10 100644
+> --- a/target/arm/vec_internal.h
+> +++ b/target/arm/vec_internal.h
+> @@ -30,4 +30,142 @@ static inline void clear_tail(void *vd, uintptr_t opr_sz, uintptr_t max_sz)
 >      }
->      if (trace_event_get_state_backends(TRACE_PCA955X_GPIO_STATUS)) {
-> -        char *buf = g_newa(char, k->pin_count + 1);
-> +        g_autofree char *buf = g_new(char, k->pin_count + 1);
->  
->          for (i = 0; i < k->pin_count; i++) {
->              if (extract32(pins_status, i, 1)) {
-> 
+>  }
+>
+> +static inline int32_t do_sqrshl_bhs(int32_t src, int32_t shift, int bits,
+> +                                    bool round, uint32_t *sat)
+> +{
+> +    if (shift <= -bits) {
+> +        /* Rounding the sign bit always produces 0. */
+> +        if (round) {
+> +            return 0;
+> +        }
+> +        return src >> 31;
+> +    } else if (shift < 0) {
+> +        if (round) {
+> +            src >>= -shift - 1;
+> +            return (src >> 1) + (src & 1);
+> +        }
+> +        return src >> -shift;
+> +    } else if (shift < bits) {
+> +        int32_t val = src << shift;
+> +        if (bits == 32) {
+> +            if (!sat || val >> shift == src) {
+> +                return val;
+> +            }
+> +        } else {
+> +            int32_t extval = sextract32(val, 0, bits);
+> +            if (!sat || val == extval) {
+> +                return extval;
+> +            }
+> +        }
+> +    } else if (!sat || src == 0) {
+> +        return 0;
+> +    }
+> +
+> +    *sat = 1;
+> +    return (1u << (bits - 1)) - (src >= 0);
+> +}
+> +
+> +static inline uint32_t do_uqrshl_bhs(uint32_t src, int32_t shift, int bits,
+> +                                     bool round, uint32_t *sat)
+> +{
+> +    if (shift <= -(bits + round)) {
+> +        return 0;
+> +    } else if (shift < 0) {
+> +        if (round) {
+> +            src >>= -shift - 1;
+> +            return (src >> 1) + (src & 1);
+> +        }
+> +        return src >> -shift;
+> +    } else if (shift < bits) {
+> +        uint32_t val = src << shift;
+> +        if (bits == 32) {
+> +            if (!sat || val >> shift == src) {
+> +                return val;
+> +            }
+> +        } else {
+> +            uint32_t extval = extract32(val, 0, bits);
+> +            if (!sat || val == extval) {
+> +                return extval;
+> +            }
+> +        }
+> +    } else if (!sat || src == 0) {
+> +        return 0;
+> +    }
+> +
+> +    *sat = 1;
+> +    return MAKE_64BIT_MASK(0, bits);
+> +}
+> +
+> +static inline int32_t do_suqrshl_bhs(int32_t src, int32_t shift, int bits,
+> +                                     bool round, uint32_t *sat)
+> +{
+> +    if (src < 0) {
+> +        *sat = 1;
+
+Shouldn't this check whether sat is NULL ?
+
+> +        return 0;
+> +    }
+> +    return do_uqrshl_bhs(src, shift, bits, round, sat);
+> +}
+> +
+> +static inline int64_t do_sqrshl_d(int64_t src, int64_t shift,
+> +                                  bool round, uint32_t *sat)
+> +{
+> +    if (shift <= -64) {
+> +        /* Rounding the sign bit always produces 0. */
+> +        if (round) {
+> +            return 0;
+> +        }
+> +        return src >> 63;
+> +    } else if (shift < 0) {
+> +        if (round) {
+> +            src >>= -shift - 1;
+> +            return (src >> 1) + (src & 1);
+> +        }
+> +        return src >> -shift;
+> +    } else if (shift < 64) {
+> +        int64_t val = src << shift;
+> +        if (!sat || val >> shift == src) {
+> +            return val;
+> +        }
+> +    } else if (!sat || src == 0) {
+> +        return 0;
+> +    }
+> +
+> +    *sat = 1;
+> +    return src < 0 ? INT64_MIN : INT64_MAX;
+> +}
+> +
+> +static inline uint64_t do_uqrshl_d(uint64_t src, int64_t shift,
+> +                                   bool round, uint32_t *sat)
+> +{
+> +    if (shift <= -(64 + round)) {
+> +        return 0;
+> +    } else if (shift < 0) {
+> +        if (round) {
+> +            src >>= -shift - 1;
+> +            return (src >> 1) + (src & 1);
+> +        }
+> +        return src >> -shift;
+> +    } else if (shift < 64) {
+> +        uint64_t val = src << shift;
+> +        if (!sat || val >> shift == src) {
+> +            return val;
+> +        }
+> +    } else if (!sat || src == 0) {
+> +        return 0;
+> +    }
+> +
+> +    *sat = 1;
+> +    return UINT64_MAX;
+> +}
+> +
+> +static inline int64_t do_suqrshl_d(int64_t src, int64_t shift,
+> +                                   bool round, uint32_t *sat)
+> +{
+> +    if (src < 0) {
+> +        *sat = 1;
+
+Missing NULL check again.
+
+> +        return 0;
+> +    }
+> +    return do_uqrshl_d(src, shift, round, sat);
+> +}
+
+Otherwise
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+thanks
+-- PMM

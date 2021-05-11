@@ -1,104 +1,99 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp3785661lfg;
-        Tue, 11 May 2021 02:06:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwoj8yxHaqdfcMPu+8E5Ettmb8GRbU6IMNiZs1xKlzeYBBK/dRxBnWzwnpszuhSWkt6+P2S
-X-Received: by 2002:ab0:2712:: with SMTP id s18mr24078433uao.88.1620723995066;
-        Tue, 11 May 2021 02:06:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620723995; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp4094336lfg;
+        Tue, 11 May 2021 08:29:13 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzGBBq184An3bySR5jNVUknaGCn2hI4MaZZr+qsDYwwBHm2C2QTXIa+BjXbXHnP9QJbur6j
+X-Received: by 2002:a05:6e02:12e9:: with SMTP id l9mr27409881iln.28.1620746953584;
+        Tue, 11 May 2021 08:29:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620746953; cv=none;
         d=google.com; s=arc-20160816;
-        b=fOILD+xrSd9r/yGug11oppmRnMWUXFRhoYmi1DLQtaIM9ozDZor6nN9GUSE4HOm1aa
-         zyQfrgXE7/gWcTSs50AQcHkzNpB4KzLcjzmHZHLSCubqG89TnLG8BwWU8LklOWlMRsfE
-         uwdRyer2XSXYDarWUSlAHxAHbiA0AuJV4ENrj9CJ84IXJ883WEffG8he/GMxqR8+EQL2
-         WNuohmJwkjl0WbU5ZL6v5fOwgqN4DJGP2Eqh5z2Pzc+GEdKK8wV+vJaAY6aajr7lmz90
-         g76ez8WZNLQ0foGWdaXA9O6eVVp02NHEoVCNvNeZtSqpnpA84yXUct9I3Uzky0TZg5Xt
-         wUeA==
+        b=I21p8zDWTZc/4w1EitITcb8aLryOlms+20uSJxgtMgs0TUpIxvayNtvI1BYOkMfo55
+         m8I2oybEKwtgyAJl4yeWqRLk9T/ljQOAtviHzUH8TbRV88cZFgyzv6zXHe/qlZ7fnoM3
+         3vpt0O1DDwi2O39usiRqQJ9OjFTxx0tdR9VPewhEfivnZxH0sNJXauy5wEM3fkwJmElW
+         /XO1ONnhbjYb0ZwTAARvMBrDHmYQvDOeRkbo5y+6Vj3Crlhpe0/LTQu9YDsnLGZB3nZt
+         zZY38jLzPqgL7S8J0LXlMCPFIZL1ypl4Tdh49qS5at/qGWKn6vX33I4TCLoyqFtppzEL
+         yG5g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=COT1W1g2vBNFAz9botDYPIDiRTdJxx+YApaOX4ZYy4U=;
-        b=FnKUp7XwMXSM6c5yFo6a7otxXhohBam9joEeXDv0G2B6hWsXGlZAtEZII5IK2E0abf
-         JJ0cKJ+VbOSv6RkuHlGHXxQ/6wxGrfCIqz70lNNUgTxxWiuB8J2Y4JXI1kBoJie81m3+
-         gABoLGSSx4vcFpwwCuiafIE2Ug4yiGLaKD6mqG/vBK1EOCNO1rM+VoRKRw08zzq+lj6G
-         Mx4OojOFEJ64PUqps4x+Gr5YqXDRGPfreZTUDrSXB5WAtogDjmHBHHVVb0Vu2xjqv7jM
-         dvL1T0CqULppwC84pwr9YBB7GX+OucXChPNKTYdJGxm9u9fTTV6UHOaBeZ1xG3qGWFuG
-         uRiQ==
+         :mime-version:dkim-signature;
+        bh=QsZVtNa2EXiIoxLz+Nk0Lcb1b5ExvaZ6F5xBrYoB/vk=;
+        b=n8dRlNUm4xvsFN23IjoTQi3mDxT6B+m4wGHFKWvc5fXfRyJFWaWOQ84sSHHodZaaab
+         cfqyF7EITB0pkJ5gBiNtSyVZG3AsQ2sF0dgN912F4a8no2QW2j8AAKI/PNwhZmY9wE+Y
+         HpajfxKgcAd0jiVoHwlHbJZv1Kf+ppx+qZjxxCzpHDwo/dPED6a2rE1GgWMbEeR9ig7v
+         p7GdyGl0vvHYWooOyi2CI/9+ZqHk8HOHHvIrAdicgcde+J8SoZwI+wNzlhRhOuXRPyUm
+         k6iYGQTLNPPwQbCQbbAL9PChgCNy9V3L6M+njZHAxGK4Wlt0vpugG9E7z4uLj4Nk9218
+         VJuA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=iXRF4XPA;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZGiTuxFS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s14si6296445vsj.26.2021.05.11.02.06.34
+        by mx.google.com with ESMTPS id m12si19886763ild.137.2021.05.11.08.29.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 May 2021 02:06:35 -0700 (PDT)
+        Tue, 11 May 2021 08:29:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=iXRF4XPA;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZGiTuxFS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45394 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:49500 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lgOLa-0001Sm-A6
-	for alex.bennee@linaro.org; Tue, 11 May 2021 05:06:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44006)
+	id 1lgUJs-0002JR-V9
+	for alex.bennee@linaro.org; Tue, 11 May 2021 11:29:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57498)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lgOEr-0001xG-4l
- for qemu-arm@nongnu.org; Tue, 11 May 2021 04:59:37 -0400
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e]:44001)
+ (Exim 4.90_1) (envelope-from <janne.karhunen@gmail.com>)
+ id 1lgU6t-0003Nw-6s
+ for qemu-arm@nongnu.org; Tue, 11 May 2021 11:15:48 -0400
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f]:34749)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lgOEo-0000xz-Cn
- for qemu-arm@nongnu.org; Tue, 11 May 2021 04:59:36 -0400
-Received: by mail-ej1-x62e.google.com with SMTP id l4so28610294ejc.10
- for <qemu-arm@nongnu.org>; Tue, 11 May 2021 01:59:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=COT1W1g2vBNFAz9botDYPIDiRTdJxx+YApaOX4ZYy4U=;
- b=iXRF4XPATd9i0Wdl8TwDUW+ScnLmZqTmQZfJwEcf1oJ62K7IkvSUv9mE8eONgM9jie
- kIMPBA6w2A3BEoIsAWzMiYyV7tIz9tBOZn/ujxJD/2XjQDvpVqZ9K68rjHaDx58r9mTg
- l9EhuDhtnJRXGbUYYY5doDgoFKHAKX9OIRebQiBRHRiy1I+3A8vaXEqzpujxvnNnGqjP
- 89lnp/UNfzwH+lyx2iSeFCYasb3/sgWSmb+HSsNBhF90C1XskcolraXL7fqt1BH1mVbx
- q46E8Jkwxt/rc1+Iwz9gDMl+UrV9G+c4ldBpIKmfAqE3HKFw44o4dP0hafQKA/iVV8PS
- ZePg==
+ (Exim 4.90_1) (envelope-from <janne.karhunen@gmail.com>)
+ id 1lgU6q-0007Z8-Mb
+ for qemu-arm@nongnu.org; Tue, 11 May 2021 11:15:46 -0400
+Received: by mail-lf1-x12f.google.com with SMTP id z13so29213069lft.1
+ for <qemu-arm@nongnu.org>; Tue, 11 May 2021 08:15:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:from:date:message-id:subject:to;
+ bh=QsZVtNa2EXiIoxLz+Nk0Lcb1b5ExvaZ6F5xBrYoB/vk=;
+ b=ZGiTuxFS864FTvCRvVzlMYAxYfANzz2MCSUrgh1dPAE0BmcBRdA0OBfnJgG2CrF2MR
+ OGuebC32iDccsb1jJpkCYhrBiPATv04fYOFg5gox+b53Qv95OWBQJWGBknYtesSZSVlW
+ 60cmVhPQOQVqkh/zDXwYLvhl/NXKHHE2QXM08BD2KgieWyrCOABhdOvuF7kRIJUnIoj5
+ 1RQpuAztSa9c6CVwPC6hBoOYiCTlLY3t0W+nIWEVFYSSdQluFS0s/96D6cH6hAM5xYmp
+ KYp+W4i3KJzGWnVEkBk7NkS42uqS2ad912YFFA/x9qrAF25SpG/AxZ4BJR8Gwt8n3no/
+ Jqtw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=COT1W1g2vBNFAz9botDYPIDiRTdJxx+YApaOX4ZYy4U=;
- b=eAItkOKjhxKatn65kU4a07iTasT9pMSojl0C5YlNCKd/BtJlFUoSyIIlNghvsXUF0G
- 4q9S4QWGlfGLizd0QP/KbEXIxBzgXnX4dDU9Tr8ObLWTQ3YsIDzq46V19o53WPHhnkTz
- OqGZ1Wf2aSBNzGRapO5nsekZSXbG9irTu2PlFYTSrryUfcIGU0rle19y/zuaFfdB9mDp
- /b41RqG6qCnhVbPiwjpa3xE3DQYHS2OFvpBLHNQUAEecSt49ad1+2UT4pw79V1yqlzHY
- jTTalzfHPN4YkD02vHgSBURbN/b2M7aBHz3NoWZZcK8NS0kX33kpIlgNLft2yTcu25z6
- f02w==
-X-Gm-Message-State: AOAM533UN9XpWHhzDwgKdxORl8WkLnn2rHa1d2joT9vqMYKaQKzwtt4i
- mqg0NaucqOvre0qfIGe9/pJZbsDO6+aztfqxdHUYZQ==
-X-Received: by 2002:a17:906:d1d2:: with SMTP id
- bs18mr8407143ejb.56.1620723572656; 
- Tue, 11 May 2021 01:59:32 -0700 (PDT)
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=QsZVtNa2EXiIoxLz+Nk0Lcb1b5ExvaZ6F5xBrYoB/vk=;
+ b=mE6zBBN/57Q1MwX8ipZuEFPlZorkn6hfmc8y5MZQzvqd7y8Q+gSzQF3Fg1jFeoaHq0
+ 8ZI/psSk3OwNAU58+QToSA6G2t8bWX2x4CQYdCZbM9WyfDmpC59w+R8ClrtjmQ74Xl6B
+ fHrWXLH6tWyIwKhLHM3jx5fQYfBDkLyWlOeCqRyxxXazX/PELVzDHl7uJ+smtgpgZOzl
+ Y3717/W2japIS8wBRkOwU6yMwzdnX8w0RQePjqHIR8x+5nYuhQHYXo87Rmfh2O+EXV/F
+ lW8MqOULvuDqR8rJhxb1tu13CRZQyLz1ObIZdXnUb4tTCo/KqoMWEemWI7/EvIimdiJu
+ LdJA==
+X-Gm-Message-State: AOAM530rRqly+d6Wq+/HYWSsoE1Eyzjse/nB5gBfDXagzftH0YOb1ED0
+ OFngmNlJ0EO8GYET0CLC8IhG7bUejq3um4uUDfTgpG/oolZ8cw==
+X-Received: by 2002:a05:6512:2209:: with SMTP id
+ h9mr21385300lfu.474.1620746141414; 
+ Tue, 11 May 2021 08:15:41 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210430202610.1136687-1-richard.henderson@linaro.org>
- <20210430202610.1136687-9-richard.henderson@linaro.org>
-In-Reply-To: <20210430202610.1136687-9-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 11 May 2021 09:58:20 +0100
-Message-ID: <CAFEAcA-OvV6gQSTuGYfLk1G6430TEZ-DOYn76NwnARzb4NcZhg@mail.gmail.com>
-Subject: Re: [PATCH v6 08/82] target/arm: Implement SVE2 integer pairwise
- arithmetic
-To: Richard Henderson <richard.henderson@linaro.org>
+From: Janne Karhunen <janne.karhunen@gmail.com>
+Date: Tue, 11 May 2021 18:15:30 +0300
+Message-ID: <CAE=NcrZ1vjVsSDpaKvvSgOA19Hx6-9WN-zJOYoUtZBbYt1LZPA@mail.gmail.com>
+Subject: mysterious slowdown when debugging a kvm guest within system emulation
+To: qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::12f;
+ envelope-from=janne.karhunen@gmail.com; helo=mail-lf1-x12f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -111,31 +106,40 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aIYswUEWmNxx
+X-TUID: QeDR896yWQKb
 
-On Fri, 30 Apr 2021 at 21:33, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
-> v2: Load all inputs before writing any output (laurent desnogues)
-> ---
->  target/arm/helper-sve.h    | 45 ++++++++++++++++++++++
->  target/arm/sve.decode      |  8 ++++
->  target/arm/sve_helper.c    | 76 ++++++++++++++++++++++++++++++++++++++
->  target/arm/translate-sve.c |  6 +++
->  4 files changed, 135 insertions(+)
+Hi,
+
+I'm hacking on our own hypervisor variant for mobile use
+(https://github.com/jkrh/kvms) and I use QEMU as a development tool
+for the job. I can mimic a generic arm64 host and run a bunch of KVM
+guests on it. Everything seems to be in order QEMU wise and things
+seem to work pretty much per the spec, apart that the cache is just
+way too reliable ;)
+
+That being said, now I'm not sure if I'm looking at a QEMU bug or my
+own. Executing KVM guest paging seems to gradually slow down if the
+given kvm guest has a debugger attached to it within a system
+emulation. Without the debugger everything is fine. Note that I can
+have the host qemu and a debugger attached to it just fine, things
+will always work fine. The issue only arises when a new KVM guest is
+being spawned under a debugger within the system emulation.
+
+If I log this from my hypervisor, everything seems fine. Page faults
+are being served OK, the execution speed just slowly slows down and it
+will probably take a day for a guest to boot. The funny observation is
+that if I interrupt that debugger session (the kvm guest one), allow
+it to rest a sec and hit continue, the page faults speed up again for
+a while. I can also happily 'stepi' the code and everything is always
+fine, things will only drastically slow down during free execution and
+having the debugger attached to it.
+
+Any pointers on how to debug and see where the QEMU spends the time?
+It looks to me it's really the instructions that become heavier and
+heavier over time as the guest goes on.
 
 
-> +DO_ZPZZ_PAIR(sve2_addp_zpzz_b, uint8_t, H1_2, DO_ADD)
-
-H1_2 again;
-otherwise
-
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-thanks
--- PMM
+--
+Janne

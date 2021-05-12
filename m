@@ -1,187 +1,166 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp5156606lfg;
-        Wed, 12 May 2021 09:12:12 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzHAFZaYxcEZaMU5KyTuSjxBqo7w4y3Ky0WXz0fAQv7psUKY1JVTqMPrcpepLdN2K75OE//
-X-Received: by 2002:a05:651c:3cf:: with SMTP id f15mr12338074ljp.404.1620835932454;
-        Wed, 12 May 2021 09:12:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620835932; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp5113773lfg;
+        Wed, 12 May 2021 08:25:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwiYl3sYq5Xb4CxgHCF5NVulUjcJy3CSnc6aBox7Fr9zgjiXgl9JcDa5r6T45a5gbrbgl5w
+X-Received: by 2002:a92:d48e:: with SMTP id p14mr1837825ilg.33.1620833130031;
+        Wed, 12 May 2021 08:25:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620833130; cv=none;
         d=google.com; s=arc-20160816;
-        b=CJbspSrXitj/eK9nPOBoKkJ8b821maoKKSQo9KR1P1JWuJOyHmsF98hswpKaew0et+
-         7996DEq+ST8l0SE/DmqBQ9zlXve/aE5p1XMW6vZjPTXmeDxdNb1WdGIyTiiw8hyGc/f2
-         VvccJXsz7kH6rPlEjiJmH9aQNrqKEctPN9l8QW9d/n38c+mtQJode1LFocHiwn/SEQAG
-         ao8Ulp5lnPW86ooGYXQBXwmoS1L6SvO2JWFAmv4f6aN84g5cqytwj7Olx7ZAyhFuEQjh
-         Q7IHFiWlc8B8WJLf17aW/M9wNoRp0JXIoRgP/f3Q82LY9pUrhSFKOpVA/AEX8+GfzBdB
-         W5gA==
+        b=xx4zK+kvlPBJeofv9+hAW8Oar1A/W2iH9hEkgYovI1pVxUTyH59xSdjg0Q7NtKK2en
+         tPJN9HRx3dIQ2Eyra1tpe8QEqweVd6t9ct70YbhMJvSo2MfQYxFYdaG5b0UWXew6wf6A
+         fiz+GZbzmIytJWX5SoQN4i1e3etQOgJm8tVcvVzlYjL/jZgm3mqskBvEsOhoECfscGU/
+         5nPSLzmroxhzEwItupA35tZeEExy2Q0gEph55tUA8tFkr7Z8JdRSjH/nWpxCA4UEfG5+
+         ZuEn0GMev/0PfT7dPC1UTegHuuURn9V+FKxtfIIzrIh3Ta/udFB/8UuxZiN5z5p35xV9
+         Sj0A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=Rhx/vEPkUE5wAJhRa9puML+p8F5Gzc4gc+uQHKDiogk=;
-        b=l46up3DcraEvkVFn4Dk1ugsFrRYUBF6NZNA0GMOEfXYuCg4R6kvCKfcJpQRFz/eTS4
-         Tg74Ny+UGMzAN/JTtBOcxFV9THE23zAs+0ofc8x2IA1wLnND/KNgYbKiTGWlkjaW0nol
-         UQFgelI442ZAZ9EsKs4efAJYBeqNLLBVxGTEiCI2R82Tc5ChYygpCL7IJ7TL1+9thkQI
-         drJ+yVMMpgvrw6UGAa72TROU11bYVoV0Hmk+Fe6kY6Cl6ZSAfdRJy/K9sIKFNewDYXp3
-         7eRj6erDXj4n2h3HF46vXHOsPCMXyY1NAoGBJ787YfL6eBYW6u17dNQCf0lz5mvJC/DV
-         ijjw==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=nGLchLqBy6yHQU2LDAscJHZXvGXltmDFsFu+Tjj2s+Y=;
+        b=AOLoNl7nex2VNLRGUzTABtQT2uY614xG2/WhyC6XCebhzJlHneTzEoAMZkLsE3Sqh+
+         vU/AlRIx7hG806VgOgve8eqpcsKU1zoItf+4WDSGKcoSrCNT58ZCfXyvXSKZ27mzMyWv
+         ixzs1wjYmVXS5b6KtJokTyrxADlJUPXxLX/9b+sjYIyX2cU5WpxN/t/QhBNJ7XfMRzuz
+         KhvHfIBnYn7nSjacAtCYDMvybPJ+Kr5Ni1aW2nWZDliLQ5rjF9BYmxgqPD8ERDOGgG6b
+         AA91L9Ggy6nVBcjxpF5I8Te1Edeml95tsR2qiBmZll/OOS2YE90ywJnFmOxNWmH060uF
+         GFFw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Mef7YJzC;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=dn4PID25;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e3si249016ljo.310.2021.05.12.09.12.12
+        by mx.google.com with ESMTPS id m20si213252jas.125.2021.05.12.08.25.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 May 2021 09:12:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 12 May 2021 08:25:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Mef7YJzC;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=dn4PID25;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33244 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43904 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lgrT1-0007Pe-7V
-	for alex.bennee@linaro.org; Wed, 12 May 2021 12:12:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59498)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lgqjp-0003P3-BF
+	for alex.bennee@linaro.org; Wed, 12 May 2021 11:25:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47972)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lgrOQ-0006FY-BV
- for qemu-arm@nongnu.org; Wed, 12 May 2021 12:07:26 -0400
-Received: from mail-qt1-x82c.google.com ([2607:f8b0:4864:20::82c]:42534)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lgqiw-0001yT-Jm
+ for qemu-devel@nongnu.org; Wed, 12 May 2021 11:24:34 -0400
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534]:44730)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lgrOO-0004je-Fl
- for qemu-arm@nongnu.org; Wed, 12 May 2021 12:07:26 -0400
-Received: by mail-qt1-x82c.google.com with SMTP id k10so4038561qtp.9
- for <qemu-arm@nongnu.org>; Wed, 12 May 2021 09:07:24 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lgqiu-00041L-Uu
+ for qemu-devel@nongnu.org; Wed, 12 May 2021 11:24:34 -0400
+Received: by mail-ed1-x534.google.com with SMTP id bf4so27553217edb.11
+ for <qemu-devel@nongnu.org>; Wed, 12 May 2021 08:24:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=Rhx/vEPkUE5wAJhRa9puML+p8F5Gzc4gc+uQHKDiogk=;
- b=Mef7YJzCBYuctaK+Nb+A74j/5Lyun1498jBPRhBliSB22pkjTqKpbD2r2ZuVm98PXN
- EswqeTntOR7gfKCP5x6zdRrh0MMsPpYxQfUj1IVe9u0Bkb9rL18jov4MP32aXCGbRbWw
- LLqKHBj2K6SRyJu1m0lY9rJXGnlt7qu0rwgcEzZQaA+V02pnvS+O0pvx4W6BUmnR446S
- HcevYG6DFS7+ii4cjcgSd8es2yYxzkOhJ1XUEvCoUxyo2Gr8UNZEM788raPg0qJEgSMj
- OExKkRg6ObDb/YAIT2x4qRDAPUhZfq40peXF53XUfzgfCZoGYvoNgBFdU09f6PmDTURu
- qJvw==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=nGLchLqBy6yHQU2LDAscJHZXvGXltmDFsFu+Tjj2s+Y=;
+ b=dn4PID25Cpg6ewI2cfcT3S6r5+VkH9bQeVpfCMMKR1Ead9Vu4mi8dm++Hb1/b41Cj3
+ U1OPjcSXwyhaxzVww6hB/TndI2nhk+FG+nJMyU9yDmJ9/saV6WD3VE3d7cSQXCqyHcTG
+ M+MBmm44BIxJiyvhELrLc2pVfxu47Dn9dKUnFlHPU1pJ0l9CHSj5UKQLOmHKCkJMuLZk
+ eGbn1dl4A+iWcybwNC5aaOfU/6mgKHAEN0j2sqhNrwnDhKXrptfrOsRoI4aa7PBN7U3n
+ Q3ojcpwjd3/au4phwvOKBKFq33CG1RIDO30xOaH7WiULPxVZL0IZZJuuSdWbC+W87W/W
+ hViQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=Rhx/vEPkUE5wAJhRa9puML+p8F5Gzc4gc+uQHKDiogk=;
- b=HnHFx2+y3sMOy+6uVz3a37gfUd6G1SduPOt74UeQTWTHIEOKf5v5gWbKvgD6nGaL+e
- 7Csly09LWgtEqiun5JJUCaTaxFJWXMFmmr21SdyYP1sAgndW05Ul313K5NXna7zr4q6u
- bFRNc66noNVPnD71x1BEurgR9eeQVsPN0L3/htlXWDboxI2FZn5wT/vM2fkTxQNeh6rA
- 2LoBA1ibC//RdtT73dCM7Fc6y2Ra7mX78I+/4MGsba0fP72y85fBOR25gOWSkexIUsJW
- mVKEFnE52nZ7D0nJqi5pnGzSrTZePiaPg2vgGZdYF/RKUV1n6R7BqlKMmPrJ/iUUNrp4
- OfdA==
-X-Gm-Message-State: AOAM5307a7usNU3++3ynD5KTMt/s1eZTRQzi6uAI0Z0EyrGr66Z8cmjC
- QZkgo6gi0zMlPBDSb/vytNdYOY/iv2wC3UipFjs=
-X-Received: by 2002:ac8:5dcc:: with SMTP id e12mr22394488qtx.70.1620835643371; 
- Wed, 12 May 2021 09:07:23 -0700 (PDT)
-Received: from [192.168.180.118] (163.189-204-200.bestelclientes.com.mx.
- [189.204.200.163])
- by smtp.gmail.com with ESMTPSA id z11sm285525qto.95.2021.05.12.09.07.22
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 12 May 2021 09:07:23 -0700 (PDT)
-Subject: Re: [PATCH v6 26/82] target/arm: Implement SVE2 SHRN, RSHRN
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20210430202610.1136687-1-richard.henderson@linaro.org>
- <20210430202610.1136687-27-richard.henderson@linaro.org>
- <CAFEAcA_OknopgKOtwAoiLrKEXmtNDYpQ5EycnkzBuNbc7WLWag@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <2aaae8fa-a3d9-a88e-53f8-eba2c789e55c@linaro.org>
-Date: Wed, 12 May 2021 11:07:20 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=nGLchLqBy6yHQU2LDAscJHZXvGXltmDFsFu+Tjj2s+Y=;
+ b=NbqdTxwqYj0Kpm5aSbnbpXuqGbebVXK8GkRXBBcVriyL6DFNvViVyqj6JaCuP9ofD6
+ VhCRVyhyze00TON9nslRE2qPtHVogeB4HbVkWI4Cp1jsh6bMY7n5XILPDoGU9KRB6tiv
+ u7rgLLTFcb7L6i1qwJd4lTwmTIIRz3GUhWyZNEijY2pxaIRwD2qjUTHTx8IP5rRGAZWw
+ 0YYshiXV1Qlt010ZA5kvVNiJqzIiw+rXXB0TG/KYj6A9/V1/udu9LviD7BdIznoMGgS3
+ YlZhx3sh5Bfe2WAOUxwDqb2R0K22E0XjfGxO226KD1C34C9p3vyzi6siClAvy4RayMmU
+ fGLw==
+X-Gm-Message-State: AOAM533dm1gujGgKA4vjydbQvesQW4dbYrAG8Z+YcIRX7LTCAolEXycj
+ BEMcVGxDKLqE+ZBrbo9/JlcGZR+o5uRy5JdXiOMGmND3724=
+X-Received: by 2002:a05:6402:416:: with SMTP id
+ q22mr44146976edv.204.1620833071492; 
+ Wed, 12 May 2021 08:24:31 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_OknopgKOtwAoiLrKEXmtNDYpQ5EycnkzBuNbc7WLWag@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::82c;
- envelope-from=richard.henderson@linaro.org; helo=mail-qt1-x82c.google.com
+References: <20210430202610.1136687-1-richard.henderson@linaro.org>
+ <20210430202610.1136687-39-richard.henderson@linaro.org>
+In-Reply-To: <20210430202610.1136687-39-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 12 May 2021 16:23:17 +0100
+Message-ID: <CAFEAcA9fwtJsQJcQQMF2VBVBWJDJgLCU1Eaq13-8PVSsTy4tUg@mail.gmail.com>
+Subject: Re: [PATCH v6 38/82] target/arm: Implement SVE2 ADDHNB, ADDHNT
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::534;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x534.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HcJbsfm8GuIv
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ Stephen Long <steplong@quicinc.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 5o8npA2IZr+T
 
-On 5/12/21 3:52 AM, Peter Maydell wrote:
-> On Fri, 30 Apr 2021 at 21:49, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
->>
->> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
->> ---
->> v2: Fix typo in gen_shrnb_vec (laurent desnogues)
->> v3: Replace DO_RSHR with an inline function
->> ---
->>   target/arm/helper-sve.h    |  16 ++++
->>   target/arm/sve.decode      |   8 ++
->>   target/arm/sve_helper.c    |  54 ++++++++++++-
->>   target/arm/translate-sve.c | 160 +++++++++++++++++++++++++++++++++++++
->>   4 files changed, 236 insertions(+), 2 deletions(-)
-> 
->> -#undef DO_SHR
->> -#undef DO_SHL
-> 
-> Did we want to move the #undef DO_SHR/DO_SHL rather than just deleting them ?
-> (I have to admit I'm not sure to what extent undeffing all of these macros is
-> worth the effort -- I ran into similar minor awkwardness in the MVE
-> helper .c file.)
+On Fri, 30 Apr 2021 at 22:00, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> From: Stephen Long <steplong@quicinc.com>
+>
+> Signed-off-by: Stephen Long <steplong@quicinc.com>
+> Message-Id: <20200417162231.10374-2-steplong@quicinc.com>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
 
-Yeah, I'm not sure.  I've vaguely been thinking that the "operation" defines, 
-such as this one, should stay defined
-but that the expansion ones, such as...
+> diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
+> index 572d41a26c..2dead1f056 100644
+> --- a/target/arm/sve_helper.c
+> +++ b/target/arm/sve_helper.c
+> @@ -2112,6 +2112,42 @@ DO_SHRNT(sve2_uqrshrnt_d, uint64_t, uint32_t,     , H1_4, DO_UQRSHRN_D)
+>  #undef DO_SHRNB
+>  #undef DO_SHRNT
+>
+> +#define DO_BINOPNB(NAME, TYPEW, TYPEN, SHIFT, OP)                           \
+> +void HELPER(NAME)(void *vd, void *vn, void *vm, uint32_t desc)              \
+> +{                                                                           \
+> +    intptr_t i, opr_sz = simd_oprsz(desc);                                  \
+> +    for (i = 0; i < opr_sz; i += sizeof(TYPEW)) {                           \
+> +        TYPEW nn = *(TYPEW *)(vn + i);                                      \
+> +        TYPEW mm = *(TYPEW *)(vm + i);                                      \
+> +        *(TYPEW *)(vd + i) = (TYPEN)OP(nn, mm, SHIFT);                      \
+> +    }                                                                       \
+> +}
 
-> 
->>   #undef DO_ASRD
->>   #undef DO_ZPZI
->>   #undef DO_ZPZI_D
+Doesn't this need H macros like the 'T' version ?
 
-... these should only stay for their "scope".  But even that could be 
-considered pointless.
+> +
+> +#define DO_BINOPNT(NAME, TYPEW, TYPEN, SHIFT, HW, HN, OP)                   \
+> +void HELPER(NAME)(void *vd, void *vn, void *vm, uint32_t desc)              \
+> +{                                                                           \
+> +    intptr_t i, opr_sz = simd_oprsz(desc);                                  \
+> +    for (i = 0; i < opr_sz; i += sizeof(TYPEW)) {                           \
+> +        TYPEW nn = *(TYPEW *)(vn + HW(i));                                  \
+> +        TYPEW mm = *(TYPEW *)(vm + HW(i));                                  \
+> +        *(TYPEN *)(vd + HN(i + sizeof(TYPEN))) = OP(nn, mm, SHIFT);         \
+> +    }                                                                       \
+> +}
 
-AFAIR, DO_SHR/DO_SHL are pre-existing from the SVE1 work?
+Otherwise
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
->> +#define DO_SHRNB(NAME, TYPEW, TYPEN, OP) \
->> +void HELPER(NAME)(void *vd, void *vn, uint32_t desc)         \
->> +{                                                            \
->> +    intptr_t i, opr_sz = simd_oprsz(desc);                   \
->> +    int shift = simd_data(desc);                             \
->> +    for (i = 0; i < opr_sz; i += sizeof(TYPEW)) {            \
->> +        TYPEW nn = *(TYPEW *)(vn + i);                       \
->> +        *(TYPEW *)(vd + i) = (TYPEN)OP(nn, shift);           \
->> +    }                                                        \
->> +}
-> 
-> Doesn't this need some H() macros, the way the T version does ?
-
-No.  In the "B" version, we're manipulating strict columns (TYPEW in both VN 
-and VD), and do not care in which order the columns are processed.
-
-The "T" version reads TYPEW and writes TYPEN, which makes us have to care more 
-about addressing.
-
-
-r~
+thanks
+-- PMM

@@ -1,84 +1,126 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp4556250lfg;
-        Tue, 11 May 2021 19:32:33 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxEaCHTDM5i9KAOmK7vH9RHoIEmiQWPEv31OEeUqsqYM2NRzak5LIN5eYfpNcU87NsVBIl9
-X-Received: by 2002:a0c:c446:: with SMTP id t6mr32805648qvi.3.1620786753530;
-        Tue, 11 May 2021 19:32:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620786753; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp4604556lfg;
+        Tue, 11 May 2021 20:58:10 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyWQi9QgQguAT03deeq4r3572Nnpz/X5SZj+WChMDdUCRKWO0GSwLRPnwwPDB/WRvrGqMxJ
+X-Received: by 2002:ac8:5854:: with SMTP id h20mr31050579qth.87.1620791890655;
+        Tue, 11 May 2021 20:58:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620791890; cv=none;
         d=google.com; s=arc-20160816;
-        b=Iq9Zb7YWGjyd6QqatUx0PvqA2+aL+Mgs0hzCIYJKwere2tRQFtWwrVVwk3FMiH4R7A
-         6mXdFqhjKUlT6/0dtsjQZoXQ0zsCXlXLp7M3HBmR/QWjjDQEZCBhq986LJ4kCj6dO6Ym
-         ohwWspUtXLd5OG2FdddShR+ZwhFJXzVVl0A1JsutRiZZcnlXYJBOlT61XxgsmhOHXYWy
-         2fc9MhW7D/xgofyXtf20yEndkRm8ty7U0d5xOS/rk8VOFAKwVnEIfUaQs85BuAiPXR5+
-         G8eK6ErEVbz7N5W1Mfk3fjjEGVCWbXyOGLcXHH3P0M7LFT799KCQXpE57mXPcrH8P2NB
-         dO8A==
+        b=SqmtORM8ulKOC2MrOvHXzlTJvknf4gSH2KXwMOrWAmJaCzyZS2BGA1VXja4By0bmaa
+         AzhthPL986/hgObTcCeuRhzVm4PdOkaUT+VUsTsVVrwTAeW0eIn8NG5aT++3atVSieUF
+         qhVozxzQWAw8j6izhkvI9bbOwelL2ec1t7945IbpB0c8O9p6X2cx0npLzhAiF0dfzggZ
+         JOJ/ney77DfGZFYjX0gn0TKg/JE+2QhYWL07NWv/gGYQlWNxHeM0yr002QwEB2n2ZKHJ
+         jME91ljVNDpZCNKf9bVTtqMxXPcC5ruFsphG3xHDTr2AoSuYjl/7V0upjPyKnqUx5QQV
+         r3nA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=VlWxmfelEVovOz+4+OHnihyOlFaRgg3z49TW7n8Wl4U=;
-        b=HgpamLDD9XzIOBHxaxB6tMlY7xswyKPVASTQA8G7lCN6uisVz+lsFHRcrXapXXZk5Y
-         gottoYyQUhya+sRiBi/faev92Ku3rbnpRUjxcj20ep/TUcOBot7WAnzgkrVElUInkiv9
-         +NWmYTr27atG7nNmJV5FORiIHdQf57pOlGk0ISzTQt76LtNKoV5RoCG34CY57ZB7OhqR
-         H171faBl1nbcEd+sQNk0Ai5/aNX4WdRMS2D4V32VhFq9Eewq0nPGL+sDUOPcrNyxx/Wm
-         xfso1IiMJHze7tjyDegjvi2FvCb1qq9SzxGNI8q1jbPx2ecowgyMcG5HhMP66GeUxiqt
-         MJhw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=zARzJ3VY+v5cLeah1bkFjzw4VgZs19HGeS+bK/EIeQ8=;
+        b=VRGtEYJy4Ixwr+J0ocTULYeTcsdwRhRH6bDVr5WmKMpBhLP/mP1Ip6G12z9TyTZWSH
+         38Vyq7yyn8iHNgWdeKR0eIJCuF/Aih0zgf0EYdPD7U0PSISUWnhAE3BILYr0iJGz6GeW
+         MJg2hDZkVyFz1jko1f3/U2gMl9T9CV56pxmtSSdrLH/QUUOZYv6hopMJehfL9/2jM04S
+         iWfiJtLLSgVOv9UzluF6rvHZCw3oi9uawSmx96wRnXwPCVnfpnl8DIPkJgGIblqm2NGK
+         AY+H3omZrC78FPXw/fuRQZbKg9lMdSMycCyrGb23JZNhpFAWBBfNyfcsHF4DhUIa+k0w
+         XWlA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=aqzBghEf;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=STDUuppw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p14si4256302qkh.365.2021.05.11.19.32.33
+        by mx.google.com with ESMTPS id g7si7098617qvj.18.2021.05.11.20.58.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 May 2021 19:32:33 -0700 (PDT)
+        Tue, 11 May 2021 20:58:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=aqzBghEf;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:35246 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=STDUuppw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:41896 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lgefo-0001oo-Sy
-	for alex.bennee@linaro.org; Tue, 11 May 2021 22:32:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35464)
+	id 1lgg0f-0003nc-Vp
+	for alex.bennee@linaro.org; Tue, 11 May 2021 23:58:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46806)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1lgeff-0001o4-01; Tue, 11 May 2021 22:32:23 -0400
-Received: from ozlabs.org ([203.11.71.1]:48267)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lgg0W-0003nO-7t
+ for qemu-arm@nongnu.org; Tue, 11 May 2021 23:58:00 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:28627)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1lgefc-0003uY-Vp; Tue, 11 May 2021 22:32:22 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
- id 4FfzMg1FJbz9sX2; Wed, 12 May 2021 12:32:13 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1620786735;
- bh=zWdzIevbLWun4MXmfWXa1h05wVUtNcgnYYA3jie2884=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=aqzBghEfJpZwyPnz0SVfzkVOEMAVTRuRGREEuR6NF4mhOqB4Yi2VjKNzCMK5sw4AW
- o4MSVQ3n8+8I1ZAby1ieQ2uJwVTLBH8VGDZ1f7Vtoc5qt80XaROCONcLSg0gfQkIdM
- cz+pFy4sWv4Skq+Xn0uhqNqX4eXuyL1yn9jf3RqA=
-Date: Wed, 12 May 2021 12:24:42 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lgg0U-0003hL-PR
+ for qemu-arm@nongnu.org; Tue, 11 May 2021 23:58:00 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1620791878;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=zARzJ3VY+v5cLeah1bkFjzw4VgZs19HGeS+bK/EIeQ8=;
+ b=STDUuppw6dGfY92YB3oacnbKyOO2dHpUlRLUiE21sjZkbZ0on487CEyjCAiZG/wLTUtNHk
+ Gq2TI7/LB0ov9rwF7du7kacpb0VWIEb7DfznTd7fmFHpfTMi82Ggt3Gape58uTjD1QL/Xm
+ junjFgGdEmOOn11lHFq1SWToRILoTUQ=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-564-vYHno6HYMp-ndmd1XkgyLw-1; Tue, 11 May 2021 23:57:57 -0400
+X-MC-Unique: vYHno6HYMp-ndmd1XkgyLw-1
+Received: by mail-wr1-f72.google.com with SMTP id
+ v5-20020adf9e450000b029010e708f05b3so5288228wre.6
+ for <qemu-arm@nongnu.org>; Tue, 11 May 2021 20:57:56 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=zARzJ3VY+v5cLeah1bkFjzw4VgZs19HGeS+bK/EIeQ8=;
+ b=K5QWnlj+Sa53jaZw0dhqiWbOUwNbmct4Dz7H5+F0ff2FlezlsksdCmo28slufm3k6r
+ epSUeo1SiIaAnDVniy/0Xp5l0j52ZR3TKC6H/0W+ZJ8B0L+wi4QkAAaN90FPQb4nU/3J
+ S5gDaiK4c9PFTDPcKGDcp9hKnGWJPMT5T91Oy+W0WQ/5QyT/FhblvIeqOh0odt7a9QxK
+ qXtGWpZx7BRQGAVQwxeebRylTC9uwbmVq5MMiuLUd8NWrks76Dt4Dldhsdemiemwv157
+ m5zD6vMGUJeKKwoOehTjKzEisNOHYWUq3wA+asxUpxlAJQ4ESYqRNxBeOisFDL9RRPmD
+ hWpQ==
+X-Gm-Message-State: AOAM531GTGuuaJJg6Xs/EHUkTX0MB6C6qL64XhKl7AgMETiybhm97OFN
+ EzyayVTiwT++M/LiRqjCiv9ispXkOyNhvUq4daMWwdxBYRs9Zc8Tw1TGRFInfZ6iKU7/pWebRfX
+ 5y8JFlQGZIcDNdRtT8ZBlC77iW0OQ1AbjPREFatQblD0fYhIE+T14ZrYk9zc94g==
+X-Received: by 2002:adf:cd8c:: with SMTP id q12mr42302836wrj.328.1620791875796; 
+ Tue, 11 May 2021 20:57:55 -0700 (PDT)
+X-Received: by 2002:adf:cd8c:: with SMTP id q12mr42302807wrj.328.1620791875530; 
+ Tue, 11 May 2021 20:57:55 -0700 (PDT)
+Received: from [192.168.1.36] (39.red-81-40-121.staticip.rima-tde.net.
+ [81.40.121.39])
+ by smtp.gmail.com with ESMTPSA id z19sm4949700wmf.47.2021.05.11.20.57.54
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 11 May 2021 20:57:55 -0700 (PDT)
 Subject: Re: [RFC PATCH 1/5] hw/mem/nvdimm: Use Kconfig 'imply' instead of
  'depends on'
-Message-ID: <YJs8anLs1zL3nPdS@yekko>
+To: David Gibson <david@gibson.dropbear.id.au>
 References: <20210511155354.3069141-1-philmd@redhat.com>
- <20210511155354.3069141-2-philmd@redhat.com>
+ <20210511155354.3069141-2-philmd@redhat.com> <YJs8anLs1zL3nPdS@yekko>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <21e0a306-ccfb-a627-1496-14f831fe80a7@redhat.com>
+Date: Wed, 12 May 2021 05:57:53 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="qMWwRlmE27uFItL/"
-Content-Disposition: inline
-In-Reply-To: <20210511155354.3069141-2-philmd@redhat.com>
-Received-SPF: pass client-ip=203.11.71.1; envelope-from=dgibson@ozlabs.org;
- helo=ozlabs.org
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.248,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+In-Reply-To: <YJs8anLs1zL3nPdS@yekko>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=WINDOWS-1252
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -34
+X-Spam_score: -3.5
+X-Spam_bar: ---
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.699,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -102,119 +144,91 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zm5OOv4qcPA1
+X-TUID: YPoMo2Ed5EFm
 
+On 5/12/21 4:24 AM, David Gibson wrote:
+> On Tue, May 11, 2021 at 05:53:50PM +0200, Philippe Mathieu-Daudé wrote:
+>> Per the kconfig.rst:
+>>
+>>   A device should be listed [...] ``imply`` if (depending on
+>>   the QEMU command line) the board may or  may not be started
+>>   without it.
+>>
+>> This is the case with the NVDIMM device, so use the 'imply'
+>> weak reverse dependency to select the symbol.
+> 
+> Uh.. It should definitely be possible to start a pseries machine
+> without NVDIMM.  I would have guessed the same for PC.
 
---qMWwRlmE27uFItL/
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Yes, this is what this patch does. With it we can build with:
+CONFIG_NVDIMM=n
 
-On Tue, May 11, 2021 at 05:53:50PM +0200, Philippe Mathieu-Daud=E9 wrote:
-> Per the kconfig.rst:
->=20
->   A device should be listed [...] ``imply`` if (depending on
->   the QEMU command line) the board may or  may not be started
->   without it.
->=20
-> This is the case with the NVDIMM device, so use the 'imply'
-> weak reverse dependency to select the symbol.
+> 
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>> ---
+>>  default-configs/devices/ppc64-softmmu.mak | 1 -
+>>  hw/arm/Kconfig                            | 1 +
+>>  hw/i386/Kconfig                           | 1 +
+>>  hw/mem/Kconfig                            | 2 --
+>>  hw/ppc/Kconfig                            | 1 +
+>>  5 files changed, 3 insertions(+), 3 deletions(-)
+>>
+>> diff --git a/default-configs/devices/ppc64-softmmu.mak b/default-configs/devices/ppc64-softmmu.mak
+>> index ae0841fa3a1..cca52665d90 100644
+>> --- a/default-configs/devices/ppc64-softmmu.mak
+>> +++ b/default-configs/devices/ppc64-softmmu.mak
+>> @@ -8,4 +8,3 @@ CONFIG_POWERNV=y
+>>  
+>>  # For pSeries
+>>  CONFIG_PSERIES=y
+>> -CONFIG_NVDIMM=y
+>> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+>> index b887f6a5b17..67723d9ea6a 100644
+>> --- a/hw/arm/Kconfig
+>> +++ b/hw/arm/Kconfig
+>> @@ -6,6 +6,7 @@ config ARM_VIRT
+>>      imply VFIO_PLATFORM
+>>      imply VFIO_XGMAC
+>>      imply TPM_TIS_SYSBUS
+>> +    imply NVDIMM
+>>      select ARM_GIC
+>>      select ACPI
+>>      select ARM_SMMUV3
+>> diff --git a/hw/i386/Kconfig b/hw/i386/Kconfig
+>> index 7f91f30877f..66838fa397b 100644
+>> --- a/hw/i386/Kconfig
+>> +++ b/hw/i386/Kconfig
+>> @@ -23,6 +23,7 @@ config PC
+>>      imply TPM_TIS_ISA
+>>      imply VGA_PCI
+>>      imply VIRTIO_VGA
+>> +    imply NVDIMM
+>>      select FDC
+>>      select I8259
+>>      select I8254
+>> diff --git a/hw/mem/Kconfig b/hw/mem/Kconfig
+>> index a0ef2cf648e..8b19fdc49f1 100644
+>> --- a/hw/mem/Kconfig
+>> +++ b/hw/mem/Kconfig
+>> @@ -7,6 +7,4 @@ config MEM_DEVICE
+>>  
+>>  config NVDIMM
+>>      bool
+>> -    default y
+>> -    depends on (PC || PSERIES || ARM_VIRT)
+>>      select MEM_DEVICE
+>> diff --git a/hw/ppc/Kconfig b/hw/ppc/Kconfig
+>> index e51e0e5e5ac..66e0b15d9ef 100644
+>> --- a/hw/ppc/Kconfig
+>> +++ b/hw/ppc/Kconfig
+>> @@ -3,6 +3,7 @@ config PSERIES
+>>      imply PCI_DEVICES
+>>      imply TEST_DEVICES
+>>      imply VIRTIO_VGA
+>> +    imply NVDIMM
+>>      select DIMM
+>>      select PCI
+>>      select SPAPR_VSCSI
+> 
 
-Uh.. It should definitely be possible to start a pseries machine
-without NVDIMM.  I would have guessed the same for PC.
-
->=20
-> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
-> ---
->  default-configs/devices/ppc64-softmmu.mak | 1 -
->  hw/arm/Kconfig                            | 1 +
->  hw/i386/Kconfig                           | 1 +
->  hw/mem/Kconfig                            | 2 --
->  hw/ppc/Kconfig                            | 1 +
->  5 files changed, 3 insertions(+), 3 deletions(-)
->=20
-> diff --git a/default-configs/devices/ppc64-softmmu.mak b/default-configs/=
-devices/ppc64-softmmu.mak
-> index ae0841fa3a1..cca52665d90 100644
-> --- a/default-configs/devices/ppc64-softmmu.mak
-> +++ b/default-configs/devices/ppc64-softmmu.mak
-> @@ -8,4 +8,3 @@ CONFIG_POWERNV=3Dy
-> =20
->  # For pSeries
->  CONFIG_PSERIES=3Dy
-> -CONFIG_NVDIMM=3Dy
-> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> index b887f6a5b17..67723d9ea6a 100644
-> --- a/hw/arm/Kconfig
-> +++ b/hw/arm/Kconfig
-> @@ -6,6 +6,7 @@ config ARM_VIRT
->      imply VFIO_PLATFORM
->      imply VFIO_XGMAC
->      imply TPM_TIS_SYSBUS
-> +    imply NVDIMM
->      select ARM_GIC
->      select ACPI
->      select ARM_SMMUV3
-> diff --git a/hw/i386/Kconfig b/hw/i386/Kconfig
-> index 7f91f30877f..66838fa397b 100644
-> --- a/hw/i386/Kconfig
-> +++ b/hw/i386/Kconfig
-> @@ -23,6 +23,7 @@ config PC
->      imply TPM_TIS_ISA
->      imply VGA_PCI
->      imply VIRTIO_VGA
-> +    imply NVDIMM
->      select FDC
->      select I8259
->      select I8254
-> diff --git a/hw/mem/Kconfig b/hw/mem/Kconfig
-> index a0ef2cf648e..8b19fdc49f1 100644
-> --- a/hw/mem/Kconfig
-> +++ b/hw/mem/Kconfig
-> @@ -7,6 +7,4 @@ config MEM_DEVICE
-> =20
->  config NVDIMM
->      bool
-> -    default y
-> -    depends on (PC || PSERIES || ARM_VIRT)
->      select MEM_DEVICE
-> diff --git a/hw/ppc/Kconfig b/hw/ppc/Kconfig
-> index e51e0e5e5ac..66e0b15d9ef 100644
-> --- a/hw/ppc/Kconfig
-> +++ b/hw/ppc/Kconfig
-> @@ -3,6 +3,7 @@ config PSERIES
->      imply PCI_DEVICES
->      imply TEST_DEVICES
->      imply VIRTIO_VGA
-> +    imply NVDIMM
->      select DIMM
->      select PCI
->      select SPAPR_VSCSI
-
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---qMWwRlmE27uFItL/
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAmCbPGYACgkQbDjKyiDZ
-s5IhMw//XHuWL0LI52jnQCIrwW5E5UE+x9LXCm+gDEg5BtjCpmTeE2esuGGpoOrC
-W3Q2sgDe434cj4wXvCPZJ+aXPt0ktFhScDS1aGA5mkvhn2pZ6k2j63ELk/jot68x
-DMDy5NK+z8UQo3nAKc+lS3j2oECh75oBVaXvI0I8QZqIzrhzqIKwb1meJTSoAa1H
-kq5houW6R42TvPQCfbPKuMpPxnuTTpxpyvIKvHX03qqFqyayxFf5FrvEU6ccm/RX
-0Ow+f5efCGzM9FhWzWpw0ukXey7RSeYO92YtrW1c3aLJrHRuZZaA6ZUpER4tLjiG
-t/kK790CvQflts3Ge+NzMfpPFkOPtuJiqnhM353NSC3rYagNrTlnxOCa+BHTvEW+
-E2ISj5B3G+bcslrt1IgAsJGM/pkgZLT3dl1h2P+Li66mAizuWijTMvH1SjWXqHJF
-EU6xyZhaN06P0BoCR2MRhVvLKkdtI/1CZyyhlcTWXjuKORmPagfIysvldAuMmkzX
-mmZpPss5GJ18Ny1WY1fZ4jdUZa333uUoIMceays0jSlMUgUIQxAAhOXmzfgznAkV
-nDIO6ay2/JXSKzPcOmoOBA/xzs2Gt67rPhcBLuojHqD+jcQkaSLJulfJl2k1MTgF
-6R2yqeVMiBDugl4tctNF6E+plPzilTr4FnUiADifgrUZPUWD/tY=
-=AgV4
------END PGP SIGNATURE-----
-
---qMWwRlmE27uFItL/--

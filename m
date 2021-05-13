@@ -1,123 +1,103 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp662758lfg;
-        Thu, 13 May 2021 09:48:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwc0bPt1DJTGOaAo6n8zYD7t/a2nQfVRQhvciyZDK0vG4FnhhM57wxSiqm8YksG+EaEJr0A
-X-Received: by 2002:a6b:f602:: with SMTP id n2mr31626790ioh.174.1620924501832;
-        Thu, 13 May 2021 09:48:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620924501; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp362325lfg;
+        Thu, 13 May 2021 03:41:48 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzsFjFJ0fKIhp/zwhn1EZGg1OXWM+NoGpAaDOcYkCqtzH3UkcEp3AdSY7Bgh++PF2jJbVO1
+X-Received: by 2002:a05:6402:26ce:: with SMTP id x14mr48658284edd.216.1620902508893;
+        Thu, 13 May 2021 03:41:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620902508; cv=none;
         d=google.com; s=arc-20160816;
-        b=QZnSTWE4/4EBimZYCkOhqUHpl4MsDwusoMhKRK/oQEoRujDjHNcTD5U39Ri0tGGF10
-         tEuGSNUD/ykdp01O1vFp3WDEFlkkXFyggWOhYtnjI5F+T4KKcUhJ5E+xK4rBdCx93MQ0
-         wnL4yjqF+0M4Oen4paWQb4X8suxpi+G5N4jUOp/oPiYLH5i8ZSrsuWofzGM+25DYPzUL
-         XOISRIifIO+CWhAjhhAOzegV9fOqeU2OcO1URs+eFT9GnSkFVSh3GUKRd6yeWLvBWDK+
-         fuNqSq4orI+fuKEyq/k/HwGnom+jP75iDv72padFdj8GuOi7s2BdgmSg1TYej60tXxIP
-         QrOg==
+        b=ZyeGWlZUytm8c+0H/Youa/Mnpqu561lrvaBDI/gohNs46LvF1OMv3jlRNVWkFS6JM7
+         SmbYLjDVBWL3EghqstvrZXZ46rTfyLCeMyZdK8/eh+dxeoPoQN7vsQGaueBc08cekvA8
+         YBMM6Zu+bz0G0bc5rgui6yT82Vvdf0b8JwAsGNs4ly3U+eYQ0yMGrYOFhGK3HhluDJ2F
+         EP0Cm+NQbesPIC76NjuOG8vtt9kw8tX+46+eb6Huj3+zrtspbHTnPhCHV39gmsTocKl3
+         9azcL8wtm8rPsu+jNRfXzjXX7Lc1J4DaebYpE4cqPryyn0WR7OekmtI7q65PYsh3wezq
+         5DsQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=6C7WWutrNcOZs1K+Kika/F95HGC7AnV8YKzuCNwKf5Q=;
-        b=N4K0XEZfQbfuQfkU72Ll6pQferc+WLhy+pszFIOk4MhXYqDV/U3Xvn2pi1kkPwHR4B
-         bXTU2DP/Cfg2Zt36jvesn24oBcebGR5MIs1mrsKrYvEVk7tAlrTLzJwzF3ZKSFs6isZM
-         0kJLN4EENnutgetPbGvDL/5Fo5j0H+8LqGarWw61ebZ5N5amhBNNjuyfxetvGt0MsXrI
-         V7Y5KDEYQsV0DfFO2TovD4HvJ/AjuUULOWBbrOIpEYiNlQLB4/U6oDfvU0h8fy9VTfov
-         29QwDzrkdacqfl3x6kUNhvBynskq1C6mmFfq3ZGEpOkHrKwvhsi6ZXRZm95289VC9MGa
-         uTZg==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=CNMyQGCf6aFt8q2U2Vqp9hHdb6Ji2+QfDcWNldclbYc=;
+        b=HLCBCUxrWMADwYwSXtXJZJLmpY5wtmF5KP12B98SIz+c34rdwJs1egypx6wisSLvvW
+         qpsLVb/mB1vX5c+4aOb+AyngvdFOYNZ0v6/xPUIthE1V4nqFRdzdb2546OAGBHOy0qRk
+         Y6lXDI3/mgMswYMuYFbknZyBbs7NJ3269w1GTsuIH9A5I5I75cDlDCoDlQL/2FzUMT0Y
+         UxIqZXIPfpM2hEXeACLvU7Jx649/S8P2uYZvKlWudNMukXyqDRzzIuyj2vb2jGNabAAo
+         R/e7DpsClVpJBvlYW94dhk99U3RWJZ1bRSraVMuL/f+0eRju6bvxXXbsdz2BNlkq32SP
+         mo7A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cHjH+1Wr;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Oo6uDTqE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m20si5174271jat.70.2021.05.13.09.48.21
+        by mx.google.com with ESMTPS id ho35si2675445ejc.3.2021.05.13.03.41.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 13 May 2021 09:48:21 -0700 (PDT)
+        Thu, 13 May 2021 03:41:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cHjH+1Wr;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Oo6uDTqE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58372 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:60296 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lhEVZ-0003HE-2g
-	for alex.bennee@linaro.org; Thu, 13 May 2021 12:48:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42686)
+	id 1lh8mq-00010z-26
+	for alex.bennee@linaro.org; Thu, 13 May 2021 06:41:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35712)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lhEN8-0002T5-0z
- for qemu-arm@nongnu.org; Thu, 13 May 2021 12:39:38 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:46123)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lhEMu-0000qK-1G
- for qemu-arm@nongnu.org; Thu, 13 May 2021 12:39:37 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1620923962;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=6C7WWutrNcOZs1K+Kika/F95HGC7AnV8YKzuCNwKf5Q=;
- b=cHjH+1Wrtrrxr1ADsrJIyujftM0sNPI+4zE3zxTDxyFcrqqHzCP2IJ+FFDoNV44CBtlXFX
- FBIqh7pETVjQpHM+NSJUISKdRyctMT1pzb2pTGlpMot6XTx7PQ2qa6f55bKxMA8iPyw8sf
- 7Q51o/FxlgaVMz2/mSTEs6enEvy/DeE=
-Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
- [209.85.218.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-306-IXZIPgolPHmCpy0JnmCagg-1; Thu, 13 May 2021 12:39:20 -0400
-X-MC-Unique: IXZIPgolPHmCpy0JnmCagg-1
-Received: by mail-ej1-f69.google.com with SMTP id
- c11-20020a170906170bb02903bbefa04cd1so4871910eje.8
- for <qemu-arm@nongnu.org>; Thu, 13 May 2021 09:39:20 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lh8jm-00054i-JE
+ for qemu-arm@nongnu.org; Thu, 13 May 2021 06:38:38 -0400
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d]:33722)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lh8ji-0005qF-V0
+ for qemu-arm@nongnu.org; Thu, 13 May 2021 06:38:37 -0400
+Received: by mail-ej1-x62d.google.com with SMTP id t4so39291586ejo.0
+ for <qemu-arm@nongnu.org>; Thu, 13 May 2021 03:38:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=CNMyQGCf6aFt8q2U2Vqp9hHdb6Ji2+QfDcWNldclbYc=;
+ b=Oo6uDTqE4RtwCQ/SIM+j6dG1EVrUvdiheT3xb093iqMGtQZZx8BvbMeqnYxEEj38pk
+ oozkn7F18iFY0moJOZQsTUwffWe9I+lTE+sXcHQ3oomb3gsuLhKomfPM/PCrQrhWxu3l
+ g2f+DY6I7O+DbVACOPebQH/oLdNxFPb2dp82Uts9rKq6LV9XMIxACHXZlUJmcWiJgjL3
+ llrFPxgAZiipFp7t4Dekaooc6fIpdcCulnvJRRQec2h91w3PUMCK8Y5ckR8iJdMp4afs
+ O/OUdMjM339P06yyIyaFS9MzAYzJB/aht/KyO6A668lupBOSCCbyHiOcq6L5+B9+J80t
+ Tn2A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=6C7WWutrNcOZs1K+Kika/F95HGC7AnV8YKzuCNwKf5Q=;
- b=BM+3Sk0zhBl2Cbw2tCOuuTLg/M1MIAufMnypxuyO1Ck8pg0S/G3tz0g8ZQkSzUgcoJ
- SrY7gLvkrdrNM//aT0Oab0MqXPajiA4Cdzyhg4UrDJwMfX8fXUMrT4pgEXX/tdqJUjmI
- XWk1a15h8/jXDkwg98gG7Mu4z/MdUiM21PVDzOEhZdr2pB93KcwQPt6e87I/or8Al1Ng
- 3izAKIA2BAP9QoYswjZJthIQgGQj29VlByzhggqTvE9ZMfLhHaiUOy2nhmmIrgERpzQm
- YsKKT+1SkCVRwNuixZzStya9bnBO/Fcu5C6EKjIlSwebh4vdV2YmWzAXp/AK6fK6/SuX
- q0wQ==
-X-Gm-Message-State: AOAM533C2DJQTlMvTB5d6COOxuzA/r3ykUZcCV14/R2qYlMz2gFEXGci
- 01cM87ODHCoc4xnHw/OftDCRlMdR+xtzh0BS6vVZzKYBVLi/SD8axF9wQgnuhzGpcl2PnurFMTi
- Jf3eoJvphP66Q
-X-Received: by 2002:a17:906:c14c:: with SMTP id
- dp12mr44642600ejc.312.1620923959545; 
- Thu, 13 May 2021 09:39:19 -0700 (PDT)
-X-Received: by 2002:a17:906:c14c:: with SMTP id
- dp12mr44642592ejc.312.1620923959396; 
- Thu, 13 May 2021 09:39:19 -0700 (PDT)
-Received: from x1w.redhat.com (31.red-83-51-215.dynamicip.rima-tde.net.
- [83.51.215.31])
- by smtp.gmail.com with ESMTPSA id cr21sm2011294ejc.2.2021.05.13.09.39.18
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 13 May 2021 09:39:19 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH 04/10] hw/arm/Kconfig: Remove unused DS1338 symbol from i.MX25
- PDK Board
-Date: Thu, 13 May 2021 18:38:52 +0200
-Message-Id: <20210513163858.3928976-5-philmd@redhat.com>
-X-Mailer: git-send-email 2.26.3
-In-Reply-To: <20210513163858.3928976-1-philmd@redhat.com>
-References: <20210513163858.3928976-1-philmd@redhat.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=CNMyQGCf6aFt8q2U2Vqp9hHdb6Ji2+QfDcWNldclbYc=;
+ b=XaM5vu1WqCbHDQ7ItMnHzc68CQrhnGeA5OSttYZBShnYCC6plCtaWWfbgla7h25WoL
+ urHBAFpelsr/S+Xu7g8wnBHK9VScLwj4x8UhlcIUkvfiKwH40acNJnB1KAM+isQIee9V
+ CV5U3XPlNMCObnX/c0xDiJ9J/d5qIYAyeJKeweDjV3yBarzl9g5JELf+xWZX4HUiScy+
+ LEhsGQ9kTn3uMfXZDZwmjXdCvpgQ8FzAzTwt061k/7XgvWzze9QCXe7ehiC4nhwzZStS
+ t0iNI+sYO9unSMzLitDSoSiWyPIDk8q7oZoK+5B+3aHBbDb5Bgvqw5o7wOW3X4KlvQlU
+ bCvQ==
+X-Gm-Message-State: AOAM533jURxnFuT5NgwewAwsnioFj8eKrRXlwpdgN4NwjP9VAZPDMf5H
+ fV7hZT72G2ID97yNc+WSysItxwshDWJSgTsvTLqX0Q==
+X-Received: by 2002:a17:906:eced:: with SMTP id
+ qt13mr42461079ejb.382.1620902310599; 
+ Thu, 13 May 2021 03:38:30 -0700 (PDT)
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -34
-X-Spam_score: -3.5
-X-Spam_bar: ---
-X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.699,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20210430202610.1136687-1-richard.henderson@linaro.org>
+ <20210430202610.1136687-47-richard.henderson@linaro.org>
+In-Reply-To: <20210430202610.1136687-47-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 13 May 2021 11:38:19 +0100
+Message-ID: <CAFEAcA-N0nW+RxXZaaqatfdefbwP9z7Zb6gzVe66HbT70zjzNg@mail.gmail.com>
+Subject: Re: [PATCH v6 46/82] target/arm: Implement SVE2 FMMLA
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -130,36 +110,30 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ Stephen Long <steplong@quicinc.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IK5f1H/EHanO
+X-TUID: B41qMgTO89l6
 
-In commit c4f00daa5b3 ("imx25-pdk: create ds1338 for qtest inside
-the test") we removed the DS1338 device from the i.MX25 machine
-but forgot to remove it in the machine Kconfig definitions, do
-it now.
+On Fri, 30 Apr 2021 at 22:07, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> From: Stephen Long <steplong@quicinc.com>
+>
+> Signed-off-by: Stephen Long <steplong@quicinc.com>
+> Message-Id: <20200422165503.13511-1-steplong@quicinc.com>
+> [rth: Fix indexing in helpers, expand macro to straight functions.]
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/cpu.h           | 10 ++++++
+>  target/arm/helper-sve.h    |  3 ++
+>  target/arm/sve.decode      |  4 +++
+>  target/arm/sve_helper.c    | 74 ++++++++++++++++++++++++++++++++++++++
+>  target/arm/translate-sve.c | 34 ++++++++++++++++++
+>  5 files changed, 125 insertions(+)
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
----
- hw/arm/Kconfig | 1 -
- 1 file changed, 1 deletion(-)
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 85c6a1a088c..5827c092b28 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -386,7 +386,6 @@ config FSL_IMX25
-     select IMX_FEC
-     select IMX_I2C
-     select WDT_IMX2
--    select DS1338
- 
- config FSL_IMX31
-     bool
--- 
-2.26.3
-
+thanks
+-- PMM

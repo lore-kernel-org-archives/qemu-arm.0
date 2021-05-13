@@ -1,108 +1,92 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp5273265lfg;
-        Wed, 12 May 2021 11:39:20 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx7z5QmCMqYYotjmEJQFHlyLh6Mi36JveHOmxNZmf2std34k4fUjuyR/Zecxw/Wm+grdbSt
-X-Received: by 2002:a05:6e02:d53:: with SMTP id h19mr31304605ilj.232.1620844760177;
-        Wed, 12 May 2021 11:39:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620844760; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp222688lfg;
+        Thu, 13 May 2021 00:10:16 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzQ+d7VlbQQAF01zVhnBOWk7gqV359WWugNT4omMF29Gd5GrfEspPeGV3fdnGDerT61DWWy
+X-Received: by 2002:a92:cc0f:: with SMTP id s15mr33843336ilp.187.1620889816290;
+        Thu, 13 May 2021 00:10:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620889816; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZJ0elTCo2yuJ6u2z+7+zn28SQl8U4kUHrfd1sV1/nqSUiv1ChnjZOJZl0N9dBU6U0r
-         sjqH9XK9Eff149tOW2ie40MI4mkY5G8vYlJpXjQR8aTqhr7XNZLxnMW7pQC+EZYsEKS3
-         DbLrfZNCRF6NCJDyxdczOoDu2FB1a8FFn3Qi32+Gzb5WgnadVts7+by+IZCYckbsOY5C
-         oFso7GiKRnGFMvTc4A/NxD9iHixSe1RLRQx9as6Xyk7GJJ35+SsTHAGuoOJ5/jfAzdyN
-         UAO0VQnAr7EuKY13EzbXXuUKSUbZ7lTjtqC4VundijcEf94sBNvvanWNw+MjybR5fxLU
-         iCDA==
+        b=sv2qG1og+wRqFlfnMiekcLSFK7Da7JM4RSmYgvTpjbyNCVgGADsvo731jY+ek6HSwF
+         61eCn7bKLLAh+1iKrlFyMTeGZVjziVFrssd7YQiO1datxxhYdfc8CmZ01+Y160YMnEne
+         OnLYZn3VF8zDqYA0RwsB7/IORIy9YVmrG3DngItKL1d+2K1jf1EJ+qpXBlrhCihsupc7
+         O6nwwrhv6lfdXRCle7Km/9nEN0nhcMXriG0XqSgRirkhKADJ6d6dWbe5b6EajODSh+qz
+         sr14epincrw8WHH3mc/ymi+P1hew1YZrRNzqbd1DgF8e9o3Qe5KNsQCjCT7ggZRhdmpq
+         r6aQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=uNizM5dd+njefSGglfwPGotA4yVew4h3gSREpFzckEs=;
-        b=lLCT7/NkD0ywkXO5g52nOIQpaaI14ZkBumt4PjpDyaOn3c+XkGIuPRrylrr8aZGL+v
-         L6tXTFbQ9TpQ17DDBD0yO3pPJDZhaBjOgGVS5fzN4eQTpIVjexpIhJX4Eejq29NwWbYi
-         6Vp8/fsNtGRkQ79gONZg3auE+BIYmsv9IhlyJMd5sn24c3O9gHfiYmGEcQXymwsTISVS
-         ukYO12BmNgYS4ZgbD/OfaPVPoosCIIsovGghtn1ngLThtnOGBLJfUfwbnrpFehoRELqv
-         CHjZA68GWRYlqp77V3sC0o2MOf7aopzX1TJvcDd53h289SCCVgcYDgA/NrOER84IHx1L
-         7yCQ==
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=5Oci2jqr79luGsijrSGpgX6K/fEhMxbQbn5o7bBD7Cw=;
+        b=wzqvoUrNCiW0+92u5YtK39+0tyjuVa0gHnaIABWwgptJtiPBM12/sbORwzNN8i/FC7
+         OhGOe+sXv3Pk7LxCuZn+X84wOTGzj6ulTO4bfz3pzwLLoLm7BrenIBF3AFPgXlT4kFZE
+         W1HAWS94CAX1ayfd4op2EDD046kQ2fBJ5IrGMLqCBoKQNGFs2r4yqWawg2sF1TooRAeH
+         N70BpTDvd6Cuh2u3PC+ld3+LlNJYjEnKsqlEKTgamICtzZ54hGuAu0e+MD+LBuVNsT+/
+         eQa6rmrkFBykZNxA3IhSecP1ZaAdX41blZJizhSYSp4Bd8xCvwvtNY0nZFTO46MLwxXB
+         eRcA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=sKhSZnjt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f4si534831ilq.1.2021.05.12.11.39.20
+        by mx.google.com with ESMTPS id d6si3071175ilv.73.2021.05.13.00.10.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 May 2021 11:39:20 -0700 (PDT)
+        Thu, 13 May 2021 00:10:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=sKhSZnjt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41262 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Received: from localhost ([::1]:34648 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lgtlP-0007G6-I0
-	for alex.bennee@linaro.org; Wed, 12 May 2021 14:39:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46384)
+	id 1lh5U7-0001OR-Kb
+	for alex.bennee@linaro.org; Thu, 13 May 2021 03:10:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48738)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
- id 1lgtWS-00065M-BQ
- for qemu-arm@nongnu.org; Wed, 12 May 2021 14:23:52 -0400
-Received: from mail-il1-x12c.google.com ([2607:f8b0:4864:20::12c]:45923)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
- id 1lgtWQ-0005qq-GH
- for qemu-arm@nongnu.org; Wed, 12 May 2021 14:23:52 -0400
-Received: by mail-il1-x12c.google.com with SMTP id e14so20928463ils.12
- for <qemu-arm@nongnu.org>; Wed, 12 May 2021 11:23:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=uNizM5dd+njefSGglfwPGotA4yVew4h3gSREpFzckEs=;
- b=sKhSZnjtpQN1Bkj9TABCzW4bl2ROCU2Xn7FBiFOxCvfHmKB41DZVJBGM/04FZjgu4y
- APf8HDOAZOolZ59NNO+KSwTLK9wsmclu9LOnVkbfCX2NJUrAyB01AZJKF+7UVZcG61cD
- oPRJCMBa4lV6j+VqIIKp4AaZ+bRjlVrI3Rf+CMxsicySQDO7BiLRNVD5fEYIEf3sOWMq
- CvuTSMM8LmsIcgQTYsPHuJJ7UqMWD3TaRRtP6kOKZXCPjdEO4V0aPV+bo/njF1RF3Bil
- 9OTaE6mkGhvmskS8rn0IAWGZWXyguJfNMiTSnShHAhgk3WGdpvhH9tF/eMvjOpO5Dhbi
- qM/Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=uNizM5dd+njefSGglfwPGotA4yVew4h3gSREpFzckEs=;
- b=HyIapj8Ttk1rX1VzL3PrD/8nnr2up9jcyNyF9bvz9eeKiJ7+qRy/F1hCL22l80Fwq+
- nrEMIwvoVZ5aAFckLGNuPjHzDCVcvxAEgCqVT7jzAdBMNuc3CJ4JrIEOgT5Nt+1VpdnS
- zuq0LlFUz9uGQKG8VocEf0xXUeZn/znSYMsqXkCG5DV2S6rqNWVgZHQNozsL18dpJtbG
- 4iQXyTl8/4SOURbJ44V3gZh4ppNnFpYR6zYi+b4MJJIxlmiTDAL7Gd8lvJXoGvh3o1oi
- lmR65WNCfYgGLYW5Slwzr2J6nL1F/By03m6gBuWb3lRAaoQu6czF7mtr7Rl7/fA+JgAl
- bUcw==
-X-Gm-Message-State: AOAM531cZs2+8uRYomjDwhDN915INSkXGzMp3XdO8+1ZH9Drmca89a1S
- qJ8wX2BS7BCshmDFG5D2XaNEuA==
-X-Received: by 2002:a05:6e02:118b:: with SMTP id
- y11mr31944521ili.163.1620843829298; 
- Wed, 12 May 2021 11:23:49 -0700 (PDT)
-Received: from cube.nuviainc.com (c-174-52-16-57.hsd1.ut.comcast.net.
- [174.52.16.57])
- by smtp.gmail.com with ESMTPSA id d16sm247484ilo.12.2021.05.12.11.23.48
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 12 May 2021 11:23:48 -0700 (PDT)
-From: Rebecca Cran <rebecca@nuviainc.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v9 3/3] target/arm: set ID_AA64ISAR0.TLB to 2 for max AARCH64
- CPU type
-Date: Wed, 12 May 2021 12:23:37 -0600
-Message-Id: <20210512182337.18563-4-rebecca@nuviainc.com>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20210512182337.18563-1-rebecca@nuviainc.com>
-References: <20210512182337.18563-1-rebecca@nuviainc.com>
+ (Exim 4.90_1) (envelope-from <jiangkunkun@huawei.com>)
+ id 1lh5Ty-0001OD-Mj; Thu, 13 May 2021 03:10:06 -0400
+Received: from szxga01-in.huawei.com ([45.249.212.187]:2421)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jiangkunkun@huawei.com>)
+ id 1lh5Tv-0003BZ-TF; Thu, 13 May 2021 03:10:06 -0400
+Received: from dggeml765-chm.china.huawei.com (unknown [172.30.72.54])
+ by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4FgjQc0yJ7zYQc4;
+ Thu, 13 May 2021 15:07:20 +0800 (CST)
+Received: from dggema765-chm.china.huawei.com (10.1.198.207) by
+ dggeml765-chm.china.huawei.com (10.1.199.175) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.2176.2; Thu, 13 May 2021 15:09:48 +0800
+Received: from [10.174.185.210] (10.174.185.210) by
+ dggema765-chm.china.huawei.com (10.1.198.207) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.2176.2; Thu, 13 May 2021 15:09:32 +0800
+Subject: Re: [RFC v9 24/29] hw/arm/smmuv3: Fill the IOTLBEntry leaf field on
+ NH_VA invalidation
+To: Eric Auger <eric.auger@redhat.com>, <eric.auger.pro@gmail.com>,
+ <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <alex.williamson@redhat.com>
+References: <20210411120912.15770-1-eric.auger@redhat.com>
+ <20210411120912.15770-25-eric.auger@redhat.com>
+From: Kunkun Jiang <jiangkunkun@huawei.com>
+Message-ID: <1c70fb86-fb4b-e26c-8022-bd19b073d8fe@huawei.com>
+Date: Thu, 13 May 2021 15:09:21 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
+In-Reply-To: <20210411120912.15770-25-eric.auger@redhat.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::12c;
- envelope-from=rebecca@nuviainc.com; helo=mail-il1-x12c.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Language: en-US
+X-Originating-IP: [10.174.185.210]
+X-ClientProxiedBy: dggeme702-chm.china.huawei.com (10.1.199.98) To
+ dggema765-chm.china.huawei.com (10.1.198.207)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.187;
+ envelope-from=jiangkunkun@huawei.com; helo=szxga01-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -116,33 +100,82 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Rebecca Cran <rebecca@nuviainc.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org
+Cc: peter.maydell@linaro.org, jacob.jun.pan@linux.intel.com,
+ jean-philippe@linaro.org, tn@semihalf.com, chenxiang66@hisilicon.com,
+ shameerali.kolothum.thodi@huawei.com, nicoleotsuka@gmail.com,
+ vivek.gautam@arm.com, vdumpa@nvidia.com, yi.l.liu@intel.com, peterx@redhat.com,
+ zhangfei.gao@gmail.com, yuzenghui@huawei.com, wanghaibin.wang@huawei.com,
+ zhukeqian1@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Fk5ejGDntP6m
+X-TUID: bWAvMkBX3c9z
 
-Indicate support for FEAT_TLBIOS and FEAT_TLBIRANGE by setting
-ID_AA64ISAR0.TLB to 2 for the max AARCH64 CPU type.
+Hi Eric,
 
-Signed-off-by: Rebecca Cran <rebecca@nuviainc.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/cpu64.c | 1 +
- 1 file changed, 1 insertion(+)
+On 2021/4/11 20:09, Eric Auger wrote:
+> Let's propagate the leaf attribute throughout the invalidation path.
+> This hint is used to reduce the scope of the invalidations to the
+> last level of translation. Not enforcing it induces large performance
+> penalties in nested mode.
+>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> ---
+>   hw/arm/smmuv3.c | 9 +++++----
+>   1 file changed, 5 insertions(+), 4 deletions(-)
+>
+> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+> index 7beb55cd89..74a6408146 100644
+> --- a/hw/arm/smmuv3.c
+> +++ b/hw/arm/smmuv3.c
+> @@ -799,7 +799,7 @@ epilogue:
+>   static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
+>                                  IOMMUNotifier *n,
+>                                  int asid, dma_addr_t iova,
+> -                               uint8_t tg, uint64_t num_pages)
+> +                               uint8_t tg, uint64_t num_pages, bool leaf)
+>   {
+>       SMMUDevice *sdev = container_of(mr, SMMUDevice, iommu);
+>       IOMMUTLBEvent event = {};
+> @@ -834,6 +834,7 @@ static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
+>       event.entry.perm = IOMMU_NONE;
+>       event.entry.flags = IOMMU_INV_FLAGS_ARCHID;
+>       event.entry.arch_id = asid;
+> +    event.entry.leaf = leaf;
+>   
+>       memory_region_notify_iommu_one(n, &event);
+>   }
+> @@ -865,7 +866,7 @@ static void smmuv3_notify_asid(IOMMUMemoryRegion *mr,
+>   
+>   /* invalidate an asid/iova range tuple in all mr's */
+>   static void smmuv3_inv_notifiers_iova(SMMUState *s, int asid, dma_addr_t iova,
+> -                                      uint8_t tg, uint64_t num_pages)
+> +                                      uint8_t tg, uint64_t num_pages, bool leaf)
+>   {
+>       SMMUDevice *sdev;
+Does the parameter 'leaf' need to be added to the trace?
+> trace_smmuv3_inv_notifiers_iova(mr->parent_obj.name, asid, iova,
+>                                         tg, num_pages);
 
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index f0a9e968c9c1..f42803ecaf1d 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -651,6 +651,7 @@ static void aarch64_max_initfn(Object *obj)
-         t = FIELD_DP64(t, ID_AA64ISAR0, DP, 1);
-         t = FIELD_DP64(t, ID_AA64ISAR0, FHM, 1);
-         t = FIELD_DP64(t, ID_AA64ISAR0, TS, 2); /* v8.5-CondM */
-+        t = FIELD_DP64(t, ID_AA64ISAR0, TLB, 2); /* FEAT_TLBIRANGE */
-         t = FIELD_DP64(t, ID_AA64ISAR0, RNDR, 1);
-         cpu->isar.id_aa64isar0 = t;
- 
--- 
-2.26.2
+Thanks,
+Kunkun Jiang
+>   
+> @@ -877,7 +878,7 @@ static void smmuv3_inv_notifiers_iova(SMMUState *s, int asid, dma_addr_t iova,
+>                                           tg, num_pages);
+>   
+>           IOMMU_NOTIFIER_FOREACH(n, mr) {
+> -            smmuv3_notify_iova(mr, n, asid, iova, tg, num_pages);
+> +            smmuv3_notify_iova(mr, n, asid, iova, tg, num_pages, leaf);
+>           }
+>       }
+>   }
+> @@ -915,7 +916,7 @@ static void smmuv3_s1_range_inval(SMMUState *s, Cmd *cmd)
+>           count = mask + 1;
+>   
+>           trace_smmuv3_s1_range_inval(vmid, asid, addr, tg, count, ttl, leaf);
+> -        smmuv3_inv_notifiers_iova(s, asid, addr, tg, count);
+> +        smmuv3_inv_notifiers_iova(s, asid, addr, tg, count, leaf);
+>           smmu_iotlb_inv_iova(s, asid, addr, tg, count, ttl);
+>   
+>           num_pages -= count;
+
 

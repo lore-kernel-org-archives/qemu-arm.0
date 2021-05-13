@@ -1,169 +1,160 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp777339lfg;
-        Thu, 13 May 2021 12:26:53 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwOc84Z9rTpAxq+plfE9CzINjG1ikr2SCNyvDNfLk/pWEpJN8l+JVpc/+g6ibFRmlDWDl7+
-X-Received: by 2002:a05:6602:2b0a:: with SMTP id p10mr31272077iov.129.1620934013184;
-        Thu, 13 May 2021 12:26:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620934013; cv=none;
-        d=google.com; s=arc-20160816;
-        b=Fot4hnnAvxh8u9Se4nw73JCiX8tVv2rPDz2LU9SF8rYZVW+Dl0ux1cZalUqEKwu08L
-         Cp0KhCB6fsLI0uvReL8xgTfW2Tmk0UNRQWXImhd/CK9V4Bv5hl1BcJIL7Kfomn8dThw9
-         Z7gUGiG3k5Nf0rW1OSEqenGOJcliuazhjnEjFTF1zRLXe4egZxnyH9uPmvoNKFhwpSqX
-         P2p6yE/n/3e/rutJjkaTkehbx+Nd31D6VvTRrdL9VnwkgObrHMHa6JrcXyT3wWKwLQib
-         KTAyloR7sSgNhgkobDgbBJqxv88tb6D3j/FAkBayOVoorvE8lPhSL+VfQkMRJgAtbxCN
-         lIDw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=jW2Os3wo0XrLjzNEATQoFTuZKMeIXEuoR4UgwDgofYc=;
-        b=JiPvbO6KmLWObr+dVtJiayYV1hf2RpDs0XFBaF91q4GtnE9Gq80Hdr91VTVgnPj6/n
-         PFTw/x1aELe4LqdrrxcEkR101J8xW/LkqNylEyVYh6Wp5v+v679qapdAwi1oNA7vlSqD
-         NZb0OfCzZkxCM9OgMVn17CNhiqdGexphvn7GyHiuSs+6T5WQXEqY9wpxkhLRwEMyg6NL
-         OfwSYnlR8FZt/TSiN5KxOFJ8IR6tq8CDAzNTym2d4/7XtaMyPCL5i2GCYkgBpVWGtpqS
-         t90aV5NthH+QQNe/yDyYPx2PD96TTffyLBgMYK2JOmPK0a8FVOUGRE1UTszA+eaJe1eN
-         Yvpg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=rBh9qmGA;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j24si5137512jad.22.2021.05.13.12.26.53
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 13 May 2021 12:26:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=rBh9qmGA;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42032 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lhGyy-000135-IZ
-	for alex.bennee@linaro.org; Thu, 13 May 2021 15:26:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48400)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lhGy7-0000NR-4c
- for qemu-devel@nongnu.org; Thu, 13 May 2021 15:25:59 -0400
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f]:35468)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lhGy4-00071X-Ct
- for qemu-devel@nongnu.org; Thu, 13 May 2021 15:25:58 -0400
-Received: by mail-ed1-x52f.google.com with SMTP id di13so32207422edb.2
- for <qemu-devel@nongnu.org>; Thu, 13 May 2021 12:25:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=jW2Os3wo0XrLjzNEATQoFTuZKMeIXEuoR4UgwDgofYc=;
- b=rBh9qmGAEzRtmlkjGCAMA7eMJRR5lDO7Dp771QXjC6dQHnkkVSi4lypQBftQYqYJTW
- ZgbLWSSQe3flnc4HDmdiAu0ofqyeQCx12AZ3MI68kqBxYOXkYxEUhRJVPJmnwHx3t+a3
- 46b9zK2o9oBj1O4TNr6lkP7CW99hTUEo7sWtef5yStFXfk9Tv3epWykWGO4xb74hsKT9
- 9UleKvK8WYNkTgc+u9ZVD+U9yCl8usG6/27fJWrWz+OamdHROQV2hiBKFXOtEoetb5A+
- QcbABAaJkJsS9V0OgNsovVcMoyXWjtkt5D3RW/2QHhFFGNjgwU+SLTr3QNWu0Lx3g5yh
- wfrA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=jW2Os3wo0XrLjzNEATQoFTuZKMeIXEuoR4UgwDgofYc=;
- b=iHXOaB2WGYionx48UlnQmiSmCI1CHYzyDX/QJE6366aQyY3Uw5LbPhCJaIzga1Q5ab
- J2dyhTBOAadTgI932pI3wOridIDCWYH6QrRri9/5X/xtzPNxbwBbbl0fn/zCok1YjN3e
- jfKYOeVcZtyLVNdLi3T89yEDLsm3HNqQlZ0BtBDdnnKjiyoY5SInS2LbC5vitxGjTQ/E
- 7hby9k0OG5YOFma4yerpWJ+dIIwGB39GIOCT6RkJXpT6tqQlf/j3nEYcDPHhfnO6gr64
- bAlVjgA2EMm1GM5vcSWYs7N6z/ckSptdEIRqpidchYLIAo0NZF63RQPzqZALsXetlchT
- CqxQ==
-X-Gm-Message-State: AOAM5338CqEnXMRC06GhF18+CqyQTN5+e29KpuRjBbFNCVit8wZN5q77
- SyK/bniqhk+atJqlMrYWXwzO5/ctbP5Qr88Qq1MSZw==
-X-Received: by 2002:a05:6402:416:: with SMTP id
- q22mr52166937edv.204.1620933954665; 
- Thu, 13 May 2021 12:25:54 -0700 (PDT)
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id n10sm3367183wrw.37.2021.05.13.10.20.09
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 13 May 2021 10:20:09 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 2BF421FF7E;
+	Thu, 13 May 2021 18:20:09 +0100 (BST)
+References: <1f157423cc544731beb743287a4be5cb@huawei.com>
+ <87h7j8ez4t.fsf@linaro.org> <7f8496377da246c38452d95bbbfc0ca7@huawei.com>
+User-agent: mu4e 1.5.13; emacs 28.0.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Andrey Shinkevich <andrey.shinkevich@huawei.com>
+Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "Chengen (William,
+ FixNet)" <chengen@huawei.com>, "peter.maydell@linaro.org"
+ <peter.maydell@linaro.org>, "drjones@redhat.com" <drjones@redhat.com>,
+ "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "Cota@braap.org"
+ <Cota@braap.org>, yuzenghui <yuzenghui@huawei.com>, "Wanghaibin (D)"
+ <wanghaibin.wang@huawei.com>, "shashi.mallela@linaro.org"
+ <shashi.mallela@linaro.org>
+Subject: Re: GICv3 for MTTCG
+Date: Thu, 13 May 2021 18:19:28 +0100
+In-reply-to: <7f8496377da246c38452d95bbbfc0ca7@huawei.com>
+Message-ID: <877dk2lfee.fsf@linaro.org>
 MIME-Version: 1.0
-References: <20210430202610.1136687-1-richard.henderson@linaro.org>
- <20210430202610.1136687-78-richard.henderson@linaro.org>
-In-Reply-To: <20210430202610.1136687-78-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 13 May 2021 20:25:42 +0100
-Message-ID: <CAFEAcA9CA-NXEqVrT_VJJmYHDOcCZJUtQWL=qv8g052cVtEh5w@mail.gmail.com>
-Subject: Re: [PATCH v6 77/82] target/arm: Fix decode for VDOT (indexed)
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nP788gkIYigo
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: gonk0Mf4VVqj
 
-On Fri, 30 Apr 2021 at 22:23, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> We were extracting the M register twice, once incorrectly
-> as M:vm and once correctly as rm.  Remove the incorrect
-> name and remove the incorrect decode.
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/neon-shared.decode |  4 +-
->  target/arm/translate-neon.c   | 90 +++++++++++++++--------------------
->  2 files changed, 40 insertions(+), 54 deletions(-)
->
-> diff --git a/target/arm/neon-shared.decode b/target/arm/neon-shared.decode
-> index ca0c699072..facb621450 100644
-> --- a/target/arm/neon-shared.decode
-> +++ b/target/arm/neon-shared.decode
-> @@ -61,8 +61,8 @@ VCMLA_scalar   1111 1110 0 . rot:2 .... .... 1000 . q:1 index:1 0 vm:4 \
->  VCMLA_scalar   1111 1110 1 . rot:2 .... .... 1000 . q:1 . 0 .... \
->                 vm=%vm_dp vn=%vn_dp vd=%vd_dp size=2 index=0
->
-> -VDOT_scalar    1111 1110 0 . 10 .... .... 1101 . q:1 index:1 u:1 rm:4 \
-> -               vm=%vm_dp vn=%vn_dp vd=%vd_dp
-> +VDOT_scalar    1111 1110 0 . 10 .... .... 1101 . q:1 index:1 u:1 vm:4 \
-> +               vn=%vn_dp vd=%vd_dp
 
-Is it possible to make this kind of bug a decodetree error?
-It seems unlikely that there's a use for having a bit which is
-decoded both by a %foo field specification and also in some
-other way...
+Andrey Shinkevich <andrey.shinkevich@huawei.com> writes:
+
+> Dear colleagues,
+>
+> Thank you all very much for your responses. Let me reply with one message.
+>
+> I configured QEMU for AARCH64 guest:
+> $ ./configure --target-list=3Daarch64-softmmu
+>
+> When I start QEMU with GICv3 on an x86 host:
+> qemu-system-aarch64 -machine virt-6.0,accel=3Dtcg,gic-version=3D3
+
+Hmm are you sure you are running your built QEMU? For me the following
+works fine:
+
+  ./aarch64-softmmu/qemu-system-aarch64 -machine virt-6.0,gic-version=3D3,a=
+ccel=3Dtcg -cpu max -serial mon:stdio -nic user,model=3Dvirtio-net-pci,host=
+fwd=3Dtcp::2222-:22 -device virtio-scsi-pci -device scsi-hd,drive=3Dhd0 -bl=
+ockdev driver=3Draw,node-name=3Dhd0,discard=3Dunmap,file.driver=3Dhost_devi=
+ce,file.filename=3D/dev/zvol/hackpool-0/debian-buster-arm64 -kernel
+~/lsrc/linux.git/builds/arm64.nopreempt/arch/arm64/boot/Image -append "cons=
+ole=3DttyAMA0 root=3D/dev/sda2" -display none -m 8G,maxmem=3D8G -smp 12
 
 
 >
->  %vfml_scalar_q0_rm 0:3 5:1
->  %vfml_scalar_q1_index 5:1 3:1
-> diff --git a/target/arm/translate-neon.c b/target/arm/translate-neon.c
-> index a0e267694b..52b75ff76f 100644
-> --- a/target/arm/translate-neon.c
-> +++ b/target/arm/translate-neon.c
-> @@ -151,6 +151,36 @@ static void neon_store_element64(int reg, int ele, MemOp size, TCGv_i64 var)
->      }
->  }
+> QEMU reports this error from hw/pci/msix.c:
+> error_setg(errp, "MSI-X is not supported by interrupt controller");
 >
-> +static bool do_neon_ddda(DisasContext *s, int q, int vd, int vn, int vm,
-> +                         int data, gen_helper_gvec_4 *fn_gvec)
+> Probably, the variable 'msi_nonbroken' would be initialized in
+> hw/intc/arm_gicv3_its_common.c:
+> gicv3_its_init_mmio(..)
+>
+> I guess that it works with KVM acceleration only rather than with TCG.
+>
+> The error persists after applying the series:
+> https://lists.gnu.org/archive/html/qemu-arm/2021-04/msg00944.html
+> "GICv3 LPI and ITS feature implementation"
+> (special thanks for referring me to that)
+>
+> Please, make me clear and advise ideas how that error can be fixed?
+> Should the MSI-X support be implemented with GICv3 extra?
+>
+> When successful, I would like to test QEMU for a maximum number of cores=
+=20
+> to get the best MTTCG performance.
+> Probably, we will get just some percentage of performance enhancement=20
+> with the BQL series applied, won't we? I will test it as well.
+>
+> Best regards,
+> Andrey Shinkevich
+>
+>
+> On 5/12/21 6:43 PM, Alex Benn=C3=A9e wrote:
+>>=20
+>> Andrey Shinkevich <andrey.shinkevich@huawei.com> writes:
+>>=20
+>>> Dear colleagues,
+>>>
+>>> I am looking for ways to accelerate the MTTCG for ARM guest on x86-64 h=
+ost.
+>>> The maximum number of CPUs for MTTCG that uses GICv2 is limited by 8:
+>>>
+>>> include/hw/intc/arm_gic_common.h:#define GIC_NCPU 8
+>>>
+>>> The version 3 of the Generic Interrupt Controller (GICv3) is not
+>>> supported in QEMU for some reason unknown to me. It would allow to
+>>> increase the limit of CPUs and accelerate the MTTCG performance on a
+>>> multiple core hypervisor.
+>>=20
+>> It is supported, you just need to select it.
+>>=20
+>>> I have got an idea to implement the Interrupt Translation Service (ITS)
+>>> for using by MTTCG for ARM architecture.
+>>=20
+>> There is some work to support ITS under TCG already posted:
+>>=20
+>>    Subject: [PATCH v3 0/8] GICv3 LPI and ITS feature implementation
+>>    Date: Thu, 29 Apr 2021 19:41:53 -0400
+>>    Message-Id: <20210429234201.125565-1-shashi.mallela@linaro.org>
+>>=20
+>> please do review and test.
+>>=20
+>>> Do you find that idea useful and feasible?
+>>> If yes, how much time do you estimate for such a project to complete by
+>>> one developer?
+>>> If no, what are reasons for not implementing GICv3 for MTTCG in QEMU?
+>>=20
+>> As far as MTTCG performance is concerned there is a degree of
+>> diminishing returns to be expected as the synchronisation cost between
+>> threads will eventually outweigh the gains of additional threads.
+>>=20
+>> There are a number of parts that could improve this performance. The
+>> first would be picking up the BQL reduction series from your FutureWei
+>> colleges who worked on the problem when they were Linaro assignees:
+>>=20
+>>    Subject: [PATCH v2 0/7] accel/tcg: remove implied BQL from cpu_handle=
+_interrupt/exception path
+>>    Date: Wed, 19 Aug 2020 14:28:49 -0400
+>>    Message-Id: <20200819182856.4893-1-robert.foley@linaro.org>
+>>=20
+>> There was also a longer series moving towards per-CPU locks:
+>>=20
+>>    Subject: [PATCH v10 00/73] per-CPU locks
+>>    Date: Wed, 17 Jun 2020 17:01:18 -0400
+>>    Message-Id: <20200617210231.4393-1-robert.foley@linaro.org>
+>>=20
+>> I believe the initial measurements showed that the BQL cost started to
+>> edge up with GIC interactions. We did discuss approaches for this and I
+>> think one idea was use non-BQL locking for the GIC. You would need to
+>> revert:
+>>=20
+>>    Subject: [PATCH-for-5.2] exec: Remove MemoryRegion::global_locking fi=
+eld
+>>    Date: Thu,  6 Aug 2020 17:07:26 +0200
+>>    Message-Id: <20200806150726.962-1-philmd@redhat.com>
+>>=20
+>> and then implement a more fine tuned locking in the GIC emulation
+>> itself. However I think the BQL and per-CPU locks are lower hanging
+>> fruit to tackle first.
+>>=20
+>>>
+>>> Best regards,
+>>> Andrey Shinkevich
+>>=20
+>>=20
 
-This patch seems to be doing more than its commit message suggests.
-If we want to share code between trans_VDOT and trans_VDOT_scalar
-can we do that refactoring in its own patch, please ?
 
-thanks
--- PMM
+--=20
+Alex Benn=C3=A9e

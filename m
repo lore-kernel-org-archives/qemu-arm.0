@@ -1,203 +1,153 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp1116597lfm;
-        Mon, 17 May 2021 02:58:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw05yGce7QKSuCNE+KcfZkwPjz915Y/mD5CA9uthcMtYzw/XCBCfIFQeqi78pciA4BJAhNE
-X-Received: by 2002:a02:cc61:: with SMTP id j1mr57095145jaq.136.1621245488092;
-        Mon, 17 May 2021 02:58:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621245488; cv=none;
+Received: by 2002:a0c:a3a3:0:0:0:0:0 with SMTP id v32csp746122qvv;
+        Thu, 13 May 2021 19:42:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwLOPzTCQ694MsxI55N/gtSa6B/c60xTHsWaX+tfrw+pF3Gw9UORekS4793ruQXYZR/TeVi
+X-Received: by 2002:a05:6602:27d0:: with SMTP id l16mr12340975ios.101.1620960173673;
+        Thu, 13 May 2021 19:42:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620960173; cv=none;
         d=google.com; s=arc-20160816;
-        b=WFfkfCZjyhroiOmuM6sdAVHiZyRg2MdFeTTBEFxeJZtZzUP22bRo0sLhqqJ+mLmWOk
-         MHpZTd2DVT0CeFuX1AaeoB+/ngIT5cUPPnV0YmxhXT/Bn9sCCF26/V7c9rCNHDlKrKCF
-         fNqSIM5xlxLi4M2GYXjJuAtfX2tqMReJvM7n3mR1yGIh87lWAdUN4FJPLliseLincwWO
-         g7czxt6HPIwrloDqBKeJF/NWEN0KIvBhRU3ryAqLIypW5XLY4q5WFD8wcDlkzawD0UNW
-         1ljqqwRBDEXw08jLeyWSUNAxy4I0ZAYzAA/vTXkiThT/1xwc4uEBe87oDU6Dai85YN91
-         303w==
+        b=Pab0Tfc2XVHsZ1Afmt+BBwsF/wQRMiqKERUp8OvcaCKyfhnfaVdVNCyVZbkwf+xne+
+         0RGpSFnDzd9TSR6IoKK8zJMc+yO1NXiK3RrxVfi9awglmSWEBUT8TeiywVpQxUL0cy50
+         yiUvilNcUpSNAv151Z2BOxTaZ9yeMdBZUAMek5mIAQLpkj4rg0vZlUaYwmVTKxpl0ehr
+         ZYRvggdNhk6MMgkU92flE4mytOFocwBC0+x8wo9tzZAz7tvhX0EM66jgVQlNRkrcvrDD
+         XLGydynbCorgaKUTAYYlJNxnyHwODnEAlb+3PnW3zXIrHg/jZ11y6sRISvwm7jH3LY6s
+         2WkQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=0IwZPh7scRjTRZCuWMSlO+/RIyMLD5+O2pqZYLdEKzc=;
-        b=kZCpGZRtJzuGi4eX2O+dJpqa1bfMqBW/fqSCaUJwtPwJTBmHVFrOh8JnJjXYhPr5vq
-         P1rCHJ2IRbxP06bDAr9kM3jL+G+6e6Ls5B21F3qnZia7zOOiKKRBoUijp51VgJ/qSQp+
-         aXVMLrQBhRcBtbAydYhcuayDPwu43wjqb/M9Boh1uZSCkPXHvT6EtvSpMq1tX3o1pan8
-         Z3f7JgjGsYj44fJEQWJCSs5w8Rsqg19VlBG6NMkS2qqjqFgSpD3J7VvCORcn5YRD8k0s
-         iclAl663vJOZikoddt+EMI7DJ+FMrvkg+AluiA4HCeGtkbHsC6A47YT21rDhd9RDFdv1
-         MgoQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=fFqmDdo06KCryOm411zSmyn96FB3OB+3USOa93pTRuU=;
+        b=nX6mdzYKUaNryImZ5Pu/NgLLzrkFgQHpADvNof3UDjUIWJ+UbuYWRSe6NGd0YqU98c
+         UQ6KVhUybr3PJfOWroBsNgZRdmFSG3Xr8brR3zsxyTjaP8FgJjBJHAntwublozP+E+Ka
+         z2Sw10GBvmBAUDf87o0w8ctrwWCT0xMayueVA3C8ba6pdvoDJLOOb/qMhYwEqqjJNdCq
+         vc1XI9Ncf1pqxzxXJV/UwuwN9FJGoq0+yS+0rLPZmmKhvTctd3a2Rv0MKD2YSxCBWmD5
+         n2hZgXIZiX23AmlTY99Xwaxi0+u4JJTZVh+5YoV9n5D2G3qw4LJRrCfDx+WW8gx9Z5YH
+         W8RQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=afI4Gy2G;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=a50n9EUU;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k1si2020193ilu.64.2021.05.17.02.58.07
+        by mx.google.com with ESMTPS id n3si7030627ioh.98.2021.05.13.19.42.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 17 May 2021 02:58:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 13 May 2021 19:42:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=afI4Gy2G;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39512 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=a50n9EUU;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:48052 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lia0l-0007Dg-Df
-	for alex.bennee@linaro.org; Mon, 17 May 2021 05:58:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40918)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lhNmv-0004ny-4j
+	for alex.bennee@linaro.org; Thu, 13 May 2021 22:42:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60580)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1liZyC-0005CJ-UZ
- for qemu-devel@nongnu.org; Mon, 17 May 2021 05:55:28 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:48549)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1liZy9-0003xB-Gy
- for qemu-devel@nongnu.org; Mon, 17 May 2021 05:55:27 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1621245324;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=0IwZPh7scRjTRZCuWMSlO+/RIyMLD5+O2pqZYLdEKzc=;
- b=afI4Gy2Gt33kLnQaYsStYZAzBNM1F+SrhYrhMlkjuHFF8zzXn61SOT1G2kZyFyyTRUSzoU
- 7ChtoLSof5OjpabwIDco4vkPCfu907JD4sT9oFjqhPtA8w84+dxFJ6ieNCwXVqMu8/sYMw
- oMSiO2EsTgAgyIuFRWu386i4HUvxLR8=
-Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
- [209.85.208.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-22-65VH6ZS4P1OaddtRGsTrjA-1; Mon, 17 May 2021 05:55:21 -0400
-X-MC-Unique: 65VH6ZS4P1OaddtRGsTrjA-1
-Received: by mail-ed1-f69.google.com with SMTP id
- cy15-20020a0564021c8fb029038d26976787so2178444edb.0
- for <qemu-devel@nongnu.org>; Mon, 17 May 2021 02:55:21 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1lhNml-0004nk-Vk; Thu, 13 May 2021 22:42:45 -0400
+Received: from mail-yb1-xb2c.google.com ([2607:f8b0:4864:20::b2c]:35753)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1lhNmj-0004YV-EL; Thu, 13 May 2021 22:42:43 -0400
+Received: by mail-yb1-xb2c.google.com with SMTP id i4so37172788ybe.2;
+ Thu, 13 May 2021 19:42:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=fFqmDdo06KCryOm411zSmyn96FB3OB+3USOa93pTRuU=;
+ b=a50n9EUUSC1VE2eGJd3yxcbKziPDa4xv7jxeeikVLol6UpSRvfj1y3BHpl54lt9eEw
+ wJ+NlW+DGXUZf/aGEX0LghpNNLSeISplmvP2bjDlrCJvlOetj3KMMppcF1i3y63tSIOC
+ e4leWSJ2ciEk9Xx9mxCFLwowazzStSGOns3XlbOQIzvxigvbFbfVM3yvUBhl4yeZECEV
+ dUVCmQxbISozLSLjvCemehVOijL1M69VEBUzEQOoA5rlLnPCKbLlwMi3UCfXk1itNva6
+ CSwkyWMejt+O/a9yydIOyuAS73orBQ7/TtV2qnQCYncndUYb5D8N4QYu+2MLbtGDOyj1
+ ckjg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=0IwZPh7scRjTRZCuWMSlO+/RIyMLD5+O2pqZYLdEKzc=;
- b=uFnPvLo2TwDhFR71DKshmKjmm7MvWX6fp1i4Xdbeh39Ae8Epwc/WtKqNUAJDAfYpJ9
- RPshzNneWIWmOPbxcaz5Guw7UuU4rmw3NnA8Bk/uCmIZIhHCFOllUsfczewXBp5kmj+X
- knNpXTEVtMrjDy3yZ9QqF2Qp+BKIVhYzltZSHp/dgmF6cQ7lfN6p6eXAHsrQhyrfcMUY
- cUsCNMhB8BTL0z6wkXmzouxiQEm0GDkymverwUFqgcSLK3z9GVnNGqELvdy9qNBTeBJM
- efCErFl3xbxggYMcGpXL2r052/RFQVzsfSJGdyqtGL9/R7sUFwlaWbI3Yb9KLV9dIulQ
- OntQ==
-X-Gm-Message-State: AOAM530IBtdpE6Wa5rEmt2ffO7Y6jvlBgtkCR1BYsTYKAQfHtNbAPVF7
- ZLZShvNp/ysvSxFyIO1mXsp7TKzbv7n2t1rNM6P1xJ0sKEeGdo4v1KqvSN7I0iYDr+QTP1lg+1F
- uQ0rUhVEJSE4XdlM=
-X-Received: by 2002:aa7:db44:: with SMTP id n4mr26432554edt.374.1621245320142; 
- Mon, 17 May 2021 02:55:20 -0700 (PDT)
-X-Received: by 2002:aa7:db44:: with SMTP id n4mr26432537edt.374.1621245319976; 
- Mon, 17 May 2021 02:55:19 -0700 (PDT)
-Received: from thuth.remote.csb (pd9e838d9.dip0.t-ipconnect.de.
- [217.232.56.217])
- by smtp.gmail.com with ESMTPSA id n25sm10600936edb.26.2021.05.17.02.55.19
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 17 May 2021 02:55:19 -0700 (PDT)
-Subject: Re: [PATCH v2] disas/libvixl: Protect C system header for C++ compiler
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-References: <20210516171023.510778-1-f4bug@amsat.org>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <c2a204ce-50b7-536a-d48a-810a7442b679@redhat.com>
-Date: Mon, 17 May 2021 11:55:18 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=fFqmDdo06KCryOm411zSmyn96FB3OB+3USOa93pTRuU=;
+ b=oeM4j72OyDAhDElZTR7mpznavxr/4oZ3x83T3uEb+NbIidxGhUoFlhcJL1lckCyjIU
+ juNDENjiJ0RPUftBx1YLEk+qEC76TeoXbVxF/wJLRLltRux+ovkpA+VHhi1Ndu0lRm2S
+ BoFd6fcOCZY194piQwcp7zqigxd4PQ+dZzksFZyDGUCAlz9oKEH2uvynFZIuDL+fK3/U
+ RHcheztTcwCaEYrr1HYtx/DBsSG9plJHFIlYIviaQbbhfHz/n+HGjh1zYDkH7VisA3qg
+ 2sG2xwVLbVwdaM7JQ2GMKmG/v+wwKE4UUUa66TTOSNQCUxdTfj8tox0GnCFKiJ9Pbf/k
+ c6qg==
+X-Gm-Message-State: AOAM530rr0kIEi5RrESmAqScZbO/+rv4SKOWhDIYtGc5//8F/z3unh/Z
+ j5/BNP+wyFqDNYdv02/R4J+1liUKPrjPPDOHKrM=
+X-Received: by 2002:a05:6902:1543:: with SMTP id
+ r3mr27593505ybu.332.1620960159510; 
+ Thu, 13 May 2021 19:42:39 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20210516171023.510778-1-f4bug@amsat.org>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.296,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=-0.01,
- RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+References: <20210513163858.3928976-1-philmd@redhat.com>
+ <20210513163858.3928976-4-philmd@redhat.com>
+In-Reply-To: <20210513163858.3928976-4-philmd@redhat.com>
+From: Bin Meng <bmeng.cn@gmail.com>
+Date: Fri, 14 May 2021 10:42:27 +0800
+Message-ID: <CAEUhbmXfN=TZU+xi1SG+PzwnPedUQYAYSvwUzdDJrKymFRp4-g@mail.gmail.com>
+Subject: Re: [PATCH 03/10] hw/arm/Kconfig: Add missing dependency NPCM7XX ->
+ SMBUS
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b2c;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb2c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Daniel_P_=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Michael Tokarev <mjt@tls.msk.ru>, qemu-arm@nongnu.org,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Corey Minyard <cminyard@mvista.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Doug Evans <dje@google.com>, Hao Wu <wuhaotsh@google.com>,
+ Tyrong Ting <kfting@nuvoton.com>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
  Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZBqGxR4h+VD/
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: iXV/ksyRI3I0
 
-On 16/05/2021 19.10, Philippe Mathieu-Daudé wrote:
-> When selecting an ARM target on Debian unstable, we get:
-> 
->    Compiling C++ object libcommon.fa.p/disas_libvixl_vixl_utils.cc.o
->    FAILED: libcommon.fa.p/disas_libvixl_vixl_utils.cc.o
->    c++ -Ilibcommon.fa.p -I. -I.. [...] -o libcommon.fa.p/disas_libvixl_vixl_utils.cc.o -c ../disas/libvixl/vixl/utils.cc
->    In file included from /home/philmd/qemu/disas/libvixl/vixl/utils.h:30,
->                     from ../disas/libvixl/vixl/utils.cc:27:
->    /usr/include/string.h:36:43: error: missing binary operator before token "("
->       36 | #if defined __cplusplus && (__GNUC_PREREQ (4, 4) \
->          |                                           ^
->    /usr/include/string.h:53:62: error: missing binary operator before token "("
->       53 | #if defined __USE_MISC || defined __USE_XOPEN || __GLIBC_USE (ISOC2X)
->          |                                                              ^
->    /usr/include/string.h:165:21: error: missing binary operator before token "("
->      165 |      || __GLIBC_USE (LIB_EXT2) || __GLIBC_USE (ISOC2X))
->          |                     ^
->    /usr/include/string.h:174:43: error: missing binary operator before token "("
->      174 | #if defined __USE_XOPEN2K8 || __GLIBC_USE (LIB_EXT2) || __GLIBC_USE (ISOC2X)
->          |                                           ^
->    /usr/include/string.h:492:19: error: missing binary operator before token "("
->      492 | #if __GNUC_PREREQ (3,4)
->          |                   ^
-> 
-> Relevant information from the host:
-> 
->    $ lsb_release -d
->    Description:    Debian GNU/Linux 11 (bullseye)
->    $ gcc --version
->    gcc (Debian 10.2.1-6) 10.2.1 20210110
->    $ dpkg -S /usr/include/string.h
->    libc6-dev: /usr/include/string.h
->    $ apt-cache show libc6-dev
->    Package: libc6-dev
->    Version: 2.31-11
-> 
-> Partially cherry-pick vixl commit 78973f258039f6e96 [*]:
-> 
->    Refactor VIXL to use `extern` block when including C header
->    that do not have a C++ counterpart.
-> 
-> which is similar to commit 875df03b221 ('osdep: protect qemu/osdep.h
-> with extern "C"').
-> 
-> [*] https://git.linaro.org/arm/vixl.git/commit/?id=78973f258039f6e96
-> 
-> Buglink: https://bugs.launchpad.net/qemu/+bug/1914870
-> Suggested-by: Thomas Huth <thuth@redhat.com>
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+On Fri, May 14, 2021 at 12:53 AM Philippe Mathieu-Daud=C3=A9
+<philmd@redhat.com> wrote:
+>
+> The TYPE_NPCM7XX_SMBUS device model exposes an SMBus, but
+> this isn't advertised with proper Kconfig symbol, leading
+> to an early build failure when building NPCM7XX machines
+> standalone:
+>
+>   The following clauses were found for AT24C
+>
+>       config AT24C depends on I2C
+>       select AT24C if NPCM7XX
+>
+> Fix by adding SMBUS to NPCM7XX.
+>
+> Fixes: 94e77879395 ("hw/i2c: Implement NPCM7XX SMBus Module Single Mode")
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
->   disas/libvixl/vixl/code-buffer.h |  2 +-
->   disas/libvixl/vixl/globals.h     | 16 +++++++++-------
->   disas/libvixl/vixl/invalset.h    |  2 +-
->   disas/libvixl/vixl/platform.h    |  2 ++
->   disas/libvixl/vixl/utils.h       |  2 +-
->   disas/libvixl/vixl/utils.cc      |  2 +-
->   6 files changed, 15 insertions(+), 11 deletions(-)
+> Cc: Doug Evans<dje@google.com>
+> Cc: Hao Wu <wuhaotsh@google.com>
+> Cc: Tyrong Ting<kfting@nuvoton.com>
+> Cc: Corey Minyard <cminyard@mvista.com>
+> ---
+>  hw/arm/Kconfig | 1 +
+>  1 file changed, 1 insertion(+)
+>
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-
+Reviewed-by: Bin Meng <bmeng.cn@gmail.com>

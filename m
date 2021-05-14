@@ -1,109 +1,108 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp618441lfg;
-        Fri, 14 May 2021 10:10:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzvvzdzV+wFgpXu8q5oMLTTid/rBf50kXzS1iZAmX9pxhhMOGQMa4udmPXyCts7ro4VrIGJ
-X-Received: by 2002:a6b:6c06:: with SMTP id a6mr1451614ioh.11.1621012242959;
-        Fri, 14 May 2021 10:10:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621012242; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp626935lfg;
+        Fri, 14 May 2021 10:22:20 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyLbdO9xruTUM1oQFnYBeZ9E21zbfOqYHlTZQP910Z+xCUTtSVk9lnkkcyogRz3CwfFYNH2
+X-Received: by 2002:a05:6602:14d3:: with SMTP id b19mr28051744iow.154.1621012940655;
+        Fri, 14 May 2021 10:22:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621012940; cv=none;
         d=google.com; s=arc-20160816;
-        b=fBJIj85BVhlnInmKM7CPn3PL1ZnXX9M0t69skrvrG1oUXsRGnZKr3xU/QUML7F8pbq
-         XRaSb9h2Le2jb5fvZ7At4UAiFRAq+KOOY0MJqEDZhBTvf6FFgDOjE5hVloPyfWBIGG5K
-         0S8QOKv++edobc5oPAQKcc2vmttw9AvJGpQSJjQ7E//ZfC9cTEp5T+VAJ3/mHkip9EoQ
-         gLAJJv40dge02YgDA4KnN1UUKG6ijMtE73wTT4GXU1xncgJx3imCMuLKqRKDms37ZTVg
-         7XxSJodXoLhYrxX7hKExh9GOmcbdwQ2xrOD8Q7uMn2bpRh98CGIlD/ZHNs+LeyO+CpCS
-         8oGQ==
+        b=S2gVyaPzntNwTUfm/RVjtt7MednICcf4m4Cwq8mZI1Vh/YndL65nfZkvvNrRV3ixJp
+         M7EzmZ6AwufSfGtZS4Z5ZVnkwN4LK7SpZHU7jL4yS0a7dpWL8B0Q9qj8IHi+D2ZDuRKt
+         IC9z06FaRvsdhdou5wxASblAM7Rht4HtmRefJsAnGKhy0PKWT4Q4wt/gR4Zpk85y568V
+         6kCTTmj5uF/ySeglOM2GOJmijRjZCHP/Fi85plDDvQk5SFjVWICJ+up+DmSfv1x1hfZJ
+         MOmZ6NX/tw3+GzhYgjKHY/Ispe0b/zvapeQ5G3nbQQa6KiOdE6gGcSqjiJ/REI6ae4Po
+         q1Fw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=PmDYKICtH4Ujp3wMWVxCuXwCS+IWoxy1wuBQpOUjRxs=;
-        b=OVvIUeq/W+E/ICFGce22C3gsP+NS4ywTEqgD+jw7uMRginGhNqX/iF7KrksGPLRChB
-         Vio828ANMSVmbaVFiVMGeRipG4COIKWuul1nHhRQLunv2TZFLWxxmSOMtHQ0jNbh97xZ
-         XQsHH/nwhIRoFvdK6y9Xytk9xfwuIXjm8tYd27CSQFV0e0tqv4sn7mo5iKCFcb0mUfVt
-         OIlw0zRz+g9RLZ9jwp2PWBCuVQ2+wJgxaxPH4dwkR708mOkW057Y+Pb/35L0GJnrteDD
-         kRWllO/DoYjQw0USjHpjTioc+CaKrC1VXPX9zDmA/yYJ64rNSTlJKtakqTG3XIuGhpQ7
-         sjbQ==
+        bh=p101JPvnV3TE0rg3qeFEVqnAXcwWkum3wrKOQSta5TA=;
+        b=XZ9EL+20KVHX5/tnzVUyzW5f3ZxN++a4DyhhFH5wLAFCA/uNomAD7FDON/mjUgOy0S
+         P375T6Z8nRl3/mWElMST7LYAi59Jho22zEL16dtGpwGufu/BUpkyVpvrvfyNwvb/5FSK
+         c1BmhGnGyOS/vVQ7IZ9OCHePLFRwXIbUn7fpMK+EmZUcuq2bz1ilo02kZKgk4D+GG3V/
+         4WQ1O5hGAIfVACZ48yvC3Buyfsc+a644HfKTBusmuHQ8SdZPVGfEMeJFwrf6GYFHTrIe
+         zZoBY00Y7XqGxiLpC5W2i92FgjoAe/qC++a3eYzXqRIDYKXl2YPDkpFBreZRVPZ7uZZX
+         pkRw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=XWcFnpvp;
+       dkim=fail header.i=@linaro.org header.s=google header.b=XwqrxWGT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r188si8364531iod.8.2021.05.14.10.10.42
+        by mx.google.com with ESMTPS id a14si9672099ilm.103.2021.05.14.10.22.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 14 May 2021 10:10:42 -0700 (PDT)
+        Fri, 14 May 2021 10:22:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=XWcFnpvp;
+       dkim=fail header.i=@linaro.org header.s=google header.b=XwqrxWGT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35920 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56740 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lhbKk-0008D9-98
-	for alex.bennee@linaro.org; Fri, 14 May 2021 13:10:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60116)
+	id 1lhbW0-00060p-0R
+	for alex.bennee@linaro.org; Fri, 14 May 2021 13:22:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35624)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lhb95-00068C-DA
- for qemu-arm@nongnu.org; Fri, 14 May 2021 12:58:39 -0400
-Received: from mail-qt1-x836.google.com ([2607:f8b0:4864:20::836]:41505)
+ id 1lhbVJ-0005yL-QY
+ for qemu-arm@nongnu.org; Fri, 14 May 2021 13:21:42 -0400
+Received: from mail-qk1-x735.google.com ([2607:f8b0:4864:20::735]:39766)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lhb93-00035h-Gm
- for qemu-arm@nongnu.org; Fri, 14 May 2021 12:58:39 -0400
-Received: by mail-qt1-x836.google.com with SMTP id t20so51532qtx.8
- for <qemu-arm@nongnu.org>; Fri, 14 May 2021 09:58:37 -0700 (PDT)
+ id 1lhbVE-0002tC-28
+ for qemu-arm@nongnu.org; Fri, 14 May 2021 13:21:37 -0400
+Received: by mail-qk1-x735.google.com with SMTP id k127so29408662qkc.6
+ for <qemu-arm@nongnu.org>; Fri, 14 May 2021 10:21:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=PmDYKICtH4Ujp3wMWVxCuXwCS+IWoxy1wuBQpOUjRxs=;
- b=XWcFnpvpgvQIGl2z2gh6AX2F+Xr8O3mn289OEKMKO7/+n/l7seeE3EmJnhPJbRwMdN
- r8pp/RA+SLyLP/Eh5JHUsWxU0SBjPgsPE/fOWUdn6DoJeOiY6gQj7Z8VGaI5kcDBorch
- Heoi9lN9mZ/vGAI3p/qZD99/3haM1S1soncekS6xoYYVHahrUB/VBAJWvERvTbrHgeMq
- rTkZQZgm+Ro5DATuLTuK5/ag5w4xPEBCUI5SSRRJXBlly+XTxgDguKKFTQP3wwZBdg5/
- nuz+XN+QbV65Kgx4Fam+ac17gCyml7itvBTQsmZGHuuhaPwIPf56Z0qNg/cx5eNebjHj
- QDjQ==
+ bh=p101JPvnV3TE0rg3qeFEVqnAXcwWkum3wrKOQSta5TA=;
+ b=XwqrxWGTRsXCe+LBhw7SUEfuV3ul/XjxxukeXFK2Od5G9ycj79iQ0OUXHcVmltegRx
+ /4Zg8BViBgu31RLASyq1aaxrKQISXlyjs8Z1ldXoiQJYMj44oJOrc7jHDKfhQsfc161H
+ xvyd0WTKSOHQXKZEvfJ2XSB2qykhn4AexoG2EfXoqQOC7UYaWf7U/61p+4kwrfCZgkgj
+ gcDK0vKCC+J1aLRK7AUOJJqo+HVIR7nXshizjvXYXGgNbMvxjatLt4rax8KulKhvQhpY
+ vMOQgZpI9MrZN3EZfW6vKGTqsQXJnUfgicyhrjVl5RyDNQ7YnhL84D4Ev0tQ5/xIKuie
+ tY6A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=PmDYKICtH4Ujp3wMWVxCuXwCS+IWoxy1wuBQpOUjRxs=;
- b=a8VAp4bFyPwvMAdcR9KUp3rkPFL+/bQwMJD/8KO4vEfp/o1oX1vqMA6AoGfmdD55S+
- ZA7jJkeke+Z0oVmVhnVawWJyKEhnVxbAC6Hm5a1Wl3gJwcafHTyofvRwCO1w1Ag25wi1
- DDkE5Nr+Y2GdorReVahvgJ3Fh5JCQ8ExAeECy4ZfMeMCcPSMt8efZQu7DoxnWxbJaPRf
- LJoPg/TDqkDE7YS0/KZnyHdPYfR3mxjlQHSg3ja+ADf81jDFBKyI3RY7p5/JdbtR+yef
- 5thoe2h41Sn7IaRQ26kUFMncwf4wipRt+T0HsykhyfOaJN4inm71za8nug68f6RZRxYp
- gRQg==
-X-Gm-Message-State: AOAM533dPoErfVjWpeOfFoCKXmbALYmSG584ANp83tnfJHzjFeCeRBl3
- ZgEBmLJgTTzXkMlF1MHG73W/PTcLyZJ8B925
-X-Received: by 2002:ac8:7544:: with SMTP id b4mr10447700qtr.368.1621011516429; 
- Fri, 14 May 2021 09:58:36 -0700 (PDT)
+ bh=p101JPvnV3TE0rg3qeFEVqnAXcwWkum3wrKOQSta5TA=;
+ b=WPURQ1eHtweLtcsSDaC7XVRZ5IoWW3wjGsYVbAcLm5oMsuwixj5lYoQX5+DBW3XWSc
+ EXcNoBB4DZpnO/HYRWPJhG6px0Aa7AB7vkxSHnqrjwBUn6iXula60JfsRClUNUEJHLmJ
+ c9vhiZ3WwE+9ewdKx0C9LiunaU4AxjjbVKjeLuqv1++WSV4VsaUq3BfGY8otGxpIFDZr
+ C5gSJ7I/lbAFrGJLg05F9F9rEB6IGjmENnMucD2UGrBl4Id4KSUd6ULQK6h8mMFdZJy9
+ nQlkt8lzhLtds5OG/0EG+deJ2govy4y19/OP0RB8a0OL4YxEZHMnDAFARFr3KDMh0GIJ
+ dKbw==
+X-Gm-Message-State: AOAM532wlqLjIddf9Net2f5DnBBpCaaihaqa7HKcYtddRMMnYIsPXQHy
+ oXolLtKQZJE/QyElhi3ytSO6R1EQaWzsHzml
+X-Received: by 2002:a37:a5d7:: with SMTP id o206mr8956632qke.360.1621012890985; 
+ Fri, 14 May 2021 10:21:30 -0700 (PDT)
 Received: from [192.168.183.76] (163.189-204-200.bestelclientes.com.mx.
  [189.204.200.163])
- by smtp.gmail.com with ESMTPSA id x142sm5103490qkb.136.2021.05.14.09.58.35
+ by smtp.gmail.com with ESMTPSA id r72sm5382166qka.18.2021.05.14.10.21.30
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 14 May 2021 09:58:36 -0700 (PDT)
-Subject: Re: [PATCH v6 80/82] target/arm: Implement integer matrix multiply
- accumulate
+ Fri, 14 May 2021 10:21:30 -0700 (PDT)
+Subject: Re: [PATCH v6 82/82] target/arm: Enable SVE2 and related extensions
 To: Peter Maydell <peter.maydell@linaro.org>
 References: <20210430202610.1136687-1-richard.henderson@linaro.org>
- <20210430202610.1136687-81-richard.henderson@linaro.org>
- <CAFEAcA-V+dnrcrnhOLm4ggNajvfKA4CwYLvbML2tXW2mjQJ1mw@mail.gmail.com>
+ <20210430202610.1136687-83-richard.henderson@linaro.org>
+ <CAFEAcA8Fic1AfAmsAavzHzsK7aXkNEC8DfTbsa3Krga66KtAdg@mail.gmail.com>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <aef903d1-ad86-5894-c1f8-71fc90fd92bd@linaro.org>
-Date: Fri, 14 May 2021 11:58:34 -0500
+Message-ID: <e951d14b-0258-8013-d33b-3bd34588a5b7@linaro.org>
+Date: Fri, 14 May 2021 12:21:28 -0500
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-V+dnrcrnhOLm4ggNajvfKA4CwYLvbML2tXW2mjQJ1mw@mail.gmail.com>
+In-Reply-To: <CAFEAcA8Fic1AfAmsAavzHzsK7aXkNEC8DfTbsa3Krga66KtAdg@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::836;
- envelope-from=richard.henderson@linaro.org; helo=mail-qt1-x836.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::735;
+ envelope-from=richard.henderson@linaro.org; helo=mail-qk1-x735.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -126,31 +125,76 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vrbZ1jW2qSx7
+X-TUID: oH5lJ4dP6bRl
 
-On 5/13/21 2:49 PM, Peter Maydell wrote:
-> On Fri, 30 Apr 2021 at 22:36, Richard Henderson
+On 5/13/21 2:35 PM, Peter Maydell wrote:
+> On Fri, 30 Apr 2021 at 22:37, Richard Henderson
 > <richard.henderson@linaro.org> wrote:
->>
->> This is {S,U,US}MMLA for both AArch64 AdvSIMD and SVE,
->> and V{S,U,US}MMLA.S8 for AArch32 NEON.
 >>
 >> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 >> ---
->>   target/arm/helper.h           |  7 ++++
->>   target/arm/neon-shared.decode |  7 ++++
->>   target/arm/sve.decode         |  6 +++
->>   target/arm/translate-a64.c    | 18 ++++++++
->>   target/arm/translate-neon.c   | 27 ++++++++++++
->>   target/arm/translate-sve.c    | 27 ++++++++++++
->>   target/arm/vec_helper.c       | 77 +++++++++++++++++++++++++++++++++++
->>   7 files changed, 169 insertions(+)
+>>   target/arm/cpu.c   |  1 +
+>>   target/arm/cpu64.c | 13 +++++++++++++
+>>   2 files changed, 14 insertions(+)
+>>
+>> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+>> index 0dd623e590..30fd5d5ff7 100644
+>> --- a/target/arm/cpu.c
+>> +++ b/target/arm/cpu.c
+>> @@ -1464,6 +1464,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+>>
+>>           u = cpu->isar.id_isar6;
+>>           u = FIELD_DP32(u, ID_ISAR6, JSCVT, 0);
+>> +        u = FIELD_DP32(u, ID_ISAR6, I8MM, 0);
+>>           cpu->isar.id_isar6 = u;
+>>
+>>           u = cpu->isar.mvfr0;
+>> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+>> index f0a9e968c9..379f90fab8 100644
+>> --- a/target/arm/cpu64.c
+>> +++ b/target/arm/cpu64.c
+>> @@ -662,6 +662,7 @@ static void aarch64_max_initfn(Object *obj)
+>>           t = FIELD_DP64(t, ID_AA64ISAR1, SPECRES, 1);
+>>           t = FIELD_DP64(t, ID_AA64ISAR1, FRINTTS, 1);
+>>           t = FIELD_DP64(t, ID_AA64ISAR1, LRCPC, 2); /* ARMv8.4-RCPC */
+>> +        t = FIELD_DP64(t, ID_AA64ISAR1, I8MM, 1);
+>>           cpu->isar.id_aa64isar1 = t;
+>>
+>>           t = cpu->isar.id_aa64pfr0;
+>> @@ -702,6 +703,17 @@ static void aarch64_max_initfn(Object *obj)
+>>           t = FIELD_DP64(t, ID_AA64MMFR2, ST, 1); /* TTST */
+>>           cpu->isar.id_aa64mmfr2 = t;
+>>
+>> +        t = cpu->isar.id_aa64zfr0;
+>> +        t = FIELD_DP64(t, ID_AA64ZFR0, SVEVER, 1);
+>> +        t = FIELD_DP64(t, ID_AA64ZFR0, AES, 2);  /* PMULL */
+>> +        t = FIELD_DP64(t, ID_AA64ZFR0, BITPERM, 1);
+>> +        t = FIELD_DP64(t, ID_AA64ZFR0, SHA3, 1);
+>> +        t = FIELD_DP64(t, ID_AA64ZFR0, SM4, 1);
+>> +        t = FIELD_DP64(t, ID_AA64ZFR0, I8MM, 1);
+>> +        t = FIELD_DP64(t, ID_AA64ZFR0, F32MM, 1);
+>> +        t = FIELD_DP64(t, ID_AA64ZFR0, F64MM, 1);
+>> +        cpu->isar.id_aa64zfr0 = t;
+>> +
+>>           /* Replicate the same data to the 32-bit id registers.  */
+>>           u = cpu->isar.id_isar5;
+>>           u = FIELD_DP32(u, ID_ISAR5, AES, 2); /* AES + PMULL */
+>> @@ -718,6 +730,7 @@ static void aarch64_max_initfn(Object *obj)
+>>           u = FIELD_DP32(u, ID_ISAR6, FHM, 1);
+>>           u = FIELD_DP32(u, ID_ISAR6, SB, 1);
+>>           u = FIELD_DP32(u, ID_ISAR6, SPECRES, 1);
+>> +        u = FIELD_DP32(u, ID_ISAR6, I8MM, 1);
+>>           cpu->isar.id_isar6 = u;
+>>
+>>           u = cpu->isar.id_pfr0;
 > 
-> I have to say the decode parts for SVE and A32 (using decodetree
-> were much easier to review than the A64 part...
+> Do we need to clear any of these in the "user set has_neon and/or
+> has_vfp to false" code in arm_cpu_realizefn() ?
 
-Indeed, this was painful enough to write that I'm on the verge of converting 
-a64 to decodetree as well.
+Oh, hmm, yes.  Indeed, I guess we need to disable SVE as well?
+
+I also see that ID_ISAR6.I8MM is currently handled by !has_vfp, but it's really 
+an AdvSIMD aka has_neon feature.
 
 
 r~

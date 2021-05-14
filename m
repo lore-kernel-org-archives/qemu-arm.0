@@ -1,98 +1,98 @@
-Received: by 2002:a0c:a3a3:0:0:0:0:0 with SMTP id v32csp746122qvv;
-        Thu, 13 May 2021 19:42:53 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwLOPzTCQ694MsxI55N/gtSa6B/c60xTHsWaX+tfrw+pF3Gw9UORekS4793ruQXYZR/TeVi
-X-Received: by 2002:a05:6602:27d0:: with SMTP id l16mr12340975ios.101.1620960173673;
-        Thu, 13 May 2021 19:42:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620960173; cv=none;
+Received: by 2002:a0c:a3a3:0:0:0:0:0 with SMTP id v32csp746703qvv;
+        Thu, 13 May 2021 19:44:15 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzYXPUJ8HQaa359hJ6XSiF4En1EWMtQBJTlsZXimuXvsUWT6RiVHTw6fxnmSiW1G0ecaL9/
+X-Received: by 2002:a05:6e02:1b87:: with SMTP id h7mr6476427ili.185.1620960255032;
+        Thu, 13 May 2021 19:44:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620960255; cv=none;
         d=google.com; s=arc-20160816;
-        b=Pab0Tfc2XVHsZ1Afmt+BBwsF/wQRMiqKERUp8OvcaCKyfhnfaVdVNCyVZbkwf+xne+
-         0RGpSFnDzd9TSR6IoKK8zJMc+yO1NXiK3RrxVfi9awglmSWEBUT8TeiywVpQxUL0cy50
-         yiUvilNcUpSNAv151Z2BOxTaZ9yeMdBZUAMek5mIAQLpkj4rg0vZlUaYwmVTKxpl0ehr
-         ZYRvggdNhk6MMgkU92flE4mytOFocwBC0+x8wo9tzZAz7tvhX0EM66jgVQlNRkrcvrDD
-         XLGydynbCorgaKUTAYYlJNxnyHwODnEAlb+3PnW3zXIrHg/jZ11y6sRISvwm7jH3LY6s
-         2WkQ==
+        b=yVKWDub6E5dOkU9C8Hmj04UfgMH1i3Tz9gTWhovK6So0My6PYS2mJohNw7uF9iC6tO
+         NXHXQtlw0y+H74ctj3m3plfrIvqq62c4ZIUrYVvJrsCq1W9YJaA+YPljc3a1QnYKT42J
+         A3jO2C4HcfaQ54jXtKLXbJQqGvkFhTEpT3Xc5e0W6daFwuyWt+Wso04JrLzbkbx2GPvJ
+         PsYnd3uvZxkbem5b9+FkPaj3drfpiT52juxopeEb6BmoS/rPv5s3Je0s031gY3MtHNNY
+         uMb+KrSv5iu+8VntzHbQKRtgBGU/go1fn6rUvsNqlvCecuO6GlWXe8OGyGbpbQqEeQfR
+         OQBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=fFqmDdo06KCryOm411zSmyn96FB3OB+3USOa93pTRuU=;
-        b=nX6mdzYKUaNryImZ5Pu/NgLLzrkFgQHpADvNof3UDjUIWJ+UbuYWRSe6NGd0YqU98c
-         UQ6KVhUybr3PJfOWroBsNgZRdmFSG3Xr8brR3zsxyTjaP8FgJjBJHAntwublozP+E+Ka
-         z2Sw10GBvmBAUDf87o0w8ctrwWCT0xMayueVA3C8ba6pdvoDJLOOb/qMhYwEqqjJNdCq
-         vc1XI9Ncf1pqxzxXJV/UwuwN9FJGoq0+yS+0rLPZmmKhvTctd3a2Rv0MKD2YSxCBWmD5
-         n2hZgXIZiX23AmlTY99Xwaxi0+u4JJTZVh+5YoV9n5D2G3qw4LJRrCfDx+WW8gx9Z5YH
-         W8RQ==
+        bh=m2tgCqJzYz883D+QJhnqLh530MPdEycwrId2U/SWna0=;
+        b=k2xMjymAj7hJ2y7rI3hLolsFTaLTE9i35dIRGDqhrIbaLKYrIe+vLU018iCEBSAvXt
+         bxSOjzs2l0Kk8bPZMoHrpdlHyQ22J2iySNB/7592bQa6HcUsFOPS1QjP+R8Iw30u0F9X
+         KGvRVOEhsCSns9nc5UZBWtfK6a1feDUdn/II/au7Il+rvozcltUEj1VyOeSV5jLvt7WH
+         bB9dg1RZ4q2LndI/aWbCwGNZnhVXcYHvB4YVxoa4eZhaqKmg3jNkE/Df20cYZbMVnYZn
+         R9jObjyXSIYevm2uyVLiGPz+hgDZV1tw5bcrVN3ax7AcLHkH8nDQuluQb9q2WBeIt1VU
+         BM3Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=a50n9EUU;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=D745G667;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n3si7030627ioh.98.2021.05.13.19.42.53
+        by mx.google.com with ESMTPS id n8si5665070jam.34.2021.05.13.19.44.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 13 May 2021 19:42:53 -0700 (PDT)
+        Thu, 13 May 2021 19:44:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=a50n9EUU;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=D745G667;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:48052 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50486 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lhNmv-0004ny-4j
-	for alex.bennee@linaro.org; Thu, 13 May 2021 22:42:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60580)
+	id 1lhNoE-0006RT-GX
+	for alex.bennee@linaro.org; Thu, 13 May 2021 22:44:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60792)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1lhNml-0004nk-Vk; Thu, 13 May 2021 22:42:45 -0400
-Received: from mail-yb1-xb2c.google.com ([2607:f8b0:4864:20::b2c]:35753)
+ id 1lhNo6-0006RE-8A; Thu, 13 May 2021 22:44:06 -0400
+Received: from mail-yb1-xb32.google.com ([2607:f8b0:4864:20::b32]:44896)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1lhNmj-0004YV-EL; Thu, 13 May 2021 22:42:43 -0400
-Received: by mail-yb1-xb2c.google.com with SMTP id i4so37172788ybe.2;
- Thu, 13 May 2021 19:42:39 -0700 (PDT)
+ id 1lhNo4-0005d2-UA; Thu, 13 May 2021 22:44:06 -0400
+Received: by mail-yb1-xb32.google.com with SMTP id h202so37108337ybg.11;
+ Thu, 13 May 2021 19:44:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=fFqmDdo06KCryOm411zSmyn96FB3OB+3USOa93pTRuU=;
- b=a50n9EUUSC1VE2eGJd3yxcbKziPDa4xv7jxeeikVLol6UpSRvfj1y3BHpl54lt9eEw
- wJ+NlW+DGXUZf/aGEX0LghpNNLSeISplmvP2bjDlrCJvlOetj3KMMppcF1i3y63tSIOC
- e4leWSJ2ciEk9Xx9mxCFLwowazzStSGOns3XlbOQIzvxigvbFbfVM3yvUBhl4yeZECEV
- dUVCmQxbISozLSLjvCemehVOijL1M69VEBUzEQOoA5rlLnPCKbLlwMi3UCfXk1itNva6
- CSwkyWMejt+O/a9yydIOyuAS73orBQ7/TtV2qnQCYncndUYb5D8N4QYu+2MLbtGDOyj1
- ckjg==
+ bh=m2tgCqJzYz883D+QJhnqLh530MPdEycwrId2U/SWna0=;
+ b=D745G667Wjt4xty39F4bFswcfL+rU7OfzOYuqlReMnNV6BWeGgGPM5bWjALyk8rTtm
+ lJXt8s2/l8kI+ddGDubHg86jFY7/IldC/W3MQwkNUUjDjsRpzf2WD4dT/a6L9xw7XAdO
+ VsBlM/H+XbOp9xVzyeNndc6J2tMGfpNVGxlFhQ9Zfz+6x9cP3Ob3l7QmUAyFlPpTZhee
+ ybUJFcbkF2IO8+db6hgrta3e00LMhx29omrGEa87/zzLc1VcWB/uB/48Vs5rd7pmlgGn
+ FpnerzlX1Xtkj+ZfUZJSWoPdxdsDaajQxRYZ2iRc/6lU4t92K5XczlwI5ceFt1Zu2UgF
+ pLNw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=fFqmDdo06KCryOm411zSmyn96FB3OB+3USOa93pTRuU=;
- b=oeM4j72OyDAhDElZTR7mpznavxr/4oZ3x83T3uEb+NbIidxGhUoFlhcJL1lckCyjIU
- juNDENjiJ0RPUftBx1YLEk+qEC76TeoXbVxF/wJLRLltRux+ovkpA+VHhi1Ndu0lRm2S
- BoFd6fcOCZY194piQwcp7zqigxd4PQ+dZzksFZyDGUCAlz9oKEH2uvynFZIuDL+fK3/U
- RHcheztTcwCaEYrr1HYtx/DBsSG9plJHFIlYIviaQbbhfHz/n+HGjh1zYDkH7VisA3qg
- 2sG2xwVLbVwdaM7JQ2GMKmG/v+wwKE4UUUa66TTOSNQCUxdTfj8tox0GnCFKiJ9Pbf/k
- c6qg==
-X-Gm-Message-State: AOAM530rr0kIEi5RrESmAqScZbO/+rv4SKOWhDIYtGc5//8F/z3unh/Z
- j5/BNP+wyFqDNYdv02/R4J+1liUKPrjPPDOHKrM=
-X-Received: by 2002:a05:6902:1543:: with SMTP id
- r3mr27593505ybu.332.1620960159510; 
- Thu, 13 May 2021 19:42:39 -0700 (PDT)
+ bh=m2tgCqJzYz883D+QJhnqLh530MPdEycwrId2U/SWna0=;
+ b=U7ocI3QHxPoVXv1eZQycbMMr7oufr+GDLRFqkg12PXFC4PlQx+zHIIQGGRxq8OCrYA
+ tfDIbL6loAo4rL1sMGNEBswqwSkMvuwzMZbvafiuCB7F8GeWvZa8zr9dvpoS62DQ0EF7
+ Bm3efqp0im9V+zV/svimrZHXNrRxBSO059hpp6bmwbXWJx6XlKBo8LeHadl/J1rD+UTF
+ FpFNOHELBWgutJIf0D8K1c7q7mS09YVdsV8uLA5sD8858FrvtZ/R4ZS5oBbZRZmcoIf0
+ 6dxnGCfeDmo55YHFSIaircQt8L3U2WPeuHNIEwOLyNIbEZK+i3M03En97QJ3lAa6q73J
+ Yvng==
+X-Gm-Message-State: AOAM533Afswaqll7Vquqx+PGdQFb9r5o1AQvo1fd67zSV19HYN6rUKpE
+ QzkvA0Ch2Hspr1+B2bTG7cL3LpSiR/zLRlRH7Bg=
+X-Received: by 2002:a25:d990:: with SMTP id
+ q138mr65673094ybg.387.1620960243710; 
+ Thu, 13 May 2021 19:44:03 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210513163858.3928976-1-philmd@redhat.com>
- <20210513163858.3928976-4-philmd@redhat.com>
-In-Reply-To: <20210513163858.3928976-4-philmd@redhat.com>
+ <20210513163858.3928976-5-philmd@redhat.com>
+In-Reply-To: <20210513163858.3928976-5-philmd@redhat.com>
 From: Bin Meng <bmeng.cn@gmail.com>
-Date: Fri, 14 May 2021 10:42:27 +0800
-Message-ID: <CAEUhbmXfN=TZU+xi1SG+PzwnPedUQYAYSvwUzdDJrKymFRp4-g@mail.gmail.com>
-Subject: Re: [PATCH 03/10] hw/arm/Kconfig: Add missing dependency NPCM7XX ->
- SMBUS
+Date: Fri, 14 May 2021 10:43:51 +0800
+Message-ID: <CAEUhbmUoOtYtfPX95toq-2c_TNgo2vgLcLn6+avYfUJbH1m2pg@mail.gmail.com>
+Subject: Re: [PATCH 04/10] hw/arm/Kconfig: Remove unused DS1338 symbol from
+ i.MX25 PDK Board
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b2c;
- envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb2c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b32;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb32.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -112,42 +112,26 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Corey Minyard <cminyard@mvista.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Doug Evans <dje@google.com>, Hao Wu <wuhaotsh@google.com>,
- Tyrong Ting <kfting@nuvoton.com>,
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
  "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Peter Maydell <peter.maydell@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iXV/ksyRI3I0
+X-TUID: xZM+BaI5089p
 
-On Fri, May 14, 2021 at 12:53 AM Philippe Mathieu-Daud=C3=A9
+On Fri, May 14, 2021 at 12:56 AM Philippe Mathieu-Daud=C3=A9
 <philmd@redhat.com> wrote:
 >
-> The TYPE_NPCM7XX_SMBUS device model exposes an SMBus, but
-> this isn't advertised with proper Kconfig symbol, leading
-> to an early build failure when building NPCM7XX machines
-> standalone:
+> In commit c4f00daa5b3 ("imx25-pdk: create ds1338 for qtest inside
+> the test") we removed the DS1338 device from the i.MX25 machine
+> but forgot to remove it in the machine Kconfig definitions, do
+> it now.
 >
->   The following clauses were found for AT24C
->
->       config AT24C depends on I2C
->       select AT24C if NPCM7XX
->
-> Fix by adding SMBUS to NPCM7XX.
->
-> Fixes: 94e77879395 ("hw/i2c: Implement NPCM7XX SMBus Module Single Mode")
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
-> Cc: Doug Evans<dje@google.com>
-> Cc: Hao Wu <wuhaotsh@google.com>
-> Cc: Tyrong Ting<kfting@nuvoton.com>
-> Cc: Corey Minyard <cminyard@mvista.com>
-> ---
->  hw/arm/Kconfig | 1 +
->  1 file changed, 1 insertion(+)
+>  hw/arm/Kconfig | 1 -
+>  1 file changed, 1 deletion(-)
 >
 
 Reviewed-by: Bin Meng <bmeng.cn@gmail.com>

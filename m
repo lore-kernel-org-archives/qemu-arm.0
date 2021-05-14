@@ -1,192 +1,142 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp673521lfm;
-        Sun, 16 May 2021 13:51:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwnW+oq0LURbfi4m1oHmO4e81IWA3csR/8gfvEme4kwLyiPaWrDWLzyGPqEtIMQnd8JTWCN
-X-Received: by 2002:a5d:8b85:: with SMTP id p5mr15370684iol.43.1621198284536;
-        Sun, 16 May 2021 13:51:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621198284; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp55225lfg;
+        Thu, 13 May 2021 21:17:18 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzrnfMOljbZm99jtLEMtdF9n8Ityqo/lYR3FOzZzoDvjw76ponRJnVVx9o11cAPPjJ7ffLM
+X-Received: by 2002:a25:d9d1:: with SMTP id q200mr59524347ybg.356.1620965838517;
+        Thu, 13 May 2021 21:17:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1620965838; cv=none;
         d=google.com; s=arc-20160816;
-        b=PY4jjATfxjlPcW7mHq9HUFdQ8pyjc7AjO11fMQFv4xmzXtypkC/XMqUtpQ7OO82UxK
-         Q4qqtWAJgdKMPagW2KOnOePLdMkgalqeQD9p82vZvEUdsKrdqbvphwfYwvnDkrdX90vI
-         LxkTVp7acFLcy9iMwlleqkUXxTRAJyR9QCznS/wX3DIRLCnmy86s75WBT8FMBq4y1mcd
-         kWE2Kgrn5gv1z4ZWc1YfSpW68LbIEUSnEQRsLRkveDNl3cFMk5Jpw7nGJAhhFAsglwRw
-         wVzclHdBYrzrX9mnSe7e24SReV9pU5nCX0xhVo5RJwEmt6jTnUpBFh1RAryDIb+m/RvI
-         zYYA==
+        b=WHszngEnDBCShFp+xRinljzHQPC1q5CThoa6SPXyTlTpBMaSEWR5bcOjFy9T8bHL6T
+         fsDzPmgYMWUIigTR6JssR+MGpirwx0v0OQwMJM7NGETlQrK+ezODdVSdt6RkxJosmCdH
+         90zHbVdOqmLAfTnZ+vPfhvR0DE2NuFL9LOp9Gs4PtXr9M+i6lfjImWeTZdb5FF1f4MIm
+         n928T6sdcuxs9f0Kh8vcno5Vz8i2GHmDNaV+WZYie38+8nBmPKvatLosiwFALYRdSutY
+         ULdx9u9NbzViQ+HrGWX1/BRMGMxTBg3McsC1tXkUxQWjCGJFhAwlzwfMqverQZ5/zbhJ
+         6DBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=jjzGDYsCt9G58r+D/CLt4yD0Z7T5oyNjPS/+wxQ6rIQ=;
-        b=ZKPnO02vnL3vrNU0fW6vr0osnJp5FFbacbGBXTiuFwZ6juSk56BnJ/9j2W252AIm+I
-         nICV1//yocbHOBlWc23e0upxrj5R55V91SfqJu+Da3UBaW4d7sZrxALfS7JfC2ZeDJeJ
-         24GRBenIwMDyN/713um4fk9elkPPdzr5XW+tI3qswWlKXYIV2ZLz14NFxVxVYjfNcB5c
-         9KRWThZ+RQMAjIATfpZS15KB/Qc64DvOjECDh7/Zg8oiamfhNh3aPtq35RrV+vwENdT/
-         7WlRiZzwHFJW9nvKKRITT1WFRewrtbrxVYT+p5WLMwF1DBdg5ktuhlFRkT6xn6EErIj4
-         ZLzw==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=Ow2TPLpQaGi6HCtIyGujI1lTz32LG2X9sy1YBULdqto=;
+        b=wq/60+4T5HrHTp7Qp6UONGg/hq8amuNFmMmSpUjqVQl9dSWoihK2MEEPOSA+qIQOCa
+         d090uWcud9pKuVmKEgANk8smatxVF6RUicJ2APVZ7Y7SA1CnvXhAuBE2QXW2eLNhpXXk
+         WXIpJB5Vnf0PIKRafzdZfD1O8lj4heSZRtckIbXn9NP3C7tQRoeOcuf73tnGcZYrQssI
+         EGExVL/Ffcw/1zu0JdRqNpRNoXRBEGAww9S6yVhxK6MmJ4V6v+HyDr3XglunQUW114Je
+         RTTOZsa2rUv2NOePVqP2fBNJpIPzzevxKG4skLJK6eHPGMDlmIg0R6hg8ntvYb6ShboW
+         qZow==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=lRB2p+3L;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=mhynes93;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x20si15184013iov.56.2021.05.16.13.51.24
+        by mx.google.com with ESMTPS id l14si4660127ybp.185.2021.05.13.21.17.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 16 May 2021 13:51:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 13 May 2021 21:17:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=lRB2p+3L;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:40118 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=mhynes93;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:57972 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1liNjP-0002Th-UH
-	for alex.bennee@linaro.org; Sun, 16 May 2021 16:51:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54232)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lhPGH-0001yl-UG
+	for alex.bennee@linaro.org; Fri, 14 May 2021 00:17:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46476)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1liNii-0001dB-R2; Sun, 16 May 2021 16:50:40 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432]:46788)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1lhPG7-0001uo-Vh
+ for qemu-arm@nongnu.org; Fri, 14 May 2021 00:17:07 -0400
+Received: from mail-qk1-x72a.google.com ([2607:f8b0:4864:20::72a]:46779)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1liNih-0000Uh-4d; Sun, 16 May 2021 16:50:40 -0400
-Received: by mail-wr1-x432.google.com with SMTP id y14so2242257wrm.13;
- Sun, 16 May 2021 13:50:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=jjzGDYsCt9G58r+D/CLt4yD0Z7T5oyNjPS/+wxQ6rIQ=;
- b=lRB2p+3LsED7KX5+TiYP8FiEjXnfuQfrkXZ6GNTzDo7YNUP7VY7aeNa5dMjp56H3L4
- U5tBWm8AUswLy48StgTR5mjND4bBpX172OIQZhEk+kq43ViJG5R1BcePHZeFzX7LrCPr
- V7/wakOHpc952C9omoexn8hd3YrLMF1zj4s9qKzkY+jsA2+1QJ5N6R4MNhpSB5EpCah8
- SpqQyEzmw19dYBzeIC2b0A7D/gOa9A1KTXxkYTtYxBYFWr+gq8p7ZqWIrq4hgbQ1rhln
- OYvUGDEwoFKqCp8YPIDs6WijWWkhrSuvi9l4B5d+kPsxS5AJjgZeNFgLlTWdqDDjdZGB
- 4oyA==
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1lhPG6-00044I-2q
+ for qemu-arm@nongnu.org; Fri, 14 May 2021 00:17:07 -0400
+Received: by mail-qk1-x72a.google.com with SMTP id 76so27645314qkn.13
+ for <qemu-arm@nongnu.org>; Thu, 13 May 2021 21:17:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=Ow2TPLpQaGi6HCtIyGujI1lTz32LG2X9sy1YBULdqto=;
+ b=mhynes93EX+ZUf1QRQdyenDtARXirwLoQq65McuoiWDHeT5XLz5kjo94eGrFRT2FLd
+ C4m/iOl0ox/sT1CcsEB+v6/NM2iP8LWKhQaSRwpHgDUiN8mYPV/Czk+SPYq6vhJ2slNH
+ F2XP1tkwUjEa8Zvvj5s5D3pq9RrufkXgQNA3VFhTnyWZXNXd0mADENt5F5ASthJPp3Cm
+ KoPsguKGRJoVN1/kIdcTbeohGT81Z2D2LVvAljUtGHIj1f9f37Cabo0RHFzuroLfVKbP
+ 4JCKKoSrfcOS1GE5zBxflYKP7SNQqd73bomgZhXmuEUCB+bHJ8ltB8ll6orfqWdw30Ud
+ pIMQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=jjzGDYsCt9G58r+D/CLt4yD0Z7T5oyNjPS/+wxQ6rIQ=;
- b=YaJDVOYXxr0SxytMIpXQ/t2AvQislOsg9j7gIE460JO5r2FKFIznk4mYun4dPkz78N
- sjXrJRSfnmDMqlVsRgLLRwBV1PnEpU9xUnvBlIMCqxXsQqjjt9RD3oMT5vtEWkOwSSf7
- OlQO/kT1tiqZuZl77HLXSRi0ehrEiL/McnnJEKUZ9RZp1Wr93y26JQwr3Qs8ZyI+4ev6
- f1/Ld/kZJaAjL4l/i4hksAwRgQuLVu5w2pU3SsJd8leH3zSRNf+ejsLgGdoGf/hONy1p
- FNnl6sVIt2r03nkPFyQi6278LiXTjT1tG5BNQxFGSRh7svIbDW6UbRH+l+aL5raHF7WY
- pHKA==
-X-Gm-Message-State: AOAM531Ga16sWvGku3AJPJqfN8s4TLkkZ6tgqeKyiwpSRwZAJKxeiEMo
- Hfzlm+gl84edYXfJCcSUzS9d6b+EwMawSw==
-X-Received: by 2002:a05:6000:551:: with SMTP id
- b17mr69824234wrf.32.1621198236496; 
- Sun, 16 May 2021 13:50:36 -0700 (PDT)
-Received: from localhost.localdomain (31.red-83-51-215.dynamicip.rima-tde.net.
- [83.51.215.31])
- by smtp.gmail.com with ESMTPSA id r7sm11233920wmq.18.2021.05.16.13.50.35
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 16 May 2021 13:50:35 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH] misc: Correct relative include path
-Date: Sun, 16 May 2021 22:50:34 +0200
-Message-Id: <20210516205034.694788-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.3
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=Ow2TPLpQaGi6HCtIyGujI1lTz32LG2X9sy1YBULdqto=;
+ b=ZuzHWFwdFzLACGjrmfV1n2mTbK2/tuH2QVcnn+N2+k6OZIMWO+Wo8rXsHc1wrkQxEY
+ Dl3DY+cOyjXLmwxXP3WRbS0saqntBqSMRXdvoX1K0emRtY3/n/LsZCRwEhOH7U5w4WOd
+ kRiC0Nl19dxANTdPNquBmumqmxTevrUVcw44t7NabT/PZmjezgk5IbAjXbEedtiTbRjf
+ psj807nJBraT4KbA2fegl4NNqw1NZLBky3eW8jYEZR3+eraY4JYDEDbKDf72HD9eDqBt
+ yqxGsrlo7JBDKrDhNRt3gsIqQ5rzcgp7zyY5MEUONF6y+hWSoO/FrlUunoTBqY42n+L0
+ KH9g==
+X-Gm-Message-State: AOAM532XCG//kK1HDc2ET7e/P/YxT3IGqSSKghgl+gJaZAhLLduX3AOY
+ 5LeKADIA6CDP0ce3+sNOmgZbcyWg+UeYLnlxr0k=
+X-Received: by 2002:a05:620a:12b0:: with SMTP id
+ x16mr40612728qki.451.1620965824996; 
+ Thu, 13 May 2021 21:17:04 -0700 (PDT)
+Received: from [192.168.183.155] (163.189-204-200.bestelclientes.com.mx.
+ [189.204.200.163])
+ by smtp.gmail.com with ESMTPSA id d19sm3529582qtd.29.2021.05.13.21.17.04
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 13 May 2021 21:17:04 -0700 (PDT)
+Subject: Re: [PATCH v9 1/3] target/arm: Add support for FEAT_TLBIRANGE
+To: Rebecca Cran <rebecca@nuviainc.com>, qemu-devel@nongnu.org
+References: <20210512182337.18563-1-rebecca@nuviainc.com>
+ <20210512182337.18563-2-rebecca@nuviainc.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <a8dc1616-329e-534d-53bf-2ab9aefde678@linaro.org>
+Date: Thu, 13 May 2021 23:17:02 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x432.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+In-Reply-To: <20210512182337.18563-2-rebecca@nuviainc.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::72a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-qk1-x72a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +4+LrQCsYObL
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: AgaJO7y8wY3q
 
-Headers should be included from the 'include/' directory,
-not from the root directory.
+On 5/12/21 1:23 PM, Rebecca Cran wrote:
+> ARMv8.4 adds the mandatory FEAT_TLBIRANGE. It provides TLBI
+> maintenance instructions that apply to a range of input addresses.
+> 
+> Signed-off-by: Rebecca Cran<rebecca@nuviainc.com>
+> ---
+>   target/arm/cpu.h    |   5 +
+>   target/arm/helper.c | 281 ++++++++++++++++++++
+>   2 files changed, 286 insertions(+)
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/i386/acpi-common.h     | 6 +++---
- include/monitor/monitor.h | 2 +-
- hw/gpio/aspeed_gpio.c     | 2 +-
- hw/intc/ppc-uic.c         | 2 +-
- 4 files changed, 6 insertions(+), 6 deletions(-)
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-diff --git a/hw/i386/acpi-common.h b/hw/i386/acpi-common.h
-index b12cd73ea5d..a68825acf50 100644
---- a/hw/i386/acpi-common.h
-+++ b/hw/i386/acpi-common.h
-@@ -1,9 +1,9 @@
- #ifndef HW_I386_ACPI_COMMON_H
- #define HW_I386_ACPI_COMMON_H
--#include "include/hw/acpi/acpi_dev_interface.h"
- 
--#include "include/hw/acpi/bios-linker-loader.h"
--#include "include/hw/i386/x86.h"
-+#include "hw/acpi/acpi_dev_interface.h"
-+#include "hw/acpi/bios-linker-loader.h"
-+#include "hw/i386/x86.h"
- 
- /* Default IOAPIC ID */
- #define ACPI_BUILD_IOAPIC_ID 0x0
-diff --git a/include/monitor/monitor.h b/include/monitor/monitor.h
-index af3887bb71d..1211d6e6d69 100644
---- a/include/monitor/monitor.h
-+++ b/include/monitor/monitor.h
-@@ -4,7 +4,7 @@
- #include "block/block.h"
- #include "qapi/qapi-types-misc.h"
- #include "qemu/readline.h"
--#include "include/exec/hwaddr.h"
-+#include "exec/hwaddr.h"
- 
- typedef struct MonitorHMP MonitorHMP;
- typedef struct MonitorOptions MonitorOptions;
-diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
-index 985a259e05b..db7ef88ee56 100644
---- a/hw/gpio/aspeed_gpio.c
-+++ b/hw/gpio/aspeed_gpio.c
-@@ -10,7 +10,7 @@
- #include "qemu/host-utils.h"
- #include "qemu/log.h"
- #include "hw/gpio/aspeed_gpio.h"
--#include "include/hw/misc/aspeed_scu.h"
-+#include "hw/misc/aspeed_scu.h"
- #include "qapi/error.h"
- #include "qapi/visitor.h"
- #include "hw/irq.h"
-diff --git a/hw/intc/ppc-uic.c b/hw/intc/ppc-uic.c
-index 7171de7b355..60013f2dde3 100644
---- a/hw/intc/ppc-uic.c
-+++ b/hw/intc/ppc-uic.c
-@@ -23,7 +23,7 @@
-  */
- 
- #include "qemu/osdep.h"
--#include "include/hw/intc/ppc-uic.h"
-+#include "hw/intc/ppc-uic.h"
- #include "hw/irq.h"
- #include "cpu.h"
- #include "hw/ppc/ppc.h"
--- 
-2.26.3
-
+r~

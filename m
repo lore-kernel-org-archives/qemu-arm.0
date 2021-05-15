@@ -1,102 +1,101 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp1430839lfg;
-        Sat, 15 May 2021 10:42:22 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJww9qmmPKBEvcaAPxKAZ5rWd133f9s6povv7yfILE03NxuIBtHm9vFgtE3XEQ4VYIMeEvBX
-X-Received: by 2002:a5d:8b09:: with SMTP id k9mr37987479ion.185.1621100542794;
-        Sat, 15 May 2021 10:42:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621100542; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp1430937lfg;
+        Sat, 15 May 2021 10:42:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxfwsN3tfAtjNyaG6FrBfCc9lmsziI+d1HP4IeAcbTkjC3MKbeUzWCwAhja36ImwEa1QlDd
+X-Received: by 2002:ae9:e304:: with SMTP id v4mr50211525qkf.163.1621100558739;
+        Sat, 15 May 2021 10:42:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621100558; cv=none;
         d=google.com; s=arc-20160816;
-        b=npeKpLjiKqaICnlzV/PR2EK+hxMJMGINpNGIR+St4R7UZAdFw0hAEeFpA0CNx2Kh5h
-         +AMveUiItA+r4uQSsBJVK4XANemqBJkS1dmakueKV1FwQYy/+xmDxA2LiNPouwBvtzPj
-         21pmFmnyiiH1/ME/HXi2o3YZqsg1cCNRw2qwZT0VX61Odl5OM5giDczFTFRkk2Z1qvT3
-         FMO33hZ1j62UKEvQyEZBM8NbcCsZ0grRmsWmidzODz8yHEXG+3Ui3C7xZFfuy/21t20r
-         Ty8KnSoRvb7RwuH6HW5rw2unsZQxqRIj9pmMDw0QlXloVF0FgK5J2SJkHhZRxgFp7w5X
-         E+tg==
+        b=QHpp2PCkWVE5CrDlgwjymWYd3vMScfrQlQfS2XYJm9EYMVJiosYMPgp9HQSnP6r8kV
+         qNDkZ8XuAGG2QULjHgD0TkBvJxCGU9WqK1dWA7IlgN5GhlycESzqW2LHVsoX7czt6zes
+         ohInXXtwfk3zgOkChq4TfiKz8DVEpPcmoxAF+ftbJdR4SdjB5hCEkt4xckeK6bVi/bz+
+         UcEO9MpRHuPK6hjxfhC/BLT/bVxz7UOuhG2wyH7mkNxqj5rDhx4mDd73sM2obqbWDcCs
+         IUkbCtkSgqU1IV6SQemuqmsdWM1qd1xbWpkQgeEsXAR/kBOOPF3SVdUIrREqSyZMbn2z
+         zsAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=lraw6SQ0lVBa6CL2zdvdg82NgOtgQKcG7wf/n9cOxMc=;
-        b=UYOLb8BMWdd97QAi383uqPefQjgqTTo9ZRMWhLR0fdIhTlJQ3aTrg2MT68pnrFHow2
-         ojgp8rmCNUv+Rt+okjQLYUg6ekVffbpUgkkEmuX9/HXKSt//WoKXpuy7ECpj69cHq7AO
-         visQlutl4qE0nj7FuymAxONvxoNxGAjwjfgCODPHqazW59Eru3PCrVCQCLfdE45WmP6k
-         Xqi5eW9Hmx/bKsTmKRpQivCVJN/8zzN3B9KkK+PFQOtxIXGK6TGXY2DgrYvfsdXM7rwE
-         MKneS8qI27GmTb0d2fxJAeHxThBqTGxc5b1a1zb+bvXtHN+MHDQ7eBa3+oJqNeFRC1DN
-         o1Uw==
+        bh=S7IAZU3SpuyZA/TPUu84zMTCi1tlnlEn7V9DtnfwMAo=;
+        b=k0V6vGoHIWdebRaiqS27ozhWamKzsXgfcYN3EYP3CnXumtUvsUgw1uHlfUh5D9Yb5x
+         Jhigi4KodRdFI8MAmhxl08FXNuaGgrG/rQSZSDm4qGuqxfDx9aoaRqtGsZaGXgPLOaw4
+         xA5Cd8QY9AyUVv53eotiwIDsTH9ar59r5YMjFYaM3T/Nawp8RDtXIzQsRxniadrWCHvS
+         TmMvLPL444mtbDKeaZc7CZRqJt0CxYbm0UKNJVzzSewY3I4n9z5Y8Y/RobQ6lIhEkrp0
+         oktZP71BEdYIBVXhL7H6uUDwZg905ozXVqRcYzuyv1vHFTT+Ceo45QFd3Zb/2JmO3XM/
+         Sodg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YnyndHzT;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=E5YAm38Q;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k3si10315285ilc.30.2021.05.15.10.42.22
+        by mx.google.com with ESMTPS id i26si3730919qtv.310.2021.05.15.10.42.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 15 May 2021 10:42:22 -0700 (PDT)
+        Sat, 15 May 2021 10:42:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YnyndHzT;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=E5YAm38Q;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41432 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42554 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lhyIw-0000H0-08
-	for alex.bennee@linaro.org; Sat, 15 May 2021 13:42:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48084)
+	id 1lhyJC-00013e-3c
+	for alex.bennee@linaro.org; Sat, 15 May 2021 13:42:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48234)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lhyER-0000VE-0o
- for qemu-arm@nongnu.org; Sat, 15 May 2021 13:37:43 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:59581)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lhyEf-0000pv-6f
+ for qemu-arm@nongnu.org; Sat, 15 May 2021 13:38:00 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:57576)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lhyEP-0006Dy-FR
- for qemu-arm@nongnu.org; Sat, 15 May 2021 13:37:42 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lhyEX-0006Hr-6c
+ for qemu-arm@nongnu.org; Sat, 15 May 2021 13:37:55 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1621100260;
+ s=mimecast20190719; t=1621100267;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=lraw6SQ0lVBa6CL2zdvdg82NgOtgQKcG7wf/n9cOxMc=;
- b=YnyndHzT1F+5eL+YVZjVpRNRP/RBsz4Ad2K1OwanOX4SDX9fR5wfzqagTG/XtXr8pHEjf+
- PTG1LOqfWZs/CTw3luCSjDhQGB9iDgGlZEn8bp9+LMAsihnEMLhD1DdWT1Jzjj0wy+xkwl
- P/huCsEFrY2vSaB/7KDTMWyU72FFjc4=
+ bh=S7IAZU3SpuyZA/TPUu84zMTCi1tlnlEn7V9DtnfwMAo=;
+ b=E5YAm38QHzAgmKd27PBH7F+wicQRUEA5xQ4VgYljkCz7wQtZ7ZdI6PqA6Mf80sap0aixPc
+ saGUn5GJTcHIIPDS2X79iJ1WQqOYwL8bVlPQiaCiwexdN/aRXiv+NdUzoYCxWAWmsg51ua
+ EpyKzDsHoWFV8ChduiuBR/SqwRbaAUU=
 Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
  [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-163-eEUuH_RWMfGhJgtngwDrAA-1; Sat, 15 May 2021 13:37:39 -0400
-X-MC-Unique: eEUuH_RWMfGhJgtngwDrAA-1
+ us-mta-40-pi6XUNTDMSOs1vtCaf5NGg-1; Sat, 15 May 2021 13:37:44 -0400
+X-MC-Unique: pi6XUNTDMSOs1vtCaf5NGg-1
 Received: by mail-wm1-f72.google.com with SMTP id
- n24-20020a7bcbd80000b029014287841063so450864wmi.3
- for <qemu-arm@nongnu.org>; Sat, 15 May 2021 10:37:38 -0700 (PDT)
+ b16-20020a7bc2500000b029014587f5376dso2416330wmj.1
+ for <qemu-arm@nongnu.org>; Sat, 15 May 2021 10:37:43 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=lraw6SQ0lVBa6CL2zdvdg82NgOtgQKcG7wf/n9cOxMc=;
- b=EZtAiHktQ0EqO0A603iyGoIbHgsfqyw/uR9PrR7pTBRpcKpXmpyEzW+z2vDFk0dls4
- NAQ3aPrQfnCNcd6YyNngP1Jwis6whtCb9LzZ0ZIYSv4sBHqVhl6ShgXl7VlDaxpnjsyl
- KQbnb0R1SXrzYB8/8QSVy/7v5SxN8oDD4YKl10GffKo8NTwCyi36gxRWhQFu+3yCTbnz
- CL64qln16HN8q5OSuKQIazHkyEeQ+kJJ39gM4DEnzRiyToZZsjwEjEUT1m7sTWowlTTr
- sQ1PUlFpyRTBIaIluDiSwTZyUK4NZk6lnQosd3JjyL8jp6DQQ+V9/tcsFI0A9na394gP
- NT0A==
-X-Gm-Message-State: AOAM5320X6OgPngh0I0Fgfa9OaiGEEcfOpVJjtEpb5IyQR1i0vg4y+lr
- eM272SuHAxAjmZIMX9SoGjqQVHG6tietn4usZZBaIPHW+qIKcgkBTsxzvrgLkAD1kfn1wJv2Xcu
- UHoGFwhYE7r5x
-X-Received: by 2002:a1c:a3c3:: with SMTP id m186mr3770244wme.39.1621100258033; 
- Sat, 15 May 2021 10:37:38 -0700 (PDT)
-X-Received: by 2002:a1c:a3c3:: with SMTP id m186mr3770224wme.39.1621100257888; 
- Sat, 15 May 2021 10:37:37 -0700 (PDT)
+ bh=S7IAZU3SpuyZA/TPUu84zMTCi1tlnlEn7V9DtnfwMAo=;
+ b=hrZF/C0QBYJSQpGP70ml6HznKW6oU8kO4F7vxrbbFrFySrHygCDi4h9NfHYwD4EJ1w
+ ibb1zJV21meLmKllVXuXsoRl2v5Y5a9RFOkroZSg9QDC67pctOdL0vMxX53uAf3+s5KA
+ 07Lcf/nHjNBZMEqcSbHxo2w1Q0bm1bZaDzhnB2felGOr8DUx2Wn0ppxrSartuy/zYKdC
+ 7rt/3lRoL41s2dYjSoDhP3UdtLgCShKI93kALp2PXEFOFJEj3N0eiBq6ZJT3sDCKbOl4
+ oaArYUKYdPje8cPj319kF8Fobs2tLl0n7IV9kBNIb/W4oD1hR7cbOO//e3WzYYMWtqlr
+ h2mw==
+X-Gm-Message-State: AOAM530t0Rj06fJAue8jNPx0mTriiiVoL2qz6dHKfs/GFJ51GJiRlRdR
+ VEWnshF8XuR5PC/vDADqtLmmD1UuLB/1e7zwhtaYUSx12bB2m1nd3+x+raiPn1m0dTIFK8AvN5H
+ r5Eg90i21AKpr
+X-Received: by 2002:a7b:ce87:: with SMTP id q7mr17484726wmj.77.1621100262896; 
+ Sat, 15 May 2021 10:37:42 -0700 (PDT)
+X-Received: by 2002:a7b:ce87:: with SMTP id q7mr17484711wmj.77.1621100262785; 
+ Sat, 15 May 2021 10:37:42 -0700 (PDT)
 Received: from localhost.localdomain (31.red-83-51-215.dynamicip.rima-tde.net.
  [83.51.215.31])
- by smtp.gmail.com with ESMTPSA id x11sm10019081wrl.13.2021.05.15.10.37.36
+ by smtp.gmail.com with ESMTPSA id 61sm11021853wrm.52.2021.05.15.10.37.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 15 May 2021 10:37:37 -0700 (PDT)
+ Sat, 15 May 2021 10:37:42 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 04/12] hw/arm/Kconfig: Remove unused DS1338 symbol from
- i.MX25 PDK Board
-Date: Sat, 15 May 2021 19:37:08 +0200
-Message-Id: <20210515173716.358295-5-philmd@redhat.com>
+Subject: [PATCH v2 05/12] hw/arm/Kconfig: Add missing SDHCI symbol to FSL_IMX25
+Date: Sat, 15 May 2021 19:37:09 +0200
+Message-Id: <20210515173716.358295-6-philmd@redhat.com>
 X-Mailer: git-send-email 2.26.3
 In-Reply-To: <20210515173716.358295-1-philmd@redhat.com>
 References: <20210515173716.358295-1-philmd@redhat.com>
@@ -107,7 +106,7 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -34
 X-Spam_score: -3.5
@@ -115,7 +114,7 @@ X-Spam_bar: ---
 X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.701,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -134,32 +133,38 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  qemu-arm@nongnu.org, qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
  Bin Meng <bmeng.cn@gmail.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>
+ Guenter Roeck <linux@roeck-us.net>, David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TZXK7cVgJyY2
+X-TUID: OhndUcdPC8Q3
 
-In commit c4f00daa5b3 ("imx25-pdk: create ds1338 for qtest inside
-the test") we removed the DS1338 device from the i.MX25 machine
-but forgot to remove it in the machine Kconfig definitions, do
-it now.
+Commit bfae1772c43 ("hw/arm/fsl-imx25: Wire up eSDHC controllers")
+added a dependency on the TYPE_IMX_USDHC model, but forgot to add
+the Kconfig selector. Fix that to solve when built stand-alone:
 
+  $ qemu-system-arm -M imx25-pdk
+  qemu-system-arm: missing object type 'imx-usdhc'
+  Aborted (core dumped)
+
+Fixes: bfae1772c43 ("hw/arm/fsl-imx25: Wire up eSDHC controllers")
 Acked-by: Paolo Bonzini <pbonzini@redhat.com>
 Reviewed-by: Bin Meng <bmeng.cn@gmail.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- hw/arm/Kconfig | 1 -
- 1 file changed, 1 deletion(-)
+Cc: Guenter Roeck <linux@roeck-us.net>
+---
+ hw/arm/Kconfig | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 85c6a1a088c..5827c092b28 100644
+index 5827c092b28..6bb34926bb5 100644
 --- a/hw/arm/Kconfig
 +++ b/hw/arm/Kconfig
-@@ -386,7 +386,6 @@ config FSL_IMX25
+@@ -386,6 +386,7 @@ config FSL_IMX25
      select IMX_FEC
      select IMX_I2C
      select WDT_IMX2
--    select DS1338
++    select SDHCI
  
  config FSL_IMX31
      bool

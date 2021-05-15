@@ -1,103 +1,81 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp1377705lfm;
-        Mon, 17 May 2021 08:23:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyLBtL79Pzo/p1pulPUU9xbsXCTBwh3g2NuAMNvpvonjRKhz8YwBpMSCKJ4Kr5+LSkPLp/S
-X-Received: by 2002:a5d:63c1:: with SMTP id c1mr249398wrw.71.1621264988878;
-        Mon, 17 May 2021 08:23:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621264988; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp1501267lfg;
+        Sat, 15 May 2021 12:43:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJydstM7XPC8Jlz3leddqvHi1SLS2FVBRRucZesDTrQiT4D7G8Eu5amW1XQur8lJ0RpnShcM
+X-Received: by 2002:a05:6e02:1c49:: with SMTP id d9mr42328043ilg.95.1621107818496;
+        Sat, 15 May 2021 12:43:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621107818; cv=none;
         d=google.com; s=arc-20160816;
-        b=f+BkxoHjiJ3cjSAFVxvEz0BeurIWyQKpkwqDCDwJ7XgKaBQAGkn77ARyvQ7fskQzZR
-         eUvYagrTi7awZIrtOOxzjExkh24St3cUKTjlpYEK/OAM/UPSCLnAiugU0p5ZEG4WH7g1
-         M6oyH+atx38VWfcv4QZUd1UA9Z6oI0cut6J4A6/utzipGHa8NDEOAbEzW86CddwzAJrY
-         irLErj1ExBIPa4AsD5jT3CiFCkZHAPVBryv6cPIA1Sfd6q1w/nhQ+cyhc2g3JtRkpNPN
-         GEKPjZslEdN0+Mxrb26CTzxRVKKdkjA9HVKrBe8FdwINQf4z7ncEtkklnQ52yYUA1oa3
-         2YOg==
+        b=SvGH1SAAGhEyBzixdOEW5y++4nmr/AnFdNrSpyF5PxxMOAuqNGLK6Rir3Fi0IycCVa
+         fOn79hSOQYlWzM2B92NCvnKyPDv62wfteYJPqeUvBkMwqJJ+GzpsRn2YFpeAUM6/ZL1W
+         g7jNlua496nDtkVxE6GLPd/7BIQWgkBrarGyJzczXjuRnhiC7F5CRYjO3QKqaQTCcurM
+         d+VeRKt7FhT32QHVsEbKyVg3aongCPdU1b9TwSZ/uXIMolcL8x/V9vhfvH9+lGYmDrH2
+         UH5l5vOJquVY0MZ6uI4lXY0dP1Vd4v7/N5vvyN2wkCp1iZi22VV+NPGo3VmiLWnb9vNF
+         HBVA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:to:from;
-        bh=mL+k8ZiiBt/axnxFA7DxTHwhI4e38LQZbpkvw6vl0Zk=;
-        b=cAtVK8e/8S/QeZszec05JNYvt1C7e1+foWJUX9o7r4FC/7MjvyXwpb3ezK2zwok9Jq
-         NL231ika9LklIgouWY4oiRMYp3vr+LBCcRuc0cjYFqAM2uM9oqp38+1mjt9VVNMacOY4
-         ufFGYkdiNd20CttZuG/69Kzcb6AO4F9DeVDjsFpRm0/jvXHGjybszdDDJK2638TL7cl1
-         8l0MQbJGsofqvUWpuPTUQ5UkQnCekHB6HyEXRlSQeh+GxwSi+Sf8F/4/CNX8I+zIl+v6
-         o3d0voIY4PW7ikt8KzatG424nsFNd/Achjx/ufunZNmLmQCtHHa0q8otmmGO+PACSEWy
-         j8SQ==
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :message-id:in-reply-to:subject:to:from:date;
+        bh=av2504PYbgBgGIuvKfQjePvIcYh6QARoRAam1VXOPZA=;
+        b=ftuuj4tMDBmyHD5UDdjtJBS5kxTg06w4ddnC7gUAE+IPoMLFpaqriEIWsbcxDdURBy
+         ErW1L2wl5lPShNoEhHJztHJzLrnRtJk68hSia9/5Sb9iiuguZ4loBGFGrgSmhQ7eLSrk
+         00KIyW1GWguQjsOnUBRoBlcgTNJl6RQd4vIbiICwbBjClD/jHHFncuXzgxiStkU0uJt7
+         tCSrC6Pqygo7MmBFoIR2fl7PpDgeKejPvLTgyxC2pbrn1hPo1cugf1ZkoMrgjyMhO4Mg
+         2nLEFU1QUWvjhCacMQQhOHpymoYeXvZA+GynApgp01rpoD9aYfdvB16ULayCYgVpNWBK
+         Q+jw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f14si368649wmg.83.2021.05.17.08.23.08
+        by mx.google.com with ESMTPS id z8si10889827ilh.46.2021.05.15.12.43.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 17 May 2021 08:23:08 -0700 (PDT)
+        Sat, 15 May 2021 12:43:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:51434 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+Received: from localhost ([::1]:51176 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lif5H-0000SQ-MA
-	for alex.bennee@linaro.org; Mon, 17 May 2021 11:23:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42468)
+	id 1li0CH-0002gr-Rz
+	for alex.bennee@linaro.org; Sat, 15 May 2021 15:43:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41842)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
- id 1lif08-0006ZX-MV; Mon, 17 May 2021 11:17:48 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:2598)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1li0B5-0000ha-HP; Sat, 15 May 2021 15:42:23 -0400
+Received: from zero.eik.bme.hu ([152.66.115.2]:53404)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
- id 1lif05-0005pX-AZ; Mon, 17 May 2021 11:17:48 -0400
-Received: from dggems705-chm.china.huawei.com (unknown [172.30.72.60])
- by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4FkN3g4854zlfHJ;
- Mon, 17 May 2021 23:15:11 +0800 (CST)
-Received: from dggema713-chm.china.huawei.com (10.3.20.77) by
- dggems705-chm.china.huawei.com (10.3.19.182) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
- 15.1.2176.2; Mon, 17 May 2021 23:17:26 +0800
-Received: from lhreml703-chm.china.huawei.com (10.201.108.52) by
- dggema713-chm.china.huawei.com (10.3.20.77) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.2176.2; Mon, 17 May 2021 23:17:24 +0800
-Received: from lhreml703-chm.china.huawei.com ([10.201.68.198]) by
- lhreml703-chm.china.huawei.com ([10.201.68.198]) with mapi id 15.01.2176.012; 
- Mon, 17 May 2021 16:17:22 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: "wangyanan (Y)" <wangyanan55@huawei.com>, Peter Maydell
- <peter.maydell@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>, Andrew Jones
- <drjones@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>, Igor Mammedov
- <imammedo@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>
-Subject: RE: [RFC PATCH v3 4/4] hw/arm/virt: Parse -smp cluster parameter in
- virt_smp_parse
-Thread-Topic: [RFC PATCH v3 4/4] hw/arm/virt: Parse -smp cluster parameter in
- virt_smp_parse
-Thread-Index: AQHXSj/FZmRUdZustEeQifVnUtKQiarnny9g
-Date: Mon, 17 May 2021 15:17:22 +0000
-Message-ID: <01351414c3424710bf3dc5eb949f0d75@huawei.com>
-References: <20210516103228.37792-1-wangyanan55@huawei.com>
- <20210516103228.37792-5-wangyanan55@huawei.com>
-In-Reply-To: <20210516103228.37792-5-wangyanan55@huawei.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.47.69.39]
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1li0Az-0000oM-5C; Sat, 15 May 2021 15:42:21 -0400
+Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
+ by localhost (Postfix) with SMTP id BCABE74570E;
+ Sat, 15 May 2021 21:42:14 +0200 (CEST)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 9BBEE745709; Sat, 15 May 2021 21:42:14 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 9A79F7456E3;
+ Sat, 15 May 2021 21:42:14 +0200 (CEST)
+Date: Sat, 15 May 2021 21:42:14 +0200 (CEST)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@redhat.com>
+Subject: Re: [PATCH v2 10/12] hw/isa/vt82c686: Add missing Kconfig dependencies
+ (build error)
+In-Reply-To: <20210515173716.358295-11-philmd@redhat.com>
+Message-ID: <50a2fbad-72ee-8fd6-e1d5-5687abb1c4b7@eik.bme.hu>
+References: <20210515173716.358295-1-philmd@redhat.com>
+ <20210515173716.358295-11-philmd@redhat.com>
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.32;
- envelope-from=salil.mehta@huawei.com; helo=szxga06-in.huawei.com
+Content-Type: multipart/mixed;
+ boundary="3866299591-1641504594-1621107734=:7809"
+X-Spam-Probability: 9%
+Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
+ helo=zero.eik.bme.hu
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
 X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -110,158 +88,56 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "Song Bao Hua \(Barry Song\)" <song.bao.hua@hisilicon.com>,
- zhukeqian <zhukeqian1@huawei.com>, Linuxarm <linuxarm@huawei.com>,
- "linuxarm@openeuler.org" <linuxarm@openeuler.org>, "wangyanan
- \(Y\)" <wangyanan55@huawei.com>, "Zengtao \(B\)" <prime.zeng@hisilicon.com>,
- yangyicong <yangyicong@huawei.com>, yuzenghui <yuzenghui@huawei.com>,
- "Wanghaibin \(D\)" <wanghaibin.wang@huawei.com>,
- =?iso-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@redhat.com>
+Cc: Alistair Francis <alistair.francis@wdc.com>, qemu-riscv@nongnu.org,
+ Bin Meng <bin.meng@windriver.com>, qemu-devel@nongnu.org,
+ =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <f4bug@amsat.org>,
+ qemu-arm@nongnu.org, qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: J2nO0+5x5FiB
+X-TUID: DBG6ND3jXW6q
 
-> From: Qemu-devel
-> [mailto:qemu-devel-bounces+salil.mehta=3Dhuawei.com@nongnu.org] On Behalf=
- Of
-> Yanan Wang
-> Sent: Sunday, May 16, 2021 11:32 AM
-> To: Peter Maydell <peter.maydell@linaro.org>; Paolo Bonzini
-> <pbonzini@redhat.com>; Andrew Jones <drjones@redhat.com>; Michael S . Tsi=
-rkin
-> <mst@redhat.com>; Igor Mammedov <imammedo@redhat.com>; Shannon Zhao
-> <shannon.zhaosl@gmail.com>; qemu-devel@nongnu.org; qemu-arm@nongnu.org
-> Cc: Song Bao Hua (Barry Song) <song.bao.hua@hisilicon.com>; Philippe
-> Mathieu-Daud=E9 <philmd@redhat.com>; wangyanan (Y) <wangyanan55@huawei.co=
-m>;
-> Zengtao (B) <prime.zeng@hisilicon.com>; Wanghaibin (D)
-> <wanghaibin.wang@huawei.com>; yuzenghui <yuzenghui@huawei.com>; yangyicon=
-g
-> <yangyicong@huawei.com>; zhukeqian <zhukeqian1@huawei.com>
-> Subject: [RFC PATCH v3 4/4] hw/arm/virt: Parse -smp cluster parameter in
-> virt_smp_parse
->=20
-> There is a separate function virt_smp_parse() in hw/virt/arm.c used
-> to parse cpu topology for the ARM machines. So add parsing of -smp
-> cluster parameter in it, then total number of logical cpus will be
-> calculated like: max_cpus =3D sockets * clusters * cores * threads.
->=20
-> Note, we will assume multi-cluster in one socket is not supported
-> and default the value of clusters to 1, if it's not explicitly
-> specified in -smp cmdline.
->=20
-> Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
+
+--3866299591-1641504594-1621107734=:7809
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8BIT
+
+
+On Sat, 15 May 2021, Philippe Mathieu-Daudé wrote:
+> From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>
+> The VT82C686 device model misses various dependencies:
+>
+>  /usr/bin/ld: libcommon.fa.p/hw_isa_vt82c686.c.o: in function `vt82c686b_realize':
+>  hw/isa/vt82c686.c:622: undefined reference to `i8259_init'
+>  /usr/bin/ld: hw/isa/vt82c686.c:624: undefined reference to `i8257_dma_init'
+>  /usr/bin/ld: hw/isa/vt82c686.c:627: undefined reference to `mc146818_rtc_init'
+>
+> Add them.
+>
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
+Reviewed-by: BALATON Zoltan <balaton@eik.bme.hu>
+
 > ---
->  hw/arm/virt.c | 32 ++++++++++++++++++--------------
->  1 file changed, 18 insertions(+), 14 deletions(-)
->=20
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 7de822e491..678d5ef36c 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -2642,8 +2642,8 @@ static int virt_kvm_type(MachineState *ms, const ch=
-ar
-> *type_str)
->   * with the -smp cmdlines when parsing them.
->   *
->   * We require that at least one of cpus or maxcpus must be provided.
-> - * Threads will default to 1 if not provided. Sockets and cores must
-> - * be either both provided or both not.
-> + * Clusters and threads will default to 1 if they are not provided.
-> + * Sockets and cores must be either both provided or both not.
->   *
->   * Note, if neither sockets nor cores are specified, we will calculate
->   * all the missing values just like smp_parse() does, but will disable
-> @@ -2652,15 +2652,18 @@ static int virt_kvm_type(MachineState *ms, const =
-char
-> *type_str)
->  static void virt_smp_parse(MachineState *ms, QemuOpts *opts)
->  {
->      VirtMachineClass *vmc =3D VIRT_MACHINE_GET_CLASS(ms);
-> +    VirtMachineState *vms =3D VIRT_MACHINE(ms);
->=20
->      if (opts) {
->          unsigned cpus =3D qemu_opt_get_number(opts, "cpus", 0);
->          unsigned maxcpus =3D qemu_opt_get_number(opts, "maxcpus", 0);
->          unsigned sockets =3D qemu_opt_get_number(opts, "sockets", 0);
-> +        unsigned clusters =3D qemu_opt_get_number(opts, "clusters", 0);
->          unsigned cores =3D qemu_opt_get_number(opts, "cores", 0);
->          unsigned threads =3D qemu_opt_get_number(opts, "threads", 0);
->=20
-> -        /* Default threads to 1 if not provided */
-> +        /* Default clusters and threads to 1 if not provided */
-> +        clusters =3D clusters > 0 ? clusters : 1;
->          threads =3D threads > 0 ? threads : 1;
->=20
->          if (cpus =3D=3D 0 && maxcpus =3D=3D 0) {
-> @@ -2676,13 +2679,13 @@ static void virt_smp_parse(MachineState *ms, Qemu=
-Opts
-> *opts)
->              cores =3D 1;
->              if (cpus =3D=3D 0) {
->                  sockets =3D 1;
-> -                cpus =3D sockets * cores * threads;
-> +                cpus =3D sockets * clusters * cores * threads;
->              } else {
->                  maxcpus =3D maxcpus > 0 ? maxcpus : cpus;
-> -                sockets =3D maxcpus / (cores * threads);
-> +                sockets =3D maxcpus / (clusters * cores * threads);
->              }
->          } else if (sockets > 0 && cores > 0) {
-> -            cpus =3D cpus > 0 ? cpus : sockets * cores * threads;
-> +            cpus =3D cpus > 0 ? cpus : sockets * clusters * cores * thre=
-ads;
->              maxcpus =3D maxcpus > 0 ? maxcpus : cpus;
->          } else {
->              error_report("sockets and cores must be both provided "
-> @@ -2695,25 +2698,26 @@ static void virt_smp_parse(MachineState *ms, Qemu=
-Opts
-> *opts)
->              exit(1);
->          }
->=20
-> -        if (sockets * cores * threads < cpus) {
-> +        if (sockets * clusters * cores * threads < cpus) {
->              error_report("cpu topology: "
-> -                         "sockets (%u) * cores (%u) * threads (%u) < "
-> -                         "smp_cpus (%u)",
-> -                         sockets, cores, threads, cpus);
-> +                         "sockets (%u) * clusters (%u) * cores (%u) * "
-> +                         "threads (%u) < smp_cpus (%u)",
-> +                         sockets, clusters, cores, threads, cpus);
->              exit(1);
->          }
->=20
-> -        if (sockets * cores * threads !=3D maxcpus) {
-> +        if (sockets * clusters * cores * threads !=3D maxcpus) {
->              error_report("cpu topology: "
-> -                         "sockets (%u) * cores (%u) * threads (%u) "
-> -                         "!=3D maxcpus (%u)",
-> -                         sockets, cores, threads, maxcpus);
-> +                         "sockets (%u) * clusters (%u) * cores (%u) * "
-> +                         "threads (%u) !=3D maxcpus (%u)",
-> +                         sockets, clusters, cores, threads, maxcpus);
->              exit(1);
->          }
->=20
->          ms->smp.cpus =3D cpus;
->          ms->smp.max_cpus =3D maxcpus;
->          ms->smp.sockets =3D sockets;
-> +        vms->smp_clusters =3D clusters;
-
-
-This variable naming *smp_clusters* looks out-of-sorts. I thought a similar
-variable *smp_cpus* was destined to be removed for the reason given in belo=
-w
-link - a patch by Andrew Jones?
-
-Link: https://lists.gnu.org/archive/html/qemu-arm/2020-12/msg00418.html
-
-Am I missing anything here?
-
-Salil.
-
->          ms->smp.cores =3D cores;
->          ms->smp.threads =3D threads;
->      }
-
+> hw/isa/Kconfig | 3 +++
+> 1 file changed, 3 insertions(+)
+>
+> diff --git a/hw/isa/Kconfig b/hw/isa/Kconfig
+> index 55e0003ce40..0703512209a 100644
+> --- a/hw/isa/Kconfig
+> +++ b/hw/isa/Kconfig
+> @@ -49,6 +49,9 @@ config VT82C686
+>     select FDC
+>     select USB_UHCI
+>     select APM
+> +    select I8257
+> +    select I8259
+> +    select MC146818RTC
+>
+> config SMC37C669
+>     bool
+>
+--3866299591-1641504594-1621107734=:7809--

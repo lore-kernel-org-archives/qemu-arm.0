@@ -1,102 +1,104 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp1434408lfg;
-        Sat, 15 May 2021 10:50:10 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxN1zuiy2oc7V5skT4cH8T1NT7YgyjSydrsbRAvkpv1TLuYi8ouNiNRp622dm6AqZQTCPmS
-X-Received: by 2002:a92:d481:: with SMTP id p1mr38557598ilg.57.1621101010774;
-        Sat, 15 May 2021 10:50:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621101010; cv=none;
+Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp1435542lfg;
+        Sat, 15 May 2021 10:52:29 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzabBItJYiWsPcX+FkipcTN4M1iF+WWVk2Yjz+tXrYuO4K3GyaaFp59U7ktvVGXKCZjuIym
+X-Received: by 2002:a6b:6c18:: with SMTP id a24mr39979766ioh.21.1621101148900;
+        Sat, 15 May 2021 10:52:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621101148; cv=none;
         d=google.com; s=arc-20160816;
-        b=K2FLKa7vFMyqHvG/SvB5OeFdC8AE4n2EBV6HmSnLw+fHIvIdPme749Qr/j6CW1m0Rr
-         8noAjbLgGSuOo/uqNdop7Lcow081N9y10DuVYwvAbgrSVO+PR9NatBb7QuydlE705FmU
-         cATVWoygt21zW9AUWRl05/cQlI1HGKDNCajw3461ZKVgX0d0s0kbi5t7r8NKT/kd/OX4
-         /ocIQGW1OOOIs23yHOysg6cCS8StS1DbJTIWR89QpaI33yACYN1joOZCH0HV7rzD8y7f
-         Ejt+4VC/ITnPzaKzn5s64K2JB9Mstf8sL8tgjnCLTeqR7WN3twvXZJgNUWB0glY8sFDi
-         A7vg==
+        b=r67jCx88BI5JfsjKfIkk+8865SoH+6slsEtFTAPI+cjJTjLyHOpnyG9xyO8zTZ6sEl
+         vx932qJepw9OzXnKcf63h/PAmUEh3jd8Ql8wjcb41aHRa63VMZBYuVaaz0Hy2DwAXM9I
+         OR/S5Jq2I3B2gjT8hkTxmG9FgB0LAdC0POqOBCfIhGqFhw+cDADsIP2kOAlaF18FKz9G
+         pJAuwhfHTOmXisIacz8VQPnh/RMETiP6WU/i3DqboQFb0K9kErcMxHAw2E5hKvuRcwZE
+         5F+UukI+pfUut4UYy1gtiCW+g6faQpnrxAdFEkNUkAM5iTI8DkHfm7XbpJPWZwyDNwku
+         WZRA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=RV1lQVu+Z0RzwUnAORV2pR221f9eeMJn1YWrVW88UbY=;
-        b=tt+Imsgmb7iqaIelYt8Xwll/vCAoOrno7OOfSrLjyHNTUhAufigybWxMiMsutT8qAA
-         XfpyVzOFRbp0JTMU4ktcQMAdG4uO6w4EtEQPY07F38U5u0DBFNm40c1cYlKPnVlNuJK+
-         q6JDVk06o+OYy9n3/LGt2QQthACkLGgqA5YJotYZXeUc9kTmZnL5yz/hRmimSiI9jmg+
-         HOAjy7Fdf9ZDcYG2v1ZduzmYszOuxXhoKYwS8qBJOtOpNf5TJ29eV2WnMHQ9/TX117nK
-         kFV8bK2d7N5++XthQB6pJ/1D9WHcCebwY0Ld5kP9jLNUyq8xdqwhh7MYEvz3TSQuftbB
-         BORQ==
+        bh=yMKbvRHD0VVgAl/shSsvEL3fFV0zSLsEZF6v1iEj1U8=;
+        b=Y6XBU3J11EZPlMfgM3nJKXU2V+E4PGq9mFLkBwka61+HbRMho1tRa0kWAMuNoz70G/
+         SCG1L3RVGsUAjwTMlhLQttIWSkSAhxyROKAhovO5AaKdTiDSNLZGwAdfZ402rt5Fgyj2
+         /CbNCS/5EJlq73P3L4bN4p6z2w50lJTQDvJ4vDFAQKriEIvGoK0DCietusgrW7U8pttP
+         /1bKQWm3uXkwyA+ZD9sssQe2gjzE8nIU8/w0PKhNgYZcJld01KdpHqXAd0K5Ex5CMI/S
+         nU1Gr4RzE6ALVd2SEWxsB/VGmzF4REKpn+Zc8vb53tL48SHRYnIxB8LX4WqvKy7eVJ7d
+         J/FQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BoOXzhht;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GecnskS1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h10si12267330ili.90.2021.05.15.10.50.10
+        by mx.google.com with ESMTPS id s4si12999997ilv.29.2021.05.15.10.52.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 15 May 2021 10:50:10 -0700 (PDT)
+        Sat, 15 May 2021 10:52:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BoOXzhht;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GecnskS1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60282 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37376 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lhyQU-0004qp-3g
-	for alex.bennee@linaro.org; Sat, 15 May 2021 13:50:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48338)
+	id 1lhySi-00005f-98
+	for alex.bennee@linaro.org; Sat, 15 May 2021 13:52:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48442)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lhyEk-0000yb-Vr
- for qemu-arm@nongnu.org; Sat, 15 May 2021 13:38:03 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:20996)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lhyEp-0001E8-71
+ for qemu-arm@nongnu.org; Sat, 15 May 2021 13:38:07 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:24371)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lhyEi-0006Nm-SV
- for qemu-arm@nongnu.org; Sat, 15 May 2021 13:38:02 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lhyEn-0006R5-DC
+ for qemu-arm@nongnu.org; Sat, 15 May 2021 13:38:06 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1621100280;
+ s=mimecast20190719; t=1621100284;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=RV1lQVu+Z0RzwUnAORV2pR221f9eeMJn1YWrVW88UbY=;
- b=BoOXzhht5sk/LyL60CmbHxij6vC5wMIBR4TfUw0ygEZq8MdRCAkdbBAjwZ+vGDy1+967XU
- wYX+koUZGp1qBUsbPGOWX6dKFzO4pfUYTAPGXnU/DHGgGZSwrHTxdZl+K+UasLcPgUEzsm
- D5OQK+IqsKP2rwAWwjkyeJxGRZO8ANM=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-201-6U6DhfJyOTiXchyjYiP9ug-1; Sat, 15 May 2021 13:37:58 -0400
-X-MC-Unique: 6U6DhfJyOTiXchyjYiP9ug-1
-Received: by mail-wm1-f71.google.com with SMTP id
- r15-20020a05600c35cfb029017373d9f318so446531wmq.4
- for <qemu-arm@nongnu.org>; Sat, 15 May 2021 10:37:58 -0700 (PDT)
+ bh=yMKbvRHD0VVgAl/shSsvEL3fFV0zSLsEZF6v1iEj1U8=;
+ b=GecnskS1W4y3lxaZnmGbTFOL6jTM6nh82s3mCtmZdDsqUbd2gITQWaCVDGBGkTbPs9AJ8U
+ 24ag4/DDxk5i7LByYgArbYJVRAAQrJFXWkhgG/r8atH6D8KvlNOaWwAXnhO7BxN45DQFgx
+ qrtHygs8gP5i7QPvMaDnttY37YUFYHE=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-504-sohscvu3Pn6ctlfOEonVTw-1; Sat, 15 May 2021 13:38:02 -0400
+X-MC-Unique: sohscvu3Pn6ctlfOEonVTw-1
+Received: by mail-wm1-f69.google.com with SMTP id
+ u203-20020a1cddd40000b029016dbb86d796so1679480wmg.0
+ for <qemu-arm@nongnu.org>; Sat, 15 May 2021 10:38:02 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=RV1lQVu+Z0RzwUnAORV2pR221f9eeMJn1YWrVW88UbY=;
- b=s3aAfAuQVsjLtQXOR7Fsjl6ShHmWPnTrvl2HsS0ogk0VvQ6UPa83YKIonAtlAGPUoI
- LGEEK29TRF4Xg8F85NkTOCxmHo8mmKG872Ph/kjSHs7Rk2MdI05CmTUHM2OAHTY6QEdN
- u6GrstfBcYX1q/i9+A6KDOPAO3Dfp1OGX7KTIkMQXvGhAzYmHirKzLjXfywQVk3vN6hz
- wFJ86nJDWV6jueKI/yHPwU1qDyvIzmw8ZUIs3hIc1CiwWfRKTFg/U3DCZft5aUVCJ2ND
- V8t1W9zddp1PzFVtgfdqRQzeO5wUgL/XCULBc2N4Aay2ufQCea/3zpvCpd3ss7cPS+6P
- HJug==
-X-Gm-Message-State: AOAM532M9ZgiMZIa7OmMqYyXcwSjBRJMDSMGtZI0jKNhM8CDunaZJiRm
- 9U0Au0BG+dTi/YljBfQP+qc2PRXbP6ry5i271hkt3cXki2MmhP1dpevQXY1osJPARlgmNJ3Ctin
- tTfrcHYXNpc2t
-X-Received: by 2002:a5d:4cce:: with SMTP id c14mr67329380wrt.29.1621100277258; 
- Sat, 15 May 2021 10:37:57 -0700 (PDT)
-X-Received: by 2002:a5d:4cce:: with SMTP id c14mr67329371wrt.29.1621100277148; 
- Sat, 15 May 2021 10:37:57 -0700 (PDT)
+ bh=yMKbvRHD0VVgAl/shSsvEL3fFV0zSLsEZF6v1iEj1U8=;
+ b=ZxiRRNki3+y0QRa0IPsL0YvsaVqtpP7xNu9PuQaH2vsNyjMgcgGacO/hQn1CoUM+qC
+ NQVFwuXTVVwsar9PjZKAZ2H3PoU7WT096ppIedp700FpfH/R85Y2H+Tk4aXGBq0lzXta
+ mi+Hu3gIv39r02vI2nE8BdAMVUWCVRENLYuWssq7tj3Bk8oI9Ad4xC4z69Ef3Prx+cWz
+ WEJug8drXOpQi126gxdQz76EwC1+9H8UZ7gOvOj+QcXM35qLpGhygvsRngIJ8gRs9HMM
+ LOTXAtIRzFy5UrI6LuxI049cuKuhTs4WsvEDAI5ffAhHP+gaQ5k09df5Bzb0hsuPdssq
+ yY6Q==
+X-Gm-Message-State: AOAM533yoFvA+NQqva0fCMqCVpLt/+jJj5l0UmjR2z9tz9WthI+z49Ok
+ MIojmWV71+ZhuXKewu1cYX03lUSQlATcKwG0leZHDK5VEEr0AQE254Gr00H+MvAj4HhExOY0Kwi
+ JsfndZ0IvAT3a
+X-Received: by 2002:a05:600c:4ca1:: with SMTP id
+ g33mr19751665wmp.7.1621100281680; 
+ Sat, 15 May 2021 10:38:01 -0700 (PDT)
+X-Received: by 2002:a05:600c:4ca1:: with SMTP id
+ g33mr19751656wmp.7.1621100281560; 
+ Sat, 15 May 2021 10:38:01 -0700 (PDT)
 Received: from localhost.localdomain (31.red-83-51-215.dynamicip.rima-tde.net.
  [83.51.215.31])
- by smtp.gmail.com with ESMTPSA id c206sm3495060wmf.12.2021.05.15.10.37.56
+ by smtp.gmail.com with ESMTPSA id k6sm14457835wmi.42.2021.05.15.10.38.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 15 May 2021 10:37:56 -0700 (PDT)
+ Sat, 15 May 2021 10:38:01 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 08/12] hw/ppc/Kconfig: Add missing dependency E500 ->
- DS1338 RTC
-Date: Sat, 15 May 2021 19:37:12 +0200
-Message-Id: <20210515173716.358295-9-philmd@redhat.com>
+Subject: [PATCH v2 09/12] hw/pci-host/Kconfig: Add missing dependency MV64361
+ -> I8259
+Date: Sat, 15 May 2021 19:37:13 +0200
+Message-Id: <20210515173716.358295-10-philmd@redhat.com>
 X-Mailer: git-send-email 2.26.3
 In-Reply-To: <20210515173716.358295-1-philmd@redhat.com>
 References: <20210515173716.358295-1-philmd@redhat.com>
@@ -107,7 +109,7 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -34
 X-Spam_score: -3.5
@@ -129,62 +131,48 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Alistair Francis <alistair.francis@wdc.com>, qemu-riscv@nongnu.org,
- Bin Meng <bin.meng@windriver.com>, Greg Kurz <groug@kaod.org>,
+ Bin Meng <bin.meng@windriver.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  BALATON Zoltan <balaton@eik.bme.hu>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, Bin Meng <bmeng.cn@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
  David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VfGce/E0bXHU
+X-TUID: Tdn1lXlT8ILD
 
-Commit 7abb479c7ab ("PPC: E500: Add FSL I2C controller and integrate
-RTC with it") added a global dependency on the DS1338 model, instead
-of a machine one (via Kconfig). This gives trouble when building
-standalone machines not exposing I2C bus:
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-  The following clauses were found for DS1338
+Looking at the MV64340 model source, there is a dependency on the
+8259 interrupt controller:
 
-      CONFIG_DS1338=y
-      config DS1338 depends on I2C
+  523     case MV64340_PCI_1_INTERRUPT_ACKNOWLEDGE_VIRTUAL_REG:
+  524         /* FIXME: Should this be sent via the PCI bus somehow? */
+  525         if (s->gpp_int_level && (s->gpp_value & BIT(31))) {
+  526             ret = pic_read_irq(isa_pic);
+  527         }
+  528         break;
 
-Fix by selecting the DS1338 symbol in the single machine requiring
-it, the E500.
+Add it to Kconfig to avoid the following build failure:
 
-Fixes: 7abb479c7ab ("PPC: E500: Add FSL I2C controller and integrate RTC with it")
-Acked-by: Paolo Bonzini <pbonzini@redhat.com>
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
-Reviewed-by: Bin Meng <bmeng.cn@gmail.com>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+  /usr/bin/ld: libcommon.fa.p/hw_pci-host_mv64361.c.o: in function `mv64361_read':
+  hw/pci-host/mv64361.c:526: undefined reference to `isa_pic'
+  /usr/bin/ld: hw/pci-host/mv64361.c:526: undefined reference to `pic_read_irq'
+
+Fixes: dcdf98a9015 ("hw/pci-host: Add emulation of Marvell MV64361 PPC system controller")
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- default-configs/devices/ppc-softmmu.mak | 1 -
- hw/ppc/Kconfig                          | 1 +
- 2 files changed, 1 insertion(+), 1 deletion(-)
+ hw/pci-host/Kconfig | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/default-configs/devices/ppc-softmmu.mak b/default-configs/devices/ppc-softmmu.mak
-index c2d41198cde..5a7f99d1e45 100644
---- a/default-configs/devices/ppc-softmmu.mak
-+++ b/default-configs/devices/ppc-softmmu.mak
-@@ -1,7 +1,6 @@
- # Default configuration for ppc-softmmu
- 
- # For embedded PPCs:
--CONFIG_DS1338=y
- CONFIG_E500=y
- CONFIG_PPC405=y
- CONFIG_PPC440=y
-diff --git a/hw/ppc/Kconfig b/hw/ppc/Kconfig
-index 66e0b15d9ef..2e4c56eb770 100644
---- a/hw/ppc/Kconfig
-+++ b/hw/ppc/Kconfig
-@@ -128,6 +128,7 @@ config E500
-     select SERIAL
-     select MPC_I2C
-     select FDT_PPC
-+    select DS1338
- 
- config VIRTEX
+diff --git a/hw/pci-host/Kconfig b/hw/pci-host/Kconfig
+index 79c20bf28bb..9dc0d761815 100644
+--- a/hw/pci-host/Kconfig
++++ b/hw/pci-host/Kconfig
+@@ -76,3 +76,4 @@ config SH_PCI
+ config MV64361
      bool
+     select PCI
++    select I8259
 -- 
 2.26.3
 

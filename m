@@ -1,1190 +1,204 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp650896lfm;
-        Sun, 16 May 2021 12:59:04 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwrLrTir49QY0/hghHQ8FFx6kgx1YvH2Opv/y9F0hiarqgIavX6RsJxZtBlBxjGzrln9jX3
-X-Received: by 2002:a17:906:13db:: with SMTP id g27mr14915054ejc.88.1621195144390;
-        Sun, 16 May 2021 12:59:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621195144; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp346540lfm;
+        Sun, 16 May 2021 03:29:45 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw2o+JwSmB4xyzBr0S3bQMYs4o4sNencT06VbbmHYy/uAc3XmaUnXb4vvfM70IaLSJ8mW2Z
+X-Received: by 2002:a92:d689:: with SMTP id p9mr8017929iln.242.1621160985089;
+        Sun, 16 May 2021 03:29:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621160985; cv=none;
         d=google.com; s=arc-20160816;
-        b=Dlo8tlhbS7xsGy2oC38uBoZ1p6go5bP/BSwOj4zXHV3y853IKovbg7kTn49SdXTqLA
-         4sGoPUFLT4wtio+ak4I2IvBXKEXbFYMoHeu10SvkoKLM+nN90WmOo1sD9/2mBa2zZ6MN
-         /BtMZ2c0OngFzcj3df+SNYbYeGK0yyq3ticnC9VXu3XOcOEzy637jh5obhP8ak7VhoV5
-         GQQXjEJJ5gKcvmcGVq+UwIhnr1emo1hId1pQTFZoBAQHRXbhshCJ85use0AVuQ1yQhOD
-         kOOv93xHnrgXAhLF4rrFU6Zgt06ubWWii53NsQJsiArr4uW4wOXv+vrVo3shrcD24yjQ
-         KxUQ==
+        b=QWtXAiIruFKacE18NN6thaXhv3Qzn8BfiWirzC1fRZoINV76s2/TNWeSnjQxDRasoQ
+         I83KSGsvfx4kJGiR9w6pyogM8n9oWN5E6BUDedNTiTkyfJ1uS0LB2N3Q2Ai2RlOoWB1t
+         +8Jtoai0yQLpM8oI0D/tCf5buSDLanLvbqGJlj8xhEuSPcq3uN8LYH97f/UgIhgIn2X2
+         lNjkzWmvR8tc3oJ40uB12PAtbI2Nm7Q1kwNgsuH/D3qY43V4m2aD/0DEey85na56iilq
+         1Gmo6RrEJHpLYy+wrX9ml1x7SRFXD1upzmawhw3guw4dxX8a/o3XyBEPG430pum/NHcQ
+         iaMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from;
-        bh=pm9Vwvik4WoTNYYfhUB3sDBv6vMtAnvlcEC44A0FzcE=;
-        b=Ultb7UnDcLli30L7sNnKMRpzf1uQQjfveZ9c9JijF2aUeff6nyjJjCFtUsAS+la8Yw
-         1P3XAoXSz8JWC9qj9Wd/RvFxoUm6xlQAS4wiuQurgOv5Eh5XFeHHplTUJPHTrLEO1EHL
-         jjRYbJnKB4Tl8xiVn3hVG2e5XFyrWiPYirSOHD10A+9GVeHvjq+ayHj3oBloG3Roh2iV
-         EDM2cOxPeEBUaIMKJFH1bPdo2tIZIyRhNXc5VDFoj889u7R9ewi2Tk5fvB167u6+aAa1
-         nWyscPUmp01gh1dienHdk41diwC/zfAYETQYwQjbachpQiBscWBb7gblzvMz/uh9rJS4
-         86hA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :subject:to:from;
+        bh=BeEsWKryNIAt3Jdg0wmgBJXRZnzF8rKe1hvRolSnKaQ=;
+        b=0j9T9quySLqZUYEFBza6lJSGLUvlrN89KAerJJ7gf0zU4iBy9UuLi6jZvXQPbqAhUc
+         3JjfwzylNxN1p0Hcireo8Z3B3hYWUZ10chdDl4lkV7B+pLKEyU5vGmNEbVkMqZQJZNZa
+         MBdqnJ0Xgo1JOrOoZFq4hxSHOj16jajADw659bRq8TkHXoFgnUPRWisF8GBvkGhcbT4u
+         pA4+HtXLcco81m/LLtLgnWuyrBj6+Tjr8LMKcFtVQtdIzokdkPA9fnaW8aKwKriMl9rD
+         56sm7VdNSzzzrSFbMvKkaIhOUXV8APsG9n2D2Xza0d3C5pAHqBTm+xxWi9GxpaM+U39u
+         9H+A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of agraf@csgraf.de designates 85.25.223.15 as permitted sender) smtp.mailfrom=agraf@csgraf.de
-Return-Path: <agraf@csgraf.de>
-Received: from zulu616.server4you.de (mail.csgraf.de. [85.25.223.15])
-        by mx.google.com with ESMTP id gq23si8313522ejb.429.2021.05.16.12.59.04;
-        Sun, 16 May 2021 12:59:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of agraf@csgraf.de designates 85.25.223.15 as permitted sender) client-ip=85.25.223.15;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id b14si14608034ilv.52.2021.05.16.03.29.44
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 16 May 2021 03:29:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of agraf@csgraf.de designates 85.25.223.15 as permitted sender) smtp.mailfrom=agraf@csgraf.de
-Received: from localhost.localdomain (dynamic-095-118-089-019.95.118.pool.telefonica.de [95.118.89.19])
-	by csgraf.de (Postfix) with ESMTPSA id 649D460803FB;
-	Sun, 16 May 2021 21:59:03 +0200 (CEST)
-From: Alexander Graf <agraf@csgraf.de>
-To: QEMU Developers <qemu-devel@nongnu.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>,
-	Cameron Esfahani <dirty@apple.com>,
-	Roman Bolshakov <r.bolshakov@yadro.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Frank Yang <lfy@google.com>,
-	Peter Collingbourne <pcc@google.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v7 11/19] hvf: Introduce hvf vcpu struct
-Date: Sun, 16 May 2021 21:58:47 +0200
-Message-Id: <20210516195855.28869-12-agraf@csgraf.de>
-X-Mailer: git-send-email 2.30.1 (Apple Git-130)
-In-Reply-To: <20210516195855.28869-1-agraf@csgraf.de>
-References: <20210516195855.28869-1-agraf@csgraf.de>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Received: from localhost ([::1]:49436 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1liE1o-0001Pn-CP
+	for alex.bennee@linaro.org; Sun, 16 May 2021 06:29:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48934)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1liE1O-0001Pa-DQ; Sun, 16 May 2021 06:29:18 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2049)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1liE1K-000799-Oo; Sun, 16 May 2021 06:29:17 -0400
+Received: from dggems704-chm.china.huawei.com (unknown [172.30.72.60])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4Fjdh05rsvzmhBL;
+ Sun, 16 May 2021 18:25:36 +0800 (CST)
+Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
+ dggems704-chm.china.huawei.com (10.3.19.181) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2176.2; Sun, 16 May 2021 18:29:03 +0800
+Received: from DESKTOP-TMVL5KK.china.huawei.com (10.174.187.128) by
+ dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2176.2; Sun, 16 May 2021 18:29:02 +0800
+From: Yanan Wang <wangyanan55@huawei.com>
+To: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones
+ <drjones@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>, Igor Mammedov
+ <imammedo@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>, "Alistair
+ Francis" <alistair.francis@wdc.com>, David Gibson
+ <david@gibson.dropbear.id.au>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+Subject: [RFC PATCH v3 0/9] hw/arm/virt: Introduce cpu topology support
+Date: Sun, 16 May 2021 18:28:51 +0800
+Message-ID: <20210516102900.28036-1-wangyanan55@huawei.com>
+X-Mailer: git-send-email 2.8.4.windows.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: nb12/6CSU6UU
+Content-Type: text/plain
+X-Originating-IP: [10.174.187.128]
+X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
+ dggpemm500023.china.huawei.com (7.185.36.83)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.190;
+ envelope-from=wangyanan55@huawei.com; helo=szxga04-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Barry Song <song.bao.hua@hisilicon.com>, zhukeqian1@huawei.com,
+ yangyicong@huawei.com, prime.zeng@hisilicon.com, wanghaibin.wang@huawei.com,
+ yuzenghui@huawei.com, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: jb562N21rvRa
 
-We will need more than a single field for hvf going forward. To keep
-the global vcpu struct uncluttered, let's allocate a special hvf vcpu
-struct, similar to how hax does it.
+Hi,
 
-Signed-off-by: Alexander Graf <agraf@csgraf.de>
-Reviewed-by: Roman Bolshakov <r.bolshakov@yadro.com>
-Tested-by: Roman Bolshakov <r.bolshakov@yadro.com>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+This is v3 of the series [1] that I posted to introduce support of
+generating cpu topology descriptions to guest.
+
+Description:
+An accurate cpu topology may help improve the cpu scheduler's decision
+making when dealing with multi-core system. So cpu topology description
+is helpful to provide guest with the right view. Dario Faggioli's talk
+in [2] also shows the virtual topology could have impact on scheduling
+performace. Thus this patch series introduces cpu topology support for
+ARM platform.
+
+In this series, both cpu-map in DT and ACPI PPTT table are introduced
+to present cpu topology to the guest. And a new helper virt_smp_parse
+not like the default one is introduced, which has more strict parsing
+rules for the -smp command line.
+
+[1] https://patchwork.kernel.org/project/qemu-devel/cover/20210413080745.33004-1-wangyanan55@huawei.com/
+[2] https://kvmforum2020.sched.com/event/eE1y/virtual-topology-for-virtual-machines-friend-or-foe-dario-faggioli-suse
+
+Test results about exposure of topology:
+After applying this patch series, launch a guest with virt-6.1.
+
+Cmdline: -smp 96, sockets=2, cores=48, threads=1
+Output:
+linux-atxcNc:~ # lscpu
+Architecture:        aarch64
+Byte Order:          Little Endian
+CPU(s):              96
+On-line CPU(s) list: 0-95
+Thread(s) per core:  1
+Core(s) per socket:  48
+Socket(s):           2
+NUMA node(s):        1
+Vendor ID:           0x48
+
+Cmdline: -smp 96
+linux-atxcNc:~ # lscpu
+Architecture:        aarch64
+Byte Order:          Little Endian
+CPU(s):              96
+On-line CPU(s) list: 0-95
+Thread(s) per core:  1
+Core(s) per socket:  96
+Socket(s):           1
+NUMA node(s):        1
+Vendor ID:           0x48
+
+THINGS TO DO SOON:
+1) Run some benchmark to test the scheduling improvement of guest kernel
+   introduced by virtual cpu topology.
+2) Add some QEMU tests about ARM vcpu topology, ACPI PPTT table, and DT
+   cpu nodes. Will post in a separate patchset later.
 
 ---
 
-v4 -> v5:
+Changelogs:
+v2->v3:
+- address comments from David, Philippe, and Andrew. Thanks!
+- split some change into separate commits for ease of review
+- adjust parsing rules of virt_smp_parse to be more strict
+  (after discussion with Andrew)
+- adjust author credit for the patches
+- v2: https://patchwork.kernel.org/project/qemu-devel/cover/20210413080745.33004-1-wangyanan55@huawei.com/
 
-  - Use g_free() on destroy
+v1->v2:
+- Address Andrew Jones's comments
+- Address Michael S. Tsirkin's comments
+- https://patchwork.kernel.org/project/qemu-devel/cover/20210225085627.2263-1-fangying1@huawei.com/
+
 ---
- accel/hvf/hvf-accel-ops.c   |   8 +-
- include/hw/core/cpu.h       |   3 +-
- include/sysemu/hvf_int.h    |   4 +
- target/i386/hvf/hvf.c       | 104 +++++++++---------
- target/i386/hvf/vmx.h       |  24 +++--
- target/i386/hvf/x86.c       |  28 ++---
- target/i386/hvf/x86_descr.c |  26 ++---
- target/i386/hvf/x86_emu.c   |  62 +++++------
- target/i386/hvf/x86_mmu.c   |   4 +-
- target/i386/hvf/x86_task.c  |  12 +--
- target/i386/hvf/x86hvf.c    | 210 ++++++++++++++++++------------------
- 11 files changed, 248 insertions(+), 237 deletions(-)
 
-diff --git a/accel/hvf/hvf-accel-ops.c b/accel/hvf/hvf-accel-ops.c
-index 14fc49791e..ded918c443 100644
---- a/accel/hvf/hvf-accel-ops.c
-+++ b/accel/hvf/hvf-accel-ops.c
-@@ -363,16 +363,20 @@ type_init(hvf_type_init);
- 
- static void hvf_vcpu_destroy(CPUState *cpu)
- {
--    hv_return_t ret = hv_vcpu_destroy(cpu->hvf_fd);
-+    hv_return_t ret = hv_vcpu_destroy(cpu->hvf->fd);
-     assert_hvf_ok(ret);
- 
-     hvf_arch_vcpu_destroy(cpu);
-+    g_free(cpu->hvf);
-+    cpu->hvf = NULL;
- }
- 
- static int hvf_init_vcpu(CPUState *cpu)
- {
-     int r;
- 
-+    cpu->hvf = g_malloc0(sizeof(*cpu->hvf));
-+
-     /* init cpu signals */
-     sigset_t set;
-     struct sigaction sigact;
-@@ -384,7 +388,7 @@ static int hvf_init_vcpu(CPUState *cpu)
-     pthread_sigmask(SIG_BLOCK, NULL, &set);
-     sigdelset(&set, SIG_IPI);
- 
--    r = hv_vcpu_create((hv_vcpuid_t *)&cpu->hvf_fd, HV_VCPU_DEFAULT);
-+    r = hv_vcpu_create((hv_vcpuid_t *)&cpu->hvf->fd, HV_VCPU_DEFAULT);
-     cpu->vcpu_dirty = 1;
-     assert_hvf_ok(r);
- 
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index d45f78290e..47d82a5aa9 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -251,6 +251,7 @@ struct KVMState;
- struct kvm_run;
- 
- struct hax_vcpu_state;
-+struct hvf_vcpu_state;
- 
- #define TB_JMP_CACHE_BITS 12
- #define TB_JMP_CACHE_SIZE (1 << TB_JMP_CACHE_BITS)
-@@ -436,7 +437,7 @@ struct CPUState {
- 
-     struct hax_vcpu_state *hax_vcpu;
- 
--    int hvf_fd;
-+    struct hvf_vcpu_state *hvf;
- 
-     /* track IOMMUs whose translations we've cached in the TCG TLB */
-     GArray *iommu_notifiers;
-diff --git a/include/sysemu/hvf_int.h b/include/sysemu/hvf_int.h
-index fd1dcaf26e..8b66a4e7d0 100644
---- a/include/sysemu/hvf_int.h
-+++ b/include/sysemu/hvf_int.h
-@@ -43,6 +43,10 @@ struct HVFState {
- };
- extern HVFState *hvf_state;
- 
-+struct hvf_vcpu_state {
-+    int fd;
-+};
-+
- void assert_hvf_ok(hv_return_t ret);
- int hvf_arch_init_vcpu(CPUState *cpu);
- void hvf_arch_vcpu_destroy(CPUState *cpu);
-diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
-index 02f7be6cfd..346dbcc26f 100644
---- a/target/i386/hvf/hvf.c
-+++ b/target/i386/hvf/hvf.c
-@@ -80,11 +80,11 @@ void vmx_update_tpr(CPUState *cpu)
-     int tpr = cpu_get_apic_tpr(x86_cpu->apic_state) << 4;
-     int irr = apic_get_highest_priority_irr(x86_cpu->apic_state);
- 
--    wreg(cpu->hvf_fd, HV_X86_TPR, tpr);
-+    wreg(cpu->hvf->fd, HV_X86_TPR, tpr);
-     if (irr == -1) {
--        wvmcs(cpu->hvf_fd, VMCS_TPR_THRESHOLD, 0);
-+        wvmcs(cpu->hvf->fd, VMCS_TPR_THRESHOLD, 0);
-     } else {
--        wvmcs(cpu->hvf_fd, VMCS_TPR_THRESHOLD, (irr > tpr) ? tpr >> 4 :
-+        wvmcs(cpu->hvf->fd, VMCS_TPR_THRESHOLD, (irr > tpr) ? tpr >> 4 :
-               irr >> 4);
-     }
- }
-@@ -92,7 +92,7 @@ void vmx_update_tpr(CPUState *cpu)
- static void update_apic_tpr(CPUState *cpu)
- {
-     X86CPU *x86_cpu = X86_CPU(cpu);
--    int tpr = rreg(cpu->hvf_fd, HV_X86_TPR) >> 4;
-+    int tpr = rreg(cpu->hvf->fd, HV_X86_TPR) >> 4;
-     cpu_set_apic_tpr(x86_cpu->apic_state, tpr);
- }
- 
-@@ -244,43 +244,43 @@ int hvf_arch_init_vcpu(CPUState *cpu)
-     }
- 
-     /* set VMCS control fields */
--    wvmcs(cpu->hvf_fd, VMCS_PIN_BASED_CTLS,
-+    wvmcs(cpu->hvf->fd, VMCS_PIN_BASED_CTLS,
-           cap2ctrl(hvf_state->hvf_caps->vmx_cap_pinbased,
-           VMCS_PIN_BASED_CTLS_EXTINT |
-           VMCS_PIN_BASED_CTLS_NMI |
-           VMCS_PIN_BASED_CTLS_VNMI));
--    wvmcs(cpu->hvf_fd, VMCS_PRI_PROC_BASED_CTLS,
-+    wvmcs(cpu->hvf->fd, VMCS_PRI_PROC_BASED_CTLS,
-           cap2ctrl(hvf_state->hvf_caps->vmx_cap_procbased,
-           VMCS_PRI_PROC_BASED_CTLS_HLT |
-           VMCS_PRI_PROC_BASED_CTLS_MWAIT |
-           VMCS_PRI_PROC_BASED_CTLS_TSC_OFFSET |
-           VMCS_PRI_PROC_BASED_CTLS_TPR_SHADOW) |
-           VMCS_PRI_PROC_BASED_CTLS_SEC_CONTROL);
--    wvmcs(cpu->hvf_fd, VMCS_SEC_PROC_BASED_CTLS,
-+    wvmcs(cpu->hvf->fd, VMCS_SEC_PROC_BASED_CTLS,
-           cap2ctrl(hvf_state->hvf_caps->vmx_cap_procbased2,
-                    VMCS_PRI_PROC_BASED2_CTLS_APIC_ACCESSES));
- 
--    wvmcs(cpu->hvf_fd, VMCS_ENTRY_CTLS, cap2ctrl(hvf_state->hvf_caps->vmx_cap_entry,
-+    wvmcs(cpu->hvf->fd, VMCS_ENTRY_CTLS, cap2ctrl(hvf_state->hvf_caps->vmx_cap_entry,
-           0));
--    wvmcs(cpu->hvf_fd, VMCS_EXCEPTION_BITMAP, 0); /* Double fault */
-+    wvmcs(cpu->hvf->fd, VMCS_EXCEPTION_BITMAP, 0); /* Double fault */
- 
--    wvmcs(cpu->hvf_fd, VMCS_TPR_THRESHOLD, 0);
-+    wvmcs(cpu->hvf->fd, VMCS_TPR_THRESHOLD, 0);
- 
-     x86cpu = X86_CPU(cpu);
-     x86cpu->env.xsave_buf = qemu_memalign(4096, 4096);
- 
--    hv_vcpu_enable_native_msr(cpu->hvf_fd, MSR_STAR, 1);
--    hv_vcpu_enable_native_msr(cpu->hvf_fd, MSR_LSTAR, 1);
--    hv_vcpu_enable_native_msr(cpu->hvf_fd, MSR_CSTAR, 1);
--    hv_vcpu_enable_native_msr(cpu->hvf_fd, MSR_FMASK, 1);
--    hv_vcpu_enable_native_msr(cpu->hvf_fd, MSR_FSBASE, 1);
--    hv_vcpu_enable_native_msr(cpu->hvf_fd, MSR_GSBASE, 1);
--    hv_vcpu_enable_native_msr(cpu->hvf_fd, MSR_KERNELGSBASE, 1);
--    hv_vcpu_enable_native_msr(cpu->hvf_fd, MSR_TSC_AUX, 1);
--    hv_vcpu_enable_native_msr(cpu->hvf_fd, MSR_IA32_TSC, 1);
--    hv_vcpu_enable_native_msr(cpu->hvf_fd, MSR_IA32_SYSENTER_CS, 1);
--    hv_vcpu_enable_native_msr(cpu->hvf_fd, MSR_IA32_SYSENTER_EIP, 1);
--    hv_vcpu_enable_native_msr(cpu->hvf_fd, MSR_IA32_SYSENTER_ESP, 1);
-+    hv_vcpu_enable_native_msr(cpu->hvf->fd, MSR_STAR, 1);
-+    hv_vcpu_enable_native_msr(cpu->hvf->fd, MSR_LSTAR, 1);
-+    hv_vcpu_enable_native_msr(cpu->hvf->fd, MSR_CSTAR, 1);
-+    hv_vcpu_enable_native_msr(cpu->hvf->fd, MSR_FMASK, 1);
-+    hv_vcpu_enable_native_msr(cpu->hvf->fd, MSR_FSBASE, 1);
-+    hv_vcpu_enable_native_msr(cpu->hvf->fd, MSR_GSBASE, 1);
-+    hv_vcpu_enable_native_msr(cpu->hvf->fd, MSR_KERNELGSBASE, 1);
-+    hv_vcpu_enable_native_msr(cpu->hvf->fd, MSR_TSC_AUX, 1);
-+    hv_vcpu_enable_native_msr(cpu->hvf->fd, MSR_IA32_TSC, 1);
-+    hv_vcpu_enable_native_msr(cpu->hvf->fd, MSR_IA32_SYSENTER_CS, 1);
-+    hv_vcpu_enable_native_msr(cpu->hvf->fd, MSR_IA32_SYSENTER_EIP, 1);
-+    hv_vcpu_enable_native_msr(cpu->hvf->fd, MSR_IA32_SYSENTER_ESP, 1);
- 
-     return 0;
- }
-@@ -321,16 +321,16 @@ static void hvf_store_events(CPUState *cpu, uint32_t ins_len, uint64_t idtvec_in
-         }
-         if (idtvec_info & VMCS_IDT_VEC_ERRCODE_VALID) {
-             env->has_error_code = true;
--            env->error_code = rvmcs(cpu->hvf_fd, VMCS_IDT_VECTORING_ERROR);
-+            env->error_code = rvmcs(cpu->hvf->fd, VMCS_IDT_VECTORING_ERROR);
-         }
-     }
--    if ((rvmcs(cpu->hvf_fd, VMCS_GUEST_INTERRUPTIBILITY) &
-+    if ((rvmcs(cpu->hvf->fd, VMCS_GUEST_INTERRUPTIBILITY) &
-         VMCS_INTERRUPTIBILITY_NMI_BLOCKING)) {
-         env->hflags2 |= HF2_NMI_MASK;
-     } else {
-         env->hflags2 &= ~HF2_NMI_MASK;
-     }
--    if (rvmcs(cpu->hvf_fd, VMCS_GUEST_INTERRUPTIBILITY) &
-+    if (rvmcs(cpu->hvf->fd, VMCS_GUEST_INTERRUPTIBILITY) &
-          (VMCS_INTERRUPTIBILITY_STI_BLOCKING |
-          VMCS_INTERRUPTIBILITY_MOVSS_BLOCKING)) {
-         env->hflags |= HF_INHIBIT_IRQ_MASK;
-@@ -409,20 +409,20 @@ int hvf_vcpu_exec(CPUState *cpu)
-             return EXCP_HLT;
-         }
- 
--        hv_return_t r  = hv_vcpu_run(cpu->hvf_fd);
-+        hv_return_t r  = hv_vcpu_run(cpu->hvf->fd);
-         assert_hvf_ok(r);
- 
-         /* handle VMEXIT */
--        uint64_t exit_reason = rvmcs(cpu->hvf_fd, VMCS_EXIT_REASON);
--        uint64_t exit_qual = rvmcs(cpu->hvf_fd, VMCS_EXIT_QUALIFICATION);
--        uint32_t ins_len = (uint32_t)rvmcs(cpu->hvf_fd,
-+        uint64_t exit_reason = rvmcs(cpu->hvf->fd, VMCS_EXIT_REASON);
-+        uint64_t exit_qual = rvmcs(cpu->hvf->fd, VMCS_EXIT_QUALIFICATION);
-+        uint32_t ins_len = (uint32_t)rvmcs(cpu->hvf->fd,
-                                            VMCS_EXIT_INSTRUCTION_LENGTH);
- 
--        uint64_t idtvec_info = rvmcs(cpu->hvf_fd, VMCS_IDT_VECTORING_INFO);
-+        uint64_t idtvec_info = rvmcs(cpu->hvf->fd, VMCS_IDT_VECTORING_INFO);
- 
-         hvf_store_events(cpu, ins_len, idtvec_info);
--        rip = rreg(cpu->hvf_fd, HV_X86_RIP);
--        env->eflags = rreg(cpu->hvf_fd, HV_X86_RFLAGS);
-+        rip = rreg(cpu->hvf->fd, HV_X86_RIP);
-+        env->eflags = rreg(cpu->hvf->fd, HV_X86_RFLAGS);
- 
-         qemu_mutex_lock_iothread();
- 
-@@ -452,7 +452,7 @@ int hvf_vcpu_exec(CPUState *cpu)
-         case EXIT_REASON_EPT_FAULT:
-         {
-             hvf_slot *slot;
--            uint64_t gpa = rvmcs(cpu->hvf_fd, VMCS_GUEST_PHYSICAL_ADDRESS);
-+            uint64_t gpa = rvmcs(cpu->hvf->fd, VMCS_GUEST_PHYSICAL_ADDRESS);
- 
-             if (((idtvec_info & VMCS_IDT_VEC_VALID) == 0) &&
-                 ((exit_qual & EXIT_QUAL_NMIUDTI) != 0)) {
-@@ -497,7 +497,7 @@ int hvf_vcpu_exec(CPUState *cpu)
-                 store_regs(cpu);
-                 break;
-             } else if (!string && !in) {
--                RAX(env) = rreg(cpu->hvf_fd, HV_X86_RAX);
-+                RAX(env) = rreg(cpu->hvf->fd, HV_X86_RAX);
-                 hvf_handle_io(env, port, &RAX(env), 1, size, 1);
-                 macvm_set_rip(cpu, rip + ins_len);
-                 break;
-@@ -513,21 +513,21 @@ int hvf_vcpu_exec(CPUState *cpu)
-             break;
-         }
-         case EXIT_REASON_CPUID: {
--            uint32_t rax = (uint32_t)rreg(cpu->hvf_fd, HV_X86_RAX);
--            uint32_t rbx = (uint32_t)rreg(cpu->hvf_fd, HV_X86_RBX);
--            uint32_t rcx = (uint32_t)rreg(cpu->hvf_fd, HV_X86_RCX);
--            uint32_t rdx = (uint32_t)rreg(cpu->hvf_fd, HV_X86_RDX);
-+            uint32_t rax = (uint32_t)rreg(cpu->hvf->fd, HV_X86_RAX);
-+            uint32_t rbx = (uint32_t)rreg(cpu->hvf->fd, HV_X86_RBX);
-+            uint32_t rcx = (uint32_t)rreg(cpu->hvf->fd, HV_X86_RCX);
-+            uint32_t rdx = (uint32_t)rreg(cpu->hvf->fd, HV_X86_RDX);
- 
-             if (rax == 1) {
-                 /* CPUID1.ecx.OSXSAVE needs to know CR4 */
--                env->cr[4] = rvmcs(cpu->hvf_fd, VMCS_GUEST_CR4);
-+                env->cr[4] = rvmcs(cpu->hvf->fd, VMCS_GUEST_CR4);
-             }
-             hvf_cpu_x86_cpuid(env, rax, rcx, &rax, &rbx, &rcx, &rdx);
- 
--            wreg(cpu->hvf_fd, HV_X86_RAX, rax);
--            wreg(cpu->hvf_fd, HV_X86_RBX, rbx);
--            wreg(cpu->hvf_fd, HV_X86_RCX, rcx);
--            wreg(cpu->hvf_fd, HV_X86_RDX, rdx);
-+            wreg(cpu->hvf->fd, HV_X86_RAX, rax);
-+            wreg(cpu->hvf->fd, HV_X86_RBX, rbx);
-+            wreg(cpu->hvf->fd, HV_X86_RCX, rcx);
-+            wreg(cpu->hvf->fd, HV_X86_RDX, rdx);
- 
-             macvm_set_rip(cpu, rip + ins_len);
-             break;
-@@ -535,16 +535,16 @@ int hvf_vcpu_exec(CPUState *cpu)
-         case EXIT_REASON_XSETBV: {
-             X86CPU *x86_cpu = X86_CPU(cpu);
-             CPUX86State *env = &x86_cpu->env;
--            uint32_t eax = (uint32_t)rreg(cpu->hvf_fd, HV_X86_RAX);
--            uint32_t ecx = (uint32_t)rreg(cpu->hvf_fd, HV_X86_RCX);
--            uint32_t edx = (uint32_t)rreg(cpu->hvf_fd, HV_X86_RDX);
-+            uint32_t eax = (uint32_t)rreg(cpu->hvf->fd, HV_X86_RAX);
-+            uint32_t ecx = (uint32_t)rreg(cpu->hvf->fd, HV_X86_RCX);
-+            uint32_t edx = (uint32_t)rreg(cpu->hvf->fd, HV_X86_RDX);
- 
-             if (ecx) {
-                 macvm_set_rip(cpu, rip + ins_len);
-                 break;
-             }
-             env->xcr0 = ((uint64_t)edx << 32) | eax;
--            wreg(cpu->hvf_fd, HV_X86_XCR0, env->xcr0 | 1);
-+            wreg(cpu->hvf->fd, HV_X86_XCR0, env->xcr0 | 1);
-             macvm_set_rip(cpu, rip + ins_len);
-             break;
-         }
-@@ -583,11 +583,11 @@ int hvf_vcpu_exec(CPUState *cpu)
- 
-             switch (cr) {
-             case 0x0: {
--                macvm_set_cr0(cpu->hvf_fd, RRX(env, reg));
-+                macvm_set_cr0(cpu->hvf->fd, RRX(env, reg));
-                 break;
-             }
-             case 4: {
--                macvm_set_cr4(cpu->hvf_fd, RRX(env, reg));
-+                macvm_set_cr4(cpu->hvf->fd, RRX(env, reg));
-                 break;
-             }
-             case 8: {
-@@ -623,7 +623,7 @@ int hvf_vcpu_exec(CPUState *cpu)
-             break;
-         }
-         case EXIT_REASON_TASK_SWITCH: {
--            uint64_t vinfo = rvmcs(cpu->hvf_fd, VMCS_IDT_VECTORING_INFO);
-+            uint64_t vinfo = rvmcs(cpu->hvf->fd, VMCS_IDT_VECTORING_INFO);
-             x68_segment_selector sel = {.sel = exit_qual & 0xffff};
-             vmx_handle_task_switch(cpu, sel, (exit_qual >> 30) & 0x3,
-              vinfo & VMCS_INTR_VALID, vinfo & VECTORING_INFO_VECTOR_MASK, vinfo
-@@ -636,8 +636,8 @@ int hvf_vcpu_exec(CPUState *cpu)
-             break;
-         }
-         case EXIT_REASON_RDPMC:
--            wreg(cpu->hvf_fd, HV_X86_RAX, 0);
--            wreg(cpu->hvf_fd, HV_X86_RDX, 0);
-+            wreg(cpu->hvf->fd, HV_X86_RAX, 0);
-+            wreg(cpu->hvf->fd, HV_X86_RDX, 0);
-             macvm_set_rip(cpu, rip + ins_len);
-             break;
-         case VMX_REASON_VMCALL:
-diff --git a/target/i386/hvf/vmx.h b/target/i386/hvf/vmx.h
-index 24c4cdf0be..6df87116f6 100644
---- a/target/i386/hvf/vmx.h
-+++ b/target/i386/hvf/vmx.h
-@@ -30,6 +30,8 @@
- #include "vmcs.h"
- #include "cpu.h"
- #include "x86.h"
-+#include "sysemu/hvf.h"
-+#include "sysemu/hvf_int.h"
- 
- #include "exec/address-spaces.h"
- 
-@@ -179,15 +181,15 @@ static inline void macvm_set_rip(CPUState *cpu, uint64_t rip)
-     uint64_t val;
- 
-     /* BUG, should take considering overlap.. */
--    wreg(cpu->hvf_fd, HV_X86_RIP, rip);
-+    wreg(cpu->hvf->fd, HV_X86_RIP, rip);
-     env->eip = rip;
- 
-     /* after moving forward in rip, we need to clean INTERRUPTABILITY */
--   val = rvmcs(cpu->hvf_fd, VMCS_GUEST_INTERRUPTIBILITY);
-+   val = rvmcs(cpu->hvf->fd, VMCS_GUEST_INTERRUPTIBILITY);
-    if (val & (VMCS_INTERRUPTIBILITY_STI_BLOCKING |
-                VMCS_INTERRUPTIBILITY_MOVSS_BLOCKING)) {
-         env->hflags &= ~HF_INHIBIT_IRQ_MASK;
--        wvmcs(cpu->hvf_fd, VMCS_GUEST_INTERRUPTIBILITY,
-+        wvmcs(cpu->hvf->fd, VMCS_GUEST_INTERRUPTIBILITY,
-                val & ~(VMCS_INTERRUPTIBILITY_STI_BLOCKING |
-                VMCS_INTERRUPTIBILITY_MOVSS_BLOCKING));
-    }
-@@ -199,9 +201,9 @@ static inline void vmx_clear_nmi_blocking(CPUState *cpu)
-     CPUX86State *env = &x86_cpu->env;
- 
-     env->hflags2 &= ~HF2_NMI_MASK;
--    uint32_t gi = (uint32_t) rvmcs(cpu->hvf_fd, VMCS_GUEST_INTERRUPTIBILITY);
-+    uint32_t gi = (uint32_t) rvmcs(cpu->hvf->fd, VMCS_GUEST_INTERRUPTIBILITY);
-     gi &= ~VMCS_INTERRUPTIBILITY_NMI_BLOCKING;
--    wvmcs(cpu->hvf_fd, VMCS_GUEST_INTERRUPTIBILITY, gi);
-+    wvmcs(cpu->hvf->fd, VMCS_GUEST_INTERRUPTIBILITY, gi);
- }
- 
- static inline void vmx_set_nmi_blocking(CPUState *cpu)
-@@ -210,16 +212,16 @@ static inline void vmx_set_nmi_blocking(CPUState *cpu)
-     CPUX86State *env = &x86_cpu->env;
- 
-     env->hflags2 |= HF2_NMI_MASK;
--    uint32_t gi = (uint32_t)rvmcs(cpu->hvf_fd, VMCS_GUEST_INTERRUPTIBILITY);
-+    uint32_t gi = (uint32_t)rvmcs(cpu->hvf->fd, VMCS_GUEST_INTERRUPTIBILITY);
-     gi |= VMCS_INTERRUPTIBILITY_NMI_BLOCKING;
--    wvmcs(cpu->hvf_fd, VMCS_GUEST_INTERRUPTIBILITY, gi);
-+    wvmcs(cpu->hvf->fd, VMCS_GUEST_INTERRUPTIBILITY, gi);
- }
- 
- static inline void vmx_set_nmi_window_exiting(CPUState *cpu)
- {
-     uint64_t val;
--    val = rvmcs(cpu->hvf_fd, VMCS_PRI_PROC_BASED_CTLS);
--    wvmcs(cpu->hvf_fd, VMCS_PRI_PROC_BASED_CTLS, val |
-+    val = rvmcs(cpu->hvf->fd, VMCS_PRI_PROC_BASED_CTLS);
-+    wvmcs(cpu->hvf->fd, VMCS_PRI_PROC_BASED_CTLS, val |
-           VMCS_PRI_PROC_BASED_CTLS_NMI_WINDOW_EXITING);
- 
- }
-@@ -228,8 +230,8 @@ static inline void vmx_clear_nmi_window_exiting(CPUState *cpu)
- {
- 
-     uint64_t val;
--    val = rvmcs(cpu->hvf_fd, VMCS_PRI_PROC_BASED_CTLS);
--    wvmcs(cpu->hvf_fd, VMCS_PRI_PROC_BASED_CTLS, val &
-+    val = rvmcs(cpu->hvf->fd, VMCS_PRI_PROC_BASED_CTLS);
-+    wvmcs(cpu->hvf->fd, VMCS_PRI_PROC_BASED_CTLS, val &
-           ~VMCS_PRI_PROC_BASED_CTLS_NMI_WINDOW_EXITING);
- }
- 
-diff --git a/target/i386/hvf/x86.c b/target/i386/hvf/x86.c
-index cd045183a8..2898bb70a8 100644
---- a/target/i386/hvf/x86.c
-+++ b/target/i386/hvf/x86.c
-@@ -62,11 +62,11 @@ bool x86_read_segment_descriptor(struct CPUState *cpu,
-     }
- 
-     if (GDT_SEL == sel.ti) {
--        base  = rvmcs(cpu->hvf_fd, VMCS_GUEST_GDTR_BASE);
--        limit = rvmcs(cpu->hvf_fd, VMCS_GUEST_GDTR_LIMIT);
-+        base  = rvmcs(cpu->hvf->fd, VMCS_GUEST_GDTR_BASE);
-+        limit = rvmcs(cpu->hvf->fd, VMCS_GUEST_GDTR_LIMIT);
-     } else {
--        base  = rvmcs(cpu->hvf_fd, VMCS_GUEST_LDTR_BASE);
--        limit = rvmcs(cpu->hvf_fd, VMCS_GUEST_LDTR_LIMIT);
-+        base  = rvmcs(cpu->hvf->fd, VMCS_GUEST_LDTR_BASE);
-+        limit = rvmcs(cpu->hvf->fd, VMCS_GUEST_LDTR_LIMIT);
-     }
- 
-     if (sel.index * 8 >= limit) {
-@@ -85,11 +85,11 @@ bool x86_write_segment_descriptor(struct CPUState *cpu,
-     uint32_t limit;
-     
-     if (GDT_SEL == sel.ti) {
--        base  = rvmcs(cpu->hvf_fd, VMCS_GUEST_GDTR_BASE);
--        limit = rvmcs(cpu->hvf_fd, VMCS_GUEST_GDTR_LIMIT);
-+        base  = rvmcs(cpu->hvf->fd, VMCS_GUEST_GDTR_BASE);
-+        limit = rvmcs(cpu->hvf->fd, VMCS_GUEST_GDTR_LIMIT);
-     } else {
--        base  = rvmcs(cpu->hvf_fd, VMCS_GUEST_LDTR_BASE);
--        limit = rvmcs(cpu->hvf_fd, VMCS_GUEST_LDTR_LIMIT);
-+        base  = rvmcs(cpu->hvf->fd, VMCS_GUEST_LDTR_BASE);
-+        limit = rvmcs(cpu->hvf->fd, VMCS_GUEST_LDTR_LIMIT);
-     }
-     
-     if (sel.index * 8 >= limit) {
-@@ -103,8 +103,8 @@ bool x86_write_segment_descriptor(struct CPUState *cpu,
- bool x86_read_call_gate(struct CPUState *cpu, struct x86_call_gate *idt_desc,
-                         int gate)
- {
--    target_ulong base  = rvmcs(cpu->hvf_fd, VMCS_GUEST_IDTR_BASE);
--    uint32_t limit = rvmcs(cpu->hvf_fd, VMCS_GUEST_IDTR_LIMIT);
-+    target_ulong base  = rvmcs(cpu->hvf->fd, VMCS_GUEST_IDTR_BASE);
-+    uint32_t limit = rvmcs(cpu->hvf->fd, VMCS_GUEST_IDTR_LIMIT);
- 
-     memset(idt_desc, 0, sizeof(*idt_desc));
-     if (gate * 8 >= limit) {
-@@ -118,7 +118,7 @@ bool x86_read_call_gate(struct CPUState *cpu, struct x86_call_gate *idt_desc,
- 
- bool x86_is_protected(struct CPUState *cpu)
- {
--    uint64_t cr0 = rvmcs(cpu->hvf_fd, VMCS_GUEST_CR0);
-+    uint64_t cr0 = rvmcs(cpu->hvf->fd, VMCS_GUEST_CR0);
-     return cr0 & CR0_PE;
- }
- 
-@@ -136,7 +136,7 @@ bool x86_is_v8086(struct CPUState *cpu)
- 
- bool x86_is_long_mode(struct CPUState *cpu)
- {
--    return rvmcs(cpu->hvf_fd, VMCS_GUEST_IA32_EFER) & MSR_EFER_LMA;
-+    return rvmcs(cpu->hvf->fd, VMCS_GUEST_IA32_EFER) & MSR_EFER_LMA;
- }
- 
- bool x86_is_long64_mode(struct CPUState *cpu)
-@@ -149,13 +149,13 @@ bool x86_is_long64_mode(struct CPUState *cpu)
- 
- bool x86_is_paging_mode(struct CPUState *cpu)
- {
--    uint64_t cr0 = rvmcs(cpu->hvf_fd, VMCS_GUEST_CR0);
-+    uint64_t cr0 = rvmcs(cpu->hvf->fd, VMCS_GUEST_CR0);
-     return cr0 & CR0_PG;
- }
- 
- bool x86_is_pae_enabled(struct CPUState *cpu)
- {
--    uint64_t cr4 = rvmcs(cpu->hvf_fd, VMCS_GUEST_CR4);
-+    uint64_t cr4 = rvmcs(cpu->hvf->fd, VMCS_GUEST_CR4);
-     return cr4 & CR4_PAE;
- }
- 
-diff --git a/target/i386/hvf/x86_descr.c b/target/i386/hvf/x86_descr.c
-index 9f539e73f6..af15c06ac5 100644
---- a/target/i386/hvf/x86_descr.c
-+++ b/target/i386/hvf/x86_descr.c
-@@ -48,47 +48,47 @@ static const struct vmx_segment_field {
- 
- uint32_t vmx_read_segment_limit(CPUState *cpu, X86Seg seg)
- {
--    return (uint32_t)rvmcs(cpu->hvf_fd, vmx_segment_fields[seg].limit);
-+    return (uint32_t)rvmcs(cpu->hvf->fd, vmx_segment_fields[seg].limit);
- }
- 
- uint32_t vmx_read_segment_ar(CPUState *cpu, X86Seg seg)
- {
--    return (uint32_t)rvmcs(cpu->hvf_fd, vmx_segment_fields[seg].ar_bytes);
-+    return (uint32_t)rvmcs(cpu->hvf->fd, vmx_segment_fields[seg].ar_bytes);
- }
- 
- uint64_t vmx_read_segment_base(CPUState *cpu, X86Seg seg)
- {
--    return rvmcs(cpu->hvf_fd, vmx_segment_fields[seg].base);
-+    return rvmcs(cpu->hvf->fd, vmx_segment_fields[seg].base);
- }
- 
- x68_segment_selector vmx_read_segment_selector(CPUState *cpu, X86Seg seg)
- {
-     x68_segment_selector sel;
--    sel.sel = rvmcs(cpu->hvf_fd, vmx_segment_fields[seg].selector);
-+    sel.sel = rvmcs(cpu->hvf->fd, vmx_segment_fields[seg].selector);
-     return sel;
- }
- 
- void vmx_write_segment_selector(struct CPUState *cpu, x68_segment_selector selector, X86Seg seg)
- {
--    wvmcs(cpu->hvf_fd, vmx_segment_fields[seg].selector, selector.sel);
-+    wvmcs(cpu->hvf->fd, vmx_segment_fields[seg].selector, selector.sel);
- }
- 
- void vmx_read_segment_descriptor(struct CPUState *cpu, struct vmx_segment *desc, X86Seg seg)
- {
--    desc->sel = rvmcs(cpu->hvf_fd, vmx_segment_fields[seg].selector);
--    desc->base = rvmcs(cpu->hvf_fd, vmx_segment_fields[seg].base);
--    desc->limit = rvmcs(cpu->hvf_fd, vmx_segment_fields[seg].limit);
--    desc->ar = rvmcs(cpu->hvf_fd, vmx_segment_fields[seg].ar_bytes);
-+    desc->sel = rvmcs(cpu->hvf->fd, vmx_segment_fields[seg].selector);
-+    desc->base = rvmcs(cpu->hvf->fd, vmx_segment_fields[seg].base);
-+    desc->limit = rvmcs(cpu->hvf->fd, vmx_segment_fields[seg].limit);
-+    desc->ar = rvmcs(cpu->hvf->fd, vmx_segment_fields[seg].ar_bytes);
- }
- 
- void vmx_write_segment_descriptor(CPUState *cpu, struct vmx_segment *desc, X86Seg seg)
- {
-     const struct vmx_segment_field *sf = &vmx_segment_fields[seg];
- 
--    wvmcs(cpu->hvf_fd, sf->base, desc->base);
--    wvmcs(cpu->hvf_fd, sf->limit, desc->limit);
--    wvmcs(cpu->hvf_fd, sf->selector, desc->sel);
--    wvmcs(cpu->hvf_fd, sf->ar_bytes, desc->ar);
-+    wvmcs(cpu->hvf->fd, sf->base, desc->base);
-+    wvmcs(cpu->hvf->fd, sf->limit, desc->limit);
-+    wvmcs(cpu->hvf->fd, sf->selector, desc->sel);
-+    wvmcs(cpu->hvf->fd, sf->ar_bytes, desc->ar);
- }
- 
- void x86_segment_descriptor_to_vmx(struct CPUState *cpu, x68_segment_selector selector, struct x86_segment_descriptor *desc, struct vmx_segment *vmx_desc)
-diff --git a/target/i386/hvf/x86_emu.c b/target/i386/hvf/x86_emu.c
-index e52c39ddb1..7c8203b21f 100644
---- a/target/i386/hvf/x86_emu.c
-+++ b/target/i386/hvf/x86_emu.c
-@@ -674,7 +674,7 @@ void simulate_rdmsr(struct CPUState *cpu)
- 
-     switch (msr) {
-     case MSR_IA32_TSC:
--        val = rdtscp() + rvmcs(cpu->hvf_fd, VMCS_TSC_OFFSET);
-+        val = rdtscp() + rvmcs(cpu->hvf->fd, VMCS_TSC_OFFSET);
-         break;
-     case MSR_IA32_APICBASE:
-         val = cpu_get_apic_base(X86_CPU(cpu)->apic_state);
-@@ -683,16 +683,16 @@ void simulate_rdmsr(struct CPUState *cpu)
-         val = x86_cpu->ucode_rev;
-         break;
-     case MSR_EFER:
--        val = rvmcs(cpu->hvf_fd, VMCS_GUEST_IA32_EFER);
-+        val = rvmcs(cpu->hvf->fd, VMCS_GUEST_IA32_EFER);
-         break;
-     case MSR_FSBASE:
--        val = rvmcs(cpu->hvf_fd, VMCS_GUEST_FS_BASE);
-+        val = rvmcs(cpu->hvf->fd, VMCS_GUEST_FS_BASE);
-         break;
-     case MSR_GSBASE:
--        val = rvmcs(cpu->hvf_fd, VMCS_GUEST_GS_BASE);
-+        val = rvmcs(cpu->hvf->fd, VMCS_GUEST_GS_BASE);
-         break;
-     case MSR_KERNELGSBASE:
--        val = rvmcs(cpu->hvf_fd, VMCS_HOST_FS_BASE);
-+        val = rvmcs(cpu->hvf->fd, VMCS_HOST_FS_BASE);
-         break;
-     case MSR_STAR:
-         abort();
-@@ -780,13 +780,13 @@ void simulate_wrmsr(struct CPUState *cpu)
-         cpu_set_apic_base(X86_CPU(cpu)->apic_state, data);
-         break;
-     case MSR_FSBASE:
--        wvmcs(cpu->hvf_fd, VMCS_GUEST_FS_BASE, data);
-+        wvmcs(cpu->hvf->fd, VMCS_GUEST_FS_BASE, data);
-         break;
-     case MSR_GSBASE:
--        wvmcs(cpu->hvf_fd, VMCS_GUEST_GS_BASE, data);
-+        wvmcs(cpu->hvf->fd, VMCS_GUEST_GS_BASE, data);
-         break;
-     case MSR_KERNELGSBASE:
--        wvmcs(cpu->hvf_fd, VMCS_HOST_FS_BASE, data);
-+        wvmcs(cpu->hvf->fd, VMCS_HOST_FS_BASE, data);
-         break;
-     case MSR_STAR:
-         abort();
-@@ -799,9 +799,9 @@ void simulate_wrmsr(struct CPUState *cpu)
-         break;
-     case MSR_EFER:
-         /*printf("new efer %llx\n", EFER(cpu));*/
--        wvmcs(cpu->hvf_fd, VMCS_GUEST_IA32_EFER, data);
-+        wvmcs(cpu->hvf->fd, VMCS_GUEST_IA32_EFER, data);
-         if (data & MSR_EFER_NXE) {
--            hv_vcpu_invalidate_tlb(cpu->hvf_fd);
-+            hv_vcpu_invalidate_tlb(cpu->hvf->fd);
-         }
-         break;
-     case MSR_MTRRphysBase(0):
-@@ -1425,21 +1425,21 @@ void load_regs(struct CPUState *cpu)
-     CPUX86State *env = &x86_cpu->env;
- 
-     int i = 0;
--    RRX(env, R_EAX) = rreg(cpu->hvf_fd, HV_X86_RAX);
--    RRX(env, R_EBX) = rreg(cpu->hvf_fd, HV_X86_RBX);
--    RRX(env, R_ECX) = rreg(cpu->hvf_fd, HV_X86_RCX);
--    RRX(env, R_EDX) = rreg(cpu->hvf_fd, HV_X86_RDX);
--    RRX(env, R_ESI) = rreg(cpu->hvf_fd, HV_X86_RSI);
--    RRX(env, R_EDI) = rreg(cpu->hvf_fd, HV_X86_RDI);
--    RRX(env, R_ESP) = rreg(cpu->hvf_fd, HV_X86_RSP);
--    RRX(env, R_EBP) = rreg(cpu->hvf_fd, HV_X86_RBP);
-+    RRX(env, R_EAX) = rreg(cpu->hvf->fd, HV_X86_RAX);
-+    RRX(env, R_EBX) = rreg(cpu->hvf->fd, HV_X86_RBX);
-+    RRX(env, R_ECX) = rreg(cpu->hvf->fd, HV_X86_RCX);
-+    RRX(env, R_EDX) = rreg(cpu->hvf->fd, HV_X86_RDX);
-+    RRX(env, R_ESI) = rreg(cpu->hvf->fd, HV_X86_RSI);
-+    RRX(env, R_EDI) = rreg(cpu->hvf->fd, HV_X86_RDI);
-+    RRX(env, R_ESP) = rreg(cpu->hvf->fd, HV_X86_RSP);
-+    RRX(env, R_EBP) = rreg(cpu->hvf->fd, HV_X86_RBP);
-     for (i = 8; i < 16; i++) {
--        RRX(env, i) = rreg(cpu->hvf_fd, HV_X86_RAX + i);
-+        RRX(env, i) = rreg(cpu->hvf->fd, HV_X86_RAX + i);
-     }
- 
--    env->eflags = rreg(cpu->hvf_fd, HV_X86_RFLAGS);
-+    env->eflags = rreg(cpu->hvf->fd, HV_X86_RFLAGS);
-     rflags_to_lflags(env);
--    env->eip = rreg(cpu->hvf_fd, HV_X86_RIP);
-+    env->eip = rreg(cpu->hvf->fd, HV_X86_RIP);
- }
- 
- void store_regs(struct CPUState *cpu)
-@@ -1448,20 +1448,20 @@ void store_regs(struct CPUState *cpu)
-     CPUX86State *env = &x86_cpu->env;
- 
-     int i = 0;
--    wreg(cpu->hvf_fd, HV_X86_RAX, RAX(env));
--    wreg(cpu->hvf_fd, HV_X86_RBX, RBX(env));
--    wreg(cpu->hvf_fd, HV_X86_RCX, RCX(env));
--    wreg(cpu->hvf_fd, HV_X86_RDX, RDX(env));
--    wreg(cpu->hvf_fd, HV_X86_RSI, RSI(env));
--    wreg(cpu->hvf_fd, HV_X86_RDI, RDI(env));
--    wreg(cpu->hvf_fd, HV_X86_RBP, RBP(env));
--    wreg(cpu->hvf_fd, HV_X86_RSP, RSP(env));
-+    wreg(cpu->hvf->fd, HV_X86_RAX, RAX(env));
-+    wreg(cpu->hvf->fd, HV_X86_RBX, RBX(env));
-+    wreg(cpu->hvf->fd, HV_X86_RCX, RCX(env));
-+    wreg(cpu->hvf->fd, HV_X86_RDX, RDX(env));
-+    wreg(cpu->hvf->fd, HV_X86_RSI, RSI(env));
-+    wreg(cpu->hvf->fd, HV_X86_RDI, RDI(env));
-+    wreg(cpu->hvf->fd, HV_X86_RBP, RBP(env));
-+    wreg(cpu->hvf->fd, HV_X86_RSP, RSP(env));
-     for (i = 8; i < 16; i++) {
--        wreg(cpu->hvf_fd, HV_X86_RAX + i, RRX(env, i));
-+        wreg(cpu->hvf->fd, HV_X86_RAX + i, RRX(env, i));
-     }
- 
-     lflags_to_rflags(env);
--    wreg(cpu->hvf_fd, HV_X86_RFLAGS, env->eflags);
-+    wreg(cpu->hvf->fd, HV_X86_RFLAGS, env->eflags);
-     macvm_set_rip(cpu, env->eip);
- }
- 
-diff --git a/target/i386/hvf/x86_mmu.c b/target/i386/hvf/x86_mmu.c
-index 78fff04684..e9ed0f5aa1 100644
---- a/target/i386/hvf/x86_mmu.c
-+++ b/target/i386/hvf/x86_mmu.c
-@@ -127,7 +127,7 @@ static bool test_pt_entry(struct CPUState *cpu, struct gpt_translation *pt,
-         pt->err_code |= MMU_PAGE_PT;
-     }
- 
--    uint32_t cr0 = rvmcs(cpu->hvf_fd, VMCS_GUEST_CR0);
-+    uint32_t cr0 = rvmcs(cpu->hvf->fd, VMCS_GUEST_CR0);
-     /* check protection */
-     if (cr0 & CR0_WP) {
-         if (pt->write_access && !pte_write_access(pte)) {
-@@ -172,7 +172,7 @@ static bool walk_gpt(struct CPUState *cpu, target_ulong addr, int err_code,
- {
-     int top_level, level;
-     bool is_large = false;
--    target_ulong cr3 = rvmcs(cpu->hvf_fd, VMCS_GUEST_CR3);
-+    target_ulong cr3 = rvmcs(cpu->hvf->fd, VMCS_GUEST_CR3);
-     uint64_t page_mask = pae ? PAE_PTE_PAGE_MASK : LEGACY_PTE_PAGE_MASK;
-     
-     memset(pt, 0, sizeof(*pt));
-diff --git a/target/i386/hvf/x86_task.c b/target/i386/hvf/x86_task.c
-index d66dfd7669..422156128b 100644
---- a/target/i386/hvf/x86_task.c
-+++ b/target/i386/hvf/x86_task.c
-@@ -62,7 +62,7 @@ static void load_state_from_tss32(CPUState *cpu, struct x86_tss_segment32 *tss)
-     X86CPU *x86_cpu = X86_CPU(cpu);
-     CPUX86State *env = &x86_cpu->env;
- 
--    wvmcs(cpu->hvf_fd, VMCS_GUEST_CR3, tss->cr3);
-+    wvmcs(cpu->hvf->fd, VMCS_GUEST_CR3, tss->cr3);
- 
-     env->eip = tss->eip;
-     env->eflags = tss->eflags | 2;
-@@ -111,11 +111,11 @@ static int task_switch_32(CPUState *cpu, x68_segment_selector tss_sel, x68_segme
- 
- void vmx_handle_task_switch(CPUState *cpu, x68_segment_selector tss_sel, int reason, bool gate_valid, uint8_t gate, uint64_t gate_type)
- {
--    uint64_t rip = rreg(cpu->hvf_fd, HV_X86_RIP);
-+    uint64_t rip = rreg(cpu->hvf->fd, HV_X86_RIP);
-     if (!gate_valid || (gate_type != VMCS_INTR_T_HWEXCEPTION &&
-                         gate_type != VMCS_INTR_T_HWINTR &&
-                         gate_type != VMCS_INTR_T_NMI)) {
--        int ins_len = rvmcs(cpu->hvf_fd, VMCS_EXIT_INSTRUCTION_LENGTH);
-+        int ins_len = rvmcs(cpu->hvf->fd, VMCS_EXIT_INSTRUCTION_LENGTH);
-         macvm_set_rip(cpu, rip + ins_len);
-         return;
-     }
-@@ -174,12 +174,12 @@ void vmx_handle_task_switch(CPUState *cpu, x68_segment_selector tss_sel, int rea
-         //ret = task_switch_16(cpu, tss_sel, old_tss_sel, old_tss_base, &next_tss_desc);
-         VM_PANIC("task_switch_16");
- 
--    macvm_set_cr0(cpu->hvf_fd, rvmcs(cpu->hvf_fd, VMCS_GUEST_CR0) | CR0_TS);
-+    macvm_set_cr0(cpu->hvf->fd, rvmcs(cpu->hvf->fd, VMCS_GUEST_CR0) | CR0_TS);
-     x86_segment_descriptor_to_vmx(cpu, tss_sel, &next_tss_desc, &vmx_seg);
-     vmx_write_segment_descriptor(cpu, &vmx_seg, R_TR);
- 
-     store_regs(cpu);
- 
--    hv_vcpu_invalidate_tlb(cpu->hvf_fd);
--    hv_vcpu_flush(cpu->hvf_fd);
-+    hv_vcpu_invalidate_tlb(cpu->hvf->fd);
-+    hv_vcpu_flush(cpu->hvf->fd);
- }
-diff --git a/target/i386/hvf/x86hvf.c b/target/i386/hvf/x86hvf.c
-index cc381307ab..28cfee4f60 100644
---- a/target/i386/hvf/x86hvf.c
-+++ b/target/i386/hvf/x86hvf.c
-@@ -80,7 +80,7 @@ void hvf_put_xsave(CPUState *cpu_state)
- 
-     x86_cpu_xsave_all_areas(X86_CPU(cpu_state), xsave);
- 
--    if (hv_vcpu_write_fpstate(cpu_state->hvf_fd, (void*)xsave, 4096)) {
-+    if (hv_vcpu_write_fpstate(cpu_state->hvf->fd, (void*)xsave, 4096)) {
-         abort();
-     }
- }
-@@ -90,19 +90,19 @@ void hvf_put_segments(CPUState *cpu_state)
-     CPUX86State *env = &X86_CPU(cpu_state)->env;
-     struct vmx_segment seg;
-     
--    wvmcs(cpu_state->hvf_fd, VMCS_GUEST_IDTR_LIMIT, env->idt.limit);
--    wvmcs(cpu_state->hvf_fd, VMCS_GUEST_IDTR_BASE, env->idt.base);
-+    wvmcs(cpu_state->hvf->fd, VMCS_GUEST_IDTR_LIMIT, env->idt.limit);
-+    wvmcs(cpu_state->hvf->fd, VMCS_GUEST_IDTR_BASE, env->idt.base);
- 
--    wvmcs(cpu_state->hvf_fd, VMCS_GUEST_GDTR_LIMIT, env->gdt.limit);
--    wvmcs(cpu_state->hvf_fd, VMCS_GUEST_GDTR_BASE, env->gdt.base);
-+    wvmcs(cpu_state->hvf->fd, VMCS_GUEST_GDTR_LIMIT, env->gdt.limit);
-+    wvmcs(cpu_state->hvf->fd, VMCS_GUEST_GDTR_BASE, env->gdt.base);
- 
--    /* wvmcs(cpu_state->hvf_fd, VMCS_GUEST_CR2, env->cr[2]); */
--    wvmcs(cpu_state->hvf_fd, VMCS_GUEST_CR3, env->cr[3]);
-+    /* wvmcs(cpu_state->hvf->fd, VMCS_GUEST_CR2, env->cr[2]); */
-+    wvmcs(cpu_state->hvf->fd, VMCS_GUEST_CR3, env->cr[3]);
-     vmx_update_tpr(cpu_state);
--    wvmcs(cpu_state->hvf_fd, VMCS_GUEST_IA32_EFER, env->efer);
-+    wvmcs(cpu_state->hvf->fd, VMCS_GUEST_IA32_EFER, env->efer);
- 
--    macvm_set_cr4(cpu_state->hvf_fd, env->cr[4]);
--    macvm_set_cr0(cpu_state->hvf_fd, env->cr[0]);
-+    macvm_set_cr4(cpu_state->hvf->fd, env->cr[4]);
-+    macvm_set_cr0(cpu_state->hvf->fd, env->cr[0]);
- 
-     hvf_set_segment(cpu_state, &seg, &env->segs[R_CS], false);
-     vmx_write_segment_descriptor(cpu_state, &seg, R_CS);
-@@ -128,31 +128,31 @@ void hvf_put_segments(CPUState *cpu_state)
-     hvf_set_segment(cpu_state, &seg, &env->ldt, false);
-     vmx_write_segment_descriptor(cpu_state, &seg, R_LDTR);
-     
--    hv_vcpu_flush(cpu_state->hvf_fd);
-+    hv_vcpu_flush(cpu_state->hvf->fd);
- }
-     
- void hvf_put_msrs(CPUState *cpu_state)
- {
-     CPUX86State *env = &X86_CPU(cpu_state)->env;
- 
--    hv_vcpu_write_msr(cpu_state->hvf_fd, MSR_IA32_SYSENTER_CS,
-+    hv_vcpu_write_msr(cpu_state->hvf->fd, MSR_IA32_SYSENTER_CS,
-                       env->sysenter_cs);
--    hv_vcpu_write_msr(cpu_state->hvf_fd, MSR_IA32_SYSENTER_ESP,
-+    hv_vcpu_write_msr(cpu_state->hvf->fd, MSR_IA32_SYSENTER_ESP,
-                       env->sysenter_esp);
--    hv_vcpu_write_msr(cpu_state->hvf_fd, MSR_IA32_SYSENTER_EIP,
-+    hv_vcpu_write_msr(cpu_state->hvf->fd, MSR_IA32_SYSENTER_EIP,
-                       env->sysenter_eip);
- 
--    hv_vcpu_write_msr(cpu_state->hvf_fd, MSR_STAR, env->star);
-+    hv_vcpu_write_msr(cpu_state->hvf->fd, MSR_STAR, env->star);
- 
- #ifdef TARGET_X86_64
--    hv_vcpu_write_msr(cpu_state->hvf_fd, MSR_CSTAR, env->cstar);
--    hv_vcpu_write_msr(cpu_state->hvf_fd, MSR_KERNELGSBASE, env->kernelgsbase);
--    hv_vcpu_write_msr(cpu_state->hvf_fd, MSR_FMASK, env->fmask);
--    hv_vcpu_write_msr(cpu_state->hvf_fd, MSR_LSTAR, env->lstar);
-+    hv_vcpu_write_msr(cpu_state->hvf->fd, MSR_CSTAR, env->cstar);
-+    hv_vcpu_write_msr(cpu_state->hvf->fd, MSR_KERNELGSBASE, env->kernelgsbase);
-+    hv_vcpu_write_msr(cpu_state->hvf->fd, MSR_FMASK, env->fmask);
-+    hv_vcpu_write_msr(cpu_state->hvf->fd, MSR_LSTAR, env->lstar);
- #endif
- 
--    hv_vcpu_write_msr(cpu_state->hvf_fd, MSR_GSBASE, env->segs[R_GS].base);
--    hv_vcpu_write_msr(cpu_state->hvf_fd, MSR_FSBASE, env->segs[R_FS].base);
-+    hv_vcpu_write_msr(cpu_state->hvf->fd, MSR_GSBASE, env->segs[R_GS].base);
-+    hv_vcpu_write_msr(cpu_state->hvf->fd, MSR_FSBASE, env->segs[R_FS].base);
- }
- 
- 
-@@ -162,7 +162,7 @@ void hvf_get_xsave(CPUState *cpu_state)
- 
-     xsave = X86_CPU(cpu_state)->env.xsave_buf;
- 
--    if (hv_vcpu_read_fpstate(cpu_state->hvf_fd, (void*)xsave, 4096)) {
-+    if (hv_vcpu_read_fpstate(cpu_state->hvf->fd, (void*)xsave, 4096)) {
-         abort();
-     }
- 
-@@ -201,17 +201,17 @@ void hvf_get_segments(CPUState *cpu_state)
-     vmx_read_segment_descriptor(cpu_state, &seg, R_LDTR);
-     hvf_get_segment(&env->ldt, &seg);
- 
--    env->idt.limit = rvmcs(cpu_state->hvf_fd, VMCS_GUEST_IDTR_LIMIT);
--    env->idt.base = rvmcs(cpu_state->hvf_fd, VMCS_GUEST_IDTR_BASE);
--    env->gdt.limit = rvmcs(cpu_state->hvf_fd, VMCS_GUEST_GDTR_LIMIT);
--    env->gdt.base = rvmcs(cpu_state->hvf_fd, VMCS_GUEST_GDTR_BASE);
-+    env->idt.limit = rvmcs(cpu_state->hvf->fd, VMCS_GUEST_IDTR_LIMIT);
-+    env->idt.base = rvmcs(cpu_state->hvf->fd, VMCS_GUEST_IDTR_BASE);
-+    env->gdt.limit = rvmcs(cpu_state->hvf->fd, VMCS_GUEST_GDTR_LIMIT);
-+    env->gdt.base = rvmcs(cpu_state->hvf->fd, VMCS_GUEST_GDTR_BASE);
- 
--    env->cr[0] = rvmcs(cpu_state->hvf_fd, VMCS_GUEST_CR0);
-+    env->cr[0] = rvmcs(cpu_state->hvf->fd, VMCS_GUEST_CR0);
-     env->cr[2] = 0;
--    env->cr[3] = rvmcs(cpu_state->hvf_fd, VMCS_GUEST_CR3);
--    env->cr[4] = rvmcs(cpu_state->hvf_fd, VMCS_GUEST_CR4);
-+    env->cr[3] = rvmcs(cpu_state->hvf->fd, VMCS_GUEST_CR3);
-+    env->cr[4] = rvmcs(cpu_state->hvf->fd, VMCS_GUEST_CR4);
-     
--    env->efer = rvmcs(cpu_state->hvf_fd, VMCS_GUEST_IA32_EFER);
-+    env->efer = rvmcs(cpu_state->hvf->fd, VMCS_GUEST_IA32_EFER);
- }
- 
- void hvf_get_msrs(CPUState *cpu_state)
-@@ -219,27 +219,27 @@ void hvf_get_msrs(CPUState *cpu_state)
-     CPUX86State *env = &X86_CPU(cpu_state)->env;
-     uint64_t tmp;
-     
--    hv_vcpu_read_msr(cpu_state->hvf_fd, MSR_IA32_SYSENTER_CS, &tmp);
-+    hv_vcpu_read_msr(cpu_state->hvf->fd, MSR_IA32_SYSENTER_CS, &tmp);
-     env->sysenter_cs = tmp;
-     
--    hv_vcpu_read_msr(cpu_state->hvf_fd, MSR_IA32_SYSENTER_ESP, &tmp);
-+    hv_vcpu_read_msr(cpu_state->hvf->fd, MSR_IA32_SYSENTER_ESP, &tmp);
-     env->sysenter_esp = tmp;
- 
--    hv_vcpu_read_msr(cpu_state->hvf_fd, MSR_IA32_SYSENTER_EIP, &tmp);
-+    hv_vcpu_read_msr(cpu_state->hvf->fd, MSR_IA32_SYSENTER_EIP, &tmp);
-     env->sysenter_eip = tmp;
- 
--    hv_vcpu_read_msr(cpu_state->hvf_fd, MSR_STAR, &env->star);
-+    hv_vcpu_read_msr(cpu_state->hvf->fd, MSR_STAR, &env->star);
- 
- #ifdef TARGET_X86_64
--    hv_vcpu_read_msr(cpu_state->hvf_fd, MSR_CSTAR, &env->cstar);
--    hv_vcpu_read_msr(cpu_state->hvf_fd, MSR_KERNELGSBASE, &env->kernelgsbase);
--    hv_vcpu_read_msr(cpu_state->hvf_fd, MSR_FMASK, &env->fmask);
--    hv_vcpu_read_msr(cpu_state->hvf_fd, MSR_LSTAR, &env->lstar);
-+    hv_vcpu_read_msr(cpu_state->hvf->fd, MSR_CSTAR, &env->cstar);
-+    hv_vcpu_read_msr(cpu_state->hvf->fd, MSR_KERNELGSBASE, &env->kernelgsbase);
-+    hv_vcpu_read_msr(cpu_state->hvf->fd, MSR_FMASK, &env->fmask);
-+    hv_vcpu_read_msr(cpu_state->hvf->fd, MSR_LSTAR, &env->lstar);
- #endif
- 
--    hv_vcpu_read_msr(cpu_state->hvf_fd, MSR_IA32_APICBASE, &tmp);
-+    hv_vcpu_read_msr(cpu_state->hvf->fd, MSR_IA32_APICBASE, &tmp);
-     
--    env->tsc = rdtscp() + rvmcs(cpu_state->hvf_fd, VMCS_TSC_OFFSET);
-+    env->tsc = rdtscp() + rvmcs(cpu_state->hvf->fd, VMCS_TSC_OFFSET);
- }
- 
- int hvf_put_registers(CPUState *cpu_state)
-@@ -247,26 +247,26 @@ int hvf_put_registers(CPUState *cpu_state)
-     X86CPU *x86cpu = X86_CPU(cpu_state);
-     CPUX86State *env = &x86cpu->env;
- 
--    wreg(cpu_state->hvf_fd, HV_X86_RAX, env->regs[R_EAX]);
--    wreg(cpu_state->hvf_fd, HV_X86_RBX, env->regs[R_EBX]);
--    wreg(cpu_state->hvf_fd, HV_X86_RCX, env->regs[R_ECX]);
--    wreg(cpu_state->hvf_fd, HV_X86_RDX, env->regs[R_EDX]);
--    wreg(cpu_state->hvf_fd, HV_X86_RBP, env->regs[R_EBP]);
--    wreg(cpu_state->hvf_fd, HV_X86_RSP, env->regs[R_ESP]);
--    wreg(cpu_state->hvf_fd, HV_X86_RSI, env->regs[R_ESI]);
--    wreg(cpu_state->hvf_fd, HV_X86_RDI, env->regs[R_EDI]);
--    wreg(cpu_state->hvf_fd, HV_X86_R8, env->regs[8]);
--    wreg(cpu_state->hvf_fd, HV_X86_R9, env->regs[9]);
--    wreg(cpu_state->hvf_fd, HV_X86_R10, env->regs[10]);
--    wreg(cpu_state->hvf_fd, HV_X86_R11, env->regs[11]);
--    wreg(cpu_state->hvf_fd, HV_X86_R12, env->regs[12]);
--    wreg(cpu_state->hvf_fd, HV_X86_R13, env->regs[13]);
--    wreg(cpu_state->hvf_fd, HV_X86_R14, env->regs[14]);
--    wreg(cpu_state->hvf_fd, HV_X86_R15, env->regs[15]);
--    wreg(cpu_state->hvf_fd, HV_X86_RFLAGS, env->eflags);
--    wreg(cpu_state->hvf_fd, HV_X86_RIP, env->eip);
-+    wreg(cpu_state->hvf->fd, HV_X86_RAX, env->regs[R_EAX]);
-+    wreg(cpu_state->hvf->fd, HV_X86_RBX, env->regs[R_EBX]);
-+    wreg(cpu_state->hvf->fd, HV_X86_RCX, env->regs[R_ECX]);
-+    wreg(cpu_state->hvf->fd, HV_X86_RDX, env->regs[R_EDX]);
-+    wreg(cpu_state->hvf->fd, HV_X86_RBP, env->regs[R_EBP]);
-+    wreg(cpu_state->hvf->fd, HV_X86_RSP, env->regs[R_ESP]);
-+    wreg(cpu_state->hvf->fd, HV_X86_RSI, env->regs[R_ESI]);
-+    wreg(cpu_state->hvf->fd, HV_X86_RDI, env->regs[R_EDI]);
-+    wreg(cpu_state->hvf->fd, HV_X86_R8, env->regs[8]);
-+    wreg(cpu_state->hvf->fd, HV_X86_R9, env->regs[9]);
-+    wreg(cpu_state->hvf->fd, HV_X86_R10, env->regs[10]);
-+    wreg(cpu_state->hvf->fd, HV_X86_R11, env->regs[11]);
-+    wreg(cpu_state->hvf->fd, HV_X86_R12, env->regs[12]);
-+    wreg(cpu_state->hvf->fd, HV_X86_R13, env->regs[13]);
-+    wreg(cpu_state->hvf->fd, HV_X86_R14, env->regs[14]);
-+    wreg(cpu_state->hvf->fd, HV_X86_R15, env->regs[15]);
-+    wreg(cpu_state->hvf->fd, HV_X86_RFLAGS, env->eflags);
-+    wreg(cpu_state->hvf->fd, HV_X86_RIP, env->eip);
-    
--    wreg(cpu_state->hvf_fd, HV_X86_XCR0, env->xcr0);
-+    wreg(cpu_state->hvf->fd, HV_X86_XCR0, env->xcr0);
-     
-     hvf_put_xsave(cpu_state);
-     
-@@ -274,14 +274,14 @@ int hvf_put_registers(CPUState *cpu_state)
-     
-     hvf_put_msrs(cpu_state);
-     
--    wreg(cpu_state->hvf_fd, HV_X86_DR0, env->dr[0]);
--    wreg(cpu_state->hvf_fd, HV_X86_DR1, env->dr[1]);
--    wreg(cpu_state->hvf_fd, HV_X86_DR2, env->dr[2]);
--    wreg(cpu_state->hvf_fd, HV_X86_DR3, env->dr[3]);
--    wreg(cpu_state->hvf_fd, HV_X86_DR4, env->dr[4]);
--    wreg(cpu_state->hvf_fd, HV_X86_DR5, env->dr[5]);
--    wreg(cpu_state->hvf_fd, HV_X86_DR6, env->dr[6]);
--    wreg(cpu_state->hvf_fd, HV_X86_DR7, env->dr[7]);
-+    wreg(cpu_state->hvf->fd, HV_X86_DR0, env->dr[0]);
-+    wreg(cpu_state->hvf->fd, HV_X86_DR1, env->dr[1]);
-+    wreg(cpu_state->hvf->fd, HV_X86_DR2, env->dr[2]);
-+    wreg(cpu_state->hvf->fd, HV_X86_DR3, env->dr[3]);
-+    wreg(cpu_state->hvf->fd, HV_X86_DR4, env->dr[4]);
-+    wreg(cpu_state->hvf->fd, HV_X86_DR5, env->dr[5]);
-+    wreg(cpu_state->hvf->fd, HV_X86_DR6, env->dr[6]);
-+    wreg(cpu_state->hvf->fd, HV_X86_DR7, env->dr[7]);
-     
-     return 0;
- }
-@@ -291,40 +291,40 @@ int hvf_get_registers(CPUState *cpu_state)
-     X86CPU *x86cpu = X86_CPU(cpu_state);
-     CPUX86State *env = &x86cpu->env;
- 
--    env->regs[R_EAX] = rreg(cpu_state->hvf_fd, HV_X86_RAX);
--    env->regs[R_EBX] = rreg(cpu_state->hvf_fd, HV_X86_RBX);
--    env->regs[R_ECX] = rreg(cpu_state->hvf_fd, HV_X86_RCX);
--    env->regs[R_EDX] = rreg(cpu_state->hvf_fd, HV_X86_RDX);
--    env->regs[R_EBP] = rreg(cpu_state->hvf_fd, HV_X86_RBP);
--    env->regs[R_ESP] = rreg(cpu_state->hvf_fd, HV_X86_RSP);
--    env->regs[R_ESI] = rreg(cpu_state->hvf_fd, HV_X86_RSI);
--    env->regs[R_EDI] = rreg(cpu_state->hvf_fd, HV_X86_RDI);
--    env->regs[8] = rreg(cpu_state->hvf_fd, HV_X86_R8);
--    env->regs[9] = rreg(cpu_state->hvf_fd, HV_X86_R9);
--    env->regs[10] = rreg(cpu_state->hvf_fd, HV_X86_R10);
--    env->regs[11] = rreg(cpu_state->hvf_fd, HV_X86_R11);
--    env->regs[12] = rreg(cpu_state->hvf_fd, HV_X86_R12);
--    env->regs[13] = rreg(cpu_state->hvf_fd, HV_X86_R13);
--    env->regs[14] = rreg(cpu_state->hvf_fd, HV_X86_R14);
--    env->regs[15] = rreg(cpu_state->hvf_fd, HV_X86_R15);
-+    env->regs[R_EAX] = rreg(cpu_state->hvf->fd, HV_X86_RAX);
-+    env->regs[R_EBX] = rreg(cpu_state->hvf->fd, HV_X86_RBX);
-+    env->regs[R_ECX] = rreg(cpu_state->hvf->fd, HV_X86_RCX);
-+    env->regs[R_EDX] = rreg(cpu_state->hvf->fd, HV_X86_RDX);
-+    env->regs[R_EBP] = rreg(cpu_state->hvf->fd, HV_X86_RBP);
-+    env->regs[R_ESP] = rreg(cpu_state->hvf->fd, HV_X86_RSP);
-+    env->regs[R_ESI] = rreg(cpu_state->hvf->fd, HV_X86_RSI);
-+    env->regs[R_EDI] = rreg(cpu_state->hvf->fd, HV_X86_RDI);
-+    env->regs[8] = rreg(cpu_state->hvf->fd, HV_X86_R8);
-+    env->regs[9] = rreg(cpu_state->hvf->fd, HV_X86_R9);
-+    env->regs[10] = rreg(cpu_state->hvf->fd, HV_X86_R10);
-+    env->regs[11] = rreg(cpu_state->hvf->fd, HV_X86_R11);
-+    env->regs[12] = rreg(cpu_state->hvf->fd, HV_X86_R12);
-+    env->regs[13] = rreg(cpu_state->hvf->fd, HV_X86_R13);
-+    env->regs[14] = rreg(cpu_state->hvf->fd, HV_X86_R14);
-+    env->regs[15] = rreg(cpu_state->hvf->fd, HV_X86_R15);
-     
--    env->eflags = rreg(cpu_state->hvf_fd, HV_X86_RFLAGS);
--    env->eip = rreg(cpu_state->hvf_fd, HV_X86_RIP);
-+    env->eflags = rreg(cpu_state->hvf->fd, HV_X86_RFLAGS);
-+    env->eip = rreg(cpu_state->hvf->fd, HV_X86_RIP);
-    
-     hvf_get_xsave(cpu_state);
--    env->xcr0 = rreg(cpu_state->hvf_fd, HV_X86_XCR0);
-+    env->xcr0 = rreg(cpu_state->hvf->fd, HV_X86_XCR0);
-     
-     hvf_get_segments(cpu_state);
-     hvf_get_msrs(cpu_state);
-     
--    env->dr[0] = rreg(cpu_state->hvf_fd, HV_X86_DR0);
--    env->dr[1] = rreg(cpu_state->hvf_fd, HV_X86_DR1);
--    env->dr[2] = rreg(cpu_state->hvf_fd, HV_X86_DR2);
--    env->dr[3] = rreg(cpu_state->hvf_fd, HV_X86_DR3);
--    env->dr[4] = rreg(cpu_state->hvf_fd, HV_X86_DR4);
--    env->dr[5] = rreg(cpu_state->hvf_fd, HV_X86_DR5);
--    env->dr[6] = rreg(cpu_state->hvf_fd, HV_X86_DR6);
--    env->dr[7] = rreg(cpu_state->hvf_fd, HV_X86_DR7);
-+    env->dr[0] = rreg(cpu_state->hvf->fd, HV_X86_DR0);
-+    env->dr[1] = rreg(cpu_state->hvf->fd, HV_X86_DR1);
-+    env->dr[2] = rreg(cpu_state->hvf->fd, HV_X86_DR2);
-+    env->dr[3] = rreg(cpu_state->hvf->fd, HV_X86_DR3);
-+    env->dr[4] = rreg(cpu_state->hvf->fd, HV_X86_DR4);
-+    env->dr[5] = rreg(cpu_state->hvf->fd, HV_X86_DR5);
-+    env->dr[6] = rreg(cpu_state->hvf->fd, HV_X86_DR6);
-+    env->dr[7] = rreg(cpu_state->hvf->fd, HV_X86_DR7);
-     
-     x86_update_hflags(env);
-     return 0;
-@@ -333,16 +333,16 @@ int hvf_get_registers(CPUState *cpu_state)
- static void vmx_set_int_window_exiting(CPUState *cpu)
- {
-      uint64_t val;
--     val = rvmcs(cpu->hvf_fd, VMCS_PRI_PROC_BASED_CTLS);
--     wvmcs(cpu->hvf_fd, VMCS_PRI_PROC_BASED_CTLS, val |
-+     val = rvmcs(cpu->hvf->fd, VMCS_PRI_PROC_BASED_CTLS);
-+     wvmcs(cpu->hvf->fd, VMCS_PRI_PROC_BASED_CTLS, val |
-              VMCS_PRI_PROC_BASED_CTLS_INT_WINDOW_EXITING);
- }
- 
- void vmx_clear_int_window_exiting(CPUState *cpu)
- {
-      uint64_t val;
--     val = rvmcs(cpu->hvf_fd, VMCS_PRI_PROC_BASED_CTLS);
--     wvmcs(cpu->hvf_fd, VMCS_PRI_PROC_BASED_CTLS, val &
-+     val = rvmcs(cpu->hvf->fd, VMCS_PRI_PROC_BASED_CTLS);
-+     wvmcs(cpu->hvf->fd, VMCS_PRI_PROC_BASED_CTLS, val &
-              ~VMCS_PRI_PROC_BASED_CTLS_INT_WINDOW_EXITING);
- }
- 
-@@ -378,7 +378,7 @@ bool hvf_inject_interrupts(CPUState *cpu_state)
-     uint64_t info = 0;
-     if (have_event) {
-         info = vector | intr_type | VMCS_INTR_VALID;
--        uint64_t reason = rvmcs(cpu_state->hvf_fd, VMCS_EXIT_REASON);
-+        uint64_t reason = rvmcs(cpu_state->hvf->fd, VMCS_EXIT_REASON);
-         if (env->nmi_injected && reason != EXIT_REASON_TASK_SWITCH) {
-             vmx_clear_nmi_blocking(cpu_state);
-         }
-@@ -387,17 +387,17 @@ bool hvf_inject_interrupts(CPUState *cpu_state)
-             info &= ~(1 << 12); /* clear undefined bit */
-             if (intr_type == VMCS_INTR_T_SWINTR ||
-                 intr_type == VMCS_INTR_T_SWEXCEPTION) {
--                wvmcs(cpu_state->hvf_fd, VMCS_ENTRY_INST_LENGTH, env->ins_len);
-+                wvmcs(cpu_state->hvf->fd, VMCS_ENTRY_INST_LENGTH, env->ins_len);
-             }
-             
-             if (env->has_error_code) {
--                wvmcs(cpu_state->hvf_fd, VMCS_ENTRY_EXCEPTION_ERROR,
-+                wvmcs(cpu_state->hvf->fd, VMCS_ENTRY_EXCEPTION_ERROR,
-                       env->error_code);
-                 /* Indicate that VMCS_ENTRY_EXCEPTION_ERROR is valid */
-                 info |= VMCS_INTR_DEL_ERRCODE;
-             }
-             /*printf("reinject  %lx err %d\n", info, err);*/
--            wvmcs(cpu_state->hvf_fd, VMCS_ENTRY_INTR_INFO, info);
-+            wvmcs(cpu_state->hvf->fd, VMCS_ENTRY_INTR_INFO, info);
-         };
-     }
- 
-@@ -405,7 +405,7 @@ bool hvf_inject_interrupts(CPUState *cpu_state)
-         if (!(env->hflags2 & HF2_NMI_MASK) && !(info & VMCS_INTR_VALID)) {
-             cpu_state->interrupt_request &= ~CPU_INTERRUPT_NMI;
-             info = VMCS_INTR_VALID | VMCS_INTR_T_NMI | EXCP02_NMI;
--            wvmcs(cpu_state->hvf_fd, VMCS_ENTRY_INTR_INFO, info);
-+            wvmcs(cpu_state->hvf->fd, VMCS_ENTRY_INTR_INFO, info);
-         } else {
-             vmx_set_nmi_window_exiting(cpu_state);
-         }
-@@ -417,7 +417,7 @@ bool hvf_inject_interrupts(CPUState *cpu_state)
-         int line = cpu_get_pic_interrupt(&x86cpu->env);
-         cpu_state->interrupt_request &= ~CPU_INTERRUPT_HARD;
-         if (line >= 0) {
--            wvmcs(cpu_state->hvf_fd, VMCS_ENTRY_INTR_INFO, line |
-+            wvmcs(cpu_state->hvf->fd, VMCS_ENTRY_INTR_INFO, line |
-                   VMCS_INTR_VALID | VMCS_INTR_T_HWINTR);
-         }
-     }
-@@ -433,7 +433,7 @@ int hvf_process_events(CPUState *cpu_state)
-     X86CPU *cpu = X86_CPU(cpu_state);
-     CPUX86State *env = &cpu->env;
- 
--    env->eflags = rreg(cpu_state->hvf_fd, HV_X86_RFLAGS);
-+    env->eflags = rreg(cpu_state->hvf->fd, HV_X86_RFLAGS);
- 
-     if (cpu_state->interrupt_request & CPU_INTERRUPT_INIT) {
-         cpu_synchronize_state(cpu_state);
+Andrew Jones (3):
+  device_tree: Add qemu_fdt_add_path
+  hw/arm/virt: Add cpu-map to device tree
+  hw/arm/virt-acpi-build: Generate PPTT table
+
+Yanan Wang (6):
+  hw/arm/virt: Disable cpu topology support on older machine types
+  hw/arm/virt: Initialize the present cpu members
+  hw/arm/virt-acpi-build: Use possible cpus in generation of DSDT
+  hw/arm/virt-acpi-build: Use possible cpus in generation of MADT
+  hw/acpi/aml-build: Add Processor hierarchy node structure
+  hw/arm/virt: Add separate -smp parsing function for ARM machines
+
+ hw/acpi/aml-build.c          |  26 ++++++
+ hw/arm/virt-acpi-build.c     |  99 ++++++++++++++++++++---
+ hw/arm/virt.c                | 148 ++++++++++++++++++++++++++++++++++-
+ include/hw/acpi/aml-build.h  |   4 +
+ include/hw/arm/virt.h        |   2 +
+ include/sysemu/device_tree.h |   1 +
+ qemu-options.hx              |   4 +
+ softmmu/device_tree.c        |  44 ++++++++++-
+ 8 files changed, 316 insertions(+), 12 deletions(-)
+
 -- 
-2.30.1 (Apple Git-130)
+2.19.1
+

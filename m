@@ -1,60 +1,60 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp651204lfm;
-        Sun, 16 May 2021 12:59:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyLKhdqLBoEMXCOfKsdim4NyxTuKrOjT83W1n7PRUPLTfa4ujzjH8Xat0vad9MiufJ6jNT9
-X-Received: by 2002:a05:6e02:20c1:: with SMTP id 1mr47158616ilq.71.1621195192273;
-        Sun, 16 May 2021 12:59:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621195192; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp652385lfm;
+        Sun, 16 May 2021 13:01:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxJLRzdKooQXiKJeY8amO89yt0XxSoiZPe2UdnPDDGzrn7lrGvDdMEhF7GBnm+PdlPGNMGx
+X-Received: by 2002:a9f:2d95:: with SMTP id v21mr50644563uaj.121.1621195319668;
+        Sun, 16 May 2021 13:01:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621195319; cv=none;
         d=google.com; s=arc-20160816;
-        b=bmUGFzaT5LbDPYU+PhUCfRFcwFEHK4UFz74XEsn637ZYrISngIDqW15D5B6Nmi3L8E
-         PLm7A0cG4lLrKhMRqScdB+W3G5Gb2Su6o6ssn7rLsdHSnbv46HChoTVANz53CWMw0MhK
-         dYI14LAhVkU+GDyEZeziUFO/nZWfcVzaNtZeCziDX15UYG7cKOInyHQ5eiOlAGfa/u3g
-         +XyjC3Zf5+gnaSPhCD2HdK1J3Ei9V0cVHK//mTTXCy6yhqDXYjrAO6bi4JIvT7UNNunA
-         O7sJtOaym39e7m8UZb7SwrpL+SD11lCBViGN73FbKMfYcWvnYGO+7u3xbaem5W8E+Fx8
-         ScEw==
+        b=u5nZr8Bz5lV6ADA00Sci+B8HJVpyUPy7TE9ncgGUmlhwnGyduJEW8fjueVoLSUHlL5
+         socidbWXaXEq4wLgu3ZWp+NIOErbtOk3o0SKHZyu5vSbci8SVcxkMNW8DfH0CUbwQiS8
+         emrZVGyS4Q8wy7BargoBDma2xw/Drfhd2YvitL8/W0iD24tDBAFGoIDekF3pyUGIOcEg
+         xmGflmBr0KfdbxTIVCr7siVJgZh4kgF/xl5qT95VvHRID93ovf2jjAfUNf/Fdrx5WIk3
+         qA8OPKS+okH53AAnlj7g+tnaW9ThR70Ff9kGoIz4R35CtvyB8OLhej8tBU7OPDBjJzIA
+         d91Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=CBxAF2xfTjGTLxPPRII5xkAV6b0fE4LW4tF2+jafI+4=;
-        b=aDdanAG3ZYcgTpfPyvESR8baw6kum8ZTwxd4fXiIZXNJqrFdzCWmr4UinVu6Bk21VM
-         UDr/dHb8Lau0SwBAcsso00GdcDmw6a55UTrbpZTbCkfACmB8laqPini9wyqHnJOY2TtZ
-         hfMcBnbduCKKUYIe/5E+wc+4qZn28MpD4O9x1/PE5cs6CBRZBkLP1eICIhqmikO1hV88
-         o8/IAe9yxt/uTHvm02Zb0lG9GRAnxUYJ8EgmVk1AEolNqQSBAVNP2AI22bOCjB/UI/G1
-         BVOVoEfQauy5rNGFNmK3Zm5KcIJvrdoWCqdyTvKytBYAJEmXQ9CCOlgTumbh0AyBl+H6
-         K4dg==
+        bh=mnK7UDgZa7Fjx4wy9M1TgwtD5DTH0mciMY23zjyhrMo=;
+        b=ZVlpKAXCRAGzWSYD+/PglWADJQQiM2cqVL+1XqasKn+Pf2V+fpxVT744dTEzdsnuFR
+         kQcKXrMbc2hJjeKAFudjgWbKApbaPSsrPBiVT4fBxqC4KPBY7b7Dlr+OfzFvauGCsXjb
+         qds7kCBI8pg/mqgstH59Mx2vQLR8y5FUw0FoF7JHBccAERsOrNjexJhtxeddwjEs8eQV
+         njwrAr8c2wRdjc+JZIRA/imY8cRhS4Tz1K5sqaYWSrbIy3B679yjIMObowBq3eGlbVz/
+         kyC8MdpL1LKDiB2585A0PE8GStMfecABhiQQvyY4jVcbizbhyIC8hAQcfEUudkXtPkT/
+         wg4g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k6si12088826ion.34.2021.05.16.12.59.52
+        by mx.google.com with ESMTPS id x1si6387125uac.259.2021.05.16.13.01.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 16 May 2021 12:59:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 16 May 2021 13:01:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:55212 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:60424 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1liMvX-0003Rx-JD
-	for alex.bennee@linaro.org; Sun, 16 May 2021 15:59:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44326)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1liMxa-000799-Rg
+	for alex.bennee@linaro.org; Sun, 16 May 2021 16:01:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44344)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1liMuo-0001x9-21; Sun, 16 May 2021 15:59:06 -0400
-Received: from mail.csgraf.de ([85.25.223.15]:45404 helo=zulu616.server4you.de)
+ id 1liMuo-00020N-S4; Sun, 16 May 2021 15:59:06 -0400
+Received: from mail.csgraf.de ([85.25.223.15]:45334 helo=zulu616.server4you.de)
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <agraf@csgraf.de>)
- id 1liMum-0008GH-3U; Sun, 16 May 2021 15:59:05 -0400
+ id 1liMui-0008DS-0D; Sun, 16 May 2021 15:59:06 -0400
 Received: from localhost.localdomain
  (dynamic-095-118-089-019.95.118.pool.telefonica.de [95.118.89.19])
- by csgraf.de (Postfix) with ESMTPSA id EA4EB60806A2;
- Sun, 16 May 2021 21:59:00 +0200 (CEST)
+ by csgraf.de (Postfix) with ESMTPSA id 5D7DC6080684;
+ Sun, 16 May 2021 21:58:58 +0200 (CEST)
 From: Alexander Graf <agraf@csgraf.de>
 To: QEMU Developers <qemu-devel@nongnu.org>
-Subject: [PATCH v7 07/19] hvf: Split out common code on vcpu init and destroy
-Date: Sun, 16 May 2021 21:58:43 +0200
-Message-Id: <20210516195855.28869-8-agraf@csgraf.de>
+Subject: [PATCH v7 03/19] hvf: Move cpu functions into common directory
+Date: Sun, 16 May 2021 21:58:39 +0200
+Message-Id: <20210516195855.28869-4-agraf@csgraf.de>
 X-Mailer: git-send-email 2.30.1 (Apple Git-130)
 In-Reply-To: <20210516195855.28869-1-agraf@csgraf.de>
 References: <20210516195855.28869-1-agraf@csgraf.de>
@@ -68,173 +68,750 @@ X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Eduardo Habkost <ehabkost@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Cameron Esfahani <dirty@apple.com>, Roman Bolshakov <r.bolshakov@yadro.com>,
- qemu-arm <qemu-arm@nongnu.org>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Frank Yang <lfy@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Collingbourne <pcc@google.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vJFDXBfPCzFV
+ qemu-arm <qemu-arm@nongnu.org>, Frank Yang <lfy@google.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Peter Collingbourne <pcc@google.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: wYExUYE+igmj
 
 Until now, Hypervisor.framework has only been available on x86_64 systems.
 With Apple Silicon shipping now, it extends its reach to aarch64. To
 prepare for support for multiple architectures, let's start moving common
 code out into its own accel directory.
 
-This patch splits the vcpu init and destroy functions into a generic and
-an architecture specific portion. This also allows us to move the generic
-functions into the generic hvf code, removing exported functions.
+This patch moves CPU and memory operations over. While at it, make sure
+the code is consumable on non-i386 systems.
 
 Signed-off-by: Alexander Graf <agraf@csgraf.de>
 ---
- accel/hvf/hvf-accel-ops.c | 30 ++++++++++++++++++++++++++++++
- accel/hvf/hvf-accel-ops.h |  2 --
- include/sysemu/hvf_int.h  |  2 ++
- target/i386/hvf/hvf.c     | 23 ++---------------------
- 4 files changed, 34 insertions(+), 23 deletions(-)
+ accel/hvf/hvf-accel-ops.c  | 308 ++++++++++++++++++++++++++++++++++++-
+ include/sysemu/hvf_int.h   |   4 +
+ target/i386/hvf/hvf-i386.h |   2 -
+ target/i386/hvf/hvf.c      | 302 ------------------------------------
+ target/i386/hvf/x86hvf.h   |   2 -
+ 5 files changed, 311 insertions(+), 307 deletions(-)
 
 diff --git a/accel/hvf/hvf-accel-ops.c b/accel/hvf/hvf-accel-ops.c
-index 7370fcfba0..b262efd8b6 100644
+index cbaad238e0..c2136dfbb8 100644
 --- a/accel/hvf/hvf-accel-ops.c
 +++ b/accel/hvf/hvf-accel-ops.c
-@@ -363,6 +363,36 @@ static void hvf_type_init(void)
+@@ -50,13 +50,319 @@
+ #include "qemu/osdep.h"
+ #include "qemu/error-report.h"
+ #include "qemu/main-loop.h"
++#include "exec/address-spaces.h"
++#include "exec/exec-all.h"
++#include "sysemu/cpus.h"
+ #include "sysemu/hvf.h"
++#include "sysemu/hvf_int.h"
+ #include "sysemu/runstate.h"
+-#include "target/i386/cpu.h"
+ #include "qemu/guest-random.h"
  
- type_init(hvf_type_init);
+ #include "hvf-accel-ops.h"
  
-+static void hvf_vcpu_destroy(CPUState *cpu)
++HVFState *hvf_state;
++
++/* Memory slots */
++
++hvf_slot *hvf_find_overlap_slot(uint64_t start, uint64_t size)
 +{
-+    hv_return_t ret = hv_vcpu_destroy(cpu->hvf_fd);
++    hvf_slot *slot;
++    int x;
++    for (x = 0; x < hvf_state->num_slots; ++x) {
++        slot = &hvf_state->slots[x];
++        if (slot->size && start < (slot->start + slot->size) &&
++            (start + size) > slot->start) {
++            return slot;
++        }
++    }
++    return NULL;
++}
++
++struct mac_slot {
++    int present;
++    uint64_t size;
++    uint64_t gpa_start;
++    uint64_t gva;
++};
++
++struct mac_slot mac_slots[32];
++
++static int do_hvf_set_memory(hvf_slot *slot, hv_memory_flags_t flags)
++{
++    struct mac_slot *macslot;
++    hv_return_t ret;
++
++    macslot = &mac_slots[slot->slot_id];
++
++    if (macslot->present) {
++        if (macslot->size != slot->size) {
++            macslot->present = 0;
++            ret = hv_vm_unmap(macslot->gpa_start, macslot->size);
++            assert_hvf_ok(ret);
++        }
++    }
++
++    if (!slot->size) {
++        return 0;
++    }
++
++    macslot->present = 1;
++    macslot->gpa_start = slot->start;
++    macslot->size = slot->size;
++    ret = hv_vm_map((hv_uvaddr_t)slot->mem, slot->start, slot->size, flags);
++    assert_hvf_ok(ret);
++    return 0;
++}
++
++void hvf_set_phys_mem(MemoryRegionSection *section, bool add)
++{
++    hvf_slot *mem;
++    MemoryRegion *area = section->mr;
++    bool writeable = !area->readonly && !area->rom_device;
++    hv_memory_flags_t flags;
++
++    if (!memory_region_is_ram(area)) {
++        if (writeable) {
++            return;
++        } else if (!memory_region_is_romd(area)) {
++            /*
++             * If the memory device is not in romd_mode, then we actually want
++             * to remove the hvf memory slot so all accesses will trap.
++             */
++             add = false;
++        }
++    }
++
++    mem = hvf_find_overlap_slot(
++            section->offset_within_address_space,
++            int128_get64(section->size));
++
++    if (mem && add) {
++        if (mem->size == int128_get64(section->size) &&
++            mem->start == section->offset_within_address_space &&
++            mem->mem == (memory_region_get_ram_ptr(area) +
++            section->offset_within_region)) {
++            return; /* Same region was attempted to register, go away. */
++        }
++    }
++
++    /* Region needs to be reset. set the size to 0 and remap it. */
++    if (mem) {
++        mem->size = 0;
++        if (do_hvf_set_memory(mem, 0)) {
++            error_report("Failed to reset overlapping slot");
++            abort();
++        }
++    }
++
++    if (!add) {
++        return;
++    }
++
++    if (area->readonly ||
++        (!memory_region_is_ram(area) && memory_region_is_romd(area))) {
++        flags = HV_MEMORY_READ | HV_MEMORY_EXEC;
++    } else {
++        flags = HV_MEMORY_READ | HV_MEMORY_WRITE | HV_MEMORY_EXEC;
++    }
++
++    /* Now make a new slot. */
++    int x;
++
++    for (x = 0; x < hvf_state->num_slots; ++x) {
++        mem = &hvf_state->slots[x];
++        if (!mem->size) {
++            break;
++        }
++    }
++
++    if (x == hvf_state->num_slots) {
++        error_report("No free slots");
++        abort();
++    }
++
++    mem->size = int128_get64(section->size);
++    mem->mem = memory_region_get_ram_ptr(area) + section->offset_within_region;
++    mem->start = section->offset_within_address_space;
++    mem->region = area;
++
++    if (do_hvf_set_memory(mem, flags)) {
++        error_report("Error registering new memory slot");
++        abort();
++    }
++}
++
++static void do_hvf_cpu_synchronize_state(CPUState *cpu, run_on_cpu_data arg)
++{
++    if (!cpu->vcpu_dirty) {
++        hvf_get_registers(cpu);
++        cpu->vcpu_dirty = true;
++    }
++}
++
++void hvf_cpu_synchronize_state(CPUState *cpu)
++{
++    if (!cpu->vcpu_dirty) {
++        run_on_cpu(cpu, do_hvf_cpu_synchronize_state, RUN_ON_CPU_NULL);
++    }
++}
++
++static void do_hvf_cpu_synchronize_post_reset(CPUState *cpu,
++                                              run_on_cpu_data arg)
++{
++    hvf_put_registers(cpu);
++    cpu->vcpu_dirty = false;
++}
++
++void hvf_cpu_synchronize_post_reset(CPUState *cpu)
++{
++    run_on_cpu(cpu, do_hvf_cpu_synchronize_post_reset, RUN_ON_CPU_NULL);
++}
++
++static void do_hvf_cpu_synchronize_post_init(CPUState *cpu,
++                                             run_on_cpu_data arg)
++{
++    hvf_put_registers(cpu);
++    cpu->vcpu_dirty = false;
++}
++
++void hvf_cpu_synchronize_post_init(CPUState *cpu)
++{
++    run_on_cpu(cpu, do_hvf_cpu_synchronize_post_init, RUN_ON_CPU_NULL);
++}
++
++static void do_hvf_cpu_synchronize_pre_loadvm(CPUState *cpu,
++                                              run_on_cpu_data arg)
++{
++    cpu->vcpu_dirty = true;
++}
++
++void hvf_cpu_synchronize_pre_loadvm(CPUState *cpu)
++{
++    run_on_cpu(cpu, do_hvf_cpu_synchronize_pre_loadvm, RUN_ON_CPU_NULL);
++}
++
++static void hvf_set_dirty_tracking(MemoryRegionSection *section, bool on)
++{
++    hvf_slot *slot;
++
++    slot = hvf_find_overlap_slot(
++            section->offset_within_address_space,
++            int128_get64(section->size));
++
++    /* protect region against writes; begin tracking it */
++    if (on) {
++        slot->flags |= HVF_SLOT_LOG;
++        hv_vm_protect((hv_gpaddr_t)slot->start, (size_t)slot->size,
++                      HV_MEMORY_READ);
++    /* stop tracking region*/
++    } else {
++        slot->flags &= ~HVF_SLOT_LOG;
++        hv_vm_protect((hv_gpaddr_t)slot->start, (size_t)slot->size,
++                      HV_MEMORY_READ | HV_MEMORY_WRITE);
++    }
++}
++
++static void hvf_log_start(MemoryListener *listener,
++                          MemoryRegionSection *section, int old, int new)
++{
++    if (old != 0) {
++        return;
++    }
++
++    hvf_set_dirty_tracking(section, 1);
++}
++
++static void hvf_log_stop(MemoryListener *listener,
++                         MemoryRegionSection *section, int old, int new)
++{
++    if (new != 0) {
++        return;
++    }
++
++    hvf_set_dirty_tracking(section, 0);
++}
++
++static void hvf_log_sync(MemoryListener *listener,
++                         MemoryRegionSection *section)
++{
++    /*
++     * sync of dirty pages is handled elsewhere; just make sure we keep
++     * tracking the region.
++     */
++    hvf_set_dirty_tracking(section, 1);
++}
++
++static void hvf_region_add(MemoryListener *listener,
++                           MemoryRegionSection *section)
++{
++    hvf_set_phys_mem(section, true);
++}
++
++static void hvf_region_del(MemoryListener *listener,
++                           MemoryRegionSection *section)
++{
++    hvf_set_phys_mem(section, false);
++}
++
++static MemoryListener hvf_memory_listener = {
++    .priority = 10,
++    .region_add = hvf_region_add,
++    .region_del = hvf_region_del,
++    .log_start = hvf_log_start,
++    .log_stop = hvf_log_stop,
++    .log_sync = hvf_log_sync,
++};
++
++static void dummy_signal(int sig)
++{
++}
++
++bool hvf_allowed;
++
++static int hvf_accel_init(MachineState *ms)
++{
++    int x;
++    hv_return_t ret;
++    HVFState *s;
++
++    ret = hv_vm_create(HV_VM_DEFAULT);
 +    assert_hvf_ok(ret);
 +
-+    hvf_arch_vcpu_destroy(cpu);
++    s = g_new0(HVFState, 1);
++
++    s->num_slots = 32;
++    for (x = 0; x < s->num_slots; ++x) {
++        s->slots[x].size = 0;
++        s->slots[x].slot_id = x;
++    }
++
++    hvf_state = s;
++    memory_listener_register(&hvf_memory_listener, &address_space_memory);
++    return 0;
 +}
 +
-+static int hvf_init_vcpu(CPUState *cpu)
++static void hvf_accel_class_init(ObjectClass *oc, void *data)
 +{
-+    int r;
-+
-+    /* init cpu signals */
-+    sigset_t set;
-+    struct sigaction sigact;
-+
-+    memset(&sigact, 0, sizeof(sigact));
-+    sigact.sa_handler = dummy_signal;
-+    sigaction(SIG_IPI, &sigact, NULL);
-+
-+    pthread_sigmask(SIG_BLOCK, NULL, &set);
-+    sigdelset(&set, SIG_IPI);
-+
-+    r = hv_vcpu_create((hv_vcpuid_t *)&cpu->hvf_fd, HV_VCPU_DEFAULT);
-+    cpu->vcpu_dirty = 1;
-+    assert_hvf_ok(r);
-+
-+    return hvf_arch_init_vcpu(cpu);
++    AccelClass *ac = ACCEL_CLASS(oc);
++    ac->name = "HVF";
++    ac->init_machine = hvf_accel_init;
++    ac->allowed = &hvf_allowed;
 +}
++
++static const TypeInfo hvf_accel_type = {
++    .name = TYPE_HVF_ACCEL,
++    .parent = TYPE_ACCEL,
++    .class_init = hvf_accel_class_init,
++};
++
++static void hvf_type_init(void)
++{
++    type_register_static(&hvf_accel_type);
++}
++
++type_init(hvf_type_init);
 +
  /*
   * The HVF-specific vCPU thread function. This one should only run when the host
   * CPU supports the VMX "unrestricted guest" feature.
-diff --git a/accel/hvf/hvf-accel-ops.h b/accel/hvf/hvf-accel-ops.h
-index 8f992da168..09fcf22067 100644
---- a/accel/hvf/hvf-accel-ops.h
-+++ b/accel/hvf/hvf-accel-ops.h
-@@ -12,12 +12,10 @@
- 
- #include "sysemu/cpus.h"
- 
--int hvf_init_vcpu(CPUState *);
- int hvf_vcpu_exec(CPUState *);
- void hvf_cpu_synchronize_state(CPUState *);
- void hvf_cpu_synchronize_post_reset(CPUState *);
- void hvf_cpu_synchronize_post_init(CPUState *);
- void hvf_cpu_synchronize_pre_loadvm(CPUState *);
--void hvf_vcpu_destroy(CPUState *);
- 
- #endif /* HVF_CPUS_H */
 diff --git a/include/sysemu/hvf_int.h b/include/sysemu/hvf_int.h
-index d15fa3302a..80c1a8f946 100644
+index 3deb4cfacc..4c657b054c 100644
 --- a/include/sysemu/hvf_int.h
 +++ b/include/sysemu/hvf_int.h
-@@ -44,6 +44,8 @@ struct HVFState {
+@@ -13,6 +13,10 @@
+ 
+ #include <Hypervisor/hv.h>
+ 
++void hvf_set_phys_mem(MemoryRegionSection *, bool);
+ void assert_hvf_ok(hv_return_t ret);
++hvf_slot *hvf_find_overlap_slot(uint64_t, uint64_t);
++int hvf_put_registers(CPUState *);
++int hvf_get_registers(CPUState *);
+ 
+ #endif
+diff --git a/target/i386/hvf/hvf-i386.h b/target/i386/hvf/hvf-i386.h
+index 59cfca8875..94e5c788c4 100644
+--- a/target/i386/hvf/hvf-i386.h
++++ b/target/i386/hvf/hvf-i386.h
+@@ -51,9 +51,7 @@ struct HVFState {
+ };
  extern HVFState *hvf_state;
  
- void assert_hvf_ok(hv_return_t ret);
-+int hvf_arch_init_vcpu(CPUState *cpu);
-+void hvf_arch_vcpu_destroy(CPUState *cpu);
- hvf_slot *hvf_find_overlap_slot(uint64_t, uint64_t);
- int hvf_put_registers(CPUState *);
- int hvf_get_registers(CPUState *);
+-void hvf_set_phys_mem(MemoryRegionSection *, bool);
+ void hvf_handle_io(CPUArchState *, uint16_t, void *, int, int, int);
+-hvf_slot *hvf_find_overlap_slot(uint64_t, uint64_t);
+ 
+ #ifdef NEED_CPU_H
+ /* Functions exported to host specific mode */
 diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
-index 100ede2a4d..c7132ee370 100644
+index 32f42f1592..100ede2a4d 100644
 --- a/target/i386/hvf/hvf.c
 +++ b/target/i386/hvf/hvf.c
-@@ -158,14 +158,12 @@ static bool ept_emulation_fault(hvf_slot *slot, uint64_t gpa, uint64_t ept_qual)
+@@ -75,137 +75,6 @@
+ 
+ #include "hvf-accel-ops.h"
+ 
+-HVFState *hvf_state;
+-
+-/* Memory slots */
+-hvf_slot *hvf_find_overlap_slot(uint64_t start, uint64_t size)
+-{
+-    hvf_slot *slot;
+-    int x;
+-    for (x = 0; x < hvf_state->num_slots; ++x) {
+-        slot = &hvf_state->slots[x];
+-        if (slot->size && start < (slot->start + slot->size) &&
+-            (start + size) > slot->start) {
+-            return slot;
+-        }
+-    }
+-    return NULL;
+-}
+-
+-struct mac_slot {
+-    int present;
+-    uint64_t size;
+-    uint64_t gpa_start;
+-    uint64_t gva;
+-};
+-
+-struct mac_slot mac_slots[32];
+-
+-static int do_hvf_set_memory(hvf_slot *slot, hv_memory_flags_t flags)
+-{
+-    struct mac_slot *macslot;
+-    hv_return_t ret;
+-
+-    macslot = &mac_slots[slot->slot_id];
+-
+-    if (macslot->present) {
+-        if (macslot->size != slot->size) {
+-            macslot->present = 0;
+-            ret = hv_vm_unmap(macslot->gpa_start, macslot->size);
+-            assert_hvf_ok(ret);
+-        }
+-    }
+-
+-    if (!slot->size) {
+-        return 0;
+-    }
+-
+-    macslot->present = 1;
+-    macslot->gpa_start = slot->start;
+-    macslot->size = slot->size;
+-    ret = hv_vm_map((hv_uvaddr_t)slot->mem, slot->start, slot->size, flags);
+-    assert_hvf_ok(ret);
+-    return 0;
+-}
+-
+-void hvf_set_phys_mem(MemoryRegionSection *section, bool add)
+-{
+-    hvf_slot *mem;
+-    MemoryRegion *area = section->mr;
+-    bool writeable = !area->readonly && !area->rom_device;
+-    hv_memory_flags_t flags;
+-
+-    if (!memory_region_is_ram(area)) {
+-        if (writeable) {
+-            return;
+-        } else if (!memory_region_is_romd(area)) {
+-            /*
+-             * If the memory device is not in romd_mode, then we actually want
+-             * to remove the hvf memory slot so all accesses will trap.
+-             */
+-             add = false;
+-        }
+-    }
+-
+-    mem = hvf_find_overlap_slot(
+-            section->offset_within_address_space,
+-            int128_get64(section->size));
+-
+-    if (mem && add) {
+-        if (mem->size == int128_get64(section->size) &&
+-            mem->start == section->offset_within_address_space &&
+-            mem->mem == (memory_region_get_ram_ptr(area) +
+-            section->offset_within_region)) {
+-            return; /* Same region was attempted to register, go away. */
+-        }
+-    }
+-
+-    /* Region needs to be reset. set the size to 0 and remap it. */
+-    if (mem) {
+-        mem->size = 0;
+-        if (do_hvf_set_memory(mem, 0)) {
+-            error_report("Failed to reset overlapping slot");
+-            abort();
+-        }
+-    }
+-
+-    if (!add) {
+-        return;
+-    }
+-
+-    if (area->readonly ||
+-        (!memory_region_is_ram(area) && memory_region_is_romd(area))) {
+-        flags = HV_MEMORY_READ | HV_MEMORY_EXEC;
+-    } else {
+-        flags = HV_MEMORY_READ | HV_MEMORY_WRITE | HV_MEMORY_EXEC;
+-    }
+-
+-    /* Now make a new slot. */
+-    int x;
+-
+-    for (x = 0; x < hvf_state->num_slots; ++x) {
+-        mem = &hvf_state->slots[x];
+-        if (!mem->size) {
+-            break;
+-        }
+-    }
+-
+-    if (x == hvf_state->num_slots) {
+-        error_report("No free slots");
+-        abort();
+-    }
+-
+-    mem->size = int128_get64(section->size);
+-    mem->mem = memory_region_get_ram_ptr(area) + section->offset_within_region;
+-    mem->start = section->offset_within_address_space;
+-    mem->region = area;
+-
+-    if (do_hvf_set_memory(mem, flags)) {
+-        error_report("Error registering new memory slot");
+-        abort();
+-    }
+-}
+-
+ void vmx_update_tpr(CPUState *cpu)
+ {
+     /* TODO: need integrate APIC handling */
+@@ -245,56 +114,6 @@ void hvf_handle_io(CPUArchState *env, uint16_t port, void *buffer,
+     }
+ }
+ 
+-static void do_hvf_cpu_synchronize_state(CPUState *cpu, run_on_cpu_data arg)
+-{
+-    if (!cpu->vcpu_dirty) {
+-        hvf_get_registers(cpu);
+-        cpu->vcpu_dirty = true;
+-    }
+-}
+-
+-void hvf_cpu_synchronize_state(CPUState *cpu)
+-{
+-    if (!cpu->vcpu_dirty) {
+-        run_on_cpu(cpu, do_hvf_cpu_synchronize_state, RUN_ON_CPU_NULL);
+-    }
+-}
+-
+-static void do_hvf_cpu_synchronize_post_reset(CPUState *cpu,
+-                                              run_on_cpu_data arg)
+-{
+-    hvf_put_registers(cpu);
+-    cpu->vcpu_dirty = false;
+-}
+-
+-void hvf_cpu_synchronize_post_reset(CPUState *cpu)
+-{
+-    run_on_cpu(cpu, do_hvf_cpu_synchronize_post_reset, RUN_ON_CPU_NULL);
+-}
+-
+-static void do_hvf_cpu_synchronize_post_init(CPUState *cpu,
+-                                             run_on_cpu_data arg)
+-{
+-    hvf_put_registers(cpu);
+-    cpu->vcpu_dirty = false;
+-}
+-
+-void hvf_cpu_synchronize_post_init(CPUState *cpu)
+-{
+-    run_on_cpu(cpu, do_hvf_cpu_synchronize_post_init, RUN_ON_CPU_NULL);
+-}
+-
+-static void do_hvf_cpu_synchronize_pre_loadvm(CPUState *cpu,
+-                                              run_on_cpu_data arg)
+-{
+-    cpu->vcpu_dirty = true;
+-}
+-
+-void hvf_cpu_synchronize_pre_loadvm(CPUState *cpu)
+-{
+-    run_on_cpu(cpu, do_hvf_cpu_synchronize_pre_loadvm, RUN_ON_CPU_NULL);
+-}
+-
+ static bool ept_emulation_fault(hvf_slot *slot, uint64_t gpa, uint64_t ept_qual)
+ {
+     int read, write;
+@@ -339,78 +158,6 @@ static bool ept_emulation_fault(hvf_slot *slot, uint64_t gpa, uint64_t ept_qual)
      return false;
  }
  
--void hvf_vcpu_destroy(CPUState *cpu)
-+void hvf_arch_vcpu_destroy(CPUState *cpu)
+-static void hvf_set_dirty_tracking(MemoryRegionSection *section, bool on)
+-{
+-    hvf_slot *slot;
+-
+-    slot = hvf_find_overlap_slot(
+-            section->offset_within_address_space,
+-            int128_get64(section->size));
+-
+-    /* protect region against writes; begin tracking it */
+-    if (on) {
+-        slot->flags |= HVF_SLOT_LOG;
+-        hv_vm_protect((hv_gpaddr_t)slot->start, (size_t)slot->size,
+-                      HV_MEMORY_READ);
+-    /* stop tracking region*/
+-    } else {
+-        slot->flags &= ~HVF_SLOT_LOG;
+-        hv_vm_protect((hv_gpaddr_t)slot->start, (size_t)slot->size,
+-                      HV_MEMORY_READ | HV_MEMORY_WRITE);
+-    }
+-}
+-
+-static void hvf_log_start(MemoryListener *listener,
+-                          MemoryRegionSection *section, int old, int new)
+-{
+-    if (old != 0) {
+-        return;
+-    }
+-
+-    hvf_set_dirty_tracking(section, 1);
+-}
+-
+-static void hvf_log_stop(MemoryListener *listener,
+-                         MemoryRegionSection *section, int old, int new)
+-{
+-    if (new != 0) {
+-        return;
+-    }
+-
+-    hvf_set_dirty_tracking(section, 0);
+-}
+-
+-static void hvf_log_sync(MemoryListener *listener,
+-                         MemoryRegionSection *section)
+-{
+-    /*
+-     * sync of dirty pages is handled elsewhere; just make sure we keep
+-     * tracking the region.
+-     */
+-    hvf_set_dirty_tracking(section, 1);
+-}
+-
+-static void hvf_region_add(MemoryListener *listener,
+-                           MemoryRegionSection *section)
+-{
+-    hvf_set_phys_mem(section, true);
+-}
+-
+-static void hvf_region_del(MemoryListener *listener,
+-                           MemoryRegionSection *section)
+-{
+-    hvf_set_phys_mem(section, false);
+-}
+-
+-static MemoryListener hvf_memory_listener = {
+-    .priority = 10,
+-    .region_add = hvf_region_add,
+-    .region_del = hvf_region_del,
+-    .log_start = hvf_log_start,
+-    .log_stop = hvf_log_stop,
+-    .log_sync = hvf_log_sync,
+-};
+-
+ void hvf_vcpu_destroy(CPUState *cpu)
  {
      X86CPU *x86_cpu = X86_CPU(cpu);
-     CPUX86State *env = &x86_cpu->env;
- 
--    hv_return_t ret = hv_vcpu_destroy((hv_vcpuid_t)cpu->hvf_fd);
-     g_free(env->hvf_mmio_buf);
--    assert_hvf_ok(ret);
+@@ -421,10 +168,6 @@ void hvf_vcpu_destroy(CPUState *cpu)
+     assert_hvf_ok(ret);
  }
  
+-static void dummy_signal(int sig)
+-{
+-}
+-
  static void init_tsc_freq(CPUX86State *env)
-@@ -210,23 +208,10 @@ static inline bool apic_bus_freq_is_known(CPUX86State *env)
-     return env->apic_bus_freq != 0;
- }
- 
--int hvf_init_vcpu(CPUState *cpu)
-+int hvf_arch_init_vcpu(CPUState *cpu)
  {
--
-     X86CPU *x86cpu = X86_CPU(cpu);
-     CPUX86State *env = &x86cpu->env;
--    int r;
--
--    /* init cpu signals */
--    sigset_t set;
--    struct sigaction sigact;
--
--    memset(&sigact, 0, sizeof(sigact));
--    sigact.sa_handler = dummy_signal;
--    sigaction(SIG_IPI, &sigact, NULL);
--
--    pthread_sigmask(SIG_BLOCK, NULL, &set);
--    sigdelset(&set, SIG_IPI);
+     size_t length;
+@@ -931,48 +674,3 @@ int hvf_vcpu_exec(CPUState *cpu)
  
-     init_emu();
-     init_decoder();
-@@ -243,10 +228,6 @@ int hvf_init_vcpu(CPUState *cpu)
-         }
-     }
- 
--    r = hv_vcpu_create((hv_vcpuid_t *)&cpu->hvf_fd, HV_VCPU_DEFAULT);
--    cpu->vcpu_dirty = 1;
--    assert_hvf_ok(r);
+     return ret;
+ }
 -
-     if (hv_vmx_read_capability(HV_VMX_CAP_PINBASED,
-         &hvf_state->hvf_caps->vmx_cap_pinbased)) {
-         abort();
+-bool hvf_allowed;
+-
+-static int hvf_accel_init(MachineState *ms)
+-{
+-    int x;
+-    hv_return_t ret;
+-    HVFState *s;
+-
+-    ret = hv_vm_create(HV_VM_DEFAULT);
+-    assert_hvf_ok(ret);
+-
+-    s = g_new0(HVFState, 1);
+- 
+-    s->num_slots = 32;
+-    for (x = 0; x < s->num_slots; ++x) {
+-        s->slots[x].size = 0;
+-        s->slots[x].slot_id = x;
+-    }
+-  
+-    hvf_state = s;
+-    memory_listener_register(&hvf_memory_listener, &address_space_memory);
+-    return 0;
+-}
+-
+-static void hvf_accel_class_init(ObjectClass *oc, void *data)
+-{
+-    AccelClass *ac = ACCEL_CLASS(oc);
+-    ac->name = "HVF";
+-    ac->init_machine = hvf_accel_init;
+-    ac->allowed = &hvf_allowed;
+-}
+-
+-static const TypeInfo hvf_accel_type = {
+-    .name = TYPE_HVF_ACCEL,
+-    .parent = TYPE_ACCEL,
+-    .class_init = hvf_accel_class_init,
+-};
+-
+-static void hvf_type_init(void)
+-{
+-    type_register_static(&hvf_accel_type);
+-}
+-
+-type_init(hvf_type_init);
+diff --git a/target/i386/hvf/x86hvf.h b/target/i386/hvf/x86hvf.h
+index 635ab0f34e..99ed8d608d 100644
+--- a/target/i386/hvf/x86hvf.h
++++ b/target/i386/hvf/x86hvf.h
+@@ -21,8 +21,6 @@
+ #include "x86_descr.h"
+ 
+ int hvf_process_events(CPUState *);
+-int hvf_put_registers(CPUState *);
+-int hvf_get_registers(CPUState *);
+ bool hvf_inject_interrupts(CPUState *);
+ void hvf_set_segment(struct CPUState *cpu, struct vmx_segment *vmx_seg,
+                      SegmentCache *qseg, bool is_tr);
 -- 
 2.30.1 (Apple Git-130)
 

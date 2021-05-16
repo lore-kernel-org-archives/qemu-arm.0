@@ -1,105 +1,113 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp540279lfm;
-        Sun, 16 May 2021 09:13:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwBPDUd6DjwZZsplXTsP0xC/s/A0Ztr1PmRjXhSAV2kcLyy1agI+i5Vtdt+nceB+IoQR2tv
-X-Received: by 2002:a05:6602:2bc3:: with SMTP id s3mr35836838iov.12.1621181590992;
-        Sun, 16 May 2021 09:13:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621181590; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp568241lfm;
+        Sun, 16 May 2021 10:06:12 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwgQ61asSMnQf8Od9iV/B7dVXLUmmPDkO8nud6MCwORb9TunavJRARFrKyz1pl3Lyqw4akJ
+X-Received: by 2002:a05:6102:30a6:: with SMTP id y6mr31821304vsd.53.1621184771891;
+        Sun, 16 May 2021 10:06:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621184771; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y7nO9M94nih/31+5Up5tEjJogG96688hdN6qXi8MhbVmC2BewQtvN1qd8IFMk6Xgp+
-         szIP0+rDQyaB0UBqC9gyLmxd380j07eCXdzoCHjVXspm0H+3voPnsVmnx7p0zErA+HGm
-         1yzzBzA3gtZUXy6fHlRQBSep5vekOfXn/k1Sz0/Y8OX9eJJRxcccF75OyfDuILLBQ+Yn
-         12mT0goHpCdKs3TenJMm3Ru66rnNRXxOG8ArLri52a0Ke7qKNHdQ+/I6Ii3vonwJARDU
-         rhI81pRmLX8lolqh1Pugljs5ye+8QA6lD3LXfKzqr+pXlH8QCSSJRj6+yXooK6VKUdry
-         8PUQ==
+        b=aksAU6DNY8HROvNhnI3fo9wjmkxs+9HQGRh5WLeu0ZU7yCs9W3yhXpobh2uupSwUPQ
+         SH2lLCbNFtePrkGb1QBk2NiXBagpE7BnVJyHFowQ4BcKupw4qKqlhaYTHypFbKGTnZp/
+         upd7+dwFXDVtQBU39qHLmQEngfg1bvjN7eM8NfppmRa/UEnlJSZd6D3LbcwzOra++b/n
+         j9x3nglRPwfk1Yyhoaqm8fu312lunB/SavycsFjdVHEn2+pmrWrYUI6MG/33ROdZH068
+         pUW6L2NCPHg5dWIMezL7ZehKanCD3TVSiFDA3DKMCAgIC1ad3qWMPToZbAwtYH8jp0jv
+         UmxQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=XoynUOz4+iGXyLuogrv4pHtuE2PMOYr63gAjwTVd2q4=;
-        b=WDMI0DyFgrzP65ydxu+ZPWnd43BijTJ/sE9jXYM56ViwGI4uBGPzoAractxe9g6MsD
-         Bfg8u2JfBmJxLNJGZzcKZOyfvmnpme22VbaXuIgLDym0U7O+QKxgSJQRGXBQrR+OPRI8
-         toaF4m9BdnzrS1baqqtHW3rzZeRjYs+RcRL2mVwgqCl8djUdu0CR7hW+7zFbQZNAd+iV
-         zUtJzujcjgK20itqTfLBfH+lWM5hieu7hW7/Hwugf/zfAX+2slYJmv+TTo35l3326Oo2
-         qfPu9TwmsCjEOYRSfRo5d1obGwE+nPBKuSWDjjZISSVVqAg08HfroL3I0s3jqhNLauxo
-         hKKA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=F6GWTDNVPwLi8KzHyu5P6sLj6Ryz9PtZMWjQtp08sls=;
+        b=IfWjoUbFmBMKkKyb04iGkUOQ0wznxXY+LtD+JRJ7nWdVkoCO1RWH9wLU169akA/TVs
+         VAjuwmihJLXfGusBvKx2oFMhwkrltUbdT0GyKnYUI/KFp+G+JBC3SlXGrMYjBC3+eYkr
+         /EKLvxXxnfzos9RiAXjuqIiSSb3UyS7z2NojLONv2ngUloKTHALrGP5tAT+seWG3MeAV
+         tFOdG7HrTSekmkLXswVyNMJerOgMoAwswX1Ywyrv2eXmFKiEcaQiHmq6YCOsBSAkzDnl
+         dYjRDuM15fCQ66nfGZ8X2s4I96Tv4U2Qs0ujoldN/P38MJa+axpCPSOUvL3ETtI5QbHs
+         3COg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="BA/GkLx4";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="aD/GpyZa";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i14si15056289ilv.131.2021.05.16.09.13.10
+        by mx.google.com with ESMTPS id h14si4213638vsf.261.2021.05.16.10.06.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 16 May 2021 09:13:10 -0700 (PDT)
+        Sun, 16 May 2021 10:06:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="BA/GkLx4";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="aD/GpyZa";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:44680 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:38392 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1liJOA-0000xq-89
-	for alex.bennee@linaro.org; Sun, 16 May 2021 12:13:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56734)
+	id 1liKDT-00032f-7I
+	for alex.bennee@linaro.org; Sun, 16 May 2021 13:06:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36396)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1liJO1-0000wb-QG
- for qemu-arm@nongnu.org; Sun, 16 May 2021 12:13:01 -0400
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c]:47076)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1liKD6-00030b-VY; Sun, 16 May 2021 13:05:52 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b]:39490)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1liJO0-00057o-Av
- for qemu-arm@nongnu.org; Sun, 16 May 2021 12:13:01 -0400
-Received: by mail-ej1-x62c.google.com with SMTP id u21so5551126ejo.13
- for <qemu-arm@nongnu.org>; Sun, 16 May 2021 09:12:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=XoynUOz4+iGXyLuogrv4pHtuE2PMOYr63gAjwTVd2q4=;
- b=BA/GkLx4jnQQ+zgByJrsCweIkoElvRx0DRrTU3WPTN+0whSnZiS4s89bsRISrk9rIL
- /5RtoMxty21ubEqESgoCICf55UHpbTlpKhRN5Xo2mmbGX68Mm6r41LASOlApV023v/R2
- X0dBnDz5uWD427v3JCWnkdzkaikbMT6BIN0LP4N+s/ZE3xKSEMRGnjic1v2ZMTznTSG5
- SDValxT9wwatQuIWwIBOmZpnPF0Y07treflNoV4xHzQo8FrT2z4Sc5+sG6yv0YctZxFW
- 1RMqGXyFSlDiGqD/7NOUUQJYxNZnDqqbjdiAbN6Jcyhj5kzmPyTY0GLN3HYSsM0JnJlC
- i3vg==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1liKD4-0005pI-Ve; Sun, 16 May 2021 13:05:48 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id v12so4014150wrq.6;
+ Sun, 16 May 2021 10:05:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=F6GWTDNVPwLi8KzHyu5P6sLj6Ryz9PtZMWjQtp08sls=;
+ b=aD/GpyZaF1TH+k5USvdl5dRb24LZT1GIECZoI3J9t6j2eLQAPKVnaP7lbc83GO9zTH
+ 1jBb9QveTljQzRPkniBKhjcqZGZ6g7hVEkYOg373tozfgtLsZf7FSMxfAdNS53O0FfwZ
+ 0uoWCofpgXnhMjrvcTayEcZUK6r5znYIhB3qp0fv98LrmEvFwGNYuHS2ib4aLWmbdMsa
+ n6DaQDgFg8/224pZnO+G6U3NIxEscwAS46wDHVlr+9vb/OpVkPWdKdTVY+AYHtojL6Ty
+ erd7W5PBkx0RFXl9Nv/g0QI2wiFObbq7Qw75VNBEDUNrftfc2zp5sGhjM0T8TMbwUZKj
+ VGVg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=XoynUOz4+iGXyLuogrv4pHtuE2PMOYr63gAjwTVd2q4=;
- b=KR1xDde4JlWWThgBRecUP4lYiDnNQ4m5LmSZ0zjMrq3zo2d9U0c2FpmvJja7MWlobP
- nP2AbcU88dgTqeCHx5nJNi7vQE4A1mpd3sua9nhpl3Hkhudbrn3QfwfOMwx7lVbGX3oZ
- xplGNTmVDgwZUf7PGG/XvmaoitOEaqz+hzYhV5w6TSLhOro3EbKGMRsZbvJFRQNv/Fo7
- vvs8MbzY71UA/gR3anNIwLVJ7AGdxp5duBQnfb6+hfig8aBEEHwp3aP6QVdzWfnrJW/5
- paV6cnhqOOj8HWlOCyVpYHcvBHknFIUR0lKpMdvLhF2rxoxE+LTs7xqCupia2+rmgQ5R
- sH2Q==
-X-Gm-Message-State: AOAM532wlB5e+OXJ7DLbVDtLQbdOLfkSyMZcll6KuzcCJkJDcwNu6xiw
- YGRCL10JmMRiAbVVA6lXHcIMmFqAjiYBEZAGSjm2+A==
-X-Received: by 2002:a17:906:9bd6:: with SMTP id
- de22mr9580474ejc.382.1621181578707; 
- Sun, 16 May 2021 09:12:58 -0700 (PDT)
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=F6GWTDNVPwLi8KzHyu5P6sLj6Ryz9PtZMWjQtp08sls=;
+ b=Nuo+3ox8x1UbXIlvZJiqHOckCzjjRfJ2BVtZ7U0gzGrAr6XMZbCdtScwLA18vwaywD
+ 8fdSpN0Mk3L4XovJPls/MEaLUzdxPAsufp7FNC4YpPYDe9I0/PeyFFNpgyhTIxxpeDQ5
+ 1bMRchSgYuPNxzo7LIlr5lf8k7dnDFe6aAiCl1g41qQ4e6DQUE7NZxG3ZexMmSIMcb67
+ ae2mKPkXacA8HHM9Sk0sz3Zd3Z4WkJeYOOy5TnaY5rIxM0hobmLPz5matK9ebd18F/bG
+ czKZK3AJBWY/2X9uFA9qYGYStJSNUdRaT9wJvyi63rgXgiA0EQ3CtNTKLtffNzvuyTj9
+ JaoA==
+X-Gm-Message-State: AOAM531b3psRvfDHXEGoiZMaVDWbIt9cPvvqPwlE+XR74KBQldDWfr8N
+ haXullChQdEkZVRa8bu8W+I=
+X-Received: by 2002:a5d:5301:: with SMTP id e1mr27521779wrv.36.1621184742096; 
+ Sun, 16 May 2021 10:05:42 -0700 (PDT)
+Received: from [192.168.1.36] (31.red-83-51-215.dynamicip.rima-tde.net.
+ [83.51.215.31])
+ by smtp.gmail.com with ESMTPSA id f11sm17884608wmq.41.2021.05.16.10.05.40
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 16 May 2021 10:05:41 -0700 (PDT)
+Subject: Re: [PATCH] disas/libvixl: Protect C system header for C++ compiler
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+References: <20210515183531.372925-1-f4bug@amsat.org>
+ <6e79e8b4-32fd-da09-239a-0ebd085612f5@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <7b7a9f93-68fa-80b6-c276-e2554b55c739@amsat.org>
+Date: Sun, 16 May 2021 19:05:35 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-References: <20210120224444.71840-1-agraf@csgraf.de>
- <20210120224444.71840-12-agraf@csgraf.de>
- <CAFEAcA-021U3ehg_jnAHtako-A-GRxqwjqZWotroumUxfPhdGA@mail.gmail.com>
- <223c7fbc-3a07-e97c-04eb-ef38ec3d67fe@csgraf.de>
-In-Reply-To: <223c7fbc-3a07-e97c-04eb-ef38ec3d67fe@csgraf.de>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sun, 16 May 2021 17:12:44 +0100
-Message-ID: <CAFEAcA9zdJeNgeSihuXt4Cc9-yNDDE+Apkx-S8PBwnFidnxoRA@mail.gmail.com>
-Subject: Re: [PATCH v6 11/11] hvf: arm: Implement -cpu host
-To: Alexander Graf <agraf@csgraf.de>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+In-Reply-To: <6e79e8b4-32fd-da09-239a-0ebd085612f5@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42b.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -112,34 +120,97 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <ehabkost@redhat.com>,
+Cc: Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, Cameron Esfahani <dirty@apple.com>,
- Roman Bolshakov <r.bolshakov@yadro.com>, qemu-arm <qemu-arm@nongnu.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Frank Yang <lfy@google.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Peter Collingbourne <pcc@google.com>
+ =?UTF-8?Q?Daniel_P_=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: I7jOT7ghqZDF
+X-TUID: iloZJ81XvqC2
 
-On Sun, 16 May 2021 at 12:16, Alexander Graf <agraf@csgraf.de> wrote:
->
->
-> On 28.01.21 17:55, Peter Maydell wrote:
-> > Nicer to follow the KVM approach of only doing this once
-> > and caching the results in arm_host_cpu_features, so that
-> > for a many-cores VM you don't do it once per core.
->
->
-> I tend to disagree. This scales nicely with the number of cores you have
-> in the system and it's blazingly fast :). I would rather like to
-> optimize for simplicity here.
+On 5/16/21 2:46 PM, Thomas Huth wrote:
+> On 15/05/2021 20.35, Philippe Mathieu-Daudé wrote:
+>> When selecting an ARM target on Debian unstable, we get:
+>>
+>>    Compiling C++ object libcommon.fa.p/disas_libvixl_vixl_utils.cc.o
+>>    FAILED: libcommon.fa.p/disas_libvixl_vixl_utils.cc.o
+>>    c++ -Ilibcommon.fa.p -I. -I.. [...] -o
+>> libcommon.fa.p/disas_libvixl_vixl_utils.cc.o -c
+>> ../disas/libvixl/vixl/utils.cc
+>>    In file included from /home/philmd/qemu/disas/libvixl/vixl/utils.h:30,
+>>                     from ../disas/libvixl/vixl/utils.cc:27:
+>>    /usr/include/string.h:36:43: error: missing binary operator before
+>> token "("
+>>       36 | #if defined __cplusplus && (__GNUC_PREREQ (4, 4) \
+>>          |                                           ^
+>>    /usr/include/string.h:53:62: error: missing binary operator before
+>> token "("
+>>       53 | #if defined __USE_MISC || defined __USE_XOPEN ||
+>> __GLIBC_USE (ISOC2X)
+>>          |                                                              ^
+>>    /usr/include/string.h:165:21: error: missing binary operator before
+>> token "("
+>>      165 |      || __GLIBC_USE (LIB_EXT2) || __GLIBC_USE (ISOC2X))
+>>          |                     ^
+>>    /usr/include/string.h:174:43: error: missing binary operator before
+>> token "("
+>>      174 | #if defined __USE_XOPEN2K8 || __GLIBC_USE (LIB_EXT2) ||
+>> __GLIBC_USE (ISOC2X)
+>>          |                                           ^
+>>    /usr/include/string.h:492:19: error: missing binary operator before
+>> token "("
+>>      492 | #if __GNUC_PREREQ (3,4)
+>>          |                   ^
+>>
+>> Similarly to commit 875df03b221 ('osdep: protect qemu/osdep.h with
+>> extern "C"'), guard the <string.h> system header with 'extern "C"'.
+>>
+>> Relevant information from the host:
+>>
+>>    $ lsb_release -d
+>>    Description:    Debian GNU/Linux 11 (bullseye)
+>>    $ gcc --version
+>>    gcc (Debian 10.2.1-6) 10.2.1 20210110
+>>    $ dpkg -S /usr/include/string.h
+>>    libc6-dev: /usr/include/string.h
+>>    $ apt-cache show libc6-dev
+>>    Package: libc6-dev
+>>    Version: 2.31-11
+>>
+>> Buglink: https://bugs.launchpad.net/qemu/+bug/1914870
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>> RFC because I've no idea about C++, but this fixes the build for me.
+>>
+>> Quick reproducer:
+>>
+>>    $ ../configure --disable-tools --target-list=aarch64-linux-user
+>>
+>> Cc: Paolo Bonzini <pbonzini@redhat.com>
+>> Cc: Daniel P. Berrangé <berrange@redhat.com>
+>> Cc: Peter Maydell <peter.maydell@linaro.org>
+>> Cc: Richard Henderson <richard.henderson@linaro.org>
+>> Cc: Eric Blake <eblake@redhat.com>
+>> Cc: Thomas Huth <thuth@redhat.com>
+>> ---
+>>   disas/libvixl/vixl/utils.h | 4 +++-
+>>   1 file changed, 3 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/disas/libvixl/vixl/utils.h b/disas/libvixl/vixl/utils.h
+>> index 5ab134e240a..fc28d7456c1 100644
+>> --- a/disas/libvixl/vixl/utils.h
+>> +++ b/disas/libvixl/vixl/utils.h
+>> @@ -27,8 +27,10 @@
+>>   #ifndef VIXL_UTILS_H
+>>   #define VIXL_UTILS_H
+>>   -#include <string.h>
+>>   #include <cmath>
+>> +extern "C" {
+>> +#include <string.h>
+>> +}
+> 
+> Could you please try to backport the upstream patch instead:
+> 
+> https://git.linaro.org/arm/vixl.git/commit/?id=78973f258039f6e96
 
-How does "do something once per vCPU" scale better than
-"do something once when QEMU starts" ??
-
-I would prefer to optimise for "don't be unnecessarily
-different from how we do stuff with KVM", please.
-
-thanks
--- PMM
+Yes it works, thanks!

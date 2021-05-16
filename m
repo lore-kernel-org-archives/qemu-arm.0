@@ -1,60 +1,60 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp652776lfm;
-        Sun, 16 May 2021 13:02:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy0PtEH6mQ1ASeZVCPWwMncj3nRkssBe80/OLn3D8jiBZ7RRnYBU76tbHJZvL2C+wfBTLBI
-X-Received: by 2002:a05:6602:221a:: with SMTP id n26mr28548522ion.205.1621195357697;
-        Sun, 16 May 2021 13:02:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621195357; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp652879lfm;
+        Sun, 16 May 2021 13:02:47 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw3tz7m+Xody58MXIrfc63S4olKNl0SM/aKgjij8iMNZFnpMeXsGz67oSJN+67Uh/Rs23T8
+X-Received: by 2002:a92:c7a6:: with SMTP id f6mr49286457ilk.17.1621195367362;
+        Sun, 16 May 2021 13:02:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621195367; cv=none;
         d=google.com; s=arc-20160816;
-        b=lmM340vMo07zRbPMQGvaE6BgZ/lE4YRV6a/0hjOTpyylab76rEAN3jevsGrabaTG8T
-         nhRUM5tpYCTschkOZfuvvQ1cXZhNgME1tIyIIAK8DV3v0KEtXJG7RO6lh2GaOjzJINZ7
-         EjbY//AI5fwE2VNEY2zwpQGTF0Sii/ymwcUL4Hb1vdfozbWfqb4DgD6eP7HvPhN3qv5v
-         HKQbVIiD/Ae2r4MOsnXRD8mAOMay+mlVEbw8JrKUt8OilEdqXIrLZ8+sEWmb+4N8sNGC
-         3q8Vu7yen9XlxjLnXsEDJZJThpMxJdkO5Tj4dKErgQKTYRRIWPl2b67aS50DeGo8SAlH
-         D/CQ==
+        b=KzLJ7CSoNMhsP1zw5zP82RsRwmsgsHK1o4O19VREg5a20wGBotVN3KJOyNII/x39eZ
+         5XDhp+jMoqNUYVoKx8Zcwke4NG9hOF+P0t5SzpBSm/zWsrqT7FX7/0tb24GhAYf52DQU
+         lM/08XEybAEhg9b0srf6q9XEFgi3f2HhOoxVCeE6x4NCXVmvnneqlS7o4QaTQTANdBvm
+         ls2Bk+jTc8hzn1//hmNVBzn51wEPoXR3YDPZZ2hEErG4dxrTnDmCsEr4bUOq7jTkJfrB
+         f18j8445tJifJ4ZxVFaOPLjg86JjrFt99yCLZFEP36GqVdB9vrMxPpuS8AGm+Be2hNhc
+         mZpQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=b8xR6b1TLxWZchZF3CnbdIFxuGe4SMi0PceqZeZvdhI=;
-        b=PFFp5S9PW10NaJzK/vabH31AYP+f8vCv4Bmd+sV1brBYXAfQz8PqnKyv6sR40gpo0y
-         1xY43jgtxBnFEgokWwHqNgVHwEkOXYS8MMFWCJSve/OVztOG6IjnmxVrQJomBvuXdZsm
-         hSnuoOP6sqhaOS+fMiPWOILB3Jy/fh9om0dbtUh9HsslOMPNka1CTCb1oi92ufUbGs5X
-         QvoPyOMxDVFkf4HtQLK3KrCadWOgd3QJoSuwkAHy9K6gSp1rarXbxT5Up+bGC5neWsOm
-         jAGitf6+NH5UeHL4HJbPPRsDuzgf6ttC3u0XV04WCVRgmX7A557zzL8DiwFrPv0YLP68
-         tN6Q==
+        bh=MKUZbfnb+VdxhRXyUXd8IBLsuNfiCX7o0fZIUBSIjlE=;
+        b=w+GgJQrelLYpABOR8ltUJE6/HVWZ+SqlFnPPIIcvkTVOZxdltAXWRJ2nJrsEgLjVX0
+         I4g2aBarhXn/lOtGd93qx23FiTFKDG0mcK7TZvg2bNqBG3kfrpH6czt1Y5g6GyJAk4FC
+         jHD8HofoHiWsd8xSEHyN9HZ0ugEe5sZE1V9fTRcPMBUJHYkglatBcMWwt5xrYzEfPDhd
+         Ihb6ES+m74jh2IKCyaw0EHxH7KXUkMy7AyOxfW6OE4O4fFx0bQ/Ehzo4kWRw7cNVvOYE
+         21SX/o9oheIBqNAiXgpCMgGQNdzAkT5slulMbrNQafEMgezCuE7BGc3iDKLjH1uZoc8V
+         62oQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i5si13262043iow.84.2021.05.16.13.02.37
+        by mx.google.com with ESMTPS id o1si16395638jat.48.2021.05.16.13.02.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 16 May 2021 13:02:37 -0700 (PDT)
+        Sun, 16 May 2021 13:02:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34354 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34696 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1liMyD-00008G-0M
-	for alex.bennee@linaro.org; Sun, 16 May 2021 16:02:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44318)
+	id 1liMyM-0000NP-M3
+	for alex.bennee@linaro.org; Sun, 16 May 2021 16:02:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44342)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1liMun-0001vh-Mc; Sun, 16 May 2021 15:59:05 -0400
-Received: from mail.csgraf.de ([85.25.223.15]:45392 helo=zulu616.server4you.de)
+ id 1liMuo-0001zJ-Jg; Sun, 16 May 2021 15:59:06 -0400
+Received: from mail.csgraf.de ([85.25.223.15]:45390 helo=zulu616.server4you.de)
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <agraf@csgraf.de>)
- id 1liMul-0008Fz-PM; Sun, 16 May 2021 15:59:05 -0400
+ id 1liMul-0008Fx-Lk; Sun, 16 May 2021 15:59:06 -0400
 Received: from localhost.localdomain
  (dynamic-095-118-089-019.95.118.pool.telefonica.de [95.118.89.19])
- by csgraf.de (Postfix) with ESMTPSA id 4CF9F60806A1;
- Sun, 16 May 2021 21:59:00 +0200 (CEST)
+ by csgraf.de (Postfix) with ESMTPSA id A7D3960806A0;
+ Sun, 16 May 2021 21:58:59 +0200 (CEST)
 From: Alexander Graf <agraf@csgraf.de>
 To: QEMU Developers <qemu-devel@nongnu.org>
-Subject: [PATCH v7 06/19] hvf: Remove use of hv_uvaddr_t and hv_gpaddr_t
-Date: Sun, 16 May 2021 21:58:42 +0200
-Message-Id: <20210516195855.28869-7-agraf@csgraf.de>
+Subject: [PATCH v7 05/19] hvf: Make hvf_set_phys_mem() static
+Date: Sun, 16 May 2021 21:58:41 +0200
+Message-Id: <20210516195855.28869-6-agraf@csgraf.de>
 X-Mailer: git-send-email 2.30.1 (Apple Git-130)
 In-Reply-To: <20210516195855.28869-1-agraf@csgraf.de>
 References: <20210516195855.28869-1-agraf@csgraf.de>
@@ -89,44 +89,42 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Peter Collingbourne <pcc@google.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: c61ObRkMpeXd
+X-TUID: bf0uZEyaNtk5
 
-The ARM version of Hypervisor.framework no longer defines these two
-types, so let's just revert to standard ones.
+The hvf_set_phys_mem() function is only called within the same file.
+Make it static.
 
 Signed-off-by: Alexander Graf <agraf@csgraf.de>
 ---
- accel/hvf/hvf-accel-ops.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ accel/hvf/hvf-accel-ops.c | 2 +-
+ include/sysemu/hvf_int.h  | 1 -
+ 2 files changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/accel/hvf/hvf-accel-ops.c b/accel/hvf/hvf-accel-ops.c
-index 5bec7b4d6d..7370fcfba0 100644
+index c2136dfbb8..5bec7b4d6d 100644
 --- a/accel/hvf/hvf-accel-ops.c
 +++ b/accel/hvf/hvf-accel-ops.c
-@@ -109,7 +109,7 @@ static int do_hvf_set_memory(hvf_slot *slot, hv_memory_flags_t flags)
-     macslot->present = 1;
-     macslot->gpa_start = slot->start;
-     macslot->size = slot->size;
--    ret = hv_vm_map((hv_uvaddr_t)slot->mem, slot->start, slot->size, flags);
-+    ret = hv_vm_map(slot->mem, slot->start, slot->size, flags);
-     assert_hvf_ok(ret);
+@@ -114,7 +114,7 @@ static int do_hvf_set_memory(hvf_slot *slot, hv_memory_flags_t flags)
      return 0;
  }
-@@ -253,12 +253,12 @@ static void hvf_set_dirty_tracking(MemoryRegionSection *section, bool on)
-     /* protect region against writes; begin tracking it */
-     if (on) {
-         slot->flags |= HVF_SLOT_LOG;
--        hv_vm_protect((hv_gpaddr_t)slot->start, (size_t)slot->size,
-+        hv_vm_protect((uintptr_t)slot->start, (size_t)slot->size,
-                       HV_MEMORY_READ);
-     /* stop tracking region*/
-     } else {
-         slot->flags &= ~HVF_SLOT_LOG;
--        hv_vm_protect((hv_gpaddr_t)slot->start, (size_t)slot->size,
-+        hv_vm_protect((uintptr_t)slot->start, (size_t)slot->size,
-                       HV_MEMORY_READ | HV_MEMORY_WRITE);
-     }
- }
+ 
+-void hvf_set_phys_mem(MemoryRegionSection *section, bool add)
++static void hvf_set_phys_mem(MemoryRegionSection *section, bool add)
+ {
+     hvf_slot *mem;
+     MemoryRegion *area = section->mr;
+diff --git a/include/sysemu/hvf_int.h b/include/sysemu/hvf_int.h
+index ef84a24dd9..d15fa3302a 100644
+--- a/include/sysemu/hvf_int.h
++++ b/include/sysemu/hvf_int.h
+@@ -43,7 +43,6 @@ struct HVFState {
+ };
+ extern HVFState *hvf_state;
+ 
+-void hvf_set_phys_mem(MemoryRegionSection *, bool);
+ void assert_hvf_ok(hv_return_t ret);
+ hvf_slot *hvf_find_overlap_slot(uint64_t, uint64_t);
+ int hvf_put_registers(CPUState *);
 -- 
 2.30.1 (Apple Git-130)
 

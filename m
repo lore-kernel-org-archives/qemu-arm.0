@@ -1,60 +1,60 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp651050lfm;
-        Sun, 16 May 2021 12:59:25 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyjKWApRBClbUBcwmvTjFw72PxkPvz6m61GbpJCgK7EsQkjlAsmJi+uEuKm4N8XCbO/ly+C
-X-Received: by 2002:a05:6e02:1d9e:: with SMTP id h30mr48174329ila.214.1621195165728;
-        Sun, 16 May 2021 12:59:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621195165; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp651204lfm;
+        Sun, 16 May 2021 12:59:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyLKhdqLBoEMXCOfKsdim4NyxTuKrOjT83W1n7PRUPLTfa4ujzjH8Xat0vad9MiufJ6jNT9
+X-Received: by 2002:a05:6e02:20c1:: with SMTP id 1mr47158616ilq.71.1621195192273;
+        Sun, 16 May 2021 12:59:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621195192; cv=none;
         d=google.com; s=arc-20160816;
-        b=IUcxnlSN9MFmiLFwe4QVjMQXeWRR86oQFQKgTWjJhB06xnTMCTuiauSp9H24ovEwSx
-         MJSvta28g8Olt2NrEyDmBSUTGpUH3v3WvrbEj5xZ1UXTU0HpKoPAtMeahDjQAgTdw1e+
-         G+rosdM3pxxk6rFN6E8IQ7y3fEqmg7Db7T3e9mQQHa/9+s3zbT6Uv8qB31ygdqi3+aPa
-         wP6k3sdAhdyAkWhxaIOgB3fDYdLcf1i4+DgZomkKqWFBWaXYyXj4Y9DeJLgusumBZNaV
-         nv+5z5YxWcdIPeTrJF+9Ovs5M90iw16HUSqFdzWGVAlFDjdASvQuo9KO6/yC2dZQraM7
-         OXlw==
+        b=bmUGFzaT5LbDPYU+PhUCfRFcwFEHK4UFz74XEsn637ZYrISngIDqW15D5B6Nmi3L8E
+         PLm7A0cG4lLrKhMRqScdB+W3G5Gb2Su6o6ssn7rLsdHSnbv46HChoTVANz53CWMw0MhK
+         dYI14LAhVkU+GDyEZeziUFO/nZWfcVzaNtZeCziDX15UYG7cKOInyHQ5eiOlAGfa/u3g
+         +XyjC3Zf5+gnaSPhCD2HdK1J3Ei9V0cVHK//mTTXCy6yhqDXYjrAO6bi4JIvT7UNNunA
+         O7sJtOaym39e7m8UZb7SwrpL+SD11lCBViGN73FbKMfYcWvnYGO+7u3xbaem5W8E+Fx8
+         ScEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=VnCCFuHA68L1IT2V6O5u/jRYTe4kMm9yQQ7qveI4YNA=;
-        b=DT/AnAENJa4Masua/xxaZN9G2MDKZC9GFa4HaNbQ1ELkRjLNlrNcy+k1CH5lbft9R/
-         VTrJ036W64GvdWkk0MbTEyLXAgzqH3h6nfYGmm87ymDmolf+4ZI08GsFsyLiQIJGcbER
-         x9qyzdGngwoftngTh5YqE0hEbhSqEoMywqO6MasUbRAbc4/e0SEOiksKIrGxmziHoPtm
-         3Nc/JVSmE1DjQCXXOIhlWuNmweO7vTGmnrkB5jiopEXxkhXGd+A0W0gQUKYv3Nxhng1Z
-         SfLc9I8B2KmA/dhtUFKfl4lm7qYU5jVMH6ZVOtJ5AnCKbjTbhGqJxCWXx7cyR861IctO
-         yYwQ==
+        bh=CBxAF2xfTjGTLxPPRII5xkAV6b0fE4LW4tF2+jafI+4=;
+        b=aDdanAG3ZYcgTpfPyvESR8baw6kum8ZTwxd4fXiIZXNJqrFdzCWmr4UinVu6Bk21VM
+         UDr/dHb8Lau0SwBAcsso00GdcDmw6a55UTrbpZTbCkfACmB8laqPini9wyqHnJOY2TtZ
+         hfMcBnbduCKKUYIe/5E+wc+4qZn28MpD4O9x1/PE5cs6CBRZBkLP1eICIhqmikO1hV88
+         o8/IAe9yxt/uTHvm02Zb0lG9GRAnxUYJ8EgmVk1AEolNqQSBAVNP2AI22bOCjB/UI/G1
+         BVOVoEfQauy5rNGFNmK3Zm5KcIJvrdoWCqdyTvKytBYAJEmXQ9CCOlgTumbh0AyBl+H6
+         K4dg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o2si2072957jaa.70.2021.05.16.12.59.25
+        by mx.google.com with ESMTPS id k6si12088826ion.34.2021.05.16.12.59.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 16 May 2021 12:59:25 -0700 (PDT)
+        Sun, 16 May 2021 12:59:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54038 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55212 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1liMv6-0002gJ-Vs
-	for alex.bennee@linaro.org; Sun, 16 May 2021 15:59:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44274)
+	id 1liMvX-0003Rx-JD
+	for alex.bennee@linaro.org; Sun, 16 May 2021 15:59:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44326)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1liMum-0001sy-8F; Sun, 16 May 2021 15:59:04 -0400
-Received: from mail.csgraf.de ([85.25.223.15]:45320 helo=zulu616.server4you.de)
+ id 1liMuo-0001x9-21; Sun, 16 May 2021 15:59:06 -0400
+Received: from mail.csgraf.de ([85.25.223.15]:45404 helo=zulu616.server4you.de)
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <agraf@csgraf.de>)
- id 1liMuh-0008CS-R4; Sun, 16 May 2021 15:59:03 -0400
+ id 1liMum-0008GH-3U; Sun, 16 May 2021 15:59:05 -0400
 Received: from localhost.localdomain
  (dynamic-095-118-089-019.95.118.pool.telefonica.de [95.118.89.19])
- by csgraf.de (Postfix) with ESMTPSA id BA7AF6080642;
- Sun, 16 May 2021 21:58:57 +0200 (CEST)
+ by csgraf.de (Postfix) with ESMTPSA id EA4EB60806A2;
+ Sun, 16 May 2021 21:59:00 +0200 (CEST)
 From: Alexander Graf <agraf@csgraf.de>
 To: QEMU Developers <qemu-devel@nongnu.org>
-Subject: [PATCH v7 02/19] hvf: Move vcpu thread functions into common directory
-Date: Sun, 16 May 2021 21:58:38 +0200
-Message-Id: <20210516195855.28869-3-agraf@csgraf.de>
+Subject: [PATCH v7 07/19] hvf: Split out common code on vcpu init and destroy
+Date: Sun, 16 May 2021 21:58:43 +0200
+Message-Id: <20210516195855.28869-8-agraf@csgraf.de>
 X-Mailer: git-send-email 2.30.1 (Apple Git-130)
 In-Reply-To: <20210516195855.28869-1-agraf@csgraf.de>
 References: <20210516195855.28869-1-agraf@csgraf.de>
@@ -89,70 +89,152 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Peter Collingbourne <pcc@google.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wqdpG7n7fekr
+X-TUID: vJFDXBfPCzFV
 
 Until now, Hypervisor.framework has only been available on x86_64 systems.
 With Apple Silicon shipping now, it extends its reach to aarch64. To
 prepare for support for multiple architectures, let's start moving common
 code out into its own accel directory.
 
-This patch moves the vCPU thread loop over.
+This patch splits the vcpu init and destroy functions into a generic and
+an architecture specific portion. This also allows us to move the generic
+functions into the generic hvf code, removing exported functions.
 
 Signed-off-by: Alexander Graf <agraf@csgraf.de>
 ---
- {target/i386 => accel}/hvf/hvf-accel-ops.c | 0
- {target/i386 => accel}/hvf/hvf-accel-ops.h | 0
- accel/hvf/meson.build                      | 1 +
- target/i386/hvf/meson.build                | 1 -
- target/i386/hvf/x86hvf.c                   | 2 +-
- 5 files changed, 2 insertions(+), 2 deletions(-)
- rename {target/i386 => accel}/hvf/hvf-accel-ops.c (100%)
- rename {target/i386 => accel}/hvf/hvf-accel-ops.h (100%)
+ accel/hvf/hvf-accel-ops.c | 30 ++++++++++++++++++++++++++++++
+ accel/hvf/hvf-accel-ops.h |  2 --
+ include/sysemu/hvf_int.h  |  2 ++
+ target/i386/hvf/hvf.c     | 23 ++---------------------
+ 4 files changed, 34 insertions(+), 23 deletions(-)
 
-diff --git a/target/i386/hvf/hvf-accel-ops.c b/accel/hvf/hvf-accel-ops.c
-similarity index 100%
-rename from target/i386/hvf/hvf-accel-ops.c
-rename to accel/hvf/hvf-accel-ops.c
-diff --git a/target/i386/hvf/hvf-accel-ops.h b/accel/hvf/hvf-accel-ops.h
-similarity index 100%
-rename from target/i386/hvf/hvf-accel-ops.h
-rename to accel/hvf/hvf-accel-ops.h
-diff --git a/accel/hvf/meson.build b/accel/hvf/meson.build
-index 227b11cd71..fc52cb7843 100644
---- a/accel/hvf/meson.build
-+++ b/accel/hvf/meson.build
-@@ -1,6 +1,7 @@
- hvf_ss = ss.source_set()
- hvf_ss.add(files(
-   'hvf-all.c',
-+  'hvf-accel-ops.c',
- ))
+diff --git a/accel/hvf/hvf-accel-ops.c b/accel/hvf/hvf-accel-ops.c
+index 7370fcfba0..b262efd8b6 100644
+--- a/accel/hvf/hvf-accel-ops.c
++++ b/accel/hvf/hvf-accel-ops.c
+@@ -363,6 +363,36 @@ static void hvf_type_init(void)
  
- specific_ss.add_all(when: 'CONFIG_HVF', if_true: hvf_ss)
-diff --git a/target/i386/hvf/meson.build b/target/i386/hvf/meson.build
-index d253d5fd10..f6d4c394d3 100644
---- a/target/i386/hvf/meson.build
-+++ b/target/i386/hvf/meson.build
-@@ -1,6 +1,5 @@
- i386_softmmu_ss.add(when: [hvf, 'CONFIG_HVF'], if_true: files(
-   'hvf.c',
--  'hvf-accel-ops.c',
-   'x86.c',
-   'x86_cpuid.c',
-   'x86_decode.c',
-diff --git a/target/i386/hvf/x86hvf.c b/target/i386/hvf/x86hvf.c
-index 0d7533742e..2b99f3eaa2 100644
---- a/target/i386/hvf/x86hvf.c
-+++ b/target/i386/hvf/x86hvf.c
-@@ -32,7 +32,7 @@
- #include <Hypervisor/hv.h>
- #include <Hypervisor/hv_vmx.h>
+ type_init(hvf_type_init);
  
--#include "hvf-accel-ops.h"
-+#include "accel/hvf/hvf-accel-ops.h"
++static void hvf_vcpu_destroy(CPUState *cpu)
++{
++    hv_return_t ret = hv_vcpu_destroy(cpu->hvf_fd);
++    assert_hvf_ok(ret);
++
++    hvf_arch_vcpu_destroy(cpu);
++}
++
++static int hvf_init_vcpu(CPUState *cpu)
++{
++    int r;
++
++    /* init cpu signals */
++    sigset_t set;
++    struct sigaction sigact;
++
++    memset(&sigact, 0, sizeof(sigact));
++    sigact.sa_handler = dummy_signal;
++    sigaction(SIG_IPI, &sigact, NULL);
++
++    pthread_sigmask(SIG_BLOCK, NULL, &set);
++    sigdelset(&set, SIG_IPI);
++
++    r = hv_vcpu_create((hv_vcpuid_t *)&cpu->hvf_fd, HV_VCPU_DEFAULT);
++    cpu->vcpu_dirty = 1;
++    assert_hvf_ok(r);
++
++    return hvf_arch_init_vcpu(cpu);
++}
++
+ /*
+  * The HVF-specific vCPU thread function. This one should only run when the host
+  * CPU supports the VMX "unrestricted guest" feature.
+diff --git a/accel/hvf/hvf-accel-ops.h b/accel/hvf/hvf-accel-ops.h
+index 8f992da168..09fcf22067 100644
+--- a/accel/hvf/hvf-accel-ops.h
++++ b/accel/hvf/hvf-accel-ops.h
+@@ -12,12 +12,10 @@
  
- void hvf_set_segment(struct CPUState *cpu, struct vmx_segment *vmx_seg,
-                      SegmentCache *qseg, bool is_tr)
+ #include "sysemu/cpus.h"
+ 
+-int hvf_init_vcpu(CPUState *);
+ int hvf_vcpu_exec(CPUState *);
+ void hvf_cpu_synchronize_state(CPUState *);
+ void hvf_cpu_synchronize_post_reset(CPUState *);
+ void hvf_cpu_synchronize_post_init(CPUState *);
+ void hvf_cpu_synchronize_pre_loadvm(CPUState *);
+-void hvf_vcpu_destroy(CPUState *);
+ 
+ #endif /* HVF_CPUS_H */
+diff --git a/include/sysemu/hvf_int.h b/include/sysemu/hvf_int.h
+index d15fa3302a..80c1a8f946 100644
+--- a/include/sysemu/hvf_int.h
++++ b/include/sysemu/hvf_int.h
+@@ -44,6 +44,8 @@ struct HVFState {
+ extern HVFState *hvf_state;
+ 
+ void assert_hvf_ok(hv_return_t ret);
++int hvf_arch_init_vcpu(CPUState *cpu);
++void hvf_arch_vcpu_destroy(CPUState *cpu);
+ hvf_slot *hvf_find_overlap_slot(uint64_t, uint64_t);
+ int hvf_put_registers(CPUState *);
+ int hvf_get_registers(CPUState *);
+diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
+index 100ede2a4d..c7132ee370 100644
+--- a/target/i386/hvf/hvf.c
++++ b/target/i386/hvf/hvf.c
+@@ -158,14 +158,12 @@ static bool ept_emulation_fault(hvf_slot *slot, uint64_t gpa, uint64_t ept_qual)
+     return false;
+ }
+ 
+-void hvf_vcpu_destroy(CPUState *cpu)
++void hvf_arch_vcpu_destroy(CPUState *cpu)
+ {
+     X86CPU *x86_cpu = X86_CPU(cpu);
+     CPUX86State *env = &x86_cpu->env;
+ 
+-    hv_return_t ret = hv_vcpu_destroy((hv_vcpuid_t)cpu->hvf_fd);
+     g_free(env->hvf_mmio_buf);
+-    assert_hvf_ok(ret);
+ }
+ 
+ static void init_tsc_freq(CPUX86State *env)
+@@ -210,23 +208,10 @@ static inline bool apic_bus_freq_is_known(CPUX86State *env)
+     return env->apic_bus_freq != 0;
+ }
+ 
+-int hvf_init_vcpu(CPUState *cpu)
++int hvf_arch_init_vcpu(CPUState *cpu)
+ {
+-
+     X86CPU *x86cpu = X86_CPU(cpu);
+     CPUX86State *env = &x86cpu->env;
+-    int r;
+-
+-    /* init cpu signals */
+-    sigset_t set;
+-    struct sigaction sigact;
+-
+-    memset(&sigact, 0, sizeof(sigact));
+-    sigact.sa_handler = dummy_signal;
+-    sigaction(SIG_IPI, &sigact, NULL);
+-
+-    pthread_sigmask(SIG_BLOCK, NULL, &set);
+-    sigdelset(&set, SIG_IPI);
+ 
+     init_emu();
+     init_decoder();
+@@ -243,10 +228,6 @@ int hvf_init_vcpu(CPUState *cpu)
+         }
+     }
+ 
+-    r = hv_vcpu_create((hv_vcpuid_t *)&cpu->hvf_fd, HV_VCPU_DEFAULT);
+-    cpu->vcpu_dirty = 1;
+-    assert_hvf_ok(r);
+-
+     if (hv_vmx_read_capability(HV_VMX_CAP_PINBASED,
+         &hvf_state->hvf_caps->vmx_cap_pinbased)) {
+         abort();
 -- 
 2.30.1 (Apple Git-130)
 

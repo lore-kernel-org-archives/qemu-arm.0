@@ -1,113 +1,79 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp432305lfm;
-        Sun, 16 May 2021 06:09:56 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyHaYniGq7wY8Bk5t9cUxhSh8k+5LedPOGF2BXZGu59pEyLSSGCy1BQYgvE7D7lIiQK+mzQ
-X-Received: by 2002:a9f:368f:: with SMTP id p15mr49720977uap.41.1621170596497;
-        Sun, 16 May 2021 06:09:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621170596; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp475546lfm;
+        Sun, 16 May 2021 07:18:15 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxAoM8MTyHhszsheob6bY6n6ShAJYj41aozIn8WQKQK2s9a3KriFlFM0CJfPX8+24EUaAWH
+X-Received: by 2002:a6b:8b06:: with SMTP id n6mr40784531iod.87.1621174695391;
+        Sun, 16 May 2021 07:18:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621174695; cv=none;
         d=google.com; s=arc-20160816;
-        b=eVZhY8Tf0fWsfUayNGAuaCieQyNvAGU5c2BvLPnODlU0jSE0z5objF98fv1U9gt92f
-         uBUCtdAV0PE0KvY333TVl25MLRgQMCzC0tlymD7xgBrGhvo3aFzD3w6fGZX9SnEc/3A5
-         u9ToGbc3XdViLQ+OSfBArfzv45NmnjVKMnoPR2gS4Ap3UIhh21xLRUCI+0fcDTcHxOqg
-         0ykcTp5xu2U+PgcERUdNpmR+CJqmBF/hxHaRCIQNn+SA8CUogUA4a54UgYBHQ72ZoZnN
-         r79t/JsQ+GpPJWYT8Do+dCVg9u7iWlPfM7CgAf/e29dvwJEgp9SPrT28noE/5xq9+Ox+
-         2DLg==
+        b=Maum+1Vzk5w8OSP0crr30lly95o8VYeOEWAHYZoCIYxyynsDmHjEBBslmyCqZ0K5Mz
+         VDs80qE8NVYvtJxWOfJ7yzK4hsDY07lrDbl4EVfP2z+o4FTYdz9h+g7OJm/WVDYDRupQ
+         Il8yG/bWUtkeXD21NXvW85xhz1sek6zGUUj4KPrD5SUTo41w5kBRigEYBk49MpFl2n4J
+         1GCBsFcc7e0wtBNDUJP3H1bmRsmQGGSPg6Q2ACYgdayrq14fD0PhH5OgeS18hH6lMIpS
+         NZZ+UtVfVIYGFZOfqm70t7f+xS50EZq6oin3KNc381clUNzJ3Xsixh07g9Y/D+vfgQ2g
+         wBPw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=NoLBzZdL0FumuacnJGhtYyU2aY6iNhUgiP9HORU+z3k=;
-        b=g7/M9fcoDz4Hge1mKhfMv971loiXVIX6dvU5/sOZtZrLBIlcaKBdWCiI/4ZkAsGWfv
-         aY981Z7ZIMFlD7iRLhXATaqN5b3mYjSQds0xlszeFVtcALpfkKY9YUzjx9qS7bd4kGSF
-         eihWYAjB74RQmMFgf8llrY4gNCNm0Joth099EfTryGNvdfmGGWZdHgzsAQ4VFxcB52to
-         DqmVb/nccZO175WQw6h2l9BRQSb3KMt+AIteWhxZPemKoVdc6p7cI2cyMFAgKC0fFx9K
-         LqO7kinsSKZC0r8UnKTjcQ2WoPPFIksNOfRatyCcqroQTlcNclBECRKSL9c9tNE9v4sx
-         56pg==
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=qv5BCyLWYlsyMXl0mZjLjfaL3OsO3ECcVhfgaWJ1T38=;
+        b=alJq4NnoFqH7Usp9injrbCdhPATmKFWgD0v+Qa2gt7mqtWLDCYDClcTuHTXVUANOUg
+         2Df036al+sYkmxyouznJ5mnPli1JtIFCixeHu1Bdsnt3kLzfwRmRUFCBR+mFRyljmmP2
+         cSWsjjlymi7wRJJECfUOluZocwGFTkZKzD8Uo78+HC/81/vYTQ7EQaEJYekCeBJvYnpM
+         b4j99ojRJ58Eh5wm2L+XCnHVuCiKZpw9jzT8R1xCQ2Ald03wv237lBFtwiHWy+yvRNyG
+         PyPRcGIInbu+lZLZsISJeFKTEbykamTHlh0ksERjOaTBKKYjrkffKwHrpZt3AAUdjXK0
+         KRcQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=QWdedhJQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f19si6201325vsj.56.2021.05.16.06.09.56
+        by mx.google.com with ESMTPS id o16si14147078ioo.17.2021.05.16.07.18.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 16 May 2021 06:09:56 -0700 (PDT)
+        Sun, 16 May 2021 07:18:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=QWdedhJQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:39174 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:58692 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1liGWp-0007Qv-R6
-	for alex.bennee@linaro.org; Sun, 16 May 2021 09:09:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44420)
+	id 1liHaw-000301-Jm
+	for alex.bennee@linaro.org; Sun, 16 May 2021 10:18:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34474)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1liG4V-00007l-90; Sun, 16 May 2021 08:40:41 -0400
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434]:34729)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1liG4S-0002fz-85; Sun, 16 May 2021 08:40:38 -0400
-Received: by mail-wr1-x434.google.com with SMTP id r12so3633512wrp.1;
- Sun, 16 May 2021 05:40:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=NoLBzZdL0FumuacnJGhtYyU2aY6iNhUgiP9HORU+z3k=;
- b=QWdedhJQPYT6jZgBNxaToHUUUpCGSFEx9dWnMjGoXBEaKQYi6u+nKI6cexp/74bqV5
- mN9WwqKSaExpivk8AJnqBXAlZCdQzRazDggVWLWeqcpFoXY4Ko+Y/1+yfTtITGMCvrdP
- u+7edwKuPXvGzx7Ln3g3r1YwW1iSwOiuOqv/jMN8qTm3O6yHriyBQbp4TWTV9e0U7erk
- vCKQh/PPjAxOyjColpCw0dA8704OfiNiZmSvQWEIxDIP1hOTWOE8Gx5YjRel6JzYan9X
- DypqQJJedYZ8mCqIONUkMRTOs72ZlXWnQCwXutqKN4j533OAZRYCgyhvojXdtoPuPYJ9
- Skrw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=NoLBzZdL0FumuacnJGhtYyU2aY6iNhUgiP9HORU+z3k=;
- b=s07UzNcMXqUWsplNexfqp5l3tXL7/5hREqtZz6O5UiyLJrwrqMPwc2npR5EfboWISs
- Fzylu5P0zMFqRe9KSPsE1DpSRbPKWn4UZxbijwdiVxOke0cbKlKomP9p5FebZI7preS0
- lA0pEFRX1MBJWyJBaN9LYt+0lC136qrZS0l4CQ/NYZKCe+Ozn0s7PVdSOKnWd699CfDs
- oT21eL43dp/ft2wgCMy1gJlYDLd9hN5Q0mVLkZCNiwo8Wj14fm3OXDOl/n8o0z88EBAT
- IlbXxgNE6Efjd1u6kVDxUYzJfcYLvXzaKaHz8qPelKyVXJ4RLDgpaFRs/DVfgIls7oa7
- CkTg==
-X-Gm-Message-State: AOAM530/FNpNiSZsHxg2c6BDT3vvAW1Tp3ouet/XV+SSf2vP86m2EGLd
- 0avt7hQXksKCPJNpcw3qQCI=
-X-Received: by 2002:a05:6000:144f:: with SMTP id
- v15mr67482165wrx.182.1621168831574; 
- Sun, 16 May 2021 05:40:31 -0700 (PDT)
-Received: from [192.168.1.36] (31.red-83-51-215.dynamicip.rima-tde.net.
- [83.51.215.31])
- by smtp.gmail.com with ESMTPSA id s5sm12141308wrw.95.2021.05.16.05.40.30
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 16 May 2021 05:40:30 -0700 (PDT)
-Subject: Re: [PATCH] disas/libvixl: Protect C system header for C++ compiler
-To: qemu-devel@nongnu.org
-References: <20210515183531.372925-1-f4bug@amsat.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <ceb7fcb9-8b17-5fd7-00a6-9daa3cc6a806@amsat.org>
-Date: Sun, 16 May 2021 14:40:27 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+ (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
+ id 1liHVg-0007GQ-Bh; Sun, 16 May 2021 10:12:48 -0400
+Received: from mail.csgraf.de ([85.25.223.15]:45062 helo=zulu616.server4you.de)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <agraf@csgraf.de>)
+ id 1liHVa-0000Vz-1a; Sun, 16 May 2021 10:12:46 -0400
+Received: from MacBook-Air.alex.local
+ (dynamic-077-002-111-216.77.2.pool.telefonica.de [77.2.111.216])
+ by csgraf.de (Postfix) with ESMTPSA id 3353360803C7;
+ Sun, 16 May 2021 16:12:38 +0200 (CEST)
+Subject: Re: [PATCH v6 03/11] hvf: Move common code out
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+References: <20210120224444.71840-1-agraf@csgraf.de>
+ <20210120224444.71840-4-agraf@csgraf.de>
+ <e1054d19-f047-bbaf-0d4d-20b8df97db44@redhat.com>
+From: Alexander Graf <agraf@csgraf.de>
+Message-ID: <c74882ac-7a60-d320-840d-eec26c4972af@csgraf.de>
+Date: Sun, 16 May 2021 16:12:37 +0200
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0)
+ Gecko/20100101 Thunderbird/78.10.1
 MIME-Version: 1.0
-In-Reply-To: <20210515183531.372925-1-f4bug@amsat.org>
+In-Reply-To: <e1054d19-f047-bbaf-0d4d-20b8df97db44@redhat.com>
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x434.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
+Content-Language: en-US
+Received-SPF: pass client-ip=85.25.223.15; envelope-from=agraf@csgraf.de;
+ helo=zulu616.server4you.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -120,91 +86,143 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- =?UTF-8?Q?Daniel_P_=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Michael Tokarev <mjt@tls.msk.ru>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Cameron Esfahani <dirty@apple.com>, Roman Bolshakov <r.bolshakov@yadro.com>,
+ qemu-arm@nongnu.org, Claudio Fontana <cfontana@suse.de>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Frank Yang <lfy@google.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Peter Collingbourne <pcc@google.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Y7E1KXI2FAgI
+X-TUID: COmt7Xog9GCv
 
-Forgot to tag as RFC.
 
-Cc'ing mjt to have feedback from Debian packaging.
+On 21.01.21 08:26, Philippe Mathieu-Daudé wrote:
+> Hi Alexander,
+>
+> On 1/20/21 11:44 PM, Alexander Graf wrote:
+>> Until now, Hypervisor.framework has only been available on x86_64 systems.
+>> With Apple Silicon shipping now, it extends its reach to aarch64. To
+>> prepare for support for multiple architectures, let's move common code out
+>> into its own accel directory.
+>>
+>> Signed-off-by: Alexander Graf <agraf@csgraf.de>
+>> Reviewed-by: Roman Bolshakov <r.bolshakov@yadro.com>
+>> Tested-by: Roman Bolshakov <r.bolshakov@yadro.com>
+>>
+>> ---
+>>
+>> v3 -> v4:
+>>
+>>   - Use hv.h instead of Hypervisor.h for 10.15 compat
+>>   - Remove manual inclusion of Hypervisor.h in common .c files
+>> ---
+>>  MAINTAINERS                 |   8 +
+>>  accel/hvf/hvf-all.c         |  54 +++++
+>>  accel/hvf/hvf-cpus.c        | 462 ++++++++++++++++++++++++++++++++++++
+>>  accel/hvf/meson.build       |   7 +
+>>  accel/meson.build           |   1 +
+>>  include/sysemu/hvf_int.h    |  54 +++++
+>>  target/i386/hvf/hvf-cpus.c  | 131 ----------
+>>  target/i386/hvf/hvf-cpus.h  |  25 --
+>>  target/i386/hvf/hvf-i386.h  |  33 +--
+>>  target/i386/hvf/hvf.c       | 360 +---------------------------
+>>  target/i386/hvf/meson.build |   1 -
+>>  target/i386/hvf/x86hvf.c    |  11 +-
+>>  target/i386/hvf/x86hvf.h    |   2 -
+>>  13 files changed, 596 insertions(+), 553 deletions(-)
+>>  create mode 100644 accel/hvf/hvf-all.c
+>>  create mode 100644 accel/hvf/hvf-cpus.c
+>>  create mode 100644 accel/hvf/meson.build
+>>  create mode 100644 include/sysemu/hvf_int.h
+>>  delete mode 100644 target/i386/hvf/hvf-cpus.c
+>>  delete mode 100644 target/i386/hvf/hvf-cpus.h
+>>
+>> diff --git a/MAINTAINERS b/MAINTAINERS
+>> index 3216387521..e589ec02e0 100644
+>> --- a/MAINTAINERS
+>> +++ b/MAINTAINERS
+>> @@ -448,7 +448,15 @@ M: Roman Bolshakov <r.bolshakov@yadro.com>
+>>  W: https://wiki.qemu.org/Features/HVF
+>>  S: Maintained
+>>  F: target/i386/hvf/
+>> +
+>> +HVF
+>> +M: Cameron Esfahani <dirty@apple.com>
+>> +M: Roman Bolshakov <r.bolshakov@yadro.com>
+>> +W: https://wiki.qemu.org/Features/HVF
+>> +S: Maintained
+>> +F: accel/hvf/
+>>  F: include/sysemu/hvf.h
+>> +F: include/sysemu/hvf_int.h
+>>  
+>>  WHPX CPUs
+>>  M: Sunil Muthuswamy <sunilmut@microsoft.com>
+>> diff --git a/accel/hvf/hvf-all.c b/accel/hvf/hvf-all.c
+>> new file mode 100644
+>> index 0000000000..5b415eb0ed
+>> --- /dev/null
+>> +++ b/accel/hvf/hvf-all.c
+>> @@ -0,0 +1,54 @@
+>> +/*
+>> + * QEMU Hypervisor.framework support
+>> + *
+>> + * This work is licensed under the terms of the GNU GPL, version 2.  See
+>> + * the COPYING file in the top-level directory.
+>> + *
+>> + * Contributions after 2012-01-13 are licensed under the terms of the
+>> + * GNU GPL, version 2 or (at your option) any later version.
+> Maybe start with GPLv2+ directly?
 
-On 5/15/21 8:35 PM, Philippe Mathieu-Daudé wrote:
-> When selecting an ARM target on Debian unstable, we get:
-> 
->   Compiling C++ object libcommon.fa.p/disas_libvixl_vixl_utils.cc.o
->   FAILED: libcommon.fa.p/disas_libvixl_vixl_utils.cc.o
->   c++ -Ilibcommon.fa.p -I. -I.. [...] -o libcommon.fa.p/disas_libvixl_vixl_utils.cc.o -c ../disas/libvixl/vixl/utils.cc
->   In file included from /home/philmd/qemu/disas/libvixl/vixl/utils.h:30,
->                    from ../disas/libvixl/vixl/utils.cc:27:
->   /usr/include/string.h:36:43: error: missing binary operator before token "("
->      36 | #if defined __cplusplus && (__GNUC_PREREQ (4, 4) \
->         |                                           ^
->   /usr/include/string.h:53:62: error: missing binary operator before token "("
->      53 | #if defined __USE_MISC || defined __USE_XOPEN || __GLIBC_USE (ISOC2X)
->         |                                                              ^
->   /usr/include/string.h:165:21: error: missing binary operator before token "("
->     165 |      || __GLIBC_USE (LIB_EXT2) || __GLIBC_USE (ISOC2X))
->         |                     ^
->   /usr/include/string.h:174:43: error: missing binary operator before token "("
->     174 | #if defined __USE_XOPEN2K8 || __GLIBC_USE (LIB_EXT2) || __GLIBC_USE (ISOC2X)
->         |                                           ^
->   /usr/include/string.h:492:19: error: missing binary operator before token "("
->     492 | #if __GNUC_PREREQ (3,4)
->         |                   ^
-> 
-> Similarly to commit 875df03b221 ('osdep: protect qemu/osdep.h with
-> extern "C"'), guard the <string.h> system header with 'extern "C"'.
-> 
-> Relevant information from the host:
-> 
->   $ lsb_release -d
->   Description:    Debian GNU/Linux 11 (bullseye)
->   $ gcc --version
->   gcc (Debian 10.2.1-6) 10.2.1 20210110
->   $ dpkg -S /usr/include/string.h
->   libc6-dev: /usr/include/string.h
->   $ apt-cache show libc6-dev
->   Package: libc6-dev
->   Version: 2.31-11
-> 
-> Buglink: https://bugs.launchpad.net/qemu/+bug/1914870
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
-> RFC because I've no idea about C++, but this fixes the build for me.
-> 
-> Quick reproducer:
-> 
->   $ ../configure --disable-tools --target-list=aarch64-linux-user
-> 
-> Cc: Paolo Bonzini <pbonzini@redhat.com>
-> Cc: Daniel P. Berrangé <berrange@redhat.com>
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: Richard Henderson <richard.henderson@linaro.org>
-> Cc: Eric Blake <eblake@redhat.com>
-> Cc: Thomas Huth <thuth@redhat.com>
-> ---
->  disas/libvixl/vixl/utils.h | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
-> 
-> diff --git a/disas/libvixl/vixl/utils.h b/disas/libvixl/vixl/utils.h
-> index 5ab134e240a..fc28d7456c1 100644
-> --- a/disas/libvixl/vixl/utils.h
-> +++ b/disas/libvixl/vixl/utils.h
-> @@ -27,8 +27,10 @@
->  #ifndef VIXL_UTILS_H
->  #define VIXL_UTILS_H
->  
-> -#include <string.h>
->  #include <cmath>
-> +extern "C" {
-> +#include <string.h>
-> +}
->  #include "vixl/globals.h"
->  #include "vixl/compiler-intrinsics.h"
->  
-> 
+
+I'd prefer to leave the license clause in here, because I'm not touching
+any of the code, only moving it.
+
+
+>
+>> diff --git a/include/sysemu/hvf_int.h b/include/sysemu/hvf_int.h
+>> new file mode 100644
+>> index 0000000000..69de46db7d
+>> --- /dev/null
+>> +++ b/include/sysemu/hvf_int.h
+>> @@ -0,0 +1,54 @@
+>> +/*
+>> + * QEMU Hypervisor.framework (HVF) support
+>> + *
+>> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
+>> + * See the COPYING file in the top-level directory.
+>> + *
+>> + */
+>> +
+>> +/* header to be included in HVF-specific code */
+> Can we have this header local to accel/hvf/ ?
+
+
+At the end of the patch set, the list of files using the header is not
+limited to accel/hvf:
+
+MacBook-Air:qemu alex$ git grep hvf_int.h
+MAINTAINERS:F: include/sysemu/hvf_int.h
+accel/hvf/hvf-accel-ops.c:#include "sysemu/hvf_int.h"
+accel/hvf/hvf-all.c:#include "sysemu/hvf_int.h"
+target/arm/hvf/hvf.c:#include "sysemu/hvf_int.h"
+target/i386/hvf/hvf-i386.h:#include "sysemu/hvf_int.h"
+target/i386/hvf/hvf.c:#include "sysemu/hvf_int.h"
+target/i386/hvf/vmx.h:#include "sysemu/hvf_int.h"
+
+It also aligns with KVM's use of kvm_int.h, no? Overall, I'm not sure
+putting it into the accel directory will buy us too much, I'm happy to
+be convinced otherwise though.
+
+
+> Otherwise:
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+
+
+Thanks :)
+
+
+Alex
+
+

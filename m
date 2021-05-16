@@ -1,107 +1,71 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp570864lfm;
-        Sun, 16 May 2021 10:10:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw2Azrj2qOdwfFVJ66IDJq1bUkvxxuRPmMMbOadv/3QDJUXxmLEjQskAzcxg1uKqqOocTo5
-X-Received: by 2002:a05:6e02:78e:: with SMTP id q14mr13473374ils.21.1621185042498;
-        Sun, 16 May 2021 10:10:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621185042; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp650970lfm;
+        Sun, 16 May 2021 12:59:15 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxQf0d9lOMsQKgexGe9TiSwtDlZWS6kWb1NZnxq0NClPjuOuu3sSRj1tSGVXDuFaBZ1fk0v
+X-Received: by 2002:a92:dc90:: with SMTP id c16mr50841791iln.11.1621195155060;
+        Sun, 16 May 2021 12:59:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621195155; cv=none;
         d=google.com; s=arc-20160816;
-        b=uZ4lb9yd9D3U6dgEmZU+6cxGDYEkkXjEGlGs+dDdgH16P7s5youKNJvNG6mL02lGPv
-         HvS7PZHlq2s79B4VJuif1gRtPyJiJvgf3qxQg2K9KltS9u/ctNBmpRgLpGt7qZjIgIXX
-         /sUoE1SHiyVdLU4AuvCr0iAu4Sb5OSZe0HkD/e2FdiDilEX5X6x+cYRemZMM425G+Olx
-         wu5FUcm8nhh0ZFAwb0nJsvo1Oy4rVUxznV10y7u/u5n2JhMifUTzdGvGpnwyU4YsZa8A
-         DLNWX2TqwUfJNgXPajqzLZrJ49rEQnzwDAgF51mI207KYm/FsIo587COkeAxXf33PDxY
-         LCQw==
+        b=NaCzCJnC+W/FCldywgcitU2+z8fH6SUt7byayr/VDu/2Bt6NM0+7hrrFln2Ck0jEvX
+         on4hPYb3Aej47BT5mBQ7AJTkna7/vini+G0cnTjLH8OW6PdmheI2k/fYBAVA9IAmgpNb
+         sQCX8TqGAQfvLep2y6DwyoAK7ZkrySnCAa1juh9PyKEVIJQj3vZ+2wAhpmPF2euaWKfc
+         D7RtzzovieLHYPWA/sNkI/YNaOBnVTQrdI3SWNxgh1i4qvVlTW0MSkLm/32R3wLyRwk3
+         rzZ8up+xDhOJYkIzbvCIPW+qbhOFEOfx04jmUau3t2I2wj+T4qDt95ewfNrvYqK0yflY
+         N6og==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=0P5Fx5SuV8faClmAUI+F8RjAJD5UOdXGEqtptqHamIw=;
-        b=y+83ixM/SE+7V6AcnY39g1nK5XSNQDygvTBpUvU/dYpWJJDmx3/yrooplHznXxiV7c
-         y7XqhrH9HW/CjO6wGwvgxXqE5ekPUP0BwNEP0lVeFYtTk2GfhAm78u3rykcy8mvau1qq
-         Ie6H4URW5ISjR3UWhhjEfrg+9x3s7FR2iuFopg5zS1Ed3UUM8Dyf/smC8bj+McAPtKL8
-         tjHLkV5ujHjXit0dv1DeLHJZDu4Rv8UPiEmZdBty3EkTzC+8n9CvN9sv5rSRJOHe3tg6
-         UkLp/tJzNKyrnj/qy9SdahYzhmQh1ZgcPrQ842WkNxRki1H2iH99gp2W9NZAMDs5n1k6
-         3MlQ==
+         :mime-version:message-id:date:subject:to:from;
+        bh=BeNMJurz6rW6lOoEKuyFQU6GQekn6M23/cgZsi0A3Rc=;
+        b=BVG9l7oQuAsjWPw4DpIT3nPRbtmKW1nhr5ZFJPIHS3Z84lfRMPkji6eOQvpr/K6W7N
+         iFIe0TACFyEMhwxrnIV7G4BQ21rhNIMhbbn/dhZgP7rpVWn93GlvTD/2kuQJGg3KwJlt
+         5Egas//NcL7d+pJmB/uzAuORmhgv0uh9qu9JsmsuqyUCBlV6vHQbm/FK+2xzBFVDWAYD
+         0OhW37hatMAuAUS9RbnTHfyKXcsuWq6vgT5hjCku9iUH00xstVCEy7spK4OliY2HdlJO
+         bhhQWymZPhp9JjuEJyWi5XRpQaDxtMXi7VoHWxrHw7tQk8h5NYEztt/Dk3if2uUw/wsG
+         n3WQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=J9wt2IyX;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t2si9638169ilg.26.2021.05.16.10.10.42
+        by mx.google.com with ESMTPS id l11si16093331jah.65.2021.05.16.12.59.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 16 May 2021 10:10:42 -0700 (PDT)
+        Sun, 16 May 2021 12:59:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=J9wt2IyX;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:43940 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:52958 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1liKHp-0007US-QW
-	for alex.bennee@linaro.org; Sun, 16 May 2021 13:10:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37110)
+	id 1liMuw-0001tT-7A
+	for alex.bennee@linaro.org; Sun, 16 May 2021 15:59:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44244)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1liKHf-0007Rb-0C; Sun, 16 May 2021 13:10:31 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:41796)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1liKHd-00008v-2B; Sun, 16 May 2021 13:10:30 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id d11so4010301wrw.8;
- Sun, 16 May 2021 10:10:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=0P5Fx5SuV8faClmAUI+F8RjAJD5UOdXGEqtptqHamIw=;
- b=J9wt2IyXWyla1h0HUBd0bhETTyLtNgosjQLJ5QMkYJ7mmrcAYPhLpOaAH8UnKvHI7b
- hhK2TSfgldF3Twlqe+F0Z4EMovF61kcuOED3oTKeAWNxOgCyu5QAlT/PKfWXLGtPteSh
- m4sNY/xlF5qG5fyDjlB1gsFnzemBQEPymBN39E185XdRkERWrOgnJLB7/suVwMJw8rZS
- NJuQDxJJNOVh0A+mCW0PyhxThXlEMVjM1LRjoWMl0/imz2TNno/sdpj9uejcGG8uSD+c
- 1wvJGEQLxJSpVHdtDQQ1KwXKvfebMbxZYlpjMpwFV04SscwyQs8YC0vGdvK//dPmW8K2
- eoTQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=0P5Fx5SuV8faClmAUI+F8RjAJD5UOdXGEqtptqHamIw=;
- b=VK84wxgKeiGD6PzZKhzrgaMOvZWEhUhdV6KLGPw23xmC9d7P61KnL82MiWbY9o2G75
- YwVvlt81EqEDA+41j0qmAynPESQns2YMh0qMyJR9Q43oyQfy4DB31dkVXeuVg4HLcce9
- b5xcxio6lMwDq0LicTHXqYjaS85Anvz96LoaaBCLJgwmVhDzhozlau0jV2K9Q0Q/TEGN
- tamNFzgoXonsxGaRKYIyz1ONQAnXMwe8QIBVMAyLdgBztuo5DNpoWo8iFM4H9MWqphBO
- H8aQOvp8FS9GMCyPN+dlfn0gdEfgMwe3ZCkiMkhArBEDGSJedDd1kuCopO0TKenphgIU
- k4sQ==
-X-Gm-Message-State: AOAM532R8RRecTi5aOLbnqYOUOsCP7v2GJVa3LFdGEmAF2rLIEwcSRH4
- mV+veiW9Be5oWM4+keS0MNCTjVm89AfnQw==
-X-Received: by 2002:a05:6000:1c1:: with SMTP id
- t1mr69077150wrx.421.1621185026510; 
- Sun, 16 May 2021 10:10:26 -0700 (PDT)
-Received: from localhost.localdomain (31.red-83-51-215.dynamicip.rima-tde.net.
- [83.51.215.31])
- by smtp.gmail.com with ESMTPSA id b10sm16248370wrr.27.2021.05.16.10.10.25
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 16 May 2021 10:10:26 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v2] disas/libvixl: Protect C system header for C++ compiler
-Date: Sun, 16 May 2021 19:10:23 +0200
-Message-Id: <20210516171023.510778-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.3
+ (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
+ id 1liMul-0001sZ-3o; Sun, 16 May 2021 15:59:03 -0400
+Received: from mail.csgraf.de ([85.25.223.15]:45292 helo=zulu616.server4you.de)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <agraf@csgraf.de>)
+ id 1liMuh-0008Bj-PS; Sun, 16 May 2021 15:59:02 -0400
+Received: from localhost.localdomain
+ (dynamic-095-118-089-019.95.118.pool.telefonica.de [95.118.89.19])
+ by csgraf.de (Postfix) with ESMTPSA id C77C360803FB;
+ Sun, 16 May 2021 21:58:55 +0200 (CEST)
+From: Alexander Graf <agraf@csgraf.de>
+To: QEMU Developers <qemu-devel@nongnu.org>
+Subject: [PATCH v7 00/19] hvf: Implement Apple Silicon Support
+Date: Sun, 16 May 2021 21:58:36 +0200
+Message-Id: <20210516195855.28869-1-agraf@csgraf.de>
+X-Mailer: git-send-email 2.30.1 (Apple Git-130)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42c.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
+Received-SPF: pass client-ip=85.25.223.15; envelope-from=agraf@csgraf.de;
+ helo=zulu616.server4you.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -114,170 +78,186 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
- Michael Tokarev <mjt@tls.msk.ru>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Eric Blake <eblake@redhat.com>
+ Cameron Esfahani <dirty@apple.com>, Roman Bolshakov <r.bolshakov@yadro.com>,
+ qemu-arm <qemu-arm@nongnu.org>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Frank Yang <lfy@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Collingbourne <pcc@google.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DcijiUulRxE7
+X-TUID: cCQGjUu66ffi
 
-When selecting an ARM target on Debian unstable, we get:
+Now that Apple Silicon is widely available, people are obviously excited
+to try and run virtualized workloads on them, such as Linux and Windows.
 
-  Compiling C++ object libcommon.fa.p/disas_libvixl_vixl_utils.cc.o
-  FAILED: libcommon.fa.p/disas_libvixl_vixl_utils.cc.o
-  c++ -Ilibcommon.fa.p -I. -I.. [...] -o libcommon.fa.p/disas_libvixl_vixl_utils.cc.o -c ../disas/libvixl/vixl/utils.cc
-  In file included from /home/philmd/qemu/disas/libvixl/vixl/utils.h:30,
-                   from ../disas/libvixl/vixl/utils.cc:27:
-  /usr/include/string.h:36:43: error: missing binary operator before token "("
-     36 | #if defined __cplusplus && (__GNUC_PREREQ (4, 4) \
-        |                                           ^
-  /usr/include/string.h:53:62: error: missing binary operator before token "("
-     53 | #if defined __USE_MISC || defined __USE_XOPEN || __GLIBC_USE (ISOC2X)
-        |                                                              ^
-  /usr/include/string.h:165:21: error: missing binary operator before token "("
-    165 |      || __GLIBC_USE (LIB_EXT2) || __GLIBC_USE (ISOC2X))
-        |                     ^
-  /usr/include/string.h:174:43: error: missing binary operator before token "("
-    174 | #if defined __USE_XOPEN2K8 || __GLIBC_USE (LIB_EXT2) || __GLIBC_USE (ISOC2X)
-        |                                           ^
-  /usr/include/string.h:492:19: error: missing binary operator before token "("
-    492 | #if __GNUC_PREREQ (3,4)
-        |                   ^
+This patch set implements a fully functional version to get the ball
+going on that. With this applied, I can successfully run both Linux and
+Windows as guests. I am not aware of any limitations specific to
+Hypervisor.framework apart from:
 
-Relevant information from the host:
+  - Live migration / savevm
+  - gdbstub debugging (SP register)
 
-  $ lsb_release -d
-  Description:    Debian GNU/Linux 11 (bullseye)
-  $ gcc --version
-  gcc (Debian 10.2.1-6) 10.2.1 20210110
-  $ dpkg -S /usr/include/string.h
-  libc6-dev: /usr/include/string.h
-  $ apt-cache show libc6-dev
-  Package: libc6-dev
-  Version: 2.31-11
 
-Partially cherry-pick vixl commit 78973f258039f6e96 [*]:
+Enjoy!
 
-  Refactor VIXL to use `extern` block when including C header
-  that do not have a C++ counterpart.
+Alex
 
-which is similar to commit 875df03b221 ('osdep: protect qemu/osdep.h
-with extern "C"').
+v1 -> v2:
 
-[*] https://git.linaro.org/arm/vixl.git/commit/?id=78973f258039f6e96
+  - New patch: hvf: Actually set SIG_IPI mask
+  - New patch: hvf: Introduce hvf vcpu struct
+  - New patch: hvf: arm: Mark CPU as dirty on reset
+  - Removed patch: hw/arm/virt: Disable highmem when on hypervisor.framework
+  - Removed patch: arm: Synchronize CPU on PSCI on
+  - Fix build on 32bit arm
+  - Merge vcpu kick function patch into ARM enablement
+  - Implement WFI handling (allows vCPUs to sleep)
+  - Synchronize system registers (fixes OVMF crashes and reboot)
+  - Don't always call cpu_synchronize_state()
+  - Use more fine grained iothread locking
+  - Populate aa64mmfr0 from hardware
+  - Make safe to ctrl-C entitlement application
 
-Buglink: https://bugs.launchpad.net/qemu/+bug/1914870
-Suggested-by: Thomas Huth <thuth@redhat.com>
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- disas/libvixl/vixl/code-buffer.h |  2 +-
- disas/libvixl/vixl/globals.h     | 16 +++++++++-------
- disas/libvixl/vixl/invalset.h    |  2 +-
- disas/libvixl/vixl/platform.h    |  2 ++
- disas/libvixl/vixl/utils.h       |  2 +-
- disas/libvixl/vixl/utils.cc      |  2 +-
- 6 files changed, 15 insertions(+), 11 deletions(-)
+v2 -> v3:
 
-diff --git a/disas/libvixl/vixl/code-buffer.h b/disas/libvixl/vixl/code-buffer.h
-index f93ebb6b822..b95babbdee2 100644
---- a/disas/libvixl/vixl/code-buffer.h
-+++ b/disas/libvixl/vixl/code-buffer.h
-@@ -27,7 +27,7 @@
- #ifndef VIXL_CODE_BUFFER_H
- #define VIXL_CODE_BUFFER_H
- 
--#include <string.h>
-+#include <cstring>
- #include "vixl/globals.h"
- 
- namespace vixl {
-diff --git a/disas/libvixl/vixl/globals.h b/disas/libvixl/vixl/globals.h
-index 7099aa599fb..3a71942f1e5 100644
---- a/disas/libvixl/vixl/globals.h
-+++ b/disas/libvixl/vixl/globals.h
-@@ -40,15 +40,17 @@
- #define __STDC_FORMAT_MACROS
- #endif
- 
--#include <stdint.h>
-+extern "C" {
- #include <inttypes.h>
--
--#include <assert.h>
--#include <stdarg.h>
--#include <stdio.h>
- #include <stdint.h>
--#include <stdlib.h>
--#include <stddef.h>
-+}
-+
-+#include <cassert>
-+#include <cstdarg>
-+#include <cstddef>
-+#include <cstdio>
-+#include <cstdlib>
-+
- #include "vixl/platform.h"
- 
- 
-diff --git a/disas/libvixl/vixl/invalset.h b/disas/libvixl/vixl/invalset.h
-index ffdc0237b47..2e0871f8c3f 100644
---- a/disas/libvixl/vixl/invalset.h
-+++ b/disas/libvixl/vixl/invalset.h
-@@ -27,7 +27,7 @@
- #ifndef VIXL_INVALSET_H_
- #define VIXL_INVALSET_H_
- 
--#include <string.h>
-+#include <cstring>
- 
- #include <algorithm>
- #include <vector>
-diff --git a/disas/libvixl/vixl/platform.h b/disas/libvixl/vixl/platform.h
-index ab588f07f54..26a74de81bb 100644
---- a/disas/libvixl/vixl/platform.h
-+++ b/disas/libvixl/vixl/platform.h
-@@ -28,7 +28,9 @@
- #define PLATFORM_H
- 
- // Define platform specific functionalities.
-+extern "C" {
- #include <signal.h>
-+}
- 
- namespace vixl {
- inline void HostBreakpoint() { raise(SIGINT); }
-diff --git a/disas/libvixl/vixl/utils.h b/disas/libvixl/vixl/utils.h
-index 5ab134e240a..ecb0f1014ab 100644
---- a/disas/libvixl/vixl/utils.h
-+++ b/disas/libvixl/vixl/utils.h
-@@ -27,8 +27,8 @@
- #ifndef VIXL_UTILS_H
- #define VIXL_UTILS_H
- 
--#include <string.h>
- #include <cmath>
-+#include <cstring>
- #include "vixl/globals.h"
- #include "vixl/compiler-intrinsics.h"
- 
-diff --git a/disas/libvixl/vixl/utils.cc b/disas/libvixl/vixl/utils.cc
-index 3b8bd75fba1..69304d266d7 100644
---- a/disas/libvixl/vixl/utils.cc
-+++ b/disas/libvixl/vixl/utils.cc
-@@ -25,7 +25,7 @@
- // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- 
- #include "vixl/utils.h"
--#include <stdio.h>
-+#include <cstdio>
- 
- namespace vixl {
- 
+  - Removed patch: hvf: Actually set SIG_IPI mask
+  - New patch: hvf: arm: Add support for GICv3
+  - New patch: hvf: arm: Implement -cpu host
+  - Advance PC on SMC
+  - Use cp list interface for sysreg syncs
+  - Do not set current_cpu
+  - Fix sysreg isread mask
+  - Move sysreg handling to functions
+  - Remove WFI logic again
+  - Revert to global iothread locking
+
+v3 -> v4:
+
+  - Removed patch: hvf: arm: Mark CPU as dirty on reset
+  - New patch: hvf: Simplify post reset/init/loadvm hooks
+  - Remove i386-softmmu target (meson.build for hvf target)
+  - Combine both if statements (PSCI)
+  - Use hv.h instead of Hypervisor.h for 10.15 compat
+  - Remove manual inclusion of Hypervisor.h in common .c files
+  - No longer include Hypervisor.h in arm hvf .c files
+  - Remove unused exe_full variable
+  - Reuse exe_name variable
+
+v4 -> v5:
+
+  - Use g_free() on destroy
+
+v5 -> v6:
+
+  - Switch SYSREG() macro order to the same as asm intrinsics
+
+v6 -> v7:
+
+  - Already merged: hvf: Add hypervisor entitlement to output binaries
+  - Already merged: hvf: x86: Remove unused definitions
+  - Patch split: hvf: Move common code out
+    -> hvf: Move assert_hvf_ok() into common directory
+    -> hvf: Move vcpu thread functions into common directory
+    -> hvf: Move cpu functions into common directory
+    -> hvf: Move hvf internal definitions into common header
+    -> hvf: Make hvf_set_phys_mem() static
+    -> hvf: Remove use of hv_uvaddr_t and hv_gpaddr_t
+    -> hvf: Split out common code on vcpu init and destroy
+    -> hvf: Use cpu_synchronize_state()
+    -> hvf: Make synchronize functions static
+    -> hvf: Remove hvf-accel-ops.h
+  - New patch: hvf: arm: Implement PSCI handling
+  - New patch: arm: Enable Windows 10 trusted SMCCC boot call
+  - New patch: hvf: arm: Handle Windows 10 SMC call
+  - Removed patch: "arm: Set PSCI to 0.2 for HVF" (included above)
+  - Removed patch: "hvf: arm: Add support for GICv3" (deferred to later)
+  - Remove osdep.h include from hvf_int.h
+  - Synchronize SIMD registers as well
+  - Prepend 0x for hex values
+  - Convert DPRINTF to trace points
+  - Use main event loop (fixes gdbstub issues)
+  - Remove PSCI support, inject UDEF on HVC/SMC
+  - Change vtimer logic to look at ctl.istatus for vtimer mask sync
+  - Add kick callback again (fixes remote CPU notification)
+  - Move function define to own header
+  - Do not propagate SVE features for HVF
+  - Remove stray whitespace change
+  - Verify that EL0 and EL1 do not allow AArch32 mode
+  - Only probe host CPU features once
+  - Move WFI into function
+  - Improve comment wording
+  - Simplify HVF matching logic in meson build file
+
+Alexander Graf (18):
+  hvf: Move assert_hvf_ok() into common directory
+  hvf: Move vcpu thread functions into common directory
+  hvf: Move cpu functions into common directory
+  hvf: Move hvf internal definitions into common header
+  hvf: Make hvf_set_phys_mem() static
+  hvf: Remove use of hv_uvaddr_t and hv_gpaddr_t
+  hvf: Split out common code on vcpu init and destroy
+  hvf: Use cpu_synchronize_state()
+  hvf: Make synchronize functions static
+  hvf: Remove hvf-accel-ops.h
+  hvf: Introduce hvf vcpu struct
+  hvf: Simplify post reset/init/loadvm hooks
+  hvf: Add Apple Silicon support
+  hvf: arm: Implement -cpu host
+  hvf: arm: Implement PSCI handling
+  arm: Add Hypervisor.framework build target
+  arm: Enable Windows 10 trusted SMCCC boot call
+  hvf: arm: Handle Windows 10 SMC call
+
+Peter Collingbourne (1):
+  arm/hvf: Add a WFI handler
+
+ MAINTAINERS                     |  13 +
+ accel/hvf/hvf-accel-ops.c       | 484 ++++++++++++++++
+ accel/hvf/hvf-all.c             |  47 ++
+ accel/hvf/meson.build           |   7 +
+ accel/meson.build               |   1 +
+ include/hw/core/cpu.h           |   3 +-
+ include/sysemu/hvf_int.h        |  66 +++
+ meson.build                     |   8 +
+ target/arm/cpu.c                |  13 +-
+ target/arm/cpu.h                |   2 +
+ target/arm/hvf/hvf.c            | 959 ++++++++++++++++++++++++++++++++
+ target/arm/hvf/meson.build      |   3 +
+ target/arm/hvf/trace-events     |  11 +
+ target/arm/hvf_arm.h            |  19 +
+ target/arm/kvm-consts.h         |   2 +
+ target/arm/kvm_arm.h            |   2 -
+ target/arm/meson.build          |   2 +
+ target/arm/psci.c               |   2 +
+ target/i386/hvf/hvf-accel-ops.c | 146 -----
+ target/i386/hvf/hvf-accel-ops.h |  23 -
+ target/i386/hvf/hvf-i386.h      |  33 +-
+ target/i386/hvf/hvf.c           | 464 ++-------------
+ target/i386/hvf/meson.build     |   1 -
+ target/i386/hvf/vmx.h           |  24 +-
+ target/i386/hvf/x86.c           |  28 +-
+ target/i386/hvf/x86_descr.c     |  26 +-
+ target/i386/hvf/x86_emu.c       |  62 +--
+ target/i386/hvf/x86_mmu.c       |   4 +-
+ target/i386/hvf/x86_task.c      |  12 +-
+ target/i386/hvf/x86hvf.c        | 222 ++++----
+ target/i386/hvf/x86hvf.h        |   2 -
+ 31 files changed, 1884 insertions(+), 807 deletions(-)
+ create mode 100644 accel/hvf/hvf-accel-ops.c
+ create mode 100644 accel/hvf/hvf-all.c
+ create mode 100644 accel/hvf/meson.build
+ create mode 100644 include/sysemu/hvf_int.h
+ create mode 100644 target/arm/hvf/hvf.c
+ create mode 100644 target/arm/hvf/meson.build
+ create mode 100644 target/arm/hvf/trace-events
+ create mode 100644 target/arm/hvf_arm.h
+ delete mode 100644 target/i386/hvf/hvf-accel-ops.c
+ delete mode 100644 target/i386/hvf/hvf-accel-ops.h
+
 -- 
-2.26.3
+2.30.1 (Apple Git-130)
 

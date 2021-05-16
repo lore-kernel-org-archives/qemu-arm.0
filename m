@@ -1,73 +1,74 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp347576lfm;
-        Sun, 16 May 2021 03:31:41 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwxYZa/JXS/ygQhDXJMBtDdRjq6MxF91i5EQkHlGI03pfPXjq5ciGb0kOgLG1hUmIMJl5Nb
-X-Received: by 2002:a25:6d89:: with SMTP id i131mr8393735ybc.148.1621161100850;
-        Sun, 16 May 2021 03:31:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621161100; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp347663lfm;
+        Sun, 16 May 2021 03:31:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxdhlOtnepBeA8avgahQLIBd87Vca39ZtFVNCua/zw7t0bzjIgE5UuPgZSb0dyL0aKP+zJS
+X-Received: by 2002:a92:c26d:: with SMTP id h13mr19798971ild.131.1621161111565;
+        Sun, 16 May 2021 03:31:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621161111; cv=none;
         d=google.com; s=arc-20160816;
-        b=EOfMfoBB+y6m68UYUrL3ObocP4sFTTJO//XHtdaOvKvbCY2FQmPTJ8X6iZjB8/YwWZ
-         5i8hKRxdrVOenXWRSG8MpGA0hU2enrcUJIZ6P+9VHg38dhKP1gcAN19qqeVciiT1HYpZ
-         idxEWxfRfyamytiSB90iHkcrpOkdlAW0ADI/jO6eTKyIhT0E4lyKLorQMzU/BMUtkUqc
-         9+BXZ1HhzDfadget9RAeu9iGiiHoqGpVv8eLRUSIxbp8SRhTBrTR1ysoSoVFe/XLLQd7
-         niOXIIz6WWx0gI4N90NqLQuU6PJtIKhyl3FSyv+Gg7FE+yeoEJEZJL1+0xgm7nXK6GEk
-         +DZg==
+        b=n073RRlBT9bmwtxkPB4aLcUASHc/7tPZmV63zN4BcTLeaGQvHRFL8HvNc3Sz/X6+35
+         Gm2dJ1CuLLSHzvXeDQgMMdN5CoGfb7y1BdsTg6+/vSUpT+0SMN720foW+Lnh99Ntjriy
+         qCRWw+sSfxFMpdlyzLGB+2p6TQ31GuFyOT+BC1PL/wuKxrS5TW4GChKcQy396SlxFtXb
+         7C31w26GFI8jwT79fIgno/3dFDuea+CN0Wbp/P+jXUhzxrcOYP8jR8tC96LxPpwBPng7
+         MAf+1Uo9b+z8KeTrk6lWHteWzgcn/op9XKDbNEE65NqS8b1CUyf7bdwFqJgIcIk9E3AN
+         m+oQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:references
          :in-reply-to:message-id:date:subject:to:from;
-        bh=Fp5mSQmEnjuIWZElIeyot1wiaFAKEpWQc8ZEA3HtnVc=;
-        b=X5db2kwTjoZMO0Iai0HTvsD2uRJUGb7iAmGwICf/yMc68ZlAUsWKEuOm4HOhtzX04x
-         xkCY6isN9i3H3JHdIKyRFFA3eBYzlbkzsiDLrqJlZ3PHGUTlBwRvVFpdV8aToBjArnff
-         BJOCCqhQMZ8WaACK1TDtLNy8WAyva6+qnaudeS2FeAGqf85DVvVeRd39YFVUBEN2Q7if
-         Yun6GxUvmgBHdVXcF6tnLjWduEwmghqcnj1+PqnGRxaFtDPDtCiqvgxx2dwfaWy/aXfV
-         ij3J2YhE3E9QQL/x3aduYYY2gRFXH7+Xf7CNAxERSCYEkk65HrSwISiowWRwWdOT9hxj
-         YyNA==
+        bh=M+1OHYpSL1tSD6iPr3fvqyZXHh6IRGWU0ABA9ErH2f4=;
+        b=UHYOVFbRvKHE7qs6fNv5BWyKHvLBQJ9bPJ5ubtrUX6CApjhq24gyvUZOJ1FZmJEHzK
+         kgArddOz+extGIFYsD5jVfbZ7IM0ABGZ/nbUdleQQQk2NNy/6xU0280J/ctz+PrLd0nL
+         IPjR4/PF4l9GdKEXNNJ5JmzViYIwVwP40jH/ZhxreKjxzTdDIhPasdoakr1nUa37CKli
+         yPyRFJ+EHSF7ivoC0ySmwxHM+WTwW+3ChW+iRqmafOApo0jx3jX/O/4lzz8T0famUp+v
+         DvdjewSiLwJrp+xmEFlpPr9iAcymgnAfrPRexsMqxB3/liP+0KDY7qq3imz+lDUh7Yv5
+         /CNw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x5si11513022ybt.428.2021.05.16.03.31.40
+        by mx.google.com with ESMTPS id f12si14603038jas.117.2021.05.16.03.31.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 16 May 2021 03:31:40 -0700 (PDT)
+        Sun, 16 May 2021 03:31:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:53590 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54672 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1liE3g-0004M8-2x
-	for alex.bennee@linaro.org; Sun, 16 May 2021 06:31:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48968)
+	id 1liE3q-00055X-TQ
+	for alex.bennee@linaro.org; Sun, 16 May 2021 06:31:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48994)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1liE1S-0001Rd-13; Sun, 16 May 2021 06:29:23 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2607)
+ id 1liE1V-0001TN-RI; Sun, 16 May 2021 06:29:27 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2606)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1liE1K-0007B7-Ta; Sun, 16 May 2021 06:29:21 -0400
-Received: from dggems702-chm.china.huawei.com (unknown [172.30.72.58])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4Fjdhx0qnmzmVVm;
- Sun, 16 May 2021 18:26:25 +0800 (CST)
+ id 1liE1M-0007B1-Af; Sun, 16 May 2021 06:29:25 -0400
+Received: from dggems701-chm.china.huawei.com (unknown [172.30.72.58])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4Fjdhv5Rw3zmVNP;
+ Sun, 16 May 2021 18:26:23 +0800 (CST)
 Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
- dggems702-chm.china.huawei.com (10.3.19.179) with Microsoft SMTP Server
+ dggems701-chm.china.huawei.com (10.3.19.178) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2176.2; Sun, 16 May 2021 18:29:08 +0800
+ 15.1.2176.2; Sun, 16 May 2021 18:29:07 +0800
 Received: from DESKTOP-TMVL5KK.china.huawei.com (10.174.187.128) by
  dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2176.2; Sun, 16 May 2021 18:29:07 +0800
+ 15.1.2176.2; Sun, 16 May 2021 18:29:06 +0800
 From: Yanan Wang <wangyanan55@huawei.com>
 To: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones
  <drjones@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>, Igor Mammedov
  <imammedo@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>, "Alistair
  Francis" <alistair.francis@wdc.com>, David Gibson
  <david@gibson.dropbear.id.au>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-Subject: [RFC PATCH v3 2/9] device_tree: Add qemu_fdt_add_path
-Date: Sun, 16 May 2021 18:28:53 +0800
-Message-ID: <20210516102900.28036-3-wangyanan55@huawei.com>
+Subject: [RFC PATCH v3 1/9] hw/arm/virt: Disable cpu topology support on older
+ machine types
+Date: Sun, 16 May 2021 18:28:52 +0800
+Message-ID: <20210516102900.28036-2-wangyanan55@huawei.com>
 X-Mailer: git-send-email 2.8.4.windows.1
 In-Reply-To: <20210516102900.28036-1-wangyanan55@huawei.com>
 References: <20210516102900.28036-1-wangyanan55@huawei.com>
@@ -103,100 +104,63 @@ Cc: Barry Song <song.bao.hua@hisilicon.com>, zhukeqian1@huawei.com,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KRTyofmrqkpF
+X-TUID: Of0oDlxYRKL5
 
-From: Andrew Jones <drjones@redhat.com>
+Add a compat variable "no_cpu_topology" used to determine if
+a machine type has enabled support of generating cpu topology
+description for the guest. Also, for compatibility we disable
+this support on older machine types.
 
-qemu_fdt_add_path() works like qemu_fdt_add_subnode(), except it
-also adds all missing subnodes from the given path. We'll use it
-in a coming patch where we will add cpu-map to the device tree.
+On existing older machine types, without cpu topology description
+in ACPI or DT, the guest will populate a cpu topology by default.
+With the topology description exposed to the guest, it will read
+the information and set up its topology as instructed, but that
+may not be the same as what was getting used by default without
+the topology description. It's possible that a user application
+has a dependency on the default topology and if the default one
+gets changed under its feat it will behave differently.
 
-And we also tweak an error message of qemu_fdt_add_subnode().
+So in summary, we only enable support of this feature on the
+latest machine type and disable it on the older ones (< 6.1)
+to avoid possible problems.
 
-Cc: David Gibson <david@gibson.dropbear.id.au>
-Cc: Alistair Francis <alistair.francis@wdc.com>
+Co-developed-by: Andrew Jones <drjones@redhat.com>
 Signed-off-by: Andrew Jones <drjones@redhat.com>
-Co-developed-by: Yanan Wang <wangyanan55@huawei.com>
 Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
 ---
- include/sysemu/device_tree.h |  1 +
- softmmu/device_tree.c        | 44 ++++++++++++++++++++++++++++++++++--
- 2 files changed, 43 insertions(+), 2 deletions(-)
+ hw/arm/virt.c         | 5 +++++
+ include/hw/arm/virt.h | 2 ++
+ 2 files changed, 7 insertions(+)
 
-diff --git a/include/sysemu/device_tree.h b/include/sysemu/device_tree.h
-index 8a2fe55622..ef060a9759 100644
---- a/include/sysemu/device_tree.h
-+++ b/include/sysemu/device_tree.h
-@@ -121,6 +121,7 @@ uint32_t qemu_fdt_get_phandle(void *fdt, const char *path);
- uint32_t qemu_fdt_alloc_phandle(void *fdt);
- int qemu_fdt_nop_node(void *fdt, const char *node_path);
- int qemu_fdt_add_subnode(void *fdt, const char *name);
-+int qemu_fdt_add_path(void *fdt, const char *path);
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 0a78532018..c07841e3a4 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -2761,6 +2761,11 @@ DEFINE_VIRT_MACHINE_AS_LATEST(6, 1)
  
- #define qemu_fdt_setprop_cells(fdt, node_path, property, ...)                 \
-     do {                                                                      \
-diff --git a/softmmu/device_tree.c b/softmmu/device_tree.c
-index b621f63fba..3965c834ca 100644
---- a/softmmu/device_tree.c
-+++ b/softmmu/device_tree.c
-@@ -540,8 +540,8 @@ int qemu_fdt_add_subnode(void *fdt, const char *name)
- 
-     retval = fdt_add_subnode(fdt, parent, basename);
-     if (retval < 0) {
--        error_report("FDT: Failed to create subnode %s: %s", name,
--                     fdt_strerror(retval));
-+        error_report("%s: Failed to create subnode %s: %s",
-+                     __func__, name, fdt_strerror(retval));
-         exit(1);
-     }
- 
-@@ -549,6 +549,46 @@ int qemu_fdt_add_subnode(void *fdt, const char *name)
-     return retval;
- }
- 
-+/*
-+ * qemu_fdt_add_path: Like qemu_fdt_add_subnode(), but will add
-+ * all missing subnodes from the given path.
-+ */
-+int qemu_fdt_add_path(void *fdt, const char *path)
-+{
-+    const char *name;
-+    const char *p = path;
-+    int namelen, retval;
-+    int parent = 0;
-+
-+    if (path[0] != '/') {
-+        return -1;
-+    }
-+
-+    while (p) {
-+        name = p + 1;
-+        p = strchr(name, '/');
-+        namelen = p != NULL ? p - name : strlen(name);
-+
-+        retval = fdt_subnode_offset_namelen(fdt, parent, name, namelen);
-+        if (retval < 0 && retval != -FDT_ERR_NOTFOUND) {
-+            error_report("%s: Unexpected error in finding subnode %.*s: %s",
-+                         __func__, namelen, name, fdt_strerror(retval));
-+            exit(1);
-+        } else if (retval == -FDT_ERR_NOTFOUND) {
-+            retval = fdt_add_subnode_namelen(fdt, parent, name, namelen);
-+            if (retval < 0) {
-+                error_report("%s: Failed to create subnode %.*s: %s",
-+                             __func__, namelen, name, fdt_strerror(retval));
-+                exit(1);
-+            }
-+        }
-+
-+        parent = retval;
-+    }
-+
-+    return retval;
-+}
-+
- void qemu_fdt_dumpdtb(void *fdt, int size)
+ static void virt_machine_6_0_options(MachineClass *mc)
  {
-     const char *dumpdtb = current_machine->dumpdtb;
++    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
++
++    virt_machine_6_1_options(mc);
++    compat_props_add(mc->compat_props, hw_compat_6_0, hw_compat_6_0_len);
++    vmc->no_cpu_topology = true;
+ }
+ DEFINE_VIRT_MACHINE(6, 0)
+ 
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 921416f918..f546dd2023 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -129,6 +129,8 @@ struct VirtMachineClass {
+     bool no_kvm_steal_time;
+     bool acpi_expose_flash;
+     bool no_secure_gpio;
++    /* Machines < 6.1 has no support of cpu topology description for guest */
++    bool no_cpu_topology;
+ };
+ 
+ struct VirtMachineState {
 -- 
 2.19.1
 

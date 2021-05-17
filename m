@@ -1,98 +1,98 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp837716lfm;
-        Sun, 16 May 2021 19:34:04 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwhQ9YccHnDIN5yIuQ8LM0n4UThAzVdgMSeP36QN2RsIj3oW81+a/dOROYaGqLjkmdGGgpZ
-X-Received: by 2002:a05:6638:138e:: with SMTP id w14mr36688489jad.33.1621218844408;
-        Sun, 16 May 2021 19:34:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621218844; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp845123lfm;
+        Sun, 16 May 2021 19:50:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzHxzJP76p1ze6U/X2dqDro/9G07ehKLsE/0Fm73yDmpCsZBisHIxbLDOU5R6EIxlCuSQj5
+X-Received: by 2002:a02:91c1:: with SMTP id s1mr53761375jag.61.1621219802864;
+        Sun, 16 May 2021 19:50:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621219802; cv=none;
         d=google.com; s=arc-20160816;
-        b=IFKzKhdAeZQEnL5ae69u7wcKBgqGm6hdawKYcl3Mr9i0c+UTdP3Tzz04YyfMEu6ZW5
-         Yu/u/Ww/A9sJaLY+hV0TWkixX3kgWK4xETm4suaC1B26uL6j1S3tFWHkdAbIf33qp/RD
-         dbLqGSLSvasZiPBRb1LlO+FUwPPMc6e/N2rZCdEbsYqoVgmdJX5WOxaQgb/6WfWBVDp8
-         EsjOaAtUxq0/PhSpo15D9wL7cDc9kXiFwyff+lqZgqs3Lh5Zb0tCNUB173WEdHlp/Gsr
-         yxThlSCQa6fYkkHuGOFJdHNqIf1gIhQXV7HbgWaVoTnJUUn+RNk+Sly98s4qLdOKDDhD
-         lkwQ==
+        b=xA+TbizfNONUIzr8iOkGBc1lnlIOy3YYGFJItDnQK44z7iTbuoeQoRRJFIsK7R9xM+
+         apxwp+8a39+SuIrt/hk6uXt89AeEyWMudV6rNQ4W4gC1N4fUi93TKrFch1w6sNVf3GTj
+         dqNWHd8CJFniFxHGXHYKW93sJ7CSCjbuFZBw1c+wbGAFuIBFxow7X6fALuN2XQIapBQu
+         feo0zi2qVHA2lfqYleqLWjoz4zM92+U+JZtp3Jut5tKMR2HYt3v0tTcU5qiQ3lamoqCy
+         VFkCgYaRa0gzl0CF3hq3Z1gsvGnLx7VVCvEgg17vHFxrJ49DWXXCHXm9jvTTXHfnJZqB
+         n9Nw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=V7wEQKqwQ5OwwmeDdQ+DZv3iAllQc9fyfYQrfy4q71E=;
-        b=l/EKk0hLqByPDm+z1JL1wUWt3MRSL2m+5u72pFP9tSJgxCZJzg426+pm52BboSmZ9K
-         qRa+MMQ/NX6kyx34MHuf6NBLX3rpuEfgWk4dmXt4vzJ3L6CfHxuuH8QAta+HxxX5sCTO
-         jreWL+6V6MXupxHJwKHplEZkZ1QRYXbzFpnCTgPp6oD3gl80zsw+t7ih1Xkwx+EYM/E2
-         OsQUFnS5aqfLHP1k6tXK3Q+5E733Ax45K0ivOZwS0T/qqNPo37FjwSm6dDVKAXlJaS1O
-         NCo6wkEiF6e3Sim9RcQwU1WJrdYxPrPEGAHw5TzGeG+cffa9hO+8W64cuOwqxg71m/To
-         qULA==
+        bh=beEKj4Gd8dt7XOEuyd5L1UnEL/PkIrpiS0HLpBQE1Ok=;
+        b=kxhYs+9+gMtxqcw1KVY3XBD8VTnPGZZZSG1F/UQ7jxxuMj7IOkEkmrIZ2J3N01GAsF
+         4caADwERiuP09UUcBo4JYWp1l+YEpa7Auxhxj1+6zHWSN7xcZv+hZilgeMtb2tS0MShV
+         5M2sKfDhWMpzR5hQ0jFUSypZouON6v5lXIfy8d3NTNYZ7c84WYzrii/QgWl93Fekqnp/
+         GRdGTgxD3+BenNi8DyZlBo4/R+OTlcGN4c1HI9JbGwVmkUdmSgHZQhsoDguWVWs7Bj+T
+         /Vqj71GoblChHpc8bWYDwEnNWAqS2o1L8vSr3DT6KZs39aixpcWlFN1IKnHb37+a/bo6
+         aEzA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=OaFMee8t;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=cVhA4ptR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u5si16678179jat.11.2021.05.16.19.34.04
+        by mx.google.com with ESMTPS id m17si6803886ilg.130.2021.05.16.19.50.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 16 May 2021 19:34:04 -0700 (PDT)
+        Sun, 16 May 2021 19:50:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=OaFMee8t;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=cVhA4ptR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:34504 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41414 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1liT51-0000em-Oc
-	for alex.bennee@linaro.org; Sun, 16 May 2021 22:34:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49248)
+	id 1liTKT-0006JP-Ec
+	for alex.bennee@linaro.org; Sun, 16 May 2021 22:50:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51840)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1liT4s-0000dS-Aq; Sun, 16 May 2021 22:33:54 -0400
-Received: from mail-yb1-xb34.google.com ([2607:f8b0:4864:20::b34]:41527)
+ id 1liTJx-0006HR-6x; Sun, 16 May 2021 22:49:29 -0400
+Received: from mail-yb1-xb2a.google.com ([2607:f8b0:4864:20::b2a]:35815)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1liT4q-0006ks-P3; Sun, 16 May 2021 22:33:54 -0400
-Received: by mail-yb1-xb34.google.com with SMTP id l7so6529005ybf.8;
- Sun, 16 May 2021 19:33:51 -0700 (PDT)
+ id 1liTJs-0007zR-G3; Sun, 16 May 2021 22:49:28 -0400
+Received: by mail-yb1-xb2a.google.com with SMTP id i4so6607240ybe.2;
+ Sun, 16 May 2021 19:49:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=V7wEQKqwQ5OwwmeDdQ+DZv3iAllQc9fyfYQrfy4q71E=;
- b=OaFMee8tVZKlExJiEatUiFTa4bRH69+wmMUkGRoEmNFxdidcCVi9EUqS7ue5KMyoux
- ZIeMCbioyMft8Xh3hkjdDAzXoYUA9dhdJVoz0WB4MYe8zXre/lBKEV70eYusYKcgQIcL
- Orjg43K9WbVNzsyMZY+GBz9XcKKaqQPRUaiR9nCN6wCdCuu8AaRbyAe7dVLy8CbGSJ2y
- sGOHEQp18c0TZ55AjNQvqzDORllw3JOTyY84DfZwbXj4k6OcNIjmYIdQSKuPMkjaMe4q
- QzbLm8lAg/ppdbNBHStx20jEmjSUytvRNFVK2ZLgBY3bwQ1+KW8JFdTZHfcO+IMwyJ/j
- UMWw==
+ bh=beEKj4Gd8dt7XOEuyd5L1UnEL/PkIrpiS0HLpBQE1Ok=;
+ b=cVhA4ptRlwxQpQhBxC69o9WojK+CXgQOcuaXz+xFt8ZLnQFYwXMh+cNZbURYU6Zoyq
+ Ia04/9XHWogGUWPtyaAi56kuYTkZbct+eZV2M7qiOYvJxp4x/09IxL1Zc3ApcYbTHXbR
+ j1aNiL3UcviQ1UKgJDR2xugU6QIyXMPOlJ986fA51h+bL8Sr89DRk/bki1BCEeaYDxwl
+ 5udV1OGRaS918h67OswSg0yfxOU4oY//AzXsXI0BsfPZa9hc9TplE/wv8q7tL8dS4/sa
+ ySTbNRUjwLAx08BK6PzE1nDgRQrxx1UIzaIow8Lpr7KwRetj4wzmGKMI0sbK0fwa/pzn
+ iV1w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=V7wEQKqwQ5OwwmeDdQ+DZv3iAllQc9fyfYQrfy4q71E=;
- b=m4/omGaHdgmkZ9wIyYHlQfqExNJAfyj/pJxtsNCyMcPDQr9xr0KKBCq53dv6H9nKvW
- NUhU/ShZgxQ1kzEeT3Phba0DYOp6MZjQ3lzmlyOX0Q2ogivwcfMi1wL0hGfu68tU2iGj
- C2vmgP5UL7RoH1G7r8tVBpRlqrgisSOKCqueihUkH7ekYWCe9Q3yH0CiqBRZNpuuBXYd
- l5HsTL4XksvhNtLFXwanDj6FPxUJEyeIt1kucIQgHSsFFq03fe70XH20FKWIa5i1cECW
- L+oGZ+h8DVcDU+VJE0OPsXTyo8dDAm4M8PQiDiZBZdEPLZ4p3DhYZd9wuoWmH7TLYmur
- 55Sg==
-X-Gm-Message-State: AOAM531B3Gv4mF9W5VrDaycuDBe04GkpqFDOQ1ySFns7xEGo5jh1jyWq
- BDvRgM/G+pBncL9LWUMlSo9Jd8TMDe96ry+/Y3Y=
+ bh=beEKj4Gd8dt7XOEuyd5L1UnEL/PkIrpiS0HLpBQE1Ok=;
+ b=RAltFpeGghEnJlAW1s0YGEX4DeP8VNUpu1mwX6yKxPSEzApebipn+mKNWBnOXilSOg
+ gvDUlCQYljo8EkdtUvVseao046CPlg4x1vSIAsCrNIWSISKXKaMzhvvfTZ5GQnk8Xaan
+ egStPKIn9xm4WDmcarpCSR9KTbhPYWKzxjfJYVnE66zJH7fkzhzVZ0RHOg/FSvi7Duvw
+ cn28Gyp8R/wlkE7swKpSyPy1xgE4pjxAIM3W7XF9Y5brpGYmTFV1wpZSMIwhg9frKKFB
+ SzXQPed+xOcMnldwIdCMadQqywlsfpmdVpN5PwmGlEI90smF7TNrJrG1Z4G9PKLpq6tP
+ 9GPQ==
+X-Gm-Message-State: AOAM530gS9gBIN6oyjX0UTNRFmSKzfJl0CJtNa4Hi8ZDag+xPyjBl4to
+ rbhAzxcbhyTBxCJPeTGFpVw0RyPF2eXnfnfHGNA=
 X-Received: by 2002:a05:6902:1543:: with SMTP id
- r3mr46586081ybu.332.1621218830803; 
- Sun, 16 May 2021 19:33:50 -0700 (PDT)
+ r3mr46651926ybu.332.1621219762423; 
+ Sun, 16 May 2021 19:49:22 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210515173716.358295-1-philmd@redhat.com>
- <20210515173716.358295-2-philmd@redhat.com>
-In-Reply-To: <20210515173716.358295-2-philmd@redhat.com>
+ <20210515173716.358295-10-philmd@redhat.com>
+In-Reply-To: <20210515173716.358295-10-philmd@redhat.com>
 From: Bin Meng <bmeng.cn@gmail.com>
-Date: Mon, 17 May 2021 10:33:39 +0800
-Message-ID: <CAEUhbmVYC6BE5En83KdujZu7uEbg4DKgNiz0MRUeWVAM7KdWiA@mail.gmail.com>
-Subject: Re: [PATCH v2 01/12] hw/mem/nvdimm: Use Kconfig 'imply' instead of
- 'depends on'
+Date: Mon, 17 May 2021 10:49:10 +0800
+Message-ID: <CAEUhbmV3XiE1P-+K7Aa10n8udZrh+WRG4tCipRXbYUyd_1PVAA@mail.gmail.com>
+Subject: Re: [PATCH v2 09/12] hw/pci-host/Kconfig: Add missing dependency
+ MV64361 -> I8259
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b34;
- envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb34.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b2a;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb2a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -112,43 +112,68 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "open list:RISC-V" <qemu-riscv@nongnu.org>,
- Eduardo Habkost <ehabkost@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Bin Meng <bin.meng@windriver.com>,
- Richard Henderson <richard.henderson@linaro.org>,
+Cc: "open list:RISC-V" <qemu-riscv@nongnu.org>,
+ Bin Meng <bin.meng@windriver.com>,
  "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Greg Kurz <groug@kaod.org>, qemu-arm <qemu-arm@nongnu.org>,
- Alistair Francis <alistair.francis@wdc.com>,
- Igor Mammedov <imammedo@redhat.com>, qemu-ppc <qemu-ppc@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <alistair.francis@wdc.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-ppc <qemu-ppc@nongnu.org>,
  David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GZ355ucCtlJx
+X-TUID: j3VBCoCrlrPC
 
-On Sun, May 16, 2021 at 1:37 AM Philippe Mathieu-Daud=C3=A9
+On Sun, May 16, 2021 at 1:52 AM Philippe Mathieu-Daud=C3=A9
 <philmd@redhat.com> wrote:
 >
-> Per the kconfig.rst:
+> From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 >
->   A device should be listed [...] ``imply`` if (depending on
->   the QEMU command line) the board may or  may not be started
->   without it.
+> Looking at the MV64340 model source, there is a dependency on the
+> 8259 interrupt controller:
 >
-> This is the case with the NVDIMM device (it is certainly possible
-> to start a machine without NVDIMM) , so use the 'imply' weak
-> reverse dependency to select the symbol.
+>   523     case MV64340_PCI_1_INTERRUPT_ACKNOWLEDGE_VIRTUAL_REG:
+>   524         /* FIXME: Should this be sent via the PCI bus somehow? */
+>   525         if (s->gpp_int_level && (s->gpp_value & BIT(31))) {
+>   526             ret =3D pic_read_irq(isa_pic);
+>   527         }
+>   528         break;
 >
-> Acked-by: Paolo Bonzini <pbonzini@redhat.com>
-> Acked-by: David Gibson <david@gibson.dropbear.id.au>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> Add it to Kconfig to avoid the following build failure:
+>
+>   /usr/bin/ld: libcommon.fa.p/hw_pci-host_mv64361.c.o: in function `mv643=
+61_read':
+>   hw/pci-host/mv64361.c:526: undefined reference to `isa_pic'
+>   /usr/bin/ld: hw/pci-host/mv64361.c:526: undefined reference to `pic_rea=
+d_irq'
+>
+> Fixes: dcdf98a9015 ("hw/pci-host: Add emulation of Marvell MV64361 PPC sy=
+stem controller")
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  default-configs/devices/ppc64-softmmu.mak | 1 -
->  hw/arm/Kconfig                            | 1 +
->  hw/i386/Kconfig                           | 1 +
->  hw/mem/Kconfig                            | 2 --
->  hw/ppc/Kconfig                            | 1 +
->  5 files changed, 3 insertions(+), 3 deletions(-)
+>  hw/pci-host/Kconfig | 1 +
+>  1 file changed, 1 insertion(+)
 >
 
 Reviewed-by: Bin Meng <bmeng.cn@gmail.com>
+
+There are some more codes that contain isa_pic. Maybe worth an additional c=
+heck.
+
+./hw/i386/x86.c:573:    intno =3D pic_read_irq(isa_pic);
+./hw/intc/i8259.c:58:DeviceState *isa_pic;
+./hw/intc/i8259.c:429:    isa_pic =3D dev;
+./hw/intc/apic.c:387:    } else if (!apic_accept_pic_intr(dev) ||
+!pic_get_output(isa_pic)) {
+./hw/intc/apic.c:562:    if (!apic_accept_pic_intr(dev) ||
+!pic_get_output(isa_pic)) {
+./hw/intc/apic.c:615:        return isa_pic !=3D NULL;
+./hw/intc/ioapic.c:78:        info->vector =3D pic_read_irq(isa_pic);
+./hw/hppa/pci.c:67:    return pic_read_irq(isa_pic);
+./hw/mips/gt64xxx_pci.c:777:        val =3D pic_read_irq(isa_pic);
+./hw/alpha/pci.c:70:    return pic_read_irq(isa_pic);
+./hw/pci-host/mv64361.c:526:            ret =3D pic_read_irq(isa_pic);
+./hw/pci-host/prep.c:121:    return pic_read_irq(isa_pic);
+./include/hw/intc/i8259.h:6:extern DeviceState *isa_pic;
+
+Regards,
+Bin

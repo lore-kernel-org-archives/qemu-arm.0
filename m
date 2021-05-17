@@ -1,102 +1,101 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp1165362lfm;
-        Mon, 17 May 2021 04:06:25 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyoxVTMm2zKr3IFlS+UBf8GXVbMVfX0DMSiYBTpRyCGWL3yDjmEa029Hf/mq7mKD4R61mpC
-X-Received: by 2002:ab0:1391:: with SMTP id m17mr50389459uae.29.1621249585689;
-        Mon, 17 May 2021 04:06:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621249585; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp1165523lfm;
+        Mon, 17 May 2021 04:06:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJySOhIFhdodPgYhLAxlViK6w/eu3PaO3pgpSI1PUQ1zJrt4lcac5P3Nc/wO0ysa7wbpTelk
+X-Received: by 2002:a1f:df07:: with SMTP id w7mr45853538vkg.10.1621249596187;
+        Mon, 17 May 2021 04:06:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621249596; cv=none;
         d=google.com; s=arc-20160816;
-        b=jBiEwNqfGTs0tTkiz7/emkN/0bjokBymxoG05sFucLvsBs0kyhaTGtSNosdmKTfAul
-         r2rQmYpPr4shVhcyXouQHdRAvPF+JpHgAsB1SUWMVdH1CFosqQktgAlBthvXCucY4jWG
-         P9rspoxKLkIZal6Zv1qvogSgsfogYu+kmzIgQEIrKOBDcOw83zDWXBVFRO3WfOAEFOtS
-         6lT5hwZ5tOhJxVW2BC4eSNcumGPWduQetydrQZtaCLWg60odwr11O+02FdF3aGTsEMwJ
-         sARey2ecWmx/fsjp5H8g9MlXfazq6JZfVtPHzGrXAmn9h7Fd4ve69+VWRdjpbpwqKPB+
-         CqXg==
+        b=i3BaiL9CmqUSqNcwFl3RYZ2phyQ2SVdL38LvSPmnGxoZMhYQo5Wz4MUaSk3FGPq4zg
+         /9jd1NUGCRwHOZezT+PYBOOni3I5HwkkHOVJ1WHdoBP4oAXWOiqYzfJqQAh5rJKZVE81
+         mwSyPNfTa/9esqwOn4ze3Pb2bZ48z5dch0f1nvXUqGYePfz3yQqgp9lWjd6LfpqtweLY
+         v64gn/jZ/v9RslgEcudCPhB6ACe7hLk4/apTxePCrs5VolMiH2WnSKg+WLCB/YGVnoo8
+         Hk7/gHDfDx0waEbET+RWYujwZ1js5DKJ1j5JS95psbQNxj4BC7wSIoBnrjr3I/MH+Y8l
+         kZGw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=FbXrbsFgQfYCIQJ6BwzHhPAnG5B1R409h9MqBprv7hI=;
-        b=sCc46i9G2Zstj6+FdfFJHGCJq3n+jRYXp5of0LqyXdz1rjIrcqaMANkFo474Oz8hqM
-         arqjWIU7F10ynwAXEt29C78NbFGlh2SVONBCbIQZhx+lVqimKagcFzGmTp/GmagkKzW4
-         RixMVafHrmI4MQNx9v1/8aEl6MSdise25shqLbjM8gBR0maC6YTDudE3fuNlw/nBJFkx
-         lQtz6ZlcVEtMIveLJW3nynnIB+nSLtbLi38YUNucnY8z+xe9ir3UFRL2Gmvk9sJf0JOB
-         x3xSv2GRiDWTsYR1OXKQY3AnnEF60zq8C6MhqPzZ3rn5MkDWXVZGlXP8rCPhsknzf2lD
-         uJ1Q==
+        bh=mNroUX3BeAka8NdiLyy2HrifOJFWYU+B+TgnTgbcsqY=;
+        b=IVHgnrbZmHpofxbeP881nZUoicBagCgsLVMbE6+8jbBe0F1jU6RedNrWQlvMcz8ycu
+         ztuE9xEgsAG/P50Y9khIcdfvcdGFgpuPsi66bz5R4Kt/TW+bu8iFngU+KLymjesvrGS1
+         v2+O70m9hL1DXRyPgy+rXHu47v+1H7GijzTEWSmT+s21pXvt9sEf/ij9GAEFo8gVDURG
+         L9e6WtcriLY+mHL2bgzE/YaSFwD/EVgOYdryQqLFbNh8CZzJaIlsyUfvV9pZnNl1I3Xy
+         tkmDyOBaoXs3uZBcp2+OlG3cZUbDmRZ48y3K39Cz3jArCnhVptOeFgCC9MUl23Ek/kh7
+         hR4w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=T5fEWEhp;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="htA/JO62";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 20si950650vkg.7.2021.05.17.04.06.25
+        by mx.google.com with ESMTPS id p4si7911310vsj.424.2021.05.17.04.06.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 17 May 2021 04:06:25 -0700 (PDT)
+        Mon, 17 May 2021 04:06:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=T5fEWEhp;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="htA/JO62";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:35164 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36100 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lib4q-0007ue-VG
-	for alex.bennee@linaro.org; Mon, 17 May 2021 07:06:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55980)
+	id 1lib51-000071-EP
+	for alex.bennee@linaro.org; Mon, 17 May 2021 07:06:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55926)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1liasC-0007lt-3z; Mon, 17 May 2021 06:53:20 -0400
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435]:36569)
+ id 1lias1-0007bC-Q7; Mon, 17 May 2021 06:53:12 -0400
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:37810)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1liasA-00078o-74; Mon, 17 May 2021 06:53:19 -0400
-Received: by mail-wr1-x435.google.com with SMTP id c14so4083614wrx.3;
- Mon, 17 May 2021 03:53:16 -0700 (PDT)
+ id 1lias0-00073s-8x; Mon, 17 May 2021 06:53:09 -0400
+Received: by mail-wr1-x42c.google.com with SMTP id q5so5887107wrs.4;
+ Mon, 17 May 2021 03:53:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=FbXrbsFgQfYCIQJ6BwzHhPAnG5B1R409h9MqBprv7hI=;
- b=T5fEWEhpwXpXOkQHpmJuynHThyXwdX0seI3TH++wZQvZxbkHdRL+6wkwuLd0cT2exI
- l1ekMpIrG8Z5LOtum8t2+1KXOyMSHUR2j2VOxy+jfoD6bspKgdCaLS1fIKla5zefMgnO
- ZKcbNru/IkzqMITB1fv/80xZ/R1GhMGfkAa7mYhF0ZUmbExIhEbOY817eDLEMYOV/tZL
- zmRh7lF3aPcY2W8UbANJtZ9VJ3s4ORPutyR0aGERw2c6leTIi9SzTrFAaE6TBasJMpHZ
- b5+hqPlcJsd1nFAU3S0tFzg2309hsHdDIcuCBT7tgpARcOp6FQ2eQ3zZMiV+MBnXARsR
- Dhww==
+ bh=mNroUX3BeAka8NdiLyy2HrifOJFWYU+B+TgnTgbcsqY=;
+ b=htA/JO62MIPWqMM8tgAdaw8+n8BDVcJmTO6X9HNgLDImG7fCL54Hsf4Ua24ZjaYeAY
+ eRuOYkPGrbnw4AWxRWP7fUCYAji7KmG8OGKUZIZc/hEnNTZ8r/X23/P1jDFmFPLwkpot
+ Qr8irfpNnCQscmEoiQYLUhXopnmU9sJbFYzcM2wg3x81Rw3syjnvqIVu8cLxu3GlG1xW
+ E6CDvp2YwD/htIBWiGb+FuLkFLUeZu7crgfdmzk0q0h1Q3QZcpVHNdMNhd420CdLkhwY
+ S5//4ebo9obU4cCqW3G6LpBF92MSGet81re/9OvWkMv7r95O8ZnHUsISxlWHfZI4yS6g
+ xzOw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=FbXrbsFgQfYCIQJ6BwzHhPAnG5B1R409h9MqBprv7hI=;
- b=szk+JgALXxJhNkAuZWuCygdFWS+gjRjofoWEUAS+RVkzEs0S5l+kVk5Oe5CNqVVebd
- MNzWfuNdZs3w1haM39wVWd2iMiVM7XFBJPQWo1u3CKl0uLf3u7qr5xxERTbrf/gspc0S
- ZMf/g0SqUm79rPo/kOaUJNZj8YLMO4SIh9qVZ+NA+ps+bq4zjN1QeJew+E1tNkHixTwR
- UBJeUXe6xLII9wV/24AEHcKC9M1j/cwfLxlWnx244mX0rHVF9uThAghW33Q4pydCZTgS
- Dwbldoy3Eu54jnZki7+h6J9zJORukujaWnmNSgt0rOKFm2a5u2JzD2AXWpMuFmyGRGpM
- qXWg==
-X-Gm-Message-State: AOAM530fOR2gXOSF8B9w0CV11wlLWdfaCv6njyBcNbxg6q5KwzzFJAC+
- qJ1PKFtsNXaDg7JhAXgoHfm/cood8+3Pow==
-X-Received: by 2002:a05:6000:1189:: with SMTP id
- g9mr18861219wrx.385.1621248795135; 
- Mon, 17 May 2021 03:53:15 -0700 (PDT)
+ bh=mNroUX3BeAka8NdiLyy2HrifOJFWYU+B+TgnTgbcsqY=;
+ b=dxClm1KC6OgbCzRsgFrOiZlaJItGsKGLqBvZu0QQSj1eEZVFNltGDesgeE8DoPU2dl
+ 697HFk9oFU/FVTrBbrV2kCp2VDUZ0siyCC39gJJw3fzRVzy5oxlSyPnQRd9BKdkVKuvc
+ VoNTz0kqe8Z8mjInkKw58o9i4mKwKd6WHOhwei2h0kh2JL//eD9/RNVXA0YznhYOtiJu
+ ZYpZSw9CgEnyEYmtXaz9hAg/0VqxGe0ebgeFZ5hAizhvflj4bvq4rNBWEFAmx+lHXIX0
+ tEsb0qWHrY8flsbc+hsFIESwKnV/yvfEtxUlLAW8jlkZaJ4XW0iTb+VOCELU3l25LGSY
+ cryg==
+X-Gm-Message-State: AOAM5312z7dr3BrGRiUa+NMwJa/FJGdLo6jO+OB7GTn4J6Hk7A1xjFV4
+ StLFxTRd5EjIsockKGBU6glp1Iqecf7EBg==
+X-Received: by 2002:a5d:52c5:: with SMTP id r5mr73462267wrv.391.1621248785231; 
+ Mon, 17 May 2021 03:53:05 -0700 (PDT)
 Received: from localhost.localdomain (31.red-83-51-215.dynamicip.rima-tde.net.
  [83.51.215.31])
- by smtp.gmail.com with ESMTPSA id b62sm14383119wmc.39.2021.05.17.03.53.13
+ by smtp.gmail.com with ESMTPSA id e3sm6058502wru.48.2021.05.17.03.53.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 17 May 2021 03:53:14 -0700 (PDT)
+ Mon, 17 May 2021 03:53:04 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v7 19/23] cpu: Move CPUClass::asidx_from_attrs to SysemuCPUOps
-Date: Mon, 17 May 2021 12:51:36 +0200
-Message-Id: <20210517105140.1062037-20-f4bug@amsat.org>
+Subject: [PATCH v7 17/23] cpu: Move CPUClass::get_crash_info to SysemuCPUOps
+Date: Mon, 17 May 2021 12:51:34 +0200
+Message-Id: <20210517105140.1062037-18-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.3
 In-Reply-To: <20210517105140.1062037-1-f4bug@amsat.org>
 References: <20210517105140.1062037-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::435;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x435.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42c.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -124,41 +123,35 @@ Cc: qemu-riscv@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UYfkyBEItLoj
+X-TUID: 4fE8HQ/K+Zq3
+
+cpu_get_crash_info() is called on GUEST_PANICKED events,
+which only occur in system emulation.
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/core/cpu.h            | 3 ---
+ include/hw/core/cpu.h            | 1 -
  include/hw/core/sysemu-cpu-ops.h | 5 +++++
  hw/core/cpu-sysemu.c             | 4 ++--
- target/arm/cpu.c                 | 2 +-
  target/i386/cpu.c                | 2 +-
- 5 files changed, 9 insertions(+), 7 deletions(-)
+ target/s390x/cpu.c               | 2 +-
+ 5 files changed, 9 insertions(+), 5 deletions(-)
 
 diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index fce9bdc686e..cbc43f11376 100644
+index 1b7e815c871..6f5e04ae580 100644
 --- a/include/hw/core/cpu.h
 +++ b/include/hw/core/cpu.h
-@@ -108,8 +108,6 @@ struct AccelCPUClass;
-  *       associated memory transaction attributes to use for the access.
-  *       CPUs which use memory transaction attributes should implement this
-  *       instead of get_phys_page_debug.
-- * @asidx_from_attrs: Callback to return the CPU AddressSpace to use for
-- *       a memory access with the specified memory transaction attributes.
-  * @gdb_read_register: Callback for letting GDB read a register.
-  * @gdb_write_register: Callback for letting GDB write a register.
-  * @gdb_num_core_regs: Number of core registers accessible to GDB.
-@@ -151,7 +149,6 @@ struct CPUClass {
-     hwaddr (*get_phys_page_debug)(CPUState *cpu, vaddr addr);
-     hwaddr (*get_phys_page_attrs_debug)(CPUState *cpu, vaddr addr,
-                                         MemTxAttrs *attrs);
--    int (*asidx_from_attrs)(CPUState *cpu, MemTxAttrs attrs);
-     int (*gdb_read_register)(CPUState *cpu, GByteArray *buf, int reg);
-     int (*gdb_write_register)(CPUState *cpu, uint8_t *buf, int reg);
- 
+@@ -150,7 +150,6 @@ struct CPUClass {
+     int (*memory_rw_debug)(CPUState *cpu, vaddr addr,
+                            uint8_t *buf, int len, bool is_write);
+     void (*dump_state)(CPUState *cpu, FILE *, int flags);
+-    GuestPanicInformation* (*get_crash_info)(CPUState *cpu);
+     void (*dump_statistics)(CPUState *cpu, int flags);
+     int64_t (*get_arch_id)(CPUState *cpu);
+     bool (*get_paging_enabled)(const CPUState *cpu);
 diff --git a/include/hw/core/sysemu-cpu-ops.h b/include/hw/core/sysemu-cpu-ops.h
-index 19247d330dc..894bb95e4fa 100644
+index ed212085f89..c6ec9b0a7f6 100644
 --- a/include/hw/core/sysemu-cpu-ops.h
 +++ b/include/hw/core/sysemu-cpu-ops.h
 @@ -16,6 +16,11 @@
@@ -166,68 +159,68 @@ index 19247d330dc..894bb95e4fa 100644
   */
  typedef struct SysemuCPUOps {
 +    /**
-+     * @asidx_from_attrs: Callback to return the CPU AddressSpace to use for
-+     *       a memory access with the specified memory transaction attributes.
++     * @get_crash_info: Callback for reporting guest crash information in
++     * GUEST_PANICKED events.
 +     */
-+    int (*asidx_from_attrs)(CPUState *cpu, MemTxAttrs attrs);
++    GuestPanicInformation* (*get_crash_info)(CPUState *cpu);
      /**
-      * @get_crash_info: Callback for reporting guest crash information in
-      * GUEST_PANICKED events.
+      * @virtio_is_big_endian: Callback to return %true if a CPU which supports
+      *       runtime configurable endianness is currently big-endian.
 diff --git a/hw/core/cpu-sysemu.c b/hw/core/cpu-sysemu.c
-index d55ef8d23d1..ba53c2eaa85 100644
+index bad7d2cb016..90b5ac8eb9e 100644
 --- a/hw/core/cpu-sysemu.c
 +++ b/hw/core/cpu-sysemu.c
-@@ -72,8 +72,8 @@ int cpu_asidx_from_attrs(CPUState *cpu, MemTxAttrs attrs)
+@@ -138,8 +138,8 @@ GuestPanicInformation *cpu_get_crash_info(CPUState *cpu)
      CPUClass *cc = CPU_GET_CLASS(cpu);
-     int ret = 0;
+     GuestPanicInformation *res = NULL;
  
--    if (cc->asidx_from_attrs) {
--        ret = cc->asidx_from_attrs(cpu, attrs);
-+    if (cc->sysemu_ops->asidx_from_attrs) {
-+        ret = cc->sysemu_ops->asidx_from_attrs(cpu, attrs);
-         assert(ret < cpu->num_ases && ret >= 0);
+-    if (cc->get_crash_info) {
+-        res = cc->get_crash_info(cpu);
++    if (cc->sysemu_ops->get_crash_info) {
++        res = cc->sysemu_ops->get_crash_info(cpu);
      }
-     return ret;
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index a56de47d1fa..f8fc0d01956 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1944,6 +1944,7 @@ static gchar *arm_gdb_arch_name(CPUState *cs)
- 
- #ifndef CONFIG_USER_ONLY
- static const struct SysemuCPUOps arm_sysemu_ops = {
-+    .asidx_from_attrs = arm_asidx_from_attrs,
-     .write_elf32_note = arm_cpu_write_elf32_note,
-     .write_elf64_note = arm_cpu_write_elf64_note,
-     .virtio_is_big_endian = arm_cpu_virtio_is_big_endian,
-@@ -1989,7 +1990,6 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
-     cc->gdb_write_register = arm_cpu_gdb_write_register;
- #ifndef CONFIG_USER_ONLY
-     cc->get_phys_page_attrs_debug = arm_cpu_get_phys_page_attrs_debug;
--    cc->asidx_from_attrs = arm_asidx_from_attrs;
-     cc->sysemu_ops = &arm_sysemu_ops;
- #endif
-     cc->gdb_num_core_regs = 26;
+     return res;
+ }
 diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-index 44c9546eda2..d050245b502 100644
+index f8750f6400f..1106dc3fc98 100644
 --- a/target/i386/cpu.c
 +++ b/target/i386/cpu.c
 @@ -6716,6 +6716,7 @@ static Property x86_cpu_properties[] = {
  
  #ifndef CONFIG_USER_ONLY
  static const struct SysemuCPUOps i386_sysemu_ops = {
-+    .asidx_from_attrs = x86_asidx_from_attrs,
-     .get_crash_info = x86_cpu_get_crash_info,
-     .write_elf32_note = x86_cpu_write_elf32_note,
-     .write_elf64_note = x86_cpu_write_elf64_note,
-@@ -6752,7 +6753,6 @@ static void x86_cpu_common_class_init(ObjectClass *oc, void *data)
-     cc->get_paging_enabled = x86_cpu_get_paging_enabled;
- 
- #ifndef CONFIG_USER_ONLY
--    cc->asidx_from_attrs = x86_asidx_from_attrs;
++    .get_crash_info = x86_cpu_get_crash_info,
+     .legacy_vmsd = &vmstate_x86_cpu,
+ };
+ #endif
+@@ -6750,7 +6751,6 @@ static void x86_cpu_common_class_init(ObjectClass *oc, void *data)
+     cc->asidx_from_attrs = x86_asidx_from_attrs;
      cc->get_memory_mapping = x86_cpu_get_memory_mapping;
      cc->get_phys_page_attrs_debug = x86_cpu_get_phys_page_attrs_debug;
-     cc->sysemu_ops = &i386_sysemu_ops;
+-    cc->get_crash_info = x86_cpu_get_crash_info;
+     cc->write_elf64_note = x86_cpu_write_elf64_note;
+     cc->write_elf64_qemunote = x86_cpu_write_elf64_qemunote;
+     cc->write_elf32_note = x86_cpu_write_elf32_note;
+diff --git a/target/s390x/cpu.c b/target/s390x/cpu.c
+index aafe5fa2ef5..470aaeb72e6 100644
+--- a/target/s390x/cpu.c
++++ b/target/s390x/cpu.c
+@@ -478,6 +478,7 @@ static void s390_cpu_reset_full(DeviceState *dev)
+ 
+ #ifndef CONFIG_USER_ONLY
+ static const struct SysemuCPUOps s390_sysemu_ops = {
++    .get_crash_info = s390_cpu_get_crash_info,
+     .legacy_vmsd = &vmstate_s390_cpu,
+ };
+ #endif
+@@ -522,7 +523,6 @@ static void s390_cpu_class_init(ObjectClass *oc, void *data)
+     cc->gdb_write_register = s390_cpu_gdb_write_register;
+ #ifndef CONFIG_USER_ONLY
+     cc->get_phys_page_debug = s390_cpu_get_phys_page_debug;
+-    cc->get_crash_info = s390_cpu_get_crash_info;
+     cc->write_elf64_note = s390_cpu_write_elf64_note;
+     cc->sysemu_ops = &s390_sysemu_ops;
+ #endif
 -- 
 2.26.3
 

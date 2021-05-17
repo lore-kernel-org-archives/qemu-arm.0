@@ -1,90 +1,91 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp1272121lfm;
-        Mon, 17 May 2021 06:19:22 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzn7XArjsFNwTtiJRn/c8mYERiURD81impaShqTXUt0HrRtSH8KjVSnVmr8HolcF8xJB+CS
-X-Received: by 2002:a05:6602:221a:: with SMTP id n26mr31033112ion.205.1621257561721;
-        Mon, 17 May 2021 06:19:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621257561; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp1274418lfm;
+        Mon, 17 May 2021 06:22:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzfXkqnMpLUMpCfgpkChfA/hMJfyUzWHjoLYLgBB2cF1JRM6nE35iTZ9T4uYmwST4/wryLO
+X-Received: by 2002:a92:ce07:: with SMTP id b7mr25368835ilo.94.1621257725664;
+        Mon, 17 May 2021 06:22:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621257725; cv=none;
         d=google.com; s=arc-20160816;
-        b=fypEMzluO/S7nXLmYTPAL9U9vfzGjLMVFq0VoYSjO+T5H0ZAcRo8mAQtICs/7EHIgU
-         Hlcy8k7X6XYSiFDRDCvepSc+byutio1ks60SuXqv+KKUnHvCd/KNgWnqpsZBFiUgD4ur
-         vNJli140FEZA3V9jEmfXX2JepcLyqFlM4RPT+/TY1anPip176WBf4tUWLMFigpIxceJ3
-         HkYnP5kByyyLInLBoCVlZwsjE8IMDJsYd2VWLhmQ7jKU8yGJNJJl6ymUJksYkcBD5yRE
-         zP9X3xKaz3gF5+mazU2h+y3yr6x9JRP/NbwKFqs9VqfqLZG8684GsM84KSY56q9FD4UG
-         wenw==
+        b=h67X0aEPStuKjxi8LeA9JIt4yD2neJevh/kOtPpxxA7kFrnluYrNHMcd32jsn7Wx5e
+         iTXp8MBVg2dOk0EkPO0Aa+GxttTKcF5AKp/pbFKrekRDfWTSmFqiLNPqsny5w6nPWumB
+         TzrwIoCbEO+S00nNRI8U/sr5n2ok4Ty4huWC4pDKWd2tq9T6+/HCqWxZZKn/FqYzn520
+         lG7pV0PfHUDty/d8ctRT7pzJ1ewYUtaxxtp+XzAVXXrCeGkFbjW5VezOUqD1KoMC2ek0
+         Oi7tWbGQnegD8LuGp4BNblJ1IyG5ahj1rcC43v5h2Ka/yVH6YKKKXEPSRyWnPTtVPG77
+         SnHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-language
          :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:references:to:subject:from;
-        bh=VKpH4PAzEzmLgB2evhgLiAQWnWbj1ceXy8Aa/+if5iQ=;
-        b=A/vRDJVvH7SEbHUQkbreB6vjEr7P0XyAR3xNAizGHtIhubk8xmUyUxHF2UihFO+h/D
-         zOHKymGVmVTBONuGgPhnrEGkCt7RUdts6liu40oDFxlYmIOP5WExtX6KRug3jQs78wCZ
-         hYfKVMH9S+P9ARIjtWnB6klgtjjI2B0x3CegXMacza0P0FxS+Vu54xaLK3BFTkUR6LV2
-         utyTtiiwrGG38+M8A3Fvta1ug5Yc+Ng8iqEpAZLHUu02LCYqFktzi5WPZDZxablQIdgB
-         0FypS4UsgvzlFLirf9n6Py6my0IJ/xHpd/ntMov20WqUbUWRDSzlu981fjWZuzh/mXNw
-         fUfw==
+         :message-id:from:references:to:subject;
+        bh=Xgwc50rx8bsAdGvYn8hrtVMjoCNbyWi98ymM2ZA0ZIk=;
+        b=pFB7HtN+fa7C8vq/OVpeKHQsnu76OfNeQ2ZI78qjzidN2+t/royRKhXt8lgDL7+Rdm
+         MdXUSt+h8PlfRtBrS+szI1IdJ0r9mwzMXZuPzk2MFssdLFDPG9kaujATg+UX29ggvC5y
+         UP4f78d9iv5MGJolkIb6SoreLYwzpqTU93LPBMfk2aOHhb90bWuIy+c5CoONoE+XEfgx
+         0JeZl3nIDyGQDTDPOS2Iaq+yFVvOapl5+3XTI9nwzu+RsjQbPrwSsfYl4YaeoKa3SR4m
+         UilLNqshpS2SDO+j9p4unXcrn61t8SNoGpRJyu5F1UXUalYlRN+peqGiPjY5lg/tEYFL
+         ZBJg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o1si19345979jat.48.2021.05.17.06.19.21
+        by mx.google.com with ESMTPS id o13si9776805ilt.118.2021.05.17.06.22.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 17 May 2021 06:19:21 -0700 (PDT)
+        Mon, 17 May 2021 06:22:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:49442 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52066 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lid9V-0007Se-4R
-	for alex.bennee@linaro.org; Mon, 17 May 2021 09:19:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37866)
+	id 1lidC9-0000xJ-0X
+	for alex.bennee@linaro.org; Mon, 17 May 2021 09:22:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39300)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1lid9N-0007SH-9V; Mon, 17 May 2021 09:19:13 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:2585)
+ id 1lidC0-0000x6-RI; Mon, 17 May 2021 09:21:56 -0400
+Received: from szxga07-in.huawei.com ([45.249.212.35]:2645)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1lid9K-00030P-U6; Mon, 17 May 2021 09:19:13 -0400
-Received: from dggems701-chm.china.huawei.com (unknown [172.30.72.59])
- by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4FkKR24BKmzlch7;
- Mon, 17 May 2021 21:16:46 +0800 (CST)
+ id 1lidBy-0005AL-6F; Mon, 17 May 2021 09:21:56 -0400
+Received: from dggems702-chm.china.huawei.com (unknown [172.30.72.59])
+ by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4FkKTj3RcyzCtBs;
+ Mon, 17 May 2021 21:19:05 +0800 (CST)
 Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
- dggems701-chm.china.huawei.com (10.3.19.178) with Microsoft SMTP Server
+ dggems702-chm.china.huawei.com (10.3.19.179) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2176.2; Mon, 17 May 2021 21:19:01 +0800
+ 15.1.2176.2; Mon, 17 May 2021 21:21:50 +0800
 Received: from [10.174.187.128] (10.174.187.128) by
  dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
- 15.1.2176.2; Mon, 17 May 2021 21:19:00 +0800
-From: "wangyanan (Y)" <wangyanan55@huawei.com>
+ 15.1.2176.2; Mon, 17 May 2021 21:21:49 +0800
 Subject: Re: [RFC PATCH v3 2/9] device_tree: Add qemu_fdt_add_path
-To: David Gibson <david@gibson.dropbear.id.au>
+To: Andrew Jones <drjones@redhat.com>
 References: <20210516102900.28036-1-wangyanan55@huawei.com>
- <20210516102900.28036-3-wangyanan55@huawei.com> <YKHe6SQzmfHzGqW6@yekko>
-Message-ID: <09c816e0-72ec-566a-7e51-26b6075389ef@huawei.com>
-Date: Mon, 17 May 2021 21:18:59 +0800
+ <20210516102900.28036-3-wangyanan55@huawei.com>
+ <20210517062741.t44x3gnlukczmjit@gator.home>
+From: "wangyanan (Y)" <wangyanan55@huawei.com>
+Message-ID: <91dbcfd1-9a42-ed67-2ad8-45a88e703e95@huawei.com>
+Date: Mon, 17 May 2021 21:21:49 +0800
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
  Thunderbird/78.4.0
 MIME-Version: 1.0
-In-Reply-To: <YKHe6SQzmfHzGqW6@yekko>
-Content-Type: text/plain; charset="windows-1252"; format=flowed
+In-Reply-To: <20210517062741.t44x3gnlukczmjit@gator.home>
+Content-Type: text/plain; charset="utf-8"; format=flowed
 Content-Transfer-Encoding: 7bit
 Content-Language: en-US
 X-Originating-IP: [10.174.187.128]
 X-ClientProxiedBy: dggeme714-chm.china.huawei.com (10.1.199.110) To
  dggpemm500023.china.huawei.com (7.185.36.83)
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.32;
- envelope-from=wangyanan55@huawei.com; helo=szxga06-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.35;
+ envelope-from=wangyanan55@huawei.com; helo=szxga07-in.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
 X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -99,46 +100,50 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Barry Song <song.bao.hua@hisilicon.com>,
- Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
  "Michael S . Tsirkin" <mst@redhat.com>, wanghaibin.wang@huawei.com,
  zhukeqian1@huawei.com, qemu-devel@nongnu.org, yangyicong@huawei.com,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org, Alistair
- Francis <alistair.francis@wdc.com>, prime.zeng@hisilicon.com,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+ Alistair Francis <alistair.francis@wdc.com>, prime.zeng@hisilicon.com,
  Paolo Bonzini <pbonzini@redhat.com>, yuzenghui@huawei.com,
  Igor Mammedov <imammedo@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nkXMlqcSb0B2
+X-TUID: 00FSB2xuonYF
 
 
-On 2021/5/17 11:11, David Gibson wrote:
+On 2021/5/17 14:27, Andrew Jones wrote:
 > On Sun, May 16, 2021 at 06:28:53PM +0800, Yanan Wang wrote:
->> From: Andrew Jones<drjones@redhat.com>
->>
+>> From: Andrew Jones <drjones@redhat.com>
+> Hi Yanan,
+>
+> This looks good, but the authorship is no longer correct. You've
+> completely rewritten it, so I think the most I deserve is a
+> Co-developed-by and maybe even just a Suggested-by. When changing
+> the authorship and tags, you can also add a
+Hi Drew,
+
+Thanks for pointing out this, I will correct it.
+> Reviewed-by: Andrew Jones <drjones@redhat.com>
+Thanks,
+Yanan
+> Thanks,
+> drew
+>
+>
 >> qemu_fdt_add_path() works like qemu_fdt_add_subnode(), except it
 >> also adds all missing subnodes from the given path. We'll use it
 >> in a coming patch where we will add cpu-map to the device tree.
 >>
 >> And we also tweak an error message of qemu_fdt_add_subnode().
 >>
->> Cc: David Gibson<david@gibson.dropbear.id.au>
->> Cc: Alistair Francis<alistair.francis@wdc.com>
->> Signed-off-by: Andrew Jones<drjones@redhat.com>
->> Co-developed-by: Yanan Wang<wangyanan55@huawei.com>
->> Signed-off-by: Yanan Wang<wangyanan55@huawei.com>
-Hi David,
-> Reviewed-by: David Gibson<david@gibson.dropbear.id.au>
-Thanks!
-> Wonder if I should integrate a function like this into libfdt.
-
-I think it's meaningful to add a function in libfdt that serves as helper
-to add subpath but not subnode to a given parent node, like
-fdt_add_subpath_namelen(...). This will be useful when we need to
-frequently add different paths to a node.
-
-Thanks,
-Yanan
+>> Cc: David Gibson <david@gibson.dropbear.id.au>
+>> Cc: Alistair Francis <alistair.francis@wdc.com>
+>> Signed-off-by: Andrew Jones <drjones@redhat.com>
+>> Co-developed-by: Yanan Wang <wangyanan55@huawei.com>
+>> Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
 >> ---
 >>   include/sysemu/device_tree.h |  1 +
 >>   softmmu/device_tree.c        | 44 ++++++++++++++++++++++++++++++++++--
@@ -218,3 +223,7 @@ Yanan
 >>   void qemu_fdt_dumpdtb(void *fdt, int size)
 >>   {
 >>       const char *dumpdtb = current_machine->dumpdtb;
+>> -- 
+>> 2.19.1
+>>
+> .

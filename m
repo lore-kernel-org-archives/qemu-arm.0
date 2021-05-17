@@ -1,187 +1,174 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp680631lfm;
-        Tue, 18 May 2021 11:50:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyQuV0qzAK8XZ3rbtL+m+ZLGzT5/GsUANPEFzOq2zslx67jfh87gG1oPIqjxQryRxVYJuuF
-X-Received: by 2002:a17:906:2596:: with SMTP id m22mr7646871ejb.175.1621363855525;
-        Tue, 18 May 2021 11:50:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621363855; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp1576801lfm;
+        Mon, 17 May 2021 12:41:06 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJybSzrBVnjnSu5Zvi0EZ674K78xOqKFI1mIuEHEIZOVcJL0DCjm/IMF7h5sYNZzyuMC4bvb
+X-Received: by 2002:a4a:c446:: with SMTP id h6mr1203544ooq.82.1621280465895;
+        Mon, 17 May 2021 12:41:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621280465; cv=none;
         d=google.com; s=arc-20160816;
-        b=ao/JgwBGa0b8WZ1+xS+6iiNiRfc19iBTPEAIsUowq6OmmSFA43dwrMoiw90Lo4nyiK
-         o2fJvtkoxg/q5mwEWgg/sP0i0l+OYPhIzbLMwLjTDRK0js+uXNT+/K9NTDnRi/GvZ0CC
-         e8kYt8arm1wJL+LhHLWx/djdBXAkoJ9hYu1EHt0h4l4w7zwlfamHV/8jmLdAzX5LOvRS
-         p3D2PhafLL5qFZXKirBJr4j21/2ON+BWrMdEYg789DkKXobvNxW+6whAZ9OxN06+1HeS
-         UdQ6TwzpghMtht+VQrg+gxWMPvm2GmURBqN5gsw5MNaD3/ggaYuxZK1PwoqTx6IyBsMI
-         8CHA==
+        b=rxN5PuxRq13z53lzauw4t0lljjSSXzQOZbbA6k3duxzI76sbz3Z87j+7YARH0JgP6i
+         3Mu3pekFalKgR7fmQDfL05JTDrpEt+pJ4Gc+H/IAIhhVcwUwWMRtJwNOV66AFlPcbiX5
+         W25TeTMJMg3+D21ECVkFwxBetbuqtwi+vg34ijod3ZsrCX6BU/IzAZEDqunaz2if/flC
+         xWRxRwjJLcY75qaLZtcQfpJ0BOSM+XO29hkICx9i1URrHVs91JtPzhx7unHJ0X84nCfQ
+         Xux/XfvcvbbpGXiUlo5UMAWS2FouOoW8YTYawRVIO+hwQPposg+KoZEacb/1JS9pOtPi
+         LAIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:mime-version:content-transfer-encoding
-         :content-language:accept-language:in-reply-to:references:message-id
-         :date:thread-index:thread-topic:subject:cc:to:from;
-        bh=CdsgeIrkab2+HMEkQx+YVlzPEfQyqW8O6am3guvRGTo=;
-        b=KLBU5oKsz1UXOfciBSCFZKpkWxLtuP9se3ztHiR87G/HISlN4Wl0zkdqNo+c4C5Stc
-         O+yCYULoRaByIcQ5lErCajG2QNJ6W2tQxdxwUM82VxHL/CZ4MAseWDcf8le8sT/Rxlib
-         0VrbCzDj50qyB972IPVz8ThkjudGvYEyXbnIHNpr2nBx6NK5obeuPADhgupFhB8s8Fj6
-         bjIc/cTnpDV4cqv4J8DFkkTCyUEyYqjrObq33qI1TZbnKVsxX7eMQdR4Zy07K9a8uQk9
-         V/19NKUjrSMGuiiFkkRhpt0TZByS86zibMA8dQnZYpJM0CstYjPzYsysGMsJZXN71CwM
-         31Fg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-disposition:in-reply-to:mime-version:references:message-id
+         :subject:to:from:date:dkim-signature;
+        bh=f4efrKdTwB2T0Qp6G5mDacoEPOXYGRWINEGWtQx+gt8=;
+        b=XW79vbKq++/qu3Pvc9UTy3GInxO5zad+USHJl9inae18ZwrC0yGRntqcKKX9TuznD6
+         lT39pp3zNnli9twF1sjBKI8YzXCELnp3SvXoyVE0sXXE+1DWhYWk2KwaKROXWe4L/9qg
+         MoIUt6sS+5bkh8vQzC0ZefUkBNkPS+Wjz3N5FLFqSgKYPCn76lT0+Ym/PyzyLk0jca4B
+         Spk4w6hbJoNkr8JZ3mcJGBlTbqHquFYOCdxXHurVsIJlhOjQjBLhs80X+7Vd/0eUAWBF
+         1TVVDYGYGEq4G16yZr+cIot6KnIIk5/5rjprj0EYRCNxVS2IK1ZldJ4d47p1sZb5aLPv
+         cm+Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of linux-kernel-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=linux-kernel-owner@vger.kernel.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Return-Path: <linux-kernel-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id j10si13901920ejd.87.2021.05.18.11.50.55;
-        Tue, 18 May 2021 11:50:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of linux-kernel-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LQfJIBQf;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id s82si14718398oif.125.2021.05.17.12.41.05
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 17 May 2021 12:41:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of linux-kernel-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=linux-kernel-owner@vger.kernel.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1351658AbhERSwL convert rfc822-to-8bit (ORCPT
-        <rfc822;semen.protsenko@linaro.org> + 20 others);
-        Tue, 18 May 2021 14:52:11 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:3023 "EHLO
-        szxga06-in.huawei.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S234553AbhERSwK (ORCPT
-        <rfc822;linux-kernel@vger.kernel.org>);
-        Tue, 18 May 2021 14:52:10 -0400
-Received: from dggems705-chm.china.huawei.com (unknown [172.30.72.58])
-        by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4Fl4lQ11xnzmWcC;
-        Wed, 19 May 2021 02:48:34 +0800 (CST)
-Received: from dggemm751-chm.china.huawei.com (10.1.198.57) by
- dggems705-chm.china.huawei.com (10.3.19.182) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2176.2; Wed, 19 May 2021 02:50:49 +0800
-Received: from lhreml703-chm.china.huawei.com (10.201.108.52) by
- dggemm751-chm.china.huawei.com (10.1.198.57) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
- 15.1.2176.2; Wed, 19 May 2021 02:50:48 +0800
-Received: from lhreml703-chm.china.huawei.com ([10.201.68.198]) by
- lhreml703-chm.china.huawei.com ([10.201.68.198]) with mapi id 15.01.2176.012;
- Tue, 18 May 2021 19:50:46 +0100
-From:   Salil Mehta <salil.mehta@huawei.com>
-To:     Andrew Jones <drjones@redhat.com>
-CC:     "wangyanan (Y)" <wangyanan55@huawei.com>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        "Michael S . Tsirkin" <mst@redhat.com>,
-        "Igor Mammedov" <imammedo@redhat.com>,
-        Shannon Zhao <shannon.zhaosl@gmail.com>,
-        Alistair Francis <alistair.francis@wdc.com>,
-        David Gibson <david@gibson.dropbear.id.au>,
-        "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-        "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-        "Paolo Bonzini" <pbonzini@redhat.com>,
-        =?iso-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@redhat.com>,
-        yangyicong <yangyicong@huawei.com>,
-        "Zengtao (B)" <prime.zeng@hisilicon.com>,
-        "Song Bao Hua (Barry Song)" <song.bao.hua@hisilicon.com>,
-        "Wanghaibin (D)" <wanghaibin.wang@huawei.com>,
-        zhukeqian <zhukeqian1@huawei.com>,
-        yuzenghui <yuzenghui@huawei.com>,
-        "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-        "linuxarm@openeuler.org" <linuxarm@openeuler.org>
-Subject: RE: [RFC PATCH v3 4/9] hw/arm/virt: Initialize the present cpu
- members
-Thread-Topic: [RFC PATCH v3 4/9] hw/arm/virt: Initialize the present cpu
- members
-Thread-Index: AQHXSj7Bs+01wvGUNEWbtmBiG2lmC6rn8VxQgACpzgCAADVmEP///x2AgADF7hA=
-Date:   Tue, 18 May 2021 18:50:46 +0000
-Message-ID: <0ff033fa8eac400fade06e6be0a98847@huawei.com>
-References: <20210516102900.28036-1-wangyanan55@huawei.com>
- <20210516102900.28036-5-wangyanan55@huawei.com>
- <6c8f9c3502384f648f30c7381e87dda9@huawei.com>
- <68883a1b-5303-da13-a051-e909e1d1f71b@huawei.com>
- <6d8b9142e8a34d1390f2f0b4bfb53a00@huawei.com>
- <20210518075027.wjpdjvoam7dlzign@gator.home>
-In-Reply-To: <20210518075027.wjpdjvoam7dlzign@gator.home>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.47.29.209]
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LQfJIBQf;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:46996 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lij6v-0006DU-4M
+	for alex.bennee@linaro.org; Mon, 17 May 2021 15:41:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51262)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
+ id 1liilj-0003xQ-N2
+ for qemu-devel@nongnu.org; Mon, 17 May 2021 15:19:11 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:31331)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
+ id 1liild-0007xO-GD
+ for qemu-devel@nongnu.org; Mon, 17 May 2021 15:19:09 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1621279144;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=f4efrKdTwB2T0Qp6G5mDacoEPOXYGRWINEGWtQx+gt8=;
+ b=LQfJIBQflpR+6erMyEIHkrx5THKxZfxPIMc18aQFxJC80GAmcDXEZ8+lvr6pGaAI90FIK1
+ ooJ5/LmTo2KZJztZAwcOJWHkaKdBBTWV7zyolnOkG+s0b2uqNEOuW3Y+OBX81XP9DtIZKq
+ wWEuhGdvoCJnsR41HWguSWRXSrPa43U=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-237-dpxDRnv8P-S8M1CmPTdQFw-1; Mon, 17 May 2021 15:19:00 -0400
+X-MC-Unique: dpxDRnv8P-S8M1CmPTdQFw-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0CAFE107ACF6;
+ Mon, 17 May 2021 19:18:59 +0000 (UTC)
+Received: from localhost (ovpn-114-21.rdu2.redhat.com [10.10.114.21])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 1E5E829692;
+ Mon, 17 May 2021 19:18:57 +0000 (UTC)
+Date: Mon, 17 May 2021 15:18:56 -0400
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: Re: [PATCH v2 00/12] hw: Various Kconfig fixes
+Message-ID: <20210517191856.enjxmb7v2ai6ecdh@habkost.net>
+References: <20210515173716.358295-1-philmd@redhat.com>
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-Precedence: bulk
-List-ID: <linux-kernel.vger.kernel.org>
-X-Mailing-List: linux-kernel@vger.kernel.org
-X-TUID: IorESv9tWhxK
+In-Reply-To: <20210515173716.358295-1-philmd@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=ehabkost@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.374,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-riscv@nongnu.org, Bin Meng <bin.meng@windriver.com>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ "Daniel P. Berrange" <berrange@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: u9tEi/RzGyEH
 
-> From: Andrew Jones [mailto:drjones@redhat.com]
-> Sent: Tuesday, May 18, 2021 8:50 AM
+CCing Build system architecture maintainer (Daniel).
+
+On Sat, May 15, 2021 at 07:37:04PM +0200, Philippe Mathieu-Daudé wrote:
+> Various Kconfig fixes when building stand-alone machine binaries.
+
+Who should merge this once it's ready?
+
 > 
-> On Tue, May 18, 2021 at 07:04:51AM +0000, Salil Mehta wrote:
-> > > From: wangyanan (Y)
-> > > Sent: Tuesday, May 18, 2021 5:43 AM
-> > >
-> > > Hi Salil,
-> > >
-> > > On 2021/5/18 4:48, Salil Mehta wrote:
-> > > >> From: Qemu-arm
-> > > [mailto:qemu-arm-bounces+salil.mehta=huawei.com@nongnu.org]
-> > > >> On Behalf Of Yanan Wang
-> > > >> Sent: Sunday, May 16, 2021 11:29 AM
-> > > >> To: Peter Maydell <peter.maydell@linaro.org>; Andrew Jones
-> > > >> <drjones@redhat.com>; Michael S . Tsirkin <mst@redhat.com>; Igor Mammedov
-> > > >> <imammedo@redhat.com>; Shannon Zhao <shannon.zhaosl@gmail.com>; Alistair
-> > > >> Francis <alistair.francis@wdc.com>; David Gibson
-> > > >> <david@gibson.dropbear.id.au>; qemu-devel@nongnu.org;
-> qemu-arm@nongnu.org
-> > > >> Cc: Song Bao Hua (Barry Song) <song.bao.hua@hisilicon.com>; zhukeqian
-> > > >> <zhukeqian1@huawei.com>; yangyicong <yangyicong@huawei.com>; Zengtao (B)
-> > > >> <prime.zeng@hisilicon.com>; Wanghaibin (D)
-> <wanghaibin.wang@huawei.com>;
-> > > >> yuzenghui <yuzenghui@huawei.com>; Paolo Bonzini <pbonzini@redhat.com>;
-> > > >> Philippe Mathieu-Daud� <philmd@redhat.com>
-> > > >> Subject: [RFC PATCH v3 4/9] hw/arm/virt: Initialize the present cpu members
-> > > >>
-> > > >> We create and initialize a cpuobj for each present cpu in
-> > > >> machvirt_init(). Now we also initialize the cpu member of
-> > > >> structure CPUArchId for each present cpu in the function.
-> > > > [...]
-> > > >
-> > > >>           qdev_realize(DEVICE(cpuobj), NULL, &error_fatal);
-> > > >> +
-> > > >> +        /*
-> > > >> +         * As ARM cpu hotplug is not supported yet, we initialize
-> > > >> +         * the present cpu members here.
-> > > >> +         */
-> > > >> +        machine->possible_cpus->cpus[n].cpu = cpuobj;
-> > > >
-> > > > when vcpu Hotplug is not supported yet, what necessitates this change now?
-> > > >
-> > > The initialization will gives a way to determine whether a CPU is
-> > > present or not.
-> > > At least, for now it will be used when generating ACPI tables, e.g.
-> > > DSDT, MADT.
-> > > See patch 5 and 6.
-> >
-> > yes,  but why do you require it now as part of the vcpu topology change?
-> >
-> > As-far-as-i-can-see, PPTT table changes(part of patch 5/9) do not require
-> > this change. Change in Patch 5/9 has also been done in anticipation of
-> > some future requirement(vcpu Hotplug?).
-> >
-> > Please correct me here if I am wrong?
-> >
+> Since v1:
+> - Fixed Pegasos2 machine
+> - Removed SEMIHOSTING related patches (will repost them later)
 > 
-> Hi Salil,
+> Philippe Mathieu-Daudé (12):
+>   hw/mem/nvdimm: Use Kconfig 'imply' instead of 'depends on'
+>   hw/ide/Kconfig: Add missing dependency PCI -> IDE_QDEV
+>   hw/arm/Kconfig: Add missing dependency NPCM7XX -> SMBUS
+>   hw/arm/Kconfig: Remove unused DS1338 symbol from i.MX25 PDK Board
+>   hw/arm/Kconfig: Add missing SDHCI symbol to FSL_IMX25
+>   hw/riscv/Kconfig: Add missing dependency MICROCHIP_PFSOC -> SERIAL
+>   hw/riscv/Kconfig: Restrict NUMA to Virt & Spike machines
+>   hw/ppc/Kconfig: Add missing dependency E500 -> DS1338 RTC
+>   hw/pci-host/Kconfig: Add missing dependency MV64361 -> I8259
+>   hw/isa/vt82c686: Add missing Kconfig dependencies (build error)
+>   hw/isa/vt82c686: Add missing Kconfig dependency (runtime error)
+>   hw/ppc/Kconfig: Add dependency PEGASOS2 -> ATI_VGA
 > 
-> The problem is that we've never required smp.cpus == smp.maxcpus, so
-> a user could have smp.cpus < smp.maxcpus. We want the topology to match
-> maxcpus, but only enable cpus. However, if you think we should just not
-> allow cpus < maxcpus until hot plug is sorted out, then we could discuss
-> a way of trying to enforce cpus == maxcpus, but I'm not sure how we can
-> without breaking existing command lines.
+>  default-configs/devices/ppc-softmmu.mak   | 1 -
+>  default-configs/devices/ppc64-softmmu.mak | 1 -
+>  hw/arm/Kconfig                            | 4 +++-
+>  hw/char/Kconfig                           | 1 +
+>  hw/i386/Kconfig                           | 1 +
+>  hw/ide/Kconfig                            | 2 +-
+>  hw/isa/Kconfig                            | 4 ++++
+>  hw/mem/Kconfig                            | 2 --
+>  hw/pci-host/Kconfig                       | 1 +
+>  hw/ppc/Kconfig                            | 3 +++
+>  hw/riscv/Kconfig                          | 5 +++++
+>  hw/riscv/meson.build                      | 2 +-
+>  12 files changed, 20 insertions(+), 7 deletions(-)
+> 
+> -- 
+> 2.26.3
+> 
+> 
+> 
 
+-- 
+Eduardo
 
-Hi Andrew,
-Ideally, if the vcpu Hotplug is not supported the check in the smp_parse()
-should impose (cpus == maxcpus). This as of now is just a warning of invalid
-configuration I think. Beside this does not breaks any prior usages which you
-suggested might happen?
-
-Again, this is not a blocking issue from my side but just a humble suggestion.
-You might want to take a call on this :)
-
-
-Thanks
-Salil.

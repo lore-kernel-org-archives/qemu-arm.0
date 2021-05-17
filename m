@@ -1,102 +1,103 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp1157775lfm;
-        Mon, 17 May 2021 03:57:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyyqwJhUJY/JFTztHOUOrfyrkXO4s86Ls27JQumcJVKXsDxfsGuTwAgvTIR4cnzu9SUJclI
-X-Received: by 2002:a25:37c3:: with SMTP id e186mr7489613yba.70.1621249062296;
-        Mon, 17 May 2021 03:57:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621249062; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp1158137lfm;
+        Mon, 17 May 2021 03:58:20 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwJfdSmW+6Ao70ZhL03UgqlBeT4FZTREPKu/wjpeJchPEQBcMTD4Y6kALBUD+bFXUQ005Uf
+X-Received: by 2002:a25:16c2:: with SMTP id 185mr80359720ybw.24.1621249100458;
+        Mon, 17 May 2021 03:58:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621249100; cv=none;
         d=google.com; s=arc-20160816;
-        b=S0sXO4rZh3/W/vDISuW7vn7Xy59VzM4o4zcbGM8h+CWoRwUOXinMlIfrZ1hMKqzg4M
-         7HcGJyQBhBcFjUN3lr3zqOQlBiy0cCW4kuZz1UPlpyQe4anfMMe8JAwqgAYlZvHR/LkO
-         Y8MZw7F00/29V8ulFbn8oXeC68VRwWWqeoyzXWLL8Qn3pwnTPc9bBcFvSC8zfjKCX4MI
-         c6v+bRL1H4D6jZCB2DXmMgdX59R7roJ0TjLFpFrtzIAeoJZZvMQkcTYXDfi8n5Q2t+G5
-         zQCNT9jVakDEf7c1q4JuHkprRf4v8/t5I0DxUTt/PoS+LkhS4/u0kBFyY41LoxuRTcg5
-         s1gA==
+        b=05qS6RnjmYAEYE7K0k1i3gJAfWFGD5aSDUcT04A/odCondA2uvC5uZJPCNVBMBQiRx
+         iopvspITMWWxsNArdlNLtVEepriyWqc/qq0sHcuUK+715TGJqG+SFp7kCvn3a4zl9sS2
+         sWjR2xXSwxirLn/Mxh1p2f6YFvAoLT3WcVFnEsTk+E++p86CbcdVP6l1u0/KRh8ac8Uc
+         UBTxqpfHJaJZI72KsW3+gxgd8NvylbplIMrn6nHxnPbg2i2KmNoF4WOSLIjKIeRQqiam
+         6cvZ5CbBYedlgqP/WIIwEZXDFjcBohEVxcWo4deRXKBmlGWlHkVLPDcwFA0UI4T8rAYr
+         cpdw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=J++NDLnF3ZLjQJuDikbfz+qqlVxXQCnKQi7mCfFvCw8=;
-        b=p0K6DjNLKg2PlPgqFlCYM+MHXigpGvzp2eWUxmYY4rrsWJZtlbpJtKhuvraaN4Icju
-         ZJcalievtvDRbfCmY8XsCZH1PbBdlA3mKMealSMe73TiK8PahMsw4vS1EehoIBd+DsNO
-         RjYNmqm99WjtmIhTgY0JCkHYQawqEwIk5YMlqxSIGpLF5+5Bh06/GeDTsyCAbP2EQXKE
-         GMfDHny0Xir6GsRMVj8I2xNudAFVExN65sEuKKKyCeZh1NFcPXGExFF8SDpAgQ6xacvh
-         FaKt/GbehULAtfq5YBkIqb9XIrawpvWp/mQmjK156qASC2FjKFuFyl+PtUXbA+wERRU8
-         x1Gw==
+        bh=numJYWQfN9cjP4y3FBe1McH7f7YrqdT6BscR7duwZVs=;
+        b=UuERERyBXgoMjqKPlkWjlw0ksUon/XsCEF7prBGPzD4ksAhAvncdC3QH4btNX9grVs
+         Z5SZ5huOrDKZJFr2DNifBYj/PGBRJFE5cBvW99g0Oku74X9AscT1k4Zgy9ifeGBBbkR8
+         Tsq4q1h8zOjQfkbY+ejB/MeZ0S+d9F8zg/C1+o9Fq5tzysKX7zXn6amAguxt91QIBsFQ
+         Z3WI1fFyY1nkwClqqYq1Z9UYCiXWp/wgoZE0XqveqQHjMb6/CtCWSrmFCCv/1ilvUUBl
+         G+ux5giCxQwkyh+pChom+3olX8hJcQXQhvGpIRjU+pED5GRHF4fVaZ4o8+43vIF/R8UK
+         BtPw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mZTsOjj3;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=PjPIsEmr;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f12si1985003ybk.105.2021.05.17.03.57.42
+        by mx.google.com with ESMTPS id n19si18748197ybf.422.2021.05.17.03.58.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 17 May 2021 03:57:42 -0700 (PDT)
+        Mon, 17 May 2021 03:58:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mZTsOjj3;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=PjPIsEmr;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:39854 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41930 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1liawP-0008D3-Jg
-	for alex.bennee@linaro.org; Mon, 17 May 2021 06:57:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55492)
+	id 1liax1-00018Z-Mk
+	for alex.bennee@linaro.org; Mon, 17 May 2021 06:58:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55702)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1liaqs-0004KW-Pl; Mon, 17 May 2021 06:51:58 -0400
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429]:39895)
+ id 1liarP-0005xS-0n; Mon, 17 May 2021 06:52:31 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d]:55844)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1liaqp-0006Lm-PU; Mon, 17 May 2021 06:51:58 -0400
-Received: by mail-wr1-x429.google.com with SMTP id v12so5873420wrq.6;
- Mon, 17 May 2021 03:51:53 -0700 (PDT)
+ id 1liarN-0006hd-BZ; Mon, 17 May 2021 06:52:30 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id b7so2714319wmh.5;
+ Mon, 17 May 2021 03:52:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=J++NDLnF3ZLjQJuDikbfz+qqlVxXQCnKQi7mCfFvCw8=;
- b=mZTsOjj3LWDbZgvFyA7NV3RaiQb1WFhBGbE1A1hLQLSWZ6lbo9cF/JTYOaDceQ+ZR4
- ZnUESu8TKoJuRoL2A/ujqULQjEg2laKgYu8Z+UwG/dziXYracDTo6VJw26wq5LMW/VU0
- vObsTR2/yjxbdBvJHwDtPNC5r9XPXnd03o5/fKog96aqtxbv4fjVMr8fwlDrujWrBkTG
- gtqqkLDwXEZhZdPJDpcsN8XZrETQCfLhDNC5Y/zUFsARR1yN0UcX352zl9homP9Qy/pm
- 4myGEfTSWFr5c9l6tktkzx8odsuSEykaxWDPbax4WEYcSXucDgct69PGNnnHEAIorZ3J
- ih5Q==
+ bh=numJYWQfN9cjP4y3FBe1McH7f7YrqdT6BscR7duwZVs=;
+ b=PjPIsEmrl335FJg+p+NxwQla9zW8A5KcKXnlX0P1PCNzYPtTQOTNAltDsuUQ+UATZ6
+ GWNhnGQY3iCRH0E3fSh5VcxfGfdikuMZfyoovt7O2NODXr5ZzV2/UfQVLeEehANfLgGo
+ yN5EceicQeG3ghsmcB/fwMLa/4zSmvFAsu4u64/mS3a0uzwAmCTtuxoCOU1egTRdv9aP
+ QQAs4Jw7OkwmbxSL4UZV8zFgKaBD4J26div+p/ddz8P68LVFttmIHcl7LL6eVCH94KkN
+ Y3sGMJB6NxxW6Lv75q6F/+5+W57Wt1fPGTBOMWFORxLgg/JZifflZHvZ6WlgxOu5A3/D
+ qWLA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=J++NDLnF3ZLjQJuDikbfz+qqlVxXQCnKQi7mCfFvCw8=;
- b=GYI0SpCJWHkMHJOymr6Zm1qVF1NOnYi2hWvXZ1brwOm6++9Z7O1TmDuItvQbBHrTLd
- RWpxei/IMRHDZFToYS6Qr5kj4KnwbwZ3kudVEZ5rgLZ2d6C7xssmhhG5l5tjTOf7VXbj
- 81FCdNWhYdh+0Wb1PlrO3gv9UJt/4KrTyobZ7PXa9ZP9gi1djEIEbGx8/HAL/3DpDzLC
- brurkgBQrRqNwNGJbywapH1G5GM1pOViX+uveiZzcn1kQc+aYYPJ7n7g1BRy/qrRhWnZ
- EuRA+rM619o5lsIURRl5T1ThZ9d6Xq/+4anqljhMt1EdaeOuUHAUqZpfPiUa3rG+rieE
- 7O0Q==
-X-Gm-Message-State: AOAM531J3cjLVIlRsFjvFBEz5f4HsAduCGZu2j3/8zYMy7Fg6Gm68l8S
- 7dw9tp11DHDHX+5PDAV9LIqr1hGhvQ2T4g==
-X-Received: by 2002:a5d:4c48:: with SMTP id n8mr17063451wrt.422.1621248712701; 
- Mon, 17 May 2021 03:51:52 -0700 (PDT)
+ bh=numJYWQfN9cjP4y3FBe1McH7f7YrqdT6BscR7duwZVs=;
+ b=RZX2z1i+bwaMnoC2z2m4IXXDFZoNMmLndjs1TlNCnQkZdb3JMr/hxKXMFPyR7YdsKF
+ UkpSKZne3zgaJZr/uyOwaaSfvmZ+zkDsqzA5r7cF557uUagdN6PHT0xmldylPCV1y6ai
+ i1aux8KftAuufjOtie8zDZf9JLvctPLYrmRcYLSjRt78QYxhcuTVXvVJf65wthYySJD1
+ UkUU5BqcSlneIAyyJgECyYPd7Da2h1Ypesw28KT4mNuNj9DJrGIsEdz7/vhXsYgU7C0t
+ t/tQKE4bdTMpIefq6iNLij0AifhTu0NE32wcdnRHv3/6dkz12DTUkQU35WLSri3mfNDx
+ y8LQ==
+X-Gm-Message-State: AOAM531qPrQlcT+dJo9u6jvhLgq1BDwcdh0YPvCpNLx8TH8nzMW0y0xI
+ V+zZdUziSYd6ml86W7oE/kDprMTBXZh19Q==
+X-Received: by 2002:a1c:a7c2:: with SMTP id
+ q185mr32839778wme.112.1621248746260; 
+ Mon, 17 May 2021 03:52:26 -0700 (PDT)
 Received: from localhost.localdomain (31.red-83-51-215.dynamicip.rima-tde.net.
  [83.51.215.31])
- by smtp.gmail.com with ESMTPSA id t13sm349995wmi.2.2021.05.17.03.51.51
+ by smtp.gmail.com with ESMTPSA id c15sm17019645wrd.49.2021.05.17.03.52.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 17 May 2021 03:51:52 -0700 (PDT)
+ Mon, 17 May 2021 03:52:25 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v7 02/23] cpu: Restrict target cpu_do_transaction_failed()
- handlers to sysemu
-Date: Mon, 17 May 2021 12:51:19 +0200
-Message-Id: <20210517105140.1062037-3-f4bug@amsat.org>
+Subject: [PATCH v7 09/23] cpu: Directly use get_paging_enabled() fallback
+ handlers in place
+Date: Mon, 17 May 2021 12:51:26 +0200
+Message-Id: <20210517105140.1062037-10-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.3
 In-Reply-To: <20210517105140.1062037-1-f4bug@amsat.org>
 References: <20210517105140.1062037-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x429.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32d.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -124,111 +125,77 @@ Cc: qemu-riscv@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: X5kJbeggw3En
+X-TUID: w45TmROMyy+p
 
-In commit cbc183d2d9f ("cpu: move cc->transaction_failed to tcg_ops")
-we restricted the do_transaction_failed() handler to the sysemu part
-of TCGCPUOps, but forgot to restrict the target specific declarations.
+No code uses CPUClass::get_paging_enabled() outside of hw/core/cpu.c:
 
+  $ git grep -F -- '->get_paging_enabled'
+  hw/core/cpu.c:74:    return cc->get_paging_enabled(cpu);
+  hw/core/cpu.c:438:    k->get_paging_enabled = cpu_common_get_paging_enabled;
+  target/i386/cpu.c:7418:    cc->get_paging_enabled = x86_cpu_get_paging_enabled;
+
+Check the handler presence in place and remove the common fallback code.
+
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- target/arm/internals.h |  2 ++
- target/m68k/cpu.h      |  2 ++
- target/riscv/cpu.h     | 10 +++++-----
- target/xtensa/cpu.h    |  8 ++++----
- 4 files changed, 13 insertions(+), 9 deletions(-)
+ hw/core/cpu-common.c | 13 -------------
+ hw/core/cpu-sysemu.c | 11 +++++++++++
+ 2 files changed, 11 insertions(+), 13 deletions(-)
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 886db56b580..3614f6dd988 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -583,6 +583,7 @@ void arm_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr,
-                                  MMUAccessType access_type,
-                                  int mmu_idx, uintptr_t retaddr);
- 
-+#if !defined(CONFIG_USER_ONLY)
- /* arm_cpu_do_transaction_failed: handle a memory system error response
-  * (eg "no device/memory present at address") by raising an external abort
-  * exception
-@@ -592,6 +593,7 @@ void arm_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr,
-                                    MMUAccessType access_type,
-                                    int mmu_idx, MemTxAttrs attrs,
-                                    MemTxResult response, uintptr_t retaddr);
-+#endif
- 
- /* Call any registered EL change hooks */
- static inline void arm_call_pre_el_change_hook(ARMCPU *cpu)
-diff --git a/target/m68k/cpu.h b/target/m68k/cpu.h
-index 402c86c8769..cf58fee9ada 100644
---- a/target/m68k/cpu.h
-+++ b/target/m68k/cpu.h
-@@ -572,10 +572,12 @@ static inline int cpu_mmu_index (CPUM68KState *env, bool ifetch)
- bool m68k_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-                        MMUAccessType access_type, int mmu_idx,
-                        bool probe, uintptr_t retaddr);
-+#if !defined(CONFIG_USER_ONLY)
- void m68k_cpu_transaction_failed(CPUState *cs, hwaddr physaddr, vaddr addr,
-                                  unsigned size, MMUAccessType access_type,
-                                  int mmu_idx, MemTxAttrs attrs,
-                                  MemTxResult response, uintptr_t retaddr);
-+#endif
- 
- typedef CPUM68KState CPUArchState;
- typedef M68kCPU ArchCPU;
-diff --git a/target/riscv/cpu.h b/target/riscv/cpu.h
-index 0619b491a42..aa19d8f304e 100644
---- a/target/riscv/cpu.h
-+++ b/target/riscv/cpu.h
-@@ -346,11 +346,6 @@ void  riscv_cpu_do_unaligned_access(CPUState *cs, vaddr addr,
- bool riscv_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-                         MMUAccessType access_type, int mmu_idx,
-                         bool probe, uintptr_t retaddr);
--void riscv_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr,
--                                     vaddr addr, unsigned size,
--                                     MMUAccessType access_type,
--                                     int mmu_idx, MemTxAttrs attrs,
--                                     MemTxResult response, uintptr_t retaddr);
- char *riscv_isa_string(RISCVCPU *cpu);
- void riscv_cpu_list(void);
- 
-@@ -359,6 +354,11 @@ void riscv_cpu_list(void);
- #define cpu_mmu_index riscv_cpu_mmu_index
- 
- #ifndef CONFIG_USER_ONLY
-+void riscv_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr,
-+                                     vaddr addr, unsigned size,
-+                                     MMUAccessType access_type,
-+                                     int mmu_idx, MemTxAttrs attrs,
-+                                     MemTxResult response, uintptr_t retaddr);
- void riscv_cpu_swap_hypervisor_regs(CPURISCVState *env);
- int riscv_cpu_claim_interrupts(RISCVCPU *cpu, uint32_t interrupts);
- uint32_t riscv_cpu_update_mip(RISCVCPU *cpu, uint32_t mask, uint32_t value);
-diff --git a/target/xtensa/cpu.h b/target/xtensa/cpu.h
-index 3bd4f691c1a..cbe9e5ff230 100644
---- a/target/xtensa/cpu.h
-+++ b/target/xtensa/cpu.h
-@@ -569,10 +569,6 @@ bool xtensa_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-                          bool probe, uintptr_t retaddr);
- void xtensa_cpu_do_interrupt(CPUState *cpu);
- bool xtensa_cpu_exec_interrupt(CPUState *cpu, int interrupt_request);
--void xtensa_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr, vaddr addr,
--                                      unsigned size, MMUAccessType access_type,
--                                      int mmu_idx, MemTxAttrs attrs,
--                                      MemTxResult response, uintptr_t retaddr);
- void xtensa_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
- hwaddr xtensa_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
- void xtensa_count_regs(const XtensaConfig *config,
-@@ -675,6 +671,10 @@ static inline int xtensa_get_cring(const CPUXtensaState *env)
+diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
+index 5913ffe22be..2aa6b8cffca 100644
+--- a/hw/core/cpu-common.c
++++ b/hw/core/cpu-common.c
+@@ -66,18 +66,6 @@ CPUState *cpu_create(const char *typename)
+     return cpu;
  }
  
- #ifndef CONFIG_USER_ONLY
-+void xtensa_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr, vaddr addr,
-+                                      unsigned size, MMUAccessType access_type,
-+                                      int mmu_idx, MemTxAttrs attrs,
-+                                      MemTxResult response, uintptr_t retaddr);
- int xtensa_get_physical_addr(CPUXtensaState *env, bool update_tlb,
-         uint32_t vaddr, int is_write, int mmu_idx,
-         uint32_t *paddr, uint32_t *page_size, unsigned *access);
+-bool cpu_paging_enabled(const CPUState *cpu)
+-{
+-    CPUClass *cc = CPU_GET_CLASS(cpu);
+-
+-    return cc->get_paging_enabled(cpu);
+-}
+-
+-static bool cpu_common_get_paging_enabled(const CPUState *cpu)
+-{
+-    return false;
+-}
+-
+ void cpu_get_memory_mapping(CPUState *cpu, MemoryMappingList *list,
+                             Error **errp)
+ {
+@@ -316,7 +304,6 @@ static void cpu_class_init(ObjectClass *klass, void *data)
+     k->parse_features = cpu_common_parse_features;
+     k->get_arch_id = cpu_common_get_arch_id;
+     k->has_work = cpu_common_has_work;
+-    k->get_paging_enabled = cpu_common_get_paging_enabled;
+     k->get_memory_mapping = cpu_common_get_memory_mapping;
+     k->gdb_read_register = cpu_common_gdb_read_register;
+     k->gdb_write_register = cpu_common_gdb_write_register;
+diff --git a/hw/core/cpu-sysemu.c b/hw/core/cpu-sysemu.c
+index 7f3a3574943..931ba46354d 100644
+--- a/hw/core/cpu-sysemu.c
++++ b/hw/core/cpu-sysemu.c
+@@ -22,6 +22,17 @@
+ #include "qapi/error.h"
+ #include "hw/core/cpu.h"
+ 
++bool cpu_paging_enabled(const CPUState *cpu)
++{
++    CPUClass *cc = CPU_GET_CLASS(cpu);
++
++    if (cc->get_paging_enabled) {
++        return cc->get_paging_enabled(cpu);
++    }
++
++    return false;
++}
++
+ hwaddr cpu_get_phys_page_attrs_debug(CPUState *cpu, vaddr addr,
+                                      MemTxAttrs *attrs)
+ {
 -- 
 2.26.3
 

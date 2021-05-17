@@ -1,98 +1,98 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp818749lfm;
-        Sun, 16 May 2021 18:56:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyJqSDVNkxWoNKrHwyEg/0NN1LnHZzMZ0PWTp6SQQ38MAhQ4vwSVD7XZWKgL02yqzb+6ecS
-X-Received: by 2002:a5d:805a:: with SMTP id b26mr13511969ior.138.1621216583758;
-        Sun, 16 May 2021 18:56:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621216583; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp837716lfm;
+        Sun, 16 May 2021 19:34:04 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwhQ9YccHnDIN5yIuQ8LM0n4UThAzVdgMSeP36QN2RsIj3oW81+a/dOROYaGqLjkmdGGgpZ
+X-Received: by 2002:a05:6638:138e:: with SMTP id w14mr36688489jad.33.1621218844408;
+        Sun, 16 May 2021 19:34:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621218844; cv=none;
         d=google.com; s=arc-20160816;
-        b=dLkQAyZ4TeRkoDk2YMK5BtnmYRCjBOjtLNLAPsgfGpZm1U7tuJIR6DtStfxBRFqfMW
-         XgAdFJwk9yMf2yNmebY4+fezGLrwKsdCcGK3RrSBPwAHHDijKjzCnrEpb4eKBA0J2xQx
-         SvZMJ/9ksWU0TIoA1iLKkU4EA1Cg/Jji3OlQuYlCkpZ1dhEyEm35hsAZe2KEkjy459jk
-         XATUVwHy/CUCkwqjaSGM0eCxEKFPsxUm059dF7ydaWzS/GRCuuP9AqowOOVT7Wt+jIwL
-         vhjLUku7AdMFlXdtlLKNfrUeSqZyhT/rlt2Qdoq/EBcnaNKdUblEIeTxokjWZ7nbSWFH
-         ZRYg==
+        b=IFKzKhdAeZQEnL5ae69u7wcKBgqGm6hdawKYcl3Mr9i0c+UTdP3Tzz04YyfMEu6ZW5
+         Yu/u/Ww/A9sJaLY+hV0TWkixX3kgWK4xETm4suaC1B26uL6j1S3tFWHkdAbIf33qp/RD
+         dbLqGSLSvasZiPBRb1LlO+FUwPPMc6e/N2rZCdEbsYqoVgmdJX5WOxaQgb/6WfWBVDp8
+         EsjOaAtUxq0/PhSpo15D9wL7cDc9kXiFwyff+lqZgqs3Lh5Zb0tCNUB173WEdHlp/Gsr
+         yxThlSCQa6fYkkHuGOFJdHNqIf1gIhQXV7HbgWaVoTnJUUn+RNk+Sly98s4qLdOKDDhD
+         lkwQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=SWdGHnNm35rrHmmCHWr85QqUsNhtShOhtSqragF8j/M=;
-        b=zgAaUq+yrUCNdKbclpwYEeg/LQ9mgJlMcVbzOqc/9N01Jd8mNe++YVSeYtrk+39uYw
-         4W55D/rz7GSEeKbI3+71YTB3CKCCt82XizqiXfxmXz7j2tbp1/TbbQ5QPw2aAJ2XiPUO
-         NLmBOx7+OLKED4310sUKwCUSPkE9RAfBseIu8P+AOl3UAckbc6Tt8MqnV5JD9xsXNv7o
-         S+k/ABR8TolKzuUVcgE/WGbRYq2Un0pRysXPrWufsscSd7ughimCxy3kDBsHJU9h5cqX
-         dMbSG3gjEy0vQC8D4oBWV/FrxpcW2qfkQDVVQ5iXFJ97eqqOTVjWLHkjpSOhGNixy9VX
-         Vu5A==
+        bh=V7wEQKqwQ5OwwmeDdQ+DZv3iAllQc9fyfYQrfy4q71E=;
+        b=l/EKk0hLqByPDm+z1JL1wUWt3MRSL2m+5u72pFP9tSJgxCZJzg426+pm52BboSmZ9K
+         qRa+MMQ/NX6kyx34MHuf6NBLX3rpuEfgWk4dmXt4vzJ3L6CfHxuuH8QAta+HxxX5sCTO
+         jreWL+6V6MXupxHJwKHplEZkZ1QRYXbzFpnCTgPp6oD3gl80zsw+t7ih1Xkwx+EYM/E2
+         OsQUFnS5aqfLHP1k6tXK3Q+5E733Ax45K0ivOZwS0T/qqNPo37FjwSm6dDVKAXlJaS1O
+         NCo6wkEiF6e3Sim9RcQwU1WJrdYxPrPEGAHw5TzGeG+cffa9hO+8W64cuOwqxg71m/To
+         qULA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YeIbwzFQ;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=OaFMee8t;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a2si16996246jao.7.2021.05.16.18.56.23
+        by mx.google.com with ESMTPS id u5si16678179jat.11.2021.05.16.19.34.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 16 May 2021 18:56:23 -0700 (PDT)
+        Sun, 16 May 2021 19:34:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YeIbwzFQ;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=OaFMee8t;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:53676 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34504 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1liSUZ-00014y-1f
-	for alex.bennee@linaro.org; Sun, 16 May 2021 21:56:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43912)
+	id 1liT51-0000em-Oc
+	for alex.bennee@linaro.org; Sun, 16 May 2021 22:34:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49248)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1liSU7-000144-04; Sun, 16 May 2021 21:55:55 -0400
-Received: from mail-yb1-xb2d.google.com ([2607:f8b0:4864:20::b2d]:35509)
+ id 1liT4s-0000dS-Aq; Sun, 16 May 2021 22:33:54 -0400
+Received: from mail-yb1-xb34.google.com ([2607:f8b0:4864:20::b34]:41527)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1liSU3-00014S-KM; Sun, 16 May 2021 21:55:53 -0400
-Received: by mail-yb1-xb2d.google.com with SMTP id i4so6503567ybe.2;
- Sun, 16 May 2021 18:55:49 -0700 (PDT)
+ id 1liT4q-0006ks-P3; Sun, 16 May 2021 22:33:54 -0400
+Received: by mail-yb1-xb34.google.com with SMTP id l7so6529005ybf.8;
+ Sun, 16 May 2021 19:33:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=SWdGHnNm35rrHmmCHWr85QqUsNhtShOhtSqragF8j/M=;
- b=YeIbwzFQNxJDYYcGb5DTD0CMwde2bDm0j9CeXZV6Z1Ve9tt3rW4GkmAVENxeUwTLPC
- JcSsmALqkLJ0pC6H2o8o8VSzkGXnyOrtu6guQWkJbREA9rWARRyMwmtsJ38bvjdNVxzZ
- yaLO0TraicNc1jLzjDC2StUoP+L2NrPjzIuSHjUWFjcKpPFjmMkxcSylFkvY6LtvuILl
- t/9EF/5Vl9r3ng/SesQK7hDIwPU4ytAsYIq73908iSUuloMcW2YMNsSEu+aTym4Mlpu6
- JyDjxQefNbvLDYyQrUe0VTrHPN28duqQdtML+s53w7kAIJXWUDWRt5gKYUQvIHZ0aybQ
- EqbA==
+ bh=V7wEQKqwQ5OwwmeDdQ+DZv3iAllQc9fyfYQrfy4q71E=;
+ b=OaFMee8tVZKlExJiEatUiFTa4bRH69+wmMUkGRoEmNFxdidcCVi9EUqS7ue5KMyoux
+ ZIeMCbioyMft8Xh3hkjdDAzXoYUA9dhdJVoz0WB4MYe8zXre/lBKEV70eYusYKcgQIcL
+ Orjg43K9WbVNzsyMZY+GBz9XcKKaqQPRUaiR9nCN6wCdCuu8AaRbyAe7dVLy8CbGSJ2y
+ sGOHEQp18c0TZ55AjNQvqzDORllw3JOTyY84DfZwbXj4k6OcNIjmYIdQSKuPMkjaMe4q
+ QzbLm8lAg/ppdbNBHStx20jEmjSUytvRNFVK2ZLgBY3bwQ1+KW8JFdTZHfcO+IMwyJ/j
+ UMWw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=SWdGHnNm35rrHmmCHWr85QqUsNhtShOhtSqragF8j/M=;
- b=bvAYHzgIBhTeqFwpJCSRPKHQMuPvD16jC4QzTDIQ4TxfgKw2sLMxb60ZBKUhL6RSBT
- PbNtFrj/sJ1aNSTELS4oa2QEcrSvNG0U0Iii75WwkDCDaDBpLrnBRJvJc1fhOFXW2maO
- 34bp9lJiTVwUJWD8PUQxLDhckepj8RoH7Uc4VhTaG7pSTVHZ/2BP6MZ2PLqjrtK8k9ce
- ih5FcS//OG1gxmyvf7UbotmUPjIhPGA7OPvd+Ydf9FziiNOVip9gAmj9yhT2Qi/eUHhh
- 4lGIID2UlL+Vb5q4A4xcyhd5vkH3AwmW+Ek2yhMx4s/WDwGr5cxUof2U2gQwN7aGlCZn
- YXCA==
-X-Gm-Message-State: AOAM530LipC9HDFkoStHnHHs2Kq880Awopc6PDGKNtHsguyLS2LSKuCw
- IbvBRxb1Og0DnfzPq0fRYZhN9vkA2p8jbD2Twho=
+ bh=V7wEQKqwQ5OwwmeDdQ+DZv3iAllQc9fyfYQrfy4q71E=;
+ b=m4/omGaHdgmkZ9wIyYHlQfqExNJAfyj/pJxtsNCyMcPDQr9xr0KKBCq53dv6H9nKvW
+ NUhU/ShZgxQ1kzEeT3Phba0DYOp6MZjQ3lzmlyOX0Q2ogivwcfMi1wL0hGfu68tU2iGj
+ C2vmgP5UL7RoH1G7r8tVBpRlqrgisSOKCqueihUkH7ekYWCe9Q3yH0CiqBRZNpuuBXYd
+ l5HsTL4XksvhNtLFXwanDj6FPxUJEyeIt1kucIQgHSsFFq03fe70XH20FKWIa5i1cECW
+ L+oGZ+h8DVcDU+VJE0OPsXTyo8dDAm4M8PQiDiZBZdEPLZ4p3DhYZd9wuoWmH7TLYmur
+ 55Sg==
+X-Gm-Message-State: AOAM531B3Gv4mF9W5VrDaycuDBe04GkpqFDOQ1ySFns7xEGo5jh1jyWq
+ BDvRgM/G+pBncL9LWUMlSo9Jd8TMDe96ry+/Y3Y=
 X-Received: by 2002:a05:6902:1543:: with SMTP id
- r3mr46415391ybu.332.1621216548919; 
- Sun, 16 May 2021 18:55:48 -0700 (PDT)
+ r3mr46586081ybu.332.1621218830803; 
+ Sun, 16 May 2021 19:33:50 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210515173716.358295-1-philmd@redhat.com>
- <20210515173716.358295-7-philmd@redhat.com>
-In-Reply-To: <20210515173716.358295-7-philmd@redhat.com>
+ <20210515173716.358295-2-philmd@redhat.com>
+In-Reply-To: <20210515173716.358295-2-philmd@redhat.com>
 From: Bin Meng <bmeng.cn@gmail.com>
-Date: Mon, 17 May 2021 09:55:37 +0800
-Message-ID: <CAEUhbmUKRhq0th3A9266qZXmf3Nxn=3=OAc2xtaTAWkteUxt-A@mail.gmail.com>
-Subject: Re: [PATCH v2 06/12] hw/riscv/Kconfig: Add missing dependency
- MICROCHIP_PFSOC -> SERIAL
+Date: Mon, 17 May 2021 10:33:39 +0800
+Message-ID: <CAEUhbmVYC6BE5En83KdujZu7uEbg4DKgNiz0MRUeWVAM7KdWiA@mail.gmail.com>
+Subject: Re: [PATCH v2 01/12] hw/mem/nvdimm: Use Kconfig 'imply' instead of
+ 'depends on'
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b2d;
- envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb2d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b34;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb34.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -112,40 +112,43 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "open list:RISC-V" <qemu-riscv@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Bin Meng <bin.meng@windriver.com>,
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "open list:RISC-V" <qemu-riscv@nongnu.org>,
+ Eduardo Habkost <ehabkost@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Bin Meng <bin.meng@windriver.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
  "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>, qemu-ppc <qemu-ppc@nongnu.org>,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
+ Greg Kurz <groug@kaod.org>, qemu-arm <qemu-arm@nongnu.org>,
  Alistair Francis <alistair.francis@wdc.com>,
+ Igor Mammedov <imammedo@redhat.com>, qemu-ppc <qemu-ppc@nongnu.org>,
  David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pRkorcXD3jW/
+X-TUID: GZ355ucCtlJx
 
-On Sun, May 16, 2021 at 1:44 AM Philippe Mathieu-Daud=C3=A9
+On Sun, May 16, 2021 at 1:37 AM Philippe Mathieu-Daud=C3=A9
 <philmd@redhat.com> wrote:
 >
-> Commit a8fb0a500a6 ("hw/char: Add Microchip PolarFire SoC MMUART
-> emulation") added a dependency on the SERIAL model, but forgot to
-> add the Kconfig selector.
-> Add the dependency to the MCHP_PFSOC_MMUART symbol to fix when
-> building the MICROCHIP_PFSOC machine stand-alone:
+> Per the kconfig.rst:
 >
->   /usr/bin/ld: libcommon.fa.p/hw_char_mchp_pfsoc_mmuart.c.o: in function =
-`mchp_pfsoc_mmuart_create':
->   hw/char/mchp_pfsoc_mmuart.c:79: undefined reference to `serial_mm_init'
+>   A device should be listed [...] ``imply`` if (depending on
+>   the QEMU command line) the board may or  may not be started
+>   without it.
 >
-> Fixes: a8fb0a500a6 ("hw/char: Add Microchip PolarFire SoC MMUART emulatio=
-n")
+> This is the case with the NVDIMM device (it is certainly possible
+> to start a machine without NVDIMM) , so use the 'imply' weak
+> reverse dependency to select the symbol.
+>
 > Acked-by: Paolo Bonzini <pbonzini@redhat.com>
+> Acked-by: David Gibson <david@gibson.dropbear.id.au>
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
-> Cc: Bin Meng <bin.meng@windriver.com>
-> Cc: Alistair Francis <alistair.francis@wdc.com>
-> ---
->  hw/char/Kconfig | 1 +
->  1 file changed, 1 insertion(+)
+>  default-configs/devices/ppc64-softmmu.mak | 1 -
+>  hw/arm/Kconfig                            | 1 +
+>  hw/i386/Kconfig                           | 1 +
+>  hw/mem/Kconfig                            | 2 --
+>  hw/ppc/Kconfig                            | 1 +
+>  5 files changed, 3 insertions(+), 3 deletions(-)
 >
 
 Reviewed-by: Bin Meng <bmeng.cn@gmail.com>

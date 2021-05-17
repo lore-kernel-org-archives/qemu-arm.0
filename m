@@ -1,94 +1,96 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp1158875lfm;
-        Mon, 17 May 2021 03:59:30 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx3UUci2n2V9qxjlHwhQKt2RmTMPdvGqpvA900fQAvi9NRA9B/T7MTirM6eFIGettyqeS9d
-X-Received: by 2002:a5b:f41:: with SMTP id y1mr86602708ybr.163.1621249170790;
-        Mon, 17 May 2021 03:59:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621249170; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp1161198lfm;
+        Mon, 17 May 2021 04:02:04 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx0Zstz4y2WTTltnqx6thIopwNPJYjY26RfKFOhujroSYrx/crPpNvnVFyLILvgSgYNAcen
+X-Received: by 2002:a2e:a547:: with SMTP id e7mr31334811ljn.408.1621249324216;
+        Mon, 17 May 2021 04:02:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621249324; cv=none;
         d=google.com; s=arc-20160816;
-        b=hVeMMEZWoXYUFRsyZAwsTMOuXXSvddVzrkx924ALICaJJ1kd72/AFplZSknr3+PWes
-         eSlPyIdyZXdQL77o++i62vhJ2jUtS514W5mAvugEmieMEBlTBRhn8Y8EYzv3vrfCtD6s
-         CJfUPgMiK7wne6p1Kmckuj8Dv66iDHaDYHQRl6L9vqs94phmvS5BNRHp49LLR55B3RC9
-         nTTrNoHbly+Jc/XXjlyy4hHBwQ9KPqev6+a01zKSl4aVHWfSCl5fbwU92Rk270OTI1NK
-         SzO4VR8+1YkronkhblVzyId5UpVD1gjIAWYtTHFK9vnkUUh1WDO+w/8+Nl9MP45bRn05
-         eIFQ==
+        b=IC270hte8QsC3lgLnuyrn5ChzDWlBo2V00DX6RUuodJk0Zycu0L1cQ3DTmG+CqSJEp
+         31O++lH7Ty84XRd9mv6K+g0iAdpH9gwYDUThPhGCA87VM35IZECFh3JfjUyijaK+8ya5
+         F2MGykllLqrbircY0iYPwPd9R/V3WVHCL/TK3aE97s99KtLPeO51NzQstDvtVEIMega2
+         Caa4RJOQu5OAPcniVkIgj4ioBPzpovr9nlDg3zQHQ9xExvTXpPXrwIyC7iuywYNjr4je
+         JxpC4PtJTivAGH6hG3bwc6RsTMDFqPjOUXxvIJH46t26N5VgXtuQd/r9GybAPWwE4Kbd
+         1vmw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=XUBQ2jpiST+SjMtXV19Tr50fj7IFpfqAc4jPduflUQA=;
-        b=v7yZvJIxr9mhKOFgkfiaGPtaijlrd9u8ZPjqXCGWWesqdlnStNPVdmejMKDjZVyJEA
-         fzvJLORIcKO5YyBjy1bRz9pchi5o5Z86dG1ZsamITIHE9Qh9sY0NFrA7CuZ2FIDsy0jj
-         sUR+lZWFfHCvP2D+mG9HI4saGlYl///CFCuRzcNIzvDxaBMFCm5OKiBCDbjWYHbzF0g/
-         jM2GPl3nm3dip1Vtq05dX2Wd24XzlnRT1TUTfmWw8ADXqbb510mxBZi7DNyX+QW2E6RN
-         LhSGzp8RvcC2oeypFyVbCdQDMP0R6CLIjMygrLkbNrm/PvuvbRC6sz6pkIhFWEj/h1Dm
-         URug==
+        bh=73qeszPShsMKmwQ6XsHjcTezehy+lvr/7Xa8ct6h49I=;
+        b=jKjuP2nrmSxJsuFyINnlM4wgPv9RONWa7J4cGpGpgnsxid5NpE2UYnPliZfwIJWLLq
+         TsjAlNZDWPUJQq4eH6zVvksl1bX4uIvqyPshiWyefJEvFfKqLcdUFNclgBxwCUZm1dA7
+         xno590whMPPVHQliZVFdX8h543cfXJCyTPtI61kSrPujoQ8LK84W+eJCPgeLUmoT5aLC
+         90ASkUMVnqi0WeGVA4iSSZVB1h10BcMn+8JoMjGKKUS9/tgnBRDbkVPGbknm/Nyv55ld
+         QuTA+0g90iEvfRQyTJCEuuM7dh07qQ91qduU3f9U8qh9rvNG/NZsuqgj2ijRa+EkFKL4
+         Me6g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="nWQ7/CED";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KZdPVqTi;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c5si13940784ybq.196.2021.05.17.03.59.30
+        by mx.google.com with ESMTPS id q5si16333802ljq.46.2021.05.17.04.02.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 17 May 2021 03:59:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 17 May 2021 04:02:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="nWQ7/CED";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KZdPVqTi;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:46596 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52424 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1liayA-0004Lo-4f
-	for alex.bennee@linaro.org; Mon, 17 May 2021 06:59:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55754)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lib0d-0008Qe-5p
+	for alex.bennee@linaro.org; Mon, 17 May 2021 07:02:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55816)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1liarU-0006Ks-QX; Mon, 17 May 2021 06:52:36 -0400
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a]:54873)
+ id 1liari-0007DZ-CS; Mon, 17 May 2021 06:52:50 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a]:44766)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1liarS-0006ke-Aa; Mon, 17 May 2021 06:52:36 -0400
-Received: by mail-wm1-x32a.google.com with SMTP id o127so3298792wmo.4;
- Mon, 17 May 2021 03:52:32 -0700 (PDT)
+ id 1liarg-0006tZ-RA; Mon, 17 May 2021 06:52:50 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ y184-20020a1ce1c10000b02901769b409001so1912452wmg.3; 
+ Mon, 17 May 2021 03:52:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=XUBQ2jpiST+SjMtXV19Tr50fj7IFpfqAc4jPduflUQA=;
- b=nWQ7/CEDtfWl1LXldVPc9K5bALGvFIUBV6ph6/N8+ChrQW23KFZp5MpgMQLYwj5Tgz
- xisu6owmQlGD3f5LKGqNpPUpQCH0/UcmkyriF/I9yAMLgOKbhJxeGz5AXUzZn2c+YyTO
- uzJFIVk+EkNUdQB6T7YsRZjrs4VhABYwv89ZQlrocLX2R4IXRBUv0YwpXMgmNnYAHJ59
- n5Oa4ACmY7PG9NPs+r34M3lPgUXekl14gSB2IyaeYkmw7Iq0gFYZW0ZKEHEPfO+liGjz
- BTpNraEeGM7OwJJn9OxNOncY9tQjHORKWtPn+8vKmcIviFICatTMUoMvoDB0/0Jr/hpD
- 8G2w==
+ bh=73qeszPShsMKmwQ6XsHjcTezehy+lvr/7Xa8ct6h49I=;
+ b=KZdPVqTiITvdCNz5rGciJOBS/6F3QG7VJJfwgQItf76O4Kp4R0JPne0N/R+5FiLOsP
+ o14Qz+IyZL40FAq0FLIoCjMmXMBuppqqG1Trct8uIJ7vusSKmuTKnuogCq20V+U9EIIZ
+ 68s2gh56Hum75RkTg74qB2DaE7mhvMRv3xzrt1vAYX8xGZiMl5Cf1ieolSqXMl6mLTq4
+ oV3hvD+VZet7J277cUTnQ8Myj0OWbdc+7xzDorEyXjH1F12h9cscocFlYoa4bT5PEcJx
+ EQPzIWqWa4fW2cRwvD1U/wKHmuXSs6oJvGKI7L5jzJ0ae0OXhB4u5Nb4WobZobYxWyky
+ aTNw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=XUBQ2jpiST+SjMtXV19Tr50fj7IFpfqAc4jPduflUQA=;
- b=cMznoKQoPPt9koWX0aZ946HcS59PEk86JRPLzI2gsmuqNHzvIk1JvZt8qSRM5vIVW7
- 56+QuI3WI35lX4PjYwLw1wGM5WjCc2hs6BajHJ1Eptci+JFz+Pu/Cq8SYX1ZHDi+L622
- hF4RiiBodJm0D261qHYw0qO+L8c3hp7EHlrx8lX1Qhanf/XQm5IX/vkL0Gr68gjVsDI4
- G+PuLFwVF0fgGcAQ/rOEL8fg72qClkcG1BxbLScu9o9qGhaECdZKa6RKhohA/RHFMqDs
- gREf/Atau7jsMlqGhnCubovI0obiJvCTc1ZldLvia6mSRY2lUwsJDfPPMUgZb5KmG3oc
- mORw==
-X-Gm-Message-State: AOAM532YbHsX+VcPPyzI0sRMzcM4hDszaVlqBamEEemsyK1Qj2KOfEyw
- DZGZVxixFlHwindxNlUyWVeoIwiW7LyDTA==
-X-Received: by 2002:a1c:4043:: with SMTP id n64mr19203312wma.9.1621248751005; 
- Mon, 17 May 2021 03:52:31 -0700 (PDT)
+ bh=73qeszPShsMKmwQ6XsHjcTezehy+lvr/7Xa8ct6h49I=;
+ b=gl12lcHdMgCgADFEmDpaGExAEKPT/tbwhISM1TiyGs/m4h7HLlgx992yQwSOds0hKF
+ 2Z1fKjlJOFBkegeq0xb/CTPLI1LAfxzHTirncNcNZKE9EqzlpqmXqQmimnpLEvG9TGiF
+ u9pDEJ0SBzgmUhsptszSRZV/anz0u58ABHoTljme9xsNBV0NEv9UUe4mQp3s90HMO6K8
+ Ih+Mgi5m0+TXHlY7oH5d8t9LDPvUygjtBhDxr5yg/GKc6Axq/DIIuHDuJj8hgJE/q+h8
+ GJWCXdSTZyZa8zX7J5A8WxOc2pse+Lq2LDiE2DeH/Yp6MPD7xqwPQHgLG/60qmgQVrNs
+ nBbQ==
+X-Gm-Message-State: AOAM5327+IXUlQg7H8uwCyCY5gdn7wI0WW+EPnJGkey09mZK8ZxNzw0o
+ 3VVze/gaaBKAwNOloKqi+4GaiQj5YGqPtA==
+X-Received: by 2002:a1c:a9ca:: with SMTP id
+ s193mr33217198wme.132.1621248765787; 
+ Mon, 17 May 2021 03:52:45 -0700 (PDT)
 Received: from localhost.localdomain (31.red-83-51-215.dynamicip.rima-tde.net.
  [83.51.215.31])
- by smtp.gmail.com with ESMTPSA id s18sm6373966wra.80.2021.05.17.03.52.29
+ by smtp.gmail.com with ESMTPSA id c14sm16873962wrt.77.2021.05.17.03.52.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 17 May 2021 03:52:30 -0700 (PDT)
+ Mon, 17 May 2021 03:52:45 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v7 10/23] cpu: Directly use get_memory_mapping() fallback
- handlers in place
-Date: Mon, 17 May 2021 12:51:27 +0200
-Message-Id: <20210517105140.1062037-11-f4bug@amsat.org>
+Subject: [PATCH v7 13/23] cpu: Move AVR target vmsd field from CPUClass to
+ DeviceClass
+Date: Mon, 17 May 2021 12:51:30 +0200
+Message-Id: <20210517105140.1062037-14-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.3
 In-Reply-To: <20210517105140.1062037-1-f4bug@amsat.org>
 References: <20210517105140.1062037-1-f4bug@amsat.org>
@@ -106,100 +108,67 @@ X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: qemu-riscv@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
  Laurent Vivier <laurent@vivier.eu>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  qemu-s390x@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GrNLqjKTckPG
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: HDd1eSUcMzeZ
 
-No code uses CPUClass::get_memory_mapping() outside of hw/core/cpu.c:
+See rationale in previous commit. Targets should use the vmsd field
+of DeviceClass, not CPUClass. As migration is not important on the
+AVR target, break the migration compatibility and set the DeviceClass
+vmsd field. To feel safer, increment the vmstate version.
 
-  $ git grep -F -- '->get_memory_mapping'
-  hw/core/cpu.c:87:    cc->get_memory_mapping(cpu, list, errp);
-  hw/core/cpu.c:439:    k->get_memory_mapping = cpu_common_get_memory_mapping;
-  target/i386/cpu.c:7422:    cc->get_memory_mapping = x86_cpu_get_memory_mapping;
-
-Check the handler presence in place and remove the common fallback code.
-
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/core/cpu-common.c | 16 ----------------
- hw/core/cpu-sysemu.c | 13 +++++++++++++
- 2 files changed, 13 insertions(+), 16 deletions(-)
+v7: Increment vmstate version (Richard)
+---
+ target/avr/cpu.c     | 2 +-
+ target/avr/machine.c | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
-index 2aa6b8cffca..9530e266ecb 100644
---- a/hw/core/cpu-common.c
-+++ b/hw/core/cpu-common.c
-@@ -66,21 +66,6 @@ CPUState *cpu_create(const char *typename)
-     return cpu;
- }
+diff --git a/target/avr/cpu.c b/target/avr/cpu.c
+index 37a8ebcc86f..3353bcb9fc7 100644
+--- a/target/avr/cpu.c
++++ b/target/avr/cpu.c
+@@ -213,7 +213,7 @@ static void avr_cpu_class_init(ObjectClass *oc, void *data)
+     cc->set_pc = avr_cpu_set_pc;
+     cc->memory_rw_debug = avr_cpu_memory_rw_debug;
+     cc->get_phys_page_debug = avr_cpu_get_phys_page_debug;
+-    cc->legacy_vmsd = &vms_avr_cpu;
++    dc->vmsd = &vms_avr_cpu;
+     cc->disas_set_info = avr_cpu_disas_set_info;
+     cc->gdb_read_register = avr_cpu_gdb_read_register;
+     cc->gdb_write_register = avr_cpu_gdb_write_register;
+diff --git a/target/avr/machine.c b/target/avr/machine.c
+index de264f57c33..16f7a3e031d 100644
+--- a/target/avr/machine.c
++++ b/target/avr/machine.c
+@@ -98,8 +98,8 @@ static const VMStateInfo vms_eind = {
  
--void cpu_get_memory_mapping(CPUState *cpu, MemoryMappingList *list,
--                            Error **errp)
--{
--    CPUClass *cc = CPU_GET_CLASS(cpu);
--
--    cc->get_memory_mapping(cpu, list, errp);
--}
--
--static void cpu_common_get_memory_mapping(CPUState *cpu,
--                                          MemoryMappingList *list,
--                                          Error **errp)
--{
--    error_setg(errp, "Obtaining memory mappings is unsupported on this CPU.");
--}
--
- /* Resetting the IRQ comes from across the code base so we take the
-  * BQL here if we need to.  cpu_interrupt assumes it is held.*/
- void cpu_reset_interrupt(CPUState *cpu, int mask)
-@@ -304,7 +289,6 @@ static void cpu_class_init(ObjectClass *klass, void *data)
-     k->parse_features = cpu_common_parse_features;
-     k->get_arch_id = cpu_common_get_arch_id;
-     k->has_work = cpu_common_has_work;
--    k->get_memory_mapping = cpu_common_get_memory_mapping;
-     k->gdb_read_register = cpu_common_gdb_read_register;
-     k->gdb_write_register = cpu_common_gdb_write_register;
-     set_bit(DEVICE_CATEGORY_CPU, dc->categories);
-diff --git a/hw/core/cpu-sysemu.c b/hw/core/cpu-sysemu.c
-index 931ba46354d..aa68ca281e8 100644
---- a/hw/core/cpu-sysemu.c
-+++ b/hw/core/cpu-sysemu.c
-@@ -33,6 +33,19 @@ bool cpu_paging_enabled(const CPUState *cpu)
-     return false;
- }
- 
-+void cpu_get_memory_mapping(CPUState *cpu, MemoryMappingList *list,
-+                            Error **errp)
-+{
-+    CPUClass *cc = CPU_GET_CLASS(cpu);
-+
-+    if (cc->get_memory_mapping) {
-+        cc->get_memory_mapping(cpu, list, errp);
-+        return;
-+    }
-+
-+    error_setg(errp, "Obtaining memory mappings is unsupported on this CPU.");
-+}
-+
- hwaddr cpu_get_phys_page_attrs_debug(CPUState *cpu, vaddr addr,
-                                      MemTxAttrs *attrs)
- {
+ const VMStateDescription vms_avr_cpu = {
+     .name = "cpu",
+-    .version_id = 0,
+-    .minimum_version_id = 0,
++    .version_id = 1,
++    .minimum_version_id = 1,
+     .fields = (VMStateField[]) {
+         VMSTATE_UINT32(env.pc_w, AVRCPU),
+         VMSTATE_UINT32(env.sp, AVRCPU),
 -- 
 2.26.3
 

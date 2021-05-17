@@ -1,102 +1,102 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp1156629lfm;
-        Mon, 17 May 2021 03:55:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwgUT9Y9dXGA8LpKtm9UJ0mqr61F3dK1I9Evou/oNQPS5Md7dltBwHNvnryXzDfMaiQUVW3
-X-Received: by 2002:a02:688:: with SMTP id 130mr14956297jav.48.1621248938906;
-        Mon, 17 May 2021 03:55:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621248938; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp1157775lfm;
+        Mon, 17 May 2021 03:57:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyyqwJhUJY/JFTztHOUOrfyrkXO4s86Ls27JQumcJVKXsDxfsGuTwAgvTIR4cnzu9SUJclI
+X-Received: by 2002:a25:37c3:: with SMTP id e186mr7489613yba.70.1621249062296;
+        Mon, 17 May 2021 03:57:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621249062; cv=none;
         d=google.com; s=arc-20160816;
-        b=iB8e4PUn85qyJ6x5AGAlgwMuTQzE+cShZt400Gbzo0wndMBz5SGPg18P0Ll5UTkyrp
-         JWt45Drm8MK680MPTl2qzwFlU4IzwNYOtF60Dex6n5B3dyLBbPn36uIZgOG0T9Lx72B0
-         JI0F8lCUyH8t24RrSzxfPfPtFd6TxveNUfWOvusbP8g9epCaKUpITVuqITURERhsLnWc
-         ZsJTwkKre8dlu4EMa8zdCtAxlfV1B9RkXD5Y3nBORocmOHXItccUlQUfqHEw1JrPZPvt
-         irQN7I/+r6+J+gEhVvhEZYrlOw+tQ4zF7Osu3jnuAsBGHEl0a5v7xUov9ithYDyeLvPE
-         f9GQ==
+        b=S0sXO4rZh3/W/vDISuW7vn7Xy59VzM4o4zcbGM8h+CWoRwUOXinMlIfrZ1hMKqzg4M
+         7HcGJyQBhBcFjUN3lr3zqOQlBiy0cCW4kuZz1UPlpyQe4anfMMe8JAwqgAYlZvHR/LkO
+         Y8MZw7F00/29V8ulFbn8oXeC68VRwWWqeoyzXWLL8Qn3pwnTPc9bBcFvSC8zfjKCX4MI
+         c6v+bRL1H4D6jZCB2DXmMgdX59R7roJ0TjLFpFrtzIAeoJZZvMQkcTYXDfi8n5Q2t+G5
+         zQCNT9jVakDEf7c1q4JuHkprRf4v8/t5I0DxUTt/PoS+LkhS4/u0kBFyY41LoxuRTcg5
+         s1gA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=jVPo/7wf7/2upfXpPnfl/YhREfWQHr+znlMSFXjo7H8=;
-        b=a8cUlGA8TnM8LH6lpGH44HA59TPsc7W24CJe21lQj3+HhcXyGDcFu5BjT5Esb9P6XT
-         2RTVpkXe60MHKL9+MLECrgXGdYE5w87oSMiLG0d+5oFRYWHrfg0YpDibTguyOqzuwmxm
-         tJqKfbHi2J+faP7byf3GNLIe7hqp70cN5bW3pD0HIurTgvFm8+khAJLCjUK6YjX3ojDh
-         ANMxKzqozRsQyE7uFcmdypwYfPc5VQZHVQrojN6GItYdkYJQwLMHKtRaCRPp7yPW9jxJ
-         QXIG6ht5Ytiez25e2PJMw+jN2Zb62AAnGeG7zQY/UXDY+LWT/wAs2g+qVgcim5i1eSv+
-         tM2w==
+        bh=J++NDLnF3ZLjQJuDikbfz+qqlVxXQCnKQi7mCfFvCw8=;
+        b=p0K6DjNLKg2PlPgqFlCYM+MHXigpGvzp2eWUxmYY4rrsWJZtlbpJtKhuvraaN4Icju
+         ZJcalievtvDRbfCmY8XsCZH1PbBdlA3mKMealSMe73TiK8PahMsw4vS1EehoIBd+DsNO
+         RjYNmqm99WjtmIhTgY0JCkHYQawqEwIk5YMlqxSIGpLF5+5Bh06/GeDTsyCAbP2EQXKE
+         GMfDHny0Xir6GsRMVj8I2xNudAFVExN65sEuKKKyCeZh1NFcPXGExFF8SDpAgQ6xacvh
+         FaKt/GbehULAtfq5YBkIqb9XIrawpvWp/mQmjK156qASC2FjKFuFyl+PtUXbA+wERRU8
+         x1Gw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZXTAgZZD;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mZTsOjj3;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u12si18875096ilm.67.2021.05.17.03.55.38
+        by mx.google.com with ESMTPS id f12si1985003ybk.105.2021.05.17.03.57.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 17 May 2021 03:55:38 -0700 (PDT)
+        Mon, 17 May 2021 03:57:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZXTAgZZD;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mZTsOjj3;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:32830 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39854 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1liauQ-0003Sf-1M
-	for alex.bennee@linaro.org; Mon, 17 May 2021 06:55:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55680)
+	id 1liawP-0008D3-Jg
+	for alex.bennee@linaro.org; Mon, 17 May 2021 06:57:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55492)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1liarK-0005gS-Pt; Mon, 17 May 2021 06:52:26 -0400
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b]:46916)
+ id 1liaqs-0004KW-Pl; Mon, 17 May 2021 06:51:58 -0400
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429]:39895)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1liarI-0006em-Oi; Mon, 17 May 2021 06:52:26 -0400
-Received: by mail-wr1-x42b.google.com with SMTP id y14so3785985wrm.13;
- Mon, 17 May 2021 03:52:22 -0700 (PDT)
+ id 1liaqp-0006Lm-PU; Mon, 17 May 2021 06:51:58 -0400
+Received: by mail-wr1-x429.google.com with SMTP id v12so5873420wrq.6;
+ Mon, 17 May 2021 03:51:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=jVPo/7wf7/2upfXpPnfl/YhREfWQHr+znlMSFXjo7H8=;
- b=ZXTAgZZDKYpbtRhiI+SV5EmMZJIobSIdnY7T9MyuO6DHeGB0w4oeWqveDrWJtK18/f
- sNMx+IR9GCXtwKMSCof1vx9Mg+q3fwgplcNAKPN3gVcWZjrM79q+T1wEV0Gfp05LAlUG
- AF5z5b7zngh1TfDmXCmRiH1wLLvIhAGlTUcpDQK24YOD2EAwo6oxYxzXC3dYdVqeVVuN
- 7r8E0Y1G6RIWIabLmkMZaWTYa4TtCldxOgRVDkHWPVN+rdU7hCxtoHiAZfTU9fz6kMKp
- OpOqxzsQJQxWrKuoIVVthEwLeLrcUasvkB6fvreKAWw8r9YhHXRnC9OcthoJwGiQxFgb
- PXrQ==
+ bh=J++NDLnF3ZLjQJuDikbfz+qqlVxXQCnKQi7mCfFvCw8=;
+ b=mZTsOjj3LWDbZgvFyA7NV3RaiQb1WFhBGbE1A1hLQLSWZ6lbo9cF/JTYOaDceQ+ZR4
+ ZnUESu8TKoJuRoL2A/ujqULQjEg2laKgYu8Z+UwG/dziXYracDTo6VJw26wq5LMW/VU0
+ vObsTR2/yjxbdBvJHwDtPNC5r9XPXnd03o5/fKog96aqtxbv4fjVMr8fwlDrujWrBkTG
+ gtqqkLDwXEZhZdPJDpcsN8XZrETQCfLhDNC5Y/zUFsARR1yN0UcX352zl9homP9Qy/pm
+ 4myGEfTSWFr5c9l6tktkzx8odsuSEykaxWDPbax4WEYcSXucDgct69PGNnnHEAIorZ3J
+ ih5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=jVPo/7wf7/2upfXpPnfl/YhREfWQHr+znlMSFXjo7H8=;
- b=P2WFeuM1+W2pI+/210Oz7FPRm0Q5CL95Jbbn2cfzRfy58sNXI/uZz/JkU/+Hur1CEr
- G217gK+RxcLvroQiQq5ijVhKFtlVsfKMxhz1WDdpiWv1NxzpFi2HFFRSp/sej1qsR/oN
- 8ZG+SxL217ri1yn22rfdiCa3SSz9MDoGn7cA+tifH97h14RA6KE/cjLC1ydhvgOcxZV1
- 0JukKKDxjltY0lDxS1wVYBXX0zdfVn9fYPwface0Kff/xDfnamCn8gBVvSVhw+dSz+1A
- hCeR65LdFvXUrMbnJa4aoat8LGJvL5n8JrOryEfcXyfpcxqelbwIMfo+iuVKFhz1w+/U
- vILw==
-X-Gm-Message-State: AOAM530MEvmLV7j3EMAsd5MNA19/68csweLYiejdn7pVE1UMGJgucKUW
- h95MxUHVYQeWtNN7vlcktvXz/PW7C+YD3w==
-X-Received: by 2002:a5d:4ec8:: with SMTP id s8mr4559165wrv.181.1621248741521; 
- Mon, 17 May 2021 03:52:21 -0700 (PDT)
+ bh=J++NDLnF3ZLjQJuDikbfz+qqlVxXQCnKQi7mCfFvCw8=;
+ b=GYI0SpCJWHkMHJOymr6Zm1qVF1NOnYi2hWvXZ1brwOm6++9Z7O1TmDuItvQbBHrTLd
+ RWpxei/IMRHDZFToYS6Qr5kj4KnwbwZ3kudVEZ5rgLZ2d6C7xssmhhG5l5tjTOf7VXbj
+ 81FCdNWhYdh+0Wb1PlrO3gv9UJt/4KrTyobZ7PXa9ZP9gi1djEIEbGx8/HAL/3DpDzLC
+ brurkgBQrRqNwNGJbywapH1G5GM1pOViX+uveiZzcn1kQc+aYYPJ7n7g1BRy/qrRhWnZ
+ EuRA+rM619o5lsIURRl5T1ThZ9d6Xq/+4anqljhMt1EdaeOuUHAUqZpfPiUa3rG+rieE
+ 7O0Q==
+X-Gm-Message-State: AOAM531J3cjLVIlRsFjvFBEz5f4HsAduCGZu2j3/8zYMy7Fg6Gm68l8S
+ 7dw9tp11DHDHX+5PDAV9LIqr1hGhvQ2T4g==
+X-Received: by 2002:a5d:4c48:: with SMTP id n8mr17063451wrt.422.1621248712701; 
+ Mon, 17 May 2021 03:51:52 -0700 (PDT)
 Received: from localhost.localdomain (31.red-83-51-215.dynamicip.rima-tde.net.
  [83.51.215.31])
- by smtp.gmail.com with ESMTPSA id t17sm9915320wrp.89.2021.05.17.03.52.20
+ by smtp.gmail.com with ESMTPSA id t13sm349995wmi.2.2021.05.17.03.51.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 17 May 2021 03:52:21 -0700 (PDT)
+ Mon, 17 May 2021 03:51:52 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v7 08/23] cpu: Directly use cpu_write_elf*() fallback handlers
- in place
-Date: Mon, 17 May 2021 12:51:25 +0200
-Message-Id: <20210517105140.1062037-9-f4bug@amsat.org>
+Subject: [PATCH v7 02/23] cpu: Restrict target cpu_do_transaction_failed()
+ handlers to sysemu
+Date: Mon, 17 May 2021 12:51:19 +0200
+Message-Id: <20210517105140.1062037-3-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.3
 In-Reply-To: <20210517105140.1062037-1-f4bug@amsat.org>
 References: <20210517105140.1062037-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x429.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -124,175 +124,111 @@ Cc: qemu-riscv@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BAa6T1sxst/T
+X-TUID: X5kJbeggw3En
 
-No code directly accesses CPUClass::write_elf*() handlers out
-of hw/core/cpu.c (the rest are assignation in target/ code):
+In commit cbc183d2d9f ("cpu: move cc->transaction_failed to tcg_ops")
+we restricted the do_transaction_failed() handler to the sysemu part
+of TCGCPUOps, but forgot to restrict the target specific declarations.
 
-  $ git grep -F -- '->write_elf'
-  hw/core/cpu.c:157:    return (*cc->write_elf32_qemunote)(f, cpu, opaque);
-  hw/core/cpu.c:171:    return (*cc->write_elf32_note)(f, cpu, cpuid, opaque);
-  hw/core/cpu.c:186:    return (*cc->write_elf64_qemunote)(f, cpu, opaque);
-  hw/core/cpu.c:200:    return (*cc->write_elf64_note)(f, cpu, cpuid, opaque);
-  hw/core/cpu.c:440:    k->write_elf32_qemunote = cpu_common_write_elf32_qemunote;
-  hw/core/cpu.c:441:    k->write_elf32_note = cpu_common_write_elf32_note;
-  hw/core/cpu.c:442:    k->write_elf64_qemunote = cpu_common_write_elf64_qemunote;
-  hw/core/cpu.c:443:    k->write_elf64_note = cpu_common_write_elf64_note;
-  target/arm/cpu.c:2304:    cc->write_elf64_note = arm_cpu_write_elf64_note;
-  target/arm/cpu.c:2305:    cc->write_elf32_note = arm_cpu_write_elf32_note;
-  target/i386/cpu.c:7425:    cc->write_elf64_note = x86_cpu_write_elf64_note;
-  target/i386/cpu.c:7426:    cc->write_elf64_qemunote = x86_cpu_write_elf64_qemunote;
-  target/i386/cpu.c:7427:    cc->write_elf32_note = x86_cpu_write_elf32_note;
-  target/i386/cpu.c:7428:    cc->write_elf32_qemunote = x86_cpu_write_elf32_qemunote;
-  target/ppc/translate_init.c.inc:10891:    cc->write_elf64_note = ppc64_cpu_write_elf64_note;
-  target/ppc/translate_init.c.inc:10892:    cc->write_elf32_note = ppc32_cpu_write_elf32_note;
-  target/s390x/cpu.c:522:    cc->write_elf64_note = s390_cpu_write_elf64_note;
-
-Check the handler presence in place and remove the common fallback code.
-
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/core/cpu-common.c | 63 --------------------------------------------
- hw/core/cpu-sysemu.c | 44 +++++++++++++++++++++++++++++++
- 2 files changed, 44 insertions(+), 63 deletions(-)
+ target/arm/internals.h |  2 ++
+ target/m68k/cpu.h      |  2 ++
+ target/riscv/cpu.h     | 10 +++++-----
+ target/xtensa/cpu.h    |  8 ++++----
+ 4 files changed, 13 insertions(+), 9 deletions(-)
 
-diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
-index 9d73c9a28ca..5913ffe22be 100644
---- a/hw/core/cpu-common.c
-+++ b/hw/core/cpu-common.c
-@@ -116,65 +116,6 @@ void cpu_exit(CPUState *cpu)
-     qatomic_set(&cpu->icount_decr_ptr->u16.high, -1);
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 886db56b580..3614f6dd988 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -583,6 +583,7 @@ void arm_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr,
+                                  MMUAccessType access_type,
+                                  int mmu_idx, uintptr_t retaddr);
+ 
++#if !defined(CONFIG_USER_ONLY)
+ /* arm_cpu_do_transaction_failed: handle a memory system error response
+  * (eg "no device/memory present at address") by raising an external abort
+  * exception
+@@ -592,6 +593,7 @@ void arm_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr,
+                                    MMUAccessType access_type,
+                                    int mmu_idx, MemTxAttrs attrs,
+                                    MemTxResult response, uintptr_t retaddr);
++#endif
+ 
+ /* Call any registered EL change hooks */
+ static inline void arm_call_pre_el_change_hook(ARMCPU *cpu)
+diff --git a/target/m68k/cpu.h b/target/m68k/cpu.h
+index 402c86c8769..cf58fee9ada 100644
+--- a/target/m68k/cpu.h
++++ b/target/m68k/cpu.h
+@@ -572,10 +572,12 @@ static inline int cpu_mmu_index (CPUM68KState *env, bool ifetch)
+ bool m68k_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
+                        MMUAccessType access_type, int mmu_idx,
+                        bool probe, uintptr_t retaddr);
++#if !defined(CONFIG_USER_ONLY)
+ void m68k_cpu_transaction_failed(CPUState *cs, hwaddr physaddr, vaddr addr,
+                                  unsigned size, MMUAccessType access_type,
+                                  int mmu_idx, MemTxAttrs attrs,
+                                  MemTxResult response, uintptr_t retaddr);
++#endif
+ 
+ typedef CPUM68KState CPUArchState;
+ typedef M68kCPU ArchCPU;
+diff --git a/target/riscv/cpu.h b/target/riscv/cpu.h
+index 0619b491a42..aa19d8f304e 100644
+--- a/target/riscv/cpu.h
++++ b/target/riscv/cpu.h
+@@ -346,11 +346,6 @@ void  riscv_cpu_do_unaligned_access(CPUState *cs, vaddr addr,
+ bool riscv_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
+                         MMUAccessType access_type, int mmu_idx,
+                         bool probe, uintptr_t retaddr);
+-void riscv_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr,
+-                                     vaddr addr, unsigned size,
+-                                     MMUAccessType access_type,
+-                                     int mmu_idx, MemTxAttrs attrs,
+-                                     MemTxResult response, uintptr_t retaddr);
+ char *riscv_isa_string(RISCVCPU *cpu);
+ void riscv_cpu_list(void);
+ 
+@@ -359,6 +354,11 @@ void riscv_cpu_list(void);
+ #define cpu_mmu_index riscv_cpu_mmu_index
+ 
+ #ifndef CONFIG_USER_ONLY
++void riscv_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr,
++                                     vaddr addr, unsigned size,
++                                     MMUAccessType access_type,
++                                     int mmu_idx, MemTxAttrs attrs,
++                                     MemTxResult response, uintptr_t retaddr);
+ void riscv_cpu_swap_hypervisor_regs(CPURISCVState *env);
+ int riscv_cpu_claim_interrupts(RISCVCPU *cpu, uint32_t interrupts);
+ uint32_t riscv_cpu_update_mip(RISCVCPU *cpu, uint32_t mask, uint32_t value);
+diff --git a/target/xtensa/cpu.h b/target/xtensa/cpu.h
+index 3bd4f691c1a..cbe9e5ff230 100644
+--- a/target/xtensa/cpu.h
++++ b/target/xtensa/cpu.h
+@@ -569,10 +569,6 @@ bool xtensa_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
+                          bool probe, uintptr_t retaddr);
+ void xtensa_cpu_do_interrupt(CPUState *cpu);
+ bool xtensa_cpu_exec_interrupt(CPUState *cpu, int interrupt_request);
+-void xtensa_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr, vaddr addr,
+-                                      unsigned size, MMUAccessType access_type,
+-                                      int mmu_idx, MemTxAttrs attrs,
+-                                      MemTxResult response, uintptr_t retaddr);
+ void xtensa_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
+ hwaddr xtensa_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
+ void xtensa_count_regs(const XtensaConfig *config,
+@@ -675,6 +671,10 @@ static inline int xtensa_get_cring(const CPUXtensaState *env)
  }
  
--int cpu_write_elf32_qemunote(WriteCoreDumpFunction f, CPUState *cpu,
--                             void *opaque)
--{
--    CPUClass *cc = CPU_GET_CLASS(cpu);
--
--    return (*cc->write_elf32_qemunote)(f, cpu, opaque);
--}
--
--static int cpu_common_write_elf32_qemunote(WriteCoreDumpFunction f,
--                                           CPUState *cpu, void *opaque)
--{
--    return 0;
--}
--
--int cpu_write_elf32_note(WriteCoreDumpFunction f, CPUState *cpu,
--                         int cpuid, void *opaque)
--{
--    CPUClass *cc = CPU_GET_CLASS(cpu);
--
--    return (*cc->write_elf32_note)(f, cpu, cpuid, opaque);
--}
--
--static int cpu_common_write_elf32_note(WriteCoreDumpFunction f,
--                                       CPUState *cpu, int cpuid,
--                                       void *opaque)
--{
--    return -1;
--}
--
--int cpu_write_elf64_qemunote(WriteCoreDumpFunction f, CPUState *cpu,
--                             void *opaque)
--{
--    CPUClass *cc = CPU_GET_CLASS(cpu);
--
--    return (*cc->write_elf64_qemunote)(f, cpu, opaque);
--}
--
--static int cpu_common_write_elf64_qemunote(WriteCoreDumpFunction f,
--                                           CPUState *cpu, void *opaque)
--{
--    return 0;
--}
--
--int cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cpu,
--                         int cpuid, void *opaque)
--{
--    CPUClass *cc = CPU_GET_CLASS(cpu);
--
--    return (*cc->write_elf64_note)(f, cpu, cpuid, opaque);
--}
--
--static int cpu_common_write_elf64_note(WriteCoreDumpFunction f,
--                                       CPUState *cpu, int cpuid,
--                                       void *opaque)
--{
--    return -1;
--}
--
--
- static int cpu_common_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg)
- {
-     return 0;
-@@ -377,10 +318,6 @@ static void cpu_class_init(ObjectClass *klass, void *data)
-     k->has_work = cpu_common_has_work;
-     k->get_paging_enabled = cpu_common_get_paging_enabled;
-     k->get_memory_mapping = cpu_common_get_memory_mapping;
--    k->write_elf32_qemunote = cpu_common_write_elf32_qemunote;
--    k->write_elf32_note = cpu_common_write_elf32_note;
--    k->write_elf64_qemunote = cpu_common_write_elf64_qemunote;
--    k->write_elf64_note = cpu_common_write_elf64_note;
-     k->gdb_read_register = cpu_common_gdb_read_register;
-     k->gdb_write_register = cpu_common_gdb_write_register;
-     set_bit(DEVICE_CATEGORY_CPU, dc->categories);
-diff --git a/hw/core/cpu-sysemu.c b/hw/core/cpu-sysemu.c
-index 078e1a84a58..7f3a3574943 100644
---- a/hw/core/cpu-sysemu.c
-+++ b/hw/core/cpu-sysemu.c
-@@ -54,6 +54,50 @@ int cpu_asidx_from_attrs(CPUState *cpu, MemTxAttrs attrs)
-     return ret;
- }
- 
-+int cpu_write_elf32_qemunote(WriteCoreDumpFunction f, CPUState *cpu,
-+                             void *opaque)
-+{
-+    CPUClass *cc = CPU_GET_CLASS(cpu);
-+
-+    if (!cc->write_elf32_qemunote) {
-+        return 0;
-+    }
-+    return (*cc->write_elf32_qemunote)(f, cpu, opaque);
-+}
-+
-+int cpu_write_elf32_note(WriteCoreDumpFunction f, CPUState *cpu,
-+                         int cpuid, void *opaque)
-+{
-+    CPUClass *cc = CPU_GET_CLASS(cpu);
-+
-+    if (!cc->write_elf32_note) {
-+        return -1;
-+    }
-+    return (*cc->write_elf32_note)(f, cpu, cpuid, opaque);
-+}
-+
-+int cpu_write_elf64_qemunote(WriteCoreDumpFunction f, CPUState *cpu,
-+                             void *opaque)
-+{
-+    CPUClass *cc = CPU_GET_CLASS(cpu);
-+
-+    if (!cc->write_elf64_qemunote) {
-+        return 0;
-+    }
-+    return (*cc->write_elf64_qemunote)(f, cpu, opaque);
-+}
-+
-+int cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cpu,
-+                         int cpuid, void *opaque)
-+{
-+    CPUClass *cc = CPU_GET_CLASS(cpu);
-+
-+    if (!cc->write_elf64_note) {
-+        return -1;
-+    }
-+    return (*cc->write_elf64_note)(f, cpu, cpuid, opaque);
-+}
-+
- bool cpu_virtio_is_big_endian(CPUState *cpu)
- {
-     CPUClass *cc = CPU_GET_CLASS(cpu);
+ #ifndef CONFIG_USER_ONLY
++void xtensa_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr, vaddr addr,
++                                      unsigned size, MMUAccessType access_type,
++                                      int mmu_idx, MemTxAttrs attrs,
++                                      MemTxResult response, uintptr_t retaddr);
+ int xtensa_get_physical_addr(CPUXtensaState *env, bool update_tlb,
+         uint32_t vaddr, int is_write, int mmu_idx,
+         uint32_t *paddr, uint32_t *page_size, unsigned *access);
 -- 
 2.26.3
 

@@ -1,242 +1,267 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp89932lfg;
-        Thu, 13 May 2021 22:21:06 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxMT/i8rO0cC103aovi4KfgqoM5Uvz5F0FaUltQ55wVKbLTEgoTDnIjbbwmzYYmyRXt6HPX
-X-Received: by 2002:a62:c504:0:b029:28e:b070:db71 with SMTP id j4-20020a62c5040000b029028eb070db71mr43329023pfg.55.1620969665986;
-        Thu, 13 May 2021 22:21:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620969665; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp1377705lfm;
+        Mon, 17 May 2021 08:23:09 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyLBtL79Pzo/p1pulPUU9xbsXCTBwh3g2NuAMNvpvonjRKhz8YwBpMSCKJ4Kr5+LSkPLp/S
+X-Received: by 2002:a5d:63c1:: with SMTP id c1mr249398wrw.71.1621264988878;
+        Mon, 17 May 2021 08:23:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621264988; cv=none;
         d=google.com; s=arc-20160816;
-        b=nX2flPbFHbTuNduvVLpR7nTe23m3CVTn7MuLN2IPubGmS9yUT8+rw+xyGDBl62ZL64
-         WyrZeYXzTnWowdLXlFHjf2M+ijF/e4KI253INomINPP1miXxNlE7fWGXTZUN4XXcQDZe
-         EfZnqmtFWt/pY2vE9NAqU/b210Z4u0mDE4RZ8rxmappVJmZbkMLAtpaa7HwSbqKTMV9q
-         k7D26SooAG3KpuSH3kScmkKFNVR3XZay4Dym3WNv8PbbM8pB34sWHc2PsMDuKEQjWI0c
-         hUkkuFAEJSZPfcQOkwR+rOU4PJDHvaetqVxqgLKLolh1hWHOJPklwNbjE/FcD2ddYIn+
-         7mLA==
+        b=f+BkxoHjiJ3cjSAFVxvEz0BeurIWyQKpkwqDCDwJ7XgKaBQAGkn77ARyvQ7fskQzZR
+         eUvYagrTi7awZIrtOOxzjExkh24St3cUKTjlpYEK/OAM/UPSCLnAiugU0p5ZEG4WH7g1
+         M6oyH+atx38VWfcv4QZUd1UA9Z6oI0cut6J4A6/utzipGHa8NDEOAbEzW86CddwzAJrY
+         irLErj1ExBIPa4AsD5jT3CiFCkZHAPVBryv6cPIA1Sfd6q1w/nhQ+cyhc2g3JtRkpNPN
+         GEKPjZslEdN0+Mxrb26CTzxRVKKdkjA9HVKrBe8FdwINQf4z7ncEtkklnQ52yYUA1oa3
+         2YOg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:content-language
-         :accept-language:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=PL8TnkkTvREC8dckUmkJyqfXg1GnJMnj6f0urfGCeBs=;
-        b=S/jxlJHoSt1mrJJuzWsmG+orGzFXLulUFDBQW0EENmnSvMPw2oLOMjSUiawCk9Rqd+
-         wOel8xTseM8oCXpmYVlZ1HEGzTui/MZhBkI+qxu1wnO+BBN9fDxLl+diSHKVHKlg0uDx
-         HyH8MMZp0/17VQeiB/53U8B1ygHKj8kL2DCJBvZUWwydnMo1Re4P+F3avh2j+4kzCMwG
-         E6Fl5dn9nQBYQeQ5Bt5GFR37qJ0Vx+Eo6ZnyHdgBEigUZT6tlEXl6SIczT7pb3h45krr
-         O2l/ebJU1K9fsEO1Q5JyMgY4U3mllFtWhGC+RkNDDHIh5Ncuym3niR2HhgaNJr9QsXNf
-         Jriw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:to:from;
+        bh=mL+k8ZiiBt/axnxFA7DxTHwhI4e38LQZbpkvw6vl0Zk=;
+        b=cAtVK8e/8S/QeZszec05JNYvt1C7e1+foWJUX9o7r4FC/7MjvyXwpb3ezK2zwok9Jq
+         NL231ika9LklIgouWY4oiRMYp3vr+LBCcRuc0cjYFqAM2uM9oqp38+1mjt9VVNMacOY4
+         ufFGYkdiNd20CttZuG/69Kzcb6AO4F9DeVDjsFpRm0/jvXHGjybszdDDJK2638TL7cl1
+         8l0MQbJGsofqvUWpuPTUQ5UkQnCekHB6HyEXRlSQeh+GxwSi+Sf8F/4/CNX8I+zIl+v6
+         o3d0voIY4PW7ikt8KzatG424nsFNd/Achjx/ufunZNmLmQCtHHa0q8otmmGO+PACSEWy
+         j8SQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of andrey.shinkevich@huawei.com designates 45.249.212.191 as permitted sender) smtp.mailfrom=andrey.shinkevich@huawei.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Return-Path: <andrey.shinkevich@huawei.com>
-Received: from szxga05-in.huawei.com (szxga05-in.huawei.com. [45.249.212.191])
-        by mx.google.com with ESMTPS id k22si6009529pjq.63.2021.05.13.22.21.05
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 13 May 2021 22:21:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of andrey.shinkevich@huawei.com designates 45.249.212.191 as permitted sender) client-ip=45.249.212.191;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id f14si368649wmg.83.2021.05.17.08.23.08
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 17 May 2021 08:23:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of andrey.shinkevich@huawei.com designates 45.249.212.191 as permitted sender) smtp.mailfrom=andrey.shinkevich@huawei.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from dggems703-chm.china.huawei.com (unknown [172.30.72.58])
-	by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4FhGxb0H6PzQn4p;
-	Fri, 14 May 2021 13:17:39 +0800 (CST)
-Received: from dggpemm100006.china.huawei.com (7.185.36.196) by
- dggems703-chm.china.huawei.com (10.3.19.180) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2176.2; Fri, 14 May 2021 13:21:03 +0800
-Received: from dggpemm500011.china.huawei.com (7.185.36.110) by
- dggpemm100006.china.huawei.com (7.185.36.196) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2176.2; Fri, 14 May 2021 13:21:03 +0800
-Received: from dggpemm500011.china.huawei.com ([7.185.36.110]) by
- dggpemm500011.china.huawei.com ([7.185.36.110]) with mapi id 15.01.2176.012;
- Fri, 14 May 2021 13:21:03 +0800
-From: Andrey Shinkevich <andrey.shinkevich@huawei.com>
-To: =?iso-8859-1?Q?Alex_Benn=E9e?= <alex.bennee@linaro.org>
-CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "Chengen (William,
- FixNet)" <chengen@huawei.com>, "peter.maydell@linaro.org"
-	<peter.maydell@linaro.org>, "drjones@redhat.com" <drjones@redhat.com>,
-	"richard.henderson@linaro.org" <richard.henderson@linaro.org>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "Cota@braap.org"
-	<Cota@braap.org>, yuzenghui <yuzenghui@huawei.com>, "Wanghaibin (D)"
-	<wanghaibin.wang@huawei.com>, "shashi.mallela@linaro.org"
-	<shashi.mallela@linaro.org>
-Subject: Re: GICv3 for MTTCG
-Thread-Topic: GICv3 for MTTCG
-Thread-Index: AQHXRo49QQoDTg/5kkqOfm/tGkugzg==
-Date: Fri, 14 May 2021 05:21:03 +0000
-Message-ID: <229ce1b3699c499b90533d669deed745@huawei.com>
-References: <1f157423cc544731beb743287a4be5cb@huawei.com>
- <87h7j8ez4t.fsf@linaro.org> <7f8496377da246c38452d95bbbfc0ca7@huawei.com>
- <877dk2lfee.fsf@linaro.org>
-Accept-Language: en-US, zh-CN
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Received: from localhost ([::1]:51434 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lif5H-0000SQ-MA
+	for alex.bennee@linaro.org; Mon, 17 May 2021 11:23:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42468)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
+ id 1lif08-0006ZX-MV; Mon, 17 May 2021 11:17:48 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:2598)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
+ id 1lif05-0005pX-AZ; Mon, 17 May 2021 11:17:48 -0400
+Received: from dggems705-chm.china.huawei.com (unknown [172.30.72.60])
+ by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4FkN3g4854zlfHJ;
+ Mon, 17 May 2021 23:15:11 +0800 (CST)
+Received: from dggema713-chm.china.huawei.com (10.3.20.77) by
+ dggems705-chm.china.huawei.com (10.3.19.182) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
+ 15.1.2176.2; Mon, 17 May 2021 23:17:26 +0800
+Received: from lhreml703-chm.china.huawei.com (10.201.108.52) by
+ dggema713-chm.china.huawei.com (10.3.20.77) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.2176.2; Mon, 17 May 2021 23:17:24 +0800
+Received: from lhreml703-chm.china.huawei.com ([10.201.68.198]) by
+ lhreml703-chm.china.huawei.com ([10.201.68.198]) with mapi id 15.01.2176.012; 
+ Mon, 17 May 2021 16:17:22 +0100
+From: Salil Mehta <salil.mehta@huawei.com>
+To: "wangyanan (Y)" <wangyanan55@huawei.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>, Andrew Jones
+ <drjones@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>, Igor Mammedov
+ <imammedo@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>
+Subject: RE: [RFC PATCH v3 4/4] hw/arm/virt: Parse -smp cluster parameter in
+ virt_smp_parse
+Thread-Topic: [RFC PATCH v3 4/4] hw/arm/virt: Parse -smp cluster parameter in
+ virt_smp_parse
+Thread-Index: AQHXSj/FZmRUdZustEeQifVnUtKQiarnny9g
+Date: Mon, 17 May 2021 15:17:22 +0000
+Message-ID: <01351414c3424710bf3dc5eb949f0d75@huawei.com>
+References: <20210516103228.37792-1-wangyanan55@huawei.com>
+ <20210516103228.37792-5-wangyanan55@huawei.com>
+In-Reply-To: <20210516103228.37792-5-wangyanan55@huawei.com>
+Accept-Language: en-US
 Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-x-originating-ip: [10.227.155.55]
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.47.69.39]
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
 X-CFilter-Loop: Reflected
-X-TUID: atNIQMfBl+ss
+Received-SPF: pass client-ip=45.249.212.32;
+ envelope-from=salil.mehta@huawei.com; helo=szxga06-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: "Song Bao Hua \(Barry Song\)" <song.bao.hua@hisilicon.com>,
+ zhukeqian <zhukeqian1@huawei.com>, Linuxarm <linuxarm@huawei.com>,
+ "linuxarm@openeuler.org" <linuxarm@openeuler.org>, "wangyanan
+ \(Y\)" <wangyanan55@huawei.com>, "Zengtao \(B\)" <prime.zeng@hisilicon.com>,
+ yangyicong <yangyicong@huawei.com>, yuzenghui <yuzenghui@huawei.com>,
+ "Wanghaibin \(D\)" <wanghaibin.wang@huawei.com>,
+ =?iso-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: J2nO0+5x5FiB
 
-On 5/13/21 8:20 PM, Alex Benn=E9e wrote:=0A=
-> =0A=
-> Andrey Shinkevich <andrey.shinkevich@huawei.com> writes:=0A=
-> =0A=
->> Dear colleagues,=0A=
->>=0A=
->> Thank you all very much for your responses. Let me reply with one messag=
-e.=0A=
->>=0A=
->> I configured QEMU for AARCH64 guest:=0A=
->> $ ./configure --target-list=3Daarch64-softmmu=0A=
->>=0A=
->> When I start QEMU with GICv3 on an x86 host:=0A=
->> qemu-system-aarch64 -machine virt-6.0,accel=3Dtcg,gic-version=3D3=0A=
-> =0A=
-> Hmm are you sure you are running your built QEMU? For me the following=0A=
-> works fine:=0A=
-=0A=
-No doubt I run my built QEMU because I am debugging it and watching the =0A=
-run of it with gcc.=0A=
-=0A=
-> =0A=
->    ./aarch64-softmmu/qemu-system-aarch64 -machine virt-6.0,gic-version=3D=
-3,accel=3Dtcg -cpu max -serial mon:stdio -nic user,model=3Dvirtio-net-pci,h=
-ostfwd=3Dtcp::2222-:22 -device virtio-scsi-pci -device scsi-hd,drive=3Dhd0 =
--blockdev driver=3Draw,node-name=3Dhd0,discard=3Dunmap,file.driver=3Dhost_d=
-evice,file.filename=3D/dev/zvol/hackpool-0/debian-buster-arm64 -kernel=0A=
-> ~/lsrc/linux.git/builds/arm64.nopreempt/arch/arm64/boot/Image -append "co=
-nsole=3DttyAMA0 root=3D/dev/sda2" -display none -m 8G,maxmem=3D8G -smp 12=
-=0A=
-> =0A=
-> =0A=
-=0A=
-Which source code are you using for building your QEMU? Would you please =
-=0A=
-send me the link if it is a source other than github.com/qemu/qemu?=0A=
-I downloaded and pulled the latest commit 3e9f48bcdabe57f8f and applied =0A=
-the series "[PATCH v3 0/8] GICv3 LPI and ITS feature implementation" =0A=
-ONLY. Did you do the same?=0A=
-=0A=
-I have NOT applied the series "[PATCH v2 0/7] accel/tcg: remove implied =0A=
-BQL from cpu_handle_interrupt/exception path" yet because it is old and =0A=
-the manual applying takes more time (will do it later). Is it a possible =
-=0A=
-reason that my guest hangs with locks at start?=0A=
-=0A=
-Andrey=0A=
-=0A=
->>=0A=
->> QEMU reports this error from hw/pci/msix.c:=0A=
->> error_setg(errp, "MSI-X is not supported by interrupt controller");=0A=
->>=0A=
->> Probably, the variable 'msi_nonbroken' would be initialized in=0A=
->> hw/intc/arm_gicv3_its_common.c:=0A=
->> gicv3_its_init_mmio(..)=0A=
->>=0A=
->> I guess that it works with KVM acceleration only rather than with TCG.=
-=0A=
->>=0A=
->> The error persists after applying the series:=0A=
->> https://lists.gnu.org/archive/html/qemu-arm/2021-04/msg00944.html=0A=
->> "GICv3 LPI and ITS feature implementation"=0A=
->> (special thanks for referring me to that)=0A=
->>=0A=
->> Please, make me clear and advise ideas how that error can be fixed?=0A=
->> Should the MSI-X support be implemented with GICv3 extra?=0A=
->>=0A=
->> When successful, I would like to test QEMU for a maximum number of cores=
-=0A=
->> to get the best MTTCG performance.=0A=
->> Probably, we will get just some percentage of performance enhancement=0A=
->> with the BQL series applied, won't we? I will test it as well.=0A=
->>=0A=
->> Best regards,=0A=
->> Andrey Shinkevich=0A=
->>=0A=
->>=0A=
->> On 5/12/21 6:43 PM, Alex Benn=E9e wrote:=0A=
->>>=0A=
->>> Andrey Shinkevich <andrey.shinkevich@huawei.com> writes:=0A=
->>>=0A=
->>>> Dear colleagues,=0A=
->>>>=0A=
->>>> I am looking for ways to accelerate the MTTCG for ARM guest on x86-64 =
-host.=0A=
->>>> The maximum number of CPUs for MTTCG that uses GICv2 is limited by 8:=
-=0A=
->>>>=0A=
->>>> include/hw/intc/arm_gic_common.h:#define GIC_NCPU 8=0A=
->>>>=0A=
->>>> The version 3 of the Generic Interrupt Controller (GICv3) is not=0A=
->>>> supported in QEMU for some reason unknown to me. It would allow to=0A=
->>>> increase the limit of CPUs and accelerate the MTTCG performance on a=
-=0A=
->>>> multiple core hypervisor.=0A=
->>>=0A=
->>> It is supported, you just need to select it.=0A=
->>>=0A=
->>>> I have got an idea to implement the Interrupt Translation Service (ITS=
-)=0A=
->>>> for using by MTTCG for ARM architecture.=0A=
->>>=0A=
->>> There is some work to support ITS under TCG already posted:=0A=
->>>=0A=
->>>     Subject: [PATCH v3 0/8] GICv3 LPI and ITS feature implementation=0A=
->>>     Date: Thu, 29 Apr 2021 19:41:53 -0400=0A=
->>>     Message-Id: <20210429234201.125565-1-shashi.mallela@linaro.org>=0A=
->>>=0A=
->>> please do review and test.=0A=
->>>=0A=
->>>> Do you find that idea useful and feasible?=0A=
->>>> If yes, how much time do you estimate for such a project to complete b=
-y=0A=
->>>> one developer?=0A=
->>>> If no, what are reasons for not implementing GICv3 for MTTCG in QEMU?=
-=0A=
->>>=0A=
->>> As far as MTTCG performance is concerned there is a degree of=0A=
->>> diminishing returns to be expected as the synchronisation cost between=
-=0A=
->>> threads will eventually outweigh the gains of additional threads.=0A=
->>>=0A=
->>> There are a number of parts that could improve this performance. The=0A=
->>> first would be picking up the BQL reduction series from your FutureWei=
-=0A=
->>> colleges who worked on the problem when they were Linaro assignees:=0A=
->>>=0A=
->>>     Subject: [PATCH v2 0/7] accel/tcg: remove implied BQL from cpu_hand=
-le_interrupt/exception path=0A=
->>>     Date: Wed, 19 Aug 2020 14:28:49 -0400=0A=
->>>     Message-Id: <20200819182856.4893-1-robert.foley@linaro.org>=0A=
->>>=0A=
->>> There was also a longer series moving towards per-CPU locks:=0A=
->>>=0A=
->>>     Subject: [PATCH v10 00/73] per-CPU locks=0A=
->>>     Date: Wed, 17 Jun 2020 17:01:18 -0400=0A=
->>>     Message-Id: <20200617210231.4393-1-robert.foley@linaro.org>=0A=
->>>=0A=
->>> I believe the initial measurements showed that the BQL cost started to=
-=0A=
->>> edge up with GIC interactions. We did discuss approaches for this and I=
-=0A=
->>> think one idea was use non-BQL locking for the GIC. You would need to=
-=0A=
->>> revert:=0A=
->>>=0A=
->>>     Subject: [PATCH-for-5.2] exec: Remove MemoryRegion::global_locking =
-field=0A=
->>>     Date: Thu,  6 Aug 2020 17:07:26 +0200=0A=
->>>     Message-Id: <20200806150726.962-1-philmd@redhat.com>=0A=
->>>=0A=
->>> and then implement a more fine tuned locking in the GIC emulation=0A=
->>> itself. However I think the BQL and per-CPU locks are lower hanging=0A=
->>> fruit to tackle first.=0A=
->>>=0A=
->>>>=0A=
->>>> Best regards,=0A=
->>>> Andrey Shinkevich=0A=
->>>=0A=
->>>=0A=
-> =0A=
-> =0A=
-=0A=
+> From: Qemu-devel
+> [mailto:qemu-devel-bounces+salil.mehta=3Dhuawei.com@nongnu.org] On Behalf=
+ Of
+> Yanan Wang
+> Sent: Sunday, May 16, 2021 11:32 AM
+> To: Peter Maydell <peter.maydell@linaro.org>; Paolo Bonzini
+> <pbonzini@redhat.com>; Andrew Jones <drjones@redhat.com>; Michael S . Tsi=
+rkin
+> <mst@redhat.com>; Igor Mammedov <imammedo@redhat.com>; Shannon Zhao
+> <shannon.zhaosl@gmail.com>; qemu-devel@nongnu.org; qemu-arm@nongnu.org
+> Cc: Song Bao Hua (Barry Song) <song.bao.hua@hisilicon.com>; Philippe
+> Mathieu-Daud=E9 <philmd@redhat.com>; wangyanan (Y) <wangyanan55@huawei.co=
+m>;
+> Zengtao (B) <prime.zeng@hisilicon.com>; Wanghaibin (D)
+> <wanghaibin.wang@huawei.com>; yuzenghui <yuzenghui@huawei.com>; yangyicon=
+g
+> <yangyicong@huawei.com>; zhukeqian <zhukeqian1@huawei.com>
+> Subject: [RFC PATCH v3 4/4] hw/arm/virt: Parse -smp cluster parameter in
+> virt_smp_parse
+>=20
+> There is a separate function virt_smp_parse() in hw/virt/arm.c used
+> to parse cpu topology for the ARM machines. So add parsing of -smp
+> cluster parameter in it, then total number of logical cpus will be
+> calculated like: max_cpus =3D sockets * clusters * cores * threads.
+>=20
+> Note, we will assume multi-cluster in one socket is not supported
+> and default the value of clusters to 1, if it's not explicitly
+> specified in -smp cmdline.
+>=20
+> Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
+> ---
+>  hw/arm/virt.c | 32 ++++++++++++++++++--------------
+>  1 file changed, 18 insertions(+), 14 deletions(-)
+>=20
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 7de822e491..678d5ef36c 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -2642,8 +2642,8 @@ static int virt_kvm_type(MachineState *ms, const ch=
+ar
+> *type_str)
+>   * with the -smp cmdlines when parsing them.
+>   *
+>   * We require that at least one of cpus or maxcpus must be provided.
+> - * Threads will default to 1 if not provided. Sockets and cores must
+> - * be either both provided or both not.
+> + * Clusters and threads will default to 1 if they are not provided.
+> + * Sockets and cores must be either both provided or both not.
+>   *
+>   * Note, if neither sockets nor cores are specified, we will calculate
+>   * all the missing values just like smp_parse() does, but will disable
+> @@ -2652,15 +2652,18 @@ static int virt_kvm_type(MachineState *ms, const =
+char
+> *type_str)
+>  static void virt_smp_parse(MachineState *ms, QemuOpts *opts)
+>  {
+>      VirtMachineClass *vmc =3D VIRT_MACHINE_GET_CLASS(ms);
+> +    VirtMachineState *vms =3D VIRT_MACHINE(ms);
+>=20
+>      if (opts) {
+>          unsigned cpus =3D qemu_opt_get_number(opts, "cpus", 0);
+>          unsigned maxcpus =3D qemu_opt_get_number(opts, "maxcpus", 0);
+>          unsigned sockets =3D qemu_opt_get_number(opts, "sockets", 0);
+> +        unsigned clusters =3D qemu_opt_get_number(opts, "clusters", 0);
+>          unsigned cores =3D qemu_opt_get_number(opts, "cores", 0);
+>          unsigned threads =3D qemu_opt_get_number(opts, "threads", 0);
+>=20
+> -        /* Default threads to 1 if not provided */
+> +        /* Default clusters and threads to 1 if not provided */
+> +        clusters =3D clusters > 0 ? clusters : 1;
+>          threads =3D threads > 0 ? threads : 1;
+>=20
+>          if (cpus =3D=3D 0 && maxcpus =3D=3D 0) {
+> @@ -2676,13 +2679,13 @@ static void virt_smp_parse(MachineState *ms, Qemu=
+Opts
+> *opts)
+>              cores =3D 1;
+>              if (cpus =3D=3D 0) {
+>                  sockets =3D 1;
+> -                cpus =3D sockets * cores * threads;
+> +                cpus =3D sockets * clusters * cores * threads;
+>              } else {
+>                  maxcpus =3D maxcpus > 0 ? maxcpus : cpus;
+> -                sockets =3D maxcpus / (cores * threads);
+> +                sockets =3D maxcpus / (clusters * cores * threads);
+>              }
+>          } else if (sockets > 0 && cores > 0) {
+> -            cpus =3D cpus > 0 ? cpus : sockets * cores * threads;
+> +            cpus =3D cpus > 0 ? cpus : sockets * clusters * cores * thre=
+ads;
+>              maxcpus =3D maxcpus > 0 ? maxcpus : cpus;
+>          } else {
+>              error_report("sockets and cores must be both provided "
+> @@ -2695,25 +2698,26 @@ static void virt_smp_parse(MachineState *ms, Qemu=
+Opts
+> *opts)
+>              exit(1);
+>          }
+>=20
+> -        if (sockets * cores * threads < cpus) {
+> +        if (sockets * clusters * cores * threads < cpus) {
+>              error_report("cpu topology: "
+> -                         "sockets (%u) * cores (%u) * threads (%u) < "
+> -                         "smp_cpus (%u)",
+> -                         sockets, cores, threads, cpus);
+> +                         "sockets (%u) * clusters (%u) * cores (%u) * "
+> +                         "threads (%u) < smp_cpus (%u)",
+> +                         sockets, clusters, cores, threads, cpus);
+>              exit(1);
+>          }
+>=20
+> -        if (sockets * cores * threads !=3D maxcpus) {
+> +        if (sockets * clusters * cores * threads !=3D maxcpus) {
+>              error_report("cpu topology: "
+> -                         "sockets (%u) * cores (%u) * threads (%u) "
+> -                         "!=3D maxcpus (%u)",
+> -                         sockets, cores, threads, maxcpus);
+> +                         "sockets (%u) * clusters (%u) * cores (%u) * "
+> +                         "threads (%u) !=3D maxcpus (%u)",
+> +                         sockets, clusters, cores, threads, maxcpus);
+>              exit(1);
+>          }
+>=20
+>          ms->smp.cpus =3D cpus;
+>          ms->smp.max_cpus =3D maxcpus;
+>          ms->smp.sockets =3D sockets;
+> +        vms->smp_clusters =3D clusters;
+
+
+This variable naming *smp_clusters* looks out-of-sorts. I thought a similar
+variable *smp_cpus* was destined to be removed for the reason given in belo=
+w
+link - a patch by Andrew Jones?
+
+Link: https://lists.gnu.org/archive/html/qemu-arm/2020-12/msg00418.html
+
+Am I missing anything here?
+
+Salil.
+
+>          ms->smp.cores =3D cores;
+>          ms->smp.threads =3D threads;
+>      }
+

@@ -1,87 +1,87 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp1441200lfm;
-        Mon, 17 May 2021 09:39:44 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwPhegOGT/tMDx1bKHipCkeY4vnjINjsHsrgUNch1yF2xgk/4VqIEAFAtbi/7/XKexRfb6P
-X-Received: by 2002:a02:ca07:: with SMTP id i7mr864565jak.11.1621269584566;
-        Mon, 17 May 2021 09:39:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621269584; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp1366798lfm;
+        Mon, 17 May 2021 08:10:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzseUyg//AI1BX5QemkB6VFqEvm9TaaG2y8ffNhXXpQyJJgSCyWWTkcfNLM71Jy30tCxli4
+X-Received: by 2002:a05:6602:70d:: with SMTP id f13mr431085iox.16.1621264253120;
+        Mon, 17 May 2021 08:10:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621264253; cv=none;
         d=google.com; s=arc-20160816;
-        b=071eceRsA/e4bCcS+aoAnW1Iv3NjI0gDLRJwl26AcH51XrBaQ2R2E4rryLg4YkXFYS
-         d5Bk8uEvgWOJf6Gf7gM6Ak9P5ViM9TbCYm4dVOUGS7Tc6RgxzEbitsKo7lURuCAYJBRn
-         cOMXpC6Eokqa0FAgjXKlOAszVT8h4BQxG0nsVPRuV/dJAsibYWGhN+821q02GoY/7w+M
-         hJxjugc9ktJPbTNa2JW/rnDTRDjt26xaEzc8V9e106nBtJR2lr90nfZ+rpaTIFTUbIx1
-         sUHQafIHyJjw4wYANQ0t/MpqU5TzCQ44URj67g0f8vTt+5jE0d+CveFkzD+Mba/BJRIf
-         GDnw==
+        b=UODPSsQ6GeHCfPOBiBPOUTbYPNjYtx004dPRD2dJUMMvRlO6Uir4f+l1e57axYdV3K
+         Jg01W1rz75jrCkHScnL+LIX9YqxvCNTEVIDkXPDsHTjUCuRpGsj0ZKcngKqzBioq3j9V
+         W28lSNwPCY/s7sSc3ut8FmdOiMP+oM/M8Keq04LY64p+QaTpZBeuCBQKyu8ezC939SA3
+         2PHLyj9qvRbxMxu5T6bFx+DukKC8AW+VTQOnkHa5zGbqQ0pgEAJeIL94jYl4ehluiax0
+         xgMKSuazoKhpJrHOtzybuo4V/9OvHtEiuFJQjFmSAx7BEuTczxMtQGahoMpErg4TDgba
+         y0aA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-language
          :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject;
-        bh=Q9k8qNLIZYmopBjCgram2/Wnn0r1Dge0LeCTdaTyXyc=;
-        b=Grp1BJwMUiMxX/g92ZgWeYBMwxAUSIqEYm0MuYKiYyXHeoXSm6oLEAJv7Y51JawSWe
-         w8EeYYFlb84Y6EKUqq5QvbIn/ExxWL5yAMY0tl+zQXMRnlHPnsNfFWRZGNr9KlbTECGc
-         3phjakXko/Ej66MRjKxvey0JWQOjv+xkobit9i13Ki9rMs1a054EzMmJc9D76T7duitW
-         kvNBqO6k0Yacw7CEdUKWTMjFHU1qQeH4Qaz98tdbh0y2Z7bbqZNd5LGe0soQHUzY/yQW
-         599rDzhEJjx+Kx1yBjnY+1HKWqcYdr0X8QkmFEomg58fWmidiIjbTtTTlp9IaaFMtxOl
-         t69g==
+        bh=0VpQa7+04PzbGA1/sp+wdlN+i9d8SgUuzCTkMWVOSZU=;
+        b=Y6qdmIYPypkx+TwfVOs/GGddoSJWd0rlDCduK5XllOZd42uD+4A4OFtgdvOH55yrAN
+         BhJatPot67aTCMzT1tBTrTgvCkg2pEgpz/xDJPViKSrWTn1hJUqsNhAF892r4KzwPPTE
+         3Mw6L9Sj9H3sfG5N5NTpf8eIMLQf7jQ/jYoRlFUDTdPLgZuTvNVmO4uwqYmi/AESHnvr
+         xJ6NMBEa1aeNkvk+BQbnHcvJs0LnyuN4ud9bwgz9GErklV7wCNmhnu6VKAWIxXXNw1D+
+         pS3AdiDtCKgi9qpo1L7NS4entOrZQ2wDNKyo0MoCeCIUUbrjZyP1SJl9U5GwPNLj1r0T
+         x7TA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u12si19701234ilm.67.2021.05.17.09.39.44
+        by mx.google.com with ESMTPS id o21si19415897jat.63.2021.05.17.08.10.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 17 May 2021 09:39:44 -0700 (PDT)
+        Mon, 17 May 2021 08:10:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:46838 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59202 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ligHP-0007LW-Py
-	for alex.bennee@linaro.org; Mon, 17 May 2021 12:39:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34024)
+	id 1lietQ-0002Za-6e
+	for alex.bennee@linaro.org; Mon, 17 May 2021 11:10:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39674)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1lig6I-00081G-Fv; Mon, 17 May 2021 12:28:14 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2666)
+ id 1lietH-0002Ye-9G; Mon, 17 May 2021 11:10:43 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2099)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1lig6E-0004zq-LA; Mon, 17 May 2021 12:28:14 -0400
-Received: from dggems703-chm.china.huawei.com (unknown [172.30.72.60])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4FkPcX0yQNzmVTx;
- Tue, 18 May 2021 00:25:16 +0800 (CST)
+ id 1lietE-0001Hp-SY; Mon, 17 May 2021 11:10:43 -0400
+Received: from dggems706-chm.china.huawei.com (unknown [172.30.72.59])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4FkMtN4syMzmhHp;
+ Mon, 17 May 2021 23:07:08 +0800 (CST)
 Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
- dggems703-chm.china.huawei.com (10.3.19.180) with Microsoft SMTP Server
+ dggems706-chm.china.huawei.com (10.3.19.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2176.2; Tue, 18 May 2021 00:28:00 +0800
+ 15.1.2176.2; Mon, 17 May 2021 23:10:36 +0800
 Received: from [10.174.187.128] (10.174.187.128) by
  dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
- 15.1.2176.2; Tue, 18 May 2021 00:27:59 +0800
-Subject: Re: [RFC PATCH v3 6/9] hw/arm/virt-acpi-build: Use possible cpus in
- generation of MADT
+ 15.1.2176.2; Mon, 17 May 2021 23:10:35 +0800
+Subject: Re: [RFC PATCH v3 4/4] hw/arm/virt: Parse -smp cluster parameter in
+ virt_smp_parse
 To: Andrew Jones <drjones@redhat.com>
-References: <20210516102900.28036-1-wangyanan55@huawei.com>
- <20210516102900.28036-7-wangyanan55@huawei.com>
- <20210517074256.xjqwejbi4mfsvug2@gator.home>
+References: <20210516103228.37792-1-wangyanan55@huawei.com>
+ <20210516103228.37792-5-wangyanan55@huawei.com>
+ <20210517091257.wavp74sn37fh3nxf@gator.home>
 From: "wangyanan (Y)" <wangyanan55@huawei.com>
-Message-ID: <ac1b0f17-523d-adb8-c4f4-aa5c93966726@huawei.com>
-Date: Tue, 18 May 2021 00:27:59 +0800
+Message-ID: <50306678-44ec-24f5-6d00-24a8f98b7d25@huawei.com>
+Date: Mon, 17 May 2021 23:10:35 +0800
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
  Thunderbird/78.4.0
 MIME-Version: 1.0
-In-Reply-To: <20210517074256.xjqwejbi4mfsvug2@gator.home>
+In-Reply-To: <20210517091257.wavp74sn37fh3nxf@gator.home>
 Content-Type: text/plain; charset="utf-8"; format=flowed
 Content-Transfer-Encoding: 7bit
 Content-Language: en-US
 X-Originating-IP: [10.174.187.128]
-X-ClientProxiedBy: dggeme704-chm.china.huawei.com (10.1.199.100) To
+X-ClientProxiedBy: dggeme702-chm.china.huawei.com (10.1.199.98) To
  dggpemm500023.china.huawei.com (7.185.36.83)
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191;
- envelope-from=wangyanan55@huawei.com; helo=szxga05-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.190;
+ envelope-from=wangyanan55@huawei.com; helo=szxga04-in.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
@@ -105,141 +105,128 @@ Cc: Barry Song <song.bao.hua@hisilicon.com>,
  "Michael S . Tsirkin" <mst@redhat.com>, wanghaibin.wang@huawei.com,
  zhukeqian1@huawei.com, qemu-devel@nongnu.org, yangyicong@huawei.com,
  Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
- Alistair Francis <alistair.francis@wdc.com>, prime.zeng@hisilicon.com,
- Paolo Bonzini <pbonzini@redhat.com>, yuzenghui@huawei.com,
- Igor Mammedov <imammedo@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>
+ prime.zeng@hisilicon.com, Paolo Bonzini <pbonzini@redhat.com>,
+ yuzenghui@huawei.com, Igor Mammedov <imammedo@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IwkNTVU8vwfv
+X-TUID: Bpd+setOGPmy
 
 Hi Drew,
 
-On 2021/5/17 15:42, Andrew Jones wrote:
-> On Sun, May 16, 2021 at 06:28:57PM +0800, Yanan Wang wrote:
->> When building ACPI tables regarding CPUs we should always build
->> them for the number of possible CPUs, not the number of present
->> CPUs. So we create gicc nodes in MADT for possible cpus and then
->> ensure only the present CPUs are marked ENABLED. Furthermore, it
->> also needed if we are going to support CPU hotplug in the future.
+On 2021/5/17 17:12, Andrew Jones wrote:
+> On Sun, May 16, 2021 at 06:32:28PM +0800, Yanan Wang wrote:
+>> There is a separate function virt_smp_parse() in hw/virt/arm.c used
+>> to parse cpu topology for the ARM machines. So add parsing of -smp
+>> cluster parameter in it, then total number of logical cpus will be
+>> calculated like: max_cpus = sockets * clusters * cores * threads.
 >>
->> Co-developed-by: Andrew Jones <drjones@redhat.com>
->> Signed-off-by: Andrew Jones <drjones@redhat.com>
->> Co-developed-by: Ying Fang <fangying1@huawei.com>
->> Signed-off-by: Ying Fang <fangying1@huawei.com>
->> Co-developed-by: Yanan Wang <wangyanan55@huawei.com>
+>> Note, we will assume multi-cluster in one socket is not supported
+>> and default the value of clusters to 1, if it's not explicitly
+>> specified in -smp cmdline.
+>>
 >> Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
 >> ---
->>   hw/arm/virt-acpi-build.c | 29 +++++++++++++++++++++++++----
->>   1 file changed, 25 insertions(+), 4 deletions(-)
+>>   hw/arm/virt.c | 32 ++++++++++++++++++--------------
+>>   1 file changed, 18 insertions(+), 14 deletions(-)
 >>
->> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
->> index a2d8e87616..4d64aeb865 100644
->> --- a/hw/arm/virt-acpi-build.c
->> +++ b/hw/arm/virt-acpi-build.c
->> @@ -481,6 +481,9 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->>       const int *irqmap = vms->irqmap;
->>       AcpiMadtGenericDistributor *gicd;
->>       AcpiMadtGenericMsiFrame *gic_msi;
->> +    MachineClass *mc = MACHINE_GET_CLASS(vms);
->> +    const CPUArchIdList *possible_cpus = mc->possible_cpu_arch_ids(MACHINE(vms));
->> +    bool pmu;
->>       int i;
+>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>> index 7de822e491..678d5ef36c 100644
+>> --- a/hw/arm/virt.c
+>> +++ b/hw/arm/virt.c
+>> @@ -2642,8 +2642,8 @@ static int virt_kvm_type(MachineState *ms, const char *type_str)
+>>    * with the -smp cmdlines when parsing them.
+>>    *
+>>    * We require that at least one of cpus or maxcpus must be provided.
+>> - * Threads will default to 1 if not provided. Sockets and cores must
+>> - * be either both provided or both not.
+>> + * Clusters and threads will default to 1 if they are not provided.
+>> + * Sockets and cores must be either both provided or both not.
+>>    *
+>>    * Note, if neither sockets nor cores are specified, we will calculate
+>>    * all the missing values just like smp_parse() does, but will disable
+>> @@ -2652,15 +2652,18 @@ static int virt_kvm_type(MachineState *ms, const char *type_str)
+>>   static void virt_smp_parse(MachineState *ms, QemuOpts *opts)
+>>   {
+>>       VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(ms);
+>> +    VirtMachineState *vms = VIRT_MACHINE(ms);
 >>   
->>       acpi_data_push(table_data, sizeof(AcpiMultipleApicTable));
->> @@ -491,11 +494,21 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->>       gicd->base_address = cpu_to_le64(memmap[VIRT_GIC_DIST].base);
->>       gicd->version = vms->gic_version;
+>>       if (opts) {
+>>           unsigned cpus = qemu_opt_get_number(opts, "cpus", 0);
+>>           unsigned maxcpus = qemu_opt_get_number(opts, "maxcpus", 0);
+>>           unsigned sockets = qemu_opt_get_number(opts, "sockets", 0);
+>> +        unsigned clusters = qemu_opt_get_number(opts, "clusters", 0);
+>>           unsigned cores = qemu_opt_get_number(opts, "cores", 0);
+>>           unsigned threads = qemu_opt_get_number(opts, "threads", 0);
 >>   
->> -    for (i = 0; i < MACHINE(vms)->smp.cpus; i++) {
->> +    for (i = 0; i < possible_cpus->len; i++) {
->>           AcpiMadtGenericCpuInterface *gicc = acpi_data_push(table_data,
->>                                                              sizeof(*gicc));
->>           ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(i));
+>> -        /* Default threads to 1 if not provided */
+>> +        /* Default clusters and threads to 1 if not provided */
+>> +        clusters = clusters > 0 ? clusters : 1;
+>>           threads = threads > 0 ? threads : 1;
 >>   
->> +        /*
->> +         * PMU should have been either implemented for all CPUs or not,
->> +         * so we only get information from the first CPU, which could
->> +         * represent the others.
->> +         */
->> +        if (i == 0) {
->> +            pmu = arm_feature(&armcpu->env, ARM_FEATURE_PMU);
->> +        }
->> +        assert(!armcpu || arm_feature(&armcpu->env, ARM_FEATURE_PMU) == pmu);
-> This doesn't belong in this patch. The commit message doesn't even mention
-> it. Also, I don't think we should do this here at all. If we want to
-> ensure that all cpus have a pmu when one does, then that should be done
-> somewhere like machvirt_init(), not in ACPI generation code which doesn't
-> even run for non-ACPI VMs.
-Sorry, I should have stated the reason of this change in the commit message.
-Actually code change here and mp_affinity part below aim to make it correct
-to create gicc entries for all possible cpus.
-
-We only initialize and realize cpuobj for present cpus in machvirt_init,
-so that we will get null ARMCPU pointer here for the non-present cpus,
-and consequently we won't able to check from "armcpu->env" for the
-non-present cpus. The same about "armcpu->mp_affinity".
-
-That's the reason I use PMU configuration of the first cpu to represent the
-others. I assume all cpus should have a pmu when one does here since it's
-how armcpu->env is initialized. And the assert seems not needed here.
-
-Is there any better alternative way about this?
->> +
->>           gicc->type = ACPI_APIC_GENERIC_CPU_INTERFACE;
->>           gicc->length = sizeof(*gicc);
->>           if (vms->gic_version == 2) {
->> @@ -504,11 +517,19 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->>               gicc->gicv_base_address = cpu_to_le64(memmap[VIRT_GIC_VCPU].base);
+>>           if (cpus == 0 && maxcpus == 0) {
+>> @@ -2676,13 +2679,13 @@ static void virt_smp_parse(MachineState *ms, QemuOpts *opts)
+>>               cores = 1;
+>>               if (cpus == 0) {
+>>                   sockets = 1;
+>> -                cpus = sockets * cores * threads;
+>> +                cpus = sockets * clusters * cores * threads;
+>>               } else {
+>>                   maxcpus = maxcpus > 0 ? maxcpus : cpus;
+>> -                sockets = maxcpus / (cores * threads);
+>> +                sockets = maxcpus / (clusters * cores * threads);
+>>               }
+>>           } else if (sockets > 0 && cores > 0) {
+>> -            cpus = cpus > 0 ? cpus : sockets * cores * threads;
+>> +            cpus = cpus > 0 ? cpus : sockets * clusters * cores * threads;
+>>               maxcpus = maxcpus > 0 ? maxcpus : cpus;
+>>           } else {
+>>               error_report("sockets and cores must be both provided "
+>> @@ -2695,25 +2698,26 @@ static void virt_smp_parse(MachineState *ms, QemuOpts *opts)
+>>               exit(1);
 >>           }
->>           gicc->cpu_interface_number = cpu_to_le32(i);
->> -        gicc->arm_mpidr = cpu_to_le64(armcpu->mp_affinity);
->> +        gicc->arm_mpidr = cpu_to_le64(possible_cpus->cpus[i].arch_id);
-> Hmm, I think we may have a problem. I don't think there's any guarantee
-> that possible_cpus->cpus[i].arch_id == armcpu->mp_affinity, because
-> arch_id comes from virt_cpu_mp_affinity(), which is arm_cpu_mp_affinity,
-> but with a variable cluster size, however mp_affinity comes from
-> arm_cpu_mp_affinity with a set cluster size. Also, when KVM is used,
-> then all bets are off as to what mp_affinity is.
-Right! Arch_id is initialized by virt_cpu_mp_affinity() in machvirt and then
-mp_affinity is initialized by arch_id. Here they two have the same value.
-
-But mp_affinity will be overridden in kvm_arch_init_vcpu() when KVM is
-enabled. Here they two won't have the same value.
-> We need to add some code that ensures arch_id == mp_affinity,
-Can we also update the arch_id at the same time when we change mp_affinity?
-> and, for
-> now, we should stick with mp_affinity, since, at least when KVM is used,
-> that's the correct one.
-I also prefer sticking with mp_affinity, if the problem I explain about 
-ARMCPU
-above can be perfectly solved.
->>           gicc->uid = cpu_to_le32(i);
->> -        gicc->flags = cpu_to_le32(ACPI_MADT_GICC_ENABLED);
 >>   
->> -        if (arm_feature(&armcpu->env, ARM_FEATURE_PMU)) {
->> +        /*
->> +         * ACPI spec says that LAPIC entry for non present CPU may be
-> Why are we talking about LAPICs in a GICC generator?
-Ah, sorry. This ought to be GICC entry. Will fix.
-
-Thanks,
-Yanan
->> +         * omitted from MADT or it must be marked as disabled. Here we
->> +         * choose to also keep the disabled ones in MADT.
->> +         */
->> +        if (possible_cpus->cpus[i].cpu != NULL) {
->> +            gicc->flags = cpu_to_le32(ACPI_MADT_GICC_ENABLED);
->> +        }
->> +
->> +        if (pmu) {
->>               gicc->performance_interrupt = cpu_to_le32(PPI(VIRTUAL_PMU_IRQ));
+>> -        if (sockets * cores * threads < cpus) {
+>> +        if (sockets * clusters * cores * threads < cpus) {
+>>               error_report("cpu topology: "
+>> -                         "sockets (%u) * cores (%u) * threads (%u) < "
+>> -                         "smp_cpus (%u)",
+>> -                         sockets, cores, threads, cpus);
+>> +                         "sockets (%u) * clusters (%u) * cores (%u) * "
+>> +                         "threads (%u) < smp_cpus (%u)",
+>> +                         sockets, clusters, cores, threads, cpus);
+>>               exit(1);
 >>           }
->>           if (vms->virt) {
+>>   
+>> -        if (sockets * cores * threads != maxcpus) {
+>> +        if (sockets * clusters * cores * threads != maxcpus) {
+>>               error_report("cpu topology: "
+>> -                         "sockets (%u) * cores (%u) * threads (%u) "
+>> -                         "!= maxcpus (%u)",
+>> -                         sockets, cores, threads, maxcpus);
+>> +                         "sockets (%u) * clusters (%u) * cores (%u) * "
+>> +                         "threads (%u) != maxcpus (%u)",
+>> +                         sockets, clusters, cores, threads, maxcpus);
+>>               exit(1);
+>>           }
+>>   
+>>           ms->smp.cpus = cpus;
+>>           ms->smp.max_cpus = maxcpus;
+>>           ms->smp.sockets = sockets;
+>> +        vms->smp_clusters = clusters;
+>>           ms->smp.cores = cores;
+>>           ms->smp.threads = threads;
+>>       }
 >> -- 
 >> 2.19.1
 >>
+> After reworking "[RFC PATCH v3 9/9] hw/arm/virt: Add separate -smp parsing
+> function for ARM machines", this should also be reworked and fully tested,
+> possibly using a standalone test, as as I suggested in the other review.
+Ok, I will make full test.
+
+Thanks,
+Yanan
 > Thanks,
 > drew
 >

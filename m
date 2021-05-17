@@ -1,84 +1,115 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp857695lfm;
-        Sun, 16 May 2021 20:15:36 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwyysO2X/zMt0PasQ+yJFGTTweze+xTOp5ivVVyM0AF7MSy9zl0KtryKgUjwOmC8DRgJaZE
-X-Received: by 2002:ad4:4081:: with SMTP id l1mr57340738qvp.24.1621221336721;
-        Sun, 16 May 2021 20:15:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621221336; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp918632lfm;
+        Sun, 16 May 2021 22:11:04 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyVxaLnfTrs2d/KoWDWFiTzJk0dh/w0ALA4L5UHa49ZFZcPBbnClgJzvK1VNwYI6DdfZx3K
+X-Received: by 2002:aa7:cc97:: with SMTP id p23mr14023103edt.372.1621228263944;
+        Sun, 16 May 2021 22:11:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621228263; cv=none;
         d=google.com; s=arc-20160816;
-        b=vvCoNN4OCOOH6JpOMhZUO2kCP+1SW0t/kK0JYYynvEw0lcYfQSFun7R3wGcCUDMpXF
-         Go2PE1ybMxIQsTlUV87+lIIpLd52N6wDPZ8+NL5jWlq4rU0jjKUVK+5ha28fQq7K4brr
-         I+aVhXeO/4BFxCUNV/m3rLj+GP/Nj9CuMk1RvEvvZAZxBnzb5SAUdBkxJsmzWmXvn95V
-         2kunpFIzr6nMy7TcPxqMChGINN/3p7nNIDjeKZU45KmjMbd2NsniA6f3TR4QZVekFvID
-         SRklETRwmYbLADMmlXYQcBvgt+LBFedTZd+uhOVRRzblRvIZNj2aTz0SDPDfiMRjm2DX
-         C8BA==
+        b=SmuEHW+8bLo0oDAQCQ5f5u6ZmSccNpl5rah2I8wVWnGrOPUj1jZFaUCuOmyAzwjt1m
+         oS5yCzhunhxOePNCWAcYxFEQAL3e4/FyQ/H2pChf/4leQS2/9uHfk7BqJYZgxC3yU760
+         6iZG872pWAekwBFXrv33NV9j4R4l84seEY3WFsqWyX3s6qqhoAfqUh4oh2z9j1gJsAxr
+         WE5u+VH+zFo/QiYVvGI8vyY+HY0fhi4pkT6uUo3TrooYNfG0yc3sbeG35Kp78fubh4Lm
+         WHw2F4Sri94J5F7sgt+gJvx9KK0DqdioRv8dOT2x3OpVwyWtGlqIDjSBYGgckNB3JnfT
+         ISHA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=bOlRNKOBSt/BH5Utd5/hJLJQkWAbS1d3XhkHGF4xWwk=;
-        b=ehg/E0n6WDp28kAT7vBxzp0qOsccv1wFZeqx/Vn8RxEPCtiz3YujiNmYsoypLFb1YG
-         QLe3orHxU/b28AxxyRAlgTgbnGpAji1lipAkiINl+fFpM1SsZvKBRgrcyFYWM517+3ik
-         sMWV728zk8R5fwFd8a/sJsRL5A4XRl4oX+GthgfkfaJ5Mw3zhn5DQ2PkqGtkIknNuUva
-         2Hq3kPYH1wPPcssW/zglVwZXb2ryU2oSiSZFRYRFDvRbr9+GQ95WA754UZXiQhaNSKHD
-         vrHu50X9Cez/uAu3W7Ror1mdGcKoSfdc9h4Gcfjthx/hlzW7/RymgyEBwWP68C2A76uv
-         SVrw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=zw0LnE4UqMYfNm6bzlDqq5EFktTcl0kBPD/yLs7uAnk=;
+        b=POl8Gtpo41OR6N7r7CLXsen+KkOuwWvGNkBHyj0RGxVlFHZLDeO4CrK5/FkKu6A9h7
+         ZxXW+1+vlIGqrqSWn+TQdVOSXv9K3p1mzwgT2UWvq0YK7qpVHWkgHekVgdvmyUzyJ1Qr
+         H+pff24CmFEvBKCC/b2GkGP8JdXv5i1Np6LIA/3+uwM0U49yQWyomAxjtH7XQTgrTnMB
+         f/msMvRq2GCmoJ+B8OB2/q0RAfR5uOxIJrOlwdA9DtZY6zgXq5o79ejHrVCYCDherwPY
+         ubp4T8ppfyieu6SLgYumpesJAvdzWGD1r85QW1ftXk3IO9jogU/Ue3tgDYu0F2zbGQmZ
+         fu6w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=Hgpq3x9F;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VrsOsB4K;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t9si6517870qtn.25.2021.05.16.20.15.36
+        by mx.google.com with ESMTPS id o7si12883093ejj.449.2021.05.16.22.11.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 16 May 2021 20:15:36 -0700 (PDT)
+        Sun, 16 May 2021 22:11:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=Hgpq3x9F;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58110 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VrsOsB4K;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:38006 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1liTjD-00024M-N6
-	for alex.bennee@linaro.org; Sun, 16 May 2021 23:15:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56256)
+	id 1liVWx-0007rL-3p
+	for alex.bennee@linaro.org; Mon, 17 May 2021 01:11:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46778)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1liTim-00020U-AK; Sun, 16 May 2021 23:15:08 -0400
-Received: from bilbo.ozlabs.org ([2401:3900:2:1::2]:54941 helo=ozlabs.org)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1liTik-0007KS-Fo; Sun, 16 May 2021 23:15:08 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
- id 4Fk44k575zz9sSn; Mon, 17 May 2021 13:15:02 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1621221302;
- bh=eiDrXPm4IHYAISxs9UtFBtljxgwihKw1TuRwK3w/kuU=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Hgpq3x9F+NuyXlnJEDlJ6SDzujIrijBGeGPpdfqtL76GB8GWmjpcxG/UWqvl+o5fs
- XkCGS77D3HfitlYyPOhhIOvZ/RK8KEz5zTCPNFvGqUaMfD+YiP3dk20rd4BMye1MYY
- z3129RWBcvqdFxMwqSyzzbuWBAVQP47rsRR5otZg=
-Date: Mon, 17 May 2021 13:14:52 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Subject: Re: [PATCH v2 12/12] hw/ppc/Kconfig: Add dependency PEGASOS2 ->
- ATI_VGA
-Message-ID: <YKHfrLI4SHAcXy6c@yekko>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1liVWf-0007Rr-TG; Mon, 17 May 2021 01:10:45 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436]:46730)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1liVWe-0008LG-BY; Mon, 17 May 2021 01:10:45 -0400
+Received: by mail-wr1-x436.google.com with SMTP id y14so2840877wrm.13;
+ Sun, 16 May 2021 22:10:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=zw0LnE4UqMYfNm6bzlDqq5EFktTcl0kBPD/yLs7uAnk=;
+ b=VrsOsB4KiAlU8LCyGx8TouyNLqM1gsgwi9RjKtk2ZLXmbSytJSYsHlLvxOLNRpFWN0
+ hnCJh3MzMGAaEzZIjJmHefmZuiMVX8/l93/lIbxJj59Mt2BUDaVaNUuG8rcsi6I5TO9u
+ 92OJl6Yym5shuAy1CKfghhZmebTzZvzCFbdIKOcCcLwBNIvDpmJhA58X0E1ke4zQd3Ok
+ FzIc3YyrlQGvSfTI6Fz9g8Jerb4IFN7KZEbsCbakFDz5SjYL3+zmmwGby17Ilv8HAYrH
+ 4SOEZK9klT1wD6QDgLhjzAJ7CPJrmaKoJgXbGxaEy4VGNTd5vsWj7xVsFva/kccJ3+ds
+ Bxlw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=zw0LnE4UqMYfNm6bzlDqq5EFktTcl0kBPD/yLs7uAnk=;
+ b=nGeVVzX2JCpzY2FqDbERi8u2Bn4bJWwwcCZNz1/A8DIu7BHAuo+V6zyQAjsYzAmXOZ
+ QiyFqlaqFlrqC83uW/LP3zWG3CJ4xublSf3CMwc6F7aH6pXm3Kd3teP2kqhvI4SpZ+hb
+ 8nJscUT+YXPkBEsr2Ss/+LGUANhuN/7a0Dhz49QfoVdSAlpFWpZnCLjXLS4LaHR3F3Mb
+ k2LpPBugYiZ0qfzc9eUZqhz/vxLIGvbPKg1eRuJgOB4c4imVwSKBA0BHq6hbF3ZX4U6j
+ BuYLur/zQryewYqY38zTj1QxV2qS/cIkayGAasYQ2zbD63C/aqs/P/8avs/K8XU9QouG
+ DfXg==
+X-Gm-Message-State: AOAM533pkwaJBc90eJqFZ3cvSOImOQdEMVAeaH3Pzzliv+29yGxcdP9G
+ t2p9SOmOJFSCmGeIhjFUSeM=
+X-Received: by 2002:adf:eb82:: with SMTP id t2mr68380478wrn.337.1621228241633; 
+ Sun, 16 May 2021 22:10:41 -0700 (PDT)
+Received: from [192.168.1.36] (31.red-83-51-215.dynamicip.rima-tde.net.
+ [83.51.215.31])
+ by smtp.gmail.com with ESMTPSA id m6sm4852204wml.3.2021.05.16.22.10.40
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 16 May 2021 22:10:40 -0700 (PDT)
+Subject: Re: [PATCH v2 09/12] hw/pci-host/Kconfig: Add missing dependency
+ MV64361 -> I8259
+To: Bin Meng <bmeng.cn@gmail.com>
 References: <20210515173716.358295-1-philmd@redhat.com>
- <20210515173716.358295-13-philmd@redhat.com>
+ <20210515173716.358295-10-philmd@redhat.com>
+ <CAEUhbmV3XiE1P-+K7Aa10n8udZrh+WRG4tCipRXbYUyd_1PVAA@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <4e5358f8-f0b3-6edb-f110-f34b414afe9c@amsat.org>
+Date: Mon, 17 May 2021 07:10:39 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="b4ECZyMNrk5Dz1Dc"
-Content-Disposition: inline
-In-Reply-To: <20210515173716.358295-13-philmd@redhat.com>
-Received-SPF: pass client-ip=2401:3900:2:1::2; envelope-from=dgibson@ozlabs.org;
- helo=ozlabs.org
-X-Spam_score_int: -17
-X-Spam_score: -1.8
+In-Reply-To: <CAEUhbmV3XiE1P-+K7Aa10n8udZrh+WRG4tCipRXbYUyd_1PVAA@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x436.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
 X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -91,84 +122,66 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Alistair Francis <alistair.francis@wdc.com>, qemu-riscv@nongnu.org,
- Bin Meng <bin.meng@windriver.com>, qemu-devel@nongnu.org,
- BALATON Zoltan <balaton@eik.bme.hu>, Greg Kurz <groug@kaod.org>,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Cc: "open list:RISC-V" <qemu-riscv@nongnu.org>,
+ Bin Meng <bin.meng@windriver.com>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <alistair.francis@wdc.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-ppc <qemu-ppc@nongnu.org>,
+ David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AU5HLPIMNXOe
+X-TUID: 30VGV2f7+bmu
 
+On 5/17/21 4:49 AM, Bin Meng wrote:
+> On Sun, May 16, 2021 at 1:52 AM Philippe Mathieu-Daudé
+> <philmd@redhat.com> wrote:
+>>
+>> From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>>
+>> Looking at the MV64340 model source, there is a dependency on the
+>> 8259 interrupt controller:
+>>
+>>   523     case MV64340_PCI_1_INTERRUPT_ACKNOWLEDGE_VIRTUAL_REG:
+>>   524         /* FIXME: Should this be sent via the PCI bus somehow? */
+>>   525         if (s->gpp_int_level && (s->gpp_value & BIT(31))) {
+>>   526             ret = pic_read_irq(isa_pic);
+>>   527         }
+>>   528         break;
+>>
+>> Add it to Kconfig to avoid the following build failure:
+>>
+>>   /usr/bin/ld: libcommon.fa.p/hw_pci-host_mv64361.c.o: in function `mv64361_read':
+>>   hw/pci-host/mv64361.c:526: undefined reference to `isa_pic'
+>>   /usr/bin/ld: hw/pci-host/mv64361.c:526: undefined reference to `pic_read_irq'
+>>
+>> Fixes: dcdf98a9015 ("hw/pci-host: Add emulation of Marvell MV64361 PPC system controller")
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>>  hw/pci-host/Kconfig | 1 +
+>>  1 file changed, 1 insertion(+)
+>>
+> 
+> Reviewed-by: Bin Meng <bmeng.cn@gmail.com>
 
---b4ECZyMNrk5Dz1Dc
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Thank you :)
 
-On Sat, May 15, 2021 at 07:37:16PM +0200, Philippe Mathieu-Daud=E9 wrote:
-> From: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
->=20
-> While the ATI VGA device isn't a requisite (no crash without it):
->=20
->   $ qemu-system-ppc -M pegasos2
->   qemu-system-ppc: standard VGA not available
->=20
-> it is useful to have it with the Pegasos2 machine:
->=20
->   $ qemu-system-ppc -M pegasos2 -vga none -bios pegasos2.rom -device ati-=
-vga,romfile=3D
->   qemu-system-ppc: -device ati-vga,romfile=3D: 'ati-vga' is not a valid d=
-evice model name
->=20
-> Add it as an implicit Kconfig dependency.
->=20
-> Fixes: ba7e5ac18e7 ("hw/ppc: Add emulation of Genesi/bPlan Pegasos II")
-> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
+> There are some more codes that contain isa_pic. Maybe worth an additional check.
+> 
+> ./hw/i386/x86.c:573:    intno = pic_read_irq(isa_pic);
+> ./hw/intc/i8259.c:58:DeviceState *isa_pic;
+> ./hw/intc/i8259.c:429:    isa_pic = dev;
+> ./hw/intc/apic.c:387:    } else if (!apic_accept_pic_intr(dev) ||
+> !pic_get_output(isa_pic)) {
+> ./hw/intc/apic.c:562:    if (!apic_accept_pic_intr(dev) ||
+> !pic_get_output(isa_pic)) {
+> ./hw/intc/apic.c:615:        return isa_pic != NULL;
+> ./hw/intc/ioapic.c:78:        info->vector = pic_read_irq(isa_pic);
+> ./hw/hppa/pci.c:67:    return pic_read_irq(isa_pic);
+> ./hw/mips/gt64xxx_pci.c:777:        val = pic_read_irq(isa_pic);
+> ./hw/alpha/pci.c:70:    return pic_read_irq(isa_pic);
+> ./hw/pci-host/mv64361.c:526:            ret = pic_read_irq(isa_pic);
+> ./hw/pci-host/prep.c:121:    return pic_read_irq(isa_pic);
+> ./include/hw/intc/i8259.h:6:extern DeviceState *isa_pic;
 
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
-
-> ---
->  hw/ppc/Kconfig | 1 +
->  1 file changed, 1 insertion(+)
->=20
-> diff --git a/hw/ppc/Kconfig b/hw/ppc/Kconfig
-> index 2e4c56eb770..e36db08665a 100644
-> --- a/hw/ppc/Kconfig
-> +++ b/hw/ppc/Kconfig
-> @@ -77,6 +77,7 @@ config PEGASOS2
->      select SMBUS_EEPROM
->  # This should come with VT82C686
->      select ACPI_X86
-> +    imply ATI_VGA
-> =20
->  config PREP
->      bool
-
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---b4ECZyMNrk5Dz1Dc
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAmCh36wACgkQbDjKyiDZ
-s5Kzxg/9E/inCikE/YSNJ0qdL6YVCdCX4MvLXtZnkT7VO3FLdK8nSpzHKTKOf9Ft
-qmMRpEtfx3t4WGon0vRH85OS/3MiOB6VL1Kih5eZmJydA1Gy/dAFeDkx8Mdd7ycx
-92Eg11d6pYmEpwvIAgEuTBM2clcBJG5UH50LbOeBPp9znKaACoFDWkj8oSHk4+0F
-/oo4AaUmAPbGY8KC1E0Q8rtWGTkzoA0TNDZ0mOIMGtxmoBalANRzDogOXN5MZI1C
-9kq63YC4NTdpZCoI5qNNClztHMVjxsUDnfdl/W+9qHl8MqRUe0Q4jDZuGrMfwsGB
-5Ce/sDlbVyDArh4dVBpz6IFg9LbRD5Tf8SL+OQLoWpJbUS/liD5VNKg46HxrCZas
-ZdxGfwfbDqsjuqv3/O/GO3GhWyg1o6bkvkzzKCd1T66PWnbLp38ogdbveY6UzNqM
-lWoWRGd0ksMrbEwtFI/UKYl1rUsPGX1dfFbnB1D4g5113E7VZ0CxcyFx06D6gGJc
-AbuhJvh0+qCUlrEEYE19GUOvZg2/8f4xfATujuETrhj5qCIwOZetyHaoP3M8dcpo
-nsGI7IvrcDvGJpRw+s4D43ZhpBp0JSslaqVBgXGNVjUEzJp8LVfuKy9nYNe0sY8f
-mgVYRTEHXjhkloyLkFWLxsSyTl8FttODtI/3i9yTYUAJv9ssOXs=
-=tUaj
------END PGP SIGNATURE-----
-
---b4ECZyMNrk5Dz1Dc--
+I'll have a look, by my secret plan is to remove the global isa_pic :)

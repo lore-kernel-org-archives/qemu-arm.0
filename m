@@ -1,219 +1,203 @@
-Received: by 2002:a19:e20e:0:0:0:0:0 with SMTP id z14csp947343lfg;
-        Thu, 13 May 2021 16:59:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy4q0tQpC9HjstRTv4pxvYzkSxZYA9tEz5Hd19jYIBIXt5RdOqRYqeUyokHL32+A+3ojrY/
-X-Received: by 2002:a92:cc41:: with SMTP id t1mr5200760ilq.308.1620950379666;
-        Thu, 13 May 2021 16:59:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1620950379; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp1116597lfm;
+        Mon, 17 May 2021 02:58:08 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw05yGce7QKSuCNE+KcfZkwPjz915Y/mD5CA9uthcMtYzw/XCBCfIFQeqi78pciA4BJAhNE
+X-Received: by 2002:a02:cc61:: with SMTP id j1mr57095145jaq.136.1621245488092;
+        Mon, 17 May 2021 02:58:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621245488; cv=none;
         d=google.com; s=arc-20160816;
-        b=PA7a34tgb1Wk6yKwTYCz4lfnHRvVHYKvnwVcbr0U5LYmcNcm2dn3/lEx2/77H7I8cZ
-         l++4iJrNFZMY/xzxJ2wIx9cQIthXsku33FuPdEvQYOzhivuRKLqpwtpCJTLrtE8GixkJ
-         yMtLrfsKXTlluIdWwl+HUrzFvu52nTZQfmPpI7NnqJcbpobbk/gh56/Sbkb4SmZdBxvk
-         nfWLZDIzZf52AUO3MQuH508cnJeUHKBDi1k339sWp8VEHFHsjstwJO6VJK5Vr8TTSSAJ
-         TLOGpoztkiaW+UHDX+N5HNMmrqn+7OVxafsI2FaO01Lgd3dkbtuKCC7XSdx3rd53AAbM
-         uRjw==
+        b=WFfkfCZjyhroiOmuM6sdAVHiZyRg2MdFeTTBEFxeJZtZzUP22bRo0sLhqqJ+mLmWOk
+         MHpZTd2DVT0CeFuX1AaeoB+/ngIT5cUPPnV0YmxhXT/Bn9sCCF26/V7c9rCNHDlKrKCF
+         fNqSIM5xlxLi4M2GYXjJuAtfX2tqMReJvM7n3mR1yGIh87lWAdUN4FJPLliseLincwWO
+         g7czxt6HPIwrloDqBKeJF/NWEN0KIvBhRU3ryAqLIypW5XLY4q5WFD8wcDlkzawD0UNW
+         1ljqqwRBDEXw08jLeyWSUNAxy4I0ZAYzAA/vTXkiThT/1xwc4uEBe87oDU6Dai85YN91
+         303w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=gBwr/dhPoCd9CfPaWqEn2MlwfAlHBdMtXq04tXD/HDI=;
-        b=UcGcmkdmLkz/qvk6iYhHwWHi0u8uXCHNWebDx0oYFaiRDP2vhDmVtz9EBWp0R/GAxS
-         09Om2txvrIx5+HOsVRcGKxmvcWQv1T1QlS4iTIjS8RM73g96jNu7zZOX9yr7QWvnG3dw
-         0l+WlNzFAEkZsvrXfPBc+gBYNjcjgcDgsGsgDhMCGR9umykIQuCg91pNzdpQOboPLz6u
-         2VQ2zbiWYJ/+7STlGx/mYnZGqhu+lg1mseZeVq4E8fhrM8GAH0+Fob1RmMpgC7TN06em
-         VSigNdbKVptzC8ESchxqbbGvCyxbeaHURN4O/829lPEFv5miDUc2SGa29dq6kurL3R+Q
-         zDeg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=0IwZPh7scRjTRZCuWMSlO+/RIyMLD5+O2pqZYLdEKzc=;
+        b=kZCpGZRtJzuGi4eX2O+dJpqa1bfMqBW/fqSCaUJwtPwJTBmHVFrOh8JnJjXYhPr5vq
+         P1rCHJ2IRbxP06bDAr9kM3jL+G+6e6Ls5B21F3qnZia7zOOiKKRBoUijp51VgJ/qSQp+
+         aXVMLrQBhRcBtbAydYhcuayDPwu43wjqb/M9Boh1uZSCkPXHvT6EtvSpMq1tX3o1pan8
+         Z3f7JgjGsYj44fJEQWJCSs5w8Rsqg19VlBG6NMkS2qqjqFgSpD3J7VvCORcn5YRD8k0s
+         iclAl663vJOZikoddt+EMI7DJ+FMrvkg+AluiA4HCeGtkbHsC6A47YT21rDhd9RDFdv1
+         MgoQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=JZx7ZfNa;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=afI4Gy2G;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d2si5003140ilf.115.2021.05.13.16.59.39
+        by mx.google.com with ESMTPS id k1si2020193ilu.64.2021.05.17.02.58.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 13 May 2021 16:59:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 17 May 2021 02:58:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=JZx7ZfNa;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38834 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=afI4Gy2G;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:39512 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lhLEw-0005F1-UY
-	for alex.bennee@linaro.org; Thu, 13 May 2021 19:59:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37108)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lia0l-0007Dg-Df
+	for alex.bennee@linaro.org; Mon, 17 May 2021 05:58:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40918)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1lhLED-0003rS-0C; Thu, 13 May 2021 19:58:53 -0400
-Received: from ozlabs.org ([2401:3900:2:1::2]:47487)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1liZyC-0005CJ-UZ
+ for qemu-devel@nongnu.org; Mon, 17 May 2021 05:55:28 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:48549)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1lhLE9-0007oB-RE; Thu, 13 May 2021 19:58:52 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
- id 4Fh7sd3QqYz9sWY; Fri, 14 May 2021 09:58:45 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1620950325;
- bh=jSjrJe7yg9QmAd48m2CC9cHHABh092WyWTA9kbNPIJI=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=JZx7ZfNaeoqZB9mnZLxIeHgLfjNQ3qgIdqdHdchV8D7hEMyd6CfhLau+3j/ceFKwJ
- cuJfWiVhcc4PD+S/BjsQUWCWYj0Beb/lU5KqvP5uAgzOKe5gfWmJeMbhB8mDKhmYZ4
- CKW4fKFCE2p0a760d3PUU7YMXq4xxI3JcsaG6Jdw=
-Date: Fri, 14 May 2021 09:36:09 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Subject: Re: [PATCH 01/10] hw/mem/nvdimm: Use Kconfig 'imply' instead of
- 'depends on'
-Message-ID: <YJ236b4eraeUY1XH@yekko>
-References: <20210513163858.3928976-1-philmd@redhat.com>
- <20210513163858.3928976-2-philmd@redhat.com>
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1liZy9-0003xB-Gy
+ for qemu-devel@nongnu.org; Mon, 17 May 2021 05:55:27 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1621245324;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=0IwZPh7scRjTRZCuWMSlO+/RIyMLD5+O2pqZYLdEKzc=;
+ b=afI4Gy2Gt33kLnQaYsStYZAzBNM1F+SrhYrhMlkjuHFF8zzXn61SOT1G2kZyFyyTRUSzoU
+ 7ChtoLSof5OjpabwIDco4vkPCfu907JD4sT9oFjqhPtA8w84+dxFJ6ieNCwXVqMu8/sYMw
+ oMSiO2EsTgAgyIuFRWu386i4HUvxLR8=
+Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
+ [209.85.208.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-22-65VH6ZS4P1OaddtRGsTrjA-1; Mon, 17 May 2021 05:55:21 -0400
+X-MC-Unique: 65VH6ZS4P1OaddtRGsTrjA-1
+Received: by mail-ed1-f69.google.com with SMTP id
+ cy15-20020a0564021c8fb029038d26976787so2178444edb.0
+ for <qemu-devel@nongnu.org>; Mon, 17 May 2021 02:55:21 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=0IwZPh7scRjTRZCuWMSlO+/RIyMLD5+O2pqZYLdEKzc=;
+ b=uFnPvLo2TwDhFR71DKshmKjmm7MvWX6fp1i4Xdbeh39Ae8Epwc/WtKqNUAJDAfYpJ9
+ RPshzNneWIWmOPbxcaz5Guw7UuU4rmw3NnA8Bk/uCmIZIhHCFOllUsfczewXBp5kmj+X
+ knNpXTEVtMrjDy3yZ9QqF2Qp+BKIVhYzltZSHp/dgmF6cQ7lfN6p6eXAHsrQhyrfcMUY
+ cUsCNMhB8BTL0z6wkXmzouxiQEm0GDkymverwUFqgcSLK3z9GVnNGqELvdy9qNBTeBJM
+ efCErFl3xbxggYMcGpXL2r052/RFQVzsfSJGdyqtGL9/R7sUFwlaWbI3Yb9KLV9dIulQ
+ OntQ==
+X-Gm-Message-State: AOAM530IBtdpE6Wa5rEmt2ffO7Y6jvlBgtkCR1BYsTYKAQfHtNbAPVF7
+ ZLZShvNp/ysvSxFyIO1mXsp7TKzbv7n2t1rNM6P1xJ0sKEeGdo4v1KqvSN7I0iYDr+QTP1lg+1F
+ uQ0rUhVEJSE4XdlM=
+X-Received: by 2002:aa7:db44:: with SMTP id n4mr26432554edt.374.1621245320142; 
+ Mon, 17 May 2021 02:55:20 -0700 (PDT)
+X-Received: by 2002:aa7:db44:: with SMTP id n4mr26432537edt.374.1621245319976; 
+ Mon, 17 May 2021 02:55:19 -0700 (PDT)
+Received: from thuth.remote.csb (pd9e838d9.dip0.t-ipconnect.de.
+ [217.232.56.217])
+ by smtp.gmail.com with ESMTPSA id n25sm10600936edb.26.2021.05.17.02.55.19
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 17 May 2021 02:55:19 -0700 (PDT)
+Subject: Re: [PATCH v2] disas/libvixl: Protect C system header for C++ compiler
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+References: <20210516171023.510778-1-f4bug@amsat.org>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <c2a204ce-50b7-536a-d48a-810a7442b679@redhat.com>
+Date: Mon, 17 May 2021 11:55:18 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="dttmHqDLDEWEvI6L"
-Content-Disposition: inline
-In-Reply-To: <20210513163858.3928976-2-philmd@redhat.com>
-Received-SPF: pass client-ip=2401:3900:2:1::2; envelope-from=dgibson@ozlabs.org;
- helo=ozlabs.org
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.248,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+In-Reply-To: <20210516171023.510778-1-f4bug@amsat.org>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.296,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=-0.01,
+ RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
- Greg Kurz <groug@kaod.org>, "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
- "open list:PowerPC TCG CPUs" <qemu-ppc@nongnu.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Igor Mammedov <imammedo@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2hFFky6538KD
+ =?UTF-8?Q?Daniel_P_=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Michael Tokarev <mjt@tls.msk.ru>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ZBqGxR4h+VD/
 
-
---dttmHqDLDEWEvI6L
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Thu, May 13, 2021 at 06:38:49PM +0200, Philippe Mathieu-Daud=E9 wrote:
-> Per the kconfig.rst:
->=20
->   A device should be listed [...] ``imply`` if (depending on
->   the QEMU command line) the board may or  may not be started
->   without it.
->=20
-> This is the case with the NVDIMM device (it is certainly possible
-> to start a machine without NVDIMM) , so use the 'imply' weak
-> reverse dependency to select the symbol.
->=20
-> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
-
-ppc part
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
-
+On 16/05/2021 19.10, Philippe Mathieu-Daudé wrote:
+> When selecting an ARM target on Debian unstable, we get:
+> 
+>    Compiling C++ object libcommon.fa.p/disas_libvixl_vixl_utils.cc.o
+>    FAILED: libcommon.fa.p/disas_libvixl_vixl_utils.cc.o
+>    c++ -Ilibcommon.fa.p -I. -I.. [...] -o libcommon.fa.p/disas_libvixl_vixl_utils.cc.o -c ../disas/libvixl/vixl/utils.cc
+>    In file included from /home/philmd/qemu/disas/libvixl/vixl/utils.h:30,
+>                     from ../disas/libvixl/vixl/utils.cc:27:
+>    /usr/include/string.h:36:43: error: missing binary operator before token "("
+>       36 | #if defined __cplusplus && (__GNUC_PREREQ (4, 4) \
+>          |                                           ^
+>    /usr/include/string.h:53:62: error: missing binary operator before token "("
+>       53 | #if defined __USE_MISC || defined __USE_XOPEN || __GLIBC_USE (ISOC2X)
+>          |                                                              ^
+>    /usr/include/string.h:165:21: error: missing binary operator before token "("
+>      165 |      || __GLIBC_USE (LIB_EXT2) || __GLIBC_USE (ISOC2X))
+>          |                     ^
+>    /usr/include/string.h:174:43: error: missing binary operator before token "("
+>      174 | #if defined __USE_XOPEN2K8 || __GLIBC_USE (LIB_EXT2) || __GLIBC_USE (ISOC2X)
+>          |                                           ^
+>    /usr/include/string.h:492:19: error: missing binary operator before token "("
+>      492 | #if __GNUC_PREREQ (3,4)
+>          |                   ^
+> 
+> Relevant information from the host:
+> 
+>    $ lsb_release -d
+>    Description:    Debian GNU/Linux 11 (bullseye)
+>    $ gcc --version
+>    gcc (Debian 10.2.1-6) 10.2.1 20210110
+>    $ dpkg -S /usr/include/string.h
+>    libc6-dev: /usr/include/string.h
+>    $ apt-cache show libc6-dev
+>    Package: libc6-dev
+>    Version: 2.31-11
+> 
+> Partially cherry-pick vixl commit 78973f258039f6e96 [*]:
+> 
+>    Refactor VIXL to use `extern` block when including C header
+>    that do not have a C++ counterpart.
+> 
+> which is similar to commit 875df03b221 ('osdep: protect qemu/osdep.h
+> with extern "C"').
+> 
+> [*] https://git.linaro.org/arm/vixl.git/commit/?id=78973f258039f6e96
+> 
+> Buglink: https://bugs.launchpad.net/qemu/+bug/1914870
+> Suggested-by: Thomas Huth <thuth@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->  default-configs/devices/ppc64-softmmu.mak | 1 -
->  hw/arm/Kconfig                            | 1 +
->  hw/i386/Kconfig                           | 1 +
->  hw/mem/Kconfig                            | 2 --
->  hw/ppc/Kconfig                            | 1 +
->  5 files changed, 3 insertions(+), 3 deletions(-)
->=20
-> diff --git a/default-configs/devices/ppc64-softmmu.mak b/default-configs/=
-devices/ppc64-softmmu.mak
-> index ae0841fa3a1..cca52665d90 100644
-> --- a/default-configs/devices/ppc64-softmmu.mak
-> +++ b/default-configs/devices/ppc64-softmmu.mak
-> @@ -8,4 +8,3 @@ CONFIG_POWERNV=3Dy
-> =20
->  # For pSeries
->  CONFIG_PSERIES=3Dy
-> -CONFIG_NVDIMM=3Dy
-> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> index b887f6a5b17..67723d9ea6a 100644
-> --- a/hw/arm/Kconfig
-> +++ b/hw/arm/Kconfig
-> @@ -6,6 +6,7 @@ config ARM_VIRT
->      imply VFIO_PLATFORM
->      imply VFIO_XGMAC
->      imply TPM_TIS_SYSBUS
-> +    imply NVDIMM
->      select ARM_GIC
->      select ACPI
->      select ARM_SMMUV3
-> diff --git a/hw/i386/Kconfig b/hw/i386/Kconfig
-> index 7f91f30877f..66838fa397b 100644
-> --- a/hw/i386/Kconfig
-> +++ b/hw/i386/Kconfig
-> @@ -23,6 +23,7 @@ config PC
->      imply TPM_TIS_ISA
->      imply VGA_PCI
->      imply VIRTIO_VGA
-> +    imply NVDIMM
->      select FDC
->      select I8259
->      select I8254
-> diff --git a/hw/mem/Kconfig b/hw/mem/Kconfig
-> index a0ef2cf648e..8b19fdc49f1 100644
-> --- a/hw/mem/Kconfig
-> +++ b/hw/mem/Kconfig
-> @@ -7,6 +7,4 @@ config MEM_DEVICE
-> =20
->  config NVDIMM
->      bool
-> -    default y
-> -    depends on (PC || PSERIES || ARM_VIRT)
->      select MEM_DEVICE
-> diff --git a/hw/ppc/Kconfig b/hw/ppc/Kconfig
-> index e51e0e5e5ac..66e0b15d9ef 100644
-> --- a/hw/ppc/Kconfig
-> +++ b/hw/ppc/Kconfig
-> @@ -3,6 +3,7 @@ config PSERIES
->      imply PCI_DEVICES
->      imply TEST_DEVICES
->      imply VIRTIO_VGA
-> +    imply NVDIMM
->      select DIMM
->      select PCI
->      select SPAPR_VSCSI
+>   disas/libvixl/vixl/code-buffer.h |  2 +-
+>   disas/libvixl/vixl/globals.h     | 16 +++++++++-------
+>   disas/libvixl/vixl/invalset.h    |  2 +-
+>   disas/libvixl/vixl/platform.h    |  2 ++
+>   disas/libvixl/vixl/utils.h       |  2 +-
+>   disas/libvixl/vixl/utils.cc      |  2 +-
+>   6 files changed, 15 insertions(+), 11 deletions(-)
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
---dttmHqDLDEWEvI6L
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAmCdt+kACgkQbDjKyiDZ
-s5LR3w/+OqXRQjfiq2SHFQrpIX4ItYsFTG9bvEdagQOryZA4UnAvYVQQU7cvgdZt
-p7lDOeHppW5FwyTl4Z/u+kxmA/qSTpo1UEk9PSt1jrSn4CFsz/LBhcDc+REiouKY
-WeRaj3Hm9zTNiQRpRrPTR/O+7qPzMX8REu2d2iAm0/Fdxzx2YOqIwQcNVElKa2Jg
-CuaDb3JQewmp9IbjzFOXaiSbYGGmSZIe/t+1+bl7QIBOhcK3iJ4FWH/6rBIwbLft
-iqbujCoFUCS3X0RHqGJBQk0kLXX3rBbduuYeIh68vNp3zrd1fgTvkcPVLD04+KR4
-l0kXot2ZIl2kQ8wYP/Pl83n5tIhfmGeAlNAA5WTCvSIFqfBr9jQA8w3gCsZSr70e
-kVu7IWA3c+5KPMU2+e4DBWb8CCGPl50gGh98KAUeml3MCJuEN4kZA4egnIdLlSQ9
-2YWJ1XGHqD1y7o2sGgMgj9FKslqB3UoKeyhsn1YROGSuxfGtvedJB1pbrMzwEeg/
-DVchfgp8c4S9qHdnmQnPwYBmNiOkGINEkCdAdJQhPSae9IzepaTGyLEUzCylVkT9
-jaMT+PzVWwjhRzUTA2EIAmXgcV1yb1EZb8DYDa+WV0ymT43/4DlodJS2s1dcZ1NW
-S4Udg4xPFTMFff9cMxxl/53TwljP9KTS4j5Cuw37s4qViZuX39g=
-=OLkx
------END PGP SIGNATURE-----
-
---dttmHqDLDEWEvI6L--

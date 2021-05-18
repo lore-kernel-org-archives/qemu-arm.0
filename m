@@ -1,175 +1,174 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp748377lfm;
-        Tue, 18 May 2021 13:22:19 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwKr42A4XaCi4PwgGXN9n7cH4Hb846FDA5Hh53pqwHNwQFNaU+lMrJJPJxDcL57ZZrEjHcK
-X-Received: by 2002:a92:cc4c:: with SMTP id t12mr5039606ilq.232.1621369339244;
-        Tue, 18 May 2021 13:22:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621369339; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp760262lfm;
+        Tue, 18 May 2021 13:40:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzCsszS5R4qowMT2V/VHeCh21HrCMkeqiVsBW3NALrEbjyneY7VrJJV5YLka98A/6SAiqae
+X-Received: by 2002:a5d:87c4:: with SMTP id q4mr5540263ios.141.1621370459673;
+        Tue, 18 May 2021 13:40:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621370459; cv=none;
         d=google.com; s=arc-20160816;
-        b=czksxdjPhKgJuwjLiXwSz2PHbaDxJCOujkYTlD8gUa0SgFdlXcGF28xnmsuXvl3Ydq
-         MRkzaa7gko1/wJstMsrgGTlJJ1+amHTRZuD1AVGc6YkIZdnHYXaJG8WcZYmgXf5i/V8t
-         x+CufQVliKqldFZxcsSodhfubofa2VjXhweQt96f9CgPivvPFK7HNOLUIVqq6xDUqc3l
-         4CfXkKOZQsfpRHi5rkcI9GiF9jAPyFyiMceardc02Am8hNMrtPE6zAH+0AOHHejZpqlV
-         n3+d3jTBG01DfLvY9L+FG3CczNjuqYncZpaITA5yw80fzhiSYTLRGq3ChXUUnUoGYH9P
-         fXGQ==
+        b=UE8hIKvE6LQYVbe2EeBy++cV2jnG5npEdq5yNtvMxT+zjVQ0tZMLe51b4JY5qffGYa
+         i6BM+E+ji6XRDAeumPIbBjO01IQhDJ7JLH+pqxFjDUffCyELcBkFNgFu7UhjjKvIZsh8
+         ZN8MbfIIpcLl9xpTrwTe2Gm0wVP+G6JsCNEDDbgoTJi6aKZpP4QklYwQ4OoUnWwskr9L
+         wPgNw5ciQgXEg2JtrJkM5U+7rYSGi/wrG8LRNCABH97vdqIwVy28V+tbXXpACamLpEuS
+         CY2aIFQ9fogeW5TUo/0hVekFh7rWRnCY4fkyNirFzaoJLGY+fZh1yFBuXYROXBVXphc/
+         2Z9Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=EtLwxEnsEfN6cj4xHan6As3MuvE7If+R0pjppMZsGg0=;
-        b=pQeFHZSJYkhvwj4uWhR0IzihP3jES/tbZastNd/VvTNLaIBS8+QGpjpV0HIn42v3Js
-         m4KLrUp/FWbu08SGv+2SnWhkzheslBfoDXxBB3yPZFGGmvFAKiApFyZ3I+qJMVVf9txg
-         qSis67QR21kERx3U1t7Z2+jCYbDWDQ4K+c4CNYNCi1s383AxCPkOjxosHV+6zSgmQNlx
-         nW/jGcikE4jaDTJ46L5sljRKNZ/9GJWYUc7F/sQjMPEt5kziKNG1hQnIZj0fDgIPQAxK
-         qLPrczlWqpKWLkrnzUKK+5OwZunvao01RiVaG3O/3SkCZjVrQyR6pZqYeOth7mBC/rDH
-         KU7A==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=Xkl/2ZEDENxEjZbdG3QQKiRzwO2UJoeP0s/IdTGEfR0=;
+        b=oyOD8XScfAHepRuGaweoO1Np3oPxFF6ce0uKuxaIP1pmVoC9CFmN8+F8gRHMyObBvu
+         OXZeFZ1e4zgnaxhTn8PafoSjUjJrRLCWJakyPi+kt95u3eavrAlN0wr1knhFgdRme2UM
+         oWxAq+2aLq9BxqARXUcZiJX3vA/gQsckIvDGQein7/WZebNw5IiuTCBTXVa1tm/KCDgN
+         IU5Y/qcf6FpAYoZa9pU47EKh9CN3gDhwfUVTZ+l9aC2Qfse85OL0wveFdnIkLvMbtBuR
+         O+sfcJRGsC5RKjjLnWJ0aafPD6WQhhK9lL5uxMDNap2P93UP35RTiTm1vTx2DuWsQQko
+         D0qA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=i6SEj5XJ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YQHaleDj;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f10si1580782jav.125.2021.05.18.13.22.19
+        by mx.google.com with ESMTPS id q17si12423014ilj.87.2021.05.18.13.40.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 May 2021 13:22:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 18 May 2021 13:40:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=i6SEj5XJ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56638 helo=lists1p.gnu.org)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YQHaleDj;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:52016 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lj6EM-00041h-Cy
-	for alex.bennee@linaro.org; Tue, 18 May 2021 16:22:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42756)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lj6WR-0006k2-1c
+	for alex.bennee@linaro.org; Tue, 18 May 2021 16:40:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47492)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lj64Y-0000b8-9H
- for qemu-devel@nongnu.org; Tue, 18 May 2021 16:12:10 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:51174)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lj64O-0006FK-VE
- for qemu-devel@nongnu.org; Tue, 18 May 2021 16:12:09 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1621368719;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=EtLwxEnsEfN6cj4xHan6As3MuvE7If+R0pjppMZsGg0=;
- b=i6SEj5XJBn+g6PrcEiDm5Zcm4FE4CzlrE69zvubuJCJXoeQ76SHPvjPbDCscwwhs/34ApE
- +DZb+JdvbX5JzbD6JAtnmCwDhDYc5lUwdh5fGm4yHGsPh9DikOm4c7wZM4sI1pBUoF9eN3
- TUIZcVxwhe1iNUteDJlQ3b+AyygKThQ=
-Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
- [209.85.218.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-220-sW32GQ8MOS2eoN5Wcsb95Q-1; Tue, 18 May 2021 16:11:57 -0400
-X-MC-Unique: sW32GQ8MOS2eoN5Wcsb95Q-1
-Received: by mail-ej1-f70.google.com with SMTP id
- n25-20020a170906b319b02903d4dc1bc46cso2859079ejz.2
- for <qemu-devel@nongnu.org>; Tue, 18 May 2021 13:11:56 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <saadmohamed2011@gmail.com>)
+ id 1lj6Nd-0001Rl-8D
+ for qemu-arm@nongnu.org; Tue, 18 May 2021 16:31:53 -0400
+Received: from mail-oi1-x22d.google.com ([2607:f8b0:4864:20::22d]:45892)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <saadmohamed2011@gmail.com>)
+ id 1lj6NT-0001Jm-Kn
+ for qemu-arm@nongnu.org; Tue, 18 May 2021 16:31:52 -0400
+Received: by mail-oi1-x22d.google.com with SMTP id w127so7194400oig.12
+ for <qemu-arm@nongnu.org>; Tue, 18 May 2021 13:31:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:from:date:message-id:subject:to;
+ bh=Xkl/2ZEDENxEjZbdG3QQKiRzwO2UJoeP0s/IdTGEfR0=;
+ b=YQHaleDjyqEBwZcuhvUb/wWmKPI9fXalP/jlzllFRACx07iyMcFN427oDcbNyQsRiP
+ Wdeam35GOZnXIDSdJCImYmJB5GsYAIiljFoXbW2H5Kl5puB/Z81+jOzRHcFWL3ECkeoM
+ x3Dl8YM3vyloxxJO6PM6lI1PGw3VuR0WhZF7uqHvHmWIjkg5JzgIbCFe3k2XFFfPeTfl
+ Bux+MIe1OszXS9lv5IyFYw0H0CSE7kGouLbSOh1QQ3QuBL2bXwKgRgXn76YCwEnrVSY1
+ SHJzEof5GTVricUAcBpOCR5X6ehRkumPIV2+pmLWdJrzpoIxFSJmB9/tqhLBY1/7aNo6
+ 5gfQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=EtLwxEnsEfN6cj4xHan6As3MuvE7If+R0pjppMZsGg0=;
- b=OcXbnKfbe1RWiW0P+KjZa9gjyMx9E0ioUM0Jg4ymrkB4xUsmIR9ukfpcHCzd7fMfHx
- XLBkMHOQEnAuNA1C+cX7rNgC9nz+qbM3O+Oa+o8o9dxIfqiUBHIKyIRzuVgdCILQF8ar
- jDoCVMI2fIqvVi4hWTJq+tNsP22NPMx+JmJ76V1ibheIh63as8rFsj8LABobesRJxtcL
- G+0ES9VcOKE3nwJmX460jkYF3TOBHpW929kGIdWGhZW+MkTBHuHD3I1gZgToqPXd0mtB
- NSXsaYn1LMf2QKBsX0u6zpWOfoPb5gqr0Kor8bAoDA6VhVtNKcmcC5oPPi5kahXRKpKx
- K9pQ==
-X-Gm-Message-State: AOAM5333TNbFu7GJvrtVHamqMyOKVHd8T/KbJVXU2gYzlVpjvTpRvuIs
- yhPN9iLJv19J4hg/xPp/TS3q7eSyhYZ18WpGLSU3Eo0efeSHodexQqlQoPsnoolcI+Q+yBxJMbU
- CzK5PczfQuRsqFRI=
-X-Received: by 2002:a17:906:5291:: with SMTP id
- c17mr7697740ejm.527.1621368715793; 
- Tue, 18 May 2021 13:11:55 -0700 (PDT)
-X-Received: by 2002:a17:906:5291:: with SMTP id
- c17mr7697730ejm.527.1621368715659; 
- Tue, 18 May 2021 13:11:55 -0700 (PDT)
-Received: from [192.168.1.36] (31.red-83-51-215.dynamicip.rima-tde.net.
- [83.51.215.31])
- by smtp.gmail.com with ESMTPSA id n17sm13378101eds.72.2021.05.18.13.11.54
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 18 May 2021 13:11:55 -0700 (PDT)
-Subject: Re: [PATCH v2 00/12] hw: Various Kconfig fixes
-To: Eduardo Habkost <ehabkost@redhat.com>
-References: <20210515173716.358295-1-philmd@redhat.com>
- <20210517191856.enjxmb7v2ai6ecdh@habkost.net>
- <20210517200416.pt4xghxiuzuwknvn@habkost.net>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <610577a6-0aea-e6af-7f93-0caa9eb75e27@redhat.com>
-Date: Tue, 18 May 2021 22:11:53 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=Xkl/2ZEDENxEjZbdG3QQKiRzwO2UJoeP0s/IdTGEfR0=;
+ b=QD23g67OVnQbtdZ3LLKy6i6Ay8CYi4kUc332rga4Ry+4iIAufBovCXBfNJufGc7Uhd
+ ZudR/SOak2cFzPyAelhFBtH+/EGObgBYEqej6CbqOt3O13M/tQhcJ+MUhhZz2LzMSOmj
+ b/thL+erEp2IuT9TvQH2uYsBWz9/WVxlvjaDfzfW1hreX1GFXHdfPK1uMa0E7iZbeoaz
+ grEQp8hvO/vqQv9bkFo/2kofD49TrfHevUYjkvTlzE6yFjeOebJd/sFqcxNS++TzDB/1
+ zbglHLk2YuioDvW3yGFwa82Tmvl5fAHRTz+31aRI8MU/OjdgUxWXRdvoz11hJ51afS5v
+ 6WDg==
+X-Gm-Message-State: AOAM532v29mLzrlOGK61XyoQU1qR75fRVb+9SmJT0fo/sNSMc+izUmn9
+ BH07/LVUXjIhRJwRWXelMIbTxcCLFjZPP1iBbY+JzyQcMZE=
+X-Received: by 2002:aca:5e8a:: with SMTP id s132mr5366865oib.94.1621369901427; 
+ Tue, 18 May 2021 13:31:41 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20210517200416.pt4xghxiuzuwknvn@habkost.net>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.374,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+From: Saad Mohamed <saadmohamed2011@gmail.com>
+Date: Tue, 18 May 2021 22:31:30 +0200
+Message-ID: <CAFSPhnvA0AiZVGkSp+jtUD6=NJ9fF27GzwbYzsFSfQfmXQOyuQ@mail.gmail.com>
+Subject: Qemu Support MAC to MAC communication
+To: qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="000000000000062de905c2a09902"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::22d;
+ envelope-from=saadmohamed2011@gmail.com; helo=mail-oi1-x22d.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Alistair Francis <alistair.francis@wdc.com>,
- "Daniel P. Berrange" <berrange@redhat.com>, Bin Meng <bin.meng@windriver.com>,
- qemu-devel@nongnu.org,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-riscv@nongnu.org, David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: do8IyGcutd0t
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: fUVueHMUWWL0
 
-On 5/17/21 10:04 PM, Eduardo Habkost wrote:
-> On Mon, May 17, 2021 at 03:18:56PM -0400, Eduardo Habkost wrote:
->> CCing Build system architecture maintainer (Daniel).
-> 
-> Oops, I was misled by the subsection title.  Daniel is
-> responsible only for the build system documentation.
-> 
-> Do we have any volunteers willing to be listed as reviewers for
-> build system changes in MAINTAINERS?  meson.build has a
-> non-trivial amount of code and no maintainers or reviewers at
-> all.
+--000000000000062de905c2a09902
+Content-Type: text/plain; charset="UTF-8"
 
-Hmmm OK I can add an entry. Ideally with Paolo/Thomas but I don't
-think they want to be listed in any new section ;)
+Hello All,
 
->> On Sat, May 15, 2021 at 07:37:04PM +0200, Philippe Mathieu-Daudé wrote:
->>> Various Kconfig fixes when building stand-alone machine binaries.
->>
->> Who should merge this once it's ready?
+I am trying to emulate ZCU102 Xilinx MPSoc, which contains 4 Giga Ethernet
+Mac Controllers. GEM0, GEM1, GEM2 and GEM3.
 
-Paolo said in v1 that I can send the pull request myself :))
+I have a petalinux running on the APU part which controls GEM3, and I
+managed to communicate with windows application through GEM3 and Phy
+transceiver Model for Marvell.
 
-I will do it in the next 48h~.
+On the RPU part, I have GEM0 and GEM1 controlled through FreeRTOS and lwip
+(TCP/IP) stack.
 
-Thanks,
+I want to ask if is it applicable to connect GEM0 to GEM1 directly (bypass
+Ethernet Phy Models), where I send from one GEM and receive on the other
+one.
 
-Phil.
+Note: I am using *user** network* as I don't have privilege to use tap. I
+searched a lot on the web to find a solution for it but I didn't reach
+something similar.
 
+BR,
+Saad
+
+--000000000000062de905c2a09902
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div class=3D"gmail_default" style=3D"font-family:arial,he=
+lvetica,sans-serif;color:#000000">Hello All,=C2=A0</div><div class=3D"gmail=
+_default" style=3D"font-family:arial,helvetica,sans-serif;color:#000000"><b=
+r></div><div class=3D"gmail_default" style=3D"font-family:arial,helvetica,s=
+ans-serif;color:#000000">I am trying to emulate ZCU102 Xilinx MPSoc, which =
+contains 4 Giga Ethernet Mac Controllers. GEM0, GEM1, GEM2 and GEM3.</div><=
+div class=3D"gmail_default" style=3D"font-family:arial,helvetica,sans-serif=
+;color:#000000"><br></div><div class=3D"gmail_default" style=3D"font-family=
+:arial,helvetica,sans-serif;color:#000000">I have a petalinux running on th=
+e APU part which controls=C2=A0GEM3, and I managed to communicate=C2=A0with=
+ windows application through GEM3 and Phy transceiver Model for Marvell.</d=
+iv><div class=3D"gmail_default" style=3D"font-family:arial,helvetica,sans-s=
+erif;color:#000000"><br></div><div class=3D"gmail_default" style=3D"font-fa=
+mily:arial,helvetica,sans-serif;color:#000000">On the RPU part, I have GEM0=
+ and GEM1 controlled through FreeRTOS and lwip (TCP/IP) stack.=C2=A0</div><=
+div class=3D"gmail_default" style=3D"font-family:arial,helvetica,sans-serif=
+;color:#000000"><br></div><div class=3D"gmail_default" style=3D"font-family=
+:arial,helvetica,sans-serif;color:#000000">I want to ask if is it applicabl=
+e to connect GEM0 to GEM1 directly (bypass Ethernet Phy Models), where I se=
+nd from one GEM and receive on the other one.=C2=A0</div><div class=3D"gmai=
+l_default" style=3D"font-family:arial,helvetica,sans-serif;color:#000000"><=
+br></div><div class=3D"gmail_default" style=3D"font-family:arial,helvetica,=
+sans-serif;color:#000000">Note: I am using <b>user</b><b> network</b> as I =
+don&#39;t have privilege=C2=A0to use tap. I searched a lot on the web to fi=
+nd a solution for it but I didn&#39;t reach something similar.=C2=A0</div><=
+div class=3D"gmail_default" style=3D"font-family:arial,helvetica,sans-serif=
+;color:#000000"><br></div><div class=3D"gmail_default" style=3D"font-family=
+:arial,helvetica,sans-serif;color:#000000">BR,=C2=A0</div><div class=3D"gma=
+il_default" style=3D"font-family:arial,helvetica,sans-serif;color:#000000">=
+Saad</div></div>
+
+--000000000000062de905c2a09902--

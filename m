@@ -1,409 +1,735 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp669555lfm;
-        Tue, 18 May 2021 11:34:56 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxqfvOG+8K6kVzygX+jpIYI88/EExksaEpqcvvxz8GQR8Jh99RzAjT369oa3JL1MwYIFtym
-X-Received: by 2002:a02:b18f:: with SMTP id t15mr7087726jah.127.1621362895863;
-        Tue, 18 May 2021 11:34:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621362895; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp683234lfm;
+        Tue, 18 May 2021 11:54:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJykwQ5XQr6CLSuOe9jg392NkcHlp9qt0YgdI7iXI7uAqx2OF4YpWd3af2+/Uo+WnhpVjVgZ
+X-Received: by 2002:a6b:7413:: with SMTP id s19mr5342733iog.151.1621364075836;
+        Tue, 18 May 2021 11:54:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621364075; cv=none;
         d=google.com; s=arc-20160816;
-        b=WBPMKqDiKeUzDLn4BgTlqd09jltsKYtDr7fKcjPR7h9s5Nzp/v8pOxTRjm8ySW2yRj
-         eLKO74EegK+1vVwCYmDDZu4dUE+klMcHMPuQXSq10uFbYzvPCalRiALCYAjAYn8DN92M
-         +wsLlIdVvcb1VDBp8BujFmGMGSP7ois7U2Ow2o9vvX2oJhFId1iP6zjiZkz7RmcZpGFx
-         0ZT+td6/rirYn0bheIwG5XEQizD9IukLfaHI200kFqgfmX3wiO7x6nTv/JvA8pjTcvCr
-         8FWIE4LArokVDNn9zRfw3BXOgGr0AuJCKh2bP+wBDOdNWIB+ft9F0APbTrx9ij7Un104
-         05RA==
+        b=YUGZ52OIF9QVYXccZTbd5VKNydcxK2S/OiOaQiDjzIV3np2NqjDisDUOr5oBpkvL2p
+         V1a+rNNND3Dx+vI4+pfyOyyCOdaTdFbaZNdHDyuyidLxz2jPl0ZbAeQUc17aece9Z4Qw
+         BXdE9kZFs5gdjNJPZxRJH/+Ti7RQ5D4lRjOg0gQSDH8NsD7FNxTajjZv/IZ5sQUo9NOv
+         fVDkjXpMi7feQ6otpv0G3mYfeqIW85PgqIC4M5rnOC5Hu0F4Kt0gC4mgGEej/Vpjd1v5
+         AoRORg/sMh0zvRltJsHIa99YgaaPbxRXHMT8WJ1CF8eS6zFzohojf/sGvx53rBkrgZCj
+         3G7A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:to:from;
-        bh=1yEeXNnQw3muN3WG49tORrp943oxWTg1QuTx4iOL16w=;
-        b=rCqWcjCfCh4/9DrugIqNsUg1JHfxtW+Acs9FPp8MsGWzBjy4FJWHgIX7pQ72lMk9pk
-         NhYbV9wqMpqvNh63rTOzHB/4QIhZszfJNtfFNw9vdcI6vdiHp4BzlAEJ6MI5lAd0WFM8
-         ohvWGiaAV7exy076arnWNmKXLzqJ0KCAro7DBukLHPReS+lxsy34NVGf/MB/edQpvkOD
-         BoqhsdZjv1G3jOHXiyWTSJWlpGP2LTL4eAfNGC7VpRVJ1KaUHO1ulspxpE/p5YscwkUJ
-         DAB/SGHREr46QNvEfmr2TYAy+ooOQEWQOU82CEmksxRr5GBVvo5AQCZ28oKQoF/aWCPv
-         uvCA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:from:subject:references
+         :mime-version:message-id:in-reply-to:date:dkim-signature;
+        bh=IScTm0v4k1I36/hDS+7oUMvOrrSbicJgp1E9qf31EU4=;
+        b=YHeD6D/y8d3Gh+OuRTk9rPFtcLgP55Ki9l0T/5DTZhBTNJeeAm2OUKX1FgFcCuPaKs
+         GsFBOCJmPScwDTaymOlEiA8e2Mm3zbmBMpd0pVHaOu0Uf3FtVhY3sTuq/N9qOnG76Ilg
+         nqmFgdK+6T6KoMPkxhugkzPorbNLU3plQQ9szegXfZkSLP9v9Hxxju12XEJPHKJOZV1m
+         5niqyVVQJ3E58bNjccCPXCWK0AMIb/+PrjKjcVq3chnyns2NN6t9a0cfGwllUefpoy4L
+         Ia5MkEix7F5cyn6QBo3Fh5efPF1uNp4M5L5Q4wcFp6PX2e9kU85hers18JyJZCT2ZFGt
+         Y+FA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@google.com header.s=20161025 header.b=Y4zfGaqj;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b9si22386713ior.14.2021.05.18.11.34.55
+        by mx.google.com with ESMTPS id e7si7669349jam.26.2021.05.18.11.54.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 May 2021 11:34:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 18 May 2021 11:54:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:55462 helo=lists1p.gnu.org)
+       dkim=pass header.i=@google.com header.s=20161025 header.b=Y4zfGaqj;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:52352 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lj4YR-0007XA-5o
-	for alex.bennee@linaro.org; Tue, 18 May 2021 14:34:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48514)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lj4rT-0001aX-2j
+	for alex.bennee@linaro.org; Tue, 18 May 2021 14:54:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51638)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
- id 1lj4Y8-0007WM-82; Tue, 18 May 2021 14:34:36 -0400
-Received: from szxga07-in.huawei.com ([45.249.212.35]:3614)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
- id 1lj4Y4-0006Js-Gz; Tue, 18 May 2021 14:34:35 -0400
-Received: from dggems705-chm.china.huawei.com (unknown [172.30.72.58])
- by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4Fl4Mf00WhzCsJb;
- Wed, 19 May 2021 02:31:25 +0800 (CST)
-Received: from dggema771-chm.china.huawei.com (10.1.198.213) by
- dggems705-chm.china.huawei.com (10.3.19.182) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
- 15.1.2176.2; Wed, 19 May 2021 02:34:11 +0800
-Received: from lhreml703-chm.china.huawei.com (10.201.108.52) by
- dggema771-chm.china.huawei.com (10.1.198.213) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.2176.2; Wed, 19 May 2021 02:34:10 +0800
-Received: from lhreml703-chm.china.huawei.com ([10.201.68.198]) by
- lhreml703-chm.china.huawei.com ([10.201.68.198]) with mapi id 15.01.2176.012; 
- Tue, 18 May 2021 19:34:08 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: Andrew Jones <drjones@redhat.com>
-Subject: RE: [RFC PATCH v2 5/6] hw/arm/virt-acpi-build: Add PPTT table
-Thread-Topic: [RFC PATCH v2 5/6] hw/arm/virt-acpi-build: Add PPTT table
-Thread-Index: AQHXMDzb5q8WzYljr0ilpO+8Rxsx7Krg+0EAgAgNE7D///kagIAAE+Fg
-Date: Tue, 18 May 2021 18:34:08 +0000
-Message-ID: <80dca9f16c5b4bef9900f6cf76c99500@huawei.com>
-References: <20210413080745.33004-1-wangyanan55@huawei.com>
- <20210413080745.33004-6-wangyanan55@huawei.com>
- <1551b7d6-e010-e5c7-47e1-c347ca78a1db@huawei.com>
- <a6ccb20f19b743a29f6aaffcf3088df2@huawei.com>
- <20210518074221.umezsdedzyzmcbsk@gator.home>
-In-Reply-To: <20210518074221.umezsdedzyzmcbsk@gator.home>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.47.29.209]
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.35;
- envelope-from=salil.mehta@huawei.com; helo=szxga07-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from
+ <3UQukYAYKCgQxmxywvksskpi.gsquiqy-hiziprsrkry.svk@flex--titusr.bounces.google.com>)
+ id 1lj4is-0006bs-Js
+ for qemu-devel@nongnu.org; Tue, 18 May 2021 14:45:42 -0400
+Received: from mail-yb1-xb49.google.com ([2607:f8b0:4864:20::b49]:45570)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from
+ <3UQukYAYKCgQxmxywvksskpi.gsquiqy-hiziprsrkry.svk@flex--titusr.bounces.google.com>)
+ id 1lj4ip-0003uG-5e
+ for qemu-devel@nongnu.org; Tue, 18 May 2021 14:45:42 -0400
+Received: by mail-yb1-xb49.google.com with SMTP id
+ d63-20020a254f420000b02904f91ef33453so14651277ybb.12
+ for <qemu-devel@nongnu.org>; Tue, 18 May 2021 11:45:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=date:in-reply-to:message-id:mime-version:references:subject:from:to
+ :cc; bh=IScTm0v4k1I36/hDS+7oUMvOrrSbicJgp1E9qf31EU4=;
+ b=Y4zfGaqjokziZN/ZkvUOgRhxh0k3cDAGCUYo5qXWtExpiYEvn5JsHP6CCzisGJ7bvU
+ 8Ui/WrsysuqvcdTvKDiJDG6b6SuT60r4E+hqn8Sjk/Dqit+EAuIfv/NZEjcRjsdlYneQ
+ 4Lj+sBIo7dOprbrzHCsP0R0/pP5ken86/oMWlLhVwAwiXlm/Vz8g1nfqSfkLA5TD2GmI
+ D4ThXcLzOI1S0cvnw25o+w9S02LEG87YCcLZPDFD3sEYrSF9gKMyDDJQRbmSD+E76FGU
+ a8Pg5Zr0XTlfW+luFOxgU5w8m+VvB2c3z4Ifuz+WJAsdxrVzw0ytj5bGygVKYxBoqIgS
+ yvZA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:in-reply-to:message-id:mime-version
+ :references:subject:from:to:cc;
+ bh=IScTm0v4k1I36/hDS+7oUMvOrrSbicJgp1E9qf31EU4=;
+ b=m0GphMvngj1AtaAi6Sga5ObuJN9jwfpkpEqu3guByQOp45Ojp9JjBxiu4PJLZfoH5e
+ 5so+SRkgFCkCnD1YckjqFoy4qdZ1B65VujMYp8vsSAnueAYY9JsDjjjs9F212xnfV9Zi
+ 60fqaimwYx3JS8NoztkKZBtPA9bJfZbxJbpbvmVpyUN/QLHlKpIhswZMHo1Itq5H3auc
+ JhKBFPQccUOPCJip6PQZJEiuCUjq/V4laHUjUbY8uLM43q7mtvHIGzlaSGRqOKGHTfCc
+ V8WLjDnBCk+L8/RrA2b0zQAv/J4qxiRW3COT9tZUWNOqAjZ98nIU7QjKQvDgFGkcuvAr
+ Z7wA==
+X-Gm-Message-State: AOAM533/SHJVPPowDz6nj5nzUMD+2JHjXMXH4Fwcl0U4N2cXZCluzyTP
+ N/E/ZpnBXCYR38Bp6JSF+lra4xAf/2w=
+X-Received: from titusr.svl.corp.google.com
+ ([2620:15c:2c5:13:4bf9:75f4:b656:df26])
+ (user=titusr job=sendgmr) by 2002:a25:ae07:: with SMTP id
+ a7mr7633297ybj.133.1621363537573; 
+ Tue, 18 May 2021 11:45:37 -0700 (PDT)
+Date: Tue, 18 May 2021 11:45:24 -0700
+In-Reply-To: <20210518184527.1037888-1-titusr@google.com>
+Message-Id: <20210518184527.1037888-3-titusr@google.com>
+Mime-Version: 1.0
+References: <20210518184527.1037888-1-titusr@google.com>
+X-Mailer: git-send-email 2.31.1.751.gd2f1c929bd-goog
+Subject: [PATCH v3 2/5] hw/misc: add ADM1272 device
+From: Titus Rwantare <titusr@google.com>
+To: Corey Minyard <cminyard@mvista.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, f4bug@amsat.org, 
+ Titus Rwantare <titusr@google.com>, Joel Stanley <joel@jms.id.au>,
+ Hao Wu <wuhaotsh@google.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b49;
+ envelope-from=3UQukYAYKCgQxmxywvksskpi.gsquiqy-hiziprsrkry.svk@flex--titusr.bounces.google.com;
+ helo=mail-yb1-xb49.google.com
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "linuxarm@openeuler.org" <linuxarm@openeuler.org>,
- "Michael S . Tsirkin" <mst@redhat.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Linuxarm <linuxarm@huawei.com>, "wangyanan \(Y\)" <wangyanan55@huawei.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, Igor
- Mammedov <imammedo@redhat.com>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- Alistair Francis <alistair.francis@wdc.com>,
- "Zengtao \(B\)" <prime.zeng@hisilicon.com>, yangyicong <yangyicong@huawei.com>,
- yuzenghui <yuzenghui@huawei.com>,
- "Wanghaibin \(D\)" <wanghaibin.wang@huawei.com>,
- zhukeqian <zhukeqian1@huawei.com>, "lijiajie
- \(H\)" <lijiajie11@huawei.com>, David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MxEGCo3CkZX8
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: gnpkBG2jgsvE
 
-> From: Andrew Jones [mailto:drjones@redhat.com]
-> Sent: Tuesday, May 18, 2021 8:42 AM
-> To: Salil Mehta <salil.mehta@huawei.com>
-> Cc: wangyanan (Y) <wangyanan55@huawei.com>; Peter Maydell
-> <peter.maydell@linaro.org>; Michael S . Tsirkin <mst@redhat.com>; Wanghai=
-bin
-> (D) <wanghaibin.wang@huawei.com>; qemu-devel@nongnu.org; Shannon Zhao
-> <shannon.zhaosl@gmail.com>; qemu-arm@nongnu.org; Alistair Francis
-> <alistair.francis@wdc.com>; Zengtao (B) <prime.zeng@hisilicon.com>;
-> yangyicong <yangyicong@huawei.com>; yuzenghui <yuzenghui@huawei.com>; Igo=
-r
-> Mammedov <imammedo@redhat.com>; zhukeqian <zhukeqian1@huawei.com>; lijiaj=
-ie (H)
-> <lijiajie11@huawei.com>; David Gibson <david@gibson.dropbear.id.au>; Linu=
-xarm
-> <linuxarm@huawei.com>; linuxarm@openeuler.org
-> Subject: Re: [RFC PATCH v2 5/6] hw/arm/virt-acpi-build: Add PPTT table
->=20
-> On Tue, May 18, 2021 at 07:17:56AM +0000, Salil Mehta wrote:
-> > > From: Qemu-arm
-> [mailto:qemu-arm-bounces+salil.mehta=3Dhuawei.com@nongnu.org]
-> > > On Behalf Of wangyanan (Y)
-> > > Sent: Thursday, May 13, 2021 6:10 AM
-> > >
-> > > Hi Drew,
-> > >
-> > > I got a question below, and hope your reply. Thanks!
-> > > On 2021/4/13 16:07, Yanan Wang wrote:
-> > > > Add the Processor Properties Topology Table (PPTT) to present
-> > > > CPU topology information to ACPI guests. Note, while a DT boot
-> > > > Linux guest with a non-flat CPU topology will see socket and
-> > > > core IDs being sequential integers starting from zero, e.g.
-> > > > with -smp 4,sockets=3D2,cores=3D2,threads=3D1
-> > > >
-> > > > a DT boot produces
-> > > >
-> > > >   cpu:  0 package_id:  0 core_id:  0
-> > > >   cpu:  1 package_id:  0 core_id:  1
-> > > >   cpu:  2 package_id:  1 core_id:  0
-> > > >   cpu:  3 package_id:  1 core_id:  1
-> > > >
-> > > > an ACPI boot produces
-> > > >
-> > > >   cpu:  0 package_id: 36 core_id:  0
-> > > >   cpu:  1 package_id: 36 core_id:  1
-> > > >   cpu:  2 package_id: 96 core_id:  2
-> > > >   cpu:  3 package_id: 96 core_id:  3
-> > > >
-> > > > This is due to several reasons:
-> > > >
-> > > >   1) DT cpu nodes do not have an equivalent field to what the PPTT
-> > > >      ACPI Processor ID must be, i.e. something equal to the MADT CP=
-U
-> > > >      UID or equal to the UID of an ACPI processor container. In bot=
-h
-> > > >      ACPI cases those are platform dependant IDs assigned by the
-> > > >      vendor.
-> > > >
-> > > >   2) While QEMU is the vendor for a guest, if the topology specifie=
-s
-> > > >      SMT (> 1 thread), then, with ACPI, it is impossible to assign =
-a
-> > > >      core-id the same value as a package-id, thus it is not possibl=
-e
-> > > >      to have package-id=3D0 and core-id=3D0. This is because packag=
-e and
-> > > >      core containers must be in the same ACPI namespace and therefo=
-re
-> > > >      must have unique UIDs.
-> > > >
-> > > >   3) ACPI processor containers are not required for PPTT tables to
-> > > >      be used and, due to the limitations of which IDs are selected
-> > > >      described above in (2), they are not helpful for QEMU, so we
-> > > >      don't build them with this patch. In the absence of them, Linu=
-x
-> > > >      assigns its own unique IDs. The maintainers have chosen not to=
- use
-> > > >      counters from zero, but rather ACPI table offsets, which expla=
-ins
-> > > >      why the numbers are so much larger than with DT.
-> > > >
-> > > >   4) When there is no SMT (threads=3D1) the core IDs for ACPI boot =
-guests
-> > > >      match the logical CPU IDs, because these IDs must be equal to =
-the
-> > > >      MADT CPU UID (as no processor containers are present), and QEM=
-U
-> > > >      uses the logical CPU ID for these MADT IDs.
-> > > >
-> > > > Tested-by: Jiajie Li <lijiajie11@huawei.com>
-> > > > Signed-off-by: Andrew Jones <drjones@redhat.com>
-> > > > Signed-off-by: Ying Fang <fangying1@huawei.com>
-> > > > Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
-> > > > ---
-> > > >   hw/arm/virt-acpi-build.c | 63 +++++++++++++++++++++++++++++++++++=
-+++++
-> > > >   1 file changed, 63 insertions(+)
-> > > >
-> > > > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> > > > index 2ad5dad1bf..03fd812d5a 100644
-> > > > --- a/hw/arm/virt-acpi-build.c
-> > > > +++ b/hw/arm/virt-acpi-build.c
-> > > > @@ -436,6 +436,64 @@ build_srat(GArray *table_data, BIOSLinker *lin=
-ker,
-> > > VirtMachineState *vms)
-> > > >                    vms->oem_table_id);
-> > > >   }
-> > > >
-> > > > +/* PPTT */
-> > > > +static void
-> > > > +build_pptt(GArray *table_data, BIOSLinker *linker, VirtMachineStat=
-e *vms)
-> > > > +{
-> > > > +    int pptt_start =3D table_data->len;
-> > > > +    int uid =3D 0, cpus =3D 0, socket =3D 0;
-> > > > +    MachineState *ms =3D MACHINE(vms);
-> > > > +    unsigned int smp_cores =3D ms->smp.cores;
-> > > > +    unsigned int smp_threads =3D ms->smp.threads;
-> > > > +
-> > > > +    acpi_data_push(table_data, sizeof(AcpiTableHeader));
-> > > > +
-> > > > +    for (socket =3D 0; cpus < ms->possible_cpus->len; socket++) {
-> > > > +        uint32_t socket_offset =3D table_data->len - pptt_start;
-> > > > +        int core;
-> > > > +
-> > > > +        build_processor_hierarchy_node(
-> > > > +            table_data, 1, /* Physical package */
-> > > > +            0, socket, /* No parent */
-> > > > +            NULL, 0);  /* No private resources */
-> > > > +
-> > > > +        for (core =3D 0; core < smp_cores; core++) {
-> > > > +            uint32_t core_offset =3D table_data->len - pptt_start;
-> > > > +            int thread;
-> > > > +
-> > > > +            if (smp_threads <=3D 1) {
-> > > > +                build_processor_hierarchy_node(
-> > > > +                    table_data,
-> > > > +                    (1 << 1) | /* ACPI Processor ID valid */
-> > > > +                    (1 << 3),  /* ACPI 6.3 - Node is a Leaf */
-> > > > +                    socket_offset, uid++, /* Parent is a Socket */
-> > > > +                    NULL, 0);  /* No private resources */
-> > > > +            } else {
-> > > > +                build_processor_hierarchy_node(
-> > > > +                    table_data, 0,
-> > > > +                    socket_offset, core, /* Parent is a Socket */
-> > > > +                    NULL, 0); /* No private resources */
-> > > > +
-> > > > +                for (thread =3D 0; thread < smp_threads; thread++)=
- {
-> > > > +                    build_processor_hierarchy_node(
-> > > > +                        table_data,
-> > > > +                        (1 << 1) | /* ACPI Processor ID valid */
-> > > > +                        (1 << 2) | /* ACPI 6.3 - Processor is a Th=
-read */
-> > > > +                        (1 << 3),  /* ACPI 6.3 - Node is a Leaf */
-> > > > +                        core_offset, uid++, /* Parent is a Core */
-> > > > +                        NULL, 0);  /* No private resources */
-> > > > +                }
-> > > > +            }
-> > > > +        }
-> > > > +        cpus +=3D smp_cores * smp_threads;
-> > > > +    }
-> > > > +
-> > > > +    build_header(linker, table_data,
-> > > > +                 (void *)(table_data->data + pptt_start), "PPTT",
-> > > > +                 table_data->len - pptt_start, 2,
-> > > > +                 vms->oem_id, vms->oem_table_id);
-> > > > +}
-> > > > +
-> > > >   /* GTDT */
-> > > >   static void
-> > > >   build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineSta=
-te
-> *vms)
-> > > > @@ -707,6 +765,11 @@ void virt_acpi_build(VirtMachineState *vms,
-> > > AcpiBuildTables *tables)
-> > > >       acpi_add_table(table_offsets, tables_blob);
-> > > >       build_madt(tables_blob, tables->linker, vms);
-> > > >
-> > > > +    if (ms->smp.cpus > 1 && !vmc->no_cpu_topology) {
-> > > I'm not really sure why we need to care about "ms->smp.cpus > 1" here=
-?
-> > >
-> > > IMO, just like MADT in which we create both ENABLED and DISABLED
-> > > gicc nodes no matter of number of ENABLED nodes is one or not, we
-> > > should create PPTT table for all the possible cpus and not care about
-> > > number of smp cpus, too. This will be more consistent with the ACPI
-> > > specification and the PPTT table will be used for ACPI cpu hotplug in
-> > > the future even with=A0 "smp.cpus =3D=3D 1".
-> >
-> >
-> > A humble request:
-> > Let us not anticipate the changes of vcpu Hotplug here. Things are flui=
-d
-> > with respect to the vcpu Hotplug right now and I think it will not be
-> > right to base PPTT Table changes in anticipation of something we are no=
-t
-> > sure of what it looks like.
-> >
-> > Any such decisions should be postponed and be made part of the actual
-> > vcpu Hotplug changes when(and if ever) they come for ARM64. This will
-> > also ensure proper review of such changes and useful in that particular
-> > context.
->=20
-> Hi Salil,
->=20
-> Can you please elaborate on this and send some pointers to the hot plug
-> discussions?=20
+The ADM1272 is a PMBus compliant Hot Swap Controller and Digital Power
+Monitor by Analog Devices.
 
-Hi Andrew,
-As you are aware, ACPI based vcpu Hotplug is under contention right now.
-It is being discussed within the ARM to have Hotplug mechanism which does
-not involves QEMU<->Guest ACPI Hotplug exchanges and are purely based on
-PSCI triggers(which might take a different ACPI path). If you wish you can
-join Linaro Open Discussion meeting for the same. All these discussions
-have been happening there
+This commit adds support for interfacing with it, and support for
+setting and monitoring sensor limits.
 
-https://linaro.atlassian.net/wiki/spaces/LOD/pages/26844463630/2021-5-25+Me=
-eting+Meeting+notes
+Datasheet: https://www.analog.com/media/en/technical-documentation/data-sheets/ADM1272.pdf
 
+Reviewed-by: Joel Stanley <joel@jms.id.au>
+Reviewed-by: Hao Wu <wuhaotsh@google.com>
+Signed-off-by: Titus Rwantare <titusr@google.com>
+---
+ hw/misc/adm1272.c   | 543 ++++++++++++++++++++++++++++++++++++++++++++
+ hw/arm/Kconfig      |   1 +
+ hw/misc/Kconfig     |   4 +
+ hw/misc/meson.build |   1 +
+ 4 files changed, 549 insertions(+)
+ create mode 100644 hw/misc/adm1272.c
 
-You're not saying that we shouldn't try to generate PPTT
-> tables for AArch64 guests until a solution for hot plug has been
-> determined, are you?=20
+diff --git a/hw/misc/adm1272.c b/hw/misc/adm1272.c
+new file mode 100644
+index 0000000000..03d728d453
+--- /dev/null
++++ b/hw/misc/adm1272.c
+@@ -0,0 +1,543 @@
++/*
++ * Analog Devices ADM1272 High Voltage Positive Hot Swap Controller and Digital
++ * Power Monitor with PMBus
++ *
++ * Copyright 2021 Google LLC
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include <string.h>
++#include "hw/i2c/pmbus_device.h"
++#include "hw/irq.h"
++#include "migration/vmstate.h"
++#include "qapi/error.h"
++#include "qapi/visitor.h"
++#include "qemu/log.h"
++#include "qemu/module.h"
++#include "trace.h"
++
++#define TYPE_ADM1272 "adm1272"
++#define ADM1272(obj) OBJECT_CHECK(ADM1272State, (obj), TYPE_ADM1272)
++
++#define ADM1272_RESTART_TIME            0xCC
++#define ADM1272_MFR_PEAK_IOUT           0xD0
++#define ADM1272_MFR_PEAK_VIN            0xD1
++#define ADM1272_MFR_PEAK_VOUT           0xD2
++#define ADM1272_MFR_PMON_CONTROL        0xD3
++#define ADM1272_MFR_PMON_CONFIG         0xD4
++#define ADM1272_MFR_ALERT1_CONFIG       0xD5
++#define ADM1272_MFR_ALERT2_CONFIG       0xD6
++#define ADM1272_MFR_PEAK_TEMPERATURE    0xD7
++#define ADM1272_MFR_DEVICE_CONFIG       0xD8
++#define ADM1272_MFR_POWER_CYCLE         0xD9
++#define ADM1272_MFR_PEAK_PIN            0xDA
++#define ADM1272_MFR_READ_PIN_EXT        0xDB
++#define ADM1272_MFR_READ_EIN_EXT        0xDC
++
++#define ADM1272_HYSTERESIS_LOW          0xF2
++#define ADM1272_HYSTERESIS_HIGH         0xF3
++#define ADM1272_STATUS_HYSTERESIS       0xF4
++#define ADM1272_STATUS_GPIO             0xF5
++#define ADM1272_STRT_UP_IOUT_LIM        0xF6
++
++/* Defaults */
++#define ADM1272_OPERATION_DEFAULT       0x80
++#define ADM1272_CAPABILITY_DEFAULT      0xB0
++#define ADM1272_CAPABILITY_NO_PEC       0x30
++#define ADM1272_DIRECT_MODE             0x40
++#define ADM1272_HIGH_LIMIT_DEFAULT      0x0FFF
++#define ADM1272_PIN_OP_DEFAULT          0x7FFF
++#define ADM1272_PMBUS_REVISION_DEFAULT  0x22
++#define ADM1272_MFR_ID_DEFAULT          "ADI"
++#define ADM1272_MODEL_DEFAULT           "ADM1272-A1"
++#define ADM1272_MFR_DEFAULT_REVISION    "25"
++#define ADM1272_DEFAULT_DATE            "160301"
++#define ADM1272_RESTART_TIME_DEFAULT    0x64
++#define ADM1272_PMON_CONTROL_DEFAULT    0x1
++#define ADM1272_PMON_CONFIG_DEFAULT     0x3F35
++#define ADM1272_DEVICE_CONFIG_DEFAULT   0x8
++#define ADM1272_HYSTERESIS_HIGH_DEFAULT     0xFFFF
++#define ADM1272_STRT_UP_IOUT_LIM_DEFAULT    0x000F
++#define ADM1272_VOLT_DEFAULT            12000
++#define ADM1272_IOUT_DEFAULT            25000
++#define ADM1272_PWR_DEFAULT             300  /* 12V 25A */
++#define ADM1272_SHUNT                   300 /* micro-ohms */
++#define ADM1272_VOLTAGE_COEFF_DEFAULT   1
++#define ADM1272_CURRENT_COEFF_DEFAULT   3
++#define ADM1272_PWR_COEFF_DEFAULT       7
++#define ADM1272_IOUT_OFFSET             0x5000
++#define ADM1272_IOUT_OFFSET             0x5000
++
++
++typedef struct ADM1272State {
++    PMBusDevice parent;
++
++    uint64_t ein_ext;
++    uint32_t pin_ext;
++    uint8_t restart_time;
++
++    uint16_t peak_vin;
++    uint16_t peak_vout;
++    uint16_t peak_iout;
++    uint16_t peak_temperature;
++    uint16_t peak_pin;
++
++    uint8_t pmon_control;
++    uint16_t pmon_config;
++    uint16_t alert1_config;
++    uint16_t alert2_config;
++    uint16_t device_config;
++
++    uint16_t hysteresis_low;
++    uint16_t hysteresis_high;
++    uint8_t status_hysteresis;
++    uint8_t status_gpio;
++
++    uint16_t strt_up_iout_lim;
++
++} ADM1272State;
++
++static const PMBusCoefficients adm1272_coefficients[] = {
++    [0] = { 6770, 0, -2 },        /* voltage, vrange 60V */
++    [1] = { 4062, 0, -2 },        /* voltage, vrange 100V */
++    [2] = { 1326, 20480, -1 },    /* current, vsense range 15mV */
++    [3] = { 663, 20480, -1 },     /* current, vsense range 30mV */
++    [4] = { 3512, 0, -2 },        /* power, vrange 60V, irange 15mV */
++    [5] = { 21071, 0, -3 },       /* power, vrange 100V, irange 15mV */
++    [6] = { 17561, 0, -3 },       /* power, vrange 60V, irange 30mV */
++    [7] = { 10535, 0, -3 },       /* power, vrange 100V, irange 30mV */
++    [8] = { 42, 31871, -1 },      /* temperature */
++};
++
++static void adm1272_check_limits(ADM1272State *s)
++{
++    PMBusDevice *pmdev = PMBUS_DEVICE(s);
++
++    pmbus_check_limits(pmdev);
++
++    if (pmdev->pages[0].read_vout > s->peak_vout) {
++        s->peak_vout = pmdev->pages[0].read_vout;
++    }
++
++    if (pmdev->pages[0].read_vin > s->peak_vin) {
++        s->peak_vin = pmdev->pages[0].read_vin;
++    }
++
++    if (pmdev->pages[0].read_iout > s->peak_iout) {
++        s->peak_iout = pmdev->pages[0].read_iout;
++    }
++
++    if (pmdev->pages[0].read_temperature_1 > s->peak_temperature) {
++        s->peak_temperature = pmdev->pages[0].read_temperature_1;
++    }
++
++    if (pmdev->pages[0].read_pin > s->peak_pin) {
++        s->peak_pin = pmdev->pages[0].read_pin;
++    }
++}
++
++static uint16_t adm1272_millivolts_to_direct(uint32_t value)
++{
++    PMBusCoefficients c = adm1272_coefficients[ADM1272_VOLTAGE_COEFF_DEFAULT];
++    c.b = c.b * 1000;
++    c.R = c.R - 3;
++    return pmbus_data2direct_mode(c, value);
++}
++
++static uint32_t adm1272_direct_to_millivolts(uint16_t value)
++{
++    PMBusCoefficients c = adm1272_coefficients[ADM1272_VOLTAGE_COEFF_DEFAULT];
++    c.b = c.b * 1000;
++    c.R = c.R - 3;
++    return pmbus_direct_mode2data(c, value);
++}
++
++static uint16_t adm1272_milliamps_to_direct(uint32_t value)
++{
++    PMBusCoefficients c = adm1272_coefficients[ADM1272_CURRENT_COEFF_DEFAULT];
++    /* Y = (m * r_sense * x - b) * 10^R */
++    c.m = c.m * ADM1272_SHUNT / 1000; /* micro-ohms */
++    c.b = c.b * 1000;
++    c.R = c.R - 3;
++    return pmbus_data2direct_mode(c, value);
++}
++
++static uint32_t adm1272_direct_to_milliamps(uint16_t value)
++{
++    PMBusCoefficients c = adm1272_coefficients[ADM1272_CURRENT_COEFF_DEFAULT];
++    c.m = c.m * ADM1272_SHUNT / 1000;
++    c.b = c.b * 1000;
++    c.R = c.R - 3;
++    return pmbus_direct_mode2data(c, value);
++}
++
++static uint16_t adm1272_watts_to_direct(uint32_t value)
++{
++    PMBusCoefficients c = adm1272_coefficients[ADM1272_PWR_COEFF_DEFAULT];
++    c.m = c.m * ADM1272_SHUNT / 1000;
++    return pmbus_data2direct_mode(c, value);
++}
++
++static uint32_t adm1272_direct_to_watts(uint16_t value)
++{
++    PMBusCoefficients c = adm1272_coefficients[ADM1272_PWR_COEFF_DEFAULT];
++    c.m = c.m * ADM1272_SHUNT / 1000;
++    return pmbus_direct_mode2data(c, value);
++}
++
++static void adm1272_exit_reset(Object *obj)
++{
++    ADM1272State *s = ADM1272(obj);
++    PMBusDevice *pmdev = PMBUS_DEVICE(obj);
++
++    pmdev->page = 0;
++    pmdev->pages[0].operation = ADM1272_OPERATION_DEFAULT;
++
++
++    pmdev->capability = ADM1272_CAPABILITY_NO_PEC;
++    pmdev->pages[0].revision = ADM1272_PMBUS_REVISION_DEFAULT;
++    pmdev->pages[0].vout_mode = ADM1272_DIRECT_MODE;
++    pmdev->pages[0].vout_ov_warn_limit = ADM1272_HIGH_LIMIT_DEFAULT;
++    pmdev->pages[0].vout_uv_warn_limit = 0;
++    pmdev->pages[0].iout_oc_warn_limit = ADM1272_HIGH_LIMIT_DEFAULT;
++    pmdev->pages[0].ot_fault_limit = ADM1272_HIGH_LIMIT_DEFAULT;
++    pmdev->pages[0].ot_warn_limit = ADM1272_HIGH_LIMIT_DEFAULT;
++    pmdev->pages[0].vin_ov_warn_limit = ADM1272_HIGH_LIMIT_DEFAULT;
++    pmdev->pages[0].vin_uv_warn_limit = 0;
++    pmdev->pages[0].pin_op_warn_limit = ADM1272_PIN_OP_DEFAULT;
++
++    pmdev->pages[0].status_word = 0;
++    pmdev->pages[0].status_vout = 0;
++    pmdev->pages[0].status_iout = 0;
++    pmdev->pages[0].status_input = 0;
++    pmdev->pages[0].status_temperature = 0;
++    pmdev->pages[0].status_mfr_specific = 0;
++
++    pmdev->pages[0].read_vin
++        = adm1272_millivolts_to_direct(ADM1272_VOLT_DEFAULT);
++    pmdev->pages[0].read_vout
++        = adm1272_millivolts_to_direct(ADM1272_VOLT_DEFAULT);
++    pmdev->pages[0].read_iout
++        = adm1272_milliamps_to_direct(ADM1272_IOUT_DEFAULT);
++    pmdev->pages[0].read_temperature_1 = 0;
++    pmdev->pages[0].read_pin = adm1272_watts_to_direct(ADM1272_PWR_DEFAULT);
++    pmdev->pages[0].revision = ADM1272_PMBUS_REVISION_DEFAULT;
++    pmdev->pages[0].mfr_id = ADM1272_MFR_ID_DEFAULT;
++    pmdev->pages[0].mfr_model = ADM1272_MODEL_DEFAULT;
++    pmdev->pages[0].mfr_revision = ADM1272_MFR_DEFAULT_REVISION;
++    pmdev->pages[0].mfr_date = ADM1272_DEFAULT_DATE;
++
++    s->pin_ext = 0;
++    s->ein_ext = 0;
++    s->restart_time = ADM1272_RESTART_TIME_DEFAULT;
++
++    s->peak_vin = 0;
++    s->peak_vout = 0;
++    s->peak_iout = 0;
++    s->peak_temperature = 0;
++    s->peak_pin = 0;
++
++    s->pmon_control = ADM1272_PMON_CONTROL_DEFAULT;
++    s->pmon_config = ADM1272_PMON_CONFIG_DEFAULT;
++    s->alert1_config = 0;
++    s->alert2_config = 0;
++    s->device_config = ADM1272_DEVICE_CONFIG_DEFAULT;
++
++    s->hysteresis_low = 0;
++    s->hysteresis_high = ADM1272_HYSTERESIS_HIGH_DEFAULT;
++    s->status_hysteresis = 0;
++    s->status_gpio = 0;
++
++    s->strt_up_iout_lim = ADM1272_STRT_UP_IOUT_LIM_DEFAULT;
++}
++
++static uint8_t adm1272_read_byte(PMBusDevice *pmdev)
++{
++    ADM1272State *s = ADM1272(pmdev);
++
++    switch (pmdev->code) {
++    case ADM1272_RESTART_TIME:
++        pmbus_send8(pmdev, s->restart_time);
++        break;
++
++    case ADM1272_MFR_PEAK_IOUT:
++        pmbus_send16(pmdev, s->peak_iout);
++        break;
++
++    case ADM1272_MFR_PEAK_VIN:
++        pmbus_send16(pmdev, s->peak_vin);
++        break;
++
++    case ADM1272_MFR_PEAK_VOUT:
++        pmbus_send16(pmdev, s->peak_vout);
++        break;
++
++    case ADM1272_MFR_PMON_CONTROL:
++        pmbus_send8(pmdev, s->pmon_control);
++        break;
++
++    case ADM1272_MFR_PMON_CONFIG:
++        pmbus_send16(pmdev, s->pmon_config);
++        break;
++
++    case ADM1272_MFR_ALERT1_CONFIG:
++        pmbus_send16(pmdev, s->alert1_config);
++        break;
++
++    case ADM1272_MFR_ALERT2_CONFIG:
++        pmbus_send16(pmdev, s->alert2_config);
++        break;
++
++    case ADM1272_MFR_PEAK_TEMPERATURE:
++        pmbus_send16(pmdev, s->peak_temperature);
++        break;
++
++    case ADM1272_MFR_DEVICE_CONFIG:
++        pmbus_send16(pmdev, s->device_config);
++        break;
++
++    case ADM1272_MFR_PEAK_PIN:
++        pmbus_send16(pmdev, s->peak_pin);
++        break;
++
++    case ADM1272_MFR_READ_PIN_EXT:
++        pmbus_send32(pmdev, s->pin_ext);
++        break;
++
++    case ADM1272_MFR_READ_EIN_EXT:
++        pmbus_send64(pmdev, s->ein_ext);
++        break;
++
++    case ADM1272_HYSTERESIS_LOW:
++        pmbus_send16(pmdev, s->hysteresis_low);
++        break;
++
++    case ADM1272_HYSTERESIS_HIGH:
++        pmbus_send16(pmdev, s->hysteresis_high);
++        break;
++
++    case ADM1272_STATUS_HYSTERESIS:
++        pmbus_send16(pmdev, s->status_hysteresis);
++        break;
++
++    case ADM1272_STATUS_GPIO:
++        pmbus_send16(pmdev, s->status_gpio);
++        break;
++
++    case ADM1272_STRT_UP_IOUT_LIM:
++        pmbus_send16(pmdev, s->strt_up_iout_lim);
++        break;
++
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: reading from unsupported register: 0x%02x\n",
++                      __func__, pmdev->code);
++        return 0xFF;
++        break;
++    }
++
++    return 0;
++}
++
++static int adm1272_write_data(PMBusDevice *pmdev, const uint8_t *buf,
++                              uint8_t len)
++{
++    ADM1272State *s = ADM1272(pmdev);
++
++    if (len == 0) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: writing empty data\n", __func__);
++        return -1;
++    }
++
++    pmdev->code = buf[0]; /* PMBus command code */
++
++    if (len == 1) {
++        return 0;
++    }
++
++    /* Exclude command code from buffer */
++    buf++;
++    len--;
++
++    switch (pmdev->code) {
++
++    case ADM1272_RESTART_TIME:
++        s->restart_time = pmbus_receive8(pmdev);
++        break;
++
++    case ADM1272_MFR_PMON_CONTROL:
++        s->pmon_control = pmbus_receive8(pmdev);
++        break;
++
++    case ADM1272_MFR_PMON_CONFIG:
++        s->pmon_config = pmbus_receive16(pmdev);
++        break;
++
++    case ADM1272_MFR_ALERT1_CONFIG:
++        s->alert1_config = pmbus_receive16(pmdev);
++        break;
++
++    case ADM1272_MFR_ALERT2_CONFIG:
++        s->alert2_config = pmbus_receive16(pmdev);
++        break;
++
++    case ADM1272_MFR_DEVICE_CONFIG:
++        s->device_config = pmbus_receive16(pmdev);
++        break;
++
++    case ADM1272_MFR_POWER_CYCLE:
++        adm1272_exit_reset((Object *)s);
++        break;
++
++    case ADM1272_HYSTERESIS_LOW:
++        s->hysteresis_low = pmbus_receive16(pmdev);
++        break;
++
++    case ADM1272_HYSTERESIS_HIGH:
++        s->hysteresis_high = pmbus_receive16(pmdev);
++        break;
++
++    case ADM1272_STRT_UP_IOUT_LIM:
++        s->strt_up_iout_lim = pmbus_receive16(pmdev);
++        adm1272_check_limits(s);
++        break;
++
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: writing to unsupported register: 0x%02x\n",
++                      __func__, pmdev->code);
++        break;
++    }
++    return 0;
++}
++
++static void adm1272_get(Object *obj, Visitor *v, const char *name, void *opaque,
++                        Error **errp)
++{
++    uint16_t value;
++
++    if (strcmp(name, "vin") == 0 || strcmp(name, "vout") == 0) {
++        value = adm1272_direct_to_millivolts(*(uint16_t *)opaque);
++    } else if (strcmp(name, "iout") == 0) {
++        value = adm1272_direct_to_milliamps(*(uint16_t *)opaque);
++    } else if (strcmp(name, "pin") == 0) {
++        value = adm1272_direct_to_watts(*(uint16_t *)opaque);
++    } else {
++        value = *(uint16_t *)opaque;
++    }
++
++    visit_type_uint16(v, name, &value, errp);
++}
++
++static void adm1272_set(Object *obj, Visitor *v, const char *name, void *opaque,
++                        Error **errp)
++{
++    ADM1272State *s = ADM1272(obj);
++    uint16_t *internal = opaque;
++    uint16_t value;
++
++    if (!visit_type_uint16(v, name, &value, errp)) {
++        return;
++    }
++
++    if (strcmp(name, "vin") == 0 || strcmp(name, "vout") == 0) {
++        *internal = adm1272_millivolts_to_direct(value);
++    } else if (strcmp(name, "iout") == 0) {
++        *internal = adm1272_milliamps_to_direct(value);
++    } else if (strcmp(name, "pin") == 0) {
++        *internal = adm1272_watts_to_direct(value);
++    } else {
++        *internal = value;
++    }
++
++    adm1272_check_limits(s);
++}
++
++static const VMStateDescription vmstate_adm1272 = {
++    .name = "ADM1272",
++    .version_id = 0,
++    .minimum_version_id = 0,
++    .fields = (VMStateField[]){
++        VMSTATE_UINT64(ein_ext, ADM1272State),
++        VMSTATE_UINT32(pin_ext, ADM1272State),
++        VMSTATE_UINT8(restart_time, ADM1272State),
++
++        VMSTATE_UINT16(peak_vin, ADM1272State),
++        VMSTATE_UINT16(peak_vout, ADM1272State),
++        VMSTATE_UINT16(peak_iout, ADM1272State),
++        VMSTATE_UINT16(peak_temperature, ADM1272State),
++        VMSTATE_UINT16(peak_pin, ADM1272State),
++
++        VMSTATE_UINT8(pmon_control, ADM1272State),
++        VMSTATE_UINT16(pmon_config, ADM1272State),
++        VMSTATE_UINT16(alert1_config, ADM1272State),
++        VMSTATE_UINT16(alert2_config, ADM1272State),
++        VMSTATE_UINT16(device_config, ADM1272State),
++
++        VMSTATE_UINT16(hysteresis_low, ADM1272State),
++        VMSTATE_UINT16(hysteresis_high, ADM1272State),
++        VMSTATE_UINT8(status_hysteresis, ADM1272State),
++        VMSTATE_UINT8(status_gpio, ADM1272State),
++
++        VMSTATE_UINT16(strt_up_iout_lim, ADM1272State),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void adm1272_init(Object *obj)
++{
++    PMBusDevice *pmdev = PMBUS_DEVICE(obj);
++    uint64_t flags = PB_HAS_VOUT_MODE | PB_HAS_VOUT | PB_HAS_VIN | PB_HAS_IOUT |
++                     PB_HAS_PIN | PB_HAS_TEMPERATURE | PB_HAS_MFR_INFO;
++
++    pmbus_page_config(pmdev, 0, flags);
++
++    object_property_add(obj, "vin", "uint16",
++                        adm1272_get,
++                        adm1272_set, NULL, &pmdev->pages[0].read_vin);
++
++    object_property_add(obj, "vout", "uint16",
++                        adm1272_get,
++                        adm1272_set, NULL, &pmdev->pages[0].read_vout);
++
++    object_property_add(obj, "iout", "uint16",
++                        adm1272_get,
++                        adm1272_set, NULL, &pmdev->pages[0].read_iout);
++
++    object_property_add(obj, "pin", "uint16",
++                        adm1272_get,
++                        adm1272_set, NULL, &pmdev->pages[0].read_pin);
++
++}
++
++static void adm1272_class_init(ObjectClass *klass, void *data)
++{
++    ResettableClass *rc = RESETTABLE_CLASS(klass);
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    PMBusDeviceClass *k = PMBUS_DEVICE_CLASS(klass);
++
++    dc->desc = "Analog Devices ADM1272 Hot Swap controller";
++    dc->vmsd = &vmstate_adm1272;
++    k->write_data = adm1272_write_data;
++    k->receive_byte = adm1272_read_byte;
++    k->device_num_pages = 1;
++
++    rc->phases.exit = adm1272_exit_reset;
++}
++
++static const TypeInfo adm1272_info = {
++    .name = TYPE_ADM1272,
++    .parent = TYPE_PMBUS_DEVICE,
++    .instance_size = sizeof(ADM1272State),
++    .instance_init = adm1272_init,
++    .class_init = adm1272_class_init,
++};
++
++static void adm1272_register_types(void)
++{
++    type_register_static(&adm1272_info);
++}
++
++type_init(adm1272_register_types)
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 20bd60f10b..e141084a79 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -371,6 +371,7 @@ config XLNX_VERSAL
+ config NPCM7XX
+     bool
+     select A9MPCORE
++    select ADM1272
+     select ARM_GIC
+     select AT24C  # EEPROM
+     select PL310  # cache controller
+diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+index c71ed25820..0774c1f70c 100644
+--- a/hw/misc/Kconfig
++++ b/hw/misc/Kconfig
+@@ -14,6 +14,10 @@ config ARMSSE_CPU_PWRCTRL
+ config MAX111X
+     bool
+ 
++config ADM1272
++    bool
++    depends on I2C
++
+ config TMP105
+     bool
+     depends on I2C
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index 66e1648533..8666e9225a 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -10,6 +10,7 @@ softmmu_ss.add(when: 'CONFIG_SGA', if_true: files('sga.c'))
+ softmmu_ss.add(when: 'CONFIG_TMP105', if_true: files('tmp105.c'))
+ softmmu_ss.add(when: 'CONFIG_TMP421', if_true: files('tmp421.c'))
+ softmmu_ss.add(when: 'CONFIG_EMC141X', if_true: files('emc141x.c'))
++softmmu_ss.add(when: 'CONFIG_ADM1272', if_true: files('adm1272.c'))
+ softmmu_ss.add(when: 'CONFIG_UNIMP', if_true: files('unimp.c'))
+ softmmu_ss.add(when: 'CONFIG_EMPTY_SLOT', if_true: files('empty_slot.c'))
+ softmmu_ss.add(when: 'CONFIG_LED', if_true: files('led.c'))
+-- 
+2.31.1.751.gd2f1c929bd-goog
 
-Sorry, I did not mean that. Changes of PPTT are independent to vcpu
-Hotplug support and are still required without it. No problem with that.
-
-
-If so, I don't think I would agree with that. There
-> are benefits to properly describing cpu topology to guests, even without
-> hot plug.
-
-Agreed. No second thoughts on that.
-
- Those benefits, when vcpu pinning is used, are the same benefits
-> as for the host, which already use PPTT tables to describe topology, even
-> though hot plug isn't supported.
-
-yes sure, you mean pinning vcpus according to the cpu topology for performa=
-nce?
-
->=20
-> Now, if you're saying we should only generate tables for smp.cpus, not
-
-Correct. This is what I thought we must be doing even now
-
-> smp.maxcpus, because hot plug isn't supported anyway, then I see your
-> point. But, it'd be better to require smp.cpus =3D=3D smp.maxcpus in our
-> smp_parse function to do that, which we've never done before, so we may
-> have trouble supporting existing command lines.
-
-I am trying to recall, if the vcpu Hotplug is not supported then can they
-ever be different?
-
-cpus =3D  (threads * cores * sockets)
-
-static void smp_parse(MachineState *ms, QemuOpts *opts)
-{
-     [...]
-
-        if (sockets * cores * threads !=3D ms->smp.max_cpus) {
-            warn_report("Invalid CPU topology deprecated: "
-                        "sockets (%u) * cores (%u) * threads (%u) "
-                        "!=3D maxcpus (%u)",
-                        sockets, cores, threads,
-                        ms->smp.max_cpus);
-        }
-     [...]
-}
- =20
-Although, above check does not exit(1) and just warns on detecting invalid
-CPU topology. Not sure why?
-
-Well if you think there are subtleties to support above implementation and
-we cannot do it now then sure it is your call. :)
-
-I just thought to slim the patch-set down and club the relevant logic to th=
-e
-places where they ideally would have made more sense to review.
-
-
-Thanks
-Salil.

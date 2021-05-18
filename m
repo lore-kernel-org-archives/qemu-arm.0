@@ -1,111 +1,126 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp689467lfm;
-        Tue, 18 May 2021 12:02:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyqi9lEbw74HbfhE9lO47ikkT0txAsdS6fDVr+cRJmtzTIBgiBOUMYd+AVLwhsJMaSNrPal
-X-Received: by 2002:a5d:8a16:: with SMTP id w22mr5554092iod.186.1621364558968;
-        Tue, 18 May 2021 12:02:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621364558; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp693838lfm;
+        Tue, 18 May 2021 12:07:34 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx2ylFws76vXhvXNNk0J4EiUoljIuXxa2wEDWlJf9XxCqdTJ35LytFxD9BAtW9ruGS4ZDOi
+X-Received: by 2002:a92:6b05:: with SMTP id g5mr5817869ilc.40.1621364854302;
+        Tue, 18 May 2021 12:07:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621364854; cv=none;
         d=google.com; s=arc-20160816;
-        b=JvlZxKZpIhTNkIMTwrHlM86aXR29Tf/J8+TK6ouNC/IeknjxGKsJ84D++cm9ITNKa8
-         w2SHGi+CIla4XCY/EQy7t4yf9xRgoudmTGSc/FBaJ4C65ek3AIHBCWOuuKvu/5ImMIXn
-         BGrg9KtYE4L0zUnveIhJgVTa6oIQg+LmhYXNOOe2/1XEnMVWD3E+kQ/vbAtj738ejF2K
-         FXRdI7lkCXQfe+tQerq2Nqt9PGy+MHKH34SrpaMt/PUxBbjV6JzOTNjd5am5Io4fcUfS
-         JbeDQ52d1rkIZA87VKP6cloHgX4E0RtYBWpGA9W81nEg9yoJaC+bddzdTV5nhdLM/jA+
-         S7KA==
+        b=yfy3vhud922XZWIJfwUoCavaRueFwEPOHyUIktbCSO0wUbR8qExgmbP0aZMJ0UZ3T2
+         twW64KClyBoge3os0ybHRfT/aiQegt5b35Z0opnxnaj+OEV8h720j3KwnjFDK+koG6m8
+         Rksil/4jUkZE7vix49sXxpBS7sKW+qMZVcopnvi+8dQB4h17IldrfxLeIxd40G+BYfhE
+         /gPObGxIWtGy+nT32ORlvRZswncO+3otZ7mngO/k4rcB4sBnuHQaQ/30uAcuvt27v7wC
+         bLSB7q2G3iTD6HD3O4Ldf07m0vVwGeX1nD9u+U/qMnI8uEzZegSSyJtSumrpoYWXdCmP
+         7Org==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:references
-         :mime-version:message-id:in-reply-to:date:dkim-signature;
-        bh=NQ+oPEchcukwKqlHYSyVb8bgHl09wYV1UiuEeyBZqMI=;
-        b=FRE/t2UBLBsNUV2lRCViMwHOFzu5alIwzLG5IKpk3zYjwGSoa1xoqOJnV7xlge4AI9
-         L19l0hnLsMfXwfdlINNgI9LAU2IpapIvAB26jxWwhXvllPYK9f1eXN4sNM1uIyuyY9tm
-         8J7O7MzLaoIN2pkfWFsEQLzMWWkethaNPQRVXgXp7u6cQFpY8+qWr2z0p9QhNvClcRO/
-         tQg7sYPwTFhzt1Ef99d4ECp9wpd1C71rbQFRI6GKFyELzwPTalFAXNKcQ65rJHJOKjv/
-         bi8oMZ3Fp+1LSizCd8+yVoe4/r2rApDzFfafg5AHvVvtSQ69NzSuiyqDREJ9IL3vmU3G
-         GNdA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=7TzBgPovcNpObbvKEKQ0BJgkB7MW43xUbKh9QiC5KtA=;
+        b=NvDnskSWc02fYIfT1DfaYRiWPc57hSSGpxlXRvjX6+YO0+hS040TZmGDx99Vak3Mle
+         q+iT7XNPf40ZEXffx0pfHiNSxm6W04o7O5QjV6f7rN6r8JsGnnXtFJQXCKp3xV36RCwl
+         3nltSv1VD+lD3obQXAiJL/9itR272LkknxlynUjZrwbZZ0sokS3MMzFcvYxjHzUHS39d
+         en6xThcIaUZ4MOQHwCy0JioJS8XRcjb2tZe/TauB78cJmncEHC5Cykz2BTVDaZ/rp2O2
+         bruQ1W6S1MRDIB7cR5prnrxsdC4YghzartokTGz7CC8TrmSyDsG97YjTDUj7lqXrPF9r
+         nnyg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b="Qi/Hk85O";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CVW+igSs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 16si25669850iou.15.2021.05.18.12.02.38
+        by mx.google.com with ESMTPS id a5si24305066ilv.74.2021.05.18.12.07.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 May 2021 12:02:38 -0700 (PDT)
+        Tue, 18 May 2021 12:07:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b="Qi/Hk85O";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CVW+igSs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:50360 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:34228 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lj4zG-0002e3-9v
-	for alex.bennee@linaro.org; Tue, 18 May 2021 15:02:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51736)
+	id 1lj541-0002aG-Gl
+	for alex.bennee@linaro.org; Tue, 18 May 2021 15:07:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55850)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3VwukYAYKCAo3s3421qyyqvo.myw0ow4-k1wxyxqx4.y1q@flex--titusr.bounces.google.com>)
- id 1lj4iy-0006vv-MI
- for qemu-arm@nongnu.org; Tue, 18 May 2021 14:45:48 -0400
-Received: from mail-yb1-xb4a.google.com ([2607:f8b0:4864:20::b4a]:39425)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3VwukYAYKCAo3s3421qyyqvo.myw0ow4-k1wxyxqx4.y1q@flex--titusr.bounces.google.com>)
- id 1lj4iv-0003wo-7K
- for qemu-arm@nongnu.org; Tue, 18 May 2021 14:45:48 -0400
-Received: by mail-yb1-xb4a.google.com with SMTP id
- d20-20020a25add40000b02904f8960b23e8so14745272ybe.6
- for <qemu-arm@nongnu.org>; Tue, 18 May 2021 11:45:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=date:in-reply-to:message-id:mime-version:references:subject:from:to
- :cc; bh=NQ+oPEchcukwKqlHYSyVb8bgHl09wYV1UiuEeyBZqMI=;
- b=Qi/Hk85OV/9HjW0thunliszYE7F0dezzVDxCQs20bF0/+jXeJgKneHgevtxCFFzHvf
- /ap3MCYmPtmzJBH/uKST13YJLU9W1UiEdEFwZxcEJ+Dtpp8kLzsqzbf0tWLcBSYWOROW
- aKsdghGiP8hLnkw+HTpCzSBQ1VAuURJQC94eAZ75KYgp87wo0yKcQ4SMoa1fu7XzNoT5
- phANUwZu/QuVge+7pE5d1IhrDxUxkAV5xAoZSNc/X3Rfq3xI71Cg/9YO/LVqulgoEjTj
- hsUlBOUi7qIqiwEU8P6PZ8QbpL8siD2BUWWNzL2wPYh5f8ZlhYWtWGR5NAjTFYkm9Z4u
- Xhrg==
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1lj52P-0007NH-4R
+ for qemu-arm@nongnu.org; Tue, 18 May 2021 15:05:53 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:56773)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1lj52N-0007SA-Fj
+ for qemu-arm@nongnu.org; Tue, 18 May 2021 15:05:52 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1621364750;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=7TzBgPovcNpObbvKEKQ0BJgkB7MW43xUbKh9QiC5KtA=;
+ b=CVW+igSsNbsrFxS4kFMe4ggjga64AzZLoCTJ1zoPgOHxca3d6eWezefBKU9WVtZ2VLknmM
+ LCSKQN77dWwH66yHtLSTxlmRCJh3cjEzeUUgrZshU7BT5bOZ5WahX+s3xwSdH3yGuvw0ad
+ 3yuaqsuUywqmEQbFHN/O5wV5veeXxP8=
+Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
+ [209.85.218.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-404-n-ky4bXCONu1_R78m0EJ6A-1; Tue, 18 May 2021 15:05:44 -0400
+X-MC-Unique: n-ky4bXCONu1_R78m0EJ6A-1
+Received: by mail-ej1-f72.google.com with SMTP id
+ bi3-20020a170906a243b02903933c4d9132so2784509ejb.11
+ for <qemu-arm@nongnu.org>; Tue, 18 May 2021 12:05:44 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:in-reply-to:message-id:mime-version
- :references:subject:from:to:cc;
- bh=NQ+oPEchcukwKqlHYSyVb8bgHl09wYV1UiuEeyBZqMI=;
- b=r4H/KQYkwnVT/5BDa+cEOVQCcCGS12jyTfgOnUv5lTXf7HBHUIb4gVRFwvSV6ZzzmJ
- 8OCWXCMgpyMWQUPAA11gNaplG0XvkzIlZtAcScbHSuMX7Cg9ZSkwu/pQlT263QACw+t7
- NcghLaTo6JLyV1sCWr8w2veaJ2FPYey5l6jC1qth4SpUh9skRORQms9rxkaD18FRoK0q
- pVLLeVpjUVcG6qzMuiSa+uqIaAPMS1702QOwtuF8pwfh4bcryrDTRw0bDwue8AzlhWMX
- mzvdjSLWNhSbAS+wmZo21U4R0/Md/nyUE2FN0zZTmXYJslNVEUreTjn9/Bp/lgq9Z4XN
- LUGQ==
-X-Gm-Message-State: AOAM531UTLZWA+Yx53J6bDQ5JiCrKFaJ4x5++oAleXVokxlK0vylO86g
- KCBHJr9mrpaurAJvWo8oSBoxyYtXcKc=
-X-Received: from titusr.svl.corp.google.com
- ([2620:15c:2c5:13:4bf9:75f4:b656:df26])
- (user=titusr job=sendgmr) by 2002:a25:ec02:: with SMTP id
- j2mr10064587ybh.248.1621363543412; 
- Tue, 18 May 2021 11:45:43 -0700 (PDT)
-Date: Tue, 18 May 2021 11:45:27 -0700
-In-Reply-To: <20210518184527.1037888-1-titusr@google.com>
-Message-Id: <20210518184527.1037888-6-titusr@google.com>
-Mime-Version: 1.0
-References: <20210518184527.1037888-1-titusr@google.com>
-X-Mailer: git-send-email 2.31.1.751.gd2f1c929bd-goog
-Subject: [PATCH v3 5/5] tests/qtest: add tests for MAX34451 device model
-From: Titus Rwantare <titusr@google.com>
-To: Corey Minyard <cminyard@mvista.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, f4bug@amsat.org, 
- Titus Rwantare <titusr@google.com>, Joel Stanley <joel@jms.id.au>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b4a;
- envelope-from=3VwukYAYKCAo3s3421qyyqvo.myw0ow4-k1wxyxqx4.y1q@flex--titusr.bounces.google.com;
- helo=mail-yb1-xb4a.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=7TzBgPovcNpObbvKEKQ0BJgkB7MW43xUbKh9QiC5KtA=;
+ b=EGepDXOve9EU/+fzDBm2rU8RhsoA0x1DN5M3aqDTT3/APkW2I/yjUnVWKl0hiyA18N
+ Ax7bKuWCkZInrcnLucRt/G+XTr6DgZvSw+NztWuIYi6AHIca6Dw3roUSmxQliaQnitdB
+ btvWRS/Z8ik5DvUG+7bpZ+QmkaEKl+VmXDQYdKl5OXC/eQBGhKk5IOhs+02swBUQFBLp
+ lvePstuni9mvVxjwMD9nhvRK1666N3AlznNW1D7i7EDkSlbglqB5UUOxcn1XuKca1Rp+
+ WLMLDisawPDw+k3oWd1xYwANcl7bBzENpiOjaem64cyUiHi3IX6a4u7+B2V8nQ1nKPGk
+ bCyg==
+X-Gm-Message-State: AOAM5314uAKrjR4EuRQg0K0LU83VDAlEkh0m7HZqNBUt1KPzkDo6oZOt
+ Q13i6OdPVjWUHNzUrFyho09HLUEGbQuWe5FfYTy52MC2VI6mj8JKftzzYU945OP2t5U2+DcJ6SP
+ ymVog+EhafaoX
+X-Received: by 2002:a17:906:7203:: with SMTP id
+ m3mr7411918ejk.381.1621364743092; 
+ Tue, 18 May 2021 12:05:43 -0700 (PDT)
+X-Received: by 2002:a17:906:7203:: with SMTP id
+ m3mr7411885ejk.381.1621364742813; 
+ Tue, 18 May 2021 12:05:42 -0700 (PDT)
+Received: from gator.home (cst2-174-132.cust.vodafone.cz. [31.30.174.132])
+ by smtp.gmail.com with ESMTPSA id e6sm1768689ejd.31.2021.05.18.12.05.41
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 18 May 2021 12:05:41 -0700 (PDT)
+Date: Tue, 18 May 2021 21:05:39 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Salil Mehta <salil.mehta@huawei.com>
+Subject: Re: [RFC PATCH v2 5/6] hw/arm/virt-acpi-build: Add PPTT table
+Message-ID: <20210518190539.fwsvl2ijb4jlzbyi@gator.home>
+References: <20210413080745.33004-1-wangyanan55@huawei.com>
+ <20210413080745.33004-6-wangyanan55@huawei.com>
+ <1551b7d6-e010-e5c7-47e1-c347ca78a1db@huawei.com>
+ <a6ccb20f19b743a29f6aaffcf3088df2@huawei.com>
+ <20210518074221.umezsdedzyzmcbsk@gator.home>
+ <80dca9f16c5b4bef9900f6cf76c99500@huawei.com>
+MIME-Version: 1.0
+In-Reply-To: <80dca9f16c5b4bef9900f6cf76c99500@huawei.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=drjones@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.374,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,372 +133,91 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "linuxarm@openeuler.org" <linuxarm@openeuler.org>,
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Linuxarm <linuxarm@huawei.com>, "wangyanan \(Y\)" <wangyanan55@huawei.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, Igor Mammedov <imammedo@redhat.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ "Zengtao \(B\)" <prime.zeng@hisilicon.com>, yangyicong <yangyicong@huawei.com>,
+ yuzenghui <yuzenghui@huawei.com>,
+ "Wanghaibin \(D\)" <wanghaibin.wang@huawei.com>,
+ zhukeqian <zhukeqian1@huawei.com>, "lijiajie \(H\)" <lijiajie11@huawei.com>,
+ David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 78M4VriNblC5
+X-TUID: Wbo03b0mK4W8
 
-Signed-off-by: Titus Rwantare <titusr@google.com>
-Reviewed-by: Joel Stanley <joel@jms.id.au>
----
- tests/qtest/max34451-test.c | 336 ++++++++++++++++++++++++++++++++++++
- tests/qtest/meson.build     |   1 +
- 2 files changed, 337 insertions(+)
- create mode 100644 tests/qtest/max34451-test.c
+On Tue, May 18, 2021 at 06:34:08PM +0000, Salil Mehta wrote:
+>  Those benefits, when vcpu pinning is used, are the same benefits
+> > as for the host, which already use PPTT tables to describe topology, even
+> > though hot plug isn't supported.
+> 
+> yes sure, you mean pinning vcpus according to the cpu topology for performance?
 
-diff --git a/tests/qtest/max34451-test.c b/tests/qtest/max34451-test.c
-new file mode 100644
-index 0000000000..0c98d0764c
---- /dev/null
-+++ b/tests/qtest/max34451-test.c
-@@ -0,0 +1,336 @@
-+/*
-+ * QTests for the MAX34451 device
-+ *
-+ * Copyright 2021 Google LLC
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/i2c/pmbus_device.h"
-+#include "libqtest-single.h"
-+#include "libqos/qgraph.h"
-+#include "libqos/i2c.h"
-+#include "qapi/qmp/qdict.h"
-+#include "qapi/qmp/qnum.h"
-+#include "qemu/bitops.h"
-+
-+#define TEST_ID "max34451-test"
-+#define TEST_ADDR (0x4e)
-+
-+#define MAX34451_MFR_VOUT_PEAK          0xD4
-+#define MAX34451_MFR_IOUT_PEAK          0xD5
-+#define MAX34451_MFR_TEMPERATURE_PEAK   0xD6
-+#define MAX34451_MFR_VOUT_MIN           0xD7
-+
-+#define DEFAULT_VOUT                    0
-+#define DEFAULT_UV_LIMIT                0
-+#define DEFAULT_TEMPERATURE             2500
-+#define DEFAULT_SCALE                   0x7FFF
-+#define DEFAULT_OV_LIMIT                0x7FFF
-+#define DEFAULT_OC_LIMIT                0x7FFF
-+#define DEFAULT_OT_LIMIT                0x7FFF
-+#define DEFAULT_VMIN                    0x7FFF
-+#define DEFAULT_TON_FAULT_LIMIT         0xFFFF
-+#define DEFAULT_CHANNEL_CONFIG          0x20
-+#define DEFAULT_TEXT                    0x20
-+
-+#define MAX34451_NUM_PWR_DEVICES        16
-+#define MAX34451_NUM_TEMP_DEVICES       5
-+
-+
-+static uint16_t qmp_max34451_get(const char *id, const char *property)
-+{
-+    QDict *response;
-+    uint16_t ret;
-+    response = qmp("{ 'execute': 'qom-get', 'arguments': { 'path': %s, "
-+                   "'property': %s } }", id, property);
-+    g_assert(qdict_haskey(response, "return"));
-+    ret = qnum_get_uint(qobject_to(QNum, qdict_get(response, "return")));
-+    qobject_unref(response);
-+    return ret;
-+}
-+
-+static void qmp_max34451_set(const char *id,
-+                             const char *property,
-+                             uint16_t value)
-+{
-+    QDict *response;
-+
-+    response = qmp("{ 'execute': 'qom-set', 'arguments': { 'path': %s, "
-+                   "'property': %s, 'value': %u } }",
-+                   id, property, value);
-+    g_assert(qdict_haskey(response, "return"));
-+    qobject_unref(response);
-+}
-+
-+/* PMBus commands are little endian vs i2c_set16 in i2c.h which is big endian */
-+static uint16_t max34451_i2c_get16(QI2CDevice *i2cdev, uint8_t reg)
-+{
-+    uint8_t resp[2];
-+    i2c_read_block(i2cdev, reg, resp, sizeof(resp));
-+    return (resp[1] << 8) | resp[0];
-+}
-+
-+/* PMBus commands are little endian vs i2c_set16 in i2c.h which is big endian */
-+static void max34451_i2c_set16(QI2CDevice *i2cdev, uint8_t reg, uint16_t value)
-+{
-+    uint8_t data[2];
-+
-+    data[0] = value & 255;
-+    data[1] = value >> 8;
-+    i2c_write_block(i2cdev, reg, data, sizeof(data));
-+}
-+
-+/* Test default values */
-+static void test_defaults(void *obj, void *data, QGuestAllocator *alloc)
-+{
-+    uint16_t value, i2c_value;
-+    QI2CDevice *i2cdev = (QI2CDevice *)obj;
-+    char *path;
-+
-+    /* Default temperatures and temperature fault limits */
-+    for (int i = 0; i < MAX34451_NUM_TEMP_DEVICES; i++) {
-+        path = g_strdup_printf("temperature[%d]", i);
-+        value = qmp_max34451_get(TEST_ID, path);
-+        g_assert_cmpuint(value, ==, DEFAULT_TEMPERATURE);
-+        g_free(path);
-+
-+        /* Temperature sensors start on page 16 */
-+        i2c_set8(i2cdev, PMBUS_PAGE, i + 16);
-+        i2c_value = max34451_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_1);
-+        g_assert_cmpuint(i2c_value, ==, DEFAULT_TEMPERATURE);
-+
-+        i2c_value = max34451_i2c_get16(i2cdev, PMBUS_OT_FAULT_LIMIT);
-+        g_assert_cmpuint(i2c_value, ==, DEFAULT_OT_LIMIT);
-+
-+        i2c_value = max34451_i2c_get16(i2cdev, PMBUS_OT_WARN_LIMIT);
-+        g_assert_cmpuint(i2c_value, ==, DEFAULT_OT_LIMIT);
-+    }
-+
-+    /* Default voltages and fault limits */
-+    for (int i = 0; i < MAX34451_NUM_PWR_DEVICES; i++) {
-+        path = g_strdup_printf("vout[%d]", i);
-+        value = qmp_max34451_get(TEST_ID, path);
-+        g_assert_cmpuint(value, ==, DEFAULT_VOUT);
-+        g_free(path);
-+
-+        i2c_set8(i2cdev, PMBUS_PAGE, i);
-+        i2c_value = max34451_i2c_get16(i2cdev, PMBUS_READ_VOUT);
-+        g_assert_cmpuint(i2c_value, ==, DEFAULT_VOUT);
-+
-+        i2c_value = max34451_i2c_get16(i2cdev, PMBUS_VOUT_OV_FAULT_LIMIT);
-+        g_assert_cmpuint(i2c_value, ==, DEFAULT_OV_LIMIT);
-+
-+        i2c_value = max34451_i2c_get16(i2cdev, PMBUS_VOUT_OV_WARN_LIMIT);
-+        g_assert_cmpuint(i2c_value, ==, DEFAULT_OV_LIMIT);
-+
-+        i2c_value = max34451_i2c_get16(i2cdev, PMBUS_VOUT_UV_WARN_LIMIT);
-+        g_assert_cmpuint(i2c_value, ==, DEFAULT_UV_LIMIT);
-+
-+        i2c_value = max34451_i2c_get16(i2cdev, PMBUS_VOUT_UV_FAULT_LIMIT);
-+        g_assert_cmpuint(i2c_value, ==, DEFAULT_UV_LIMIT);
-+
-+        i2c_value = max34451_i2c_get16(i2cdev, MAX34451_MFR_VOUT_MIN);
-+        g_assert_cmpuint(i2c_value, ==, DEFAULT_VMIN);
-+    }
-+
-+    i2c_value = i2c_get8(i2cdev, PMBUS_VOUT_MODE);
-+    g_assert_cmphex(i2c_value, ==, 0x40); /* DIRECT mode */
-+
-+    i2c_value = i2c_get8(i2cdev, PMBUS_REVISION);
-+    g_assert_cmphex(i2c_value, ==, 0x11); /* Rev 1.1 */
-+}
-+
-+/* Test setting temperature */
-+static void test_temperature(void *obj, void *data, QGuestAllocator *alloc)
-+{
-+    uint16_t value, i2c_value;
-+    QI2CDevice *i2cdev = (QI2CDevice *)obj;
-+    char *path;
-+
-+    for (int i = 0; i < MAX34451_NUM_TEMP_DEVICES; i++) {
-+        path = g_strdup_printf("temperature[%d]", i);
-+        qmp_max34451_set(TEST_ID, path, 0xBE00 + i);
-+        value = qmp_max34451_get(TEST_ID, path);
-+        g_assert_cmphex(value, ==, 0xBE00 + i);
-+        g_free(path);
-+    }
-+
-+    /* compare qmp read with i2c read separately */
-+    for (int i = 0; i < MAX34451_NUM_TEMP_DEVICES; i++) {
-+        /* temperature[0] is on page 16 */
-+        i2c_set8(i2cdev, PMBUS_PAGE, i + 16);
-+        i2c_value = max34451_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_1);
-+        g_assert_cmphex(i2c_value, ==, 0xBE00 + i);
-+
-+        i2c_value = max34451_i2c_get16(i2cdev, MAX34451_MFR_TEMPERATURE_PEAK);
-+        g_assert_cmphex(i2c_value, ==, 0xBE00 + i);
-+    }
-+}
-+
-+/* Test setting voltage */
-+static void test_voltage(void *obj, void *data, QGuestAllocator *alloc)
-+{
-+    uint16_t value, i2c_value;
-+    QI2CDevice *i2cdev = (QI2CDevice *)obj;
-+    char *path;
-+
-+    for (int i = 0; i < MAX34451_NUM_PWR_DEVICES; i++) {
-+        path = g_strdup_printf("vout[%d]", i);
-+        qmp_max34451_set(TEST_ID, path, 3000 + i);
-+        value = qmp_max34451_get(TEST_ID, path);
-+        g_assert_cmpuint(value, ==, 3000 + i);
-+        g_free(path);
-+    }
-+
-+    /* compare qmp read with i2c read separately */
-+    for (int i = 0; i < MAX34451_NUM_PWR_DEVICES; i++) {
-+        i2c_set8(i2cdev, PMBUS_PAGE, i);
-+        i2c_value = max34451_i2c_get16(i2cdev, PMBUS_READ_VOUT);
-+        g_assert_cmpuint(i2c_value, ==, 3000 + i);
-+
-+        i2c_value = max34451_i2c_get16(i2cdev, MAX34451_MFR_VOUT_PEAK);
-+        g_assert_cmpuint(i2c_value, ==, 3000 + i);
-+
-+        i2c_value = max34451_i2c_get16(i2cdev, MAX34451_MFR_VOUT_MIN);
-+        g_assert_cmpuint(i2c_value, ==, 3000 + i);
-+    }
-+}
-+
-+/* Test setting some read/write registers */
-+static void test_rw_regs(void *obj, void *data, QGuestAllocator *alloc)
-+{
-+    uint16_t i2c_value;
-+    QI2CDevice *i2cdev = (QI2CDevice *)obj;
-+
-+    i2c_set8(i2cdev, PMBUS_PAGE, 11);
-+    i2c_value = i2c_get8(i2cdev, PMBUS_PAGE);
-+    g_assert_cmpuint(i2c_value, ==, 11);
-+
-+    i2c_set8(i2cdev, PMBUS_OPERATION, 1);
-+    i2c_value = i2c_get8(i2cdev, PMBUS_OPERATION);
-+    g_assert_cmpuint(i2c_value, ==, 1);
-+
-+    max34451_i2c_set16(i2cdev, PMBUS_VOUT_MARGIN_HIGH, 5000);
-+    i2c_value = max34451_i2c_get16(i2cdev, PMBUS_VOUT_MARGIN_HIGH);
-+    g_assert_cmpuint(i2c_value, ==, 5000);
-+
-+    max34451_i2c_set16(i2cdev, PMBUS_VOUT_MARGIN_LOW, 4000);
-+    i2c_value = max34451_i2c_get16(i2cdev, PMBUS_VOUT_MARGIN_LOW);
-+    g_assert_cmpuint(i2c_value, ==, 4000);
-+
-+    max34451_i2c_set16(i2cdev, PMBUS_VOUT_OV_FAULT_LIMIT, 5500);
-+    i2c_value = max34451_i2c_get16(i2cdev, PMBUS_VOUT_OV_FAULT_LIMIT);
-+    g_assert_cmpuint(i2c_value, ==, 5500);
-+
-+    max34451_i2c_set16(i2cdev, PMBUS_VOUT_OV_WARN_LIMIT, 5600);
-+    i2c_value = max34451_i2c_get16(i2cdev, PMBUS_VOUT_OV_WARN_LIMIT);
-+    g_assert_cmpuint(i2c_value, ==, 5600);
-+
-+    max34451_i2c_set16(i2cdev, PMBUS_VOUT_UV_FAULT_LIMIT, 5700);
-+    i2c_value = max34451_i2c_get16(i2cdev, PMBUS_VOUT_UV_FAULT_LIMIT);
-+    g_assert_cmpuint(i2c_value, ==, 5700);
-+
-+    max34451_i2c_set16(i2cdev, PMBUS_VOUT_UV_WARN_LIMIT, 5800);
-+    i2c_value = max34451_i2c_get16(i2cdev, PMBUS_VOUT_UV_WARN_LIMIT);
-+    g_assert_cmpuint(i2c_value, ==, 5800);
-+
-+    max34451_i2c_set16(i2cdev, PMBUS_POWER_GOOD_ON, 5900);
-+    i2c_value = max34451_i2c_get16(i2cdev, PMBUS_POWER_GOOD_ON);
-+    g_assert_cmpuint(i2c_value, ==, 5900);
-+
-+    max34451_i2c_set16(i2cdev, PMBUS_POWER_GOOD_OFF, 6100);
-+    i2c_value = max34451_i2c_get16(i2cdev, PMBUS_POWER_GOOD_OFF);
-+    g_assert_cmpuint(i2c_value, ==, 6100);
-+}
-+
-+/* Test that Read only registers can't be written */
-+static void test_ro_regs(void *obj, void *data, QGuestAllocator *alloc)
-+{
-+    uint16_t i2c_value, i2c_init_value;
-+    QI2CDevice *i2cdev = (QI2CDevice *)obj;
-+
-+    i2c_set8(i2cdev, PMBUS_PAGE, 1); /* move to page 1 */
-+    i2c_init_value = i2c_get8(i2cdev, PMBUS_CAPABILITY);
-+    i2c_set8(i2cdev, PMBUS_CAPABILITY, 0xF9);
-+    i2c_value = i2c_get8(i2cdev, PMBUS_CAPABILITY);
-+    g_assert_cmpuint(i2c_init_value, ==, i2c_value);
-+
-+    i2c_init_value = max34451_i2c_get16(i2cdev, PMBUS_READ_VOUT);
-+    max34451_i2c_set16(i2cdev, PMBUS_READ_VOUT, 0xDEAD);
-+    i2c_value = max34451_i2c_get16(i2cdev, PMBUS_READ_VOUT);
-+    g_assert_cmpuint(i2c_init_value, ==, i2c_value);
-+    g_assert_cmphex(i2c_value, !=, 0xDEAD);
-+
-+    i2c_set8(i2cdev, PMBUS_PAGE, 16); /* move to page 16 */
-+    i2c_init_value = max34451_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_1);
-+    max34451_i2c_set16(i2cdev, PMBUS_READ_TEMPERATURE_1, 0xABBA);
-+    i2c_value = max34451_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_1);
-+    g_assert_cmpuint(i2c_init_value, ==, i2c_value);
-+    g_assert_cmphex(i2c_value, !=, 0xABBA);
-+}
-+
-+/* test over voltage faults */
-+static void test_ov_faults(void *obj, void *data, QGuestAllocator *alloc)
-+{
-+    uint16_t i2c_value;
-+    uint8_t i2c_byte;
-+    QI2CDevice *i2cdev = (QI2CDevice *)obj;
-+    char *path;
-+    /* Test ov fault reporting */
-+    for (int i = 0; i < MAX34451_NUM_PWR_DEVICES; i++) {
-+        path = g_strdup_printf("vout[%d]", i);
-+        i2c_set8(i2cdev, PMBUS_PAGE, i);
-+        max34451_i2c_set16(i2cdev, PMBUS_VOUT_OV_FAULT_LIMIT, 5000);
-+        qmp_max34451_set(TEST_ID, path, 5100);
-+        g_free(path);
-+
-+        i2c_value = max34451_i2c_get16(i2cdev, PMBUS_STATUS_WORD);
-+        i2c_byte = i2c_get8(i2cdev, PMBUS_STATUS_VOUT);
-+        g_assert_true((i2c_value & PB_STATUS_VOUT) != 0);
-+        g_assert_true((i2c_byte & PB_STATUS_VOUT_OV_FAULT) != 0);
-+    }
-+}
-+
-+/* test over temperature faults */
-+static void test_ot_faults(void *obj, void *data, QGuestAllocator *alloc)
-+{
-+    uint16_t i2c_value;
-+    uint8_t i2c_byte;
-+    QI2CDevice *i2cdev = (QI2CDevice *)obj;
-+    char *path;
-+
-+    for (int i = 0; i < MAX34451_NUM_TEMP_DEVICES; i++) {
-+        path = g_strdup_printf("temperature[%d]", i);
-+        i2c_set8(i2cdev, PMBUS_PAGE, i + 16);
-+        max34451_i2c_set16(i2cdev, PMBUS_OT_FAULT_LIMIT, 6000);
-+        qmp_max34451_set(TEST_ID, path, 6100);
-+        g_free(path);
-+
-+        i2c_value = max34451_i2c_get16(i2cdev, PMBUS_STATUS_WORD);
-+        i2c_byte = i2c_get8(i2cdev, PMBUS_STATUS_TEMPERATURE);
-+        g_assert_true((i2c_value & PB_STATUS_TEMPERATURE) != 0);
-+        g_assert_true((i2c_byte & PB_STATUS_OT_FAULT) != 0);
-+    }
-+}
-+
-+static void max34451_register_nodes(void)
-+{
-+    QOSGraphEdgeOptions opts = {
-+        .extra_device_opts = "id=" TEST_ID ",address=0x4e"
-+    };
-+    add_qi2c_address(&opts, &(QI2CAddress) { TEST_ADDR });
-+
-+    qos_node_create_driver("max34451", i2c_device_create);
-+    qos_node_consumes("max34451", "i2c-bus", &opts);
-+
-+    qos_add_test("test_defaults", "max34451", test_defaults, NULL);
-+    qos_add_test("test_temperature", "max34451", test_temperature, NULL);
-+    qos_add_test("test_voltage", "max34451", test_voltage, NULL);
-+    qos_add_test("test_rw_regs", "max34451", test_rw_regs, NULL);
-+    qos_add_test("test_ro_regs", "max34451", test_ro_regs, NULL);
-+    qos_add_test("test_ov_faults", "max34451", test_ov_faults, NULL);
-+    qos_add_test("test_ot_faults", "max34451", test_ot_faults, NULL);
-+}
-+libqos_init(max34451_register_nodes);
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 99040885fb..48eb646889 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -208,6 +208,7 @@ qos_test_ss.add(
-   'eepro100-test.c',
-   'es1370-test.c',
-   'ipoctal232-test.c',
-+  'max34451-test.c',
-   'megasas-test.c',
-   'ne2000-test.c',
-   'tulip-test.c',
--- 
-2.31.1.751.gd2f1c929bd-goog
+Yup
+
+> 
+> > 
+> > Now, if you're saying we should only generate tables for smp.cpus, not
+> 
+> Correct. This is what I thought we must be doing even now
+> 
+> > smp.maxcpus, because hot plug isn't supported anyway, then I see your
+> > point. But, it'd be better to require smp.cpus == smp.maxcpus in our
+> > smp_parse function to do that, which we've never done before, so we may
+> > have trouble supporting existing command lines.
+> 
+> I am trying to recall, if the vcpu Hotplug is not supported then can they
+> ever be different?
+> 
+> cpus =  (threads * cores * sockets)
+> 
+> static void smp_parse(MachineState *ms, QemuOpts *opts)
+> {
+>      [...]
+> 
+>         if (sockets * cores * threads != ms->smp.max_cpus) {
+>             warn_report("Invalid CPU topology deprecated: "
+>                         "sockets (%u) * cores (%u) * threads (%u) "
+>                         "!= maxcpus (%u)",
+>                         sockets, cores, threads,
+>                         ms->smp.max_cpus);
+>         }
+>      [...]
+> }
+>   
+> Although, above check does not exit(1) and just warns on detecting invalid
+> CPU topology. Not sure why?
+
+Hmm, not sure what code you have there. I see this in
+hw/core/machine.c:smp_parse
+
+        if (ms->smp.max_cpus < cpus) {
+            error_report("maxcpus must be equal to or greater than smp");
+            exit(1);
+        }
+
+        if (sockets * cores * threads != ms->smp.max_cpus) {
+            error_report("Invalid CPU topology: "
+                         "sockets (%u) * cores (%u) * threads (%u) "
+                         "!= maxcpus (%u)",
+                         sockets, cores, threads,
+                         ms->smp.max_cpus);
+            exit(1);
+        }
+
+> 
+> Well if you think there are subtleties to support above implementation and
+> we cannot do it now then sure it is your call. :)
+
+The problem is that -smp 4,maxcpus=8 doesn't error out today, even though
+it doesn't do anything. OTOH, -smp 4,cores=2 doesn't error out either, but
+we're proposing that it should. Maybe we can start erroring out when
+cpus != maxcpus until hot plug is supported?
+
+Thanks,
+drew
 

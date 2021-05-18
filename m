@@ -1,158 +1,143 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp688779lfm;
-        Tue, 18 May 2021 12:01:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwDj8yHmyTtNEmBlIfO+oatNwwW0D+WUcCfVKXBQ045wSCFdXFJ5j6bAf2yH384Yc8g1k3c
-X-Received: by 2002:a92:c8cb:: with SMTP id c11mr4853034ilq.239.1621364512401;
-        Tue, 18 May 2021 12:01:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621364512; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp689467lfm;
+        Tue, 18 May 2021 12:02:39 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyqi9lEbw74HbfhE9lO47ikkT0txAsdS6fDVr+cRJmtzTIBgiBOUMYd+AVLwhsJMaSNrPal
+X-Received: by 2002:a5d:8a16:: with SMTP id w22mr5554092iod.186.1621364558968;
+        Tue, 18 May 2021 12:02:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621364558; cv=none;
         d=google.com; s=arc-20160816;
-        b=0XQp42oNStbDIRU2EEy+JT9Crr7K8fEJC7IAT81fEqOeMh0ge8u+klgA1hxWmoJqgU
-         E5uoDQKc4lntiORTrQy2U6A5N2dAe4/core4BgX0/rLTlFomxzxqmMqEVXG0CxgWvkNi
-         Ppto6bPtENxMDVCP6I9OY3AW6r+LUwkV6Cy0Vn/eE1tBXkEiYY9qFLhlPQqTCjXMAr7Q
-         A8ARdk9TTXr0KKOOwDeLZm0n0YO/pdvB5yTcqFVlkwa+gy9ekH1KLdF4h5ypb1wD1WK8
-         mVIsQygWRAM3jiMTYvEXN4KVAhD7Nvw4QCu3SMQ7GhCZ3xMG7Ti9jqtYMldWd2W2WXLf
-         FQiw==
+        b=JvlZxKZpIhTNkIMTwrHlM86aXR29Tf/J8+TK6ouNC/IeknjxGKsJ84D++cm9ITNKa8
+         w2SHGi+CIla4XCY/EQy7t4yf9xRgoudmTGSc/FBaJ4C65ek3AIHBCWOuuKvu/5ImMIXn
+         BGrg9KtYE4L0zUnveIhJgVTa6oIQg+LmhYXNOOe2/1XEnMVWD3E+kQ/vbAtj738ejF2K
+         FXRdI7lkCXQfe+tQerq2Nqt9PGy+MHKH34SrpaMt/PUxBbjV6JzOTNjd5am5Io4fcUfS
+         JbeDQ52d1rkIZA87VKP6cloHgX4E0RtYBWpGA9W81nEg9yoJaC+bddzdTV5nhdLM/jA+
+         S7KA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :from:subject:references:mime-version:message-id:in-reply-to:date
-         :dkim-signature;
-        bh=BE80NhxuiweyHp1Z4QLh6mBYelxs2tM8Cb2UW6iHNAs=;
-        b=ffUSI+M7KmZpSmuxNe4HFHtyNgyG6gE0C4lucRRkvAJ5wXD7t2MUK7ip8GTFx3mOxY
-         Ny5eIstjWp5DFtfaFsp2AV8e0BzoWJDU4hsKgvjnLBGCSEP4l+krtZiiok1q52+WpHGx
-         K3Z/fS+sFgBX2YSxz5Bx7uxEZP/m03CZ+xNVcVjZuMXoF1S5gnG/0orUDe5E4DznCgWw
-         I0WA3KYl1gX3PWjHA63VEg6PFdE8w+w9SsygwMa6u+FpPmh/A49oKhWgi8mFZsiaXhF/
-         4JSiNZOi4ejqX848zUoTWV0wUE3UnHMKQOHAW9gZrjO0MaLVeb+ECx7hCqMICHen1uCP
-         txOg==
+         :list-unsubscribe:list-id:precedence:cc:to:from:subject:references
+         :mime-version:message-id:in-reply-to:date:dkim-signature;
+        bh=NQ+oPEchcukwKqlHYSyVb8bgHl09wYV1UiuEeyBZqMI=;
+        b=FRE/t2UBLBsNUV2lRCViMwHOFzu5alIwzLG5IKpk3zYjwGSoa1xoqOJnV7xlge4AI9
+         L19l0hnLsMfXwfdlINNgI9LAU2IpapIvAB26jxWwhXvllPYK9f1eXN4sNM1uIyuyY9tm
+         8J7O7MzLaoIN2pkfWFsEQLzMWWkethaNPQRVXgXp7u6cQFpY8+qWr2z0p9QhNvClcRO/
+         tQg7sYPwTFhzt1Ef99d4ECp9wpd1C71rbQFRI6GKFyELzwPTalFAXNKcQ65rJHJOKjv/
+         bi8oMZ3Fp+1LSizCd8+yVoe4/r2rApDzFfafg5AHvVvtSQ69NzSuiyqDREJ9IL3vmU3G
+         GNdA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=bblmEN5C;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20161025 header.b="Qi/Hk85O";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l22si5296335jad.10.2021.05.18.12.01.52
+        by mx.google.com with ESMTPS id 16si25669850iou.15.2021.05.18.12.02.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 May 2021 12:01:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 18 May 2021 12:02:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=bblmEN5C;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20161025 header.b="Qi/Hk85O";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:47158 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50360 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lj4yV-0000Ti-Je
-	for alex.bennee@linaro.org; Tue, 18 May 2021 15:01:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51734)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lj4zG-0002e3-9v
+	for alex.bennee@linaro.org; Tue, 18 May 2021 15:02:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51736)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3VQukYAYKCgg1q120zowwotm.kwuymu2-lm3mtvwvov2.wzo@flex--titusr.bounces.google.com>)
- id 1lj4iy-0006tz-3T
- for qemu-devel@nongnu.org; Tue, 18 May 2021 14:45:48 -0400
-Received: from mail-qk1-x749.google.com ([2607:f8b0:4864:20::749]:43949)
+ <3VwukYAYKCAo3s3421qyyqvo.myw0ow4-k1wxyxqx4.y1q@flex--titusr.bounces.google.com>)
+ id 1lj4iy-0006vv-MI
+ for qemu-arm@nongnu.org; Tue, 18 May 2021 14:45:48 -0400
+Received: from mail-yb1-xb4a.google.com ([2607:f8b0:4864:20::b4a]:39425)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3VQukYAYKCgg1q120zowwotm.kwuymu2-lm3mtvwvov2.wzo@flex--titusr.bounces.google.com>)
- id 1lj4it-0003wJ-Ht
- for qemu-devel@nongnu.org; Tue, 18 May 2021 14:45:47 -0400
-Received: by mail-qk1-x749.google.com with SMTP id
- d201-20020ae9efd20000b02902e9e9d8d9dcso7833505qkg.10
- for <qemu-devel@nongnu.org>; Tue, 18 May 2021 11:45:41 -0700 (PDT)
+ <3VwukYAYKCAo3s3421qyyqvo.myw0ow4-k1wxyxqx4.y1q@flex--titusr.bounces.google.com>)
+ id 1lj4iv-0003wo-7K
+ for qemu-arm@nongnu.org; Tue, 18 May 2021 14:45:48 -0400
+Received: by mail-yb1-xb4a.google.com with SMTP id
+ d20-20020a25add40000b02904f8960b23e8so14745272ybe.6
+ for <qemu-arm@nongnu.org>; Tue, 18 May 2021 11:45:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=date:in-reply-to:message-id:mime-version:references:subject:from:to
- :cc:content-transfer-encoding;
- bh=BE80NhxuiweyHp1Z4QLh6mBYelxs2tM8Cb2UW6iHNAs=;
- b=bblmEN5CHdfe2WaIbZHG9RnC6Jv7WqOHbhVHpY3O89jL1py3BgQUGjDsvwv8AVhCPJ
- oFGdcfzIxt5eFeUZOUYrlWiAmtVknPHONdON02WR9Ti8VizyvO683chatwLiOT7BKCsj
- ay143gEy92Dsxgir4Dyou8azip+DCjfOWCiC4maxZhtm0pdfpDN51pncUKuQ2t54N4Hd
- oPflSJjfRQPhHWsQs57l34Dwp1vS/9AqOLIx2xGOe7fdwbRnl0UsWizzMXyjIW2Y2IaF
- L8r0M+YXWSCEAYZrf1Bt4ZaVZN/kOV2Wuat9tU6xmuk+RjrI+sBjdz8Hh/fdvrKxGUTB
- bH/A==
+ :cc; bh=NQ+oPEchcukwKqlHYSyVb8bgHl09wYV1UiuEeyBZqMI=;
+ b=Qi/Hk85OV/9HjW0thunliszYE7F0dezzVDxCQs20bF0/+jXeJgKneHgevtxCFFzHvf
+ /ap3MCYmPtmzJBH/uKST13YJLU9W1UiEdEFwZxcEJ+Dtpp8kLzsqzbf0tWLcBSYWOROW
+ aKsdghGiP8hLnkw+HTpCzSBQ1VAuURJQC94eAZ75KYgp87wo0yKcQ4SMoa1fu7XzNoT5
+ phANUwZu/QuVge+7pE5d1IhrDxUxkAV5xAoZSNc/X3Rfq3xI71Cg/9YO/LVqulgoEjTj
+ hsUlBOUi7qIqiwEU8P6PZ8QbpL8siD2BUWWNzL2wPYh5f8ZlhYWtWGR5NAjTFYkm9Z4u
+ Xhrg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:in-reply-to:message-id:mime-version
- :references:subject:from:to:cc:content-transfer-encoding;
- bh=BE80NhxuiweyHp1Z4QLh6mBYelxs2tM8Cb2UW6iHNAs=;
- b=ZAHQe4LzFGe61qoFb/0+6JnjU9czDIliatc0yzYjWssGsiznLf8Z7MpEiQKA1FZ6da
- Oga3kFaLC1qwyXe1ajb+ZgWd33K3u6oyJivZ/CW3+pbjPmyRNCjzAobDZiw+BfTzeOof
- EJLUqWus5ahEEfWPristWJ446XsH0brs78J/JEXrhnbD98Xs3VSyAhRwMGdU3DC2dkNN
- kRuWbuHHkFdzzFWXHy+yn24CqHKif/IZPZDa+TKjJacu3h6cVC3XlWmwlbf5OrH7FDIA
- WPVxx/hpxoNR+dTrr3sYYeqwHPc8THRj2Jt/3WXRO//JRoGPLkIAj5pezwA+rjDBzw7r
- ry4g==
-X-Gm-Message-State: AOAM5307aNq1lO7np7oi90HFbLr74qqyZ75fclJSQL4OFacbm+G5h3an
- 8uJbMpO79V95WNAsVAFSy9xrqwqKInk=
+ :references:subject:from:to:cc;
+ bh=NQ+oPEchcukwKqlHYSyVb8bgHl09wYV1UiuEeyBZqMI=;
+ b=r4H/KQYkwnVT/5BDa+cEOVQCcCGS12jyTfgOnUv5lTXf7HBHUIb4gVRFwvSV6ZzzmJ
+ 8OCWXCMgpyMWQUPAA11gNaplG0XvkzIlZtAcScbHSuMX7Cg9ZSkwu/pQlT263QACw+t7
+ NcghLaTo6JLyV1sCWr8w2veaJ2FPYey5l6jC1qth4SpUh9skRORQms9rxkaD18FRoK0q
+ pVLLeVpjUVcG6qzMuiSa+uqIaAPMS1702QOwtuF8pwfh4bcryrDTRw0bDwue8AzlhWMX
+ mzvdjSLWNhSbAS+wmZo21U4R0/Md/nyUE2FN0zZTmXYJslNVEUreTjn9/Bp/lgq9Z4XN
+ LUGQ==
+X-Gm-Message-State: AOAM531UTLZWA+Yx53J6bDQ5JiCrKFaJ4x5++oAleXVokxlK0vylO86g
+ KCBHJr9mrpaurAJvWo8oSBoxyYtXcKc=
 X-Received: from titusr.svl.corp.google.com
  ([2620:15c:2c5:13:4bf9:75f4:b656:df26])
- (user=titusr job=sendgmr) by 2002:a0c:a909:: with SMTP id
- y9mr7270848qva.20.1621363541254; 
- Tue, 18 May 2021 11:45:41 -0700 (PDT)
-Date: Tue, 18 May 2021 11:45:26 -0700
+ (user=titusr job=sendgmr) by 2002:a25:ec02:: with SMTP id
+ j2mr10064587ybh.248.1621363543412; 
+ Tue, 18 May 2021 11:45:43 -0700 (PDT)
+Date: Tue, 18 May 2021 11:45:27 -0700
 In-Reply-To: <20210518184527.1037888-1-titusr@google.com>
-Message-Id: <20210518184527.1037888-5-titusr@google.com>
+Message-Id: <20210518184527.1037888-6-titusr@google.com>
 Mime-Version: 1.0
 References: <20210518184527.1037888-1-titusr@google.com>
 X-Mailer: git-send-email 2.31.1.751.gd2f1c929bd-goog
-Subject: [PATCH v3 4/5] hw/misc: add MAX34451 device
+Subject: [PATCH v3 5/5] tests/qtest: add tests for MAX34451 device model
 From: Titus Rwantare <titusr@google.com>
 To: Corey Minyard <cminyard@mvista.com>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, f4bug@amsat.org, 
- Titus Rwantare <titusr@google.com>, Joel Stanley <joel@jms.id.au>,
- Hao Wu <wuhaotsh@google.com>
+ Titus Rwantare <titusr@google.com>, Joel Stanley <joel@jms.id.au>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::749;
- envelope-from=3VQukYAYKCgg1q120zowwotm.kwuymu2-lm3mtvwvov2.wzo@flex--titusr.bounces.google.com;
- helo=mail-qk1-x749.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b4a;
+ envelope-from=3VwukYAYKCAo3s3421qyyqvo.myw0ow4-k1wxyxqx4.y1q@flex--titusr.bounces.google.com;
+ helo=mail-yb1-xb4a.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
 X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tb3+iY0SxGXe
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 78M4VriNblC5
 
-The MAX34451 is a Maxim power-supply system manager that can monitor up to =
-16 voltage rails or currents. It also contains a temperature sensor and sup=
-ports up to four external temperature sensors.
-
-This commit adds support for interfacing with it, and setting limits on the=
- supported sensors.
-
-Reviewed-by: Joel Stanley <joel@jms.id.au>
-Reviewed-by: Hao Wu <wuhaotsh@google.com>
 Signed-off-by: Titus Rwantare <titusr@google.com>
+Reviewed-by: Joel Stanley <joel@jms.id.au>
 ---
- hw/misc/max34451.c  | 716 ++++++++++++++++++++++++++++++++++++++++++++
- hw/arm/Kconfig      |   1 +
- hw/misc/Kconfig     |   4 +
- hw/misc/meson.build |   1 +
- 4 files changed, 722 insertions(+)
- create mode 100644 hw/misc/max34451.c
+ tests/qtest/max34451-test.c | 336 ++++++++++++++++++++++++++++++++++++
+ tests/qtest/meson.build     |   1 +
+ 2 files changed, 337 insertions(+)
+ create mode 100644 tests/qtest/max34451-test.c
 
-diff --git a/hw/misc/max34451.c b/hw/misc/max34451.c
+diff --git a/tests/qtest/max34451-test.c b/tests/qtest/max34451-test.c
 new file mode 100644
-index 0000000000..5dd47a49f5
+index 0000000000..0c98d0764c
 --- /dev/null
-+++ b/hw/misc/max34451.c
-@@ -0,0 +1,716 @@
++++ b/tests/qtest/max34451-test.c
+@@ -0,0 +1,336 @@
 +/*
-+ * Maxim MAX34451 PMBus 16-Channel V/I monitor and 12-Channel Sequencer/Ma=
-rginer
++ * QTests for the MAX34451 device
 + *
 + * Copyright 2021 Google LLC
 + *
@@ -161,48 +146,23 @@ rginer
 +
 +#include "qemu/osdep.h"
 +#include "hw/i2c/pmbus_device.h"
-+#include "hw/irq.h"
-+#include "qapi/error.h"
-+#include "qapi/visitor.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
++#include "libqtest-single.h"
++#include "libqos/qgraph.h"
++#include "libqos/i2c.h"
++#include "qapi/qmp/qdict.h"
++#include "qapi/qmp/qnum.h"
++#include "qemu/bitops.h"
 +
-+#define TYPE_MAX34451 "max34451"
-+#define MAX34451(obj) OBJECT_CHECK(MAX34451State, (obj), TYPE_MAX34451)
++#define TEST_ID "max34451-test"
++#define TEST_ADDR (0x4e)
 +
-+#define MAX34451_MFR_MODE               0xD1
-+#define MAX34451_MFR_PSEN_CONFIG        0xD2
 +#define MAX34451_MFR_VOUT_PEAK          0xD4
 +#define MAX34451_MFR_IOUT_PEAK          0xD5
 +#define MAX34451_MFR_TEMPERATURE_PEAK   0xD6
 +#define MAX34451_MFR_VOUT_MIN           0xD7
-+#define MAX34451_MFR_NV_LOG_CONFIG      0xD8
-+#define MAX34451_MFR_FAULT_RESPONSE     0xD9
-+#define MAX34451_MFR_FAULT_RETRY        0xDA
-+#define MAX34451_MFR_NV_FAULT_LOG       0xDC
-+#define MAX34451_MFR_TIME_COUNT         0xDD
-+#define MAX34451_MFR_MARGIN_CONFIG      0xDF
-+#define MAX34451_MFR_FW_SERIAL          0xE0
-+#define MAX34451_MFR_IOUT_AVG           0xE2
-+#define MAX34451_MFR_CHANNEL_CONFIG     0xE4
-+#define MAX34451_MFR_TON_SEQ_MAX        0xE6
-+#define MAX34451_MFR_PWM_CONFIG         0xE7
-+#define MAX34451_MFR_SEQ_CONFIG         0xE8
-+#define MAX34451_MFR_STORE_ALL          0xEE
-+#define MAX34451_MFR_RESTORE_ALL        0xEF
-+#define MAX34451_MFR_TEMP_SENSOR_CONFIG 0xF0
-+#define MAX34451_MFR_STORE_SINGLE       0xFC
-+#define MAX34451_MFR_CRC                0xFE
 +
-+#define MAX34451_NUM_MARGINED_PSU       12
-+#define MAX34451_NUM_PWR_DEVICES        16
-+#define MAX34451_NUM_TEMP_DEVICES       5
-+#define MAX34451_NUM_PAGES              21
-+
-+#define DEFAULT_OP_ON                   0x80
-+#define DEFAULT_CAPABILITY              0x20
-+#define DEFAULT_ON_OFF_CONFIG           0x1a
-+#define DEFAULT_VOUT_MODE               0x40
++#define DEFAULT_VOUT                    0
++#define DEFAULT_UV_LIMIT                0
 +#define DEFAULT_TEMPERATURE             2500
 +#define DEFAULT_SCALE                   0x7FFF
 +#define DEFAULT_OV_LIMIT                0x7FFF
@@ -211,768 +171,319 @@ rginer
 +#define DEFAULT_VMIN                    0x7FFF
 +#define DEFAULT_TON_FAULT_LIMIT         0xFFFF
 +#define DEFAULT_CHANNEL_CONFIG          0x20
-+#define DEFAULT_TEXT                    0x3130313031303130
++#define DEFAULT_TEXT                    0x20
 +
-+/**
-+ * MAX34451State:
-+ * @code: The command code received
-+ * @page: Each page corresponds to a device monitored by the Max 34451
-+ * The page register determines the available commands depending on device
-+  ________________________________________________________________________=
-___
-+ |   0   |  Power supply monitored by RS0, controlled by PSEN0, and       =
-   |
-+ |       |  margined with PWM0.                                           =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   1   |  Power supply monitored by RS1, controlled by PSEN1, and       =
-   |
-+ |       |  margined with PWM1.                                           =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   2   |  Power supply monitored by RS2, controlled by PSEN2, and       =
-   |
-+ |       |  margined with PWM2.                                           =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   3   |  Power supply monitored by RS3, controlled by PSEN3, and       =
-   |
-+ |       |  margined with PWM3.                                           =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   4   |  Power supply monitored by RS4, controlled by PSEN4, and       =
-   |
-+ |       |  margined with PWM4.                                           =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   5   |  Power supply monitored by RS5, controlled by PSEN5, and       =
-   |
-+ |       |  margined with PWM5.                                           =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   6   |  Power supply monitored by RS6, controlled by PSEN6, and       =
-   |
-+ |       |  margined with PWM6.                                           =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   7   |  Power supply monitored by RS7, controlled by PSEN7, and       =
-   |
-+ |       |  margined with PWM7.                                           =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   8   |  Power supply monitored by RS8, controlled by PSEN8, and       =
-   |
-+ |       | optionally margined by OUT0 of external DS4424 at I2C address A=
-0h.|
-+ |_______|________________________________________________________________=
-___|
-+ |   9   |  Power supply monitored by RS9, controlled by PSEN9, and       =
-   |
-+ |       | optionally margined by OUT1 of external DS4424 at I2C address A=
-0h.|
-+ |_______|________________________________________________________________=
-___|
-+ |   10  |  Power supply monitored by RS10, controlled by PSEN10, and     =
-   |
-+ |       | optionally margined by OUT2 of external DS4424 at I2C address A=
-0h.|
-+ |_______|________________________________________________________________=
-___|
-+ |   11  |  Power supply monitored by RS11, controlled by PSEN11, and     =
-   |
-+ |       | optionally margined by OUT3 of external DS4424 at I2C address A=
-0h.|
-+ |_______|________________________________________________________________=
-___|
-+ |   12  |  ADC channel 12 (monitors voltage or current) or GPI.          =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   13  |  ADC channel 13 (monitors voltage or current) or GPI.          =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   14  |  ADC channel 14 (monitors voltage or current) or GPI.          =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   15  |  ADC channel 15 (monitors voltage or current) or GPI.          =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   16  |  Internal temperature sensor.                                  =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   17  |  External DS75LV temperature sensor with I2C address 90h.      =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   18  |  External DS75LV temperature sensor with I2C address 92h.      =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   19  |  External DS75LV temperature sensor with I2C address 94h.      =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   20  |  External DS75LV temperature sensor with I2C address 96h.      =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ | 21=E2=80=93254|  Reserved.                                             =
-           |
-+ |_______|________________________________________________________________=
-___|
-+ |   255 |  Applies to all pages.                                         =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ *
-+ * @operation: Turn on and off power supplies
-+ * @on_off_config: Configure the power supply on and off transition behavi=
-our
-+ * @write_protect: protect against changes to the device's memory
-+ * @vout_margin_high: the voltage when OPERATION is set to margin high
-+ * @vout_margin_low: the voltage when OPERATION is set to margin low
-+ * @vout_scale: scale ADC reading to actual device reading if different
-+ * @iout_cal_gain: set ratio of the voltage at the ADC input to sensed cur=
-rent
-+ */
-+typedef struct MAX34451State {
-+    PMBusDevice parent;
-+
-+    uint16_t power_good_on[MAX34451_NUM_PWR_DEVICES];
-+    uint16_t power_good_off[MAX34451_NUM_PWR_DEVICES];
-+    uint16_t ton_delay[MAX34451_NUM_MARGINED_PSU];
-+    uint16_t ton_max_fault_limit[MAX34451_NUM_MARGINED_PSU];
-+    uint16_t toff_delay[MAX34451_NUM_MARGINED_PSU];
-+    uint8_t status_mfr_specific[MAX34451_NUM_PWR_DEVICES];
-+    /* Manufacturer specific function */
-+    uint64_t mfr_location;
-+    uint64_t mfr_date;
-+    uint64_t mfr_serial;
-+    uint16_t mfr_mode;
-+    uint32_t psen_config[MAX34451_NUM_MARGINED_PSU];
-+    uint16_t vout_peak[MAX34451_NUM_PWR_DEVICES];
-+    uint16_t iout_peak[MAX34451_NUM_PWR_DEVICES];
-+    uint16_t temperature_peak[MAX34451_NUM_TEMP_DEVICES];
-+    uint16_t vout_min[MAX34451_NUM_PWR_DEVICES];
-+    uint16_t nv_log_config;
-+    uint32_t fault_response[MAX34451_NUM_PWR_DEVICES];
-+    uint16_t fault_retry;
-+    uint32_t fault_log;
-+    uint32_t time_count;
-+    uint16_t margin_config[MAX34451_NUM_MARGINED_PSU];
-+    uint16_t fw_serial;
-+    uint16_t iout_avg[MAX34451_NUM_PWR_DEVICES];
-+    uint16_t channel_config[MAX34451_NUM_PWR_DEVICES];
-+    uint16_t ton_seq_max[MAX34451_NUM_MARGINED_PSU];
-+    uint32_t pwm_config[MAX34451_NUM_MARGINED_PSU];
-+    uint32_t seq_config[MAX34451_NUM_MARGINED_PSU];
-+    uint16_t temp_sensor_config[MAX34451_NUM_TEMP_DEVICES];
-+    uint16_t store_single;
-+    uint16_t crc;
-+} MAX34451State;
++#define MAX34451_NUM_PWR_DEVICES        16
++#define MAX34451_NUM_TEMP_DEVICES       5
 +
 +
-+static void max34451_check_limits(MAX34451State *s)
++static uint16_t qmp_max34451_get(const char *id, const char *property)
 +{
-+    PMBusDevice *pmdev =3D PMBUS_DEVICE(s);
++    QDict *response;
++    uint16_t ret;
++    response = qmp("{ 'execute': 'qom-get', 'arguments': { 'path': %s, "
++                   "'property': %s } }", id, property);
++    g_assert(qdict_haskey(response, "return"));
++    ret = qnum_get_uint(qobject_to(QNum, qdict_get(response, "return")));
++    qobject_unref(response);
++    return ret;
++}
 +
-+    pmbus_check_limits(pmdev);
++static void qmp_max34451_set(const char *id,
++                             const char *property,
++                             uint16_t value)
++{
++    QDict *response;
 +
-+    for (int i =3D 0; i < MAX34451_NUM_PWR_DEVICES; i++) {
-+        if (pmdev->pages[i].read_vout =3D=3D 0) { /* PSU disabled */
-+            continue;
-+        }
++    response = qmp("{ 'execute': 'qom-set', 'arguments': { 'path': %s, "
++                   "'property': %s, 'value': %u } }",
++                   id, property, value);
++    g_assert(qdict_haskey(response, "return"));
++    qobject_unref(response);
++}
 +
-+        if (pmdev->pages[i].read_vout > s->vout_peak[i]) {
-+            s->vout_peak[i] =3D pmdev->pages[i].read_vout;
-+        }
++/* PMBus commands are little endian vs i2c_set16 in i2c.h which is big endian */
++static uint16_t max34451_i2c_get16(QI2CDevice *i2cdev, uint8_t reg)
++{
++    uint8_t resp[2];
++    i2c_read_block(i2cdev, reg, resp, sizeof(resp));
++    return (resp[1] << 8) | resp[0];
++}
 +
-+        if (pmdev->pages[i].read_vout < s->vout_min[i]) {
-+            s->vout_min[i] =3D pmdev->pages[i].read_vout;
-+        }
++/* PMBus commands are little endian vs i2c_set16 in i2c.h which is big endian */
++static void max34451_i2c_set16(QI2CDevice *i2cdev, uint8_t reg, uint16_t value)
++{
++    uint8_t data[2];
 +
-+        if (pmdev->pages[i].read_iout > s->iout_peak[i]) {
-+            s->iout_peak[i] =3D pmdev->pages[i].read_iout;
-+        }
++    data[0] = value & 255;
++    data[1] = value >> 8;
++    i2c_write_block(i2cdev, reg, data, sizeof(data));
++}
++
++/* Test default values */
++static void test_defaults(void *obj, void *data, QGuestAllocator *alloc)
++{
++    uint16_t value, i2c_value;
++    QI2CDevice *i2cdev = (QI2CDevice *)obj;
++    char *path;
++
++    /* Default temperatures and temperature fault limits */
++    for (int i = 0; i < MAX34451_NUM_TEMP_DEVICES; i++) {
++        path = g_strdup_printf("temperature[%d]", i);
++        value = qmp_max34451_get(TEST_ID, path);
++        g_assert_cmpuint(value, ==, DEFAULT_TEMPERATURE);
++        g_free(path);
++
++        /* Temperature sensors start on page 16 */
++        i2c_set8(i2cdev, PMBUS_PAGE, i + 16);
++        i2c_value = max34451_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_1);
++        g_assert_cmpuint(i2c_value, ==, DEFAULT_TEMPERATURE);
++
++        i2c_value = max34451_i2c_get16(i2cdev, PMBUS_OT_FAULT_LIMIT);
++        g_assert_cmpuint(i2c_value, ==, DEFAULT_OT_LIMIT);
++
++        i2c_value = max34451_i2c_get16(i2cdev, PMBUS_OT_WARN_LIMIT);
++        g_assert_cmpuint(i2c_value, ==, DEFAULT_OT_LIMIT);
 +    }
 +
-+    for (int i =3D 0; i < MAX34451_NUM_TEMP_DEVICES; i++) {
-+        if (pmdev->pages[i + 16].read_temperature_1 > s->temperature_peak[=
-i]) {
-+            s->temperature_peak[i] =3D pmdev->pages[i + 16].read_temperatu=
-re_1;
-+        }
++    /* Default voltages and fault limits */
++    for (int i = 0; i < MAX34451_NUM_PWR_DEVICES; i++) {
++        path = g_strdup_printf("vout[%d]", i);
++        value = qmp_max34451_get(TEST_ID, path);
++        g_assert_cmpuint(value, ==, DEFAULT_VOUT);
++        g_free(path);
++
++        i2c_set8(i2cdev, PMBUS_PAGE, i);
++        i2c_value = max34451_i2c_get16(i2cdev, PMBUS_READ_VOUT);
++        g_assert_cmpuint(i2c_value, ==, DEFAULT_VOUT);
++
++        i2c_value = max34451_i2c_get16(i2cdev, PMBUS_VOUT_OV_FAULT_LIMIT);
++        g_assert_cmpuint(i2c_value, ==, DEFAULT_OV_LIMIT);
++
++        i2c_value = max34451_i2c_get16(i2cdev, PMBUS_VOUT_OV_WARN_LIMIT);
++        g_assert_cmpuint(i2c_value, ==, DEFAULT_OV_LIMIT);
++
++        i2c_value = max34451_i2c_get16(i2cdev, PMBUS_VOUT_UV_WARN_LIMIT);
++        g_assert_cmpuint(i2c_value, ==, DEFAULT_UV_LIMIT);
++
++        i2c_value = max34451_i2c_get16(i2cdev, PMBUS_VOUT_UV_FAULT_LIMIT);
++        g_assert_cmpuint(i2c_value, ==, DEFAULT_UV_LIMIT);
++
++        i2c_value = max34451_i2c_get16(i2cdev, MAX34451_MFR_VOUT_MIN);
++        g_assert_cmpuint(i2c_value, ==, DEFAULT_VMIN);
++    }
++
++    i2c_value = i2c_get8(i2cdev, PMBUS_VOUT_MODE);
++    g_assert_cmphex(i2c_value, ==, 0x40); /* DIRECT mode */
++
++    i2c_value = i2c_get8(i2cdev, PMBUS_REVISION);
++    g_assert_cmphex(i2c_value, ==, 0x11); /* Rev 1.1 */
++}
++
++/* Test setting temperature */
++static void test_temperature(void *obj, void *data, QGuestAllocator *alloc)
++{
++    uint16_t value, i2c_value;
++    QI2CDevice *i2cdev = (QI2CDevice *)obj;
++    char *path;
++
++    for (int i = 0; i < MAX34451_NUM_TEMP_DEVICES; i++) {
++        path = g_strdup_printf("temperature[%d]", i);
++        qmp_max34451_set(TEST_ID, path, 0xBE00 + i);
++        value = qmp_max34451_get(TEST_ID, path);
++        g_assert_cmphex(value, ==, 0xBE00 + i);
++        g_free(path);
++    }
++
++    /* compare qmp read with i2c read separately */
++    for (int i = 0; i < MAX34451_NUM_TEMP_DEVICES; i++) {
++        /* temperature[0] is on page 16 */
++        i2c_set8(i2cdev, PMBUS_PAGE, i + 16);
++        i2c_value = max34451_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_1);
++        g_assert_cmphex(i2c_value, ==, 0xBE00 + i);
++
++        i2c_value = max34451_i2c_get16(i2cdev, MAX34451_MFR_TEMPERATURE_PEAK);
++        g_assert_cmphex(i2c_value, ==, 0xBE00 + i);
 +    }
 +}
 +
-+static uint8_t max34451_read_byte(PMBusDevice *pmdev)
++/* Test setting voltage */
++static void test_voltage(void *obj, void *data, QGuestAllocator *alloc)
 +{
-+    MAX34451State *s =3D MAX34451(pmdev);
-+    switch (pmdev->code) {
++    uint16_t value, i2c_value;
++    QI2CDevice *i2cdev = (QI2CDevice *)obj;
++    char *path;
 +
-+    case PMBUS_POWER_GOOD_ON:
-+        if (pmdev->page < 16) {
-+            pmbus_send16(pmdev, s->power_good_on[pmdev->page]);
-+        }
-+        break;
-+
-+    case PMBUS_POWER_GOOD_OFF:
-+        if (pmdev->page < 16) {
-+            pmbus_send16(pmdev, s->power_good_off[pmdev->page]);
-+        }
-+        break;
-+
-+    case PMBUS_TON_DELAY:
-+        if (pmdev->page < 12) {
-+            pmbus_send16(pmdev, s->ton_delay[pmdev->page]);
-+        }
-+        break;
-+
-+    case PMBUS_TON_MAX_FAULT_LIMIT:
-+        if (pmdev->page < 12) {
-+            pmbus_send16(pmdev, s->ton_max_fault_limit[pmdev->page]);
-+        }
-+        break;
-+
-+    case PMBUS_TOFF_DELAY:
-+        if (pmdev->page < 12) {
-+            pmbus_send16(pmdev, s->toff_delay[pmdev->page]);
-+        }
-+        break;
-+
-+    case PMBUS_STATUS_MFR_SPECIFIC:
-+        if (pmdev->page < 16) {
-+            pmbus_send8(pmdev, s->status_mfr_specific[pmdev->page]);
-+        }
-+        break;
-+
-+    case PMBUS_MFR_ID:
-+        pmbus_send8(pmdev, 0x4d); /* Maxim */
-+        break;
-+
-+    case PMBUS_MFR_MODEL:
-+        pmbus_send8(pmdev, 0x59);
-+        break;
-+
-+    case PMBUS_MFR_LOCATION:
-+        pmbus_send64(pmdev, s->mfr_location);
-+        break;
-+
-+    case PMBUS_MFR_DATE:
-+        pmbus_send64(pmdev, s->mfr_date);
-+        break;
-+
-+    case PMBUS_MFR_SERIAL:
-+        pmbus_send64(pmdev, s->mfr_serial);
-+        break;
-+
-+    case MAX34451_MFR_MODE:
-+        pmbus_send16(pmdev, s->mfr_mode);
-+        break;
-+
-+    case MAX34451_MFR_PSEN_CONFIG:
-+        if (pmdev->page < 12) {
-+            pmbus_send32(pmdev, s->psen_config[pmdev->page]);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_VOUT_PEAK:
-+        if (pmdev->page < 16) {
-+            pmbus_send16(pmdev, s->vout_peak[pmdev->page]);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_IOUT_PEAK:
-+        if (pmdev->page < 16) {
-+            pmbus_send16(pmdev, s->iout_peak[pmdev->page]);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_TEMPERATURE_PEAK:
-+        if (15 < pmdev->page && pmdev->page < 21) {
-+            pmbus_send16(pmdev, s->temperature_peak[pmdev->page % 16]);
-+        } else {
-+            pmbus_send16(pmdev, s->temperature_peak[0]);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_VOUT_MIN:
-+        if (pmdev->page < 16) {
-+            pmbus_send16(pmdev, s->vout_min[pmdev->page]);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_NV_LOG_CONFIG:
-+        pmbus_send16(pmdev, s->nv_log_config);
-+        break;
-+
-+    case MAX34451_MFR_FAULT_RESPONSE:
-+        if (pmdev->page < 16) {
-+            pmbus_send32(pmdev, s->fault_response[pmdev->page]);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_FAULT_RETRY:
-+        pmbus_send32(pmdev, s->fault_retry);
-+        break;
-+
-+    case MAX34451_MFR_NV_FAULT_LOG:
-+        pmbus_send32(pmdev, s->fault_log);
-+        break;
-+
-+    case MAX34451_MFR_TIME_COUNT:
-+        pmbus_send32(pmdev, s->time_count);
-+        break;
-+
-+    case MAX34451_MFR_MARGIN_CONFIG:
-+        if (pmdev->page < 12) {
-+            pmbus_send16(pmdev, s->margin_config[pmdev->page]);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_FW_SERIAL:
-+        if (pmdev->page =3D=3D 255) {
-+            pmbus_send16(pmdev, 1); /* Firmware revision */
-+        }
-+        break;
-+
-+    case MAX34451_MFR_IOUT_AVG:
-+        if (pmdev->page < 16) {
-+            pmbus_send16(pmdev, s->iout_avg[pmdev->page]);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_CHANNEL_CONFIG:
-+        if (pmdev->page < 16) {
-+            pmbus_send16(pmdev, s->channel_config[pmdev->page]);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_TON_SEQ_MAX:
-+        if (pmdev->page < 12) {
-+            pmbus_send16(pmdev, s->ton_seq_max[pmdev->page]);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_PWM_CONFIG:
-+        if (pmdev->page < 12) {
-+            pmbus_send32(pmdev, s->pwm_config[pmdev->page]);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_SEQ_CONFIG:
-+        if (pmdev->page < 12) {
-+            pmbus_send32(pmdev, s->seq_config[pmdev->page]);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_TEMP_SENSOR_CONFIG:
-+        if (15 < pmdev->page && pmdev->page < 21) {
-+            pmbus_send32(pmdev, s->temp_sensor_config[pmdev->page % 16]);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_STORE_SINGLE:
-+        pmbus_send32(pmdev, s->store_single);
-+        break;
-+
-+    case MAX34451_MFR_CRC:
-+        pmbus_send32(pmdev, s->crc);
-+        break;
-+
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: reading from unsupported register: 0x%02x\n",
-+                      __func__, pmdev->code);
-+        break;
++    for (int i = 0; i < MAX34451_NUM_PWR_DEVICES; i++) {
++        path = g_strdup_printf("vout[%d]", i);
++        qmp_max34451_set(TEST_ID, path, 3000 + i);
++        value = qmp_max34451_get(TEST_ID, path);
++        g_assert_cmpuint(value, ==, 3000 + i);
++        g_free(path);
 +    }
-+    return 0xFF;
++
++    /* compare qmp read with i2c read separately */
++    for (int i = 0; i < MAX34451_NUM_PWR_DEVICES; i++) {
++        i2c_set8(i2cdev, PMBUS_PAGE, i);
++        i2c_value = max34451_i2c_get16(i2cdev, PMBUS_READ_VOUT);
++        g_assert_cmpuint(i2c_value, ==, 3000 + i);
++
++        i2c_value = max34451_i2c_get16(i2cdev, MAX34451_MFR_VOUT_PEAK);
++        g_assert_cmpuint(i2c_value, ==, 3000 + i);
++
++        i2c_value = max34451_i2c_get16(i2cdev, MAX34451_MFR_VOUT_MIN);
++        g_assert_cmpuint(i2c_value, ==, 3000 + i);
++    }
 +}
 +
-+static int max34451_write_data(PMBusDevice *pmdev, const uint8_t *buf,
-+                               uint8_t len)
++/* Test setting some read/write registers */
++static void test_rw_regs(void *obj, void *data, QGuestAllocator *alloc)
 +{
-+    MAX34451State *s =3D MAX34451(pmdev);
++    uint16_t i2c_value;
++    QI2CDevice *i2cdev = (QI2CDevice *)obj;
 +
-+    if (len =3D=3D 0) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: writing empty data\n", __func_=
-_);
-+        return -1;
-+    }
++    i2c_set8(i2cdev, PMBUS_PAGE, 11);
++    i2c_value = i2c_get8(i2cdev, PMBUS_PAGE);
++    g_assert_cmpuint(i2c_value, ==, 11);
 +
-+    pmdev->code =3D buf[0]; /* PMBus command code */
++    i2c_set8(i2cdev, PMBUS_OPERATION, 1);
++    i2c_value = i2c_get8(i2cdev, PMBUS_OPERATION);
++    g_assert_cmpuint(i2c_value, ==, 1);
 +
-+    if (len =3D=3D 1) {
-+        return 0;
-+    }
++    max34451_i2c_set16(i2cdev, PMBUS_VOUT_MARGIN_HIGH, 5000);
++    i2c_value = max34451_i2c_get16(i2cdev, PMBUS_VOUT_MARGIN_HIGH);
++    g_assert_cmpuint(i2c_value, ==, 5000);
 +
-+    /* Exclude command code from buffer */
-+    buf++;
-+    len--;
-+    uint8_t index =3D pmdev->page;
++    max34451_i2c_set16(i2cdev, PMBUS_VOUT_MARGIN_LOW, 4000);
++    i2c_value = max34451_i2c_get16(i2cdev, PMBUS_VOUT_MARGIN_LOW);
++    g_assert_cmpuint(i2c_value, ==, 4000);
 +
-+    switch (pmdev->code) {
-+    case MAX34451_MFR_STORE_ALL:
-+    case MAX34451_MFR_RESTORE_ALL:
-+    case MAX34451_MFR_STORE_SINGLE:
-+        /*
-+         * TODO: hardware behaviour is to move the contents of volatile
-+         * memory to non-volatile memory.
-+         */
-+        break;
++    max34451_i2c_set16(i2cdev, PMBUS_VOUT_OV_FAULT_LIMIT, 5500);
++    i2c_value = max34451_i2c_get16(i2cdev, PMBUS_VOUT_OV_FAULT_LIMIT);
++    g_assert_cmpuint(i2c_value, ==, 5500);
 +
-+    case PMBUS_POWER_GOOD_ON: /* R/W word */
-+        if (pmdev->page < MAX34451_NUM_PWR_DEVICES) {
-+            s->power_good_on[pmdev->page] =3D pmbus_receive16(pmdev);
-+        }
-+        break;
++    max34451_i2c_set16(i2cdev, PMBUS_VOUT_OV_WARN_LIMIT, 5600);
++    i2c_value = max34451_i2c_get16(i2cdev, PMBUS_VOUT_OV_WARN_LIMIT);
++    g_assert_cmpuint(i2c_value, ==, 5600);
 +
-+    case PMBUS_POWER_GOOD_OFF: /* R/W word */
-+        if (pmdev->page < MAX34451_NUM_PWR_DEVICES) {
-+            s->power_good_off[pmdev->page] =3D pmbus_receive16(pmdev);
-+        }
-+        break;
++    max34451_i2c_set16(i2cdev, PMBUS_VOUT_UV_FAULT_LIMIT, 5700);
++    i2c_value = max34451_i2c_get16(i2cdev, PMBUS_VOUT_UV_FAULT_LIMIT);
++    g_assert_cmpuint(i2c_value, ==, 5700);
 +
-+    case PMBUS_TON_DELAY: /* R/W word */
-+        if (pmdev->page < 12) {
-+            s->ton_delay[pmdev->page] =3D pmbus_receive16(pmdev);
-+        }
-+        break;
++    max34451_i2c_set16(i2cdev, PMBUS_VOUT_UV_WARN_LIMIT, 5800);
++    i2c_value = max34451_i2c_get16(i2cdev, PMBUS_VOUT_UV_WARN_LIMIT);
++    g_assert_cmpuint(i2c_value, ==, 5800);
 +
-+    case PMBUS_TON_MAX_FAULT_LIMIT: /* R/W word */
-+        if (pmdev->page < 12) {
-+            s->ton_max_fault_limit[pmdev->page]
-+                =3D pmbus_receive16(pmdev);
-+        }
-+        break;
++    max34451_i2c_set16(i2cdev, PMBUS_POWER_GOOD_ON, 5900);
++    i2c_value = max34451_i2c_get16(i2cdev, PMBUS_POWER_GOOD_ON);
++    g_assert_cmpuint(i2c_value, ==, 5900);
 +
-+    case PMBUS_TOFF_DELAY: /* R/W word */
-+        if (pmdev->page < 12) {
-+            s->toff_delay[pmdev->page] =3D pmbus_receive16(pmdev);
-+        }
-+        break;
-+
-+    case PMBUS_MFR_LOCATION: /* R/W 64 */
-+        s->mfr_location =3D pmbus_receive64(pmdev);
-+        break;
-+
-+    case PMBUS_MFR_DATE: /* R/W 64 */
-+        s->mfr_date =3D pmbus_receive64(pmdev);
-+        break;
-+
-+    case PMBUS_MFR_SERIAL: /* R/W 64 */
-+        s->mfr_serial =3D pmbus_receive64(pmdev);
-+        break;
-+
-+    case MAX34451_MFR_MODE: /* R/W word */
-+         s->mfr_mode =3D pmbus_receive16(pmdev);
-+        break;
-+
-+    case MAX34451_MFR_PSEN_CONFIG: /* R/W 32 */
-+        if (pmdev->page < 12) {
-+            s->psen_config[pmdev->page] =3D pmbus_receive32(pmdev);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_VOUT_PEAK: /* R/W word */
-+        if (pmdev->page < 16) {
-+            s->vout_peak[pmdev->page] =3D pmbus_receive16(pmdev);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_IOUT_PEAK: /* R/W word */
-+        if (pmdev->page < 16) {
-+            s->iout_peak[pmdev->page] =3D pmbus_receive16(pmdev);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_TEMPERATURE_PEAK: /* R/W word */
-+        if (15 < pmdev->page && pmdev->page < 21) {
-+            s->temperature_peak[pmdev->page % 16]
-+                =3D pmbus_receive16(pmdev);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_VOUT_MIN: /* R/W word */
-+        if (pmdev->page < 16) {
-+            s->vout_min[pmdev->page] =3D pmbus_receive16(pmdev);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_NV_LOG_CONFIG: /* R/W word */
-+         s->nv_log_config =3D pmbus_receive16(pmdev);
-+        break;
-+
-+    case MAX34451_MFR_FAULT_RESPONSE: /* R/W 32 */
-+        if (pmdev->page < 16) {
-+            s->fault_response[pmdev->page] =3D pmbus_receive32(pmdev);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_FAULT_RETRY: /* R/W word */
-+        s->fault_retry =3D pmbus_receive16(pmdev);
-+        break;
-+
-+    case MAX34451_MFR_TIME_COUNT: /* R/W 32 */
-+        s->time_count =3D pmbus_receive32(pmdev);
-+        break;
-+
-+    case MAX34451_MFR_MARGIN_CONFIG: /* R/W word */
-+        if (pmdev->page < 12) {
-+            s->margin_config[pmdev->page] =3D pmbus_receive16(pmdev);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_CHANNEL_CONFIG: /* R/W word */
-+        if (pmdev->page < 16) {
-+            s->channel_config[pmdev->page] =3D pmbus_receive16(pmdev);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_TON_SEQ_MAX: /* R/W word */
-+        if (pmdev->page < 12) {
-+            s->ton_seq_max[pmdev->page] =3D pmbus_receive16(pmdev);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_PWM_CONFIG: /* R/W 32 */
-+        if (pmdev->page < 12) {
-+            s->pwm_config[pmdev->page] =3D pmbus_receive32(pmdev);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_SEQ_CONFIG:  /* R/W 32 */
-+        if (pmdev->page < 12) {
-+            s->seq_config[pmdev->page] =3D pmbus_receive32(pmdev);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_TEMP_SENSOR_CONFIG:  /* R/W word */
-+        if (15 < pmdev->page && pmdev->page < 21) {
-+            s->temp_sensor_config[pmdev->page % 16]
-+                =3D pmbus_receive16(pmdev);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_CRC: /* R/W word */
-+        s->crc =3D pmbus_receive16(pmdev);
-+        break;
-+
-+    case MAX34451_MFR_NV_FAULT_LOG:
-+    case MAX34451_MFR_FW_SERIAL:
-+    case MAX34451_MFR_IOUT_AVG:
-+        /* Read only commands */
-+        pmdev->pages[index].status_word |=3D PMBUS_STATUS_CML;
-+        pmdev->pages[index].status_cml |=3D PB_CML_FAULT_INVALID_DATA;
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: writing to read-only register 0x%02x\n",
-+                      __func__, pmdev->code);
-+        break;
-+
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: writing to unsupported register: 0x%02x\n",
-+                      __func__, pmdev->code);
-+        break;
-+    }
-+
-+    return 0;
++    max34451_i2c_set16(i2cdev, PMBUS_POWER_GOOD_OFF, 6100);
++    i2c_value = max34451_i2c_get16(i2cdev, PMBUS_POWER_GOOD_OFF);
++    g_assert_cmpuint(i2c_value, ==, 6100);
 +}
 +
-+static void max34451_get(Object *obj, Visitor *v, const char *name,
-+                                     void *opaque, Error **errp)
++/* Test that Read only registers can't be written */
++static void test_ro_regs(void *obj, void *data, QGuestAllocator *alloc)
 +{
-+    visit_type_uint16(v, name, (uint16_t *)opaque, errp);
++    uint16_t i2c_value, i2c_init_value;
++    QI2CDevice *i2cdev = (QI2CDevice *)obj;
++
++    i2c_set8(i2cdev, PMBUS_PAGE, 1); /* move to page 1 */
++    i2c_init_value = i2c_get8(i2cdev, PMBUS_CAPABILITY);
++    i2c_set8(i2cdev, PMBUS_CAPABILITY, 0xF9);
++    i2c_value = i2c_get8(i2cdev, PMBUS_CAPABILITY);
++    g_assert_cmpuint(i2c_init_value, ==, i2c_value);
++
++    i2c_init_value = max34451_i2c_get16(i2cdev, PMBUS_READ_VOUT);
++    max34451_i2c_set16(i2cdev, PMBUS_READ_VOUT, 0xDEAD);
++    i2c_value = max34451_i2c_get16(i2cdev, PMBUS_READ_VOUT);
++    g_assert_cmpuint(i2c_init_value, ==, i2c_value);
++    g_assert_cmphex(i2c_value, !=, 0xDEAD);
++
++    i2c_set8(i2cdev, PMBUS_PAGE, 16); /* move to page 16 */
++    i2c_init_value = max34451_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_1);
++    max34451_i2c_set16(i2cdev, PMBUS_READ_TEMPERATURE_1, 0xABBA);
++    i2c_value = max34451_i2c_get16(i2cdev, PMBUS_READ_TEMPERATURE_1);
++    g_assert_cmpuint(i2c_init_value, ==, i2c_value);
++    g_assert_cmphex(i2c_value, !=, 0xABBA);
 +}
 +
-+static void max34451_set(Object *obj, Visitor *v, const char *name,
-+                                 void *opaque, Error **errp)
++/* test over voltage faults */
++static void test_ov_faults(void *obj, void *data, QGuestAllocator *alloc)
 +{
-+    MAX34451State *s =3D MAX34451(obj);
-+    uint16_t *internal =3D opaque;
-+    uint16_t value;
-+    if (!visit_type_uint16(v, name, &value, errp)) {
-+        return;
-+    }
++    uint16_t i2c_value;
++    uint8_t i2c_byte;
++    QI2CDevice *i2cdev = (QI2CDevice *)obj;
++    char *path;
++    /* Test ov fault reporting */
++    for (int i = 0; i < MAX34451_NUM_PWR_DEVICES; i++) {
++        path = g_strdup_printf("vout[%d]", i);
++        i2c_set8(i2cdev, PMBUS_PAGE, i);
++        max34451_i2c_set16(i2cdev, PMBUS_VOUT_OV_FAULT_LIMIT, 5000);
++        qmp_max34451_set(TEST_ID, path, 5100);
++        g_free(path);
 +
-+    *internal =3D value;
-+    max34451_check_limits(s);
++        i2c_value = max34451_i2c_get16(i2cdev, PMBUS_STATUS_WORD);
++        i2c_byte = i2c_get8(i2cdev, PMBUS_STATUS_VOUT);
++        g_assert_true((i2c_value & PB_STATUS_VOUT) != 0);
++        g_assert_true((i2c_byte & PB_STATUS_VOUT_OV_FAULT) != 0);
++    }
 +}
 +
-+/* used to init uint16_t arrays */
-+static inline void *memset_word(void *s, uint16_t c, size_t n)
++/* test over temperature faults */
++static void test_ot_faults(void *obj, void *data, QGuestAllocator *alloc)
 +{
-+    size_t i;
-+    uint16_t *p =3D s;
++    uint16_t i2c_value;
++    uint8_t i2c_byte;
++    QI2CDevice *i2cdev = (QI2CDevice *)obj;
++    char *path;
 +
-+    for (i =3D 0; i < n; i++) {
-+        p[i] =3D c;
++    for (int i = 0; i < MAX34451_NUM_TEMP_DEVICES; i++) {
++        path = g_strdup_printf("temperature[%d]", i);
++        i2c_set8(i2cdev, PMBUS_PAGE, i + 16);
++        max34451_i2c_set16(i2cdev, PMBUS_OT_FAULT_LIMIT, 6000);
++        qmp_max34451_set(TEST_ID, path, 6100);
++        g_free(path);
++
++        i2c_value = max34451_i2c_get16(i2cdev, PMBUS_STATUS_WORD);
++        i2c_byte = i2c_get8(i2cdev, PMBUS_STATUS_TEMPERATURE);
++        g_assert_true((i2c_value & PB_STATUS_TEMPERATURE) != 0);
++        g_assert_true((i2c_byte & PB_STATUS_OT_FAULT) != 0);
 +    }
-+
-+    return s;
 +}
 +
-+static void max34451_exit_reset(Object *obj)
++static void max34451_register_nodes(void)
 +{
-+    PMBusDevice *pmdev =3D PMBUS_DEVICE(obj);
-+    MAX34451State *s =3D MAX34451(obj);
-+    pmdev->capability =3D DEFAULT_CAPABILITY;
++    QOSGraphEdgeOptions opts = {
++        .extra_device_opts = "id=" TEST_ID ",address=0x4e"
++    };
++    add_qi2c_address(&opts, &(QI2CAddress) { TEST_ADDR });
 +
-+    for (int i =3D 0; i < MAX34451_NUM_PAGES; i++) {
-+        pmdev->pages[i].operation =3D DEFAULT_OP_ON;
-+        pmdev->pages[i].on_off_config =3D DEFAULT_ON_OFF_CONFIG;
-+        pmdev->pages[i].revision =3D 0x11;
-+        pmdev->pages[i].vout_mode =3D DEFAULT_VOUT_MODE;
-+    }
++    qos_node_create_driver("max34451", i2c_device_create);
++    qos_node_consumes("max34451", "i2c-bus", &opts);
 +
-+    for (int i =3D 0; i < MAX34451_NUM_PWR_DEVICES; i++) {
-+        pmdev->pages[i].vout_scale_monitor =3D DEFAULT_SCALE;
-+        pmdev->pages[i].vout_ov_fault_limit =3D DEFAULT_OV_LIMIT;
-+        pmdev->pages[i].vout_ov_warn_limit =3D DEFAULT_OV_LIMIT;
-+        pmdev->pages[i].iout_oc_warn_limit =3D DEFAULT_OC_LIMIT;
-+        pmdev->pages[i].iout_oc_fault_limit =3D DEFAULT_OC_LIMIT;
-+    }
-+
-+    for (int i =3D 0; i < MAX34451_NUM_MARGINED_PSU; i++) {
-+        pmdev->pages[i].ton_max_fault_limit =3D DEFAULT_TON_FAULT_LIMIT;
-+    }
-+
-+    for (int i =3D 16; i < MAX34451_NUM_TEMP_DEVICES + 16; i++) {
-+        pmdev->pages[i].read_temperature_1 =3D DEFAULT_TEMPERATURE;
-+        pmdev->pages[i].ot_warn_limit =3D DEFAULT_OT_LIMIT;
-+        pmdev->pages[i].ot_fault_limit =3D DEFAULT_OT_LIMIT;
-+    }
-+
-+    memset_word(s->ton_max_fault_limit, DEFAULT_TON_FAULT_LIMIT,
-+                MAX34451_NUM_MARGINED_PSU);
-+    memset_word(s->channel_config, DEFAULT_CHANNEL_CONFIG,
-+                MAX34451_NUM_PWR_DEVICES);
-+    memset_word(s->vout_min, DEFAULT_VMIN, MAX34451_NUM_PWR_DEVICES);
-+
-+    s->mfr_location =3D DEFAULT_TEXT;
-+    s->mfr_date =3D DEFAULT_TEXT;
-+    s->mfr_serial =3D DEFAULT_TEXT;
++    qos_add_test("test_defaults", "max34451", test_defaults, NULL);
++    qos_add_test("test_temperature", "max34451", test_temperature, NULL);
++    qos_add_test("test_voltage", "max34451", test_voltage, NULL);
++    qos_add_test("test_rw_regs", "max34451", test_rw_regs, NULL);
++    qos_add_test("test_ro_regs", "max34451", test_ro_regs, NULL);
++    qos_add_test("test_ov_faults", "max34451", test_ov_faults, NULL);
++    qos_add_test("test_ot_faults", "max34451", test_ot_faults, NULL);
 +}
-+
-+static void max34451_init(Object *obj)
-+{
-+    PMBusDevice *pmdev =3D PMBUS_DEVICE(obj);
-+    uint64_t psu_flags =3D PB_HAS_VOUT | PB_HAS_IOUT | PB_HAS_VOUT_MODE |
-+                         PB_HAS_IOUT_GAIN;
-+
-+    for (int i =3D 0; i < MAX34451_NUM_PWR_DEVICES; i++) {
-+        pmbus_page_config(pmdev, i, psu_flags);
-+    }
-+
-+    for (int i =3D 0; i < MAX34451_NUM_MARGINED_PSU; i++) {
-+        pmbus_page_config(pmdev, i, psu_flags | PB_HAS_VOUT_MARGIN);
-+    }
-+
-+    for (int i =3D 16; i < MAX34451_NUM_TEMP_DEVICES + 16; i++) {
-+        pmbus_page_config(pmdev, i, PB_HAS_TEMPERATURE | PB_HAS_VOUT_MODE)=
-;
-+    }
-+
-+    /* get and set the voltage in millivolts, max is 32767 mV */
-+    for (int i =3D 0; i < MAX34451_NUM_PWR_DEVICES; i++) {
-+        object_property_add(obj, "vout[*]", "uint16",
-+                            max34451_get,
-+                            max34451_set, NULL, &pmdev->pages[i].read_vout=
-);
-+    }
-+
-+    /*
-+     * get and set the temperature of the internal temperature sensor in
-+     * centidegrees Celcius i.e.: 2500 -> 25.00 C, max is 327.67 C
-+     */
-+    for (int i =3D 0; i < MAX34451_NUM_TEMP_DEVICES; i++) {
-+        object_property_add(obj, "temperature[*]", "uint16",
-+                            max34451_get,
-+                            max34451_set,
-+                            NULL,
-+                            &pmdev->pages[i + 16].read_temperature_1);
-+    }
-+
-+}
-+
-+static void max34451_class_init(ObjectClass *klass, void *data)
-+{
-+    ResettableClass *rc =3D RESETTABLE_CLASS(klass);
-+    DeviceClass *dc =3D DEVICE_CLASS(klass);
-+    PMBusDeviceClass *k =3D PMBUS_DEVICE_CLASS(klass);
-+    dc->desc =3D "Maxim MAX34451 16-Channel V/I monitor";
-+    k->write_data =3D max34451_write_data;
-+    k->receive_byte =3D max34451_read_byte;
-+    k->device_num_pages =3D MAX34451_NUM_PAGES;
-+    rc->phases.exit =3D max34451_exit_reset;
-+}
-+
-+static const TypeInfo max34451_info =3D {
-+    .name =3D TYPE_MAX34451,
-+    .parent =3D TYPE_PMBUS_DEVICE,
-+    .instance_size =3D sizeof(MAX34451State),
-+    .instance_init =3D max34451_init,
-+    .class_init =3D max34451_class_init,
-+};
-+
-+static void max34451_register_types(void)
-+{
-+    type_register_static(&max34451_info);
-+}
-+
-+type_init(max34451_register_types)
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index e141084a79..d689941f64 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -374,6 +374,7 @@ config NPCM7XX
-     select ADM1272
-     select ARM_GIC
-     select AT24C  # EEPROM
-+    select MAX34451
-     select PL310  # cache controller
-     select PMBUS
-     select SERIAL
-diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-index 0774c1f70c..1747667984 100644
---- a/hw/misc/Kconfig
-+++ b/hw/misc/Kconfig
-@@ -30,6 +30,10 @@ config EMC141X
-     bool
-     depends on I2C
-=20
-+config MAX34451
-+    bool
-+    depends on I2C
-+
- config ISA_DEBUG
-     bool
-     depends on ISA_BUS
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index 8666e9225a..b62919e1fe 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -11,6 +11,7 @@ softmmu_ss.add(when: 'CONFIG_TMP105', if_true: files('tmp=
-105.c'))
- softmmu_ss.add(when: 'CONFIG_TMP421', if_true: files('tmp421.c'))
- softmmu_ss.add(when: 'CONFIG_EMC141X', if_true: files('emc141x.c'))
- softmmu_ss.add(when: 'CONFIG_ADM1272', if_true: files('adm1272.c'))
-+softmmu_ss.add(when: 'CONFIG_MAX34451', if_true: files('max34451.c'))
- softmmu_ss.add(when: 'CONFIG_UNIMP', if_true: files('unimp.c'))
- softmmu_ss.add(when: 'CONFIG_EMPTY_SLOT', if_true: files('empty_slot.c'))
- softmmu_ss.add(when: 'CONFIG_LED', if_true: files('led.c'))
---=20
++libqos_init(max34451_register_nodes);
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index 99040885fb..48eb646889 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -208,6 +208,7 @@ qos_test_ss.add(
+   'eepro100-test.c',
+   'es1370-test.c',
+   'ipoctal232-test.c',
++  'max34451-test.c',
+   'megasas-test.c',
+   'ne2000-test.c',
+   'tulip-test.c',
+-- 
 2.31.1.751.gd2f1c929bd-goog
 

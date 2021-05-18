@@ -1,115 +1,73 @@
-Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp717260lfa;
-        Wed, 2 Jun 2021 16:22:48 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyfnVJoMR8V6MJlL+E+WeJIk4WLE2FxGN8pa9eTZVZ6+iGm4/8+Z69wR5ik0lEoYIMSW6Y+
-X-Received: by 2002:a05:620a:24cf:: with SMTP id m15mr29168165qkn.435.1622676167943;
-        Wed, 02 Jun 2021 16:22:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1622676167; cv=none;
+Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp687702lfa;
+        Wed, 2 Jun 2021 15:32:13 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxBQG989m7WwCpngXV2GR9EV707sJtc1c7vccNJmuSn9XsasWcWxnyuPCVRol4SMCwZqAOB
+X-Received: by 2002:a05:6602:221a:: with SMTP id n26mr26702349ion.205.1622673133045;
+        Wed, 02 Jun 2021 15:32:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1622673133; cv=none;
         d=google.com; s=arc-20160816;
-        b=jjtGEATEc2NbP8cdAZ73QFzpOEuChmGaY68DpkJR6fOUv8tZHg6xTTS8fi3ZGF91mA
-         P1n67J7HWAsJvR8ddYT1QRslnkIeCk/sJ7H1YLin2uOt8bLIzAkbXsVH4DPl9rUQRDfP
-         y7FQSzVdelT1vBbUL8f/CI1F7L+Qsnw5+Nt1/6eU7IjcLENoMryYKhguPMQLhNQnxhJS
-         RGf7azyfxuBc679tQbapnUXl/jT/SkeHsgcwtFZGwynltBgueykETLvw7BCZn6y17LWB
-         B6nh2LsZhh42PtLTLxORUud/ZTEvEPYuf48GnAe6YmKRtw6UUIURAWFgZNuXPser/U54
-         zgng==
+        b=nzEx2YoLAGINGVxmnTbwUzIerhaZPolDc7NWkKS/EYJvSebdsbsm9swpYp+vIBf7UT
+         Gwt5cYnrcgqWeGXGI+A/3EOwczfNqDrLFyznLlv/NQHhhlazaXigNc+Cl3uij4nhU3QV
+         t3aHbps+eYizAD9LI7noHuTTgZTV/4j7tsQAuyh5fW+X3LahqBz+xjyy/mZp67yMLZq4
+         FX1dUiFU3rV7M13YSVh2pVcJbc3B1/oHRy3EikYg+9vxvjemk+ymLo6lBQ+70SyHabh3
+         AYA2NaNzWoAGgVKs3b18jbbKa4AopWJ8ouAoHQvOP3AQwnHdGsDhHI/+eqt/GDwEE7AP
+         E9TQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=OeE4sSQIXdWBJX99O1b2Bq/BDbtf/5JhinWNSdaeAr0=;
-        b=aXBYHgzKmDzv/fQfsk7R2kv9hwxbGpTW76aXT2og/ZpqNSrIwJD7CLFPUCCvAVvS0w
-         Dzf3Wzc15+UpGqSwoNdqFEq8qbrwQx7mnb39ffpBX+9borauSeYQxC765ap1zkypKSFT
-         lwX+WpPT5MrpxtWms25ULGsXPjzw2LopfmEOQUxgpbU2fcKa/Dy9o48Tsg9Um5JpKaFp
-         XCc7KQAz8CNVkvOjvjnVs5tF8y5ENrs5xe698i6pga+PEoJIZq4y+GCwOJUSdRHYSAQY
-         qCznRRgS2tp93NIefp6cue5RYWZq/XGFCRgk4sRrqFeL7gv3CHoNoP5l0rs7DOSi67dF
-         bF8Q==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:to:message-id:subject:date:from;
+        bh=xpsyVbS0gKhatXgcQbdN6P91ALfDT2OSocXW2vALuI0=;
+        b=rUxy9/d6nq9rRdc2W0OG/drOgMUpIGMCxWQCxePWOgsiVHgljjwxRhEetsP8MaTEyz
+         9MNKe2k7YQ8Z6mm0CFX4tueVJVR4bEpvUieDiClwPStVXViqqRHTVXFZPil1S1zkXsZ5
+         ZuRMkEdGaDKqf3reHKx3Kh/48B12834DqsT2HzWE56e47ebgUHdCNnqe0CTCHHgBVROv
+         hnHpIURYHi77zfpqf+7ZFJFjWwn0upCLTPtH2FC6P1GWgMVtyXqF4l/Q75NeLudmu6Ga
+         pXGhXfAEiQZNQAOyuqEHah92K3r3OjQecDTLBzurbLm0q0W4nwa+ajBr4M6KriUwYQrR
+         RFdA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZvEa8Qph;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p7si680415qkb.172.2021.06.02.16.22.47
+        by mx.google.com with ESMTPS id h3si1110735jal.79.2021.06.02.15.32.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Jun 2021 16:22:47 -0700 (PDT)
+        Wed, 02 Jun 2021 15:32:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZvEa8Qph;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:43148 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
+Received: from localhost ([::1]:47608 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1loaCF-0002y4-BX
-	for alex.bennee@linaro.org; Wed, 02 Jun 2021 19:22:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45544)
+	id 1loZPI-0000dG-DA
+	for alex.bennee@linaro.org; Wed, 02 Jun 2021 18:32:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39220)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1loaC6-0002wR-2J; Wed, 02 Jun 2021 19:22:38 -0400
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b]:39909)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1loaC3-0004yg-TM; Wed, 02 Jun 2021 19:22:37 -0400
-Received: by mail-ed1-x52b.google.com with SMTP id dj8so4913507edb.6;
- Wed, 02 Jun 2021 16:22:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=OeE4sSQIXdWBJX99O1b2Bq/BDbtf/5JhinWNSdaeAr0=;
- b=ZvEa8QphO9rHwY6EXCS/PvmDP33RXkRKgVjsa+q4Uxubh9Zjf3m625HXe3/bnh0uva
- 3yPTByWFmpGSdIM6OvlMA3iqxND3HosicZEanLpnSpcX2Oh8o3Fq1gObx03hr4vXC+eN
- H6/a8IuqRaajP/mQFf+77DxWX+T+FkoNcThupcOydc1TZpgquvrQCv5sec7tMQOlRyJ+
- VwZEU2nfhO2ISpoiBlA9x7V3r0O0ePn+VsS5WJFhlhM+xME+rBLjrn8K5I4gdPaEGRwv
- Y0cZG0tWyb4Vt4Wj4rZj5t/SpW7mD1YPgjTWvklCe61+myh3PILpVR+TJX6ncI+xVuNW
- Y/4g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=OeE4sSQIXdWBJX99O1b2Bq/BDbtf/5JhinWNSdaeAr0=;
- b=fFauO/8EAM0xgajzOEXznprSUqq2Enj7EyKQVnAIoGtn5g5Im1coiTdpBM5dYifp6g
- MMJn58icb9xpQoywA5Tb8XZPxMv9j9vaNdB37SlQz2lZabbBhaj9vUX+zm4a76l+uUUs
- qcZf9mXfhYW34z3gs/OwGYT8KRPZ47ubCOphnHQm6AVXLDgskUnskHLgJS1cQtwBsZRw
- UNPJRCZyOvxg5WSroak7Q+xUvGb7FCiUwK9TUredgqBd8arq8hMwPR1L54YXuIqfX3/K
- ebE72Yi3Mb2Sv74J/xkEv7dxaadqnIOBaUf0FhOzBfFEU2uxjP5Di97Zp3411K05gTf7
- Zaiw==
-X-Gm-Message-State: AOAM531F+qm0ToGVkTn/p08lavoOY1VLmfxMzHp/gOejNaKTQP0+dB/W
- 1Fo14jK+hhzicoTS+dQRfnw=
-X-Received: by 2002:a05:6402:4252:: with SMTP id
- g18mr40398333edb.195.1622676154246; 
- Wed, 02 Jun 2021 16:22:34 -0700 (PDT)
-Received: from [192.168.1.36] (235.red-83-57-168.dynamicip.rima-tde.net.
- [83.57.168.235])
- by smtp.gmail.com with ESMTPSA id z22sm225468ejm.71.2021.06.02.16.22.33
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 02 Jun 2021 16:22:33 -0700 (PDT)
-Subject: Re: [PATCH qemu] Add basic power management to raspi.
-To: Nolan <nolan@sigbus.net>, qemu-devel@nongnu.org
-References: <162137039825.30884.2445825798240809194-0@git.sr.ht>
- <65187b48-2449-e2b4-2d13-ed9ffb6fe2a8@amsat.org>
- <7669dd87-e040-a049-e953-9f31a4557ee5@sigbus.net>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <596d4b19-a1b8-4ae3-d449-376bcd88cbe5@amsat.org>
-Date: Thu, 3 Jun 2021 01:22:32 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
+ id 1loZP7-0000cp-Ke; Wed, 02 Jun 2021 18:32:01 -0400
+Received: from mail-b.sr.ht ([173.195.146.151]:54856)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
+ id 1loZP4-0005eT-Bq; Wed, 02 Jun 2021 18:32:00 -0400
+Authentication-Results: mail-b.sr.ht; dkim=none 
+Received: from git.sr.ht (unknown [173.195.146.142])
+ by mail-b.sr.ht (Postfix) with ESMTPSA id 5F73411EF37;
+ Wed,  2 Jun 2021 22:31:55 +0000 (UTC)
+From: ~nolanl <nolanl@git.sr.ht>
+Date: Tue, 18 May 2021 13:24:49 -0700
+Subject: [PATCH qemu v2] Add basic power management to raspi.
+Message-ID: <162267311514.20123.7251014689774228873-0@git.sr.ht>
+X-Mailer: git.sr.ht
+To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-In-Reply-To: <7669dd87-e040-a049-e953-9f31a4557ee5@sigbus.net>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x52b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.613,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=173.195.146.151; envelope-from=outgoing@sr.ht;
+ helo=mail-b.sr.ht
+X-Spam_score_int: 15
+X-Spam_score: 1.5
+X-Spam_bar: +
+X-Spam_report: (1.5 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_96_XX=3.405,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -122,92 +80,307 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+Reply-To: ~nolanl <nolan@sigbus.net>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Philippe =?utf-8?q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PEkamzdzKAKE
+X-TUID: 4Ly6Avttxx0X
 
-On 6/2/21 11:33 PM, Nolan wrote:
-> On 5/31/21 4:23 AM, Philippe Mathieu-Daudé wrote:
->> Hi Nolan,
->>
->> Thanks for your patch!
->>
->> There is something odd with your email address, which apparently
->> became sourcehut@sigbus.net instead of nolan@sigbus.net.
-> 
-> Ugh, oops. I was trying out sourcehut for this, and reflexively gave
-> them a marker email. I'm pretty sure sourcehut won't sell my email
-> address, so I'll just change it.
-> 
->> On 5/18/21 10:24 PM, ~nolanl wrote:
->>> From: Nolan Leake <nolan@sigbus.net>
->>>
->>> This is just enough to make reboot and poweroff work.
->>
->> Please precise "for Linux kernels", since this doesn't work
->> with firmwares (ideally we should implement the FIRMWARE_NOTIFY_REBOOT
->> property - which Linux sends - to handle the machine reboot/halt
->> via the videocore firmware model).
-> 
-> Thanks, good point re: this being tuned to what Linux (and u-boot) do.
-> Poking around a bit, it looks like
-> "trusted-firmware-a"/"arm-trusted-firmware" uses the same method, as do
-> a couple of bare-metal/hobby OSes. Couldn't immediately figure out what
-> FreeBSD does.
-> 
-> I'm not sure I understand your point about FIRMWARE_NOTIFY_REBOOT, my
-> understanding is that message is there to tell the GPU firmware that
-> we're about to reboot, so it can do things like reload the PCIe USB
-> chip's firmware. In my testing without the watchdog module loaded, my
-> physical pi4 does not reboot, so it appears that sending
-> FIRMWARE_NOTIFY_REBOOT is not enough on its own.
+From: Nolan Leake <nolan@sigbus.net>
 
-From the ARM core point of view, once it sent the FIRMWARE_NOTIFY_REBOOT
-message, it can't really power-off itself, it waits in a busy loop for
-the VC to disable its power domain.
+This is just enough to make reboot and poweroff work. Works for
+linux, u-boot, and the arm trusted firmware. Not tested, but should
+work for plan9, and bare-metal/hobby OSes, since they seem to generally
+do what linux does for reset.
 
-hw/misc/bcm2835_property.c is our model of the VC behavior. IMO this
-should be where QEMU shuts down. How I'd model it is:
+The watchdog timer functionality is not yet implemented.
 
-- ARM: sends FIRMWARE_NOTIFY_REBOOT and loops
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/64
+Signed-off-by: Nolan Leake <nolan@sigbus.net>
+---
+ hw/arm/bcm2835_peripherals.c         |  13 ++-
+ hw/misc/bcm2835_powermgt.c           | 159 +++++++++++++++++++++++++++
+ hw/misc/meson.build                  |   1 +
+ include/hw/arm/bcm2835_peripherals.h |   3 +-
+ include/hw/misc/bcm2835_powermgt.h   |  29 +++++
+ 5 files changed, 203 insertions(+), 2 deletions(-)
+ create mode 100644 hw/misc/bcm2835_powermgt.c
+ create mode 100644 include/hw/misc/bcm2835_powermgt.h
 
-- VC emulated via property: delays (200ms?) then calls
-  SHUTDOWN_CAUSE_GUEST_RESET.
-
-(it helps to see hw/misc/bcm2835_property.c as an external component).
-
->>> qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
->>> +            } else {
->>> +                qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
->>> +            }
->>> +        }
->>
->> Shouldn't we log the unsupported bits?
-> 
-> I can add that, I didn't originally because the unsupported writes are
-> expected.
-
-I'd prefer we log them, even if unsupported, so in case something
-behaves oddly we could look at those bits.
-
->>> +static void bcm2835_powermgt_reset(DeviceState *dev)
->>> +{
->>> +    BCM2835PowerMgtState *s = BCM2835_POWERMGT(dev);
->>> +
->>> +    s->rstc = 0x00000102;
->>> +    s->rsts = 0x00001000;
->>> +    s->wdog = 0x00000000;
->>
->> Where these bits come from?
-> 
-> From my pi4. https://elinux.org/BCM2835_registers agrees (processed from
-> Broadcom source code).
-
-OK, so please add a comment referring to
-https://elinux.org/BCM2835_registers#PM.
-
-Looking forward for v2 :)
-
-Phil.
+diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
+index dcff13433e..48538c9360 100644
+--- a/hw/arm/bcm2835_peripherals.c
++++ b/hw/arm/bcm2835_peripherals.c
+@@ -126,6 +126,10 @@ static void bcm2835_peripherals_init(Object *obj)
+=20
+     object_property_add_const_link(OBJECT(&s->dwc2), "dma-mr",
+                                    OBJECT(&s->gpu_bus_mr));
++
++    /* Power Management */
++    object_initialize_child(obj, "powermgt", &s->powermgt,
++                            TYPE_BCM2835_POWERMGT);
+ }
+=20
+ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+@@ -364,9 +368,16 @@ static void bcm2835_peripherals_realize(DeviceState *dev=
+, Error **errp)
+         qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_GPU_IRQ,
+                                INTERRUPT_USB));
+=20
++    /* Power Management */
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->powermgt), errp)) {
++        return;
++    }
++
++    memory_region_add_subregion(&s->peri_mr, PM_OFFSET,
++                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->powermgt), 0));
++
+     create_unimp(s, &s->txp, "bcm2835-txp", TXP_OFFSET, 0x1000);
+     create_unimp(s, &s->armtmr, "bcm2835-sp804", ARMCTRL_TIMER0_1_OFFSET, 0x=
+40);
+-    create_unimp(s, &s->powermgt, "bcm2835-powermgt", PM_OFFSET, 0x114);
+     create_unimp(s, &s->i2s, "bcm2835-i2s", I2S_OFFSET, 0x100);
+     create_unimp(s, &s->smi, "bcm2835-smi", SMI_OFFSET, 0x100);
+     create_unimp(s, &s->spi[0], "bcm2835-spi0", SPI0_OFFSET, 0x20);
+diff --git a/hw/misc/bcm2835_powermgt.c b/hw/misc/bcm2835_powermgt.c
+new file mode 100644
+index 0000000000..55455bbd60
+--- /dev/null
++++ b/hw/misc/bcm2835_powermgt.c
+@@ -0,0 +1,159 @@
++/*
++ * BCM2835 Power Management emulation
++ *
++ * Copyright (C) 2017 Marcin Chojnacki <marcinch7@gmail.com>
++ * Copyright (C) 2021 Nolan Leake <nolan@sigbus.net>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "qemu/module.h"
++#include "hw/misc/bcm2835_powermgt.h"
++#include "migration/vmstate.h"
++#include "sysemu/runstate.h"
++
++#define PASSWORD 0x5a000000
++#define PASSWORD_MASK 0xff000000
++
++#define R_RSTC 0x1c
++#define V_RSTC_RESET 0x20
++#define R_RSTS 0x20
++#define V_RSTS_POWEROFF 0x555 /* Linux uses partition 63 to indicate halt. */
++#define R_WDOG 0x24
++
++static uint64_t bcm2835_powermgt_read(void *opaque, hwaddr offset,
++                                      unsigned size)
++{
++    BCM2835PowerMgtState *s =3D (BCM2835PowerMgtState *)opaque;
++    uint32_t res =3D 0;
++
++    switch (offset) {
++    case R_RSTC:
++        res =3D s->rstc;
++        break;
++    case R_RSTS:
++        res =3D s->rsts;
++        break;
++    case R_WDOG:
++        res =3D s->wdog;
++        break;
++
++    default:
++        qemu_log_mask(LOG_UNIMP,
++                      "bcm2835_powermgt_read: Unknown offset 0x%08"HWADDR_PR=
+Ix
++                      "\n", offset);
++        res =3D 0;
++        break;
++    }
++
++    return res;
++}
++
++static void bcm2835_powermgt_write(void *opaque, hwaddr offset,
++                                   uint64_t value, unsigned size)
++{
++    BCM2835PowerMgtState *s =3D (BCM2835PowerMgtState *)opaque;
++
++    if ((value & PASSWORD_MASK) !=3D PASSWORD) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "bcm2835_powermgt_write: Bad password 0x%"PRIx64
++                      " at offset 0x%08"HWADDR_PRIx"\n",
++                      value, offset);
++        return;
++    }
++
++    value =3D value & ~PASSWORD_MASK;
++
++    switch (offset) {
++    case R_RSTC:
++        s->rstc =3D value;
++        if (value & V_RSTC_RESET) {
++            if ((s->rsts & 0xfff) =3D=3D V_RSTS_POWEROFF) {
++                qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
++            } else {
++                qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
++            }
++        }
++        break;
++    case R_RSTS:
++        qemu_log_mask(LOG_UNIMP,
++                      "bcm2835_powermgt_write: RSTS\n");
++        s->rsts =3D value;
++        break;
++    case R_WDOG:
++        qemu_log_mask(LOG_UNIMP,
++                      "bcm2835_powermgt_write: WDOG\n");
++        s->wdog =3D value;
++        break;
++
++    default:
++        qemu_log_mask(LOG_UNIMP,
++                      "bcm2835_powermgt_write: Unknown offset 0x%08"HWADDR_P=
+RIx
++                      "\n", offset);
++        break;
++    }
++}
++
++static const MemoryRegionOps bcm2835_powermgt_ops =3D {
++    .read =3D bcm2835_powermgt_read,
++    .write =3D bcm2835_powermgt_write,
++    .endianness =3D DEVICE_NATIVE_ENDIAN,
++    .impl.min_access_size =3D 4,
++    .impl.max_access_size =3D 4,
++};
++
++static const VMStateDescription vmstate_bcm2835_powermgt =3D {
++    .name =3D TYPE_BCM2835_POWERMGT,
++    .version_id =3D 1,
++    .minimum_version_id =3D 1,
++    .fields =3D (VMStateField[]) {
++        VMSTATE_UINT32(rstc, BCM2835PowerMgtState),
++        VMSTATE_UINT32(rsts, BCM2835PowerMgtState),
++        VMSTATE_UINT32(wdog, BCM2835PowerMgtState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void bcm2835_powermgt_init(Object *obj)
++{
++    BCM2835PowerMgtState *s =3D BCM2835_POWERMGT(obj);
++
++    memory_region_init_io(&s->iomem, obj, &bcm2835_powermgt_ops, s,
++                          TYPE_BCM2835_POWERMGT, 0x114);
++    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->iomem);
++}
++
++static void bcm2835_powermgt_reset(DeviceState *dev)
++{
++    BCM2835PowerMgtState *s =3D BCM2835_POWERMGT(dev);
++
++    s->rstc =3D 0x00000102;
++    s->rsts =3D 0x00001000;
++    s->wdog =3D 0x00000000;
++}
++
++static void bcm2835_powermgt_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc =3D DEVICE_CLASS(klass);
++
++    dc->reset =3D bcm2835_powermgt_reset;
++    dc->vmsd =3D &vmstate_bcm2835_powermgt;
++}
++
++static TypeInfo bcm2835_powermgt_info =3D {
++    .name          =3D TYPE_BCM2835_POWERMGT,
++    .parent        =3D TYPE_SYS_BUS_DEVICE,
++    .instance_size =3D sizeof(BCM2835PowerMgtState),
++    .class_init    =3D bcm2835_powermgt_class_init,
++    .instance_init =3D bcm2835_powermgt_init,
++};
++
++static void bcm2835_powermgt_register_types(void)
++{
++    type_register_static(&bcm2835_powermgt_info);
++}
++
++type_init(bcm2835_powermgt_register_types)
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index 66e1648533..f89b5c1643 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -82,6 +82,7 @@ softmmu_ss.add(when: 'CONFIG_RASPI', if_true: files(
+   'bcm2835_rng.c',
+   'bcm2835_thermal.c',
+   'bcm2835_cprman.c',
++  'bcm2835_powermgt.c',
+ ))
+ softmmu_ss.add(when: 'CONFIG_SLAVIO', if_true: files('slavio_misc.c'))
+ softmmu_ss.add(when: 'CONFIG_ZYNQ', if_true: files('zynq_slcr.c', 'zynq-xadc=
+.c'))
+diff --git a/include/hw/arm/bcm2835_peripherals.h b/include/hw/arm/bcm2835_pe=
+ripherals.h
+index 479e2346e8..d864879421 100644
+--- a/include/hw/arm/bcm2835_peripherals.h
++++ b/include/hw/arm/bcm2835_peripherals.h
+@@ -24,6 +24,7 @@
+ #include "hw/misc/bcm2835_mphi.h"
+ #include "hw/misc/bcm2835_thermal.h"
+ #include "hw/misc/bcm2835_cprman.h"
++#include "hw/misc/bcm2835_powermgt.h"
+ #include "hw/sd/sdhci.h"
+ #include "hw/sd/bcm2835_sdhost.h"
+ #include "hw/gpio/bcm2835_gpio.h"
+@@ -48,7 +49,7 @@ struct BCM2835PeripheralState {
+     BCM2835MphiState mphi;
+     UnimplementedDeviceState txp;
+     UnimplementedDeviceState armtmr;
+-    UnimplementedDeviceState powermgt;
++    BCM2835PowerMgtState powermgt;
+     BCM2835CprmanState cprman;
+     PL011State uart0;
+     BCM2835AuxState aux;
+diff --git a/include/hw/misc/bcm2835_powermgt.h b/include/hw/misc/bcm2835_pow=
+ermgt.h
+new file mode 100644
+index 0000000000..303b9a6f68
+--- /dev/null
++++ b/include/hw/misc/bcm2835_powermgt.h
+@@ -0,0 +1,29 @@
++/*
++ * BCM2835 Power Management emulation
++ *
++ * Copyright (C) 2017 Marcin Chojnacki <marcinch7@gmail.com>
++ * Copyright (C) 2021 Nolan Leake <nolan@sigbus.net>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ */
++
++#ifndef BCM2835_POWERMGT_H
++#define BCM2835_POWERMGT_H
++
++#include "hw/sysbus.h"
++#include "qom/object.h"
++
++#define TYPE_BCM2835_POWERMGT "bcm2835-powermgt"
++OBJECT_DECLARE_SIMPLE_TYPE(BCM2835PowerMgtState, BCM2835_POWERMGT)
++
++struct BCM2835PowerMgtState {
++    SysBusDevice busdev;
++    MemoryRegion iomem;
++
++    uint32_t rstc;
++    uint32_t rsts;
++    uint32_t wdog;
++};
++
++#endif
+--=20
+2.30.2

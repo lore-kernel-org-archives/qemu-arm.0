@@ -1,230 +1,200 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp433775lfm;
-        Tue, 18 May 2021 06:52:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJydwo40opY00m+N+U6sMCIttw18s3k6ewRfTdKw9VTlrWlkhPPvTh2uF6rNCtg/c56kLeXx
-X-Received: by 2002:a92:c243:: with SMTP id k3mr4533117ilo.81.1621345954198;
-        Tue, 18 May 2021 06:52:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621345954; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp428194lfm;
+        Tue, 18 May 2021 06:44:44 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwDvfWKBQJ8XJeT0e8/1rUIolUGgNoAmssyHH5s4FCooHPjCNG6PgLe8Jlt0cveEVdxQ6i4
+X-Received: by 2002:a92:2a09:: with SMTP id r9mr4451926ile.300.1621345484102;
+        Tue, 18 May 2021 06:44:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621345484; cv=none;
         d=google.com; s=arc-20160816;
-        b=pAwlwshkMyX+23iLIaTh+cPFRKjhSt4ah1h6+4+oAzgT4eQPa3CRXU+szbiHKqhs43
-         YRVpZVEmR3CJ+7rHjY5kLOtwBNidxDtF8j7qxU9r9PRk8PZ31uJQeM0p3i1eUgqgRL3B
-         wWtRsYLtfjgITbB2/AC/zgyYvM8nIM9MW8BIf96ygwO6SY8SjcPH80CmZlbUMQ4lbMeJ
-         PTN3sOQu009Vm6lolhg9QVX35y/nn03+jeQhX2irtnObkEswTI4ceNmHSYCE8fRHzROy
-         gLZRvsD1noPVyAMu0LfQG8pFQHAxdde0yUZCJc8QkJZP+8xU7oxvL09ftpwC2GoAJucJ
-         mnGw==
+        b=cygpCT/45tuuL5X9psHuyDVy6jMLmifLRH9lWqyrvG0+vHYdC97NMzX/P/DXnIv2lw
+         AOlSxDz32Gtb7qCd/u4J8yDkPdz+LIqrtSpVxqMBfS754SQh82451DurjdZICIh1EISy
+         NDxxABULj1UU3HZDGL4R/UBTiFrtYR2Mp/r5g6I8hBfuohR7gGYgxIWg6IvXcl3GMXaA
+         byGfN0xVa9nPbS3Zi8EMeWxtBzlssE+GiG2Nb6f3YJGf4G8jfP8GjK72r36aevS2WMej
+         TLG+O00cweXpfowxRAqRIXYzXGrhmXsdSQegsNg8z2O+dTktEMuQTP9meI+y7a0WvnlC
+         06Uw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=Ja/d/Q+97Zk6pXltEKTyRT3wk4Xx8CBnNgj3Zz9dhMA=;
-        b=CesyUp/GRr3hK3rK9f5LcXz30GvYdPAZyefG6svaUiHrpDoIQVCdK8nV/+6J/zGhb7
-         ylhk4p0G1bFseEchC3q9ZxoNNEoGa9gzgRh0K3EA1scp/1QWLB9psQZKHn05Dp5eEkL6
-         uAEBm3CGt2ok95+VoR16PL8kngcBIquGNBgAMm/PwGaTgxJtLyGGAHTHF8WJAFPsG7ZB
-         G2Rk0m3i9b10ltGmcjfrxzy4BkKHlaG0+QSpzTHip3X0/d8gRaGhbWW3T6s66VuL+SDr
-         aZ1oRfhpTRVxcq/BeUMZHEODN6XRTDcM5kH0sC1C8FVVOjZ7GHo1i4SyGhUPBuCD2Oi2
-         TBQg==
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=3VChmy4I/dh5goCmgrs4XM5WFmIqICnPGotTIY11/PQ=;
+        b=RXXcZ8T9kCUqIhbJY1ULvodLmsGE4gznoM+t8+tQQbfGONzBIzPipuDOU7Ds5KV7gK
+         ZMdv2FSkGu94W+k+uWnsFroparvfXjxhSTJZP5DJNKgZtNy9mtEOVRp77dSwOoG/4p2K
+         NMRg8u5pBS16y0XU9IZjygfTzw+AarEprknFIMWQDoWx+Vf5QPMi+BV+9FP3FuhQgQq0
+         iRpfuukDQcfETZAtfP1avCI/OnOA0WdO6+JlSFoB1AI8kFRkaZUrq75Yp8iQ4LmNrm1J
+         aoPVK8Tasm1LAwfwr6lG+GkvqYVOJQbDuGRgw830n26z+XHx0ET/n1Davkj2JIH6F6F8
+         GRXw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=tJkFsfjI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SfWGUnNX;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p9si21472805iov.92.2021.05.18.06.52.33
+        by mx.google.com with ESMTPS id m3si3709226ilj.111.2021.05.18.06.44.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 May 2021 06:52:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 18 May 2021 06:44:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=tJkFsfjI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34354 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SfWGUnNX;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:38996 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lj09B-0005G1-GR
-	for alex.bennee@linaro.org; Tue, 18 May 2021 09:52:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39506)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lj01b-0005r3-BK
+	for alex.bennee@linaro.org; Tue, 18 May 2021 09:44:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37048)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lj092-0005BM-2r
- for qemu-arm@nongnu.org; Tue, 18 May 2021 09:52:24 -0400
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c]:40744)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lj090-0005Gl-6r
- for qemu-arm@nongnu.org; Tue, 18 May 2021 09:52:23 -0400
-Received: by mail-ej1-x62c.google.com with SMTP id n2so14680534ejy.7
- for <qemu-arm@nongnu.org>; Tue, 18 May 2021 06:52:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Ja/d/Q+97Zk6pXltEKTyRT3wk4Xx8CBnNgj3Zz9dhMA=;
- b=tJkFsfjIzMGLqrorgI1P4wRHJQ0sL43K1p+o/9cPBVAioj0Aj3K+byG8nBPhnWCC2j
- bkj0ZXNCt7S5QVe8hMYt3IsLKs8D764JN8WeJT5Xx8rIqMsSNCnxG1BiJGjN43M3x01i
- 0HGVenQKeiVfAtRfZyWHFiiZWnIKoggBsvkiNfC/6GDZIKkb2yzlFktLwH7Q5DInS6a+
- c5u95+eDOrewrl6f+S/jzhitX/zp8BkOKXAo5vgSTbOe6Tzg1ICR0+4sB3LI9rNmYkmC
- DBb2J+Vye61tJ4nTgTegzV0vZCDogdJu9BE6m41ur1P4lw0TvIJ3msOduRhyswI1rhwx
- L1Uw==
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1lizy1-0005fo-Gh
+ for qemu-devel@nongnu.org; Tue, 18 May 2021 09:41:02 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:33462)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1lizxz-0006T0-HQ
+ for qemu-devel@nongnu.org; Tue, 18 May 2021 09:41:01 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1621345258;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=3VChmy4I/dh5goCmgrs4XM5WFmIqICnPGotTIY11/PQ=;
+ b=SfWGUnNX29JrcCYYBFtwX2MWBnhpujbKAiKBo6Ogrq+S4KVKklAD+jZryxQygZD15DhD/n
+ ViUyrUOp9MbrOKSQErlUIhBQnSCYgYiYLmWUg+j3btwI3hzWuygSRyjLMprIAlM9sfpth7
+ 6hYQ7fXseuITUQ53/1PJgxyA7KC0t0c=
+Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
+ [209.85.218.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-103-6Y6q8isWNiaaAicSI3FoiQ-1; Tue, 18 May 2021 09:40:57 -0400
+X-MC-Unique: 6Y6q8isWNiaaAicSI3FoiQ-1
+Received: by mail-ej1-f69.google.com with SMTP id
+ m18-20020a1709062352b02903d2d831f9baso2380906eja.20
+ for <qemu-devel@nongnu.org>; Tue, 18 May 2021 06:40:56 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Ja/d/Q+97Zk6pXltEKTyRT3wk4Xx8CBnNgj3Zz9dhMA=;
- b=uIaTALrczhuC3Rb8ePNDuIhtqSoiJo0ENfw/TjNV4JzhY/AAOgT5Iz+f5cgVA5KVKt
- dlPVCblbbKvXXMnLtWk/Gz97csKUngjEK72txz94lKNvp8wQm/5/UWkq+PiW+isX7/AJ
- J0a6tnVvKnit1lCf0zWKkoQ2UIZ70NHjvFfQ3H/CnwrS7hpaLP5ybFvYg6k6T8jescWI
- +OBcVa/11Hq07I+6o75uPqDXe4/AIZmqppbOIXp37PNxkmlRyiLpXfUcXenvhAzuG/J8
- IzbAoMOKxgNWNTQ5KeWxcAhqjwqaBrZ42eeAywna+nyZauCbRc3CRjLFJ1DZbOh3MGQz
- 4DUg==
-X-Gm-Message-State: AOAM530gBVZLds7+t2hB4DpM3Cwq3bK7gk3T4nQd5EUmCM+CtfE2+rri
- scVTaXAfDMTbK7Nf8PT4H0Orf/aOPWP4kPCfXyCn6A==
-X-Received: by 2002:a17:906:d1d2:: with SMTP id
- bs18mr6229605ejb.56.1621345940649; 
- Tue, 18 May 2021 06:52:20 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=3VChmy4I/dh5goCmgrs4XM5WFmIqICnPGotTIY11/PQ=;
+ b=Ed/i6JJ62p58spfqh83FH1Pvkw7SF4Orjrq/ICm9Qbd3/sJluYE8g/Qta2UUxsRrpw
+ Pt1RbT+eQf0esiN2Iz1iU834SM2Mc1R6Eg2XOYkC4kdTcDcQyXQUoZpaK9z2d2UxCMul
+ yu3n7EgIt3ngCuH/CXeg0ZAHSJxXy5Cf6aNy90dvMUNGcxJIP/QPd8dnyq7sfBV2iTjP
+ 4gbuc8ASrZPn/3KV4OHPo5nwgl0gghQvW6Cof3f3YOX735kBqB60ITeVfsFKGTEE71hA
+ 4AQf34Yz/VIeQ7JDTBvjxsvkDj1jKkiD3rR64dQibyONBv/BDhRi7NaVnkkCpMVAx2LR
+ LL6g==
+X-Gm-Message-State: AOAM532JZFMq8g7Xja82dywH+SsrHD8lVZcLbYIxShFVJLnEWR0FiTRe
+ XyPn975C4HfMbVgU0aLcduUAukpVeNbmvVTxi/Z1T6ju0uTdxJhNxJOikP949oU27V3aeXmO+sk
+ D9MCzSvOz9XgJwRY=
+X-Received: by 2002:aa7:cb10:: with SMTP id s16mr7100806edt.313.1621345255961; 
+ Tue, 18 May 2021 06:40:55 -0700 (PDT)
+X-Received: by 2002:aa7:cb10:: with SMTP id s16mr7100768edt.313.1621345255759; 
+ Tue, 18 May 2021 06:40:55 -0700 (PDT)
+Received: from gator.home (cst2-174-132.cust.vodafone.cz. [31.30.174.132])
+ by smtp.gmail.com with ESMTPSA id c7sm12965427ede.37.2021.05.18.06.40.52
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 18 May 2021 06:40:53 -0700 (PDT)
+Date: Tue, 18 May 2021 15:40:45 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: "wangyanan (Y)" <wangyanan55@huawei.com>
+Subject: Re: [RFC PATCH v3 6/9] hw/arm/virt-acpi-build: Use possible cpus in
+ generation of MADT
+Message-ID: <20210518134045.5enuusitvaho3xv3@gator.home>
+References: <20210516102900.28036-1-wangyanan55@huawei.com>
+ <20210516102900.28036-7-wangyanan55@huawei.com>
+ <20210517074256.xjqwejbi4mfsvug2@gator.home>
+ <ac1b0f17-523d-adb8-c4f4-aa5c93966726@huawei.com>
+ <20210518081550.d3hof7jr5soeuwo5@gator.home>
+ <1a0a9dea-cd42-a2e5-6b1c-0055391d439f@huawei.com>
 MIME-Version: 1.0
-References: <20210429234201.125565-1-shashi.mallela@linaro.org>
- <20210429234201.125565-2-shashi.mallela@linaro.org>
-In-Reply-To: <20210429234201.125565-2-shashi.mallela@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 18 May 2021 14:52:04 +0100
-Message-ID: <CAFEAcA_PGXKWy-u-cdOxEf+govTO1fLCoT0RRPQAyh=BkibnJA@mail.gmail.com>
-Subject: Re: [PATCH v3 1/8] hw/intc: GICv3 ITS initial framework
-To: Shashi Mallela <shashi.mallela@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <1a0a9dea-cd42-a2e5-6b1c-0055391d439f@huawei.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=drjones@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.374,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Leif Lindholm <leif@nuviainc.com>, QEMU Developers <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>, Radoslaw Biernacki <rad@semihalf.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: q8jMGSfgZmHS
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Barry Song <song.bao.hua@hisilicon.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S . Tsirkin" <mst@redhat.com>, wanghaibin.wang@huawei.com,
+ zhukeqian1@huawei.com, qemu-devel@nongnu.org, yangyicong@huawei.com,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+ Alistair Francis <alistair.francis@wdc.com>, prime.zeng@hisilicon.com,
+ Paolo Bonzini <pbonzini@redhat.com>, yuzenghui@huawei.com,
+ Igor Mammedov <imammedo@redhat.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: eSAaWlNL7nTn
 
-On Fri, 30 Apr 2021 at 00:42, Shashi Mallela <shashi.mallela@linaro.org> wrote:
->
-> Added register definitions relevant to ITS,implemented overall
-> ITS device framework with stubs for ITS control and translater
-> regions read/write,extended ITS common to handle mmio init between
-> existing kvm device and newer qemu device.
->
-> Signed-off-by: Shashi Mallela <shashi.mallela@linaro.org>
-> ---
->  hw/intc/arm_gicv3_its.c                | 239 +++++++++++++++++++++++++
->  hw/intc/arm_gicv3_its_common.c         |  11 +-
->  hw/intc/arm_gicv3_its_kvm.c            |   2 +-
->  hw/intc/gicv3_internal.h               |  88 +++++++--
->  hw/intc/meson.build                    |   1 +
->  include/hw/intc/arm_gicv3_its_common.h |  10 +-
->  6 files changed, 331 insertions(+), 20 deletions(-)
->  create mode 100644 hw/intc/arm_gicv3_its.c
->
-> diff --git a/hw/intc/arm_gicv3_its.c b/hw/intc/arm_gicv3_its.c
-> new file mode 100644
-> index 0000000000..7b11330e01
-> --- /dev/null
-> +++ b/hw/intc/arm_gicv3_its.c
-> @@ -0,0 +1,239 @@
-> +/*
-> + * ITS emulation for a GICv3-based system
-> + *
-> + * Copyright Linaro.org 2021
-> + *
-> + * Authors:
-> + *  Shashi Mallela <shashi.mallela@linaro.org>
-> + *
-> + * This work is licensed under the terms of the GNU GPL, version 2 or (at your
-> + * option) any later version.  See the COPYING file in the top-level directory.
-> + *
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qemu/log.h"
-> +#include "hw/qdev-properties.h"
-> +#include "hw/intc/arm_gicv3_its_common.h"
-> +#include "gicv3_internal.h"
-> +#include "qom/object.h"
-> +
-> +typedef struct GICv3ITSClass GICv3ITSClass;
-> +/* This is reusing the GICv3ITSState typedef from ARM_GICV3_ITS_COMMON */
-> +DECLARE_OBJ_CHECKERS(GICv3ITSState, GICv3ITSClass,
-> +                     ARM_GICV3_ITS, TYPE_ARM_GICV3_ITS)
-> +
-> +struct GICv3ITSClass {
-> +    GICv3ITSCommonClass parent_class;
-> +    void (*parent_reset)(DeviceState *dev);
-> +};
-> +
-> +static MemTxResult gicv3_its_translation_write(void *opaque, hwaddr offset,
-> +                               uint64_t data, unsigned size, MemTxAttrs attrs)
+On Tue, May 18, 2021 at 07:47:24PM +0800, wangyanan (Y) wrote:
+> > > Is there any better alternative way about this?
+> > Move the
+> > 
+> >    if (arm_feature(&armcpu->env, ARM_FEATURE_PMU)) {
+> >        gicc->performance_interrupt = cpu_to_le32(PPI(VIRTUAL_PMU_IRQ));
+> >    }
+> > 
+> > into the if (possible_cpus->cpus[i].cpu != NULL) block?
+> We can. But this will only ensure that we initialize
+> gicc->performance_interrupt
+> for enabled GICC entries but not the disabled ones.
 
-Your indentation on function prototypes is still messed up; please fix it.
+I'd write a comment and leave that problem for the hot plug support to
+solve.
 
-> +    if (s->gicv3->cpu->gicr_typer & GICR_TYPER_PLPIS) {
-> +        /* set the ITS default features supported */
-> +        s->typer = FIELD_DP64(s->typer, GITS_TYPER, PHYSICAL,
-> +                                       GITS_TYPE_PHYSICAL);
+> > > Can we also update the arch_id at the same time when we change mp_affinity?
+> > The proper fix is to send patches to KVM enabling userspace to control
+> > MPIDR. Otherwise we can't be sure we don't have inconsistencies in QEMU,
+> > since some user of possible_cpus could have made decisions or copied IDs
+> > prior to KVM vcpu init time. Now, all that said, I think
+> > virt_cpu_mp_affinity() should be generating the same ID as KVM does, so
+> > maybe it doesn't matter in practice right now, but we're living with the
+> > risk that KVM could change. For now, maybe we should just sanity check
+> > that the KVM values match the possible_cpus values and emit warnings if
+> > they don't?
+> I think it may not so reasonable to emit warnings if they don't match, on
+> the contrary we should ensure they will match even when KVM changes.
+> 
+> Now virt_cpu_mp_affinity() is only called by virt_possible_cpu_arch_ids() to
+> initialize possible_cpus, so an idea is that we can move the stuff of
+> resetting
+> "cpu->mp_affinity" from kvm_arch_init_vcpu() to virt_cpu_mp_affinity() to
+> initialize arch_id. So that we can ensure mp_affinity only comes from
+> arch_id
+> and won't change later. Can it work?
 
-More odd indentation. Second lines of function calls etc should line
-up with the first character after the '(' on the first line.
-Please fix this through the whole patchset.
+No. virt_cpu_mp_affinity can run way before cpu realize, but
+kvm_arch_init_vcpu runs at cpu realize time.
 
-> +type_init(gicv3_its_register_types)
-> diff --git a/hw/intc/arm_gicv3_its_common.c b/hw/intc/arm_gicv3_its_common.c
-> index 66c4c6a188..b4dddb16b8 100644
-> --- a/hw/intc/arm_gicv3_its_common.c
-> +++ b/hw/intc/arm_gicv3_its_common.c
-> @@ -50,12 +50,13 @@ static int gicv3_its_post_load(void *opaque, int version_id)
->
->  static const VMStateDescription vmstate_its = {
->      .name = "arm_gicv3_its",
-> +    .version_id = 1,
-> +    .minimum_version_id = 1,
->      .pre_save = gicv3_its_pre_save,
->      .post_load = gicv3_its_post_load,
->      .priority = MIG_PRI_GICV3_ITS,
->      .fields = (VMStateField[]) {
->          VMSTATE_UINT32(ctlr, GICv3ITSState),
-> -        VMSTATE_UINT32(iidr, GICv3ITSState),
->          VMSTATE_UINT64(cbaser, GICv3ITSState),
->          VMSTATE_UINT64(cwriter, GICv3ITSState),
->          VMSTATE_UINT64(creadr, GICv3ITSState),
+> 
+> BTW, I plan to pack patch 4-6 into a separate patchset and repost it until
+> we have a mature solution for the probelm, that's also Salil's suggestion.
+> Is it appropriate?
 
-You can't change the vmstate like this, you break migration compatibility.
-Why are you deleting the 'iidr' field anyway ?
+Well, you still need to set the enabled flag in the GICC table and you'll
+still need to come up with a solution for user input of cpus < maxcpus,
+but if your solution to the latter is good, then whatever you like.
 
-If we do need to remove the 'iidr', there is a mechanism for saying
-"ignore the UINT64 we get from a migration source, we don't need it".
-If we need to do that it should be a standalone patch at the start of
-the series.
+Thanks,
+drew
 
-> @@ -51,7 +56,7 @@ struct GICv3ITSState {
->
->      /* Registers */
->      uint32_t ctlr;
-> -    uint32_t iidr;
-> +    uint64_t typer;
->      uint64_t cbaser;
->      uint64_t cwriter;
->      uint64_t creadr;
-
-This will break compilation of the KVM support code on aarch64 hosts,
-which is still using the 'iidr' field.
-
-thanks
--- PMM

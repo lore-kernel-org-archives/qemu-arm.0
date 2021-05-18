@@ -1,243 +1,230 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp340571lfm;
-        Tue, 18 May 2021 04:58:30 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzJQdNnGiySZkxsV6u0coxDqjchQpg0M7p5XDrGvSXT8onaKrPRv43hO1YgoqY6Ymv5noFj
-X-Received: by 2002:a50:fd9a:: with SMTP id o26mr6488201edt.76.1621339109980;
-        Tue, 18 May 2021 04:58:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621339109; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp433775lfm;
+        Tue, 18 May 2021 06:52:34 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJydwo40opY00m+N+U6sMCIttw18s3k6ewRfTdKw9VTlrWlkhPPvTh2uF6rNCtg/c56kLeXx
+X-Received: by 2002:a92:c243:: with SMTP id k3mr4533117ilo.81.1621345954198;
+        Tue, 18 May 2021 06:52:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621345954; cv=none;
         d=google.com; s=arc-20160816;
-        b=PMWvoGkeML3KDbUcvLYwd7ezC1PmWMTJK+PG/lGwavtfpTijXV6t+FNHA4jpXbXv/o
-         Z9K7qmC5de6dB0VGr69xMdTSF7ofCN5H6UvJ+18gMCe9SeyYtv0ZgTfBSHBkH4HZQwdp
-         A4hVX3J6oUphaC7NJElxZj9IM77VG/CwWaB3Q8zKvfvEa/2HvTjH2hFnwnORnBtlthvy
-         u5BshkeTeeZz2H1vLHa/H95bJ8/osnE6Fe7Ye7SnVec8ZqDhjwFjI6oOMTqbWTMYm3F8
-         r1kMsqfuYECE0aEiylGGTMZ66Ks+K2tBYZ5Ww11CRFD4cIZaXsqPpgAtbf9ycDkMD0Zz
-         J9cw==
+        b=pAwlwshkMyX+23iLIaTh+cPFRKjhSt4ah1h6+4+oAzgT4eQPa3CRXU+szbiHKqhs43
+         YRVpZVEmR3CJ+7rHjY5kLOtwBNidxDtF8j7qxU9r9PRk8PZ31uJQeM0p3i1eUgqgRL3B
+         wWtRsYLtfjgITbB2/AC/zgyYvM8nIM9MW8BIf96ygwO6SY8SjcPH80CmZlbUMQ4lbMeJ
+         PTN3sOQu009Vm6lolhg9QVX35y/nn03+jeQhX2irtnObkEswTI4ceNmHSYCE8fRHzROy
+         gLZRvsD1noPVyAMu0LfQG8pFQHAxdde0yUZCJc8QkJZP+8xU7oxvL09ftpwC2GoAJucJ
+         mnGw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:content-language:content-transfer-encoding
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :cc:to:subject;
-        bh=17Fza4IpA+jzaXhcvMBhJE/6a0kpoie5bLBgzHZYpaE=;
-        b=rmYGfMYBzNrf6Nvo5hkLPhZU6FQ1ZWmOgwnabJdAoNJJwWNnzhFYoafxWi4mtpO/72
-         aMOxG9ElbVqVqfcZC/fLb0xzWYMHu2pnrm6HBwxLXbEAgCBsCN+lr6V6YDE6tAmrTOae
-         mSKVB7b4KLoNlw6Sap1AQDdPooVX35qq+aKqQw5nvcOO4rPfwMYAyOGkFKbbeWzw5T8M
-         wvuOZF/jBdZ62Ec9lVu3IgLQrA/lfdTQOZC0jp/pyRd6ALy1tcLiJV/vGH+mPt86neSN
-         5sCLjAeMGC3PnCOt6eoxEhdZxksunV8XrcbWT9rbFDmwXIjKoc8CoXlzlq5T41OsIjSO
-         TDNg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=Ja/d/Q+97Zk6pXltEKTyRT3wk4Xx8CBnNgj3Zz9dhMA=;
+        b=CesyUp/GRr3hK3rK9f5LcXz30GvYdPAZyefG6svaUiHrpDoIQVCdK8nV/+6J/zGhb7
+         ylhk4p0G1bFseEchC3q9ZxoNNEoGa9gzgRh0K3EA1scp/1QWLB9psQZKHn05Dp5eEkL6
+         uAEBm3CGt2ok95+VoR16PL8kngcBIquGNBgAMm/PwGaTgxJtLyGGAHTHF8WJAFPsG7ZB
+         G2Rk0m3i9b10ltGmcjfrxzy4BkKHlaG0+QSpzTHip3X0/d8gRaGhbWW3T6s66VuL+SDr
+         aZ1oRfhpTRVxcq/BeUMZHEODN6XRTDcM5kH0sC1C8FVVOjZ7GHo1i4SyGhUPBuCD2Oi2
+         TBQg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of linux-kernel-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=linux-kernel-owner@vger.kernel.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Return-Path: <linux-kernel-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id hq40si17652216ejc.161.2021.05.18.04.58.29;
-        Tue, 18 May 2021 04:58:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of linux-kernel-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
+       dkim=fail header.i=@linaro.org header.s=google header.b=tJkFsfjI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id p9si21472805iov.92.2021.05.18.06.52.33
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 18 May 2021 06:52:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of linux-kernel-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=linux-kernel-owner@vger.kernel.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1348941AbhERL7o (ORCPT <rfc822;semen.protsenko@linaro.org>
-        + 20 others); Tue, 18 May 2021 07:59:44 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:3584 "EHLO
-        szxga05-in.huawei.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1348936AbhERL7n (ORCPT
-        <rfc822;linux-kernel@vger.kernel.org>);
-        Tue, 18 May 2021 07:59:43 -0400
-Received: from dggems701-chm.china.huawei.com (unknown [172.30.72.59])
-        by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4FkvZx4X4vzsRnJ;
-        Tue, 18 May 2021 19:55:37 +0800 (CST)
-Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
- dggems701-chm.china.huawei.com (10.3.19.178) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2176.2; Tue, 18 May 2021 19:58:22 +0800
-Received: from [10.174.187.128] (10.174.187.128) by
- dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
- 15.1.2176.2; Tue, 18 May 2021 19:58:21 +0800
-Subject: Re: [RFC PATCH v3 6/9] hw/arm/virt-acpi-build: Use possible cpus in
- generation of MADT
-To:     Salil Mehta <salil.mehta@huawei.com>
-CC:     Peter Maydell <peter.maydell@linaro.org>,
-        Andrew Jones <drjones@redhat.com>,
-        "Michael S . Tsirkin" <mst@redhat.com>,
-        Igor Mammedov <imammedo@redhat.com>,
-        Shannon Zhao <shannon.zhaosl@gmail.com>,
-        "Alistair Francis" <alistair.francis@wdc.com>,
-        David Gibson <david@gibson.dropbear.id.au>,
-        "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-        "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-        "Paolo Bonzini" <pbonzini@redhat.com>,
-        =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-        yangyicong <yangyicong@huawei.com>,
-        "Zengtao (B)" <prime.zeng@hisilicon.com>,
-        "Song Bao Hua (Barry Song)" <song.bao.hua@hisilicon.com>,
-        "Wanghaibin (D)" <wanghaibin.wang@huawei.com>,
-        zhukeqian <zhukeqian1@huawei.com>,
-        yuzenghui <yuzenghui@huawei.com>,
-        "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-        "linuxarm@openeuler.org" <linuxarm@openeuler.org>
-References: <20210516102900.28036-1-wangyanan55@huawei.com>
- <20210516102900.28036-7-wangyanan55@huawei.com>
- <6d3c643dc9174f8199ea9422f9e995e5@huawei.com>
- <14284387-dcf4-cfb2-127c-5d1e1d0ecb79@huawei.com>
- <82d006dab8b64e658f205246abc850c2@huawei.com>
-From:   "wangyanan (Y)" <wangyanan55@huawei.com>
-Message-ID: <d99a32e6-99f7-6977-5f74-0d9f9a06b5ea@huawei.com>
-Date:   Tue, 18 May 2021 19:58:21 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+       dkim=fail header.i=@linaro.org header.s=google header.b=tJkFsfjI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:34354 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lj09B-0005G1-GR
+	for alex.bennee@linaro.org; Tue, 18 May 2021 09:52:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39506)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lj092-0005BM-2r
+ for qemu-arm@nongnu.org; Tue, 18 May 2021 09:52:24 -0400
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c]:40744)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lj090-0005Gl-6r
+ for qemu-arm@nongnu.org; Tue, 18 May 2021 09:52:23 -0400
+Received: by mail-ej1-x62c.google.com with SMTP id n2so14680534ejy.7
+ for <qemu-arm@nongnu.org>; Tue, 18 May 2021 06:52:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Ja/d/Q+97Zk6pXltEKTyRT3wk4Xx8CBnNgj3Zz9dhMA=;
+ b=tJkFsfjIzMGLqrorgI1P4wRHJQ0sL43K1p+o/9cPBVAioj0Aj3K+byG8nBPhnWCC2j
+ bkj0ZXNCt7S5QVe8hMYt3IsLKs8D764JN8WeJT5Xx8rIqMsSNCnxG1BiJGjN43M3x01i
+ 0HGVenQKeiVfAtRfZyWHFiiZWnIKoggBsvkiNfC/6GDZIKkb2yzlFktLwH7Q5DInS6a+
+ c5u95+eDOrewrl6f+S/jzhitX/zp8BkOKXAo5vgSTbOe6Tzg1ICR0+4sB3LI9rNmYkmC
+ DBb2J+Vye61tJ4nTgTegzV0vZCDogdJu9BE6m41ur1P4lw0TvIJ3msOduRhyswI1rhwx
+ L1Uw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Ja/d/Q+97Zk6pXltEKTyRT3wk4Xx8CBnNgj3Zz9dhMA=;
+ b=uIaTALrczhuC3Rb8ePNDuIhtqSoiJo0ENfw/TjNV4JzhY/AAOgT5Iz+f5cgVA5KVKt
+ dlPVCblbbKvXXMnLtWk/Gz97csKUngjEK72txz94lKNvp8wQm/5/UWkq+PiW+isX7/AJ
+ J0a6tnVvKnit1lCf0zWKkoQ2UIZ70NHjvFfQ3H/CnwrS7hpaLP5ybFvYg6k6T8jescWI
+ +OBcVa/11Hq07I+6o75uPqDXe4/AIZmqppbOIXp37PNxkmlRyiLpXfUcXenvhAzuG/J8
+ IzbAoMOKxgNWNTQ5KeWxcAhqjwqaBrZ42eeAywna+nyZauCbRc3CRjLFJ1DZbOh3MGQz
+ 4DUg==
+X-Gm-Message-State: AOAM530gBVZLds7+t2hB4DpM3Cwq3bK7gk3T4nQd5EUmCM+CtfE2+rri
+ scVTaXAfDMTbK7Nf8PT4H0Orf/aOPWP4kPCfXyCn6A==
+X-Received: by 2002:a17:906:d1d2:: with SMTP id
+ bs18mr6229605ejb.56.1621345940649; 
+ Tue, 18 May 2021 06:52:20 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <82d006dab8b64e658f205246abc850c2@huawei.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-X-Originating-IP: [10.174.187.128]
-X-ClientProxiedBy: dggeme701-chm.china.huawei.com (10.1.199.97) To
- dggpemm500023.china.huawei.com (7.185.36.83)
-X-CFilter-Loop: Reflected
-Precedence: bulk
-List-ID: <linux-kernel.vger.kernel.org>
-X-Mailing-List: linux-kernel@vger.kernel.org
-X-TUID: EIrF2YYzMn0s
+References: <20210429234201.125565-1-shashi.mallela@linaro.org>
+ <20210429234201.125565-2-shashi.mallela@linaro.org>
+In-Reply-To: <20210429234201.125565-2-shashi.mallela@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 18 May 2021 14:52:04 +0100
+Message-ID: <CAFEAcA_PGXKWy-u-cdOxEf+govTO1fLCoT0RRPQAyh=BkibnJA@mail.gmail.com>
+Subject: Re: [PATCH v3 1/8] hw/intc: GICv3 ITS initial framework
+To: Shashi Mallela <shashi.mallela@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Leif Lindholm <leif@nuviainc.com>, QEMU Developers <qemu-devel@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Radoslaw Biernacki <rad@semihalf.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: q8jMGSfgZmHS
 
-
-On 2021/5/18 14:47, Salil Mehta wrote:
->> From: wangyanan (Y)
->> Sent: Tuesday, May 18, 2021 6:03 AM
->>
->> Hi Salil,
->>
->> On 2021/5/18 1:07, Salil Mehta wrote:
->>>> From: Qemu-arm
->> [mailto:qemu-arm-bounces+salil.mehta=huawei.com@nongnu.org]
->>>> On Behalf Of Yanan Wang
->>>> Sent: Sunday, May 16, 2021 11:29 AM
->>>> To: Peter Maydell <peter.maydell@linaro.org>; Andrew Jones
->>>> <drjones@redhat.com>; Michael S . Tsirkin <mst@redhat.com>; Igor Mammedov
->>>> <imammedo@redhat.com>; Shannon Zhao <shannon.zhaosl@gmail.com>; Alistair
->>>> Francis <alistair.francis@wdc.com>; David Gibson
->>>> <david@gibson.dropbear.id.au>; qemu-devel@nongnu.org; qemu-arm@nongnu.org
->>>> Cc: Song Bao Hua (Barry Song) <song.bao.hua@hisilicon.com>; zhukeqian
->>>> <zhukeqian1@huawei.com>; yangyicong <yangyicong@huawei.com>; Zengtao (B)
->>>> <prime.zeng@hisilicon.com>; Wanghaibin (D) <wanghaibin.wang@huawei.com>;
->>>> yuzenghui <yuzenghui@huawei.com>; Paolo Bonzini <pbonzini@redhat.com>;
->>>> Philippe Mathieu-Daudé <philmd@redhat.com>
->>>> Subject: [RFC PATCH v3 6/9] hw/arm/virt-acpi-build: Use possible cpus in
->>>> generation of MADT
->>>>
->>>> When building ACPI tables regarding CPUs we should always build
->>>> them for the number of possible CPUs, not the number of present
->>>> CPUs. So we create gicc nodes in MADT for possible cpus and then
->>>> ensure only the present CPUs are marked ENABLED. Furthermore, it
->>>> also needed if we are going to support CPU hotplug in the future.
->>> Hi Yanan,
->>> Yes, these changes are part of the QEMU patch-set I floated last year.
->>>
->>> Link: https://www.mail-archive.com/qemu-devel@nongnu.org/msg712018.html
->> Yes, I noticed this. Thanks!
->>> Perhaps I am missing something, but how this patch is related to the vcpu
->>> topology support?
->> No related actually. But this patch together with patch 5 aim to provide
->> complete information (all cpus including enabled and the others) to guest,
->> which will be more consistent with requirement in ACPI spec.
+On Fri, 30 Apr 2021 at 00:42, Shashi Mallela <shashi.mallela@linaro.org> wrote:
 >
-> Well, if it is not related to the cpu topology support then this and other
-> similar patches included with the same line of thought should not be
-> part of this patch-set.
+> Added register definitions relevant to ITS,implemented overall
+> ITS device framework with stubs for ITS control and translater
+> regions read/write,extended ITS common to handle mmio init between
+> existing kvm device and newer qemu device.
 >
-> I am already working with ARM folks in this regard.
-Hi Salil,
-
-I'm planning to pack this part into a separate patchset and may repost
-it another time, given that there are still some issues to solve.
-
-Thanks,
-Yanan
-> Thanks
+> Signed-off-by: Shashi Mallela <shashi.mallela@linaro.org>
+> ---
+>  hw/intc/arm_gicv3_its.c                | 239 +++++++++++++++++++++++++
+>  hw/intc/arm_gicv3_its_common.c         |  11 +-
+>  hw/intc/arm_gicv3_its_kvm.c            |   2 +-
+>  hw/intc/gicv3_internal.h               |  88 +++++++--
+>  hw/intc/meson.build                    |   1 +
+>  include/hw/intc/arm_gicv3_its_common.h |  10 +-
+>  6 files changed, 331 insertions(+), 20 deletions(-)
+>  create mode 100644 hw/intc/arm_gicv3_its.c
 >
->> We don't consider cpu hotplug at all in this patch, but it indeed pave way
->> for cpu hotplug in the future.
->>
->> Thanks,
->> Yanan
->>> Thanks
->>>
->>>> Co-developed-by: Andrew Jones <drjones@redhat.com>
->>>> Signed-off-by: Andrew Jones <drjones@redhat.com>
->>>> Co-developed-by: Ying Fang <fangying1@huawei.com>
->>>> Signed-off-by: Ying Fang <fangying1@huawei.com>
->>>> Co-developed-by: Yanan Wang <wangyanan55@huawei.com>
->>>> Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
->>>> ---
->>>>    hw/arm/virt-acpi-build.c | 29 +++++++++++++++++++++++++----
->>>>    1 file changed, 25 insertions(+), 4 deletions(-)
->>>>
->>>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
->>>> index a2d8e87616..4d64aeb865 100644
->>>> --- a/hw/arm/virt-acpi-build.c
->>>> +++ b/hw/arm/virt-acpi-build.c
->>>> @@ -481,6 +481,9 @@ build_madt(GArray *table_data, BIOSLinker *linker,
->>>> VirtMachineState *vms)
->>>>        const int *irqmap = vms->irqmap;
->>>>        AcpiMadtGenericDistributor *gicd;
->>>>        AcpiMadtGenericMsiFrame *gic_msi;
->>>> +    MachineClass *mc = MACHINE_GET_CLASS(vms);
->>>> +    const CPUArchIdList *possible_cpus =
->>>> mc->possible_cpu_arch_ids(MACHINE(vms));
->>>> +    bool pmu;
->>>>        int i;
->>>>
->>>>        acpi_data_push(table_data, sizeof(AcpiMultipleApicTable));
->>>> @@ -491,11 +494,21 @@ build_madt(GArray *table_data, BIOSLinker *linker,
->>>> VirtMachineState *vms)
->>>>        gicd->base_address = cpu_to_le64(memmap[VIRT_GIC_DIST].base);
->>>>        gicd->version = vms->gic_version;
->>>>
->>>> -    for (i = 0; i < MACHINE(vms)->smp.cpus; i++) {
->>>> +    for (i = 0; i < possible_cpus->len; i++) {
->>>>            AcpiMadtGenericCpuInterface *gicc = acpi_data_push(table_data,
->>>>                                                               sizeof(*gicc));
->>>>            ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(i));
->>>>
->>>> +        /*
->>>> +         * PMU should have been either implemented for all CPUs or not,
->>>> +         * so we only get information from the first CPU, which could
->>>> +         * represent the others.
->>>> +         */
->>>> +        if (i == 0) {
->>>> +            pmu = arm_feature(&armcpu->env, ARM_FEATURE_PMU);
->>>> +        }
->>>> +        assert(!armcpu || arm_feature(&armcpu->env, ARM_FEATURE_PMU) ==
->> pmu);
->>>> +
->>>>            gicc->type = ACPI_APIC_GENERIC_CPU_INTERFACE;
->>>>            gicc->length = sizeof(*gicc);
->>>>            if (vms->gic_version == 2) {
->>>> @@ -504,11 +517,19 @@ build_madt(GArray *table_data, BIOSLinker *linker,
->>>> VirtMachineState *vms)
->>>>                gicc->gicv_base_address =
->>>> cpu_to_le64(memmap[VIRT_GIC_VCPU].base);
->>>>            }
->>>>            gicc->cpu_interface_number = cpu_to_le32(i);
->>>> -        gicc->arm_mpidr = cpu_to_le64(armcpu->mp_affinity);
->>>> +        gicc->arm_mpidr = cpu_to_le64(possible_cpus->cpus[i].arch_id);
->>>>            gicc->uid = cpu_to_le32(i);
->>>> -        gicc->flags = cpu_to_le32(ACPI_MADT_GICC_ENABLED);
->>>>
->>>> -        if (arm_feature(&armcpu->env, ARM_FEATURE_PMU)) {
->>>> +        /*
->>>> +         * ACPI spec says that LAPIC entry for non present CPU may be
->>>> +         * omitted from MADT or it must be marked as disabled. Here we
->>>> +         * choose to also keep the disabled ones in MADT.
->>>> +         */
->>>> +        if (possible_cpus->cpus[i].cpu != NULL) {
->>>> +            gicc->flags = cpu_to_le32(ACPI_MADT_GICC_ENABLED);
->>>> +        }
->>>> +
->>>> +        if (pmu) {
->>>>                gicc->performance_interrupt =
->> cpu_to_le32(PPI(VIRTUAL_PMU_IRQ));
->>>>            }
->>>>            if (vms->virt) {
->>>> --
->>>> 2.19.1
->>>>
->>> .
+> diff --git a/hw/intc/arm_gicv3_its.c b/hw/intc/arm_gicv3_its.c
+> new file mode 100644
+> index 0000000000..7b11330e01
+> --- /dev/null
+> +++ b/hw/intc/arm_gicv3_its.c
+> @@ -0,0 +1,239 @@
+> +/*
+> + * ITS emulation for a GICv3-based system
+> + *
+> + * Copyright Linaro.org 2021
+> + *
+> + * Authors:
+> + *  Shashi Mallela <shashi.mallela@linaro.org>
+> + *
+> + * This work is licensed under the terms of the GNU GPL, version 2 or (at your
+> + * option) any later version.  See the COPYING file in the top-level directory.
+> + *
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qemu/log.h"
+> +#include "hw/qdev-properties.h"
+> +#include "hw/intc/arm_gicv3_its_common.h"
+> +#include "gicv3_internal.h"
+> +#include "qom/object.h"
+> +
+> +typedef struct GICv3ITSClass GICv3ITSClass;
+> +/* This is reusing the GICv3ITSState typedef from ARM_GICV3_ITS_COMMON */
+> +DECLARE_OBJ_CHECKERS(GICv3ITSState, GICv3ITSClass,
+> +                     ARM_GICV3_ITS, TYPE_ARM_GICV3_ITS)
+> +
+> +struct GICv3ITSClass {
+> +    GICv3ITSCommonClass parent_class;
+> +    void (*parent_reset)(DeviceState *dev);
+> +};
+> +
+> +static MemTxResult gicv3_its_translation_write(void *opaque, hwaddr offset,
+> +                               uint64_t data, unsigned size, MemTxAttrs attrs)
+
+Your indentation on function prototypes is still messed up; please fix it.
+
+> +    if (s->gicv3->cpu->gicr_typer & GICR_TYPER_PLPIS) {
+> +        /* set the ITS default features supported */
+> +        s->typer = FIELD_DP64(s->typer, GITS_TYPER, PHYSICAL,
+> +                                       GITS_TYPE_PHYSICAL);
+
+More odd indentation. Second lines of function calls etc should line
+up with the first character after the '(' on the first line.
+Please fix this through the whole patchset.
+
+> +type_init(gicv3_its_register_types)
+> diff --git a/hw/intc/arm_gicv3_its_common.c b/hw/intc/arm_gicv3_its_common.c
+> index 66c4c6a188..b4dddb16b8 100644
+> --- a/hw/intc/arm_gicv3_its_common.c
+> +++ b/hw/intc/arm_gicv3_its_common.c
+> @@ -50,12 +50,13 @@ static int gicv3_its_post_load(void *opaque, int version_id)
+>
+>  static const VMStateDescription vmstate_its = {
+>      .name = "arm_gicv3_its",
+> +    .version_id = 1,
+> +    .minimum_version_id = 1,
+>      .pre_save = gicv3_its_pre_save,
+>      .post_load = gicv3_its_post_load,
+>      .priority = MIG_PRI_GICV3_ITS,
+>      .fields = (VMStateField[]) {
+>          VMSTATE_UINT32(ctlr, GICv3ITSState),
+> -        VMSTATE_UINT32(iidr, GICv3ITSState),
+>          VMSTATE_UINT64(cbaser, GICv3ITSState),
+>          VMSTATE_UINT64(cwriter, GICv3ITSState),
+>          VMSTATE_UINT64(creadr, GICv3ITSState),
+
+You can't change the vmstate like this, you break migration compatibility.
+Why are you deleting the 'iidr' field anyway ?
+
+If we do need to remove the 'iidr', there is a mechanism for saying
+"ignore the UINT64 we get from a migration source, we don't need it".
+If we need to do that it should be a standalone patch at the start of
+the series.
+
+> @@ -51,7 +56,7 @@ struct GICv3ITSState {
+>
+>      /* Registers */
+>      uint32_t ctlr;
+> -    uint32_t iidr;
+> +    uint64_t typer;
+>      uint64_t cbaser;
+>      uint64_t cwriter;
+>      uint64_t creadr;
+
+This will break compilation of the KVM support code on aarch64 hosts,
+which is still using the 'iidr' field.
+
+thanks
+-- PMM

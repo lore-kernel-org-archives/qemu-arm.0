@@ -1,160 +1,230 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp466189lfm;
-        Tue, 18 May 2021 07:29:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxoRjBW7w8Kv9j8Ygcmtdc3Yck8uVInfY68JMunA6JKdnkiYNPHJZpeEWT91g5qn6DVxxVx
-X-Received: by 2002:a02:5b85:: with SMTP id g127mr5879061jab.80.1621348161232;
-        Tue, 18 May 2021 07:29:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621348161; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp706392lfm;
+        Tue, 18 May 2021 12:23:01 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy4Wil5ZxToH06hEKCWoeTt+452vVbUtK7YCmYJsje2aZanbWK8yeOxsd9q4timaw64GORz
+X-Received: by 2002:a5d:818c:: with SMTP id u12mr5619773ion.81.1621365781076;
+        Tue, 18 May 2021 12:23:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621365781; cv=none;
         d=google.com; s=arc-20160816;
-        b=VlFPKutOWwxwewXWL0kV2QnMMRkH111wZ1EjIwfrxS0FhwEjiFS67gbH5+mRYGiabk
-         aHjYOe6Eyf16TWi/cVD6Av1TxUkj2vxD8XnoopvTnj4ouTDgjSllE6m8LUjLXRK80ntB
-         lNL9L7uQpKsAh0z2vzhrTKAwpvKi2l6nZpYYOjtN9eKJ4x+IYZlWv7x+jo9jXHJAJelt
-         mqohXiGN5QTb06lTr/A5f0Koi4H/30u6j4FX/11r/niBHLd4efRt3nDda7JMWRkk4RI2
-         D4cO6g5kFboQXhtT3Emauiq8oAP96vn2GpTUicTKVf4ejV8dtDpFSKj18ySVcyNLKRvN
-         3Iwg==
+        b=OmphpxIIKpW56E7GvajfHIsmEVxgFjCt41ZdZm0VD/IjoeSBctx1DevqnntH2R6fha
+         bmxjbuSmwfu8SawxWk1IypnzvwyOcOcYqdd8UzJc1/Q0YanzcZu2QMIqKxfLqoixAnKu
+         cU4agNjR32CJWH4kX94Nm9qb0emeHTTOOwoc3TQq74wi75Hv04GobKuO9o/V0jE+AAru
+         lPS+CAOmMjDjJ5olAai2HTMc5PAfbYWG2BzQ0hpOrn8CaJNmHLnIrF4biqMRiITonrJ+
+         ml3jh3E++RlG2wMsjuCvN6ear94+mgl6ByfKW9qlnmCZi9MXihH7+dJSETdb53NoDr81
+         2NKw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=kmJEJEIEu2V4ecwMZE5l48qY6xxsQ0QFV8BvT4lmjAU=;
-        b=B5NBCFnNbYpDAHbw6/aNq9QB2PMYgSbFbbHgCsRoC4L+ovLiZ7T1qOcoUiG46V5FE7
-         MFjqct0C4gQ+WmG+kxZtqBkm+N2oQN1B4V9QdqptNIxEXf13ji337XsUZndx/lFDBgUo
-         Juiome473nHKSxGfkRr93WtOnJCBtT9ZBrTaNDcqTAIa+rRiqgUNPVeSoVyVIVHl1W9x
-         vhR1lopgAEwNr3XDeE2I5wwJEo9IxsPtILvBui60JltyPw3dYOpf7dk874fcnkwSSQYS
-         NSqLBwaTgmEyJaC3JpOdGn/PG/MhWhyZ/r4Nwo/R9/T2szoR8u1nIJGh6yw1ZgxNl6Ij
-         D5Uw==
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:to:from;
+        bh=3bcKc2Wc3S8XVhetjnzjTcObej/QQNn+mxMse0bet7c=;
+        b=OV0FUyqAaOpsskKswsTrwr0saUQbGy2pAx1Dhc3Jx4kzVUdY/8Vq8+EyqWS4XTeg/x
+         v/1kLpArxqzmj7hnDTePyric25G6Xri8H+2EStex/BbVpurUfJ6aTuSix6VPFvNHJXLk
+         pyLno8vpOLCP3fU+hTRfbJcdt3fGyurD7QrrZJ+TC9A1Gp9KTeLTcKTu6ufPzyHQFbMi
+         n89JoizFKA9OhGZAbBe/hj2ri4ja1kBTD1hTe9fps+8D4o5J4hlMPZz9RAMA5zlQoJuf
+         uilAtkvFO2Buj6DpIB9a0nfx4a/oRAZx/D14n/pURLFiVVR8CFH7S6hbaQrKDbVNE5Oq
+         MoBQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=JbiYaz9K;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m12si22390696jav.104.2021.05.18.07.29.21
+        by mx.google.com with ESMTPS id m4si12948725jah.87.2021.05.18.12.23.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 May 2021 07:29:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 18 May 2021 12:23:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=JbiYaz9K;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47498 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Received: from localhost ([::1]:58686 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lj0im-0001ve-JQ
-	for alex.bennee@linaro.org; Tue, 18 May 2021 10:29:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48940)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lj5Iy-000315-Cf
+	for alex.bennee@linaro.org; Tue, 18 May 2021 15:23:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60320)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lj0hQ-0000G4-FO
- for qemu-devel@nongnu.org; Tue, 18 May 2021 10:27:56 -0400
-Received: from mail-ua1-x931.google.com ([2607:f8b0:4864:20::931]:39786)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lj0hO-0001Li-Qk
- for qemu-devel@nongnu.org; Tue, 18 May 2021 10:27:56 -0400
-Received: by mail-ua1-x931.google.com with SMTP id a12so3292991uak.6
- for <qemu-devel@nongnu.org>; Tue, 18 May 2021 07:27:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=kmJEJEIEu2V4ecwMZE5l48qY6xxsQ0QFV8BvT4lmjAU=;
- b=JbiYaz9K+m5CcOUFYcbR6dd0tk8duoktFZEFO/0m+nexl2vn8UhmXWNXMMJxMvhcys
- HhiVHk75xSbEEbtaIirMCqmYIklwv5VZi6LzTrjt8zwxgaRQ0Il9622qSUdiFDjeMrZ4
- 3x4pPrqS0gU46RZdUrqbbmejlTaOBFA2hENBPN7qVWq1uB1kZ32HjoO5361Q+aAPuwpd
- 38CQ+IAukvTQXNOIhMuZE+3+aMAGErIFwHhQ/idv7ZXA7Fhi+i3cIbt21hxaYsnIy08r
- RpKzjHyeX8JehD3vPsOWpSsxM3aYa0TnTIURDoG3qq4NvVYKgaHzjuH27FhIHvuddeOh
- EZqg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=kmJEJEIEu2V4ecwMZE5l48qY6xxsQ0QFV8BvT4lmjAU=;
- b=AjqmSAR0g5zAugb/IZmOZHPb/XDR0RE7gnWpVBtEskMBllfXXc7Vh/VY1w5JfagXXv
- q0l0ap3keLNTpt9aZGc2Vh/mQjF4XsH3WUCh/7uZRi63LWOlzAWXnfwjedJko9uQ2Ljn
- hU4VX9cwpk/I7i9ewciEegXb0LKAp0kv8pKzMWsotyv6WnYp8wReX0dpS3jRVE0+kObn
- 7mZTy6ZtFMrT6oOZjtCAgUMXybUwC56mfJuWZDbH1EUkR0RSmFAkV0J96QttGHC6Umd9
- af0nFE7d13f6rDZxajeqYE6zzA5hg4Zz5+IAepd0aYim6Itmq4SpYPT6W7eMBJZoYQOP
- rEkw==
-X-Gm-Message-State: AOAM532Gj7K40fsoiv6heIFhZYwY5RIVIoSGppwUd0Qmv02vMpCuUXAJ
- 0LuCmavUN7liqrZNuh6erC/rbQ==
-X-Received: by 2002:ab0:5a61:: with SMTP id m30mr6467042uad.125.1621348072370; 
- Tue, 18 May 2021 07:27:52 -0700 (PDT)
-Received: from [172.16.22.144] ([45.235.253.15])
- by smtp.gmail.com with ESMTPSA id x187sm2749577vkf.55.2021.05.18.07.27.51
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 18 May 2021 07:27:52 -0700 (PDT)
-Subject: Re: [PATCH v1 06/11] target/arm: Implement bfloat16 dot product
- (vector)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20210416235928.1631788-1-richard.henderson@linaro.org>
- <20210416235928.1631788-7-richard.henderson@linaro.org>
- <CAFEAcA8xEJrECb9+nb_8Xn+ZHigJPQKP6pQgp=PqJsqT4tyrmg@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <d4684801-7d2a-55d8-c022-c4bcdabc1b6c@linaro.org>
-Date: Tue, 18 May 2021 09:27:50 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8xEJrECb9+nb_8Xn+ZHigJPQKP6pQgp=PqJsqT4tyrmg@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
+ (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
+ id 1lj5Ip-00030m-Va; Tue, 18 May 2021 15:22:51 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:3048)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
+ id 1lj5In-00017k-E5; Tue, 18 May 2021 15:22:51 -0400
+Received: from dggems705-chm.china.huawei.com (unknown [172.30.72.60])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4Fl5Qn3bLkzqV7X;
+ Wed, 19 May 2021 03:19:13 +0800 (CST)
+Received: from dggema714-chm.china.huawei.com (10.3.20.78) by
+ dggems705-chm.china.huawei.com (10.3.19.182) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
+ 15.1.2176.2; Wed, 19 May 2021 03:22:42 +0800
+Received: from lhreml703-chm.china.huawei.com (10.201.108.52) by
+ dggema714-chm.china.huawei.com (10.3.20.78) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.2176.2; Wed, 19 May 2021 03:22:41 +0800
+Received: from lhreml703-chm.china.huawei.com ([10.201.68.198]) by
+ lhreml703-chm.china.huawei.com ([10.201.68.198]) with mapi id 15.01.2176.012; 
+ Tue, 18 May 2021 20:22:39 +0100
+From: Salil Mehta <salil.mehta@huawei.com>
+To: Andrew Jones <drjones@redhat.com>
+Subject: RE: [RFC PATCH v2 5/6] hw/arm/virt-acpi-build: Add PPTT table
+Thread-Topic: [RFC PATCH v2 5/6] hw/arm/virt-acpi-build: Add PPTT table
+Thread-Index: AQHXMDzb5q8WzYljr0ilpO+8Rxsx7Krg+0EAgAgNE7D///kagIAAE+FggACrCICAABT0MA==
+Date: Tue, 18 May 2021 19:22:39 +0000
+Message-ID: <b61a7413f98a430685b838eecc2db74f@huawei.com>
+References: <20210413080745.33004-1-wangyanan55@huawei.com>
+ <20210413080745.33004-6-wangyanan55@huawei.com>
+ <1551b7d6-e010-e5c7-47e1-c347ca78a1db@huawei.com>
+ <a6ccb20f19b743a29f6aaffcf3088df2@huawei.com>
+ <20210518074221.umezsdedzyzmcbsk@gator.home>
+ <80dca9f16c5b4bef9900f6cf76c99500@huawei.com>
+ <20210518190539.fwsvl2ijb4jlzbyi@gator.home>
+In-Reply-To: <20210518190539.fwsvl2ijb4jlzbyi@gator.home>
+Accept-Language: en-US
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::931;
- envelope-from=richard.henderson@linaro.org; helo=mail-ua1-x931.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.47.29.209]
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.190;
+ envelope-from=salil.mehta@huawei.com; helo=szxga04-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bry4JgtOK98F
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "linuxarm@openeuler.org" <linuxarm@openeuler.org>,
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Linuxarm <linuxarm@huawei.com>, "wangyanan \(Y\)" <wangyanan55@huawei.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, Igor
+ Mammedov <imammedo@redhat.com>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ "Zengtao \(B\)" <prime.zeng@hisilicon.com>, yangyicong <yangyicong@huawei.com>,
+ yuzenghui <yuzenghui@huawei.com>,
+ "Wanghaibin \(D\)" <wanghaibin.wang@huawei.com>,
+ zhukeqian <zhukeqian1@huawei.com>, "lijiajie
+ \(H\)" <lijiajie11@huawei.com>, David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: jp2G/eTjSz3a
 
-On 5/18/21 7:15 AM, Peter Maydell wrote:
-> On Sat, 17 Apr 2021 at 01:02, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
->>
->> This is BFDOT for both AArch64 AdvSIMD and SVE,
->> and VDOT.BF16 for AArch32 NEON.
->>
->> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> 
->> @@ -12326,6 +12336,16 @@ static void disas_simd_three_reg_same_extra(DisasContext *s, uint32_t insn)
->>           }
->>           return;
->>
->> +    case 0xf: /* BFDOT */
->> +        switch (size) {
->> +        case 1:
->> +            gen_gvec_op4_ool(s, is_q, rd, rn, rm, rd, 0, gen_helper_gvec_bfdot);
->> +            break;
->> +        default:
->> +            g_assert_not_reached();
->> +        }
->> +        return;
-> 
-> The switch on size here seems unnecessary to me given we've already
-> decoded size earlier in the function.
+> From: Andrew Jones [mailto:drjones@redhat.com]
+> Sent: Tuesday, May 18, 2021 8:06 PM
+> To: Salil Mehta <salil.mehta@huawei.com>
+> Cc: wangyanan (Y) <wangyanan55@huawei.com>; Peter Maydell
+> <peter.maydell@linaro.org>; Michael S . Tsirkin <mst@redhat.com>; Wanghai=
+bin
+> (D) <wanghaibin.wang@huawei.com>; qemu-devel@nongnu.org; Shannon Zhao
+> <shannon.zhaosl@gmail.com>; qemu-arm@nongnu.org; Alistair Francis
+> <alistair.francis@wdc.com>; Zengtao (B) <prime.zeng@hisilicon.com>;
+> yangyicong <yangyicong@huawei.com>; yuzenghui <yuzenghui@huawei.com>; Igo=
+r
+> Mammedov <imammedo@redhat.com>; zhukeqian <zhukeqian1@huawei.com>; lijiaj=
+ie (H)
+> <lijiajie11@huawei.com>; David Gibson <david@gibson.dropbear.id.au>; Linu=
+xarm
+> <linuxarm@huawei.com>; linuxarm@openeuler.org
+> Subject: Re: [RFC PATCH v2 5/6] hw/arm/virt-acpi-build: Add PPTT table
+>=20
+> On Tue, May 18, 2021 at 06:34:08PM +0000, Salil Mehta wrote:
+> >  Those benefits, when vcpu pinning is used, are the same benefits
+> > > as for the host, which already use PPTT tables to describe topology, =
+even
+> > > though hot plug isn't supported.
+> >
+> > yes sure, you mean pinning vcpus according to the cpu topology for perf=
+ormance?
+>=20
+> Yup
 
-Size is opcode here, and the switch gains extra members as we continue.  I'm 
-beginning the form we need to continue with.
+Already Agreed :)
+
+> > > Now, if you're saying we should only generate tables for smp.cpus, no=
+t
+> >
+> > Correct. This is what I thought we must be doing even now
+> >
+> > > smp.maxcpus, because hot plug isn't supported anyway, then I see your
+> > > point. But, it'd be better to require smp.cpus =3D=3D smp.maxcpus in =
+our
+> > > smp_parse function to do that, which we've never done before, so we m=
+ay
+> > > have trouble supporting existing command lines.
+> >
+> > I am trying to recall, if the vcpu Hotplug is not supported then can th=
+ey
+> > ever be different?
+> >
+> > cpus =3D  (threads * cores * sockets)
+> >
+> > static void smp_parse(MachineState *ms, QemuOpts *opts)
+> > {
+> >      [...]
+> >
+> >         if (sockets * cores * threads !=3D ms->smp.max_cpus) {
+> >             warn_report("Invalid CPU topology deprecated: "
+> >                         "sockets (%u) * cores (%u) * threads (%u) "
+> >                         "!=3D maxcpus (%u)",
+> >                         sockets, cores, threads,
+> >                         ms->smp.max_cpus);
+> >         }
+> >      [...]
+> > }
+> >
+> > Although, above check does not exit(1) and just warns on detecting inva=
+lid
+> > CPU topology. Not sure why?
+>=20
+> Hmm, not sure what code you have there. I see this in
+> hw/core/machine.c:smp_parse
+>=20
+>         if (ms->smp.max_cpus < cpus) {
+>             error_report("maxcpus must be equal to or greater than smp");
+>             exit(1);
+>         }
+>=20
+>         if (sockets * cores * threads !=3D ms->smp.max_cpus) {
+>             error_report("Invalid CPU topology: "
+>                          "sockets (%u) * cores (%u) * threads (%u) "
+>                          "!=3D maxcpus (%u)",
+>                          sockets, cores, threads,
+>                          ms->smp.max_cpus);
+>             exit(1);
+>         }
+>=20
+> >
+> > Well if you think there are subtleties to support above implementation =
+and
+> > we cannot do it now then sure it is your call. :)
+>=20
+> The problem is that -smp 4,maxcpus=3D8 doesn't error out today, even thou=
+gh
+> it doesn't do anything. OTOH, -smp 4,cores=3D2 doesn't error out either, =
+but
+> we're proposing that it should. Maybe we can start erroring out when
+> cpus !=3D maxcpus until hot plug is supported?
+
+Agreed, both don't make any sense if hotplug is not supported and ideally s=
+hould
+fail with error. We should block any such topology configuration.
 
 
-r~
+Thanks
+Salil

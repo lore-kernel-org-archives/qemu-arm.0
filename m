@@ -1,188 +1,262 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp170920lfm;
-        Tue, 18 May 2021 00:50:36 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwwtsloUsbHI4vt4fs/Ycx+ZHXWIjZSCPIEjagrfm47hFIakxOU2LQpXvoesOKJyxrOJyQT
-X-Received: by 2002:a17:906:2a08:: with SMTP id j8mr4647888eje.483.1621324236659;
-        Tue, 18 May 2021 00:50:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621324236; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp188733lfm;
+        Tue, 18 May 2021 01:16:28 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxMFt1L3lyXbwhJBf3tUurxZUf9ryCjqy7Lz2llpSI8yVEmac0Kv3LyJKjVYU4UTZ6F7Qpr
+X-Received: by 2002:ab0:59cb:: with SMTP id k11mr5177311uad.100.1621325787910;
+        Tue, 18 May 2021 01:16:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621325787; cv=none;
         d=google.com; s=arc-20160816;
-        b=cxITcoDYeGXi5+VK27iXb+/EwR0+qGtvS8UbBgEB8rZn+OQ/8h2N32YPDeVrtfFpVT
-         UcbOceSZihkbLlyfUh6fZqCAjnWddpj3xgEH+KJVlZhRJJNeUIxBR4ugNHXitr067XlQ
-         TaXjKGqaIrrEA+3+ZDn0roorBba8qTJOrYpoVWgi41GsU0twKeKzFAIa1v2YGWa+xM1o
-         j55nvQWGtbB7bGlkUlVhk9vdyWFcWjxmIjr9bjWQzTEK1OKH5j9eSnddzi2s8Tva4Djw
-         rW+A2YztwkMtsMGxhZT/BMzGC674BuKhi6VfTeelc9QgS3QYrt5aJJEb78hJ5gHyzBd4
-         0zYQ==
+        b=mIpgKvihB+rXnyAhx86W3/OFt3F0Pe5tVRlFEyKku6PmxJelJmKF5ZqWnsqGDTL7O0
+         mRXXplXL1BrjUUVJ9i2HhiasYdWms1yktDrO4eg3TFnv+6KDUzecj/CtbgXqQp7o68CV
+         B9+/wzzsvXcpCShWOU+xQaHVZBi/oYP88QRbIgfphIOhci30SFGkHQmlzK6Tp2gr7Eyq
+         X3rjfI8nCCBewGDY2KdX7m0EGWitgi6JT/v8uMarXRpMqGZ+cardSPgVLKAdRVr0rXVG
+         pCoxHhmQSH+ZePMeHGS7SK/81yvW4ArgA69vE5xKXr0tC4nwHHuZxonYFpo0sqEGOuRf
+         FPXg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=NW4UL0U5sPtzfc4lmGw05bHMRbyTb+TE8EPYexCTqqU=;
-        b=oQ3DvW2qCuCd9iiz1uboEfn408YouOie0vLdgLr3+1LkifF0kgxfsGdp/8EZqkpEIC
-         N6bNOAFAzC/ttpUhFjGjj4Kh7QikZcBBcgINIHjSW1dCgkbNKR9YVDgKMdZC4SUml2y0
-         uTPAg5Ask/7VMUuzUCW01HQB3aUdSvhqCa4vpYqIieRKpNF5HyX9GHDudyLCuzSU5xAB
-         PASQFPuTRQldF3LF93X7mWI87afpnU0FP5MuUiyQEZyufLB5D/lZ6vWc3B6gOm5+T38Z
-         WRdIS9EGvDnljB/RtQIWtyOpKyFWuQxdcU9C7UmrZTHd5K12eUM8KU5joUD2GnkjwGMl
-         99Ug==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=WYUbH1vp7lcuyX1ydcysonHAqGTp/+jd+XuK4Y1GRUU=;
+        b=h6uaRb5fdoj0olf2d5yKpRQlMGAsRe9G1B/wN1vU9bS7JvV9l8aoxmJRk+oLV8/D/W
+         3mKBN1Y1c+YWQovmJMyfTi/U/DJ9w0RGG1nESMrBe8Q/jiKu5oOoL0xkR9CdVO8Ammvf
+         lvE2aOQEdrvPcdPc6JRBgezfmj2jGDzrEBgQ5jgP6OHMsoNX03iSuJs0FQyL547Ki4jk
+         ryK3Mpuw/LPruPXTF3lfLTfn0OjXkZP4SKyCQWJIkomZSdkjQfg0gNE88FMMfrJDxPFP
+         2EXRZV1Qo5nnGC/wsXOH/dIm3uMN93FqXn93BscjxcyWfsNNpgVavBaC6NXDwj3RBzm4
+         ewZQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VSREbdcO;
-       spf=pass (google.com: domain of linux-kernel-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=linux-kernel-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <linux-kernel-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id g21si16708970ejx.118.2021.05.18.00.50.36;
-        Tue, 18 May 2021 00:50:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of linux-kernel-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=f8W5R7D2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id l127si3512735vkh.38.2021.05.18.01.16.27
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 18 May 2021 01:16:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VSREbdcO;
-       spf=pass (google.com: domain of linux-kernel-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=linux-kernel-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1347279AbhERHvw (ORCPT <rfc822;semen.protsenko@linaro.org>
-        + 20 others); Tue, 18 May 2021 03:51:52 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:22368 "EHLO
-        us-smtp-delivery-124.mimecast.com" rhost-flags-OK-OK-OK-OK)
-        by vger.kernel.org with ESMTP id S234891AbhERHvu (ORCPT
-        <rfc822;linux-kernel@vger.kernel.org>);
-        Tue, 18 May 2021 03:51:50 -0400
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=f8W5R7D2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:59820 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1liutv-0000YZ-4P
+	for alex.bennee@linaro.org; Tue, 18 May 2021 04:16:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43684)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1liutU-0000Xe-EQ
+ for qemu-arm@nongnu.org; Tue, 18 May 2021 04:16:00 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:46958)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1liutR-0005sc-5P
+ for qemu-arm@nongnu.org; Tue, 18 May 2021 04:15:59 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1621324232;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=NW4UL0U5sPtzfc4lmGw05bHMRbyTb+TE8EPYexCTqqU=;
-        b=VSREbdcO6qM7L034L+lHNFgh6pd/PhtiE0xHMRJF3rrYN3jxz7n6woBdx4tbHGED8e8qy9
-        PWY4biFoTsdikJfQbnrG2VMKppttfCK5irAP3A8Dz1G6lPhFNBD2tCIukrRSp0riSZgbNk
-        rG/+pKhTI4cH5W1knPvEHo380MqLfqk=
-Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
- [209.85.218.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-54-6ddMeOR1Py26oBgc02-tAg-1; Tue, 18 May 2021 03:50:31 -0400
-X-MC-Unique: 6ddMeOR1Py26oBgc02-tAg-1
-Received: by mail-ej1-f69.google.com with SMTP id m18-20020a1709062352b02903d2d831f9baso2022680eja.20
-        for <linux-kernel@vger.kernel.org>; Tue, 18 May 2021 00:50:31 -0700 (PDT)
+ s=mimecast20190719; t=1621325755;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=WYUbH1vp7lcuyX1ydcysonHAqGTp/+jd+XuK4Y1GRUU=;
+ b=f8W5R7D2g1ifrh4Dus9Wl07Ki0bJ4NwjbBd8DVWrrlVzZmb4PxLGPQOXHrxBbEeuTgfPBV
+ Jdebp7xC7j3uVwcsfcPG9eVVI8Fe0vVPDmSnPXb+5QV3K5jKQJid+4Qj6xknL0f44a4Dv5
+ zaDl/9mh0NBSJVSzNyOmCR6woBcAzmk=
+Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
+ [209.85.208.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-299-shGN1f1FPXGm81VDfM4NoQ-1; Tue, 18 May 2021 04:15:54 -0400
+X-MC-Unique: shGN1f1FPXGm81VDfM4NoQ-1
+Received: by mail-ed1-f71.google.com with SMTP id
+ i3-20020aa7dd030000b029038ce772ffe4so5364762edv.12
+ for <qemu-arm@nongnu.org>; Tue, 18 May 2021 01:15:54 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:content-transfer-encoding
-         :in-reply-to;
-        bh=NW4UL0U5sPtzfc4lmGw05bHMRbyTb+TE8EPYexCTqqU=;
-        b=suW2s9QHvvYkbvDkPf+XpEYZ7ZOGx/h9+CmIuSmP0XDeJtnEoqS3uKs6LSydrkdvjX
-         BLPKP5vSAIeEWGgnPj4xaDy/2jh6gP6yWGUh4v6kdP+8kRtLFwqmYRztej8kkBJn70t1
-         Z0N4hHgzUZcXFJiwsnpS++NHG0Wl62bYypdj2Imc8LOIbz7e0MVu9mQgXvSnp8WzoVnL
-         pp+SOgpjglekwXc9NvvHWFusWYxpGmFvjEd0YjviDQtHhN8yfP1LBO2xi3U5DeYjQwZm
-         pdcAWxNpYKRjXVn0w3NgamupA0sEAx9QDGwf3GrxcrtO2aAS5Wbq/wyl5JyXzGDeMhj4
-         cRYg==
-X-Gm-Message-State: AOAM5317/CoL5Al49Y2kNw62erERr7NE+Bi+0BvRuSaEuRvkFR1HZYVU
-        qBWPPBRwqQqMufHew4Mqdntv7OrprlcMirXf1JPcVPwmvdPfr7rMyB2A0ciWfut1vtT4IMPrDWI
-        yQ0j1vb5QY7Q5vK88/39u9m6a
-X-Received: by 2002:a05:6402:2044:: with SMTP id bc4mr5610905edb.282.1621324230210;
-        Tue, 18 May 2021 00:50:30 -0700 (PDT)
-X-Received: by 2002:a05:6402:2044:: with SMTP id bc4mr5610896edb.282.1621324230081;
-        Tue, 18 May 2021 00:50:30 -0700 (PDT)
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=WYUbH1vp7lcuyX1ydcysonHAqGTp/+jd+XuK4Y1GRUU=;
+ b=MUpLQoIxX8gPv7vOU8fGJYS+RmToh72kTYiaYKps47y7F0VpzXQB0Ci7+goOt0I7f3
+ 3JosVl83C2piiafHwS0zaXsKZ3te9/dOhWdPph/w0Q1Cj73ES2fIbnxlvhyn8+xHYeo9
+ A6wcTanC8wtmWVZCSIBl1QBNqkYJU3Lkv/jy8vUKQnbrfAsp2AQFpKZX3Yi1yHrxxf4G
+ 8zke3WkKsdkcmKnBxTXffRaMqbZ65MQpl+5XOch8EP+mOJsFSRP4NDTe+DzV4FmTM2xO
+ eFnD7aO3CEqiUtCZWFrZMsw1pimxeM4tHMIIKFbOaFY2ddlEkpJ6QsNhrk+GoU4huqQa
+ FDPQ==
+X-Gm-Message-State: AOAM533u/he6bX9E1T5wJ7CG6LyKWFpJbcL6jC2A89lcZE6CR5pDQSw6
+ vUPboDNRdhsmT4CapcctFyKunxPuHgYio8SWZLnNNijAh/B5brl2zW72PXcGHp1t1JrqKnN6Zuc
+ ZUoM0nEVMXL1C
+X-Received: by 2002:aa7:db57:: with SMTP id n23mr5620137edt.229.1621325753273; 
+ Tue, 18 May 2021 01:15:53 -0700 (PDT)
+X-Received: by 2002:aa7:db57:: with SMTP id n23mr5620101edt.229.1621325752940; 
+ Tue, 18 May 2021 01:15:52 -0700 (PDT)
 Received: from gator.home (cst2-174-132.cust.vodafone.cz. [31.30.174.132])
-        by smtp.gmail.com with ESMTPSA id d15sm8128909eds.68.2021.05.18.00.50.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 18 May 2021 00:50:29 -0700 (PDT)
-Date:   Tue, 18 May 2021 09:50:27 +0200
-From:   Andrew Jones <drjones@redhat.com>
-To:     Salil Mehta <salil.mehta@huawei.com>
-Cc:     "wangyanan (Y)" <wangyanan55@huawei.com>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        "Michael S . Tsirkin" <mst@redhat.com>,
-        Igor Mammedov <imammedo@redhat.com>,
-        Shannon Zhao <shannon.zhaosl@gmail.com>,
-        Alistair Francis <alistair.francis@wdc.com>,
-        David Gibson <david@gibson.dropbear.id.au>,
-        "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-        "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-        yangyicong <yangyicong@huawei.com>,
-        "Zengtao (B)" <prime.zeng@hisilicon.com>,
-        "Song Bao Hua (Barry Song)" <song.bao.hua@hisilicon.com>,
-        "Wanghaibin (D)" <wanghaibin.wang@huawei.com>,
-        zhukeqian <zhukeqian1@huawei.com>,
-        yuzenghui <yuzenghui@huawei.com>,
-        "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-        "linuxarm@openeuler.org" <linuxarm@openeuler.org>
-Subject: Re: [RFC PATCH v3 4/9] hw/arm/virt: Initialize the present cpu
- members
-Message-ID: <20210518075027.wjpdjvoam7dlzign@gator.home>
+ by smtp.gmail.com with ESMTPSA id l11sm12191798edw.42.2021.05.18.01.15.51
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 18 May 2021 01:15:52 -0700 (PDT)
+Date: Tue, 18 May 2021 10:15:50 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: "wangyanan (Y)" <wangyanan55@huawei.com>
+Subject: Re: [RFC PATCH v3 6/9] hw/arm/virt-acpi-build: Use possible cpus in
+ generation of MADT
+Message-ID: <20210518081550.d3hof7jr5soeuwo5@gator.home>
 References: <20210516102900.28036-1-wangyanan55@huawei.com>
- <20210516102900.28036-5-wangyanan55@huawei.com>
- <6c8f9c3502384f648f30c7381e87dda9@huawei.com>
- <68883a1b-5303-da13-a051-e909e1d1f71b@huawei.com>
- <6d8b9142e8a34d1390f2f0b4bfb53a00@huawei.com>
+ <20210516102900.28036-7-wangyanan55@huawei.com>
+ <20210517074256.xjqwejbi4mfsvug2@gator.home>
+ <ac1b0f17-523d-adb8-c4f4-aa5c93966726@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+In-Reply-To: <ac1b0f17-523d-adb8-c4f4-aa5c93966726@huawei.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <6d8b9142e8a34d1390f2f0b4bfb53a00@huawei.com>
-Precedence: bulk
-List-ID: <linux-kernel.vger.kernel.org>
-X-Mailing-List: linux-kernel@vger.kernel.org
-X-TUID: X13xdyODmctX
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=drjones@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.374,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Barry Song <song.bao.hua@hisilicon.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S . Tsirkin" <mst@redhat.com>, wanghaibin.wang@huawei.com,
+ zhukeqian1@huawei.com, qemu-devel@nongnu.org, yangyicong@huawei.com,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+ Alistair Francis <alistair.francis@wdc.com>, prime.zeng@hisilicon.com,
+ Paolo Bonzini <pbonzini@redhat.com>, yuzenghui@huawei.com,
+ Igor Mammedov <imammedo@redhat.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: j7xgFIWhgepE
 
-On Tue, May 18, 2021 at 07:04:51AM +0000, Salil Mehta wrote:
-> > From: wangyanan (Y)
-> > Sent: Tuesday, May 18, 2021 5:43 AM
-> > 
-> > Hi Salil,
-> > 
-> > On 2021/5/18 4:48, Salil Mehta wrote:
-> > >> From: Qemu-arm
-> > [mailto:qemu-arm-bounces+salil.mehta=huawei.com@nongnu.org]
-> > >> On Behalf Of Yanan Wang
-> > >> Sent: Sunday, May 16, 2021 11:29 AM
-> > >> To: Peter Maydell <peter.maydell@linaro.org>; Andrew Jones
-> > >> <drjones@redhat.com>; Michael S . Tsirkin <mst@redhat.com>; Igor Mammedov
-> > >> <imammedo@redhat.com>; Shannon Zhao <shannon.zhaosl@gmail.com>; Alistair
-> > >> Francis <alistair.francis@wdc.com>; David Gibson
-> > >> <david@gibson.dropbear.id.au>; qemu-devel@nongnu.org; qemu-arm@nongnu.org
-> > >> Cc: Song Bao Hua (Barry Song) <song.bao.hua@hisilicon.com>; zhukeqian
-> > >> <zhukeqian1@huawei.com>; yangyicong <yangyicong@huawei.com>; Zengtao (B)
-> > >> <prime.zeng@hisilicon.com>; Wanghaibin (D) <wanghaibin.wang@huawei.com>;
-> > >> yuzenghui <yuzenghui@huawei.com>; Paolo Bonzini <pbonzini@redhat.com>;
-> > >> Philippe Mathieu-Daudé <philmd@redhat.com>
-> > >> Subject: [RFC PATCH v3 4/9] hw/arm/virt: Initialize the present cpu members
-> > >>
-> > >> We create and initialize a cpuobj for each present cpu in
-> > >> machvirt_init(). Now we also initialize the cpu member of
-> > >> structure CPUArchId for each present cpu in the function.
-> > > [...]
-> > >
-> > >>           qdev_realize(DEVICE(cpuobj), NULL, &error_fatal);
-> > >> +
-> > >> +        /*
-> > >> +         * As ARM cpu hotplug is not supported yet, we initialize
-> > >> +         * the present cpu members here.
-> > >> +         */
-> > >> +        machine->possible_cpus->cpus[n].cpu = cpuobj;
-> > >
-> > > when vcpu Hotplug is not supported yet, what necessitates this change now?
-> > >
-> > The initialization will gives a way to determine whether a CPU is
-> > present or not.
-> > At least, for now it will be used when generating ACPI tables, e.g.
-> > DSDT, MADT.
-> > See patch 5 and 6.
+On Tue, May 18, 2021 at 12:27:59AM +0800, wangyanan (Y) wrote:
+> Hi Drew,
 > 
-> yes,  but why do you require it now as part of the vcpu topology change?
+> On 2021/5/17 15:42, Andrew Jones wrote:
+> > On Sun, May 16, 2021 at 06:28:57PM +0800, Yanan Wang wrote:
+> > > When building ACPI tables regarding CPUs we should always build
+> > > them for the number of possible CPUs, not the number of present
+> > > CPUs. So we create gicc nodes in MADT for possible cpus and then
+> > > ensure only the present CPUs are marked ENABLED. Furthermore, it
+> > > also needed if we are going to support CPU hotplug in the future.
+> > > 
+> > > Co-developed-by: Andrew Jones <drjones@redhat.com>
+> > > Signed-off-by: Andrew Jones <drjones@redhat.com>
+> > > Co-developed-by: Ying Fang <fangying1@huawei.com>
+> > > Signed-off-by: Ying Fang <fangying1@huawei.com>
+> > > Co-developed-by: Yanan Wang <wangyanan55@huawei.com>
+> > > Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
+> > > ---
+> > >   hw/arm/virt-acpi-build.c | 29 +++++++++++++++++++++++++----
+> > >   1 file changed, 25 insertions(+), 4 deletions(-)
+> > > 
+> > > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> > > index a2d8e87616..4d64aeb865 100644
+> > > --- a/hw/arm/virt-acpi-build.c
+> > > +++ b/hw/arm/virt-acpi-build.c
+> > > @@ -481,6 +481,9 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> > >       const int *irqmap = vms->irqmap;
+> > >       AcpiMadtGenericDistributor *gicd;
+> > >       AcpiMadtGenericMsiFrame *gic_msi;
+> > > +    MachineClass *mc = MACHINE_GET_CLASS(vms);
+> > > +    const CPUArchIdList *possible_cpus = mc->possible_cpu_arch_ids(MACHINE(vms));
+> > > +    bool pmu;
+> > >       int i;
+> > >       acpi_data_push(table_data, sizeof(AcpiMultipleApicTable));
+> > > @@ -491,11 +494,21 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> > >       gicd->base_address = cpu_to_le64(memmap[VIRT_GIC_DIST].base);
+> > >       gicd->version = vms->gic_version;
+> > > -    for (i = 0; i < MACHINE(vms)->smp.cpus; i++) {
+> > > +    for (i = 0; i < possible_cpus->len; i++) {
+> > >           AcpiMadtGenericCpuInterface *gicc = acpi_data_push(table_data,
+> > >                                                              sizeof(*gicc));
+> > >           ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(i));
+> > > +        /*
+> > > +         * PMU should have been either implemented for all CPUs or not,
+> > > +         * so we only get information from the first CPU, which could
+> > > +         * represent the others.
+> > > +         */
+> > > +        if (i == 0) {
+> > > +            pmu = arm_feature(&armcpu->env, ARM_FEATURE_PMU);
+> > > +        }
+> > > +        assert(!armcpu || arm_feature(&armcpu->env, ARM_FEATURE_PMU) == pmu);
+> > This doesn't belong in this patch. The commit message doesn't even mention
+> > it. Also, I don't think we should do this here at all. If we want to
+> > ensure that all cpus have a pmu when one does, then that should be done
+> > somewhere like machvirt_init(), not in ACPI generation code which doesn't
+> > even run for non-ACPI VMs.
+> Sorry, I should have stated the reason of this change in the commit message.
+> Actually code change here and mp_affinity part below aim to make it correct
+> to create gicc entries for all possible cpus.
 > 
-> As-far-as-i-can-see, PPTT table changes(part of patch 5/9) do not require
-> this change. Change in Patch 5/9 has also been done in anticipation of
-> some future requirement(vcpu Hotplug?).
+> We only initialize and realize cpuobj for present cpus in machvirt_init,
+> so that we will get null ARMCPU pointer here for the non-present cpus,
+> and consequently we won't able to check from "armcpu->env" for the
+> non-present cpus. The same about "armcpu->mp_affinity".
 > 
-> Please correct me here if I am wrong?
->
+> That's the reason I use PMU configuration of the first cpu to represent the
+> others. I assume all cpus should have a pmu when one does here since it's
+> how armcpu->env is initialized. And the assert seems not needed here.
+> 
+> Is there any better alternative way about this?
 
-Hi Salil,
+Move the
 
-The problem is that we've never required smp.cpus == smp.maxcpus, so
-a user could have smp.cpus < smp.maxcpus. We want the topology to match
-maxcpus, but only enable cpus. However, if you think we should just not
-allow cpus < maxcpus until hot plug is sorted out, then we could discuss
-a way of trying to enforce cpus == maxcpus, but I'm not sure how we can
-without breaking existing command lines.
+  if (arm_feature(&armcpu->env, ARM_FEATURE_PMU)) {
+      gicc->performance_interrupt = cpu_to_le32(PPI(VIRTUAL_PMU_IRQ));
+  }
+
+into the if (possible_cpus->cpus[i].cpu != NULL) block?
+
+> > > +
+> > >           gicc->type = ACPI_APIC_GENERIC_CPU_INTERFACE;
+> > >           gicc->length = sizeof(*gicc);
+> > >           if (vms->gic_version == 2) {
+> > > @@ -504,11 +517,19 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> > >               gicc->gicv_base_address = cpu_to_le64(memmap[VIRT_GIC_VCPU].base);
+> > >           }
+> > >           gicc->cpu_interface_number = cpu_to_le32(i);
+> > > -        gicc->arm_mpidr = cpu_to_le64(armcpu->mp_affinity);
+> > > +        gicc->arm_mpidr = cpu_to_le64(possible_cpus->cpus[i].arch_id);
+> > Hmm, I think we may have a problem. I don't think there's any guarantee
+> > that possible_cpus->cpus[i].arch_id == armcpu->mp_affinity, because
+> > arch_id comes from virt_cpu_mp_affinity(), which is arm_cpu_mp_affinity,
+> > but with a variable cluster size, however mp_affinity comes from
+> > arm_cpu_mp_affinity with a set cluster size. Also, when KVM is used,
+> > then all bets are off as to what mp_affinity is.
+> Right! Arch_id is initialized by virt_cpu_mp_affinity() in machvirt and then
+> mp_affinity is initialized by arch_id. Here they two have the same value.
+> 
+> But mp_affinity will be overridden in kvm_arch_init_vcpu() when KVM is
+> enabled. Here they two won't have the same value.
+> > We need to add some code that ensures arch_id == mp_affinity,
+> Can we also update the arch_id at the same time when we change mp_affinity?
+
+The proper fix is to send patches to KVM enabling userspace to control
+MPIDR. Otherwise we can't be sure we don't have inconsistencies in QEMU,
+since some user of possible_cpus could have made decisions or copied IDs
+prior to KVM vcpu init time. Now, all that said, I think
+virt_cpu_mp_affinity() should be generating the same ID as KVM does, so
+maybe it doesn't matter in practice right now, but we're living with the
+risk that KVM could change. For now, maybe we should just sanity check
+that the KVM values match the possible_cpus values and emit warnings if
+they don't?
 
 Thanks,
 drew
+

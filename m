@@ -1,97 +1,107 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp1516128lfm;
-        Wed, 19 May 2021 06:51:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyglS8Oy6/F3BNZc5dSYfaCzz3dHM+w6ptCMLEtyOFJqcQ4uZW2YPHQbCUZNh0rTjzKMQcM
-X-Received: by 2002:a92:c7a1:: with SMTP id f1mr10787574ilk.85.1621432291305;
-        Wed, 19 May 2021 06:51:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621432291; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp724154lfm;
+        Tue, 18 May 2021 12:48:56 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJys7Ja20qEFwwSD19Jr48AYmMaem/73I2RNMRyA1LLZJZlpbJK+TCVoltUumiZY+grtrHd5
+X-Received: by 2002:a92:db0e:: with SMTP id b14mr5798660iln.171.1621367336491;
+        Tue, 18 May 2021 12:48:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621367336; cv=none;
         d=google.com; s=arc-20160816;
-        b=PwoAY5vavGI2z3Dc+xlLO6s9DwemLynGCyMMsLLbjdLi9Ok2CSRwIDZ6s2tuvpTiuM
-         TfvU3J4aDUgONNZ/SDRUbKZjWwee1g2YqmdCJ7do3ZV5aWTc5sPGZYdnZbK4zzxq3bbp
-         iaAnY30hxLS3o3mNHogKnXlVWvbTOFX0VFh1AVrt/sTv2t1pcO6ZObNj7woRxWe5GECI
-         RttA6H04HUtRLb7rH8YD9/oKRZsq/yUrHfPJw7qcoTxdHEnhppmg2IkPWGYOLGG/HNRx
-         AWve6BEVjfTiwoRz0LfN2PU/927hWGEgYd4ulG/0s2asbjxezlkX5Gi1Q5Qfjb7iWQLK
-         6n1w==
+        b=Rrrg2Fe2LL2D7moEkyfcGyptDpd6LOCBatDrdToLl77Iaut0T7R6Qm56fts2FytOIL
+         ddX+K7eisBFvMesf48vzuCmXVf+hh1DQjyXVqOwVlMCUfBLoCnetO1XL8cBeG4qRPSu9
+         +rQNQfsWA6B91cNpD/AQzRXYgXISHQauJmYzk92gI1OudepN25kilXJMbrEhdtghECso
+         NfmTnuzG2Pxk3S63GY3BFJUAZE1jHzQfdo3HnW2RNVKM3KqFETYBpqEq54ZS4a5l7HD1
+         6oX8aEwC5RlVSIgoAI5gBzeVb5BEECDHL0tGfBgCOVPbcCsHzu2ZXZMm9wiflE0XUx6m
+         ad4w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=BPdeSNHPC5gzOc8G+MgLW1Tc38eLCfB3wU88bxzgJds=;
-        b=NgHdLJg7iW3Xj3UgrmLl6/PbzNQcVIi2ZEoKY7n9qWWfY/fJqZ6ZiL62kq7sFWrvhd
-         bFADEYA+WMKUnTEeWaYkXMD+23S6X00YLj+z3aZ5YApfraT86RcbdjNfWKCv/3qAusFD
-         zF6GP/TBb39m+jNK2A0Sb+jNVRIyWBPjZSlP+P0VTuOVN/MTh/2sfvgnctlTAVYzYr6Y
-         /m6BL2K9b3DTDYlXUB5vuVuX7xXZ2PzG0emG27r76aNTS56KzY+A7mvmyMK7wgZPx0jk
-         5QGDVRHD1BVrVjxRrN6jgGFpVdh2fuzvO9A9njsXdg59p9kTNc+6+mCihEIWjUmp27uq
-         iuIg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:from:subject:mime-version
+         :message-id:date:dkim-signature;
+        bh=LsVPgL3TR/DLvNR166EDGInKD/HJObu0z2fv8TpJ1yE=;
+        b=Ye2T03ca6SnB8Ovls2vY0th9W10rEOQvA+m2NT1TXXQvIAZKTbP1KF3qhH98521Tv+
+         szolAoODzvMG0+rrQM30OjZ2UFSZf6E/ATV51k8pj8vm9UHp4FxzQZdXc833D0/rngs3
+         u/Hwi7XxcvFvColSijM44gTc9kB+eYqFPxlIIoSxTecWMjGKjRv5jt4k+7VTdhV8/wNl
+         1qdTUQFTlfgrHa6a5IXjpfkACTmv0NcfPnIPR4YTPjAYL1+PySSO3wi7lTwpF2LfIfWH
+         9Mzj3QiRDtrCOv8m9M4dLXqYUAOVt4Gz0TKJ4f2GXibcBnmdVkpBiYr4hTgmuGcQlauA
+         UtOA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=rO5lwvv6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t7si10416387ilm.97.2021.05.19.06.51.31
+        by mx.google.com with ESMTPS id w36si9361392jal.44.2021.05.18.12.48.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 19 May 2021 06:51:31 -0700 (PDT)
+        Tue, 18 May 2021 12:48:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=rO5lwvv6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:51426 helo=lists1p.gnu.org)
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:50452 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ljMbi-0005lj-KG
-	for alex.bennee@linaro.org; Wed, 19 May 2021 09:51:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40522)
+	id 1lj5i3-0002bZ-RJ
+	for alex.bennee@linaro.org; Tue, 18 May 2021 15:48:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36872)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1ljMDi-0003qw-1I; Wed, 19 May 2021 09:26:42 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:3626)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1ljMDe-0003PU-V7; Wed, 19 May 2021 09:26:41 -0400
-Received: from dggems706-chm.china.huawei.com (unknown [172.30.72.60])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4FlYV95B4dzsSXT;
- Wed, 19 May 2021 21:23:45 +0800 (CST)
-Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
- dggems706-chm.china.huawei.com (10.3.19.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2176.2; Wed, 19 May 2021 21:26:31 +0800
-Received: from [10.174.187.128] (10.174.187.128) by
- dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
- 15.1.2176.2; Wed, 19 May 2021 21:26:30 +0800
-Subject: Re: [RFC PATCH v2 5/6] hw/arm/virt-acpi-build: Add PPTT table
-To: Andrew Jones <drjones@redhat.com>, Salil Mehta <salil.mehta@huawei.com>
-References: <20210413080745.33004-1-wangyanan55@huawei.com>
- <20210413080745.33004-6-wangyanan55@huawei.com>
- <1551b7d6-e010-e5c7-47e1-c347ca78a1db@huawei.com>
- <a6ccb20f19b743a29f6aaffcf3088df2@huawei.com>
- <20210518074221.umezsdedzyzmcbsk@gator.home>
- <80dca9f16c5b4bef9900f6cf76c99500@huawei.com>
- <20210518190539.fwsvl2ijb4jlzbyi@gator.home>
- <20210519082735.yru7wpusq7lnmgj5@gator.home>
-From: "wangyanan (Y)" <wangyanan55@huawei.com>
-Message-ID: <4b64cb10-7825-e83c-8728-f9dde0d53b4b@huawei.com>
-Date: Wed, 19 May 2021 21:26:30 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
-MIME-Version: 1.0
-In-Reply-To: <20210519082735.yru7wpusq7lnmgj5@gator.home>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-Content-Language: en-US
-X-Originating-IP: [10.174.187.128]
-X-ClientProxiedBy: dggeme719-chm.china.huawei.com (10.1.199.115) To
- dggpemm500023.china.huawei.com (7.185.36.83)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191;
- envelope-from=wangyanan55@huawei.com; helo=szxga05-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from
+ <3xBmkYAcKCJMI1AGHE13BB381.zB9D19H-xE9ABA3AH.BE3@flex--venture.bounces.google.com>)
+ id 1lj5gg-0007r0-1G
+ for qemu-arm@nongnu.org; Tue, 18 May 2021 15:47:31 -0400
+Received: from mail-yb1-xb49.google.com ([2607:f8b0:4864:20::b49]:39612)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from
+ <3xBmkYAcKCJMI1AGHE13BB381.zB9D19H-xE9ABA3AH.BE3@flex--venture.bounces.google.com>)
+ id 1lj5gV-00077B-79
+ for qemu-arm@nongnu.org; Tue, 18 May 2021 15:47:29 -0400
+Received: by mail-yb1-xb49.google.com with SMTP id
+ d20-20020a25add40000b02904f8960b23e8so14932247ybe.6
+ for <qemu-arm@nongnu.org>; Tue, 18 May 2021 12:47:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=date:message-id:mime-version:subject:from:to:cc;
+ bh=LsVPgL3TR/DLvNR166EDGInKD/HJObu0z2fv8TpJ1yE=;
+ b=rO5lwvv6Opr3Nbkamv65643pioqO0vHSPf1ycfSmMz5VIvPJWb2OY2mqHvwzjQ91KV
+ 7iah783zLoZCnBURuV3NO7CuK0G82M4whSz5EZROZWI1BPiVh/lVvPn7zZYzbZ8q4EaR
+ nwDOhWJLowcdx9UYcjBQwQSE+0+0ViGF6hITuJpnUIRDsm60cIQlbJIgWfd9UaoH4PYw
+ S5WBSYzbR7ToIeVs4S+htcQVK2mjIlpDpGRfzscJ9Xt+23UNtyNKdC8cYZJ4m56ly/wK
+ SuiBhE4u6QgvkWH/XPJ7L6LKXipG2LAmeinAJ1OZzJnvt3yfRX6jrRunrwmiTmYIRkFa
+ FaOA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
+ bh=LsVPgL3TR/DLvNR166EDGInKD/HJObu0z2fv8TpJ1yE=;
+ b=DZk24fixHnkVE3MhXN+YoVrIaN/sYwmhpi7KYAHD8wsBn81eHEJAM7fMLzV6ETlBC8
+ u1HWWpmeldBxm079NZ1CQOEP0g5xSlB5dpmqO8M0stBq+5dlG7BKIcY6Bg28YgVVXb+B
+ xkEGo4JyVywi8vypU7IvbC5LJphGvx7Z2bWXSk9KsnMkmMiqqjWy6DFZ1f63HQLLsvBi
+ PxlcADx/eieDN91vQKw6CkoMJQgosyxfXTkzIHiJGYS1xuPQ2DIkgeHWUtxbtxcYmoaB
+ 42ZVJwnm0u5PREmEKessIGB7W629Y3zvwgw8c1aKIVVZ5sjLeHEiV1Q0bPSi05VoqJIp
+ 2xoQ==
+X-Gm-Message-State: AOAM531eJfNNPP+s4jCgJCFVkqbrXQuscpqFstyKulJ6FSEsIO52Ip6m
+ m9XlKHPtGXazqsTfxPOPuuJIeTkyQfV+
+X-Received: from venture.svl.corp.google.com
+ ([2620:15c:2a3:200:5902:8a04:d917:4e93])
+ (user=venture job=sendgmr) by 2002:a05:6902:1147:: with SMTP id
+ p7mr9592485ybu.3.1621367236386; Tue, 18 May 2021 12:47:16 -0700 (PDT)
+Date: Tue, 18 May 2021 12:47:02 -0700
+Message-Id: <20210518194704.764241-1-venture@google.com>
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.31.1.751.gd2f1c929bd-goog
+Subject: [PATCH 0/2] Adds quanta-gbs-bmc machine to nuvoton boards.
+From: Patrick Venture <venture@google.com>
+To: hskinnemoen@google.com, kfting@nuvoton.com
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+ Patrick Venture <venture@google.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b49;
+ envelope-from=3xBmkYAcKCJMI1AGHE13BB381.zB9D19H-xE9ABA3AH.BE3@flex--venture.bounces.google.com;
+ helo=mail-yb1-xb49.google.com
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -104,98 +114,19 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "linuxarm@openeuler.org" <linuxarm@openeuler.org>,
- "Michael S . Tsirkin" <mst@redhat.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Linuxarm <linuxarm@huawei.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
- Igor Mammedov <imammedo@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- Alistair Francis <alistair.francis@wdc.com>,
- "Zengtao \(B\)" <prime.zeng@hisilicon.com>, yangyicong <yangyicong@huawei.com>,
- yuzenghui <yuzenghui@huawei.com>,
- "Wanghaibin \(D\)" <wanghaibin.wang@huawei.com>,
- zhukeqian <zhukeqian1@huawei.com>, "lijiajie \(H\)" <lijiajie11@huawei.com>,
- David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1/ZgO9eED34S
+X-TUID: 1nnmQOr4ymoC
 
-Hi Drew,
+This is a board supported by OpenBmc.
 
-On 2021/5/19 16:27, Andrew Jones wrote:
-> On Tue, May 18, 2021 at 09:05:39PM +0200, Andrew Jones wrote:
->> The problem is that -smp 4,maxcpus=8 doesn't error out today, even though
->> it doesn't do anything. OTOH, -smp 4,cores=2 doesn't error out either, but
->> we're proposing that it should. Maybe we can start erroring out when
->> cpus != maxcpus until hot plug is supported?
->>
-> The more I think about this, the more I think we're in a bit of pickle and
-> need Peter Maydell to chime in. While we may want to make our -smp command
-> line option parsing more strict in order to bring some sanity to it, if
-> we do, then we'll break existing command lines, which, while may be
-> specifying useless inputs, have always gotten away with it. We probably
-> can't just change that now without forcing the user to opt into it.
-> Maybe we need to add another -smp parameter like 'strict' that has to
-> be set to 'on' in order to get this new behavior.
->
-> Peter, do you have some suggestions for this? A summary of the problem
-> we'd like to solve is as follows:
->
->   We'd like to start describing CPU topology to guests when provided
->   topology information with the '-smp ...' command line option. Currently,
->   a user may provide nearly whatever it wants on that command line option
->   and not get an error, even though the guest will not get a topology
->   description. When building the topology its important to know what
->   the user actually wants, so we're proposing to require both sockets
->   and cores be given if one of them is given. Also, since we don't yet
->   support hot plug for AArch64, we're proposing to enforce cpus == maxcpus.
->
-> Is it fine to make those changes to the parsing for 6.1 and later? (Note,
-> mach-virt will override the default smp_parse with its own, so this is
-> mach-virt specific.) Or, should we only do this if a new parameter is
-> also given, e.g. 'strict'. Something like
->
->    -smp strict=on,cpus=4,sockets=2,cores=2
->
-> would be needed by users who want to describe cpu topologies. Without
-> a strict description, then they get what they get today for their
-> DT/ACPI topology description, nothing.
- From my point of view, I like the idea of a new parameter like 
-"strict=on/off".
-I will explain the reason below but maybe I have missed something, so I also
-hope for some suggestions from Peter. :)
+Patrick Venture (2):
+  hw/arm: add quanta-gbs-bmc machine
+  hw/arm: quanta-gbs-bmc add i2c comments
 
-1) We don't need to worry about breaking any existing -smp command lines
-including the rare and strange ones any more, since we will only have more
-strict requirement for the new provided cmdlines with "strict=on" and only
-generate topology description to guest with these new cmdlines provided.
+ hw/arm/npcm7xx_boards.c | 93 +++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 93 insertions(+)
 
-2) This will provide an option for users to decide whether to enable the 
-feature
-or not. Furthermore, this feature can also work on older machine types, 
-if a user
-want to make use of cpu topology exposure to guest on older machines and is
-also sure it won't affect the application's behavior, then he can read 
-the Doc and
-properly provided a -smp cmdline with "strict=on" to boot a VM.
+-- 
+2.31.1.751.gd2f1c929bd-goog
 
-3) We don't need to bother guessing different formats of -smp command lines
-in parsing. If the new parameter is not specified or "strict=off" is 
-provided, we
-totally follow the rules in smp_parse() and disable the topology 
-exposure. And if
-"strict=on" is provided, we enable the topology exposure and enforce 
-completely
-detailed configuration like "-smp strict=on,cpus=4,sockets=2,cores=2".
-
-But maxcpus will be optional, it will default to cpus if not provided. 
-We also ensure
-it matches cpus if provided, given that cpu hotplug is not available yet.
-
-Thanks,
-Yanan
-> Thanks,
-> drew
->
-> .

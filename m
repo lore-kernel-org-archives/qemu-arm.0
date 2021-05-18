@@ -1,101 +1,119 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp697546lfm;
-        Tue, 18 May 2021 12:11:50 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwApP/uDh2H8ow/Bwt/QIkZ+7ZPFcTNDGpWnWBNliVW3MX7S0mbynMBxVAJUEzG7aizpz61
-X-Received: by 2002:a02:380d:: with SMTP id b13mr7271629jaa.77.1621365110372;
-        Tue, 18 May 2021 12:11:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621365110; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp748377lfm;
+        Tue, 18 May 2021 13:22:19 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwKr42A4XaCi4PwgGXN9n7cH4Hb846FDA5Hh53pqwHNwQFNaU+lMrJJPJxDcL57ZZrEjHcK
+X-Received: by 2002:a92:cc4c:: with SMTP id t12mr5039606ilq.232.1621369339244;
+        Tue, 18 May 2021 13:22:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621369339; cv=none;
         d=google.com; s=arc-20160816;
-        b=sa8XOkUmFAA8P2VtkAIQpNE9+u4MWvdb+ym+kxhNx0H8mMaAuKLyA9k9Afwgs11c4D
-         Iw59oCfjdvWzxwM6MFgPw7iNKtRlbLUFlnDN8GWK/w/Kpj7Zw3oaku+IGGOKAq5V0md+
-         84OBLVF1uIWdyj2UZmRKrV3MW95bLhlhefWDISEGjzV/cmB3AUxGJTedqg00YtrNb8Ws
-         2bFqjyfusRc68+wWsM+2rrjgUbge/31UeKYPZODxTXyn6zDYl4kQ84OIxlaCcHl5ySCp
-         AOBeBHnTV8lVNzF609JhtQKTsbxpnjwExOhaweZ5/L/iA4s3w2zCPhI+SEtPuM3YKbtU
-         Ih0w==
+        b=czksxdjPhKgJuwjLiXwSz2PHbaDxJCOujkYTlD8gUa0SgFdlXcGF28xnmsuXvl3Ydq
+         MRkzaa7gko1/wJstMsrgGTlJJ1+amHTRZuD1AVGc6YkIZdnHYXaJG8WcZYmgXf5i/V8t
+         x+CufQVliKqldFZxcsSodhfubofa2VjXhweQt96f9CgPivvPFK7HNOLUIVqq6xDUqc3l
+         4CfXkKOZQsfpRHi5rkcI9GiF9jAPyFyiMceardc02Am8hNMrtPE6zAH+0AOHHejZpqlV
+         n3+d3jTBG01DfLvY9L+FG3CczNjuqYncZpaITA5yw80fzhiSYTLRGq3ChXUUnUoGYH9P
+         fXGQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=fwByx8C8msqjMmho85FgN1xrYCdmXBYqdKwFSOKVW6A=;
-        b=GjEDnXQ0vLBPi6p4cA4UU2y+IsSJ2F0aBCLZcNB1nv/dqHhPuSXvHh1NM0nEgppB5Z
-         WT5oD3FU9GaVvZqm/JmM9YodftVCcgwoM/3f/mTcLoplxTcDFUQ6BgPprC6cLCep7eiY
-         WcyQNhzotUHJ++Dar5A/ejPGU/ylW0VBNFKvI37UCE/qNOH0ge9hflgUpNfHV8gFpTwl
-         nQ7zMAC3PznLkC43SKUxkZxtwBghHhs+GrjbdxWB0a8sYU/yTc2+ilFMaj32TJsVboYG
-         PjsidkQFbfdZrJGeCPYPuU0FfcX7BVlLJNwawup2+EMB78gGm040lQYQcCIH5eaDLnUx
-         d+WA==
+        bh=EtLwxEnsEfN6cj4xHan6As3MuvE7If+R0pjppMZsGg0=;
+        b=pQeFHZSJYkhvwj4uWhR0IzihP3jES/tbZastNd/VvTNLaIBS8+QGpjpV0HIn42v3Js
+         m4KLrUp/FWbu08SGv+2SnWhkzheslBfoDXxBB3yPZFGGmvFAKiApFyZ3I+qJMVVf9txg
+         qSis67QR21kERx3U1t7Z2+jCYbDWDQ4K+c4CNYNCi1s383AxCPkOjxosHV+6zSgmQNlx
+         nW/jGcikE4jaDTJ46L5sljRKNZ/9GJWYUc7F/sQjMPEt5kziKNG1hQnIZj0fDgIPQAxK
+         qLPrczlWqpKWLkrnzUKK+5OwZunvao01RiVaG3O/3SkCZjVrQyR6pZqYeOth7mBC/rDH
+         KU7A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SCVWoxNC;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=i6SEj5XJ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w18si3371690ilg.96.2021.05.18.12.11.50
+        by mx.google.com with ESMTPS id f10si1580782jav.125.2021.05.18.13.22.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 May 2021 12:11:50 -0700 (PDT)
+        Tue, 18 May 2021 13:22:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SCVWoxNC;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=i6SEj5XJ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41226 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56638 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lj589-0007WB-Ny
-	for alex.bennee@linaro.org; Tue, 18 May 2021 15:11:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57060)
+	id 1lj6EM-00041h-Cy
+	for alex.bennee@linaro.org; Tue, 18 May 2021 16:22:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42756)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1lj56Q-0005dN-64
- for qemu-devel@nongnu.org; Tue, 18 May 2021 15:10:02 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:60642)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lj64Y-0000b8-9H
+ for qemu-devel@nongnu.org; Tue, 18 May 2021 16:12:10 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:51174)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1lj56I-0001cI-0B
- for qemu-devel@nongnu.org; Tue, 18 May 2021 15:10:01 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lj64O-0006FK-VE
+ for qemu-devel@nongnu.org; Tue, 18 May 2021 16:12:09 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1621364991;
+ s=mimecast20190719; t=1621368719;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=fwByx8C8msqjMmho85FgN1xrYCdmXBYqdKwFSOKVW6A=;
- b=SCVWoxNC28TmlkLFbeyG2dgaoqsTfw8s3uo1WaLyaPmMvHZ7LVHy8BdrS45tR3aSDmWyk5
- +Ec7OicHadiXvARy9z/owRpa/bmFrpAe1jOb8yA5q22E3yhExDxNTwLO23GZhPJVDCDt6Y
- ULpmL1gaDJtXEO7tqV5m/34nhcm9r50=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-87-fORRYkyDO5W6X8AcSdhgLg-1; Tue, 18 May 2021 15:09:49 -0400
-X-MC-Unique: fORRYkyDO5W6X8AcSdhgLg-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DA183180FD61;
- Tue, 18 May 2021 19:09:47 +0000 (UTC)
-Received: from [10.10.117.64] (ovpn-117-64.rdu2.redhat.com [10.10.117.64])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 59E34687E0;
- Tue, 18 May 2021 19:09:45 +0000 (UTC)
-Subject: Re: [PATCH v2 02/12] hw/ide/Kconfig: Add missing dependency PCI ->
- IDE_QDEV
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
+ bh=EtLwxEnsEfN6cj4xHan6As3MuvE7If+R0pjppMZsGg0=;
+ b=i6SEj5XJBn+g6PrcEiDm5Zcm4FE4CzlrE69zvubuJCJXoeQ76SHPvjPbDCscwwhs/34ApE
+ +DZb+JdvbX5JzbD6JAtnmCwDhDYc5lUwdh5fGm4yHGsPh9DikOm4c7wZM4sI1pBUoF9eN3
+ TUIZcVxwhe1iNUteDJlQ3b+AyygKThQ=
+Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
+ [209.85.218.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-220-sW32GQ8MOS2eoN5Wcsb95Q-1; Tue, 18 May 2021 16:11:57 -0400
+X-MC-Unique: sW32GQ8MOS2eoN5Wcsb95Q-1
+Received: by mail-ej1-f70.google.com with SMTP id
+ n25-20020a170906b319b02903d4dc1bc46cso2859079ejz.2
+ for <qemu-devel@nongnu.org>; Tue, 18 May 2021 13:11:56 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=EtLwxEnsEfN6cj4xHan6As3MuvE7If+R0pjppMZsGg0=;
+ b=OcXbnKfbe1RWiW0P+KjZa9gjyMx9E0ioUM0Jg4ymrkB4xUsmIR9ukfpcHCzd7fMfHx
+ XLBkMHOQEnAuNA1C+cX7rNgC9nz+qbM3O+Oa+o8o9dxIfqiUBHIKyIRzuVgdCILQF8ar
+ jDoCVMI2fIqvVi4hWTJq+tNsP22NPMx+JmJ76V1ibheIh63as8rFsj8LABobesRJxtcL
+ G+0ES9VcOKE3nwJmX460jkYF3TOBHpW929kGIdWGhZW+MkTBHuHD3I1gZgToqPXd0mtB
+ NSXsaYn1LMf2QKBsX0u6zpWOfoPb5gqr0Kor8bAoDA6VhVtNKcmcC5oPPi5kahXRKpKx
+ K9pQ==
+X-Gm-Message-State: AOAM5333TNbFu7GJvrtVHamqMyOKVHd8T/KbJVXU2gYzlVpjvTpRvuIs
+ yhPN9iLJv19J4hg/xPp/TS3q7eSyhYZ18WpGLSU3Eo0efeSHodexQqlQoPsnoolcI+Q+yBxJMbU
+ CzK5PczfQuRsqFRI=
+X-Received: by 2002:a17:906:5291:: with SMTP id
+ c17mr7697740ejm.527.1621368715793; 
+ Tue, 18 May 2021 13:11:55 -0700 (PDT)
+X-Received: by 2002:a17:906:5291:: with SMTP id
+ c17mr7697730ejm.527.1621368715659; 
+ Tue, 18 May 2021 13:11:55 -0700 (PDT)
+Received: from [192.168.1.36] (31.red-83-51-215.dynamicip.rima-tde.net.
+ [83.51.215.31])
+ by smtp.gmail.com with ESMTPSA id n17sm13378101eds.72.2021.05.18.13.11.54
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 18 May 2021 13:11:55 -0700 (PDT)
+Subject: Re: [PATCH v2 00/12] hw: Various Kconfig fixes
+To: Eduardo Habkost <ehabkost@redhat.com>
 References: <20210515173716.358295-1-philmd@redhat.com>
- <20210515173716.358295-3-philmd@redhat.com>
-From: John Snow <jsnow@redhat.com>
-Message-ID: <baab8de6-032c-5351-694f-3f4a8fb016ec@redhat.com>
-Date: Tue, 18 May 2021 15:09:44 -0400
+ <20210517191856.enjxmb7v2ai6ecdh@habkost.net>
+ <20210517200416.pt4xghxiuzuwknvn@habkost.net>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <610577a6-0aea-e6af-7f93-0caa9eb75e27@redhat.com>
+Date: Tue, 18 May 2021 22:11:53 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <20210515173716.358295-3-philmd@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+In-Reply-To: <20210517200416.pt4xghxiuzuwknvn@habkost.net>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jsnow@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=jsnow@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -31
 X-Spam_score: -3.2
@@ -117,51 +135,41 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Alistair Francis <alistair.francis@wdc.com>, qemu-riscv@nongnu.org,
- "open list:IDE" <qemu-block@nongnu.org>, Bin Meng <bin.meng@windriver.com>,
+Cc: Alistair Francis <alistair.francis@wdc.com>,
+ "Daniel P. Berrange" <berrange@redhat.com>, Bin Meng <bin.meng@windriver.com>,
+ qemu-devel@nongnu.org,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
  qemu-arm@nongnu.org, qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Bin Meng <bmeng.cn@gmail.com>, David Gibson <david@gibson.dropbear.id.au>
+ qemu-riscv@nongnu.org, David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VU8sAFuSO9i7
+X-TUID: do8IyGcutd0t
 
-On 5/15/21 1:37 PM, Philippe Mathieu-Daudé wrote:
-> The pci_ide_create_devs() function is declared i hw/ide/qdev.c:
+On 5/17/21 10:04 PM, Eduardo Habkost wrote:
+> On Mon, May 17, 2021 at 03:18:56PM -0400, Eduardo Habkost wrote:
+>> CCing Build system architecture maintainer (Daniel).
 > 
->   $ git grep ide_create_drive
->   hw/ide/pci.c:491:            ide_create_drive(d->bus + bus[i], unit[i], hd_table[i]);
->   hw/ide/qdev.c:127:IDEDevice *ide_create_drive(IDEBus *bus, int unit, DriveInfo *drive)
->   include/hw/ide/internal.h:653:IDEDevice *ide_create_drive(IDEBus *bus, int unit, DriveInfo *drive);
+> Oops, I was misled by the subsection title.  Daniel is
+> responsible only for the build system documentation.
 > 
-> Fix the correct symbol dependency to avoid build failure when
-> deselecting some machines:
-> 
->    /usr/bin/ld: libcommon.fa.p/hw_ide_pci.c.o: in function `pci_ide_create_devs':
->    hw/ide/pci.c:491: undefined reference to `ide_create_drive'
-> 
-> Fixes: 8f01b41e109 ("ide: express dependencies with Kconfig")
-> Acked-by: Paolo Bonzini <pbonzini@redhat.com>
-> Reviewed-by: Bin Meng <bmeng.cn@gmail.com>
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> Do we have any volunteers willing to be listed as reviewers for
+> build system changes in MAINTAINERS?  meson.build has a
+> non-trivial amount of code and no maintainers or reviewers at
+> all.
 
-Acked-by: John Snow <jsnow@redhat.com>
+Hmmm OK I can add an entry. Ideally with Paolo/Thomas but I don't
+think they want to be listed in any new section ;)
 
-> ---
->   hw/ide/Kconfig | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/ide/Kconfig b/hw/ide/Kconfig
-> index 8e2c8934549..dd85fa3619f 100644
-> --- a/hw/ide/Kconfig
-> +++ b/hw/ide/Kconfig
-> @@ -8,7 +8,7 @@ config IDE_QDEV
->   config IDE_PCI
->       bool
->       depends on PCI
-> -    select IDE_CORE
-> +    select IDE_QDEV
->   
->   config IDE_ISA
->       bool
-> 
+>> On Sat, May 15, 2021 at 07:37:04PM +0200, Philippe Mathieu-Daudé wrote:
+>>> Various Kconfig fixes when building stand-alone machine binaries.
+>>
+>> Who should merge this once it's ready?
+
+Paolo said in v1 that I can send the pull request myself :))
+
+I will do it in the next 48h~.
+
+Thanks,
+
+Phil.
 

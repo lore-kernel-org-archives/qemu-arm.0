@@ -1,107 +1,111 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp802652lfm;
-        Tue, 18 May 2021 14:44:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz8VJSMk3Jhf6kv2OCIjydfRFUTetgYWXjV+VOWmelscdYqe92uWaw8n50lEOxVnHf9Ihqb
-X-Received: by 2002:a6b:5015:: with SMTP id e21mr6301920iob.104.1621374299303;
-        Tue, 18 May 2021 14:44:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621374299; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp896612lfm;
+        Tue, 18 May 2021 17:04:10 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzEozboB2Q0mrF3cyWg38X2E8LI7TbWJy+JHjQVoEykesUHfw2r4BfZJMdwUMIljWj+4ZKd
+X-Received: by 2002:a05:6638:3048:: with SMTP id u8mr8829822jak.91.1621382649886;
+        Tue, 18 May 2021 17:04:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621382649; cv=none;
         d=google.com; s=arc-20160816;
-        b=JpSb5jnF3TxJlDzT115yNGS2kTiVlXZFkJMnGiX65YsYTILteZhmEi3YDIls5bEK9s
-         iiLWxTN6+JktQxQMaa0j5HKVcMvjmlHetn6TZtyzYn7qyrC9HWmagKb5qHfv1X/c558G
-         SUB+d7OGkRKfUfp/N1UddX1W/hOFiYeJiFeOM9lbOtSwHP6GjJXUNDlrBeV4LumCmYhO
-         FjLjo5TaStDz+TNTkhukZ58l10+SCz/JJ0TLJluCx8tAidHa40nSv87KJH5Hw0yU5YHa
-         bp8RcCWYT/1pTkHwLio2LBIff7tYd0kpHn01jDcv5xq3kEnaIy+jotSBxieocmtkXewo
-         NfiQ==
+        b=ZmXL0ymStw16JuxJb5vrTv07DW2HeNvHH+vujZS1hKrRQlLDLE1InlUq0pBg1ElGoC
+         /10OMOVBeMITTmdC4Id0PjEf/GDCLnKL4zAbZUPcaGNqAZz5am10Xyc7CiE9V0fegPok
+         8TsCPvBSDj7cEMcP0mohYwPcEjBroCa3xByfCh8wFPH2q6Abt/EMC5nOIs4iJup6GSJQ
+         keKxSblb3gEat9JTkHCq9O9IV/8eiAiYoGClGAjrYZKIY936ANX5oKkz3Sp9HwCvQc+K
+         9TeqE2q+5O7U77a+ZMUN3CO1Pv7eDJIY3RhIxAGFEI2DCjuVjEMVizYkjGZKePqgqFs9
+         w6vQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=++hAhtO4LPF1o2LlzQdmUXQLn2+1OzzrGNr+AYgwRSs=;
-        b=wOk5M9x5sDLJEkt2yr05wBSwsjtCalbqXQgjOpj3eMU59w4L68L1u0vA5G4pgLN0qr
-         DE04vHXtsVNlhKDtVv1NnaaLS0yJx74BmP+jrfIpCqyOgrz/OaY1+j3rKu11M3nJ6mii
-         FxUtBWr+9ub9gHZS4oK+y7o3sUV8pYmXRcSlAIcrxLtDz/rf3Ta8ftUJsaZWMvuoshbm
-         nv3NAlRMOIg7Im5DmUYlYNHJ1har58ImB7MLPXY9H+1Ayp8XaySXzneAO3RBHRYT88Li
-         fPhDeVI8d1Pb743vsp8j6h4WLh6o+f44uBx8rUoMEKcnj3hfhmXuxygJnE4/6LKHMXhv
-         V2qw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=5OUsOo+ZCpiudrawUfOvbimEPvYDe3SmcHKVA1q1DR8=;
+        b=R6LBTGjPIU3qVs0mUJiF3amV2UbVOabaiIyDCkJLOB4yIvyZeoNl18VOJQXl38uhmS
+         5lR0viXBE8zNm2BEm9I14JIIb1mXxcUOS8bIUmgFUoZfGJhwM6QE2uJo/sx17I5Sb3pC
+         w3K9y8YSl2p+wv3Wm7/HK0FX5JW70VPHRCHn9sgSpGFMvFWdvdgL7nMVwUZggWBO6gLO
+         9XGSmpUcsEkSpzprzEfErERgEhEQzi1ynFLfDop/unAq+J5BRE9sVkxSd/uUwQnJ45gX
+         +dvPa0BOeKnCvFzNcPdE2pZF2IdTU3FEzpLHQ1dJa0O4RHk36MXenVAH2QQBFRQThWAP
+         t27Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=cl6H+eCy;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Aghj3LzC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d2si21147226ios.97.2021.05.18.14.44.59
+        by mx.google.com with ESMTPS id 7si21770406ilz.34.2021.05.18.17.04.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 May 2021 14:44:59 -0700 (PDT)
+        Tue, 18 May 2021 17:04:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=cl6H+eCy;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:49638 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Aghj3LzC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:41432 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lj7WI-00033B-GR
-	for alex.bennee@linaro.org; Tue, 18 May 2021 17:44:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34042)
+	id 1lj9h3-0002uo-13
+	for alex.bennee@linaro.org; Tue, 18 May 2021 20:04:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54884)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <titusr@google.com>) id 1lj7VV-00031A-QS
- for qemu-arm@nongnu.org; Tue, 18 May 2021 17:44:06 -0400
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f]:43548)
+ (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
+ id 1lj9gh-0002sh-Mk; Tue, 18 May 2021 20:03:47 -0400
+Received: from mail-ot1-x329.google.com ([2607:f8b0:4864:20::329]:40474)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <titusr@google.com>) id 1lj7VP-0003qU-FC
- for qemu-arm@nongnu.org; Tue, 18 May 2021 17:44:05 -0400
-Received: by mail-ej1-x62f.google.com with SMTP id l4so16837123ejc.10
- for <qemu-arm@nongnu.org>; Tue, 18 May 2021 14:43:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=++hAhtO4LPF1o2LlzQdmUXQLn2+1OzzrGNr+AYgwRSs=;
- b=cl6H+eCy7mQGyVJQCOOzCvzmaiTsKpFqt+tDhaZIQHlTegTDhm/5QUr9YtoRejJ+oe
- pXGzSoe86ZSnIAKtGFwUDvx8V9DPu2GsdkpOP3SdzCi0maU40tWiv9GIQtuRvXraNag/
- fsP7KhJI4OCEkGHdBxK97xEv2oz/2Hksmf7AAz4l004SKHQkZhYToPuxyPxOasL/Liu7
- JDvxuDYSMnhvFamacoKPXIQBysePPltY+TKSxBWmiVEonzPS8gZLfA/dUlXx6cJrQl3o
- IW2SFfTl4JM5/2RmDIH0qcqa5IPA8gX1DvJzhUHr6dSgGSaI6iuWm8IxZDNWMGxo87tr
- daNg==
+ (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
+ id 1lj9gg-0000No-2J; Tue, 18 May 2021 20:03:47 -0400
+Received: by mail-ot1-x329.google.com with SMTP id
+ s5-20020a05683004c5b029032307304915so2958634otd.7; 
+ Tue, 18 May 2021 17:03:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=5OUsOo+ZCpiudrawUfOvbimEPvYDe3SmcHKVA1q1DR8=;
+ b=Aghj3LzCI5YJQ5+oFspfOVlZrg+aqfqaCv6NaV3Z1PTvC2WZE1tRmUSamzh0elsiqo
+ bLzNKC47laCEr1PloEnsvjGNqwWyFnXtQq+uzNCr5syX3nKisIeXYygsTl32y1N2WhJJ
+ HOUyVZ/+5vWjF/e/JSYfrBBAh/XnQpyqePZ3R22INhltmCZPxkOlqu3Uo1HIT2uJ6pWh
+ ZOheOQPplm/1HuYLdL7IqThz00qUJ1Jz8yikhbnIxd9TST6A+0pxraVC4vBTK5Ga1/4r
+ Ibuwy0jzQB2I7+gRTkpxRdJopDrKPCnYINYQ2zmP6jJ5JCh9Ke7nstexh0BBw/Ltl9OJ
+ L/sQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=++hAhtO4LPF1o2LlzQdmUXQLn2+1OzzrGNr+AYgwRSs=;
- b=pIO29s5M+i0FBuMy6MhvSYf0o/URrGEWwU8AKzK9NfYOBnbbvJ3p8y0XRuD7Yxptkt
- pYE3NLdSxIseNIq2Jy+Ey7Qg92wBTOotzH3L9jPJ3wx4oJQc0VwlJY3tGxbT3+YlQCbn
- CzatW9KY9wi8ynpbSsOb+ZciO+uIcbQqG7miGeVPBVMLFz0MqpqtntwBA/uk2RUOdn2i
- APuNGLVtqMsF8xYp10IS6tOITPCmfLHZ+BY7OfLWpbJMjzMx6f6AWMkfr0w9WTSV5VUs
- oTVrPL1yBJs97euMoJmJnEdRQaGCr/me02ZndOGNI9sXe06Y5RXqg95ikvPV1rKRLGRS
- pi1g==
-X-Gm-Message-State: AOAM5327TcBKukh1tsef2ShLcTJGo2Z3uybAQXyusqeRvzrI4HwgYd/C
- 242ayWHf/w9nPRVdPVn9NgFwzpklb1Mtm9kcNKuwow==
-X-Received: by 2002:a17:906:56d1:: with SMTP id
- an17mr5835058ejc.6.1621374236339; 
- Tue, 18 May 2021 14:43:56 -0700 (PDT)
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=5OUsOo+ZCpiudrawUfOvbimEPvYDe3SmcHKVA1q1DR8=;
+ b=DfBjz+7Db1EwPmW5u8JnTL+rUBvHO7qGgO40zSK+8xmFzGfzaUmGd+xLuOQpWyDyF5
+ 1+ZHaotwVPVeRWCoe9HIpfgsUG9jqLq5DjkGpauKr7qVnZVKxyyY4exm7m06U3ZXtLcp
+ Si5s2GsGrNfjrXN7/332mlS7Qs6F8YaYViEihAdDP5BUBQoH3qGwvk4dCKhqvHP2fl9N
+ 8SV4Kepwq24kYRv0bHk5wd0hsR5B9rxIYeLoD1Xj8Xa3iDpCTRGwgrmncUw/fcBBMn25
+ jZXfXD+gwZrcGKkFm3E13R3vLTFM49ASadipfEL14z9mb0y4pnPaFw+C1majnr56OG7E
+ UILg==
+X-Gm-Message-State: AOAM531VxI42iM6yBRudQsRAbkW9AV4vqHjptR2iwGlmvEK3mkXsaEZo
+ dWdc4rqqgB/JMyUb9fLwKg==
+X-Received: by 2002:a9d:2de3:: with SMTP id g90mr6293529otb.274.1621382623941; 
+ Tue, 18 May 2021 17:03:43 -0700 (PDT)
+Received: from serve.minyard.net ([47.184.156.158])
+ by smtp.gmail.com with ESMTPSA id z15sm4265984otp.20.2021.05.18.17.03.42
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 18 May 2021 17:03:42 -0700 (PDT)
+Received: from t560.minyard.net (unknown
+ [IPv6:2001:470:b8f6:1b:9144:ba66:ea13:f260])
+ by serve.minyard.net (Postfix) with ESMTPA id 2C6051800D4;
+ Wed, 19 May 2021 00:03:42 +0000 (UTC)
+From: minyard@acm.org
+To: qemu-devel@nongnu.org,
+	Titus Rwantare <titusr@google.com>
+Subject: [PATCH 1/3] adc: Move the zynq-xadc file to the adc directories
+Date: Tue, 18 May 2021 19:03:29 -0500
+Message-Id: <20210519000331.3690536-2-minyard@acm.org>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20210519000331.3690536-1-minyard@acm.org>
+References: <20210519000331.3690536-1-minyard@acm.org>
 MIME-Version: 1.0
-References: <20210518184527.1037888-1-titusr@google.com>
- <20210518194518.GY11196@minyard.net>
- <CAMvPwGquxnT7RDOVCeXG1Jdjg1hU+a1-20Pu4c7ufQDytbNHag@mail.gmail.com>
- <20210518205951.GZ11196@minyard.net>
-In-Reply-To: <20210518205951.GZ11196@minyard.net>
-From: Titus Rwantare <titusr@google.com>
-Date: Tue, 18 May 2021 17:43:20 -0400
-Message-ID: <CAMvPwGonNtKeSwbLpUimBJ6U_OOjiC_3N_1t+L64uce-or6oFg@mail.gmail.com>
-Subject: Re: [PATCH v3 0/5] Add support for PMBus in QEMU
-To: Corey Minyard <cminyard@mvista.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
- Hao Wu <wuhaotsh@google.com>, Joel Stanley <joel@jms.id.au>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62f;
- envelope-from=titusr@google.com; helo=mail-ej1-x62f.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::329;
+ envelope-from=tcminyard@gmail.com; helo=mail-ot1-x329.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -114,17 +118,105 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Corey Minyard <cminyard@mvista.com>, Alistair Francis <alistair@alistair23.me>,
+ qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Wl3q0vpE8quS
+X-TUID: JorQDBylz0VG
 
-That would be great.
+From: Corey Minyard <cminyard@mvista.com>
 
-On Tue, 18 May 2021, 16:59 Corey Minyard, <cminyard@mvista.com> wrote:
->
-> On Tue, May 18, 2021 at 03:50:57PM -0400, Titus Rwantare wrote:
-> > I would also like a directory for sensors. There are quite a few of
-> > those incoming. Any objections?
->
-> None from me.  I'll add a patch to move all the sensors from misc into
-> it, if you like.
+It's an ADC, put it where it belongs.
+
+Cc: Edgar E. Iglesias <edgar.iglesias@gmail.com>
+Cc: Alistair Francis <alistair@alistair23.me>
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org
+Signed-off-by: Corey Minyard <cminyard@mvista.com>
+---
+ MAINTAINERS                          | 6 ++++--
+ hw/adc/meson.build                   | 1 +
+ hw/{misc => adc}/zynq-xadc.c         | 2 +-
+ hw/arm/xilinx_zynq.c                 | 2 +-
+ hw/misc/meson.build                  | 2 +-
+ include/hw/{misc => adc}/zynq-xadc.h | 0
+ 6 files changed, 8 insertions(+), 5 deletions(-)
+ rename hw/{misc => adc}/zynq-xadc.c (99%)
+ rename include/hw/{misc => adc}/zynq-xadc.h (100%)
+
+diff --git a/MAINTAINERS b/MAINTAINERS
+index eab178aeee..6cb3b15f97 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -913,8 +913,10 @@ L: qemu-arm@nongnu.org
+ S: Maintained
+ F: hw/*/xilinx_*
+ F: hw/*/cadence_*
+-F: hw/misc/zynq*
+-F: include/hw/misc/zynq*
++F: hw/misc/zynq_slcr.c
++F: hw/adc/zynq-xadc.c
++F: include/hw/misc/zynq_slcr.h
++F: include/hw/adc/zynq-xadc.h
+ X: hw/ssi/xilinx_*
+ 
+ Xilinx ZynqMP and Versal
+diff --git a/hw/adc/meson.build b/hw/adc/meson.build
+index 6ddee23813..3d397b4ea1 100644
+--- a/hw/adc/meson.build
++++ b/hw/adc/meson.build
+@@ -1,2 +1,3 @@
+ softmmu_ss.add(when: 'CONFIG_STM32F2XX_ADC', if_true: files('stm32f2xx_adc.c'))
+ softmmu_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx_adc.c'))
++softmmu_ss.add(when: 'CONFIG_ZYNQ', if_true: files('zynq-xadc.c'))
+\ No newline at end of file
+diff --git a/hw/misc/zynq-xadc.c b/hw/adc/zynq-xadc.c
+similarity index 99%
+rename from hw/misc/zynq-xadc.c
+rename to hw/adc/zynq-xadc.c
+index 7b1972ce06..cfc7bab065 100644
+--- a/hw/misc/zynq-xadc.c
++++ b/hw/adc/zynq-xadc.c
+@@ -15,7 +15,7 @@
+ 
+ #include "qemu/osdep.h"
+ #include "hw/irq.h"
+-#include "hw/misc/zynq-xadc.h"
++#include "hw/adc/zynq-xadc.h"
+ #include "migration/vmstate.h"
+ #include "qemu/timer.h"
+ #include "qemu/log.h"
+diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
+index 81af32dc42..245af81bbb 100644
+--- a/hw/arm/xilinx_zynq.c
++++ b/hw/arm/xilinx_zynq.c
+@@ -26,7 +26,7 @@
+ #include "hw/boards.h"
+ #include "hw/block/flash.h"
+ #include "hw/loader.h"
+-#include "hw/misc/zynq-xadc.h"
++#include "hw/adc/zynq-xadc.h"
+ #include "hw/ssi/ssi.h"
+ #include "hw/usb/chipidea.h"
+ #include "qemu/error-report.h"
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index 66e1648533..508fce50c7 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -84,7 +84,7 @@ softmmu_ss.add(when: 'CONFIG_RASPI', if_true: files(
+   'bcm2835_cprman.c',
+ ))
+ softmmu_ss.add(when: 'CONFIG_SLAVIO', if_true: files('slavio_misc.c'))
+-softmmu_ss.add(when: 'CONFIG_ZYNQ', if_true: files('zynq_slcr.c', 'zynq-xadc.c'))
++softmmu_ss.add(when: 'CONFIG_ZYNQ', if_true: files('zynq_slcr.c'))
+ softmmu_ss.add(when: 'CONFIG_XLNX_VERSAL', if_true: files('xlnx-versal-xramc.c'))
+ softmmu_ss.add(when: 'CONFIG_STM32F2XX_SYSCFG', if_true: files('stm32f2xx_syscfg.c'))
+ softmmu_ss.add(when: 'CONFIG_STM32F4XX_SYSCFG', if_true: files('stm32f4xx_syscfg.c'))
+diff --git a/include/hw/misc/zynq-xadc.h b/include/hw/adc/zynq-xadc.h
+similarity index 100%
+rename from include/hw/misc/zynq-xadc.h
+rename to include/hw/adc/zynq-xadc.h
+-- 
+2.25.1
+

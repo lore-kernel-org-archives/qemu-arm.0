@@ -1,282 +1,198 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp474696lfm;
-        Thu, 20 May 2021 12:53:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx7y0kx8AiFxygFGsXk5dJs10ZEcaKll4B/VMvs3p3Q09dTzgTYMEg6YEEG9cwv3b8cguk1
-X-Received: by 2002:a17:906:2746:: with SMTP id a6mr6364210ejd.265.1621540417585;
-        Thu, 20 May 2021 12:53:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621540417; cv=none;
-        d=google.com; s=arc-20160816;
-        b=ymt0fHbMef0Cz41tjUOGPaGL3A/ypWE07FF1TdDr93IpIxLecp6hn3Nbs0kduP83Ek
-         +AehuRxWmsIsGTG3EKbYcMOf219Tb7AliTEPChq11CKB8LJPIMYiG49ICf9qsFts7+eV
-         LXFTvWoN+0NgcFHJtmEwPBPk/PFWpaaSJ2vvtp3gxifIf+X9ifyc6ROk2sYO2fdKOnV/
-         xup6iGvzZG+w/QMKy46BpzC2bW4Ee/pQ4dVNWtlZ4mp84co9JZ0BS+LfIF9OSgcvP5TN
-         rw+x+Rp+wlta6mBrHBX9GY4dlZnLKD/iXTWncYMeHwwf1irfkR2AK/UV1gBDKGi1tccM
-         +pEA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=hsXdu6a0CKxnojfoZgwlJU9LIBqqP75G/U6o2y2NmyE=;
-        b=D31m8XSkzZh1cMb4pUgnA02/KEiJiTgwflX6+/pXjo5ginzQu5J1vNP9pys3y2c/pP
-         /mrbS7GLWWkwvVyaqibOa+ww2wQDOQ2PYTjCn6tzCMt4rAu5LfJOytjhaoMg/eGVwGif
-         ZNePKQthT9zED0oIKumzEEBy1KYP1A+g+wIom74KI6KCPWcgC7MZrYxCZhmJBDWZhl63
-         EmpcihrL6Ed7jN2nQCsArFv+7fNt/GAnf/hK9eDwPIkN6Fkw3x89uGQBuCP9IUZtqEq3
-         HSLGZSSuouSzLG1VDp73pe+3E8oGMpCRhsfjkGZMshC3EP0vEG6QRsILWtgptR+j+T3b
-         J9dA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dwa9TQgU;
-       spf=pass (google.com: domain of willianr@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=willianr@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <willianr@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id bl4si560519ejb.17.2021.05.20.12.53.37
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp1843145lfm;
+        Wed, 19 May 2021 13:47:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJziygfIDSto0zaQjdokrG/LmacYM9aVyLg8A39d4fDCO4qOhO1KhU3Y23wSsZPQxkkeZuW7
+X-Received: by 2002:a02:a1dd:: with SMTP id o29mr1245771jah.112.1621457225509;
+        Wed, 19 May 2021 13:47:05 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id g3si413663jan.54.2021.05.19.13.47.05
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 20 May 2021 12:53:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of willianr@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 19 May 2021 13:47:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dwa9TQgU;
-       spf=pass (google.com: domain of willianr@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=willianr@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1621540416;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=hsXdu6a0CKxnojfoZgwlJU9LIBqqP75G/U6o2y2NmyE=;
-	b=dwa9TQgUwvIRCvfNhZrEOoKrPy/JnHKchk4xiRx1BMEBw4tfOKgKS59ggR6LaL1R5dTz1T
-	j8sLeTnUQPmI0qaMALUuAhkMLS0FeuvHLUblWGC12eqy3LGwoSlm8RgfAr/IstFMB7xg0M
-	UAnrFAqrARdPDyFs3jYQ+tvEE6Inlm4=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-222-fu9K8OoANte9oC5uOt_-wg-1; Thu, 20 May 2021 15:53:34 -0400
-X-MC-Unique: fu9K8OoANte9oC5uOt_-wg-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7E1C81005D50;
-	Thu, 20 May 2021 19:53:33 +0000 (UTC)
-Received: from wrampazz.redhat.com (ovpn-113-104.rdu2.redhat.com [10.10.113.104])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 54FB45D74B;
-	Thu, 20 May 2021 19:53:24 +0000 (UTC)
-From: Willian Rampazzo <willianr@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	Cleber Rosa <crosa@redhat.com>,
-	Willian Rampazzo <willianr@redhat.com>,
-	qemu-arm@nongnu.org,
-	Niek Linnenbank <nieklinnenbank@gmail.com>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Michael Rolnik <mrolnik@gmail.com>,
-	Thomas Huth <thuth@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [RFC 0/1] acceptance tests: rename acceptance to system
-Date: Thu, 20 May 2021 16:53:21 -0300
-Message-Id: <20210520195322.205691-1-willianr@redhat.com>
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:53170 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ljT5s-0003H7-Ko
+	for alex.bennee@linaro.org; Wed, 19 May 2021 16:47:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57510)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1ljT5C-0002aB-Gl; Wed, 19 May 2021 16:46:22 -0400
+Resent-Date: Wed, 19 May 2021 16:46:22 -0400
+Resent-Message-Id: <E1ljT5C-0002aB-Gl@lists.gnu.org>
+Received: from sender4-of-o53.zoho.com ([136.143.188.53]:21332)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1ljT59-0000iM-B4; Wed, 19 May 2021 16:46:22 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1621457155; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=GYbtseKsK+wgiAXx9N1sGfBFdnN1DXzhBu4Z/0NGk60jwUdYkTUVW08GsygBwATqLIFTmP/MaxgXArqkhyPoIe0V7wSF6a/zpd0DTkXf3Kjivc6CjQSzCCEWkSTPKPnBM1V2cUOBPsEhoRkc+4j8GeThVXaNUted5rPt5wSHaUk=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1621457155;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=1VTqfdlg0o+CyFY+G1uRB8D//GHoUasVtb5VWOYHzt4=; 
+ b=L5kQmZms3j0jMS/MHFa3xfy2P0mKSuOJXvM9oV/yGePPqMt+7nhP7bCFwMkW53aOAJFqSgmMBBUdWIQqeLY/mslHYwH0kRz1cbpaNFU7c3vxgSbMVYo0gDZ8xFmlLgYIW8K9erAAzWJScvguu+Ifoe9A5tgQVXQ4c24UpEFw05s=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 162145715308911.687752060337289;
+ Wed, 19 May 2021 13:45:53 -0700 (PDT)
+In-Reply-To: <20210519202253.76782-1-agraf@csgraf.de>
+Subject: Re: [PATCH v8 00/19] hvf: Implement Apple Silicon Support
+Message-ID: <162145715125.22783.12874209207034977556@0addf061776e>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=willianr@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: bYwYmLIliUUA
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: agraf@csgraf.de
+Date: Wed, 19 May 2021 13:45:53 -0700 (PDT)
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.53; envelope-from=no-reply@patchew.org;
+ helo=sender4-of-o53.zoho.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, ehabkost@redhat.com, pcc@google.com,
+ richard.henderson@linaro.org, qemu-devel@nongnu.org, dirty@apple.com,
+ r.bolshakov@yadro.com, qemu-arm@nongnu.org, lfy@google.com,
+ pbonzini@redhat.com, philmd@redhat.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: a11ShpwlzCSL
 
-CI pipeline: https://gitlab.com/willianrampazzo/qemu/-/pipelines/306850452=
-=0D
-=0D
-Conceptually speaking, acceptance tests "are a series of specific tests=0D
-conducted by the customer in an attempt to uncover product errors before=0D
-accepting the software from the developer. Conducted by the end-user rather=
-=0D
-than software engineers, acceptance testing can range from an informal=0D
-=E2=80=9Ctest drive=E2=80=9D to a planned and systematically executed serie=
-s of scripted=0D
-tests" [1]. Every time Pressman refers to the term "acceptance testing," he=
-=0D
-also refers to user's agreement in the final state of an implemented featur=
-e.=0D
-Today, QEMU is not implementing user acceptance tests as described by Press=
-man.=0D
-=0D
-There are other three possible terms we could use to describe what is curre=
-ntly=0D
-QEMU "acceptance" tests:=0D
-=0D
-  1 - Integration tests:=0D
-      - "Integration testing is a systematic technique for constructing the=
-=0D
-         software architecture while at the same time conducting tests to=
-=0D
-         uncover errors associated with interfacing. The objective is to ta=
-ke=0D
-         unit-tested components and build a program structure that has been=
-=0D
-         dictated by design." [2]=0D
-      * Note: Sommerville does not have a clear definition of integration=
-=0D
-        testing. He refers to incremental integration of components inside=
-=0D
-        the system testing (see [3]).=0D
-=0D
-  2 - Validation tests:=0D
-      - "Validation testing begins at the culmination of integration testin=
-g,=0D
-         when individual components have been exercised, the software is=0D
-         completely assembled as a package, and interfacing errors have bee=
-n=0D
-         uncovered and corrected. At the validation or system level, the=0D
-         distinction between different software categories disappears. Test=
-ing=0D
-         focuses on user-visible actions and user-recognizable output from =
-the=0D
-         system." [4]=0D
-      - "where you expect the system to perform correctly using a set of te=
-st=0D
-         cases that reflect the system=E2=80=99s expected use." [5]=0D
-      * Note: the definition of "validation testing" from Sommerville refle=
-cts=0D
-        the same definition found around the Internet, as one of the proces=
-ses=0D
-        inside the "Verification & Validation (V&V)." In this concept,=0D
-        validation testing is a high-level definition that covers unit test=
-ing,=0D
-        functional testing, integration testing, system testing, and accept=
-ance=0D
-        testing.=0D
-=0D
-  3 - System tests:=0D
-      - "verifies that all elements mesh properly and that overall system=
-=0D
-         function and performance is achieved." [6]=0D
-      - "involves integrating components to create a version of the system =
-and=0D
-         then testing the integrated system. System testing checks that=0D
-         components are compatible, interact correctly, and transfer the ri=
-ght=0D
-         data at the right time across their interfaces." [7]=0D
-=0D
-The tests implemented inside the QEMU "acceptance" directory depend on the=
-=0D
-software completely assembled and, sometimes, on other elements, like opera=
-ting=0D
-system images. In this case, the proposal here is to rename the current=0D
-"acceptance" directory to "system."=0D
-=0D
-[1] Pressman, Roger S. & Maxim, Bruce R. (2020). Software Engineering, A=0D
-    Practitioner=E2=80=99s Approach. p. 430.=0D
-[2] Pressman, Roger S. & Maxim, Bruce R. (2020). Software Engineering, A=0D
-    Practitioner=E2=80=99s Approach. Software Engineering, p. 398.=0D
-[3] Sommerville, Ian (2016). Software Engineering. p. 240-242.=0D
-[4] Pressman, Roger S. & Maxim, Bruce R. (2020). Software Engineering, A=0D
-    Practitioner=E2=80=99s Approach. Software Engineering, p. 407.=0D
-[5] Sommerville, Ian (2016). Software Engineering. p. 227.=0D
-[6] Pressman, Roger S. & Maxim, Bruce R. (2020). Software Engineering, A=0D
-    Practitioner=E2=80=99s Approach. Software Engineering, p. 377.=0D
-[7] Sommerville, Ian (2016). Software Engineering. p. 240.=0D
-=0D
-Signed-off-by: Willian Rampazzo <willianr@redhat.com>=0D
-=0D
-Willian Rampazzo (1):=0D
-  acceptance tests: rename acceptance to system=0D
-=0D
- .gitlab-ci.yml                                | 58 +++++++++----------=0D
- MAINTAINERS                                   | 40 ++++++-------=0D
- configure                                     |  2 +-=0D
- docs/devel/build-system.rst                   |  2 +-=0D
- docs/devel/testing.rst                        | 23 ++++----=0D
- docs/system/arm/orangepi.rst                  |  8 +--=0D
- tests/Makefile.include                        | 14 ++---=0D
- tests/acceptance/README.rst                   | 10 ----=0D
- tests/system/README.rst                       | 10 ++++=0D
- .../avocado_qemu/__init__.py                  |  2 +-=0D
- tests/{acceptance =3D> system}/boot_linux.py    |  0=0D
- .../boot_linux_console.py                     |  0=0D
- tests/{acceptance =3D> system}/boot_xen.py      |  0=0D
- tests/{acceptance =3D> system}/cpu_queries.py   |  0=0D
- .../{acceptance =3D> system}/empty_cpu_model.py |  0=0D
- tests/{acceptance =3D> system}/linux_initrd.py  |  2 +-=0D
- .../linux_ssh_mips_malta.py                   |  0=0D
- .../machine_arm_canona1100.py                 |  0=0D
- .../machine_arm_integratorcp.py               |  0=0D
- .../machine_arm_n8x0.py                       |  0=0D
- tests/{acceptance =3D> system}/machine_avr6.py  |  2 +-=0D
- .../machine_m68k_nextcube.py                  |  0=0D
- .../machine_microblaze.py                     |  0=0D
- .../machine_mips_loongson3v.py                |  0=0D
- .../machine_mips_malta.py                     |  0=0D
- tests/{acceptance =3D> system}/machine_ppc.py   |  0=0D
- .../machine_rx_gdbsim.py                      |  0=0D
- .../machine_s390_ccw_virtio.py                |  0=0D
- .../machine_sparc64_sun4u.py                  |  0=0D
- .../machine_sparc_leon3.py                    |  0=0D
- tests/{acceptance =3D> system}/migration.py     |  0=0D
- tests/{acceptance =3D> system}/multiprocess.py  |  0=0D
- .../pc_cpu_hotplug_props.py                   |  0=0D
- tests/{acceptance =3D> system}/ppc_prep_40p.py  |  0=0D
- tests/{acceptance =3D> system}/replay_kernel.py |  0=0D
- .../reverse_debugging.py                      |  0=0D
- tests/{acceptance =3D> system}/tcg_plugins.py   |  0=0D
- .../{acceptance =3D> system}/tesseract_utils.py |  0=0D
- tests/{acceptance =3D> system}/version.py       |  0=0D
- tests/{acceptance =3D> system}/virtio-gpu.py    |  0=0D
- .../virtio_check_params.py                    |  0=0D
- .../{acceptance =3D> system}/virtio_version.py  |  0=0D
- .../virtiofs_submounts.py                     |  0=0D
- .../virtiofs_submounts.py.data/cleanup.sh     |  0=0D
- .../guest-cleanup.sh                          |  0=0D
- .../virtiofs_submounts.py.data/guest.sh       |  0=0D
- .../virtiofs_submounts.py.data/host.sh        |  0=0D
- tests/{acceptance =3D> system}/vnc.py           |  0=0D
- .../x86_cpu_model_versions.py                 |  0=0D
- 49 files changed, 86 insertions(+), 87 deletions(-)=0D
- delete mode 100644 tests/acceptance/README.rst=0D
- create mode 100644 tests/system/README.rst=0D
- rename tests/{acceptance =3D> system}/avocado_qemu/__init__.py (99%)=0D
- rename tests/{acceptance =3D> system}/boot_linux.py (100%)=0D
- rename tests/{acceptance =3D> system}/boot_linux_console.py (100%)=0D
- rename tests/{acceptance =3D> system}/boot_xen.py (100%)=0D
- rename tests/{acceptance =3D> system}/cpu_queries.py (100%)=0D
- rename tests/{acceptance =3D> system}/empty_cpu_model.py (100%)=0D
- rename tests/{acceptance =3D> system}/linux_initrd.py (99%)=0D
- rename tests/{acceptance =3D> system}/linux_ssh_mips_malta.py (100%)=0D
- rename tests/{acceptance =3D> system}/machine_arm_canona1100.py (100%)=0D
- rename tests/{acceptance =3D> system}/machine_arm_integratorcp.py (100%)=
-=0D
- rename tests/{acceptance =3D> system}/machine_arm_n8x0.py (100%)=0D
- rename tests/{acceptance =3D> system}/machine_avr6.py (98%)=0D
- rename tests/{acceptance =3D> system}/machine_m68k_nextcube.py (100%)=0D
- rename tests/{acceptance =3D> system}/machine_microblaze.py (100%)=0D
- rename tests/{acceptance =3D> system}/machine_mips_loongson3v.py (100%)=0D
- rename tests/{acceptance =3D> system}/machine_mips_malta.py (100%)=0D
- rename tests/{acceptance =3D> system}/machine_ppc.py (100%)=0D
- rename tests/{acceptance =3D> system}/machine_rx_gdbsim.py (100%)=0D
- rename tests/{acceptance =3D> system}/machine_s390_ccw_virtio.py (100%)=0D
- rename tests/{acceptance =3D> system}/machine_sparc64_sun4u.py (100%)=0D
- rename tests/{acceptance =3D> system}/machine_sparc_leon3.py (100%)=0D
- rename tests/{acceptance =3D> system}/migration.py (100%)=0D
- rename tests/{acceptance =3D> system}/multiprocess.py (100%)=0D
- rename tests/{acceptance =3D> system}/pc_cpu_hotplug_props.py (100%)=0D
- rename tests/{acceptance =3D> system}/ppc_prep_40p.py (100%)=0D
- rename tests/{acceptance =3D> system}/replay_kernel.py (100%)=0D
- rename tests/{acceptance =3D> system}/reverse_debugging.py (100%)=0D
- rename tests/{acceptance =3D> system}/tcg_plugins.py (100%)=0D
- rename tests/{acceptance =3D> system}/tesseract_utils.py (100%)=0D
- rename tests/{acceptance =3D> system}/version.py (100%)=0D
- rename tests/{acceptance =3D> system}/virtio-gpu.py (100%)=0D
- rename tests/{acceptance =3D> system}/virtio_check_params.py (100%)=0D
- rename tests/{acceptance =3D> system}/virtio_version.py (100%)=0D
- rename tests/{acceptance =3D> system}/virtiofs_submounts.py (100%)=0D
- rename tests/{acceptance =3D> system}/virtiofs_submounts.py.data/cleanup.s=
-h (100%)=0D
- rename tests/{acceptance =3D> system}/virtiofs_submounts.py.data/guest-cle=
-anup.sh (100%)=0D
- rename tests/{acceptance =3D> system}/virtiofs_submounts.py.data/guest.sh =
-(100%)=0D
- rename tests/{acceptance =3D> system}/virtiofs_submounts.py.data/host.sh (=
-100%)=0D
- rename tests/{acceptance =3D> system}/vnc.py (100%)=0D
- rename tests/{acceptance =3D> system}/x86_cpu_model_versions.py (100%)=0D
-=0D
---=20=0D
-2.31.1=0D
-=0D
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIxMDUxOTIwMjI1My43Njc4
+Mi0xLWFncmFmQGNzZ3JhZi5kZS8KCgoKSGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZlIHNv
+bWUgY29kaW5nIHN0eWxlIHByb2JsZW1zLiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9y
+bWF0aW9uOgoKVHlwZTogc2VyaWVzCk1lc3NhZ2UtaWQ6IDIwMjEwNTE5MjAyMjUzLjc2NzgyLTEt
+YWdyYWZAY3NncmFmLmRlClN1YmplY3Q6IFtQQVRDSCB2OCAwMC8xOV0gaHZmOiBJbXBsZW1lbnQg
+QXBwbGUgU2lsaWNvbiBTdXBwb3J0Cgo9PT0gVEVTVCBTQ1JJUFQgQkVHSU4gPT09CiMhL2Jpbi9i
+YXNoCmdpdCByZXYtcGFyc2UgYmFzZSA+IC9kZXYvbnVsbCB8fCBleGl0IDAKZ2l0IGNvbmZpZyAt
+LWxvY2FsIGRpZmYucmVuYW1lbGltaXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVz
+IFRydWUKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYuYWxnb3JpdGhtIGhpc3RvZ3JhbQouL3Njcmlw
+dHMvY2hlY2twYXRjaC5wbCAtLW1haWxiYWNrIGJhc2UuLgo9PT0gVEVTVCBTQ1JJUFQgRU5EID09
+PQoKVXBkYXRpbmcgM2M4Y2Y1YTljMjFmZjg3ODIxNjRkMWRlZjdmNDRiZDg4ODcxMzM4NApGcm9t
+IGh0dHBzOi8vZ2l0aHViLmNvbS9wYXRjaGV3LXByb2plY3QvcWVtdQogLSBbdGFnIHVwZGF0ZV0g
+ICAgICBwYXRjaGV3LzIwMjEwNTE5MTY1MDAyLjExOTU3NDUtMS10aXR1c3JAZ29vZ2xlLmNvbSAt
+PiBwYXRjaGV3LzIwMjEwNTE5MTY1MDAyLjExOTU3NDUtMS10aXR1c3JAZ29vZ2xlLmNvbQogKiBb
+bmV3IHRhZ10gICAgICAgICBwYXRjaGV3LzIwMjEwNTE5MjAyMjUzLjc2NzgyLTEtYWdyYWZAY3Nn
+cmFmLmRlIC0+IHBhdGNoZXcvMjAyMTA1MTkyMDIyNTMuNzY3ODItMS1hZ3JhZkBjc2dyYWYuZGUK
+U3dpdGNoZWQgdG8gYSBuZXcgYnJhbmNoICd0ZXN0JwphOTE0OTFhIGh2ZjogYXJtOiBIYW5kbGUg
+V2luZG93cyAxMCBTTUMgY2FsbAozZGM3NTUzIGFybTogRW5hYmxlIFdpbmRvd3MgMTAgdHJ1c3Rl
+ZCBTTUNDQyBib290IGNhbGwKNjVlODExNSBhcm06IEFkZCBIeXBlcnZpc29yLmZyYW1ld29yayBi
+dWlsZCB0YXJnZXQKMWNmYTFkMCBodmY6IGFybTogSW1wbGVtZW50IFBTQ0kgaGFuZGxpbmcKNjNl
+MGY2ZiBodmY6IGFybTogSW1wbGVtZW50IC1jcHUgaG9zdAozY2Y4MzNlIGFybS9odmY6IEFkZCBh
+IFdGSSBoYW5kbGVyCmNhMzA4OTMgaHZmOiBBZGQgQXBwbGUgU2lsaWNvbiBzdXBwb3J0CjhhNTkx
+YmQgaHZmOiBTaW1wbGlmeSBwb3N0IHJlc2V0L2luaXQvbG9hZHZtIGhvb2tzCjBjZDE1ZTQgaHZm
+OiBJbnRyb2R1Y2UgaHZmIHZjcHUgc3RydWN0CjA4NmY0MmQgaHZmOiBSZW1vdmUgaHZmLWFjY2Vs
+LW9wcy5oCjYzY2E3NWIgaHZmOiBNYWtlIHN5bmNocm9uaXplIGZ1bmN0aW9ucyBzdGF0aWMKNmEx
+MDM5MCBodmY6IFVzZSBjcHVfc3luY2hyb25pemVfc3RhdGUoKQpiMDY1NThhIGh2ZjogU3BsaXQg
+b3V0IGNvbW1vbiBjb2RlIG9uIHZjcHUgaW5pdCBhbmQgZGVzdHJveQpkZThhY2U2IGh2ZjogUmVt
+b3ZlIHVzZSBvZiBodl91dmFkZHJfdCBhbmQgaHZfZ3BhZGRyX3QKZjRiNzk0MCBodmY6IE1ha2Ug
+aHZmX3NldF9waHlzX21lbSgpIHN0YXRpYwo4Mzk4M2ZjIGh2ZjogTW92ZSBodmYgaW50ZXJuYWwg
+ZGVmaW5pdGlvbnMgaW50byBjb21tb24gaGVhZGVyCmUwMTFkYmIgaHZmOiBNb3ZlIGNwdSBmdW5j
+dGlvbnMgaW50byBjb21tb24gZGlyZWN0b3J5CmFjN2Q1MjIgaHZmOiBNb3ZlIHZjcHUgdGhyZWFk
+IGZ1bmN0aW9ucyBpbnRvIGNvbW1vbiBkaXJlY3RvcnkKNzJhYTdhZSBodmY6IE1vdmUgYXNzZXJ0
+X2h2Zl9vaygpIGludG8gY29tbW9uIGRpcmVjdG9yeQoKPT09IE9VVFBVVCBCRUdJTiA9PT0KMS8x
+OSBDaGVja2luZyBjb21taXQgNzJhYTdhZWIwNWU3IChodmY6IE1vdmUgYXNzZXJ0X2h2Zl9vaygp
+IGludG8gY29tbW9uIGRpcmVjdG9yeSkKMi8xOSBDaGVja2luZyBjb21taXQgYWM3ZDUyMmUwY2Fl
+IChodmY6IE1vdmUgdmNwdSB0aHJlYWQgZnVuY3Rpb25zIGludG8gY29tbW9uIGRpcmVjdG9yeSkK
+V0FSTklORzogYWRkZWQsIG1vdmVkIG9yIGRlbGV0ZWQgZmlsZShzKSwgZG9lcyBNQUlOVEFJTkVS
+UyBuZWVkIHVwZGF0aW5nPwojMTc6IAoge3RhcmdldC9pMzg2ID0+IGFjY2VsfS9odmYvaHZmLWFj
+Y2VsLW9wcy5jIHwgMAoKdG90YWw6IDAgZXJyb3JzLCAxIHdhcm5pbmdzLCAyMSBsaW5lcyBjaGVj
+a2VkCgpQYXRjaCAyLzE5IGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFu
+eSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUg
+bWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCjMvMTkgQ2hlY2tpbmcg
+Y29tbWl0IGUwMTFkYmI0Y2M1OCAoaHZmOiBNb3ZlIGNwdSBmdW5jdGlvbnMgaW50byBjb21tb24g
+ZGlyZWN0b3J5KQo0LzE5IENoZWNraW5nIGNvbW1pdCA4Mzk4M2ZjOTZlNGYgKGh2ZjogTW92ZSBo
+dmYgaW50ZXJuYWwgZGVmaW5pdGlvbnMgaW50byBjb21tb24gaGVhZGVyKQo1LzE5IENoZWNraW5n
+IGNvbW1pdCBmNGI3OTQwNWJjYzUgKGh2ZjogTWFrZSBodmZfc2V0X3BoeXNfbWVtKCkgc3RhdGlj
+KQo2LzE5IENoZWNraW5nIGNvbW1pdCBkZThhY2U2MDMzZjEgKGh2ZjogUmVtb3ZlIHVzZSBvZiBo
+dl91dmFkZHJfdCBhbmQgaHZfZ3BhZGRyX3QpCjcvMTkgQ2hlY2tpbmcgY29tbWl0IGIwNjU1OGE4
+MjZhNCAoaHZmOiBTcGxpdCBvdXQgY29tbW9uIGNvZGUgb24gdmNwdSBpbml0IGFuZCBkZXN0cm95
+KQo4LzE5IENoZWNraW5nIGNvbW1pdCA2YTEwMzkwM2Y0MDEgKGh2ZjogVXNlIGNwdV9zeW5jaHJv
+bml6ZV9zdGF0ZSgpKQo5LzE5IENoZWNraW5nIGNvbW1pdCA2M2NhNzViN2M5MDQgKGh2ZjogTWFr
+ZSBzeW5jaHJvbml6ZSBmdW5jdGlvbnMgc3RhdGljKQoxMC8xOSBDaGVja2luZyBjb21taXQgMDg2
+ZjQyZGUyNGI1IChodmY6IFJlbW92ZSBodmYtYWNjZWwtb3BzLmgpCldBUk5JTkc6IGFkZGVkLCBt
+b3ZlZCBvciBkZWxldGVkIGZpbGUocyksIGRvZXMgTUFJTlRBSU5FUlMgbmVlZCB1cGRhdGluZz8K
+IzMzOiAKZGVsZXRlZCBmaWxlIG1vZGUgMTAwNjQ0Cgp0b3RhbDogMCBlcnJvcnMsIDEgd2Fybmlu
+Z3MsIDIzIGxpbmVzIGNoZWNrZWQKClBhdGNoIDEwLzE5IGhhcyBzdHlsZSBwcm9ibGVtcywgcGxl
+YXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyBy
+ZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5F
+UlMuCjExLzE5IENoZWNraW5nIGNvbW1pdCAwY2QxNWU0ODA3NWEgKGh2ZjogSW50cm9kdWNlIGh2
+ZiB2Y3B1IHN0cnVjdCkKV0FSTklORzogbGluZSBvdmVyIDgwIGNoYXJhY3RlcnMKIzE1NDogRklM
+RTogdGFyZ2V0L2kzODYvaHZmL2h2Zi5jOjI2MzoKKyAgICB3dm1jcyhjcHUtPmh2Zi0+ZmQsIFZN
+Q1NfRU5UUllfQ1RMUywgY2FwMmN0cmwoaHZmX3N0YXRlLT5odmZfY2Fwcy0+dm14X2NhcF9lbnRy
+eSwKCkVSUk9SOiAiKGZvbyopIiBzaG91bGQgYmUgIihmb28gKikiCiM3Njc6IEZJTEU6IHRhcmdl
+dC9pMzg2L2h2Zi94ODZodmYuYzo4MzoKKyAgICBpZiAoaHZfdmNwdV93cml0ZV9mcHN0YXRlKGNw
+dV9zdGF0ZS0+aHZmLT5mZCwgKHZvaWQqKXhzYXZlLCA0MDk2KSkgewoKRVJST1I6ICIoZm9vKiki
+IHNob3VsZCBiZSAiKGZvbyAqKSIKIzg0ODogRklMRTogdGFyZ2V0L2kzODYvaHZmL3g4Nmh2Zi5j
+OjE2NToKKyAgICBpZiAoaHZfdmNwdV9yZWFkX2Zwc3RhdGUoY3B1X3N0YXRlLT5odmYtPmZkLCAo
+dm9pZCopeHNhdmUsIDQwOTYpKSB7Cgp0b3RhbDogMiBlcnJvcnMsIDEgd2FybmluZ3MsIDEwMDEg
+bGluZXMgY2hlY2tlZAoKUGF0Y2ggMTEvMTkgaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2
+aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0
+aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KCjEy
+LzE5IENoZWNraW5nIGNvbW1pdCA4YTU5MWJkNGI4NmIgKGh2ZjogU2ltcGxpZnkgcG9zdCByZXNl
+dC9pbml0L2xvYWR2bSBob29rcykKMTMvMTkgQ2hlY2tpbmcgY29tbWl0IGNhMzA4OTMyMWNiOSAo
+aHZmOiBBZGQgQXBwbGUgU2lsaWNvbiBzdXBwb3J0KQpXQVJOSU5HOiBhcmNoaXRlY3R1cmUgc3Bl
+Y2lmaWMgZGVmaW5lcyBzaG91bGQgYmUgYXZvaWRlZAojNTY6IEZJTEU6IGFjY2VsL2h2Zi9odmYt
+YWNjZWwtb3BzLmM6NjM6CisjaWZkZWYgX19hYXJjaDY0X18KCldBUk5JTkc6IGFyY2hpdGVjdHVy
+ZSBzcGVjaWZpYyBkZWZpbmVzIHNob3VsZCBiZSBhdm9pZGVkCiM2NzogRklMRTogYWNjZWwvaHZm
+L2h2Zi1hY2NlbC1vcHMuYzozODI6CisjaWZkZWYgX19hYXJjaDY0X18KCldBUk5JTkc6IGFyY2hp
+dGVjdHVyZSBzcGVjaWZpYyBkZWZpbmVzIHNob3VsZCBiZSBhdm9pZGVkCiMxMDE6IEZJTEU6IGlu
+Y2x1ZGUvc3lzZW11L2h2Zl9pbnQuaDoxNDoKKyNpZmRlZiBfX2FhcmNoNjRfXwoKdG90YWw6IDAg
+ZXJyb3JzLCAzIHdhcm5pbmdzLCA3OTYgbGluZXMgY2hlY2tlZAoKUGF0Y2ggMTMvMTkgaGFzIHN0
+eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUg
+ZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQ
+QVRDSCBpbiBNQUlOVEFJTkVSUy4KMTQvMTkgQ2hlY2tpbmcgY29tbWl0IDNjZjgzM2VkZTE4MiAo
+YXJtL2h2ZjogQWRkIGEgV0ZJIGhhbmRsZXIpCjE1LzE5IENoZWNraW5nIGNvbW1pdCA2M2UwZjZm
+YjhjNjUgKGh2ZjogYXJtOiBJbXBsZW1lbnQgLWNwdSBob3N0KQpXQVJOSU5HOiBhZGRlZCwgbW92
+ZWQgb3IgZGVsZXRlZCBmaWxlKHMpLCBkb2VzIE1BSU5UQUlORVJTIG5lZWQgdXBkYXRpbmc/CiMx
+Nzk6IApuZXcgZmlsZSBtb2RlIDEwMDY0NAoKdG90YWw6IDAgZXJyb3JzLCAxIHdhcm5pbmdzLCAx
+NjAgbGluZXMgY2hlY2tlZAoKUGF0Y2ggMTUvMTkgaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2Ug
+cmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9y
+dCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4K
+MTYvMTkgQ2hlY2tpbmcgY29tbWl0IDFjZmExZDA4Mjk2OCAoaHZmOiBhcm06IEltcGxlbWVudCBQ
+U0NJIGhhbmRsaW5nKQpXQVJOSU5HOiBCbG9jayBjb21tZW50cyB1c2UgYSBsZWFkaW5nIC8qIG9u
+IGEgc2VwYXJhdGUgbGluZQojMTI0OiBGSUxFOiB0YXJnZXQvYXJtL2h2Zi9odmYuYzo2MTg6Cisg
+ICAgICAgIC8qIFFFTVUgcmVzZXQgYW5kIHNodXRkb3duIGFyZSBhc3luYyByZXF1ZXN0cywgYnV0
+IFBTQ0kKCnRvdGFsOiAwIGVycm9ycywgMSB3YXJuaW5ncywgMTcwIGxpbmVzIGNoZWNrZWQKClBh
+dGNoIDE2LzE5IGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0
+aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRh
+aW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCjE3LzE5IENoZWNraW5nIGNvbW1p
+dCA2NWU4MTE1MWNjNTcgKGFybTogQWRkIEh5cGVydmlzb3IuZnJhbWV3b3JrIGJ1aWxkIHRhcmdl
+dCkKV0FSTklORzogYWRkZWQsIG1vdmVkIG9yIGRlbGV0ZWQgZmlsZShzKSwgZG9lcyBNQUlOVEFJ
+TkVSUyBuZWVkIHVwZGF0aW5nPwojNDE6IApuZXcgZmlsZSBtb2RlIDEwMDY0NAoKdG90YWw6IDAg
+ZXJyb3JzLCAxIHdhcm5pbmdzLCAyMyBsaW5lcyBjaGVja2VkCgpQYXRjaCAxNy8xOSBoYXMgc3R5
+bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBm
+YWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BB
+VENIIGluIE1BSU5UQUlORVJTLgoxOC8xOSBDaGVja2luZyBjb21taXQgM2RjNzU1MzE4MGZiIChh
+cm06IEVuYWJsZSBXaW5kb3dzIDEwIHRydXN0ZWQgU01DQ0MgYm9vdCBjYWxsKQoxOS8xOSBDaGVj
+a2luZyBjb21taXQgYTkxNDkxYTYxZmZjIChodmY6IGFybTogSGFuZGxlIFdpbmRvd3MgMTAgU01D
+IGNhbGwpCj09PSBPVVRQVVQgRU5EID09PQoKVGVzdCBjb21tYW5kIGV4aXRlZCB3aXRoIGNvZGU6
+IDEKCgpUaGUgZnVsbCBsb2cgaXMgYXZhaWxhYmxlIGF0Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9sb2dz
+LzIwMjEwNTE5MjAyMjUzLjc2NzgyLTEtYWdyYWZAY3NncmFmLmRlL3Rlc3RpbmcuY2hlY2twYXRj
+aC8/dHlwZT1tZXNzYWdlLgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0
+Y2hldyBbaHR0cHM6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRv
+IHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNvbQ==

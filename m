@@ -1,60 +1,60 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp1828866lfm;
-        Wed, 19 May 2021 13:25:30 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyVVl7KWP2HrldVF2evus9NZb3AlBaFDt44riZ2iTxtikBN7aC6ZqHdC3OnIAg2LaxFInd+
-X-Received: by 2002:a6b:d615:: with SMTP id w21mr1460921ioa.74.1621455930101;
-        Wed, 19 May 2021 13:25:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621455930; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp1829171lfm;
+        Wed, 19 May 2021 13:25:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzuClph0kGnWx/0hL3+2TKgNoJfpqhDa//WIJkknlh+8EzSxIvPbPrMp3zZjT0XXP3fPOar
+X-Received: by 2002:a05:6602:2d07:: with SMTP id c7mr1550021iow.176.1621455959362;
+        Wed, 19 May 2021 13:25:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621455959; cv=none;
         d=google.com; s=arc-20160816;
-        b=bgqFdBmc/SPE+BCnPWttua/GgcBmAz8Goqbh717SjOCCkvUslzpEhMugmEdJPI4IKD
-         bqhSmrk2p00+GL353oO+JuRVojGTV33cGshikkmwi1ru/K6MHfFDb9+R/YDsJRMINjFd
-         o0tpEmsgtsjSFmXY4iQ7vpF39yAP/5LtKq0qsngTnF1+aqWUgIqDtdOHPjEvMfvqFGA1
-         q5eFXIx9FZmer9ckdM2xGR9tv7iSbEHrL9BtdWzW5wqdyNcsrzhTeDJn54bJvTIIsXnW
-         FhhtriVd1471h9zi6AK5lrWVV0yX6y1AidnHkGGGd0PEdhW1H9b9u9W6aOd9hHuXfr4X
-         4ocA==
+        b=EHUnTWmpEA39HaRoqafhlU2cqqf+myBQZbiDaK7A7oEtkspT2KfSdRZvgqVPfNrXe3
+         xyTpxixjmT6BaIDIcn2M16dxyODmVs/xwEYShYwDvysvZaFwdTDcg6ZCPTb2BKaY7jRu
+         jy58kKzFqTouObyw5P3JMNYNKCs1r1MG4eEe6KcCpA1+q2sXflkCfB8uadE4u3kAQBor
+         MLbe/QvzUGuDp7UQzQFrZQaoT0YSc0LvaObJWsa5AvPQzliQO8z5AaIktZCmqusZyqUj
+         T1ra4uGKysEwb4vt0zLpckag079XlZhLTp1IkKvmb0Rbu/QS9NzYBujL94XLKnFsUka9
+         s2Tw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=b8xR6b1TLxWZchZF3CnbdIFxuGe4SMi0PceqZeZvdhI=;
-        b=qT+O/OHlw46+ZENLA8GNZBm/Bi9bbow2Iw4kF1Z5C5DyjaIfZ/S1UlOmOQ9mFJVgf3
-         cyQ8uKOJ6Pi+vfIDqSuCYzVzZMgoU/PIgjAGU8ap8OmNz1ytXQBH+HlTCtlrURLoQAkc
-         BOMjm/cp8+10FncqEvSixLK0Aarxuj+0diXwS07NDKvhm5d9/yLCRJm3xE8qnqHGmNHB
-         3krxxG9DBzSb2cuhmBOhSjiiZe1BG3naYTAa7vUOdT04U3FWtld7grFtY9gECO5ei9Qg
-         ZR//izLiTkuBYFP3lU5pGnADjgQbSyJKvS4vRjepc62/ib6uB5lOdC+CB0l0TaYi0eFp
-         +QHA==
+        bh=VnCCFuHA68L1IT2V6O5u/jRYTe4kMm9yQQ7qveI4YNA=;
+        b=uOhTUAt6YaGSbV3KClN9NvVHjfW9iY3kZFahi8rHenQxDEcZYXksTOmGrKovjFddqn
+         LwiKfeqniSh+N+uy0oNbGNaTcXPNsU/8F19o16pEfxmu6s8gUUtRdZeFr7N2RVMTXDS4
+         NOZVY+h8q3llM6lHU6WmSh5o5F/r9lI+ivBSqmOQIKX1SD5RtLI7pht32WGFJjEJtesH
+         t0NCkvidGksa/8wDjJliosrf5haiwdNznrfew1foBRJYKqeezDJ3oKIDEYj6q78ybHlk
+         RZcQhmFPnNwFqovCStNqkEA8fsCddh/QgfKARjrHtUUlFb7WGvLl1Zisomqafvz3YhI7
+         OapA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x17si391049jan.4.2021.05.19.13.25.29
+        by mx.google.com with ESMTPS id j3si666850ilo.104.2021.05.19.13.25.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 19 May 2021 13:25:30 -0700 (PDT)
+        Wed, 19 May 2021 13:25:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54984 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57876 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ljSkz-00005Q-DA
-	for alex.bennee@linaro.org; Wed, 19 May 2021 16:25:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53382)
+	id 1ljSlS-000265-J4
+	for alex.bennee@linaro.org; Wed, 19 May 2021 16:25:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53300)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1ljSj0-0004lX-Pd; Wed, 19 May 2021 16:23:28 -0400
-Received: from mail.csgraf.de ([85.25.223.15]:48270 helo=zulu616.server4you.de)
+ id 1ljSit-0004ca-Ce; Wed, 19 May 2021 16:23:19 -0400
+Received: from mail.csgraf.de ([85.25.223.15]:48106 helo=zulu616.server4you.de)
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <agraf@csgraf.de>)
- id 1ljSil-0003IC-FN; Wed, 19 May 2021 16:23:25 -0400
+ id 1ljSic-0003CZ-OX; Wed, 19 May 2021 16:23:19 -0400
 Received: from localhost.localdomain
  (dynamic-095-114-039-201.95.114.pool.telefonica.de [95.114.39.201])
- by csgraf.de (Postfix) with ESMTPSA id DBB67608062F;
- Wed, 19 May 2021 22:22:58 +0200 (CEST)
+ by csgraf.de (Postfix) with ESMTPSA id 54AA360803D8;
+ Wed, 19 May 2021 22:22:56 +0200 (CEST)
 From: Alexander Graf <agraf@csgraf.de>
 To: QEMU Developers <qemu-devel@nongnu.org>
-Subject: [PATCH v8 06/19] hvf: Remove use of hv_uvaddr_t and hv_gpaddr_t
-Date: Wed, 19 May 2021 22:22:40 +0200
-Message-Id: <20210519202253.76782-7-agraf@csgraf.de>
+Subject: [PATCH v8 02/19] hvf: Move vcpu thread functions into common directory
+Date: Wed, 19 May 2021 22:22:36 +0200
+Message-Id: <20210519202253.76782-3-agraf@csgraf.de>
 X-Mailer: git-send-email 2.30.1 (Apple Git-130)
 In-Reply-To: <20210519202253.76782-1-agraf@csgraf.de>
 References: <20210519202253.76782-1-agraf@csgraf.de>
@@ -65,8 +65,8 @@ Received-SPF: pass client-ip=85.25.223.15; envelope-from=agraf@csgraf.de;
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_PASS=-0.001,
+ T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -89,44 +89,70 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Peter Collingbourne <pcc@google.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: E/QDYubDldsj
+X-TUID: MC1+bfKaD1Je
 
-The ARM version of Hypervisor.framework no longer defines these two
-types, so let's just revert to standard ones.
+Until now, Hypervisor.framework has only been available on x86_64 systems.
+With Apple Silicon shipping now, it extends its reach to aarch64. To
+prepare for support for multiple architectures, let's start moving common
+code out into its own accel directory.
+
+This patch moves the vCPU thread loop over.
 
 Signed-off-by: Alexander Graf <agraf@csgraf.de>
 ---
- accel/hvf/hvf-accel-ops.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ {target/i386 => accel}/hvf/hvf-accel-ops.c | 0
+ {target/i386 => accel}/hvf/hvf-accel-ops.h | 0
+ accel/hvf/meson.build                      | 1 +
+ target/i386/hvf/meson.build                | 1 -
+ target/i386/hvf/x86hvf.c                   | 2 +-
+ 5 files changed, 2 insertions(+), 2 deletions(-)
+ rename {target/i386 => accel}/hvf/hvf-accel-ops.c (100%)
+ rename {target/i386 => accel}/hvf/hvf-accel-ops.h (100%)
 
-diff --git a/accel/hvf/hvf-accel-ops.c b/accel/hvf/hvf-accel-ops.c
-index 5bec7b4d6d..7370fcfba0 100644
---- a/accel/hvf/hvf-accel-ops.c
-+++ b/accel/hvf/hvf-accel-ops.c
-@@ -109,7 +109,7 @@ static int do_hvf_set_memory(hvf_slot *slot, hv_memory_flags_t flags)
-     macslot->present = 1;
-     macslot->gpa_start = slot->start;
-     macslot->size = slot->size;
--    ret = hv_vm_map((hv_uvaddr_t)slot->mem, slot->start, slot->size, flags);
-+    ret = hv_vm_map(slot->mem, slot->start, slot->size, flags);
-     assert_hvf_ok(ret);
-     return 0;
- }
-@@ -253,12 +253,12 @@ static void hvf_set_dirty_tracking(MemoryRegionSection *section, bool on)
-     /* protect region against writes; begin tracking it */
-     if (on) {
-         slot->flags |= HVF_SLOT_LOG;
--        hv_vm_protect((hv_gpaddr_t)slot->start, (size_t)slot->size,
-+        hv_vm_protect((uintptr_t)slot->start, (size_t)slot->size,
-                       HV_MEMORY_READ);
-     /* stop tracking region*/
-     } else {
-         slot->flags &= ~HVF_SLOT_LOG;
--        hv_vm_protect((hv_gpaddr_t)slot->start, (size_t)slot->size,
-+        hv_vm_protect((uintptr_t)slot->start, (size_t)slot->size,
-                       HV_MEMORY_READ | HV_MEMORY_WRITE);
-     }
- }
+diff --git a/target/i386/hvf/hvf-accel-ops.c b/accel/hvf/hvf-accel-ops.c
+similarity index 100%
+rename from target/i386/hvf/hvf-accel-ops.c
+rename to accel/hvf/hvf-accel-ops.c
+diff --git a/target/i386/hvf/hvf-accel-ops.h b/accel/hvf/hvf-accel-ops.h
+similarity index 100%
+rename from target/i386/hvf/hvf-accel-ops.h
+rename to accel/hvf/hvf-accel-ops.h
+diff --git a/accel/hvf/meson.build b/accel/hvf/meson.build
+index 227b11cd71..fc52cb7843 100644
+--- a/accel/hvf/meson.build
++++ b/accel/hvf/meson.build
+@@ -1,6 +1,7 @@
+ hvf_ss = ss.source_set()
+ hvf_ss.add(files(
+   'hvf-all.c',
++  'hvf-accel-ops.c',
+ ))
+ 
+ specific_ss.add_all(when: 'CONFIG_HVF', if_true: hvf_ss)
+diff --git a/target/i386/hvf/meson.build b/target/i386/hvf/meson.build
+index d253d5fd10..f6d4c394d3 100644
+--- a/target/i386/hvf/meson.build
++++ b/target/i386/hvf/meson.build
+@@ -1,6 +1,5 @@
+ i386_softmmu_ss.add(when: [hvf, 'CONFIG_HVF'], if_true: files(
+   'hvf.c',
+-  'hvf-accel-ops.c',
+   'x86.c',
+   'x86_cpuid.c',
+   'x86_decode.c',
+diff --git a/target/i386/hvf/x86hvf.c b/target/i386/hvf/x86hvf.c
+index 0d7533742e..2b99f3eaa2 100644
+--- a/target/i386/hvf/x86hvf.c
++++ b/target/i386/hvf/x86hvf.c
+@@ -32,7 +32,7 @@
+ #include <Hypervisor/hv.h>
+ #include <Hypervisor/hv_vmx.h>
+ 
+-#include "hvf-accel-ops.h"
++#include "accel/hvf/hvf-accel-ops.h"
+ 
+ void hvf_set_segment(struct CPUState *cpu, struct vmx_segment *vmx_seg,
+                      SegmentCache *qseg, bool is_tr)
 -- 
 2.30.1 (Apple Git-130)
 

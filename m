@@ -1,114 +1,97 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp898801lfm;
-        Tue, 18 May 2021 17:07:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxANA517gNy3jkS5j6+AHMdh6DLeVf30mO7EB1vJ78xPCJFTPa3enmr1+9InOhYtn/hPghO
-X-Received: by 2002:a92:d287:: with SMTP id p7mr7189703ilp.30.1621382821543;
-        Tue, 18 May 2021 17:07:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621382821; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp1045341lfm;
+        Tue, 18 May 2021 20:18:46 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxWBaMELyNPV1kIZgCZCiMDuN8SuquZYjTO12VNH3TVI073EIPXVEIzwRLBdt4UOSdI8ve/
+X-Received: by 2002:a17:906:bcd6:: with SMTP id lw22mr9937794ejb.250.1621394326788;
+        Tue, 18 May 2021 20:18:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621394326; cv=none;
         d=google.com; s=arc-20160816;
-        b=SG7leu33xd6oHxBeYIsvlwJh1u0/J6yswgWYZrP/AGX+8w7+XBFVlgpHvpjMuHfidd
-         Iml1wqJ8Ye21e9ajZ9YpJxAxPKqJ4n+mAXPlamrhFNTeE/rem7PRke3D8EwnRknTwG05
-         Li6q/D/blN4KivPDVGiY0KNwCSHsNllmRZlRUwGekTkrZkaeiutrH/BducPg6mpY/KAP
-         GrDVhN9MS6yxixwD0a0MhblbO8U079LjrFT27sL76PK93HyE55MUHbhu4GcvuJ6r6QBX
-         yKpSSvTB6bHpv2lOn3VX6BQN52X3Jcc5biGqNrNjM0wMvk3SQDtZIM+X+UkSbluwvAsU
-         SsJw==
+        b=islozagkU4lhBRUFnC65sSJUswsyHKpTGW9dQeHD0STD1exqid9LWUZbwHKQIxKXx7
+         vQN86I+Hz/pH+9Cj4tr4Za0XfIdGXC/do0/DL/cajeVXeHXD6sQj5Z/dpo/uIPPOexhD
+         o+tjKE/ydhmUfwVoWmwNXXKh6hqjifQQejuv389/Z2+j8f4no6qwzTmJbQWvJyVtRHyf
+         5I39TMsZmLCW6KBqKyiUS2Kj2s+WPq4jvb/aUobkOXTbpDukJWDmQqfD++S/rWICVz7X
+         8IBccal1Xi5nATb1JwTY+6uh2qZyRKo2T4aRdYDMi9us1ntryOxhflxhFTONtxsGvton
+         tZWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=fFac46k6fWx/dZttIiXR5ZeGKeQBto4t86AuZxEHLC4=;
-        b=SqmmW6kfi5aAW4QT0vVHkLAiHlBpWluL9o5BJ2age/zGpI0dLgP75TsCL0cgnRdf4G
-         kzShb8MuO8zYyV4NnDzxhOgpxh+iKAo/8uoiZ3fGaCQRaCTfqfdATkMvTsXfe/Dhogkq
-         Q3ga75+dv3bnMGhlvOBi/RCFT+rLxge/9sYZ9ZYfR7+ZbOncpM5z0LK9yf9liVprY40z
-         O5WewAkDUmG6WFZdXk4AbuJNRxqdYNu6rO8AYaHrKiBDfqe3c2dFlx858Alr2ZFxPmGj
-         cY8DQCGVkNZG1audSZHVP2HpOtGTN7ygHrB8B/Ek9Uv2p6j77ZbN5Kr8AzlQB4sPNZ0m
-         8gAQ==
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=GLOYEz9F81d6+PfJjb8LEPcXoHvW3+VN7U5BKl9XUsQ=;
+        b=Xe1YdNUGjGlKWAPEYeg3yxgmbN6YgoMwpnggGRIQriX7z3EXehCjySnjmiWcbR3Kvy
+         RhspGB4qpNQ7FjgdcrxytlHRoRWI5WjeZdrsMim62k0t/cgmo4aBNMuuDS42PYdoP7uF
+         g/iJ0H8U8QmlSiJUZlZ5QMr3WjQ+BXJd0+5i+lAsKbWMARph04zMFWog7xBxBXaiFkKr
+         fC4ILrucAuafCv6WD8CPyP89sfWRm8P4t6/9Z2cxTbDoZLnB9IVy9D0oZMQUrzUgPrGz
+         GaTW7RCo8ldYb0RG0CYcoeoXEx23CoWOwbzjHvkjh9uh+mIJBndSxcrsusnGy9fOoS0K
+         zZTw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Eygen7hw;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s19si22207811iow.52.2021.05.18.17.07.01
+        by mx.google.com with ESMTPS id q2si10602599edw.144.2021.05.18.20.18.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 May 2021 17:07:01 -0700 (PDT)
+        Tue, 18 May 2021 20:18:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Eygen7hw;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:48368 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Received: from localhost ([::1]:51920 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lj9jo-0007fU-TP
-	for alex.bennee@linaro.org; Tue, 18 May 2021 20:07:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54916)
+	id 1ljCjN-0007QZ-QB
+	for alex.bennee@linaro.org; Tue, 18 May 2021 23:18:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55016)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
- id 1lj9gj-0002tO-00; Tue, 18 May 2021 20:03:49 -0400
-Received: from mail-ot1-x32e.google.com ([2607:f8b0:4864:20::32e]:44804)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
- id 1lj9gg-0000OM-LP; Tue, 18 May 2021 20:03:48 -0400
-Received: by mail-ot1-x32e.google.com with SMTP id
- r26-20020a056830121ab02902a5ff1c9b81so10215703otp.11; 
- Tue, 18 May 2021 17:03:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=fFac46k6fWx/dZttIiXR5ZeGKeQBto4t86AuZxEHLC4=;
- b=Eygen7hwAY7NcNJWLVOOQiPvBOwdjhHXTD/XhVZqcc3oKrkt372+veZvkUKVHaKBm/
- Phbl7djIpo7WB83n/kBv5wdQJW/bGeCZK3YYBnZXXR+dTyh60wMN5l77qx7z6vMUj6DH
- Zhe90RRw93vPH0GBfZC2iiud83dfwr0G08wkA+FiK7lZdc9jt7PhmxsG+MDBDqt5Io6w
- w9wVZvORw6Py8PNbtEJlZPn6x1IcC8e0N1Mykou4c4DinyClyb4omJokLZnvuU+j/CZk
- KYF0WiYBX2BWo10J1Rop2saopeRn+4ilXtKG1ociReZPkcWm16GQv36gVR3btRnpUb0u
- ph/w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=fFac46k6fWx/dZttIiXR5ZeGKeQBto4t86AuZxEHLC4=;
- b=TmBzCdchK92qkbYMt6iiWmhzmDLTP/wIZs05oy1NdzuNMoYpNaFeSg6MXKtpu9HWj0
- LeKtgCcoeSQz+6fCiFzUX8TyBTcwXCzhA9sSfvd9uMPOKmDHH7zREyBPJxhv/qVx1OrB
- 5GF0jaFl8eEb2Sxn0QAsiF6dTuGmrY++KjK6phmbhUh5rPkT1IBVUImgj5luzIGEuc+0
- 8RXI1TQg1fgSSEIYTvvFevovVnY0d3JaOW6FnqspEsFiukSdGMooSMg00L8thDzFnmi9
- ployIo+ahB/A4Nzxmo0G3tqwJ0Yg/KPTswkNc+HLcSr0AdYnp9XO3pspKsc+ptXD4thS
- xKTg==
-X-Gm-Message-State: AOAM5339Mj8UmBDOmZpf8mzlzRN5+pX3Wk8BF1Zt6ScNNI1WEMP3/khH
- uK20bFULCV5j77SwunDFHA==
-X-Received: by 2002:a05:6830:3115:: with SMTP id
- b21mr5994567ots.291.1621382625240; 
- Tue, 18 May 2021 17:03:45 -0700 (PDT)
-Received: from serve.minyard.net ([47.184.156.158])
- by smtp.gmail.com with ESMTPSA id p21sm4147147ota.26.2021.05.18.17.03.43
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 18 May 2021 17:03:44 -0700 (PDT)
-Received: from t560.minyard.net (unknown
- [IPv6:2001:470:b8f6:1b:9144:ba66:ea13:f260])
- by serve.minyard.net (Postfix) with ESMTPA id 58DFB1800EB;
- Wed, 19 May 2021 00:03:42 +0000 (UTC)
-From: minyard@acm.org
-To: qemu-devel@nongnu.org,
-	Titus Rwantare <titusr@google.com>
-Subject: [PATCH 3/3] sensor: Move hardware sensors from misc to a sensor
- directory
-Date: Tue, 18 May 2021 19:03:31 -0500
-Message-Id: <20210519000331.3690536-4-minyard@acm.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210519000331.3690536-1-minyard@acm.org>
-References: <20210519000331.3690536-1-minyard@acm.org>
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1ljCjE-0007QK-Pc; Tue, 18 May 2021 23:18:36 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:3429)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1ljCjB-0005xx-V9; Tue, 18 May 2021 23:18:36 -0400
+Received: from dggems702-chm.china.huawei.com (unknown [172.30.72.59])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4FlHzZ0N3szNywX;
+ Wed, 19 May 2021 11:14:50 +0800 (CST)
+Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
+ dggems702-chm.china.huawei.com (10.3.19.179) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2176.2; Wed, 19 May 2021 11:18:19 +0800
+Received: from [10.174.187.128] (10.174.187.128) by
+ dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
+ 15.1.2176.2; Wed, 19 May 2021 11:18:18 +0800
+Subject: Re: [RFC PATCH v2 5/6] hw/arm/virt-acpi-build: Add PPTT table
+To: Salil Mehta <salil.mehta@huawei.com>, Andrew Jones <drjones@redhat.com>
+References: <20210413080745.33004-1-wangyanan55@huawei.com>
+ <20210413080745.33004-6-wangyanan55@huawei.com>
+ <1551b7d6-e010-e5c7-47e1-c347ca78a1db@huawei.com>
+ <a6ccb20f19b743a29f6aaffcf3088df2@huawei.com>
+ <20210518074221.umezsdedzyzmcbsk@gator.home>
+ <80dca9f16c5b4bef9900f6cf76c99500@huawei.com>
+ <20210518190539.fwsvl2ijb4jlzbyi@gator.home>
+ <b61a7413f98a430685b838eecc2db74f@huawei.com>
+From: "wangyanan (Y)" <wangyanan55@huawei.com>
+Message-ID: <224d54ac-0c03-afc4-4aec-ea3435aa68e7@huawei.com>
+Date: Wed, 19 May 2021 11:18:18 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::32e;
- envelope-from=tcminyard@gmail.com; helo=mail-ot1-x32e.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+In-Reply-To: <b61a7413f98a430685b838eecc2db74f@huawei.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+X-Originating-IP: [10.174.187.128]
+X-ClientProxiedBy: dggeme718-chm.china.huawei.com (10.1.199.114) To
+ dggpemm500023.china.huawei.com (7.185.36.83)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.191;
+ envelope-from=wangyanan55@huawei.com; helo=szxga05-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -121,269 +104,126 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Corey Minyard <cminyard@mvista.com>,
- Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
- Andrzej Zaborowski <balrogg@gmail.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "linuxarm@openeuler.org" <linuxarm@openeuler.org>,
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Linuxarm <linuxarm@huawei.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Igor Mammedov <imammedo@redhat.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ "Zengtao \(B\)" <prime.zeng@hisilicon.com>, yangyicong <yangyicong@huawei.com>,
+ yuzenghui <yuzenghui@huawei.com>,
+ "Wanghaibin \(D\)" <wanghaibin.wang@huawei.com>,
+ zhukeqian <zhukeqian1@huawei.com>, "lijiajie \(H\)" <lijiajie11@huawei.com>,
+ David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CH6SM3dIdX5+
+X-TUID: YzIW4dU4dIGJ
 
-From: Corey Minyard <cminyard@mvista.com>
 
-Lots of this are expected to be coming in, create a directory for them.
+On 2021/5/19 3:22, Salil Mehta wrote:
+>> From: Andrew Jones [mailto:drjones@redhat.com]
+>> Sent: Tuesday, May 18, 2021 8:06 PM
+>> To: Salil Mehta <salil.mehta@huawei.com>
+>> Cc: wangyanan (Y) <wangyanan55@huawei.com>; Peter Maydell
+>> <peter.maydell@linaro.org>; Michael S . Tsirkin <mst@redhat.com>; Wanghaibin
+>> (D) <wanghaibin.wang@huawei.com>; qemu-devel@nongnu.org; Shannon Zhao
+>> <shannon.zhaosl@gmail.com>; qemu-arm@nongnu.org; Alistair Francis
+>> <alistair.francis@wdc.com>; Zengtao (B) <prime.zeng@hisilicon.com>;
+>> yangyicong <yangyicong@huawei.com>; yuzenghui <yuzenghui@huawei.com>; Igor
+>> Mammedov <imammedo@redhat.com>; zhukeqian <zhukeqian1@huawei.com>; lijiajie (H)
+>> <lijiajie11@huawei.com>; David Gibson <david@gibson.dropbear.id.au>; Linuxarm
+>> <linuxarm@huawei.com>; linuxarm@openeuler.org
+>> Subject: Re: [RFC PATCH v2 5/6] hw/arm/virt-acpi-build: Add PPTT table
+>>
+>> On Tue, May 18, 2021 at 06:34:08PM +0000, Salil Mehta wrote:
+>>>   Those benefits, when vcpu pinning is used, are the same benefits
+>>>> as for the host, which already use PPTT tables to describe topology, even
+>>>> though hot plug isn't supported.
+>>> yes sure, you mean pinning vcpus according to the cpu topology for performance?
+>> Yup
+> Already Agreed :)
+>
+>>>> Now, if you're saying we should only generate tables for smp.cpus, not
+>>> Correct. This is what I thought we must be doing even now
+>>>
+>>>> smp.maxcpus, because hot plug isn't supported anyway, then I see your
+>>>> point. But, it'd be better to require smp.cpus == smp.maxcpus in our
+>>>> smp_parse function to do that, which we've never done before, so we may
+>>>> have trouble supporting existing command lines.
+>>> I am trying to recall, if the vcpu Hotplug is not supported then can they
+>>> ever be different?
+>>>
+>>> cpus =  (threads * cores * sockets)
+>>>
+>>> static void smp_parse(MachineState *ms, QemuOpts *opts)
+>>> {
+>>>       [...]
+>>>
+>>>          if (sockets * cores * threads != ms->smp.max_cpus) {
+>>>              warn_report("Invalid CPU topology deprecated: "
+>>>                          "sockets (%u) * cores (%u) * threads (%u) "
+>>>                          "!= maxcpus (%u)",
+>>>                          sockets, cores, threads,
+>>>                          ms->smp.max_cpus);
+>>>          }
+>>>       [...]
+>>> }
+>>>
+>>> Although, above check does not exit(1) and just warns on detecting invalid
+>>> CPU topology. Not sure why?
+>> Hmm, not sure what code you have there. I see this in
+>> hw/core/machine.c:smp_parse
+>>
+>>          if (ms->smp.max_cpus < cpus) {
+>>              error_report("maxcpus must be equal to or greater than smp");
+>>              exit(1);
+>>          }
+>>
+>>          if (sockets * cores * threads != ms->smp.max_cpus) {
+>>              error_report("Invalid CPU topology: "
+>>                           "sockets (%u) * cores (%u) * threads (%u) "
+>>                           "!= maxcpus (%u)",
+>>                           sockets, cores, threads,
+>>                           ms->smp.max_cpus);
+>>              exit(1);
+>>          }
+>>
+>>> Well if you think there are subtleties to support above implementation and
+>>> we cannot do it now then sure it is your call. :)
+Hi Salil, Drew,
+>> The problem is that -smp 4,maxcpus=8 doesn't error out today, even though
+>> it doesn't do anything. OTOH, -smp 4,cores=2 doesn't error out either, but
+>> we're proposing that it should. Maybe we can start erroring out when
+>> cpus != maxcpus until hot plug is supported?
+> Agreed, both don't make any sense if hotplug is not supported and ideally should
+> fail with error. We should block any such topology configuration.
+In the ARM-specific function virt_smp_parse() (patch 9), there already
+have been some restrictions for the given -smp configuration.
+We now only allow:
+-smp N
+-smp maxcpus=M
+-smp N, maxcpus=M
 
-Also move the tmp105.h file into the include directory where it
-should be.
+-smp N, sockets=X, cores=Y
+-smp N, sockets=X, cores=Y, threads=Z
 
-Cc: Cédric Le Goater <clg@kaod.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: Andrew Jeffery <andrew@aj.id.au>
-Cc: Joel Stanley <joel@jms.id.au>
-Cc: Andrzej Zaborowski <balrogg@gmail.com>
-Cc: qemu-arm@nongnu.org
-Signed-off-by: Corey Minyard <cminyard@mvista.com>
----
- hw/Kconfig                                 |  1 +
- hw/arm/aspeed.c                            |  2 +-
- hw/arm/nseries.c                           |  2 +-
- hw/meson.build                             |  1 +
- hw/misc/Kconfig                            | 12 ------------
- hw/misc/meson.build                        |  3 ---
- hw/sensor/Kconfig                          | 11 +++++++++++
- hw/{misc => sensor}/emc141x.c              |  2 +-
- hw/sensor/meson.build                      |  3 +++
- hw/{misc => sensor}/tmp105.c               |  2 +-
- hw/{misc => sensor}/tmp421.c               |  0
- include/hw/{misc => sensor}/emc141x_regs.h |  0
- {hw/misc => include/hw/sensor}/tmp105.h    |  2 +-
- include/hw/{misc => sensor}/tmp105_regs.h  |  0
- tests/qtest/emc141x-test.c                 |  2 +-
- tests/qtest/npcm7xx_smbus-test.c           |  2 +-
- tests/qtest/tmp105-test.c                  |  2 +-
- 17 files changed, 24 insertions(+), 23 deletions(-)
- create mode 100644 hw/sensor/Kconfig
- rename hw/{misc => sensor}/emc141x.c (99%)
- create mode 100644 hw/sensor/meson.build
- rename hw/{misc => sensor}/tmp105.c (99%)
- rename hw/{misc => sensor}/tmp421.c (100%)
- rename include/hw/{misc => sensor}/emc141x_regs.h (100%)
- rename {hw/misc => include/hw/sensor}/tmp105.h (97%)
- rename include/hw/{misc => sensor}/tmp105_regs.h (100%)
+-smp maxcpus=M, sockets=X, cores=Y
+-smp maxcpus=M, sockets=X, cores=Y, threads=Z
 
-diff --git a/hw/Kconfig b/hw/Kconfig
-index 805860f564..8cb7664d70 100644
---- a/hw/Kconfig
-+++ b/hw/Kconfig
-@@ -32,6 +32,7 @@ source remote/Kconfig
- source rtc/Kconfig
- source scsi/Kconfig
- source sd/Kconfig
-+source sensor/Kconfig
- source smbios/Kconfig
- source ssi/Kconfig
- source timer/Kconfig
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 3fe6c55744..272b17f999 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -16,7 +16,7 @@
- #include "hw/arm/aspeed_soc.h"
- #include "hw/i2c/smbus_eeprom.h"
- #include "hw/misc/pca9552.h"
--#include "hw/misc/tmp105.h"
-+#include "hw/sensor/tmp105.h"
- #include "hw/misc/led.h"
- #include "hw/qdev-properties.h"
- #include "sysemu/block-backend.h"
-diff --git a/hw/arm/nseries.c b/hw/arm/nseries.c
-index 0aefa5d0f3..a10d8f53b5 100644
---- a/hw/arm/nseries.c
-+++ b/hw/arm/nseries.c
-@@ -36,7 +36,7 @@
- #include "hw/display/blizzard.h"
- #include "hw/input/tsc2xxx.h"
- #include "hw/misc/cbus.h"
--#include "hw/misc/tmp105.h"
-+#include "hw/sensor/tmp105.h"
- #include "hw/qdev-properties.h"
- #include "hw/block/flash.h"
- #include "hw/hw.h"
-diff --git a/hw/meson.build b/hw/meson.build
-index ba0601e36e..b3366c888e 100644
---- a/hw/meson.build
-+++ b/hw/meson.build
-@@ -31,6 +31,7 @@ subdir('rdma')
- subdir('rtc')
- subdir('scsi')
- subdir('sd')
-+subdir('sensor')
- subdir('smbios')
- subdir('ssi')
- subdir('timer')
-diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-index 996d45aff5..507058d8bf 100644
---- a/hw/misc/Kconfig
-+++ b/hw/misc/Kconfig
-@@ -11,18 +11,6 @@ config ARMSSE_MHU
- config ARMSSE_CPU_PWRCTRL
-     bool
- 
--config TMP105
--    bool
--    depends on I2C
--
--config TMP421
--    bool
--    depends on I2C
--
--config EMC141X
--    bool
--    depends on I2C
--
- config ISA_DEBUG
-     bool
-     depends on ISA_BUS
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index b0a8ee8994..046c7e0c72 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -6,9 +6,6 @@ softmmu_ss.add(when: 'CONFIG_ISA_TESTDEV', if_true: files('pc-testdev.c'))
- softmmu_ss.add(when: 'CONFIG_PCA9552', if_true: files('pca9552.c'))
- softmmu_ss.add(when: 'CONFIG_PCI_TESTDEV', if_true: files('pci-testdev.c'))
- softmmu_ss.add(when: 'CONFIG_SGA', if_true: files('sga.c'))
--softmmu_ss.add(when: 'CONFIG_TMP105', if_true: files('tmp105.c'))
--softmmu_ss.add(when: 'CONFIG_TMP421', if_true: files('tmp421.c'))
--softmmu_ss.add(when: 'CONFIG_EMC141X', if_true: files('emc141x.c'))
- softmmu_ss.add(when: 'CONFIG_UNIMP', if_true: files('unimp.c'))
- softmmu_ss.add(when: 'CONFIG_EMPTY_SLOT', if_true: files('empty_slot.c'))
- softmmu_ss.add(when: 'CONFIG_LED', if_true: files('led.c'))
-diff --git a/hw/sensor/Kconfig b/hw/sensor/Kconfig
-new file mode 100644
-index 0000000000..097cb8f11e
---- /dev/null
-+++ b/hw/sensor/Kconfig
-@@ -0,0 +1,11 @@
-+config TMP105
-+    bool
-+    depends on I2C
-+
-+config TMP421
-+    bool
-+    depends on I2C
-+
-+config EMC141X
-+    bool
-+    depends on I2C
-diff --git a/hw/misc/emc141x.c b/hw/sensor/emc141x.c
-similarity index 99%
-rename from hw/misc/emc141x.c
-rename to hw/sensor/emc141x.c
-index f7c53d48a4..7ce8f4e979 100644
---- a/hw/misc/emc141x.c
-+++ b/hw/sensor/emc141x.c
-@@ -25,7 +25,7 @@
- #include "qapi/visitor.h"
- #include "qemu/module.h"
- #include "qom/object.h"
--#include "hw/misc/emc141x_regs.h"
-+#include "hw/sensor/emc141x_regs.h"
- 
- #define SENSORS_COUNT_MAX    4
- 
-diff --git a/hw/sensor/meson.build b/hw/sensor/meson.build
-new file mode 100644
-index 0000000000..9e0f3ab1fd
---- /dev/null
-+++ b/hw/sensor/meson.build
-@@ -0,0 +1,3 @@
-+softmmu_ss.add(when: 'CONFIG_TMP105', if_true: files('tmp105.c'))
-+softmmu_ss.add(when: 'CONFIG_TMP421', if_true: files('tmp421.c'))
-+softmmu_ss.add(when: 'CONFIG_EMC141X', if_true: files('emc141x.c'))
-diff --git a/hw/misc/tmp105.c b/hw/sensor/tmp105.c
-similarity index 99%
-rename from hw/misc/tmp105.c
-rename to hw/sensor/tmp105.c
-index d299d9b21b..2056449489 100644
---- a/hw/misc/tmp105.c
-+++ b/hw/sensor/tmp105.c
-@@ -22,7 +22,7 @@
- #include "hw/i2c/i2c.h"
- #include "hw/irq.h"
- #include "migration/vmstate.h"
--#include "tmp105.h"
-+#include "hw/sensor/tmp105.h"
- #include "qapi/error.h"
- #include "qapi/visitor.h"
- #include "qemu/module.h"
-diff --git a/hw/misc/tmp421.c b/hw/sensor/tmp421.c
-similarity index 100%
-rename from hw/misc/tmp421.c
-rename to hw/sensor/tmp421.c
-diff --git a/include/hw/misc/emc141x_regs.h b/include/hw/sensor/emc141x_regs.h
-similarity index 100%
-rename from include/hw/misc/emc141x_regs.h
-rename to include/hw/sensor/emc141x_regs.h
-diff --git a/hw/misc/tmp105.h b/include/hw/sensor/tmp105.h
-similarity index 97%
-rename from hw/misc/tmp105.h
-rename to include/hw/sensor/tmp105.h
-index 7c97071ad7..244e2989fe 100644
---- a/hw/misc/tmp105.h
-+++ b/include/hw/sensor/tmp105.h
-@@ -15,7 +15,7 @@
- #define QEMU_TMP105_H
- 
- #include "hw/i2c/i2c.h"
--#include "hw/misc/tmp105_regs.h"
-+#include "hw/sensor/tmp105_regs.h"
- #include "qom/object.h"
- 
- #define TYPE_TMP105 "tmp105"
-diff --git a/include/hw/misc/tmp105_regs.h b/include/hw/sensor/tmp105_regs.h
-similarity index 100%
-rename from include/hw/misc/tmp105_regs.h
-rename to include/hw/sensor/tmp105_regs.h
-diff --git a/tests/qtest/emc141x-test.c b/tests/qtest/emc141x-test.c
-index 714058806a..8c86694091 100644
---- a/tests/qtest/emc141x-test.c
-+++ b/tests/qtest/emc141x-test.c
-@@ -11,7 +11,7 @@
- #include "libqos/qgraph.h"
- #include "libqos/i2c.h"
- #include "qapi/qmp/qdict.h"
--#include "hw/misc/emc141x_regs.h"
-+#include "hw/sensor/emc141x_regs.h"
- 
- #define EMC1414_TEST_ID   "emc1414-test"
- 
-diff --git a/tests/qtest/npcm7xx_smbus-test.c b/tests/qtest/npcm7xx_smbus-test.c
-index 4f9f493872..6b3038ac59 100644
---- a/tests/qtest/npcm7xx_smbus-test.c
-+++ b/tests/qtest/npcm7xx_smbus-test.c
-@@ -18,7 +18,7 @@
- #include "qemu/bitops.h"
- #include "libqos/i2c.h"
- #include "libqos/libqtest.h"
--#include "hw/misc/tmp105_regs.h"
-+#include "hw/sensor/tmp105_regs.h"
- 
- #define NR_SMBUS_DEVICES    16
- #define SMBUS_ADDR(x)       (0xf0080000 + 0x1000 * (x))
-diff --git a/tests/qtest/tmp105-test.c b/tests/qtest/tmp105-test.c
-index f930a96b83..3678646df5 100644
---- a/tests/qtest/tmp105-test.c
-+++ b/tests/qtest/tmp105-test.c
-@@ -13,7 +13,7 @@
- #include "libqos/qgraph.h"
- #include "libqos/i2c.h"
- #include "qapi/qmp/qdict.h"
--#include "hw/misc/tmp105_regs.h"
-+#include "hw/sensor/tmp105_regs.h"
- 
- #define TMP105_TEST_ID   "tmp105-test"
- #define TMP105_TEST_ADDR 0x49
--- 
-2.25.1
+-smp N, maxcpus=M, sockets=X, cores=Y
+-smp N, maxcpus=M, sockets=X, cores=Y, threads=Z
 
+and disallow the other strange and rare formats that shouldn't be provided.
+
+It's reasonable to block the topology configuration which is not useful
+currently. I will add the requirement for "cpus==maxcpus" in this fuction
+if the possible conflict with existing command lines is not a big problem.
+
+Thanks,
+Yanan
+>
+> Thanks
+> Salil
+> .

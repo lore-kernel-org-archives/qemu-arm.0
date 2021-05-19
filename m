@@ -1,60 +1,60 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp1827692lfm;
-        Wed, 19 May 2021 13:23:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJysqqEv75rfbsaFQivaYR7rXWtjxYnCLNshnh590Xd7qLelz+r0liUC3RQlYxyt5QBKviH2
-X-Received: by 2002:a05:6e02:1393:: with SMTP id d19mr965237ilo.90.1621455823049;
-        Wed, 19 May 2021 13:23:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621455823; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp1828549lfm;
+        Wed, 19 May 2021 13:24:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwAlBOxwE1T849qVB6l0jEXYHVfx2CRA6JN04O5MizNjSsfqngLvrxOs2baXltM+JjzD5bg
+X-Received: by 2002:a05:6e02:152b:: with SMTP id i11mr820148ilu.230.1621455899500;
+        Wed, 19 May 2021 13:24:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621455899; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZPB2eQ5AsuUYAljQn2NV0aCs828pyEjAS2X/lJbiR6Zmw/pHAkMr/hz5H93Wx5Y9PB
-         iaPTjj1AoSldyBKKQN3vGx+cCVCOPOEMfe41P/WRVneEOqydvbOkiVTuj+4tZN8uOA7F
-         6futkbltvNQlL2VBwHBPGXytX3nQDsQTFRbT6LT8/hv6jYA5YFlmskoOonoLvqRqSn9D
-         B/qC4aOYPyYpDj4b7zUZG6sOmwFes5AdkKw1zdRYbV86Pq22owra7aQRrDXDnWStg+PG
-         wF9rjnpZqV/z+3rOQO3YAHOkti3+D2+FFIE3FOm/W0IHBjsik48k8QPJ8oTqzMvgbkiO
-         4R4g==
+        b=bBHwcDqq5Mhpl7Hfed1dxzXTJpH7uCJxuZYuN8qMFAmMcUGbBBCK5wv3HRO8TaBkRf
+         DSm/MvZI6Bd6RzdHwjt3AH5fIOCT/OstbO8Avyy1c4HWSOqluJIBM84nFqiQZf6PEu+b
+         klUtVGH2QS081ObzS/AhECxl7uWyJQsq1XUSIfo1Lc59AIx+7kmTbPaJrvJ+JcraM5Jc
+         6hnCG4aet7bkvuDUedbBzfF4oN6KMTPgYZA3qCw4hXXxGl5Uyp8ROyD0CaPR3b0AsXKj
+         SRtctKjJ2plozXU2bCxC+9TZMpFhskRbpJzKBRU2tg2eWZN51XfXX2bnNgP2YVIQ3TLu
+         M6Cw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=kLRRf8pbk2WS1iN68OHl1uIZxg8L8jilTmy9FmFopOE=;
-        b=tNgMABphmvV/73YHJ1P2e/nE1F6ktiVXDxoEhyWGws0nsmYlp3WD0GCW9T/gwer3e8
-         EuE+SiKxcnxyq/7KNN8KA+B+whc5EjsVSM/uNVRFbT/CB+IQ/hNcRNwF24V0aGPLXF5I
-         Vf1AbIDU6dBK5sRg8leAnyyuagwdpNr4rBKOPNYsPsKaqzoJV/LtaG75A287JfFJvQ4z
-         dvYfXgmh2BZXdROoLssUdJ4xClqT0nb3OFuEfhBuWGtZbYQN7oUDCfWGrJo/ZaZS4ZW9
-         rkQ+OBV/TpfQ8PB5VdWoKOWiNahM+RR6UN4bOGrat839+o8EJB7bGFhM3mQ6KrhPZ+dS
-         BqVA==
+        bh=kgUs4pHSgMdX5kPd7PDKiDOAPw/oxRmpAAPiZT6BJ6w=;
+        b=f47uV83LMgpXksG62kOVdgyAJUPK0FweKI+7mgxMLwLeQkzjZ1kcxHpNPtgFJ6KRCq
+         9wydkH+ec2X+rc0X8KbAljFUThp2Gp2jhbqf/OFNz5pY2TmCSPvpFKo0nhbyaEz8q2GN
+         l3zFlDv/7r8HS9oJH9Tr0ir5QAFidiLSJHEQsZ1+qNP2u+b3/PGUU8Q8Ztg3G3jsESV+
+         DaQb66QeEvQY9cqwG17y1QR9KaFq43j8BAjlEBztZy0DezqwWr/PRwL52A00qv+hP/qI
+         D9eY77ZjiVsdLbb3qbfjoMXUSKcRGhZVPIWnIWnrfL+iSXgk5EQtFvt8fvQh/rj4nVZk
+         rRTw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g15si617307iln.71.2021.05.19.13.23.42
+        by mx.google.com with ESMTPS id h19si374194jaj.3.2021.05.19.13.24.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 19 May 2021 13:23:43 -0700 (PDT)
+        Wed, 19 May 2021 13:24:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:49426 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52332 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ljSjG-0004MQ-AD
-	for alex.bennee@linaro.org; Wed, 19 May 2021 16:23:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53146)
+	id 1ljSkU-0006nZ-QI
+	for alex.bennee@linaro.org; Wed, 19 May 2021 16:24:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53156)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1ljSij-00042r-Au; Wed, 19 May 2021 16:23:10 -0400
-Received: from mail.csgraf.de ([85.25.223.15]:48142 helo=zulu616.server4you.de)
+ id 1ljSil-00044K-CN; Wed, 19 May 2021 16:23:11 -0400
+Received: from mail.csgraf.de ([85.25.223.15]:48100 helo=zulu616.server4you.de)
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <agraf@csgraf.de>)
- id 1ljSic-0003Dz-PN; Wed, 19 May 2021 16:23:08 -0400
+ id 1ljSic-0003CT-Py; Wed, 19 May 2021 16:23:10 -0400
 Received: from localhost.localdomain
  (dynamic-095-114-039-201.95.114.pool.telefonica.de [95.114.39.201])
- by csgraf.de (Postfix) with ESMTPSA id 9BC3C6080619;
- Wed, 19 May 2021 22:22:57 +0200 (CEST)
+ by csgraf.de (Postfix) with ESMTPSA id A76B360803BD;
+ Wed, 19 May 2021 22:22:55 +0200 (CEST)
 From: Alexander Graf <agraf@csgraf.de>
 To: QEMU Developers <qemu-devel@nongnu.org>
-Subject: [PATCH v8 04/19] hvf: Move hvf internal definitions into common header
-Date: Wed, 19 May 2021 22:22:38 +0200
-Message-Id: <20210519202253.76782-5-agraf@csgraf.de>
+Subject: [PATCH v8 01/19] hvf: Move assert_hvf_ok() into common directory
+Date: Wed, 19 May 2021 22:22:35 +0200
+Message-Id: <20210519202253.76782-2-agraf@csgraf.de>
 X-Mailer: git-send-email 2.30.1 (Apple Git-130)
 In-Reply-To: <20210519202253.76782-1-agraf@csgraf.de>
 References: <20210519202253.76782-1-agraf@csgraf.de>
@@ -89,107 +89,200 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Peter Collingbourne <pcc@google.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tZaddBafwlfe
+X-TUID: yTiI9hJuE6q9
 
 Until now, Hypervisor.framework has only been available on x86_64 systems.
 With Apple Silicon shipping now, it extends its reach to aarch64. To
 prepare for support for multiple architectures, let's start moving common
 code out into its own accel directory.
 
-This patch moves a few internal struct and constant defines over.
+This patch moves assert_hvf_ok() and introduces generic build infrastructure.
 
 Signed-off-by: Alexander Graf <agraf@csgraf.de>
 ---
- include/sysemu/hvf_int.h   | 30 ++++++++++++++++++++++++++++++
- target/i386/hvf/hvf-i386.h | 31 +------------------------------
- 2 files changed, 31 insertions(+), 30 deletions(-)
+ MAINTAINERS              |  8 +++++++
+ accel/hvf/hvf-all.c      | 47 ++++++++++++++++++++++++++++++++++++++++
+ accel/hvf/meson.build    |  6 +++++
+ accel/meson.build        |  1 +
+ include/sysemu/hvf_int.h | 18 +++++++++++++++
+ target/i386/hvf/hvf.c    | 33 +---------------------------
+ 6 files changed, 81 insertions(+), 32 deletions(-)
+ create mode 100644 accel/hvf/hvf-all.c
+ create mode 100644 accel/hvf/meson.build
+ create mode 100644 include/sysemu/hvf_int.h
 
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 89741cfc19..262e96714b 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -434,7 +434,15 @@ M: Roman Bolshakov <r.bolshakov@yadro.com>
+ W: https://wiki.qemu.org/Features/HVF
+ S: Maintained
+ F: target/i386/hvf/
++
++HVF
++M: Cameron Esfahani <dirty@apple.com>
++M: Roman Bolshakov <r.bolshakov@yadro.com>
++W: https://wiki.qemu.org/Features/HVF
++S: Maintained
++F: accel/hvf/
+ F: include/sysemu/hvf.h
++F: include/sysemu/hvf_int.h
+ 
+ WHPX CPUs
+ M: Sunil Muthuswamy <sunilmut@microsoft.com>
+diff --git a/accel/hvf/hvf-all.c b/accel/hvf/hvf-all.c
+new file mode 100644
+index 0000000000..f185b0830a
+--- /dev/null
++++ b/accel/hvf/hvf-all.c
+@@ -0,0 +1,47 @@
++/*
++ * QEMU Hypervisor.framework support
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2.  See
++ * the COPYING file in the top-level directory.
++ *
++ * Contributions after 2012-01-13 are licensed under the terms of the
++ * GNU GPL, version 2 or (at your option) any later version.
++ */
++
++#include "qemu/osdep.h"
++#include "qemu-common.h"
++#include "qemu/error-report.h"
++#include "sysemu/hvf.h"
++#include "sysemu/hvf_int.h"
++
++void assert_hvf_ok(hv_return_t ret)
++{
++    if (ret == HV_SUCCESS) {
++        return;
++    }
++
++    switch (ret) {
++    case HV_ERROR:
++        error_report("Error: HV_ERROR");
++        break;
++    case HV_BUSY:
++        error_report("Error: HV_BUSY");
++        break;
++    case HV_BAD_ARGUMENT:
++        error_report("Error: HV_BAD_ARGUMENT");
++        break;
++    case HV_NO_RESOURCES:
++        error_report("Error: HV_NO_RESOURCES");
++        break;
++    case HV_NO_DEVICE:
++        error_report("Error: HV_NO_DEVICE");
++        break;
++    case HV_UNSUPPORTED:
++        error_report("Error: HV_UNSUPPORTED");
++        break;
++    default:
++        error_report("Unknown Error");
++    }
++
++    abort();
++}
+diff --git a/accel/hvf/meson.build b/accel/hvf/meson.build
+new file mode 100644
+index 0000000000..227b11cd71
+--- /dev/null
++++ b/accel/hvf/meson.build
+@@ -0,0 +1,6 @@
++hvf_ss = ss.source_set()
++hvf_ss.add(files(
++  'hvf-all.c',
++))
++
++specific_ss.add_all(when: 'CONFIG_HVF', if_true: hvf_ss)
+diff --git a/accel/meson.build b/accel/meson.build
+index b44ba30c86..dfd808d2c8 100644
+--- a/accel/meson.build
++++ b/accel/meson.build
+@@ -2,6 +2,7 @@ specific_ss.add(files('accel-common.c'))
+ softmmu_ss.add(files('accel-softmmu.c'))
+ user_ss.add(files('accel-user.c'))
+ 
++subdir('hvf')
+ subdir('qtest')
+ subdir('kvm')
+ subdir('tcg')
 diff --git a/include/sysemu/hvf_int.h b/include/sysemu/hvf_int.h
-index 4c657b054c..ef84a24dd9 100644
---- a/include/sysemu/hvf_int.h
+new file mode 100644
+index 0000000000..3deb4cfacc
+--- /dev/null
 +++ b/include/sysemu/hvf_int.h
-@@ -13,6 +13,36 @@
+@@ -0,0 +1,18 @@
++/*
++ * QEMU Hypervisor.framework (HVF) support
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ *
++ */
++
++/* header to be included in HVF-specific code */
++
++#ifndef HVF_INT_H
++#define HVF_INT_H
++
++#include <Hypervisor/hv.h>
++
++void assert_hvf_ok(hv_return_t ret);
++
++#endif
+diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
+index f044181d06..32f42f1592 100644
+--- a/target/i386/hvf/hvf.c
++++ b/target/i386/hvf/hvf.c
+@@ -51,6 +51,7 @@
+ #include "qemu/error-report.h"
  
- #include <Hypervisor/hv.h>
- 
-+/* hvf_slot flags */
-+#define HVF_SLOT_LOG (1 << 0)
-+
-+typedef struct hvf_slot {
-+    uint64_t start;
-+    uint64_t size;
-+    uint8_t *mem;
-+    int slot_id;
-+    uint32_t flags;
-+    MemoryRegion *region;
-+} hvf_slot;
-+
-+typedef struct hvf_vcpu_caps {
-+    uint64_t vmx_cap_pinbased;
-+    uint64_t vmx_cap_procbased;
-+    uint64_t vmx_cap_procbased2;
-+    uint64_t vmx_cap_entry;
-+    uint64_t vmx_cap_exit;
-+    uint64_t vmx_cap_preemption_timer;
-+} hvf_vcpu_caps;
-+
-+struct HVFState {
-+    AccelState parent;
-+    hvf_slot slots[32];
-+    int num_slots;
-+
-+    hvf_vcpu_caps *hvf_caps;
-+};
-+extern HVFState *hvf_state;
-+
- void hvf_set_phys_mem(MemoryRegionSection *, bool);
- void assert_hvf_ok(hv_return_t ret);
- hvf_slot *hvf_find_overlap_slot(uint64_t, uint64_t);
-diff --git a/target/i386/hvf/hvf-i386.h b/target/i386/hvf/hvf-i386.h
-index 94e5c788c4..76e9235524 100644
---- a/target/i386/hvf/hvf-i386.h
-+++ b/target/i386/hvf/hvf-i386.h
-@@ -18,39 +18,10 @@
- 
- #include "qemu/accel.h"
  #include "sysemu/hvf.h"
 +#include "sysemu/hvf_int.h"
- #include "cpu.h"
- #include "x86.h"
+ #include "sysemu/runstate.h"
+ #include "hvf-i386.h"
+ #include "vmcs.h"
+@@ -76,38 +77,6 @@
  
--/* hvf_slot flags */
--#define HVF_SLOT_LOG (1 << 0)
--
--typedef struct hvf_slot {
--    uint64_t start;
--    uint64_t size;
--    uint8_t *mem;
--    int slot_id;
--    uint32_t flags;
--    MemoryRegion *region;
--} hvf_slot;
--
--typedef struct hvf_vcpu_caps {
--    uint64_t vmx_cap_pinbased;
--    uint64_t vmx_cap_procbased;
--    uint64_t vmx_cap_procbased2;
--    uint64_t vmx_cap_entry;
--    uint64_t vmx_cap_exit;
--    uint64_t vmx_cap_preemption_timer;
--} hvf_vcpu_caps;
--
--struct HVFState {
--    AccelState parent;
--    hvf_slot slots[32];
--    int num_slots;
--
--    hvf_vcpu_caps *hvf_caps;
--};
--extern HVFState *hvf_state;
--
- void hvf_handle_io(CPUArchState *, uint16_t, void *, int, int, int);
+ HVFState *hvf_state;
  
- #ifdef NEED_CPU_H
+-static void assert_hvf_ok(hv_return_t ret)
+-{
+-    if (ret == HV_SUCCESS) {
+-        return;
+-    }
+-
+-    switch (ret) {
+-    case HV_ERROR:
+-        error_report("Error: HV_ERROR");
+-        break;
+-    case HV_BUSY:
+-        error_report("Error: HV_BUSY");
+-        break;
+-    case HV_BAD_ARGUMENT:
+-        error_report("Error: HV_BAD_ARGUMENT");
+-        break;
+-    case HV_NO_RESOURCES:
+-        error_report("Error: HV_NO_RESOURCES");
+-        break;
+-    case HV_NO_DEVICE:
+-        error_report("Error: HV_NO_DEVICE");
+-        break;
+-    case HV_UNSUPPORTED:
+-        error_report("Error: HV_UNSUPPORTED");
+-        break;
+-    default:
+-        error_report("Unknown Error");
+-    }
+-
+-    abort();
+-}
+-
+ /* Memory slots */
+ hvf_slot *hvf_find_overlap_slot(uint64_t start, uint64_t size)
+ {
 -- 
 2.30.1 (Apple Git-130)
 

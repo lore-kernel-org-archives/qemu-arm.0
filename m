@@ -1,100 +1,102 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp1817488lfm;
-        Wed, 19 May 2021 13:09:58 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxmcAyne0TZKzmCfzlpfY22zFLbH8zcndozcs+vST0OSrap43odn/HvWcZkXc1Z/5PO7stT
-X-Received: by 2002:a05:6e02:1b0f:: with SMTP id i15mr806560ilv.164.1621454998015;
-        Wed, 19 May 2021 13:09:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621454998; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp1817871lfm;
+        Wed, 19 May 2021 13:10:20 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxpmvpz2hg13MHK9thAROjg0vivXEETitgKaQA9MfsoS6FpiQWuFXZkT6Okth8a2lyx8/xu
+X-Received: by 2002:a05:6638:12c5:: with SMTP id v5mr996559jas.11.1621455020687;
+        Wed, 19 May 2021 13:10:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621455020; cv=none;
         d=google.com; s=arc-20160816;
-        b=Xh1tWZu5qwri+fwQZQcKizRwA6NxFbz09VWG34sM25ZCVa7JqzyHovlZY3RhL6xx0E
-         j6hg0uk09mRG5GtGWHW/QI2RAiZw1T2LNdYFrX452aWGkA2Ljp3aPowZ81sAZ3Po9Lia
-         ByT4wLTVcs9GfWPFYxuDzYKeBe/7uOuYHJhRYuGS8gzuM0a54DIuUbwFbkwvGV/wUNQp
-         bYJHgmRHXPQNGjGm9UHcrBqJkKivJcZBpccmi9MejKqseRiHNsyHnIpEe2lMl32sBNFL
-         oBK+atC8ACSsVyfgMkibAsLAMaNaS3XJ/nlLJQjnoA6L7kl6cRuoImHixozxtA9nwoui
-         MXgw==
+        b=e2hHAP+ZMqjYbnxOGGwT1uXnIrQU9C9pkn1F7BDn0NZMf3Yu8IhIN3MWuvtZLNjol4
+         BJDaCGGspvd7/pPWu27nAy9OlEEizaCS3x+MGUJiQxaLdbRjmyEeigIBcW8+mgx8qmh5
+         tNQnEXatFiF5NzkqDjiBmFwA5j3nlMJ36LMriro8PLj2GPxrrkhyyRLpHiHvMFaoxIiY
+         qKddmCdyjv8r+4lXurLKgWEViJ+rN+wo7EUQbwP9ynX5qTT73HZQ1vnrxkZ5QLrFSgb9
+         mQaYdJ66TpyT+8cDj8o5bp+IX6is9sKdlalVKNYKwwioYvrKM6xOUhWBLK416sbvFTD+
+         TDlQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=ahi6YrYQf7WAwAkHHAGP1pB01oGjrRrpGjLNJFy3Gtk=;
-        b=uBzniWezb5t1YjQluPCyIPlfxDi5REK4EOCMEqvnL2CgDq+XzRRDKcUZE2TokiXLPY
-         CJVR1ifc5tG0DnLQO4THeSBuko3EaUe2AukqNzCOff0Fb/oZ2g+q7bk/awJYTnlxCob6
-         tPXkvjhHDzXzLem8chkyOVeeoyRp336AJjI3KYNa6PGihe6P3Y0+iab3GX7MmVZ+oYbr
-         twjpJdpglTAfWGZBn2U1M3Xizok/xMWj4PRpifjXSzkyi7mXwwiqSojDga4wwoUsiDOA
-         IFtAdoVl7AHOpT0XVQRRXotps98qLwkcsO6VpUruv0dh6eBUloiPUrGXKr4hKJz8aVxs
-         GWwQ==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=+1cCgzdNERUA2fldYa5OSx6THJ2HPT3UIVGVPz585YA=;
+        b=pfiUvQ7Wn9qg5T2dcquC500Ksv/Y41E/kh4+4ztaylFRmtiN74Au12tYbhVdPo8mV/
+         rGgEQpxTK128iCs2ePRhxfMDctMRVVIrnguLQHZyNX7kGyk2BttT7m9R1SK80ZTcwR5l
+         z1sCgmSK1ENrSwosEzi/UFKxlBEs3RoawxJPRCpJ6UzCdfuMzVBRPG1OfKpnm6zR70pg
+         czure2u4XVKgnPoxu8ySYp9mBp1nBJxT7MSwoycFiN1rnIoRG3+zB3IZeq7JQyIPCHTZ
+         4l7Erc8U88vKKQX60W3k10xoCVVZiauVk1DA9qRppwZdyJbiT3JXIqgDDVUWXnoAf9ic
+         5z1w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=u8O63zq4;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IZR6cLq7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g10si232580iow.86.2021.05.19.13.09.57
+        by mx.google.com with ESMTPS id j10si610350ilk.31.2021.05.19.13.10.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 19 May 2021 13:09:58 -0700 (PDT)
+        Wed, 19 May 2021 13:10:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=u8O63zq4;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IZR6cLq7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:33402 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34046 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ljSVx-0001Sn-93
-	for alex.bennee@linaro.org; Wed, 19 May 2021 16:09:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50818)
+	id 1ljSWJ-0001tj-Ov
+	for alex.bennee@linaro.org; Wed, 19 May 2021 16:10:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50870)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1ljSVo-0001SW-D6; Wed, 19 May 2021 16:09:48 -0400
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a]:37507)
+ id 1ljSVz-0001qg-0g; Wed, 19 May 2021 16:09:59 -0400
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434]:42632)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1ljSVm-0003KM-UA; Wed, 19 May 2021 16:09:48 -0400
-Received: by mail-wr1-x42a.google.com with SMTP id q5so15288881wrs.4;
- Wed, 19 May 2021 13:09:46 -0700 (PDT)
+ id 1ljSVx-0003Sj-Gs; Wed, 19 May 2021 16:09:58 -0400
+Received: by mail-wr1-x434.google.com with SMTP id x8so15288420wrq.9;
+ Wed, 19 May 2021 13:09:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=ahi6YrYQf7WAwAkHHAGP1pB01oGjrRrpGjLNJFy3Gtk=;
- b=u8O63zq4kNuuX3+iDnleGfpncd3ZqvgH1/rq1Xj6qd07YlFtUUdchoSHA1N9EVwwey
- be6d0IWRjEBh316/K1iXV9L8WiskGqmlM1N8SkA6MsWRPfUKZ7CIPSRxWK+6lz/RCgvf
- AKnSEjtAeM0iJ+hpp+HFwWxOR5c0yFB6ts1Is6Yp6Gf6IP8XPV7MoD0f3Ijc7FtfG2gT
- B7bZBPhepOYNUSutVc2omaCZc/Cdr0kvGDBG4KDapG0Mm6MVMs+j9evKzIO/OLm/OKDP
- gDRmkPX2619VBuFA5L/NcO0AFty1rR3LNbHbjqQuq/723K59W+Rj9w9FracYAIsh+KS8
- D+lw==
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=+1cCgzdNERUA2fldYa5OSx6THJ2HPT3UIVGVPz585YA=;
+ b=IZR6cLq7TbuRY68MoX65C0CZ/KAgrRugZ51VO0KqROTql3Fk6WOfZJBlZsZ+xXBiGc
+ xqUED0sDabeX/vgGtnE6kgQOGHB41pxwe2TxotFmTUQcGPMVO6Aip68DaqjNAuIHIjjZ
+ Vr6r+JcMkfnPmGxrdVODDIsacyFM1AUM81HhmQABl/s+NzcB3bdAIMagY7HT7A24oVoM
+ yIZywsuUep3E0dPujGf/mAp2s8Rp50e5ahLvqsjR8xsfMrjszbf4MOJ5a6smlaE6ZojG
+ SpDG+I7kuOYnwK6+jP6nhnmsSh5ilf9hAN6s3E1Kg1CzVQZZnLt3oiKbJuzcqA9uEWMw
+ +hbA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=ahi6YrYQf7WAwAkHHAGP1pB01oGjrRrpGjLNJFy3Gtk=;
- b=ohRidy9W34vKlfWMWjFVqqQQf8h3EDFWAeDGFreg6Y8oUW0zAMDPuUel4P0pJ386iz
- FHUa73/ZuQa/Co1Fv0VgfmqbUoLY3rP7Umbr5uG6YD9BDthpCHZXFDUmCTRuBnRM08HI
- sjr1o4mvZ2/7lfD+jC+q+i7tuzQW1TRUGmtDAHWWXmdtg3DZ4iD6NswTNYtl3pi/ratg
- BScMxSgD/JMnDd4QEcP6Qwop4Fw1R0B0Ys1x+RvZBON8hfBGE9yU0UfXPDZi09U7txXE
- hvzvFqTLXIEhLkRlkT6gdcsw1x2eU3AHjpITXw4J/izfL8ElY4p6pyXfJfQzpA3JSrqe
- wHew==
-X-Gm-Message-State: AOAM531kxBS5vWLhDBOzCN1jty/A+HxK0wB/QcRBBxw7+CVKdsG5tpgX
- fycFqEApnvlOyV80pg/7tbOVrPQQ+GtISQ==
-X-Received: by 2002:a05:6000:1c2:: with SMTP id
- t2mr650526wrx.424.1621454984610; 
- Wed, 19 May 2021 13:09:44 -0700 (PDT)
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=+1cCgzdNERUA2fldYa5OSx6THJ2HPT3UIVGVPz585YA=;
+ b=LtOUyLueSd1cBjMKRl8HJ8OCuBN9zffM3F8GuALYIrKrs6KPwmLmt14hlViP0Yyb7V
+ zxZzoEDaTVRjLlDS4TGzIW64nKs4RmniJrLlXAx+LHhH9nsPDZbIsJzyoiQJawFjTY/j
+ 1AmFhd35p5EdV93+Tom6CnpsYXnT+zunj2AlCwpgx5/vNtLN5HGH2aKT5zIK0klC+g4c
+ MKASuGbn4aPA+GJluqkDMhBW2ccxFRxoipE8iK7u6EOjBVFwGP2k2q59tPStDNR6cno2
+ +lqkgWAQ86DLXD/TdeDn1pbf9HfoRAW0LXriJzJrU+xsxPrK6aWkBrod8HGreWYEp0US
+ zY6A==
+X-Gm-Message-State: AOAM533cPZK+zMT8HmsY1if8V6QwhncL4iEMlT+P7iJ1rtSkRio1EO0n
+ f1ah3EL8s5xRS0eovLi5zU/IisUzAh+3uw==
+X-Received: by 2002:adf:e291:: with SMTP id v17mr660239wri.149.1621454995510; 
+ Wed, 19 May 2021 13:09:55 -0700 (PDT)
 Received: from x1w.redhat.com (31.red-83-51-215.dynamicip.rima-tde.net.
  [83.51.215.31])
- by smtp.gmail.com with ESMTPSA id d3sm494412wrs.41.2021.05.19.13.09.43
+ by smtp.gmail.com with ESMTPSA id h14sm7682484wmb.1.2021.05.19.13.09.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 19 May 2021 13:09:44 -0700 (PDT)
+ Wed, 19 May 2021 13:09:55 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 0/3] hw/arm/Kconfig: Fix issues with USB_CHIPIDEA / IMX_USBPHY
- symbols
-Date: Wed, 19 May 2021 22:09:39 +0200
-Message-Id: <20210519200942.2223292-1-f4bug@amsat.org>
+Subject: [PATCH 2/3] hw/arm/Kconfig: Add missing dependency ZYNQ ->
+ USB_CHIPIDEA
+Date: Wed, 19 May 2021 22:09:41 +0200
+Message-Id: <20210519200942.2223292-3-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.3
+In-Reply-To: <20210519200942.2223292-1-f4bug@amsat.org>
+References: <20210519200942.2223292-1-f4bug@amsat.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42a.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x434.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -122,25 +124,49 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Guenter Roeck <linux@roeck-us.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: S3wvsM5nyc4A
+X-TUID: 8t+W/beJsEIf
 
-Fix 2 more issues when using --without-default-devices builds=0D
-(xilinx-zynq-a9 and mcimx6ul-evk machines).=0D
-=0D
-In an ideal world we'd have infinite compute power and would=0D
-run all tests, but in this one I only test this configuration=0D
-manually from time to time. We might start using it more...=0D
-=0D
-Philippe Mathieu-Daud=C3=A9 (3):=0D
-  hw/usb/Kconfig: Introduce USB_CHIPIDEA symbol=0D
-  hw/arm/Kconfig: Add missing dependency ZYNQ -> USB_CHIPIDEA=0D
-  hw/arm/Kconfig: Add missing dependency IMX_USBPHY -> FSL_IMX6UL=0D
-=0D
- hw/arm/Kconfig     | 6 ++++++=0D
- hw/usb/Kconfig     | 3 +++=0D
- hw/usb/meson.build | 2 +-=0D
- 3 files changed, 10 insertions(+), 1 deletion(-)=0D
-=0D
--- =0D
-2.26.3=0D
-=0D
+When using a binary built using --without-default-devices we get:
+
+  $ qemu-system-arm -M xilinx-zynq-a9
+  **
+  ERROR:qom/object.c:714:object_new_with_type: assertion failed: (type != NULL)
+  Bail out! ERROR:qom/object.c:714:object_new_with_type: assertion failed: (type != NULL)
+
+Looking at the stack trace:
+
+(gdb) bt
+  #3  0x00007ffff6e229ff in g_assertion_message_expr () at /lib64/libglib-2.0.so.0
+  #4  0x00005555558d3f01 in object_new_with_type (type=<optimized out>) at qom/object.c:714
+  #5  0x00005555558d3f59 in object_new (typename=typename@entry=0x555555ad4545 "usb-chipidea") at qom/object.c:747
+  #6  0x00005555558cd526 in qdev_new (name=name@entry=0x555555ad4545 "usb-chipidea") at hw/core/qdev.c:153
+  #7  0x0000555555739fc6 in sysbus_create_varargs (name=name@entry=0x555555ad4545 "usb-chipidea", addr=addr@entry=3758104576) at hw/core/sysbus.c:234
+  #8  0x0000555555796b57 in sysbus_create_simple (irq=<optimized out>, addr=3758104576, name=0x555555ad4545 "usb-chipidea") at include/hw/sysbus.h:104
+  #9  zynq_init (machine=0x555555de07a0) at hw/arm/xilinx_zynq.c:254
+  #10 0x000055555573707c in machine_run_board_init (machine=machine@entry=0x555555de07a0) at hw/core/machine.c:1238
+
+When replacing the xlnx,ps7-usb device by the IDEA one in commit
+616ec12d0fc ("hw/arm/xilinx_zynq: Fix USB port instantiation") we
+forgot to add the Kconfig dependency on the new device. Do it now.
+
+Fixes: 616ec12d0fc ("hw/arm/xilinx_zynq: Fix USB port instantiation")
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/arm/Kconfig | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 585de92f00a..838737656f7 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -292,6 +292,7 @@ config ZYNQ
+     select XILINX_SPI
+     select XILINX_SPIPS
+     select ZYNQ_DEVCFG
++    select USB_CHIPIDEA
+ 
+ config ARM_V7M
+     bool
+-- 
+2.26.3
+

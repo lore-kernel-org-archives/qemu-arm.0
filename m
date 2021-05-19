@@ -1,1039 +1,199 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp1693529lfm;
-        Wed, 19 May 2021 10:18:14 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwPvDSEuG6cVSUfK9enP4MSLTQJk77ZR6AqxCLTc9bp3eMXGf3tU8/bLVgaA6P0Vg1hy7Js
-X-Received: by 2002:a92:6b05:: with SMTP id g5mr59943ilc.40.1621444694317;
-        Wed, 19 May 2021 10:18:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621444694; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp1694388lfm;
+        Wed, 19 May 2021 10:19:28 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwwtDN/RGEiIkKtlgHH3gTuLODE5ZhuXXMdk/QZkwUDHCKm7a/nbc6lX6V4dfLE8RHJO/mi
+X-Received: by 2002:a6b:f808:: with SMTP id o8mr569164ioh.140.1621444768311;
+        Wed, 19 May 2021 10:19:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621444768; cv=none;
         d=google.com; s=arc-20160816;
-        b=bdDRDBOqGsgU9mxntjgJb1BuYhg45+cTSa/hz3txsoMnDSoz5qjpgrZERPplCK2Rww
-         ea2AQCypClFDc7AdemJ2zJGqSmpHuC0Lx0GJmHPXjDLsO1ILwT8ss/AXwSkSA3yFQ7Jv
-         IgWECvaRwpIfOlUUfvuhuVniSm0OKUqPLK8HxYzxBkxGJSMYwtblTSJUVXZwI7jdNsBU
-         d7V6I/Kj2j3lCIGtdyJe07j0J9V5XwymMz2Ngv9p2q93iKIhD+mWrqyh+2IDHoLvgq/Z
-         rMqlMQYwWskrJS9qexJwEZst1KboMD2elHk7bOMQ0+qJANJ3gIJMyS9CjryUJGZitEJD
-         ceEg==
+        b=p9dv3UIzZ7CdV8925hpFEfyttrmJAEMi88uiSvljBcXPAiKmx6qdNmecv82731JTTR
+         PIMbDXIPdwmBR0xAJ4rd3UNnxa1jIj3lDGCIb6A+jUrS7GnpDvxfKun/+mISRxwKIRAv
+         sZTKtHgLelXMKATqPc2GWLrIY2HNVhmFYGwbKJKR+gSL0bHPNu4Q1lH1nJgvpzwzfWlz
+         3Gr8tYQasmxiaia7Ys2viCHRMnk2dg/f6CkOHRzpwn1KVAYejpf/6EaRmyEIQJ+p9cJy
+         gp3HiPnKnpRWlpmKU1z3iXQXkBZCs1y1tbXe/P7t1mkXHoZ5U4fvNPVFrV0nXQjdh45v
+         RDQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :from:subject:references:mime-version:message-id:in-reply-to:date
-         :dkim-signature;
-        bh=XFQqW3LwbUfZVPKUAVn2DnvmodSNCWJQl9dxyFudhmo=;
-        b=IMA/9sAHA3rpdwjGizIxwGl7QVmDRcvDxbinZwGrnmh4tVf+pmp03YkI1K/tVwRWyS
-         /TbAfZWEgOORRUXNOuddGKAqd5cJtHCdiK2zUZ75R5/ezeHk1EYf5++fxZUtdmJYCnIj
-         r/Ouke1Z/Hyb7412xkEkbopwHwtuM0E40cP+FEOxDSV3tq7w73xy8DbQZPpa1n92aIdm
-         DiIfzZfLX7hVwKl4dWUWWtBDl3Ogh0mpcfwF8N97nCVdwieyKM75F7SgE7aj2n8yULHc
-         dXYQSEnBsLgcMx5aUMbeCbEuRR441zi0j0EYi2zr3FAIHvjkzL1CaeTzIz6g5Y6hgcAW
-         RZSA==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=4T96VZMkZ1KnlLg5Ic8ua/tiugK4QPCAdCIRiTPIdVI=;
+        b=FKd26v6Q3aDJcvWDmYG3VNq8tqjKFXViVXAJrTGTrvDx0Z3+S/BYX/OzekLZWIDy37
+         3BpYJLRSexwtjZ2DE81q/PTTqOnzu4rhDSxsc0jK6ndiIsYLNLcggwDrQQdekg5tLm/M
+         mM1uuwjX6LpBr+yZVFDOdLekp3S5EAN/cyoxVeF7qAvt22NH4PI9MSm5itPDFWKJjffv
+         7x6vqesAEy1kvzL8qYIkDDx/2YxnxcCoyBYYg+AVNdLxJSExDC2hL4zbB5EBp5JZ+Ar2
+         JR4FvN8xe2zainEY5Qis1VqvaPaEMzXrm7Lc3EasoNHhT+pYTFfQFbTZNL5nXGH2ge+h
+         t47Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=jSBKi6Ie;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20161025 header.b=KT9lUrXP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a10si256891ilv.110.2021.05.19.10.18.14
+        by mx.google.com with ESMTPS id w12si227467ill.144.2021.05.19.10.19.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 19 May 2021 10:18:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 19 May 2021 10:19:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=jSBKi6Ie;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20161025 header.b=KT9lUrXP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:60342 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33852 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ljPpl-0000o3-I3
-	for alex.bennee@linaro.org; Wed, 19 May 2021 13:18:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39658)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ljPqx-0002FT-Ia
+	for alex.bennee@linaro.org; Wed, 19 May 2021 13:19:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49162)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3zUGlYAYKCvAlalmkjYggYdW.UgeiWem-VWnWdfgfYfm.gjY@flex--titusr.bounces.google.com>)
- id 1ljPP0-0001H2-2b
- for qemu-devel@nongnu.org; Wed, 19 May 2021 12:50:34 -0400
-Received: from mail-qk1-x749.google.com ([2607:f8b0:4864:20::749]:39464)
+ (Exim 4.90_1) (envelope-from <venture@google.com>)
+ id 1ljPqA-0002B8-VQ
+ for qemu-arm@nongnu.org; Wed, 19 May 2021 13:18:39 -0400
+Received: from mail-qt1-x836.google.com ([2607:f8b0:4864:20::836]:44886)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3zUGlYAYKCvAlalmkjYggYdW.UgeiWem-VWnWdfgfYfm.gjY@flex--titusr.bounces.google.com>)
- id 1ljPOq-0003lg-Fi
- for qemu-devel@nongnu.org; Wed, 19 May 2021 12:50:33 -0400
-Received: by mail-qk1-x749.google.com with SMTP id
- o14-20020a05620a130eb02902ea53a6ef80so10251336qkj.6
- for <qemu-devel@nongnu.org>; Wed, 19 May 2021 09:50:21 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <venture@google.com>)
+ id 1ljPq9-0007Iv-1F
+ for qemu-arm@nongnu.org; Wed, 19 May 2021 13:18:38 -0400
+Received: by mail-qt1-x836.google.com with SMTP id y12so10641191qtx.11
+ for <qemu-arm@nongnu.org>; Wed, 19 May 2021 10:18:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=date:in-reply-to:message-id:mime-version:references:subject:from:to
- :cc:content-transfer-encoding;
- bh=XFQqW3LwbUfZVPKUAVn2DnvmodSNCWJQl9dxyFudhmo=;
- b=jSBKi6IetNjBSSnDWukuvksI5pHLZr7+6SA02fpZDkFYuhftjjoXlJa1R7vHKW/nh/
- pgHvOsqWEgWSuIWNtEb6qQQjIdsxxvWqTmZSdRzasHgIq7X4tdUKc2krpf3RnR3Xq7tY
- Ut+pM3dwFdmvvOEMk+04cz1zF4C6/lNv4r5XeMb7rbCIyXKtiH1uan5lSXiF3egNastM
- gX7+kqHZtHF4h2I9hpU7ItRLyvDelXMNnrPgBqzMLC6Sh065L7Co1y+m44iEo9I+AI9S
- JG0omCz/iE8oUQ3VWJJ6e160qBaCfIx9cVk4T5TKXAYlz1tqiJH/hktXK7w0TdcosNMG
- crFQ==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=4T96VZMkZ1KnlLg5Ic8ua/tiugK4QPCAdCIRiTPIdVI=;
+ b=KT9lUrXPgRFpZWpZ0v+WyzTh6ALo3wGYk6Bg5fgKlNij0C4Rc1YY0kPK83F5GESfsW
+ QEf9dDg5BlBxQLrs0qws/PAYQG1ssBxwOBnFsVtPIIOOA20fx2+BaVHnoqBazQHbPRbG
+ yzHHgzUz+Nvuv4mHvOfagVVOCriRpEP0GS2DY0btrN2p1KDrWcUe3WcxSSL6nfMVVDbq
+ Z59qxw/zREQ7dIAMlL3jaVVXrE95iXsjPp/CcXnBh9mj+8V4A4s9iZXAy+xrx7tjUry8
+ p8ClHfC0B4ZfeT029yHomHk6YGZlDyAWa+poyfgzSvxiM7TDJgJyosT8Cs66mVDHEXGH
+ fTDw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:in-reply-to:message-id:mime-version
- :references:subject:from:to:cc:content-transfer-encoding;
- bh=XFQqW3LwbUfZVPKUAVn2DnvmodSNCWJQl9dxyFudhmo=;
- b=Z2ABP24CQ03vGT2Iw0/hWFj0y6vKVDy6mmj9o5PzvhRrWp6Aa5Zs8KCvBnP3NR5/KD
- X0wHmsVJ6WwXzy4nCvR+3ee5weiAXiMWnOfx8YIVlO7wbAnCLmtnRQyjfzbvXW9YotTC
- tGGc6yTjeUJaAttfaxZ0zzps4CKGkckElTEz8nDb4p9YZlZEsj0lUhP7Tsv7b1ns4jnE
- l54SDv3H/SzF+TSPHDIQsq30zmIikpE/DvCu1wpR3152fVM6fUIi64p2/iteVlSF3WSd
- unKIcBUqQ4xnBA5zWhA0LAgHjpU62q4iRykeZ/K73Bxc6tuvfPD39uUnCaXIOKa49z9M
- 2BDw==
-X-Gm-Message-State: AOAM532orO10DAActrIsJ/hPk9KEHoS1tkZj9MNp1120Xuzr2OyX7msq
- iy9t369zY6WxZs8m37R2WDZWER5N0xY=
-X-Received: from titusr.svl.corp.google.com
- ([2620:15c:2c5:13:536c:7a08:da59:68a2])
- (user=titusr job=sendgmr) by 2002:ad4:446c:: with SMTP id
- s12mr361038qvt.34.1621443021355; 
- Wed, 19 May 2021 09:50:21 -0700 (PDT)
-Date: Wed, 19 May 2021 09:50:01 -0700
-In-Reply-To: <20210519165002.1195745-1-titusr@google.com>
-Message-Id: <20210519165002.1195745-5-titusr@google.com>
-Mime-Version: 1.0
-References: <20210519165002.1195745-1-titusr@google.com>
-X-Mailer: git-send-email 2.31.1.751.gd2f1c929bd-goog
-Subject: [PATCH v4 4/5] hw/misc: add MAX34451 device
-From: Titus Rwantare <titusr@google.com>
-To: Corey Minyard <cminyard@mvista.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, f4bug@amsat.org, 
- Titus Rwantare <titusr@google.com>, Joel Stanley <joel@jms.id.au>,
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=4T96VZMkZ1KnlLg5Ic8ua/tiugK4QPCAdCIRiTPIdVI=;
+ b=X5peVzKvBDXKGj8dB9yy6HvrDat7LZQknrDhcyn3C0r5GwBP9DHY3i1n81vql/uI4d
+ d761Xo9em5J2RRz+YJgXQfqxcwbkcUBKWPEHKbfWx/wkKU4NyNz/ZGT/ByFJVliXMwfV
+ /Yp3Dl2+YHWoZawlCUq9NZ3IQ3CvGHEuGOqOZG0++LkuZuMM5SjPaEyy41TkaX0mrmCb
+ OkQ2pJGFuVEQaSKhmoE1PC2yLuE1JMEdUXVH4q4uAlSVy3RXAwef4WafnQK9EJvbSLBr
+ y4YKc3X+joJu2+jBa9xtLKWvHyG6QzNh68VueDk5y4RyEtRbY5AVc9LOTsQ+dt8KPt8k
+ CSLw==
+X-Gm-Message-State: AOAM533cf/u6opC8jwZ/8RVpdI1E8Hce9J266c8/DshRrJhxU9Hp/COa
+ m30mlnGFYrTFF43eYXaVaaymrpN8NYs+z/1SDc9P9g==
+X-Received: by 2002:ac8:6605:: with SMTP id c5mr549129qtp.21.1621444714988;
+ Wed, 19 May 2021 10:18:34 -0700 (PDT)
+MIME-Version: 1.0
+References: <20210518194118.755410-1-venture@google.com>
+ <20210518194118.755410-5-venture@google.com>
+ <CACPK8XcCOTQe2ObaBP3rfbM1oe0h=E2murXyPAvGBewKV=qBdw@mail.gmail.com>
+In-Reply-To: <CACPK8XcCOTQe2ObaBP3rfbM1oe0h=E2murXyPAvGBewKV=qBdw@mail.gmail.com>
+From: Patrick Venture <venture@google.com>
+Date: Wed, 19 May 2021 10:18:23 -0700
+Message-ID: <CAO=notyU64PAS003P97hiZ+V3ShSWiF3OmBRfL5D9fOJQByjEQ@mail.gmail.com>
+Subject: Re: [PATCH 4/4] aspeed: sonorapass: enable pca954x muxes
+To: Joel Stanley <joel@jms.id.au>
+Cc: Havard Skinnemoen <hskinnemoen@google.com>,
+ Tyrone Ting <kfting@nuvoton.com>, 
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>, 
+ qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
  Hao Wu <wuhaotsh@google.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::749;
- envelope-from=3zUGlYAYKCvAlalmkjYggYdW.UgeiWem-VWnWdfgfYfm.gjY@flex--titusr.bounces.google.com;
- helo=mail-qk1-x749.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::836;
+ envelope-from=venture@google.com; helo=mail-qt1-x836.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
+ ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xRGJS5PEfYAP
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: DYYhVcuxeo0u
 
-The MAX34451 is a Maxim power-supply system manager that can monitor up to =
-16 voltage rails or currents. It also contains a temperature sensor and sup=
-ports up to four external temperature sensors.
+On Tue, May 18, 2021 at 4:27 PM Joel Stanley <joel@jms.id.au> wrote:
+>
+> On Tue, 18 May 2021 at 19:41, Patrick Venture <venture@google.com> wrote:
+> >
+> > Enables the pca954x muxes in the bmc board configuration.
+> >
+> > Signed-off-by: Patrick Venture <venture@google.com>
+> > Reviewed-by: Hao Wu <wuhaotsh@google.com>
+>
+> Not sure about this one, there's no device tree for it in Linux.
 
-This commit adds support for interfacing with it, and setting limits on the=
- supported sensors.
+Yeah, this was just a pick-up from grepping other BMC boards.  I added
+these going off the comment alone.  I'd be okay with dropping this in
+the series.
 
-Reviewed-by: Joel Stanley <joel@jms.id.au>
-Reviewed-by: Hao Wu <wuhaotsh@google.com>
-Signed-off-by: Titus Rwantare <titusr@google.com>
----
- hw/misc/max34451.c  | 775 ++++++++++++++++++++++++++++++++++++++++++++
- hw/arm/Kconfig      |   1 +
- hw/misc/Kconfig     |   4 +
- hw/misc/meson.build |   1 +
- 4 files changed, 781 insertions(+)
- create mode 100644 hw/misc/max34451.c
-
-diff --git a/hw/misc/max34451.c b/hw/misc/max34451.c
-new file mode 100644
-index 0000000000..1e7c68271e
---- /dev/null
-+++ b/hw/misc/max34451.c
-@@ -0,0 +1,775 @@
-+/*
-+ * Maxim MAX34451 PMBus 16-Channel V/I monitor and 12-Channel Sequencer/Ma=
-rginer
-+ *
-+ * Copyright 2021 Google LLC
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/i2c/pmbus_device.h"
-+#include "hw/irq.h"
-+#include "migration/vmstate.h"
-+#include "qapi/error.h"
-+#include "qapi/visitor.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+
-+#define TYPE_MAX34451 "max34451"
-+#define MAX34451(obj) OBJECT_CHECK(MAX34451State, (obj), TYPE_MAX34451)
-+
-+#define MAX34451_MFR_MODE               0xD1
-+#define MAX34451_MFR_PSEN_CONFIG        0xD2
-+#define MAX34451_MFR_VOUT_PEAK          0xD4
-+#define MAX34451_MFR_IOUT_PEAK          0xD5
-+#define MAX34451_MFR_TEMPERATURE_PEAK   0xD6
-+#define MAX34451_MFR_VOUT_MIN           0xD7
-+#define MAX34451_MFR_NV_LOG_CONFIG      0xD8
-+#define MAX34451_MFR_FAULT_RESPONSE     0xD9
-+#define MAX34451_MFR_FAULT_RETRY        0xDA
-+#define MAX34451_MFR_NV_FAULT_LOG       0xDC
-+#define MAX34451_MFR_TIME_COUNT         0xDD
-+#define MAX34451_MFR_MARGIN_CONFIG      0xDF
-+#define MAX34451_MFR_FW_SERIAL          0xE0
-+#define MAX34451_MFR_IOUT_AVG           0xE2
-+#define MAX34451_MFR_CHANNEL_CONFIG     0xE4
-+#define MAX34451_MFR_TON_SEQ_MAX        0xE6
-+#define MAX34451_MFR_PWM_CONFIG         0xE7
-+#define MAX34451_MFR_SEQ_CONFIG         0xE8
-+#define MAX34451_MFR_STORE_ALL          0xEE
-+#define MAX34451_MFR_RESTORE_ALL        0xEF
-+#define MAX34451_MFR_TEMP_SENSOR_CONFIG 0xF0
-+#define MAX34451_MFR_STORE_SINGLE       0xFC
-+#define MAX34451_MFR_CRC                0xFE
-+
-+#define MAX34451_NUM_MARGINED_PSU       12
-+#define MAX34451_NUM_PWR_DEVICES        16
-+#define MAX34451_NUM_TEMP_DEVICES       5
-+#define MAX34451_NUM_PAGES              21
-+
-+#define DEFAULT_OP_ON                   0x80
-+#define DEFAULT_CAPABILITY              0x20
-+#define DEFAULT_ON_OFF_CONFIG           0x1a
-+#define DEFAULT_VOUT_MODE               0x40
-+#define DEFAULT_TEMPERATURE             2500
-+#define DEFAULT_SCALE                   0x7FFF
-+#define DEFAULT_OV_LIMIT                0x7FFF
-+#define DEFAULT_OC_LIMIT                0x7FFF
-+#define DEFAULT_OT_LIMIT                0x7FFF
-+#define DEFAULT_VMIN                    0x7FFF
-+#define DEFAULT_TON_FAULT_LIMIT         0xFFFF
-+#define DEFAULT_CHANNEL_CONFIG          0x20
-+#define DEFAULT_TEXT                    0x3130313031303130
-+
-+/**
-+ * MAX34451State:
-+ * @code: The command code received
-+ * @page: Each page corresponds to a device monitored by the Max 34451
-+ * The page register determines the available commands depending on device
-+  ________________________________________________________________________=
-___
-+ |   0   |  Power supply monitored by RS0, controlled by PSEN0, and       =
-   |
-+ |       |  margined with PWM0.                                           =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   1   |  Power supply monitored by RS1, controlled by PSEN1, and       =
-   |
-+ |       |  margined with PWM1.                                           =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   2   |  Power supply monitored by RS2, controlled by PSEN2, and       =
-   |
-+ |       |  margined with PWM2.                                           =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   3   |  Power supply monitored by RS3, controlled by PSEN3, and       =
-   |
-+ |       |  margined with PWM3.                                           =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   4   |  Power supply monitored by RS4, controlled by PSEN4, and       =
-   |
-+ |       |  margined with PWM4.                                           =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   5   |  Power supply monitored by RS5, controlled by PSEN5, and       =
-   |
-+ |       |  margined with PWM5.                                           =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   6   |  Power supply monitored by RS6, controlled by PSEN6, and       =
-   |
-+ |       |  margined with PWM6.                                           =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   7   |  Power supply monitored by RS7, controlled by PSEN7, and       =
-   |
-+ |       |  margined with PWM7.                                           =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   8   |  Power supply monitored by RS8, controlled by PSEN8, and       =
-   |
-+ |       | optionally margined by OUT0 of external DS4424 at I2C address A=
-0h.|
-+ |_______|________________________________________________________________=
-___|
-+ |   9   |  Power supply monitored by RS9, controlled by PSEN9, and       =
-   |
-+ |       | optionally margined by OUT1 of external DS4424 at I2C address A=
-0h.|
-+ |_______|________________________________________________________________=
-___|
-+ |   10  |  Power supply monitored by RS10, controlled by PSEN10, and     =
-   |
-+ |       | optionally margined by OUT2 of external DS4424 at I2C address A=
-0h.|
-+ |_______|________________________________________________________________=
-___|
-+ |   11  |  Power supply monitored by RS11, controlled by PSEN11, and     =
-   |
-+ |       | optionally margined by OUT3 of external DS4424 at I2C address A=
-0h.|
-+ |_______|________________________________________________________________=
-___|
-+ |   12  |  ADC channel 12 (monitors voltage or current) or GPI.          =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   13  |  ADC channel 13 (monitors voltage or current) or GPI.          =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   14  |  ADC channel 14 (monitors voltage or current) or GPI.          =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   15  |  ADC channel 15 (monitors voltage or current) or GPI.          =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   16  |  Internal temperature sensor.                                  =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   17  |  External DS75LV temperature sensor with I2C address 90h.      =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   18  |  External DS75LV temperature sensor with I2C address 92h.      =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   19  |  External DS75LV temperature sensor with I2C address 94h.      =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ |   20  |  External DS75LV temperature sensor with I2C address 96h.      =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ | 21=E2=80=93254|  Reserved.                                             =
-           |
-+ |_______|________________________________________________________________=
-___|
-+ |   255 |  Applies to all pages.                                         =
-   |
-+ |_______|________________________________________________________________=
-___|
-+ *
-+ * @operation: Turn on and off power supplies
-+ * @on_off_config: Configure the power supply on and off transition behavi=
-our
-+ * @write_protect: protect against changes to the device's memory
-+ * @vout_margin_high: the voltage when OPERATION is set to margin high
-+ * @vout_margin_low: the voltage when OPERATION is set to margin low
-+ * @vout_scale: scale ADC reading to actual device reading if different
-+ * @iout_cal_gain: set ratio of the voltage at the ADC input to sensed cur=
-rent
-+ */
-+typedef struct MAX34451State {
-+    PMBusDevice parent;
-+
-+    uint16_t power_good_on[MAX34451_NUM_PWR_DEVICES];
-+    uint16_t power_good_off[MAX34451_NUM_PWR_DEVICES];
-+    uint16_t ton_delay[MAX34451_NUM_MARGINED_PSU];
-+    uint16_t ton_max_fault_limit[MAX34451_NUM_MARGINED_PSU];
-+    uint16_t toff_delay[MAX34451_NUM_MARGINED_PSU];
-+    uint8_t status_mfr_specific[MAX34451_NUM_PWR_DEVICES];
-+    /* Manufacturer specific function */
-+    uint64_t mfr_location;
-+    uint64_t mfr_date;
-+    uint64_t mfr_serial;
-+    uint16_t mfr_mode;
-+    uint32_t psen_config[MAX34451_NUM_MARGINED_PSU];
-+    uint16_t vout_peak[MAX34451_NUM_PWR_DEVICES];
-+    uint16_t iout_peak[MAX34451_NUM_PWR_DEVICES];
-+    uint16_t temperature_peak[MAX34451_NUM_TEMP_DEVICES];
-+    uint16_t vout_min[MAX34451_NUM_PWR_DEVICES];
-+    uint16_t nv_log_config;
-+    uint32_t fault_response[MAX34451_NUM_PWR_DEVICES];
-+    uint16_t fault_retry;
-+    uint32_t fault_log;
-+    uint32_t time_count;
-+    uint16_t margin_config[MAX34451_NUM_MARGINED_PSU];
-+    uint16_t fw_serial;
-+    uint16_t iout_avg[MAX34451_NUM_PWR_DEVICES];
-+    uint16_t channel_config[MAX34451_NUM_PWR_DEVICES];
-+    uint16_t ton_seq_max[MAX34451_NUM_MARGINED_PSU];
-+    uint32_t pwm_config[MAX34451_NUM_MARGINED_PSU];
-+    uint32_t seq_config[MAX34451_NUM_MARGINED_PSU];
-+    uint16_t temp_sensor_config[MAX34451_NUM_TEMP_DEVICES];
-+    uint16_t store_single;
-+    uint16_t crc;
-+} MAX34451State;
-+
-+
-+static void max34451_check_limits(MAX34451State *s)
-+{
-+    PMBusDevice *pmdev =3D PMBUS_DEVICE(s);
-+
-+    pmbus_check_limits(pmdev);
-+
-+    for (int i =3D 0; i < MAX34451_NUM_PWR_DEVICES; i++) {
-+        if (pmdev->pages[i].read_vout =3D=3D 0) { /* PSU disabled */
-+            continue;
-+        }
-+
-+        if (pmdev->pages[i].read_vout > s->vout_peak[i]) {
-+            s->vout_peak[i] =3D pmdev->pages[i].read_vout;
-+        }
-+
-+        if (pmdev->pages[i].read_vout < s->vout_min[i]) {
-+            s->vout_min[i] =3D pmdev->pages[i].read_vout;
-+        }
-+
-+        if (pmdev->pages[i].read_iout > s->iout_peak[i]) {
-+            s->iout_peak[i] =3D pmdev->pages[i].read_iout;
-+        }
-+    }
-+
-+    for (int i =3D 0; i < MAX34451_NUM_TEMP_DEVICES; i++) {
-+        if (pmdev->pages[i + 16].read_temperature_1 > s->temperature_peak[=
-i]) {
-+            s->temperature_peak[i] =3D pmdev->pages[i + 16].read_temperatu=
-re_1;
-+        }
-+    }
-+}
-+
-+static uint8_t max34451_read_byte(PMBusDevice *pmdev)
-+{
-+    MAX34451State *s =3D MAX34451(pmdev);
-+    switch (pmdev->code) {
-+
-+    case PMBUS_POWER_GOOD_ON:
-+        if (pmdev->page < 16) {
-+            pmbus_send16(pmdev, s->power_good_on[pmdev->page]);
-+        }
-+        break;
-+
-+    case PMBUS_POWER_GOOD_OFF:
-+        if (pmdev->page < 16) {
-+            pmbus_send16(pmdev, s->power_good_off[pmdev->page]);
-+        }
-+        break;
-+
-+    case PMBUS_TON_DELAY:
-+        if (pmdev->page < 12) {
-+            pmbus_send16(pmdev, s->ton_delay[pmdev->page]);
-+        }
-+        break;
-+
-+    case PMBUS_TON_MAX_FAULT_LIMIT:
-+        if (pmdev->page < 12) {
-+            pmbus_send16(pmdev, s->ton_max_fault_limit[pmdev->page]);
-+        }
-+        break;
-+
-+    case PMBUS_TOFF_DELAY:
-+        if (pmdev->page < 12) {
-+            pmbus_send16(pmdev, s->toff_delay[pmdev->page]);
-+        }
-+        break;
-+
-+    case PMBUS_STATUS_MFR_SPECIFIC:
-+        if (pmdev->page < 16) {
-+            pmbus_send8(pmdev, s->status_mfr_specific[pmdev->page]);
-+        }
-+        break;
-+
-+    case PMBUS_MFR_ID:
-+        pmbus_send8(pmdev, 0x4d); /* Maxim */
-+        break;
-+
-+    case PMBUS_MFR_MODEL:
-+        pmbus_send8(pmdev, 0x59);
-+        break;
-+
-+    case PMBUS_MFR_LOCATION:
-+        pmbus_send64(pmdev, s->mfr_location);
-+        break;
-+
-+    case PMBUS_MFR_DATE:
-+        pmbus_send64(pmdev, s->mfr_date);
-+        break;
-+
-+    case PMBUS_MFR_SERIAL:
-+        pmbus_send64(pmdev, s->mfr_serial);
-+        break;
-+
-+    case MAX34451_MFR_MODE:
-+        pmbus_send16(pmdev, s->mfr_mode);
-+        break;
-+
-+    case MAX34451_MFR_PSEN_CONFIG:
-+        if (pmdev->page < 12) {
-+            pmbus_send32(pmdev, s->psen_config[pmdev->page]);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_VOUT_PEAK:
-+        if (pmdev->page < 16) {
-+            pmbus_send16(pmdev, s->vout_peak[pmdev->page]);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_IOUT_PEAK:
-+        if (pmdev->page < 16) {
-+            pmbus_send16(pmdev, s->iout_peak[pmdev->page]);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_TEMPERATURE_PEAK:
-+        if (15 < pmdev->page && pmdev->page < 21) {
-+            pmbus_send16(pmdev, s->temperature_peak[pmdev->page % 16]);
-+        } else {
-+            pmbus_send16(pmdev, s->temperature_peak[0]);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_VOUT_MIN:
-+        if (pmdev->page < 16) {
-+            pmbus_send16(pmdev, s->vout_min[pmdev->page]);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_NV_LOG_CONFIG:
-+        pmbus_send16(pmdev, s->nv_log_config);
-+        break;
-+
-+    case MAX34451_MFR_FAULT_RESPONSE:
-+        if (pmdev->page < 16) {
-+            pmbus_send32(pmdev, s->fault_response[pmdev->page]);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_FAULT_RETRY:
-+        pmbus_send32(pmdev, s->fault_retry);
-+        break;
-+
-+    case MAX34451_MFR_NV_FAULT_LOG:
-+        pmbus_send32(pmdev, s->fault_log);
-+        break;
-+
-+    case MAX34451_MFR_TIME_COUNT:
-+        pmbus_send32(pmdev, s->time_count);
-+        break;
-+
-+    case MAX34451_MFR_MARGIN_CONFIG:
-+        if (pmdev->page < 12) {
-+            pmbus_send16(pmdev, s->margin_config[pmdev->page]);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_FW_SERIAL:
-+        if (pmdev->page =3D=3D 255) {
-+            pmbus_send16(pmdev, 1); /* Firmware revision */
-+        }
-+        break;
-+
-+    case MAX34451_MFR_IOUT_AVG:
-+        if (pmdev->page < 16) {
-+            pmbus_send16(pmdev, s->iout_avg[pmdev->page]);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_CHANNEL_CONFIG:
-+        if (pmdev->page < 16) {
-+            pmbus_send16(pmdev, s->channel_config[pmdev->page]);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_TON_SEQ_MAX:
-+        if (pmdev->page < 12) {
-+            pmbus_send16(pmdev, s->ton_seq_max[pmdev->page]);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_PWM_CONFIG:
-+        if (pmdev->page < 12) {
-+            pmbus_send32(pmdev, s->pwm_config[pmdev->page]);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_SEQ_CONFIG:
-+        if (pmdev->page < 12) {
-+            pmbus_send32(pmdev, s->seq_config[pmdev->page]);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_TEMP_SENSOR_CONFIG:
-+        if (15 < pmdev->page && pmdev->page < 21) {
-+            pmbus_send32(pmdev, s->temp_sensor_config[pmdev->page % 16]);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_STORE_SINGLE:
-+        pmbus_send32(pmdev, s->store_single);
-+        break;
-+
-+    case MAX34451_MFR_CRC:
-+        pmbus_send32(pmdev, s->crc);
-+        break;
-+
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: reading from unsupported register: 0x%02x\n",
-+                      __func__, pmdev->code);
-+        break;
-+    }
-+    return 0xFF;
-+}
-+
-+static int max34451_write_data(PMBusDevice *pmdev, const uint8_t *buf,
-+                               uint8_t len)
-+{
-+    MAX34451State *s =3D MAX34451(pmdev);
-+
-+    if (len =3D=3D 0) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: writing empty data\n", __func_=
-_);
-+        return -1;
-+    }
-+
-+    pmdev->code =3D buf[0]; /* PMBus command code */
-+
-+    if (len =3D=3D 1) {
-+        return 0;
-+    }
-+
-+    /* Exclude command code from buffer */
-+    buf++;
-+    len--;
-+    uint8_t index =3D pmdev->page;
-+
-+    switch (pmdev->code) {
-+    case MAX34451_MFR_STORE_ALL:
-+    case MAX34451_MFR_RESTORE_ALL:
-+    case MAX34451_MFR_STORE_SINGLE:
-+        /*
-+         * TODO: hardware behaviour is to move the contents of volatile
-+         * memory to non-volatile memory.
-+         */
-+        break;
-+
-+    case PMBUS_POWER_GOOD_ON: /* R/W word */
-+        if (pmdev->page < MAX34451_NUM_PWR_DEVICES) {
-+            s->power_good_on[pmdev->page] =3D pmbus_receive16(pmdev);
-+        }
-+        break;
-+
-+    case PMBUS_POWER_GOOD_OFF: /* R/W word */
-+        if (pmdev->page < MAX34451_NUM_PWR_DEVICES) {
-+            s->power_good_off[pmdev->page] =3D pmbus_receive16(pmdev);
-+        }
-+        break;
-+
-+    case PMBUS_TON_DELAY: /* R/W word */
-+        if (pmdev->page < 12) {
-+            s->ton_delay[pmdev->page] =3D pmbus_receive16(pmdev);
-+        }
-+        break;
-+
-+    case PMBUS_TON_MAX_FAULT_LIMIT: /* R/W word */
-+        if (pmdev->page < 12) {
-+            s->ton_max_fault_limit[pmdev->page]
-+                =3D pmbus_receive16(pmdev);
-+        }
-+        break;
-+
-+    case PMBUS_TOFF_DELAY: /* R/W word */
-+        if (pmdev->page < 12) {
-+            s->toff_delay[pmdev->page] =3D pmbus_receive16(pmdev);
-+        }
-+        break;
-+
-+    case PMBUS_MFR_LOCATION: /* R/W 64 */
-+        s->mfr_location =3D pmbus_receive64(pmdev);
-+        break;
-+
-+    case PMBUS_MFR_DATE: /* R/W 64 */
-+        s->mfr_date =3D pmbus_receive64(pmdev);
-+        break;
-+
-+    case PMBUS_MFR_SERIAL: /* R/W 64 */
-+        s->mfr_serial =3D pmbus_receive64(pmdev);
-+        break;
-+
-+    case MAX34451_MFR_MODE: /* R/W word */
-+         s->mfr_mode =3D pmbus_receive16(pmdev);
-+        break;
-+
-+    case MAX34451_MFR_PSEN_CONFIG: /* R/W 32 */
-+        if (pmdev->page < 12) {
-+            s->psen_config[pmdev->page] =3D pmbus_receive32(pmdev);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_VOUT_PEAK: /* R/W word */
-+        if (pmdev->page < 16) {
-+            s->vout_peak[pmdev->page] =3D pmbus_receive16(pmdev);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_IOUT_PEAK: /* R/W word */
-+        if (pmdev->page < 16) {
-+            s->iout_peak[pmdev->page] =3D pmbus_receive16(pmdev);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_TEMPERATURE_PEAK: /* R/W word */
-+        if (15 < pmdev->page && pmdev->page < 21) {
-+            s->temperature_peak[pmdev->page % 16]
-+                =3D pmbus_receive16(pmdev);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_VOUT_MIN: /* R/W word */
-+        if (pmdev->page < 16) {
-+            s->vout_min[pmdev->page] =3D pmbus_receive16(pmdev);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_NV_LOG_CONFIG: /* R/W word */
-+         s->nv_log_config =3D pmbus_receive16(pmdev);
-+        break;
-+
-+    case MAX34451_MFR_FAULT_RESPONSE: /* R/W 32 */
-+        if (pmdev->page < 16) {
-+            s->fault_response[pmdev->page] =3D pmbus_receive32(pmdev);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_FAULT_RETRY: /* R/W word */
-+        s->fault_retry =3D pmbus_receive16(pmdev);
-+        break;
-+
-+    case MAX34451_MFR_TIME_COUNT: /* R/W 32 */
-+        s->time_count =3D pmbus_receive32(pmdev);
-+        break;
-+
-+    case MAX34451_MFR_MARGIN_CONFIG: /* R/W word */
-+        if (pmdev->page < 12) {
-+            s->margin_config[pmdev->page] =3D pmbus_receive16(pmdev);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_CHANNEL_CONFIG: /* R/W word */
-+        if (pmdev->page < 16) {
-+            s->channel_config[pmdev->page] =3D pmbus_receive16(pmdev);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_TON_SEQ_MAX: /* R/W word */
-+        if (pmdev->page < 12) {
-+            s->ton_seq_max[pmdev->page] =3D pmbus_receive16(pmdev);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_PWM_CONFIG: /* R/W 32 */
-+        if (pmdev->page < 12) {
-+            s->pwm_config[pmdev->page] =3D pmbus_receive32(pmdev);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_SEQ_CONFIG:  /* R/W 32 */
-+        if (pmdev->page < 12) {
-+            s->seq_config[pmdev->page] =3D pmbus_receive32(pmdev);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_TEMP_SENSOR_CONFIG:  /* R/W word */
-+        if (15 < pmdev->page && pmdev->page < 21) {
-+            s->temp_sensor_config[pmdev->page % 16]
-+                =3D pmbus_receive16(pmdev);
-+        }
-+        break;
-+
-+    case MAX34451_MFR_CRC: /* R/W word */
-+        s->crc =3D pmbus_receive16(pmdev);
-+        break;
-+
-+    case MAX34451_MFR_NV_FAULT_LOG:
-+    case MAX34451_MFR_FW_SERIAL:
-+    case MAX34451_MFR_IOUT_AVG:
-+        /* Read only commands */
-+        pmdev->pages[index].status_word |=3D PMBUS_STATUS_CML;
-+        pmdev->pages[index].status_cml |=3D PB_CML_FAULT_INVALID_DATA;
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: writing to read-only register 0x%02x\n",
-+                      __func__, pmdev->code);
-+        break;
-+
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: writing to unsupported register: 0x%02x\n",
-+                      __func__, pmdev->code);
-+        break;
-+    }
-+
-+    return 0;
-+}
-+
-+static void max34451_get(Object *obj, Visitor *v, const char *name,
-+                                     void *opaque, Error **errp)
-+{
-+    visit_type_uint16(v, name, (uint16_t *)opaque, errp);
-+}
-+
-+static void max34451_set(Object *obj, Visitor *v, const char *name,
-+                                 void *opaque, Error **errp)
-+{
-+    MAX34451State *s =3D MAX34451(obj);
-+    uint16_t *internal =3D opaque;
-+    uint16_t value;
-+    if (!visit_type_uint16(v, name, &value, errp)) {
-+        return;
-+    }
-+
-+    *internal =3D value;
-+    max34451_check_limits(s);
-+}
-+
-+/* used to init uint16_t arrays */
-+static inline void *memset_word(void *s, uint16_t c, size_t n)
-+{
-+    size_t i;
-+    uint16_t *p =3D s;
-+
-+    for (i =3D 0; i < n; i++) {
-+        p[i] =3D c;
-+    }
-+
-+    return s;
-+}
-+
-+static void max34451_exit_reset(Object *obj)
-+{
-+    PMBusDevice *pmdev =3D PMBUS_DEVICE(obj);
-+    MAX34451State *s =3D MAX34451(obj);
-+    pmdev->capability =3D DEFAULT_CAPABILITY;
-+
-+    for (int i =3D 0; i < MAX34451_NUM_PAGES; i++) {
-+        pmdev->pages[i].operation =3D DEFAULT_OP_ON;
-+        pmdev->pages[i].on_off_config =3D DEFAULT_ON_OFF_CONFIG;
-+        pmdev->pages[i].revision =3D 0x11;
-+        pmdev->pages[i].vout_mode =3D DEFAULT_VOUT_MODE;
-+    }
-+
-+    for (int i =3D 0; i < MAX34451_NUM_PWR_DEVICES; i++) {
-+        pmdev->pages[i].vout_scale_monitor =3D DEFAULT_SCALE;
-+        pmdev->pages[i].vout_ov_fault_limit =3D DEFAULT_OV_LIMIT;
-+        pmdev->pages[i].vout_ov_warn_limit =3D DEFAULT_OV_LIMIT;
-+        pmdev->pages[i].iout_oc_warn_limit =3D DEFAULT_OC_LIMIT;
-+        pmdev->pages[i].iout_oc_fault_limit =3D DEFAULT_OC_LIMIT;
-+    }
-+
-+    for (int i =3D 0; i < MAX34451_NUM_MARGINED_PSU; i++) {
-+        pmdev->pages[i].ton_max_fault_limit =3D DEFAULT_TON_FAULT_LIMIT;
-+    }
-+
-+    for (int i =3D 16; i < MAX34451_NUM_TEMP_DEVICES + 16; i++) {
-+        pmdev->pages[i].read_temperature_1 =3D DEFAULT_TEMPERATURE;
-+        pmdev->pages[i].ot_warn_limit =3D DEFAULT_OT_LIMIT;
-+        pmdev->pages[i].ot_fault_limit =3D DEFAULT_OT_LIMIT;
-+    }
-+
-+    memset_word(s->ton_max_fault_limit, DEFAULT_TON_FAULT_LIMIT,
-+                MAX34451_NUM_MARGINED_PSU);
-+    memset_word(s->channel_config, DEFAULT_CHANNEL_CONFIG,
-+                MAX34451_NUM_PWR_DEVICES);
-+    memset_word(s->vout_min, DEFAULT_VMIN, MAX34451_NUM_PWR_DEVICES);
-+
-+    s->mfr_location =3D DEFAULT_TEXT;
-+    s->mfr_date =3D DEFAULT_TEXT;
-+    s->mfr_serial =3D DEFAULT_TEXT;
-+}
-+
-+static const VMStateDescription vmstate_max34451 =3D {
-+    .name =3D TYPE_MAX34451,
-+    .version_id =3D 0,
-+    .minimum_version_id =3D 0,
-+    .fields =3D (VMStateField[]){
-+        VMSTATE_PMBUS_DEVICE(parent, MAX34451State),
-+        VMSTATE_UINT16_ARRAY(power_good_on, MAX34451State,
-+                             MAX34451_NUM_PWR_DEVICES),
-+        VMSTATE_UINT16_ARRAY(power_good_off, MAX34451State,
-+                             MAX34451_NUM_PWR_DEVICES),
-+        VMSTATE_UINT16_ARRAY(ton_delay, MAX34451State,
-+                             MAX34451_NUM_MARGINED_PSU),
-+        VMSTATE_UINT16_ARRAY(ton_max_fault_limit, MAX34451State,
-+                             MAX34451_NUM_MARGINED_PSU),
-+        VMSTATE_UINT16_ARRAY(toff_delay, MAX34451State,
-+                             MAX34451_NUM_MARGINED_PSU),
-+        VMSTATE_UINT8_ARRAY(status_mfr_specific, MAX34451State,
-+                             MAX34451_NUM_PWR_DEVICES),
-+        VMSTATE_UINT64(mfr_location, MAX34451State),
-+        VMSTATE_UINT64(mfr_date, MAX34451State),
-+        VMSTATE_UINT64(mfr_serial, MAX34451State),
-+        VMSTATE_UINT16(mfr_mode, MAX34451State),
-+        VMSTATE_UINT32_ARRAY(psen_config, MAX34451State,
-+                             MAX34451_NUM_MARGINED_PSU),
-+        VMSTATE_UINT16_ARRAY(vout_peak, MAX34451State,
-+                             MAX34451_NUM_PWR_DEVICES),
-+        VMSTATE_UINT16_ARRAY(iout_peak, MAX34451State,
-+                             MAX34451_NUM_PWR_DEVICES),
-+        VMSTATE_UINT16_ARRAY(temperature_peak, MAX34451State,
-+                             MAX34451_NUM_TEMP_DEVICES),
-+        VMSTATE_UINT16_ARRAY(vout_min, MAX34451State, MAX34451_NUM_PWR_DEV=
-ICES),
-+        VMSTATE_UINT16(nv_log_config, MAX34451State),
-+        VMSTATE_UINT32_ARRAY(fault_response, MAX34451State,
-+                             MAX34451_NUM_PWR_DEVICES),
-+        VMSTATE_UINT16(fault_retry, MAX34451State),
-+        VMSTATE_UINT32(fault_log, MAX34451State),
-+        VMSTATE_UINT32(time_count, MAX34451State),
-+        VMSTATE_UINT16_ARRAY(margin_config, MAX34451State,
-+                             MAX34451_NUM_MARGINED_PSU),
-+        VMSTATE_UINT16(fw_serial, MAX34451State),
-+        VMSTATE_UINT16_ARRAY(iout_avg, MAX34451State, MAX34451_NUM_PWR_DEV=
-ICES),
-+        VMSTATE_UINT16_ARRAY(channel_config, MAX34451State,
-+                             MAX34451_NUM_PWR_DEVICES),
-+        VMSTATE_UINT16_ARRAY(ton_seq_max, MAX34451State,
-+                             MAX34451_NUM_MARGINED_PSU),
-+        VMSTATE_UINT32_ARRAY(pwm_config, MAX34451State,
-+                             MAX34451_NUM_MARGINED_PSU),
-+        VMSTATE_UINT32_ARRAY(seq_config, MAX34451State,
-+                             MAX34451_NUM_MARGINED_PSU),
-+        VMSTATE_UINT16_ARRAY(temp_sensor_config, MAX34451State,
-+                             MAX34451_NUM_TEMP_DEVICES),
-+        VMSTATE_UINT16(store_single, MAX34451State),
-+        VMSTATE_UINT16(crc, MAX34451State),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void max34451_init(Object *obj)
-+{
-+    PMBusDevice *pmdev =3D PMBUS_DEVICE(obj);
-+    uint64_t psu_flags =3D PB_HAS_VOUT | PB_HAS_IOUT | PB_HAS_VOUT_MODE |
-+                         PB_HAS_IOUT_GAIN;
-+
-+    for (int i =3D 0; i < MAX34451_NUM_PWR_DEVICES; i++) {
-+        pmbus_page_config(pmdev, i, psu_flags);
-+    }
-+
-+    for (int i =3D 0; i < MAX34451_NUM_MARGINED_PSU; i++) {
-+        pmbus_page_config(pmdev, i, psu_flags | PB_HAS_VOUT_MARGIN);
-+    }
-+
-+    for (int i =3D 16; i < MAX34451_NUM_TEMP_DEVICES + 16; i++) {
-+        pmbus_page_config(pmdev, i, PB_HAS_TEMPERATURE | PB_HAS_VOUT_MODE)=
-;
-+    }
-+
-+    /* get and set the voltage in millivolts, max is 32767 mV */
-+    for (int i =3D 0; i < MAX34451_NUM_PWR_DEVICES; i++) {
-+        object_property_add(obj, "vout[*]", "uint16",
-+                            max34451_get,
-+                            max34451_set, NULL, &pmdev->pages[i].read_vout=
-);
-+    }
-+
-+    /*
-+     * get and set the temperature of the internal temperature sensor in
-+     * centidegrees Celcius i.e.: 2500 -> 25.00 C, max is 327.67 C
-+     */
-+    for (int i =3D 0; i < MAX34451_NUM_TEMP_DEVICES; i++) {
-+        object_property_add(obj, "temperature[*]", "uint16",
-+                            max34451_get,
-+                            max34451_set,
-+                            NULL,
-+                            &pmdev->pages[i + 16].read_temperature_1);
-+    }
-+
-+}
-+
-+static void max34451_class_init(ObjectClass *klass, void *data)
-+{
-+    ResettableClass *rc =3D RESETTABLE_CLASS(klass);
-+    DeviceClass *dc =3D DEVICE_CLASS(klass);
-+    PMBusDeviceClass *k =3D PMBUS_DEVICE_CLASS(klass);
-+    dc->desc =3D "Maxim MAX34451 16-Channel V/I monitor";
-+    dc->vmsd =3D &vmstate_max34451;
-+    k->write_data =3D max34451_write_data;
-+    k->receive_byte =3D max34451_read_byte;
-+    k->device_num_pages =3D MAX34451_NUM_PAGES;
-+    rc->phases.exit =3D max34451_exit_reset;
-+}
-+
-+static const TypeInfo max34451_info =3D {
-+    .name =3D TYPE_MAX34451,
-+    .parent =3D TYPE_PMBUS_DEVICE,
-+    .instance_size =3D sizeof(MAX34451State),
-+    .instance_init =3D max34451_init,
-+    .class_init =3D max34451_class_init,
-+};
-+
-+static void max34451_register_types(void)
-+{
-+    type_register_static(&max34451_info);
-+}
-+
-+type_init(max34451_register_types)
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index e141084a79..d689941f64 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -374,6 +374,7 @@ config NPCM7XX
-     select ADM1272
-     select ARM_GIC
-     select AT24C  # EEPROM
-+    select MAX34451
-     select PL310  # cache controller
-     select PMBUS
-     select SERIAL
-diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-index 0774c1f70c..1747667984 100644
---- a/hw/misc/Kconfig
-+++ b/hw/misc/Kconfig
-@@ -30,6 +30,10 @@ config EMC141X
-     bool
-     depends on I2C
-=20
-+config MAX34451
-+    bool
-+    depends on I2C
-+
- config ISA_DEBUG
-     bool
-     depends on ISA_BUS
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index 8666e9225a..b62919e1fe 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -11,6 +11,7 @@ softmmu_ss.add(when: 'CONFIG_TMP105', if_true: files('tmp=
-105.c'))
- softmmu_ss.add(when: 'CONFIG_TMP421', if_true: files('tmp421.c'))
- softmmu_ss.add(when: 'CONFIG_EMC141X', if_true: files('emc141x.c'))
- softmmu_ss.add(when: 'CONFIG_ADM1272', if_true: files('adm1272.c'))
-+softmmu_ss.add(when: 'CONFIG_MAX34451', if_true: files('max34451.c'))
- softmmu_ss.add(when: 'CONFIG_UNIMP', if_true: files('unimp.c'))
- softmmu_ss.add(when: 'CONFIG_EMPTY_SLOT', if_true: files('empty_slot.c'))
- softmmu_ss.add(when: 'CONFIG_LED', if_true: files('led.c'))
---=20
-2.31.1.751.gd2f1c929bd-goog
-
+>
+> > ---
+> >  hw/arm/aspeed.c | 22 +++++++++++-----------
+> >  1 file changed, 11 insertions(+), 11 deletions(-)
+> >
+> > diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> > index 35a28b0e8b..27fd51980c 100644
+> > --- a/hw/arm/aspeed.c
+> > +++ b/hw/arm/aspeed.c
+> > @@ -541,14 +541,16 @@ static void swift_bmc_i2c_init(AspeedMachineState *bmc)
+> >
+> >  static void sonorapass_bmc_i2c_init(AspeedMachineState *bmc)
+> >  {
+> > +    I2CSlave *i2c_mux;
+> >      AspeedSoCState *soc = &bmc->soc;
+> >
+> >      /* bus 2 : */
+> >      i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2), "tmp105", 0x48);
+> >      i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2), "tmp105", 0x49);
+> > -    /* bus 2 : pca9546 @ 0x73 */
+> > +    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2), "pca9546", 0x73);
+> >
+> > -    /* bus 3 : pca9548 @ 0x70 */
+> > +    /* bus 3 : */
+> > +    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 3), "pca9548", 0x70);
+> >
+> >      /* bus 4 : */
+> >      uint8_t *eeprom4_54 = g_malloc0(8 * 1024);
+> > @@ -562,7 +564,7 @@ static void sonorapass_bmc_i2c_init(AspeedMachineState *bmc)
+> >      /* bus 6 : */
+> >      i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), "tmp105", 0x48);
+> >      i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), "tmp105", 0x49);
+> > -    /* bus 6 : pca9546 @ 0x73 */
+> > +    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), "pca9546", 0x73);
+> >
+> >      /* bus 8 : */
+> >      uint8_t *eeprom8_56 = g_malloc0(8 * 1024);
+> > @@ -573,14 +575,12 @@ static void sonorapass_bmc_i2c_init(AspeedMachineState *bmc)
+> >      /* bus 8 : adc128d818 @ 0x1d */
+> >      /* bus 8 : adc128d818 @ 0x1f */
+> >
+> > -    /*
+> > -     * bus 13 : pca9548 @ 0x71
+> > -     *      - channel 3:
+> > -     *          - tmm421 @ 0x4c
+> > -     *          - tmp421 @ 0x4e
+> > -     *          - tmp421 @ 0x4f
+> > -     */
+> > -
+> > +    /* bus 13 : */
+> > +    i2c_mux = i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 13),
+> > +                                      "pca9548", 0x71);
+> > +    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 3), "tmp421", 0x4c);
+> > +    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 3), "tmp421", 0x4e);
+> > +    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 3), "tmp421", 0x4f);
+> >  }
+> >
+> >  static void witherspoon_bmc_i2c_init(AspeedMachineState *bmc)
+> > --
+> > 2.31.1.751.gd2f1c929bd-goog
+> >

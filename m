@@ -1,102 +1,66 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp285336lfm;
-        Thu, 20 May 2021 08:46:05 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw/ypjXYEXKWVBECZp1azsWe4KIPs3T7nIQfSsvvdwFAEw8JYiC3dDXMfSZpW8d8xLOOuCV
-X-Received: by 2002:a05:6e02:11b3:: with SMTP id 19mr5766226ilj.41.1621525565239;
-        Thu, 20 May 2021 08:46:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621525565; cv=none;
-        d=google.com; s=arc-20160816;
-        b=ZvazfYBiVLOfrV0o/9yVjSljHmqyFuOYELzremu/YZ+GLN+1H9i0+WfokgdPyEGKhN
-         IAYqJ9dzTXZzKN15TgniXOi91GGik5KvOH/q+K+eobTwLDHkNPRHh9bxCOQwK7CEx4HV
-         44mOuioZx4FPVSZZtR/8h1/JCPVEUMXGpBfudam0o6dzEjHGXpouGS6P4rAGp9vm+V3b
-         UXffyM0dFAa9YFgO5s64B9U+omW8cpo8F+Nv+LSynMtG/wQ+Wi6IsRQbAoekDZ6jGMCg
-         ttVDtjSTAhCg3yxjfdDAgd9dFD4ZOeBmwqzs8897XC5gcqp3dXFFP+Qafm28O2x6Jm3Q
-         qz3w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=I6O8/L3ylxIpnQe9NkcAetgPjV6Xg3rsE+K/q/jQeh0=;
-        b=WtVKcbYebqYgbg9rG9ediWtzNxsUf0dS6o4P3JuLAbUpde25c70oxs0NlNyGmygkDd
-         hCZygckatDd9y44WexMnPCIiOctNnrLbA3YGigMKPO13Axv8dvl0f8V1QQ2VJMg4kodU
-         Ug2+Eh2TGEHpLeQOi2BExE3KVrCqe5Zv6JyTgwqVxZHFw8WVcLGLUjJrBD/IRzQjk5kQ
-         lMh1BbOGJ6WcHWmlqmdGMNDhuzVDszItgyx6E9popDMlvCBgRV5C7roUZX7kqcbqKKFb
-         RTt4eUzVGN/fe57H8qhtHsFRNwa/1y2ipURB4EXFASz3febjpNggYOnA/zQpffr5mWmv
-         nctQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=W6ZmMg9q;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp285528lfm;
+        Thu, 20 May 2021 08:46:20 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyIHZJm9RW59bIwQwDmRk9hsXvgVpI9ksMmwY+R7ACNT++EfXUMG8o7RFTvoRGYl8hMWZlZ
+X-Received: by 2002:a5e:930d:: with SMTP id k13mr6316328iom.61.1621525580484;
+        Thu, 20 May 2021 08:46:20 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d8si2717933ilo.3.2021.05.20.08.46.05
+        by mx.google.com with ESMTPS id a2si2960124ilp.43.2021.05.20.08.46.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 May 2021 08:46:05 -0700 (PDT)
+        Thu, 20 May 2021 08:46:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=W6ZmMg9q;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49740 helo=lists1p.gnu.org)
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:50410 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ljks8-0007wT-JO
-	for alex.bennee@linaro.org; Thu, 20 May 2021 11:46:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53264)
+	id 1ljksN-00009G-PC
+	for alex.bennee@linaro.org; Thu, 20 May 2021 11:46:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53514)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ljkrP-0007vw-J0
- for qemu-arm@nongnu.org; Thu, 20 May 2021 11:45:19 -0400
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633]:37631)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ljkrO-00088O-4w
- for qemu-arm@nongnu.org; Thu, 20 May 2021 11:45:19 -0400
-Received: by mail-ej1-x633.google.com with SMTP id et19so18992283ejc.4
- for <qemu-arm@nongnu.org>; Thu, 20 May 2021 08:45:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=I6O8/L3ylxIpnQe9NkcAetgPjV6Xg3rsE+K/q/jQeh0=;
- b=W6ZmMg9qp+HDBXl8qWCRbf33Z0Zr/BeDF3LoknVn+sRmccnBbXG02UJGeAd1uRedVp
- quVN+N1t8bxON2jhn0dQH4eq70IYOGN+YhNZyWiYOd0GbHlcfJr+LrF0GAMYKoRuJvKW
- qkJABAqEHWqtEGXuQWMcGRoTv3aqAuNDCIuLKZ/9YfIwXJ4AFstIRNm6ZYax3HN6+nQQ
- QaK9ZRYBSnyKT7pF4zUw7hm6vry/cE7rlZzlwcXe+58wK6THCLm4GGmkOnsDvKBK1gQl
- wbxUmNNJnqSIPAItOrgthFehwLMqmTBdV/dCUM3/ZYp2lusLw+U252cocdhtvvSVKFZl
- zqcQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=I6O8/L3ylxIpnQe9NkcAetgPjV6Xg3rsE+K/q/jQeh0=;
- b=PbJ8XXU8K7IKiaD6/RZq87b1kY85xhQazVbYEEThTV9vd10KHFS8RguHKmMVxg7qBT
- eVI0ih51WFbIpNKnUqSZKYjFREgftAxNsD6WhA0e05inGdI0jHl00b+9OBkCJGG5e/Cl
- E/LqtdEWw8sv19bfA5Zd9EpU5QOafwMa8oSd/qG7D4SbUyDfqB0wrfhOaUglmc0DCFqW
- J4Lz8+f/07KFpn4FS8jgH5jEvu/opylbbCO2eFciKd3VWJZEl3O7a5sOo2+MdFarnRXl
- hJ54zHAw/lPWQ4lI5rrL9zrANhTz/QRf8IjT/3xClcD/yWHtIXllm6mEXnONPlGfaEYd
- N1IA==
-X-Gm-Message-State: AOAM531A0ci+ImP80Kl/qOza7uIuIuxhiRRykMEsHEVH0IQkx9+4a/5e
- JwdFfWIOf9u+eqj4nZKCnHK8f6vbMUOPKhtH+6hwBA==
-X-Received: by 2002:a17:906:d8cb:: with SMTP id
- re11mr5364132ejb.482.1621525516235; 
- Thu, 20 May 2021 08:45:16 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1ljksB-00005n-4i; Thu, 20 May 2021 11:46:07 -0400
+Resent-Date: Thu, 20 May 2021 11:46:07 -0400
+Resent-Message-Id: <E1ljksB-00005n-4i@lists.gnu.org>
+Received: from sender4-of-o53.zoho.com ([136.143.188.53]:21384)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1ljks6-0008SZ-SR; Thu, 20 May 2021 11:46:06 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1621525552; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=ePtzOlmapiV8JkixF8yhxC74cO0cP+IEnFtOVGshTTmaVXitdqGoQJa2QzCKmdpYLC3MqtPHyf4iJOACkyjPBYyYV1zqHgUUJ1sqvqSVJ+JQWoOmuhhIwK3FOSwmVf5krGAUVxRg9w5iGAgxRrBKhGiVZIKYKl8B9hG5NpyfchQ=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1621525552;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=/OY1Zwthdk8Wy1s3tejRNkuwWfd5mmM/tL9V6LXcQ8k=; 
+ b=JrGIcp0szmE8KGBlKQzaA2cG7cUNHfBcFHok52iuacXjFwv4zXhRST+e4SF7P3vbA8tthAv7+FfAYR1Pxp3KZwzUHQZT5I3cc/aA9cvREXWE8TfQXH7RjgQ8Kn3ajH6tIzRiYEchV+AyjJ2PBS58MJx0r+QkW6qGCvjwQwbx2jg=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1621525549294572.0422077754996;
+ Thu, 20 May 2021 08:45:49 -0700 (PDT)
+In-Reply-To: <20210520152840.24453-1-peter.maydell@linaro.org>
+Subject: Re: [PATCH 0/9] target/arm: MVE preliminaries
+Message-ID: <162152554825.4995.718077746100009057@0addf061776e>
 MIME-Version: 1.0
-References: <20210510124747.780877-1-eric.auger@redhat.com>
-In-Reply-To: <20210510124747.780877-1-eric.auger@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 20 May 2021 16:44:57 +0100
-Message-ID: <CAFEAcA88KZSL6V5c7PmRSKvcT38OghVH_sRHgXddJOZ2HdPUsQ@mail.gmail.com>
-Subject: Re: [PATCH v2] hw/arm/smmuv3: Another range invalidation fix
-To: Eric Auger <eric.auger@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::633;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x633.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: peter.maydell@linaro.org
+Date: Thu, 20 May 2021 08:45:49 -0700 (PDT)
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.53; envelope-from=no-reply@patchew.org;
+ helo=sender4-of-o53.zoho.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -109,33 +73,70 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Kunkun Jiang <jiangkunkun@huawei.com>,
- QEMU Developers <qemu-devel@nongnu.org>, Peter Xu <peterx@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>,
- Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
- Eric Auger <eric.auger.pro@gmail.com>
+Reply-To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zbUSl1Kic9Sm
+X-TUID: 1fs1Flx8tXDD
 
-On Mon, 10 May 2021 at 13:48, Eric Auger <eric.auger@redhat.com> wrote:
->
-> 6d9cd115b9 ("hw/arm/smmuv3: Enforce invalidation on a power of two range")
-> failed to completely fix misalignment issues with range
-> invalidation. For instance invalidations patterns like "invalidate 32
-> 4kB pages starting from 0xff395000 are not correctly handled" due
-> to the fact the previous fix only made sure the number of invalidated
-> pages were a power of 2 but did not properly handle the start
-> address was not aligned with the range. This can be noticed when
-> boothing a fedora 33 with protected virtio-blk-pci.
->
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> Fixes: 6d9cd115b9 ("hw/arm/smmuv3: Enforce invalidation on a power of two range")
->
-> ---
-
-
-
-Applied to target-arm.next, thanks.
-
--- PMM
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIxMDUyMDE1Mjg0MC4yNDQ1
+My0xLXBldGVyLm1heWRlbGxAbGluYXJvLm9yZy8KCgoKSGksCgpUaGlzIHNlcmllcyBzZWVtcyB0
+byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1zLiBTZWUgb3V0cHV0IGJlbG93IGZvcgpt
+b3JlIGluZm9ybWF0aW9uOgoKVHlwZTogc2VyaWVzCk1lc3NhZ2UtaWQ6IDIwMjEwNTIwMTUyODQw
+LjI0NDUzLTEtcGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnClN1YmplY3Q6IFtQQVRDSCAwLzldIHRh
+cmdldC9hcm06IE1WRSBwcmVsaW1pbmFyaWVzCgo9PT0gVEVTVCBTQ1JJUFQgQkVHSU4gPT09CiMh
+L2Jpbi9iYXNoCmdpdCByZXYtcGFyc2UgYmFzZSA+IC9kZXYvbnVsbCB8fCBleGl0IDAKZ2l0IGNv
+bmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lbGltaXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5y
+ZW5hbWVzIFRydWUKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYuYWxnb3JpdGhtIGhpc3RvZ3JhbQou
+L3NjcmlwdHMvY2hlY2twYXRjaC5wbCAtLW1haWxiYWNrIGJhc2UuLgo9PT0gVEVTVCBTQ1JJUFQg
+RU5EID09PQoKVXBkYXRpbmcgM2M4Y2Y1YTljMjFmZjg3ODIxNjRkMWRlZjdmNDRiZDg4ODcxMzM4
+NApGcm9tIGh0dHBzOi8vZ2l0aHViLmNvbS9wYXRjaGV3LXByb2plY3QvcWVtdQogKiBbbmV3IHRh
+Z10gICAgICAgICBwYXRjaGV3LzIwMjEwNTIwMTUyODQwLjI0NDUzLTEtcGV0ZXIubWF5ZGVsbEBs
+aW5hcm8ub3JnIC0+IHBhdGNoZXcvMjAyMTA1MjAxNTI4NDAuMjQ0NTMtMS1wZXRlci5tYXlkZWxs
+QGxpbmFyby5vcmcKICogW25ldyB0YWddICAgICAgICAgcGF0Y2hldy8yMDIxMDUyMDE1MzgzMS4x
+MTg3My0xLWFsZXguYmVubmVlQGxpbmFyby5vcmcgLT4gcGF0Y2hldy8yMDIxMDUyMDE1MzgzMS4x
+MTg3My0xLWFsZXguYmVubmVlQGxpbmFyby5vcmcKU3dpdGNoZWQgdG8gYSBuZXcgYnJhbmNoICd0
+ZXN0Jwo1NzE0YjI5IHRhcmdldC9hcm06IEFsbG93IGJvYXJkIG1vZGVscyB0byBzcGVjaWZ5IGlu
+aXRpYWwgTlMgVlRPUgowYTkxYzRkIHRhcmdldC9hcm06IEVuYWJsZSBGUFNDUi5RQyBiaXQgZm9y
+IE1WRQpkNDdkYTc4IHRhcmdldC9hcm06IE1ha2UgRlBTQ1IuTFRQU0laRSB3cml0YWJsZSBmb3Ig
+TVZFCjZjNzIyOWEgdGFyZ2V0L2FybTogSW1wbGVtZW50IE0tcHJvZmlsZSBWUFIgcmVnaXN0ZXIK
+NDdkYmVkMiB0YXJnZXQvYXJtOiBGaXggcmV0dXJuIHZhbHVlcyBpbiBmcF9zeXNyZWdfY2hlY2tz
+KCkKNGIzNmE3MiB0YXJnZXQvYXJtOiBBZGQgTVZFIGNoZWNrIHRvIFZNT1ZfcmVnX3NwIGFuZCBW
+TU9WX3JlZ19kcApkYmVmYWZkIHRhcmdldC9hcm06IE1vdmUgZnBzcC9mcGRwIGlzYXIgY2hlY2sg
+aW50byBjYWxsZXJzIG9mIGRvX3ZmcF8yb3Bfc3AvZHAKNDkzYTg1OSB0YXJnZXQvYXJtOiBVcGRh
+dGUgZmVhdHVyZSBjaGVja3MgZm9yIGluc25zIHdoaWNoIGFyZSAiTVZFIG9yIEZQIgo2MzNmYTBj
+IHRhcmdldC9hcm06IEFkZCBpc2FyIGZlYXR1cmUgY2hlY2sgZnVuY3Rpb25zIGZvciBNVkUKCj09
+PSBPVVRQVVQgQkVHSU4gPT09CjEvOSBDaGVja2luZyBjb21taXQgNjMzZmEwYzhkZTBiICh0YXJn
+ZXQvYXJtOiBBZGQgaXNhciBmZWF0dXJlIGNoZWNrIGZ1bmN0aW9ucyBmb3IgTVZFKQoyLzkgQ2hl
+Y2tpbmcgY29tbWl0IDQ5M2E4NTljMWQ3MiAodGFyZ2V0L2FybTogVXBkYXRlIGZlYXR1cmUgY2hl
+Y2tzIGZvciBpbnNucyB3aGljaCBhcmUgIk1WRSBvciBGUCIpCjMvOSBDaGVja2luZyBjb21taXQg
+ZGJlZmFmZGZlZmYzICh0YXJnZXQvYXJtOiBNb3ZlIGZwc3AvZnBkcCBpc2FyIGNoZWNrIGludG8g
+Y2FsbGVycyBvZiBkb192ZnBfMm9wX3NwL2RwKQo0LzkgQ2hlY2tpbmcgY29tbWl0IDRiMzZhNzJi
+NGZkNyAodGFyZ2V0L2FybTogQWRkIE1WRSBjaGVjayB0byBWTU9WX3JlZ19zcCBhbmQgVk1PVl9y
+ZWdfZHApCkVSUk9SOiBzcGFjZXMgcmVxdWlyZWQgYXJvdW5kIHRoYXQgJyonIChjdHg6V3hWKQoj
+Mjg6IEZJTEU6IHRhcmdldC9hcm0vdHJhbnNsYXRlLXZmcC5jOjI4MjM6CisgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgIGFyZ18jI0lOU04jI18jI1BSRUMgKmEpICAgXAogICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIF4K
+CnRvdGFsOiAxIGVycm9ycywgMCB3YXJuaW5ncywgMjEgbGluZXMgY2hlY2tlZAoKUGF0Y2ggNC85
+IGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJv
+cnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2Vl
+CkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCgo1LzkgQ2hlY2tpbmcgY29tbWl0IDQ3ZGJlZDIy
+Y2Y1YSAodGFyZ2V0L2FybTogRml4IHJldHVybiB2YWx1ZXMgaW4gZnBfc3lzcmVnX2NoZWNrcygp
+KQo2LzkgQ2hlY2tpbmcgY29tbWl0IDZjNzIyOWFhYjQ0NSAodGFyZ2V0L2FybTogSW1wbGVtZW50
+IE0tcHJvZmlsZSBWUFIgcmVnaXN0ZXIpCjcvOSBDaGVja2luZyBjb21taXQgZDQ3ZGE3ODQ1NmUw
+ICh0YXJnZXQvYXJtOiBNYWtlIEZQU0NSLkxUUFNJWkUgd3JpdGFibGUgZm9yIE1WRSkKOC85IENo
+ZWNraW5nIGNvbW1pdCAwYTkxYzRkZWIyODUgKHRhcmdldC9hcm06IEVuYWJsZSBGUFNDUi5RQyBi
+aXQgZm9yIE1WRSkKOS85IENoZWNraW5nIGNvbW1pdCA1NzE0YjI5YTNiNmUgKHRhcmdldC9hcm06
+IEFsbG93IGJvYXJkIG1vZGVscyB0byBzcGVjaWZ5IGluaXRpYWwgTlMgVlRPUikKV0FSTklORzog
+bGluZSBvdmVyIDgwIGNoYXJhY3RlcnMKIzU1OiBGSUxFOiBpbmNsdWRlL2h3L2FybS9hcm12N20u
+aDo0OToKKyAqICsgUHJvcGVydHkgImluaXQtbnN2dG9yIjogbm9uLXNlY3VyZSBWVE9SIHJlc2V0
+IHZhbHVlIChmb3J3YXJkZWQgdG8gQ1BVIG9iamVjdCkKCnRvdGFsOiAwIGVycm9ycywgMSB3YXJu
+aW5ncywgNjMgbGluZXMgY2hlY2tlZAoKUGF0Y2ggOS85IGhhcyBzdHlsZSBwcm9ibGVtcywgcGxl
+YXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyBy
+ZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5F
+UlMuCj09PSBPVVRQVVQgRU5EID09PQoKVGVzdCBjb21tYW5kIGV4aXRlZCB3aXRoIGNvZGU6IDEK
+CgpUaGUgZnVsbCBsb2cgaXMgYXZhaWxhYmxlIGF0Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzIw
+MjEwNTIwMTUyODQwLjI0NDUzLTEtcGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnL3Rlc3RpbmcuY2hl
+Y2twYXRjaC8/dHlwZT1tZXNzYWdlLgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkg
+YnkgUGF0Y2hldyBbaHR0cHM6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRi
+YWNrIHRvIHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNvbQ==

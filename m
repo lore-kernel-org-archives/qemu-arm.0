@@ -1,224 +1,282 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp164940lfm;
-        Thu, 20 May 2021 06:24:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwG9BcUlyRrDWqoHrP5OuPCMYsGHQU1Qzm47rBeUBDr+EBUw0BS7mFu8fK6JHlnlWZ9tjLy
-X-Received: by 2002:a05:6638:2181:: with SMTP id s1mr6386509jaj.66.1621517063242;
-        Thu, 20 May 2021 06:24:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621517063; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp474696lfm;
+        Thu, 20 May 2021 12:53:37 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx7y0kx8AiFxygFGsXk5dJs10ZEcaKll4B/VMvs3p3Q09dTzgTYMEg6YEEG9cwv3b8cguk1
+X-Received: by 2002:a17:906:2746:: with SMTP id a6mr6364210ejd.265.1621540417585;
+        Thu, 20 May 2021 12:53:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621540417; cv=none;
         d=google.com; s=arc-20160816;
-        b=dgOr6PR7kQ4AncIrpaodwpklASuStTzXIip+z+EavHBETJn8ojkPnPu7LPXrDePKMy
-         m1sfP7LddoBCgZadlErpZjRR839C/ICXQHw3MJnA+J1b3WaEkmz9Onh9uzekf+tZJlsG
-         IOY8njopJVqIYK/DdevzF3GscOaKTTkfluRXdlsCVzYbjVXbUKrZvKdbUzx3XNRUJ5bs
-         wE+PevuiDn1G+d1O6fjEcEKkfPE/4ka/yO3t6g17YLTfkZ7qDoWOOt9YVEr3Mdo0NGN6
-         rSDCdGvRrH422li0Bwh8IoE0/1SzaxZuYH3ypJ28G8q5GodGGo29AL+BFssKHDPBpsZM
-         AKyg==
+        b=ymt0fHbMef0Cz41tjUOGPaGL3A/ypWE07FF1TdDr93IpIxLecp6hn3Nbs0kduP83Ek
+         +AehuRxWmsIsGTG3EKbYcMOf219Tb7AliTEPChq11CKB8LJPIMYiG49ICf9qsFts7+eV
+         LXFTvWoN+0NgcFHJtmEwPBPk/PFWpaaSJ2vvtp3gxifIf+X9ifyc6ROk2sYO2fdKOnV/
+         xup6iGvzZG+w/QMKy46BpzC2bW4Ee/pQ4dVNWtlZ4mp84co9JZ0BS+LfIF9OSgcvP5TN
+         rw+x+Rp+wlta6mBrHBX9GY4dlZnLKD/iXTWncYMeHwwf1irfkR2AK/UV1gBDKGi1tccM
+         +pEA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=MJkc4iF6xzpAzMqlWyGf8DzlO9FkYxYCi1eaYfORvaA=;
-        b=DnCTFx7sZGSAA+MpcKQe3P1rlcYyOTERxhpiTnMaVlNG1gPimVRTr7xs9cJOdYejAH
-         2F/KCFOKphyQBmXD/Qea1EwgA9gscEZYnVafqjLP20ceZ4NkH0edLTH0elyc2Cj5mgFj
-         rG7X+3oG3twlhLAeQcVVooQ/T7KJj/eNKTK0jynw1fl20xHcuMK5zILNbPT1tl6U09n4
-         yA/oLiKKNr9TCbZsKkpDq9NmmBEpnUk9qv7s+OCehyV+dfMZ973xYeJp9871c0CLkovy
-         309B6iF5JKbycspzLW8Nc72fDlvRq7v1iqIZc6V+O0EF64gxbDmHWy5JAMcOeQ8QLYwm
-         ImJQ==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=hsXdu6a0CKxnojfoZgwlJU9LIBqqP75G/U6o2y2NmyE=;
+        b=D31m8XSkzZh1cMb4pUgnA02/KEiJiTgwflX6+/pXjo5ginzQu5J1vNP9pys3y2c/pP
+         /mrbS7GLWWkwvVyaqibOa+ww2wQDOQ2PYTjCn6tzCMt4rAu5LfJOytjhaoMg/eGVwGif
+         ZNePKQthT9zED0oIKumzEEBy1KYP1A+g+wIom74KI6KCPWcgC7MZrYxCZhmJBDWZhl63
+         EmpcihrL6Ed7jN2nQCsArFv+7fNt/GAnf/hK9eDwPIkN6Fkw3x89uGQBuCP9IUZtqEq3
+         HSLGZSSuouSzLG1VDp73pe+3E8oGMpCRhsfjkGZMshC3EP0vEG6QRsILWtgptR+j+T3b
+         J9dA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vZY0mZNR;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t4si2565964iom.3.2021.05.20.06.24.23
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dwa9TQgU;
+       spf=pass (google.com: domain of willianr@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=willianr@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <willianr@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id bl4si560519ejb.17.2021.05.20.12.53.37
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 May 2021 06:24:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 20 May 2021 12:53:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of willianr@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vZY0mZNR;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58918 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ljif0-0007lG-IO
-	for alex.bennee@linaro.org; Thu, 20 May 2021 09:24:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45198)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ljidU-0006LF-1G
- for qemu-devel@nongnu.org; Thu, 20 May 2021 09:22:48 -0400
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e]:35652)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ljidR-0001hl-Mk
- for qemu-devel@nongnu.org; Thu, 20 May 2021 09:22:47 -0400
-Received: by mail-ed1-x52e.google.com with SMTP id y7so1859291eda.2
- for <qemu-devel@nongnu.org>; Thu, 20 May 2021 06:22:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=MJkc4iF6xzpAzMqlWyGf8DzlO9FkYxYCi1eaYfORvaA=;
- b=vZY0mZNRujY7IFyG1Ge6yWT7beqaGkikvsVP2+EA/0dMydvc2vcXWK1xCBZUDQsqxT
- 14TlG34nSA77EFiexeQRv7TA1c3N5i/cIx4OH7Oa4BvMGUvr1qVfLFJ7dX6DqMwHaRwC
- gRcXRgg90LVo8/hi/obQiaHkHaF341gnEaRE6lKWx/e1g7jYehA04F6d44cmffS6GfHe
- TdrjukGpJOT/z/8EqN95izdy82H5S2QhafRpEbdOhENDXXMvXjebmN1dfZJB5J1mjFv3
- Gk6iFZQOX6WlEvLlA7KgRA3woA0EXOZBNPYiavLZvmLtN/lbAMczB1qGPbJaHnMq98yU
- ybzQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=MJkc4iF6xzpAzMqlWyGf8DzlO9FkYxYCi1eaYfORvaA=;
- b=Z8QQRCraU8/4sO4saWby/x7jIeKUwjVU0kDUeDljL+Tre+Y28YkulFn2TOlUM8zd1K
- nB+q6SpZ01z4sz4p+w0iTnf3sHKZcsNL5EeK9PfdO3Jvt8/gdQXbm6i2H9GNzFB/B+Nm
- IyszSnne1tG+S3kyilOAcvONDMzXb7n9HzRZeF3EbExeF2mu/k8HaRL84Z+iCmSqukxQ
- HA4lOMHGW2wQ1iwhcJxwBz3hmNhNUbYxocwZqieNAAodbfqqOI/TPRxM2CF/oAK2S0eM
- dxj6aGWuH9PHSD9KU8TYbTcW9ygl4E6lF+xbzSyfkDAOz8W9DNmtxBKfRiAWdJlhVLZT
- ytcA==
-X-Gm-Message-State: AOAM533mZNXDKEk1Sxq+OZM8NSBC6NeAlKW19hUDMefdv0ivc1KTQcF4
- l7gelkF6w3o5V2ulP5QT3ubKqpCc2abfeJckj0Cs0Q==
-X-Received: by 2002:aa7:cb0a:: with SMTP id s10mr4943387edt.36.1621516964254; 
- Thu, 20 May 2021 06:22:44 -0700 (PDT)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dwa9TQgU;
+       spf=pass (google.com: domain of willianr@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=willianr@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1621540416;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=hsXdu6a0CKxnojfoZgwlJU9LIBqqP75G/U6o2y2NmyE=;
+	b=dwa9TQgUwvIRCvfNhZrEOoKrPy/JnHKchk4xiRx1BMEBw4tfOKgKS59ggR6LaL1R5dTz1T
+	j8sLeTnUQPmI0qaMALUuAhkMLS0FeuvHLUblWGC12eqy3LGwoSlm8RgfAr/IstFMB7xg0M
+	UAnrFAqrARdPDyFs3jYQ+tvEE6Inlm4=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-222-fu9K8OoANte9oC5uOt_-wg-1; Thu, 20 May 2021 15:53:34 -0400
+X-MC-Unique: fu9K8OoANte9oC5uOt_-wg-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7E1C81005D50;
+	Thu, 20 May 2021 19:53:33 +0000 (UTC)
+Received: from wrampazz.redhat.com (ovpn-113-104.rdu2.redhat.com [10.10.113.104])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 54FB45D74B;
+	Thu, 20 May 2021 19:53:24 +0000 (UTC)
+From: Willian Rampazzo <willianr@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	Cleber Rosa <crosa@redhat.com>,
+	Willian Rampazzo <willianr@redhat.com>,
+	qemu-arm@nongnu.org,
+	Niek Linnenbank <nieklinnenbank@gmail.com>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Michael Rolnik <mrolnik@gmail.com>,
+	Thomas Huth <thuth@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [RFC 0/1] acceptance tests: rename acceptance to system
+Date: Thu, 20 May 2021 16:53:21 -0300
+Message-Id: <20210520195322.205691-1-willianr@redhat.com>
 MIME-Version: 1.0
-References: <20210510150016.24910-1-peter.maydell@linaro.org>
-In-Reply-To: <20210510150016.24910-1-peter.maydell@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 20 May 2021 14:22:25 +0100
-Message-ID: <CAFEAcA82FvAViwCbUP93HDjmdnZ3kHhJ0DAHkB+fkdpf=ukiXg@mail.gmail.com>
-Subject: Re: [PATCH] hw/intc/arm_gicv3_cpuif: Fix EOIR write access check logic
-To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Chan Kim <ckim@etri.re.kr>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aw2/wSl1yAja
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=willianr@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: bYwYmLIliUUA
 
-Ping for code review, please?
-
-thanks
--- PMM
-
-On Mon, 10 May 2021 at 16:00, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> In icc_eoir_write() we assume that we can identify the group of the
-> IRQ being completed based purely on which register is being written
-> to and the current CPU state, and that "CPU state matches group
-> indicated by register" is the only necessary access check.
->
-> This isn't correct: if the CPU is not in Secure state then EOIR1 will
-> only complete Group 1 NS IRQs, but if the CPU is in EL3 it can
-> complete both Group 1 S and Group 1 NS IRQs.  (The pseudocode
-> ICC_EOIR1_EL1 makes this clear.) We were also missing the logic to
-> prevent EOIR0 writes completing G0 IRQs when they should not.
->
-> Rearrange the logic to first identify the group of the current
-> highest priority interrupt and then look at whether we should
-> complete it or ignore the access based on which register was accessed
-> and the state of the CPU.  The resulting behavioural change is:
->  * EL3 can now complete G1NS interrupts
->  * G0 interrupt completion is now ignored if the GIC
->    and the CPU have the security extension enabled and
->    the CPU is not secure
->
-> Reported-by: Chan Kim <ckim@etri.re.kr>
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  hw/intc/arm_gicv3_cpuif.c | 48 ++++++++++++++++++++++++++-------------
->  1 file changed, 32 insertions(+), 16 deletions(-)
->
-> diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
-> index 43ef1d7a840..81f94c7f4ad 100644
-> --- a/hw/intc/arm_gicv3_cpuif.c
-> +++ b/hw/intc/arm_gicv3_cpuif.c
-> @@ -1307,27 +1307,16 @@ static void icc_eoir_write(CPUARMState *env, const ARMCPRegInfo *ri,
->      GICv3CPUState *cs = icc_cs_from_env(env);
->      int irq = value & 0xffffff;
->      int grp;
-> +    bool is_eoir0 = ri->crm == 8;
->
-> -    if (icv_access(env, ri->crm == 8 ? HCR_FMO : HCR_IMO)) {
-> +    if (icv_access(env, is_eoir0 ? HCR_FMO : HCR_IMO)) {
->          icv_eoir_write(env, ri, value);
->          return;
->      }
->
-> -    trace_gicv3_icc_eoir_write(ri->crm == 8 ? 0 : 1,
-> +    trace_gicv3_icc_eoir_write(is_eoir0 ? 0 : 1,
->                                 gicv3_redist_affid(cs), value);
->
-> -    if (ri->crm == 8) {
-> -        /* EOIR0 */
-> -        grp = GICV3_G0;
-> -    } else {
-> -        /* EOIR1 */
-> -        if (arm_is_secure(env)) {
-> -            grp = GICV3_G1;
-> -        } else {
-> -            grp = GICV3_G1NS;
-> -        }
-> -    }
-> -
->      if (irq >= cs->gic->num_irq) {
->          /* This handles two cases:
->           * 1. If software writes the ID of a spurious interrupt [ie 1020-1023]
-> @@ -1340,8 +1329,35 @@ static void icc_eoir_write(CPUARMState *env, const ARMCPRegInfo *ri,
->          return;
->      }
->
-> -    if (icc_highest_active_group(cs) != grp) {
-> -        return;
-> +    grp = icc_highest_active_group(cs);
-> +    switch (grp) {
-> +    case GICV3_G0:
-> +        if (!is_eoir0) {
-> +            return;
-> +        }
-> +        if (!(cs->gic->gicd_ctlr & GICD_CTLR_DS)
-> +            && arm_feature(env, ARM_FEATURE_EL3) && !arm_is_secure(env)) {
-> +            return;
-> +        }
-> +        break;
-> +    case GICV3_G1:
-> +        if (is_eoir0) {
-> +            return;
-> +        }
-> +        if (!arm_is_secure(env)) {
-> +            return;
-> +        }
-> +        break;
-> +    case GICV3_G1NS:
-> +        if (is_eoir0) {
-> +            return;
-> +        }
-> +        if (!arm_is_el3_or_mon(env) && arm_is_secure(env)) {
-> +            return;
-> +        }
-> +        break;
-> +    default:
-> +        g_assert_not_reached();
->      }
->
->      icc_drop_prio(cs, grp);
-> --
-> 2.20.1
->
+CI pipeline: https://gitlab.com/willianrampazzo/qemu/-/pipelines/306850452=
+=0D
+=0D
+Conceptually speaking, acceptance tests "are a series of specific tests=0D
+conducted by the customer in an attempt to uncover product errors before=0D
+accepting the software from the developer. Conducted by the end-user rather=
+=0D
+than software engineers, acceptance testing can range from an informal=0D
+=E2=80=9Ctest drive=E2=80=9D to a planned and systematically executed serie=
+s of scripted=0D
+tests" [1]. Every time Pressman refers to the term "acceptance testing," he=
+=0D
+also refers to user's agreement in the final state of an implemented featur=
+e.=0D
+Today, QEMU is not implementing user acceptance tests as described by Press=
+man.=0D
+=0D
+There are other three possible terms we could use to describe what is curre=
+ntly=0D
+QEMU "acceptance" tests:=0D
+=0D
+  1 - Integration tests:=0D
+      - "Integration testing is a systematic technique for constructing the=
+=0D
+         software architecture while at the same time conducting tests to=
+=0D
+         uncover errors associated with interfacing. The objective is to ta=
+ke=0D
+         unit-tested components and build a program structure that has been=
+=0D
+         dictated by design." [2]=0D
+      * Note: Sommerville does not have a clear definition of integration=
+=0D
+        testing. He refers to incremental integration of components inside=
+=0D
+        the system testing (see [3]).=0D
+=0D
+  2 - Validation tests:=0D
+      - "Validation testing begins at the culmination of integration testin=
+g,=0D
+         when individual components have been exercised, the software is=0D
+         completely assembled as a package, and interfacing errors have bee=
+n=0D
+         uncovered and corrected. At the validation or system level, the=0D
+         distinction between different software categories disappears. Test=
+ing=0D
+         focuses on user-visible actions and user-recognizable output from =
+the=0D
+         system." [4]=0D
+      - "where you expect the system to perform correctly using a set of te=
+st=0D
+         cases that reflect the system=E2=80=99s expected use." [5]=0D
+      * Note: the definition of "validation testing" from Sommerville refle=
+cts=0D
+        the same definition found around the Internet, as one of the proces=
+ses=0D
+        inside the "Verification & Validation (V&V)." In this concept,=0D
+        validation testing is a high-level definition that covers unit test=
+ing,=0D
+        functional testing, integration testing, system testing, and accept=
+ance=0D
+        testing.=0D
+=0D
+  3 - System tests:=0D
+      - "verifies that all elements mesh properly and that overall system=
+=0D
+         function and performance is achieved." [6]=0D
+      - "involves integrating components to create a version of the system =
+and=0D
+         then testing the integrated system. System testing checks that=0D
+         components are compatible, interact correctly, and transfer the ri=
+ght=0D
+         data at the right time across their interfaces." [7]=0D
+=0D
+The tests implemented inside the QEMU "acceptance" directory depend on the=
+=0D
+software completely assembled and, sometimes, on other elements, like opera=
+ting=0D
+system images. In this case, the proposal here is to rename the current=0D
+"acceptance" directory to "system."=0D
+=0D
+[1] Pressman, Roger S. & Maxim, Bruce R. (2020). Software Engineering, A=0D
+    Practitioner=E2=80=99s Approach. p. 430.=0D
+[2] Pressman, Roger S. & Maxim, Bruce R. (2020). Software Engineering, A=0D
+    Practitioner=E2=80=99s Approach. Software Engineering, p. 398.=0D
+[3] Sommerville, Ian (2016). Software Engineering. p. 240-242.=0D
+[4] Pressman, Roger S. & Maxim, Bruce R. (2020). Software Engineering, A=0D
+    Practitioner=E2=80=99s Approach. Software Engineering, p. 407.=0D
+[5] Sommerville, Ian (2016). Software Engineering. p. 227.=0D
+[6] Pressman, Roger S. & Maxim, Bruce R. (2020). Software Engineering, A=0D
+    Practitioner=E2=80=99s Approach. Software Engineering, p. 377.=0D
+[7] Sommerville, Ian (2016). Software Engineering. p. 240.=0D
+=0D
+Signed-off-by: Willian Rampazzo <willianr@redhat.com>=0D
+=0D
+Willian Rampazzo (1):=0D
+  acceptance tests: rename acceptance to system=0D
+=0D
+ .gitlab-ci.yml                                | 58 +++++++++----------=0D
+ MAINTAINERS                                   | 40 ++++++-------=0D
+ configure                                     |  2 +-=0D
+ docs/devel/build-system.rst                   |  2 +-=0D
+ docs/devel/testing.rst                        | 23 ++++----=0D
+ docs/system/arm/orangepi.rst                  |  8 +--=0D
+ tests/Makefile.include                        | 14 ++---=0D
+ tests/acceptance/README.rst                   | 10 ----=0D
+ tests/system/README.rst                       | 10 ++++=0D
+ .../avocado_qemu/__init__.py                  |  2 +-=0D
+ tests/{acceptance =3D> system}/boot_linux.py    |  0=0D
+ .../boot_linux_console.py                     |  0=0D
+ tests/{acceptance =3D> system}/boot_xen.py      |  0=0D
+ tests/{acceptance =3D> system}/cpu_queries.py   |  0=0D
+ .../{acceptance =3D> system}/empty_cpu_model.py |  0=0D
+ tests/{acceptance =3D> system}/linux_initrd.py  |  2 +-=0D
+ .../linux_ssh_mips_malta.py                   |  0=0D
+ .../machine_arm_canona1100.py                 |  0=0D
+ .../machine_arm_integratorcp.py               |  0=0D
+ .../machine_arm_n8x0.py                       |  0=0D
+ tests/{acceptance =3D> system}/machine_avr6.py  |  2 +-=0D
+ .../machine_m68k_nextcube.py                  |  0=0D
+ .../machine_microblaze.py                     |  0=0D
+ .../machine_mips_loongson3v.py                |  0=0D
+ .../machine_mips_malta.py                     |  0=0D
+ tests/{acceptance =3D> system}/machine_ppc.py   |  0=0D
+ .../machine_rx_gdbsim.py                      |  0=0D
+ .../machine_s390_ccw_virtio.py                |  0=0D
+ .../machine_sparc64_sun4u.py                  |  0=0D
+ .../machine_sparc_leon3.py                    |  0=0D
+ tests/{acceptance =3D> system}/migration.py     |  0=0D
+ tests/{acceptance =3D> system}/multiprocess.py  |  0=0D
+ .../pc_cpu_hotplug_props.py                   |  0=0D
+ tests/{acceptance =3D> system}/ppc_prep_40p.py  |  0=0D
+ tests/{acceptance =3D> system}/replay_kernel.py |  0=0D
+ .../reverse_debugging.py                      |  0=0D
+ tests/{acceptance =3D> system}/tcg_plugins.py   |  0=0D
+ .../{acceptance =3D> system}/tesseract_utils.py |  0=0D
+ tests/{acceptance =3D> system}/version.py       |  0=0D
+ tests/{acceptance =3D> system}/virtio-gpu.py    |  0=0D
+ .../virtio_check_params.py                    |  0=0D
+ .../{acceptance =3D> system}/virtio_version.py  |  0=0D
+ .../virtiofs_submounts.py                     |  0=0D
+ .../virtiofs_submounts.py.data/cleanup.sh     |  0=0D
+ .../guest-cleanup.sh                          |  0=0D
+ .../virtiofs_submounts.py.data/guest.sh       |  0=0D
+ .../virtiofs_submounts.py.data/host.sh        |  0=0D
+ tests/{acceptance =3D> system}/vnc.py           |  0=0D
+ .../x86_cpu_model_versions.py                 |  0=0D
+ 49 files changed, 86 insertions(+), 87 deletions(-)=0D
+ delete mode 100644 tests/acceptance/README.rst=0D
+ create mode 100644 tests/system/README.rst=0D
+ rename tests/{acceptance =3D> system}/avocado_qemu/__init__.py (99%)=0D
+ rename tests/{acceptance =3D> system}/boot_linux.py (100%)=0D
+ rename tests/{acceptance =3D> system}/boot_linux_console.py (100%)=0D
+ rename tests/{acceptance =3D> system}/boot_xen.py (100%)=0D
+ rename tests/{acceptance =3D> system}/cpu_queries.py (100%)=0D
+ rename tests/{acceptance =3D> system}/empty_cpu_model.py (100%)=0D
+ rename tests/{acceptance =3D> system}/linux_initrd.py (99%)=0D
+ rename tests/{acceptance =3D> system}/linux_ssh_mips_malta.py (100%)=0D
+ rename tests/{acceptance =3D> system}/machine_arm_canona1100.py (100%)=0D
+ rename tests/{acceptance =3D> system}/machine_arm_integratorcp.py (100%)=
+=0D
+ rename tests/{acceptance =3D> system}/machine_arm_n8x0.py (100%)=0D
+ rename tests/{acceptance =3D> system}/machine_avr6.py (98%)=0D
+ rename tests/{acceptance =3D> system}/machine_m68k_nextcube.py (100%)=0D
+ rename tests/{acceptance =3D> system}/machine_microblaze.py (100%)=0D
+ rename tests/{acceptance =3D> system}/machine_mips_loongson3v.py (100%)=0D
+ rename tests/{acceptance =3D> system}/machine_mips_malta.py (100%)=0D
+ rename tests/{acceptance =3D> system}/machine_ppc.py (100%)=0D
+ rename tests/{acceptance =3D> system}/machine_rx_gdbsim.py (100%)=0D
+ rename tests/{acceptance =3D> system}/machine_s390_ccw_virtio.py (100%)=0D
+ rename tests/{acceptance =3D> system}/machine_sparc64_sun4u.py (100%)=0D
+ rename tests/{acceptance =3D> system}/machine_sparc_leon3.py (100%)=0D
+ rename tests/{acceptance =3D> system}/migration.py (100%)=0D
+ rename tests/{acceptance =3D> system}/multiprocess.py (100%)=0D
+ rename tests/{acceptance =3D> system}/pc_cpu_hotplug_props.py (100%)=0D
+ rename tests/{acceptance =3D> system}/ppc_prep_40p.py (100%)=0D
+ rename tests/{acceptance =3D> system}/replay_kernel.py (100%)=0D
+ rename tests/{acceptance =3D> system}/reverse_debugging.py (100%)=0D
+ rename tests/{acceptance =3D> system}/tcg_plugins.py (100%)=0D
+ rename tests/{acceptance =3D> system}/tesseract_utils.py (100%)=0D
+ rename tests/{acceptance =3D> system}/version.py (100%)=0D
+ rename tests/{acceptance =3D> system}/virtio-gpu.py (100%)=0D
+ rename tests/{acceptance =3D> system}/virtio_check_params.py (100%)=0D
+ rename tests/{acceptance =3D> system}/virtio_version.py (100%)=0D
+ rename tests/{acceptance =3D> system}/virtiofs_submounts.py (100%)=0D
+ rename tests/{acceptance =3D> system}/virtiofs_submounts.py.data/cleanup.s=
+h (100%)=0D
+ rename tests/{acceptance =3D> system}/virtiofs_submounts.py.data/guest-cle=
+anup.sh (100%)=0D
+ rename tests/{acceptance =3D> system}/virtiofs_submounts.py.data/guest.sh =
+(100%)=0D
+ rename tests/{acceptance =3D> system}/virtiofs_submounts.py.data/host.sh (=
+100%)=0D
+ rename tests/{acceptance =3D> system}/vnc.py (100%)=0D
+ rename tests/{acceptance =3D> system}/x86_cpu_model_versions.py (100%)=0D
+=0D
+--=20=0D
+2.31.1=0D
+=0D

@@ -1,102 +1,101 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp2140550lfm;
-        Wed, 19 May 2021 22:16:15 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw5buDNIlYmZg+L9I4y9upXfm+89O4vBjN043p8tYX6riZfDhS8RgEhLFzPN4KQv2QaTs84
-X-Received: by 2002:a25:d48d:: with SMTP id m135mr4270085ybf.504.1621487775802;
-        Wed, 19 May 2021 22:16:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621487775; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp2140709lfm;
+        Wed, 19 May 2021 22:16:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxKVmpdHItxSIepK2c+NYBREE7OPiv0sz2nCRWVZ9Iawf3oacVr8+iCLtA+LgFz9Rp+JDn4
+X-Received: by 2002:a25:addc:: with SMTP id d28mr4891660ybe.448.1621487791242;
+        Wed, 19 May 2021 22:16:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621487791; cv=none;
         d=google.com; s=arc-20160816;
-        b=UA3UuNUfbgQiYNCiTUT7oGGOxVl9A461urtqrpLXfhksgDY++XwvE/WoCU9ggxUpzK
-         3W+6iIjkUJWPYTgfESfr9cCescyKX7KW9iWMbH3eTPH61KsCwEiHBtTwInjhp3H3r3dC
-         HfPijhLinOlUzw8nib8VvGUkmU6QdLebeTRKl6JcLW6ESi7hVLdvkE2JKvbTab5J/tyn
-         qLknx1cJC6MHsC2E5bdUhwshFgv8gkzXuhDLdyepDlcMiz27vns+Hzk2cwgAaQ/jGGRJ
-         WHi8ZF/ivpd3UUUBT5Ut1qhIOLMGQBaJwaGxTRTyHY+RsjfU3NBBdbbm+DexWrmmx7YH
-         eU7A==
+        b=EMhmSGCVRiFJCy/FqLnkXM/BdAejb/DX5L+R/bldPzAzco0+CYSymmI2MNq8Hr27ks
+         iw+26CNFvEISqh3mIcBIU2w8tDP8iGUQmb1+le/tY1//5P4wPZFRGxw8bo/uJ/Ew4B6A
+         GNcObfr5fy5TaKR3WEQLN8p2ckSaspJwpnqdLNo4Th8MGkHEsmOutaov4kPHU1HEDeEH
+         rawQqMb+r1KxBOq47jDIxzeW3rct8t5vriuiw5+80iMGUW0oTw31Seq4tji51koufTs2
+         rKLcn76Z8Hu+a50QhjYUgTiqY2C4rUwbv5hBEwRHLPcCLgnZ8NGzXxCTbZW3qTyB+Yqr
+         mZ0A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=TLM11x+CwA7dtccb1VwoEJf/uXmEpf+a+h0Tdo5AASA=;
-        b=AnGITpEyocSNT2spwDtP2+cOPrJOn3gP/4AOcrsF2ONzWtuuFLdVZuINmZfe3CDIQ3
-         cQhREauVzmIkjA8g3cIBHoP7Ha8Y04wHuITAK3MaUvjb3cR5RbSZHSawKSqELJCYcqwG
-         QPmx9hARJtZ1wf4z1F+HKeTXOjOYqiCFwY+1SWs5e09iPr84aW3TXuegDaXkTsFHPbJN
-         8YW0ZDOSwDv3CtTz0bHm0k00VArNAvhNo77I8XkT7d204JZqqxqSY9kMKGc07QACyOZx
-         QmSt1w5MWyCMPQR7+MJPbsMxGDSqXGDVVs0rSCjsZCN4fmFMYkt0hcPDwqlbGdTElAJE
-         pS8A==
+        bh=trGsGaryNWUPxAJDqUIpevE5ZbWH+x1Qd17FpqljBXA=;
+        b=SzNMRJtPmAMsO0w/vyGQshKzC8Da7IQGcjJyErA9cRS6xluvRaPzFRbH9pj0NIrPCB
+         /uQX63MM+hCva+LHDDwyOsaX6ZtHpqCyzOz1lVQwJMsPx/RGpN8rokADhnVXizbMZ2iP
+         A5t8c2C+i1aA+M7cgblKFsotHqGcH7GPteyDLitQ95DSZE0trje1eYilwZI++7r3wQln
+         ASyHyc719QG0lNnGp6W4GnlKV+6fE0+1GEYbsJd/JOs6JDWVa+XpsW6Cb6rJXOd2ysWt
+         mwScufEXEDEPQou4/0odKU9tLnB9zvZ4njvncVn+jiTBONEuu5vsfcgoTf96aQwqXttc
+         JZlw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=owbqZCRq;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AHnpVKmw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 132si1218958ybt.229.2021.05.19.22.16.15
+        by mx.google.com with ESMTPS id m5si1507246ybo.393.2021.05.19.22.16.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 19 May 2021 22:16:15 -0700 (PDT)
+        Wed, 19 May 2021 22:16:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=owbqZCRq;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AHnpVKmw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:36716 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37460 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ljb2d-0003Q8-4K
-	for alex.bennee@linaro.org; Thu, 20 May 2021 01:16:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54458)
+	id 1ljb2s-0003zV-JI
+	for alex.bennee@linaro.org; Thu, 20 May 2021 01:16:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54480)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1ljb2L-0003Ns-UB; Thu, 20 May 2021 01:15:57 -0400
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334]:45632)
+ id 1ljb2N-0003OW-3B; Thu, 20 May 2021 01:15:59 -0400
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:39616)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1ljb2I-0002Vx-8q; Thu, 20 May 2021 01:15:57 -0400
-Received: by mail-wm1-x334.google.com with SMTP id
- s5-20020a7bc0c50000b0290147d0c21c51so4421806wmh.4; 
- Wed, 19 May 2021 22:15:50 -0700 (PDT)
+ id 1ljb2K-0002Xx-SV; Thu, 20 May 2021 01:15:58 -0400
+Received: by mail-wr1-x42c.google.com with SMTP id v12so16184423wrq.6;
+ Wed, 19 May 2021 22:15:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=TLM11x+CwA7dtccb1VwoEJf/uXmEpf+a+h0Tdo5AASA=;
- b=owbqZCRqWupKJwYUVgi5yJSS+TDgiXrJzgnOCT1KlQ5+3cMbDB5xWc1Mtn+HeWeWg8
- zT2xxHrjRn08Goh5ZWCJhC9FHsiiOBriF+pc1uMSkQ2JH/rcIWzhKWTUmFQVUyW/5nNc
- 1hObPoHPygemN1uhyC+Wgz6CAau6ZaIXnmQDyZl88ebDwpzKS2/io/YMZXg4yXggVomr
- JntIww/3Rs81OWgkyr46GDWQMmF76b4xsQzI0yVM6oBVPFt+u8iwj6O66Kfafu9X6PZA
- Zc/EAhb1a3PVcLyLpg3yih7aUFuvxQgf4cb905VnIiV4qGKO9MxFPgpSqyhIQvUXEC+z
- iIzQ==
+ bh=trGsGaryNWUPxAJDqUIpevE5ZbWH+x1Qd17FpqljBXA=;
+ b=AHnpVKmwyHn+wNukIPjogA6Hkn8d1dioPdVLsZvuaYcQaSfNG+Ku+jDM1G9nm+r6RV
+ RmGLf6+rYeeG1E2lQw3ShzO80YPxyiadK8BAJ/BsrKxlfDr7IwLoH+HpqyzZn+/zEl98
+ c8RxHV0XbuHY27dFqq1XD5F1FM1u7wke3vHz1mCApubSh3skua3LVaZ+DJ4C4mzgTWPz
+ r0RymMS5AEuZ262UNDF3TinQ/1URa929gtMyfinmI4U10gSS1PCzIkGx8YxY5RZSzkHK
+ b0wZxH9kOmhHmqqYQ/zVeC2x+108z6eTj6PTVwSPaIfY8F6iA/mPYO7QIrjKvkNXKvZr
+ QjaQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=TLM11x+CwA7dtccb1VwoEJf/uXmEpf+a+h0Tdo5AASA=;
- b=Xa4OLrwRpDPBJdymnuWT/FfhkaTqgHe7xm0Fp40xrFD09akgJSsdA39wjhGbCl+sSf
- KKqEpQLQ3txj3GbMLfX3227BzbKg5XH9RfE0MOT8KV2GFCYlt9LIkO+FQNUuIfdxh2fg
- +7ohAjiZ2dR7WrfhMMAGX1LybEQ0WtSuUIk432Zgsh7S/gx1EhPdhBczS17/7MGtphJT
- 7VjpvgjXNzeLfpvjo0N+bK3/PW4GSC9Cf+xmNj2lz1iVpVnP2VCL8nH5OdaXcRCaUn1E
- tYFyEL29c9th9hcfupjZJq4vDNkN6dCwA7o1Vr3uVROfKtEgpYMyPxbAwmLh7I06iKDW
- y1Qw==
-X-Gm-Message-State: AOAM533vC8dYphA9j/Xv1b91Sh9LYwMYgaeiKdCwfSlt0V8GxrXagZKy
- qrbMaTIiToNe7lOyNUYT/5K3CcdbhehtpA==
-X-Received: by 2002:a1c:e484:: with SMTP id b126mr2097270wmh.35.1621487749623; 
- Wed, 19 May 2021 22:15:49 -0700 (PDT)
+ bh=trGsGaryNWUPxAJDqUIpevE5ZbWH+x1Qd17FpqljBXA=;
+ b=Lgx15aaI2Nv4wws15gw6FpwXFNkWVaEsqP7fOnh1Bd91KaWXf3lrNtIGx7vchBziRO
+ pF2WdwUIsJbXR1O2TFIaDtWsn3P5LbBIYW0SpuEugtEUmT1LbM5uhVJJdW40p4K7yERe
+ UjLLPxnM6pzAJkGHTyjQY2so/mfAwhrsrjzL6VT+jInl79ZD/Y8Zf137PsOAa9mHQ7UA
+ pY0tpzbN2fBnduT2E2I5kT5DoRrnrpmV1YgEQiL5nmWjEMD0g1cUiFWRuS2QHs9HGcB4
+ rzSLRxwjw/w280QEoamUpawE4CrnwNtSPFNRGBzhq2FlZeGO1bxhKgjd8ZbLhT5A/NS8
+ qjTw==
+X-Gm-Message-State: AOAM532sJ1zZOeaYnyMH54vYc5CuQT49t23+T7Xx1PFTzJ8OwylTNicz
+ p0ZLWyzs9GVxroU+ojgUjCoCVeVN264qCQ==
+X-Received: by 2002:a5d:6ac2:: with SMTP id u2mr2155073wrw.272.1621487754552; 
+ Wed, 19 May 2021 22:15:54 -0700 (PDT)
 Received: from x1w.redhat.com (31.red-83-51-215.dynamicip.rima-tde.net.
  [83.51.215.31])
- by smtp.gmail.com with ESMTPSA id v18sm1938897wro.18.2021.05.19.22.15.48
+ by smtp.gmail.com with ESMTPSA id p5sm1730612wrd.25.2021.05.19.22.15.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 19 May 2021 22:15:49 -0700 (PDT)
+ Wed, 19 May 2021 22:15:54 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 1/3] hw/arm/boot: Abort if set_kernel_args() fails
-Date: Thu, 20 May 2021 07:15:40 +0200
-Message-Id: <20210520051542.2378774-2-f4bug@amsat.org>
+Subject: [PATCH v3 2/3] hw/core/loader: Move 'write_rom' trace event earlier
+Date: Thu, 20 May 2021 07:15:41 +0200
+Message-Id: <20210520051542.2378774-3-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.3
 In-Reply-To: <20210520051542.2378774-1-f4bug@amsat.org>
 References: <20210520051542.2378774-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x334.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42c.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -121,133 +120,38 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ghTePU2Pwaba
+X-TUID: P4PAxrSBNInl
 
-If a address_space_write() call fails while calling
-set_kernel_args(), the guest kernel will boot using
-crap data. Avoid that by aborting if this ever occurs.
+It is more useful to trace the event which will happen,
+rather than missing an event that failed. So move the
+'write_rom' trace event earlier.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/arm/boot.c | 53 ++++++++++++++++++++++++++++++++++++++++-----------
- 1 file changed, 42 insertions(+), 11 deletions(-)
+ hw/core/loader.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index d7b059225e6..0c1346d5842 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -291,15 +291,20 @@ static inline bool have_dtb(const struct arm_boot_info *info)
- 
- #define WRITE_WORD(p, value) do { \
-     address_space_stl_notdirty(as, p, value, \
--                               MEMTXATTRS_UNSPECIFIED, NULL);  \
-+                               MEMTXATTRS_UNSPECIFIED, &result); \
-+    if (result != MEMTX_OK) { \
-+        goto fail; \
-+    } \
-     p += 4;                       \
- } while (0)
- 
--static void set_kernel_args(const struct arm_boot_info *info, AddressSpace *as)
-+/* Returns: 0 on success, -1 on error */
-+static int set_kernel_args(const struct arm_boot_info *info, AddressSpace *as)
- {
-     int initrd_size = info->initrd_size;
-     hwaddr base = info->loader_start;
-     hwaddr p;
-+    MemTxResult result;
- 
-     p = base + KERNEL_ARGS_ADDR;
-     /* ATAG_CORE */
-@@ -326,8 +331,11 @@ static void set_kernel_args(const struct arm_boot_info *info, AddressSpace *as)
-         int cmdline_size;
- 
-         cmdline_size = strlen(info->kernel_cmdline);
--        address_space_write(as, p + 8, MEMTXATTRS_UNSPECIFIED,
--                            info->kernel_cmdline, cmdline_size + 1);
-+        result = address_space_write(as, p + 8, MEMTXATTRS_UNSPECIFIED,
-+                                     info->kernel_cmdline, cmdline_size + 1);
-+        if (result != MEMTX_OK) {
-+            goto fail;
-+        }
-         cmdline_size = (cmdline_size >> 2) + 1;
-         WRITE_WORD(p, cmdline_size + 2);
-         WRITE_WORD(p, 0x54410009);
-@@ -341,22 +349,31 @@ static void set_kernel_args(const struct arm_boot_info *info, AddressSpace *as)
-         atag_board_len = (info->atag_board(info, atag_board_buf) + 3) & ~3;
-         WRITE_WORD(p, (atag_board_len + 8) >> 2);
-         WRITE_WORD(p, 0x414f4d50);
--        address_space_write(as, p, MEMTXATTRS_UNSPECIFIED,
--                            atag_board_buf, atag_board_len);
-+        result = address_space_write(as, p, MEMTXATTRS_UNSPECIFIED,
-+                                     atag_board_buf, atag_board_len);
-+        if (result != MEMTX_OK) {
-+            goto fail;
-+        }
-         p += atag_board_len;
+diff --git a/hw/core/loader.c b/hw/core/loader.c
+index 5b34869a541..b3c4a654b45 100644
+--- a/hw/core/loader.c
++++ b/hw/core/loader.c
+@@ -1142,6 +1142,7 @@ static void rom_reset(void *unused)
+         if (rom->data == NULL) {
+             continue;
+         }
++        trace_loader_write_rom(rom->name, rom->addr, rom->datasize, rom->isrom);
+         if (rom->mr) {
+             void *host = memory_region_get_ram_ptr(rom->mr);
+             memcpy(host, rom->data, rom->datasize);
+@@ -1160,8 +1161,6 @@ static void rom_reset(void *unused)
+          * CPU definitely fetches its instructions from the just written data.
+          */
+         cpu_flush_icache_range(rom->addr, rom->datasize);
+-
+-        trace_loader_write_rom(rom->name, rom->addr, rom->datasize, rom->isrom);
      }
-     /* ATAG_END */
-     WRITE_WORD(p, 0);
-     WRITE_WORD(p, 0);
-+
-+    return 0;
-+fail:
-+    return -1;
  }
  
--static void set_kernel_args_old(const struct arm_boot_info *info,
--                                AddressSpace *as)
-+/* Returns: 0 on success, -1 on error */
-+static int set_kernel_args_old(const struct arm_boot_info *info,
-+                               AddressSpace *as)
- {
-     hwaddr p;
-     const char *s;
-     int initrd_size = info->initrd_size;
-     hwaddr base = info->loader_start;
-+    MemTxResult result;
- 
-     /* see linux/include/asm-arm/setup.h */
-     p = base + KERNEL_ARGS_ADDR;
-@@ -419,10 +436,18 @@ static void set_kernel_args_old(const struct arm_boot_info *info,
-     }
-     s = info->kernel_cmdline;
-     if (s) {
--        address_space_write(as, p, MEMTXATTRS_UNSPECIFIED, s, strlen(s) + 1);
-+        result = address_space_write(as, p, MEMTXATTRS_UNSPECIFIED,
-+                                     s, strlen(s) + 1);
-+        if (result != MEMTX_OK) {
-+            goto fail;
-+        }
-     } else {
-         WRITE_WORD(p, 0);
-     }
-+
-+    return 0;
-+fail:
-+    return -1;
- }
- 
- static int fdt_add_memory_node(void *fdt, uint32_t acells, hwaddr mem_base,
-@@ -786,10 +811,16 @@ static void do_cpu_reset(void *opaque)
-                 cpu_set_pc(cs, info->loader_start);
- 
-                 if (!have_dtb(info)) {
-+                    int err;
-+
-                     if (old_param) {
--                        set_kernel_args_old(info, as);
-+                        err = set_kernel_args_old(info, as);
-                     } else {
--                        set_kernel_args(info, as);
-+                        err = set_kernel_args(info, as);
-+                    }
-+                    if (err) {
-+                        error_report("could not set kernel arguments");
-+                        exit(1);
-                     }
-                 }
-             } else {
 -- 
 2.26.3
 

@@ -1,102 +1,95 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp280525lfm;
-        Thu, 20 May 2021 08:39:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzgauWLYO+kvdhqP7FRHT4tdzV1xtczV45KKBSNsQZWSitJVFmTHijbnpnC87N3wF5o7J+5
-X-Received: by 2002:a92:d18a:: with SMTP id z10mr4853648ilz.70.1621525191253;
-        Thu, 20 May 2021 08:39:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621525191; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp285336lfm;
+        Thu, 20 May 2021 08:46:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw/ypjXYEXKWVBECZp1azsWe4KIPs3T7nIQfSsvvdwFAEw8JYiC3dDXMfSZpW8d8xLOOuCV
+X-Received: by 2002:a05:6e02:11b3:: with SMTP id 19mr5766226ilj.41.1621525565239;
+        Thu, 20 May 2021 08:46:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621525565; cv=none;
         d=google.com; s=arc-20160816;
-        b=kxDvJMAnCoS4X6Jb2a94J3VFUw7IqgtQEcKeUZ5T2zWWfQZE+VMarFZR1Gw3J1/lek
-         4N6HnfKMJKl/2X1yyDWc8mKwRbc5wciI2tO+9P5N/etGh4oGWMmHgp8bajcABV3qQ1qI
-         tETDsbqpAlGWwiVNvLtBP/YtLqQ15UgM9UmVz6Ov7HQsE3y72y5bC4nZiYEM82Kvcfbv
-         +OBr5q96ragtH5rIVvGtcJpJIA2L21YUASuovlgZmn+fCAsllRTPELmnng5gBgtHlBoR
-         WpvR5ows+FZzLComMud6cNPRsOcE9OzL3RCEax7IiNSVd0K5T7bIc6Y4meN5xsM/mdS4
-         /N7g==
+        b=ZvazfYBiVLOfrV0o/9yVjSljHmqyFuOYELzremu/YZ+GLN+1H9i0+WfokgdPyEGKhN
+         IAYqJ9dzTXZzKN15TgniXOi91GGik5KvOH/q+K+eobTwLDHkNPRHh9bxCOQwK7CEx4HV
+         44mOuioZx4FPVSZZtR/8h1/JCPVEUMXGpBfudam0o6dzEjHGXpouGS6P4rAGp9vm+V3b
+         UXffyM0dFAa9YFgO5s64B9U+omW8cpo8F+Nv+LSynMtG/wQ+Wi6IsRQbAoekDZ6jGMCg
+         ttVDtjSTAhCg3yxjfdDAgd9dFD4ZOeBmwqzs8897XC5gcqp3dXFFP+Qafm28O2x6Jm3Q
+         qz3w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=PEqMXhVTCuRe0JtaB2Xv9j94Ph2CmIe5jNctvMp+E7g=;
-        b=H0zavMBr6DGWT0J1whe0ymRjkSm+20fdWJwC1jumPdYAPeibrqMWdYrA73eB0SZdqD
-         f0ykdd/w/xeVjVwpEO+318vFPeCCogtdwh877hC3uMQh0VGPWeA85NIqII5jEa87f/Yj
-         eE70f9DBRBvX8N/Ie0+D3w7X1479RiSABaau4F2gA3NocOl6Oek/577HVls/mws1Ntqa
-         n+BVqUF+VMEtnbP9aNqbAkX8efzziwvO9wOEpTwD/7l4kK4NP7VLeh1F829wIsjo+oQO
-         YhqqrsOP2DIH71ypxwpH1Vh9X4aieLbY6OcY2uhifsTonmQDNmO1h31PUPISenrzzHqO
-         pawA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=I6O8/L3ylxIpnQe9NkcAetgPjV6Xg3rsE+K/q/jQeh0=;
+        b=WtVKcbYebqYgbg9rG9ediWtzNxsUf0dS6o4P3JuLAbUpde25c70oxs0NlNyGmygkDd
+         hCZygckatDd9y44WexMnPCIiOctNnrLbA3YGigMKPO13Axv8dvl0f8V1QQ2VJMg4kodU
+         Ug2+Eh2TGEHpLeQOi2BExE3KVrCqe5Zv6JyTgwqVxZHFw8WVcLGLUjJrBD/IRzQjk5kQ
+         lMh1BbOGJ6WcHWmlqmdGMNDhuzVDszItgyx6E9popDMlvCBgRV5C7roUZX7kqcbqKKFb
+         RTt4eUzVGN/fe57H8qhtHsFRNwa/1y2ipURB4EXFASz3febjpNggYOnA/zQpffr5mWmv
+         nctQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=AChR9As+;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=W6ZmMg9q;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v6si2552753jas.16.2021.05.20.08.39.51
+        by mx.google.com with ESMTPS id d8si2717933ilo.3.2021.05.20.08.46.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 May 2021 08:39:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 20 May 2021 08:46:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=AChR9As+;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37698 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=W6ZmMg9q;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:49740 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ljkm6-0007zd-FJ
-	for alex.bennee@linaro.org; Thu, 20 May 2021 11:39:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49780)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ljks8-0007wT-JO
+	for alex.bennee@linaro.org; Thu, 20 May 2021 11:46:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53264)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ljkbV-00089y-AF
- for qemu-devel@nongnu.org; Thu, 20 May 2021 11:28:53 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330]:50751)
+ id 1ljkrP-0007vw-J0
+ for qemu-arm@nongnu.org; Thu, 20 May 2021 11:45:19 -0400
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633]:37631)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ljkbS-0000iA-Us
- for qemu-devel@nongnu.org; Thu, 20 May 2021 11:28:53 -0400
-Received: by mail-wm1-x330.google.com with SMTP id t206so9468265wmf.0
- for <qemu-devel@nongnu.org>; Thu, 20 May 2021 08:28:50 -0700 (PDT)
+ id 1ljkrO-00088O-4w
+ for qemu-arm@nongnu.org; Thu, 20 May 2021 11:45:19 -0400
+Received: by mail-ej1-x633.google.com with SMTP id et19so18992283ejc.4
+ for <qemu-arm@nongnu.org>; Thu, 20 May 2021 08:45:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:in-reply-to:references:mime-version
- :content-transfer-encoding;
- bh=PEqMXhVTCuRe0JtaB2Xv9j94Ph2CmIe5jNctvMp+E7g=;
- b=AChR9As+LwNxnJJGr+XOWQPoitDm0bQlsGZYsOwUzApt24opiHBW1dMs741cO/9UxG
- +DQr8cNUprZh1apLUJfKgz67TS8/BBFvI2B7yvSju813MqD06d9FCCRVfIDpHoZyV/+8
- XPXSK+fccKRKwTyXRmsuai5HxwNMzhaYfyXyEVckkN+PZv8YWLFUAec312xCkmRN6C4u
- e2vXJMPeaW5ZGe6/ljHzHft/0Q5UV9xdBGNzim4Wbwn3M+BUcP0pgqcTitxMEAzH6XkR
- dFcStwIknjQkpwd4zz4I/LirQ4+si8XX+pTi8b8C3GBzoGltOMYRE2Evx0d2c0y3jKNK
- oZOg==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=I6O8/L3ylxIpnQe9NkcAetgPjV6Xg3rsE+K/q/jQeh0=;
+ b=W6ZmMg9qp+HDBXl8qWCRbf33Z0Zr/BeDF3LoknVn+sRmccnBbXG02UJGeAd1uRedVp
+ quVN+N1t8bxON2jhn0dQH4eq70IYOGN+YhNZyWiYOd0GbHlcfJr+LrF0GAMYKoRuJvKW
+ qkJABAqEHWqtEGXuQWMcGRoTv3aqAuNDCIuLKZ/9YfIwXJ4AFstIRNm6ZYax3HN6+nQQ
+ QaK9ZRYBSnyKT7pF4zUw7hm6vry/cE7rlZzlwcXe+58wK6THCLm4GGmkOnsDvKBK1gQl
+ wbxUmNNJnqSIPAItOrgthFehwLMqmTBdV/dCUM3/ZYp2lusLw+U252cocdhtvvSVKFZl
+ zqcQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=PEqMXhVTCuRe0JtaB2Xv9j94Ph2CmIe5jNctvMp+E7g=;
- b=ZkIJaBXaPUypkyVq2kKBOavieSqOgvPR3wEv4kstb2XCRNqbgRQtEK8/sIG1nwOTJ6
- 0g/4y98/3iibbnK88uXWONDKbQyVj23dsHfTkE9FMp6kUi3U9pqwiFvmr8T6QVPA5rbj
- exDoUOnBGwjxvvJbBhDaQx6qOf6ToXwBTOyE4pjzmgorO9nxHrW4RZA5WyybqrQvW+4s
- vHCgW67cjY7E4LLzjJ3KR7FD4i1ajHHQaj0CFD2UX7UeUZx6UTrRXTeyIG/XNmB+AMao
- x6pktnQyMRcMPPttvzzGHMEklrR3UdIId413t2pRB9CSdFLGgwmbGlg0nJuB3lOWMm/O
- IUyg==
-X-Gm-Message-State: AOAM531keCq0guhZKyEvUYpeKuJoh264fkkP9zWf8kZK4g2/d3I7viH7
- s4QLOxW1+O1KTlzjWmp8LvObwg==
-X-Received: by 2002:a1c:4482:: with SMTP id r124mr4722902wma.42.1621524529333; 
- Thu, 20 May 2021 08:28:49 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id r2sm3916126wrv.39.2021.05.20.08.28.48
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 20 May 2021 08:28:49 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 9/9] target/arm: Allow board models to specify initial NS VTOR
-Date: Thu, 20 May 2021 16:28:40 +0100
-Message-Id: <20210520152840.24453-10-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210520152840.24453-1-peter.maydell@linaro.org>
-References: <20210520152840.24453-1-peter.maydell@linaro.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=I6O8/L3ylxIpnQe9NkcAetgPjV6Xg3rsE+K/q/jQeh0=;
+ b=PbJ8XXU8K7IKiaD6/RZq87b1kY85xhQazVbYEEThTV9vd10KHFS8RguHKmMVxg7qBT
+ eVI0ih51WFbIpNKnUqSZKYjFREgftAxNsD6WhA0e05inGdI0jHl00b+9OBkCJGG5e/Cl
+ E/LqtdEWw8sv19bfA5Zd9EpU5QOafwMa8oSd/qG7D4SbUyDfqB0wrfhOaUglmc0DCFqW
+ J4Lz8+f/07KFpn4FS8jgH5jEvu/opylbbCO2eFciKd3VWJZEl3O7a5sOo2+MdFarnRXl
+ hJ54zHAw/lPWQ4lI5rrL9zrANhTz/QRf8IjT/3xClcD/yWHtIXllm6mEXnONPlGfaEYd
+ N1IA==
+X-Gm-Message-State: AOAM531A0ci+ImP80Kl/qOza7uIuIuxhiRRykMEsHEVH0IQkx9+4a/5e
+ JwdFfWIOf9u+eqj4nZKCnHK8f6vbMUOPKhtH+6hwBA==
+X-Received: by 2002:a17:906:d8cb:: with SMTP id
+ re11mr5364132ejb.482.1621525516235; 
+ Thu, 20 May 2021 08:45:16 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x330.google.com
+References: <20210510124747.780877-1-eric.auger@redhat.com>
+In-Reply-To: <20210510124747.780877-1-eric.auger@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 20 May 2021 16:44:57 +0100
+Message-ID: <CAFEAcA88KZSL6V5c7PmRSKvcT38OghVH_sRHgXddJOZ2HdPUsQ@mail.gmail.com>
+Subject: Re: [PATCH v2] hw/arm/smmuv3: Another range invalidation fix
+To: Eric Auger <eric.auger@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::633;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x633.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,127 +98,44 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xHpjE5e9GTpy
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Kunkun Jiang <jiangkunkun@huawei.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, Peter Xu <peterx@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>,
+ Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+ Eric Auger <eric.auger.pro@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: zbUSl1Kic9Sm
 
-Currently we allow board models to specify the initial value of the
-Secure VTOR register, using an init-svtor property on the TYPE_ARMV7M
-object which is plumbed through to the CPU.  Allow board models to
-also specify the initial value of the Non-secure VTOR via a similar
-init-nsvtor property.
+On Mon, 10 May 2021 at 13:48, Eric Auger <eric.auger@redhat.com> wrote:
+>
+> 6d9cd115b9 ("hw/arm/smmuv3: Enforce invalidation on a power of two range")
+> failed to completely fix misalignment issues with range
+> invalidation. For instance invalidations patterns like "invalidate 32
+> 4kB pages starting from 0xff395000 are not correctly handled" due
+> to the fact the previous fix only made sure the number of invalidated
+> pages were a power of 2 but did not properly handle the start
+> address was not aligned with the range. This can be noticed when
+> boothing a fedora 33 with protected virtio-blk-pci.
+>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Fixes: 6d9cd115b9 ("hw/arm/smmuv3: Enforce invalidation on a power of two range")
+>
+> ---
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-I admit to not having a publicly-visible use for this yet, but
-it does bring the NSVTOR into line with both our handling of the
-SVTOR and also with the hardware, which allows both to be set
-via reset-time config signal inputs, as seen eg on the Cortex-M55:
-https://developer.arm.com/documentation/101051/0002/Signal-descriptions/Reset-configuration-signals?lang=en
----
- include/hw/arm/armv7m.h |  2 ++
- target/arm/cpu.h        |  2 ++
- hw/arm/armv7m.c         |  7 +++++++
- target/arm/cpu.c        | 10 ++++++++++
- 4 files changed, 21 insertions(+)
 
-diff --git a/include/hw/arm/armv7m.h b/include/hw/arm/armv7m.h
-index 189b23a8ceb..bc6733c5184 100644
---- a/include/hw/arm/armv7m.h
-+++ b/include/hw/arm/armv7m.h
-@@ -46,6 +46,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(ARMv7MState, ARMV7M)
-  *   devices will be automatically layered on top of this view.)
-  * + Property "idau": IDAU interface (forwarded to CPU object)
-  * + Property "init-svtor": secure VTOR reset value (forwarded to CPU object)
-+ * + Property "init-nsvtor": non-secure VTOR reset value (forwarded to CPU object)
-  * + Property "vfp": enable VFP (forwarded to CPU object)
-  * + Property "dsp": enable DSP (forwarded to CPU object)
-  * + Property "enable-bitband": expose bitbanded IO
-@@ -69,6 +70,7 @@ struct ARMv7MState {
-     MemoryRegion *board_memory;
-     Object *idau;
-     uint32_t init_svtor;
-+    uint32_t init_nsvtor;
-     bool enable_bitband;
-     bool start_powered_off;
-     bool vfp;
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 0e33db88240..af67e2bf2e3 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -869,6 +869,8 @@ struct ARMCPU {
- 
-     /* For v8M, initial value of the Secure VTOR */
-     uint32_t init_svtor;
-+    /* For v8M, initial value of the Non-secure VTOR */
-+    uint32_t init_nsvtor;
- 
-     /* [QEMU_]KVM_ARM_TARGET_* constant for this CPU, or
-      * QEMU_KVM_ARM_TARGET_NONE if the kernel doesn't support this CPU type.
-diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
-index af0d935bf78..9ce5c30cd5c 100644
---- a/hw/arm/armv7m.c
-+++ b/hw/arm/armv7m.c
-@@ -176,6 +176,12 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
-             return;
-         }
-     }
-+    if (object_property_find(OBJECT(s->cpu), "init-nsvtor")) {
-+        if (!object_property_set_uint(OBJECT(s->cpu), "init-nsvtor",
-+                                      s->init_nsvtor, errp)) {
-+            return;
-+        }
-+    }
-     if (object_property_find(OBJECT(s->cpu), "start-powered-off")) {
-         if (!object_property_set_bool(OBJECT(s->cpu), "start-powered-off",
-                                       s->start_powered_off, errp)) {
-@@ -254,6 +260,7 @@ static Property armv7m_properties[] = {
-                      MemoryRegion *),
-     DEFINE_PROP_LINK("idau", ARMv7MState, idau, TYPE_IDAU_INTERFACE, Object *),
-     DEFINE_PROP_UINT32("init-svtor", ARMv7MState, init_svtor, 0),
-+    DEFINE_PROP_UINT32("init-nsvtor", ARMv7MState, init_nsvtor, 0),
-     DEFINE_PROP_BOOL("enable-bitband", ARMv7MState, enable_bitband, false),
-     DEFINE_PROP_BOOL("start-powered-off", ARMv7MState, start_powered_off,
-                      false),
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 4eb0d2f85c4..167c4feee4b 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -327,6 +327,7 @@ static void arm_cpu_reset(DeviceState *dev)
-         env->regs[14] = 0xffffffff;
- 
-         env->v7m.vecbase[M_REG_S] = cpu->init_svtor & 0xffffff80;
-+        env->v7m.vecbase[M_REG_NS] = cpu->init_nsvtor & 0xffffff80;
- 
-         /* Load the initial SP and PC from offset 0 and 4 in the vector table */
-         vecbase = env->v7m.vecbase[env->v7m.secure];
-@@ -1272,6 +1273,15 @@ void arm_cpu_post_init(Object *obj)
-                                        &cpu->init_svtor,
-                                        OBJ_PROP_FLAG_READWRITE);
-     }
-+    if (arm_feature(&cpu->env, ARM_FEATURE_M)) {
-+        /*
-+         * Initial value of the NS VTOR (for cores without the Security
-+         * extension, this is the only VTOR)
-+         */
-+        object_property_add_uint32_ptr(obj, "init-nsvtor",
-+                                       &cpu->init_nsvtor,
-+                                       OBJ_PROP_FLAG_READWRITE);
-+    }
- 
-     qdev_property_add_static(DEVICE(obj), &arm_cpu_cfgend_property);
- 
--- 
-2.20.1
 
+Applied to target-arm.next, thanks.
+
+-- PMM

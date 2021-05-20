@@ -1,99 +1,95 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp151604lfm;
-        Thu, 20 May 2021 06:09:22 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzUCge5IerihGbM/BrPKEsaisvLMhIUj4OJvw3Oj2z/Yn/ef3lQk+fgqWMXRm+Cp3Al8RuA
-X-Received: by 2002:a6b:f815:: with SMTP id o21mr4821060ioh.0.1621516162221;
-        Thu, 20 May 2021 06:09:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621516162; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp165775lfm;
+        Thu, 20 May 2021 06:25:29 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzfhhWyVRDw2GPtRWnk2XGgU797lqRU3EOIlV6DGRMMtm6n80I5Q8PGJb83HJPpbQjuH6Jb
+X-Received: by 2002:a92:db03:: with SMTP id b3mr5889956iln.219.1621517129316;
+        Thu, 20 May 2021 06:25:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621517129; cv=none;
         d=google.com; s=arc-20160816;
-        b=dWMwN0EuS3TfpuXYkwQV+95wbn6+xlUXSZfCnRUTBrzYMqlYwH8yCpTvuHCBjzupAw
-         zjxUSRJMu6rqMN+9Tv270vrGRoNWfNbwhToYJKSrT5KhPWp4FWCPqUOxFwPFzHJHrZSH
-         anSW8dZb2lr54DcofgOfuyHYWHc4jMoOQ34rAPVtZibfxnRSx679svH+VYzRI4Azu5rd
-         VLAmL4nBk5RCAhwqvFrcuLP/iem4uWhX4NkvDoSrxeQlPKiz/PvqYApAztpjJh3tuZit
-         BDD7AuJopXv9OzF4U9WNavr3bwrCYzBsjWnJIWI/0LD6kcIMKECzUg3bIpZ2cW10rUez
-         /XUA==
+        b=gE6Zoe2mvn/Q6PC2o3c6AvEHR2NYnB67y5NY1xmuJFe4NPDOENr+zsIr/RnIHNG8kW
+         iXodI1YUEqGRSxEhB8gicr50F/TpmkHrkuJi8FSMVFZEAKs2UmWI75Z20vJOJHojPTGl
+         GRcVkRdKWGCh64FkPpGQqI/Cr5WUymJ5aS4j1kmiLmeofI51JQyIhm1fmp3SFJaPUtKq
+         QxfCdqdLBvmzSAuHOIbuURIdPSsahMZNVPKBbEOzuZGJo48LZT1uodYPtvA6rnZAxWt7
+         Jak/bwu8WnjlKg896/qOmVIA2qR+BjjWnfJumznNajK7d8AAZOZrgfgwYA6+yS4fTle8
+         hFlQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=7gjzzaVXa0Sy8IMXM97M+gM0f0kAcQs0lDAVE2RbtsU=;
-        b=HH1Rmiy/2bPKYhx6YOQBUc+FYuQsHXydcHJBsOoOeNMlHd1VdBI1TT8bGc6i4qz15C
-         NAUse83AH+RWjRE8L0CSfdy/zpEVw8HWj2ekUnN4ddB2uiO16y7ThcBtwMpu+6IEC+jW
-         jYbuXzSxvv4vxLsBwJ63jiju6KNrYmdlkCxhQGQ188Mrnrm/HFL32VrHGVsoJng8yn9w
-         rQguP/GmzZcI4Xz1BknC5yvXiZpakGmJIF28LQw3kgDSQFEjNU4W1LngOkZ3ETlpFM+b
-         Awlb90lmNtlq+Qwo3IRNcAxCkVpu8wcg8rU2eUZNa7aeBgmyiWncmFs3ROgIT1RU4bGf
-         2kBw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=q7nhkV8dR1gqqYkRQBangM/CVplsjsHm8X43lQFIaN4=;
+        b=dZUI3m6tWh4BIgTLkpVBRB4qOkz3iaRCwojrwomYaIyM7maMZbP2pubSJPsafwxHKb
+         mqQ8yBYL37tqNI30yARmMwqbYXERJyF+UrSJvMS7UoWMpCcNToxZAfV5SwtjqXfo49Yf
+         JKFYVUsQNZoRC7r0q9n9ipqhbUumyXPxP7ji3j3qQ5swnNKmH4/8oue3OtJfi2HiwvHM
+         Vw3J8FnIwyqEru6NyIXWpp/t6Yk5VGJsSvfyyQUGW/KEak1Uz2q85ThBgHnuPVvTwl0D
+         bYMWC+ZHlAdRGNsXyWPuouCHThpIrDu2rEHmaaussAzX2E3eyGmxrgYAB4Mz0hHw9cGf
+         b92A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Iy2l+jH1;
+       dkim=fail header.i=@linaro.org header.s=google header.b=K5m6Af5E;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r4si2220655iov.63.2021.05.20.06.09.22
+        by mx.google.com with ESMTPS id 19si2519009ilg.27.2021.05.20.06.25.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 May 2021 06:09:22 -0700 (PDT)
+        Thu, 20 May 2021 06:25:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Iy2l+jH1;
+       dkim=fail header.i=@linaro.org header.s=google header.b=K5m6Af5E;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35042 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:33216 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ljiQT-0007gz-Db
-	for alex.bennee@linaro.org; Thu, 20 May 2021 09:09:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41872)
+	id 1ljig4-00018O-KB
+	for alex.bennee@linaro.org; Thu, 20 May 2021 09:25:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45414)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ljiQK-0007e4-1u
- for qemu-arm@nongnu.org; Thu, 20 May 2021 09:09:12 -0400
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333]:54167)
+ id 1ljieH-0007jG-Vy
+ for qemu-arm@nongnu.org; Thu, 20 May 2021 09:23:38 -0400
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c]:44830)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ljiQI-0001cn-8l
- for qemu-arm@nongnu.org; Thu, 20 May 2021 09:09:11 -0400
-Received: by mail-wm1-x333.google.com with SMTP id 62so8127356wmb.3
- for <qemu-arm@nongnu.org>; Thu, 20 May 2021 06:09:09 -0700 (PDT)
+ id 1ljieG-0002B6-Ca
+ for qemu-arm@nongnu.org; Thu, 20 May 2021 09:23:37 -0400
+Received: by mail-ej1-x62c.google.com with SMTP id lz27so25240369ejb.11
+ for <qemu-arm@nongnu.org>; Thu, 20 May 2021 06:23:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=7gjzzaVXa0Sy8IMXM97M+gM0f0kAcQs0lDAVE2RbtsU=;
- b=Iy2l+jH13H23q1stoAEo+wEqU4UKP+VtGOPCGoCP39WK4THr1fTKMF4EOetjla12kH
- pFnqIYo5Xq/Y+2oJd0AhmpFL1ZJgtlztcLGomR8EPIoWZjIJkIzZ/orbaoKyeOcV4pq3
- 2Paamwj029N8S8WhGlqm2jS6THaFPSFSrZgZrae6CxNl9lXTfLx97Do/nw07hLqRJQB+
- 6tnFbT2G0dwEFs5UXfevp1PM6NEnPPHv9/W3NsKG09tSDOwsx8Uv6i24Y/DfvnNt7mWU
- zOVCfbQSRcfi6CDVeSJbQVxT/ZaJ14/2alh/B4o0PAqB7OFVOMwlF31ZTXTfaQIJVB4C
- Z3xw==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=q7nhkV8dR1gqqYkRQBangM/CVplsjsHm8X43lQFIaN4=;
+ b=K5m6Af5EnC1QFJaTFu/+981ZG4I9HbnU83bNxHeQ9+p9+pNihO4m4Ob1pbZQX2JJ2/
+ IR2PWJmU5wSEYB725LuewoX7BkxZD8Vc4QMfBDrJ4oufbdmAYO8jkOxY4BXfAwxP9DJs
+ owcapw+Iz3c1t9p+QJNh7xoOWfgleFAHzwghx6gdZsGbQi76d4fA+bhTG7DobgSamQIs
+ F4nbsa7V0gtzj7UB4LvVtXH+g4i0BSfj48PrjKu3GgkITZFOgb2U2SrsozTHE4p3A98l
+ GA0DZdMMkVGJiVBiGZqjj18jNJeJLa/Z7dmivBB8dmcgRQmXG1lkktbnLjk8XaKcvqEW
+ A4XQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=7gjzzaVXa0Sy8IMXM97M+gM0f0kAcQs0lDAVE2RbtsU=;
- b=jVdU7yXBu+yrKezlSBUgTtsRpQR6fzc0JAEsjQGtbWOezx/TyURXAyoL//eqoSIKdA
- L5Jv0UnZ9wZ2i2mGNFk7/rzbWqaNx+e2dFQy4GUTrw1XPQI9Y2RhK93DmfUH13y5nvj7
- YHYql2qpGZkFHh4uJcE/WJhdmmOdL0J3KiQGLak5dcU5D8JnF/CBaYh8g/zg2b/4kag4
- rF6LAlEYUpTt2+j3zLQUi8xMz6aJX17FHE9YkCIb8OweOkVa7EO8zxf3YNX385UwJNI/
- 9EnqyYdQjtwjvcEEKa4r79fKCq+5BcKyHWq2XDMQg617moetjyGYqKI+pyBrV1D7DMJT
- 72tw==
-X-Gm-Message-State: AOAM533xx3JZl2o7Mh90dvQXomKjtZ/qgY+xl/owRU1xZwN9W4+xf6iH
- TFdJ4mUDZOwROtMYIYJQ4WBN2+d4HvGljqVn
-X-Received: by 2002:a1c:f30a:: with SMTP id q10mr3604376wmq.138.1621516148684; 
- Thu, 20 May 2021 06:09:08 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id g10sm3351951wrq.12.2021.05.20.06.09.07
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 20 May 2021 06:09:08 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH] target/arm: Use correct SP in M-profile exception return
-Date: Thu, 20 May 2021 14:09:05 +0100
-Message-Id: <20210520130905.2049-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=q7nhkV8dR1gqqYkRQBangM/CVplsjsHm8X43lQFIaN4=;
+ b=NSmJRu/oPV8Fk2tPZ3x7fea8PlnVsG4mSd9RaNKiheLuApuRemLljVQxjciCgeip2Y
+ tS2KEn4Y8g3CseVxFI7khCmk1GRn58tcbfBw0YgiJFRvatpgR6GAzj+Jzpy3/yAvCQlz
+ lkNENmwyb/6nt7jI1LSKZMMBRAw0RjdlqSFHpqTBTRB/uImp51+7c1Fm4PHDxbKqLtcs
+ TnOZvYhf+SvclAh4As7Zp+njpIK8Dfhqf8PyL6wyEq3mkUysf8fcOlfYzw1ALwQIVn2z
+ IkFFGeGQIuugl7zhiKLCbg/uWI4RXPHDsMP67K6kWkB+PDnVOLwqHjmBDDfaRFfavlaq
+ cjWQ==
+X-Gm-Message-State: AOAM533WikF5gYTh142etJCoOGJBGIiCPQxwWEkt2NiZvSjgv1g4XDEg
+ e8HVLSB892Zr4i+ZiYcXAnLRd6DGeUsgYwiKg6wRLP7zZQQ=
+X-Received: by 2002:a17:906:b74f:: with SMTP id
+ fx15mr4707742ejb.85.1621517014894; 
+ Thu, 20 May 2021 06:23:34 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x333.google.com
+References: <20210510190844.17799-1-peter.maydell@linaro.org>
+In-Reply-To: <20210510190844.17799-1-peter.maydell@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 20 May 2021 14:23:16 +0100
+Message-ID: <CAFEAcA-WwZTSGx0tg1msLw2BeFvwdv9_45tEL1gtFntN2MDoTQ@mail.gmail.com>
+Subject: Re: [PATCH 0/6] hw/arm: Fix modelling of SSE-300 TCMs and SRAM
+To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -113,57 +109,41 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Kumar Gala <kumar.gala@linaro.org>,
+ Jimmy Brisson <jimmy.brisson@linaro.org>,
+ Kevin Townsend <kevin.townsend@linaro.org>,
+ Devaraj Ranganna <devaraj.ranganna@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aTrIN9aP3E6u
+X-TUID: IdxneEKBsQoh
 
-When an M-profile CPU is restoring registers from the stack on
-exception return, the stack pointer to use is determined based on
-bits in the magic exception return type value.  We were not getting
-this logic entirely correct.
+On Mon, 10 May 2021 at 20:08, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> This patchset fixes some bugs in how we were modelling the
+> TCMs and the SRAM in the SSE-300 which were preventing
+> Arm TF-M from booting on our AN547 model; there are also
+> some fixes to things I noticed while I was in the code.
+>
+> The specific bugs preventing boot were:
+>  * SRAM_ADDR_WIDTH for the AN547 is 21, not 15, so the SRAM
+>    area was too small
+>  * we were putting the SRAMs at the wrong address (0x2100_0000
+>    for SSE-300, not 0x2000_0000 as for SSE-200)
+>
+> The other stuff I've fixed is:
+>  * we were modelling the SRAM in the AN524 both in the SSE
+>    and in the board model (harmlessly, as the board-model
+>    memory was just always shadowed in the memory map and
+>    unreachable)
+>  * we were modelling the TCMs in the AN547 board model,
+>    which is conceptually wrong because in hardware they're
+>    part of the SSE-300. No guest-visible change, but it will
+>    avoid problems if/when we add another SSE-300 board model
+>
+> thanks
+> -- PMM
 
-Whether we use one of the Secure stack pointers or one of the
-Non-Secure stack pointers depends on the EXCRET.S bit.  However,
-whether we use the MSP or the PSP then depends on the SPSEL bit in
-either the CONTROL_S or CONTROL_NS register.  We were incorrectly
-selecting MSP vs PSP based on the EXCRET.SPSEL bit.
+Ping for code review, please?
 
-(In the pseudocode this is in the PopStack() function, which calls
-LookUpSp_with_security_mode() which in turn looks at the relevant
-CONTROL.SPSEL bit.)
-
-The buggy behaviour wasn't noticeable in most cases, because we write
-EXCRET.SPSEL to the CONTROL.SPSEL bit for the S/NS register selected
-by EXCRET.ES, so we only do the wrong thing when EXCRET.S and
-EXCRET.ES are different.  This will happen when secure code takes a
-secure exception, which then tail-chains to a non-secure exception
-which finally returns to the original secure code.
-
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-This was noticed by the Arm TF-M folks, who have a pending change
-to their code which will run into the situation we mishandle.
----
- target/arm/m_helper.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/target/arm/m_helper.c b/target/arm/m_helper.c
-index d63ae465e1e..eda74e55450 100644
---- a/target/arm/m_helper.c
-+++ b/target/arm/m_helper.c
-@@ -1597,10 +1597,11 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
-          * We use this limited C variable scope so we don't accidentally
-          * use 'frame_sp_p' after we do something that makes it invalid.
-          */
-+        bool spsel = env->v7m.control[return_to_secure] & R_V7M_CONTROL_SPSEL_MASK;
-         uint32_t *frame_sp_p = get_v7m_sp_ptr(env,
-                                               return_to_secure,
-                                               !return_to_handler,
--                                              return_to_sp_process);
-+                                              spsel);
-         uint32_t frameptr = *frame_sp_p;
-         bool pop_ok = true;
-         ARMMMUIdx mmu_idx;
--- 
-2.20.1
-
+thanks
+-- PMM

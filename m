@@ -1,75 +1,102 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp779539lfm;
-        Tue, 18 May 2021 14:10:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwdyLp78xci1yxem5MI9XPBv+q+bRCvG/pCFONvmTIbJhztaxfAhEwqn5SW7T6vfdckwhJZ
-X-Received: by 2002:a5d:8d87:: with SMTP id b7mr5697246ioj.46.1621372224032;
-        Tue, 18 May 2021 14:10:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621372224; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp164940lfm;
+        Thu, 20 May 2021 06:24:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwG9BcUlyRrDWqoHrP5OuPCMYsGHQU1Qzm47rBeUBDr+EBUw0BS7mFu8fK6JHlnlWZ9tjLy
+X-Received: by 2002:a05:6638:2181:: with SMTP id s1mr6386509jaj.66.1621517063242;
+        Thu, 20 May 2021 06:24:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621517063; cv=none;
         d=google.com; s=arc-20160816;
-        b=JDhoVkufprVtPCF50uh/PgwEwSI5p8cCjm+llwLL/fGHRWgFpQ6/IC3Q4LvmNFhNtF
-         EJBGbOWK8WapmhE4y3hvNR4MzNqlIK4PzCQOhgD3JG88V1LtWWNxHFk3vA6KtrOvBsoO
-         SYjMuMhjlDKXdsBGFngvESU0ZNVDwnGr+/5VyJy+wDTop7AqSTON7ZTETCE7/N+Q20py
-         Gd3rYRYzwbpJWmnGF2YwHIZk6dge40U7oCcjEbXgJRhcYGGcWu0P79F0RjAZ1YCdwZtX
-         OvWPihk0EjFCD8yaZV8donkv1eRGWHUYB3WQ764TQ2zGwQdTKLTRzt8HavoFnL9AGHjC
-         JqJA==
+        b=dgOr6PR7kQ4AncIrpaodwpklASuStTzXIip+z+EavHBETJn8ojkPnPu7LPXrDePKMy
+         m1sfP7LddoBCgZadlErpZjRR839C/ICXQHw3MJnA+J1b3WaEkmz9Onh9uzekf+tZJlsG
+         IOY8njopJVqIYK/DdevzF3GscOaKTTkfluRXdlsCVzYbjVXbUKrZvKdbUzx3XNRUJ5bs
+         wE+PevuiDn1G+d1O6fjEcEKkfPE/4ka/yO3t6g17YLTfkZ7qDoWOOt9YVEr3Mdo0NGN6
+         rSDCdGvRrH422li0Bwh8IoE0/1SzaxZuYH3ypJ28G8q5GodGGo29AL+BFssKHDPBpsZM
+         AKyg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:to:message-id:subject:date:from;
-        bh=mboQozBhNNswyg85u/rasrbwVXgqnkBeYk5xYadx0A4=;
-        b=tr737RgN//nnFfXK/eAxDz+iPzCDL8aPweqKfK6AYW8AkPqIDCZ1yo1SGDMpdMaR9q
-         KM5Sv5WoBakIpWyTrtrgAIVs2E62PQ9xd17r/BfLL3M7lSuzLdtXmikoBJJtCzTgYsxr
-         w9mJoeMrucEQfxbXM5bXRYZljCyKtBcD4jUlPIr7+kkmzppM9RbWpg7l0dIH8WsWte7Q
-         +Ci1AMb9x/Rb2lof1aa9qojxswqP28tdLOZVGJYO+drh6gCPfFnU7uHgh3sqCWdUHp6O
-         L52c9v/mFPNwLCLqJNefeTtZCiDIg0+uWyFkTx13yKizXzaiP39PtPhCXU6LhGjUCPGl
-         l4Mw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=MJkc4iF6xzpAzMqlWyGf8DzlO9FkYxYCi1eaYfORvaA=;
+        b=DnCTFx7sZGSAA+MpcKQe3P1rlcYyOTERxhpiTnMaVlNG1gPimVRTr7xs9cJOdYejAH
+         2F/KCFOKphyQBmXD/Qea1EwgA9gscEZYnVafqjLP20ceZ4NkH0edLTH0elyc2Cj5mgFj
+         rG7X+3oG3twlhLAeQcVVooQ/T7KJj/eNKTK0jynw1fl20xHcuMK5zILNbPT1tl6U09n4
+         yA/oLiKKNr9TCbZsKkpDq9NmmBEpnUk9qv7s+OCehyV+dfMZ973xYeJp9871c0CLkovy
+         309B6iF5JKbycspzLW8Nc72fDlvRq7v1iqIZc6V+O0EF64gxbDmHWy5JAMcOeQ8QLYwm
+         ImJQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vZY0mZNR;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j23si22749453ila.81.2021.05.18.14.10.23
+        by mx.google.com with ESMTPS id t4si2565964iom.3.2021.05.20.06.24.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 May 2021 14:10:24 -0700 (PDT)
+        Thu, 20 May 2021 06:24:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vZY0mZNR;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
-Received: from localhost ([::1]:38906 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:58918 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lj6yt-00010u-B6
-	for alex.bennee@linaro.org; Tue, 18 May 2021 17:10:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51760)
+	id 1ljif0-0007lG-IO
+	for alex.bennee@linaro.org; Thu, 20 May 2021 09:24:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45198)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1lj6fK-0008Mx-KG; Tue, 18 May 2021 16:50:10 -0400
-Received: from mail-b.sr.ht ([173.195.146.151]:50390)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1lj6fD-0004gw-7J; Tue, 18 May 2021 16:50:10 -0400
-Authentication-Results: mail-b.sr.ht; dkim=none 
-Received: from git.sr.ht (unknown [173.195.146.142])
- by mail-b.sr.ht (Postfix) with ESMTPSA id 6B14111EF27;
- Tue, 18 May 2021 20:39:58 +0000 (UTC)
-From: ~nolanl <nolanl@git.sr.ht>
-Date: Tue, 18 May 2021 13:24:49 -0700
-Subject: [PATCH qemu] Add basic power management to raspi.
-Message-ID: <162137039825.30884.2445825798240809194-0@git.sr.ht>
-X-Mailer: git.sr.ht
-To: qemu-devel@nongnu.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1ljidU-0006LF-1G
+ for qemu-devel@nongnu.org; Thu, 20 May 2021 09:22:48 -0400
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e]:35652)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1ljidR-0001hl-Mk
+ for qemu-devel@nongnu.org; Thu, 20 May 2021 09:22:47 -0400
+Received: by mail-ed1-x52e.google.com with SMTP id y7so1859291eda.2
+ for <qemu-devel@nongnu.org>; Thu, 20 May 2021 06:22:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=MJkc4iF6xzpAzMqlWyGf8DzlO9FkYxYCi1eaYfORvaA=;
+ b=vZY0mZNRujY7IFyG1Ge6yWT7beqaGkikvsVP2+EA/0dMydvc2vcXWK1xCBZUDQsqxT
+ 14TlG34nSA77EFiexeQRv7TA1c3N5i/cIx4OH7Oa4BvMGUvr1qVfLFJ7dX6DqMwHaRwC
+ gRcXRgg90LVo8/hi/obQiaHkHaF341gnEaRE6lKWx/e1g7jYehA04F6d44cmffS6GfHe
+ TdrjukGpJOT/z/8EqN95izdy82H5S2QhafRpEbdOhENDXXMvXjebmN1dfZJB5J1mjFv3
+ Gk6iFZQOX6WlEvLlA7KgRA3woA0EXOZBNPYiavLZvmLtN/lbAMczB1qGPbJaHnMq98yU
+ ybzQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=MJkc4iF6xzpAzMqlWyGf8DzlO9FkYxYCi1eaYfORvaA=;
+ b=Z8QQRCraU8/4sO4saWby/x7jIeKUwjVU0kDUeDljL+Tre+Y28YkulFn2TOlUM8zd1K
+ nB+q6SpZ01z4sz4p+w0iTnf3sHKZcsNL5EeK9PfdO3Jvt8/gdQXbm6i2H9GNzFB/B+Nm
+ IyszSnne1tG+S3kyilOAcvONDMzXb7n9HzRZeF3EbExeF2mu/k8HaRL84Z+iCmSqukxQ
+ HA4lOMHGW2wQ1iwhcJxwBz3hmNhNUbYxocwZqieNAAodbfqqOI/TPRxM2CF/oAK2S0eM
+ dxj6aGWuH9PHSD9KU8TYbTcW9ygl4E6lF+xbzSyfkDAOz8W9DNmtxBKfRiAWdJlhVLZT
+ ytcA==
+X-Gm-Message-State: AOAM533mZNXDKEk1Sxq+OZM8NSBC6NeAlKW19hUDMefdv0ivc1KTQcF4
+ l7gelkF6w3o5V2ulP5QT3ubKqpCc2abfeJckj0Cs0Q==
+X-Received: by 2002:aa7:cb0a:: with SMTP id s10mr4943387edt.36.1621516964254; 
+ Thu, 20 May 2021 06:22:44 -0700 (PDT)
 MIME-Version: 1.0
-Received-SPF: pass client-ip=173.195.146.151; envelope-from=outgoing@sr.ht;
- helo=mail-b.sr.ht
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+References: <20210510150016.24910-1-peter.maydell@linaro.org>
+In-Reply-To: <20210510150016.24910-1-peter.maydell@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 20 May 2021 14:22:25 +0100
+Message-ID: <CAFEAcA82FvAViwCbUP93HDjmdnZ3kHhJ0DAHkB+fkdpf=ukiXg@mail.gmail.com>
+Subject: Re: [PATCH] hw/intc/arm_gicv3_cpuif: Fix EOIR write access check logic
+To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 18 May 2021 17:09:14 -0400
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -81,300 +108,117 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: ~nolanl <sourcehut@sigbus.net>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Philippe =?utf-8?q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>
+Cc: Chan Kim <ckim@etri.re.kr>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XJpx3pYCDGJI
+X-TUID: aw2/wSl1yAja
 
-From: Nolan Leake <nolan@sigbus.net>
+Ping for code review, please?
 
-This is just enough to make reboot and poweroff work. Notably, the
-watchdog timer functionality is not yet implemented.
+thanks
+-- PMM
 
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/64
-Signed-off-by: Nolan Leake <nolan@sigbus.net>
----
- hw/arm/bcm2835_peripherals.c         |  13 ++-
- hw/misc/bcm2835_powermgt.c           | 157 +++++++++++++++++++++++++++
- hw/misc/meson.build                  |   1 +
- include/hw/arm/bcm2835_peripherals.h |   3 +-
- include/hw/misc/bcm2835_powermgt.h   |  29 +++++
- 5 files changed, 201 insertions(+), 2 deletions(-)
- create mode 100644 hw/misc/bcm2835_powermgt.c
- create mode 100644 include/hw/misc/bcm2835_powermgt.h
-
-diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
-index dcff13433e..48538c9360 100644
---- a/hw/arm/bcm2835_peripherals.c
-+++ b/hw/arm/bcm2835_peripherals.c
-@@ -126,6 +126,10 @@ static void bcm2835_peripherals_init(Object *obj)
-=20
-     object_property_add_const_link(OBJECT(&s->dwc2), "dma-mr",
-                                    OBJECT(&s->gpu_bus_mr));
-+
-+    /* Power Management */
-+    object_initialize_child(obj, "powermgt", &s->powermgt,
-+                            TYPE_BCM2835_POWERMGT);
- }
-=20
- static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
-@@ -364,9 +368,16 @@ static void bcm2835_peripherals_realize(DeviceState *dev=
-, Error **errp)
-         qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_GPU_IRQ,
-                                INTERRUPT_USB));
-=20
-+    /* Power Management */
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->powermgt), errp)) {
-+        return;
-+    }
-+
-+    memory_region_add_subregion(&s->peri_mr, PM_OFFSET,
-+                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->powermgt), 0));
-+
-     create_unimp(s, &s->txp, "bcm2835-txp", TXP_OFFSET, 0x1000);
-     create_unimp(s, &s->armtmr, "bcm2835-sp804", ARMCTRL_TIMER0_1_OFFSET, 0x=
-40);
--    create_unimp(s, &s->powermgt, "bcm2835-powermgt", PM_OFFSET, 0x114);
-     create_unimp(s, &s->i2s, "bcm2835-i2s", I2S_OFFSET, 0x100);
-     create_unimp(s, &s->smi, "bcm2835-smi", SMI_OFFSET, 0x100);
-     create_unimp(s, &s->spi[0], "bcm2835-spi0", SPI0_OFFSET, 0x20);
-diff --git a/hw/misc/bcm2835_powermgt.c b/hw/misc/bcm2835_powermgt.c
-new file mode 100644
-index 0000000000..81107ecc8f
---- /dev/null
-+++ b/hw/misc/bcm2835_powermgt.c
-@@ -0,0 +1,157 @@
-+/*
-+ * BCM2835 Power Management emulation
-+ *
-+ * Copyright (C) 2017 Marcin Chojnacki <marcinch7@gmail.com>
-+ * Copyright (C) 2021 Nolan Leake <nolan@sigbus.net>
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "hw/misc/bcm2835_powermgt.h"
-+#include "migration/vmstate.h"
-+#include "sysemu/runstate.h"
-+
-+#define PASSWORD 0x5a000000
-+#define PASSWORD_MASK 0xff000000
-+
-+#define R_RSTC 0x1c
-+#define V_RSTC_RESET 0x20
-+#define R_RSTS 0x20
-+#define V_RSTS_POWEROFF 0x555
-+#define R_WDOG 0x24
-+
-+static uint64_t bcm2835_powermgt_read(void *opaque, hwaddr offset,
-+                                      unsigned size)
-+{
-+    BCM2835PowerMgtState *s =3D (BCM2835PowerMgtState *)opaque;
-+    uint32_t res =3D 0;
-+
-+    assert(size =3D=3D 4);
-+
-+    switch (offset) {
-+    case R_RSTC:
-+        res =3D s->rstc;
-+        break;
-+    case R_RSTS:
-+        res =3D s->rsts;
-+        break;
-+    case R_WDOG:
-+        res =3D s->wdog;
-+        break;
-+
-+    default:
-+        qemu_log_mask(LOG_UNIMP,
-+                      "bcm2835_powermgt_read: Unknown offset %x\n",
-+                      (int)offset);
-+        res =3D 0;
-+        break;
-+    }
-+
-+    return res;
-+}
-+
-+static void bcm2835_powermgt_write(void *opaque, hwaddr offset,
-+                                   uint64_t value, unsigned size)
-+{
-+    BCM2835PowerMgtState *s =3D (BCM2835PowerMgtState *)opaque;
-+
-+    assert(size =3D=3D 4);
-+
-+    if ((value & PASSWORD_MASK) !=3D PASSWORD) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "bcm2835_powermgt_write: Bad password %x at offset %x\=
-n",
-+                      (uint32_t)value, (int)offset);
-+        return;
-+    }
-+
-+    value =3D value & ~PASSWORD_MASK;
-+
-+    switch (offset) {
-+    case R_RSTC:
-+        s->rstc =3D value;
-+        if (value & V_RSTC_RESET) {
-+            if ((s->rsts & 0xfff) =3D=3D V_RSTS_POWEROFF) {
-+                /* Linux uses partition 63 to indicate halt. */
-+                qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
-+            } else {
-+                qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
-+            }
-+        }
-+        break;
-+    case R_RSTS:
-+        s->rsts =3D value;
-+        break;
-+    case R_WDOG:
-+        s->wdog =3D value;
-+        break;
-+
-+    default:
-+        qemu_log_mask(LOG_UNIMP,
-+                      "bcm2835_powermgt_write: Unknown offset %x\n",
-+                      (int)offset);
-+        break;
-+    }
-+}
-+
-+static const MemoryRegionOps bcm2835_powermgt_ops =3D {
-+    .read =3D bcm2835_powermgt_read,
-+    .write =3D bcm2835_powermgt_write,
-+    .endianness =3D DEVICE_NATIVE_ENDIAN,
-+};
-+
-+static const VMStateDescription vmstate_bcm2835_powermgt =3D {
-+    .name =3D TYPE_BCM2835_POWERMGT,
-+    .version_id =3D 1,
-+    .minimum_version_id =3D 1,
-+    .fields =3D (VMStateField[]) {
-+        VMSTATE_UINT32(rstc, BCM2835PowerMgtState),
-+        VMSTATE_UINT32(rsts, BCM2835PowerMgtState),
-+        VMSTATE_UINT32(wdog, BCM2835PowerMgtState),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void bcm2835_powermgt_init(Object *obj)
-+{
-+    BCM2835PowerMgtState *s =3D BCM2835_POWERMGT(obj);
-+
-+    memory_region_init_io(&s->iomem, obj, &bcm2835_powermgt_ops, s,
-+                          TYPE_BCM2835_POWERMGT, 0x114);
-+    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->iomem);
-+}
-+
-+static void bcm2835_powermgt_reset(DeviceState *dev)
-+{
-+    BCM2835PowerMgtState *s =3D BCM2835_POWERMGT(dev);
-+
-+    s->rstc =3D 0x00000102;
-+    s->rsts =3D 0x00001000;
-+    s->wdog =3D 0x00000000;
-+}
-+
-+static void bcm2835_powermgt_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc =3D DEVICE_CLASS(klass);
-+
-+    dc->reset =3D bcm2835_powermgt_reset;
-+    dc->vmsd =3D &vmstate_bcm2835_powermgt;
-+}
-+
-+static TypeInfo bcm2835_powermgt_info =3D {
-+    .name          =3D TYPE_BCM2835_POWERMGT,
-+    .parent        =3D TYPE_SYS_BUS_DEVICE,
-+    .instance_size =3D sizeof(BCM2835PowerMgtState),
-+    .class_init    =3D bcm2835_powermgt_class_init,
-+    .instance_init =3D bcm2835_powermgt_init,
-+};
-+
-+static void bcm2835_powermgt_register_types(void)
-+{
-+    type_register_static(&bcm2835_powermgt_info);
-+}
-+
-+type_init(bcm2835_powermgt_register_types)
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index 66e1648533..f89b5c1643 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -82,6 +82,7 @@ softmmu_ss.add(when: 'CONFIG_RASPI', if_true: files(
-   'bcm2835_rng.c',
-   'bcm2835_thermal.c',
-   'bcm2835_cprman.c',
-+  'bcm2835_powermgt.c',
- ))
- softmmu_ss.add(when: 'CONFIG_SLAVIO', if_true: files('slavio_misc.c'))
- softmmu_ss.add(when: 'CONFIG_ZYNQ', if_true: files('zynq_slcr.c', 'zynq-xadc=
-.c'))
-diff --git a/include/hw/arm/bcm2835_peripherals.h b/include/hw/arm/bcm2835_pe=
-ripherals.h
-index 479e2346e8..d864879421 100644
---- a/include/hw/arm/bcm2835_peripherals.h
-+++ b/include/hw/arm/bcm2835_peripherals.h
-@@ -24,6 +24,7 @@
- #include "hw/misc/bcm2835_mphi.h"
- #include "hw/misc/bcm2835_thermal.h"
- #include "hw/misc/bcm2835_cprman.h"
-+#include "hw/misc/bcm2835_powermgt.h"
- #include "hw/sd/sdhci.h"
- #include "hw/sd/bcm2835_sdhost.h"
- #include "hw/gpio/bcm2835_gpio.h"
-@@ -48,7 +49,7 @@ struct BCM2835PeripheralState {
-     BCM2835MphiState mphi;
-     UnimplementedDeviceState txp;
-     UnimplementedDeviceState armtmr;
--    UnimplementedDeviceState powermgt;
-+    BCM2835PowerMgtState powermgt;
-     BCM2835CprmanState cprman;
-     PL011State uart0;
-     BCM2835AuxState aux;
-diff --git a/include/hw/misc/bcm2835_powermgt.h b/include/hw/misc/bcm2835_pow=
-ermgt.h
-new file mode 100644
-index 0000000000..303b9a6f68
---- /dev/null
-+++ b/include/hw/misc/bcm2835_powermgt.h
-@@ -0,0 +1,29 @@
-+/*
-+ * BCM2835 Power Management emulation
-+ *
-+ * Copyright (C) 2017 Marcin Chojnacki <marcinch7@gmail.com>
-+ * Copyright (C) 2021 Nolan Leake <nolan@sigbus.net>
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ */
-+
-+#ifndef BCM2835_POWERMGT_H
-+#define BCM2835_POWERMGT_H
-+
-+#include "hw/sysbus.h"
-+#include "qom/object.h"
-+
-+#define TYPE_BCM2835_POWERMGT "bcm2835-powermgt"
-+OBJECT_DECLARE_SIMPLE_TYPE(BCM2835PowerMgtState, BCM2835_POWERMGT)
-+
-+struct BCM2835PowerMgtState {
-+    SysBusDevice busdev;
-+    MemoryRegion iomem;
-+
-+    uint32_t rstc;
-+    uint32_t rsts;
-+    uint32_t wdog;
-+};
-+
-+#endif
---=20
-2.30.2
+On Mon, 10 May 2021 at 16:00, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> In icc_eoir_write() we assume that we can identify the group of the
+> IRQ being completed based purely on which register is being written
+> to and the current CPU state, and that "CPU state matches group
+> indicated by register" is the only necessary access check.
+>
+> This isn't correct: if the CPU is not in Secure state then EOIR1 will
+> only complete Group 1 NS IRQs, but if the CPU is in EL3 it can
+> complete both Group 1 S and Group 1 NS IRQs.  (The pseudocode
+> ICC_EOIR1_EL1 makes this clear.) We were also missing the logic to
+> prevent EOIR0 writes completing G0 IRQs when they should not.
+>
+> Rearrange the logic to first identify the group of the current
+> highest priority interrupt and then look at whether we should
+> complete it or ignore the access based on which register was accessed
+> and the state of the CPU.  The resulting behavioural change is:
+>  * EL3 can now complete G1NS interrupts
+>  * G0 interrupt completion is now ignored if the GIC
+>    and the CPU have the security extension enabled and
+>    the CPU is not secure
+>
+> Reported-by: Chan Kim <ckim@etri.re.kr>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  hw/intc/arm_gicv3_cpuif.c | 48 ++++++++++++++++++++++++++-------------
+>  1 file changed, 32 insertions(+), 16 deletions(-)
+>
+> diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
+> index 43ef1d7a840..81f94c7f4ad 100644
+> --- a/hw/intc/arm_gicv3_cpuif.c
+> +++ b/hw/intc/arm_gicv3_cpuif.c
+> @@ -1307,27 +1307,16 @@ static void icc_eoir_write(CPUARMState *env, const ARMCPRegInfo *ri,
+>      GICv3CPUState *cs = icc_cs_from_env(env);
+>      int irq = value & 0xffffff;
+>      int grp;
+> +    bool is_eoir0 = ri->crm == 8;
+>
+> -    if (icv_access(env, ri->crm == 8 ? HCR_FMO : HCR_IMO)) {
+> +    if (icv_access(env, is_eoir0 ? HCR_FMO : HCR_IMO)) {
+>          icv_eoir_write(env, ri, value);
+>          return;
+>      }
+>
+> -    trace_gicv3_icc_eoir_write(ri->crm == 8 ? 0 : 1,
+> +    trace_gicv3_icc_eoir_write(is_eoir0 ? 0 : 1,
+>                                 gicv3_redist_affid(cs), value);
+>
+> -    if (ri->crm == 8) {
+> -        /* EOIR0 */
+> -        grp = GICV3_G0;
+> -    } else {
+> -        /* EOIR1 */
+> -        if (arm_is_secure(env)) {
+> -            grp = GICV3_G1;
+> -        } else {
+> -            grp = GICV3_G1NS;
+> -        }
+> -    }
+> -
+>      if (irq >= cs->gic->num_irq) {
+>          /* This handles two cases:
+>           * 1. If software writes the ID of a spurious interrupt [ie 1020-1023]
+> @@ -1340,8 +1329,35 @@ static void icc_eoir_write(CPUARMState *env, const ARMCPRegInfo *ri,
+>          return;
+>      }
+>
+> -    if (icc_highest_active_group(cs) != grp) {
+> -        return;
+> +    grp = icc_highest_active_group(cs);
+> +    switch (grp) {
+> +    case GICV3_G0:
+> +        if (!is_eoir0) {
+> +            return;
+> +        }
+> +        if (!(cs->gic->gicd_ctlr & GICD_CTLR_DS)
+> +            && arm_feature(env, ARM_FEATURE_EL3) && !arm_is_secure(env)) {
+> +            return;
+> +        }
+> +        break;
+> +    case GICV3_G1:
+> +        if (is_eoir0) {
+> +            return;
+> +        }
+> +        if (!arm_is_secure(env)) {
+> +            return;
+> +        }
+> +        break;
+> +    case GICV3_G1NS:
+> +        if (is_eoir0) {
+> +            return;
+> +        }
+> +        if (!arm_is_el3_or_mon(env) && arm_is_secure(env)) {
+> +            return;
+> +        }
+> +        break;
+> +    default:
+> +        g_assert_not_reached();
+>      }
+>
+>      icc_drop_prio(cs, grp);
+> --
+> 2.20.1
+>

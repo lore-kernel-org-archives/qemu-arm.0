@@ -1,110 +1,110 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp271397lfm;
-        Thu, 20 May 2021 08:29:10 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxBEJv1dNRzbY+qHctsLJCUFmEt+BwLq2QhQLnWCQSSkd7R3Vu6J1emhnCAoP8PkWNnjs4+
-X-Received: by 2002:a6b:8b58:: with SMTP id n85mr2584292iod.196.1621524550190;
-        Thu, 20 May 2021 08:29:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621524550; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp271807lfm;
+        Thu, 20 May 2021 08:29:40 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxKYOVXOxrArBtPPoo1dKKSDvmnzb8KikHXcVXD0SeLWAC3fmps9n2CycYd5HHR3RfssKbu
+X-Received: by 2002:a05:6602:242b:: with SMTP id g11mr5671888iob.105.1621524579872;
+        Thu, 20 May 2021 08:29:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621524579; cv=none;
         d=google.com; s=arc-20160816;
-        b=HjFqD8NlC5uh+4iWusEBKYn3QBJZGjDjSQkjbdtHRqjxM9ITETMSZDDCAQEbPf/FIE
-         ++8lBomM8SQV2L4SKDY/XCKngyrq/q/slu9tSRok96hzQ4xuHQkH9CrPjGfZZ96+fGAd
-         FSQRFp9KwCQ9gujjF0vcxnBkAaZ2a3lJ+vZ+e0pns7t9SbAtsfzPnJWqBVB5bY406BaK
-         7909IHs/Ht58arJ2/pzKFgWuE+kUNmD+Q0F9I6SZGK++AZ1L4JCzgl5j2VgG1nh2tSZA
-         W0lZ2RiEBtgwTiBm7qWfUoOOQu8eSbfY8ys4tcZo7PT1ej3U4UL0wuFWkl6JxXcoTQdd
-         Mukw==
+        b=MlEnHQkv7uoLLF2iyKN+DtT+fSIpiGylWRDv3pAgz7M3Hc6/RY1ITpZJnwRVySaojY
+         IExK2cmBBdw3YlKRhS0PYyrptKfjxMKa5opGIrEepAGsvnQlfLaJZmVL0msk2soXTnmm
+         FzLW2/3kuO5pYozzhoLaw41zS8WC2yB6hpK/fbPZujZ6BouqF1MbONaMbjBQjYWX6YKk
+         MeYgML1Tcs5XtlLmCXXeKJWqPZAwFHXZDmkLYR5DTd+wlHg7Iv7XMqAQRPEeKcUiW2FG
+         bd34NYgyahGvEBxMTJY6SvJY+tToNe4ijFnT6K2dpF2yo9y76zrg+omFkfSTehAQeaYI
+         Zt8A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=UgJyl6SmpghGPffAzR64zbb98zEqURj95gernOR9oB4=;
-        b=1EG+YKF5xRnCwJk/byjzuTtSDbCkcV72B1sn0NmmbMZGbAVu1iZRGkTQ9wcinqqrO4
-         ah51hm3DziNyP3YMTCP4wKxpj3DmTi7z/RBa8FSlS/DQEW8hTlxQXPreEwxIWHcTQF5O
-         Pq1UcM40jiblo1WDOj2ZZNaKoeD/E+zep1Dgyir90V8xmDkvbal+cGe5Lo/9sHHCL3TE
-         VGpTg9RccCIMDcLFaKVFPHAEDVO33umCiwZBdogTjpHJiapbow/UVP+I6oE7WX8RcSR/
-         DSwXpuZkFIWeI7O76AeijbNNsHm8IfJCBvJNiY8FsZ5oQfjt09Mmx2jMk+NEB/FMibCy
-         z5QQ==
+        bh=n9p8pwMQumtdp/ZJ3zle1+NP3mYs3Ow9NwHjhceO1EI=;
+        b=sREg0NTnA404pEmqkJiaCvUkIDkZLZb/UcrpusYWjQSODnPRCSbq7/Uk9KnVH9gExA
+         gyuUh3MvQinaT8ejWLqKqfF/WsfsRUxrsIANAzwpXJOA+g3nduoN2d0UiGxYzbETtWtG
+         hd5jdQOQ2qVlRwo33RpG6LiaXS+iiueorceMw0tAwVPg6PBAY7ZsaoBtRZF8EaP6ccmL
+         ZRwHh3JpU8TeXBHACsEya8P5lEcpga7O1j+HjNz17RpFrgPm5s/6vkOBNyXhmzr/ll9f
+         otoLiXtxDOWqq1y7fgJOoka3DYuE5aBHprIMb+xPs4z7K2svCFERX6Lzt3e1ZWbOD628
+         B+eg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ltOff0Kf;
+       dkim=pass header.i=@linaro.org header.s=google header.b=n8P1asFL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p5si3163271ilm.11.2021.05.20.08.29.10
+        by mx.google.com with ESMTPS id k7si2564511jaq.89.2021.05.20.08.29.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 May 2021 08:29:10 -0700 (PDT)
+        Thu, 20 May 2021 08:29:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ltOff0Kf;
+       dkim=pass header.i=@linaro.org header.s=google header.b=n8P1asFL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:41838 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42324 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ljkbl-0008F4-Dx
-	for alex.bennee@linaro.org; Thu, 20 May 2021 11:29:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49744)
+	id 1ljkcF-00008I-5v
+	for alex.bennee@linaro.org; Thu, 20 May 2021 11:29:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49602)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ljkbT-00082o-94
- for qemu-arm@nongnu.org; Thu, 20 May 2021 11:28:51 -0400
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335]:50755)
+ id 1ljkbP-0007pX-Ms
+ for qemu-arm@nongnu.org; Thu, 20 May 2021 11:28:47 -0400
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:42631)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ljkbR-0000gr-3v
- for qemu-arm@nongnu.org; Thu, 20 May 2021 11:28:50 -0400
-Received: by mail-wm1-x335.google.com with SMTP id t206so9468196wmf.0
- for <qemu-arm@nongnu.org>; Thu, 20 May 2021 08:28:48 -0700 (PDT)
+ id 1ljkbN-0000eB-2N
+ for qemu-arm@nongnu.org; Thu, 20 May 2021 11:28:47 -0400
+Received: by mail-wr1-x431.google.com with SMTP id x8so18096394wrq.9
+ for <qemu-arm@nongnu.org>; Thu, 20 May 2021 08:28:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=UgJyl6SmpghGPffAzR64zbb98zEqURj95gernOR9oB4=;
- b=ltOff0KfVmFfHNnp9Q6l6JrPCOGaOOzh1ZotQ/fmpAcmhFRPxxhQeN/IGm+Dqnz/gE
- /ux3Ic6wIt7MLuQFWRRwsHS4L2RQzEqI7Ol3RgB9wrxTIwYIBRMf0Hu1DTGngjubYL7Z
- /fzLLbi+zkVqK/GJ2loXtIu4UmwNztUgvDyRTfqPQuQY7+GCi3VIYWIhTbio1N0s8ByP
- cC10blu4mFbs6PVjpGPy5P/ML1sVh9CrsFrSLcYVEDbUJi52MXQdZT9Jg5mv47Nq1x6v
- vOOgynulybouxM31s2BYBDybNmXOLm5VyD5Df0uPQJdGKw0kU16D2jNUndyvJM8sJ1Ia
- Jv8g==
+ bh=n9p8pwMQumtdp/ZJ3zle1+NP3mYs3Ow9NwHjhceO1EI=;
+ b=n8P1asFLSIAnOGCd12KUnDnQixup+dyPgnetfxege+3L+qcw9yd/zTN98KnM4J4w7z
+ 9nX/zyfBH0gAX7OzatbfkEuzn/sVFe8qMsrPau++X85ip5j2e1VS/tRBCxu3FhJZeE+f
+ yMNn/wc9Nrr62N/d1VeQcHbVogE6pcpDJON3IsApFpZaa6YZt4X3JIBwC2jgVimrendr
+ VBQQkxsAmVhdFOOJr23nnszwzjaMRc+Yu32QWhWMM2libzd90qIKYVKO/W9mhyn36Q5i
+ hYJ2fLLaNq0G+8nr3PgY1w3jKLuMq7IVcB7eR7mTcinesnMQodw4aQ5HdGBILiQ9h6hM
+ NHbw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=UgJyl6SmpghGPffAzR64zbb98zEqURj95gernOR9oB4=;
- b=OrK+y317GkvF21xyMVGIvNqOph8W+E1RvhCC+tQ2TwfiP/AI71VMgcFXWxzBK+w5+R
- eQNNGYf1jzhFzcL2p8OLtZXegIw7DpFccWAc6JK6DLpbpLBH9pHYQrXMI5EYCUaqKw/9
- Y1offQc2UR86p/4P6eNebE/iyMs5MwM+G78J/0hc6oTmu/RGO704emK+V/3XIVk5wNNf
- ZFZxARS5RbLHNHmfFneqqpNGCyfoaUODgWOWQnxWQIOYb1+eBtWZkb0obsb6BwKrA2yS
- JUOgDBQVu30NAzL2Sga3BF9AUHnAu9q8agNOpR/skSjVkPnmWP0qn849UccW6HTncCVW
- PvAg==
-X-Gm-Message-State: AOAM532/8I0aLrCjRd81CELpgA7NvBicSaP8GPcv8seh+8nWehI9uB63
- gs3Ec8/5UqxKdqZJTjNBZzMS6dhI8QL/DfWZ
-X-Received: by 2002:a05:600c:221a:: with SMTP id
- z26mr4709920wml.122.1621524527742; 
- Thu, 20 May 2021 08:28:47 -0700 (PDT)
+ bh=n9p8pwMQumtdp/ZJ3zle1+NP3mYs3Ow9NwHjhceO1EI=;
+ b=K4s3elzPcsmcLhYxVfnDtVsfEPzSpPm4gKhndiGJIf8VXBJJb7XDl8sBqTaZTizsDw
+ wDVvmEIwGT7VEh5CsUqn17DTXHJmdZl5fvdPViu1DVcDnjBthzedVIjgsxmFdyQdEE/N
+ uHFAOwCkJEpn8RIqaJJeXtcxjiSGRO6gFBEy6zOTfpxk0XVMheXL4Zh3VI39LoDYLptS
+ haRN+HHUroUma4PKCXrG5jk4+8NLsrI4iKf/O81WcgwREiL2Wxx276xBfnp6pSc0308/
+ LROafROjRmlQCt2PtVMrWBvFPPWMYeXVy+EguN4Ep+ANi03d4oTO1O/ouA7HxbwC+FAB
+ Nl7w==
+X-Gm-Message-State: AOAM531k4iW1p0sbQLkNwuHAhB87o7jKBcNIRp/aw/5NZtOBhnxMUeFA
+ yfYQ8kQ/48a3R4VTnmavjjGjhsGF65NR7NUo
+X-Received: by 2002:a5d:58d0:: with SMTP id o16mr4895414wrf.420.1621524523763; 
+ Thu, 20 May 2021 08:28:43 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id r2sm3916126wrv.39.2021.05.20.08.28.47
+ by smtp.gmail.com with ESMTPSA id r2sm3916126wrv.39.2021.05.20.08.28.43
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 20 May 2021 08:28:47 -0700 (PDT)
+ Thu, 20 May 2021 08:28:43 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 7/9] target/arm: Make FPSCR.LTPSIZE writable for MVE
-Date: Thu, 20 May 2021 16:28:38 +0100
-Message-Id: <20210520152840.24453-8-peter.maydell@linaro.org>
+Subject: [PATCH 2/9] target/arm: Update feature checks for insns which are
+ "MVE or FP"
+Date: Thu, 20 May 2021 16:28:33 +0100
+Message-Id: <20210520152840.24453-3-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210520152840.24453-1-peter.maydell@linaro.org>
 References: <20210520152840.24453-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x335.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x431.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -119,89 +119,153 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: N2vm/d8dNq2j
+X-TUID: yRDkcPPHtVoU
 
-The M-profile FPSCR has an LTPSIZE field, but if MVE is not
-implemented it is read-only and always reads as 4; this is how QEMU
-currently handles it.
+Some v8M instructions are present if either the floating point
+extension or MVE is implemented.  Update our implementation of them
+to check for MVE as well as for FP.
 
-Make the field writable when MVE is implemented.
-
-We can safely add the field to the MVE migration struct because
-currently no CPUs enable MVE and so the migration struct is never
-used.
+This is all the insns which use CheckDecodeFaults(ExtType_MveOrFp) or
+CheckDecodeFaults(ExtType_MveOrDpFp) in their pseudocode, which are
+essentially the loads and stores, moves and sysreg accesses, except
+for VMOV_reg_sp and VMOV_reg_dp, which we handle in subsequent
+patches because they need a refactor to provide a place to put the
+new MVE check.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/cpu.h        | 3 ++-
- target/arm/machine.c    | 1 +
- target/arm/vfp_helper.c | 9 ++++++---
- 3 files changed, 9 insertions(+), 4 deletions(-)
+ target/arm/translate-vfp.c | 48 +++++++++++++++++++++++---------------
+ 1 file changed, 29 insertions(+), 19 deletions(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index b0237f0dc83..0e33db88240 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -563,7 +563,7 @@ typedef struct CPUARMState {
-         uint32_t fpdscr[M_REG_NUM_BANKS];
-         uint32_t cpacr[M_REG_NUM_BANKS];
-         uint32_t nsacr;
--        int ltpsize;
-+        uint32_t ltpsize;
-         uint32_t vpr;
-     } v7m;
+diff --git a/target/arm/translate-vfp.c b/target/arm/translate-vfp.c
+index 3da84f30a01..2202f8985d2 100644
+--- a/target/arm/translate-vfp.c
++++ b/target/arm/translate-vfp.c
+@@ -543,11 +543,16 @@ static bool trans_VMOV_to_gp(DisasContext *s, arg_VMOV_to_gp *a)
+     /* VMOV scalar to general purpose register */
+     TCGv_i32 tmp;
  
-@@ -1561,6 +1561,7 @@ void vfp_set_fpscr(CPUARMState *env, uint32_t val);
+-    /* SIZE == MO_32 is a VFP instruction; otherwise NEON.  */
+-    if (a->size == MO_32
+-        ? !dc_isar_feature(aa32_fpsp_v2, s)
+-        : !arm_dc_feature(s, ARM_FEATURE_NEON)) {
+-        return false;
++    /*
++     * SIZE == MO_32 is a VFP instruction; otherwise NEON. MVE has
++     * all sizes, whether the CPU has fp or not.
++     */
++    if (!dc_isar_feature(aa32_mve, s)) {
++        if (a->size == MO_32
++            ? !dc_isar_feature(aa32_fpsp_v2, s)
++            : !arm_dc_feature(s, ARM_FEATURE_NEON)) {
++            return false;
++        }
+     }
  
- #define FPCR_LTPSIZE_SHIFT 16   /* LTPSIZE, M-profile only */
- #define FPCR_LTPSIZE_MASK (7 << FPCR_LTPSIZE_SHIFT)
-+#define FPCR_LTPSIZE_LENGTH 3
+     /* UNDEF accesses to D16-D31 if they don't exist */
+@@ -571,11 +576,16 @@ static bool trans_VMOV_from_gp(DisasContext *s, arg_VMOV_from_gp *a)
+     /* VMOV general purpose register to scalar */
+     TCGv_i32 tmp;
  
- #define FPCR_NZCV_MASK (FPCR_N | FPCR_Z | FPCR_C | FPCR_V)
- #define FPCR_NZCVQC_MASK (FPCR_NZCV_MASK | FPCR_QC)
-diff --git a/target/arm/machine.c b/target/arm/machine.c
-index 62a71a3b640..81e30de8243 100644
---- a/target/arm/machine.c
-+++ b/target/arm/machine.c
-@@ -332,6 +332,7 @@ static const VMStateDescription vmstate_m_mve = {
-     .needed = mve_needed,
-     .fields = (VMStateField[]) {
-         VMSTATE_UINT32(env.v7m.vpr, ARMCPU),
-+        VMSTATE_UINT32(env.v7m.ltpsize, ARMCPU),
-         VMSTATE_END_OF_LIST()
-     },
- };
-diff --git a/target/arm/vfp_helper.c b/target/arm/vfp_helper.c
-index 01b9d8557f7..e0886ab5a56 100644
---- a/target/arm/vfp_helper.c
-+++ b/target/arm/vfp_helper.c
-@@ -195,8 +195,10 @@ uint32_t vfp_get_fpscr(CPUARMState *env)
+-    /* SIZE == MO_32 is a VFP instruction; otherwise NEON.  */
+-    if (a->size == MO_32
+-        ? !dc_isar_feature(aa32_fpsp_v2, s)
+-        : !arm_dc_feature(s, ARM_FEATURE_NEON)) {
+-        return false;
++    /*
++     * SIZE == MO_32 is a VFP instruction; otherwise NEON. MVE has
++     * all sizes, whether the CPU has fp or not.
++     */
++    if (!dc_isar_feature(aa32_mve, s)) {
++        if (a->size == MO_32
++            ? !dc_isar_feature(aa32_fpsp_v2, s)
++            : !arm_dc_feature(s, ARM_FEATURE_NEON)) {
++            return false;
++        }
+     }
  
- void HELPER(vfp_set_fpscr)(CPUARMState *env, uint32_t val)
+     /* UNDEF accesses to D16-D31 if they don't exist */
+@@ -671,7 +681,7 @@ typedef enum FPSysRegCheckResult {
+ 
+ static FPSysRegCheckResult fp_sysreg_checks(DisasContext *s, int regno)
  {
-+    ARMCPU *cpu = env_archcpu(env);
-+
-     /* When ARMv8.2-FP16 is not supported, FZ16 is RES0.  */
--    if (!cpu_isar_feature(any_fp16, env_archcpu(env))) {
-+    if (!cpu_isar_feature(any_fp16, cpu)) {
-         val &= ~FPCR_FZ16;
+-    if (!dc_isar_feature(aa32_fpsp_v2, s)) {
++    if (!dc_isar_feature(aa32_fpsp_v2, s) && !dc_isar_feature(aa32_mve, s)) {
+         return FPSysRegCheckFailed;
      }
  
-@@ -210,11 +212,12 @@ void HELPER(vfp_set_fpscr)(CPUARMState *env, uint32_t val)
-          * because in v7A no-short-vector-support cores still had to
-          * allow Stride/Len to be written with the only effect that
-          * some insns are required to UNDEF if the guest sets them.
--         *
--         * TODO: if M-profile MVE implemented, set LTPSIZE.
-          */
-         env->vfp.vec_len = extract32(val, 16, 3);
-         env->vfp.vec_stride = extract32(val, 20, 2);
-+    } else if (cpu_isar_feature(aa32_mve, cpu)) {
-+        env->v7m.ltpsize = extract32(val, FPCR_LTPSIZE_SHIFT,
-+                                     FPCR_LTPSIZE_LENGTH);
+@@ -1254,7 +1264,7 @@ static bool trans_VMOV_single(DisasContext *s, arg_VMOV_single *a)
+ {
+     TCGv_i32 tmp;
+ 
+-    if (!dc_isar_feature(aa32_fpsp_v2, s)) {
++    if (!dc_isar_feature(aa32_fpsp_v2, s) && !dc_isar_feature(aa32_mve, s)) {
+         return false;
      }
  
-     if (arm_feature(env, ARM_FEATURE_NEON)) {
+@@ -1287,7 +1297,7 @@ static bool trans_VMOV_64_sp(DisasContext *s, arg_VMOV_64_sp *a)
+ {
+     TCGv_i32 tmp;
+ 
+-    if (!dc_isar_feature(aa32_fpsp_v2, s)) {
++    if (!dc_isar_feature(aa32_fpsp_v2, s) && !dc_isar_feature(aa32_mve, s)) {
+         return false;
+     }
+ 
+@@ -1329,7 +1339,7 @@ static bool trans_VMOV_64_dp(DisasContext *s, arg_VMOV_64_dp *a)
+      * floating point register.  Note that this does not require support
+      * for double precision arithmetic.
+      */
+-    if (!dc_isar_feature(aa32_fpsp_v2, s)) {
++    if (!dc_isar_feature(aa32_fpsp_v2, s) && !dc_isar_feature(aa32_mve, s)) {
+         return false;
+     }
+ 
+@@ -1368,7 +1378,7 @@ static bool trans_VLDR_VSTR_hp(DisasContext *s, arg_VLDR_VSTR_sp *a)
+     uint32_t offset;
+     TCGv_i32 addr, tmp;
+ 
+-    if (!dc_isar_feature(aa32_fp16_arith, s)) {
++    if (!dc_isar_feature(aa32_fpsp_v2, s) && !dc_isar_feature(aa32_mve, s)) {
+         return false;
+     }
+ 
+@@ -1403,7 +1413,7 @@ static bool trans_VLDR_VSTR_sp(DisasContext *s, arg_VLDR_VSTR_sp *a)
+     uint32_t offset;
+     TCGv_i32 addr, tmp;
+ 
+-    if (!dc_isar_feature(aa32_fpsp_v2, s)) {
++    if (!dc_isar_feature(aa32_fpsp_v2, s) && !dc_isar_feature(aa32_mve, s)) {
+         return false;
+     }
+ 
+@@ -1439,7 +1449,7 @@ static bool trans_VLDR_VSTR_dp(DisasContext *s, arg_VLDR_VSTR_dp *a)
+     TCGv_i64 tmp;
+ 
+     /* Note that this does not require support for double arithmetic.  */
+-    if (!dc_isar_feature(aa32_fpsp_v2, s)) {
++    if (!dc_isar_feature(aa32_fpsp_v2, s) && !dc_isar_feature(aa32_mve, s)) {
+         return false;
+     }
+ 
+@@ -1479,7 +1489,7 @@ static bool trans_VLDM_VSTM_sp(DisasContext *s, arg_VLDM_VSTM_sp *a)
+     TCGv_i32 addr, tmp;
+     int i, n;
+ 
+-    if (!dc_isar_feature(aa32_fpsp_v2, s)) {
++    if (!dc_isar_feature(aa32_fpsp_v2, s) && !dc_isar_feature(aa32_mve, s)) {
+         return false;
+     }
+ 
+@@ -1557,7 +1567,7 @@ static bool trans_VLDM_VSTM_dp(DisasContext *s, arg_VLDM_VSTM_dp *a)
+     int i, n;
+ 
+     /* Note that this does not require support for double arithmetic.  */
+-    if (!dc_isar_feature(aa32_fpsp_v2, s)) {
++    if (!dc_isar_feature(aa32_fpsp_v2, s) && !dc_isar_feature(aa32_mve, s)) {
+         return false;
+     }
+ 
 -- 
 2.20.1
 

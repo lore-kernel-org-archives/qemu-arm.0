@@ -1,171 +1,102 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp898319lfm;
-        Fri, 21 May 2021 00:16:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwUxjC4Vs0qOsG8fK3SJIdK6Km6fmaOdyZwcG8vusr8/IsgQ3XGGcXwKigNIcGMqjvbs0g1
-X-Received: by 2002:a50:9e63:: with SMTP id z90mr9645595ede.342.1621581414154;
-        Fri, 21 May 2021 00:16:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621581414; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp1216482lfm;
+        Fri, 21 May 2021 07:29:38 -0700 (PDT)
+X-Received: by 2002:a05:6402:2788:: with SMTP id b8mr8193195ede.335.1621607378211;
+        Fri, 21 May 2021 07:29:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621607378; cv=none;
         d=google.com; s=arc-20160816;
-        b=yX/TtV5+cSyDu3L2v9YJSEqQd0aDdSm8YYu91bMoVQ1WQZBuh3WAS0dtNqrZwGOYNP
-         CXOEs4B7K9OE1aiLDvF4FxQ8vmR7tsILo3qVFvCuVJz6wLGZPdXNjEsnL+meatzpQU1X
-         5/ksC7oprW93tuDxH4hFozvILe2bKByHMr20UiGE/C+r7GfILpZO+V3Jq/Ko62Z0VJ4m
-         /Wn/60CFinq5ET2c4Tmvj4ohNVOSA2085o73n36hHWZp+1aatXbe6EWdehmIvo5yfJcN
-         POXNp9ld4osJ8YfcwDTU7+D1km3VMCyBgbdcoLATDMGNG0NZ/mJ1cPVJ3/kM9Px/V5EE
-         iIkQ==
+        b=csb7Q/6unsP8WTaifaQZx3Q6DBGfMBHojgUU4Ad1Ilm0t3CEKGIPqnClLDH76IKR8J
+         c/JffdG9kVu1551gYux3j+6HEIzSi/fcAJaZBAxXMfWZlpPADji5EjUQHk2SOOw5cQfX
+         9qOZoY9Djk4UEAT3N2ZzI8lMlLQ/CCzH8dVR313yfK7Z/6fSrlM1a9l5SsQKNcm5WbJD
+         nMoiTOe2dr7WqRlovq1v/PbjOTwxgEV+NFgzaqNbIj5KQnKeXtB5lAnCCJN6RQJh/woV
+         Bma5vLFPg36z7BWSoqa2y8V7l6cmiVkU6hF7GDTXmtm4AacyPWUn/kFybTCYtwdlx/hU
+         7hhA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:subject:from:references:cc:to
-         :dkim-signature;
-        bh=P+hLjuQ64vmuAnUmwowLfI+1Ab2JGLvYlh/ae84x6bU=;
-        b=eL8Gymrz0QTCu6QAeQ2HNFQt0qe5AcsyHyXR3yMXZmwwQcJ/b4+XGSnh4muPeioNch
-         Cqeg/zF1eZcZhH5Xj+WCoVIQCngWZITqwNkrYK4zWYd3ekE2IxZB8RDEyGDmV4K8YtIB
-         O41vw9nEDo18l6IcVlc8vS/Lu5Q/0C0+3eo3hOsYmGG2bjAYRvfAwZWu601C8LIjUYy5
-         VKPOUhS3HHxTZPjNrhxNc+9oOc5diq+9fR6LOUxpAs9Pio+VXsoC0m494PitsdUC+4HE
-         zJNoytd+G1cQpi3SZI0fUrAtKvGbDmoclR1uWEEyo7TdE8Ns6Fs35tYQWnYR3c/vsbvF
-         rjug==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=pdub6D7sV0imYGC0/OXY7yxI4FQou6c+CXhhLwE5v04=;
+        b=Fwfci7jVWBF3UWRmcqmtnWDqHMWJmGakRYJeMpHuODDp7VM/1sgiYzMZ4jbJKD7j+M
+         7k2A/Foj5GsL4L9AkSVjgYF6GQBM+FNKXpvTztthxVOv3b/rSIt/Hpc89iEP0ov+k4nr
+         f45WBYq3eHtc/artI3FVLZwVy38jLx+lJlzJE/UkZcOjZY892NzfxQ073Oz5kyovBeJf
+         HQjMHL8hZyf2QoAGGDpOJTM9da/BsA1oxSpjqRuqXvaZVxKayK4tl+LOmd+pUztC0T64
+         TTq2kv/LXGJwaPyY/uYrL93CKLyVdN/+nmMpS0+qBT5L1sbK22oGek7z2GkB0rYUxVB+
+         Rx2g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MnC3G9Tm;
-       spf=pass (google.com: domain of thuth@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
-        by mx.google.com with ESMTPS id hp35si6175637ejc.361.2021.05.21.00.16.53
+       dkim=pass header.i=@linaro.org header.s=google header.b=gZ9hvzje;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id f5sor3959723ejh.30.2021.05.21.07.29.37
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 21 May 2021 00:16:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
+        (Google Transport Security);
+        Fri, 21 May 2021 07:29:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MnC3G9Tm;
-       spf=pass (google.com: domain of thuth@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1621581413;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=P+hLjuQ64vmuAnUmwowLfI+1Ab2JGLvYlh/ae84x6bU=;
-	b=MnC3G9TmnbixNcGCGUpT9cwkEcjKWeCmgMGvtZb41mtm1Y+v/OiNupvZOObtNTXw1OhD1P
-	ndO8lIpMy5U11IelqM2rsaDHHa0J9Gp1v3lgj+BsE9iXas98kYejG9UuBn+GvnHu0ZvgL8
-	4Pjz6GMQ8+FwiA50hfvdjFrQ353RPw8=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-215-u-7WYjLyMUGFNkav-jlzQw-1; Fri, 21 May 2021 03:16:49 -0400
-X-MC-Unique: u-7WYjLyMUGFNkav-jlzQw-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 34555107ACCA;
-	Fri, 21 May 2021 07:16:48 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-112-113.ams2.redhat.com [10.36.112.113])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 360095D74B;
-	Fri, 21 May 2021 07:16:37 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Willian Rampazzo <willianr@redhat.com>, qemu-devel@nongnu.org
-Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
- Michael Rolnik <mrolnik@gmail.com>, Cleber Rosa <crosa@redhat.com>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-References: <20210520195322.205691-1-willianr@redhat.com>
- <20210520195322.205691-2-willianr@redhat.com>
- <0f4a1c6c-ddba-ae57-2d55-f59c478dc9c5@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Subject: Re: [RFC 1/1] acceptance tests: rename acceptance to system
-Message-ID: <943fcdae-168a-adf8-c82b-b1a88369441c@redhat.com>
-Date: Fri, 21 May 2021 09:16:36 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.0
+       dkim=pass header.i=@linaro.org header.s=google header.b=gZ9hvzje;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=pdub6D7sV0imYGC0/OXY7yxI4FQou6c+CXhhLwE5v04=;
+        b=gZ9hvzjem22ibr5vd+g+dcccO7ZWuTp6E53wc7mKH5dicLzG8N01yPZf0GLt20zLWK
+         hEzdeJNJddEYmwYUPno0lXW+tPoqPz5IuXKfLudi/BHVIupMAwatmdkmy2BkavQ2pTy+
+         Q/ZGfK62KGvauijDEEVBfARtcENoZdlVkdxxWmfr8Qjv09v4UlRYupDFzhOcxuhfavcD
+         jQvl/hu5tsQWZRCHD+pUGTW2wRehircjBu1EBKEkZN1tSmcAz9+nNjH9c529Jo65EGlv
+         gFfVcLm406CJ1OtiHsm62pUMFfE5YAstfX+m4sOJ52BIvuDt3Q5fEa2/+mOoOjOmBadp
+         wNqQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=pdub6D7sV0imYGC0/OXY7yxI4FQou6c+CXhhLwE5v04=;
+        b=PFkcUw1YVlVc4AVGScjO1yg/FBHrFA93BpJ8fG0kQf7PTlAf0BkrdNuo5OEsseID13
+         AkQdVtQTPV7fwLAEVhchWNymjwvTw2X6xWPC+JpUozC/R7QUYtNei1mhMhoA/H/rbCnh
+         3S/BodtknQHGoxKTILxlTdB5Ox7M9e2l6yQwHpZVqEZi0ZRQMpW6ZwGb5+x/jiRZsqtJ
+         7MA+muc6UCYuHcBy5TJVH9dOOi0ohTnWVTElZ7E//qjhIdjHW/aKNe4Xpm4mwpDO1V4U
+         tShwWDlvBpAEMm08l/SQsHZFJskgQiJ2WDSS7AXNc/YPsd+M6BnQ8kHpQrFXmdU9hPWM
+         de/A==
+X-Gm-Message-State: AOAM531bV0MWDu3DnxAP/XAUWI1RjSO3Ktxb8tCdN2Lj3U40WHQUwQrI
+	lb3siZkDw6msZuqC6wmBQ+EFVWGNkFDbntlY6Qg7ynZV
+X-Google-Smtp-Source: ABdhPJwC2VlJwooTq2HYo1FkPwhtCoxflv/1lCAq/Bgmcx8IMs/RrfqkoiqfPsOIe3HyWoKbnIqmdc69E5GfKxwrco0=
+X-Received: by 2002:a17:906:bcd6:: with SMTP id lw22mr10835261ejb.250.1621607377791;
+ Fri, 21 May 2021 07:29:37 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <0f4a1c6c-ddba-ae57-2d55-f59c478dc9c5@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: +Sx7JafpOGiT
+References: <20210520195322.205691-1-willianr@redhat.com> <20210520195322.205691-2-willianr@redhat.com>
+ <0f4a1c6c-ddba-ae57-2d55-f59c478dc9c5@redhat.com> <943fcdae-168a-adf8-c82b-b1a88369441c@redhat.com>
+ <CAKJDGDZgnsFe9S967jjm1OMHPa25rb-tFmycpdC53WDK6DK1xA@mail.gmail.com>
+ <a95cfa21-dde1-cf7c-a4e4-a5cf43c1de1d@redhat.com> <87sg2gb5lf.fsf@linaro.org> <b53b690c-f542-cc35-35a6-e577529ac303@amsat.org>
+In-Reply-To: <b53b690c-f542-cc35-35a6-e577529ac303@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 21 May 2021 15:29:18 +0100
+Message-ID: <CAFEAcA98XBN2x=FvJod8U4+NM3fpmJigQsWoi-v4L5HXQpT+Rw@mail.gmail.com>
+Subject: Re: [RFC 1/1] acceptance tests: rename acceptance to system
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Thomas Huth <thuth@redhat.com>, qemu-devel <qemu-devel@nongnu.org>, 
+	Wainer dos Santos Moschetta <wainersm@redhat.com>, Niek Linnenbank <nieklinnenbank@gmail.com>, 
+	qemu-arm <qemu-arm@nongnu.org>, Michael Rolnik <mrolnik@gmail.com>, 
+	Willian Rampazzo <wrampazz@redhat.com>, Cleber Rosa <crosa@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: csfzW9EY8aq0
 
-On 20/05/2021 22.28, Philippe Mathieu-Daudé wrote:
-> On 5/20/21 9:53 PM, Willian Rampazzo wrote:
->> Conceptually speaking, acceptance tests "are a series of specific tests
->> conducted by the customer in an attempt to uncover product errors before
->> accepting the software from the developer. Conducted by the end-user rather
->> than software engineers, acceptance testing can range from an informal
->> “test drive” to a planned and systematically executed series of scripted
->> tests" [1]. Every time Pressman refers to the term "acceptance testing," he
->> also refers to user's agreement in the final state of an implemented feature.
->> Today, QEMU is not implementing user acceptance tests as described by Pressman.
->>
->> There are other three possible terms we could use to describe what is currently
->> QEMU "acceptance" tests:
->>
->>    1 - Integration tests:
->>        - "Integration testing is a systematic technique for constructing the
->>           software architecture while at the same time conducting tests to
->>           uncover errors associated with interfacing. The objective is to take
->>           unit-tested components and build a program structure that has been
->>           dictated by design." [2]
->>        * Note: Sommerville does not have a clear definition of integration
->>          testing. He refers to incremental integration of components inside
->>          the system testing (see [3]).
+On Fri, 21 May 2021 at 15:19, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
+ wrote:
+> If you think these tests belong to tests/tcg/, I am OK to put
+> them they, but I don't think adding the Avocado buildsys
+> machinery to the already-complex tests/tcg/ Makefiles is going
+> to help us...
 
-After thinking about this for a while, I agree with you that renaming the 
-"acceptance" tests to "integration" tests is also not a good idea. When I 
-hear "integration" test in the context of the virt stack, I'd rather expect 
-a test suite that picks KVM (i.e. a kernel), QEMU, libvirt and maybe 
-virt-manager on top and tests them all together. So we should look for a 
-different name indeed.
+This does raise the question of what we're actually trying
+to distinguish. It seems to me somewhat that what tests/acceptance/
+actually contains that makes it interestingly different from other
+tests/ stuff is that it's specifically "tests using the Avocado
+framework". On that theory we might name it tests/avocado/.
 
->>    2 - Validation tests:
->>        - "Validation testing begins at the culmination of integration testing,
->>           when individual components have been exercised, the software is
->>           completely assembled as a package, and interfacing errors have been
->>           uncovered and corrected. At the validation or system level, the
->>           distinction between different software categories disappears. Testing
->>           focuses on user-visible actions and user-recognizable output from the
->>           system." [4]
->>        - "where you expect the system to perform correctly using a set of test
->>           cases that reflect the system’s expected use." [5]
->>        * Note: the definition of "validation testing" from Sommerville reflects
->>          the same definition found around the Internet, as one of the processes
->>          inside the "Verification & Validation (V&V)." In this concept,
->>          validation testing is a high-level definition that covers unit testing,
->>          functional testing, integration testing, system testing, and acceptance
->>          testing.
->>
->>    3 - System tests:
->>        - "verifies that all elements mesh properly and that overall system
->>           function and performance is achieved." [6]
->>        - "involves integrating components to create a version of the system and
->>           then testing the integrated system. System testing checks that
->>           components are compatible, interact correctly, and transfer the right
->>           data at the right time across their interfaces." [7]
->>
->> The tests implemented inside the QEMU "acceptance" directory depend on the
->> software completely assembled and, sometimes, on other elements, like operating
->> system images. In this case, the proposal here is to rename the current
->> "acceptance" directory to "system."
-> 
-> Are user-mode tests using Avocado also system tests?
-> https://www.mail-archive.com/qemu-devel@nongnu.org/msg782505.html
+Or we could just leave it as it is -- is the current naming
+actually confusing anybody? :-)
 
-We've indeed got the problem that the word "system" is a little bit 
-overloaded in the context of QEMU. We often talk about "system" when 
-referring to the qemu-softmmu-xxx emulators (in contrast to the linux-user 
-emulator binaries). For example, the "--disable-system" switch of the 
-configure script, or the "build-system" and "check-system" jobs in the 
-.gitlab-ci.yml file ... thus this could get quite confusing in the 
-.gitlab-ci.yml file afterwards.
-
-So I think renaming "acceptance" to "system" is especially ok if we only 
-keep the "softmmu"-related tests in that folder... would it maybe make sense 
-to add the linux-user related tests in a separate folder called tests/user/ 
-instead, Philippe? And we should likely rename the current build-system and 
-check-system jobs in our gitlab-CI to build-softmmu and check-softmmu or so?
-
-Alternatively, what about renaming the "acceptance" tests to "validation" 
-instead? That word does not have a duplicated definition in the context of 
-QEMU yet, so I think it would be less confusing.
-
-  Thomas
+thanks
+-- PMM

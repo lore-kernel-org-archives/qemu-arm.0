@@ -1,73 +1,82 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp1352766lfm;
-        Fri, 21 May 2021 10:14:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy/P2i7hgpaSwsC9dbOxtOCTRdWnl31Gs5dYU6XHbVAKs46B7Xa70RT5FdxH6gm2KZLoYrP
-X-Received: by 2002:a50:f385:: with SMTP id g5mr12607858edm.222.1621617280157;
-        Fri, 21 May 2021 10:14:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621617280; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp1378820lfm;
+        Fri, 21 May 2021 10:46:49 -0700 (PDT)
+X-Received: by 2002:a1c:7f84:: with SMTP id a126mr10561865wmd.47.1621619208955;
+        Fri, 21 May 2021 10:46:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621619208; cv=none;
         d=google.com; s=arc-20160816;
-        b=Xev0zD13riZ74n6LHI2PjMyBetzZ3VM9fbMfy6X0Ad9m2SHctLSkO2gKEHAZIiRfcW
-         gohOEDL8lX5R1shyW/GFipQs8LuCxEqT0wFAfKga0IVvM5xADC0MWF3/GrhX+KMVsuRx
-         de3Ph5Fu4tFDt1b2XhQZsydAIHAhuxEeif8xf1MvUp/wnaNsttE9zyBaDABWGkxuWBXi
-         L+jZX8RPJG1V2oC4G6mGwB0nEaQfXKXfmUpGCqS11Orqo67wGQN61KLT2CLaByDKwkhl
-         5UOzPLGK/fVFidQokjTrGrevghsIyBMzloXinAbENT/GLnm73rQiHYeluxc0+RwdvsiB
-         CmzQ==
+        b=cBPC9ujURTWMrZHuGtfS/3MmqjHXzY1oePYNw8iuC0rtkXd8lq3WceYEp7YJFTDpAO
+         wS5sLr1pmrX6bi71tZdT2zy0Bq/M8ltSlu8XOyUgHTY6YEr7CwIhUw5LZ7VoElEy0/6V
+         AfEjRt2/XZH46SxK+wkHKMIlPzpQ3TO0JW02j91NlySC2M+/KGQ8R2BuI9lMvwcrs9mD
+         NpAd0bDdTWl1RUrZBzKNxzboo4SssuibRZStjE/pRNe3qLWJHy7EQrtwgAtiF73Bs9WR
+         upckFjNTMzKaXZ5PaN712jB+QC1UFmTedOwEnOWLAAyMVeDMVaWuj3n2bzxgU5rwjNJe
+         2+fg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
+         :user-agent:date:message-id:from:references:cc:to:subject:sender
          :dkim-signature;
-        bh=+FoosSDU/lSKeNqty24UCT+ac/QMrro7F8FCHLUQHGY=;
-        b=MrBZHjhToq7On2JrmgE/ezYGBInw6l2k9LMXXeWXraxvz7tB0ntZpDz4krCIcXsNGG
-         GTEDUQcLX2kWGY4+U1xKaiERLUM40kYXoqYSPw39ohZA7ex/T7uiUa2PiQTKQK9US/nY
-         /amDyulKThGdtOAhryP5eW4RYheHfI2iDxPMeuPYcelOgyyfN0UGJAphquL/xDIrf9mw
-         x3IZbUjsl5WzT31fJhgIdmhTEB45+GVMXNRTpqdLtxAvL9h9nE0zgSDX/tiuAeJwwJuV
-         cydTSJPVotFu3nGcfCOxhIhuhY9qwU4iAn9gHfbNxzZmGl0SXuMyx7bEmaw6z9qhbCCr
-         B5TQ==
+        bh=VbAEiIv2LknR+pAI5WWQcRyeE6G+rY08dxfxzzhlsqo=;
+        b=LOigq5ynxVwLg9OxipWciKpZ4PCKhZ6+i1tODdU8azydpelpM7dN4o8fgvPsWwg8kK
+         tU3gUBaI9tDFGSJBK32uCUciNs5FHX6B+n92bnS+e7HyBkR3sNsdBZpRqRLjzpRWxWwd
+         BInl1kVcxnRGMdVZ91NrtjyNmemt3sfy30qhfUQQIKMuuR/wvaT39zfibDQ8Eq54qIaw
+         s+MgUTBkIuw7wPA54dqBnAuYEsIxq78OU/Ronvf4OKbMYjjgaKck2Ru0zRtiToL8W7HW
+         Bqffw8HJXFbErBF2fItrBW8Hc1G9+YFrtmbgxJwwqZdfz8xbumvF6MtQcFapdJK1nuf9
+         O+7A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WUYsZKf1;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id q23si6054333ejd.116.2021.05.21.10.14.39
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 21 May 2021 10:14:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tC7Noqc+;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id q18sor1371073wrs.57.2021.05.21.10.46.48
+        (Google Transport Security);
+        Fri, 21 May 2021 10:46:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WUYsZKf1;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1621617279;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=+FoosSDU/lSKeNqty24UCT+ac/QMrro7F8FCHLUQHGY=;
-	b=WUYsZKf1Kxq6TE0oQQv1rah1vvQC/Ng//VB4h4ehip6TVdlklz1F4uYTGzQZ3C4/61NHbc
-	waS7zW+WyazoJNIvgJu8zHVddH4NrOf+0ETiuJsC3OCgvWgrJyFGo7k9f3pAXMje7m5WhX
-	7FahHast4xFkI6TJkA34hqu09ORMjgM=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-36-JJoj9VMNMdKtvJCr-YEHig-1; Fri, 21 May 2021 13:14:35 -0400
-X-MC-Unique: JJoj9VMNMdKtvJCr-YEHig-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A1E86BBEE6;
-	Fri, 21 May 2021 17:14:34 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-112-113.ams2.redhat.com [10.36.112.113])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 6DDB92B45C;
-	Fri, 21 May 2021 17:14:28 +0000 (UTC)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tC7Noqc+;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=sender:subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=VbAEiIv2LknR+pAI5WWQcRyeE6G+rY08dxfxzzhlsqo=;
+        b=tC7Noqc+PnZ5I6A3U3IDFAK5mYS0aiDvtk/uHrJQamszMfyyYaYYurkctxh3pUKTX+
+         e+N5kRYNRxJCkfmshen0lStxgbns3HcZ+atsUIoPzVfMz49A8EUVZ329TLbcChWzTZjK
+         hc99MtShTSaKOs4J+Ta2UJZKedidyH9zUmPNPywX1c5JREpvTuEK5yhmvULxPls7L7uf
+         N2MqmS1RGJ+4K7Np+dXeaX4wxAy+sP+KuwMurdtr3zj4a7eFSiDxBpwlLP1I6XJo/adX
+         umHPga6MIdh/5aHiQpxP57hM5LI8W+fO1x+XyBMPSqKulIRC4N5srQqzUuI5Y+xoH8zK
+         Ud4A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=VbAEiIv2LknR+pAI5WWQcRyeE6G+rY08dxfxzzhlsqo=;
+        b=UXjFo3wq0z07OPZD+XTu0dPucuewwmXzLopnqUqncYquKQzBpg6XScwIz+eRa9zVmd
+         j+9zy+2j18cZRkbdqb65tmzz9tYNd85GsMavnUBpQYsdWW5M40jq0nKzxL9F237Lz53Q
+         SIUXWmJ2jkyF49ZSKJDU7n1vFbPC2cYdSbvY9kmCSUOtECKsr0/DZPcpj4WDjBFbCD0p
+         t3jkPSfNQbdgHgrvBfsJqAMFgqebUusurx7uFqlHEGhzuTop9GLf3i8g7aAAktI0PsF0
+         nJgqIiiKSEnD3Z/k8KG5AdP2hDnZT8qY2w55Eu3h9NGlP+gsf8sjwcnP/O4crDiyO3Pl
+         Bfbg==
+X-Gm-Message-State: AOAM532zSzbJkL7ams1UDcFCMUbQa5Mlg0rTQMKo/n53uFEFeKt0nD4o
+	peBwYt2d8hDl8MJaKdtNKrVTBkT4/g5Sbw==
+X-Google-Smtp-Source: ABdhPJzqz52Xe4e0NZb6Iizrr8pR0GH0kVvcUAuCg2RIaRbDRX+Xh2VCdcMOLNtqXDbYM/NPfjl97A==
+X-Received: by 2002:adf:fa45:: with SMTP id y5mr11021449wrr.311.1621619208439;
+        Fri, 21 May 2021 10:46:48 -0700 (PDT)
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from [192.168.1.36] (31.red-83-51-215.dynamicip.rima-tde.net. [83.51.215.31])
+        by smtp.gmail.com with ESMTPSA id o11sm2885546wrq.93.2021.05.21.10.46.47
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 21 May 2021 10:46:47 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
 Subject: Re: [RFC 1/1] acceptance tests: rename acceptance to system
-To: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel <qemu-devel@nongnu.org>,
+To: Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel <qemu-devel@nongnu.org>,
  Wainer dos Santos Moschetta <wainersm@redhat.com>,
  Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
  Michael Rolnik <mrolnik@gmail.com>, Willian Rampazzo <wrampazz@redhat.com>,
- Cleber Rosa <crosa@redhat.com>
+ Cleber Rosa <crosa@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>
 References: <20210520195322.205691-1-willianr@redhat.com>
  <20210520195322.205691-2-willianr@redhat.com>
  <0f4a1c6c-ddba-ae57-2d55-f59c478dc9c5@redhat.com>
@@ -76,52 +85,56 @@ References: <20210520195322.205691-1-willianr@redhat.com>
  <a95cfa21-dde1-cf7c-a4e4-a5cf43c1de1d@redhat.com> <87sg2gb5lf.fsf@linaro.org>
  <b53b690c-f542-cc35-35a6-e577529ac303@amsat.org>
  <CAFEAcA98XBN2x=FvJod8U4+NM3fpmJigQsWoi-v4L5HXQpT+Rw@mail.gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <27149825-16a4-6820-2740-ab110eb231a5@redhat.com>
-Date: Fri, 21 May 2021 19:14:27 +0200
+ <27149825-16a4-6820-2740-ab110eb231a5@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <6815ab09-50b5-825c-d565-8fe1e9ed6c5b@amsat.org>
+Date: Fri, 21 May 2021 19:46:46 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.0
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA98XBN2x=FvJod8U4+NM3fpmJigQsWoi-v4L5HXQpT+Rw@mail.gmail.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <27149825-16a4-6820-2740-ab110eb231a5@redhat.com>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: C7QsDdYCI3oR
+X-TUID: jN7uI0C2Ubym
 
-On 21/05/2021 16.29, Peter Maydell wrote:
-> On Fri, 21 May 2021 at 15:19, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
->> If you think these tests belong to tests/tcg/, I am OK to put
->> them they, but I don't think adding the Avocado buildsys
->> machinery to the already-complex tests/tcg/ Makefiles is going
->> to help us...
+On 5/21/21 7:14 PM, Thomas Huth wrote:
+> On 21/05/2021 16.29, Peter Maydell wrote:
+>> On Fri, 21 May 2021 at 15:19, Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> wrote:
+>>> If you think these tests belong to tests/tcg/, I am OK to put
+>>> them they, but I don't think adding the Avocado buildsys
+>>> machinery to the already-complex tests/tcg/ Makefiles is going
+>>> to help us...
+>>
+>> This does raise the question of what we're actually trying
+>> to distinguish. It seems to me somewhat that what tests/acceptance/
+>> actually contains that makes it interestingly different from other
+>> tests/ stuff is that it's specifically "tests using the Avocado
+>> framework". On that theory we might name it tests/avocado/.
 > 
-> This does raise the question of what we're actually trying
-> to distinguish. It seems to me somewhat that what tests/acceptance/
-> actually contains that makes it interestingly different from other
-> tests/ stuff is that it's specifically "tests using the Avocado
-> framework". On that theory we might name it tests/avocado/.
+> I think there are two aspects:
+> 
+> 1) These tests are using the avocado framework
+> 
+> 2) These tests are downloading other stuff from the internet (unlike the
+> other tests that we have)
+> 
+>> Or we could just leave it as it is -- is the current naming
+>> actually confusing anybody? :-)
+> 
+> Yes, I think "acceptance" is rather confusing. So far they haven't been
+> part of your PR acceptance tests (well, now they are part of the
+> gitlab-CI, though), and it's also not about tests that have been set up
+> by customers, which is what you normally think of when hearing
+> "acceptance tests". So a different name would be adequate.
 
-I think there are two aspects:
+IIUC the current "acceptance tests" are the ones Peter runs,
+which are *gating* the merge process. They can not fail.
 
-1) These tests are using the avocado framework
+The current tests in tests/acceptance/ use Avocado (as said Thomas,
+to easily download artifacts) and shouldn't be considered gating;
+they could fail.
 
-2) These tests are downloading other stuff from the internet (unlike the 
-other tests that we have)
-
-> Or we could just leave it as it is -- is the current naming
-> actually confusing anybody? :-)
-
-Yes, I think "acceptance" is rather confusing. So far they haven't been part 
-of your PR acceptance tests (well, now they are part of the gitlab-CI, 
-though), and it's also not about tests that have been set up by customers, 
-which is what you normally think of when hearing "acceptance tests". So a 
-different name would be adequate.
-
-I think I'd vote for either "avocado", "avoqado" or "validation".
-
-  Thomas
+This is my confusion so far. It should be OK to add tests using the
+Avocado framework which might fail and aren't gating.

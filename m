@@ -1,246 +1,130 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id y5sm2564312wrp.5.2021.05.21.07.45.44
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 21 May 2021 07:45:46 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 11B6C1FF7E;
-	Fri, 21 May 2021 15:45:44 +0100 (BST)
-References: <20210520195322.205691-1-willianr@redhat.com>
- <20210520195322.205691-2-willianr@redhat.com>
- <0f4a1c6c-ddba-ae57-2d55-f59c478dc9c5@redhat.com>
- <943fcdae-168a-adf8-c82b-b1a88369441c@redhat.com>
- <CAKJDGDZgnsFe9S967jjm1OMHPa25rb-tFmycpdC53WDK6DK1xA@mail.gmail.com>
- <a95cfa21-dde1-cf7c-a4e4-a5cf43c1de1d@redhat.com>
- <87sg2gb5lf.fsf@linaro.org>
- <b53b690c-f542-cc35-35a6-e577529ac303@amsat.org>
-User-agent: mu4e 1.5.13; emacs 28.0.50
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Cc: Willian Rampazzo <wrampazz@redhat.com>, Thomas Huth <thuth@redhat.com>,
- qemu-devel <qemu-devel@nongnu.org>, Wainer dos Santos Moschetta
- <wainersm@redhat.com>, Niek Linnenbank <nieklinnenbank@gmail.com>,
- qemu-arm <qemu-arm@nongnu.org>, Michael Rolnik <mrolnik@gmail.com>, Cleber
- Rosa <crosa@redhat.com>
-Subject: Re: [RFC 1/1] acceptance tests: rename acceptance to system
-Date: Fri, 21 May 2021 15:43:13 +0100
-In-reply-to: <b53b690c-f542-cc35-35a6-e577529ac303@amsat.org>
-Message-ID: <87mtsob0x3.fsf@linaro.org>
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp1236236lfm;
+        Fri, 21 May 2021 07:54:06 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyILb2JY1cpMshEF3vm13sLx/+dN1bElwvbz1uwct8bb4oj22R1ZLzUY3kD2BLm9d1kbodu
+X-Received: by 2002:a17:906:a3c9:: with SMTP id ca9mr10729639ejb.553.1621608846231;
+        Fri, 21 May 2021 07:54:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621608846; cv=none;
+        d=google.com; s=arc-20160816;
+        b=R264HR1aMf+UiFLbvve+fLEbQVqNDRce0DkjvAza8AhWn/lF3d8xhRg5S5YBqNKv2U
+         2P+Sv1GjyKXA9GJ2pSaXQxwdjo4K2n6JUQzLQEESKv7+CwwBbzNPs7Mq/1nDsU4gyTgb
+         xwgHi2G33kcMk53pj6smCS5C4mLBWG6lKtt7j4rpfTQ4/ar/VnZOr1OGHthFR4JOI4rA
+         eDtRZ8PbF0c+8qiMi/OaHSefD6l54I7GuVBzI1XmgL7iPMTvzA2G6Uj7VGwA2+nZQewJ
+         vsh5/vNEaOnwVa/bYLBKiQZqZFILGwl0vIInsBFC64N9ZBMCt4H2wTnGZ5wL4iKl8t2S
+         vqNg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=vkWZXMU/3fiOC766PyeBYhPV21EVkbwevnKj/UQshkk=;
+        b=LxWQP0QI2zS510Zf/BNTMXc1BIqGuNaCN/ocZy0vq2dQINrBMqmnjN3ov+y7zYtx5d
+         0LIggTUE4CQhd4coHKrg3jDAVo91vyC7fVWFdZTNR1O81UkVTa2EjUNlaKQfRFHFgMrH
+         zsfNDbsGu1ld++++ywuLJXEFBzm0JQbvI954OfFS3kjGW3WsXnYZPTzTheu/CfPgPMQ4
+         XHukFJu4fYN4PSfaWGZzWBU4bKUSO8y8JX5NK+eQpDa73SrBtjLZlgPq3ZnW+VF2cz0c
+         MjRaurRTQNS57cr2gh8fOsH0lAaZhn08+JmZ0vJ9LAz142q8M43Y+COgFcZbpowipOMk
+         Cg9Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BHWMArWe;
+       spf=pass (google.com: domain of wrampazz@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=wrampazz@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <wrampazz@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id 8si7413695ejx.637.2021.05.21.07.54.05
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 21 May 2021 07:54:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of wrampazz@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BHWMArWe;
+       spf=pass (google.com: domain of wrampazz@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=wrampazz@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1621608845;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=vkWZXMU/3fiOC766PyeBYhPV21EVkbwevnKj/UQshkk=;
+	b=BHWMArWewsGIHkDhCLC9AQo+RFDmMkMSW9+i9efnxt5UCwjcHVezMvRVOardyZOSiG1PMv
+	mJPTaypAAYnPtvH4UsflSIr8y5Od2PC8y7GFDwOuNPgjuuYt06C7QYBgtGKgaY0osdqFN5
+	MFEpdrQAKwmNyO5LzinCMkVL1iW4b/8=
+Received: from mail-vk1-f197.google.com (mail-vk1-f197.google.com
+ [209.85.221.197]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-596-xrThrwCtOVuTcUEgIER3oQ-1; Fri, 21 May 2021 10:54:04 -0400
+X-MC-Unique: xrThrwCtOVuTcUEgIER3oQ-1
+Received: by mail-vk1-f197.google.com with SMTP id e8-20020ac5c7c80000b02901fc7f94b3a7so2664637vkn.6
+        for <alex.bennee@linaro.org>; Fri, 21 May 2021 07:54:03 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=vkWZXMU/3fiOC766PyeBYhPV21EVkbwevnKj/UQshkk=;
+        b=R/dH+eSr2mLXVvf8/yk9mB4sWolzd5OJ4gufzu7My2BSX7cMdsNREyI4BqfXwnxFme
+         S8HwEIJiSz35MEbrR/pg2d9cNfDe34p2D8u0fbJ9zwr3qSjBW+hPXOQ4qksXXTeJmFTf
+         8ST8l2QTS31nLzqwBJOLitxgt5it00sYkUPGSZ2DDOP2ehViHcym8poFsQeqg1IofEFV
+         IF/eVreb8O9iLwZbu3YlSo/YL78KihXy67Qr7u8+0u0nvqb/p3Lv2df3AZqEsW4XgAAk
+         fVn/TG0Fe6JUTvYqkXWXCewtrrbN4WaSA+wqZLuZFjsZkb4xScmt3yT6M9qfcEGOYVW5
+         FASQ==
+X-Gm-Message-State: AOAM532pkrXuTfW9qWUyvgET/M8iYah2cI79ZX2ZEedlD6YiKAKZVZc1
+	fhC7MpCCmhrpMm1zy4UPRELhBGUBRLSQqQt62hlCuQxI4E2dF2qSSAPNg1mOZucGwtnugOEO3ex
+	Ili0voO++PPGAM4OhTW/TGssoMKdnXc3t
+X-Received: by 2002:a05:6102:2f3:: with SMTP id j19mr10745713vsj.1.1621608843580;
+        Fri, 21 May 2021 07:54:03 -0700 (PDT)
+X-Received: by 2002:a05:6102:2f3:: with SMTP id j19mr10745687vsj.1.1621608843392;
+ Fri, 21 May 2021 07:54:03 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+References: <20210520195322.205691-1-willianr@redhat.com> <20210520195322.205691-2-willianr@redhat.com>
+ <0f4a1c6c-ddba-ae57-2d55-f59c478dc9c5@redhat.com> <943fcdae-168a-adf8-c82b-b1a88369441c@redhat.com>
+ <CAKJDGDZgnsFe9S967jjm1OMHPa25rb-tFmycpdC53WDK6DK1xA@mail.gmail.com>
+ <a95cfa21-dde1-cf7c-a4e4-a5cf43c1de1d@redhat.com> <87sg2gb5lf.fsf@linaro.org>
+ <b53b690c-f542-cc35-35a6-e577529ac303@amsat.org> <CAFEAcA98XBN2x=FvJod8U4+NM3fpmJigQsWoi-v4L5HXQpT+Rw@mail.gmail.com>
+In-Reply-To: <CAFEAcA98XBN2x=FvJod8U4+NM3fpmJigQsWoi-v4L5HXQpT+Rw@mail.gmail.com>
+From: Willian Rampazzo <wrampazz@redhat.com>
+Date: Fri, 21 May 2021 11:53:37 -0300
+Message-ID: <CAKJDGDaTKDn9EvjmSoKUpu-QfhUhPi0USnH+SBFUZymtSU_GcA@mail.gmail.com>
+Subject: Re: [RFC 1/1] acceptance tests: rename acceptance to system
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Thomas Huth <thuth@redhat.com>, qemu-devel <qemu-devel@nongnu.org>, 
+	Wainer dos Santos Moschetta <wainersm@redhat.com>, Niek Linnenbank <nieklinnenbank@gmail.com>, 
+	qemu-arm <qemu-arm@nongnu.org>, Michael Rolnik <mrolnik@gmail.com>, Cleber Rosa <crosa@redhat.com>
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=wrampazz@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: QBXgojakyJBd
+X-TUID: habiLTYVn/uW
 
-
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
-
-> On 5/21/21 3:03 PM, Alex Benn=C3=A9e wrote:
->> Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
->>> On 5/21/21 2:28 PM, Willian Rampazzo wrote:
->>>> On Fri, May 21, 2021 at 4:16 AM Thomas Huth <thuth@redhat.com> wrote:
->>>>>
->>>>> On 20/05/2021 22.28, Philippe Mathieu-Daud=C3=A9 wrote:
->>>>>> On 5/20/21 9:53 PM, Willian Rampazzo wrote:
->>>>>>> Conceptually speaking, acceptance tests "are a series of specific t=
-ests
->>>>>>> conducted by the customer in an attempt to uncover product errors b=
-efore
->>>>>>> accepting the software from the developer. Conducted by the end-use=
-r rather
->>>>>>> than software engineers, acceptance testing can range from an infor=
-mal
->>>>>>> =E2=80=9Ctest drive=E2=80=9D to a planned and systematically execut=
-ed series of scripted
->>>>>>> tests" [1]. Every time Pressman refers to the term "acceptance test=
-ing," he
->>>>>>> also refers to user's agreement in the final state of an implemente=
-d feature.
->>>>>>> Today, QEMU is not implementing user acceptance tests as described =
-by Pressman.
->>>>>>>
->>>>>>> There are other three possible terms we could use to describe what =
-is currently
->>>>>>> QEMU "acceptance" tests:
->>>>>>>
->>>>>>>    1 - Integration tests:
->>>>>>>        - "Integration testing is a systematic technique for constru=
-cting the
->>>>>>>           software architecture while at the same time conducting t=
-ests to
->>>>>>>           uncover errors associated with interfacing. The objective=
- is to take
->>>>>>>           unit-tested components and build a program structure that=
- has been
->>>>>>>           dictated by design." [2]
->>>>>>>        * Note: Sommerville does not have a clear definition of inte=
-gration
->>>>>>>          testing. He refers to incremental integration of component=
-s inside
->>>>>>>          the system testing (see [3]).
->>>>>
->>>>> After thinking about this for a while, I agree with you that renaming=
- the
->>>>> "acceptance" tests to "integration" tests is also not a good idea. Wh=
-en I
->>>>> hear "integration" test in the context of the virt stack, I'd rather =
-expect
->>>>> a test suite that picks KVM (i.e. a kernel), QEMU, libvirt and maybe
->>>>> virt-manager on top and tests them all together. So we should look fo=
-r a
->>>>> different name indeed.
->>>>>
->>>>>>>    2 - Validation tests:
->>>>>>>        - "Validation testing begins at the culmination of integrati=
-on testing,
->>>>>>>           when individual components have been exercised, the softw=
-are is
->>>>>>>           completely assembled as a package, and interfacing errors=
- have been
->>>>>>>           uncovered and corrected. At the validation or system leve=
-l, the
->>>>>>>           distinction between different software categories disappe=
-ars. Testing
->>>>>>>           focuses on user-visible actions and user-recognizable out=
-put from the
->>>>>>>           system." [4]
->>>>>>>        - "where you expect the system to perform correctly using a =
-set of test
->>>>>>>           cases that reflect the system=E2=80=99s expected use." [5]
->>>>>>>        * Note: the definition of "validation testing" from Sommervi=
-lle reflects
->>>>>>>          the same definition found around the Internet, as one of t=
-he processes
->>>>>>>          inside the "Verification & Validation (V&V)." In this conc=
-ept,
->>>>>>>          validation testing is a high-level definition that covers =
-unit testing,
->>>>>>>          functional testing, integration testing, system testing, a=
-nd acceptance
->>>>>>>          testing.
->>>>>>>
->>>>>>>    3 - System tests:
->>>>>>>        - "verifies that all elements mesh properly and that overall=
- system
->>>>>>>           function and performance is achieved." [6]
->>>>>>>        - "involves integrating components to create a version of th=
-e system and
->>>>>>>           then testing the integrated system. System testing checks=
- that
->>>>>>>           components are compatible, interact correctly, and transf=
-er the right
->>>>>>>           data at the right time across their interfaces." [7]
->>>>>>>
->>>>>>> The tests implemented inside the QEMU "acceptance" directory depend=
- on the
->>>>>>> software completely assembled and, sometimes, on other elements, li=
-ke operating
->>>>>>> system images. In this case, the proposal here is to rename the cur=
-rent
->>>>>>> "acceptance" directory to "system."
->>>>>>
->>>>>> Are user-mode tests using Avocado also system tests?
->>>>>> https://www.mail-archive.com/qemu-devel@nongnu.org/msg782505.html
->>>>>
->>>>> We've indeed got the problem that the word "system" is a little bit
->>>>> overloaded in the context of QEMU. We often talk about "system" when
->>>>> referring to the qemu-softmmu-xxx emulators (in contrast to the linux=
--user
->>>>> emulator binaries). For example, the "--disable-system" switch of the
->>>>> configure script, or the "build-system" and "check-system" jobs in the
->>>>> .gitlab-ci.yml file ... thus this could get quite confusing in the
->>>>> .gitlab-ci.yml file afterwards.
->>>>
->>>> I agree with you here. After I made the changes to the code, I noticed
->>>> QEMU has the "system" word spread all over the place. That may confuse
->>>> people looking at the "system tests" without much interaction with
->>>> software testing terminology.
->>>>
->>>>>
->>>>> So I think renaming "acceptance" to "system" is especially ok if we o=
-nly
->>>>> keep the "softmmu"-related tests in that folder... would it maybe mak=
-e sense
->>>>> to add the linux-user related tests in a separate folder called tests=
-/user/
->>>>> instead, Philippe? And we should likely rename the current build-syst=
-em and
->>>>> check-system jobs in our gitlab-CI to build-softmmu and check-softmmu=
- or so?
->>>>>
->>>>
->>>> As I mentioned in Philippe's reply, those tests are still considered
->>>> system tests because system testing is the software built and
->>>> interacting with external test artifacts in software engineering.
->>>>
->>>>> Alternatively, what about renaming the "acceptance" tests to "validat=
-ion"
->>>>> instead? That word does not have a duplicated definition in the conte=
-xt of
->>>>> QEMU yet, so I think it would be less confusing.
->>>>
->>>> While at the beginning of your reply, I started thinking if
->>>> "validation" would cause less confusion for the QEMU project. Although
->>>> validation testing is a broader concept inside the Verification &
->>>> Validation process, encompassing unit testing, functional testing,
->>>> integration testing, system testing, and acceptance testing, it may be
->>>> an option for the QEMU project.
->>>>
->>>> While system testing would be the correct terminology to use, if it
->>>> causes more confusion, using a less strict terminology, like
->>>> validation testing, is valid, in my opinion.
->>>
->>> This works for me:
->>>
->>> - tests/system/softmmu
->>> - tests/system/user
->>>
->>> Or validation, as you prefer.
->>=20
->> So what are tests/tcg if not user tests? They *mostly* test
->> linux-user emulation but of course we have softmmu tests in there as
->> well.=20
+On Fri, May 21, 2021 at 11:29 AM Peter Maydell <peter.maydell@linaro.org> w=
+rote:
 >
-> I expect a tests/tcg/ to check a specific TCG feature, which doesn't
-> have to be user-mode specific (IIRC Xtensa does some sysemu checks).
-> Also, you control the compiler toolchain, flags, etc... so you can
-> adapt for a specific feature bit to test, use kludges and so on.
+> On Fri, 21 May 2021 at 15:19, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g> wrote:
+> > If you think these tests belong to tests/tcg/, I am OK to put
+> > them they, but I don't think adding the Avocado buildsys
+> > machinery to the already-complex tests/tcg/ Makefiles is going
+> > to help us...
+>
+> This does raise the question of what we're actually trying
+> to distinguish. It seems to me somewhat that what tests/acceptance/
+> actually contains that makes it interestingly different from other
+> tests/ stuff is that it's specifically "tests using the Avocado
+> framework". On that theory we might name it tests/avocado/.
+>
+> Or we could just leave it as it is -- is the current naming
+> actually confusing anybody? :-)
 
-Well I won't say there are things that couldn't be tested elsewhere. I
-think the initial record/replay tests are probably replaceable by the
-acceptance/whatever tests - and possibly the gdbstub tests as well.
-
-> I expect tests in tests/system/ (user/softmmu) to user real-world
-> binaries, which we aren't modifying. Sometime non-public/released
-> compiler toolchain has been used.
-
-LTP binaries?
+Conceptually speaking, it isn't very clear because acceptance tests
+are meant to test features requested by the customer during the
+requisite phase for a specific software release. The QEMU project does
+not have a formal requisite phase where features added to one software
+version are discussed with the customers. In this case, the QEMU
+acceptance tests are not accepting a use case or requested feature of
+a release. Eventually, those tests may not be a blocker to a release
+if some of them fail. Thus, calling them acceptance, may confuse
+people working with tests.
 
 >
-> See for example the test referred tests the bFLT loader (beside
-> testing userland Linux binary for Cortex-M).
+> thanks
+> -- PMM
 >
-> Another example is the Sony PlayStation2 binary testing the
-> O32 ABI and multiple opcodes from the TX79 SIMD core:
-> https://www.mail-archive.com/qemu-devel@nongnu.org/msg782493.html
->
-> Personally I'm not interested in writing a test for a loader or
-> multiple opcodes when we have pre-built binaries. For the opcodes
-> coverage I'd use a TCG plugin to confirm the opcodes have been
-> used.
->
-> If you think these tests belong to tests/tcg/, I am OK to put
-> them they, but I don't think adding the Avocado buildsys
-> machinery to the already-complex tests/tcg/ Makefiles is going
-> to help us...
-
-No I wasn't advocating that - it was more a comment on the naming of
-things. -ETOOMUCHFRIDAYBIKESHEDDING...
-
->
-> Regards,
->
-> Phil.
-
-
---=20
-Alex Benn=C3=A9e

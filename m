@@ -1,265 +1,190 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp4024675lfm;
-        Mon, 24 May 2021 18:19:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxJca0MYjM0fxQ6Ah458H3lzWU/YWQsY12LZi1okXCl4drZ33rUOa0kqgkY5cMWIODZKzQ8
-X-Received: by 2002:a05:620a:22ca:: with SMTP id o10mr31850597qki.258.1621905575773;
-        Mon, 24 May 2021 18:19:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621905575; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp3559095lfm;
+        Mon, 24 May 2021 06:27:50 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwEwzSv/K+yNjlgEIu/C8PA/MDFKNws48zl3ykAJ5cUuq6QznMp6N2Kiz8Xwab94IOXp0/v
+X-Received: by 2002:a67:f791:: with SMTP id j17mr19579700vso.7.1621862870609;
+        Mon, 24 May 2021 06:27:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621862870; cv=none;
         d=google.com; s=arc-20160816;
-        b=PgIfRyCUTHAxQBrZsXrQsqCeUIq0RH2VxqvIuRHKrNE/GYy0O+w5CLP2dINyGkEOVo
-         MtM0dwlHx1CuaV5L9CpPIra8ZmGi3HA5pe5v7eWACYPoiNb0ysYujus+5WOVefQOXdyk
-         esVjxbVU/Ce+2xQLtY+/j+7h4Yig95D/mdKzqeczckzrLJyhsHM6yxymvcfQgUQfM/S5
-         9qcpBsMRekFRVTc6D6eyn+t0qxwzxiE+FTtEt34vGJijxa34juwRVWXS+DHAp/Oio50V
-         /gXU/JFXzEp6877ht8aa0q7DNMLqMfJ8gV3H5QyBP1SQSOwtqVG3E89gwCGKR8/G+6ah
-         ya1Q==
+        b=axZMvZV0rpUK1Y00GYdrjraE78FeBRBNw6l/56msWJqqA++usUARobl9taWaySUBQa
+         bB85kWZYOp8iz/cCemAt3OyTmMkdV0Cd8V/auJMSVKjjyzejf8uyG/D1mf/JRLewy6Qe
+         J4On9QYUlbjbmgGPcAzbUcpcg1f5505P/mKCuZn4yB6ogNf2Azf3ASZRVltrDfzGwr3i
+         U0YYi/4kxewBn86r2EfhxcOkfQ6w6fEAZmW01j32W7kzsLZav1GPiWXBAoBIDYh5GWRr
+         zmHcyVA9xB3aCJ4b9TU0Ul1EMcK2kRYEUzbrbTkmwznLfAIGswV50TC33+IgDwFN6ego
+         JHSg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=N7jVRHW3AUV0601YS+Dov38j2vXMjfTkQdrpVyl2dkA=;
-        b=RBweC7sb7QXySt2pAZgTlFZ+aPvEFS+T5reFnwhu/KQQZ6sAM+eEc/DSApdy+iHpMc
-         STnRA6K7FT7F4gFrPXU/5a8BTIgPeCKJU5xJFykVWOUaS6IofNCR+3WOKQEymy1jJWmq
-         eJ6ecMTpZYfjtc2Y4aY5D4Hw5Vp8n989ZVGqNK+kWnIDJ5DWfRcxd/Sfbtmj7KCDnK9/
-         fdigR2aIChuvaQNOkXE7liDNcLM0mTETNPGvjdvagkryH6N07nC62PIfxl3Pi1D9YvuB
-         5I7TxeOhQGi2jeLj5CrFmSV9+/7nTAdBP6mDpPzijBTaNS1SaumLZZaj/pR8fIYYKOWH
-         TNWw==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=J9DK0Dbta1o4so8aXK5OOwR7RIp1mZfpNmlASzwGyvw=;
+        b=gg3xOfZTD9lZxgFj6J7Y5QNIH/W5u2dg4iPhPh809geh7IIZNuLQSFzf7nhYv4K3nA
+         /E46m5c3sUXOph0BUq4lAFwM7mJe2cCMm5+onmVay3za256uh6qlqxH6FLoHVyMROhHO
+         17CwqowSQj5/8+s32OvBubG1ocCmjgnnT9oJbdmHw3ZZXbtu33lsf1VYb+t2yFcDWnlD
+         pqsdCHqfYu7N0tEQ00mOVDpWi+rIUoFB6SjoH6Ly7/rQJMZRHcZNrF3//V0Bnh4Sy3Qt
+         L/8+llzZLltTCU05AXRa8kJVglL8YspJrnDnaKyYgbajY9m6bzr86YquiZnZ8Q+/nrS/
+         rJNA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=eMLKO3T9;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=rucD0xV0;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l196si9254984qke.349.2021.05.24.18.19.35
+        by mx.google.com with ESMTPS id v13si2359096vsi.43.2021.05.24.06.27.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 May 2021 18:19:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 24 May 2021 06:27:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=eMLKO3T9;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45814 helo=lists1p.gnu.org)
+       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=rucD0xV0;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:38792 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1llLjL-0002kh-0A
-	for alex.bennee@linaro.org; Mon, 24 May 2021 21:19:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53892)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1llAcX-0002Ve-Sp
+	for alex.bennee@linaro.org; Mon, 24 May 2021 09:27:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51664)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1llLUm-0001rT-KW
- for qemu-devel@nongnu.org; Mon, 24 May 2021 21:04:33 -0400
-Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035]:53049)
+ (Exim 4.90_1) (envelope-from <jamie@nuviainc.com>)
+ id 1ll6A8-0001OO-QD
+ for qemu-arm@nongnu.org; Mon, 24 May 2021 04:42:12 -0400
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:44898)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1llLUS-0001mC-8U
- for qemu-devel@nongnu.org; Mon, 24 May 2021 21:04:32 -0400
-Received: by mail-pj1-x1035.google.com with SMTP id q6so15860190pjj.2
- for <qemu-devel@nongnu.org>; Mon, 24 May 2021 18:04:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=N7jVRHW3AUV0601YS+Dov38j2vXMjfTkQdrpVyl2dkA=;
- b=eMLKO3T9rKM4N6arzJQkV5pQaTPD/9QWfDw1Kf5w4ce//MukpRhAda+M7uMIcWZ939
- eSPQ7aQlIPG/SxUl461xzwAPZJaMAi0yFSG88rX8Y2LidHD9U1pLUVQD0v1G9C8dsvhJ
- uhUFx8Rmdmdyr2YmSRUpm0szvgW002AwIkW1XDY5CAkplcA17USHSkEOyvy8zfHe4NY5
- pyVMEAqu2ks+wa+c6/R1aBSZQQn6N6LfictYWcdxY+rIOtzaYYlO3wEaE73i9Psp4fQN
- EZLrWBeOi1+BXRR3u5x8Rj/Qyyj06kKQnqRwp5vbPbKxbup+vQ3C5Llp4mpPFP8A5s4w
- OyZg==
+ (Exim 4.90_1) (envelope-from <jamie@nuviainc.com>)
+ id 1ll6A5-0003Ig-QK
+ for qemu-arm@nongnu.org; Mon, 24 May 2021 04:42:12 -0400
+Received: by mail-wr1-x42c.google.com with SMTP id i17so27625969wrq.11
+ for <qemu-arm@nongnu.org>; Mon, 24 May 2021 01:42:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=J9DK0Dbta1o4so8aXK5OOwR7RIp1mZfpNmlASzwGyvw=;
+ b=rucD0xV0Y3209kjBK4gIa3Hgg4CSa7F2DyY4QOUMtZrniYnBx575w4lj/eLQOmZuh1
+ Vet3m/sgi8ZI9Pl+1QuzYsBqSzbz+pqZqoIc5DVPg7Qb/rRPLDGrsKd54PTnXQXRmdQ0
+ s5Jj4qAnU6D7+zOs8YqG9A2AfZ4tb9kq84P1U2Vk7KLiVrcxMiypTaaTQTrMXYEyZ9O+
+ XlbKka3NuUz85mgeLc9VEEqKJyKqUkiaPUe0Ku59vc1Qwvr8qak+Vkk1zU4SN6DkCcxe
+ 26BVBNAZON81c/i6av+fZP71EHGRfUYH/OkucDJDxIQbhkvsfLr8wM9ZLO6rDSG/C7EZ
+ lvUw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=N7jVRHW3AUV0601YS+Dov38j2vXMjfTkQdrpVyl2dkA=;
- b=gtSPDJcFLpXPc9WlP2OW8LWL3u/iAS+SduUcj72yGw4UjYVJv7pB1iV9ne8vzQuYT/
- D+ld5miIGPQLdEQrOENxbLV+rZFtEcSO1Kf607b14UM/IG+pgvZ4/l3/DKSrje72y0pk
- Jlk2XS873vzw0chh91Anazh+EjpS598tgNW+vzXqEuBG277svcN+kKrHJqZJmtK3UQwV
- 0yUPTcC19RFyg6YAq3oPoZNaos/XqRjO0DzfgLR4xUzgVyiHH4I2eGqyEX0s1vC+Xodx
- Ih/HgBRZ+OjNe3omsKXhuhs6c9nFpcF54vtVU0x/XOT0y7PmVrmFl2ocnOhugG5can8b
- AcEg==
-X-Gm-Message-State: AOAM531cjLVmSV3vzDL2Pxy/V+3J5i55bm5lBJ6xk1Pjv5TBc6fF46Rs
- 7nOdMIHnYo5ROtAwjENYZYVmlU0w+Bw6lA==
-X-Received: by 2002:a17:902:b687:b029:eb:6491:b3f7 with SMTP id
- c7-20020a170902b687b02900eb6491b3f7mr28103186pls.38.1621904650772; 
- Mon, 24 May 2021 18:04:10 -0700 (PDT)
-Received: from localhost.localdomain (174-21-70-228.tukw.qwest.net.
- [174.21.70.228])
- by smtp.gmail.com with ESMTPSA id b1sm13742645pgf.84.2021.05.24.18.04.10
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=J9DK0Dbta1o4so8aXK5OOwR7RIp1mZfpNmlASzwGyvw=;
+ b=JBKehuPDARWr5zWWpn5ufEdDPISLXExoBYapGjBaXlAJw0dKxlva9ML0CngWzd4CQA
+ FWMv9OfWB4hsdZ6gdl6S/5mwbzVDdjWhUAfoTHQQ/iKOoBRvXChYzCpWZNB8bnAFqD0G
+ CPpYJ4F7Xh+tal/FHjBEvh+0HMZ0oxZ//klmSckPlE0unFJicF9GWED38tlD0ERmhdzO
+ DH0EqIb879GhEu47n5ffmB6AVUnKdRJ0Ow2wnakrQjtYQ6+Ck5Ml0eu9xWmH8Pubiq2X
+ 8l6eVmkOZJNFQlZv5nolStSs49UoU0Zo25OLaDMChz5Qi3Qg1jP4l6Jz/A113NridsV2
+ qZNQ==
+X-Gm-Message-State: AOAM531WUFVwQ9g1j9d18CULSqYsZcYBhI1DoAnvv4sag23/TKRhbpfE
+ 7DRC9bMhOhKHnRR/ldKBClOkDl8+Q7jJKv3UT7ONe65w5LgtbjzqRI2CLkT+qkezNvEhlxo8HfG
+ 5690dVCL9+yzcrySqeSSq42Zn48sbl/Cps2fYw8ct6sbPIPYc0l3QlPwbtiIRNo1QWw==
+X-Received: by 2002:adf:fe49:: with SMTP id m9mr21290175wrs.125.1621845724468; 
+ Mon, 24 May 2021 01:42:04 -0700 (PDT)
+Received: from localhost ([82.44.17.50])
+ by smtp.gmail.com with ESMTPSA id m9sm13749052wrs.36.2021.05.24.01.42.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 24 May 2021 18:04:10 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v7 18/92] target/arm: Implement SVE2 complex integer add
-Date: Mon, 24 May 2021 18:02:44 -0700
-Message-Id: <20210525010358.152808-19-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210525010358.152808-1-richard.henderson@linaro.org>
-References: <20210525010358.152808-1-richard.henderson@linaro.org>
+ Mon, 24 May 2021 01:42:03 -0700 (PDT)
+From: Jamie Iles <jamie@nuviainc.com>
+To: qemu-arm@nongnu.org
+Subject: [PATCH] target/arm: fix missing exception class
+Date: Mon, 24 May 2021 09:42:01 +0100
+Message-Id: <20210524084201.1665973-1-jamie@nuviainc.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1035;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1035.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=jamie@nuviainc.com; helo=mail-wr1-x42c.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Approved-At: Mon, 24 May 2021 09:27:30 -0400
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mzVjwyBU6npA
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Jamie Iles <jamie@nuviainc.com>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: D4rKov+RM8UW
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
-v2: Fix subtraction ordering (laurent desnogues).
----
- target/arm/helper-sve.h    | 10 +++++++++
- target/arm/sve.decode      |  9 ++++++++
- target/arm/sve_helper.c    | 42 ++++++++++++++++++++++++++++++++++++++
- target/arm/translate-sve.c | 31 ++++++++++++++++++++++++++++
- 4 files changed, 92 insertions(+)
+The DAIF and PAC checks used raise_exception_ra to raise an exception
+and unwind CPU state but raise_exception_ra is currently designed for
+handling data aborts as the syndrome is partially precomputed and
+encoded in the TB and then merged in merge_syn_data_abort when handling
+the data abort.  Using raise_exception_ra for DAIF and PAC checks
+results in an empty syndrome being retrieved from data[2] in
+restore_state_to_opc and setting ESR to 0.  This manifested as:
 
-diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
-index 4861481fe0..c2155cc544 100644
---- a/target/arm/helper-sve.h
-+++ b/target/arm/helper-sve.h
-@@ -2392,3 +2392,13 @@ DEF_HELPER_FLAGS_4(sve2_bgrp_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_4(sve2_bgrp_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_4(sve2_bgrp_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_4(sve2_bgrp_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+
-+DEF_HELPER_FLAGS_4(sve2_cadd_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve2_cadd_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve2_cadd_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve2_cadd_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+
-+DEF_HELPER_FLAGS_4(sve2_sqcadd_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve2_sqcadd_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve2_sqcadd_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve2_sqcadd_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-diff --git a/target/arm/sve.decode b/target/arm/sve.decode
-index 7cb89a0d47..7508b901d0 100644
---- a/target/arm/sve.decode
-+++ b/target/arm/sve.decode
-@@ -1226,3 +1226,12 @@ EORTB           01000101 .. 0 ..... 10010 1 ..... .....  @rd_rn_rm
- BEXT            01000101 .. 0 ..... 1011 00 ..... .....  @rd_rn_rm
- BDEP            01000101 .. 0 ..... 1011 01 ..... .....  @rd_rn_rm
- BGRP            01000101 .. 0 ..... 1011 10 ..... .....  @rd_rn_rm
-+
-+#### SVE2 Accumulate
-+
-+## SVE2 complex integer add
-+
-+CADD_rot90      01000101 .. 00000 0 11011 0 ..... .....  @rdn_rm
-+CADD_rot270     01000101 .. 00000 0 11011 1 ..... .....  @rdn_rm
-+SQCADD_rot90    01000101 .. 00000 1 11011 0 ..... .....  @rdn_rm
-+SQCADD_rot270   01000101 .. 00000 1 11011 1 ..... .....  @rdn_rm
-diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
-index 3cb256e4a5..9015e68cb8 100644
---- a/target/arm/sve_helper.c
-+++ b/target/arm/sve_helper.c
-@@ -1319,6 +1319,48 @@ DO_BITPERM(sve2_bgrp_d, uint64_t, bitgroup)
- 
- #undef DO_BITPERM
- 
-+#define DO_CADD(NAME, TYPE, H, ADD_OP, SUB_OP)                  \
-+void HELPER(NAME)(void *vd, void *vn, void *vm, uint32_t desc)  \
-+{                                                               \
-+    intptr_t i, opr_sz = simd_oprsz(desc);                      \
-+    int sub_r = simd_data(desc);                                \
-+    if (sub_r) {                                                \
-+        for (i = 0; i < opr_sz; i += 2 * sizeof(TYPE)) {        \
-+            TYPE acc_r = *(TYPE *)(vn + H(i));                  \
-+            TYPE acc_i = *(TYPE *)(vn + H(i + sizeof(TYPE)));   \
-+            TYPE el2_r = *(TYPE *)(vm + H(i));                  \
-+            TYPE el2_i = *(TYPE *)(vm + H(i + sizeof(TYPE)));   \
-+            acc_r = ADD_OP(acc_r, el2_i);                       \
-+            acc_i = SUB_OP(acc_i, el2_r);                       \
-+            *(TYPE *)(vd + H(i)) = acc_r;                       \
-+            *(TYPE *)(vd + H(i + sizeof(TYPE))) = acc_i;        \
-+        }                                                       \
-+    } else {                                                    \
-+        for (i = 0; i < opr_sz; i += 2 * sizeof(TYPE)) {        \
-+            TYPE acc_r = *(TYPE *)(vn + H(i));                  \
-+            TYPE acc_i = *(TYPE *)(vn + H(i + sizeof(TYPE)));   \
-+            TYPE el2_r = *(TYPE *)(vm + H(i));                  \
-+            TYPE el2_i = *(TYPE *)(vm + H(i + sizeof(TYPE)));   \
-+            acc_r = SUB_OP(acc_r, el2_i);                       \
-+            acc_i = ADD_OP(acc_i, el2_r);                       \
-+            *(TYPE *)(vd + H(i)) = acc_r;                       \
-+            *(TYPE *)(vd + H(i + sizeof(TYPE))) = acc_i;        \
-+        }                                                       \
-+    }                                                           \
-+}
-+
-+DO_CADD(sve2_cadd_b, int8_t, H1, DO_ADD, DO_SUB)
-+DO_CADD(sve2_cadd_h, int16_t, H1_2, DO_ADD, DO_SUB)
-+DO_CADD(sve2_cadd_s, int32_t, H1_4, DO_ADD, DO_SUB)
-+DO_CADD(sve2_cadd_d, int64_t,     , DO_ADD, DO_SUB)
-+
-+DO_CADD(sve2_sqcadd_b, int8_t, H1, DO_SQADD_B, DO_SQSUB_B)
-+DO_CADD(sve2_sqcadd_h, int16_t, H1_2, DO_SQADD_H, DO_SQSUB_H)
-+DO_CADD(sve2_sqcadd_s, int32_t, H1_4, DO_SQADD_S, DO_SQSUB_S)
-+DO_CADD(sve2_sqcadd_d, int64_t,     , do_sqadd_d, do_sqsub_d)
-+
-+#undef DO_CADD
-+
- #define DO_ZZI_SHLL(NAME, TYPEW, TYPEN, HW, HN) \
- void HELPER(NAME)(void *vd, void *vn, uint32_t desc)           \
- {                                                              \
-diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-index 3ea42758fc..27eb6f3233 100644
---- a/target/arm/translate-sve.c
-+++ b/target/arm/translate-sve.c
-@@ -6285,3 +6285,34 @@ static bool trans_BGRP(DisasContext *s, arg_rrr_esz *a)
+  kvm [571]: Unknown exception class: esr: 0x000000 –
+  Unknown/Uncategorized
+
+when launching a KVM guest when the host qemu used a CPU supporting
+EL2+pointer authentication and enabling pointer authentication in the
+guest.
+
+As the syndrome and exception class is not encoded in the TB, use
+cpu_restore_state and raise_exception to restore the CPU state and raise
+the exception with the correct syndrome.
+
+Fixes: 0d43e1a2d29a ("target/arm: Add PAuth helpers")
+Cc: Richard Henderson <richard.henderson@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Jamie Iles <jamie@nuviainc.com>
+---
+ target/arm/helper-a64.c   | 12 +++++++-----
+ target/arm/pauth_helper.c |  4 +++-
+ 2 files changed, 10 insertions(+), 6 deletions(-)
+
+diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
+index 9cc3b066e28b..83991d783fc1 100644
+--- a/target/arm/helper-a64.c
++++ b/target/arm/helper-a64.c
+@@ -72,11 +72,13 @@ static void daif_check(CPUARMState *env, uint32_t op,
+ {
+     /* DAIF update to PSTATE. This is OK from EL0 only if UMA is set.  */
+     if (arm_current_el(env) == 0 && !(arm_sctlr(env, 0) & SCTLR_UMA)) {
+-        raise_exception_ra(env, EXCP_UDEF,
+-                           syn_aa64_sysregtrap(0, extract32(op, 0, 3),
+-                                               extract32(op, 3, 3), 4,
+-                                               imm, 0x1f, 0),
+-                           exception_target_el(env), ra);
++        CPUState *cs = env_cpu(env);
++        cpu_restore_state(cs, ra, true);
++        raise_exception(env, EXCP_UDEF,
++                        syn_aa64_sysregtrap(0, extract32(op, 0, 3),
++                                            extract32(op, 3, 3), 4,
++                                            imm, 0x1f, 0),
++                        exception_target_el(env));
      }
-     return do_sve2_zzw_ool(s, a, fns[a->esz], 0);
  }
-+
-+static bool do_cadd(DisasContext *s, arg_rrr_esz *a, bool sq, bool rot)
-+{
-+    static gen_helper_gvec_3 * const fns[2][4] = {
-+        { gen_helper_sve2_cadd_b, gen_helper_sve2_cadd_h,
-+          gen_helper_sve2_cadd_s, gen_helper_sve2_cadd_d },
-+        { gen_helper_sve2_sqcadd_b, gen_helper_sve2_sqcadd_h,
-+          gen_helper_sve2_sqcadd_s, gen_helper_sve2_sqcadd_d },
-+    };
-+    return do_sve2_zzw_ool(s, a, fns[sq][a->esz], rot);
-+}
-+
-+static bool trans_CADD_rot90(DisasContext *s, arg_rrr_esz *a)
-+{
-+    return do_cadd(s, a, false, false);
-+}
-+
-+static bool trans_CADD_rot270(DisasContext *s, arg_rrr_esz *a)
-+{
-+    return do_cadd(s, a, false, true);
-+}
-+
-+static bool trans_SQCADD_rot90(DisasContext *s, arg_rrr_esz *a)
-+{
-+    return do_cadd(s, a, true, false);
-+}
-+
-+static bool trans_SQCADD_rot270(DisasContext *s, arg_rrr_esz *a)
-+{
-+    return do_cadd(s, a, true, true);
-+}
+ 
+diff --git a/target/arm/pauth_helper.c b/target/arm/pauth_helper.c
+index cd6df18150bf..c90a3f765b9c 100644
+--- a/target/arm/pauth_helper.c
++++ b/target/arm/pauth_helper.c
+@@ -385,7 +385,9 @@ static uint64_t pauth_strip(CPUARMState *env, uint64_t ptr, bool data)
+ static void QEMU_NORETURN pauth_trap(CPUARMState *env, int target_el,
+                                      uintptr_t ra)
+ {
+-    raise_exception_ra(env, EXCP_UDEF, syn_pactrap(), target_el, ra);
++    CPUState *cs = env_cpu(env);
++    cpu_restore_state(cs, ra, true);
++    raise_exception(env, EXCP_UDEF, syn_pactrap(), target_el);
+ }
+ 
+ static void pauth_check_trap(CPUARMState *env, int el, uintptr_t ra)
 -- 
-2.25.1
+2.30.2
 

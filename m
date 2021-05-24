@@ -1,113 +1,115 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp4520055lfm;
-        Tue, 25 May 2021 07:13:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzsAgyHslPuuSwrnY74xVFRSxNabSEpHFmC6odmTICIZkL4zAin1UzNaGChPsUJ2C8IvWm2
-X-Received: by 2002:a05:6402:44:: with SMTP id f4mr31963085edu.364.1621951982712;
-        Tue, 25 May 2021 07:13:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621951982; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp3719942lfm;
+        Mon, 24 May 2021 09:51:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzXtVBQSgjXEvCgGjU+VeBFSF9nrrEgs/8wkd1m5Qeo5w4rD3VVEjcsBeBQ6D4YXkAZob5d
+X-Received: by 2002:a67:15c7:: with SMTP id 190mr22777380vsv.40.1621875089904;
+        Mon, 24 May 2021 09:51:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621875089; cv=none;
         d=google.com; s=arc-20160816;
-        b=ihBMD7IUXuBURb6pKQBL0zurF3nRAABFZTtoOdhu0fejDDFmgKSq9DVPyFT9lst3qx
-         Y+Qw83bPpcWGIocL8njxpwcHx3LIW8/mWIMREboriAKI6tgluQzBALOF9cQcWiSN9NUp
-         IPSCSxD8/U5GiLLl74MWfCo/+ImbdmWKXqY4QDq7EKL2YMTv/vQRfAdBXitLU4rImCbg
-         vAhLujDnVc+ok3uYsK+tLlNa3OWXizft4GSx243JDmZDIl2gQntbQM24WWJ9q3P779iI
-         lWb+NCkhYAQaMpuuDjZVIIgi0kqg7waAiZ5VXOnwQMbK+ds1RAlNPzWDSHiPbXPnIiU+
-         0YOw==
+        b=MRtIarUWKIWgz7wXGvR6/tG4CoNDbUMnCrzwiOvs3vnSKb4loQ5YXbk4vq4IlTN85E
+         Vo4Ecj3SD6rOYJZUU8hEWthV2wE2BJl8gDdGN+ZC0QIcUpF7ixuKi485MJaJt6ikyoW/
+         lrzKI6vaVi2kiSTDBZxFWFoe0cmYmE1BXQThiYF9Qat4PkM7buuEmKMVO3dT3eWRlOg9
+         U6eoBrwPIzijcnFf7xzL0uUH/yc+mQmzEUfH6TYaIRZvGJUcCq+sRezIZKAsE0dhau0O
+         lScXD3hVIoMfqDSODCtFQC82K93sKzJ5WNY5I2E2u3sE3+1pUZQaT+ckUfnqSV7XnbjO
+         FNAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=iwB49LVCIjXSnzvqMm0GWsschCGQ4n6LHKQlhxMMr6M=;
-        b=N61jS6V5PxASxu0nJYdiM+SDyZvi/NppUjBcudF35e+Fm+pEYcUYynlCu8sAkQ/tyF
-         wIzKh12G2Gv/HXAufgS8ta+qW1TJaEmnwQ1I6vaBO/4UHW8iTDzyaBcIx4JoCiPnIFo2
-         0PWZYWHCOzBRSfmetC+ZsvtGG18EPIgrBLC3IL6QT16AUc1+FchiVOZDCXADrdWP5bez
-         u3XNySCKhfvFt4UTVCoS3kwvyjREYorJHOhYCBc4qYEQ/XLGSmcqzm53ApxvsbUkl3+g
-         ZLhhBIm0qAHcQ44bTKj9RfAnmW6ft2GqRp5U1O00RjNSvmAtg6rOqyE6uCjUkSRPwBRK
-         WVjQ==
+        bh=uNuQXjOZ34Ga21JSHpx/ovGuTkcgjItUCRLZQ7OO4Cs=;
+        b=tS2Q0dGrgmOTGGzQb1sArZ2d2FEsIjAsZ8ulxs50yJ0M0oQYXjG1vhdFYehdDFxZNh
+         7t8BvN6rELvXFOmiMDEsUVgxhwiifbYsZu1Z/t7f7N83Y3TisgSOBXAZbcAzO+jMgBIb
+         jbkhQGCqZWLE7wnQ+MktTPXoVE/g2GvGxKEhSoGW5DGykzkFCxZ4WhsHfih5qQXuv92H
+         4G6qnJryzTdMgAd84E/fF+wz9gnjoDyWXxdPoEHa+AYNPMjy+ZEU/y8ozAKq+4K2/dta
+         PU+Xc2U4P+aE6EStGVJP2xqLan7b8G7CCrUmwkbrylPDMd1Dhyo1BNzoPobvs6r4Rbfm
+         3hPg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=c3p4m7+v;
+       dkim=pass header.i=@linaro.org header.s=google header.b=mumWcpVa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u11si16502892edq.89.2021.05.25.07.13.02
+        by mx.google.com with ESMTPS id m15si821541vkf.28.2021.05.24.09.51.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 May 2021 07:13:02 -0700 (PDT)
+        Mon, 24 May 2021 09:51:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=c3p4m7+v;
+       dkim=pass header.i=@linaro.org header.s=google header.b=mumWcpVa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:41508 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:46928 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1llXnp-0005dW-Is
-	for alex.bennee@linaro.org; Tue, 25 May 2021 10:13:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44678)
+	id 1llDnd-00013g-7B
+	for alex.bennee@linaro.org; Mon, 24 May 2021 12:51:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44074)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1llXnd-0005b9-89; Tue, 25 May 2021 10:12:49 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336]:33443)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1llDZd-0007Mo-W1
+ for qemu-arm@nongnu.org; Mon, 24 May 2021 12:37:03 -0400
+Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b]:40793)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1llXna-0006Ss-Kz; Tue, 25 May 2021 10:12:48 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- z137-20020a1c7e8f0000b02901774f2a7dc4so1745842wmc.0; 
- Tue, 25 May 2021 07:12:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=iwB49LVCIjXSnzvqMm0GWsschCGQ4n6LHKQlhxMMr6M=;
- b=c3p4m7+vkuKfwCkMHcCrx/dQ4evMS36z6tWU/TnNKEjDgSX2G8hAxfK3y5E0wo9NH/
- 7Ctjn0zkKMe+UKrMT/WF+hgg1/f9yfAD1nSoDUf6vOqlQhchFiIsb8FnFpBomlBuoNyg
- olZSbngeEIIxmToVRfJ3pb5qwdKqJBYX6KN1JuLIhad3NTwtannQRTx+GJOmFsGTwAwq
- ANknc0srYv8e8ehei3jG0ETGrysDwrrJlImvELi2wKtu5Gh9QVU0wBpMqpEsC1IQPwL7
- ZDJd8at1mS4qj+0VXWtCnG/LZd0eCLX7CUBDJSrVwmmg58zI6IcyqrLhimbrdMNfRSbm
- 5LqQ==
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1llDZZ-0002qk-Vh
+ for qemu-arm@nongnu.org; Mon, 24 May 2021 12:37:01 -0400
+Received: by mail-pg1-x52b.google.com with SMTP id j12so20487231pgh.7
+ for <qemu-arm@nongnu.org>; Mon, 24 May 2021 09:36:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:references:from:message-id:date:user-agent:mime-version
+ :in-reply-to:content-language:content-transfer-encoding;
+ bh=uNuQXjOZ34Ga21JSHpx/ovGuTkcgjItUCRLZQ7OO4Cs=;
+ b=mumWcpVavGzYztpEEAidsbw3DJ8T1wi978t942bnkTyeIWbokvgxW0QLYK9/WiztE5
+ DxiXfjJLyTXS5oqF+NunnzQAJ2j54aM48e78VFK0k+9kU8A1FxjjoiBTol13rgEi/POn
+ h9vd5xLl2Ri/xLlM97aYceNQxYkxZeENmrt8huH1nwFDkKATcIa+J4EHwczVggVHzIJW
+ EDJ8hfM9BHlDMhgZeUb37aeNTTGSZPugMYZlD4TQ8t43vFs3WIOerevH6av2pH4PUqhu
+ y+ShTpWMDGHZgnHwBBzUWBNJkTlYdc1c0IqehvJvRFSmHCLka6ds7TGn+ry2rusea+Fr
+ pNQw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:subject:to:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=iwB49LVCIjXSnzvqMm0GWsschCGQ4n6LHKQlhxMMr6M=;
- b=bQ4hu4xwB093kxocODvxAnOTGk+8GtR4i7Fj/bd31kr4h82RX9lastiNqHCR/j6bmZ
- KWcz9cvgGL83jKX8LIHZ1ES/MBqPE4jvj0euDac3jsUtbszM8F8ixBDRMFlTW8d9Nyj0
- g0wOM8JF118zKgjxmpSVt2dIQOj/EgeQLhBUt/p8tUP1YCMCVRJyodRlnx8aC1OyxguJ
- XzOy0j6Nx6BkvDr2+WrS8Yl+aQcS7HW+rtKpsNyWyKxGkICEdXBeyIBJY7knGpP5rTiW
- SrQc5yd4YAEWAqex6BcR1ZT+Fh6Vb7IZKRrB4eegkxZxL+ljwCpubCVsypu8w3MJFABw
- ybxw==
-X-Gm-Message-State: AOAM530T1lMGQ7IdBMZ85CY7quYpM+sGD1yb5vzX6IsTP0G42hGYXjZC
- 9uhSiZ+VSZ2sKsUDP6A07PA=
-X-Received: by 2002:a1c:b306:: with SMTP id c6mr4062347wmf.37.1621951963940;
- Tue, 25 May 2021 07:12:43 -0700 (PDT)
-Received: from [192.168.1.36] (31.red-83-51-215.dynamicip.rima-tde.net.
- [83.51.215.31])
- by smtp.gmail.com with ESMTPSA id g10sm16542900wrq.12.2021.05.25.07.12.42
+ bh=uNuQXjOZ34Ga21JSHpx/ovGuTkcgjItUCRLZQ7OO4Cs=;
+ b=eM/ITKECQ0M0Dq5JX1a6y8ETHwVbysD+o53/Q7t5yz6HXXK+lpIjUVKldnqhiPzOul
+ pLaZ1xqWap7XEK/Md4JD6A1tuXG1trinJ2QC3VsqgoC45cDSn0zp8rCTWZB79g5ViKk6
+ vr5ELymhsnF2lKWNn3lu7s3C8sNuoLtS4mvXJGyvaBHk2xjKegXoX59R4QqrPRKIwvAv
+ qIp7tBSw/uCFWKyU4s4qY5jw0+k3NrwNPtb5p1HidzoEvt8gBoopqhxl9bIIM2g1TqyV
+ aA+KhFE5+roRggrtK0xAt8Mbb4hHsEvSLkEbJ2yriVijxcNVSU7kuSjjAHYJrAKtoc9o
+ LW6Q==
+X-Gm-Message-State: AOAM531/BuL6zIZcjrR2l9bvmqbUswhhtagX4aCCMiVXYihgSHtUQLbD
+ w0vUW+Ue25NTgyYh+/Da2kQLFg==
+X-Received: by 2002:a65:5a08:: with SMTP id y8mr9973555pgs.199.1621874216502; 
+ Mon, 24 May 2021 09:36:56 -0700 (PDT)
+Received: from [192.168.1.11] (174-21-70-228.tukw.qwest.net. [174.21.70.228])
+ by smtp.gmail.com with ESMTPSA id
+ p16sm5969759pgl.60.2021.05.24.09.36.55
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 25 May 2021 07:12:42 -0700 (PDT)
-Subject: Re: [PATCH v7 00/23] cpu: Introduce SysemuCPUOps structure
-To: qemu-devel@nongnu.org
-References: <20210517105140.1062037-1-f4bug@amsat.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <4810c3c9-57c5-3355-9de7-5f45a0944ed6@amsat.org>
-Date: Tue, 25 May 2021 16:12:41 +0200
+ Mon, 24 May 2021 09:36:55 -0700 (PDT)
+Subject: Re: [PATCH 5/9] target/arm: Fix return values in fp_sysreg_checks()
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20210520152840.24453-1-peter.maydell@linaro.org>
+ <20210520152840.24453-6-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <92a685d6-2ec7-d7a7-b722-8a0c5b8f177c@linaro.org>
+Date: Mon, 24 May 2021 09:36:54 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <20210517105140.1062037-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <20210520152840.24453-6-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x336.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -120,183 +122,24 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-riscv@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rO9dPUdkXLtl
+X-TUID: OYUCvcFEp1BC
 
-On 5/17/21 12:51 PM, Philippe Mathieu-Daudé wrote:
-> Missing review: 2-5 (new) and 13
+On 5/20/21 8:28 AM, Peter Maydell wrote:
+> The fp_sysreg_checks() function is supposed to be returning an
+> FPSysRegCheckResult, which is an enum with three possible values.
+> However, three places in the function "return false" (a hangover from
+> a previous iteration of the design where the function just returned a
+> bool).  Make these return FPSysRegCheckFailed instead (for no
+> functional change, since both false and FPSysRegCheckFailed are
+> zero).
+> 
+> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
+> ---
+>   target/arm/translate-vfp.c | 6 +++---
+>   1 file changed, 3 insertions(+), 3 deletions(-)
 
-Ping for review? :)
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-> This series is inspired on Claudio TCG work.
-> 
-> Instead of separate TCG from other accelerators, here we
-> separate sysemu operations (system VS user).
-> 
-> Since v6:
-> - Rebased (3 targets removed, Claudio's target/i386 series merged)
-> - Addressed Richard & David comments
-> 
-> Since v5:
-> - Rework patch 10 after Peter Maydell explanation on v3:
->   https://www.mail-archive.com/qemu-devel@nongnu.org/msg800849.html
-> 
-> Since v4:
-> - Removed watchpoint patches (need more work) (Richard)
-> - Merged patch 1 & 7 "Move CPUClass::vmsd to SysemuCPUOps" (Eduardo)
-> - Reworded cpu_virtio_is_big_endian description (Greg)
-> - Move write_elf() in target/riscv/cpu.c (rebased on top of 43a965888)
-> - Added R-b tags
-> 
-> Since v3:
-> - SysemuCPUOps const (Richard)
-> - added missing xtensa #ifdef'ry
-> - added missing aa64/sve #ifdef'ry
-> - added Laurent R-b
-> 
-> Since v2:
-> - fixed lm32/unicore32
-> - remove USER_ONLY ifdef'ry from "cpu.h" (Claudio)
-> 
-> Since v1:
-> - Name 'sysemu' (Claudio)
-> - change each field progressively (Richard)
-> 
-> $ git backport-diff
-> Key:
-> [----] : patches are identical
-> [####] : number of functional differences between upstream/downstream patch
-> [down] : patch is downstream-only
-> The flags [FC] indicate (F)unctional and (C)ontextual differences, respective=
-> ly
-> 
-> 001/23:[down] 'NOTFORMERGE target/arm: Restrict MTE code to softmmu'
-> 002/23:[down] 'cpu: Restrict target cpu_do_transaction_failed() handlers to s=
-> ysemu'
-> 003/23:[down] 'cpu: Restrict target cpu_do_unaligned_access() handlers to sys=
-> emu'
-> 004/23:[down] 'cpu: Remove duplicated 'sysemu/hw_accel.h' header'
-> 005/23:[down] 'cpu: Split as cpu-common / cpu-sysemu'
-> 006/23:[0002] [FC] 'cpu: Un-inline cpu_get_phys_page_debug and cpu_asidx_from=
-> _attrs'
-> 007/23:[0010] [FC] 'cpu: Introduce cpu_virtio_is_big_endian()'
-> 008/23:[0088] [FC] 'cpu: Directly use cpu_write_elf*() fallback handlers in p=
-> lace'
-> 009/23:[0022] [FC] 'cpu: Directly use get_paging_enabled() fallback handlers =
-> in place'
-> 010/23:[0026] [FC] 'cpu: Directly use get_memory_mapping() fallback handlers =
-> in place'
-> 011/23:[0007] [FC] 'cpu: Assert DeviceClass::vmsd is NULL on user emulation'
-> 012/23:[0004] [FC] 'cpu: Rename CPUClass vmsd -> legacy_vmsd'
-> 013/23:[down] 'cpu: Move AVR target vmsd field from CPUClass to DeviceClass'
-> 014/23:[0014] [FC] 'cpu: Introduce SysemuCPUOps structure'
-> 015/23:[0003] [FC] 'cpu: Move CPUClass::vmsd to SysemuCPUOps'
-> 016/23:[0002] [FC] 'cpu: Move CPUClass::virtio_is_big_endian to SysemuCPUOps'
-> 017/23:[----] [--] 'cpu: Move CPUClass::get_crash_info to SysemuCPUOps'
-> 018/23:[----] [-C] 'cpu: Move CPUClass::write_elf* to SysemuCPUOps'
-> 019/23:[----] [--] 'cpu: Move CPUClass::asidx_from_attrs to SysemuCPUOps'
-> 020/23:[0055] [FC] 'cpu: Move CPUClass::get_phys_page_debug to SysemuCPUOps'
-> 021/23:[----] [--] 'cpu: Move CPUClass::get_memory_mapping to SysemuCPUOps'
-> 022/23:[----] [--] 'cpu: Move CPUClass::get_paging_enabled to SysemuCPUOps'
-> 023/23:[0012] [FC] 'cpu: Restrict "hw/core/sysemu-cpu-ops.h" to target/cpu.c'
-> 
-> Regards,
-> 
-> Phil.
-> 
-> Philippe Mathieu-Daud=C3=A9 (23):
->   NOTFORMERGE target/arm: Restrict MTE code to softmmu
->   cpu: Restrict target cpu_do_transaction_failed() handlers to sysemu
->   cpu: Restrict target cpu_do_unaligned_access() handlers to sysemu
->   cpu: Remove duplicated 'sysemu/hw_accel.h' header
->   cpu: Split as cpu-common / cpu-sysemu
->   cpu: Un-inline cpu_get_phys_page_debug and cpu_asidx_from_attrs
->   cpu: Introduce cpu_virtio_is_big_endian()
->   cpu: Directly use cpu_write_elf*() fallback handlers in place
->   cpu: Directly use get_paging_enabled() fallback handlers in place
->   cpu: Directly use get_memory_mapping() fallback handlers in place
->   cpu: Assert DeviceClass::vmsd is NULL on user emulation
->   cpu: Rename CPUClass vmsd -> legacy_vmsd
->   cpu: Move AVR target vmsd field from CPUClass to DeviceClass
->   cpu: Introduce SysemuCPUOps structure
->   cpu: Move CPUClass::vmsd to SysemuCPUOps
->   cpu: Move CPUClass::virtio_is_big_endian to SysemuCPUOps
->   cpu: Move CPUClass::get_crash_info to SysemuCPUOps
->   cpu: Move CPUClass::write_elf* to SysemuCPUOps
->   cpu: Move CPUClass::asidx_from_attrs to SysemuCPUOps
->   cpu: Move CPUClass::get_phys_page_debug to SysemuCPUOps
->   cpu: Move CPUClass::get_memory_mapping to SysemuCPUOps
->   cpu: Move CPUClass::get_paging_enabled to SysemuCPUOps
->   cpu: Restrict "hw/core/sysemu-cpu-ops.h" to target/cpu.c
-> 
->  include/hw/core/cpu.h            |  92 +++++---------------
->  include/hw/core/sysemu-cpu-ops.h |  92 ++++++++++++++++++++
->  include/migration/vmstate.h      |   2 -
->  target/alpha/cpu.h               |  12 ++-
->  target/arm/cpu.h                 |   9 +-
->  target/arm/internals.h           |   2 +
->  target/avr/cpu.h                 |   1 +
->  target/cris/cpu.h                |   7 +-
->  target/hexagon/cpu.h             |   3 +
->  target/hppa/cpu.h                |   5 +-
->  target/i386/cpu.h                |   9 +-
->  target/m68k/cpu.h                |  10 ++-
->  target/microblaze/cpu.h          |  11 +--
->  target/mips/cpu.h                |   3 +
->  target/mips/tcg/tcg-internal.h   |   6 +-
->  target/nios2/cpu.h               |   4 +-
->  target/openrisc/cpu.h            |   6 +-
->  target/ppc/cpu.h                 |   5 +-
->  target/ppc/internal.h            |   2 +
->  target/riscv/cpu.h               |  21 +++--
->  target/rx/cpu.h                  |   5 ++
->  target/s390x/cpu.h               |   3 +
->  target/s390x/internal.h          |   2 +
->  target/sh4/cpu.h                 |  11 ++-
->  target/sparc/cpu.h               |  14 +--
->  target/tricore/cpu.h             |   5 ++
->  target/xtensa/cpu.h              |  19 ++--
->  cpu.c                            |  18 ++--
->  hw/core/{cpu.c =3D> cpu-common.c}  | 116 -------------------------
->  hw/core/cpu-sysemu.c             | 145 +++++++++++++++++++++++++++++++
->  hw/virtio/virtio.c               |   4 +-
->  stubs/vmstate.c                  |   2 -
->  target/alpha/cpu.c               |   8 +-
->  target/arm/cpu.c                 |  18 ++--
->  target/arm/tlb_helper.c          |   4 +-
->  target/avr/cpu.c                 |   8 +-
->  target/avr/machine.c             |   4 +-
->  target/cris/cpu.c                |   8 +-
->  target/hppa/cpu.c                |   8 +-
->  target/i386/cpu.c                |  28 +++---
->  target/m68k/cpu.c                |   8 +-
->  target/microblaze/cpu.c          |   8 +-
->  target/microblaze/helper.c       |  35 ++++----
->  target/mips/cpu.c                |  10 ++-
->  target/nios2/cpu.c               |   8 +-
->  target/openrisc/cpu.c            |   8 +-
->  target/ppc/excp_helper.c         |   3 +-
->  target/riscv/cpu.c               |  14 ++-
->  target/rx/cpu.c                  |  10 ++-
->  target/s390x/cpu.c               |  14 ++-
->  target/sh4/cpu.c                 |  11 ++-
->  target/sparc/cpu.c               |  10 ++-
->  target/sparc/ldst_helper.c       |   5 +-
->  target/tricore/cpu.c             |   6 +-
->  target/xtensa/cpu.c              |  10 ++-
->  target/ppc/translate_init.c.inc  |  20 +++--
->  hw/core/meson.build              |   3 +-
->  target/arm/meson.build           |   6 +-
->  58 files changed, 587 insertions(+), 334 deletions(-)
->  create mode 100644 include/hw/core/sysemu-cpu-ops.h
->  rename hw/core/{cpu.c =3D> cpu-common.c} (73%)
->  create mode 100644 hw/core/cpu-sysemu.c
-> 
-> --=20
-> 2.26.3
-> 
-> 
+r~

@@ -1,109 +1,111 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp4532084lfm;
-        Tue, 25 May 2021 07:26:22 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzxM/4hf3TZBaepQx/Y63J9rBooCCjPNkIYEkLu3zPUSqAS4S+MCKg9qsc+DNIKMQ9oveI0
-X-Received: by 2002:ac5:c389:: with SMTP id s9mr8077694vkk.5.1621952781829;
-        Tue, 25 May 2021 07:26:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621952781; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp4670296lfm;
+        Tue, 25 May 2021 10:06:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwSXS9gxI2ojK+eyMHdeSJ0cH8IFUAFxPT2c/c1U95O4PyD9gFF7sxUi41TFStxuKgZUP/U
+X-Received: by 2002:a05:6512:1191:: with SMTP id g17mr14143528lfr.500.1621962374792;
+        Tue, 25 May 2021 10:06:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621962374; cv=none;
         d=google.com; s=arc-20160816;
-        b=DRFQhGvDsmazLRlIrjXuKWNx6nttrfnqOij21Uet3y7SvVQV2OwBrB/SxPw3XoMcpl
-         a1SYH26KzWWSQN7AZ2KgTrkQ4ZZN/WM9UNEykvNFDKejzI8MH8vZxz+320kLKfenhga6
-         +QBv46mJBaA3FYklzZRIWYXlMTwEnlv9GQXa0LmpTgKr5mDprK7U0Y2aJnTdeb7vo7L2
-         ayEZFTj++MVY8dbgxmFUEtv2tw89vIlwvHrm0ZJUuT2wdd7svCaCGEsfrWDv6JzYlLBM
-         lfQPSe2Y/sTybArnhDT/XFt6J5Z76XRC/uWziQHKHKbUiohcO4IjNZkL/R5nc/Uy8rtg
-         yyxw==
+        b=BASKPHvzSS4zjKnCzGbzVeJqWN+JKpsm/wGDD+zj5dlEl5eVHVNYEQIQAibcUk3huU
+         1JVcRtkBVJNdj6+79cbpMBFps3NsogYyQX9qsX5QiYoZJsYXLlDx1FwKfKetAUpvKubD
+         ajPWbnpqWdVF04JMUvKSkj1Jl/XAyJpgqsAGlH9I7pHDPqiSSUgRW1ocdn5i5Lbcf7P2
+         m8+l0NK2490zKWqgocgeLuJpBXb+t7RQZt98fIKl1d91pt3yWhz+mn0iZrrcbhxgoWnD
+         9SJAw2VncXZhnYfZ7RiPOEgMNkvUdTQ1xLfmKtHu6SKsp9rSsjpPzoYosbGx1IG+jXhe
+         9h9g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=D4gEn732/upUSnSjI507uumca/XF+d9QlYR30sJQbRU=;
-        b=BCvmoNMBNZBqrKUqdi0XhHGgdSNkMhhnyukmOVb8l07BSbwT10FD7ig3NNcW2QcYof
-         vwGXQs83HI82xrkJmCh5VjMk5Slo5bwTB8jb5Yx2Aub1SslkBBwGFvwAbSKZIFdvwIo+
-         zFs4qtJo1e6iP9B06zuzrvPUjQgsPDq6jsqM5AKyEIK4r6W3jY4698OYfjfr/0QH9IwG
-         4mt3XI9lF3ZIGJyjcknHfo3v/acbAQbQ5IH6mqfVNf0Lc6g2hO58n+7gIHLNnZPZCB/N
-         E+eJsLKfnYNyc88rqHHt8Noy/uHTH6m9rdNa2BkqFH9g5oLKDoegHjMbhSwm9wsJ2INl
-         YAtQ==
+         :message-id:references:to:from:subject:dkim-signature;
+        bh=PTzLIJ5TCSlAeUAQ1cSrs+e2oWQuVskJql/JJ+o7UH0=;
+        b=XB0i3CKBd8PwojFoaUWZPiWsS52M8Yf6xWV07b0WZaperVHmkm2z8yLWHriv0Uwf2+
+         FjST9T3yyKesiwFQxLkAt2Rg0LFU5iWcMJdt8zA6WEerz8EpnapN8H3Sgj3gm4azrydD
+         F9LcPPlFX5POXL3eMD1JZVIiORgkSvr8RAYbSklY56TaCZM8i5GHjJQFdmWcqo2XOO1a
+         QF8jymTAhiEnE0xw9munV97GHfjowEtYNXgUlimUJ19aRSU+HDV0z/wzm5r97cNukbv/
+         BkF2w8qkek3xnOAVf2iTpUQ78PnTdbM71dBgBuUB+XuG3qZ4Fd7395JfG5XGRGCTA7ml
+         1hfw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=e24VsKk+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=kcXyNMmE;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s129si3552763vsc.283.2021.05.25.07.26.21
+        by mx.google.com with ESMTPS id n8si14979775ljc.479.2021.05.25.10.06.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 May 2021 07:26:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 25 May 2021 10:06:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=e24VsKk+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=kcXyNMmE;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59522 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57032 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1llY0j-0001Uz-5Y
-	for alex.bennee@linaro.org; Tue, 25 May 2021 10:26:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48824)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1llaVR-0006WC-PG
+	for alex.bennee@linaro.org; Tue, 25 May 2021 13:06:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56524)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1llY0a-0001UK-M9
- for qemu-arm@nongnu.org; Tue, 25 May 2021 10:26:12 -0400
-Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534]:33711)
+ id 1llaNN-0006ZK-8L
+ for qemu-devel@nongnu.org; Tue, 25 May 2021 12:57:53 -0400
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030]:43685)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1llY0X-0006fS-Vl
- for qemu-arm@nongnu.org; Tue, 25 May 2021 10:26:12 -0400
-Received: by mail-pg1-x534.google.com with SMTP id i5so22907423pgm.0
- for <qemu-arm@nongnu.org>; Tue, 25 May 2021 07:26:09 -0700 (PDT)
+ id 1llaNH-000828-44
+ for qemu-devel@nongnu.org; Tue, 25 May 2021 12:57:52 -0400
+Received: by mail-pj1-x1030.google.com with SMTP id
+ ep16-20020a17090ae650b029015d00f578a8so13531006pjb.2
+ for <qemu-devel@nongnu.org>; Tue, 25 May 2021 09:57:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
+ h=subject:from:to:cc:references:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=D4gEn732/upUSnSjI507uumca/XF+d9QlYR30sJQbRU=;
- b=e24VsKk+RYwmnXNKhrpewDHy1QQVPIo9AaS5JFVgHCqB8YGxVYG8h0+w3U8rLIqAvx
- 9L2kPfXQQ63xZT22T3c87pGXxsF1WNmZKTd8hWvZPZw3E61GLxDsDxyrOEagMa1vWbzN
- bXVakKKnOKqg8aWlurh47p7q5EjQlMBvxytF+2crrChrwxJErchoYMvgx0ktYpRIa66S
- WvqHGj953Kpi1zg+CP6SbFFr15zq3x9fv9/lI9uGxJri9zCgWqly0ogwkI5ZwIwOsAdE
- PT2AUVSfPhE9wAQwPI4xiH1Wgo5P9E5I9sh4p77a0ZbOonJVl+kgKuN64KQbz8J+RCXV
- Pfjg==
+ bh=PTzLIJ5TCSlAeUAQ1cSrs+e2oWQuVskJql/JJ+o7UH0=;
+ b=kcXyNMmE+qJEF+46adxOAYNGXLU7tqRHdyBpsGXxtuA5cQMPfJdjZnIllMt3tXsYDe
+ oMw5LLO9LIldZSXHqylt58KmJxGuUqjtmGQMPJ7i16z5Nljn8AJ2aIEqZtfKsUMh1jGd
+ T0JLhKn0xekjz6n3RnP4Y0eRVTwH5U0+HYhi6HDd0DegQa8eGmXutHfufQvfbNoFSoCK
+ ij1UnmEPEUe6qhN9gn7Wo3K9lr9RId8IuFxskR/puUS/CN7/O2GWLUu/w2Pqsh7rbjUq
+ oOjI6bKmOyouilKzpZKOeas7blr0ndG36672T4eJgmI/fEkF3uhIGN0F+c0Tomdr97wf
+ Sf6g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ h=x-gm-message-state:subject:from:to:cc:references:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=D4gEn732/upUSnSjI507uumca/XF+d9QlYR30sJQbRU=;
- b=nIIkXUdw8nagk9I7V9MZBlzet7MOLjRz568CNXLzFGY4zjk59JY7jhHfUVLQ8u3UvG
- vbS1HKvvgVCyBWNFaHWLNZH4DDmv+LiUX4KfvWDrhHoLRmtoSN/0hLkARdGLS4J0knmq
- xuYsvpvjsYl+RCBmIZsPjcQf1k6PO9dbGFF5Pr4WNFva0QbLhyZ0Z0q4U+Qnbjc8eKf3
- plNtydbS1qFtiSjt6USIJEfjrenKWkKVzHm4vfElq4Cf+fkae02KfuF0aq2tHVr3LaoG
- eNf7R/fAsjeVIVWVS7FM+WMrpMo7vWPQNrQnsyzUU/pdH3tAk1Le6NsUZqrTwlPfxhA0
- 3ykA==
-X-Gm-Message-State: AOAM532O/9Mv0fSiAKrVCU5cTne0RPc2+98B04CTWtQAxOsKzPf9yNW/
- tJmXWUy0DD/Snt0GnGAatEWs9g==
-X-Received: by 2002:a05:6a00:134b:b029:2bf:2c30:ebbd with SMTP id
- k11-20020a056a00134bb02902bf2c30ebbdmr30509790pfu.74.1621952768415; 
- Tue, 25 May 2021 07:26:08 -0700 (PDT)
+ bh=PTzLIJ5TCSlAeUAQ1cSrs+e2oWQuVskJql/JJ+o7UH0=;
+ b=dLgm/nVEE4QHzd47N9Yf17+JLcPmg+0dC8bPXM4Ks33Z/WbkKj2YMlMA1NvQfiOEsB
+ zL3VczWKQWtIEO1dHOSpptKP6eJJiW9grSB+IzJlLG/f0e6NNlwYnv+rysNgLg2hZM0Q
+ rScHxqlv6ARi4GM1oCz7ROZPc9sE+1t9I98QxAOfs1LU4js/4h5X9tzbRnbtiVmJaU52
+ pheTfIQjqKbrg1IAMDbNximKhgcNQgEX36gLTn+oP5/SBJ6BBgAhRt+8qd6GbDarGSGL
+ 4QYm0vN/T0caHyvCIRK4VUf/nlPKQYGF8Lt8t1PfHAxOA/ckto0TGi/YzfcivnW8GGto
+ qy6w==
+X-Gm-Message-State: AOAM532wckRVGW8AMoWwo+478HTKljEGcm11JtmzzRg05XBpYMwMQkyb
+ /kONbDyEFSqdy2E6mrwsl9OGkg==
+X-Received: by 2002:a17:90b:1b4f:: with SMTP id
+ nv15mr5848780pjb.56.1621961865150; 
+ Tue, 25 May 2021 09:57:45 -0700 (PDT)
 Received: from [192.168.1.11] (174-21-70-228.tukw.qwest.net. [174.21.70.228])
  by smtp.gmail.com with ESMTPSA id
- k9sm14510552pgq.27.2021.05.25.07.26.07
+ s3sm15569534pgs.62.2021.05.25.09.57.44
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 25 May 2021 07:26:07 -0700 (PDT)
-Subject: Re: [PATCHv2] target/arm: make pointer authentication a switchable
- feature
-To: Jamie Iles <jamie@nuviainc.com>, qemu-arm@nongnu.org
-References: <c1bf2744-0448-51c4-551a-779f00af5a2e@linaro.org>
- <20210525090104.1761645-1-jamie@nuviainc.com>
+ Tue, 25 May 2021 09:57:44 -0700 (PDT)
+Subject: Re: [PATCH v1 11/11] target/arm: Enable BFloat16 extensions
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <f0f46eb5-409b-9f27-621b-b23d55848279@linaro.org>
-Date: Tue, 25 May 2021 07:26:06 -0700
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20210416235928.1631788-1-richard.henderson@linaro.org>
+ <20210416235928.1631788-12-richard.henderson@linaro.org>
+ <CAFEAcA_YZe6xMfMFek-KEh8j3zO-AiquM3epyFET3R6XPDAjkQ@mail.gmail.com>
+ <0882a45d-8c02-93fb-2dff-abdc7f7c6b95@linaro.org>
+Message-ID: <76fde3a0-b1f1-ed8e-ea4c-2614679b0306@linaro.org>
+Date: Tue, 25 May 2021 09:57:42 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <20210525090104.1761645-1-jamie@nuviainc.com>
+In-Reply-To: <0882a45d-8c02-93fb-2dff-abdc7f7c6b95@linaro.org>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::534;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x534.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1030;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1030.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -112,87 +114,50 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, leif@nuviainc.com,
- qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: c7ADVpB2w6fL
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: /tri8oV6xTSD
 
-On 5/25/21 2:01 AM, Jamie Iles wrote:
-> Rather than having pointer authentication properties be specific to the
-> max CPU type, turn this into a generic feature that can be set for each
-> CPU model.  This means that for future CPU types the feature can be set
-> without having the ID_AA64ISAR1 bits clobbered in
-> arm_cpu_pauth_finalize.  This also makes it possible for real CPU models
-> to use the impdef algorithm for improved performance by setting
-> pauth-impdef=on on the command line.
+On 5/18/21 7:47 AM, Richard Henderson wrote:
+> On 5/18/21 7:47 AM, Peter Maydell wrote:
+>>> diff --git a/target/arm/cpu_tcg.c b/target/arm/cpu_tcg.c
+>>> index 046e476f65..b2463cf109 100644
+>>> --- a/target/arm/cpu_tcg.c
+>>> +++ b/target/arm/cpu_tcg.c
+>>> @@ -968,6 +968,7 @@ static void arm_max_initfn(Object *obj)
+>>>           t = FIELD_DP32(t, ID_ISAR6, FHM, 1);
+>>>           t = FIELD_DP32(t, ID_ISAR6, SB, 1);
+>>>           t = FIELD_DP32(t, ID_ISAR6, SPECRES, 1);
+>>> +        t = FIELD_DP32(t, ID_ISAR6, BF16, 1);
+>>>           cpu->isar.id_isar6 = t;
+>>>
+>>>           t = cpu->isar.mvfr1;
+>>
+>> Same query as with SVE: do we need to clear these in the "!has_vfp"
+>> and "!has_neon" handling code in arm_cpu_realizefn() ?
 > 
-> Cc: Richard Henderson <richard.henderson@linaro.org>
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Signed-off-by: Jamie Iles <jamie@nuviainc.com>
-> ---
-> 
-> Following Richard's suggestion to make impdef selectable for all CPUs
-> where pointer auth is supported, I've moved this up to a full feature
-> and then any future CPUs supporting pointer auth can just set
-> ARM_FEATURE_PAUTH.
+> I *think* we want to clear ID_ISAR6 only when !has_vfp && !has_neon, as 
+> FEAT_AA32BF16 should still be usable to the other one.  Which also means adding 
+> the NEON/VFP check you suggested.
 
-New patches should not be in-reply-to another thread.
-They get lost that way.
+Alternately, we can clear BF16 when either !vfp or !neon, and then we don't 
+have to add the extra checks.
 
->       bool prop_pauth;
->       bool prop_pauth_impdef;
-> +    bool has_pauth;
-
-What's this for?  It doesn't even seem to be used in this patch.
-
-> @@ -2115,6 +2116,7 @@ enum arm_features {
->       ARM_FEATURE_M_SECURITY, /* M profile Security Extension */
->       ARM_FEATURE_M_MAIN, /* M profile Main Extension */
->       ARM_FEATURE_V8_1M, /* M profile extras only in v8.1M and later */
-> +    ARM_FEATURE_PAUTH, /* has pointer authentication support */
->   };
->   
->   static inline int arm_feature(CPUARMState *env, int feature)
-> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-> index f42803ecaf1d..5a4386ce9218 100644
-> --- a/target/arm/cpu64.c
-> +++ b/target/arm/cpu64.c
-> @@ -760,10 +760,7 @@ static void aarch64_max_initfn(Object *obj)
->           cpu->ctr = 0x80038003; /* 32 byte I and D cacheline size, VIPT icache */
->           cpu->dcz_blocksize = 7; /*  512 bytes */
->   #endif
-> -
-> -        /* Default to PAUTH on, with the architected algorithm. */
-> -        qdev_property_add_static(DEVICE(obj), &arm_cpu_pauth_property);
-> -        qdev_property_add_static(DEVICE(obj), &arm_cpu_pauth_impdef_property);
-> +        set_feature(&cpu->env, ARM_FEATURE_PAUTH);
-
-I would rather you split out a function akin to aarch64_add_sve_properties, 
-e.g. aarch64_add_pauth_properties.  We would call this function in any 
-cpufoo_initfn that enables pauth.  It is hard to say more without the patch 
-that adds the cpufoo_initfn which you are interested in.
-
-
-> +    /* Default to PAUTH on, with the architected algorithm. */
-> +    if (arm_feature(&cpu->env, ARM_FEATURE_PAUTH)) {
-
-FWIW, this test is
-
-     cpu_isar_feature(aa64_pauth, cpu)
-
-without having to add ARM_FEATURE_PAUTH.
+Unless we're presented with a real cpu that has vfp but not neon, and does have 
+bf16, this seems like a head-scratcher corner case.  Just so long as we don't 
+do something actively against the rules I guess we're ok.
 
 
 r~

@@ -1,148 +1,190 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp4905016lfm;
-        Tue, 25 May 2021 15:58:22 -0700 (PDT)
-X-Received: by 2002:a17:902:b70f:b029:f4:5445:cd9f with SMTP id d15-20020a170902b70fb02900f45445cd9fmr33189791pls.32.1621983502151;
-        Tue, 25 May 2021 15:58:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621983502; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp4905261lfm;
+        Tue, 25 May 2021 15:58:46 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJykCry3iWF79by2+1mxi3sAY72Rwahy5L3G12CrsmlzgbDkbUfFbKJc/+LNeUooGHmVbxgv
+X-Received: by 2002:a05:6e02:118b:: with SMTP id y11mr26456406ili.241.1621983526049;
+        Tue, 25 May 2021 15:58:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621983526; cv=none;
         d=google.com; s=arc-20160816;
-        b=WpM8Rwd1xXx5/V+DmmSUqkseq4nmSM3fwszHmjHtqoLz4vaqXmyJxwBi1+/vo5b3wb
-         eztcCQJCRYgi6v21QkQzzQZu5DNRuqyF17kbqq6k7rOsnyeNP7fd6SwgzNWiIvHTs4aa
-         E5XPF98iM4xBcjZX+G70h7S11+oBafhTGPI3QZya5ZC7I50cCQNR0eKlYeBl66RBKDdf
-         FxUtzgw7OO5XtoW5LQOkenxPpeVH1L/6U+Pr6CL3zRZ2UmGd7NJAPFAtO4wdS2po3EJZ
-         tEvJgQ/wHqumSzhlE8TBQ+dTgHJhYVviqTVVevMNTMD5R3rddjKc2twd1+Btt1f776q7
-         fmlg==
+        b=d2Xkt09tGD4thTNhMOkjd90wZilYrnD6hU/cNLlJhjq1sLdjvSe45i66Ra2Ar3h3pq
+         08N36QNuMPmgUBeaPaMVCvMxM/mvD4muZsLIo46l5p/GnEUJzTpCc48tyM4x6rmn3A4r
+         TexaUzRf7B6kpy0ni4GDGHZOOEG3m1K43jiXWTGLyipuCBXLuft25KRplQbMbIwN1Oxa
+         F4ei/IsqS3Iv+nd7IbAPa259GPPE2BEokj/GvIftSTJ0yyvwjYRjv1j7NrAyMIycsLhO
+         9z2SBbjqQhnL6S5m5rY4orTH0zq4RxOi6TBQ8ZnR07HBiFd0PRNpCxeNDJIrTZHHbxVi
+         N1ZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=inUd/h721Ne/1vYYmFZwK9UzqSXV6+upNZJZePrYay4=;
-        b=TY+43Ha54lyBuxH7YhNbTLIt7RqeEUib6tjPF+GXBNCSJuX/Hl/aSbksSxJksvUZjg
-         Tl4glw2+qNq3sO3bTIdUKTOtKfrrmGy9zxePhlV6LCsLxNrN5xM1wBjVKXvjhcdg3uM8
-         yAZBlKA7Acb0cZmsmF97JvBff+T4HccUV++gDUZDvysI4zLlFLI77VPvKly8wpeO52tH
-         V8LEbYSwXTyrmdve5bLwWA2gdbwYRJnRPfBwSL4YJSFsGQVo3kDLdjRrN5UM84G2oFYy
-         V02GPOM8OzagjEo6SueYy+UD1dZWn4AlJxJU37l2rZGTUtosHUn120PoDMzZ4CcB//h2
-         h7Mw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=3DHjpex0S8JDOy5JRC2IyqoQUwifwwct+C1bXOYlysc=;
+        b=DovvmuUKhOasDUJ6PnMTHZ7Laelyce+wKSyb9Pa2tFouA5Xh2tFyX4WKtpoATR/pvg
+         eiMVZXIHuV6htVSiib5TjPbsCoGk/hP4xT3RSCuCCkCUtb6ML8l1vayoBt+Z6g/MS2tm
+         wt6moD+O5donLs2kc0ZYhzxSt4IwDJ/Dzpn1/+Lxqi1SimPbHtNWXcL70wtmQGitpAkD
+         9u/rI5RIhwUInlhwYKfjAD9q7f4Q0i7o1h9fgaGZ+exQXyVUAeEx9V/vaX+eOdHR5J67
+         YQv4/Do0AsFDa6C3VBzhR3vlcvl2YHe2fzubsI3K3ERbfHYPBdtypL03ECmbwGwF+QMv
+         hqlQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kL1vkKxm;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id q16sor9254131pfc.17.2021.05.25.15.58.21
+       dkim=fail header.i=@linaro.org header.s=google header.b=YRqj7oQr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id f4si10482832ilq.138.2021.05.25.15.58.45
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 25 May 2021 15:58:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 25 May 2021 15:58:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kL1vkKxm;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=inUd/h721Ne/1vYYmFZwK9UzqSXV6+upNZJZePrYay4=;
-        b=kL1vkKxmskvj6qxDLY8hIJ4NVkoE5oaGfjbkYvLOufs7Thtk8meRcnifD9J0Iwcc8w
-         nrhL8OPEnLrHYW4JXj12TaKF3LQlCpDFjpk19HbleG6cyx3WwZTCc/0BgsDaK8zpW9rW
-         FqWenm6jLPDerA8czIVjTk94szmN8pi6ZjDNPrrT5UlGtn1Yw0Jqvjkh7Hz2C9sewiSL
-         1l1osvFEQ9+FS4vx2fYxJzw7QZ0ItEp7E6xj+SH3LmdfyuWd5+AFzikss1q1Vff30438
-         pcGS9UNtU0uxv+EKt26dHLojff+8z78fVybOp0pm3YJETUxAIRiRcc/a5SMgc9ww1RxA
-         Tw3Q==
+       dkim=fail header.i=@linaro.org header.s=google header.b=YRqj7oQr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:54814 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1llg0b-0002Wv-9Z
+	for alex.bennee@linaro.org; Tue, 25 May 2021 18:58:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52590)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1llg0H-0002VV-96
+ for qemu-arm@nongnu.org; Tue, 25 May 2021 18:58:27 -0400
+Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d]:42667)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1llg0D-0004nO-9U
+ for qemu-arm@nongnu.org; Tue, 25 May 2021 18:58:25 -0400
+Received: by mail-pg1-x52d.google.com with SMTP id f22so23011670pgb.9
+ for <qemu-arm@nongnu.org>; Tue, 25 May 2021 15:58:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=3DHjpex0S8JDOy5JRC2IyqoQUwifwwct+C1bXOYlysc=;
+ b=YRqj7oQr976igPnGuc3Oq96xQqHSLzZa2/oZHYTXCS0anSFH0z7AN/LOjxwPK19ax6
+ N/xaTsSv1S2oHFUrgOn+t3lrMSk5B0UvJScywI0Vhm3g8ON2aXl3/RIgcZ+rkNSZce5Q
+ zQ2fJyw0nZXTmLjpZX0FyL8vuuXFyRb4yZ4rt54OGnt2VTKoWpk8qFDNOcfpUQMd0pev
+ WUi2aiERXYHOg9z0wZKV8afF3mgVrHuLdqgrCLo89Gt+apXXOxG9wONfbyAHqdS/+jTb
+ d92j+tZ2spNs9uXofUmcmAYh1Jmnh4UFeuo/uTbDk91LUFSoZZIVu/LNActg4cxBtweU
+ Qtdg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=inUd/h721Ne/1vYYmFZwK9UzqSXV6+upNZJZePrYay4=;
-        b=pwKxWXU+AoMUQ+k1UrQ/mQMuXLhjABxHOpphipVWxV4MolNN5yc42nYiaylEb+c9vf
-         24PkkiRAWk5LyHIfyjlOlwX7cFMm90inj6mZZKxWfSKRvyQDPoevxmGd5BsxXPdAFzcG
-         pCWv+eLLn00OwJxQdG4+vh4YK5pzb0OqQqeasp2otJChj/HQj0twRnzRil0DO4BP3fH2
-         asNoIi6XFwKqrC150bHhkx1Wt1MAGlb2nNa6WR8aOoUioB4DvVI1LInFRw8apovp/l2M
-         x/kULKCFHio6eKsAi/MkxlVq/BWSORGcQD021MiOyncSSGGRP6H88DmK8Ajn851OzfLc
-         alIw==
-X-Gm-Message-State: AOAM532EmfGvQEyCPAHSSoeofTNH4kW0o37W01kd3zTp1t2oGohEP6a7
-	o6t41HB3ksaLjHoLm2OTV7sga1am
-X-Google-Smtp-Source: ABdhPJwFfIykPwZf/JlIChQFe3tqGtkIRQecHD5MsrcZQ18ISCwtP+bvyARRM60I8gm0phQvyJNfQg==
-X-Received: by 2002:a05:6a00:cd4:b029:2e1:b937:77e8 with SMTP id b20-20020a056a000cd4b02902e1b93777e8mr31316925pfv.43.1621983501679;
-        Tue, 25 May 2021 15:58:21 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from localhost.localdomain (174-21-70-228.tukw.qwest.net. [174.21.70.228])
-        by smtp.gmail.com with ESMTPSA id l6sm1669928pjf.28.2021.05.25.15.58.21
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 25 May 2021 15:58:21 -0700 (PDT)
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=3DHjpex0S8JDOy5JRC2IyqoQUwifwwct+C1bXOYlysc=;
+ b=Sl1W+SxxY4ohe2WEnwqLWk+/3LZ4+IQtMvfmgWU8mqRy58wStG8dehwqG7ZDqcRE8E
+ 3bm1pYdRuKvbdxS0Fkp8b5uIk5qohPsdDJ+EEB8bgtSzFp0lZRj/7v/RR37vgMgOlMEn
+ YM6/Mn37LfSvnhfSilxr8aP6q3N2G990scZEAkq4/YXtShehpDv+DJvHFfQEt/kx6sKr
+ 3ZNi+ec93kZougwc9/4laom5KGZBzu3i/zmJQX+x0XLss9T5PHW4o+QGLrYZeBIoRbb5
+ CPYpI7L250d+QLAHmE0brr0AH/TYUb5jkbZ3DXUb52J/7PdsM6XL3+faajep2LUKAk9K
+ e8bQ==
+X-Gm-Message-State: AOAM531JYExxY20/xeMtDRsseLO2lvUOg/sZ1KxXPyoqJdfd1pzIVEn8
+ RbPuqdSE7UuFNpXKB5mbD9/Jxg==
+X-Received: by 2002:a63:1161:: with SMTP id 33mr21376706pgr.270.1621983499843; 
+ Tue, 25 May 2021 15:58:19 -0700 (PDT)
+Received: from localhost.localdomain (174-21-70-228.tukw.qwest.net.
+ [174.21.70.228])
+ by smtp.gmail.com with ESMTPSA id l6sm1669928pjf.28.2021.05.25.15.58.19
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 25 May 2021 15:58:19 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v2 05/12] softfpu: Add float_round_to_odd_inf
-Date: Tue, 25 May 2021 15:58:10 -0700
-Message-Id: <20210525225817.400336-6-richard.henderson@linaro.org>
+Subject: [PATCH v2 02/12] target/arm: Unify unallocated path in disas_fp_1src
+Date: Tue, 25 May 2021 15:58:07 -0700
+Message-Id: <20210525225817.400336-3-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210525225817.400336-1-richard.henderson@linaro.org>
 References: <20210525225817.400336-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: vpncymOtXcUU
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: t4z9ebGNbAK0
 
-For Arm BFDOT and BFMMLA, we need a version of round-to-odd
-that overflows to infinity, instead of the max normal number.
-
-Cc: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- include/fpu/softfloat-types.h | 4 +++-
- fpu/softfloat-parts.c.inc     | 6 ++++--
- 2 files changed, 7 insertions(+), 3 deletions(-)
+ target/arm/translate-a64.c | 15 ++++++---------
+ 1 file changed, 6 insertions(+), 9 deletions(-)
 
-diff --git a/include/fpu/softfloat-types.h b/include/fpu/softfloat-types.h
-index 8a3f20fae9..3b757c3d6a 100644
---- a/include/fpu/softfloat-types.h
-+++ b/include/fpu/softfloat-types.h
-@@ -134,8 +134,10 @@ typedef enum __attribute__((__packed__)) {
-     float_round_up           = 2,
-     float_round_to_zero      = 3,
-     float_round_ties_away    = 4,
--    /* Not an IEEE rounding mode: round to the closest odd mantissa value */
-+    /* Not an IEEE rounding mode: round to closest odd, overflow to max */
-     float_round_to_odd       = 5,
-+    /* Not an IEEE rounding mode: round to closest odd, overflow to inf */
-+    float_round_to_odd_inf   = 6,
- } FloatRoundMode;
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index ceac0ee2bd..510cb6ca5e 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -6494,8 +6494,7 @@ static void disas_fp_1src(DisasContext *s, uint32_t insn)
+     int rd = extract32(insn, 0, 5);
  
- /*
-diff --git a/fpu/softfloat-parts.c.inc b/fpu/softfloat-parts.c.inc
-index a897a5a743..7f69da1d8f 100644
---- a/fpu/softfloat-parts.c.inc
-+++ b/fpu/softfloat-parts.c.inc
-@@ -176,13 +176,12 @@ static void partsN(uncanon)(FloatPartsN *p, float_status *s,
-         g_assert_not_reached();
+     if (mos) {
+-        unallocated_encoding(s);
+-        return;
++        goto do_unallocated;
      }
  
-+    overflow_norm = false;
-     switch (s->float_rounding_mode) {
-     case float_round_nearest_even:
--        overflow_norm = false;
-         inc = ((p->frac_lo & roundeven_mask) != frac_lsbm1 ? frac_lsbm1 : 0);
+     switch (opcode) {
+@@ -6504,8 +6503,7 @@ static void disas_fp_1src(DisasContext *s, uint32_t insn)
+         /* FCVT between half, single and double precision */
+         int dtype = extract32(opcode, 0, 2);
+         if (type == 2 || dtype == type) {
+-            unallocated_encoding(s);
+-            return;
++            goto do_unallocated;
+         }
+         if (!fp_access_check(s)) {
+             return;
+@@ -6517,8 +6515,7 @@ static void disas_fp_1src(DisasContext *s, uint32_t insn)
+ 
+     case 0x10 ... 0x13: /* FRINT{32,64}{X,Z} */
+         if (type > 1 || !dc_isar_feature(aa64_frint, s)) {
+-            unallocated_encoding(s);
+-            return;
++            goto do_unallocated;
+         }
+         /* fall through */
+     case 0x0 ... 0x3:
+@@ -6540,8 +6537,7 @@ static void disas_fp_1src(DisasContext *s, uint32_t insn)
+             break;
+         case 3:
+             if (!dc_isar_feature(aa64_fp16, s)) {
+-                unallocated_encoding(s);
+-                return;
++                goto do_unallocated;
+             }
+ 
+             if (!fp_access_check(s)) {
+@@ -6550,11 +6546,12 @@ static void disas_fp_1src(DisasContext *s, uint32_t insn)
+             handle_fp_1src_half(s, opcode, rd, rn);
+             break;
+         default:
+-            unallocated_encoding(s);
++            goto do_unallocated;
+         }
          break;
-     case float_round_ties_away:
--        overflow_norm = false;
-         inc = frac_lsbm1;
-         break;
-     case float_round_to_zero:
-@@ -199,6 +198,8 @@ static void partsN(uncanon)(FloatPartsN *p, float_status *s,
-         break;
-     case float_round_to_odd:
-         overflow_norm = true;
-+        /* fall through */
-+    case float_round_to_odd_inf:
-         inc = p->frac_lo & frac_lsb ? 0 : round_mask;
-         break;
+ 
      default:
-@@ -259,6 +260,7 @@ static void partsN(uncanon)(FloatPartsN *p, float_status *s,
-                        ? frac_lsbm1 : 0);
-                 break;
-             case float_round_to_odd:
-+            case float_round_to_odd_inf:
-                 inc = p->frac_lo & frac_lsb ? 0 : round_mask;
-                 break;
-             default:
++    do_unallocated:
+         unallocated_encoding(s);
+         break;
+     }
 -- 
 2.25.1
+

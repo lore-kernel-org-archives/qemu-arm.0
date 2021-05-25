@@ -1,141 +1,191 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp3744271lfm;
-        Mon, 24 May 2021 10:22:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxvKiT41N6wxTCSaz5TCTuH3rvjnanfGBT7RbPh+WKqTXVapDPXpqdXTuG4szah1K7FQYrz
-X-Received: by 2002:ab0:63d4:: with SMTP id i20mr22630440uap.21.1621876942954;
-        Mon, 24 May 2021 10:22:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621876942; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp4015590lfm;
+        Mon, 24 May 2021 18:04:01 -0700 (PDT)
+X-Received: by 2002:a17:90a:b292:: with SMTP id c18mr2028224pjr.179.1621904640922;
+        Mon, 24 May 2021 18:04:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621904640; cv=none;
         d=google.com; s=arc-20160816;
-        b=HpQtGafinafppbL41dxvWO+2Hxk0apSL7BQVd6UsmjVlyLt15Sti+/DA9iBeL6Avg3
-         asFafnqHzm2XRg6ax7V2wDTOQMOQIgOUuhfEUuZUFSazor6xtHiNxmLuRSiM1xA06TWi
-         WkkLLT2XaHYq3w8xE+Ztism28mVybuXgp2WhrEw5IrqciLyqFXokGqPxgremNDaFKgjM
-         A+9jdLD348GygW4VxrKlmQO7Jo9hAGys+t59Sz3OhMtEa6X/Ep1utVmhUqxBjJV1y56S
-         5X0DOqCknSlk6wW/lRfuwLgCYwb80ks3ADDqiInC8MSfYt8gi/cG1SzyxIOXt1+sZ0wI
-         C8lg==
+        b=GGk6G1otv0/lVvP5TFfb4QJzMwk4zBC/zzV7W2cfB2RB8yhw+BIpYtbwSISwQCndtN
+         juq1FJynthaWlvkCfox96YJAhqksNYOtbIGWyFmVVyw6euhKzYlGttgG84l7HWIF6c8S
+         /EbGNSZh9/FVYPoHnpspgqPRJRayVNbEgX456UrTn+FY5ut81lFR2MwE0xfqaSeOTzHD
+         kC3inIgwURAyk7o0B5uWMQLDptwbLDIrf100Sw2Pl16aePqarGRexU4rrRNbwbHN1GsQ
+         bOtc1mfhC8GiMbQrW+G8Oc+1rEiXhumc+LTucit4D8futBbVijA4vATjE6Y8A3KWRcMj
+         3Nhg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=hY+at+cXLMke96FHw6uEdJVgOHp3wUN4zIMeBRXrGos=;
-        b=iV0fhn/T3V9Mac4VjoMBPbpE1L/WA2cDgrwLmS9Ptp1xeX0YDd61aeVEOG2kzW+vC3
-         nZYE5k+WsUyG/szesQ2gAnuZq05luTUhQD+HCdFWDxyD24GPkjOBF64Fi7FZnW7BtLl+
-         v1hL7XRVV+9RlFGpBKkgAi9hZM4rynhFg9XNTa83aiNdVsLwj/WJXvdBXSr4J3HPcdJN
-         FN+tShXkfLniBmkagbRbfp30ZwT7ihNSNbzVPI71Sub+pjlgPIaX7AXyUO1o3W0piLge
-         HOxzpnnHd3JOr89dYpsoj5ET0x0cSXG311fRDJGNOIxmkNKf13+aE4jJIakSuePyZi+b
-         3uhA==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=jk9xuQuOdWwLhsZNV9U+4ALfnilDyaP5t7dhpaqzQXE=;
+        b=JxnnhHwjFVs0bFiwOtsXxgMiK6ugvVkXAmTzJ0+GI3CNvpY+X6BPAYipelO4FPADAq
+         Apx5j1YVIKQfgLIVcfn+qkW70ghj0na54yXfVG5IZT562EPB8Hm3vWz1kPKAczIk2E/z
+         sAa6aiWrUVXTegBNRSnigkOwTjnRq5hM6EiDxh9xGXWjx0PnH9qmVe7Wk7helw93i5qr
+         6rT+INprbgtZADzGJL+M5M48f0L6FxU2uFLx0aE2sTbngWvKWQ8sO1AKhedWzGXDjd4y
+         f7VV4cJY+1t8UM9amuyN/ImBecNvTIjflR9Xwhd6ClUvoKbZfstu/fj5ORV9pskKtfi+
+         x48w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=v63ULEOz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=CgYyAhh2;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n14si5856075uap.52.2021.05.24.10.22.22
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id w69sor7855763pfc.11.2021.05.24.18.04.00
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 May 2021 10:22:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Mon, 24 May 2021 18:04:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=v63ULEOz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=CgYyAhh2;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39630 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1llEHV-0004eM-KP
-	for alex.bennee@linaro.org; Mon, 24 May 2021 13:22:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50710)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1llE4G-0008Jd-N2
- for qemu-arm@nongnu.org; Mon, 24 May 2021 13:08:42 -0400
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632]:38760)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1llE4C-0005XY-AW
- for qemu-arm@nongnu.org; Mon, 24 May 2021 13:08:40 -0400
-Received: by mail-ej1-x632.google.com with SMTP id i7so25075466ejc.5
- for <qemu-arm@nongnu.org>; Mon, 24 May 2021 10:08:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=hY+at+cXLMke96FHw6uEdJVgOHp3wUN4zIMeBRXrGos=;
- b=v63ULEOzAjr4kd9QTtB+7Wn1UUCDXEcU8yU+Xw3qKmZbdbXNHm1mVp3TXvjHteCo4Y
- PXk5dJLyKFBe5s3HlmvDfGTqMOPps18wqAdiO/eFmxcFrX3ilLLeg7G2BCiwITDhsyb1
- ustglpeu3TXjmQuQVceF6B96xi90bnSyasB9eLUXnZVTDvt6fHVK7eone302oJzCstly
- SRWljOYL13yrjMHI7kJ3R4/WYWVp9KBedMG6ElVaYjlXYJ6j2HE9eBrT5SODkRD9WP2q
- CeVGzlpdErgCr4cvSQ5hKzfgjgOtgn9IjY2cLTnwX+lNW+mdr3HESNizPWFwloc5pc+O
- boaA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=jk9xuQuOdWwLhsZNV9U+4ALfnilDyaP5t7dhpaqzQXE=;
+        b=CgYyAhh2wNdocjFevoKi06EGWL9bbN5tgQ/2qTbbbzWqRFFZHp+fBu/i4y4vbhXfpS
+         h5fNoo1ua2jJ0tPTPwbEGSU4eBlGtY/dG30kf6RHlXdpbCxxjvkLwEr7aWJ4iSXLUf7C
+         2V5c+KR1POAof6R5dtpnsbti6kCfGs2czvOFiGJAsGDFMcyYL6EI33U0bZ7tSfSwUU8o
+         GBtXYfDQ82m5fU1mIiTGUqJ+faecFn5rBKrFsy+/CpDutacV0HQ4uAl0Qqqs20RvJKM8
+         DwUw2gEap6P6MS5VztDbY+6AyLq5KvZN/6p3OSa/jpmb4kmy9vwoNeVP01+ovyi6t623
+         bXxQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=hY+at+cXLMke96FHw6uEdJVgOHp3wUN4zIMeBRXrGos=;
- b=VZIXnzGYSxBvvKPSaPB5YfTwVmzlfxKsd5MOY+ooLnhRfakZ6kyT6j72bTnEqtQdjM
- czMkeYmcIWgqyGRo7FysI2iPU069BDFWjHjkFu649xviDdUCHT8xte+6QLIkW1jRVpOY
- /9ovv1kA6PRKek32M3FIcGgsHeJfbGGUCNzTV2f0XJtXmax46dvzVPKEFyeNKQ9ZOM2q
- vPDvmBaDrUL7VaKXYM2oJczqwO0sD17IiDbXCQ31VDafWxVha00z/vgP4bcJh7inoxZC
- P1ekcqHPqyA2opcKLS4WyFGh5LmPL7Sf1Ud0tLLKli5omvy7b9OYi8CMuyrYWcbD141e
- momQ==
-X-Gm-Message-State: AOAM532KE+CucOmyHRd3lQi/HixHRevKjDLRNbjdpzQtXYXFt3a1quxe
- vGMYXLIFEjkWIl4zZxbXj811EAt1xzPATNiy5u6WRQ==
-X-Received: by 2002:a17:906:bcd6:: with SMTP id
- lw22mr24789309ejb.250.1621876114775; 
- Mon, 24 May 2021 10:08:34 -0700 (PDT)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=jk9xuQuOdWwLhsZNV9U+4ALfnilDyaP5t7dhpaqzQXE=;
+        b=G+MZZt0QUNrI3evCyLr8J5j7JilPl4NHJLqyhP1bo9PQPPe2Cu75L1cRO4C20VtFql
+         IszacB1DA8R4dnMSFJmNXSpE1RbMzh9ga5BjpvYQTrAq5H10D2jd5S9DdUu2kL9BVs6f
+         bQVfgov/SdfBvn0nSwNBYsMxCFMRkJnv0fxIvBqWY8jxVEomho51LPcTheb2A2Cot9po
+         dK2pDgKqHNx4xZWbPxuZOGlymqo1+7egzMhoSSQ2OSTqFkNn5x6+p3eDVYL8Gl5RK/i7
+         7Vo82YtDOpUqL73LxV7CvyQla6uSIoF1PfF90S4F9mE6DDOp6+9AZOQC/EHjHOoFhPDV
+         vMVg==
+X-Gm-Message-State: AOAM533inimBBJdExpi3WYnqlPn71hx4NBeqf5HISUpWGjLN79d8oGSj
+	A1+5VvEyl/Xe4tmgNdSjXog6uV7tljo0Np/T
+X-Google-Smtp-Source: ABdhPJznsZE5x1YyAM/VVwAaM6zIaljOu0J0r6/dydjhjwA21TZLWD8O4xMZ76kWqgjjmavN0n3aeA==
+X-Received: by 2002:aa7:92da:0:b029:2d5:59bc:a7e4 with SMTP id k26-20020aa792da0000b02902d559bca7e4mr27283842pfa.46.1621904640361;
+        Mon, 24 May 2021 18:04:00 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from localhost.localdomain (174-21-70-228.tukw.qwest.net. [174.21.70.228])
+        by smtp.gmail.com with ESMTPSA id b1sm13742645pgf.84.2021.05.24.18.03.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 24 May 2021 18:04:00 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH v7 01/92] target/arm: Add ID_AA64ZFR0 fields and isar_feature_aa64_sve2
+Date: Mon, 24 May 2021 18:02:27 -0700
+Message-Id: <20210525010358.152808-2-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20210525010358.152808-1-richard.henderson@linaro.org>
+References: <20210525010358.152808-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-References: <20210520152840.24453-1-peter.maydell@linaro.org>
- <20210520152840.24453-9-peter.maydell@linaro.org>
- <02b5ed61-fbb7-0086-a615-8ef375b23e9f@linaro.org>
-In-Reply-To: <02b5ed61-fbb7-0086-a615-8ef375b23e9f@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 24 May 2021 18:08:12 +0100
-Message-ID: <CAFEAcA_dV-AqhcNXwKE9k68ZmXV9VJVgwuhAMpaTNCb5tvL-Wg@mail.gmail.com>
-Subject: Re: [PATCH 8/9] target/arm: Enable FPSCR.QC bit for MVE
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::632;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x632.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fzcAyktRm+5f
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: Y+UF4eoROb6T
 
-On Mon, 24 May 2021 at 17:59, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> On 5/20/21 8:28 AM, Peter Maydell wrote:
-> > MVE has an FPSCR.QC bit similar to the A-profile Neon one;
-> > when MVE is implemented make the bit writeable.
-> >
-> > Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
-> > ---
-> >   target/arm/vfp_helper.c | 3 ++-
-> >   1 file changed, 2 insertions(+), 1 deletion(-)
->
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Will be used for SVE2 isa subset enablement.
 
-There's a followon bit to this patch which I didn't notice
-at first, which is that the handling of ARM_VFP_FPSCR_NZCVQC
-in the "fp_sysreg" code also needs to be updated to read/write
-the QC bit (currently it has TODO comments about this.)
-Given that this patch is currently a one-liner I think I'll
-just respin it as a single patch with all the accesses to QC fixed.
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+v2: Do not read zfr0 from kvm unless sve is available.
+v7: Move zfr0 read inside existing sve_enabled block.
+---
+ target/arm/cpu.h    | 16 ++++++++++++++++
+ target/arm/helper.c |  3 +--
+ target/arm/kvm64.c  | 21 +++++++++++++++------
+ 3 files changed, 32 insertions(+), 8 deletions(-)
 
-thanks
--- PMM
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 616b393253..a6e1fa6333 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -947,6 +947,7 @@ struct ARMCPU {
+         uint64_t id_aa64mmfr2;
+         uint64_t id_aa64dfr0;
+         uint64_t id_aa64dfr1;
++        uint64_t id_aa64zfr0;
+     } isar;
+     uint64_t midr;
+     uint32_t revidr;
+@@ -2034,6 +2035,16 @@ FIELD(ID_AA64DFR0, DOUBLELOCK, 36, 4)
+ FIELD(ID_AA64DFR0, TRACEFILT, 40, 4)
+ FIELD(ID_AA64DFR0, MTPMU, 48, 4)
+ 
++FIELD(ID_AA64ZFR0, SVEVER, 0, 4)
++FIELD(ID_AA64ZFR0, AES, 4, 4)
++FIELD(ID_AA64ZFR0, BITPERM, 16, 4)
++FIELD(ID_AA64ZFR0, BFLOAT16, 20, 4)
++FIELD(ID_AA64ZFR0, SHA3, 32, 4)
++FIELD(ID_AA64ZFR0, SM4, 40, 4)
++FIELD(ID_AA64ZFR0, I8MM, 44, 4)
++FIELD(ID_AA64ZFR0, F32MM, 52, 4)
++FIELD(ID_AA64ZFR0, F64MM, 56, 4)
++
+ FIELD(ID_DFR0, COPDBG, 0, 4)
+ FIELD(ID_DFR0, COPSDBG, 4, 4)
+ FIELD(ID_DFR0, MMAPDBG, 8, 4)
+@@ -4215,6 +4226,11 @@ static inline bool isar_feature_aa64_ssbs(const ARMISARegisters *id)
+     return FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, SSBS) != 0;
+ }
+ 
++static inline bool isar_feature_aa64_sve2(const ARMISARegisters *id)
++{
++    return FIELD_EX64(id->id_aa64zfr0, ID_AA64ZFR0, SVEVER) != 0;
++}
++
+ /*
+  * Feature tests for "does this exist in either 32-bit or 64-bit?"
+  */
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 3b365a78cb..696aea2250 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -7561,8 +7561,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 4,
+               .access = PL1_R, .type = ARM_CP_CONST,
+               .accessfn = access_aa64_tid3,
+-              /* At present, only SVEver == 0 is defined anyway.  */
+-              .resetvalue = 0 },
++              .resetvalue = cpu->isar.id_aa64zfr0 },
+             { .name = "ID_AA64PFR5_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
+               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 5,
+               .access = PL1_R, .type = ARM_CP_CONST,
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index dff85f6db9..37ceadd9a9 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -647,17 +647,26 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+ 
+     sve_supported = ioctl(fdarray[0], KVM_CHECK_EXTENSION, KVM_CAP_ARM_SVE) > 0;
+ 
+-    kvm_arm_destroy_scratch_host_vcpu(fdarray);
+-
+-    if (err < 0) {
+-        return false;
+-    }
+-
+     /* Add feature bits that can't appear until after VCPU init. */
+     if (sve_supported) {
+         t = ahcf->isar.id_aa64pfr0;
+         t = FIELD_DP64(t, ID_AA64PFR0, SVE, 1);
+         ahcf->isar.id_aa64pfr0 = t;
++
++        /*
++         * Before v5.1, KVM did not support SVE and did not expose
++         * ID_AA64ZFR0_EL1 even as RAZ.  After v5.1, KVM still does
++         * not expose the register to "user" requests like this
++         * unless the host supports SVE.
++         */
++        err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64zfr0,
++                              ARM64_SYS_REG(3, 0, 0, 4, 4));
++    }
++
++    kvm_arm_destroy_scratch_host_vcpu(fdarray);
++
++    if (err < 0) {
++        return false;
+     }
+ 
+     /*
+-- 
+2.25.1

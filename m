@@ -1,76 +1,73 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp4108127lfm;
-        Mon, 24 May 2021 20:52:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxFNLNlIBedUvy5D0CcQ54UG0lT+sRNycnQteygNngQR6p5liLOQl8if413MiGJ0hSnbK+V
-X-Received: by 2002:a5d:9343:: with SMTP id i3mr18682152ioo.77.1621914752254;
-        Mon, 24 May 2021 20:52:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621914752; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp4108211lfm;
+        Mon, 24 May 2021 20:52:41 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxN3t9JBqXoPtjf9exN8BEOegXuFXPlhZAZDJivrzSESJTtxlRqkQfc7W5qNrbvoroRyiLa
+X-Received: by 2002:a92:c24b:: with SMTP id k11mr16825407ilo.303.1621914761602;
+        Mon, 24 May 2021 20:52:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621914761; cv=none;
         d=google.com; s=arc-20160816;
-        b=aosVuocMjcVkPC2NScuowQYruAyEx/ARJH1SW5PVa4yIeNsDnSYv7z+ba0iidTj7M1
-         25UosNelFJ91Zwdn2N20dN/f5q2W4r1Bz4XODusldarjMS+ZoNlZp1ooJlUher0FRbkP
-         ZsT8tUz06GXaxf+Q9PbdNnJubZGYREE9lFc/JbX/oTDvFSYxSxgigteG1+Q42/MgFGIZ
-         QA8CUBW/Vbw1QD5bIicmTjJKG+ysGXa0fJuK/qGZ72+n1aYqZxvrqf1OkKgAEtdlNOs3
-         P7e2JmuGnxlJTCZ0oGakgV72FoIwUfZVMfoIMSURQbuaM3TxbRCS/eDQr6wVJWbAarP8
-         niOA==
+        b=PlAXSTXrqpN7Wpvf9HlCCqyH0unpRdBrsTc2feoazVWG1Hv6t/qIJU1tLkCmLU2V1C
+         SMiHIX8jgc/cUktQFALqNQUIJipXHXGWrYGWPNWd8T38v83ibvxu8eNyF/ayz0A3INE/
+         r4V9b9mCc1jJSbLuDypXFg6VWVzP2xufILg38zxDhpPKHx12zJj0+3tNWInoDTv9TDEd
+         Qfk8+B+bBENkPhWjb44ahRGs33vDlYcLpw7l5AtD5Gs/ErF0zopvvx3YK6HukdToHRBl
+         Fr4I5oAFyk7z1mQsQrOJCY942NiOr9ON67gygwtGET5ApaB1QdDQO3IbWfiDsvG7Rb0C
+         tpRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :in-reply-to:message-id:date:subject:to:from;
-        bh=i74ZS+e+LcczdsprclCVWDD67UNEmBD9BtiedK3MwME=;
-        b=PppoPm8Yb2oFVAjhEg2y1B9SBML0YhWNWgSZAzo85rdRUg6yCNOzDGhbYrdpTe8R/c
-         vu6bszMY3jAn0//BsqVSzzhz9UzjBWtBEaFYfCOFwPVsTdCnnVqOMMXWTJ+Go4EBF6vI
-         BLfLkFiu+iEyGGcpSt7trhr7C0MgQQ96MQ4bawikgYxmOM++4DE7DoWXrVPi62iEUX7t
-         gaCty70wNOVUhvvFeKq6863AqOyO5zW0oxoSXD3Sm0inN6o1/2lrEYg5fjtMHQOcN3rx
-         JoPVdX7Q5sYivsyIuIysxdZfWxZO3yvXo9ubbCnsEZD9CRp7vykRB8/MTM4tRSHfCmvw
-         BjNg==
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :subject:to:from;
+        bh=rNJlcyp5KCoed27ErScOCUyu4It76ETtMJqVmmDhQKQ=;
+        b=ufb3QR2GSkTdAtJ3nVcj3DjS9XhWR1ac8IwHcA7vYW0rBEoAHlTzu2JwUq/dCJEK/3
+         FQVss02U8qDBxSwB9lqUxDu4DrxcJdWzdexqnTBc53DdlX/FTiEG+tM430NKGi2/GQ9c
+         r4YA8hrVJYQm5gF2ZJgyBP1nwu5gdjrWDEwNxXMlPUITS6/C2qtMFXx2F31RmAHka1AV
+         aMD9dp/7FO278LPiDPS7sNpp1SmURnliv5E2MOkTyCT3i6jU721qgVUELIKx98nye46P
+         5Lma4W4YIdfPSwcqxoYCwoNiKZPKObAWBztJIdVYlSvLeBOwp4kLrsF2jw4s3roqpgHp
+         BghQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p4si6988159ios.73.2021.05.24.20.52.32
+        by mx.google.com with ESMTPS id k5si18522767ilv.81.2021.05.24.20.52.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 May 2021 20:52:32 -0700 (PDT)
+        Mon, 24 May 2021 20:52:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:48564 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49440 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1llO7L-0004ZL-K6
-	for alex.bennee@linaro.org; Mon, 24 May 2021 23:52:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57652)
+	id 1llO7U-00059q-Vj
+	for alex.bennee@linaro.org; Mon, 24 May 2021 23:52:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57662)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangxingang5@huawei.com>)
- id 1llO5M-0006PW-43; Mon, 24 May 2021 23:50:28 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:3434)
+ id 1llO5M-0006QF-HL; Mon, 24 May 2021 23:50:28 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:3627)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangxingang5@huawei.com>)
- id 1llO5H-0001nF-Qs; Mon, 24 May 2021 23:50:27 -0400
-Received: from dggems701-chm.china.huawei.com (unknown [172.30.72.58])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4Fq0PX5VylzP0J3;
- Tue, 25 May 2021 11:46:40 +0800 (CST)
+ id 1llO5I-0001s1-An; Mon, 24 May 2021 23:50:28 -0400
+Received: from dggems706-chm.china.huawei.com (unknown [172.30.72.60])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4Fq0QT6H27zwTKP;
+ Tue, 25 May 2021 11:47:29 +0800 (CST)
 Received: from dggpemm500009.china.huawei.com (7.185.36.225) by
- dggems701-chm.china.huawei.com (10.3.19.178) with Microsoft SMTP Server
+ dggems706-chm.china.huawei.com (10.3.19.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2176.2; Tue, 25 May 2021 11:50:16 +0800
+ 15.1.2176.2; Tue, 25 May 2021 11:50:11 +0800
 Received: from huawei.com (10.174.185.226) by dggpemm500009.china.huawei.com
  (7.185.36.225) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2176.2; Tue, 25 May
- 2021 11:50:16 +0800
+ 2021 11:50:11 +0800
 From: Wang Xingang <wangxingang5@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
  <shannon.zhaosl@gmail.com>, <imammedo@redhat.com>, <mst@redhat.com>,
  <marcel.apfelbaum@gmail.com>, <peter.maydell@linaro.org>,
  <ehabkost@redhat.com>, <richard.henderson@linaro.org>, <pbonzini@redhat.com>
-Subject: [PATCH v4 8/8] hw/i386/acpi-build: Add bypass_iommu check when
- building IVRS table
-Date: Tue, 25 May 2021 03:50:05 +0000
-Message-ID: <1621914605-14724-9-git-send-email-wangxingang5@huawei.com>
+Subject: [PATCH v4 0/8] IOMMU: Add support for IOMMU Bypass Feature
+Date: Tue, 25 May 2021 03:49:57 +0000
+Message-ID: <1621914605-14724-1-git-send-email-wangxingang5@huawei.com>
 X-Mailer: git-send-email 2.6.4.windows.1
-In-Reply-To: <1621914605-14724-1-git-send-email-wangxingang5@huawei.com>
-References: <1621914605-14724-1-git-send-email-wangxingang5@huawei.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Originating-IP: [10.174.185.226]
@@ -100,31 +97,70 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: xieyingtai@huawei.com, wangxingang5@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NKc3WBqiVTkS
+X-TUID: CSEPBJFKiFSP
 
 From: Xingang Wang <wangxingang5@huawei.com>
 
-When building IVRS table, only devices which go through iommu
-will be scanned, and the corresponding ivhd will be inserted.
+These patches add support for configure bypass_iommu on/off for
+pci root bus, including primary bus and pxb root bus. At present,
+all root bus will go through iommu when iommu is configured,
+which is not flexible, because in many situations the need for using
+iommu and bypass iommu aften exists at the same time.
 
-Signed-off-by: Xingang Wang <wangxingang5@huawei.com>
----
- hw/i386/acpi-build.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+So this add option to enable/disable bypass_iommu for primary bus
+and pxb root bus. The bypass_iommu property is set to false default,
+meaning that devcies will go through iommu if no explicit configuration
+is added. When bypass_iommu is enabled for the root bus, devices
+attached to it will bypass iommu, otherwise devices will go through
+iommu.
 
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index e839527184..d3ef485fa4 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -2232,7 +2232,7 @@ ivrs_host_bridges(Object *obj, void *opaque)
-     if (object_dynamic_cast(obj, TYPE_PCI_HOST_BRIDGE)) {
-         PCIBus *bus = PCI_HOST_BRIDGE(obj)->bus;
- 
--        if (bus) {
-+        if (bus && !pci_bus_bypass_iommu(bus)) {
-             pci_for_each_device(bus, pci_bus_num(bus), insert_ivhd, ivhd_blob);
-         }
-     }
+This feature can be used in this manner:
+arm: -machine virt,iommu=smmuv3,bypass_iommu=true
+x86: -machine q35,bypass_iommu=true
+pxb: -device pxb-pcie,bus_nr=0x10,id=pci.10,bus=pcie.0,bypass_iommu=true 
+
+History:
+
+v3 -> v4:
+- simplify the logic in building the IORT idmap
+
+v2 -> v3:
+- rebase on top of v6.0.0-rc4
+- Took into account Eric's comments, replace with a bypass_iommu
+  proerty 
+- When building the IORT idmap, cover the whole RID space
+
+v1 -> v2:
+- rebase on top of v6.0.0-rc0
+- Fix some issues
+- Took into account Eric's comments, and remove the PCI_BUS_IOMMU flag,
+  replace it with a property in PCIHostState.
+- Add support for x86 iommu option
+
+Xingang Wang (8):
+  hw/pci/pci_host: Allow bypass iommu for pci host
+  hw/pxb: Add a bypass iommu property
+  hw/arm/virt: Add a machine option to bypass iommu for primary bus
+  hw/i386: Add a pc machine option to bypass iommu for primary bus
+  hw/pci: Add pci_bus_range to get bus number range
+  hw/arm/virt-acpi-build: Add explicit IORT idmap for smmuv3 node
+  hw/i386/acpi-build: Add explicit scope in DMAR table
+  hw/i386/acpi-build: Add bypass_iommu check when building IVRS table
+
+ hw/arm/virt-acpi-build.c            | 135 ++++++++++++++++++++++++----
+ hw/arm/virt.c                       |  26 ++++++
+ hw/i386/acpi-build.c                |  70 ++++++++++++++-
+ hw/i386/pc.c                        |  18 ++++
+ hw/pci-bridge/pci_expander_bridge.c |   3 +
+ hw/pci-host/q35.c                   |   1 +
+ hw/pci/pci.c                        |  33 ++++++-
+ hw/pci/pci_host.c                   |   2 +
+ include/hw/arm/virt.h               |   1 +
+ include/hw/i386/pc.h                |   1 +
+ include/hw/pci/pci.h                |   2 +
+ include/hw/pci/pci_host.h           |   1 +
+ 12 files changed, 270 insertions(+), 23 deletions(-)
+
 -- 
 2.19.1
 

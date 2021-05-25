@@ -1,102 +1,103 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp4022950lfm;
-        Mon, 24 May 2021 18:16:17 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxDet/4SIVvXaO0UX/wouHqfOLWSsHlvKJ+fytdi0VCvb++I7HUdGOGIK+TA4/Wtzo9QcJ0
-X-Received: by 2002:a9f:2084:: with SMTP id 4mr25099601uaa.139.1621905377693;
-        Mon, 24 May 2021 18:16:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621905377; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp4023008lfm;
+        Mon, 24 May 2021 18:16:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz5LnlIrhrspFvGWwGIL3X3EeZ9HFdAa0viojwLeRd+jFzOYuFei5Qwj4QsjfP/eW609dOc
+X-Received: by 2002:a05:6102:c8c:: with SMTP id f12mr23128533vst.30.1621905384214;
+        Mon, 24 May 2021 18:16:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621905384; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ip6fB2qP6cS9SaGu966E4zfb3HbZAwvw4xQ+BFQ2cSksRk9F7VDkksuI43bx20z/FQ
-         rr2Xef/Y7UPCXYwWLAbb2p6owsncLl7ZDu5sCGawj5d6kjv+j5QkdU+3nCqpbhQL5UiE
-         TWbsw4xxV6fwATrcseW/ISoEEak8XyhBOSHQwZR/ujSOPHw29NQxo/2wBJSZ+wKu/oOM
-         gaf4FUkLRp8wzP6LtVN8qCCfkJKCHCNigWyX3dxDvCFzXWwy6uLQjcT/MVXPzicLXUFL
-         uQW/hVOgZGC2D2Cw955YjtP2bir0k/iHu4zk7EFRXnvT1HMbXjp6L1RTO435o2wzNIRK
-         1hDQ==
+        b=WYEAaurHkr0yhwYJFvx1tuSGgtdBZ+Qf+/SqptLJnuInYYF3L9ze3djqh+0UORvvrX
+         yBGttxAP92Yf2TAwf2mjeenBOg6/om30H+LjrbTr3BB31CfH6m21orXDhF1RLFRn6ZgD
+         RXngMLHm8XJvH9gO01Jj2yG+nLh/Z/vmwK4agHYkLAQD+kbmaLAuStmdFCCTJbBtE+GC
+         x+0fca0kfrhUSjVabV5IQyat1MB1+AnfyZl6MDXR2JUcjcSPUZcGKwM5MgMn06iaNaSr
+         mBMj9ok0kJe8b0wEkwFWi/BipSV9MRM1rCr7CsDm9+jBQajVdRHyhtKRhQfQPSpevkjK
+         UOvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=2FEqaGXGRGG/h3UifaZhFAnj1R1ao5X9aq13b4ZOWhE=;
-        b=VP4wj99qMUo700M8kSjqANMcLZRvCGWiinW0uMZY9VDJRlx2NEC4Mbh3q2SbBUk01g
-         7Qbk/Kl3PoUpk4da3ZMSXqflBg7//CHuMIIl+XrJ7RbxhiBTspnS+WTdC0IQzjfiqcEv
-         lTk4pzbloLvv9XZH0iKrJMrWjTVg+Fg9W7czNpSRQkF+bDIb5LnsCx0nOFDH4BExRYJJ
-         BUS8SUm7oGF/vwG4ZnpvIYOhtcY9OgSW3SrOxC2kdybrqkzY2G1Sbekmy5qGPsCp1IWc
-         QLAtV2WmZA/E73xjQoCXHCWHLFMiSKxCxSg6RAFKPxmeaKxypX7lpZrYUFsDrP5oTZn7
-         h/2Q==
+        bh=xQqdhPEFi//818PiFQlOdC031EC4wLZPJm67LCcXIzc=;
+        b=S2qKuskyE92ka3SFgoUO3v4oVMlrUF4b9k7jYCmM01McQeq6Yx1SPSWZ8i8b6vYgx1
+         NxgADdGqy6gpbALGc9O32eCcIJmdo8sDht8Ib3dwv9x+nUfTkjEjblh7AHwl4xvYardP
+         RU/rq6U0xH5Mhz4K6wy+qjygRLOBYQcipwf0uXX1/U3LCkQNeAy92+dpsWbtfno71EBs
+         VaJatWzjtaZqKfVrJa5aDTUz0Q/JXPnvHTHPNn3OTokWGMkZiAKH8zxNvK8/1R28aDi6
+         m41YKF647zqM2MIveeT2+g7ZJcmBPb7EEMq+6mnYRV0Wyo2g9YC2asPMMyBLN1/j69Hb
+         8dTQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Sh70RDBY;
+       dkim=fail header.i=@linaro.org header.s=google header.b="lC/lh53A";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b21si3514870vsr.59.2021.05.24.18.16.17
+        by mx.google.com with ESMTPS id i6si3326375vsm.338.2021.05.24.18.16.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 May 2021 18:16:17 -0700 (PDT)
+        Mon, 24 May 2021 18:16:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Sh70RDBY;
+       dkim=fail header.i=@linaro.org header.s=google header.b="lC/lh53A";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40042 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40754 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1llLg8-0006lt-Jz
-	for alex.bennee@linaro.org; Mon, 24 May 2021 21:16:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53610)
+	id 1llLgF-0007aR-EO
+	for alex.bennee@linaro.org; Mon, 24 May 2021 21:16:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53882)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1llLUX-0001dK-VE
- for qemu-arm@nongnu.org; Mon, 24 May 2021 21:04:19 -0400
-Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d]:45837)
+ id 1llLUl-0001qR-Pp
+ for qemu-arm@nongnu.org; Mon, 24 May 2021 21:04:31 -0400
+Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533]:42711)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1llLUO-0001i2-Hh
- for qemu-arm@nongnu.org; Mon, 24 May 2021 21:04:17 -0400
-Received: by mail-pg1-x52d.google.com with SMTP id q15so21391307pgg.12
- for <qemu-arm@nongnu.org>; Mon, 24 May 2021 18:04:08 -0700 (PDT)
+ id 1llLUS-0001mK-Rw
+ for qemu-arm@nongnu.org; Mon, 24 May 2021 21:04:31 -0400
+Received: by mail-pg1-x533.google.com with SMTP id f22so20462078pgb.9
+ for <qemu-arm@nongnu.org>; Mon, 24 May 2021 18:04:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=2FEqaGXGRGG/h3UifaZhFAnj1R1ao5X9aq13b4ZOWhE=;
- b=Sh70RDBYxjZcnB+E1Op8OmAgUh8KFzZH01bogekBB1a7yZPs2tOwJ3lQfe4lzYkD4Q
- MvH749Bxx1xkZ5AilJThIBWeKm2zlzffDPXIxBACBugbVndEHxglhCFhmerkD6Sg6BlB
- PxDl0BOdPTiPczkSFk1HfydaB2QPARs97cIp7r6VwUxT22TM8YMAqE5fXbB6Y4ihiHvg
- qznVG0GfMrFJq7a1qWUJDnXsVV51/lFqJGPVy4TrVaImXfGJtRO6pNbnLb0nliX9b+cx
- Y++epXzdvSDATE/G6C8BxIIrLq3UIVF+V73JKfkdKy3JWSj4giGV0DTsQoz5X/YF2Ukh
- uNCg==
+ bh=xQqdhPEFi//818PiFQlOdC031EC4wLZPJm67LCcXIzc=;
+ b=lC/lh53Ad36WBX8wsv/kZ25lm3l+yJY2issjRnUDWBGixSV9ccPA+tLXZ3OkZsaP5m
+ Fl1/vb2ytxl2SgRlP5Amcf33w0CfP4SBhyR//oANQ32BDuk6XWRaUz2FmEFHJrJCY7H8
+ nAUGxPkqNVHg7l0rEKrPMLIwoVTv9wR3RXOXNXIeNw90+HsQF1mpuTwcHWnXDl9y2gFf
+ WwK0I8HuiJ2nXnD7qc9p03sJ9XDRgt2gxV16VheJhyONm6XRptf7VdWrQeNiuYY8/K5W
+ 8am043idPOx2mHoySEgccG0RUQPYVQP3A0FCaBuSGQohLcu+QLRFG0GkIUY1mophQ+ZD
+ efvQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=2FEqaGXGRGG/h3UifaZhFAnj1R1ao5X9aq13b4ZOWhE=;
- b=Loyoos9TcgdqPVYFGd1xuwuDrMDnSlYx/iBg79tAdBSO89R8uQeaMF/4Vggu07l8/Y
- fVJlS6n8jW0vsRDiweG5Tf+iSyTgEAyx5/3G5ensxaWlvYX83YHuwvZESzAnLeoZYcyY
- XBjpcZ8jQ1juzVBMWmwZva2E1vSfVvRENuUOIemMRwtdVgbVWGv4GSssEKiYLLXfmgiz
- cmuoir01W9vvsY5yI4z41cKIsjaZTuam1yrZFaCBy9fOD/WcJy6IcNIHydY+H/q02O+s
- qcbyJCf4v4M3bqCiu1Sa8EzOb945HO+rvm2/r3zaQw+QveGS4MlEXqYEXYFObYCpMxPq
- braw==
-X-Gm-Message-State: AOAM531CofVpx6A7/eig1aqpJAlpT5ap416JKMPCthQYRm6jgdwzYCw9
- /x0uOCmHW3/UalHJ6q+GLD2SQA==
-X-Received: by 2002:a63:7204:: with SMTP id n4mr16452938pgc.78.1621904647073; 
- Mon, 24 May 2021 18:04:07 -0700 (PDT)
+ bh=xQqdhPEFi//818PiFQlOdC031EC4wLZPJm67LCcXIzc=;
+ b=eetAUMHtLXd43as9ZpSB3dcH32IXV7YtoTtPp2KuTLDMYd18CdBDNzCUB9s/fkUqAm
+ OJlZyBQVYmbZhpwZdfVHRFz9GF+hnzyHe7oPJ1WY/hIXlm3Y1HsjBMyPbV6geIbmrgs4
+ c3V5qszbOW9nG4TFHqfZzRt7RAkZSLQQgASoOWcktbJSo6wV7rWCdHBVk4lM+PHvnUrw
+ av5sr2tzGj8mtjvS1Kb4cZvEq9xHM/cGMtanptV94nvOgeu3Y02RjGPT3ZCyOAJ1USOd
+ WEK1ZM9VlrDfVBDV3sf+R730x72ifG8QQTr79I8EvpIM7CcZ3d0xPmJMMv2NZyNzXf6c
+ kBMw==
+X-Gm-Message-State: AOAM532zN8fFWjRjzuQBdswQ1yoO/dCr7JhA8QYyCxaN9H0dbBcFS2CU
+ WPOXPJaZo2rFO2xHhdfgXts11Q==
+X-Received: by 2002:a63:cf55:: with SMTP id b21mr16514965pgj.126.1621904651372; 
+ Mon, 24 May 2021 18:04:11 -0700 (PDT)
 Received: from localhost.localdomain (174-21-70-228.tukw.qwest.net.
  [174.21.70.228])
- by smtp.gmail.com with ESMTPSA id b1sm13742645pgf.84.2021.05.24.18.04.06
+ by smtp.gmail.com with ESMTPSA id b1sm13742645pgf.84.2021.05.24.18.04.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 24 May 2021 18:04:06 -0700 (PDT)
+ Mon, 24 May 2021 18:04:11 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v7 12/92] target/arm: Implement SVE2 integer add/subtract wide
-Date: Mon, 24 May 2021 18:02:38 -0700
-Message-Id: <20210525010358.152808-13-richard.henderson@linaro.org>
+Subject: [PATCH v7 19/92] target/arm: Implement SVE2 integer absolute
+ difference and accumulate long
+Date: Mon, 24 May 2021 18:02:45 -0700
+Message-Id: <20210525010358.152808-20-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210525010358.152808-1-richard.henderson@linaro.org>
 References: <20210525010358.152808-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52d;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::533;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x533.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -119,135 +120,179 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +dTwYXeY9pay
+X-TUID: fe22u+AHh8BO
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
-v2: Fix select offsets (laurent desnogues).
+v2: Fix select offsetting and argument order (laurent desnogues).
 ---
- target/arm/helper-sve.h    | 16 ++++++++++++++++
- target/arm/sve.decode      | 12 ++++++++++++
- target/arm/sve_helper.c    | 30 ++++++++++++++++++++++++++++++
- target/arm/translate-sve.c | 20 ++++++++++++++++++++
- 4 files changed, 78 insertions(+)
+ target/arm/helper-sve.h    | 14 ++++++++++
+ target/arm/sve.decode      | 12 +++++++++
+ target/arm/sve_helper.c    | 23 ++++++++++++++++
+ target/arm/translate-sve.c | 55 ++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 104 insertions(+)
 
 diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
-index a81297b387..3286a9c205 100644
+index c2155cc544..229fb396b2 100644
 --- a/target/arm/helper-sve.h
 +++ b/target/arm/helper-sve.h
-@@ -1391,6 +1391,22 @@ DEF_HELPER_FLAGS_4(sve2_uabdl_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_4(sve2_uabdl_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_4(sve2_uabdl_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- 
-+DEF_HELPER_FLAGS_4(sve2_saddw_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve2_saddw_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve2_saddw_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+@@ -2402,3 +2402,17 @@ DEF_HELPER_FLAGS_4(sve2_sqcadd_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(sve2_sqcadd_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(sve2_sqcadd_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(sve2_sqcadd_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
 +
-+DEF_HELPER_FLAGS_4(sve2_ssubw_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve2_ssubw_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve2_ssubw_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sve2_sabal_h, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sve2_sabal_s, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sve2_sabal_d, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
 +
-+DEF_HELPER_FLAGS_4(sve2_uaddw_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve2_uaddw_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve2_uaddw_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+
-+DEF_HELPER_FLAGS_4(sve2_usubw_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve2_usubw_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve2_usubw_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+
- DEF_HELPER_FLAGS_4(sve_ld1bb_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
- DEF_HELPER_FLAGS_4(sve_ld2bb_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
- DEF_HELPER_FLAGS_4(sve_ld3bb_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
++DEF_HELPER_FLAGS_5(sve2_uabal_h, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sve2_uabal_s, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sve2_uabal_d, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
 diff --git a/target/arm/sve.decode b/target/arm/sve.decode
-index 12be0584a8..f6f21426ef 100644
+index 7508b901d0..56b7353bfa 100644
 --- a/target/arm/sve.decode
 +++ b/target/arm/sve.decode
-@@ -1184,3 +1184,15 @@ UABDLT          01000101 .. 0 ..... 00 1111 ..... .....  @rd_rn_rm
- SADDLBT         01000101 .. 0 ..... 1000 00 ..... .....  @rd_rn_rm
- SSUBLBT         01000101 .. 0 ..... 1000 10 ..... .....  @rd_rn_rm
- SSUBLTB         01000101 .. 0 ..... 1000 11 ..... .....  @rd_rn_rm
+@@ -70,6 +70,7 @@
+ &rpr_s          rd pg rn s
+ &rprr_s         rd pg rn rm s
+ &rprr_esz       rd pg rn rm esz
++&rrrr_esz       rd ra rn rm esz
+ &rprrr_esz      rd pg rn rm ra esz
+ &rpri_esz       rd pg rn imm esz
+ &ptrue          rd esz pat s
+@@ -119,6 +120,10 @@
+ @rdn_i8s        ........ esz:2 ...... ... imm:s8 rd:5 \
+                 &rri_esz rn=%reg_movprfx
+ 
++# Four operand, vector element size
++@rda_rn_rm      ........ esz:2 . rm:5 ... ... rn:5 rd:5 \
++                &rrrr_esz ra=%reg_movprfx
 +
-+## SVE2 integer add/subtract wide
+ # Three operand with "memory" size, aka immediate left shift
+ @rd_rn_msz_rm   ........ ... rm:5 .... imm:2 rn:5 rd:5          &rrri
+ 
+@@ -1235,3 +1240,10 @@ CADD_rot90      01000101 .. 00000 0 11011 0 ..... .....  @rdn_rm
+ CADD_rot270     01000101 .. 00000 0 11011 1 ..... .....  @rdn_rm
+ SQCADD_rot90    01000101 .. 00000 1 11011 0 ..... .....  @rdn_rm
+ SQCADD_rot270   01000101 .. 00000 1 11011 1 ..... .....  @rdn_rm
 +
-+SADDWB          01000101 .. 0 ..... 010 000 ..... .....  @rd_rn_rm
-+SADDWT          01000101 .. 0 ..... 010 001 ..... .....  @rd_rn_rm
-+UADDWB          01000101 .. 0 ..... 010 010 ..... .....  @rd_rn_rm
-+UADDWT          01000101 .. 0 ..... 010 011 ..... .....  @rd_rn_rm
++## SVE2 integer absolute difference and accumulate long
 +
-+SSUBWB          01000101 .. 0 ..... 010 100 ..... .....  @rd_rn_rm
-+SSUBWT          01000101 .. 0 ..... 010 101 ..... .....  @rd_rn_rm
-+USUBWB          01000101 .. 0 ..... 010 110 ..... .....  @rd_rn_rm
-+USUBWT          01000101 .. 0 ..... 010 111 ..... .....  @rd_rn_rm
++SABALB          01000101 .. 0 ..... 1100 00 ..... .....  @rda_rn_rm
++SABALT          01000101 .. 0 ..... 1100 01 ..... .....  @rda_rn_rm
++UABALB          01000101 .. 0 ..... 1100 10 ..... .....  @rda_rn_rm
++UABALT          01000101 .. 0 ..... 1100 11 ..... .....  @rda_rn_rm
 diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
-index d88fab9865..374e02dbf8 100644
+index 9015e68cb8..5d084a1164 100644
 --- a/target/arm/sve_helper.c
 +++ b/target/arm/sve_helper.c
-@@ -1165,6 +1165,36 @@ DO_ZZZ_TB(sve2_uabdl_d, uint64_t, uint32_t,     , H1_4, DO_ABD)
+@@ -1246,6 +1246,29 @@ DO_ZZZ_NTB(sve2_eoril_d, uint64_t,     , DO_EOR)
  
- #undef DO_ZZZ_TB
+ #undef DO_ZZZ_NTB
  
-+#define DO_ZZZ_WTB(NAME, TYPEW, TYPEN, HW, HN, OP) \
-+void HELPER(NAME)(void *vd, void *vn, void *vm, uint32_t desc) \
-+{                                                              \
-+    intptr_t i, opr_sz = simd_oprsz(desc);                     \
-+    int sel2 = extract32(desc, SIMD_DATA_SHIFT, 1) * sizeof(TYPEN); \
-+    for (i = 0; i < opr_sz; i += sizeof(TYPEW)) {              \
-+        TYPEW nn = *(TYPEW *)(vn + HW(i));                     \
-+        TYPEW mm = *(TYPEN *)(vm + HN(i + sel2));              \
-+        *(TYPEW *)(vd + HW(i)) = OP(nn, mm);                   \
-+    }                                                          \
++#define DO_ZZZW_ACC(NAME, TYPEW, TYPEN, HW, HN, OP) \
++void HELPER(NAME)(void *vd, void *vn, void *vm, void *va, uint32_t desc) \
++{                                                               \
++    intptr_t i, opr_sz = simd_oprsz(desc);                      \
++    intptr_t sel1 = simd_data(desc) * sizeof(TYPEN);            \
++    for (i = 0; i < opr_sz; i += sizeof(TYPEW)) {               \
++        TYPEW nn = *(TYPEN *)(vn + HN(i + sel1));               \
++        TYPEW mm = *(TYPEN *)(vm + HN(i + sel1));               \
++        TYPEW aa = *(TYPEW *)(va + HW(i));                      \
++        *(TYPEW *)(vd + HW(i)) = OP(nn, mm) + aa;               \
++    }                                                           \
 +}
 +
-+DO_ZZZ_WTB(sve2_saddw_h, int16_t, int8_t, H1_2, H1, DO_ADD)
-+DO_ZZZ_WTB(sve2_saddw_s, int32_t, int16_t, H1_4, H1_2, DO_ADD)
-+DO_ZZZ_WTB(sve2_saddw_d, int64_t, int32_t,     , H1_4, DO_ADD)
++DO_ZZZW_ACC(sve2_sabal_h, int16_t, int8_t, H1_2, H1, DO_ABD)
++DO_ZZZW_ACC(sve2_sabal_s, int32_t, int16_t, H1_4, H1_2, DO_ABD)
++DO_ZZZW_ACC(sve2_sabal_d, int64_t, int32_t,     , H1_4, DO_ABD)
 +
-+DO_ZZZ_WTB(sve2_ssubw_h, int16_t, int8_t, H1_2, H1, DO_SUB)
-+DO_ZZZ_WTB(sve2_ssubw_s, int32_t, int16_t, H1_4, H1_2, DO_SUB)
-+DO_ZZZ_WTB(sve2_ssubw_d, int64_t, int32_t,     , H1_4, DO_SUB)
++DO_ZZZW_ACC(sve2_uabal_h, uint16_t, uint8_t, H1_2, H1, DO_ABD)
++DO_ZZZW_ACC(sve2_uabal_s, uint32_t, uint16_t, H1_4, H1_2, DO_ABD)
++DO_ZZZW_ACC(sve2_uabal_d, uint64_t, uint32_t,     , H1_4, DO_ABD)
 +
-+DO_ZZZ_WTB(sve2_uaddw_h, uint16_t, uint8_t, H1_2, H1, DO_ADD)
-+DO_ZZZ_WTB(sve2_uaddw_s, uint32_t, uint16_t, H1_4, H1_2, DO_ADD)
-+DO_ZZZ_WTB(sve2_uaddw_d, uint64_t, uint32_t,     , H1_4, DO_ADD)
++#undef DO_ZZZW_ACC
 +
-+DO_ZZZ_WTB(sve2_usubw_h, uint16_t, uint8_t, H1_2, H1, DO_SUB)
-+DO_ZZZ_WTB(sve2_usubw_s, uint32_t, uint16_t, H1_4, H1_2, DO_SUB)
-+DO_ZZZ_WTB(sve2_usubw_d, uint64_t, uint32_t,     , H1_4, DO_SUB)
-+
-+#undef DO_ZZZ_WTB
-+
- /* Two-operand reduction expander, controlled by a predicate.
-  * The difference between TYPERED and TYPERET has to do with
-  * sign-extension.  E.g. for SMAX, TYPERED must be signed,
+ #define DO_BITPERM(NAME, TYPE, OP) \
+ void HELPER(NAME)(void *vd, void *vn, void *vm, uint32_t desc) \
+ {                                                              \
 diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-index ae8323adb7..70900c122f 100644
+index 27eb6f3233..c41464ba22 100644
 --- a/target/arm/translate-sve.c
 +++ b/target/arm/translate-sve.c
-@@ -6020,3 +6020,23 @@ DO_SVE2_ZZZ_TB(UABDLT, uabdl, true, true)
- DO_SVE2_ZZZ_TB(SADDLBT, saddl, false, true)
- DO_SVE2_ZZZ_TB(SSUBLBT, ssubl, false, true)
- DO_SVE2_ZZZ_TB(SSUBLTB, ssubl, true, false)
-+
-+#define DO_SVE2_ZZZ_WTB(NAME, name, SEL2) \
-+static bool trans_##NAME(DisasContext *s, arg_rrr_esz *a)       \
-+{                                                               \
-+    static gen_helper_gvec_3 * const fns[4] = {                 \
-+        NULL,                       gen_helper_sve2_##name##_h, \
-+        gen_helper_sve2_##name##_s, gen_helper_sve2_##name##_d, \
-+    };                                                          \
-+    return do_sve2_zzw_ool(s, a, fns[a->esz], SEL2);            \
+@@ -163,6 +163,18 @@ static void gen_gvec_ool_zzz(DisasContext *s, gen_helper_gvec_3 *fn,
+                        vsz, vsz, data, fn);
+ }
+ 
++/* Invoke an out-of-line helper on 4 Zregs. */
++static void gen_gvec_ool_zzzz(DisasContext *s, gen_helper_gvec_4 *fn,
++                              int rd, int rn, int rm, int ra, int data)
++{
++    unsigned vsz = vec_full_reg_size(s);
++    tcg_gen_gvec_4_ool(vec_full_reg_offset(s, rd),
++                       vec_full_reg_offset(s, rn),
++                       vec_full_reg_offset(s, rm),
++                       vec_full_reg_offset(s, ra),
++                       vsz, vsz, data, fn);
 +}
 +
-+DO_SVE2_ZZZ_WTB(SADDWB, saddw, false)
-+DO_SVE2_ZZZ_WTB(SADDWT, saddw, true)
-+DO_SVE2_ZZZ_WTB(SSUBWB, ssubw, false)
-+DO_SVE2_ZZZ_WTB(SSUBWT, ssubw, true)
+ /* Invoke an out-of-line helper on 2 Zregs and a predicate. */
+ static void gen_gvec_ool_zzp(DisasContext *s, gen_helper_gvec_3 *fn,
+                              int rd, int rn, int pg, int data)
+@@ -6316,3 +6328,46 @@ static bool trans_SQCADD_rot270(DisasContext *s, arg_rrr_esz *a)
+ {
+     return do_cadd(s, a, true, true);
+ }
 +
-+DO_SVE2_ZZZ_WTB(UADDWB, uaddw, false)
-+DO_SVE2_ZZZ_WTB(UADDWT, uaddw, true)
-+DO_SVE2_ZZZ_WTB(USUBWB, usubw, false)
-+DO_SVE2_ZZZ_WTB(USUBWT, usubw, true)
++static bool do_sve2_zzzz_ool(DisasContext *s, arg_rrrr_esz *a,
++                             gen_helper_gvec_4 *fn, int data)
++{
++    if (fn == NULL || !dc_isar_feature(aa64_sve2, s)) {
++        return false;
++    }
++    if (sve_access_check(s)) {
++        gen_gvec_ool_zzzz(s, fn, a->rd, a->rn, a->rm, a->ra, data);
++    }
++    return true;
++}
++
++static bool do_abal(DisasContext *s, arg_rrrr_esz *a, bool uns, bool sel)
++{
++    static gen_helper_gvec_4 * const fns[2][4] = {
++        { NULL,                    gen_helper_sve2_sabal_h,
++          gen_helper_sve2_sabal_s, gen_helper_sve2_sabal_d },
++        { NULL,                    gen_helper_sve2_uabal_h,
++          gen_helper_sve2_uabal_s, gen_helper_sve2_uabal_d },
++    };
++    return do_sve2_zzzz_ool(s, a, fns[uns][a->esz], sel);
++}
++
++static bool trans_SABALB(DisasContext *s, arg_rrrr_esz *a)
++{
++    return do_abal(s, a, false, false);
++}
++
++static bool trans_SABALT(DisasContext *s, arg_rrrr_esz *a)
++{
++    return do_abal(s, a, false, true);
++}
++
++static bool trans_UABALB(DisasContext *s, arg_rrrr_esz *a)
++{
++    return do_abal(s, a, true, false);
++}
++
++static bool trans_UABALT(DisasContext *s, arg_rrrr_esz *a)
++{
++    return do_abal(s, a, true, true);
++}
 -- 
 2.25.1
 

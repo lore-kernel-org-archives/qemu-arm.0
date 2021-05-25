@@ -1,107 +1,104 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp4205640lfm;
-        Mon, 24 May 2021 23:45:27 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwOZSOu8oDX7TamLMutPA+mABbYupff8/JdDnrdVgsJt5P3b31yaZRdJvguZ8bQR0fjNGkY
-X-Received: by 2002:a92:c243:: with SMTP id k3mr22337525ilo.81.1621925127540;
-        Mon, 24 May 2021 23:45:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621925127; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp4244480lfm;
+        Tue, 25 May 2021 00:49:56 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwbfiLo8xPKwBGkL7nMJZqz8CdYMYoJRFAOP2mpL3MrQH/VUqbAwF+hFn7/a6HE6xgcXOnj
+X-Received: by 2002:a05:6638:270b:: with SMTP id m11mr28422450jav.59.1621928996611;
+        Tue, 25 May 2021 00:49:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621928996; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ol8y7uvgubl7McdkbLxKo2KtHO6W5Cpgf02UMIGtLv4ILw69IR/JfLb3RMDMRI3ZxA
-         j8yJALXxhZuDBvzTq4cUK5zFew2BIYKApRVLGD5ftKcaYh/LMM6DSMXxKt4b93jBZExo
-         eb02TcI1VmWlhNYJFGQl/MWG00/0/gtIt55gOMsMW53eGCDRfdrbdZuBPEJiTY4mwwrY
-         DSdaAaPytaE39n4aDRKrWkv03xfEw0uZgA7P7+vpULP0HifPHAFqfdiGtIjBYkabTtct
-         Z0HE5r1GeO8Z0/WS0eHcHAEyqd6MSRg9vg4Cm6Nqkc1CwMbIky5QmX8KXdFHL/zz6231
-         IqnA==
+        b=Ue7zVI4yLldKPz4nGelLzBopsdT4a5gNP2nvehMkdIwzuqN5f0HsP2SHVGHhGFYshg
+         RoZbMpW1+L369iumrFXiKY3KM0Hdcb/AyyUfkE22nd72YusPJIkJfuk9x5ogWkySbPbi
+         /SIBOwOJCl2FGcs2yymy21+fuNG8rjx7kGWcSd20XX4U1nblfQmyFWV/hrXKY0mgfHm8
+         17hfu/TTgGKW2mOIURt1Q7WHvBmLRBi/evO0oLrjAGkLgjTRvl10wV1ZZI+AwV+stW2C
+         Shz1BdITU04+rgdQFpDnqhpYGjE47sGd+9Bzj6TOFwD+Oub/Dk0QVTp6Pq/Hnn5KOanF
+         zBVQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=Ebn63hHqkjlgUmZfp5AMlLroqpj8MQllW+Oasfs+1PA=;
-        b=zAZO+EktUtt0MgpJmJMDdJApBl76iV3QiU8WJatwgqoQKiy3llanDJ8z6d8hSvhSIX
-         IIdXUOJ6WvzvJebbotmuF0KpiCRwill0SmjDNj1U93/TbJPyKaDLCUbdtIM4//O02wOV
-         4hX+p0KY3EnaNJmajN88a5QnN7H4D2clOUwbJiWI4CE488O8P5oVdH3OUflO8htx+Onf
-         9Dn0q/CYshMeVWiS+LDkortD0yOtyIQDkPu9zlNVy8Bb7ZrLHrsDqsEJjxN9tkmk7ydA
-         edWZKCFuoshQdSQApYkOyBbW280oJw2XnvkkXz8ONsHLm/CIXFE11PDZIVcITksKL+Ke
-         hbfw==
+        bh=UqgbO2Ym7wWWZi7Z9+p9ko/d0Pl+89qW9M2+6NAr1sg=;
+        b=SLy/PqbaZBN7hppLnXw7LcrlLThaszCzd6i5ZRG69nPk4iqgTx1TX71jQqTQIGsfYm
+         eGJiRTrraSwN5D/ai2q62aTMa0nyyywMW5gZ+P6UiDMTF1aTV1d3pmTfIs1U29uKkga0
+         6iMc0Ic0JKAU5Xlg805IkjHGYlohiXjP2c0Wamcbe/xX5miacVeZJSw1hvGblw+ltuco
+         9TFMeU+f7ulbX07EjMeRuFUAS5Ukkj8cMSY2cT4n1h7J5KRFiX2svY3WHM1UkUHJAgMV
+         kTEQ0EuhJnQZCQPD0CpRkEce21iN6gEq+LThZDa/dG70mDbz/kBe0ujxp60P31koqhfF
+         TxvA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=NwslT851;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nwCaGhih;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t7si17788914ilm.97.2021.05.24.23.45.27
+        by mx.google.com with ESMTPS id l19si5942013ilk.115.2021.05.25.00.49.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 May 2021 23:45:27 -0700 (PDT)
+        Tue, 25 May 2021 00:49:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=NwslT851;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nwCaGhih;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:45466 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48778 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1llQog-00072c-R8
-	for alex.bennee@linaro.org; Tue, 25 May 2021 02:45:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59182)
+	id 1llRp5-0006VE-U6
+	for alex.bennee@linaro.org; Tue, 25 May 2021 03:49:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43108)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1llQoW-000724-0B; Tue, 25 May 2021 02:45:16 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332]:52964)
+ id 1llRoJ-0005qt-6v; Tue, 25 May 2021 03:49:07 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335]:52789)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1llQoU-00033v-By; Tue, 25 May 2021 02:45:15 -0400
-Received: by mail-wm1-x332.google.com with SMTP id z130so16069126wmg.2;
- Mon, 24 May 2021 23:45:13 -0700 (PDT)
+ id 1llRoH-0000dO-Lb; Tue, 25 May 2021 03:49:06 -0400
+Received: by mail-wm1-x335.google.com with SMTP id z130so16169456wmg.2;
+ Tue, 25 May 2021 00:49:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=Ebn63hHqkjlgUmZfp5AMlLroqpj8MQllW+Oasfs+1PA=;
- b=NwslT851irPFNUEmcGPEdoGTT2QSf/GgP51R1kykySOHttZimmW+QFdB1j4GwLc4xE
- 8lemsJj4/lYSq6cme3+OjMYy89SkvviXQY2epf3yZCaQnuy/cABMgzOEZpYzZVpXxyut
- V/H+hSgDkdLxVuii1ku3EgxWKm2gBvz2tTu7a8zT5VMie1PTyxP5ef6Krg/ZIpKNdi9L
- xmrbV4e4tzGt1YJ+JOkvinipD72nD0Vj93ADncw5o3+tRNAm2SeFupwLRmoicfBbezCy
- 1+S0Q6ukyhg2nQ+pWHIy+w86mJBkeI9ZzxMFXhaiIVOKunQDPAIwgr+B+aoYz+ILZ+cU
- 97gQ==
+ bh=UqgbO2Ym7wWWZi7Z9+p9ko/d0Pl+89qW9M2+6NAr1sg=;
+ b=nwCaGhihB5kCgrebtqmaNM9JhEbCSF8KXOuEN3fkWammsYrCHnpxuVGcuzuQs8hsRu
+ MNPxft/GmOfXACDGFOnIICBTulWJk9Vv6kZB6L55C+/3uzAtxbgWZdOw7+q8INUXI61l
+ lmROqRpeGrTiYC2s1K1FZ8JFvp+hyP90imqk/kmoEB8Nlr2oskvQWBW3ASMIIGnhyMMu
+ hv0MAwNv07agiRl9Qhdv93YN5zB7cwaRblBFQ/sbDagWhwVLo1Ru8QE00xDs2aDsxeia
+ a6XDSd95EbpjG2Xs0D29djmgjhmHSdB7msuFKPnbh/lDYLEK20hY4+21OrWs3+uZVCBu
+ d7KA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=Ebn63hHqkjlgUmZfp5AMlLroqpj8MQllW+Oasfs+1PA=;
- b=gTzFE50oa/L8Oy2MeZemAPMp5yuYaqsSROXJlWYDrvnR0uDHdMeZTtqXxkb2YYuuOh
- +GWYhy3ZJWN1nVANyoi6qvrcGtpvGkowsybce3rqxiTie2oPf79km2EMaqmKOben0rcm
- L9zQLzTdyR+49D+pHpIrYrxHx966jJ//LZ6TpU7vSHfEAHTy/yFtZnizGhZqrgsRCWUj
- bXgOPoL6GyARBgWxyEr9ycGEjiXbSWb/m0IU/gH43R2Gb7yoPlonDyj153IUvsdXEdP6
- FMKDFC83rtESRBLpstoK9WbkC7Ej22qTFybtvib2Ivif7bCV41IEQBUYA9JMc3JIxrmP
- QBtw==
-X-Gm-Message-State: AOAM530ajgcavpOdQk9gE99RxSjILImzoxFzKzwcqQNrl778Kj+hM7L1
- B8ym1CCpvOZumZXWQ3TB5Sk=
-X-Received: by 2002:a05:600c:350a:: with SMTP id
- h10mr23438862wmq.119.1621925112197; 
- Mon, 24 May 2021 23:45:12 -0700 (PDT)
+ bh=UqgbO2Ym7wWWZi7Z9+p9ko/d0Pl+89qW9M2+6NAr1sg=;
+ b=JdV+EiU5g8I2lK1a6zQ2C+vJOUKD/Dwdv5XG3PaF8zwYhUsv56QB6fulKX57ViyKaV
+ L1PTzkg/rzd9hU/UpDkN2IrT0bLUmZ5n66qliNppl9g8NHpLw4DXKYL4A0WswFShqgoZ
+ U2duyBqyuH6ujkDR9INd5iwqrzeTzGuyHLhbmhcdh8PLvBTFzSarskP3cjXrs7DeMvEq
+ s2z0WSJaF1OK1mQfm5KQiHtFYloVBSJaXuGgyb8avjPcjiwXFp+mAPUIZw+xo71phLF2
+ giI2NEj5VEDODmtaz1nx0xdrswP7KR+c69gPDnMyMe8C9ygj+H3EgEYt++w4EBJvhhwM
+ fgRg==
+X-Gm-Message-State: AOAM533asB994y0iIfCrKMzFMk60KnNn4KT2DGWG5/hBRhPnmPhIqpIK
+ mssuCi70PTx0HKoN82JquYYnM+jyc7WnDA==
+X-Received: by 2002:a7b:c5cd:: with SMTP id n13mr22745792wmk.97.1621928943046; 
+ Tue, 25 May 2021 00:49:03 -0700 (PDT)
 Received: from [192.168.1.36] (31.red-83-51-215.dynamicip.rima-tde.net.
  [83.51.215.31])
- by smtp.gmail.com with ESMTPSA id p5sm15573577wrd.25.2021.05.24.23.45.11
+ by smtp.gmail.com with ESMTPSA id s15sm18075824wrt.54.2021.05.25.00.49.02
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 24 May 2021 23:45:11 -0700 (PDT)
-Subject: Re: [PATCH_V3] Adding ifdefs to call the respective routines only
- when their configs are enabled
-To: Swetha Joshi <swethajoshi139@gmail.com>
-References: <20210525025823.3208218-1-swethajoshi139@gmail.com>
- <331a819e-1745-4d4b-cc4a-82521a58186a@linaro.org>
+ Tue, 25 May 2021 00:49:02 -0700 (PDT)
+Subject: Re: [PATCH] misc: Correct relative include path
+To: qemu-devel@nongnu.org
+References: <20210516205034.694788-1-f4bug@amsat.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <59ce1ae3-fb76-aea4-d631-f3668a2d2386@amsat.org>
-Date: Tue, 25 May 2021 08:45:10 +0200
+Message-ID: <92947a5a-9478-7939-e3aa-46b44d5ff785@amsat.org>
+Date: Tue, 25 May 2021 09:49:01 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.10.1
 MIME-Version: 1.0
-In-Reply-To: <331a819e-1745-4d4b-cc4a-82521a58186a@linaro.org>
+In-Reply-To: <20210516205034.694788-1-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x332.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -122,78 +119,79 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>, qemu-trivial@nongnu.org,
- Radoslaw Biernacki <rad@semihalf.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
- qemu-arm <qemu-arm@nongnu.org>, Leif Lindholm <leif@nuviainc.com>
+Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: obCDodBGHNGG
+X-TUID: BwfXmGp+uhD1
 
-On 5/25/21 5:20 AM, Richard Henderson wrote:
-> On 5/24/21 7:58 PM, Swetha Joshi wrote:
->> Signed-off-by: Swetha Joshi <swethajoshi139@gmail.com>
->> ---
->>   target/arm/kvm64.c | 12 ++++++++----
->>   1 file changed, 8 insertions(+), 4 deletions(-)
-> 
-> You're still missing the commit message.
-> 
->>
->> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
->> index dff85f6db9..47a4d9d831 100644
->> --- a/target/arm/kvm64.c
->> +++ b/target/arm/kvm64.c
->> @@ -1403,7 +1403,10 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int
->> code, void *addr)
->>       hwaddr paddr;
->>       Object *obj = qdev_get_machine();
->>       VirtMachineState *vms = VIRT_MACHINE(obj);
->> -    bool acpi_enabled = virt_is_acpi_enabled(vms);
->> +    bool acpi_enabled = false;
+ping? (patch reviewed)
 
-Oh, IIUC this is an user request to build QEMU *with* KVM but
-*without* the Virt machine? Presumably sbsa-ref or Xilinx
-Versal/ZynqMP?
-
-Interesting, I never tested that config. Swetha, do you mind
-providing more information on the use case?
-
-Thanks,
-
-Phil.
-
->> +#ifdef CONFIG_ARM_VIRT
->> +    acpi_enabled = virt_is_acpi_enabled(vms);
->> +#endif /* CONFIG_ARM_VIRT */
->>         assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
->>   @@ -1426,12 +1429,13 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c,
->> int code, void *addr)
->>                */
->>               if (code == BUS_MCEERR_AR) {
->>                   kvm_cpu_synchronize_state(c);
->> -                if (!acpi_ghes_record_errors(ACPI_HEST_SRC_ID_SEA,
->> paddr)) {
->> -                    kvm_inject_arm_sea(c);
->> -                } else {
->> +#ifdef CONFIG_ACPI_APEI
->> +                if (acpi_ghes_record_errors(ACPI_HEST_SRC_ID_SEA,
->> paddr)) {
->>                       error_report("failed to record the error");
->>                       abort();
->>                   }
->> +#endif /* CONFIG_ACPI_APEI */
->> +                kvm_inject_arm_sea(c);
->>               }
+On 5/16/21 10:50 PM, Philippe Mathieu-Daudé wrote:
+> Headers should be included from the 'include/' directory,
+> not from the root directory.
 > 
-> Otherwise the actual patch looks ok.
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  hw/i386/acpi-common.h     | 6 +++---
+>  include/monitor/monitor.h | 2 +-
+>  hw/gpio/aspeed_gpio.c     | 2 +-
+>  hw/intc/ppc-uic.c         | 2 +-
+>  4 files changed, 6 insertions(+), 6 deletions(-)
 > 
-> I'm a bit surprised that you need the second hunk.  I would have
-> expected the entire block to be optimized away with the 'acpi_enabled =
-> false' being propagated into the outermost IF.
+> diff --git a/hw/i386/acpi-common.h b/hw/i386/acpi-common.h
+> index b12cd73ea5d..a68825acf50 100644
+> --- a/hw/i386/acpi-common.h
+> +++ b/hw/i386/acpi-common.h
+> @@ -1,9 +1,9 @@
+>  #ifndef HW_I386_ACPI_COMMON_H
+>  #define HW_I386_ACPI_COMMON_H
+> -#include "include/hw/acpi/acpi_dev_interface.h"
+>  
+> -#include "include/hw/acpi/bios-linker-loader.h"
+> -#include "include/hw/i386/x86.h"
+> +#include "hw/acpi/acpi_dev_interface.h"
+> +#include "hw/acpi/bios-linker-loader.h"
+> +#include "hw/i386/x86.h"
+>  
+>  /* Default IOAPIC ID */
+>  #define ACPI_BUILD_IOAPIC_ID 0x0
+> diff --git a/include/monitor/monitor.h b/include/monitor/monitor.h
+> index af3887bb71d..1211d6e6d69 100644
+> --- a/include/monitor/monitor.h
+> +++ b/include/monitor/monitor.h
+> @@ -4,7 +4,7 @@
+>  #include "block/block.h"
+>  #include "qapi/qapi-types-misc.h"
+>  #include "qemu/readline.h"
+> -#include "include/exec/hwaddr.h"
+> +#include "exec/hwaddr.h"
+>  
+>  typedef struct MonitorHMP MonitorHMP;
+>  typedef struct MonitorOptions MonitorOptions;
+> diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
+> index 985a259e05b..db7ef88ee56 100644
+> --- a/hw/gpio/aspeed_gpio.c
+> +++ b/hw/gpio/aspeed_gpio.c
+> @@ -10,7 +10,7 @@
+>  #include "qemu/host-utils.h"
+>  #include "qemu/log.h"
+>  #include "hw/gpio/aspeed_gpio.h"
+> -#include "include/hw/misc/aspeed_scu.h"
+> +#include "hw/misc/aspeed_scu.h"
+>  #include "qapi/error.h"
+>  #include "qapi/visitor.h"
+>  #include "hw/irq.h"
+> diff --git a/hw/intc/ppc-uic.c b/hw/intc/ppc-uic.c
+> index 7171de7b355..60013f2dde3 100644
+> --- a/hw/intc/ppc-uic.c
+> +++ b/hw/intc/ppc-uic.c
+> @@ -23,7 +23,7 @@
+>   */
+>  
+>  #include "qemu/osdep.h"
+> -#include "include/hw/intc/ppc-uic.h"
+> +#include "hw/intc/ppc-uic.h"
+>  #include "hw/irq.h"
+>  #include "cpu.h"
+>  #include "hw/ppc/ppc.h"
 > 
-> 
-> r~
-> 
-

@@ -1,83 +1,199 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp5479808lfm;
-        Wed, 26 May 2021 07:23:18 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxtD1xvWBsmnwg7o+r3Y4PrVwo4Uq88azD58unh3oMyWPZa0NNFDchcImWzoXrsuOR2Phea
-X-Received: by 2002:a17:902:7887:b029:ef:9429:e956 with SMTP id q7-20020a1709027887b02900ef9429e956mr35979350pll.78.1622038997880;
-        Wed, 26 May 2021 07:23:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1622038997; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp4205640lfm;
+        Mon, 24 May 2021 23:45:27 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwOZSOu8oDX7TamLMutPA+mABbYupff8/JdDnrdVgsJt5P3b31yaZRdJvguZ8bQR0fjNGkY
+X-Received: by 2002:a92:c243:: with SMTP id k3mr22337525ilo.81.1621925127540;
+        Mon, 24 May 2021 23:45:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621925127; cv=none;
         d=google.com; s=arc-20160816;
-        b=nch7NEjHeCBI1YuEngRU8QyBYRJFvGVpGVALiFGbGSwJcvJE5lvVJQIbufgBmHBuGe
-         VizLykJkjw+8l10KHxqT9dHDVWSHOAVdiPRp7ShCQVSE5684jas9J955xOdM4r61+zet
-         0Sw6RFq9fqRgJTaYRb4cqsFe3SpmMMstTDAPRSYs7UKhbFzlAw+v8QTSf24xn5+gQmJv
-         VioZKLl+3sWycMRF6h+HZacFIdOWmgBcmQs9CJNLBzR3ARad8pchXO3QxTdwxLP03rAs
-         EL8ADHP6+WShIOlnMVGdZaCvvHurR/36OLfB6jetfSgFqOLalStT6n2JrTxzHXmeklNz
-         8y3Q==
+        b=Ol8y7uvgubl7McdkbLxKo2KtHO6W5Cpgf02UMIGtLv4ILw69IR/JfLb3RMDMRI3ZxA
+         j8yJALXxhZuDBvzTq4cUK5zFew2BIYKApRVLGD5ftKcaYh/LMM6DSMXxKt4b93jBZExo
+         eb02TcI1VmWlhNYJFGQl/MWG00/0/gtIt55gOMsMW53eGCDRfdrbdZuBPEJiTY4mwwrY
+         DSdaAaPytaE39n4aDRKrWkv03xfEw0uZgA7P7+vpULP0HifPHAFqfdiGtIjBYkabTtct
+         Z0HE5r1GeO8Z0/WS0eHcHAEyqd6MSRg9vg4Cm6Nqkc1CwMbIky5QmX8KXdFHL/zz6231
+         IqnA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject;
-        bh=Mw1KI9fec2NkZrKNrVrUVOtoS7OU3uFpUeY2poZg47w=;
-        b=zeGYBftk+/UJ6Xdc7Q9UzX4CqkZgiX9NCO048NYAxHtV0UUiucGHKqiZispIiKmifA
-         zNJTjU4vx+Dmd1gvqC7fuvMm9dp6LE7rVIwVuQSWqZPLWigHceNgXTxxmXoQ7ONFu5zh
-         VqFQVGikEzcywpA26xOeOYYV+uZ+QKGGRbVUuP3JLdduj7vaEI77RNa2TezoFf/9FuIe
-         E1laYnNUBNB4s17wusjNWc3R7gK9oP0rGLU5CwfNzWSgtXEaAGUAhncj2OZaU8S0xSnd
-         l2w1Qsa7ySNudteMm39fkERmhYAk0PxFErsSBDGf5f8hDBQqfO8fL7aWY49z1XoU+cv+
-         /mIg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=Ebn63hHqkjlgUmZfp5AMlLroqpj8MQllW+Oasfs+1PA=;
+        b=zAZO+EktUtt0MgpJmJMDdJApBl76iV3QiU8WJatwgqoQKiy3llanDJ8z6d8hSvhSIX
+         IIdXUOJ6WvzvJebbotmuF0KpiCRwill0SmjDNj1U93/TbJPyKaDLCUbdtIM4//O02wOV
+         4hX+p0KY3EnaNJmajN88a5QnN7H4D2clOUwbJiWI4CE488O8P5oVdH3OUflO8htx+Onf
+         9Dn0q/CYshMeVWiS+LDkortD0yOtyIQDkPu9zlNVy8Bb7ZrLHrsDqsEJjxN9tkmk7ydA
+         edWZKCFuoshQdSQApYkOyBbW280oJw2XnvkkXz8ONsHLm/CIXFE11PDZIVcITksKL+Ke
+         hbfw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of yuzenghui@huawei.com designates 45.249.212.190 as permitted sender) smtp.mailfrom=yuzenghui@huawei.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Return-Path: <yuzenghui@huawei.com>
-Received: from szxga04-in.huawei.com (szxga04-in.huawei.com. [45.249.212.190])
-        by mx.google.com with ESMTPS id l191si24970503pga.8.2021.05.26.07.23.17
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 26 May 2021 07:23:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of yuzenghui@huawei.com designates 45.249.212.190 as permitted sender) client-ip=45.249.212.190;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=NwslT851;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id t7si17788914ilm.97.2021.05.24.23.45.27
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 24 May 2021 23:45:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of yuzenghui@huawei.com designates 45.249.212.190 as permitted sender) smtp.mailfrom=yuzenghui@huawei.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from dggems702-chm.china.huawei.com (unknown [172.30.72.58])
-	by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4FqtPP1MTZzncdM;
-	Wed, 26 May 2021 22:19:37 +0800 (CST)
-Received: from dggema764-chm.china.huawei.com (10.1.198.206) by
- dggems702-chm.china.huawei.com (10.3.19.179) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
- 15.1.2176.2; Wed, 26 May 2021 22:23:14 +0800
-Received: from [10.174.185.179] (10.174.185.179) by
- dggema764-chm.china.huawei.com (10.1.198.206) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.2176.2; Wed, 26 May 2021 22:23:13 +0800
-Subject: Re: [kvm-unit-tests PATCH v2 2/4] scripts/arch-run: don't use
- deprecated server/nowait options
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-CC: <kvm@vger.kernel.org>, <shashi.mallela@linaro.org>,
-	<alexandru.elisei@arm.com>, <eric.auger@redhat.com>, <qemu-arm@nongnu.org>,
-	<linux-arm-kernel@lists.infradead.org>, <kvmarm@lists.cs.columbia.edu>,
-	<christoffer.dall@arm.com>, <maz@kernel.org>
-References: <20210525172628.2088-1-alex.bennee@linaro.org>
- <20210525172628.2088-3-alex.bennee@linaro.org>
-From: Zenghui Yu <yuzenghui@huawei.com>
-Message-ID: <d6c6defe-1ad6-6c23-05a4-ed5966f75f28@huawei.com>
-Date: Wed, 26 May 2021 22:23:13 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.9.0
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=NwslT851;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:45466 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1llQog-00072c-R8
+	for alex.bennee@linaro.org; Tue, 25 May 2021 02:45:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59182)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1llQoW-000724-0B; Tue, 25 May 2021 02:45:16 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332]:52964)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1llQoU-00033v-By; Tue, 25 May 2021 02:45:15 -0400
+Received: by mail-wm1-x332.google.com with SMTP id z130so16069126wmg.2;
+ Mon, 24 May 2021 23:45:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=Ebn63hHqkjlgUmZfp5AMlLroqpj8MQllW+Oasfs+1PA=;
+ b=NwslT851irPFNUEmcGPEdoGTT2QSf/GgP51R1kykySOHttZimmW+QFdB1j4GwLc4xE
+ 8lemsJj4/lYSq6cme3+OjMYy89SkvviXQY2epf3yZCaQnuy/cABMgzOEZpYzZVpXxyut
+ V/H+hSgDkdLxVuii1ku3EgxWKm2gBvz2tTu7a8zT5VMie1PTyxP5ef6Krg/ZIpKNdi9L
+ xmrbV4e4tzGt1YJ+JOkvinipD72nD0Vj93ADncw5o3+tRNAm2SeFupwLRmoicfBbezCy
+ 1+S0Q6ukyhg2nQ+pWHIy+w86mJBkeI9ZzxMFXhaiIVOKunQDPAIwgr+B+aoYz+ILZ+cU
+ 97gQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=Ebn63hHqkjlgUmZfp5AMlLroqpj8MQllW+Oasfs+1PA=;
+ b=gTzFE50oa/L8Oy2MeZemAPMp5yuYaqsSROXJlWYDrvnR0uDHdMeZTtqXxkb2YYuuOh
+ +GWYhy3ZJWN1nVANyoi6qvrcGtpvGkowsybce3rqxiTie2oPf79km2EMaqmKOben0rcm
+ L9zQLzTdyR+49D+pHpIrYrxHx966jJ//LZ6TpU7vSHfEAHTy/yFtZnizGhZqrgsRCWUj
+ bXgOPoL6GyARBgWxyEr9ycGEjiXbSWb/m0IU/gH43R2Gb7yoPlonDyj153IUvsdXEdP6
+ FMKDFC83rtESRBLpstoK9WbkC7Ej22qTFybtvib2Ivif7bCV41IEQBUYA9JMc3JIxrmP
+ QBtw==
+X-Gm-Message-State: AOAM530ajgcavpOdQk9gE99RxSjILImzoxFzKzwcqQNrl778Kj+hM7L1
+ B8ym1CCpvOZumZXWQ3TB5Sk=
+X-Received: by 2002:a05:600c:350a:: with SMTP id
+ h10mr23438862wmq.119.1621925112197; 
+ Mon, 24 May 2021 23:45:12 -0700 (PDT)
+Received: from [192.168.1.36] (31.red-83-51-215.dynamicip.rima-tde.net.
+ [83.51.215.31])
+ by smtp.gmail.com with ESMTPSA id p5sm15573577wrd.25.2021.05.24.23.45.11
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 24 May 2021 23:45:11 -0700 (PDT)
+Subject: Re: [PATCH_V3] Adding ifdefs to call the respective routines only
+ when their configs are enabled
+To: Swetha Joshi <swethajoshi139@gmail.com>
+References: <20210525025823.3208218-1-swethajoshi139@gmail.com>
+ <331a819e-1745-4d4b-cc4a-82521a58186a@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <59ce1ae3-fb76-aea4-d631-f3668a2d2386@amsat.org>
+Date: Tue, 25 May 2021 08:45:10 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.1
 MIME-Version: 1.0
-In-Reply-To: <20210525172628.2088-3-alex.bennee@linaro.org>
-Content-Type: text/plain; charset="utf-8"; format=flowed
+In-Reply-To: <331a819e-1745-4d4b-cc4a-82521a58186a@linaro.org>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.174.185.179]
-X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
- dggema764-chm.china.huawei.com (10.1.198.206)
-X-CFilter-Loop: Reflected
-X-TUID: agOqY1UkLUh8
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x332.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>, qemu-trivial@nongnu.org,
+ Radoslaw Biernacki <rad@semihalf.com>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ qemu-arm <qemu-arm@nongnu.org>, Leif Lindholm <leif@nuviainc.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: obCDodBGHNGG
 
-On 2021/5/26 1:26, Alex Bennée wrote:
-> The very fact that QEMU drops the deprecation warning while running is
-> enough to confuse the its-migration test into failing. The boolean
-> options server and wait have accepted the long form options for a long
-> time.
+On 5/25/21 5:20 AM, Richard Henderson wrote:
+> On 5/24/21 7:58 PM, Swetha Joshi wrote:
+>> Signed-off-by: Swetha Joshi <swethajoshi139@gmail.com>
+>> ---
+>>   target/arm/kvm64.c | 12 ++++++++----
+>>   1 file changed, 8 insertions(+), 4 deletions(-)
 > 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> Cc: Shashi Mallela <shashi.mallela@linaro.org>
+> You're still missing the commit message.
+> 
+>>
+>> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+>> index dff85f6db9..47a4d9d831 100644
+>> --- a/target/arm/kvm64.c
+>> +++ b/target/arm/kvm64.c
+>> @@ -1403,7 +1403,10 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int
+>> code, void *addr)
+>>       hwaddr paddr;
+>>       Object *obj = qdev_get_machine();
+>>       VirtMachineState *vms = VIRT_MACHINE(obj);
+>> -    bool acpi_enabled = virt_is_acpi_enabled(vms);
+>> +    bool acpi_enabled = false;
 
-This works for me.
+Oh, IIUC this is an user request to build QEMU *with* KVM but
+*without* the Virt machine? Presumably sbsa-ref or Xilinx
+Versal/ZynqMP?
 
-Tested-by: Zenghui Yu <yuzenghui@huawei.com>
+Interesting, I never tested that config. Swetha, do you mind
+providing more information on the use case?
+
+Thanks,
+
+Phil.
+
+>> +#ifdef CONFIG_ARM_VIRT
+>> +    acpi_enabled = virt_is_acpi_enabled(vms);
+>> +#endif /* CONFIG_ARM_VIRT */
+>>         assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
+>>   @@ -1426,12 +1429,13 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c,
+>> int code, void *addr)
+>>                */
+>>               if (code == BUS_MCEERR_AR) {
+>>                   kvm_cpu_synchronize_state(c);
+>> -                if (!acpi_ghes_record_errors(ACPI_HEST_SRC_ID_SEA,
+>> paddr)) {
+>> -                    kvm_inject_arm_sea(c);
+>> -                } else {
+>> +#ifdef CONFIG_ACPI_APEI
+>> +                if (acpi_ghes_record_errors(ACPI_HEST_SRC_ID_SEA,
+>> paddr)) {
+>>                       error_report("failed to record the error");
+>>                       abort();
+>>                   }
+>> +#endif /* CONFIG_ACPI_APEI */
+>> +                kvm_inject_arm_sea(c);
+>>               }
+> 
+> Otherwise the actual patch looks ok.
+> 
+> I'm a bit surprised that you need the second hunk.  I would have
+> expected the entire block to be optimized away with the 'acpi_enabled =
+> false' being propagated into the outermost IF.
+> 
+> 
+> r~
+> 
+

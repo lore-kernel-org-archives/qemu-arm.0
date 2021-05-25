@@ -1,103 +1,103 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp4053090lfm;
-        Mon, 24 May 2021 19:10:18 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx00hvOGI42qOAJlYYfNx9eU2UTsUkS6r3LbwTovvzeZFUYTsfURCPfomVhEEdcgko7LCmd
-X-Received: by 2002:ab0:6586:: with SMTP id v6mr24594657uam.114.1621908618143;
-        Mon, 24 May 2021 19:10:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621908618; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp4053136lfm;
+        Mon, 24 May 2021 19:10:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxfX9mRkZfqtPEh5gsAHQsKskiOEz05u6qGrzcwQNROP4qnkfD2x/9J9Mc9aDNex6AUxh5k
+X-Received: by 2002:a05:6122:2008:: with SMTP id l8mr581390vkd.15.1621908624528;
+        Mon, 24 May 2021 19:10:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621908624; cv=none;
         d=google.com; s=arc-20160816;
-        b=ElGXo2Af+oQCHPZoc7U/mMrRf0DdmRV1tcCsA3qkLSpC3dMUl9QQxK+H1tVJpzlIi4
-         ojMKCNZd9DHSKx2ZNu5JJvdqiDeD9Q6ZKYGCGONHtxO4k+DOk04L76tVeQOjmxREdm8v
-         MJM3HT0fQZpI7AgU3bHCLWfHSkTwmkANvdSIpXsy8g9LYa9RGuksrx3LOYHvWjmW8bd8
-         Aevn8/CQTu5Z7tfuy38iNhbc421wJkPyRg6E5IBy2sWmiHoupn1JoZbtkoXoBgJfCNr2
-         GmJ0FD05H2d/i0LOCdBUdlC7Q3p05j+EDP5GlLi68cf23vp0hR3WsySIWY71MwDCsze9
-         eLYw==
+        b=K3XRWlYScIPDECYU0VB2D6DQ+iMCvtOOya2m3MIEvLZNC002CY/TETs6oU61FdUGri
+         0+FjFw8RT/tZg6zIEOvahZcEQqFk26Hbd9E+UnXyfEsam2V6Oy0JtUoTrtm9309Q1rO1
+         Bp7nsU30FVmo5N3vVyjmzASqdNOQ7riQCITrm3MO0b4K3kPlJo3yAcHQvpZgMoHdIAMO
+         XC/vvI98g7ALX06ptxS7S5n9dtpclRs8HqRn9EKNi7wn2bjrizdHW+JS+AqeVBLiEDvk
+         TYxVwYZT6wGASvNGSIZyyGSbHqZh7fk/jPBKcNdMq+3hSyTsiO0b07vCtnYqvENMxDB5
+         /uZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=VPedUl43P4vqxrl3NSrXGTDi5BxZimL9v1f9QzCFBpQ=;
-        b=s6EhiXd/EOkJs4k+HSPLvV8+eKOKxFsASUQTBUZ5PnpcQ1j00Y/uo8ZdJEZcyTvyQ/
-         OtR/Bh5iEaYF/PinRWLjVXWyUujkajhbx50E2FccCWI6GgKogWMxsSRZ5kNpplrrS23/
-         nox9gtSnT2GbFQDoN6lk2M72+/te5xG9wLE8t1QRmmXye4qEa3b1QlPNLTEsgJzmevDB
-         RIivWrlR+3taf5fyTPgUq+N57CKSxF20nKrKhDb4xcoT9nE4ArbWU8Y8U/uHHwa+v2ma
-         ZWY/81vowHw1oLJoxVCX6tXsLRmi9V9yvhFs6cYde9ER6w4gA9jnpG3omMyjc6doYzrU
-         GpIQ==
+        bh=rqEfrgTAxZRSYWJVsj3UhKlDudjDrwfnyFzuC7wZThU=;
+        b=B3dfqb+wXCMGKB9EF0sSu6SluBM7DUFRQhrPsyLjxehOLaz78gqUkW0hyTdpRXfz7U
+         U+7ooTU4ThO30uu5ddCGAAUKUUOlpg4IR6UvtrJfLrJBs+eT2kGtMiaAEndjfGOfR55w
+         mRk/L/yUdytYAEGnGQR3nOe1wckv9j2Yc/cgAReBTePGaRqogbjKZTloTz/u5VPxrjBk
+         cy8FR8Jo/3jnPkmYJQmZXFIi6PGqdpPHEsZlyZOnV6sncfo1/Gdy827eWqihO4xuohsM
+         2lMxDl39PCPPPZGG9xhKnR5i6lacYLDbx+uCihXV6DBIMpdmhpmBCTC9gRD3fNwPr/kL
+         6HYA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kv2hmvyq;
+       dkim=fail header.i=@linaro.org header.s=google header.b=gkaMUMjj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w24si3299916vsi.361.2021.05.24.19.10.17
+        by mx.google.com with ESMTPS id i2si3336682vsf.190.2021.05.24.19.10.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 May 2021 19:10:18 -0700 (PDT)
+        Mon, 24 May 2021 19:10:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kv2hmvyq;
+       dkim=fail header.i=@linaro.org header.s=google header.b=gkaMUMjj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39666 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:39994 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1llMWP-0002I9-F0
-	for alex.bennee@linaro.org; Mon, 24 May 2021 22:10:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56576)
+	id 1llMWV-0002Vo-QA
+	for alex.bennee@linaro.org; Mon, 24 May 2021 22:10:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56478)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1llLbD-0006gK-Ew
- for qemu-arm@nongnu.org; Mon, 24 May 2021 21:11:11 -0400
-Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432]:36715)
+ id 1llLbA-0006SI-5V
+ for qemu-arm@nongnu.org; Mon, 24 May 2021 21:11:08 -0400
+Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d]:42580)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1llLb0-0005vD-Ff
- for qemu-arm@nongnu.org; Mon, 24 May 2021 21:11:11 -0400
-Received: by mail-pf1-x432.google.com with SMTP id c12so10691961pfl.3
- for <qemu-arm@nongnu.org>; Mon, 24 May 2021 18:10:58 -0700 (PDT)
+ id 1llLaz-0005uM-AQ
+ for qemu-arm@nongnu.org; Mon, 24 May 2021 21:11:07 -0400
+Received: by mail-pl1-x62d.google.com with SMTP id v13so15498910ple.9
+ for <qemu-arm@nongnu.org>; Mon, 24 May 2021 18:10:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=VPedUl43P4vqxrl3NSrXGTDi5BxZimL9v1f9QzCFBpQ=;
- b=kv2hmvyqSmdFYk30U8N88nW4kg8v6IYVRG9JGXd4z9wBBjuoGNWH1tthMaMC7FM0IP
- gONJwLNhKL90h5H7vEFZ6tNpcOOjlDw+UWmPAk9/ePJtZJTAzLhgl2GqVqc9b3k8JOrH
- SzvfPHC8d30KcJObv8t1XtU3wUWEREtwVBjzmy1GvUppriKuYpimpIBCuemjwfMYmSNJ
- JVARX0WeW8dYc4V5Rw5hSLfi7udQgrhuNZGdysWkEReVZKRZll2FhffPMe0bVdDn3FNe
- LMlZ9pCBAKJqs55ZW1yx/UWdYT2zPfFFiAj/wkqDPIdRAaAWAsF5qagmVysw+p8tkW4p
- FFZw==
+ bh=rqEfrgTAxZRSYWJVsj3UhKlDudjDrwfnyFzuC7wZThU=;
+ b=gkaMUMjjIQbaRhIuF+waM6nyriWD1Y1lKClG5hb5Gxre+jAZvSxQ7vuj8BDVGlrjo6
+ PAD9oDpnbLBIVQfaYYl3a/H0GQ4q5QfI8pDYxOA/VNCR2m0XZwd0+JleVX4MlhmRyM/r
+ NxyLQenJHtEC4G99ekv/IV1cc3cx8lRNr8L38RFMh+Ly6WAv/B133M0qrCm3ZJXY+xAi
+ yfqBl4lTvtcrl0xujbe88fcWgMaCLoZuHkXDvc14JSxO/1NO/UBO4cxIJpKOwRUg3RP7
+ mevJGaw1HV+mg5oiqzhfk47m4gYg/DE9AyfH+mDbqg3IDBFhSopd5kpqiUTbAL4u9Bpy
+ wpjg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=VPedUl43P4vqxrl3NSrXGTDi5BxZimL9v1f9QzCFBpQ=;
- b=edZDwnh8l+YN3MT2K/ysE3xS1bzbfuQBICm3sqQkQ/UVpAQadBlV9XLiKNN6OLANdj
- tVtoc3mvqKvyZoBnC6oOf/Js8j9ZRJannHCxjWqfial0OV+0px/Ewlcn7hPYjh2thLYt
- gx5S7cxXRlDzuZMTUfW8pmLphX4O1AttM31X5djRhAKyVPIPn4Jap2Ovd8Uzw4DnqIkx
- kKTdAmpXxykAK1qxp+SoZk4h+LWTW6JI5nUVnrPBQEJws3TqD5/yPOxqQ3qEfv3ZSbHn
- ZSSeDKyk0fY1+bLkTNVl2OGq1FUiNvKSjeHmX/JTL3VMbvae8Guqzmlw0+JXt/EIN4xS
- DN1A==
-X-Gm-Message-State: AOAM5319d7T8kuwRO5h83K0o/0flhbg3OrsgEBRm/87qJC8xnDwKjyZG
- mDQoBCUo2DO6WZiI8um+IsV/mDxYcbqi/A==
-X-Received: by 2002:a05:6a00:1992:b029:2df:b93b:49a with SMTP id
- d18-20020a056a001992b02902dfb93b049amr27424816pfl.11.1621905057084; 
- Mon, 24 May 2021 18:10:57 -0700 (PDT)
+ bh=rqEfrgTAxZRSYWJVsj3UhKlDudjDrwfnyFzuC7wZThU=;
+ b=e0YMlLn0AIs8EuHWzd80dFsYRm5YOonYVfsenUXWcYLR7KdC3Jo+Ge4/WXtvPq93N2
+ NdcvPgNtmJ+2E/0QcD8TFP4svEpA9Zw+FylgFlTOu8tv6IE7BdOkdI9By3fCEG01uiwa
+ LDTTiSZC3Xqi9W6YqK3oIJhHwVEWa1cYQRw0fbfPukXl9rJ/L1cS3ruk/Yx+l6zdnKjH
+ ZkQRMFHEPUEy39tj7EmU3X/LlZ2xgtqvcDAVjqopKEbYnxxo3aHi53CuV98xRp/7N8sf
+ yL6X7IkkYEYt6XJw4Ra1mpVmPV9tgaRl+BmDQze7WpuphuNZPLg2DR4/H4Cx29zZhxuQ
+ GQXw==
+X-Gm-Message-State: AOAM5308t7MO8ussxBH1RippsaZmFWmXMxyEaf0vEV9WnEZ/3Zus00gY
+ x7YI9mo6DactJxHviIk0Wzgr/A==
+X-Received: by 2002:a17:90b:108e:: with SMTP id
+ gj14mr2041542pjb.109.1621905054416; 
+ Mon, 24 May 2021 18:10:54 -0700 (PDT)
 Received: from localhost.localdomain (174-21-70-228.tukw.qwest.net.
  [174.21.70.228])
- by smtp.gmail.com with ESMTPSA id i8sm10614839pjs.54.2021.05.24.18.10.56
+ by smtp.gmail.com with ESMTPSA id i8sm10614839pjs.54.2021.05.24.18.10.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 24 May 2021 18:10:56 -0700 (PDT)
+ Mon, 24 May 2021 18:10:54 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v7 92/92] target/arm: Enable SVE2 and related extensions
-Date: Mon, 24 May 2021 18:03:58 -0700
-Message-Id: <20210525010358.152808-93-richard.henderson@linaro.org>
+Subject: [PATCH v7 88/92] target/arm: Split decode of VSDOT and VUDOT
+Date: Mon, 24 May 2021 18:03:54 -0700
+Message-Id: <20210525010358.152808-89-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210525010358.152808-1-richard.henderson@linaro.org>
 References: <20210525010358.152808-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::432;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x432.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -117,90 +117,106 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xm6Nuj3fIUqn
+X-TUID: 1uVMwStQm2JD
 
-Disable I8MM again for !have_neon during realize.
+Now that we have a common helper, sharing decode does not
+save much.  Also, this will solve an upcoming naming problem.
 
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu.c     |  2 ++
- target/arm/cpu64.c   | 13 +++++++++++++
- target/arm/cpu_tcg.c |  1 +
- 3 files changed, 16 insertions(+)
+ target/arm/neon-shared.decode |  9 ++++++---
+ target/arm/translate-neon.c   | 30 ++++++++++++++++++++++--------
+ 2 files changed, 28 insertions(+), 11 deletions(-)
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 4eb0d2f85c..7aeb4b1381 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1503,6 +1503,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+diff --git a/target/arm/neon-shared.decode b/target/arm/neon-shared.decode
+index facb621450..2d94369750 100644
+--- a/target/arm/neon-shared.decode
++++ b/target/arm/neon-shared.decode
+@@ -46,8 +46,9 @@ VCMLA          1111 110 rot:2 . 1 . .... .... 1000 . q:1 . 0 .... \
+ VCADD          1111 110 rot:1 1 . 0 . .... .... 1000 . q:1 . 0 .... \
+                vm=%vm_dp vn=%vn_dp vd=%vd_dp size=%vcadd_size
  
-         t = cpu->isar.id_aa64isar1;
-         t = FIELD_DP64(t, ID_AA64ISAR1, FCMA, 0);
-+        t = FIELD_DP64(t, ID_AA64ISAR1, I8MM, 0);
-         cpu->isar.id_aa64isar1 = t;
+-# VUDOT and VSDOT
+-VDOT           1111 110 00 . 10 .... .... 1101 . q:1 . u:1 .... \
++VSDOT          1111 110 00 . 10 .... .... 1101 . q:1 . 0 .... \
++               vm=%vm_dp vn=%vn_dp vd=%vd_dp
++VUDOT          1111 110 00 . 10 .... .... 1101 . q:1 . 1 .... \
+                vm=%vm_dp vn=%vn_dp vd=%vd_dp
  
-         t = cpu->isar.id_aa64pfr0;
-@@ -1517,6 +1518,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-         u = cpu->isar.id_isar6;
-         u = FIELD_DP32(u, ID_ISAR6, DP, 0);
-         u = FIELD_DP32(u, ID_ISAR6, FHM, 0);
-+        u = FIELD_DP32(u, ID_ISAR6, I8MM, 0);
-         cpu->isar.id_isar6 = u;
+ # VFM[AS]L
+@@ -61,7 +62,9 @@ VCMLA_scalar   1111 1110 0 . rot:2 .... .... 1000 . q:1 index:1 0 vm:4 \
+ VCMLA_scalar   1111 1110 1 . rot:2 .... .... 1000 . q:1 . 0 .... \
+                vm=%vm_dp vn=%vn_dp vd=%vd_dp size=2 index=0
  
-         if (!arm_feature(env, ARM_FEATURE_M)) {
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index f0a9e968c9..379f90fab8 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -662,6 +662,7 @@ static void aarch64_max_initfn(Object *obj)
-         t = FIELD_DP64(t, ID_AA64ISAR1, SPECRES, 1);
-         t = FIELD_DP64(t, ID_AA64ISAR1, FRINTTS, 1);
-         t = FIELD_DP64(t, ID_AA64ISAR1, LRCPC, 2); /* ARMv8.4-RCPC */
-+        t = FIELD_DP64(t, ID_AA64ISAR1, I8MM, 1);
-         cpu->isar.id_aa64isar1 = t;
+-VDOT_scalar    1111 1110 0 . 10 .... .... 1101 . q:1 index:1 u:1 vm:4 \
++VSDOT_scalar   1111 1110 0 . 10 .... .... 1101 . q:1 index:1 0 vm:4 \
++               vn=%vn_dp vd=%vd_dp
++VUDOT_scalar   1111 1110 0 . 10 .... .... 1101 . q:1 index:1 1 vm:4 \
+                vn=%vn_dp vd=%vd_dp
  
-         t = cpu->isar.id_aa64pfr0;
-@@ -702,6 +703,17 @@ static void aarch64_max_initfn(Object *obj)
-         t = FIELD_DP64(t, ID_AA64MMFR2, ST, 1); /* TTST */
-         cpu->isar.id_aa64mmfr2 = t;
+ %vfml_scalar_q0_rm 0:3 5:1
+diff --git a/target/arm/translate-neon.c b/target/arm/translate-neon.c
+index dfa33912ab..386b42fe4b 100644
+--- a/target/arm/translate-neon.c
++++ b/target/arm/translate-neon.c
+@@ -269,15 +269,22 @@ static bool trans_VCADD(DisasContext *s, arg_VCADD *a)
+     return true;
+ }
  
-+        t = cpu->isar.id_aa64zfr0;
-+        t = FIELD_DP64(t, ID_AA64ZFR0, SVEVER, 1);
-+        t = FIELD_DP64(t, ID_AA64ZFR0, AES, 2);  /* PMULL */
-+        t = FIELD_DP64(t, ID_AA64ZFR0, BITPERM, 1);
-+        t = FIELD_DP64(t, ID_AA64ZFR0, SHA3, 1);
-+        t = FIELD_DP64(t, ID_AA64ZFR0, SM4, 1);
-+        t = FIELD_DP64(t, ID_AA64ZFR0, I8MM, 1);
-+        t = FIELD_DP64(t, ID_AA64ZFR0, F32MM, 1);
-+        t = FIELD_DP64(t, ID_AA64ZFR0, F64MM, 1);
-+        cpu->isar.id_aa64zfr0 = t;
+-static bool trans_VDOT(DisasContext *s, arg_VDOT *a)
++static bool trans_VSDOT(DisasContext *s, arg_VSDOT *a)
+ {
+     if (!dc_isar_feature(aa32_dp, s)) {
+         return false;
+     }
+     return do_neon_ddda(s, a->q * 7, a->vd, a->vn, a->vm, 0,
+-                        a->u
+-                        ? gen_helper_gvec_udot_b
+-                        : gen_helper_gvec_sdot_b);
++                        gen_helper_gvec_sdot_b);
++}
 +
-         /* Replicate the same data to the 32-bit id registers.  */
-         u = cpu->isar.id_isar5;
-         u = FIELD_DP32(u, ID_ISAR5, AES, 2); /* AES + PMULL */
-@@ -718,6 +730,7 @@ static void aarch64_max_initfn(Object *obj)
-         u = FIELD_DP32(u, ID_ISAR6, FHM, 1);
-         u = FIELD_DP32(u, ID_ISAR6, SB, 1);
-         u = FIELD_DP32(u, ID_ISAR6, SPECRES, 1);
-+        u = FIELD_DP32(u, ID_ISAR6, I8MM, 1);
-         cpu->isar.id_isar6 = u;
++static bool trans_VUDOT(DisasContext *s, arg_VUDOT *a)
++{
++    if (!dc_isar_feature(aa32_dp, s)) {
++        return false;
++    }
++    return do_neon_ddda(s, a->q * 7, a->vd, a->vn, a->vm, 0,
++                        gen_helper_gvec_udot_b);
+ }
  
-         u = cpu->isar.id_pfr0;
-diff --git a/target/arm/cpu_tcg.c b/target/arm/cpu_tcg.c
-index 046e476f65..d3458335ed 100644
---- a/target/arm/cpu_tcg.c
-+++ b/target/arm/cpu_tcg.c
-@@ -968,6 +968,7 @@ static void arm_max_initfn(Object *obj)
-         t = FIELD_DP32(t, ID_ISAR6, FHM, 1);
-         t = FIELD_DP32(t, ID_ISAR6, SB, 1);
-         t = FIELD_DP32(t, ID_ISAR6, SPECRES, 1);
-+        t = FIELD_DP32(t, ID_ISAR6, I8MM, 1);
-         cpu->isar.id_isar6 = t;
+ static bool trans_VFML(DisasContext *s, arg_VFML *a)
+@@ -329,15 +336,22 @@ static bool trans_VCMLA_scalar(DisasContext *s, arg_VCMLA_scalar *a)
+                              FPST_STD, gen_helper_gvec_fcmlas_idx);
+ }
  
-         t = cpu->isar.mvfr1;
+-static bool trans_VDOT_scalar(DisasContext *s, arg_VDOT_scalar *a)
++static bool trans_VSDOT_scalar(DisasContext *s, arg_VSDOT_scalar *a)
+ {
+     if (!dc_isar_feature(aa32_dp, s)) {
+         return false;
+     }
+     return do_neon_ddda(s, a->q * 6, a->vd, a->vn, a->vm, a->index,
+-                        a->u
+-                        ? gen_helper_gvec_udot_idx_b
+-                        : gen_helper_gvec_sdot_idx_b);
++                        gen_helper_gvec_sdot_idx_b);
++}
++
++static bool trans_VUDOT_scalar(DisasContext *s, arg_VUDOT_scalar *a)
++{
++    if (!dc_isar_feature(aa32_dp, s)) {
++        return false;
++    }
++    return do_neon_ddda(s, a->q * 6, a->vd, a->vn, a->vm, a->index,
++                        gen_helper_gvec_udot_idx_b);
+ }
+ 
+ static bool trans_VFML_scalar(DisasContext *s, arg_VFML_scalar *a)
 -- 
 2.25.1
 

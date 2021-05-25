@@ -1,103 +1,104 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp4044863lfm;
-        Mon, 24 May 2021 18:56:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwOy/lx2LE4lFy8Wwddif4HfCK9v/CQEFJbrMu01sT/TMd7ayS7Tfwp5xjWUHYh2inryiNh
-X-Received: by 2002:a05:6e02:104e:: with SMTP id p14mr20672283ilj.109.1621907812524;
-        Mon, 24 May 2021 18:56:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1621907812; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp4045729lfm;
+        Mon, 24 May 2021 18:58:15 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwqNZiSc/ydlWmFzBKM89z0ZNoSCUIFmUuYA0urL3bmlpH/V0VzjHKeID+rmYyPLQBQ1EV4
+X-Received: by 2002:a05:6602:1494:: with SMTP id a20mr18063666iow.100.1621907895688;
+        Mon, 24 May 2021 18:58:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1621907895; cv=none;
         d=google.com; s=arc-20160816;
-        b=drIUj+VV2TREyyf8D3wB+47tjjQbosxcqQeYqpRQJGI0UIVHd/YUe5zSXoW/Pe+Dcz
-         /Jfge91sliti7uekf2R6oqSt3wDBVSRlmtsX3yg+WgUT930bpnEUe1PfFTmP6t0FXvlt
-         oYenHXRHiUpAqinjdMD2H6Unup863eutofE4N3r5HnEEkJdjVvFgsBJSb9XM4dVzERs4
-         Mea8Mv8zhB3rr+4fbzB3T/YDNx4enjcxxI2VsE0dpU2WYdx7gQZuQ4/+3ENiXyHWzFXh
-         0etKGe5Cnqj36RsbqTtlVwu5NkMq8IE1mwwB9zA9WL7LppbwHk48mkjd9ZUE37j4EOEk
-         DoxA==
+        b=ArBA565ljGR3IlZEM8hoHoEtDSaRohxTeYRulh5bR1Z8c7Es4NpSD4Zuv/7tIFri9e
+         rnN1iYJJ+esufLkM79H5CCKYOVgZKYeODqHs/ROMQfc9CEOskH27CuWHUpmnKT7ZSCwG
+         Y6Xf+Rw9Evpm9OMdGqlrVq2ZqMrHm0Ko/3w4bo3PoBmqR/GdVcSFn+cJiJxs5vcan73i
+         Aj1/TtcUf6zbr9STmPbWbCcK/TbYfLcsNBtf+wLb5PIAEeRi3rcEOGRVZxivge3JG3qt
+         m4ViBtHmzdNyOxeMID72rLZLuL6pBXjsDwcoWXP0qpDbyhpPeoQp5g2UsaaVM2GtgSvr
+         +GCg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=5FmN3ljyVtwKizj7nbiiY/9sTfclXpJZqQxvrlA2g1E=;
-        b=R92jBSEglXIKqSRdUg6odDmKmfozfG4BrFFCrN4TzTuhYy8cWgqe319WJNzjyc/VHp
-         1qwHG/GKxGrkbG0jProgyDMqMBw7OdJus33V7CXmirRT4pnwPi68DuxnW9OX8xdbnBm2
-         Xbs6MDWU5cEICHpVYyNW8TkGPsO2vgdn6uKXj4KGh79bmZpNZo2Ygec1wUyeROV2J6bj
-         zaGrHDB/6qJ5vF8z/FK2/ZFEfSyrKkfsMpZ4xJRngMBkEjt4YPtM3Lj9oI723v4QpQGv
-         S6k8vkqXU7CZLt0J1Zdz1M3bh0GhMgHnAUZLnoaAUQKFrL/DaPljLZFbcGbzHEDZNGf8
-         ppNA==
+        bh=oldk+knzMpq2uW/3oLaoYDRDODzDy8i55wbuRwYP8h8=;
+        b=vWIgLke/3VPLCyUBfcSP7II1lAamV2Fhz+7bs6Mv+OwRxgH68//ArqpoXUVw9UEGcR
+         I2w7GNXWBltLnQ04ud9A8LKdC2CH0ubhIy8abQLkwu/jEuhNYPDwdOp/KijuLqqqRh3U
+         4Bu+GLWb343rcwhjIh2M9h33ZoUTu5gpujWIpBN11IugL8Y0J2jvNf81j3KiMrjA0UhR
+         qbPNo6Avcy7oAAF91M4Pr7umQaMzdGhUX6gpqIFPwG7UnrzovI4WrD3CSqD8qsLdCKCH
+         QAkF1BZwevQp/hJuLnyDi8QLYEkxZMrX34MTABpJl3NisFd8liC+rUFJsdaJK/XnJ2dW
+         w7vg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nZKK77L2;
+       dkim=fail header.i=@linaro.org header.s=google header.b=OV32m4kk;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d5si14732885ioq.28.2021.05.24.18.56.52
+        by mx.google.com with ESMTPS id z22si5465263jal.117.2021.05.24.18.58.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 May 2021 18:56:52 -0700 (PDT)
+        Mon, 24 May 2021 18:58:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nZKK77L2;
+       dkim=fail header.i=@linaro.org header.s=google header.b=OV32m4kk;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49344 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:53440 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1llMJP-0004k2-Om
-	for alex.bennee@linaro.org; Mon, 24 May 2021 21:56:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55794)
+	id 1llMKl-0007SO-1P
+	for alex.bennee@linaro.org; Mon, 24 May 2021 21:58:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55306)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1llLYd-0001H9-95
- for qemu-devel@nongnu.org; Mon, 24 May 2021 21:08:32 -0400
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635]:45861)
+ id 1llLYD-0008O0-J1
+ for qemu-devel@nongnu.org; Mon, 24 May 2021 21:08:05 -0400
+Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a]:45050)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1llLXv-0004AS-Pu
- for qemu-devel@nongnu.org; Mon, 24 May 2021 21:08:30 -0400
-Received: by mail-pl1-x635.google.com with SMTP id s4so13951620plg.12
- for <qemu-devel@nongnu.org>; Mon, 24 May 2021 18:07:47 -0700 (PDT)
+ id 1llLXr-000475-Jf
+ for qemu-devel@nongnu.org; Mon, 24 May 2021 21:08:03 -0400
+Received: by mail-pj1-x102a.google.com with SMTP id
+ h20-20020a17090aa894b029015db8f3969eso11565480pjq.3
+ for <qemu-devel@nongnu.org>; Mon, 24 May 2021 18:07:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=5FmN3ljyVtwKizj7nbiiY/9sTfclXpJZqQxvrlA2g1E=;
- b=nZKK77L2IkMofhLcj9FoT/KCWJW6GW83HrwvjTBFlRXGVWJ3fwT4JV3uMmxaQCrkPl
- giSOvMnplUYleJJXGxVHoBx2jfhwUw1om6SyFeGW69EDYuIoVzwGp2Hifw/8mGSkvGkE
- r9986kpzSFaY7FO4DOPipxhf4lKdwi54cZXMQGCGkJMdTT/jFTCPXUJBrogajdr7hiEw
- ujbUCSPo/xF/Va53VwHsX9IL4nJ3qn299p2fumVHsE5pVeBpMZB99NK5os956Ced4U2i
- REzTpal0fVVWrZDFWfBxxC/A/8MXzQ4KUAlxPwPzPuMqiQQ+XGj1b/kUB/G0ZpPtv+GN
- Bq/A==
+ bh=oldk+knzMpq2uW/3oLaoYDRDODzDy8i55wbuRwYP8h8=;
+ b=OV32m4kkfxfWHwJyCUuQnFLS1+Gge+qVsVE5HvoxlW5uZ9IDcw0FZ7WIfRoI87do+q
+ alYcmedogu2gxsRf5iY91HwKfHj8I4ABV3lT2se14iYwQtDh/vDb29r1JfHlMSuPBYwK
+ 4KwNJivLk1uVy6zXtkfhM8Rr8p/Txdc0ul/85Frpf9DnjwpusEUwoTqIlvq4NMWdCM1q
+ XU2qds4NSK+LcoOJso91MNlNuXg9d3is6nCL2y34Wrr7bzmumsJ0n6QkD3Jx33v99e0H
+ iBTWRVYi0mqyM0CpAcBIkYONy/Pxhs3PMgv0tfQs9FzvrduX8T+/FvG+511Sa5IEJI2q
+ jeVw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=5FmN3ljyVtwKizj7nbiiY/9sTfclXpJZqQxvrlA2g1E=;
- b=FMu+1agGk5+plovE92iBOzy9C+Jr30thy09cGb7/YlkTnWPJT3I0NCTZveivA5HfRl
- I5CiRIgx6PSRitg6YTnO5ZBEwow8xaNQlATAFMoZXAi1BnUkIjHQr2HECverUQ15Pa5y
- 7p4GJdKvEE79p+lau9PrEJzy71Aq9DHjkekikZBU+sfK9/rvgyfCF1RA0K/IDm7rMxGb
- lVA/y3f7RWAgHDO4plBxIxcUSIuiwRbt8MTwBWQJbcchzqpThgeTMCVRerp1K8Vi7NXM
- 9717bildiX81Jp2UbaWaVobRR/Wfpl1eafwEdaLGWztgR2lHeOw//A53f/vR6y9Y5jEk
- q39A==
-X-Gm-Message-State: AOAM530nA9254OiIxbT/nWfP2yVPpc3pcdWBNpM3BoAYcfKfI/0KlOa+
- qK+dUjvwvjED1sOglypmr4dSylv7/FsQRQ==
-X-Received: by 2002:a17:902:c407:b029:f8:c1e2:e0bf with SMTP id
- k7-20020a170902c407b02900f8c1e2e0bfmr12541074plk.69.1621904866245; 
- Mon, 24 May 2021 18:07:46 -0700 (PDT)
+ bh=oldk+knzMpq2uW/3oLaoYDRDODzDy8i55wbuRwYP8h8=;
+ b=ZrqKS66SKgaUpyYhzF3DvgqhIMFGxrnqLOVfnWb02S/XnyZYY5STvx6noe/sfb4Ex0
+ 87PCtePebT2v4c2rtULQbh07t4XzZgkZeZAbgapl2qSJVVsVXs5jii/FNS0fNdh7Q1nS
+ Hx1p3Q4qxx8JXtLyejcPCd/ZWRExp18xU/cW4GOupQ0DdIUrxZtX1gkDYHnvjTWgXO0B
+ YtHgITO8n8LC+9cIqLWjd302CvCogHBGtYCKmhUnzvKW0MGlGT8krajdgfR1mriGbkxQ
+ 33EHwyCE8E6NXqTx0/tb+rvbCkLafyKqMO9DjvOEhk4wIe9dYktNyso5RPpK2JaCanBQ
+ UlQQ==
+X-Gm-Message-State: AOAM531a8YOrDXgrgSr0ofT27QS63assGEb1qkenIgEk4B7n6BhufCk2
+ 2h/Te2+Roym13YOw1p2VO6KZIS/kDxTquw==
+X-Received: by 2002:a17:902:bb8e:b029:f4:58d1:5170 with SMTP id
+ m14-20020a170902bb8eb02900f458d15170mr28067026pls.84.1621904861562; 
+ Mon, 24 May 2021 18:07:41 -0700 (PDT)
 Received: from localhost.localdomain (174-21-70-228.tukw.qwest.net.
  [174.21.70.228])
- by smtp.gmail.com with ESMTPSA id b16sm11748176pju.35.2021.05.24.18.07.45
+ by smtp.gmail.com with ESMTPSA id b16sm11748176pju.35.2021.05.24.18.07.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 24 May 2021 18:07:46 -0700 (PDT)
+ Mon, 24 May 2021 18:07:41 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v7 76/92] target/arm: Share table of sve load functions
-Date: Mon, 24 May 2021 18:03:42 -0700
-Message-Id: <20210525010358.152808-77-richard.henderson@linaro.org>
+Subject: [PATCH v7 68/92] target/arm: Implement SVE2 crypto unary operations
+Date: Mon, 24 May 2021 18:03:34 -0700
+Message-Id: <20210525010358.152808-69-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210525010358.152808-1-richard.henderson@linaro.org>
 References: <20210525010358.152808-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x635.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -117,319 +118,51 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: amUfaH+AFkkL
+X-TUID: +4EAqJyQgWZj
 
-The table used by do_ldrq is a subset of the table used by do_ld_zpa;
-we can share them by passing dtype instead of msz to do_ldrq.
-
-The lack of MTE handling in do_ldrq was a bug, fixed by this change.
-
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/translate-sve.c | 254 ++++++++++++++++++-------------------
- 1 file changed, 126 insertions(+), 128 deletions(-)
+ target/arm/sve.decode      |  6 ++++++
+ target/arm/translate-sve.c | 11 +++++++++++
+ 2 files changed, 17 insertions(+)
 
+diff --git a/target/arm/sve.decode b/target/arm/sve.decode
+index 9f037fe5a7..a9cf3bea3e 100644
+--- a/target/arm/sve.decode
++++ b/target/arm/sve.decode
+@@ -1558,3 +1558,9 @@ STNT1_zprz      1110010 .. 00 ..... 001 ... ..... ..... \
+ # SVE2 32-bit scatter non-temporal store (vector plus scalar)
+ STNT1_zprz      1110010 .. 10 ..... 001 ... ..... ..... \
+                 @rprr_scatter_store xs=0 esz=2 scale=0
++
++### SVE2 Crypto Extensions
++
++# SVE2 crypto unary operations
++# AESMC and AESIMC
++AESMC           01000101 00 10000011100 decrypt:1 00000 rd:5
 diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-index 3ea51a73d3..54c50349ab 100644
+index ae078b095a..79b4991549 100644
 --- a/target/arm/translate-sve.c
 +++ b/target/arm/translate-sve.c
-@@ -5215,128 +5215,130 @@ static void do_mem_zpa(DisasContext *s, int zt, int pg, TCGv_i64 addr,
-     tcg_temp_free_i32(t_desc);
- }
- 
-+/* Indexed by [mte][be][dtype][nreg] */
-+static gen_helper_gvec_mem * const ldr_fns[2][2][16][4] = {
-+    { /* mte inactive, little-endian */
-+      { { gen_helper_sve_ld1bb_r, gen_helper_sve_ld2bb_r,
-+          gen_helper_sve_ld3bb_r, gen_helper_sve_ld4bb_r },
-+        { gen_helper_sve_ld1bhu_r, NULL, NULL, NULL },
-+        { gen_helper_sve_ld1bsu_r, NULL, NULL, NULL },
-+        { gen_helper_sve_ld1bdu_r, NULL, NULL, NULL },
-+
-+        { gen_helper_sve_ld1sds_le_r, NULL, NULL, NULL },
-+        { gen_helper_sve_ld1hh_le_r, gen_helper_sve_ld2hh_le_r,
-+          gen_helper_sve_ld3hh_le_r, gen_helper_sve_ld4hh_le_r },
-+        { gen_helper_sve_ld1hsu_le_r, NULL, NULL, NULL },
-+        { gen_helper_sve_ld1hdu_le_r, NULL, NULL, NULL },
-+
-+        { gen_helper_sve_ld1hds_le_r, NULL, NULL, NULL },
-+        { gen_helper_sve_ld1hss_le_r, NULL, NULL, NULL },
-+        { gen_helper_sve_ld1ss_le_r, gen_helper_sve_ld2ss_le_r,
-+          gen_helper_sve_ld3ss_le_r, gen_helper_sve_ld4ss_le_r },
-+        { gen_helper_sve_ld1sdu_le_r, NULL, NULL, NULL },
-+
-+        { gen_helper_sve_ld1bds_r, NULL, NULL, NULL },
-+        { gen_helper_sve_ld1bss_r, NULL, NULL, NULL },
-+        { gen_helper_sve_ld1bhs_r, NULL, NULL, NULL },
-+        { gen_helper_sve_ld1dd_le_r, gen_helper_sve_ld2dd_le_r,
-+          gen_helper_sve_ld3dd_le_r, gen_helper_sve_ld4dd_le_r } },
-+
-+      /* mte inactive, big-endian */
-+      { { gen_helper_sve_ld1bb_r, gen_helper_sve_ld2bb_r,
-+          gen_helper_sve_ld3bb_r, gen_helper_sve_ld4bb_r },
-+        { gen_helper_sve_ld1bhu_r, NULL, NULL, NULL },
-+        { gen_helper_sve_ld1bsu_r, NULL, NULL, NULL },
-+        { gen_helper_sve_ld1bdu_r, NULL, NULL, NULL },
-+
-+        { gen_helper_sve_ld1sds_be_r, NULL, NULL, NULL },
-+        { gen_helper_sve_ld1hh_be_r, gen_helper_sve_ld2hh_be_r,
-+          gen_helper_sve_ld3hh_be_r, gen_helper_sve_ld4hh_be_r },
-+        { gen_helper_sve_ld1hsu_be_r, NULL, NULL, NULL },
-+        { gen_helper_sve_ld1hdu_be_r, NULL, NULL, NULL },
-+
-+        { gen_helper_sve_ld1hds_be_r, NULL, NULL, NULL },
-+        { gen_helper_sve_ld1hss_be_r, NULL, NULL, NULL },
-+        { gen_helper_sve_ld1ss_be_r, gen_helper_sve_ld2ss_be_r,
-+          gen_helper_sve_ld3ss_be_r, gen_helper_sve_ld4ss_be_r },
-+        { gen_helper_sve_ld1sdu_be_r, NULL, NULL, NULL },
-+
-+        { gen_helper_sve_ld1bds_r, NULL, NULL, NULL },
-+        { gen_helper_sve_ld1bss_r, NULL, NULL, NULL },
-+        { gen_helper_sve_ld1bhs_r, NULL, NULL, NULL },
-+        { gen_helper_sve_ld1dd_be_r, gen_helper_sve_ld2dd_be_r,
-+          gen_helper_sve_ld3dd_be_r, gen_helper_sve_ld4dd_be_r } } },
-+
-+    { /* mte active, little-endian */
-+      { { gen_helper_sve_ld1bb_r_mte,
-+          gen_helper_sve_ld2bb_r_mte,
-+          gen_helper_sve_ld3bb_r_mte,
-+          gen_helper_sve_ld4bb_r_mte },
-+        { gen_helper_sve_ld1bhu_r_mte, NULL, NULL, NULL },
-+        { gen_helper_sve_ld1bsu_r_mte, NULL, NULL, NULL },
-+        { gen_helper_sve_ld1bdu_r_mte, NULL, NULL, NULL },
-+
-+        { gen_helper_sve_ld1sds_le_r_mte, NULL, NULL, NULL },
-+        { gen_helper_sve_ld1hh_le_r_mte,
-+          gen_helper_sve_ld2hh_le_r_mte,
-+          gen_helper_sve_ld3hh_le_r_mte,
-+          gen_helper_sve_ld4hh_le_r_mte },
-+        { gen_helper_sve_ld1hsu_le_r_mte, NULL, NULL, NULL },
-+        { gen_helper_sve_ld1hdu_le_r_mte, NULL, NULL, NULL },
-+
-+        { gen_helper_sve_ld1hds_le_r_mte, NULL, NULL, NULL },
-+        { gen_helper_sve_ld1hss_le_r_mte, NULL, NULL, NULL },
-+        { gen_helper_sve_ld1ss_le_r_mte,
-+          gen_helper_sve_ld2ss_le_r_mte,
-+          gen_helper_sve_ld3ss_le_r_mte,
-+          gen_helper_sve_ld4ss_le_r_mte },
-+        { gen_helper_sve_ld1sdu_le_r_mte, NULL, NULL, NULL },
-+
-+        { gen_helper_sve_ld1bds_r_mte, NULL, NULL, NULL },
-+        { gen_helper_sve_ld1bss_r_mte, NULL, NULL, NULL },
-+        { gen_helper_sve_ld1bhs_r_mte, NULL, NULL, NULL },
-+        { gen_helper_sve_ld1dd_le_r_mte,
-+          gen_helper_sve_ld2dd_le_r_mte,
-+          gen_helper_sve_ld3dd_le_r_mte,
-+          gen_helper_sve_ld4dd_le_r_mte } },
-+
-+      /* mte active, big-endian */
-+      { { gen_helper_sve_ld1bb_r_mte,
-+          gen_helper_sve_ld2bb_r_mte,
-+          gen_helper_sve_ld3bb_r_mte,
-+          gen_helper_sve_ld4bb_r_mte },
-+        { gen_helper_sve_ld1bhu_r_mte, NULL, NULL, NULL },
-+        { gen_helper_sve_ld1bsu_r_mte, NULL, NULL, NULL },
-+        { gen_helper_sve_ld1bdu_r_mte, NULL, NULL, NULL },
-+
-+        { gen_helper_sve_ld1sds_be_r_mte, NULL, NULL, NULL },
-+        { gen_helper_sve_ld1hh_be_r_mte,
-+          gen_helper_sve_ld2hh_be_r_mte,
-+          gen_helper_sve_ld3hh_be_r_mte,
-+          gen_helper_sve_ld4hh_be_r_mte },
-+        { gen_helper_sve_ld1hsu_be_r_mte, NULL, NULL, NULL },
-+        { gen_helper_sve_ld1hdu_be_r_mte, NULL, NULL, NULL },
-+
-+        { gen_helper_sve_ld1hds_be_r_mte, NULL, NULL, NULL },
-+        { gen_helper_sve_ld1hss_be_r_mte, NULL, NULL, NULL },
-+        { gen_helper_sve_ld1ss_be_r_mte,
-+          gen_helper_sve_ld2ss_be_r_mte,
-+          gen_helper_sve_ld3ss_be_r_mte,
-+          gen_helper_sve_ld4ss_be_r_mte },
-+        { gen_helper_sve_ld1sdu_be_r_mte, NULL, NULL, NULL },
-+
-+        { gen_helper_sve_ld1bds_r_mte, NULL, NULL, NULL },
-+        { gen_helper_sve_ld1bss_r_mte, NULL, NULL, NULL },
-+        { gen_helper_sve_ld1bhs_r_mte, NULL, NULL, NULL },
-+        { gen_helper_sve_ld1dd_be_r_mte,
-+          gen_helper_sve_ld2dd_be_r_mte,
-+          gen_helper_sve_ld3dd_be_r_mte,
-+          gen_helper_sve_ld4dd_be_r_mte } } },
-+};
-+
- static void do_ld_zpa(DisasContext *s, int zt, int pg,
-                       TCGv_i64 addr, int dtype, int nreg)
- {
--    static gen_helper_gvec_mem * const fns[2][2][16][4] = {
--        { /* mte inactive, little-endian */
--          { { gen_helper_sve_ld1bb_r, gen_helper_sve_ld2bb_r,
--            gen_helper_sve_ld3bb_r, gen_helper_sve_ld4bb_r },
--            { gen_helper_sve_ld1bhu_r, NULL, NULL, NULL },
--            { gen_helper_sve_ld1bsu_r, NULL, NULL, NULL },
--            { gen_helper_sve_ld1bdu_r, NULL, NULL, NULL },
--
--            { gen_helper_sve_ld1sds_le_r, NULL, NULL, NULL },
--            { gen_helper_sve_ld1hh_le_r, gen_helper_sve_ld2hh_le_r,
--              gen_helper_sve_ld3hh_le_r, gen_helper_sve_ld4hh_le_r },
--            { gen_helper_sve_ld1hsu_le_r, NULL, NULL, NULL },
--            { gen_helper_sve_ld1hdu_le_r, NULL, NULL, NULL },
--
--            { gen_helper_sve_ld1hds_le_r, NULL, NULL, NULL },
--            { gen_helper_sve_ld1hss_le_r, NULL, NULL, NULL },
--            { gen_helper_sve_ld1ss_le_r, gen_helper_sve_ld2ss_le_r,
--              gen_helper_sve_ld3ss_le_r, gen_helper_sve_ld4ss_le_r },
--            { gen_helper_sve_ld1sdu_le_r, NULL, NULL, NULL },
--
--            { gen_helper_sve_ld1bds_r, NULL, NULL, NULL },
--            { gen_helper_sve_ld1bss_r, NULL, NULL, NULL },
--            { gen_helper_sve_ld1bhs_r, NULL, NULL, NULL },
--            { gen_helper_sve_ld1dd_le_r, gen_helper_sve_ld2dd_le_r,
--              gen_helper_sve_ld3dd_le_r, gen_helper_sve_ld4dd_le_r } },
--
--          /* mte inactive, big-endian */
--          { { gen_helper_sve_ld1bb_r, gen_helper_sve_ld2bb_r,
--              gen_helper_sve_ld3bb_r, gen_helper_sve_ld4bb_r },
--            { gen_helper_sve_ld1bhu_r, NULL, NULL, NULL },
--            { gen_helper_sve_ld1bsu_r, NULL, NULL, NULL },
--            { gen_helper_sve_ld1bdu_r, NULL, NULL, NULL },
--
--            { gen_helper_sve_ld1sds_be_r, NULL, NULL, NULL },
--            { gen_helper_sve_ld1hh_be_r, gen_helper_sve_ld2hh_be_r,
--              gen_helper_sve_ld3hh_be_r, gen_helper_sve_ld4hh_be_r },
--            { gen_helper_sve_ld1hsu_be_r, NULL, NULL, NULL },
--            { gen_helper_sve_ld1hdu_be_r, NULL, NULL, NULL },
--
--            { gen_helper_sve_ld1hds_be_r, NULL, NULL, NULL },
--            { gen_helper_sve_ld1hss_be_r, NULL, NULL, NULL },
--            { gen_helper_sve_ld1ss_be_r, gen_helper_sve_ld2ss_be_r,
--              gen_helper_sve_ld3ss_be_r, gen_helper_sve_ld4ss_be_r },
--            { gen_helper_sve_ld1sdu_be_r, NULL, NULL, NULL },
--
--            { gen_helper_sve_ld1bds_r, NULL, NULL, NULL },
--            { gen_helper_sve_ld1bss_r, NULL, NULL, NULL },
--            { gen_helper_sve_ld1bhs_r, NULL, NULL, NULL },
--            { gen_helper_sve_ld1dd_be_r, gen_helper_sve_ld2dd_be_r,
--              gen_helper_sve_ld3dd_be_r, gen_helper_sve_ld4dd_be_r } } },
--
--        { /* mte active, little-endian */
--          { { gen_helper_sve_ld1bb_r_mte,
--              gen_helper_sve_ld2bb_r_mte,
--              gen_helper_sve_ld3bb_r_mte,
--              gen_helper_sve_ld4bb_r_mte },
--            { gen_helper_sve_ld1bhu_r_mte, NULL, NULL, NULL },
--            { gen_helper_sve_ld1bsu_r_mte, NULL, NULL, NULL },
--            { gen_helper_sve_ld1bdu_r_mte, NULL, NULL, NULL },
--
--            { gen_helper_sve_ld1sds_le_r_mte, NULL, NULL, NULL },
--            { gen_helper_sve_ld1hh_le_r_mte,
--              gen_helper_sve_ld2hh_le_r_mte,
--              gen_helper_sve_ld3hh_le_r_mte,
--              gen_helper_sve_ld4hh_le_r_mte },
--            { gen_helper_sve_ld1hsu_le_r_mte, NULL, NULL, NULL },
--            { gen_helper_sve_ld1hdu_le_r_mte, NULL, NULL, NULL },
--
--            { gen_helper_sve_ld1hds_le_r_mte, NULL, NULL, NULL },
--            { gen_helper_sve_ld1hss_le_r_mte, NULL, NULL, NULL },
--            { gen_helper_sve_ld1ss_le_r_mte,
--              gen_helper_sve_ld2ss_le_r_mte,
--              gen_helper_sve_ld3ss_le_r_mte,
--              gen_helper_sve_ld4ss_le_r_mte },
--            { gen_helper_sve_ld1sdu_le_r_mte, NULL, NULL, NULL },
--
--            { gen_helper_sve_ld1bds_r_mte, NULL, NULL, NULL },
--            { gen_helper_sve_ld1bss_r_mte, NULL, NULL, NULL },
--            { gen_helper_sve_ld1bhs_r_mte, NULL, NULL, NULL },
--            { gen_helper_sve_ld1dd_le_r_mte,
--              gen_helper_sve_ld2dd_le_r_mte,
--              gen_helper_sve_ld3dd_le_r_mte,
--              gen_helper_sve_ld4dd_le_r_mte } },
--
--          /* mte active, big-endian */
--          { { gen_helper_sve_ld1bb_r_mte,
--              gen_helper_sve_ld2bb_r_mte,
--              gen_helper_sve_ld3bb_r_mte,
--              gen_helper_sve_ld4bb_r_mte },
--            { gen_helper_sve_ld1bhu_r_mte, NULL, NULL, NULL },
--            { gen_helper_sve_ld1bsu_r_mte, NULL, NULL, NULL },
--            { gen_helper_sve_ld1bdu_r_mte, NULL, NULL, NULL },
--
--            { gen_helper_sve_ld1sds_be_r_mte, NULL, NULL, NULL },
--            { gen_helper_sve_ld1hh_be_r_mte,
--              gen_helper_sve_ld2hh_be_r_mte,
--              gen_helper_sve_ld3hh_be_r_mte,
--              gen_helper_sve_ld4hh_be_r_mte },
--            { gen_helper_sve_ld1hsu_be_r_mte, NULL, NULL, NULL },
--            { gen_helper_sve_ld1hdu_be_r_mte, NULL, NULL, NULL },
--
--            { gen_helper_sve_ld1hds_be_r_mte, NULL, NULL, NULL },
--            { gen_helper_sve_ld1hss_be_r_mte, NULL, NULL, NULL },
--            { gen_helper_sve_ld1ss_be_r_mte,
--              gen_helper_sve_ld2ss_be_r_mte,
--              gen_helper_sve_ld3ss_be_r_mte,
--              gen_helper_sve_ld4ss_be_r_mte },
--            { gen_helper_sve_ld1sdu_be_r_mte, NULL, NULL, NULL },
--
--            { gen_helper_sve_ld1bds_r_mte, NULL, NULL, NULL },
--            { gen_helper_sve_ld1bss_r_mte, NULL, NULL, NULL },
--            { gen_helper_sve_ld1bhs_r_mte, NULL, NULL, NULL },
--            { gen_helper_sve_ld1dd_be_r_mte,
--              gen_helper_sve_ld2dd_be_r_mte,
--              gen_helper_sve_ld3dd_be_r_mte,
--              gen_helper_sve_ld4dd_be_r_mte } } },
--    };
-     gen_helper_gvec_mem *fn
--        = fns[s->mte_active[0]][s->be_data == MO_BE][dtype][nreg];
-+        = ldr_fns[s->mte_active[0]][s->be_data == MO_BE][dtype][nreg];
- 
-     /*
-      * While there are holes in the table, they are not
-@@ -5574,14 +5576,8 @@ static bool trans_LDNF1_zpri(DisasContext *s, arg_rpri_load *a)
-     return true;
- }
- 
--static void do_ldrq(DisasContext *s, int zt, int pg, TCGv_i64 addr, int msz)
-+static void do_ldrq(DisasContext *s, int zt, int pg, TCGv_i64 addr, int dtype)
- {
--    static gen_helper_gvec_mem * const fns[2][4] = {
--        { gen_helper_sve_ld1bb_r,    gen_helper_sve_ld1hh_le_r,
--          gen_helper_sve_ld1ss_le_r, gen_helper_sve_ld1dd_le_r },
--        { gen_helper_sve_ld1bb_r,    gen_helper_sve_ld1hh_be_r,
--          gen_helper_sve_ld1ss_be_r, gen_helper_sve_ld1dd_be_r },
--    };
-     unsigned vsz = vec_full_reg_size(s);
-     TCGv_ptr t_pg;
-     TCGv_i32 t_desc;
-@@ -5613,7 +5609,9 @@ static void do_ldrq(DisasContext *s, int zt, int pg, TCGv_i64 addr, int msz)
-     t_pg = tcg_temp_new_ptr();
-     tcg_gen_addi_ptr(t_pg, cpu_env, poff);
- 
--    fns[s->be_data == MO_BE][msz](cpu_env, t_pg, addr, t_desc);
-+    gen_helper_gvec_mem *fn
-+        = ldr_fns[s->mte_active[0]][s->be_data == MO_BE][dtype][0];
-+    fn(cpu_env, t_pg, addr, t_desc);
- 
-     tcg_temp_free_ptr(t_pg);
-     tcg_temp_free_i32(t_desc);
-@@ -5635,7 +5633,7 @@ static bool trans_LD1RQ_zprr(DisasContext *s, arg_rprr_load *a)
-         TCGv_i64 addr = new_tmp_a64(s);
-         tcg_gen_shli_i64(addr, cpu_reg(s, a->rm), msz);
-         tcg_gen_add_i64(addr, addr, cpu_reg_sp(s, a->rn));
--        do_ldrq(s, a->rd, a->pg, addr, msz);
-+        do_ldrq(s, a->rd, a->pg, addr, a->dtype);
+@@ -8148,3 +8148,14 @@ static bool trans_USDOT_zzzz(DisasContext *s, arg_USDOT_zzzz *a)
      }
      return true;
  }
-@@ -5645,7 +5643,7 @@ static bool trans_LD1RQ_zpri(DisasContext *s, arg_rpri_load *a)
-     if (sve_access_check(s)) {
-         TCGv_i64 addr = new_tmp_a64(s);
-         tcg_gen_addi_i64(addr, cpu_reg_sp(s, a->rn), a->imm * 16);
--        do_ldrq(s, a->rd, a->pg, addr, dtype_msz(a->dtype));
-+        do_ldrq(s, a->rd, a->pg, addr, a->dtype);
-     }
-     return true;
- }
++
++static bool trans_AESMC(DisasContext *s, arg_AESMC *a)
++{
++    if (!dc_isar_feature(aa64_sve2_aes, s)) {
++        return false;
++    }
++    if (sve_access_check(s)) {
++        gen_gvec_ool_zz(s, gen_helper_crypto_aesmc, a->rd, a->rd, a->decrypt);
++    }
++    return true;
++}
 -- 
 2.25.1
 

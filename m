@@ -1,549 +1,261 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp5629514lfm;
-        Wed, 26 May 2021 10:20:29 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxuqdltnJsGFHOB36UHKFsS088PhXTmel5CIOBfTw9lN1NHRSG6fkSih58P9jZM1RCoIZd6
-X-Received: by 2002:ab0:74d6:: with SMTP id f22mr13394031uaq.107.1622049629455;
-        Wed, 26 May 2021 10:20:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1622049629; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp5665494lfm;
+        Wed, 26 May 2021 11:06:48 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwX4HvXF5l9KWT0XVc55Kfe6oeH8UlDShFxajJ8+0+Y857GgT1oE8D6yRZJg2yibTOJ+3wH
+X-Received: by 2002:a05:6402:1582:: with SMTP id c2mr38858119edv.388.1622052408510;
+        Wed, 26 May 2021 11:06:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1622052408; cv=none;
         d=google.com; s=arc-20160816;
-        b=HcLF/Ko20436MaSe6HXL4JI/fNQh7eXQ47CRgDJTjYYAbAVE4Lv4LGbGyAJDbWFhgp
-         tDrqLyj+uaIrN6UJ2St4kmy4xg7lwjP0EkqbpXFGS8LwAOTAzQcpVBRMHT1vJqqUuwmU
-         DRybEPN8hrhhLdftJ4vEwgbl6ddg9b7UuCxofcv84LRhBpjBb5abWH8c5NjwF1Tn1RpE
-         w04rw7gQhq/zwNnMIrW5XRIF8bn4RnD53T7n1DuY73BAid88bzvON5hoYo57yBS7E1JU
-         LBLDGe4hBdXATkWe5iv8pPsOyZPtPUANlSSYkLIq4vvTt8rlCNddF+zbdNIm+qb0yQnD
-         Vmew==
+        b=VgpkLJ2EguGeby4E0Lj22qn8GmlaMn7kJ2/eAE2D0FTEj/ORgzo5+R5zr1aSrm9lXm
+         q2xvv4BBNFrhD+Sn2/rOc0GUmTzShU3+iuR/UnWxui8aVsBPgYOfRon+4gJgTXsActno
+         iV34DspPC30YCtnHab8IfMJ1lNVflMoeJ8YjaTrPHHaQVzkSEq8cG12iFb/onOZJuVOo
+         AKriR34H//78s8fVhXFYyY8VddHGrO3CeS4xF7JykIcKeP0A0MkNVmbRfDdgjV6AcTUz
+         b3exsj3v7/gC//QTPIXtYiEyEtpeHtf1qvYfva0214uFklMjrR5aSQSuUY/28STthjoD
+         /AZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=KOTyr/GPtp/0gjIOd5U6W6CXxFx7PEMuxtPRZj/UCuE=;
-        b=J/+v6gbt7tEde5zwBkxAu+OEbXqmTy9Oo2X5XpB40e57fo+wkuOOA69Yp0tXIt69UQ
-         qA7+NuQO9n6wXmPor9GJW2ttdSev3/gJz/TyB10Si+yf2AorTrRXYT3OUN1LDGM/C6jA
-         MwU7YjuPVxxMU5Kf/5GI77+W941joGLkzhzFzw2cKA8Bq+8hGWgAHrpnr0JmxHXDqJbt
-         ZlMOlbRgrjRxlck3+okYb8YkA9rR9k6RDkaieD1cNLAMIqRQmZoRqXCiUDyksu1JZzqd
-         y5sl/ysBw00vNe9xcOC2zD8iE44RJC6GIVp4f8psI4XXV74JzEu4Zzsq5eflHJdkXIgM
-         95hQ==
+        h=content-disposition:in-reply-to:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=ykPyVyPX65ynsKu2AhRFTCmGGYL0JndPsWm8nPSGOX0=;
+        b=LbrahtM6jCW66AYevz/sBgGqy/xLz2ixoZEn10vvOWgj1yNwXi6xeHNsG5yabGj0PB
+         rxvD1fXT2HHLa07NfOT0qw+Mrv6mYtx1eTCykGmLEN+nbnjZ56V2Wnsc5iV8BQegE0fh
+         WhffQMh4HJs6V+bt2wKIUIfAxwIpwaV4u4DPyaKdqicFqDCnKraONkoS/nuzKzPp38Jh
+         QlZs1sXndDb/F6eTvXNcZH2jQUvdwjuGl2z5NXRlBngPc8B9UXDYPzKrudUCBFj67j4r
+         PmQBEIPsXCny6bDkzSccZQRGDPnZBKSHSPE3IeMTojuQHodEYvVrHERD1lohMM2OymJZ
+         CdeA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YyuXitTn;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g20si1752685uaq.144.2021.05.26.10.20.29
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PKoA8VBU;
+       spf=pass (google.com: domain of crosa@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <crosa@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
+        by mx.google.com with ESMTPS id 23si46106ejn.487.2021.05.26.11.06.48
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 May 2021 10:20:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 26 May 2021 11:06:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of crosa@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YyuXitTn;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50552 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1llxCm-0007BE-MH
-	for alex.bennee@linaro.org; Wed, 26 May 2021 13:20:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44630)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1llwyy-0007c7-29
- for qemu-devel@nongnu.org; Wed, 26 May 2021 13:06:12 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:36128)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1llwyt-0004Ts-JI
- for qemu-devel@nongnu.org; Wed, 26 May 2021 13:06:11 -0400
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PKoA8VBU;
+       spf=pass (google.com: domain of crosa@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1622048766;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=KOTyr/GPtp/0gjIOd5U6W6CXxFx7PEMuxtPRZj/UCuE=;
- b=YyuXitTnxWCYCRz0LoMHgWgaRp3Z3U1FGtgbr1Al/CAHKyN8X5RhaKIOQ05aP6+R67fea7
- prBOxPMkmBR1GF2t3mliYVbEmWOGVQV1hd+KO0UcknBFeCreJEfjxXFegrWJKpdNo6ZBPp
- v7rMJeBRUF/XJJznse/h3iAtk+wlOe4=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-12-E5HH0bylO3alVzSsE6OIMg-1; Wed, 26 May 2021 13:05:57 -0400
-X-MC-Unique: E5HH0bylO3alVzSsE6OIMg-1
-Received: by mail-wr1-f71.google.com with SMTP id
- a9-20020adfc4490000b0290112095ca785so599715wrg.14
- for <qemu-devel@nongnu.org>; Wed, 26 May 2021 10:05:57 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=KOTyr/GPtp/0gjIOd5U6W6CXxFx7PEMuxtPRZj/UCuE=;
- b=NZJGfl73CkEt+RFVqWJV2USCFID2LLFJoM8YZQFJP7ir2amxPwDKSioPVXonY12Jyx
- JxUElfp9CJMZG35+A5GXXeqWRA/nocS8di4sawMLyyePkyadcb4wLKaWqbWlw0C59t/c
- vespv4XrZw+0txIf4JuDllitikNljyx918nF8iN1PdoEpzMaAQTIj8NJjbzCMPm2ds5F
- JmlOHpCgWDuVrQp6lqAkdgG2S1yABWIwP66ssbYdxWwykPDQYRLdB95eTd2zVHYx4ggm
- qOsytMYU0gp9QPaMy67wA1xVWSJLChjCwydKuIfpp7NM6Uyj+0oMIGYwClRnYHZDzH/U
- bW4Q==
-X-Gm-Message-State: AOAM5319Dd/NfbGoiW31DkeFl9jJPGUij7TrfulwaoeKUYCbJVklHX68
- 3HqITZpYyfP8+jz+ySN/JiT+DOxPLsfkI8/e76Z/bNenNl3Z4ryAqHtn2qye3Yihgm8EeyPkIQe
- sZrx9DVlEDds4BWxCMmcH4Q1ei/sAbgVgT4GA3OWQHEFv0ImSoMv3XtZMEMkOWAXO
-X-Received: by 2002:a1c:cc17:: with SMTP id h23mr29478161wmb.129.1622048755878; 
- Wed, 26 May 2021 10:05:55 -0700 (PDT)
-X-Received: by 2002:a1c:cc17:: with SMTP id h23mr29478123wmb.129.1622048755562; 
- Wed, 26 May 2021 10:05:55 -0700 (PDT)
-Received: from localhost.localdomain (64.red-88-10-103.dynamicip.rima-tde.net.
- [88.10.103.64])
- by smtp.gmail.com with ESMTPSA id f13sm22482769wrt.86.2021.05.26.10.05.54
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 26 May 2021 10:05:55 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v8 09/12] qtest/bios-tables-test: Rename tests not TCG specific
-Date: Wed, 26 May 2021 19:04:29 +0200
-Message-Id: <20210526170432.343588-10-philmd@redhat.com>
-X-Mailer: git-send-email 2.26.3
-In-Reply-To: <20210526170432.343588-1-philmd@redhat.com>
-References: <20210526170432.343588-1-philmd@redhat.com>
+	s=mimecast20190719; t=1622052407;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=ykPyVyPX65ynsKu2AhRFTCmGGYL0JndPsWm8nPSGOX0=;
+	b=PKoA8VBU0U1h4D+yT8huropJTaliL5ZDLOp0bshG+ucoHwqJJJrnCuBANXHR9z9NWeeJrN
+	Vk/kAPU6Y2JNiJnDxj1VGEZAt8qErTUfr77A7MXrK+Cc9KeQtdE0ivi358+zEo8Nx34z/E
+	9Qks/qRsYDenW1ZhjmbAmpbkcwYnelg=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-353-eIL2xC_pNW-lDUuPY0CtXQ-1; Wed, 26 May 2021 14:06:35 -0400
+X-MC-Unique: eIL2xC_pNW-lDUuPY0CtXQ-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 83FB5803635;
+	Wed, 26 May 2021 18:06:34 +0000 (UTC)
+Received: from localhost (ovpn-114-2.phx2.redhat.com [10.3.114.2])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 3D9525C23E;
+	Wed, 26 May 2021 18:06:27 +0000 (UTC)
+Date: Wed, 26 May 2021 14:04:59 -0400
+From: Cleber Rosa <crosa@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Cc: Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Willian Rampazzo <willianr@redhat.com>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>
+Subject: Re: [PATCH] tests/acceptance: Add a 'virt_kvm' test using the GICv3
+Message-ID: <20210526180459.GA1725208@amachine.somewhere>
+References: <20200929224857.1225107-1-philmd@redhat.com>
+ <87eefvnx3s.fsf@linaro.org>
+ <7a720701-a34f-ccf4-d116-a0f0703b5f83@redhat.com>
+ <87ft03wd3w.fsf@linaro.org>
+ <b9fa6362-7899-884e-58b9-f670143de6ae@redhat.com>
+ <a2a463cb-e2a1-1884-cc97-8c5b4689341b@redhat.com>
 MIME-Version: 1.0
+In-Reply-To: <a2a463cb-e2a1-1884-cc97-8c5b4689341b@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=crosa@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.371,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
- Igor Mammedov <imammedo@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ctwSzmaovEfM
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="MGYHOYXEY6WxJCY8"
+Content-Disposition: inline
+X-TUID: pRdTAjRolHJw
 
-Various tests don't require TCG, but have '_tcg' in their name.
-As this is misleading, remove 'tcg' from their name.
+--MGYHOYXEY6WxJCY8
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Reported-by: Igor Mammedov <imammedo@redhat.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
----
- tests/qtest/bios-tables-test.c | 142 ++++++++++++++++-----------------
- 1 file changed, 71 insertions(+), 71 deletions(-)
+On Tue, Apr 13, 2021 at 06:25:47PM +0200, Philippe Mathieu-Daud=E9 wrote:
+> Hi Alex,
+>=20
+> On 4/12/21 7:55 PM, Philippe Mathieu-Daud=E9 wrote:
+> > On 4/6/21 7:12 PM, Alex Benn=E9e wrote:
+> >>
+> >> Philippe Mathieu-Daud=E9 <philmd@redhat.com> writes:
+> >>
+> >>> On 3/31/21 5:45 PM, Alex Benn=E9e wrote:
+> >>>>
+> >>>> Philippe Mathieu-Daud=E9 <philmd@redhat.com> writes:
+> >>>>
+> >>>>> The current 'virt_kvm' test is restricted to GICv2, but can also
+> >>>>> work with a GICv3. Duplicate it but add a GICv3 test which can be
+> >>>>> tested on some hardware.
+> >>>>>
+> >>>>> Noticed while running:
+> >>>>>
+> >>>>>  $ avocado --show=3Dapp run -t machine:virt tests/acceptance/
+> >>>>>  ...
+> >>>>>  (2/6) tests/acceptance/boot_linux.py:BootLinuxAarch64.test_virt_kv=
+m: ERROR: Unexpected empty reply from server (1.82 s)
+> >>>>>
+> >>>>> The job.log content is:
+> >>>>>
+> >>>>>   L0351 DEBUG| Output: 'qemu-system-aarch64: host does not support =
+in-kernel GICv2 emulation\n'
+> >>>>>
+> >>>>> With this patch:
+> >>>>>
+> >>>>>  $ avocado --show=3Dapp run -t device:gicv3 tests/acceptance/
+> >>>>>  (1/1)
+> >>>>>  tests/acceptance/boot_linux.py:BootLinuxAarch64.test_virt_kvm_gicv=
+3:
+> >>>>>  PASS (55.10 s)
+> >>>>
+> >>>> On the new aarch64 machine which is GICv3 I get the following:
+> >>>>
+> >>>>  (006/142) tests/acceptance/boot_linux.py:BootLinuxAarch64.test_virt=
+_kvm_gicv2: ERROR: Unexpected empty reply from server (0.47 s)
+> >>>>
+> >>>> which it shouldn't have run. However:
+> >>>>
+> >>>>   ./tests/venv/bin/avocado --show=3Dapp run -t device:gic3 tests/acc=
+eptance/
+> >>>>   Test Suite could not be create. No test references provided nor an=
+y other arguments resolved into tests
+> >>>>
+> >>>> Is this something that has regressed or am I doing it wrong?
+> >>>
+> >>> Typo in the tag: "device:gic3" -> "device:gicv3"
+> >>
+> >> Doh!
+> >>
+> >> But what about:
+> >>
+> >> /tests/venv/bin/avocado run tests/acceptance/boot_linux.py:BootLinuxAa=
+rch64.test_virt_kvm_gicv2
+> >> JOB ID     : 396696d8f9d31d970878cb46025b2ced76f3623f
+> >> JOB LOG    : /home/alex/avocado/job-results/job-2021-04-06T17.11-39669=
+6d/job.log
+> >>  (1/1) tests/acceptance/boot_linux.py:BootLinuxAarch64.test_virt_kvm_g=
+icv2: ERROR: Unexpected empty reply from server (0.65 s)
+> >> RESULTS    : PASS 0 | ERROR 1 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0=
+ | CANCEL 0
+> >> JOB TIME   : 0.96 s
+> >>
+> >> why doesn't that skip?
+> >=20
+> > /home/phil/avocado/job-results/job-2021-04-12T17.51-efdca81/job.log
+> > 2021-04-12 17:52:44,589 machine          L0389 DEBUG| Output:
+> > "qemu-system-aarch64: Could not find ROM image
+> > '/home/phil/qemu/build/host/pc-bios/edk2-aarch64-code.fd'\n"
+> >=20
+> > Missing prerequisite:
+> >=20
+> > $ ninja pc-bios/edk2-aarch64-code.fd
+> > [1/1] Generating edk2-aarch64-code.fd with a custom command (wrapped by
+> > meson to capture output)
+> >=20
+> > Then we are good:
+> >=20
+> > $ avocado --show=3Dapp,console run -t device:gicv3 tests/acceptance
+> > JOB ID     : e84401e5cc3ae53a3094c79491e661385cc7b4a7
+> > JOB LOG    :
+> > /home/phil/avocado/job-results/job-2021-04-12T17.53-e84401e/job.log
+> >  (1/1)
+> > tests/acceptance/boot_linux.py:BootLinuxAarch64.test_virt_kvm_gicv3:
+> > PASS (16.38 s)
+> > RESULTS    : PASS 1 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 =
+|
+> > CANCEL 0
+> > JOB TIME   : 16.70 s
+> >=20
+> > Probably some missing dependency in Makefile/Meson?
+>=20
+> Are you using multiple build directories?
+>=20
+> I could reproduce doing:
+>=20
+> $ mkdir A B
+> $ cd A
+> $ make check-qtest-aarch64
+> $ avocado --show=3Dapp,console run -t device:gicv3 tests/acceptance
+> $ cd ../B
+> $ ninja qemu-system-aarch64
+> $ avocado --show=3Dapp,console run -t device:gicv3 tests/acceptance
+>=20
+> In A edk2-aarch64-code.fd has been expanded in A/pc-bios/,
+> in B it isn't.
+>=20
+> check-acceptance is a Makefile rule, not a ninja one...
+> I suppose we need to convert it to ninja to be able to use the
+> rest of the dependencies checks.
+>=20
+> Cc'ing Paolo because I'm not sure what the best move and where
+> to plug things.
+>=20
+>=20
 
-diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
-index 156d4174aa3..ce498b3ff48 100644
---- a/tests/qtest/bios-tables-test.c
-+++ b/tests/qtest/bios-tables-test.c
-@@ -753,7 +753,7 @@ static uint8_t base_required_struct_types[] = {
-     0, 1, 3, 4, 16, 17, 19, 32, 127
- };
- 
--static void test_acpi_piix4_tcg(void)
-+static void test_acpi_piix4(void)
- {
-     test_data data;
- 
-@@ -768,7 +768,7 @@ static void test_acpi_piix4_tcg(void)
-     free_test_data(&data);
- }
- 
--static void test_acpi_piix4_tcg_bridge(void)
-+static void test_acpi_piix4_bridge(void)
- {
-     test_data data;
- 
-@@ -824,7 +824,7 @@ static void test_acpi_piix4_no_acpi_pci_hotplug(void)
-     free_test_data(&data);
- }
- 
--static void test_acpi_q35_tcg(void)
-+static void test_acpi_q35(void)
- {
-     test_data data;
- 
-@@ -841,7 +841,7 @@ static void test_acpi_q35_tcg(void)
-     free_test_data(&data);
- }
- 
--static void test_acpi_q35_tcg_bridge(void)
-+static void test_acpi_q35_bridge(void)
- {
-     test_data data;
- 
-@@ -855,7 +855,7 @@ static void test_acpi_q35_tcg_bridge(void)
-     free_test_data(&data);
- }
- 
--static void test_acpi_q35_tcg_mmio64(void)
-+static void test_acpi_q35_mmio64(void)
- {
-     test_data data = {
-         .machine = MACHINE_Q35,
-@@ -872,7 +872,7 @@ static void test_acpi_q35_tcg_mmio64(void)
-     free_test_data(&data);
- }
- 
--static void test_acpi_piix4_tcg_cphp(void)
-+static void test_acpi_piix4_cphp(void)
- {
-     test_data data;
- 
-@@ -888,7 +888,7 @@ static void test_acpi_piix4_tcg_cphp(void)
-     free_test_data(&data);
- }
- 
--static void test_acpi_q35_tcg_cphp(void)
-+static void test_acpi_q35_cphp(void)
- {
-     test_data data;
- 
-@@ -908,7 +908,7 @@ static uint8_t ipmi_required_struct_types[] = {
-     0, 1, 3, 4, 16, 17, 19, 32, 38, 127
- };
- 
--static void test_acpi_q35_tcg_ipmi(void)
-+static void test_acpi_q35_ipmi(void)
- {
-     test_data data;
- 
-@@ -923,7 +923,7 @@ static void test_acpi_q35_tcg_ipmi(void)
-     free_test_data(&data);
- }
- 
--static void test_acpi_piix4_tcg_ipmi(void)
-+static void test_acpi_piix4_ipmi(void)
- {
-     test_data data;
- 
-@@ -941,7 +941,7 @@ static void test_acpi_piix4_tcg_ipmi(void)
-     free_test_data(&data);
- }
- 
--static void test_acpi_q35_tcg_memhp(void)
-+static void test_acpi_q35_memhp(void)
- {
-     test_data data;
- 
-@@ -957,7 +957,7 @@ static void test_acpi_q35_tcg_memhp(void)
-     free_test_data(&data);
- }
- 
--static void test_acpi_piix4_tcg_memhp(void)
-+static void test_acpi_piix4_memhp(void)
- {
-     test_data data;
- 
-@@ -973,7 +973,7 @@ static void test_acpi_piix4_tcg_memhp(void)
-     free_test_data(&data);
- }
- 
--static void test_acpi_piix4_tcg_nosmm(void)
-+static void test_acpi_piix4_nosmm(void)
- {
-     test_data data;
- 
-@@ -984,7 +984,7 @@ static void test_acpi_piix4_tcg_nosmm(void)
-     free_test_data(&data);
- }
- 
--static void test_acpi_piix4_tcg_smm_compat(void)
-+static void test_acpi_piix4_smm_compat(void)
- {
-     test_data data;
- 
-@@ -995,7 +995,7 @@ static void test_acpi_piix4_tcg_smm_compat(void)
-     free_test_data(&data);
- }
- 
--static void test_acpi_piix4_tcg_smm_compat_nosmm(void)
-+static void test_acpi_piix4_smm_compat_nosmm(void)
- {
-     test_data data;
- 
-@@ -1006,7 +1006,7 @@ static void test_acpi_piix4_tcg_smm_compat_nosmm(void)
-     free_test_data(&data);
- }
- 
--static void test_acpi_piix4_tcg_nohpet(void)
-+static void test_acpi_piix4_nohpet(void)
- {
-     test_data data;
- 
-@@ -1017,7 +1017,7 @@ static void test_acpi_piix4_tcg_nohpet(void)
-     free_test_data(&data);
- }
- 
--static void test_acpi_q35_tcg_numamem(void)
-+static void test_acpi_q35_numamem(void)
- {
-     test_data data;
- 
-@@ -1029,7 +1029,7 @@ static void test_acpi_q35_tcg_numamem(void)
-     free_test_data(&data);
- }
- 
--static void test_acpi_q35_tcg_nosmm(void)
-+static void test_acpi_q35_nosmm(void)
- {
-     test_data data;
- 
-@@ -1040,7 +1040,7 @@ static void test_acpi_q35_tcg_nosmm(void)
-     free_test_data(&data);
- }
- 
--static void test_acpi_q35_tcg_smm_compat(void)
-+static void test_acpi_q35_smm_compat(void)
- {
-     test_data data;
- 
-@@ -1051,7 +1051,7 @@ static void test_acpi_q35_tcg_smm_compat(void)
-     free_test_data(&data);
- }
- 
--static void test_acpi_q35_tcg_smm_compat_nosmm(void)
-+static void test_acpi_q35_smm_compat_nosmm(void)
- {
-     test_data data;
- 
-@@ -1062,7 +1062,7 @@ static void test_acpi_q35_tcg_smm_compat_nosmm(void)
-     free_test_data(&data);
- }
- 
--static void test_acpi_q35_tcg_nohpet(void)
-+static void test_acpi_q35_nohpet(void)
- {
-     test_data data;
- 
-@@ -1073,7 +1073,7 @@ static void test_acpi_q35_tcg_nohpet(void)
-     free_test_data(&data);
- }
- 
--static void test_acpi_piix4_tcg_numamem(void)
-+static void test_acpi_piix4_numamem(void)
- {
-     test_data data;
- 
-@@ -1087,11 +1087,11 @@ static void test_acpi_piix4_tcg_numamem(void)
- 
- uint64_t tpm_tis_base_addr;
- 
--static void test_acpi_tcg_tpm(const char *machine, const char *tpm_if,
-+static void test_acpi_tpm(const char *machine, const char *tpm_if,
-                               uint64_t base)
- {
- #ifdef CONFIG_TPM
--    gchar *tmp_dir_name = g_strdup_printf("qemu-test_acpi_%s_tcg_%s.XXXXXX",
-+    gchar *tmp_dir_name = g_strdup_printf("qemu-test_acpi_%s_%s.XXXXXX",
-                                           machine, tpm_if);
-     char *tmp_path = g_dir_make_tmp(tmp_dir_name, NULL);
-     TestState test;
-@@ -1139,12 +1139,12 @@ static void test_acpi_tcg_tpm(const char *machine, const char *tpm_if,
- #endif
- }
- 
--static void test_acpi_q35_tcg_tpm_tis(void)
-+static void test_acpi_q35_tpm_tis(void)
- {
--    test_acpi_tcg_tpm("q35", "tis", 0xFED40000);
-+    test_acpi_tpm("q35", "tis", 0xFED40000);
- }
- 
--static void test_acpi_tcg_dimm_pxm(const char *machine)
-+static void test_acpi_dimm_pxm(const char *machine)
- {
-     test_data data;
- 
-@@ -1174,14 +1174,14 @@ static void test_acpi_tcg_dimm_pxm(const char *machine)
-     free_test_data(&data);
- }
- 
--static void test_acpi_q35_tcg_dimm_pxm(void)
-+static void test_acpi_q35_dimm_pxm(void)
- {
--    test_acpi_tcg_dimm_pxm(MACHINE_Q35);
-+    test_acpi_dimm_pxm(MACHINE_Q35);
- }
- 
--static void test_acpi_piix4_tcg_dimm_pxm(void)
-+static void test_acpi_piix4_dimm_pxm(void)
- {
--    test_acpi_tcg_dimm_pxm(MACHINE_PC);
-+    test_acpi_dimm_pxm(MACHINE_PC);
- }
- 
- static void test_acpi_virt_tcg_memhp(void)
-@@ -1223,7 +1223,7 @@ static void test_acpi_microvm_prepare(test_data *data)
-     data->blkdev = "virtio-blk-device";
- }
- 
--static void test_acpi_microvm_tcg(void)
-+static void test_acpi_microvm(void)
- {
-     test_data data;
- 
-@@ -1233,7 +1233,7 @@ static void test_acpi_microvm_tcg(void)
-     free_test_data(&data);
- }
- 
--static void test_acpi_microvm_usb_tcg(void)
-+static void test_acpi_microvm_usb(void)
- {
-     test_data data;
- 
-@@ -1244,7 +1244,7 @@ static void test_acpi_microvm_usb_tcg(void)
-     free_test_data(&data);
- }
- 
--static void test_acpi_microvm_rtc_tcg(void)
-+static void test_acpi_microvm_rtc(void)
- {
-     test_data data;
- 
-@@ -1255,7 +1255,7 @@ static void test_acpi_microvm_rtc_tcg(void)
-     free_test_data(&data);
- }
- 
--static void test_acpi_microvm_pcie_tcg(void)
-+static void test_acpi_microvm_pcie(void)
- {
-     test_data data;
- 
-@@ -1267,7 +1267,7 @@ static void test_acpi_microvm_pcie_tcg(void)
-     free_test_data(&data);
- }
- 
--static void test_acpi_microvm_ioapic2_tcg(void)
-+static void test_acpi_microvm_ioapic2(void)
- {
-     test_data data;
- 
-@@ -1332,7 +1332,7 @@ static void test_acpi_virt_tcg_pxb(void)
-     free_test_data(&data);
- }
- 
--static void test_acpi_tcg_acpi_hmat(const char *machine)
-+static void test_acpi_acpi_hmat(const char *machine)
- {
-     test_data data;
- 
-@@ -1364,14 +1364,14 @@ static void test_acpi_tcg_acpi_hmat(const char *machine)
-     free_test_data(&data);
- }
- 
--static void test_acpi_q35_tcg_acpi_hmat(void)
-+static void test_acpi_q35_acpi_hmat(void)
- {
--    test_acpi_tcg_acpi_hmat(MACHINE_Q35);
-+    test_acpi_acpi_hmat(MACHINE_Q35);
- }
- 
--static void test_acpi_piix4_tcg_acpi_hmat(void)
-+static void test_acpi_piix4_acpi_hmat(void)
- {
--    test_acpi_tcg_acpi_hmat(MACHINE_PC);
-+    test_acpi_acpi_hmat(MACHINE_PC);
- }
- 
- static void test_acpi_virt_tcg(void)
-@@ -1512,50 +1512,50 @@ int main(int argc, char *argv[])
-             return ret;
-         }
-         qtest_add_func("acpi/q35/oem-fields", test_acpi_oem_fields_q35);
--        qtest_add_func("acpi/q35/tpm-tis", test_acpi_q35_tcg_tpm_tis);
--        qtest_add_func("acpi/piix4", test_acpi_piix4_tcg);
-+        qtest_add_func("acpi/q35/tpm-tis", test_acpi_q35_tpm_tis);
-+        qtest_add_func("acpi/piix4", test_acpi_piix4);
-         qtest_add_func("acpi/oem-fields", test_acpi_oem_fields_pc);
--        qtest_add_func("acpi/piix4/bridge", test_acpi_piix4_tcg_bridge);
-+        qtest_add_func("acpi/piix4/bridge", test_acpi_piix4_bridge);
-         qtest_add_func("acpi/piix4/pci-hotplug/no_root_hotplug",
-                        test_acpi_piix4_no_root_hotplug);
-         qtest_add_func("acpi/piix4/pci-hotplug/no_bridge_hotplug",
-                        test_acpi_piix4_no_bridge_hotplug);
-         qtest_add_func("acpi/piix4/pci-hotplug/off",
-                        test_acpi_piix4_no_acpi_pci_hotplug);
--        qtest_add_func("acpi/q35", test_acpi_q35_tcg);
--        qtest_add_func("acpi/q35/bridge", test_acpi_q35_tcg_bridge);
--        qtest_add_func("acpi/q35/mmio64", test_acpi_q35_tcg_mmio64);
--        qtest_add_func("acpi/piix4/ipmi", test_acpi_piix4_tcg_ipmi);
--        qtest_add_func("acpi/q35/ipmi", test_acpi_q35_tcg_ipmi);
--        qtest_add_func("acpi/piix4/cpuhp", test_acpi_piix4_tcg_cphp);
--        qtest_add_func("acpi/q35/cpuhp", test_acpi_q35_tcg_cphp);
--        qtest_add_func("acpi/piix4/memhp", test_acpi_piix4_tcg_memhp);
--        qtest_add_func("acpi/q35/memhp", test_acpi_q35_tcg_memhp);
--        qtest_add_func("acpi/piix4/numamem", test_acpi_piix4_tcg_numamem);
--        qtest_add_func("acpi/q35/numamem", test_acpi_q35_tcg_numamem);
--        qtest_add_func("acpi/piix4/nosmm", test_acpi_piix4_tcg_nosmm);
-+        qtest_add_func("acpi/q35", test_acpi_q35);
-+        qtest_add_func("acpi/q35/bridge", test_acpi_q35_bridge);
-+        qtest_add_func("acpi/q35/mmio64", test_acpi_q35_mmio64);
-+        qtest_add_func("acpi/piix4/ipmi", test_acpi_piix4_ipmi);
-+        qtest_add_func("acpi/q35/ipmi", test_acpi_q35_ipmi);
-+        qtest_add_func("acpi/piix4/cpuhp", test_acpi_piix4_cphp);
-+        qtest_add_func("acpi/q35/cpuhp", test_acpi_q35_cphp);
-+        qtest_add_func("acpi/piix4/memhp", test_acpi_piix4_memhp);
-+        qtest_add_func("acpi/q35/memhp", test_acpi_q35_memhp);
-+        qtest_add_func("acpi/piix4/numamem", test_acpi_piix4_numamem);
-+        qtest_add_func("acpi/q35/numamem", test_acpi_q35_numamem);
-+        qtest_add_func("acpi/piix4/nosmm", test_acpi_piix4_nosmm);
-         qtest_add_func("acpi/piix4/smm-compat",
--                       test_acpi_piix4_tcg_smm_compat);
-+                       test_acpi_piix4_smm_compat);
-         qtest_add_func("acpi/piix4/smm-compat-nosmm",
--                       test_acpi_piix4_tcg_smm_compat_nosmm);
--        qtest_add_func("acpi/piix4/nohpet", test_acpi_piix4_tcg_nohpet);
--        qtest_add_func("acpi/q35/nosmm", test_acpi_q35_tcg_nosmm);
-+                       test_acpi_piix4_smm_compat_nosmm);
-+        qtest_add_func("acpi/piix4/nohpet", test_acpi_piix4_nohpet);
-+        qtest_add_func("acpi/q35/nosmm", test_acpi_q35_nosmm);
-         qtest_add_func("acpi/q35/smm-compat",
--                       test_acpi_q35_tcg_smm_compat);
-+                       test_acpi_q35_smm_compat);
-         qtest_add_func("acpi/q35/smm-compat-nosmm",
--                       test_acpi_q35_tcg_smm_compat_nosmm);
--        qtest_add_func("acpi/q35/nohpet", test_acpi_q35_tcg_nohpet);
--        qtest_add_func("acpi/piix4/dimmpxm", test_acpi_piix4_tcg_dimm_pxm);
--        qtest_add_func("acpi/q35/dimmpxm", test_acpi_q35_tcg_dimm_pxm);
--        qtest_add_func("acpi/piix4/acpihmat", test_acpi_piix4_tcg_acpi_hmat);
--        qtest_add_func("acpi/q35/acpihmat", test_acpi_q35_tcg_acpi_hmat);
--        qtest_add_func("acpi/microvm", test_acpi_microvm_tcg);
--        qtest_add_func("acpi/microvm/usb", test_acpi_microvm_usb_tcg);
--        qtest_add_func("acpi/microvm/rtc", test_acpi_microvm_rtc_tcg);
--        qtest_add_func("acpi/microvm/ioapic2", test_acpi_microvm_ioapic2_tcg);
-+                       test_acpi_q35_smm_compat_nosmm);
-+        qtest_add_func("acpi/q35/nohpet", test_acpi_q35_nohpet);
-+        qtest_add_func("acpi/piix4/dimmpxm", test_acpi_piix4_dimm_pxm);
-+        qtest_add_func("acpi/q35/dimmpxm", test_acpi_q35_dimm_pxm);
-+        qtest_add_func("acpi/piix4/acpihmat", test_acpi_piix4_acpi_hmat);
-+        qtest_add_func("acpi/q35/acpihmat", test_acpi_q35_acpi_hmat);
-+        qtest_add_func("acpi/microvm", test_acpi_microvm);
-+        qtest_add_func("acpi/microvm/usb", test_acpi_microvm_usb);
-+        qtest_add_func("acpi/microvm/rtc", test_acpi_microvm_rtc);
-+        qtest_add_func("acpi/microvm/ioapic2", test_acpi_microvm_ioapic2);
-         qtest_add_func("acpi/microvm/oem-fields", test_acpi_oem_fields_microvm);
-         if (strcmp(arch, "x86_64") == 0) {
--            qtest_add_func("acpi/microvm/pcie", test_acpi_microvm_pcie_tcg);
-+            qtest_add_func("acpi/microvm/pcie", test_acpi_microvm_pcie);
-         }
-     } else if (strcmp(arch, "aarch64") == 0) {
-         qtest_add_func("acpi/virt", test_acpi_virt_tcg);
--- 
-2.26.3
+While a proper build system conversion fix doesn't happen, what about:
 
+diff --git a/tests/acceptance/boot_linux.py b/tests/acceptance/boot_linux.p=
+y
+index 314370fd1f..5d42d98dc7 100644
+--- a/tests/acceptance/boot_linux.py
++++ b/tests/acceptance/boot_linux.py
+@@ -69,9 +69,10 @@ class BootLinuxAarch64(LinuxTest):
+     chksum =3D '1e18d9c0cf734940c4b5d5ec592facaed2af0ad0329383d5639c997fdf=
+16fe49'
+=20
+     def add_common_args(self):
+-        self.vm.add_args('-bios',
+-                         os.path.join(BUILD_DIR, 'pc-bios',
+-                                      'edk2-aarch64-code.fd'))
++        bios_path =3D os.path.join(BUILD_DIR, 'pc-bios', 'edk2-aarch64-cod=
+e.fd')
++        if not os.path.exists(bios_path):
++            self.cancel('Missing bios file "%s"', bios_path)
++        self.vm.add_args('-bios', bios_path)
+         self.vm.add_args('-device', 'virtio-rng-pci,rng=3Drng0')
+         self.vm.add_args('-object', 'rng-random,id=3Drng0,filename=3D/dev/=
+urandom')
+
+I can send a patch if this looks reasonable.
+
+- Cleber.
+
+--MGYHOYXEY6WxJCY8
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEeruW64tGuU1eD+m7ZX6NM6XyCfMFAmCujcgACgkQZX6NM6Xy
+CfNCUQ//Yw+YFrL2SPireJ6UbnuZdYOXRKZwMHcwYxjaowfUha0wH0yaFgmwodRI
+x7d987fYfxpvJoVSy+T+g90L2x6vGNzCkb42lO7qriRO87+++YdoIaXW1WvuArkl
++wcmARzdlVSevjFMnspXOAsbJCdDyy2fNy8g6MJ3yZ7kzHc7ShmaoNoOasZJTW0b
+y5Igtw6f1O3GKNDpPcgGf92eV/1ui4IWSANzE2o6LwxheQMOAPC4R/ZDNDfUPZVP
+tw++7fJR0v9z6lSv26SNbfoVzJ9hD7sk+TbIO4JPgZQa7XIxBkiJsGutf6piEiOL
+GJMVrip+7FxTgto2lxmmB/nbP5a9rhq190B+EmhNSp7UkgBUyTp+5IA0lAny52qS
+7Brr5Mp/qK88IjWBWooPCZdKcKJBcZV8CzSv+oz6Eya8rxbCE7BPBPFr51ct0FN0
+OZMMs3mjfNA2EpIGHrpQ9kIB5K6Wa2WrGGtcp8YPtukoNkv0hOLxWvorNQmGrANF
+AfrmU2HfgXkBbjiA5FKTTdLQ/hX+s3Atw6dzCuZODTzwZksPFNnOXp4cb5c01KSZ
+Mmbwi5uOvgLNB7eA0UQ/ZTsk3nJpkxQROO9MXAkC9r2OrukZzExa+0uLIq2Ga5L8
+5G8LRB2slWE050hRSZsamjefe2/HyHEyozGYvVmfmkw6bFJ3JHA=
+=D9DA
+-----END PGP SIGNATURE-----
+
+--MGYHOYXEY6WxJCY8--

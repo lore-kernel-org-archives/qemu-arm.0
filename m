@@ -1,179 +1,131 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp5590104lfm;
-        Wed, 26 May 2021 09:33:47 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw8d9nPmo3rhPNIXCkU5AV9k9yofRQio5Yqx9UxaH4Pp8ErAVrah150BzxXassPMxVF5mWS
-X-Received: by 2002:a17:906:11cc:: with SMTP id o12mr33884838eja.547.1622046826967;
-        Wed, 26 May 2021 09:33:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1622046826; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp5615345lfm;
+        Wed, 26 May 2021 10:04:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzjxC+pfvoCd48n3TaLIdSFSheKiLJLCFriUw+aI9lltYf5c9K+5liD6H+LCTisaYSLrnmX
+X-Received: by 2002:a05:6402:2207:: with SMTP id cq7mr38069891edb.216.1622048699284;
+        Wed, 26 May 2021 10:04:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1622048699; cv=none;
         d=google.com; s=arc-20160816;
-        b=OyZfhBw6sV/FzXf5AzFpOwPqHXjgs1MVlRJ0I62HbqbxdkrmQkSbluDg6/9rbBVsG9
-         xZE45ONyu/a5Bzy8kuODTZ0IEPBSLPMaZ8wKrXp/64FS7xpdMIz3U5WhR3XKxxkyt/2e
-         AaZ0UlOy+stAUotTFnkVPdgACRgCVaE/WxQOIfe2WOTB38bYPOKbWUaS+kvT8SP3vxc/
-         gTGTrovHXtjEr1GHb62Nx7gzQ9v+Zs833HrkKNIKrut5EjNCFRVT6tOEej+m2yW+63DW
-         GP2FjG6dVY7Oo1tQNhSyWJxNBCOMcsgyyQg1g0L44DoHYJHh3TEL0Gl8L4LhyUSbD3Va
-         9kyA==
+        b=LJApNxaR8cGfp9iupHt3fPFnrM9zQzqxulLMtgzv1umAKNxLbb3j+oE5yKit9PemIN
+         gW4p5BaKfk9vrrCyUSPz/ST4fWCyGm9vkbxL6PDLuEBVxLfRvd/XdWrwbOmT3VDAmmg4
+         t3upOx/QAcnx/KyuqafnWg/w1AOBa1siO5/P7tgDQOKR+8E9o21r/U5ySla2m5uK0Q+l
+         TlXxZSP5BADdTeKmWCWX/o2JiPtPBaF0VwrA7GhAl67GFe2AzEV+dl6n4CAuBtIUu9yq
+         5MIzdd9BDwU3Zx1J16ep8ekYS7V245pyo0J7b+m1QgvCryqWiK3zShI5g5ZVoh0W9cxI
+         LIFA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=+8DfRYpfdanrqAB/wuirJR62lU9KY6YLBGRcjSyK7RU=;
-        b=qi9MoYXO3od3wPMTip1BvMmYEZQ+ZOSecRDOMfV5ri+4zv4JXHfZbfEuzNktnsZWTK
-         2v0WIycKMzcoHn4gmec4jQIJUSTNI+AaVhYWw+S3kbfmsN9rk6imwSUFvvQArJsoByPW
-         WD1C2VVL07r1pB4X+THuf8OZXm7STuZHpYqJiAs0yBnienD+7EvQGCjwpnA2PammWCeB
-         6Z58gcXY5UUQET2rq+esnIDlkRtUHao4obrkQHhBH7ODf11lGKMafi/m+66HfJs75Lpv
-         93OZ3rK04l+srtc/Wmy1yn2VNMpe85Tzlj9bHMrMpbXONlz2soKda8CcD9amhDt/r1r1
-         AZmA==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=zJWoGpGBb9XoVGl1zEB1CPuzVYBaioPmWvxlvBAi+gE=;
+        b=U01x4IZ2wbLpk16bJhHLjri7bgWnNWpuTIM0WHT+e3gnVma1S2oNLDNd/68brT/rZS
+         +jj7EbYL35a7JzVVzBuuPC6xHHsA5FQNXvE9/xOU0uyLIjLVTigTQFVTEE67cpM6u683
+         w8Vftkh0KN3sBmaJwOvK6OevtTmhp4QsY2MS4owrDEFWbBpBKMW57wsOGuCx2NwTrL01
+         tliLKz/fAmwkKhu4h1GcqjA/vXsr5ZpuQRRjotPKA7tZLJ5mx5SZwQGH0qjBtjRor7YI
+         MxOmaE/wlaqeQvyMQwsZJr4hQexU+Rr4l30mqe+Ero/OFFJ3YgqJt2oYfNEzUgnP4BuZ
+         8FQA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=g5FzWEG4;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GNvmojzP;
+       spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <eric.auger@redhat.com>
+Return-Path: <philmd@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id i9si17545717edb.271.2021.05.26.09.33.46
+        by mx.google.com with ESMTPS id nb27si5125106ejc.548.2021.05.26.10.04.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 26 May 2021 09:33:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Wed, 26 May 2021 10:04:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=g5FzWEG4;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GNvmojzP;
+       spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1622046826;
+	s=mimecast20190719; t=1622048698;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=+8DfRYpfdanrqAB/wuirJR62lU9KY6YLBGRcjSyK7RU=;
-	b=g5FzWEG4m0PmXwUSypjCjJhwMbbwxqzXhnERfg6USJ+6BoZ2jirbTm8Gd6Sqe1qMsxGrsj
-	oneH+lsjTlgmTGroTtbu0woVIASrjTArZQ6Z4u3NvZZethIN/+lw3JaDSJ/GH1dudXkAKR
-	2OdT+CPRycAPDeFZZNF/xmJMO5F7EJQ=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-388-tIGEffeTPfGM7jL1NIMpFA-1; Wed, 26 May 2021 12:33:43 -0400
-X-MC-Unique: tIGEffeTPfGM7jL1NIMpFA-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5405E107ACE3;
-	Wed, 26 May 2021 16:33:41 +0000 (UTC)
-Received: from [10.36.112.15] (ovpn-112-15.ams2.redhat.com [10.36.112.15])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 239A25C3E9;
-	Wed, 26 May 2021 16:33:38 +0000 (UTC)
-Subject: Re: [kvm-unit-tests PATCH v2 4/4] arm64: split
- its-migrate-unmapped-collection into KVM and TCG variants
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, kvm@vger.kernel.org
-Cc: shashi.mallela@linaro.org, alexandru.elisei@arm.com, qemu-arm@nongnu.org,
- linux-arm-kernel@lists.infradead.org, kvmarm@lists.cs.columbia.edu,
- christoffer.dall@arm.com, maz@kernel.org
-References: <20210525172628.2088-1-alex.bennee@linaro.org>
- <20210525172628.2088-5-alex.bennee@linaro.org>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <5fe1c796-c886-e5c6-6e61-e12d0f73a884@redhat.com>
-Date: Wed, 26 May 2021 18:33:37 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.0
+	bh=zJWoGpGBb9XoVGl1zEB1CPuzVYBaioPmWvxlvBAi+gE=;
+	b=GNvmojzPEk9KWHmsM+RRILjOFDOw5o51U8zImyL5waW82rwjpFGNcxtcsO9EUutL1+okXL
+	3Qzl9c5hZDtuQNtO/3ZoTfYSI7sQ6mAGOOvgY1v+fNLpsTB/Q3WyC9N9FyMZNmruu4oMP6
+	lsdoWbi+RN/0F9Ko9wOffI0pice0y/8=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-564-4qpnVhuhMdS9CJJzO8aUXQ-1; Wed, 26 May 2021 13:04:56 -0400
+X-MC-Unique: 4qpnVhuhMdS9CJJzO8aUXQ-1
+Received: by mail-wr1-f70.google.com with SMTP id d12-20020adfc3cc0000b029011166e2f1a7so583680wrg.19
+        for <alex.bennee@linaro.org>; Wed, 26 May 2021 10:04:55 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=zJWoGpGBb9XoVGl1zEB1CPuzVYBaioPmWvxlvBAi+gE=;
+        b=fVVCqmuCVrRtUeUN+ibtVkuSMutYkDeS5ieQrhr78yxynSGA8kVSXQkRwqd91snTNA
+         ubPIXY66I8oYTLKEcvdrpYHZkBtGaTuzWIRMFviiReR0DyULbBixXKdyX94mxDGeZcP3
+         EyG+gofbOWTlbK6FApTFxCtqkqyC4GVzNv6TzFJ3fkTwuNAvRh48GCpQDugYxXcDcV2w
+         pg4vPg+Q1TD+z9JsWJj9qcL9jc5f3g1H8K9tIQ6+QVzr0x1X2YcOCNnjFL3D4IlrxaNg
+         yhaGznn1K/Y5gNe8lBF57IZw9C8uunBUO5dyLElRzmx0Dr3g+rx5fe6zLMQinKlaTGaf
+         TwYw==
+X-Gm-Message-State: AOAM531qWzGGfGAkAjM6SGRkKGiMNDgJgBSpukWJTZp9hLxFWT45livd
+	e/IULxHHP6v1lWD4CW4cgDD/I7atdm1ZWaF7TuKWXQJsBrjaz3KYCks/KRSDB3f6RnmPH1xCJ1m
+	UkAC+b6I851XP1M4b
+X-Received: by 2002:a1c:f016:: with SMTP id a22mr12679072wmb.65.1622048694956;
+        Wed, 26 May 2021 10:04:54 -0700 (PDT)
+X-Received: by 2002:a1c:f016:: with SMTP id a22mr12679045wmb.65.1622048694817;
+        Wed, 26 May 2021 10:04:54 -0700 (PDT)
+Return-Path: <philmd@redhat.com>
+Received: from localhost.localdomain (64.red-88-10-103.dynamicip.rima-tde.net. [88.10.103.64])
+        by smtp.gmail.com with ESMTPSA id n10sm20650630wrw.37.2021.05.26.10.04.53
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 26 May 2021 10:04:54 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	Eric Blake <eblake@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	Andrew Jones <drjones@redhat.com>,
+	Thomas Huth <thuth@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH v8 01/12] MAINTAINERS: Add qtest/arm-cpu-features.c to ARM TCG CPUs section
+Date: Wed, 26 May 2021 19:04:21 +0200
+Message-Id: <20210526170432.343588-2-philmd@redhat.com>
+X-Mailer: git-send-email 2.26.3
+In-Reply-To: <20210526170432.343588-1-philmd@redhat.com>
+References: <20210526170432.343588-1-philmd@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20210525172628.2088-5-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-TUID: 2kul+qwlwqsU
+X-TUID: /NRU9pElfUlL
 
-Hi Alex,
+We want the ARM maintainers and the qemu-arm@ list to be
+notified when this file is modified. Add an entry to the
+'ARM TCG CPUs' section in the MAINTAINERS file.
 
-On 5/25/21 7:26 PM, Alex Bennée wrote:
-> When running the test in TCG we are basically running on bare metal so
-> don't rely on having a particular kernel errata applied.
-> 
-> You might wonder why we handle this with a totally new test name
-> instead of adjusting the append to take an extra parameter? Well the
-> run_migration shell script uses eval "$@" which unwraps the -append
-> leading to any second parameter being split and leaving QEMU very
-> confused and the test hanging. This seemed simpler than re-writing all
-> the test running logic in something sane ;-)
+Acked-by: Andrew Jones <drjones@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+ MAINTAINERS | 1 +
+ 1 file changed, 1 insertion(+)
 
-there is
-lib/s390x/vm.h:bool vm_is_tcg(void)
-
-but I don't see any particular ID we could use to differentiate both the
-KVM and the TCG mode, do you?
-
-without a more elegant solution,
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-
-Thanks
-
-Eric
-
-
-> 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> Cc: Shashi Mallela <shashi.mallela@linaro.org>
-> ---
->  arm/gic.c         |  8 +++++++-
->  arm/unittests.cfg | 10 +++++++++-
->  2 files changed, 16 insertions(+), 2 deletions(-)
-> 
-> diff --git a/arm/gic.c b/arm/gic.c
-> index bef061a..0fce2a4 100644
-> --- a/arm/gic.c
-> +++ b/arm/gic.c
-> @@ -36,6 +36,7 @@ static struct gic *gic;
->  static int acked[NR_CPUS], spurious[NR_CPUS];
->  static int irq_sender[NR_CPUS], irq_number[NR_CPUS];
->  static cpumask_t ready;
-> +static bool under_tcg;
->  
->  static void nr_cpu_check(int nr)
->  {
-> @@ -834,7 +835,7 @@ static void test_migrate_unmapped_collection(void)
->  		goto do_migrate;
->  	}
->  
-> -	if (!errata(ERRATA_UNMAPPED_COLLECTIONS)) {
-> +	if (!errata(ERRATA_UNMAPPED_COLLECTIONS) && !under_tcg) {
->  		report_skip("Skipping test, as this test hangs without the fix. "
->  			    "Set %s=y to enable.", ERRATA_UNMAPPED_COLLECTIONS);
->  		test_skipped = true;
-> @@ -1005,6 +1006,11 @@ int main(int argc, char **argv)
->  		report_prefix_push(argv[1]);
->  		test_migrate_unmapped_collection();
->  		report_prefix_pop();
-> +	} else if (!strcmp(argv[1], "its-migrate-unmapped-collection-tcg")) {
-> +		under_tcg = true;
-> +		report_prefix_push(argv[1]);
-> +		test_migrate_unmapped_collection();
-> +		report_prefix_pop();
->  	} else if (strcmp(argv[1], "its-introspection") == 0) {
->  		report_prefix_push(argv[1]);
->  		test_its_introspection();
-> diff --git a/arm/unittests.cfg b/arm/unittests.cfg
-> index 1a39428..adc1bbf 100644
-> --- a/arm/unittests.cfg
-> +++ b/arm/unittests.cfg
-> @@ -205,7 +205,7 @@ extra_params = -machine gic-version=3 -append 'its-pending-migration'
->  groups = its migration
->  arch = arm64
->  
-> -[its-migrate-unmapped-collection]
-> +[its-migrate-unmapped-collection-kvm]
->  file = gic.flat
->  smp = $MAX_SMP
->  accel = kvm
-> @@ -213,6 +213,14 @@ extra_params = -machine gic-version=3 -append 'its-migrate-unmapped-collection'
->  groups = its migration
->  arch = arm64
->  
-> +[its-migrate-unmapped-collection-tcg]
-> +file = gic.flat
-> +smp = $MAX_SMP
-> +accel = tcg
-> +extra_params = -machine gic-version=3 -append 'its-migrate-unmapped-collection-tcg'
-> +groups = its migration
-> +arch = arm64
-> +
->  # Test PSCI emulation
->  [psci]
->  file = psci.flat
-> 
+diff --git a/MAINTAINERS b/MAINTAINERS
+index a77f2465694..52757b08540 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -156,6 +156,7 @@ S: Maintained
+ F: target/arm/
+ F: tests/tcg/arm/
+ F: tests/tcg/aarch64/
++F: tests/qtest/arm-cpu-features.c
+ F: hw/arm/
+ F: hw/cpu/a*mpcore.c
+ F: include/hw/cpu/a*mpcore.h
+-- 
+2.26.3

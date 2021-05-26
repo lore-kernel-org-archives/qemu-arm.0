@@ -1,139 +1,192 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp5616606lfm;
-        Wed, 26 May 2021 10:06:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw120apfyomiqMGE8KIybaxW5Ee0zRZ0Bns0zZGdG/mfK58a2AZup1gqam+juuRBYSJU0oc
-X-Received: by 2002:adf:f142:: with SMTP id y2mr33245595wro.426.1622048784308;
-        Wed, 26 May 2021 10:06:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1622048784; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp5623491lfm;
+        Wed, 26 May 2021 10:14:16 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyXXvVZelw/g76GhL3Dg/S3FX9X1GMj6Zagkxb6A3vu+w7kc3vUgIdCq82iv9CtBXwytbni
+X-Received: by 2002:ab0:1e42:: with SMTP id n2mr34084846uak.40.1622049256806;
+        Wed, 26 May 2021 10:14:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1622049256; cv=none;
         d=google.com; s=arc-20160816;
-        b=B7x2SB0S8wyPrxxVAKAJNhtvobbpcTV8YBEGciRPK4iJ7otXL9BAERmsQ+8SfB+6lY
-         HbOpNwCIPR5SdMEFohXwTI3jjvGSBSLP+8w6Xkh0CZUReqClzre/MFJd+WLZVzXEEBQG
-         9sRmgI08hsInYeh4S4t/In6fE45tjL9MUiat+1JR+E8KWpokxCkF2bHZpIdUES5uEe2P
-         ftDgRMqsZ5s3cfwuArf47+3ToftVM3mtaLyQUZBeVY1tnWpkR2P9iv8m3TPJzN6jTzgC
-         wWepvBAEV26ClJ9/1rkMMHxDCxZ79rIM74prw7wlTSdbQKipBNHgeWuopPOTW6buZMsR
-         sSBA==
+        b=F8LNGkeAMUdnroxSWrQEA2qKPSvXu2T0tnf+Wd8/qwTtutOelKkUV/ustqC1BIuv47
+         PkTazK8A6L3Vu70/ALtBAiAfHIzjBeQzZX8yw/SKYMfoHpThU2eWPh2hzro7F3PO4q6s
+         Uc4Jb53f5+DBSkyh6iBtgmc5mylp46iOTaghIPj+ZYuGFO/OMWV5jZoSaXt30MUHIkWa
+         BOp5c81kA8fUoKDQBMm003OqPTlyifIIqJBl1lJXPJNbRFQMu3DNyEd4rHgKMYmMubA1
+         yC5Y1BmChLh+QZ2nO8blZjRwp22SwdcdnfcRZL3MTD12w1jQPmG7alaTy5p0DJ2kRZxw
+         DmYA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=W8w7RhXeFSRWGk0AutdMu5ukNCwh8itA/alKjBFfess=;
-        b=uKxlKFbSowU5bp9jDA+nq0ZTYuyCINvcG3qi0KJ8ZYdJdBgDtBwKVnULdgerTyzNib
-         K6BSR7/+6YjEthliRcDnE04vZ/qDkdbnzLwW/R7Ut6wC2ZGy/gRi/dAbtpe/x7Y7ox/l
-         Sjjs+uBEquD/dmDWkOXWqS5aUJzXxSizTdIQz9R7u0FhyqpJRjHsPnbOswFmUbyhYICb
-         HY9DyZ20Yt+l/pBDp+G5FdSX7xZuk2Awzuyr2OrHR/ngJYeunDWHsKR7oCG2cTPtNiis
-         eXy5ow2n9IK+F3SFFm9bifX/Wq3tRR6BK8SWUkpLNLilE7//xkwnFu2oVmnomA7+o2dX
-         yohQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=LyoTXCrKRxOQ6HWYt6T0AZz1kzEWAAnmXRDjoh7Y70k=;
+        b=LNnf8lypFYREw1I4fp/RTALAU6G4XRN/glkLlWlbQ/MuQQvAwPPA8S5JGDXXxa/Pd+
+         Wv30/Mw97f2LHwxU60RXXDKXANAN3xUSUVMn7t1okI9KgFVZ0i426WkeImLDe+a9G3KW
+         ZFYhBIAJapxT4HuCttUpZgR78XAoVsgBz7144hFslP3B+X9uRiex9cr98btiI+BhJLR4
+         728Ak+ocwnhFjHGPXogkVQqByx+J7Fwc2tIMLMBkymJziAzQuW6dCVRfFKMHNGoGewI6
+         0W8ksvIzFcPoc2vLwE7aRy1ng8Mkr0JaiqhCfeUKDoKE0IxNHvSS8E7AdN3ISq13smO9
+         vVaA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Xg/GaH1j";
-       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
-        by mx.google.com with ESMTPS id y14si4963107edc.428.2021.05.26.10.06.23
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZfJqR+Hi;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id v4si1729220uau.233.2021.05.26.10.14.16
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 26 May 2021 10:06:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 26 May 2021 10:14:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Xg/GaH1j";
-       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZfJqR+Hi;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:41546 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1llx6k-0000P2-PC
+	for alex.bennee@linaro.org; Wed, 26 May 2021 13:14:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44638)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1llwyz-0007jE-Ru
+ for qemu-devel@nongnu.org; Wed, 26 May 2021 13:06:15 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:60803)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1llwyv-0004Vn-Le
+ for qemu-devel@nongnu.org; Wed, 26 May 2021 13:06:13 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1622048783;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=W8w7RhXeFSRWGk0AutdMu5ukNCwh8itA/alKjBFfess=;
-	b=Xg/GaH1jxMC0bZA86hEzFtRD1Yg8RyNeasFFgi0XQExCCjz65QakvmBLvCIFVVknkQzQrc
-	85YUxUeGIwa7bR4jNWdOQ4lJivWLVWGm/PCUhNLqN7zlS9RPjQz5zKkjWReAcRuYVO9DM7
-	bwGYSfCUs60XaKs3tPCeC5t08f6vp4U=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-97-QwaEXke3O2CFbQlLef0vNg-1; Wed, 26 May 2021 13:06:21 -0400
-X-MC-Unique: QwaEXke3O2CFbQlLef0vNg-1
-Received: by mail-wm1-f69.google.com with SMTP id b67-20020a1ce4460000b029017517d833b9so637649wmh.0
-        for <alex.bennee@linaro.org>; Wed, 26 May 2021 10:06:21 -0700 (PDT)
+ s=mimecast20190719; t=1622048769;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=LyoTXCrKRxOQ6HWYt6T0AZz1kzEWAAnmXRDjoh7Y70k=;
+ b=ZfJqR+HiZHV+QDy3OKc80NSjhpeM5SmyFxy9ONrE777TiN3eKhcOb79T9w/NWD9YqJ916M
+ CvocUdRKIBk41pY3sEhtO1xZ8PrB6L6ZCZVYLQyaFtlvqIxz0Bq3riN04/6PE1i6mZqT6y
+ suBzOz2tEGe3xIqkfH2YlJxDBTVqhtg=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-503-r_d0Q2OCMSOT9y8lagCrsg-1; Wed, 26 May 2021 13:06:07 -0400
+X-MC-Unique: r_d0Q2OCMSOT9y8lagCrsg-1
+Received: by mail-wm1-f71.google.com with SMTP id
+ o10-20020a05600c4fcab029014ae7fdec90so384761wmq.5
+ for <qemu-devel@nongnu.org>; Wed, 26 May 2021 10:06:07 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=W8w7RhXeFSRWGk0AutdMu5ukNCwh8itA/alKjBFfess=;
-        b=d7+yR3mJZklADWxmZyN7WHgtJ2LW78RWFa4R+VfoE54848OmAhYtMbQaYNXzKxOycp
-         TOA8K8Z0o+JCu5avzDBfAVLU7hiSUA2UlbgHZ6wc6IGC3nt/xHAUaVSIuaXHfY4teJwJ
-         NSlIm5c+XvBKA1zmW9cJ5/UxhccdAOFljdVNCcUlh/c1qtbZK4u61ZZP5PEZ6rO938UO
-         OOT2c5LOnT+XCX6IZ3pAaPo62bue2n2S8AvpTLMbLg3QozyEFiwiCHmUfR9R2eib1cF4
-         0d9w1Cp+XmJ2gdyOHJIKV4kN8ATDtGpkaMFZx1ULVVZwBkxyFJwTbnxPtRGGke0WM6Ww
-         5xJw==
-X-Gm-Message-State: AOAM5306JJgrazenFkNQKACoApfwdojRquBWb9JkwlVVdEzKEbAD0G/Y
-	pWHI4BTm6ynwN1Ctug5B4TsLJdY6qTlP4yQZTTv1thhHWSZg3PGbhuKxJSaJxKOwMZRelymek0h
-	U/8bC7RqQQrT3m6xR
-X-Received: by 2002:a5d:55cd:: with SMTP id i13mr2823909wrw.128.1622048780358;
-        Wed, 26 May 2021 10:06:20 -0700 (PDT)
-X-Received: by 2002:a5d:55cd:: with SMTP id i13mr2823891wrw.128.1622048780168;
-        Wed, 26 May 2021 10:06:20 -0700 (PDT)
-Return-Path: <philmd@redhat.com>
-Received: from localhost.localdomain (64.red-88-10-103.dynamicip.rima-tde.net. [88.10.103.64])
-        by smtp.gmail.com with ESMTPSA id h15sm15245676wmq.1.2021.05.26.10.06.19
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 26 May 2021 10:06:19 -0700 (PDT)
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=LyoTXCrKRxOQ6HWYt6T0AZz1kzEWAAnmXRDjoh7Y70k=;
+ b=G8uSE/XRL6Y0Cpr+ndZudgWKFLegnN0B7rMR7yT6SOOQlqluTHR7R+BSA4ADgdJ5HW
+ C6HeVdAEVk+UJH9C2jLKLp+1A4ncOrLFImWYFYeCkae3vd6LD/QgDwEHFx6JgmAMEdud
+ K4jZAI58YmkRz+RDnd63gmJUB3pmxstnzmhWvSjk98P7HSqCj9BB47MM/n3Fjvp+wbD6
+ ACVAu7gR5HT66xGvgcx5ez33ng1SCzCtbZHTux6U/trf+u+DkQqAACzACArjbkqrOTFp
+ q7aP/maCb9PYfpRDq/ujbOn9Wdlx7ignuswOuaNsh8NWPc1SLdKdoQCIHgebs2r8ZbBb
+ YtVA==
+X-Gm-Message-State: AOAM530jEPY9l8egxIcuV9QSF4fJW/eWO+RYSyzPEWhsyR8bSlnV1uaq
+ GOoeMyUfMKfbsHzaZ+fiSl6OrzTk5Lrm43O8KiU9h94S1N1HwZ8j+TOom6M+cCeF41IHBJBTvcV
+ ZQdS7skMKeGj6+EAfYpDV5v9CtWS+SDl+sU14TriTfjXUfo35ra8PNH2MKre0XNhL
+X-Received: by 2002:a7b:cf23:: with SMTP id m3mr4538324wmg.24.1622048765668;
+ Wed, 26 May 2021 10:06:05 -0700 (PDT)
+X-Received: by 2002:a7b:cf23:: with SMTP id m3mr4538294wmg.24.1622048765433;
+ Wed, 26 May 2021 10:06:05 -0700 (PDT)
+Received: from localhost.localdomain (64.red-88-10-103.dynamicip.rima-tde.net.
+ [88.10.103.64])
+ by smtp.gmail.com with ESMTPSA id e8sm20905113wrt.30.2021.05.26.10.06.04
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 26 May 2021 10:06:05 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Eric Blake <eblake@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Thomas Huth <thuth@redhat.com>,
-	Laurent Vivier <lvivier@redhat.com>
-Subject: [PATCH v8 12/12] qtest: Do not restrict bios-tables-test to Aarch64 hosts anymore
-Date: Wed, 26 May 2021 19:04:32 +0200
-Message-Id: <20210526170432.343588-13-philmd@redhat.com>
+Subject: [PATCH v8 10/12] qtest/bios-tables-test: Rename TCG specific tests
+Date: Wed, 26 May 2021 19:04:30 +0200
+Message-Id: <20210526170432.343588-11-philmd@redhat.com>
 X-Mailer: git-send-email 2.26.3
 In-Reply-To: <20210526170432.343588-1-philmd@redhat.com>
 References: <20210526170432.343588-1-philmd@redhat.com>
 MIME-Version: 1.0
 Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 81iT+gKmudwn
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.371,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
+ Igor Mammedov <imammedo@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 13+RaRX5jGOk
 
-Since commit 82bf7ae84ce ("target/arm: Remove KVM support for
-32-bit Arm hosts") we can remove the comment / check added in
-commit ab6b6a77774 and directly run the bios-tables-test.
+Some tests require TCG, but don't have '_tcg' in their name,
+while others do. Unify the test names by adding 'tcg' to the
+TCG specific tests.
 
-Reviewed-by: Eric Blake <eblake@redhat.com>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Tested-by: Alex Bennée <alex.bennee@linaro.org>
+Reported-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- tests/qtest/meson.build | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ tests/qtest/bios-tables-test.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index c3a223a83d6..2c7415d6166 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -176,14 +176,13 @@
-    'boot-serial-test',
-    'hexloader-test']
+diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+index ce498b3ff48..ad877baeb1b 100644
+--- a/tests/qtest/bios-tables-test.c
++++ b/tests/qtest/bios-tables-test.c
+@@ -1255,7 +1255,7 @@ static void test_acpi_microvm_rtc(void)
+     free_test_data(&data);
+ }
  
--# TODO: once aarch64 TCG is fixed on ARM 32 bit host, make bios-tables-test unconditional
- qtests_aarch64 = \
--  (cpu != 'arm' ? ['bios-tables-test'] : []) +                                                  \
-   (config_all_devices.has_key('CONFIG_TPM_TIS_SYSBUS') ? ['tpm-tis-device-test'] : []) +        \
-   (config_all_devices.has_key('CONFIG_TPM_TIS_SYSBUS') ? ['tpm-tis-device-swtpm-test'] : []) +  \
-   ['arm-cpu-features',
-    'numa-test',
-    'boot-serial-test',
-+   'bios-tables-test',
-    'xlnx-can-test',
-    'migration-test']
+-static void test_acpi_microvm_pcie(void)
++static void test_acpi_microvm_pcie_tcg(void)
+ {
+     test_data data;
  
+@@ -1475,7 +1475,7 @@ static void test_acpi_oem_fields_microvm(void)
+     g_free(args);
+ }
+ 
+-static void test_acpi_oem_fields_virt(void)
++static void test_acpi_oem_fields_virt_tcg(void)
+ {
+     test_data data = {
+         .machine = "virt",
+@@ -1555,14 +1555,14 @@ int main(int argc, char *argv[])
+         qtest_add_func("acpi/microvm/ioapic2", test_acpi_microvm_ioapic2);
+         qtest_add_func("acpi/microvm/oem-fields", test_acpi_oem_fields_microvm);
+         if (strcmp(arch, "x86_64") == 0) {
+-            qtest_add_func("acpi/microvm/pcie", test_acpi_microvm_pcie);
++            qtest_add_func("acpi/microvm/pcie", test_acpi_microvm_pcie_tcg);
+         }
+     } else if (strcmp(arch, "aarch64") == 0) {
+         qtest_add_func("acpi/virt", test_acpi_virt_tcg);
+         qtest_add_func("acpi/virt/numamem", test_acpi_virt_tcg_numamem);
+         qtest_add_func("acpi/virt/memhp", test_acpi_virt_tcg_memhp);
+         qtest_add_func("acpi/virt/pxb", test_acpi_virt_tcg_pxb);
+-        qtest_add_func("acpi/virt/oem-fields", test_acpi_oem_fields_virt);
++        qtest_add_func("acpi/virt/oem-fields", test_acpi_oem_fields_virt_tcg);
+     }
+     ret = g_test_run();
+     boot_sector_cleanup(disk);
 -- 
 2.26.3
+

@@ -1,121 +1,125 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp3385325lfm;
-        Tue, 1 Jun 2021 00:51:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxLb2ztkXQ95uby974i0WGD+QvTtnhUG1KFowAnMmuQXB8K+wgSW4rEtivOvrq5s7NdW9af
-X-Received: by 2002:a67:c904:: with SMTP id w4mr17389197vsk.48.1622533862967;
-        Tue, 01 Jun 2021 00:51:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1622533862; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp5646484lfm;
+        Wed, 26 May 2021 10:42:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxdo3wdI5JwnCcjYVCA2RGhaKsPddv87sBAAxh/gYP4lN+FC5wjrek5EdqC8cz6qw2lMnoz
+X-Received: by 2002:a05:6102:7c1:: with SMTP id y1mr33435105vsg.34.1622050971641;
+        Wed, 26 May 2021 10:42:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1622050971; cv=none;
         d=google.com; s=arc-20160816;
-        b=o2dMT5hwGnTLQ+V7iyAvxlAA858MCF0rsFG0qMK4oJc2GTeqIbL7/xXfcMJZwW4oCs
-         JIaysoFpEZtuSDTDX31j7l75eCQ+1acWe/QiuETczn83bWEkpDionHFdClMg0xU4Og9d
-         DjAARs2QoM+4/Kct/qQFyDA2qDJCu7A1vSect5mqT8GuX4EKJf09UbUFEJtrJer+gD9i
-         wwAo6C7qmUwFLAYBYhQ7zoLiSwBrTvF0GHWwq8eZO3nRmZ51sUtEw2OxrIlTI+C79Ie0
-         uLIW797Sf7wyP8cIkhxnY9vB2VjNGlt1ZulOxN6lj8iJ7v2RqKQLwARiNSPMZKa5767K
-         MXyg==
+        b=So/L0n21f52n5LN4JwItsQGUycBd8Kz+D4hkccSLxXPeNFK0EgrZ4Li/Ai871bOylh
+         Xxfb9eaQ7g+RkNy3bVatadyjtpD4S+fiuLVB14fBeBJ42begJ0+HNlNm7U+15qarRH9i
+         G+KJjewaa0LPyxPq4oycMZHRlZrUbvAQ0SC1dG1f0vi48hT365UKyzRXIYlQ0ySLcFI+
+         H7IbwErYSh4ynOgfVNlk3ZUad68GgjbuDlmOsS0dz45KiOXd5mpy+k0CexijJMcrMcWa
+         ANFz6HT9D15NbXUKsY4fWV1wv2c2/KmD9wjVGjG1VEkYEO0XtMZic/LVaPS43h3Njlk3
+         mQDQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=C64e75GgMTRWfcurqOMRagNaQwEx0C5Uf35Lq9xHlK8=;
-        b=gyLC7CeXsmFGlEWgPUVaAftKeQY9NzzD21rmJoMlsTz9dsA2cENDJF1ZShXXZdEqyS
-         kxzLCnpbK8i0IjLto8C8OBXLcBj8E/YOcAVIoYP31UDAF+lIHfDaOpjyvH8NetETAcFl
-         pwQ2iG01rxqAV/dD8fsmBIAJq0OKDTJhtuL0zAUCEWMgkvB8GTMSsYZleCqE62lxOUkk
-         8cfZR9aQZ6XSdprRucvDorYyAbIebJxP7/yu09xPTGCXmdqgU++WaQOsVEuJOC/zAc6T
-         jyGEO5mXFjrx4sqb60YEywxYAS7E/fs2ya62KErUtI+pK/LKq9xRpfyLHsRl/beQ9Aew
-         k8Lw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=+YpBknw/207Qu5KvgUM/SwdlbggoFYE84KUhsln0seg=;
+        b=D3udviIAeP7Y4W5aEHGTmK6Je933UttuMZUiPxcQQSQFLBO+pUU73IMQgsHUwtWUtO
+         GzhVMf0ucPHb0xF93m7spljI1148FdiLuXC61UcpmLGtYYrs9fAtTxzAutFQsvu7/gg4
+         NjR6Y2TFVL05UPmjlisqZoCInJYtuMs+KMoB1YlJo5/5+Kt8/Jf/ShX6fexctNqTJdQa
+         0UOb+QKmAgPJphjVGY3HouJcei1FcaYQEXZZ2CHJOG0xtUBm9CYxkDVo1ghwMwxkTS7X
+         Kj5j/pj1P6f34g00ztf1K1+TQpggnkBebR8B++1fhr8vqRSvcHocepK9ca/3/T9Szg0Y
+         xS2w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RZRs3bie;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IgrAsHh6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t1si5936244vsq.262.2021.06.01.00.51.02
+        by mx.google.com with ESMTPS id i132si5882521vki.59.2021.05.26.10.42.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Jun 2021 00:51:02 -0700 (PDT)
+        Wed, 26 May 2021 10:42:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RZRs3bie;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IgrAsHh6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56870 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58700 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lnzB0-0008GU-9w
-	for alex.bennee@linaro.org; Tue, 01 Jun 2021 03:51:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46210)
+	id 1llxYQ-0007cQ-WA
+	for alex.bennee@linaro.org; Wed, 26 May 2021 13:42:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45328)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1lnzAt-0008Do-1C
- for qemu-arm@nongnu.org; Tue, 01 Jun 2021 03:50:55 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:55424)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1llx2U-0003ub-Bj
+ for qemu-arm@nongnu.org; Wed, 26 May 2021 13:09:51 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:36605)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1lnzAq-0004nG-Re
- for qemu-arm@nongnu.org; Tue, 01 Jun 2021 03:50:54 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1llx2S-00068Y-Hx
+ for qemu-arm@nongnu.org; Wed, 26 May 2021 13:09:50 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1622533851;
+ s=mimecast20190719; t=1622048987;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=C64e75GgMTRWfcurqOMRagNaQwEx0C5Uf35Lq9xHlK8=;
- b=RZRs3bieTgLKPeZUFy6n4nI8HBbqh+KjMVpMHqSRD5jUFIgrzzuLXWtaDrMJ4B7ghq4Lld
- 5c9taSthCq5IL1V1RkY5QPOFDea8I32U3+aKO3gEE2q5tYf9lKHF6huwbreWGP6wltTXSZ
- 7Q8x9Q0EK6dzMCM0Z0fK7/xDCj4dwYA=
-Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
- [209.85.208.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-25-seBYOvqvPCiMjgEQE0do_g-1; Tue, 01 Jun 2021 03:50:49 -0400
-X-MC-Unique: seBYOvqvPCiMjgEQE0do_g-1
-Received: by mail-ed1-f71.google.com with SMTP id
- q7-20020aa7cc070000b029038f59dab1c5so7394666edt.23
- for <qemu-arm@nongnu.org>; Tue, 01 Jun 2021 00:50:49 -0700 (PDT)
+ bh=+YpBknw/207Qu5KvgUM/SwdlbggoFYE84KUhsln0seg=;
+ b=IgrAsHh6bIwOHEKEAxgF0gM6pe9Ze7o4ESFbsCh0NGKUUy3Go6CIVDJP4D7D/ycxgmMhjQ
+ l5x4fItKUXpv6v2CirAvjGpftHJbwyf9ZI47B/q5eza/jn6xELcgB8XcVz+yoJ9z9V9DGm
+ FWvLvD37pq71J4ZvZqdiRzyOQbibv5w=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-520-LIaTi6sPMTelRhjVItQ2CA-1; Wed, 26 May 2021 13:09:44 -0400
+X-MC-Unique: LIaTi6sPMTelRhjVItQ2CA-1
+Received: by mail-wr1-f71.google.com with SMTP id
+ a9-20020adfc4490000b0290112095ca785so603464wrg.14
+ for <qemu-arm@nongnu.org>; Wed, 26 May 2021 10:09:44 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=C64e75GgMTRWfcurqOMRagNaQwEx0C5Uf35Lq9xHlK8=;
- b=nC6QGIyUeVHwKz8MD6FDdOXU0jU81G8UVSJCqm+j/27BXzRa9MYIu3oafzBEOOp/4i
- Baf+2AGeYdcdg65Gopbyj2AmHuqYW67eqlGoTveJUs6RRZY35CJMwwRChELAuZFSriEQ
- UU0gFBbHJuWjLDvKdyszEC+42GmFW+I80Q4C0wtlI+JjkfN+r/Hi8gNWs5X8++OJCJvQ
- GMa8+zutbY52Y9i3LJh553vio5KqZ6Uh3u5FM40ILnQ/fAhrb7YABX88ci2FzduSjJbC
- ACtjmKZIhIgrBS3CF3L///bpFwGYeO/lDyg+UU/YwGYH9k8JCPNyi3LVxxUMhVfeFtaS
- 7bvg==
-X-Gm-Message-State: AOAM530fztqOBpsXapIjXA7AGFabhAicBRkULsj/MgmdTqK25X4Ad/NX
- 0Q4hstRICF3sHFjfnzsClTnnqXsTF5tmPrpiHlFCftABHoxBOXmMcxHPcwY6UwpzdBcyIRjnoAc
- LFvFMYSzFr/kP
-X-Received: by 2002:a17:906:27d3:: with SMTP id
- k19mr6628297ejc.368.1622533848140; 
- Tue, 01 Jun 2021 00:50:48 -0700 (PDT)
-X-Received: by 2002:a17:906:27d3:: with SMTP id
- k19mr6628271ejc.368.1622533847904; 
- Tue, 01 Jun 2021 00:50:47 -0700 (PDT)
-Received: from gator.home (cst2-174-132.cust.vodafone.cz. [31.30.174.132])
- by smtp.gmail.com with ESMTPSA id bh3sm6857061ejb.19.2021.06.01.00.50.47
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 01 Jun 2021 00:50:47 -0700 (PDT)
-Date: Tue, 1 Jun 2021 09:50:45 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Gavin Shan <gshan@redhat.com>
-Subject: Re: [PATCH] hw/arm/boot: Use NUMA node ID in memory node name
-Message-ID: <20210601075045.ppmceogd5hp5rqcf@gator.home>
-References: <20210601073004.106490-1-gshan@redhat.com>
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=+YpBknw/207Qu5KvgUM/SwdlbggoFYE84KUhsln0seg=;
+ b=IHMOu0LbYEoIyb8xuuyeHnK2xhQPP7Xv432ulUhUcf94KAlfXU8X1/8z0kFIKj8KQD
+ bHaQBxp35IFHtdEqzRCbDGpEX5/gq9mRsfnxhjtkr97cJ30p0xYVEwsgzpNehDBUoIn4
+ EJbbjwKo2JA5qZk7hu9kpfsQzmjWYbKakW8pP/Uh1VgPxIOdIRKluwY2z7q1Ehebp66t
+ sXhFAFCHYEZAl2c0mGyrhBeEdk6tURBBhrQVM+5AKMdk0EqgHet1GL3okYiDaqzFfQnU
+ v04zd/3/wpWYDSmwFddGXc7x7F88UZPyqkMbHTBW6XYcy/q8UKIG8nwIC5xpafd5AiWB
+ LGGA==
+X-Gm-Message-State: AOAM533evVkYSNvy/Ja6wfGhM26nhxJTCe7VoQX65AuhqqObpuwTrQEl
+ 9emP6Sm0dzCODbAObrtwnmeLj64rv1g1gMS2CF/lErM8rQk7bqXpEFOg53PuotQ4VS884j9qPf2
+ I5yGzKINVvp5B
+X-Received: by 2002:adf:ec8d:: with SMTP id z13mr22280634wrn.113.1622048983527; 
+ Wed, 26 May 2021 10:09:43 -0700 (PDT)
+X-Received: by 2002:adf:ec8d:: with SMTP id z13mr22280612wrn.113.1622048983377; 
+ Wed, 26 May 2021 10:09:43 -0700 (PDT)
+Received: from [192.168.1.36] (64.red-88-10-103.dynamicip.rima-tde.net.
+ [88.10.103.64])
+ by smtp.gmail.com with ESMTPSA id r5sm18170688wmh.23.2021.05.26.10.09.42
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 26 May 2021 10:09:43 -0700 (PDT)
+Subject: Re: [PATCH v8 00/12] qtests: Check accelerator available at runtime
+ via QMP 'query-accels'
+To: qemu-devel@nongnu.org
+References: <20210526170432.343588-1-philmd@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <269bf39d-816f-1e75-2cdf-45cd9cd5764d@redhat.com>
+Date: Wed, 26 May 2021 19:09:37 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.1
 MIME-Version: 1.0
-In-Reply-To: <20210601073004.106490-1-gshan@redhat.com>
+In-Reply-To: <20210526170432.343588-1-philmd@redhat.com>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=drjones@redhat.com;
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -31
 X-Spam_score: -3.2
 X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.372,
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.371,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -128,74 +132,62 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- shan.gavin@gmail.com, eric.auger@redhat.com
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: M5t6ptTUDio3
+X-TUID: YfI7ctgXJP57
 
-On Tue, Jun 01, 2021 at 03:30:04PM +0800, Gavin Shan wrote:
-> We possibly populate empty nodes where memory isn't included and might
-> be hot added at late time. The FDT memory nodes can't be created due
-> to conflicts on their names if multiple empty nodes are specified.
-> For example, the VM fails to start with the following error messages.
+On 5/26/21 7:04 PM, Philippe Mathieu-Daudé wrote:
+> Hi,
 > 
->   /home/gavin/sandbox/qemu.main/build/qemu-system-aarch64          \
->   -accel kvm -machine virt,gic-version=host                        \
->   -cpu host -smp 4,sockets=2,cores=2,threads=1 -m 1024M,maxmem=64G \
->   -object memory-backend-ram,id=mem0,size=512M                     \
->   -object memory-backend-ram,id=mem1,size=512M                     \
->   -numa node,nodeid=0,cpus=0-1,memdev=mem0                         \
->   -numa node,nodeid=1,cpus=2-3,memdev=mem1                         \
->   -numa node,nodeid=2                                              \
->   -numa node,nodeid=3                                              \
->     :
->   -device virtio-balloon-pci,id=balloon0,free-page-reporting=yes
+> This series aims at having accelerator-independent qtests
+> by querying a QEMU instance at runtime to check the list
+> of built-in accelerators.
 > 
->   qemu-system-aarch64: FDT: Failed to create subnode /memory@80000000: \
->                        FDT_ERR_EXISTS
+> First we add the 'query-accels' QMP command,
+> then we add the qtest_has_accel() method to libqtest,
+> finally we use this new method to allow running
+> bios-tables-test on KVM-only builds.
 > 
-> This fixes the issue by using NUMA node ID or zero in the memory node
-> name to avoid the conflicting memory node names. With this applied, the
-> VM can boot successfully with above command lines.
-> 
-> Signed-off-by: Gavin Shan <gshan@redhat.com>
-> ---
->  hw/arm/boot.c | 7 ++++++-
->  1 file changed, 6 insertions(+), 1 deletion(-)
-> 
-> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-> index d7b059225e..3169bdf595 100644
-> --- a/hw/arm/boot.c
-> +++ b/hw/arm/boot.c
-> @@ -432,7 +432,12 @@ static int fdt_add_memory_node(void *fdt, uint32_t acells, hwaddr mem_base,
->      char *nodename;
->      int ret;
->  
-> -    nodename = g_strdup_printf("/memory@%" PRIx64, mem_base);
-> +    if (numa_node_id >= 0) {
-> +        nodename = g_strdup_printf("/memory@%d", numa_node_id);
-> +    } else {
-> +        nodename = g_strdup("/memory@0");
-> +    }
-> +
->      qemu_fdt_add_subnode(fdt, nodename);
->      qemu_fdt_setprop_string(fdt, nodename, "device_type", "memory");
->      ret = qemu_fdt_setprop_sized_cells(fdt, nodename, "reg", acells, mem_base,
-> -- 
-> 2.23.0
->
+> This series is expected to be merged via the ARM tree.
 
-Hi Gavin,
+I forgot to carry MST R-b tag:
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg807421.html
 
-Is it conventional to use the unit-address like this? If so, can you point
-out where that's documented? If it's not conventional, then we shouldn't
-do it. And then I'm not sure what we should do in this case. Here's a
-couple links I found, but they don't really help...
+> Since v7:
+> - Include Markus code (see patch #2)
 
-https://devicetree-specification.readthedocs.io/en/latest/chapter2-devicetree-basics.html#sect-node-names
-https://devicetree-specification.readthedocs.io/en/latest/chapter3-devicenodes.html#memory-node
-
-Thanks,
-drew
+> $ git backport-diff v6
+> Key:
+> [----] : patches are identical
+> [####] : number of functional differences between upstream/downstream patch
+> [down] : patch is downstream-only
+> The flags [FC] indicate (F)unctional and (C)ontextual differences, respective=
+> ly
+> 
+> 001/12:[----] [--] 'MAINTAINERS: Add qtest/arm-cpu-features.c to ARM TCG CPUs=
+>  section'
+> 002/12:[0048] [FC] 'accel: Introduce 'query-accels' QMP command'
+> 003/12:[----] [--] 'qtest: Add qtest_has_accel() method'
+> 004/12:[----] [--] 'qtest/arm-cpu-features: Use generic qtest_has_accel() to =
+> check for KVM'
+> 005/12:[----] [--] 'qtest/arm-cpu-features: Restrict sve_tests_sve_off_kvm te=
+> st to KVM'
+> 006/12:[----] [--] 'qtest/arm-cpu-features: Remove TCG fallback to KVM specif=
+> ic tests'
+> 007/12:[----] [--] 'qtest/arm-cpu-features: Use generic qtest_has_accel() to =
+> check for TCG'
+> 008/12:[----] [--] 'qtest/migration-test: Skip tests if KVM not builtin on s3=
+> 90x/ppc64'
+> 009/12:[----] [--] 'qtest/bios-tables-test: Rename tests not TCG specific'
+> 010/12:[----] [--] 'qtest/bios-tables-test: Rename TCG specific tests'
+> 011/12:[----] [--] 'qtest/bios-tables-test: Make test build-independent from =
+> accelerator'
+> 012/12:[----] [--] 'qtest: Do not restrict bios-tables-test to Aarch64 hosts =
+> anymore'
 

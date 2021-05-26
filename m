@@ -1,120 +1,122 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id m9sm7431961wrq.78.2021.05.28.09.31.24
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 28 May 2021 09:31:25 -0700 (PDT)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 4325F1FF7E;
-	Fri, 28 May 2021 17:31:24 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: f4bug@amsat.org,
-	qemu-arm@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>
-Subject: [RFC PATCH] configure: allow the overriding of default-config in the build
-Date: Fri, 28 May 2021 17:31:16 +0100
-Message-Id: <20210528163116.31902-1-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.20.1
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp5515871lfm;
+        Wed, 26 May 2021 08:06:09 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxUccs5uNccrDGJZYp2s8YejSUfbg2VYZicr4xrRtac/a/NjkceNb0aFtlerV5UxuS3RsaN
+X-Received: by 2002:a05:6402:27cf:: with SMTP id c15mr38071600ede.130.1622041569721;
+        Wed, 26 May 2021 08:06:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1622041569; cv=none;
+        d=google.com; s=arc-20160816;
+        b=q8gw2XKuT/1ttLp7PBCkNA8oSJLClODeWrbSVmrfmCVDf7wxYKER7WuzN6yBCDvZH3
+         HtUmG/kK0puSZTMIDvYnBiec0sN8rR1f4QFdM7R9a+H3g/EP6pkEks6GOxRAac8ptMcE
+         dz+FaE1F96o/KAIVrwpzDJr88W1+GpB5MBh88Tb3nv3sn+TDAng/tqBvA0yamG+FGAAi
+         QIhXaa10J0vBQ3hnvQSYLA0e00nzDJnjiXlc1Tk8rOBGQYxtcMdJnhntYm5FJDDF9VEi
+         lKWhoChJlfW8jqoFp86Ub2DEa67XUvZrS+bPkKqkswcz3QG94I7AdIpcJoGiZw0j1mqb
+         waag==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=afXKeP+aN56rheXDqzdBoDJQ8Rg9z3z074x1aSluMhg=;
+        b=bXp8OAYvcDLk6UosAicSiWGzUXx/qkktyaT7SfuXw+pBgkGd64gKOyQs/mpLIRfK/a
+         QO910wZ/agoGVX+XdG4IyPZzNzGKBQPu+z5jCYXMy/x3XrL8v+Slnro11RW6fzfAa64h
+         tJ+ZqbjntDoOx76C20QZ3tkHNR6LBI3+NR92oodhvhiZJbWDGjCPxlF/l0YY4RKVKXXt
+         UtOAbOer9RAAp6oNJhfAYtbL9/2olUzQG+J3lsUHUWt0RvJXkqjbORvvJE9sPlXFn7cX
+         1VWHa+rJOfhBYLgeoJF/NDI91o3IUqaCyk/qJwvS5dZjT2fUjoKtxERD7t/5DOG5N+cL
+         aaTw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=f2ecgeoA;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <eric.auger@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id f25si13109266ejh.388.2021.05.26.08.06.09
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 26 May 2021 08:06:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=f2ecgeoA;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1622041568;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=afXKeP+aN56rheXDqzdBoDJQ8Rg9z3z074x1aSluMhg=;
+	b=f2ecgeoABTmaMQVXuZCFZMeCqCBfR7Rb7eRGL/DzRrDhx61LKhER4YONrq/q16vBkbd8UN
+	ucxqAyIva8/6lwy6spUNxzyEeNlaavHY2ke6lND2Ge/vdBys5gpH63cG5adU0lojnkPjOQ
+	yn1iyIykf2OdiDuw9XYx/x7ccLjyxTM=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-522-tJpmB5i8Nb2M4hnRU64YeQ-1; Wed, 26 May 2021 11:06:05 -0400
+X-MC-Unique: tJpmB5i8Nb2M4hnRU64YeQ-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 735B9FCA3;
+	Wed, 26 May 2021 15:06:04 +0000 (UTC)
+Received: from [10.36.112.15] (ovpn-112-15.ams2.redhat.com [10.36.112.15])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 9436061094;
+	Wed, 26 May 2021 15:06:01 +0000 (UTC)
+Subject: Re: [kvm-unit-tests PATCH v2 2/4] scripts/arch-run: don't use
+ deprecated server/nowait options
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, kvm@vger.kernel.org
+Cc: shashi.mallela@linaro.org, alexandru.elisei@arm.com, qemu-arm@nongnu.org,
+ linux-arm-kernel@lists.infradead.org, kvmarm@lists.cs.columbia.edu,
+ christoffer.dall@arm.com, maz@kernel.org
+References: <20210525172628.2088-1-alex.bennee@linaro.org>
+ <20210525172628.2088-3-alex.bennee@linaro.org>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <b99b2c07-33e9-7f18-5a43-8ece655fe594@redhat.com>
+Date: Wed, 26 May 2021 17:05:59 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20210525172628.2088-3-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: EiZ+ObqU4XRI
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-TUID: U+ZpJzTqfmSp
 
-While the default config works well enough it does end up enabling a
-lot of stuff. For more minimal builds we can pass a slimmed down list
-of devices and let Kconfig work out what we want. For example:
+Hi Alex,
 
-  ../../configure --without-default-features \
-    --target-list=arm-softmmu,aarch64-softmmu \
-    --with-devices-aarch64=(pwd)/../../configs/aarch64-softmmu/aarch64-softmmu-64bit-only.mak
+On 5/25/21 7:26 PM, Alex Bennée wrote:
+> The very fact that QEMU drops the deprecation warning while running is
+> enough to confuse the its-migration test into failing. The boolean
+> options server and wait have accepted the long form options for a long
+> time.
+> 
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Cc: Shashi Mallela <shashi.mallela@linaro.org>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
 
-will override the aarch64-softmmu default devices to one of our own
-choosing.
+Eric
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Cc: Philippe Mathieu-Daudé <philmd@redhat.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>
----
- configure                                        | 16 ++++++++++++++++
- .../aarch64-softmmu-64bit-only.mak               | 10 ++++++++++
- meson.build                                      |  3 ++-
- 3 files changed, 28 insertions(+), 1 deletion(-)
- create mode 100644 configs/aarch64-softmmu/aarch64-softmmu-64bit-only.mak
-
-diff --git a/configure b/configure
-index 90c0807347..5acb8b2ed5 100755
---- a/configure
-+++ b/configure
-@@ -921,6 +921,12 @@ for opt do
-   ;;
-   --without-default-devices) default_devices="false"
-   ;;
-+  --with-devices-*[!a-zA-Z0-9_-]*=*) error_exit "Passed bad --with-devices-cc-FOO option"
-+  ;;
-+  --with-devices-*)  device_arch=${opt#--with-devices-}; device_arch=${device_arch%%=*}
-+                     device_archs="$device_archs $device_arch"
-+                     eval "devices_${device_arch}=\$optarg"
-+  ;;
-   --without-default-features) # processed above
-   ;;
-   --enable-gprof) gprof="yes"
-@@ -1767,6 +1773,7 @@ Advanced options (experts only):
-   --without-default-devices  do not include any device that is not needed to
-                            start the emulator (only use if you are including
-                            desired devices in default-configs/devices/)
-+  --with-devices-ARCH=PATH override default-configs/devices with your own file
-   --enable-debug           enable common debug build options
-   --enable-sanitizers      enable default sanitizers
-   --enable-tsan            enable thread sanitizer
-@@ -6378,6 +6385,15 @@ if test "$skip_meson" = no; then
- 
-   echo "# Automatically generated by configure - do not modify" > $cross
-   echo "[properties]" >> $cross
-+
-+  # unroll any custom device configs
-+  if test -n "$device_archs"; then
-+      for a in $device_archs; do
-+          eval "c=\$devices_${a}"
-+          echo "${a}-softmmu = [ '$c' ]" >> $cross
-+      done
-+  fi
-+
-   test -z "$cxx" && echo "link_language = 'c'" >> $cross
-   echo "[built-in options]" >> $cross
-   echo "c_args = [${CFLAGS:+$(meson_quote $CFLAGS)}]" >> $cross
-diff --git a/configs/aarch64-softmmu/aarch64-softmmu-64bit-only.mak b/configs/aarch64-softmmu/aarch64-softmmu-64bit-only.mak
-new file mode 100644
-index 0000000000..3626de9e3c
---- /dev/null
-+++ b/configs/aarch64-softmmu/aarch64-softmmu-64bit-only.mak
-@@ -0,0 +1,10 @@
-+#
-+# A version of the config that only supports 64bits and their devices.
-+# This doesn't quite eliminate all 32 bit devices as some boards like
-+# "virt" support both.
-+#
-+
-+CONFIG_ARM_VIRT=y
-+CONFIG_XLNX_ZYNQMP_ARM=y
-+CONFIG_XLNX_VERSAL=y
-+CONFIG_SBSA_REF=y
-diff --git a/meson.build b/meson.build
-index 3f065f53f2..656ebde513 100644
---- a/meson.build
-+++ b/meson.build
-@@ -1350,9 +1350,10 @@ foreach target : target_dirs
-                                                configuration: config_target_data)}
- 
-   if target.endswith('-softmmu')
-+    config_input = meson.get_external_property(target, 'default-configs/devices' / target + '.mak')
-     config_devices_mak = target + '-config-devices.mak'
-     config_devices_mak = configure_file(
--      input: ['default-configs/devices' / target + '.mak', 'Kconfig'],
-+      input: [config_input, 'Kconfig'],
-       output: config_devices_mak,
-       depfile: config_devices_mak + '.d',
-       capture: true,
--- 
-2.20.1
+> ---
+>  scripts/arch-run.bash | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/scripts/arch-run.bash b/scripts/arch-run.bash
+> index 5997e38..70693f2 100644
+> --- a/scripts/arch-run.bash
+> +++ b/scripts/arch-run.bash
+> @@ -122,14 +122,14 @@ run_migration ()
+>  	trap 'kill 0; exit 2' INT TERM
+>  	trap 'rm -f ${migout1} ${migsock} ${qmp1} ${qmp2} ${fifo}' RETURN EXIT
+>  
+> -	eval "$@" -chardev socket,id=mon1,path=${qmp1},server,nowait \
+> +	eval "$@" -chardev socket,id=mon1,path=${qmp1},server=on,wait=off \
+>  		-mon chardev=mon1,mode=control | tee ${migout1} &
+>  
+>  	# We have to use cat to open the named FIFO, because named FIFO's, unlike
+>  	# pipes, will block on open() until the other end is also opened, and that
+>  	# totally breaks QEMU...
+>  	mkfifo ${fifo}
+> -	eval "$@" -chardev socket,id=mon2,path=${qmp2},server,nowait \
+> +	eval "$@" -chardev socket,id=mon2,path=${qmp2},server=on,wait=off \
+>  		-mon chardev=mon2,mode=control -incoming unix:${migsock} < <(cat ${fifo}) &
+>  	incoming_pid=`jobs -l %+ | awk '{print$2}'`
+>  
+> 

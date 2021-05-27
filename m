@@ -1,99 +1,100 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp156517lfm;
-        Thu, 27 May 2021 02:04:56 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJylRx0S+3TtAZq7mT0RRB0vvzSKSmJL/v8qWE6JbmE7izxZgD4PcMeHCOIXmVohszNjC0Ol
-X-Received: by 2002:a92:d290:: with SMTP id p16mr2121640ilp.80.1622106296833;
-        Thu, 27 May 2021 02:04:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1622106296; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp171744lfm;
+        Thu, 27 May 2021 02:29:50 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwM2HrSGy8LfXrfaoEwjYs9xTmwwdq4QM1MkK4pRheZzMXhAvBeRVhmYP/jb1yueTBxKKSK
+X-Received: by 2002:a92:502:: with SMTP id q2mr2219345ile.203.1622107790498;
+        Thu, 27 May 2021 02:29:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1622107790; cv=none;
         d=google.com; s=arc-20160816;
-        b=ptCfJnWyYEpKNh2fD2CBMdj10q6MZO/YsBEPHqoclK4ORYz/TRQHuYxm/DUAI3kDVi
-         HNLIyFNFjmBRAaUyQEOix3ZKOUODrSQmiPNWjBlpEd9jIhVR3vTEMinf9VlsJ5bNrnML
-         WT2zquFENWAx6Eh7OR6YXEEz1ZF4ig+wiqcwcHHJvJGxaV1CgemMTwYfY+vk9UeglIqy
-         gDW+ag/azLU9toXRpdqn5NNo+bpw/vMqxnS+fqmcRe00pqb0MZbOf23ivMsuKe76Tc01
-         lHgKXeG0T6haRsZCsMutbzUbtNL0uF1pTm/LmRitjruyYQph8gr17Y7YRd3YSjm4c5n8
-         bHCQ==
+        b=e/ivUORUHlUmL9gtpy7HQpVjZx/FxJsqGl9zf7DB3Rj5GXarkI2rVqQxFkN9VZrjw6
+         7d6dzcEH2gM+0NscuEpGClN/bVoGIEsCg2Bp70aBcwJtzmTBNN4iTOg3h0r8iNQsJzvV
+         7O1Qa1y9dS0nSm5scGtwELBcT5Rrw/UpTiI+o3TxV3ZJg947MQXYyPVdQtn/T7joj/mz
+         jj79VQ42tR/4LZjLtpGB69VZQTF1qGM0VdGRjJY/gFtKd5hlZGQucNm1fkBIma3+Wy1y
+         RuqzvX+Ax48/wolTE8H6WecxkzdfrAe7F7jBCUvrJJA72u1UVkMiabqG8y8WRBSICacs
+         ioKw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=j1K665DWN4ZiKQztmxe9q0N6SGvqyosNgZAisBnHWWA=;
-        b=j00F/XYultTYyzqNRSNffoz9yyfI+7DucDBx2jIpRzzGsryZUvUJrYSamPFL9mtNhZ
-         PR/VY+9z+9uFM//cKwfNNf6KH/82wmAUwjjjNb2Y1w3b5r+cDN3njhFVK9I4opnipT1k
-         Y3G2hdE185CXXtai+Zzbv8EfyJk5n41cyxQMuxnnu0F4ZDl7/iW1T7zC/7vxCftprjzz
-         5cabO6hCFXKhsmFpGbP17VWR/EummEDENrUX8ud4wZvyO4fQOTlrPGRJxaKERrXrQI5b
-         8GXAO7idNsG1PbNdIdv5ubUusjBRnh4xR36NdSQaCpuA3p5qvDej8PybqC36Hf4L2m2r
-         b/LA==
+        bh=cRPdfPABMtc6nEYPUNYt/nouMTo5ozDAHvfPfCMWLkc=;
+        b=Ew8nh/Vbd9GVSvXUjVGCPVCxOf7UJ0PpuQZyiiFkKBMyvhLBK/Ss5bRE94Az02thyb
+         0nDLjgSb/kvx+5SsnzAK28CJjOs0gBWjeh2Qf+XW9H3T7RpuNlPTsRlMSXX2VwJOuLd9
+         d1L2IhuChqbSLKNbm5+u/oam0435Kr5Q2Zgq/O6QkCc1bgVRAx5vm5XwgqohnSKcNk+e
+         pUYxk/ucIzSdaQGnkbwPOLoKqeo57bOj0/CQmYnqANxmV36VrYkYxAXzEoDtedSq3ILg
+         ZKl0IEyoxwXwOoE+UL9MVeyBVxk1TO4riekJgEPgWjH0v/oaC9DScS9gN/45b2pA1m2y
+         k46g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=s+b8FjYI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=DnujIVcW;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g5si1686505ilq.106.2021.05.27.02.04.56
+        by mx.google.com with ESMTPS id d4si1527004iow.13.2021.05.27.02.29.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 May 2021 02:04:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 27 May 2021 02:29:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=s+b8FjYI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=DnujIVcW;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54012 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40778 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lmBwm-0000ZV-5j
-	for alex.bennee@linaro.org; Thu, 27 May 2021 05:04:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42764)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lmCKr-0003Wz-TI
+	for alex.bennee@linaro.org; Thu, 27 May 2021 05:29:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47824)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lmBwd-0000Xd-LM
- for qemu-arm@nongnu.org; Thu, 27 May 2021 05:04:47 -0400
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535]:46825)
+ id 1lmCKB-0002rA-TO
+ for qemu-devel@nongnu.org; Thu, 27 May 2021 05:29:07 -0400
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534]:47029)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lmBwb-0000xz-Te
- for qemu-arm@nongnu.org; Thu, 27 May 2021 05:04:47 -0400
-Received: by mail-ed1-x535.google.com with SMTP id r11so4831728edt.13
- for <qemu-arm@nongnu.org>; Thu, 27 May 2021 02:04:45 -0700 (PDT)
+ id 1lmCKA-0003V1-93
+ for qemu-devel@nongnu.org; Thu, 27 May 2021 05:29:07 -0400
+Received: by mail-ed1-x534.google.com with SMTP id r11so17533edt.13
+ for <qemu-devel@nongnu.org>; Thu, 27 May 2021 02:29:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=j1K665DWN4ZiKQztmxe9q0N6SGvqyosNgZAisBnHWWA=;
- b=s+b8FjYIR92L1aTOa7NEQqanHqqphs6s4KeT9uXve/VqVfjcXGlG4qBAPvi1ylrcfG
- n2wqkugHEbS1m51HDPborn2WjbjN768DRzZbS0teNcFnwTCh+Pw3BWG9Uk25k61c62cj
- Te52VtckUdCVwjsPryoHt+hqbq7omna9S3rsmJv8kRxK6gaf1WUmqOS2CPYEwKCfWUI6
- T1cMh53mvmVPljoH82e3kmwoJCG7UN+pV/8L27KzfC3eoVCMyOKsMufE4UdPfN5LJm/o
- Je+EtEq2dW6gaziafrr/HDcwwqbRDX/A5cMrBI/O+9q+FY3u1RIVkkBGDCxPIzpXBMM/
- B+mw==
+ bh=cRPdfPABMtc6nEYPUNYt/nouMTo5ozDAHvfPfCMWLkc=;
+ b=DnujIVcWQxNsW8fGVVEXdP4rGRTYg3fpGCjoVh5rRccYlAtvMb5FFVHiPVXA0WifC5
+ 9vHG09eQa1tEJ1Sh8VWDBa9yexRI2N8PbfGJiTGRtgU+wsXD9vHcSkBNDWTglFkpvCIM
+ xD+5OoQqncKRkxFVGNeykyQA3bC03wy4i0sXBDQHp6d29y3d6U/HfFAm/jbHQbgi8qot
+ Gi2/heLyVvzS4b6/LOa+4JGKwia3npEteke3Y3zGIaee2gjE0gI2LfloH2A+TC13qjQu
+ 1QoVDGL+o2+OUJKN824nIz/5gpTYhCv1A9FHxqPl7mRh80DNeFGVkLxwaz1kxDwriTbr
+ ozeQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=j1K665DWN4ZiKQztmxe9q0N6SGvqyosNgZAisBnHWWA=;
- b=WZZkNyAPKzfU7tmL3PN7GSmKEU2HTcRNKd6EhTJMh2DD3x08UFHClzsJm7WrnLs6S0
- 3y3K3HfxGnHb4ocfHgmpS93ShEwciBs5lGtMzoug/cgD3hL5qDsBGHVkzf4z8bpNYv2r
- 0D4QvNPGLWuY9sax1ywgDX2R/ucChu5df2ctrpJgh/WoFHxWJGT/G/MU9px4iEKwjf9w
- d/sfCDs7EgP/bH6nkIlO0MtQegELLNRgqG9/gn5oUHyw3Pg7wdHrJ1z2Kgjvp8gK1fv7
- Ic4YA+bHwcZOeAJu107iijZjRIa9xZBd6bqrTYDcnNraUD1L689ZP5DoTD+mxXP7GTQ1
- UgNQ==
-X-Gm-Message-State: AOAM533DWfP1aVrHNU6dLhLzTI3NC0rhQNorhPR8UJtPaGXpTiNT1kI4
- GMH35tsZc8+L9U4cucVYsMStqYrxTCfyur1F6GNYJQ==
-X-Received: by 2002:a05:6402:3548:: with SMTP id
- f8mr2924467edd.251.1622106284055; 
- Thu, 27 May 2021 02:04:44 -0700 (PDT)
+ bh=cRPdfPABMtc6nEYPUNYt/nouMTo5ozDAHvfPfCMWLkc=;
+ b=ei/UOX2fs/DP98wJNOuQlJoaez+WALBk1+zCyp91tyEdDMsRKhk62HrLf+bcv1GqrF
+ Kj6I3eSz++UUujvj84X8PTMCrOEax8g0VTPOsAfIlTMwCF7n6eGbVnKW69tiZVyj1Kwk
+ bZRbyubSeSv0ZDqF7pLXKejnRUe4cHWBAWvwjkSwGlrLfJ8rL/fgWEpHA+nnSjZVdTSW
+ ibtiL7h+y8z08+T3HMcKrUwEqt0gCcc9cEAoxw2diRGXUcPF3GJKTL6Bp+AEvFCbB37/
+ L0j8NpYNQPRti9H8J7kVqFfDXIru2eZOtGNizJ7FyNfdXDYOyoOnj4vHnRfifNgojX73
+ NwlQ==
+X-Gm-Message-State: AOAM530gsVWhyWe0bvEwuma77KBXMUYxfGe77rGihZ1NjYKVAL4zQOam
+ ExRZGmiDT9DY+dhS9yJZ1xg59SnSMG4iDAZqhNQyDA==
+X-Received: by 2002:a05:6402:8d0:: with SMTP id
+ d16mr3063405edz.36.1622107744948; 
+ Thu, 27 May 2021 02:29:04 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210520051542.2378774-1-f4bug@amsat.org>
- <20210520051542.2378774-2-f4bug@amsat.org>
-In-Reply-To: <20210520051542.2378774-2-f4bug@amsat.org>
+References: <20210519200942.2223292-1-f4bug@amsat.org>
+ <20210519200942.2223292-3-f4bug@amsat.org>
+In-Reply-To: <20210519200942.2223292-3-f4bug@amsat.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 27 May 2021 10:04:18 +0100
-Message-ID: <CAFEAcA-CUvV3G+C_cE-1sQNQAFpsv2W=VYsoufr28VB-9cRiTQ@mail.gmail.com>
-Subject: Re: [PATCH v3 1/3] hw/arm/boot: Abort if set_kernel_args() fails
+Date: Thu, 27 May 2021 10:28:39 +0100
+Message-ID: <CAFEAcA9hNhU+iFexco9dbE5cuLhOpZo88a40G0E44SEK=UOZOg@mail.gmail.com>
+Subject: Re: [PATCH 2/3] hw/arm/Kconfig: Add missing dependency ZYNQ ->
+ USB_CHIPIDEA
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::535;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x535.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::534;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x534.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -102,57 +103,65 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5xb1+uFS0Gpb
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Alistair Francis <alistair@alistair23.me>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Guenter Roeck <linux@roeck-us.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 0GdyigmarA0Q
 
-On Thu, 20 May 2021 at 06:15, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
+On Wed, 19 May 2021 at 21:09, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
  wrote:
 >
-> If a address_space_write() call fails while calling
-> set_kernel_args(), the guest kernel will boot using
-> crap data. Avoid that by aborting if this ever occurs.
+> When using a binary built using --without-default-devices we get:
 >
+>   $ qemu-system-arm -M xilinx-zynq-a9
+>   **
+>   ERROR:qom/object.c:714:object_new_with_type: assertion failed: (type !=
+=3D NULL)
+>   Bail out! ERROR:qom/object.c:714:object_new_with_type: assertion failed=
+: (type !=3D NULL)
+>
+> Looking at the stack trace:
+>
+> (gdb) bt
+>   #3  0x00007ffff6e229ff in g_assertion_message_expr () at /lib64/libglib=
+-2.0.so.0
+>   #4  0x00005555558d3f01 in object_new_with_type (type=3D<optimized out>)=
+ at qom/object.c:714
+>   #5  0x00005555558d3f59 in object_new (typename=3Dtypename@entry=3D0x555=
+555ad4545 "usb-chipidea") at qom/object.c:747
+>   #6  0x00005555558cd526 in qdev_new (name=3Dname@entry=3D0x555555ad4545 =
+"usb-chipidea") at hw/core/qdev.c:153
+>   #7  0x0000555555739fc6 in sysbus_create_varargs (name=3Dname@entry=3D0x=
+555555ad4545 "usb-chipidea", addr=3Daddr@entry=3D3758104576) at hw/core/sys=
+bus.c:234
+>   #8  0x0000555555796b57 in sysbus_create_simple (irq=3D<optimized out>, =
+addr=3D3758104576, name=3D0x555555ad4545 "usb-chipidea") at include/hw/sysb=
+us.h:104
+>   #9  zynq_init (machine=3D0x555555de07a0) at hw/arm/xilinx_zynq.c:254
+>   #10 0x000055555573707c in machine_run_board_init (machine=3Dmachine@ent=
+ry=3D0x555555de07a0) at hw/core/machine.c:1238
+>
+> When replacing the xlnx,ps7-usb device by the IDEA one in commit
+> 616ec12d0fc ("hw/arm/xilinx_zynq: Fix USB port instantiation") we
+> forgot to add the Kconfig dependency on the new device. Do it now.
+>
+> Fixes: 616ec12d0fc ("hw/arm/xilinx_zynq: Fix USB port instantiation")
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-
-> @@ -786,10 +811,16 @@ static void do_cpu_reset(void *opaque)
->                  cpu_set_pc(cs, info->loader_start);
->
->                  if (!have_dtb(info)) {
-> +                    int err;
-> +
->                      if (old_param) {
-> -                        set_kernel_args_old(info, as);
-> +                        err =3D set_kernel_args_old(info, as);
->                      } else {
-> -                        set_kernel_args(info, as);
-> +                        err =3D set_kernel_args(info, as);
-> +                    }
-> +                    if (err) {
-> +                        error_report("could not set kernel arguments");
-> +                        exit(1);
->                      }
->                  }
->              } else {
-
-Since this is in the 'reset' method it's in theory possible that
-we might end up exit()ing here in mid-run if the simulation
-does a reset and the second reset fails but the one on bootup
-didn't. But that seems pretty unlikely, and in any case this
-code is all in the "booting Linux, but no DTB" codepath, which
-is nowadays a pretty rare case.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 

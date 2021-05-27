@@ -1,106 +1,113 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp186167lfm;
-        Thu, 27 May 2021 02:52:12 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzgmaLsZBKBj1YaDfq//yTeg+i/0y9RNtb6QJyZtjKpOYR8yrGVd9ROPsddDqipQyVx0hrE
-X-Received: by 2002:a05:6214:bce:: with SMTP id ff14mr2897752qvb.1.1622109132776;
-        Thu, 27 May 2021 02:52:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1622109132; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp187673lfm;
+        Thu, 27 May 2021 02:54:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx1nGjWEUwg89P/cx1/grkPJdazy0aTElXQkHhwPvy+ycWYrF3F0D/AbrXirTlDso7dSRBw
+X-Received: by 2002:a92:c8cc:: with SMTP id c12mr2344511ilq.117.1622109271416;
+        Thu, 27 May 2021 02:54:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1622109271; cv=none;
         d=google.com; s=arc-20160816;
-        b=OUH3vmzpWa5kIXMdVggleQ5+z5edk3jGdztDUsOxeii0hHj6HI3bSjxK7gE+bUFfSV
-         n/uqxMJiCtfwpgp/tdAs/Gjw4Axee8/JmXBbhzxnfD3U/6CrGbH7k/bhJ3BJ+G6rfp2Q
-         112uvGTtngrcEAjmEpYN2SCg3ZGKaDIxx7ft4xj/zwuFaaQx0PaHWTWUQhG6X6BBws6A
-         mhyaBixguaGyJBjKOPvXF16rHAgysAoGpflQb/Nd741eDwuD3T6EEmr8J48o/vCUnaUj
-         F2VImDW0UK47yTdZHog4kdNmimEr1gsTVMvwbmqTG6weG0NHGpqZAWEIPwmuw8IdY5qO
-         BH2A==
+        b=Wnl8YsP8oEsLGW/I5hp9pKR2D65LtkI36dUpFqFTadFMnthutKyaT0zvXB4R5G1aKn
+         k1OGZSFNwlYfvkmp4+DeFIn8cF8qOd5LHCEeM0TKl/oKMZVCSOjnEgYY886aPkFOELFT
+         HCpuIGBAv95tIHuQX13TQCeOEF2m4M45QFmZd6Y5GyzE2WgB2lgNxXGnLOSJAIoZWxmj
+         M0hxPbKg3LRojq/Pno+Ght74N2ETZGC1uu7jX2BgZCxB+MH78C6PBeHAIRwhwZskEWoE
+         3yRa5JSKNsWsKl7hvam9l4MKuFpz5heASThkoFP2AclU0K2654Aw9JzZm9YDL54M3MDq
+         1jdg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=G5B5hvCGISwVvcSmxDpwJiBIsP15U0MlpZf6BrKPNX8=;
-        b=TDIh1mTxUS7T9Wga9w1YL6YdTRyDgmWujh7+dUnoIy/+NBY97f5n8MM73kFhuRAlpX
-         UQXMk/IHL2BikBhu/9oxMD77H+0yMH/uVXsGnO0mvSi1CAH+NOge2BwoDjT4AWO1g9Yi
-         vWjTBFOqKv7a62P/6G2Hhq9dr7ZN0fcvJAHeCufrr7p8B/r3uH+lcv65LqMUkBKcYbY1
-         7C9DX2hOU/VcS7Eemzk28SS4OLdS4sW36e0LE621imPRVLdfSa9WSpQPH7MpatV5lSNI
-         ZVJX3ZqDxlXOAamMaLTkSqYfukrjt1jPVb+IoxCVLuhP+alGrCLj8XvZ23327DzYVuPd
-         wCJw==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=4sisNMx84BvPjXsvgOybQwXvbQ/NVRTfcXmO0r697pE=;
+        b=hN1o+4zq+xnHFnE0UPpaySGkwk5csAfYmNcnE+QnFB6H9APCpzKw2hM5eFNTp97YD4
+         Xf7CeWGH3VNdK1+qGS3O4JAe7A9FoLWAYY23CxkqRmDtcuj0c4wReUt5R/yIzT6pyxSF
+         yzL4sE5PuFXT6jRHK774YiH/eVbHlObSnYwlKP82hxpp+oMZRYgL2kJIkJDoU0JFuK1C
+         XOYIbJzMeeXUaLANY8ylulRAvxUf62nkFIAdCZjPHOHJstafZroEszcf8Ps3ISbJAsSr
+         GDOw8CNBo1vQtIhqpaALDSDq5AvHlmZVH8uUg0TnfBrTmLcVW0Dxd7Oea5SNFCsZvzhm
+         i8CA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="YCx3w/RA";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=j9wM28oo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h6si1054234qvs.110.2021.05.27.02.52.12
+        by mx.google.com with ESMTPS id a23si2119406jap.18.2021.05.27.02.54.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 May 2021 02:52:12 -0700 (PDT)
+        Thu, 27 May 2021 02:54:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="YCx3w/RA";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=j9wM28oo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:55862 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:58210 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lmCgW-0006Li-3A
-	for alex.bennee@linaro.org; Thu, 27 May 2021 05:52:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52402)
+	id 1lmCij-0007ys-HX
+	for alex.bennee@linaro.org; Thu, 27 May 2021 05:54:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53102)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lmCgL-0006Ip-FI
- for qemu-arm@nongnu.org; Thu, 27 May 2021 05:52:01 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433]:44669)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lmCiP-0007wK-Ng; Thu, 27 May 2021 05:54:09 -0400
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:43617)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lmCgG-0002zz-EA
- for qemu-arm@nongnu.org; Thu, 27 May 2021 05:52:01 -0400
-Received: by mail-wr1-x433.google.com with SMTP id r10so4040866wrj.11
- for <qemu-arm@nongnu.org>; Thu, 27 May 2021 02:51:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=G5B5hvCGISwVvcSmxDpwJiBIsP15U0MlpZf6BrKPNX8=;
- b=YCx3w/RAumGPZ6rdVTx27h7SNU8eZKEGfKNYJBwOaIiscpmNBLkbBvrjCq3U4IpWLF
- 1oSY0LXwPZt9WtTzoUTKfPE9GzVNXPi1LDbzcVXoCPQNRAQE8ZfVCVIncBvWGIIMK87M
- EHimicMHaRvA3sX9sXZCB6lUqFEBoHlE8/sf2sgb7vxx04vCVU5qR69IL9ZgTfiYyVY8
- Xj9+z3IyiVlxfEtysGrJVdjhWObjMfcp6rHrKIxsvFmASbG1JjB/MoVCkj/wNV7dbF3r
- ME6giU47bdqdBOaIqm2nkHON8tESme0ZEqd4ARvZsIcSgBSjmNBc9jlClhHDVgc30+/U
- SoZQ==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lmCiO-0004ZF-1I; Thu, 27 May 2021 05:54:09 -0400
+Received: by mail-wr1-x431.google.com with SMTP id p7so4065244wru.10;
+ Thu, 27 May 2021 02:54:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=4sisNMx84BvPjXsvgOybQwXvbQ/NVRTfcXmO0r697pE=;
+ b=j9wM28oopqgjLJvGO6zIe/s/nDa31iY5VBJ1SFuBfFWSjDOOR2Zd3wbU70vWVjD79Y
+ TgKuSNhE23WoLfSybQEpLumisCe2znz8FDZIOj5J3RSroiXbJ4Wef85BCQ3KFq6tWQcT
+ 95aFoFvBRVii6jN45TQJXV86Ex5bZUY4CxhtErJPg53LgYneksuuZDuGGFGZQlsFLEbd
+ nW8quqL+4sHCSTm2JVSj+V7A9JUNBl5SDMDbWH3cWcKo6o5zs1c6n7+LBcQiCpsEE3BP
+ Jrp6QeQ+Ckcuu2HGxOZO8/H8GEXOzMu2LTVm7QeN513JN1OHvfalKZ7BiO5APa3eYVL9
+ qw7Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+ h=x-gm-message-state:sender:subject:to:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=G5B5hvCGISwVvcSmxDpwJiBIsP15U0MlpZf6BrKPNX8=;
- b=n74kIL4/JieUsdXx60QYpY/N/y6GvvZpvFigtrhg9UGksIjxzdXQRLcpvKKYeaVwaR
- 4VPdv9sM6PIQFiiF/97V6qf0Y5wFtrKD2wXmn4KCIELPMOJ1DvYWlqDR7T89VXbI3wKT
- loy01ruyNZzxJBkJ1145HYYxBr6ofDcPFF3qnu33aCkj6VZ/3f7BdFr2exJEYKSNNrId
- lSocRKpipYRhAF1gvibqO5zo6k8W2CVRoYbV3GbROtKvjaZMeBkLef8sXbfc21+0hnD/
- 0Zx0R5rbc46skqKALPSfDm7X9kDL+HQG0klckuYhfpzObrvydU1MA/WgFvYR3QmYBpH9
- xaXg==
-X-Gm-Message-State: AOAM532JcPFhFZYdIyYAgUHkKsM7t+NQYJUHiBfsBrIY3q8dQ+t68cv9
- u080QpIc/82xQ6sHNss4RXxmmYiSPMXOJzps
-X-Received: by 2002:adf:e411:: with SMTP id g17mr2388550wrm.402.1622109114209; 
- Thu, 27 May 2021 02:51:54 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id y14sm2357589wrr.82.2021.05.27.02.51.53
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 27 May 2021 02:51:53 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH] arm: Consistently use "Cortex-Axx", not "Cortex Axx"
-Date: Thu, 27 May 2021 10:51:52 +0100
-Message-Id: <20210527095152.10968-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
+ bh=4sisNMx84BvPjXsvgOybQwXvbQ/NVRTfcXmO0r697pE=;
+ b=bZKPS0s+OjH4PIZRN4fpsMKqIfFZD5Oqbg/v3d9JAeld6WORpDe06U50RyZuaQHzIx
+ 1Z2Mdpxa9bSJSR1pHhIgGY0gxjtdQ3yKNCeAeUg4mqEK/THDGeqikS4H92QzKUaZko12
+ 8JrVQLAYLbC2qCxk3efVOT9q88EelHpSI3Voxl/M7UKn97D3ahPwg89wJGtSpj8gAbLo
+ x7x5SszcG+/maEc8gafgzv6nfI+GxyO2dEAWjfwz/zeHkVdIYg2DO12C2/f03/7qjPC4
+ XgWvGiMrQPmuZTWmDfYE4N0OFcHEreIKHaklbLx8c3Vd4A8+ZIKJHrSIj7EpkDUqj+wQ
+ bV1A==
+X-Gm-Message-State: AOAM533LeTSZC2UGQdjov16iCUX9pDLCAr0mg+kyE7+564OE7Ns9rTZv
+ d6pRVZRZrnO6//lkRgLi/iP1LKzXCh1IdQ==
+X-Received: by 2002:a5d:4f03:: with SMTP id c3mr2393202wru.158.1622109245538; 
+ Thu, 27 May 2021 02:54:05 -0700 (PDT)
+Received: from [192.168.1.36] (235.red-83-57-168.dynamicip.rima-tde.net.
+ [83.57.168.235])
+ by smtp.gmail.com with ESMTPSA id j18sm2136045wmq.27.2021.05.27.02.54.04
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 27 May 2021 02:54:05 -0700 (PDT)
+Subject: Re: [PATCH] arm: Consistently use "Cortex-Axx", not "Cortex Axx"
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20210527095152.10968-1-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <b57c6656-7344-bdc3-2461-d1c60bc08d8c@amsat.org>
+Date: Thu, 27 May 2021 11:54:03 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.1
 MIME-Version: 1.0
+In-Reply-To: <20210527095152.10968-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x433.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x431.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -115,210 +122,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IVzhgKbliHoe
+X-TUID: w/gOUUURoNLz
 
-The official punctuation for Arm CPU names uses a hyphen, like
-"Cortex-A9". We mostly follow this, but in a few places usage
-without the hyphen has crept in. Fix those so we consistently
-use the same way of writing the CPU name.
+On 5/27/21 11:51 AM, Peter Maydell wrote:
+> The official punctuation for Arm CPU names uses a hyphen, like
+> "Cortex-A9". We mostly follow this, but in a few places usage
+> without the hyphen has crept in. Fix those so we consistently
+> use the same way of writing the CPU name.
+> 
+> This commit was created with:
+>   git grep -z -l 'Cortex ' | xargs -0 sed -i 's/Cortex /Cortex-/'
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  docs/system/arm/aspeed.rst    | 4 ++--
+>  docs/system/arm/nuvoton.rst   | 6 +++---
+>  docs/system/arm/sabrelite.rst | 2 +-
+>  include/hw/arm/allwinner-h3.h | 2 +-
+>  hw/arm/aspeed.c               | 6 +++---
+>  hw/arm/mcimx6ul-evk.c         | 2 +-
+>  hw/arm/mcimx7d-sabre.c        | 2 +-
+>  hw/arm/npcm7xx_boards.c       | 4 ++--
+>  hw/arm/sabrelite.c            | 2 +-
+>  hw/misc/npcm7xx_clk.c         | 2 +-
+>  10 files changed, 16 insertions(+), 16 deletions(-)
 
-This commit was created with:
-  git grep -z -l 'Cortex ' | xargs -0 sed -i 's/Cortex /Cortex-/'
-
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- docs/system/arm/aspeed.rst    | 4 ++--
- docs/system/arm/nuvoton.rst   | 6 +++---
- docs/system/arm/sabrelite.rst | 2 +-
- include/hw/arm/allwinner-h3.h | 2 +-
- hw/arm/aspeed.c               | 6 +++---
- hw/arm/mcimx6ul-evk.c         | 2 +-
- hw/arm/mcimx7d-sabre.c        | 2 +-
- hw/arm/npcm7xx_boards.c       | 4 ++--
- hw/arm/sabrelite.c            | 2 +-
- hw/misc/npcm7xx_clk.c         | 2 +-
- 10 files changed, 16 insertions(+), 16 deletions(-)
-
-diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-index a1911f94031..57ee2bd94fc 100644
---- a/docs/system/arm/aspeed.rst
-+++ b/docs/system/arm/aspeed.rst
-@@ -5,7 +5,7 @@ The QEMU Aspeed machines model BMCs of various OpenPOWER systems and
- Aspeed evaluation boards. They are based on different releases of the
- Aspeed SoC : the AST2400 integrating an ARM926EJ-S CPU (400MHz), the
- AST2500 with an ARM1176JZS CPU (800MHz) and more recently the AST2600
--with dual cores ARM Cortex A7 CPUs (1.2GHz).
-+with dual cores ARM Cortex-A7 CPUs (1.2GHz).
- 
- The SoC comes with RAM, Gigabit ethernet, USB, SD/MMC, USB, SPI, I2C,
- etc.
-@@ -24,7 +24,7 @@ AST2500 SoC based machines :
- 
- AST2600 SoC based machines :
- 
--- ``ast2600-evb``          Aspeed AST2600 Evaluation board (Cortex A7)
-+- ``ast2600-evb``          Aspeed AST2600 Evaluation board (Cortex-A7)
- - ``tacoma-bmc``           OpenPOWER Witherspoon POWER9 AST2600 BMC
- 
- Supported devices
-diff --git a/docs/system/arm/nuvoton.rst b/docs/system/arm/nuvoton.rst
-index d3cf2d9cd7e..ca011bd4797 100644
---- a/docs/system/arm/nuvoton.rst
-+++ b/docs/system/arm/nuvoton.rst
-@@ -3,19 +3,19 @@ Nuvoton iBMC boards (``npcm750-evb``, ``quanta-gsj``)
- 
- The `Nuvoton iBMC`_ chips (NPCM7xx) are a family of ARM-based SoCs that are
- designed to be used as Baseboard Management Controllers (BMCs) in various
--servers. They all feature one or two ARM Cortex A9 CPU cores, as well as an
-+servers. They all feature one or two ARM Cortex-A9 CPU cores, as well as an
- assortment of peripherals targeted for either Enterprise or Data Center /
- Hyperscale applications. The former is a superset of the latter, so NPCM750 has
- all the peripherals of NPCM730 and more.
- 
- .. _Nuvoton iBMC: https://www.nuvoton.com/products/cloud-computing/ibmc/
- 
--The NPCM750 SoC has two Cortex A9 cores and is targeted for the Enterprise
-+The NPCM750 SoC has two Cortex-A9 cores and is targeted for the Enterprise
- segment. The following machines are based on this chip :
- 
- - ``npcm750-evb``       Nuvoton NPCM750 Evaluation board
- 
--The NPCM730 SoC has two Cortex A9 cores and is targeted for Data Center and
-+The NPCM730 SoC has two Cortex-A9 cores and is targeted for Data Center and
- Hyperscale applications. The following machines are based on this chip :
- 
- - ``quanta-gsj``        Quanta GSJ server BMC
-diff --git a/docs/system/arm/sabrelite.rst b/docs/system/arm/sabrelite.rst
-index 71713310e3a..4ccb0560afe 100644
---- a/docs/system/arm/sabrelite.rst
-+++ b/docs/system/arm/sabrelite.rst
-@@ -10,7 +10,7 @@ Supported devices
- 
- The SABRE Lite machine supports the following devices:
- 
-- * Up to 4 Cortex A9 cores
-+ * Up to 4 Cortex-A9 cores
-  * Generic Interrupt Controller
-  * 1 Clock Controller Module
-  * 1 System Reset Controller
-diff --git a/include/hw/arm/allwinner-h3.h b/include/hw/arm/allwinner-h3.h
-index cc308a5d2c9..63025fb27c8 100644
---- a/include/hw/arm/allwinner-h3.h
-+++ b/include/hw/arm/allwinner-h3.h
-@@ -18,7 +18,7 @@
-  */
- 
- /*
-- * The Allwinner H3 is a System on Chip containing four ARM Cortex A7
-+ * The Allwinner H3 is a System on Chip containing four ARM Cortex-A7
-  * processor cores. Features and specifications include DDR2/DDR3 memory,
-  * SD/MMC storage cards, 10/100/1000Mbit Ethernet, USB 2.0, HDMI and
-  * various I/O modules.
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 3fe6c55744f..0eafc791540 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -947,7 +947,7 @@ static void aspeed_machine_ast2600_evb_class_init(ObjectClass *oc, void *data)
-     MachineClass *mc = MACHINE_CLASS(oc);
-     AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
- 
--    mc->desc       = "Aspeed AST2600 EVB (Cortex A7)";
-+    mc->desc       = "Aspeed AST2600 EVB (Cortex-A7)";
-     amc->soc_name  = "ast2600-a1";
-     amc->hw_strap1 = AST2600_EVB_HW_STRAP1;
-     amc->hw_strap2 = AST2600_EVB_HW_STRAP2;
-@@ -966,7 +966,7 @@ static void aspeed_machine_tacoma_class_init(ObjectClass *oc, void *data)
-     MachineClass *mc = MACHINE_CLASS(oc);
-     AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
- 
--    mc->desc       = "OpenPOWER Tacoma BMC (Cortex A7)";
-+    mc->desc       = "OpenPOWER Tacoma BMC (Cortex-A7)";
-     amc->soc_name  = "ast2600-a1";
-     amc->hw_strap1 = TACOMA_BMC_HW_STRAP1;
-     amc->hw_strap2 = TACOMA_BMC_HW_STRAP2;
-@@ -1003,7 +1003,7 @@ static void aspeed_machine_rainier_class_init(ObjectClass *oc, void *data)
-     MachineClass *mc = MACHINE_CLASS(oc);
-     AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
- 
--    mc->desc       = "IBM Rainier BMC (Cortex A7)";
-+    mc->desc       = "IBM Rainier BMC (Cortex-A7)";
-     amc->soc_name  = "ast2600-a1";
-     amc->hw_strap1 = RAINIER_BMC_HW_STRAP1;
-     amc->hw_strap2 = RAINIER_BMC_HW_STRAP2;
-diff --git a/hw/arm/mcimx6ul-evk.c b/hw/arm/mcimx6ul-evk.c
-index ce16b6b3174..77fae874b16 100644
---- a/hw/arm/mcimx6ul-evk.c
-+++ b/hw/arm/mcimx6ul-evk.c
-@@ -67,7 +67,7 @@ static void mcimx6ul_evk_init(MachineState *machine)
- 
- static void mcimx6ul_evk_machine_init(MachineClass *mc)
- {
--    mc->desc = "Freescale i.MX6UL Evaluation Kit (Cortex A7)";
-+    mc->desc = "Freescale i.MX6UL Evaluation Kit (Cortex-A7)";
-     mc->init = mcimx6ul_evk_init;
-     mc->max_cpus = FSL_IMX6UL_NUM_CPUS;
-     mc->default_ram_id = "mcimx6ul-evk.ram";
-diff --git a/hw/arm/mcimx7d-sabre.c b/hw/arm/mcimx7d-sabre.c
-index e896222c34c..935d4b0f1cd 100644
---- a/hw/arm/mcimx7d-sabre.c
-+++ b/hw/arm/mcimx7d-sabre.c
-@@ -67,7 +67,7 @@ static void mcimx7d_sabre_init(MachineState *machine)
- 
- static void mcimx7d_sabre_machine_init(MachineClass *mc)
- {
--    mc->desc = "Freescale i.MX7 DUAL SABRE (Cortex A7)";
-+    mc->desc = "Freescale i.MX7 DUAL SABRE (Cortex-A7)";
-     mc->init = mcimx7d_sabre_init;
-     mc->max_cpus = FSL_IMX7_NUM_CPUS;
-     mc->default_ram_id = "mcimx7d-sabre.ram";
-diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c
-index d4553e37865..698be46d303 100644
---- a/hw/arm/npcm7xx_boards.c
-+++ b/hw/arm/npcm7xx_boards.c
-@@ -299,7 +299,7 @@ static void npcm750_evb_machine_class_init(ObjectClass *oc, void *data)
- 
-     npcm7xx_set_soc_type(nmc, TYPE_NPCM750);
- 
--    mc->desc = "Nuvoton NPCM750 Evaluation Board (Cortex A9)";
-+    mc->desc = "Nuvoton NPCM750 Evaluation Board (Cortex-A9)";
-     mc->init = npcm750_evb_init;
-     mc->default_ram_size = 512 * MiB;
- };
-@@ -311,7 +311,7 @@ static void gsj_machine_class_init(ObjectClass *oc, void *data)
- 
-     npcm7xx_set_soc_type(nmc, TYPE_NPCM730);
- 
--    mc->desc = "Quanta GSJ (Cortex A9)";
-+    mc->desc = "Quanta GSJ (Cortex-A9)";
-     mc->init = quanta_gsj_init;
-     mc->default_ram_size = 512 * MiB;
- };
-diff --git a/hw/arm/sabrelite.c b/hw/arm/sabrelite.c
-index 42348e5cb15..29fc777b613 100644
---- a/hw/arm/sabrelite.c
-+++ b/hw/arm/sabrelite.c
-@@ -105,7 +105,7 @@ static void sabrelite_init(MachineState *machine)
- 
- static void sabrelite_machine_init(MachineClass *mc)
- {
--    mc->desc = "Freescale i.MX6 Quad SABRE Lite Board (Cortex A9)";
-+    mc->desc = "Freescale i.MX6 Quad SABRE Lite Board (Cortex-A9)";
-     mc->init = sabrelite_init;
-     mc->max_cpus = FSL_IMX6_NUM_CPUS;
-     mc->ignore_memory_transaction_failures = true;
-diff --git a/hw/misc/npcm7xx_clk.c b/hw/misc/npcm7xx_clk.c
-index a1ee67dc9a1..0b61070c52f 100644
---- a/hw/misc/npcm7xx_clk.c
-+++ b/hw/misc/npcm7xx_clk.c
-@@ -35,7 +35,7 @@
- #define NPCM7XX_CLOCK_REF_HZ            (25000000)
- 
- /* Register Field Definitions */
--#define NPCM7XX_CLK_WDRCR_CA9C  BIT(0) /* Cortex A9 Cores */
-+#define NPCM7XX_CLK_WDRCR_CA9C  BIT(0) /* Cortex-A9 Cores */
- 
- #define PLLCON_LOKI     BIT(31)
- #define PLLCON_LOKS     BIT(30)
--- 
-2.20.1
-
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

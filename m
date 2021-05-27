@@ -1,116 +1,105 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp5676592lfm;
-        Wed, 26 May 2021 11:21:29 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy5kRk18QLcJFMsd51Oh6M4PTglq4VZEa/1D/GJOgxuLdNaQ3aE0G/9hUlktsPBd0Fu9gfR
-X-Received: by 2002:a02:b718:: with SMTP id g24mr4575848jam.16.1622053289422;
-        Wed, 26 May 2021 11:21:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1622053289; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp158890lfm;
+        Thu, 27 May 2021 02:08:34 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxu/sAeWOmoRe8Cdi8rynzF66ok7kwkb4t45q0C67AijGoWodawsW7QqRc5MHixBIColU6S
+X-Received: by 2002:a05:6102:10f:: with SMTP id z15mr1391793vsq.34.1622106514768;
+        Thu, 27 May 2021 02:08:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1622106514; cv=none;
         d=google.com; s=arc-20160816;
-        b=Yu5ZH6y0TNhg5BX4NGYQseypcXbFW5DnFCnnuUeUtzyw8U93vMxbEOdSrFg0Sdoz2e
-         LcRNrLO0Tp2eAq5cwZ2y+OQutBTxNkLYYWP3PNCPVmQ6hj5cRZ6pxoEwx0cULN3a/SEx
-         +QZpXnPh1J/uHcSW/QAE/Aro6YGNp63FnWiuwik2KWxmI29EzqXFTlwp2Qutsn++NjzQ
-         09nr4Ep4XTEvbFz+bCV/gmw5XCI2va+pr2D4J5RjYyXxEJKUFqc6R7Mzpf6O64btnoyt
-         XZkl03PeBlXO5F00SAv9HDFLIda6he4dhVBkIcvx8I0x32NsQIfma2cCsLU3zBU2FoRk
-         uYYA==
+        b=cB0MBmxKJF0BDRcdrJyKenBFAxESe8MLnQDnyyNv24qYOGchCLSDilnhHyx2s5DwdY
+         yjY+oYgkU2hoHkSSdk7QHZKT5qKr8VBnkc56lhFhPAxIHNsNFhR2+YKTQE+Zhzl6A6Ow
+         pmKVV/INPYqBa3R3Wm4w+5EDC40L+QV7zij55pUklvqiitdKPclw83+TP5xHCUyzifn9
+         vbRBXIeUl4TTCNGPpjd5pZt40HW7ErtSFjjhKOq4YkxqIS1wyDEJOhpM+SCzbKDGgW5X
+         3KjNGpGLD75oXtJftxc+3fWhsIw1yaWi3Xb74r0oCBJZrpR6ouH30czUxmBz6FE8nbIp
+         6vbw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=rRju/jjBGwrN1xvcOyDup2sVG0roEKR7mdyoEfLmHKI=;
-        b=D7vVw1CHwGDn2qY4Dz2ycDyipkksBxBzhl3SaMLQYv/gj1iCol/zB4uJTYpS66sftH
-         jkPThcWIAMvdCVqiw4h+oYgFiLe8hg8c+ErLx1+5bqdW/rx+Y1euVRt/+zNW6R1TWYv0
-         kwjneTNgYUoqnh5j9XwlSeVEriGaRRgFaZ05mOqDJH8Z+kF9+M0y/3M22TWbXhga84nv
-         /54NIYtmTnj/E1waQ6hLobG+9bXvrEcGHoW7WPFDLWpgwMRJ2nskAIauuh7j/5ligRaa
-         fSxoGLEzGnbnlLOzn9hZ69ajDdIV913N1YgbaM4WOceorsyqIepIGYnrUcmOsKBGrU7H
-         TzAg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=KVEuB+h4KzEXpphTEpF4JDFUcpRvqaV1m8M0c2d/CQg=;
+        b=dUI4FqCAInT1idsboQLnxvbE/YjFruPyOsHXK7OU1qRKsViq3zmxgrW2hPezyT02+T
+         K781oeSW/a6/GW9nPswOCL9jlx3y36J9g5QYQ4hmkGF6Jd0oBYnc7b2Nq9YPd6GR8B48
+         KH4HcQZatyTS1dhBNgHj/QrUKoXpH/otjxwfeoHdn1rD++dpXkVoSFAerX+lpJ6wxMmp
+         XYOd2AmMS+kCCf1r7gRVOcdI0a70c1mZMLEZIxBPyf+4w+SGc0D3hxsURRrkZaqGznlq
+         uNmIu9iZdRsYAf7HkBiZJLNr3tb5qCkNafikwIAXFy9GkYYc3d30cSb5fWviFV0vI+tv
+         e8Dg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=dGmD93+c;
+       dkim=fail header.i=@linaro.org header.s=google header.b=b9cGvjIh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s4si63167jan.21.2021.05.26.11.21.29
+        by mx.google.com with ESMTPS id h14si578324uap.213.2021.05.27.02.08.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 May 2021 11:21:29 -0700 (PDT)
+        Thu, 27 May 2021 02:08:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=dGmD93+c;
+       dkim=fail header.i=@linaro.org header.s=google header.b=b9cGvjIh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:38060 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:56632 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lly9o-0001qM-La
-	for alex.bennee@linaro.org; Wed, 26 May 2021 14:21:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52758)
+	id 1lmC0I-0002UT-42
+	for alex.bennee@linaro.org; Thu, 27 May 2021 05:08:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43488)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1llxd5-0004Il-Fp
- for qemu-arm@nongnu.org; Wed, 26 May 2021 13:47:41 -0400
-Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629]:39884)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lmC06-0002Th-Ak
+ for qemu-arm@nongnu.org; Thu, 27 May 2021 05:08:22 -0400
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635]:39730)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1llxd1-0000aj-44
- for qemu-arm@nongnu.org; Wed, 26 May 2021 13:47:39 -0400
-Received: by mail-pl1-x629.google.com with SMTP id q16so994025pls.6
- for <qemu-arm@nongnu.org>; Wed, 26 May 2021 10:47:33 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lmBzz-0003qk-3L
+ for qemu-arm@nongnu.org; Thu, 27 May 2021 05:08:22 -0400
+Received: by mail-ej1-x635.google.com with SMTP id l1so6875324ejb.6
+ for <qemu-arm@nongnu.org>; Thu, 27 May 2021 02:08:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=rRju/jjBGwrN1xvcOyDup2sVG0roEKR7mdyoEfLmHKI=;
- b=dGmD93+cb3/ZbvKlxKnzI/NwvWQe4TAKedNWgSS/sBrFCXCad5sFoObCjqVNGlRy5P
- C5W/0gC+dgaTfuHwIXELUN+BBIiqAwAExB7m9eZELNqtv5MNFEVOKwRHBs1vo+q9iGgQ
- z8pi03s8LAOES+QuznASx75mHgc+a1sG5YFSLFXbfhYsdFXKlTTD/5HJDs1pnOKpB9X2
- Q9gBQnjyZxXDozdrSlLQAkhrAijji3dbTYxvxfpmJbLe5QKthhTqJNTOAmpjEYQjMGiX
- sNk2KHI/F7HxWxRaWSpP8ePr6RFRhJTlenmw+ND8GDhcO79QyfcVVAGUiBVee3vVYi/j
- COpg==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=KVEuB+h4KzEXpphTEpF4JDFUcpRvqaV1m8M0c2d/CQg=;
+ b=b9cGvjIhM/4M5iBjBK8Wrk8wEhAl87luaQZSqlMPtKTfHvP2Sx0MULIY1G+ATDniT8
+ or2frEBy4UMrg9adjd+4hyPJyFNOYUAH3rfIQm7BSFGn1EmE3FSKApC5EFYf/RzDR7OP
+ At/IBhst1xIE3Qx31AMWKQWmafaqBAtPr0kUp5gRE2S7DJ/frVjbnbBcaPyjAacRBCUb
+ Bvn0L2DUXfrRSrqZv0oTbpotEWf+zz1lr1pY4kxI9Y3KuCH04gJ4H1tc+3+DywLrlwQz
+ oguPQKnghw6IQP1a6WwZ3s9iY623QxO35M4RFE+Y57pms/4Igy1llBejT4+M3DWkH02l
+ ojog==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=rRju/jjBGwrN1xvcOyDup2sVG0roEKR7mdyoEfLmHKI=;
- b=FWw8tmTCDOhN+vplkoxecwjOYSr0x4Pt1+vy6ZKBcpjhyPts1zuQfvbuR62hOuwkM5
- WIdGzrc9qOrwVM7en5JhBrM4QjxCKA48/lAPV1CJQzHMyKFhUFo+BewGSRHqCeHvru7q
- 4TodU1DfnmMcLwwE+v/boGyVm+BtOgZFkdCnwRrT7S+cbIZY1hT3lI65jBaqI0njAFCW
- f8aymvA508HdZpPhOE2zSfugef2uRIeeCxgHAQCeX4eB7FPNwNYSZfDsc3elKZzbX+Md
- PnRAPty/XE1M00ssh6EZPq9BHmSpKyd0kIyGhIMxPCg1OqJoL7seS0pr0jm4lOnvCxUq
- rIJw==
-X-Gm-Message-State: AOAM533gwGZ9nlnRRj1YzsgBhXrzcX5k1Qqys/4v2aZC2BkZ0v3/e4fy
- ALiYfHMaA1lcPrHT0+EXGQ/NZw==
-X-Received: by 2002:a17:902:e850:b029:f0:baa0:19ea with SMTP id
- t16-20020a170902e850b02900f0baa019eamr37145287plg.47.1622051252600; 
- Wed, 26 May 2021 10:47:32 -0700 (PDT)
-Received: from [192.168.1.11] (174-21-70-228.tukw.qwest.net. [174.21.70.228])
- by smtp.gmail.com with ESMTPSA id k9sm13517pgq.27.2021.05.26.10.47.32
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 26 May 2021 10:47:32 -0700 (PDT)
-Subject: Re: [PATCH v7 02/23] cpu: Restrict target cpu_do_transaction_failed()
- handlers to sysemu
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-References: <20210517105140.1062037-1-f4bug@amsat.org>
- <20210517105140.1062037-3-f4bug@amsat.org>
- <ae262a9c-1ffa-b680-4aa6-d7256fa6947a@linaro.org>
- <5a1389f6-ced6-3b09-ba9b-749e2db2de4b@amsat.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <8c35d706-be36-1715-2fba-b43bd230d1c5@linaro.org>
-Date: Wed, 26 May 2021 10:47:30 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=KVEuB+h4KzEXpphTEpF4JDFUcpRvqaV1m8M0c2d/CQg=;
+ b=RFZOWiy4zV2A4sXwd9hOvRhhRKjjVBhhHwUnYUiigZjoYqyLgYxHacmucBP9rGOIVr
+ aDHUVu7SIH75wY0LyQZsYIpHjeq1uIQTS2FCteRGnXHShLApLagHqEnMNg6dLaPEzW8p
+ 49/bEbl3MUnHZtcGfAO4obCKZiMMsKuVKp8MOdXrDlt5u1FHpuwJViSgQE06kQGV9p0q
+ Pn6o/JQZkQ+V2FmZIYhxmptRS8cxkfLQYpfdwrN2J+mpcxebZAzIbPHwDQ6VBh8tSNUp
+ Nd7CE1S+fe9DQd2hPznrgFNmbrkKDqT16B52IFFEUgDRgQhfKs+E0G+zmZ37rltg/X0N
+ Qfpw==
+X-Gm-Message-State: AOAM530Krub3WLDdRaZDS96PuRDBW8VK1LU1Fz21l3mAydpKP+dhXfdC
+ TOFtlwGYwZ8z4BCFW8Y00P2JXSmF/Zc1wBM2qSO4JA==
+X-Received: by 2002:a17:906:9bd6:: with SMTP id
+ de22mr2703345ejc.382.1622106492986; 
+ Thu, 27 May 2021 02:08:12 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <5a1389f6-ced6-3b09-ba9b-749e2db2de4b@amsat.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::629;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x629.google.com
+References: <20210520051542.2378774-1-f4bug@amsat.org>
+ <20210520051542.2378774-4-f4bug@amsat.org>
+In-Reply-To: <20210520051542.2378774-4-f4bug@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 27 May 2021 10:07:46 +0100
+Message-ID: <CAFEAcA-JLiP2OTYzhiWH1sNOW4-z+LF+9xWN73h=CzuVWx1iQg@mail.gmail.com>
+Subject: Re: [PATCH v3 3/3] hw/core/loader: Warn if we fail to load ROM
+ regions at reset
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::635;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x635.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -125,32 +114,58 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-riscv@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wBBTYT7nasIf
+X-TUID: u/b6MFSi5KTt
 
-On 5/26/21 10:22 AM, Philippe Mathieu-Daudé wrote:
->> What do the extra ifdefs buy us? Surely the fact that the symbol is not
->> present in the user-only, and would produce link errors if used, is
->> sufficient?
-> 
-> Last month on another series you told me we should declare prototypes
-> that can't be used :) However I agree we want *less* #ifdef'ry, not
-> more.
+On Thu, 20 May 2021 at 06:15, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
+ wrote:
+>
+> If the user provides an ELF file that's been linked to a wrong
+> address, we try to load it, fails, and keep going silently.
+> Instead,
+> Display a warning instead, but keep going to not disrupt users
+> accidentally relying on this 'continues-anyway' behaviour.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>  hw/core/loader.c | 12 ++++++++++--
+>  1 file changed, 10 insertions(+), 2 deletions(-)
+>
+> diff --git a/hw/core/loader.c b/hw/core/loader.c
+> index b3c4a654b45..37a2f2c4959 100644
+> --- a/hw/core/loader.c
+> +++ b/hw/core/loader.c
+> @@ -1147,8 +1147,16 @@ static void rom_reset(void *unused)
+>              void *host =3D memory_region_get_ram_ptr(rom->mr);
+>              memcpy(host, rom->data, rom->datasize);
+>          } else {
+> -            address_space_write_rom(rom->as, rom->addr, MEMTXATTRS_UNSPE=
+CIFIED,
+> -                                    rom->data, rom->datasize);
+> +            MemTxResult res;
+> +
+> +            res =3D address_space_write_rom(rom->as, rom->addr,
+> +                                          MEMTXATTRS_UNSPECIFIED,
+> +                                          rom->data, rom->datasize);
+> +            if (res !=3D MEMTX_OK) {
+> +                warn_report("rom: unable to write data (file '%s', "
+> +                            "addr=3D0x" TARGET_FMT_plx ", size=3D0x%zu)"=
+,
+> +                            rom->name, rom->addr, rom->datasize);
+> +            }
+>          }
+>          if (rom->isrom) {
+>              /* rom needs to be written only once */
 
-Should or shouldn't?
+address_space_write_rom() as currently implemented cannot ever
+fail: it always returns MEMTX_OK. (This is because it completely
+ignores attempts to write to devices, and writing to devices backed
+by host RAM always works.)
 
-Anyway, I don't think any of these declarations belong in cpu.h.  There's no 
-reason for any external user to reference them, as they ought to be using the 
-hw/core/ cpu_* functions.
+But perhaps this change is reasonable enough as future-proofing
+in case we decide to allow address_space_write_rom() to write
+rom blobs to devices in future?
 
-In an ideal world, we'd move them into some target/foo/sysemu/internal.h or 
-something, which would involve no ifdefs and still give you the isolation.
-
-But for the bulk of the targets, I think it's just easier to leave them alone.
-
-
-r~
+-- PMM

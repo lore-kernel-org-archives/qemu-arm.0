@@ -1,96 +1,96 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp250669lfm;
-        Thu, 27 May 2021 04:21:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxkPvcjcoLUXRppfPwEy/R4AAm0CDjQ0eYy4j9GQQdm+yuKBDQ1HZZGPy14Z9Y7FlwMY+mb
-X-Received: by 2002:a9f:29e4:: with SMTP id s91mr1543459uas.62.1622114484610;
-        Thu, 27 May 2021 04:21:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1622114484; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp256283lfm;
+        Thu, 27 May 2021 04:29:33 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzUShY8bnJ4yZhtEgIh2rWUsJXg87k930+KI4wMif9kVF61ENM64tsDxdrL/hzQn7zZBNGj
+X-Received: by 2002:a67:ce15:: with SMTP id s21mr1446868vsl.52.1622114973810;
+        Thu, 27 May 2021 04:29:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1622114973; cv=none;
         d=google.com; s=arc-20160816;
-        b=PogTLPKfaT+TEJsz0jGyT2K2dQp5NlPi/j2ALrYAUjijLecgo2K0Bu3DkquvX/6QgQ
-         zuQsMtAanCcYsG3GC89+AdDxFtBpV4Cju+dkx38yfOg5nSauKHESJ4lOMgE2DCxSEEFx
-         KLz8Pz1PcCIDLtQ7LQO7+t/5g5tdunHQBitHQ+POJtVPF9D2G3+qa5ae6u6WfThdQ7XH
-         bKEb7tFSgL4xe/DQWyeXUXp1SaPAr2e/nwYftAU3gwkz9bsgtruK9FEuI9Gn6Y0untQT
-         6Rel9VixVO1Ko+FKgN68avaZIqdw9xKdmW+kW0PMXVJ1Sa7C69Gu2pvS66ylm73cK63f
-         hFSA==
+        b=FSJni7eXBBKM08e+xL2D3J4BqR6V9DOe+kvIKHygPCmYQxRGkH23mihSsNmp+yOtf+
+         nMnNL1uJfk2vDCeXxLzk9FY0Ck+yXGiBVGYH491QanVdkIagqeHZf+c4Bx3sxfDI0Ddz
+         9uC9jvWwhExJ5P5UzTXQZCtMo5KzH8OpLcKseHocGAmTrRkS7ehO6pPOBsXH5GvwN707
+         F6+5s9cwFWfTJOzuNrAAlqIURYj1F2/06V/k7BXpSQ6A/wtoLMbA1sC8iX0gCesVPHHf
+         uYAK1aR7/2l0sinly9B6xeHW3ktlRFDmAXVrl2GMBAjy3wPD7fsOdXNzb8lCDfpO/YId
+         KPvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
          :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=Aq3izwLoKG1KxXtKb/Q9i2QmWFPxDqBIw1ROvhHj/Nk=;
-        b=GEGT0CayDeo/A+kKgSzpHc3SdMnYLT55l9/0ymb7QIMw3Qkp3DOq2/5wo/PIIFD9M0
-         myyC+kYgULn/6DzGR1G8vtszp5xyWDzHOOJnDKk1hBf6HKAnwxYW5wjDzBWp4eNgPr/M
-         kydkr1WOrgxqhr8XGK+els2JAj4VAylUl7qSP/KyktomQ6GcRlLeMZnK3onQJXkenUZS
-         Q3KezpqGNiMKGz2C+pX1HlyBd2QNj1+HnlEFif65SK8ZdYe8iITywnw8nkdY5sm/gTYS
-         Jv6TPM+hfnJybcHVisjRZk+UIA737LWtBXnuZYyNZLWzpU9nBkQZ6YPoIZ/fNGnKMyo7
-         va1g==
+        bh=eQl7SdgQPE1e6OtdD40szvHIDUBuDbka4mZUpfLluf4=;
+        b=IpJmY4EPy/qZb5a+1u+EJS3qFh0o7Cbw/VnqJgFeIZsut+x1Lr6ZS5PJEW6P7bo+Ns
+         c7uF2fHKo+sc698fA4AXf9EvPRtXNLmg1XFAkIeWq/amehGhvNTzKAf0Mt2o8XPhUxb/
+         oXLy4Atugmk0UpFxlJu5ZTX2RAcEJm/lMWy/gydMjiAC3nEJKF2ZVyf73yvmstTL5Mha
+         z8p1AiGFsUOlpQbf8pLJoAwcSs9WvNFZ1LoCucb3jSdMQyWUfJ1G2a6r0NwOQ/28fJ4o
+         YDMg2cCOXqrWKwg83X7c2hwl4A7A5GXlJCjUoOU1s31cWNt5RgSXVMQ2sVSl7m9NHNHe
+         Hk2w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="V0mQw8n/";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HbTj0IjZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w4si648456uae.229.2021.05.27.04.21.24
+        by mx.google.com with ESMTPS id l24si633395vsq.434.2021.05.27.04.29.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 May 2021 04:21:24 -0700 (PDT)
+        Thu, 27 May 2021 04:29:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="V0mQw8n/";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HbTj0IjZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39158 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45222 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lmE4p-0005ox-PV
-	for alex.bennee@linaro.org; Thu, 27 May 2021 07:21:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43070)
+	id 1lmECj-000208-26
+	for alex.bennee@linaro.org; Thu, 27 May 2021 07:29:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43606)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <slp@redhat.com>) id 1lmE2g-0005n3-Je
- for qemu-arm@nongnu.org; Thu, 27 May 2021 07:19:15 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:45049)
+ (Exim 4.90_1) (envelope-from <slp@redhat.com>) id 1lmE4l-0006Xq-VO
+ for qemu-arm@nongnu.org; Thu, 27 May 2021 07:21:20 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:37677)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <slp@redhat.com>) id 1lmE2Z-0001X6-8X
- for qemu-arm@nongnu.org; Thu, 27 May 2021 07:19:09 -0400
+ (Exim 4.90_1) (envelope-from <slp@redhat.com>) id 1lmE4c-0002RZ-7c
+ for qemu-arm@nongnu.org; Thu, 27 May 2021 07:21:15 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1622114338;
+ s=mimecast20190719; t=1622114462;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=Aq3izwLoKG1KxXtKb/Q9i2QmWFPxDqBIw1ROvhHj/Nk=;
- b=V0mQw8n/BUvQFgXuDppr5r7wIqOuLSuOua666a57EOSOPVIm5JJbP3L9ORsD+ub715kslN
- b6RZ75RT60UfJARGn5z6ZP0QGQtMDj4iji2Qffp7AIBw5zMfxDVW4aHfWdVcDT+K38QCeO
- 566RGIvMTsabRn84RAVfTK6IfHgOHQI=
+ bh=eQl7SdgQPE1e6OtdD40szvHIDUBuDbka4mZUpfLluf4=;
+ b=HbTj0IjZJqBKcjtBEaHbqzxw/QKTuf/bdnsQofokvy5yNfLLg2Aen4NFa62f3vg7PL+R6a
+ bEUaM/hyv3jZCdf7K4sA6YE9b4rt+cJ9YgSGvKTLKD6P3hH0ASXQNzSIbCbWCMN6TWFJ9F
+ 7chBioBnDXEOcHdeU8WKs10xuGXmlx0=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-401-osAcLv-0PqSDLxeBG7uQMA-1; Thu, 27 May 2021 07:18:57 -0400
-X-MC-Unique: osAcLv-0PqSDLxeBG7uQMA-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ us-mta-282-NaZefpYJNh2IK50HcJVUOg-1; Thu, 27 May 2021 07:20:58 -0400
+X-MC-Unique: NaZefpYJNh2IK50HcJVUOg-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 29FEE800D55;
- Thu, 27 May 2021 11:18:55 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9FFBF501E3;
+ Thu, 27 May 2021 11:20:57 +0000 (UTC)
 Received: from localhost (unknown [10.33.36.9])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 8AAC1503E5;
- Thu, 27 May 2021 11:18:54 +0000 (UTC)
-Date: Thu, 27 May 2021 13:18:53 +0200
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 411551349A;
+ Thu, 27 May 2021 11:20:57 +0000 (UTC)
+Date: Thu, 27 May 2021 13:20:56 +0200
 From: Sergio Lopez <slp@redhat.com>
 To: Alexander Graf <agraf@csgraf.de>
-Subject: Re: [PATCH v8 15/19] hvf: arm: Implement -cpu host
-Message-ID: <20210527111853.3zuudgp5xjwydelj@mhamilton>
+Subject: Re: [PATCH v8 17/19] arm: Add Hypervisor.framework build target
+Message-ID: <20210527112056.aa67wn2e5nclzdyt@mhamilton>
 References: <20210519202253.76782-1-agraf@csgraf.de>
- <20210519202253.76782-16-agraf@csgraf.de>
+ <20210519202253.76782-18-agraf@csgraf.de>
 MIME-Version: 1.0
-In-Reply-To: <20210519202253.76782-16-agraf@csgraf.de>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+In-Reply-To: <20210519202253.76782-18-agraf@csgraf.de>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=slp@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="ve5zr4shbjyq33wl"
+ protocol="application/pgp-signature"; boundary="p77kyj5io4mhodgn"
 Content-Disposition: inline
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=slp@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=slp@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -31
 X-Spam_score: -3.2
@@ -98,7 +98,7 @@ X-Spam_bar: ---
 X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.374,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -120,64 +120,65 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ow7WPExIBGvq
+X-TUID: kMEib7bvRN+O
 
---ve5zr4shbjyq33wl
+--p77kyj5io4mhodgn
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, May 19, 2021 at 10:22:49PM +0200, Alexander Graf wrote:
-> Now that we have working system register sync, we push more target CPU
-> properties into the virtual machine. That might be useful in some
-> situations, but is not the typical case that users want.
->=20
-> So let's add a -cpu host option that allows them to explicitly pass all
-> CPU capabilities of their host CPU into the guest.
+On Wed, May 19, 2021 at 10:22:51PM +0200, Alexander Graf wrote:
+> Now that we have all logic in place that we need to handle Hypervisor.fra=
+mework
+> on Apple Silicon systems, let's add CONFIG_HVF for aarch64 as well so tha=
+t we
+> can build it.
 >=20
 > Signed-off-by: Alexander Graf <agraf@csgraf.de>
-> Acked-by: Roman Bolshakov <r.bolshakov@yadro.com>
+> Reviewed-by: Roman Bolshakov <r.bolshakov@yadro.com>
+> Tested-by: Roman Bolshakov <r.bolshakov@yadro.com> (x86 only)
 >=20
 > ---
+>=20
+> v1 -> v2:
+>=20
+>   - Fix build on 32bit arm
+>=20
+> v3 -> v4:
+>=20
+>   - Remove i386-softmmu target
 >=20
 > v6 -> v7:
 >=20
->   - Move function define to own header
->   - Do not propagate SVE features for HVF
->   - Remove stray whitespace change
->   - Verify that EL0 and EL1 do not allow AArch32 mode
->   - Only probe host CPU features once
+>   - Simplify HVF matching logic in meson build file
 > ---
->  target/arm/cpu.c     |  9 ++++--
->  target/arm/cpu.h     |  2 ++
->  target/arm/hvf/hvf.c | 72 ++++++++++++++++++++++++++++++++++++++++++++
->  target/arm/hvf_arm.h | 19 ++++++++++++
->  target/arm/kvm_arm.h |  2 --
->  5 files changed, 100 insertions(+), 4 deletions(-)
->  create mode 100644 target/arm/hvf_arm.h
+>  meson.build                | 7 +++++++
+>  target/arm/hvf/meson.build | 3 +++
+>  target/arm/meson.build     | 2 ++
+>  3 files changed, 12 insertions(+)
+>  create mode 100644 target/arm/hvf/meson.build
 
 Reviewed-by: Sergio Lopez <slp@redhat.com>
-Tested-by: Sergio Lopez <slp@redhat.com>
 
---ve5zr4shbjyq33wl
+--p77kyj5io4mhodgn
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAABCAAdFiEEvtX891EthoCRQuii9GknjS8MAjUFAmCvgBwACgkQ9GknjS8M
-AjVYRQ/+Lvv/4vrR0TUadO6MtkXDkYsuDcqHv8Ij0TnQ5mbskHPMyYHJHmzeA+ak
-0Bp65ZkidXEMJ1bS+yRUsyCPm2y7G7D9nevU38+E3Wk9tbdLq64fQmI75ZZBO2uH
-0nBqopc3DyicBe4GsVd5RX3LavuRbUSx3cgjFwc1PknrWyo5smfBrs5E6/6ltRlC
-4NqdiHdNVHOlG3giUxLrXgifVSzVCMxgVPqIHaTK06zP2bs/XxwKW1XlCobU7w37
-9QWPH+1uOsf0UfKpEkf+nNltBYLcU1KF28N2WfDleaVEUJdlI44Ek838w1T2ZWbi
-jz1CwxZr90HI7TN+TuGRRsGGSzTVbjBlE040mUu+yzKqkxBjSUpYAC9kDPM3U3Ty
-kPnl1yPiw+tnAErXeHAeHgO1RGdazWY8ByMV2oRdD+TbPUtfh/wruYNE9V9Li9sp
-W4rodMdLZZFQ25C4i/kjDNjR00gyocCbLdQIspWdZDTe4S9RPZVIWWpMCiYnvUGF
-d9V6XTZYsqZn/NWkaNZvFVHxcmEGiszq5S4MZ7H84ONDEpQM6ajEw1sXIHXX7Jyi
-18ah8SJcKVKBiAnmMChUOYi+cR3xGKYDY1tjoJ5nMFfFdSUuPng5oWuKDuCkiSnh
-wqv53RiD92jZhFJ2ErTHzK6NvAobdHTv9dJU40t805hjOpc3SfA=
-=pNh+
+iQIzBAABCAAdFiEEvtX891EthoCRQuii9GknjS8MAjUFAmCvgJcACgkQ9GknjS8M
+AjXxIA//Xznb8k3xQCoTar7wYSDZLXyd4OfGx/OGswaYkrLmQspuYITw6D/9H5ya
+1Cfghx/CfYFiFC5g1/eEN1jnd1a36PSbnARBgKhaOiHGSE1hcdypSIoZtVMsPiqO
+rtVTZcuQxrBXqAA3LlR/6UZf4/pPk3ekSXuOeHej+EPgWUPowyw9+jl32sLkKMH/
+0tLgIgG4Zc4Nl7hwdWsZ/vezhrjpuT82NxvFEfiZYnHZ3gW30EuwEuWpQlddoEr+
+UHN/c5ZodA/m9foVgoWvkPyYDJZNfL8+TS4FtanqbQBO53NfZuHXIBrWO8FGaDLX
+GAaw0NOrj69HH/UHX1cynC3lw5kMQdRZG5sTfg4dZ0Kqc/pmxb0vSF7ROz6kdPBm
+6fG43P9VERg9JpHhnYFf2eXw9dtrdauJRbUw6OGvDqKwyBUQgI5JTHmwEuaPDA0z
+/cMIUPU7Xpp11xMlcHkWRnyF5J4+s3jYQFS+e2vHGHbftyYhAahqJOnLX7XOzQH/
+MRfrZ5rnGzzRv28rd8Wa5HxIBoeIdSCNroMfopMy4UGfPdG/azadDRqu+NOEulx2
+9a5Lr/VRbm7iXnC14G4CkBvK38NtYKHh0APLsx+7GlsyQKFmacHWB51opcXrNx8G
+nSNZ71PmJT93DtGsDoCjhoasgd4g294F4Y5r7MEd2Sr6FhLNSTs=
+=6Zar
 -----END PGP SIGNATURE-----
 
---ve5zr4shbjyq33wl--
+--p77kyj5io4mhodgn--
 

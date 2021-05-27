@@ -1,106 +1,104 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp170907lfm;
-        Thu, 27 May 2021 02:28:20 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyxNEvMANMbU2PMReHmf3ZrQlHqGfGsBINvEYtCn6qCAk1yWu3aJAMMXWRfpIfnHwXysvUx
-X-Received: by 2002:a25:ba83:: with SMTP id s3mr3385130ybg.280.1622107700141;
-        Thu, 27 May 2021 02:28:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1622107700; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp192642lfm;
+        Thu, 27 May 2021 03:01:54 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwNbjNyhOCJbp2lR6b0+U0CLZH0xfCd1M+oT/ZfKyb0O73Zwq4uPzAr91tXeQoK4WWnbOMI
+X-Received: by 2002:a05:6602:72f:: with SMTP id g15mr2179587iox.5.1622109714226;
+        Thu, 27 May 2021 03:01:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1622109714; cv=none;
         d=google.com; s=arc-20160816;
-        b=FzslRnKOQY4SU+qva65rHOUcA03gORJ0Oz6+LUBnG0MglTEaHJ+s6P5Jur9gRnglnb
-         WgeExTYru1zhB88DEfjqtwVp8UCWyCLvRZ/ZKSpBgRZFHuzIrwPgnfrlV5znrEM/Wnxk
-         sLe67BAocYEIZwn5WnsafVIel1xmixQGYyjsxcUK0UJOVf9hnkedt+rdgbfHbdVmKET6
-         XKdxfqLcsrwiy4CCBlVZzb6fbu0yLwMk8hROPzhqbX+umWiF716PcmmR0a3X+9oeFp6F
-         nsmbmJhLyyAV662v8qrcls2z0xjhG5gXT/R7PddbWBPXVSRvvA1HIArbKSJJa+xPuh+C
-         s1pw==
+        b=BAqt+BVQIkTjrLZqgbAE1QvV3wzykj4uYUp9UL8GJC8qnQIZpBXFInZmlWR/ZJ1EMi
+         hTuxljRXAgb82bPE1lojKScUx9A0tV6VoVWsgPH1QG8goKvbCjfcnfEsKH9T6hK4dZPP
+         tjakEs1w+lITKOF7Z3B75GOjEbmRIiU/goDtwzxmRm71BTCjzWWuMvqolGgqDBFE6vig
+         sxvaA48/YQ0FlGq8i7CIKCK5qgXcVzsGzd63KvNfY3I1jCAZEbxN302c6U6CX6Y/CFW9
+         YjrZyC4pew7QXh8DpNjxX5HLdy/PiodHQvnne7OZ50TI9bt4bo7k8TNWHdMcxClbIA6I
+         6fbw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=107pA0QjTIX+m6t0IRQ+DHQqazt1HtFlkQYv1e+lqZE=;
-        b=Cl6Ps/LqNEzGxYG1GeEbPKKgoZYnulsGfhBwDd+WVNgj77FL+tOlYqW4N30JDLGGtQ
-         VyQY8KIeDBg+O+YOFtb3YZxoG+OhxolOpPxWIWRIH/P+3Ny4VFGK+zkf8lMK8ZjdbAmW
-         JJqVDMIQGVlUOO9/8WdJ1K5JDQqnGMLwR7IFrvepmbzPM/bgwyDcyDKKAUobeXNemXSC
-         JrSQmFI6QPPpcRUNQNHCeVyVJe5MaKBRatCoCawEYYgiv2nvD1krtj4ffwwkqrL1TMEO
-         BEMYwkV8zTsk8NMyvolc/yeol/1RYYUkofMaNgUThH7TuoP2HSuxNKwLRX0/g6/lllwv
-         h1wQ==
+        bh=mcDgi9hTG8Vv1O6v/vf5EtYlsjhgWZxHD/rxGKh6A1U=;
+        b=f3ujXq8WzYy1yzwF9ImI7GnJmS0f6lr8FeC85+lL3JXm9jyphtXlEl+UhbHANTtnZS
+         gF+YqCQPyaV8uuE14iR4Rq09D56Zq9T4XxBSzLTtNWKTEJvF+83Bp8jaurCtO+OdEzTQ
+         uveDPntTQoNd8AuU4S+9JAnq8l/dkW6wVtUj+aiHMfyfzMH4m/wID+9M9AydhOshA9QC
+         RhYC736RQXclVK1sp04rzywv/7OHVWgnz/2m8nDE0Ahi7oanO6L4Y2B3tFEh+przu5tt
+         ihyoMSoodNO7Pd2wxFc1V00dm6OnY/8so6vvd5HQyKtSMmwRVT1cctsdH+imTdDijriW
+         ToBA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=AQCdy68U;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WnVdrYbK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m63si1982637ybf.426.2021.05.27.02.28.19
+        by mx.google.com with ESMTPS id k7si2026251ilh.42.2021.05.27.03.01.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 May 2021 02:28:20 -0700 (PDT)
+        Thu, 27 May 2021 03:01:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=AQCdy68U;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WnVdrYbK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37384 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:35332 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lmCJP-0001DG-Ha
-	for alex.bennee@linaro.org; Thu, 27 May 2021 05:28:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47664)
+	id 1lmCpt-0003Rv-L3
+	for alex.bennee@linaro.org; Thu, 27 May 2021 06:01:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54798)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lmCJH-0001Bd-3b
- for qemu-arm@nongnu.org; Thu, 27 May 2021 05:28:11 -0400
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a]:34506)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lmCJE-0002jh-5G
- for qemu-arm@nongnu.org; Thu, 27 May 2021 05:28:10 -0400
-Received: by mail-ed1-x52a.google.com with SMTP id r23so87632edw.1
- for <qemu-arm@nongnu.org>; Thu, 27 May 2021 02:28:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=107pA0QjTIX+m6t0IRQ+DHQqazt1HtFlkQYv1e+lqZE=;
- b=AQCdy68UecWyE5JdxgBqiCgWuLrj07kGsiYkHkLbt0ivMCF12ifJcOMJPSeEHtKvii
- uGvittTDL9KMhOq3k4aEpN+p+3iXgfcnQ3Y1/gimwM7AXvUYiWGHYa8URP1L+mCL1BxB
- U+0/VfJPcxI2ZUPG+xq/eO6/CL5jP/E+faKdpVW9NIq6GSy17l5MNbxa0eKO/Y8afPRv
- rJ8MrAPvmfqxsiJS1ewuvvv8kP0Mji7IVCYl0uMhp4qw4w7zqnCYchtZDJFe1YdCKNLm
- uwu6/m9CS5Afm0TfAdXMck5JWZ5o2U5coGaBloDKPU8rFvuSdved23Q158r9U/Gc/NuF
- hkiA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=107pA0QjTIX+m6t0IRQ+DHQqazt1HtFlkQYv1e+lqZE=;
- b=W1YRL4dA5me1/g4w+tH/vI6M8C0E6giQm5iWO8M23JwvWwYw9wm43QC+4LtDWFfpI5
- ikrGvlwI8P1SweTgoEYP+3n3C8HaiWdvxjXpxzomODBuvq1cKNU0ozpK6zh77fACOtln
- xVUs7dnWQWFU5i6Mt09dXA2NLZ2nY9OFuY4Zjz97A+xaOAgBcLbe1xopGnNRlhOsbinn
- /Bwy/tweB4c4MPkI2/W8SFFsbREK8+IhXeBoz8phsi9VSLXna2IfS0Ee4nV/bl4yZt8Q
- Cc53BQttX1el8lBi8fdnwI8kUh0hPXxYaWjyl3l35LRLo2UlctgdinyRTzB1VmZKyjil
- yO3A==
-X-Gm-Message-State: AOAM533RnGdYCUZuUWiT2Ryg/p+RTMKJcxnlmFFTx298ddChWDNsDlBU
- AudU6Ip+nZ5AcLtfr44PqJZ/2B7cvFiCbfoYCL5CXg==
-X-Received: by 2002:a05:6402:190e:: with SMTP id
- e14mr3124478edz.146.1622107685890; 
- Thu, 27 May 2021 02:28:05 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <slp@redhat.com>) id 1lmCp0-0003Of-B8
+ for qemu-arm@nongnu.org; Thu, 27 May 2021 06:01:04 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:22385)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <slp@redhat.com>) id 1lmCoq-0000Uq-9I
+ for qemu-arm@nongnu.org; Thu, 27 May 2021 06:00:51 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1622109644;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=mcDgi9hTG8Vv1O6v/vf5EtYlsjhgWZxHD/rxGKh6A1U=;
+ b=WnVdrYbK2tmPRx1JoJUqvfKObTPnfEolL4i2D2QZj2bU+QGIdph/zRWH1NA+4rOOyFAsoR
+ MiZzNmvzLNXDoRcdFC/zA36qvhl5ux/DHuH8n4sPhz0BuBCSECJ7jcwoPk2PbJ6oTsEH4H
+ /ZxOulLNIbdSUl5/8s08XMHZXmjz7nk=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-530-yc-U1BrsMuSlalx4emj1xQ-1; Thu, 27 May 2021 06:00:40 -0400
+X-MC-Unique: yc-U1BrsMuSlalx4emj1xQ-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E7F1080ED91;
+ Thu, 27 May 2021 10:00:38 +0000 (UTC)
+Received: from localhost (unknown [10.33.36.9])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 5DB4067CC4;
+ Thu, 27 May 2021 10:00:33 +0000 (UTC)
+Date: Thu, 27 May 2021 12:00:32 +0200
+From: Sergio Lopez <slp@redhat.com>
+To: Alexander Graf <agraf@csgraf.de>
+Subject: Re: [PATCH v8 01/19] hvf: Move assert_hvf_ok() into common directory
+Message-ID: <20210527100032.xkq57c37jepff6bz@mhamilton>
+References: <20210519202253.76782-1-agraf@csgraf.de>
+ <20210519202253.76782-2-agraf@csgraf.de>
 MIME-Version: 1.0
-References: <20210519200942.2223292-1-f4bug@amsat.org>
- <20210519200942.2223292-2-f4bug@amsat.org>
-In-Reply-To: <20210519200942.2223292-2-f4bug@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 27 May 2021 10:27:39 +0100
-Message-ID: <CAFEAcA-G2Gtd+mCAUXGtL0OJXUwTt=zFAWe0WPvkhSeiAuLnUQ@mail.gmail.com>
-Subject: Re: [PATCH 1/3] hw/usb/Kconfig: Introduce USB_CHIPIDEA symbol
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+In-Reply-To: <20210519202253.76782-2-agraf@csgraf.de>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=slp@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="bta7ssz4bo6dj32q"
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=slp@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.371,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -113,69 +111,66 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Alistair Francis <alistair@alistair23.me>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Gerd Hoffmann <kraxel@redhat.com>, Guenter Roeck <linux@roeck-us.net>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>, Peter Collingbourne <pcc@google.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, Cameron Esfahani <dirty@apple.com>,
+ Roman Bolshakov <r.bolshakov@yadro.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Frank Yang <lfy@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pxZtlRqoS8gD
+X-TUID: I27Ej9J3IePl
 
-On Wed, 19 May 2021 at 21:09, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
- wrote:
->
-> Currently the TYPE_CHIPIDEA model is only built when the IMX
-> machines are built. Since it is not specific to IMX, add its
-> symbol to allow other machines to use it.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+--bta7ssz4bo6dj32q
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Wed, May 19, 2021 at 10:22:35PM +0200, Alexander Graf wrote:
+> Until now, Hypervisor.framework has only been available on x86_64 systems=
+.
+> With Apple Silicon shipping now, it extends its reach to aarch64. To
+> prepare for support for multiple architectures, let's start moving common
+> code out into its own accel directory.
+>=20
+> This patch moves assert_hvf_ok() and introduces generic build infrastruct=
+ure.
+>=20
+> Signed-off-by: Alexander Graf <agraf@csgraf.de>
 > ---
->  hw/arm/Kconfig     | 4 ++++
->  hw/usb/Kconfig     | 3 +++
->  hw/usb/meson.build | 2 +-
->  3 files changed, 8 insertions(+), 1 deletion(-)
->
-> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> index b887f6a5b17..585de92f00a 100644
-> --- a/hw/arm/Kconfig
-> +++ b/hw/arm/Kconfig
-> @@ -385,6 +385,7 @@ config FSL_IMX25
->      select IMX_I2C
->      select WDT_IMX2
->      select DS1338
-> +    select USB_CHIPIDEA
->
->  config FSL_IMX31
->      bool
-> @@ -403,6 +404,7 @@ config FSL_IMX6
->      select IMX_USBPHY
->      select WDT_IMX2
->      select SDHCI
-> +    select USB_CHIPIDEA
->
->  config ASPEED_SOC
->      bool
-> @@ -447,6 +449,7 @@ config FSL_IMX7
->      select PCI_EXPRESS_DESIGNWARE
->      select SDHCI
->      select UNIMP
-> +    select USB_CHIPIDEA
->
->  config ARM_SMMUV3
->      bool
-> @@ -460,6 +463,7 @@ config FSL_IMX6UL
->      select WDT_IMX2
->      select SDHCI
->      select UNIMP
-> +    select USB_CHIPIDEA
->
->  config MICROBIT
->      bool
+>  MAINTAINERS              |  8 +++++++
+>  accel/hvf/hvf-all.c      | 47 ++++++++++++++++++++++++++++++++++++++++
+>  accel/hvf/meson.build    |  6 +++++
+>  accel/meson.build        |  1 +
+>  include/sysemu/hvf_int.h | 18 +++++++++++++++
+>  target/i386/hvf/hvf.c    | 33 +---------------------------
+>  6 files changed, 81 insertions(+), 32 deletions(-)
+>  create mode 100644 accel/hvf/hvf-all.c
+>  create mode 100644 accel/hvf/meson.build
+>  create mode 100644 include/sysemu/hvf_int.h
 
-Missing "select USB_CHIPIDEA" in "config FSL_IMX31" ?
+Reviewed-by: Sergio Lopez <slp@redhat.com>
 
-(Side note: is it worth moving the FSL_* config sections so
-they're all next to each other? We seem to have allowed them
-to become separated by some other unrelated sections...)
+--bta7ssz4bo6dj32q
+Content-Type: application/pgp-signature; name="signature.asc"
 
-thanks
--- PMM
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEvtX891EthoCRQuii9GknjS8MAjUFAmCvbbUACgkQ9GknjS8M
+AjUumA/+KqbqRxsOi2T6wJWg99+A4vcAEhWTQvAIJcKE825TvEVW81RprG6pgAj3
+doFflIeyDjDnOomazk978SelG+dJCPDYvAv6YCOJM5BFLUCWDm5S4/9VMf1FSTAo
+WeCJ1UTTdXyinQVBvoyqkEdVE9q5XPaN2Nz9eDVED03mzaFZIDoEgW47C0jlw3Gv
+5PFpfrFKnSsN+zFg5KFNUTU/mI/Ipxo7wSNFMKJgc9y4994Cyors4o043v3A9fF/
+NDrSSivxnltDUADxBeQhADo7U+SDfR9qPjmCKNWyxz1jkVQPZ6StfuDatOjADFf0
+l0zbO45zxAIasGN+9em+oGBkYVnbAdUt8M8IBUCgVRbDjbCoCz3B1lfyKg1RgLZ0
+79mff4PZ+t27T3R3yeM2gmuz56MingE9SNXXrIjO/j1vDFk9s01g0v+herVbs0zW
+80R+VNMudU3e5H9LTqWlv1Bu9CAu96NofyZ2zsVE2n8IM3DiEMWO18XjMuS7Qmma
+WuILczRTJ9qHR4be44I4IOIFDbRRurOJNelow9rD0z8V5cUVU25WrwuKpCCRk+p+
+MtFYwN6IUxTTdmNoh8W56b980miSKTd4hIaADR8dXyEFNbWae7LtOtw1g0fr93M9
+0Dxm2vxp+bWv1pzIImZMEbZ4dBXx40xvJmHKp/S9WMq3i/2oE3g=
+=dzlR
+-----END PGP SIGNATURE-----
+
+--bta7ssz4bo6dj32q--
+

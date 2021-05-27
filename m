@@ -1,96 +1,96 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp230135lfm;
-        Thu, 27 May 2021 03:54:49 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx+dMPlSI55xLodyjEeWzOCCy5RXelTh4vdXm3US27FEAvwAFfpphfFQpxc3bEBQWt8vrr9
-X-Received: by 2002:a25:6088:: with SMTP id u130mr4013487ybb.257.1622112889785;
-        Thu, 27 May 2021 03:54:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1622112889; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp233902lfm;
+        Thu, 27 May 2021 04:00:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxHN8A+yxR+UakHQy5E9In0kl3zGNE6vsYLIPC6OlmuS0LwRhv+zD8EQmeC9AfWel3CXELb
+X-Received: by 2002:a92:c7ab:: with SMTP id f11mr1057661ilk.174.1622113238583;
+        Thu, 27 May 2021 04:00:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1622113238; cv=none;
         d=google.com; s=arc-20160816;
-        b=TEAZn9POPgoL+rKaxgcCzjscS3t+bpEelEADW5nXtR3++BX5mWD+YDGN01kHHaeSuh
-         DQ0wxn7iexiGJMXCsdDb89U/n8Y9RAKU1j8VmcR4/lN0Zm+ysZtVRxKmJUxF9hS/KpWX
-         rlrA2GHHpR96UC7tO2O7PBwW3Jmy27Lm+aQ+8VQ5b3WBd9i3QaYZ9hGbTEO0/63V+PHS
-         B9MW6qKG4ionIQA9ubsmFiFOeBA50xFs1+0Lp/OpZDeORST32d/TkcVV5z8kP7YcKnC/
-         11imM+J2oCmPpRIYUlXWH+XwpagINAl+zK0Rq4VUEwNTTFkSvcP2dVbIofAjAGb7VLwx
-         xyaQ==
+        b=yre1bcPpeSMX7TyF47AxS2lYOsEW9xRBOOzlH8jjAh3ZW/9kWHjV+wrFjasqN2G95j
+         3pF2wn1EOiHxv9Ow0RhWdXrvV1+dsidv3HXz37OBzjnGNs5CK2o3FDRmpnPk1Ta5E9MK
+         2rA8X2joTtoQgTklF2BTKQcyZ+ZGtH1q3aqqIQxsTbdhxjIrrJxEs0/b5lY7C9RXtC/Y
+         JliDqaXU461shIQIGAegHafEzg5dMvX3j345UeSnXgdUW90Ok1i8dztM331BT13Sz7BL
+         HGRVxzJSTQXEb8Nei7TlDi80/6HNqYCQKZYgqyhEdfulyQ9FeYmxnhzYcAmMWMaOcpF7
+         jGxA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
          :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=7fucvi8dBMNNJHLcNAsZVhC9rrtnB4YodPH/GjUeErg=;
-        b=dtbqfu/3eUYFWtybxf1iG8zPoyWxuwkAu9cVkKCXfqXWNGGCavLtqqvcRSdMAVW3/o
-         spyI78yNhJU40W6WevodhP7t1jIyUML75ODz9KflteDUEajerhJPdxrXvn/hM7nw/EBG
-         xFiNUjNG4rVGDiWxaLaSERYw8sXxALxkP0LjR0RyzF3d3wQ91AtIRN2ow5htvhyUHzHI
-         YkXJT3mkgLjHIAKHcd7dLioQwiM6y0qg6MtqQV8vgtrrMfw1X9dr7zJV69izrZu3AYWc
-         eFteo05YZxfimHsh6MReAuRdp0eUI9FHp0PxTaQk/JtVM5CtHTmbUKUZ2bH6tkxpHE+E
-         iJ8Q==
+        bh=MdUBzFc6n1Or590lZuh2+NwCH9Ax+PXt0a7SrMiaxLU=;
+        b=aXLDGbyJ7pJBOJxrNN0/6gTyQgLMKsiYm0ug6PJb3HigtOihN88ac+13xZuPg1Tu88
+         ZpKoVsocMhpS4+fp7ifiMHYwiWe1Tq+0OSqGLJuCiD3cMr2hgQmhn6UWGmH4/9yHsmvD
+         lS8lHGemcH7BNgL3OkXOBQKVX3qlrw5BXm3s6y2mb5/ifA9ukYFcEfQ43WWgKAg43mdw
+         gPMzDWQiXFW42vcvyLEeEvzhW2mqLckJ7kJx6VlIHkfgBxEzbb4vs9lL6tL11sYz8nYw
+         OGU+k0/x5LaRzShqlwYTgtdURJ1HAFt7EjhDS5a+nqUm8I6hPVEPbMgn4/9Ol61FkrfF
+         WUjg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Iv98PypR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Sl/vuyTD";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b14si1764324ybr.20.2021.05.27.03.54.49
+        by mx.google.com with ESMTPS id a16si1745748ilr.160.2021.05.27.04.00.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 May 2021 03:54:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 27 May 2021 04:00:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Iv98PypR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Sl/vuyTD";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49504 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54208 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lmDf5-0000z6-C0
-	for alex.bennee@linaro.org; Thu, 27 May 2021 06:54:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37918)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lmDkj-0004M7-T7
+	for alex.bennee@linaro.org; Thu, 27 May 2021 07:00:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38246)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <slp@redhat.com>) id 1lmDdi-0000hj-Nh
- for qemu-arm@nongnu.org; Thu, 27 May 2021 06:53:22 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:49967)
+ (Exim 4.90_1) (envelope-from <slp@redhat.com>) id 1lmDfu-0001lk-PI
+ for qemu-devel@nongnu.org; Thu, 27 May 2021 06:55:38 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:39193)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <slp@redhat.com>) id 1lmDdg-0003sb-SS
- for qemu-arm@nongnu.org; Thu, 27 May 2021 06:53:22 -0400
+ (Exim 4.90_1) (envelope-from <slp@redhat.com>) id 1lmDfg-0005Hr-Ef
+ for qemu-devel@nongnu.org; Thu, 27 May 2021 06:55:36 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1622112799;
+ s=mimecast20190719; t=1622112922;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=7fucvi8dBMNNJHLcNAsZVhC9rrtnB4YodPH/GjUeErg=;
- b=Iv98PypR+LEbpkVgG01wW1XpW2OEb6dAp3Z3Cv3LOXSfo0wRJLK7cTaUDfIjLENCn4Ij2j
- 4lECFTMbQRFWES/IjlbVvMiMZzJl/QTF6bWWiU6YcZR3mpfiVxUKAWXfJkQgfWiKw7vBLa
- PIa2ikqaxtgyX6QYihAsAFVej61svfE=
+ bh=MdUBzFc6n1Or590lZuh2+NwCH9Ax+PXt0a7SrMiaxLU=;
+ b=Sl/vuyTDBByNuohNKF3aXHUJ0iW11BMUd+O8kDiyts6KES1w2eh5/CiWWHthGUod+WX7i9
+ pIDirF4CbIc5TOhdDSaAz3yBVwgKqxVrLuZp7zsl59e7ywY2oNAj0jLeMh69kWnEdlfMFc
+ zJbIPGmXS3rPz4rlIBPMcnhwvhQKIC8=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-122-OttP6gkkNN-3zGaEKGNalg-1; Thu, 27 May 2021 06:53:16 -0400
-X-MC-Unique: OttP6gkkNN-3zGaEKGNalg-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
+ us-mta-447-zJ_Is4FUMX-xuaElyR2UWg-1; Thu, 27 May 2021 06:55:20 -0400
+X-MC-Unique: zJ_Is4FUMX-xuaElyR2UWg-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AE975106BB29;
- Thu, 27 May 2021 10:53:14 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 74267192377F;
+ Thu, 27 May 2021 10:55:18 +0000 (UTC)
 Received: from localhost (unknown [10.33.36.9])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 4D8581349A;
- Thu, 27 May 2021 10:53:14 +0000 (UTC)
-Date: Thu, 27 May 2021 12:53:13 +0200
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 0D5E71F0D9;
+ Thu, 27 May 2021 10:55:17 +0000 (UTC)
+Date: Thu, 27 May 2021 12:55:17 +0200
 From: Sergio Lopez <slp@redhat.com>
 To: Alexander Graf <agraf@csgraf.de>
-Subject: Re: [PATCH v8 14/19] arm/hvf: Add a WFI handler
-Message-ID: <20210527105313.bj7luz7sud7enfqr@mhamilton>
+Subject: Re: [PATCH v8 13/19] hvf: Add Apple Silicon support
+Message-ID: <20210527105517.hedpkkf7ld4ltb6c@mhamilton>
 References: <20210519202253.76782-1-agraf@csgraf.de>
- <20210519202253.76782-15-agraf@csgraf.de>
+ <20210519202253.76782-14-agraf@csgraf.de>
 MIME-Version: 1.0
-In-Reply-To: <20210519202253.76782-15-agraf@csgraf.de>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+In-Reply-To: <20210519202253.76782-14-agraf@csgraf.de>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=slp@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="vkcvbfdgfewgm3at"
+ protocol="application/pgp-signature"; boundary="q6cbdpq5eqz436pm"
 Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=slp@redhat.com;
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=slp@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -31
 X-Spam_score: -3.2
@@ -100,17 +100,17 @@ X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.374,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Eduardo Habkost <ehabkost@redhat.com>, Peter Collingbourne <pcc@google.com>,
  Richard Henderson <richard.henderson@linaro.org>,
@@ -118,66 +118,110 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Roman Bolshakov <r.bolshakov@yadro.com>, qemu-arm <qemu-arm@nongnu.org>,
  Frank Yang <lfy@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MMpO43eMh2lW
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: XtaJBRf5JZLc
 
---vkcvbfdgfewgm3at
+--q6cbdpq5eqz436pm
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, May 19, 2021 at 10:22:48PM +0200, Alexander Graf wrote:
-> From: Peter Collingbourne <pcc@google.com>
+On Wed, May 19, 2021 at 10:22:47PM +0200, Alexander Graf wrote:
+> With Apple Silicon available to the masses, it's a good time to add suppo=
+rt
+> for driving its virtualization extensions from QEMU.
 >=20
-> Sleep on WFI until the VTIMER is due but allow ourselves to be woken
-> up on IPI.
+> This patch adds all necessary architecture specific code to get basic VMs
+> working. It's still pretty raw, but definitely functional.
 >=20
-> In this implementation IPI is blocked on the CPU thread at startup and
-> pselect() is used to atomically unblock the signal and begin sleeping.
-> The signal is sent unconditionally so there's no need to worry about
-> races between actually sleeping and the "we think we're sleeping"
-> state. It may lead to an extra wakeup but that's better than missing
-> it entirely.
+> Known limitations:
 >=20
-> Signed-off-by: Peter Collingbourne <pcc@google.com>
-> [agraf: Remove unused 'set' variable, always advance PC on WFX trap]
+>   - Vtimer acknowledgement is hacky
+>   - Should implement more sysregs and fault on invalid ones then
+>   - WFI handling is missing, need to marry it with vtimer
+>=20
 > Signed-off-by: Alexander Graf <agraf@csgraf.de>
-> Acked-by: Roman Bolshakov <r.bolshakov@yadro.com>
+> Reviewed-by: Roman Bolshakov <r.bolshakov@yadro.com>
 >=20
 > ---
+>=20
+> v1 -> v2:
+>=20
+>   - Merge vcpu kick function patch
+>   - Implement WFI handling (allows vCPUs to sleep)
+>   - Synchronize system registers (fixes OVMF crashes and reboot)
+>   - Don't always call cpu_synchronize_state()
+>   - Use more fine grained iothread locking
+>   - Populate aa64mmfr0 from hardware
+>=20
+> v2 -> v3:
+>=20
+>   - Advance PC on SMC
+>   - Use cp list interface for sysreg syncs
+>   - Do not set current_cpu
+>   - Fix sysreg isread mask
+>   - Move sysreg handling to functions
+>   - Remove WFI logic again
+>   - Revert to global iothread locking
+>   - Use Hypervisor.h on arm, hv.h does not contain aarch64 definitions
+>=20
+> v3 -> v4:
+>=20
+>   - No longer include Hypervisor.h
+>=20
+> v5 -> v6:
+>=20
+>   - Swap sysreg definition order. This way we're in line with asm outputs=
+.
 >=20
 > v6 -> v7:
 >=20
->   - Move WFI into function
->   - Improve comment wording
+>   - Remove osdep.h include from hvf_int.h
+>   - Synchronize SIMD registers as well
+>   - Prepend 0x for hex values
+>   - Convert DPRINTF to trace points
+>   - Use main event loop (fixes gdbstub issues)
+>   - Remove PSCI support, inject UDEF on HVC/SMC
+>   - Change vtimer logic to look at ctl.istatus for vtimer mask sync
+>   - Add kick callback again (fixes remote CPU notification)
+>=20
+> v7 -> v8:
+>=20
+>   - Fix checkpatch errors
 > ---
->  accel/hvf/hvf-accel-ops.c |  5 ++-
->  include/sysemu/hvf_int.h  |  1 +
->  target/arm/hvf/hvf.c      | 68 +++++++++++++++++++++++++++++++++++++++
->  3 files changed, 71 insertions(+), 3 deletions(-)
+>  MAINTAINERS                 |   5 +
+>  accel/hvf/hvf-accel-ops.c   |  14 +
+>  include/sysemu/hvf_int.h    |   9 +-
+>  meson.build                 |   1 +
+>  target/arm/hvf/hvf.c        | 703 ++++++++++++++++++++++++++++++++++++
+>  target/arm/hvf/trace-events |  10 +
+>  6 files changed, 741 insertions(+), 1 deletion(-)
+>  create mode 100644 target/arm/hvf/hvf.c
+>  create mode 100644 target/arm/hvf/trace-events
 
 Reviewed-by: Sergio Lopez <slp@redhat.com>
+Tested-by: Sergio Lopez <slp@redhat.com>
 
---vkcvbfdgfewgm3at
+--q6cbdpq5eqz436pm
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAABCAAdFiEEvtX891EthoCRQuii9GknjS8MAjUFAmCvehgACgkQ9GknjS8M
-AjUa/A/+M0UefiTT6qZbvzTRNEC0FAT/aHrWnzQynZjFiSu74SeJcE6Vh1e0PQ/X
-AkXb4insl1qokLGZbJgU44E3ugdR5/CEgPTJm4LoziGb/yFDtWGyN1py8Eowc3X3
-trbx3+9Z+6DK7pDTIsVLHS0XGa/AXvwEisAD56oqrqUQl0/FeoQIfKLBvJPmslr+
-wN/YAhycRDhtyZCPs8eLfO7NAVEtGyovEvkRkNlq5vosKCl4QxtXNZE4tHvIcZ/j
-zq+2H8oidEESMRZQT43+jYwF3MnDX/BkulS7fNnSG0C0D66qkykBby7/RLULlVbQ
-5eX677FUKTfzgiFXjLB5VKxqkOebZVuPq3S10B4UyiGlDhprx4qTxsrjEz9oU9RB
-Dh3UY8P9h8+Oj71JTgKrJ7c9DKlxCbgihfAGlzMn4RuVJu/pZaN1Z4fxOONj5WWX
-N5MnMacEaaogurrvqk9f+wcGsmu2T2fAsjsV7vwkcrFo04NgkHLsDmp/eE+Z8jRg
-elmri3s5Ihwp+QQnSILOMWCyzUzhAw7eWznTuL7xzsjAIEzR7PDwIhRR9H0nHsYz
-i0o1DECDzBYOQR056VTjCkwAEYJ0GYFP+fXr4BtZtdTt68bSl98kDlX0ZFUuR+tJ
-ck6g2f1K0fQHuMX4KTMC23OEXgtHPsUycnRhlvldaOX9XOAN/7Y=
-=W4aj
+iQIzBAABCAAdFiEEvtX891EthoCRQuii9GknjS8MAjUFAmCvepQACgkQ9GknjS8M
+AjWAwxAAtB4MyqEkmtyZ27XBDiLuuDPLedDdtXMCn0ahKJakuGhIiTgTCxoz7W6g
+V5IEOpTlEYvAwkJTAiSy2TwXFDvvHBxIEhrbENxXzmro81usuqwjSr6O2m6sio4n
+mGwKBSRB0sN8IA0e9ki6QSzJp6hfMThBwLbmZFRE0Xk96CZ0ip9n6pZP+1/o+eUj
+oluBpT8AftkpjUPUBZ64p9aJlsJHUtpYbQ9dXIPVzUCcssU93KRoqKGzvM6h8U2g
+/H0KKW1YVdSbjJ3JMFyj9zhUxIB/ewUOrOoDTxl2sIM5p0UeF/msSCsrXPIk/L0E
+BnQwuodfl74Ac1LQw1fhBjOwZxgxvjvNeb9RKihtWdhVtnM/gIho9Moqo4GmeaMh
+jQECvOijLqY0ZrhWwioJTruwjQ8MkjBQDHYOuL0aQkyyWl2MN5lPVHHwpS/bAZKK
+rEmI6XRwti7xiKCRebme/EfHkB7xcxkmX+M07ZaK1XPY7AizoZuSKoYK4xOJDlh4
+Uy+RjmnnqlWXSThhTgUuhug9WP4kRv9N6Fost98jd6UdYgmgGrRlQxoGqFLEzjBX
++OI8hYUETdStjfOJhKA5FzqGUhALI/QwrbA+JUcODozuzLGajj5nn9+tFmZ3S/gp
+ft2stLTRRO5Eh3ISiGNYyGhNynqj1G+aptCxL+T73jplFsxilbg=
+=Y9CK
 -----END PGP SIGNATURE-----
 
---vkcvbfdgfewgm3at--
+--q6cbdpq5eqz436pm--
 

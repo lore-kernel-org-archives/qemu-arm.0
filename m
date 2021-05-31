@@ -1,113 +1,92 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp2579245lfm;
-        Mon, 31 May 2021 04:24:29 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzI2uT6ztaJ6xxXUEx5b00YFTQH6I64dqJroZEpINsJ/XgUNSAO5Uz7CEvBenDmLV6px7v0
-X-Received: by 2002:a1f:9e0d:: with SMTP id h13mr12388587vke.16.1622460269638;
-        Mon, 31 May 2021 04:24:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1622460269; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp2590942lfm;
+        Mon, 31 May 2021 04:42:34 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzuq/Y+0hfokBt5Blvxj1O2bf0UbGVXtpzumUa2FOEQQv9vJ4Md20bH0/fxh9Y4tvVrgRsR
+X-Received: by 2002:a05:6e02:cd1:: with SMTP id c17mr11783659ilj.210.1622461354576;
+        Mon, 31 May 2021 04:42:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1622461354; cv=none;
         d=google.com; s=arc-20160816;
-        b=qModCwTtKab228PZ9m+NVXFwvv2nkBGJHdkMPYCrG+RIaw28wDm+/JgPpo9fp/PiTB
-         NAwPpNQmc4GQYNsgSrPKo9gXSQR9yZM5IQ8M3CeYX6IcrKx4Zq0kOL+ky0EeySC70/pw
-         Sy3pZOYD6Srbkq5P7RSJYbsjgwGo0LujvweMbou39kOkTUS3oqil3/VcEl05Dz3HXs1N
-         1W6JGujcAdrFBqY7e+s0tJzfRNnkf3SlFf2xFWKinSA/QtijctXWM9khrZI8CZPVVi3z
-         EP9g+gkQwiByJZwtSnZegFCPg2adOKjAg99Fmql7UAI4OsrMc+usEAklOlVAorUw4Dtw
-         qj7w==
+        b=A3I/lbbRM85VRcAJnfSy5ToorCqX9VRWKtYGMwMmQr9Nik7pv55xkm8kjDDEkM8RR9
+         iBwM98HHBd60VObg7AVAZpg3a+H4pbOWAbPqw/Seag1HnId0D/aQaxtz42Wihkn6Ssz4
+         rO4OxzKkVdQCtaR/IjCogUHTsiu8xclr2D7EcvbhTLfknoksrhdtcCA2CnzfxUftpxvp
+         KbEwAqINJ96O0zg21YnTQJiC+lzVNVIlakWkb+iQ+8mY3QwxJLQyFHEPeek8TVnchDtO
+         au4XO463NGkMShEMk4Pn9mWPLD9RgvvSfH7ooye1DiRinvMaaHfkrmQFzGPNk4fI24Pk
+         9goA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=Dfclu7J7a6l5sSPTCc6fYfSpDr39vkrtne6NGqG5+as=;
-        b=rYCHRXbL9rzs5wiVDZdsXxebs0n4Qy/TjJG/A72ZNVyickmD/DfUKVy6+wcRNYvf9/
-         5SB4KOz4mcjqpSAtpVNUrZR3CqjvJhkouGsMICX2Uq7nTT7DteEgbldv4V1lcVlQM32p
-         9osG2QpWS1B6Eh27uSwGNgVweCb0WIGE/vU2KHdl9ggOUtQp5MaMd84TG4RTYAiLOpHy
-         ekIiQtoYQ0AYLZOKgoHQx0OUg2yGa3Fy3c0PgBOvpyY+Q0hNv1uX21nk5wHESs7UaXpL
-         m5i3axh5XXeK0v+YxogH+d27O6MZzCyzBW99JKVQ1pfXm8pe/tlvDpv9batC0bORv0Jh
-         +hpw==
+         :message-id:subject:from:references:to;
+        bh=3PEvTBgeMujVadGS9tC0UkFjZdDHZD4R6BRhY9EMFbw=;
+        b=WUGo8CYsbEyjldMPio7W4ov30eK5SYnI5Pb1Gm/zlgHeFdWKS+muDztc5l3mLaTSRH
+         DTxjcfGqNpmQ10xQtPzuEDOIY5c0yhYWcDZ0195JXjJZ/ILbExXAAetSkoNyu56ZTWVa
+         UNvz0U+hcRn6QTjQGY7zPmUujnuArUqjMWZAI4Vzv9IQmsosCy0LrxbjUKSw/qGdVRjC
+         QwnSj7pZE7XI7jozvySMcHr9TqSI/t07P8Wb3himOjsMwwwYS0XZI3ctGm3LYqqMXWZu
+         ToIErdgH9ejq3NnXlYHOHtWhheStGAZDXUGjffo4KaMMGWw94NGCoXW90YJN8yVIj5Ui
+         jtBw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=NiGahZVl;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p11si4786698vsh.200.2021.05.31.04.24.29
+        by mx.google.com with ESMTPS id p8si15426667ilo.126.2021.05.31.04.42.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 31 May 2021 04:24:29 -0700 (PDT)
+        Mon, 31 May 2021 04:42:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=NiGahZVl;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:49078 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Received: from localhost ([::1]:55358 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lng20-0004eA-VQ
-	for alex.bennee@linaro.org; Mon, 31 May 2021 07:24:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56198)
+	id 1lngJV-0001J7-VP
+	for alex.bennee@linaro.org; Mon, 31 May 2021 07:42:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58580)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lng1V-0004di-7R; Mon, 31 May 2021 07:23:57 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f]:43972)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lng1T-0005jw-3H; Mon, 31 May 2021 07:23:56 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id
- n5-20020a1c72050000b0290192e1f9a7e1so6377475wmc.2; 
- Mon, 31 May 2021 04:23:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=Dfclu7J7a6l5sSPTCc6fYfSpDr39vkrtne6NGqG5+as=;
- b=NiGahZVlq3IWrGK3DmQ+biUNBLK8SnP3NcWWZ+bApT2JDxQUxslraFLmSryuAGB43s
- zO7ha6yXMCIBc/Xo8swavA4lcMzjSXFKPtgZqTDuUwqTKlnAI3iuIzFHx80Z8Vny81DM
- McXI7xQIZN1/7VS0nveX7aqLFBcyiOOWoYo4bNs6sei+ySdIBUyF6cRSZGM4rh/X5nRd
- fWHtFXkDhlF0x0HkuvZ6XR+qfFVTjvXaUvQIXm+4ws2lA5Y0YNdQww449UetGNHV2lPs
- 6EW34M0H8c4cF9jtFzHKKFH8YRVyVet113apwwugntnYjUBx8T+egxxw73FJ168yxVos
- ZaQg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=Dfclu7J7a6l5sSPTCc6fYfSpDr39vkrtne6NGqG5+as=;
- b=bPGC1v0ZsaymPolnZ0+6HmfktVcEtUJYpM6PuTa2CXjUDxcWMoNGk5TXcO5PYGI0u0
- ff+v0YyYxLqSh4Yg515cwbDC5mrlfNCYNEdkjg2/0uN8ALr3QTC/Xn80h0yRuBaAUeCj
- z3t+724PTwZhPqk55L0cuz5TMULjJXdCaqOCLa8OAKxzTVAzrqeA4Abmo1bcVHsTE0Tk
- mx60Oj+/5NFH50tJ2A0KbbJn/1M/fhU08BvLZA/s6NwY5H4Suw46ieUIJUJoSv4JjBAV
- 0TPHT7CKpWdmcKDrqYtHRzrJPlr+ksgZt8aosHSr3b1m1qkiZGhRGiUMrcH0jOkJpQWo
- tREQ==
-X-Gm-Message-State: AOAM530yLqHFaO12eTYD6jixtvBQ4CbhlrEJFEo6KDBUBh01gS013AMF
- 0l/fGeiVAs3WfdbbllPUN14=
-X-Received: by 2002:a05:600c:4282:: with SMTP id
- v2mr3675380wmc.18.1622460232326; 
- Mon, 31 May 2021 04:23:52 -0700 (PDT)
-Received: from [192.168.1.36] (235.red-83-57-168.dynamicip.rima-tde.net.
- [83.57.168.235])
- by smtp.gmail.com with ESMTPSA id l3sm15127308wmh.2.2021.05.31.04.23.50
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 31 May 2021 04:23:51 -0700 (PDT)
-Subject: Re: [PATCH qemu] Add basic power management to raspi.
-To: qemu-devel@nongnu.org, Nolan Leake <nolan@sigbus.net>
-References: <162137039825.30884.2445825798240809194-0@git.sr.ht>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <65187b48-2449-e2b4-2d13-ed9ffb6fe2a8@amsat.org>
-Date: Mon, 31 May 2021 13:23:50 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ (Exim 4.90_1) (envelope-from <wangxingang5@huawei.com>)
+ id 1lngGC-0007hM-Nt; Mon, 31 May 2021 07:39:08 -0400
+Received: from szxga01-in.huawei.com ([45.249.212.187]:2487)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <wangxingang5@huawei.com>)
+ id 1lngG9-0006XL-3r; Mon, 31 May 2021 07:39:08 -0400
+Received: from dggemv704-chm.china.huawei.com (unknown [172.30.72.55])
+ by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4FttV66j15zWphR;
+ Mon, 31 May 2021 19:34:06 +0800 (CST)
+Received: from dggpemm500009.china.huawei.com (7.185.36.225) by
+ dggemv704-chm.china.huawei.com (10.3.19.47) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2176.2; Mon, 31 May 2021 19:38:47 +0800
+Received: from [10.174.185.226] (10.174.185.226) by
+ dggpemm500009.china.huawei.com (7.185.36.225) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2176.2; Mon, 31 May 2021 19:38:46 +0800
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
+ <shannon.zhaosl@gmail.com>, <imammedo@redhat.com>, <mst@redhat.com>,
+ <marcel.apfelbaum@gmail.com>, <peter.maydell@linaro.org>,
+ <ehabkost@redhat.com>, <richard.henderson@linaro.org>, <pbonzini@redhat.com>
+References: <1621914605-14724-1-git-send-email-wangxingang5@huawei.com>
+From: Xingang Wang <wangxingang5@huawei.com>
+Subject: Re: [PATCH v4 0/8] IOMMU: Add support for IOMMU Bypass Feature
+Message-ID: <8c727abd-b68e-df34-11f2-36908256d89b@huawei.com>
+Date: Mon, 31 May 2021 19:38:45 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.5.1
 MIME-Version: 1.0
-In-Reply-To: <162137039825.30884.2445825798240809194-0@git.sr.ht>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <1621914605-14724-1-git-send-email-wangxingang5@huawei.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.591,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Originating-IP: [10.174.185.226]
+X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
+ dggpemm500009.china.huawei.com (7.185.36.225)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.187;
+ envelope-from=wangxingang5@huawei.com; helo=szxga01-in.huawei.com
+X-Spam_score_int: -47
+X-Spam_score: -4.8
+X-Spam_bar: ----
+X-Spam_report: (-4.8 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.591,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -121,261 +100,89 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Andrew Baumann <Andrew.Baumann@microsoft.com>
+Cc: xieyingtai@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: W04WiegbB25j
+X-TUID: tdWyr5ZBqRrH
 
-Hi Nolan,
+Hi everyone,
 
-Thanks for your patch!
+Do you have any suggestions for this series of patches.
 
-There is something odd with your email address, which apparently
-became sourcehut@sigbus.net instead of nolan@sigbus.net.
+The modifications affects many modules, including new command line,
+PCI modules and ACPI firmware tables.
+There's modification in IORT DMAR and IVRS, both for arm and x86
+platform.
 
-On 5/18/21 10:24 PM, ~nolanl wrote:
-> From: Nolan Leake <nolan@sigbus.net>
+I am not sure whether the modification is appropriate in all modules,
+do you have any suggestions?
+
+Thanks
+
+Xingang
+
+.
+
+On 2021/5/25 11:49, Wang Xingang wrote:
+> From: Xingang Wang <wangxingang5@huawei.com>
 > 
-> This is just enough to make reboot and poweroff work.
-
-Please precise "for Linux kernels", since this doesn't work
-with firmwares (ideally we should implement the FIRMWARE_NOTIFY_REBOOT
-property - which Linux sends - to handle the machine reboot/halt
-via the videocore firmware model).
-
-> Notably, the
-> watchdog timer functionality is not yet implemented.
+> These patches add support for configure bypass_iommu on/off for
+> pci root bus, including primary bus and pxb root bus. At present,
+> all root bus will go through iommu when iommu is configured,
+> which is not flexible, because in many situations the need for using
+> iommu and bypass iommu aften exists at the same time.
 > 
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/64
-> Signed-off-by: Nolan Leake <nolan@sigbus.net>
-> ---
->  hw/arm/bcm2835_peripherals.c         |  13 ++-
->  hw/misc/bcm2835_powermgt.c           | 157 +++++++++++++++++++++++++++
->  hw/misc/meson.build                  |   1 +
->  include/hw/arm/bcm2835_peripherals.h |   3 +-
->  include/hw/misc/bcm2835_powermgt.h   |  29 +++++
->  5 files changed, 201 insertions(+), 2 deletions(-)
->  create mode 100644 hw/misc/bcm2835_powermgt.c
->  create mode 100644 include/hw/misc/bcm2835_powermgt.h
+> So this add option to enable/disable bypass_iommu for primary bus
+> and pxb root bus. The bypass_iommu property is set to false default,
+> meaning that devcies will go through iommu if no explicit configuration
+> is added. When bypass_iommu is enabled for the root bus, devices
+> attached to it will bypass iommu, otherwise devices will go through
+> iommu.
 > 
-> diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
-> index dcff13433e..48538c9360 100644
-> --- a/hw/arm/bcm2835_peripherals.c
-> +++ b/hw/arm/bcm2835_peripherals.c
-> @@ -126,6 +126,10 @@ static void bcm2835_peripherals_init(Object *obj)
->  
->      object_property_add_const_link(OBJECT(&s->dwc2), "dma-mr",
->                                     OBJECT(&s->gpu_bus_mr));
-> +
-> +    /* Power Management */
-> +    object_initialize_child(obj, "powermgt", &s->powermgt,
-> +                            TYPE_BCM2835_POWERMGT);
->  }
->  
->  static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
-> @@ -364,9 +368,16 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
->          qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_GPU_IRQ,
->                                 INTERRUPT_USB));
->  
-> +    /* Power Management */
-> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->powermgt), errp)) {
-> +        return;
-> +    }
-> +
-> +    memory_region_add_subregion(&s->peri_mr, PM_OFFSET,
-> +                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->powermgt), 0));
-> +
->      create_unimp(s, &s->txp, "bcm2835-txp", TXP_OFFSET, 0x1000);
->      create_unimp(s, &s->armtmr, "bcm2835-sp804", ARMCTRL_TIMER0_1_OFFSET, 0x40);
-> -    create_unimp(s, &s->powermgt, "bcm2835-powermgt", PM_OFFSET, 0x114);
->      create_unimp(s, &s->i2s, "bcm2835-i2s", I2S_OFFSET, 0x100);
->      create_unimp(s, &s->smi, "bcm2835-smi", SMI_OFFSET, 0x100);
->      create_unimp(s, &s->spi[0], "bcm2835-spi0", SPI0_OFFSET, 0x20);
-> diff --git a/hw/misc/bcm2835_powermgt.c b/hw/misc/bcm2835_powermgt.c
-> new file mode 100644
-> index 0000000000..81107ecc8f
-> --- /dev/null
-> +++ b/hw/misc/bcm2835_powermgt.c
-> @@ -0,0 +1,157 @@
-> +/*
-> + * BCM2835 Power Management emulation
-> + *
-> + * Copyright (C) 2017 Marcin Chojnacki <marcinch7@gmail.com>
-> + * Copyright (C) 2021 Nolan Leake <nolan@sigbus.net>
-> + *
-> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
-> + * See the COPYING file in the top-level directory.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qemu/log.h"
-> +#include "qemu/module.h"
-> +#include "hw/misc/bcm2835_powermgt.h"
-> +#include "migration/vmstate.h"
-> +#include "sysemu/runstate.h"
-> +
-> +#define PASSWORD 0x5a000000
-> +#define PASSWORD_MASK 0xff000000
-> +
-> +#define R_RSTC 0x1c
-> +#define V_RSTC_RESET 0x20
-> +#define R_RSTS 0x20
-> +#define V_RSTS_POWEROFF 0x555
-> +#define R_WDOG 0x24
-> +
-> +static uint64_t bcm2835_powermgt_read(void *opaque, hwaddr offset,
-> +                                      unsigned size)
-> +{
-> +    BCM2835PowerMgtState *s = (BCM2835PowerMgtState *)opaque;
-> +    uint32_t res = 0;
-> +
-> +    assert(size == 4);
-
-Instead of this assert, add in bcm2835_powermgt_ops:
-
-  .impl.min_access_size = 4,
-  .impl.max_access_size = 4,
-
-> +
-> +    switch (offset) {
-> +    case R_RSTC:
-> +        res = s->rstc;
-> +        break;
-> +    case R_RSTS:
-> +        res = s->rsts;
-> +        break;
-> +    case R_WDOG:
-> +        res = s->wdog;
-> +        break;
-> +
-> +    default:
-> +        qemu_log_mask(LOG_UNIMP,
-> +                      "bcm2835_powermgt_read: Unknown offset %x\n",
-> +                      (int)offset);
-> +        res = 0;
-> +        break;
-> +    }
-> +
-> +    return res;
-> +}
-> +
-> +static void bcm2835_powermgt_write(void *opaque, hwaddr offset,
-> +                                   uint64_t value, unsigned size)
-> +{
-> +    BCM2835PowerMgtState *s = (BCM2835PowerMgtState *)opaque;
-> +
-> +    assert(size == 4);
-
-(remove this assert too).
-
-> +    if ((value & PASSWORD_MASK) != PASSWORD) {
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "bcm2835_powermgt_write: Bad password %x at offset %x\n",
-
-Please prefix hexadecimal formats with 0x,
-
-> +                      (uint32_t)value, (int)offset);
-
-and do not cast.
-
-> +        return;
-> +    }
-> +
-> +    value = value & ~PASSWORD_MASK;
-> +
-> +    switch (offset) {
-> +    case R_RSTC:
-> +        s->rstc = value;
-> +        if (value & V_RSTC_RESET) {
-> +            if ((s->rsts & 0xfff) == V_RSTS_POWEROFF) {
-> +                /* Linux uses partition 63 to indicate halt. */
-
-I'd move this comment with the V_RSTS_POWEROFF definition.
-
-> +                qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
-> +            } else {
-> +                qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
-> +            }
-> +        }
-
-Shouldn't we log the unsupported bits?
-
-> +        break;
-> +    case R_RSTS:
-> +        s->rsts = value;
-> +        break;
-> +    case R_WDOG:
-> +        s->wdog = value;
-> +        break;
-> +
-> +    default:
-> +        qemu_log_mask(LOG_UNIMP,
-> +                      "bcm2835_powermgt_write: Unknown offset %x\n",
-> +                      (int)offset);
-
-Please do not cast, use the proper format.
-
-> +        break;
-> +    }
-> +}
-> +
-> +static const MemoryRegionOps bcm2835_powermgt_ops = {
-> +    .read = bcm2835_powermgt_read,
-> +    .write = bcm2835_powermgt_write,
-> +    .endianness = DEVICE_NATIVE_ENDIAN,
-> +};
-> +
-> +static const VMStateDescription vmstate_bcm2835_powermgt = {
-> +    .name = TYPE_BCM2835_POWERMGT,
-> +    .version_id = 1,
-> +    .minimum_version_id = 1,
-> +    .fields = (VMStateField[]) {
-> +        VMSTATE_UINT32(rstc, BCM2835PowerMgtState),
-> +        VMSTATE_UINT32(rsts, BCM2835PowerMgtState),
-> +        VMSTATE_UINT32(wdog, BCM2835PowerMgtState),
-> +        VMSTATE_END_OF_LIST()
-> +    }
-> +};
-> +
-> +static void bcm2835_powermgt_init(Object *obj)
-> +{
-> +    BCM2835PowerMgtState *s = BCM2835_POWERMGT(obj);
-> +
-> +    memory_region_init_io(&s->iomem, obj, &bcm2835_powermgt_ops, s,
-> +                          TYPE_BCM2835_POWERMGT, 0x114);
-> +    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->iomem);
-> +}
-> +
-> +static void bcm2835_powermgt_reset(DeviceState *dev)
-> +{
-> +    BCM2835PowerMgtState *s = BCM2835_POWERMGT(dev);
-> +
-> +    s->rstc = 0x00000102;
-> +    s->rsts = 0x00001000;
-> +    s->wdog = 0x00000000;
-
-Where these bits come from?
-
-> +}
-> +
-> +static void bcm2835_powermgt_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +
-> +    dc->reset = bcm2835_powermgt_reset;
-> +    dc->vmsd = &vmstate_bcm2835_powermgt;
-> +}
-> +
-> +static TypeInfo bcm2835_powermgt_info = {
-> +    .name          = TYPE_BCM2835_POWERMGT,
-> +    .parent        = TYPE_SYS_BUS_DEVICE,
-> +    .instance_size = sizeof(BCM2835PowerMgtState),
-> +    .class_init    = bcm2835_powermgt_class_init,
-> +    .instance_init = bcm2835_powermgt_init,
-> +};
-
-Minor comments, otherwise:
-
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> This feature can be used in this manner:
+> arm: -machine virt,iommu=smmuv3,bypass_iommu=true
+> x86: -machine q35,bypass_iommu=true
+> pxb: -device pxb-pcie,bus_nr=0x10,id=pci.10,bus=pcie.0,bypass_iommu=true
+> 
+> History:
+> 
+> v3 -> v4:
+> - simplify the logic in building the IORT idmap
+> 
+> v2 -> v3:
+> - rebase on top of v6.0.0-rc4
+> - Took into account Eric's comments, replace with a bypass_iommu
+>    proerty
+> - When building the IORT idmap, cover the whole RID space
+> 
+> v1 -> v2:
+> - rebase on top of v6.0.0-rc0
+> - Fix some issues
+> - Took into account Eric's comments, and remove the PCI_BUS_IOMMU flag,
+>    replace it with a property in PCIHostState.
+> - Add support for x86 iommu option
+> 
+> Xingang Wang (8):
+>    hw/pci/pci_host: Allow bypass iommu for pci host
+>    hw/pxb: Add a bypass iommu property
+>    hw/arm/virt: Add a machine option to bypass iommu for primary bus
+>    hw/i386: Add a pc machine option to bypass iommu for primary bus
+>    hw/pci: Add pci_bus_range to get bus number range
+>    hw/arm/virt-acpi-build: Add explicit IORT idmap for smmuv3 node
+>    hw/i386/acpi-build: Add explicit scope in DMAR table
+>    hw/i386/acpi-build: Add bypass_iommu check when building IVRS table
+> 
+>   hw/arm/virt-acpi-build.c            | 135 ++++++++++++++++++++++++----
+>   hw/arm/virt.c                       |  26 ++++++
+>   hw/i386/acpi-build.c                |  70 ++++++++++++++-
+>   hw/i386/pc.c                        |  18 ++++
+>   hw/pci-bridge/pci_expander_bridge.c |   3 +
+>   hw/pci-host/q35.c                   |   1 +
+>   hw/pci/pci.c                        |  33 ++++++-
+>   hw/pci/pci_host.c                   |   2 +
+>   include/hw/arm/virt.h               |   1 +
+>   include/hw/i386/pc.h                |   1 +
+>   include/hw/pci/pci.h                |   2 +
+>   include/hw/pci/pci_host.h           |   1 +
+>   12 files changed, 270 insertions(+), 23 deletions(-)
+> 

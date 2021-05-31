@@ -1,223 +1,381 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp449291lfm;
-        Fri, 28 May 2021 08:28:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwdbmSJDLUc0ZrNDucorzQc+MUeuGMQWo8S9uSvV/xMFJ4BnMNiWAPzyCBDCPMPrw4uIX9p
-X-Received: by 2002:a67:eb4d:: with SMTP id x13mr7651324vso.45.1622215715212;
-        Fri, 28 May 2021 08:28:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1622215715; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp2579245lfm;
+        Mon, 31 May 2021 04:24:29 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzI2uT6ztaJ6xxXUEx5b00YFTQH6I64dqJroZEpINsJ/XgUNSAO5Uz7CEvBenDmLV6px7v0
+X-Received: by 2002:a1f:9e0d:: with SMTP id h13mr12388587vke.16.1622460269638;
+        Mon, 31 May 2021 04:24:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1622460269; cv=none;
         d=google.com; s=arc-20160816;
-        b=LN6YxqjidZX5goz/6pagaoaTAIuFluncGuo8OeIznuV0f/SU6HqRY79597J4kCZAq3
-         tI1X2VjU5GB99MEj82j3nrN4iz/qw87QhAxm9TIVyUuyFy9VSXbQI3aYU5+FKj1nLHxJ
-         CVFR/cnKwuHBzBlonQ/T2mtomLJKGna1AMPdUN70ELHBxBoJzMh+BGZZ/avHx9uZuHOg
-         7frDN0hnrVHAR9E08OV9/sUU8JY89M5eatTplKdLEXfn5U6SN1Mzr9TljaNsThm/Sd9a
-         zjHIZ0oFCoM3trK3bdzYuD+8u+8ilT059/xe4HtNeHfEafY9BgIEMUm+1wWrqw5CzGBg
-         FRsw==
+        b=qModCwTtKab228PZ9m+NVXFwvv2nkBGJHdkMPYCrG+RIaw28wDm+/JgPpo9fp/PiTB
+         NAwPpNQmc4GQYNsgSrPKo9gXSQR9yZM5IQ8M3CeYX6IcrKx4Zq0kOL+ky0EeySC70/pw
+         Sy3pZOYD6Srbkq5P7RSJYbsjgwGo0LujvweMbou39kOkTUS3oqil3/VcEl05Dz3HXs1N
+         1W6JGujcAdrFBqY7e+s0tJzfRNnkf3SlFf2xFWKinSA/QtijctXWM9khrZI8CZPVVi3z
+         EP9g+gkQwiByJZwtSnZegFCPg2adOKjAg99Fmql7UAI4OsrMc+usEAklOlVAorUw4Dtw
+         qj7w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=R/moMEWBQRAgkgeccBxxZhe4pxMQezg1ErEy4FNVmVM=;
-        b=hTFNLip+OyonRXgOinaFVWkHJn6BVuP4DQIyE17NjNSWAKSXobcbPBwmgGfr+/jH58
-         p7Fm3RiGtEajtbEcxCkyc5x3/0AAuiEVm5lriJZFAc0T368xANHqVLoacSBE8QS3yC6K
-         ShUqchjs/mYIo/a63V8lyhj4jtOqDA+17lMDcZ0Pave8JR+GFja258GzeQYrwH+9dAN2
-         n/t+Uu8uvfATLVDE4FeEhEiFc1CeZw92spZ4LqW8HZTEvoevnA63SjOkOaJJdF+sSJVg
-         nK/iaCMKuVWZC58m2u7PTpXuGb+KTl9vPFXJyWWS8ORNXEQPOOdkfA+xl2qfaBNHU1FS
-         gqkw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=Dfclu7J7a6l5sSPTCc6fYfSpDr39vkrtne6NGqG5+as=;
+        b=rYCHRXbL9rzs5wiVDZdsXxebs0n4Qy/TjJG/A72ZNVyickmD/DfUKVy6+wcRNYvf9/
+         5SB4KOz4mcjqpSAtpVNUrZR3CqjvJhkouGsMICX2Uq7nTT7DteEgbldv4V1lcVlQM32p
+         9osG2QpWS1B6Eh27uSwGNgVweCb0WIGE/vU2KHdl9ggOUtQp5MaMd84TG4RTYAiLOpHy
+         ekIiQtoYQ0AYLZOKgoHQx0OUg2yGa3Fy3c0PgBOvpyY+Q0hNv1uX21nk5wHESs7UaXpL
+         m5i3axh5XXeK0v+YxogH+d27O6MZzCyzBW99JKVQ1pfXm8pe/tlvDpv9batC0bORv0Jh
+         +hpw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@xen.org header.s=20200302mail header.b=1+LWuObC;
-       spf=pass (google.com: domain of julien@xen.org designates 104.130.215.37 as permitted sender) smtp.mailfrom=julien@xen.org
-Return-Path: <julien@xen.org>
-Received: from mail.xenproject.org (mail.xenproject.org. [104.130.215.37])
-        by mx.google.com with ESMTPS id d7si2852842vsl.380.2021.05.28.08.28.34
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 28 May 2021 08:28:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of julien@xen.org designates 104.130.215.37 as permitted sender) client-ip=104.130.215.37;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=NiGahZVl;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id p11si4786698vsh.200.2021.05.31.04.24.29
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 31 May 2021 04:24:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@xen.org header.s=20200302mail header.b=1+LWuObC;
-       spf=pass (google.com: domain of julien@xen.org designates 104.130.215.37 as permitted sender) smtp.mailfrom=julien@xen.org
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=xen.org;
-	s=20200302mail; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:
-	MIME-Version:Date:Message-ID:From:References:Cc:To:Subject;
-	bh=R/moMEWBQRAgkgeccBxxZhe4pxMQezg1ErEy4FNVmVM=; b=1+LWuObCW3ZRGkbMxmFe9e6X4x
-	5ERaKvgkGNJkji2RPYd8fm+KB3Awjq8rzwh7GU9ep6vMteAtP+p/qy5fW1Xd4nBVUvHSnTj+uXwFO
-	adcZ4/geumUKmltrOF6ov/EVb+7L+6v4ksND5SCYBBbUuAdOqMF3YE2qRf53XK0hhHsQ=;
-Received: from xenbits.xenproject.org ([104.239.192.120])
-	by mail.xenproject.org with esmtp (Exim 4.92)
-	(envelope-from <julien@xen.org>)
-	id 1lmePU-0000l4-6J; Fri, 28 May 2021 15:28:28 +0000
-Received: from [54.239.6.188] (helo=a483e7b01a66.ant.amazon.com)
-	by xenbits.xenproject.org with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
-	(Exim 4.92)
-	(envelope-from <julien@xen.org>)
-	id 1lmePT-0002Gs-Vj; Fri, 28 May 2021 15:28:28 +0000
-Subject: Re: What's missing for arm64 Xen boot with FDT via Grub in Debian
- Bullseye?
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Debian Install System Team <debian-boot@lists.debian.org>,
- pkg-grub-devel@alioth-lists.debian.net,
- pkg-xen-devel@lists.alioth.debian.org, xen-devel@lists.xenproject.org
-Cc: Steve McIntyre <93sam@debian.org>,
- Ruchika Gupta <ruchika.gupta@linaro.org>,
- Ilias Apalodimas <ilias.apalodimas@linaro.org>,
- qemu-arm <qemu-arm@nongnu.org>
-References: <87mtse2ac8.fsf@linaro.org>
-From: Julien Grall <julien@xen.org>
-Message-ID: <0df82c26-078a-83de-952c-cbad06b3ad2d@xen.org>
-Date: Fri, 28 May 2021 16:28:25 +0100
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0)
- Gecko/20100101 Thunderbird/78.10.2
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=NiGahZVl;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:49078 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lng20-0004eA-VQ
+	for alex.bennee@linaro.org; Mon, 31 May 2021 07:24:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56198)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lng1V-0004di-7R; Mon, 31 May 2021 07:23:57 -0400
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f]:43972)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lng1T-0005jw-3H; Mon, 31 May 2021 07:23:56 -0400
+Received: by mail-wm1-x32f.google.com with SMTP id
+ n5-20020a1c72050000b0290192e1f9a7e1so6377475wmc.2; 
+ Mon, 31 May 2021 04:23:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=Dfclu7J7a6l5sSPTCc6fYfSpDr39vkrtne6NGqG5+as=;
+ b=NiGahZVlq3IWrGK3DmQ+biUNBLK8SnP3NcWWZ+bApT2JDxQUxslraFLmSryuAGB43s
+ zO7ha6yXMCIBc/Xo8swavA4lcMzjSXFKPtgZqTDuUwqTKlnAI3iuIzFHx80Z8Vny81DM
+ McXI7xQIZN1/7VS0nveX7aqLFBcyiOOWoYo4bNs6sei+ySdIBUyF6cRSZGM4rh/X5nRd
+ fWHtFXkDhlF0x0HkuvZ6XR+qfFVTjvXaUvQIXm+4ws2lA5Y0YNdQww449UetGNHV2lPs
+ 6EW34M0H8c4cF9jtFzHKKFH8YRVyVet113apwwugntnYjUBx8T+egxxw73FJ168yxVos
+ ZaQg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=Dfclu7J7a6l5sSPTCc6fYfSpDr39vkrtne6NGqG5+as=;
+ b=bPGC1v0ZsaymPolnZ0+6HmfktVcEtUJYpM6PuTa2CXjUDxcWMoNGk5TXcO5PYGI0u0
+ ff+v0YyYxLqSh4Yg515cwbDC5mrlfNCYNEdkjg2/0uN8ALr3QTC/Xn80h0yRuBaAUeCj
+ z3t+724PTwZhPqk55L0cuz5TMULjJXdCaqOCLa8OAKxzTVAzrqeA4Abmo1bcVHsTE0Tk
+ mx60Oj+/5NFH50tJ2A0KbbJn/1M/fhU08BvLZA/s6NwY5H4Suw46ieUIJUJoSv4JjBAV
+ 0TPHT7CKpWdmcKDrqYtHRzrJPlr+ksgZt8aosHSr3b1m1qkiZGhRGiUMrcH0jOkJpQWo
+ tREQ==
+X-Gm-Message-State: AOAM530yLqHFaO12eTYD6jixtvBQ4CbhlrEJFEo6KDBUBh01gS013AMF
+ 0l/fGeiVAs3WfdbbllPUN14=
+X-Received: by 2002:a05:600c:4282:: with SMTP id
+ v2mr3675380wmc.18.1622460232326; 
+ Mon, 31 May 2021 04:23:52 -0700 (PDT)
+Received: from [192.168.1.36] (235.red-83-57-168.dynamicip.rima-tde.net.
+ [83.57.168.235])
+ by smtp.gmail.com with ESMTPSA id l3sm15127308wmh.2.2021.05.31.04.23.50
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 31 May 2021 04:23:51 -0700 (PDT)
+Subject: Re: [PATCH qemu] Add basic power management to raspi.
+To: qemu-devel@nongnu.org, Nolan Leake <nolan@sigbus.net>
+References: <162137039825.30884.2445825798240809194-0@git.sr.ht>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <65187b48-2449-e2b4-2d13-ed9ffb6fe2a8@amsat.org>
+Date: Mon, 31 May 2021 13:23:50 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.1
 MIME-Version: 1.0
-In-Reply-To: <87mtse2ac8.fsf@linaro.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-GB
+In-Reply-To: <162137039825.30884.2445825798240809194-0@git.sr.ht>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: /d56FpgEMwXz
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.591,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: W04WiegbB25j
 
+Hi Nolan,
 
+Thanks for your patch!
 
-On 28/05/2021 13:49, Alex Bennée wrote:
+There is something odd with your email address, which apparently
+became sourcehut@sigbus.net instead of nolan@sigbus.net.
+
+On 5/18/21 10:24 PM, ~nolanl wrote:
+> From: Nolan Leake <nolan@sigbus.net>
 > 
-> Hi,
+> This is just enough to make reboot and poweroff work.
 
-Hi Alex,
+Please precise "for Linux kernels", since this doesn't work
+with firmwares (ideally we should implement the FIRMWARE_NOTIFY_REBOOT
+property - which Linux sends - to handle the machine reboot/halt
+via the videocore firmware model).
 
-> I'm currently trying to pull together the threads for booting Xen on
-> Debian. I'm currently doing this within QEMU's TCG emulation and the
-> "virt" machine model:
+> Notably, the
+> watchdog timer functionality is not yet implemented.
 > 
->    -machine type=virt,virtualization=on,gic-version=3 \
->    -cpu max,pauth-impdef=on
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/64
+> Signed-off-by: Nolan Leake <nolan@sigbus.net>
+> ---
+>  hw/arm/bcm2835_peripherals.c         |  13 ++-
+>  hw/misc/bcm2835_powermgt.c           | 157 +++++++++++++++++++++++++++
+>  hw/misc/meson.build                  |   1 +
+>  include/hw/arm/bcm2835_peripherals.h |   3 +-
+>  include/hw/misc/bcm2835_powermgt.h   |  29 +++++
+>  5 files changed, 201 insertions(+), 2 deletions(-)
+>  create mode 100644 hw/misc/bcm2835_powermgt.c
+>  create mode 100644 include/hw/misc/bcm2835_powermgt.h
 > 
-> with the firmware on my Ubuntu machine:
-> 
->    -drive if=pflash,file=/usr/share/AAVMF/AAVMF_CODE.fd,format=raw,readonly=on -drive if=pflash,file=$HOME/images/AAVMF_VARS.fd,format=raw
-> 
-> (qemu-efi-aarch64 Version: 0~20180205.c0d9813c-2ubuntu0.3)
-> 
-> When booting this way I get the Grub menu and Xen is loaded by Grub but
-> falls over later:
-> 
->    (XEN) MODULE[0]: 00000000f5869000 - 00000000f59b60c8 Xen
->    (XEN) MODULE[1]: 000000013857d000 - 0000000138580000 Device Tree
->    (XEN) MODULE[2]: 00000000f73a1000 - 00000000f8da0780 Kernel
->    (XEN) MODULE[3]: 00000000f59b7000 - 00000000f739f99b Ramdisk
->    (XEN)
->    (XEN) CMDLINE[00000000f73a1000]:chosen placeholder root=UUID=435201aa-c5cf-4e7a-8107-5eef28844188 ro console=hvc0
->    (XEN)
->    (XEN) Command line: placeholder dom0_mem=2G loglvl=all guest_loglvl=all no-real-mode edd=off
->    (XEN) parameter "placeholder" unknown!
->    (XEN) parameter "no-real-mode" unknown!
->    (XEN) parameter "edd" unknown!
->    (XEN) Domain heap initialised
->    (XEN) Booting using Device Tree
->    (XEN) Platform: Generic System
->    (XEN)
->    (XEN) ****************************************
->    (XEN) Panic on CPU 0:
->    (XEN) Unable to find a compatible timer in the device tree
->    (XEN) ****************************************
-> 
-> It seems like there are bits of the DT missing. I can however
-> successfully boot Xen with the Linux guest using the guest-loader device
-> and bypassing the firmware/boot code step. This gives:
-> 
->    (XEN) MODULE[0]: 0000000040200000 - 000000004034d0c8 Xen
->    (XEN) MODULE[1]: 0000000048000000 - 0000000048100000 Device Tree
->    (XEN) MODULE[2]: 0000000046000000 - 0000000046eb2200 Kernel
->    (XEN)
->    (XEN) CMDLINE[0000000046000000]:chosen root=/dev/sda2 console=hvc0 earlyprintk=xen
->    (XEN)
->    (XEN) Command line: dom0_mem=4G dom0_max_vcpus=4
->    (XEN) Domain heap initialised
->    (XEN) Booting using Device Tree
->    (XEN) Platform: Generic System
->    (XEN) Taking dtuart configuration from /chosen/stdout-path
->    (XEN) Looking for dtuart at "/pl011@9000000", options ""
->     Xen 4.15.1-pre
->    (XEN) Xen version 4.15.1-pre (alex.bennee@) (aarch64-linux-gnu-gcc (Debian 8.3.0-2) 8.3.0) debug=y Tue May 18 09:34:55 UTC 2021
->    (XEN) Latest ChangeSet:
->    (XEN) build-id: a50d8f03a1a15662ac7c4e5f73f2f544a6739df2
->    (XEN) Processor: 411fd070: "ARM Limited", variant: 0x1, part 0xd07, rev 0x0
->    (XEN) 64-bit Execution:
->    (XEN)   Processor Features: 0000000001000222 0000000000000000
->    (XEN)     Exception Levels: EL3:No EL2:64+32 EL1:64+32 EL0:64+32
->    (XEN)     Extensions: FloatingPoint AdvancedSIMD GICv3-SysReg
->    (XEN)   Debug Features: 0000000010305106 0000000000000000
->    (XEN)   Auxiliary Features: 0000000000000000 0000000000000000
->    (XEN)   Memory Model Features: 0000000000001124 0000000000000000
->    (XEN)   ISA Features:  0000000000011120 0000000000000000
->    (XEN) 32-bit Execution:
->    (XEN)   Processor Features: 00000131:10011001
->    (XEN)     Instruction Sets: AArch32 A32 Thumb Thumb-2 Jazelle
->    (XEN)     Extensions: GenericTimer
->    (XEN)   Debug Features: 03010066
->    (XEN)   Auxiliary Features: 00000000
->    (XEN)   Memory Model Features: 10101105 40000000 01260000 02102211
->    (XEN)  ISA Features: 02101110 13112111 21232042 01112131 00011142 00011121
->    (XEN) Using SMC Calling Convention v1.0
->    (XEN) Using PSCI v0.2
->    (XEN) SMP: Allowing 8 CPUs
->    (XEN) enabled workaround for: ARM erratum 832075
->    (XEN) enabled workaround for: ARM erratum 834220
->    (XEN) enabled workaround for: ARM erratum 1319367
->    (XEN) Generic Timer IRQ: phys=30 hyp=26 virt=27 Freq: 62500 KHz
->    (XEN) GICv3 initialization:
->    (XEN)       gic_dist_addr=0x00000008000000
->    (XEN)       gic_maintenance_irq=25
->    (XEN)       gic_rdist_stride=0
->    (XEN)       gic_rdist_regions=1
->    (XEN)       redistributor regions:
->    (XEN)         - region 0: 0x000000080a0000 - 0x00000009000000
->    (XEN) GICv3: 256 lines, (IID 0000043b).
->    (XEN) GICv3: CPU0: Found redistributor in region 0 @000000004001c000
-> 
-> Attempting to boot with acpi=on still sees Grub attempt to use DT to
-> boot the hypervisor. However selecting the kernel directly boots with
-> ACPI (which is a shame as I'd like to see what FDT it gets presented
-> with).
+> diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
+> index dcff13433e..48538c9360 100644
+> --- a/hw/arm/bcm2835_peripherals.c
+> +++ b/hw/arm/bcm2835_peripherals.c
+> @@ -126,6 +126,10 @@ static void bcm2835_peripherals_init(Object *obj)
+>  
+>      object_property_add_const_link(OBJECT(&s->dwc2), "dma-mr",
+>                                     OBJECT(&s->gpu_bus_mr));
+> +
+> +    /* Power Management */
+> +    object_initialize_child(obj, "powermgt", &s->powermgt,
+> +                            TYPE_BCM2835_POWERMGT);
+>  }
+>  
+>  static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+> @@ -364,9 +368,16 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+>          qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_GPU_IRQ,
+>                                 INTERRUPT_USB));
+>  
+> +    /* Power Management */
+> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->powermgt), errp)) {
+> +        return;
+> +    }
+> +
+> +    memory_region_add_subregion(&s->peri_mr, PM_OFFSET,
+> +                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->powermgt), 0));
+> +
+>      create_unimp(s, &s->txp, "bcm2835-txp", TXP_OFFSET, 0x1000);
+>      create_unimp(s, &s->armtmr, "bcm2835-sp804", ARMCTRL_TIMER0_1_OFFSET, 0x40);
+> -    create_unimp(s, &s->powermgt, "bcm2835-powermgt", PM_OFFSET, 0x114);
+>      create_unimp(s, &s->i2s, "bcm2835-i2s", I2S_OFFSET, 0x100);
+>      create_unimp(s, &s->smi, "bcm2835-smi", SMI_OFFSET, 0x100);
+>      create_unimp(s, &s->spi[0], "bcm2835-spi0", SPI0_OFFSET, 0x20);
+> diff --git a/hw/misc/bcm2835_powermgt.c b/hw/misc/bcm2835_powermgt.c
+> new file mode 100644
+> index 0000000000..81107ecc8f
+> --- /dev/null
+> +++ b/hw/misc/bcm2835_powermgt.c
+> @@ -0,0 +1,157 @@
+> +/*
+> + * BCM2835 Power Management emulation
+> + *
+> + * Copyright (C) 2017 Marcin Chojnacki <marcinch7@gmail.com>
+> + * Copyright (C) 2021 Nolan Leake <nolan@sigbus.net>
+> + *
+> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
+> + * See the COPYING file in the top-level directory.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qemu/log.h"
+> +#include "qemu/module.h"
+> +#include "hw/misc/bcm2835_powermgt.h"
+> +#include "migration/vmstate.h"
+> +#include "sysemu/runstate.h"
+> +
+> +#define PASSWORD 0x5a000000
+> +#define PASSWORD_MASK 0xff000000
+> +
+> +#define R_RSTC 0x1c
+> +#define V_RSTC_RESET 0x20
+> +#define R_RSTS 0x20
+> +#define V_RSTS_POWEROFF 0x555
+> +#define R_WDOG 0x24
+> +
+> +static uint64_t bcm2835_powermgt_read(void *opaque, hwaddr offset,
+> +                                      unsigned size)
+> +{
+> +    BCM2835PowerMgtState *s = (BCM2835PowerMgtState *)opaque;
+> +    uint32_t res = 0;
+> +
+> +    assert(size == 4);
 
-ACPI is not built by default in Xen on Arm. You will need to select it 
-from Kconfig and rebuild the hypervisor.
+Instead of this assert, add in bcm2835_powermgt_ops:
 
-> 
-> The full command line for booting via the guest-loader is:
-> 
->    ./qemu-system-aarch64 \
->      -machine virt,virtualization=on,gic-version=3 \
->      -cpu max,pauth-impdef=on \
->      -serial mon:stdio \
->      -netdev user,id=net1,hostfwd=tcp::2222-:22 \
->      -device virtio-net-pci,netdev=net1 \
->      -device virtio-scsi-pci \
->      -drive file=/dev/zvol/hackpool-0/debian-buster-arm64,id=hd0,index=0,if=none,format=raw \
->      -device scsi-hd,drive=hd0 \
->      -display none \
->      -m 16384 \
->      -kernel ~/lsrc/xen/xen.build.arm64-xen/xen/xen \
->      -append "dom0_mem=4G dom0_max_vcpus=4" \
->      -device guest-loader,addr=0x46000000,kernel=$HOME/lsrc/linux.git/builds/arm64/arch/arm64/boot/Image,bootargs="root=/dev/sda2 console=hvc0 earlyprintk=xen" \
->      -smp 8
-> 
-> So some questions:
-> 
->    - is Xen on arm64 tested on Debian Bullseye? If so what platform?
+  .impl.min_access_size = 4,
+  .impl.max_access_size = 4,
 
-I am using Debian Bullseye on QEMU and also the FVP. We are also using 
-Debian in Osstest for all the testing (it is possible an older version 
-of Debian).
+> +
+> +    switch (offset) {
+> +    case R_RSTC:
+> +        res = s->rstc;
+> +        break;
+> +    case R_RSTS:
+> +        res = s->rsts;
+> +        break;
+> +    case R_WDOG:
+> +        res = s->wdog;
+> +        break;
+> +
+> +    default:
+> +        qemu_log_mask(LOG_UNIMP,
+> +                      "bcm2835_powermgt_read: Unknown offset %x\n",
+> +                      (int)offset);
+> +        res = 0;
+> +        break;
+> +    }
+> +
+> +    return res;
+> +}
+> +
+> +static void bcm2835_powermgt_write(void *opaque, hwaddr offset,
+> +                                   uint64_t value, unsigned size)
+> +{
+> +    BCM2835PowerMgtState *s = (BCM2835PowerMgtState *)opaque;
+> +
+> +    assert(size == 4);
 
->    - how do I tell Grub to do a straight FDT boot with the DT from the firmware?
+(remove this assert too).
 
-Is the firmware actually providing a DT? You could try to boot Xen from 
-UEFI directly to confirm that.
+> +    if ((value & PASSWORD_MASK) != PASSWORD) {
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "bcm2835_powermgt_write: Bad password %x at offset %x\n",
 
-However, I vaguely recall that GRUB may only pass ACPI if it is provided.
+Please prefix hexadecimal formats with 0x,
 
->    - are there any missing pieces I should be aware of?
+> +                      (uint32_t)value, (int)offset);
 
-Other than re-building Xen with ACPI=y, I am not aware of any issue to 
-use Xen with Debian bullseye.
+and do not cast.
 
-Cheers,
+> +        return;
+> +    }
+> +
+> +    value = value & ~PASSWORD_MASK;
+> +
+> +    switch (offset) {
+> +    case R_RSTC:
+> +        s->rstc = value;
+> +        if (value & V_RSTC_RESET) {
+> +            if ((s->rsts & 0xfff) == V_RSTS_POWEROFF) {
+> +                /* Linux uses partition 63 to indicate halt. */
 
--- 
-Julien Grall
+I'd move this comment with the V_RSTS_POWEROFF definition.
+
+> +                qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+> +            } else {
+> +                qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+> +            }
+> +        }
+
+Shouldn't we log the unsupported bits?
+
+> +        break;
+> +    case R_RSTS:
+> +        s->rsts = value;
+> +        break;
+> +    case R_WDOG:
+> +        s->wdog = value;
+> +        break;
+> +
+> +    default:
+> +        qemu_log_mask(LOG_UNIMP,
+> +                      "bcm2835_powermgt_write: Unknown offset %x\n",
+> +                      (int)offset);
+
+Please do not cast, use the proper format.
+
+> +        break;
+> +    }
+> +}
+> +
+> +static const MemoryRegionOps bcm2835_powermgt_ops = {
+> +    .read = bcm2835_powermgt_read,
+> +    .write = bcm2835_powermgt_write,
+> +    .endianness = DEVICE_NATIVE_ENDIAN,
+> +};
+> +
+> +static const VMStateDescription vmstate_bcm2835_powermgt = {
+> +    .name = TYPE_BCM2835_POWERMGT,
+> +    .version_id = 1,
+> +    .minimum_version_id = 1,
+> +    .fields = (VMStateField[]) {
+> +        VMSTATE_UINT32(rstc, BCM2835PowerMgtState),
+> +        VMSTATE_UINT32(rsts, BCM2835PowerMgtState),
+> +        VMSTATE_UINT32(wdog, BCM2835PowerMgtState),
+> +        VMSTATE_END_OF_LIST()
+> +    }
+> +};
+> +
+> +static void bcm2835_powermgt_init(Object *obj)
+> +{
+> +    BCM2835PowerMgtState *s = BCM2835_POWERMGT(obj);
+> +
+> +    memory_region_init_io(&s->iomem, obj, &bcm2835_powermgt_ops, s,
+> +                          TYPE_BCM2835_POWERMGT, 0x114);
+> +    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->iomem);
+> +}
+> +
+> +static void bcm2835_powermgt_reset(DeviceState *dev)
+> +{
+> +    BCM2835PowerMgtState *s = BCM2835_POWERMGT(dev);
+> +
+> +    s->rstc = 0x00000102;
+> +    s->rsts = 0x00001000;
+> +    s->wdog = 0x00000000;
+
+Where these bits come from?
+
+> +}
+> +
+> +static void bcm2835_powermgt_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +
+> +    dc->reset = bcm2835_powermgt_reset;
+> +    dc->vmsd = &vmstate_bcm2835_powermgt;
+> +}
+> +
+> +static TypeInfo bcm2835_powermgt_info = {
+> +    .name          = TYPE_BCM2835_POWERMGT,
+> +    .parent        = TYPE_SYS_BUS_DEVICE,
+> +    .instance_size = sizeof(BCM2835PowerMgtState),
+> +    .class_init    = bcm2835_powermgt_class_init,
+> +    .instance_init = bcm2835_powermgt_init,
+> +};
+
+Minor comments, otherwise:
+
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

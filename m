@@ -1,153 +1,239 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp3500649lfm;
-        Tue, 1 Jun 2021 03:48:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzLWs9df1R0E0Jmbo5CiFPQumspmisPWYRPoOxA6yqiCOucy42CESkI1qL7O+UubemeyGA9
-X-Received: by 2002:a17:906:c0c9:: with SMTP id bn9mr28906430ejb.7.1622544504743;
-        Tue, 01 Jun 2021 03:48:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1622544504; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp3504728lfm;
+        Tue, 1 Jun 2021 03:54:55 -0700 (PDT)
+X-Received: by 2002:a05:6402:1d0c:: with SMTP id dg12mr8128266edb.155.1622544895661;
+        Tue, 01 Jun 2021 03:54:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1622544895; cv=none;
         d=google.com; s=arc-20160816;
-        b=0l6Xbrh/SbvxVKb+pSwhV0Sbk9Ed9S9QtiJ/MdhVtgvKNFJuve5+E0pJloKWcTX9Gg
-         nb0xYvOOKJ+xbVG2c7t1Mhx/ZYnf2clXX/DiUzmqpXmyW4FW7foHo1EnNZSKccp01Ehx
-         aIbUQBiL03QnyEvk2T4XQPeHuVTeo8D0i2Srkzr2V0Sb8bYpg4jjpPl4UF7D0QXtS3sY
-         gHz0wdKtt7KKgn0bR0toWsSCwulOLK4V/tnaHpHNw2+3F24Go7sYlfa5aNhK2ywmCErT
-         dMi5xFoT2LcnvelyPP14wvV2K7MT7mH4Tfm2637hSBWSbhUK7gNozk9RjaxqRsK39G1B
-         i+Gg==
+        b=etG7jqIW6DJH5ZasB7h2z/ccgFvNZZ+ynMaOCCmp52mSAiPzuyFlQEwcU0BrWhxIl3
+         psp6a5i0tR2YiO+AP8RGcCDDJzVNI81jCOcERVLEInMgnmt473YbDukF69xgMiESZA2f
+         XarSJTv+eLb2aV+cfAALuGZRuZMp71VPY55cLf7sgQkOslXPTnAcL9J0VIH3/n4gExkd
+         A17ozbCTOxDX2ClNUdXe37avsM+Elq/Rf/dha8foqzGkN+vtmBhP+N6qGAZoSTIwKzRN
+         W/GXj8ep4H52pcu11YXWwrvQjYsrn6sltEW9yTnDXe3uTuOpzRbEZdSFxAstgUemGWw3
+         OGEQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=3Ic4NWOLQ0tnymafCtBcrjzUOFMCWmOrls8If2U4umc=;
-        b=aGRdREAdouN1o/6Jh5LJ4h8Xl4/CdRbSlfOinJb5M/KiQYbKXZIpyNHAO4RpkuX0Lu
-         rUlgbCUewHq8j0lnsnhzM9YWszviqJyt8HsJ4Xj15BIYrfS5qjx+AdgICokFQ5fgW3gG
-         0UKPZjQnijYmjpu6oPjSUpfbovFam7faT9dJi+1CfQE9WnIUw8uk/zNP7lja/DYGHNjg
-         2xiGqASJc3+hW0GIqVVFcMQGaM6NlAaI5Qzu93nzVaRpASUKEdEIhCGCgoeTzNupv/2y
-         ep+f/W5jSSYH0tJ3SxGuh65bv5+m0xaCjB08kOVJQ9ODUfaW+8SQcXR92OwYZmB2JzRV
-         DIEA==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=k+K4KYma2ayRi2OWc/DZOjd0Tbo0VDgdc0W30Vd7I3o=;
+        b=ohy+Rw3zNoCIaE9qSpUepUYwy4EVNobWDT75y6vtpUVdZ4gR3P9c2ikgmNbbUKyCfy
+         c195NfXidw0IJwjMeQIO5UpYyZPaEgsCFcQBnAMqjAWrhndo0QrnwrKLjvHiVsZTB6Bt
+         /GEESuVV4sXEvgF3qLb0s669EC4eF9lt4OkUqXoCWeleIgQUzWQ2o9XioTdV8UVAzaLg
+         ZOEUWMhDEXG7Yeeg0aX/i0R5P5u4L/YcKb4ZzYFQyg8xUxe+AG0Mk3iLbYt7srxx2gGd
+         oTV4F8Oxe+YWZpLPrBkayP/ZdoWQ+HQ0jpAesLH0jNuNZPM/3pgttvdbSizNdxF/4XkR
+         ZN1w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DNnoPGVB;
-       spf=pass (google.com: domain of pbonzini@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <pbonzini@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
-        by mx.google.com with ESMTPS id r9si15122658ejr.730.2021.06.01.03.48.24
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=r3CfU38R;
+       spf=pass (google.com: domain of astrauss11@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=astrauss11@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <astrauss11@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id kb24sor8748650ejc.0.2021.06.01.03.54.55
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 01 Jun 2021 03:48:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pbonzini@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
+        (Google Transport Security);
+        Tue, 01 Jun 2021 03:54:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of astrauss11@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DNnoPGVB;
-       spf=pass (google.com: domain of pbonzini@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1622544503;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=3Ic4NWOLQ0tnymafCtBcrjzUOFMCWmOrls8If2U4umc=;
-	b=DNnoPGVBChiQLCershIu6SuM8YdkMSJ3U13QNvUWJ4DkXZp4ZwGIlaP8fw8H0cazOR38Pc
-	g/9KAzHQmex1BiQrnyEcImiv3MnXnGG6p59N6dsqQi+02fzkPJbAM4LWudiPMufpGRLftM
-	D+S8n5zRYVmq8bHUm7AQRVs0GN6cngc=
-Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
- [209.85.208.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-437-LlEZfbN_ONCyJmHhL90cGQ-1; Tue, 01 Jun 2021 06:48:22 -0400
-X-MC-Unique: LlEZfbN_ONCyJmHhL90cGQ-1
-Received: by mail-ed1-f71.google.com with SMTP id i3-20020aa7dd030000b029038ce772ffe4so7635725edv.12
-        for <alex.bennee@linaro.org>; Tue, 01 Jun 2021 03:48:21 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=r3CfU38R;
+       spf=pass (google.com: domain of astrauss11@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=astrauss11@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=k+K4KYma2ayRi2OWc/DZOjd0Tbo0VDgdc0W30Vd7I3o=;
+        b=r3CfU38Rt1e6DFJPYDimAgjzZ840mPy8Gg8+9f2Tj5CVIf0W1hUzQm0clIEJmshPRk
+         6dKAnHeoi2ZdxIW/Q37eAvs9JGnSYVMjbXvKTArVmrF/Fh9GX7FSlNUSvNrr45jQPoPw
+         p2/Bj913uldf+4hH4frueN2utc3tiiXTFnUdWCxFkB7GqhC583M1KoKysLn5sRnztfZt
+         NGnywGQwhyC5PEIcJ+SEJEqvIDcLAvwi0nOHY8UAxV2CyoDSZN6w/tx9DUXiCD6Z8Ie8
+         P2DZAFczTr2K373WeS1gyucxUQrgRt3dH8VFs1hK1g0aEkqa3OeeFfscNiXZkFKVNAoL
+         Yhxg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=3Ic4NWOLQ0tnymafCtBcrjzUOFMCWmOrls8If2U4umc=;
-        b=MeMgz9p9MrgM5K/UgftYKchNPjJr5Dzre2QVI/OH39sN20mx9pLpeO1sAGPuyOooYM
-         +T2Bgmfj3UMG1R9tpZm6W9RRVAtCi1owoB1xUEnHTTIWk1tD1FsSb8zUDUj6gGb+X+9o
-         QjOLnZt/weF9Da/5ken/Mc3J899SL0OjwohOSLjU7wrSg+b+IIA5rHuTzsgqBhEmZM1X
-         trn2mb155b3Qwub1fkl2Mtibr8wGNVEZH3ScYegpdmCaQkr8d6BGdiUMZvnbmFIsFFcz
-         8P4dv54AwfIwTGpBx2FThndEXi8hAQL1rsmDkhfAhDlsgHfbIBnlDG6Qs2rZBOLF8uzy
-         k3/A==
-X-Gm-Message-State: AOAM530LWCgCRAGxb122CP+Afcag3BqzXEB5uzz2epQHfK+uvz/SWRaW
-	XuV+yO/041aeJtAbpdaPKHi48LAKcqpDr94P/g4NxtJzeyNUfuzGk7u3AxrHoYqefG3ff6Q6ndG
-	cPti6RYxXYhoIseIU
-X-Received: by 2002:a05:6402:883:: with SMTP id e3mr31426983edy.1.1622544500983;
-        Tue, 01 Jun 2021 03:48:20 -0700 (PDT)
-X-Received: by 2002:a05:6402:883:: with SMTP id e3mr31426971edy.1.1622544500833;
-        Tue, 01 Jun 2021 03:48:20 -0700 (PDT)
-Return-Path: <pbonzini@redhat.com>
-Received: from ?IPv6:2001:b07:6468:f312:c8dd:75d4:99ab:290a? ([2001:b07:6468:f312:c8dd:75d4:99ab:290a])
-        by smtp.gmail.com with ESMTPSA id r1sm6653071edp.90.2021.06.01.03.48.19
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 01 Jun 2021 03:48:20 -0700 (PDT)
-Subject: Re: [RFC PATCH] configure: allow the overriding of default-config in
- the build
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-arm@nongnu.org, f4bug@amsat.org
-References: <20210528163116.31902-1-alex.bennee@linaro.org>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <5313539f-c41a-3dda-cb51-5dbc0443dd61@redhat.com>
-Date: Tue, 1 Jun 2021 12:48:19 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=k+K4KYma2ayRi2OWc/DZOjd0Tbo0VDgdc0W30Vd7I3o=;
+        b=YFL149SgIHnw4Bn7fwQfKM3bXYrdFqZpKOxxhv8jzqTBgwpacKii9/nGkw+B5l/Tfi
+         WskSV4WvOQZwOWNY1rICAhw6apmbeyrHgNn8x1JXVFsJFSwJpMpKeJL9N+4mHQWTPh4F
+         J/88vctGc/HwepwCE880lGBa7GGCYveYRM8VODEhfsZ9J52b+u6jx4xGSHOxCoxTfUv4
+         Dy2aZR7/3rgievsXedIQoyLyc6eBnf9kTVqz60JqmqrAGCrTVuAEwtuqYtRrId3pbcSN
+         WJCVltghuVEOjTBKKf/1RJwMrZXAOoSW/SOtp8MnN6tSmxoZgZGg4ho5bFB8povBPfoA
+         v0AQ==
+X-Gm-Message-State: AOAM533DnfS8uL6NsEwbFhoH/DcPhuVn/lqr/GKp4jVYPeQXS7Byu6KX
+	0v96HJOW2PTnVXtaMN9bL+a4Y6r+eyBWIJ18BB34/fCKgkBD2njq
+X-Google-Smtp-Source: ABdhPJy8tefGQQYAfhTy45qtfFUv4SgT7l8MsFCFshSnC9tKD8ndaH8M0Hqb16B5uWAq8yzWLBRHYD0mbMd1aMLWzfs=
+X-Received: by 2002:a17:906:1c49:: with SMTP id l9mr11320196ejg.39.1622544895133;
+ Tue, 01 Jun 2021 03:54:55 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20210528163116.31902-1-alex.bennee@linaro.org>
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: yaxh8j9aLMgo
+References: <20210601090715.22330-1-alex.bennee@linaro.org>
+In-Reply-To: <20210601090715.22330-1-alex.bennee@linaro.org>
+From: Andrew Strauss <astrauss11@gmail.com>
+Date: Tue, 1 Jun 2021 06:54:44 -0400
+Message-ID: <CAP=E3Jjz3XYLOQS5ATNo_ncVwJ4eqiNhv6X4N1AURdcEZtc22A@mail.gmail.com>
+Subject: Re: [RFC PATCH] semihosting/arm-compat: remove heuristic softmmu SYS_HEAPINFO
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="0000000000001b58a205c3b22ccf"
+X-TUID: V+ACSQvipeNt
 
-On 28/05/21 18:31, Alex Bennée wrote:
-> +  --with-devices-*[!a-zA-Z0-9_-]*=*) error_exit "Passed bad --with-devices-cc-FOO option"
+--0000000000001b58a205c3b22ccf
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Extra "cc".
+Tested-by: Andrew Strauss <astrauss11@gmail.com>
+Reviewed-by: Andrew Strauss <astrauss11@gmail.com>
 
-Looks pretty good otherwise, possible tweaks include:
+On Tue, Jun 1, 2021 at 5:07 AM Alex Benn=C3=A9e <alex.bennee@linaro.org> wr=
+ote:
 
-1) check that the architecture exists (i.e. that it there is a valid 
-softmmu target named after it)
+> The previous numbers were a guess at best. While we could extract the
+> information from a loaded ELF file via -kernel we could still get
+> tripped up by self decompressing or relocating code. Besides sane
+> library code has access to the same symbols in run time to make a
+> determination of the location of the heap.
+>
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> Cc: Andrew <astrauss11@gmail.com>
+> ---
+>  semihosting/arm-compat-semi.c | 19 ++++++++++---------
+>  1 file changed, 10 insertions(+), 9 deletions(-)
+>
+> diff --git a/semihosting/arm-compat-semi.c b/semihosting/arm-compat-semi.=
+c
+> index 1c29146dcf..041b4f6c04 100644
+> --- a/semihosting/arm-compat-semi.c
+> +++ b/semihosting/arm-compat-semi.c
+> @@ -1165,12 +1165,10 @@ target_ulong do_common_semihosting(CPUState *cs)
+>      case TARGET_SYS_HEAPINFO:
+>          {
+>              target_ulong retvals[4];
+> -            target_ulong limit;
+>              int i;
+>  #ifdef CONFIG_USER_ONLY
+> +            target_ulong limit;
+>              TaskState *ts =3D cs->opaque;
+> -#else
+> -            target_ulong rambase =3D common_semi_rambase(cs);
+>  #endif
+>
+>              GET_ARG(0);
+> @@ -1201,12 +1199,15 @@ target_ulong do_common_semihosting(CPUState *cs)
+>              retvals[2] =3D ts->stack_base;
+>              retvals[3] =3D 0; /* Stack limit.  */
+>  #else
+> -            limit =3D current_machine->ram_size;
+> -            /* TODO: Make this use the limit of the loaded application.
+> */
+> -            retvals[0] =3D rambase + limit / 2;
+> -            retvals[1] =3D rambase + limit;
+> -            retvals[2] =3D rambase + limit; /* Stack base */
+> -            retvals[3] =3D rambase; /* Stack limit.  */
+> +            /*
+> +             * Reporting 0 indicates we couldn't calculate the real
+> +             * values which should force most software to fall back to
+> +             * using information it has.
+> +             */
+> +            retvals[0] =3D 0; /* Heap Base */
+> +            retvals[1] =3D 0; /* Heap Limit */
+> +            retvals[2] =3D 0; /* Stack base */
+> +            retvals[3] =3D 0; /* Stack limit.  */
+>  #endif
+>
+>              for (i =3D 0; i < ARRAY_SIZE(retvals); i++) {
+> --
+> 2.20.1
+>
+>
 
-2) checking that the file exists using "test -f".
+--0000000000001b58a205c3b22ccf
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-> diff --git a/configs/aarch64-softmmu/aarch64-softmmu-64bit-only.mak b/configs/aarch64-softmmu/aarch64-softmmu-64bit-only.mak
+<div dir=3D"ltr"><div>Tested-by: Andrew Strauss &lt;<a href=3D"mailto:astra=
+uss11@gmail.com">astrauss11@gmail.com</a>&gt;</div><div>Reviewed-by: Andrew=
+ Strauss &lt;<a href=3D"mailto:astrauss11@gmail.com">astrauss11@gmail.com</=
+a>&gt;<br></div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=
+=3D"gmail_attr">On Tue, Jun 1, 2021 at 5:07 AM Alex Benn=C3=A9e &lt;<a href=
+=3D"mailto:alex.bennee@linaro.org">alex.bennee@linaro.org</a>&gt; wrote:<br=
+></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;=
+border-left:1px solid rgb(204,204,204);padding-left:1ex">The previous numbe=
+rs were a guess at best. While we could extract the<br>
+information from a loaded ELF file via -kernel we could still get<br>
+tripped up by self decompressing or relocating code. Besides sane<br>
+library code has access to the same symbols in run time to make a<br>
+determination of the location of the heap.<br>
+<br>
+Signed-off-by: Alex Benn=C3=A9e &lt;<a href=3D"mailto:alex.bennee@linaro.or=
+g" target=3D"_blank">alex.bennee@linaro.org</a>&gt;<br>
+Cc: Andrew &lt;<a href=3D"mailto:astrauss11@gmail.com" target=3D"_blank">as=
+trauss11@gmail.com</a>&gt;<br>
+---<br>
+=C2=A0semihosting/arm-compat-semi.c | 19 ++++++++++---------<br>
+=C2=A01 file changed, 10 insertions(+), 9 deletions(-)<br>
+<br>
+diff --git a/semihosting/arm-compat-semi.c b/semihosting/arm-compat-semi.c<=
+br>
+index 1c29146dcf..041b4f6c04 100644<br>
+--- a/semihosting/arm-compat-semi.c<br>
++++ b/semihosting/arm-compat-semi.c<br>
+@@ -1165,12 +1165,10 @@ target_ulong do_common_semihosting(CPUState *cs)<br=
+>
+=C2=A0 =C2=A0 =C2=A0case TARGET_SYS_HEAPINFO:<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0{<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0target_ulong retvals[4];<br=
+>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 target_ulong limit;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0int i;<br>
+=C2=A0#ifdef CONFIG_USER_ONLY<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 target_ulong limit;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0TaskState *ts =3D cs-&gt;op=
+aque;<br>
+-#else<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 target_ulong rambase =3D common_=
+semi_rambase(cs);<br>
+=C2=A0#endif<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0GET_ARG(0);<br>
+@@ -1201,12 +1199,15 @@ target_ulong do_common_semihosting(CPUState *cs)<br=
+>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0retvals[2] =3D ts-&gt;stack=
+_base;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0retvals[3] =3D 0; /* Stack =
+limit.=C2=A0 */<br>
+=C2=A0#else<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 limit =3D current_machine-&gt;ra=
+m_size;<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /* TODO: Make this use the limit=
+ of the loaded application.=C2=A0 */<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 retvals[0] =3D rambase + limit /=
+ 2;<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 retvals[1] =3D rambase + limit;<=
+br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 retvals[2] =3D rambase + limit; =
+/* Stack base */<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 retvals[3] =3D rambase; /* Stack=
+ limit.=C2=A0 */<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /*<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* Reporting 0 indicates we=
+ couldn&#39;t calculate the real<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* values which should forc=
+e most software to fall back to<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* using information it has=
+.<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0*/<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 retvals[0] =3D 0; /* Heap Base *=
+/<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 retvals[1] =3D 0; /* Heap Limit =
+*/<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 retvals[2] =3D 0; /* Stack base =
+*/<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 retvals[3] =3D 0; /* Stack limit=
+.=C2=A0 */<br>
+=C2=A0#endif<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0for (i =3D 0; i &lt; ARRAY_=
+SIZE(retvals); i++) {<br>
+-- <br>
+2.20.1<br>
+<br>
+</blockquote></div>
 
-Not sure if you want to include this file or it's just an example; if 
-you do, you probably should either remove the directory or call it 
-64bit-only.mak, without including aarch64-softmmu twice.
-
-Paolo
-
-> index 0000000000..3626de9e3c
-> --- /dev/null
-> +++ b/configs/aarch64-softmmu/aarch64-softmmu-64bit-only.mak
-> @@ -0,0 +1,10 @@
-> +#
-> +# A version of the config that only supports 64bits and their devices.
-> +# This doesn't quite eliminate all 32 bit devices as some boards like
-> +# "virt" support both.
-> +#
-> +
-> +CONFIG_ARM_VIRT=y
-> +CONFIG_XLNX_ZYNQMP_ARM=y
-> +CONFIG_XLNX_VERSAL=y
-> +CONFIG_SBSA_REF=y
-> diff --git a/meson.build b/meson.build
-> index 3f065f53f2..656ebde513 100644
-> --- a/meson.build
-> +++ b/meson.build
-> @@ -1350,9 +1350,10 @@ foreach target : target_dirs
->                                                  configuration: config_target_data)}
->   
->     if target.endswith('-softmmu')
-> +    config_input = meson.get_external_property(target, 'default-configs/devices' / target + '.mak')
->       config_devices_mak = target + '-config-devices.mak'
->       config_devices_mak = configure_file(
-> -      input: ['default-configs/devices' / target + '.mak', 'Kconfig'],
-> +      input: [config_input, 'Kconfig'],
->         output: config_devices_mak,
->         depfile: config_devices_mak + '.d',
->         capture: true,
-> 
+--0000000000001b58a205c3b22ccf--

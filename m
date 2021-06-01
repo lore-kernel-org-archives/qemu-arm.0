@@ -1,115 +1,153 @@
-Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp3489183lfm;
-        Tue, 1 Jun 2021 03:31:15 -0700 (PDT)
-X-Received: by 2002:aa7:d54c:: with SMTP id u12mr30904654edr.242.1622543475227;
-        Tue, 01 Jun 2021 03:31:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1622543475; cv=none;
+Received: by 2002:ac2:51c9:0:0:0:0:0 with SMTP id u9csp3500649lfm;
+        Tue, 1 Jun 2021 03:48:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzLWs9df1R0E0Jmbo5CiFPQumspmisPWYRPoOxA6yqiCOucy42CESkI1qL7O+UubemeyGA9
+X-Received: by 2002:a17:906:c0c9:: with SMTP id bn9mr28906430ejb.7.1622544504743;
+        Tue, 01 Jun 2021 03:48:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1622544504; cv=none;
         d=google.com; s=arc-20160816;
-        b=AVR77f+sqFmi5vm0pjmuUP/yM8rwwDkc19/dMvz5zneZt4f6n2u0UdtBVt37NgK0AA
-         CU7jU7wqRij0R5WTXT7G7/Lq0dvPi1Qmd8qyFHnbPS3ADLdetU2/Z9GAEQCRfd30tq4v
-         JvmvQO/V9qGpThMRWk565r7rpOsqMbr2PAePHM+eDYL6obQePUdThrtDLxK8QEml9mpB
-         1HsqAaI3RL0rtpXUmn5hMxS48+vrFps7T52k3Um5pvyih9Y+K6TKyNj2NdO5UEoBJUAJ
-         OR4P4QRCum872PFqecAvhI+ovJlx4M4JSlqIuVoINbjeQJxvxFaA3dlcZMFK66NdYk3E
-         TX4g==
+        b=0l6Xbrh/SbvxVKb+pSwhV0Sbk9Ed9S9QtiJ/MdhVtgvKNFJuve5+E0pJloKWcTX9Gg
+         nb0xYvOOKJ+xbVG2c7t1Mhx/ZYnf2clXX/DiUzmqpXmyW4FW7foHo1EnNZSKccp01Ehx
+         aIbUQBiL03QnyEvk2T4XQPeHuVTeo8D0i2Srkzr2V0Sb8bYpg4jjpPl4UF7D0QXtS3sY
+         gHz0wdKtt7KKgn0bR0toWsSCwulOLK4V/tnaHpHNw2+3F24Go7sYlfa5aNhK2ywmCErT
+         dMi5xFoT2LcnvelyPP14wvV2K7MT7mH4Tfm2637hSBWSbhUK7gNozk9RjaxqRsK39G1B
+         i+Gg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=PM6V/8ffXbbgYXotK9ACNapZ0BGTNYWm5iPNjsZ7hjA=;
-        b=NDqdwJqCO4ZWmPEOAHVvoo0RKIistMpAG7JWzG7SQeAet1eSExOeatsLv0xVBWUJ+7
-         HyO3TVq6hxFJUymSMTwsxm/A+WEFWAyTQgfJF5UzMYeKPVjv99FEH3rFiK9DR7J9NE3e
-         PBuzcvnNfStgHR5qxoF7UH2gRYKXdlS/iUn9wyrkVT0njERptOBi6hPV0Q72g6bizBMC
-         deujpyR8GaegcXffD2Wjz+lfYdtwmAXuOtSdrn8ZsYjOxvVbyj7B2D1iyFr/2ivnzp5n
-         z1HL9LocG7GFioxUBXLf0UAg8o1/biSBtU8BCyEDpjVsNoMcu85dTAJAHIxZeBiQJ+Ja
-         j67Q==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=3Ic4NWOLQ0tnymafCtBcrjzUOFMCWmOrls8If2U4umc=;
+        b=aGRdREAdouN1o/6Jh5LJ4h8Xl4/CdRbSlfOinJb5M/KiQYbKXZIpyNHAO4RpkuX0Lu
+         rUlgbCUewHq8j0lnsnhzM9YWszviqJyt8HsJ4Xj15BIYrfS5qjx+AdgICokFQ5fgW3gG
+         0UKPZjQnijYmjpu6oPjSUpfbovFam7faT9dJi+1CfQE9WnIUw8uk/zNP7lja/DYGHNjg
+         2xiGqASJc3+hW0GIqVVFcMQGaM6NlAaI5Qzu93nzVaRpASUKEdEIhCGCgoeTzNupv/2y
+         ep+f/W5jSSYH0tJ3SxGuh65bv5+m0xaCjB08kOVJQ9ODUfaW+8SQcXR92OwYZmB2JzRV
+         DIEA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JrpFqNzE;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id go16sor6045994ejc.18.2021.06.01.03.31.15
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DNnoPGVB;
+       spf=pass (google.com: domain of pbonzini@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <pbonzini@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
+        by mx.google.com with ESMTPS id r9si15122658ejr.730.2021.06.01.03.48.24
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 01 Jun 2021 03:31:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 01 Jun 2021 03:48:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pbonzini@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JrpFqNzE;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=PM6V/8ffXbbgYXotK9ACNapZ0BGTNYWm5iPNjsZ7hjA=;
-        b=JrpFqNzEEGBeIFBJLOBFbRwpT5U1+xA79qQL6y4YHJuZQ7QhkxhdRn0DbDz/XfS1X7
-         ujx63S8C3SrIvXSLNWW0QaRJGoCuX6bCnhxX/cDBJpEskR/YKkKfy6GwnoLTLVoi2ay6
-         LRkfpSHu2slqemHXczw3AAeBWyei4daR0jf2PKCuyTBEO7spbmygfEMWNPB8tjbPtLtt
-         ESn4nkKU3B5dvjRroGU07U7MYBq+fzTSiQT6cRDgHj4olHPgzNpiy4Mp27j+L+bIwJpJ
-         o0Rx1msttbGVzn8g4U/i5nH9IwqBRQoLgp88xVp0MY3Ui3i2C6ox8H/ZhTo+H9S4vty4
-         +Y0w==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DNnoPGVB;
+       spf=pass (google.com: domain of pbonzini@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1622544503;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=3Ic4NWOLQ0tnymafCtBcrjzUOFMCWmOrls8If2U4umc=;
+	b=DNnoPGVBChiQLCershIu6SuM8YdkMSJ3U13QNvUWJ4DkXZp4ZwGIlaP8fw8H0cazOR38Pc
+	g/9KAzHQmex1BiQrnyEcImiv3MnXnGG6p59N6dsqQi+02fzkPJbAM4LWudiPMufpGRLftM
+	D+S8n5zRYVmq8bHUm7AQRVs0GN6cngc=
+Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
+ [209.85.208.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-437-LlEZfbN_ONCyJmHhL90cGQ-1; Tue, 01 Jun 2021 06:48:22 -0400
+X-MC-Unique: LlEZfbN_ONCyJmHhL90cGQ-1
+Received: by mail-ed1-f71.google.com with SMTP id i3-20020aa7dd030000b029038ce772ffe4so7635725edv.12
+        for <alex.bennee@linaro.org>; Tue, 01 Jun 2021 03:48:21 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=PM6V/8ffXbbgYXotK9ACNapZ0BGTNYWm5iPNjsZ7hjA=;
-        b=NG94H0oXbKh7WG8COmQ3ECGq/taLa4B/fIg0tmjpOwwcqGxBj2pzg27c8tFbc4lcTG
-         AMx67UjBRKVCMqq+FHy1KEF3FNNCAgev4MDYSCJsXIdpzi5UWglkH1QDPWANukZntdJv
-         TtkgYA+lIw1hbhy0nOH7/r1aZ5jrrt7wu8rSoTPXRjiswKbeirle6/F1aktEHVTBqj8a
-         ZKNV93Y/kNOCfPaaAB73ejGpNF0E7Gk0/iaE1TLB5x2IOk7RPeLdBU8US00KBoE7K433
-         EqKkfgU3jDo5WYLm8wV6pX478Do4H51qjEsdHyWymp0HcRMCm7NBIjOAOYB4MS1KAiyz
-         o2CQ==
-X-Gm-Message-State: AOAM5323U/w7a1v7zaSORONOq9a7IOAdkrp22oo2nYrxhjVlAAMKatPv
-	mtcmpNsXQWNsCJCLDYw8PkFK+gYeeURqlnk+QM+kVa26AW9FZg==
-X-Google-Smtp-Source: ABdhPJz9YIWeN/GqezjhAwuCBuIA3ER7g+btw5dHSE1Q8t3kyEetxCB3NqtGKfue7OROWEh2BR6x7XvVMNcT+MIQu20=
-X-Received: by 2002:a17:906:a458:: with SMTP id cb24mr6524568ejb.482.1622543474959;
- Tue, 01 Jun 2021 03:31:14 -0700 (PDT)
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=3Ic4NWOLQ0tnymafCtBcrjzUOFMCWmOrls8If2U4umc=;
+        b=MeMgz9p9MrgM5K/UgftYKchNPjJr5Dzre2QVI/OH39sN20mx9pLpeO1sAGPuyOooYM
+         +T2Bgmfj3UMG1R9tpZm6W9RRVAtCi1owoB1xUEnHTTIWk1tD1FsSb8zUDUj6gGb+X+9o
+         QjOLnZt/weF9Da/5ken/Mc3J899SL0OjwohOSLjU7wrSg+b+IIA5rHuTzsgqBhEmZM1X
+         trn2mb155b3Qwub1fkl2Mtibr8wGNVEZH3ScYegpdmCaQkr8d6BGdiUMZvnbmFIsFFcz
+         8P4dv54AwfIwTGpBx2FThndEXi8hAQL1rsmDkhfAhDlsgHfbIBnlDG6Qs2rZBOLF8uzy
+         k3/A==
+X-Gm-Message-State: AOAM530LWCgCRAGxb122CP+Afcag3BqzXEB5uzz2epQHfK+uvz/SWRaW
+	XuV+yO/041aeJtAbpdaPKHi48LAKcqpDr94P/g4NxtJzeyNUfuzGk7u3AxrHoYqefG3ff6Q6ndG
+	cPti6RYxXYhoIseIU
+X-Received: by 2002:a05:6402:883:: with SMTP id e3mr31426983edy.1.1622544500983;
+        Tue, 01 Jun 2021 03:48:20 -0700 (PDT)
+X-Received: by 2002:a05:6402:883:: with SMTP id e3mr31426971edy.1.1622544500833;
+        Tue, 01 Jun 2021 03:48:20 -0700 (PDT)
+Return-Path: <pbonzini@redhat.com>
+Received: from ?IPv6:2001:b07:6468:f312:c8dd:75d4:99ab:290a? ([2001:b07:6468:f312:c8dd:75d4:99ab:290a])
+        by smtp.gmail.com with ESMTPSA id r1sm6653071edp.90.2021.06.01.03.48.19
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 01 Jun 2021 03:48:20 -0700 (PDT)
+Subject: Re: [RFC PATCH] configure: allow the overriding of default-config in
+ the build
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-arm@nongnu.org, f4bug@amsat.org
+References: <20210528163116.31902-1-alex.bennee@linaro.org>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <5313539f-c41a-3dda-cb51-5dbc0443dd61@redhat.com>
+Date: Tue, 1 Jun 2021 12:48:19 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.1
 MIME-Version: 1.0
-References: <20210601090715.22330-1-alex.bennee@linaro.org>
- <CAFEAcA-zzg4Yh0pX2q-9OfFKEbX_uGkVb_8kZbQJJETLRo_zOQ@mail.gmail.com> <87fsy1dhke.fsf@linaro.org>
-In-Reply-To: <87fsy1dhke.fsf@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 1 Jun 2021 11:30:44 +0100
-Message-ID: <CAFEAcA8rre_ADS_x0TJpgeBOx=KeEzs1Q-pSiAtVK77G2tDLxg@mail.gmail.com>
-Subject: Re: [RFC PATCH] semihosting/arm-compat: remove heuristic softmmu SYS_HEAPINFO
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Andrew <astrauss11@gmail.com>, 
-	qemu-arm <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: PpjN8ZVEkteW
+In-Reply-To: <20210528163116.31902-1-alex.bennee@linaro.org>
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: yaxh8j9aLMgo
 
-On Tue, 1 Jun 2021 at 11:07, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
-e:
->
->
-> Peter Maydell <peter.maydell@linaro.org> writes:
->
-> > On Tue, 1 Jun 2021 at 10:12, Alex Benn=C3=A9e <alex.bennee@linaro.org> =
-wrote:
-> >>
-> >> The previous numbers were a guess at best. While we could extract the
-> >> information from a loaded ELF file via -kernel we could still get
-> >> tripped up by self decompressing or relocating code. Besides sane
-> >> library code has access to the same symbols in run time to make a
-> >> determination of the location of the heap.
-> >>
-> >> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> >> Cc: Andrew <astrauss11@gmail.com>
-> >> ---
-> >>  semihosting/arm-compat-semi.c | 19 ++++++++++---------
-> >>  1 file changed, 10 insertions(+), 9 deletions(-)
-> >
-> > This seems like a pretty good candidate for breaking existing
-> > working binaries. How much testing against different varieties of
-> > guest-code-using-semihosting have you done ?
->
-> None, which is why it's an RFC - but at least one user reported newlib
-> attempts to use the numbers we gave it rather than falling back to
-> numbers it knew from the build and getting it wrong. I suspect any code
-> that doesn't have a fallback path is getting it right more by luck than
-> judgement though. I'd be curious to hear of code that relies on the
-> numbers it gets from QEMU.
+On 28/05/21 18:31, Alex Bennée wrote:
+> +  --with-devices-*[!a-zA-Z0-9_-]*=*) error_exit "Passed bad --with-devices-cc-FOO option"
 
-Well, newlib is the main one I had in mind -- does it have a fallback
-codepath?
+Extra "cc".
 
--- PMM
+Looks pretty good otherwise, possible tweaks include:
+
+1) check that the architecture exists (i.e. that it there is a valid 
+softmmu target named after it)
+
+2) checking that the file exists using "test -f".
+
+> diff --git a/configs/aarch64-softmmu/aarch64-softmmu-64bit-only.mak b/configs/aarch64-softmmu/aarch64-softmmu-64bit-only.mak
+
+Not sure if you want to include this file or it's just an example; if 
+you do, you probably should either remove the directory or call it 
+64bit-only.mak, without including aarch64-softmmu twice.
+
+Paolo
+
+> index 0000000000..3626de9e3c
+> --- /dev/null
+> +++ b/configs/aarch64-softmmu/aarch64-softmmu-64bit-only.mak
+> @@ -0,0 +1,10 @@
+> +#
+> +# A version of the config that only supports 64bits and their devices.
+> +# This doesn't quite eliminate all 32 bit devices as some boards like
+> +# "virt" support both.
+> +#
+> +
+> +CONFIG_ARM_VIRT=y
+> +CONFIG_XLNX_ZYNQMP_ARM=y
+> +CONFIG_XLNX_VERSAL=y
+> +CONFIG_SBSA_REF=y
+> diff --git a/meson.build b/meson.build
+> index 3f065f53f2..656ebde513 100644
+> --- a/meson.build
+> +++ b/meson.build
+> @@ -1350,9 +1350,10 @@ foreach target : target_dirs
+>                                                  configuration: config_target_data)}
+>   
+>     if target.endswith('-softmmu')
+> +    config_input = meson.get_external_property(target, 'default-configs/devices' / target + '.mak')
+>       config_devices_mak = target + '-config-devices.mak'
+>       config_devices_mak = configure_file(
+> -      input: ['default-configs/devices' / target + '.mak', 'Kconfig'],
+> +      input: [config_input, 'Kconfig'],
+>         output: config_devices_mak,
+>         depfile: config_devices_mak + '.d',
+>         capture: true,
+> 

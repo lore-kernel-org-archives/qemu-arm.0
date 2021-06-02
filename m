@@ -1,105 +1,103 @@
-Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp512893lfa;
-        Wed, 2 Jun 2021 10:56:06 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxegk4EGIXrXnyiVoP8+M0mTWWw5ooapz2JQy16ka9YwJ4hBuq6AZ4qEG22lvFkXMf8Xhpc
-X-Received: by 2002:a02:a710:: with SMTP id k16mr11453607jam.46.1622656566230;
-        Wed, 02 Jun 2021 10:56:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1622656566; cv=none;
+Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp565640lfa;
+        Wed, 2 Jun 2021 12:11:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzHf0RjoholcXDUZ7JEyW5ExUUhgAKcZkAQG8h32C1S2WsA6v9QHivHDg4p0cHl2c3eCkkw
+X-Received: by 2002:a05:6402:4389:: with SMTP id o9mr39720225edc.368.1622661102104;
+        Wed, 02 Jun 2021 12:11:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1622661102; cv=none;
         d=google.com; s=arc-20160816;
-        b=yc7HyFnqGk5JTnsMzHJMWCvbdefCisAOyTw+ZlEaqKTec96OUjPUElUk2jIBKwoM6J
-         8/Ld3qIsU9GiElAzfyI90tVb3ormEQ+1kd3RRYy4YdJoxk7mURyaIrVDgMwx83jwL2sX
-         YqiL1uQtlA3oceW9G7lXBt1EgghiTuZwTN4X4kW4dQbVsPfTbiljqVxW75rxM2JBF9B1
-         rb1JTvWRT+W7H1g+nPrO2dojXIfOf2BZ5mfDT8dXH/wmPcg215+ZCg/iTT9OC8m2vFPn
-         Ht/J7MeBxvmfck9KeMBqiNgR0v913gsInDy4gwWOM0lkD4/wupiY+ApDdN45RrPxEOiK
-         ECiA==
+        b=rn4emiV3koQehc4PkZUcyeTuuuh8A50pLkUQrNy/CGk6Dn9b/T7JQwJKTqOqzOTWPh
+         A+vsmOMWAY5ol4du5ATCQ6DdJUpGWF92nkbFL/2Z1KQLomZnD2H2149XzKDoi8n5vlhs
+         pf0a8iIkT6mACaOxS05T8dyNMyP6LhDt1C8dur3NPBDejzN1wtHDuOXarw2lgihjq5z+
+         7BvLBU73gbYT+yQjV5osGPktKaVKblh9496rG1I4zQFccUv3ydbUrTv7C8tAlwourGoV
+         Ag2fWNSzbAZfklW0H9qCx2ZLnGMkmaYmFGLjcUou8sJMgLIY3e7mAHOGVpYPnNzTVuUP
+         lgxg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:subject:references
-         :in-reply-to:message-id:to:from:date:dkim-signature;
-        bh=X5AkO0X8sZGuBy1hlAgQEn2iABIuWhSmYCETlKtNlZk=;
-        b=e8OT8eu72dZdBaTSu6A1pcwktFo2QvFyo6KSdvmdij+sutsIjigTaCW+YnnYFZxTL7
-         wf+BBwMcKGWcOg/vbaXFjGdu2Lh9swkBjEM81Vehevh3OjHlqudzSS+IyL6Bwe3tjpwB
-         T5J1CV/TI7S+81VPmRHUFOcSMYeityHVSw+cqTo4dE+P+lfYVwvk9SW+pE9bRF3wVsp8
-         wVAxBSDZh2Bkeud/3qwjgbkiJwXxFG4ebuOw7OscdFKha1LXsa+2d5cesBqYLCNnAEIX
-         EyLSPiFmAsbSzwn6eto3MfATU5iHDpBrDtw5btPXZ1i5DHZfHMWeqWo3HSIs1qx2QdF9
-         LDGg==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=gEBlWTqqbQ/WstFOo6dKhZ1DayOTP2LTUDvw5I5JPOo=;
+        b=mWixFJcApZeIMTTNuPqC9TrIC2s6lbO8KgWCSt5k79tFISdx7ttSwZFil/imDoY0Q5
+         cZ8H9DF1GmVu2x7VOhRamRhfYWG+usXg7Lbo71EkOOYppC10I0hBq7ojCKe+Fd9IQpZk
+         5wPHnm58V6xzLoi+darLGIsXxtJfRGPoCJQ0InpzTYs8aRPLxlTHUpTMJcVrDLJ5PtUJ
+         P4X9a1nG/oWWZwBp+Mo10qbt2bRZ4kODI0vKqgXFMy1C/usPvR/YpJ9fszBmMZKvUMuR
+         xyb1UrEM1gT9sGVZWoHlspCZ0TEnTy+XfCjsZ5VOaus0zlqkhuyLs2WpxeIUJssG548Z
+         KwjA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="eM/nULHZ";
+       dkim=fail header.i=@linaro.org header.s=google header.b=vKOZNXCr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c1si302027ilm.49.2021.06.02.10.56.05
+        by mx.google.com with ESMTPS id a92si614801edf.232.2021.06.02.12.11.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Jun 2021 10:56:06 -0700 (PDT)
+        Wed, 02 Jun 2021 12:11:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="eM/nULHZ";
+       dkim=fail header.i=@linaro.org header.s=google header.b=vKOZNXCr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35352 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37014 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1loV65-0004Z8-H8
-	for alex.bennee@linaro.org; Wed, 02 Jun 2021 13:56:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50124)
+	id 1loWHF-0008E9-7q
+	for alex.bennee@linaro.org; Wed, 02 Jun 2021 15:11:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35412)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shashi.mallela@linaro.org>)
- id 1loV5k-000458-NJ
- for qemu-arm@nongnu.org; Wed, 02 Jun 2021 13:55:44 -0400
-Received: from mail-qt1-x830.google.com ([2607:f8b0:4864:20::830]:34770)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1loWH5-0008Du-P8
+ for qemu-arm@nongnu.org; Wed, 02 Jun 2021 15:11:31 -0400
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632]:35716)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shashi.mallela@linaro.org>)
- id 1loV5i-0003VZ-LS
- for qemu-arm@nongnu.org; Wed, 02 Jun 2021 13:55:44 -0400
-Received: by mail-qt1-x830.google.com with SMTP id v4so2482760qtp.1
- for <qemu-arm@nongnu.org>; Wed, 02 Jun 2021 10:55:41 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1loWH4-0001ar-1o
+ for qemu-arm@nongnu.org; Wed, 02 Jun 2021 15:11:31 -0400
+Received: by mail-ej1-x632.google.com with SMTP id h24so5482943ejy.2
+ for <qemu-arm@nongnu.org>; Wed, 02 Jun 2021 12:11:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:message-id:in-reply-to:references:subject
- :mime-version; bh=X5AkO0X8sZGuBy1hlAgQEn2iABIuWhSmYCETlKtNlZk=;
- b=eM/nULHZfnoG3PbMN0AvwQeTktnjHSMrnKeAI5718vcUkTdN8AUj5zZQAOkSeJxnJf
- SrWNtxGK74aP6XmO0gyu8zvvg4Z2b37vuBZJEDgeWVHVYLsd8Hh4xiSD7UeBgMY1mtMy
- 1lrSYp+gOGlt7Zk8PHD3zXuA7EDbvMZmlVBEZUzOXkpDfwTk8Zer0tDETVqZ57CtoMk4
- hSpfxDusNeCGLw/4tQ0izpObKgPhDqwp/zuatk5GLcZ8Al7+Rk88kb1Qz2jPkVInEmnw
- vT+q0LysOx0d6mpqA+0HH6Q6S0OmuOObmB7bt0KclbMpPNd21VO6mcfgnrT7+3glansh
- 5ZnQ==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=gEBlWTqqbQ/WstFOo6dKhZ1DayOTP2LTUDvw5I5JPOo=;
+ b=vKOZNXCrgZFC/oU+4840uBBa+7eVh+FLqKVK13FhcQeboCmmlKCedODzfNNG5jQwYA
+ zHAkrSmGVHeXIPvQ6MN1AQXI5lULrMuxSADXJri2y/jeASoIq59bVLL+6HQSqha4Cui2
+ fGtjBIeWZ6+u16rGwHPf7kEewhD/+y9N259sJAnAIgt6TN7bzTrVbgEzbvB0jBEK+xTh
+ /mktbX9s+7eZG+Utlq3NZIiqBjr5GsAwU9LTXwIA2I+VhFtK+gMGG1whsFlK/wLSO2c4
+ QVWXo9HEWjbsq7xYdsxPaimyTzLuJJ6uHCW6xd9qzU6+4iUbb65iWPM/W3z3Ol7CKt0P
+ Og1A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:message-id:in-reply-to
- :references:subject:mime-version;
- bh=X5AkO0X8sZGuBy1hlAgQEn2iABIuWhSmYCETlKtNlZk=;
- b=hpNyklXW5QKQ6fWmsI7QjzGEjvK8QY5j2+yI6F5K527m834H7sFgnh02zr4gk9/HOr
- KqfF5rwF6nLPnFWrBWMLrW1oilqiwayzkV35o9jH/wY306a5zi2t5QIAlDRryrE0gWyS
- rzkJWn+vXm6G8QCRqARMn5idJtASAupNT/LQtsbuGDlsgjJEpjhoSDgYvWSQkBaGwxa1
- Wvg5kol5GdmpMWuadxN0nboHr2JXtHUuzc6hh4sSLFDCKl3TJr3/UcXl5sW6WV9F70Sw
- JTTAKN7jj6My/EtgZTuP8/QSlT+teEgScV/240Gg8omf09c9RrpRBu/DC02lPrJnbZDD
- JQ+w==
-X-Gm-Message-State: AOAM531wCbfRehi36leCOzL+uxFf8rNdlaRN05al7t9QHfMJwvPdqwI7
- c9vXTf07Qy3z9AJClMKeYt/l4Q==
-X-Received: by 2002:ac8:4f4f:: with SMTP id i15mr2169583qtw.215.1622656540681; 
- Wed, 02 Jun 2021 10:55:40 -0700 (PDT)
-Received: from localhost.localdomain
- (bras-base-stsvon1503w-grc-21-142-114-142-78.dsl.bell.ca. [142.114.142.78])
- by smtp.gmail.com with ESMTPSA id 7sm300472qtu.38.2021.06.02.10.55.39
- (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
- Wed, 02 Jun 2021 10:55:39 -0700 (PDT)
-Date: Wed, 2 Jun 2021 13:55:38 -0400
-From: Shashi Mallela <shashi.mallela@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <2235C492-01C2-4925-BCD0-F57D5BD40777@getmailspring.com>
-In-Reply-To: <CAFEAcA9wAnK11NNObOrqV8MMgf7h9=Q2nNarEe+GY0SNPPuneQ@mail.gmail.com>
-References: <CAFEAcA9wAnK11NNObOrqV8MMgf7h9=Q2nNarEe+GY0SNPPuneQ@mail.gmail.com>
-Subject: Re: [PATCH v3 0/8] GICv3 LPI and ITS feature implementation
-X-Mailer: Mailspring
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=gEBlWTqqbQ/WstFOo6dKhZ1DayOTP2LTUDvw5I5JPOo=;
+ b=alGVUc931nhYPAJS1/2uM0+b+ruuhYGTxd+JPUdKtJ69iFNV/Ul0T3V1wpY16s1CiM
+ 9+miPL4XBtLjbRtCimYI8yBQkS7YNhUlmgZsJdoRuGYDpVOdg9/8evSpX/xTKe3Spve+
+ Ae7Imm8GIi+oamD21zkltsO+P+zx4olGhFQpcFdt60fq15AeXzrBHaqDOMJ0lkp1O0zi
+ dK6Oq53ulHVxObOAwTiLtaCKnZJ9rcSp6kdZTWAFMVwA3lIzMkDYD7X9hO7cFXykYWN7
+ g9T1osxNIXte0U6SeIzMmBv9ur4sFcwI6ifTkpkXUWlc6Q8Ss/GIVTmtUBgrQ/rLKxn0
+ 3Gnw==
+X-Gm-Message-State: AOAM532K9fkj0hq08WzGFh675364aCHMf8ujLBlP/8IW0Zwl3Gsr+3d6
+ LzD/Us94MUZplIZqDGm7KFn9D7Id9rXxlPHevGf50w==
+X-Received: by 2002:a17:906:5299:: with SMTP id
+ c25mr20105482ejm.85.1622661088322; 
+ Wed, 02 Jun 2021 12:11:28 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/alternative; boundary="60b7c61a_4229d044_14ea"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::830;
- envelope-from=shashi.mallela@linaro.org; helo=mail-qt1-x830.google.com
+References: <OS3PR01MB61515F08F0709D9E22B8DDDFE9249@OS3PR01MB6151.jpnprd01.prod.outlook.com>
+ <TYCPR01MB6160FB4A9712F3F5E14D8BBAE93E9@TYCPR01MB6160.jpnprd01.prod.outlook.com>
+ <CAFEAcA_fZ_jC640XrFUCSk6YxzoSmdwDaMDAXoX47mBFKdS9hg@mail.gmail.com>
+ <a56283b3-3bb2-d9a3-9a6e-8175cc17b376@linaro.org>
+In-Reply-To: <a56283b3-3bb2-d9a3-9a6e-8175cc17b376@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 2 Jun 2021 20:10:56 +0100
+Message-ID: <CAFEAcA8-KXp204HD=LcUo8CHQX-ioCMzL8kaOyHTUP9KQz-TAA@mail.gmail.com>
+Subject: Re: [RFC] Adding the A64FX's HPC funtions.
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::632;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x632.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -114,123 +112,48 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Leif Lindholm <leif@nuviainc.com>, QEMU Developers <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>, Radoslaw Biernacki <rad@semihalf.com>
+Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "ishii.shuuichir@fujitsu.com" <ishii.shuuichir@fujitsu.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: V38sWGMzDNgX
+X-TUID: tW8hl9DejEH4
 
---60b7c61a_4229d044_14ea
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-This is due to missing IORT acpi data,applicable with latest ITS changes.
-Will be sharing a separate review with new files.
-
-On May 18 2021, at 10:46 am, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On Fri, 30 Apr 2021 at 00:42, Shashi Mallela <shashi.mallela@linaro.org> wrote:
-> >
-> > This patchset implements qemu device model for enabling physical
-> > LPI support and ITS functionality in GIC as per GICv3 specification.
-> > Both flat table and 2 level tables are implemented.The ITS commands
-> > for adding/deleting ITS table entries,trigerring LPI interrupts are
-> > implemented.Translated LPI interrupt ids are processed by redistributor
-> > to determine priority and set pending state appropriately before
-> > forwarding the same to cpu interface.
-> > The ITS feature support has been added to sbsa-ref platform as well as
-> > virt platform,wherein the emulated functionality co-exists with kvm
-> > kernel functionality.
-> >
-> > Changes in v3:
-> > - review comments addressed
-> >
-> > Shashi Mallela (8):
-> > hw/intc: GICv3 ITS initial framework
-> > hw/intc: GICv3 ITS register definitions added
-> > hw/intc: GICv3 ITS command queue framework
-> > hw/intc: GICv3 ITS Command processing
-> > hw/intc: GICv3 ITS Feature enablement
-> > hw/intc: GICv3 redistributor ITS processing
-> > hw/arm/sbsa-ref: add ITS support in SBSA GIC
-> > hw/arm/virt: add ITS support in virt GIC
+On Wed, 2 Jun 2021 at 20:02, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+> On 6/1/21 8:21 AM, Peter Maydell wrote:
+> >>> 2) Is it OK to specify the option to set the HPC extension of A64FX as follows,
+> >>> for example?
+> >>>
+> >>> -M virt -cpu max,a64fx-hpc-sec=on (*sector cache function) -M virt -cpu
+> >>> max,a64fx-hpc-hwpf=on (*hardware prefetvh assist function) -M virt -cpu
+> >>> max,a64fx-hpc-hwb=on (*hardware barrier function)
+> >>>
+> >>> It is also possible to implement something like -cpu a64fx, but since we don't
+> >>> know if we can implement it immediately, we assume that we will use the -cpu
+> >>> max option first.
 >
-> Something in here breaks "make check":
-> MALLOC_PERTURB_=${MALLOC_PERTURB_:-$(( ${RANDOM:-0} % 255 + 1))}
-> QTEST_QEMU_IMG=./qemu-img
-> G_TEST_DBUS_DAEMON=/home/petmay01/linaro/qemu-from-laptop/qemu/tests/dbus-vmstate-daemon.sh
-> QTEST_QEMU_BINARY=./qemu-system-aarch64 tests/qtest/bios-tables-test
-> --tap -k
->
-> Looking for expected file 'tests/data/acpi/virt/FACP'
-> Using expected file 'tests/data/acpi/virt/FACP'
-> Looking for expected file 'tests/data/acpi/virt/APIC'
-> Using expected file 'tests/data/acpi/virt/APIC'
-> Looking for expected file 'tests/data/acpi/virt/GTDT'
-> Using expected file 'tests/data/acpi/virt/GTDT'
-> Looking for expected file 'tests/data/acpi/virt/MCFG'
-> Using expected file 'tests/data/acpi/virt/MCFG'
-> Looking for expected file 'tests/data/acpi/virt/SPCR'
-> Using expected file 'tests/data/acpi/virt/SPCR'
-> Looking for expected file 'tests/data/acpi/virt/IORT'
-> **
-> ERROR:../../tests/qtest/bios-tables-test.c:385:load_expected_aml:
-> assertion failed: (exp_sdt.aml_file)
-> ERROR qtest-aarch64/bios-tables-test - Bail out!
-> ERROR:../../tests/qtest/bios-tables-test.c:385:load_expected_aml:
-> assertion failed: (exp_sdt.aml_file)
->
-> (and then it hangs)
-> -- PMM
---60b7c61a_4229d044_14ea
-Content-Type: text/html; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
+> My first thought is that -cpu max can simply enable the extensions, without
+> extra flags.  The max cpu has all of the features that we can enable, and as I
+> see it this is just one more.
 
-<div>This is due to missing IORT acpi data,applicable with latest ITS cha=
-nges.</div><div>Will be sharing a separate review with&nbsp; new files.</=
-div><br><div class=3D=22gmail=5Fquote=5Fattribution=22>On May 18 2021, at=
- 10:46 am, Peter Maydell &lt;peter.maydell=40linaro.org&gt; wrote:</div><=
-blockquote><div><div>On =46ri, 30 Apr 2021 at 00:42, Shashi Mallela &lt;s=
-hashi.mallela=40linaro.org&gt; wrote:</div><div>&gt;</div><div>&gt; This =
-patchset implements qemu device model for enabling physical</div><div>&gt=
-; LPI support and ITS functionality in GIC as per GICv3 specification.</d=
-iv><div>&gt; Both flat table and 2 level tables are implemented.The ITS c=
-ommands</div><div>&gt; for adding/deleting ITS table entries,trigerring L=
-PI interrupts are</div><div>&gt; implemented.Translated LPI interrupt ids=
- are processed by redistributor</div><div>&gt; to determine priority and =
-set pending state appropriately before</div><div>&gt; forwarding the same=
- to cpu interface.</div><div>&gt; The ITS feature support has been added =
-to sbsa-ref platform as well as</div><div>&gt; virt platform,wherein the =
-emulated functionality co-exists with kvm</div><div>&gt; kernel functiona=
-lity.</div><div>&gt;</div><div>&gt; Changes in v3:</div><div>&gt; - revie=
-w comments addressed</div><div>&gt;</div><div>&gt; Shashi Mallela (8):</d=
-iv><div>&gt; hw/intc: GICv3 ITS initial framework</div><div>&gt; hw/intc:=
- GICv3 ITS register definitions added</div><div>&gt; hw/intc: GICv3 ITS c=
-ommand queue framework</div><div>&gt; hw/intc: GICv3 ITS Command processi=
-ng</div><div>&gt; hw/intc: GICv3 ITS =46eature enablement</div><div>&gt; =
-hw/intc: GICv3 redistributor ITS processing</div><div>&gt; hw/arm/sbsa-re=
-f: add ITS support in SBSA GIC</div><div>&gt; hw/arm/virt: add ITS suppor=
-t in virt GIC</div><br><div>Something in here breaks =22make check=22:</d=
-iv><br><div>MALLOC=5FPERTURB=5F=3D=24=7BMALLOC=5FPERTURB=5F:-=24(( =24=7B=
-RANDOM:-0=7D % 255 + 1))=7D</div><div>QTEST=5FQEMU=5FIMG=3D./qemu-img</di=
-v><div>G=5FTEST=5FDBUS=5FDAEMON=3D/home/petmay01/linaro/qemu-from-laptop/=
-qemu/tests/dbus-vmstate-daemon.sh</div><div>QTEST=5FQEMU=5FBINARY=3D./qem=
-u-system-aarch64 tests/qtest/bios-tables-test</div><div>--tap -k</div><br=
-><div>Looking for expected file 'tests/data/acpi/virt/=46ACP'</div><div>U=
-sing expected file 'tests/data/acpi/virt/=46ACP'</div><div>Looking for ex=
-pected file 'tests/data/acpi/virt/APIC'</div><div>Using expected file 'te=
-sts/data/acpi/virt/APIC'</div><div>Looking for expected file 'tests/data/=
-acpi/virt/GTDT'</div><div>Using expected file 'tests/data/acpi/virt/GTDT'=
-</div><div>Looking for expected file 'tests/data/acpi/virt/MC=46G'</div><=
-div>Using expected file 'tests/data/acpi/virt/MC=46G'</div><div>Looking f=
-or expected file 'tests/data/acpi/virt/SPCR'</div><div>Using expected fil=
-e 'tests/data/acpi/virt/SPCR'</div><div>Looking for expected file 'tests/=
-data/acpi/virt/IORT'</div><div>**</div><div>ERROR:../../tests/qtest/bios-=
-tables-test.c:385:load=5Fexpected=5Faml:</div><div>assertion failed: (exp=
-=5Fsdt.aml=5Ffile)</div><div>ERROR qtest-aarch64/bios-tables-test - Bail =
-out=21</div><div>ERROR:../../tests/qtest/bios-tables-test.c:385:load=5Fex=
-pected=5Faml:</div><div>assertion failed: (exp=5Fsdt.aml=5Ffile)</div><br=
-><div>(and then it hangs)</div><br><div>-- PMM</div></div></blockquote>
---60b7c61a_4229d044_14ea--
+I dunno, because it's not an architectural feature, it's an implementation
+feature. We can rely on architectural features not to step on each others'
+toes, but there's no guarantee that some other impdef feature might not
+clash with these a64fx ones.
 
+Also, how does the guest OS typically detect the presence of these
+features? If it does it by looking for MIDR etc values that say
+"this is an A64FX" then -cpu max won't trigger that.
+
+> I would like to add -cpu a64fx at some point.  But as you say, that need not
+> happen right away.
+
+I think it would be worth scoping out how much work the a64fx CPU
+would require (ie what else does it need beyond these extensions
+and whatever features we currently implement?). If that's not a
+lot of work it might be simpler to just add it (possibly even
+add it but with one or two of its features as not-yet-implemented.)
+
+thanks
+-- PMM

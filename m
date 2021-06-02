@@ -1,110 +1,113 @@
-Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp523505lfa;
-        Wed, 2 Jun 2021 11:09:25 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw+JygShOAI2L8lPbC+fIYqNOlDJ0gPZ3kE+c+H0i2qCrUL4Cm6RYHjKK2yDnkFcCBo0MKe
-X-Received: by 2002:a05:6102:e08:: with SMTP id o8mr25061467vst.29.1622657361810;
-        Wed, 02 Jun 2021 11:09:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1622657361; cv=none;
+Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp717260lfa;
+        Wed, 2 Jun 2021 16:22:48 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyfnVJoMR8V6MJlL+E+WeJIk4WLE2FxGN8pa9eTZVZ6+iGm4/8+Z69wR5ik0lEoYIMSW6Y+
+X-Received: by 2002:a05:620a:24cf:: with SMTP id m15mr29168165qkn.435.1622676167943;
+        Wed, 02 Jun 2021 16:22:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1622676167; cv=none;
         d=google.com; s=arc-20160816;
-        b=wp4ZocF6bZza/qqJBrZO6tbKRdaP8FJpLwLIpipwFzgN/AL87BbqiS7K62hdTc5p1O
-         UgopHL4blrC1CvTlkayUxL4tHAWcMVyDeLXtrn8iD/tDDxs5GwW9d55x34QlonvDjFjM
-         21qhjY1MowgMzD0W9G+dbQxEbhr+g1piMly8kLD/Iv+stNTa9m3n23Jcw5v/rmGEQaOW
-         TJbq/hsKUh1Sw5ULT/4IWvlHxfrzK77PbNE8A9SjRwp3ftwSMB1RPDz1IfWkZOYDbqoI
-         7ghr2M/l09F6jDrANjBfDNhW2+neM9dkY9O4Zm854WZ0mgUeFp5RCRzexupLEcEdi3M4
-         +WaQ==
+        b=jjtGEATEc2NbP8cdAZ73QFzpOEuChmGaY68DpkJR6fOUv8tZHg6xTTS8fi3ZGF91mA
+         P1n67J7HWAsJvR8ddYT1QRslnkIeCk/sJ7H1YLin2uOt8bLIzAkbXsVH4DPl9rUQRDfP
+         y7FQSzVdelT1vBbUL8f/CI1F7L+Qsnw5+Nt1/6eU7IjcLENoMryYKhguPMQLhNQnxhJS
+         RGf7azyfxuBc679tQbapnUXl/jT/SkeHsgcwtFZGwynltBgueykETLvw7BCZn6y17LWB
+         B6nh2LsZhh42PtLTLxORUud/ZTEvEPYuf48GnAe6YmKRtw6UUIURAWFgZNuXPser/U54
+         zgng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=2vrWwFy10Zdnfu5WX/uUYQ0OSYmANPgzkaZTtR8NbMU=;
-        b=od0Cy2pYiZPuyGgDg6rlL1iSrdigL7S5AJYr0JQLQt8MkdeRV98Zi66G45ydQiCnHD
-         Tlp6wTS6mIEzlk1Vq/j5t+TW8ZJ4VLcB/9Xxk3BWwgj8YNtZb1kfdkeK9YBEmMQzbiTG
-         aKrWxwGyhmcVAecfjMWVaG7bLWD6OMbBc/MaFSDHR17flkdp9GGcv62/yAAXqWSVuKPB
-         oZJkdl9ZZkHncmh4xN3MQX8qrqernLgP/ACtWRxXm5pQt33LUTcarqfP9KZqFkX21okc
-         jj2bu0S8qjiuqgVqlNrZCWBUUf3F0UzfxUV2dfncmG8ofrgvMMiS/SD1OZG05AYzCZBn
-         P9oA==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=OeE4sSQIXdWBJX99O1b2Bq/BDbtf/5JhinWNSdaeAr0=;
+        b=aXBYHgzKmDzv/fQfsk7R2kv9hwxbGpTW76aXT2og/ZpqNSrIwJD7CLFPUCCvAVvS0w
+         Dzf3Wzc15+UpGqSwoNdqFEq8qbrwQx7mnb39ffpBX+9borauSeYQxC765ap1zkypKSFT
+         lwX+WpPT5MrpxtWms25ULGsXPjzw2LopfmEOQUxgpbU2fcKa/Dy9o48Tsg9Um5JpKaFp
+         XCc7KQAz8CNVkvOjvjnVs5tF8y5ENrs5xe698i6pga+PEoJIZq4y+GCwOJUSdRHYSAQY
+         qCznRRgS2tp93NIefp6cue5RYWZq/XGFCRgk4sRrqFeL7gv3CHoNoP5l0rs7DOSi67dF
+         bF8Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=B+IwyyBe;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZvEa8Qph;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m3si350454vsn.172.2021.06.02.11.09.21
+        by mx.google.com with ESMTPS id p7si680415qkb.172.2021.06.02.16.22.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Jun 2021 11:09:21 -0700 (PDT)
+        Wed, 02 Jun 2021 16:22:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=B+IwyyBe;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZvEa8Qph;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35984 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:43148 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1loVIv-0007Vz-1Z
-	for alex.bennee@linaro.org; Wed, 02 Jun 2021 14:09:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51262)
+	id 1loaCF-0002y4-BX
+	for alex.bennee@linaro.org; Wed, 02 Jun 2021 19:22:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45544)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shashi.mallela@linaro.org>)
- id 1loVAq-0008VF-Nb
- for qemu-arm@nongnu.org; Wed, 02 Jun 2021 14:01:00 -0400
-Received: from mail-qk1-x72e.google.com ([2607:f8b0:4864:20::72e]:45844)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1loaC6-0002wR-2J; Wed, 02 Jun 2021 19:22:38 -0400
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b]:39909)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shashi.mallela@linaro.org>)
- id 1loVAi-0006ec-Kn
- for qemu-arm@nongnu.org; Wed, 02 Jun 2021 14:01:00 -0400
-Received: by mail-qk1-x72e.google.com with SMTP id 65so1847560qkg.12
- for <qemu-arm@nongnu.org>; Wed, 02 Jun 2021 11:00:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=2vrWwFy10Zdnfu5WX/uUYQ0OSYmANPgzkaZTtR8NbMU=;
- b=B+IwyyBe366B/Rc/89MONYd7AYRGK+fQkTEG/9Z4EOnViVeM0bkdkLXUx6Vnl2cvQW
- ho/+ZdcR1ZD8FlcthZXIjzf9gXLOWQWPBDJn/US37tTjYR/89rlbTlMSDyeqUDcMLoX3
- MtmfsJ+2QQ5dLVlCCpFE6vXD2vNuJEDXb5UagL3oUqs0s8JMzKejorTMf42EWqM970uG
- Qsn9pTIMYFsiOLAy8KKuFqB4nFDM7uo21dUV/ZDfHbuCKgF6cWx6Kv2btQdJFu/C9jmb
- X5/XUpXKtCsuw7B8ep/q/Gs70IszEOV4FLJAHIvjj1cPwyIOYWabUGOaFyARz/Ae9Bu3
- 8EAQ==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1loaC3-0004yg-TM; Wed, 02 Jun 2021 19:22:37 -0400
+Received: by mail-ed1-x52b.google.com with SMTP id dj8so4913507edb.6;
+ Wed, 02 Jun 2021 16:22:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=OeE4sSQIXdWBJX99O1b2Bq/BDbtf/5JhinWNSdaeAr0=;
+ b=ZvEa8QphO9rHwY6EXCS/PvmDP33RXkRKgVjsa+q4Uxubh9Zjf3m625HXe3/bnh0uva
+ 3yPTByWFmpGSdIM6OvlMA3iqxND3HosicZEanLpnSpcX2Oh8o3Fq1gObx03hr4vXC+eN
+ H6/a8IuqRaajP/mQFf+77DxWX+T+FkoNcThupcOydc1TZpgquvrQCv5sec7tMQOlRyJ+
+ VwZEU2nfhO2ISpoiBlA9x7V3r0O0ePn+VsS5WJFhlhM+xME+rBLjrn8K5I4gdPaEGRwv
+ Y0cZG0tWyb4Vt4Wj4rZj5t/SpW7mD1YPgjTWvklCe61+myh3PILpVR+TJX6ncI+xVuNW
+ Y/4g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=2vrWwFy10Zdnfu5WX/uUYQ0OSYmANPgzkaZTtR8NbMU=;
- b=P+kDZSGRKr+aXDihH0fEO0WyFvrVOKaeS4KLOeG3O6lkF8Q4rfcaLuJxySi2J4rQ6q
- 18FCWjYIuYjZA57HiEuI3+YVtUo4h6YHmcXjXpyrvHJ2JzckIJVYqg12l8QP9isvEz3U
- H84/oaxaV4uVFlqtW49OIUBOxbL+ytqhyEGRS9/SOgWlgg2UxCvOe+JSm86qR4o5Efwy
- zizYOhbIRyE5/ifuwf6VReqm9H85MCs3GMYWD9ywi9/rdGj69rf4ToT4vBUEUGBpCqyx
- uHGJIYy9MPMOfvLHBtzKmV3otIWgIu6iVlmbRmOB54AkTCMpkLN/vmBy4T+axeGtPIkf
- GrEg==
-X-Gm-Message-State: AOAM530SC9giGQNNnjb1G3uxYU80uPFK5uqi4NUJpy08VdIAi0thZrGC
- nX5Z6MM3k9feOhiSkioX1CuA7eBJRH6YGA==
-X-Received: by 2002:a05:620a:15f7:: with SMTP id
- p23mr28147906qkm.178.1622656851679; 
- Wed, 02 Jun 2021 11:00:51 -0700 (PDT)
-Received: from localhost.localdomain
- (bras-base-stsvon1503w-grc-21-142-114-142-78.dsl.bell.ca. [142.114.142.78])
- by smtp.googlemail.com with ESMTPSA id 97sm273044qte.20.2021.06.02.11.00.50
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 02 Jun 2021 11:00:51 -0700 (PDT)
-From: Shashi Mallela <shashi.mallela@linaro.org>
-To: peter.maydell@linaro.org,
-	leif@nuviainc.com,
-	rad@semihalf.com
-Subject: [PATCH v4 8/8] hw/arm/virt: add ITS support in virt GIC
-Date: Wed,  2 Jun 2021 14:00:42 -0400
-Message-Id: <20210602180042.111347-9-shashi.mallela@linaro.org>
-X-Mailer: git-send-email 2.27.0
-In-Reply-To: <20210602180042.111347-1-shashi.mallela@linaro.org>
-References: <20210602180042.111347-1-shashi.mallela@linaro.org>
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=OeE4sSQIXdWBJX99O1b2Bq/BDbtf/5JhinWNSdaeAr0=;
+ b=fFauO/8EAM0xgajzOEXznprSUqq2Enj7EyKQVnAIoGtn5g5Im1coiTdpBM5dYifp6g
+ MMJn58icb9xpQoywA5Tb8XZPxMv9j9vaNdB37SlQz2lZabbBhaj9vUX+zm4a76l+uUUs
+ qcZf9mXfhYW34z3gs/OwGYT8KRPZ47ubCOphnHQm6AVXLDgskUnskHLgJS1cQtwBsZRw
+ UNPJRCZyOvxg5WSroak7Q+xUvGb7FCiUwK9TUredgqBd8arq8hMwPR1L54YXuIqfX3/K
+ ebE72Yi3Mb2Sv74J/xkEv7dxaadqnIOBaUf0FhOzBfFEU2uxjP5Di97Zp3411K05gTf7
+ Zaiw==
+X-Gm-Message-State: AOAM531F+qm0ToGVkTn/p08lavoOY1VLmfxMzHp/gOejNaKTQP0+dB/W
+ 1Fo14jK+hhzicoTS+dQRfnw=
+X-Received: by 2002:a05:6402:4252:: with SMTP id
+ g18mr40398333edb.195.1622676154246; 
+ Wed, 02 Jun 2021 16:22:34 -0700 (PDT)
+Received: from [192.168.1.36] (235.red-83-57-168.dynamicip.rima-tde.net.
+ [83.57.168.235])
+ by smtp.gmail.com with ESMTPSA id z22sm225468ejm.71.2021.06.02.16.22.33
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 02 Jun 2021 16:22:33 -0700 (PDT)
+Subject: Re: [PATCH qemu] Add basic power management to raspi.
+To: Nolan <nolan@sigbus.net>, qemu-devel@nongnu.org
+References: <162137039825.30884.2445825798240809194-0@git.sr.ht>
+ <65187b48-2449-e2b4-2d13-ed9ffb6fe2a8@amsat.org>
+ <7669dd87-e040-a049-e953-9f31a4557ee5@sigbus.net>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <596d4b19-a1b8-4ae3-d449-376bcd88cbe5@amsat.org>
+Date: Thu, 3 Jun 2021 01:22:32 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.1
 MIME-Version: 1.0
+In-Reply-To: <7669dd87-e040-a049-e953-9f31a4557ee5@sigbus.net>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::72e;
- envelope-from=shashi.mallela@linaro.org; helo=mail-qk1-x72e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x52b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.613,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -119,131 +122,92 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UbvHAB9EyxEN
+X-TUID: PEkamzdzKAKE
 
-Included creation of ITS as part of virt platform GIC
-initialization.This Emulated ITS model now co-exists with kvm
-ITS and is enabled in absence of kvm irq kernel support in a
-platform.
+On 6/2/21 11:33 PM, Nolan wrote:
+> On 5/31/21 4:23 AM, Philippe Mathieu-Daudé wrote:
+>> Hi Nolan,
+>>
+>> Thanks for your patch!
+>>
+>> There is something odd with your email address, which apparently
+>> became sourcehut@sigbus.net instead of nolan@sigbus.net.
+> 
+> Ugh, oops. I was trying out sourcehut for this, and reflexively gave
+> them a marker email. I'm pretty sure sourcehut won't sell my email
+> address, so I'll just change it.
+> 
+>> On 5/18/21 10:24 PM, ~nolanl wrote:
+>>> From: Nolan Leake <nolan@sigbus.net>
+>>>
+>>> This is just enough to make reboot and poweroff work.
+>>
+>> Please precise "for Linux kernels", since this doesn't work
+>> with firmwares (ideally we should implement the FIRMWARE_NOTIFY_REBOOT
+>> property - which Linux sends - to handle the machine reboot/halt
+>> via the videocore firmware model).
+> 
+> Thanks, good point re: this being tuned to what Linux (and u-boot) do.
+> Poking around a bit, it looks like
+> "trusted-firmware-a"/"arm-trusted-firmware" uses the same method, as do
+> a couple of bare-metal/hobby OSes. Couldn't immediately figure out what
+> FreeBSD does.
+> 
+> I'm not sure I understand your point about FIRMWARE_NOTIFY_REBOOT, my
+> understanding is that message is there to tell the GPU firmware that
+> we're about to reboot, so it can do things like reload the PCIe USB
+> chip's firmware. In my testing without the watchdog module loaded, my
+> physical pi4 does not reboot, so it appears that sending
+> FIRMWARE_NOTIFY_REBOOT is not enough on its own.
 
-Signed-off-by: Shashi Mallela <shashi.mallela@linaro.org>
----
- hw/arm/virt.c         | 27 +++++++++++++++++++++++++--
- include/hw/arm/virt.h |  2 ++
- target/arm/kvm_arm.h  |  4 ++--
- 3 files changed, 29 insertions(+), 4 deletions(-)
+From the ARM core point of view, once it sent the FIRMWARE_NOTIFY_REBOOT
+message, it can't really power-off itself, it waits in a busy loop for
+the VC to disable its power domain.
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 840758666d..f598f048da 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -583,6 +583,12 @@ static void create_its(VirtMachineState *vms)
-     const char *itsclass = its_class_name();
-     DeviceState *dev;
- 
-+    if (!strcmp(itsclass, "arm-gicv3-its")) {
-+        if (!vms->tcg_its) {
-+            itsclass = NULL;
-+        }
-+    }
-+
-     if (!itsclass) {
-         /* Do nothing if not supported */
-         return;
-@@ -620,7 +626,7 @@ static void create_v2m(VirtMachineState *vms)
-     vms->msi_controller = VIRT_MSI_CTRL_GICV2M;
- }
- 
--static void create_gic(VirtMachineState *vms)
-+static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
- {
-     MachineState *ms = MACHINE(vms);
-     /* We create a standalone GIC */
-@@ -654,6 +660,14 @@ static void create_gic(VirtMachineState *vms)
-                              nb_redist_regions);
-         qdev_prop_set_uint32(vms->gic, "redist-region-count[0]", redist0_count);
- 
-+        if (!kvm_irqchip_in_kernel()) {
-+            if (vms->tcg_its) {
-+                object_property_set_link(OBJECT(vms->gic), "sysmem",
-+                                         OBJECT(mem), &error_fatal);
-+                qdev_prop_set_bit(vms->gic, "has-lpi", true);
-+            }
-+        }
-+
-         if (nb_redist_regions == 2) {
-             uint32_t redist1_capacity =
-                     vms->memmap[VIRT_HIGH_GIC_REDIST2].size / GICV3_REDIST_SIZE;
-@@ -2039,7 +2053,7 @@ static void machvirt_init(MachineState *machine)
- 
-     virt_flash_fdt(vms, sysmem, secure_sysmem ?: sysmem);
- 
--    create_gic(vms);
-+    create_gic(vms, sysmem);
- 
-     virt_cpu_post_init(vms, sysmem);
- 
-@@ -2718,6 +2732,12 @@ static void virt_instance_init(Object *obj)
-     } else {
-         /* Default allows ITS instantiation */
-         vms->its = true;
-+
-+        if (vmc->no_tcg_its) {
-+            vms->tcg_its = false;
-+        } else {
-+            vms->tcg_its = true;
-+        }
-     }
- 
-     /* Default disallows iommu instantiation */
-@@ -2764,6 +2784,9 @@ DEFINE_VIRT_MACHINE_AS_LATEST(6, 1)
- 
- static void virt_machine_6_0_options(MachineClass *mc)
- {
-+    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
-+    /* qemu ITS was introduced with 6.1 */
-+    vmc->no_tcg_its = true;
- }
- DEFINE_VIRT_MACHINE(6, 0)
- 
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index 921416f918..f873ab9068 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -120,6 +120,7 @@ struct VirtMachineClass {
-     MachineClass parent;
-     bool disallow_affinity_adjustment;
-     bool no_its;
-+    bool no_tcg_its;
-     bool no_pmu;
-     bool claim_edge_triggered_timers;
-     bool smbios_old_sys_ver;
-@@ -141,6 +142,7 @@ struct VirtMachineState {
-     bool highmem;
-     bool highmem_ecam;
-     bool its;
-+    bool tcg_its;
-     bool virt;
-     bool ras;
-     bool mte;
-diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index 34f8daa377..0613454975 100644
---- a/target/arm/kvm_arm.h
-+++ b/target/arm/kvm_arm.h
-@@ -525,8 +525,8 @@ static inline const char *its_class_name(void)
-         /* KVM implementation requires this capability */
-         return kvm_direct_msi_enabled() ? "arm-its-kvm" : NULL;
-     } else {
--        /* Software emulation is not implemented yet */
--        return NULL;
-+        /* Software emulation based model */
-+        return "arm-gicv3-its";
-     }
- }
- 
--- 
-2.27.0
+hw/misc/bcm2835_property.c is our model of the VC behavior. IMO this
+should be where QEMU shuts down. How I'd model it is:
 
+- ARM: sends FIRMWARE_NOTIFY_REBOOT and loops
+
+- VC emulated via property: delays (200ms?) then calls
+  SHUTDOWN_CAUSE_GUEST_RESET.
+
+(it helps to see hw/misc/bcm2835_property.c as an external component).
+
+>>> qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+>>> +            } else {
+>>> +                qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+>>> +            }
+>>> +        }
+>>
+>> Shouldn't we log the unsupported bits?
+> 
+> I can add that, I didn't originally because the unsupported writes are
+> expected.
+
+I'd prefer we log them, even if unsupported, so in case something
+behaves oddly we could look at those bits.
+
+>>> +static void bcm2835_powermgt_reset(DeviceState *dev)
+>>> +{
+>>> +    BCM2835PowerMgtState *s = BCM2835_POWERMGT(dev);
+>>> +
+>>> +    s->rstc = 0x00000102;
+>>> +    s->rsts = 0x00001000;
+>>> +    s->wdog = 0x00000000;
+>>
+>> Where these bits come from?
+> 
+> From my pi4. https://elinux.org/BCM2835_registers agrees (processed from
+> Broadcom source code).
+
+OK, so please add a comment referring to
+https://elinux.org/BCM2835_registers#PM.
+
+Looking forward for v2 :)
+
+Phil.

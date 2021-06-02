@@ -1,121 +1,133 @@
-Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp212688lfa;
-        Wed, 2 Jun 2021 04:37:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwhoz44dmxoejIcI81IHkY/FPlRjH2eYeA0qhorLQKFByi2rjgXum/ecMTibnBN3mbHZ7fr
-X-Received: by 2002:a92:ca4e:: with SMTP id q14mr26274591ilo.220.1622633831605;
-        Wed, 02 Jun 2021 04:37:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1622633831; cv=none;
+Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp279246lfa;
+        Wed, 2 Jun 2021 06:03:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyLI/+UjSMvTKbh7sD+5T/+SWlWYZCR8Ph+wK8Fg78rnwD2fEfkcG2acks0N8CQTxfEFMHZ
+X-Received: by 2002:a17:906:7fc5:: with SMTP id r5mr16750243ejs.474.1622639010340;
+        Wed, 02 Jun 2021 06:03:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1622639010; cv=none;
         d=google.com; s=arc-20160816;
-        b=ElULq6kMgintwe12Nmf39wop42vuHP6iuCC31OEd8mZdpt13qDrL3bkhR+aDkL9zKA
-         IcEf7d51L/fQN6hB4bGOO7XEZ46vj9vO7HH2MqnZ7Z88Migr7qFdM0Z1+Ay+Oo7vm/Z6
-         V5XYn3u9SyyVu4E4V9dd1oFsMM9i46sZW75pBreedTv6jJaGA70ZcprFxMYN2pExpQ7m
-         28iVBR76giqcWjJniyuUXGXl+7N3TC1OUbTGY3hXBwV7xD9VGwix0IfujW0AF4Y8yGqK
-         8X2f8/YRVZ5yLZQN7K0OaiuKunCMTAur5hjCBTz4yrvFpHDTkb9ribu1PJb7yLnkBZsM
-         8ifg==
+        b=vTJhJqJuo19doZkuhrtwlJlArwYg99oSqxM771LhHGy1+RAr/NR9O8OjkvGKY5OzNS
+         K15lExhQ43/hvC5tUP0b//LllZMO3N9HHkMnVpJsjFFM0I8iDss9VpGa3Z1vLdRyyAXl
+         OzE7DitDC06iK3gIVwNSF7k8dlEi1DCu/MLmvVNbr4w6EGZ46PeBw4nnyRPSR12eg5c8
+         YaQWK7FamSJ7U4579M+QFaHF1RiDJlT1wfxHpRMe/I+vRtXiq9DKQEOdPKgcqrc3IkHF
+         MDA0+zubmn17P0jQm35eT+kk/eL49+MA9RmBA4nEn2YRJIwOuYoTv1ocVAdrgC9euF/B
+         BP3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=JVMFCMVk5F81sXN2BL6u43VAyk7L6rMGBpmJimkq1RQ=;
-        b=sItGZrHMaOCSOUWTUg6D/1a5hMgHJFqJDr6N+tULuuvxD1h4SjruEGn8nj1rhhX8sm
-         cvyOS+XVjoexT1FNu1ZnV1ZiGlBE5xSG59qzBJ13pNGaYIy9z/sFywCXA/H257d13oQA
-         9vhb/l6GZdTUu6ZdWdf86V8lAZIloLBVC+XQXs77QY+/45SnChrL76QgzO7z4qkQBEJv
-         wQglRnpy1jTqWuW0kuJvg+K5rrHVylPesJit7Wb8Q/kUnFIhyT1Yp/9cATSCEJcmoj+d
-         3gqd6G1kMJb23EUjs2OSrM3NzM5C+1WTNBgRWQierGpcYfdPiDu4WAKK/ySKX4pmFt9h
-         nlaQ==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=gknU4n/A3Gn4WaJU0OiXa0O+9VSIyIia9iAzgmbs+HY=;
+        b=qaezwU43BVM7r6nhrHPp9z7zAsq6Vw3fTD2FrQFIXBVzuMf4+Cmu6ak6cV03MACEJ3
+         WYBVlojBpBzY0Etufe0CHKNHjqfxPBYg0YguuwIvcGn40yZZNm6wUCwlBD8Nuzih+9yS
+         kVJ/uRKI2zatn4Rcz4496VBgo2qeXZZGxWBnmiN9lywjr0igVZ6WRquAK9GsWzgYV17k
+         GNtwywxSWZNcNNWvUluBaT6sWBbZy3h9KtwBFma5/pwcq7jl/qrWEWZPGq0g5d4eqfto
+         7vlkr8NhFaPevJbEGvlmXv5nhc9/4EKxWDqyowZfOltDL6vpfB0dWAlCK7LZWVGgdNZt
+         lXgA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=MdVSajXN;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eVJZC4fA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j7si21490476ils.142.2021.06.02.04.37.11
+        by mx.google.com with ESMTPS id i9si2321324edb.271.2021.06.02.06.03.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Jun 2021 04:37:11 -0700 (PDT)
+        Wed, 02 Jun 2021 06:03:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=MdVSajXN;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eVJZC4fA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59518 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:59624 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1loPBO-0000Cc-Tm
-	for alex.bennee@linaro.org; Wed, 02 Jun 2021 07:37:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38852)
+	id 1loQWv-0001ul-FT
+	for alex.bennee@linaro.org; Wed, 02 Jun 2021 09:03:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59368)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1loPB6-00008v-7r
- for qemu-arm@nongnu.org; Wed, 02 Jun 2021 07:36:52 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:27782)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1loQWk-0001ry-D8
+ for qemu-arm@nongnu.org; Wed, 02 Jun 2021 09:03:18 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:57250)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1loPB3-00036E-I8
- for qemu-arm@nongnu.org; Wed, 02 Jun 2021 07:36:51 -0400
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1loQWh-00061g-Vf
+ for qemu-arm@nongnu.org; Wed, 02 Jun 2021 09:03:17 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1622633808;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ s=mimecast20190719; t=1622638995;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=JVMFCMVk5F81sXN2BL6u43VAyk7L6rMGBpmJimkq1RQ=;
- b=MdVSajXN0dTp89xR2m5yPpH0WFMXCrjPybvVU1aJW6mwxJqTMXQHGtZwmZ2RCNs+2e1Ozt
- VMb3ygLpkBPKSDmgvJKfqYLdO8viLJleilop9o7ve2mNi+EpSgyAz48LLcGOZBnrvaWegQ
- Kp2Kw+SrlwNzPPUI0UI0GQbPTrBmFas=
-Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
- [209.85.218.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-313-lIWupW6SPG2XPZ7VTYZ6hA-1; Wed, 02 Jun 2021 07:36:46 -0400
-X-MC-Unique: lIWupW6SPG2XPZ7VTYZ6hA-1
-Received: by mail-ej1-f70.google.com with SMTP id
- b10-20020a170906194ab02903ea7d084cd3so541095eje.1
- for <qemu-arm@nongnu.org>; Wed, 02 Jun 2021 04:36:45 -0700 (PDT)
+ bh=gknU4n/A3Gn4WaJU0OiXa0O+9VSIyIia9iAzgmbs+HY=;
+ b=eVJZC4fAiQBayS3UqT8Y/FnGvK8p3kXgaKTiz15g2W+1UCyD4gOQtB2X44k5F1gSTB6l9X
+ Ti/TDuML/xwipi/XoD4hofOH/MUX7HhMeaivEYY+zBcrnZ2/0JVZ1QSFq0vhLl2Kcd5LNl
+ w3702zS323ongFW7iW7toS+PYv0O+mo=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-210-sMKNcwRkOyWCYRFDQr8fpA-1; Wed, 02 Jun 2021 09:03:04 -0400
+X-MC-Unique: sMKNcwRkOyWCYRFDQr8fpA-1
+Received: by mail-wr1-f72.google.com with SMTP id
+ g14-20020a5d698e0000b0290117735bd4d3so981871wru.13
+ for <qemu-arm@nongnu.org>; Wed, 02 Jun 2021 06:03:04 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=JVMFCMVk5F81sXN2BL6u43VAyk7L6rMGBpmJimkq1RQ=;
- b=bqAhmeCq/x05jVfxNGOB2Fs3YAdKIwwifeTXpe5B49o7s3Gtm7zI2duFlwvHw+81hb
- ghWCG+9I4mkHChoDt9VAWwF91DQ2OhfKUDhj1m87JosPaYD2+XIwW33mSw44NPEcn7yr
- ABZZ33087WvApBwpowxP55Hs9BsCo+0zlj8tpr+F+DQt3+kzOcO/LVqrksOBHM/Z8M31
- O6oS7NPdupgk0sMVDEP6PAEJmf4EhkwXdQKd7hvY0rgXI/g/OsIJWAOSu4Rrcl9U2NgH
- E6bohiarsYezDUEYKPa+JTAlyh9Un6tzXOKhm8sJWGSMsxKROeORXrbJzajervYqFvXh
- hr5Q==
-X-Gm-Message-State: AOAM533apUvB58ZyOxiLMoR7kBOuxJf//yqfFwGfDSIy5mxPOqYOq08q
- HnOMIdPHFCXtpQyGFqKFg+/wQok+S8DtVvKq05GcADNUykHXC63KVvgvjxItvEsoXwIfhOXDZW+
- iDtmWk1mc043X
-X-Received: by 2002:aa7:d5cf:: with SMTP id d15mr12086257eds.342.1622633804770; 
- Wed, 02 Jun 2021 04:36:44 -0700 (PDT)
-X-Received: by 2002:aa7:d5cf:: with SMTP id d15mr12086247eds.342.1622633804611; 
- Wed, 02 Jun 2021 04:36:44 -0700 (PDT)
-Received: from gator.home (cst2-174-132.cust.vodafone.cz. [31.30.174.132])
- by smtp.gmail.com with ESMTPSA id d15sm1161163edu.86.2021.06.02.04.36.43
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 02 Jun 2021 04:36:44 -0700 (PDT)
-Date: Wed, 2 Jun 2021 13:36:42 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Gavin Shan <gshan@redhat.com>
-Subject: Re: [PATCH] hw/arm/boot: Use NUMA node ID in memory node name
-Message-ID: <20210602113642.axaxxgnw2haghas4@gator.home>
-References: <20210601073004.106490-1-gshan@redhat.com>
- <20210601075045.ppmceogd5hp5rqcf@gator.home>
- <e50c52e7-a8d5-c269-cebf-caf1688c629e@redhat.com>
+ h=x-gm-message-state:reply-to:subject:to:cc:references:from
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-transfer-encoding:content-language;
+ bh=gknU4n/A3Gn4WaJU0OiXa0O+9VSIyIia9iAzgmbs+HY=;
+ b=jl/8mjS+ag5ndIGEpT2r+Uxswz0HerohSrYshoNFshl/g1VVsiGk8QdM7IcKzasmEJ
+ cpE9wi1QFOVV0gZTdUlYl9N3pasbHqwhqasDZ8VM7ChuQewE/MaWQGI5Re4VcDSkXc+s
+ bmi1+/bFnDgcSxZtuk814vO7ctRwon6delEqw2UZaB6hd9wZfDfqub+F5VaQ7XJotXKv
+ tQhfc6fJOG10gO0ZyPxq4EIc1fCT8H/7qP8NnZ8Hq90Oe8QjQ5s1sEVwkorihfEHsgqX
+ 9CCOFJz0X6FoUJDfx08eXdGaCI/NdFErhyAlzit+DIQHFGB9R0LA+s7SKdrJIp1Mc9Id
+ GGyw==
+X-Gm-Message-State: AOAM5314LIzEZvbVeHWeTWtjhhMoQIOPgikwul8drdrGPHl3yMZ2c7cj
+ BkDRl2jPZi5A8P5HJZ7D7yLXQutQR/4RwI7Dvqqo+xWpubgMt2VBBTMzkMzmhZ1xxp3Mkg9rttU
+ oZbKbKrtfh7PB
+X-Received: by 2002:a05:600c:3544:: with SMTP id
+ i4mr5263383wmq.112.1622638983491; 
+ Wed, 02 Jun 2021 06:03:03 -0700 (PDT)
+X-Received: by 2002:a05:600c:3544:: with SMTP id
+ i4mr5263349wmq.112.1622638983268; 
+ Wed, 02 Jun 2021 06:03:03 -0700 (PDT)
+Received: from ?IPv6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
+ ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id a12sm2608336wmj.36.2021.06.02.06.03.01
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 02 Jun 2021 06:03:02 -0700 (PDT)
+Subject: Re: [PATCH v4 5/8] hw/pci: Add pci_bus_range to get bus number range
+To: Wang Xingang <wangxingang5@huawei.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, shannon.zhaosl@gmail.com, imammedo@redhat.com,
+ mst@redhat.com, marcel.apfelbaum@gmail.com, peter.maydell@linaro.org,
+ ehabkost@redhat.com, richard.henderson@linaro.org, pbonzini@redhat.com
+References: <1621914605-14724-1-git-send-email-wangxingang5@huawei.com>
+ <1621914605-14724-6-git-send-email-wangxingang5@huawei.com>
+From: Eric Auger <eric.auger@redhat.com>
+Message-ID: <edcf80ec-7f91-b986-047c-a87c8cc7d669@redhat.com>
+Date: Wed, 2 Jun 2021 15:03:00 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.1
 MIME-Version: 1.0
-In-Reply-To: <e50c52e7-a8d5-c269-cebf-caf1688c629e@redhat.com>
+In-Reply-To: <1621914605-14724-6-git-send-email-wangxingang5@huawei.com>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=drjones@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Content-Language: en-US
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -37
+X-Spam_score: -3.8
 X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.371,
+X-Spam_report: (-3.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.371,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ NICE_REPLY_A=-0.613, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -128,120 +140,71 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- shan.gavin@gmail.com, eric.auger@redhat.com
+Reply-To: eric.auger@redhat.com
+Cc: xieyingtai@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ejSZgP9U+8OU
+X-TUID: QitQRYfPBqpM
 
-On Wed, Jun 02, 2021 at 11:09:32AM +1000, Gavin Shan wrote:
-> Hi Drew,
-> 
-> On 6/1/21 5:50 PM, Andrew Jones wrote:
-> > On Tue, Jun 01, 2021 at 03:30:04PM +0800, Gavin Shan wrote:
-> > > We possibly populate empty nodes where memory isn't included and might
-> > > be hot added at late time. The FDT memory nodes can't be created due
-> > > to conflicts on their names if multiple empty nodes are specified.
-> > > For example, the VM fails to start with the following error messages.
-> > > 
-> > >    /home/gavin/sandbox/qemu.main/build/qemu-system-aarch64          \
-> > >    -accel kvm -machine virt,gic-version=host                        \
-> > >    -cpu host -smp 4,sockets=2,cores=2,threads=1 -m 1024M,maxmem=64G \
-> > >    -object memory-backend-ram,id=mem0,size=512M                     \
-> > >    -object memory-backend-ram,id=mem1,size=512M                     \
-> > >    -numa node,nodeid=0,cpus=0-1,memdev=mem0                         \
-> > >    -numa node,nodeid=1,cpus=2-3,memdev=mem1                         \
-> > >    -numa node,nodeid=2                                              \
-> > >    -numa node,nodeid=3                                              \
-> > >      :
-> > >    -device virtio-balloon-pci,id=balloon0,free-page-reporting=yes
-> > > 
-> > >    qemu-system-aarch64: FDT: Failed to create subnode /memory@80000000: \
-> > >                         FDT_ERR_EXISTS
-> > > 
-> > > This fixes the issue by using NUMA node ID or zero in the memory node
-> > > name to avoid the conflicting memory node names. With this applied, the
-> > > VM can boot successfully with above command lines.
-> > > 
-> > > Signed-off-by: Gavin Shan <gshan@redhat.com>
-> > > ---
-> > >   hw/arm/boot.c | 7 ++++++-
-> > >   1 file changed, 6 insertions(+), 1 deletion(-)
-> > > 
-> > > diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-> > > index d7b059225e..3169bdf595 100644
-> > > --- a/hw/arm/boot.c
-> > > +++ b/hw/arm/boot.c
-> > > @@ -432,7 +432,12 @@ static int fdt_add_memory_node(void *fdt, uint32_t acells, hwaddr mem_base,
-> > >       char *nodename;
-> > >       int ret;
-> > > -    nodename = g_strdup_printf("/memory@%" PRIx64, mem_base);
-> > > +    if (numa_node_id >= 0) {
-> > > +        nodename = g_strdup_printf("/memory@%d", numa_node_id);
-> > > +    } else {
-> > > +        nodename = g_strdup("/memory@0");
-> > > +    }
-> > > +
-> > >       qemu_fdt_add_subnode(fdt, nodename);
-> > >       qemu_fdt_setprop_string(fdt, nodename, "device_type", "memory");
-> > >       ret = qemu_fdt_setprop_sized_cells(fdt, nodename, "reg", acells, mem_base,
-> 
-> [...]
-> 
-> > 
-> > Is it conventional to use the unit-address like this? If so, can you point
-> > out where that's documented? If it's not conventional, then we shouldn't
-> > do it. And then I'm not sure what we should do in this case. Here's a
-> > couple links I found, but they don't really help...
-> > 
-> > https://devicetree-specification.readthedocs.io/en/latest/chapter2-devicetree-basics.html#sect-node-names
-> > https://devicetree-specification.readthedocs.io/en/latest/chapter3-devicenodes.html#memory-node
-> > 
-> 
-> As stated in the document (section 2.2.1.1). It's conventional to take the first
-> address of 'reg' property as unit-address, but it's not mandatory as I understand:
-> 
-> (1) In section 2.2.1.1, the bus can specify additional format to unit-address.
+Hi Xingang,
 
-The bus type we're using is the physical memory map. Does it allow this
-use of the unit-address? I still haven't seen that documented anywhere.
-
-> (2) The device node name isn't used to identify the device node in Linux kernel.
->     They are actually identified by 'device_type' property.
->     (drivers/of/fdt.c::early_init_dt_scan_memory())
-
-This doesn't matter. We can't change DT node name formats just because
-they may not impact Linux. We need to follow the DT standard and the Linux
-convention.
-
-> 
-> I think it's still nice to include the unit-address in meory node's name. For the
-> conflicting nodes, we add more suffix like below. I can update the code in v2 if
-> it's preferred way to go.
-
-I don't think we should change the semantics of the unit address at all,
-not without either a) finding a document that says our use is OK or b)
-getting it documented in the Linux kernel first.
-
-Thanks,
-drew
-
-> 
->    memory@0
->    memory@0-0                               # For empty NUMA node
->    memory@0-1                               # For empty NUMA node
->    memory@80000000
->    memory@80000000-0                        # For empty NUMA node
->    memory@80000000-1                        # For empty NUMA node
-> 
-> ---
-> 
-> https://devicetree-specification.readthedocs.io/en/latest/chapter2-devicetree-basics.html#sect-node-names
-> 
-> The unit-address must match the first address specified in the reg property of the node.
-> If the node has no reg property, the @unit-address must be omitted and the node-name
-> alone differentiates the node from other nodes at the same level in the tree. The binding
-> for a particular bus may specify additional, more specific requirements for the format
-> of reg and the unit-address.
+On 5/25/21 5:50 AM, Wang Xingang wrote:
+> From: Xingang Wang <wangxingang5@huawei.com>
 >
+> This helps to get the bus number range of a pci bridge hierarchy.
+>
+> Signed-off-by: Xingang Wang <wangxingang5@huawei.com>
+> ---
+>  hw/pci/pci.c         | 15 +++++++++++++++
+>  include/hw/pci/pci.h |  1 +
+>  2 files changed, 16 insertions(+)
+>
+> diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+> index 27d588e268..7f18ea5ef5 100644
+> --- a/hw/pci/pci.c
+> +++ b/hw/pci/pci.c
+> @@ -537,6 +537,21 @@ int pci_bus_num(PCIBus *s)
+>      return PCI_BUS_GET_CLASS(s)->bus_num(s);
+>  }
+>  
+Add a doc comment such as "returns the min and max bus numbers of a root
+bus"?
+
+Besides
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
+
+Thanks
+
+Eric
+ 
+> +void pci_bus_range(PCIBus *bus, int *min_bus, int *max_bus)
+> +{
+> +    int i;
+> +    *min_bus = *max_bus = pci_bus_num(bus);
+> +
+> +    for (i = 0; i < ARRAY_SIZE(bus->devices); ++i) {
+> +        PCIDevice *dev = bus->devices[i];
+> +
+> +        if (dev && PCI_DEVICE_GET_CLASS(dev)->is_bridge) {
+> +            *min_bus = MIN(*min_bus, dev->config[PCI_SECONDARY_BUS]);
+> +            *max_bus = MAX(*max_bus, dev->config[PCI_SUBORDINATE_BUS]);
+> +        }
+> +    }
+> +}
+> +
+>  int pci_bus_numa_node(PCIBus *bus)
+>  {
+>      return PCI_BUS_GET_CLASS(bus)->numa_node(bus);
+> diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
+> index f4d51b672b..d0f4266e37 100644
+> --- a/include/hw/pci/pci.h
+> +++ b/include/hw/pci/pci.h
+> @@ -450,6 +450,7 @@ static inline PCIBus *pci_get_bus(const PCIDevice *dev)
+>      return PCI_BUS(qdev_get_parent_bus(DEVICE(dev)));
+>  }
+>  int pci_bus_num(PCIBus *s);
+> +void pci_bus_range(PCIBus *bus, int *min_bus, int *max_bus);
+>  static inline int pci_dev_bus_num(const PCIDevice *dev)
+>  {
+>      return pci_bus_num(pci_get_bus(dev));
 

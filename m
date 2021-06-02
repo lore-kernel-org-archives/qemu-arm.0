@@ -1,213 +1,206 @@
-Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp722467lfa;
-        Wed, 2 Jun 2021 16:32:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzIZGsZNQ/uZbP+KQsYZfU8KuZtUkKdFe+w5UiHr63o8zRWZU4M2Lb582PxGLlzX6bRc1pq
-X-Received: by 2002:ac8:4b65:: with SMTP id g5mr27247445qts.99.1622676774947;
-        Wed, 02 Jun 2021 16:32:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1622676774; cv=none;
+Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp362458lfa;
+        Wed, 2 Jun 2021 07:41:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxkkkFLDnhwkEYx/XuqPOEU0obdRuOJ+dKmc4psNsI1qbqrxEJL5SEv1vg5WMaAgdREepER
+X-Received: by 2002:aa7:c349:: with SMTP id j9mr30995558edr.48.1622644892360;
+        Wed, 02 Jun 2021 07:41:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1622644892; cv=none;
         d=google.com; s=arc-20160816;
-        b=WymRMNtOBN237AIv0lph6iQPObP8XDS1gk3CSOKWz2eeppve8DfH7XRLJRIgyrdZDN
-         63fb51G++T1AsztjFm9ytHrD4tnn6BEKdCz8IY+Sgxd5PCnnsqQ79WQm43QpiQmrRL+J
-         Cu6Mel/c0h2UkzRHeJRineFxsqnTbe3z60SRkWCgQnHzpSK0JAeHNvchNaLHOwE3VQh4
-         wudnL3sUWXNJGp0wn1XtvOszZLHVZHIdsCgmZ01MTWg/+odD6TAmh2MWkvqlyPYXbhS0
-         A3Z/1G2JY3xfv4aZpCS312H6vI4gsttUUtz6MNFPtdgBPqM55E6zhwhg/+Bra4ZA6dm0
-         387g==
+        b=S2yJfIHpLAK8ywTKhzf5Wx9q5rZpTvcCjyfeWjKiczj4Lxd1T4PTlydFDSfkt/yDTo
+         1NP4LPDuczEW2KMgIfcsmUUGfzkxzFzrpiE64aAM49i9Dmq1H+oUyQu4CGG+h7OClI9o
+         o8RGN2QlzUQACdkbcqr0xDPbzL3WvNm3OPLWdt0OrsiR3hYNcsttj6lTb7oRyoEnwgZU
+         A6cGWAw/aRfk8JSfxtOvHZ0UuU+UPd7zSqMsBQn3KtA7tIR3HzAnBjOuQgWteJcWuxB2
+         jwLK8E5YurhVKLlfT2RekJBw0xZgqitK5NOm6tHLZEGimnwl57QGYn80K8nD3OGTVL1c
+         kWDQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=92iKtIxuuRKi7Kh/YWUn7Rgjezmet5NROIwlhLSQPhc=;
-        b=HmsSR9kEa6imqBcmdBftS+VAlZGAUeztMx2qONHD4K7I5ie4QdkSrIONk69oVeQJGU
-         IOu/kMSBi2Ii+Ba+xBQEymGGBTHxusm3efjkrPWij42d+y8bsiG4QVDAWBfLYLPMBtC4
-         Zh7/LmPBtAC73sPYkEMBzpRe2IyN4vpW4nsU+D6B6X2pG2/M5546ANPRLXcem6ydOPo3
-         ZWDzJOWRiG5XQa3PKnLweYUnGJpeBdo9rkLuge92rP4bN/f9LxOOxBCtxPQD8l4te4Jr
-         Ds/2S2o0RZNtVehjq00qsRYdVFWz5YjJTii7i7fEb9MmXROttCUPUXkS2yNe7NsCAYrd
-         UqVA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=YqH2KdoaeBJWCwspa8DoCuVgJCk1weHvaCiiDNrJKEI=;
+        b=uN5TSYuo+XCIMwAZePk3SVnlqd3XtVuT7vFJJaJxsKLnGfAaENf1Qm34vEUCbxxQZy
+         hiyTsHYGt27cnbq90yjr1iwCt0Fm8sESA2J3vpkzbL2aLaHR+fN15ZjC4v6Ut4ESdQh7
+         jr9wN4hLADAUAWb7iQSqd+iw5wlpxc7hLIv5CtENdjmUwa1lE2J2nUrRBNOyz7y5Dpq4
+         HVe481AKsa2ExyC1uEgXRjEcAVPDZYTHaI8iQwH1HoKa0aYbbCNlRa7pStBGbh7Jf8Ro
+         nsqSfvjiYraSa7xtaAOqZ5/+7ytJZRe7YmuhyU+onbG1DyQL1/9Ro5vOmK+WA79/3TJX
+         lrsQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@sigbus.net header.s=2020 header.b=Fb1TP5DJ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=sigbus.net
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@google.com header.s=20161025 header.b="bf/qyPnd";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o5si770069qtg.50.2021.06.02.16.32.54
+        by mx.google.com with ESMTPS id f1si98528edy.301.2021.06.02.07.41.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Jun 2021 16:32:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 02 Jun 2021 07:41:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@sigbus.net header.s=2020 header.b=Fb1TP5DJ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=sigbus.net
-Received: from localhost ([::1]:54546 helo=lists1p.gnu.org)
+       dkim=pass header.i=@google.com header.s=20161025 header.b="bf/qyPnd";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:33394 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1loaM2-0002WG-AF
-	for alex.bennee@linaro.org; Wed, 02 Jun 2021 19:32:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46410)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1loS3n-00055P-HF
+	for alex.bennee@linaro.org; Wed, 02 Jun 2021 10:41:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58874)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nolan@sigbus.net>) id 1loaLM-0001ir-RL
- for qemu-devel@nongnu.org; Wed, 02 Jun 2021 19:32:12 -0400
-Received: from phong.sigbus.net ([71.19.155.206]:38346)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nolan@sigbus.net>) id 1loaLK-0002d3-Oo
- for qemu-devel@nongnu.org; Wed, 02 Jun 2021 19:32:12 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=sigbus.net; s=2020;
- t=1622676728; bh=EUtIMZUj4vexH9WITndRzrOGcKbc9pZdOrpXaPQ0q4I=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=Fb1TP5DJEuzTQSW13gy9R3sWVmnWGpgUjVIQ1YF/upKOK87OC31Q3sHxBotuZn3Wf
- FvqpsHNHaXeu4H2lFoSUbCJYwcvFUQbEK5aOkaoX8fFIzp5Iu/DWgpNI+xxWW+Ho22
- TPqOV6rjVfemIPta3Sqns7VHy2exkEr4EAQsdTe0VQhbyYm/58h+oMnaKVfZk08R8B
- V0Qq3OiIQfraVI+fyVCdvnQLgrXT4bZ6TZbZoJtENxYwgrn299k2DDg0qE+SuypsHa
- PSAy+voHGkud718vq4B3J0piV4uJHtRWLNKd9VVc9Aez0T8XwIvwgxglTX09Uaibnv
- hlV9FGUM6TPvQ==
-Subject: Re: [PATCH qemu] Add basic power management to raspi.
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-References: <162137039825.30884.2445825798240809194-0@git.sr.ht>
- <65187b48-2449-e2b4-2d13-ed9ffb6fe2a8@amsat.org>
- <7669dd87-e040-a049-e953-9f31a4557ee5@sigbus.net>
- <596d4b19-a1b8-4ae3-d449-376bcd88cbe5@amsat.org>
-From: Nolan <nolan@sigbus.net>
-Message-ID: <9f24edda-8c09-052e-cd3d-fb84946511fa@sigbus.net>
-Date: Wed, 2 Jun 2021 16:32:06 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.2
+ (Exim 4.90_1) (envelope-from <venture@google.com>)
+ id 1loS3e-00051z-H9
+ for qemu-arm@nongnu.org; Wed, 02 Jun 2021 10:41:22 -0400
+Received: from mail-qv1-xf2a.google.com ([2607:f8b0:4864:20::f2a]:35728)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <venture@google.com>)
+ id 1loS3c-00013A-FQ
+ for qemu-arm@nongnu.org; Wed, 02 Jun 2021 10:41:22 -0400
+Received: by mail-qv1-xf2a.google.com with SMTP id q6so1416207qvb.2
+ for <qemu-arm@nongnu.org>; Wed, 02 Jun 2021 07:41:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=YqH2KdoaeBJWCwspa8DoCuVgJCk1weHvaCiiDNrJKEI=;
+ b=bf/qyPndWAUfEZag0DjnZ2yE1EfGlaFMXN3OFMWDcp7oorkpirdPQovnbjJAFKVtV3
+ FhG3ev9fSUV9zvAPOeIuaY0rkN5xg9zMl9MA9Nu6zRP6KJXCc+cpNKNkraL4uhUYUn5X
+ vC1qtKd8mIRjM8oPhmoyp3hVT5FWU2rKtNxEawmYtFj4eFt49lIneoBeZ8MSQCxrbS0F
+ jF9qhshs7DJhUw5FQLiv2RsKxUmc8evKxO7zRqJivwbJNL/pRobXsCBU0wyK63yw2MRb
+ XAdX8O+s7oCpKzWaPvwPJH+gAnFKoks6GHgn3WLpE3qhtS2ro516UECXcTKEk9Olgce7
+ U7Ug==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=YqH2KdoaeBJWCwspa8DoCuVgJCk1weHvaCiiDNrJKEI=;
+ b=boLdDsMiLQnfohZnjEtu4KN5ZedMToiiCMbCfkgU4i50QoSq9rRI1fDUsPg8uKqyxg
+ VfvFr+WzBw+L64f+NeqlFCR8fkDyOgsN99eGZlpaOTBUaLoieQnb+cqCX3UQ4AQ9yw68
+ 8oZjiFfPhQNK9dpJtPYrNXLtk+WIap28Fu1167Z2TcJ3PHPd2E+H7ht4kKrEnBOQ3eLm
+ d88KRcRTO0YtbjWFX3X3tt7JjH/ijP5O0te2UaeMO4iXUU0wT7pAdv1iCa+shoPLnQr5
+ cl8NKch/KUojM+FBmJlNyPl1efW0q68etKR0Jd13SYqWCRsK6Hz9XeY4bPTsQ4ud8NDA
+ IFwg==
+X-Gm-Message-State: AOAM531jE7/T0RiX9aluclmuvXpOdsymsnTzVYW7dAQmuqrJETsxWTyo
+ Fb8X5tiUmjusqxabri6lrKWpDp8HeMOU/TjEzrt1bw==
+X-Received: by 2002:ad4:4c0c:: with SMTP id bz12mr17601216qvb.21.1622644878229; 
+ Wed, 02 Jun 2021 07:41:18 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <596d4b19-a1b8-4ae3-d449-376bcd88cbe5@amsat.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=71.19.155.206; envelope-from=nolan@sigbus.net;
- helo=phong.sigbus.net
-X-Spam_score_int: -49
-X-Spam_score: -5.0
-X-Spam_bar: -----
-X-Spam_report: (-5.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.613,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20210518194704.764241-1-venture@google.com>
+ <20210518194704.764241-2-venture@google.com>
+ <CAFEAcA-WMC4OkzkyvH-wabcLsjThjZikLMxO5O9ALGknoY3=jg@mail.gmail.com>
+In-Reply-To: <CAFEAcA-WMC4OkzkyvH-wabcLsjThjZikLMxO5O9ALGknoY3=jg@mail.gmail.com>
+From: Patrick Venture <venture@google.com>
+Date: Wed, 2 Jun 2021 07:41:06 -0700
+Message-ID: <CAO=notx0WjBda6WeZmzqQG24yHuu8kQq4EZZQn=9mg67OOdW6w@mail.gmail.com>
+Subject: Re: [PATCH 1/2] hw/arm: add quanta-gbs-bmc machine
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Havard Skinnemoen <hskinnemoen@google.com>,
+ CS20 KFTing <kfting@nuvoton.com>, 
+ qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
+ Brandon Kim <brandonkim@google.com>, Hao Wu <wuhaotsh@google.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::f2a;
+ envelope-from=venture@google.com; helo=mail-qv1-xf2a.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Andrew Baumann <Andrew.Baumann@microsoft.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RqUwh0ybJN9j
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: G6w7FoTlR2da
 
-On 6/2/21 4:22 PM, Philippe Mathieu-Daudé wrote:
-> On 6/2/21 11:33 PM, Nolan wrote:
->> On 5/31/21 4:23 AM, Philippe Mathieu-Daudé wrote:
->>> Hi Nolan,
->>>
->>> Thanks for your patch!
->>>
->>> There is something odd with your email address, which apparently
->>> became sourcehut@sigbus.net instead of nolan@sigbus.net.
->>
->> Ugh, oops. I was trying out sourcehut for this, and reflexively gave
->> them a marker email. I'm pretty sure sourcehut won't sell my email
->> address, so I'll just change it.
->>
->>> On 5/18/21 10:24 PM, ~nolanl wrote:
->>>> From: Nolan Leake <nolan@sigbus.net>
->>>>
->>>> This is just enough to make reboot and poweroff work.
->>>
->>> Please precise "for Linux kernels", since this doesn't work
->>> with firmwares (ideally we should implement the FIRMWARE_NOTIFY_REBOOT
->>> property - which Linux sends - to handle the machine reboot/halt
->>> via the videocore firmware model).
->>
->> Thanks, good point re: this being tuned to what Linux (and u-boot) do.
->> Poking around a bit, it looks like
->> "trusted-firmware-a"/"arm-trusted-firmware" uses the same method, as do
->> a couple of bare-metal/hobby OSes. Couldn't immediately figure out what
->> FreeBSD does.
->>
->> I'm not sure I understand your point about FIRMWARE_NOTIFY_REBOOT, my
->> understanding is that message is there to tell the GPU firmware that
->> we're about to reboot, so it can do things like reload the PCIe USB
->> chip's firmware. In my testing without the watchdog module loaded, my
->> physical pi4 does not reboot, so it appears that sending
->> FIRMWARE_NOTIFY_REBOOT is not enough on its own.
-> 
->  From the ARM core point of view, once it sent the FIRMWARE_NOTIFY_REBOOT
-> message, it can't really power-off itself, it waits in a busy loop for
-> the VC to disable its power domain.
-> 
-> hw/misc/bcm2835_property.c is our model of the VC behavior. IMO this
-> should be where QEMU shuts down. How I'd model it is:
-> 
-> - ARM: sends FIRMWARE_NOTIFY_REBOOT and loops
-> 
-> - VC emulated via property: delays (200ms?) then calls
->    SHUTDOWN_CAUSE_GUEST_RESET.
-> 
-> (it helps to see hw/misc/bcm2835_property.c as an external component).
+On Thu, May 27, 2021 at 2:34 AM Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> On Tue, 18 May 2021 at 20:54, Patrick Venture <venture@google.com> wrote:
+> >
+> > Adds initial quanta-gbs-bmc machine support.
+> >
+> > Tested: Boots to userspace.
+> > Signed-off-by: Patrick Venture <venture@google.com>
+> > Reviewed-by: Brandon Kim <brandonkim@google.com>
+> > Reviewed-by: Hao Wu <wuhaotsh@google.com>
+> > ---
+> >  hw/arm/npcm7xx_boards.c | 33 +++++++++++++++++++++++++++++++++
+> >  1 file changed, 33 insertions(+)
+> >
+> > diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c
+> > index d4553e3786..34a214fe79 100644
+> > --- a/hw/arm/npcm7xx_boards.c
+> > +++ b/hw/arm/npcm7xx_boards.c
+> > @@ -29,6 +29,7 @@
+> >
+> >  #define NPCM750_EVB_POWER_ON_STRAPS 0x00001ff7
+> >  #define QUANTA_GSJ_POWER_ON_STRAPS 0x00001fff
+> > +#define QUANTA_GBS_POWER_ON_STRAPS 0x000017ff /* TODO: Get real values. */
+>
+> Any chance you could fix this TODO ? If it's not fixed now before
+> the code goes in it seems unlikely that it'll ever be fixed -- you're
+> probably in the best position to know the right value...
 
-This is not what I see on my hardware pi4. With the following kernel config:
-...
-CONFIG_RASPBERRYPI_FIRMWARE=y
-...
-CONFIG_BCM2835_WDT=m
-...
+I have an internal bug to find the "right" value and populate it,
+although it probably actually is that value.  Generally I agree with
+your point, that it won't ever be fixed, just like most TODOs in open
+source projects, however, my team is building a ton of systems with
+Qemu presently and ramping up a significant time and resource
+investment in this; so I happen to feel confident this will be
+addressed in the future.  I actually already have several additional
+patches for this and other systems that are waiting on various other
+patches landing.
 
-if I reboot the machine without the WDT module (but with the firmware 
-module), I get this:
-#  echo b > /proc/sysrq-trigger
-[   54.498768] sysrq: Resetting
-[   54.501713] SMP: stopping secondary CPUs
-[   54.505701] Reboot failed -- System halted
+>
+> >  static const char npcm7xx_default_bootrom[] = "npcm7xx_bootrom.bin";
+> >
+> > @@ -268,6 +269,22 @@ static void quanta_gsj_init(MachineState *machine)
+> >      npcm7xx_load_kernel(machine, soc);
+> >  }
+> >
+> > +static void quanta_gbs_init(MachineState *machine)
+> > +{
+> > +    NPCM7xxState *soc;
+> > +
+> > +    soc = npcm7xx_create_soc(machine, QUANTA_GBS_POWER_ON_STRAPS);
+> > +    npcm7xx_connect_dram(soc, machine->ram);
+> > +    qdev_realize(DEVICE(soc), NULL, &error_fatal);
+> > +
+> > +    npcm7xx_load_bootrom(machine, soc);
+> > +
+> > +    npcm7xx_connect_flash(&soc->fiu[0], 0, "mx66u51235f",
+> > +                          drive_get(IF_MTD, 0, 0));
+> > +
+> > +    npcm7xx_load_kernel(machine, soc);
+> > +}
+> > +
+> >  static void npcm7xx_set_soc_type(NPCM7xxMachineClass *nmc, const char *type)
+> >  {
+> >      NPCM7xxClass *sc = NPCM7XX_CLASS(object_class_by_name(type));
+> > @@ -316,6 +333,18 @@ static void gsj_machine_class_init(ObjectClass *oc, void *data)
+> >      mc->default_ram_size = 512 * MiB;
+> >  };
+> >
+> > +static void gbs_bmc_machine_class_init(ObjectClass *oc, void *data)
+> > +{
+> > +    NPCM7xxMachineClass *nmc = NPCM7XX_MACHINE_CLASS(oc);
+> > +    MachineClass *mc = MACHINE_CLASS(oc);
+> > +
+> > +    npcm7xx_set_soc_type(nmc, TYPE_NPCM730);
+> > +
+> > +    mc->desc = "Quanta GBS (Cortex A9)";
+>
+> "Cortex-A9", with a hyphen.
 
-and it hangs forever there.
+Ack, will send out this fix in the next patch series.
 
-If I load the WDT module, it reboots successfully.
-
->>>> qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
->>>> +            } else {
->>>> +                qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
->>>> +            }
->>>> +        }
->>>
->>> Shouldn't we log the unsupported bits?
->>
->> I can add that, I didn't originally because the unsupported writes are
->> expected.
-> 
-> I'd prefer we log them, even if unsupported, so in case something
-> behaves oddly we could look at those bits.
-
-In v2, I log the writes, since any side effects they have (notably the 
-watchdog register) are unimplemented. I didn't log the reads, since they 
-actually behave exactly as the real hardware does...
-
->>>> +static void bcm2835_powermgt_reset(DeviceState *dev)
->>>> +{
->>>> +    BCM2835PowerMgtState *s = BCM2835_POWERMGT(dev);
->>>> +
->>>> +    s->rstc = 0x00000102;
->>>> +    s->rsts = 0x00001000;
->>>> +    s->wdog = 0x00000000;
->>>
->>> Where these bits come from?
->>
->>  From my pi4. https://elinux.org/BCM2835_registers agrees (processed from
->> Broadcom source code).
-> 
-> OK, so please add a comment referring to
-> https://elinux.org/BCM2835_registers#PM.
-> 
-> Looking forward for v2 :)
-
-Already sent. Is the link comment here worth a v3?
-
+>
+>
+> thanks
+> -- PMM

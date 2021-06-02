@@ -1,135 +1,137 @@
-Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp58350lfa;
-        Thu, 3 Jun 2021 02:23:12 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy3uVIOAYKclqmqh4Q9SXzwKIYkM6hwlcXjeB7Z1AgHIBB4+8RnBq+3uC9Z1J6IyTGL1u0B
-X-Received: by 2002:a5e:a704:: with SMTP id b4mr29364096iod.35.1622712192297;
-        Thu, 03 Jun 2021 02:23:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1622712192; cv=none;
+Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp719218lfa;
+        Wed, 2 Jun 2021 16:26:39 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyuM3YTWMVSxDOCD0xft28uI5cuPs0h7K3ygVqKQEPPYZse6LIpqz+JhTHsZF5kME0OfcVe
+X-Received: by 2002:aa7:ca50:: with SMTP id j16mr9635157edt.158.1622676399353;
+        Wed, 02 Jun 2021 16:26:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1622676399; cv=none;
         d=google.com; s=arc-20160816;
-        b=uBfb+xcRL5L5Ux7m0gNs92IyWjy1G1bDiT3/Noai0la/gYNnahyoeATn3gAbfdO53n
-         j19F3wONtfDnPV6phYH1Re20+GcIrQxm1S7j1hzaKHX5pL7Vt3mC3X8cBJypIm54/3m5
-         Y6rG6BQURnK5P937zPu5/M8trSGrj+TOfEV/Mr7No1eW78BEDlwCP5NLtRdcnfr/UEhl
-         sklpy+Vn5Ox0H8s1VPsJ8BwZET5pgmt33PGcJjGJx7s0ShP+gmp+XaTQV/N75rrXFrgK
-         oBJFtRikxAtxIaJSoMbk6JNk1yaLwPl6OF15NIa/EZYeDV1ERH7yV5A6oD+YnmrwAI39
-         kcCg==
+        b=Yl979mr17NgPxd/MG12V60En6Y/aiqZOJBoVKm8BNalCLXowRJNoTeFU4EBY2588wH
+         94Ot3uWIbIaBWc8vMpjrzgxXRZjs31GSs2s4D/oOu0BwWcq18AQsMkXjjeZDIbU91FZs
+         dW6gNLbp3BrYbY11kcSRUSzSfU54anQQNnMlUdP5vXibXkcPVen13lqIqgUmD/HL4xYp
+         gpwE9p38VNNovUtlqMy1hZgNaT5JQKimS3LniNSI6G7nHTxOOxzDMDL+0aoFdH6E3NwN
+         mtJqOTHWtbVuZJV02+xfWWbBz4e7/iKJM05n+MR6B1W8Ig10poR7DTAbz9QlnJ7ToLwb
+         Uo3w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=W9qWXOgCOHO+YbEkj0N3B2e/3m+pUj43rh7cMwlh8sU=;
-        b=aHkRwdsnDis4gkPpZTvZXTPVyLezU4kb72iVqz0TJR6xyCBb0mhH+CcpTVg9v4a0C1
-         qKd7Tg2a8vh6t7pcYW9S6mNE1UyxM8p3KkjaUyZSUdRbJX+5wAKFenK423RMtnht6AY9
-         K5zAb2VmaoD+u3s111uTsieNjnZ2Ubgnwubc4WpHSAcXjY8GXAcCbeMWyOgR2w1AscZ8
-         8YYj8tjg1+bb0ggXjQRS1tQnQCxsFevbKPywsDeqohM4hocr8vZGiDjvNA6Ko6Bna2JS
-         k4MyVjkWlwbwjIE5puSzWqg3me9xXj6Rp8ibiOFxEFyw3pcQ8fVjL3qYloT9GP2zqGlA
-         8I8w==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=6GRM2eF2sPqn1Q1exRPr933/xNxENCApp30O3GosJ/c=;
+        b=yVT+W6c5OQDNUA8cVxx+0++E0GK2TDs0l6x6U2huwsaVV9OjwpBknEzBuo3Svut7FW
+         ceC/wBZi7sAqrZT1HDRYWDs2u+AZQ50FOqseAOKT7WuNslTJXgPe2Lgj0W979pAn9TzG
+         pd9pitzWNcO4Mjk4TTvrJ1nG2l3GmUZfS9mhMeTqcXlsDqzJ9+KmXfeHEt2PtOQ8o142
+         qx+GTo+kt4Iqwg3zciM/JX1vsazTj5JtThPtrLqtHKfJXtqEJen+6i2vkGcN7e2RC3AX
+         UjXbaHK/Hhs5skqgWUZoSpmknlICTrjLloMR/2UhVqV2Np+uowx2qtKIuUUY4TfXOAzq
+         /RSA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="ByFI3/wG";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e11si2579340jaj.14.2021.06.03.02.23.12
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VwR6bFNc;
+       spf=pass (google.com: domain of jsnow@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=jsnow@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <jsnow@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id w9si978352edx.381.2021.06.02.16.26.39
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Jun 2021 02:23:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 02 Jun 2021 16:26:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jsnow@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="ByFI3/wG";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43404 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lojZH-0004a3-Mi
-	for alex.bennee@linaro.org; Thu, 03 Jun 2021 05:23:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51594)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lojZ2-0004V2-39
- for qemu-arm@nongnu.org; Thu, 03 Jun 2021 05:22:56 -0400
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631]:33748)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lojZ0-0005RC-CZ
- for qemu-arm@nongnu.org; Thu, 03 Jun 2021 05:22:55 -0400
-Received: by mail-ej1-x631.google.com with SMTP id g20so8287651ejt.0
- for <qemu-arm@nongnu.org>; Thu, 03 Jun 2021 02:22:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=W9qWXOgCOHO+YbEkj0N3B2e/3m+pUj43rh7cMwlh8sU=;
- b=ByFI3/wGDkiJvszg9fd+/Jdp/cuD4GT9wYgVwwTLjQuJrXrC3Y9TAqoY12AEYpk1/e
- TieFi0KOvMa13vy4KcIg5shcvsy4a7jVpF2OGG5HemlxBLiP17G17XN/LrBBUhFbFoNR
- OGzJK2nPiKMN5eff3hY9ZIlEU2Am4ByUGezrze2hkI0zOhcaXoO+yVZmNIW7goXQWsNM
- MNvXSZc1ziQp8eufTutSA10UglldTp3DEs2x15bvz7EmWyHGdCmpZGlxcKlGS0TYLH2h
- BI3tX8+eq/Fer1RthutrZ51WrMwtXEGQJK3stY5HbH5qMm04Ghp9BZipAIdk529OjFsb
- tIsQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=W9qWXOgCOHO+YbEkj0N3B2e/3m+pUj43rh7cMwlh8sU=;
- b=cJZ7dvEGRLCpclGZZwy2hWeEdYzCqbQB5BSBr0wK6w7CeQDeJadac3JWbSdQNMPGvF
- RL5QBdN20S/WDSsGXd/+gAxVOboQs4VILkg3LuB9DrzmgAwvTlKYq6s5jujyV1NLP5S+
- G0bdQDARTH8iOKvFbm66eQaucJrO91IIv1q2HE81//NmQOGnn87h98kUQ1+kuL7+HHgy
- SgMiMhbpVO9Rb8VIP0UcVI4ou8CXWiOQjXvhtkKvcnufYOtlcy0fd88IBt8V1TZpwbfu
- p4PP6Jf3gtjjBuggnI4I37gG7mrB7loGe5HV5O3UPAjp983ksmNnmbiRTlOAefeUoUn1
- fYKQ==
-X-Gm-Message-State: AOAM5333f1rcyi+NNt/xvf4rUQvRskw6Af4bKmIGSP0ObA58cc6Gih1+
- I+xvzdKXDtBuMb+TAia1Xww5W0u/rT8stySEphSqVg==
-X-Received: by 2002:a17:906:a458:: with SMTP id
- cb24mr16276443ejb.482.1622712173024; 
- Thu, 03 Jun 2021 02:22:53 -0700 (PDT)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VwR6bFNc;
+       spf=pass (google.com: domain of jsnow@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=jsnow@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1622676398;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=6GRM2eF2sPqn1Q1exRPr933/xNxENCApp30O3GosJ/c=;
+	b=VwR6bFNce8naa4YOOHdnT8jOvasKKItLWgPUey1ZaSSG7ro1VU03K6XImWwNRl86y7LYnF
+	d1haLRbzG2mG5iAk6vs/EtzH8/usdUYyBslMGJOyIBnn+QoBlbnwXhPeDKyvwekklxzRUl
+	vQkQWJ8svyRSAvC2b0vLqOfQd4+/byQ=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-352-E1W3DaZqMiWvTEtfb07D2w-1; Wed, 02 Jun 2021 19:26:35 -0400
+X-MC-Unique: E1W3DaZqMiWvTEtfb07D2w-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2A31C801B12;
+	Wed,  2 Jun 2021 23:26:34 +0000 (UTC)
+Received: from [10.10.116.137] (ovpn-116-137.rdu2.redhat.com [10.10.116.137])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 4A663614FD;
+	Wed,  2 Jun 2021 23:26:32 +0000 (UTC)
+Subject: Re: [PATCH v8 02/12] accel: Introduce 'query-accels' QMP command
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Eric Blake <eblake@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+References: <20210526170432.343588-1-philmd@redhat.com>
+ <20210526170432.343588-3-philmd@redhat.com>
+From: John Snow <jsnow@redhat.com>
+Message-ID: <e42a93e4-dfee-2446-f82c-8fec074d4c59@redhat.com>
+Date: Wed, 2 Jun 2021 19:26:31 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.1
 MIME-Version: 1.0
-References: <20210602020720.47679-1-richard.henderson@linaro.org>
-In-Reply-To: <20210602020720.47679-1-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 3 Jun 2021 10:22:20 +0100
-Message-ID: <CAFEAcA-rc7vFwwmvXVZtsZ9VQgxRFbr8vaf-YfUO6wmXv8-vNg@mail.gmail.com>
-Subject: Re: [PATCH] target/arm: Mark LDS{MIN,MAX} as signed operations
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::631;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x631.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BXp5t2NvEcOs
+In-Reply-To: <20210526170432.343588-3-philmd@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jsnow@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: fqq2rkArRteX
 
-On Wed, 2 Jun 2021 at 03:07, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> The operands to tcg_gen_atomic_fetch_s{min,max}_i64 must
-> be signed, so that the inputs are properly extended.
-> Zero extend the result afterward, as needed.
->
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/364
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+On 5/26/21 1:04 PM, Philippe Mathieu-Daudé wrote:
+> Introduce the 'query-accels' QMP command which returns a list
+> of built-in accelerator names.
+>  > - Accelerator is a QAPI enum of all existing accelerators,
+> 
+> - AcceleratorInfo is a QAPI structure providing accelerator
+>    specific information. Currently the common structure base
+>    provides the name of the accelerator, while the specific
+>    part is empty, but each accelerator can expand it.
+> 
+> - 'query-accels' QMP command returns a list of @AcceleratorInfo
+> 
+> For example on a KVM-only build we get:
+> 
+>      { "execute": "query-accels" }
+>      {
+>          "return": [
+>              {
+>                  "name": "qtest"
+>              },
+>              {
+>                  "name": "kvm"
+>              }
+>          ]
+>      }
+> 
+> Reviewed-by: Eric Blake <eblake@redhat.com>
+> Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+> Tested-by: Alex Bennée <alex.bennee@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->  target/arm/translate-a64.c | 13 ++++++++++---
->  1 file changed, 10 insertions(+), 3 deletions(-)
->
+> v8:
+> - Include code snippet from Markus adding to machine-target.json
+>    to be able to use enum values or union branches conditional.
+> - Use accel_find() on enum to be sure the accelerator is enabled
+>    at runtime (chat with jsnow / eblake).
+> 
 
+Hi Phil -- Unfortunately I think I am going to defer on this one until 
+Markus is back. I need to chat with him about the right way to design 
+this, since I'm also not entirely clear on it myself.
 
+--js
 
-Applied to target-arm.next, thanks.
-
--- PMM
+> Cc: Eric Blake <eblake@redhat.com>
+> Cc: John Snow <jsnow@redhat.com>
+> Cc: Markus Armbruster <armbru@redhat.com>

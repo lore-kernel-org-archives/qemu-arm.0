@@ -1,114 +1,115 @@
-Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp245106lfa;
-        Wed, 2 Jun 2021 05:18:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyYlcgiaugDLp4y1zjhgwI7WCZ6amxzcxuF1JG2QNNjpRf9DF7By0bNVmnyvvxpZbJBLlXw
-X-Received: by 2002:a05:6402:3488:: with SMTP id v8mr2652677edc.124.1622636332012;
-        Wed, 02 Jun 2021 05:18:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1622636332; cv=none;
+Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp251000lfa;
+        Wed, 2 Jun 2021 05:26:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxUUHwwuN6n6rpZCmvFv1k6GuwxcfbUcwn3AEXIgtkwhI8Hol91+/7PZ7Y0WMUWEXYfwkNM
+X-Received: by 2002:a05:6402:34d2:: with SMTP id w18mr38296191edc.358.1622636774653;
+        Wed, 02 Jun 2021 05:26:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1622636774; cv=none;
         d=google.com; s=arc-20160816;
-        b=DuwpEKxTPzq6is/vRZqg0K3lOk+HfqQgMKlFaf/PLyQL0tMXOQbtGj8RX05OXWIsUr
-         xA8fvK3lgUhpZQHoNPePXFGtpEDs53do9uZF+kE82IQExLqHp3oEppYY6b7mXWTWhKDf
-         KkdXImMK7IykZAiim2zlS1MDDxB0mfNQYP9oD/XhQaQd1CGd3Q1VpfMqkq0dCrS385aW
-         VQR1GGcvX/xwN9clqPD88VKAp66D5rHqUmjLbIEnrKxxDzLF1Vh576bRAyXSqGSvUTV2
-         WDikHlQiNlLOVNtzXnNHD8QZBF5vGYyEpOgSr+ZsemLq0rHqn153xVRUXdiUTTtOxK1p
-         G2KA==
+        b=rAWEhwt2gpvknUbr7akleNuE0nIVnDbGG2+iZ2g0Q4lQaKzSud/lN0yGZqAmdtoQRO
+         2YNXafdbn/nQGKVgHykSIvoJaCEJwf7XdNB3pxCoYwhsvBuoJYSj2KL/9SZPQs4K/Elb
+         +2hFRPHn1LWoYRvbUgSzSztIpk3KJmJ65sAa4pVbR2muCB/hHUP+PpObs7drODL9E8nm
+         3kNdC9AegUs9TQOLnX/Wkstxt763jr7xku6t+nd3Djqjn/IIX9L1cfdAonSJcY//6JGQ
+         9nTYqewVGy20BCCfbZDnQwgKggyf2WYXNfoD/sH8SeCFo3ucC2GuFpH7hcp92Y7mV2ym
+         h0zQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence:content-language
          :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
          :message-id:references:to:subject:from:dkim-signature;
-        bh=XsTzgwSfJ12II6PARQ4srbEiUlQ/OEvvSlUQ0SnylPk=;
-        b=dkuE8rxfFyAz9nW/QpczWE7lr8+JYZlDPYVSiRs/NfkgtLJptaGgFtnlnmVS/h8PWP
-         +BtWZLBWmOor8PKkrRr2LOvBXDchJ7RX6I0iS6SBSTaWjKlA6lmsEje13ZGZVaYXKZdG
-         VCXAkbC2drZlpRnJD70S+pQoqkQ0gGtwYF4Ud+yeGxqfAZYJLxFa8z4dvxotzqKPejMM
-         kv5jYA/xye9HolSK6DVQN1UyVjQFc+3srjIPqG0sm0LnZlO5CWwQb8cUXzMnqQNbY7pq
-         E9G2Qsa9CYMznrBrx7k7qKbim1eKVXISAzoh68qbMgo3C3YqTL85Wo/stGLWWVuvecju
-         7/xA==
+        bh=orI2mfz/xyYk0Hga3CuMNy8vdWlBV3ihOX24VrQ1K58=;
+        b=bEBbSUKZNmGGYiKaSv93XrpnFkYmSkMqZBC98TkvW3vjVv1inx7NWKYZrZ9UAtwErL
+         VkzGHTWiYSoooPkDOXxYWt++dXp0CV1pwy3hNXWtq2+QD6ftwh4ZgEGJP9n2JQ4Igfvk
+         Zjf7DbNR8oZ7jx7p6SS3DEEl/CNKseSfTaiy3mv3YLE55L8Za1RipQgN8S7bEc668rJ3
+         e7l3P5RJVyZg6sxlyC2oxI2xwMXeETrwO8nuR8O7sb4MW5/TqRSrOtpzrYs5BLxpQbfn
+         qvKfJ2jJhmtu6NesxLIKPPYSrStVByY35U8ioXnmlkTy44s58gPvwLD1ma+k/Mwwv7tB
+         EdlA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="U4yMX/XL";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="auP/g8jL";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id hd11si7166921ejc.83.2021.06.02.05.18.51
+        by mx.google.com with ESMTPS id k3si1973938edi.75.2021.06.02.05.26.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Jun 2021 05:18:51 -0700 (PDT)
+        Wed, 02 Jun 2021 05:26:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="U4yMX/XL";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="auP/g8jL";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39252 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49390 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1loPpi-0001CF-WC
-	for alex.bennee@linaro.org; Wed, 02 Jun 2021 08:18:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49882)
+	id 1loPwr-0008Ev-Ji
+	for alex.bennee@linaro.org; Wed, 02 Jun 2021 08:26:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51264)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1loPpY-000178-BG
- for qemu-arm@nongnu.org; Wed, 02 Jun 2021 08:18:40 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:34252)
+ id 1loPwd-0008Bi-V1
+ for qemu-arm@nongnu.org; Wed, 02 Jun 2021 08:25:59 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:56647)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1loPpV-0004fF-DZ
- for qemu-arm@nongnu.org; Wed, 02 Jun 2021 08:18:40 -0400
+ id 1loPwc-00013D-6Q
+ for qemu-arm@nongnu.org; Wed, 02 Jun 2021 08:25:59 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1622636316;
+ s=mimecast20190719; t=1622636757;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=XsTzgwSfJ12II6PARQ4srbEiUlQ/OEvvSlUQ0SnylPk=;
- b=U4yMX/XLIkzQyKPKhZ/XP7fNvqyhk5bTOCLNMLjLBjD/ZpQwawPLgzgdcjAaYpp3sgNqtv
- tViuNRQ3FbHXl+AAvkk0f6wrj4y135s1+QPeK8jPc7UlcTWPrmbABvnN0oLWqYKWiVckIz
- zjAurN+4EbFr92NzzQPmAVQQMCdxLmQ=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-574-aeXhvH3YP8u3-cX3XAZ4UQ-1; Wed, 02 Jun 2021 08:18:33 -0400
-X-MC-Unique: aeXhvH3YP8u3-cX3XAZ4UQ-1
-Received: by mail-wm1-f72.google.com with SMTP id
- 18-20020a05600c0252b029019a0ce35d36so2124274wmj.4
- for <qemu-arm@nongnu.org>; Wed, 02 Jun 2021 05:18:32 -0700 (PDT)
+ bh=orI2mfz/xyYk0Hga3CuMNy8vdWlBV3ihOX24VrQ1K58=;
+ b=auP/g8jLlaVCNPXE1hlmYXjMMejz//Hb3QBMMtUk3BDWnmEXN1S/UfowmiXOFViFizxD4S
+ RnNVP8bLalamX4OqemRZ8oKRcNEK1pbuF7UHnvy/rN72TjkHX7RzkZn96T//h7AQ+jpr++
+ PN2q4DrtqPchfz5QuKOhLwRDSWBra7w=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-516-2-M1Z6_BNZSP6PCvBdDYBw-1; Wed, 02 Jun 2021 08:25:54 -0400
+X-MC-Unique: 2-M1Z6_BNZSP6PCvBdDYBw-1
+Received: by mail-wr1-f69.google.com with SMTP id
+ i102-20020adf90ef0000b029010dfcfc46c0so961321wri.1
+ for <qemu-arm@nongnu.org>; Wed, 02 Jun 2021 05:25:53 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:subject:reply-to:to:cc:references
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-transfer-encoding:content-language;
- bh=XsTzgwSfJ12II6PARQ4srbEiUlQ/OEvvSlUQ0SnylPk=;
- b=JPK7TIoDtUPms1q7e58gA/MKmpi2bE70Zr6D5COT7kk90rBloDn8GatoJcCm4Sv2Kv
- CzAcVhu+rvUcgk3ob/mYV+8fC1np15PmtsYmRIdaCURtdd4pnnMBXJfHP/SISzbfaUDb
- bL5m4XPZo7JEg2dQ6CuxQRDLN1KRO/jjlnMzTfLrUXyRmnb2k2Dl42fx4CKJWA6BfKtr
- MI2UG1ykBilFiSW2oEVr3a0XwAK9VO+S0xjhiajrFLkh49GBsdJEdJ9CEg+wr4KzmGMB
- Um7vwfpXVNaZWnRxiem8LyU3WpWVFt7cZICJmIx+8EFXIswNt5mFOXnYl9hAUJzpvLup
- lRCA==
-X-Gm-Message-State: AOAM530JSRvQhb0Az3oV70Z6MDLZtywWQjcURhX8ZblCoQTV4AulDYV5
- idc8/6eMCTy4U9MlJfJMgoQe/Tq3KdBlH463CcRZEjIg+UGA+JHTjcThzBYbvlWG1eX+pgnnr3F
- JzkHFhZKFUeNn
-X-Received: by 2002:a7b:c749:: with SMTP id w9mr4920237wmk.3.1622636311868;
- Wed, 02 Jun 2021 05:18:31 -0700 (PDT)
-X-Received: by 2002:a7b:c749:: with SMTP id w9mr4920219wmk.3.1622636311671;
- Wed, 02 Jun 2021 05:18:31 -0700 (PDT)
+ bh=orI2mfz/xyYk0Hga3CuMNy8vdWlBV3ihOX24VrQ1K58=;
+ b=shnVnQKTtJ8IYzt+ER401S+tG4Tv/5klAojpfOqLnrYc7yqcGN9kof/KhyC0yeuXcJ
+ ZI8ZAllUSYxl03WK2hFvlbs914k4qbsuceOLzvR7JZQ510RnavoQwlSjTNIVA+myI7p3
+ Wv80dSCtxczWRbd/2m+89d4l/hg99eHORxVRNUwTeS1Sc2bMGt7rSmyJx2trLro9IxnB
+ HsIq+pZ6LCpL48hLXFSizkj/CeLQyBDjeSt+jnwJYos2yRCCHfX7tCOQe4x5ie3PkKhk
+ /BcwV0dN+ky390Cno1Mm4j0foBPaGUixu2FT47RioY03zh2mvyNoLMzUGtwlf+H26Eh1
+ pxtw==
+X-Gm-Message-State: AOAM533kpenV63VLaOPv7NKZ2kY7MnIieDp0G77p7DXqVeGbhtQ2aIFA
+ w294r/Amw4Apc4WNVankKElbNjzhsK/B/w+mUwEygbYbHDlHbiSMoFLnFr4nIyUZniQ/hKYpuE+
+ NRItbxXkbwrTO
+X-Received: by 2002:a7b:ce8a:: with SMTP id q10mr18757212wmj.184.1622636752852; 
+ Wed, 02 Jun 2021 05:25:52 -0700 (PDT)
+X-Received: by 2002:a7b:ce8a:: with SMTP id q10mr18757189wmj.184.1622636752661; 
+ Wed, 02 Jun 2021 05:25:52 -0700 (PDT)
 Received: from ?IPv6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
  ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id g10sm6484279wrq.12.2021.06.02.05.18.30
+ by smtp.gmail.com with ESMTPSA id f20sm2955456wmh.41.2021.06.02.05.25.51
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 02 Jun 2021 05:18:31 -0700 (PDT)
+ Wed, 02 Jun 2021 05:25:52 -0700 (PDT)
 From: Eric Auger <eric.auger@redhat.com>
-Subject: Re: [PATCH v4 1/8] hw/pci/pci_host: Allow bypass iommu for pci host
+Subject: Re: [PATCH v4 3/8] hw/arm/virt: Add a machine option to bypass iommu
+ for primary bus
 To: Wang Xingang <wangxingang5@huawei.com>, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, shannon.zhaosl@gmail.com, imammedo@redhat.com,
  mst@redhat.com, marcel.apfelbaum@gmail.com, peter.maydell@linaro.org,
  ehabkost@redhat.com, richard.henderson@linaro.org, pbonzini@redhat.com
 References: <1621914605-14724-1-git-send-email-wangxingang5@huawei.com>
- <1621914605-14724-2-git-send-email-wangxingang5@huawei.com>
-Message-ID: <4fed8139-c5f0-8b96-4b98-69374d31c10e@redhat.com>
-Date: Wed, 2 Jun 2021 14:18:29 +0200
+ <1621914605-14724-4-git-send-email-wangxingang5@huawei.com>
+Message-ID: <b1f26e3a-d678-aa50-4e82-71c76c9775b8@redhat.com>
+Date: Wed, 2 Jun 2021 14:25:50 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.10.1
 MIME-Version: 1.0
-In-Reply-To: <1621914605-14724-2-git-send-email-wangxingang5@huawei.com>
+In-Reply-To: <1621914605-14724-4-git-send-email-wangxingang5@huawei.com>
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
 X-Mimecast-Spam-Score: 0
@@ -125,7 +126,7 @@ X-Spam_report: (-3.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.371,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  NICE_REPLY_A=-0.613, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
  RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -142,106 +143,104 @@ Reply-To: eric.auger@redhat.com
 Cc: xieyingtai@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: K0DUeqffNGLj
+X-TUID: Pv4ZMgS/LJvv
 
 Hi Xingang,
 
-On 5/25/21 5:49 AM, Wang Xingang wrote:
+On 5/25/21 5:50 AM, Wang Xingang wrote:
 > From: Xingang Wang <wangxingang5@huawei.com>
 >
-> This add a bypass_iommu property for pci host, which indicates
-> whether devices attached to the pci root bus will bypass iommu.
-> In pci_device_iommu_address_space(), add a bypass_iommu check
-> to avoid getting iommu address space for devices bypass iommu.
->
+> This add a bypass_iommu option for arm virt machine,
+> the option can be used in this manner:
+> qemu -machine virt,iommu=smmuv3,bypass_iommu=true
+This still looks confusing to me. On one hand we say that for the virt
+machine the iommu is set to smmuv3 and we say bypass_iommu=true on the
+virt machine option line
+It is not straightforward that the bypass_iommu only relates to devices
+plugged onto the "default" root bus.
+
+At least the name of the property should reflect that I think
+
 > Signed-off-by: Xingang Wang <wangxingang5@huawei.com>
 > ---
->  hw/pci/pci.c              | 18 +++++++++++++++++-
->  hw/pci/pci_host.c         |  2 ++
->  include/hw/pci/pci.h      |  1 +
->  include/hw/pci/pci_host.h |  1 +
->  4 files changed, 21 insertions(+), 1 deletion(-)
+>  hw/arm/virt.c         | 26 ++++++++++++++++++++++++++
+>  include/hw/arm/virt.h |  1 +
+>  2 files changed, 27 insertions(+)
 >
-> diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-> index 377084f1a8..27d588e268 100644
-> --- a/hw/pci/pci.c
-> +++ b/hw/pci/pci.c
-> @@ -416,6 +416,22 @@ const char *pci_root_bus_path(PCIDevice *dev)
->      return rootbus->qbus.name;
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 840758666d..49d8a801ed 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -1364,6 +1364,7 @@ static void create_pcie(VirtMachineState *vms)
+>      }
+>  
+>      pci = PCI_HOST_BRIDGE(dev);
+> +    pci->bypass_iommu = vms->bypass_iommu;
+>      vms->bus = pci->bus;
+>      if (vms->bus) {
+>          for (i = 0; i < nb_nics; i++) {
+> @@ -2319,6 +2320,21 @@ static void virt_set_iommu(Object *obj, const char *value, Error **errp)
+>      }
 >  }
 >  
-> +bool pci_bus_bypass_iommu(PCIBus *bus)
+> +static bool virt_get_bypass_iommu(Object *obj, Error **errp)
 > +{
-> +    PCIBus *rootbus = bus;
-> +    PCIHostState *host_bridge;
+> +    VirtMachineState *vms = VIRT_MACHINE(obj);
 > +
-> +    if (!pci_bus_is_root(bus)) {
-> +        rootbus = pci_device_root_bus(bus->parent_dev);
-> +    }
-> +
-> +    host_bridge = PCI_HOST_BRIDGE(rootbus->qbus.parent);
-> +
-> +    assert(host_bridge->bus == rootbus);
-> +
-> +    return host_bridge->bypass_iommu;
+> +    return vms->bypass_iommu;
 > +}
 > +
->  static void pci_root_bus_init(PCIBus *bus, DeviceState *parent,
->                                MemoryRegion *address_space_mem,
->                                MemoryRegion *address_space_io,
-> @@ -2718,7 +2734,7 @@ AddressSpace *pci_device_iommu_address_space(PCIDevice *dev)
+> +static void virt_set_bypass_iommu(Object *obj, bool value,
+> +                                              Error **errp)
+> +{
+> +    VirtMachineState *vms = VIRT_MACHINE(obj);
+> +
+> +    vms->bypass_iommu = value;
+> +}
+> +
+>  static CpuInstanceProperties
+>  virt_cpu_index_to_props(MachineState *ms, unsigned cpu_index)
+>  {
+> @@ -2656,6 +2672,13 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+>                                            "Set the IOMMU type. "
+>                                            "Valid values are none and smmuv3");
 >  
->          iommu_bus = parent_bus;
->      }
-> -    if (iommu_bus && iommu_bus->iommu_fn) {
-> +    if (!pci_bus_bypass_iommu(bus) && iommu_bus && iommu_bus->iommu_fn) {
->          return iommu_bus->iommu_fn(bus, iommu_bus->iommu_opaque, devfn);
->      }
->      return &address_space_memory;
-> diff --git a/hw/pci/pci_host.c b/hw/pci/pci_host.c
-> index 8ca5fadcbd..2768db53e6 100644
-> --- a/hw/pci/pci_host.c
-> +++ b/hw/pci/pci_host.c
-> @@ -222,6 +222,8 @@ const VMStateDescription vmstate_pcihost = {
->  static Property pci_host_properties_common[] = {
->      DEFINE_PROP_BOOL("x-config-reg-migration-enabled", PCIHostState,
->                       mig_enabled, true),
-> +    DEFINE_PROP_BOOL("pci-host-bypass-iommu", PCIHostState,
-> +                     bypass_iommu, false),
-"bypass-iommu" may be sufficient.
+> +    object_class_property_add_bool(oc, "bypass_iommu",
+> +                                   virt_get_bypass_iommu,
+> +                                   virt_set_bypass_iommu);
+> +    object_class_property_set_description(oc, "bypass_iommu",
+> +                                          "Set on/off to enable/disable "
+> +                                          "bypass_iommu for primary bus");
+> +
+>      object_class_property_add_bool(oc, "ras", virt_get_ras,
+>                                     virt_set_ras);
+>      object_class_property_set_description(oc, "ras",
+> @@ -2723,6 +2746,9 @@ static void virt_instance_init(Object *obj)
+>      /* Default disallows iommu instantiation */
+>      vms->iommu = VIRT_IOMMU_NONE;
+>  
+> +    /* The primary bus is attached to iommu by default */
+> +    vms->bypass_iommu = false;
+I don't fully master the PCI topology but I think you should clarify
+which primary bus we talk about. AFAIU PXB's bus also is a primary bus.
 
-Besides:
-
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
 Thanks
 
 Eric
-
->      DEFINE_PROP_END_OF_LIST(),
->  };
+> +
+>      /* Default disallows RAS instantiation */
+>      vms->ras = false;
 >  
-> diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
-> index 6be4e0c460..f4d51b672b 100644
-> --- a/include/hw/pci/pci.h
-> +++ b/include/hw/pci/pci.h
-> @@ -480,6 +480,7 @@ void pci_for_each_bus(PCIBus *bus,
->  
->  PCIBus *pci_device_root_bus(const PCIDevice *d);
->  const char *pci_root_bus_path(PCIDevice *dev);
-> +bool pci_bus_bypass_iommu(PCIBus *bus);
->  PCIDevice *pci_find_device(PCIBus *bus, int bus_num, uint8_t devfn);
->  int pci_qdev_find_device(const char *id, PCIDevice **pdev);
->  void pci_bus_get_w64_range(PCIBus *bus, Range *range);
-> diff --git a/include/hw/pci/pci_host.h b/include/hw/pci/pci_host.h
-> index 52e038c019..c6f4eb4585 100644
-> --- a/include/hw/pci/pci_host.h
-> +++ b/include/hw/pci/pci_host.h
-> @@ -43,6 +43,7 @@ struct PCIHostState {
->      uint32_t config_reg;
->      bool mig_enabled;
->      PCIBus *bus;
+> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> index 921416f918..82bceadb82 100644
+> --- a/include/hw/arm/virt.h
+> +++ b/include/hw/arm/virt.h
+> @@ -147,6 +147,7 @@ struct VirtMachineState {
+>      OnOffAuto acpi;
+>      VirtGICType gic_version;
+>      VirtIOMMUType iommu;
 > +    bool bypass_iommu;
->  
->      QLIST_ENTRY(PCIHostState) next;
->  };
+>      VirtMSIControllerType msi_controller;
+>      uint16_t virtio_iommu_bdf;
+>      struct arm_boot_info bootinfo;
 

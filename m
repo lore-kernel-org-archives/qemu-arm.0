@@ -1,102 +1,103 @@
-Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp416613lfa;
-        Thu, 3 Jun 2021 10:13:41 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxZzwwb6fqwtb1evmjy7olv1mWbCFza4lMUHIiJ6V8BC+quS0q0GLfaykp8S4l/IEwTzMM5
-X-Received: by 2002:a67:2246:: with SMTP id i67mr599745vsi.17.1622740421622;
-        Thu, 03 Jun 2021 10:13:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1622740421; cv=none;
+Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp418433lfa;
+        Thu, 3 Jun 2021 10:15:27 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJysTCmKdXs5AM7C3+OhsziwOfoMnKhEJGJ2EcZ9rQp1CbDIFdtFB9ZWlNo5apXLKFl6FNFc
+X-Received: by 2002:a67:cb9d:: with SMTP id h29mr363159vsl.2.1622740527554;
+        Thu, 03 Jun 2021 10:15:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1622740527; cv=none;
         d=google.com; s=arc-20160816;
-        b=hxsAN8Fe9feN0cVtIV8p5eXZ55h7bl4uutsKOaGbAYm9V/ytqgS0PG2aPEabrh1h3B
-         FVW/H9YF94dv8hhQMjKh7saZByIKUQrXzTdzXmrTO1MZ93ACDmoTBjOXIhHPusnlldat
-         hqVXI4+LmAPV1Pp/Zy+/r4jovqrGQx8vE7EbdX6Kf4kDuXSOiOW0PIK1Hnu+q4S54mAm
-         kw6dFdy+kxCj6jQYJ4bdQgH9tILD1p66nORt1LBevSMrwCBPzjHG3ODAnppM2qrpDtjh
-         Q9OOdm35YlE2tTAqdmnxJJDe7Jj3DT/ZtD11imEz4lsuG+ZoFAP3t+aUNZq/3b7DKQW9
-         qBcg==
+        b=RrI0oCYmLhybBjKEg/RlHtgZF/hXX6TA93zMM86pxZxz7EGft0bAd1cWh20D0MwHif
+         YL3xUFx76l3vhD8Y8PYGxpsHY8yZATfchCD4pPvy5/hMyEod1zSLaCc5Ml/vqY3pgTx0
+         fGMDI0yliVU8jHtARkdav2rBQAF5nXP2tic14bMkiDPB0jGgLC83vrzFTx2oDouWasxv
+         zrp8nIJAjU7UssEEqa7hxYpgu85ym5r3cirfaBiy+o/SlRBd9sjgWe+EA74bbVYRQg1s
+         Ep5AA2VqDFYZjPeyk3W29dCX+dvIr4vuvMckltZFd586FNAKvQ5+UYrSOKa59VuOYqBp
+         Y52w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=HOYJkr4GhaglKvXMUgqS2H3+raKjJM8WQVTi0Xzd4rQ=;
-        b=siBRpg+92yHhsAp1VZDGvTaYcJxbtwoIjTPno7feuhZ6389838XsRqkhTc51HXU4gr
-         3HEDozrOv4+/Cg1z3QsPgNn/3m3uX6U/asmFzZYQ7+H+iunjI6I5EL+LshJ7KdNPQtNP
-         L10dAfrF3+3Hx8zYZMuaDvaG9ysDntlqOFIxOEFhLnIGa+rMOfLER2l2Mfbf62Y2ITy1
-         t+7PWMJhrMt7QGL43CCx17cUl2oeOHV+B/iAn/k/qECEzS7MtPnwFRQWPpBkZo9kx31s
-         DXrZS5Rl3eP48YAoWHtU1ViQ6NOv1fomEjeZZ35GQpUX9XVR9Xl4Mn7D+OrNPAPNzSLo
-         CxCg==
+        bh=HH81j5I+nn0sGSIPvlymA5OV7omrfdBZUURJAJAqCcY=;
+        b=0E6BettOtVLT4Lm0Nx4LxqYnO8r17AFZ/i/26cevRLEW2R/FVbsK2vLYEwz/i1nDTI
+         ZvBjvwWqSU3KaS5zFOmEZ9s7R21J4pp6FmlUkldvbMyYK+PZXJlEGCuUurTHbD5CQmk3
+         a1Vzr/KLqp/Cx0ovvO0oVKSFC5ZpcKlOzDTcYvWKYivJEG9s+WypzS/J9ogYPaLy7eFr
+         KYzlE3B1wklr5NFC2xvsyNwvbmAWie3SGfz5O4SJcTeYUkI4j3JsJ1k3Ns0wvvwkLJkg
+         nf1tHJgs7oJYZGWxILdowPYNfouORbVbdwiGoFRnIVYMhxZkYCHHnyvx5ui7ORo3kzUw
+         dGDA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=LToVOLFr;
+       dkim=fail header.i=@linaro.org header.s=google header.b=oW8xtR9V;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j2si920008ual.117.2021.06.03.10.13.41
+        by mx.google.com with ESMTPS id t25si1138192vsl.151.2021.06.03.10.15.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Jun 2021 10:13:41 -0700 (PDT)
+        Thu, 03 Jun 2021 10:15:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=LToVOLFr;
+       dkim=fail header.i=@linaro.org header.s=google header.b=oW8xtR9V;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40568 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46080 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1loqua-0003ec-13
-	for alex.bennee@linaro.org; Thu, 03 Jun 2021 13:13:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54888)
+	id 1loqwI-0007Zl-Qp
+	for alex.bennee@linaro.org; Thu, 03 Jun 2021 13:15:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54908)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1loqu2-0002C9-74
+ id 1loqu2-0002EK-Vs
  for qemu-arm@nongnu.org; Thu, 03 Jun 2021 13:13:06 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433]:46695)
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:40769)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1loqu0-0005R3-C4
- for qemu-arm@nongnu.org; Thu, 03 Jun 2021 13:13:05 -0400
-Received: by mail-wr1-x433.google.com with SMTP id a11so4727880wrt.13
- for <qemu-arm@nongnu.org>; Thu, 03 Jun 2021 10:13:03 -0700 (PDT)
+ id 1loqu1-0005Rs-7g
+ for qemu-arm@nongnu.org; Thu, 03 Jun 2021 13:13:06 -0400
+Received: by mail-wr1-x431.google.com with SMTP id y7so1978019wrh.7
+ for <qemu-arm@nongnu.org>; Thu, 03 Jun 2021 10:13:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=HOYJkr4GhaglKvXMUgqS2H3+raKjJM8WQVTi0Xzd4rQ=;
- b=LToVOLFrdHQZznBHEf4jArdvlaVTud5D7fUeyUiAArgUPkPwMu2aPC0GWvzL92cviu
- 2FAftuB5vgctSfnJ2VdRM/f2U4nWR54+Vghy8CKbW4PH2gjbIk9QOT7WJeGxewICWu3J
- EN6wac2U1UT2IK85VkCHpnBsY1nRw+ytxNMBCjWKshJwvOXcd8MC3RWU2aV0jmlPqnmu
- Mjk45tfsmtWrlB5gatgjZ7Ek7AQp7Kn+9FRz1WwldERSDIN6zrfntYD/fZhFMCP6TbGQ
- gnCmYFQrDhpWNZh9cdoCgkpDjUr/O5JQpMc9W6GUlRfYHLBeXt2G+pLnM7qUNDMjGW1X
- f1QQ==
+ bh=HH81j5I+nn0sGSIPvlymA5OV7omrfdBZUURJAJAqCcY=;
+ b=oW8xtR9VBrPztk/cTN4LLXbGDhSGom+DFMne+lBwg8QM2t2FcjXYYd6VL4VDMUV4Mu
+ MFuRHBirPPf0FvRCUzxtJQOUeNs3NK5imQxEhXap5oO/iUrNZM2bqcvxSDzIIFdi1FDp
+ 5WSCB+zd+AJgKcNBFfrjErlmxkYpjU/iU93uN5dGB5UFdPFGN0198yabRA6dKjJ7wwn8
+ Zno0cyTVj6+U65yBefbZPfAzj3sAWgK8grT6XBeMkk6eKRnWL3mhZnjX7OQ6rhXi/Yuq
+ BxhPoOzq9mmfQ+ojK8vt+OVPaFoZzgmrOjkSzegZvBKYaNAafTzQVk9XY3M31NWwciUl
+ krBA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=HOYJkr4GhaglKvXMUgqS2H3+raKjJM8WQVTi0Xzd4rQ=;
- b=i16xqJzu+tJYHojJPgyASkmiYYNZz5IIExIBw1oHoOfUmGAXpfrmO+tr/PQzPtvdWo
- 7N8rLozxo4TgyIr0hIFY1CSa9C2+TlVg88eHPi7hD8s6YUWtQm/XMxWdw27StK2yXaWm
- 9Cw5LpZ7SCSL55Jsuu2BOVd+1uQoc8+7DkTaEvVdLTtdkHkaAojZcR+xWFphS1E9TU26
- ojpSev7kBldhnlNDed/m7N4KkaEgu538HjRaiijyM2rK2x3F9Y5lzuqZ/Vg/g06bWR3p
- XqsGuEdR6COt+keDExR5ASy4yZ0dUAeEyyhwGsWzMSlDayaSv25pUkoXCQaji0v9pMNK
- Xynw==
-X-Gm-Message-State: AOAM532iaU4pb8ou7cQlvo0ASduEg2SKmhC4J09f7m9dzV9VcaV18IvC
- xB1fCswgZSAnoAGdHBt8YJZSVjnTh63iQXBU
-X-Received: by 2002:a5d:5251:: with SMTP id k17mr24285wrc.153.1622740383129;
+ bh=HH81j5I+nn0sGSIPvlymA5OV7omrfdBZUURJAJAqCcY=;
+ b=YH5d1KE5j3ECSF3vWIm3gJjNoynSLRDpgs1fxwyd7BE1T9f9ofiVV61ina/PYFk6c2
+ gs/OSVIw+9f+s8eW+uaYNcsUxL2GygZDa88UQebSRtaWxrda/z65kCS9HVQV1PCYiIX7
+ GmVfiwZ5MuhnthJ3nnL5jFSyliN6B0C/Wkto9TNmFkDepwLsJrSzxC6I0GXAVRavgx39
+ YttnRiz1mE9u/alEgbIvCGbFru0ILN3rWYBjCcG8+nTXTSzJW2Oa2plyyccvEAnJfFPD
+ 1xfYEwWfBWmJ+Tsi0yA2lLWsY6Eww5hIrdi92QwwJfIxVrjLDDjDHXVWjhIBNnjFGGCV
+ TVZg==
+X-Gm-Message-State: AOAM5332917DE6p5VUupE9ZbCed4S2yj1JdCkm0IVgTEjZVmweV2x75M
+ 3hgRwXKm8wVj/SUc1BN8W3VQ+trGKI2CnVDN
+X-Received: by 2002:a5d:47ce:: with SMTP id o14mr13659wrc.273.1622740383960;
  Thu, 03 Jun 2021 10:13:03 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id m5sm6190319wmq.6.2021.06.03.10.13.02
+ by smtp.gmail.com with ESMTPSA id m5sm6190319wmq.6.2021.06.03.10.13.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 03 Jun 2021 10:13:02 -0700 (PDT)
+ Thu, 03 Jun 2021 10:13:03 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 2/3] hw/acpi: Provide function acpi_ghes_present()
-Date: Thu,  3 Jun 2021 18:12:58 +0100
-Message-Id: <20210603171259.27962-3-peter.maydell@linaro.org>
+Subject: [PATCH 3/3] target/arm: Use acpi_ghes_present() to see if we report
+ ACPI memory errors
+Date: Thu,  3 Jun 2021 18:12:59 +0100
+Message-Id: <20210603171259.27962-4-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210603171259.27962-1-peter.maydell@linaro.org>
 References: <20210603171259.27962-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x433.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x431.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,92 +121,43 @@ Cc: Igor Mammedov <imammedo@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>,
  Swetha <swjoshi@microsoft.com>, "Michael S. Tsirkin" <mst@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BoIfKpfVv3hF
+X-TUID: WQnpglbI/r2T
 
-Allow code elsewhere in the system to check whether the ACPI GHES
-table is present, so it can determine whether it is OK to try to
-record an error by calling acpi_ghes_record_errors().
+The virt_is_acpi_enabled() function is specific to the virt board, as
+is the check for its 'ras' property.  Use the new acpi_ghes_present()
+function to check whether we should report memory errors via
+acpi_ghes_record_errors().
 
-(We don't need to migrate the new 'present' field in AcpiGhesState,
-because it is set once at system initialization and doesn't change.)
+This avoids a link error if QEMU was built without support for the
+virt board, and provides a mechanism that can be used by any future
+board models that want to add ACPI memory error reporting support
+(they only need to call acpi_ghes_add_fw_cfg()).
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/acpi/ghes.h |  9 +++++++++
- hw/acpi/ghes-stub.c    |  5 +++++
- hw/acpi/ghes.c         | 17 +++++++++++++++++
- 3 files changed, 31 insertions(+)
+ target/arm/kvm64.c | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
 
-diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
-index 2ae8bc1ded3..674f6958e90 100644
---- a/include/hw/acpi/ghes.h
-+++ b/include/hw/acpi/ghes.h
-@@ -64,6 +64,7 @@ enum {
- 
- typedef struct AcpiGhesState {
-     uint64_t ghes_addr_le;
-+    bool present; /* True if GHES is present at all on this board */
- } AcpiGhesState;
- 
- void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker);
-@@ -72,4 +73,12 @@ void acpi_build_hest(GArray *table_data, BIOSLinker *linker,
- void acpi_ghes_add_fw_cfg(AcpiGhesState *vms, FWCfgState *s,
-                           GArray *hardware_errors);
- int acpi_ghes_record_errors(uint8_t notify, uint64_t error_physical_addr);
-+
-+/**
-+ * acpi_ghes_present: Report whether ACPI GHES table is present
-+ *
-+ * Returns: true if the system has an ACPI GHES table and it is
-+ * safe to call acpi_ghes_record_errors() to record a memory error.
-+ */
-+bool acpi_ghes_present(void);
- #endif
-diff --git a/hw/acpi/ghes-stub.c b/hw/acpi/ghes-stub.c
-index 9faba043b85..c315de1802d 100644
---- a/hw/acpi/ghes-stub.c
-+++ b/hw/acpi/ghes-stub.c
-@@ -15,3 +15,8 @@ int acpi_ghes_record_errors(uint8_t source_id, uint64_t physical_address)
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index 37ceadd9a9d..59982d470d3 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -1410,14 +1410,10 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
  {
-     return -1;
- }
-+
-+bool acpi_ghes_present(void)
-+{
-+    return false;
-+}
-diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-index a4dac6bf15e..a749b84d624 100644
---- a/hw/acpi/ghes.c
-+++ b/hw/acpi/ghes.c
-@@ -386,6 +386,8 @@ void acpi_ghes_add_fw_cfg(AcpiGhesState *ags, FWCfgState *s,
-     /* Create a read-write fw_cfg file for Address */
-     fw_cfg_add_file_callback(s, ACPI_GHES_DATA_ADDR_FW_CFG_FILE, NULL, NULL,
-         NULL, &(ags->ghes_addr_le), sizeof(ags->ghes_addr_le), false);
-+
-+    ags->present = true;
- }
+     ram_addr_t ram_addr;
+     hwaddr paddr;
+-    Object *obj = qdev_get_machine();
+-    VirtMachineState *vms = VIRT_MACHINE(obj);
+-    bool acpi_enabled = virt_is_acpi_enabled(vms);
  
- int acpi_ghes_record_errors(uint8_t source_id, uint64_t physical_address)
-@@ -443,3 +445,18 @@ int acpi_ghes_record_errors(uint8_t source_id, uint64_t physical_address)
+     assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
  
-     return ret;
- }
-+
-+bool acpi_ghes_present(void)
-+{
-+    AcpiGedState *acpi_ged_state;
-+    AcpiGhesState *ags;
-+
-+    acpi_ged_state = ACPI_GED(object_resolve_path_type("", TYPE_ACPI_GED,
-+                                                       NULL));
-+
-+    if (!acpi_ged_state) {
-+        return false;
-+    }
-+    ags = &acpi_ged_state->ghes_state;
-+    return ags->present;
-+}
+-    if (acpi_enabled && addr &&
+-            object_property_get_bool(obj, "ras", NULL)) {
++    if (acpi_ghes_present() && addr) {
+         ram_addr = qemu_ram_addr_from_host(addr);
+         if (ram_addr != RAM_ADDR_INVALID &&
+             kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {
 -- 
 2.20.1
 

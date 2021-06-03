@@ -1,100 +1,95 @@
-Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp120616lfa;
-        Thu, 3 Jun 2021 04:01:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwMq85IwFJxFJZDMSqw+ZqM1X9jhf1IUDBznqEU4zjqeqedaebNThiBEmWw5rE8yF/wuLG4
-X-Received: by 2002:a05:6102:241a:: with SMTP id j26mr782320vsi.59.1622718094546;
-        Thu, 03 Jun 2021 04:01:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1622718094; cv=none;
+Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp101265lfa;
+        Thu, 3 Jun 2021 03:31:00 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwy6R1qONqO3HubuFIEeDYQN8ue6iXrQejDhitD3mRHSGZUDAYN6uldzgbMypQvX9+GTbPE
+X-Received: by 2002:a54:458b:: with SMTP id z11mr24022150oib.177.1622716260086;
+        Thu, 03 Jun 2021 03:31:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1622716260; cv=none;
         d=google.com; s=arc-20160816;
-        b=YaWqFshitBNexpT/eZnzzJpmMWKxSIu7245fhKzwqx+tWAR/j1n6ygflqDtSwV+MMO
-         DMGr5dRGu9rFWX+OJ8KUq1xR50wBWZ4TLC8hIDdYjk3SAClN0VcHbOHUl5vBNdlCqVzH
-         cd1xxVhBJ15U1DJlFp/j/I0rIxp4VNWdtDYyE3x+0JVV+LwO8n5Vwc87IVNQlXsXU2E0
-         /Z1m0rrMXCZE7Dq/6t3Kp3zWBSDFz3iECBgoK75RCVjjo1qdRK7SDeYQ7YdVjmCUVf1r
-         JiL4RpkMadJaa/Ra2RNbNtINb+Ery5wCH8I4Ff2K0ts4UMWHeTRDgV4S41OXL+stBfjw
-         zqpw==
+        b=huPLDTI4Xrilhi7Qeiu8pDOVbnNOW1c4plgJlOpXLqSySlMy1B/MLgP7f+Qx4tK3RG
+         6SN2lRKcoatDevMs2TPQiNEbeqmcLvkyivW01UIf2uXiFE+UGBFk7BL2MGPcY3Cxbes8
+         KFH29dlTWM7XPSwPdtOzRQ1YLprgRy1Lx2+fyyT74ag+jr8AOYuzcuYdX6RQI+ldwrDD
+         QajtS/oJJcdhycJZak6nOr0723Ze1iggnKFDVMgQ9OHupFy2a2ZPSO+gKj6pdIaJEQzD
+         lAqWbWM4gDlYNTc6hU1uVVHW0TKyJ2XjBG1WBEQXRr3ilVWa500VEJ/K14h3Fqg/xBrw
+         bDMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=gycSz+LrCPwHp/tuXa4oFID4bRu6diM6F7pjskolva0=;
-        b=pGDhjjOpOK2YpPHMa5CI/I5J6qIb5/s6BbE31YmHhKqgSehXeOzNEITywyQhIoYyoR
-         ZtGBmRt9voulkXu3cYnQ1FFUTMQ4Def6rb+d9PPF6jmgwxhAm6BM8E5RSXoRzT8DrHAk
-         AUTglkSx/XdtiBcBYQiJp17KNCzNVww87nJUWtxO2FALxrLNO1T4yNqsoYhKhaIQMvw3
-         3V58L32pOgkM8q8DeGfj7z1CEafAKbrX/RM70eZDDXQ9nSIs9Q5JVoL0mw6bQ8kiR8xZ
-         C0ZWoQdNfU2m4suJbf9rx+w9tpXLoBrXqP8Gaou4Qhw2BgXAx7mr8I8IxApfVrB/5Ze9
-         8KGw==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=g0BP2ff03ZPP7dKcCglzKrplPuwWosa6ih9W8QfTk7g=;
+        b=pgn7iQZQtLbhBEjvTlYDM4HDsX4dFi4QHOwjObrCryX+fmCBCUGEwsfw/v1zgcww63
+         D+eY39qMf+GFow+GhUo95/UKvDklm5vU56vIMj77xmGMzSwG878fVXJpzLGHJZb3hIrh
+         tdDXPhUOiCJHEIQ0ZZtnMw0fWN6ubezZAlYAPUaGccUKLUpBNiD7ipL1kVFvXwfbEeaN
+         Kn1jWpI449qNUhggkzMAsmYvilPaQVJfyqfNR0xp3gY6rCzXW2SOxdVG6ozdgzMdm87p
+         Uanf/fObmA5xpuzgQQmutWxp0za+IR3RaTuBttwStyjV1Ne0WNGHBO5yrrqw7mBEsN0A
+         gWKQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=pmtFCOvD;
+       dkim=pass header.i=@linaro.org header.s=google header.b=UYN5LcbH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u18si975952uap.136.2021.06.03.04.01.34
+        by mx.google.com with ESMTPS id k14si2649842otb.278.2021.06.03.03.30.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Jun 2021 04:01:34 -0700 (PDT)
+        Thu, 03 Jun 2021 03:31:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=pmtFCOvD;
+       dkim=pass header.i=@linaro.org header.s=google header.b=UYN5LcbH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59214 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:38848 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lol6T-00008n-QW
-	for alex.bennee@linaro.org; Thu, 03 Jun 2021 07:01:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41802)
+	id 1lokct-0001et-AS
+	for alex.bennee@linaro.org; Thu, 03 Jun 2021 06:30:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35684)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1lol6J-00008V-Mr
- for qemu-arm@nongnu.org; Thu, 03 Jun 2021 07:01:23 -0400
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c]:44618)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lokch-0001ej-4A
+ for qemu-arm@nongnu.org; Thu, 03 Jun 2021 06:30:47 -0400
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633]:40634)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1lol6I-0003ik-0O
- for qemu-arm@nongnu.org; Thu, 03 Jun 2021 07:01:23 -0400
-Received: by mail-ej1-x62c.google.com with SMTP id c10so8538484eja.11
- for <qemu-arm@nongnu.org>; Thu, 03 Jun 2021 04:01:20 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lokcZ-0000Ij-8G
+ for qemu-arm@nongnu.org; Thu, 03 Jun 2021 06:30:46 -0400
+Received: by mail-ej1-x633.google.com with SMTP id jt22so8477436ejb.7
+ for <qemu-arm@nongnu.org>; Thu, 03 Jun 2021 03:30:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=gycSz+LrCPwHp/tuXa4oFID4bRu6diM6F7pjskolva0=;
- b=pmtFCOvDWPchwUemN3tNn5CCQeKuOlHlz6ssCPJH86BozMTuyrfnnuWL4UDjHjvPUD
- cgX2LCav9ZP+tSgFvfzaIwRZh9vxQ34OFrOeHxQf7mi2j+Cf4D+5Gqvd8SpmAEdiRY1l
- fm7IirAEZs+kutVx5twHEzGpvmzxVI2ppVVWgiEj1IgJ0Dh408ZtkojHRoOsOwtzfg5c
- 0S3lNBUjR7YZlmBB0gW/atY/hkhwgyVc4/wBnds2Wy7g/iumXbH0YMPhB63WpJ+QLOiN
- o652KO5brNDVwFmtFlDH10KXgSVycd5VPIynMJHQNy5Xl+soz8LfIbhqFEwUcanHTm67
- uvwg==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=g0BP2ff03ZPP7dKcCglzKrplPuwWosa6ih9W8QfTk7g=;
+ b=UYN5LcbHBG/a0wFPIbzZwxHQ1ztjlAem3p94M6FHw5/EGeEu/hksYUXv/7o87+CdHX
+ MeFmUhC+DRNiiYS3V/yAFyqQBhaRJFYT942mp7hdekLDBneI2mXQ4pub3SHPnEXksuc7
+ 2qy3KbZxu8+6n5wurMkegQ3n1WHA5rdeU2qSjU4Hoc4LLdiIIFZJhbtCxL9KZ/YFy7Dt
+ sM0TIGCsarVxggzQUMmcuPlYnHWljdKkos8AePiiqdWFWj+fXDZNWcgyVrV0FQNGcZnm
+ WYukoDRfjSfi6Hye7BXoUXqTAoIVmYfmnm3V/pp/gXykE0Q48GO/uOX1xLrCcc2xvMVB
+ HsFQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=gycSz+LrCPwHp/tuXa4oFID4bRu6diM6F7pjskolva0=;
- b=gwo72OJaqySgR8WvxNR5MOHqNjtY8hvfAXR+bsSnZwLoIjMwPNWLm9mq3fxPBxW/Si
- ksxqGfKiAUJLKAxxZuY9Q0QfasESZtEwXodY0NUjT9fFP9TzKCaYmhp6WqBeoDMWv2N2
- y2KagQJCcaaj3Sbkjsf6LEAFiuwita9dFeHwpX90dFtlHKBPDQPcTtbs5Qrv4bG2vZRn
- GItxS0AAm8qegMZxO0lqi1gTzJNFn6HJ6nyOKkrXgLhVZIVnfFRS0UpWPR7BtSpKbPDT
- m/N1TyJmmd2ary3jskKx502l25dYbgf6uCx9coBgkU2++fhaJPhaCVHrjB/ndw38QCbo
- cEgQ==
-X-Gm-Message-State: AOAM532L/NRt434EdOSN6llREfNqZnhEEDlJ2Jii7vV6Mcrw8Me57og+
- ng1sgyOCK9ZZz2P2QhN4QaNxtg==
-X-Received: by 2002:a17:907:c1c:: with SMTP id
- ga28mr39855552ejc.320.1622718079034; 
- Thu, 03 Jun 2021 04:01:19 -0700 (PDT)
-Received: from localhost.localdomain (adsl-84-226-111-173.adslplus.ch.
- [84.226.111.173])
- by smtp.gmail.com with ESMTPSA id c7sm1388145ejs.26.2021.06.03.04.01.17
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 03 Jun 2021 04:01:18 -0700 (PDT)
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: peter.maydell@linaro.org
-Subject: [PATCH] hw/intc/arm_gicv3_cpuif: Tolerate spurious EOIR writes
-Date: Thu,  3 Jun 2021 13:00:13 +0200
-Message-Id: <20210603110012.1182530-1-jean-philippe@linaro.org>
-X-Mailer: git-send-email 2.31.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=g0BP2ff03ZPP7dKcCglzKrplPuwWosa6ih9W8QfTk7g=;
+ b=T9Ka8ymg0/uFGsYtLOd+KB3TMjF+qhj0kD5k3m3WfygL3h1cBROSqTuFO6j7Vx0Lms
+ LHIJcdT0OOrsBCBdeeDXe6qb2oa5cKWSUsW65gMTUzal3hTsNbVSCWuP9k2C/r++Iltr
+ pAsB8xYtLluYWBQKJenf4FR8t3aThO8RFgaCEwW9pDtfl7Nd43XekzIEQa8viM4oqQ5/
+ 1KUF7RqOldyqyGHEenNDUGOgFvOHYiHGTlWR7momocyp2TNHLIKZq6t9MfTp2wQHrpLZ
+ 0ihfRTkjD0U25vgPE1i3crbkqFyDVmEdrfRoeRZzKlG770zgHRvfagZGcxoDWLFBhO01
+ K5UA==
+X-Gm-Message-State: AOAM5313TYnFXJyWHl5ftsB2FSKgerSPOaCZDVdmogbY80iwDFYcTw8M
+ NJ5YjOMU3o3EzWex7QaMpg+yFovuZ/Xwfx2izMCDXw==
+X-Received: by 2002:a17:906:b1cc:: with SMTP id
+ bv12mr38047017ejb.407.1622716235273; 
+ Thu, 03 Jun 2021 03:30:35 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
- envelope-from=jean-philippe@linaro.org; helo=mail-ej1-x62c.google.com
+References: <20210526121847.1935454-1-jamie@nuviainc.com>
+In-Reply-To: <20210526121847.1935454-1-jamie@nuviainc.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 3 Jun 2021 11:30:02 +0100
+Message-ID: <CAFEAcA_ug=+-TjUUy3oRcf692ehC9eg95U=kX5wfcsKdOCNG2Q@mail.gmail.com>
+Subject: Re: [PATCHv2 0/4] target/arm: fix missing exception class
+To: Jamie Iles <jamie@nuviainc.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::633;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x633.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -114,44 +109,24 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Jean-Philippe Brucker <jean-philippe@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5UW4wykP4L7g
+X-TUID: weNX/llWfHaD
 
-Commit 382c7160d1cd ("hw/intc/arm_gicv3_cpuif: Fix EOIR write access
-check logic") added an assert_not_reached() if the guest writes the EOIR
-register while no interrupt is active.
+On Wed, 26 May 2021 at 13:24, Jamie Iles <jamie@nuviainc.com> wrote:
+>
+> Thanks Peter for the suggestions, I also added a patch to switch a
+> couple of cpu_restore_state+raise_exception pairs in stack limit
+> exception handling for both v7m and v8m.
+>
+> v2:
+>  - fix raise_exception_ra to restore state before raising exception
+>  - remove redundant do_raise_exception
+>  - remove now redundant open coded raise_exception_ra from MTE and stack
+>    limit exception handling
 
-It turns out some software does this: EDK2, in GicV3ExitBootServicesEvent(),
-unconditionally write EOIR for all interrupts that it manages. This now
-causes QEMU to abort when running UEFI on a VM with GICv3. Although it
-is UNPREDICTABLE behavior and EDK2 does need fixing, the punishment
-seems a little harsh, especially since icc_eoir_write() already
-tolerates writes of nonexistent interrupt numbers. Simply ignore
-spurious EOIR writes.
+Applied to target-arm.next, thanks. (I tweaked a couple of comments
+and commit messages.)
 
-Fixes: 382c7160d1cd ("hw/intc/arm_gicv3_cpuif: Fix EOIR write access check logic")
-Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
----
- hw/intc/arm_gicv3_cpuif.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
-index 81f94c7f4a..1d0964c9bf 100644
---- a/hw/intc/arm_gicv3_cpuif.c
-+++ b/hw/intc/arm_gicv3_cpuif.c
-@@ -1357,7 +1357,8 @@ static void icc_eoir_write(CPUARMState *env, const ARMCPRegInfo *ri,
-         }
-         break;
-     default:
--        g_assert_not_reached();
-+        /* No interrupt was active, this is UNPREDICTABLE. Ignore it. */
-+        return;
-     }
- 
-     icc_drop_prio(cs, grp);
--- 
-2.31.1
-
+-- PMM

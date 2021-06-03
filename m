@@ -1,109 +1,110 @@
-Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp485321lfa;
-        Thu, 3 Jun 2021 11:55:17 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzZmdHUXIAJLJQ02ngl7/Cb7Nfss98NS4DxEKfTkB/cZOoQNieeWrSc6YSYzGPDTnbrDNoD
-X-Received: by 2002:a05:6214:12c7:: with SMTP id s7mr1032005qvv.44.1622746516983;
-        Thu, 03 Jun 2021 11:55:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1622746516; cv=none;
+Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp483683lfa;
+        Thu, 3 Jun 2021 11:52:50 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxvKRGwB+d1PuNweWp10pB8eLpvhgcgIgnYRlLKOJNPxBllUMHKC3GTWQmYovj+sWUyWIjy
+X-Received: by 2002:a9f:3664:: with SMTP id s33mr550770uad.63.1622746370002;
+        Thu, 03 Jun 2021 11:52:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1622746369; cv=none;
         d=google.com; s=arc-20160816;
-        b=RPFDfT7BGpXtKRMWCyMZXx/hm7h0siZQdSx1qYLVYIBDCOXsGSDdAKvmdErnI+zX1X
-         St6BVakGiD3q0HHBdR9Na3ykmUz30DoNpkt6ahsSn+212VAGVW+w1oVy5ng+ZLH/K/Bu
-         oTUMAmijdVVnYiPPfh0/ui9cAqrVWr8W+EjHCutLBDyDupBdu+pUhsmZQMeiv9DtFqp1
-         uLtsn92VQeF6JkL8AtijAj5ifKqzgtTO0xt1xLN95zK4825QAv6ESQxVKAbaEvclawHF
-         XdpKNZCvOrcx/oQrEzLwLW7dJ3Vnr4RbVh7iDFwYojzyEFdBx7DhNfv99e/bhWx6fw20
-         5Mwg==
+        b=x9tdqfscF88hG6LIUXQ3zgbzBB3VEIUOQKoG1qwIL0jowDWMBbWIV0LX8o8OaUmAjp
+         GPnFJpgjOgXurEt1ryZVdlu7+Vzl/SpyYz32bkRPyMqGVerFewdiy4kYpWyqElWWx++x
+         AgUbu7AKyc70d6cBy3aO4FUulGM9CXBns/aEDXwDaBolZGCyAAqxSzXgtoeKNunm+mtr
+         V6MTIcqqDIX6dG+kUWoy7wTxh1HvuWMJHgplYuJwsdRtz1YZNyzszIEKP6V52EothX1d
+         d9NeKvI3OpbsRJnhyAC+bcqJQYU+xWvihounZqMIIGSvtB2ZE6yVPTXlRxHvP1JK1Ssd
+         Dbkg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=YYYyZYf25IXa1WTd42JPVFX9hwQfB2FW9XYLcL4ksYc=;
-        b=vjZv5r4ZIFRZoXEvd6fmcU7JORlFafvWE95H4+sRZfgmW/5lhhO3/MbfNzfr5XKx4s
-         lSoQaGcCiD5SzCdy5xYKLLexQae7fSsWZB7KcG+muPnjN+cn9s46JArvXADJJEkoG4HT
-         V8eSMXfTtcC8bvaNSHn4MBD6HFIoGsaj26xSrjMYGt0eEJWcgOm1MVCBfQbrKJwjYp1o
-         OuzC5hcCDoHXckCxWlVni/faQZZfaLN9mqZzrmZBWxzDfTI3NB3pRpMQpM28RyLu4oxj
-         BvdLZcbN2Mgh91CHIszWsoVKVKtkzkLRgDdrA1kUsQgWvoN45MzXoevjDGs+Ibz9wxZ0
-         2c4g==
+        bh=YKNTuggFhIJ15rCHacQ0G7rAiTeTOSzA8dwJthM+jd8=;
+        b=iaiUm0KrCXh31VqnPXSdqQH2TTvlQVL+f9Ca1ZKKJ65PUrmyrKQ5YRW9kbwMPUiiev
+         NOtF7JFLO96Cb+ZilX486dqaHqse9z0czPND+Op1pjbYrTAyRZ41JfwzQoqrSWfSjOwY
+         CPg1fKGVhcRbNG95YAXzFXo9guYpsbUJ48yEcviauIrj7t3mQC7Y6gNRKIJlABGkhE/b
+         dwMvGZzJis1dCXzPENJO1SDjzOaJKNRad1U7b1nhjYJopvZar/imvhIs8fuhDuKq8l7u
+         +QkeI937y57U8TvA4U43dDQhBs5MbWp72+1kCP9GrAQ3mN0Fvo42rqdEDUjQEStsyQki
+         uq8A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WnsvqL78;
+       dkim=pass header.i=@linaro.org header.s=google header.b=otuUrTL1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n1si2610269qkp.132.2021.06.03.11.55.16
+        by mx.google.com with ESMTPS id j22si2065819uaq.69.2021.06.03.11.52.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Jun 2021 11:55:16 -0700 (PDT)
+        Thu, 03 Jun 2021 11:52:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WnsvqL78;
+       dkim=pass header.i=@linaro.org header.s=google header.b=otuUrTL1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51026 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48108 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1losUu-0003eH-C7
-	for alex.bennee@linaro.org; Thu, 03 Jun 2021 14:55:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50984)
+	id 1losSX-0001fY-9i
+	for alex.bennee@linaro.org; Thu, 03 Jun 2021 14:52:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50500)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1losUl-0003bl-9y
- for qemu-arm@nongnu.org; Thu, 03 Jun 2021 14:55:07 -0400
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630]:34325)
+ id 1losSO-0001dj-ST
+ for qemu-arm@nongnu.org; Thu, 03 Jun 2021 14:52:40 -0400
+Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b]:53031)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1losUj-0005Fp-NN
- for qemu-arm@nongnu.org; Thu, 03 Jun 2021 14:55:07 -0400
-Received: by mail-pl1-x630.google.com with SMTP id u9so3301253plr.1
- for <qemu-arm@nongnu.org>; Thu, 03 Jun 2021 11:55:05 -0700 (PDT)
+ id 1losSN-0004FD-3e
+ for qemu-arm@nongnu.org; Thu, 03 Jun 2021 14:52:40 -0400
+Received: by mail-pj1-x102b.google.com with SMTP id h16so4198725pjv.2
+ for <qemu-arm@nongnu.org>; Thu, 03 Jun 2021 11:52:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=YYYyZYf25IXa1WTd42JPVFX9hwQfB2FW9XYLcL4ksYc=;
- b=WnsvqL78h/4QOZ0KCNE90Z36KA2FQ4IrUwsKmyg9ygGufylxl6eOqIBz2y1zj5z5AT
- gQ8MDlBRa0jSNcJq+UjSqr3yu10Zh0u6BW3hjlr45SAivtD0EdC5F9Ix2eYtVTCtFnLx
- bLjH+l4GsjOICDOZS+F1BRa4fjtzFpiQh03mmafHjQI0hdwHEBsjo4abrkGiDj4ckbjm
- QobquRbrFXUazdH9rjOMCy9mM1cDhLdvHgHLxDPp+FfVTVs0HR7AnNq3UI380heEGJuk
- BRY+OWZxE4T8inXwp6MoOo6QOqCXFBh76h2ZtffHlgtRoj3m93zUq/OOuJ0xBBUNW58D
- H+Gg==
+ bh=YKNTuggFhIJ15rCHacQ0G7rAiTeTOSzA8dwJthM+jd8=;
+ b=otuUrTL1hdKdGCbuIQWkIeKFtlr7Mwhnf3v2mOuG2QmggVsWLegDOvvaPvrUJ9F9Z8
+ bklWeDZrJJaXQF/mC4p/hi7IIRTDcTYfsAhhDHMO8LkouTSq1oPDgCourkgGa0md3Ei8
+ gU+4yi7yxRpO0Uh12sbDukNxydTf0khsWkvMoISrU7y8l6ZVe9hQ0FDLQjYMxhFcJZO7
+ tlfLY9S4PuC/yZ2/nyYEWUiOAu4uH/b5P5MtEdH/U8B2k/ktmrWHQSUPLw7sv+Yn8YCx
+ R3J2NkOm4QRaSxvT5BN6sa/fkQmzjsWzqbw0KhiydUgawaOWtNvzB6O57QLaZl61jIa/
+ qY/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=YYYyZYf25IXa1WTd42JPVFX9hwQfB2FW9XYLcL4ksYc=;
- b=MeKKbpRWWW5zkmRDmsDS0BKSuRT7reBTswPRX5cKeKz1VUuuWxifjkK10c0FGTEGmk
- 73uE927YJ59Ab68zzsXbI55PhVqzUAoQzNyrbwA6rmeZBXuxY78iA4qxFG0YdwKm58z2
- A3tVt4IVj0LwOtzAh4jlI8zSgU2yZfhRWTB4/R+ocPzbObjjO5jwOvcqoyXG7pGndOcE
- GYBUSFtnGVl9lxVc6MQgUYFQEVnFX8dokfiM3U+dOW7hKPwFUlYADYS2z/d5BzQmOm8t
- KRmT2n6Brk32IDZ9mx/iQbVAc5Xuzjs5xTbw5/zYjZVh+sErhRV7y4kgscdgvt9t+C7z
- myqQ==
-X-Gm-Message-State: AOAM531F4nWW9l5OL//Y4oxCbWEpJbbQqQ1wIIkGJgiZORR962uFZdw7
- GJh8zF3A/jIO3HNGNoaENU8fCQ==
-X-Received: by 2002:a17:902:d3ca:b029:104:ebfd:a554 with SMTP id
- w10-20020a170902d3cab0290104ebfda554mr572754plb.13.1622746504218; 
- Thu, 03 Jun 2021 11:55:04 -0700 (PDT)
+ bh=YKNTuggFhIJ15rCHacQ0G7rAiTeTOSzA8dwJthM+jd8=;
+ b=SPT5IZ7SlJZzDQu25SshKmkz8nddrbXMqLnQrU2qKBa/ptONS/A/w6+vVWNxV0E017
+ 5/0qu5EN2dWSQlEyhGq/jHi03Ayotpi18oX07yDHdWwrLAJqBZNpL3jMQvD41OFfx+Jy
+ mmEinsO/DqC/4S27Iw7ZtDj0bCrra4BBxmpeesko1bwl+Y8eQdo81FksUeFbgyG6UUz4
+ HwfCtyniSeuhCWHADywGGvBrQtJZwK7au74Pv0U5M6jQrrnf1DlCfsYfcDEeLYwJ37VL
+ xa3qBz+UEVZn5oHgJSIDKYn7LN/+ep0cfUuz/jmh82PpyBfxUGczwZfrWnim5NMxZUMr
+ +aEg==
+X-Gm-Message-State: AOAM533qAMVN9Bz6af+vQ4KRWRggJevwh9pqCzvOmFwQ6z52vPRoxpPf
+ oOsVZSA/FI+dww6NKf/VC54nog==
+X-Received: by 2002:a17:902:7587:b029:109:69bd:3eae with SMTP id
+ j7-20020a1709027587b029010969bd3eaemr446102pll.40.1622746357054; 
+ Thu, 03 Jun 2021 11:52:37 -0700 (PDT)
 Received: from [192.168.1.11] (174-21-70-228.tukw.qwest.net. [174.21.70.228])
  by smtp.gmail.com with ESMTPSA id
- a4sm2687329pjw.46.2021.06.03.11.55.03
+ x125sm2878986pfx.201.2021.06.03.11.52.36
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 03 Jun 2021 11:55:03 -0700 (PDT)
-Subject: Re: [PATCH 2/3] hw/acpi: Provide function acpi_ghes_present()
+ Thu, 03 Jun 2021 11:52:36 -0700 (PDT)
+Subject: Re: [PATCH 1/3] hw/acpi: Provide stub version of
+ acpi_ghes_record_errors()
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20210603171259.27962-1-peter.maydell@linaro.org>
- <20210603171259.27962-3-peter.maydell@linaro.org>
+ <20210603171259.27962-2-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <584f30be-6beb-81d4-5c72-30639617606d@linaro.org>
-Date: Thu, 3 Jun 2021 11:55:02 -0700
+Message-ID: <794108a2-fbaf-dfbc-ed8f-2d3d87ba2c07@linaro.org>
+Date: Thu, 3 Jun 2021 11:52:34 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <20210603171259.27962-3-peter.maydell@linaro.org>
+In-Reply-To: <20210603171259.27962-2-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x630.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102b.google.com
 X-Spam_score_int: -26
 X-Spam_score: -2.7
 X-Spam_bar: --
@@ -127,23 +128,19 @@ Cc: Igor Mammedov <imammedo@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>,
  Swetha <swjoshi@microsoft.com>, "Michael S. Tsirkin" <mst@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: d9GPm9BwS5y5
+X-TUID: EATOM9WmBtN8
 
 On 6/3/21 10:12 AM, Peter Maydell wrote:
-> Allow code elsewhere in the system to check whether the ACPI GHES
-> table is present, so it can determine whether it is OK to try to
-> record an error by calling acpi_ghes_record_errors().
-> 
-> (We don't need to migrate the new 'present' field in AcpiGhesState,
-> because it is set once at system initialization and doesn't change.)
-> 
-> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
-> ---
->   include/hw/acpi/ghes.h |  9 +++++++++
->   hw/acpi/ghes-stub.c    |  5 +++++
->   hw/acpi/ghes.c         | 17 +++++++++++++++++
->   3 files changed, 31 insertions(+)
+> +softmmu_ss.add(when: 'CONFIG_ACPI', if_false: files('acpi-stub.c', 'aml-build-stub.c', 'ghes-stub.c'))
+>   softmmu_ss.add_all(when: 'CONFIG_ACPI', if_true: acpi_ss)
+>   softmmu_ss.add(when: 'CONFIG_ALL', if_true: files('acpi-stub.c', 'aml-build-stub.c',
+> -                                                  'acpi-x86-stub.c', 'ipmi-stub.c'))
+> +                                                  'acpi-x86-stub.c', 'ipmi-stub.c', 'ghes-stub.c'))
+
+Gosh that last line is confusing.  I see it's documented in build-system.rst, 
+but yeesh.
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 r~
+

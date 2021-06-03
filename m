@@ -1,89 +1,90 @@
-Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp193446lfa;
-        Thu, 3 Jun 2021 05:42:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwc/p8SbAiWfz83aKoCj5scb3erapB9t1/0iQcRMY2H0DB40h+z7+Of0JOy/UC0W68MSQhr
-X-Received: by 2002:aca:3e06:: with SMTP id l6mr25904996oia.147.1622724157476;
-        Thu, 03 Jun 2021 05:42:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1622724157; cv=none;
+Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp196943lfa;
+        Thu, 3 Jun 2021 05:47:56 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxR62YAieiiLU2xZDeOhSp2iCj5KdLokIgHx90YUNjaZIBsKFl0e/vvmJ+T5LSFPCzONA7l
+X-Received: by 2002:a92:c26f:: with SMTP id h15mr7817083ild.281.1622724476063;
+        Thu, 03 Jun 2021 05:47:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1622724476; cv=none;
         d=google.com; s=arc-20160816;
-        b=QPW2StgVoIvJaoAE9KYoDA7qUWWG4SaauZ3j91tjCqoRAJmX2EYJGwInMiQhY6VnLI
-         qTFQY5jAybzG7oUcooSnoFLExVGGu1WNnohwGw/7fU2rTGUh4xKsVsyo20dhhIbT1LAI
-         zc3GxY1neznLUsdcyB22icHCmljGK1weH9OUXgrudUUesJ+NL7Jf4BL2Yn+Fz4jaRbJ9
-         BLdBf6j/ygFCMUCo7jQXoaefe4eKTV7IPHaqvAlW8xFQWs2jVTCOAdJ+/UR0zEQTnnGc
-         oWMEgZCNMbdYxg3Cmg4J3sRf0IolSTlE31tD7h2InAklAjlHp//pLpkOdN0FwV4Mp77N
-         e2lg==
+        b=IfzRa1rqTeA6bfRNq9C+Pex5jYBphj+V7i+vRRljZYUkUaqjJ5qALRxUv9HZiZspS8
+         EuIO0CXuojMJ1xOC2ytou+zm3e4kmjkUJSQHHpqrwU11o1PELDQWaAi75u8+I+hhxxD1
+         j2GhhF+6EznSuo0m2V5MNkDNpy5y3xVAfLA0zKz9SKhRyqHsHx08B9uVVB3xNnYiwCox
+         IvxScn/zU34hBgWZHd7RR0iHzmzfWl5HONHjeZ4MIlpHyuo0d0Pf0LK/yycadTWi4VYZ
+         1/A1kTsdS1wDTsVFOyYvsWK3cXjvwIpPmJLjOknMM0CivMFgyL8mB9LFvZ42ByvCn8/7
+         PmRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=ggpkTvJUdHOsVFXGuuQE99Ff9uwGLlCFqzEdXkKO35c=;
-        b=mxv3t5SKo5b1g+9POm2M10t73TFrnF3WkgVE+VdryIcpPbNYWa8xS+4wxQPVPOKMpM
-         5+4TOSdM2gy7w8vfT6iHwP1MLh+F3SpYinz0c0P77VlpVLuW9WAWaUs66kddcALQ8ecC
-         jFwmYJTv29h+6HayjqjCcyT+KHHoqLALOOw+lMJCcpU6/nnKQRJSLYa2Fi3bxHpPD4td
-         557YJ2umnkuI2RcWIsdZS24UfgkFVKrhiF2txcpuKqnB4q02SLbh9WwL/A0aq7cAAwLx
-         QbKI8YI1e2PhnBGZ5wED+b/ok3A6Op4k5HWRGBjO1tqzf5qnwSZJrGMDkgehCBVHmV4t
-         JRWw==
+         :message-id:subject:from:references:to;
+        bh=l6ShDJPgs4HC5pzMSbFB8vJUREg7EJ9hCEgBcN01gvI=;
+        b=tJ6sh9ye+bADkq/2hAmwPwNTDjr+0mxo4Y96uv9afk1YkCxXqbfp6+3aeupBBfW0WO
+         Qj9yCfMjayvG6RLiP9mlDlar6P5H2bjm2BMj+u3aiBSPmQ5bbrjUI9ANCVhfdY4uYpJt
+         fBSXs9MgoXL4/1mGyrv7q2rhxj60T+YnXOdBUV+aO3KYUZPU+F61F51/ugdUyvueISVW
+         7iY6zYfBnIwXcpgHOI98k+BCfh7JF6fWgb/yUXnhDJFG9T0r3tGRAs1V00aMablt9d9I
+         niS+9sB1tY+uPv+68xZVf+9OCqsWY9HfmcS/m3VSZ+FA9bewHlpYsP2T6Z/NmkTiw6Eq
+         PGyQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d6si3143620otu.324.2021.06.03.05.42.37
+        by mx.google.com with ESMTPS id e1si2926672jap.46.2021.06.03.05.47.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Jun 2021 05:42:37 -0700 (PDT)
+        Thu, 03 Jun 2021 05:47:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:51960 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58548 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lomgG-00010T-PH
-	for alex.bennee@linaro.org; Thu, 03 Jun 2021 08:42:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34810)
+	id 1lomlP-00064V-8c
+	for alex.bennee@linaro.org; Thu, 03 Jun 2021 08:47:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36266)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangxingang5@huawei.com>)
- id 1lomg7-000109-Au; Thu, 03 Jun 2021 08:42:27 -0400
-Received: from szxga08-in.huawei.com ([45.249.212.255]:2236)
+ id 1lomlG-00063i-Fl; Thu, 03 Jun 2021 08:47:46 -0400
+Received: from szxga02-in.huawei.com ([45.249.212.188]:2146)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangxingang5@huawei.com>)
- id 1lomg4-0003eP-2k; Thu, 03 Jun 2021 08:42:26 -0400
-Received: from dggemv711-chm.china.huawei.com (unknown [172.30.72.53])
- by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4Fwllq3dhhz1BHLx;
- Thu,  3 Jun 2021 20:37:27 +0800 (CST)
+ id 1lomlD-0007LP-Ut; Thu, 03 Jun 2021 08:47:46 -0400
+Received: from dggemv704-chm.china.huawei.com (unknown [172.30.72.54])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4Fwlw56p5Bz6tys;
+ Thu,  3 Jun 2021 20:44:37 +0800 (CST)
 Received: from dggpemm500009.china.huawei.com (7.185.36.225) by
- dggemv711-chm.china.huawei.com (10.1.198.66) with Microsoft SMTP Server
+ dggemv704-chm.china.huawei.com (10.3.19.47) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2176.2; Thu, 3 Jun 2021 20:42:11 +0800
+ 15.1.2176.2; Thu, 3 Jun 2021 20:47:36 +0800
 Received: from [10.174.185.226] (10.174.185.226) by
  dggpemm500009.china.huawei.com (7.185.36.225) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2176.2; Thu, 3 Jun 2021 20:42:11 +0800
-Subject: Re: [PATCH v4 1/8] hw/pci/pci_host: Allow bypass iommu for pci host
+ 15.1.2176.2; Thu, 3 Jun 2021 20:47:35 +0800
 To: <eric.auger@redhat.com>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
  <shannon.zhaosl@gmail.com>, <imammedo@redhat.com>, <mst@redhat.com>,
  <marcel.apfelbaum@gmail.com>, <peter.maydell@linaro.org>,
  <ehabkost@redhat.com>, <richard.henderson@linaro.org>, <pbonzini@redhat.com>
 References: <1621914605-14724-1-git-send-email-wangxingang5@huawei.com>
- <1621914605-14724-2-git-send-email-wangxingang5@huawei.com>
- <4fed8139-c5f0-8b96-4b98-69374d31c10e@redhat.com>
+ <1621914605-14724-4-git-send-email-wangxingang5@huawei.com>
+ <b1f26e3a-d678-aa50-4e82-71c76c9775b8@redhat.com>
 From: Xingang Wang <wangxingang5@huawei.com>
-Message-ID: <45364475-8e0c-8af6-de24-64a3aa605514@huawei.com>
-Date: Thu, 3 Jun 2021 20:42:09 +0800
+Subject: Re: [PATCH v4 3/8] hw/arm/virt: Add a machine option to bypass iommu
+ for primary bus
+Message-ID: <104b0951-87de-c880-0ff9-e8bbbc19b72d@huawei.com>
+Date: Thu, 3 Jun 2021 20:47:34 +0800
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
  Thunderbird/78.5.1
 MIME-Version: 1.0
-In-Reply-To: <4fed8139-c5f0-8b96-4b98-69374d31c10e@redhat.com>
+In-Reply-To: <b1f26e3a-d678-aa50-4e82-71c76c9775b8@redhat.com>
 Content-Type: text/plain; charset="utf-8"; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-Originating-IP: [10.174.185.226]
-X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
+X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
  dggpemm500009.china.huawei.com (7.185.36.225)
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.255;
- envelope-from=wangxingang5@huawei.com; helo=szxga08-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.188;
+ envelope-from=wangxingang5@huawei.com; helo=szxga02-in.huawei.com
 X-Spam_score_int: -47
 X-Spam_score: -4.8
 X-Spam_bar: ----
@@ -105,114 +106,122 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: xieyingtai@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 85rL7OERocZU
+X-TUID: K86bN7bJRvhp
 
 Hi Eric,
 
-On 2021/6/2 20:18, Eric Auger wrote:
+On 2021/6/2 20:25, Eric Auger wrote:
 > Hi Xingang,
 > 
-> On 5/25/21 5:49 AM, Wang Xingang wrote:
+> On 5/25/21 5:50 AM, Wang Xingang wrote:
 >> From: Xingang Wang <wangxingang5@huawei.com>
 >>
->> This add a bypass_iommu property for pci host, which indicates
->> whether devices attached to the pci root bus will bypass iommu.
->> In pci_device_iommu_address_space(), add a bypass_iommu check
->> to avoid getting iommu address space for devices bypass iommu.
->>
+>> This add a bypass_iommu option for arm virt machine,
+>> the option can be used in this manner:
+>> qemu -machine virt,iommu=smmuv3,bypass_iommu=true
+> This still looks confusing to me. On one hand we say that for the virt
+> machine the iommu is set to smmuv3 and we say bypass_iommu=true on the
+> virt machine option line
+> It is not straightforward that the bypass_iommu only relates to devices
+> plugged onto the "default" root bus.
+> 
+> At least the name of the property should reflect that I think
+> 
+
+Thanks, maybe I should replace the name to "default_rootbus_bypass_iommu".
+I just considered that the name might be too long,
+anyway, explicitness is important, I will fix this.
+
+
 >> Signed-off-by: Xingang Wang <wangxingang5@huawei.com>
 >> ---
->>   hw/pci/pci.c              | 18 +++++++++++++++++-
->>   hw/pci/pci_host.c         |  2 ++
->>   include/hw/pci/pci.h      |  1 +
->>   include/hw/pci/pci_host.h |  1 +
->>   4 files changed, 21 insertions(+), 1 deletion(-)
+>>   hw/arm/virt.c         | 26 ++++++++++++++++++++++++++
+>>   include/hw/arm/virt.h |  1 +
+>>   2 files changed, 27 insertions(+)
 >>
->> diff --git a/hw/pci/pci.c b/hw/pci/pci.c
->> index 377084f1a8..27d588e268 100644
->> --- a/hw/pci/pci.c
->> +++ b/hw/pci/pci.c
->> @@ -416,6 +416,22 @@ const char *pci_root_bus_path(PCIDevice *dev)
->>       return rootbus->qbus.name;
+>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>> index 840758666d..49d8a801ed 100644
+>> --- a/hw/arm/virt.c
+>> +++ b/hw/arm/virt.c
+>> @@ -1364,6 +1364,7 @@ static void create_pcie(VirtMachineState *vms)
+>>       }
+>>   
+>>       pci = PCI_HOST_BRIDGE(dev);
+>> +    pci->bypass_iommu = vms->bypass_iommu;
+>>       vms->bus = pci->bus;
+>>       if (vms->bus) {
+>>           for (i = 0; i < nb_nics; i++) {
+>> @@ -2319,6 +2320,21 @@ static void virt_set_iommu(Object *obj, const char *value, Error **errp)
+>>       }
 >>   }
 >>   
->> +bool pci_bus_bypass_iommu(PCIBus *bus)
+>> +static bool virt_get_bypass_iommu(Object *obj, Error **errp)
 >> +{
->> +    PCIBus *rootbus = bus;
->> +    PCIHostState *host_bridge;
+>> +    VirtMachineState *vms = VIRT_MACHINE(obj);
 >> +
->> +    if (!pci_bus_is_root(bus)) {
->> +        rootbus = pci_device_root_bus(bus->parent_dev);
->> +    }
->> +
->> +    host_bridge = PCI_HOST_BRIDGE(rootbus->qbus.parent);
->> +
->> +    assert(host_bridge->bus == rootbus);
->> +
->> +    return host_bridge->bypass_iommu;
+>> +    return vms->bypass_iommu;
 >> +}
 >> +
->>   static void pci_root_bus_init(PCIBus *bus, DeviceState *parent,
->>                                 MemoryRegion *address_space_mem,
->>                                 MemoryRegion *address_space_io,
->> @@ -2718,7 +2734,7 @@ AddressSpace *pci_device_iommu_address_space(PCIDevice *dev)
+>> +static void virt_set_bypass_iommu(Object *obj, bool value,
+>> +                                              Error **errp)
+>> +{
+>> +    VirtMachineState *vms = VIRT_MACHINE(obj);
+>> +
+>> +    vms->bypass_iommu = value;
+>> +}
+>> +
+>>   static CpuInstanceProperties
+>>   virt_cpu_index_to_props(MachineState *ms, unsigned cpu_index)
+>>   {
+>> @@ -2656,6 +2672,13 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+>>                                             "Set the IOMMU type. "
+>>                                             "Valid values are none and smmuv3");
 >>   
->>           iommu_bus = parent_bus;
->>       }
->> -    if (iommu_bus && iommu_bus->iommu_fn) {
->> +    if (!pci_bus_bypass_iommu(bus) && iommu_bus && iommu_bus->iommu_fn) {
->>           return iommu_bus->iommu_fn(bus, iommu_bus->iommu_opaque, devfn);
->>       }
->>       return &address_space_memory;
->> diff --git a/hw/pci/pci_host.c b/hw/pci/pci_host.c
->> index 8ca5fadcbd..2768db53e6 100644
->> --- a/hw/pci/pci_host.c
->> +++ b/hw/pci/pci_host.c
->> @@ -222,6 +222,8 @@ const VMStateDescription vmstate_pcihost = {
->>   static Property pci_host_properties_common[] = {
->>       DEFINE_PROP_BOOL("x-config-reg-migration-enabled", PCIHostState,
->>                        mig_enabled, true),
->> +    DEFINE_PROP_BOOL("pci-host-bypass-iommu", PCIHostState,
->> +                     bypass_iommu, false),
-> "bypass-iommu" may be sufficient.
-
-Thanks, will fix this.
-
+>> +    object_class_property_add_bool(oc, "bypass_iommu",
+>> +                                   virt_get_bypass_iommu,
+>> +                                   virt_set_bypass_iommu);
+>> +    object_class_property_set_description(oc, "bypass_iommu",
+>> +                                          "Set on/off to enable/disable "
+>> +                                          "bypass_iommu for primary bus");
+>> +
+>>       object_class_property_add_bool(oc, "ras", virt_get_ras,
+>>                                      virt_set_ras);
+>>       object_class_property_set_description(oc, "ras",
+>> @@ -2723,6 +2746,9 @@ static void virt_instance_init(Object *obj)
+>>       /* Default disallows iommu instantiation */
+>>       vms->iommu = VIRT_IOMMU_NONE;
+>>   
+>> +    /* The primary bus is attached to iommu by default */
+>> +    vms->bypass_iommu = false;
+> I don't fully master the PCI topology but I think you should clarify
+> which primary bus we talk about. AFAIU PXB's bus also is a primary bus.
 > 
-> Besides:
-> 
-> Reviewed-by: Eric Auger <eric.auger@redhat.com>
 > Thanks
 > 
 > Eric
-> 
->>       DEFINE_PROP_END_OF_LIST(),
->>   };
+
+Thanks, I will make this annotation clearer.
+
+>> +
+>>       /* Default disallows RAS instantiation */
+>>       vms->ras = false;
 >>   
->> diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
->> index 6be4e0c460..f4d51b672b 100644
->> --- a/include/hw/pci/pci.h
->> +++ b/include/hw/pci/pci.h
->> @@ -480,6 +480,7 @@ void pci_for_each_bus(PCIBus *bus,
->>   
->>   PCIBus *pci_device_root_bus(const PCIDevice *d);
->>   const char *pci_root_bus_path(PCIDevice *dev);
->> +bool pci_bus_bypass_iommu(PCIBus *bus);
->>   PCIDevice *pci_find_device(PCIBus *bus, int bus_num, uint8_t devfn);
->>   int pci_qdev_find_device(const char *id, PCIDevice **pdev);
->>   void pci_bus_get_w64_range(PCIBus *bus, Range *range);
->> diff --git a/include/hw/pci/pci_host.h b/include/hw/pci/pci_host.h
->> index 52e038c019..c6f4eb4585 100644
->> --- a/include/hw/pci/pci_host.h
->> +++ b/include/hw/pci/pci_host.h
->> @@ -43,6 +43,7 @@ struct PCIHostState {
->>       uint32_t config_reg;
->>       bool mig_enabled;
->>       PCIBus *bus;
+>> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+>> index 921416f918..82bceadb82 100644
+>> --- a/include/hw/arm/virt.h
+>> +++ b/include/hw/arm/virt.h
+>> @@ -147,6 +147,7 @@ struct VirtMachineState {
+>>       OnOffAuto acpi;
+>>       VirtGICType gic_version;
+>>       VirtIOMMUType iommu;
 >> +    bool bypass_iommu;
->>   
->>       QLIST_ENTRY(PCIHostState) next;
->>   };
+>>       VirtMSIControllerType msi_controller;
+>>       uint16_t virtio_iommu_bdf;
+>>       struct arm_boot_info bootinfo;
 > 
 > .
 > 
+
+Xingang
+
+.

@@ -1,91 +1,153 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id z188sm6319994wme.38.2021.06.04.09.32.43
+        by smtp.gmail.com with ESMTPSA id z188sm6319988wme.38.2021.06.04.09.32.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 04 Jun 2021 09:32:51 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id CDBD01FFC8;
-	Fri,  4 Jun 2021 16:53:18 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id C857720025;
+	Fri,  4 Jun 2021 16:53:24 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
-	Claudio Fontana <cfontana@suse.de>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH  v16 49/99] target/arm: make further preparation for the exception code to move
-Date: Fri,  4 Jun 2021 16:52:22 +0100
-Message-Id: <20210604155312.15902-50-alex.bennee@linaro.org>
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH  v16 98/99] configure: allow the overriding of default-config in the build
+Date: Fri,  4 Jun 2021 16:53:11 +0100
+Message-Id: <20210604155312.15902-99-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210604155312.15902-1-alex.bennee@linaro.org>
 References: <20210604155312.15902-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: zbyW+pvaMo8s
+X-TUID: xWVjo290f5fF
 
-From: Claudio Fontana <cfontana@suse.de>
+While the default config works well enough it does end up enabling a
+lot of stuff. For more minimal builds we can pass a slimmed down list
+of devices and let Kconfig work out what we want. For example:
 
-the exception code in tcg/ needs some adjustment before being exposed
-to KVM-only builds. We need to call arm_rebuild_hflags only when
-TCG is enabled, or we will error out.
+  ../../configure --without-default-features \
+    --target-list=arm-softmmu,aarch64-softmmu \
+    --with-devices-aarch64=(pwd)/../../configs/aarch64-softmmu/64bit-only.mak
 
-The direct call to helper_rebuild_hflags_a64(env, new_el) will not
-be possible when extracting out to common code,
-it seems safe to replace it with a call to arm_rebuild_hflags, since
-the write to pstate is already done.
+will override the aarch64-softmmu default devices to one of our own
+choosing. Currently there are two configs provided:
 
-Also, some CONFIG_TCG needs to be extended further, so that all
-the tcg-only code is marked as such.
+  - 64bit-only, to build without any 32 bit boards at all
+  - virt, even more minimal set for --disable-tcg builds
 
-Signed-off-by: Claudio Fontana <cfontana@suse.de>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- target/arm/tcg/helper.c | 12 +++++++++---
- 1 file changed, 9 insertions(+), 3 deletions(-)
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>
+Message-Id: <20210528163116.31902-1-alex.bennee@linaro.org>
 
-diff --git a/target/arm/tcg/helper.c b/target/arm/tcg/helper.c
-index e55209491f..7a9eaec5cb 100644
---- a/target/arm/tcg/helper.c
-+++ b/target/arm/tcg/helper.c
-@@ -755,7 +755,9 @@ static void take_aarch32_exception(CPUARMState *env, int new_mode,
-         env->regs[14] = env->regs[15] + offset;
-     }
-     env->regs[15] = newpc;
--    arm_rebuild_hflags(env);
-+    if (tcg_enabled()) {
-+        arm_rebuild_hflags(env);
-+    }
- }
+---
+v2
+  - remove extraneous cc
+  - dropped pathname from config
+  - add virt.mak config
+  - drop ZYNQMP from the 64bit only build
+  - test -f the --with-devices-FOO file
+---
+ configure                              | 20 ++++++++++++++++++++
+ configs/aarch64-softmmu/64bit-only.mak | 10 ++++++++++
+ configs/aarch64-softmmu/virt-only.mak  |  8 ++++++++
+ meson.build                            |  3 ++-
+ 4 files changed, 40 insertions(+), 1 deletion(-)
+ create mode 100644 configs/aarch64-softmmu/64bit-only.mak
+ create mode 100644 configs/aarch64-softmmu/virt-only.mak
+
+diff --git a/configure b/configure
+index f0c8629dc6..5bf2f56ac6 100755
+--- a/configure
++++ b/configure
+@@ -920,6 +920,16 @@ for opt do
+   ;;
+   --without-default-devices) default_devices="false"
+   ;;
++  --with-devices-*[!a-zA-Z0-9_-]*=*) error_exit "Passed bad --with-devices-FOO option"
++  ;;
++  --with-devices-*) device_arch=${opt#--with-devices-}; device_arch=${device_arch%%=*}
++                    if test -f "$optarg"; then
++                        device_archs="$device_archs $device_arch"
++                        eval "devices_${device_arch}=\$optarg"
++                    else
++                         error_exit "File $optarg does not exist"
++                    fi
++  ;;
+   --without-default-features) # processed above
+   ;;
+   --enable-gprof) gprof="yes"
+@@ -1766,6 +1776,7 @@ Advanced options (experts only):
+   --without-default-devices  do not include any device that is not needed to
+                            start the emulator (only use if you are including
+                            desired devices in default-configs/devices/)
++  --with-devices-ARCH=PATH override default-configs/devices with your own file
+   --enable-debug           enable common debug build options
+   --enable-sanitizers      enable default sanitizers
+   --enable-tsan            enable thread sanitizer
+@@ -6343,6 +6354,15 @@ if test "$skip_meson" = no; then
  
- static void arm_cpu_do_interrupt_aarch32_hyp(CPUState *cs)
-@@ -1242,7 +1244,11 @@ static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
-     pstate_write(env, PSTATE_DAIF | new_mode);
-     env->aarch64 = 1;
-     aarch64_restore_sp(env, new_el);
--    helper_rebuild_hflags_a64(env, new_el);
+   echo "# Automatically generated by configure - do not modify" > $cross
+   echo "[properties]" >> $cross
 +
-+    if (tcg_enabled()) {
-+        /* pstate already written, so we can use arm_rebuild_hflags here */
-+        arm_rebuild_hflags(env);
-+    }
++  # unroll any custom device configs
++  if test -n "$device_archs"; then
++      for a in $device_archs; do
++          eval "c=\$devices_${a}"
++          echo "${a}-softmmu = [ '$c' ]" >> $cross
++      done
++  fi
++
+   test -z "$cxx" && echo "link_language = 'c'" >> $cross
+   echo "[built-in options]" >> $cross
+   echo "c_args = [${CFLAGS:+$(meson_quote $CFLAGS)}]" >> $cross
+diff --git a/configs/aarch64-softmmu/64bit-only.mak b/configs/aarch64-softmmu/64bit-only.mak
+new file mode 100644
+index 0000000000..19638a56cf
+--- /dev/null
++++ b/configs/aarch64-softmmu/64bit-only.mak
+@@ -0,0 +1,10 @@
++#
++# A version of the config that only supports 64bits and their devices.
++# This doesn't quite eliminate all 32 bit devices as some boards like
++# "virt" support both. The CONFIG_XLNX_ZYNQMP_ARM isn't included as it
++# also requires 32 bit support for the R5s
++#
++
++CONFIG_ARM_VIRT=y
++CONFIG_XLNX_VERSAL=y
++CONFIG_SBSA_REF=y
+diff --git a/configs/aarch64-softmmu/virt-only.mak b/configs/aarch64-softmmu/virt-only.mak
+new file mode 100644
+index 0000000000..cadacf3e89
+--- /dev/null
++++ b/configs/aarch64-softmmu/virt-only.mak
+@@ -0,0 +1,8 @@
++#
++# A version of the config that only supports virtual machines. This is
++# intended to be combined with options like --disable-tcg for a
++# minimal build supporting only machines we can virtualise with a
++# hypervisor.
++#
++
++CONFIG_ARM_VIRT=y
+diff --git a/meson.build b/meson.build
+index 09c7809d6b..9d25906219 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1350,9 +1350,10 @@ foreach target : target_dirs
+                                                configuration: config_target_data)}
  
-     env->pc = addr;
- 
-@@ -1306,6 +1312,7 @@ void arm_cpu_do_interrupt(CPUState *cs)
-                       env->exception.syndrome);
-     }
- 
-+#ifdef CONFIG_TCG
-     if (arm_is_psci_call(cpu, cs->exception_index)) {
-         arm_handle_psci_call(cpu);
-         qemu_log_mask(CPU_LOG_INT, "...handled as PSCI call\n");
-@@ -1317,7 +1324,6 @@ void arm_cpu_do_interrupt(CPUState *cs)
-      * that caused the exception, not the target exception level, so
-      * must be handled here.
-      */
--#ifdef CONFIG_TCG
-     if (cs->exception_index == EXCP_SEMIHOST) {
-         handle_semihosting(cs);
-         return;
+   if target.endswith('-softmmu')
++    config_input = meson.get_external_property(target, 'default-configs/devices' / target + '.mak')
+     config_devices_mak = target + '-config-devices.mak'
+     config_devices_mak = configure_file(
+-      input: ['default-configs/devices' / target + '.mak', 'Kconfig'],
++      input: [config_input, 'Kconfig'],
+       output: config_devices_mak,
+       depfile: config_devices_mak + '.d',
+       capture: true,
 -- 
 2.20.1

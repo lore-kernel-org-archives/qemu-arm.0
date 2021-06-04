@@ -1,60 +1,66 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id h14sm8563060wmb.1.2021.06.04.08.53.15
+        by smtp.gmail.com with ESMTPSA id b22sm2782729wmj.22.2021.06.04.08.53.18
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 04 Jun 2021 08:53:17 -0700 (PDT)
+        Fri, 04 Jun 2021 08:53:24 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id E3F6E1FF92;
-	Fri,  4 Jun 2021 16:53:12 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 7374F1FF9B;
+	Fri,  4 Jun 2021 16:53:13 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	Andrew Jones <drjones@redhat.com>,
+	Eric Blake <eblake@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
 	Thomas Huth <thuth@redhat.com>,
 	Laurent Vivier <lvivier@redhat.com>,
 	Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH  v16 06/99] qtest/arm-cpu-features: Remove TCG fallback to KVM specific tests
-Date: Fri,  4 Jun 2021 16:51:39 +0100
-Message-Id: <20210604155312.15902-7-alex.bennee@linaro.org>
+Subject: [PATCH  v16 12/99] qtest: Do not restrict bios-tables-test to Aarch64 hosts anymore
+Date: Fri,  4 Jun 2021 16:51:45 +0100
+Message-Id: <20210604155312.15902-13-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210604155312.15902-1-alex.bennee@linaro.org>
 References: <20210604155312.15902-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: MQFlibkfgiKm
+X-TUID: YBALeY1AAgO1
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-sve_tests_sve_off_kvm() and test_query_cpu_model_expansion_kvm()
-tests are now only being run if KVM is available. Drop the TCG
-fallback.
+Since commit 82bf7ae84ce ("target/arm: Remove KVM support for
+32-bit Arm hosts") we can remove the comment / check added in
+commit ab6b6a77774 and directly run the bios-tables-test.
 
-Suggested-by: Andrew Jones <drjones@redhat.com>
-Reviewed-by: Andrew Jones <drjones@redhat.com>
+Reviewed-by: Eric Blake <eblake@redhat.com>
 Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Tested-by: Alex Bennée <alex.bennee@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20210505125806.1263441-7-philmd@redhat.com>
+Message-Id: <20210505125806.1263441-13-philmd@redhat.com>
 ---
- tests/qtest/arm-cpu-features.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests/qtest/meson.build | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
-index 66300c3bc2..b1d406542f 100644
---- a/tests/qtest/arm-cpu-features.c
-+++ b/tests/qtest/arm-cpu-features.c
-@@ -21,7 +21,7 @@
- #define SVE_MAX_VQ 16
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index c3a223a83d..2c7415d616 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -176,14 +176,13 @@ qtests_arm = \
+    'boot-serial-test',
+    'hexloader-test']
  
- #define MACHINE     "-machine virt,gic-version=max -accel tcg "
--#define MACHINE_KVM "-machine virt,gic-version=max -accel kvm -accel tcg "
-+#define MACHINE_KVM "-machine virt,gic-version=max -accel kvm "
- #define QUERY_HEAD  "{ 'execute': 'query-cpu-model-expansion', " \
-                     "  'arguments': { 'type': 'full', "
- #define QUERY_TAIL  "}}"
+-# TODO: once aarch64 TCG is fixed on ARM 32 bit host, make bios-tables-test unconditional
+ qtests_aarch64 = \
+-  (cpu != 'arm' ? ['bios-tables-test'] : []) +                                                  \
+   (config_all_devices.has_key('CONFIG_TPM_TIS_SYSBUS') ? ['tpm-tis-device-test'] : []) +        \
+   (config_all_devices.has_key('CONFIG_TPM_TIS_SYSBUS') ? ['tpm-tis-device-swtpm-test'] : []) +  \
+   ['arm-cpu-features',
+    'numa-test',
+    'boot-serial-test',
++   'bios-tables-test',
+    'xlnx-can-test',
+    'migration-test']
+ 
 -- 
 2.20.1

@@ -1,66 +1,57 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id l10sm7192329wrm.2.2021.06.04.09.32.43
+        by smtp.gmail.com with ESMTPSA id w8sm7616636wre.70.2021.06.04.09.32.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 04 Jun 2021 09:32:51 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id B8E8E1FFCF;
-	Fri,  4 Jun 2021 16:53:19 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id B876F1FFC7;
+	Fri,  4 Jun 2021 16:53:18 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Claudio Fontana <cfontana@suse.de>,
-	Richard Henderson <richard.henderson@linaro.org>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH  v16 57/99] target/arm: remove kvm include file for PSCI and arm-powerctl
-Date: Fri,  4 Jun 2021 16:52:30 +0100
-Message-Id: <20210604155312.15902-58-alex.bennee@linaro.org>
+Subject: [PATCH  v16 48/99] target/arm: remove now useless ifndef from fp_exception_el
+Date: Fri,  4 Jun 2021 16:52:21 +0100
+Message-Id: <20210604155312.15902-49-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210604155312.15902-1-alex.bennee@linaro.org>
 References: <20210604155312.15902-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Rx5I9uaIPyXl
+X-TUID: we5FnPSvdPSD
 
 From: Claudio Fontana <cfontana@suse.de>
 
-The QEMU PSCI implementation is not used for KVM,
-we do not need the kvm constants header.
+after moving the code of fp_exception_el to a sysemu-only module,
+we can remove the #ifndef CONFIG_USER_ONLY.
 
 Signed-off-by: Claudio Fontana <cfontana@suse.de>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/arm/arm-powerctl.h | 2 --
- target/arm/psci.c         | 1 -
- 2 files changed, 3 deletions(-)
+ target/arm/cpu-sysemu.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/target/arm/arm-powerctl.h b/target/arm/arm-powerctl.h
-index 37c8a04f0a..35e048ce14 100644
---- a/target/arm/arm-powerctl.h
-+++ b/target/arm/arm-powerctl.h
-@@ -11,8 +11,6 @@
- #ifndef QEMU_ARM_POWERCTL_H
- #define QEMU_ARM_POWERCTL_H
- 
--#include "kvm-consts.h"
--
- #define QEMU_ARM_POWERCTL_RET_SUCCESS QEMU_PSCI_RET_SUCCESS
- #define QEMU_ARM_POWERCTL_INVALID_PARAM QEMU_PSCI_RET_INVALID_PARAMS
- #define QEMU_ARM_POWERCTL_ALREADY_ON QEMU_PSCI_RET_ALREADY_ON
-diff --git a/target/arm/psci.c b/target/arm/psci.c
-index 6709e28013..800c4a55d8 100644
---- a/target/arm/psci.c
-+++ b/target/arm/psci.c
-@@ -19,7 +19,6 @@
- #include "qemu/osdep.h"
- #include "cpu.h"
- #include "exec/helper-proto.h"
--#include "kvm-consts.h"
- #include "qemu/main-loop.h"
- #include "sysemu/runstate.h"
- #include "internals.h"
+diff --git a/target/arm/cpu-sysemu.c b/target/arm/cpu-sysemu.c
+index 128616d90d..0d80a0161c 100644
+--- a/target/arm/cpu-sysemu.c
++++ b/target/arm/cpu-sysemu.c
+@@ -417,7 +417,6 @@ int sve_exception_el(CPUARMState *env, int el)
+  */
+ int fp_exception_el(CPUARMState *env, int cur_el)
+ {
+-#ifndef CONFIG_USER_ONLY
+     /*
+      * CPACR and the CPTR registers don't exist before v6, so FP is
+      * always accessible
+@@ -507,6 +506,5 @@ int fp_exception_el(CPUARMState *env, int cur_el)
+         /* Trap all FP ops to EL3 */
+         return 3;
+     }
+-#endif
+     return 0;
+ }
 -- 
 2.20.1

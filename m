@@ -1,174 +1,247 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id o6sm8006091wre.73.2021.06.04.08.53.25
+        by smtp.gmail.com with ESMTPSA id l16sm9356859wmj.47.2021.06.04.08.53.22
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 04 Jun 2021 08:53:31 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 7163C20007;
-	Fri,  4 Jun 2021 16:53:23 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 7295E1FFBC;
+	Fri,  4 Jun 2021 16:53:17 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Claudio Fontana <cfontana@suse.de>,
+	Richard Henderson <richard.henderson@linaro.org>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH  v16 87/99] target/arm: move arm_cpu_finalize_features into cpu64
-Date: Fri,  4 Jun 2021 16:53:00 +0100
-Message-Id: <20210604155312.15902-88-alex.bennee@linaro.org>
+Subject: [PATCH  v16 36/99] target/arm: move arm_mmu_idx* to cpu-mmu
+Date: Fri,  4 Jun 2021 16:52:09 +0100
+Message-Id: <20210604155312.15902-37-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210604155312.15902-1-alex.bennee@linaro.org>
 References: <20210604155312.15902-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: /tl/MxbitkS2
+X-TUID: xtVtpz5D8MAE
 
 From: Claudio Fontana <cfontana@suse.de>
 
-all the features in arm_cpu_finalize_features are actually
-TARGET_AARCH64-only now, since KVM is now only supported on 64bit.
-
-Therefore move the function to cpu64.
-
 Signed-off-by: Claudio Fontana <cfontana@suse.de>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/arm/cpu.c     | 36 ++----------------------------------
- target/arm/cpu64.c   | 34 ++++++++++++++++++++++++++++++++++
- target/arm/monitor.c |  4 ++++
- 3 files changed, 40 insertions(+), 34 deletions(-)
+ target/arm/cpu-mmu.c    | 95 +++++++++++++++++++++++++++++++++++++++++
+ target/arm/tcg/helper.c | 95 -----------------------------------------
+ 2 files changed, 95 insertions(+), 95 deletions(-)
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 8709c11784..0adbf36347 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -820,40 +820,6 @@ static void arm_cpu_finalizefn(Object *obj)
- #endif
+diff --git a/target/arm/cpu-mmu.c b/target/arm/cpu-mmu.c
+index f463f8458e..c6ac90a61e 100644
+--- a/target/arm/cpu-mmu.c
++++ b/target/arm/cpu-mmu.c
+@@ -122,3 +122,98 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
+         .using64k = using64k,
+     };
  }
- 
--void arm_cpu_finalize_features(ARMCPU *cpu, Error **errp)
--{
--    Error *local_err = NULL;
--
--#ifdef TARGET_AARCH64
--    if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
--        if (!cpu_sve_finalize_features(cpu, &local_err)) {
--            error_propagate(errp, local_err);
--            return;
--        }
--
--        /*
--         * KVM does not support modifications to this feature.
--         * We have not registered the cpu properties when KVM
--         * is in use, so the user will not be able to set them.
--         */
--        if (tcg_enabled()) {
--            if (!cpu_pauth_finalize(cpu, &local_err)) {
--                error_propagate(errp, local_err);
--                return;
--            }
--        }
--    }
--#endif /* TARGET_AARCH64 */
--
--    if (kvm_enabled()) {
--        kvm_arm_steal_time_finalize(cpu, &local_err);
--        if (local_err != NULL) {
--            error_propagate(errp, local_err);
--            return;
--        }
--    }
--}
--
- static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
- {
-     CPUState *cs = CPU(dev);
-@@ -876,6 +842,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-         return;
-     }
- 
-+#ifdef TARGET_AARCH64
-     arm_cpu_finalize_features(cpu, &local_err);
-     if (local_err != NULL) {
-         error_propagate(errp, local_err);
-@@ -892,6 +859,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-                    "AArch64 CPUs must have both VFP and Neon or neither");
-         return;
-     }
-+#endif /* TARGET_AARCH64 */
- 
-     if (!cpu->has_vfp) {
-         uint64_t t;
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index fefb6954fc..c762f3f07a 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -469,6 +469,40 @@ static gchar *aarch64_gdb_arch_name(CPUState *cs)
-     return g_strdup("aarch64");
- }
- 
-+void arm_cpu_finalize_features(ARMCPU *cpu, Error **errp)
++
++/* Return the exception level we're running at if this is our mmu_idx */
++int arm_mmu_idx_to_el(ARMMMUIdx mmu_idx)
 +{
-+    Error *local_err = NULL;
-+
-+#ifdef TARGET_AARCH64
-+    if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
-+        if (!cpu_sve_finalize_features(cpu, &local_err)) {
-+            error_propagate(errp, local_err);
-+            return;
-+        }
-+
-+        /*
-+         * KVM does not support modifications to this feature.
-+         * We have not registered the cpu properties when KVM
-+         * is in use, so the user will not be able to set them.
-+         */
-+        if (tcg_enabled()) {
-+            if (!cpu_pauth_finalize(cpu, &local_err)) {
-+                error_propagate(errp, local_err);
-+                return;
-+            }
-+        }
++    if (mmu_idx & ARM_MMU_IDX_M) {
++        return mmu_idx & ARM_MMU_IDX_M_PRIV;
 +    }
-+#endif /* TARGET_AARCH64 */
 +
-+    if (kvm_enabled()) {
-+        kvm_arm_steal_time_finalize(cpu, &local_err);
-+        if (local_err != NULL) {
-+            error_propagate(errp, local_err);
-+            return;
-+        }
++    switch (mmu_idx) {
++    case ARMMMUIdx_E10_0:
++    case ARMMMUIdx_E20_0:
++    case ARMMMUIdx_SE10_0:
++    case ARMMMUIdx_SE20_0:
++        return 0;
++    case ARMMMUIdx_E10_1:
++    case ARMMMUIdx_E10_1_PAN:
++    case ARMMMUIdx_SE10_1:
++    case ARMMMUIdx_SE10_1_PAN:
++        return 1;
++    case ARMMMUIdx_E2:
++    case ARMMMUIdx_E20_2:
++    case ARMMMUIdx_E20_2_PAN:
++    case ARMMMUIdx_SE2:
++    case ARMMMUIdx_SE20_2:
++    case ARMMMUIdx_SE20_2_PAN:
++        return 2;
++    case ARMMMUIdx_SE3:
++        return 3;
++    default:
++        g_assert_not_reached();
 +    }
 +}
 +
- static void aarch64_cpu_dump_state(CPUState *cs, FILE *f, int flags)
- {
-     ARMCPU *cpu = ARM_CPU(cs);
-diff --git a/target/arm/monitor.c b/target/arm/monitor.c
-index 0c72bf7c31..95c1e72cd1 100644
---- a/target/arm/monitor.c
-+++ b/target/arm/monitor.c
-@@ -184,9 +184,11 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
-         if (!err) {
-             visit_check_struct(visitor, &err);
-         }
-+#ifdef TARGET_AARCH64
-         if (!err) {
-             arm_cpu_finalize_features(ARM_CPU(obj), &err);
-         }
-+#endif /* TARGET_AARCH64 */
-         visit_end_struct(visitor, NULL);
-         visit_free(visitor);
-         if (err) {
-@@ -195,7 +197,9 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
-             return NULL;
-         }
-     } else {
-+#ifdef TARGET_AARCH64
-         arm_cpu_finalize_features(ARM_CPU(obj), &error_abort);
-+#endif /* TARGET_AARCH64 */
-     }
++#ifndef CONFIG_TCG
++ARMMMUIdx arm_v7m_mmu_idx_for_secstate(CPUARMState *env, bool secstate)
++{
++    g_assert_not_reached();
++}
++#endif
++
++ARMMMUIdx arm_mmu_idx_el(CPUARMState *env, int el)
++{
++    ARMMMUIdx idx;
++    uint64_t hcr;
++
++    if (arm_feature(env, ARM_FEATURE_M)) {
++        return arm_v7m_mmu_idx_for_secstate(env, env->v7m.secure);
++    }
++
++    /* See ARM pseudo-function ELIsInHost.  */
++    switch (el) {
++    case 0:
++        hcr = arm_hcr_el2_eff(env);
++        if ((hcr & (HCR_E2H | HCR_TGE)) == (HCR_E2H | HCR_TGE)) {
++            idx = ARMMMUIdx_E20_0;
++        } else {
++            idx = ARMMMUIdx_E10_0;
++        }
++        break;
++    case 1:
++        if (env->pstate & PSTATE_PAN) {
++            idx = ARMMMUIdx_E10_1_PAN;
++        } else {
++            idx = ARMMMUIdx_E10_1;
++        }
++        break;
++    case 2:
++        /* Note that TGE does not apply at EL2.  */
++        if (arm_hcr_el2_eff(env) & HCR_E2H) {
++            if (env->pstate & PSTATE_PAN) {
++                idx = ARMMMUIdx_E20_2_PAN;
++            } else {
++                idx = ARMMMUIdx_E20_2;
++            }
++        } else {
++            idx = ARMMMUIdx_E2;
++        }
++        break;
++    case 3:
++        return ARMMMUIdx_SE3;
++    default:
++        g_assert_not_reached();
++    }
++
++    if (arm_is_secure_below_el3(env)) {
++        idx &= ~ARM_MMU_IDX_A_NS;
++    }
++
++    return idx;
++}
++
++ARMMMUIdx arm_mmu_idx(CPUARMState *env)
++{
++    return arm_mmu_idx_el(env, arm_current_el(env));
++}
+diff --git a/target/arm/tcg/helper.c b/target/arm/tcg/helper.c
+index e85e2bfed9..a4630b4039 100644
+--- a/target/arm/tcg/helper.c
++++ b/target/arm/tcg/helper.c
+@@ -2093,101 +2093,6 @@ int fp_exception_el(CPUARMState *env, int cur_el)
+     return 0;
+ }
  
-     expansion_info = g_new0(CpuModelExpansionInfo, 1);
+-/* Return the exception level we're running at if this is our mmu_idx */
+-int arm_mmu_idx_to_el(ARMMMUIdx mmu_idx)
+-{
+-    if (mmu_idx & ARM_MMU_IDX_M) {
+-        return mmu_idx & ARM_MMU_IDX_M_PRIV;
+-    }
+-
+-    switch (mmu_idx) {
+-    case ARMMMUIdx_E10_0:
+-    case ARMMMUIdx_E20_0:
+-    case ARMMMUIdx_SE10_0:
+-    case ARMMMUIdx_SE20_0:
+-        return 0;
+-    case ARMMMUIdx_E10_1:
+-    case ARMMMUIdx_E10_1_PAN:
+-    case ARMMMUIdx_SE10_1:
+-    case ARMMMUIdx_SE10_1_PAN:
+-        return 1;
+-    case ARMMMUIdx_E2:
+-    case ARMMMUIdx_E20_2:
+-    case ARMMMUIdx_E20_2_PAN:
+-    case ARMMMUIdx_SE2:
+-    case ARMMMUIdx_SE20_2:
+-    case ARMMMUIdx_SE20_2_PAN:
+-        return 2;
+-    case ARMMMUIdx_SE3:
+-        return 3;
+-    default:
+-        g_assert_not_reached();
+-    }
+-}
+-
+-#ifndef CONFIG_TCG
+-ARMMMUIdx arm_v7m_mmu_idx_for_secstate(CPUARMState *env, bool secstate)
+-{
+-    g_assert_not_reached();
+-}
+-#endif
+-
+-ARMMMUIdx arm_mmu_idx_el(CPUARMState *env, int el)
+-{
+-    ARMMMUIdx idx;
+-    uint64_t hcr;
+-
+-    if (arm_feature(env, ARM_FEATURE_M)) {
+-        return arm_v7m_mmu_idx_for_secstate(env, env->v7m.secure);
+-    }
+-
+-    /* See ARM pseudo-function ELIsInHost.  */
+-    switch (el) {
+-    case 0:
+-        hcr = arm_hcr_el2_eff(env);
+-        if ((hcr & (HCR_E2H | HCR_TGE)) == (HCR_E2H | HCR_TGE)) {
+-            idx = ARMMMUIdx_E20_0;
+-        } else {
+-            idx = ARMMMUIdx_E10_0;
+-        }
+-        break;
+-    case 1:
+-        if (env->pstate & PSTATE_PAN) {
+-            idx = ARMMMUIdx_E10_1_PAN;
+-        } else {
+-            idx = ARMMMUIdx_E10_1;
+-        }
+-        break;
+-    case 2:
+-        /* Note that TGE does not apply at EL2.  */
+-        if (arm_hcr_el2_eff(env) & HCR_E2H) {
+-            if (env->pstate & PSTATE_PAN) {
+-                idx = ARMMMUIdx_E20_2_PAN;
+-            } else {
+-                idx = ARMMMUIdx_E20_2;
+-            }
+-        } else {
+-            idx = ARMMMUIdx_E2;
+-        }
+-        break;
+-    case 3:
+-        return ARMMMUIdx_SE3;
+-    default:
+-        g_assert_not_reached();
+-    }
+-
+-    if (arm_is_secure_below_el3(env)) {
+-        idx &= ~ARM_MMU_IDX_A_NS;
+-    }
+-
+-    return idx;
+-}
+-
+-ARMMMUIdx arm_mmu_idx(CPUARMState *env)
+-{
+-    return arm_mmu_idx_el(env, arm_current_el(env));
+-}
+-
+ #ifndef CONFIG_USER_ONLY
+ ARMMMUIdx arm_stage1_mmu_idx(CPUARMState *env)
+ {
 -- 
 2.20.1

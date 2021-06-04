@@ -1,565 +1,112 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id f8sm6094773wmg.43.2021.06.04.11.22.40
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 04 Jun 2021 11:22:45 -0700 (PDT)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 2B1411FFC1;
-	Fri,  4 Jun 2021 16:53:18 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Claudio Fontana <cfontana@suse.de>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH  v16 42/99] target/arm: split 32bit and 64bit arm dump state
-Date: Fri,  4 Jun 2021 16:52:15 +0100
-Message-Id: <20210604155312.15902-43-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210604155312.15902-1-alex.bennee@linaro.org>
+Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp1389141lfa;
+        Fri, 4 Jun 2021 11:26:11 -0700 (PDT)
+X-Received: by 2002:a17:90a:8581:: with SMTP id m1mr6256058pjn.47.1622831171014;
+        Fri, 04 Jun 2021 11:26:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1622831171; cv=none;
+        d=google.com; s=arc-20160816;
+        b=EXd49DKnHFQGtQYxywt6HSlG+NOcuU2+ZtAXmp9OWQzEAtjs3Yu/LBMjrQb4arrg7K
+         87OckXfq19zQUsF/I6IZtCEWalvJHFW0ppXhtetX+YQVUz2m9RU/xxbZ+ANrCSOu2heq
+         NAU0zVU28Kx7/OeuiMqI+MBw2HItnmRuMzVa6XQKlWRnmqHqqlRpXwFKn5Ry/fEZsiuQ
+         7bA4mubvku2jWbvvd7l8cI4fiUNCaAJADjFG5NtquC60eqD5Z7IZaV9GMuzr7T7ePChx
+         w65t3HJJcLHfLCE4ue3L2FjDQJadQG2KFH46BSr1X9tboqVW8WzH4nKc5gwkMTvxfs3L
+         Rg9g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=GvKPn4yOmvl3IQQILO5knfcmN49zFoxSi7F3AMeduYA=;
+        b=Dyuq5nrADlChEVWOe8G+lN9eqYNGGzjRQABS3KFY8UTDFK8TuyIvRgyWTO6prEYS3D
+         tDY/53as8QSQs3ozkR/h1gQFtOBci8ECkWBS7VDfaHX2wMnlb+ILGIseAlo3p8pM1iKj
+         j0p+ZayTIA6PQ5hetynuK2lID39iye7CYu+Q9gXhboMdtiF8ZHYb5r/J8ghTzmvxuZJx
+         /zvUJmOxdGQgyHk8xpcURZt8r0trifWoPVaS+lCSvuFVwzBeY3wRYgqAsqbNrG2+Xzqv
+         TWtK9J4vzCnXhJDBPp+Rzr9qTC1fBRGXwuH7PofnJVQj24zq1Zzy8mfOm45t5Bp1ZBKC
+         cITw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=f6bDALtL;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id u10sor3990683pjl.28.2021.06.04.11.26.10
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Fri, 04 Jun 2021 11:26:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=f6bDALtL;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=GvKPn4yOmvl3IQQILO5knfcmN49zFoxSi7F3AMeduYA=;
+        b=f6bDALtLxCc8SHEUsQWemQXMS2fdXgqTnY4JBIgcTVHJkPeOUonn/A2LlLQ2LDI6QJ
+         CQLXDpO2NBPEGiplSw8BS2QzbDhfQlPkpV+OL/MJLErJIkgqhTlTlFScfR203n10TOqi
+         HF6ewuXbPxauOlK3HWb3adKf1wG8m/Vx8CklvRCXAc2TtpN4xVmo6/Db6cIY8/gabt1m
+         LGzr0FvogD0ebRWFiMkU29RlRsSuUbZL4atfSHL6JQsOjuJmDbo76dmYN+hpHff7EWKJ
+         wRjJwNOt2xKwkAS//h2lQNwwFyHru5YhhzUYB4rfFYTjzNJEOFWDknUZViiDSt/FebMX
+         CgOA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=GvKPn4yOmvl3IQQILO5knfcmN49zFoxSi7F3AMeduYA=;
+        b=IP8ruvmtIR7RTk3IbNXyW9z0TwJyqksKDJBB61ixRr59OSZd4VGQrrkZ1r7df5USd/
+         Wy+u4t3U97MyicJP7pYhlBwN8TUiB0vNnVav8ClXT5pQAn6MKfSmldQxBPFtO99rfqYt
+         +dwvNt/KtyTyBmAOBvhP6ChhzQh/NCwynCYoOjkBbTiXkHX0VOe+/tnBPYUZ1Ll6KaEw
+         Z/ywi9RU8Eq+OGZHHjWb/b3MeWU6PLG+Xs0txlSI3qvLOHXrGINgQ5KoqCT5bnWdWjtr
+         cVIXteAZFYliZPTCwLXWy21qvyQj/u9RZ9FX8tOM/NxTDte1B/w1c5IOR15g3WFq5fig
+         sHng==
+X-Gm-Message-State: AOAM5314q1hURiRaTM3s9jPkO0OqWiqY8EsPsXqAf9U4lfPqEqm9f7jR
+	YfgeGStOhu57e5btFG6UAUp/NG3R
+X-Google-Smtp-Source: ABdhPJwesw7+AZ/Wt9dL9xKepjnGD+RP/BzH+17JmNtHlA4guyJ0QbFj0gICwhlFxFPA+hhlfLgXUw==
+X-Received: by 2002:a17:90a:e94c:: with SMTP id kp12mr17962191pjb.134.1622831170493;
+        Fri, 04 Jun 2021 11:26:10 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.1.11] (174-21-70-228.tukw.qwest.net. [174.21.70.228])
+        by smtp.gmail.com with ESMTPSA id r19sm2224598pfh.152.2021.06.04.11.26.10
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 04 Jun 2021 11:26:10 -0700 (PDT)
+Subject: Re: [PATCH v16 01/99] MAINTAINERS: Add qtest/arm-cpu-features.c to
+ ARM TCG CPUs section
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Andrew Jones <drjones@redhat.com>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Thomas Huth <thuth@redhat.com>
 References: <20210604155312.15902-1-alex.bennee@linaro.org>
+ <20210604155312.15902-2-alex.bennee@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <915aa9b2-023a-0265-7faf-3592c4607438@linaro.org>
+Date: Fri, 4 Jun 2021 11:26:08 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20210604155312.15902-2-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: QB1Zx+MdHXMj
+X-TUID: d06O9plrFFbU
 
-From: Claudio Fontana <cfontana@suse.de>
+On 6/4/21 8:51 AM, Alex Bennée wrote:
+> From: Philippe Mathieu-Daudé<philmd@redhat.com>
+> 
+> We want the ARM maintainers and the qemu-arm@ list to be
+> notified when this file is modified. Add an entry to the
+> 'ARM TCG CPUs' section in the MAINTAINERS file.
+> 
+> Acked-by: Andrew Jones<drjones@redhat.com>
+> Reviewed-by: Thomas Huth<thuth@redhat.com>
+> Reviewed-by: Alex Bennée<alex.bennee@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daudé<philmd@redhat.com>
+> Signed-off-by: Alex Bennée<alex.bennee@linaro.org>
+> Message-Id:<20210505125806.1263441-2-philmd@redhat.com>
+> ---
+>   MAINTAINERS | 1 +
+>   1 file changed, 1 insertion(+)
 
-Signed-off-by: Claudio Fontana <cfontana@suse.de>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- target/arm/cpu32.h |   2 +-
- target/arm/cpu.c   | 225 ---------------------------------------------
- target/arm/cpu32.c |  85 ++++++++++++++++-
- target/arm/cpu64.c | 142 ++++++++++++++++++++++++++++
- 4 files changed, 227 insertions(+), 227 deletions(-)
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-diff --git a/target/arm/cpu32.h b/target/arm/cpu32.h
-index 211fad6f55..128d0c9247 100644
---- a/target/arm/cpu32.h
-+++ b/target/arm/cpu32.h
-@@ -21,7 +21,7 @@
- #ifndef ARM_CPU32_H
- #define ARM_CPU32_H
- 
--void arm_cpu_dump_state(CPUState *cs, FILE *f, int flags);
-+void arm32_cpu_dump_state(CPUState *cs, FILE *f, int flags);
- void arm32_cpu_class_init(ObjectClass *oc, void *data);
- void arm32_cpu_register(const ARMCPUInfo *info);
- 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index b9b300944d..97d562bbd5 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -19,7 +19,6 @@
-  */
- 
- #include "qemu/osdep.h"
--#include "qemu/qemu-print.h"
- #include "qemu-common.h"
- #include "target/arm/idau.h"
- #include "qemu/module.h"
-@@ -716,230 +715,6 @@ static void arm_disas_set_info(CPUState *cpu, disassemble_info *info)
- #endif
- }
- 
--#ifdef TARGET_AARCH64
--
--static void aarch64_cpu_dump_state(CPUState *cs, FILE *f, int flags)
--{
--    ARMCPU *cpu = ARM_CPU(cs);
--    CPUARMState *env = &cpu->env;
--    uint32_t psr = pstate_read(env);
--    int i;
--    int el = arm_current_el(env);
--    const char *ns_status;
--
--    qemu_fprintf(f, " PC=%016" PRIx64 " ", env->pc);
--    for (i = 0; i < 32; i++) {
--        if (i == 31) {
--            qemu_fprintf(f, " SP=%016" PRIx64 "\n", env->xregs[i]);
--        } else {
--            qemu_fprintf(f, "X%02d=%016" PRIx64 "%s", i, env->xregs[i],
--                         (i + 2) % 3 ? " " : "\n");
--        }
--    }
--
--    if (arm_feature(env, ARM_FEATURE_EL3) && el != 3) {
--        ns_status = env->cp15.scr_el3 & SCR_NS ? "NS " : "S ";
--    } else {
--        ns_status = "";
--    }
--    qemu_fprintf(f, "PSTATE=%08x %c%c%c%c %sEL%d%c",
--                 psr,
--                 psr & PSTATE_N ? 'N' : '-',
--                 psr & PSTATE_Z ? 'Z' : '-',
--                 psr & PSTATE_C ? 'C' : '-',
--                 psr & PSTATE_V ? 'V' : '-',
--                 ns_status,
--                 el,
--                 psr & PSTATE_SP ? 'h' : 't');
--
--    if (cpu_isar_feature(aa64_bti, cpu)) {
--        qemu_fprintf(f, "  BTYPE=%d", (psr & PSTATE_BTYPE) >> 10);
--    }
--    if (!(flags & CPU_DUMP_FPU)) {
--        qemu_fprintf(f, "\n");
--        return;
--    }
--    if (fp_exception_el(env, el) != 0) {
--        qemu_fprintf(f, "    FPU disabled\n");
--        return;
--    }
--    qemu_fprintf(f, "     FPCR=%08x FPSR=%08x\n",
--                 vfp_get_fpcr(env), vfp_get_fpsr(env));
--
--    if (cpu_isar_feature(aa64_sve, cpu) && sve_exception_el(env, el) == 0) {
--        int j, zcr_len = sve_zcr_len_for_el(env, el);
--
--        for (i = 0; i <= FFR_PRED_NUM; i++) {
--            bool eol;
--            if (i == FFR_PRED_NUM) {
--                qemu_fprintf(f, "FFR=");
--                /* It's last, so end the line.  */
--                eol = true;
--            } else {
--                qemu_fprintf(f, "P%02d=", i);
--                switch (zcr_len) {
--                case 0:
--                    eol = i % 8 == 7;
--                    break;
--                case 1:
--                    eol = i % 6 == 5;
--                    break;
--                case 2:
--                case 3:
--                    eol = i % 3 == 2;
--                    break;
--                default:
--                    /* More than one quadword per predicate.  */
--                    eol = true;
--                    break;
--                }
--            }
--            for (j = zcr_len / 4; j >= 0; j--) {
--                int digits;
--                if (j * 4 + 4 <= zcr_len + 1) {
--                    digits = 16;
--                } else {
--                    digits = (zcr_len % 4 + 1) * 4;
--                }
--                qemu_fprintf(f, "%0*" PRIx64 "%s", digits,
--                             env->vfp.pregs[i].p[j],
--                             j ? ":" : eol ? "\n" : " ");
--            }
--        }
--
--        for (i = 0; i < 32; i++) {
--            if (zcr_len == 0) {
--                qemu_fprintf(f, "Z%02d=%016" PRIx64 ":%016" PRIx64 "%s",
--                             i, env->vfp.zregs[i].d[1],
--                             env->vfp.zregs[i].d[0], i & 1 ? "\n" : " ");
--            } else if (zcr_len == 1) {
--                qemu_fprintf(f, "Z%02d=%016" PRIx64 ":%016" PRIx64
--                             ":%016" PRIx64 ":%016" PRIx64 "\n",
--                             i, env->vfp.zregs[i].d[3], env->vfp.zregs[i].d[2],
--                             env->vfp.zregs[i].d[1], env->vfp.zregs[i].d[0]);
--            } else {
--                for (j = zcr_len; j >= 0; j--) {
--                    bool odd = (zcr_len - j) % 2 != 0;
--                    if (j == zcr_len) {
--                        qemu_fprintf(f, "Z%02d[%x-%x]=", i, j, j - 1);
--                    } else if (!odd) {
--                        if (j > 0) {
--                            qemu_fprintf(f, "   [%x-%x]=", j, j - 1);
--                        } else {
--                            qemu_fprintf(f, "     [%x]=", j);
--                        }
--                    }
--                    qemu_fprintf(f, "%016" PRIx64 ":%016" PRIx64 "%s",
--                                 env->vfp.zregs[i].d[j * 2 + 1],
--                                 env->vfp.zregs[i].d[j * 2],
--                                 odd || j == 0 ? "\n" : ":");
--                }
--            }
--        }
--    } else {
--        for (i = 0; i < 32; i++) {
--            uint64_t *q = aa64_vfp_qreg(env, i);
--            qemu_fprintf(f, "Q%02d=%016" PRIx64 ":%016" PRIx64 "%s",
--                         i, q[1], q[0], (i & 1 ? "\n" : " "));
--        }
--    }
--}
--
--#else
--
--static inline void aarch64_cpu_dump_state(CPUState *cs, FILE *f, int flags)
--{
--    g_assert_not_reached();
--}
--
--#endif
--
--void arm_cpu_dump_state(CPUState *cs, FILE *f, int flags)
--{
--    ARMCPU *cpu = ARM_CPU(cs);
--    CPUARMState *env = &cpu->env;
--    int i;
--
--    if (is_a64(env)) {
--        aarch64_cpu_dump_state(cs, f, flags);
--        return;
--    }
--
--    for (i = 0; i < 16; i++) {
--        qemu_fprintf(f, "R%02d=%08x", i, env->regs[i]);
--        if ((i % 4) == 3) {
--            qemu_fprintf(f, "\n");
--        } else {
--            qemu_fprintf(f, " ");
--        }
--    }
--
--    if (arm_feature(env, ARM_FEATURE_M)) {
--        uint32_t xpsr = xpsr_read(env);
--        const char *mode;
--        const char *ns_status = "";
--
--        if (arm_feature(env, ARM_FEATURE_M_SECURITY)) {
--            ns_status = env->v7m.secure ? "S " : "NS ";
--        }
--
--        if (xpsr & XPSR_EXCP) {
--            mode = "handler";
--        } else {
--            if (env->v7m.control[env->v7m.secure] & R_V7M_CONTROL_NPRIV_MASK) {
--                mode = "unpriv-thread";
--            } else {
--                mode = "priv-thread";
--            }
--        }
--
--        qemu_fprintf(f, "XPSR=%08x %c%c%c%c %c %s%s\n",
--                     xpsr,
--                     xpsr & XPSR_N ? 'N' : '-',
--                     xpsr & XPSR_Z ? 'Z' : '-',
--                     xpsr & XPSR_C ? 'C' : '-',
--                     xpsr & XPSR_V ? 'V' : '-',
--                     xpsr & XPSR_T ? 'T' : 'A',
--                     ns_status,
--                     mode);
--    } else {
--        uint32_t psr = cpsr_read(env);
--        const char *ns_status = "";
--
--        if (arm_feature(env, ARM_FEATURE_EL3) &&
--            (psr & CPSR_M) != ARM_CPU_MODE_MON) {
--            ns_status = env->cp15.scr_el3 & SCR_NS ? "NS " : "S ";
--        }
--
--        qemu_fprintf(f, "PSR=%08x %c%c%c%c %c %s%s%d\n",
--                     psr,
--                     psr & CPSR_N ? 'N' : '-',
--                     psr & CPSR_Z ? 'Z' : '-',
--                     psr & CPSR_C ? 'C' : '-',
--                     psr & CPSR_V ? 'V' : '-',
--                     psr & CPSR_T ? 'T' : 'A',
--                     ns_status,
--                     aarch32_mode_name(psr), (psr & 0x10) ? 32 : 26);
--    }
--
--    if (flags & CPU_DUMP_FPU) {
--        int numvfpregs = 0;
--        if (cpu_isar_feature(aa32_simd_r32, cpu)) {
--            numvfpregs = 32;
--        } else if (cpu_isar_feature(aa32_vfp_simd, cpu)) {
--            numvfpregs = 16;
--        }
--        for (i = 0; i < numvfpregs; i++) {
--            uint64_t v = *aa32_vfp_dreg(env, i);
--            qemu_fprintf(f, "s%02d=%08x s%02d=%08x d%02d=%016" PRIx64 "\n",
--                         i * 2, (uint32_t)v,
--                         i * 2 + 1, (uint32_t)(v >> 32),
--                         i, v);
--        }
--        qemu_fprintf(f, "FPSCR: %08x\n", vfp_get_fpscr(env));
--    }
--}
--
- uint64_t arm_cpu_mp_affinity(int idx, uint8_t clustersz)
- {
-     uint32_t Aff1 = idx / clustersz;
-diff --git a/target/arm/cpu32.c b/target/arm/cpu32.c
-index 39fb112a04..c03f420ba2 100644
---- a/target/arm/cpu32.c
-+++ b/target/arm/cpu32.c
-@@ -58,6 +58,89 @@ static gchar *arm_gdb_arch_name(CPUState *cs)
-     return g_strdup("arm");
- }
- 
-+void arm32_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-+{
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+    int i;
-+
-+    assert(!is_a64(env));
-+
-+    for (i = 0; i < 16; i++) {
-+        qemu_fprintf(f, "R%02d=%08x", i, env->regs[i]);
-+        if ((i % 4) == 3) {
-+            qemu_fprintf(f, "\n");
-+        } else {
-+            qemu_fprintf(f, " ");
-+        }
-+    }
-+
-+    if (arm_feature(env, ARM_FEATURE_M)) {
-+        uint32_t xpsr = xpsr_read(env);
-+        const char *mode;
-+        const char *ns_status = "";
-+
-+        if (arm_feature(env, ARM_FEATURE_M_SECURITY)) {
-+            ns_status = env->v7m.secure ? "S " : "NS ";
-+        }
-+
-+        if (xpsr & XPSR_EXCP) {
-+            mode = "handler";
-+        } else {
-+            if (env->v7m.control[env->v7m.secure] & R_V7M_CONTROL_NPRIV_MASK) {
-+                mode = "unpriv-thread";
-+            } else {
-+                mode = "priv-thread";
-+            }
-+        }
-+
-+        qemu_fprintf(f, "XPSR=%08x %c%c%c%c %c %s%s\n",
-+                     xpsr,
-+                     xpsr & XPSR_N ? 'N' : '-',
-+                     xpsr & XPSR_Z ? 'Z' : '-',
-+                     xpsr & XPSR_C ? 'C' : '-',
-+                     xpsr & XPSR_V ? 'V' : '-',
-+                     xpsr & XPSR_T ? 'T' : 'A',
-+                     ns_status,
-+                     mode);
-+    } else {
-+        uint32_t psr = cpsr_read(env);
-+        const char *ns_status = "";
-+
-+        if (arm_feature(env, ARM_FEATURE_EL3) &&
-+            (psr & CPSR_M) != ARM_CPU_MODE_MON) {
-+            ns_status = env->cp15.scr_el3 & SCR_NS ? "NS " : "S ";
-+        }
-+
-+        qemu_fprintf(f, "PSR=%08x %c%c%c%c %c %s%s%d\n",
-+                     psr,
-+                     psr & CPSR_N ? 'N' : '-',
-+                     psr & CPSR_Z ? 'Z' : '-',
-+                     psr & CPSR_C ? 'C' : '-',
-+                     psr & CPSR_V ? 'V' : '-',
-+                     psr & CPSR_T ? 'T' : 'A',
-+                     ns_status,
-+                     aarch32_mode_name(psr), (psr & 0x10) ? 32 : 26);
-+    }
-+
-+    if (flags & CPU_DUMP_FPU) {
-+        int numvfpregs = 0;
-+        if (cpu_isar_feature(aa32_simd_r32, cpu)) {
-+            numvfpregs = 32;
-+        } else if (cpu_isar_feature(aa32_vfp_simd, cpu)) {
-+            numvfpregs = 16;
-+        }
-+        for (i = 0; i < numvfpregs; i++) {
-+            uint64_t v = *aa32_vfp_dreg(env, i);
-+            qemu_fprintf(f, "s%02d=%08x s%02d=%08x d%02d=%016" PRIx64 "\n",
-+                         i * 2, (uint32_t)v,
-+                         i * 2 + 1, (uint32_t)(v >> 32),
-+                         i, v);
-+        }
-+        qemu_fprintf(f, "FPSCR: %08x\n", vfp_get_fpscr(env));
-+    }
-+}
-+
- void arm32_cpu_class_init(ObjectClass *oc, void *data)
- {
-     CPUClass *cc = CPU_CLASS(oc);
-@@ -67,7 +150,7 @@ void arm32_cpu_class_init(ObjectClass *oc, void *data)
-     cc->gdb_num_core_regs = 26;
-     cc->gdb_core_xml_file = "arm-core.xml";
-     cc->gdb_arch_name = arm_gdb_arch_name;
--    cc->dump_state = arm_cpu_dump_state;
-+    cc->dump_state = arm32_cpu_dump_state;
- }
- 
- static void arm32_cpu_instance_init(Object *obj)
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 4ff55fb0f0..7cd73ae0b6 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -20,7 +20,9 @@
- 
- #include "qemu/osdep.h"
- #include "qapi/error.h"
-+#include "qemu/qemu-print.h"
- #include "cpu.h"
-+#include "cpu32.h"
- #ifdef CONFIG_TCG
- #include "hw/core/tcg-cpu-ops.h"
- #endif /* CONFIG_TCG */
-@@ -828,6 +830,145 @@ static gchar *aarch64_gdb_arch_name(CPUState *cs)
-     return g_strdup("aarch64");
- }
- 
-+static void aarch64_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-+{
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+    uint32_t psr = pstate_read(env);
-+    int i;
-+    int el = arm_current_el(env);
-+    const char *ns_status;
-+
-+    qemu_fprintf(f, " PC=%016" PRIx64 " ", env->pc);
-+    for (i = 0; i < 32; i++) {
-+        if (i == 31) {
-+            qemu_fprintf(f, " SP=%016" PRIx64 "\n", env->xregs[i]);
-+        } else {
-+            qemu_fprintf(f, "X%02d=%016" PRIx64 "%s", i, env->xregs[i],
-+                         (i + 2) % 3 ? " " : "\n");
-+        }
-+    }
-+
-+    if (arm_feature(env, ARM_FEATURE_EL3) && el != 3) {
-+        ns_status = env->cp15.scr_el3 & SCR_NS ? "NS " : "S ";
-+    } else {
-+        ns_status = "";
-+    }
-+    qemu_fprintf(f, "PSTATE=%08x %c%c%c%c %sEL%d%c",
-+                 psr,
-+                 psr & PSTATE_N ? 'N' : '-',
-+                 psr & PSTATE_Z ? 'Z' : '-',
-+                 psr & PSTATE_C ? 'C' : '-',
-+                 psr & PSTATE_V ? 'V' : '-',
-+                 ns_status,
-+                 el,
-+                 psr & PSTATE_SP ? 'h' : 't');
-+
-+    if (cpu_isar_feature(aa64_bti, cpu)) {
-+        qemu_fprintf(f, "  BTYPE=%d", (psr & PSTATE_BTYPE) >> 10);
-+    }
-+    if (!(flags & CPU_DUMP_FPU)) {
-+        qemu_fprintf(f, "\n");
-+        return;
-+    }
-+    if (fp_exception_el(env, el) != 0) {
-+        qemu_fprintf(f, "    FPU disabled\n");
-+        return;
-+    }
-+    qemu_fprintf(f, "     FPCR=%08x FPSR=%08x\n",
-+                 vfp_get_fpcr(env), vfp_get_fpsr(env));
-+
-+    if (cpu_isar_feature(aa64_sve, cpu) && sve_exception_el(env, el) == 0) {
-+        int j, zcr_len = sve_zcr_len_for_el(env, el);
-+
-+        for (i = 0; i <= FFR_PRED_NUM; i++) {
-+            bool eol;
-+            if (i == FFR_PRED_NUM) {
-+                qemu_fprintf(f, "FFR=");
-+                /* It's last, so end the line.  */
-+                eol = true;
-+            } else {
-+                qemu_fprintf(f, "P%02d=", i);
-+                switch (zcr_len) {
-+                case 0:
-+                    eol = i % 8 == 7;
-+                    break;
-+                case 1:
-+                    eol = i % 6 == 5;
-+                    break;
-+                case 2:
-+                case 3:
-+                    eol = i % 3 == 2;
-+                    break;
-+                default:
-+                    /* More than one quadword per predicate.  */
-+                    eol = true;
-+                    break;
-+                }
-+            }
-+            for (j = zcr_len / 4; j >= 0; j--) {
-+                int digits;
-+                if (j * 4 + 4 <= zcr_len + 1) {
-+                    digits = 16;
-+                } else {
-+                    digits = (zcr_len % 4 + 1) * 4;
-+                }
-+                qemu_fprintf(f, "%0*" PRIx64 "%s", digits,
-+                             env->vfp.pregs[i].p[j],
-+                             j ? ":" : eol ? "\n" : " ");
-+            }
-+        }
-+
-+        for (i = 0; i < 32; i++) {
-+            if (zcr_len == 0) {
-+                qemu_fprintf(f, "Z%02d=%016" PRIx64 ":%016" PRIx64 "%s",
-+                             i, env->vfp.zregs[i].d[1],
-+                             env->vfp.zregs[i].d[0], i & 1 ? "\n" : " ");
-+            } else if (zcr_len == 1) {
-+                qemu_fprintf(f, "Z%02d=%016" PRIx64 ":%016" PRIx64
-+                             ":%016" PRIx64 ":%016" PRIx64 "\n",
-+                             i, env->vfp.zregs[i].d[3], env->vfp.zregs[i].d[2],
-+                             env->vfp.zregs[i].d[1], env->vfp.zregs[i].d[0]);
-+            } else {
-+                for (j = zcr_len; j >= 0; j--) {
-+                    bool odd = (zcr_len - j) % 2 != 0;
-+                    if (j == zcr_len) {
-+                        qemu_fprintf(f, "Z%02d[%x-%x]=", i, j, j - 1);
-+                    } else if (!odd) {
-+                        if (j > 0) {
-+                            qemu_fprintf(f, "   [%x-%x]=", j, j - 1);
-+                        } else {
-+                            qemu_fprintf(f, "     [%x]=", j);
-+                        }
-+                    }
-+                    qemu_fprintf(f, "%016" PRIx64 ":%016" PRIx64 "%s",
-+                                 env->vfp.zregs[i].d[j * 2 + 1],
-+                                 env->vfp.zregs[i].d[j * 2],
-+                                 odd || j == 0 ? "\n" : ":");
-+                }
-+            }
-+        }
-+    } else {
-+        for (i = 0; i < 32; i++) {
-+            uint64_t *q = aa64_vfp_qreg(env, i);
-+            qemu_fprintf(f, "Q%02d=%016" PRIx64 ":%016" PRIx64 "%s",
-+                         i, q[1], q[0], (i & 1 ? "\n" : " "));
-+        }
-+    }
-+}
-+
-+static void arm_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-+{
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+
-+    if (is_a64(env)) {
-+        aarch64_cpu_dump_state(cs, f, flags);
-+    } else {
-+        arm32_cpu_dump_state(cs, f, flags);
-+    }
-+}
-+
- static void aarch64_cpu_class_init(ObjectClass *oc, void *data)
- {
-     CPUClass *cc = CPU_CLASS(oc);
-@@ -837,6 +978,7 @@ static void aarch64_cpu_class_init(ObjectClass *oc, void *data)
-     cc->gdb_num_core_regs = 34;
-     cc->gdb_core_xml_file = "aarch64-core.xml";
-     cc->gdb_arch_name = aarch64_gdb_arch_name;
-+    cc->dump_state = arm_cpu_dump_state;
- 
-     object_class_property_add_bool(oc, "aarch64", aarch64_cpu_get_aarch64,
-                                    aarch64_cpu_set_aarch64);
--- 
-2.20.1
+r~

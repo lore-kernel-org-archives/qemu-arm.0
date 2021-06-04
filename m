@@ -1,374 +1,197 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id n9sm8226282wrt.81.2021.06.04.09.02.38
+        by smtp.gmail.com with ESMTPSA id s62sm9232329wms.13.2021.06.04.09.02.39
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 04 Jun 2021 09:02:43 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 50DBB2001C;
-	Fri,  4 Jun 2021 16:53:24 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 502211FFD2;
+	Fri,  4 Jun 2021 16:53:20 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Michael Rolnik <mrolnik@gmail.com>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Laurent Vivier <laurent@vivier.eu>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-	Chris Wulff <crwulff@gmail.com>,
-	Marek Vasut <marex@denx.de>,
-	Stafford Horne <shorne@gmail.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Greg Kurz <groug@kaod.org>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Alistair Francis <alistair.francis@wdc.com>,
-	Bin Meng <bin.meng@windriver.com>,
-	Yoshinori Sato <ysato@users.sourceforge.jp>,
-	David Hildenbrand <david@redhat.com>,
-	Cornelia Huck <cohuck@redhat.com>,
-	Thomas Huth <thuth@redhat.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	qemu-ppc@nongnu.org (open list:PowerPC TCG CPUs),
-	qemu-riscv@nongnu.org (open list:RISC-V TCG CPUs),
-	qemu-s390x@nongnu.org (open list:S390 TCG CPUs)
-Subject: [PATCH  v16 93/99] meson: Introduce target-specific Kconfig
-Date: Fri,  4 Jun 2021 16:53:06 +0100
-Message-Id: <20210604155312.15902-94-alex.bennee@linaro.org>
+	Claudio Fontana <cfontana@suse.de>,
+	Julien Grall <jgrall@amazon.com>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Olaf Hering <OHering@suse.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH  v16 61/99] target/arm: remove broad "else" statements when checking accels
+Date: Fri,  4 Jun 2021 16:52:34 +0100
+Message-Id: <20210604155312.15902-62-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210604155312.15902-1-alex.bennee@linaro.org>
 References: <20210604155312.15902-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 9tSpbcOwvun8
+X-TUID: 8qnUK4tVqoHf
 
-From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+From: Claudio Fontana <cfontana@suse.de>
 
-Add a target-specific Kconfig.
+There might be more than just KVM and TCG in the future,
+so where appropriate, replace broad "else" statements
+with the appropriate if (accel_enabled()) check.
 
-Target foo now has CONFIG_FOO defined.
+Also invert some checks for !kvm_enabled() or !tcg_enabled()
+where it seems appropriate to do so.
 
-Two architecture have a particularity, ARM and MIPS:
-their 64-bit version include the 32-bit subset.
+Note that to make qtest happy we need to perform gpio
+initialization in the qtest_enabled() case as well.
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Message-Id: <20210131111316.232778-6-f4bug@amsat.org>
+Hopefully we do not break any Xen stuff.
+
+Signed-off-by: Claudio Fontana <cfontana@suse.de>
+Cc: Julien Grall <jgrall@amazon.com>
+Cc: Stefano Stabellini <sstabellini@kernel.org>
+Cc: Olaf Hering <OHering@suse.com>
+Cc: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- meson.build               |  3 ++-
- Kconfig                   |  1 +
- target/Kconfig            | 23 +++++++++++++++++++++++
- target/alpha/Kconfig      |  2 ++
- target/arm/Kconfig        |  6 ++++++
- target/avr/Kconfig        |  2 ++
- target/cris/Kconfig       |  2 ++
- target/hppa/Kconfig       |  2 ++
- target/i386/Kconfig       |  5 +++++
- target/lm32/Kconfig       |  2 ++
- target/m68k/Kconfig       |  2 ++
- target/microblaze/Kconfig |  2 ++
- target/mips/Kconfig       |  6 ++++++
- target/moxie/Kconfig      |  2 ++
- target/nios2/Kconfig      |  2 ++
- target/openrisc/Kconfig   |  2 ++
- target/ppc/Kconfig        |  5 +++++
- target/riscv/Kconfig      |  5 +++++
- target/rx/Kconfig         |  2 ++
- target/s390x/Kconfig      |  2 ++
- target/sh4/Kconfig        |  2 ++
- target/sparc/Kconfig      |  5 +++++
- target/tilegx/Kconfig     |  2 ++
- target/tricore/Kconfig    |  2 ++
- target/unicore32/Kconfig  |  2 ++
- target/xtensa/Kconfig     |  2 ++
- 26 files changed, 92 insertions(+), 1 deletion(-)
- create mode 100644 target/Kconfig
- create mode 100644 target/alpha/Kconfig
- create mode 100644 target/arm/Kconfig
- create mode 100644 target/avr/Kconfig
- create mode 100644 target/cris/Kconfig
- create mode 100644 target/hppa/Kconfig
- create mode 100644 target/i386/Kconfig
- create mode 100644 target/lm32/Kconfig
- create mode 100644 target/m68k/Kconfig
- create mode 100644 target/microblaze/Kconfig
- create mode 100644 target/mips/Kconfig
- create mode 100644 target/moxie/Kconfig
- create mode 100644 target/nios2/Kconfig
- create mode 100644 target/openrisc/Kconfig
- create mode 100644 target/ppc/Kconfig
- create mode 100644 target/riscv/Kconfig
- create mode 100644 target/rx/Kconfig
- create mode 100644 target/s390x/Kconfig
- create mode 100644 target/sh4/Kconfig
- create mode 100644 target/sparc/Kconfig
- create mode 100644 target/tilegx/Kconfig
- create mode 100644 target/tricore/Kconfig
- create mode 100644 target/unicore32/Kconfig
- create mode 100644 target/xtensa/Kconfig
+ target/arm/cpu.c     |  9 +++++----
+ target/arm/cpu64.c   |  9 +++++----
+ target/arm/machine.c | 18 ++++++------------
+ 3 files changed, 16 insertions(+), 20 deletions(-)
 
-diff --git a/meson.build b/meson.build
-index e2a22984b8..09c7809d6b 100644
---- a/meson.build
-+++ b/meson.build
-@@ -1359,7 +1359,8 @@ foreach target : target_dirs
-       command: [minikconf,
-                 get_option('default_devices') ? '--defconfig' : '--allnoconfig',
-                 config_devices_mak, '@DEPFILE@', '@INPUT@',
--                host_kconfig, accel_kconfig])
-+                host_kconfig, accel_kconfig,
-+                'CONFIG_' + config_target['TARGET_ARCH'].to_upper() + '=y'])
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 7e3726ff00..57f975f5dc 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -37,6 +37,7 @@
+ #endif
  
-     config_devices_data = configuration_data()
-     config_devices = keyval.load(config_devices_mak)
-diff --git a/Kconfig b/Kconfig
-index d52ebd839b..fb6a24a2de 100644
---- a/Kconfig
-+++ b/Kconfig
-@@ -1,5 +1,6 @@
- source Kconfig.host
- source backends/Kconfig
- source accel/Kconfig
-+source target/Kconfig
- source hw/Kconfig
- source semihosting/Kconfig
-diff --git a/target/Kconfig b/target/Kconfig
-new file mode 100644
-index 0000000000..a6f719f223
---- /dev/null
-+++ b/target/Kconfig
-@@ -0,0 +1,23 @@
-+source alpha/Kconfig
-+source arm/Kconfig
-+source avr/Kconfig
-+source cris/Kconfig
-+source hppa/Kconfig
-+source i386/Kconfig
-+source lm32/Kconfig
-+source m68k/Kconfig
-+source microblaze/Kconfig
-+source mips/Kconfig
-+source moxie/Kconfig
-+source nios2/Kconfig
-+source openrisc/Kconfig
-+source ppc/Kconfig
-+source riscv/Kconfig
-+source rx/Kconfig
-+source s390x/Kconfig
-+source sh4/Kconfig
-+source sparc/Kconfig
-+source tilegx/Kconfig
-+source tricore/Kconfig
-+source unicore32/Kconfig
-+source xtensa/Kconfig
-diff --git a/target/alpha/Kconfig b/target/alpha/Kconfig
-new file mode 100644
-index 0000000000..267222c05b
---- /dev/null
-+++ b/target/alpha/Kconfig
-@@ -0,0 +1,2 @@
-+config ALPHA
-+    bool
-diff --git a/target/arm/Kconfig b/target/arm/Kconfig
-new file mode 100644
-index 0000000000..3f3394a22b
---- /dev/null
-+++ b/target/arm/Kconfig
-@@ -0,0 +1,6 @@
-+config ARM
-+    bool
-+
-+config AARCH64
-+    bool
-+    select ARM
-diff --git a/target/avr/Kconfig b/target/avr/Kconfig
-new file mode 100644
-index 0000000000..155592d353
---- /dev/null
-+++ b/target/avr/Kconfig
-@@ -0,0 +1,2 @@
-+config AVR
-+    bool
-diff --git a/target/cris/Kconfig b/target/cris/Kconfig
-new file mode 100644
-index 0000000000..3fdc309fbb
---- /dev/null
-+++ b/target/cris/Kconfig
-@@ -0,0 +1,2 @@
-+config CRIS
-+    bool
-diff --git a/target/hppa/Kconfig b/target/hppa/Kconfig
-new file mode 100644
-index 0000000000..395a35d799
---- /dev/null
-+++ b/target/hppa/Kconfig
-@@ -0,0 +1,2 @@
-+config HPPA
-+    bool
-diff --git a/target/i386/Kconfig b/target/i386/Kconfig
-new file mode 100644
-index 0000000000..ce6968906e
---- /dev/null
-+++ b/target/i386/Kconfig
-@@ -0,0 +1,5 @@
-+config I386
-+    bool
-+
-+config X86_64
-+    bool
-diff --git a/target/lm32/Kconfig b/target/lm32/Kconfig
-new file mode 100644
-index 0000000000..09de5b703a
---- /dev/null
-+++ b/target/lm32/Kconfig
-@@ -0,0 +1,2 @@
-+config LM32
-+    bool
-diff --git a/target/m68k/Kconfig b/target/m68k/Kconfig
-new file mode 100644
-index 0000000000..23debad519
---- /dev/null
-+++ b/target/m68k/Kconfig
-@@ -0,0 +1,2 @@
-+config M68K
-+    bool
-diff --git a/target/microblaze/Kconfig b/target/microblaze/Kconfig
-new file mode 100644
-index 0000000000..a5410d9218
---- /dev/null
-+++ b/target/microblaze/Kconfig
-@@ -0,0 +1,2 @@
-+config MICROBLAZE
-+    bool
-diff --git a/target/mips/Kconfig b/target/mips/Kconfig
-new file mode 100644
-index 0000000000..6adf145354
---- /dev/null
-+++ b/target/mips/Kconfig
-@@ -0,0 +1,6 @@
-+config MIPS
-+    bool
-+
-+config MIPS64
-+    bool
-+    select MIPS
-diff --git a/target/moxie/Kconfig b/target/moxie/Kconfig
-new file mode 100644
-index 0000000000..52391bbd28
---- /dev/null
-+++ b/target/moxie/Kconfig
-@@ -0,0 +1,2 @@
-+config MOXIE
-+    bool
-diff --git a/target/nios2/Kconfig b/target/nios2/Kconfig
-new file mode 100644
-index 0000000000..1529ab8950
---- /dev/null
-+++ b/target/nios2/Kconfig
-@@ -0,0 +1,2 @@
-+config NIOS2
-+    bool
-diff --git a/target/openrisc/Kconfig b/target/openrisc/Kconfig
-new file mode 100644
-index 0000000000..e0da4ac1df
---- /dev/null
-+++ b/target/openrisc/Kconfig
-@@ -0,0 +1,2 @@
-+config OPENRISC
-+    bool
-diff --git a/target/ppc/Kconfig b/target/ppc/Kconfig
-new file mode 100644
-index 0000000000..3ff152051a
---- /dev/null
-+++ b/target/ppc/Kconfig
-@@ -0,0 +1,5 @@
-+config PPC
-+    bool
-+
-+config PPC64
-+    bool
-diff --git a/target/riscv/Kconfig b/target/riscv/Kconfig
-new file mode 100644
-index 0000000000..b9e5932f13
---- /dev/null
-+++ b/target/riscv/Kconfig
-@@ -0,0 +1,5 @@
-+config RISCV32
-+    bool
-+
-+config RISCV64
-+    bool
-diff --git a/target/rx/Kconfig b/target/rx/Kconfig
-new file mode 100644
-index 0000000000..aceb5ed28f
---- /dev/null
-+++ b/target/rx/Kconfig
-@@ -0,0 +1,2 @@
-+config RX
-+    bool
-diff --git a/target/s390x/Kconfig b/target/s390x/Kconfig
-new file mode 100644
-index 0000000000..72da48136c
---- /dev/null
-+++ b/target/s390x/Kconfig
-@@ -0,0 +1,2 @@
-+config S390X
-+    bool
-diff --git a/target/sh4/Kconfig b/target/sh4/Kconfig
-new file mode 100644
-index 0000000000..2397c86028
---- /dev/null
-+++ b/target/sh4/Kconfig
-@@ -0,0 +1,2 @@
-+config SH4
-+    bool
-diff --git a/target/sparc/Kconfig b/target/sparc/Kconfig
-new file mode 100644
-index 0000000000..70cc0f3a21
---- /dev/null
-+++ b/target/sparc/Kconfig
-@@ -0,0 +1,5 @@
-+config SPARC
-+    bool
-+
-+config SPARC64
-+    bool
-diff --git a/target/tilegx/Kconfig b/target/tilegx/Kconfig
-new file mode 100644
-index 0000000000..aad882826a
---- /dev/null
-+++ b/target/tilegx/Kconfig
-@@ -0,0 +1,2 @@
-+config TILEGX
-+    bool
-diff --git a/target/tricore/Kconfig b/target/tricore/Kconfig
-new file mode 100644
-index 0000000000..9313409309
---- /dev/null
-+++ b/target/tricore/Kconfig
-@@ -0,0 +1,2 @@
-+config TRICORE
-+    bool
-diff --git a/target/unicore32/Kconfig b/target/unicore32/Kconfig
-new file mode 100644
-index 0000000000..62c9d10b38
---- /dev/null
-+++ b/target/unicore32/Kconfig
-@@ -0,0 +1,2 @@
-+config UNICORE32
-+    bool
-diff --git a/target/xtensa/Kconfig b/target/xtensa/Kconfig
-new file mode 100644
-index 0000000000..a3c8dc7f6d
---- /dev/null
-+++ b/target/xtensa/Kconfig
-@@ -0,0 +1,2 @@
-+config XTENSA
-+    bool
+ #include "sysemu/tcg.h"
++#include "sysemu/qtest.h"
+ #include "kvm/kvm_arm.h"
+ #include "disas/capstone.h"
+ #include "fpu/softfloat.h"
+@@ -564,7 +565,7 @@ static void arm_cpu_initfn(Object *obj)
+          * the same interface as non-KVM CPUs.
+          */
+         qdev_init_gpio_in(DEVICE(cpu), arm_cpu_kvm_set_irq, 4);
+-    } else {
++    } else if (tcg_enabled() || qtest_enabled()) {
+         qdev_init_gpio_in(DEVICE(cpu), arm_cpu_set_irq, 4);
+     }
+ 
+@@ -741,14 +742,14 @@ void arm_cpu_post_init(Object *obj)
+         ? cpu_isar_feature(aa64_fp_simd, cpu)
+         : cpu_isar_feature(aa32_vfp, cpu)) {
+         cpu->has_vfp = true;
+-        if (!kvm_enabled()) {
++        if (tcg_enabled()) {
+             qdev_property_add_static(DEVICE(obj), &arm_cpu_has_vfp_property);
+         }
+     }
+ 
+     if (arm_feature(&cpu->env, ARM_FEATURE_NEON)) {
+         cpu->has_neon = true;
+-        if (!kvm_enabled()) {
++        if (tcg_enabled()) {
+             qdev_property_add_static(DEVICE(obj), &arm_cpu_has_neon_property);
+         }
+     }
+@@ -849,7 +850,7 @@ void arm_cpu_finalize_features(ARMCPU *cpu, Error **errp)
+          * We have not registered the cpu properties when KVM
+          * is in use, so the user will not be able to set them.
+          */
+-        if (!kvm_enabled()) {
++        if (tcg_enabled()) {
+             arm_cpu_pauth_finalize(cpu, &local_err);
+             if (local_err != NULL) {
+                 error_propagate(errp, local_err);
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index a8ff1994ca..e3d818275c 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -24,6 +24,7 @@
+ #include "cpu.h"
+ #include "cpu32.h"
+ #include "qemu/module.h"
++#include "sysemu/tcg.h"
+ #include "sysemu/kvm.h"
+ #include "kvm/kvm_arm.h"
+ #include "qapi/visitor.h"
+@@ -297,7 +298,7 @@ void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
+              */
+             bitmap_andnot(tmp, kvm_supported, cpu->sve_vq_init, max_vq);
+             bitmap_or(cpu->sve_vq_map, cpu->sve_vq_map, tmp, max_vq);
+-        } else {
++        } else if (tcg_enabled()) {
+             /* Propagate enabled bits down through required powers-of-two. */
+             for (vq = pow2floor(max_vq); vq >= 1; vq >>= 1) {
+                 if (!test_bit(vq - 1, cpu->sve_vq_init)) {
+@@ -334,7 +335,7 @@ void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
+                                   "vector length must be enabled.\n");
+                 return;
+             }
+-        } else {
++        } else if (tcg_enabled()) {
+             /* Disabling a power-of-two disables all larger lengths. */
+             if (test_bit(0, cpu->sve_vq_init)) {
+                 error_setg(errp, "cannot disable sve128");
+@@ -416,7 +417,7 @@ void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
+             }
+             return;
+         }
+-    } else {
++    } else if (tcg_enabled()) {
+         /* Ensure all required powers-of-two are enabled. */
+         for (vq = pow2floor(max_vq); vq >= 1; vq >>= 1) {
+             if (!test_bit(vq - 1, cpu->sve_vq_map)) {
+@@ -610,7 +611,7 @@ static void aarch64_max_initfn(Object *obj)
+ 
+     if (kvm_enabled()) {
+         kvm_arm_set_cpu_features_from_host(cpu);
+-    } else {
++    } else if (tcg_enabled()) {
+         uint64_t t;
+         uint32_t u;
+         aarch64_a57_initfn(obj);
+diff --git a/target/arm/machine.c b/target/arm/machine.c
+index 595ab94237..4acdccc22d 100644
+--- a/target/arm/machine.c
++++ b/target/arm/machine.c
+@@ -638,9 +638,11 @@ static int cpu_pre_save(void *opaque)
+ 
+     if (tcg_enabled()) {
+         pmu_op_start(&cpu->env);
+-    }
+-
+-    if (kvm_enabled()) {
++        if (!write_cpustate_to_list(cpu, false)) {
++            /* This should never fail. */
++            abort();
++        }
++    } else if (kvm_enabled()) {
+         if (!write_kvmstate_to_list(cpu)) {
+             /* This should never fail */
+             abort();
+@@ -651,11 +653,6 @@ static int cpu_pre_save(void *opaque)
+          * write_kvmstate_to_list()
+          */
+         kvm_arm_cpu_pre_save(cpu);
+-    } else {
+-        if (!write_cpustate_to_list(cpu, false)) {
+-            /* This should never fail. */
+-            abort();
+-        }
+     }
+ 
+     cpu->cpreg_vmstate_array_len = cpu->cpreg_array_len;
+@@ -754,13 +751,10 @@ static int cpu_post_load(void *opaque, int version_id)
+          */
+         write_list_to_cpustate(cpu);
+         kvm_arm_cpu_post_load(cpu);
+-    } else {
++    } else if (tcg_enabled()) {
+         if (!write_list_to_cpustate(cpu)) {
+             return -1;
+         }
+-    }
+-
+-    if (tcg_enabled()) {
+         hw_breakpoint_update_all(cpu);
+         hw_watchpoint_update_all(cpu);
+ 
 -- 
 2.20.1

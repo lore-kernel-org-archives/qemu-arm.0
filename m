@@ -1,234 +1,392 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id a12sm5974399wmj.36.2021.06.04.09.12.44
+        by smtp.gmail.com with ESMTPSA id f20sm7039580wmh.41.2021.06.04.09.12.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 04 Jun 2021 09:12:52 -0700 (PDT)
+        Fri, 04 Jun 2021 09:12:50 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id D4AA71FFF6;
-	Fri,  4 Jun 2021 16:53:22 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 0EE2D1FFC0;
+	Fri,  4 Jun 2021 16:53:18 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Claudio Fontana <cfontana@suse.de>,
-	Richard Henderson <richard.henderson@linaro.org>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH  v16 82/99] target/arm: move sve_zcr_len_for_el to TARGET_AARCH64-only cpu-sve
-Date: Fri,  4 Jun 2021 16:52:55 +0100
-Message-Id: <20210604155312.15902-83-alex.bennee@linaro.org>
+Subject: [PATCH  v16 41/99] target/arm: new cpu32 ARM 32 bit CPU Class
+Date: Fri,  4 Jun 2021 16:52:14 +0100
+Message-Id: <20210604155312.15902-42-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210604155312.15902-1-alex.bennee@linaro.org>
 References: <20210604155312.15902-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: S+o3I/eMrY7H
+X-TUID: iXksSjg2/0CZ
 
 From: Claudio Fontana <cfontana@suse.de>
 
-now that we handled the dependency between HELPER(), cpregs defs
-and functions in tcg/,
+In the ARM CPU class hierarchy, the ancestor TYPE_ARM_CPU is fundamentally
+a 32 bit CPU Class. The child TYPE_AARCH64_CPU overrides the class to
+make it a 64 bit CPU Class.
 
-we can make sve_zcr_len_for_el TARGET_AARCH64-only,
-and move it to the cpu-sve module.
+Explicitly put the 32bit CPU Class implementation in a cpu32.c,
+along with the 32bit CPU Class model registration function.
+
+In later changes, we will further split 32bit and 64bit code.
 
 Signed-off-by: Claudio Fontana <cfontana@suse.de>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/arm/cpu-sve.h    |  3 +++
- target/arm/cpu.h        |  4 ++--
- target/arm/arch_dump.c  |  1 +
- target/arm/cpu-common.c | 43 -----------------------------------------
- target/arm/cpu-sve.c    | 33 +++++++++++++++++++++++++++++++
- target/arm/cpu.c        |  4 ++++
- target/arm/tcg/cpregs.c |  1 +
- target/arm/tcg/helper.c |  4 ++++
- 8 files changed, 48 insertions(+), 45 deletions(-)
+ target/arm/cpu-qom.h   |   3 --
+ target/arm/cpu32.h     |  28 ++++++++++
+ target/arm/cpu.c       |  55 ++-----------------
+ target/arm/cpu32.c     | 118 +++++++++++++++++++++++++++++++++++++++++
+ target/arm/cpu64.c     |   2 +-
+ target/arm/cpu_tcg.c   |   3 +-
+ target/arm/meson.build |   6 ++-
+ 7 files changed, 159 insertions(+), 56 deletions(-)
+ create mode 100644 target/arm/cpu32.h
+ create mode 100644 target/arm/cpu32.c
 
-diff --git a/target/arm/cpu-sve.h b/target/arm/cpu-sve.h
-index 6ab74b1d8f..1512c56a6b 100644
---- a/target/arm/cpu-sve.h
-+++ b/target/arm/cpu-sve.h
-@@ -34,4 +34,7 @@ void cpu_sve_add_props(Object *obj);
- /* add the CPU SVE properties specific to the "MAX" CPU */
- void cpu_sve_add_props_max(Object *obj);
+diff --git a/target/arm/cpu-qom.h b/target/arm/cpu-qom.h
+index a22bd506d0..0d41a346b9 100644
+--- a/target/arm/cpu-qom.h
++++ b/target/arm/cpu-qom.h
+@@ -38,9 +38,6 @@ typedef struct ARMCPUInfo {
+     void (*class_init)(ObjectClass *oc, void *data);
+ } ARMCPUInfo;
  
-+/* return the vector length for EL */
-+uint32_t sve_zcr_len_for_el(CPUARMState *env, int el);
-+
- #endif /* CPU_SVE_H */
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 3edf8bb4ec..e9bfb6f575 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -223,7 +223,8 @@ typedef struct ARMPACKey {
- } ARMPACKey;
- #else
- static inline void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp) { }
--#endif
-+
-+#endif /* TARGET_AARCH64 */
- 
- /* See the commentary above the TBFLAG field definitions.  */
- typedef struct CPUARMTBFlags {
-@@ -1097,7 +1098,6 @@ void aarch64_sync_64_to_32(CPUARMState *env);
- 
- int fp_exception_el(CPUARMState *env, int cur_el);
- int sve_exception_el(CPUARMState *env, int cur_el);
--uint32_t sve_zcr_len_for_el(CPUARMState *env, int el);
- 
- /* you can call this signal handler from your SIGBUS and SIGSEGV
-    signal handlers to inform the virtual CPU of exceptions. non zero
-diff --git a/target/arm/arch_dump.c b/target/arm/arch_dump.c
-index 9cc75a6fda..9b2e76f5a7 100644
---- a/target/arm/arch_dump.c
-+++ b/target/arm/arch_dump.c
-@@ -24,6 +24,7 @@
- #include "sysemu/dump.h"
- 
- #ifdef TARGET_AARCH64
-+#include "cpu-sve.h"
- 
- /* struct user_pt_regs from arch/arm64/include/uapi/asm/ptrace.h */
- struct aarch64_user_regs {
-diff --git a/target/arm/cpu-common.c b/target/arm/cpu-common.c
-index f4a3780e9e..b7a199a8d6 100644
---- a/target/arm/cpu-common.c
-+++ b/target/arm/cpu-common.c
-@@ -301,49 +301,6 @@ uint64_t arm_hcr_el2_eff(CPUARMState *env)
-     return ret;
- }
- 
--/*
-- * these are AARCH64-only, but due to the chain of dependencies,
-- * between HELPER prototypes, hflags, cpreg definitions and functions in
-- * tcg/ etc, it becomes incredibly messy to add what should be here:
-- *
-- * #ifdef TARGET_AARCH64
-- */
+-void arm_cpu_register(const ARMCPUInfo *info);
+-void aarch64_cpu_register(const ARMCPUInfo *info);
 -
--static uint32_t sve_zcr_get_valid_len(ARMCPU *cpu, uint32_t start_len)
--{
--    uint32_t end_len;
--
--    end_len = start_len &= 0xf;
--    if (!test_bit(start_len, cpu->sve_vq_map)) {
--        end_len = find_last_bit(cpu->sve_vq_map, start_len);
--        assert(end_len < start_len);
--    }
--    return end_len;
--}
--
--/*
-- * Given that SVE is enabled, return the vector length for EL.
-- */
--uint32_t sve_zcr_len_for_el(CPUARMState *env, int el)
--{
--    ARMCPU *cpu = env_archcpu(env);
--    uint32_t zcr_len = cpu->sve_max_vq - 1;
--
--    if (el <= 1) {
--        zcr_len = MIN(zcr_len, 0xf & (uint32_t)env->vfp.zcr_el[1]);
--    }
--    if (el <= 2 && arm_feature(env, ARM_FEATURE_EL2)) {
--        zcr_len = MIN(zcr_len, 0xf & (uint32_t)env->vfp.zcr_el[2]);
--    }
--    if (arm_feature(env, ARM_FEATURE_EL3)) {
--        zcr_len = MIN(zcr_len, 0xf & (uint32_t)env->vfp.zcr_el[3]);
--    }
--
--    return sve_zcr_get_valid_len(cpu, zcr_len);
--}
--
--/* #endif TARGET_AARCH64 , see matching comment above */
--
- uint64_t arm_sctlr(CPUARMState *env, int el)
- {
-     /* Only EL0 needs to be adjusted for EL1&0 or EL2&0. */
-diff --git a/target/arm/cpu-sve.c b/target/arm/cpu-sve.c
-index 24bffbba8b..e8e817e110 100644
---- a/target/arm/cpu-sve.c
-+++ b/target/arm/cpu-sve.c
-@@ -288,3 +288,36 @@ void cpu_sve_add_props_max(Object *obj)
- {
-     object_property_add(obj, "sve-max-vq", "uint32", get_prop_max_vq, set_prop_max_vq, NULL, NULL);
- }
-+
-+static uint32_t sve_zcr_get_valid_len(ARMCPU *cpu, uint32_t start_len)
-+{
-+    uint32_t end_len;
-+
-+    end_len = start_len &= 0xf;
-+    if (!test_bit(start_len, cpu->sve_vq_map)) {
-+        end_len = find_last_bit(cpu->sve_vq_map, start_len);
-+        assert(end_len < start_len);
-+    }
-+    return end_len;
-+}
-+
+ /**
+  * ARMCPUClass:
+  * @parent_realize: The parent class' realize handler.
+diff --git a/target/arm/cpu32.h b/target/arm/cpu32.h
+new file mode 100644
+index 0000000000..211fad6f55
+--- /dev/null
++++ b/target/arm/cpu32.h
+@@ -0,0 +1,28 @@
 +/*
-+ * Given that SVE is enabled, return the vector length for EL.
++ * QEMU ARM CPU models (32bit)
++ *
++ * Copyright (c) 2012 SUSE LINUX Products GmbH
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, see
++ * <http://www.gnu.org/licenses/gpl-2.0.html>
 + */
-+uint32_t sve_zcr_len_for_el(CPUARMState *env, int el)
-+{
-+    ARMCPU *cpu = env_archcpu(env);
-+    uint32_t zcr_len = cpu->sve_max_vq - 1;
 +
-+    if (el <= 1) {
-+        zcr_len = MIN(zcr_len, 0xf & (uint32_t)env->vfp.zcr_el[1]);
-+    }
-+    if (el <= 2 && arm_feature(env, ARM_FEATURE_EL2)) {
-+        zcr_len = MIN(zcr_len, 0xf & (uint32_t)env->vfp.zcr_el[2]);
-+    }
-+    if (arm_feature(env, ARM_FEATURE_EL3)) {
-+        zcr_len = MIN(zcr_len, 0xf & (uint32_t)env->vfp.zcr_el[3]);
-+    }
++#ifndef ARM_CPU32_H
++#define ARM_CPU32_H
 +
-+    return sve_zcr_get_valid_len(cpu, zcr_len);
-+}
++void arm_cpu_dump_state(CPUState *cs, FILE *f, int flags);
++void arm32_cpu_class_init(ObjectClass *oc, void *data);
++void arm32_cpu_register(const ARMCPUInfo *info);
++
++#endif /* ARM_CPU32_H */
 diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index b297d0e6aa..0e41854b92 100644
+index 7bb406efd2..b9b300944d 100644
 --- a/target/arm/cpu.c
 +++ b/target/arm/cpu.c
-@@ -23,7 +23,11 @@
- #include "target/arm/idau.h"
- #include "qapi/error.h"
- #include "cpu.h"
-+
-+#ifdef TARGET_AARCH64
- #include "cpu-sve.h"
-+#endif /* TARGET_AARCH64 */
-+
- #include "cpregs.h"
- 
+@@ -30,6 +30,7 @@
  #ifdef CONFIG_TCG
-diff --git a/target/arm/tcg/cpregs.c b/target/arm/tcg/cpregs.c
-index 9d4ac66281..c971dc6097 100644
---- a/target/arm/tcg/cpregs.c
-+++ b/target/arm/tcg/cpregs.c
-@@ -17,6 +17,7 @@
- #include "cpregs.h"
+ #include "hw/core/tcg-cpu-ops.h"
+ #endif /* CONFIG_TCG */
++#include "cpu32.h"
+ #include "internals.h"
+ #include "exec/exec-all.h"
+ #include "hw/qdev-properties.h"
+@@ -853,7 +854,7 @@ static inline void aarch64_cpu_dump_state(CPUState *cs, FILE *f, int flags)
  
- #ifdef TARGET_AARCH64
-+#include "cpu-sve.h"
- #include "tcg/tcg-sve.h"
- #endif /* TARGET_AARCH64 */
+ #endif
  
-diff --git a/target/arm/tcg/helper.c b/target/arm/tcg/helper.c
-index edc4b4cb4e..984dae7643 100644
---- a/target/arm/tcg/helper.c
-+++ b/target/arm/tcg/helper.c
-@@ -18,6 +18,10 @@
- #include "cpregs.h"
- #include "tcg-cpu.h"
- 
-+#ifdef TARGET_AARCH64
-+#include "cpu-sve.h"
-+#endif /* TARGET_AARCH64 */
-+
- static int vfp_gdb_get_reg(CPUARMState *env, GByteArray *buf, int reg)
+-static void arm_cpu_dump_state(CPUState *cs, FILE *f, int flags)
++void arm_cpu_dump_state(CPUState *cs, FILE *f, int flags)
  {
-     ARMCPU *cpu = env_archcpu(env);
+     ARMCPU *cpu = ARM_CPU(cs);
+     CPUARMState *env = &cpu->env;
+@@ -1856,17 +1857,6 @@ static Property arm_cpu_properties[] = {
+     DEFINE_PROP_END_OF_LIST()
+ };
+ 
+-static gchar *arm_gdb_arch_name(CPUState *cs)
+-{
+-    ARMCPU *cpu = ARM_CPU(cs);
+-    CPUARMState *env = &cpu->env;
+-
+-    if (arm_feature(env, ARM_FEATURE_IWMMXT)) {
+-        return g_strdup("iwmmxt");
+-    }
+-    return g_strdup("arm");
+-}
+-
+ #ifndef CONFIG_USER_ONLY
+ #include "hw/core/sysemu-cpu-ops.h"
+ 
+@@ -1912,16 +1902,11 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
+ 
+     cc->class_by_name = arm_cpu_class_by_name;
+     cc->has_work = arm_cpu_has_work;
+-    cc->dump_state = arm_cpu_dump_state;
+     cc->set_pc = arm_cpu_set_pc;
+-    cc->gdb_read_register = arm_cpu_gdb_read_register;
+-    cc->gdb_write_register = arm_cpu_gdb_write_register;
+ #ifndef CONFIG_USER_ONLY
+     cc->sysemu_ops = &arm_sysemu_ops;
+ #endif
+-    cc->gdb_num_core_regs = 26;
+-    cc->gdb_core_xml_file = "arm-core.xml";
+-    cc->gdb_arch_name = arm_gdb_arch_name;
++
+     cc->gdb_get_dynamic_xml = arm_gdb_get_dynamic_xml;
+     cc->gdb_stop_before_watchpoint = true;
+     cc->disas_set_info = arm_disas_set_info;
+@@ -1929,6 +1914,8 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
+ #ifdef CONFIG_TCG
+     cc->tcg_ops = &arm_tcg_ops;
+ #endif /* CONFIG_TCG */
++
++    arm32_cpu_class_init(oc, data);
+ }
+ 
+ #ifdef CONFIG_KVM
+@@ -1951,38 +1938,6 @@ static const TypeInfo host_arm_cpu_type_info = {
+ 
+ #endif
+ 
+-static void arm_cpu_instance_init(Object *obj)
+-{
+-    ARMCPUClass *acc = ARM_CPU_GET_CLASS(obj);
+-
+-    acc->info->initfn(obj);
+-    arm_cpu_post_init(obj);
+-}
+-
+-static void cpu_register_class_init(ObjectClass *oc, void *data)
+-{
+-    ARMCPUClass *acc = ARM_CPU_CLASS(oc);
+-
+-    acc->info = data;
+-}
+-
+-void arm_cpu_register(const ARMCPUInfo *info)
+-{
+-    TypeInfo type_info = {
+-        .parent = TYPE_ARM_CPU,
+-        .instance_size = sizeof(ARMCPU),
+-        .instance_align = __alignof__(ARMCPU),
+-        .instance_init = arm_cpu_instance_init,
+-        .class_size = sizeof(ARMCPUClass),
+-        .class_init = info->class_init ?: cpu_register_class_init,
+-        .class_data = (void *)info,
+-    };
+-
+-    type_info.name = g_strdup_printf("%s-" TYPE_ARM_CPU, info->name);
+-    type_register(&type_info);
+-    g_free((void *)type_info.name);
+-}
+-
+ static const TypeInfo arm_cpu_type_info = {
+     .name = TYPE_ARM_CPU,
+     .parent = TYPE_CPU,
+diff --git a/target/arm/cpu32.c b/target/arm/cpu32.c
+new file mode 100644
+index 0000000000..39fb112a04
+--- /dev/null
++++ b/target/arm/cpu32.c
+@@ -0,0 +1,118 @@
++/*
++ * QEMU ARM CPU models (32bit)
++ *
++ * Copyright (c) 2012 SUSE LINUX Products GmbH
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, see
++ * <http://www.gnu.org/licenses/gpl-2.0.html>
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/qemu-print.h"
++#include "qemu-common.h"
++#include "target/arm/idau.h"
++#include "qemu/module.h"
++#include "qapi/error.h"
++#include "qapi/visitor.h"
++#include "cpu.h"
++#include "cpregs.h"
++#include "internals.h"
++#include "exec/exec-all.h"
++#include "hw/qdev-properties.h"
++#if !defined(CONFIG_USER_ONLY)
++#include "hw/loader.h"
++#include "hw/boards.h"
++#endif
++#include "sysemu/sysemu.h"
++#include "sysemu/tcg.h"
++#include "sysemu/hw_accel.h"
++#include "kvm_arm.h"
++#include "disas/capstone.h"
++#include "fpu/softfloat.h"
++#include "cpu-mmu.h"
++#include "cpu32.h"
++
++/* we can move this to tcg/ after the cleanup of ARM boards configurations */
++static const ARMCPUInfo arm32_cpus[] = {
++};
++
++static gchar *arm_gdb_arch_name(CPUState *cs)
++{
++    ARMCPU *cpu = ARM_CPU(cs);
++    CPUARMState *env = &cpu->env;
++
++    if (arm_feature(env, ARM_FEATURE_IWMMXT)) {
++        return g_strdup("iwmmxt");
++    }
++    return g_strdup("arm");
++}
++
++void arm32_cpu_class_init(ObjectClass *oc, void *data)
++{
++    CPUClass *cc = CPU_CLASS(oc);
++
++    cc->gdb_read_register = arm_cpu_gdb_read_register;
++    cc->gdb_write_register = arm_cpu_gdb_write_register;
++    cc->gdb_num_core_regs = 26;
++    cc->gdb_core_xml_file = "arm-core.xml";
++    cc->gdb_arch_name = arm_gdb_arch_name;
++    cc->dump_state = arm_cpu_dump_state;
++}
++
++static void arm32_cpu_instance_init(Object *obj)
++{
++    ARMCPUClass *acc = ARM_CPU_GET_CLASS(obj);
++
++    acc->info->initfn(obj);
++    arm_cpu_post_init(obj);
++}
++
++static void arm32_cpu_register_class_init(ObjectClass *oc, void *data)
++{
++    ARMCPUClass *acc = ARM_CPU_CLASS(oc);
++
++    acc->info = data;
++}
++
++void arm32_cpu_register(const ARMCPUInfo *info)
++{
++    TypeInfo type_info = {
++        .parent = TYPE_ARM_CPU,
++        .instance_size = sizeof(ARMCPU),
++        .instance_align = __alignof__(ARMCPU),
++        .instance_init = arm32_cpu_instance_init,
++        .class_size = sizeof(ARMCPUClass),
++        .class_init = info->class_init ?: arm32_cpu_register_class_init,
++        .class_data = (void *)info,
++    };
++
++    type_info.name = g_strdup_printf("%s-" TYPE_ARM_CPU, info->name);
++    type_register(&type_info);
++    g_free((void *)type_info.name);
++}
++
++static void arm32_cpu_register_types(void)
++{
++    const size_t cpu_count = ARRAY_SIZE(arm32_cpus);
++
++    if (cpu_count) {
++        size_t i;
++
++        for (i = 0; i < cpu_count; ++i) {
++            arm32_cpu_register(&arm32_cpus[i]);
++        }
++    }
++}
++
++type_init(arm32_cpu_register_types)
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 5354069c63..4ff55fb0f0 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -860,7 +860,7 @@ static void cpu_register_class_init(ObjectClass *oc, void *data)
+     acc->info = data;
+ }
+ 
+-void aarch64_cpu_register(const ARMCPUInfo *info)
++static void aarch64_cpu_register(const ARMCPUInfo *info)
+ {
+     TypeInfo type_info = {
+         .parent = TYPE_AARCH64_CPU,
+diff --git a/target/arm/cpu_tcg.c b/target/arm/cpu_tcg.c
+index d973239d78..09eff9bfd2 100644
+--- a/target/arm/cpu_tcg.c
++++ b/target/arm/cpu_tcg.c
+@@ -19,6 +19,7 @@
+ #include "hw/boards.h"
+ #endif
+ #include "cpregs.h"
++#include "cpu32.h"
+ 
+ /* CPU models. These are not needed for the AArch64 linux-user build. */
+ #if !defined(CONFIG_USER_ONLY) || !defined(TARGET_AARCH64)
+@@ -1072,7 +1073,7 @@ static void arm_tcg_cpu_register_types(void)
+ 
+     type_register_static(&idau_interface_type_info);
+     for (i = 0; i < ARRAY_SIZE(arm_tcg_cpus); ++i) {
+-        arm_cpu_register(&arm_tcg_cpus[i]);
++        arm32_cpu_register(&arm_tcg_cpus[i]);
+     }
+ }
+ 
+diff --git a/target/arm/meson.build b/target/arm/meson.build
+index 4bc44e1db2..0ccd2fb0bc 100644
+--- a/target/arm/meson.build
++++ b/target/arm/meson.build
+@@ -2,12 +2,12 @@ arm_ss = ss.source_set()
+ arm_ss.add(files(
+   'cpregs.c',
+   'cpu.c',
++  'cpu32.c',
+   'cpu-common.c',
+   'cpu-mmu.c',
+   'cpu-vfp.c',
+   'cpustate-list.c',
+   'gdbstub.c',
+-  'cpu_tcg.c',
+ ))
+ arm_ss.add(zlib)
+ 
+@@ -18,6 +18,10 @@ arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
+   'gdbstub64.c',
+ ))
+ 
++arm_ss.add(when: 'CONFIG_TCG', if_true: files(
++  'cpu_tcg.c',
++))
++
+ arm_softmmu_ss = ss.source_set()
+ arm_softmmu_ss.add(files(
+   'arch_dump.c',
 -- 
 2.20.1

@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id g21sm7987458wrb.46.2021.06.04.09.32.37
+        by smtp.gmail.com with ESMTPSA id t1sm7060818wrx.28.2021.06.04.09.32.37
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 04 Jun 2021 09:32:38 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id DAD161FFD8;
-	Fri,  4 Jun 2021 16:53:20 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id DFC9D1FFBF;
+	Fri,  4 Jun 2021 16:53:17 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -13,344 +13,549 @@ Cc: qemu-arm@nongnu.org,
 	Richard Henderson <richard.henderson@linaro.org>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH  v16 67/99] target/arm: create kvm cpu accel class
-Date: Fri,  4 Jun 2021 16:52:40 +0100
-Message-Id: <20210604155312.15902-68-alex.bennee@linaro.org>
+Subject: [PATCH  v16 40/99] target/arm: move aarch64_sync_32_to_64 (and vv) to cpu code
+Date: Fri,  4 Jun 2021 16:52:13 +0100
+Message-Id: <20210604155312.15902-41-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210604155312.15902-1-alex.bennee@linaro.org>
 References: <20210604155312.15902-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: ZGQ83l2utSqF
+X-TUID: o0hESb2mxRQi
 
 From: Claudio Fontana <cfontana@suse.de>
 
-move init, realizefn and reset code into it.
+and arm_phys_excp_target_el since it is tied up inside the
+same #ifdef block.
+
+aarch64_sync_32_to_64 and aarch64_sync_64_to_32 are
+mixed in with the TCG helpers, but they shouldn't, as they
+are needed for KVM too.
+
+kvm_arch_get_registers()
+{
+    if (!is_a64(env)) {
+        aarch64_sync_64_to_32(env);
+    }
+    write_kvmstate_to_list(cpu);
+    write_list_to_cpustate(cpu);
+    ...
+}
+
+kvm_arch_put_registers()
+{
+    if (!is_a64(env)) {
+        aarch64_sync_32_to_64(env);
+    }
+    write_cpustate_to_list(cpu, true);
+    write_list_to_kvmstate(cpu, level)
+    ...
+}
+
+Move to the cpu module.
 
 Signed-off-by: Claudio Fontana <cfontana@suse.de>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/arm/internals.h     |   1 -
- target/arm/cpu-sysemu.c    |  32 ----------
- target/arm/cpu.c           |  49 +++-----------
- target/arm/kvm/kvm-cpu.c   | 128 +++++++++++++++++++++++++++++++++++++
- target/arm/kvm/meson.build |   1 +
- 5 files changed, 137 insertions(+), 74 deletions(-)
- create mode 100644 target/arm/kvm/kvm-cpu.c
+ target/arm/cpu-sysemu.c | 215 +++++++++++++++++++++++++++++++++++++
+ target/arm/cpu-user.c   |  11 ++
+ target/arm/tcg/helper.c | 232 +---------------------------------------
+ 3 files changed, 229 insertions(+), 229 deletions(-)
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 227a80ec21..522596d15f 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1165,7 +1165,6 @@ static inline uint64_t useronly_maybe_clean_ptr(uint32_t desc, uint64_t ptr)
- 
- #ifndef CONFIG_USER_ONLY
- void arm_cpu_set_irq(void *opaque, int irq, int level);
--void arm_cpu_kvm_set_irq(void *opaque, int irq, int level);
- bool arm_cpu_virtio_is_big_endian(CPUState *cs);
- #endif /* !CONFIG_USER_ONLY */
- 
 diff --git a/target/arm/cpu-sysemu.c b/target/arm/cpu-sysemu.c
-index 26467c640b..fff55311f4 100644
+index 3add2c2439..7a314bf805 100644
 --- a/target/arm/cpu-sysemu.c
 +++ b/target/arm/cpu-sysemu.c
-@@ -24,7 +24,6 @@
- #include "cpu.h"
- #include "internals.h"
- #include "sysemu/hw_accel.h"
--#include "kvm/kvm_arm.h"
- #include "sysemu/tcg.h"
- #include "tcg/tcg-cpu.h"
- 
-@@ -72,37 +71,6 @@ void arm_cpu_set_irq(void *opaque, int irq, int level)
-     }
+@@ -133,3 +133,218 @@ void switch_mode(CPUARMState *env, int mode)
+     env->banked_r14[r14_bank_number(old_mode)] = env->regs[14];
+     env->regs[14] = env->banked_r14[r14_bank_number(mode)];
  }
- 
--void arm_cpu_kvm_set_irq(void *opaque, int irq, int level)
--{
--#ifdef CONFIG_KVM
--    ARMCPU *cpu = opaque;
--    CPUARMState *env = &cpu->env;
--    CPUState *cs = CPU(cpu);
--    uint32_t linestate_bit;
--    int irq_id;
--
--    switch (irq) {
--    case ARM_CPU_IRQ:
--        irq_id = KVM_ARM_IRQ_CPU_IRQ;
--        linestate_bit = CPU_INTERRUPT_HARD;
--        break;
--    case ARM_CPU_FIQ:
--        irq_id = KVM_ARM_IRQ_CPU_FIQ;
--        linestate_bit = CPU_INTERRUPT_FIQ;
--        break;
--    default:
--        g_assert_not_reached();
--    }
--
--    if (level) {
--        env->irq_line_state |= linestate_bit;
--    } else {
--        env->irq_line_state &= ~linestate_bit;
--    }
--    kvm_arm_set_irq(cs->cpu_index, KVM_ARM_IRQ_TYPE_CPU, irq_id, !!level);
--#endif
--}
--
- bool arm_cpu_virtio_is_big_endian(CPUState *cs)
- {
-     ARMCPU *cpu = ARM_CPU(cs);
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 57f975f5dc..0ecbfa060c 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -42,6 +42,7 @@
- #include "disas/capstone.h"
- #include "fpu/softfloat.h"
- #include "cpu-mmu.h"
-+#include "qemu/accel.h"
- 
- static void arm_cpu_set_pc(CPUState *cs, vaddr value)
- {
-@@ -409,11 +410,6 @@ static void arm_cpu_reset(DeviceState *dev)
-                               &env->vfp.fp_status_f16);
-     set_float_detect_tininess(float_tininess_before_rounding,
-                               &env->vfp.standard_fp_status_f16);
--#ifndef CONFIG_USER_ONLY
--    if (kvm_enabled()) {
--        kvm_arm_reset_vcpu(cpu);
--    }
--#endif
- 
-     if (tcg_enabled()) {
-         hw_breakpoint_update_all(cpu);
-@@ -560,12 +556,7 @@ static void arm_cpu_initfn(Object *obj)
- 
- #ifndef CONFIG_USER_ONLY
-     /* Our inbound IRQ and FIQ lines */
--    if (kvm_enabled()) {
--        /* VIRQ and VFIQ are unused with KVM but we add them to maintain
--         * the same interface as non-KVM CPUs.
--         */
--        qdev_init_gpio_in(DEVICE(cpu), arm_cpu_kvm_set_irq, 4);
--    } else if (tcg_enabled() || qtest_enabled()) {
-+    if (tcg_enabled() || qtest_enabled()) {
-         qdev_init_gpio_in(DEVICE(cpu), arm_cpu_set_irq, 4);
-     }
- 
-@@ -809,6 +800,9 @@ void arm_cpu_post_init(Object *obj)
-         }
-     }
- #endif
 +
-+    /* if required, do accelerator-specific cpu initializations */
-+    accel_cpu_instance_init(CPU(obj));
- }
- 
- static void arm_cpu_finalizefn(Object *obj)
-@@ -878,16 +872,13 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-     Error *local_err = NULL;
-     bool no_aa32 = false;
- 
--    /* If we needed to query the host kernel for the CPU features
-+    /*
-+     * If we needed to query the host kernel for the CPU features
-      * then it's possible that might have failed in the initfn, but
-      * this is the first point where we can report it.
-      */
-     if (cpu->host_cpu_probe_failed) {
--        if (!kvm_enabled()) {
--            error_setg(errp, "The 'host' CPU type can only be used with KVM");
--        } else {
--            error_setg(errp, "Failed to retrieve host CPU features");
--        }
-+        error_setg(errp, "The 'host' CPU type can only be used with KVM");
-         return;
-     }
- 
-@@ -1486,26 +1477,6 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
-     arm32_cpu_class_init(oc, data);
- }
- 
--#ifdef CONFIG_KVM
--static void arm_host_initfn(Object *obj)
--{
--    ARMCPU *cpu = ARM_CPU(obj);
--
--    kvm_arm_set_cpu_features_from_host(cpu);
--    if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
--        aarch64_add_sve_properties(obj);
--    }
--    arm_cpu_post_init(obj);
--}
--
--static const TypeInfo host_arm_cpu_type_info = {
--    .name = TYPE_ARM_HOST_CPU,
--    .parent = TYPE_AARCH64_CPU,
--    .instance_init = arm_host_initfn,
--};
--
--#endif
--
- static const TypeInfo arm_cpu_type_info = {
-     .name = TYPE_ARM_CPU,
-     .parent = TYPE_CPU,
-@@ -1521,10 +1492,6 @@ static const TypeInfo arm_cpu_type_info = {
- static void arm_cpu_register_types(void)
- {
-     type_register_static(&arm_cpu_type_info);
--
--#ifdef CONFIG_KVM
--    type_register_static(&host_arm_cpu_type_info);
--#endif
- }
- 
- type_init(arm_cpu_register_types)
-diff --git a/target/arm/kvm/kvm-cpu.c b/target/arm/kvm/kvm-cpu.c
-new file mode 100644
-index 0000000000..5fbb127e61
---- /dev/null
-+++ b/target/arm/kvm/kvm-cpu.c
-@@ -0,0 +1,128 @@
 +/*
-+ * QEMU ARM CPU
-+ *
-+ * Copyright (c) 2012 SUSE LINUX Products GmbH
-+ *
-+ * This program is free software; you can redistribute it and/or
-+ * modify it under the terms of the GNU General Public License
-+ * as published by the Free Software Foundation; either version 2
-+ * of the License, or (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU General Public License
-+ * along with this program; if not, see
-+ * <http://www.gnu.org/licenses/gpl-2.0.html>
++ * Function used to synchronize QEMU's AArch64 register set with AArch32
++ * register set.  This is necessary when switching between AArch32 and AArch64
++ * execution state.
 + */
-+
-+#include "qemu/osdep.h"
-+#include "qemu-common.h"
-+#include "cpu.h"
-+#include "hw/core/accel-cpu.h"
-+#include "qapi/error.h"
-+
-+#include "kvm/kvm_arm.h"
-+#include "internals.h"
-+
-+static void arm_cpu_kvm_set_irq(void *opaque, int irq, int level)
++void aarch64_sync_32_to_64(CPUARMState *env)
 +{
-+    ARMCPU *cpu = opaque;
-+    CPUARMState *env = &cpu->env;
-+    CPUState *cs = CPU(cpu);
-+    uint32_t linestate_bit;
-+    int irq_id;
++    int i;
++    uint32_t mode = env->uncached_cpsr & CPSR_M;
 +
-+    switch (irq) {
-+    case ARM_CPU_IRQ:
-+        irq_id = KVM_ARM_IRQ_CPU_IRQ;
-+        linestate_bit = CPU_INTERRUPT_HARD;
-+        break;
-+    case ARM_CPU_FIQ:
-+        irq_id = KVM_ARM_IRQ_CPU_FIQ;
-+        linestate_bit = CPU_INTERRUPT_FIQ;
-+        break;
-+    default:
-+        g_assert_not_reached();
++    /* We can blanket copy R[0:7] to X[0:7] */
++    for (i = 0; i < 8; i++) {
++        env->xregs[i] = env->regs[i];
 +    }
 +
-+    if (level) {
-+        env->irq_line_state |= linestate_bit;
++    /*
++     * Unless we are in FIQ mode, x8-x12 come from the user registers r8-r12.
++     * Otherwise, they come from the banked user regs.
++     */
++    if (mode == ARM_CPU_MODE_FIQ) {
++        for (i = 8; i < 13; i++) {
++            env->xregs[i] = env->usr_regs[i - 8];
++        }
 +    } else {
-+        env->irq_line_state &= ~linestate_bit;
++        for (i = 8; i < 13; i++) {
++            env->xregs[i] = env->regs[i];
++        }
 +    }
-+    kvm_arm_set_irq(cs->cpu_index, KVM_ARM_IRQ_TYPE_CPU, irq_id, !!level);
-+}
 +
-+static void kvm_cpu_instance_init(CPUState *cs)
-+{
 +    /*
-+     * VIRQ and VFIQ are unused with KVM but we add them to maintain
-+     * the same interface as non-KVM CPUs.
++     * Registers x13-x23 are the various mode SP and FP registers. Registers
++     * r13 and r14 are only copied if we are in that mode, otherwise we copy
++     * from the mode banked register.
 +     */
-+    qdev_init_gpio_in(DEVICE(cs), arm_cpu_kvm_set_irq, 4);
-+}
++    if (mode == ARM_CPU_MODE_USR || mode == ARM_CPU_MODE_SYS) {
++        env->xregs[13] = env->regs[13];
++        env->xregs[14] = env->regs[14];
++    } else {
++        env->xregs[13] = env->banked_r13[bank_number(ARM_CPU_MODE_USR)];
++        /* HYP is an exception in that it is copied from r14 */
++        if (mode == ARM_CPU_MODE_HYP) {
++            env->xregs[14] = env->regs[14];
++        } else {
++            env->xregs[14] = env->banked_r14[r14_bank_number(ARM_CPU_MODE_USR)];
++        }
++    }
 +
-+static bool kvm_cpu_realizefn(CPUState *cs, Error **errp)
-+{
++    if (mode == ARM_CPU_MODE_HYP) {
++        env->xregs[15] = env->regs[13];
++    } else {
++        env->xregs[15] = env->banked_r13[bank_number(ARM_CPU_MODE_HYP)];
++    }
++
++    if (mode == ARM_CPU_MODE_IRQ) {
++        env->xregs[16] = env->regs[14];
++        env->xregs[17] = env->regs[13];
++    } else {
++        env->xregs[16] = env->banked_r14[r14_bank_number(ARM_CPU_MODE_IRQ)];
++        env->xregs[17] = env->banked_r13[bank_number(ARM_CPU_MODE_IRQ)];
++    }
++
++    if (mode == ARM_CPU_MODE_SVC) {
++        env->xregs[18] = env->regs[14];
++        env->xregs[19] = env->regs[13];
++    } else {
++        env->xregs[18] = env->banked_r14[r14_bank_number(ARM_CPU_MODE_SVC)];
++        env->xregs[19] = env->banked_r13[bank_number(ARM_CPU_MODE_SVC)];
++    }
++
++    if (mode == ARM_CPU_MODE_ABT) {
++        env->xregs[20] = env->regs[14];
++        env->xregs[21] = env->regs[13];
++    } else {
++        env->xregs[20] = env->banked_r14[r14_bank_number(ARM_CPU_MODE_ABT)];
++        env->xregs[21] = env->banked_r13[bank_number(ARM_CPU_MODE_ABT)];
++    }
++
++    if (mode == ARM_CPU_MODE_UND) {
++        env->xregs[22] = env->regs[14];
++        env->xregs[23] = env->regs[13];
++    } else {
++        env->xregs[22] = env->banked_r14[r14_bank_number(ARM_CPU_MODE_UND)];
++        env->xregs[23] = env->banked_r13[bank_number(ARM_CPU_MODE_UND)];
++    }
++
 +    /*
-+     * If we needed to query the host kernel for the CPU features
-+     * then it's possible that might have failed in the initfn, but
-+     * this is the first point where we can report it.
++     * Registers x24-x30 are mapped to r8-r14 in FIQ mode.  If we are in FIQ
++     * mode, then we can copy from r8-r14.  Otherwise, we copy from the
++     * FIQ bank for r8-r14.
 +     */
-+    ARMCPU *cpu = ARM_CPU(cs);
-+
-+    if (cpu->host_cpu_probe_failed) {
-+        error_setg(errp, "Failed to retrieve host CPU features");
-+        return false;
++    if (mode == ARM_CPU_MODE_FIQ) {
++        for (i = 24; i < 31; i++) {
++            env->xregs[i] = env->regs[i - 16];   /* X[24:30] <- R[8:14] */
++        }
++    } else {
++        for (i = 24; i < 29; i++) {
++            env->xregs[i] = env->fiq_regs[i - 24];
++        }
++        env->xregs[29] = env->banked_r13[bank_number(ARM_CPU_MODE_FIQ)];
++        env->xregs[30] = env->banked_r14[r14_bank_number(ARM_CPU_MODE_FIQ)];
 +    }
-+    return true;
++
++    env->pc = env->regs[15];
 +}
 +
-+static void host_cpu_instance_init(Object *obj)
++/*
++ * Function used to synchronize QEMU's AArch32 register set with AArch64
++ * register set.  This is necessary when switching between AArch32 and AArch64
++ * execution state.
++ */
++void aarch64_sync_64_to_32(CPUARMState *env)
 +{
-+    ARMCPU *cpu = ARM_CPU(obj);
++    int i;
++    uint32_t mode = env->uncached_cpsr & CPSR_M;
 +
-+    kvm_arm_set_cpu_features_from_host(cpu);
-+    if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
-+        aarch64_add_sve_properties(obj);
++    /* We can blanket copy X[0:7] to R[0:7] */
++    for (i = 0; i < 8; i++) {
++        env->regs[i] = env->xregs[i];
 +    }
-+    arm_cpu_post_init(obj);
-+}
 +
-+static void kvm_cpu_reset(CPUState *cs)
++    /*
++     * Unless we are in FIQ mode, r8-r12 come from the user registers x8-x12.
++     * Otherwise, we copy x8-x12 into the banked user regs.
++     */
++    if (mode == ARM_CPU_MODE_FIQ) {
++        for (i = 8; i < 13; i++) {
++            env->usr_regs[i - 8] = env->xregs[i];
++        }
++    } else {
++        for (i = 8; i < 13; i++) {
++            env->regs[i] = env->xregs[i];
++        }
++    }
++
++    /*
++     * Registers r13 & r14 depend on the current mode.
++     * If we are in a given mode, we copy the corresponding x registers to r13
++     * and r14.  Otherwise, we copy the x register to the banked r13 and r14
++     * for the mode.
++     */
++    if (mode == ARM_CPU_MODE_USR || mode == ARM_CPU_MODE_SYS) {
++        env->regs[13] = env->xregs[13];
++        env->regs[14] = env->xregs[14];
++    } else {
++        env->banked_r13[bank_number(ARM_CPU_MODE_USR)] = env->xregs[13];
++
++        /*
++         * HYP is an exception in that it does not have its own banked r14 but
++         * shares the USR r14
++         */
++        if (mode == ARM_CPU_MODE_HYP) {
++            env->regs[14] = env->xregs[14];
++        } else {
++            env->banked_r14[r14_bank_number(ARM_CPU_MODE_USR)] = env->xregs[14];
++        }
++    }
++
++    if (mode == ARM_CPU_MODE_HYP) {
++        env->regs[13] = env->xregs[15];
++    } else {
++        env->banked_r13[bank_number(ARM_CPU_MODE_HYP)] = env->xregs[15];
++    }
++
++    if (mode == ARM_CPU_MODE_IRQ) {
++        env->regs[14] = env->xregs[16];
++        env->regs[13] = env->xregs[17];
++    } else {
++        env->banked_r14[r14_bank_number(ARM_CPU_MODE_IRQ)] = env->xregs[16];
++        env->banked_r13[bank_number(ARM_CPU_MODE_IRQ)] = env->xregs[17];
++    }
++
++    if (mode == ARM_CPU_MODE_SVC) {
++        env->regs[14] = env->xregs[18];
++        env->regs[13] = env->xregs[19];
++    } else {
++        env->banked_r14[r14_bank_number(ARM_CPU_MODE_SVC)] = env->xregs[18];
++        env->banked_r13[bank_number(ARM_CPU_MODE_SVC)] = env->xregs[19];
++    }
++
++    if (mode == ARM_CPU_MODE_ABT) {
++        env->regs[14] = env->xregs[20];
++        env->regs[13] = env->xregs[21];
++    } else {
++        env->banked_r14[r14_bank_number(ARM_CPU_MODE_ABT)] = env->xregs[20];
++        env->banked_r13[bank_number(ARM_CPU_MODE_ABT)] = env->xregs[21];
++    }
++
++    if (mode == ARM_CPU_MODE_UND) {
++        env->regs[14] = env->xregs[22];
++        env->regs[13] = env->xregs[23];
++    } else {
++        env->banked_r14[r14_bank_number(ARM_CPU_MODE_UND)] = env->xregs[22];
++        env->banked_r13[bank_number(ARM_CPU_MODE_UND)] = env->xregs[23];
++    }
++
++    /*
++     * Registers x24-x30 are mapped to r8-r14 in FIQ mode.  If we are in FIQ
++     * mode, then we can copy to r8-r14.  Otherwise, we copy to the
++     * FIQ bank for r8-r14.
++     */
++    if (mode == ARM_CPU_MODE_FIQ) {
++        for (i = 24; i < 31; i++) {
++            env->regs[i - 16] = env->xregs[i];   /* X[24:30] -> R[8:14] */
++        }
++    } else {
++        for (i = 24; i < 29; i++) {
++            env->fiq_regs[i - 24] = env->xregs[i];
++        }
++        env->banked_r13[bank_number(ARM_CPU_MODE_FIQ)] = env->xregs[29];
++        env->banked_r14[r14_bank_number(ARM_CPU_MODE_FIQ)] = env->xregs[30];
++    }
++
++    env->regs[15] = env->pc;
++}
+diff --git a/target/arm/cpu-user.c b/target/arm/cpu-user.c
+index a72b7f5703..0225089e46 100644
+--- a/target/arm/cpu-user.c
++++ b/target/arm/cpu-user.c
+@@ -22,3 +22,14 @@ void switch_mode(CPUARMState *env, int mode)
+         cpu_abort(CPU(cpu), "Tried to switch out of user mode\n");
+     }
+ }
++
++void aarch64_sync_64_to_32(CPUARMState *env)
 +{
-+    kvm_arm_reset_vcpu(ARM_CPU(cs));
++    g_assert_not_reached();
 +}
 +
-+static const TypeInfo host_cpu_type_info = {
-+    .name = ARM_CPU_TYPE_NAME("host"),
-+    .parent = TYPE_AARCH64_CPU,
-+    .instance_init = host_cpu_instance_init,
-+};
-+
-+static void kvm_cpu_accel_class_init(ObjectClass *oc, void *data)
++uint32_t arm_phys_excp_target_el(CPUState *cs, uint32_t excp_idx,
++                                 uint32_t cur_el, bool secure)
 +{
-+    AccelCPUClass *acc = ACCEL_CPU_CLASS(oc);
-+
-+    acc->cpu_realizefn = kvm_cpu_realizefn;
-+    acc->cpu_instance_init = kvm_cpu_instance_init;
-+    acc->cpu_reset = kvm_cpu_reset;
++    return 1;
 +}
-+
-+static const TypeInfo kvm_cpu_accel_type_info = {
-+    .name = ACCEL_CPU_NAME("kvm"),
-+    .parent = TYPE_ACCEL_CPU,
-+    .class_init = kvm_cpu_accel_class_init,
-+    .abstract = true,
-+};
-+
-+static void kvm_cpu_accel_register_types(void)
-+{
-+    type_register_static(&host_cpu_type_info);
-+    type_register_static(&kvm_cpu_accel_type_info);
-+}
-+
-+type_init(kvm_cpu_accel_register_types);
-diff --git a/target/arm/kvm/meson.build b/target/arm/kvm/meson.build
-index e92010fa3f..ef58a29dd7 100644
---- a/target/arm/kvm/meson.build
-+++ b/target/arm/kvm/meson.build
-@@ -1,4 +1,5 @@
- arm_ss.add(when: 'CONFIG_KVM', if_true: files(
-   'kvm.c',
-   'kvm64.c',
-+  'kvm-cpu.c',
- ))
+diff --git a/target/arm/tcg/helper.c b/target/arm/tcg/helper.c
+index 0e3f403e56..9dd83911f2 100644
+--- a/target/arm/tcg/helper.c
++++ b/target/arm/tcg/helper.c
+@@ -590,22 +590,10 @@ uint32_t HELPER(rbit)(uint32_t x)
+     return revbit32(x);
+ }
+ 
+-#ifdef CONFIG_USER_ONLY
+-
+-uint32_t arm_phys_excp_target_el(CPUState *cs, uint32_t excp_idx,
+-                                 uint32_t cur_el, bool secure)
+-{
+-    return 1;
+-}
+-
+-void aarch64_sync_64_to_32(CPUARMState *env)
+-{
+-    g_assert_not_reached();
+-}
+-
+-#else
++#ifndef CONFIG_USER_ONLY
+ 
+-/* Physical Interrupt Target EL Lookup Table
++/*
++ * Physical Interrupt Target EL Lookup Table
+  *
+  * [ From ARM ARM section G1.13.4 (Table G1-15) ]
+  *
+@@ -754,220 +742,6 @@ void arm_log_exception(int idx)
+     }
+ }
+ 
+-/*
+- * Function used to synchronize QEMU's AArch64 register set with AArch32
+- * register set.  This is necessary when switching between AArch32 and AArch64
+- * execution state.
+- */
+-void aarch64_sync_32_to_64(CPUARMState *env)
+-{
+-    int i;
+-    uint32_t mode = env->uncached_cpsr & CPSR_M;
+-
+-    /* We can blanket copy R[0:7] to X[0:7] */
+-    for (i = 0; i < 8; i++) {
+-        env->xregs[i] = env->regs[i];
+-    }
+-
+-    /*
+-     * Unless we are in FIQ mode, x8-x12 come from the user registers r8-r12.
+-     * Otherwise, they come from the banked user regs.
+-     */
+-    if (mode == ARM_CPU_MODE_FIQ) {
+-        for (i = 8; i < 13; i++) {
+-            env->xregs[i] = env->usr_regs[i - 8];
+-        }
+-    } else {
+-        for (i = 8; i < 13; i++) {
+-            env->xregs[i] = env->regs[i];
+-        }
+-    }
+-
+-    /*
+-     * Registers x13-x23 are the various mode SP and FP registers. Registers
+-     * r13 and r14 are only copied if we are in that mode, otherwise we copy
+-     * from the mode banked register.
+-     */
+-    if (mode == ARM_CPU_MODE_USR || mode == ARM_CPU_MODE_SYS) {
+-        env->xregs[13] = env->regs[13];
+-        env->xregs[14] = env->regs[14];
+-    } else {
+-        env->xregs[13] = env->banked_r13[bank_number(ARM_CPU_MODE_USR)];
+-        /* HYP is an exception in that it is copied from r14 */
+-        if (mode == ARM_CPU_MODE_HYP) {
+-            env->xregs[14] = env->regs[14];
+-        } else {
+-            env->xregs[14] = env->banked_r14[r14_bank_number(ARM_CPU_MODE_USR)];
+-        }
+-    }
+-
+-    if (mode == ARM_CPU_MODE_HYP) {
+-        env->xregs[15] = env->regs[13];
+-    } else {
+-        env->xregs[15] = env->banked_r13[bank_number(ARM_CPU_MODE_HYP)];
+-    }
+-
+-    if (mode == ARM_CPU_MODE_IRQ) {
+-        env->xregs[16] = env->regs[14];
+-        env->xregs[17] = env->regs[13];
+-    } else {
+-        env->xregs[16] = env->banked_r14[r14_bank_number(ARM_CPU_MODE_IRQ)];
+-        env->xregs[17] = env->banked_r13[bank_number(ARM_CPU_MODE_IRQ)];
+-    }
+-
+-    if (mode == ARM_CPU_MODE_SVC) {
+-        env->xregs[18] = env->regs[14];
+-        env->xregs[19] = env->regs[13];
+-    } else {
+-        env->xregs[18] = env->banked_r14[r14_bank_number(ARM_CPU_MODE_SVC)];
+-        env->xregs[19] = env->banked_r13[bank_number(ARM_CPU_MODE_SVC)];
+-    }
+-
+-    if (mode == ARM_CPU_MODE_ABT) {
+-        env->xregs[20] = env->regs[14];
+-        env->xregs[21] = env->regs[13];
+-    } else {
+-        env->xregs[20] = env->banked_r14[r14_bank_number(ARM_CPU_MODE_ABT)];
+-        env->xregs[21] = env->banked_r13[bank_number(ARM_CPU_MODE_ABT)];
+-    }
+-
+-    if (mode == ARM_CPU_MODE_UND) {
+-        env->xregs[22] = env->regs[14];
+-        env->xregs[23] = env->regs[13];
+-    } else {
+-        env->xregs[22] = env->banked_r14[r14_bank_number(ARM_CPU_MODE_UND)];
+-        env->xregs[23] = env->banked_r13[bank_number(ARM_CPU_MODE_UND)];
+-    }
+-
+-    /*
+-     * Registers x24-x30 are mapped to r8-r14 in FIQ mode.  If we are in FIQ
+-     * mode, then we can copy from r8-r14.  Otherwise, we copy from the
+-     * FIQ bank for r8-r14.
+-     */
+-    if (mode == ARM_CPU_MODE_FIQ) {
+-        for (i = 24; i < 31; i++) {
+-            env->xregs[i] = env->regs[i - 16];   /* X[24:30] <- R[8:14] */
+-        }
+-    } else {
+-        for (i = 24; i < 29; i++) {
+-            env->xregs[i] = env->fiq_regs[i - 24];
+-        }
+-        env->xregs[29] = env->banked_r13[bank_number(ARM_CPU_MODE_FIQ)];
+-        env->xregs[30] = env->banked_r14[r14_bank_number(ARM_CPU_MODE_FIQ)];
+-    }
+-
+-    env->pc = env->regs[15];
+-}
+-
+-/*
+- * Function used to synchronize QEMU's AArch32 register set with AArch64
+- * register set.  This is necessary when switching between AArch32 and AArch64
+- * execution state.
+- */
+-void aarch64_sync_64_to_32(CPUARMState *env)
+-{
+-    int i;
+-    uint32_t mode = env->uncached_cpsr & CPSR_M;
+-
+-    /* We can blanket copy X[0:7] to R[0:7] */
+-    for (i = 0; i < 8; i++) {
+-        env->regs[i] = env->xregs[i];
+-    }
+-
+-    /*
+-     * Unless we are in FIQ mode, r8-r12 come from the user registers x8-x12.
+-     * Otherwise, we copy x8-x12 into the banked user regs.
+-     */
+-    if (mode == ARM_CPU_MODE_FIQ) {
+-        for (i = 8; i < 13; i++) {
+-            env->usr_regs[i - 8] = env->xregs[i];
+-        }
+-    } else {
+-        for (i = 8; i < 13; i++) {
+-            env->regs[i] = env->xregs[i];
+-        }
+-    }
+-
+-    /*
+-     * Registers r13 & r14 depend on the current mode.
+-     * If we are in a given mode, we copy the corresponding x registers to r13
+-     * and r14.  Otherwise, we copy the x register to the banked r13 and r14
+-     * for the mode.
+-     */
+-    if (mode == ARM_CPU_MODE_USR || mode == ARM_CPU_MODE_SYS) {
+-        env->regs[13] = env->xregs[13];
+-        env->regs[14] = env->xregs[14];
+-    } else {
+-        env->banked_r13[bank_number(ARM_CPU_MODE_USR)] = env->xregs[13];
+-
+-        /*
+-         * HYP is an exception in that it does not have its own banked r14 but
+-         * shares the USR r14
+-         */
+-        if (mode == ARM_CPU_MODE_HYP) {
+-            env->regs[14] = env->xregs[14];
+-        } else {
+-            env->banked_r14[r14_bank_number(ARM_CPU_MODE_USR)] = env->xregs[14];
+-        }
+-    }
+-
+-    if (mode == ARM_CPU_MODE_HYP) {
+-        env->regs[13] = env->xregs[15];
+-    } else {
+-        env->banked_r13[bank_number(ARM_CPU_MODE_HYP)] = env->xregs[15];
+-    }
+-
+-    if (mode == ARM_CPU_MODE_IRQ) {
+-        env->regs[14] = env->xregs[16];
+-        env->regs[13] = env->xregs[17];
+-    } else {
+-        env->banked_r14[r14_bank_number(ARM_CPU_MODE_IRQ)] = env->xregs[16];
+-        env->banked_r13[bank_number(ARM_CPU_MODE_IRQ)] = env->xregs[17];
+-    }
+-
+-    if (mode == ARM_CPU_MODE_SVC) {
+-        env->regs[14] = env->xregs[18];
+-        env->regs[13] = env->xregs[19];
+-    } else {
+-        env->banked_r14[r14_bank_number(ARM_CPU_MODE_SVC)] = env->xregs[18];
+-        env->banked_r13[bank_number(ARM_CPU_MODE_SVC)] = env->xregs[19];
+-    }
+-
+-    if (mode == ARM_CPU_MODE_ABT) {
+-        env->regs[14] = env->xregs[20];
+-        env->regs[13] = env->xregs[21];
+-    } else {
+-        env->banked_r14[r14_bank_number(ARM_CPU_MODE_ABT)] = env->xregs[20];
+-        env->banked_r13[bank_number(ARM_CPU_MODE_ABT)] = env->xregs[21];
+-    }
+-
+-    if (mode == ARM_CPU_MODE_UND) {
+-        env->regs[14] = env->xregs[22];
+-        env->regs[13] = env->xregs[23];
+-    } else {
+-        env->banked_r14[r14_bank_number(ARM_CPU_MODE_UND)] = env->xregs[22];
+-        env->banked_r13[bank_number(ARM_CPU_MODE_UND)] = env->xregs[23];
+-    }
+-
+-    /* Registers x24-x30 are mapped to r8-r14 in FIQ mode.  If we are in FIQ
+-     * mode, then we can copy to r8-r14.  Otherwise, we copy to the
+-     * FIQ bank for r8-r14.
+-     */
+-    if (mode == ARM_CPU_MODE_FIQ) {
+-        for (i = 24; i < 31; i++) {
+-            env->regs[i - 16] = env->xregs[i];   /* X[24:30] -> R[8:14] */
+-        }
+-    } else {
+-        for (i = 24; i < 29; i++) {
+-            env->fiq_regs[i - 24] = env->xregs[i];
+-        }
+-        env->banked_r13[bank_number(ARM_CPU_MODE_FIQ)] = env->xregs[29];
+-        env->banked_r14[r14_bank_number(ARM_CPU_MODE_FIQ)] = env->xregs[30];
+-    }
+-
+-    env->regs[15] = env->pc;
+-}
+-
+ static void take_aarch32_exception(CPUARMState *env, int new_mode,
+                                    uint32_t mask, uint32_t offset,
+                                    uint32_t newpc)
 -- 
 2.20.1

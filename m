@@ -1,153 +1,69 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id z188sm6319988wme.38.2021.06.04.09.32.43
+        by smtp.gmail.com with ESMTPSA id c12sm8239845wrr.90.2021.06.04.09.32.45
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 04 Jun 2021 09:32:51 -0700 (PDT)
+        Fri, 04 Jun 2021 09:32:57 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id C857720025;
-	Fri,  4 Jun 2021 16:53:24 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id E371E20014;
+	Fri,  4 Jun 2021 16:53:23 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
+	Claudio Fontana <cfontana@suse.de>,
+	Richard Henderson <richard.henderson@linaro.org>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH  v16 98/99] configure: allow the overriding of default-config in the build
-Date: Fri,  4 Jun 2021 16:53:11 +0100
-Message-Id: <20210604155312.15902-99-alex.bennee@linaro.org>
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH  v16 91/99] target/arm: tcg: remove superfluous CONFIG_TCG check
+Date: Fri,  4 Jun 2021 16:53:04 +0100
+Message-Id: <20210604155312.15902-92-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210604155312.15902-1-alex.bennee@linaro.org>
 References: <20210604155312.15902-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: xWVjo290f5fF
+X-TUID: i+/kMvXg2Il1
 
-While the default config works well enough it does end up enabling a
-lot of stuff. For more minimal builds we can pass a slimmed down list
-of devices and let Kconfig work out what we want. For example:
+From: Claudio Fontana <cfontana@suse.de>
 
-  ../../configure --without-default-features \
-    --target-list=arm-softmmu,aarch64-softmmu \
-    --with-devices-aarch64=(pwd)/../../configs/aarch64-softmmu/64bit-only.mak
+modules under tcg/ are only built for CONFIG_TCG anyway.
 
-will override the aarch64-softmmu default devices to one of our own
-choosing. Currently there are two configs provided:
-
-  - 64bit-only, to build without any 32 bit boards at all
-  - virt, even more minimal set for --disable-tcg builds
-
+Signed-off-by: Claudio Fontana <cfontana@suse.de>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>
-Message-Id: <20210528163116.31902-1-alex.bennee@linaro.org>
-
 ---
-v2
-  - remove extraneous cc
-  - dropped pathname from config
-  - add virt.mak config
-  - drop ZYNQMP from the 64bit only build
-  - test -f the --with-devices-FOO file
----
- configure                              | 20 ++++++++++++++++++++
- configs/aarch64-softmmu/64bit-only.mak | 10 ++++++++++
- configs/aarch64-softmmu/virt-only.mak  |  8 ++++++++
- meson.build                            |  3 ++-
- 4 files changed, 40 insertions(+), 1 deletion(-)
- create mode 100644 configs/aarch64-softmmu/64bit-only.mak
- create mode 100644 configs/aarch64-softmmu/virt-only.mak
+ target/arm/tcg/vfp_helper.c | 6 ------
+ 1 file changed, 6 deletions(-)
 
-diff --git a/configure b/configure
-index f0c8629dc6..5bf2f56ac6 100755
---- a/configure
-+++ b/configure
-@@ -920,6 +920,16 @@ for opt do
-   ;;
-   --without-default-devices) default_devices="false"
-   ;;
-+  --with-devices-*[!a-zA-Z0-9_-]*=*) error_exit "Passed bad --with-devices-FOO option"
-+  ;;
-+  --with-devices-*) device_arch=${opt#--with-devices-}; device_arch=${device_arch%%=*}
-+                    if test -f "$optarg"; then
-+                        device_archs="$device_archs $device_arch"
-+                        eval "devices_${device_arch}=\$optarg"
-+                    else
-+                         error_exit "File $optarg does not exist"
-+                    fi
-+  ;;
-   --without-default-features) # processed above
-   ;;
-   --enable-gprof) gprof="yes"
-@@ -1766,6 +1776,7 @@ Advanced options (experts only):
-   --without-default-devices  do not include any device that is not needed to
-                            start the emulator (only use if you are including
-                            desired devices in default-configs/devices/)
-+  --with-devices-ARCH=PATH override default-configs/devices with your own file
-   --enable-debug           enable common debug build options
-   --enable-sanitizers      enable default sanitizers
-   --enable-tsan            enable thread sanitizer
-@@ -6343,6 +6354,15 @@ if test "$skip_meson" = no; then
+diff --git a/target/arm/tcg/vfp_helper.c b/target/arm/tcg/vfp_helper.c
+index 521719f327..0cc6c85270 100644
+--- a/target/arm/tcg/vfp_helper.c
++++ b/target/arm/tcg/vfp_helper.c
+@@ -21,10 +21,8 @@
+ #include "cpu.h"
+ #include "exec/helper-proto.h"
+ #include "internals.h"
+-#ifdef CONFIG_TCG
+ #include "qemu/log.h"
+ #include "fpu/softfloat.h"
+-#endif
  
-   echo "# Automatically generated by configure - do not modify" > $cross
-   echo "[properties]" >> $cross
-+
-+  # unroll any custom device configs
-+  if test -n "$device_archs"; then
-+      for a in $device_archs; do
-+          eval "c=\$devices_${a}"
-+          echo "${a}-softmmu = [ '$c' ]" >> $cross
-+      done
-+  fi
-+
-   test -z "$cxx" && echo "link_language = 'c'" >> $cross
-   echo "[built-in options]" >> $cross
-   echo "c_args = [${CFLAGS:+$(meson_quote $CFLAGS)}]" >> $cross
-diff --git a/configs/aarch64-softmmu/64bit-only.mak b/configs/aarch64-softmmu/64bit-only.mak
-new file mode 100644
-index 0000000000..19638a56cf
---- /dev/null
-+++ b/configs/aarch64-softmmu/64bit-only.mak
-@@ -0,0 +1,10 @@
-+#
-+# A version of the config that only supports 64bits and their devices.
-+# This doesn't quite eliminate all 32 bit devices as some boards like
-+# "virt" support both. The CONFIG_XLNX_ZYNQMP_ARM isn't included as it
-+# also requires 32 bit support for the R5s
-+#
-+
-+CONFIG_ARM_VIRT=y
-+CONFIG_XLNX_VERSAL=y
-+CONFIG_SBSA_REF=y
-diff --git a/configs/aarch64-softmmu/virt-only.mak b/configs/aarch64-softmmu/virt-only.mak
-new file mode 100644
-index 0000000000..cadacf3e89
---- /dev/null
-+++ b/configs/aarch64-softmmu/virt-only.mak
-@@ -0,0 +1,8 @@
-+#
-+# A version of the config that only supports virtual machines. This is
-+# intended to be combined with options like --disable-tcg for a
-+# minimal build supporting only machines we can virtualise with a
-+# hypervisor.
-+#
-+
-+CONFIG_ARM_VIRT=y
-diff --git a/meson.build b/meson.build
-index 09c7809d6b..9d25906219 100644
---- a/meson.build
-+++ b/meson.build
-@@ -1350,9 +1350,10 @@ foreach target : target_dirs
-                                                configuration: config_target_data)}
+ /* VFP support.  We follow the convention used for VFP instructions:
+    Single precision routines have a "s" suffix, double precision a
+@@ -40,8 +38,6 @@ void HELPER(vfp_set_fpscr)(CPUARMState *env, uint32_t val)
+     vfp_set_fpscr(env, val);
+ }
  
-   if target.endswith('-softmmu')
-+    config_input = meson.get_external_property(target, 'default-configs/devices' / target + '.mak')
-     config_devices_mak = target + '-config-devices.mak'
-     config_devices_mak = configure_file(
--      input: ['default-configs/devices' / target + '.mak', 'Kconfig'],
-+      input: [config_input, 'Kconfig'],
-       output: config_devices_mak,
-       depfile: config_devices_mak + '.d',
-       capture: true,
+-#ifdef CONFIG_TCG
+-
+ #define VFP_HELPER(name, p) HELPER(glue(glue(vfp_,name),p))
+ 
+ #define VFP_BINOP(name) \
+@@ -1110,5 +1106,3 @@ void HELPER(check_hcr_el2_trap)(CPUARMState *env, uint32_t rt, uint32_t reg)
+ 
+     raise_exception(env, EXCP_HYP_TRAP, syndrome, 2);
+ }
+-
+-#endif
 -- 
 2.20.1

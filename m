@@ -1,64 +1,85 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id b8sm5464966wmd.35.2021.06.04.09.32.42
+        by smtp.gmail.com with ESMTPSA id u14sm8911091wmc.41.2021.06.04.09.32.41
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 04 Jun 2021 09:32:43 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id A236E1FFCE;
-	Fri,  4 Jun 2021 16:53:19 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id A886D2000C;
+	Fri,  4 Jun 2021 16:53:23 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Claudio Fontana <cfontana@suse.de>,
-	Richard Henderson <richard.henderson@linaro.org>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH  v16 56/99] target/arm: wrap call to aarch64_sve_change_el in tcg_enabled()
-Date: Fri,  4 Jun 2021 16:52:29 +0100
-Message-Id: <20210604155312.15902-57-alex.bennee@linaro.org>
+Subject: [PATCH  v16 89/99] target/arm: cpu64: some final cleanup on aarch64_cpu_finalize_features
+Date: Fri,  4 Jun 2021 16:53:02 +0100
+Message-Id: <20210604155312.15902-90-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210604155312.15902-1-alex.bennee@linaro.org>
 References: <20210604155312.15902-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Avw5JchpiZZV
+X-TUID: JCPcteVuGOOE
 
 From: Claudio Fontana <cfontana@suse.de>
 
-After this patch it is possible to build only kvm:
-
-./configure --disable-tcg --enable-kvm
+bail out immediately if ARM_FEATURE_AARCH64 is not set,
+and add an else statement when checking for accelerators.
 
 Signed-off-by: Claudio Fontana <cfontana@suse.de>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/arm/cpu-sysemu.c | 12 +++++++-----
- 1 file changed, 7 insertions(+), 5 deletions(-)
+ target/arm/cpu64.c | 33 ++++++++++++++++-----------------
+ 1 file changed, 16 insertions(+), 17 deletions(-)
 
-diff --git a/target/arm/cpu-sysemu.c b/target/arm/cpu-sysemu.c
-index c09c89eeac..2d3fe4f643 100644
---- a/target/arm/cpu-sysemu.c
-+++ b/target/arm/cpu-sysemu.c
-@@ -917,11 +917,13 @@ static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
-     unsigned int cur_el = arm_current_el(env);
-     int rt;
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 3058e2c273..ecce8c4308 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -473,26 +473,25 @@ void aarch64_cpu_finalize_features(ARMCPU *cpu, Error **errp)
+ {
+     Error *local_err = NULL;
  
--    /*
--     * Note that new_el can never be 0.  If cur_el is 0, then
--     * el0_a64 is is_a64(), else el0_a64 is ignored.
--     */
--    aarch64_sve_change_el(env, cur_el, new_el, is_a64(env));
-+    if (tcg_enabled()) {
-+        /*
-+         * Note that new_el can never be 0.  If cur_el is 0, then
-+         * el0_a64 is is_a64(), else el0_a64 is ignored.
-+         */
-+        aarch64_sve_change_el(env, cur_el, new_el, is_a64(env));
+-    if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
+-        if (!cpu_sve_finalize_features(cpu, &local_err)) {
++    if (!arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
++        return;
 +    }
- 
-     if (cur_el < new_el) {
-         /*
++    if (!cpu_sve_finalize_features(cpu, &local_err)) {
++        error_propagate(errp, local_err);
++        return;
++    }
++
++    /*
++     * KVM does not support modifications to this feature.
++     * We have not registered the cpu properties when KVM
++     * is in use, so the user will not be able to set them.
++     */
++    if (tcg_enabled()) {
++        if (!cpu_pauth_finalize(cpu, &local_err)) {
+             error_propagate(errp, local_err);
+             return;
+         }
+-
+-        /*
+-         * KVM does not support modifications to this feature.
+-         * We have not registered the cpu properties when KVM
+-         * is in use, so the user will not be able to set them.
+-         */
+-        if (tcg_enabled()) {
+-            if (!cpu_pauth_finalize(cpu, &local_err)) {
+-                error_propagate(errp, local_err);
+-                return;
+-            }
+-        }
+-    }
+-
+-    if (kvm_enabled()) {
++    } else if (kvm_enabled()) {
+         kvm_arm_steal_time_finalize(cpu, &local_err);
+         if (local_err != NULL) {
+             error_propagate(errp, local_err);
 -- 
 2.20.1

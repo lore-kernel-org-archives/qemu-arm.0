@@ -1,16 +1,16 @@
-Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp4655454lfa;
-        Tue, 8 Jun 2021 10:42:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxirvZKMp64Kf37yvHGZQQf71WiTnWlhaCaHBg9FXqMVTMvCBuG+0wNF2DfvlysjVQw84WF
-X-Received: by 2002:a05:6122:1298:: with SMTP id i24mr1348219vkp.12.1623174160758;
-        Tue, 08 Jun 2021 10:42:40 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1623174160; cv=pass;
+Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp4655921lfa;
+        Tue, 8 Jun 2021 10:43:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwkpfrBoBORZAr7eZSl/gxbdmWUz3B2xWt+NzMyKUe7eAjCJYsJhc6Eck4cqezV8kozfNA8
+X-Received: by 2002:a67:2d49:: with SMTP id t70mr1668311vst.14.1623174203464;
+        Tue, 08 Jun 2021 10:43:23 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1623174203; cv=pass;
         d=google.com; s=arc-20160816;
-        b=Mqyn5xAHVWkTfdfm8McGpTZJmq6tPY4W8i12xbrN4Z92u9DcDnmmfkf5tkUoPNGNkM
-         Qu4GinPGJJ/Za3cNL0F6lQNHO1ANreYaILrAX7wokiaMimycKF62qjMb1yzVzixB9G+c
-         HIaKnDakH7Fu256IhwMcDQfcRJSn2ZtW5MTUgaxJ5Q4NvJq0gGZprbNbHyQAmJRO7HAL
-         7sl3ox7VjaT44hgSITWWl+dP+Yc3BNjqLvkABWUvTFsQtTS1+KciM96HlYqQ9TlQYdQO
-         OChsLsoXgj6JZ5K52cSRnb3bxbQxI3r1BnV6FI5IlT3tqjLa/j8EMJSshgIF34QxNg3M
-         Yecg==
+        b=Rd2HpxLODFFVyG7hG70qhsBs61VNo/c31/fpcSdLLf+YIcq04FyGfOmoW/e7Shpw4s
+         NnX8QyWaETSwh8N/AQe7jBMJv4eVzIHw4uXz1h1+Axr+wG12MmSZHPeCXgUcKdoKwCJr
+         V/fBurZWUsdmCvz+aWHtOHPNeRxgwK5SqQxK8QhXKPfgLqvIVoDjN30IBvQWd4uRxUKu
+         LM5HyhkMX/mSSllgufZKTjvn+854DTcphnSNmo/YbdgMSXENlHa3ngD5jkSv9Vc5Oc7A
+         FNQDt+3vEWqP+B3D2yOEl8e14SkjHmFdgdFk9A553BNytP9WHboK9RDvz0bGrZqpwSEz
+         tm6g==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version
@@ -18,196 +18,198 @@ ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc
          :accept-language:in-reply-to:references:message-id:date:thread-index
          :thread-topic:subject:to:from:dkim-signature:ironport-sdr
          :dkim-signature:resent-to:resent-message-id:resent-date:resent-from;
-        bh=8AujSOo/lmYYNUsXnxEpM+RLl0X32CZpLg4/tyq+kR8=;
-        b=eN349bCupPhUjj6bXjr93zUrXVSkyhvt0taKMnOycYS11aqoB9DSog+ZlaR9ZfnQj9
-         FxNOhmItRYc1MBYXmKrHoawRyrhKszwjS6lLTN+PeKBN/EvhEyQBBj+TcispKrzvy0pk
-         uUSd8hu5IshJz0fuYurGQWGKqjWQLOriiycrg02pgCqfUhX35NDJXoX4eJkn8si0I1t7
-         61KElgcPXDWmXetzxrm03B+qLl8OLWdaYHFT902Ay4EVTwCJ3CwIB4L4NQEuNKFqNmnJ
-         bG8Ptojt4gDTLDga1O5ohmouyw7vi4DfkmsVf338yq4OwrecsxCJDmPTpZ+Cx1++f7Cg
-         vgPA==
+        bh=d6CiexG1Uj8rNUG2l1iFDoTq+H6RimfLHx9rZrWTT4g=;
+        b=vLTA4Q6a5tjRTGCVGK5+kxYcqyE62bkdJgxnsXTLm6D7LyWHo343y9TGGgm7mBzzac
+         9jJWfFyvkATxzhmMD+WnBMDubZ03f2tdV5GuNX275uhd6L4pDyoJVX8Yc7EVfRbJVrE/
+         qUtWib5jO+ZVNdcK08i1LTsBwmTToJNZTt+qzlwtmNCLkKgf4mrL3hpfYpbFoU8CXCbf
+         fGy0+KjZFLDVB9JPDT6+uc/L4ODqzgnBypN1rvLdktpipez8i03ztOip1xsJmAzw/fMy
+         qoalNwgksOO0IxE5lVrvhUXAHA2Qki76HX/Nama31qbrY0eJL6Fquk4HcfQvrR4gPHMQ
+         mftw==
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=fail (test mode) header.i=@fujitsu.com header.s=fj1 header.b=tAcgfX27;
-       dkim=pass header.i=@fujitsu.onmicrosoft.com header.s=selector2-fujitsu-onmicrosoft-com header.b=VtDeNVw7;
+       dkim=fail (test mode) header.i=@fujitsu.com header.s=fj1 header.b=Nvl2y5aI;
+       dkim=pass header.i=@fujitsu.onmicrosoft.com header.s=selector2-fujitsu-onmicrosoft-com header.b=dvRSzE9v;
        arc=pass (i=1 spf=pass spfdomain=fujitsu.com dkim=pass dkdomain=fujitsu.com dmarc=pass fromdomain=fujitsu.com);
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f20si3547551uav.170.2021.06.08.10.42.40
+        by mx.google.com with ESMTPS id g26si3865544vsk.126.2021.06.08.10.43.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Jun 2021 10:42:40 -0700 (PDT)
+        Tue, 08 Jun 2021 10:43:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail (test mode) header.i=@fujitsu.com header.s=fj1 header.b=tAcgfX27;
-       dkim=pass header.i=@fujitsu.onmicrosoft.com header.s=selector2-fujitsu-onmicrosoft-com header.b=VtDeNVw7;
+       dkim=fail (test mode) header.i=@fujitsu.com header.s=fj1 header.b=Nvl2y5aI;
+       dkim=pass header.i=@fujitsu.onmicrosoft.com header.s=selector2-fujitsu-onmicrosoft-com header.b=dvRSzE9v;
        arc=pass (i=1 spf=pass spfdomain=fujitsu.com dkim=pass dkdomain=fujitsu.com dmarc=pass fromdomain=fujitsu.com);
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:51724 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53490 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lqfkN-0005JS-UB
-	for alex.bennee@linaro.org; Tue, 08 Jun 2021 13:42:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48814)
+	id 1lqfl4-0006VY-JW
+	for alex.bennee@linaro.org; Tue, 08 Jun 2021 13:43:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49010)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mlmgr@proulx.com>) id 1lqfiP-0003Km-MJ
- for qemu-devel@nongnu.org; Tue, 08 Jun 2021 13:40:38 -0400
-Received: from havoc.proulx.com ([96.88.95.61]:34232)
+ (Exim 4.90_1) (envelope-from <mlmgr@proulx.com>) id 1lqfj1-0004Cf-09
+ for qemu-devel@nongnu.org; Tue, 08 Jun 2021 13:41:15 -0400
+Received: from havoc.proulx.com ([96.88.95.61]:34244)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mlmgr@proulx.com>) id 1lqfiM-0008Ju-LS
- for qemu-devel@nongnu.org; Tue, 08 Jun 2021 13:40:36 -0400
+ (Exim 4.90_1) (envelope-from <mlmgr@proulx.com>) id 1lqfiy-00009u-70
+ for qemu-devel@nongnu.org; Tue, 08 Jun 2021 13:41:13 -0400
 Received: by havoc.proulx.com (Postfix, from userid 1027)
- id B76B45A4; Tue,  8 Jun 2021 11:40:33 -0600 (MDT)
+ id 368A15A4; Tue,  8 Jun 2021 11:41:11 -0600 (MDT)
 Authentication-Results: havoc.proulx.com;
  dkim=fail reason="signature verification failed" (2048-bit key;
- unprotected) header.d=fujitsu.com header.i=@fujitsu.com header.b="tAcgfX27"; 
+ unprotected) header.d=fujitsu.com header.i=@fujitsu.com header.b="Nvl2y5aI"; 
  dkim=pass (1024-bit key;
  unprotected) header.d=fujitsu.onmicrosoft.com
- header.i=@fujitsu.onmicrosoft.com header.b="VtDeNVw7"; 
+ header.i=@fujitsu.onmicrosoft.com header.b="dvRSzE9v"; 
  dkim-atps=neutral
 Resent-From: Mailing List Manager <mlmgr@proulx.com>
-Resent-Date: Tue, 8 Jun 2021 11:40:33 -0600
-Resent-Message-ID: <20210608174033.GC21839@havoc.proulx.com>
+Resent-Date: Tue, 8 Jun 2021 11:41:10 -0600
+Resent-Message-ID: <20210608174110.GE21839@havoc.proulx.com>
 Resent-To: qemu-devel@nongnu.org
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37960)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58898)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ishii.shuuichir@fujitsu.com>)
- id 1loiY3-00053w-6r; Thu, 03 Jun 2021 04:17:51 -0400
-Received: from esa20.fujitsucc.c3s2.iphmx.com ([216.71.158.65]:29684)
+ id 1lp5D2-0004OR-Q5; Fri, 04 Jun 2021 04:29:40 -0400
+Received: from esa20.fujitsucc.c3s2.iphmx.com ([216.71.158.65]:39797)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ishii.shuuichir@fujitsu.com>)
- id 1loiXy-0004oi-Pz; Thu, 03 Jun 2021 04:17:50 -0400
+ id 1lp5Cy-0003QR-TX; Fri, 04 Jun 2021 04:29:40 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=fujitsu.com; i=@fujitsu.com; q=dns/txt; s=fj1;
- t=1622708267; x=1654244267;
+ t=1622795377; x=1654331377;
  h=from:to:cc:subject:date:message-id:references:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=zRPS7LTD62fZlXCo/ZLqQxFynmuUqnteaLtHWIHkMlM=;
- b=tAcgfX27oyy6VUrxCYUkt2+V2HTLdElILEhktKAsS3Mpv5KnztLzfXa4
- orzS87a0oFkQOWVyIqfqRrWN90xDak9pp6foWtlYXyhiRa3P8kWxez303
- 8YzCX4pkIqT15HVfHv0NUvrT52QfBl1YMunW4Sp5hJBGUB15V08UY4rxV
- bsgh+5MlA8HntbAb7hALjq8opWvSw1rb+8QHi1r9YRblvS6XDpaQn9PD2
- tkRDrSnJrlPIecxCO5MljnwGvHajbeFF+AIwjxgU+q/je4TddZOiRLmzT
- GmmKq5WzTdvg9cbeXKU0PqesJLopUsEr+ZOUtMhIZepvnVdnJ7LMUerTj g==;
-IronPort-SDR: dpnYe2i9+i2VTlini5J18wyaryBoUcVeTpcEYcDqF4g8wPpGexqWc4vF3psY8+VdbIwCcZiPqp
- Yb02cvwf61OQaERzTKOxS4zW+9gsnU7ZCAocAT1Lcy1cH11XvF8YytfALP0xV4v4AKcc2a+1u+
- 2U/fEfDYSiFj3xUGp1l8PHOM/9wFp2gh+hLbC6VWwsB/kDiGKmQHObok5gxeJ3DdjNI+31nKMF
- pBZsuwTEgt1JowvdfG633dIoSLS+zQNJfTzv2LzVo50ijnb31iLD+EjVKxGmDpPXRQIOhBusOf
- Uhk=
-X-IronPort-AV: E=McAfee;i="6200,9189,10003"; a="32395721"
-X-IronPort-AV: E=Sophos;i="5.83,244,1616425200"; d="scan'208";a="32395721"
-Received: from mail-ty1jpn01lp2052.outbound.protection.outlook.com (HELO
- JPN01-TY1-obe.outbound.protection.outlook.com) ([104.47.93.52])
+ bh=x50S8puOsCl5jQZFE37WgcfXrScck8GQ7myXgwZ98VI=;
+ b=Nvl2y5aIKsmtZvdjRRn0J/2gS6cVuKd7ZyFl2DVuF98WVLqxHWs5DvWC
+ nI2mnBY6ROGsx2bLFle7r2TIULRpYCjxOD+EtTKS0W8AYh3Naey8mrEku
+ 3OmT+KHajRRCTlQxkHpnjLcKI7f8NYy6MBAuXe1wvYz1Rtr88PE8CgB+G
+ 9j4x0hr9wyccVNPL+wz/AeNobToCuvy7dUq27PA8KunOZJtdG7uJS5/GY
+ SwoxEZBdmvJTOtV2ityJ8lyBUD/KdoU2yOYMRQq3tvqO1OtmbZTmF1oDs
+ gdLvSZb1RCNQzFfw9SEv78uKgNX/x36AniCnDuz1Zl6MgGXHCMVoz7Gve Q==;
+IronPort-SDR: oeiBE0nLtim/qcTa15tDuHn1SjVby0u4z/o8NIg7mdumV0uH3aabDRB33sINJqn2L/SeF8QGDG
+ 6Vl9nd6p4jzu0LgWZ0dW2yTdZynMaljo2nXj1pzuUXS9YPsl7IvDTxGLDEVVQwVHmHUvJmzHJ9
+ 48+Kl9En9rfmiqguFsv58KAZOT1To0UlpICLjpGR9oLFEcYGUxH0Eo9zNjTtr0A2j+oRBrT145
+ 94FGBzJMwr739sLySRpIyyrDFe7hYyA8xRtJDVF4/o3JF4PlbDsFb7ejTCtRdtShK2nGGeW4G+
+ nTs=
+X-IronPort-AV: E=McAfee;i="6200,9189,10004"; a="32471116"
+X-IronPort-AV: E=Sophos;i="5.83,247,1616425200"; d="scan'208";a="32471116"
+Received: from mail-os2jpn01lp2054.outbound.protection.outlook.com (HELO
+ JPN01-OS2-obe.outbound.protection.outlook.com) ([104.47.92.54])
  by ob1.fujitsucc.c3s2.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Jun 2021 17:17:39 +0900
+ 04 Jun 2021 17:29:29 +0900
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=CgQkC8YabcuZ/gUuFuUqWkddgZZADbFPPB+PKnNfaGDKAV8Og0sxXM0sQBVi0HkVUIQO2dc9tF9InBGD4MH7QI7E6DKv/Ocd79718m5sUVTdxUUcawxL3BFk27ZN0B+UcJDbvWRa/A69KX+eusiYkmi9udKSiyUeCLmbCJkuZboy9+ozTBAa/acMwohidHROWJaHxmznOTlWnD4cpy/kdUDbSvLN6pR6wT5Rm1FFajbh+m5kesNuwkLJYx9qgBf7wGiRm9ah0fGHkU0veGEvPcC/D7zmoK59r3cuocfGsxyDUqiaEHZeOmiATe1GEl6RujTpPGWryweu3wXOov2ZEw==
+ b=llOFjgHKeype7qPfGpcOUcHKh8RScX/lcevZxU3GkBFPFz2iK+l3MCnlwgdK+WiuPfKI5DwC0oW3WejXxcz9YHwZs+a5cAvxpCq5LSG7Wejuhg7EX2XxCKf9L1AlDGX+RXytr2Jc0KSdprI5s0xSRf5BU6tMSplPucQ9VTfsH1dRBWI00By1eVoHdtU295iBzAWtNUMaH5YvHo4AObJpiDh4Jn4XVqppxx2ZyUMLyT9zd0tvkAeW7zwU4Yzt+qzH4HdDUh3h17QI2d7/guvFG1Msm5bNC/ICrwEMn+kmE8CEtVx4ombaEl52euYq3L6MtV+T9Jpee4/AbhaPs3DNjw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=8AujSOo/lmYYNUsXnxEpM+RLl0X32CZpLg4/tyq+kR8=;
- b=E8QGjgUZt8hEaHvZgqIcsBMiNs45q50zhVUbjyFCNYARt0Jrc+AMsMgRXc2sONgUuYBwrsVOWJN6gS3uzlpeWI5acufMFMvrbe7gn0yF0VxosdiFtZwOCls3SpJpT4dG4q0kAk43VCwoRdWIqdINnN7QT8A6/uiNy9aZAAbgIR+DGi8elcduDf0wT4djrb0KEOhwOIl2QyULIXqYEw8oEkeNQx30qwdo7zBlJtT1Gtg0mE0uBtrxg15JAf+dw3/Eovwkukgwf+qI1JVjlaHQJa2/mPzCOZVm0DRGcDpSgN9aBMptcSq1ZGqJ1YW81pdt6EOwxHa4MRsn/4v9FksKbQ==
+ bh=d6CiexG1Uj8rNUG2l1iFDoTq+H6RimfLHx9rZrWTT4g=;
+ b=J24xSqeB6KA0As1Ra/LhnKX9S65G/R1teDrR40ri/AC+ZKx7ceWQEESyNxc8/WTn47I9wV68Qp7iBdjEZe39qjckCYNpA/bTS1MbynU/KjtCfVmrp25T74n+6l+L+xXV2hc4DBpBIZWtR4jzKGMdyA2dC5zJRoE96nbEbmNCJW7bmkrMFhNwm2avW8aWYlQkwxNuJcq/ulnwWCIzVD+TywCpZP/fsEMFE9FLAutOSnlOYa+9+FgOe5AijiuWY8YXU9KiC7xyrEBxX1DNBx4sFsEwY2TueQ25RrrjJeyafRekbC/p8Ur52bMle1aoFZ0KAG6pQLA7zR7gawe3c6g2qw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=fujitsu.com; dmarc=pass action=none header.from=fujitsu.com;
  dkim=pass header.d=fujitsu.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=fujitsu.onmicrosoft.com; s=selector2-fujitsu-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=8AujSOo/lmYYNUsXnxEpM+RLl0X32CZpLg4/tyq+kR8=;
- b=VtDeNVw7RrJ+6SgLrAUh6Hd8mVXt6kf+RcmGdNLjjv+J77R8Y5lBZPFqMdoB68WGHZnvaAgeaSe9f9ICBHxiumfQkUgsylWq8KEsjqlJV2oGW/Q8bwCKzXqt3M40bqJM44G6GHmbgmV8Y2rAweAmb7VUrtXfCrcShoVHjwer92A=
+ bh=d6CiexG1Uj8rNUG2l1iFDoTq+H6RimfLHx9rZrWTT4g=;
+ b=dvRSzE9vzQjMGWUqk96N3iySovHFUR8xASgKxMvdhZnKlSg4asXqmU4ZUzs1hpgY5BdDJtPQiGEC6F+YF6gcmz/3OosZP+ZRHG5CrKpDnIxxssBa0z81Lo0lRzWW7gjd6Rfo3S2NPVVO14Bw1QlSqO4K4EYSFAaAxuxbk4+lzT8=
 Received: from TYCPR01MB6160.jpnprd01.prod.outlook.com (2603:1096:400:4f::8)
- by TYCPR01MB6835.jpnprd01.prod.outlook.com (2603:1096:400:b6::8) with
+ by TYAPR01MB5642.jpnprd01.prod.outlook.com (2603:1096:404:8058::11) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4195.20; Thu, 3 Jun
- 2021 08:17:36 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4195.24; Fri, 4 Jun
+ 2021 08:29:25 +0000
 Received: from TYCPR01MB6160.jpnprd01.prod.outlook.com
  ([fe80::4934:aef5:d5a8:482e]) by TYCPR01MB6160.jpnprd01.prod.outlook.com
- ([fe80::4934:aef5:d5a8:482e%4]) with mapi id 15.20.4173.030; Thu, 3 Jun 2021
- 08:17:36 +0000
+ ([fe80::4934:aef5:d5a8:482e%4]) with mapi id 15.20.4195.024; Fri, 4 Jun 2021
+ 08:29:25 +0000
 From: "ishii.shuuichir@fujitsu.com" <ishii.shuuichir@fujitsu.com>
 To: 'Richard Henderson' <richard.henderson@linaro.org>, Peter Maydell
  <peter.maydell@linaro.org>
 Subject: RE: [RFC] Adding the A64FX's HPC funtions.
 Thread-Topic: [RFC] Adding the A64FX's HPC funtions.
-Thread-Index: AddR72HvX+KHC7w5TWeyXhvxcP1CJAEsiw9gABYQM4AAOf27gAALWxOA
-Date: Thu, 3 Jun 2021 08:17:36 +0000
-Message-ID: <TYCPR01MB6160998DCE40866CDC3134BBE93C9@TYCPR01MB6160.jpnprd01.prod.outlook.com>
+Thread-Index: AddR72HvX+KHC7w5TWeyXhvxcP1CJAEsiw9gABYQM4AAOf27gAALWxOAACk/Z4AACluOUA==
+Date: Fri, 4 Jun 2021 08:29:25 +0000
+Message-ID: <TYCPR01MB6160266A2DFDE090276C44D0E93B9@TYCPR01MB6160.jpnprd01.prod.outlook.com>
 References: <OS3PR01MB61515F08F0709D9E22B8DDDFE9249@OS3PR01MB6151.jpnprd01.prod.outlook.com>
  <TYCPR01MB6160FB4A9712F3F5E14D8BBAE93E9@TYCPR01MB6160.jpnprd01.prod.outlook.com>
  <CAFEAcA_fZ_jC640XrFUCSk6YxzoSmdwDaMDAXoX47mBFKdS9hg@mail.gmail.com>
  <a56283b3-3bb2-d9a3-9a6e-8175cc17b376@linaro.org>
-In-Reply-To: <a56283b3-3bb2-d9a3-9a6e-8175cc17b376@linaro.org>
+ <TYCPR01MB6160998DCE40866CDC3134BBE93C9@TYCPR01MB6160.jpnprd01.prod.outlook.com>
+ <65323e52-789c-567a-3446-ccb7709877e2@linaro.org>
+In-Reply-To: <65323e52-789c-567a-3446-ccb7709877e2@linaro.org>
 Accept-Language: ja-JP, en-US
 Content-Language: ja-JP
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 msip_labels: MSIP_Label_a7295cc1-d279-42ac-ab4d-3b0f4fece050_Enabled=true;
- MSIP_Label_a7295cc1-d279-42ac-ab4d-3b0f4fece050_SetDate=2021-06-03T00:27:12Z; 
+ MSIP_Label_a7295cc1-d279-42ac-ab4d-3b0f4fece050_SetDate=2021-06-04T01:04:51Z; 
  MSIP_Label_a7295cc1-d279-42ac-ab4d-3b0f4fece050_Method=Standard;
  MSIP_Label_a7295cc1-d279-42ac-ab4d-3b0f4fece050_Name=FUJITSU-RESTRICTED?;
  MSIP_Label_a7295cc1-d279-42ac-ab4d-3b0f4fece050_SiteId=a19f121d-81e1-4858-a9d8-736e267fd4c7;
- MSIP_Label_a7295cc1-d279-42ac-ab4d-3b0f4fece050_ActionId=5b6463db-bd01-4943-989d-fb1b3566fd72;
+ MSIP_Label_a7295cc1-d279-42ac-ab4d-3b0f4fece050_ActionId=cfcd02b7-e180-4d01-bd73-20fb6eaa9d53;
  MSIP_Label_a7295cc1-d279-42ac-ab4d-3b0f4fece050_ContentBits=0
 authentication-results: linaro.org; dkim=none (message not signed)
  header.d=none;linaro.org; dmarc=none action=none header.from=fujitsu.com;
 x-originating-ip: [210.162.30.49]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: ae3cad97-b305-4b23-cac2-08d926680bcc
-x-ms-traffictypediagnostic: TYCPR01MB6835:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <TYCPR01MB68356C3FB15C75A5DD8D4C9EE93C9@TYCPR01MB6835.jpnprd01.prod.outlook.com>
+x-ms-office365-filtering-correlation-id: e2f354ff-8c95-4f04-02f3-08d92732dcff
+x-ms-traffictypediagnostic: TYAPR01MB5642:
+x-microsoft-antispam-prvs: <TYAPR01MB5642CF146828E949D23FB5EEE93B9@TYAPR01MB5642.jpnprd01.prod.outlook.com>
 x-ms-oob-tlc-oobclassifiers: OLM:10000;
 x-ms-exchange-senderadcheck: 1
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: MjWg63z6touJaKMQIihESy97VEdVm2kIcMKS4l5vev3l5D9JOnyL0Ce9+Qh6K/1Eoo9zCGQbs60xEo1B9kZpxybDpuUzEJHzwaA2BIsQ3AHMmIeoiT09JcdjrWcdP45ZS0bNBFWMBdg5TwdFb5niGiTxb+1ontEjd+FtzuJJXajy4Moz2xy+igI+1buE8WP1Ro6QMXgidvz7JIzLt+DuxQ8jsekRmiluDnkFHWyFkLGXGtAaopnU7vhmyHLkM1xlHELPWAtdiQxVe2yJGFcR7PtViWsVtor5NvCa+faoVYJqWrDTI/qWuvZX+2oH0i13G2sUV+MB+BzBWygh9Z0joZJNPW+DIUUw6kPqPRAF9bT3Ol3gl+fvi+ZQ5pItb71w5XpoPK7wOVExHb6o4dpF274XEYk8ng1Qva/Rzwp2r/OuSUcFN6I4KUTJ0Yu7AvGfR84ui4OeDm3QR25hLCFvsJRIBR6NqIgNkW7rQHzsu0X5moZjUwFwH2sDgvL+m2QUlBXL87hUbKP7nod6FL7zDaAdEx51wI/gO4U5PXTXcfftN88lztjFsZtCmxlMbz98TVhbpIc3nh45dbOOzn39z4DlAtyx0cn4oRHpC5Eq9c4Kw/pDSbzTXkhW4z0uGmsUmOP8o3BvY2gPJDjSCHAyjc5oB3fO35ulP+pWXgSmh7f5CsPQfBPqusB3UoKc2uCft1s9E8JgBLJc8dx+C5irDjAigsK4HRwR1q+wRlhhdOheIZgF/BkGExVSD0JLOqkddysRmNOVqbev2xEvwSR3Qw==
+x-microsoft-antispam-message-info: hTuUP8bP7NuomOy9Akfw8xgtpCPnQjmfMey40ARIdCbG6+0KHsTryT05fF70T1PuLUw9u66fjjNlh8m1m4etjfLxsQh5WlO613jvFfyQiauw7xbPUs9OU42iNiIQ2Z41ChA9W2VCalNFwzOVkfi/xTZZEn2TwZqOpGDb97xtYom0im0lPeEZjYbq6inKk1Y2Sv546pOUMXvfH6r7rc18RfQ1klBJ+F0zNbR3Gvm5A2AzlRVrHoJ17ens1Fuq4EpdS90Z0ahkod8YHbwz/aa0rl6uttkY5matTsocASPHAQ/FmJRR5OxSTesT4rWuVm452oMF5uq1ciQNHkNeLZXlLlOWgBm3Bvcr3PsY+ma46GgQkCRjc8Pskcfczp3KgQTNkHAzSFvVM4GtHZxcNhZPlwV22NUi9SqNCBRRNOZXbqNA6iML/+OjnUHclZUs6QW7nqBDlPtDPtnSa4DmpN75//qHElleWh9TcNXaXcrJovJbwRPcwRD0dMiKk35PsBaOnvzWz7s10+gR/Ix9knA9aY7HrQ/YGxZM2bU/x84sxCS8sMjtco8Xw3rHzSdnT9LkL8VCb08EkA0KnA5RUoQjq+I+UgnTfWl0YMRPucOvd8jCRIvk7Du3G1bMjWUAhLytp/crYxECtJII0JLrq+C0SM3x6VNp8TCpgYXu2vtUXh/M7W3cIOuQs7Cvh4GV+TmBBY25eaP8MViqridpC/MdOuIB7DSB7HJSC/QXjUaR2q4=
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:TYCPR01MB6160.jpnprd01.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(366004)(346002)(376002)(39860400002)(136003)(396003)(71200400001)(53546011)(83380400001)(6506007)(55016002)(5660300002)(38100700002)(54906003)(122000001)(186003)(85182001)(26005)(86362001)(107886003)(316002)(7696005)(110136005)(52536014)(966005)(8676002)(478600001)(9686003)(8936002)(66946007)(76116006)(64756008)(66476007)(66556008)(33656002)(4326008)(66446008)(2906002);
+ SFS:(4636009)(366004)(39860400002)(376002)(136003)(346002)(396003)(38100700002)(122000001)(4326008)(83380400001)(33656002)(966005)(478600001)(52536014)(186003)(5660300002)(26005)(2906002)(64756008)(66556008)(66476007)(66946007)(76116006)(9686003)(66446008)(7696005)(6506007)(110136005)(54906003)(316002)(53546011)(8936002)(8676002)(71200400001)(55016002)(85182001)(86362001);
  DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata: =?iso-2022-jp?B?S3RlemRLeWN4MkRBNEVtODlDR3Y1SjBBRXozL0t5S0tCNTAzckFSZDhj?=
- =?iso-2022-jp?B?Sm92KzZRbEptQ3RnNUl1ZVdDbEx6a3NxaWhSV2FJcFVjaG9uTkZrWFZT?=
- =?iso-2022-jp?B?UzZaaDFFM1Z5QWJJd2g0NkdDQnowbHM0SWxFazVmSS9GMCsyVUdVaXAy?=
- =?iso-2022-jp?B?dnZ3S0JpN2FMMUZBREdaZUM5ZkZXZitoajNpRlZzVlo2L0VnTnFIQUFh?=
- =?iso-2022-jp?B?VDZ0UktxSThhSXlUT01PNDhMaUhiSmY1TURVTU5qeUs4Qm9WdmNkdjBI?=
- =?iso-2022-jp?B?alQyOUk2ZlhRZ0xBS3FadmFJL3JSblUvNFN5UFpBWXpzRittdGFxRDhp?=
- =?iso-2022-jp?B?OWJzbUl5N3BxSWp2dkFsMndVM09aNUluSVh6ZW54aC9lZkVva24yTU1j?=
- =?iso-2022-jp?B?aStsNzNjc0FrQzNoYzhhekdVZDZObW9kaUxsckppcVNPZ3crTW1JV2M5?=
- =?iso-2022-jp?B?NmVPc1BDMjYzZXdieHNkODAvZlIwRU9ycWEzSXRzY05Qc3pMRU9BWkcz?=
- =?iso-2022-jp?B?Y3lLbmhxa0dUQlRQNVUzdDMvRXZNaFdqSDZwcVMrM3lPaVMybWkvV3h4?=
- =?iso-2022-jp?B?THpPd2lQZTI5eWp3RUszNHZ5VzNRNnJUM1d6YkUyZDhmbjdaNTdNM0FR?=
- =?iso-2022-jp?B?ZUt0Nkx5cGhEY3lNM0Q5ODlKZGk3bG9qZGswTExOV0FqUEpMSnIzOUpx?=
- =?iso-2022-jp?B?dThjdWxPYzZEL0JVTmg0VzVpa2ZMSUtsdUkwcW1uN25iZHkyUjhhQVVX?=
- =?iso-2022-jp?B?TDZXeXMrdWQ0MXk5K00xVEg3bFlDbmIra3N3WDR6RGdEZHdKUGVKMGxJ?=
- =?iso-2022-jp?B?RXlQNHRYZVlhNUVNa3BBRTgvUzJsMVFYSjlieVZSeFdXZXc2bkVZRHFr?=
- =?iso-2022-jp?B?RVhzWk53ODBOWmt0OTJIbGRRT25HQi8xYVRCbmdyekgrbmdtblVVU3o1?=
- =?iso-2022-jp?B?bzFHMmhSRVhoMnBYbXBxd1Z2TTB6ZStKVlhqK1psUXJjejVYZktESE1q?=
- =?iso-2022-jp?B?Q1FHdHpmU3J5a2JkdkViT0UycHpBbGNjVUpob2FwR05VYml1M3I3Vlli?=
- =?iso-2022-jp?B?QjZRTWptazZiVnFRT3Zyc0I1bUdXZ2REbFNJdVVSdENha3hBZXhiNnpp?=
- =?iso-2022-jp?B?WW1jbmtsUVdXT0NvYmwydjNScHE5VnlXcHpBYmtFY2hGR3BRdzM2ckp1?=
- =?iso-2022-jp?B?azZ0U2FrUFFqZDhQcy94d0w1K1F3TUxkRzgzWW0xeG9Cb1RSUnFvTEQx?=
- =?iso-2022-jp?B?S2paNWRPNCt0VjVRTk9jdFNzWk5qY016d3FFSWVQbWxqK09RcytRWTY1?=
- =?iso-2022-jp?B?Yit2TXYydW5GOTVRQnNSZ2FrVzFQUjhpcktaaE4rMHIxUWplNVNJM2dm?=
- =?iso-2022-jp?B?cHhoNmlKQVlIaFlFT3ptK2dmTkpJbFBXQXBJU1RybFlwZXN5SUE5cWVN?=
- =?iso-2022-jp?B?UEEvL2RtUnllMk9KM1FUNWEzMDMvSGs2QjZZOHZmbVFlZFhXWUVvZTJP?=
- =?iso-2022-jp?B?RjVFamYxUStWd3NjTWlJbURRVm10NWdVbWNydmg2MC9DdERKTTNQZk1u?=
- =?iso-2022-jp?B?TEk1b05Ub1gyRXNRVkxXdGhNeS9WMXVQeFhodTVEb1N4LzZCa0VmSlc5?=
- =?iso-2022-jp?B?Wmk0emRaTis4SFRBYTJIQTZ6M2RzcThVWEQ0Ty9weDliRDhjb2NXeUtU?=
- =?iso-2022-jp?B?TXdZamc4V0RFSGtBdk44c3lhYTM3amJSVGV4MG5ZaTMrb3h3dWI5U3pr?=
- =?iso-2022-jp?B?TTVDUTZJSkZnZ2x1M09OazlxOWpaWlVkdUU4eXVZbnYzL1NkdHlPaHJP?=
- =?iso-2022-jp?B?b1IrOUw3K0pMVTZBWWt4WXExY2QyRi9PUE92K1JYNzNzRDM3YlpucEw5?=
- =?iso-2022-jp?B?RTQyejBrK0hyajRCMFVRMW1pRTdHSDFpbjlqYXJqMnl0MDh2T3BLcU9U?=
+x-ms-exchange-antispam-messagedata: =?iso-2022-jp?B?TTFGaTI1bklDYmNIZVFGcUhJdW1QSmpmUjQ3b2FrZGhndk9OSHdvaDZM?=
+ =?iso-2022-jp?B?Q3ljeXhGMVRxLzRqUWxNemZOam5uVWJ2TmI4U0V5NlpBaWJKRnZTbmp5?=
+ =?iso-2022-jp?B?NXNINGQ1bHFieGFWd093WVFmV0w1Q3ZkcDlXQ0xvVmVTYlJ0ZnhONTRr?=
+ =?iso-2022-jp?B?YkE0MG1MbnRnb1FyQXpWWjMvZTBLMWl6cUx1ay9nRzZNZnpVNjFMa29W?=
+ =?iso-2022-jp?B?ZVVPZ2phLzVrdXBZRnVFUGtUQVFTQlN3UlB0dVVZMkJPTUFwWFhyVk5j?=
+ =?iso-2022-jp?B?WXpCd3VqQXFJNzEza1FDR3NTMlh4Ky9VWjdQR2dWWWQrK1NrYmVmSTFl?=
+ =?iso-2022-jp?B?eVRmYll1RDJFdnBFamdrandyT3hEUUU5VGgrZThRTW1vVlMwQVFEQm4z?=
+ =?iso-2022-jp?B?dWMwbTY0RDd4YmxhRkpNaUtCNkhuSHRUVFVuZUFBa0RkaE1lb3NVQlpz?=
+ =?iso-2022-jp?B?NXJJY0FDQWdLa1hGcEtYZ21NZmMxaWlzSWdHWk4wYm11em9aaWkxdXl6?=
+ =?iso-2022-jp?B?NkdJZU1pMnd0NVAwbW45RE1rTWFTZW5Zdzk4eWZqQW1SZnpMVDMyR1pQ?=
+ =?iso-2022-jp?B?NWpXVjVoTUpwQTZlYk5pam5iWDUzaEZCRFI4eEhuc3hFS2MwKzlMdE43?=
+ =?iso-2022-jp?B?SUgzOUZnQlRtVGM4U1k0Q25IMXNKT29CZFJiNHk4TzlnMjRxNVFPaTdu?=
+ =?iso-2022-jp?B?Qm8vOTJnU2YvU2RHZnUwd0U5Mnp4WG1UMHpwK2RUd2M4SWYrcXJBdjYw?=
+ =?iso-2022-jp?B?di96TUNrYTViQ21KVmdKVzJVaytkRXFiUVUyZERDL0RzbXZzRStiR3Rw?=
+ =?iso-2022-jp?B?UlV4czFKV3hWMkFiRGtYaTZHRHVHTERva3g1MXZUQVZpNDhyUTdUMDFy?=
+ =?iso-2022-jp?B?WVdhTGtCRVB3U01JcUJuU3R6UllVbDB2Q3VBdkxTN25HTExzcHp2WERI?=
+ =?iso-2022-jp?B?VWZxMnFTNHRxcjJXQzF5dlFlVTRJNURNUDQxRVlsclhXZUk4SUtaQ2Qy?=
+ =?iso-2022-jp?B?RFQ2STZrTDRkOGpaL0dGUi9uN1M5WE5TekV4YXhDZTJiMFFWQ0ErNmcz?=
+ =?iso-2022-jp?B?Wnc1NW40WSszbUtjTE9BOVdDQXZ2Wmc0L0VEbUl5VXp4TGcxL0tJblp3?=
+ =?iso-2022-jp?B?NCtJWjN5MDl2eHM4eFhIVG5pUyt1Wm5IaXNxUWVuc1Fma1hzaWxVc0lm?=
+ =?iso-2022-jp?B?VnhtT1d0T2JLZHk1R2ZwZEtkRktEN1VQUkVPSzN0VnNFRy9GaWlIbUVw?=
+ =?iso-2022-jp?B?NHFVREF6YnJ5ZkJnTitVcWlGaVVHMHFqeWcyWXdGWjJieTBnS3FGbHpj?=
+ =?iso-2022-jp?B?cDRJUnYvdHB5d3lwOVRXU2NuKzM1a1c4UE1xZG95cFpkcitQQ2M5Y3NR?=
+ =?iso-2022-jp?B?Vm1UL2hMM3krcmw3d0dCL3g5bHlMMnJyVEE2dW13SmcxdkJTM1V5SjZ2?=
+ =?iso-2022-jp?B?RU1hOG4xRkhMa2oyVDFQUFNMMDBhalI0dGJpVzJsb0ZTajhIRzhFWlR0?=
+ =?iso-2022-jp?B?STUyVVVlcmc5WHJPdUY0ZVI2bXlpM2FCTnVDZkdTbkcxUE1uN0Y4Lzcv?=
+ =?iso-2022-jp?B?cDVwZUtQYml4Z2pySUh1WllrTGdVUDdZNlZIRXNpakljb1IxM2xIVlJL?=
+ =?iso-2022-jp?B?Vy9iTTJjRmZRSVpDcWlvN1ZOWkcrbXBRalZwc254dWpZSE9naGM2VHBz?=
+ =?iso-2022-jp?B?L1VQZm80VElmK2RTNXJhRzIzMVlNalRneUx4V1g3ZlFseE5qUWMzQ2NV?=
+ =?iso-2022-jp?B?Y0FReVRpOHdiT1VKdVM4Ym01b05KNEVmbDBBdHVUN25xbWk0eDdCRFl1?=
+ =?iso-2022-jp?B?UVR4b1Bnbjhhamd1Rm91VGVZMUFyWXZpVU9hZkFwTWdQWXZWdEg3d1Ez?=
+ =?iso-2022-jp?B?TWRmYkQzVk1XQVZqaFhyQ3NtRFdZTTZKRUw0Nnl2V1NlRXVydmJoN1BQ?=
+x-ms-exchange-transport-forked: True
 Content-Type: text/plain; charset="iso-2022-jp"
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
 X-OriginatorOrg: fujitsu.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: TYCPR01MB6160.jpnprd01.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: ae3cad97-b305-4b23-cac2-08d926680bcc
-X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Jun 2021 08:17:36.5134 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: e2f354ff-8c95-4f04-02f3-08d92732dcff
+X-MS-Exchange-CrossTenant-originalarrivaltime: 04 Jun 2021 08:29:25.8337 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: a19f121d-81e1-4858-a9d8-736e267fd4c7
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: m66hNl5h4ONRM3kGr0uYyhJ1Q+Wak4sStFiti3KZI36qwR5sDKiIrQ6ocPcc3BGykhxt2MqXC7+jAbFJ3J+bWOoljRrB1UmpDwW7iggTSfU=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYCPR01MB6835
+X-MS-Exchange-CrossTenant-userprincipalname: 9jEqmPdjHI/hDfpndPh7733R4IdNV6GXwNA8fZN1KOOjX4az3LDvA9RXbU4hI2bR4SIwS9MhmmKeIhuQfWTSSsufvroJA5+GyiZOz4F9GFQ=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYAPR01MB5642
 Received-SPF: pass client-ip=216.71.158.65;
  envelope-from=ishii.shuuichir@fujitsu.com; helo=esa20.fujitsucc.c3s2.iphmx.com
 X-Spam_action: no action
@@ -232,135 +234,154 @@ List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "ishii.shuuichir@fujitsu.com" <ishii.shuuichir@fujitsu.com>
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KBd44tq6c0R6
+X-TUID: W6lDxxBF9avE
 
 Hi, Richard.
 
-Thank you for your comment.
+> Well, Peter disagreed with having them enabled by default in -cpu max, so=
+ we
+> might need at least one extra property.  I see no reason to have three
+> properties -- one property a64fx-hpc should be sufficient.  But we might =
+not
+> want any command-line properties, see below...
 
-> My first thought is that -cpu max can simply enable the extensions, witho=
-ut
-> extra flags.  The max cpu has all of the features that we can enable, and=
- as I
-> see it this is just one more.
+I understood.
 
-Let me confirm a few things about the above comment.
-Does it mean that I don't need to explicitly enable individual extensions
-such as a64fx-hpc-sec, a64fx-hpc-hwpf, and a64fx-hpc-hwb,
-since all extensions can be enabled by specifying -cpu max?
+> For comparison, in the Arm Cortex-A76 manual,
+>    https://developer.arm.com/documentation/100798/0301/
+> section B2.4 "AArch64 registers by functional group", there is a concise
+> listing of all of the system registers and their reset values.
 
-> The microarchitectural document provided does not list all of the system
-> register reset values for the A64FX, and I would be surprised if there we=
-re an
-> architectural id register that specified a non-standard extension like th=
-is.
-> Thus I would expect to add ARM_FEATURE_A64FX with which to enable these
-> extensions in helper.c.
+Thank you for the information.
 
-As you said,
-some of the published specifications do not describe the reset values of th=
-e registers.
-I would like to implement this in QEMU by referring to a real machine with =
-A64FX.
+> The most important of these for QEMU to create '-cpu a64fx' are the
+> ID_AA64{ISAR,MMFR,PFR} and MIDR values.  These values determine all of
+> the
+> standard architectural features,
 
-> I can certainly help you with this.
+The values of ID_AA64{ISAR,MMFR,PFR} and MIDR are not listed in the specifi=
+cations published at this time.=20
+Of course, they are listed in the A64FX specification document managed with=
+in Fujitsu,
+but we cannot tell how far these setting values can be disclosed=20
+without checking with the A64FX specification staff within Fujitsu.
 
-I am not familiar with this, and I apologize for any inconvenience this may=
- cause,
-but I appreciate your cooperation.
+In order to make the "-cpu a64fx" option, the above problem needs to be sol=
+ved.
+When the necessary register specifications are released,
+it will be possible to implement the "-cpu a64fx" option,
+but I thought it would be better to implement the "-cpu max" option as a fi=
+rst step,
+partly because I don't know when it will be possible to solve this problem.
+
+However, MIDR.partnum can be found in "CPU implementer" of /proc/cpuinfo,
+and CPU FEAT is partially displayed in kernel boot messages.
+It is true that there are some values that are publicly known in a sense fr=
+om Linux on A64FX-equipped machines,
+even if they are not listed in the existing public A64FX|specification.
+
+To what extent ID_AA64{ISAR,MMFR,PFR} can be made public needs to be confir=
+med=20
+with the A64FX specification staff. As for the MIDR register values,
+I think they can be implemented in QEMU as publicly known information that =
+can be recognized by the OS.
+
+When considering implementation with the "-cpu a64fx" option,
+is there any problem to define only the value of MIDR,
+using a temporary value for now until the information of ID_AA64{ISAR,MMFR,=
+PFR} can be disclosed?
+
+> Peter is suggesting that if full support for -cpu a64fx apart from the hp=
+c
+> extensions is close, then we shouldn't implementing a property for -cpu m=
+ax,
+> but only implement -cpu a64fx.  (Because how does the OS detect the hpc
+> feature, apart from the MIDR value?)
+
+The HPC extension is implemented as an impldef register as a unique feature=
+ for HPC in the A64FX processor.
+the existence of the HPC extension would be determined from the fact that M=
+IDR.partnum is A64FX (0x46).
 
 Best regards.
 
 > -----Original Message-----
 > From: Richard Henderson <richard.henderson@linaro.org>
-> Sent: Thursday, June 3, 2021 4:02 AM
-> To: Peter Maydell <peter.maydell@linaro.org>; Ishii, Shuuichirou/=1B$B@P0=
-f=1B(B =1B$B<~0lO:=1B(B
-> <ishii.shuuichir@fujitsu.com>
+> Sent: Friday, June 4, 2021 5:08 AM
+> To: Ishii, Shuuichirou/=1B$B@P0f=1B(B =1B$B<~0lO:=1B(B <ishii.shuuichir@f=
+ujitsu.com>; Peter
+> Maydell <peter.maydell@linaro.org>
 > Cc: qemu-arm@nongnu.org; qemu-devel@nongnu.org
 > Subject: Re: [RFC] Adding the A64FX's HPC funtions.
 >=20
-> On 6/1/21 8:21 AM, Peter Maydell wrote:
-> >>> I'm thinking of implementing A64FX HPC extension in qemu.
-> >>> A64FX [1] is a CPU developed by Fujitsu that implements armv8+SVE.
-> >>>
-> >>> [1]
-> >>>
-> https://github.com/fujitsu/A64FX/blob/master/doc/A64FX_Microarchitec
-> >>> ture
-> >>> _Manual_en_1.4.pdf
-> >>>
-> >>> A64FX is a CPU developed for HPC (High Performance Computing), and
-> >>> HPC extensions [2] are implemented to improve the performance of user
-> programs.
-> >>>
-> >>> [2]
-> >>>
-> https://github.com/fujitsu/A64FX/blob/master/doc/A64FX_Specification
-> >>> _HP
-> >>> C_Extension_v1_EN.pdf
-> >>>
-> >>> The details of each function are described in [2], and the HPC
-> >>> extensions include
-> >>> 1) Tag address override
-> >>> 2) Sector cache
-> >>> 3) Hardware barrier
-> >>> 4) Hardware prefetch assist
-> >>> are implemented.
+> On 6/3/21 1:17 AM, ishii.shuuichir@fujitsu.com wrote:
+> > Hi, Richard.
+> >
+> > Thank you for your comment.
+> >
+> >> My first thought is that -cpu max can simply enable the extensions,
+> >> without extra flags.  The max cpu has all of the features that we can
+> >> enable, and as I see it this is just one more.
+> >
+> > Let me confirm a few things about the above comment.
+> > Does it mean that I don't need to explicitly enable individual
+> > extensions such as a64fx-hpc-sec, a64fx-hpc-hwpf, and a64fx-hpc-hwb,
+> > since all extensions can be enabled by specifying -cpu max?
 >=20
-> Thanks for the pointers.  It looks to me that it'll be easy to implement =
-these in
-> qemu.  We'll need to implement the registers, so that the OS can read bac=
-k the
-> values, but we do not need to actually do anything with them.
->=20
-> >>> 1) Is target/arm/helper.c enough to implement the register
-> >>> (ARMCPRegInfo
-> >>> structure) of HPC extension function of A64FX?
->=20
-> Yes.
->=20
-> >>> 2) Is it OK to specify the option to set the HPC extension of A64FX
-> >>> as follows, for example?
-> >>>
-> >>> -M virt -cpu max,a64fx-hpc-sec=3Don (*sector cache function) -M virt
-> >>> -cpu max,a64fx-hpc-hwpf=3Don (*hardware prefetvh assist function) -M
-> >>> virt -cpu max,a64fx-hpc-hwb=3Don (*hardware barrier function)
-> >>>
-> >>> It is also possible to implement something like -cpu a64fx, but
-> >>> since we don't know if we can implement it immediately, we assume
-> >>> that we will use the -cpu max option first.
->=20
-> My first thought is that -cpu max can simply enable the extensions, witho=
-ut
-> extra flags.  The max cpu has all of the features that we can enable, and=
- as I
-> see it this is just one more.
->=20
-> I would like to add -cpu a64fx at some point.  But as you say, that need =
+> Well, Peter disagreed with having them enabled by default in -cpu max, so=
+ we
+> might need at least one extra property.  I see no reason to have three
+> properties -- one property a64fx-hpc should be sufficient.  But we might =
 not
-> happen right away.
+> want any command-line properties, see below...
 >=20
-> >>> Since there is no example of A64FX function implemented in QEMU, we
-> >>> would appreciate your comments before we post a patch.
+> >
+> >> The microarchitectural document provided does not list all of the syst=
+em
+> >> register reset values for the A64FX, and I would be surprised if there=
+ were
+> an
+> >> architectural id register that specified a non-standard extension like=
+ this.
+> >> Thus I would expect to add ARM_FEATURE_A64FX with which to enable
+> these
+> >> extensions in helper.c.
+> >
+> > As you said,
+> > some of the published specifications do not describe the reset values o=
+f the
+> registers.
+> > I would like to implement this in QEMU by referring to a real machine w=
+ith
+> A64FX.
 >=20
-> We endeavor to enable features by the architectural id registers when pos=
-sible.
->   Thus the cpu_isar_feature() checks in helper.c.
+> I presume there exists some documentation for this somewhere, though
+> possibly
+> only internal to Fujitsu so far.
 >=20
-> The microarchitectural document provided does not list all of the system
-> register reset values for the A64FX, and I would be surprised if there we=
-re an
-> architectural id register that specified a non-standard extension like th=
-is.
-> Thus I would expect to add ARM_FEATURE_A64FX with which to enable these
-> extensions in helper.c.
+> For comparison, in the Arm Cortex-A76 manual,
+>    https://developer.arm.com/documentation/100798/0301/
+> section B2.4 "AArch64 registers by functional group", there is a concise
+> listing of all of the system registers and their reset values.
 >=20
-> I can certainly help you with this.
+> The most important of these for QEMU to create '-cpu a64fx' are the
+> ID_AA64{ISAR,MMFR,PFR} and MIDR values.  These values determine all of
+> the
+> standard architectural features, and from them we can tell what QEMU may =
+(or
+> may not) be missing for proper emulation of the cpu.  For comparison, loo=
+k at
+> aarch64_a72_initfn in target/arm/cpu64.c.
+>=20
+> Peter is suggesting that if full support for -cpu a64fx apart from the hp=
+c
+> extensions is close, then we shouldn't implementing a property for -cpu m=
+ax,
+> but only implement -cpu a64fx.  (Because how does the OS detect the hpc
+> feature, apart from the MIDR value?)
 >=20
 >=20
 > r~

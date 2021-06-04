@@ -1,110 +1,112 @@
-Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp1135481lfa;
-        Fri, 4 Jun 2021 06:10:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy/CWFNrKKaeEnFwf1w8Z8eAuiH/IsDl2ZCEk6D3+0NSTNxwudXa0rx2meeNNRcdQwwSTV6
-X-Received: by 2002:a17:906:640c:: with SMTP id d12mr3909711ejm.70.1622812252829;
-        Fri, 04 Jun 2021 06:10:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1622812252; cv=none;
+Received: by 2002:a0c:aa83:0:0:0:0:0 with SMTP id f3csp2707217qvb;
+        Fri, 4 Jun 2021 08:36:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz8It47LvwL9EDKJuD1txTPqJb07Dy23/Rhl5gNbbImAoGjwPRlhMuWILLxb7giJQweVYkj
+X-Received: by 2002:aa7:cfd4:: with SMTP id r20mr5389224edy.237.1622821019201;
+        Fri, 04 Jun 2021 08:36:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1622821019; cv=none;
         d=google.com; s=arc-20160816;
-        b=t9rS/CGlhwD7QWVjNu6kQfwHY85ZL+n1Z+WC+KdgMOmHke47GZ3aHaGLmG9sLrZsFG
-         akoxOB3dmAB3DquZyq7+zFyBELFjXunj/V6N6YsvmBezf/wxzX+0Xli379Cew7GQ/6xD
-         ugsCAf4nJ0+XKaKIYZBU7jGrqK8EIhMbVax+XOl6LG7u/4gkX5C4miiFPXWdOqqcW3X0
-         asMkXeVUEc40oqF2jkTzi0RIEsxhJzr9L0PcUAa2vJUrKog6v1VyqCCtBpwi+8d/7hOM
-         k6KI8uQIa3Ly89Li9L7XJ07Q4j8s2/TuN7kYwnoNilxPClOZTgQ3kAfSCMgU/toLsOt5
-         sTQg==
+        b=oqkulGZsPL9oajw2I0WvkNHUTkDrfKt0g6rZO3oDMhzCS8TqKj953H7dvJqo1IqWOf
+         Ft/krJ8LYY+PyzIUNWjsqsAVf9kpgR8XzfONC71+CAtroe50zj5MsUammeHvfMFgSVsp
+         rbM5sLMFRAVS4P08G9VP9+xHn24vIpTTPlLx65IqaJLioIz4vkIvUnw2D3K4UU/k6Z+O
+         PaI+N27dtsygNEufFjh1eYmpo3dJ3C4OLQJ8vI7NAJWgA2ye/uQF0owExgMsvxNC/hyZ
+         YqNPH+NTPHWrns5vHJjYDGov2avio9M81luFoBOAd2q2JU2MX5rwX66gxrMw/FVtGceR
+         NCHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=MqRyYQ+I+iFUDaFFWtEOFoxn5b1kujZnNRO2/JIpxjk=;
-        b=AV6oY0JbILBBd3cmR8kk/99CN2x0jdiyjnOgX4zVrKUQqUw0ZVm4Vtr6SQ+Cwf85Nu
-         oiLfAbYZFa1GX7vRsNWDSj6lWio+xlsv7BJZETeDc3wJbQAEV7bda24cMWXwtKamv7vL
-         L5sqlH2Gy8orR/vUoYsgYTJ+wjub+W8WqULaD5m/D+ofKH7hBt3rThA8Yxa6UekMh/4t
-         2LLhrRvQyOknjcxG3xsX40IsgLvnKFKuPLSL40pKdISo5L2GZDaPbbpwBaQaSPPyXGPO
-         KfJB6+CD437gcmiBfFJJ8VnBBjM8IPpCfbV0BC8glNcJt5exRaBC3ZTWo9JzQerosm/x
-         hshw==
+         :mime-version:references:in-reply-to:date:to:from:subject:message-id
+         :dkim-signature;
+        bh=euIKeQyTRk7De/lu9XgoQY+FIBiwyJYvQ8l181++jeI=;
+        b=Loe3GFCvEZVaB2HRJNszrHS25I78lavn69DWVAiOCPlGK4SO5mRdLI9SRZ+kpizr7s
+         HZ3ftOiPIRjZHZBu7DulbtYPakkH54YEap5gUASMUOMi8MIe0Kvmqg5/2qMLGKKlVUo+
+         H8BqUW9q4JhmtN77WAQcCjonXVBhHk1FYIXcX5RbHAlD/rc1WdQ2HL+UBboyhe4neJyF
+         iKP3EmquUvFSyVwSsNco+OXe7EzlRK3tt9fo+FE0Ch5lpuDuZYS/g8hTXIHnY91C09fM
+         mA6FFq2XTZzYX8AgPKCOhmrUc+L7le3TSha/aJjefd7bAsiP4SZuUXX75Gz1YkpEL5RL
+         Q8ng==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=eeLaU9hg;
+       dkim=fail header.i=@linaro.org header.s=google header.b=kl3MqZNC;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q8si1483814edw.495.2021.06.04.06.10.52
+        by mx.google.com with ESMTPS id l21si4776644eja.295.2021.06.04.08.36.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 04 Jun 2021 06:10:52 -0700 (PDT)
+        Fri, 04 Jun 2021 08:36:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=eeLaU9hg;
+       dkim=fail header.i=@linaro.org header.s=google header.b=kl3MqZNC;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:52544 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:58028 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lp9bA-0003t1-0L
-	for alex.bennee@linaro.org; Fri, 04 Jun 2021 09:10:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57992)
+	id 1lpBsY-00006Z-6K
+	for alex.bennee@linaro.org; Fri, 04 Jun 2021 11:36:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36618)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lp9aK-0002zF-D5; Fri, 04 Jun 2021 09:10:00 -0400
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a]:39753)
+ (Exim 4.90_1) (envelope-from <shashi.mallela@linaro.org>)
+ id 1lpBrm-0007q2-EN
+ for qemu-devel@nongnu.org; Fri, 04 Jun 2021 11:36:10 -0400
+Received: from mail-qt1-x833.google.com ([2607:f8b0:4864:20::833]:44949)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lp9aG-0006Zj-Nu; Fri, 04 Jun 2021 09:09:59 -0400
-Received: by mail-ed1-x52a.google.com with SMTP id dj8so11088322edb.6;
- Fri, 04 Jun 2021 06:09:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=MqRyYQ+I+iFUDaFFWtEOFoxn5b1kujZnNRO2/JIpxjk=;
- b=eeLaU9hgZu7mx/Rdken3bv6UmHJbZL8rHDank42/oL99iVuwhAtj2vVOcARhF5rH4Y
- PPrX+7MlaxQYkOHeuPtRIyro8f8UepvBluRPFpMSA8nbZOfLCnGqN+6FBPGoQQ4MoxrQ
- fTuO5UJAmHQ7Flbtxk2io8XRRNlrDdOzQv5BQ6TQbllkPXEnlqZrbvfHQwIpXvj+9N1p
- /UogmmYj2AHlJyJowvnbHoTGt/BQFk03A1D8FME2IpZd+E4ojxNxHkdkXxs/n/mIH/68
- RlQZGTA6s9Wtoipo1lgs4JNfhYAo2/sQ9+QkcXp5WJvBOTD2NHMm+2YD8IJNIZSyqegE
- F2Jw==
+ (Exim 4.90_1) (envelope-from <shashi.mallela@linaro.org>)
+ id 1lpBrj-0004H3-24
+ for qemu-devel@nongnu.org; Fri, 04 Jun 2021 11:36:10 -0400
+Received: by mail-qt1-x833.google.com with SMTP id t17so7260241qta.11
+ for <qemu-devel@nongnu.org>; Fri, 04 Jun 2021 08:36:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=message-id:subject:from:to:cc:date:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=euIKeQyTRk7De/lu9XgoQY+FIBiwyJYvQ8l181++jeI=;
+ b=kl3MqZNCVjlcUzQHixhfz9VCWpGJ9M1Cst57TQpT+SWSkzSSUPsrpJ5Vroe1LgsdQK
+ f+M7a7yZN4YfrQxJnapJtjjBnGoEiCNdW7J5wzMHOjfxaIaIqpu1sktNJ+C76dvF3YxY
+ lp/plm+PNRoVvjIR1WaZ4DGKDYZPmQaEElK1oZzypDGfi2RSIe1aQnW3wEgb6ErAoIfO
+ wZykOzDgaay+F1o8Rc49V1o/T8+e9WfGMErM9PZI3UhXM4LpS0hbNdYKVhjdLv0khp+7
+ 2G4pZoz0UpL+QJI3TTqb4v5Nfb1ugtmh6S71sGoVm/vrBFi1ll2yqQ/2FxbfxKR8Jopc
+ ujzQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=MqRyYQ+I+iFUDaFFWtEOFoxn5b1kujZnNRO2/JIpxjk=;
- b=KFb1Fd+j6EENkKUI9lWXd4KZzaKTwFm57TPKXmTnKHRsgLw4wwBRUalKB6629aBInk
- kvDWEpzzsVdAH3CZaSNcPhGsHvOjELjv1GO2mJaoxqmQV8phR6GPs/QaeShXJiVMfaYl
- eBpuAXLvm36wCBxZiYH7XM/YEh1HB/eftQQXjBOrlIBHXbLsRwUSfG5+4+PNL3ADQrNm
- sYpVhDg1xAqsnGHkJvDUZCQhJ2HCG/PcBi5OcoX/i56x1ZLomJORLy8ElFg0cJcS75dD
- clvCQI/Cb63CZ1MTfMY7vZXwkU3hI5js3zbPwmk6k5bzcG9HSZfHMRRVqDVERtcDWDYE
- XmCQ==
-X-Gm-Message-State: AOAM532M60QJkrRDQZWJc4/yuvruA7NULato8BEAb/CZRTxfFZNYWF68
- rWxT6NWw5gycblv/AYudm+E=
-X-Received: by 2002:a50:8dc6:: with SMTP id s6mr4663953edh.50.1622812194359;
- Fri, 04 Jun 2021 06:09:54 -0700 (PDT)
-Received: from [192.168.1.36] (235.red-83-57-168.dynamicip.rima-tde.net.
- [83.57.168.235])
- by smtp.gmail.com with ESMTPSA id y1sm2696938ejl.7.2021.06.04.06.09.53
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 04 Jun 2021 06:09:53 -0700 (PDT)
-Subject: Re: [PATCH v2] hw/intc/arm_gicv3_cpuif: Tolerate spurious EOIR writes
-To: Jean-Philippe Brucker <jean-philippe@linaro.org>, peter.maydell@linaro.org
-References: <20210604130352.1887560-1-jean-philippe@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <49e31608-6271-e7a4-9760-6ad4ce51430b@amsat.org>
-Date: Fri, 4 Jun 2021 15:09:52 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
-MIME-Version: 1.0
-In-Reply-To: <20210604130352.1887560-1-jean-philippe@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x52a.google.com
+ h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=euIKeQyTRk7De/lu9XgoQY+FIBiwyJYvQ8l181++jeI=;
+ b=JzXrpqGC4KpVAuhu9FYBdS++YNhaBV5Makc2s4bHdxD8Px0O8N0kiNt+Z+81TqT3aP
+ n2kecTxJEQECUlP3cg293kpOrVWMTWjjWYdXCHrJ041HjYdB2kLz8zW+LK9VKq2jZVCd
+ fSpt6yio3qP1bucKpdKc7yD3W4AoXLFsY863MSoHgDK1lRQhENUTJuwQENzBv/ikBtH/
+ JOIfhAiQIAFTl0Yq8q/x0KkxTKERnbpF5D65oK5nygy8qATdS/CjBgfGEJXWjxUKi0fT
+ 5EZcjwh8PTOcfNd35I9l2cjsKGIYrrNECmiUUC4gi2brhjKaY/dlpDE9n83Lw+3wxzI3
+ l7jg==
+X-Gm-Message-State: AOAM532IRWZxnco10uAfI1CSBjHuJsWJ1NbM3luzeu7QpMKhAxJ9DMsD
+ 7Xr383zIdLWFLLis4YuJ5N8Bjg==
+X-Received: by 2002:ac8:5784:: with SMTP id v4mr5104771qta.264.1622820964845; 
+ Fri, 04 Jun 2021 08:36:04 -0700 (PDT)
+Received: from localhost.localdomain
+ (bras-base-stsvon1503w-grc-21-142-114-142-78.dsl.bell.ca. [142.114.142.78])
+ by smtp.gmail.com with ESMTPSA id n12sm4126198qkp.130.2021.06.04.08.36.03
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 04 Jun 2021 08:36:04 -0700 (PDT)
+Message-ID: <16db7ae4bb0b38100a08f0539ae2865c15264f1e.camel@linaro.org>
+Subject: Re: [PATCH v4 7/8] hw/arm/sbsa-ref: add ITS support in SBSA GIC
+From: shashi.mallela@linaro.org
+To: Leif Lindholm <leif@nuviainc.com>
+Date: Fri, 04 Jun 2021 11:36:02 -0400
+In-Reply-To: <20210604104204.z3hhm2cxesnm2jx2@leviathan>
+References: <20210602180042.111347-1-shashi.mallela@linaro.org>
+ <20210602180042.111347-8-shashi.mallela@linaro.org>
+ <20210603114254.mkqr4jnpfqkx3m6w@leviathan>
+ <e2e1b2e1aa54669c0b73dde83f0e20636835e1ab.camel@linaro.org>
+ <20210604104204.z3hhm2cxesnm2jx2@leviathan>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5 (3.28.5-16.el8) 
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::833;
+ envelope-from=shashi.mallela@linaro.org; helo=mail-qt1-x833.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.59,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -119,32 +121,154 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: shashi.mallela@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, rad@semihalf.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HmN7OyNQA2Ok
+X-TUID: JsXNLhrnzvqu
 
-On 6/4/21 3:03 PM, Jean-Philippe Brucker wrote:
-> Commit 382c7160d1cd ("hw/intc/arm_gicv3_cpuif: Fix EOIR write access
-> check logic") added an assert_not_reached() if the guest writes the EOIR
-> register while no interrupt is active.
+On Fri, 2021-06-04 at 11:42 +0100, Leif Lindholm wrote:
+> On Thu, Jun 03, 2021 at 11:31:21 -0400, shashi.mallela@linaro.org
+> wrote:
+> > On Thu, 2021-06-03 at 12:42 +0100, Leif Lindholm wrote:
+> > > On Wed, Jun 02, 2021 at 14:00:41 -0400, Shashi Mallela wrote:
+> > > > Included creation of ITS as part of SBSA platform GIC
+> > > > initialization.
+> > > > 
+> > > > Signed-off-by: Shashi Mallela <shashi.mallela@linaro.org>
+> > > > ---
+> > > >  hw/arm/sbsa-ref.c | 26 +++++++++++++++++++++++---
+> > > >  1 file changed, 23 insertions(+), 3 deletions(-)
+> > > > 
+> > > > diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+> > > > index 43c19b4923..3d9c073636 100644
+> > > > --- a/hw/arm/sbsa-ref.c
+> > > > +++ b/hw/arm/sbsa-ref.c
+> > > > @@ -34,7 +34,7 @@
+> > > >  #include "hw/boards.h"
+> > > >  #include "hw/ide/internal.h"
+> > > >  #include "hw/ide/ahci_internal.h"
+> > > > -#include "hw/intc/arm_gicv3_common.h"
+> > > > +#include "hw/intc/arm_gicv3_its_common.h"
+> > > >  #include "hw/loader.h"
+> > > >  #include "hw/pci-host/gpex.h"
+> > > >  #include "hw/qdev-properties.h"
+> > > > @@ -64,6 +64,7 @@ enum {
+> > > >      SBSA_CPUPERIPHS,
+> > > >      SBSA_GIC_DIST,
+> > > >      SBSA_GIC_REDIST,
+> > > > +    SBSA_GIC_ITS,
+> > > >      SBSA_SECURE_EC,
+> > > >      SBSA_GWDT,
+> > > >      SBSA_GWDT_REFRESH,
+> > > > @@ -107,6 +108,7 @@ static const MemMapEntry sbsa_ref_memmap[]
+> > > > = {
+> > > >      [SBSA_CPUPERIPHS] =         { 0x40000000, 0x00040000 },
+> > > >      [SBSA_GIC_DIST] =           { 0x40060000, 0x00010000 },
+> > > >      [SBSA_GIC_REDIST] =         { 0x40080000, 0x04000000 },
+> > > 
+> > > It seems customary in QEMU to flag gaps in memory space (although
+> > > admittedly, we'd already failed to do so here). This patch leaves
+> > > a
+> > > gap of 0x00010000. Is there a particular reason?
+> > > 
+> > > > +    [SBSA_GIC_ITS] =            { 0x44090000, 0x00020000 },
+> > > 
+> > > And then again a gap (the one we already had).
+> > > 
+> > > No specific reason,but from ITS point of view tried to stay
+> > > within 
+> > > the GIC's 0x40060000 to 0x50000000 zone.The gap of 0x00010000
+> > > would 
+> > > also account for future GIC additions like virtual LPI support.
 > 
-> It turns out some software does this: EDK2, in
-> GicV3ExitBootServicesEvent(), unconditionally write EOIR for all
-> interrupts that it manages. This now causes QEMU to abort when running
-> UEFI on a VM with GICv3. Although it is UNPREDICTABLE behavior and EDK2
-> does need fixing, the punishment seems a little harsh, especially since
-> icc_eoir_write() already tolerates writes of nonexistent interrupt
-> numbers. Display a guest error and tolerate spurious EOIR writes.
+> Right. I was more thinking 64kB isn't much space to extend into.
+> Would it be worth pushing the ITS either all the way up to just below
+> 0x50000000, 0x48000000, or 0x45000000?
+>
+> The current memory allocation size (of 67MB) for
+redistributor(SBSA_GIC_REDIST) is already very large relative to its
+overall required register address space.Hence ITS started at 0x44090000
+(considering that redistributor space is sufficiently spaced) until
+0x440B0000.Future virtual LPI addition can still stay within the
+0x45000000 mark,leaving the whole area between 0x45000000 to 0x50000000
+free for other devices.
+are comments still recommended here? 
 > 
-> Fixes: 382c7160d1cd ("hw/intc/arm_gicv3_cpuif: Fix EOIR write access check logic")
-> Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> ---
-> v2: Added qemu_log_mask() (so I didn't keep the Reviewed-by tag)
-> v1: https://lore.kernel.org/qemu-devel/20210603110012.1182530-1-jean-philippe@linaro.org/
+> Either way, the gap(s) would be good to point out with comments, and
+> potential future use. I only noticed this one on like the third pass
+> of reading.
 > 
-> ---
->  hw/intc/arm_gicv3_cpuif.c | 5 ++++-
->  1 file changed, 4 insertions(+), 1 deletion(-)
+> /
+>     Leif
+> 
+> > > >      [SBSA_SECURE_EC] =          { 0x50000000, 0x00001000 },
+> > > >      [SBSA_GWDT_REFRESH] =       { 0x50010000, 0x00001000 },
+> > > >      [SBSA_GWDT_CONTROL] =       { 0x50011000, 0x00001000 },
+> > > > @@ -377,7 +379,20 @@ static void
+> > > > create_secure_ram(SBSAMachineState
+> > > > *sms,
+> > > >      memory_region_add_subregion(secure_sysmem, base, secram);
+> > > >  }
+> > > >  
+> > > > -static void create_gic(SBSAMachineState *sms)
+> > > > +static void create_its(SBSAMachineState *sms)
+> > > > +{
+> > > > +    DeviceState *dev;
+> > > > +
+> > > > +    dev = qdev_new(TYPE_ARM_GICV3_ITS);
+> > > > +    SysBusDevice *s = SYS_BUS_DEVICE(dev);
+> > > > +
+> > > > +    object_property_set_link(OBJECT(dev), "parent-gicv3",
+> > > > OBJECT(sms->gic),
+> > > > +                             &error_abort);
+> > > > +    sysbus_realize_and_unref(s, &error_fatal);
+> > > > +    sysbus_mmio_map(s, 0, sbsa_ref_memmap[SBSA_GIC_ITS].base);
+> > > > +}
+> > > > +
+> > > > +static void create_gic(SBSAMachineState *sms, MemoryRegion
+> > > > *mem)
+> > > >  {
+> > > >      unsigned int smp_cpus = MACHINE(sms)->smp.cpus;
+> > > >      SysBusDevice *gicbusdev;
+> > > > @@ -404,6 +419,10 @@ static void create_gic(SBSAMachineState
+> > > > *sms)
+> > > >      qdev_prop_set_uint32(sms->gic, "len-redist-region-count",
+> > > > 1);
+> > > >      qdev_prop_set_uint32(sms->gic, "redist-region-count[0]",
+> > > > redist0_count);
+> > > >  
+> > > > +    object_property_set_link(OBJECT(sms->gic), "sysmem",
+> > > > OBJECT(mem),
+> > > > +                                 &error_fatal);
+> > > > +    qdev_prop_set_bit(sms->gic, "has-lpi", true);
+> > > > +
+> > > >      gicbusdev = SYS_BUS_DEVICE(sms->gic);
+> > > >      sysbus_realize_and_unref(gicbusdev, &error_fatal);
+> > > >      sysbus_mmio_map(gicbusdev, 0,
+> > > > sbsa_ref_memmap[SBSA_GIC_DIST].base);
+> > > > @@ -450,6 +469,7 @@ static void create_gic(SBSAMachineState
+> > > > *sms)
+> > > >          sysbus_connect_irq(gicbusdev, i + 3 * smp_cpus,
+> > > >                             qdev_get_gpio_in(cpudev,
+> > > > ARM_CPU_VFIQ));
+> > > >      }
+> > > > +    create_its(sms);
+> > > >  }
+> > > >  
+> > > >  static void create_uart(const SBSAMachineState *sms, int uart,
+> > > > @@ -762,7 +782,7 @@ static void sbsa_ref_init(MachineState
+> > > > *machine)
+> > > >  
+> > > >      create_secure_ram(sms, secure_sysmem);
+> > > >  
+> > > > -    create_gic(sms);
+> > > > +    create_gic(sms, sysmem);
+> > > >  
+> > > >      create_uart(sms, SBSA_UART, sysmem, serial_hd(0));
+> > > >      create_uart(sms, SBSA_SECURE_UART, secure_sysmem,
+> > > > serial_hd(1));
+> > > > -- 
+> > > > 2.27.0
+> > > > 
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

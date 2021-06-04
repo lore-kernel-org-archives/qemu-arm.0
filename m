@@ -1,300 +1,278 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id l10sm7144801wrm.2.2021.06.04.09.12.38
+        by smtp.gmail.com with ESMTPSA id l8sm9299316wrf.0.2021.06.04.09.12.39
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 04 Jun 2021 09:12:42 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 1DE7B1FFDD;
-	Fri,  4 Jun 2021 16:53:21 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 1BDFF1FFAE;
+	Fri,  4 Jun 2021 16:53:15 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Claudio Fontana <cfontana@suse.de>,
-	Paolo Bonzini <pbonzini@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH  v16 69/99] target/arm: add tcg cpu accel class
-Date: Fri,  4 Jun 2021 16:52:42 +0100
-Message-Id: <20210604155312.15902-70-alex.bennee@linaro.org>
+Subject: [PATCH  v16 24/99] target/arm: split off cpu-sysemu.c
+Date: Fri,  4 Jun 2021 16:51:57 +0100
+Message-Id: <20210604155312.15902-25-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210604155312.15902-1-alex.bennee@linaro.org>
 References: <20210604155312.15902-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: ti8zEpumT7PJ
+X-TUID: VhTJZ5hkbm8g
 
 From: Claudio Fontana <cfontana@suse.de>
 
-move init, realizefn and reset code into it.
+move work is needed later on to split things into
+tcg-specific portions and kvm-specific portions of this
 
 Signed-off-by: Claudio Fontana <cfontana@suse.de>
-Cc: Paolo Bonzini <pbonzini@redhat.com>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/arm/tcg/tcg-cpu.h        |  4 ++-
- target/arm/cpu.c                | 44 ++------------------------
- target/arm/tcg/sysemu/tcg-cpu.c | 27 ++++++++++++++++
- target/arm/tcg/tcg-cpu-models.c | 10 +++---
- target/arm/tcg/tcg-cpu.c        | 55 +++++++++++++++++++++++++++++++--
- 5 files changed, 92 insertions(+), 48 deletions(-)
+ target/arm/internals.h  |   8 ++-
+ target/arm/cpu-sysemu.c | 105 ++++++++++++++++++++++++++++++++++++++++
+ target/arm/cpu.c        |  83 -------------------------------
+ target/arm/meson.build  |   1 +
+ 4 files changed, 113 insertions(+), 84 deletions(-)
+ create mode 100644 target/arm/cpu-sysemu.c
 
-diff --git a/target/arm/tcg/tcg-cpu.h b/target/arm/tcg/tcg-cpu.h
-index d93c6a6749..dd08587949 100644
---- a/target/arm/tcg/tcg-cpu.h
-+++ b/target/arm/tcg/tcg-cpu.h
-@@ -22,15 +22,17 @@
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 886db56b58..8809334228 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1202,4 +1202,10 @@ static inline uint64_t useronly_maybe_clean_ptr(uint32_t desc, uint64_t ptr)
+     return ptr;
+ }
  
- #include "cpu.h"
- #include "hw/core/tcg-cpu-ops.h"
-+#include "hw/core/accel-cpu.h"
- 
- void arm_cpu_synchronize_from_tb(CPUState *cs,
-                                  const TranslationBlock *tb);
- 
--extern struct TCGCPUOps arm_tcg_ops;
-+void tcg_arm_init_accel_cpu(AccelCPUClass *accel_cpu, CPUClass *cc);
- 
- #ifndef CONFIG_USER_ONLY
- /* Do semihosting call and set the appropriate return value. */
- void tcg_handle_semihosting(CPUState *cs);
-+bool tcg_cpu_realizefn(CPUState *cs, Error **errp);
- 
- #endif /* !CONFIG_USER_ONLY */
- 
+-#endif
++#ifndef CONFIG_USER_ONLY
++void arm_cpu_set_irq(void *opaque, int irq, int level);
++void arm_cpu_kvm_set_irq(void *opaque, int irq, int level);
++bool arm_cpu_virtio_is_big_endian(CPUState *cs);
++#endif /* !CONFIG_USER_ONLY */
++
++#endif /* TARGET_ARM_INTERNALS_H */
+diff --git a/target/arm/cpu-sysemu.c b/target/arm/cpu-sysemu.c
+new file mode 100644
+index 0000000000..db1c8cb245
+--- /dev/null
++++ b/target/arm/cpu-sysemu.c
+@@ -0,0 +1,105 @@
++/*
++ * QEMU ARM CPU
++ *
++ * Copyright (c) 2012 SUSE LINUX Products GmbH
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, see
++ * <http://www.gnu.org/licenses/gpl-2.0.html>
++ */
++
++#include "qemu/osdep.h"
++#include "cpu.h"
++#include "internals.h"
++#include "sysemu/hw_accel.h"
++#include "kvm_arm.h"
++
++void arm_cpu_set_irq(void *opaque, int irq, int level)
++{
++    ARMCPU *cpu = opaque;
++    CPUARMState *env = &cpu->env;
++    CPUState *cs = CPU(cpu);
++    static const int mask[] = {
++        [ARM_CPU_IRQ] = CPU_INTERRUPT_HARD,
++        [ARM_CPU_FIQ] = CPU_INTERRUPT_FIQ,
++        [ARM_CPU_VIRQ] = CPU_INTERRUPT_VIRQ,
++        [ARM_CPU_VFIQ] = CPU_INTERRUPT_VFIQ
++    };
++
++    if (level) {
++        env->irq_line_state |= mask[irq];
++    } else {
++        env->irq_line_state &= ~mask[irq];
++    }
++
++    switch (irq) {
++    case ARM_CPU_VIRQ:
++        assert(arm_feature(env, ARM_FEATURE_EL2));
++        arm_cpu_update_virq(cpu);
++        break;
++    case ARM_CPU_VFIQ:
++        assert(arm_feature(env, ARM_FEATURE_EL2));
++        arm_cpu_update_vfiq(cpu);
++        break;
++    case ARM_CPU_IRQ:
++    case ARM_CPU_FIQ:
++        if (level) {
++            cpu_interrupt(cs, mask[irq]);
++        } else {
++            cpu_reset_interrupt(cs, mask[irq]);
++        }
++        break;
++    default:
++        g_assert_not_reached();
++    }
++}
++
++void arm_cpu_kvm_set_irq(void *opaque, int irq, int level)
++{
++#ifdef CONFIG_KVM
++    ARMCPU *cpu = opaque;
++    CPUARMState *env = &cpu->env;
++    CPUState *cs = CPU(cpu);
++    uint32_t linestate_bit;
++    int irq_id;
++
++    switch (irq) {
++    case ARM_CPU_IRQ:
++        irq_id = KVM_ARM_IRQ_CPU_IRQ;
++        linestate_bit = CPU_INTERRUPT_HARD;
++        break;
++    case ARM_CPU_FIQ:
++        irq_id = KVM_ARM_IRQ_CPU_FIQ;
++        linestate_bit = CPU_INTERRUPT_FIQ;
++        break;
++    default:
++        g_assert_not_reached();
++    }
++
++    if (level) {
++        env->irq_line_state |= linestate_bit;
++    } else {
++        env->irq_line_state &= ~linestate_bit;
++    }
++    kvm_arm_set_irq(cs->cpu_index, KVM_ARM_IRQ_TYPE_CPU, irq_id, !!level);
++#endif
++}
++
++bool arm_cpu_virtio_is_big_endian(CPUState *cs)
++{
++    ARMCPU *cpu = ARM_CPU(cs);
++    CPUARMState *env = &cpu->env;
++
++    cpu_synchronize_state(cs);
++    return arm_cpu_data_is_big_endian(env);
++}
 diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 003e58d8ee..945dfbbe9d 100644
+index ad65b60b04..bd8413c161 100644
 --- a/target/arm/cpu.c
 +++ b/target/arm/cpu.c
-@@ -410,12 +410,6 @@ static void arm_cpu_reset(DeviceState *dev)
-                               &env->vfp.fp_status_f16);
-     set_float_detect_tininess(float_tininess_before_rounding,
-                               &env->vfp.standard_fp_status_f16);
--
--    if (tcg_enabled()) {
--        hw_breakpoint_update_all(cpu);
--        hw_watchpoint_update_all(cpu);
--        arm_rebuild_hflags(env);
--    }
+@@ -649,89 +649,6 @@ void arm_cpu_update_vfiq(ARMCPU *cpu)
+     }
  }
  
- void arm_cpu_update_virq(ARMCPU *cpu)
-@@ -576,10 +570,6 @@ static void arm_cpu_initfn(Object *obj)
-     cpu->dtb_compatible = "qemu,unknown";
-     cpu->psci_version = 1; /* By default assume PSCI v0.1 */
-     cpu->kvm_target = QEMU_KVM_ARM_TARGET_NONE;
--
--    if (tcg_enabled()) {
--        cpu->psci_version = 2; /* TCG implements PSCI 0.2 */
--    }
- }
- 
- static Property arm_cpu_gt_cntfrq_property =
-@@ -868,34 +858,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-     Error *local_err = NULL;
-     bool no_aa32 = false;
- 
--    /*
--     * If we needed to query the host kernel for the CPU features
--     * then it's possible that might have failed in the initfn, but
--     * this is the first point where we can report it.
--     */
--    if (cpu->host_cpu_probe_failed) {
--        error_setg(errp, "The 'host' CPU type can only be used with KVM");
--        return;
--    }
--
 -#ifndef CONFIG_USER_ONLY
--    /* The NVIC and M-profile CPU are two halves of a single piece of
--     * hardware; trying to use one without the other is a command line
--     * error and will result in segfaults if not caught here.
--     */
--    if (arm_feature(env, ARM_FEATURE_M)) {
--        if (!env->nvic) {
--            error_setg(errp, "This board cannot be used with Cortex-M CPUs");
--            return;
--        }
+-static void arm_cpu_set_irq(void *opaque, int irq, int level)
+-{
+-    ARMCPU *cpu = opaque;
+-    CPUARMState *env = &cpu->env;
+-    CPUState *cs = CPU(cpu);
+-    static const int mask[] = {
+-        [ARM_CPU_IRQ] = CPU_INTERRUPT_HARD,
+-        [ARM_CPU_FIQ] = CPU_INTERRUPT_FIQ,
+-        [ARM_CPU_VIRQ] = CPU_INTERRUPT_VIRQ,
+-        [ARM_CPU_VFIQ] = CPU_INTERRUPT_VFIQ
+-    };
+-
+-    if (level) {
+-        env->irq_line_state |= mask[irq];
 -    } else {
--        if (env->nvic) {
--            error_setg(errp, "This board can only be used with Cortex-M CPUs");
--            return;
--        }
+-        env->irq_line_state &= ~mask[irq];
 -    }
 -
--#ifdef CONFIG_TCG
-+#if defined(CONFIG_TCG) && !defined(CONFIG_USER_ONLY)
-     {
-         uint64_t scale;
- 
-@@ -921,8 +884,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-         cpu->gt_timer[GTIMER_HYPVIRT] = timer_new(QEMU_CLOCK_VIRTUAL, scale,
-                                                   arm_gt_hvtimer_cb, cpu);
-     }
--#endif /* CONFIG_TCG */
--#endif /* !CONFIG_USER_ONLY */
-+#endif /* CONFIG_TCG && !CONFIG_USER_ONLY */
- 
-     cpu_exec_realizefn(cs, &local_err);
-     if (local_err != NULL) {
-@@ -1467,7 +1429,7 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
-     cc->disas_set_info = arm_disas_set_info;
- 
- #ifdef CONFIG_TCG
--    cc->tcg_ops = &arm_tcg_ops;
-+    cc->init_accel_cpu = tcg_arm_init_accel_cpu;
- #endif /* CONFIG_TCG */
- 
-     arm32_cpu_class_init(oc, data);
-diff --git a/target/arm/tcg/sysemu/tcg-cpu.c b/target/arm/tcg/sysemu/tcg-cpu.c
-index 327b2a5073..115ac523dc 100644
---- a/target/arm/tcg/sysemu/tcg-cpu.c
-+++ b/target/arm/tcg/sysemu/tcg-cpu.c
-@@ -19,10 +19,13 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "qemu/timer.h"
- #include "cpu.h"
- #include "semihosting/common-semi.h"
- #include "qemu/log.h"
- #include "tcg/tcg-cpu.h"
-+#include "internals.h"
- 
- /*
-  * Do semihosting call and set the appropriate return value. All the
-@@ -50,3 +53,27 @@ void tcg_handle_semihosting(CPUState *cs)
-         env->regs[15] += env->thumb ? 2 : 4;
-     }
- }
-+
-+bool tcg_cpu_realizefn(CPUState *cs, Error **errp)
-+{
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+
-+    /*
-+     * The NVIC and M-profile CPU are two halves of a single piece of
-+     * hardware; trying to use one without the other is a command line
-+     * error and will result in segfaults if not caught here.
-+     */
-+    if (arm_feature(env, ARM_FEATURE_M)) {
-+        if (!env->nvic) {
-+            error_setg(errp, "This board cannot be used with Cortex-M CPUs");
-+            return false;
-+        }
-+    } else {
-+        if (env->nvic) {
-+            error_setg(errp, "This board can only be used with Cortex-M CPUs");
-+            return false;
-+        }
-+    }
-+    return true;
-+}
-diff --git a/target/arm/tcg/tcg-cpu-models.c b/target/arm/tcg/tcg-cpu-models.c
-index 91af2174a1..975869f276 100644
---- a/target/arm/tcg/tcg-cpu-models.c
-+++ b/target/arm/tcg/tcg-cpu-models.c
-@@ -846,16 +846,18 @@ static const struct TCGCPUOps arm_v7m_tcg_ops = {
- };
- #endif /* CONFIG_TCG */
- 
-+static void arm_v7m_init_accel_cpu(AccelCPUClass *accel_cpu, CPUClass *cc)
-+{
-+    cc->tcg_ops = &arm_v7m_tcg_ops;
-+}
-+
- static void arm_v7m_class_init(ObjectClass *oc, void *data)
- {
-     ARMCPUClass *acc = ARM_CPU_CLASS(oc);
-     CPUClass *cc = CPU_CLASS(oc);
- 
-     acc->info = data;
--#ifdef CONFIG_TCG
--    cc->tcg_ops = &arm_v7m_tcg_ops;
--#endif /* CONFIG_TCG */
+-    switch (irq) {
+-    case ARM_CPU_VIRQ:
+-        assert(arm_feature(env, ARM_FEATURE_EL2));
+-        arm_cpu_update_virq(cpu);
+-        break;
+-    case ARM_CPU_VFIQ:
+-        assert(arm_feature(env, ARM_FEATURE_EL2));
+-        arm_cpu_update_vfiq(cpu);
+-        break;
+-    case ARM_CPU_IRQ:
+-    case ARM_CPU_FIQ:
+-        if (level) {
+-            cpu_interrupt(cs, mask[irq]);
+-        } else {
+-            cpu_reset_interrupt(cs, mask[irq]);
+-        }
+-        break;
+-    default:
+-        g_assert_not_reached();
+-    }
+-}
 -
-+    cc->init_accel_cpu = arm_v7m_init_accel_cpu;
-     cc->gdb_core_xml_file = "arm-m-profile.xml";
- }
- 
-diff --git a/target/arm/tcg/tcg-cpu.c b/target/arm/tcg/tcg-cpu.c
-index 9fd996d908..db677bc71c 100644
---- a/target/arm/tcg/tcg-cpu.c
-+++ b/target/arm/tcg/tcg-cpu.c
-@@ -20,8 +20,8 @@
- 
- #include "qemu/osdep.h"
- #include "cpu.h"
-+#include "qapi/error.h"
- #include "tcg-cpu.h"
--#include "hw/core/tcg-cpu-ops.h"
- #include "cpregs.h"
- #include "internals.h"
- #include "exec/exec-all.h"
-@@ -212,7 +212,7 @@ static bool arm_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
-     return true;
- }
- 
--struct TCGCPUOps arm_tcg_ops = {
-+static struct TCGCPUOps arm_tcg_ops = {
-     .initialize = arm_translate_init,
-     .synchronize_from_tb = arm_cpu_synchronize_from_tb,
-     .cpu_exec_interrupt = arm_cpu_exec_interrupt,
-@@ -227,3 +227,54 @@ struct TCGCPUOps arm_tcg_ops = {
-     .debug_check_watchpoint = arm_debug_check_watchpoint,
- #endif /* !CONFIG_USER_ONLY */
- };
-+
-+static void tcg_cpu_instance_init(CPUState *cs)
-+{
-+    ARMCPU *cpu = ARM_CPU(cs);
-+
-+    /*
-+     * this would be the place to move TCG-specific props
-+     * in future refactoring of cpu properties.
-+     */
-+
-+    cpu->psci_version = 2; /* TCG implements PSCI 0.2 */
-+}
-+
-+static void tcg_cpu_reset(CPUState *cs)
-+{
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+
-+    hw_breakpoint_update_all(cpu);
-+    hw_watchpoint_update_all(cpu);
-+    arm_rebuild_hflags(env);
-+}
-+
-+void tcg_arm_init_accel_cpu(AccelCPUClass *accel_cpu, CPUClass *cc)
-+{
-+    cc->tcg_ops = &arm_tcg_ops;
-+}
-+
-+static void tcg_cpu_accel_class_init(ObjectClass *oc, void *data)
-+{
-+    AccelCPUClass *acc = ACCEL_CPU_CLASS(oc);
-+
-+#ifndef CONFIG_USER_ONLY
-+    acc->cpu_realizefn = tcg_cpu_realizefn;
-+#endif /* CONFIG_USER_ONLY */
-+
-+    acc->cpu_instance_init = tcg_cpu_instance_init;
-+    acc->cpu_reset = tcg_cpu_reset;
-+}
-+static const TypeInfo tcg_cpu_accel_type_info = {
-+    .name = ACCEL_CPU_NAME("tcg"),
-+
-+    .parent = TYPE_ACCEL_CPU,
-+    .class_init = tcg_cpu_accel_class_init,
-+    .abstract = true,
-+};
-+static void tcg_cpu_accel_register_types(void)
-+{
-+    type_register_static(&tcg_cpu_accel_type_info);
-+}
-+type_init(tcg_cpu_accel_register_types);
+-static void arm_cpu_kvm_set_irq(void *opaque, int irq, int level)
+-{
+-#ifdef CONFIG_KVM
+-    ARMCPU *cpu = opaque;
+-    CPUARMState *env = &cpu->env;
+-    CPUState *cs = CPU(cpu);
+-    uint32_t linestate_bit;
+-    int irq_id;
+-
+-    switch (irq) {
+-    case ARM_CPU_IRQ:
+-        irq_id = KVM_ARM_IRQ_CPU_IRQ;
+-        linestate_bit = CPU_INTERRUPT_HARD;
+-        break;
+-    case ARM_CPU_FIQ:
+-        irq_id = KVM_ARM_IRQ_CPU_FIQ;
+-        linestate_bit = CPU_INTERRUPT_FIQ;
+-        break;
+-    default:
+-        g_assert_not_reached();
+-    }
+-
+-    if (level) {
+-        env->irq_line_state |= linestate_bit;
+-    } else {
+-        env->irq_line_state &= ~linestate_bit;
+-    }
+-    kvm_arm_set_irq(cs->cpu_index, KVM_ARM_IRQ_TYPE_CPU, irq_id, !!level);
+-#endif
+-}
+-
+-static bool arm_cpu_virtio_is_big_endian(CPUState *cs)
+-{
+-    ARMCPU *cpu = ARM_CPU(cs);
+-    CPUARMState *env = &cpu->env;
+-
+-    cpu_synchronize_state(cs);
+-    return arm_cpu_data_is_big_endian(env);
+-}
+-
+-#endif
+-
+ static int
+ print_insn_thumb1(bfd_vma pc, disassemble_info *info)
+ {
+diff --git a/target/arm/meson.build b/target/arm/meson.build
+index a9fdada0cc..b75392e3e9 100644
+--- a/target/arm/meson.build
++++ b/target/arm/meson.build
+@@ -17,6 +17,7 @@ arm_softmmu_ss = ss.source_set()
+ arm_softmmu_ss.add(files(
+   'arch_dump.c',
+   'arm-powerctl.c',
++  'cpu-sysemu.c',
+   'machine.c',
+   'monitor.c',
+ ))
 -- 
 2.20.1

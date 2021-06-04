@@ -1,143 +1,98 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id m132sm6351030wmf.10.2021.06.04.10.12.37
+        by smtp.gmail.com with ESMTPSA id c7sm7120966wrs.23.2021.06.04.10.12.39
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 04 Jun 2021 10:12:38 -0700 (PDT)
+        Fri, 04 Jun 2021 10:12:46 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id CAC8E1FFE6;
-	Fri,  4 Jun 2021 16:53:21 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id E742A1FFC9;
+	Fri,  4 Jun 2021 16:53:18 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Claudio Fontana <cfontana@suse.de>,
+	Richard Henderson <richard.henderson@linaro.org>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH  v16 74/99] target/arm: cpu-sve: make cpu_sve_finalize_features return bool
-Date: Fri,  4 Jun 2021 16:52:47 +0100
-Message-Id: <20210604155312.15902-75-alex.bennee@linaro.org>
+Subject: [PATCH  v16 50/99] target/arm: fix style of arm_cpu_do_interrupt functions before move
+Date: Fri,  4 Jun 2021 16:52:23 +0100
+Message-Id: <20210604155312.15902-51-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210604155312.15902-1-alex.bennee@linaro.org>
 References: <20210604155312.15902-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: eU71MdRP//7a
+X-TUID: qhQ07Qh4XFk5
 
 From: Claudio Fontana <cfontana@suse.de>
 
-return false on error, true on success.
+before refactoring the exception code, fix the style of the
+functions being moved.
 
 Signed-off-by: Claudio Fontana <cfontana@suse.de>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/arm/cpu-sve.h |  2 +-
- target/arm/cpu-sve.c | 17 +++++++++--------
- target/arm/cpu.c     |  3 +--
- 3 files changed, 11 insertions(+), 11 deletions(-)
+ target/arm/tcg/helper.c | 17 +++++++++++------
+ 1 file changed, 11 insertions(+), 6 deletions(-)
 
-diff --git a/target/arm/cpu-sve.h b/target/arm/cpu-sve.h
-index ece36d2a0c..6ab74b1d8f 100644
---- a/target/arm/cpu-sve.h
-+++ b/target/arm/cpu-sve.h
-@@ -26,7 +26,7 @@
- #include "cpu.h"
+diff --git a/target/arm/tcg/helper.c b/target/arm/tcg/helper.c
+index 7a9eaec5cb..5b32329895 100644
+--- a/target/arm/tcg/helper.c
++++ b/target/arm/tcg/helper.c
+@@ -896,10 +896,11 @@ static void arm_cpu_do_interrupt_aarch32(CPUState *cs)
+         new_mode = ARM_CPU_MODE_UND;
+         addr = 0x04;
+         mask = CPSR_I;
+-        if (env->thumb)
++        if (env->thumb) {
+             offset = 2;
+-        else
++        } else {
+             offset = 4;
++        }
+         break;
+     case EXCP_SWI:
+         new_mode = ARM_CPU_MODE_SVC;
+@@ -985,7 +986,8 @@ static void arm_cpu_do_interrupt_aarch32(CPUState *cs)
+         /* High vectors. When enabled, base address cannot be remapped. */
+         addr += 0xffff0000;
+     } else {
+-        /* ARM v7 architectures provide a vector base address register to remap
++        /*
++         * ARM v7 architectures provide a vector base address register to remap
+          * the interrupt vector table.
+          * This register is only followed in non-monitor mode, and is banked.
+          * Note: only bits 31:5 are valid.
+@@ -1094,7 +1096,8 @@ static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
+     aarch64_sve_change_el(env, cur_el, new_el, is_a64(env));
  
- /* called by arm_cpu_finalize_features in realizefn */
--void cpu_sve_finalize_features(ARMCPU *cpu, Error **errp);
-+bool cpu_sve_finalize_features(ARMCPU *cpu, Error **errp);
- 
- /* add the CPU SVE properties */
- void cpu_sve_add_props(Object *obj);
-diff --git a/target/arm/cpu-sve.c b/target/arm/cpu-sve.c
-index 5190e4a639..24bffbba8b 100644
---- a/target/arm/cpu-sve.c
-+++ b/target/arm/cpu-sve.c
-@@ -49,7 +49,7 @@ static bool apply_max_vq(unsigned long *sve_vq_map, unsigned long *sve_vq_init,
-     return true;
+     if (cur_el < new_el) {
+-        /* Entry vector offset depends on whether the implemented EL
++        /*
++         * Entry vector offset depends on whether the implemented EL
+          * immediately lower than the target level is using AArch32 or AArch64
+          */
+         bool is_aa64;
+@@ -1285,7 +1288,8 @@ static void handle_semihosting(CPUState *cs)
  }
+ #endif
  
--void cpu_sve_finalize_features(ARMCPU *cpu, Error **errp)
-+bool cpu_sve_finalize_features(ARMCPU *cpu, Error **errp)
- {
-     /*
-      * If any vector lengths are explicitly enabled with sve<N> properties,
-@@ -86,7 +86,7 @@ void cpu_sve_finalize_features(ARMCPU *cpu, Error **errp)
-                               "length, sve-max-vq=%d (%d bits)\n",
-                               max_vq * 128, cpu->sve_max_vq,
-                               cpu->sve_max_vq * 128);
--            return;
-+            return false;
-         }
-         if (kvm_enabled()) {
-             kvm_sve_enable_lens(cpu->sve_vq_map, cpu->sve_vq_init, max_vq,
-@@ -98,7 +98,7 @@ void cpu_sve_finalize_features(ARMCPU *cpu, Error **errp)
-         /* No explicit bits enabled, and no implicit bits from sve-max-vq. */
-         if (!cpu_isar_feature(aa64_sve, cpu)) {
-             /* SVE is disabled and so are all vector lengths.  Good. */
--            return;
-+            return true;
-         }
-         if (kvm_enabled()) {
-             max_vq = kvm_sve_disable_lens(cpu->sve_vq_map, cpu->sve_vq_init,
-@@ -108,7 +108,7 @@ void cpu_sve_finalize_features(ARMCPU *cpu, Error **errp)
-                                           errp);
-         }
-         if (!max_vq) {
--            return;
-+            return false;
-         }
-         max_vq = find_last_bit(cpu->sve_vq_map, max_vq) + 1;
+-/* Handle a CPU exception for A and R profile CPUs.
++/*
++ * Handle a CPU exception for A and R profile CPUs.
+  * Do any appropriate logging, handle PSCI calls, and then hand off
+  * to the AArch64-entry or AArch32-entry function depending on the
+  * target exception level's register width.
+@@ -1330,7 +1334,8 @@ void arm_cpu_do_interrupt(CPUState *cs)
      }
-@@ -122,7 +122,7 @@ void cpu_sve_finalize_features(ARMCPU *cpu, Error **errp)
-         max_vq = cpu->sve_max_vq;
-         if (!apply_max_vq(cpu->sve_vq_map, cpu->sve_vq_init, max_vq,
-                           errp)) {
--            return;
-+            return false;
-         }
-     }
-     /*
-@@ -136,11 +136,11 @@ void cpu_sve_finalize_features(ARMCPU *cpu, Error **errp)
-     if (kvm_enabled()) {
-         if (!kvm_sve_validate_lens(cpu->sve_vq_map, max_vq, kvm_supported,
-                                    errp, cpu->sve_max_vq)) {
--            return;
-+            return false;
-         }
-     } else if (tcg_enabled()) {
-         if (!tcg_sve_validate_lens(cpu->sve_vq_map, max_vq, errp)) {
--            return;
-+            return false;
-         }
-     }
+ #endif
  
-@@ -153,11 +153,12 @@ void cpu_sve_finalize_features(ARMCPU *cpu, Error **errp)
-         error_append_hint(errp, "SVE must be enabled to enable vector "
-                           "lengths.\n");
-         error_append_hint(errp, "Add sve=on to the CPU property list.\n");
--        return;
-+        return false;
-     }
- 
-     /* From now on sve_max_vq is the actual maximum supported length. */
-     cpu->sve_max_vq = max_vq;
-+    return true;
- }
- 
- static void get_prop_max_vq(Object *obj, Visitor *v, const char *name,
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index e4ad92ffec..0b20faaca0 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -821,8 +821,7 @@ void arm_cpu_finalize_features(ARMCPU *cpu, Error **errp)
- 
- #ifdef TARGET_AARCH64
-     if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
--        cpu_sve_finalize_features(cpu, &local_err);
--        if (local_err != NULL) {
-+        if (!cpu_sve_finalize_features(cpu, &local_err)) {
-             error_propagate(errp, local_err);
-             return;
-         }
+-    /* Hooks may change global state so BQL should be held, also the
++    /*
++     * Hooks may change global state so BQL should be held, also the
+      * BQL needs to be held for any modification of
+      * cs->interrupt_request.
+      */
 -- 
 2.20.1

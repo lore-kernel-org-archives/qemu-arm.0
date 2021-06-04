@@ -1,918 +1,533 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id a1sm8019703wrg.92.2021.06.04.09.12.36
+        by smtp.gmail.com with ESMTPSA id b8sm5422422wmd.35.2021.06.04.09.12.36
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 04 Jun 2021 09:12:37 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 61CD91FFDF;
-	Fri,  4 Jun 2021 16:53:21 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 348D21FFAF;
+	Fri,  4 Jun 2021 16:53:15 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Claudio Fontana <cfontana@suse.de>,
+	Richard Henderson <richard.henderson@linaro.org>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH  v16 71/99] target/arm: cpu-sve: new module
-Date: Fri,  4 Jun 2021 16:52:44 +0100
-Message-Id: <20210604155312.15902-72-alex.bennee@linaro.org>
+Subject: [PATCH  v16 25/99] target/arm: tcg: fix comment style before move to cpu-mmu
+Date: Fri,  4 Jun 2021 16:51:58 +0100
+Message-Id: <20210604155312.15902-26-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210604155312.15902-1-alex.bennee@linaro.org>
 References: <20210604155312.15902-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Gc2LNIMpJIZJ
+X-TUID: 816nwXRxdg7W
 
 From: Claudio Fontana <cfontana@suse.de>
 
-extract the SVE-related cpu object properties and functions,
-and move them to a separate module.
+before exporting some functionality from helper.c into a new module,
+fix the comment style of those functions.
 
 Signed-off-by: Claudio Fontana <cfontana@suse.de>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/arm/cpu-sve.h     |  37 ++++
- target/arm/cpu.h         |  14 +-
- target/arm/cpu-sve.c     | 358 +++++++++++++++++++++++++++++++++++++++
- target/arm/cpu.c         |   3 +
- target/arm/cpu64.c       | 329 +----------------------------------
- target/arm/kvm/kvm-cpu.c |   1 +
- target/arm/meson.build   |   1 +
- 7 files changed, 408 insertions(+), 335 deletions(-)
- create mode 100644 target/arm/cpu-sve.h
- create mode 100644 target/arm/cpu-sve.c
+ target/arm/tcg/helper.c | 152 ++++++++++++++++++++++++++--------------
+ 1 file changed, 101 insertions(+), 51 deletions(-)
 
-diff --git a/target/arm/cpu-sve.h b/target/arm/cpu-sve.h
-new file mode 100644
-index 0000000000..692509d419
---- /dev/null
-+++ b/target/arm/cpu-sve.h
-@@ -0,0 +1,37 @@
-+/*
-+ * QEMU AArch64 CPU SVE Extensions for TARGET_AARCH64
-+ *
-+ * Copyright (c) 2013 Linaro Ltd
-+ *
-+ * This program is free software; you can redistribute it and/or
-+ * modify it under the terms of the GNU General Public License
-+ * as published by the Free Software Foundation; either version 2
-+ * of the License, or (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU General Public License
-+ * along with this program; if not, see
-+ * <http://www.gnu.org/licenses/gpl-2.0.html>
-+ */
-+
-+#ifndef CPU_SVE_H
-+#define CPU_SVE_H
-+
-+/* note: SVE is an AARCH64-only option, only include this for TARGET_AARCH64 */
-+
-+#include "cpu.h"
-+
-+/* called by arm_cpu_finalize_features in realizefn */
-+void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp);
-+
-+/* add the CPU SVE properties */
-+void aarch64_add_sve_properties(Object *obj);
-+
-+/* add the CPU SVE properties specific to the "MAX" CPU */
-+void aarch64_add_sve_properties_max(Object *obj);
-+
-+#endif /* CPU_SVE_H */
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index f57fa9b9f5..b9b9bd8b01 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -173,7 +173,8 @@ typedef struct {
- #define VSTCR_SW VTCR_NSW
- #define VSTCR_SA VTCR_NSA
- 
--/* Define a maximum sized vector register.
-+/*
-+ * Define a maximum sized vector register.
-  * For 32-bit, this is a 128-bit NEON/AdvSIMD register.
-  * For 64-bit, this is a 2048-bit SVE register.
-  *
-@@ -201,13 +202,9 @@ typedef struct {
- 
- #ifdef TARGET_AARCH64
- # define ARM_MAX_VQ    16
--void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp);
--void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp);
- #else
- # define ARM_MAX_VQ    1
--static inline void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp) { }
--static inline void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp) { }
--#endif
-+#endif /* TARGET_AARCH64 */
- 
- typedef struct ARMVectorReg {
-     uint64_t d[2 * ARM_MAX_VQ] QEMU_ALIGNED(16);
-@@ -219,10 +216,13 @@ typedef struct ARMPredicateReg {
-     uint64_t p[DIV_ROUND_UP(2 * ARM_MAX_VQ, 8)] QEMU_ALIGNED(16);
- } ARMPredicateReg;
- 
-+void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp);
- /* In AArch32 mode, PAC keys do not exist at all.  */
- typedef struct ARMPACKey {
-     uint64_t lo, hi;
- } ARMPACKey;
-+#else
-+static inline void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp) { }
- #endif
- 
- /* See the commentary above the TBFLAG field definitions.  */
-@@ -1059,7 +1059,6 @@ int aarch64_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
- void aarch64_sve_narrow_vq(CPUARMState *env, unsigned vq);
- void aarch64_sve_change_el(CPUARMState *env, int old_el,
-                            int new_el, bool el0_a64);
--void aarch64_add_sve_properties(Object *obj);
- 
- /*
-  * SVE registers are encoded in KVM's memory in an endianness-invariant format.
-@@ -1090,7 +1089,6 @@ static inline void aarch64_sve_narrow_vq(CPUARMState *env, unsigned vq) { }
- static inline void aarch64_sve_change_el(CPUARMState *env, int o,
-                                          int n, bool a)
- { }
--static inline void aarch64_add_sve_properties(Object *obj) { }
- #endif
- 
- void aarch64_sync_32_to_64(CPUARMState *env);
-diff --git a/target/arm/cpu-sve.c b/target/arm/cpu-sve.c
-new file mode 100644
-index 0000000000..129fb9586e
---- /dev/null
-+++ b/target/arm/cpu-sve.c
-@@ -0,0 +1,358 @@
-+/*
-+ * QEMU ARM CPU
-+ *
-+ * Copyright (c) 2012 SUSE LINUX Products GmbH
-+ *
-+ * This program is free software; you can redistribute it and/or
-+ * modify it under the terms of the GNU General Public License
-+ * as published by the Free Software Foundation; either version 2
-+ * of the License, or (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU General Public License
-+ * along with this program; if not, see
-+ * <http://www.gnu.org/licenses/gpl-2.0.html>
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "cpu.h"
-+#include "sysemu/tcg.h"
-+#include "sysemu/kvm.h"
-+#include "kvm/kvm_arm.h"
-+#include "qapi/visitor.h"
-+#include "cpu-sve.h"
-+
-+void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
-+{
-+    /*
-+     * If any vector lengths are explicitly enabled with sve<N> properties,
-+     * then all other lengths are implicitly disabled.  If sve-max-vq is
-+     * specified then it is the same as explicitly enabling all lengths
-+     * up to and including the specified maximum, which means all larger
-+     * lengths will be implicitly disabled.  If no sve<N> properties
-+     * are enabled and sve-max-vq is not specified, then all lengths not
-+     * explicitly disabled will be enabled.  Additionally, all power-of-two
-+     * vector lengths less than the maximum enabled length will be
-+     * automatically enabled and all vector lengths larger than the largest
-+     * disabled power-of-two vector length will be automatically disabled.
-+     * Errors are generated if the user provided input that interferes with
-+     * any of the above.  Finally, if SVE is not disabled, then at least one
-+     * vector length must be enabled.
-+     */
-+    DECLARE_BITMAP(kvm_supported, ARM_MAX_VQ);
-+    DECLARE_BITMAP(tmp, ARM_MAX_VQ);
-+    uint32_t vq, max_vq = 0;
-+
-+    /* Collect the set of vector lengths supported by KVM. */
-+    bitmap_zero(kvm_supported, ARM_MAX_VQ);
-+    if (kvm_enabled() && kvm_arm_sve_supported()) {
-+        kvm_arm_sve_get_vls(CPU(cpu), kvm_supported);
-+    } else if (kvm_enabled()) {
-+        assert(!cpu_isar_feature(aa64_sve, cpu));
-+    }
-+
-+    /*
-+     * Process explicit sve<N> properties.
-+     * From the properties, sve_vq_map<N> implies sve_vq_init<N>.
-+     * Check first for any sve<N> enabled.
-+     */
-+    if (!bitmap_empty(cpu->sve_vq_map, ARM_MAX_VQ)) {
-+        max_vq = find_last_bit(cpu->sve_vq_map, ARM_MAX_VQ) + 1;
-+
-+        if (cpu->sve_max_vq && max_vq > cpu->sve_max_vq) {
-+            error_setg(errp, "cannot enable sve%d", max_vq * 128);
-+            error_append_hint(errp, "sve%d is larger than the maximum vector "
-+                              "length, sve-max-vq=%d (%d bits)\n",
-+                              max_vq * 128, cpu->sve_max_vq,
-+                              cpu->sve_max_vq * 128);
-+            return;
-+        }
-+
-+        if (kvm_enabled()) {
+diff --git a/target/arm/tcg/helper.c b/target/arm/tcg/helper.c
+index a66c1f0b9e..2a5022032c 100644
+--- a/target/arm/tcg/helper.c
++++ b/target/arm/tcg/helper.c
+@@ -10477,7 +10477,8 @@ static inline bool regime_translation_disabled(CPUARMState *env,
+             return false;
+         case 0:
+         default:
+-            /* HFNMIENA set and ENABLE clear is UNPREDICTABLE, but
 +            /*
-+             * For KVM we have to automatically enable all supported unitialized
-+             * lengths, even when the smaller lengths are not all powers-of-two.
-+             */
-+            bitmap_andnot(tmp, kvm_supported, cpu->sve_vq_init, max_vq);
-+            bitmap_or(cpu->sve_vq_map, cpu->sve_vq_map, tmp, max_vq);
-+        } else if (tcg_enabled()) {
-+            /* Propagate enabled bits down through required powers-of-two. */
-+            for (vq = pow2floor(max_vq); vq >= 1; vq >>= 1) {
-+                if (!test_bit(vq - 1, cpu->sve_vq_init)) {
-+                    set_bit(vq - 1, cpu->sve_vq_map);
-+                }
-+            }
-+        }
-+    } else if (cpu->sve_max_vq == 0) {
-+        /*
-+         * No explicit bits enabled, and no implicit bits from sve-max-vq.
-+         */
-+        if (!cpu_isar_feature(aa64_sve, cpu)) {
-+            /* SVE is disabled and so are all vector lengths.  Good. */
-+            return;
-+        }
-+
-+        if (kvm_enabled()) {
-+            /* Disabling a supported length disables all larger lengths. */
-+            for (vq = 1; vq <= ARM_MAX_VQ; ++vq) {
-+                if (test_bit(vq - 1, cpu->sve_vq_init) &&
-+                    test_bit(vq - 1, kvm_supported)) {
-+                    break;
-+                }
-+            }
-+            max_vq = vq <= ARM_MAX_VQ ? vq - 1 : ARM_MAX_VQ;
-+            bitmap_andnot(cpu->sve_vq_map, kvm_supported,
-+                          cpu->sve_vq_init, max_vq);
-+            if (max_vq == 0 || bitmap_empty(cpu->sve_vq_map, max_vq)) {
-+                error_setg(errp, "cannot disable sve%d", vq * 128);
-+                error_append_hint(errp, "Disabling sve%d results in all "
-+                                  "vector lengths being disabled.\n",
-+                                  vq * 128);
-+                error_append_hint(errp, "With SVE enabled, at least one "
-+                                  "vector length must be enabled.\n");
-+                return;
-+            }
-+        } else if (tcg_enabled()) {
-+            /* Disabling a power-of-two disables all larger lengths. */
-+            if (test_bit(0, cpu->sve_vq_init)) {
-+                error_setg(errp, "cannot disable sve128");
-+                error_append_hint(errp, "Disabling sve128 results in all "
-+                                  "vector lengths being disabled.\n");
-+                error_append_hint(errp, "With SVE enabled, at least one "
-+                                  "vector length must be enabled.\n");
-+                return;
-+            }
-+            for (vq = 2; vq <= ARM_MAX_VQ; vq <<= 1) {
-+                if (test_bit(vq - 1, cpu->sve_vq_init)) {
-+                    break;
-+                }
-+            }
-+            max_vq = vq <= ARM_MAX_VQ ? vq - 1 : ARM_MAX_VQ;
-+            bitmap_complement(cpu->sve_vq_map, cpu->sve_vq_init, max_vq);
-+        }
-+
-+        max_vq = find_last_bit(cpu->sve_vq_map, max_vq) + 1;
-+    }
-+
-+    /*
-+     * Process the sve-max-vq property.
-+     * Note that we know from the above that no bit above
-+     * sve-max-vq is currently set.
-+     */
-+    if (cpu->sve_max_vq != 0) {
-+        max_vq = cpu->sve_max_vq;
-+
-+        if (!test_bit(max_vq - 1, cpu->sve_vq_map) &&
-+            test_bit(max_vq - 1, cpu->sve_vq_init)) {
-+            error_setg(errp, "cannot disable sve%d", max_vq * 128);
-+            error_append_hint(errp, "The maximum vector length must be "
-+                              "enabled, sve-max-vq=%d (%d bits)\n",
-+                              max_vq, max_vq * 128);
-+            return;
-+        }
-+
-+        /* Set all bits not explicitly set within sve-max-vq. */
-+        bitmap_complement(tmp, cpu->sve_vq_init, max_vq);
-+        bitmap_or(cpu->sve_vq_map, cpu->sve_vq_map, tmp, max_vq);
-+    }
-+
-+    /*
-+     * We should know what max-vq is now.  Also, as we're done
-+     * manipulating sve-vq-map, we ensure any bits above max-vq
-+     * are clear, just in case anybody looks.
-+     */
-+    assert(max_vq != 0);
-+    bitmap_clear(cpu->sve_vq_map, max_vq, ARM_MAX_VQ - max_vq);
-+
-+    if (kvm_enabled()) {
-+        /* Ensure the set of lengths matches what KVM supports. */
-+        bitmap_xor(tmp, cpu->sve_vq_map, kvm_supported, max_vq);
-+        if (!bitmap_empty(tmp, max_vq)) {
-+            vq = find_last_bit(tmp, max_vq) + 1;
-+            if (test_bit(vq - 1, cpu->sve_vq_map)) {
-+                if (cpu->sve_max_vq) {
-+                    error_setg(errp, "cannot set sve-max-vq=%d",
-+                               cpu->sve_max_vq);
-+                    error_append_hint(errp, "This KVM host does not support "
-+                                      "the vector length %d-bits.\n",
-+                                      vq * 128);
-+                    error_append_hint(errp, "It may not be possible to use "
-+                                      "sve-max-vq with this KVM host. Try "
-+                                      "using only sve<N> properties.\n");
-+                } else {
-+                    error_setg(errp, "cannot enable sve%d", vq * 128);
-+                    error_append_hint(errp, "This KVM host does not support "
-+                                      "the vector length %d-bits.\n",
-+                                      vq * 128);
-+                }
-+            } else {
-+                error_setg(errp, "cannot disable sve%d", vq * 128);
-+                error_append_hint(errp, "The KVM host requires all "
-+                                  "supported vector lengths smaller "
-+                                  "than %d bits to also be enabled.\n",
-+                                  max_vq * 128);
-+            }
-+            return;
-+        }
-+    } else if (tcg_enabled()) {
-+        /* Ensure all required powers-of-two are enabled. */
-+        for (vq = pow2floor(max_vq); vq >= 1; vq >>= 1) {
-+            if (!test_bit(vq - 1, cpu->sve_vq_map)) {
-+                error_setg(errp, "cannot disable sve%d", vq * 128);
-+                error_append_hint(errp, "sve%d is required as it "
-+                                  "is a power-of-two length smaller than "
-+                                  "the maximum, sve%d\n",
-+                                  vq * 128, max_vq * 128);
-+                return;
-+            }
-+        }
-+    }
-+
-+    /*
-+     * Now that we validated all our vector lengths, the only question
-+     * left to answer is if we even want SVE at all.
-+     */
-+    if (!cpu_isar_feature(aa64_sve, cpu)) {
-+        error_setg(errp, "cannot enable sve%d", max_vq * 128);
-+        error_append_hint(errp, "SVE must be enabled to enable vector "
-+                          "lengths.\n");
-+        error_append_hint(errp, "Add sve=on to the CPU property list.\n");
-+        return;
-+    }
-+
-+    /* From now on sve_max_vq is the actual maximum supported length. */
-+    cpu->sve_max_vq = max_vq;
-+}
-+
-+static void cpu_max_get_sve_max_vq(Object *obj, Visitor *v, const char *name,
-+                                   void *opaque, Error **errp)
-+{
-+    ARMCPU *cpu = ARM_CPU(obj);
-+    uint32_t value;
-+
-+    /* All vector lengths are disabled when SVE is off. */
-+    if (!cpu_isar_feature(aa64_sve, cpu)) {
-+        value = 0;
-+    } else {
-+        value = cpu->sve_max_vq;
-+    }
-+    visit_type_uint32(v, name, &value, errp);
-+}
-+
-+static void cpu_max_set_sve_max_vq(Object *obj, Visitor *v, const char *name,
-+                                   void *opaque, Error **errp)
-+{
-+    ARMCPU *cpu = ARM_CPU(obj);
-+    uint32_t max_vq;
-+
-+    if (!visit_type_uint32(v, name, &max_vq, errp)) {
-+        return;
-+    }
-+
-+    if (kvm_enabled() && !kvm_arm_sve_supported()) {
-+        error_setg(errp, "cannot set sve-max-vq");
-+        error_append_hint(errp, "SVE not supported by KVM on this host\n");
-+        return;
-+    }
-+
-+    if (max_vq == 0 || max_vq > ARM_MAX_VQ) {
-+        error_setg(errp, "unsupported SVE vector length");
-+        error_append_hint(errp, "Valid sve-max-vq in range [1-%d]\n",
-+                          ARM_MAX_VQ);
-+        return;
-+    }
-+
-+    cpu->sve_max_vq = max_vq;
-+}
-+
++             * HFNMIENA set and ENABLE clear is UNPREDICTABLE, but
+              * we warned about that in armv7m_nvic.c when the guest set it.
+              */
+             return true;
+@@ -10531,7 +10532,8 @@ static inline uint64_t regime_ttbr(CPUARMState *env, ARMMMUIdx mmu_idx,
+ 
+ #endif /* !CONFIG_USER_ONLY */
+ 
+-/* Convert a possible stage1+2 MMU index into the appropriate
 +/*
-+ * Note that cpu_arm_get/set_sve_vq cannot use the simpler
-+ * object_property_add_bool interface because they make use
-+ * of the contents of "name" to determine which bit on which
-+ * to operate.
-+ */
-+static void cpu_arm_get_sve_vq(Object *obj, Visitor *v, const char *name,
-+                               void *opaque, Error **errp)
-+{
-+    ARMCPU *cpu = ARM_CPU(obj);
-+    uint32_t vq = atoi(&name[3]) / 128;
-+    bool value;
-+
-+    /* All vector lengths are disabled when SVE is off. */
-+    if (!cpu_isar_feature(aa64_sve, cpu)) {
-+        value = false;
-+    } else {
-+        value = test_bit(vq - 1, cpu->sve_vq_map);
-+    }
-+    visit_type_bool(v, name, &value, errp);
-+}
-+
-+static void cpu_arm_set_sve_vq(Object *obj, Visitor *v, const char *name,
-+                               void *opaque, Error **errp)
-+{
-+    ARMCPU *cpu = ARM_CPU(obj);
-+    uint32_t vq = atoi(&name[3]) / 128;
-+    bool value;
-+
-+    if (!visit_type_bool(v, name, &value, errp)) {
-+        return;
-+    }
-+
-+    if (value && kvm_enabled() && !kvm_arm_sve_supported()) {
-+        error_setg(errp, "cannot enable %s", name);
-+        error_append_hint(errp, "SVE not supported by KVM on this host\n");
-+        return;
-+    }
-+
-+    if (value) {
-+        set_bit(vq - 1, cpu->sve_vq_map);
-+    } else {
-+        clear_bit(vq - 1, cpu->sve_vq_map);
-+    }
-+    set_bit(vq - 1, cpu->sve_vq_init);
-+}
-+
-+static bool cpu_arm_get_sve(Object *obj, Error **errp)
-+{
-+    ARMCPU *cpu = ARM_CPU(obj);
-+    return cpu_isar_feature(aa64_sve, cpu);
-+}
-+
-+static void cpu_arm_set_sve(Object *obj, bool value, Error **errp)
-+{
-+    ARMCPU *cpu = ARM_CPU(obj);
-+    uint64_t t;
-+
-+    if (value && kvm_enabled() && !kvm_arm_sve_supported()) {
-+        error_setg(errp, "'sve' feature not supported by KVM on this host");
-+        return;
-+    }
-+
-+    t = cpu->isar.id_aa64pfr0;
-+    t = FIELD_DP64(t, ID_AA64PFR0, SVE, value);
-+    cpu->isar.id_aa64pfr0 = t;
-+}
-+
-+void aarch64_add_sve_properties(Object *obj)
-+{
-+    uint32_t vq;
-+
-+    object_property_add_bool(obj, "sve", cpu_arm_get_sve, cpu_arm_set_sve);
-+
-+    for (vq = 1; vq <= ARM_MAX_VQ; ++vq) {
-+        char name[8];
-+        sprintf(name, "sve%d", vq * 128);
-+        object_property_add(obj, name, "bool", cpu_arm_get_sve_vq, cpu_arm_set_sve_vq, NULL, NULL);
-+    }
-+}
-+
-+/* properties added for MAX CPU */
-+void aarch64_add_sve_properties_max(Object *obj)
-+{
-+    object_property_add(obj, "sve-max-vq", "uint32", cpu_max_get_sve_max_vq, cpu_max_set_sve_max_vq, NULL, NULL);
-+}
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 2fef8ca471..6db37b42d1 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -23,6 +23,7 @@
- #include "target/arm/idau.h"
- #include "qapi/error.h"
- #include "cpu.h"
-+#include "cpu-sve.h"
- #include "cpregs.h"
++ * Convert a possible stage1+2 MMU index into the appropriate
+  * stage 1 MMU index
+  */
+ static inline ARMMMUIdx stage_1_mmu_idx(ARMMMUIdx mmu_idx)
+@@ -10602,7 +10604,8 @@ static inline bool regime_is_user(CPUARMState *env, ARMMMUIdx mmu_idx)
+     }
+ }
  
- #ifdef CONFIG_TCG
-@@ -818,6 +819,7 @@ void arm_cpu_finalize_features(ARMCPU *cpu, Error **errp)
- {
-     Error *local_err = NULL;
+-/* Translate section/page access permissions to page
++/*
++ * Translate section/page access permissions to page
+  * R/W protection flags
+  *
+  * @env:         CPUARMState
+@@ -10658,7 +10661,8 @@ static inline int ap_to_rw_prot(CPUARMState *env, ARMMMUIdx mmu_idx,
+     }
+ }
  
-+#ifdef TARGET_AARCH64
-     if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
-         arm_cpu_sve_finalize(cpu, &local_err);
-         if (local_err != NULL) {
-@@ -838,6 +840,7 @@ void arm_cpu_finalize_features(ARMCPU *cpu, Error **errp)
-             }
+-/* Translate section/page access permissions to page
++/*
++ * Translate section/page access permissions to page
+  * R/W protection flags.
+  *
+  * @ap:      The 2-bit simple AP (AP[2:1])
+@@ -10686,7 +10690,8 @@ simple_ap_to_rw_prot(CPUARMState *env, ARMMMUIdx mmu_idx, int ap)
+     return simple_ap_to_rw_prot_is_user(ap, regime_is_user(env, mmu_idx));
+ }
+ 
+-/* Translate S2 section/page access permissions to protection flags
++/*
++ * Translate S2 section/page access permissions to protection flags
+  *
+  * @env:     CPUARMState
+  * @s2ap:    The 2-bit stage2 access permissions (S2AP)
+@@ -10734,7 +10739,8 @@ static int get_S2prot(CPUARMState *env, int s2ap, int xn, bool s1_is_el0)
+     return prot;
+ }
+ 
+-/* Translate section/page access permissions to protection flags
++/*
++ * Translate section/page access permissions to protection flags
+  *
+  * @env:     CPUARMState
+  * @mmu_idx: MMU index indicating required translation regime
+@@ -10771,7 +10777,8 @@ static int get_S1prot(CPUARMState *env, ARMMMUIdx mmu_idx, bool is_aa64,
+         return prot_rw;
+     }
+ 
+-    /* TODO have_wxn should be replaced with
++    /*
++     * TODO have_wxn should be replaced with
+      *   ARM_FEATURE_V8 || (ARM_FEATURE_V7 && ARM_FEATURE_EL2)
+      * when ARM_FEATURE_EL2 starts getting set. For now we assume all LPAE
+      * compatible processors have EL2, which is required for [U]WXN.
+@@ -11043,7 +11050,8 @@ static bool get_phys_addr_v5(CPUARMState *env, uint32_t address,
+                     phys_addr = (desc & 0xfffff000) | (address & 0xfff);
+                     *page_size = 0x1000;
+                 } else {
+-                    /* UNPREDICTABLE in ARMv5; we choose to take a
++                    /*
++                     * UNPREDICTABLE in ARMv5; we choose to take a
+                      * page translation fault.
+                      */
+                     fi->type = ARMFault_Translation;
+@@ -11109,7 +11117,8 @@ static bool get_phys_addr_v6(CPUARMState *env, uint32_t address,
+     }
+     type = (desc & 3);
+     if (type == 0 || (type == 3 && !cpu_isar_feature(aa32_pxn, cpu))) {
+-        /* Section translation fault, or attempt to use the encoding
++        /*
++         * Section translation fault, or attempt to use the encoding
+          * which is Reserved on implementations without PXN.
+          */
+         fi->type = ARMFault_Translation;
+@@ -11214,7 +11223,8 @@ static bool get_phys_addr_v6(CPUARMState *env, uint32_t address,
          }
      }
-+#endif /* TARGET_AARCH64 */
- 
-     if (kvm_enabled()) {
-         kvm_arm_steal_time_finalize(cpu, &local_err);
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index e3d818275c..3a6b7cf5d1 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -23,6 +23,7 @@
- #include "qemu/qemu-print.h"
- #include "cpu.h"
- #include "cpu32.h"
-+#include "cpu-sve.h"
- #include "qemu/module.h"
- #include "sysemu/tcg.h"
- #include "sysemu/kvm.h"
-@@ -245,331 +246,6 @@ static void aarch64_a72_initfn(Object *obj)
-     define_arm_cp_regs(cpu, cortex_a72_a57_a53_cp_reginfo);
+     if (ns) {
+-        /* The NS bit will (as required by the architecture) have no effect if
++        /*
++         * The NS bit will (as required by the architecture) have no effect if
+          * the CPU doesn't support TZ or this is a non-secure translation
+          * regime, because the attribute will already be non-secure.
+          */
+@@ -11296,7 +11306,8 @@ static bool check_s2_mmu_setup(ARMCPU *cpu, bool is_aa64, int level,
+     return true;
  }
  
--void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
--{
--    /*
--     * If any vector lengths are explicitly enabled with sve<N> properties,
--     * then all other lengths are implicitly disabled.  If sve-max-vq is
--     * specified then it is the same as explicitly enabling all lengths
--     * up to and including the specified maximum, which means all larger
--     * lengths will be implicitly disabled.  If no sve<N> properties
--     * are enabled and sve-max-vq is not specified, then all lengths not
--     * explicitly disabled will be enabled.  Additionally, all power-of-two
--     * vector lengths less than the maximum enabled length will be
--     * automatically enabled and all vector lengths larger than the largest
--     * disabled power-of-two vector length will be automatically disabled.
--     * Errors are generated if the user provided input that interferes with
--     * any of the above.  Finally, if SVE is not disabled, then at least one
--     * vector length must be enabled.
--     */
--    DECLARE_BITMAP(kvm_supported, ARM_MAX_VQ);
--    DECLARE_BITMAP(tmp, ARM_MAX_VQ);
--    uint32_t vq, max_vq = 0;
--
--    /* Collect the set of vector lengths supported by KVM. */
--    bitmap_zero(kvm_supported, ARM_MAX_VQ);
--    if (kvm_enabled() && kvm_arm_sve_supported()) {
--        kvm_arm_sve_get_vls(CPU(cpu), kvm_supported);
--    } else if (kvm_enabled()) {
--        assert(!cpu_isar_feature(aa64_sve, cpu));
--    }
--
--    /*
--     * Process explicit sve<N> properties.
--     * From the properties, sve_vq_map<N> implies sve_vq_init<N>.
--     * Check first for any sve<N> enabled.
--     */
--    if (!bitmap_empty(cpu->sve_vq_map, ARM_MAX_VQ)) {
--        max_vq = find_last_bit(cpu->sve_vq_map, ARM_MAX_VQ) + 1;
--
--        if (cpu->sve_max_vq && max_vq > cpu->sve_max_vq) {
--            error_setg(errp, "cannot enable sve%d", max_vq * 128);
--            error_append_hint(errp, "sve%d is larger than the maximum vector "
--                              "length, sve-max-vq=%d (%d bits)\n",
--                              max_vq * 128, cpu->sve_max_vq,
--                              cpu->sve_max_vq * 128);
--            return;
--        }
--
--        if (kvm_enabled()) {
--            /*
--             * For KVM we have to automatically enable all supported unitialized
--             * lengths, even when the smaller lengths are not all powers-of-two.
--             */
--            bitmap_andnot(tmp, kvm_supported, cpu->sve_vq_init, max_vq);
--            bitmap_or(cpu->sve_vq_map, cpu->sve_vq_map, tmp, max_vq);
--        } else if (tcg_enabled()) {
--            /* Propagate enabled bits down through required powers-of-two. */
--            for (vq = pow2floor(max_vq); vq >= 1; vq >>= 1) {
--                if (!test_bit(vq - 1, cpu->sve_vq_init)) {
--                    set_bit(vq - 1, cpu->sve_vq_map);
--                }
--            }
--        }
--    } else if (cpu->sve_max_vq == 0) {
--        /*
--         * No explicit bits enabled, and no implicit bits from sve-max-vq.
--         */
--        if (!cpu_isar_feature(aa64_sve, cpu)) {
--            /* SVE is disabled and so are all vector lengths.  Good. */
--            return;
--        }
--
--        if (kvm_enabled()) {
--            /* Disabling a supported length disables all larger lengths. */
--            for (vq = 1; vq <= ARM_MAX_VQ; ++vq) {
--                if (test_bit(vq - 1, cpu->sve_vq_init) &&
--                    test_bit(vq - 1, kvm_supported)) {
--                    break;
--                }
--            }
--            max_vq = vq <= ARM_MAX_VQ ? vq - 1 : ARM_MAX_VQ;
--            bitmap_andnot(cpu->sve_vq_map, kvm_supported,
--                          cpu->sve_vq_init, max_vq);
--            if (max_vq == 0 || bitmap_empty(cpu->sve_vq_map, max_vq)) {
--                error_setg(errp, "cannot disable sve%d", vq * 128);
--                error_append_hint(errp, "Disabling sve%d results in all "
--                                  "vector lengths being disabled.\n",
--                                  vq * 128);
--                error_append_hint(errp, "With SVE enabled, at least one "
--                                  "vector length must be enabled.\n");
--                return;
--            }
--        } else if (tcg_enabled()) {
--            /* Disabling a power-of-two disables all larger lengths. */
--            if (test_bit(0, cpu->sve_vq_init)) {
--                error_setg(errp, "cannot disable sve128");
--                error_append_hint(errp, "Disabling sve128 results in all "
--                                  "vector lengths being disabled.\n");
--                error_append_hint(errp, "With SVE enabled, at least one "
--                                  "vector length must be enabled.\n");
--                return;
--            }
--            for (vq = 2; vq <= ARM_MAX_VQ; vq <<= 1) {
--                if (test_bit(vq - 1, cpu->sve_vq_init)) {
--                    break;
--                }
--            }
--            max_vq = vq <= ARM_MAX_VQ ? vq - 1 : ARM_MAX_VQ;
--            bitmap_complement(cpu->sve_vq_map, cpu->sve_vq_init, max_vq);
--        }
--
--        max_vq = find_last_bit(cpu->sve_vq_map, max_vq) + 1;
--    }
--
--    /*
--     * Process the sve-max-vq property.
--     * Note that we know from the above that no bit above
--     * sve-max-vq is currently set.
--     */
--    if (cpu->sve_max_vq != 0) {
--        max_vq = cpu->sve_max_vq;
--
--        if (!test_bit(max_vq - 1, cpu->sve_vq_map) &&
--            test_bit(max_vq - 1, cpu->sve_vq_init)) {
--            error_setg(errp, "cannot disable sve%d", max_vq * 128);
--            error_append_hint(errp, "The maximum vector length must be "
--                              "enabled, sve-max-vq=%d (%d bits)\n",
--                              max_vq, max_vq * 128);
--            return;
--        }
--
--        /* Set all bits not explicitly set within sve-max-vq. */
--        bitmap_complement(tmp, cpu->sve_vq_init, max_vq);
--        bitmap_or(cpu->sve_vq_map, cpu->sve_vq_map, tmp, max_vq);
--    }
--
--    /*
--     * We should know what max-vq is now.  Also, as we're done
--     * manipulating sve-vq-map, we ensure any bits above max-vq
--     * are clear, just in case anybody looks.
--     */
--    assert(max_vq != 0);
--    bitmap_clear(cpu->sve_vq_map, max_vq, ARM_MAX_VQ - max_vq);
--
--    if (kvm_enabled()) {
--        /* Ensure the set of lengths matches what KVM supports. */
--        bitmap_xor(tmp, cpu->sve_vq_map, kvm_supported, max_vq);
--        if (!bitmap_empty(tmp, max_vq)) {
--            vq = find_last_bit(tmp, max_vq) + 1;
--            if (test_bit(vq - 1, cpu->sve_vq_map)) {
--                if (cpu->sve_max_vq) {
--                    error_setg(errp, "cannot set sve-max-vq=%d",
--                               cpu->sve_max_vq);
--                    error_append_hint(errp, "This KVM host does not support "
--                                      "the vector length %d-bits.\n",
--                                      vq * 128);
--                    error_append_hint(errp, "It may not be possible to use "
--                                      "sve-max-vq with this KVM host. Try "
--                                      "using only sve<N> properties.\n");
--                } else {
--                    error_setg(errp, "cannot enable sve%d", vq * 128);
--                    error_append_hint(errp, "This KVM host does not support "
--                                      "the vector length %d-bits.\n",
--                                      vq * 128);
--                }
--            } else {
--                error_setg(errp, "cannot disable sve%d", vq * 128);
--                error_append_hint(errp, "The KVM host requires all "
--                                  "supported vector lengths smaller "
--                                  "than %d bits to also be enabled.\n",
--                                  max_vq * 128);
--            }
--            return;
--        }
--    } else if (tcg_enabled()) {
--        /* Ensure all required powers-of-two are enabled. */
--        for (vq = pow2floor(max_vq); vq >= 1; vq >>= 1) {
--            if (!test_bit(vq - 1, cpu->sve_vq_map)) {
--                error_setg(errp, "cannot disable sve%d", vq * 128);
--                error_append_hint(errp, "sve%d is required as it "
--                                  "is a power-of-two length smaller than "
--                                  "the maximum, sve%d\n",
--                                  vq * 128, max_vq * 128);
--                return;
--            }
--        }
--    }
--
--    /*
--     * Now that we validated all our vector lengths, the only question
--     * left to answer is if we even want SVE at all.
--     */
--    if (!cpu_isar_feature(aa64_sve, cpu)) {
--        error_setg(errp, "cannot enable sve%d", max_vq * 128);
--        error_append_hint(errp, "SVE must be enabled to enable vector "
--                          "lengths.\n");
--        error_append_hint(errp, "Add sve=on to the CPU property list.\n");
--        return;
--    }
--
--    /* From now on sve_max_vq is the actual maximum supported length. */
--    cpu->sve_max_vq = max_vq;
--}
--
--static void cpu_max_get_sve_max_vq(Object *obj, Visitor *v, const char *name,
--                                   void *opaque, Error **errp)
--{
--    ARMCPU *cpu = ARM_CPU(obj);
--    uint32_t value;
--
--    /* All vector lengths are disabled when SVE is off. */
--    if (!cpu_isar_feature(aa64_sve, cpu)) {
--        value = 0;
--    } else {
--        value = cpu->sve_max_vq;
--    }
--    visit_type_uint32(v, name, &value, errp);
--}
--
--static void cpu_max_set_sve_max_vq(Object *obj, Visitor *v, const char *name,
--                                   void *opaque, Error **errp)
--{
--    ARMCPU *cpu = ARM_CPU(obj);
--    uint32_t max_vq;
--
--    if (!visit_type_uint32(v, name, &max_vq, errp)) {
--        return;
--    }
--
--    if (kvm_enabled() && !kvm_arm_sve_supported()) {
--        error_setg(errp, "cannot set sve-max-vq");
--        error_append_hint(errp, "SVE not supported by KVM on this host\n");
--        return;
--    }
--
--    if (max_vq == 0 || max_vq > ARM_MAX_VQ) {
--        error_setg(errp, "unsupported SVE vector length");
--        error_append_hint(errp, "Valid sve-max-vq in range [1-%d]\n",
--                          ARM_MAX_VQ);
--        return;
--    }
--
--    cpu->sve_max_vq = max_vq;
--}
--
--/*
-- * Note that cpu_arm_get/set_sve_vq cannot use the simpler
-- * object_property_add_bool interface because they make use
-- * of the contents of "name" to determine which bit on which
-- * to operate.
-- */
--static void cpu_arm_get_sve_vq(Object *obj, Visitor *v, const char *name,
--                               void *opaque, Error **errp)
--{
--    ARMCPU *cpu = ARM_CPU(obj);
--    uint32_t vq = atoi(&name[3]) / 128;
--    bool value;
--
--    /* All vector lengths are disabled when SVE is off. */
--    if (!cpu_isar_feature(aa64_sve, cpu)) {
--        value = false;
--    } else {
--        value = test_bit(vq - 1, cpu->sve_vq_map);
--    }
--    visit_type_bool(v, name, &value, errp);
--}
--
--static void cpu_arm_set_sve_vq(Object *obj, Visitor *v, const char *name,
--                               void *opaque, Error **errp)
--{
--    ARMCPU *cpu = ARM_CPU(obj);
--    uint32_t vq = atoi(&name[3]) / 128;
--    bool value;
--
--    if (!visit_type_bool(v, name, &value, errp)) {
--        return;
--    }
--
--    if (value && kvm_enabled() && !kvm_arm_sve_supported()) {
--        error_setg(errp, "cannot enable %s", name);
--        error_append_hint(errp, "SVE not supported by KVM on this host\n");
--        return;
--    }
--
--    if (value) {
--        set_bit(vq - 1, cpu->sve_vq_map);
--    } else {
--        clear_bit(vq - 1, cpu->sve_vq_map);
--    }
--    set_bit(vq - 1, cpu->sve_vq_init);
--}
--
--static bool cpu_arm_get_sve(Object *obj, Error **errp)
--{
--    ARMCPU *cpu = ARM_CPU(obj);
--    return cpu_isar_feature(aa64_sve, cpu);
--}
--
--static void cpu_arm_set_sve(Object *obj, bool value, Error **errp)
--{
--    ARMCPU *cpu = ARM_CPU(obj);
--    uint64_t t;
--
--    if (value && kvm_enabled() && !kvm_arm_sve_supported()) {
--        error_setg(errp, "'sve' feature not supported by KVM on this host");
--        return;
--    }
--
--    t = cpu->isar.id_aa64pfr0;
--    t = FIELD_DP64(t, ID_AA64PFR0, SVE, value);
--    cpu->isar.id_aa64pfr0 = t;
--}
--
--void aarch64_add_sve_properties(Object *obj)
--{
--    uint32_t vq;
--
--    object_property_add_bool(obj, "sve", cpu_arm_get_sve, cpu_arm_set_sve);
--
--    for (vq = 1; vq <= ARM_MAX_VQ; ++vq) {
--        char name[8];
--        sprintf(name, "sve%d", vq * 128);
--        object_property_add(obj, name, "bool", cpu_arm_get_sve_vq,
--                            cpu_arm_set_sve_vq, NULL, NULL);
--    }
--}
--
- void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp)
- {
-     int arch_val = 0, impdef_val = 0;
-@@ -777,8 +453,7 @@ static void aarch64_max_initfn(Object *obj)
+-/* Translate from the 4-bit stage 2 representation of
++/*
++ * Translate from the 4-bit stage 2 representation of
+  * memory attributes (without cache-allocation hints) to
+  * the 8-bit representation of the stage 1 MAIR registers
+  * (which includes allocation hints).
+@@ -11585,7 +11596,8 @@ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
+         stride = 9;
      }
  
-     aarch64_add_sve_properties(obj);
--    object_property_add(obj, "sve-max-vq", "uint32", cpu_max_get_sve_max_vq,
--                        cpu_max_set_sve_max_vq, NULL, NULL);
-+    aarch64_add_sve_properties_max(obj);
+-    /* Note that QEMU ignores shareability and cacheability attributes,
++    /*
++     * Note that QEMU ignores shareability and cacheability attributes,
+      * so we don't need to do anything with the SH, ORGN, IRGN fields
+      * in the TTBCR.  Similarly, TTBCR:A1 selects whether we get the
+      * ASID from TTBR0 or TTBR1, but QEMU's TLB doesn't currently
+@@ -11594,19 +11606,22 @@ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
+      */
+     ttbr = regime_ttbr(env, mmu_idx, param.select);
+ 
+-    /* Here we should have set up all the parameters for the translation:
++    /*
++     * Here we should have set up all the parameters for the translation:
+      * inputsize, ttbr, epd, stride, tbi
+      */
+ 
+     if (param.epd) {
+-        /* Translation table walk disabled => Translation fault on TLB miss
++        /*
++         * Translation table walk disabled => Translation fault on TLB miss
+          * Note: This is always 0 on 64-bit EL2 and EL3.
+          */
+         goto do_fault;
+     }
+ 
+     if (mmu_idx != ARMMMUIdx_Stage2 && mmu_idx != ARMMMUIdx_Stage2_S) {
+-        /* The starting level depends on the virtual address size (which can
++        /*
++         * The starting level depends on the virtual address size (which can
+          * be up to 48 bits) and the translation granule size. It indicates
+          * the number of strides (stride bits at a time) needed to
+          * consume the bits of the input address. In the pseudocode this is:
+@@ -11619,7 +11634,8 @@ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
+          */
+         level = 4 - (inputsize - 4) / stride;
+     } else {
+-        /* For stage 2 translations the starting level is specified by the
++        /*
++         * For stage 2 translations the starting level is specified by the
+          * VTCR_EL2.SL0 field (whose interpretation depends on the page size)
+          */
+         uint32_t sl0 = extract32(tcr->raw_tcr, 6, 2);
+@@ -11659,7 +11675,8 @@ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
+      */
+     descaddr &= ~indexmask;
+ 
+-    /* The address field in the descriptor goes up to bit 39 for ARMv7
++    /*
++     * The address field in the descriptor goes up to bit 39 for ARMv7
+      * but up to bit 47 for ARMv8, but we use the descaddrmask
+      * up to bit 39 for AArch32, because we don't need other bits in that case
+      * to construct next descriptor address (anyway they should be all zeroes).
+@@ -11667,7 +11684,8 @@ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
+     descaddrmask = ((1ull << (aarch64 ? 48 : 40)) - 1) &
+                    ~indexmask_grainsize;
+ 
+-    /* Secure accesses start with the page table in secure memory and
++    /*
++     * Secure accesses start with the page table in secure memory and
+      * can be downgraded to non-secure at any step. Non-secure accesses
+      * remain non-secure. We implement this by just ORing in the NSTable/NS
+      * bits at each step.
+@@ -11693,7 +11711,8 @@ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
+         descaddr = descriptor & descaddrmask;
+ 
+         if ((descriptor & 2) && (level < 3)) {
+-            /* Table entry. The top five bits are attributes which may
++            /*
++             * Table entry. The top five bits are attributes which may
+              * propagate down through lower levels of the table (and
+              * which are all arranged so that 0 means "no effect", so
+              * we can gather them up by ORing in the bits at each level).
+@@ -11703,7 +11722,8 @@ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
+             indexmask = indexmask_grainsize;
+             continue;
+         }
+-        /* Block entry at level 1 or 2, or page entry at level 3.
++        /*
++         * Block entry at level 1 or 2, or page entry at level 3.
+          * These are basically the same thing, although the number
+          * of bits we pull in from the vaddr varies.
+          */
+@@ -11725,15 +11745,17 @@ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
+             break;
+         }
+         attrs |= extract32(tableattrs, 0, 2) << 11;     /* XN, PXN */
+-        /* The sense of AP[1] vs APTable[0] is reversed, as APTable[0] == 1
++        /*
++         * The sense of AP[1] vs APTable[0] is reversed, as APTable[0] == 1
+          * means "force PL1 access only", which means forcing AP[1] to 0.
+          */
+         attrs &= ~(extract32(tableattrs, 2, 1) << 4);   /* !APT[0] => AP[1] */
+         attrs |= extract32(tableattrs, 3, 1) << 5;      /* APT[1] => AP[2] */
+         break;
+     }
+-    /* Here descaddr is the final physical address, and attributes
+-     * are all in attrs.
++    /*
++     * Here descaddr is the final physical address,
++     * and attributes are all in attrs.
+      */
+     fault_type = ARMFault_AccessFlag;
+     if ((attrs & (1 << 8)) == 0) {
+@@ -11760,7 +11782,8 @@ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
+     }
+ 
+     if (ns) {
+-        /* The NS bit will (as required by the architecture) have no effect if
++        /*
++         * The NS bit will (as required by the architecture) have no effect if
+          * the CPU doesn't support TZ or this is a non-secure translation
+          * regime, because the attribute will already be non-secure.
+          */
+@@ -11814,7 +11837,8 @@ static inline void get_phys_addr_pmsav7_default(CPUARMState *env,
+             break;
+         }
+     } else {
+-        /* Default system address map for M profile cores.
++        /*
++         * Default system address map for M profile cores.
+          * The architecture specifies which regions are execute-never;
+          * at the MPU level no other checks are defined.
+          */
+@@ -11840,7 +11864,8 @@ static inline void get_phys_addr_pmsav7_default(CPUARMState *env,
+ static bool pmsav7_use_background_region(ARMCPU *cpu,
+                                          ARMMMUIdx mmu_idx, bool is_user)
+ {
+-    /* Return true if we should use the default memory map as a
++    /*
++     * Return true if we should use the default memory map as a
+      * "background" region if there are no hits against any MPU regions.
+      */
+     CPUARMState *env = &cpu->env;
+@@ -11866,7 +11891,8 @@ static inline bool m_is_ppb_region(CPUARMState *env, uint32_t address)
+ 
+ static inline bool m_is_system_region(CPUARMState *env, uint32_t address)
+ {
+-    /* True if address is in the M profile system region
++    /*
++     * True if address is in the M profile system region
+      * 0xe0000000 - 0xffffffff
+      */
+     return arm_feature(env, ARM_FEATURE_M) && extract32(address, 29, 3) == 0x7;
+@@ -11888,7 +11914,8 @@ static bool get_phys_addr_pmsav7(CPUARMState *env, uint32_t address,
+ 
+     if (regime_translation_disabled(env, mmu_idx) ||
+         m_is_ppb_region(env, address)) {
+-        /* MPU disabled or M profile PPB access: use default memory map.
++        /*
++         * MPU disabled or M profile PPB access: use default memory map.
+          * The other case which uses the default memory map in the
+          * v7M ARM ARM pseudocode is exception vector reads from the vector
+          * table. In QEMU those accesses are done in arm_v7m_load_vector(),
+@@ -11954,7 +11981,8 @@ static bool get_phys_addr_pmsav7(CPUARMState *env, uint32_t address,
+ 
+                 srdis_mask = srdis ? 0x3 : 0x0;
+                 for (i = 2; i <= 8 && rsize < TARGET_PAGE_BITS; i *= 2) {
+-                    /* This will check in groups of 2, 4 and then 8, whether
++                    /*
++                     * This will check in groups of 2, 4 and then 8, whether
+                      * the subregion bits are consistent. rsize is incremented
+                      * back up to give the region size, considering consistent
+                      * adjacent subregions as one region. Stop testing if rsize
+@@ -12062,7 +12090,8 @@ static bool get_phys_addr_pmsav7(CPUARMState *env, uint32_t address,
+ static bool v8m_is_sau_exempt(CPUARMState *env,
+                               uint32_t address, MMUAccessType access_type)
+ {
+-    /* The architecture specifies that certain address ranges are
++    /*
++     * The architecture specifies that certain address ranges are
+      * exempt from v8M SAU/IDAU checks.
+      */
+     return
+@@ -12078,7 +12107,8 @@ void v8m_security_lookup(CPUARMState *env, uint32_t address,
+                                 MMUAccessType access_type, ARMMMUIdx mmu_idx,
+                                 V8M_SAttributes *sattrs)
+ {
+-    /* Look up the security attributes for this address. Compare the
++    /*
++     * Look up the security attributes for this address. Compare the
+      * pseudocode SecurityCheck() function.
+      * We assume the caller has zero-initialized *sattrs.
+      */
+@@ -12129,7 +12159,8 @@ void v8m_security_lookup(CPUARMState *env, uint32_t address,
+                         sattrs->subpage = true;
+                     }
+                     if (sattrs->srvalid) {
+-                        /* If we hit in more than one region then we must report
++                        /*
++                         * If we hit in more than one region then we must report
+                          * as Secure, not NS-Callable, with no valid region
+                          * number info.
+                          */
+@@ -12187,7 +12218,8 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
+                               int *prot, bool *is_subpage,
+                               ARMMMUFaultInfo *fi, uint32_t *mregion)
+ {
+-    /* Perform a PMSAv8 MPU lookup (without also doing the SAU check
++    /*
++     * Perform a PMSAv8 MPU lookup (without also doing the SAU check
+      * that a full phys-to-virt translation does).
+      * mregion is (if not NULL) set to the region number which matched,
+      * or -1 if no region number is returned (MPU off, address did not
+@@ -12211,7 +12243,8 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
+         *mregion = -1;
+     }
+ 
+-    /* Unlike the ARM ARM pseudocode, we don't need to check whether this
++    /*
++     * Unlike the ARM ARM pseudocode, we don't need to check whether this
+      * was an exception vector read from the vector table (which is always
+      * done using the default system address map), because those accesses
+      * are done in arm_v7m_load_vector(), which always does a direct
+@@ -12228,7 +12261,8 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
+ 
+         for (n = (int)cpu->pmsav7_dregion - 1; n >= 0; n--) {
+             /* region search */
+-            /* Note that the base address is bits [31:5] from the register
++            /*
++             * Note that the base address is bits [31:5] from the register
+              * with bits [4:0] all zeroes, but the limit address is bits
+              * [31:5] from the register with bits [4:0] all ones.
+              */
+@@ -12264,7 +12298,8 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
+             }
+ 
+             if (matchregion != -1) {
+-                /* Multiple regions match -- always a failure (unlike
++                /*
++                 * Multiple regions match -- always a failure (unlike
+                  * PMSAv7 where highest-numbered-region wins)
+                  */
+                 fi->type = ARMFault_Permission;
+@@ -12304,7 +12339,8 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
+         if (*prot && !xn && !(pxn && !is_user)) {
+             *prot |= PAGE_EXEC;
+         }
+-        /* We don't need to look the attribute up in the MAIR0/MAIR1
++        /*
++         * We don't need to look the attribute up in the MAIR0/MAIR1
+          * registers because that only tells us about cacheability.
+          */
+         if (mregion) {
+@@ -12332,7 +12368,8 @@ static bool get_phys_addr_pmsav8(CPUARMState *env, uint32_t address,
+     if (arm_feature(env, ARM_FEATURE_M_SECURITY)) {
+         v8m_security_lookup(env, address, access_type, mmu_idx, &sattrs);
+         if (access_type == MMU_INST_FETCH) {
+-            /* Instruction fetches always use the MMU bank and the
++            /*
++             * Instruction fetches always use the MMU bank and the
+              * transaction attribute determined by the fetch address,
+              * regardless of CPU state. This is painful for QEMU
+              * to handle, because it would mean we need to encode
+@@ -12361,14 +12398,16 @@ static bool get_phys_addr_pmsav8(CPUARMState *env, uint32_t address,
+                 return true;
+             }
+         } else {
+-            /* For data accesses we always use the MMU bank indicated
++            /*
++             * For data accesses we always use the MMU bank indicated
+              * by the current CPU state, but the security attributes
+              * might downgrade a secure access to nonsecure.
+              */
+             if (sattrs.ns) {
+                 txattrs->secure = false;
+             } else if (!secure) {
+-                /* NS access to S memory must fault.
++                /*
++                 * NS access to S memory must fault.
+                  * Architecturally we should first check whether the
+                  * MPU information for this address indicates that we
+                  * are doing an unaligned access to Device memory, which
+@@ -12416,8 +12455,10 @@ static bool get_phys_addr_pmsav5(CPUARMState *env, uint32_t address,
+             continue;
+         }
+         mask = 1 << ((base >> 1) & 0x1f);
+-        /* Keep this shift separate from the above to avoid an
+-           (undefined) << 32.  */
++        /*
++         * Keep this shift separate from the above to avoid an
++         * (undefined) << 32
++         */
+         mask = (mask << 1) - 1;
+         if (((base ^ address) & ~mask) == 0) {
+             break;
+@@ -12477,7 +12518,8 @@ static bool get_phys_addr_pmsav5(CPUARMState *env, uint32_t address,
+     return false;
  }
  
- static const ARMCPUInfo aarch64_cpus[] = {
-diff --git a/target/arm/kvm/kvm-cpu.c b/target/arm/kvm/kvm-cpu.c
-index 9f65010c0c..a23831e3c6 100644
---- a/target/arm/kvm/kvm-cpu.c
-+++ b/target/arm/kvm/kvm-cpu.c
-@@ -21,6 +21,7 @@
- #include "qemu/osdep.h"
- #include "qemu-common.h"
- #include "cpu.h"
-+#include "cpu-sve.h"
- #include "hw/core/accel-cpu.h"
- #include "qapi/error.h"
+-/* Combine either inner or outer cacheability attributes for normal
++/*
++ * Combine either inner or outer cacheability attributes for normal
+  * memory, according to table D4-42 and pseudocode procedure
+  * CombineS1S2AttrHints() of ARM DDI 0487B.b (the ARMv8 ARM).
+  *
+@@ -12493,7 +12535,8 @@ static uint8_t combine_cacheattr_nibble(uint8_t s1, uint8_t s2)
+         /* stage 1 write-through takes precedence */
+         return s1;
+     } else if (extract32(s2, 2, 2) == 2) {
+-        /* stage 2 write-through takes precedence, but the allocation hint
++        /*
++         * stage 2 write-through takes precedence, but the allocation hint
+          * is still taken from stage 1
+          */
+         return (2 << 2) | extract32(s1, 0, 2);
+@@ -12502,7 +12545,8 @@ static uint8_t combine_cacheattr_nibble(uint8_t s1, uint8_t s2)
+     }
+ }
  
-diff --git a/target/arm/meson.build b/target/arm/meson.build
-index 448e94861f..bad5a659a7 100644
---- a/target/arm/meson.build
-+++ b/target/arm/meson.build
-@@ -13,6 +13,7 @@ arm_ss.add(zlib)
+-/* Combine S1 and S2 cacheability/shareability attributes, per D4.5.4
++/*
++ * Combine S1 and S2 cacheability/shareability attributes, per D4.5.4
+  * and CombineS1S2Desc()
+  *
+  * @s1:      Attributes from stage 1 walk
+@@ -12552,7 +12596,8 @@ static ARMCacheAttrs combine_cacheattrs(ARMCacheAttrs s1, ARMCacheAttrs s2)
+             ret.attrs = 0xc; /* GRE */
+         }
  
- arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
-   'cpu64.c',
-+  'cpu-sve.c',
-   'gdbstub64.c',
- ))
+-        /* Any location for which the resultant memory type is any
++        /*
++         * Any location for which the resultant memory type is any
+          * type of Device memory is always treated as Outer Shareable.
+          */
+         ret.shareability = 2;
+@@ -12562,7 +12607,8 @@ static ARMCacheAttrs combine_cacheattrs(ARMCacheAttrs s1, ARMCacheAttrs s2)
+                   | combine_cacheattr_nibble(s1lo, s2lo);
  
+         if (ret.attrs == 0x44) {
+-            /* Any location for which the resultant memory type is Normal
++            /*
++             * Any location for which the resultant memory type is Normal
+              * Inner Non-cacheable, Outer Non-cacheable is always treated
+              * as Outer Shareable.
+              */
+@@ -12579,7 +12625,8 @@ static ARMCacheAttrs combine_cacheattrs(ARMCacheAttrs s1, ARMCacheAttrs s2)
+ }
+ 
+ 
+-/* get_phys_addr - get the physical address for this virtual address
++/*
++ * get_phys_addr - get the physical address for this virtual address
+  *
+  * Find the physical address corresponding to the given virtual address,
+  * by doing a translation table walk on MMU based systems or using the
+@@ -12614,7 +12661,8 @@ bool get_phys_addr(CPUARMState *env, target_ulong address,
+     ARMMMUIdx s1_mmu_idx = stage_1_mmu_idx(mmu_idx);
+ 
+     if (mmu_idx != s1_mmu_idx) {
+-        /* Call ourselves recursively to do the stage 1 and then stage 2
++        /*
++         * Call ourselves recursively to do the stage 1 and then stage 2
+          * translations if mmu_idx is a two-stage regime.
+          */
+         if (arm_feature(env, ARM_FEATURE_EL2)) {
+@@ -12686,14 +12734,16 @@ bool get_phys_addr(CPUARMState *env, target_ulong address,
+         }
+     }
+ 
+-    /* The page table entries may downgrade secure to non-secure, but
++    /*
++     * The page table entries may downgrade secure to non-secure, but
+      * cannot upgrade an non-secure translation regime's attributes
+      * to secure.
+      */
+     attrs->secure = regime_is_secure(env, mmu_idx);
+     attrs->user = regime_is_user(env, mmu_idx);
+ 
+-    /* Fast Context Switch Extension. This doesn't exist at all in v8.
++    /*
++     * Fast Context Switch Extension. This doesn't exist at all in v8.
+      * In v7 and earlier it affects all stage 1 translations.
+      */
+     if (address < 0x02000000 && mmu_idx != ARMMMUIdx_Stage2
 -- 
 2.20.1

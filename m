@@ -1,144 +1,137 @@
-Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp2188890lfa;
-        Sat, 5 Jun 2021 11:13:13 -0700 (PDT)
-X-Received: by 2002:a62:1481:0:b029:2c1:1e90:c54 with SMTP id 123-20020a6214810000b02902c11e900c54mr10193922pfu.55.1622916793451;
-        Sat, 05 Jun 2021 11:13:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1622916793; cv=none;
+Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp2261188lfa;
+        Sat, 5 Jun 2021 13:50:11 -0700 (PDT)
+X-Received: by 2002:a62:1b88:0:b029:1fb:d3d0:343a with SMTP id b130-20020a621b880000b02901fbd3d0343amr10331337pfb.76.1622926211732;
+        Sat, 05 Jun 2021 13:50:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1622926211; cv=none;
         d=google.com; s=arc-20160816;
-        b=k5nSkCwEM3nLt8yibdXrkxy5fy7hosDi5bEyAaE/3Mrh/gx/r8KTDETyW2i+fgIXj5
-         GHSv3K9kI4OuLQ/m9UC7e2pXtpMjHufuBQ5DHFTSg+LRa5VQc7MXidnSXucBjfiz2Suw
-         MEKsbV4rmpw1XXgCr1uOmZZPzMUxTu7m8j9und6gWULm/aX6KALGxa7GJ/JqLEykWNR/
-         XchXYEeY6xvYlqAlXSHkh/zsuFdBWCGjw3gMrIeUlTziJ3YkJgamiGQYbbVdRehumem7
-         R51rovUwqzfttD2O9GY9VILrautEivZBLpomaWWKc7SyjgVHttVV+3sAVkXnFK02RPtn
-         8ayA==
+        b=Dv96NrDkmqeQnD6xYzM4g37yZGnjx7zJBlicUQGRJ0KM1sdaKoODxM9giyKMXHRo0f
+         7r0qZONB8VwOUD49nSTP2skpUpYroeTm0mmDKY75ZWmqtPF/eMXdfeTHS4R3paXCGMgU
+         L4mYNDxfiuO0r8tguvvTARlJRkdhPWmussAIVOYbZyv6qJVWCRNFSe0SzJ0SxW+FUknt
+         CMWhjMifrW58fJrOQ8GFlgE3RIl3rMhl7r29pRt7pJavMetqJMY2Ew1WSJsN32RLfTJB
+         QgmiGweE2pf45MtfPvn1445rgQ4n/305yaolniRNOs8JWfA2XhvAsTp6OVL6BbK6Xli/
+         lnpQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature;
-        bh=+Jgk9p8Czxc/HetAphE9a9mdBCtdlvAhzuxOBut2rXk=;
-        b=ZwpthAtHbEFshL9F49JmfeJIfaZIeN3S0btUDo0U2RXe8curchRbeXx3hRPjX7DN0y
-         JMGqzz39At5L3IX+naluVR64lW6irYMBZ4OPUAJ7Om1yK2Cel/1deRStgY3Bn4AeXEqc
-         K/1YAeaNn45lk2hLViy5LWljXuKxaDm41814KMGhiF8pWByy+hqVuKcq6Q1bpqGRLcn5
-         N6O6L+PRzgwnmWiin8PCwbMANwbYFcGNK2R4rDCooLt7onpjLvoLkglTx7b/B3YBRJB2
-         u53lsWvoOGTe4LAvbNmbjHaPRjmUytWS+ufpWzrtaawLQUD+VztiI/ZxzVOmOx8bac4H
-         fpvg==
+        bh=zUCX+WJiwhqANyN275NwjJ7fZTnAmYv2uUsgNhiGyyg=;
+        b=ZZ88zbwg/O5MBYsuwfdy+55P0y+kgngGZs4o4zibFVli2H+OWnJyYeyWxCMPO1Lc+u
+         uEA9odFFfGGENSFamz5z+7b+oJGDzTgHbyPYElLjxHi8AKZ4MDl1PkztuFEzy6zy1bN4
+         +94Zdnwtzf9CHK3HmzPw5CWxRW3mgc1g4VZwYIjLW1DKcHlXuAw4yDzEofsHBxdEpCI1
+         7XaJ4vJE1C9j4eqrVcEesV+1loFf6Eg5lp1TQC+uAmn/Is6SQPA+d0NjbINO0dIznJl5
+         NsuSG1v16S40fN5SKEoAIn0nEun+n3HRm0BLHbScY06vEV1MzY2GkyRKwWMFghiM7RYd
+         z/kA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mJkd4XUt;
+       dkim=pass header.i=@linaro.org header.s=google header.b=rKIzBS7e;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id p68sor2846282pfp.26.2021.06.05.11.13.13
+        by mx.google.com with SMTPS id 16sor3100604pgl.4.2021.06.05.13.50.11
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sat, 05 Jun 2021 11:13:13 -0700 (PDT)
+        Sat, 05 Jun 2021 13:50:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mJkd4XUt;
+       dkim=pass header.i=@linaro.org header.s=google header.b=rKIzBS7e;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=subject:to:cc:references:from:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=+Jgk9p8Czxc/HetAphE9a9mdBCtdlvAhzuxOBut2rXk=;
-        b=mJkd4XUtgZdsEotfA4cAvSR6+7lB/L8jDDCGe2gonME5ab/d5IZ1Nhk8c97D8pq4ij
-         tSGYyqZv5aNPkyXDFjOA7ci4uYFLwTAt0Xy/Da8EQJExgsOUhLmwrrFjo9gRPZ96KUuP
-         /ZvI87WQryUeg9VTHtAfr5fCji2yjJI9rN+zDyHcZvlD5H0FkRZcRb8+55I0sqed14Js
-         1v7KDwUv++rUBpwumGlgLqh4IkmTdSqbKvuuy6B+TBYtl6KqlSDU4GibqYBQnW0PEN6H
-         cTZrSPyi78rzUN8HpAb5v2F6W8KYIEJPNKVkpdogcCq4We/14dV9Mx8nHmDpe3YssWI+
-         hOAA==
+        bh=zUCX+WJiwhqANyN275NwjJ7fZTnAmYv2uUsgNhiGyyg=;
+        b=rKIzBS7eF8eQdlHc4GU1fvpGuJW4NKEaXwjWNJIOWDipXlbkPM58ihucObeKlxBrf1
+         xLF4jUfoDQX4PK1clSJYAFx56+cNn2muGPX9zlsPviIM/V43+hTW2WbUNLWdbIKtZaka
+         2zzE01A7gsDUTrosl7DROzxRTmg4MQvOD1290HvksI46rWPRz8W8u2cXd36FhtUb+GrH
+         4r7WA82X9tfZ/npW1BV1O3rhbcVuMOBH3iNTEw+YeokVAFyYASielYa/uxM4twDvkdae
+         VhFJntX1ysMmKO5785/8rEe9M8Em4Y8Eqz8O5s8Lduz/m58dOP8A4kawIJitOwm2VsJ8
+         8w6g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:message-id:date
          :user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=+Jgk9p8Czxc/HetAphE9a9mdBCtdlvAhzuxOBut2rXk=;
-        b=NoMNtr8q1UkCKZizy0Ai0Q16S/g3JMqUOcp0qgnEy16SUmoBrWhma0C577zp6xgEqo
-         Njs5IfAjf64zWbpHqgU6mfo10MOfN5DZ04I8xqf6DfbAdnoWV6gEO+WkrpRaN83nEbZJ
-         +MoJ/w9TAh0Dn/jv/XMgBcGb56KXLPTHPEG3znpG5sP27QWT+I/qmE0kufmUNFMU7YH6
-         9XTi3DSDTL0rAGdgWZVHy7Sup77IQMr8s7CfWhg3QA9PidYszw282aDq2SlhQDvFWHEf
-         rLII76Lcp2sgawcvznzbghqpO1JmH8X9+RH6kQ1FN8GL2WYLd0y5qEky/uWIOtaJvMzY
-         HI+A==
-X-Gm-Message-State: AOAM530TL5EU7HDK3Qu74smNUJ6/rk2T6x9ORKH9Q5uEHZy8TRzi35hU
-	PYNtL69ColPyrTrA4saUQXsuAWRt
-X-Google-Smtp-Source: ABdhPJyaYUMAg5Oh8xNwiIZHHhkq3tjwvACDXfHAMsmKjqPyH4TTOcwUui7M0P4w3Wz7EDV4OAx22A==
-X-Received: by 2002:a62:5288:0:b029:2e3:fd7d:267a with SMTP id g130-20020a6252880000b02902e3fd7d267amr10395121pfb.21.1622916792862;
-        Sat, 05 Jun 2021 11:13:12 -0700 (PDT)
+        bh=zUCX+WJiwhqANyN275NwjJ7fZTnAmYv2uUsgNhiGyyg=;
+        b=rYROoe7Rckrty/Z/WNvj9kMDkz6Iba9vfWX5WmikGdKb6eEfPWHfyNJ2bV1wwuY4iU
+         JtCPLnT9z5tf1fSXoJXRs5khURKR8imJbif1j+7yOinb/x5VMKbPV2m9+rWv0gsURHiw
+         vpbJ4hS2CbQQyBt8gFuI5Be8jMXwCb1FlGzRkjao9MSrQ8q8JbhJ6yDj0EvURFw+ztvA
+         doKj3FwKWmpe0VmJN4FhVMGd80/kOJVP8ToYtUMQUP2Za0wZQXHlDrUnmtp++drKNFVJ
+         3DLXglojuLoNQLreej+xQV6NxoGJU0AODD8S9PWyB/u+L8LzbHvbpqYKp06wpD6kdNB5
+         YvZw==
+X-Gm-Message-State: AOAM530oUKyoWrNcskE9vIYOOjd44H+xTZSVA807LbxVRkBaffZxoS45
+	0c/0HrXi9pbqX4h7I0pQlkP7hJn48w8hYhLg
+X-Google-Smtp-Source: ABdhPJyjBpp+tr9GDo1Vf9goHp/YZCkKM+DIAr/88HTUqMhgMPVTdiSuNxM12oWFE61HG9a0ZZ7fKw==
+X-Received: by 2002:a65:6103:: with SMTP id z3mr11150619pgu.61.1622926211227;
+        Sat, 05 Jun 2021 13:50:11 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from [192.168.1.11] (174-21-70-228.tukw.qwest.net. [174.21.70.228])
-        by smtp.gmail.com with ESMTPSA id 190sm5010120pgd.1.2021.06.05.11.13.12
+        by smtp.gmail.com with ESMTPSA id 11sm4756757pge.57.2021.06.05.13.50.10
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 05 Jun 2021 11:13:12 -0700 (PDT)
-Subject: Re: [PATCH v16 71/99] target/arm: cpu-sve: new module
+        Sat, 05 Jun 2021 13:50:10 -0700 (PDT)
+Subject: Re: [PATCH v16 78/99] target/arm: cpu-exceptions,
+ cpu-exceptions-aa64: new modules
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Claudio Fontana <cfontana@suse.de>
 References: <20210604155312.15902-1-alex.bennee@linaro.org>
- <20210604155312.15902-72-alex.bennee@linaro.org>
+ <20210604155312.15902-79-alex.bennee@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <0a105bf1-a64e-f9cd-3ab2-d3ac4157297f@linaro.org>
-Date: Sat, 5 Jun 2021 11:13:10 -0700
+Message-ID: <d0865350-88f9-0f91-f984-25832c0f289b@linaro.org>
+Date: Sat, 5 Jun 2021 13:50:08 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <20210604155312.15902-72-alex.bennee@linaro.org>
+In-Reply-To: <20210604155312.15902-79-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: iBrAvXdmuinT
+X-TUID: iyfmAjTZlh36
 
 On 6/4/21 8:52 AM, Alex Bennée wrote:
-> +#ifndef CPU_SVE_H
-> +#define CPU_SVE_H
+> diff --git a/target/arm/cpu-exceptions-aa64.h b/target/arm/cpu-exceptions-aa64.h
+> new file mode 100644
+> index 0000000000..64f800a15d
+> --- /dev/null
+> +++ b/target/arm/cpu-exceptions-aa64.h
+> @@ -0,0 +1,28 @@
+> +/*
+> + * QEMU AArch64 CPU Exceptions Sysemu code
+> + *
+> + * Copyright (c) 2012 SUSE LINUX Products GmbH
+> + *
+> + * This program is free software; you can redistribute it and/or
+> + * modify it under the terms of the GNU General Public License
+> + * as published by the Free Software Foundation; either version 2
+> + * of the License, or (at your option) any later version.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + *
+> + * You should have received a copy of the GNU General Public License
+> + * along with this program; if not, see
+> + *<http://www.gnu.org/licenses/gpl-2.0.html>
+> + */
 > +
-> +/* note: SVE is an AARCH64-only option, only include this for TARGET_AARCH64 */
+> +#ifndef CPU_EXCEPTIONS_AA64_H
+> +#define CPU_EXCEPTIONS_AA64_H
+> +
+> +#include "cpu.h"
+> +
+> +void arm_cpu_do_interrupt_aarch64(CPUState *cs);
+> +
+> +#endif /* CPU_EXCEPTIONS_AA64_H */
 
-This seems unnecessary.
+I don't see the point in the excessive replication of header files, for exactly 
+one declaration.  This is not the first example.
 
-> @@ -201,13 +202,9 @@ typedef struct {
->   
->   #ifdef TARGET_AARCH64
->   # define ARM_MAX_VQ    16
-> -void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp);
-> -void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp);
->   #else
->   # define ARM_MAX_VQ    1
-> -static inline void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp) { }
-> -static inline void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp) { }
-> -#endif
-> +#endif /* TARGET_AARCH64 */
+What's wrong with internal.h?  Or some other header that collects sysemu 
+specific declarations?
 
-Hmm.  I'm not sure about removing the stubs, but see below.
-
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 2fef8ca471..6db37b42d1 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -23,6 +23,7 @@
->   #include "target/arm/idau.h"
->   #include "qapi/error.h"
->   #include "cpu.h"
-> +#include "cpu-sve.h"
-
-Not following the advice given above, which I agree with.
-
-> +#ifdef TARGET_AARCH64
->       if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
->           arm_cpu_sve_finalize(cpu, &local_err);
->           if (local_err != NULL) {
-> @@ -838,6 +840,7 @@ void arm_cpu_finalize_features(ARMCPU *cpu, Error **errp)
->               }
->           }
->       }
-> +#endif /* TARGET_AARCH64 */
-
-New ifdefs, which isn't great.  But I also see that it's more or less a 1-1 
-swap.  One ifdef here, or one ifdef in the header to create the stub.  So I 
-guess it's a draw.
-
-So, modulo the comment at the top,
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Also, "cpu.h" is not required by this declaration, as I've pointed out before.
 
 
 r~

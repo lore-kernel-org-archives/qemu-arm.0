@@ -1,146 +1,106 @@
-Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp1669021lfa;
-        Fri, 4 Jun 2021 19:43:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz7cwFVRzOqwxi56RnDOVMbTT4cDVeTRIe3hjonb8VqmsJhX7XpG8ny8po8V79ZrR/ha98A
-X-Received: by 2002:a25:69c8:: with SMTP id e191mr10061913ybc.448.1622861031367;
-        Fri, 04 Jun 2021 19:43:51 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1622861031; cv=pass;
+Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp1971580lfa;
+        Sat, 5 Jun 2021 05:33:07 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz8I+ZjaidSz6eP/3sSoHWNAe96nA/u835VALYDanWtfay0femwiCnyTBhnjCCTtfDf1H2n
+X-Received: by 2002:a05:6e02:e8d:: with SMTP id t13mr7702505ilj.189.1622896387723;
+        Sat, 05 Jun 2021 05:33:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1622896387; cv=none;
         d=google.com; s=arc-20160816;
-        b=TLu2Ha3Ijhav3luMsiIBh4zJNGBT5Frp3BLiNXoe4w1kPMUc9aDkRUiOPUqUuRZDzt
-         tnktVVqQGGWq+3C3/LgymIhEPNe1E2Or2cmZcgo2LsCqgHEy5LT+00Rghogx6QDIjfe1
-         OGpp6bGSw3cn7Z+nqwa/d9awjq2pQ8EHgnh9oeHqlaRmx1gvfiiyIaTPiHxyJ8N/6D8u
-         ymaRZox43W/L7dDEUYEC6ErpDiXpNhKNOiNb4QfEUYSYkGwKDc74rz/DmIqHGHDUN40S
-         lXUREskVpgzfd2YDbXDLRjraFhNgaBUxqsWsEx7HvKgx0GnxlQpM4CrTpec9xGxsj3Q9
-         QWtw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=AHdElKY2+pndvrZ/nVXzLj2EA4mrX/WgbfWP8BB8Ydtqq0HqJj0VNlA6qHj59oCDJ7
+         9AylzmV+HAHHbiVGNnmVaVWSqGEri6Mrf9qZvkTaYJ4iUsWi5UtbwPi8qJ8DLuet6gRe
+         79Yx2BwhNAP3W+CIQwxXcUlNX377Cuv3h1/3T28uCgplGDEKrkfnKF/buRAtmON6szvT
+         XJwGtAGsPKzWTT4lQESiIZzI0Y59y6YvPLJ9FRrHKJS+g7gIWa8NQZxjoEILqQQsIFKA
+         rJCkDEcMRIGgDYG+altO4CFmjM3Vb6iJZiVxUul6ufd1VoEGS1UJYUWyg4aJW1Qvt7rJ
+         QxAQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:content-disposition
-         :mime-version:message-id:subject:to:from:date:dkim-signature;
-        bh=hSGgRFFQKLoE9hiwcblWmcouYftjeCYdT+SUTHPMKU4=;
-        b=Qqsb4dqgz9HoBVug+oiXoao1rrlj7nj2ns7tuLCzbjsxAcz+DprhYUZnoINpJ2cOU4
-         s6nvjZX6mS+TcPAh4YqNvu6hkXFLfK82WXUiqq/w6LxMB5JPljYBMRovVdm6uO73RHvW
-         BdYXbkAprtwOF5Ms1TBltxuzeQbYnmsbyejyglCJ5k4+SAPwVndovZdIZhtCI8oZTf6j
-         VepYm9w5APQEUO7nDhZ6Xz14j9IYPyE2p93xpXa/XrKRCPzljrrtGk0cJHsS/G5IJ0Gq
-         hLgrgoPjIhkvUfEEBurRg4Sq5IZeC1ux5iBhOYKhoi3gPwqkcDUdMpOviIz5iXEUbqkI
-         EGHw==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=rjwr7ucY;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=t7RhKwuiQCmztjvYtfuTqLMQ5n48THL/aL9f+dwUDl0=;
+        b=DiZqbXsdGnIvvayMUvoPp2o6VwF7kQ6Qc2LMvYEr4x/TjiBJLC/5kIlbvYGNDcrv+B
+         l5gHiS76jCd59z5P722nGxgBLSSCQxjxaJeewunPHyPSbnLO3jvm8iMdujD89cxt7GT6
+         +SgXwsIH0Hj2tLCVIdgSlw1trDeejQTLx9UnfNcWyPjpt38bM3G7xCIc0L7aaISVgGo9
+         6B8OY39CWXU57D68xEAXIcuQKtCDLmgAR2RjoM15Uc0K6lNAHe6bVQFEB2x5aFRWbdnB
+         wDj+ardkSJT9WmBzektrdlPYLWyxYMohSdyAGEVv3V5F+TkP1qbYArD3vkCFahZ1Mkyn
+         M6eA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Xvq7DRPx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nvidia.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c16si7017012ybk.201.2021.06.04.19.43.51
+        by mx.google.com with ESMTPS id z7si9215732ilu.128.2021.06.05.05.33.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 04 Jun 2021 19:43:51 -0700 (PDT)
+        Sat, 05 Jun 2021 05:33:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=rjwr7ucY;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Xvq7DRPx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nvidia.com
-Received: from localhost ([::1]:45420 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:35514 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lpMHu-0007RS-JJ
-	for alex.bennee@linaro.org; Fri, 04 Jun 2021 22:43:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35716)
+	id 1lpVUB-0003Ba-0j
+	for alex.bennee@linaro.org; Sat, 05 Jun 2021 08:33:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43112)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1lpIwl-0004jP-Ux; Fri, 04 Jun 2021 19:09:47 -0400
-Received: from mail-dm6nam10on2065.outbound.protection.outlook.com
- ([40.107.93.65]:9748 helo=NAM10-DM6-obe.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1lpVU2-0003BI-Qj
+ for qemu-arm@nongnu.org; Sat, 05 Jun 2021 08:32:58 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:47516)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1lpIwi-0004GC-Ux; Fri, 04 Jun 2021 19:09:47 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=N9Liah++21yQT3wgqlt3m23vVtbyhkU/gzDOpsdm5Xne5h0hnnXeA/N9tM2q6OZIFf6pA3iyIJJwTkPwanR0Ro/973WVJDKjfqQDME3u9J+bFdWr8XF5VbS7GkkTGwLYd9tYZle8XbM9wRZZfchiQVQIdca3deVP7UiXBBg67x+uRZf1KlGw8lGg1Wm9iyfHfEs0piG5IlMx84IRuVoeyGQRxSJS6UzH/1u44xccD7kWczXjFq+qshrnW0ckYkDvu4A+opgnVQPwuZXTQg790VNJMMdZegnjhIx6gGf39kfa6r9DHFUDpPcdQpuWHxiAGZAk2MrJJ8CN2xjJRGjlvA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=hSGgRFFQKLoE9hiwcblWmcouYftjeCYdT+SUTHPMKU4=;
- b=oB5LeyxpofpQtEJ148cKeXLd3cQEjrU8evINFt8tQaO/phmvt6YaloYWasdtzZAiFRX7QSx/zYLQIzVNJNF6W1ryfQB7itv1lQp9vLtSTsdJoCQB7i8hUHC5pQEqVbHSl9dSiLSds43gJEWr/atiqhKOWKQpzLN3cVbUn4RtN3w7ujpi3Hmn5/vBmLliaWG3VnWmM2P8j3mqK4MgsAk0vSyfbkce7SAD9aReufEXANDJfu7fa+hknBiAG7hJofdO7YRuo9zO3kos9keZ+j1QeIwbKgXSESlvWH3QZ8Poo8uMjcdWXYpv2PPWKDzAsa+1344Eb4Y+nTxqRWXpAAUnNA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.112.36) smtp.rcpttodomain=nongnu.org smtp.mailfrom=nvidia.com;
- dmarc=pass (p=none sp=none pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=hSGgRFFQKLoE9hiwcblWmcouYftjeCYdT+SUTHPMKU4=;
- b=rjwr7ucYQwxnSbUijfxbX7G/V5+zLAjnd3o42FfY4upZb/xkQTrSKCOncmJIXJjnlTAwVpmcp/P4WfzYWlBbeo5O7wStA54GPARGJ0fsPrqCI2XbYZzzzRNSS5LcsUXzkB1zuD3kXzXRzw/X5yDXr7F622UyeB0h98By22+Jd52sqPIBTzxZEZHy2Z/WDEJ5nSt/LyO4He5C5W1yPuvxKNH20OOOc5nDOJ8TFN/sDM+Mco+/CEsGfv0Yeeof57xyi8BszFGzeL5anRB19JSWwrH8Nt7fyZaw0YVy4aAHM2dIxACVEiV4+XbM1RQ6i9guDDJxTArLOFIjF5ifkXeNsw==
-Received: from BN9PR03CA0916.namprd03.prod.outlook.com (2603:10b6:408:107::21)
- by BY5PR12MB4036.namprd12.prod.outlook.com (2603:10b6:a03:210::16)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4195.24; Fri, 4 Jun
- 2021 23:09:38 +0000
-Received: from BN8NAM11FT003.eop-nam11.prod.protection.outlook.com
- (2603:10b6:408:107:cafe::ca) by BN9PR03CA0916.outlook.office365.com
- (2603:10b6:408:107::21) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4195.23 via Frontend
- Transport; Fri, 4 Jun 2021 23:09:38 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.112.36)
- smtp.mailfrom=nvidia.com; nongnu.org; dkim=none (message not signed)
- header.d=none;nongnu.org; dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.112.36 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.112.36; helo=mail.nvidia.com;
-Received: from mail.nvidia.com (216.228.112.36) by
- BN8NAM11FT003.mail.protection.outlook.com (10.13.177.90) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.20.4195.22 via Frontend Transport; Fri, 4 Jun 2021 23:09:37 +0000
-Received: from HQMAIL107.nvidia.com (172.20.187.13) by HQMAIL101.nvidia.com
- (172.20.187.10) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Fri, 4 Jun
- 2021 23:09:36 +0000
-Received: from Asurada-Nvidia (172.20.187.5) by mail.nvidia.com
- (172.20.187.13) with Microsoft SMTP Server (TLS) id 15.0.1497.2 via Frontend
- Transport; Fri, 4 Jun 2021 23:09:37 +0000
-Date: Fri, 4 Jun 2021 16:08:27 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: <eric.auger@redhat.com>, <miaoyubo@huawei.com>, <qemu-devel@nongnu.org>,
- <qemu-arm@nongnu.org>
-Subject: Multiple SMMUv3 instances on PCI Bus and PCI Host Bridge
-Message-ID: <20210604230827.GB15599@Asurada-Nvidia>
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1lpVTy-0006k1-8f
+ for qemu-arm@nongnu.org; Sat, 05 Jun 2021 08:32:57 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1622896372;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=t7RhKwuiQCmztjvYtfuTqLMQ5n48THL/aL9f+dwUDl0=;
+ b=Xvq7DRPxOyYXZiBMhuHsjGWTPAerGVuAEeMUVi7yGmW83/7hw4JDMyqP7Fww5cklfVMFax
+ 6TZurzrI5yon080B0fzZZ7UGtALEcNA5KZZhKFFvTERj3KaA8ja3h9h89gnYUdbvwxX8o5
+ 6PCzheqXiV0h2AhyKyoD00CutdlibGo=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-4-iBPaOqfcOEyVz9B-xiFRlw-1; Sat, 05 Jun 2021 08:32:50 -0400
+X-MC-Unique: iBPaOqfcOEyVz9B-xiFRlw-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A334D803625;
+ Sat,  5 Jun 2021 12:32:49 +0000 (UTC)
+Received: from localhost (unknown [10.40.208.18])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id DE51A19C79;
+ Sat,  5 Jun 2021 12:32:39 +0000 (UTC)
+Date: Sat, 5 Jun 2021 14:32:38 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Wang Xingang <wangxingang5@huawei.com>
+Subject: Re: [PATCH v4 0/8] IOMMU: Add support for IOMMU Bypass Feature
+Message-ID: <20210605143238.2e52b08a@redhat.com>
+In-Reply-To: <1621914605-14724-1-git-send-email-wangxingang5@huawei.com>
+References: <1621914605-14724-1-git-send-email-wangxingang5@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 55cf8243-6044-4d6b-c657-08d927add35a
-X-MS-TrafficTypeDiagnostic: BY5PR12MB4036:
-X-Microsoft-Antispam-PRVS: <BY5PR12MB40360C4693AFA896CCB9D975AB3B9@BY5PR12MB4036.namprd12.prod.outlook.com>
-X-MS-Exchange-Transport-Forked: True
-X-MS-Oob-TLC-OOBClassifiers: OLM:10000;
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: yESHL66Hj0Dynl/NhJWURnxr3wo8bw8LlBqR2ZuaFGZk8KmB7hqxh4br4K+opU/NKDzdDbRyPEPcytylKmao3Z87elMCuAoi8hCX7f4+kKKmBIp0wBwCq0wSdM0XUuSSAwavwNV9UF5XuvW34wcaxYkUUVxqXYrxXs+I6iVrZWCqTaf2tCTYetS2Ttb6/vTto4yaB6HIbbHaoPrI8cYsJsg+Lv+GbJ718uVwuF+CsU4zy4rBxvS4gdOFD5ORtl6p+F0D+E3DNqm+6tE+8T4EPw364vce15ZjLauuez75N0uamLAmgDalQJ56i/hZWVt/BqdJmzacdD1htWI5LtqSjowgzPk+qALHzSn70XS323DVANtWDcys/X0Q2BgFQUHu3C/JCaD4kB32P2MJ3GMte5HldGG9f0527O+xWbCWcNfThtao8WlTYPQpGrseU/CZkkjnqSZzQLtZtPG0nvIXAlgNgZLr7h5WSlVcDqZUrsL0SOalG3wHHqYahI7XfXjtqHoXA5DfG5YkGirk7LqFG1/P4jD5Yujq5Zvo9AoxSOOwi5CcCyh+D080UcX/gAwVpFSmT00zeEE6BFpHox71lHLaDmsM54IUioEesjCYdNgN2EXpodUiEIccYO+5Zyj3WaQ4U0z1t4gigqs/LOTZ1kJq8ESkXr3A97fhosb99ug=
-X-Forefront-Antispam-Report: CIP:216.228.112.36; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:schybrid05.nvidia.com; CAT:NONE;
- SFS:(4636009)(136003)(346002)(376002)(396003)(39860400002)(36840700001)(46966006)(82310400003)(186003)(2906002)(26005)(36906005)(316002)(110136005)(54906003)(86362001)(5660300002)(33716001)(8936002)(8676002)(70586007)(478600001)(70206006)(336012)(82740400003)(36860700001)(4326008)(6666004)(356005)(1076003)(47076005)(7636003)(33656002)(9686003)(107886003)(426003)(55016002);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Jun 2021 23:09:37.6691 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 55cf8243-6044-4d6b-c657-08d927add35a
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.112.36];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: BN8NAM11FT003.eop-nam11.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR12MB4036
-Received-SPF: softfail client-ip=40.107.93.65;
- envelope-from=nicolinc@nvidia.com;
- helo=NAM10-DM6-obe.outbound.protection.outlook.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
-X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.373,
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.373,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 04 Jun 2021 22:43:08 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -152,79 +112,82 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: vdumpa@nvidia.com, praithatha@nvidia.com
+Cc: xieyingtai@huawei.com, peter.maydell@linaro.org, ehabkost@redhat.com,
+ mst@redhat.com, shannon.zhaosl@gmail.com, richard.henderson@linaro.org,
+ qemu-devel@nongnu.org, eric.auger@redhat.com, qemu-arm@nongnu.org,
+ marcel.apfelbaum@gmail.com, pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2+VE0zIFCbSy
+X-TUID: KwotG5ZDiOBb
 
-Hello Eric, Yubo, and other QEMU developers,
+On Tue, 25 May 2021 03:49:57 +0000
+Wang Xingang <wangxingang5@huawei.com> wrote:
 
-I am having a problem with links between vSMMU and PCI Host Bridge,
-using ARM-VIRT (64-bit; ACPI) + SMMUv3 (nested translation) setup.
+> From: Xingang Wang <wangxingang5@huawei.com>
+> 
+> These patches add support for configure bypass_iommu on/off for
+> pci root bus, including primary bus and pxb root bus. At present,
+> all root bus will go through iommu when iommu is configured,
+> which is not flexible, because in many situations the need for using
+> iommu and bypass iommu aften exists at the same time.
 
-Firstly, I am very new to the areas of QEMU, PCI and ACPI. So some
-of my thoughts/ideas below might not sound very reasonable to you.
+'many situations' doesn't describe why bypass is needed,
+can you provide a use-cases here and what are security implications
+when bypass is allowed.
+(PS: the later probably should be documented somewhere in the docs/option description)
+ 
+> So this add option to enable/disable bypass_iommu for primary bus
+> and pxb root bus. The bypass_iommu property is set to false default,
+> meaning that devcies will go through iommu if no explicit configuration
+> is added. When bypass_iommu is enabled for the root bus, devices
+> attached to it will bypass iommu, otherwise devices will go through
+> iommu.
+> 
+> This feature can be used in this manner:
+> arm: -machine virt,iommu=smmuv3,bypass_iommu=true
+> x86: -machine q35,bypass_iommu=true
+> pxb: -device pxb-pcie,bus_nr=0x10,id=pci.10,bus=pcie.0,bypass_iommu=true 
+> 
+> History:
+> 
+> v3 -> v4:
+> - simplify the logic in building the IORT idmap
+> 
+> v2 -> v3:
+> - rebase on top of v6.0.0-rc4
+> - Took into account Eric's comments, replace with a bypass_iommu
+>   proerty 
+> - When building the IORT idmap, cover the whole RID space
+> 
+> v1 -> v2:
+> - rebase on top of v6.0.0-rc0
+> - Fix some issues
+> - Took into account Eric's comments, and remove the PCI_BUS_IOMMU flag,
+>   replace it with a property in PCIHostState.
+> - Add support for x86 iommu option
+> 
+> Xingang Wang (8):
+>   hw/pci/pci_host: Allow bypass iommu for pci host
+>   hw/pxb: Add a bypass iommu property
+>   hw/arm/virt: Add a machine option to bypass iommu for primary bus
+>   hw/i386: Add a pc machine option to bypass iommu for primary bus
+>   hw/pci: Add pci_bus_range to get bus number range
+>   hw/arm/virt-acpi-build: Add explicit IORT idmap for smmuv3 node
+>   hw/i386/acpi-build: Add explicit scope in DMAR table
+>   hw/i386/acpi-build: Add bypass_iommu check when building IVRS table
+> 
+>  hw/arm/virt-acpi-build.c            | 135 ++++++++++++++++++++++++----
+>  hw/arm/virt.c                       |  26 ++++++
+>  hw/i386/acpi-build.c                |  70 ++++++++++++++-
+>  hw/i386/pc.c                        |  18 ++++
+>  hw/pci-bridge/pci_expander_bridge.c |   3 +
+>  hw/pci-host/q35.c                   |   1 +
+>  hw/pci/pci.c                        |  33 ++++++-
+>  hw/pci/pci_host.c                   |   2 +
+>  include/hw/arm/virt.h               |   1 +
+>  include/hw/i386/pc.h                |   1 +
+>  include/hw/pci/pci.h                |   2 +
+>  include/hw/pci/pci_host.h           |   1 +
+>  12 files changed, 270 insertions(+), 23 deletions(-)
+> 
 
-My goal here is to create two vSMMU instances in QEMU level and to
-link them to different passthrough devices: each vSMMU has my local
-feature that reads/writes through a VFIO mdev interface to talk to
-Host OS, so it has to be two vSMMU instances in the QEMU level for
-my use case.
-
-As we know, QEMU by default has only one PCI root bus (PCIE.0) that
-links to a default vSMMU (let's call it vSMMU0). And I learned that
-now ARM-VIRT has PCI gpex feature. So I was planning to create one
-host bridge (PCIE.128) to link to a different instance (vSMMU1) --
-later on I can pass through different PCI devices to either PCIE.0
-or PCIE.128 for different mdev pathways.
-
-I then tried to add a PCI Host Bridge using the following commands
-that created one default vSMMU instance, as my first experiment.
-
-/home/ubuntu/qemu-system-aarch64
-    -machine virt,accel=kvm,gic-version=3,iommu=smmuv3 \
-    -cpu host -smp cpus=1 -m 1G -nographic -monitor none -display none \
-    -kernel /boot/Image -bios /usr/share/AAVMF/AAVMF_CODE.fd \
-    -initrd /home/ubuntu/buildroot-20200422-aarch64-qemu-test-rootfs.cpio \
-    -object memory-backend-ram,size=1G,id=m0 \
-    -numa node,cpus=0,nodeid=0,memdev=m0 \
-    -device pxb-pcie,id=pxb-pcie.128,bus=pcie.0,bus_nr=128,numa_node=0 \
-    -device pcie-root-port,id=pcie.128,bus=pxb-pcie.128,slot=1,addr=0,io-reserve=0 \
-    -device vfio-pci,host=0003:01:00.0,rombar=0,bus=pcie.128
-
-However I found that PCIE.128 was also added to vSMMU0, which feels
-like that PCIE.128 treated PCIE.0 root bus as a parent device so it
-was added to the parent's vSMMU too.
-
-Then I tried another experiment with the following hack, hoping that
-it would link vSMMU0 to PCIE.128 instead of PCIE.0:
-
-@@ -385,13 +387,13 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-     /* fully coherent device */
-     rc->memory_properties.cache_coherency = cpu_to_le32(1);
-     rc->memory_properties.memory_flags = 0x3; /* CCA = CPM = DCAS = 1 */
-     rc->pci_segment_number = bus_num; /* MCFG pci_segment */
-+    rc->pci_segment_number = cpu_to_le32(bus_num); /* MCFG pci_segment */
-
-     /* Identity RID mapping covering the whole input RID range */
-     idmap = &rc->id_mapping_array[0];
-     idmap->input_base = 0;
-     idmap->id_count = cpu_to_le32(0xFFFF);
--    idmap->output_base = 0;
-+    idmap->output_base = cpu_to_le32(bus_num << 16);
-
-Yet, I found it's not successful either: the vSMMU instance was not
-added to either PCIE.0 or PCIE.128.
-
-So I started to have questions in my mind:
-(1) Can PCI host bridge (PCIE.128) add to a different vSMMU without
-    following PCIE.0's SMMU setup?
-(2) If the answer to (1) is yes, is there any way to have two pairs
-    of PCI+vSMMU?
-(3) If the answer to (1) is no, how can I correctly change the iort
-    table to link vSMMU0 to PCIE.128?
-
-Would it be possible for you to shed some light here?
-
-Thanks
-Nic

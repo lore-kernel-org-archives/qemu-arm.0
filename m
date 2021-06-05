@@ -1,114 +1,122 @@
-Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp1636860lfa;
-        Fri, 4 Jun 2021 18:34:54 -0700 (PDT)
-X-Received: by 2002:a17:90a:5911:: with SMTP id k17mr7641058pji.29.1622856894519;
-        Fri, 04 Jun 2021 18:34:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1622856894; cv=none;
+Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp1657520lfa;
+        Fri, 4 Jun 2021 19:19:24 -0700 (PDT)
+X-Received: by 2002:a17:90b:120d:: with SMTP id gl13mr7967254pjb.72.1622859564716;
+        Fri, 04 Jun 2021 19:19:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1622859564; cv=none;
         d=google.com; s=arc-20160816;
-        b=lYI9RMTm2UcjOiNmYwIvzvNfMDH9WazWuPvwsKU3nZrEAYLdT4bAnJkt/n0dk8SbpY
-         PZL+xsJ2QLfnKV6OOP0/V/UToHxzBE6Z4PJ5dOHEPRdovJYJBfJcxkN/W5TDYH6Jo6O8
-         iyRP2JH2nkCSUNQEy+Xx5O0k60ZU1118vi/pAU0bCCXBiQxsjaDW/k3bLxXBirkdAje6
-         3xW/EnB6tuBUqiwHgJwxdX8+3DhxIf+JA4G3Cbkib5W2BTSzu3nH+GNUa/ocgwvlOHTs
-         Bkh9Nn9434lBUgLQTwOEGKwHvo6hLTpK92NbYrIMj/icEA0pvLOK/cR9tkV03Qv+Eq7b
-         wAIg==
+        b=nHDmJBYauxUvH7w5cfeXdi1o9fBVLhGZ8HXhEGVjUTMPUbGDm/k2sqij/qX5KaBkRx
+         c3RbwYloSJ3/Ut08I4di2ec0JgLOe2dEsqPo8QjFsZ87oTfOQity440FNxJMSbjaapHJ
+         x02lTVWWblsAcXyq+sDL9tCg9S3WHs7GEnim3NBL7NiPYSEvKlT0rc1oZSYfb/gAvyiC
+         4NqQ5jI3d3wQ204Mc1T2082HJ9eqVMOhqkoL/XClKOHjf8xYh1jOF++ZtOcKKC5OIDxq
+         Zp25l6Pmc0UKvQhagEL6iXoB2ky/zMSytX+XGpOeuzGF8QlsAl/DDGBHVCb3TCub1EjH
+         ygag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature;
-        bh=OU50V3pTHSUQcQ9LG58F9/C5JTGxP15zI5nz4AAJpGU=;
-        b=BzZD60x5jEq/8lpKNe2dcgLiKv+jhLc503C2mHoINZMAvybhb1wbaSYBtG0s1YQXns
-         v/RSI7Z6NB9eRRTkodZue1t4+1aR1TuFozUM4bilwm9HpY3LKxfnGfcVvbRnVSDi/8gC
-         Kwxlks60fW+XaSFBCAoo8RMSawPKl8CeGStxT5lHEPGELFkqmPJ430G+/LMEtbfnVUKW
-         eLIKrW/wZStUBA+A5UmCYFSPqrhXb4U1Ea0oreYyg7wTSP+Ah7nY+2YX8zkdf/d1IfCP
-         gA5CDxvWmhJFKQwRURLcbTA0bPaE5pOQTbG+JKpKtPiXY2p5d8EVZuCYh1iMtoK0wsKt
-         fJpA==
+        bh=YbevpYdZY/gCcPsEQXvJLBVaZ25kgXVXhCedwdEsmb8=;
+        b=s6NjL8BEqIxIDhIJoc2EWz/4bEhjgWW114sTsYbYZO3XSCo4OwdwB/3G1M8Icath95
+         LLvrStYPZwk3Xh6BSYfd3716UDGuLflFC6GhSee2u+swHwBXzXho0P5Z/ntqdXftE/O+
+         QjQ76t6foQhZho1PdNdfDWR1Fu/TSebxd+Gm8VN/vWur5121fvJBmjv/F/Cloa+7mwhI
+         kjB617LKtcdRSvT7a2/zAi9MmIk0MoqC9E1KGQijtsoV9ghHuT+YNSqX01Wd9BF2Pwcl
+         vekyA6xd4qat2s9JG48FxV6O7oO4pdaG/41qF4zoKjXcVfEp1VhgEx10N8uKWwTxLLWV
+         nIDw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ccqEWlA8;
+       dkim=pass header.i=@linaro.org header.s=google header.b=VtGrweiF;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id h11sor2040345pfc.5.2021.06.04.18.34.54
+        by mx.google.com with SMTPS id k5sor2040454pfd.2.2021.06.04.19.19.24
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 04 Jun 2021 18:34:54 -0700 (PDT)
+        Fri, 04 Jun 2021 19:19:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ccqEWlA8;
+       dkim=pass header.i=@linaro.org header.s=google header.b=VtGrweiF;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=subject:to:cc:references:from:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=OU50V3pTHSUQcQ9LG58F9/C5JTGxP15zI5nz4AAJpGU=;
-        b=ccqEWlA8XgqWY4GMRNGDlnfLc2lGFKlz4sr3Cz1+JFyBLbLjH0gsIWlvB+c8ILqDsX
-         GrsdQEdLJ0FCjhxfi+gsdGquOmbGMy0RA88T9E/XYsYWdNoWcnDoFGvHFq+OM1KIvy7d
-         OkBTHhcLcIur68SyqXGIxzHPKUKiW7KThJbhzvyHWTp3ynPbbRDA+5tBruX5dbya++fc
-         oE6UAKesZ9K/lblQ80Lq+/Pnyv3YyKrovCtk7+Y1stRnJy2KP1LVDhPCx14mRw2aSZ35
-         fUvkbJr5I0gB8ROU2FLwTiw17GoGJS9aFX7jrR3Q74L7LOpV6CyYKpbE4SCR/dWS+uux
-         wWsQ==
+        bh=YbevpYdZY/gCcPsEQXvJLBVaZ25kgXVXhCedwdEsmb8=;
+        b=VtGrweiFUnMqPnkV8YQ44tN8u+QrbVLjg3ywsa/swD8PitmU2B0I6L4HJoqXgnA1rZ
+         yezdlY5U260doiui10FfDJ7yDAOBtk+a/MtiupyDnsEdzv36HBLvFIuPbtGl6xH+YSYx
+         PC3yVzcqurZd63aMQmWIxI276cagBxuBsLxCXErQ3XhOBcAmTTZpzhhwXjQoZEvccpgc
+         JzpiYO+WEDhbMVw8Pbp2HQZ4Qu/MJqyLADrgf/sDoLVommHO96sVvGXGlau9NOaIkENr
+         OUH3IiUsB/CNeG0kPHDp0IS9N7PmYyON3FHd4EvGrx8cLjn8C1znLECQY6lKHt8zPcpq
+         AB5A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:message-id:date
          :user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=OU50V3pTHSUQcQ9LG58F9/C5JTGxP15zI5nz4AAJpGU=;
-        b=aUmH6Ui9yD1nuBFhVPvYPh7gDzY4TB4yQJDSeVIAHx26WVkHB7nDddn65po66GHQbQ
-         a57QPE8cUK6Lz97cRS376Z+O8jPwNVvI3Y7GCTDOJEchDcT5ok/FyxNfSodG/qbRU5oM
-         F0IzP1iY+1X0S9BqZmRINmXmZzty8TU9DJMYuHAxUV5ceEnsY5+Zn6pdsbw/6E8QvZNQ
-         ea8IlGl/5cyIGAUsPmqlMm6rSLQkE8rz3YM3mD6JACdYDis+3k3s+xjquAzpZb44Evwm
-         c89YOTJwR6GXQLQ2Li0tCqfDEoCyL0iaCbMBMjBx0YkzpCTyf+/PuT3weY2WwS0fOtwe
-         na6g==
-X-Gm-Message-State: AOAM5301x1e6ujonAFZ6EDilTeAj4xHxe/7c27/KtSLRFPUAmnlfivSs
-	wD9r9CeZgOw7nbXpLq48xV0Ku8k/
-X-Google-Smtp-Source: ABdhPJzCjPmWMU3XOHwvQ7XFp8nzDK57fF8iy7tMTzf9an3BavjVq/36egk4d6m+waoAW1q2ZTjx7Q==
-X-Received: by 2002:a62:2987:0:b029:2de:b564:648d with SMTP id p129-20020a6229870000b02902deb564648dmr7141673pfp.48.1622856893783;
-        Fri, 04 Jun 2021 18:34:53 -0700 (PDT)
+        bh=YbevpYdZY/gCcPsEQXvJLBVaZ25kgXVXhCedwdEsmb8=;
+        b=VvPfj5h1u/p+cqMAk3eEGzBDHkmWw5OtYGMXuE9F5LJrpZ+tkEKYGxoFvU21D4jv/l
+         Z7WikhrIJxM12Cfg6g3UyAz2WXYirGi/k990RKACnxa/WclyG6N+24nDg2FK3yRJR+sv
+         sqjjvZJicGR+5WYEuw2Kr4RBmP8QKkExF/ns+e3OOaTC/iuQ7kz+tPc8OYEESc3OdNNB
+         8JVKOIoa5QqI1NeS3MPHzv+8e09oybfazql8VXzcEeK2DQ21rRWlRC+Rks0qYOXa2RDe
+         jVFQe15jIpWhC/2pVkvmMpO7Z4NCN2jP6hNzgqoGXR2pR496GbgAPjaSOgcT3WT283UJ
+         JRMw==
+X-Gm-Message-State: AOAM530r65Ot/f6QzyOTEg26KMagc/RINvht1zmfQK8V7ksztmrL91ho
+	ggBLsE0UeH27+jCm2ij50QPDiRN3
+X-Google-Smtp-Source: ABdhPJzN7c8UbbRu6gkz8m3lknml6Sw85uiikqGgFAeLxZ0pDGon/sW91rUPg+CWduZmQPfEWLA0tA==
+X-Received: by 2002:aa7:8392:0:b029:2db:4a7:d866 with SMTP id u18-20020aa783920000b02902db04a7d866mr7381853pfm.66.1622859564187;
+        Fri, 04 Jun 2021 19:19:24 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from [192.168.1.11] (174-21-70-228.tukw.qwest.net. [174.21.70.228])
-        by smtp.gmail.com with ESMTPSA id q23sm3049827pgj.61.2021.06.04.18.34.52
+        by smtp.gmail.com with ESMTPSA id i21sm2712317pfd.219.2021.06.04.19.19.23
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 04 Jun 2021 18:34:53 -0700 (PDT)
-Subject: Re: [PATCH v16 49/99] target/arm: make further preparation for the
- exception code to move
+        Fri, 04 Jun 2021 19:19:23 -0700 (PDT)
+Subject: Re: [PATCH v16 51/99] target/arm: move exception code out of
+ tcg/helper.c
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Claudio Fontana <cfontana@suse.de>
 References: <20210604155312.15902-1-alex.bennee@linaro.org>
- <20210604155312.15902-50-alex.bennee@linaro.org>
+ <20210604155312.15902-52-alex.bennee@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <e55bccdf-8e31-e051-2382-5a1ce3a32cbd@linaro.org>
-Date: Fri, 4 Jun 2021 18:34:51 -0700
+Message-ID: <8a3aa04e-917b-cfb2-124f-10a23062e81c@linaro.org>
+Date: Fri, 4 Jun 2021 19:19:21 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <20210604155312.15902-50-alex.bennee@linaro.org>
+In-Reply-To: <20210604155312.15902-52-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: KFCYJcBpGXq9
+X-TUID: Eu6b/KyE8RsJ
 
 On 6/4/21 8:52 AM, Alex Bennée wrote:
 > From: Claudio Fontana<cfontana@suse.de>
 > 
-> the exception code in tcg/ needs some adjustment before being exposed
-> to KVM-only builds. We need to call arm_rebuild_hflags only when
-> TCG is enabled, or we will error out.
+> cpu-sysemu.c:
 > 
-> The direct call to helper_rebuild_hflags_a64(env, new_el) will not
-> be possible when extracting out to common code,
-> it seems safe to replace it with a call to arm_rebuild_hflags, since
-> the write to pstate is already done.
+> we need this sysemu code for KVM too, so we move the code to
+> cpu-sysemu.c so we can reach a builable state.
 > 
-> Also, some CONFIG_TCG needs to be extended further, so that all
-> the tcg-only code is marked as such.
+> There will be further split later on in dedicated
+> exception modules for 32 and 64bit, after we make more
+> necessary changes to be able to split TARGET_AARCH64-only code.
+> 
+> tcg/sysemu/tcg-cpu.c:
+> 
+> the TCG-specific code we put in tcg/sysemu/, in preparation
+> for the addition of the tcg-cpu accel-cpu ARM subclass.
 > 
 > Signed-off-by: Claudio Fontana<cfontana@suse.de>
 > Signed-off-by: Alex Bennée<alex.bennee@linaro.org>
 > ---
->   target/arm/tcg/helper.c | 12 +++++++++---
->   1 file changed, 9 insertions(+), 3 deletions(-)
+>   target/arm/tcg/tcg-cpu.h          |  31 ++
+>   target/arm/cpu-sysemu.c           | 670 +++++++++++++++++++++++++++
+>   target/arm/tcg/helper.c           | 734 ------------------------------
+>   target/arm/tcg/sysemu/tcg-cpu.c   |  73 +++
+>   target/arm/tcg/sysemu/meson.build |   1 +
+>   5 files changed, 775 insertions(+), 734 deletions(-)
+>   create mode 100644 target/arm/tcg/tcg-cpu.h
+>   create mode 100644 target/arm/tcg/sysemu/tcg-cpu.c
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

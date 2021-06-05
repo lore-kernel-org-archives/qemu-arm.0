@@ -1,104 +1,247 @@
-Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp2300243lfa;
-        Sat, 5 Jun 2021 15:26:15 -0700 (PDT)
-X-Received: by 2002:a63:4b5b:: with SMTP id k27mr11568716pgl.368.1622931975574;
-        Sat, 05 Jun 2021 15:26:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1622931975; cv=none;
+Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp2303069lfa;
+        Sat, 5 Jun 2021 15:33:24 -0700 (PDT)
+X-Received: by 2002:a17:902:ed41:b029:102:d012:e432 with SMTP id y1-20020a170902ed41b0290102d012e432mr10983227plb.61.1622932404570;
+        Sat, 05 Jun 2021 15:33:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1622932404; cv=none;
         d=google.com; s=arc-20160816;
-        b=wLxyloRczwVnF3gAqTJIVRR12OyH4U0VwHK0gt1iXqcM2KJTdSifOmm/Jwkah1Bq5e
-         9rFHCZbK0r3ZfVxIAWE30Vdlpz/EbhCo0DEgmVRTZXUoCukPRGRPLxt9u+4JGCtWRRgE
-         sbAhQJYs16PFLwu9qXWp649xSozfz5TShVMtjuOF4QxNLE1r/o7zjhIA/HugY89KvCco
-         d6y6SvnMjdEvG+r1Qe8Z224gjivN3Iwzg3hI93UoNNXpg1p9yZX7c6lY2mj9uv1NIpKk
-         bCxixWPwvqeFiwDXRJA1zVajTebW4F2hRr8cReuPzm3BGC0dUX3vFhg7z1TrklH7IbW8
-         YaMA==
+        b=JhGeRZGhBYmMy0ndciTecSaz02bt/qAj9/ydRyBw131Vnb1t3CWJVuOEMQcSfnetPk
+         0HENjDb4MZ/urqIMsItfzAnxq6pfsfXeEJN1XZSL7N5QjX1md050uYCk+Dx2Ov2GrEeZ
+         7gJ/XIpS+d6r6NWvQHo8R0BaGTsdv06SDbuN6L1A5SzYVhe9ZrX0WIln+AOeTx2hjCeW
+         4rdzmDIqHgWEIUfY+z4yVDlIwM3n9IPw4oJgNGsO/XkryGraxR59TpPFzinCWU98k5Ua
+         jLLd37H4lTkQbrQmzo1HpCVkokXLeSAi0x1JutGjGOJXIoj9AX6jQnwOTcNYcjjuOerb
+         MN8w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature;
-        bh=Egth3OGXf/16cX2HUKNGGRN6jIhhddoXpEcJRP+eRq4=;
-        b=XQraPcZRYlSTFLAR9F/35K8zDm3ChQ5NHAXnW0e2LVDEyuGxqZfQ5Zjv0zdqbPoo7Q
-         2SlzEVqUDfxO8aEhOH2AsH83II/rfCKN6cCBu5emotLQmGBSHbTxcuuCBjlx9UeD3W7B
-         3BGpCbX0dEJ1F9BJfHxBO2klO0NrprG6DSbVkEMy2tgLbBeDtieo7FMVE5RWx3g/qXxX
-         s9o3VT2raeT/jSZbavbgMiSlVAYrxNqa3fXpb7LDVMYYl13cfn3g7KPeQmrgJvw8Mspv
-         aSch6mPwSsDiK7d0cBCEivuwgVXEUO9jr2XjrHel4/kLx4HnQShiE5yn60a7AKRE0IsF
-         +4dg==
+        bh=YDHg+VEJV3GItXooMJlAAsagEkuPy0NmAs3cfITCXF4=;
+        b=z6GuLG1GfPr1VowzilmMnk1vtKcEVXI+Q1AYeBTW5X66FgPgxZyt4OpvqX/AjcW7x7
+         ddpfLTjjaV8eZ/L4wTjbocfaUBmpMH3RaQNWFpRrZvozHPG4OYIVg028T+tJw6XCcQnf
+         RyCJNOWrf0JFv2b0A7xKfG6r5zSQMd2qwzvULxV6MHghvv9vmJAhd9JbMg8J1J2fwC9T
+         i+iSekDLDpXnsAdPoTClxlQ7ihjCa06c5emLQNCEt4RHgHc+6d0fsiFv+AZwtN4hi4Xe
+         JE321NouIMXkJICiiZDVkFTDiBwxrfAeioE5GaXN1RtXgTy1dnH/gmcaUF+/Pj0nQtGi
+         oBxQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=IgPoInN0;
+       dkim=pass header.i=@linaro.org header.s=google header.b=P0jGAM68;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id s24sor3187367pgh.82.2021.06.05.15.26.15
+        by mx.google.com with SMTPS id s14sor3042084pfu.16.2021.06.05.15.33.24
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sat, 05 Jun 2021 15:26:15 -0700 (PDT)
+        Sat, 05 Jun 2021 15:33:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=IgPoInN0;
+       dkim=pass header.i=@linaro.org header.s=google header.b=P0jGAM68;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=subject:to:cc:references:from:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=Egth3OGXf/16cX2HUKNGGRN6jIhhddoXpEcJRP+eRq4=;
-        b=IgPoInN0mN3Q38UXo+sKz86l2WIR2y0mkcvSXBX1uK+cqsn4IvbXL9OZ88qZcKc1xD
-         UJGKsuWbHtkYnfkkZrVDZpQUoxnovdcgXHC/HP1tbWWU2Rpre8iz5HTk39v9dz5qvXqf
-         TOEV3vWNBXHg1l/V34WnqKGsEEcpEvKuDOAnNqTQbdwdrrwRUHytXagxau7ZItRlkCL2
-         obgI/QTZm4z4Bh6DtxdhMAZwvGIbL5O5JcWnv07bTAowYPFwz0OVWDPxkfUmW1UiR7UI
-         kEmWU3juvQ7WyYxnXQ+PkVhIflW10696Ra0D3PALu/T78c72gx9QwAbwn4KHDOe6sqoL
-         PjqQ==
+        bh=YDHg+VEJV3GItXooMJlAAsagEkuPy0NmAs3cfITCXF4=;
+        b=P0jGAM687Dg3CppBBP4GLl41VhobcQ20r+QSHZ1g/amunEq0TNAKEIPrF8TciAE2GG
+         jDD/XGMzRH6Ymzcw4sdDHKdBtKUEaw8kzmcN3LquJl0kt06EZAWlKery2eeCVbKtg6HE
+         iUUUym8ycjpWjY17lgYuL8pf22jCUvt6MUaix7GmZNpVp7982YI61tCiPYpH/sSKZ2xP
+         jfPpJV6XG0anh6koOirjJ0nVm9OAJ78O+yLynOSDXEh/AEHFF6LWyAYl5VJWeTogmcwx
+         3twQ6ZNnu6t4Xb3eec8F37ftXlbnyAto6llsyBgpW4AJn60UGqgB1pR4yf5WZBnbt2+c
+         w0wA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:message-id:date
          :user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=Egth3OGXf/16cX2HUKNGGRN6jIhhddoXpEcJRP+eRq4=;
-        b=fDdnica2vXc9tixBPmQk70w/41KXLYdVty+cn4bKUc22kuB0kIZvacyoJNkusS3wnz
-         jjsjSSdv5odx/RPciMIxf05zAGLwjc50TipQeO+r/eyZKldsK1C8RCaUTWc8HYkE9FAH
-         ZwpT5gjG65qtPVdndSsG1EBEjr1XHIsImJXByWcr9r0yEfEvQYXC8lT7+k3hi/UO0pT7
-         53i2adCDKzNnIY5uSuOwgb4eE70vlr6zMzcvpDWAwniE10FDBsqR6Q3AbHjNmVIF18Za
-         6XT3O+Y5lAgPlDUdiGU6ywBhyrZbal+zLpDTtIdRkqcEWFn6JixpP2Srz5AZW8VBVMay
-         RAcQ==
-X-Gm-Message-State: AOAM532K39s1UZRG0sWyWPnuVaR2I58jMRImBuy+nzAD39HjUgbBFJkY
-	KKQpwT4GJ8BxSmyqUMhnCDkq+Udy
-X-Google-Smtp-Source: ABdhPJyO3TPVlDhKJKik8qKOWqtgS4IhYcNQ0eUk73cOFvaXpJdx50CHzxT+nBrdzZuQzhVXmTzARw==
-X-Received: by 2002:a63:e114:: with SMTP id z20mr11356780pgh.207.1622931975112;
-        Sat, 05 Jun 2021 15:26:15 -0700 (PDT)
+        bh=YDHg+VEJV3GItXooMJlAAsagEkuPy0NmAs3cfITCXF4=;
+        b=V9vc+ioNwk8/dsroOZTX5PZsVsIJhDxplPxRLXkIxtacsUr/IY5wTFXSzvaALiMeGO
+         bDnBNH+qfESh/l/ao026HtSOE7SYHNsppIW5LoF5RU5cN43Kn/flH0v+mNNWdD538YJj
+         oEfLwvZ0q7mi3PjSnPg7QZV+L21yqA4hkctjXinrwT40iNZ69cDr0NtjtvcVTj53+q/9
+         AgT6RK27p2Tj3cdKYP39dvS8siZoHx3kC9u/zZIS9vl1WPfYTmE+vKkzl3wAsX6bEQeu
+         4JZyV6xlh+wwehtFcTyxaYUJre1+Jmx2QmqFaIqWnOKk5VHH4rI0vU1rdZf6B3OBKSTT
+         nx7A==
+X-Gm-Message-State: AOAM531KXBm+e0LqIj9P6+werQAZB3D/JvhbDoI26i4oDDBBnm/ZPWrt
+	UOV57EGOBZRbXhPMufuBIlYJ9Pmz
+X-Google-Smtp-Source: ABdhPJzpB7x7n00fXCFTLcuK8d27VCIsglRfnwc/sQbp9mhdffYqFMJOUgHN2/ojA1bAsja07WfVzw==
+X-Received: by 2002:a65:58c8:: with SMTP id e8mr11370635pgu.20.1622932404099;
+        Sat, 05 Jun 2021 15:33:24 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from [192.168.1.11] (174-21-70-228.tukw.qwest.net. [174.21.70.228])
-        by smtp.gmail.com with ESMTPSA id a9sm4512098pfo.69.2021.06.05.15.26.14
+        by smtp.gmail.com with ESMTPSA id b195sm5102037pga.47.2021.06.05.15.33.23
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 05 Jun 2021 15:26:14 -0700 (PDT)
-Subject: Re: [PATCH v16 92/99] target/arm: remove v7m stub function for
- !CONFIG_TCG
+        Sat, 05 Jun 2021 15:33:23 -0700 (PDT)
+Subject: Re: [PATCH v16 93/99] meson: Introduce target-specific Kconfig
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Claudio Fontana <cfontana@suse.de>
+Cc: qemu-arm@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <f4bug@amsat.org>, Peter Maydell <peter.maydell@linaro.org>,
+ Michael Rolnik <mrolnik@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Laurent Vivier <laurent@vivier.eu>, Aurelien Jarno <aurelien@aurel32.net>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Chris Wulff <crwulff@gmail.com>, Marek Vasut <marex@denx.de>,
+ Stafford Horne <shorne@gmail.com>, David Gibson
+ <david@gibson.dropbear.id.au>, Greg Kurz <groug@kaod.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Bin Meng <bin.meng@windriver.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ David Hildenbrand <david@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
+ Thomas Huth <thuth@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Max Filippov <jcmvbkbc@gmail.com>,
+ "open list:PowerPC TCG CPUs" <qemu-ppc@nongnu.org>,
+ "open list:RISC-V TCG CPUs" <qemu-riscv@nongnu.org>,
+ "open list:S390 TCG CPUs" <qemu-s390x@nongnu.org>
 References: <20210604155312.15902-1-alex.bennee@linaro.org>
- <20210604155312.15902-93-alex.bennee@linaro.org>
+ <20210604155312.15902-94-alex.bennee@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <1777966e-7c8c-c1ad-5674-8ff2ae967535@linaro.org>
-Date: Sat, 5 Jun 2021 15:26:13 -0700
+Message-ID: <56411bc8-ffdf-babb-fc72-63bfb7db5df1@linaro.org>
+Date: Sat, 5 Jun 2021 15:33:21 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <20210604155312.15902-93-alex.bennee@linaro.org>
+In-Reply-To: <20210604155312.15902-94-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: CO6782Tuj9Yq
+X-TUID: uZ5Issr8gqvp
 
 On 6/4/21 8:53 AM, Alex Bennée wrote:
-> -    if (arm_feature(env, ARM_FEATURE_M)) {
-> -        return arm_v7m_mmu_idx_for_secstate(env, env->v7m.secure);
-> +    if (tcg_enabled()) {
-> +        if (arm_feature(env, ARM_FEATURE_M)) {
+> From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> 
+> Add a target-specific Kconfig.
+> 
+> Target foo now has CONFIG_FOO defined.
+> 
+> Two architecture have a particularity, ARM and MIPS:
+> their 64-bit version include the 32-bit subset.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> Message-Id: <20210131111316.232778-6-f4bug@amsat.org>
+> ---
+>   meson.build               |  3 ++-
+>   Kconfig                   |  1 +
+>   target/Kconfig            | 23 +++++++++++++++++++++++
+>   target/alpha/Kconfig      |  2 ++
+>   target/arm/Kconfig        |  6 ++++++
+>   target/avr/Kconfig        |  2 ++
+>   target/cris/Kconfig       |  2 ++
+>   target/hppa/Kconfig       |  2 ++
+>   target/i386/Kconfig       |  5 +++++
+>   target/lm32/Kconfig       |  2 ++
+>   target/m68k/Kconfig       |  2 ++
+>   target/microblaze/Kconfig |  2 ++
+>   target/mips/Kconfig       |  6 ++++++
+>   target/moxie/Kconfig      |  2 ++
+>   target/nios2/Kconfig      |  2 ++
+>   target/openrisc/Kconfig   |  2 ++
+>   target/ppc/Kconfig        |  5 +++++
+>   target/riscv/Kconfig      |  5 +++++
+>   target/rx/Kconfig         |  2 ++
+>   target/s390x/Kconfig      |  2 ++
+>   target/sh4/Kconfig        |  2 ++
+>   target/sparc/Kconfig      |  5 +++++
+>   target/tilegx/Kconfig     |  2 ++
+>   target/tricore/Kconfig    |  2 ++
+>   target/unicore32/Kconfig  |  2 ++
+>   target/xtensa/Kconfig     |  2 ++
+>   26 files changed, 92 insertions(+), 1 deletion(-)
+>   create mode 100644 target/Kconfig
+>   create mode 100644 target/alpha/Kconfig
+>   create mode 100644 target/arm/Kconfig
+>   create mode 100644 target/avr/Kconfig
+>   create mode 100644 target/cris/Kconfig
+>   create mode 100644 target/hppa/Kconfig
+>   create mode 100644 target/i386/Kconfig
+>   create mode 100644 target/lm32/Kconfig
+>   create mode 100644 target/m68k/Kconfig
+>   create mode 100644 target/microblaze/Kconfig
+>   create mode 100644 target/mips/Kconfig
+>   create mode 100644 target/moxie/Kconfig
+>   create mode 100644 target/nios2/Kconfig
+>   create mode 100644 target/openrisc/Kconfig
+>   create mode 100644 target/ppc/Kconfig
+>   create mode 100644 target/riscv/Kconfig
+>   create mode 100644 target/rx/Kconfig
+>   create mode 100644 target/s390x/Kconfig
+>   create mode 100644 target/sh4/Kconfig
+>   create mode 100644 target/sparc/Kconfig
+>   create mode 100644 target/tilegx/Kconfig
+>   create mode 100644 target/tricore/Kconfig
+>   create mode 100644 target/unicore32/Kconfig
+>   create mode 100644 target/xtensa/Kconfig
 
-Merge the two if with &&?
+I guess you haven't rebased since unicore, moxie et al were removed?
 
-Otherwise,
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> --- a/meson.build
+> +++ b/meson.build
+> @@ -1359,7 +1359,8 @@ foreach target : target_dirs
+>         command: [minikconf,
+>                   get_option('default_devices') ? '--defconfig' : '--allnoconfig',
+>                   config_devices_mak, '@DEPFILE@', '@INPUT@',
+> -                host_kconfig, accel_kconfig])
+> +                host_kconfig, accel_kconfig,
+> +                'CONFIG_' + config_target['TARGET_ARCH'].to_upper() + '=y'])
+
+I can understand this,
+
+>   
+>       config_devices_data = configuration_data()
+>       config_devices = keyval.load(config_devices_mak)
+> diff --git a/Kconfig b/Kconfig
+> index d52ebd839b..fb6a24a2de 100644
+> --- a/Kconfig
+> +++ b/Kconfig
+> @@ -1,5 +1,6 @@
+>   source Kconfig.host
+>   source backends/Kconfig
+>   source accel/Kconfig
+> +source target/Kconfig
+>   source hw/Kconfig
+>   source semihosting/Kconfig
+> diff --git a/target/Kconfig b/target/Kconfig
+> new file mode 100644
+> index 0000000000..a6f719f223
+> --- /dev/null
+> +++ b/target/Kconfig
+> @@ -0,0 +1,23 @@
+> +source alpha/Kconfig
+> +source arm/Kconfig
+> +source avr/Kconfig
+> +source cris/Kconfig
+> +source hppa/Kconfig
+> +source i386/Kconfig
+> +source lm32/Kconfig
+> +source m68k/Kconfig
+> +source microblaze/Kconfig
+> +source mips/Kconfig
+> +source moxie/Kconfig
+> +source nios2/Kconfig
+> +source openrisc/Kconfig
+> +source ppc/Kconfig
+> +source riscv/Kconfig
+> +source rx/Kconfig
+> +source s390x/Kconfig
+> +source sh4/Kconfig
+> +source sparc/Kconfig
+> +source tilegx/Kconfig
+> +source tricore/Kconfig
+> +source unicore32/Kconfig
+> +source xtensa/Kconfig
+> diff --git a/target/alpha/Kconfig b/target/alpha/Kconfig
+> new file mode 100644
+> index 0000000000..267222c05b
+> --- /dev/null
+> +++ b/target/alpha/Kconfig
+> @@ -0,0 +1,2 @@
+> +config ALPHA
+> +    bool
+
+But not these.  I guess the whole Kconfig thing is processed unconditionally, 
+and there must be some definition?
 
 
 r~

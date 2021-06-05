@@ -1,129 +1,210 @@
-Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp2264413lfa;
-        Sat, 5 Jun 2021 13:59:16 -0700 (PDT)
-X-Received: by 2002:a05:6a00:88a:b029:261:6d37:dac6 with SMTP id q10-20020a056a00088ab02902616d37dac6mr10744851pfj.18.1622926755932;
-        Sat, 05 Jun 2021 13:59:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1622926755; cv=none;
+Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp2269478lfa;
+        Sat, 5 Jun 2021 14:10:06 -0700 (PDT)
+X-Received: by 2002:a63:ef04:: with SMTP id u4mr11032150pgh.429.1622927406057;
+        Sat, 05 Jun 2021 14:10:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1622927406; cv=none;
         d=google.com; s=arc-20160816;
-        b=XsZABpCKC6if2uh0Lb5TKNZdZk6NC8diFPSJPnG5yorSyoEfIkl8f/Et8R4Bp5cAGq
-         Ol0h/2XSSEb3s1/iERZlO31CgFulA4JFQX//U8MPcVb8T1YomXEaZHg+EKGiIi1yCIPP
-         AhYKqvUPXO2hX8tqyfuh+KyOTCi6qsIazQMO/BDjt4H03TBurlS2ZVNGblyMQBN95gfG
-         DGO6Zz2Cr1sUReZQy3pgCis1Hs8V+15iCqyXFU9Hcg5rDs9KbSmlGMG+VArDBn03FMei
-         eStazuItwvroon/tal6V4fvJcprdX4tLgAz2oabt7DoFwYEOFxL1f8niZESzafRIpZ1S
-         BPUw==
+        b=yOJOPSv8TGsAixqYZrB7NAL/1vu6k3L2m+qDsZ08jGqJfqZeG9eoAQ0Jtw4mLAAirj
+         NdTdE6OfVcbKnF8vY6JQyuXyj+d2OPBYOdhCh+Gau/Cf0AwLWhOh++hs+eJBPU7TXf0q
+         k/ST0nvZSFE4DDRk+4lcTsclBztJ6bmPC6zZL+kSVJKgVMgZ/FgSlP/asrDqsrJmvgA6
+         Uyj2cHhxYNArRDFH6Bsipi43SsTUUN7tsNK8xSYniaO3vqfPtAKISBeHmdF0cyQAwuum
+         gFj4bUnY/tS+XKuENWgNx4YyBAXvT+fgAbL7je3j2WzqqUsGlZPLfHdy2duWeQ+tOZd4
+         FRRQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature;
-        bh=/8zyniDS8Fte2L4G45XLny30uhcnZm07GDsWx6TuVZA=;
-        b=q/JPGcCxKxf6GS3D9dLzMIP6D2+4ePYWreo+wYWQeeSyzwP1sVOjyV285dQSzPNpO6
-         ieGGsseFCtuDsmgkPlDjEmqJjwb9FriUDtrbsS6HVy85L3nu53YPDJIAbRuym1YnCUoH
-         jzGZcQZjNsMVuNGrjfVybRQC9ui9CnV6tz0+eTdYZZ7josLVSrKoeLjfkpLF7Ow0iuwy
-         K24SkTQiQSyxQUG6QHbiF2XKa7AVh22KMSARuSH1pf+JVYbQ+WCIKFBsMj5TqGw0lSwg
-         aeJdFck7y/euOF+b3Ca7rvh24nca5nL3HC9D3pOgJODf7N1MCXPU96/atKviGKVwtHtW
-         wd6w==
+        bh=DV6Erc8PED0Jd4lSzka68vrGoU7Y5MzE624El6lRw6Y=;
+        b=r2P6PwrF3n4AyUE7avxq8kQrqjmHxTw8e0UjBI5iil9pKX0xsKUa0HurZOyYmksxhV
+         NnEMENL+iSBFnyFZwteeiMKAKe8ljIHHAUht4aKkNTa7Zo+eHXfcI6689f5xd3jEFEPJ
+         5zErLW8qg0+Jq5mrfvL6F/0Y5mpDjsK4h6EDBGpqRGD5VSNuj+O2dbRUELFx23MoEoOH
+         z845vowjgfxh7lKH+ioSvVvCaRnGJl/o7vuBEh5ERhodh//rM7Hp++w/CfxlpMG5HsOf
+         O8162PLZ8tkkngQsQJ6X4IJZIMrnnJrVvLuqpXx8aM1RYEomCgSDBq2UapJFGwoQ6Bpb
+         /BpA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FYdr1Kir;
+       dkim=pass header.i=@linaro.org header.s=google header.b=QJybwDgH;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id y192sor3035586pfg.31.2021.06.05.13.59.15
+        by mx.google.com with SMTPS id y63sor3066402pgb.80.2021.06.05.14.10.05
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sat, 05 Jun 2021 13:59:15 -0700 (PDT)
+        Sat, 05 Jun 2021 14:10:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FYdr1Kir;
+       dkim=pass header.i=@linaro.org header.s=google header.b=QJybwDgH;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=subject:to:cc:references:from:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=/8zyniDS8Fte2L4G45XLny30uhcnZm07GDsWx6TuVZA=;
-        b=FYdr1KirP3dPDAYKzxvYmSAhOzdfx+TRclgAHFZFlTGaK8uffCGL6wRdFLs8Z64vBz
-         dw4x81wNsB56l/RrEKKS17ulIPpUUFmiv7iHpTB7w7Qy3MQkIPtApLCQo/dTo5tsATXm
-         CXRZNO5anFatI+hRkXqrLOBnV33FyZXNo+tYkt1xNDpmmvyYksHeOfpRNAEqOB6kedf3
-         Nc70rXARCmYoY7Nl4xtQ2xL+w/UagWVP0YSB6sOpNAEizd5wonAjUjQmaeSVNEuYt1hp
-         u2xz/Sb4XriWBzOh+84SH0pgcezbPEeqQHoDRQcBo2UQ9aQTgByVA+jRlf50qOGGl5X7
-         sKsQ==
+        bh=DV6Erc8PED0Jd4lSzka68vrGoU7Y5MzE624El6lRw6Y=;
+        b=QJybwDgH4zuqyEoErQAcVfYe+LBb8Wg2knXXYhLADUUmjGjD3SFL8kRw8qukaOBPqQ
+         azwR6jSUFEeRrhYDvF3TcV4gw5CXtmhDa/NRkMkw0NTzxVfsk8NUYFk68Y89zRIqUjxV
+         qp91mfYVgNiJcy26NEbF2nTOcIp+TnSLKOXPfpiGgeXiWv8OZi261ckRHYydw/lUuz14
+         dhD368lhQmy6q4Q8mHthEoMBk6+FqxsBKIPc1zVlFsmx5u+9eCj5xstkZ7rBceR169y5
+         N5DVIqgqORwHuOJYJTNnOWDFJc22eu2drinkC0q9N+tjztICEBsqqIPsqLEmfDGw+iyN
+         hdjw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:message-id:date
          :user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=/8zyniDS8Fte2L4G45XLny30uhcnZm07GDsWx6TuVZA=;
-        b=kid6ArKHpjgEVmygGhnLnosvzhJWS6noQfPEehDylgOFzTOKB1eKolBjKZK8XRQpcq
-         /skSlaha2cJqO4VHToO0AEx9Q2vx/OLjXgvRjHRl7zNEu6sUNWnH1PuFs/9dxccqenHc
-         4R6XzFqiOqPTNNVgsKhbzl6vZu5XMo1Yo0sQDUBroZbUzJu2oXtKJ9XVZNI+As4SIkxR
-         YC9daXGynzJwd4WURP7UsC8HnWzeWxWm/FKwjqUIo10ehS+xTXK5FEwxSjEnz5AwLn+1
-         hwqt4nMqBgClUHTT4rp9J44zXls8XenEXsL97KAW/tLEAN2M3rV1pS4RX63tB9Wnp+mz
-         ksqw==
-X-Gm-Message-State: AOAM533cDrYJAVxkUgRgnoBWaITA6OiEC6NMGiLKfGyRHDSOji2aV4l9
-	yT2CfjSdKDZtbf79n5iHfV3Qmhmv
-X-Google-Smtp-Source: ABdhPJztcnWc28SOECgepOlA9ho6pepYVrzQE8jfpXXMWuoO/65GxFUb0Vq4t8LqfnmsPHmwc+sn8w==
-X-Received: by 2002:a05:6a00:1630:b029:2c0:a1eb:d77 with SMTP id e16-20020a056a001630b02902c0a1eb0d77mr10532297pfc.81.1622926755516;
-        Sat, 05 Jun 2021 13:59:15 -0700 (PDT)
+        bh=DV6Erc8PED0Jd4lSzka68vrGoU7Y5MzE624El6lRw6Y=;
+        b=iVXgXKE3PUFQgKarAWqVC2UXPSI34BkuPwm3Jw+fi1T500M2ydpnHrZyA3oNJWCkwy
+         qOX5PatzyY3yEnSmkw4clWMI+od4USDsCo+844sWcaiarHkPPZK/O9Ud4HMa1hbShcsq
+         dNxiVI6zaqajAtZ8ygloFoyCAQlYL4kXzHYtoe5yvFue/6z5J6608sJAu09GSsUgv7LP
+         fGUSxB6jllBwyevTdPSiJ1jvH25wzEOLq/7UCp9F/UgAz3vgNHY35fYUGFQ9bAYVqS8E
+         Lt3FRaDPA+AtWEum9+UBWnrrR4CLzYYrMs7OhEECsS4NcwbOo+GusqI/tThejfZuNnr3
+         TfLA==
+X-Gm-Message-State: AOAM532IZDUMKShY3e3hd+tk+onFBeZPJLplfgO6pEnddoRzBv3HGVEw
+	A1yUR3MufFR2VkFPJ+B2IRGBlcqo
+X-Google-Smtp-Source: ABdhPJw5YXonkD+YzR0UIGOTHzc7zTqNBMjJU7eUR1rdtLiQVu8WOXGNk828y08CmdpPqfITDWG96A==
+X-Received: by 2002:a63:bf0d:: with SMTP id v13mr11169018pgf.303.1622927405492;
+        Sat, 05 Jun 2021 14:10:05 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from [192.168.1.11] (174-21-70-228.tukw.qwest.net. [174.21.70.228])
-        by smtp.gmail.com with ESMTPSA id br14sm7468846pjb.41.2021.06.05.13.59.15
+        by smtp.gmail.com with ESMTPSA id k1sm4560865pfa.30.2021.06.05.14.10.04
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 05 Jun 2021 13:59:15 -0700 (PDT)
-Subject: Re: [PATCH v16 79/99] target/arm: tcg: restrict ZCR cpregs to
- TARGET_AARCH64
+        Sat, 05 Jun 2021 14:10:05 -0700 (PDT)
+Subject: Re: [PATCH v16 80/99] target/arm: tcg-sve: import narrow_vq and
+ change_el functions
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Claudio Fontana <cfontana@suse.de>,
- Peter Maydell <peter.maydell@linaro.org>
+ Laurent Vivier <laurent@vivier.eu>, Peter Maydell <peter.maydell@linaro.org>
 References: <20210604155312.15902-1-alex.bennee@linaro.org>
- <20210604155312.15902-80-alex.bennee@linaro.org>
+ <20210604155312.15902-81-alex.bennee@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <f1dd8e73-654c-3e50-5443-a216ead17ce7@linaro.org>
-Date: Sat, 5 Jun 2021 13:59:13 -0700
+Message-ID: <484b0d7d-69e2-9a83-d431-4887615723a1@linaro.org>
+Date: Sat, 5 Jun 2021 14:10:02 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <20210604155312.15902-80-alex.bennee@linaro.org>
+In-Reply-To: <20210604155312.15902-81-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: hbVCrfpuN6ES
+X-TUID: WytvIVMv5k+X
 
 On 6/4/21 8:52 AM, Alex Bennée wrote:
-> From: Claudio Fontana<cfontana@suse.de>
+> From: Claudio Fontana <cfontana@suse.de>
 > 
-> restrict zcr_el1, zcr_el2, zcr_no_el2, zcr_el3 reginfo,
-> and the related SVE functions to TARGET_AARCH64.
+> aarch64_sve_narrow_vq and aarch64_sve_change_el are SVE-related
+> functions only used for TCG, so we can put them in the
+> tcg-sve.c module.
 > 
-> Signed-off-by: Claudio Fontana<cfontana@suse.de>
-> Reviewed-by: Richard Henderson<richard.henderson@linaro.org>
-> Signed-off-by: Alex Bennée<alex.bennee@linaro.org>
+> Signed-off-by: Claudio Fontana <cfontana@suse.de>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 > ---
->   target/arm/tcg/cpregs.c | 8 ++++++--
->   1 file changed, 6 insertions(+), 2 deletions(-)
+>   target/arm/cpu.h                 |  7 ---
+>   target/arm/tcg/tcg-sve.h         |  5 ++
+>   linux-user/syscall.c             |  4 ++
+>   target/arm/cpu-exceptions-aa64.c |  1 +
+>   target/arm/tcg/cpregs.c          |  4 ++
+>   target/arm/tcg/helper-a64.c      |  1 +
+>   target/arm/tcg/helper.c          | 87 --------------------------------
+>   target/arm/tcg/tcg-sve.c         | 86 +++++++++++++++++++++++++++++++
+>   8 files changed, 101 insertions(+), 94 deletions(-)
 > 
-> diff --git a/target/arm/tcg/cpregs.c b/target/arm/tcg/cpregs.c
-> index 8422da4335..56d56f7f81 100644
-> --- a/target/arm/tcg/cpregs.c
-> +++ b/target/arm/tcg/cpregs.c
-> @@ -5791,6 +5791,8 @@ static const ARMCPRegInfo debug_lpae_cp_reginfo[] = {
->       REGINFO_SENTINEL
->   };
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index 8614948543..3edf8bb4ec 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -1056,9 +1056,6 @@ int arm_cpu_write_elf32_note(WriteCoreDumpFunction f, CPUState *cs,
+>   #ifdef TARGET_AARCH64
+>   int aarch64_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
+>   int aarch64_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
+> -void aarch64_sve_narrow_vq(CPUARMState *env, unsigned vq);
+> -void aarch64_sve_change_el(CPUARMState *env, int old_el,
+> -                           int new_el, bool el0_a64);
+>   
+>   static inline bool is_a64(CPUARMState *env)
+>   {
+> @@ -1090,10 +1087,6 @@ static inline uint64_t *sve_bswap64(uint64_t *dst, uint64_t *src, int nr)
+>   }
+>   
+>   #else
+> -static inline void aarch64_sve_narrow_vq(CPUARMState *env, unsigned vq) { }
+> -static inline void aarch64_sve_change_el(CPUARMState *env, int o,
+> -                                         int n, bool a)
+> -{ }
+>   
+>   #define is_a64(env) ((void)env, false)
+>   
+> diff --git a/target/arm/tcg/tcg-sve.h b/target/arm/tcg/tcg-sve.h
+> index 4bed809b9a..5855bb4289 100644
+> --- a/target/arm/tcg/tcg-sve.h
+> +++ b/target/arm/tcg/tcg-sve.h
+> @@ -21,4 +21,9 @@ uint32_t tcg_sve_disable_lens(unsigned long *sve_vq_map,
+>   bool tcg_sve_validate_lens(unsigned long *sve_vq_map, uint32_t max_vq,
+>                              Error **errp);
+>   
+> +void aarch64_sve_narrow_vq(CPUARMState *env, unsigned vq);
+> +
+> +void aarch64_sve_change_el(CPUARMState *env, int old_el,
+> +                           int new_el, bool el0_a64);
+> +
+>   #endif /* TCG_SVE_H */
+> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+> index c9f812091c..db4b7b1e46 100644
+> --- a/linux-user/syscall.c
+> +++ b/linux-user/syscall.c
+> @@ -134,6 +134,10 @@
+>   #include "fd-trans.h"
+>   #include "tcg/tcg.h"
 >   
 > +#ifdef TARGET_AARCH64
-> +
->   static void zcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
->                         uint64_t value)
->   {
-> @@ -5843,6 +5845,8 @@ static const ARMCPRegInfo zcr_el3_reginfo = {
->       .writefn = zcr_write, .raw_writefn = raw_write
->   };
->   
+> +#include "tcg/tcg-sve.h"
 > +#endif /* TARGET_AARCH64 */
 > +
+>   #ifndef CLONE_IO
+>   #define CLONE_IO                0x80000000      /* Clone io context */
+>   #endif
+> diff --git a/target/arm/cpu-exceptions-aa64.c b/target/arm/cpu-exceptions-aa64.c
+> index 7daaba0426..adaf3bab17 100644
+> --- a/target/arm/cpu-exceptions-aa64.c
+> +++ b/target/arm/cpu-exceptions-aa64.c
+> @@ -21,6 +21,7 @@
+>   #include "qemu/osdep.h"
+>   #include "qemu/log.h"
+>   #include "cpu.h"
+> +#include "tcg/tcg-sve.h"
+>   #include "internals.h"
+>   #include "sysemu/tcg.h"
 
-Given that tcg/cpregs.c is > 7k lines, I wouldn't mind splitting the file on 
-that principal.  But just sprinking ifdefs is not on.
+Ok, sure.
+
+>   
+> diff --git a/target/arm/tcg/cpregs.c b/target/arm/tcg/cpregs.c
+> index 56d56f7f81..9d3c9ae841 100644
+> --- a/target/arm/tcg/cpregs.c
+> +++ b/target/arm/tcg/cpregs.c
+> @@ -16,6 +16,10 @@
+>   #include "cpu-mmu.h"
+>   #include "cpregs.h"
+>   
+> +#ifdef TARGET_AARCH64
+> +#include "tcg/tcg-sve.h"
+> +#endif /* TARGET_AARCH64 */
+
+Don't like the ifdef here.  If in the previous patch we had moved zcr to 
+cpregs-a64.c, it certainly wouldn't be required.
+
+> diff --git a/target/arm/tcg/tcg-sve.c b/target/arm/tcg/tcg-sve.c
+> index 99cfde1f41..908d2c2f2c 100644
+> --- a/target/arm/tcg/tcg-sve.c
+> +++ b/target/arm/tcg/tcg-sve.c
+> @@ -24,6 +24,7 @@
+>   #include "sysemu/tcg.h"
+>   #include "cpu-sve.h"
+>   #include "tcg-sve.h"
+> +#include "cpu-exceptions-aa64.h"
+
+Unnecessary.
 
 
 r~

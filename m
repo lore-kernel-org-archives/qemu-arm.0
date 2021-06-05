@@ -1,138 +1,194 @@
-Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp2238979lfa;
-        Sat, 5 Jun 2021 13:00:11 -0700 (PDT)
-X-Received: by 2002:a17:90a:4e85:: with SMTP id o5mr15901276pjh.22.1622923211346;
-        Sat, 05 Jun 2021 13:00:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1622923211; cv=none;
+Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp2235680lfa;
+        Sat, 5 Jun 2021 12:52:03 -0700 (PDT)
+X-Received: by 2002:aa7:8b0d:0:b029:2e9:857e:c1d1 with SMTP id f13-20020aa78b0d0000b02902e9857ec1d1mr10270143pfd.33.1622922723075;
+        Sat, 05 Jun 2021 12:52:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1622922723; cv=none;
         d=google.com; s=arc-20160816;
-        b=ijXMeE/oyTPIur4f3V/nGQ8m4nb/rac8elenjfvegtEJEIvjPTeVyZgLFxFoAd+7Z0
-         sHfPmrr6qUWxEQiYYyppRzQlqYxZJF9jsYgGm5jpd+ABUEXSu8Gul0ASGnfWUZUOC5hb
-         RNsqt0++HMr1i5VKQYvT7LZo79wA9tHc+2C1TdNIrqhpvwOSyv2rfUdxZcx7ZEgJMZs/
-         8NUZr9yoXfhYUSyrK3O9u1vXLarMQORX2WobL8fSNLru9VT50ML1XPt2UH0lqMP+t+PB
-         p8Yz6Hy4qUYX2rs8EezZOMEWLZzknU+SxQ+Yh76IYIomNYbf+IQgGYIhgABimCFjUGYx
-         Dhxw==
+        b=NQ7fCcKu7CvJjKUh7G4Irn7+R7ZySES94AHb5/IAm/qtpW49n7EIDAqIWndWCBPqtK
+         S3oUNNKmKM9ivHgkUMs1rwRvoZzO7ISiRnB4CG+514bCmiw3HUFqSOtd0E6BykoMVk0R
+         LhEBppJxXBp/UNEOiXwRA2eapAR7wfhWOfGns4gy3lHP2RchprFqhM24/Nl5TC4fLyz4
+         0nzXyKAYwoS9bVTJ5BtoFSu8vpmhxkazcrOKsO0b0yL5yih1YOn8Xp1E75LuawCs21Zs
+         9xzABGlhueqSa3J+Po32jbx5udgCKPjlqSFirHBNEhboJMyhkXgVaETm05qnqalO5Qea
+         7Vug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature;
-        bh=vtabhVWyeExzFJtIzVvcrT5DTtEeC5bdFzWj3cM5iyw=;
-        b=WdycHnudZzEpGbWSDz0Ka17ZW17oHPtL2JD+prMef/Git2PJiosP+DUimjWFXkN29p
-         TygdQeCPrdpvBN2cX6thGMMNMtjUQGSkfu8qCc389t/gpTSKetQUsERpWmvgps2Of/o4
-         a3RReAe2lgnUfNuWqkV91OX6tegGu/EUKP+uh8zbx+2qo4wGQ0q8dTxTyXy3Pg7QcdHh
-         5p+dY8mamOX/Xs8Wb0/Qx/YYZtL5/ZqqhEBmr8GmvJi+ZZsLXznxa4Zm0jNmTCSZaViO
-         mJRdCDCOfudLKMFbh50k2TxkQpDPK/SgT6+w1uF0iUBFvWoEN3x9yZoSHXEeWwLxJSwb
-         5LVg==
+        bh=c/z8EV3TKaWiozZRLB6mGcdwniHbBM/6raYQIT7TJhk=;
+        b=rdNKc6V78dOMdM0StKODK9JgSq3lmYGCeXl/mH70/CWfzqORUj8dvYLB0sgqaOBnE5
+         BkM55is4JRXue3/7x7/yzkd35IJid4ObFjWJi0IAQmXpVa6NXYzk0V+fvtds0DWqZRo4
+         rKKTCe5TJbfoBTlzC1mF7DuYi9SKjvB+foJSoh0LCy+Ju2XhOiUolUU8Sb8C+7PVyILL
+         AiUKPQIQbAab2kFvH9jM1hmRwD7EX0B8ewm+VSGQroWs+tTToVFhNi+gCvrWtO52TUy2
+         GdVf02bTX7iVufDzRiWxO8xjrhRSjYRfvW+DQZ13Tr7m1XndRKJ8bSDvFZTNrklUbjky
+         diqA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Pz6luJi0;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vCeijRih;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id i21sor2966809pfr.57.2021.06.05.13.00.11
+        by mx.google.com with SMTPS id q19sor2821880pfs.99.2021.06.05.12.52.02
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sat, 05 Jun 2021 13:00:11 -0700 (PDT)
+        Sat, 05 Jun 2021 12:52:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Pz6luJi0;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vCeijRih;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=subject:to:cc:references:from:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=vtabhVWyeExzFJtIzVvcrT5DTtEeC5bdFzWj3cM5iyw=;
-        b=Pz6luJi0xY0wGDjLfkUHUoQruUXoJSXD7aJ7WlU/ttkdr/wXgRJvtVRIrt9CQ+q/wt
-         i7CwYQRsbz4tEGCemOrWwMYXFWC+atyD7vo2imosvpR4X1yH00nvAq0CnUsQCwkiteYQ
-         JyTwhHD7Xk6PcC3OGPPk8qCDoPaI9FqBRqbAg0dcMU5SHP6TstPSv37N48kzQMzfzNXA
-         ZEYWXis2Prqm31qG4wDOQNtSFgH5UBSIe8MK4JBbf6ysQu+uHZ57vxnu9V2YvAl47Kup
-         1gGscdVJqdbGhTdJJanN+sIMMK6l6rQZmICUmjWTHKcaEE8cJUPsz57vG35a1DdUAU1L
-         1Obw==
+        bh=c/z8EV3TKaWiozZRLB6mGcdwniHbBM/6raYQIT7TJhk=;
+        b=vCeijRihD7U3VAPsUZOQXlYFgkybBUVjvx0BrDnMKkuRRbfcPkJAjzZ04zaxuS6fDf
+         d5hySfoLFdcZ2Cq1PxWVMSAzzdwI7UkgcVPE/GFBZjRuGc2YBN1Lb89UnZhiLLIa5dqC
+         57qvRZE8K9otMG9Qo+p0duTuVaEwyQJ5d6FkVrWkNz18lLSSksLNCUqfd4wF19CNGd/C
+         TNH44iPDecgV206ln25OD+egK+qWRXsfM3v8DsA2zNyDppbSyVwEvmwMzrcWpok4ZLAy
+         ttJ0kYtDSjeqs/NTNsGiElGmvCOAahMhxdlf0hCNxJgmjVKzoMpH42WDIiBJTC5grlnZ
+         yOPg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:message-id:date
          :user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=vtabhVWyeExzFJtIzVvcrT5DTtEeC5bdFzWj3cM5iyw=;
-        b=Y1/DValXmyBLqXDWJeAk172bM1ocCJe6Peuhw88UZIl5LMTI37VnoMOtxPGOXSGesO
-         vnKWyS//dGU0V/suupRFbmvFlw+TGMnfUFvY+hCT9joa58z8Uzsala0NKtiQA6fIw76/
-         Szjm6ACljCSPXLWXFHIFUp6OtGTGwQ2asa9BSFA0TpCwfcdIihODjfemQmfy6hupHb84
-         oNIwwhOawfPHj1eTOxSaYLO5Pm1cAGvvyN0D+yTEUhzll/w4vhruz/5cL6zx5hPzwyJ4
-         mt3vuKJES9+IibKcgBxb7xY621+Ps9wl+01QgpD0q21vgCjtl1cYmd0sN6j7sHT53hVG
-         c1Ow==
-X-Gm-Message-State: AOAM532XP6DYr81bfzfCdSatjtqgh3RLL9yLsaAQEpElGC6dTyMwd7l/
-	gGwRugxxPbMjYX9m6XUWcG9iBmXu
-X-Google-Smtp-Source: ABdhPJx3YDXhgTWJ0ZgEf2V24HNA5rc53QDgBg9oEcJYXlwU65Qdl0UeVZg24+3uINaAt8IvFYqZFQ==
-X-Received: by 2002:a62:860a:0:b029:2ec:81e1:23e4 with SMTP id x10-20020a62860a0000b02902ec81e123e4mr9426489pfd.11.1622923210832;
-        Sat, 05 Jun 2021 13:00:10 -0700 (PDT)
+        bh=c/z8EV3TKaWiozZRLB6mGcdwniHbBM/6raYQIT7TJhk=;
+        b=jNwI201rDLYYw6qO7DR1Rev0iexg25FUIYX4qcJzXrcyhn0g91EJtm9ypW3RNZ93jW
+         UDKZK8DI/S3IsIMMDVHA9WovrqvJAhsjekMDYyuH1esrvKxlrYdW6sa6/zLZ9phUWBqe
+         676A2c3QI4mJJUbAvldUARauuKu4cJLklZfApnG4JC0LHVQckC0dMZaqFROtafFD2SR5
+         z8EGX+MZaDqhG+IBqFksrAbt0WJxOORhtEfylIFMKWVIXO5SHRxF6lMrxLfotq3Ks9Em
+         k5KNw3Dn9LCIjy1dJKWIKFbgqSHYiXjAmtb7ZcFOxJ7agdTUav14OwJEqmqTcA3weP3u
+         nHWw==
+X-Gm-Message-State: AOAM5306ikEAGn+Pgx2+YjHnXWwFsxz+hz4G9s3q4AxZXW2ZE5OWOsks
+	oHFmAGiHcdfcesX5UmocqVDbVwy3
+X-Google-Smtp-Source: ABdhPJy4/TU0u0LMfJ11lhT21hcLWpUYJGOwRpGSG7STkzxqq6rzVBr5SOqazTVaakrdVkhmCtPH/g==
+X-Received: by 2002:a63:616:: with SMTP id 22mr10955420pgg.291.1622922722404;
+        Sat, 05 Jun 2021 12:52:02 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from [192.168.1.11] (174-21-70-228.tukw.qwest.net. [174.21.70.228])
-        by smtp.gmail.com with ESMTPSA id d15sm7668459pjr.47.2021.06.05.13.00.10
+        by smtp.gmail.com with ESMTPSA id ls13sm7625543pjb.23.2021.06.05.12.52.01
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 05 Jun 2021 13:00:10 -0700 (PDT)
-Subject: Re: [PATCH v16 75/99] target/arm: make is_aa64 and arm_el_is_aa64 a
- macro for !TARGET_AARCH64
+        Sat, 05 Jun 2021 12:52:02 -0700 (PDT)
+Subject: Re: [PATCH v16 73/99] target/arm: cpu-sve: split TCG and KVM
+ functionality
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Claudio Fontana <cfontana@suse.de>
 References: <20210604155312.15902-1-alex.bennee@linaro.org>
- <20210604155312.15902-76-alex.bennee@linaro.org>
+ <20210604155312.15902-74-alex.bennee@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <420c1b1e-fc9a-186d-d38e-a8b1482c62ba@linaro.org>
-Date: Sat, 5 Jun 2021 13:00:08 -0700
+Message-ID: <33be111f-9e47-0b1d-f4e0-2f02bd73da76@linaro.org>
+Date: Sat, 5 Jun 2021 12:52:00 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <20210604155312.15902-76-alex.bennee@linaro.org>
+In-Reply-To: <20210604155312.15902-74-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: /x9EUpVXBqF0
+X-TUID: PIncq/RDDYge
 
 On 6/4/21 8:52 AM, Alex Bennée wrote:
-> From: Claudio Fontana <cfontana@suse.de>
-> 
-> when TARGET_AARCH64 is not defined, it is helpful to make
-> is_aa64() and arm_el_is_aa64 macros defined to "false".
-> 
-> This way we can make more code TARGET_AARCH64-only.
-> 
-> Signed-off-by: Claudio Fontana <cfontana@suse.de>
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> ---
->   target/arm/cpu.h | 37 ++++++++++++++++++++++++-------------
->   1 file changed, 24 insertions(+), 13 deletions(-)
-> 
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index b9b9bd8b01..8614948543 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -1060,6 +1060,11 @@ void aarch64_sve_narrow_vq(CPUARMState *env, unsigned vq);
->   void aarch64_sve_change_el(CPUARMState *env, int old_el,
->                              int new_el, bool el0_a64);
->   
-> +static inline bool is_a64(CPUARMState *env)
+> +void kvm_sve_get_supported_lens(ARMCPU *cpu, unsigned long *kvm_supported)
 > +{
-> +    return env->aarch64;
+> +    /* Collect the set of vector lengths supported by KVM. */
+> +    bitmap_zero(kvm_supported, ARM_MAX_VQ);
+> +
+> +    if (kvm_arm_sve_supported()) {
+> +        kvm_arm_sve_get_vls(CPU(cpu), kvm_supported);
+> +    } else {
+> +        assert(!cpu_isar_feature(aa64_sve, cpu));
+> +    }
 > +}
 > +
->   /*
->    * SVE registers are encoded in KVM's memory in an endianness-invariant format.
->    * The byte at offset i from the start of the in-memory representation contains
-> @@ -1089,7 +1094,10 @@ static inline void aarch64_sve_narrow_vq(CPUARMState *env, unsigned vq) { }
->   static inline void aarch64_sve_change_el(CPUARMState *env, int o,
->                                            int n, bool a)
->   { }
-> -#endif
+> +void kvm_sve_enable_lens(unsigned long *sve_vq_map,
+> +                         unsigned long *sve_vq_init, uint32_t max_vq,
+> +                         unsigned long *kvm_supported)
+> +{
+> +    /*
+> +     * For KVM we have to automatically enable all supported unitialized
+> +     * lengths, even when the smaller lengths are not all powers-of-two.
+> +     */
+> +    DECLARE_BITMAP(tmp, ARM_MAX_VQ);
 > +
-> +#define is_a64(env) ((void)env, false)
+> +    bitmap_andnot(tmp, kvm_supported, sve_vq_init, max_vq);
+> +    bitmap_or(sve_vq_map, sve_vq_map, tmp, max_vq);
+> +}
+> +
+> +uint32_t kvm_sve_disable_lens(unsigned long *sve_vq_map,
+> +                              unsigned long *sve_vq_init,
+> +                              unsigned long *kvm_supported, Error **errp)
+> +{
+> +    uint32_t max_vq, vq;
+> +
+> +    /* Disabling a supported length disables all larger lengths. */
+> +    for (vq = 1; vq <= ARM_MAX_VQ; ++vq) {
+> +        if (test_bit(vq - 1, sve_vq_init) &&
+> +            test_bit(vq - 1, kvm_supported)) {
+> +            break;
+> +        }
+> +    }
+> +
+> +    max_vq = vq <= ARM_MAX_VQ ? vq - 1 : ARM_MAX_VQ;
+> +    bitmap_andnot(sve_vq_map, kvm_supported, sve_vq_init, max_vq);
+> +
+> +    if (max_vq == 0 || bitmap_empty(sve_vq_map, max_vq)) {
+> +        error_setg(errp, "cannot disable sve%d", vq * 128);
+> +        error_append_hint(errp, "Disabling sve%d results in all "
+> +                          "vector lengths being disabled.\n",
+> +                          vq * 128);
+> +        error_append_hint(errp, "With SVE enabled, at least one "
+> +                          "vector length must be enabled.\n");
+> +        return 0;
+> +    }
+> +
+> +    return max_vq;
+> +}
+> +
+> +bool kvm_sve_validate_lens(unsigned long *sve_vq_map, uint32_t max_vq,
+> +                           unsigned long *kvm_supported, Error **errp,
+> +                           uint32_t sve_max_vq)
+> +{
+> +    /* Ensure the set of lengths matches what KVM supports. */
+> +    DECLARE_BITMAP(tmp, ARM_MAX_VQ);
+> +    uint32_t vq;
+> +
+> +    bitmap_xor(tmp, sve_vq_map, kvm_supported, max_vq);
+> +    if (bitmap_empty(tmp, max_vq)) {
+> +        return true;
+> +    }
+> +
+> +    vq = find_last_bit(tmp, max_vq) + 1;
+> +    if (test_bit(vq - 1, sve_vq_map)) {
+> +        if (sve_max_vq) {
+> +            error_setg(errp, "cannot set sve-max-vq=%d", sve_max_vq);
+> +            error_append_hint(errp, "This KVM host does not support "
+> +                              "the vector length %d-bits.\n", vq * 128);
+> +            error_append_hint(errp, "It may not be possible to use "
+> +                              "sve-max-vq with this KVM host. Try "
+> +                              "using only sve<N> properties.\n");
+> +        } else {
+> +            error_setg(errp, "cannot enable sve%d", vq * 128);
+> +            error_append_hint(errp, "This KVM host does not support "
+> +                              "the vector length %d-bits.\n", vq * 128);
+> +        }
+> +    } else {
+> +        error_setg(errp, "cannot disable sve%d", vq * 128);
+> +        error_append_hint(errp, "The KVM host requires all "
+> +                          "supported vector lengths smaller "
+> +                          "than %d bits to also be enabled.\n", max_vq * 128);
+> +    }
+> +    return false;
+> +}
 
-In theory, parenthesis are required around the env expansion.
+Also, I think I mentioned this before in review of a previous version, I 
+strongly suspect that aside from kvm_sve_get_supported_lens, the other 
+functions will be used without change by all other hw virt systems.
 
-> +#define arm_el_is_aa64(env, el) ((void)env, (void)el, false)
-
-Likewise.  Otherwise,
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+So I think we'll do best, short term, to keep all of this in cpu-sve.c for now. 
+  The tcg_enabled() test should elide all of the code that's not needed when 
+!CONFIG_TCG.
 
 
 r~

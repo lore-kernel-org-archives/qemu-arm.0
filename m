@@ -1,194 +1,137 @@
-Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp2235680lfa;
-        Sat, 5 Jun 2021 12:52:03 -0700 (PDT)
-X-Received: by 2002:aa7:8b0d:0:b029:2e9:857e:c1d1 with SMTP id f13-20020aa78b0d0000b02902e9857ec1d1mr10270143pfd.33.1622922723075;
-        Sat, 05 Jun 2021 12:52:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1622922723; cv=none;
+Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp2242592lfa;
+        Sat, 5 Jun 2021 13:06:27 -0700 (PDT)
+X-Received: by 2002:a63:a1c:: with SMTP id 28mr11085220pgk.440.1622923587334;
+        Sat, 05 Jun 2021 13:06:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1622923587; cv=none;
         d=google.com; s=arc-20160816;
-        b=NQ7fCcKu7CvJjKUh7G4Irn7+R7ZySES94AHb5/IAm/qtpW49n7EIDAqIWndWCBPqtK
-         S3oUNNKmKM9ivHgkUMs1rwRvoZzO7ISiRnB4CG+514bCmiw3HUFqSOtd0E6BykoMVk0R
-         LhEBppJxXBp/UNEOiXwRA2eapAR7wfhWOfGns4gy3lHP2RchprFqhM24/Nl5TC4fLyz4
-         0nzXyKAYwoS9bVTJ5BtoFSu8vpmhxkazcrOKsO0b0yL5yih1YOn8Xp1E75LuawCs21Zs
-         9xzABGlhueqSa3J+Po32jbx5udgCKPjlqSFirHBNEhboJMyhkXgVaETm05qnqalO5Qea
-         7Vug==
+        b=aRjfStGssAVDwduvLiC7M86RWjpYryhY3O27BScH5XQcQ3MPAJPYMQ9QEe26I2lfbg
+         bHLa8NyURmn4Ait9Y91hjSQwVhlnwx7vqeuFBvTQYXIqFmB4lzQWeXa0j2Wflxt4Daxb
+         +Se7P6aq6OHI4cODF2KG9MGtOFM4ip3yVw8l+0/isqBv1tKkYDfoYt9vnYNLGzCpaO/B
+         2n5hqAvyJ6TBSfOqIym/NeTtrNC5U/RFaXY5cjsVT1/fxb917XSbuYE6uCWCxGSxQOgE
+         CjyZC4IxF7r+lhgFnn3U9rUIOdfI4VXweFPdATmxc11Jn1OK1toLysiDhcN+338QCe3R
+         PJZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature;
-        bh=c/z8EV3TKaWiozZRLB6mGcdwniHbBM/6raYQIT7TJhk=;
-        b=rdNKc6V78dOMdM0StKODK9JgSq3lmYGCeXl/mH70/CWfzqORUj8dvYLB0sgqaOBnE5
-         BkM55is4JRXue3/7x7/yzkd35IJid4ObFjWJi0IAQmXpVa6NXYzk0V+fvtds0DWqZRo4
-         rKKTCe5TJbfoBTlzC1mF7DuYi9SKjvB+foJSoh0LCy+Ju2XhOiUolUU8Sb8C+7PVyILL
-         AiUKPQIQbAab2kFvH9jM1hmRwD7EX0B8ewm+VSGQroWs+tTToVFhNi+gCvrWtO52TUy2
-         GdVf02bTX7iVufDzRiWxO8xjrhRSjYRfvW+DQZ13Tr7m1XndRKJ8bSDvFZTNrklUbjky
-         diqA==
+        bh=DZoJBOcM9Bnc2FNUh3KhN4JxUvpuH1zV3W6SFsyhlHc=;
+        b=soxS8//KoKgEf5U17xNfJBajtl4DBq4JP8RV/GO3H6OKYIXA6JqiEzM37glCu6Jt3D
+         1yCInsxfXMzExnGsmKYYfEEkrofSXnkppQpLgKrhQzhzcjJZvS1pP6sio818EZyG2nfJ
+         5jlisIAc99vqEs9x/38RF3YiSP2VTIB0mcXU8XCAgcCpIwlcSIaa2G+cdoW1zLFwrIX8
+         WROy8+CTKdI1/MBkEWsnoxomubPOom5IChJUnGfyez3Mu4xNcsTQfPam6Y2cKqO+TQn2
+         +oQrCmdLgc4iuPfAX9C2bzPqPauDQpb45M4fh629C3kg4Bz9eKcjTdr6nMzg4VI6gXYv
+         TWYA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vCeijRih;
+       dkim=pass header.i=@linaro.org header.s=google header.b=qTN5P5hE;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id q19sor2821880pfs.99.2021.06.05.12.52.02
+        by mx.google.com with SMTPS id c1sor2651063pfl.66.2021.06.05.13.06.27
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sat, 05 Jun 2021 12:52:02 -0700 (PDT)
+        Sat, 05 Jun 2021 13:06:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vCeijRih;
+       dkim=pass header.i=@linaro.org header.s=google header.b=qTN5P5hE;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=subject:to:cc:references:from:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=c/z8EV3TKaWiozZRLB6mGcdwniHbBM/6raYQIT7TJhk=;
-        b=vCeijRihD7U3VAPsUZOQXlYFgkybBUVjvx0BrDnMKkuRRbfcPkJAjzZ04zaxuS6fDf
-         d5hySfoLFdcZ2Cq1PxWVMSAzzdwI7UkgcVPE/GFBZjRuGc2YBN1Lb89UnZhiLLIa5dqC
-         57qvRZE8K9otMG9Qo+p0duTuVaEwyQJ5d6FkVrWkNz18lLSSksLNCUqfd4wF19CNGd/C
-         TNH44iPDecgV206ln25OD+egK+qWRXsfM3v8DsA2zNyDppbSyVwEvmwMzrcWpok4ZLAy
-         ttJ0kYtDSjeqs/NTNsGiElGmvCOAahMhxdlf0hCNxJgmjVKzoMpH42WDIiBJTC5grlnZ
-         yOPg==
+        bh=DZoJBOcM9Bnc2FNUh3KhN4JxUvpuH1zV3W6SFsyhlHc=;
+        b=qTN5P5hESAKnvN63MIhOcwvcEgMl1QQiHDUcCLIITotD1q2XgVPJB0tRZLy1eaLi5B
+         Ey1pAvOSV8uhWzOGen1Sek4wr6bYZ0EoKp5zhvSIJF7c9H1zvVRreTL8RPZtxlntY2yv
+         xUwoatyr+B1rfLFFImbBAXEr7EDNaGhGd2jYFvy1xf8hUSNye7qf195XdgDUgvcNXP7X
+         qvtvCwxWj/Y6oqJ0tsy8uWgLApQ2rWqkaUgzZ9QAiE8bT6RVQ4sH65573Hk7JdKfw4jf
+         sDRR4mbkPF3G+0gGUDCAI+E4DLjHe/Akh1kUWixkLIVCz9nuUHYRY7CnJ2PM/q8I5d4r
+         RkBw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:message-id:date
          :user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=c/z8EV3TKaWiozZRLB6mGcdwniHbBM/6raYQIT7TJhk=;
-        b=jNwI201rDLYYw6qO7DR1Rev0iexg25FUIYX4qcJzXrcyhn0g91EJtm9ypW3RNZ93jW
-         UDKZK8DI/S3IsIMMDVHA9WovrqvJAhsjekMDYyuH1esrvKxlrYdW6sa6/zLZ9phUWBqe
-         676A2c3QI4mJJUbAvldUARauuKu4cJLklZfApnG4JC0LHVQckC0dMZaqFROtafFD2SR5
-         z8EGX+MZaDqhG+IBqFksrAbt0WJxOORhtEfylIFMKWVIXO5SHRxF6lMrxLfotq3Ks9Em
-         k5KNw3Dn9LCIjy1dJKWIKFbgqSHYiXjAmtb7ZcFOxJ7agdTUav14OwJEqmqTcA3weP3u
-         nHWw==
-X-Gm-Message-State: AOAM5306ikEAGn+Pgx2+YjHnXWwFsxz+hz4G9s3q4AxZXW2ZE5OWOsks
-	oHFmAGiHcdfcesX5UmocqVDbVwy3
-X-Google-Smtp-Source: ABdhPJy4/TU0u0LMfJ11lhT21hcLWpUYJGOwRpGSG7STkzxqq6rzVBr5SOqazTVaakrdVkhmCtPH/g==
-X-Received: by 2002:a63:616:: with SMTP id 22mr10955420pgg.291.1622922722404;
-        Sat, 05 Jun 2021 12:52:02 -0700 (PDT)
+        bh=DZoJBOcM9Bnc2FNUh3KhN4JxUvpuH1zV3W6SFsyhlHc=;
+        b=SRzA3novHAOqPak1tr2cDQ+eZWM+Mumt0MubIG4fEU3rq9OfqaLuqrCx9ePPjIajfR
+         YoFv1HICLExmpW0xKA6TR3pR/0iIKI6pk7a+5omAMpxuDXTjsJvHn6HB0kyxgPNSSNN2
+         SlfOqRx/Ghc0YxQsIhcs1tPtycVWWDzkscwsE2F7DA0+ybmKTVCzjqUd+ns46Iti28mz
+         5hbdSOOVYVN3QnyDKu3JIfdkA3xPTW1q/EbDkykf4wfrHZ4S/cQoFxOeSpHeYMeOa0On
+         IBUslMBD60DXecTUGJN1x0hNo5oRlia3xiMxXVrgWr6I8LepUbl2dDtpIroNJI7z/EDn
+         llCg==
+X-Gm-Message-State: AOAM533ldOPKFr6xZBdxRH2C4ZGCysInaIZbCMLN7x7SR7JT46WphdbB
+	R+feDeD+m5sqmHlenkaxSQuujMrWV/eGqKDw
+X-Google-Smtp-Source: ABdhPJyiU57RcB3aKV3CVNNfDqCP4UxIJwdSJUl6bg/hOrw9chfS2MGrSOX9DYJDt0eR0eXErxru6Q==
+X-Received: by 2002:a05:6a00:b83:b029:2ec:7400:ae59 with SMTP id g3-20020a056a000b83b02902ec7400ae59mr10514904pfj.11.1622923586857;
+        Sat, 05 Jun 2021 13:06:26 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from [192.168.1.11] (174-21-70-228.tukw.qwest.net. [174.21.70.228])
-        by smtp.gmail.com with ESMTPSA id ls13sm7625543pjb.23.2021.06.05.12.52.01
+        by smtp.gmail.com with ESMTPSA id s22sm4872441pfd.94.2021.06.05.13.06.26
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 05 Jun 2021 12:52:02 -0700 (PDT)
-Subject: Re: [PATCH v16 73/99] target/arm: cpu-sve: split TCG and KVM
- functionality
+        Sat, 05 Jun 2021 13:06:26 -0700 (PDT)
+Subject: Re: [PATCH v16 76/99] target/arm: restrict rebuild_hflags_a64 to
+ TARGET_AARCH64
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Claudio Fontana <cfontana@suse.de>
 References: <20210604155312.15902-1-alex.bennee@linaro.org>
- <20210604155312.15902-74-alex.bennee@linaro.org>
+ <20210604155312.15902-77-alex.bennee@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <33be111f-9e47-0b1d-f4e0-2f02bd73da76@linaro.org>
-Date: Sat, 5 Jun 2021 12:52:00 -0700
+Message-ID: <408c9eb3-edc2-8675-e47d-be5db44f9766@linaro.org>
+Date: Sat, 5 Jun 2021 13:06:25 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <20210604155312.15902-74-alex.bennee@linaro.org>
+In-Reply-To: <20210604155312.15902-77-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: PIncq/RDDYge
+X-TUID: zL7w8ZgC5viv
 
 On 6/4/21 8:52 AM, Alex Bennée wrote:
-> +void kvm_sve_get_supported_lens(ARMCPU *cpu, unsigned long *kvm_supported)
-> +{
-> +    /* Collect the set of vector lengths supported by KVM. */
-> +    bitmap_zero(kvm_supported, ARM_MAX_VQ);
+> --- a/target/arm/tcg/helper.c
+> +++ b/target/arm/tcg/helper.c
+> @@ -999,6 +999,8 @@ static CPUARMTBFlags rebuild_hflags_a32(CPUARMState *env, int fp_el,
+>       return rebuild_hflags_common_32(env, fp_el, mmu_idx, flags);
+>   }
+>   
+> +#ifdef TARGET_AARCH64
 > +
-> +    if (kvm_arm_sve_supported()) {
-> +        kvm_arm_sve_get_vls(CPU(cpu), kvm_supported);
-> +    } else {
-> +        assert(!cpu_isar_feature(aa64_sve, cpu));
-> +    }
-> +}
+>   static CPUARMTBFlags rebuild_hflags_a64(CPUARMState *env, int el, int fp_el,
+>                                           ARMMMUIdx mmu_idx)
+>   {
+> @@ -1122,6 +1124,14 @@ static CPUARMTBFlags rebuild_hflags_a64(CPUARMState *env, int el, int fp_el,
+>       return rebuild_hflags_common(env, fp_el, mmu_idx, flags);
+>   }
+>   
+> +#else
 > +
-> +void kvm_sve_enable_lens(unsigned long *sve_vq_map,
-> +                         unsigned long *sve_vq_init, uint32_t max_vq,
-> +                         unsigned long *kvm_supported)
-> +{
-> +    /*
-> +     * For KVM we have to automatically enable all supported unitialized
-> +     * lengths, even when the smaller lengths are not all powers-of-two.
-> +     */
-> +    DECLARE_BITMAP(tmp, ARM_MAX_VQ);
+> +QEMU_ERROR("this should have been optimized away!")
+> +CPUARMTBFlags rebuild_hflags_a64(CPUARMState *env, int el, int fp_el,
+> +                                 ARMMMUIdx mmu_idx);
 > +
-> +    bitmap_andnot(tmp, kvm_supported, sve_vq_init, max_vq);
-> +    bitmap_or(sve_vq_map, sve_vq_map, tmp, max_vq);
-> +}
+> +#endif /* TARGET_AARCH64 */
 > +
-> +uint32_t kvm_sve_disable_lens(unsigned long *sve_vq_map,
-> +                              unsigned long *sve_vq_init,
-> +                              unsigned long *kvm_supported, Error **errp)
-> +{
-> +    uint32_t max_vq, vq;
-> +
-> +    /* Disabling a supported length disables all larger lengths. */
-> +    for (vq = 1; vq <= ARM_MAX_VQ; ++vq) {
-> +        if (test_bit(vq - 1, sve_vq_init) &&
-> +            test_bit(vq - 1, kvm_supported)) {
-> +            break;
-> +        }
-> +    }
-> +
-> +    max_vq = vq <= ARM_MAX_VQ ? vq - 1 : ARM_MAX_VQ;
-> +    bitmap_andnot(sve_vq_map, kvm_supported, sve_vq_init, max_vq);
-> +
-> +    if (max_vq == 0 || bitmap_empty(sve_vq_map, max_vq)) {
-> +        error_setg(errp, "cannot disable sve%d", vq * 128);
-> +        error_append_hint(errp, "Disabling sve%d results in all "
-> +                          "vector lengths being disabled.\n",
-> +                          vq * 128);
-> +        error_append_hint(errp, "With SVE enabled, at least one "
-> +                          "vector length must be enabled.\n");
-> +        return 0;
-> +    }
-> +
-> +    return max_vq;
-> +}
-> +
-> +bool kvm_sve_validate_lens(unsigned long *sve_vq_map, uint32_t max_vq,
-> +                           unsigned long *kvm_supported, Error **errp,
-> +                           uint32_t sve_max_vq)
-> +{
-> +    /* Ensure the set of lengths matches what KVM supports. */
-> +    DECLARE_BITMAP(tmp, ARM_MAX_VQ);
-> +    uint32_t vq;
-> +
-> +    bitmap_xor(tmp, sve_vq_map, kvm_supported, max_vq);
-> +    if (bitmap_empty(tmp, max_vq)) {
-> +        return true;
-> +    }
-> +
-> +    vq = find_last_bit(tmp, max_vq) + 1;
-> +    if (test_bit(vq - 1, sve_vq_map)) {
-> +        if (sve_max_vq) {
-> +            error_setg(errp, "cannot set sve-max-vq=%d", sve_max_vq);
-> +            error_append_hint(errp, "This KVM host does not support "
-> +                              "the vector length %d-bits.\n", vq * 128);
-> +            error_append_hint(errp, "It may not be possible to use "
-> +                              "sve-max-vq with this KVM host. Try "
-> +                              "using only sve<N> properties.\n");
-> +        } else {
-> +            error_setg(errp, "cannot enable sve%d", vq * 128);
-> +            error_append_hint(errp, "This KVM host does not support "
-> +                              "the vector length %d-bits.\n", vq * 128);
-> +        }
-> +    } else {
-> +        error_setg(errp, "cannot disable sve%d", vq * 128);
-> +        error_append_hint(errp, "The KVM host requires all "
-> +                          "supported vector lengths smaller "
-> +                          "than %d bits to also be enabled.\n", max_vq * 128);
-> +    }
-> +    return false;
-> +}
+>   static CPUARMTBFlags rebuild_hflags_internal(CPUARMState *env)
+>   {
+>       int el = arm_current_el(env);
+> @@ -1183,6 +1193,7 @@ void HELPER(rebuild_hflags_a32)(CPUARMState *env, int el)
+>       env->hflags = rebuild_hflags_a32(env, fp_el, mmu_idx);
+>   }
+>   
+> +#ifdef TARGET_AARCH64
+>   void HELPER(rebuild_hflags_a64)(CPUARMState *env, int el)
+>   {
+>       int fp_el = fp_exception_el(env, el);
+> @@ -1190,6 +1201,7 @@ void HELPER(rebuild_hflags_a64)(CPUARMState *env, int el)
+>   
+>       env->hflags = rebuild_hflags_a64(env, el, fp_el, mmu_idx);
+>   }
+> +#endif /* TARGET_AARCH64 */
 
-Also, I think I mentioned this before in review of a previous version, I 
-strongly suspect that aside from kvm_sve_get_supported_lens, the other 
-functions will be used without change by all other hw virt systems.
-
-So I think we'll do best, short term, to keep all of this in cpu-sve.c for now. 
-  The tcg_enabled() test should elide all of the code that's not needed when 
-!CONFIG_TCG.
+It would be better to move some of this code to helper-a64.c, above multiple 
+ifdefs.
 
 
 r~

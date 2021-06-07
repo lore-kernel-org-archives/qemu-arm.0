@@ -1,285 +1,589 @@
-Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp3681288lfa;
-        Mon, 7 Jun 2021 10:07:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwOTsLZ5hCtoFo3Z6IWdCtzVOu4lFUDASWn/Ap4kOoz9GA5RqOf8esAJzL5N+dlKaAH64hS
-X-Received: by 2002:a05:600c:1d1a:: with SMTP id l26mr11045576wms.189.1623085654781;
-        Mon, 07 Jun 2021 10:07:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623085654; cv=none;
+Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp3683774lfa;
+        Mon, 7 Jun 2021 10:10:29 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzkOeaedNAlHVZ0Dv25Wi1sXDP05208V51bR/qvuUqZ17aCVjxQNPlBVkPBOsc4ZO+WEOz9
+X-Received: by 2002:a5d:4531:: with SMTP id j17mr17782195wra.303.1623085829682;
+        Mon, 07 Jun 2021 10:10:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623085829; cv=none;
         d=google.com; s=arc-20160816;
-        b=y+am3XyoN+B2p4XLvetrEchIz4mfVPmPcavJFxnz84UvWB/vE9/XMPeN3/GMlZfvGs
-         Nxx/nBSW8yGScMBEfNX+min/91PhfRETOY3SdG6dhSWSJHORYKKdjh9hLq/LwLe3Rg0M
-         cs/fyS/VTXR4AIs0Y87tsPfc7JHqlD/3cQcSeAKkikHblVbl0s/NRQBDYhZiYJ9fXuTn
-         l424dx4IeI0pftFZehPmZ40bnQvVK1VW2ikgtEFmFMS60HZHCtSiDT5o2Q0ZPv5T7cBY
-         Js5BYXO7VVyN23yc2qYT1i/DrQ07+aN54qcnd24D5akLBldaD8EGI3yjSab8LdLBeJUB
-         7pVg==
+        b=qwbZNQoX5nUc5m44GmpisEHjDDk+EGw3gTxO/D/FVxTt8Nxtw3brcB9JYT9lSxnoKA
+         n5/3ELRVU06EecGDNYDwB7/SY7cVMaoVK/ThAu0cyJEPI2qx4GmyZF1s7FXq3mDv1URx
+         0RO6pkXwHWjU5GHR30xOvf4JZ7dFYfpxrYkGceG98T4pX+XGX0Gwz9thtuIuWoZjw4th
+         zG3IsMVYAknMeMB9POAG3iM3ipIvOSBMq6wLDEzFOaJfZbxRQ4/Cy6KP6Weivd3g7YIT
+         RrvJ4B5XKIiPQRBv8H/bfYDb6vlBkJHXyHW2hYrJRINAYLP6BZmTxHgETO6Gito7L8/o
+         1DFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=LKqmv0MgdApn4ZHvXGc8SemnH+SSJM42zZ7JcZtsFWE=;
-        b=ZUs+vvq3M6FZ94hnk/oNZXUuznoS+ToA4cV6xNKzkW9FbES4/ZifhvmVZbbRZ9N7+i
-         PZl4Wr52IzkGpWpmkmhQZ43xC14By98vY0ijScHX0N1naEbfz9e1Y41qqCKriV1ZX0oy
-         muQ2ItIPxesABV5QpFxulIXEtuYcg9ySsGiIIJwbtCwqX9vJlD7xg7HDA6/UG1mKpWjl
-         0NPmWqz94lQmwLceWhZNomdkjR6irHAAIN0WQLl1CAWqrWfQrof75iLvztYbJG5e6UaU
-         KuO7rd+CzGwYEPsaYxvcjc/k7458u/9rL3cldBHP63dPkO6K7cOazfHJtsuej2B5F5v6
-         mSPg==
+        bh=B/ouubpcq2OKp6jcrkf6PegX0zSxS4BaQ07JU1gDbks=;
+        b=peKxKVkvtq9DklBLkJHLzvN0XTzIAjY6ERhxfbSmxDaxXuGaGjTw1XWwzZjDfCRxhe
+         TR6pEZQmrUvbJ4wceC77HPqLLjOIfNTxSmtdLfgnRIVTPWod/IMIUj9WEp4bWh//koDq
+         iQBakO+fTnQiGXWu9TFQ/745YlxkIWZqCyLOqgWZ7L+9tpXbE25xcB6jTf6cYhAfD+HP
+         RY0Z1zhAt7XttplcyJHz1DrnYlqX9sKwnqjzDNuN4VnXLUqWNbJuLDPe6rsb6xHMqLHm
+         JamUdxQ+DSR+4nECh4zeFJXVRZHhHtwsOTJbrtmjuFHtRaFTc3TsgHiYWOSnos+vGSeI
+         eODg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wyI18BeC;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=K50uImrF;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l5si9978293wrr.539.2021.06.07.10.07.34
+        by mx.google.com with ESMTPS id 94si18456567wrc.21.2021.06.07.10.10.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 07 Jun 2021 10:07:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 07 Jun 2021 10:10:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wyI18BeC;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=K50uImrF;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57772 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34850 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lqIir-0004UR-PQ
-	for alex.bennee@linaro.org; Mon, 07 Jun 2021 13:07:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59164)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lqIlZ-0008Aa-35
+	for alex.bennee@linaro.org; Mon, 07 Jun 2021 13:10:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59354)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lqIaD-0007Ko-E4
- for qemu-arm@nongnu.org; Mon, 07 Jun 2021 12:58:37 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b]:37884)
+ id 1lqIaS-0007Ua-4H
+ for qemu-devel@nongnu.org; Mon, 07 Jun 2021 12:58:54 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436]:41800)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lqIa8-0007tu-Qe
- for qemu-arm@nongnu.org; Mon, 07 Jun 2021 12:58:37 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- f16-20020a05600c1550b02901b00c1be4abso124025wmg.2
- for <qemu-arm@nongnu.org>; Mon, 07 Jun 2021 09:58:32 -0700 (PDT)
+ id 1lqIaA-0007uc-N0
+ for qemu-devel@nongnu.org; Mon, 07 Jun 2021 12:58:48 -0400
+Received: by mail-wr1-x436.google.com with SMTP id o3so38696wri.8
+ for <qemu-devel@nongnu.org>; Mon, 07 Jun 2021 09:58:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=LKqmv0MgdApn4ZHvXGc8SemnH+SSJM42zZ7JcZtsFWE=;
- b=wyI18BeCVmi4d8sDs/M8rseTGlKY94y+I3Rs2pH3w5XuEiCx/U5PCxz02Q2qpWqhBE
- iOnei8ZsNB0RFuu3Vvq1dkPvgbhb7zAbet5PEXr0vERNpqI1KhaoQ/nxBjIhQxIZ0YZI
- Nbr6lGfCC6GAc9EARBKeqgNcgzJc3udY1KAQhzacbfai+rtObcxTgrBxBvDPdzWVlmO6
- wnfucW4Nh6CBgwkoxppoTVB2ZyqiiDbYBPjhmgdVbS+O3KLfcwK9zh39HEHKqmw8k1V/
- eOUlxQBup1No6MTFHB4N6hTWrIp/JO541cPe9UussKXF/3EVg6ICc6Iu63xog7R43uDZ
- cQnA==
+ bh=B/ouubpcq2OKp6jcrkf6PegX0zSxS4BaQ07JU1gDbks=;
+ b=K50uImrFhNC8jNJtQkQfKKNRfyC39VUKzlUix8tteXHc37NOX9s0HLCit2ziL5RDkc
+ +9Xpy5tXFu3aaT5g2rF8nffz8ICDA7PRrPCMO5lGdR58ygsvC0NIKDphfV4HW2AN8MJJ
+ 61A0mBH8WUo9kOewVjSmNmaz1lkh4cJD+F1s+pTNwzB0eHF/wQ58j4mKrmS2FqVtj4Bh
+ YleMPBmmUENvF2q9MqOPbRKuMCsJWg+9yEHRqya+npQe+AVr8Gu2M8Gr72GJc64ykGtH
+ SKn9wc2CyS9+H+MYMC+FsUDCPtvzU7cG+7OMV5rqyYBiQUPYJTFu83+/N/SlilV0XNme
+ +vIw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=LKqmv0MgdApn4ZHvXGc8SemnH+SSJM42zZ7JcZtsFWE=;
- b=Waqubefqbqqp5YX9goNS/I0MxFMoDcNIRiW5hR62VPoB9j0E2DvZfmYBL707XK2R4G
- LRBbxsF68331CI8XjSWe5zLWT+Nn0ZI4GSHZo22AAvTiGoZjHobLTKowXH1tcF7xsV5f
- jbkZMFfI3HxwAmLKLntkeYYQMXjmjuH+IJY4UQWKw6vuLQjRSyHz/ukbEr+V43tCQz8y
- 4vxtaEA7plOyvCNRGtWAC9Q53Wxvp6/mWv2KM2ZJx4bWQJTcFtm4ywnVccdmXvhwr+wU
- Gvf+EfdyzFDoZDMxpYjMkdX4ZBIRtqBi8Ta39VSBlKEPFnmNxVxZjYgP9s4sVSrx5/oh
- v2Lg==
-X-Gm-Message-State: AOAM530oa0jTQI5i1zafui0FCbjMG4uOUnpuQsIX0/2j9odV9gfkbZdq
- vPi6pdYcOFPq6/6uSB+4wT5jPa2NpYRUh3aX
-X-Received: by 2002:a1c:e907:: with SMTP id q7mr70588wmc.1.1623085111449;
- Mon, 07 Jun 2021 09:58:31 -0700 (PDT)
+ bh=B/ouubpcq2OKp6jcrkf6PegX0zSxS4BaQ07JU1gDbks=;
+ b=eQQNwHSOJEPHT2oPctxEOedtz0x437/Zb+CGoz6EGifxZQz3o1Am4JpWfu4KQ8k7hp
+ YQeWeh0rncqj1KpSWLMJVeAkWLDN3fDS6E6zYHR5a6EzwkPvZ5yLwG1kZhpZGMTZUmpi
+ WPMuDCsQSaX3wD8XTyzuy35TaRCUL/WGjeEwLj3UYNDwrCCD4SYk3Mv3ccJT00wuvxAH
+ jWlNQNWIxVuX7pJJhtzwVRJDvxhmvcEMWS3K4e24YTdi1qSTB3fkeEXy7WWzIKZfo+UL
+ RCW2QPyNwGj9nmgdePg7UMI+hezMCUjbywRpz3lbIdqHnMzJd5zBifyjC1OnJkSkbCcK
+ WSWg==
+X-Gm-Message-State: AOAM530kcdXYKktbkmJbeaqR7uqwCaAMEMtI5RAhq4kKjprkCjZCg90y
+ 3oHcOwFhiO2M5JXv3/CccTm0RA==
+X-Received: by 2002:adf:8bc7:: with SMTP id w7mr18995192wra.198.1623085113248; 
+ Mon, 07 Jun 2021 09:58:33 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id n10sm18891677wre.95.2021.06.07.09.58.30
+ by smtp.gmail.com with ESMTPSA id n10sm18891677wre.95.2021.06.07.09.58.32
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 07 Jun 2021 09:58:31 -0700 (PDT)
+ Mon, 07 Jun 2021 09:58:32 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 09/55] target/arm: Implement MVE LETP insn
-Date: Mon,  7 Jun 2021 17:57:35 +0100
-Message-Id: <20210607165821.9892-10-peter.maydell@linaro.org>
+Subject: [PATCH 11/55] target/arm: Implement MVE VLDR/VSTR (non-widening forms)
+Date: Mon,  7 Jun 2021 17:57:37 +0100
+Message-Id: <20210607165821.9892-12-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210607165821.9892-1-peter.maydell@linaro.org>
 References: <20210607165821.9892-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x436.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Richard Henderson <richard.henderson@linaro.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Rry3scEBe7ge
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 8aTXIhcxgvDT
 
-Implement the MVE LETP insn.  This is like the existing LE loop-end
-insn, but it must perform an FPU-enabled check, and on loop-exit it
-resets LTPSIZE to 4.
+Implement the forms of the MVE VLDR and VSTR insns which perform
+non-widening loads of bytes, halfwords or words from memory into
+vector elements of the same width (encodings T5, T6, T7).
 
-To accommodate the requirement to do something on loop-exit, we drop
-the use of condlabel and instead manage both the TB exits manually,
-in the same way we already do in trans_WLS().
-
-The other MVE-specific change to the LE insn is that we must raise an
-INVSTATE UsageFault insn if LTPSIZE is not 4.
+(At the moment we know for MVE and M-profile in general that
+vfp_access_check() can never return false, but we include the
+conventional return-true-on-failure check for consistency
+with non-M-profile translation code.)
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
-This amounts to a complete rewrite of trans_LE()...
----
- target/arm/t32.decode  |   2 +-
- target/arm/translate.c | 104 +++++++++++++++++++++++++++++++++++++----
- 2 files changed, 97 insertions(+), 9 deletions(-)
+ target/arm/{translate-mve.c => helper-mve.h} |  21 +--
+ target/arm/helper.h                          |   2 +
+ target/arm/internals.h                       |  11 ++
+ target/arm/mve.decode                        |  22 +++
+ target/arm/mve_helper.c                      | 188 +++++++++++++++++++
+ target/arm/translate-mve.c                   | 124 +++++++++++-
+ target/arm/meson.build                       |   1 +
+ 7 files changed, 355 insertions(+), 14 deletions(-)
+ copy target/arm/{translate-mve.c => helper-mve.h} (61%)
+ create mode 100644 target/arm/mve_helper.c
 
-diff --git a/target/arm/t32.decode b/target/arm/t32.decode
-index 8e1ca7d64a9..4115e08ce99 100644
---- a/target/arm/t32.decode
-+++ b/target/arm/t32.decode
-@@ -676,7 +676,7 @@ BL               1111 0. .......... 11.1 ............         @branch24
-     {
-       # This is WLSTP
-       WLS        1111 0 0000 0 size:2 rn:4 1100 . .......... 1 imm=%lob_imm
--      LE         1111 0 0000 0 f:1 0 1111 1100 . .......... 1 imm=%lob_imm
-+      LE         1111 0 0000 0 f:1 tp:1 1111 1100 . .......... 1 imm=%lob_imm
-     }
-     {
-       # This is DLSTP
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 976c665be9c..6d70c89961a 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -8223,25 +8223,113 @@ static bool trans_LE(DisasContext *s, arg_LE *a)
-      * any faster.
-      */
-     TCGv_i32 tmp;
-+    TCGLabel *loopend;
-+    bool fpu_active;
- 
-     if (!dc_isar_feature(aa32_lob, s)) {
-         return false;
-     }
-+    if (a->f && a->tp) {
-+        return false;
-+    }
-+    if (s->condexec_mask) {
-+        /*
-+         * LE in an IT block is CONSTRAINED UNPREDICTABLE;
-+         * we choose to UNDEF, because otherwise our use of
-+         * gen_goto_tb(1) would clash with the use of TB exit 1
-+         * in the dc->condjmp condition-failed codepath in
-+         * arm_tr_tb_stop() and we'd get an assertion.
-+         */
-+        return false;
-+    }
-+    if (a->tp) {
-+        /* LETP */
-+        if (!dc_isar_feature(aa32_mve, s)) {
-+            return false;
-+        }
-+        if (!vfp_access_check(s)) {
-+            s->eci_handled = true;
-+            return true;
-+        }
-+    }
- 
-     /* LE/LETP is OK with ECI set and leaves it untouched */
-     s->eci_handled = true;
- 
--    if (!a->f) {
--        /* Not loop-forever. If LR <= 1 this is the last loop: do nothing. */
--        arm_gen_condlabel(s);
--        tcg_gen_brcondi_i32(TCG_COND_LEU, cpu_R[14], 1, s->condlabel);
--        /* Decrement LR */
--        tmp = load_reg(s, 14);
--        tcg_gen_addi_i32(tmp, tmp, -1);
--        store_reg(s, 14, tmp);
-+    /*
-+     * With MVE, LTPSIZE might not be 4, and we must emit an INVSTATE
-+     * UsageFault exception for the LE insn in that case. Note that we
-+     * are not directly checking FPSCR.LTPSIZE but instead check the
-+     * pseudocode LTPSIZE() function, which returns 4 if the FPU is
-+     * not currently active (ie ActiveFPState() returns false). We
-+     * can identify not-active purely from our TB state flags, as the
-+     * FPU is active only if:
-+     *  the FPU is enabled
-+     *  AND lazy state preservation is not active
-+     *  AND we do not need a new fp context (this is the ASPEN/FPCA check)
-+     *
-+     * Usually we don't need to care about this distinction between
-+     * LTPSIZE and FPSCR.LTPSIZE, because the code in vfp_access_check()
-+     * will either take an exception or clear the conditions that make
-+     * the FPU not active. But LE is an unusual case of a non-FP insn
-+     * that looks at LTPSIZE.
-+     */
-+    fpu_active = !s->fp_excp_el && !s->v7m_lspact && !s->v7m_new_fp_ctxt_needed;
+diff --git a/target/arm/translate-mve.c b/target/arm/helper-mve.h
+similarity index 61%
+copy from target/arm/translate-mve.c
+copy to target/arm/helper-mve.h
+index c54d5cb7305..9e3b0b09afd 100644
+--- a/target/arm/translate-mve.c
++++ b/target/arm/helper-mve.h
+@@ -1,6 +1,6 @@
+ /*
+- *  ARM translation: M-profile MVE instructions
+-
++ *  M-profile MVE specific helper definitions
++ *
+  *  Copyright (c) 2021 Linaro, Ltd.
+  *
+  * This library is free software; you can redistribute it and/or
+@@ -16,14 +16,9 @@
+  * You should have received a copy of the GNU Lesser General Public
+  * License along with this library; if not, see <http://www.gnu.org/licenses/>.
+  */
+-
+-#include "qemu/osdep.h"
+-#include "tcg/tcg-op.h"
+-#include "tcg/tcg-op-gvec.h"
+-#include "exec/exec-all.h"
+-#include "exec/gen-icount.h"
+-#include "translate.h"
+-#include "translate-a32.h"
+-
+-/* Include the generated decoder */
+-#include "decode-mve.c.inc"
++DEF_HELPER_FLAGS_3(mve_vldrb, TCG_CALL_NO_WG, void, env, ptr, i32)
++DEF_HELPER_FLAGS_3(mve_vldrh, TCG_CALL_NO_WG, void, env, ptr, i32)
++DEF_HELPER_FLAGS_3(mve_vldrw, TCG_CALL_NO_WG, void, env, ptr, i32)
++DEF_HELPER_FLAGS_3(mve_vstrb, TCG_CALL_NO_WG, void, env, ptr, i32)
++DEF_HELPER_FLAGS_3(mve_vstrh, TCG_CALL_NO_WG, void, env, ptr, i32)
++DEF_HELPER_FLAGS_3(mve_vstrw, TCG_CALL_NO_WG, void, env, ptr, i32)
+diff --git a/target/arm/helper.h b/target/arm/helper.h
+index dc6eb96d439..db87d7d5376 100644
+--- a/target/arm/helper.h
++++ b/target/arm/helper.h
+@@ -1019,3 +1019,5 @@ DEF_HELPER_FLAGS_6(gvec_bfmlal_idx, TCG_CALL_NO_RWG,
+ #include "helper-a64.h"
+ #include "helper-sve.h"
+ #endif
 +
-+    if (!a->tp && dc_isar_feature(aa32_mve, s) && fpu_active) {
-+        /* Need to do a runtime check for LTPSIZE != 4 */
-+        TCGLabel *skipexc = gen_new_label();
-+        tmp = load_cpu_field(v7m.ltpsize);
-+        tcg_gen_brcondi_i32(TCG_COND_EQ, tmp, 4, skipexc);
-+        tcg_temp_free_i32(tmp);
++#include "helper-mve.h"
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 886db56b580..3ba86e8af81 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1202,4 +1202,15 @@ static inline uint64_t useronly_maybe_clean_ptr(uint32_t desc, uint64_t ptr)
+     return ptr;
+ }
+ 
++/* Values for M-profile PSR.ECI for MVE insns */
++enum MVEECIState {
++    ECI_NONE = 0, /* No completed beats */
++    ECI_A0 = 1, /* Completed: A0 */
++    ECI_A0A1 = 2, /* Completed: A0, A1 */
++    /* 3 is reserved */
++    ECI_A0A1A2 = 4, /* Completed: A0, A1, A2 */
++    ECI_A0A1A2B0 = 5, /* Completed: A0, A1, A2, B0 */
++    /* All other values reserved */
++};
++
+ #endif
+diff --git a/target/arm/mve.decode b/target/arm/mve.decode
+index c8492bb5763..858a161fd7e 100644
+--- a/target/arm/mve.decode
++++ b/target/arm/mve.decode
+@@ -18,3 +18,25 @@
+ #
+ # This file is processed by scripts/decodetree.py
+ #
++
++%qd 22:1 13:3
++
++&vldr_vstr rn qd imm p a w size l
++
++@vldr_vstr ....... . . . . l:1 rn:4 ... ...... imm:7 &vldr_vstr qd=%qd
++
++# Vector loads and stores
++
++# Non-widening loads/stores (P=0 W=0 is 'related encoding')
++VLDR_VSTR        1110110 0 a:1 . 1   . .... ... 111100 .......   @vldr_vstr \
++                 size=0 p=0 w=1
++VLDR_VSTR        1110110 0 a:1 . 1   . .... ... 111101 .......   @vldr_vstr \
++                 size=1 p=0 w=1
++VLDR_VSTR        1110110 0 a:1 . 1   . .... ... 111110 .......   @vldr_vstr \
++                 size=2 p=0 w=1
++VLDR_VSTR        1110110 1 a:1 . w:1 . .... ... 111100 .......   @vldr_vstr \
++                 size=0 p=1
++VLDR_VSTR        1110110 1 a:1 . w:1 . .... ... 111101 .......   @vldr_vstr \
++                 size=1 p=1
++VLDR_VSTR        1110110 1 a:1 . w:1 . .... ... 111110 .......   @vldr_vstr \
++                 size=2 p=1
+diff --git a/target/arm/mve_helper.c b/target/arm/mve_helper.c
+new file mode 100644
+index 00000000000..575afce8fee
+--- /dev/null
++++ b/target/arm/mve_helper.c
+@@ -0,0 +1,188 @@
++/*
++ * M-profile MVE Operations
++ *
++ * Copyright (c) 2021 Linaro, Ltd.
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2.1 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include "qemu/osdep.h"
++#include "cpu.h"
++#include "internals.h"
++#include "exec/helper-proto.h"
++#include "exec/cpu_ldst.h"
++#include "exec/exec-all.h"
++
++/*
++ * Note that vector data is stored in host-endian 64-bit chunks,
++ * so addressing units smaller than that needs a host-endian fixup.
++ */
++#ifdef HOST_WORDS_BIGENDIAN
++#define H1(x)  ((x) ^ 7)
++#define H2(x)  ((x) ^ 3)
++#define H4(x)  ((x) ^ 1)
++#else
++#define H1(x)  (x)
++#define H2(x)  (x)
++#define H4(x)  (x)
++#endif
++
++static uint16_t mve_element_mask(CPUARMState *env)
++{
++    /*
++     * Return the mask of which elements in the MVE vector should be
++     * updated. This is a combination of multiple things:
++     *  (1) by default, we update every lane in the vector
++     *  (2) VPT predication stores its state in the VPR register;
++     *  (3) low-overhead-branch tail predication will mask out part
++     *      the vector on the final iteration of the loop
++     *  (4) if EPSR.ECI is set then we must execute only some beats
++     *      of the insn
++     * We combine all these into a 16-bit result with the same semantics
++     * as VPR.P0: 0 to mask the lane, 1 if it is active.
++     * 8-bit vector ops will look at all bits of the result;
++     * 16-bit ops will look at bits 0, 2, 4, ...;
++     * 32-bit ops will look at bits 0, 4, 8 and 12.
++     * Compare pseudocode GetCurInstrBeat(), though that only returns
++     * the 4-bit slice of the mask corresponding to a single beat.
++     */
++    uint16_t mask = extract32(env->v7m.vpr, R_V7M_VPR_P0_SHIFT,
++                              R_V7M_VPR_P0_LENGTH);
++
++    if (!(env->v7m.vpr & R_V7M_VPR_MASK01_MASK)) {
++        mask |= 0xff;
++    }
++    if (!(env->v7m.vpr & R_V7M_VPR_MASK23_MASK)) {
++        mask |= 0xff00;
++    }
++
++    if (env->v7m.ltpsize < 4 &&
++        env->regs[14] <= (1 << (4 - env->v7m.ltpsize))) {
++        /*
++         * Tail predication active, and this is the last loop iteration.
++         * The element size is (1 << ltpsize), and we only want to process
++         * loopcount elements, so we want to retain the least significant
++         * (loopcount * esize) predicate bits and zero out bits above that.
++         */
++        int masklen = env->regs[14] << env->v7m.ltpsize;
++        assert(masklen <= 16);
++        mask &= MAKE_64BIT_MASK(0, masklen);
++    }
++
++    if ((env->condexec_bits & 0xf) == 0) {
++        /*
++         * ECI bits indicate which beats are already executed;
++         * we handle this by effectively predicating them out.
++         */
++        int eci = env->condexec_bits >> 4;
++        switch (eci) {
++        case ECI_NONE:
++            break;
++        case ECI_A0:
++            mask &= 0xfff0;
++            break;
++        case ECI_A0A1:
++            mask &= 0xff00;
++            break;
++        case ECI_A0A1A2:
++        case ECI_A0A1A2B0:
++            mask &= 0xf000;
++            break;
++        default:
++            g_assert_not_reached();
++        }
++    }
++
++    return mask;
++}
++
++static void mve_advance_vpt(CPUARMState *env)
++{
++    /* Advance the VPT and ECI state if necessary */
++    uint32_t vpr = env->v7m.vpr;
++    unsigned mask01, mask23;
++
++    if ((env->condexec_bits & 0xf) == 0) {
++        env->condexec_bits = (env->condexec_bits == (ECI_A0A1A2B0 << 4)) ?
++            (ECI_A0 << 4) : (ECI_NONE << 4);
++    }
++
++    if (!(vpr & (R_V7M_VPR_MASK01_MASK | R_V7M_VPR_MASK23_MASK))) {
++        /* VPT not enabled, nothing to do */
++        return;
++    }
++
++    mask01 = extract32(vpr, R_V7M_VPR_MASK01_SHIFT, R_V7M_VPR_MASK01_LENGTH);
++    mask23 = extract32(vpr, R_V7M_VPR_MASK23_SHIFT, R_V7M_VPR_MASK23_LENGTH);
++    if (mask01 > 8) {
++        /* high bit set, but not 0b1000: invert the relevant half of P0 */
++        vpr ^= 0xff;
++    }
++    if (mask23 > 8) {
++        /* high bit set, but not 0b1000: invert the relevant half of P0 */
++        vpr ^= 0xff00;
++    }
++    vpr = deposit32(vpr, R_V7M_VPR_MASK01_SHIFT, R_V7M_VPR_MASK01_LENGTH,
++                    mask01 << 1);
++    vpr = deposit32(vpr, R_V7M_VPR_MASK23_SHIFT, R_V7M_VPR_MASK23_LENGTH,
++                    mask23 << 1);
++    env->v7m.vpr = vpr;
++}
++
++
++#define DO_VLDR(OP, ESIZE, LDTYPE, TYPE, H)                             \
++    void HELPER(mve_##OP)(CPUARMState *env, void *vd, uint32_t addr)    \
++    {                                                                   \
++        TYPE *d = vd;                                                   \
++        uint16_t mask = mve_element_mask(env);                          \
++        unsigned b, e;                                                  \
++        /*                                                              \
++         * R_SXTM allows the dest reg to become UNKNOWN for abandoned   \
++         * beats so we don't care if we update part of the dest and     \
++         * then take an exception.                                      \
++         */                                                             \
++        for (b = 0, e = 0; b < 16; b += ESIZE, e++) {                   \
++            if (mask & (1 << b)) {                                      \
++                d[H(e)] = cpu_##LDTYPE##_data_ra(env, addr, GETPC());   \
++                addr += ESIZE;                                          \
++            }                                                           \
++        }                                                               \
++        mve_advance_vpt(env);                                           \
++    }
++
++#define DO_VSTR(OP, ESIZE, STTYPE, TYPE, H)                             \
++    void HELPER(mve_##OP)(CPUARMState *env, void *vd, uint32_t addr)    \
++    {                                                                   \
++        TYPE *d = vd;                                                   \
++        uint16_t mask = mve_element_mask(env);                          \
++        unsigned b, e;                                                  \
++        for (b = 0, e = 0; b < 16; b += ESIZE, e++) {                   \
++            if (mask & (1 << b)) {                                      \
++                cpu_##STTYPE##_data_ra(env, addr, d[H(e)], GETPC());    \
++                addr += ESIZE;                                          \
++            }                                                           \
++        }                                                               \
++        mve_advance_vpt(env);                                           \
++    }
++
++DO_VLDR(vldrb, 1, ldub, uint8_t, H1)
++DO_VLDR(vldrh, 2, lduw, uint16_t, H2)
++DO_VLDR(vldrw, 4, ldl, uint32_t, H4)
++
++DO_VSTR(vstrb, 1, stb, uint8_t, H1)
++DO_VSTR(vstrh, 2, stw, uint16_t, H2)
++DO_VSTR(vstrw, 4, stl, uint32_t, H4)
++
++#undef DO_VLDR
++#undef DO_VSTR
+diff --git a/target/arm/translate-mve.c b/target/arm/translate-mve.c
+index c54d5cb7305..e8bb2372ad9 100644
+--- a/target/arm/translate-mve.c
++++ b/target/arm/translate-mve.c
+@@ -1,6 +1,6 @@
+ /*
+  *  ARM translation: M-profile MVE instructions
+-
++ *
+  *  Copyright (c) 2021 Linaro, Ltd.
+  *
+  * This library is free software; you can redistribute it and/or
+@@ -27,3 +27,125 @@
+ 
+ /* Include the generated decoder */
+ #include "decode-mve.c.inc"
++
++typedef void MVEGenLdStFn(TCGv_ptr, TCGv_ptr, TCGv_i32);
++
++/* Return the offset of a Qn register (same semantics as aa32_vfp_qreg()) */
++static inline long mve_qreg_offset(unsigned reg)
++{
++    return offsetof(CPUARMState, vfp.zregs[reg].d[0]);
++}
++
++static TCGv_ptr mve_qreg_ptr(unsigned reg)
++{
++    TCGv_ptr ret = tcg_temp_new_ptr();
++    tcg_gen_addi_ptr(ret, cpu_env, mve_qreg_offset(reg));
++    return ret;
++}
++
++static bool mve_eci_check(DisasContext *s)
++{
++    /*
++     * This is a beatwise insn: check that ECI is valid (not a
++     * reserved value) and note that we are handling it.
++     * Return true if OK, false if we generated an exception.
++     */
++    s->eci_handled = true;
++    switch (s->eci) {
++    case ECI_NONE:
++    case ECI_A0:
++    case ECI_A0A1:
++    case ECI_A0A1A2:
++    case ECI_A0A1A2B0:
++        return true;
++    default:
++        /* Reserved value: INVSTATE UsageFault */
 +        gen_exception_insn(s, s->pc_curr, EXCP_INVSTATE, syn_uncategorized(),
 +                           default_exception_el(s));
-+        gen_set_label(skipexc);
++        return false;
++    }
++}
++
++static void mve_update_eci(DisasContext *s)
++{
++    /*
++     * The helper function will always update the CPUState field,
++     * so we only need to update the DisasContext field.
++     */
++    if (s->eci) {
++        s->eci = (s->eci == ECI_A0A1A2B0) ? ECI_A0 : ECI_NONE;
++    }
++}
++
++static bool do_ldst(DisasContext *s, arg_VLDR_VSTR *a, MVEGenLdStFn *fn)
++{
++    TCGv_i32 addr;
++    uint32_t offset;
++    TCGv_ptr qreg;
++
++    if (!dc_isar_feature(aa32_mve, s)) {
++        return false;
 +    }
 +
-+    if (a->f) {
-+        /* Loop-forever: just jump back to the loop start */
-+        gen_jmp(s, read_pc(s) - a->imm);
++    if (a->qd > 7 || !fn) {
++        return false;
++    }
++
++    /* CONSTRAINED UNPREDICTABLE: we choose to UNDEF */
++    if (a->rn == 15 || (a->rn == 13 && a->w)) {
++        return false;
++    }
++
++    if (!mve_eci_check(s)) {
 +        return true;
 +    }
 +
-+    /*
-+     * Not loop-forever. If LR <= loop-decrement-value this is the last loop.
-+     * For LE, we know at this point that LTPSIZE must be 4 and the
-+     * loop decrement value is 1. For LETP we need to calculate the decrement
-+     * value from LTPSIZE.
-+     */
-+    loopend = gen_new_label();
-+    if (!a->tp) {
-+        tcg_gen_brcondi_i32(TCG_COND_LEU, cpu_R[14], 1, loopend);
-+        tcg_gen_addi_i32(cpu_R[14], cpu_R[14], -1);
-+    } else {
-+        /*
-+         * Decrement by 1 << (4 - LTPSIZE). We need to use a TCG local
-+         * so that decr stays live after the brcondi.
-+         */
-+        TCGv_i32 decr = tcg_temp_local_new_i32();
-+        TCGv_i32 ltpsize = load_cpu_field(v7m.ltpsize);
-+        tcg_gen_sub_i32(decr, tcg_constant_i32(4), ltpsize);
-+        tcg_gen_shl_i32(decr, tcg_constant_i32(1), decr);
-+        tcg_temp_free_i32(ltpsize);
-+
-+        tcg_gen_brcond_i32(TCG_COND_LEU, cpu_R[14], decr, loopend);
-+
-+        tcg_gen_sub_i32(cpu_R[14], cpu_R[14], decr);
-+        tcg_temp_free_i32(decr);
-     }
-     /* Jump back to the loop start */
-     gen_jmp(s, read_pc(s) - a->imm);
-+
-+    gen_set_label(loopend);
-+    if (a->tp) {
-+        /* Exits from tail-pred loops must reset LTPSIZE to 4 */
-+        tmp = tcg_const_i32(4);
-+        store_cpu_field(tmp, v7m.ltpsize);
++    if (!vfp_access_check(s)) {
++        return true;
 +    }
-+    /* End TB, continuing to following insn */
-+    gen_jmp_tb(s, s->base.pc_next, 1);
-     return true;
- }
- 
++
++    offset = a->imm << a->size;
++    if (!a->a) {
++        offset = -offset;
++    }
++    addr = load_reg(s, a->rn);
++    if (a->p) {
++        tcg_gen_addi_i32(addr, addr, offset);
++    }
++
++    qreg = mve_qreg_ptr(a->qd);
++    fn(cpu_env, qreg, addr);
++    tcg_temp_free_ptr(qreg);
++
++    /*
++     * Writeback always happens after the last beat of the insn,
++     * regardless of predication
++     */
++    if (a->w) {
++        if (!a->p) {
++            tcg_gen_addi_i32(addr, addr, offset);
++        }
++        store_reg(s, a->rn, addr);
++    } else {
++        tcg_temp_free_i32(addr);
++    }
++    mve_update_eci(s);
++    return true;
++}
++
++static bool trans_VLDR_VSTR(DisasContext *s, arg_VLDR_VSTR *a)
++{
++    MVEGenLdStFn *ldfns[] = {
++        gen_helper_mve_vldrb,
++        gen_helper_mve_vldrh,
++        gen_helper_mve_vldrw,
++        NULL,
++    };
++    MVEGenLdStFn *stfns[] = {
++        gen_helper_mve_vstrb,
++        gen_helper_mve_vstrh,
++        gen_helper_mve_vstrw,
++        NULL,
++    };
++    return do_ldst(s, a, a->l ? ldfns[a->size] : stfns[a->size]);
++}
+diff --git a/target/arm/meson.build b/target/arm/meson.build
+index 2b50be3f862..25a02bf2769 100644
+--- a/target/arm/meson.build
++++ b/target/arm/meson.build
+@@ -23,6 +23,7 @@ arm_ss.add(files(
+   'helper.c',
+   'iwmmxt_helper.c',
+   'm_helper.c',
++  'mve_helper.c',
+   'neon_helper.c',
+   'op_helper.c',
+   'tlb_helper.c',
 -- 
 2.20.1
 

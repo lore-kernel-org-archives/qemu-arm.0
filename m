@@ -1,264 +1,231 @@
-Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp3711784lfa;
-        Mon, 7 Jun 2021 10:49:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwSAqJlWZrm+HQqar2F1ksWOLTgk1lz7Z8IKyvXufJO9dr6vg2kY1b5XOb861Of2Zn0vt5s
-X-Received: by 2002:a9d:2287:: with SMTP id y7mr14121586ota.22.1623088141625;
-        Mon, 07 Jun 2021 10:49:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623088141; cv=none;
+Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp3712402lfa;
+        Mon, 7 Jun 2021 10:49:58 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy1frh8QmmrXCvuRf3zmT6yz6vBAzVzfdxlK2b96E3DvMqEnDOH1sxQT7hBZ0tDePA4eEWE
+X-Received: by 2002:a92:9411:: with SMTP id c17mr16813987ili.264.1623088198200;
+        Mon, 07 Jun 2021 10:49:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623088198; cv=none;
         d=google.com; s=arc-20160816;
-        b=H705tr0IC2BoF6+F6Uy8oAzmlb+PHdCX+rNpFB8ArjQW20oltCXpZhT7qVLbW2E9tF
-         OFOcxHRHYqwYSEtCYDAwpaLgkPn6tXCYmiz9/5vx1JyWXWiJG8PaHJBVXuZbCI6I9CLW
-         pfzolJnARrxhbQfMBVA8tB6rfVn93XuoPkzhrVUizP6l8z05hGkj1rL7fuOynxhccA0n
-         29jvCbQVR+7k5VN+wVzjGTmRw99Mm7wNOR5E4EL63PeTlxuUmp7q1QezjODEG3zC+Cb2
-         X7nl7khumEtHjEE82Y5JvDI90Vn45uB5DfbVgcgb3KFP3trphc4ToaQ+4rqz3lDiMvID
-         VYkg==
+        b=CvqWdL8pGKgFjgK+5+xlg+rS21A1Un6db3ix3IE2+GwNpqrp6JUILOvllv4UFkoFbR
+         KGoSpDYLPT9gnl4tkkT4LOaeMj42PRFSzADhcYy/lKVMxlpzQzgFJ0sqtfSI/9b+MwbJ
+         v4DftcUP9/+qFp9d9TzQJt5PbjVC09x3P3jPe1vCfnOwjpF3/Meb7NureyASC2fIGmyP
+         Q+pFHWjcSWozCB6PMc1jV6J1L/hkWXPcG2FfoXjooqTHES+SlAAbrxry1mxExpGVTpRz
+         1+VeXxRzwLOC35UBSRiEC+E+/ocaPF8aSct4H6Btd0evRB21ZHNftm3DN3kckYThhxTX
+         FkWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=42h1syOUzxLZUA1XvuU+cSxInBYhE+Glir21t9O+DZY=;
-        b=at+ljLyf3YDoBG5pfBOStgZ9FYt0+H4s6pQ/LL40iehiqH/dfLUk2Pbr0nEdZAg4cA
-         qiIJU9Ex5zyjVnWBNY2dgfN2HS36K11PDDwYa9PIYD8B2wejPanHZX/dp/i7T8ReGYRZ
-         b+gLS/9flCv0BqQcdWiBLYEuzmyG4MvRuOlOKOSeGpMRYgID/BflxeapeG3IsxFPYitB
-         ImSymHOhrL7p0d4I6dulewILxZzJAnCp2h+u6PkhiynZd+qa0WpxAtZWBxvKHjqji8Vb
-         wXhgq69pA3DZNA9beXH0ZYc/EvXzZPX5aCiZb6fiLIlZNmocQBDDPX/gmt14KGOHD6RJ
-         ek6g==
+        bh=/0Pzr5dolqTpGYbgOUV73R4nwkTVq7BcD7SErgBnXGg=;
+        b=yEhHl0JC0kbX/Us2z+nss0pArzVhXPC7+QiKzWEj2M9ER4a512ez1zrHlg6PQvxpss
+         jVo98HdEY951adAfa7Yp7n2iQs+CO8SHTtKYEsog8VMRSfurzJ/K++My5w2IxECOiH7n
+         mmGnM0+Yo4adoVbeNgMLfJlAvTJ7VQ7HQlHZt/z0YYS7oZjJXzs93ItUQzoSQ3qKMFV7
+         3UITBbwax6HhSUDhRXAI/jYXzXQtcxehb1lZuoKDqBuwAPHDdz831WMl+YaYGUmkVRln
+         duoiuM1NvaNMnP1h2X1hTYzQ8y/Ysv2jyNmxp2Rt4jSSpjf+VYxB+bvi/qxVXBHPNs2L
+         eDMw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xA6ZkOgv;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=sUELHhYX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t130si9034092oig.120.2021.06.07.10.49.01
+        by mx.google.com with ESMTPS id 17si13717040ilg.11.2021.06.07.10.49.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 07 Jun 2021 10:49:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 07 Jun 2021 10:49:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xA6ZkOgv;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=sUELHhYX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57714 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33996 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lqJMy-0006lB-U7
-	for alex.bennee@linaro.org; Mon, 07 Jun 2021 13:49:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60402)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lqJNt-0001MX-GB
+	for alex.bennee@linaro.org; Mon, 07 Jun 2021 13:49:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60536)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lqIbN-0000Kd-Ow
- for qemu-devel@nongnu.org; Mon, 07 Jun 2021 12:59:50 -0400
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329]:39861)
+ id 1lqIbX-0000X7-AZ
+ for qemu-arm@nongnu.org; Mon, 07 Jun 2021 13:00:01 -0400
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e]:39866)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lqIag-00087F-HM
- for qemu-devel@nongnu.org; Mon, 07 Jun 2021 12:59:49 -0400
-Received: by mail-wm1-x329.google.com with SMTP id
- l18-20020a1ced120000b029014c1adff1edso103349wmh.4
- for <qemu-devel@nongnu.org>; Mon, 07 Jun 2021 09:59:04 -0700 (PDT)
+ id 1lqIah-00088Z-El
+ for qemu-arm@nongnu.org; Mon, 07 Jun 2021 12:59:56 -0400
+Received: by mail-wm1-x32e.google.com with SMTP id
+ l18-20020a1ced120000b029014c1adff1edso103418wmh.4
+ for <qemu-arm@nongnu.org>; Mon, 07 Jun 2021 09:59:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=42h1syOUzxLZUA1XvuU+cSxInBYhE+Glir21t9O+DZY=;
- b=xA6ZkOgvzwx7cTE6WMwhT0EtuQD85vbOKaodkUJoqlwxWYWpEx38NYTP6EEvuUUAzp
- y+kqKzLHAGLmPpiLix8MsQE56o6wwVos0e0d1bRdGize3xnvEuIzTqTMbEJKWZqD3ELs
- tJujSUZzGFa4uH42uxTEBsqMNsraxG/zhucJmSBwoSpHTPYGoSi5PAm5b3x6uvQqf6HG
- fXpZHRQ7hXBLJz8cIcnMQa/8LrMlEbi/Yp9cIJ5hfFAXprn0YFg1OI71B7+viZFVGTIk
- m6b1KKsBCD6NBVX/PlyaemwPLl9w0NI2t5IBh/TLfLlxAxJnNUSJwLQK1Sl3t/3sVCQO
- 9bxA==
+ bh=/0Pzr5dolqTpGYbgOUV73R4nwkTVq7BcD7SErgBnXGg=;
+ b=sUELHhYXxxlGEkGj12vzr+h9UhAAxSBmYhjFWjWCoti6RfcJ7CexgMcLtLhiHP2rfQ
+ bAWb5KDnfsDJQZ7KADXj+cfnjJrszLj4YpTcaonNTd5eURxc6w1NBt03Erx3zVUAIFlu
+ UqziNBArl4D80NKU0mk49jgptJwudBPhVK1vGYQKamivLGs5QiMfnRrsreKlQolToP/c
+ UAXSRQfatvfjgKDjEDWikH/j6aWjCpY41pMOjd4mlcfoqfvz+gHLl6BHOFrq+fW4efj1
+ PSxVeZhucscfoj8ephq7LWP9+WDxzplEGcYqPHuzPku/qRoPSSocVcXEWgOp28oSTrHJ
+ ztPQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=42h1syOUzxLZUA1XvuU+cSxInBYhE+Glir21t9O+DZY=;
- b=PVwTHQdvtq/yzrtDA1NYaIGc9pwpsPfK+mwdTqLHvJPbeGxUSs3eer5CjpelYQFraV
- 60Pmz5nxDnq6yro3rFnA3XYuzB1rlE4Yk15fVQOBHtQAT+Hp75nF0rvnGTolIeKohA+L
- DMdNvtB8bYXZpiMaLfL7wTGooX6SN87iBjx0Titsmd6p6pPDGNJJo8FZralcaVtZQF5G
- EhpJqKv35x68C8NOgLfb0jO2mXBgfWG9yFnQpCSpYVUcMWjOXlm/ymZRtLrWXN/nyZkJ
- JFa15JaHW/dARNf4x6ftYielv+WjaHLHfd0tjhIgtMOFMYlDrsJ48cxR2MsLO2AvsTPr
- BtmQ==
-X-Gm-Message-State: AOAM53386JJhQaArYnGkMQr2gVJD1ER6w4IAz9Su2ZuINBOk2kmBW5lJ
- vROvLDW/9LAH9NjPQ4xADZbrTQ==
-X-Received: by 2002:a05:600c:4f94:: with SMTP id
- n20mr53591wmq.121.1623085143850; 
- Mon, 07 Jun 2021 09:59:03 -0700 (PDT)
+ bh=/0Pzr5dolqTpGYbgOUV73R4nwkTVq7BcD7SErgBnXGg=;
+ b=hEIP5VGozt6LRdgZd2Y5nUynTF11r2/BGSYXven0yCcF/C2xNnXPhhAFsDYSrfvS6m
+ sYngL4bSPBD6TpGqgZlHR1MToMD444SKc+YN+KXDUOMYhfYtt9kHCr/4pJgJ+nyR65sT
+ YDwpoQELcsE8CcJVx64QiwbCcSoW2zJYnPY6VYyvH/O9G6gG+CeGEosD1mjfTlhwxA4I
+ 44UOWELcw6xV1KzDn0edDToOw7sGrCfFit52+HHfoa3o47m47XrECPK7z1NGz9qy4iDm
+ o4qKT3lZ6MHJYC4pu6O8zPdsghPAlS/FRhToE7NNg/J6c3Of5vNcCpF7WJdflw0gH4SM
+ 0QkA==
+X-Gm-Message-State: AOAM530QFQJn0lU/n844EtuZlJJzF8YF3zT6jacWDu5DNCh1VvlbhJJb
+ JeuzvOmmpVqbQ+BuR+QAMpBDqkWFN2oomy50
+X-Received: by 2002:a7b:c2e8:: with SMTP id e8mr13195257wmk.41.1623085146173; 
+ Mon, 07 Jun 2021 09:59:06 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id n10sm18891677wre.95.2021.06.07.09.59.03
+ by smtp.gmail.com with ESMTPSA id n10sm18891677wre.95.2021.06.07.09.59.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 07 Jun 2021 09:59:03 -0700 (PDT)
+ Mon, 07 Jun 2021 09:59:05 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 51/55] target/arm: Implement MVE VADC, VSBC
-Date: Mon,  7 Jun 2021 17:58:17 +0100
-Message-Id: <20210607165821.9892-52-peter.maydell@linaro.org>
+Subject: [PATCH 54/55] target/arm: Implement MVE VADDV
+Date: Mon,  7 Jun 2021 17:58:20 +0100
+Message-Id: <20210607165821.9892-55-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210607165821.9892-1-peter.maydell@linaro.org>
 References: <20210607165821.9892-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x329.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Richard Henderson <richard.henderson@linaro.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Uo2aDLcekmyT
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: yMHu3hBcg4oJ
 
-Implement the MVE VADC and VSBC insns.  These perform an
-add-with-carry or subtract-with-carry of the 32-bit elements in each
-lane of the input vectors, where the carry-out of each add is the
-carry-in of the next.  The initial carry input is either 1 or is from
-FPSCR.C; the carry out at the end is written back to FPSCR.C.
+Implement the MVE VADDV insn, which performs an addition
+across vector lanes.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/helper-mve.h    |  3 ++
- target/arm/mve.decode      |  6 ++++
- target/arm/mve_helper.c    | 30 +++++++++++++++++
- target/arm/translate-mve.c | 69 ++++++++++++++++++++++++++++++++++++++
- 4 files changed, 108 insertions(+)
+ target/arm/helper-mve.h    |  7 ++++++
+ target/arm/mve.decode      |  2 ++
+ target/arm/mve_helper.c    | 24 +++++++++++++++++++
+ target/arm/translate-mve.c | 48 ++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 81 insertions(+)
 
 diff --git a/target/arm/helper-mve.h b/target/arm/helper-mve.h
-index cd2cc6252f8..686e5d9a39b 100644
+index 3f056e67871..c1ef44d5927 100644
 --- a/target/arm/helper-mve.h
 +++ b/target/arm/helper-mve.h
-@@ -248,6 +248,9 @@ DEF_HELPER_FLAGS_4(mve_vrhaddub, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
- DEF_HELPER_FLAGS_4(mve_vrhadduh, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
- DEF_HELPER_FLAGS_4(mve_vrhadduw, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
+@@ -348,3 +348,10 @@ DEF_HELPER_FLAGS_4(mve_vrmlaldavhuw, TCG_CALL_NO_WG, i64, env, ptr, ptr, i64)
  
-+DEF_HELPER_FLAGS_5(mve_vadc, TCG_CALL_NO_WG, i32, env, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(mve_vsbc, TCG_CALL_NO_WG, i32, env, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(mve_vrmlsldavhsw, TCG_CALL_NO_WG, i64, env, ptr, ptr, i64)
+ DEF_HELPER_FLAGS_4(mve_vrmlsldavhxsw, TCG_CALL_NO_WG, i64, env, ptr, ptr, i64)
 +
- DEF_HELPER_FLAGS_4(mve_vadd_scalarb, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
- DEF_HELPER_FLAGS_4(mve_vadd_scalarh, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
- DEF_HELPER_FLAGS_4(mve_vadd_scalarw, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(mve_vaddvsb, TCG_CALL_NO_WG, i32, env, ptr, i32)
++DEF_HELPER_FLAGS_3(mve_vaddvub, TCG_CALL_NO_WG, i32, env, ptr, i32)
++DEF_HELPER_FLAGS_3(mve_vaddvsh, TCG_CALL_NO_WG, i32, env, ptr, i32)
++DEF_HELPER_FLAGS_3(mve_vaddvuh, TCG_CALL_NO_WG, i32, env, ptr, i32)
++DEF_HELPER_FLAGS_3(mve_vaddvsw, TCG_CALL_NO_WG, i32, env, ptr, i32)
++DEF_HELPER_FLAGS_3(mve_vaddvuw, TCG_CALL_NO_WG, i32, env, ptr, i32)
 diff --git a/target/arm/mve.decode b/target/arm/mve.decode
-index 6b969902df0..6a4aae7a1fc 100644
+index 23ae12b7a38..bfbf8cf4252 100644
 --- a/target/arm/mve.decode
 +++ b/target/arm/mve.decode
-@@ -30,6 +30,7 @@
- &1op qd qm size
- &2op qd qm qn size
- &2scalar qd qn rm size
-+&vadc qd qm qn i
+@@ -253,6 +253,8 @@ VBRSR            1111 1110 0 . .. ... 1 ... 1 1110 . 110 .... @2scalar
+ VQDMULH_scalar   1110 1110 0 . .. ... 1 ... 0 1110 . 110 .... @2scalar
+ VQRDMULH_scalar  1111 1110 0 . .. ... 1 ... 0 1110 . 110 .... @2scalar
  
- @vldr_vstr ....... . . . . l:1 rn:4 ... ...... imm:7 &vldr_vstr qd=%qd u=0
- # Note that both Rn and Qd are 3 bits only (no D bit)
-@@ -42,6 +43,8 @@
- @2op_sz28 .... .... .... .... .... .... .... .... &2op qd=%qd qm=%qm qn=%qn \
-      size=%size_28
++# Vector add across vector
++VADDV            111 u:1 1110 1111 size:2 01 ... 0 1111 0 0 a:1 0 qm:3 0 rda=%rdalo
  
-+@vadc .... .... .... .... ... i:1 .... .... .... &vadc qd=%qd qm=%qm qn=%qn
-+
- # The _rev suffix indicates that Vn and Vm are reversed. This is
- # the case for shifts. In the Arm ARM these insns are documented
- # with the Vm and Vn fields in their usual places, but in the
-@@ -160,6 +163,9 @@ VQDMULLT         111 . 1110 0 . 11 ... 0 ... 1 1111 . 0 . 0 ... 1 @2op_sz28
- VRHADD_S         111 0 1111 0 . .. ... 0 ... 0 0001 . 1 . 0 ... 0 @2op
- VRHADD_U         111 1 1111 0 . .. ... 0 ... 0 0001 . 1 . 0 ... 0 @2op
- 
-+VADC             1110 1110 0 . 11 ... 0 ... . 1111 . 0 . 0 ... 0 @vadc
-+VSBC             1111 1110 0 . 11 ... 0 ... . 1111 . 0 . 0 ... 0 @vadc
-+
- # Vector miscellaneous
- 
- VCLS             1111 1111 1 . 11 .. 00 ... 0 0100 01 . 0 ... 0 @1op
+ # Predicate operations
+ %mask_22_13      22:1 13:3
 diff --git a/target/arm/mve_helper.c b/target/arm/mve_helper.c
-index c9434479604..e07f12c8389 100644
+index 3477d2bb191..191eb3f58aa 100644
 --- a/target/arm/mve_helper.c
 +++ b/target/arm/mve_helper.c
-@@ -580,6 +580,36 @@ DO_2OP_U(vrshlu, DO_VRSHLU)
- DO_2OP_S(vrhadds, DO_RHADD_S)
- DO_2OP_U(vrhaddu, DO_RHADD_U)
+@@ -1317,3 +1317,27 @@ DO_LDAVH(vrmlaldavhuw, 4, uint32_t, H4, false, int128_add, int128_add, int128_ma
  
-+#define DO_VADC(OP, INV)                                                \
-+    uint32_t HELPER(glue(mve_, OP))(CPUARMState *env, void *vd,         \
-+                                    void *vn, void *vm, uint32_t nzcv)  \
-+    {                                                                   \
-+        uint32_t *d = vd, *n = vn, *m = vm;                             \
-+        uint16_t mask = mve_element_mask(env);                          \
-+        unsigned e;                                                     \
-+        int carry = (nzcv & FPCR_C) ? 1 : 0;                            \
-+        /* If we do no additions at all the flags are preserved */      \
-+        bool updates_flags = (mask & 0x1111) != 0;                      \
-+        for (e = 0; e < 16 / 4; e++, mask >>= 4) {                      \
-+            uint64_t r = (uint64_t)n[H4(e)] + INV(m[H4(e)]) + carry;    \
-+            if (mask & 1) {                                             \
-+                carry = r >> 32;                                        \
-+            }                                                           \
-+            uint64_t bytemask = mask_to_bytemask4(mask);                \
-+            d[H4(e)] &= ~bytemask;                                      \
-+            d[H4(e)] |= (r & bytemask);                                 \
-+        }                                                               \
-+        mve_advance_vpt(env);                                           \
-+        if (updates_flags) {                                            \
-+            nzcv = carry ? FPCR_C : 0;                                  \
-+        }                                                               \
-+        return nzcv;                                                    \
-+    }
+ DO_LDAVH(vrmlsldavhsw, 4, int32_t, H4, false, int128_add, int128_sub, int128_makes64)
+ DO_LDAVH(vrmlsldavhxsw, 4, int32_t, H4, true, int128_add, int128_sub, int128_makes64)
 +
-+/* VSBC differs only in inverting op2 before the additiona */
-+DO_VADC(vadc, )
-+DO_VADC(vsbc, DO_NOT)
++/* Vector add across vector */
++#define DO_VADDV(OP, ESIZE, TYPE, H)                            \
++    uint32_t HELPER(glue(mve_, OP))(CPUARMState *env, void *vm, \
++                                    uint32_t ra)                \
++    {                                                           \
++        uint16_t mask = mve_element_mask(env);                  \
++        unsigned e;                                             \
++        TYPE *m = vm;                                           \
++        for (e = 0; e < 16 / ESIZE; e++, mask >>= ESIZE) {      \
++            if (mask & 1) {                                     \
++                ra += m[H(e)];                                  \
++            }                                                   \
++        }                                                       \
++        mve_advance_vpt(env);                                   \
++        return ra;                                              \
++    }                                                           \
 +
- static inline int32_t do_sat_bhw(int64_t val, int64_t min, int64_t max, bool *s)
- {
-     if (val > max) {
++DO_VADDV(vaddvsb, 1, uint8_t, H1)
++DO_VADDV(vaddvsh, 2, uint16_t, H2)
++DO_VADDV(vaddvsw, 4, uint32_t, H4)
++DO_VADDV(vaddvub, 1, uint8_t, H1)
++DO_VADDV(vaddvuh, 2, uint16_t, H2)
++DO_VADDV(vaddvuw, 4, uint32_t, H4)
 diff --git a/target/arm/translate-mve.c b/target/arm/translate-mve.c
-index 9a88583385f..2ed499a6de2 100644
+index b2020bd90b1..1794c50d0e8 100644
 --- a/target/arm/translate-mve.c
 +++ b/target/arm/translate-mve.c
-@@ -33,6 +33,7 @@ typedef void MVEGenOneOpFn(TCGv_ptr, TCGv_ptr, TCGv_ptr);
- typedef void MVEGenTwoOpFn(TCGv_ptr, TCGv_ptr, TCGv_ptr, TCGv_ptr);
+@@ -34,6 +34,7 @@ typedef void MVEGenTwoOpFn(TCGv_ptr, TCGv_ptr, TCGv_ptr, TCGv_ptr);
  typedef void MVEGenTwoOpScalarFn(TCGv_ptr, TCGv_ptr, TCGv_ptr, TCGv_i32);
  typedef void MVEGenDualAccOpFn(TCGv_i64, TCGv_ptr, TCGv_ptr, TCGv_ptr, TCGv_i64);
-+typedef void MVEGenADCFn(TCGv_i32, TCGv_ptr, TCGv_ptr, TCGv_ptr, TCGv_ptr, TCGv_i32);
+ typedef void MVEGenADCFn(TCGv_i32, TCGv_ptr, TCGv_ptr, TCGv_ptr, TCGv_ptr, TCGv_i32);
++typedef void MVEGenVADDVFn(TCGv_i32, TCGv_ptr, TCGv_ptr, TCGv_i32);
  
  /* Return the offset of a Qn register (same semantics as aa32_vfp_qreg()) */
  static inline long mve_qreg_offset(unsigned reg)
-@@ -737,3 +738,71 @@ static bool trans_VPST(DisasContext *s, arg_VPST *a)
-     }
-     return true;
+@@ -815,3 +816,50 @@ static bool trans_VSBC(DisasContext *s, arg_vadc *a)
+ {
+     return do_vadc(s, a, gen_helper_mve_vsbc, FPCR_C);
  }
 +
-+static bool do_vadc(DisasContext *s, arg_vadc *a, MVEGenADCFn fn,
-+                    uint32_t fixed_carry)
++static bool trans_VADDV(DisasContext *s, arg_VADDV *a)
 +{
-+    /*
-+     * VADC and VSBC: these perform an add-with-carry or subtract-with-carry
-+     * of the 32-bit elements in each lane of the input vectors, where the
-+     * carry-out of each add is the carry-in of the next.  The initial carry
-+     * input is either fixed (for the I variant: 0 for VADCI, 1 for VSBCI,
-+     * passed in as fixed_carry) or is from FPSCR.C; the carry out at the
-+     * end is written back to FPSCR.C.
-+     */
-+
-+    TCGv_ptr qd, qn, qm;
-+    TCGv_i32 nzcv, fpscr;
++    /* VADDV: vector add across vector */
++    MVEGenVADDVFn *fns[4][2] = {
++        { gen_helper_mve_vaddvsb, gen_helper_mve_vaddvub },
++        { gen_helper_mve_vaddvsh, gen_helper_mve_vaddvuh },
++        { gen_helper_mve_vaddvsw, gen_helper_mve_vaddvuw },
++        { NULL, NULL }
++    };
++    TCGv_ptr qm;
++    TCGv_i32 rda;
 +
 +    if (!dc_isar_feature(aa32_mve, s)) {
 +        return false;
 +    }
-+    if (a->qd > 7 || a->qn > 7 || a->qm > 7 || !fn) {
++    if (a->size == 3) {
 +        return false;
 +    }
 +    if (!mve_eci_check(s)) {
@@ -269,43 +236,25 @@ index 9a88583385f..2ed499a6de2 100644
 +    }
 +
 +    /*
-+     * This insn is subject to beat-wise execution.  Partial execution
-+     * of an I=1 (initial carry input fixed) insn which does not
-+     * execute the first beat must start with the current FPSCR.NZCV
-+     * value, not the fixed constant input.
++     * This insn is subject to beat-wise execution. Partial execution
++     * of an A=0 (no-accumulate) insn which does not execute the first
++     * beat must start with the current value of Rda, not zero.
 +     */
-+    if (a->i && !mve_skip_first_beat(s)) {
-+        /* Carry input is 0 (VADCI) or 1 (VSBCI), NZV zeroed */
-+        nzcv = tcg_const_i32(fixed_carry);
++    if (a->a || mve_skip_first_beat(s)) {
++        /* Accumulate input from Rda */
++        rda = load_reg(s, a->rda);
 +    } else {
-+        /* Carry input from existing NZCV flag values */
-+        nzcv = load_cpu_field(vfp.xregs[ARM_VFP_FPSCR]);
-+        tcg_gen_andi_i32(nzcv, nzcv, FPCR_NZCV_MASK);
++        /* Accumulate starting at zero */
++        rda = tcg_const_i32(0);
 +    }
-+    qd = mve_qreg_ptr(a->qd);
-+    qn = mve_qreg_ptr(a->qn);
++
 +    qm = mve_qreg_ptr(a->qm);
-+    fn(nzcv, cpu_env, qd, qn, qm, nzcv);
-+    fpscr = load_cpu_field(vfp.xregs[ARM_VFP_FPSCR]);
-+    tcg_gen_andi_i32(fpscr, fpscr, ~FPCR_NZCV_MASK);
-+    tcg_gen_or_i32(fpscr, fpscr, nzcv);
-+    store_cpu_field(fpscr, vfp.xregs[ARM_VFP_FPSCR]);
-+    tcg_temp_free_i32(nzcv);
-+    tcg_temp_free_ptr(qd);
-+    tcg_temp_free_ptr(qn);
++    fns[a->size][a->u](rda, cpu_env, qm, rda);
++    store_reg(s, a->rda, rda);
 +    tcg_temp_free_ptr(qm);
++
 +    mve_update_eci(s);
 +    return true;
-+}
-+
-+static bool trans_VADC(DisasContext *s, arg_vadc *a)
-+{
-+    return do_vadc(s, a, gen_helper_mve_vadc, 0);
-+}
-+
-+static bool trans_VSBC(DisasContext *s, arg_vadc *a)
-+{
-+    return do_vadc(s, a, gen_helper_mve_vsbc, FPCR_C);
 +}
 -- 
 2.20.1

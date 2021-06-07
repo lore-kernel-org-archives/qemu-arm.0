@@ -1,137 +1,179 @@
-Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp2904862lfa;
-        Sun, 6 Jun 2021 11:48:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxCmmzcL16n4/+sUmkPJrLwaluDlEJU8GPhwlNHOv2uuyRMnE/huia7u8tk5YkPUqC65EpZ
-X-Received: by 2002:a25:b009:: with SMTP id q9mr18900470ybf.506.1623005288376;
-        Sun, 06 Jun 2021 11:48:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623005288; cv=none;
+Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp3487633lfa;
+        Mon, 7 Jun 2021 06:22:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxUYmGu5M/ie4yXY+vzD/FGA4p/VXCD9vssKbvADnVpyR7US7Cvr55FVoWDEoQ8f/6tfcvt
+X-Received: by 2002:aa7:d8d9:: with SMTP id k25mr19767117eds.377.1623072125743;
+        Mon, 07 Jun 2021 06:22:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623072125; cv=none;
         d=google.com; s=arc-20160816;
-        b=dDBGVgQmY460UzulmUO/fLw1iMADiBQ29EJXguAMG/azOuOjpu8i7HeZANvd/ODsrp
-         f3wuW9wD+NWmSdfZY+1pNSYF7cIC/KE2TC5u3BZ7ArK5XO0G7Jkd/LW0sBn3SumCsenG
-         IaotD3FvuOFKSvuoNUQqjalcg+Xx6a2xCjx1/KNzLa/K1bF4KOy8Xl3hfs63bsazonoS
-         2NYJczzwR9kAb2D2/jpxIrfjGrDztYtBeD0dqJ+OaewJX/WuRAgK7AWLf0bbCA2Ixp/m
-         YFGEVT1NkmkOj2o9vwOHsSTwrs0tgnTNxO8/wIPAydqR2qRx8YfRS+PF0RwaMnO9QTvF
-         SLKA==
+        b=ckFEdAMQKHKFvIkASxp+qXANtXDrb75g3cHM8i6Gyn10RiC4bTsWdA4JqGIWACR91o
+         I7S5XYFpnKH2M7r0VX7VLmodGjaKP8OpVZDFWwoIKMxsG/a2Zh8+tPd9+M2aYc8iB/eM
+         vG2NPkZ4Tt0iUw+4W5BhRXlP2p7uGArhYBjb/EmFyN8ap1ae4DMQHXcLHH42P9gOS7Jo
+         mc9zXVuuuwGbAwROgDnqcbx9mk2Npkyz/3lhd7XvSLJg0duW3HNKv8Gup2/iP7hWxIuH
+         c1FvNBaQ61T7/0+XVkU+r8LENg3LbmoLeh3EjBCGgiZc0zTI9jknznftlzy2G92cm1uS
+         GxHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=KUBXWeV9EehxaFqMEfmBZl3sQBdMZ4TYWaQ5KkI9sgk=;
-        b=UGjvFsLAf9DExMt6Th6aiJr4/ZizIsSMpxtZaEAIhoWsGZHwfvD/F4+M78E3TZyqbF
-         d1ZuUsS8sRCpuYEPVnzb9v5UuX0BOiaQsjtAuHphMnL/CKqZFlsW7aOIv4YhatJeXItC
-         PW76CSPoQKhLwL5/EbrGSlAPDgH8vlms5tC4h4ujmlyf0MAovaG+jUVAIYWzHBfukTg9
-         NmIwLydy+tOHmNtvTBMxAqMKliDF1AbHBeIK2BPSr6zv1JxGn7LGPiajE44WQYAdfcLm
-         cPnYT0RhqqLHBFFTtWsnRQuIlE7rHqfTXVT3CxSspcbiTqlfpM3Vcm5EVQmWn9bpO0JJ
-         8T5g==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=ligBG8t7toEqlQ4LBakBBJBXAcIpfWM9FfVkfI+tJYQ=;
+        b=wcDpFAOmT67LAmFDGiCedoh6kDvBdg0HsbKdRUQkDvh6VFWBAGmqjpsnPuIbaAk3Gk
+         U1YavJK/UjnFN4jcXb45WDJQUPoxfA23QruoAk+S2/dGpYl4E6Zs8HoVrLoAepg/aARZ
+         H8G6eTEWmHLeFTop9OpvRdz4gOlCmMrGwvI/b4oOLLBQ9p6bU21w12pECR5CEm7PnofT
+         kZ+7sf4JxrIObnQoCnY3DZ7nG81dOC1J4CINA1zFrdVEMYQSvVXP3MIKWAqFC5BBEVjo
+         QY5e3KRIHJ9SULSOZkvxftf5CZF2MLU8PXkwRFv4gEPZmPBoh/49PEXu7Vez+NcC5GgT
+         G9WQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=OiDsJv4Y;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y3si11049889ybg.182.2021.06.06.11.48.08
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=G+uLkZrV;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id v13si13022675ejk.187.2021.06.07.06.22.05
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 06 Jun 2021 11:48:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 07 Jun 2021 06:22:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=OiDsJv4Y;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:35880 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lpxod-0007pq-NE
-	for alex.bennee@linaro.org; Sun, 06 Jun 2021 14:48:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58420)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lpxmr-0005PM-27; Sun, 06 Jun 2021 14:46:17 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330]:51870)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lpxmo-0003wV-IH; Sun, 06 Jun 2021 14:46:15 -0400
-Received: by mail-wm1-x330.google.com with SMTP id r13so8567866wmq.1;
- Sun, 06 Jun 2021 11:46:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=KUBXWeV9EehxaFqMEfmBZl3sQBdMZ4TYWaQ5KkI9sgk=;
- b=OiDsJv4YwsT36l7ee0qLZMFYy+mH7lkGlFVIbP+/p7Giw89g0IkAeWgWomQWZD2d7b
- c+fxn1GJ+6L6KglW157pL7iXeBS/A7LuXBT2KZ2/xgMHofHE6pl8YjXcsEaEC5Kau/ze
- v9K8PI973PeiVGrLD+IzBvTWPWgi4+EeiYCoa7LGh+s7QdCsj3ULQhbTzBJkPUl8+2V9
- HbYDZjeQu4j2lzOcnlkPnJHmDalsmU9+7rK7XR55uL9G5fWJXNoQZtpcH2WhW2TbXvwd
- Ip/+P07xWh5f6oSLnk784pZKo8ApSrVbtU+DHQ9fM9nmxX87Ak2KRvZnOtfXv/WbiZ9e
- vqcA==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=G+uLkZrV;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1623072124;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=ligBG8t7toEqlQ4LBakBBJBXAcIpfWM9FfVkfI+tJYQ=;
+	b=G+uLkZrVhLDKU9PX6Y59q3zr2OB15yZG68g8NuPHyutWAPZDlPxrw37Np9EGshNsDGQOp4
+	rwfEXGkYmqN4MwPO+7ZFaPZ2WfJz6yZKCP4tDYvuFWDD/oxmpfZYAU2V59cRiNIsrvjgsG
+	fryDMnATF+HadiUWmL57S9NPSiv1X4c=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-342-21KpknUiOTKi_AWLUv-Y5w-1; Mon, 07 Jun 2021 09:22:03 -0400
+X-MC-Unique: 21KpknUiOTKi_AWLUv-Y5w-1
+Received: by mail-wr1-f70.google.com with SMTP id z13-20020adfec8d0000b0290114cc6b21c4so7801660wrn.22
+        for <alex.bennee@linaro.org>; Mon, 07 Jun 2021 06:22:03 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=KUBXWeV9EehxaFqMEfmBZl3sQBdMZ4TYWaQ5KkI9sgk=;
- b=J3VaMJWqGanpy5io+dmHqvNgjH4zo+61RfnttHQEqyInn66viSmyM1b4vbGbhVzHLz
- yvfXG6qr9caG2gop6b9tqg+QGTTBSxCEvdfRUFZ8y6DoAtsIBUYDG6LWwMBplLMpbZVh
- E7EFZnsdoAblmjYhiF3NHM2BmNzJb7dlxOi2oYeb72WDuBLMQdEroLBDK2vkFcShahch
- q+5lLP1C3JddOoRvwxIQAD8eBXsL891vxSvI7pydbDOBoyyKPkd+BY7mWeIICuWAdMKI
- sM4ApwjRU3rqGaalV0W6MfN7cI8kZyDv84iP3YLajyGGEx2+iRWkmfQsYT5PmlDoNqh+
- ArJw==
-X-Gm-Message-State: AOAM532B0WkpuX2kz9ov3h4oPEAPTY3cFmtXNQmRbBzZKxynJKxBiBXn
- 5Cd4gIFqzudi8FuFhUNiQX/lUtHQCo1Jig==
-X-Received: by 2002:a1c:1bd8:: with SMTP id b207mr13014600wmb.80.1623005171690; 
- Sun, 06 Jun 2021 11:46:11 -0700 (PDT)
-Received: from [192.168.1.36] (235.red-83-57-168.dynamicip.rima-tde.net.
- [83.57.168.235])
- by smtp.gmail.com with ESMTPSA id l9sm11597643wme.21.2021.06.06.11.46.10
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 06 Jun 2021 11:46:10 -0700 (PDT)
-Subject: Re: [PATCH 2/3] target/arm: Remove fprintf from disas_simd_mod_imm
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-References: <20210604183506.916654-1-richard.henderson@linaro.org>
- <20210604183506.916654-3-richard.henderson@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <8111e43a-73af-b78b-9d0a-73779c1649ab@amsat.org>
-Date: Sun, 6 Jun 2021 20:46:10 +0200
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=ligBG8t7toEqlQ4LBakBBJBXAcIpfWM9FfVkfI+tJYQ=;
+        b=HT+LkRdGnT0IgicfdyNf7uCGTyqfv5rOgvTjESYXisQWrbjUXrWZLwSGFuiNQ+qhj5
+         8gUeZtyFIy1QE3GiyWdU43wh7McNQphqSCcA1uyKXftHsIoXDVdXPCjPeFSYoMHdcdFJ
+         8aUOowG+Juje7n5j7fGzqkuF39Lu9pmzKdLscBP9tEUO4kss67BmkkyUn09tvczgHFdo
+         gvKgHCC8+u91tbB5FSdspp7tYPgxeJ/BRVeMyRnIKqV4JWAVzCy3QUcR7RTr6BFMmD00
+         SLKJbCI39DNqA9I4H9jBon1ryAP3M7BVD0yQl0wyCaRkU1VBILhWxlm17BMKdbpjJLJO
+         PXbA==
+X-Gm-Message-State: AOAM532PQAaiMsr0MOfTGCy0twg8Vgzv3PoABLLeVVBZPzM31I5NnND/
+	mntU3PfGztuV0wFPK7u/jQrS6VQ+K8EBAFgFgQJxWyDaNesbcyN3Wtp62oJo4BqJVAS4QZBYs/O
+	fSKSifc//5dnC/97R
+X-Received: by 2002:adf:fa48:: with SMTP id y8mr11350856wrr.387.1623072122546;
+        Mon, 07 Jun 2021 06:22:02 -0700 (PDT)
+X-Received: by 2002:adf:fa48:: with SMTP id y8mr11350848wrr.387.1623072122415;
+        Mon, 07 Jun 2021 06:22:02 -0700 (PDT)
+Return-Path: <thuth@redhat.com>
+Received: from thuth.remote.csb (pd957536e.dip0.t-ipconnect.de. [217.87.83.110])
+        by smtp.gmail.com with ESMTPSA id p6sm16412674wrf.51.2021.06.07.06.22.01
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 07 Jun 2021 06:22:01 -0700 (PDT)
+Subject: Re: [PATCH v16 04/99] qtest/arm-cpu-features: Use generic
+ qtest_has_accel() to check for KVM
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <philmd@redhat.com>
+Cc: qemu-arm@nongnu.org, Claudio Fontana <cfontana@suse.de>,
+ Andrew Jones <drjones@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+References: <20210604155312.15902-1-alex.bennee@linaro.org>
+ <20210604155312.15902-5-alex.bennee@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <d5162188-bea4-24ed-189b-198f9d3ed55d@redhat.com>
+Date: Mon, 7 Jun 2021 15:22:00 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ Thunderbird/78.10.0
 MIME-Version: 1.0
-In-Reply-To: <20210604183506.916654-3-richard.henderson@linaro.org>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <20210604155312.15902-5-alex.bennee@linaro.org>
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x330.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2tQ+zmm+lkJl
+X-TUID: BBQO6rX/Fnxb
 
-On 6/4/21 8:35 PM, Richard Henderson wrote:
-> The default of this switch is truly unreachable.
-> The switch selector is 3 bits, and all 8 cases are present.
+On 04/06/2021 17.51, Alex Bennée wrote:
+> From: Philippe Mathieu-Daudé <philmd@redhat.com>
 > 
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> Use the recently added generic qtest_has_accel() method to
+> check if KVM is available.
+> 
+> Suggested-by: Claudio Fontana <cfontana@suse.de>
+> Reviewed-by: Andrew Jones <drjones@redhat.com>
+> Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Message-Id: <20210505125806.1263441-5-philmd@redhat.com>
 > ---
->  target/arm/translate-a64.c | 1 -
->  1 file changed, 1 deletion(-)
+>   tests/qtest/arm-cpu-features.c | 25 +------------------------
+>   1 file changed, 1 insertion(+), 24 deletions(-)
+> 
+> diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
+> index 8252b85bb8..7f4b252127 100644
+> --- a/tests/qtest/arm-cpu-features.c
+> +++ b/tests/qtest/arm-cpu-features.c
+> @@ -26,21 +26,6 @@
+>                       "  'arguments': { 'type': 'full', "
+>   #define QUERY_TAIL  "}}"
+>   
+> -static bool kvm_enabled(QTestState *qts)
+> -{
+> -    QDict *resp, *qdict;
+> -    bool enabled;
+> -
+> -    resp = qtest_qmp(qts, "{ 'execute': 'query-kvm' }");
+> -    g_assert(qdict_haskey(resp, "return"));
+> -    qdict = qdict_get_qdict(resp, "return");
+> -    g_assert(qdict_haskey(qdict, "enabled"));
+> -    enabled = qdict_get_bool(qdict, "enabled");
+> -    qobject_unref(resp);
+> -
+> -    return enabled;
+> -}
+> -
+>   static QDict *do_query_no_props(QTestState *qts, const char *cpu_type)
+>   {
+>       return qtest_qmp(qts, QUERY_HEAD "'model': { 'name': %s }"
+> @@ -493,14 +478,6 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
+>   
+>       qts = qtest_init(MACHINE_KVM "-cpu max");
+>   
+> -    /*
+> -     * These tests target the 'host' CPU type, so KVM must be enabled.
+> -     */
+> -    if (!kvm_enabled(qts)) {
+> -        qtest_quit(qts);
+> -        return;
+> -    }
+> -
+>       /* Enabling and disabling kvm-no-adjvtime should always work. */
+>       assert_has_feature_disabled(qts, "host", "kvm-no-adjvtime");
+>       assert_set_feature(qts, "host", "kvm-no-adjvtime", true);
+> @@ -624,7 +601,7 @@ int main(int argc, char **argv)
+>        * order avoid attempting to run an AArch32 QEMU with KVM on
+>        * AArch64 hosts. That won't work and isn't easy to detect.
+>        */
+> -    if (g_str_equal(qtest_get_arch(), "aarch64")) {
+> +    if (g_str_equal(qtest_get_arch(), "aarch64") && qtest_has_accel("kvm")) {
+>           qtest_add_data_func("/arm/kvm/query-cpu-model-expansion",
+>                               NULL, test_query_cpu_model_expansion_kvm);
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+I think this is wrong: query-kvm checks whether kvm is *enabled*, while your 
+new function only checks whether kvm has been built into the binary. There 
+is still the possibility that kvm has been built into the binary, but is not 
+available on the host, so in that case the test will fail now.
+
+Thus please drop / rework this patch.
+
+  Thomas

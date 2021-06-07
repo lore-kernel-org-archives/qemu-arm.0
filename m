@@ -1,111 +1,110 @@
-Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp3681253lfa;
-        Mon, 7 Jun 2021 10:07:33 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJycQdxmstRMBQKL+/cHJ0FM1EYPnpkH0BZWJhFTbzdzo9FKU/Zfieth0FQaPV9TJwTkVobK
-X-Received: by 2002:a5d:68ca:: with SMTP id p10mr17905570wrw.65.1623085653070;
-        Mon, 07 Jun 2021 10:07:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623085653; cv=none;
+Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp3681288lfa;
+        Mon, 7 Jun 2021 10:07:34 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwOTsLZ5hCtoFo3Z6IWdCtzVOu4lFUDASWn/Ap4kOoz9GA5RqOf8esAJzL5N+dlKaAH64hS
+X-Received: by 2002:a05:600c:1d1a:: with SMTP id l26mr11045576wms.189.1623085654781;
+        Mon, 07 Jun 2021 10:07:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623085654; cv=none;
         d=google.com; s=arc-20160816;
-        b=Cl/A9icoFtBKb/hPSf22mY/LMb5+tUbnIwNvPEhYWYnAbFsurDjhoar263i8Semknq
-         fZPOmiFzQPJJSFYviFbfEA8Odza3hgAgdso28FgHmv5FZPRZDrZPom3hIB7Jn78KhQsd
-         ym1ec63owTkvquiot+Oo0yY+mOv4XLTrEabpPLmtRzcgjsylnXE+n4otbf8sCP6MK7De
-         v/4S/tDuzuVCnigFgmIWsz9nL/4P1lCC2ZYEaJ+glm/6DLnKFX/NCZbJK+av7J7odkIz
-         p2rBZV0wk5EvNhVEbSrSjRZYx9r95g5f9nbmd8xlO2guLdqfo7+84OlflkMZm5od3Wt0
-         L90w==
+        b=y+am3XyoN+B2p4XLvetrEchIz4mfVPmPcavJFxnz84UvWB/vE9/XMPeN3/GMlZfvGs
+         Nxx/nBSW8yGScMBEfNX+min/91PhfRETOY3SdG6dhSWSJHORYKKdjh9hLq/LwLe3Rg0M
+         cs/fyS/VTXR4AIs0Y87tsPfc7JHqlD/3cQcSeAKkikHblVbl0s/NRQBDYhZiYJ9fXuTn
+         l424dx4IeI0pftFZehPmZ40bnQvVK1VW2ikgtEFmFMS60HZHCtSiDT5o2Q0ZPv5T7cBY
+         Js5BYXO7VVyN23yc2qYT1i/DrQ07+aN54qcnd24D5akLBldaD8EGI3yjSab8LdLBeJUB
+         7pVg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=x6vOOVgQ4YobSFgYhZ+zoWMkCw7inNQqjouGvEkHSxI=;
-        b=TdFotsuWyQfZf8tdn3XE/1zqSAps2AVy559FNFRk660+fos80tL7ywJiBC8gVi3x4Y
-         3jTHa1y8NgWV5s4LsVg8lCU/W/pNpazc+SZnznG94KoGw7E6z5OcjFBAfHqarQBKZl6J
-         RNVtWDhfXOuQgCj9z4TpQJiKnCw4dKFacfrFr4iqg/1dWK2xVq7dNXwxEp9/Fg2zReUH
-         wUq5Eeo1y61NEb6D+rm9asdvn9xddMt/j4LTQBbkqo1zuc9Vke+21fmhfruhFwhicV4/
-         qFLjzH0mBsAh140sdi1kN4z4NZAOaKSyXGig4Rjd33Z0TBNndkWILpxEuZv5Fo666ANd
-         SulQ==
+        bh=LKqmv0MgdApn4ZHvXGc8SemnH+SSJM42zZ7JcZtsFWE=;
+        b=ZUs+vvq3M6FZ94hnk/oNZXUuznoS+ToA4cV6xNKzkW9FbES4/ZifhvmVZbbRZ9N7+i
+         PZl4Wr52IzkGpWpmkmhQZ43xC14By98vY0ijScHX0N1naEbfz9e1Y41qqCKriV1ZX0oy
+         muQ2ItIPxesABV5QpFxulIXEtuYcg9ySsGiIIJwbtCwqX9vJlD7xg7HDA6/UG1mKpWjl
+         0NPmWqz94lQmwLceWhZNomdkjR6irHAAIN0WQLl1CAWqrWfQrof75iLvztYbJG5e6UaU
+         KuO7rd+CzGwYEPsaYxvcjc/k7458u/9rL3cldBHP63dPkO6K7cOazfHJtsuej2B5F5v6
+         mSPg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VMuAZtmF;
+       dkim=pass header.i=@linaro.org header.s=google header.b=wyI18BeC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e14si8958239wrq.347.2021.06.07.10.07.32
+        by mx.google.com with ESMTPS id l5si9978293wrr.539.2021.06.07.10.07.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 07 Jun 2021 10:07:33 -0700 (PDT)
+        Mon, 07 Jun 2021 10:07:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VMuAZtmF;
+       dkim=pass header.i=@linaro.org header.s=google header.b=wyI18BeC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57602 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57772 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lqIiq-0004Np-3T
-	for alex.bennee@linaro.org; Mon, 07 Jun 2021 13:07:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59352)
+	id 1lqIir-0004UR-PQ
+	for alex.bennee@linaro.org; Mon, 07 Jun 2021 13:07:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59164)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lqIaS-0007UZ-45
- for qemu-arm@nongnu.org; Mon, 07 Jun 2021 12:58:54 -0400
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333]:41619)
+ id 1lqIaD-0007Ko-E4
+ for qemu-arm@nongnu.org; Mon, 07 Jun 2021 12:58:37 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b]:37884)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lqIaC-0007vw-4D
- for qemu-arm@nongnu.org; Mon, 07 Jun 2021 12:58:49 -0400
-Received: by mail-wm1-x333.google.com with SMTP id
- l11-20020a05600c4f0bb029017a7cd488f5so81700wmq.0
- for <qemu-arm@nongnu.org>; Mon, 07 Jun 2021 09:58:35 -0700 (PDT)
+ id 1lqIa8-0007tu-Qe
+ for qemu-arm@nongnu.org; Mon, 07 Jun 2021 12:58:37 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id
+ f16-20020a05600c1550b02901b00c1be4abso124025wmg.2
+ for <qemu-arm@nongnu.org>; Mon, 07 Jun 2021 09:58:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=x6vOOVgQ4YobSFgYhZ+zoWMkCw7inNQqjouGvEkHSxI=;
- b=VMuAZtmFkhWwpS6dVETPt7Cv9/QYAdyCJuF87+E3Mlnl+2rUx5ZyKiljsTqiAeQ0Ym
- CtM8IuSOWCtyMlAYtbcrlHppYmuEOE8rrEpGXgd4p7PHUSQQ1n1jKANpYzg26yBnvz14
- rTj2h5zDcDrlY7BL2tTafbZuvvfxEoUrrtox+CaLUWbHq9npsydAHb9piONnlUYWzklb
- ZV9/VctCzq3u5YVXKgA63AU6Gdmj8D2uZ28kXMxv5bIzKQ1SIwlrAoxOMFiFraz2U4vJ
- fh7QoU2F8SnUieOaxmffHFkfN/gMclNmc3vhu6i1h9b2weNsd59jbztHUYpeybvf0OVg
- vWng==
+ bh=LKqmv0MgdApn4ZHvXGc8SemnH+SSJM42zZ7JcZtsFWE=;
+ b=wyI18BeCVmi4d8sDs/M8rseTGlKY94y+I3Rs2pH3w5XuEiCx/U5PCxz02Q2qpWqhBE
+ iOnei8ZsNB0RFuu3Vvq1dkPvgbhb7zAbet5PEXr0vERNpqI1KhaoQ/nxBjIhQxIZ0YZI
+ Nbr6lGfCC6GAc9EARBKeqgNcgzJc3udY1KAQhzacbfai+rtObcxTgrBxBvDPdzWVlmO6
+ wnfucW4Nh6CBgwkoxppoTVB2ZyqiiDbYBPjhmgdVbS+O3KLfcwK9zh39HEHKqmw8k1V/
+ eOUlxQBup1No6MTFHB4N6hTWrIp/JO541cPe9UussKXF/3EVg6ICc6Iu63xog7R43uDZ
+ cQnA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=x6vOOVgQ4YobSFgYhZ+zoWMkCw7inNQqjouGvEkHSxI=;
- b=ncc5Ct5kHQyvLfFTfz3oJJ/dTDM1smIgxz1yzUF2redxPgMSdeRDJgriJQG0GEvvuf
- hsShHZpEq3JrthYWwlN1gE88fYDX8uEjMrjbhL8KLVIJoUWf1AvmS1P1dY0qNOp3fPl+
- PIO1FXz9osFD2IxJGvUkQQ8MXSoSILm+SgRbjlZ3icQtLTPpU3P10/crN306dkGjXqo7
- fxbZfiQbzCEITb1wRf+/Cx0yBw6biDjjRgZPbI2553WnXP2t4mdOY+7Jfc61/usjdqm6
- UWPGcrdN8isXIlXUqIA/1+Gu+0rvvUvQ5ePg4XRTGVupokd+XewSJhWbsq8DTaNPXqQF
- V6+g==
-X-Gm-Message-State: AOAM530nTZ86T8+lcr0nvRjvDEot465n5HeSQYASwSU9Xv4fbO2P4uCQ
- GCfLYDRZOT9X6vNfdoc/8bm6FWBfFL6054bm
-X-Received: by 2002:a05:600c:19d1:: with SMTP id
- u17mr68719wmq.31.1623085114773; 
- Mon, 07 Jun 2021 09:58:34 -0700 (PDT)
+ bh=LKqmv0MgdApn4ZHvXGc8SemnH+SSJM42zZ7JcZtsFWE=;
+ b=Waqubefqbqqp5YX9goNS/I0MxFMoDcNIRiW5hR62VPoB9j0E2DvZfmYBL707XK2R4G
+ LRBbxsF68331CI8XjSWe5zLWT+Nn0ZI4GSHZo22AAvTiGoZjHobLTKowXH1tcF7xsV5f
+ jbkZMFfI3HxwAmLKLntkeYYQMXjmjuH+IJY4UQWKw6vuLQjRSyHz/ukbEr+V43tCQz8y
+ 4vxtaEA7plOyvCNRGtWAC9Q53Wxvp6/mWv2KM2ZJx4bWQJTcFtm4ywnVccdmXvhwr+wU
+ Gvf+EfdyzFDoZDMxpYjMkdX4ZBIRtqBi8Ta39VSBlKEPFnmNxVxZjYgP9s4sVSrx5/oh
+ v2Lg==
+X-Gm-Message-State: AOAM530oa0jTQI5i1zafui0FCbjMG4uOUnpuQsIX0/2j9odV9gfkbZdq
+ vPi6pdYcOFPq6/6uSB+4wT5jPa2NpYRUh3aX
+X-Received: by 2002:a1c:e907:: with SMTP id q7mr70588wmc.1.1623085111449;
+ Mon, 07 Jun 2021 09:58:31 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id n10sm18891677wre.95.2021.06.07.09.58.34
+ by smtp.gmail.com with ESMTPSA id n10sm18891677wre.95.2021.06.07.09.58.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 07 Jun 2021 09:58:34 -0700 (PDT)
+ Mon, 07 Jun 2021 09:58:31 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 13/55] target/arm: Implement MVE VCLZ
-Date: Mon,  7 Jun 2021 17:57:39 +0100
-Message-Id: <20210607165821.9892-14-peter.maydell@linaro.org>
+Subject: [PATCH 09/55] target/arm: Implement MVE LETP insn
+Date: Mon,  7 Jun 2021 17:57:35 +0100
+Message-Id: <20210607165821.9892-10-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210607165821.9892-1-peter.maydell@linaro.org>
 References: <20210607165821.9892-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x333.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -121,180 +120,166 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Richard Henderson <richard.henderson@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AleKQGwvZkAO
+X-TUID: Rry3scEBe7ge
 
-Implement the MVE VCLZ insn (and the necessary machinery
-for MVE 1-input vector ops).
+Implement the MVE LETP insn.  This is like the existing LE loop-end
+insn, but it must perform an FPU-enabled check, and on loop-exit it
+resets LTPSIZE to 4.
 
-Note that for non-load instructions predication is always performed
-at a byte level granularity regardless of element size (R_ZLSJ),
-and so the masking logic here differs from that used in the VLDR
-and VSTR helpers.
+To accommodate the requirement to do something on loop-exit, we drop
+the use of condlabel and instead manage both the TB exits manually,
+in the same way we already do in trans_WLS().
+
+The other MVE-specific change to the LE insn is that we must raise an
+INVSTATE UsageFault insn if LTPSIZE is not 4.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/helper-mve.h    |  4 ++++
- target/arm/mve.decode      |  8 +++++++
- target/arm/mve_helper.c    | 48 ++++++++++++++++++++++++++++++++++++++
- target/arm/translate-mve.c | 43 ++++++++++++++++++++++++++++++++++
- 4 files changed, 103 insertions(+)
+This amounts to a complete rewrite of trans_LE()...
+---
+ target/arm/t32.decode  |   2 +-
+ target/arm/translate.c | 104 +++++++++++++++++++++++++++++++++++++----
+ 2 files changed, 97 insertions(+), 9 deletions(-)
 
-diff --git a/target/arm/helper-mve.h b/target/arm/helper-mve.h
-index e47d4164ae7..c5c1315b161 100644
---- a/target/arm/helper-mve.h
-+++ b/target/arm/helper-mve.h
-@@ -32,3 +32,7 @@ DEF_HELPER_FLAGS_3(mve_vldrh_uw, TCG_CALL_NO_WG, void, env, ptr, i32)
- DEF_HELPER_FLAGS_3(mve_vstrb_h, TCG_CALL_NO_WG, void, env, ptr, i32)
- DEF_HELPER_FLAGS_3(mve_vstrb_w, TCG_CALL_NO_WG, void, env, ptr, i32)
- DEF_HELPER_FLAGS_3(mve_vstrh_w, TCG_CALL_NO_WG, void, env, ptr, i32)
-+
-+DEF_HELPER_FLAGS_3(mve_vclzb, TCG_CALL_NO_WG, void, env, ptr, ptr)
-+DEF_HELPER_FLAGS_3(mve_vclzh, TCG_CALL_NO_WG, void, env, ptr, ptr)
-+DEF_HELPER_FLAGS_3(mve_vclzw, TCG_CALL_NO_WG, void, env, ptr, ptr)
-diff --git a/target/arm/mve.decode b/target/arm/mve.decode
-index 3bc5f034531..24999bf703e 100644
---- a/target/arm/mve.decode
-+++ b/target/arm/mve.decode
-@@ -20,13 +20,17 @@
- #
+diff --git a/target/arm/t32.decode b/target/arm/t32.decode
+index 8e1ca7d64a9..4115e08ce99 100644
+--- a/target/arm/t32.decode
++++ b/target/arm/t32.decode
+@@ -676,7 +676,7 @@ BL               1111 0. .......... 11.1 ............         @branch24
+     {
+       # This is WLSTP
+       WLS        1111 0 0000 0 size:2 rn:4 1100 . .......... 1 imm=%lob_imm
+-      LE         1111 0 0000 0 f:1 0 1111 1100 . .......... 1 imm=%lob_imm
++      LE         1111 0 0000 0 f:1 tp:1 1111 1100 . .......... 1 imm=%lob_imm
+     }
+     {
+       # This is DLSTP
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index 976c665be9c..6d70c89961a 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -8223,25 +8223,113 @@ static bool trans_LE(DisasContext *s, arg_LE *a)
+      * any faster.
+      */
+     TCGv_i32 tmp;
++    TCGLabel *loopend;
++    bool fpu_active;
  
- %qd 22:1 13:3
-+%qm 5:1 1:3
- 
- &vldr_vstr rn qd imm p a w size l u
-+&1op qd qm size
- 
- @vldr_vstr ....... . . . . l:1 rn:4 ... ...... imm:7 &vldr_vstr qd=%qd u=0
- # Note that both Rn and Qd are 3 bits only (no D bit)
- @vldst_wn ... u:1 ... . . . . l:1 . rn:3 qd:3 . ... .. imm:7 &vldr_vstr
- 
-+@1op .... .... .... size:2 .. .... .... .... .... &1op qd=%qd qm=%qm
-+
- # Vector loads and stores
- 
- # Widening loads and narrowing stores:
-@@ -61,3 +65,7 @@ VLDR_VSTR        1110110 1 a:1 . w:1 . .... ... 111101 .......   @vldr_vstr \
-                  size=1 p=1
- VLDR_VSTR        1110110 1 a:1 . w:1 . .... ... 111110 .......   @vldr_vstr \
-                  size=2 p=1
-+
-+# Vector miscellaneous
-+
-+VCLZ             1111 1111 1 . 11 .. 00 ... 0 0100 11 . 0 ... 0 @1op
-diff --git a/target/arm/mve_helper.c b/target/arm/mve_helper.c
-index 6a2fc1c37cd..b7c44f57c09 100644
---- a/target/arm/mve_helper.c
-+++ b/target/arm/mve_helper.c
-@@ -196,3 +196,51 @@ DO_VSTR(vstrh_w, 4, stw, int32_t, H4)
- 
- #undef DO_VLDR
- #undef DO_VSTR
-+
-+/*
-+ * Take the bottom bits of mask (which is 1 bit per lane) and
-+ * convert to a mask which has 1s in each byte which is predicated.
-+ */
-+static uint8_t mask_to_bytemask1(uint16_t mask)
-+{
-+    return (mask & 1) ? 0xff : 0;
-+}
-+
-+static uint16_t mask_to_bytemask2(uint16_t mask)
-+{
-+    static const uint16_t masks[] = { 0x0000, 0x00ff, 0xff00, 0xffff };
-+    return masks[mask & 3];
-+}
-+
-+static uint32_t mask_to_bytemask4(uint16_t mask)
-+{
-+    static const uint32_t masks[] = {
-+        0x00000000, 0x000000ff, 0x0000ff00, 0x0000ffff,
-+        0x00ff0000, 0x00ff00ff, 0x00ffff00, 0x00ffffff,
-+        0xff000000, 0xff0000ff, 0xff00ff00, 0xff00ffff,
-+        0xffff0000, 0xffff00ff, 0xffffff00, 0xffffffff,
-+    };
-+    return masks[mask & 0xf];
-+}
-+
-+#define DO_1OP(OP, ESIZE, TYPE, H, FN)                                  \
-+    void HELPER(mve_##OP)(CPUARMState *env, void *vd, void *vm)         \
-+    {                                                                   \
-+        TYPE *d = vd, *m = vm;                                          \
-+        uint16_t mask = mve_element_mask(env);                          \
-+        unsigned e;                                                     \
-+        for (e = 0; e < 16 / ESIZE; e++, mask >>= ESIZE) {              \
-+            TYPE r = FN(m[H(e)]);                                       \
-+            uint64_t bytemask = mask_to_bytemask##ESIZE(mask);          \
-+            d[H(e)] &= ~bytemask;                                       \
-+            d[H(e)] |= (r & bytemask);                                  \
-+        }                                                               \
-+        mve_advance_vpt(env);                                           \
-+    }
-+
-+#define DO_CLZ_B(N)   (clz32(N) - 24)
-+#define DO_CLZ_H(N)   (clz32(N) - 16)
-+
-+DO_1OP(vclzb, 1, uint8_t, H1, DO_CLZ_B)
-+DO_1OP(vclzh, 2, uint16_t, H2, DO_CLZ_H)
-+DO_1OP(vclzw, 4, uint32_t, H4, clz32)
-diff --git a/target/arm/translate-mve.c b/target/arm/translate-mve.c
-index 14206893d5f..6bbc2df35c1 100644
---- a/target/arm/translate-mve.c
-+++ b/target/arm/translate-mve.c
-@@ -29,6 +29,7 @@
- #include "decode-mve.c.inc"
- 
- typedef void MVEGenLdStFn(TCGv_ptr, TCGv_ptr, TCGv_i32);
-+typedef void MVEGenOneOpFn(TCGv_ptr, TCGv_ptr, TCGv_ptr);
- 
- /* Return the offset of a Qn register (same semantics as aa32_vfp_qreg()) */
- static inline long mve_qreg_offset(unsigned reg)
-@@ -167,3 +168,45 @@ static bool trans_VLDR_VSTR(DisasContext *s, arg_VLDR_VSTR *a)
- DO_VLDST_WIDE_NARROW(VLDSTB_H, vldrb_sh, vldrb_uh, vstrb_h)
- DO_VLDST_WIDE_NARROW(VLDSTB_W, vldrb_sw, vldrb_uw, vstrb_w)
- DO_VLDST_WIDE_NARROW(VLDSTH_W, vldrh_sw, vldrh_uw, vstrh_w)
-+
-+static bool do_1op(DisasContext *s, arg_1op *a, MVEGenOneOpFn fn)
-+{
-+    TCGv_ptr qd, qm;
-+
-+    if (!dc_isar_feature(aa32_mve, s)) {
+     if (!dc_isar_feature(aa32_lob, s)) {
+         return false;
+     }
++    if (a->f && a->tp) {
 +        return false;
 +    }
-+    if (a->qd > 7 || a->qm > 7 || !fn) {
++    if (s->condexec_mask) {
++        /*
++         * LE in an IT block is CONSTRAINED UNPREDICTABLE;
++         * we choose to UNDEF, because otherwise our use of
++         * gen_goto_tb(1) would clash with the use of TB exit 1
++         * in the dc->condjmp condition-failed codepath in
++         * arm_tr_tb_stop() and we'd get an assertion.
++         */
 +        return false;
 +    }
++    if (a->tp) {
++        /* LETP */
++        if (!dc_isar_feature(aa32_mve, s)) {
++            return false;
++        }
++        if (!vfp_access_check(s)) {
++            s->eci_handled = true;
++            return true;
++        }
++    }
+ 
+     /* LE/LETP is OK with ECI set and leaves it untouched */
+     s->eci_handled = true;
+ 
+-    if (!a->f) {
+-        /* Not loop-forever. If LR <= 1 this is the last loop: do nothing. */
+-        arm_gen_condlabel(s);
+-        tcg_gen_brcondi_i32(TCG_COND_LEU, cpu_R[14], 1, s->condlabel);
+-        /* Decrement LR */
+-        tmp = load_reg(s, 14);
+-        tcg_gen_addi_i32(tmp, tmp, -1);
+-        store_reg(s, 14, tmp);
++    /*
++     * With MVE, LTPSIZE might not be 4, and we must emit an INVSTATE
++     * UsageFault exception for the LE insn in that case. Note that we
++     * are not directly checking FPSCR.LTPSIZE but instead check the
++     * pseudocode LTPSIZE() function, which returns 4 if the FPU is
++     * not currently active (ie ActiveFPState() returns false). We
++     * can identify not-active purely from our TB state flags, as the
++     * FPU is active only if:
++     *  the FPU is enabled
++     *  AND lazy state preservation is not active
++     *  AND we do not need a new fp context (this is the ASPEN/FPCA check)
++     *
++     * Usually we don't need to care about this distinction between
++     * LTPSIZE and FPSCR.LTPSIZE, because the code in vfp_access_check()
++     * will either take an exception or clear the conditions that make
++     * the FPU not active. But LE is an unusual case of a non-FP insn
++     * that looks at LTPSIZE.
++     */
++    fpu_active = !s->fp_excp_el && !s->v7m_lspact && !s->v7m_new_fp_ctxt_needed;
 +
-+    if (!mve_eci_check(s)) {
++    if (!a->tp && dc_isar_feature(aa32_mve, s) && fpu_active) {
++        /* Need to do a runtime check for LTPSIZE != 4 */
++        TCGLabel *skipexc = gen_new_label();
++        tmp = load_cpu_field(v7m.ltpsize);
++        tcg_gen_brcondi_i32(TCG_COND_EQ, tmp, 4, skipexc);
++        tcg_temp_free_i32(tmp);
++        gen_exception_insn(s, s->pc_curr, EXCP_INVSTATE, syn_uncategorized(),
++                           default_exception_el(s));
++        gen_set_label(skipexc);
++    }
++
++    if (a->f) {
++        /* Loop-forever: just jump back to the loop start */
++        gen_jmp(s, read_pc(s) - a->imm);
 +        return true;
 +    }
 +
-+    if (!vfp_access_check(s)) {
-+        return true;
++    /*
++     * Not loop-forever. If LR <= loop-decrement-value this is the last loop.
++     * For LE, we know at this point that LTPSIZE must be 4 and the
++     * loop decrement value is 1. For LETP we need to calculate the decrement
++     * value from LTPSIZE.
++     */
++    loopend = gen_new_label();
++    if (!a->tp) {
++        tcg_gen_brcondi_i32(TCG_COND_LEU, cpu_R[14], 1, loopend);
++        tcg_gen_addi_i32(cpu_R[14], cpu_R[14], -1);
++    } else {
++        /*
++         * Decrement by 1 << (4 - LTPSIZE). We need to use a TCG local
++         * so that decr stays live after the brcondi.
++         */
++        TCGv_i32 decr = tcg_temp_local_new_i32();
++        TCGv_i32 ltpsize = load_cpu_field(v7m.ltpsize);
++        tcg_gen_sub_i32(decr, tcg_constant_i32(4), ltpsize);
++        tcg_gen_shl_i32(decr, tcg_constant_i32(1), decr);
++        tcg_temp_free_i32(ltpsize);
++
++        tcg_gen_brcond_i32(TCG_COND_LEU, cpu_R[14], decr, loopend);
++
++        tcg_gen_sub_i32(cpu_R[14], cpu_R[14], decr);
++        tcg_temp_free_i32(decr);
+     }
+     /* Jump back to the loop start */
+     gen_jmp(s, read_pc(s) - a->imm);
++
++    gen_set_label(loopend);
++    if (a->tp) {
++        /* Exits from tail-pred loops must reset LTPSIZE to 4 */
++        tmp = tcg_const_i32(4);
++        store_cpu_field(tmp, v7m.ltpsize);
 +    }
-+
-+    qd = mve_qreg_ptr(a->qd);
-+    qm = mve_qreg_ptr(a->qm);
-+    fn(cpu_env, qd, qm);
-+    tcg_temp_free_ptr(qd);
-+    tcg_temp_free_ptr(qm);
-+    mve_update_eci(s);
-+    return true;
-+}
-+
-+#define DO_1OP(INSN, FN)                                        \
-+    static bool trans_##INSN(DisasContext *s, arg_1op *a)       \
-+    {                                                           \
-+        MVEGenOneOpFn *fns[] = {                                \
-+            gen_helper_mve_##FN##b,                             \
-+            gen_helper_mve_##FN##h,                             \
-+            gen_helper_mve_##FN##w,                             \
-+            NULL,                                               \
-+        };                                                      \
-+        return do_1op(s, a, fns[a->size]);                      \
-+    }
-+
-+DO_1OP(VCLZ, vclz)
++    /* End TB, continuing to following insn */
++    gen_jmp_tb(s, s->base.pc_next, 1);
+     return true;
+ }
+ 
 -- 
 2.20.1
 

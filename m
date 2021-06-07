@@ -1,105 +1,111 @@
-Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp1971580lfa;
-        Sat, 5 Jun 2021 05:33:07 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz8I+ZjaidSz6eP/3sSoHWNAe96nA/u835VALYDanWtfay0femwiCnyTBhnjCCTtfDf1H2n
-X-Received: by 2002:a05:6e02:e8d:: with SMTP id t13mr7702505ilj.189.1622896387723;
-        Sat, 05 Jun 2021 05:33:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1622896387; cv=none;
+Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp3708575lfa;
+        Mon, 7 Jun 2021 10:44:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzFNETdqtdJpGOHe/67813iljxETzVk1VjVMhX1CxQynhLiLcm0D64w4hZRThZ9FDVAqprt
+X-Received: by 2002:a05:6602:240c:: with SMTP id s12mr12516221ioa.149.1623087862431;
+        Mon, 07 Jun 2021 10:44:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623087862; cv=none;
         d=google.com; s=arc-20160816;
-        b=AHdElKY2+pndvrZ/nVXzLj2EA4mrX/WgbfWP8BB8Ydtqq0HqJj0VNlA6qHj59oCDJ7
-         9AylzmV+HAHHbiVGNnmVaVWSqGEri6Mrf9qZvkTaYJ4iUsWi5UtbwPi8qJ8DLuet6gRe
-         79Yx2BwhNAP3W+CIQwxXcUlNX377Cuv3h1/3T28uCgplGDEKrkfnKF/buRAtmON6szvT
-         XJwGtAGsPKzWTT4lQESiIZzI0Y59y6YvPLJ9FRrHKJS+g7gIWa8NQZxjoEILqQQsIFKA
-         rJCkDEcMRIGgDYG+altO4CFmjM3Vb6iJZiVxUul6ufd1VoEGS1UJYUWyg4aJW1Qvt7rJ
-         QxAQ==
+        b=xYTWR0fbrxI9cF8uY11WgofdGsO1sAIQXLWDf8E9dSS3La6J7E98e1M/vRUtvNteMl
+         dxkS0TuIdniDlfB4JXthcd7ikzXYDjcL61zaviq/U2tRjVL25VneerjwgoZo5IdGT74Q
+         OSQo7spf2+dE1gIB87MdUXsacxLEH1NhZPPjXl7yd65tS3QFL4KwS26GhNichbz2RBIo
+         kePEnds7tBpBPNjz7c0W6ccRQSrKcjq7pf1+6yDtlGZ/3Ed5ODvSehzMR3gHIFkKB/ln
+         qeiT7LU/sxHRjhu3VxzIri0ypsOhi4ds3KCcFhLmeZg/15I5ceBtdYeIVsJ4Pti5ufSs
+         hxkA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=t7RhKwuiQCmztjvYtfuTqLMQ5n48THL/aL9f+dwUDl0=;
-        b=DiZqbXsdGnIvvayMUvoPp2o6VwF7kQ6Qc2LMvYEr4x/TjiBJLC/5kIlbvYGNDcrv+B
-         l5gHiS76jCd59z5P722nGxgBLSSCQxjxaJeewunPHyPSbnLO3jvm8iMdujD89cxt7GT6
-         +SgXwsIH0Hj2tLCVIdgSlw1trDeejQTLx9UnfNcWyPjpt38bM3G7xCIc0L7aaISVgGo9
-         6B8OY39CWXU57D68xEAXIcuQKtCDLmgAR2RjoM15Uc0K6lNAHe6bVQFEB2x5aFRWbdnB
-         wDj+ardkSJT9WmBzektrdlPYLWyxYMohSdyAGEVv3V5F+TkP1qbYArD3vkCFahZ1Mkyn
-         M6eA==
+        bh=1WD5R16SCIkydee14wkB4oUuOr6qYBE+bCok0uIGeuo=;
+        b=RrWy0TQWu0nRUJcQmRRSRJNYrSWtBg8KVLSdi4QMeUi2cKjFxK1b3P8+37MqDvD9cB
+         QcQhV+7B0Yrx+sjnwT2hU75Hk/TBbh1fPGwZSTqinHWc20ZvTbmEjlgZjFeQKOzqBa1B
+         vht1PBzmJKTigTrtXm+1NlgcAFrDKbejdx4hCUwJBcAVUr6T7EogOpYBwWUQfbkxOLMi
+         097W8kktUADOKQLOfWel1993ya1vBdM0xu6zBXZqeQ9xZiJS+3wuLjUHyczpryIAt8dv
+         YMAeMcg8y8qbxBPkGBcO2riF5vQC9Mv631vGsvh5CCR3+LbzJjysirc+jlKX39f+j3nH
+         q1cg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Xvq7DRPx;
+       dkim=pass header.i=@linaro.org header.s=google header.b="r071pn/D";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z7si9215732ilu.128.2021.06.05.05.33.07
+        by mx.google.com with ESMTPS id h41si3692922jaa.50.2021.06.07.10.44.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 05 Jun 2021 05:33:07 -0700 (PDT)
+        Mon, 07 Jun 2021 10:44:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Xvq7DRPx;
+       dkim=pass header.i=@linaro.org header.s=google header.b="r071pn/D";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35514 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:45746 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lpVUB-0003Ba-0j
-	for alex.bennee@linaro.org; Sat, 05 Jun 2021 08:33:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43112)
+	id 1lqJIT-000793-LY
+	for alex.bennee@linaro.org; Mon, 07 Jun 2021 13:44:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60076)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1lpVU2-0003BI-Qj
- for qemu-arm@nongnu.org; Sat, 05 Jun 2021 08:32:58 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:47516)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1lpVTy-0006k1-8f
- for qemu-arm@nongnu.org; Sat, 05 Jun 2021 08:32:57 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1622896372;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=t7RhKwuiQCmztjvYtfuTqLMQ5n48THL/aL9f+dwUDl0=;
- b=Xvq7DRPxOyYXZiBMhuHsjGWTPAerGVuAEeMUVi7yGmW83/7hw4JDMyqP7Fww5cklfVMFax
- 6TZurzrI5yon080B0fzZZ7UGtALEcNA5KZZhKFFvTERj3KaA8ja3h9h89gnYUdbvwxX8o5
- 6PCzheqXiV0h2AhyKyoD00CutdlibGo=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-4-iBPaOqfcOEyVz9B-xiFRlw-1; Sat, 05 Jun 2021 08:32:50 -0400
-X-MC-Unique: iBPaOqfcOEyVz9B-xiFRlw-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A334D803625;
- Sat,  5 Jun 2021 12:32:49 +0000 (UTC)
-Received: from localhost (unknown [10.40.208.18])
- by smtp.corp.redhat.com (Postfix) with ESMTP id DE51A19C79;
- Sat,  5 Jun 2021 12:32:39 +0000 (UTC)
-Date: Sat, 5 Jun 2021 14:32:38 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Wang Xingang <wangxingang5@huawei.com>
-Subject: Re: [PATCH v4 0/8] IOMMU: Add support for IOMMU Bypass Feature
-Message-ID: <20210605143238.2e52b08a@redhat.com>
-In-Reply-To: <1621914605-14724-1-git-send-email-wangxingang5@huawei.com>
-References: <1621914605-14724-1-git-send-email-wangxingang5@huawei.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lqIb7-00082O-Eo
+ for qemu-arm@nongnu.org; Mon, 07 Jun 2021 12:59:33 -0400
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331]:39868)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lqIaX-00084E-Ts
+ for qemu-arm@nongnu.org; Mon, 07 Jun 2021 12:59:33 -0400
+Received: by mail-wm1-x331.google.com with SMTP id
+ l18-20020a1ced120000b029014c1adff1edso103092wmh.4
+ for <qemu-arm@nongnu.org>; Mon, 07 Jun 2021 09:58:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=1WD5R16SCIkydee14wkB4oUuOr6qYBE+bCok0uIGeuo=;
+ b=r071pn/D6zqXKvFKFgzX/p1/Z6w3tE054xAmt4Ps7O9t0d2pFvNW6x12mRwRzkY3v4
+ hHoK3uQ3o7li+vBBzZv0mXgRuEh8FwQr63AupLlbq9IDtvM2juqttwXFjRbprMm+ebnL
+ qU/kuG/gA4vy+HEOqAIo5b0d4l+WGhxKZYIeyzJ+sESVMSy4WZcTAZdi2N//AZwyb/6s
+ Pnmp10lPjwx3S2x0fG4egWe6L/oXNBZRjoueMFhmw2N4yathE78Xt271fkQzGKjAtQtZ
+ ClBaEjtwLrIsRjFa0MCmtwX/75hjiOf1Ncs4eMUVK5BquFVclndmm1lKm9/AcvMljJvF
+ 1gQQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=1WD5R16SCIkydee14wkB4oUuOr6qYBE+bCok0uIGeuo=;
+ b=IOYqFws6Xs8QPY5uJ1ALGlgY61+YaU3zP9XrfyKhVNGyerV3oHZW3RpWq8lWi4lkCv
+ r2/s9/AlZ//BxEoL1n0LIVzYewvDuVjRaA92OD14R0M9IersFAuOSECNZ4kjVJEBaSA1
+ /XeRD9yQ9HUQTZReGAONNNwARLOpBFuTAxi76BDG4CPYNj/0K5UOc+/n5oDJ09cGuaCy
+ meVUUf9UfBKGgMkUWewhB1LR9jWO+YPQm8MQhipWSPwbbkG43WBoq7H0bIbyXbXmQGZj
+ 2fGqaks3ujPHDYY6uE7oma2aEvb3uBjGJwvq+lS5+3sBDkeY5eilgI9VmFT14B4lyn+N
+ sbSA==
+X-Gm-Message-State: AOAM531k96J63kr751ikWsYzJcxGObV11SmBJ01B9N2KHk+fTWw0/dYe
+ Vjlk13m7b+05+90hDq2l52hkc/y4OfoleKbM
+X-Received: by 2002:a05:600c:3790:: with SMTP id
+ o16mr65164wmr.41.1623085136048; 
+ Mon, 07 Jun 2021 09:58:56 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id n10sm18891677wre.95.2021.06.07.09.58.55
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 07 Jun 2021 09:58:55 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH 41/55] target/arm: Implement MVE VQDMULH, VQRDMULH (vector)
+Date: Mon,  7 Jun 2021 17:58:07 +0100
+Message-Id: <20210607165821.9892-42-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20210607165821.9892-1-peter.maydell@linaro.org>
+References: <20210607165821.9892-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.373,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x331.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -112,82 +118,112 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: xieyingtai@huawei.com, peter.maydell@linaro.org, ehabkost@redhat.com,
- mst@redhat.com, shannon.zhaosl@gmail.com, richard.henderson@linaro.org,
- qemu-devel@nongnu.org, eric.auger@redhat.com, qemu-arm@nongnu.org,
- marcel.apfelbaum@gmail.com, pbonzini@redhat.com
+Cc: Richard Henderson <richard.henderson@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KwotG5ZDiOBb
+X-TUID: n38+K6MLjO6A
 
-On Tue, 25 May 2021 03:49:57 +0000
-Wang Xingang <wangxingang5@huawei.com> wrote:
+Implement the vector forms of the MVE VQDMULH and VQRDMULH insns.
 
-> From: Xingang Wang <wangxingang5@huawei.com>
-> 
-> These patches add support for configure bypass_iommu on/off for
-> pci root bus, including primary bus and pxb root bus. At present,
-> all root bus will go through iommu when iommu is configured,
-> which is not flexible, because in many situations the need for using
-> iommu and bypass iommu aften exists at the same time.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/helper-mve.h    |  8 ++++++++
+ target/arm/mve.decode      |  3 +++
+ target/arm/mve_helper.c    | 27 +++++++++++++++++++++++++++
+ target/arm/translate-mve.c |  2 ++
+ 4 files changed, 40 insertions(+)
 
-'many situations' doesn't describe why bypass is needed,
-can you provide a use-cases here and what are security implications
-when bypass is allowed.
-(PS: the later probably should be documented somewhere in the docs/option description)
+diff --git a/target/arm/helper-mve.h b/target/arm/helper-mve.h
+index 55c4e41deff..a7eddf3d488 100644
+--- a/target/arm/helper-mve.h
++++ b/target/arm/helper-mve.h
+@@ -147,6 +147,14 @@ DEF_HELPER_FLAGS_4(mve_vmulltub, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
+ DEF_HELPER_FLAGS_4(mve_vmulltuh, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
+ DEF_HELPER_FLAGS_4(mve_vmulltuw, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
  
-> So this add option to enable/disable bypass_iommu for primary bus
-> and pxb root bus. The bypass_iommu property is set to false default,
-> meaning that devcies will go through iommu if no explicit configuration
-> is added. When bypass_iommu is enabled for the root bus, devices
-> attached to it will bypass iommu, otherwise devices will go through
-> iommu.
-> 
-> This feature can be used in this manner:
-> arm: -machine virt,iommu=smmuv3,bypass_iommu=true
-> x86: -machine q35,bypass_iommu=true
-> pxb: -device pxb-pcie,bus_nr=0x10,id=pci.10,bus=pcie.0,bypass_iommu=true 
-> 
-> History:
-> 
-> v3 -> v4:
-> - simplify the logic in building the IORT idmap
-> 
-> v2 -> v3:
-> - rebase on top of v6.0.0-rc4
-> - Took into account Eric's comments, replace with a bypass_iommu
->   proerty 
-> - When building the IORT idmap, cover the whole RID space
-> 
-> v1 -> v2:
-> - rebase on top of v6.0.0-rc0
-> - Fix some issues
-> - Took into account Eric's comments, and remove the PCI_BUS_IOMMU flag,
->   replace it with a property in PCIHostState.
-> - Add support for x86 iommu option
-> 
-> Xingang Wang (8):
->   hw/pci/pci_host: Allow bypass iommu for pci host
->   hw/pxb: Add a bypass iommu property
->   hw/arm/virt: Add a machine option to bypass iommu for primary bus
->   hw/i386: Add a pc machine option to bypass iommu for primary bus
->   hw/pci: Add pci_bus_range to get bus number range
->   hw/arm/virt-acpi-build: Add explicit IORT idmap for smmuv3 node
->   hw/i386/acpi-build: Add explicit scope in DMAR table
->   hw/i386/acpi-build: Add bypass_iommu check when building IVRS table
-> 
->  hw/arm/virt-acpi-build.c            | 135 ++++++++++++++++++++++++----
->  hw/arm/virt.c                       |  26 ++++++
->  hw/i386/acpi-build.c                |  70 ++++++++++++++-
->  hw/i386/pc.c                        |  18 ++++
->  hw/pci-bridge/pci_expander_bridge.c |   3 +
->  hw/pci-host/q35.c                   |   1 +
->  hw/pci/pci.c                        |  33 ++++++-
->  hw/pci/pci_host.c                   |   2 +
->  include/hw/arm/virt.h               |   1 +
->  include/hw/i386/pc.h                |   1 +
->  include/hw/pci/pci.h                |   2 +
->  include/hw/pci/pci_host.h           |   1 +
->  12 files changed, 270 insertions(+), 23 deletions(-)
-> 
++DEF_HELPER_FLAGS_4(mve_vqdmulhb, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++DEF_HELPER_FLAGS_4(mve_vqdmulhh, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++DEF_HELPER_FLAGS_4(mve_vqdmulhw, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++
++DEF_HELPER_FLAGS_4(mve_vqrdmulhb, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++DEF_HELPER_FLAGS_4(mve_vqrdmulhh, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++DEF_HELPER_FLAGS_4(mve_vqrdmulhw, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++
+ DEF_HELPER_FLAGS_4(mve_vadd_scalarb, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(mve_vadd_scalarh, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(mve_vadd_scalarw, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
+diff --git a/target/arm/mve.decode b/target/arm/mve.decode
+index a71ad7252bf..9860d43f73c 100644
+--- a/target/arm/mve.decode
++++ b/target/arm/mve.decode
+@@ -113,6 +113,9 @@ VMULL_BU         111 1 1110 0 . .. ... 1 ... 0 1110 . 0 . 0 ... 0 @2op
+ VMULL_TS         111 0 1110 0 . .. ... 1 ... 1 1110 . 0 . 0 ... 0 @2op
+ VMULL_TU         111 1 1110 0 . .. ... 1 ... 1 1110 . 0 . 0 ... 0 @2op
+ 
++VQDMULH          1110 1111 0 . .. ... 0 ... 0 1011 . 1 . 0 ... 0 @2op
++VQRDMULH         1111 1111 0 . .. ... 0 ... 0 1011 . 1 . 0 ... 0 @2op
++
+ # Vector miscellaneous
+ 
+ VCLS             1111 1111 1 . 11 .. 00 ... 0 0100 01 . 0 ... 0 @1op
+diff --git a/target/arm/mve_helper.c b/target/arm/mve_helper.c
+index 97529531ed0..7d65bcef56c 100644
+--- a/target/arm/mve_helper.c
++++ b/target/arm/mve_helper.c
+@@ -357,6 +357,25 @@ DO_1OP(vfnegs, 4, uint32_t, H4, DO_FNEG)
+         mve_advance_vpt(env);                                           \
+     }
+ 
++#define DO_2OP_SAT(OP, ESIZE, TYPE, H, FN)                              \
++    void HELPER(glue(mve_, OP))(CPUARMState *env, void *vd, void *vn, void *vm) \
++    {                                                                   \
++        TYPE *d = vd, *n = vn, *m = vm;                                 \
++        uint16_t mask = mve_element_mask(env);                          \
++        unsigned e;                                                     \
++        for (e = 0; e < 16 / ESIZE; e++, mask >>= ESIZE) {              \
++            bool sat = false;                                           \
++            TYPE r = FN(n[H(e)], m[H(e)], &sat);                        \
++            uint64_t bytemask = mask_to_bytemask##ESIZE(mask);          \
++            d[H(e)] &= ~bytemask;                                       \
++            d[H(e)] |= (r & bytemask);                                  \
++            if (sat && (mask & 1)) {                                    \
++                env->vfp.qc[0] = 1;                                     \
++            }                                                           \
++        }                                                               \
++        mve_advance_vpt(env);                                           \
++    }
++
+ #define DO_AND(N, M)  ((N) & (M))
+ #define DO_BIC(N, M)  ((N) & ~(M))
+ #define DO_ORR(N, M)  ((N) | (M))
+@@ -523,6 +542,14 @@ static inline int32_t do_sat_bhw(int64_t val, int64_t min, int64_t max, bool *s)
+ #define DO_QRDMULH_W(n, m, s) do_sat_bhw(((int64_t)n * m + (1 << 30)) >> 31, \
+                                          INT32_MIN, INT32_MAX, s)
+ 
++DO_2OP_SAT(vqdmulhb, 1, int8_t, H1, DO_QDMULH_B)
++DO_2OP_SAT(vqdmulhh, 2, int16_t, H2, DO_QDMULH_H)
++DO_2OP_SAT(vqdmulhw, 4, int32_t, H4, DO_QDMULH_W)
++
++DO_2OP_SAT(vqrdmulhb, 1, int8_t, H1, DO_QRDMULH_B)
++DO_2OP_SAT(vqrdmulhh, 2, int16_t, H2, DO_QRDMULH_H)
++DO_2OP_SAT(vqrdmulhw, 4, int32_t, H4, DO_QRDMULH_W)
++
+ #define DO_2OP_SCALAR(OP, ESIZE, TYPE, H, FN)                           \
+     void HELPER(glue(mve_, OP))(CPUARMState *env, void *vd, void *vn,   \
+                                 uint32_t rm)                            \
+diff --git a/target/arm/translate-mve.c b/target/arm/translate-mve.c
+index 2bb7482e6af..213a90b59b6 100644
+--- a/target/arm/translate-mve.c
++++ b/target/arm/translate-mve.c
+@@ -415,6 +415,8 @@ DO_2OP(VMULL_BS, vmullbs)
+ DO_2OP(VMULL_BU, vmullbu)
+ DO_2OP(VMULL_TS, vmullts)
+ DO_2OP(VMULL_TU, vmulltu)
++DO_2OP(VQDMULH, vqdmulh)
++DO_2OP(VQRDMULH, vqrdmulh)
+ 
+ static bool do_2op_scalar(DisasContext *s, arg_2scalar *a,
+                           MVEGenTwoOpScalarFn fn)
+-- 
+2.20.1
 

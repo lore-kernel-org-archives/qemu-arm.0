@@ -1,233 +1,177 @@
-Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp4432392lfa;
-        Tue, 8 Jun 2021 06:38:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJylqEfR0ArdfJp+JbSwGbmyjkddVaC97pQas5tQuasYWPA8mVCQR+VDtyDaufauNs84hmPk
-X-Received: by 2002:a17:906:a1d2:: with SMTP id bx18mr23273121ejb.423.1623159517405;
-        Tue, 08 Jun 2021 06:38:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623159517; cv=none;
+Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp3672927lfa;
+        Mon, 7 Jun 2021 09:59:26 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzsuj+MESJtNf1Cv55Pv2TK29tF799suE/xoluTDX27usBBWlHg2K7p9cIJrMCy4f6vHbX5
+X-Received: by 2002:a05:6830:1505:: with SMTP id k5mr14908601otp.45.1623085166220;
+        Mon, 07 Jun 2021 09:59:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623085166; cv=none;
         d=google.com; s=arc-20160816;
-        b=hBWW+ANFVs8mXvq1wetHa7TWSm0KPZOdilQeTYv1d6CTCKzUT0MCXv+CQuW4pmUBR3
-         /7dCHF7TnNOzAz1QA7IUsbRAO8FPe7yFxmt1ce4IdW40K90R5SaHES0AXMBFXJ4e5AXp
-         eLz5kkKyWZ0BdSMSW1GKmTRt+opi5uDFHUeoUvGq4PCHrBR1BA6bw9rihEcgMKcsSY0y
-         xqeGRtvw5ehregbMagSMtxracAK5d8CA60tfg6/z2EHGZXbxg05kRE2nlpRbZCjtkM59
-         exuXPO8yTS3F4Gi/DP/CrxI1LOmgyelJ6heZFqa4VJ+tYs9sVRTniCFsnTr5TOwO5g2j
-         89Zg==
+        b=H/KbSFtAvVGmvMxUBaPFISoXuWnzKb/c6dEC8sUiXHJpamv+hUbowE1rVMbYjKVvTH
+         JTdqrBsVZYc2heNb9QFZXEjS4Cck6sBgaHmrGxRS4AbdLEn3X62L5hl4Nj10N9fOGnYB
+         JeZtoRSN1QRVeUeI9R/SX7lDOQ1xn1ul8eyngSNOKKzpTktoW81nGbKix7YBaIe2YMno
+         od3g0KmGx9DsHjK744XwoF/Qgzhy5ZCYuIQ6g26ou1JhIch+uGwkIS28FTI5Y0lMHKpr
+         OBS8+6KPuagK1DpaOO86+7BoxZ//PQqZvP+A1pB5zE9jXDX188uFP/vZbh+pfAl+IHNE
+         JzTw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=7/2GUJpm4LhwdNupSozzb9z52vzZ90NUqtA9KjkNXx4=;
-        b=I4a9YFQpRu1gYcnakMNhzUdKkidzjFertv10bi3DbMPRQHKb5mZ+Bb3+lL2BfdKFx2
-         LyMu2CW8HN3K/SUvzH7Ytwz48g7Co2vwQtlQ2RobKHA2ffATleLYxww6E09QbVswp5pV
-         ucwCVYwCGyUPNCJsVrUy7sSIuOsWpSrEzugzB2COZZARz0JAwCEW4IIKEBzSd63uURyR
-         V6h7REJ62YvuBtJtdr9Kt/T9PJ2y6gMV5x8uppX0x3XNRbQOjzznDgOnSNPaMCAc5nF5
-         e55exWDirh3tq6hD6T9ZGQ+AJw1XgOUmNemQ49q+ZNUt9QKFfu5pHl+syPTV+ap5KWwJ
-         TTSA==
+        bh=U3o+F7dXXTuRNIJT1bjRgyFBMN63vTycsmuk+MLAR1w=;
+        b=q7EoIyDpVVkff3Y51JKAfC2GQHooGyif9a9WokZRwFXht6/k79+MtH/r4IHD8bbYEu
+         WfmBZKyEfLrmxuuciGcdTBSJWmx4rpCKBnuJynzyNr4Ywwz3FmEoW0njBbaXHeqFHCLK
+         lZzq+VAzuyR0rU5ka91110ja6bF9rvXu+RW9GHISwtvO+awWS+Y3O5NZ4OLIokwskHUH
+         fbqxZTtLoffRr8vSNLexxEBHxzMjv5wo9FNNJMHSr0GOZEbNDOYB2ChEdJR946bASLKm
+         3zYHrmnehHxNdgbMLD4o20l2g5jtck8zM3mEHgzejC30yitwPbcMYu0ITn/oarWo5GkR
+         Y0Jw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZX+I5fwT;
-       spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id v1si7066555ejd.643.2021.06.08.06.38.37
+       dkim=pass header.i=@linaro.org header.s=google header.b=jWoYWYco;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d187si9145518oif.181.2021.06.07.09.59.26
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 08 Jun 2021 06:38:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 07 Jun 2021 09:59:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZX+I5fwT;
-       spf=pass (google.com: domain of philmd@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1623159516;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=7/2GUJpm4LhwdNupSozzb9z52vzZ90NUqtA9KjkNXx4=;
-	b=ZX+I5fwT2Zgli9szUmVOz8KqMGSRJYZYV+Y43oj+lqUn3b565cJgd68bhrPGmwzZPIDi/R
-	u+S0ovn1FZbkbNv79PqGix8pQw+u2hq+GUljhFieLPzu9xxLybccppjS+xPAdriz7GGemR
-	Qbh32S7DOqE5PXdhISlkHo8mZiT6rws=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-386-tZSbzORxMTeLkk-ZVrhCSQ-1; Tue, 08 Jun 2021 09:38:35 -0400
-X-MC-Unique: tZSbzORxMTeLkk-ZVrhCSQ-1
-Received: by mail-wm1-f69.google.com with SMTP id 18-20020a05600c0252b029019a0ce35d36so1217266wmj.4
-        for <alex.bennee@linaro.org>; Tue, 08 Jun 2021 06:38:35 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=jWoYWYco;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:37174 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lqIaz-0006xa-Ew
+	for alex.bennee@linaro.org; Mon, 07 Jun 2021 12:59:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58886)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lqIa4-0006vP-8N
+ for qemu-arm@nongnu.org; Mon, 07 Jun 2021 12:58:28 -0400
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433]:35543)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lqIa2-0007pu-Dg
+ for qemu-arm@nongnu.org; Mon, 07 Jun 2021 12:58:28 -0400
+Received: by mail-wr1-x433.google.com with SMTP id m18so18442099wrv.2
+ for <qemu-arm@nongnu.org>; Mon, 07 Jun 2021 09:58:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=U3o+F7dXXTuRNIJT1bjRgyFBMN63vTycsmuk+MLAR1w=;
+ b=jWoYWYco0+YDUugtGfd3I7WLDBKPJYUQP/13p6ddmHaadMMb0C5N3g2fXdNIECbbgv
+ s8KdTqo1CojnOPYIhtkiPPiHblZUALVWkRZGfrP7lux5e7hkssj8P6OS65pEB1Lfq96F
+ k4FpC3/PgGIIbSysrZcIxVRZjXsBksorq3KXI4YAtvBv3eEta1xhLKy0hPVlecDIf7kb
+ CFUz2xkP+6Ro6nm7Aktw8GFOEfx4TztvbJ3WMjYm4WQPA4Wzg+ENof3YiIv+cfP8wdjU
+ QR3SHQjk8fRmcChdl1hZHz349JX7MHpmrTssqCrKsNuky0TDGco+4Y0y+OWIvo3ykfsK
+ 5wiA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=7/2GUJpm4LhwdNupSozzb9z52vzZ90NUqtA9KjkNXx4=;
-        b=TiRRH8aBd6lbAGs1LUiyw0/DuWCAp4AUUwHFI4kOlUSkCXbrJ39Pvmghl/N6rhrPE5
-         3xkWWyvH1EUe8NNwbPl8R6JrTtttwjz3kXwBOak8Uuj30ODxU6cIZG3Q0YhiVemUZIIo
-         iQrL/mpwg7QmttEyexH46k/YFRSCmfYYRLBJBvuvdw1l9gsPN2GBPG0sJ1aUMsBU7qfy
-         zmNaKjw70PEXQHiYl4+teVUwDyupxB0TKROdTctp218QEktcdlsKSrwi7wv9wXWlnvO9
-         9Bz7GQA2nkAa+mzwYRL5AD5TCN++vKQLwOftoYXMFx+88Qd+Mj5fRwizOSlplmr7Iok0
-         mE6A==
-X-Gm-Message-State: AOAM533x4KG5jvz4lIHCJ/1fBaZkC62gPI5b9AlrT1fCOpf33N4GkjB3
-	a6oPqpC2tZ2qoa4YvZ3bS3Z2G9jl0Y925tCaa+hpbBMRJESaD2IBhXQZ15+RzNCPt2om+hCx4TL
-	avmmDl56lKenTyhEk
-X-Received: by 2002:a05:6000:1a8f:: with SMTP id f15mr14348483wry.260.1623159514102;
-        Tue, 08 Jun 2021 06:38:34 -0700 (PDT)
-X-Received: by 2002:a05:6000:1a8f:: with SMTP id f15mr14348461wry.260.1623159513958;
-        Tue, 08 Jun 2021 06:38:33 -0700 (PDT)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.36] (235.red-83-57-168.dynamicip.rima-tde.net. [83.57.168.235])
-        by smtp.gmail.com with ESMTPSA id l10sm16998130wrs.11.2021.06.08.06.38.33
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 08 Jun 2021 06:38:33 -0700 (PDT)
-Subject: Re: [PATCH v8 02/12] accel: Introduce 'query-accels' QMP command
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- Markus Armbruster <armbru@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, John Snow <jsnow@redhat.com>
-References: <20210526170432.343588-1-philmd@redhat.com>
- <20210526170432.343588-3-philmd@redhat.com>
- <af5b2b3a-e223-c8dd-91eb-51f9813d82ae@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <9613547f-2e68-1bb9-5be8-c77f8c5c148f@redhat.com>
-Date: Tue, 8 Jun 2021 15:38:32 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=U3o+F7dXXTuRNIJT1bjRgyFBMN63vTycsmuk+MLAR1w=;
+ b=F33zF4BTH66MyqIaMccXhgKgxGWex4h94cBLMBQC/rq3YnpUA4lLSuPDCszNjt7lch
+ jDuwwR+G3ZnwY7IhTVDxi8U62rKm331r9OE0Q6frbmW1NHPs5hwUrd5eJkUcGQ5vGroH
+ dhMlV9TSzlEIyGZcn2vmFZpzplaLnFnAAWWn+MM21YjHFh07+xgR+n0LbP1xvkJaJ/sV
+ UtT7oNDZMyQ5WXY/g/peS/h9z8zSClL8I9Kuq3NKJa+wqHouQ3pbwtJkJlPrrhc53J21
+ 1s1Ywvy9fM8fY3v7qfdxCHT1qhFENZh1AW6bilSvJ65MsJCnHrEKrWh5KQxHtVPJPq39
+ 83WQ==
+X-Gm-Message-State: AOAM530pGYmBGV03UtmwM4Hof/Q0wZDyPcncxOmOf2yqQdUye9fdzbyW
+ 3RxDWzcmQeBWM/owwWJ0HIDKvDk+U+/acG5f
+X-Received: by 2002:adf:e943:: with SMTP id m3mr18064269wrn.384.1623085104944; 
+ Mon, 07 Jun 2021 09:58:24 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id n10sm18891677wre.95.2021.06.07.09.58.24
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 07 Jun 2021 09:58:24 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH 01/55] tcg: Introduce tcg_remove_ops_after
+Date: Mon,  7 Jun 2021 17:57:27 +0100
+Message-Id: <20210607165821.9892-2-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20210607165821.9892-1-peter.maydell@linaro.org>
+References: <20210607165821.9892-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <af5b2b3a-e223-c8dd-91eb-51f9813d82ae@redhat.com>
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: 47d6ulx/Ja9i
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x433.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Richard Henderson <richard.henderson@linaro.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: bZ3FyB1lnaF4
 
-On 6/8/21 3:27 PM, Thomas Huth wrote:
-> On 26/05/2021 19.04, Philippe Mathieu-Daudé wrote:
->> Introduce the 'query-accels' QMP command which returns a list
->> of built-in accelerator names.
->>
->> - Accelerator is a QAPI enum of all existing accelerators,
->>
->> - AcceleratorInfo is a QAPI structure providing accelerator
->>    specific information. Currently the common structure base
->>    provides the name of the accelerator, while the specific
->>    part is empty, but each accelerator can expand it.
->>
->> - 'query-accels' QMP command returns a list of @AcceleratorInfo
->>
->> For example on a KVM-only build we get:
->>
->>      { "execute": "query-accels" }
->>      {
->>          "return": [
->>              {
->>                  "name": "qtest"
->>              },
->>              {
->>                  "name": "kvm"
->>              }
->>          ]
->>      }
->>
->> Reviewed-by: Eric Blake <eblake@redhat.com>
->> Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
->> Tested-by: Alex Bennée <alex.bennee@linaro.org>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> ---
->> v8:
->> - Include code snippet from Markus adding to machine-target.json
->>    to be able to use enum values or union branches conditional.
->> - Use accel_find() on enum to be sure the accelerator is enabled
->>    at runtime (chat with jsnow / eblake).
->>
->> Cc: Eric Blake <eblake@redhat.com>
->> Cc: John Snow <jsnow@redhat.com>
->> Cc: Markus Armbruster <armbru@redhat.com>
->> ---
->>   qapi/machine-target.json | 54 ++++++++++++++++++++++++++++++++++++++++
->>   accel/accel-qmp.c        | 32 ++++++++++++++++++++++++
->>   accel/meson.build        |  2 +-
->>   3 files changed, 87 insertions(+), 1 deletion(-)
->>   create mode 100644 accel/accel-qmp.c
->>
->> diff --git a/qapi/machine-target.json b/qapi/machine-target.json
->> index e7811654b72..586a61b5d99 100644
->> --- a/qapi/machine-target.json
->> +++ b/qapi/machine-target.json
->> @@ -329,3 +329,57 @@
->>   ##
->>   { 'command': 'query-cpu-definitions', 'returns': ['CpuDefinitionInfo'],
->>     'if': 'defined(TARGET_PPC) || defined(TARGET_ARM) ||
->> defined(TARGET_I386) || defined(TARGET_S390X) || defined(TARGET_MIPS)' }
->> +
->> +##
->> +# @Accelerator:
->> +#
->> +# An enumeration of accelerator names.
->> +#
->> +# Since: 6.1
->> +##
->> +{ 'enum': 'Accelerator',
->> +  'data': [
->> +      { 'name': 'hax', 'if': 'defined(CONFIG_HAX)' },
->> +      { 'name': 'hvf', 'if': 'defined(CONFIG_HVF)' },
->> +      { 'name': 'kvm', 'if': 'defined(CONFIG_KVM)' },
->> +      { 'name': 'qtest' },
->> +      { 'name': 'tcg', 'if': 'defined(CONFIG_TCG)' },
->> +      { 'name': 'whpx', 'if': 'defined(CONFIG_WHPX)' },
->> +      { 'name': 'xen', 'if': 'defined(CONFIG_XEN_BACKEND)' } ] }
->> +
->> +##
->> +# @AcceleratorInfo:
->> +#
->> +# Accelerator information.
->> +#
->> +# @name: The accelerator name.
->> +#
->> +# Since: 6.1
->> +##
->> +{ 'struct': 'AcceleratorInfo',
->> +  'data': { 'name': 'Accelerator' } }
->> +
->> +##
->> +# @query-accels:
->> +#
->> +# Get a list of AcceleratorInfo for all built-in accelerators.
->> +#
->> +# Returns: a list of @AcceleratorInfo describing each accelerator.
->> +#
->> +# Since: 6.1
->> +#
->> +# Example:
->> +#
->> +# -> { "execute": "query-accels" }
->> +# <- { "return": [
->> +#        {
->> +#            "name": "qtest"
->> +#        },
->> +#        {
->> +#            "name": "kvm"
->> +#        }
->> +#    ] }
->> +#
->> +##
->> +{ 'command': 'query-accels',
->> +  'returns': ['AcceleratorInfo'] }
-> 
-> What about Markus' comment here:
-> 
->  https://lore.kernel.org/qemu-devel/87mtsoieyz.fsf@dusky.pond.sub.org/
-> 
-> ?
-> 
-> If I've got him right, you don't need the command at all, the Accelerator
-> enum should be sufficient?
+From: Richard Henderson <richard.henderson@linaro.org>
 
-Yes, this is the part jsnow said "we are waiting for Markus to comment"
-on the other thread ;) We'd like to only have enums, but QAPI doesn't
-seem to allow a "leaf without branch", we need a command or struct to
-use the enum else it is elided. Or maybe we didn't understood Markus
-idea.
+Introduce a function to remove everything emitted
+since a given point.
+
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Message-id: 20210604212747.959028-1-richard.henderson@linaro.org
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ include/tcg/tcg.h |  1 +
+ tcg/tcg.c         | 13 +++++++++++++
+ 2 files changed, 14 insertions(+)
+
+diff --git a/include/tcg/tcg.h b/include/tcg/tcg.h
+index 74cb3453083..6895246fab5 100644
+--- a/include/tcg/tcg.h
++++ b/include/tcg/tcg.h
+@@ -1081,6 +1081,7 @@ TCGOp *tcg_emit_op(TCGOpcode opc);
+ void tcg_op_remove(TCGContext *s, TCGOp *op);
+ TCGOp *tcg_op_insert_before(TCGContext *s, TCGOp *op, TCGOpcode opc);
+ TCGOp *tcg_op_insert_after(TCGContext *s, TCGOp *op, TCGOpcode opc);
++void tcg_remove_ops_after(TCGOp *op);
+ 
+ void tcg_optimize(TCGContext *s);
+ 
+diff --git a/tcg/tcg.c b/tcg/tcg.c
+index 0dc271aac9f..262dbba1fde 100644
+--- a/tcg/tcg.c
++++ b/tcg/tcg.c
+@@ -2649,6 +2649,19 @@ void tcg_op_remove(TCGContext *s, TCGOp *op)
+ #endif
+ }
+ 
++void tcg_remove_ops_after(TCGOp *op)
++{
++    TCGContext *s = tcg_ctx;
++
++    while (true) {
++        TCGOp *last = tcg_last_op();
++        if (last == op) {
++            return;
++        }
++        tcg_op_remove(s, last);
++    }
++}
++
+ static TCGOp *tcg_op_alloc(TCGOpcode opc)
+ {
+     TCGContext *s = tcg_ctx;
+-- 
+2.20.1
+

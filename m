@@ -1,106 +1,110 @@
-Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp3673035lfa;
-        Mon, 7 Jun 2021 09:59:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyvuBDMMNpbjoJTVnycq/Jcpzf9RLzUPF2IhUiANIhOxzDOHwYAVaUzG/9yuNnu+NqsgaN9
-X-Received: by 2002:aca:91a:: with SMTP id 26mr59155oij.27.1623085174347;
-        Mon, 07 Jun 2021 09:59:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623085174; cv=none;
+Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp3673510lfa;
+        Mon, 7 Jun 2021 10:00:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyTnkntQWBqHTQIjmC5+V3WO5ZUMVZuyGnskjXNTrSsdg+PIGcirzohiDeSnw4yVNWH0aQj
+X-Received: by 2002:a6b:8e97:: with SMTP id q145mr14817946iod.144.1623085205565;
+        Mon, 07 Jun 2021 10:00:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623085205; cv=none;
         d=google.com; s=arc-20160816;
-        b=sBEH12nd59FM+syJvEil5tT/KNuYdKR3Z7S40bpBnsxgpxFnLblrDkgtRc0O7GXmyM
-         KYh7ShpFwWGagNjUGYzDhWvRaSyRlamItv2Vuu397MHmQvmraiDxEzrhzh+hrnjMZWBt
-         We/3kb2XbNpGsayoxp2kCIM5UAYMog/93yWQoPFWnLPabYc9sAm5aCCYxiM/yeurBNq1
-         o8rNPjrKzMFXYhGsCJAr1Er3ZXewGVkN2rMWFNZaDLjWMFdeFSVF3hmA1ZrpHXp3lO6g
-         MZB0+pc7rjQ4fbIXVz/TNmZgSco3eap6kmtwW2nz3Sw+NZ9I/bhR9Qnm7mWLK/hsTqC5
-         3L+w==
+        b=gDJE57WligRFwsOCx+AnfIAw7dwq9KEGrJ1gC0RKLht+YwMljcRqiOrURotDjvNCu3
+         tPJb/bTjJe5QqBeOKTome3dHVVPmmceC51Pp+gZmOdjk/PAf2YbQcklZ47wm4MmoYTDZ
+         /gpDALzLjNXLoH68GZE3xm5Uh+UZpFCS3QcdL+IBjma/Iw93GmL8kPWCxS8c//eD/iO4
+         Ih1ySZqBwwkWxjPPN3FmMdS8mGOQ1XLKE7hzx4IaS70NURiK1NaUWl4hx3TBVA6tldKi
+         oAvwDHWKcBH6KcmsKZI3sAPPbL+9v+mPsuXPubTH24Csi32vhteGSdI026rHXXuXo7ix
+         eHww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=tJBWtf2dptBFGcJLE65OD9AhMJPoRLlsLZOH1JzSaZs=;
-        b=aWyTlBsgsEhcqud989ABysyE8hWCFOqwemQ8sFFCbdyrfgXDjWoLnxSq6hu1EwsbUZ
-         qev7wgC0fDgrVLbj5yobUHRoR75WGXlEEWz/dZ/RpP800dRTRRBYQcw9eKoVCgNAGAT7
-         na0CiHFY0Nez/ZDe0Ecxl8/DZffMY+JkMxpKrA/P8slaDGOEFuyPepRiRNPnnTyq30hV
-         GnchHJxP8uDWPxW7qAkiNRTb7WpBrTudShXuFXaSeud4enHdBB7uxfMcmc7C+q4RwlA5
-         i6gS/mvvFJYrpD9xQDwA7it2Kgvjveb84hoRmvKkoGAChfuoqJwU7shNXVYC3gcCrPXD
-         rRvQ==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=WP6bAnl0XFv6sI86ENYvVNq1701QvYCzpF74EEud+5Y=;
+        b=IoAtxdg4zCMQFfLXXRfIyc2EZixLWmYnJdKHy0RplhNjpi90b6QJyfBSooGiQyngpx
+         6tw9AYK230VYy4Unw/A+jRJqSkPOfNODoCB7fJvWy9GVPEyA5XE0+VR4rDkweHcfeG1N
+         jD8Bk1pDuxooTqjzziqadTWOHqIozMZ6oIiHR16bda1reny7zrcYJN7YXrn0pbsJIDce
+         zr0N0f7N6DZcsittNW/s4ig4ZC0knuW1f6LYe2DuVn9pOaiNjbvfJHRuD48cAPIxWrT8
+         nBa16WpSGr2YiGymRsDVs3LwVnhEc07aarrLWysVCzABfj1cQMUxDgs+KKej4fw2pX1b
+         rIPw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TBJbKw5t;
+       dkim=pass header.i=@linaro.org header.s=google header.b=PhaTLgSi;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s21si3081635otr.83.2021.06.07.09.59.34
+        by mx.google.com with ESMTPS id s8si14321322jam.110.2021.06.07.10.00.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 07 Jun 2021 09:59:34 -0700 (PDT)
+        Mon, 07 Jun 2021 10:00:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TBJbKw5t;
+       dkim=pass header.i=@linaro.org header.s=google header.b=PhaTLgSi;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37326 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38772 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lqIb7-000747-FV
-	for alex.bennee@linaro.org; Mon, 07 Jun 2021 12:59:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58920)
+	id 1lqIbc-0008Ay-Qd
+	for alex.bennee@linaro.org; Mon, 07 Jun 2021 13:00:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58984)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lqIa5-0006vt-Jk
- for qemu-arm@nongnu.org; Mon, 07 Jun 2021 12:58:29 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d]:36849)
+ id 1lqIa7-0006zp-Cg
+ for qemu-arm@nongnu.org; Mon, 07 Jun 2021 12:58:31 -0400
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:46674)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lqIa2-0007pc-5z
- for qemu-arm@nongnu.org; Mon, 07 Jun 2021 12:58:29 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id e11so8224574wrg.3
- for <qemu-arm@nongnu.org>; Mon, 07 Jun 2021 09:58:25 -0700 (PDT)
+ id 1lqIa5-0007rj-Lu
+ for qemu-arm@nongnu.org; Mon, 07 Jun 2021 12:58:31 -0400
+Received: by mail-wr1-x42f.google.com with SMTP id a11so16558228wrt.13
+ for <qemu-arm@nongnu.org>; Mon, 07 Jun 2021 09:58:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=tJBWtf2dptBFGcJLE65OD9AhMJPoRLlsLZOH1JzSaZs=;
- b=TBJbKw5tG6RQpollMFlGJewPTSqqbjy8zsqpKQ1oEYc5eAhwCYzIbxJCtux9ZXbMLw
- HZuMKv8d/4SU6wK9AH1wWPVqh0ka9WZpDEOs1lFbNZ77v6yXX+QL5Ri3JC4bmjFL5Vjy
- iG/XAH4mPDbQ5KOtyhWYOwF2jz+2vEGixkXIFLnvH2KxtZOnrle7nJ35VZkiHUy4hRVi
- 2nQdh0L/3TxPijBZlAzHUuDQyh0568wOtVbTuBXJ36Lj13OIYXXUle2FO+nb79934+pC
- hg0+98C34YMPK7F5SMvwhRPHgrjZFTrXzBwITEIbTwjmTVi29atU6M8PyBZjAh7XvnJA
- VprA==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=WP6bAnl0XFv6sI86ENYvVNq1701QvYCzpF74EEud+5Y=;
+ b=PhaTLgSi9W/p1rUl17LGICLkRVA6OEDyFY+ha4IUQMDRY8aX1k41a0O+PafXpU5jgL
+ gOhGDF3wcxFsEn9o5oluvuFBQ3iA78D6dQnKfWMrZoLzsSipUGqm2fpqClCwn9JHeUoP
+ Zj8wCBbtbhpEati67SPRddT9jetpLNfkHbWHbeATMqPz5mDIU0zk0nyz8QpM6ZfmKAS5
+ rGW6KsalHae7dFjPsSYXnvU+sX3d80WrxUJ82JpI0jIb32ixvw9md+VOXDuZR6B1WZPp
+ J3r5aDoeLQgRq1w1KftFWgs3u+RmvJ7i5RBO5ae4IVfTRHlS9k01pP4MgW38veDdbbcS
+ nFkg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=tJBWtf2dptBFGcJLE65OD9AhMJPoRLlsLZOH1JzSaZs=;
- b=TeNB/A2pR/Sx2bjt7A+Vsba2YeRijW4I/QZqBHGSTccmx6++YlC7EUWsuKFFK9yKnt
- BPOqHKe5V9aqd2NnFQiCVd068WqxBqApe1EKd7xcEG+0Olgi7Kwi3egmpnU5KWM5S5BY
- R+4Ep6sBE1geMLDf6HJ2gLMByGszkzSGyhVfF4wTpeAe1YIwNa2tcCKgSOYA8kM/u/Mr
- oGl1QA49wDw+/xZZUf5j1GNf20QltK8dytNSltGtR5d5h3mBQCxwNdK8LGPYDQalOSZj
- /XDbGlEHwOca/eSBuELpl/9784opaoL4Nh0ilEBzTbgru5NM7dpyXpZ2XndlqcCDq4J7
- vD6w==
-X-Gm-Message-State: AOAM532VeNp4NSrfEGAn1zXxm8kZJgTeATr5eyxa5VsQ3iTQUtGgMekh
- bFuqstZxkVR11D6UIUeWZtxtQqkhLpOiLDI6
-X-Received: by 2002:a5d:58c1:: with SMTP id o1mr17767518wrf.420.1623085104152; 
- Mon, 07 Jun 2021 09:58:24 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=WP6bAnl0XFv6sI86ENYvVNq1701QvYCzpF74EEud+5Y=;
+ b=VL4KXuwG1TwciZMlf1/GsFKeFmupm2vfQeTTnJAM8I399XZLIOTCwg76hhGV8nsaL4
+ ZOmV0atonWDuUkq/FORZWMz3VRyxpPwlvCqCc1BEICvcP10JyfMv3DZLv+4td77zXmc9
+ S0mUg/zHabp3+hPO+DMixaiAf5iaQt5tll+Eq5Etw857s0nm+3/9ZeuFJjK4l21vnyup
+ QHUyJwoAijLR697kTKA14bS/vjt9XyU2+gvxBP+vWoIgXHnt2eAOJa+syDh25HkC8/Ld
+ k5Pz5zjtTv06pPpT6/ah/CN23Fzzda20bNzR3L1RK0IHAz7fSaa9LVDCQ95rK7OLmWGW
+ upLg==
+X-Gm-Message-State: AOAM532YDgTOoHCPU+4P7Axoj8LE+UMQC8hbRvj93O7cDUshtnoCL0Kv
+ jmDoZ3I9P1o9egg6+EZ4SYYeJ5bNxSbkbAkl
+X-Received: by 2002:a5d:4f12:: with SMTP id c18mr18613626wru.242.1623085108405; 
+ Mon, 07 Jun 2021 09:58:28 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id n10sm18891677wre.95.2021.06.07.09.58.23
+ by smtp.gmail.com with ESMTPSA id n10sm18891677wre.95.2021.06.07.09.58.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 07 Jun 2021 09:58:23 -0700 (PDT)
+ Mon, 07 Jun 2021 09:58:28 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 00/55] target/arm: First slice of MVE implementation
-Date: Mon,  7 Jun 2021 17:57:26 +0100
-Message-Id: <20210607165821.9892-1-peter.maydell@linaro.org>
+Subject: [PATCH 05/55] target/arm: Let vfp_access_check() handle late NOCP
+ checks
+Date: Mon,  7 Jun 2021 17:57:31 +0100
+Message-Id: <20210607165821.9892-6-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20210607165821.9892-1-peter.maydell@linaro.org>
+References: <20210607165821.9892-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -116,156 +120,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Richard Henderson <richard.henderson@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ud6mD3LVMzaq
+X-TUID: 2hxfhfrvBPfN
 
-This patchseries provides an initial slice of the MVE
-implementation. (MVE is "vector instructions for M-profile", also
-known as Helium).
+In commit a3494d4671797c we reworked the M-profile handling of its
+checks for when the NOCP exception should be raised because the FPU
+is disabled, so that (in line with the architecture) the NOCP check
+is done early over a large range of the encoding space, and takes
+precedence over UNDEF exceptions.  As part of this, we removed the
+code from full_vfp_access_check() which raised an exception there for
+M-profile with the FPU disabled, because it was no longer reachable.
 
-This is not complete support by a long way -- it covers only about 35%
-of the decode patterns for MVE, and it implements only the slow-path
-"we need predication, drop out to a helper function" versions of
-insns. I send it out for two reasons:
+For MVE, some instructions which are outside the "coprocessor space"
+region of the encoding space must nonetheless do "is the FPU enabled"
+checks and possibly raise a NOCP exception.  (In particular this
+covers the MVE-specific low-overhead branch insns LCTP, DLSTP and
+WLSTP.) To support these insns, reinstate the code in
+full_vfp_access_check(), so that their trans functions can call
+vfp_access_check() and get the correct behaviour.
 
- * if there's something I need to change about the general structure
-   or the way I'm implementing insns, I want to know now rather than
-   after I've implemented the other two thirds of the ISA
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/translate-vfp.c | 20 +++++++++++++++-----
+ 1 file changed, 15 insertions(+), 5 deletions(-)
 
- * if I hold onto the whole patchset until I've got a complete MVE
-   implementation it'll be 150+ patches, 10000 lines of code, and
-   a nightmare to code review
-
-The series covers:
- * framework for MVE decode, including infrastructure for
-   handling predication, PSR.ECI, etc
- * tail-predication forms of low-overhead-loop insns (LCTP, WLSTP, LETP)
- * basic (non-gather) loads and stores
- * pretty much all the integer 2-operand vector and scalar insns
- * most of the integer 1-operand insns
- * a handful of other insns
-
-(Unfortunately the v8M Arm ARM does not provide a nice neatly
-separated list of encodings the way the SVE2 XML does.  I ended up
-just pulling all the decode patterns out of the Arm ARM insn
-descriptions and then hand-sorting them into what looked like common
-formats. So the insns implemented aren't following a 100% logical
-order.)
-
-As noted above, the implementation here is purely the slow-path
-fully-generic "call helpers that can handle predication". I do
-want to implement a fast-path for "we know we have no predication,
-so we can generate inline vector code", but I'd like to do that
-as a series of followup patches once the main MVE code has landed.
-That will (a) make it easier to review, I hope (b) mean we get to
-"at least functional" MVE quicker and (c) allow people to bisect
-any regressions to the "add fastpath" patch.
-
-Almost nothing in this patchseries is "live code", because no CPU sets
-the ID register bits to turn on MVE.  The exception is the handling of
-PSR.ECI/ICI, which is enabled at least as far as the ICI bits go for
-M-profile CPUs (thus fixing the missing corner-case requirement that
-trying to execute a non-continuable insn with non-zero ICI should
-fault).
-
-My view is that if these patches get through code review we're better
-off with them in upstream git rather than outside it; open to
-arguments to the contrary.
-
-Patch 1 is RTH's recently posted tcg_remove_ops_after() patch,
-which we need for the PSR.ECI handling (which indeed is the
-justification for having that new function in the first place).
-
-You can also get this patchset here:
- https://git.linaro.org/people/peter.maydell/qemu-arm.git mve-drop-1
-
-thanks
--- PMM
-
-Peter Maydell (54):
-  target/arm: Enable FPSCR.QC bit for MVE
-  target/arm: Handle VPR semantics in existing code
-  target/arm: Add handling for PSR.ECI/ICI
-  target/arm: Let vfp_access_check() handle late NOCP checks
-  target/arm: Implement MVE LCTP
-  target/arm: Implement MVE WLSTP insn
-  target/arm: Implement MVE DLSTP
-  target/arm: Implement MVE LETP insn
-  target/arm: Add framework for MVE decode
-  target/arm: Implement MVE VLDR/VSTR (non-widening forms)
-  target/arm: Implement widening/narrowing MVE VLDR/VSTR insns
-  target/arm: Implement MVE VCLZ
-  target/arm: Implement MVE VCLS
-  bitops.h: Provide hswap32(), hswap64(), wswap64() swapping operations
-  target/arm: Implement MVE VREV16, VREV32, VREV64
-  target/arm: Implement MVE VMVN (register)
-  target/arm: Implement MVE VABS
-  target/arm: Implement MVE VNEG
-  target/arm: Implement MVE VDUP
-  target/arm: Implement MVE VAND, VBIC, VORR, VORN, VEOR
-  target/arm: Implement MVE VADD, VSUB, VMUL
-  target/arm: Implement MVE VMULH
-  target/arm: Implement MVE VRMULH
-  target/arm: Implement MVE VMAX, VMIN
-  target/arm: Implement MVE VABD
-  target/arm: Implement MVE VHADD, VHSUB
-  target/arm: Implement MVE VMULL
-  target/arm: Implement MVE VMLALDAV
-  target/arm: Implement MVE VMLSLDAV
-  include/qemu/int128.h: Add function to create Int128 from int64_t
-  target/arm: Implement MVE VRMLALDAVH, VRMLSLDAVH
-  target/arm: Implement MVE VADD (scalar)
-  target/arm: Implement MVE VSUB, VMUL (scalar)
-  target/arm: Implement MVE VHADD, VHSUB (scalar)
-  target/arm: Implement MVE VBRSR
-  target/arm: Implement MVE VPST
-  target/arm: Implement MVE VQADD and VQSUB
-  target/arm: Implement MVE VQDMULH and VQRDMULH (scalar)
-  target/arm: Implement MVE VQDMULL scalar
-  target/arm: Implement MVE VQDMULH, VQRDMULH (vector)
-  target/arm: Implement MVE VQADD, VQSUB (vector)
-  target/arm: Implement MVE VQSHL (vector)
-  target/arm: Implement MVE VQRSHL
-  target/arm: Implement MVE VSHL insn
-  target/arm: Implement MVE VRSHL
-  target/arm: Implement MVE VQDMLADH and VQRDMLADH
-  target/arm: Implement MVE VQDMLSDH and VQRDMLSDH
-  target/arm: Implement MVE VQDMULL (vector)
-  target/arm: Implement MVE VRHADD
-  target/arm: Implement MVE VADC, VSBC
-  target/arm: Implement MVE VCADD
-  target/arm: Implement MVE VHCADD
-  target/arm: Implement MVE VADDV
-  target/arm: Make VMOV scalar <-> gpreg beatwise for MVE
-
-Richard Henderson (1):
-  tcg: Introduce tcg_remove_ops_after
-
- include/qemu/bitops.h         |   29 +
- include/qemu/int128.h         |   10 +
- include/tcg/tcg.h             |    1 +
- target/arm/helper-mve.h       |  357 +++++++++
- target/arm/helper.h           |    2 +
- target/arm/internals.h        |   11 +
- target/arm/translate-a32.h    |    4 +
- target/arm/translate.h        |   19 +
- target/arm/mve.decode         |  261 +++++++
- target/arm/t32.decode         |   15 +-
- target/arm/m_helper.c         |   54 +-
- target/arm/mve_helper.c       | 1343 +++++++++++++++++++++++++++++++++
- target/arm/sve_helper.c       |   20 -
- target/arm/translate-m-nocp.c |   16 +-
- target/arm/translate-mve.c    |  865 +++++++++++++++++++++
- target/arm/translate-vfp.c    |  152 +++-
- target/arm/translate.c        |  301 +++++++-
- target/arm/vfp_helper.c       |    3 +-
- tcg/tcg.c                     |   13 +
- target/arm/meson.build        |    3 +
- 20 files changed, 3408 insertions(+), 71 deletions(-)
- create mode 100644 target/arm/helper-mve.h
- create mode 100644 target/arm/mve.decode
- create mode 100644 target/arm/mve_helper.c
- create mode 100644 target/arm/translate-mve.c
-
+diff --git a/target/arm/translate-vfp.c b/target/arm/translate-vfp.c
+index 3a56639e708..6a572591ce9 100644
+--- a/target/arm/translate-vfp.c
++++ b/target/arm/translate-vfp.c
+@@ -143,11 +143,21 @@ static void gen_preserve_fp_state(DisasContext *s)
+ static bool full_vfp_access_check(DisasContext *s, bool ignore_vfp_enabled)
+ {
+     if (s->fp_excp_el) {
+-        /* M-profile handled this earlier, in disas_m_nocp() */
+-        assert (!arm_dc_feature(s, ARM_FEATURE_M));
+-        gen_exception_insn(s, s->pc_curr, EXCP_UDEF,
+-                           syn_fp_access_trap(1, 0xe, false),
+-                           s->fp_excp_el);
++        if (arm_dc_feature(s, ARM_FEATURE_M)) {
++            /*
++             * M-profile mostly catches the "FPU disabled" case early, in
++             * disas_m_nocp(), but a few insns (eg LCTP, WLSTP, DLSTP)
++             * which do coprocessor-checks are outside the large ranges of
++             * the encoding space handled by the patterns in m-nocp.decode,
++             * and for them we may need to raise NOCP here.
++             */
++            gen_exception_insn(s, s->pc_curr, EXCP_NOCP,
++                               syn_uncategorized(), s->fp_excp_el);
++        } else {
++            gen_exception_insn(s, s->pc_curr, EXCP_UDEF,
++                               syn_fp_access_trap(1, 0xe, false),
++                               s->fp_excp_el);
++        }
+         return false;
+     }
+ 
 -- 
 2.20.1
 

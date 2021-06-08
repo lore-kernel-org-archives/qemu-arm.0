@@ -1,154 +1,147 @@
-Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp4261105lfa;
-        Tue, 8 Jun 2021 02:48:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJysjy5eJO9DVh8cuLnj4YuFjGmytEn13Qz7Q2ZAR9ukUQJa5hGF/PJgStVPnLuIsLzUnKVq
-X-Received: by 2002:a17:906:b2d1:: with SMTP id cf17mr22816396ejb.225.1623145732046;
-        Tue, 08 Jun 2021 02:48:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623145732; cv=none;
+Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp4270868lfa;
+        Tue, 8 Jun 2021 03:03:44 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwwD4PvHkcfeFw7Ko8A5VLUWUzuil6r4M3VIiX7tmCuT+XrTQ+5zgXApOSnJl/TFnHpXs75
+X-Received: by 2002:a67:70c7:: with SMTP id l190mr3732177vsc.40.1623146624474;
+        Tue, 08 Jun 2021 03:03:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623146624; cv=none;
         d=google.com; s=arc-20160816;
-        b=yGK+xs8vs0YtGt+4poMNvWMAn89Fla27f3wasNgt+Tq1XkeO0dlaC4XCwv5KUhey6n
-         Nf/2mFiMS9wnpJp9twNyOl0MLraWkxdYLaPs2Vp11RWYTxSQeptldhfY9MzBxO0eB4WZ
-         jUhx4z4PUK8EiB74vJ7z/2+Ek3Z4uFCIDqUysFOjUmwDh1u+s6XzzAumGB0btlQrW72D
-         /FtpoePkyZYo19CLvDbpCfwfhXAkivfZ9G93g7KJ62Wda1BujzkffyA3N9nZYgwMGnCG
-         iknICNkKzaFnJBJuI391WtUOSNxVRMGGguR3/L1ooUA02OMvUma3K2sSW7UTMX900qSx
-         PtWQ==
+        b=jDwZ33iaoOYl9bmItFocUx69QFHUUcWzDjtyixODVmjX3rb24sWTvtDpeiOYOD+Cd2
+         lcIqz6KaPcoob0NbunpRNQpeBWA7Dpvs0VZAWnIFVVw5yCGMuua1sX84q5X9K5zJtw6s
+         mAqQ/XNI1kT84BEfqdUDTLePeL/NZfmCzPJqc4zqjguuLzJTlZbRmNKakPKJdZViGkh8
+         dTcFoqqyzpkB/Yz88ZbFu3YjF63eThpdQrJlVx9SS1iE/jzuAnwI7g57BgCxzwrXX5Tp
+         eB92SHxrM+qXOwX/fe9fBBPXBtzk1XbTfNgqPiIt2eVYul+9dCgYjdZKL6HB9MKvlAWu
+         HNxg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=ztjOwBWVWRcLBeGlv9kV0M01VSWdGwRS4cSf3jXheyY=;
-        b=m5VSNtHobuKo0S0oTo/YBv5ypCFA+WgQ5MrTjX9KgY9PRZ4Dx0qsGp/tQdBy3+ECvI
-         cJznOXGuk/eLovFegOP5r01aO6cIgyJmyGc5LtU6ue+cwfeVZqN2S1uWN+ARHyPpjwf2
-         13ycPI5kvp4/0T94RLicw+lz2edSNf1ppleGSqbQ8/kIGL3VCFsKKGQfsUY4VL4dqmSg
-         GE7IyeCvx31O0cJfqRv9Jw64xhIYjldR4lErTr7teQA61alxphbX6wfa9cglyMlog9Mu
-         xWZ9k9Zm6+NwAVxwGZEnoPy/ruZOftonW4rCiy1H41vRfUFdhKDNA5Pn8ToZ8npHD7rm
-         D2hw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=fAK72jQWfvbsBPebqRLDxZshnWftBCmkAJFK//pLDOs=;
+        b=qqVWDLoZ5H+jHEDN+/j0ak9iEE/SrT4XfNY+Y0Kr2IMG83VtXYpTBF+udsf2SPWDwY
+         8cOR5UgCv/RKnGuaHav6OZ7rJxCSKEEQJRAsOWFI0PbKnIcBGiTKYKUPYJq9D7TtEGE6
+         vux8g9mVhg0470gNcvvw5LTT4fA8uzd/GMIvnHTjWIFwrnGX6q+JOTCsoABvUSJsheGe
+         yFsj8+xseRft3JfeOpKSsNj88lp/0yMgQ6foVjgh+IXvJ+4BGx4+uDmDgpxFANtsd0Wo
+         uzpVwgqhh3CBBQk/l384Ji4DUYX20W3fFVCstzpL1Q4UJtzr8ifGjoccJA1hwZDnH107
+         icKA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bpDoQckK;
-       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
-        by mx.google.com with ESMTPS id g14si5679054edp.611.2021.06.08.02.48.51
+       dkim=fail header.i=@linaro.org header.s=google header.b=MMS4LvU3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id z11si1916391vso.149.2021.06.08.03.03.44
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 08 Jun 2021 02:48:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 08 Jun 2021 03:03:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bpDoQckK;
-       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1623145731;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=ztjOwBWVWRcLBeGlv9kV0M01VSWdGwRS4cSf3jXheyY=;
-	b=bpDoQckKh57ipZODw19OwAVEdl79LENawzkN33pdmXJBMbsOM8/VFiXPL6AUweK9CGeoqX
-	mhixqtlmnymmXcTjv+m97e6JmxzTgqp2yWtIgN2K20xYHhbKOcBu8USYsVNxCOCdqSpOzN
-	fZkFk68i+J3R0QkHRNRMapJaorOW1FI=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-33-alJNB9IHMeufrC8Gw3TwTg-1; Tue, 08 Jun 2021 05:48:49 -0400
-X-MC-Unique: alJNB9IHMeufrC8Gw3TwTg-1
-Received: by mail-wr1-f69.google.com with SMTP id d5-20020a0560001865b0290119bba6e1c7so5229700wri.20
-        for <alex.bennee@linaro.org>; Tue, 08 Jun 2021 02:48:49 -0700 (PDT)
+       dkim=fail header.i=@linaro.org header.s=google header.b=MMS4LvU3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:33852 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lqYaF-0001Eg-G3
+	for alex.bennee@linaro.org; Tue, 08 Jun 2021 06:03:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56574)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lqYa6-0001Cx-Hq
+ for qemu-arm@nongnu.org; Tue, 08 Jun 2021 06:03:34 -0400
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d]:40496)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lqYa4-0007o1-Sx
+ for qemu-arm@nongnu.org; Tue, 08 Jun 2021 06:03:34 -0400
+Received: by mail-ed1-x52d.google.com with SMTP id t3so23845321edc.7
+ for <qemu-arm@nongnu.org>; Tue, 08 Jun 2021 03:03:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=fAK72jQWfvbsBPebqRLDxZshnWftBCmkAJFK//pLDOs=;
+ b=MMS4LvU3GfiYpykcgTlH24GLc+5IUNl72PRoVnTFfozRbLnZrbkg6VFlVse6wA/Xc+
+ LQxzcMiSizBpTxM/AEHaZFOjz4Mqve6+sW79on2IryOksenEiJBNE4RBnGh3/TWk2wa0
+ +ZLe1E+oiGy/PV2Tkn2AfJRHKI2vCOUe4/cKnT46OwNttXPdjlHJFTXw1M19NLCbvx+D
+ P1XzdkT7VZs0mOSiW+0ZwdfB7IKnwf5u/jTWFW2N0edHSN6GROJNgJY2qj/rd639Mt4p
+ r/9hNEGu+hnX5wPHIOLmmK7mYd7Yj8g4/j0auXBp3IP4hkT01Zcz4RJkdOFnnI48sarP
+ xv6w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=ztjOwBWVWRcLBeGlv9kV0M01VSWdGwRS4cSf3jXheyY=;
-        b=NBBDQvAZ8bg6rbcUW8ocCZj8xkc37LE1w1enPEBsEOwAJv6iNpoIkudrm97Lu838MX
-         P1wQxcrR3ITiWAYFTIey8QJY795Y5U+Tk1nZhXu5dMr2NwRCYl2l/349bzWOEySpxbbr
-         /A2iDvZ1R7Zp38aI9SRWyEU/z/DhzlF5Oi6g9vdr5aGbo/a3DsHIrhlXJB9pga4mOAXG
-         uYjX34g/WhbBNr25ckheMrvZyz95Ekj8i1lDqt8sHWbIb3U+fnimNz+GsfqA/7UuaicS
-         xoALd7t2XJH9WO0BUf1f1Xcx3q0ZTgSWU/KSINDDL3U87gYfHqgLCks1lxld/5MgmPS/
-         weKA==
-X-Gm-Message-State: AOAM5323tprbQoEdLAzyH5zOKSjj7V6r1IQa/uF2UbceVn40eZPgMuWO
-	bplPMX0d+SGGmGbroeFEHVtbAglsI1JpZZJSQ6ySJ+NYmPmRWaPlnXOwdJ9PyCu/soNJ3skpHbU
-	HLSMEYXTW/FHwhQnW
-X-Received: by 2002:a5d:50c6:: with SMTP id f6mr7725725wrt.281.1623145728641;
-        Tue, 08 Jun 2021 02:48:48 -0700 (PDT)
-X-Received: by 2002:a5d:50c6:: with SMTP id f6mr7725702wrt.281.1623145728442;
-        Tue, 08 Jun 2021 02:48:48 -0700 (PDT)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.36] (235.red-83-57-168.dynamicip.rima-tde.net. [83.57.168.235])
-        by smtp.gmail.com with ESMTPSA id z188sm17739635wme.38.2021.06.08.02.48.47
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 08 Jun 2021 02:48:48 -0700 (PDT)
-Subject: Re: [PATCH v16 03/99] qtest: Add qtest_has_accel() method
-To: Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Eric Blake <eblake@redhat.com>,
- Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-References: <20210604155312.15902-1-alex.bennee@linaro.org>
- <20210604155312.15902-4-alex.bennee@linaro.org>
- <088d554c-ef63-0f79-cedb-bdc89b532490@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <7410b765-7252-3d19-af96-399fd34d94dc@redhat.com>
-Date: Tue, 8 Jun 2021 11:48:47 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=fAK72jQWfvbsBPebqRLDxZshnWftBCmkAJFK//pLDOs=;
+ b=i/K/80TG/M5Ypb8UlTK80NQpOuSg2Jt5YBy+3yDIHcGMkkNhjMHbod1Kn+eksD0MLu
+ izIA/WMM+jNUuChnbWfSSEDXGu83ASajlvoG2CtbnLzxxW3Y5eUiVf+2Yh1qFrTG7Jev
+ GECZ0IP35fDsRsaIOuYxM2pBkp1k7VHfnuz1MlEREIjSzIWUD27brdLgPdgrGTekJH7T
+ jaCFHcSONkyblccDkxzyALcQcF01VGdgnXmcY6DIvouLycAzZbgD8kXei9fKyiIet7os
+ kv7N0oCk7TIKoUeKT0XtX/xdg/E4ZVQyFzUCBBJG+EjIo3t8sJRnZDsuzepXOX9POX7G
+ uKFw==
+X-Gm-Message-State: AOAM53397EEFKHR84aCsr65oJro7eKxKQnoOwzuCyWhixWjSgYNfL6QH
+ zPn+dU+Os2yOJda+aQBSwrWNAmIeAxLy2Prt3/ysVw==
+X-Received: by 2002:aa7:dc12:: with SMTP id b18mr24416453edu.52.1623146611697; 
+ Tue, 08 Jun 2021 03:03:31 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <088d554c-ef63-0f79-cedb-bdc89b532490@redhat.com>
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: ySjjNIaIQaTQ
+References: <20210602180042.111347-1-shashi.mallela@linaro.org>
+ <20210602180042.111347-2-shashi.mallela@linaro.org>
+In-Reply-To: <20210602180042.111347-2-shashi.mallela@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 8 Jun 2021 11:02:58 +0100
+Message-ID: <CAFEAcA80dnOL4CmNO6wPa9FyrojcyRZPuy-3zLuOYDdf4xNvDw@mail.gmail.com>
+Subject: Re: [PATCH v4 1/8] hw/intc: GICv3 ITS initial framework
+To: Shashi Mallela <shashi.mallela@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Leif Lindholm <leif@nuviainc.com>, QEMU Developers <qemu-devel@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Radoslaw Biernacki <rad@semihalf.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ZElQaVCeOS0r
 
-On 6/7/21 3:16 PM, Thomas Huth wrote:
-> On 04/06/2021 17.51, Alex Bennée wrote:
->> From: Philippe Mathieu-Daudé <philmd@redhat.com>
->>
->> Introduce the qtest_has_accel() method which allows a runtime
->> query on whether a QEMU instance has an accelerator built-in.
->>
->> Reviewed-by: Eric Blake <eblake@redhat.com>
->> Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
->> Message-Id: <20210505125806.1263441-4-philmd@redhat.com>
->> ---
->>   tests/qtest/libqos/libqtest.h |  8 ++++++++
->>   tests/qtest/libqtest.c        | 29 +++++++++++++++++++++++++++++
->>   2 files changed, 37 insertions(+)
+On Wed, 2 Jun 2021 at 19:00, Shashi Mallela <shashi.mallela@linaro.org> wrote:
+>
+> Added register definitions relevant to ITS,implemented overall
+> ITS device framework with stubs for ITS control and translater
+> regions read/write,extended ITS common to handle mmio init between
+> existing kvm device and newer qemu device.
+>
+> Signed-off-by: Shashi Mallela <shashi.mallela@linaro.org>
+> ---
+>  hw/intc/arm_gicv3_its.c                | 240 +++++++++++++++++++++++++
+>  hw/intc/arm_gicv3_its_common.c         |   8 +-
+>  hw/intc/arm_gicv3_its_kvm.c            |   2 +-
+>  hw/intc/gicv3_internal.h               |  88 +++++++--
+>  hw/intc/meson.build                    |   1 +
+>  include/hw/intc/arm_gicv3_its_common.h |   9 +-
+>  6 files changed, 331 insertions(+), 17 deletions(-)
+>  create mode 100644 hw/intc/arm_gicv3_its.c> @@ -129,7 +132,6 @@ static void gicv3_its_common_reset(DeviceState *dev)
 
->>   +bool qtest_has_accel(const char *accel_name)
->> +{
->> +    bool has_accel = false;
->> +    QDict *response;
->> +    QList *accels;
->> +    QListEntry *accel;
->> +    QTestState *qts;
->> +
->> +    qts = qtest_initf("-accel qtest -machine none");
->> +    response = qtest_qmp(qts, "{'execute': 'query-accels'}");
->> +    accels = qdict_get_qlist(response, "return");
->> +
->> +    QLIST_FOREACH_ENTRY(accels, accel) {
->> +        QDict *accel_dict = qobject_to(QDict, qlist_entry_obj(accel));
->> +        const char *name = qdict_get_str(accel_dict, "name");
->> +
->> +        if (g_str_equal(name, accel_name)) {
->> +            has_accel = true;
->> +            break;
->> +        }
->> +    }
->> +    qobject_unref(response);
->> +
->> +    qtest_quit(qts);
->> +
->> +    return has_accel;
->> +}
-> 
-> This spawns a new instance of QEMU each time the function is called -
-> which could slow down testing quite a bit if a test calls this function
-> quite often. Would it be feasible to cache this information, so that you
-> only have to run a new instance of QEMU once?
+>      s->cbaser = 0;
+>      s->cwriter = 0;
+>      s->creadr = 0;
+> -    s->iidr = 0;
 
-Good idea!
+You don't need to delete this -- leave it for the benefit of the KVM code.
+
+Otherwise
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+thanks
+-- PMM

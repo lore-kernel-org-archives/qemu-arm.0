@@ -1,559 +1,234 @@
-Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp4448548lfa;
-        Tue, 8 Jun 2021 07:00:14 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwnItAI0rU3c4EbSzoeXVsAF8fLprSssf5EM4pycDXdvUNy6ncuTtDXJvGyZEx35Hbv2doz
-X-Received: by 2002:a25:a449:: with SMTP id f67mr35477427ybi.388.1623160813966;
-        Tue, 08 Jun 2021 07:00:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623160813; cv=none;
+Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp4432721lfa;
+        Tue, 8 Jun 2021 06:39:04 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwL1JI332VuhyU0VYsuuNPs/BgTfzaNI7T6tcD3QETeVMa3jGzDa2fPALaMgJoXq+hviDqM
+X-Received: by 2002:a67:e1d7:: with SMTP id p23mr105558vsl.4.1623159543940;
+        Tue, 08 Jun 2021 06:39:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623159543; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZeWgtPaW2C+orooAikbIj66DzMABa7GcCThcMrdnu5+CXq9kmxhcf7WWnyGvihP1K1
-         Y4VMuxRMXBMeVJL1oC5mjly/mn57pvw17uT5oRmoSol0YQIyI7k6cGY3SRNlFVKSEAyV
-         d8hcxAAja4vIVSSMOwdvzaCGPf7ykC9WkVTB69sBWU8RS9VxFEIKmyV6cDNfQaH16J/a
-         2ENFuIABMSpXa3B31dNrVJf0manRqH5vUBqm3oMWkcfFNgTE/9kANEZuawmjO+ZHfqlP
-         J2gcLH+q5QDNmnfN+NBQqZ3lvOFavulDqDfiDVuv2xagRkrV4cLgqIH7gaUtL8Lzhydv
-         zFMQ==
+        b=mN+GmcC7ue/enpMg7alFgHp3ohSUO+a26kTNWrwfE1WBE6brHZ+xBeu7Oop7kqjeId
+         8KJHJq7N4yWJULTlQI+ZPcsN+SbgUgg+f8tipCIsp+NEe/Yym7ZeeIM5yYjojjAPt/1C
+         LT49LaUepZi+rQ5VCt6K2e5QIdxU8dhj0EE/YWWtGoMlQUebYujVJpL0rZ6aywoJPLMV
+         V+wO1CAAGhLTAUt/NygmuT/R6NIdntebDvQxxqsNyiUu4RSi6+a+phu6Tey8NzE4ZF/N
+         b9BbGfLMXKV19mwquXhBOV9Y3PrzH+sgN0+7L/QT2NL1B3U8oNDdL0nK+Gu+5UV3nWFQ
+         MNOw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=834298Gw/zibEh7v0BnVyZyaOuvaq5pQeQ6C9+8mGyo=;
-        b=EIHzB1pxhnwqRrbUp9zdL6rC/aUR6IMJAB2w6aNCt5zZjzFQoTSSLR64erE84I9sLs
-         3ecZMat/RMl/S7rhgV+KoPrufXgrOpgWxAxexAP1EoB046m2J/nZ4d2LcMnZA0p84HKA
-         sfgYYkb2txEE0nazyxfJLVGvkQNddO0k95xJyEgyqPhEcbi2gen2+752JjmNpjCsEHii
-         gIfJvj40xRnBjcSd69FHxryhyeo4I8z57euRGQUdLp4KJaMDIhPC0wjcG0Nq/pwgpA6B
-         mIePACxkVY9AzR4tGhaV1yi3RKZmZlAMpnodDDjelKx8iwMo9e8d3Lr0VXmanEWrru7B
-         eV2w==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=R5INkCumvjSBA4Q/Wq2jCLHwioNGtsVbnsIx6dLek9g=;
+        b=gf0AyjoJQR+sOOoWjesCuOeiBW2/QnClPEopAIPG0YZVHRuBcD8azyzM9Xug5kjYGz
+         L6E+WREMPTTT3F+UXO/achVCqSwg0MDPHEKKz7V6UTByWqxNFZyuoSFIv6dAM8f8QDby
+         0IK2vY9RvigCmF+4Sgyeb+joLCKln8x2RXKJCDaDqNTUK+wiMoe9r9ia5f4/DOWvv8Ta
+         nVG11xnA2GCtThs+Yt1LJzj4TJw1NsZUoshQsajV6GzD+2uY28sPuNIDqqjQCp1Ad5Ls
+         tAcEZfh/z/Mq+offfugYxjSdzFifJjI8FrfeOFaG2HZH9xJIVW7wdU3PIIBwECSX9ZqB
+         06LQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=mIk828B9;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KV4mjCEz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f71si16727186ybg.76.2021.06.08.07.00.13
+        by mx.google.com with ESMTPS id v2si6208964vse.311.2021.06.08.06.39.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Jun 2021 07:00:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 08 Jun 2021 06:39:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=mIk828B9;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:44094 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KV4mjCEz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:50628 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lqcH7-0002LS-8W
-	for alex.bennee@linaro.org; Tue, 08 Jun 2021 10:00:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49900)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lqbwd-0003zn-5M
+	for alex.bennee@linaro.org; Tue, 08 Jun 2021 09:39:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45736)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lqcFa-0007zP-Kz
- for qemu-devel@nongnu.org; Tue, 08 Jun 2021 09:58:38 -0400
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c]:45766)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lqcFX-0003Dd-K1
- for qemu-devel@nongnu.org; Tue, 08 Jun 2021 09:58:38 -0400
-Received: by mail-ed1-x52c.google.com with SMTP id r7so10224274edv.12
- for <qemu-devel@nongnu.org>; Tue, 08 Jun 2021 06:58:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=834298Gw/zibEh7v0BnVyZyaOuvaq5pQeQ6C9+8mGyo=;
- b=mIk828B9fG5nKLRculm72iOWeUDN/PedsDOWcAQTcca2GjxHBar0UrXh/Jh3EI91od
- R+pw36HDKT9LGMXg/leaLpmaWRCiL5k9wy6sS57cUWeeGjiLY9bQVHqdYp3SvsqntBlv
- A5yBluewDLrs0sMWpk8guQDPE+ugzh0U6x2OXDl1P2gIEK2jrkTp/sXp2SjiWLdEuJYL
- WF6+AR5L2nRpIMSPGk6rEyf/ZXjILjW55X4prnicCHbNgL6sVdMTPStxXMj2EjK4LTuj
- 0y0+lo7nz+2z6DHXOmhS9rOiRxQweCxWeFdcWuxtDgbZYtr55sF8lB4zC+e+yXwORlTf
- DEQQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=834298Gw/zibEh7v0BnVyZyaOuvaq5pQeQ6C9+8mGyo=;
- b=RXC2D5H14OwQerdsYtcMz4GsbYPtWq1qWQ10JDVRTazbwcZbRRvSVVUUyDUkNBQ6vE
- Lc3kMsRTcpOpnBoagdpmsEJLCtMXWc4fO/Rpjum4f8kyxPcEI5/zUVzwyFxVFJu0vveg
- wdQ/BPqfkVzXekAB4NWCI8EvIv83W7U/b3s5LuBS0Uxki0KIuin43kmnurcD+92fy4nG
- kLeYEU811gzxgCInY9OJeo4xZ05cI3qWUTVTWLNQTjCWx0/Oq1xg4r0FRKwrEq5N/4nO
- yndMP12nhA50WrrHaxXY1fQVtQ7So2XOXhzUcVKt+TK6RwYdAV629ipGD7BqRcDkwubQ
- u6hA==
-X-Gm-Message-State: AOAM533L8oxS9IiUrfWAzxhVveTd7IZt7fRcj9fyQH3ru5awYpjq/iBT
- ghMu4/HL9ci4Qez3CZhYzVomy5IaJKyy3vSkTwl+LQ==
-X-Received: by 2002:a05:6402:416:: with SMTP id
- q22mr25624761edv.204.1623160712213; 
- Tue, 08 Jun 2021 06:58:32 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1lqbwT-0003xw-Uu
+ for qemu-arm@nongnu.org; Tue, 08 Jun 2021 09:38:53 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:43864)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1lqbwS-0007Yo-8V
+ for qemu-arm@nongnu.org; Tue, 08 Jun 2021 09:38:53 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1623159531;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=R5INkCumvjSBA4Q/Wq2jCLHwioNGtsVbnsIx6dLek9g=;
+ b=KV4mjCEzyWrhMEx0G5aVbvWNtaWbhfrFIips+2DyyHx3S4EndGkeOmERo8QQK2ydc+RCnQ
+ ipF7ZB47DHqm7XjqLKmJFirX/6qln/vECAlhGE496EOHYPdvCwNM7AuTwPGnrUlBA/IHAo
+ UWVA+r3T0RHW2CVSOArQYQTw2/Y68MY=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-274-3AXi4ySJNKmdhq1xiOAJ_A-1; Tue, 08 Jun 2021 09:38:48 -0400
+X-MC-Unique: 3AXi4ySJNKmdhq1xiOAJ_A-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AC238800D62;
+ Tue,  8 Jun 2021 13:38:46 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.75])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 63B275C1BB;
+ Tue,  8 Jun 2021 13:38:28 +0000 (UTC)
+Date: Tue, 8 Jun 2021 15:38:28 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Xingang Wang <wangxingang5@huawei.com>
+Subject: Re: [PATCH v4 0/8] IOMMU: Add support for IOMMU Bypass Feature
+Message-ID: <20210608153828.05b400e6@redhat.com>
+In-Reply-To: <f04e5527-d9d8-953e-a572-83b91bcd05c7@huawei.com>
+References: <1621914605-14724-1-git-send-email-wangxingang5@huawei.com>
+ <20210605143238.2e52b08a@redhat.com>
+ <f04e5527-d9d8-953e-a572-83b91bcd05c7@huawei.com>
 MIME-Version: 1.0
-References: <20210602180042.111347-1-shashi.mallela@linaro.org>
- <20210602180042.111347-7-shashi.mallela@linaro.org>
-In-Reply-To: <20210602180042.111347-7-shashi.mallela@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 8 Jun 2021 14:57:58 +0100
-Message-ID: <CAFEAcA-=w8WA5o-nnR4VuEDV28n65aCzM9M0Km8yTDGy=NHL+A@mail.gmail.com>
-Subject: Re: [PATCH v4 6/8] hw/intc: GICv3 redistributor ITS processing
-To: Shashi Mallela <shashi.mallela@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.197,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Leif Lindholm <leif@nuviainc.com>, QEMU Developers <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>, Radoslaw Biernacki <rad@semihalf.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4AnKGbTHE+Mc
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: xieyingtai@huawei.com, peter.maydell@linaro.org, ehabkost@redhat.com,
+ mst@redhat.com, shannon.zhaosl@gmail.com, richard.henderson@linaro.org,
+ qemu-devel@nongnu.org, eric.auger@redhat.com, qemu-arm@nongnu.org,
+ marcel.apfelbaum@gmail.com, pbonzini@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: CNxbaodDyiEB
 
-On Wed, 2 Jun 2021 at 19:00, Shashi Mallela <shashi.mallela@linaro.org> wrote:
->
-> Implemented lpi processing at redistributor to get lpi config info
-> from lpi configuration table,determine priority,set pending state in
-> lpi pending table and forward the lpi to cpuif.Added logic to invoke
-> redistributor lpi processing with translated LPI which set/clear LPI
-> from ITS device as part of ITS INT,CLEAR,DISCARD command and
-> GITS_TRANSLATER processing.
->
-> Signed-off-by: Shashi Mallela <shashi.mallela@linaro.org>
-> ---
->  hw/intc/arm_gicv3.c                |   9 ++
->  hw/intc/arm_gicv3_common.c         |   1 +
->  hw/intc/arm_gicv3_cpuif.c          |   7 +-
->  hw/intc/arm_gicv3_its.c            |  14 ++-
->  hw/intc/arm_gicv3_redist.c         | 145 +++++++++++++++++++++++++++++
->  hw/intc/gicv3_internal.h           |  10 ++
->  include/hw/intc/arm_gicv3_common.h |  10 ++
->  7 files changed, 190 insertions(+), 6 deletions(-)
+On Tue, 8 Jun 2021 20:24:35 +0800
+Xingang Wang <wangxingang5@huawei.com> wrote:
 
-The code for finding/updating the best pending LPI looks a lot
-better in this version -- thanks for working through that.
+> Hi Igor,
+> 
+> On 2021/6/5 20:32, Igor Mammedov wrote:
+> > On Tue, 25 May 2021 03:49:57 +0000
+> > Wang Xingang <wangxingang5@huawei.com> wrote:
+> >   
+> >> From: Xingang Wang <wangxingang5@huawei.com>
+> >>
+> >> These patches add support for configure bypass_iommu on/off for
+> >> pci root bus, including primary bus and pxb root bus. At present,
+> >> all root bus will go through iommu when iommu is configured,
+> >> which is not flexible, because in many situations the need for using
+> >> iommu and bypass iommu aften exists at the same time.  
+> > 
+> > 'many situations' doesn't describe why bypass is needed,
+> > can you provide a use-cases here and what are security implications
+> > when bypass is allowed.
+> > (PS: the later probably should be documented somewhere in the docs/option description)
+> >     
+> 
+> It is possible that some devices support the iommu and some devices do 
+> not. When we need to pass through both kind of devices to a virtual
+> machine, bypass iommu would help.
+> 
+> E.g I have a HiSilicon network and computing encryption device(SEC),
+> which supports both iommu and noiommu mode. If I have to use a SEC in
+> noiommu mode along with another device which need iommu, then it would
+> need this bypass iommu feature.
+> 
+> Besides, bypass iommu would have less performance loss because there
+> might be many trap in and out using a virtual iommu.
+usually if one enables 'iommu', one wants the isolation it provides.
+so the bypass option negates that. Why not just use machine with IOMMU
+disabled globally in the first place?
 
-An important thing which I hadn't realized previously:
-the hpplpi information counts as information cached from the
-LPI configuration tables (because it is based on the priority
-and enable-bit information from those tables). That means that when
-the guest sends the ITS INV or INVALL command we need to throw it
-away and recalculate by calling gicv3_redist_update_lpi().
-(The idea here is that the guest can validly raise the priority
-of an interrupt by the sequence "write to table; INVALL; SYNC",
-and we need to correctly figure out that that might mean that
-that LPI is now the interrupt we should be taking.)
+> However there might be potential security risks without iommu,
+> as devices might send malicious dma requests.
+> It would be necessary to only bypass iommu for trusted devices.
+that's what I was worried about, at least it should be documented
+or a warning printed to discourage using the feature.
 
-> diff --git a/hw/intc/arm_gicv3.c b/hw/intc/arm_gicv3.c
-> index d63f8af604..4d19190b9c 100644
-> --- a/hw/intc/arm_gicv3.c
-> +++ b/hw/intc/arm_gicv3.c
-> @@ -165,6 +165,15 @@ static void gicv3_redist_update_noirqset(GICv3CPUState *cs)
->          cs->hppi.grp = gicv3_irq_group(cs->gic, cs, cs->hppi.irq);
->      }
->
-> +    if (cs->gic->lpi_enable && cs->lpivalid) {
+> 
+> Thanks
+> 
+> Xingang
+> 
+> >> So this add option to enable/disable bypass_iommu for primary bus
+> >> and pxb root bus. The bypass_iommu property is set to false default,
+> >> meaning that devcies will go through iommu if no explicit configuration
+> >> is added. When bypass_iommu is enabled for the root bus, devices
+> >> attached to it will bypass iommu, otherwise devices will go through
+> >> iommu.
+> >>
+> >> This feature can be used in this manner:
+> >> arm: -machine virt,iommu=smmuv3,bypass_iommu=true
+> >> x86: -machine q35,bypass_iommu=true
+> >> pxb: -device pxb-pcie,bus_nr=0x10,id=pci.10,bus=pcie.0,bypass_iommu=true
+> >>
+> >> History:
+> >>
+> >> v3 -> v4:
+> >> - simplify the logic in building the IORT idmap
+> >>
+> >> v2 -> v3:
+> >> - rebase on top of v6.0.0-rc4
+> >> - Took into account Eric's comments, replace with a bypass_iommu
+> >>    proerty
+> >> - When building the IORT idmap, cover the whole RID space
+> >>
+> >> v1 -> v2:
+> >> - rebase on top of v6.0.0-rc0
+> >> - Fix some issues
+> >> - Took into account Eric's comments, and remove the PCI_BUS_IOMMU flag,
+> >>    replace it with a property in PCIHostState.
+> >> - Add support for x86 iommu option
+> >>
+> >> Xingang Wang (8):
+> >>    hw/pci/pci_host: Allow bypass iommu for pci host
+> >>    hw/pxb: Add a bypass iommu property
+> >>    hw/arm/virt: Add a machine option to bypass iommu for primary bus
+> >>    hw/i386: Add a pc machine option to bypass iommu for primary bus
+> >>    hw/pci: Add pci_bus_range to get bus number range
+> >>    hw/arm/virt-acpi-build: Add explicit IORT idmap for smmuv3 node
+> >>    hw/i386/acpi-build: Add explicit scope in DMAR table
+> >>    hw/i386/acpi-build: Add bypass_iommu check when building IVRS table
+> >>
+> >>   hw/arm/virt-acpi-build.c            | 135 ++++++++++++++++++++++++----
+> >>   hw/arm/virt.c                       |  26 ++++++
+> >>   hw/i386/acpi-build.c                |  70 ++++++++++++++-
+> >>   hw/i386/pc.c                        |  18 ++++
+> >>   hw/pci-bridge/pci_expander_bridge.c |   3 +
+> >>   hw/pci-host/q35.c                   |   1 +
+> >>   hw/pci/pci.c                        |  33 ++++++-
+> >>   hw/pci/pci_host.c                   |   2 +
+> >>   include/hw/arm/virt.h               |   1 +
+> >>   include/hw/i386/pc.h                |   1 +
+> >>   include/hw/pci/pci.h                |   2 +
+> >>   include/hw/pci/pci_host.h           |   1 +
+> >>   12 files changed, 270 insertions(+), 23 deletions(-)
+> >>  
+> > 
+> > .
+> >   
+> 
+> .
+> 
 
-You don't need a separate lpivalid flag -- you can use
-hpplpi.prio == 0xff as your "no pending LPI" indication.
-This is how the existing cs->hppi works.
-(irqbetter() will always return false if passed an 0xff priority,
-so you don't need to special case check anything here.)
-
-> +        if (irqbetter(cs, cs->hpplpi.irq, cs->hpplpi.prio)) {
-> +            cs->hppi.irq = cs->hpplpi.irq;
-> +            cs->hppi.prio = cs->hpplpi.prio;
-> +            cs->hppi.grp = cs->hpplpi.grp;
-> +            seenbetter = true;
-> +        }
-> +    }
-> +
->      /* If the best interrupt we just found would preempt whatever
->       * was the previous best interrupt before this update, then
->       * we know it's definitely the best one now.
-> diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
-> index 53dea2a775..223db16fec 100644
-> --- a/hw/intc/arm_gicv3_common.c
-> +++ b/hw/intc/arm_gicv3_common.c
-> @@ -435,6 +435,7 @@ static void arm_gicv3_common_reset(DeviceState *dev)
->          memset(cs->gicr_ipriorityr, 0, sizeof(cs->gicr_ipriorityr));
->
->          cs->hppi.prio = 0xff;
-> +        cs->hpplpi.prio = 0xff;
->
->          /* State in the CPU interface must *not* be reset here, because it
->           * is part of the CPU's reset domain, not the GIC device's.
-> diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
-> index 81f94c7f4a..5be3efaa3f 100644
-> --- a/hw/intc/arm_gicv3_cpuif.c
-> +++ b/hw/intc/arm_gicv3_cpuif.c
-> @@ -898,10 +898,12 @@ static void icc_activate_irq(GICv3CPUState *cs, int irq)
->          cs->gicr_iactiver0 = deposit32(cs->gicr_iactiver0, irq, 1, 1);
->          cs->gicr_ipendr0 = deposit32(cs->gicr_ipendr0, irq, 1, 0);
->          gicv3_redist_update(cs);
-> -    } else {
-> +    } else if (irq < GICV3_LPI_INTID_START) {
->          gicv3_gicd_active_set(cs->gic, irq);
->          gicv3_gicd_pending_clear(cs->gic, irq);
->          gicv3_update(cs->gic, irq, 1);
-> +    } else {
-> +        gicv3_redist_lpi_pending(cs, irq, 0);
->      }
->  }
->
-> @@ -1317,7 +1319,8 @@ static void icc_eoir_write(CPUARMState *env, const ARMCPRegInfo *ri,
->      trace_gicv3_icc_eoir_write(is_eoir0 ? 0 : 1,
->                                 gicv3_redist_affid(cs), value);
->
-> -    if (irq >= cs->gic->num_irq) {
-> +    if ((irq >= cs->gic->num_irq) &&  (!(cs->gic->lpi_enable &&
-> +        (irq >= GICV3_LPI_INTID_START)))) {
-
-Please put the line break after the first &&, not the second. That means
-that you avoid linebreaking in the middle of a () expression.
-Also you don't need the () on the outside of the !.
-
->          /* This handles two cases:
->           * 1. If software writes the ID of a spurious interrupt [ie 1020-1023]
->           * to the GICC_EOIR, the GIC ignores that write.
-> diff --git a/hw/intc/arm_gicv3_its.c b/hw/intc/arm_gicv3_its.c
-> index 0a978cf55b..e0fbd4041f 100644
-> --- a/hw/intc/arm_gicv3_its.c
-> +++ b/hw/intc/arm_gicv3_its.c
-> @@ -211,6 +211,7 @@ static MemTxResult process_int(GICv3ITSState *s, uint64_t value,
->      bool ite_valid = false;
->      uint64_t cte = 0;
->      bool cte_valid = false;
-> +    uint64_t rdbase;
->      uint64_t itel = 0;
->      uint32_t iteh = 0;
->
-> @@ -267,10 +268,15 @@ static MemTxResult process_int(GICv3ITSState *s, uint64_t value,
->           * command in the queue
->           */
->      } else {
-> -        /*
-> -         * Current implementation only supports rdbase == procnum
-> -         * Hence rdbase physical address is ignored
-> -         */
-> +        rdbase = (cte >> 1U) & RDBASE_PROCNUM_MASK;
-> +        assert(rdbase <= s->gicv3->num_cpu);
-
-We just read cte from guest memory. We mustn't allow guests to
-trigger assert()s in QEMU, so if the value is out of range then
-we need to handle it by treating the command as invalid, not by crashing.
-
-Also, your bounds-check is off by one; it should be "<", not "<=".
-
-> +
-> +        if ((cmd == CLEAR) || (cmd == DISCARD)) {
-> +            gicv3_redist_process_lpi(&s->gicv3->cpu[rdbase], pIntid, 0);
-> +        } else {
-> +            gicv3_redist_process_lpi(&s->gicv3->cpu[rdbase], pIntid, 1);
-> +        }
-> +
->          if (cmd == DISCARD) {
->              /* remove mapping from interrupt translation table */
->              res = update_ite(s, eventid, dte, itel, iteh);
-> diff --git a/hw/intc/arm_gicv3_redist.c b/hw/intc/arm_gicv3_redist.c
-> index fb9a4ee3cc..bfc6e4e9b9 100644
-> --- a/hw/intc/arm_gicv3_redist.c
-> +++ b/hw/intc/arm_gicv3_redist.c
-> @@ -255,6 +255,11 @@ static MemTxResult gicr_writel(GICv3CPUState *cs, hwaddr offset,
->          if (cs->gicr_typer & GICR_TYPER_PLPIS) {
->              if (value & GICR_CTLR_ENABLE_LPIS) {
->                  cs->gicr_ctlr |= GICR_CTLR_ENABLE_LPIS;
-> +                /* Check for any pending interr in pending table */
-> +                cs->lpivalid = false;
-> +                cs->hpplpi.prio = 0xff;
-> +                gicv3_redist_update_lpi(cs);
-> +                gicv3_redist_update(cs);
->              } else {
->                  cs->gicr_ctlr &= ~GICR_CTLR_ENABLE_LPIS;
->              }
-> @@ -534,6 +539,146 @@ MemTxResult gicv3_redist_write(void *opaque, hwaddr offset, uint64_t data,
->      return r;
->  }
->
-> +void gicv3_redist_update_lpi(GICv3CPUState *cs)
-> +{
-> +    /*
-> +     * This function scans the LPI pending table and for each pending
-> +     * LPI, reads the corresponding entry from LPI configuration table
-> +     * to extract the priority info and determine if the LPI priority
-> +     * is lower than the current high priority interrupt.If yes, update
-
-Missing space after ".".
-
-> +     * high priority pending interrupt to that of LPI.
-> +     */
-> +    AddressSpace *as = &cs->gic->dma_as;
-> +    uint64_t lpict_baddr, lpipt_baddr;
-> +    uint32_t pendt_size = 0;
-> +    uint8_t lpite;
-> +    uint8_t prio, pend;
-> +    int i;
-> +    uint64_t idbits;
-
-You should set hpplpi.prio = 0xff; here, so you don't need to do
-it at every callsite.
-
-That is, what you're really doing in this function is "recalculate the
-hpplpi information from scratch".
-
-> +
-> +    idbits = MIN(FIELD_EX64(cs->gicr_propbaser, GICR_PROPBASER, IDBITS),
-> +                 GICD_TYPER_IDBITS);
-> +
-> +    if ((!cs->gicr_ctlr & GICR_CTLR_ENABLE_LPIS) || !cs->gicr_propbaser ||
-
-This is the set of missing brackets that clang complains about: it should
-be "!(cs->gicr_ctlr & GICR_CTLR_ENABLE_LPIS)" because ! has higher priority
-than &.
-
-> +        !cs->gicr_pendbaser || (idbits < GICR_PROPBASER_IDBITS_THRESHOLD)) {
-> +        return;
-> +    }
-> +
-> +    lpict_baddr = cs->gicr_propbaser & R_GICR_PROPBASER_PHYADDR_MASK;
-> +
-> +    lpipt_baddr = cs->gicr_pendbaser & R_GICR_PENDBASER_PHYADDR_MASK;
-> +
-> +    /* Determine the highest priority pending interrupt among LPIs */
-> +    pendt_size = (1ULL << (idbits + 1));
-> +
-> +    for (i = 0; i < pendt_size / 8; i++) {
-> +        address_space_read(as, lpipt_baddr +
-> +                (((GICV3_LPI_INTID_START + i) / 8) * sizeof(pend)),
-> +                MEMTXATTRS_UNSPECIFIED, &pend, sizeof(pend));
-> +
-> +        if ((1 << ((GICV3_LPI_INTID_START + i) % 8)) & pend) {
-
-Better written as "if (the pend bit is not set) continue;"
-
-> +            address_space_read(as, lpict_baddr + (i * sizeof(lpite)),
-> +                      MEMTXATTRS_UNSPECIFIED, &lpite, sizeof(lpite));
-> +
-> +            if (!(lpite & LPI_CTE_ENABLED)) {
-> +                continue;
-> +            }
-> +
-> +            if (cs->gic->gicd_ctlr & GICD_CTLR_DS) {
-> +                prio = lpite & LPI_PRIORITY_MASK;
-> +            } else {
-> +                prio = lpite & LPI_SPRIORITY_MASK;
-
-This isn't the right calculation. When reading a priority value
-when GICD_CTLR.DS is zero, you need to shift it right by one
-and set bit 7:
-    prio = ((lpite & LPI_PRIORITY_MASK) >> 1) & 0x80;
-
-> +            }
-> +
-> +            if (prio <= cs->hpplpi.prio) {
-> +                cs->hpplpi.irq = GICV3_LPI_INTID_START + i;
-> +                cs->hpplpi.prio = prio;
-> +                /* LPIs are always non-secure Grp1 interrupts */
-> +                cs->hpplpi.grp = GICV3_G1NS;
-> +                cs->lpivalid = true;
-> +            }
-> +        }
-> +    }
-> +}
-> +
-> +void gicv3_redist_lpi_pending(GICv3CPUState *cs, int irq, int level)
-> +{
-> +    AddressSpace *as = &cs->gic->dma_as;
-> +    uint64_t lpipt_baddr;
-> +    bool ispend = false;
-> +    uint8_t pend;
-> +
-> +    /*
-> +     * get the bit value corresponding to this irq in the
-> +     * lpi pending table
-> +     */
-> +    lpipt_baddr = cs->gicr_pendbaser & R_GICR_PENDBASER_PHYADDR_MASK;
-> +
-> +    address_space_read(as, lpipt_baddr + ((irq / 8) * sizeof(pend)),
-> +                         MEMTXATTRS_UNSPECIFIED, &pend, sizeof(pend));
-> +    ispend = ((pend >> (irq % 8)) & 0x1);
-> +
-> +    if (ispend) {
-> +        if (!level) {
-> +            /*
-> +             * clear the pending bit and update the lpi pending table
-> +             */
-> +            pend &= ~(1 << (irq % 8));
-> +
-> +            address_space_write(as, lpipt_baddr + ((irq / 8) * sizeof(pend)),
-> +                                 MEMTXATTRS_UNSPECIFIED, &pend, sizeof(pend));
-> +        }
-> +    } else {
-> +        if (level) {
-> +            /*
-> +             * if pending bit is not already set for this irq,turn-on the
-> +             * pending bit and update the lpi pending table
-> +             */
-> +            pend |= (1 << (irq % 8));
-> +
-> +            address_space_write(as, lpipt_baddr + ((irq / 8) * sizeof(pend)),
-> +                                 MEMTXATTRS_UNSPECIFIED, &pend, sizeof(pend));
-> +        }
-> +    }
-
-You can simplify this code a bit:
-
-    address_space_read(as, lpipt_baddr + ((irq / 8) * sizeof(pend)),
-                       MEMTXATTRS_UNSPECIFIED, &pend, sizeof(pend));
-    ispend = extract32(pend, irq % 8, 1);
-    if (ispend == level) {
-        return;
-    }
-    pend = deposit32(pend, irq % 8, 1, level ? 1 : 0);
-    address_space_write(as, lpipt_baddr + ((irq / 8) * sizeof(pend)),
-                        MEMTXATTRS_UNSPECIFIED, &pend, sizeof(pend));
-
-
-> +    cs->lpivalid = false;
-> +    cs->hpplpi.prio = 0xff;
-> +    gicv3_redist_update_lpi(cs);
-
-You can avoid doing a full update a lot of the time:
- * if this LPI is worse than the current value in hpplpi
-   (where by "worse" I mean lower-priority by the same kind of
-   comparison irqbetter() does) then we haven't changed the best-available
-   pending LPI, so we don't need to do an update
- * if we set the pending bit to 1 and the LPI is enabled and the priority
-   of this LPI is better than the current hpplpi, then we know this LPI
-   is now the best, so we can just set hpplpi.prio and .irq without
-   doing a full rescan
- * if we didn't actually change the value of the pending bit, we
-   don't need to do an update (you get this for free if you take the
-   simplification suggestion I make above, which does an early-return
-   in the "no change" case)
-
-> +}
-> +
-> +void gicv3_redist_process_lpi(GICv3CPUState *cs, int irq, int level)
-> +{
-> +    AddressSpace *as = &cs->gic->dma_as;
-> +    uint64_t lpict_baddr;
-> +    uint8_t lpite;
-> +    uint64_t idbits;
-> +
-> +    idbits = MIN(FIELD_EX64(cs->gicr_propbaser, GICR_PROPBASER, IDBITS),
-> +                 GICD_TYPER_IDBITS);
-> +
-> +    if ((!cs->gicr_ctlr & GICR_CTLR_ENABLE_LPIS) || !cs->gicr_propbaser ||
-
-This is the other set of missing brackets that clang complains about.
-
-> +         !cs->gicr_pendbaser || (idbits < GICR_PROPBASER_IDBITS_THRESHOLD) ||
-> +         (irq > (1ULL << (idbits + 1)))) {
-> +        return;
-> +    }
-> +
-> +    lpict_baddr = cs->gicr_propbaser & R_GICR_PROPBASER_PHYADDR_MASK;
-> +
-> +    /* get the lpi config table entry corresponding to this irq */
-> +    address_space_read(as, lpict_baddr + ((irq - GICV3_LPI_INTID_START) *
-> +                        sizeof(lpite)), MEMTXATTRS_UNSPECIFIED,
-> +                        &lpite, sizeof(lpite));
-> +
-> +    /* check if this irq is enabled before proceeding further */
-> +    if (!(lpite & LPI_CTE_ENABLED)) {
-> +        return;
-> +    }
-
-I don't think you need to make this check -- you can just set/clear
-the pending status of the LPI. If the LPI is not enabled then it will
-be ignored by gicv3_redist_update_lpi(). This is how non-LPI interrupts
-work and I think that LPIs behave the same way. (But it's a big spec,
-so I might have missed something -- if I'm wrong, please say so.)
-
-> +
-> +    /* set/clear the pending bit for this irq */
-> +    gicv3_redist_lpi_pending(cs, irq, level);
-> +
-> +    gicv3_redist_update(cs);
-> +}
-> +
->  void gicv3_redist_set_irq(GICv3CPUState *cs, int irq, int level)
->  {
->      /* Update redistributor state for a change in an external PPI input line */
-> diff --git a/hw/intc/gicv3_internal.h b/hw/intc/gicv3_internal.h
-> index 91dbe01176..bcbccba573 100644
-> --- a/hw/intc/gicv3_internal.h
-> +++ b/hw/intc/gicv3_internal.h
-> @@ -308,6 +308,13 @@ FIELD(GITS_TYPER, CIL, 36, 1)
->
->  #define L1TABLE_ENTRY_SIZE         8
->
-> +#define LPI_CTE_ENABLE_OFFSET      0
-> +#define LPI_CTE_ENABLED          VALID_MASK
-> +#define LPI_CTE_PRIORITY_OFFSET    2
-> +#define LPI_CTE_PRIORITY_MASK     ((1U << 6) - 1)
-> +#define LPI_PRIORITY_MASK         0xfc
-> +#define LPI_SPRIORITY_MASK        0x7e
-> +
->  #define GITS_CMDQ_ENTRY_SIZE               32
->  #define NUM_BYTES_IN_DW                     8
->
-> @@ -452,6 +459,9 @@ MemTxResult gicv3_redist_write(void *opaque, hwaddr offset, uint64_t data,
->                                 unsigned size, MemTxAttrs attrs);
->  void gicv3_dist_set_irq(GICv3State *s, int irq, int level);
->  void gicv3_redist_set_irq(GICv3CPUState *cs, int irq, int level);
-> +void gicv3_redist_process_lpi(GICv3CPUState *cs, int irq, int level);
-> +void gicv3_redist_lpi_pending(GICv3CPUState *cs, int irq, int level);
-> +void gicv3_redist_update_lpi(GICv3CPUState *cs);
->  void gicv3_redist_send_sgi(GICv3CPUState *cs, int grp, int irq, bool ns);
->  void gicv3_init_cpuif(GICv3State *s);
->
-> diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
-> index c1348cc60a..5d839da9c9 100644
-> --- a/include/hw/intc/arm_gicv3_common.h
-> +++ b/include/hw/intc/arm_gicv3_common.h
-> @@ -204,6 +204,16 @@ struct GICv3CPUState {
->       * real state above; it doesn't need to be migrated.
->       */
->      PendingIrq hppi;
-> +
-> +    /*
-> +     * Current highest priority pending lpi for this CPU.
-> +     * This is cached information that can be recalculated from the
-> +     * real state above; it doesn't need to be migrated.
-
-This comment is true for hppi, but not for hpplpi. For hpplpi
-it is "cached information that can be recalculated from the LPI
-tables in guest memory".
-
-This means that we need either to:
- (1) call gicv3_redist_update_lpi() in an appropriate post-load function
-so that the field gets re-calculated on the destination end of a migration
- (2) migrate the hpplpi fields
-
-Option 1 is what we do for hppi: arm_gicv3_post_load() calls
-gicv3_full_update_noirqset(), which does a full recalculation of the
-GIC state. Calling gicv3_redist_update_lpi() in arm_gicv3_post_load()
-before it calls gicv3_full_update_noirqset() is probably the best thing.
-
-> +     */
-> +    PendingIrq hpplpi;
-> +
-> +    bool lpivalid; /* current highest priority lpi validity status */
-> +
->      /* This is temporary working state, to avoid a malloc in gicv3_update() */
->      bool seenbetter;
->  };
-> --
-> 2.27.0
->
-
-thanks
--- PMM

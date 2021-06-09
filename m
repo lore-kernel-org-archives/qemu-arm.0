@@ -1,388 +1,247 @@
-Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp4655921lfa;
-        Tue, 8 Jun 2021 10:43:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwkpfrBoBORZAr7eZSl/gxbdmWUz3B2xWt+NzMyKUe7eAjCJYsJhc6Eck4cqezV8kozfNA8
-X-Received: by 2002:a67:2d49:: with SMTP id t70mr1668311vst.14.1623174203464;
-        Tue, 08 Jun 2021 10:43:23 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1623174203; cv=pass;
+Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp5317293lfa;
+        Wed, 9 Jun 2021 04:58:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw6phDSIGEaYs1ljP8YTT9m2g8WTvLj6x6Ph4djsAPHzAdaoIGZt9ZFvGSyw08RacVc72zj
+X-Received: by 2002:a17:906:27d3:: with SMTP id k19mr27341349ejc.368.1623239935144;
+        Wed, 09 Jun 2021 04:58:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623239935; cv=none;
         d=google.com; s=arc-20160816;
-        b=Rd2HpxLODFFVyG7hG70qhsBs61VNo/c31/fpcSdLLf+YIcq04FyGfOmoW/e7Shpw4s
-         NnX8QyWaETSwh8N/AQe7jBMJv4eVzIHw4uXz1h1+Axr+wG12MmSZHPeCXgUcKdoKwCJr
-         V/fBurZWUsdmCvz+aWHtOHPNeRxgwK5SqQxK8QhXKPfgLqvIVoDjN30IBvQWd4uRxUKu
-         LM5HyhkMX/mSSllgufZKTjvn+854DTcphnSNmo/YbdgMSXENlHa3ngD5jkSv9Vc5Oc7A
-         FNQDt+3vEWqP+B3D2yOEl8e14SkjHmFdgdFk9A553BNytP9WHboK9RDvz0bGrZqpwSEz
-         tm6g==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:msip_labels:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:to:from:dkim-signature:ironport-sdr
-         :dkim-signature:resent-to:resent-message-id:resent-date:resent-from;
-        bh=d6CiexG1Uj8rNUG2l1iFDoTq+H6RimfLHx9rZrWTT4g=;
-        b=vLTA4Q6a5tjRTGCVGK5+kxYcqyE62bkdJgxnsXTLm6D7LyWHo343y9TGGgm7mBzzac
-         9jJWfFyvkATxzhmMD+WnBMDubZ03f2tdV5GuNX275uhd6L4pDyoJVX8Yc7EVfRbJVrE/
-         qUtWib5jO+ZVNdcK08i1LTsBwmTToJNZTt+qzlwtmNCLkKgf4mrL3hpfYpbFoU8CXCbf
-         fGy0+KjZFLDVB9JPDT6+uc/L4ODqzgnBypN1rvLdktpipez8i03ztOip1xsJmAzw/fMy
-         qoalNwgksOO0IxE5lVrvhUXAHA2Qki76HX/Nama31qbrY0eJL6Fquk4HcfQvrR4gPHMQ
-         mftw==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=fail (test mode) header.i=@fujitsu.com header.s=fj1 header.b=Nvl2y5aI;
-       dkim=pass header.i=@fujitsu.onmicrosoft.com header.s=selector2-fujitsu-onmicrosoft-com header.b=dvRSzE9v;
-       arc=pass (i=1 spf=pass spfdomain=fujitsu.com dkim=pass dkdomain=fujitsu.com dmarc=pass fromdomain=fujitsu.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g26si3865544vsk.126.2021.06.08.10.43.23
+        b=QKFnIvynSUZkpLVXAvU6X92mlV7R7psKNNpLWiqMCP/Ti88Au9QKHKqfWJVy/JWV5Z
+         Z9+SVub87JyyAjmM5vG5C8DC0qmcjhHBB09Q1U7zATeqdoDDKY2Vy0hGplv2ahQ/1bmZ
+         qVZHaOmIW6HeU0Y4ELo1fhy/DMSox60J6x/vObS4K3ymvB5iTPYYrNA2RXOMfjCd2fUC
+         +uRvc0aIwnvHGqQzK7LkzLGuw9gS/NAwhcgtbGr2FCaBMpSog760FNjxrtx8rjy+gSt8
+         Y5zYQOz5GpRFB6oSvUbT6ZjBdUm0dlUw+zr1g3XMk7417D3TuqenOXFJUjk9JNKJG2Nh
+         g3BA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:user-agent:message-id
+         :in-reply-to:date:references:subject:cc:to:from:dkim-signature;
+        bh=V8tyxxcAYpa83qpatDMd0uJjULBtRmwb7HYcI1mWBF0=;
+        b=hkuRI7EMKQ6uW6Bn5qatPz6ASQNmg6LXxisuN4/Yjxksh3no/QxNhPsXEHPx0BNMc4
+         W6ASqOTRPSbVPruM8M4+QWtd5QovRSdi+lTG8d7YLnNx1g3+rF7I/11wXlx4AbjPDTo0
+         zhBlPg/kNAImFvKTTQxgbSeqnAIxiVRkuAErc6mBRHfL/S9BBow6xvUnigXhq2yJdhRU
+         qNwCeuuq4dvrmCEjO1qLvzSsJjP7wzn5orm/WvcE1oVC+yDVQMwXEx9kEg4R1//SxSfP
+         ucFZzcyZLGVnHcDpXSKCVbHQLC2ObjuhITkIK06r9yJlDmKC0hmlXqzi8f0xGKp833Dz
+         1elA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=G9X3sOM7;
+       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <armbru@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id 18si2249146eji.288.2021.06.09.04.58.54
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Jun 2021 10:43:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 09 Jun 2021 04:58:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=fail (test mode) header.i=@fujitsu.com header.s=fj1 header.b=Nvl2y5aI;
-       dkim=pass header.i=@fujitsu.onmicrosoft.com header.s=selector2-fujitsu-onmicrosoft-com header.b=dvRSzE9v;
-       arc=pass (i=1 spf=pass spfdomain=fujitsu.com dkim=pass dkdomain=fujitsu.com dmarc=pass fromdomain=fujitsu.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:53490 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lqfl4-0006VY-JW
-	for alex.bennee@linaro.org; Tue, 08 Jun 2021 13:43:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49010)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mlmgr@proulx.com>) id 1lqfj1-0004Cf-09
- for qemu-devel@nongnu.org; Tue, 08 Jun 2021 13:41:15 -0400
-Received: from havoc.proulx.com ([96.88.95.61]:34244)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mlmgr@proulx.com>) id 1lqfiy-00009u-70
- for qemu-devel@nongnu.org; Tue, 08 Jun 2021 13:41:13 -0400
-Received: by havoc.proulx.com (Postfix, from userid 1027)
- id 368A15A4; Tue,  8 Jun 2021 11:41:11 -0600 (MDT)
-Authentication-Results: havoc.proulx.com;
- dkim=fail reason="signature verification failed" (2048-bit key;
- unprotected) header.d=fujitsu.com header.i=@fujitsu.com header.b="Nvl2y5aI"; 
- dkim=pass (1024-bit key;
- unprotected) header.d=fujitsu.onmicrosoft.com
- header.i=@fujitsu.onmicrosoft.com header.b="dvRSzE9v"; 
- dkim-atps=neutral
-Resent-From: Mailing List Manager <mlmgr@proulx.com>
-Resent-Date: Tue, 8 Jun 2021 11:41:10 -0600
-Resent-Message-ID: <20210608174110.GE21839@havoc.proulx.com>
-Resent-To: qemu-devel@nongnu.org
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58898)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ishii.shuuichir@fujitsu.com>)
- id 1lp5D2-0004OR-Q5; Fri, 04 Jun 2021 04:29:40 -0400
-Received: from esa20.fujitsucc.c3s2.iphmx.com ([216.71.158.65]:39797)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ishii.shuuichir@fujitsu.com>)
- id 1lp5Cy-0003QR-TX; Fri, 04 Jun 2021 04:29:40 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=fujitsu.com; i=@fujitsu.com; q=dns/txt; s=fj1;
- t=1622795377; x=1654331377;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=x50S8puOsCl5jQZFE37WgcfXrScck8GQ7myXgwZ98VI=;
- b=Nvl2y5aIKsmtZvdjRRn0J/2gS6cVuKd7ZyFl2DVuF98WVLqxHWs5DvWC
- nI2mnBY6ROGsx2bLFle7r2TIULRpYCjxOD+EtTKS0W8AYh3Naey8mrEku
- 3OmT+KHajRRCTlQxkHpnjLcKI7f8NYy6MBAuXe1wvYz1Rtr88PE8CgB+G
- 9j4x0hr9wyccVNPL+wz/AeNobToCuvy7dUq27PA8KunOZJtdG7uJS5/GY
- SwoxEZBdmvJTOtV2ityJ8lyBUD/KdoU2yOYMRQq3tvqO1OtmbZTmF1oDs
- gdLvSZb1RCNQzFfw9SEv78uKgNX/x36AniCnDuz1Zl6MgGXHCMVoz7Gve Q==;
-IronPort-SDR: oeiBE0nLtim/qcTa15tDuHn1SjVby0u4z/o8NIg7mdumV0uH3aabDRB33sINJqn2L/SeF8QGDG
- 6Vl9nd6p4jzu0LgWZ0dW2yTdZynMaljo2nXj1pzuUXS9YPsl7IvDTxGLDEVVQwVHmHUvJmzHJ9
- 48+Kl9En9rfmiqguFsv58KAZOT1To0UlpICLjpGR9oLFEcYGUxH0Eo9zNjTtr0A2j+oRBrT145
- 94FGBzJMwr739sLySRpIyyrDFe7hYyA8xRtJDVF4/o3JF4PlbDsFb7ejTCtRdtShK2nGGeW4G+
- nTs=
-X-IronPort-AV: E=McAfee;i="6200,9189,10004"; a="32471116"
-X-IronPort-AV: E=Sophos;i="5.83,247,1616425200"; d="scan'208";a="32471116"
-Received: from mail-os2jpn01lp2054.outbound.protection.outlook.com (HELO
- JPN01-OS2-obe.outbound.protection.outlook.com) ([104.47.92.54])
- by ob1.fujitsucc.c3s2.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Jun 2021 17:29:29 +0900
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=llOFjgHKeype7qPfGpcOUcHKh8RScX/lcevZxU3GkBFPFz2iK+l3MCnlwgdK+WiuPfKI5DwC0oW3WejXxcz9YHwZs+a5cAvxpCq5LSG7Wejuhg7EX2XxCKf9L1AlDGX+RXytr2Jc0KSdprI5s0xSRf5BU6tMSplPucQ9VTfsH1dRBWI00By1eVoHdtU295iBzAWtNUMaH5YvHo4AObJpiDh4Jn4XVqppxx2ZyUMLyT9zd0tvkAeW7zwU4Yzt+qzH4HdDUh3h17QI2d7/guvFG1Msm5bNC/ICrwEMn+kmE8CEtVx4ombaEl52euYq3L6MtV+T9Jpee4/AbhaPs3DNjw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=d6CiexG1Uj8rNUG2l1iFDoTq+H6RimfLHx9rZrWTT4g=;
- b=J24xSqeB6KA0As1Ra/LhnKX9S65G/R1teDrR40ri/AC+ZKx7ceWQEESyNxc8/WTn47I9wV68Qp7iBdjEZe39qjckCYNpA/bTS1MbynU/KjtCfVmrp25T74n+6l+L+xXV2hc4DBpBIZWtR4jzKGMdyA2dC5zJRoE96nbEbmNCJW7bmkrMFhNwm2avW8aWYlQkwxNuJcq/ulnwWCIzVD+TywCpZP/fsEMFE9FLAutOSnlOYa+9+FgOe5AijiuWY8YXU9KiC7xyrEBxX1DNBx4sFsEwY2TueQ25RrrjJeyafRekbC/p8Ur52bMle1aoFZ0KAG6pQLA7zR7gawe3c6g2qw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=fujitsu.com; dmarc=pass action=none header.from=fujitsu.com;
- dkim=pass header.d=fujitsu.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=fujitsu.onmicrosoft.com; s=selector2-fujitsu-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=d6CiexG1Uj8rNUG2l1iFDoTq+H6RimfLHx9rZrWTT4g=;
- b=dvRSzE9vzQjMGWUqk96N3iySovHFUR8xASgKxMvdhZnKlSg4asXqmU4ZUzs1hpgY5BdDJtPQiGEC6F+YF6gcmz/3OosZP+ZRHG5CrKpDnIxxssBa0z81Lo0lRzWW7gjd6Rfo3S2NPVVO14Bw1QlSqO4K4EYSFAaAxuxbk4+lzT8=
-Received: from TYCPR01MB6160.jpnprd01.prod.outlook.com (2603:1096:400:4f::8)
- by TYAPR01MB5642.jpnprd01.prod.outlook.com (2603:1096:404:8058::11) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4195.24; Fri, 4 Jun
- 2021 08:29:25 +0000
-Received: from TYCPR01MB6160.jpnprd01.prod.outlook.com
- ([fe80::4934:aef5:d5a8:482e]) by TYCPR01MB6160.jpnprd01.prod.outlook.com
- ([fe80::4934:aef5:d5a8:482e%4]) with mapi id 15.20.4195.024; Fri, 4 Jun 2021
- 08:29:25 +0000
-From: "ishii.shuuichir@fujitsu.com" <ishii.shuuichir@fujitsu.com>
-To: 'Richard Henderson' <richard.henderson@linaro.org>, Peter Maydell
- <peter.maydell@linaro.org>
-Subject: RE: [RFC] Adding the A64FX's HPC funtions.
-Thread-Topic: [RFC] Adding the A64FX's HPC funtions.
-Thread-Index: AddR72HvX+KHC7w5TWeyXhvxcP1CJAEsiw9gABYQM4AAOf27gAALWxOAACk/Z4AACluOUA==
-Date: Fri, 4 Jun 2021 08:29:25 +0000
-Message-ID: <TYCPR01MB6160266A2DFDE090276C44D0E93B9@TYCPR01MB6160.jpnprd01.prod.outlook.com>
-References: <OS3PR01MB61515F08F0709D9E22B8DDDFE9249@OS3PR01MB6151.jpnprd01.prod.outlook.com>
- <TYCPR01MB6160FB4A9712F3F5E14D8BBAE93E9@TYCPR01MB6160.jpnprd01.prod.outlook.com>
- <CAFEAcA_fZ_jC640XrFUCSk6YxzoSmdwDaMDAXoX47mBFKdS9hg@mail.gmail.com>
- <a56283b3-3bb2-d9a3-9a6e-8175cc17b376@linaro.org>
- <TYCPR01MB6160998DCE40866CDC3134BBE93C9@TYCPR01MB6160.jpnprd01.prod.outlook.com>
- <65323e52-789c-567a-3446-ccb7709877e2@linaro.org>
-In-Reply-To: <65323e52-789c-567a-3446-ccb7709877e2@linaro.org>
-Accept-Language: ja-JP, en-US
-Content-Language: ja-JP
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-msip_labels: MSIP_Label_a7295cc1-d279-42ac-ab4d-3b0f4fece050_Enabled=true;
- MSIP_Label_a7295cc1-d279-42ac-ab4d-3b0f4fece050_SetDate=2021-06-04T01:04:51Z; 
- MSIP_Label_a7295cc1-d279-42ac-ab4d-3b0f4fece050_Method=Standard;
- MSIP_Label_a7295cc1-d279-42ac-ab4d-3b0f4fece050_Name=FUJITSU-RESTRICTED?;
- MSIP_Label_a7295cc1-d279-42ac-ab4d-3b0f4fece050_SiteId=a19f121d-81e1-4858-a9d8-736e267fd4c7;
- MSIP_Label_a7295cc1-d279-42ac-ab4d-3b0f4fece050_ActionId=cfcd02b7-e180-4d01-bd73-20fb6eaa9d53;
- MSIP_Label_a7295cc1-d279-42ac-ab4d-3b0f4fece050_ContentBits=0
-authentication-results: linaro.org; dkim=none (message not signed)
- header.d=none;linaro.org; dmarc=none action=none header.from=fujitsu.com;
-x-originating-ip: [210.162.30.49]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: e2f354ff-8c95-4f04-02f3-08d92732dcff
-x-ms-traffictypediagnostic: TYAPR01MB5642:
-x-microsoft-antispam-prvs: <TYAPR01MB5642CF146828E949D23FB5EEE93B9@TYAPR01MB5642.jpnprd01.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:10000;
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: hTuUP8bP7NuomOy9Akfw8xgtpCPnQjmfMey40ARIdCbG6+0KHsTryT05fF70T1PuLUw9u66fjjNlh8m1m4etjfLxsQh5WlO613jvFfyQiauw7xbPUs9OU42iNiIQ2Z41ChA9W2VCalNFwzOVkfi/xTZZEn2TwZqOpGDb97xtYom0im0lPeEZjYbq6inKk1Y2Sv546pOUMXvfH6r7rc18RfQ1klBJ+F0zNbR3Gvm5A2AzlRVrHoJ17ens1Fuq4EpdS90Z0ahkod8YHbwz/aa0rl6uttkY5matTsocASPHAQ/FmJRR5OxSTesT4rWuVm452oMF5uq1ciQNHkNeLZXlLlOWgBm3Bvcr3PsY+ma46GgQkCRjc8Pskcfczp3KgQTNkHAzSFvVM4GtHZxcNhZPlwV22NUi9SqNCBRRNOZXbqNA6iML/+OjnUHclZUs6QW7nqBDlPtDPtnSa4DmpN75//qHElleWh9TcNXaXcrJovJbwRPcwRD0dMiKk35PsBaOnvzWz7s10+gR/Ix9knA9aY7HrQ/YGxZM2bU/x84sxCS8sMjtco8Xw3rHzSdnT9LkL8VCb08EkA0KnA5RUoQjq+I+UgnTfWl0YMRPucOvd8jCRIvk7Du3G1bMjWUAhLytp/crYxECtJII0JLrq+C0SM3x6VNp8TCpgYXu2vtUXh/M7W3cIOuQs7Cvh4GV+TmBBY25eaP8MViqridpC/MdOuIB7DSB7HJSC/QXjUaR2q4=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:TYCPR01MB6160.jpnprd01.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(366004)(39860400002)(376002)(136003)(346002)(396003)(38100700002)(122000001)(4326008)(83380400001)(33656002)(966005)(478600001)(52536014)(186003)(5660300002)(26005)(2906002)(64756008)(66556008)(66476007)(66946007)(76116006)(9686003)(66446008)(7696005)(6506007)(110136005)(54906003)(316002)(53546011)(8936002)(8676002)(71200400001)(55016002)(85182001)(86362001);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata: =?iso-2022-jp?B?TTFGaTI1bklDYmNIZVFGcUhJdW1QSmpmUjQ3b2FrZGhndk9OSHdvaDZM?=
- =?iso-2022-jp?B?Q3ljeXhGMVRxLzRqUWxNemZOam5uVWJ2TmI4U0V5NlpBaWJKRnZTbmp5?=
- =?iso-2022-jp?B?NXNINGQ1bHFieGFWd093WVFmV0w1Q3ZkcDlXQ0xvVmVTYlJ0ZnhONTRr?=
- =?iso-2022-jp?B?YkE0MG1MbnRnb1FyQXpWWjMvZTBLMWl6cUx1ay9nRzZNZnpVNjFMa29W?=
- =?iso-2022-jp?B?ZVVPZ2phLzVrdXBZRnVFUGtUQVFTQlN3UlB0dVVZMkJPTUFwWFhyVk5j?=
- =?iso-2022-jp?B?WXpCd3VqQXFJNzEza1FDR3NTMlh4Ky9VWjdQR2dWWWQrK1NrYmVmSTFl?=
- =?iso-2022-jp?B?eVRmYll1RDJFdnBFamdrandyT3hEUUU5VGgrZThRTW1vVlMwQVFEQm4z?=
- =?iso-2022-jp?B?dWMwbTY0RDd4YmxhRkpNaUtCNkhuSHRUVFVuZUFBa0RkaE1lb3NVQlpz?=
- =?iso-2022-jp?B?NXJJY0FDQWdLa1hGcEtYZ21NZmMxaWlzSWdHWk4wYm11em9aaWkxdXl6?=
- =?iso-2022-jp?B?NkdJZU1pMnd0NVAwbW45RE1rTWFTZW5Zdzk4eWZqQW1SZnpMVDMyR1pQ?=
- =?iso-2022-jp?B?NWpXVjVoTUpwQTZlYk5pam5iWDUzaEZCRFI4eEhuc3hFS2MwKzlMdE43?=
- =?iso-2022-jp?B?SUgzOUZnQlRtVGM4U1k0Q25IMXNKT29CZFJiNHk4TzlnMjRxNVFPaTdu?=
- =?iso-2022-jp?B?Qm8vOTJnU2YvU2RHZnUwd0U5Mnp4WG1UMHpwK2RUd2M4SWYrcXJBdjYw?=
- =?iso-2022-jp?B?di96TUNrYTViQ21KVmdKVzJVaytkRXFiUVUyZERDL0RzbXZzRStiR3Rw?=
- =?iso-2022-jp?B?UlV4czFKV3hWMkFiRGtYaTZHRHVHTERva3g1MXZUQVZpNDhyUTdUMDFy?=
- =?iso-2022-jp?B?WVdhTGtCRVB3U01JcUJuU3R6UllVbDB2Q3VBdkxTN25HTExzcHp2WERI?=
- =?iso-2022-jp?B?VWZxMnFTNHRxcjJXQzF5dlFlVTRJNURNUDQxRVlsclhXZUk4SUtaQ2Qy?=
- =?iso-2022-jp?B?RFQ2STZrTDRkOGpaL0dGUi9uN1M5WE5TekV4YXhDZTJiMFFWQ0ErNmcz?=
- =?iso-2022-jp?B?Wnc1NW40WSszbUtjTE9BOVdDQXZ2Wmc0L0VEbUl5VXp4TGcxL0tJblp3?=
- =?iso-2022-jp?B?NCtJWjN5MDl2eHM4eFhIVG5pUyt1Wm5IaXNxUWVuc1Fma1hzaWxVc0lm?=
- =?iso-2022-jp?B?VnhtT1d0T2JLZHk1R2ZwZEtkRktEN1VQUkVPSzN0VnNFRy9GaWlIbUVw?=
- =?iso-2022-jp?B?NHFVREF6YnJ5ZkJnTitVcWlGaVVHMHFqeWcyWXdGWjJieTBnS3FGbHpj?=
- =?iso-2022-jp?B?cDRJUnYvdHB5d3lwOVRXU2NuKzM1a1c4UE1xZG95cFpkcitQQ2M5Y3NR?=
- =?iso-2022-jp?B?Vm1UL2hMM3krcmw3d0dCL3g5bHlMMnJyVEE2dW13SmcxdkJTM1V5SjZ2?=
- =?iso-2022-jp?B?RU1hOG4xRkhMa2oyVDFQUFNMMDBhalI0dGJpVzJsb0ZTajhIRzhFWlR0?=
- =?iso-2022-jp?B?STUyVVVlcmc5WHJPdUY0ZVI2bXlpM2FCTnVDZkdTbkcxUE1uN0Y4Lzcv?=
- =?iso-2022-jp?B?cDVwZUtQYml4Z2pySUh1WllrTGdVUDdZNlZIRXNpakljb1IxM2xIVlJL?=
- =?iso-2022-jp?B?Vy9iTTJjRmZRSVpDcWlvN1ZOWkcrbXBRalZwc254dWpZSE9naGM2VHBz?=
- =?iso-2022-jp?B?L1VQZm80VElmK2RTNXJhRzIzMVlNalRneUx4V1g3ZlFseE5qUWMzQ2NV?=
- =?iso-2022-jp?B?Y0FReVRpOHdiT1VKdVM4Ym01b05KNEVmbDBBdHVUN25xbWk0eDdCRFl1?=
- =?iso-2022-jp?B?UVR4b1Bnbjhhamd1Rm91VGVZMUFyWXZpVU9hZkFwTWdQWXZWdEg3d1Ez?=
- =?iso-2022-jp?B?TWRmYkQzVk1XQVZqaFhyQ3NtRFdZTTZKRUw0Nnl2V1NlRXVydmJoN1BQ?=
-x-ms-exchange-transport-forked: True
-Content-Type: text/plain; charset="iso-2022-jp"
-Content-Transfer-Encoding: quoted-printable
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=G9X3sOM7;
+       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1623239934;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=V8tyxxcAYpa83qpatDMd0uJjULBtRmwb7HYcI1mWBF0=;
+	b=G9X3sOM7+GGTP4pssr9sVpr1H0jtLdaDZuUigRKx/DJm2hza1W1J7O82lcD6wSjC3Qqge7
+	U77GQuaCSUMh7D+787+LR4V/qrpBtUshAuSgXzc0VBD2z68nb5W0t7NTHh4x4uV+Ai+xKG
+	BYyAUvy+m3ere7qsUrcBKPZe5kOeCvE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-596-ESST1H32ODK8kvHx0vIXhw-1; Wed, 09 Jun 2021 07:58:53 -0400
+X-MC-Unique: ESST1H32ODK8kvHx0vIXhw-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id F1FBF1922023;
+	Wed,  9 Jun 2021 11:58:51 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-222.ams2.redhat.com [10.36.112.222])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 9BCF9620DE;
+	Wed,  9 Jun 2021 11:58:51 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 37B42113865F; Wed,  9 Jun 2021 13:58:50 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: Thomas Huth <thuth@redhat.com>,  qemu-devel@nongnu.org,  Markus
+ Armbruster <armbru@redhat.com>,  Peter Maydell <peter.maydell@linaro.org>,
+  Eduardo Habkost <ehabkost@redhat.com>,  John Snow <jsnow@redhat.com>,
+  Richard Henderson <richard.henderson@linaro.org>,  qemu-arm@nongnu.org,
+  Paolo Bonzini <pbonzini@redhat.com>,  Alex =?utf-8?Q?Benn=C3=A9e?=
+ <alex.bennee@linaro.org>
+Subject: Re: [PATCH v8 02/12] accel: Introduce 'query-accels' QMP command
+References: <20210526170432.343588-1-philmd@redhat.com>
+	<20210526170432.343588-3-philmd@redhat.com>
+	<af5b2b3a-e223-c8dd-91eb-51f9813d82ae@redhat.com>
+	<9613547f-2e68-1bb9-5be8-c77f8c5c148f@redhat.com>
+Date: Wed, 09 Jun 2021 13:58:50 +0200
+In-Reply-To: <9613547f-2e68-1bb9-5be8-c77f8c5c148f@redhat.com> ("Philippe
+	=?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Tue, 8 Jun 2021 15:38:32
+ +0200")
+Message-ID: <87mtrzp7ut.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
 MIME-Version: 1.0
-X-OriginatorOrg: fujitsu.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYCPR01MB6160.jpnprd01.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e2f354ff-8c95-4f04-02f3-08d92732dcff
-X-MS-Exchange-CrossTenant-originalarrivaltime: 04 Jun 2021 08:29:25.8337 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a19f121d-81e1-4858-a9d8-736e267fd4c7
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 9jEqmPdjHI/hDfpndPh7733R4IdNV6GXwNA8fZN1KOOjX4az3LDvA9RXbU4hI2bR4SIwS9MhmmKeIhuQfWTSSsufvroJA5+GyiZOz4F9GFQ=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYAPR01MB5642
-Received-SPF: pass client-ip=216.71.158.65;
- envelope-from=ishii.shuuichir@fujitsu.com; helo=esa20.fujitsucc.c3s2.iphmx.com
-X-Spam_action: no action
-Received-SPF: pass client-ip=96.88.95.61; envelope-from=mlmgr@proulx.com;
- helo=havoc.proulx.com
-X-Spam_score_int: 20
-X-Spam_score: 2.0
-X-Spam_bar: ++
-X-Spam_report: (2.0 / 5.0 requ) BAYES_50=0.8, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- HEADER_FROM_DIFFERENT_DOMAINS=0.248, HK_RANDOM_ENVFROM=0.998,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: W6lDxxBF9avE
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: RdRW24at6MCJ
 
-Hi, Richard.
+Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
 
-> Well, Peter disagreed with having them enabled by default in -cpu max, so=
- we
-> might need at least one extra property.  I see no reason to have three
-> properties -- one property a64fx-hpc should be sufficient.  But we might =
-not
-> want any command-line properties, see below...
+> On 6/8/21 3:27 PM, Thomas Huth wrote:
+>> On 26/05/2021 19.04, Philippe Mathieu-Daud=C3=A9 wrote:
+>>> Introduce the 'query-accels' QMP command which returns a list
+>>> of built-in accelerator names.
+>>>
+>>> - Accelerator is a QAPI enum of all existing accelerators,
+>>>
+>>> - AcceleratorInfo is a QAPI structure providing accelerator
+>>> =C2=A0=C2=A0 specific information. Currently the common structure base
+>>> =C2=A0=C2=A0 provides the name of the accelerator, while the specific
+>>> =C2=A0=C2=A0 part is empty, but each accelerator can expand it.
+>>>
+>>> - 'query-accels' QMP command returns a list of @AcceleratorInfo
+>>>
+>>> For example on a KVM-only build we get:
+>>>
+>>> =C2=A0=C2=A0=C2=A0=C2=A0 { "execute": "query-accels" }
+>>> =C2=A0=C2=A0=C2=A0=C2=A0 {
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "return": [
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0 {
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 "name": "qtest"
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0 },
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0 {
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 "name": "kvm"
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0 }
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ]
+>>> =C2=A0=C2=A0=C2=A0=C2=A0 }
+>>>
+>>> Reviewed-by: Eric Blake <eblake@redhat.com>
+>>> Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>>> Tested-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+>>> ---
+>>> v8:
+>>> - Include code snippet from Markus adding to machine-target.json
+>>> =C2=A0=C2=A0 to be able to use enum values or union branches conditiona=
+l.
+>>> - Use accel_find() on enum to be sure the accelerator is enabled
+>>> =C2=A0=C2=A0 at runtime (chat with jsnow / eblake).
+>>>
+>>> Cc: Eric Blake <eblake@redhat.com>
+>>> Cc: John Snow <jsnow@redhat.com>
+>>> Cc: Markus Armbruster <armbru@redhat.com>
+>>> ---
+>>> =C2=A0 qapi/machine-target.json | 54 ++++++++++++++++++++++++++++++++++=
+++++++
+>>> =C2=A0 accel/accel-qmp.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 32=
+ ++++++++++++++++++++++++
+>>> =C2=A0 accel/meson.build=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=
+=A0 2 +-
+>>> =C2=A0 3 files changed, 87 insertions(+), 1 deletion(-)
+>>> =C2=A0 create mode 100644 accel/accel-qmp.c
+>>>
+>>> diff --git a/qapi/machine-target.json b/qapi/machine-target.json
+>>> index e7811654b72..586a61b5d99 100644
+>>> --- a/qapi/machine-target.json
+>>> +++ b/qapi/machine-target.json
+>>> @@ -329,3 +329,57 @@
+>>> =C2=A0 ##
+>>> =C2=A0 { 'command': 'query-cpu-definitions', 'returns': ['CpuDefinition=
+Info'],
+>>> =C2=A0=C2=A0=C2=A0 'if': 'defined(TARGET_PPC) || defined(TARGET_ARM) ||
+>>> defined(TARGET_I386) || defined(TARGET_S390X) || defined(TARGET_MIPS)' =
+}
+>>> +
+>>> +##
+>>> +# @Accelerator:
+>>> +#
+>>> +# An enumeration of accelerator names.
+>>> +#
+>>> +# Since: 6.1
+>>> +##
+>>> +{ 'enum': 'Accelerator',
+>>> +=C2=A0 'data': [
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 { 'name': 'hax', 'if': 'defined(CONFIG_=
+HAX)' },
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 { 'name': 'hvf', 'if': 'defined(CONFIG_=
+HVF)' },
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 { 'name': 'kvm', 'if': 'defined(CONFIG_=
+KVM)' },
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 { 'name': 'qtest' },
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 { 'name': 'tcg', 'if': 'defined(CONFIG_=
+TCG)' },
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 { 'name': 'whpx', 'if': 'defined(CONFIG=
+_WHPX)' },
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 { 'name': 'xen', 'if': 'defined(CONFIG_=
+XEN_BACKEND)' } ] }
+>>> +
+>>> +##
+>>> +# @AcceleratorInfo:
+>>> +#
+>>> +# Accelerator information.
+>>> +#
+>>> +# @name: The accelerator name.
+>>> +#
+>>> +# Since: 6.1
+>>> +##
+>>> +{ 'struct': 'AcceleratorInfo',
+>>> +=C2=A0 'data': { 'name': 'Accelerator' } }
+>>> +
+>>> +##
+>>> +# @query-accels:
+>>> +#
+>>> +# Get a list of AcceleratorInfo for all built-in accelerators.
+>>> +#
+>>> +# Returns: a list of @AcceleratorInfo describing each accelerator.
+>>> +#
+>>> +# Since: 6.1
+>>> +#
+>>> +# Example:
+>>> +#
+>>> +# -> { "execute": "query-accels" }
+>>> +# <- { "return": [
+>>> +#=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 {
+>>> +#=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "n=
+ame": "qtest"
+>>> +#=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 },
+>>> +#=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 {
+>>> +#=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "n=
+ame": "kvm"
+>>> +#=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>>> +#=C2=A0=C2=A0=C2=A0 ] }
+>>> +#
+>>> +##
+>>> +{ 'command': 'query-accels',
+>>> +=C2=A0 'returns': ['AcceleratorInfo'] }
+>>=20
+>> What about Markus' comment here:
+>>=20
+>> =C2=A0https://lore.kernel.org/qemu-devel/87mtsoieyz.fsf@dusky.pond.sub.o=
+rg/
+>>=20
+>> ?
+>>=20
+>> If I've got him right, you don't need the command at all, the Accelerato=
+r
+>> enum should be sufficient?
+>
+> Yes, this is the part jsnow said "we are waiting for Markus to comment"
+> on the other thread ;) We'd like to only have enums, but QAPI doesn't
+> seem to allow a "leaf without branch", we need a command or struct to
+> use the enum else it is elided.
 
-I understood.
+Correct; query-qmp-schema shows only the stuff used by commands and
+events.
 
-> For comparison, in the Arm Cortex-A76 manual,
->    https://developer.arm.com/documentation/100798/0301/
-> section B2.4 "AArch64 registers by functional group", there is a concise
-> listing of all of the system registers and their reset values.
-
-Thank you for the information.
-
-> The most important of these for QEMU to create '-cpu a64fx' are the
-> ID_AA64{ISAR,MMFR,PFR} and MIDR values.  These values determine all of
-> the
-> standard architectural features,
-
-The values of ID_AA64{ISAR,MMFR,PFR} and MIDR are not listed in the specifi=
-cations published at this time.=20
-Of course, they are listed in the A64FX specification document managed with=
-in Fujitsu,
-but we cannot tell how far these setting values can be disclosed=20
-without checking with the A64FX specification staff within Fujitsu.
-
-In order to make the "-cpu a64fx" option, the above problem needs to be sol=
-ved.
-When the necessary register specifications are released,
-it will be possible to implement the "-cpu a64fx" option,
-but I thought it would be better to implement the "-cpu max" option as a fi=
-rst step,
-partly because I don't know when it will be possible to solve this problem.
-
-However, MIDR.partnum can be found in "CPU implementer" of /proc/cpuinfo,
-and CPU FEAT is partially displayed in kernel boot messages.
-It is true that there are some values that are publicly known in a sense fr=
-om Linux on A64FX-equipped machines,
-even if they are not listed in the existing public A64FX|specification.
-
-To what extent ID_AA64{ISAR,MMFR,PFR} can be made public needs to be confir=
-med=20
-with the A64FX specification staff. As for the MIDR register values,
-I think they can be implemented in QEMU as publicly known information that =
-can be recognized by the OS.
-
-When considering implementation with the "-cpu a64fx" option,
-is there any problem to define only the value of MIDR,
-using a temporary value for now until the information of ID_AA64{ISAR,MMFR,=
-PFR} can be disclosed?
-
-> Peter is suggesting that if full support for -cpu a64fx apart from the hp=
-c
-> extensions is close, then we shouldn't implementing a property for -cpu m=
-ax,
-> but only implement -cpu a64fx.  (Because how does the OS detect the hpc
-> feature, apart from the MIDR value?)
-
-The HPC extension is implemented as an impldef register as a unique feature=
- for HPC in the A64FX processor.
-the existence of the HPC extension would be determined from the fact that M=
-IDR.partnum is A64FX (0x46).
-
-Best regards.
-
-> -----Original Message-----
-> From: Richard Henderson <richard.henderson@linaro.org>
-> Sent: Friday, June 4, 2021 5:08 AM
-> To: Ishii, Shuuichirou/=1B$B@P0f=1B(B =1B$B<~0lO:=1B(B <ishii.shuuichir@f=
-ujitsu.com>; Peter
-> Maydell <peter.maydell@linaro.org>
-> Cc: qemu-arm@nongnu.org; qemu-devel@nongnu.org
-> Subject: Re: [RFC] Adding the A64FX's HPC funtions.
->=20
-> On 6/3/21 1:17 AM, ishii.shuuichir@fujitsu.com wrote:
-> > Hi, Richard.
-> >
-> > Thank you for your comment.
-> >
-> >> My first thought is that -cpu max can simply enable the extensions,
-> >> without extra flags.  The max cpu has all of the features that we can
-> >> enable, and as I see it this is just one more.
-> >
-> > Let me confirm a few things about the above comment.
-> > Does it mean that I don't need to explicitly enable individual
-> > extensions such as a64fx-hpc-sec, a64fx-hpc-hwpf, and a64fx-hpc-hwb,
-> > since all extensions can be enabled by specifying -cpu max?
->=20
-> Well, Peter disagreed with having them enabled by default in -cpu max, so=
- we
-> might need at least one extra property.  I see no reason to have three
-> properties -- one property a64fx-hpc should be sufficient.  But we might =
-not
-> want any command-line properties, see below...
->=20
-> >
-> >> The microarchitectural document provided does not list all of the syst=
-em
-> >> register reset values for the A64FX, and I would be surprised if there=
- were
-> an
-> >> architectural id register that specified a non-standard extension like=
- this.
-> >> Thus I would expect to add ARM_FEATURE_A64FX with which to enable
-> these
-> >> extensions in helper.c.
-> >
-> > As you said,
-> > some of the published specifications do not describe the reset values o=
-f the
-> registers.
-> > I would like to implement this in QEMU by referring to a real machine w=
-ith
-> A64FX.
->=20
-> I presume there exists some documentation for this somewhere, though
-> possibly
-> only internal to Fujitsu so far.
->=20
-> For comparison, in the Arm Cortex-A76 manual,
->    https://developer.arm.com/documentation/100798/0301/
-> section B2.4 "AArch64 registers by functional group", there is a concise
-> listing of all of the system registers and their reset values.
->=20
-> The most important of these for QEMU to create '-cpu a64fx' are the
-> ID_AA64{ISAR,MMFR,PFR} and MIDR values.  These values determine all of
-> the
-> standard architectural features, and from them we can tell what QEMU may =
-(or
-> may not) be missing for proper emulation of the cpu.  For comparison, loo=
-k at
-> aarch64_a72_initfn in target/arm/cpu64.c.
->=20
-> Peter is suggesting that if full support for -cpu a64fx apart from the hp=
-c
-> extensions is close, then we shouldn't implementing a property for -cpu m=
-ax,
-> but only implement -cpu a64fx.  (Because how does the OS detect the hpc
-> feature, apart from the MIDR value?)
->=20
->=20
-> r~
-
+>                                 Or maybe we didn't understood Markus
+> idea.

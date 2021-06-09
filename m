@@ -1,99 +1,96 @@
-Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp4969890lfa;
-        Tue, 8 Jun 2021 18:59:15 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxXLc+UL43gJ03k8am3oNwvPUO2aLpAztIuSWEJl9secHo3Rk2Opo0iXMfDJh32bA/DA8xA
-X-Received: by 2002:a25:9bc6:: with SMTP id w6mr37089056ybo.159.1623203955471;
-        Tue, 08 Jun 2021 18:59:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623203955; cv=none;
+Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp5055664lfa;
+        Tue, 8 Jun 2021 21:52:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxCDGcujXUuSqmQEqxLyM7/ECLmOGu8GsnLMvaGTLPOmexG7yrf1CHPy2EJtTTLMpy5Rt2U
+X-Received: by 2002:a05:620a:12b0:: with SMTP id x16mr24544601qki.451.1623214323172;
+        Tue, 08 Jun 2021 21:52:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623214323; cv=none;
         d=google.com; s=arc-20160816;
-        b=tG96fHaXJdfeZTw7zSIgl8NjNc77Q2jF7eXD5KDIu5SZKrefc0T5JiBdGlkEeb4n5F
-         lFzu8D9f9NqYGMdqSzuCpZKHzwuOhCt7uALNKH7SeEsnWI5nHiRR1lGfw9++IN67Tly7
-         7UGPQy2kdVH1V89bBkHwZ2GcHhZ+bgMBM7TPBrwMEj0G9eTbrfx6Gy7TWSkHD1GmA9MY
-         SZMh3dUfk+OC4N1SPrSwx3amSS9u6n0hGLWNZOrzeIAQs6w+KimxylAcQWvXmhjpBZgh
-         b3wiE7QaF24LHAjAUQbOX3O/0XbGgswn/AhuACX0M05ZkkPDzDtkxumN8d4oiKmm11am
-         fNLg==
+        b=i5aHNPbXBwL2i+WvX1ns4lYMUlUbpeqY8sHZp0ynwIPYV9S/jqmXdovRB3HFRaCyls
+         CD5Vvum2VASFnGobFcXX6LfT9Ugcrmiayu5msSxwUpGnalZi1QRtj/9TFQMrQpYg7U++
+         I/AQFzN4vQCMrzNF7OtrEoiDgwEAerrhFciyCp5aPBbVGsz+yzy5YCL4JpGJHjaMyubY
+         yFenN4jnqRSmL+UYpt732U10GafeqKhuDUBjYv8Cl7P00asHbo16k10+O7NnEyMjeNd/
+         DNOE8yVxU0oDJfXa/qfDDPPG89GNPNM1Va6uQrO44mr3WJ2hbWoPWAyW1iLHlmXoWAkp
+         dAjA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=0WjKsEqAWoBbK40/er6bDP9A7VO7x1EA6trbX8rMCZc=;
-        b=vKHVTgwT2G+OsGNw7CdK0F0cixRK6DrWF8gTIVX51/euRRJR58h32yqHUBNhacUy4p
-         kyWMe8tQE/SNCkwVuDhI6oOklGuMmwk3PHBJBBFkBulg8TM2Pf32qhEmd+AIpt3AagpI
-         1P2LZ4Sy6cccpupwenIBGBqSMape8CU5CjZfJ4zgWmkhMvmf6QvDRV+sNXaundUDWX7W
-         3K4dJ5UaXVSJn38+c767LGAWQUCm/W+5l8zG/BY6EZoENj2DTYsOK5J8m7+r+Czxepg0
-         /D6higbVrSp/cO1ASlipJkK50BkL9sdXXQq/fi1yp761nWXodf2SbSUM/IkAvsnqP8N3
-         G+tA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=24I7tL7MQ+jM6mFyuJ85n9Wu3FFzvFQeSHoEfYxXjkg=;
+        b=rZJn5rs5W8D/hOo0IgtVaGuJek/jcl5ymhcWAIJlk6gMf7/0MaqoseHTQwE+VgNtjK
+         i8ZXQc7mbWfqQMjRGIemgFXO8PNhVMjH70mxyPOWEJqnCi5MrT6WuUlDDv5c4syEzkWS
+         IcN7ZUdlR5sDJ4sh11fJz4FUYX2d6W22uJa1nCBikQacAOTnToyf/pmFOlFLj0klEX9a
+         8hz9ob9HPrpTwjO6C28bVUjxNyyFEsCVRIw8MmLzBXHmkw3SqcdBo9kAMHGAVDv+c6EB
+         22qD6iSw3Q9Rl1XWudHLbkSlTr6yiOGsyZ2cTgMT+GUviH2j4KYe3ANlso07+HIuKIR0
+         wbqg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=RJDV933K;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m1si8338863ybo.238.2021.06.08.18.59.15
+        by mx.google.com with ESMTPS id u8si12343275qtq.4.2021.06.08.21.52.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Jun 2021 18:59:15 -0700 (PDT)
+        Tue, 08 Jun 2021 21:52:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=RJDV933K;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37926 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36604 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lqnUw-0000iu-OJ
-	for alex.bennee@linaro.org; Tue, 08 Jun 2021 21:59:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47186)
+	id 1lqqCA-0002Ni-Hy
+	for alex.bennee@linaro.org; Wed, 09 Jun 2021 00:52:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40624)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1lqnUN-0000ig-FF; Tue, 08 Jun 2021 21:58:40 -0400
-Received: from mail-qk1-x735.google.com ([2607:f8b0:4864:20::735]:37446)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1lqnUK-0005NS-KX; Tue, 08 Jun 2021 21:58:39 -0400
-Received: by mail-qk1-x735.google.com with SMTP id i67so22277812qkc.4;
- Tue, 08 Jun 2021 18:58:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=0WjKsEqAWoBbK40/er6bDP9A7VO7x1EA6trbX8rMCZc=;
- b=RJDV933KytZig/5oIoMFjL4pAtnqNRycceji7CB1IHGMJlfhUZDRJAyjdMvIJli3mB
- W4cseasbMqt1B1dPJY/HQWWvQLULeiyuU6kAZsWU/6BrHMtKkfu0jMz/Lfs//jMfdmhO
- /V+qtL8GkasJTjGIBlaoWsdKM6ZbrTVriYkw0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=0WjKsEqAWoBbK40/er6bDP9A7VO7x1EA6trbX8rMCZc=;
- b=Gvh0iXJPA61P7u6XPLWlMH/eUdBG8zk0Xli4PgCS/QA1UETM6rBiHsg+cBJv6bI+NL
- hvsfgNGB4SOuFRwp7Z5Job40C2T7MrGSuSrKE8UpTCfG3utX2Rl51M6vhT8n1KiccPcW
- K3PThsfBXhDMOmbNSER4VphUnhgXAXd1uVp7jrIh3oWugHOYlMMVWAwLNfleHJ0164Fb
- yjmeavmIOxDJpzJAMktLKk7YMX2TAbcSfWFYLoL0BG9fDvu45XsDxly9+UHwP9cJ3LCN
- euBkf62DVwHsV9B9UIHu9nhohzxw76k16JN1oifoFVaUEhp64jmq7yumVrgK7aD3tNMh
- lLyw==
-X-Gm-Message-State: AOAM532GDdXkIxKwKliwUm9hTcZKAgyZISstJW/eHpCvC1yAiYovJ7g3
- 9f3kTeMcgtNoHb6fAtxMhcXFFsXOABq8tyen5yI=
-X-Received: by 2002:a37:9b03:: with SMTP id d3mr16912507qke.273.1623203914562; 
- Tue, 08 Jun 2021 18:58:34 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1lqqBy-0002NA-9F
+ for qemu-arm@nongnu.org; Wed, 09 Jun 2021 00:51:50 -0400
+Received: from smtpout1.mo3005.mail-out.ovh.net ([79.137.123.220]:56931
+ helo=smtpout1.3005.mail-out.ovh.net)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1lqqBv-0002OO-VW
+ for qemu-arm@nongnu.org; Wed, 09 Jun 2021 00:51:50 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.16.62])
+ by mo3005.mail-out.ovh.net (Postfix) with ESMTPS id 9179D143D3C;
+ Wed,  9 Jun 2021 04:51:36 +0000 (UTC)
+Received: from kaod.org (37.59.142.106) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2242.10; Wed, 9 Jun
+ 2021 06:51:35 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-106R006df8d1a23-506e-4849-bd5e-f2701553c479,
+ 8962E09D3B98DEC2FB864AA05CC490E9B3FF7AA6) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Subject: Re: [PATCH v2 3/3] hw/arm: quanta-q71l add pca954x muxes
+To: Patrick Venture <venture@google.com>, <hskinnemoen@google.com>,
+ <kfting@nuvoton.com>, <peter.maydell@linaro.org>, <andrew@aj.id.au>,
+ <joel@jms.id.au>
+References: <20210608202522.2677850-1-venture@google.com>
+ <20210608202522.2677850-4-venture@google.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <aa327beb-0d48-7a1e-21f4-ead4de2c8fc4@kaod.org>
+Date: Wed, 9 Jun 2021 06:51:35 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.1
 MIME-Version: 1.0
-References: <20210518194118.755410-1-venture@google.com>
- <20210518194118.755410-5-venture@google.com>
- <CACPK8XcCOTQe2ObaBP3rfbM1oe0h=E2murXyPAvGBewKV=qBdw@mail.gmail.com>
- <CAO=notyU64PAS003P97hiZ+V3ShSWiF3OmBRfL5D9fOJQByjEQ@mail.gmail.com>
- <CAO=notxHN_JVuyVTO7p+85zWOjeY_uxFfwdbjJXe94qdKhHD0A@mail.gmail.com>
-In-Reply-To: <CAO=notxHN_JVuyVTO7p+85zWOjeY_uxFfwdbjJXe94qdKhHD0A@mail.gmail.com>
-From: Joel Stanley <joel@jms.id.au>
-Date: Wed, 9 Jun 2021 01:58:21 +0000
-Message-ID: <CACPK8XdXYXCnSW4Cs0+CbtDWe9csrtPGuZx3hvMedV6fR-un7Q@mail.gmail.com>
-Subject: Re: [PATCH 4/4] aspeed: sonorapass: enable pca954x muxes
-To: Patrick Venture <venture@google.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::735;
- envelope-from=joel.stan@gmail.com; helo=mail-qk1-x735.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
+In-Reply-To: <20210608202522.2677850-4-venture@google.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.106]
+X-ClientProxiedBy: DAG9EX2.mxp5.local (172.16.2.82) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: c3b6a38d-5f9b-4ff1-a47c-4ff797b884a5
+X-Ovh-Tracer-Id: 5248945367453698863
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduledrfedutddgkedtucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepjeekudeuudevleegudeugeekleffveeludejteffiedvledvgfekueefudehheefnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdeinecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehvvghnthhurhgvsehgohhoghhlvgdrtghomh
+Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
+ helo=smtpout1.3005.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248,
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -106,44 +103,77 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- Havard Skinnemoen <hskinnemoen@google.com>,
- QEMU Developers <qemu-devel@nongnu.org>, Hao Wu <wuhaotsh@google.com>,
- Tyrone Ting <kfting@nuvoton.com>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Cc: Hao Wu <wuhaotsh@google.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: V8DPNK6U4W2G
+X-TUID: JheKuT4HRTnR
 
-On Tue, 8 Jun 2021 at 19:56, Patrick Venture <venture@google.com> wrote:
->
-> On Wed, May 19, 2021 at 10:18 AM Patrick Venture <venture@google.com> wrote:
-> >
-> > On Tue, May 18, 2021 at 4:27 PM Joel Stanley <joel@jms.id.au> wrote:
-> > >
-> > > On Tue, 18 May 2021 at 19:41, Patrick Venture <venture@google.com> wrote:
-> > > >
-> > > > Enables the pca954x muxes in the bmc board configuration.
-> > > >
-> > > > Signed-off-by: Patrick Venture <venture@google.com>
-> > > > Reviewed-by: Hao Wu <wuhaotsh@google.com>
-> > >
-> > > Not sure about this one, there's no device tree for it in Linux.
-> >
-> > Yeah, this was just a pick-up from grepping other BMC boards.  I added
-> > these going off the comment alone.  I'd be okay with dropping this in
-> > the series.
->
-> In this case, the number of patches changed within a version change --
-> should I start a fresh series or just bump the version and drop the
-> last patch?
+On 6/8/21 10:25 PM, Patrick Venture wrote:
+> Adds the pca954x muxes expected.
+> 
+> Tested: Booted quanta-q71l image to userspace.
+> Signed-off-by: Patrick Venture <venture@google.com>
+> Reviewed-by: Hao Wu <wuhaotsh@google.com>
+> Reviewed-by: Joel Stanley <joel@jms.id.au>
 
-I wasn't saying we shouldn't include this change - it's good. I just
-didn't have any information to say whether it was correct or not.
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
 
-I see you chose to resend without this one, lets get Cedric to merge
-those patches.
+I guess this patchset can go through the arm tree directly.
 
-Cheers,
+Thanks,
 
-Joel
+C.
+
+> ---
+>  hw/arm/Kconfig  |  1 +
+>  hw/arm/aspeed.c | 11 ++++++++---
+>  2 files changed, 9 insertions(+), 3 deletions(-)
+> 
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index 9d1c2a6f7b..4a033e81ef 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -413,6 +413,7 @@ config ASPEED_SOC
+>      select PCA9552
+>      select SERIAL
+>      select SMBUS_EEPROM
+> +    select PCA954X
+>      select SSI
+>      select SSI_M25P80
+>      select TMP105
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index 3fe6c55744..35a28b0e8b 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -14,6 +14,7 @@
+>  #include "hw/arm/boot.h"
+>  #include "hw/arm/aspeed.h"
+>  #include "hw/arm/aspeed_soc.h"
+> +#include "hw/i2c/i2c_mux_pca954x.h"
+>  #include "hw/i2c/smbus_eeprom.h"
+>  #include "hw/misc/pca9552.h"
+>  #include "hw/misc/tmp105.h"
+> @@ -461,14 +462,18 @@ static void quanta_q71l_bmc_i2c_init(AspeedMachineState *bmc)
+>      /* TODO: i2c-1: Add Frontpanel FRU eeprom@57 24c64 */
+>      /* TODO: Add Memory Riser i2c mux and eeproms. */
+>  
+> -    /* TODO: i2c-2: pca9546@74 */
+> -    /* TODO: i2c-2: pca9548@77 */
+> +    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2), "pca9546", 0x74);
+> +    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2), "pca9548", 0x77);
+> +
+>      /* TODO: i2c-3: Add BIOS FRU eeprom@56 24c64 */
+> -    /* TODO: i2c-7: Add pca9546@70 */
+> +
+> +    /* i2c-7 */
+> +    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), "pca9546", 0x70);
+>      /*        - i2c@0: pmbus@59 */
+>      /*        - i2c@1: pmbus@58 */
+>      /*        - i2c@2: pmbus@58 */
+>      /*        - i2c@3: pmbus@59 */
+> +
+>      /* TODO: i2c-7: Add PDB FRU eeprom@52 */
+>      /* TODO: i2c-8: Add BMC FRU eeprom@50 */
+>  }
+> 
+

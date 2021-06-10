@@ -1,80 +1,80 @@
-Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp381645lfa;
-        Thu, 10 Jun 2021 03:57:55 -0700 (PDT)
-X-Received: by 2002:a17:906:49ce:: with SMTP id w14mr3882368ejv.273.1623322675663;
-        Thu, 10 Jun 2021 03:57:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623322675; cv=none;
+Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp451894lfa;
+        Thu, 10 Jun 2021 05:32:45 -0700 (PDT)
+X-Received: by 2002:a50:bf0f:: with SMTP id f15mr4373937edk.205.1623328365095;
+        Thu, 10 Jun 2021 05:32:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623328365; cv=none;
         d=google.com; s=arc-20160816;
-        b=Q7aElT9me/mn5zeHqeDrerCr9+5P6gDpOM/G2JtRGtt5oYEWrOBjNO+Jw+xR/N4WiW
-         HIDQW/nFSIjEbqaGbqQhHI/P35z0QJ3ft2HrEW6F690qI0MYtsHeNZSsA/awdYaNGGGQ
-         2t5AGlSPwMRV77WQdyMMsJ6lrxOeWfrr+6vu1NinWwpJepWoqcOwnfyN3Wctrt/XsrO8
-         p48DW4EOStnwSIfPWk/CDllPoF33nqbMjGwEa30IOsFJu52M/wX/MkOIt90yMhjG+EuB
-         xU5OG8q490oXyJUtqV1Ugj9Gkon0Jpeu+rRYAPRSoEiwrBR7MrbPdaCPxEAr1AVSWBUH
-         1tMg==
+        b=YKVuPvs8ky7+1A3+tIyPqnxCuswlsIdh9SGcdAoO8cleFS1t4bVSl72HMZeKW+w/uf
+         TmuGpahTVCCvltIeCNK6MF7Qn8Eqi8MkBmHjD+y2977eGbu7pMPZ/qNfOrlWVh+A1lFC
+         qFWJSMo4L41cbKXHzE9jQ6rfGL5ZUurEe4QFZJVTZHSedsjacJ7dnawJG04T8IvqpWkW
+         6+k9d5RA3g8ae++byMVUQ0ToH0gscl+6iHh553Rpe16EZyL/X3kDCHE9BkNoh7TxDJu1
+         Xpn+gKOzedUKJvlTAFT29u69k2QVz5bWQxNa95UjNgJY31B/pQQl+ogpXRocIANjkrem
+         unMQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=Rn766lPQ0fIipGun9ZkiWOP1Xw8apb4bZeB9cJpUiI8=;
-        b=FY63XK/WTpXVpwJ46/DPW1Vg2w9SAAAqvruIcsp+NWpBtKcHw9ZqwBD/BbYs30EsHi
-         p8SbWnRixxgR5zqMEhKAmzJk+PbW7oCx0z6nYRexd3Bti9NdwcUmSXA7fLoCt5Ml3NLE
-         G4Mmkz05QILs3BJ6WycZcAuz2gboahSyb766oNTer+E3DMpn/zgtFgI+mkxXLjXmkubg
-         aQytJTc+3ynm+EkrEGeJ5pZ+SkY5r1deBVMc5++7f4pgpHq2HHUt4baVZh74jaTMUVT5
-         PLZ5UnOEEBPK5x3yH7mls+Q5s9L2vZ6lEYW8v3C+XGWZtJxtko/TmgOCNgKoIFwMlVCk
-         ArAg==
+        bh=RvfFP/BczbmzpuVw0oueB8mLaRoeRu4Cc1i/lKczi3A=;
+        b=P4QiunbKy6ydR+Y7SgNC91NVIbFWURo/N56HFHqeMbqGfezgOWRAHR9sJPPQx1K8XD
+         Oj+5y0VPpZaXqGlwikdGq7R94RpoinbcwV/xCreMd3xjOTxN0VqvkH0SlTjds6rClaTv
+         UkGFHP5Uv7xn2IFmqIQHjN6erfEKZ05OmHey26BUG3azLXKqpCr+Gm+OslPUDMOX9mV5
+         HWTunCDAr4Ngc2o5L1R+XNFYP/KxsgcogBwlDaHQKzysX3iW9dCUCduXcdzac5AFpio5
+         JlmHzUIEG2EfhLKKXDBJG66kerH8V25FsI/Yy77eNaVZ2Myjqc8eZhvvqIZRkw6n+7ZP
+         YLog==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=eLsLUqAK;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZKsYbLTn;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id r23sor2657537edy.15.2021.06.10.03.57.55
+        by mx.google.com with SMTPS id k5sor2963069edo.16.2021.06.10.05.32.45
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 10 Jun 2021 03:57:55 -0700 (PDT)
+        Thu, 10 Jun 2021 05:32:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=eLsLUqAK;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZKsYbLTn;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc:content-transfer-encoding;
-        bh=Rn766lPQ0fIipGun9ZkiWOP1Xw8apb4bZeB9cJpUiI8=;
-        b=eLsLUqAKtIRwRpv1IwKdfkfE5EXCAZFZlSX/kQojZXAtDaSTNWnWpuXdKEVxTWiP2W
-         kySZeceI9XRnwVaqnwoAsnvuErn+7uRAKcD3aVQEcdvEw+4iRExSF0EcfyhMK7fzeqph
-         yqJqnrnjYprHTLqr0/sdgoLJqoikarFWPlEaVfgjafLKT1TSKhjDJXOB4+sXlXYoWSyq
-         68g0Xhb4ryVwLXwIdjw57Ep+FKiLjjndcVWc7Bfc6bKpMA7HPkuBOx7qfeAkdus0aH5K
-         nnOZN65phqD3txySCEv0ono9NE0jWj7fZJgWZxCUD9T0pUpqCVYnOlMbn+hzy0qtJVF/
-         CEpA==
+        bh=RvfFP/BczbmzpuVw0oueB8mLaRoeRu4Cc1i/lKczi3A=;
+        b=ZKsYbLTnlaQjiNaYSXp+zZPEU32Y1eq9BzcSvWSnLqLOUJjLjMMEwNGJ9s/I9iNaNh
+         ADywhmKX8ApPSaJ6CPq0b3ni+MLUHrZMN32xjsMFm/JMGTq8yeLPH1Fg0I8agctbcRDW
+         3iQfWDoGVew/sBobHTqWGPzQ+T96m2CYvX1F6o7e+uplq2x7+mPSRYupVbfERDkBUJoC
+         cuLRTRcCnqyvsmQx/Uomo8inu2bsg5DyNk7hZnp+NkXSTHHyU0Vsnuh/Yvl2pmpNpJNx
+         POuS/1eQqpRal+BE0z+2QWr+f56aw2uo37WGo7Nvte91vp7sPwnewUm29OfPpFm4p/vn
+         W7bg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc:content-transfer-encoding;
-        bh=Rn766lPQ0fIipGun9ZkiWOP1Xw8apb4bZeB9cJpUiI8=;
-        b=dlLWtRaxsrONqz2QAZStuLlE9MAD10z2z6+aa42q3cAvTS25ZUNEkNjdbMilc/hy7R
-         UJOkGwCVcRQhC81hQag9D9b8GDZU+Xl73bDFET9VUcVMqVY2Z7QxveW8m4HqWAtJp26z
-         pj85G4lISsKKSKZ+PWF7UB1csi4u3UZUexwl03BRsCFJp1ULtjkLuj+EBr7+UqYVenzo
-         Q80H49rhh7axX66o/DBtAODNNDGEHfVMTt0XZgqRcMz0AMqvYHXpZBVOF4g2KPJq0TRx
-         V1yDvtng1kXMroxD020d/B02/PkaXhhoTSGnwM1iwFc9cNeLYzbyWdW668rP+Yt6o0Bn
-         rCLg==
-X-Gm-Message-State: AOAM53113jNIIp2eiT6bcNp4Yp2ZCoRUt01RZdRDwZc9rnnNjW6RC8MB
-	2v3sMRDy2/qoEj08sgi5HC1pFZ4lqkAPx+eYbGhZZbViI2DdDT3z
-X-Google-Smtp-Source: ABdhPJyctY+UVbXbXUS8Hj0IdqcAHEUW2X7tROlBaZ4p4skkg9ADhGzXiwSxd8iiP7cM88qUolyFCNLH/xBv6Lr7S+8=
-X-Received: by 2002:aa7:d755:: with SMTP id a21mr4164595eds.146.1623322675275;
- Thu, 10 Jun 2021 03:57:55 -0700 (PDT)
+        bh=RvfFP/BczbmzpuVw0oueB8mLaRoeRu4Cc1i/lKczi3A=;
+        b=HoFm1XbMy0O2FzcHrIhgnIQ/hUz1mePrwo3vRR8P81Cy5Tt3pqAVY0M2b65GTeZSxB
+         bZv4Az6TcxTtVfJ7yU/+LHzAaK5eO8XburtD7D2N0HOjWnmMtq89MynUUkZeFPbYuRPO
+         IbkiFsvTDkR0ylO5nBctpxcDTWphxSM4VqhTJ/5V0LkXdol0OeHO8KJh1YTUdWzgyBZJ
+         k+g11hqTdwfkMkAC4iDmgngxqAzUDxm4HPw1yvlH2RZAnlCN9yzCgFr4AmMRfWvMPin4
+         ultlDgHrvibHkFZZnXQvthKmItGCQfCJAaNZgKMwQeJrhgPYUNPCuDMN8hD97K1gxmGG
+         N/bg==
+X-Gm-Message-State: AOAM531Zd4C6PK5cBvCNkLSO2t6aVwcVFihMtrniLou40pMtBwtD02dS
+	+SefkDWhki0ETNGh98NfwGapLuMIsR5h2ekubJyBn9yiyA5lZulW
+X-Google-Smtp-Source: ABdhPJw8EiuP7AhmmNbjRn9g5+KoIamu/yP3ds8ERfGpbSWBFvJaNp9qpQl5iTQhQcRt9QGKrugG/zi7VUMQ0SX4r2Q=
+X-Received: by 2002:aa7:c857:: with SMTP id g23mr4420113edt.100.1623328364783;
+ Thu, 10 Jun 2021 05:32:44 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210610102617.17281-1-alex.bennee@linaro.org>
 In-Reply-To: <20210610102617.17281-1-alex.bennee@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 10 Jun 2021 11:57:21 +0100
-Message-ID: <CAFEAcA8O1Cca2BnNp5c=0yYbKExYH1sUYe68C_msG_oBSUGW3g@mail.gmail.com>
+Date: Thu, 10 Jun 2021 13:32:11 +0100
+Message-ID: <CAFEAcA9yhRS_=zr+76HdDN=iYU=ghDjLPfSaFUA9fzmJ5p3vCA@mail.gmail.com>
 Subject: Re: [PATCH v2] semihosting/arm-compat: remove heuristic softmmu SYS_HEAPINFO
 To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
 Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
 	Andrew Strauss <astrauss11@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: jqg9UElfTuVR
+X-TUID: y0Oas233henw
 
 On Thu, 10 Jun 2021 at 11:26, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
 te:
@@ -123,13 +123,33 @@ c
 > +            retvals[1] =3D rambase + limit; /* Heap Limit */
 > +            retvals[2] =3D 0; /* Stack base */
 >              retvals[3] =3D rambase; /* Stack limit.  */
+>  #endif
 
-The spec:
-https://github.com/ARM-software/abi-aa/blob/main/semihosting/semihosting.rs=
-t#sys-heapinfo-0x16
+I'm told that the Arm C compiler C library always assumes that
+the "stack base" value is what it should set SP to, so reporting 0
+for that will break binaries that were built with it.
 
-doesn't document that 'return 0 for "I don't know"' is valid, so if we're
-going to do it we ought to at least note that we're deviating from the
-spec here.
+As the TODO comment notes, the "heap base" is a bit of a guess,
+but putting stackbase at top-of-RAM seems generally sensible.
+
+What bug are we trying to fix here?
+
+I think one possible implementation that might not be too
+hard to make work would be:
+
+ (1) find the guest physical address of the main machine
+     RAM (machine->ram). You can do this with flatview_for_each_range()
+     similar to what rom_ptr_for_as() does. (It might be mapped
+     more than once, we could just pick the first one.)
+ (2) find the largest contiguous extent of that RAM which
+     is not covered by a ROM blob, by iterating through the
+     ROM blob data. (This sounds like one of those slightly
+     irritating but entirely tractable algorithms questions :-))
+ (3) report the lowest address of that extent as the heap base
+     and the stack limit, and the highest address as the heap
+     limit and the stack base.
+
+This would work for all guest architectures and remove the need
+for that Arm-specific code...
 
 -- PMM

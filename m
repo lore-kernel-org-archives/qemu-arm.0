@@ -1,145 +1,216 @@
-Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp322737lfa;
-        Thu, 10 Jun 2021 02:29:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzjOja5iynEQbDnhRLeLv+oGU4u5yImgkIYTR/hx/C2gsRmBlUozOU2kh7wfNQH2bWv21eM
-X-Received: by 2002:a05:6602:158a:: with SMTP id e10mr3043421iow.137.1623317383734;
-        Thu, 10 Jun 2021 02:29:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623317383; cv=none;
+Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp361754lfa;
+        Thu, 10 Jun 2021 03:28:02 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwyDt8azUq0qtU3c0Y9LgHygIJACgwyxEQAJ/sbUX2pU3Or/RfWfwjcdHVLr2mLCvewIgdf
+X-Received: by 2002:a37:ed4:: with SMTP id 203mr3927060qko.361.1623320882275;
+        Thu, 10 Jun 2021 03:28:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623320882; cv=none;
         d=google.com; s=arc-20160816;
-        b=vgsLBL/HNpnXGZtXZtJqC/DIhm6nJiwyOJ22U8Uw0/b32DtWKI2PsyBgVe+zrZ7DgW
-         3uzThOPApcn0O6VhKks/yleCUADDHPew0Jiy1NKnAQEIEwCs1Iqx5/qbyUXsWBQI7WoP
-         0QYMNJAmZmyHYdD+MhBoh9POpj8727czHUiwPuy4gd7VjO6yCc3nm7wxxDaTJxDRfSUM
-         ZYnjcYkIFoNOEWpFpRiWnXLEqKzWGmywIuTGbiXCR9Pl7SWwo8MyYRSYfBDpxLiWC8jK
-         G1nNdlDRqFHgEsHtghT6pnpRbHoDHVblHogU4tPHRpmagQPK6jUXeEUDkKIu9DQMaEv8
-         rwnw==
+        b=SC6DY419nMtcqJkLH9Q7/b52UhdckrLAC9cld18yXdhAbYk9e7pj1954gv//TVbGXk
+         fD0W5tRnWe57tsIl82ez0nz2xks1ct4gTbqD5VOar9vhrOBXvycAvhDfah34AZJ3FITM
+         PY57WpsREnfL+88Gmaf7HjT+b5O/5PFqeNS305w2DxgIpQ0y3aG8aIzgpHU3Ekp+M3xw
+         m+HJHJ/l1KzCjEigN8BBRI90BHToFgVE10SljP3Xy1/Ih4ozqto1X3FzsoEZypv+Qz8+
+         MumhN+JD8EgPMcBpNvGW4P1sYvLsQwAphNWLg2ptsZ6VuE7aCyMEVPfiBm1BStjpAGPg
+         bG7g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=tn1G0Psh9gBGfjtI+rLmwDa6qG5SqexuPEq6cTaj7mM=;
-        b=A99p6M1yOF3GnOEqUTJzBqp9t3jAKTTzPTOhIV4dMxAFrAHA3AFbJgBpLMwHZ7Ofpp
-         2IySqN/Z4vEAH67DUezSvUy1T/H87rijoXpXDGXN3NWCfkV6Ev8bpQ4joUnddhqPahNC
-         yCl6bDTfWByf7g7oXPAEio2mCDipwkEmA3EB5sOTdN+dgugEJtYF9XXsjch4JXVczog5
-         XkJPt84MaCi8slDhFA25sAKN0uQUo/YK4yDYgdWl2KT2w251+jp214Kw18RhRFjnrHgI
-         yx2L50op1Hggak+yc3h3G5VyGTmkJ2Tx4mteXSuxjO1QK9rz4MIBVEIAOtk98zLNaeM7
-         rucw==
+        bh=FEtovbJuiq5QTZMfa17jeZZhNg44bxYYtb8WIPWuxZ4=;
+        b=obLivprt0Nyr+V0Cil0ySZRxNK/ErprtS4RfuET3+o6UH/89mIXaTVCQxrKhc7ecV4
+         TaDLFAxeFJWW5Tck+cfFDqJra1F+lcLeyNkLjg3NUeSgbSWhUr0xB7K11yOL+bfgQiSo
+         lfQx1qAIhpEp5ePsiimcExoco96QNvSC3grD5HBQDIgyTBv0hqCgiIK4GPJulEQHwfSN
+         wC4K5Xy7gycKx83EcQOmbOHDZNrYXCIeRqwSPwB+WeyL/iugNcg8/jCh9L/e3Tfw2tqz
+         2fSSfIXhOzoOL3WnTFlTEDKjSUDkPUl+kpRbxuvzrSmwl8KW5/wH26Rmfwux+URgLh83
+         qHxQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zQbpmHF0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=c0NENKiE;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w12si3031999ilg.25.2021.06.10.02.29.43
+        by mx.google.com with ESMTPS id c12si2143970qtm.374.2021.06.10.03.28.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 10 Jun 2021 02:29:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 10 Jun 2021 03:28:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zQbpmHF0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=c0NENKiE;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:55792 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38812 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lrH0R-00055Y-24
-	for alex.bennee@linaro.org; Thu, 10 Jun 2021 05:29:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36494)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lrHur-0004da-H8
+	for alex.bennee@linaro.org; Thu, 10 Jun 2021 06:28:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46886)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lrH0H-00052x-Cw
- for qemu-arm@nongnu.org; Thu, 10 Jun 2021 05:29:33 -0400
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534]:42869)
+ id 1lrHl5-0001PV-Jp
+ for qemu-devel@nongnu.org; Thu, 10 Jun 2021 06:17:55 -0400
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c]:34527)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lrH0D-00056r-RM
- for qemu-arm@nongnu.org; Thu, 10 Jun 2021 05:29:33 -0400
-Received: by mail-ed1-x534.google.com with SMTP id i13so32182797edb.9
- for <qemu-arm@nongnu.org>; Thu, 10 Jun 2021 02:29:29 -0700 (PDT)
+ id 1lrHkz-0002CK-Ok
+ for qemu-devel@nongnu.org; Thu, 10 Jun 2021 06:17:55 -0400
+Received: by mail-ed1-x52c.google.com with SMTP id cb9so32368005edb.1
+ for <qemu-devel@nongnu.org>; Thu, 10 Jun 2021 03:17:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=tn1G0Psh9gBGfjtI+rLmwDa6qG5SqexuPEq6cTaj7mM=;
- b=zQbpmHF0pQYDIEw3RGq9mybvGmX454k3Tmvci7vLtU1uG9a9kIxDi/zvoP+w4od0jI
- 4444dVAi/tJPxHrZxd7O17iTU18usP51i7UhPFeyJbvdCdGWGUsfy9r9hk8I4tH3SQ9x
- vZWwN1beVgrWOM+BlPmvKH0qwgOUY1usk5A0c4/1Db2AtGL6J23YD1yazmfVzfRmsbMR
- I2AXLFiMS6T3aahmjlKVqIG3GI1DFYBOziRpin9pRmnffDMOEgFmLCDXeSd4fRX648Z5
- e/gUfnUbPz0x6KJS03F2XNweiFRjBzOrT9qCLBHvGCUb6+8j3wP2Th4+VP8iYHl08bGj
- vrZw==
+ :cc; bh=FEtovbJuiq5QTZMfa17jeZZhNg44bxYYtb8WIPWuxZ4=;
+ b=c0NENKiECeKhFNLDXIt7mRQmtPC7ooRuoni/yu8yBX8fSfE9lmqIC533q1vOUlc1CY
+ NgJ87sDua2ua8M+ikFva9tuRfKCQoKT/tjBe8/DtnuHMQ/B2FGOzK77z2TsczFAK2JTJ
+ kidbyezv5Eflui21PQFDGMwpTmr1BxtAFTwLWE21wq5zrdM1tnl4wuydP596cEmxjORT
+ dFDY1KHYbVhBz3pLDRE+dYdcG2qsCy3ybN2k2RpvyeX60f5hBdxLDCLY25is5xOPBphw
+ 6i4bAKaQcMdmrYtuyUhsjyDOPp7dV8OeddNbuyURQ7DqZDFiJhhojIi6QLEOytim1KNs
+ juBg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=tn1G0Psh9gBGfjtI+rLmwDa6qG5SqexuPEq6cTaj7mM=;
- b=HXtw0yJHmOFBR3O5Ihnx8moGiDS2VURS9HsOWl7HUF6PI5wlmBqrAxtgMoMnIA5qmy
- 4yKcp7+4Go7240KyveYAVm+czwfVXWhnEap5ipg9gTPNxnPBrVd5XRG1bzXSe7Ip2O51
- D73z12VHT/13Uq+/2R+CcAoiB5c6E9VDjl/2yyr0+63gkMU73rm36uNMeD+QtUGCjvtl
- 1sm0zM2K1UtK9MCyuBNIFlYl32u7VGmmTgCVWbZUJ7BmbE+KGPXfCuRpo9TdwYhPyonT
- DQPDrWcuobor4DYucytB6A23Zs7JBMWGqABR7nwwlN6nqVMHrYDdqXvumhCmOgexcHdq
- nHuQ==
-X-Gm-Message-State: AOAM5328JPGmrF1Bk349CM8HObzU9JeZ/HdzLKT8LwtGbkLlkJp4xMqe
- 0Top5lQ+nfrR5c6V1leSfKUIpKu7KjoqvJnOFMXZEg==
-X-Received: by 2002:aa7:c857:: with SMTP id g23mr3691868edt.100.1623317368085; 
- Thu, 10 Jun 2021 02:29:28 -0700 (PDT)
+ bh=FEtovbJuiq5QTZMfa17jeZZhNg44bxYYtb8WIPWuxZ4=;
+ b=AT7OaJ1xxQGlQUtAcF4V7dgWJhHeAKQstMveGS2kUfn5U+iBGwqp9gHlPiyo3tNZFN
+ 2lCphFjHG6LhyfuABmfnpyVVKz3c8+Tx5fWs6uehQsInAV9g0aiW2QtaWQ8aiiBpEPgg
+ mnGcIPJXIapLVKmLuJZWEtbp6j2gBzPCaArGcFYY9ySeWEi8VRaV7dKwn4SAk7AuG1bN
+ 0fVRaJ7x6mh3eAOCRQNB/ehf7IMRe7EAn09Qoc7KoYZLzqyvAPHBKwQaDhOclbRDqqeK
+ FssIHW5q096Nex+QvTR+SYgRXSDOQyWBGPs+fJ4xy1y9fyY77Irc9WAxmx2pYq2R1Vte
+ h1vw==
+X-Gm-Message-State: AOAM530OJW44FoLauB8k0VlWg15TQlIEShr/QoDxTWbUbsIpU5AU2Doo
+ 6uMP195ysz3SlJ6/i8QhM2iSZZScIULSgLg2ULzZAQ==
+X-Received: by 2002:aa7:dc12:: with SMTP id b18mr3871359edu.52.1623320268162; 
+ Thu, 10 Jun 2021 03:17:48 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210607165821.9892-1-peter.maydell@linaro.org>
- <20210607165821.9892-4-peter.maydell@linaro.org>
- <23ec05cc-55d3-f343-d834-aa40f7685b37@linaro.org>
-In-Reply-To: <23ec05cc-55d3-f343-d834-aa40f7685b37@linaro.org>
+ <20210607165821.9892-5-peter.maydell@linaro.org>
+ <d54b1117-b25a-ff6f-3166-87fd282b674c@linaro.org>
+In-Reply-To: <d54b1117-b25a-ff6f-3166-87fd282b674c@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 10 Jun 2021 10:28:54 +0100
-Message-ID: <CAFEAcA9AH+YGJ3qT2x29EebUNF_4LFmrqNwjuh=7NjzgfHMySg@mail.gmail.com>
-Subject: Re: [PATCH 03/55] target/arm: Handle VPR semantics in existing code
+Date: Thu, 10 Jun 2021 11:17:13 +0100
+Message-ID: <CAFEAcA_0P=3fE8arF3j90s1z8A-3TJGnmHjHLThxTALvqt3PXA@mail.gmail.com>
+Subject: Re: [PATCH 04/55] target/arm: Add handling for PSR.ECI/ICI
 To: Richard Henderson <richard.henderson@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::534;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x534.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2YPhxfdolqsm
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: bROFnRw7bLWy
 
-On Mon, 7 Jun 2021 at 22:19, Richard Henderson
+On Tue, 8 Jun 2021 at 00:33, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
 > On 6/7/21 9:57 AM, Peter Maydell wrote:
-> > @@ -410,16 +415,19 @@ void HELPER(v7m_preserve_fp_state)(CPUARMState *env)
-> >       env->v7m.fpccr[is_secure] &= ~R_V7M_FPCCR_LSPACT_MASK;
-> >
-> >       if (ts) {
-> > -        /* Clear s0 to s31 and the FPSCR */
-> > +        /* Clear s0 to s31 and the FPSCR and VPR */
-> >           int i;
-> >
-> >           for (i = 0; i < 32; i += 2) {
-> >               *aa32_vfp_dreg(env, i / 2) = 0;
-> >           }
-> >           vfp_set_fpscr(env, 0);
-> > +        if (cpu_isar_feature(aa32_mve, cpu)) {
-> > +            env->v7m.vpr = 0;
+> > +void clear_eci_state(DisasContext *s)
+> > +{
+> > +    /*
+> > +     * Clear any ECI/ICI state: used when a load multiple/store
+> > +     * multiple insn executes.
+> > +     */
+> > +    if (s->eci) {
+> > +        TCGv_i32 tmp = tcg_temp_new_i32();
+> > +        tcg_gen_movi_i32(tmp, 0);
+>
+> tcg_const_i32 or preferably tcg_constant_i32.
+
+I'll use tcg_const_i32(), yep. (I think I copied this absent-mindedly
+from some of the existing code in translate.c that uses tcg_gen_movi_i32().)
+Can't use tcg_constant_i32() because store_cpu_field() wants to
+tcg_temp_free_i32() its argument.
+
+> > +    if (condexec & 0xf) {
+> > +        dc->condexec_mask = (condexec & 0xf) << 1;
+> > +        dc->condexec_cond = condexec >> 4;
+> > +        dc->eci = 0;
+> > +    } else {
+> > +        dc->condexec_mask = 0;
+> > +        dc->condexec_cond = 0;
+> > +        if (arm_feature(env, ARM_FEATURE_M)) {
+> > +            dc->eci = condexec >> 4;
 > > +        }
 >
-> If the vpr does not exist without mve, is it cleaner to simply set vpr
-> unconditionally?
+> This else leaves eci uninitialized.
 
-I thought about that, but in the end went for the condition, just
-to preserve the parallelism with the places where we do need
-the condition. There didn't seem to me to be much in it.
+Strictly speaking it doesn't, because gen_intermediate_code
+zero-initializes the DisasContext with a "{ }" struct initializer.
+But it's clearer to explicitly initialize here I guess. Fixed.
+
+> >       dc->insn = insn;
+> >
+> > +    if (dc->eci) {
+> > +        /*
+> > +         * For M-profile continuable instructions, ECI/ICI handling
+> > +         * falls into these cases:
+> > +         *  - interrupt-continuable instructions
+> > +         *     These are the various load/store multiple insns (both
+> > +         *     integer and fp). The ICI bits indicate the register
+> > +         *     where the load/store can resume. We make the IMPDEF
+> > +         *     choice to always do "instruction restart", ie ignore
+> > +         *     the ICI value and always execute the ldm/stm from the
+> > +         *     start. So all we need to do is zero PSR.ICI if the
+> > +         *     insn executes.
+> > +         *  - MVE instructions subject to beat-wise execution
+> > +         *     Here the ECI bits indicate which beats have already been
+> > +         *     executed, and we must honour this. Each insn of this
+> > +         *     type will handle it correctly. We will update PSR.ECI
+> > +         *     in the helper function for the insn (some ECI values
+> > +         *     mean that the following insn also has been partially
+> > +         *     executed).
+> > +         *  - Special cases which don't advance ECI
+> > +         *     The insns LE, LETP and BKPT leave the ECI/ICI state
+> > +         *     bits untouched.
+> > +         *  - all other insns (the common case)
+> > +         *     Non-zero ECI/ICI means an INVSTATE UsageFault.
+> > +         *     We place a rewind-marker here. Insns in the previous
+> > +         *     three categories will set a flag in the DisasContext.
+> > +         *     If the flag isn't set after we call disas_thumb_insn()
+> > +         *     or disas_thumb2_insn() then we know we have a "some other
+> > +         *     insn" case. We will rewind to the marker (ie throwing away
+> > +         *     all the generated code) and instead emit "take exception".
+> > +         */
+> > +        dc->eci_handled = false;
+>
+> This should be done in arm_tr_init_disas_context, I think, unconditionally,
+> next to eci.
+>
+> > +        dc->insn_eci_rewind = tcg_last_op();
+>
+> I believe that this is identical to dc->insn_start.  Certainly there does not
+> seem to be any possibility of any opcodes emitted in between.
+
+There's quite a wide separation between where we set insn_start and here
+(we set insn_start in arm_tr_insn_start, then there's whatever the accel/tcg
+framework chooses to do between the insn_start callback and the translate_insn
+callback, then the arm_pre_translate_insn() code). So I felt that a separate
+pointer was easier to reason about.
+
+In fact, looking again at the accel/tcg code, if we rewind to insn_start
+that will delete any code emitted by the breakpoint_check hook,
+anything emitted by plugin_gen_insn_start(), and anything emitted by
+gen_io_start() if this is a CF_LAST_IO insn. I think we want to keep
+all of those.
+
+> If you think we should use a different field, then initialize it to null next
+> to eci/eci_handled.
+
+Done.
 
 -- PMM

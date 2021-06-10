@@ -1,216 +1,202 @@
-Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp361754lfa;
-        Thu, 10 Jun 2021 03:28:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwyDt8azUq0qtU3c0Y9LgHygIJACgwyxEQAJ/sbUX2pU3Or/RfWfwjcdHVLr2mLCvewIgdf
-X-Received: by 2002:a37:ed4:: with SMTP id 203mr3927060qko.361.1623320882275;
-        Thu, 10 Jun 2021 03:28:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623320882; cv=none;
+Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp457939lfa;
+        Thu, 10 Jun 2021 05:40:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxPYUyt4zxan6TLVUqYehtv4U1Il0HsEDKdLMgyg5epIxgW0BOujIVsTa1hWmL/YkHFvpun
+X-Received: by 2002:a05:6102:383:: with SMTP id m3mr4263764vsq.15.1623328858860;
+        Thu, 10 Jun 2021 05:40:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623328858; cv=none;
         d=google.com; s=arc-20160816;
-        b=SC6DY419nMtcqJkLH9Q7/b52UhdckrLAC9cld18yXdhAbYk9e7pj1954gv//TVbGXk
-         fD0W5tRnWe57tsIl82ez0nz2xks1ct4gTbqD5VOar9vhrOBXvycAvhDfah34AZJ3FITM
-         PY57WpsREnfL+88Gmaf7HjT+b5O/5PFqeNS305w2DxgIpQ0y3aG8aIzgpHU3Ekp+M3xw
-         m+HJHJ/l1KzCjEigN8BBRI90BHToFgVE10SljP3Xy1/Ih4ozqto1X3FzsoEZypv+Qz8+
-         MumhN+JD8EgPMcBpNvGW4P1sYvLsQwAphNWLg2ptsZ6VuE7aCyMEVPfiBm1BStjpAGPg
-         bG7g==
+        b=SNtXQrIaNVZ2VOi/ocMNOIzwU1HqT2h9955A/Y9clP4seoumGiSUQyv5DTxy5vKDrg
+         rMGVjTYJ/6ZPxoUSnsZFTp7+Amz7MLtQelwc+5VamFd6/KVEnbctuNUco5QBjnd8RTY0
+         lhFk7+f3C3HR4L4QpY0Dy5MWSZ1MhO0t6NPKAKsp6vGxq9IuUWa6ZjxqoHfzFS3GtaUa
+         7SaRcykkwr6p42qyZhyK1WlMjX0HplrpkQBfHPy5sAAaiyyQMeupSrRCGwCl8ooQ6sb9
+         2ndHYsxtbGQAfQVRwQAVJSoQXzIKGbxd8iSaOsjJwvDkjjuAC6Q1j8053kitNeD4hUGW
+         oTUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=FEtovbJuiq5QTZMfa17jeZZhNg44bxYYtb8WIPWuxZ4=;
-        b=obLivprt0Nyr+V0Cil0ySZRxNK/ErprtS4RfuET3+o6UH/89mIXaTVCQxrKhc7ecV4
-         TaDLFAxeFJWW5Tck+cfFDqJra1F+lcLeyNkLjg3NUeSgbSWhUr0xB7K11yOL+bfgQiSo
-         lfQx1qAIhpEp5ePsiimcExoco96QNvSC3grD5HBQDIgyTBv0hqCgiIK4GPJulEQHwfSN
-         wC4K5Xy7gycKx83EcQOmbOHDZNrYXCIeRqwSPwB+WeyL/iugNcg8/jCh9L/e3Tfw2tqz
-         2fSSfIXhOzoOL3WnTFlTEDKjSUDkPUl+kpRbxuvzrSmwl8KW5/wH26Rmfwux+URgLh83
-         qHxQ==
+        bh=qXMh0eWSot/C6iO763Pkxri62CDVNRHyAFSOO/335uE=;
+        b=vxL7AOck8ss1nEgokWN+lxGW/pBaObcuUDNRDjcDPUBDe51J5EiFrJLgNjmA4JGTfi
+         lWhjQFfbozgomffrqKUWTUtnbElHpg+B7jEwdR9eDpSxlsUE5I5ZSnZbOxf4+rTzal2O
+         Zl9j4inwU5ovb1/cPk1JqLLrvdo5hzA+0fdh/0sYNcJXO0hw5xUsa/jxwAGVQOBcPrfR
+         KLaLhwbHM9aB/CIVxdUJJklrHvENSaSxKSr7apq8QpWmLN6kl1IcjdzMaf7Tpy0oS8Vp
+         TK0Bm8rKZ6TNkOlJhhgbzo3q1cnQbJov73JxFNPtVsYzNH1PqHlHOY4gxi5NJFT7yEbl
+         kcFg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=c0NENKiE;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=u+5WB4Mx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c12si2143970qtm.374.2021.06.10.03.28.02
+        by mx.google.com with ESMTPS id v26si1344758vsd.127.2021.06.10.05.40.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 10 Jun 2021 03:28:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 10 Jun 2021 05:40:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=c0NENKiE;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=u+5WB4Mx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:38812 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41000 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lrHur-0004da-H8
-	for alex.bennee@linaro.org; Thu, 10 Jun 2021 06:28:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46886)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lrJzW-0006bW-5k
+	for alex.bennee@linaro.org; Thu, 10 Jun 2021 08:40:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57546)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lrHl5-0001PV-Jp
- for qemu-devel@nongnu.org; Thu, 10 Jun 2021 06:17:55 -0400
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c]:34527)
+ id 1lrJzJ-0006ZU-4k
+ for qemu-arm@nongnu.org; Thu, 10 Jun 2021 08:40:45 -0400
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a]:34521)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lrHkz-0002CK-Ok
- for qemu-devel@nongnu.org; Thu, 10 Jun 2021 06:17:55 -0400
-Received: by mail-ed1-x52c.google.com with SMTP id cb9so32368005edb.1
- for <qemu-devel@nongnu.org>; Thu, 10 Jun 2021 03:17:49 -0700 (PDT)
+ id 1lrJzF-0002Jj-6N
+ for qemu-arm@nongnu.org; Thu, 10 Jun 2021 08:40:44 -0400
+Received: by mail-ej1-x62a.google.com with SMTP id g8so43996275ejx.1
+ for <qemu-arm@nongnu.org>; Thu, 10 Jun 2021 05:40:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=FEtovbJuiq5QTZMfa17jeZZhNg44bxYYtb8WIPWuxZ4=;
- b=c0NENKiECeKhFNLDXIt7mRQmtPC7ooRuoni/yu8yBX8fSfE9lmqIC533q1vOUlc1CY
- NgJ87sDua2ua8M+ikFva9tuRfKCQoKT/tjBe8/DtnuHMQ/B2FGOzK77z2TsczFAK2JTJ
- kidbyezv5Eflui21PQFDGMwpTmr1BxtAFTwLWE21wq5zrdM1tnl4wuydP596cEmxjORT
- dFDY1KHYbVhBz3pLDRE+dYdcG2qsCy3ybN2k2RpvyeX60f5hBdxLDCLY25is5xOPBphw
- 6i4bAKaQcMdmrYtuyUhsjyDOPp7dV8OeddNbuyURQ7DqZDFiJhhojIi6QLEOytim1KNs
- juBg==
+ :cc; bh=qXMh0eWSot/C6iO763Pkxri62CDVNRHyAFSOO/335uE=;
+ b=u+5WB4MxTgXUGPNbm2MjimJwQ7z63NmuL4TwFUsAdCe0G/Ousho6T4MZtzUjjUaWK6
+ tA0zF2lrgANY6BiT6QCRaQiZLUYvNONulVwh+JPBKxYm65+EiFf61JVr4eebozF1MhpK
+ g+ufC5oe/c54tiPraHwwvlqcS3LXlMDH5q1S1s2t0tKIoukw6s+6emywOPqOhQvt4qpx
+ BR4PwSV3KGTc5fhT2HtoiqQFl44Z4eUKe8lxhwyaiJhBZ5E/UEQBOICiBL3vkpXmSiZM
+ 7W3vROGBOXcilkPNVta+pDWhhhvO2euZs9UkrkEwyfcm4MvrhqqnwZy7wXiza6D7YMBt
+ magw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=FEtovbJuiq5QTZMfa17jeZZhNg44bxYYtb8WIPWuxZ4=;
- b=AT7OaJ1xxQGlQUtAcF4V7dgWJhHeAKQstMveGS2kUfn5U+iBGwqp9gHlPiyo3tNZFN
- 2lCphFjHG6LhyfuABmfnpyVVKz3c8+Tx5fWs6uehQsInAV9g0aiW2QtaWQ8aiiBpEPgg
- mnGcIPJXIapLVKmLuJZWEtbp6j2gBzPCaArGcFYY9ySeWEi8VRaV7dKwn4SAk7AuG1bN
- 0fVRaJ7x6mh3eAOCRQNB/ehf7IMRe7EAn09Qoc7KoYZLzqyvAPHBKwQaDhOclbRDqqeK
- FssIHW5q096Nex+QvTR+SYgRXSDOQyWBGPs+fJ4xy1y9fyY77Irc9WAxmx2pYq2R1Vte
- h1vw==
-X-Gm-Message-State: AOAM530OJW44FoLauB8k0VlWg15TQlIEShr/QoDxTWbUbsIpU5AU2Doo
- 6uMP195ysz3SlJ6/i8QhM2iSZZScIULSgLg2ULzZAQ==
-X-Received: by 2002:aa7:dc12:: with SMTP id b18mr3871359edu.52.1623320268162; 
- Thu, 10 Jun 2021 03:17:48 -0700 (PDT)
+ bh=qXMh0eWSot/C6iO763Pkxri62CDVNRHyAFSOO/335uE=;
+ b=mWFp16BAw7OGOHupvQvK3ShttKK87HZXUnRxR+OjT0GaiqhCpbknBgj7b7icBmXv2E
+ aVuwwzyhpbxfhxrUcreIvEBJVSkWOJwRjyUxCxkVWuoywTEH/Jbvsu6V0f/yWgTwBrJK
+ WAJJX0sER5pnWyaybzXnUXyh9XPbjr41o4aF1m9Dz5u+Waf+Sob2wiJNWPn2XeSMYx2P
+ YhQFmulnJXWTlkDUM1HqIpAQktZ2hyANnuckFgcQ+UbL+knmuOS/dG80dxx02DrNvnzB
+ grzeC/oiYBTjn4eHl1Ozfs3YpEXgDbG8rs844Nj7CsljlHMoK+mJXujjNLuAuAzlHCUU
+ m2Ww==
+X-Gm-Message-State: AOAM532F5PXQ+TTywJpclHs4yeEL9fvTXFbZYCf5JdPX9gf9M/2V7KUt
+ FzXgivzsBkMlGXARewclizTseRSst9IcJwLiCg431Q==
+X-Received: by 2002:a17:906:b294:: with SMTP id
+ q20mr4226656ejz.382.1623328836068; 
+ Thu, 10 Jun 2021 05:40:36 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210607165821.9892-1-peter.maydell@linaro.org>
- <20210607165821.9892-5-peter.maydell@linaro.org>
- <d54b1117-b25a-ff6f-3166-87fd282b674c@linaro.org>
-In-Reply-To: <d54b1117-b25a-ff6f-3166-87fd282b674c@linaro.org>
+ <20210607165821.9892-14-peter.maydell@linaro.org>
+ <b04dd492-0394-5b1a-5747-bb21d772e621@linaro.org>
+In-Reply-To: <b04dd492-0394-5b1a-5747-bb21d772e621@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 10 Jun 2021 11:17:13 +0100
-Message-ID: <CAFEAcA_0P=3fE8arF3j90s1z8A-3TJGnmHjHLThxTALvqt3PXA@mail.gmail.com>
-Subject: Re: [PATCH 04/55] target/arm: Add handling for PSR.ECI/ICI
+Date: Thu, 10 Jun 2021 13:40:02 +0100
+Message-ID: <CAFEAcA9Sa=mCMGGkmTm2HseanfkKa1PtDYOUiofO-k4eM_fYoA@mail.gmail.com>
+Subject: Re: [PATCH 13/55] target/arm: Implement MVE VCLZ
 To: Richard Henderson <richard.henderson@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bROFnRw7bLWy
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: u/3GWF+UkyhH
 
-On Tue, 8 Jun 2021 at 00:33, Richard Henderson
+On Tue, 8 Jun 2021 at 23:10, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
 > On 6/7/21 9:57 AM, Peter Maydell wrote:
-> > +void clear_eci_state(DisasContext *s)
-> > +{
-> > +    /*
-> > +     * Clear any ECI/ICI state: used when a load multiple/store
-> > +     * multiple insn executes.
-> > +     */
-> > +    if (s->eci) {
-> > +        TCGv_i32 tmp = tcg_temp_new_i32();
-> > +        tcg_gen_movi_i32(tmp, 0);
->
-> tcg_const_i32 or preferably tcg_constant_i32.
-
-I'll use tcg_const_i32(), yep. (I think I copied this absent-mindedly
-from some of the existing code in translate.c that uses tcg_gen_movi_i32().)
-Can't use tcg_constant_i32() because store_cpu_field() wants to
-tcg_temp_free_i32() its argument.
-
-> > +    if (condexec & 0xf) {
-> > +        dc->condexec_mask = (condexec & 0xf) << 1;
-> > +        dc->condexec_cond = condexec >> 4;
-> > +        dc->eci = 0;
-> > +    } else {
-> > +        dc->condexec_mask = 0;
-> > +        dc->condexec_cond = 0;
-> > +        if (arm_feature(env, ARM_FEATURE_M)) {
-> > +            dc->eci = condexec >> 4;
-> > +        }
->
-> This else leaves eci uninitialized.
-
-Strictly speaking it doesn't, because gen_intermediate_code
-zero-initializes the DisasContext with a "{ }" struct initializer.
-But it's clearer to explicitly initialize here I guess. Fixed.
-
-> >       dc->insn = insn;
+> > Implement the MVE VCLZ insn (and the necessary machinery
+> > for MVE 1-input vector ops).
 > >
-> > +    if (dc->eci) {
-> > +        /*
-> > +         * For M-profile continuable instructions, ECI/ICI handling
-> > +         * falls into these cases:
-> > +         *  - interrupt-continuable instructions
-> > +         *     These are the various load/store multiple insns (both
-> > +         *     integer and fp). The ICI bits indicate the register
-> > +         *     where the load/store can resume. We make the IMPDEF
-> > +         *     choice to always do "instruction restart", ie ignore
-> > +         *     the ICI value and always execute the ldm/stm from the
-> > +         *     start. So all we need to do is zero PSR.ICI if the
-> > +         *     insn executes.
-> > +         *  - MVE instructions subject to beat-wise execution
-> > +         *     Here the ECI bits indicate which beats have already been
-> > +         *     executed, and we must honour this. Each insn of this
-> > +         *     type will handle it correctly. We will update PSR.ECI
-> > +         *     in the helper function for the insn (some ECI values
-> > +         *     mean that the following insn also has been partially
-> > +         *     executed).
-> > +         *  - Special cases which don't advance ECI
-> > +         *     The insns LE, LETP and BKPT leave the ECI/ICI state
-> > +         *     bits untouched.
-> > +         *  - all other insns (the common case)
-> > +         *     Non-zero ECI/ICI means an INVSTATE UsageFault.
-> > +         *     We place a rewind-marker here. Insns in the previous
-> > +         *     three categories will set a flag in the DisasContext.
-> > +         *     If the flag isn't set after we call disas_thumb_insn()
-> > +         *     or disas_thumb2_insn() then we know we have a "some other
-> > +         *     insn" case. We will rewind to the marker (ie throwing away
-> > +         *     all the generated code) and instead emit "take exception".
-> > +         */
-> > +        dc->eci_handled = false;
+> > Note that for non-load instructions predication is always performed
+> > at a byte level granularity regardless of element size (R_ZLSJ),
+> > and so the masking logic here differs from that used in the VLDR
+> > and VSTR helpers.
+> >
+> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+
+> > +
+> > +/*
+> > + * Take the bottom bits of mask (which is 1 bit per lane) and
+> > + * convert to a mask which has 1s in each byte which is predicated.
+> > + */
+> > +static uint8_t mask_to_bytemask1(uint16_t mask)
+> > +{
+> > +    return (mask & 1) ? 0xff : 0;
+> > +}
+> > +
+> > +static uint16_t mask_to_bytemask2(uint16_t mask)
+> > +{
+> > +    static const uint16_t masks[] = { 0x0000, 0x00ff, 0xff00, 0xffff };
+> > +    return masks[mask & 3];
+> > +}
+> > +
+> > +static uint32_t mask_to_bytemask4(uint16_t mask)
+> > +{
+> > +    static const uint32_t masks[] = {
+> > +        0x00000000, 0x000000ff, 0x0000ff00, 0x0000ffff,
+> > +        0x00ff0000, 0x00ff00ff, 0x00ffff00, 0x00ffffff,
+> > +        0xff000000, 0xff0000ff, 0xff00ff00, 0xff00ffff,
+> > +        0xffff0000, 0xffff00ff, 0xffffff00, 0xffffffff,
+> > +    };
 >
-> This should be done in arm_tr_init_disas_context, I think, unconditionally,
-> next to eci.
+> I'll note that
 >
-> > +        dc->insn_eci_rewind = tcg_last_op();
+> (1) the values for the mask_to_bytemask2 array overlap the first 4 values of
+> the mask_to_bytemask4 array, and
 >
-> I believe that this is identical to dc->insn_start.  Certainly there does not
-> seem to be any possibility of any opcodes emitted in between.
+> (2) both of these overlap with the larger
+>
+> static inline uint64_t expand_pred_b(uint8_t byte)
+>
+> from SVE.  It'd be nice to share the storage, whatever the actual functional
+> interface into the array.
 
-There's quite a wide separation between where we set insn_start and here
-(we set insn_start in arm_tr_insn_start, then there's whatever the accel/tcg
-framework chooses to do between the insn_start callback and the translate_insn
-callback, then the arm_pre_translate_insn() code). So I felt that a separate
-pointer was easier to reason about.
+Yeah, I guess so. I didn't really feel like trying to
+abstract that out...
 
-In fact, looking again at the accel/tcg code, if we rewind to insn_start
-that will delete any code emitted by the breakpoint_check hook,
-anything emitted by plugin_gen_insn_start(), and anything emitted by
-gen_io_start() if this is a CF_LAST_IO insn. I think we want to keep
-all of those.
+> > +#define DO_1OP(OP, ESIZE, TYPE, H, FN)                                  \
+> > +    void HELPER(mve_##OP)(CPUARMState *env, void *vd, void *vm)         \
+> > +    {                                                                   \
+> > +        TYPE *d = vd, *m = vm;                                          \
+> > +        uint16_t mask = mve_element_mask(env);                          \
+> > +        unsigned e;                                                     \
+> > +        for (e = 0; e < 16 / ESIZE; e++, mask >>= ESIZE) {              \
+> > +            TYPE r = FN(m[H(e)]);                                       \
+> > +            uint64_t bytemask = mask_to_bytemask##ESIZE(mask);          \
+>
+> Why uint64_t and not TYPE?  Or uint32_t?
 
-> If you think we should use a different field, then initialize it to null next
-> to eci/eci_handled.
+A later patch adds the mask_to_bytemask8(), so I wanted
+a type that was definitely unsigned (so TYPE isn't any good)
+and which was definitely big enough for 64 bits.
 
-Done.
+> > +    if (!mve_eci_check(s)) {
+> > +        return true;
+> > +    }
+> > +
+> > +    if (!vfp_access_check(s)) {
+> > +        return true;
+> > +    }
+>
+> Not the first instance, but is it worth saving 4 lines per and combining these
+> into one IF?
+
+Yes, I think so.
 
 -- PMM

@@ -1,99 +1,99 @@
-Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp52325lff;
-        Fri, 11 Jun 2021 17:12:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwJHxa2FLXmYBs+c+t+eEUoBkxrSue6iq8Exr6pBhdmeJnCcY6h8dxojq/fghgVvhVk8/TL
-X-Received: by 2002:a67:b30b:: with SMTP id a11mr959361vsm.32.1623456771072;
-        Fri, 11 Jun 2021 17:12:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623456771; cv=none;
+Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp53817lff;
+        Fri, 11 Jun 2021 17:15:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx1BoktDG4rAg3Z/QOdR/kdj3dwTnlBhAfFNubv1kE2Jbpi6wivuPAtlEPQPkwf6AYO+InT
+X-Received: by 2002:a6b:3b05:: with SMTP id i5mr5128080ioa.135.1623456942669;
+        Fri, 11 Jun 2021 17:15:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623456942; cv=none;
         d=google.com; s=arc-20160816;
-        b=KJDpR46AZb2HotwznFlaUNRXl5gAq6M7Bkp21z3IZNuKMarFskpaa7Y7GRWyeA27sP
-         NHFD1f/MHTq8WUktcJjdqXdH4PLXsEj7bAFar5GmRtwRSMz2dk7NkZZru3Uvt6vya+Tn
-         mqXTG68/xpYCb68mQBd4DkjmC/RkgBfNaPSKOUicRuoMyz2cn2wLh9DGj4FBySgxgYXP
-         VAAhY52U0mw2b5UAAWzNEBc69gAPkYUmlfBNtq0b96k+cb48bc+dY3GYMYNCbORIzTuI
-         hIhk2+3AOb/vsfLGIggSSZpc7SfRWc24VD4N0DbFe1IVSbP+nhZjSFkgKKXFLQ09pK5w
-         N09A==
+        b=mClifyegTGX4IxKENG3bEDaOwUstZrDi/Ry9jK4XnDwrUz8+VJ3A+aQGgvq3+mKKMr
+         +Av3k5GePPQDkn3gYdciCwWvIbO/tHZN9HNy36NBeGaW0ipmCfnQIqyvAvSu2bLS9wtM
+         KQhTMXKWKLJpJ3BuBBK3cXgzMiOwv6so6j1cgbs2ve/n+q5sLxBDedpRkX4inclxyHoN
+         9yplHfc8eRLdy+jmrW2k+C2hcpokTzf3Hf3AJy8eoC2VAQDvOM/BAvEkKepkCW344k9g
+         Qv1LcbzKdE2j6ElJKKTRgXGSwAu73cab+ngcsbXmI3ELO6kORULJFJhckC6mpmV4sYtn
+         4jgA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=IdPxPeDfVMzgaWG1shiaKAth3n48ltYCK6XjgLLSiTs=;
-        b=odqPEj7Z0eXHl9lFLxUlLrpCj6KsyKU5kB8UJw9T5UmGDuUc07xAylzX3EHlQ7mQWQ
-         67My7eIKfJU+6q2gb6JwxIN4lQUgBYWq3KBIo6u0gX5Mpq+2S22Fm5h2Y2GnUTaAWC2n
-         UbpBxOV67JwwGLUwf98U3yEHX1QGP5PckEQgmEnqw7/qKVvHHoMH0HUWDNjlt+HuUoWD
-         gHLjsD8zB9rHpputfeubO0n3H84PQO/PVb3ZNFUxQYQI1irFf9rRedWVepgRCzPYw84p
-         KYrrJHM/ROMAc1PuTd/MV4nv4neFa9nf/4ijiGxsp9VFTI+z9sekoXmpv228ho7ZAxmy
-         WhOw==
+        bh=JlzpSNBwy36z9O6GZXAyDdytUTOP63X4cHyKK0txBRU=;
+        b=nal73+329JOdpHrKxIP5r0BT+kdkEJyxKwLjXGFW8y3zJ4I2an4ki13/oOYJYB+mju
+         i17ZbV++vyC8n0LzlE/bCLhW9bpwN4VdDE2zb4AvvgC0agfR7+VruObNj7bci/uK1QTw
+         ROchAaAlWS8FYp7Oz59kvnKrTZhXdFUWgPWwoXj/bsEZyMsuuqaqVfwkIKDVkk9emSQ7
+         /8Ul8feA/bUwfyDfiDtRzf7IPaMBPYWq9zye95A+T2rgTXFftssHgkZDl1SgWV1XlZ+1
+         lU72Oi3NzMn1jrvQo9Ky9LZ3CQeVtkRdeKo1XylBBxF3LGykV5Mm0epmI0Euo6fcR+oU
+         KLjQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmx.net header.s=badeba3b8450 header.b=P8yrqf64;
+       dkim=fail header.i=@gmx.net header.s=badeba3b8450 header.b=AwJ2Wb2j;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmx.de
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p62si4208756vkd.39.2021.06.11.17.12.50
+        by mx.google.com with ESMTPS id f11si8858892jaj.69.2021.06.11.17.15.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 11 Jun 2021 17:12:51 -0700 (PDT)
+        Fri, 11 Jun 2021 17:15:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmx.net header.s=badeba3b8450 header.b=P8yrqf64;
+       dkim=fail header.i=@gmx.net header.s=badeba3b8450 header.b=AwJ2Wb2j;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmx.de
-Received: from localhost ([::1]:43350 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49778 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lrrGc-00065D-5t
-	for alex.bennee@linaro.org; Fri, 11 Jun 2021 20:12:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48122)
+	id 1lrrJO-0001xi-04
+	for alex.bennee@linaro.org; Fri, 11 Jun 2021 20:15:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48150)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <xypron.glpk@gmx.de>)
- id 1lrqs8-0006Nc-H6; Fri, 11 Jun 2021 19:47:32 -0400
-Received: from mout.gmx.net ([212.227.15.15]:36841)
+ id 1lrqsB-0006Vq-2E; Fri, 11 Jun 2021 19:47:35 -0400
+Received: from mout.gmx.net ([212.227.15.15]:52571)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <xypron.glpk@gmx.de>)
- id 1lrqs6-0006Bw-Bo; Fri, 11 Jun 2021 19:47:32 -0400
+ id 1lrqs6-0006Ay-Qv; Fri, 11 Jun 2021 19:47:34 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1623455242;
- bh=rQLqPvBxinQQ7gY8t/jGS2z0+EcN0fbFMhSnOnmLkLc=;
+ s=badeba3b8450; t=1623455241;
+ bh=QbhSxLeKcFBz1aqno/rerDdcDjyI9405VKqcoSqOeig=;
  h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=P8yrqf64kZXd5FgM39RhJWG8RAiTAmAEWVzqpIFI/xd1nPayy/fPhFvPj2hxvV5OI
- fqgez+eeAtKbtFMWhv72kRC2I7ftI7OnUOIDwZVVOw/DwS+J2hzX/wEdL0SZG08Xn1
- ZDcd8FoObFJA2Vt9HWyHH/IvJ1bE7nRtRNT4XyQ4=
+ b=AwJ2Wb2j25TZUfY1sLmpzxjcXEMP/4wLzS8NE3tmgJhTQZ9fai/S2MgIRR5+XVv7n
+ Unjn6h+xMbOAzRCAzAWYcjPj+RWvlbmFiGlbv3DfHdV3A08niDwM59e3GunZnlha4k
+ x9qJrLjDrRSl8P0syb9de401gxXEI4xcmo4D85Qk=
 X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
 Received: from LT02.fritz.box ([62.143.247.63]) by mail.gmx.net (mrgmx004
- [212.227.17.184]) with ESMTPSA (Nemesis) id 1Mo6v3-1lX2zR2HhT-00pg8m; Sat, 12
- Jun 2021 01:47:22 +0200
+ [212.227.17.184]) with ESMTPSA (Nemesis) id 1N33Il-1lCe3Q047h-013Lfi; Sat, 12
+ Jun 2021 01:47:21 +0200
 From: Heinrich Schuchardt <xypron.glpk@gmx.de>
 To: Keith Busch <kbusch@kernel.org>, Klaus Jensen <its@irrelevant.dk>,
  Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 3/3] hw/nvme: default for namespace EUI-64
-Date: Sat, 12 Jun 2021 01:46:31 +0200
-Message-Id: <20210611234631.81314-4-xypron.glpk@gmx.de>
+Subject: [PATCH v2 1/3] hw: virt: consider hw_compat_6_0
+Date: Sat, 12 Jun 2021 01:46:29 +0200
+Message-Id: <20210611234631.81314-2-xypron.glpk@gmx.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210611234631.81314-1-xypron.glpk@gmx.de>
 References: <20210611234631.81314-1-xypron.glpk@gmx.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:xCmmQqQ4SCV0f4VeAYxd95DoCiP1DKkif+ZljC2UtqfkRENvfAV
- qDlKMxYv/vQ/9LdZrHBC0IuzqpJqeLlS2SDim1BUbnnRRyijXssSVDB2yrTmHAyvZ2K0sr0
- pYlFEPIwGqZjIGS+tvCROHUzAwfV5X65B1Fs00aXy+pY8lAJlJ3a60ZebsC7W/GTf0S/1JK
- 4Vhmocc18oV9jTHOMkREQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:SfQOjQMYD88=:yEmXqyPUHVyCGWUMBK/3Cb
- HgFXn+3Jsoo4aIKF6PaS+n2f66L2eXupwcfcbYUVXbVyEtAZruwSZkImDUenjFmddhD859dG/
- EBbEbThxS1Rg+tB7OIWsDZIFcbHrMOoSNeQIwQHs3lX98v+y7LPlU93VxCte1OSohExtQ9L1w
- w47EARvZSPH5pDI5FdJR08gZmddMYeG7K8kHJ0dQipCmVzsYfuEgCoVJVLVFkCOdH8dB+AjoY
- kxSpgufM3RVdTfEjZ9mjkxaJALuwbduiO6x3QoHdCMdDLg/Z+elkeSIp+Uuoq2qUXVaMrigAo
- a3UQzWx/v5ls5YxLZSlKqo4EgoJDC3AJO9Z9msAobHEvb2lHYNjhNOnoCLaw3/GCq6ZvpZWUw
- rohg9KPAyyNbFek+vSVPrk8qt0qi6O1IbAN3opo036SVElJmT0uH5ootkRNL9gaSRz/ksCphG
- kkLc7ridRWoZNWFOeliSC9wNMWPmoGDQcNZ1FnLVvbg5a1190hPMQ5m2pwExDodb/7g5Axtrv
- uShmfySMAuCDaIoqqpujDtB/XfALtZ9pT1YYQTxjhZQhCX7MS+PK7t+Wc27iGwTy3fFTXb4+I
- v9mc1WTOEVe03U/N8Mexdpy9csD4HuXkLLI6bg6FQpWAguUUA1x07Oq53b+yJUgTOyY56R2+s
- gVhWvNfuCp+86JiJg09bbpqA/cFvJS9rj8y+TOq3CBpu4XDn8D5Xiz54kUolrv9R0k2+w9aAr
- PO3Q03Ymmfv3CM1zjRKAClbvPqmKIX8eQ0bXfVC2svTNemXMcADizZIgILfIkrvkDA1dDYVc/
- lz5irRYF5RSQvSPt2V5/4PrKSVWqGW9tPEwg2AjF8oID6O/4H/E6XmPpAwqMDqy/5T7r11SKl
- 2pMFvhsmrbJ2X94CxkV7RoZANysoDoPTA6WoUOUpNSLPwFiU+9Q+z3Jp3OSOm/Sto7R/hHBdd
- 7E8NzgHfWgOZTAT0R9/xOFCl2vo4zOYU2hGQ/vNkQCJpT9lTOgaJZpP2BEFcEhs01pIzRBNjA
- 2gcnEvHoc6Y09PzLO6eXHaOruJD9rijoOesbzifjtI47ZUIWJy0vjjR6kxS2tamzrLgy5E9WD
- /G4n2cTCc8bCZjp5BERpCwMR7WczcGHW0tN
+X-Provags-ID: V03:K1:znDoEkAvZdWcOR+gBVBQRClwj++qILoM1PS4XZ3m6wwJRYoDPfC
+ YaNsU+nJocCSrI7TfjbBvvsLf8ryTBHCfU8ovW+PFj4bNMmxfhMni8H0CThIvGE1n1Q31oc
+ U++9nrpCaxSKlwew5ZTKEgDrqucoWPnZ+/S73hTwMT8l/FPHcLSB5AHf+Ll+UR3389lCo0P
+ B/ayF6bISbn5kY3zjOHMg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:w/ioPm30SsE=:MGKnIK9n/b0xnw5zC7ca/K
+ /3C2z9S4RmXMDi1KK5S6aZa25qPolGZjXTAjoARLkuTTroGy5zZTWveJNp9ZUzjlealqQ+Q5a
+ fo4T6LMDJ4h2h6WZ1oPiZMNKRxEWnkRD5e3CWzbQxr99GmEZjAksA5Y/bcoW4NjfyNNxkI2Xz
+ wtHe6O2LkFvFvIkhCW+zGdaJCw7IudPQ+hW5QCiNIRHWMcq74axzdaPEUsgVqMS7XxIk5Du7l
+ ogJnwHwWeWxFqBg9yDh7SEKMWo5r6uLA2cuSvNkLVCQ4hflO92t9r+OGzkwY+HYHzkYRkqXJI
+ +h3aPW/Oup1Jyy2zCjKKDGigZD4/yIRIcWT2D9VcfGuXKjRiE6YLarxvckDYJVYIUsVZ7QPYI
+ 8dmUNky1qb+G6FBF560NlpyGwhqOOkL1uKs4ErrgXRtnd8HvI1Tp3B0uK414uaurLzhvktTMK
+ AAZ86kSvD9lyDHHM87sm9h1q1coJMtKkzVdJzNki3Fqkq2m9uIX+TzGhN8RjBT/SHy5c4KUbc
+ cRRNoO54Ux0n71iqefxxH/wRlv9WfaNzJVPdSyzLwGvopW682I4K+7CdcLB9bywNTdm5iQGFe
+ aTX9N+tD78L1hgkkkbhgG/a+GiPmsyC1rnxsvmT4Wd/WujWSuFgxF0FhljFewwn6kIx/a91+Q
+ aaam7P454D1qVxHiwbNvpXDUljXfMbWmABGfXML84w6IfXM4Cgod6MCDHOIs9zbi6qA9BRYB8
+ 5c3dQd8enCJHkZ7z2BH85CPLFhfJdY6UQmOifkCW5EJeo+xDRKsiKxt3NC0LzwVIY5jJZfTfr
+ 8UFQSaj6sR08RU8CMZilxXld4ZWryOQuYj/1R3XV5ozaiiQgGkyW09keGBj3KV8+90+08R2Br
+ 7+A0SXrFPptHtw2NJtaIcXVl+rN2Af8LdUFhAGfy2RMbvzSoZVhV73K9OaT3tWO5fZin9GLx5
+ ojaGiG6D7sHR/9GjFpyqMCJ+gxmmvY8tAnSEmrP+YGwKi7ZfizOS8UjZHJbZ9BvY1AUxjdSCV
+ GAVyT68DpSsl9F3/IQNkdZGYpbHZBpPnFyKW2nsBukuOI210GzO65Ug98zrijq9IHxBB7Qerm
+ 79Qv4scTEi7kmTHNWGYvVnm7Vl18s7o5Qf1
 Received-SPF: pass client-ip=212.227.15.15; envelope-from=xypron.glpk@gmx.de;
  helo=mout.gmx.net
 X-Spam_score_int: -18
@@ -120,107 +120,33 @@ Cc: Eduardo Habkost <ehabkost@redhat.com>, qemu-block@nongnu.org,
  qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: D6MSQzAu7EOp
+X-TUID: L2X0Yd9TI3m1
 
-On machines with version > 6.0 replace a missing EUI-64 by a generated
-value.
+virt-6.0 must consider hw_compat_6_0.
 
+Fixes: da7e13c00b59 ("hw: add compat machines for 6.1")
 Signed-off-by: Heinrich Schuchardt <xypron.glpk@gmx.de>
+Reviewed-by: Cornelia Huck <cohuck@redhat.com>
 =2D--
 v2:
-	new patch
+	add missing Fixes: tag
 =2D--
- docs/system/nvme.rst | 2 ++
- hw/core/machine.c    | 1 +
- hw/nvme/ns.c         | 9 +++++++++
- hw/nvme/nvme.h       | 2 ++
- 4 files changed, 14 insertions(+)
+ hw/arm/virt.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/docs/system/nvme.rst b/docs/system/nvme.rst
-index b5f8288d7c..33a15c7dbc 100644
-=2D-- a/docs/system/nvme.rst
-+++ b/docs/system/nvme.rst
-@@ -84,6 +84,8 @@ There are a number of parameters available:
- ``eui64``
-   Set the EUI-64 of the namespace. This will be reported as a "IEEE Exten=
-ded
-   Unique Identifier" descriptor in the Namespace Identification Descripto=
-r List.
-+  Since machine type 6.1 a non-zero default value is used if the paramete=
-r
-+  is not provided. For earlier machine types the field defaults to 0.
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 840758666d..8bc3b408fe 100644
+=2D-- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -2764,6 +2764,8 @@ DEFINE_VIRT_MACHINE_AS_LATEST(6, 1)
 
- ``bus``
-   If there are more ``nvme`` devices defined, this parameter may be used =
-to
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index 55b9bc7817..d0e9348888 100644
-=2D-- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -39,6 +39,7 @@
- GlobalProperty hw_compat_6_0[] =3D {
-     { "gpex-pcihost", "allow-unmapped-accesses", "false" },
-     { "i8042", "extended-state", "false"},
-+    { "nvme-ns", "eui64-default", "off"},
- };
- const size_t hw_compat_6_0_len =3D G_N_ELEMENTS(hw_compat_6_0);
-
-diff --git a/hw/nvme/ns.c b/hw/nvme/ns.c
-index 45e457de6a..4275c3db63 100644
-=2D-- a/hw/nvme/ns.c
-+++ b/hw/nvme/ns.c
-@@ -56,6 +56,7 @@ void nvme_ns_init_format(NvmeNamespace *ns)
-
- static int nvme_ns_init(NvmeNamespace *ns, Error **errp)
+ static void virt_machine_6_0_options(MachineClass *mc)
  {
-+    static uint64_t ns_count;
-     NvmeIdNs *id_ns =3D &ns->id_ns;
-     uint8_t ds;
-     uint16_t ms;
-@@ -73,6 +74,12 @@ static int nvme_ns_init(NvmeNamespace *ns, Error **errp=
-)
-         id_ns->nmic |=3D NVME_NMIC_NS_SHARED;
-     }
++    virt_machine_6_1_options(mc);
++    compat_props_add(mc->compat_props, hw_compat_6_0, hw_compat_6_0_len);
+ }
+ DEFINE_VIRT_MACHINE(6, 0)
 
-+    /* Substitute a missing EUI-64 by an autogenerated one */
-+    ++ns_count;
-+    if (!ns->params.eui64 && ns->params.eui64_default) {
-+        ns->params.eui64 =3D ns_count + NVME_EUI64_DEFAULT;
-+    }
-+
-     /* simple copy */
-     id_ns->mssrl =3D cpu_to_le16(ns->params.mssrl);
-     id_ns->mcl =3D cpu_to_le32(ns->params.mcl);
-@@ -533,6 +540,8 @@ static Property nvme_ns_props[] =3D {
-                        params.max_open_zones, 0),
-     DEFINE_PROP_UINT32("zoned.descr_ext_size", NvmeNamespace,
-                        params.zd_extension_size, 0),
-+    DEFINE_PROP_BOOL("eui64-default", NvmeNamespace, params.eui64_default=
-,
-+                     true),
-     DEFINE_PROP_END_OF_LIST(),
- };
-
-diff --git a/hw/nvme/nvme.h b/hw/nvme/nvme.h
-index ac90e13d7b..3fb869731d 100644
-=2D-- a/hw/nvme/nvme.h
-+++ b/hw/nvme/nvme.h
-@@ -26,6 +26,7 @@
-
- #define NVME_MAX_CONTROLLERS 32
- #define NVME_MAX_NAMESPACES  256
-+#define NVME_EUI64_DEFAULT 0x27fed9272381cbd0UL
-
- typedef struct NvmeCtrl NvmeCtrl;
- typedef struct NvmeNamespace NvmeNamespace;
-@@ -84,6 +85,7 @@ typedef struct NvmeNamespaceParams {
-     uint32_t nsid;
-     QemuUUID uuid;
-     uint64_t eui64;
-+    bool     eui64_default;
-
-     uint16_t ms;
-     uint8_t  mset;
 =2D-
 2.30.2
 

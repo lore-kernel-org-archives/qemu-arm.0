@@ -1,106 +1,114 @@
-Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp313880lfa;
-        Fri, 11 Jun 2021 01:31:36 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxOZOsZJ0vMxM2HHc3tlghuiZoR1NR1zGZnIXX5gO9g0qkj6QfIUsMFMuQd5BZkaU+T/0Fn
-X-Received: by 2002:ac8:544:: with SMTP id c4mr2721765qth.299.1623400296631;
-        Fri, 11 Jun 2021 01:31:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623400296; cv=none;
+Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp671520lfa;
+        Fri, 11 Jun 2021 09:29:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyX3wp5EVix1ppE9rf5BTwmCQ2wnWEq+WAIF3PHtpmnt5YyLlfHHJy6oqtcf5yjpNKbheCZ
+X-Received: by 2002:a67:17c7:: with SMTP id 190mr11143619vsx.12.1623428957337;
+        Fri, 11 Jun 2021 09:29:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623428957; cv=none;
         d=google.com; s=arc-20160816;
-        b=qU8M/7UKQWGNgGWA+8ENOee8MhFKfTLtw3H83OpCxi0f9GN4bB/agi4QdHBA1sn1N9
-         e6HjzD5/Lz++dl+VRci6YGYsc4IFBvpnfO2Or5fCZ7qhlLuvOzTjDJ2JXcY5r8te2i6N
-         FcH6PrSQpE9TdzQN7VUySYcw4FdSs/EisGHftsOng5X5GfzikbM/fC72cRQfomnc2f9W
-         oTWY2Inroq5j0ufv2mUx8VP2Jqvy9D+3R06DcS86uuJafP9/JzUgDfK9RmaK+6lMNJCe
-         Xf7cP4V7vqdKsb6l+Tm9nxt1/C5mvKTXM43raGZOvdw+3ds/2US8PC3CPIXavqsypdIK
-         f2bg==
+        b=TPJU60W2LT88H05VxIYrorWaJH+20F3TUbvlYNLR2+rmGWt5vQkJElCavJAMk0ykXZ
+         8XHCslIXCnLLjZxT+9dmVWRrzdTyaIm3QS12PUH8ejXKszVFezBqZ35pY5+tAYKFSA8o
+         vT1Ueirzt07dAHkXEXmrOrVlIJQJrl1lP+0IcbY0//C1BYE+kpLn9G8a+EUJKuiXKAOS
+         ncXEcgNpblUtKYtPjIDfwIzSWAZS8BDe4lO69LtowAy0MSmY9cCqaqUZdWxb33o4AeMO
+         AGayqv8VWvN7+CWAxQRmu5/wL+4IsKlTlQPoY0I9qxEj+lVXQitpeUsb9xXNVtnlqVdo
+         qevQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=os1Zi9gB9AmbSY+oAb903lickpXSZxQY7RdNqWuC4b4=;
-        b=eA9HPCqvVPh11MSgX1rgbWSMO90xVmtGMWpGo18Rfz4srpko6qGd1t2Nmx1zVXTs5A
-         LOuiM6znOli1CnXx+2HnZBHiOKRdxU31YpoQSOKAx1Bx2CRjnKN+sSkF79+3i8FX7B30
-         fd7BK3yWYBfoDA+ED6jtmsKlo6kWdjKXxT2hWAD/Qtd2PtT4GSx+nW990kUuVM8/Fyi7
-         ZdFIYBsdKc2orgroIG8+eE/KiyhRRcTd6PTh+itQKvcNpRj47jckcJA8nONTnEyi+YAm
-         ypHFXAqRkEeHbUbslQs+ajQa3HBLh0rLtak0BlIqWkLkb5JJVrSizGmdaRucqSs3Kri+
-         ZOXA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=vDcBsQW7/YXUSGh+0eNQWnAUMAj2dUeJKXsG2lRLMdE=;
+        b=tCNWhb2KDNnnV5uZLfJO5rcSSu3/zC/UHaLXZMT5tmMEti3FfewubdL16BSEQ88ujM
+         vMZwnZ9V7I01am6bWwCfrQznZEanfJGwNLhrBv3ZJmC+VozbBcRvHduMMT8r/ZGl+fLl
+         GdtJOqcqlmEJMx3vwuH3GwQVqLg+ofv0zuwsZgq+YVAm7CdpnbyFVUpoLEI37LeBOo6J
+         WAi+JQb+Kht7dDyVjCYHXMlKBixRKMcd/wdWAk3aAh1tyEZAerkPpfJBlSmxItq4NDVl
+         94pDUxBfdzpL1smbGBIJkElTlARTuD/s32HKysQvDpGUjj2ExMECWv3MN53VgFWAOVVV
+         ufNQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=LJmLZ9G4;
+       dkim=pass header.i=@linaro.org header.s=google header.b=soObAfqn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y6si1862391qtn.329.2021.06.11.01.31.36
+        by mx.google.com with ESMTPS id f5si3879521uap.69.2021.06.11.09.29.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 11 Jun 2021 01:31:36 -0700 (PDT)
+        Fri, 11 Jun 2021 09:29:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=LJmLZ9G4;
+       dkim=pass header.i=@linaro.org header.s=google header.b=soObAfqn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:60916 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:49880 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lrcZj-0005YC-TH
-	for alex.bennee@linaro.org; Fri, 11 Jun 2021 04:31:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35928)
+	id 1lrk20-0005zP-MI
+	for alex.bennee@linaro.org; Fri, 11 Jun 2021 12:29:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57666)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lrcZR-0005W4-0C
- for qemu-arm@nongnu.org; Fri, 11 Jun 2021 04:31:17 -0400
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c]:44690)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1lrk1s-0005yL-Nr
+ for qemu-arm@nongnu.org; Fri, 11 Jun 2021 12:29:08 -0400
+Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c]:37389)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lrcZN-0003oy-BQ
- for qemu-arm@nongnu.org; Fri, 11 Jun 2021 04:31:16 -0400
-Received: by mail-ej1-x62c.google.com with SMTP id c10so3311555eja.11
- for <qemu-arm@nongnu.org>; Fri, 11 Jun 2021 01:31:11 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1lrk1q-000663-9N
+ for qemu-arm@nongnu.org; Fri, 11 Jun 2021 12:29:08 -0400
+Received: by mail-pl1-x62c.google.com with SMTP id h12so3096845plf.4
+ for <qemu-arm@nongnu.org>; Fri, 11 Jun 2021 09:29:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=os1Zi9gB9AmbSY+oAb903lickpXSZxQY7RdNqWuC4b4=;
- b=LJmLZ9G4EnMG4p5x/yvBBbb+ErjgJGZ2zipZjNtLOKDIIuBPQKyt0jhZy9myT+dJoM
- U4Be0ip2hWmLbAf+//U4pKEi+zoF5xESvpKFY8GbMUsWH98n6porHpsVrqct51+A/Hcn
- ndFpvtaxLnaEKyDsoeSBpqOr1xKuklC1kU6irdPWJeNxjF261DEtH6bu2ZqN7DLl/x/a
- UUbD3TyK0/Ga1gBzVKcowxRU4wbzLU1xWjyhFKIn2+2T/GCsOB3eonX3j6EXKqXTl9tZ
- 0cbaZBJMeZObSizL5Rg/LbsCA8kk/eeRgQKZQj4cq/YWHNTrNTnYTWOZ9o7q69SHTkkB
- 2yXQ==
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=vDcBsQW7/YXUSGh+0eNQWnAUMAj2dUeJKXsG2lRLMdE=;
+ b=soObAfqnIbCQwUvJdufRPNeBIViEgV/6uVwjJbG2kYqEHXZh5Mjnk3UPYf/BukTABl
+ Lxk5y5HoU4jOE0GreN3GA2yo4B6ZIfjIkqlrt5as2D1uwec6larRUpl0XwphvVasTd4F
+ p8r2Ps5Jedhb5zk2F4Ub3jPB51gQwOda7W8/AkVId9ClaVxuceuhGhPG2wMIhYg8QdMa
+ 1L/zQx5LiodTws+GDdAU6V79ZxaIJGTJZpxE5oTaqliAkDoWxfrwKU9bpSbh0hSDUdHp
+ UClgTz79WeAnBgQKG+dFgp2OPIQQl6GN/YMBsBtXLXlVTu4sQ7nbyMx+IJLBTElfU1LK
+ d8hw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=os1Zi9gB9AmbSY+oAb903lickpXSZxQY7RdNqWuC4b4=;
- b=uOZbiHOfXj9ypPJtUXrRatOlvUzGSvfxoMAHR7V75hHpfziw9+QWwO9+1i6sSHHQx6
- tst+ru+NyVQY9lUAZbMKcKvpvI+4GqDTE6s1timYrUCmG9mDyhXo9siK0filWUzSDhyA
- Tol+wcmS/UMAHE+rCU6Doao9ouU5f9x+PGwzVb0td/Lw69OYouy6V4TD/ZgE8v2Zsxun
- 46488skz8Vny2JYvqIqs9K1/45CdARON9/TGRmHMkJPy5ZgG1J3c5RsfsEYkGCGV3D+o
- CVV+5z33mlqZgxRhO1BGzYWCyKYrO2Jt5jkEkLwPqgLNJ0QDYo0LdXMRqB9ZBLVkgWVy
- vs7w==
-X-Gm-Message-State: AOAM531JAdyBE7N128szf/6STbSf6xaHqxDGU+Qvoqp5xHepoy9syZ1f
- op9ZDpjGBEns1KYykYVDh1PpbbACRwKiJzC7VUQv6A==
-X-Received: by 2002:a17:906:b294:: with SMTP id
- q20mr2579808ejz.382.1623400270748; 
- Fri, 11 Jun 2021 01:31:10 -0700 (PDT)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=vDcBsQW7/YXUSGh+0eNQWnAUMAj2dUeJKXsG2lRLMdE=;
+ b=lcozvr+hyQy+/RISaif/NLRsPzrdZ7oP4SMvwl0fmudY8JnBnnlfbs7hY51HOXwjoR
+ yG92Vzp28oqW3hfw6Eo/3xFuVWkB+9rxeM2ohD5spcunf/9Pp/AG3ckeDbZlrP5P2AzH
+ 6SLEsuvVM0pDr8fRoY+tPZSEoi2FtNIT0p8cWCPiQWBGqca5lFZ/XAtOn/FZX3v0GDDf
+ PfN/1pdgoWqpMI/7d5sN9xLQjT4cBXS2tIKxeL5SkM5aGVe85HWQ1touOCNGkr5tApPI
+ lSJR//qXn/zVMMrC37UsfK5J48O66fwHcQkGwj1wHvlsWI5AlOwhaOgliKoU3j4qQmDy
+ q6vw==
+X-Gm-Message-State: AOAM530Whkd7bf0hW33oFnKY3B8jSnJVXPsQGrl3HTb413YxeHtcSktd
+ 7f5kdOUSoztxKQxVlkt/K6IJeQ==
+X-Received: by 2002:a17:902:b683:b029:ee:f0e3:7a50 with SMTP id
+ c3-20020a170902b683b02900eef0e37a50mr4532610pls.7.1623428944522; 
+ Fri, 11 Jun 2021 09:29:04 -0700 (PDT)
+Received: from [192.168.1.11] (174-21-70-228.tukw.qwest.net. [174.21.70.228])
+ by smtp.gmail.com with ESMTPSA id
+ n129sm5539427pfn.167.2021.06.11.09.29.03
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 11 Jun 2021 09:29:04 -0700 (PDT)
+Subject: Re: [PATCH] tcg/arm: Fix tcg_out_op function signature
+To: "Jose R. Ziviani" <jziviani@suse.de>, qemu-devel@nongnu.org
+References: <20210610224450.23425-1-jziviani@suse.de>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <e2f1166c-be90-8d71-ec73-183cd850eca5@linaro.org>
+Date: Fri, 11 Jun 2021 09:29:02 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-References: <CAFEAcA-=w8WA5o-nnR4VuEDV28n65aCzM9M0Km8yTDGy=NHL+A@mail.gmail.com>
- <551DAA51-CB17-423D-896F-AF0443A5E7AE@getmailspring.com>
-In-Reply-To: <551DAA51-CB17-423D-896F-AF0443A5E7AE@getmailspring.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 11 Jun 2021 09:30:36 +0100
-Message-ID: <CAFEAcA8aPy9kwLhSOk+VjBf_44ktS_VhTAAah_N2nOH_gJuOkw@mail.gmail.com>
-Subject: Re: [PATCH v4 6/8] hw/intc: GICv3 redistributor ITS processing
-To: Shashi Mallela <shashi.mallela@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62c.google.com
+In-Reply-To: <20210610224450.23425-1-jziviani@suse.de>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -113,54 +121,20 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Leif Lindholm <leif@nuviainc.com>, QEMU Developers <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>, Radoslaw Biernacki <rad@semihalf.com>
+Cc: qemu-arm@nongnu.org, balrogg@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8/BaLIgWUJ/Y
+X-TUID: ++XeaiQ5Bp2J
 
-On Fri, 11 Jun 2021 at 00:39, Shashi Mallela <shashi.mallela@linaro.org> wr=
-ote:
->
-> Have addressed all comments except the ones with responses(inline) below:=
--
->
-> On Jun 8 2021, at 9:57 am, Peter Maydell <peter.maydell@linaro.org> wrote=
-:
->
-> > + cs->lpivalid =3D false;
-> > + cs->hpplpi.prio =3D 0xff;
-> > + gicv3_redist_update_lpi(cs);
->
-> You can avoid doing a full update a lot of the time:
-> * if this LPI is worse than the current value in hpplpi
-> (where by "worse" I mean lower-priority by the same kind of
-> comparison irqbetter() does) then we haven't changed the best-available
-> pending LPI, so we don't need to do an update
-> * if we set the pending bit to 1 and the LPI is enabled and the priority
-> of this LPI is better than the current hpplpi, then we know this LPI
-> is now the best, so we can just set hpplpi.prio and .irq without
-> doing a full rescan
-> * if we didn't actually change the value of the pending bit, we
-> don't need to do an update (you get this for free if you take the
-> simplification suggestion I make above, which does an early-return
-> in the "no change" case)
->
-> > Accepted the code simplification,but by not calling gicv3_redist_update=
-_lpi(cs) here ,the scenario of an activated LPI fails because
-> this LPI's priority (which could be lower than current hpplpi) is never c=
-hecked/updated and gicv3_redist_update_noirqset() fails to present a valid =
-active high priority LPI(if applicable) to the cpu,since it is always check=
-ing against a stale hpplpi info.
+On 6/10/21 3:44 PM, Jose R. Ziviani wrote:
+> Commit 5e8892db93 fixed several function signatures but tcg_out_op for
+> arm is missing. This patch fixes it as well.
+> 
+> Signed-off-by: Jose R. Ziviani<jziviani@suse.de>
+> ---
+>   tcg/arm/tcg-target.c.inc | 3 ++-
+>   1 file changed, 2 insertions(+), 1 deletion(-)
 
-If the LPI is lower priority (higher number) than the current
-hpplpi then it would not change the existing hpplpi info in
-a full-scan. If the LPI being activated is higher priority
-(lower number) than the current hpplpi then that is my point 2 above,
-and we set it as the hpplpi without needing the full-scan. And for
-the other cases (eg highest-priority LPI being deactivated) we
-should fall through to the default "call update_lpi" case.
+Thanks, queued.
 
-So I don't really understand why this wouldn't work.
-
--- PMM
+r~

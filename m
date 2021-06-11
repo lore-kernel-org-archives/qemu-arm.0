@@ -1,129 +1,269 @@
-Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp548141lfa;
-        Thu, 10 Jun 2021 07:26:18 -0700 (PDT)
-X-Received: by 2002:aa7:c7c7:: with SMTP id o7mr5194034eds.231.1623335178158;
-        Thu, 10 Jun 2021 07:26:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623335178; cv=none;
+Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp361666lfa;
+        Fri, 11 Jun 2021 02:51:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw83GMN7eQjXRzXQ1Jdyudx9ZUIYa9H1UKyRyZ+cc0lrLBxSkcHdzKQiNQG+csn6CgSlacL
+X-Received: by 2002:a50:9549:: with SMTP id v9mr2813039eda.312.1623405090398;
+        Fri, 11 Jun 2021 02:51:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623405090; cv=none;
         d=google.com; s=arc-20160816;
-        b=gaz4hg5+iSpyFakapbBB7E0KeolHZHWbBuEOqVu1NnI/SXprmxy91eLlKGeEyjlkwh
-         5Gxa4Sqt1s30+aIwwXDZUA0vY3wQTlq8GNm90W+8x3baUYaFCZbvrJfAdSQEi4FEMysn
-         WlxZvMMgj6htwvTfMl4ztpvRoqOAE/SzDVql301BedmtTaTXptsiaTDmR2zGfI1F8+hU
-         Z5hnfhWpyoTrTtdSK8jsxxOSnuDW+uBxBiXfxihH1EQ1yB+s4SbFt8shoD0TVrJpy0AQ
-         X3ktjGCyAUO+QcyLTK7uTlpKfiYzVh3uEGYAVoFe/dxG1tFlUATpGRhcRSZJiEgR9RgN
-         0j2w==
+        b=Hm+3ZJUCa1hKoeNRZ+f1yRBYr+y1mWTudivcqy/8s39fCqLQZKdragk9+fcKLIk1qw
+         oqxeZAGEeSd650GWCR3PjHTkJJ/oq5rCOz/Syqe9lZVRMZVR0UPcEhJGGUyu2o1PbPzQ
+         L22xptqcoTq2Y6yiYZZ6YO76g5dUAp5guy+0PMD6xkNPjimeLT720equD4vkl2g8LLMa
+         i3MG3dOC/o1sPutOb7uqZsAIDrJ5zb8VeU17Fc9ie8Tz02xd3k2/gbvd9J2hN9T8UQiZ
+         R9JEqcCcEM27FVBRO9mT/JmC0lDcYFGGzcOpeAIcT/Fg1j4FRrPexeU54JOCf9Tq9r2o
+         pa4w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=81SMQU+t0cJZ1cQ8798i8DpIPvrCW27Vrxe7wfzWkMo=;
-        b=MYgz4Z/8l3jk6zPvDAeUsDaGatxjo4w3+Lp76DySeyrEWkjbrEcjgsYK3XSh2x051/
-         YDV5HPOVHJe/jlXLUjcipMRrwPsfiM0UVml3ab09WwM79NP+Bea6yg3gjO02IKs1ltzn
-         RgJkVnxIF05zqxX1dSJj+v6K2QztQ5KwSv2pSXW0kXg4q+YuW2rtelFWkLi8jlwe006H
-         QGOI2oXSjZViYMm/g7XBhG0ja7Kc8XKQj8VOq4/WxRPwsrwgW9jIH38rvYQmGapd4/uS
-         NqVU8/efDKRTlWR1FfnIaP3mitACrz1JNebsPliVexIKSAmqFIkJTeD/IwRptzYh5lMf
-         9spA==
+        h=content-transfer-encoding:mime-version:user-agent:message-id
+         :in-reply-to:date:references:subject:cc:to:from:dkim-signature;
+        bh=MX6wxNhU2clmHdHgg7BT+tcUUBQ5lPem1amsN8qVJCA=;
+        b=N8DSM2prj0LmMYZzYRi2ZKpVs20+z20im9jYDCoRopMGnVsBaGzsl1VAfCsbO9z73I
+         dD3oubkJjxXMHdU50qkpxFyMQcbA3ZEm25w3ySEZDqbOtxvU9zIqTaLbwg7uPtv5dVcY
+         5Ys1YEBXoaSUVeH2Dy8muLZWISC6jS3iRox8cg+ma94LIsWoV1OC3gC9vRkbTIAun9rC
+         ibEW3QH4HuMTupAyZw1tP7tWt/iIo+ULk0VOxYkMbSBhBy0UXlABXOlirkTIFR29T8Vk
+         tT29MnanxqyD/KxNAGa5q6iK4QYYxU6ArT5/vnNQoVHqSfyBBUen2JbcHLNB6M+AkrXN
+         MjGQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PHAd2CLn;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id jg15sor1923727ejc.19.2021.06.10.07.26.18
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DksbarhD;
+       spf=pass (google.com: domain of armbru@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <armbru@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
+        by mx.google.com with ESMTPS id m15si4340766ejb.707.2021.06.11.02.51.30
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 10 Jun 2021 07:26:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 11 Jun 2021 02:51:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of armbru@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PHAd2CLn;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=81SMQU+t0cJZ1cQ8798i8DpIPvrCW27Vrxe7wfzWkMo=;
-        b=PHAd2CLnh3mLSIcyUEWKJh3G8ublAVD8hdoyPEIrfzBXZrBgNCJss07uBr+NFQoX8m
-         Mq1TzF00O6efmR8+Tz7ez7ISutdU58CTEvNTIBGTHTOhmvkj3XF82oamXSOjd0VEGS6u
-         CkFRAIVeKSv+B/G6K7891JHZ6ipU+VuNibFqigDSxOMTma58ssJ6o7yLzv8Ez8cQyv5S
-         8fvf1DzlV3HD21Vf/aGcx707ey305eof7pOnps252Eby9gBYQhBs+8ebG80e9zwSPA/I
-         FOGrC7gOVVaArmI5z022cf6iApy0FWUFV0QW2Q2A9diu8IuIihftrYukDnLYpYB3UOVp
-         /9DA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=81SMQU+t0cJZ1cQ8798i8DpIPvrCW27Vrxe7wfzWkMo=;
-        b=Sfy0XOBP1FMH+zSR6wxkTLbtY3Fc4K0Kj1CRTa0PTBfX7eWMGjRbxaGUwntecoOCUS
-         KIb8FzqDEqQasZil8eL3sb5olY7dL//EJRkgopsZz0Qj1eFHKF4Pb+iuIBm8fKomi1wh
-         luTLnLkzvhw+cA3GQTKf4SrUz79JrYCa+6xwmNgDHWev9gRngxHwBreGC2bTWoa3uT0f
-         zkwjCeFiN31+EsiE6cRngcbO3t4qw+dejqKKQA3LZKgRzgWrBCS+/JmcwIWQ/6OGpJSS
-         dTZ49ILsf/nN0FHH0Q9lhXsBq10zFTn5ds5fP9YUvt31/6aXpDr8xOEeON59azXjg7Ie
-         HWow==
-X-Gm-Message-State: AOAM531+dLozwKRShEKX0RZTq2MCjRNBdmm8GvNgSsxyv1lnqlnoYeC8
-	dk1p0sU7DHmdVeqJj8FdqBliVNIL/AVK6xsVKWlk/Sl+frfZSQ==
-X-Google-Smtp-Source: ABdhPJyHu3dZC+3iLTzCERGod8IDbvpT/w1e6ILS3mz7jPe4f3Cb6wrCsVIJvzKTAhdanMZwNlCasXf2BFrjGBvTPfg=
-X-Received: by 2002:a17:906:a108:: with SMTP id t8mr4762519ejy.407.1623335177856;
- Thu, 10 Jun 2021 07:26:17 -0700 (PDT)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DksbarhD;
+       spf=pass (google.com: domain of armbru@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1623405089;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=MX6wxNhU2clmHdHgg7BT+tcUUBQ5lPem1amsN8qVJCA=;
+	b=DksbarhDxsmfMSdQJGCRlW9hEAAwJ2xUNY3qCWbK1hauBwOwNSux8GdqQuog6Y+0nqGCaa
+	0tQjPo34WPWi3oFfOvinPgzL454mNen3ERGURHeZ3yDXOZ1O3CtsSValY0LWuB4b6WvEwR
+	gIUDw84jpYHrggUNDw8cu7nTAHJ7tFY=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-287-BDQUA1E9OUq3Rl2-X6IPIQ-1; Fri, 11 Jun 2021 05:51:28 -0400
+X-MC-Unique: BDQUA1E9OUq3Rl2-X6IPIQ-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0016B801B14;
+	Fri, 11 Jun 2021 09:51:26 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-222.ams2.redhat.com [10.36.112.222])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 864CD5C1CF;
+	Fri, 11 Jun 2021 09:51:26 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 206E2113865F; Fri, 11 Jun 2021 11:51:25 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org,  Peter Maydell <peter.maydell@linaro.org>,
+  Eduardo Habkost <ehabkost@redhat.com>,  Richard Henderson
+ <richard.henderson@linaro.org>,  Alex =?utf-8?Q?Benn=C3=A9e?=
+ <alex.bennee@linaro.org>,
+  qemu-arm@nongnu.org,  Paolo Bonzini <pbonzini@redhat.com>,  John Snow
+ <jsnow@redhat.com>
+Subject: Re: [PATCH v8 02/12] accel: Introduce 'query-accels' QMP command
+References: <20210526170432.343588-1-philmd@redhat.com>
+	<20210526170432.343588-3-philmd@redhat.com>
+Date: Fri, 11 Jun 2021 11:51:25 +0200
+In-Reply-To: <20210526170432.343588-3-philmd@redhat.com> ("Philippe
+	=?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Wed, 26 May 2021 19:04:22
+ +0200")
+Message-ID: <87czsssp9e.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
 MIME-Version: 1.0
-References: <20210610102617.17281-1-alex.bennee@linaro.org>
- <CAFEAcA9yhRS_=zr+76HdDN=iYU=ghDjLPfSaFUA9fzmJ5p3vCA@mail.gmail.com> <87im2liz4x.fsf@linaro.org>
-In-Reply-To: <87im2liz4x.fsf@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 10 Jun 2021 15:25:44 +0100
-Message-ID: <CAFEAcA9NYv1GdA+2P_7hbqgBwRTv6JFgfp1mS_PzURY-aafkeA@mail.gmail.com>
-Subject: Re: [PATCH v2] semihosting/arm-compat: remove heuristic softmmu SYS_HEAPINFO
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
-	Andrew Strauss <astrauss11@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: CnmN7XnKyBOA
+X-TUID: BgMZchoZojxb
 
-On Thu, 10 Jun 2021 at 15:16, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
-te:
->
->
-> Peter Maydell <peter.maydell@linaro.org> writes:
-> > I'm told that the Arm C compiler C library always assumes that
-> > the "stack base" value is what it should set SP to, so reporting 0
-> > for that will break binaries that were built with it.
-> >
-> > As the TODO comment notes, the "heap base" is a bit of a guess,
-> > but putting stackbase at top-of-RAM seems generally sensible.
-> >
-> > What bug are we trying to fix here?
->
-> Having newlib use a value that's wrong and therefor plant it's heap in
-> the middle of the loaded code.
->
-> > I think one possible implementation that might not be too
-> > hard to make work would be:
-> >
-> >  (1) find the guest physical address of the main machine
-> >      RAM (machine->ram). You can do this with flatview_for_each_range()
-> >      similar to what rom_ptr_for_as() does. (It might be mapped
-> >      more than once, we could just pick the first one.)
->
-> Currently this is done by common_semi_find_region_base which pokes
-> around get_system_memory()->subregions to find a region containing an
-> initialised register pointer.
+Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
 
-Yes. I am suggesting we throw that code away, since (a) assuming
-any register happens to point in to the main RAM is dubious and
-(b) iterating through the subregions of get_system_memory() is
-not guaranteed to work either (consider the case where the system
-memory is inside a container MR rather than a direct child of the
-system memory MR).
-
-> >  (2) find the largest contiguous extent of that RAM which
-> >      is not covered by a ROM blob, by iterating through the
-> >      ROM blob data. (This sounds like one of those slightly
-> >      irritating but entirely tractable algorithms questions :-))
+> Introduce the 'query-accels' QMP command which returns a list
+> of built-in accelerator names.
 >
-> Does that assume that any rom blob (so anything from -kernel, -pflash or
-> -generic-loader?) will have also included space for guest data and bss?
+> - Accelerator is a QAPI enum of all existing accelerators,
+>
+> - AcceleratorInfo is a QAPI structure providing accelerator
+>   specific information. Currently the common structure base
+>   provides the name of the accelerator, while the specific
+>   part is empty, but each accelerator can expand it.
 
-Yes; the elf loader code creates rom blobs whose rom->romsize
-covers both initialized data from the ELF file and space to
-be zeroed.
+This has become somewhat misleading, I'm afraid.  If memory serves,
+earlier versions had union AcceleratorInfo with a common base struct.
+This patch has just a struct, which we can grow into a union when we
+actually have accelerator-specific information to report.  Perhaps
 
-thanks
--- PMM
+  - AcceleratorInfo provides information on a specific accelerator.  It
+    contains just the accelerator name so far.
+
+>
+> - 'query-accels' QMP command returns a list of @AcceleratorInfo
+>
+> For example on a KVM-only build we get:
+>
+>     { "execute": "query-accels" }
+>     {
+>         "return": [
+>             {
+>                 "name": "qtest"
+>             },
+>             {
+>                 "name": "kvm"
+>             }
+>         ]
+>     }
+>
+> Reviewed-by: Eric Blake <eblake@redhat.com>
+> Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> Tested-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+> v8:
+> - Include code snippet from Markus adding to machine-target.json
+>   to be able to use enum values or union branches conditional.
+> - Use accel_find() on enum to be sure the accelerator is enabled
+>   at runtime (chat with jsnow / eblake).
+>
+> Cc: Eric Blake <eblake@redhat.com>
+> Cc: John Snow <jsnow@redhat.com>
+> Cc: Markus Armbruster <armbru@redhat.com>
+> ---
+>  qapi/machine-target.json | 54 ++++++++++++++++++++++++++++++++++++++++
+>  accel/accel-qmp.c        | 32 ++++++++++++++++++++++++
+>  accel/meson.build        |  2 +-
+>  3 files changed, 87 insertions(+), 1 deletion(-)
+>  create mode 100644 accel/accel-qmp.c
+>
+> diff --git a/qapi/machine-target.json b/qapi/machine-target.json
+> index e7811654b72..586a61b5d99 100644
+> --- a/qapi/machine-target.json
+> +++ b/qapi/machine-target.json
+> @@ -329,3 +329,57 @@
+>  ##
+>  { 'command': 'query-cpu-definitions', 'returns': ['CpuDefinitionInfo'],
+>    'if': 'defined(TARGET_PPC) || defined(TARGET_ARM) || defined(TARGET_I3=
+86) || defined(TARGET_S390X) || defined(TARGET_MIPS)' }
+> +
+> +##
+> +# @Accelerator:
+> +#
+> +# An enumeration of accelerator names.
+> +#
+> +# Since: 6.1
+> +##
+> +{ 'enum': 'Accelerator',
+> +  'data': [
+> +      { 'name': 'hax', 'if': 'defined(CONFIG_HAX)' },
+> +      { 'name': 'hvf', 'if': 'defined(CONFIG_HVF)' },
+> +      { 'name': 'kvm', 'if': 'defined(CONFIG_KVM)' },
+> +      { 'name': 'qtest' },
+> +      { 'name': 'tcg', 'if': 'defined(CONFIG_TCG)' },
+> +      { 'name': 'whpx', 'if': 'defined(CONFIG_WHPX)' },
+> +      { 'name': 'xen', 'if': 'defined(CONFIG_XEN_BACKEND)' } ] }
+> +
+> +##
+> +# @AcceleratorInfo:
+> +#
+> +# Accelerator information.
+> +#
+> +# @name: The accelerator name.
+> +#
+> +# Since: 6.1
+> +##
+> +{ 'struct': 'AcceleratorInfo',
+> +  'data': { 'name': 'Accelerator' } }
+> +
+> +##
+> +# @query-accels:
+> +#
+> +# Get a list of AcceleratorInfo for all built-in accelerators.
+> +#
+> +# Returns: a list of @AcceleratorInfo describing each accelerator.
+> +#
+> +# Since: 6.1
+> +#
+> +# Example:
+> +#
+> +# -> { "execute": "query-accels" }
+> +# <- { "return": [
+> +#        {
+> +#            "name": "qtest"
+> +#        },
+> +#        {
+> +#            "name": "kvm"
+> +#        }
+> +#    ] }
+> +#
+> +##
+> +{ 'command': 'query-accels',
+> +  'returns': ['AcceleratorInfo'] }
+> diff --git a/accel/accel-qmp.c b/accel/accel-qmp.c
+> new file mode 100644
+> index 00000000000..0098297caa5
+> --- /dev/null
+> +++ b/accel/accel-qmp.c
+> @@ -0,0 +1,32 @@
+> +/*
+> + * QEMU accelerators, QMP commands
+> + *
+> + * Copyright (c) 2021 Red Hat Inc.
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qemu/accel.h"
+> +#include "qapi/qapi-types-machine-target.h"
+> +#include "qapi/qapi-commands-machine-target.h"
+> +
+> +AcceleratorInfoList *qmp_query_accels(Error **errp)
+> +{
+> +    AcceleratorInfoList *list =3D NULL, **tail =3D &list;
+> +
+> +    for (Accelerator accel =3D 0; accel < ACCELERATOR__MAX; accel++) {
+> +        AcceleratorInfo *info;
+> +
+> +        if (!accel_find(Accelerator_str(accel))) {
+> +            /* Accelerator available at build time but not at runtime. *=
+/
+> +            continue;
+> +        }
+> +
+> +        info =3D g_new0(AcceleratorInfo, 1);
+> +        info->name =3D accel;
+> +        QAPI_LIST_APPEND(tail, info);
+> +    }
+> +
+> +    return list;
+> +}
+
+If I read this correctly, there's a subtle difference between the
+information returned by query-accels and the information you can get
+from introspecting query-accels with query-qmp-schema: the latter gives
+you the accelerators compiled into this build of QEMU, the former gives
+you the ones that are actually available at run time.  Suggest to
+mention that in the commit message.
+
+> diff --git a/accel/meson.build b/accel/meson.build
+> index b44ba30c864..7a48f6d568d 100644
+> --- a/accel/meson.build
+> +++ b/accel/meson.build
+> @@ -1,4 +1,4 @@
+> -specific_ss.add(files('accel-common.c'))
+> +specific_ss.add(files('accel-common.c', 'accel-qmp.c'))
+>  softmmu_ss.add(files('accel-softmmu.c'))
+>  user_ss.add(files('accel-user.c'))
+
+Preferably with the commit message tweaked to address my remarks:
+Acked-by: Markus Armbruster <armbru@redhat.com>

@@ -1,94 +1,93 @@
-Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp1449192lff;
-        Sun, 13 Jun 2021 14:48:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw5vNe/MGDFEw4IYMwnHaKdvdXc123XJe6JdhUNRGvZo5p6LlxLBwtwPbD5Rc3IxYl27tfO
-X-Received: by 2002:a05:6638:267:: with SMTP id x7mr14255604jaq.51.1623620935339;
-        Sun, 13 Jun 2021 14:48:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623620935; cv=none;
+Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp1450010lff;
+        Sun, 13 Jun 2021 14:50:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy+WBxFdtgE5mPEeqVvsCkgRYieTYHKCQ/R946b0woGFk55ta9VTDygYfxpWTNLkHki38Im
+X-Received: by 2002:a02:cc89:: with SMTP id s9mr13965325jap.43.1623621010898;
+        Sun, 13 Jun 2021 14:50:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623621010; cv=none;
         d=google.com; s=arc-20160816;
-        b=sT6JDKlDuWgpskWlgP2LI1mem4PO15HhUS6xTrzYUNfHekeWrZSmmviR3lQ/g2S2JB
-         Z887JrS3PTGLVkrllBPlGMkYEPERjGbOdQWT/DjEQSw2l+T7697DbpnXgwJi9C73gHlr
-         BGisjO3p0cHs9307ul287Ox7rxBnlRK8wdH3eb7SpPiFFGDnhnETbE4ZDBX/Uw/mJ3sg
-         GN7hMwFnWTFUVbmfmA5h+gWK/R3oVPwvnkfssLFnQZ9hs76VGeIihsaAjPShzhHOLNn3
-         Y38tMNjeR1KvQOHPArwIwTDsWAeDl/ACGrea8kWAjMdt9Sur6Vwy6GDXZtI/XCh178mp
-         WDbg==
+        b=RcCw9Ogc8ENnjbSdEGNiVTY3gGqNI+RfBTSTWAl4en/5UnEEZ5/Gum8Oym4oIgRrnL
+         +p21w8MR56cinlgw/UaZ2/2tqJc+Trun6+JyexFfd4ovJT/sN8FCI5XqV4oeIBQa+rfg
+         LNMdpqGXCwxingrdEFZktxHvZ5coQJYmLfLYYYVJrb53jk7MhapRb09FOX5ibBlb11jN
+         r35X2ZekWHuaEE5jQhT0KL+jwDYM0urJnldX73hdjxH3r1/TqtTRYp5OOK0cmNV2diiI
+         Vre0GEjHhxENFXBDKPeZb77PA3RjYL1QkM//vv/YeCj4VVL0Ht9/AtbcoTcQnTE2l8SC
+         OU/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=trqlftbc0FIgHKHAmzpHqqvTOng/7ZoI9PAOUqII7Ko=;
-        b=ksO9U9hfn+EZorgvQvT3HzlKqCDh5L8qjqiDyu25dtKF56tigTaWLeCanHWk4+SOcO
-         Zs2oVXNeflMULCu4gzqD+lAfPQ0/GGNBrMwkwE59YWFJgU8IxRFZqlgOOOggrcAsZsF8
-         1SgsKJJnNvZZTZ64aedFUybLhqGLNSc1EOLHtcDk7GsGOAkdMCX7jyKc12jb7NP9YcGS
-         OmJ5Ir7bTD4z0aOA2BIfLSd+YjLXThhu6eTYRJ/Bhqfk1o2Uk0+ypelCH3RMC7TjAtsN
-         qSs94HAkXfa3p9XSNaVrbsU8xaXgzJ+CMTrEOCY3o+FDtp1TitpPTpLpkt5V9QzKq9PN
-         dlDw==
+        bh=YH1ZHL3nN5IyXeFCw1ybiMbsjrCnhlNILSxlimVPs7I=;
+        b=UnXRkAcEbNCZphSTffQ06F3GbJ/fSo/dJ213DmFk0a4+tPB6dD+/RvBWimDCNE63/B
+         gOrXaA9AAbW5BC0y/UBAoC0pi+knp1bjz6OtnBloZkE7UvvPIfOFy6uSIXXd5gK4MNLx
+         KdoBPHMQOvgy7W3JOyNzSizsDEnYCipsKRoIjM4RWe7hlu0lKwTZGGV/oSyC1A9KXW8V
+         lJAp/ea0B+69LajLA5kaUi1hfjssa0R30vTHsMoHRz7UUEnAWGrkZdjIvFrofmTT3LKN
+         7CtYuR8wk54ejwIlyKF1x35BLbH7snwDSqciq+3zlM030uEwk0gW5SECfyOPdko6GxyW
+         Forw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XbVea8At;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mGK7fmz2;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a8si7032262ilt.107.2021.06.13.14.48.55
+        by mx.google.com with ESMTPS id d9si1132032ilg.66.2021.06.13.14.50.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 13 Jun 2021 14:48:55 -0700 (PDT)
+        Sun, 13 Jun 2021 14:50:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XbVea8At;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mGK7fmz2;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:60522 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35082 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lsXyQ-0000fm-N1
-	for alex.bennee@linaro.org; Sun, 13 Jun 2021 17:48:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37222)
+	id 1lsXze-0002XP-8r
+	for alex.bennee@linaro.org; Sun, 13 Jun 2021 17:50:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37368)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gengdongjiu1@gmail.com>)
- id 1lsXxb-0008PQ-RN; Sun, 13 Jun 2021 17:48:03 -0400
-Received: from mail-qt1-x841.google.com ([2607:f8b0:4864:20::841]:45024)
+ id 1lsXyU-00019s-PF; Sun, 13 Jun 2021 17:48:58 -0400
+Received: from mail-qt1-x842.google.com ([2607:f8b0:4864:20::842]:34756)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <gengdongjiu1@gmail.com>)
- id 1lsXxa-0005X8-7u; Sun, 13 Jun 2021 17:48:03 -0400
-Received: by mail-qt1-x841.google.com with SMTP id d9so4965482qtp.11;
- Sun, 13 Jun 2021 14:48:01 -0700 (PDT)
+ id 1lsXyS-00064m-83; Sun, 13 Jun 2021 17:48:58 -0400
+Received: by mail-qt1-x842.google.com with SMTP id u20so7142106qtx.1;
+ Sun, 13 Jun 2021 14:48:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=trqlftbc0FIgHKHAmzpHqqvTOng/7ZoI9PAOUqII7Ko=;
- b=XbVea8At3b8h9CISbept5VKoMUTp2+rgo9jyQPjqHkxRc1b4DsZyFS0zZ27ZOWVXB0
- 6EbdVF40B+TXFrG4+tD4schKvEwrNAU2CcqADuFRKq6P/oVcNUFnazSNoWQexgnTPxDG
- e7Bh5Nepb7PAPOz56W2a4r0YNEMt5WErZUP/btwJh4ObdveRr1p2WUDsu+lmP6jLqEqY
- 1ESORqMBIGwPbCm8e30IKM6fvEfimLTIgztxJrkI4P4x0HdXFeA4bb16F5s5hieQPsYj
- +1n1NSDZWfVbqShgbSiNTxVEvg17nhJWn8BO8Vcn0cktIibGD2wFpQq7De31t23oUDaA
- Vm8Q==
+ :cc; bh=YH1ZHL3nN5IyXeFCw1ybiMbsjrCnhlNILSxlimVPs7I=;
+ b=mGK7fmz2ISZs9INDRIpX2yoAYgnAuP8RI01RdRcS5xpHCoLK01OCdtZKlAGqWa/ofN
+ qoSZHjDYb63BoS/a/3oO8bbQ2V3Z6/yrxKy0XL+6YM5z2tRno/M36AwgbfHY7820j8Gw
+ u8xTlDlemOHCxK1nftpe3Upuy0ZISiXgN0OkattdLl6i5sfHIyqHcJFTTequu6Ba8onN
+ qgOrQDfX/Bo/LwYQf8OXM0kIktBUXOj7KK6vFBjFhyHpCSf6tYpTnqutwCqfKAyHovAg
+ 8kg+21DeHIEaHy7szuWSqoMC7wRY8rCUpVK/OyU8HBKdxLTn4psG9iofezxw3ciYg53R
+ Q7cQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=trqlftbc0FIgHKHAmzpHqqvTOng/7ZoI9PAOUqII7Ko=;
- b=fXh79O5XwBX5S4lvwX0tB6sU02SwbI7vJ1NMhx/GLQsHh3Rh/lH3qlJtuUtp3lec2F
- uNUQ+Vr4/rvVCJev/PYrtpqM1MviHKHz4dktqT3CJQKZDqhUpztUq3BBJGJwWTukA/a2
- 1Cow+B/mUyVJqtye72k+JPuomlXYB2lGG/anPMrw4FUfcjUcQfq7BDdbHK4wXpRs1D5J
- kLNJzthS2cNd5Sqm0uRSWJNXunN+DLMps3icdu9HqMjLwvUwRBPhuHesDom5G8eCaHY1
- Ek/HXp2qx6V4BkCnc9Cm06xIHgKImG42qi5mXgPkOL59NmEOftfLuA3c7nXzMPPuvXoc
- vp8A==
-X-Gm-Message-State: AOAM533D1SBg4vUofcgSEDwqB1oq/kxiDSc+d5QpfJ2XVMGTxVHwBrWK
- t8/P8eCye4y2TC+JS4p4l0UWAiRHeyQ0mXfQ8NE=
-X-Received: by 2002:ac8:6885:: with SMTP id m5mr13985887qtq.268.1623620880442; 
- Sun, 13 Jun 2021 14:48:00 -0700 (PDT)
+ bh=YH1ZHL3nN5IyXeFCw1ybiMbsjrCnhlNILSxlimVPs7I=;
+ b=nlcPiDBdWZYmHiRmZvnT/J4OVPG5kr37sxqYKg+p4x9fANZ0nUeubS/+RXRJegp7nV
+ mvnVuj1ilGTX8BKcKTCTZsThtjAC+hpEI70BkXzG1uBdcTN1muPDR65I7suVlcj5LL01
+ AcBqn87dRv0OcLzuKzVnoWmRj/sTVXQI6WmynROrNLtDnq7YsHGPPDGCnlGnE1+64Hfm
+ +Poctt5Y3PpUeeesH7Et7NkUFY4rGnojQRWvCEeE4lqDg6ktz54G3H1v2qAHEXXQSK/y
+ mszXX1TdgmzCXIjEFRfS+PDra6oh3pUtPxS7ItmtIgUIIspwP8f+uzypH8l+zK5vxXRR
+ b57w==
+X-Gm-Message-State: AOAM532a+hCIJRTG+c4c2ks/xK4bLKRKUI8FqtFLDAjwHvQTB5X25ysQ
+ wCqUH9vDuCf1USQVNKuHeWHZNLcAW/W3K4PzG6Y=
+X-Received: by 2002:ac8:5e81:: with SMTP id r1mr13601199qtx.70.1623620934622; 
+ Sun, 13 Jun 2021 14:48:54 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210603171259.27962-1-peter.maydell@linaro.org>
- <20210603171259.27962-2-peter.maydell@linaro.org>
-In-Reply-To: <20210603171259.27962-2-peter.maydell@linaro.org>
+ <20210603171259.27962-3-peter.maydell@linaro.org>
+In-Reply-To: <20210603171259.27962-3-peter.maydell@linaro.org>
 From: Dongjiu Geng <gengdongjiu1@gmail.com>
-Date: Mon, 14 Jun 2021 05:47:51 +0800
-Message-ID: <CABSBigSa+fueAhw90KVNKNjad4iRK_Z+LA_nMkdm8KDPSXOLLg@mail.gmail.com>
-Subject: Re: [PATCH 1/3] hw/acpi: Provide stub version of
- acpi_ghes_record_errors()
+Date: Mon, 14 Jun 2021 05:48:46 +0800
+Message-ID: <CABSBigRHYpx2MDecLLB1KQoCByk_pTMXS_aqp+Gqqm-28VZmUA@mail.gmail.com>
+Subject: Re: [PATCH 2/3] hw/acpi: Provide function acpi_ghes_present()
 To: Peter Maydell <peter.maydell@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::841;
- envelope-from=gengdongjiu1@gmail.com; helo=mail-qt1-x841.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::842;
+ envelope-from=gengdongjiu1@gmail.com; helo=mail-qt1-x842.google.com
 X-Spam_score_int: -17
 X-Spam_score: -1.8
 X-Spam_bar: -
@@ -114,67 +113,94 @@ Cc: Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org,
  "Michael S. Tsirkin" <mst@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZCNaFWjY6ZUe
+X-TUID: OfKpv+o85kVn
 
 On Fri, 4 Jun 2021 at 01:13, Peter Maydell <peter.maydell@linaro.org> wrote:
 >
-> Generic code in target/arm wants to call acpi_ghes_record_errors();
-> provide a stub version so that we don't fail to link when
-> CONFIG_ACPI_APEI is not set. This requires us to add a new
-> ghes-stub.c file to contain it and the meson.build mechanics
-> to use it when appropriate.
+> Allow code elsewhere in the system to check whether the ACPI GHES
+> table is present, so it can determine whether it is OK to try to
+> record an error by calling acpi_ghes_record_errors().
+>
+> (We don't need to migrate the new 'present' field in AcpiGhesState,
+> because it is set once at system initialization and doesn't change.)
 >
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  hw/acpi/ghes-stub.c | 17 +++++++++++++++++
->  hw/acpi/meson.build |  6 +++---
->  2 files changed, 20 insertions(+), 3 deletions(-)
->  create mode 100644 hw/acpi/ghes-stub.c
+>  include/hw/acpi/ghes.h |  9 +++++++++
+>  hw/acpi/ghes-stub.c    |  5 +++++
+>  hw/acpi/ghes.c         | 17 +++++++++++++++++
+>  3 files changed, 31 insertions(+)
 >
-> diff --git a/hw/acpi/ghes-stub.c b/hw/acpi/ghes-stub.c
-> new file mode 100644
-> index 00000000000..9faba043b85
-> --- /dev/null
-> +++ b/hw/acpi/ghes-stub.c
-> @@ -0,0 +1,17 @@
-> +/*
-> + * Support for generating APEI tables and recording CPER for Guests:
-> + * stub functions.
+> diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
+> index 2ae8bc1ded3..674f6958e90 100644
+> --- a/include/hw/acpi/ghes.h
+> +++ b/include/hw/acpi/ghes.h
+> @@ -64,6 +64,7 @@ enum {
+>
+>  typedef struct AcpiGhesState {
+>      uint64_t ghes_addr_le;
+> +    bool present; /* True if GHES is present at all on this board */
+>  } AcpiGhesState;
+>
+>  void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker);
+> @@ -72,4 +73,12 @@ void acpi_build_hest(GArray *table_data, BIOSLinker *linker,
+>  void acpi_ghes_add_fw_cfg(AcpiGhesState *vms, FWCfgState *s,
+>                            GArray *hardware_errors);
+>  int acpi_ghes_record_errors(uint8_t notify, uint64_t error_physical_addr);
+> +
+> +/**
+> + * acpi_ghes_present: Report whether ACPI GHES table is present
 > + *
-> + * Copyright (c) 2021 Linaro, Ltd
-> + *
-> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
-> + * See the COPYING file in the top-level directory.
+> + * Returns: true if the system has an ACPI GHES table and it is
+> + * safe to call acpi_ghes_record_errors() to record a memory error.
 > + */
+> +bool acpi_ghes_present(void);
+>  #endif
+> diff --git a/hw/acpi/ghes-stub.c b/hw/acpi/ghes-stub.c
+> index 9faba043b85..c315de1802d 100644
+> --- a/hw/acpi/ghes-stub.c
+> +++ b/hw/acpi/ghes-stub.c
+> @@ -15,3 +15,8 @@ int acpi_ghes_record_errors(uint8_t source_id, uint64_t physical_address)
+>  {
+>      return -1;
+>  }
 > +
-> +#include "qemu/osdep.h"
-> +#include "hw/acpi/ghes.h"
-> +
-> +int acpi_ghes_record_errors(uint8_t source_id, uint64_t physical_address)
+> +bool acpi_ghes_present(void)
 > +{
-> +    return -1;
+> +    return false;
 > +}
-> diff --git a/hw/acpi/meson.build b/hw/acpi/meson.build
-> index dd69577212a..03ea43f8627 100644
-> --- a/hw/acpi/meson.build
-> +++ b/hw/acpi/meson.build
-> @@ -13,13 +13,13 @@ acpi_ss.add(when: 'CONFIG_ACPI_PCI', if_true: files('pci.c'))
->  acpi_ss.add(when: 'CONFIG_ACPI_VMGENID', if_true: files('vmgenid.c'))
->  acpi_ss.add(when: 'CONFIG_ACPI_HW_REDUCED', if_true: files('generic_event_device.c'))
->  acpi_ss.add(when: 'CONFIG_ACPI_HMAT', if_true: files('hmat.c'))
-> -acpi_ss.add(when: 'CONFIG_ACPI_APEI', if_true: files('ghes.c'))
-> +acpi_ss.add(when: 'CONFIG_ACPI_APEI', if_true: files('ghes.c'), if_false:('ghes-stub.c'))
->  acpi_ss.add(when: 'CONFIG_ACPI_X86', if_true: files('core.c', 'piix4.c', 'pcihp.c'), if_false: files('acpi-stub.c'))
->  acpi_ss.add(when: 'CONFIG_ACPI_X86_ICH', if_true: files('ich9.c', 'tco.c'))
->  acpi_ss.add(when: 'CONFIG_IPMI', if_true: files('ipmi.c'), if_false: files('ipmi-stub.c'))
->  acpi_ss.add(when: 'CONFIG_PC', if_false: files('acpi-x86-stub.c'))
->  acpi_ss.add(when: 'CONFIG_TPM', if_true: files('tpm.c'))
-> -softmmu_ss.add(when: 'CONFIG_ACPI', if_false: files('acpi-stub.c', 'aml-build-stub.c'))
-> +softmmu_ss.add(when: 'CONFIG_ACPI', if_false: files('acpi-stub.c', 'aml-build-stub.c', 'ghes-stub.c'))
->  softmmu_ss.add_all(when: 'CONFIG_ACPI', if_true: acpi_ss)
->  softmmu_ss.add(when: 'CONFIG_ALL', if_true: files('acpi-stub.c', 'aml-build-stub.c',
-> -                                                  'acpi-x86-stub.c', 'ipmi-stub.c'))
-> +                                                  'acpi-x86-stub.c', 'ipmi-stub.c', 'ghes-stub.c'))
+> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+> index a4dac6bf15e..a749b84d624 100644
+> --- a/hw/acpi/ghes.c
+> +++ b/hw/acpi/ghes.c
+> @@ -386,6 +386,8 @@ void acpi_ghes_add_fw_cfg(AcpiGhesState *ags, FWCfgState *s,
+>      /* Create a read-write fw_cfg file for Address */
+>      fw_cfg_add_file_callback(s, ACPI_GHES_DATA_ADDR_FW_CFG_FILE, NULL, NULL,
+>          NULL, &(ags->ghes_addr_le), sizeof(ags->ghes_addr_le), false);
+> +
+> +    ags->present = true;
+>  }
+>
+>  int acpi_ghes_record_errors(uint8_t source_id, uint64_t physical_address)
+> @@ -443,3 +445,18 @@ int acpi_ghes_record_errors(uint8_t source_id, uint64_t physical_address)
+>
+>      return ret;
+>  }
+> +
+> +bool acpi_ghes_present(void)
+> +{
+> +    AcpiGedState *acpi_ged_state;
+> +    AcpiGhesState *ags;
+> +
+> +    acpi_ged_state = ACPI_GED(object_resolve_path_type("", TYPE_ACPI_GED,
+> +                                                       NULL));
+> +
+> +    if (!acpi_ged_state) {
+> +        return false;
+> +    }
+> +    ags = &acpi_ged_state->ghes_state;
+> +    return ags->present;
+> +}
 > --
 > 2.20.1
 >

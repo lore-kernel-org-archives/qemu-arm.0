@@ -1,108 +1,125 @@
-Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp55467lff;
-        Fri, 11 Jun 2021 17:18:49 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz931L/OnN337F3lSFYw3ZZY8owKg5HE5luERoib8QyQ8ZxHzBHWcRtr+4Jm9H/lmIYKUZj
-X-Received: by 2002:a05:6e02:14a:: with SMTP id j10mr5420401ilr.250.1623457129722;
-        Fri, 11 Jun 2021 17:18:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623457129; cv=none;
+Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp1217606lff;
+        Sun, 13 Jun 2021 07:14:54 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyPFz1mghUFXtXe34Ohb4AdhgDjIeNZX6eQTj179qthupuA0XB1SE2UFeAIn5SepxGJrsX2
+X-Received: by 2002:a05:6e02:1486:: with SMTP id n6mr10507928ilk.174.1623593694083;
+        Sun, 13 Jun 2021 07:14:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623593694; cv=none;
         d=google.com; s=arc-20160816;
-        b=pbvcV36K3BELSj58kX0RJdR7DsbafIpzbLjQ4fyAvJmYrZnb/9ownubqvBXS4cDH7B
-         pPJl9n/hHaqu4nzglBUouWeVvDkBWqSyP8ZZfe25v/XVEbD0OuaGSyDByNn/fXAwCK//
-         qgEpeq4N3b2lJsxOpIk9KAz5/mhbs1ch4Cqx/8b3zZGg0bMGrHI3lC/jA7Ux7yIXWg3s
-         I0Og/+nFPA4pMsyc45xZHlSv1wSQ3xUM6WZ8i4FjM+dzC9igULPkKGjoG0lLa3IMNUKz
-         hrPpbkX508p1TIpckIHeziylaCVsb1DCHBHC02lbNP/3YrzTVE0KTKgcNr0StcNMsQqS
-         fAAw==
+        b=OEbCb6q3dXyNuJo877BOE7dtsjUPDSu+urzr0c4C4mHPxct24wru9vqGiQvhHmzLD2
+         0RaoB8Rvh4NzJ7HEsIc/kglt4gh9RlFQOjuutgWK9IwJYqoLhRNWeHRvKQDDit1jxDUU
+         clVdOgFPHc+UmSB9h1u4WxM4p/qviJkg4uYywkCjCeRGgggAgiVCdOsQbzc8xkt1x465
+         x+I8gJcr6Vd90fOSVRLyJEgIqO4Nfdp32acT/UzH1QeUgh7exhpEmAQqT0t8Yyhd9FmQ
+         nW5qTHeOtQiVMj/TW0ESoKFEsL/4NUFEHITuZ8p2yYEbHCWaeFsaiKEJVaj8owJVCsT+
+         mO0g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=v5DG419gNo0aYEvjHrhrEmgeKsOIZKJHqor+isJOobs=;
-        b=gseQZnlFzcNVAwKO2jY/dDArsQHEFPZzrAeUvexzx5zO8jtTRtMtjRtO5/g7dnikZA
-         PGG7Q/oyp0UeZxlt/6jzA7+bZGXCgWuD5whnoFFS93PR4Z1WtguJFE747ffZCXyUSi8U
-         PnaKwT1eNNIDAotkNydbXnKOaCVqWW+IOQLunQPw1qaa3Yqe68khP2l5ST3vBxPLnzK0
-         AvTqbmd1GXucCO+fofUHxSF6/i5sJbAsOtIq5L0m3exhKCmibhhv3JYMdHMmUcqcYu5G
-         TxYpIFh5dVLhmd8gRPAj/ntzTQGe96Gxdr1LUsz5n/f04bka4s7hfYe+46nYnK7eMCts
-         ywVw==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=cplFQMlw0A5eRy5sO0Tiojnhf+GajyphlO4GUqa/uwk=;
+        b=l0l0pfcRgCv4o1LmitVfgoLZnBraCDaNNOI5XhADU6jkbN7cjeS/nsph++XdchlP70
+         9P89Rh+eZAVulRd7nxTo1z9qnVi9EImg3RJHXCd040VQ3NbRQ6BKzQoO7LHoCkNb4dCZ
+         dq9WF+s1Gxy3FK8fTSBwr8vkuXukiznHz186IB38aZjkvZH1EyWcKDIauYFTvnNnOURT
+         m9ShmtNsM6P5PMR+yEqqRE9dVQ2jAzJ/YOvWrWZYFQBFPh/b1+MIYlMdiy7q8lTfebTf
+         4l8LnZw5tKqBN1ve83x4YCPx1rwtkARXmBD6vuS0SJW5qiQhNP1jN3NfAmGMvfRdAvGy
+         STLQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmx.net header.s=badeba3b8450 header.b=U4rjtr7b;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NQDERkCC;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmx.de
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k7si8833565ilh.42.2021.06.11.17.18.49
+        by mx.google.com with ESMTPS id d6si13749855ilm.75.2021.06.13.07.14.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 11 Jun 2021 17:18:49 -0700 (PDT)
+        Sun, 13 Jun 2021 07:14:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmx.net header.s=badeba3b8450 header.b=U4rjtr7b;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NQDERkCC;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmx.de
-Received: from localhost ([::1]:55416 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:59646 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lrrMP-0005r3-2N
-	for alex.bennee@linaro.org; Fri, 11 Jun 2021 20:18:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48190)
+	id 1lsQt3-0005iF-CX
+	for alex.bennee@linaro.org; Sun, 13 Jun 2021 10:14:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39366)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <xypron.glpk@gmx.de>)
- id 1lrqsG-0006mx-2I; Fri, 11 Jun 2021 19:47:40 -0400
-Received: from mout.gmx.net ([212.227.15.19]:52221)
+ (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1lsQsH-0004fz-7K
+ for qemu-devel@nongnu.org; Sun, 13 Jun 2021 10:14:05 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:56587)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <xypron.glpk@gmx.de>)
- id 1lrqsC-0006Gr-Rg; Fri, 11 Jun 2021 19:47:39 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1623455242;
- bh=TckBcnluvGI0xnHFdWf6WQQJZQLaxHvdBufay4UL8j0=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=U4rjtr7bFPK6xg0W3bjNrrKgLnmXmfejP+bdNluJBbdy6jNsDblYUXEfy5nBuYxaT
- PvR4RowNnL95oSQVndpBvGr1LFH/9T1diJVajP4BnbH8SJzzxybYFmOVKFQmvT/ceh
- N/uiPp+FQAhOghYY3YxAUx2zY29vucQ4ILKA7ir8=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from LT02.fritz.box ([62.143.247.63]) by mail.gmx.net (mrgmx004
- [212.227.17.184]) with ESMTPSA (Nemesis) id 1M7sDg-1lvgMK0bUw-0052qX; Sat, 12
- Jun 2021 01:47:22 +0200
-From: Heinrich Schuchardt <xypron.glpk@gmx.de>
-To: Keith Busch <kbusch@kernel.org>, Klaus Jensen <its@irrelevant.dk>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 2/3] hw/nvme: namespace parameter for EUI-64
-Date: Sat, 12 Jun 2021 01:46:30 +0200
-Message-Id: <20210611234631.81314-3-xypron.glpk@gmx.de>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20210611234631.81314-1-xypron.glpk@gmx.de>
-References: <20210611234631.81314-1-xypron.glpk@gmx.de>
+ (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1lsQsC-0001pp-7S
+ for qemu-devel@nongnu.org; Sun, 13 Jun 2021 10:14:04 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1623593638;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=cplFQMlw0A5eRy5sO0Tiojnhf+GajyphlO4GUqa/uwk=;
+ b=NQDERkCCpCWRD6Ik3U+oB25ct+hYLJwD9HLN9NgL+xi8LmbumP3uk675qRP4MwUQe2PtyQ
+ dvj8muuWOrdjnTOYKCeEn9psgSpu/PreugM5CJu9xMxz/BPKJYs4g2vpmn7xCNTQXWp+7O
+ 6jQWtbdyIWVR8mocwA3hGSvlxfRi9Rg=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-136-zF8SgirfNqaOHSJCHv7CFw-1; Sun, 13 Jun 2021 10:13:57 -0400
+X-MC-Unique: zF8SgirfNqaOHSJCHv7CFw-1
+Received: by mail-wr1-f72.google.com with SMTP id
+ q15-20020adfc50f0000b0290111f48b865cso5617328wrf.4
+ for <qemu-devel@nongnu.org>; Sun, 13 Jun 2021 07:13:57 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=cplFQMlw0A5eRy5sO0Tiojnhf+GajyphlO4GUqa/uwk=;
+ b=cf49qfnnBN23vlxOLzPVUpXc4hyGsi2v2JllvaH+2GM7HhtXOKNAURivW6JPzXWhMY
+ +ZRJg6qwnYG4HfK1lKV4dA4On8EGKzE/S66XB77ACQKhUkmPcfWsDVx5vK5aoBbQshuF
+ yYCtq5dNnEl9jUL2nd1mzhI9rXxKO81b0U5BTsJdO9ifk9guLu3X11JrkfJ1neuDaiXO
+ tpVU9u5r6c/ux917kWQ/AVbeoVM3x9oDw+d6M82MwRKnn004qqiv9ny1B1iVlpOkYUgl
+ 0OgkLl7tLn5uvatYlb/1wF+jOeBsJYvx2wE8bIZqxhih1lkxdWIIKQ8UmYEZH2KQ+dBc
+ jdbw==
+X-Gm-Message-State: AOAM533MVCJuANaouAHD5+GA1gSC//C+tzRj/zcOIQDp5FEYP4TlWuSn
+ efddEw53lvVOB5jbE5XnQrdna5TiAnGNjCj0DY7S471rxORwd0DxRYBwStLXLYWoqw6DPpvzAuQ
+ PYEb8TLMiBBZlFU1L5FFqo6P1yywiE2bpOVxaq6T1tS0Z7J5ZdnUDv/UPu3B5cETg
+X-Received: by 2002:a5d:5388:: with SMTP id d8mr13581744wrv.423.1623593635577; 
+ Sun, 13 Jun 2021 07:13:55 -0700 (PDT)
+X-Received: by 2002:a5d:5388:: with SMTP id d8mr13581722wrv.423.1623593635266; 
+ Sun, 13 Jun 2021 07:13:55 -0700 (PDT)
+Received: from [192.168.43.95] ([37.170.26.89])
+ by smtp.gmail.com with ESMTPSA id b188sm22532471wmh.18.2021.06.13.07.13.53
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 13 Jun 2021 07:13:54 -0700 (PDT)
+Subject: Re: [PATCH v4 3/8] hw/intc: GICv3 ITS command queue framework
+To: Shashi Mallela <shashi.mallela@linaro.org>, peter.maydell@linaro.org,
+ leif@nuviainc.com, rad@semihalf.com
+References: <20210602180042.111347-1-shashi.mallela@linaro.org>
+ <20210602180042.111347-4-shashi.mallela@linaro.org>
+From: Eric Auger <eauger@redhat.com>
+Message-ID: <27cf428d-f22f-c336-2b6c-a2feca1103d7@redhat.com>
+Date: Sun, 13 Jun 2021 16:13:52 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.1
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:ikaJTrTbwerfsh1W0TiLvneShuKJ+um29MmJDJ0X95a2Gl432a3
- CPMnBzi+I8Glb2KKbCEE6tcgMo8+sXHClq6ttapLixwBYz3PC5RYhgE4jxVQshmLWZNryHL
- eXSsVBg8JZma7djiJawiNDj4ZBLPPABAEb24g8JKJ0U4y9z6N+JXts2rIoIMWGfrG4fQGnl
- 3gtwa6BpGP7Mexk3d4QTA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:/TLvCGgWK98=:D9dzfg/Da/7YgWF3QYaxIg
- Wc3zxG1pC+CMnIN1AObhgVLt4yJusATqh0XtoDe0EPmEimMvGyq7TE6MNzDTkboBS6BTo09Z8
- H+LzAPbCjWb20S0wn2M4ux7tiToIeHsjQEOdl1EbGwTpaFXzXTgdIdQXgM/YE+eiQ7AZh4GQC
- jXlCjnGG6vafqGkdFQT81xSNSRhXNJz2LrmK6vum51RK7UFHaKp1YJ4dir8ZHS0Qmv+JnwRUO
- x74ULdcpKs3V+StIEa/x0bSG2SlTdf8Y69Mh2mmvjUVHmSJT2Q3O0qxkqCRxHPP8VgLNkAGKo
- bp02Mp1BE05/ZDk3bZ1F7I2ILvbh+zA+Y6X1G2GQRtiGF3ubGl1Wl9y9YblPc9v+idXSiGV3Q
- 3HOjMr5jmYrEorYDS/BG3RXU+pZS1/QrdAWUjKYmrMQxFgVBN0mpn+P5VXfZOdJ+jt2jMeo+s
- i8e5w79pTIwup8TXW96zsvIyINkx2fU7+nSFMeUNKAQBlRhkHehm7I1IuYBnMJrjjl3jKqLyA
- PtuQHBAGHuHJ1Orn8YmzeD59NJyTl8/XwqW4s4PfznjXqAUeZwXlVFyCw7j3ZC1bLLjc5WaW6
- C6I67vvPCPAK60+unZmqmhkbkev07unWSsPbyAQDWO19jG9yLcXPqwGfq041VB8kbwd/+Qw/f
- FhIMvXnH6fqflH95w74L7D0COhAsPTHijMFAqDJ6pxZuxctxlmMXlWsg6aLDjpgaO3WKKsR8b
- H8FoDV2VDR2s3PhKpWqVePg5Sc0qEv9Eav2BjUEqHJWLWOw7XicdBtNAbbDNIk4xa8g5YDMNp
- O8c9JZaYBGR01ojbFGW2COIu5Gq/1IO7O0VXehG/qn0roiUnCXg9gZRsMH8kLtQ7PshhdZ6zG
- fizuOjzDqyINoGE38vpF7pcTFuWFCmo5VhElJ+feiyq82HJf+i8opI+iE/RvU2+Hxp58fioEr
- o3R3hcJQyMaWq727oPpWiw2aeBa6qtHYZ3NZPlVHBdikzOOt4oR2gm5BK50hFojDCSwLcBCLW
- GVkVRmj3KxSURw3dhfvWicGZxWO1209FzGnRE7hPoJgXJoQYS4sWHZKjWkJ6n4zHMuH1w5nyZ
- Eyar9XD7Hsh95kgy/F78dwNFznhlOTz5U3e
-Received-SPF: pass client-ip=212.227.15.19; envelope-from=xypron.glpk@gmx.de;
- helo=mout.gmx.net
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, FREEMAIL_FROM=0.001, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20210602180042.111347-4-shashi.mallela@linaro.org>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eauger@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=eauger@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.199,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.144, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=-0.01,
+ RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -115,164 +132,420 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <ehabkost@redhat.com>, qemu-block@nongnu.org,
- Heinrich Schuchardt <xypron.glpk@gmx.de>, Cornelia Huck <cohuck@redhat.com>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Klaus Jensen <k.jensen@samsung.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hg8xJnF+roBb
+X-TUID: yQ8VMWmHGA0B
 
-The EUI-64 field is the only identifier for NVMe namespaces in UEFI device
-paths. Add a new namespace property "eui64", that provides the user the
-option to specify the EUI-64.
+Hi Sashi,
 
-Signed-off-by: Heinrich Schuchardt <xypron.glpk@gmx.de>
-Acked-by: Klaus Jensen <k.jensen@samsung.com>
-=2D--
-v2:
-	fix typo %s/EUI64/EUI-64/
-=2D--
- docs/system/nvme.rst |  4 +++
- hw/nvme/ctrl.c       | 58 ++++++++++++++++++++++++++------------------
- hw/nvme/ns.c         |  2 ++
- hw/nvme/nvme.h       |  1 +
- 4 files changed, 42 insertions(+), 23 deletions(-)
+On 6/2/21 8:00 PM, Shashi Mallela wrote:
+> Added functionality to trigger ITS command queue processing on
+> write to CWRITE register and process each command queue entry to
+> identify the command type and handle commands like MAPD,MAPC,SYNC.
+> 
+> Signed-off-by: Shashi Mallela <shashi.mallela@linaro.org>
+> ---
+>  hw/intc/arm_gicv3_its.c  | 295 +++++++++++++++++++++++++++++++++++++++
+>  hw/intc/gicv3_internal.h |  37 +++++
+>  2 files changed, 332 insertions(+)
+> 
+> diff --git a/hw/intc/arm_gicv3_its.c b/hw/intc/arm_gicv3_its.c
+> index af60f19c98..6551c577b3 100644
+> --- a/hw/intc/arm_gicv3_its.c
+> +++ b/hw/intc/arm_gicv3_its.c
+> @@ -49,6 +49,295 @@ static uint64_t baser_base_addr(uint64_t value, uint32_t page_sz)
+>      return result;
+>  }
+>  
+> +static MemTxResult update_cte(GICv3ITSState *s, uint16_t icid, bool valid,
+> +                              uint64_t rdbase)
+> +{
+> +    AddressSpace *as = &s->gicv3->dma_as;
+> +    uint64_t value;
+> +    uint64_t l2t_addr;
+> +    bool valid_l2t;
+> +    uint32_t l2t_id;
+> +    uint32_t max_l2_entries;
+> +    uint64_t cte = 0;
+> +    MemTxResult res = MEMTX_OK;
+> +
+> +    if (!s->ct.valid) {
+Isn't it a guest log error case. Also you return MEMTX_OK in that case.
+Is that what you want?
+> +        return res;
+> +    }
+> +
+> +    if (valid) {
+> +        /* add mapping entry to collection table */
+> +        cte = (valid & VALID_MASK) |
+> +              ((rdbase & RDBASE_PROCNUM_MASK) << 1ULL);
+Do you really need to sanitize rdbase again?
+> +    }
+> +
+> +    /*
+> +     * The specification defines the format of level 1 entries of a
+> +     * 2-level table, but the format of level 2 entries and the format
+> +     * of flat-mapped tables is IMPDEF.
+> +     */
+> +    if (s->ct.indirect) {
+> +        l2t_id = icid / (s->ct.page_sz / L1TABLE_ENTRY_SIZE);
+> +
+> +        value = address_space_ldq_le(as,
+> +                                     s->ct.base_addr +
+> +                                     (l2t_id * L1TABLE_ENTRY_SIZE),
+> +                                     MEMTXATTRS_UNSPECIFIED, &res);
+> +
+> +        if (res != MEMTX_OK) {
+> +            return res;
+> +        }
+> +
+> +        valid_l2t = (value >> VALID_SHIFT) & VALID_MASK;
+> +
+> +        if (valid_l2t) {
+> +            max_l2_entries = s->ct.page_sz / s->ct.entry_sz;
+> +
+> +            l2t_addr = value & ((1ULL << 51) - 1);
+> +
+> +            address_space_stq_le(as, l2t_addr +
+> +                                 ((icid % max_l2_entries) * GITS_CTE_SIZE),
+> +                                 cte, MEMTXATTRS_UNSPECIFIED, &res);
+> +        }
+> +    } else {
+> +        /* Flat level table */
+> +        address_space_stq_le(as, s->ct.base_addr + (icid * GITS_CTE_SIZE),
+> +                             cte, MEMTXATTRS_UNSPECIFIED, &res);
+> +    }
+> +    return res;
+> +}
+> +
+> +static MemTxResult process_mapc(GICv3ITSState *s, uint32_t offset)
+> +{
+> +    AddressSpace *as = &s->gicv3->dma_as;
+> +    uint16_t icid;
+> +    uint64_t rdbase;
+> +    bool valid;
+> +    MemTxResult res = MEMTX_OK;
+> +    uint64_t value;
+> +
+> +    offset += NUM_BYTES_IN_DW;
+> +    offset += NUM_BYTES_IN_DW;
+May be relevant to add some trace points for debuggability.
+> +
+> +    value = address_space_ldq_le(as, s->cq.base_addr + offset,
+> +                                 MEMTXATTRS_UNSPECIFIED, &res);
+> +
+> +    if (res != MEMTX_OK) {
+> +        return res;
+> +    }
+> +
+> +    icid = value & ICID_MASK;
+> +
+> +    rdbase = (value >> R_MAPC_RDBASE_SHIFT) & RDBASE_PROCNUM_MASK;
+usually the mask is applied before the shift.
+> +
+> +    valid = (value >> VALID_SHIFT) & VALID_MASK;
+use FIELD, see below
+> +
+> +    if ((icid > s->ct.max_collids) || (rdbase > s->gicv3->num_cpu)) {
+you also need to check against ITS_CIDBITS limit?
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "ITS MAPC: invalid collection table attributes "
+> +                      "icid %d rdbase %lu\n",  icid, rdbase);
+> +        /*
+> +         * in this implementation,in case of error
+> +         * we ignore this command and move onto the next
+> +         * command in the queue
+spec says a command error occurs in that case.
+> +         */
+> +    } else {
+> +        res = update_cte(s, icid, valid, rdbase);
+> +    }
+> +
+> +    return res;
+> +}
+> +
+> +static MemTxResult update_dte(GICv3ITSState *s, uint32_t devid, bool valid,
+> +                              uint8_t size, uint64_t itt_addr)
+> +{
+> +    AddressSpace *as = &s->gicv3->dma_as;
+> +    uint64_t value;
+> +    uint64_t l2t_addr;
+> +    bool valid_l2t;
+> +    uint32_t l2t_id;
+> +    uint32_t max_l2_entries;
+> +    uint64_t dte = 0;
+> +    MemTxResult res = MEMTX_OK;
+> +
+> +    if (s->dt.valid) {
+> +        if (valid) {
+> +            /* add mapping entry to device table */
+> +            dte = (valid & VALID_MASK) |
+> +                  ((size & SIZE_MASK) << 1U) |
+> +                  ((itt_addr & ITTADDR_MASK) << 6ULL);
+> +        }
+> +    } else {
+> +        return res;
+> +    }
+> +
+> +    /*
+> +     * The specification defines the format of level 1 entries of a
+> +     * 2-level table, but the format of level 2 entries and the format
+> +     * of flat-mapped tables is IMPDEF.
+> +     */
+> +    if (s->dt.indirect) {
+> +        l2t_id = devid / (s->dt.page_sz / L1TABLE_ENTRY_SIZE);
+> +
+> +        value = address_space_ldq_le(as,
+> +                                     s->dt.base_addr +
+> +                                     (l2t_id * L1TABLE_ENTRY_SIZE),
+> +                                     MEMTXATTRS_UNSPECIFIED, &res);
+> +
+> +        if (res != MEMTX_OK) {
+> +            return res;
+> +        }
+> +
+> +        valid_l2t = (value >> VALID_SHIFT) & VALID_MASK;
+> +
+> +        if (valid_l2t) {
+> +            max_l2_entries = s->dt.page_sz / s->dt.entry_sz;
+> +
+> +            l2t_addr = value & ((1ULL << 51) - 1);
+> +
+> +            address_space_stq_le(as, l2t_addr +
+> +                                 ((devid % max_l2_entries) * GITS_DTE_SIZE),
+> +                                 dte, MEMTXATTRS_UNSPECIFIED, &res);
+> +        }
+> +    } else {
+> +        /* Flat level table */
+> +        address_space_stq_le(as, s->dt.base_addr + (devid * GITS_DTE_SIZE),
+> +                             dte, MEMTXATTRS_UNSPECIFIED, &res);
+> +    }
+> +    return res;
+> +}
+> +
+> +static MemTxResult process_mapd(GICv3ITSState *s, uint64_t value,
+you do not seem to use the input value, remove it?
+> +                                uint32_t offset)
+> +{
+> +    AddressSpace *as = &s->gicv3->dma_as;
+> +    uint32_t devid;
+> +    uint8_t size;
+> +    uint64_t itt_addr;
+> +    bool valid;
+> +    MemTxResult res = MEMTX_OK;
+> +
+> +    devid = (value >> DEVID_SHIFT) & DEVID_MASK;
+> +
+> +    offset += NUM_BYTES_IN_DW;
+> +    value = address_space_ldq_le(as, s->cq.base_addr + offset,
+> +                                 MEMTXATTRS_UNSPECIFIED, &res);
+> +
+> +    if (res != MEMTX_OK) {
+> +        return res;
+> +    }
+> +
+> +    size = (value & SIZE_MASK);
+> +
+> +    offset += NUM_BYTES_IN_DW;
+> +    value = address_space_ldq_le(as, s->cq.base_addr + offset,
+> +                                 MEMTXATTRS_UNSPECIFIED, &res);
+> +
+> +    if (res != MEMTX_OK) {
+> +        return res;
+> +    }
+> +
+> +    itt_addr = (value >> ITTADDR_SHIFT) & ITTADDR_MASK;
+this looks weird to me, usually we apply the mask first and then shift.
+> +
+> +    valid = (value >> VALID_SHIFT) & VALID_MASK;
+use FIELD_EX64()?
+> +
+> +    if ((devid > s->dt.max_devids) ||
+> +        (size > FIELD_EX64(s->typer, GITS_TYPER, IDBITS))) {
+ITS_IDBITS?
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "ITS MAPD: invalid device table attributes "
+> +                      "devid %d or size %d\n", devid, size);
+> +        /*
+> +         * in this implementation, in case of error
+> +         * we ignore this command and move onto the next
+> +         * command in the queue
+> +         */
+> +    } else {
+> +        res = update_dte(s, devid, valid, size, itt_addr);
+> +    }
+> +
+> +    return res;
+> +}
+> +
+> +/*
+> + * Current implementation blocks until all
+> + * commands are processed
+> + */
+> +static void process_cmdq(GICv3ITSState *s)
+> +{> +    uint32_t wr_offset = 0;
+> +    uint32_t rd_offset = 0;
+> +    uint32_t cq_offset = 0;
+> +    uint64_t data;
+> +    AddressSpace *as = &s->gicv3->dma_as;
+> +    MemTxResult res = MEMTX_OK;
+> +    uint8_t cmd;
+> +
+> +    if (!(s->ctlr & ITS_CTLR_ENABLED)) {
+> +        return;
+> +    }
+> +
+> +    wr_offset = FIELD_EX64(s->cwriter, GITS_CWRITER, OFFSET);
+> +
+> +    if (wr_offset > s->cq.max_entries) {
+Shouldn't this be checked on cwrite write instead?
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "%s: invalid write offset "
+> +                      "%d\n", __func__, wr_offset);
+> +        return;
+> +    }
+> +
+> +    rd_offset = FIELD_EX64(s->creadr, GITS_CREADR, OFFSET);
+> +
+> +    while (wr_offset != rd_offset) {
+> +        cq_offset = (rd_offset * GITS_CMDQ_ENTRY_SIZE);
+> +        data = address_space_ldq_le(as, s->cq.base_addr + cq_offset,
+> +                                    MEMTXATTRS_UNSPECIFIED, &res);
+> +        cmd = (data & CMD_MASK);
+> +
+> +        switch (cmd) {
+> +        case GITS_CMD_INT:
+> +            break;
+> +        case GITS_CMD_CLEAR:
+> +            break;
+> +        case GITS_CMD_SYNC:
+> +            /*
+> +             * Current implementation makes a blocking synchronous call
+> +             * for every command issued earlier, hence the internal state
+> +             * is already consistent by the time SYNC command is executed.
+> +             * Hence no further processing is required for SYNC command.
+> +             */
+> +            break;
+> +        case GITS_CMD_MAPD:
+> +            res = process_mapd(s, data, cq_offset);
+> +            break;
+> +        case GITS_CMD_MAPC:
+> +            res = process_mapc(s, cq_offset);
+> +            break;
+> +        case GITS_CMD_MAPTI:
+> +            break;
+> +        case GITS_CMD_MAPI:
+> +            break;
+> +        case GITS_CMD_DISCARD:
+> +            break;
+> +        default:
+> +            break;
+> +        }
+> +        if (res == MEMTX_OK) {
+> +            rd_offset++;
+> +            rd_offset %= s->cq.max_entries;
+> +            s->creadr = FIELD_DP64(s->creadr, GITS_CREADR, OFFSET, rd_offset);
+> +        } else {
+> +            /*
+> +             * in this implementation,in case of dma read/write error
+> +             * we stall the command processing
+> +             */
+> +            s->creadr = FIELD_DP64(s->creadr, GITS_CREADR, STALLED, 1);
+> +            qemu_log_mask(LOG_GUEST_ERROR,
+> +                          "%s: %x cmd processing failed!!\n", __func__, cmd);
+> +            break;
+> +        }
+> +    }
+> +}
+> +
+>  static void extract_table_params(GICv3ITSState *s)
+>  {
+>      uint16_t num_pages = 0;
+> @@ -226,6 +515,9 @@ static MemTxResult its_writel(GICv3ITSState *s, hwaddr offset,
+>      case GITS_CWRITER:
+>          s->cwriter = deposit64(s->cwriter, 0, 32,
+>                                 (value & ~R_GITS_CWRITER_RETRY_MASK));
+> +        if (s->cwriter != s->creadr) {
+> +            process_cmdq(s);
+I would expect process_cmdq() to be called as well on ITS enable
+> +        }
+>          break;
+>      case GITS_CWRITER + 4:
+>          s->cwriter = deposit64(s->cwriter, 32, 32,
+> @@ -346,6 +638,9 @@ static MemTxResult its_writell(GICv3ITSState *s, hwaddr offset,
+>          break;
+>      case GITS_CWRITER:
+>          s->cwriter = value & ~R_GITS_CWRITER_RETRY_MASK;
+> +        if (s->cwriter != s->creadr) {
+> +            process_cmdq(s);
+> +        }
+>          break;
+>      case GITS_CREADR:
+>      case GITS_TYPER:
+> diff --git a/hw/intc/gicv3_internal.h b/hw/intc/gicv3_internal.h
+> index d6aaa94e4c..0932a30560 100644
+> --- a/hw/intc/gicv3_internal.h
+> +++ b/hw/intc/gicv3_internal.h
+> @@ -253,6 +253,9 @@ FIELD(GITS_CBASER, OUTERCACHE, 53, 3)
+>  FIELD(GITS_CBASER, INNERCACHE, 59, 3)
+>  FIELD(GITS_CBASER, VALID, 63, 1)
+>  
+> +FIELD(GITS_CREADR, STALLED, 0, 1)
+> +FIELD(GITS_CREADR, OFFSET, 5, 15)
+> +
+>  FIELD(GITS_CWRITER, RETRY, 0, 1)
+>  FIELD(GITS_CWRITER, OFFSET, 5, 15)
+>  
+> @@ -289,6 +292,40 @@ FIELD(GITS_TYPER, CIL, 36, 1)
+>  #define L1TABLE_ENTRY_SIZE         8
+>  
+>  #define GITS_CMDQ_ENTRY_SIZE               32
+> +#define NUM_BYTES_IN_DW                     8
+> +
+> +#define CMD_MASK                  0xff
+> +
+> +/* ITS Commands */
+> +#define GITS_CMD_CLEAR            0x04
+> +#define GITS_CMD_DISCARD          0x0F
+> +#define GITS_CMD_INT              0x03
+> +#define GITS_CMD_MAPC             0x09
+> +#define GITS_CMD_MAPD             0x08
+> +#define GITS_CMD_MAPI             0x0B
+> +#define GITS_CMD_MAPTI            0x0A
+> +#define GITS_CMD_SYNC             0x05
+> +
+> +/* MAPC command fields */
+> +#define ICID_LENGTH                  16
+> +#define ICID_MASK                 ((1U << ICID_LENGTH) - 1)
+can't you use FIELD') as well for the ICID?
+> +FIELD(MAPC, RDBASE, 16, 32)
+> +
+> +#define RDBASE_PROCNUM_LENGTH        16
+> +#define RDBASE_PROCNUM_MASK       ((1ULL << RDBASE_PROCNUM_LENGTH) - 1)
+why do we have both the RDBASE FIELD def and above defs?
+> +
+> +#define DEVID_SHIFT                  32
+> +#define DEVID_LENGTH                 32
+> +#define DEVID_MASK                ((1ULL << DEVID_LENGTH) - 1)
+we don't have any DEVID field in MAPC, I guess it belongs to MAPD?
+> +
+> +/* MAPD command fields */
+> +#define ITTADDR_LENGTH               44
+> +#define ITTADDR_SHIFT                 8
+> +#define ITTADDR_MASK              ((1ULL << ITTADDR_LENGTH) - 1)
+> +#define SIZE_MASK                 0x1f
+Can't you homogenize the definition, use field() and/or prefix with the
+cmd name when not common to severals cmds?
 
-diff --git a/docs/system/nvme.rst b/docs/system/nvme.rst
-index f7f63d6bf6..b5f8288d7c 100644
-=2D-- a/docs/system/nvme.rst
-+++ b/docs/system/nvme.rst
-@@ -81,6 +81,10 @@ There are a number of parameters available:
-   Set the UUID of the namespace. This will be reported as a "Namespace UU=
-ID"
-   descriptor in the Namespace Identification Descriptor List.
+> +
+> +#define VALID_SHIFT               63
+> +#define VALID_MASK                1ULL
+>  
+>  /**
+>   * Default features advertised by this version of ITS
+> 
+Thanks
 
-+``eui64``
-+  Set the EUI-64 of the namespace. This will be reported as a "IEEE Exten=
-ded
-+  Unique Identifier" descriptor in the Namespace Identification Descripto=
-r List.
-+
- ``bus``
-   If there are more ``nvme`` devices defined, this parameter may be used =
-to
-   attach the namespace to a specific ``nvme`` device (identified by an ``=
-id``
-diff --git a/hw/nvme/ctrl.c b/hw/nvme/ctrl.c
-index 8dd9cb2ccb..f37c4fd635 100644
-=2D-- a/hw/nvme/ctrl.c
-+++ b/hw/nvme/ctrl.c
-@@ -4436,19 +4436,19 @@ static uint16_t nvme_identify_ns_descr_list(NvmeCt=
-rl *n, NvmeRequest *req)
-     NvmeIdentify *c =3D (NvmeIdentify *)&req->cmd;
-     uint32_t nsid =3D le32_to_cpu(c->nsid);
-     uint8_t list[NVME_IDENTIFY_DATA_SIZE] =3D {};
--
--    struct data {
--        struct {
--            NvmeIdNsDescr hdr;
--            uint8_t v[NVME_NIDL_UUID];
--        } uuid;
--        struct {
--            NvmeIdNsDescr hdr;
--            uint8_t v;
--        } csi;
--    };
--
--    struct data *ns_descrs =3D (struct data *)list;
-+    uint8_t *pos =3D list;
-+    struct {
-+        NvmeIdNsDescr hdr;
-+        uint8_t v[NVME_NIDL_UUID];
-+    } QEMU_PACKED uuid;
-+    struct {
-+        NvmeIdNsDescr hdr;
-+        uint64_t v;
-+    } QEMU_PACKED eui64;
-+    struct {
-+        NvmeIdNsDescr hdr;
-+        uint8_t v;
-+    } QEMU_PACKED csi;
-
-     trace_pci_nvme_identify_ns_descr_list(nsid);
-
-@@ -4462,17 +4462,29 @@ static uint16_t nvme_identify_ns_descr_list(NvmeCt=
-rl *n, NvmeRequest *req)
-     }
-
-     /*
--     * Because the NGUID and EUI64 fields are 0 in the Identify Namespace=
- data
--     * structure, a Namespace UUID (nidt =3D 3h) must be reported in the
--     * Namespace Identification Descriptor. Add the namespace UUID here.
-+     * If the EUI-64 field is 0 and the NGUID field is 0, the namespace m=
-ust
-+     * provide a valid Namespace UUID in the Namespace Identification Des=
-criptor
-+     * data structure. QEMU does not yet support setting NGUID.
-      */
--    ns_descrs->uuid.hdr.nidt =3D NVME_NIDT_UUID;
--    ns_descrs->uuid.hdr.nidl =3D NVME_NIDL_UUID;
--    memcpy(&ns_descrs->uuid.v, ns->params.uuid.data, NVME_NIDL_UUID);
--
--    ns_descrs->csi.hdr.nidt =3D NVME_NIDT_CSI;
--    ns_descrs->csi.hdr.nidl =3D NVME_NIDL_CSI;
--    ns_descrs->csi.v =3D ns->csi;
-+    uuid.hdr.nidt =3D NVME_NIDT_UUID;
-+    uuid.hdr.nidl =3D NVME_NIDL_UUID;
-+    memcpy(uuid.v, ns->params.uuid.data, NVME_NIDL_UUID);
-+    memcpy(pos, &uuid, sizeof(uuid));
-+    pos +=3D sizeof(uuid);
-+
-+    if (ns->params.eui64) {
-+        eui64.hdr.nidt =3D NVME_NIDT_EUI64;
-+        eui64.hdr.nidl =3D NVME_NIDL_EUI64;
-+        eui64.v =3D cpu_to_be64(ns->params.eui64);
-+        memcpy(pos, &eui64, sizeof(eui64));
-+        pos +=3D sizeof(eui64);
-+    }
-+
-+    csi.hdr.nidt =3D NVME_NIDT_CSI;
-+    csi.hdr.nidl =3D NVME_NIDL_CSI;
-+    csi.v =3D ns->csi;
-+    memcpy(pos, &csi, sizeof(csi));
-+    pos +=3D sizeof(csi);
-
-     return nvme_c2h(n, list, sizeof(list), req);
- }
-diff --git a/hw/nvme/ns.c b/hw/nvme/ns.c
-index 3fec9c6273..45e457de6a 100644
-=2D-- a/hw/nvme/ns.c
-+++ b/hw/nvme/ns.c
-@@ -77,6 +77,7 @@ static int nvme_ns_init(NvmeNamespace *ns, Error **errp)
-     id_ns->mssrl =3D cpu_to_le16(ns->params.mssrl);
-     id_ns->mcl =3D cpu_to_le32(ns->params.mcl);
-     id_ns->msrc =3D ns->params.msrc;
-+    id_ns->eui64 =3D cpu_to_be64(ns->params.eui64);
-
-     ds =3D 31 - clz32(ns->blkconf.logical_block_size);
-     ms =3D ns->params.ms;
-@@ -511,6 +512,7 @@ static Property nvme_ns_props[] =3D {
-     DEFINE_PROP_BOOL("shared", NvmeNamespace, params.shared, false),
-     DEFINE_PROP_UINT32("nsid", NvmeNamespace, params.nsid, 0),
-     DEFINE_PROP_UUID("uuid", NvmeNamespace, params.uuid),
-+    DEFINE_PROP_UINT64("eui64", NvmeNamespace, params.eui64, 0),
-     DEFINE_PROP_UINT16("ms", NvmeNamespace, params.ms, 0),
-     DEFINE_PROP_UINT8("mset", NvmeNamespace, params.mset, 0),
-     DEFINE_PROP_UINT8("pi", NvmeNamespace, params.pi, 0),
-diff --git a/hw/nvme/nvme.h b/hw/nvme/nvme.h
-index 93a7e0e538..ac90e13d7b 100644
-=2D-- a/hw/nvme/nvme.h
-+++ b/hw/nvme/nvme.h
-@@ -83,6 +83,7 @@ typedef struct NvmeNamespaceParams {
-     bool     shared;
-     uint32_t nsid;
-     QemuUUID uuid;
-+    uint64_t eui64;
-
-     uint16_t ms;
-     uint8_t  mset;
-=2D-
-2.30.2
+Eric
 

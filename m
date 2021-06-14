@@ -1,110 +1,111 @@
-Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp2255221lff;
-        Mon, 14 Jun 2021 12:29:53 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJywlBc9BdRzNLRoA5Vg8/dTYqtuOoKOzYvRZCJN5SA68mrmyfhwtis+URXwrUdhUnZ0xnqE
-X-Received: by 2002:a7b:c206:: with SMTP id x6mr766940wmi.26.1623698993775;
-        Mon, 14 Jun 2021 12:29:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623698993; cv=none;
+Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp2261831lff;
+        Mon, 14 Jun 2021 12:39:57 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyDxazbUChThGsOib9sQ4oltfpz4R2sG5n4ztpOKRcPodo2VG+Ske2kB+Mip7lC4/lisDa+
+X-Received: by 2002:a67:c786:: with SMTP id t6mr1358607vsk.40.1623699597217;
+        Mon, 14 Jun 2021 12:39:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623699597; cv=none;
         d=google.com; s=arc-20160816;
-        b=UJtGoPRVRe6AI05MQ1RTd+suJyYzfPZYCvxuwGq/QA2Q8MQgdjwrW0kBIWe/s68oQa
-         dcRlFdfp6xl4A3zgVh8IXa1lLE7d03sKPnYiKUXyY4jTrTSIPRRawzXoEafeqC54vcVg
-         mWAmNIlWWLanPltR3g/j5vzOC106iRee6psvdaUwZwtnuJIt+iZK8YfeeMAhK3EH3ZB7
-         iFlCI6Q1yhnNG7kXvy4NfDr2bKh2lle3d1e4Rlhp9E4dfSyJwCg+fajhS7mDuI5duuVL
-         nZNO6N35Oi/2xdyKRF483LOeDaClGjsxyS/KzRKgVir4vExEIl3NGYFLm4PsVMV7fXZt
-         KmNQ==
+        b=CWwoQPvMNhxo4jeo30OtrVku7koVUKDizwXk0WIo8WT6SkPAI6MHsCyIU7+aCdqdlt
+         qhy4w0LiHTCvp76w0G+VvKHHQ2t6gLcYwvua89KLfZ3BYcD78SPNUGGISSG9tZPVlAvL
+         rleaczc7X3JK0SRRkBzt2FNJFsTK0gflLABtBZ8v9adDcIl1JVesd9AAxkWwnje9po0/
+         aX0jDrxFeZOk2n5hVzj3OTqqX2cdgpP986FOykyrpSbTaHxOv8fwsfppMLVOD6QPoUJg
+         OczJ86gEYrae6I/ff2JfQ1m6p6dM96qZ31khVkutHjXVXWlnb+GeCqQdyuxD7zW8G5Z2
+         PcXw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=0AVJJPK+5LgiBD1Zr7rUGG/EI24GQJyzjdlN0hv2jWE=;
-        b=IFn68Goqt2EmW4TJXS9J/h7Hoapb98vnGHwqoSSgQcLy9hlNGtxvebVnyzCzMe5B/5
-         6SRvmaUtjpCRdvOSNfH4E/arY/Q7WVFaSEpzFiBIQQiiq4HEzMkhVOjDbW7yg3Hb5vtA
-         vjVLFkmN9lNKR5OIIFUfksJP3PUH13ecvqO2f6CVKN6w908JienyhX6KngoQv2SPJvc4
-         slSg1pGvEBwHGFYZusjKk92b7BPJbaAdgomwRVEja2S5PVO+nQ16/ZVkfMugiTVK6cZN
-         pOVqRXQyZjbqknxo2mItOmRw6e0hATmvUUcQvfvlmarGtF4gAk6Q5gcJnh7AyY1EteWX
-         khQQ==
+        bh=4E53SlHsd3C5DPVJZfn/FYWVpAAaPQlS/Qwhm9fx3xg=;
+        b=XcUy+dFSfYWYdglIxtLoUTb5nP1C1SL/MOdzKLf3uIf+awTp9qyNf0toZm+jOrZZez
+         SUjnI2LawyOjdXQFiAzyMMmuOPFscnUimLO0NU3UDXiKXm8A22w3cqjJz8Lg7uTqJxM/
+         dJEKaOl/CfYvXkUm52bDlLd6+nDFekFzGt7ADmUdF+c45+jEClu/EiYrwFeflm+ROnrm
+         kHeq+p9Dio4Lb2Dy0dDce4VLqDMg6UY0LQBuV2Fi7NRUT+eT5eSCQE/ehOa6o56CHrgN
+         E+rsMMyCE9xVXj/vJXhQkxe+XnE+ZfmZOrCscBFi2bD8EdmtRUtGLloGJ1oOCYFDCXdJ
+         IRhw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cvwQKXk9;
+       dkim=pass header.i=@linaro.org header.s=google header.b=BGOA+AqZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b23si16416302wmj.185.2021.06.14.12.29.53
+        by mx.google.com with ESMTPS id c11si2505uak.19.2021.06.14.12.39.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Jun 2021 12:29:53 -0700 (PDT)
+        Mon, 14 Jun 2021 12:39:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cvwQKXk9;
+       dkim=pass header.i=@linaro.org header.s=google header.b=BGOA+AqZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37460 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35182 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lssHQ-0001bW-SX
-	for alex.bennee@linaro.org; Mon, 14 Jun 2021 15:29:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42890)
+	id 1lssRA-0002Xq-Fo
+	for alex.bennee@linaro.org; Mon, 14 Jun 2021 15:39:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44426)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lssHI-0001ZI-6c
- for qemu-arm@nongnu.org; Mon, 14 Jun 2021 15:29:44 -0400
-Received: from mail-pg1-x52e.google.com ([2607:f8b0:4864:20::52e]:42568)
+ id 1lssQt-0002XE-Nw
+ for qemu-arm@nongnu.org; Mon, 14 Jun 2021 15:39:39 -0400
+Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d]:33767)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lssHG-00034G-B0
- for qemu-arm@nongnu.org; Mon, 14 Jun 2021 15:29:43 -0400
-Received: by mail-pg1-x52e.google.com with SMTP id i34so9467223pgl.9
- for <qemu-arm@nongnu.org>; Mon, 14 Jun 2021 12:29:40 -0700 (PDT)
+ id 1lssQr-0000pk-Sb
+ for qemu-arm@nongnu.org; Mon, 14 Jun 2021 15:39:39 -0400
+Received: by mail-pj1-x102d.google.com with SMTP id
+ k22-20020a17090aef16b0290163512accedso496753pjz.0
+ for <qemu-arm@nongnu.org>; Mon, 14 Jun 2021 12:39:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:references:from:message-id:date:user-agent:mime-version
  :in-reply-to:content-language:content-transfer-encoding;
- bh=0AVJJPK+5LgiBD1Zr7rUGG/EI24GQJyzjdlN0hv2jWE=;
- b=cvwQKXk95xb7KXdRfdkIqhnp6FFyX5g+uhy0PxkslYe40rt9WD26su5BVRmyVHnFO+
- ma94lRnW6Jqfcb6Zrvmawny6mt2TgF6WYIpMkMWzKhLYVI+zxSBR06hM+b8PkOiiPtAr
- OlHqvyrsiL7fgQ1pZewi1MM7bWnZ+Ngtz4nUU4ijfI2LqaFQHfleOg8hI9Lg/TurkG5F
- oC7byO9SMwqHdwMf+k/0wQq1/6i3rXbV3GiNEWbdkcauPu9oBCRqnmm5wPitcG5D0An2
- ZUFZLf/thpPrdJ/ooMWVxefii6VS00cE8WmgfNJ5wSOl6NtH/kCsSja13DlNyDpKoWzo
- d/2A==
+ bh=4E53SlHsd3C5DPVJZfn/FYWVpAAaPQlS/Qwhm9fx3xg=;
+ b=BGOA+AqZE5H3HZz7ob6CLDaetEIhCksOHMgnNb01LNDVagiVn+YVCVTSrH+OikRVxF
+ laqhS11AK3PNBBEgM9JsiNmd6pQs+f2emJoyG43yX5xxDf6Fg529nNVqhSlRicAxHyVR
+ o0LtK3wp5tv+Z8YjwiatMDJvOAPscap8vTtD3IVjXr+rr+Zk5iqJMcakQ7jyW46Dreoz
+ joqeoMJ0eKQWWpem7CfwfZKod+4xoZdBZhtTsBxvMvG3jOO0pN7i7RPJp0ZY/IhuiZIF
+ DktBzXBHGpKx2oR0FPSJbJ3tsRPIY97hlv7GfPq3Q6gFReaO/bspImBDjZtrxlgN3MVI
+ j/Bw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=0AVJJPK+5LgiBD1Zr7rUGG/EI24GQJyzjdlN0hv2jWE=;
- b=oGfGz/HzNfHFQlw37S4hAxC406Jatzj7XfXSY+fdbUD11h42WHztCojA6xyl36X+vl
- arr/zLyG8Lv0FJDXeunHE/M2wNCsKT8ZigGLgF0x2GgsRpDvzs7hFiQ5/krlFCx+83VF
- 68iuObY0E9ZIAyd/JTcT1IfM3BfHPVNxe2I1/bD5D7fQvEUGx4kuiX4PtrMjhIw271xv
- IIYXWZf7hluPlTINLsG2UEWHDx2b2qYh0jOmLSVOGDWzWn5HOuooYhstedeA/PBzyoqE
- Z5uRyAQ6yWk4y5GoBu84iXJL0Ie9CLgPXHfdKd9SWQerb/lL0V9AWl7R59zXFABN5zr+
- mdnw==
-X-Gm-Message-State: AOAM533sE3bgr6uM07e+yuSf27g7g/PQYqF/2EgjStTUSuSB0akUUCls
- 0N4gbJFqW2/qXGqTW1wFI2K8eA==
-X-Received: by 2002:aa7:905a:0:b029:2f6:d759:6c2d with SMTP id
- n26-20020aa7905a0000b02902f6d7596c2dmr521915pfo.33.1623698978468; 
- Mon, 14 Jun 2021 12:29:38 -0700 (PDT)
+ bh=4E53SlHsd3C5DPVJZfn/FYWVpAAaPQlS/Qwhm9fx3xg=;
+ b=KM4vePiT4u7kg5KXT25tIn8DVHsEcP+kMSlA+qHQjp/EX508x7PMV90Ip/gd8QVUP4
+ WIAFlMi9QZ039pkQd1wMwPcw6bbJ8+8lfbTVYG31FZG1jTp5JTDvnX/YiNN0GUpe6c2n
+ SnyUVKX04TH5MahtClN+37SyFOHlZHi5S5ub/QgiRWycqbfyEBi6041TRjdeA2WqucJa
+ C4a8ceyRIQryeZ1/3MogwIm97vSrOIQLcRIuFQ9kgmTYExJQbTkAGL6JMUlwSLyZgwrn
+ 4ZnBv9yzJTz5eANTDKLSeHbBlg5EsjeMUmv5RkZQXPzezI51lKDpefQafMBggAl0Mge7
+ oszw==
+X-Gm-Message-State: AOAM531ml/UHepQ4yUZFdkrU0WGzy+B3TI2kIZyeFWoTCLTThLUiIBDw
+ 0acT5ICFP1eanI2DTuVZLm16ng==
+X-Received: by 2002:a17:90a:880c:: with SMTP id
+ s12mr20925454pjn.66.1623699576331; 
+ Mon, 14 Jun 2021 12:39:36 -0700 (PDT)
 Received: from [192.168.1.11] (174-21-70-228.tukw.qwest.net. [174.21.70.228])
  by smtp.gmail.com with ESMTPSA id
- c15sm14298443pgt.68.2021.06.14.12.29.38
+ 125sm12905580pfg.52.2021.06.14.12.39.35
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 14 Jun 2021 12:29:38 -0700 (PDT)
-Subject: Re: [PATCH v2 11/57] target/arm: Implement MVE VLDR/VSTR
- (non-widening forms)
+ Mon, 14 Jun 2021 12:39:36 -0700 (PDT)
+Subject: Re: [PATCH v2 12/57] target/arm: Implement widening/narrowing MVE
+ VLDR/VSTR insns
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20210614151007.4545-1-peter.maydell@linaro.org>
- <20210614151007.4545-12-peter.maydell@linaro.org>
+ <20210614151007.4545-13-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <079d20d6-336e-2a95-8b3b-abe5d1604aec@linaro.org>
-Date: Mon, 14 Jun 2021 12:29:36 -0700
+Message-ID: <8d917c5a-0c50-927d-522c-9ae48db5926e@linaro.org>
+Date: Mon, 14 Jun 2021 12:39:34 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <20210614151007.4545-12-peter.maydell@linaro.org>
+In-Reply-To: <20210614151007.4545-13-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52e;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102d.google.com
 X-Spam_score_int: -25
 X-Spam_score: -2.6
 X-Spam_bar: --
@@ -126,21 +127,53 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QNd+rxMcQiwu
+X-TUID: YSkxXjHtE3Vl
 
 On 6/14/21 8:09 AM, Peter Maydell wrote:
-> Implement the forms of the MVE VLDR and VSTR insns which perform
-> non-widening loads of bytes, halfwords or words from memory into
-> vector elements of the same width (encodings T5, T6, T7).
-> 
-> (At the moment we know for MVE and M-profile in general that
-> vfp_access_check() can never return false, but we include the
-> conventional return-true-on-failure check for consistency
-> with non-M-profile translation code.)
-> 
-> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
-> ---
+> diff --git a/target/arm/mve_helper.c b/target/arm/mve_helper.c
+> index c07110a145b..7282f56b18d 100644
+> --- a/target/arm/mve_helper.c
+> +++ b/target/arm/mve_helper.c
+> @@ -168,5 +168,16 @@ DO_VSTR(vstrb, stb, 1, uint8_t)
+>   DO_VSTR(vstrh, stw, 2, uint16_t)
+>   DO_VSTR(vstrw, stl, 4, uint32_t)
+>   
+> +DO_VLDR(vldrb_sh, ldsb, 2, int16_t)
+> +DO_VLDR(vldrb_sw, ldsb, 4, int32_t)
+> +DO_VLDR(vldrb_uh, ldub, 2, uint16_t)
+> +DO_VLDR(vldrb_uw, ldub, 4, uint32_t)
+> +DO_VLDR(vldrh_sw, ldsw, 4, int32_t)
+> +DO_VLDR(vldrh_uw, lduw, 4, uint32_t)
+> +
+> +DO_VSTR(vstrb_h, stb, 2, int16_t)
+> +DO_VSTR(vstrb_w, stb, 4, int32_t)
+> +DO_VSTR(vstrh_w, stw, 4, int32_t)
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Hmm, from the previous patch,
+
+> +#define DO_VLDR(OP, LDTYPE, ESIZE, TYPE)                                \
+> +    void HELPER(mve_##OP)(CPUARMState *env, void *vd, uint32_t addr)    \
+> +    {                                                                   \
+> +        TYPE *d = vd;                                                   \
+> +        uint16_t mask = mve_element_mask(env);                          \
+> +        unsigned b, e;                                                  \
+> +        /*                                                              \
+> +         * R_SXTM allows the dest reg to become UNKNOWN for abandoned   \
+> +         * beats so we don't care if we update part of the dest and     \
+> +         * then take an exception.                                      \
+> +         */                                                             \
+> +        for (b = 0, e = 0; b < 16; b += ESIZE, e++) {                   \
+> +            if (mask & (1 << b)) {                                      \
+> +                d[H##ESIZE(e)] = cpu_##LDTYPE##_data_ra(env, addr, GETPC()); \
+> +                addr += ESIZE;                                          \
+> +            }                                                           \
+> +        }                                                               \
+> +        mve_advance_vpt(env);                                           \
+> +    }
+
+we are advancing ADDR by ESIZE, and not but the MSIZE of the memory access.
+Further, we're advancing ADDR under predication, whereas the increment should be 
+unconditional (e * mbytes).
+
 
 r~

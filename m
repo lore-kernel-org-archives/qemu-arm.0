@@ -1,99 +1,97 @@
-Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp2059146lff;
-        Mon, 14 Jun 2021 08:11:30 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxH1oQV+DpJonb9p8BnVRvozS3xC1q7Cv3TrJCYYM/uWzDXikNAU76sA/VEDRGIFH4RJVLS
-X-Received: by 2002:a05:6402:26c2:: with SMTP id x2mr17971667edd.124.1623683490488;
-        Mon, 14 Jun 2021 08:11:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623683490; cv=none;
+Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp2060165lff;
+        Mon, 14 Jun 2021 08:12:39 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxcgSBKvhiX5vIgtmNQ5HsR+i1DTjt5sm7D7JcvqAyD4ubEHs0djdn+OO0737p01+3Nys0Q
+X-Received: by 2002:a05:6402:31a2:: with SMTP id dj2mr17700998edb.206.1623683559760;
+        Mon, 14 Jun 2021 08:12:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623683559; cv=none;
         d=google.com; s=arc-20160816;
-        b=lYrRnx21aLlkI/Jl/R1e5C6b/SThBjyudnJuNfcc9ALw84udiQXJJ+bKAf1D1p+SB9
-         s41UIVbIYI+Kz51ImOweJYIYdvxlQEE7Po1ySdEBjkc9Sb2zwtwLPo2nsUSsF2YErcwZ
-         NvW5DtZiVhQo3ABVre0D6yA2lna+Sku9GNKR/4QnGih85DJ3kdlCVFFbzhnqcROwS3nu
-         z8DZkaJ7xW+jBFG5C0Ti8pHE252zZwendLZJQW/pyQ3OJyZ5C5xRRVnE0J7x+5UWOuNI
-         WSV8GCbVux2gxidau7UmYOqGTi+m0zr5k8891nJEf0YzPAp5DaTMT/sYU4odEDcnuAcg
-         dWsA==
+        b=uO58fYoEVatoq2LXE0CQ+bVuxHUpRQKdVB4opHl310L0JE5yslR07DAZGfyyFdsMVD
+         2DzrQPzSdAwTEvL1JGIgL/XV9laEALFi0grr5Kx46kbr1Tz/61rHFQv0aXJQh9j2gofl
+         X/73e3SOxlBHAygOHSXStrvIQ9WVmpLB4H2yRt/mtTUi5AJfzsyk7NaEIY1ORhFbONps
+         bgmxe3K1AUsqCKWl1eM0sitTS8HeXiGfUaPsFdndbk/u8Pd2Eimp/wRry7yriHlnZvEB
+         vNSyRwvbJ1lOLh6spk7xV0JCRhSdZv24CN3p4CJMJa599q3IpyOW5RRTyZ6608TiqfmV
+         byOg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=nzFx7YEstmUDj9FTRCU6AKUf8i/92980G2Cq4/3IzQk=;
-        b=FMqz5HNsXwwlOkt39kfJV/O18pVzIt/HIhTwdYszEJtV8j1LYDTcdjMwqirgJjDT8l
-         KhYFF3n+LNSrBwURJrKBlAzTnyKLlgSvH+lsYGlFSzSYyH7R9EZkX1iFMh03UO4jegFF
-         2+nwocMk7eXu6i+aiA+9/ale8ashbTuGyIsAVrHcj/w2zbIeBAI4M0LRFXtz07rM9q7s
-         7kKHU7lh72Ye8gCF066XxF7gRwofbUfppXORe6j0SgJvyyPAL8beRG9Xpn4rwDCcXlxD
-         iLlvVADwfeaA/2OvNzyIpguZApPZGMK/vQs6REJ+iEIgJQKPMtMwtUgsXFp4Gtu8Tutu
-         NJdw==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=/7qixvh89g9/DW4J+NVzZ6nYoyDHZqfP2LcR8cuEH5E=;
+        b=KnkhyaJWd3U3PdGsI2udcWbU7r9sSO5j6a4geYtCtbODzEbV/WSddRpEyepXBp4sdK
+         KcNzduIwaCNSXiIG6MNRDD//29f4ngCHdypIRgjTMvkXIRI09Uo9pEUaWmKbWMUFnLP/
+         MuQJa+EBPPzBoJSU5QrofU+1EbEF36IPWbMRUvvsQZDP1mKLl3uxbI4vCxDWnEbYvEix
+         h4okODIbVoDeOpslsPajlPTY0iq7Xr8kOEBn1eRL1cmZkqgquJcsviH0dgTVGsPfAXdC
+         U93OusgnsrUw53oi0Q9HOzk6cdGniB2nZ99NJP3Y1e9o0x3v48t0PFDLdRl/vsfFVA1C
+         xFXw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="wJT/fAYF";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=GuN1MELU;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g20si13480649ejz.520.2021.06.14.08.11.30
+        by mx.google.com with ESMTPS id ha1si11812689ejb.743.2021.06.14.08.12.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Jun 2021 08:11:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 14 Jun 2021 08:12:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="wJT/fAYF";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=GuN1MELU;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37306 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38970 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lsoFN-0002Hi-EK
-	for alex.bennee@linaro.org; Mon, 14 Jun 2021 11:11:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47170)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lsoGU-0003XI-N6
+	for alex.bennee@linaro.org; Mon, 14 Jun 2021 11:12:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46936)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lsoEN-0000Ka-BB
- for qemu-arm@nongnu.org; Mon, 14 Jun 2021 11:10:27 -0400
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a]:44800)
+ id 1lsoEE-000064-Ls
+ for qemu-devel@nongnu.org; Mon, 14 Jun 2021 11:10:19 -0400
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a]:45741)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lsoEC-00007D-9R
- for qemu-arm@nongnu.org; Mon, 14 Jun 2021 11:10:26 -0400
-Received: by mail-wr1-x42a.google.com with SMTP id f2so14930466wri.11
- for <qemu-arm@nongnu.org>; Mon, 14 Jun 2021 08:10:15 -0700 (PDT)
+ id 1lsoE8-0008WK-SV
+ for qemu-devel@nongnu.org; Mon, 14 Jun 2021 11:10:18 -0400
+Received: by mail-wr1-x42a.google.com with SMTP id z8so14939490wrp.12
+ for <qemu-devel@nongnu.org>; Mon, 14 Jun 2021 08:10:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=nzFx7YEstmUDj9FTRCU6AKUf8i/92980G2Cq4/3IzQk=;
- b=wJT/fAYF6htS8Hp8SR1P2+uW47C4cEnlSLwVO/Laic1l5Om5fS4AAjtuEc9wdf3Rl1
- OgRy5YmkayUjhXonc8UDIYDdLb2ameE6eCaxdd69CqqvTGzlWW5Eck7nGwVgQ7TzHMn9
- hf1odTjjoS1Q6qsl2DGGysyyus5VElAS36XLF4VJXp5IyUwwN2UadpRWGVY8Vyu+00M+
- gQIY7PGGttkC/wr0TiRo5XcSQCU6lYzXcIz0uw+tULYjJCBzvoVRov5FdjPcJ1VqxHq9
- mQ7QDQgLRluzluO8ej+Yzl3LY6Bxi1BkEg0Q6Q/2PFZq1YK0YGG3pS57g7RemStrtjsB
- 2YBw==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=/7qixvh89g9/DW4J+NVzZ6nYoyDHZqfP2LcR8cuEH5E=;
+ b=GuN1MELUrmSPZZKRkvJ1zu6mMDnRJrbfq/+XpkKHRwqxWpneI5Sr0PibJijErXV3sS
+ YgE68I/HuCJ+OZ9zoJAlLmMEJ5fHj0pZfiQRAgAnNMRw2TysYEqZYw+yZ+Gx9GMScDHQ
+ RQuJWV62mQ8Nq6ikEo9kqCJn6vedT6FXDZmvt6fDCdvlcTsip2DsdmzoQjw3yHc79qkK
+ lWsZI6oPzJ87ooUnHU87o5EMso8cqA4hj8luqOXodFDatzlOqAWHNfHqKZj0DkxtVfqY
+ jJqsM6AEClr4VVfDeJFbjuNv1l0o+4nTKBEjvZX7ho/GFU/SnxkS/9Mpo+nOoRMGO3Vb
+ a8mA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=nzFx7YEstmUDj9FTRCU6AKUf8i/92980G2Cq4/3IzQk=;
- b=Yf+PJOIBY46FWg0/YH0/0aWj3NM87h5sWEfWYvxQaGEszGZzZa8u3ClYPV0l3yv7u4
- OUQR2CG//hpns87aF8M0/No5PkuyIT7NExUvbFYyKYflLlyK8mDY6kyTNPCxEJ3snSUQ
- PczRrVRGL5k+teyu89nbYYxLUoh45eCXG1UolilJOfsSIOVft8AddmEAu5lYAGp5jya4
- XETkg6saqzCCmK+VwveW7BoJAQjFIKl+YKfsjgejjR2dWGmUuE/25Vn9RzYr/a/oZEBQ
- GUgSpAOiCqD25gtAY+itrOgzR2rHOj/Go1Homdz8rp4692hSlYxaZ/5D3jRinXa6/13E
- fOMQ==
-X-Gm-Message-State: AOAM532yhxNfLxVSpcS2QqONt8IgFpMwYLOdWiazTP7yk3/NjKhC5Dpr
- 2B7+7IrVdW32L8WX4vj0mYmpEHTSc4TcuA==
-X-Received: by 2002:a5d:6da9:: with SMTP id u9mr9961091wrs.167.1623683414409; 
- Mon, 14 Jun 2021 08:10:14 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=/7qixvh89g9/DW4J+NVzZ6nYoyDHZqfP2LcR8cuEH5E=;
+ b=ZwkPMDnmilwGfUfxmGOSwHUiWvKcvDFQ0u8hlG3hL0woYzL7OjZDqmKuOoZSjNoMJQ
+ +M1Zeyl52Pd/CtboK1U4Rahr65ZTQ2M5NsKr7t5tXyEn8G1GNpLsOuV/p40Bk7aCJY07
+ F16VO09kCbrP0nwrbUz1cuUY8Mlt05IWPSB4jkXHt1EAGaEBzkGqMdWvSp8K8WN8QE4o
+ 3C7cMqJS0dcB3LMo6tkiwouubmj4Fkk8XaCX1ivs2170DdM1sZsyOAafhRNMA85Nup3K
+ NOnBRwo7mmuhRa+CxcWXI0UVZrXsxTaHnf+T1PgjJe2lIfcCPZRjcpM/pyzDsd5xVg+r
+ 4HvQ==
+X-Gm-Message-State: AOAM5335x5ECQJBdqLQFcS7aNFFJMrNUjMxadyE2L2li84GtQC/IBAp/
+ kcyYQTMbzlwrTWi8fRHM/P2mbA==
+X-Received: by 2002:a5d:64ee:: with SMTP id g14mr14942903wri.66.1623683409808; 
+ Mon, 14 Jun 2021 08:10:09 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id b8sm20865639wmd.35.2021.06.14.08.10.13
+ by smtp.gmail.com with ESMTPSA id b8sm20865639wmd.35.2021.06.14.08.10.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 14 Jun 2021 08:10:14 -0700 (PDT)
+ Mon, 14 Jun 2021 08:10:09 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 04/57] target/arm: Add handling for PSR.ECI/ICI
-Date: Mon, 14 Jun 2021 16:09:14 +0100
-Message-Id: <20210614151007.4545-5-peter.maydell@linaro.org>
+Subject: [PATCH v2 00/57] target/arm: First slice of MVE implementation
+Date: Mon, 14 Jun 2021 16:09:10 +0100
+Message-Id: <20210614151007.4545-1-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210614151007.4545-1-peter.maydell@linaro.org>
-References: <20210614151007.4545-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
  envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42a.google.com
@@ -103,410 +101,160 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Richard Henderson <richard.henderson@linaro.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NujKM3Io5lHR
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: NTL7SO6t0dWK
 
-On A-profile, PSR bits [15:10][26:25] are always the IT state bits.
-On M-profile, some of the reserved encodings of the IT state are used
-to instead indicate partial progress through instructions that were
-interrupted partway through by an exception and can be resumed.
+This patchseries provides an initial slice of the MVE
+implementation. (MVE is "vector instructions for M-profile", also
+known as Helium).
 
-These resumable instructions fall into two categories:
+The series covers:
+ * framework for MVE decode, including infrastructure for
+   handling predication, PSR.ECI, etc
+ * tail-predication forms of low-overhead-loop insns (LCTP, WLSTP, LETP)
+ * basic (non-gather) loads and stores
+ * pretty much all the integer 2-operand vector and scalar insns
+ * most of the integer 1-operand insns
+ * a handful of other insns
+but is not (by a long way) complete MVE support, and this code
+will remain 'dead' until the enable-MVE patch eventually lands.
 
-(1) load/store multiple instructions, where these bits are called
-"ICI" and specify the register in the ldm/stm list where execution
-should resume.  (Specifically: LDM, STM, VLDM, VSTM, VLLDM, VLSTM,
-CLRM, VSCCLRM.)
+Changes v1->v2:
+ * Addressed code review comments
+ * Where some style changes were suggested and made for patches at
+   the beginning of the series I have retained the r-by tags for
+   later patches which had minor changes to follow that style:
+    - adding 'static const' for function pointer arrays
+    - using mve_check_qreg_bank()
+    - compressing the early-return-false and early-return-true
+      checks in trans functions down to fewer lines
+    - pass only ESIZE, not H, to macros in mve_helper.c
+    - adjustments to handling of QC
 
-(2) MVE instructions subject to beatwise execution, where these bits
-are called "ECI" and specify which beats in this and possibly also
-the following MVE insn have been executed.
+Patches still in need of review are:
+   04 "target/arm: Add handling for PSR.ECI/ICI"
+   07 "target/arm: Implement MVE WLSTP insn"
+   11 "target/arm: Implement MVE VLDR/VSTR (non-widening forms)"
+   13 "target/arm: Move expand_pred_b() data to translate.c" (new patch)
+   14 "target/arm: Implement MVE VCLZ"
+   17 "target/arm: Implement MVE VREV16, VREV32, VREV64"
+   19 "target/arm: Implement MVE VABS"
+   21 "tcg: Make gen_dup_i32() public" (new patch)
+   22 "target/arm: Implement MVE VDUP"
+   34 "target/arm: Implement MVE VRMLALDAVH, VRMLSLDAVH"
+   35 "target/arm: Implement MVE VADD (scalar)"
+   45 "target/arm: Implement MVE VQSHL (vector)"
+   53 "target/arm: Implement MVE VADC, VSBC"
+   55 "target/arm: Implement MVE VHCADD"
 
-There are also a few insns (LE, LETP, and BKPT) which do not use the
-ICI/ECI bits but must leave them alone.
+Nobody seemed to object when I posted v1, so I propose to land
+these via target-arm.next once they pass code review.
 
-Otherwise, we should raise an INVSTATE UsageFault for any attempt to
-execute an insn with non-zero ICI/ECI bits.
+thanks
+-- PMM
 
-So far we have been able to ignore ECI/ICI, because the architecture
-allows the IMPDEF choice of "always restart load/store multiple from
-the beginning regardless of ICI state", so the only thing we have
-been missing is that we don't raise the INVSTATE fault for bad guest
-code.  However, MVE requires that we honour ECI bits and do not
-rexecute beats of an insn that have already been executed.
+Peter Maydell (57):
+  target/arm: Provide and use H8 and H1_8 macros
+  target/arm: Enable FPSCR.QC bit for MVE
+  target/arm: Handle VPR semantics in existing code
+  target/arm: Add handling for PSR.ECI/ICI
+  target/arm: Let vfp_access_check() handle late NOCP checks
+  target/arm: Implement MVE LCTP
+  target/arm: Implement MVE WLSTP insn
+  target/arm: Implement MVE DLSTP
+  target/arm: Implement MVE LETP insn
+  target/arm: Add framework for MVE decode
+  target/arm: Implement MVE VLDR/VSTR (non-widening forms)
+  target/arm: Implement widening/narrowing MVE VLDR/VSTR insns
+  target/arm: Move expand_pred_b() data to translate.c
+  target/arm: Implement MVE VCLZ
+  target/arm: Implement MVE VCLS
+  bitops.h: Provide hswap32(), hswap64(), wswap64() swapping operations
+  target/arm: Implement MVE VREV16, VREV32, VREV64
+  target/arm: Implement MVE VMVN (register)
+  target/arm: Implement MVE VABS
+  target/arm: Implement MVE VNEG
+  tcg: Make gen_dup_i32() public
+  target/arm: Implement MVE VDUP
+  target/arm: Implement MVE VAND, VBIC, VORR, VORN, VEOR
+  target/arm: Implement MVE VADD, VSUB, VMUL
+  target/arm: Implement MVE VMULH
+  target/arm: Implement MVE VRMULH
+  target/arm: Implement MVE VMAX, VMIN
+  target/arm: Implement MVE VABD
+  target/arm: Implement MVE VHADD, VHSUB
+  target/arm: Implement MVE VMULL
+  target/arm: Implement MVE VMLALDAV
+  target/arm: Implement MVE VMLSLDAV
+  include/qemu/int128.h: Add function to create Int128 from int64_t
+  target/arm: Implement MVE VRMLALDAVH, VRMLSLDAVH
+  target/arm: Implement MVE VADD (scalar)
+  target/arm: Implement MVE VSUB, VMUL (scalar)
+  target/arm: Implement MVE VHADD, VHSUB (scalar)
+  target/arm: Implement MVE VBRSR
+  target/arm: Implement MVE VPST
+  target/arm: Implement MVE VQADD and VQSUB
+  target/arm: Implement MVE VQDMULH and VQRDMULH (scalar)
+  target/arm: Implement MVE VQDMULL scalar
+  target/arm: Implement MVE VQDMULH, VQRDMULH (vector)
+  target/arm: Implement MVE VQADD, VQSUB (vector)
+  target/arm: Implement MVE VQSHL (vector)
+  target/arm: Implement MVE VQRSHL
+  target/arm: Implement MVE VSHL insn
+  target/arm: Implmement MVE VRSHL
+  target/arm: Implement MVE VQDMLADH and VQRDMLADH
+  target/arm: Implement MVE VQDMLSDH and VQRDMLSDH
+  target/arm: Implement MVE VQDMULL (vector)
+  target/arm: Implement MVE VRHADD
+  target/arm: Implement MVE VADC, VSBC
+  target/arm: Implement MVE VCADD
+  target/arm: Implement MVE VHCADD
+  target/arm: Implement MVE VADDV
+  target/arm: Make VMOV scalar <-> gpreg beatwise for MVE
 
-Add the support in the decoder for handling ECI/ICI:
- * identify the ECI/ICI case in the CONDEXEC TB flags
- * when a load/store multiple insn succeeds, it updates the ECI/ICI
-   state (both in DisasContext and in the CPU state), and sets a flag
-   to say that the ECI/ICI state was handled
- * if we find that the insn we just decoded did not handle the
-   ECI/ICI state, we delete all the code that we just generated for
-   it and instead emit the code to raise the INVFAULT.  This allows
-   us to avoid having to update every non-MVE non-LDM/STM insn to
-   make it check for "is ECI/ICI set?".
+ include/qemu/bitops.h         |   29 +
+ include/qemu/int128.h         |   10 +
+ include/tcg/tcg.h             |    3 +
+ target/arm/helper-mve.h       |  357 ++++++++++
+ target/arm/helper.h           |    2 +
+ target/arm/internals.h        |   11 +
+ target/arm/translate-a32.h    |    4 +
+ target/arm/translate.h        |   19 +
+ target/arm/vec_internal.h     |    9 +
+ target/arm/mve.decode         |  260 ++++++++
+ target/arm/t32.decode         |   15 +-
+ target/arm/m_helper.c         |   54 +-
+ target/arm/mve_helper.c       | 1175 +++++++++++++++++++++++++++++++++
+ target/arm/sve_helper.c       |  381 ++++-------
+ target/arm/translate-m-nocp.c |   16 +-
+ target/arm/translate-mve.c    |  788 ++++++++++++++++++++++
+ target/arm/translate-vfp.c    |  142 +++-
+ target/arm/translate.c        |  300 ++++++++-
+ target/arm/vec_helper.c       |  116 +++-
+ target/arm/vfp_helper.c       |    3 +-
+ tcg/tcg-op-gvec.c             |    4 +-
+ target/arm/meson.build        |    3 +
+ 22 files changed, 3393 insertions(+), 308 deletions(-)
+ create mode 100644 target/arm/helper-mve.h
+ create mode 100644 target/arm/mve.decode
+ create mode 100644 target/arm/mve_helper.c
+ create mode 100644 target/arm/translate-mve.c
 
-We continue with our existing IMPDEF choice of not caring about the
-ICI state for the load/store multiples and simply restarting them
-from the beginning.  Because we don't allow interrupts in the middle
-of an insn, the only way we would see this state is if the guest set
-ICI manually on return from an exception handler, so it's a corner
-case which doesn't merit optimisation.
-
-ICI update for LDM/STM is simple -- it always zeroes the state.  ECI
-update for MVE beatwise insns will be a little more complex, since
-the ECI state may include information for the following insn.
-
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-v1->v2: minor changes as suggested by rth
----
- target/arm/translate-a32.h    |   1 +
- target/arm/translate.h        |   9 +++
- target/arm/translate-m-nocp.c |  11 ++++
- target/arm/translate-vfp.c    |   6 ++
- target/arm/translate.c        | 111 ++++++++++++++++++++++++++++++++--
- 5 files changed, 133 insertions(+), 5 deletions(-)
-
-diff --git a/target/arm/translate-a32.h b/target/arm/translate-a32.h
-index c997f4e3216..c946ac440ce 100644
---- a/target/arm/translate-a32.h
-+++ b/target/arm/translate-a32.h
-@@ -44,6 +44,7 @@ long vfp_reg_offset(bool dp, unsigned reg);
- long neon_full_reg_offset(unsigned reg);
- long neon_element_offset(int reg, int element, MemOp memop);
- void gen_rev16(TCGv_i32 dest, TCGv_i32 var);
-+void clear_eci_state(DisasContext *s);
- 
- static inline TCGv_i32 load_cpu_offset(int offset)
- {
-diff --git a/target/arm/translate.h b/target/arm/translate.h
-index 12c28b0d32c..2821b325e33 100644
---- a/target/arm/translate.h
-+++ b/target/arm/translate.h
-@@ -21,6 +21,15 @@ typedef struct DisasContext {
-     /* Thumb-2 conditional execution bits.  */
-     int condexec_mask;
-     int condexec_cond;
-+    /* M-profile ECI/ICI exception-continuable instruction state */
-+    int eci;
-+    /*
-+     * trans_ functions for insns which are continuable should set this true
-+     * after decode (ie after any UNDEF checks)
-+     */
-+    bool eci_handled;
-+    /* TCG op to rewind to if this turns out to be an invalid ECI state */
-+    TCGOp *insn_eci_rewind;
-     int thumb;
-     int sctlr_b;
-     MemOp be_data;
-diff --git a/target/arm/translate-m-nocp.c b/target/arm/translate-m-nocp.c
-index 365810e582d..09b3be4ed31 100644
---- a/target/arm/translate-m-nocp.c
-+++ b/target/arm/translate-m-nocp.c
-@@ -75,8 +75,12 @@ static bool trans_VLLDM_VLSTM(DisasContext *s, arg_VLLDM_VLSTM *a)
-         unallocated_encoding(s);
-         return true;
-     }
-+
-+    s->eci_handled = true;
-+
-     /* If no fpu, NOP. */
-     if (!dc_isar_feature(aa32_vfp, s)) {
-+        clear_eci_state(s);
-         return true;
-     }
- 
-@@ -88,6 +92,8 @@ static bool trans_VLLDM_VLSTM(DisasContext *s, arg_VLLDM_VLSTM *a)
-     }
-     tcg_temp_free_i32(fptr);
- 
-+    clear_eci_state(s);
-+
-     /* End the TB, because we have updated FP control bits */
-     s->base.is_jmp = DISAS_UPDATE_EXIT;
-     return true;
-@@ -110,8 +116,11 @@ static bool trans_VSCCLRM(DisasContext *s, arg_VSCCLRM *a)
-         return true;
-     }
- 
-+    s->eci_handled = true;
-+
-     if (!dc_isar_feature(aa32_vfp_simd, s)) {
-         /* NOP if we have neither FP nor MVE */
-+        clear_eci_state(s);
-         return true;
-     }
- 
-@@ -177,6 +186,8 @@ static bool trans_VSCCLRM(DisasContext *s, arg_VSCCLRM *a)
-         TCGv_i32 z32 = tcg_const_i32(0);
-         store_cpu_field(z32, v7m.vpr);
-     }
-+
-+    clear_eci_state(s);
-     return true;
- }
- 
-diff --git a/target/arm/translate-vfp.c b/target/arm/translate-vfp.c
-index 49f44347ad9..2e12c694edc 100644
---- a/target/arm/translate-vfp.c
-+++ b/target/arm/translate-vfp.c
-@@ -1562,6 +1562,8 @@ static bool trans_VLDM_VSTM_sp(DisasContext *s, arg_VLDM_VSTM_sp *a)
-         return false;
-     }
- 
-+    s->eci_handled = true;
-+
-     if (!vfp_access_check(s)) {
-         return true;
-     }
-@@ -1611,6 +1613,7 @@ static bool trans_VLDM_VSTM_sp(DisasContext *s, arg_VLDM_VSTM_sp *a)
-         tcg_temp_free_i32(addr);
-     }
- 
-+    clear_eci_state(s);
-     return true;
- }
- 
-@@ -1645,6 +1648,8 @@ static bool trans_VLDM_VSTM_dp(DisasContext *s, arg_VLDM_VSTM_dp *a)
-         return false;
-     }
- 
-+    s->eci_handled = true;
-+
-     if (!vfp_access_check(s)) {
-         return true;
-     }
-@@ -1701,6 +1706,7 @@ static bool trans_VLDM_VSTM_dp(DisasContext *s, arg_VLDM_VSTM_dp *a)
-         tcg_temp_free_i32(addr);
-     }
- 
-+    clear_eci_state(s);
-     return true;
- }
- 
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 8e0e55c1e0f..f1c2074fa4a 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -309,6 +309,19 @@ static inline bool is_singlestepping(DisasContext *s)
-     return s->base.singlestep_enabled || s->ss_active;
- }
- 
-+void clear_eci_state(DisasContext *s)
-+{
-+    /*
-+     * Clear any ECI/ICI state: used when a load multiple/store
-+     * multiple insn executes.
-+     */
-+    if (s->eci) {
-+        TCGv_i32 tmp = tcg_const_i32(0);
-+        store_cpu_field(tmp, condexec_bits);
-+        s->eci = 0;
-+    }
-+}
-+
- static void gen_smul_dual(TCGv_i32 a, TCGv_i32 b)
- {
-     TCGv_i32 tmp1 = tcg_temp_new_i32();
-@@ -6203,6 +6216,8 @@ static bool trans_BKPT(DisasContext *s, arg_BKPT *a)
-     if (!ENABLE_ARCH_5) {
-         return false;
-     }
-+    /* BKPT is OK with ECI set and leaves it untouched */
-+    s->eci_handled = true;
-     if (arm_dc_feature(s, ARM_FEATURE_M) &&
-         semihosting_enabled() &&
- #ifndef CONFIG_USER_ONLY
-@@ -7767,6 +7782,8 @@ static bool op_stm(DisasContext *s, arg_ldst_block *a, int min_n)
-         return true;
-     }
- 
-+    s->eci_handled = true;
-+
-     addr = op_addr_block_pre(s, a, n);
-     mem_idx = get_mem_index(s);
- 
-@@ -7793,6 +7810,7 @@ static bool op_stm(DisasContext *s, arg_ldst_block *a, int min_n)
-     }
- 
-     op_addr_block_post(s, a, addr, n);
-+    clear_eci_state(s);
-     return true;
- }
- 
-@@ -7847,6 +7865,8 @@ static bool do_ldm(DisasContext *s, arg_ldst_block *a, int min_n)
-         return true;
-     }
- 
-+    s->eci_handled = true;
-+
-     addr = op_addr_block_pre(s, a, n);
-     mem_idx = get_mem_index(s);
-     loaded_base = false;
-@@ -7897,6 +7917,7 @@ static bool do_ldm(DisasContext *s, arg_ldst_block *a, int min_n)
-         /* Must exit loop to check un-masked IRQs */
-         s->base.is_jmp = DISAS_EXIT;
-     }
-+    clear_eci_state(s);
-     return true;
- }
- 
-@@ -7952,6 +7973,8 @@ static bool trans_CLRM(DisasContext *s, arg_CLRM *a)
-         return false;
-     }
- 
-+    s->eci_handled = true;
-+
-     zero = tcg_const_i32(0);
-     for (i = 0; i < 15; i++) {
-         if (extract32(a->list, i, 1)) {
-@@ -7969,6 +7992,7 @@ static bool trans_CLRM(DisasContext *s, arg_CLRM *a)
-         tcg_temp_free_i32(maskreg);
-     }
-     tcg_temp_free_i32(zero);
-+    clear_eci_state(s);
-     return true;
- }
- 
-@@ -8150,6 +8174,9 @@ static bool trans_LE(DisasContext *s, arg_LE *a)
-         return false;
-     }
- 
-+    /* LE/LETP is OK with ECI set and leaves it untouched */
-+    s->eci_handled = true;
-+
-     if (!a->f) {
-         /* Not loop-forever. If LR <= 1 this is the last loop: do nothing. */
-         arm_gen_condlabel(s);
-@@ -8775,8 +8802,28 @@ static void arm_tr_init_disas_context(DisasContextBase *dcbase, CPUState *cs)
-     dc->thumb = EX_TBFLAG_AM32(tb_flags, THUMB);
-     dc->be_data = EX_TBFLAG_ANY(tb_flags, BE_DATA) ? MO_BE : MO_LE;
-     condexec = EX_TBFLAG_AM32(tb_flags, CONDEXEC);
--    dc->condexec_mask = (condexec & 0xf) << 1;
--    dc->condexec_cond = condexec >> 4;
-+    /*
-+     * the CONDEXEC TB flags are CPSR bits [15:10][26:25]. On A-profile this
-+     * is always the IT bits. On M-profile, some of the reserved encodings
-+     * of IT are used instead to indicate either ICI or ECI, which
-+     * indicate partial progress of a restartable insn that was interrupted
-+     * partway through by an exception:
-+     *  * if CONDEXEC[3:0] != 0b0000 : CONDEXEC is IT bits
-+     *  * if CONDEXEC[3:0] == 0b0000 : CONDEXEC is ICI or ECI bits
-+     * In all cases CONDEXEC == 0 means "not in IT block or restartable
-+     * insn, behave normally".
-+     */
-+    dc->eci = dc->condexec_mask = dc->condexec_cond = 0;
-+    dc->eci_handled = false;
-+    dc->insn_eci_rewind = NULL;
-+    if (condexec & 0xf) {
-+        dc->condexec_mask = (condexec & 0xf) << 1;
-+        dc->condexec_cond = condexec >> 4;
-+    } else {
-+        if (arm_feature(env, ARM_FEATURE_M)) {
-+            dc->eci = condexec >> 4;
-+        }
-+    }
- 
-     core_mmu_idx = EX_TBFLAG_ANY(tb_flags, MMUIDX);
-     dc->mmu_idx = core_to_arm_mmu_idx(env, core_mmu_idx);
-@@ -8898,10 +8945,19 @@ static void arm_tr_tb_start(DisasContextBase *dcbase, CPUState *cpu)
- static void arm_tr_insn_start(DisasContextBase *dcbase, CPUState *cpu)
- {
-     DisasContext *dc = container_of(dcbase, DisasContext, base);
-+    /*
-+     * The ECI/ICI bits share PSR bits with the IT bits, so we
-+     * need to reconstitute the bits from the split-out DisasContext
-+     * fields here.
-+     */
-+    uint32_t condexec_bits;
- 
--    tcg_gen_insn_start(dc->base.pc_next,
--                       (dc->condexec_cond << 4) | (dc->condexec_mask >> 1),
--                       0);
-+    if (dc->eci) {
-+        condexec_bits = dc->eci << 4;
-+    } else {
-+        condexec_bits = (dc->condexec_cond << 4) | (dc->condexec_mask >> 1);
-+    }
-+    tcg_gen_insn_start(dc->base.pc_next, condexec_bits, 0);
-     dc->insn_start = tcg_last_op();
- }
- 
-@@ -9067,6 +9123,40 @@ static void thumb_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
-     }
-     dc->insn = insn;
- 
-+    if (dc->eci) {
-+        /*
-+         * For M-profile continuable instructions, ECI/ICI handling
-+         * falls into these cases:
-+         *  - interrupt-continuable instructions
-+         *     These are the various load/store multiple insns (both
-+         *     integer and fp). The ICI bits indicate the register
-+         *     where the load/store can resume. We make the IMPDEF
-+         *     choice to always do "instruction restart", ie ignore
-+         *     the ICI value and always execute the ldm/stm from the
-+         *     start. So all we need to do is zero PSR.ICI if the
-+         *     insn executes.
-+         *  - MVE instructions subject to beat-wise execution
-+         *     Here the ECI bits indicate which beats have already been
-+         *     executed, and we must honour this. Each insn of this
-+         *     type will handle it correctly. We will update PSR.ECI
-+         *     in the helper function for the insn (some ECI values
-+         *     mean that the following insn also has been partially
-+         *     executed).
-+         *  - Special cases which don't advance ECI
-+         *     The insns LE, LETP and BKPT leave the ECI/ICI state
-+         *     bits untouched.
-+         *  - all other insns (the common case)
-+         *     Non-zero ECI/ICI means an INVSTATE UsageFault.
-+         *     We place a rewind-marker here. Insns in the previous
-+         *     three categories will set a flag in the DisasContext.
-+         *     If the flag isn't set after we call disas_thumb_insn()
-+         *     or disas_thumb2_insn() then we know we have a "some other
-+         *     insn" case. We will rewind to the marker (ie throwing away
-+         *     all the generated code) and instead emit "take exception".
-+         */
-+        dc->insn_eci_rewind = tcg_last_op();
-+    }
-+
-     if (dc->condexec_mask && !thumb_insn_is_unconditional(dc, insn)) {
-         uint32_t cond = dc->condexec_cond;
- 
-@@ -9095,6 +9185,17 @@ static void thumb_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
-         }
-     }
- 
-+    if (dc->eci && !dc->eci_handled) {
-+        /*
-+         * Insn wasn't valid for ECI/ICI at all: undo what we
-+         * just generated and instead emit an exception
-+         */
-+        tcg_remove_ops_after(dc->insn_eci_rewind);
-+        dc->condjmp = 0;
-+        gen_exception_insn(dc, dc->pc_curr, EXCP_INVSTATE, syn_uncategorized(),
-+                           default_exception_el(dc));
-+    }
-+
-     arm_post_translate_insn(dc);
- 
-     /* Thumb is a variable-length ISA.  Stop translation when the next insn
 -- 
 2.20.1
 

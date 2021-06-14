@@ -1,104 +1,141 @@
-Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp2159508lff;
-        Mon, 14 Jun 2021 10:18:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzukLCyuowGfQRL9IS3ps9/b4nQ/sIg5FRlRFhe/QRX0lP774gvD6MEJgoLyi7DPc+KTnQy
-X-Received: by 2002:a05:6402:b76:: with SMTP id cb22mr18363972edb.112.1623691081626;
-        Mon, 14 Jun 2021 10:18:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623691081; cv=none;
+Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp2200634lff;
+        Mon, 14 Jun 2021 11:12:26 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw4jQkUjWQMi1NhEx5FtsBJ5nmcgRWWHlL+GKew96E42QOETzv97MLuf63gVE2L/w3ixW1P
+X-Received: by 2002:a05:6102:241a:: with SMTP id j26mr717997vsi.59.1623694346737;
+        Mon, 14 Jun 2021 11:12:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623694346; cv=none;
         d=google.com; s=arc-20160816;
-        b=kyzcX6btRXeoSDv3fp5xJxnF/rYV8ZS2t9UA5BaJd5slVXTo/5wlJqzZ8iZtDZhERD
-         PeWSR5nmGIqAQunA8ke/mRg3a8Dji7np9CQjv2j8qhN8xRI0zmaU1PdPobuP46n9WsKY
-         Vm0GS4MVOwNf/rrwkpd0eXPkHJjnhhQhYZ3v7CnQMELxKW6C5jzdWwqKbRwmM8V6eDDe
-         RHvure6Tbp6PjTEphip7UQ81CE55kUHyAfbfk9kslhya7REl0xG+ZdQCcEQQkzDJ652p
-         0bmpu7xXA0uvuDU2XIofuAYeE/RxwUUShXTY+4V1QCYNB6vPwHqDaa16DTRPOdcw+ZHb
-         1Bxg==
+        b=TMhQjVfGdOmwxoyM3HAngGkNmAI0n1UvERzykf6kLqNxUl5t3zSzVxM/qZkqUjCfLA
+         UuIKTDn5yW12tjME3Os0qm9nqkkEh+iYguvTDawmdlYrD100DAOosBJ00piuQNfLgA/8
+         0U51Ux3Ae+/KR5n3uABa4azT+nHWnDu71QmFKuNrB/ob6znxs77NB0D+zOnE5EJT2zXp
+         Yrflt2UJf3VvxGmBCJ9BZ6KZnmL0Ixa8Avo7bhPa8wDI4dI4B7cxxUBB2Uo3rGEY/yvy
+         gwD1jF+qvB73bynOQtAV8rDrVjegc3sL3gyc3AyYTeFH3HdzSUNtK9YdySN9CUQsAT/P
+         tgPg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=c6JwgpiyD4ciFifob5L4pR32YKZ0jguYL6EIHRqdYJY=;
-        b=0llFmjcuH3q+B8hsMd1ZKCmx62ibb2ze3cGhwg7ecP4nxeV+pYZwOxdf9xnB+2rTvq
-         CYvvzfykPeOwa50IE+ZIoXPVCJdocMVsqAdzCI0ZIGWG4wenrBhpox7X906qU/DP1N4s
-         DV10SsxomRRAdCL10JIx8op6oXm54LCgbXgjjtQ5w8rMh6lZz6qxjlmom/kyc+vj+gsg
-         9sDd5CeYd9kmVKBZV4BCJK0PTbdjJOIyHBsBaKg/8fehdSDvaq4/jbowFN48hqmUZybw
-         tueImJ0lC3L6CgHVNPcsKeY7zZH5ZpwZSkoRXzEsDRw9+8lMRr2ImX7fpNkKPzwqEf5a
-         7pgg==
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=UJAVGt13YiHXbCFKXfob74VcvQuzzhS6/Jd5OkEDxOY=;
+        b=X0SJlkea3ZCduUttfIxE/Hy3dB1qixlDuLndye2AzbJj9+AsmUd+BdRyTFqM5JIsDM
+         RpDAPKdALwDVQQk/+soVHHyd5rI39clTufWZhS3bBYorS/iW7RjpHIObVYsNoMd8tb2c
+         CjsE77PlEcX7I5nGCR92SdjIczYzK2tL4kGOyOvhjCx8Tu3c+OLAd4nYoL0poYPfk4yv
+         E0sVP0yD1XNwp30DwUS3Yo3ngfm8ENeuQpXGx/pzT1tAcd4uBJmbSjOSgZ4WN5d4hVHA
+         +/ARodNUrtVC1vun5Cjy23bD2cGeuOuP8sNnGQ1ppyPas2uzhkjnwfBF9waC12jjVDWt
+         X77Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ZwtAnFoX;
+       dkim=fail header.i=@ibm.com header.s=pp1 header.b=L4JUPBAs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ar4si26561ejc.706.2021.06.14.10.18.01
+        by mx.google.com with ESMTPS id w13si1077749vkw.38.2021.06.14.11.12.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Jun 2021 10:18:01 -0700 (PDT)
+        Mon, 14 Jun 2021 11:12:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ZwtAnFoX;
+       dkim=fail header.i=@ibm.com header.s=pp1 header.b=L4JUPBAs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59588 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Received: from localhost ([::1]:38066 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lsqDo-0001jd-Jb
-	for alex.bennee@linaro.org; Mon, 14 Jun 2021 13:18:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46122)
+	id 1lsr4U-0005FG-1H
+	for alex.bennee@linaro.org; Mon, 14 Jun 2021 14:12:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58020)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lsqDg-0001jN-Un
- for qemu-arm@nongnu.org; Mon, 14 Jun 2021 13:17:52 -0400
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f]:34561)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lsqDe-00034x-8O
- for qemu-arm@nongnu.org; Mon, 14 Jun 2021 13:17:52 -0400
-Received: by mail-ed1-x52f.google.com with SMTP id cb9so47574808edb.1
- for <qemu-arm@nongnu.org>; Mon, 14 Jun 2021 10:17:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=c6JwgpiyD4ciFifob5L4pR32YKZ0jguYL6EIHRqdYJY=;
- b=ZwtAnFoXIru6GLOoZAuNx8dL0/VnlBZ6ewoUsuYJLED/+z6inemsCWlzOSjinIwx5I
- 2dxcRyMrJM7Rg8xZyvWr7hmIKlg2bNiF3cr3tGxPVxs1C1eRmbxcJjzGYcgsunxaFs07
- zvCUSzMn+Oy15dZkBpxulejPgLU1aelFDvT17YlJiAVJEtDTnFYkv1NgSFDD0fnlS4OQ
- etUeO2UA+FjKmqy/u/hFqTpdzd075bRHXO3WhaSqNNG2oSOiPuxozFumeJN6L/PnXNvq
- rebi6JKr/tayrTtUcDogRLZQvwMXKhTGk8g1ktIwCXyC2P+nDsMrmYiJO7XktrODk1Lq
- Qlyw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=c6JwgpiyD4ciFifob5L4pR32YKZ0jguYL6EIHRqdYJY=;
- b=IsioStDQvAkIYjVacreOQUbLE0WzoYacrqZCiWq/zWHiy5+5qTnmCD12gPy5mLdJPJ
- 3gYY45HUJGXe5SOwvU1K3W5R+j1hR1x6WUjzs/wxak9beoWOe7PmLSEnInC5Od0eRpc1
- y1lTo0c1vDb0PF5h8FbEOaagjKnLBSIkp7ruQLpglLrjxLJjR9hknttVMljjdxNgMdpK
- iE6mNr+uaxUDq6PQAh1cZPoz6iNx3XRS4U+eDSQq/zKyZ9uLen/zu67wtPTLXTrnDg6g
- 3jzD9oaKvrlYxlsMlXhxFDuu/rQZBgRKL38VsgOTGAttofXX+opZR9KnsycUfVXMqlzf
- 5UcA==
-X-Gm-Message-State: AOAM530+1JKcLllDWPYacbmWMdWh8uYgkgTbkCbCMro1uiB8oEv+XWWj
- Nhr9O4bXoNsLYDSwd8ncY9TeuRBHrsfXGBjSJs4N3g==
-X-Received: by 2002:a05:6402:3482:: with SMTP id
- v2mr18075290edc.44.1623691068647; 
- Mon, 14 Jun 2021 10:17:48 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1lsr4F-0005EJ-0v; Mon, 14 Jun 2021 14:12:11 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:13750)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1lsr4C-0005G9-RF; Mon, 14 Jun 2021 14:12:10 -0400
+Received: from pps.filterd (m0098409.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
+ 15EI4Flk058816; Mon, 14 Jun 2021 14:12:05 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=subject : to : cc :
+ references : from : message-id : date : mime-version : in-reply-to :
+ content-type : content-transfer-encoding; s=pp1;
+ bh=UJAVGt13YiHXbCFKXfob74VcvQuzzhS6/Jd5OkEDxOY=;
+ b=L4JUPBAsrTrRijAvkKkOrXE3HV2n6OIVTUNeNqfdprfLoxNo46pgltaC2/nI4G78UX9S
+ Vwn6VVuSSSp31Pvo24239O2rBWeQeo43Nik8MdYUqxpHpwLgrFOxPHu80NVwHLYgXyxZ
+ 2ZwM6UyfBVSiQke6+OQn7X5v92VYM68nyesfLOWUkOmhyZ3P1yWmwPYLyxX8t4M5Ofof
+ sWIcw22SsrCJ9xgR5G3HUDPa7vjnbTwfMmQY4lYYL+qE6DevHC5v65+yYP867sqM7GwW
+ a0yLa3BjM2JsuY2VKmN3TWef60clQdcoq1Di+wrLVeB1tY7LAn1PTjUz29zKOaKuQXE3 HQ== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 3968u6q09u-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 14 Jun 2021 14:12:05 -0400
+Received: from m0098409.ppops.net (m0098409.ppops.net [127.0.0.1])
+ by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 15EI4Jv1059042;
+ Mon, 14 Jun 2021 14:12:05 -0400
+Received: from ppma04wdc.us.ibm.com (1a.90.2fa9.ip4.static.sl-reverse.com
+ [169.47.144.26])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 3968u6q099-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 14 Jun 2021 14:12:05 -0400
+Received: from pps.filterd (ppma04wdc.us.ibm.com [127.0.0.1])
+ by ppma04wdc.us.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 15EI2M1Z027279;
+ Mon, 14 Jun 2021 18:12:04 GMT
+Received: from b03cxnp08025.gho.boulder.ibm.com
+ (b03cxnp08025.gho.boulder.ibm.com [9.17.130.17])
+ by ppma04wdc.us.ibm.com with ESMTP id 394mj99mkm-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 14 Jun 2021 18:12:04 +0000
+Received: from b03ledav002.gho.boulder.ibm.com
+ (b03ledav002.gho.boulder.ibm.com [9.17.130.233])
+ by b03cxnp08025.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 15EIC3W622086126
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 14 Jun 2021 18:12:03 GMT
+Received: from b03ledav002.gho.boulder.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 26095136051;
+ Mon, 14 Jun 2021 18:12:03 +0000 (GMT)
+Received: from b03ledav002.gho.boulder.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id C195A136055;
+ Mon, 14 Jun 2021 18:12:02 +0000 (GMT)
+Received: from [9.47.158.152] (unknown [9.47.158.152])
+ by b03ledav002.gho.boulder.ibm.com (Postfix) with ESMTP;
+ Mon, 14 Jun 2021 18:12:02 +0000 (GMT)
+Subject: Re: [RFC PATCH V1 1/3] acpi: Eliminate all TPM related code if
+ CONFIG_TPM is not set
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ armbru@redhat.com, qemu-devel@nongnu.org, qemu-arm <qemu-arm@nongnu.org>
+References: <20210612012102.1820063-1-stefanb@linux.ibm.com>
+ <20210612012102.1820063-2-stefanb@linux.ibm.com>
+ <d097926e-5f55-e2a0-0cf9-42dfd71815d4@redhat.com>
+From: Stefan Berger <stefanb@linux.ibm.com>
+Message-ID: <06d0af74-a54e-a568-2325-03f3b23b69dd@linux.ibm.com>
+Date: Mon, 14 Jun 2021 14:12:02 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.1
 MIME-Version: 1.0
-References: <20210610183500.54207-1-xypron.glpk@gmx.de>
- <87im2kzwj8.fsf@redhat.com>
- <CAFEAcA-MUzrnKe=UzYHuMi16XBiRrkFFLWxKMF+1T3QFy7tEMA@mail.gmail.com>
- <c6e20262-9602-6bab-9458-9a9b11633b2b@gmx.de>
-In-Reply-To: <c6e20262-9602-6bab-9458-9a9b11633b2b@gmx.de>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 14 Jun 2021 18:17:13 +0100
-Message-ID: <CAFEAcA_=6RL3t2h5dZcDoqw_0U-C22B=53JamPVk5aHx0u+sJQ@mail.gmail.com>
-Subject: Re: [PATCH 1/1] hw: virt: consider hw_compat_6_0
-To: Heinrich Schuchardt <xypron.glpk@gmx.de>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+In-Reply-To: <d097926e-5f55-e2a0-0cf9-42dfd71815d4@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Content-Language: en-US
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: z7Dzakw2dZ-KWQZZn2c_tGDEN-D2Fhee
+X-Proofpoint-GUID: dKfXKzUjacNfQoIE2iOdqL9t7Zi1QMba
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.761
+ definitions=2021-06-14_12:2021-06-14,
+ 2021-06-14 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ mlxscore=0 priorityscore=1501
+ suspectscore=0 impostorscore=0 clxscore=1011 mlxlogscore=999
+ lowpriorityscore=0 spamscore=0 phishscore=0 adultscore=0 malwarescore=0
+ bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2104190000 definitions=main-2106140110
+Received-SPF: pass client-ip=148.163.156.1; envelope-from=stefanb@linux.ibm.com;
+ helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.489,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -112,28 +149,58 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Klaus Jensen <its@irrelevant.dk>, Cornelia Huck <cohuck@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
+Cc: Igor Mammedov <imammedo@redhat.com>,
+ "M : Michael S . Tsirkin" <mst@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OMHxtlx1sJZA
+X-TUID: uzEb4OFobA69
 
-On Mon, 14 Jun 2021 at 17:25, Heinrich Schuchardt <xypron.glpk@gmx.de> wrote:
-> File MAINTAINERS does not indicate for section "Virt" where the relevant
-> git repository is located.
+
+On 6/14/21 5:53 AM, Philippe Mathieu-Daudé wrote:
+> On 6/12/21 3:21 AM, Stefan Berger wrote:
+>> Cc: M: Michael S. Tsirkin <mst@redhat.com>
+>> Cc: Igor Mammedov <imammedo@redhat.com>
+>> Signed-off-by: Stefan Berger <stefanb@linux.ibm.com>
+>> ---
+>>   hw/acpi/aml-build.c      |  2 ++
+>>   hw/arm/virt-acpi-build.c |  2 ++
+>>   hw/i386/acpi-build.c     | 20 ++++++++++++++++++++
+>>   include/hw/acpi/tpm.h    |  4 ++++
+>>   stubs/tpm.c              |  4 ----
+>>   5 files changed, 28 insertions(+), 4 deletions(-)
+>>
+>> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+>> index f0035d2b4a..d5103e6d7b 100644
+>> --- a/hw/acpi/aml-build.c
+>> +++ b/hw/acpi/aml-build.c
+>> @@ -2044,6 +2044,7 @@ build_hdr:
+>>                    "FACP", tbl->len - fadt_start, f->rev, oem_id, oem_table_id);
+>>   }
+>>   
+>> +#ifdef CONFIG_TPM
+>>   /*
+>>    * build_tpm2 - Build the TPM2 table as specified in
+>>    * table 7: TCG Hardware Interface Description Table Format for TPM 2.0
+>> @@ -2101,6 +2102,7 @@ void build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog,
+>>                    (void *)(table_data->data + tpm2_start),
+>>                    "TPM2", table_data->len - tpm2_start, 4, oem_id, oem_table_id);
+>>   }
+>> +#endif
+> This makes the ARM virt machine build to fail for missing
+> the build_tpm2() symbol.
 >
-> I assume that you relate to
-> https://git.linaro.org/people/pmaydell/qemu-arm.git
-> But I can't find the patch there. Do you still have to push?
+> You probably need to split the patch in 2 and rearrange the
+> series:
 >
-> Please, add 'T:' entries in MAINTAINERS for the sub-systems that you
-> maintain.
+> 1/ hw/i386    (current 1)
+> 2/ hw/arm     (current 2)
+> 3/ hw/acpi    (current 1)
+> 4/ sysemu/tpm (current 3)
 
-I don't maintain the target-arm tree like that. I accumulate
-patches locally, and only push the git branch to a publicly
-visible location at the point where I've finalised what's going
-in my next pullrequest and I'm sending out the pullreq emails.
-So providing a T: location would be of no use to anybody, as the
-tree would always be stale.
 
--- PMM
+I took a bottom-up approach where I also eliminated all callers. So from 
+what I can see build_tpm2() symbol has been eliminated by both i386 and 
+aarch64, but ok, I will change it to a top-down approach.
+
+
+

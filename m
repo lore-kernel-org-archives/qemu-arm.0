@@ -1,206 +1,268 @@
-Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp2200634lff;
-        Mon, 14 Jun 2021 11:12:26 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw4jQkUjWQMi1NhEx5FtsBJ5nmcgRWWHlL+GKew96E42QOETzv97MLuf63gVE2L/w3ixW1P
-X-Received: by 2002:a05:6102:241a:: with SMTP id j26mr717997vsi.59.1623694346737;
-        Mon, 14 Jun 2021 11:12:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623694346; cv=none;
+Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp2217676lff;
+        Mon, 14 Jun 2021 11:35:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyHypf4jBnk0su17Y6xgAbxDSpCsulHTv8+TEuhgiFnlMtXjSjp4DLsFK/uDvYKYYjGCUjJ
+X-Received: by 2002:a05:6102:2330:: with SMTP id b16mr996427vsa.4.1623695732554;
+        Mon, 14 Jun 2021 11:35:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623695732; cv=none;
         d=google.com; s=arc-20160816;
-        b=TMhQjVfGdOmwxoyM3HAngGkNmAI0n1UvERzykf6kLqNxUl5t3zSzVxM/qZkqUjCfLA
-         UuIKTDn5yW12tjME3Os0qm9nqkkEh+iYguvTDawmdlYrD100DAOosBJ00piuQNfLgA/8
-         0U51Ux3Ae+/KR5n3uABa4azT+nHWnDu71QmFKuNrB/ob6znxs77NB0D+zOnE5EJT2zXp
-         Yrflt2UJf3VvxGmBCJ9BZ6KZnmL0Ixa8Avo7bhPa8wDI4dI4B7cxxUBB2Uo3rGEY/yvy
-         gwD1jF+qvB73bynOQtAV8rDrVjegc3sL3gyc3AyYTeFH3HdzSUNtK9YdySN9CUQsAT/P
-         tgPg==
+        b=jy+qcxT55bPp3s2LwqVk3axdwn1x6sIx2EdNC4E72OdEstUnFVU4d6neIqUrCCpR1H
+         d+zGDdD34fnyEaDzl3kK0GSuXP1WWRFHXHq8ToK4Q060d39IMGCjOxdV1FC70JqP9hIZ
+         q9506nD3m3E/HRHRHLt5HoI8jfyNCPhYYSjUxZaEBx4ntflgrybcSa2QMrqvzV0tvyVb
+         16hn/glOreztRPdWQW8rIvz4idXnC/qFG3RCYIMOvTgExynMv0LMFv/AH8wyq3RhARhe
+         fAow8exezAeuxJELztsAxUx6PwuU4IUleudr2Tr6OcCpnitc1fmGsAl0DnGNukIW40kr
+         fCBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=UJAVGt13YiHXbCFKXfob74VcvQuzzhS6/Jd5OkEDxOY=;
-        b=X0SJlkea3ZCduUttfIxE/Hy3dB1qixlDuLndye2AzbJj9+AsmUd+BdRyTFqM5JIsDM
-         RpDAPKdALwDVQQk/+soVHHyd5rI39clTufWZhS3bBYorS/iW7RjpHIObVYsNoMd8tb2c
-         CjsE77PlEcX7I5nGCR92SdjIczYzK2tL4kGOyOvhjCx8Tu3c+OLAd4nYoL0poYPfk4yv
-         E0sVP0yD1XNwp30DwUS3Yo3ngfm8ENeuQpXGx/pzT1tAcd4uBJmbSjOSgZ4WN5d4hVHA
-         +/ARodNUrtVC1vun5Cjy23bD2cGeuOuP8sNnGQ1ppyPas2uzhkjnwfBF9waC12jjVDWt
-         X77Q==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature:dkim-signature;
+        bh=i6au0zli2DyDeiA+G44i8BacBqoJD4SVV1zNjdo/H2U=;
+        b=QdLffmrsj9nBBFbFOQW22a+cxbtaSJqE6wonmmXN/cc9sRVIg5UjLf/sEPGgHm/Tyz
+         Yu7JgPuyLjcHVnx1FtWJmymhdo2gXC7TMNW7hW2pWYAhhKZ/Gc0dWz2JXQ3EHx+qIprY
+         5bkOw14CU2DmB92cdRSPzf9J3tjTKyAIy4ERUgKbXcEsXmL5i3Qd89czQUAA7/Lmi27z
+         4nWTrJbVcRxpZ2GrdgZ36JR4Sg/XlcqM32NViQQ5joYHI34hfUlm823VnZPkJQoFh1pZ
+         lvry9/+APqZ9V6GY5IMQSYvcHE2cVun2qJYOsIOPsF26cNUoTfzY9jdRFCFwUYvdUmML
+         iEpA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@ibm.com header.s=pp1 header.b=L4JUPBAs;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b="Le/otDfp";
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=Y6x1rXQA;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w13si1077749vkw.38.2021.06.14.11.12.26
+        by mx.google.com with ESMTPS id t10si7670333uaj.168.2021.06.14.11.35.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Jun 2021 11:12:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 14 Jun 2021 11:35:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@ibm.com header.s=pp1 header.b=L4JUPBAs;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Received: from localhost ([::1]:38066 helo=lists1p.gnu.org)
+       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b="Le/otDfp";
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=Y6x1rXQA;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:51682 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lsr4U-0005FG-1H
-	for alex.bennee@linaro.org; Mon, 14 Jun 2021 14:12:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58020)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lsrQp-0007DW-Mb
+	for alex.bennee@linaro.org; Mon, 14 Jun 2021 14:35:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33050)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
- id 1lsr4F-0005EJ-0v; Mon, 14 Jun 2021 14:12:11 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:13750)
+ (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
+ id 1lsrMy-0005XT-7V; Mon, 14 Jun 2021 14:31:32 -0400
+Received: from out4-smtp.messagingengine.com ([66.111.4.28]:44649)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
- id 1lsr4C-0005G9-RF; Mon, 14 Jun 2021 14:12:10 -0400
-Received: from pps.filterd (m0098409.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 15EI4Flk058816; Mon, 14 Jun 2021 14:12:05 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=subject : to : cc :
- references : from : message-id : date : mime-version : in-reply-to :
- content-type : content-transfer-encoding; s=pp1;
- bh=UJAVGt13YiHXbCFKXfob74VcvQuzzhS6/Jd5OkEDxOY=;
- b=L4JUPBAsrTrRijAvkKkOrXE3HV2n6OIVTUNeNqfdprfLoxNo46pgltaC2/nI4G78UX9S
- Vwn6VVuSSSp31Pvo24239O2rBWeQeo43Nik8MdYUqxpHpwLgrFOxPHu80NVwHLYgXyxZ
- 2ZwM6UyfBVSiQke6+OQn7X5v92VYM68nyesfLOWUkOmhyZ3P1yWmwPYLyxX8t4M5Ofof
- sWIcw22SsrCJ9xgR5G3HUDPa7vjnbTwfMmQY4lYYL+qE6DevHC5v65+yYP867sqM7GwW
- a0yLa3BjM2JsuY2VKmN3TWef60clQdcoq1Di+wrLVeB1tY7LAn1PTjUz29zKOaKuQXE3 HQ== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com with ESMTP id 3968u6q09u-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 14 Jun 2021 14:12:05 -0400
-Received: from m0098409.ppops.net (m0098409.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 15EI4Jv1059042;
- Mon, 14 Jun 2021 14:12:05 -0400
-Received: from ppma04wdc.us.ibm.com (1a.90.2fa9.ip4.static.sl-reverse.com
- [169.47.144.26])
- by mx0a-001b2d01.pphosted.com with ESMTP id 3968u6q099-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 14 Jun 2021 14:12:05 -0400
-Received: from pps.filterd (ppma04wdc.us.ibm.com [127.0.0.1])
- by ppma04wdc.us.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 15EI2M1Z027279;
- Mon, 14 Jun 2021 18:12:04 GMT
-Received: from b03cxnp08025.gho.boulder.ibm.com
- (b03cxnp08025.gho.boulder.ibm.com [9.17.130.17])
- by ppma04wdc.us.ibm.com with ESMTP id 394mj99mkm-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 14 Jun 2021 18:12:04 +0000
-Received: from b03ledav002.gho.boulder.ibm.com
- (b03ledav002.gho.boulder.ibm.com [9.17.130.233])
- by b03cxnp08025.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 15EIC3W622086126
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 14 Jun 2021 18:12:03 GMT
-Received: from b03ledav002.gho.boulder.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 26095136051;
- Mon, 14 Jun 2021 18:12:03 +0000 (GMT)
-Received: from b03ledav002.gho.boulder.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id C195A136055;
- Mon, 14 Jun 2021 18:12:02 +0000 (GMT)
-Received: from [9.47.158.152] (unknown [9.47.158.152])
- by b03ledav002.gho.boulder.ibm.com (Postfix) with ESMTP;
- Mon, 14 Jun 2021 18:12:02 +0000 (GMT)
-Subject: Re: [RFC PATCH V1 1/3] acpi: Eliminate all TPM related code if
- CONFIG_TPM is not set
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- armbru@redhat.com, qemu-devel@nongnu.org, qemu-arm <qemu-arm@nongnu.org>
-References: <20210612012102.1820063-1-stefanb@linux.ibm.com>
- <20210612012102.1820063-2-stefanb@linux.ibm.com>
- <d097926e-5f55-e2a0-0cf9-42dfd71815d4@redhat.com>
-From: Stefan Berger <stefanb@linux.ibm.com>
-Message-ID: <06d0af74-a54e-a568-2325-03f3b23b69dd@linux.ibm.com>
-Date: Mon, 14 Jun 2021 14:12:02 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
+ id 1lsrMv-0000tp-JM; Mon, 14 Jun 2021 14:31:31 -0400
+Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
+ by mailout.nyi.internal (Postfix) with ESMTP id 5D5BF5C0044;
+ Mon, 14 Jun 2021 14:31:27 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute3.internal (MEProxy); Mon, 14 Jun 2021 14:31:27 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=irrelevant.dk;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-type:in-reply-to; s=fm3; bh=i6au0zli2DyDeiA+G44i8BacBqo
+ JD4SVV1zNjdo/H2U=; b=Le/otDfp/PiTGsVpDuK9eOVA3AJh/HjxDBtCw6MA+d3
+ sCv6nkioFbreGQWH9g6GNAo4bZegCFfIT8nJsoErw02TulpAACOXA6M0OynT+MQL
+ 9o49DdOQ4iQ0aZwmoSviIP/3YTNesnwRjG7f2Kl5bnC0PJCtuQPYXnX5e9Gt53Y1
+ d1UhqSCDSx7L8jeySZM3ckMj+0+3cTC75Bp5zroDViXSCtyUGHfOFRg2oGlVr99M
+ GFygXBEZMusAZRNk0ZPzboWnBYRyhIMEabSHrG/BrwbcYZp5H96S6Tm54QWV3bA2
+ Z2PViD1Ok6PkHB3OenZVmkPlE4gxZzEcThlSwAvfuew==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=i6au0z
+ li2DyDeiA+G44i8BacBqoJD4SVV1zNjdo/H2U=; b=Y6x1rXQAGWRIzX9QVaCrSP
+ r9WdS7/OojHNXhDdp3bKFhyEERvDY9hyaBtZJGOxabrzZ328bRqEXhExzCk7bx9Y
+ b5ZisoRcsyNYRwgxLzdzNNdjSd3C3O0zl02ZgUzkcFhPXGPO/L6sJz5NgqY49nNG
+ 8btgCojeB4arm8vH+0Lnqk540430nFjdeR3xf2Js6FmWAlksvFdRPS9Kdhk7Ipds
+ BbCZAr2a4NsKVkxxgJ5/NO67k3ml6EI/YNoEtaYMvd6ZKsjez5A2PM1pvo+JSm1H
+ YJ4MC6aaep02G+skZFBwTlSFsuloxVxe3fG0NlcDQwVxZlFhWAY/qbF++NGdhlVg
+ ==
+X-ME-Sender: <xms:fqDHYHeq3DMbYOFHRtc1dn3B0iijMSXkE2nmpdhdTaZii3_SmMBZuQ>
+ <xme:fqDHYNOaxfW7C3rNu5wkl04nEBi7Nd0noTfy1FyKRRUgEebTeF0n5iexPlDIfbCu2
+ rF05zqoNrXD29dMcRQ>
+X-ME-Received: <xmr:fqDHYAjWINocMNPreGy293P59ZMx2OB0hNaczYbXvrY-X3GPicJ2_Jz7YvHkMDYROLz-x2kcndTYuo0P-W1xBpggp3fPb7vi1rEcHVdcc0vXyp6KSA>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduledrfedvhedguddvvdcutefuodetggdotefrod
+ ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
+ necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+ enucfjughrpeffhffvuffkfhggtggujgesghdtreertddtjeenucfhrhhomhepmfhlrghu
+ shculfgvnhhsvghnuceoihhtshesihhrrhgvlhgvvhgrnhhtrdgukheqnecuggftrfgrth
+ htvghrnhepjeegudffueeiteekieelkedvueelteevjeduieeludfffeejgeffhfduvddu
+ ffeknecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepih
+ htshesihhrrhgvlhgvvhgrnhhtrdgukh
+X-ME-Proxy: <xmx:fqDHYI-9ieTObdXNV9dDGzBNeLU51ROmYiOuxjCXHevANDK_cZqCBQ>
+ <xmx:fqDHYDv0Cw3JFr6tySCafUvOkzDGOseDnueuijdb9ESyr2ePOUGF8w>
+ <xmx:fqDHYHGbzhy9_Rzqyd9wcEnv-ey0lJGvKR7JcvMK9MofOJA3LHPYlw>
+ <xmx:f6DHYM9_Zyy-A4viGjuEu0LfMIxlzZxvrjjBGaca0Je_U3AERmV8Qw>
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
+ 14 Jun 2021 14:31:24 -0400 (EDT)
+Date: Mon, 14 Jun 2021 20:31:23 +0200
+From: Klaus Jensen <its@irrelevant.dk>
+To: Heinrich Schuchardt <xypron.glpk@gmx.de>
+Subject: Re: [PATCH v2 3/3] hw/nvme: default for namespace EUI-64
+Message-ID: <YMege+mwy768d/Uk@apples.localdomain>
+References: <20210611234631.81314-1-xypron.glpk@gmx.de>
+ <20210611234631.81314-4-xypron.glpk@gmx.de>
 MIME-Version: 1.0
-In-Reply-To: <d097926e-5f55-e2a0-0cf9-42dfd71815d4@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: z7Dzakw2dZ-KWQZZn2c_tGDEN-D2Fhee
-X-Proofpoint-GUID: dKfXKzUjacNfQoIE2iOdqL9t7Zi1QMba
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.761
- definitions=2021-06-14_12:2021-06-14,
- 2021-06-14 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- mlxscore=0 priorityscore=1501
- suspectscore=0 impostorscore=0 clxscore=1011 mlxlogscore=999
- lowpriorityscore=0 spamscore=0 phishscore=0 adultscore=0 malwarescore=0
- bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2104190000 definitions=main-2106140110
-Received-SPF: pass client-ip=148.163.156.1; envelope-from=stefanb@linux.ibm.com;
- helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="R21P43LCfRwuxcmB"
+Content-Disposition: inline
+In-Reply-To: <20210611234631.81314-4-xypron.glpk@gmx.de>
+Received-SPF: pass client-ip=66.111.4.28; envelope-from=its@irrelevant.dk;
+ helo=out4-smtp.messagingengine.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.489,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Igor Mammedov <imammedo@redhat.com>,
- "M : Michael S . Tsirkin" <mst@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uzEb4OFobA69
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>, qemu-block@nongnu.org,
+ Cornelia Huck <cohuck@redhat.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Keith Busch <kbusch@kernel.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: VzgSpErGqHUY
 
 
-On 6/14/21 5:53 AM, Philippe Mathieu-Daudé wrote:
-> On 6/12/21 3:21 AM, Stefan Berger wrote:
->> Cc: M: Michael S. Tsirkin <mst@redhat.com>
->> Cc: Igor Mammedov <imammedo@redhat.com>
->> Signed-off-by: Stefan Berger <stefanb@linux.ibm.com>
->> ---
->>   hw/acpi/aml-build.c      |  2 ++
->>   hw/arm/virt-acpi-build.c |  2 ++
->>   hw/i386/acpi-build.c     | 20 ++++++++++++++++++++
->>   include/hw/acpi/tpm.h    |  4 ++++
->>   stubs/tpm.c              |  4 ----
->>   5 files changed, 28 insertions(+), 4 deletions(-)
->>
->> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
->> index f0035d2b4a..d5103e6d7b 100644
->> --- a/hw/acpi/aml-build.c
->> +++ b/hw/acpi/aml-build.c
->> @@ -2044,6 +2044,7 @@ build_hdr:
->>                    "FACP", tbl->len - fadt_start, f->rev, oem_id, oem_table_id);
->>   }
->>   
->> +#ifdef CONFIG_TPM
->>   /*
->>    * build_tpm2 - Build the TPM2 table as specified in
->>    * table 7: TCG Hardware Interface Description Table Format for TPM 2.0
->> @@ -2101,6 +2102,7 @@ void build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog,
->>                    (void *)(table_data->data + tpm2_start),
->>                    "TPM2", table_data->len - tpm2_start, 4, oem_id, oem_table_id);
->>   }
->> +#endif
-> This makes the ARM virt machine build to fail for missing
-> the build_tpm2() symbol.
+--R21P43LCfRwuxcmB
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Jun 12 01:46, Heinrich Schuchardt wrote:
+>On machines with version > 6.0 replace a missing EUI-64 by a generated
+>value.
 >
-> You probably need to split the patch in 2 and rearrange the
-> series:
+>Signed-off-by: Heinrich Schuchardt <xypron.glpk@gmx.de>
+>---
+>v2:
+>	new patch
+>---
+> docs/system/nvme.rst | 2 ++
+> hw/core/machine.c    | 1 +
+> hw/nvme/ns.c         | 9 +++++++++
+> hw/nvme/nvme.h       | 2 ++
+> 4 files changed, 14 insertions(+)
 >
-> 1/ hw/i386    (current 1)
-> 2/ hw/arm     (current 2)
-> 3/ hw/acpi    (current 1)
-> 4/ sysemu/tpm (current 3)
+>diff --git a/docs/system/nvme.rst b/docs/system/nvme.rst
+>index b5f8288d7c..33a15c7dbc 100644
+>--- a/docs/system/nvme.rst
+>+++ b/docs/system/nvme.rst
+>@@ -84,6 +84,8 @@ There are a number of parameters available:
+> ``eui64``
+>   Set the EUI-64 of the namespace. This will be reported as a "IEEE Exten=
+ded
+>   Unique Identifier" descriptor in the Namespace Identification Descripto=
+r List.
+>+  Since machine type 6.1 a non-zero default value is used if the parameter
+>+  is not provided. For earlier machine types the field defaults to 0.
+>
+> ``bus``
+>   If there are more ``nvme`` devices defined, this parameter may be used =
+to
+>diff --git a/hw/core/machine.c b/hw/core/machine.c
+>index 55b9bc7817..d0e9348888 100644
+>--- a/hw/core/machine.c
+>+++ b/hw/core/machine.c
+>@@ -39,6 +39,7 @@
+> GlobalProperty hw_compat_6_0[] =3D {
+>     { "gpex-pcihost", "allow-unmapped-accesses", "false" },
+>     { "i8042", "extended-state", "false"},
+>+    { "nvme-ns", "eui64-default", "off"},
+> };
+> const size_t hw_compat_6_0_len =3D G_N_ELEMENTS(hw_compat_6_0);
+>
+>diff --git a/hw/nvme/ns.c b/hw/nvme/ns.c
+>index 45e457de6a..4275c3db63 100644
+>--- a/hw/nvme/ns.c
+>+++ b/hw/nvme/ns.c
+>@@ -56,6 +56,7 @@ void nvme_ns_init_format(NvmeNamespace *ns)
+>
+> static int nvme_ns_init(NvmeNamespace *ns, Error **errp)
+> {
+>+    static uint64_t ns_count;
+>     NvmeIdNs *id_ns =3D &ns->id_ns;
+>     uint8_t ds;
+>     uint16_t ms;
+>@@ -73,6 +74,12 @@ static int nvme_ns_init(NvmeNamespace *ns, Error **errp)
+>         id_ns->nmic |=3D NVME_NMIC_NS_SHARED;
+>     }
+>
+>+    /* Substitute a missing EUI-64 by an autogenerated one */
+>+    ++ns_count;
+>+    if (!ns->params.eui64 && ns->params.eui64_default) {
+>+        ns->params.eui64 =3D ns_count + NVME_EUI64_DEFAULT;
+>+    }
+>+
+>     /* simple copy */
+>     id_ns->mssrl =3D cpu_to_le16(ns->params.mssrl);
+>     id_ns->mcl =3D cpu_to_le32(ns->params.mcl);
+>@@ -533,6 +540,8 @@ static Property nvme_ns_props[] =3D {
+>                        params.max_open_zones, 0),
+>     DEFINE_PROP_UINT32("zoned.descr_ext_size", NvmeNamespace,
+>                        params.zd_extension_size, 0),
+>+    DEFINE_PROP_BOOL("eui64-default", NvmeNamespace, params.eui64_default,
+>+                     true),
+>     DEFINE_PROP_END_OF_LIST(),
+> };
+>
+>diff --git a/hw/nvme/nvme.h b/hw/nvme/nvme.h
+>index ac90e13d7b..3fb869731d 100644
+>--- a/hw/nvme/nvme.h
+>+++ b/hw/nvme/nvme.h
+>@@ -26,6 +26,7 @@
+>
+> #define NVME_MAX_CONTROLLERS 32
+> #define NVME_MAX_NAMESPACES  256
+>+#define NVME_EUI64_DEFAULT 0x27fed9272381cbd0UL
 
+Is there any significance to this value? Any particular reason it is not=20
+using the QEMU OUI (52:54:00)?
 
-I took a bottom-up approach where I also eliminated all callers. So from 
-what I can see build_tpm2() symbol has been eliminated by both i386 and 
-aarch64, but ok, I will change it to a top-down approach.
+>
+> typedef struct NvmeCtrl NvmeCtrl;
+> typedef struct NvmeNamespace NvmeNamespace;
+>@@ -84,6 +85,7 @@ typedef struct NvmeNamespaceParams {
+>     uint32_t nsid;
+>     QemuUUID uuid;
+>     uint64_t eui64;
+>+    bool     eui64_default;
+>
+>     uint16_t ms;
+>     uint8_t  mset;
+>--
+>2.30.2
+>
+>
 
+--=20
+One of us - No more doubt, silence or taboo about mental illness.
 
+--R21P43LCfRwuxcmB
+Content-Type: application/pgp-signature; name="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEUigzqnXi3OaiR2bATeGvMW1PDekFAmDHoHkACgkQTeGvMW1P
+Dek6XAgAmyr/88n/8p/DsVOdE/V/GyFLDt3D2mpM+fw+Lqyh3WNMBzwdTHoz8UXA
+gt29Xdo+Mg/XRAeJoCnjfL/d4i9oTM1a9d3psXwONsvWiG0As1F0bdOgPP+xzQ8+
+fyOV+2UV3cG//U+XAFKe2mbO8iontM6HeMFTjwp4CR3f47mtPdAAYhSrzAEU3VE4
+ncu59YjqKY5MSN6QztCBm29/vh3xZXSy0Swq/XJncc7c7TMo9z/9naRUPdXP6orG
+w20d4n2G7UDQAEZ4RWwR/C5hbX4Wgr5MELsIyJogQuYZ6PWaXP9wVlwVdEUIgFfR
+iCyyLm3SIuHOLWsqS+M9PiTM6cJb4A==
+=ZVF/
+-----END PGP SIGNATURE-----
+
+--R21P43LCfRwuxcmB--

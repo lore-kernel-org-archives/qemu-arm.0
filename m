@@ -1,111 +1,111 @@
-Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp2081622lff;
-        Mon, 14 Jun 2021 08:38:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyvk2bygnMSlz/3r2qiIOHrf15Wq/Qehy+vCneus74P1p4p9/Nv4+D99b6JSthD8TJqLgxR
-X-Received: by 2002:a05:6402:28a:: with SMTP id l10mr17218849edv.365.1623685091709;
-        Mon, 14 Jun 2021 08:38:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623685091; cv=none;
+Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp2081747lff;
+        Mon, 14 Jun 2021 08:38:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxGwHKuHIhYJ0B1mkAzR7K7hr6h3CSFrWwBSOU7zJ+HEvIEl2eEDSi2MSGnAyowzTBlMLsJ
+X-Received: by 2002:a1c:bb45:: with SMTP id l66mr33777650wmf.29.1623685103049;
+        Mon, 14 Jun 2021 08:38:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623685103; cv=none;
         d=google.com; s=arc-20160816;
-        b=emTbF6inboIRIepCBSukMzEU1DGtZ/IT/KHDiHkt7A7ClO07TE4fp+f2PZtS7uzh26
-         AsYk1CKBllu5twCMOaq5zgu0qSbsukDlfGdm8f2tPCc0S4aaMd9bqSKhyfw+Qvph2ZAu
-         VFWJYlwN9g4VR5YDD7OLm/4et+R7ex6DkSrME7fXRsHZM3PRO1jJ/jyD24qTV/W/UA2d
-         uof4GQCdqrvRm4tQwelGpP33G/NxENbkD9NGGZ44xXqdSB/cxRHF0H8S+4Tei2FdZQTF
-         /WL054SfcHWSt7lxLcrajj9U7oqx9t6OKoBt+RBtT7j4fOWdS6qs9ZZY4Nyf8Yv4ucCl
-         6G7g==
+        b=nvvLdKrRxGWtlk+e5pmsND5Pkkrhug4idaiJNybsJzOPYCl1aCpdtizq4attgUbWIt
+         Z/f5yNpiHKfwLfVhHB3Snse4NEUkggg/HG5JOemDvpnpVXtokOXrzZM8Itz8eIjXRWox
+         jSEnw8+YJUD8sObsrbW9uH2AhOlvhHf1SHzrCAiA81cq6HEPhCRoeYCbNbPiObelNy3C
+         baHliEkgnX5B/JNUON4dZ/pucKXGqQBqPe+dPIT1FJ9QdJ5M3jOoKIexVZm4Ecd//4je
+         +HBlPFe/KaCALkiPjwR7AlBdcbPRionaXS0dPCrJib/3qZHob4if+fGHIwVv2YsMuUyw
+         mLDg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=y2AI56BEiD77sm3umQwP5ChcdSG3BF9TV7uVZN96Qk8=;
-        b=ibKijr2XuA4LTb73j1QuKjV2VjReXs+DkMUOfO1pw/AwsDNd99rWZXN7mU9iGRmdjQ
-         S37IuDKfGAXWBGC8lEkJkHjLxipKiSnVHNguYFI8zUrYHHoZv4aKBIi9KS14/+wNc/h+
-         tV+97PfcuVwrukAeCLoz4bD2cdWWSyf9MKHDodIcvt352b2iw5LFkVbog5SFr0HnEke3
-         EOJprfB9TXvR2mugiyqo0Z0rjBlKBQ56EPFp57Ua7nrs3t/YakjrBje5kPDWWsshMDBw
-         C3CiRvzedHm1Z1lZDR+C3+KrbwCtV0zo3gpIq1+eUJd/0lRc+V3eApf1OgkP3B9xDVlb
-         3hkA==
+        bh=wcZxpRuNVl8m/x6IwxRgZ1t/II2usAztG6iFaiDT4GY=;
+        b=aq9RlbehLd9Z76PAHOVtoJjUrgzM2mCJgX0FjgH+CaF3FIiYwvWHVN3Ac22v9Lrc1z
+         0Fvklb6CE+z4K5NExzUUFosc3XgK5yBW4lUYimxjIKV84WXM5ppfe8DYv23FPMmj4/kd
+         hZnSgD/lLtvxwo7nyJeTCvogjZoQuBIN2rmHZVzyi+s3An3NJeNUYWnfTlcSzmb0Tcl5
+         ipRTlY5HeMLRitr0mWiXqoC/aFlfyJOVaLLYuziq572VdmQfDKxwZ6Gn+6LPXiM8u6EV
+         K5hCZ0MRB1TNwYz/pWxh04VjWhpBFHDsSjvpnKV6pJvh+2LCoYhsqyURcww7SI/EHKTJ
+         BppQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=k6xgaoVB;
+       dkim=pass header.i=@linaro.org header.s=google header.b=M7IO4mXk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d7si12277335ejo.445.2021.06.14.08.38.11
+        by mx.google.com with ESMTPS id d8si15854266wrc.148.2021.06.14.08.38.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Jun 2021 08:38:11 -0700 (PDT)
+        Mon, 14 Jun 2021 08:38:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=k6xgaoVB;
+       dkim=pass header.i=@linaro.org header.s=google header.b=M7IO4mXk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48006 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49122 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lsofB-000855-Ii
-	for alex.bennee@linaro.org; Mon, 14 Jun 2021 11:38:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48486)
+	id 1lsofO-0000TR-21
+	for alex.bennee@linaro.org; Mon, 14 Jun 2021 11:38:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48536)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lsoFC-0002an-3R
- for qemu-arm@nongnu.org; Mon, 14 Jun 2021 11:11:18 -0400
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a]:39704)
+ id 1lsoFD-0002hq-PX
+ for qemu-arm@nongnu.org; Mon, 14 Jun 2021 11:11:19 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332]:38690)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lsoEo-0000cw-7L
- for qemu-arm@nongnu.org; Mon, 14 Jun 2021 11:11:17 -0400
-Received: by mail-wm1-x32a.google.com with SMTP id
- l18-20020a1ced120000b029014c1adff1edso13316987wmh.4
- for <qemu-arm@nongnu.org>; Mon, 14 Jun 2021 08:10:52 -0700 (PDT)
+ id 1lsoEp-0000dp-6W
+ for qemu-arm@nongnu.org; Mon, 14 Jun 2021 11:11:19 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ t4-20020a1c77040000b029019d22d84ebdso13317979wmi.3
+ for <qemu-arm@nongnu.org>; Mon, 14 Jun 2021 08:10:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=y2AI56BEiD77sm3umQwP5ChcdSG3BF9TV7uVZN96Qk8=;
- b=k6xgaoVBnZW4I61Eavqjp1RuAikAKH2ToME+eq5uimx312hHxFpShp/mY1a7uiORDs
- tMxkn7XGoc8F0beYb3LQ74ozBXZfMEAuWDnzpWyYEv/p2RV9M7hwUsXmjCUgG/sXPvEg
- yvIsH7ibkiolwlkSh29IpbtqvsYTfNWealMxLc1MTjva55zl7ltszr85j6LZXFlRue6Q
- MaWNa4AKSiDHGhA5vEKPO2X3VrkjsBzaBJC2j8+l8GyPI52Oq67K3zRZfTdub2MGCw3s
- x9acNXEdkuasdhP2Q/oeS1qWGNxlmj4KgJDtouGIgKz93Ina9tcWjybI5cLMuFbk5TtL
- UNug==
+ bh=wcZxpRuNVl8m/x6IwxRgZ1t/II2usAztG6iFaiDT4GY=;
+ b=M7IO4mXk2uGs3jSdInMkPzQ0fPKxCO0xfVzs7+tSnqfjQUJ2YaReSEIguMvzJZewRT
+ NcoJBIlYpsyenMP4YmLDSCMBxVPk/SGRCGynbvTk0XfxUP+a0U7tGfB6Pg70MXi6u/lz
+ IUWIU3FZ1PpMxgdEOYn4vdOy3Ktyv005Sq+gLKOEom2lZCzJI04RxOoFin26StSI7F2J
+ WAOeo5pMy+NnheFFxZLKUq0wXUMyP9Vks/MKSZAVVnvJ0xv5ITwJbRMBFDok8qlOs//L
+ EPSGQTtOz7y/XwdFTcL9NoKSZ/5XILiLyWgtBGzj3eGQ/r3tgv3H7keagJcXFmPuNAKl
+ 56lA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=y2AI56BEiD77sm3umQwP5ChcdSG3BF9TV7uVZN96Qk8=;
- b=AJgS8NrPNGSbqxXQBsVcKesbX5tiStOb8Po4DrqT56xMzlLPPrJskDqB0H6ktYbLTu
- 0JwGLYDfE3hvMUdSQ1kAXC9pg5ateFf788fjG5+/ePHWkU+YKkxaJLoATDw/pyiqHxgS
- U/hKOH+iQ06uxYsPCJhVAlv7iVOje1NJUuA667Svu+WtMukbrvxmNigVyoxAr1AiIoBp
- P1SQtIaJCH/MwdlU36kF6azZVAsMDBsByY5D346ILv631b2ntNTOsfDjSIOHtIXIrVnd
- 4eV4rj6eE9ZwJKBzWmoOUcjGrXICkgCKDKaA5ObVu164E44keItErxPwsmAbqCx/qwQr
- e1+w==
-X-Gm-Message-State: AOAM5307itHnLFHz7FlERUxlrzKGj3CYfs/EkKaQMByywpD5nJrNkity
- FFMIq2WXcpYMHtktK2U1r1zc+bBtXb3OuA==
-X-Received: by 2002:a05:600c:3504:: with SMTP id
- h4mr31477562wmq.118.1623683451935; 
- Mon, 14 Jun 2021 08:10:51 -0700 (PDT)
+ bh=wcZxpRuNVl8m/x6IwxRgZ1t/II2usAztG6iFaiDT4GY=;
+ b=Dcceq+ZJFK2fP8xAgCUM4kREqpf7aGfe6vADMnbmRv4eBE4V9DuPalxlG4v7qoM8Tu
+ xAjjhnG84z0zOi8sQ99Fk5WEctzXfPASQ3PEkD4o7cViHiTHjGro7j0FYdd/SQrW6Nac
+ tI4HLqjCCH7exrtyoCrSxBZYt4M5neAbGJKP8U2XLef/9qpsfS+k8Lz3VWGL3mOjPL7T
+ hZLKbZhCsccCmlerRgfOh7UnkWUbkjII+Wqmj9S7GzqeA5vw2x0O//DfxB+2vPB/sbAV
+ ijXJpzE9pTCg9eGYYSqpLGIneB+bH/temtk8rGiAEPJOCX55HR1qvQ+xqNciYDHLxK05
+ kE4A==
+X-Gm-Message-State: AOAM533PwcI9vbWVNU4K+DnsZH6pjXma32W4wsjhrNFJA27zW1ZTD8EF
+ c9Q7S0rdjENcnIgg1mnRtigkOcdiufhP7Q==
+X-Received: by 2002:a05:600c:4e8f:: with SMTP id
+ f15mr33186764wmq.143.1623683453746; 
+ Mon, 14 Jun 2021 08:10:53 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id b8sm20865639wmd.35.2021.06.14.08.10.51
+ by smtp.gmail.com with ESMTPSA id b8sm20865639wmd.35.2021.06.14.08.10.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 14 Jun 2021 08:10:51 -0700 (PDT)
+ Mon, 14 Jun 2021 08:10:53 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 51/57] target/arm: Implement MVE VQDMULL (vector)
-Date: Mon, 14 Jun 2021 16:10:01 +0100
-Message-Id: <20210614151007.4545-52-peter.maydell@linaro.org>
+Subject: [PATCH v2 53/57] target/arm: Implement MVE VADC, VSBC
+Date: Mon, 14 Jun 2021 16:10:03 +0100
+Message-Id: <20210614151007.4545-54-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210614151007.4545-1-peter.maydell@linaro.org>
 References: <20210614151007.4545-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -121,135 +121,160 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Richard Henderson <richard.henderson@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: O2wfTr2ieQaM
+X-TUID: xkueDCuNitgj
 
-Implement the vector form of the MVE VQDMULL insn.
+Implement the MVE VADC and VSBC insns.  These perform an
+add-with-carry or subtract-with-carry of the 32-bit elements in each
+lane of the input vectors, where the carry-out of each add is the
+carry-in of the next.  The initial carry input is either 1 or is from
+FPSCR.C; the carry out at the end is written back to FPSCR.C.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper-mve.h    |  5 +++++
- target/arm/mve.decode      |  5 +++++
- target/arm/mve_helper.c    | 30 ++++++++++++++++++++++++++++++
- target/arm/translate-mve.c | 30 ++++++++++++++++++++++++++++++
- 4 files changed, 70 insertions(+)
+ target/arm/helper-mve.h    |  5 ++++
+ target/arm/mve.decode      |  5 ++++
+ target/arm/mve_helper.c    | 52 ++++++++++++++++++++++++++++++++++++++
+ target/arm/translate-mve.c | 37 +++++++++++++++++++++++++++
+ 4 files changed, 99 insertions(+)
 
 diff --git a/target/arm/helper-mve.h b/target/arm/helper-mve.h
-index 61f8082e0e3..34a46ed38ee 100644
+index 2f0cf99359a..459c8eebdd6 100644
 --- a/target/arm/helper-mve.h
 +++ b/target/arm/helper-mve.h
-@@ -233,6 +233,11 @@ DEF_HELPER_FLAGS_4(mve_vqrdmlsdhxb, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
- DEF_HELPER_FLAGS_4(mve_vqrdmlsdhxh, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
- DEF_HELPER_FLAGS_4(mve_vqrdmlsdhxw, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
+@@ -246,6 +246,11 @@ DEF_HELPER_FLAGS_4(mve_vrhaddub, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
+ DEF_HELPER_FLAGS_4(mve_vrhadduh, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
+ DEF_HELPER_FLAGS_4(mve_vrhadduw, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
  
-+DEF_HELPER_FLAGS_4(mve_vqdmullbh, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
-+DEF_HELPER_FLAGS_4(mve_vqdmullbw, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
-+DEF_HELPER_FLAGS_4(mve_vqdmullth, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
-+DEF_HELPER_FLAGS_4(mve_vqdmulltw, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++DEF_HELPER_FLAGS_4(mve_vadc, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++DEF_HELPER_FLAGS_4(mve_vadci, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++DEF_HELPER_FLAGS_4(mve_vsbc, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++DEF_HELPER_FLAGS_4(mve_vsbci, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
 +
  DEF_HELPER_FLAGS_4(mve_vadd_scalarb, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
  DEF_HELPER_FLAGS_4(mve_vadd_scalarh, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
  DEF_HELPER_FLAGS_4(mve_vadd_scalarw, TCG_CALL_NO_WG, void, env, ptr, ptr, i32)
 diff --git a/target/arm/mve.decode b/target/arm/mve.decode
-index fa4fb1b2038..3a2a7e75a3a 100644
+index 6b969902df0..79915f45d71 100644
 --- a/target/arm/mve.decode
 +++ b/target/arm/mve.decode
-@@ -39,6 +39,8 @@
- @1op_nosz .... .... .... .... .... .... .... .... &1op qd=%qd qm=%qm size=0
- @2op .... .... .. size:2 .... .... .... .... .... &2op qd=%qd qm=%qm qn=%qn
- @2op_nosz .... .... .... .... .... .... .... .... &2op qd=%qd qm=%qm qn=%qn size=0
-+@2op_sz28 .... .... .... .... .... .... .... .... &2op qd=%qd qm=%qm qn=%qn \
-+     size=%size_28
+@@ -160,6 +160,11 @@ VQDMULLT         111 . 1110 0 . 11 ... 0 ... 1 1111 . 0 . 0 ... 1 @2op_sz28
+ VRHADD_S         111 0 1111 0 . .. ... 0 ... 0 0001 . 1 . 0 ... 0 @2op
+ VRHADD_U         111 1 1111 0 . .. ... 0 ... 0 0001 . 1 . 0 ... 0 @2op
  
- # The _rev suffix indicates that Vn and Vm are reversed. This is
- # the case for shifts. In the Arm ARM these insns are documented
-@@ -152,6 +154,9 @@ VQDMLSDHX        1111 1110 0 . .. ... 0 ... 1 1110 . 0 . 0 ... 0 @2op
- VQRDMLSDH        1111 1110 0 . .. ... 0 ... 0 1110 . 0 . 0 ... 1 @2op
- VQRDMLSDHX       1111 1110 0 . .. ... 0 ... 1 1110 . 0 . 0 ... 1 @2op
- 
-+VQDMULLB         111 . 1110 0 . 11 ... 0 ... 0 1111 . 0 . 0 ... 1 @2op_sz28
-+VQDMULLT         111 . 1110 0 . 11 ... 0 ... 1 1111 . 0 . 0 ... 1 @2op_sz28
++VADC             1110 1110 0 . 11 ... 0 ... 0 1111 . 0 . 0 ... 0 @2op_nosz
++VSBC             1111 1110 0 . 11 ... 0 ... 0 1111 . 0 . 0 ... 0 @2op_nosz
++VADCI            1110 1110 0 . 11 ... 0 ... 1 1111 . 0 . 0 ... 0 @2op_nosz
++VSBCI            1111 1110 0 . 11 ... 0 ... 1 1111 . 0 . 0 ... 0 @2op_nosz
 +
  # Vector miscellaneous
  
  VCLS             1111 1111 1 . 11 .. 00 ... 0 0100 01 . 0 ... 0 @1op
 diff --git a/target/arm/mve_helper.c b/target/arm/mve_helper.c
-index bd348f034df..7c5b36caae9 100644
+index a8ff921144d..4b941f73f05 100644
 --- a/target/arm/mve_helper.c
 +++ b/target/arm/mve_helper.c
-@@ -914,6 +914,36 @@ DO_2OP_SAT_SCALAR_L(vqdmullt_scalarh, 1, 2, int16_t, 4, int32_t, \
- DO_2OP_SAT_SCALAR_L(vqdmullt_scalarw, 1, 4, int32_t, 8, int64_t, \
-                     do_qdmullw, SATMASK32)
+@@ -552,6 +552,58 @@ DO_2OP_U(vrshlu, DO_VRSHLU)
+ DO_2OP_S(vrhadds, DO_RHADD_S)
+ DO_2OP_U(vrhaddu, DO_RHADD_U)
  
-+/*
-+ * Long saturating ops
-+ */
-+#define DO_2OP_SAT_L(OP, TOP, ESIZE, TYPE, LESIZE, LTYPE, FN, SATMASK)  \
-+    void HELPER(glue(mve_, OP))(CPUARMState *env, void *vd, void *vn,   \
-+                                void *vm)                               \
-+    {                                                                   \
-+        LTYPE *d = vd;                                                  \
-+        TYPE *n = vn, *m = vm;                                          \
-+        uint16_t mask = mve_element_mask(env);                          \
-+        unsigned le;                                                    \
-+        bool qc = false;                                                \
-+        for (le = 0; le < 16 / LESIZE; le++, mask >>= LESIZE) {         \
-+            bool sat = false;                                           \
-+            LTYPE op1 = n[H##ESIZE(le * 2 + TOP)];                      \
-+            LTYPE op2 = m[H##ESIZE(le * 2 + TOP)];                      \
-+            mergemask(&d[H##LESIZE(le)], FN(op1, op2, &sat), mask);     \
-+            qc |= sat && (mask & SATMASK);                              \
-+        }                                                               \
-+        if (qc) {                                                       \
-+            env->vfp.qc[0] = qc;                                        \
-+        }                                                               \
-+        mve_advance_vpt(env);                                           \
-+    }
-+
-+DO_2OP_SAT_L(vqdmullbh, 0, 2, int16_t, 4, int32_t, do_qdmullh, SATMASK16B)
-+DO_2OP_SAT_L(vqdmullbw, 0, 4, int32_t, 8, int64_t, do_qdmullw, SATMASK32)
-+DO_2OP_SAT_L(vqdmullth, 1, 2, int16_t, 4, int32_t, do_qdmullh, SATMASK16T)
-+DO_2OP_SAT_L(vqdmulltw, 1, 4, int32_t, 8, int64_t, do_qdmullw, SATMASK32)
-+
- static inline uint32_t do_vbrsrb(uint32_t n, uint32_t m)
- {
-     m &= 0xff;
-diff --git a/target/arm/translate-mve.c b/target/arm/translate-mve.c
-index 502ab1f1398..ca1203e650d 100644
---- a/target/arm/translate-mve.c
-+++ b/target/arm/translate-mve.c
-@@ -419,6 +419,36 @@ DO_2OP(VQDMLSDHX, vqdmlsdhx)
- DO_2OP(VQRDMLSDH, vqrdmlsdh)
- DO_2OP(VQRDMLSDHX, vqrdmlsdhx)
- 
-+static bool trans_VQDMULLB(DisasContext *s, arg_2op *a)
++static void do_vadc(CPUARMState *env, uint32_t *d, uint32_t *n, uint32_t *m,
++                    uint32_t inv, uint32_t carry_in, bool update_flags)
 +{
-+    static MVEGenTwoOpFn * const fns[] = {
-+        NULL,
-+        gen_helper_mve_vqdmullbh,
-+        gen_helper_mve_vqdmullbw,
-+        NULL,
-+    };
-+    if (a->size == MO_32 && (a->qd == a->qm || a->qd == a->qn)) {
-+        /* UNPREDICTABLE; we choose to undef */
-+        return false;
++    uint16_t mask = mve_element_mask(env);
++    unsigned e;
++
++    /* If any additions trigger, we will update flags. */
++    if (mask & 0x1111) {
++        update_flags = true;
 +    }
-+    return do_2op(s, a, fns[a->size]);
++
++    for (e = 0; e < 16 / 4; e++, mask >>= 4) {
++        uint64_t r = carry_in;
++        r += n[H4(e)];
++        r += m[H4(e)] ^ inv;
++        if (mask & 1) {
++            carry_in = r >> 32;
++        }
++        mergemask(&d[H4(e)], r, mask);
++    }
++
++    if (update_flags) {
++        /* Store C, clear NZV. */
++        env->vfp.xregs[ARM_VFP_FPSCR] &= ~FPCR_NZCV_MASK;
++        env->vfp.xregs[ARM_VFP_FPSCR] |= carry_in * FPCR_C;
++    }
++    mve_advance_vpt(env);
 +}
 +
-+static bool trans_VQDMULLT(DisasContext *s, arg_2op *a)
++void HELPER(mve_vadc)(CPUARMState *env, void *vd, void *vn, void *vm)
 +{
-+    static MVEGenTwoOpFn * const fns[] = {
-+        NULL,
-+        gen_helper_mve_vqdmullth,
-+        gen_helper_mve_vqdmulltw,
-+        NULL,
-+    };
-+    if (a->size == MO_32 && (a->qd == a->qm || a->qd == a->qn)) {
-+        /* UNPREDICTABLE; we choose to undef */
-+        return false;
++    bool carry_in = env->vfp.xregs[ARM_VFP_FPSCR] & FPCR_C;
++    do_vadc(env, vd, vn, vm, 0, carry_in, false);
++}
++
++void HELPER(mve_vsbc)(CPUARMState *env, void *vd, void *vn, void *vm)
++{
++    bool carry_in = env->vfp.xregs[ARM_VFP_FPSCR] & FPCR_C;
++    do_vadc(env, vd, vn, vm, -1, carry_in, false);
++}
++
++
++void HELPER(mve_vadci)(CPUARMState *env, void *vd, void *vn, void *vm)
++{
++    do_vadc(env, vd, vn, vm, 0, 0, true);
++}
++
++void HELPER(mve_vsbci)(CPUARMState *env, void *vd, void *vn, void *vm)
++{
++    do_vadc(env, vd, vn, vm, -1, 1, true);
++}
++
+ static inline int32_t do_sat_bhw(int64_t val, int64_t min, int64_t max, bool *s)
+ {
+     if (val > max) {
+diff --git a/target/arm/translate-mve.c b/target/arm/translate-mve.c
+index a4efb9bc3eb..c21f5afe230 100644
+--- a/target/arm/translate-mve.c
++++ b/target/arm/translate-mve.c
+@@ -451,6 +451,43 @@ static bool trans_VQDMULLT(DisasContext *s, arg_2op *a)
+     return do_2op(s, a, fns[a->size]);
+ }
+ 
++/*
++ * VADC and VSBC: these perform an add-with-carry or subtract-with-carry
++ * of the 32-bit elements in each lane of the input vectors, where the
++ * carry-out of each add is the carry-in of the next.  The initial carry
++ * input is either fixed (0 for VADCI, 1 for VSBCI) or is from FPSCR.C
++ * (for VADC and VSBC); the carry out at the end is written back to FPSCR.C.
++ * These insns are subject to beat-wise execution.  Partial execution
++ * of an I=1 (initial carry input fixed) insn which does not
++ * execute the first beat must start with the current FPSCR.NZCV
++ * value, not the fixed constant input.
++ */
++static bool trans_VADC(DisasContext *s, arg_2op *a)
++{
++    return do_2op(s, a, gen_helper_mve_vadc);
++}
++
++static bool trans_VADCI(DisasContext *s, arg_2op *a)
++{
++    if (mve_skip_first_beat(s)) {
++        return trans_VADC(s, a);
 +    }
-+    return do_2op(s, a, fns[a->size]);
++    return do_2op(s, a, gen_helper_mve_vadci);
++}
++
++static bool trans_VSBC(DisasContext *s, arg_2op *a)
++{
++    return do_2op(s, a, gen_helper_mve_vsbc);
++}
++
++static bool trans_VSBCI(DisasContext *s, arg_2op *a)
++{
++    if (mve_skip_first_beat(s)) {
++        return trans_VSBC(s, a);
++    }
++    return do_2op(s, a, gen_helper_mve_vsbci);
 +}
 +
  static bool do_2op_scalar(DisasContext *s, arg_2scalar *a,

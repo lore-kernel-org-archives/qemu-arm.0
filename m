@@ -1,103 +1,103 @@
-Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp2120365lff;
-        Mon, 14 Jun 2021 09:26:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzv+6RdL74kcWvKT7T4o0I8wb3st9yO4idHvmthShd3e9hzENkQf1AUbeGtxPHpHYF6Tgno
-X-Received: by 2002:a1f:4312:: with SMTP id q18mr17557009vka.1.1623687968295;
-        Mon, 14 Jun 2021 09:26:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623687968; cv=none;
+Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp2139746lff;
+        Mon, 14 Jun 2021 09:52:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzh1NCmCneVAoG+n3qUEtWvl1GRmYTALjrs6a1FGrAhdJB0fNrqWOV8X7U/E4qH+7V5FIos
+X-Received: by 2002:a67:1a45:: with SMTP id a66mr218372vsa.15.1623689526647;
+        Mon, 14 Jun 2021 09:52:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623689526; cv=none;
         d=google.com; s=arc-20160816;
-        b=KO2EPJ+WP8iAUvMv2XQExbP9dk7nxlfNTeLX5KVNNy0HjKx0bVFncfyNriI8YOxrc1
-         2HGVb2MjywQIzIHFOMeTm5e9M/9LALT6NfVeAJ/arGHUN3CvjLPjtby31iJ+l+WDUpoD
-         GIZAux1Z4nPo9jMxIKfVJGtNLAKJHDWpMFHG84DPkeUTPJdOJmdwfzo1bxQpybreTaNG
-         BH1MQOr+FxBzk8npfUdcfqDB5x55ZKsyRHIdsCQsJSCTdRg++VK9xKikzFIS++QZqeYB
-         r7OzaCaLP9xtv36rPQ3LHo1uxFbKWYUThfGx1gczagCeKet2Xu5p6T5vlvBcVpaikK0A
-         r24g==
+        b=FW407vx7XS3i0Ac0Z048SExknbUi1ER0QdBALQxgsu/yTvORkukEdsgxDPjsKTLu3n
+         ADIOsi2OTCmrssFGansQXi/eSk1m9RWJXBrfIO9war61mhfE9A0nyk0Yc9fgG6ltXPeK
+         AaM2SH/87Q2TuCRPt/skhY5jkJdjnvYGkSS8z2bwn47XkImIYK5HUryYWDuRkPMuZkNB
+         s8Zo2Q7w9sfvQ3v0jParxFjNPI6DXQWchTZvP3VAec4U/al5JLsOAffb6qWhDbFpM9l0
+         Lw1IkGOVgjA1iH3venFH1DNxBvL4Q0eJHoIOdV5/39k/7ub4jphAhp/oPhRwqEFZXamq
+         qatw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=JeeiKbm5oj8H4LTka1J+a1S6BjqKswMluro6Mp0UnFw=;
-        b=A9Rht8RJ5w6YuP2c4yOeMaJgy71NARJ1jWI3Lpq0Ej+44fCl/UK8hS2Xxcd0gRGMIF
-         qC0Wwk1tEwWJ/Sj1dYubM4cnPp5/VmvdCq0mIAdP7XURL3FtcCBmct1kbqM7KvziLQhM
-         4o/l7U+i9OHvivSMXbHUa6ACr/hlrqyyqhiuEsMz18EdGVowgrOtXRciL7xz7JUeFA7s
-         OoZBigR+Frg09nIRFqUIPaAYxWzNra6NKAk8r74rq9UgZUL6zNhxPJHbOtu8Y1o5VSCG
-         JFjOyIdH0SYTpKE+WW259GkdafTWQz4jsup41tUls8wWAaYfzi6hCJnC+10Hfj784qcI
-         tTiQ==
+        bh=hzDQ69WLCvBhDgDR0sKUsKnVte4XRj2k3M080QiSTNI=;
+        b=atsWJ/n0HOpmpJxvmo6YlRMG5t26rttLPvDOQDeY7mA7vGYqpPUzDCSH0VBzm2hX1r
+         jHqNPFOllfO18GT3TGgLASIMu9GglbeaCHxS+arUg7J/OtqVpqW/hp+e5ECigZi4Mr5L
+         95Hkhczz94+nEPnJ2L8Jykc5JZhfktlKTIK9Oyi3jQShvznKpYEVbHDpSgt9TeO7nq1e
+         6KvTv5OuElVBul8wgo5MMQLpaO6RIg9yQW8hh1Tpsm9cc5WNRQv0yfGiY9wEsjnyqnHN
+         c5DgpIera/hhiWbvWBTyldu7MiVyN1lk2Mzk78gqtHiYeA3nl6JUfXET2dLwRzLkpTjC
+         FCBg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmx.net header.s=badeba3b8450 header.b=THFDojAl;
+       dkim=fail header.i=@gmx.net header.s=badeba3b8450 header.b=T+xMzO7+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmx.de
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v191si2655112vkv.58.2021.06.14.09.26.08
+        by mx.google.com with ESMTPS id x12si6509645vse.398.2021.06.14.09.52.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Jun 2021 09:26:08 -0700 (PDT)
+        Mon, 14 Jun 2021 09:52:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmx.net header.s=badeba3b8450 header.b=THFDojAl;
+       dkim=fail header.i=@gmx.net header.s=badeba3b8450 header.b=T+xMzO7+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmx.de
-Received: from localhost ([::1]:48902 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42312 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lspPb-0003Wv-Iw
-	for alex.bennee@linaro.org; Mon, 14 Jun 2021 12:26:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36146)
+	id 1lspoj-0003zE-V0
+	for alex.bennee@linaro.org; Mon, 14 Jun 2021 12:52:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41572)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <xypron.glpk@gmx.de>)
- id 1lspPS-0003Ve-1L; Mon, 14 Jun 2021 12:25:58 -0400
-Received: from mout.gmx.net ([212.227.17.22]:57323)
+ id 1lspoZ-0003yx-PV; Mon, 14 Jun 2021 12:51:55 -0400
+Received: from mout.gmx.net ([212.227.17.22]:41325)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <xypron.glpk@gmx.de>)
- id 1lspPP-0003eW-5U; Mon, 14 Jun 2021 12:25:57 -0400
+ id 1lspoX-0003Vr-Oc; Mon, 14 Jun 2021 12:51:55 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1623687928;
- bh=pnpZ/N/uKQjR58yLt+ZZk9Wc3NIFk9iCLB4Mj4JEs2c=;
+ s=badeba3b8450; t=1623689505;
+ bh=Lt3NV0JNoVrxXU8gJvlc5oxu5N9ffTgCzfIClsIW2JM=;
  h=X-UI-Sender-Class:Subject:To:Cc:References:From:Date:In-Reply-To;
- b=THFDojAlJKUkUvIVq9Qxz5SWM5C+OVJmAe5M543SD83p15wiI+fEwZ6SrnfTYLgAn
- GaiPcUjU6lqox8eJrIdZ3uBPDpgwNnqtUwhlHS0OCMl0aa+IQLi0253qAuTuVsksmO
- 9X1mF30aFNIYklqllIR78ZCKnlk5/pAjLV7aeoMA=
+ b=T+xMzO7+Lw6LXXDSAsDUHvQa6DFEGIDiyz786zDg+8UhldCYfZfqTvP5nQfesSxUA
+ cK5xdzH69Er9227/NgSdKnf8wM5NZk1DcNFa3yLXXY3QvewvFrQj8E3g4mjgXQFW9y
+ t9fbXEpDUfkvJLJq1O2OKyN9EG+PeDlOv9n5Q59Y=
 X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
 Received: from [192.168.123.35] ([62.143.247.63]) by mail.gmx.net (mrgmx105
- [212.227.17.168]) with ESMTPSA (Nemesis) id 1MMGRK-1lZeMI1BH4-00JL2E; Mon, 14
- Jun 2021 18:25:28 +0200
-Subject: Re: [PATCH 1/1] hw: virt: consider hw_compat_6_0
-To: Peter Maydell <peter.maydell@linaro.org>, Cornelia Huck <cohuck@redhat.com>
-References: <20210610183500.54207-1-xypron.glpk@gmx.de>
- <87im2kzwj8.fsf@redhat.com>
- <CAFEAcA-MUzrnKe=UzYHuMi16XBiRrkFFLWxKMF+1T3QFy7tEMA@mail.gmail.com>
+ [212.227.17.168]) with ESMTPSA (Nemesis) id 1N9Mtg-1lE7oz24Si-015LLE; Mon, 14
+ Jun 2021 18:51:45 +0200
+Subject: Re: [PATCH v2 1/3] hw: virt: consider hw_compat_6_0
+To: Keith Busch <kbusch@kernel.org>, Klaus Jensen <its@irrelevant.dk>,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20210611234631.81314-1-xypron.glpk@gmx.de>
+ <20210611234631.81314-2-xypron.glpk@gmx.de>
 From: Heinrich Schuchardt <xypron.glpk@gmx.de>
-Message-ID: <c6e20262-9602-6bab-9458-9a9b11633b2b@gmx.de>
-Date: Mon, 14 Jun 2021 18:25:22 +0200
+Message-ID: <6eba1d8b-ec27-bfb6-beff-b7b1d8abd271@gmx.de>
+Date: Mon, 14 Jun 2021 18:51:44 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-MUzrnKe=UzYHuMi16XBiRrkFFLWxKMF+1T3QFy7tEMA@mail.gmail.com>
+In-Reply-To: <20210611234631.81314-2-xypron.glpk@gmx.de>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:ORFM67LTCWED4LDuGAEgh7PYr0S6ahqSPYmLVQo6YsFGJ3KylgD
- E/TVQDJrF+XIWn2rHrs7v+QBr6cvczKO1GIlPuJbkO2IiNl4D2LIyJ2dLbLyJm+DSCbokMk
- +df+UY6nwB2zahVZSZd0y5u8/TWTAdwqxrFrJw/IcJhpG0AMtUIH2At4TDvCsd1YTON9oG5
- iBHtGuB2w0Mv/cVcXOKMA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:mPnlS7FxPUM=:LzvI8dEvJMYDckG0quqmdU
- gmy09II6Qs1Y3qAhH+aMiHGAnTkLYJWU7wLzQxYx+1ziPQbMQGUaFgdQy83Hu+IPKNEu/phzR
- E7LSVAfNmjRE1fLsWLu2zC5hbwo+aHdpn2cA/3AOfYAdTxTNT996rrVm1fRbqK0yWHB2jwyY6
- s3MlwHU5chhM5DrW3tuMqPz0ko8Yhsj4XIv0AX7VDA3BDSM2m9ILXttr7Q9QkKYLLlCGsM62+
- mt/Gjb8pLu/5B/HnJzoHLshOwqph0Suh9BAIlP41d61vyCrHhjuOQYYg3thYZVdR3SraFSGh1
- RckQvUILQul6w+1OUllOphrGIPGvXCXQuPt6rSM1j9g5LSYO12D5yUvbdwNZPDDGzXTvn2S0+
- 77C7k1ORjyYiktvjL0gxxd4NHB+6a9A1n8ZGGQMg84xQj2IETkHV5n0jFz2q+7ZsftyV6qr5M
- Y48Fh2ODAjrjYXebNvPbt009sA5U2sLdp3yS+XN3gkMjeZBp4dhRm7xUALS/H7d511J1MkUJW
- nYJKAsFDQnm+AuSneXe2BkWq/VPLCiTV1+5PXkaxSCTP03JwKuwHmkBKRR6w78XOQj4Vx2k+O
- 0YQDqfDzO5yio4lKH/wDqwVm6dK4nYOzzHVDAZctRAtuLaSN/LA+sljY5pQQxRHos+XarCHmQ
- gWbysjfnpeaOuEsKFaAWuNN6Is7dGjmNbvXQ7+D2AgWkqW/95TexN19i8j3H6aGI3d0qbuFsy
- MqNsTfS6CbkN9N5epxWNosT/Vw9AKI6kWJz8tqAuE3pvJtEMIjLEODIYNkehWbJq6o0eA1dSq
- WPs0hGNuwZxtfvUqGrjaFZxZQrgbedI5PY6SBkQE1prL8Be36fQV17DUTDawANbV0FffyllKr
- TGG4sjPwN4ifncqC16O4hhQp1OcchoGMtKsDGozo/QuAWld3dFR9A04cANYKJDIRLBvDIssDA
- Wgi5doQY0d0ZTv3Bpnvj56N8s0A4KqqJRjWmSA9dbEEX9TSeRKdDAYj1q8hMt8tGugYLVBOz7
- wXaGcU5RiRmrHJwLdWSdsDQlNMdw4J4RBtF3a9vmrRhyL+h1ofCySggJ8h3Cw2ZpKnM2TWfRL
- ueLi7q2gzNXA5nNZ3BM2QMwFHWkO39qgr7v
+X-Provags-ID: V03:K1:0e7nMSuSffPtff1xaa6x6etPJ/rjryHdvWS6NvYymovJBQ3IKDY
+ SVx9af/Ua0so6tn+/m1ldSHs9WRQbJPPPSRvaSgmajFPA5Hnqjdgn+OB8fPeytU0TEfNYYM
+ wEIsPL0fI9+bBRVY1e9MuqYecY+2j4NdVC4BBUlTc7HJbuVZffZKJ/NFaeLfsyoKRWvv6Ix
+ I1hrNtDSoGETPlPRuB1Gg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:xta0+34bc+Y=:Se1eSHQZgbLyFbIcAyqFOt
+ axweqqWgYwrQ0SJ0qTxZs/o/m1N6VH29r5imZBw8AM62R6M+FHTE/DrCLnJ2q9mL0fBvNpp8x
+ Opx1BDkJ1D2BM1kZfqk+QEohQfDGNyxGF9Ne14q2zqVu1XgJAjfNYAHdXAv2Go4LPFnlS4D0F
+ ON4Thfhn3wEew7WwgI7Qc2ETj2uFQsJPB67m/3sEA5JValV5E29O7Zg+Zx7TYPKG3s7DTvrPN
+ M8nZqertLnRlodE1lR+aGTvu2f5lYDCRqXRbSyQ2L0sM8UUkA+iLWmFHlDC81gxCSmPuK7r8v
+ ExiVSGUUyo3GNjT+cufbG7ZinH46b9xV7T6eaHPLfMc9QHya4WSbymrikYLsW96MnsTVxsM02
+ iI8fY5k9oCh/mQ+WfaYK7JLcmb3w8vjNhNH9JF0SLTPMXF/43sfL/ZOk3ZMA/ciZ6K4jkFo4r
+ 7tnhZRgs8mLimrSpF8iSG2QoIuGRpXFW3MVbZUlavnzGfTMOXGxBa9PTvtgOxXWcOJtEKeVBe
+ nz10uZyegaVqBrGUwase5U4CIibtghOyoZS+iuctmIzAdq3GTnIqBuAuxjKfLlJiTi/5bXm0I
+ j9OP3gnA1+zlNjVIrppibeOGOQXPOQR1SFhr0bfSI2DvOWWDegoJ9selqm/blKR5Fv01mHPA2
+ ZhZbd/AJiVZ2d0YkqlOxi6k/eK7EfGKN5WHQABybFbO7781xOPg1RxrQW1N0NJZ3xwqGlOlPJ
+ sfIG9ns+vwxoYyoPEaQvQsIpHS75H3cCaYdZn4aMYRUzQ2UKYUW8V1ZqQB2sGmV0OTBsgNVmn
+ oJMpDJ8mrbdJjAS+552NTU+1P1whxEwQsygxiMwJ94XzgGZX5V5vJVcogz2K/E+NUX5svSfZ/
+ zPRaUuLYoXami1ef5ht3rZLmbMsFVZ9cY0Hs+IfRMK+wlepgEQtN0UWyAgdYtEE19tNWPmB8R
+ 3mhoJtRPCjIX9zo/yyr625Fak4j9HUWFSgSwlBrZWqzV2v5tPpBR9TRPxSZAhPjUxyAvhgmYa
+ m8RsVa4CpUo0Ot4cUF7m+WrfrY4YXTmZFtPq/QbyF30rjufW9RSaKgToVpIq6O8nf+f+yPYHn
+ wLFBnXmQ9LFyB48fD1P+lfiRlw5lZ8Lz8EQ
 Received-SPF: pass client-ip=212.227.17.22; envelope-from=xypron.glpk@gmx.de;
  helo=mout.gmx.net
 X-Spam_score_int: -23
@@ -119,51 +119,44 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Klaus Jensen <its@irrelevant.dk>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>
+Cc: Eduardo Habkost <ehabkost@redhat.com>, qemu-block@nongnu.org,
+ Cornelia Huck <cohuck@redhat.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jIyzwjwHNsU3
+X-TUID: o29l5gSKbCRt
 
-On 6/14/21 5:35 PM, Peter Maydell wrote:
-> On Fri, 11 Jun 2021 at 08:32, Cornelia Huck <cohuck@redhat.com> wrote:
->>
->> On Thu, Jun 10 2021, Heinrich Schuchardt <xypron.glpk@gmx.de> wrote:
->>
->>> virt-6.0 must consider hw_compat_6_0.
->>>
->>> Signed-off-by: Heinrich Schuchardt <xypron.glpk@gmx.de>
->>> ---
->>>   hw/arm/virt.c | 2 ++
->>>   1 file changed, 2 insertions(+)
->>
->> Oops, forgot that hunk.
->>
->> Fixes: da7e13c00b59 ("hw: add compat machines for 6.1")
->>
->> Reviewed-by: Cornelia Huck <cohuck@redhat.com>
+On 6/12/21 1:46 AM, Heinrich Schuchardt wrote:
+> virt-6.0 must consider hw_compat_6_0.
 >
+> Fixes: da7e13c00b59 ("hw: add compat machines for 6.1")
+> Signed-off-by: Heinrich Schuchardt <xypron.glpk@gmx.de>
+> Reviewed-by: Cornelia Huck <cohuck@redhat.com>
+
+This patch was applied to target-arm.next by Peter.
+
+> ---
+> v2:
+> 	add missing Fixes: tag
+> ---
+>   hw/arm/virt.c | 2 ++
+>   1 file changed, 2 insertions(+)
 >
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 840758666d..8bc3b408fe 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -2764,6 +2764,8 @@ DEFINE_VIRT_MACHINE_AS_LATEST(6, 1)
 >
-> Applied to target-arm.next, thanks.
-
-Thanks for accepting the patch.
-
-File MAINTAINERS does not indicate for section "Virt" where the relevant
-git repository is located.
-
-I assume that you relate to
-https://git.linaro.org/people/pmaydell/qemu-arm.git
-But I can't find the patch there. Do you still have to push?
-
-Please, add 'T:' entries in MAINTAINERS for the sub-systems that you
-maintain.
-
-Best regards
-
-Heinrich
-
+>   static void virt_machine_6_0_options(MachineClass *mc)
+>   {
+> +    virt_machine_6_1_options(mc);
+> +    compat_props_add(mc->compat_props, hw_compat_6_0, hw_compat_6_0_len=
+);
+>   }
+>   DEFINE_VIRT_MACHINE(6, 0)
 >
-> -- PMM
+> --
+> 2.30.2
 >
 

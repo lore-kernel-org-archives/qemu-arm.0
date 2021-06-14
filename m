@@ -1,103 +1,104 @@
-Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp2066068lff;
-        Mon, 14 Jun 2021 08:19:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxva6HsZf4wYb6RPHH1nWZu5Tedf6Wblw7Y+9c10hy1pWxAaXD7XNJqCmt8FDNJ1YCG+Kkh
-X-Received: by 2002:a05:600c:3594:: with SMTP id p20mr30905546wmq.52.1623683968756;
-        Mon, 14 Jun 2021 08:19:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623683968; cv=none;
+Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp2066091lff;
+        Mon, 14 Jun 2021 08:19:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzxZIwHcuBujHKCnQsNjXHcickGA3JSgJxAGBY8Ap0PzwwPpLFyvxIN0P9A+3th6p72sUss
+X-Received: by 2002:adf:ea49:: with SMTP id j9mr19429730wrn.366.1623683970188;
+        Mon, 14 Jun 2021 08:19:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623683970; cv=none;
         d=google.com; s=arc-20160816;
-        b=hL8T/vAeEaNUc1b81VGZjCTCnadoz8gB5hmNjhLsV2ADeYiVVofqripoE3UwqiaShh
-         vigNl3RU+jzeSeYoXOCOTL/L2tMyznHgMlrx/u+AeiFfrp8YSAtTu8HYOrHNR6sEeZ6H
-         Fge3yt7vZ5VB3DUV6StYZ8mhHfCPr+ApigHwyad3qTmaoGQx83fJflag71KemLmfrYIL
-         AnJnCpJFKMtIp1RoCdvbW1DCU2gQyDVWPE23+6GgBx1ICacwrxW7wo3NQd9WkSOGKKTn
-         n99lNebRNINsbmGPb+IUw3d4RdgbT8+1/bs1NEsQ6/JrZim9hz1RM4PvoiLv0UEOjCwY
-         cAAg==
+        b=b2YJdalTwKZlNIV1uN3ZewdeLXdMbfFlDP8qag6wgujZEljinjOv+HteS2Z2PHkUHV
+         9efGIJYFURBouT5F7nOcvCd5hWgez0oa4y9hguSVgigB8+2vUMrvLHwwlp/GjvtB//sp
+         +1id5uEjZp71ioa1wRqYdh8vvDjtfkJpY2EhBQGV6gzfzV9LM+iObdL170u4B8mYT68R
+         vFSGON/nOD7Fh2G0ONaNlynciCa6y46/NwFt9NkvLpeMjt5fliFIY59HH/2EpCyHrJ2H
+         4YpPl/9+26qo586ICYRE04yzy4k/+PyryOJ6rBq8ed4eTTIdkAm0QsSGU+Ast39UM9tJ
+         OV6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=etGdqOb1uW2xr0RaNdLpTFaCqymZ1zjpw7sTV4TbJRg=;
-        b=ACwQLZUb1we8rkNWf1eJ9Cs9hwAhdG/yjmHcQY28ivnllIkrT53HpfTIo8C6R4YMx/
-         jvaFWl2FDjwbNpzRzRPOQ2ULfccpsqZtCXkRZwysNFjdEZmtclGsDR7Yfj0SZBLKZOts
-         mXe/makwOCxuABS0On/gDoWlqf2SoNaXtdfnCnFhaleTaPGK+cd9wZ8/06D6yotvknLG
-         Jb2XiHufaZYnjN9Oc5BXSZy8EveD4i+TMWeIpip8SlZrTigRckVdbnVTKy3cEJVizuM7
-         o8JHatDVnzGo9WtG6NdeEntmqFyT991f/b4ge2XGlFvEn/wCcLhiUVN2s0AS7OCy47mc
-         ZEMw==
+        bh=7wu6UFnEHhsNr8f+nzfFofEjuSaGsLV/HyDj4dgtPTg=;
+        b=Xl34nlK8FOFGSamQdtOa5ibKzk1H5JZiyLOQhFQeNMwOY9f5jZdYwiG4UsIa6oKxMB
+         JFXYNlhPVR+B2zo+e6I5+tt4S7WS3NQJA86/iPiyL8uv6RY4jADxxHiur3aJs+FFL3U7
+         IKpeDJdEnY9ry8SvueEO977cSd5Y/Ha5md0euPpSRx74HMWcQr4JMP2hNK+2I0bMBYI2
+         G1YHx05BQWmY/1JK0dHfZLyYP4hO7/+2AwrgsX8l5JP+92IlFB3lM57X/zOfPAKLcMXQ
+         FKqyYlbdoK28GAZ+FFGR0k9wt4ejyh2vIGRXcHfc01PhRZV1HsXAvEtil0NgJw+6sn9F
+         mr2g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=goW30tvT;
+       dkim=pass header.i=@linaro.org header.s=google header.b=H9MKhV8O;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l16si15981414wrp.133.2021.06.14.08.19.28
+        by mx.google.com with ESMTPS id z10si23093973wmg.194.2021.06.14.08.19.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Jun 2021 08:19:28 -0700 (PDT)
+        Mon, 14 Jun 2021 08:19:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=goW30tvT;
+       dkim=pass header.i=@linaro.org header.s=google header.b=H9MKhV8O;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34422 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34636 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lsoN5-0002TO-NM
-	for alex.bennee@linaro.org; Mon, 14 Jun 2021 11:19:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47406)
+	id 1lsoN7-0002bp-7v
+	for alex.bennee@linaro.org; Mon, 14 Jun 2021 11:19:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47450)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lsoEU-0000kq-O6
- for qemu-arm@nongnu.org; Mon, 14 Jun 2021 11:10:34 -0400
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434]:46736)
+ id 1lsoEV-0000pa-TH
+ for qemu-arm@nongnu.org; Mon, 14 Jun 2021 11:10:36 -0400
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435]:44812)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lsoEI-0000Ew-B2
- for qemu-arm@nongnu.org; Mon, 14 Jun 2021 11:10:34 -0400
-Received: by mail-wr1-x434.google.com with SMTP id a11so14925861wrt.13
- for <qemu-arm@nongnu.org>; Mon, 14 Jun 2021 08:10:21 -0700 (PDT)
+ id 1lsoEM-0000Io-T8
+ for qemu-arm@nongnu.org; Mon, 14 Jun 2021 11:10:35 -0400
+Received: by mail-wr1-x435.google.com with SMTP id f2so14931031wri.11
+ for <qemu-arm@nongnu.org>; Mon, 14 Jun 2021 08:10:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=etGdqOb1uW2xr0RaNdLpTFaCqymZ1zjpw7sTV4TbJRg=;
- b=goW30tvTCr685NHLjgkI7i8gJf1MRnpp29TdsmO0z2lQW/+Y0+vBTxb3JiJOI5ZxEJ
- V1Z8HetSxy2e24UbBr+9uH0f56544/siA3peyrQ4LfaMrr3IxJRaVN2uNOuK7gq63fz/
- fmW7ci5GuxpVeiNjVRDt92fYUh/8JsEPmLjWVgo8gKe/b2n4BqVMR4A8xjW/3Ie/E2LT
- kizaKj8iGPi6lmlOwYacGqvWZkrkEgkJViNeUTr0eEYGiTp26gXf3PP4ZfHqPjDimhpo
- Yn8/piJEuXwrmkD9kVMA8tfxHvy2RgU3/0gTvdRQZMLEvsuU96nAlJSAWdPX6DukERKt
- uJ8w==
+ bh=7wu6UFnEHhsNr8f+nzfFofEjuSaGsLV/HyDj4dgtPTg=;
+ b=H9MKhV8OWRYZKMVlJlX2MXOie7jgB0nDHVjCgU5eNGrjzwVnuT/6XE5fjuJ+xZtolR
+ XidRkpjGQVx9Qsxsd0p8sRTjb0YUNqQ0rzv2Cr6Hd8O4hce+VuuDC6npK7t1rLuNlODq
+ HeZzaiYT7pHvBpSDtTs0KZGxJiUbFZOJ4GYvQK2jGOjTHxbCfGucdzD0diL0hV3HoBoM
+ l4E/wEnPcMY2u/+sZoPq6Gd8uCL1iEWQ+9c6g0cAID6Gnci9Z4rs32CJVH5nJJEYmqq9
+ rprmVTNGdx0JQMkiX/7oEgECugIOmXj1NOemOVYIhOxRlqVkQ8mbeJzeXXAay5ojIrCS
+ gfNA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=etGdqOb1uW2xr0RaNdLpTFaCqymZ1zjpw7sTV4TbJRg=;
- b=iw9dd/sPPY1b+2F3bSBNqjnVGENakIZhD0DKDNM/YoRdlt81CFpAb7uKmOrP0p65h2
- J3gwSD3tiEZp8VF2IhtUu5h3tk1WggiDW53PfhJ2MJGLXWlod0B+s0Os2qOMofK1tzXQ
- Y75M7VCMj5zpv/CRWR4yHSe5Zh82FLSqBqv7mmQpagWAxwGwD0NfgDeQuAjTmi5RmBjR
- heCkQsKZ5lhI0jcPSaaPy/NhLyQNbHEI6tk8e1xcRdgXp2ANbcPLl4dTwBx//wXY8m2Q
- IDdqSgZbCmzervmCCXYlQ8cPxhBhlPABtQ91t5lOGCsWSHebEqsLFgKvtJl3VolPkEbd
- jplw==
-X-Gm-Message-State: AOAM533Di/zN8jMkzDIZlHtbnc44MHCjlZDK04/ewm400LgJYpxCF+im
- vffDAFk+SwD8OCF0WGMaBaBtpTpAXwKkuA==
-X-Received: by 2002:a5d:67d2:: with SMTP id n18mr19257413wrw.158.1623683420663; 
- Mon, 14 Jun 2021 08:10:20 -0700 (PDT)
+ bh=7wu6UFnEHhsNr8f+nzfFofEjuSaGsLV/HyDj4dgtPTg=;
+ b=F5JEmlR8h0o4or7fgFT+/QbROkvP7I37gLsP4IwhV43gfYuN2YN2g1xP+95ORuUl4t
+ /YhT/HY1nqQq+7zq2lMw58UZ7hib2j7JUA5qsBjGF1QaWIE90y7rWShZYotTUgMFvyxS
+ OWAGgnj22cmDttVkQCxr9f8HFsyzavkgh2db2vB3n1CXBmFer6nOt5Oqm0YbeozEguCT
+ +W84jV+XE3qGOLfcBM4Dd8I0AyFJQaidR+EKv1g7rF90Sv+DB8vYG1S0ALDM81Vq469r
+ xsjchp0lnvGCz/0tsGRKSfmgXCjd4R2olga9hAYXHVz1Jakvuz2IhQQWrEKKeBPiuIF4
+ 6uzg==
+X-Gm-Message-State: AOAM5311ZJwsCoyX8z7+mupqUw0pLlxdBSK+WJ7XnMFDqKoTQFG0lDfp
+ 5f4smF24WbOlW1MiGeH/2R4uFIPFwq8SPg==
+X-Received: by 2002:a5d:6147:: with SMTP id y7mr19308802wrt.418.1623683424540; 
+ Mon, 14 Jun 2021 08:10:24 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id b8sm20865639wmd.35.2021.06.14.08.10.19
+ by smtp.gmail.com with ESMTPSA id b8sm20865639wmd.35.2021.06.14.08.10.23
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 14 Jun 2021 08:10:20 -0700 (PDT)
+ Mon, 14 Jun 2021 08:10:24 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 11/57] target/arm: Implement MVE VLDR/VSTR (non-widening
- forms)
-Date: Mon, 14 Jun 2021 16:09:21 +0100
-Message-Id: <20210614151007.4545-12-peter.maydell@linaro.org>
+Subject: [PATCH v2 16/57] bitops.h: Provide hswap32(), hswap64(),
+ wswap64() swapping operations
+Date: Mon, 14 Jun 2021 16:09:26 +0100
+Message-Id: <20210614151007.4545-17-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210614151007.4545-1-peter.maydell@linaro.org>
 References: <20210614151007.4545-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x434.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x435.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,442 +121,99 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Richard Henderson <richard.henderson@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KuWX9a1BFqo5
+X-TUID: e4YTM8bRKxSR
 
-Implement the forms of the MVE VLDR and VSTR insns which perform
-non-widening loads of bytes, halfwords or words from memory into
-vector elements of the same width (encodings T5, T6, T7).
+Currently the ARM SVE helper code defines locally some utility
+functions for swapping 16-bit halfwords within 32-bit or 64-bit
+values and for swapping 32-bit words within 64-bit values,
+parallel to the byte-swapping bswap16/32/64 functions.
 
-(At the moment we know for MVE and M-profile in general that
-vfp_access_check() can never return false, but we include the
-conventional return-true-on-failure check for consistency
-with non-M-profile translation code.)
+We want these also for the ARM MVE code, and they're potentially
+generally useful for other targets, so move them to bitops.h.
+(We don't put them in bswap.h with the bswap* functions because
+they are implemented in terms of the rotate operations also
+defined in bitops.h, and including bitops.h from bswap.h seems
+better avoided.)
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- target/arm/{translate-mve.c => helper-mve.h} |  19 +-
- target/arm/helper.h                          |   2 +
- target/arm/internals.h                       |  11 ++
- target/arm/mve.decode                        |  22 +++
- target/arm/mve_helper.c                      | 172 +++++++++++++++++++
- target/arm/translate-mve.c                   | 119 +++++++++++++
- target/arm/meson.build                       |   1 +
- 7 files changed, 334 insertions(+), 12 deletions(-)
- copy target/arm/{translate-mve.c => helper-mve.h} (61%)
- create mode 100644 target/arm/mve_helper.c
+ include/qemu/bitops.h   | 29 +++++++++++++++++++++++++++++
+ target/arm/sve_helper.c | 20 --------------------
+ 2 files changed, 29 insertions(+), 20 deletions(-)
 
-diff --git a/target/arm/translate-mve.c b/target/arm/helper-mve.h
-similarity index 61%
-copy from target/arm/translate-mve.c
-copy to target/arm/helper-mve.h
-index e91f526a1a8..9e3b0b09afd 100644
---- a/target/arm/translate-mve.c
-+++ b/target/arm/helper-mve.h
-@@ -1,5 +1,5 @@
- /*
-- *  ARM translation: M-profile MVE instructions
-+ *  M-profile MVE specific helper definitions
-  *
-  *  Copyright (c) 2021 Linaro, Ltd.
-  *
-@@ -16,14 +16,9 @@
-  * You should have received a copy of the GNU Lesser General Public
-  * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-  */
--
--#include "qemu/osdep.h"
--#include "tcg/tcg-op.h"
--#include "tcg/tcg-op-gvec.h"
--#include "exec/exec-all.h"
--#include "exec/gen-icount.h"
--#include "translate.h"
--#include "translate-a32.h"
--
--/* Include the generated decoder */
--#include "decode-mve.c.inc"
-+DEF_HELPER_FLAGS_3(mve_vldrb, TCG_CALL_NO_WG, void, env, ptr, i32)
-+DEF_HELPER_FLAGS_3(mve_vldrh, TCG_CALL_NO_WG, void, env, ptr, i32)
-+DEF_HELPER_FLAGS_3(mve_vldrw, TCG_CALL_NO_WG, void, env, ptr, i32)
-+DEF_HELPER_FLAGS_3(mve_vstrb, TCG_CALL_NO_WG, void, env, ptr, i32)
-+DEF_HELPER_FLAGS_3(mve_vstrh, TCG_CALL_NO_WG, void, env, ptr, i32)
-+DEF_HELPER_FLAGS_3(mve_vstrw, TCG_CALL_NO_WG, void, env, ptr, i32)
-diff --git a/target/arm/helper.h b/target/arm/helper.h
-index dc6eb96d439..db87d7d5376 100644
---- a/target/arm/helper.h
-+++ b/target/arm/helper.h
-@@ -1019,3 +1019,5 @@ DEF_HELPER_FLAGS_6(gvec_bfmlal_idx, TCG_CALL_NO_RWG,
- #include "helper-a64.h"
- #include "helper-sve.h"
- #endif
-+
-+#include "helper-mve.h"
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 886db56b580..3ba86e8af81 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1202,4 +1202,15 @@ static inline uint64_t useronly_maybe_clean_ptr(uint32_t desc, uint64_t ptr)
-     return ptr;
+diff --git a/include/qemu/bitops.h b/include/qemu/bitops.h
+index a72f69fea85..03213ce952c 100644
+--- a/include/qemu/bitops.h
++++ b/include/qemu/bitops.h
+@@ -291,6 +291,35 @@ static inline uint64_t ror64(uint64_t word, unsigned int shift)
+     return (word >> shift) | (word << ((64 - shift) & 63));
  }
  
-+/* Values for M-profile PSR.ECI for MVE insns */
-+enum MVEECIState {
-+    ECI_NONE = 0, /* No completed beats */
-+    ECI_A0 = 1, /* Completed: A0 */
-+    ECI_A0A1 = 2, /* Completed: A0, A1 */
-+    /* 3 is reserved */
-+    ECI_A0A1A2 = 4, /* Completed: A0, A1, A2 */
-+    ECI_A0A1A2B0 = 5, /* Completed: A0, A1, A2, B0 */
-+    /* All other values reserved */
-+};
-+
- #endif
-diff --git a/target/arm/mve.decode b/target/arm/mve.decode
-index c8492bb5763..858a161fd7e 100644
---- a/target/arm/mve.decode
-+++ b/target/arm/mve.decode
-@@ -18,3 +18,25 @@
- #
- # This file is processed by scripts/decodetree.py
- #
-+
-+%qd 22:1 13:3
-+
-+&vldr_vstr rn qd imm p a w size l
-+
-+@vldr_vstr ....... . . . . l:1 rn:4 ... ...... imm:7 &vldr_vstr qd=%qd
-+
-+# Vector loads and stores
-+
-+# Non-widening loads/stores (P=0 W=0 is 'related encoding')
-+VLDR_VSTR        1110110 0 a:1 . 1   . .... ... 111100 .......   @vldr_vstr \
-+                 size=0 p=0 w=1
-+VLDR_VSTR        1110110 0 a:1 . 1   . .... ... 111101 .......   @vldr_vstr \
-+                 size=1 p=0 w=1
-+VLDR_VSTR        1110110 0 a:1 . 1   . .... ... 111110 .......   @vldr_vstr \
-+                 size=2 p=0 w=1
-+VLDR_VSTR        1110110 1 a:1 . w:1 . .... ... 111100 .......   @vldr_vstr \
-+                 size=0 p=1
-+VLDR_VSTR        1110110 1 a:1 . w:1 . .... ... 111101 .......   @vldr_vstr \
-+                 size=1 p=1
-+VLDR_VSTR        1110110 1 a:1 . w:1 . .... ... 111110 .......   @vldr_vstr \
-+                 size=2 p=1
-diff --git a/target/arm/mve_helper.c b/target/arm/mve_helper.c
-new file mode 100644
-index 00000000000..c07110a145b
---- /dev/null
-+++ b/target/arm/mve_helper.c
-@@ -0,0 +1,172 @@
-+/*
-+ * M-profile MVE Operations
-+ *
-+ * Copyright (c) 2021 Linaro, Ltd.
-+ *
-+ * This library is free software; you can redistribute it and/or
-+ * modify it under the terms of the GNU Lesser General Public
-+ * License as published by the Free Software Foundation; either
-+ * version 2.1 of the License, or (at your option) any later version.
-+ *
-+ * This library is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-+ * Lesser General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU Lesser General Public
-+ * License along with this library; if not, see <http://www.gnu.org/licenses/>.
++/**
++ * hswap32 - swap 16-bit halfwords within a 32-bit value
++ * @h: value to swap
 + */
-+
-+#include "qemu/osdep.h"
-+#include "cpu.h"
-+#include "internals.h"
-+#include "vec_internal.h"
-+#include "exec/helper-proto.h"
-+#include "exec/cpu_ldst.h"
-+#include "exec/exec-all.h"
-+
-+static uint16_t mve_element_mask(CPUARMState *env)
++static inline uint32_t hswap32(uint32_t h)
 +{
-+    /*
-+     * Return the mask of which elements in the MVE vector should be
-+     * updated. This is a combination of multiple things:
-+     *  (1) by default, we update every lane in the vector
-+     *  (2) VPT predication stores its state in the VPR register;
-+     *  (3) low-overhead-branch tail predication will mask out part
-+     *      the vector on the final iteration of the loop
-+     *  (4) if EPSR.ECI is set then we must execute only some beats
-+     *      of the insn
-+     * We combine all these into a 16-bit result with the same semantics
-+     * as VPR.P0: 0 to mask the lane, 1 if it is active.
-+     * 8-bit vector ops will look at all bits of the result;
-+     * 16-bit ops will look at bits 0, 2, 4, ...;
-+     * 32-bit ops will look at bits 0, 4, 8 and 12.
-+     * Compare pseudocode GetCurInstrBeat(), though that only returns
-+     * the 4-bit slice of the mask corresponding to a single beat.
-+     */
-+    uint16_t mask = FIELD_EX32(env->v7m.vpr, V7M_VPR, P0);
-+
-+    if (!(env->v7m.vpr & R_V7M_VPR_MASK01_MASK)) {
-+        mask |= 0xff;
-+    }
-+    if (!(env->v7m.vpr & R_V7M_VPR_MASK23_MASK)) {
-+        mask |= 0xff00;
-+    }
-+
-+    if (env->v7m.ltpsize < 4 &&
-+        env->regs[14] <= (1 << (4 - env->v7m.ltpsize))) {
-+        /*
-+         * Tail predication active, and this is the last loop iteration.
-+         * The element size is (1 << ltpsize), and we only want to process
-+         * loopcount elements, so we want to retain the least significant
-+         * (loopcount * esize) predicate bits and zero out bits above that.
-+         */
-+        int masklen = env->regs[14] << env->v7m.ltpsize;
-+        assert(masklen <= 16);
-+        mask &= MAKE_64BIT_MASK(0, masklen);
-+    }
-+
-+    if ((env->condexec_bits & 0xf) == 0) {
-+        /*
-+         * ECI bits indicate which beats are already executed;
-+         * we handle this by effectively predicating them out.
-+         */
-+        int eci = env->condexec_bits >> 4;
-+        switch (eci) {
-+        case ECI_NONE:
-+            break;
-+        case ECI_A0:
-+            mask &= 0xfff0;
-+            break;
-+        case ECI_A0A1:
-+            mask &= 0xff00;
-+            break;
-+        case ECI_A0A1A2:
-+        case ECI_A0A1A2B0:
-+            mask &= 0xf000;
-+            break;
-+        default:
-+            g_assert_not_reached();
-+        }
-+    }
-+
-+    return mask;
++    return rol32(h, 16);
 +}
 +
-+static void mve_advance_vpt(CPUARMState *env)
++/**
++ * hswap64 - swap 16-bit halfwords within a 64-bit value
++ * @h: value to swap
++ */
++static inline uint64_t hswap64(uint64_t h)
 +{
-+    /* Advance the VPT and ECI state if necessary */
-+    uint32_t vpr = env->v7m.vpr;
-+    unsigned mask01, mask23;
-+
-+    if ((env->condexec_bits & 0xf) == 0) {
-+        env->condexec_bits = (env->condexec_bits == (ECI_A0A1A2B0 << 4)) ?
-+            (ECI_A0 << 4) : (ECI_NONE << 4);
-+    }
-+
-+    if (!(vpr & (R_V7M_VPR_MASK01_MASK | R_V7M_VPR_MASK23_MASK))) {
-+        /* VPT not enabled, nothing to do */
-+        return;
-+    }
-+
-+    mask01 = FIELD_EX32(vpr, V7M_VPR, MASK01);
-+    mask23 = FIELD_EX32(vpr, V7M_VPR, MASK23);
-+    if (mask01 > 8) {
-+        /* high bit set, but not 0b1000: invert the relevant half of P0 */
-+        vpr ^= 0xff;
-+    }
-+    if (mask23 > 8) {
-+        /* high bit set, but not 0b1000: invert the relevant half of P0 */
-+        vpr ^= 0xff00;
-+    }
-+    vpr = FIELD_DP32(vpr, V7M_VPR, MASK01, mask01 << 1);
-+    vpr = FIELD_DP32(vpr, V7M_VPR, MASK23, mask23 << 1);
-+    env->v7m.vpr = vpr;
++    uint64_t m = 0x0000ffff0000ffffull;
++    h = rol64(h, 32);
++    return ((h & m) << 16) | ((h >> 16) & m);
 +}
 +
++/**
++ * wswap64 - swap 32-bit words within a 64-bit value
++ * @h: value to swap
++ */
++static inline uint64_t wswap64(uint64_t h)
++{
++    return rol64(h, 32);
++}
 +
-+#define DO_VLDR(OP, LDTYPE, ESIZE, TYPE)                                \
-+    void HELPER(mve_##OP)(CPUARMState *env, void *vd, uint32_t addr)    \
-+    {                                                                   \
-+        TYPE *d = vd;                                                   \
-+        uint16_t mask = mve_element_mask(env);                          \
-+        unsigned b, e;                                                  \
-+        /*                                                              \
-+         * R_SXTM allows the dest reg to become UNKNOWN for abandoned   \
-+         * beats so we don't care if we update part of the dest and     \
-+         * then take an exception.                                      \
-+         */                                                             \
-+        for (b = 0, e = 0; b < 16; b += ESIZE, e++) {                   \
-+            if (mask & (1 << b)) {                                      \
-+                d[H##ESIZE(e)] = cpu_##LDTYPE##_data_ra(env, addr, GETPC()); \
-+                addr += ESIZE;                                          \
-+            }                                                           \
-+        }                                                               \
-+        mve_advance_vpt(env);                                           \
-+    }
-+
-+#define DO_VSTR(OP, STTYPE, ESIZE, TYPE)                                \
-+    void HELPER(mve_##OP)(CPUARMState *env, void *vd, uint32_t addr)    \
-+    {                                                                   \
-+        TYPE *d = vd;                                                   \
-+        uint16_t mask = mve_element_mask(env);                          \
-+        unsigned b, e;                                                  \
-+        for (b = 0, e = 0; b < 16; b += ESIZE, e++) {                   \
-+            if (mask & (1 << b)) {                                      \
-+                cpu_##STTYPE##_data_ra(env, addr, d[H##ESIZE(e)], GETPC()); \
-+                addr += ESIZE;                                          \
-+            }                                                           \
-+        }                                                               \
-+        mve_advance_vpt(env);                                           \
-+    }
-+
-+DO_VLDR(vldrb, ldub, 1, uint8_t)
-+DO_VLDR(vldrh, lduw, 2, uint16_t)
-+DO_VLDR(vldrw, ldl, 4, uint32_t)
-+
-+DO_VSTR(vstrb, stb, 1, uint8_t)
-+DO_VSTR(vstrh, stw, 2, uint16_t)
-+DO_VSTR(vstrw, stl, 4, uint32_t)
-+
-+#undef DO_VLDR
-+#undef DO_VSTR
-diff --git a/target/arm/translate-mve.c b/target/arm/translate-mve.c
-index e91f526a1a8..f98bd6d038d 100644
---- a/target/arm/translate-mve.c
-+++ b/target/arm/translate-mve.c
-@@ -27,3 +27,122 @@
+ /**
+  * extract32:
+  * @value: the value to extract the bit field from
+diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
+index 321098e2651..dab5f1d1cda 100644
+--- a/target/arm/sve_helper.c
++++ b/target/arm/sve_helper.c
+@@ -152,26 +152,6 @@ static inline uint64_t expand_pred_s(uint8_t byte)
+     return word[byte & 0x11];
+ }
  
- /* Include the generated decoder */
- #include "decode-mve.c.inc"
-+
-+typedef void MVEGenLdStFn(TCGv_ptr, TCGv_ptr, TCGv_i32);
-+
-+/* Return the offset of a Qn register (same semantics as aa32_vfp_qreg()) */
-+static inline long mve_qreg_offset(unsigned reg)
-+{
-+    return offsetof(CPUARMState, vfp.zregs[reg].d[0]);
-+}
-+
-+static TCGv_ptr mve_qreg_ptr(unsigned reg)
-+{
-+    TCGv_ptr ret = tcg_temp_new_ptr();
-+    tcg_gen_addi_ptr(ret, cpu_env, mve_qreg_offset(reg));
-+    return ret;
-+}
-+
-+static bool mve_check_qreg_bank(DisasContext *s, int qmask)
-+{
-+    /*
-+     * Check whether Qregs are in range. For v8.1M only Q0..Q7
-+     * are supported, see VFPSmallRegisterBank().
-+     */
-+    return qmask < 8;
-+}
-+
-+static bool mve_eci_check(DisasContext *s)
-+{
-+    /*
-+     * This is a beatwise insn: check that ECI is valid (not a
-+     * reserved value) and note that we are handling it.
-+     * Return true if OK, false if we generated an exception.
-+     */
-+    s->eci_handled = true;
-+    switch (s->eci) {
-+    case ECI_NONE:
-+    case ECI_A0:
-+    case ECI_A0A1:
-+    case ECI_A0A1A2:
-+    case ECI_A0A1A2B0:
-+        return true;
-+    default:
-+        /* Reserved value: INVSTATE UsageFault */
-+        gen_exception_insn(s, s->pc_curr, EXCP_INVSTATE, syn_uncategorized(),
-+                           default_exception_el(s));
-+        return false;
-+    }
-+}
-+
-+static void mve_update_eci(DisasContext *s)
-+{
-+    /*
-+     * The helper function will always update the CPUState field,
-+     * so we only need to update the DisasContext field.
-+     */
-+    if (s->eci) {
-+        s->eci = (s->eci == ECI_A0A1A2B0) ? ECI_A0 : ECI_NONE;
-+    }
-+}
-+
-+static bool do_ldst(DisasContext *s, arg_VLDR_VSTR *a, MVEGenLdStFn *fn)
-+{
-+    TCGv_i32 addr;
-+    uint32_t offset;
-+    TCGv_ptr qreg;
-+
-+    if (!dc_isar_feature(aa32_mve, s) ||
-+        !mve_check_qreg_bank(s, a->qd) ||
-+        !fn) {
-+        return false;
-+    }
-+
-+    /* CONSTRAINED UNPREDICTABLE: we choose to UNDEF */
-+    if (a->rn == 15 || (a->rn == 13 && a->w)) {
-+        return false;
-+    }
-+
-+    if (!mve_eci_check(s) || !vfp_access_check(s)) {
-+        return true;
-+    }
-+
-+    offset = a->imm << a->size;
-+    if (!a->a) {
-+        offset = -offset;
-+    }
-+    addr = load_reg(s, a->rn);
-+    if (a->p) {
-+        tcg_gen_addi_i32(addr, addr, offset);
-+    }
-+
-+    qreg = mve_qreg_ptr(a->qd);
-+    fn(cpu_env, qreg, addr);
-+    tcg_temp_free_ptr(qreg);
-+
-+    /*
-+     * Writeback always happens after the last beat of the insn,
-+     * regardless of predication
-+     */
-+    if (a->w) {
-+        if (!a->p) {
-+            tcg_gen_addi_i32(addr, addr, offset);
-+        }
-+        store_reg(s, a->rn, addr);
-+    } else {
-+        tcg_temp_free_i32(addr);
-+    }
-+    mve_update_eci(s);
-+    return true;
-+}
-+
-+static bool trans_VLDR_VSTR(DisasContext *s, arg_VLDR_VSTR *a)
-+{
-+    static MVEGenLdStFn * const ldstfns[4][2] = {
-+        { gen_helper_mve_vstrb, gen_helper_mve_vldrb },
-+        { gen_helper_mve_vstrh, gen_helper_mve_vldrh },
-+        { gen_helper_mve_vstrw, gen_helper_mve_vldrw },
-+        { NULL, NULL }
-+    };
-+    return do_ldst(s, a, ldstfns[a->size][a->l]);
-+}
-diff --git a/target/arm/meson.build b/target/arm/meson.build
-index 2b50be3f862..25a02bf2769 100644
---- a/target/arm/meson.build
-+++ b/target/arm/meson.build
-@@ -23,6 +23,7 @@ arm_ss.add(files(
-   'helper.c',
-   'iwmmxt_helper.c',
-   'm_helper.c',
-+  'mve_helper.c',
-   'neon_helper.c',
-   'op_helper.c',
-   'tlb_helper.c',
+-/* Swap 16-bit words within a 32-bit word.  */
+-static inline uint32_t hswap32(uint32_t h)
+-{
+-    return rol32(h, 16);
+-}
+-
+-/* Swap 16-bit words within a 64-bit word.  */
+-static inline uint64_t hswap64(uint64_t h)
+-{
+-    uint64_t m = 0x0000ffff0000ffffull;
+-    h = rol64(h, 32);
+-    return ((h & m) << 16) | ((h >> 16) & m);
+-}
+-
+-/* Swap 32-bit words within a 64-bit word.  */
+-static inline uint64_t wswap64(uint64_t h)
+-{
+-    return rol64(h, 32);
+-}
+-
+ #define LOGICAL_PPPP(NAME, FUNC) \
+ void HELPER(NAME)(void *vd, void *vn, void *vm, void *vg, uint32_t desc)  \
+ {                                                                         \
 -- 
 2.20.1
 

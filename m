@@ -1,146 +1,126 @@
-Received: by 2002:a19:4310:0:0:0:0:0 with SMTP id q16csp5074110lfa;
-        Tue, 8 Jun 2021 22:26:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwum0qzs4ZAiX0D57P2J6Bat+zt1isj9p+tl36ZoVHdev5XfiDqgWuL43F0cwhW+BuR6dDY
-X-Received: by 2002:a92:de0b:: with SMTP id x11mr15233482ilm.191.1623216363306;
-        Tue, 08 Jun 2021 22:26:03 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1623216363; cv=pass;
+Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp1811721lff;
+        Mon, 14 Jun 2021 02:53:37 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw/w30EAQxJ03ZtuxP+LSstGJ2SewrvJP+c+/eV0dtTbEW0vlq+BMNYUCFQPnWIEdITodws
+X-Received: by 2002:a37:64d4:: with SMTP id y203mr15402433qkb.286.1623664417260;
+        Mon, 14 Jun 2021 02:53:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623664417; cv=none;
         d=google.com; s=arc-20160816;
-        b=b+gsjhDRdgFXzOWT7edR2iVt4lMngXvlyY3DWQweAbSsOBf2c/aM68G7eOqPs63Wpe
-         FB11x08bclvt1VhQtwc/O/Cu3lwYJLI6eZ7/ldujOxGtmhs5N/Tj9L3645NEaxIREVxd
-         mLvf0jze6/CAqQsJoJeThiS71SnBAcMWNrfsob0zo3NSlcvloMBxwP7bgGva8ex2e04J
-         uUB4ydmwiaTp/JIa4Yp7EfXMyiUd+NLjc+TR11WFZk09BMzj7OzriS/Mxei7UTZQ9YP7
-         k5kpUVjcDcaC8UcX9RKQLtlb3XCIjRM0t8BiHOCmndUnXJM6std/brTJVkV/tP1RPlbc
-         wBzA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=DcUplS2BSSigdPczkLz4TraQJWWBZzl3+4jt10hUiikxgtKugKMhMEvAFIP5+h8l1d
+         5kxaqL7nADMV5OMBEBD3kc0k0RSJtHDS0sTrm9FQvsmD3imJOU1tTum+G9lXFWaNGzzM
+         CMT7NjfiNZ/DrjVY2r6yxNe86mnTx08loEjrWkWUAoDGnGfZrRSb2CPJZSVWYBrd7e+r
+         JIjJyKFhPk8YH5YvkyYBJmZGS1n+tePS/jY/FWAZXaBNiXse71eMY0svKBGSxlyVge2Y
+         yHYnjNBgRd3cyUkfwFk4Yxc6uYOm1CjT42kbIeXsJW/+j1RF7E6vY3Sv8SH8B34AXe0/
+         i1fQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=Qg5ZOG233yqLC8e8ioFaMISISzCukkZg7l3XFOxfjwg=;
-        b=PW683K419DKAkPxySQYabPVy+vqqZlXzChAQmu1EHAedp6FVWqdqiHl2x24Np5RuGO
-         wCan/6NjESY++cY8lrM3z/paE60PWTF0/F9wNe61g2Muv4/wL6KNiHW0gmSDn876sTWl
-         5of6y9ITuHM1cqlovGRBrd+Iu/lOCVgwWjs7BY+t6AEF+GYUZx97O8b0r2T8SZtEKsoT
-         XbDQGhLbjba3YCLXop2bSo45ZIZHZ78NESDqLqlVmNg0Pv3hgUPF5CQlQ+XBRhqbLECh
-         BQjN9NuSYV7H8vBJ69Z3UI1EcAOV9vxTsuWTHKZr3BoHZ9FflEsn79662MRWtZQJFMgo
-         Q87w==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=ZLv4uiix;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=HwI1U2MApPX059JCLdhqih8ITJHSz+Hx8Mr8ToVF8cA=;
+        b=nPBJhNOhAyCc8tuXAjdaNHt0tyU5pwhLEg6t2qHJ/czoW5O//QsoIDM9IKmLi883Js
+         DF0TvCLzBOAcFWObLibrj2JX6RjNZgMYFWPyq5jf9YKEnL1y558GNzKqfoTQJQ/6wIf3
+         zfIXyy27UM7lkDqLyu+pQ/PsqOhC8umErRsp9yfjGm1fbVjYfu/k8zZHl5WS1TrX4DOq
+         TGNtPzbXU0snNjC/pobe2F6yoq2qnvthtOuK8nGceWt4NxVfO+MbCf3t/nOtpmOEHYD6
+         /3YquEX0DPiFX+wfzhH2Y1nImGETx7UXkeSnqy82akqbueoTdxfrj8Ra3pGQblopHV0M
+         MshA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=MjwZmcXQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nvidia.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g2si2101819ilc.73.2021.06.08.22.26.03
+        by mx.google.com with ESMTPS id iy6si9506461qvb.108.2021.06.14.02.53.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Jun 2021 22:26:03 -0700 (PDT)
+        Mon, 14 Jun 2021 02:53:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=ZLv4uiix;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=MjwZmcXQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nvidia.com
-Received: from localhost ([::1]:45606 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:57412 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lqqj3-0001WL-Ho
-	for alex.bennee@linaro.org; Wed, 09 Jun 2021 01:26:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45318)
+	id 1lsjHk-0001tg-Lz
+	for alex.bennee@linaro.org; Mon, 14 Jun 2021 05:53:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57582)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1lqqiq-0001Ub-Cf; Wed, 09 Jun 2021 01:25:48 -0400
-Received: from mail-mw2nam12on2060.outbound.protection.outlook.com
- ([40.107.244.60]:16032 helo=NAM12-MW2-obe.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lsjHd-0001sj-Ao
+ for qemu-arm@nongnu.org; Mon, 14 Jun 2021 05:53:29 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:45369)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1lqqin-0008K7-RZ; Wed, 09 Jun 2021 01:25:47 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=k9lOPEaIDrS9Ghtx8oSclnf7PvZy94x4E9CVkmKuMFGxbV/6f+vF8yy4RAZha6pL9Fk4Xx58OVATw68xlH12XXdSHNKMvoVpG9RPBJw7Y13tmkU7/j6Rj2wWfNq0lqRmsZlBZ5QT2g5SGCUfJdvGjrtokGi8KdKw1y+JtdZnukwurw3gVot32SO2x+BEmyrkXHdPw7Rdn5HJT0X1m9TZ+owEVBIxNQ6ADPdLsiEfBvaYNmlNm6DWg5A9wsC2PcB7kFCt4GM7NtGKdN0emUoUMzdH5qOA401uUGJzlaPVbnF0an1UBhN/T0om0lCtYscXfQNZiRJG2hluNIv6X6MAiQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Qg5ZOG233yqLC8e8ioFaMISISzCukkZg7l3XFOxfjwg=;
- b=iIhp7tLSmZ2qlYyOifmaq4eYLW3IOJpPJvJuokAa2mnY0sV66oI/HOtPaTw/bB4e1Yh1xFNTGkfAn/bHjfgPUX17K+Zc+sI7ma4U8TEkn7XAS3NHVTOxzAw6O0uavq0+kjlelirND3FvSFrB7goCmyKb1XMN3US5FHNJodp0/8ob9P+8dfVu7adRxb/uMd9Mhj+PmwTNWPwW99NPYH/rX6qMaj9sWghp8wWkDgB/0Q0RiCS34jbvJyapu2K9RaL/On3C+b17ApcShiF0OrB4SNWGWuWYU1l1e7y02qch6TPSAKcbnoc6CPQh6dA5hIbU1wAy2+kVXF2vIjisYTLsDA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.112.32) smtp.rcpttodomain=nongnu.org smtp.mailfrom=nvidia.com;
- dmarc=pass (p=none sp=none pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Qg5ZOG233yqLC8e8ioFaMISISzCukkZg7l3XFOxfjwg=;
- b=ZLv4uiixn+GIUu/pm0GLTaWZkQxoJkqlSU+c0V2oYlgMW/vRQDaogdFQbVOJdRiP6oWs9+YVRJ4hK57DC0u/VDcRo0cG83pjqs4dCiZpZ31vlqi76uMBiyAOGrUntN1p6iqXcbNxFiL7zyvDnGuxeJElEI4bijVDC+TDdbwj2GO/UEaClZfKRoEnnlYOLzO5TQ8Ll++GkRZOePhZ6RbbUsgjqKrhZBb9e8S8XJkfMd7BqkkvCXZZo9peiVKpVy4XA+a9/nOKTv+qD0VWO2RoqnlwuYHNPqZuxNXdQYAtLhW48FodoXdn8djAFZLnLFc9KtD7vSNGiScGiq19i5zqwQ==
-Received: from BN9PR03CA0863.namprd03.prod.outlook.com (2603:10b6:408:13d::28)
- by CH2PR12MB3767.namprd12.prod.outlook.com (2603:10b6:610:26::21)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4195.27; Wed, 9 Jun
- 2021 05:25:39 +0000
-Received: from BN8NAM11FT064.eop-nam11.prod.protection.outlook.com
- (2603:10b6:408:13d:cafe::c8) by BN9PR03CA0863.outlook.office365.com
- (2603:10b6:408:13d::28) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4219.20 via Frontend
- Transport; Wed, 9 Jun 2021 05:25:39 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.112.32)
- smtp.mailfrom=nvidia.com; nongnu.org; dkim=none (message not signed)
- header.d=none;nongnu.org; dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.112.32 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.112.32; helo=mail.nvidia.com;
-Received: from mail.nvidia.com (216.228.112.32) by
- BN8NAM11FT064.mail.protection.outlook.com (10.13.176.160) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.20.4195.22 via Frontend Transport; Wed, 9 Jun 2021 05:25:38 +0000
-Received: from HQMAIL101.nvidia.com (172.20.187.10) by HQMAIL109.nvidia.com
- (172.20.187.15) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Tue, 8 Jun
- 2021 22:25:37 -0700
-Received: from Asurada-Nvidia (172.20.187.5) by mail.nvidia.com
- (172.20.187.10) with Microsoft SMTP Server (TLS) id 15.0.1497.2 via Frontend
- Transport; Wed, 9 Jun 2021 05:25:37 +0000
-Date: Tue, 8 Jun 2021 22:24:31 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: Eric Auger <eric.auger@redhat.com>
-Subject: Re: [RESEND] Multiple SMMUv3 instances on PCI Bus and PCI Host Bridge
-Message-ID: <20210609052431.GA8835@Asurada-Nvidia>
-References: <20210604231613.GC15599@Asurada-Nvidia>
- <a349744d-762b-74b9-352b-ad0a7b16dfec@redhat.com>
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lsjHW-0008Ex-S6
+ for qemu-arm@nongnu.org; Mon, 14 Jun 2021 05:53:28 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1623664401;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=HwI1U2MApPX059JCLdhqih8ITJHSz+Hx8Mr8ToVF8cA=;
+ b=MjwZmcXQyXIAT/XkPuxLmavfXffwbm/WGJhfMoNOSi+RZIYL8XKlx4bMatbIbGsMkc6NuM
+ 9R3rWsVxeSFdyo2kkj9y7/RzbxfGPkKu5Xo3JFwhQTX89NiT4skPhsAduz6X58dhG+qZ0Q
+ +cIh33qtKoTvaWn4elm4Vasq5fqNki8=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-564-OwxJvJt7M_6Atboa7hGVwg-1; Mon, 14 Jun 2021 05:53:20 -0400
+X-MC-Unique: OwxJvJt7M_6Atboa7hGVwg-1
+Received: by mail-wr1-f69.google.com with SMTP id
+ h104-20020adf90710000b029010de8455a3aso6806467wrh.12
+ for <qemu-arm@nongnu.org>; Mon, 14 Jun 2021 02:53:20 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=HwI1U2MApPX059JCLdhqih8ITJHSz+Hx8Mr8ToVF8cA=;
+ b=f61tbaiHVQeUtTJQ2PKkkrY58lmEVenDr845Ce4N2y1PESV9HVge2FsDZnhDsJiSk6
+ iLfQZIR58HMJxpZOjh+ksZfjE2ERNPXpIlNkdRKvDhDnGpFKkdW4vTwD62CsSJi6oc2c
+ 855H9D3T//r7CXXISj+/cMUzAne98mMYX/RhA/ThviLN2z1Ph9DfiJ2xdMGBD6sLDuua
+ V28OYTo+xakRDIFqI0QFVLo3ZAceX1MpWvwmpE0WIZICwLfthiCCi4Xu6cvcNpijKV63
+ Tn7JMXs4Mt0Sp30eIQzHMdk0bH+I4Zm8hS/khT++ZWahLWXVvXg5+ubPpecH5BVOjnfk
+ NElg==
+X-Gm-Message-State: AOAM531BuSgp5ey80GZIMGLLxZlQhB9PwLmJ7Uqrpqc6SfKYT5KCcD+b
+ 6H8BkZjmA29Yesye/sehkZ9rRXCtIoO1EcV3uU9YbSBx/ZUr17eQK104kn607uqwZMKE1nNidBQ
+ usxnQ5Im8pwNL
+X-Received: by 2002:adf:e401:: with SMTP id g1mr17113050wrm.415.1623664399075; 
+ Mon, 14 Jun 2021 02:53:19 -0700 (PDT)
+X-Received: by 2002:adf:e401:: with SMTP id g1mr17113033wrm.415.1623664398840; 
+ Mon, 14 Jun 2021 02:53:18 -0700 (PDT)
+Received: from [192.168.1.36] (93.red-83-35-24.dynamicip.rima-tde.net.
+ [83.35.24.93])
+ by smtp.gmail.com with ESMTPSA id m7sm16474767wrv.35.2021.06.14.02.53.17
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 14 Jun 2021 02:53:18 -0700 (PDT)
+Subject: Re: [RFC PATCH V1 1/3] acpi: Eliminate all TPM related code if
+ CONFIG_TPM is not set
+To: Stefan Berger <stefanb@linux.ibm.com>, armbru@redhat.com,
+ qemu-devel@nongnu.org, qemu-arm <qemu-arm@nongnu.org>
+References: <20210612012102.1820063-1-stefanb@linux.ibm.com>
+ <20210612012102.1820063-2-stefanb@linux.ibm.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <d097926e-5f55-e2a0-0cf9-42dfd71815d4@redhat.com>
+Date: Mon, 14 Jun 2021 11:53:17 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <a349744d-762b-74b9-352b-ad0a7b16dfec@redhat.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 471d1c0f-4619-4d33-6243-08d92b070482
-X-MS-TrafficTypeDiagnostic: CH2PR12MB3767:
-X-Microsoft-Antispam-PRVS: <CH2PR12MB376765C145D47473C248BE29AB369@CH2PR12MB3767.namprd12.prod.outlook.com>
-X-MS-Exchange-Transport-Forked: True
-X-MS-Oob-TLC-OOBClassifiers: OLM:8882;
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: fhFHQ67OqQ5Ps56DoMj1KdGGXtnhYOTx/EbLVrvP/dJ3++Mxj1H0TjonEbqpSXUvJlSyDJj9ljLjRt1CR86Lu4nfEK9tTU+rcwIv8spClC25YLnAXPh6oZ0akI2sM/67wxrpq+p3l7V5htwkEOmVQpw1uvG/ndv2SR8BnGa3PgaadAccBCH5a09jNcdN6IxoHBVqt2YetqnxRTfqZ80lvztcT2IyWa4QvkAcBGH1ycmSF9KCOwuB4giyXpVuClq7oUyHAQe/tGXKOBmHtTkhsDXoiZJRWUKigs5Yl5yNuJlcurMnaFUh8PT+S5J1DFtF/wIq+hM4n8tCGUCf3O7gqIjie2hA/7E3GDqOoN61MKr6op0GsQedzfafj4bLdI2Efv36zbgzFhBsL/rr7/jgSq41qOOIS03wV7iuAhM1s6ddA5fIkM7YaOnnx3Yxoyc26wkqG9psdWYDggJ2BtHPc7jdyLsEULLBFB98knxBc0MeFl+voN07GQ08tiEWrfBRQVd+Fk2n72eaX7Nop9H+QU6Fty4a8te7GqhdgrJ94V4SKbN+kRTRR1QnajIpcSCx143D9QJVUAhL2gXhgmMlwQHkegNCN3W7i4kGgcC9BEmOu8ug0yqqcLmsIrpt3po34p4WktFcYhVwSs4G/k4ammalxQj3DPMS/LKFQLWHWMo=
-X-Forefront-Antispam-Report: CIP:216.228.112.32; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:schybrid01.nvidia.com; CAT:NONE;
- SFS:(4636009)(396003)(346002)(136003)(39860400002)(376002)(36840700001)(46966006)(26005)(8676002)(186003)(4326008)(8936002)(86362001)(33716001)(6916009)(316002)(54906003)(2906002)(82310400003)(6666004)(82740400003)(356005)(336012)(426003)(55016002)(1076003)(7636003)(5660300002)(9686003)(4744005)(70206006)(70586007)(47076005)(107886003)(478600001)(33656002)(36860700001);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Jun 2021 05:25:38.8246 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 471d1c0f-4619-4d33-6243-08d92b070482
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.112.32];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: BN8NAM11FT064.eop-nam11.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH2PR12MB3767
-Received-SPF: softfail client-ip=40.107.244.60;
- envelope-from=nicolinc@nvidia.com;
- helo=NAM12-MW2-obe.outbound.protection.outlook.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
-X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.197,
+In-Reply-To: <20210612012102.1820063-2-stefanb@linux.ibm.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.199,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001,
+ NICE_REPLY_A=-0.144, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=-0.01,
+ RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -154,33 +134,71 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: miaoyubo@huawei.com, qemu-arm@nongnu.org, vdumpa@nvidia.com,
- qemu-devel@nongnu.org, praithatha@nvidia.com
+Cc: Igor Mammedov <imammedo@redhat.com>,
+ "M : Michael S . Tsirkin" <mst@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dRBQwqzo0H+R
+X-TUID: PatNoFdn5gV4
 
-Hi Eric,
+On 6/12/21 3:21 AM, Stefan Berger wrote:
+> Cc: M: Michael S. Tsirkin <mst@redhat.com>
+> Cc: Igor Mammedov <imammedo@redhat.com>
+> Signed-off-by: Stefan Berger <stefanb@linux.ibm.com>
+> ---
+>  hw/acpi/aml-build.c      |  2 ++
+>  hw/arm/virt-acpi-build.c |  2 ++
+>  hw/i386/acpi-build.c     | 20 ++++++++++++++++++++
+>  include/hw/acpi/tpm.h    |  4 ++++
+>  stubs/tpm.c              |  4 ----
+>  5 files changed, 28 insertions(+), 4 deletions(-)
+> 
+> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+> index f0035d2b4a..d5103e6d7b 100644
+> --- a/hw/acpi/aml-build.c
+> +++ b/hw/acpi/aml-build.c
+> @@ -2044,6 +2044,7 @@ build_hdr:
+>                   "FACP", tbl->len - fadt_start, f->rev, oem_id, oem_table_id);
+>  }
+>  
+> +#ifdef CONFIG_TPM
+>  /*
+>   * build_tpm2 - Build the TPM2 table as specified in
+>   * table 7: TCG Hardware Interface Description Table Format for TPM 2.0
+> @@ -2101,6 +2102,7 @@ void build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog,
+>                   (void *)(table_data->data + tpm2_start),
+>                   "TPM2", table_data->len - tpm2_start, 4, oem_id, oem_table_id);
+>  }
+> +#endif
 
-Thanks for the reply!
+This makes the ARM virt machine build to fail for missing
+the build_tpm2() symbol.
 
-On Mon, Jun 07, 2021 at 11:19:39AM +0200, Eric Auger wrote:
+You probably need to split the patch in 2 and rearrange the
+series:
 
-> > So I started to have questions in my mind:
-> > (1) Can PCI host bridge (PCIE.128) add to a different vSMMU without
-> >     following PCIE.0's SMMU setup?
-> changes need to be made in hw/arm/virt.c
-> create_smmu() is passed the primary bus the iommu is attached to.
-> Currently arm virt only supports one smmu instance. So playing with qemu
-> options is not sufficient.
+1/ hw/i386    (current 1)
+2/ hw/arm     (current 2)
+3/ hw/acpi    (current 1)
+4/ sysemu/tpm (current 3)
 
-Yes. I had my local change to do that.
+> diff --git a/include/hw/acpi/tpm.h b/include/hw/acpi/tpm.h
+> index 1a2a57a21f..559ba6906c 100644
+> --- a/include/hw/acpi/tpm.h
+> +++ b/include/hw/acpi/tpm.h
+> @@ -21,6 +21,8 @@
+>  #include "hw/acpi/aml-build.h"
+>  #include "sysemu/tpm.h"
+>  
+> +#ifdef CONFIG_TPM
+> +
+>  #define TPM_TIS_ADDR_BASE           0xFED40000
+>  #define TPM_TIS_ADDR_SIZE           0x5000
+>  
+> @@ -209,4 +211,6 @@ REG32(CRB_DATA_BUFFER, 0x80)
+>  
+>  void tpm_build_ppi_acpi(TPMIf *tpm, Aml *dev);
+>  
+> +#endif /* CONFIG_TPM */
+> +
+>  #endif /* HW_ACPI_TPM_H */
 
-> Besides that, effectively there are IORT changes needed because you need
-> to route RCs to the different SMMU instances, ie. some RIDs need to
-> reach SMMU#0 and others #SMMU#1.
-> You can get inspired of "[PATCH v4 6/8] hw/arm/virt-acpi-build: Add
-> explicit IORT idmap for smmuv3 node for this kind of changes."
-
-I see! I tried some change at my IORT table following the way
-from this patch. And it seems to work now. Thank you!

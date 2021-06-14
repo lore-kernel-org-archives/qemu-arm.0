@@ -1,104 +1,109 @@
-Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp1860968lff;
-        Mon, 14 Jun 2021 04:05:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwkyOLj8oCRwuHWHlmYtPenH20oMbDGq58KKhQV90Ce+5kqhXdpgQWivQafivEKG84OI0rs
-X-Received: by 2002:a17:907:2648:: with SMTP id ar8mr14584234ejc.521.1623668723056;
-        Mon, 14 Jun 2021 04:05:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623668723; cv=none;
+Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp2058309lff;
+        Mon, 14 Jun 2021 08:10:40 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyPvC0rI6Okb7WKsx8SrQFKNC/e1nSjLTjYmIEk8OYry6EfNjohe0TNXBGEGYruAIVsyELc
+X-Received: by 2002:a17:907:70d3:: with SMTP id yk19mr9201638ejb.450.1623683440521;
+        Mon, 14 Jun 2021 08:10:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623683440; cv=none;
         d=google.com; s=arc-20160816;
-        b=SNLZt61Mvm2IA7l3t2vBrvXy4MqtBwvxr5vA86TrdpF9jPWAiUHd+Fqgjwk6o+Qr5K
-         3udX2henFGhTlcICdJXXNeGG0hI1BgR6BV7esi1ygZCps9IuEu3VJB3qp3IoBspnDyIp
-         zSR29wme/9NZF+zclVaeDSo+ZdnWtZPmzKob5xVIb3R8+rEzR0O6dBG6ltD9ZheC+m5c
-         8EMhoDpvzoOqTJmfwqeUbSPEpuDaL+JQKoRvThMmrp7frZ12IKPJLevyJ8sbG3kzWRi9
-         7gcYwN3SBK86aWo/3kVGqY/WUOouK98ppWTjYZh28IEGQLmHJMksDiQeQFS1WUPBLokz
-         4hDQ==
+        b=hmp7s0BWs8DTSXiOd4s6qXczcXfQ40lgSPlO/ERNm2UGfZ/AVjG+QQuM4qucA/8xTr
+         1usydavtsNzgAxdEtxRRp6zP03+SFfMwoXmXrVot9Rm2T3tz1ynJ+lwvhfkjyBVc76ot
+         EtDyZwXKtqHA8wo4JGNYu7C7ddUJEbDMf9UEDskdhdoJ6KU//cVA7z8sLmMvVyPBcmqv
+         ei0w6uevpAb+5SHQMtoJReUG0RZi2GO8mebgcHp7RA5ygPkgZAyHLaIK/SjTD1gjKFtJ
+         b1Fmq4FifjaeIXfJq3urX4hwFjANzsQzwStIF5zJIVToYFNCYi/sQaggcWI0o+dz0thu
+         GcIg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=E3xvEQx4cPjshDFhyeA5Zcglt5CZHRCgNfqmEMNvzBM=;
-        b=LvKlXHJdAcWrb2G6+8CSS3LdGhKp3Acc3pJwpaKHXzYBPyi1ZRYLmrzR8BRcmXxdqn
-         +/0HammwPw5L3EyFz30p0rT84wWCyyryqGwFGVTQ2Sc9IS1cxougCAk1sowdWAEpypMK
-         DQfD0TfdPrgz/zfsDCwWKh3ndJEFVBYAiY6beTD7+4SSqHoF03A1dr5RE7J6RUjEJ2Do
-         RiY10kMSS1VAKK7ii319G3h7TeGYXXbBExX0hjHJu9MoKgJfWA0/A9ZCfTMTswW7SDWh
-         kX191QwFV7Ibz57+VwLXhchofu1mVVoNH4VoKjhuvUZr5Qz5swQDxGBPHGvRQtK7AHgE
-         xx8g==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=MoiTJRMORwlU/6130KYoeMaB9eDKtR75xsguj8maQTE=;
+        b=CZ5TiilQPUgJSqTwA7iiY2TzV26Kay0tqC7A89EnH39I8cq+/cVJ0476PSbikZMoXF
+         lpctutXAUZfLvMPBiOVCI9N4S3SQdtJH3TrQqzMeNYJ5RlpAphl1BJJhKxpxSbni8CEC
+         ucCOstYSfjomUmYV4+V+S+vauY3pHUHtCUhttUNVkUGfJEcgZu741e4YtAuNUIbrVyN6
+         HhIpuMnMF4oY4vPvKeatAkWTtPzt++F62pFiimGcTWmOSA3tW+NQiWSs0mFT3Tge0UCN
+         A7U0LyrnQUs2nIYHXNz/3g36j63XLzv/XwdGHoTnrebNjQLq62ALBqLGyx49bJXV3aBf
+         Ag3g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="K/nRT6Sj";
+       dkim=pass header.i=@linaro.org header.s=google header.b=MmacP3vq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c6si11006927edv.157.2021.06.14.04.05.22
+        by mx.google.com with ESMTPS id x25si11883991eds.477.2021.06.14.08.10.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Jun 2021 04:05:23 -0700 (PDT)
+        Mon, 14 Jun 2021 08:10:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="K/nRT6Sj";
+       dkim=pass header.i=@linaro.org header.s=google header.b=MmacP3vq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:44748 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34528 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lskPC-0003qm-7F
-	for alex.bennee@linaro.org; Mon, 14 Jun 2021 07:05:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46690)
+	id 1lsoEZ-0000D8-Et
+	for alex.bennee@linaro.org; Mon, 14 Jun 2021 11:10:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47002)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lskP2-0003qe-Kj
- for qemu-arm@nongnu.org; Mon, 14 Jun 2021 07:05:12 -0400
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b]:37666)
+ id 1lsoEH-00008w-6k
+ for qemu-arm@nongnu.org; Mon, 14 Jun 2021 11:10:21 -0400
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:35389)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lskOw-0006fM-28
- for qemu-arm@nongnu.org; Mon, 14 Jun 2021 07:05:12 -0400
-Received: by mail-ej1-x62b.google.com with SMTP id ce15so15962485ejb.4
- for <qemu-arm@nongnu.org>; Mon, 14 Jun 2021 04:05:05 -0700 (PDT)
+ id 1lsoEA-00005X-Hi
+ for qemu-arm@nongnu.org; Mon, 14 Jun 2021 11:10:20 -0400
+Received: by mail-wr1-x42f.google.com with SMTP id m18so14940752wrv.2
+ for <qemu-arm@nongnu.org>; Mon, 14 Jun 2021 08:10:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=E3xvEQx4cPjshDFhyeA5Zcglt5CZHRCgNfqmEMNvzBM=;
- b=K/nRT6Sj8X78f4ZqWwgi2RQffRLjkqvnAl57Xu5oih1GTIhcpSK0HPGqEtMibo9PQu
- JwTPFFGs15arAh+B0+mk2zs6flJvMioSUzEztv4cg4FPhyRPA/29Rg7GmE0z+7fvZAIv
- eMgKAopioOYajgFFddsIsisNzVU1FHnhPK1/9WWVxu0bzyPA4FokGcY4van1lfCjOK49
- IjeOAp1rwiMqDZ1xTt5VoH/7SGlCRx0ko90aPdBE2lBcw3gUoAMgWhjwLqypstcL81q5
- Z3F72/1iu/H6JoLiCCi4sCy+1iZeua/JHa4PFYVMou5s0vz3Df04uElr09J/YA22DMfU
- gdLw==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=MoiTJRMORwlU/6130KYoeMaB9eDKtR75xsguj8maQTE=;
+ b=MmacP3vquQEenIbYMr/ksqzQFNZ7Sp9P4rlQUko1XmDEkM41p1BFA0odQ1K62bc+pt
+ 7aNlRTrp0VGV6Czm7hxIkz3JfhpsR9t4QnwfAtVzymUNRV+MkOLidK/GMdS101MInALk
+ 0CaMONZ3u4CigNjrWexETZZgl2I9mG1b5Vkabc4D7EUBhGkY0Z66D1svxHQ/kYupZGtK
+ XbvOAXAZZw4G3/jcNXL1pQ0YNEQFXRhdufYSQOPCNdmngQH5y376/FIdE3/kblbyi1Qn
+ 7yr7443QsfGQJIQEcpzN68AGp127jH27+KPgBJgB4IoWocnekyurEJYN66sFd6x7qMSh
+ fJFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=E3xvEQx4cPjshDFhyeA5Zcglt5CZHRCgNfqmEMNvzBM=;
- b=R+C68YCFeF5aX/WMoZqfrcQsFhntxkqsHobMWDEF4kPoqKUaeULsVmQWmtNzIiEkQ2
- d0uv2r/GFTc1tIkoEtal8g9VmNQuGA4M62ysM2MduQ1oJ1Yv1djwTaKYnL7U9FwsMXgw
- eTkrXA9VAhOFhW8Yn6yCaVREySYLFPEbqNk3hLJsA6p+zuTVSbb9rHZwJQsPXdsADv3r
- uudrpXJBba618OzaLSbb657PTY262vmymm2QVbEMc+Z2stLu+GP20Iiltt4s74oZbLZo
- Vp5Nzxca91ncC654EHeBxzT9CdQn5Y1zFfSDdDRdIc9m8zcB2S9+gk2CDSNuhSdcwa37
- LVTw==
-X-Gm-Message-State: AOAM530Je+M0EIRd8UQvrJs+jTvCfe8sIl7jbcLbfunuuYY203L2kVlr
- W0ZGml2bWrjHYriR/xcsnYIF+sqQB3tZ/3jeg18K6HdGKp8=
-X-Received: by 2002:a17:906:a108:: with SMTP id
- t8mr14554157ejy.407.1623668704368; 
- Mon, 14 Jun 2021 04:05:04 -0700 (PDT)
-MIME-Version: 1.0
-References: <20210607165821.9892-1-peter.maydell@linaro.org>
- <20210607165821.9892-44-peter.maydell@linaro.org>
- <5aaa6d24-2b1f-0cc9-5bde-cf0fe73cc55b@linaro.org>
-In-Reply-To: <5aaa6d24-2b1f-0cc9-5bde-cf0fe73cc55b@linaro.org>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=MoiTJRMORwlU/6130KYoeMaB9eDKtR75xsguj8maQTE=;
+ b=efeJOPoyZCCRTOgLZ/2xpVcchfK3Vp0wmbbJsluSebKaAXm3AP5JLG3+CR/GacCMG3
+ 7fQkUgZpamgPtvapJUZ0G6D6oafl2Uxf3xiduB6IQpdABfwI7/Eu9cIiu4ba4lBEAg3i
+ 1MYMM1jM5rVkZcjTcFYEndGveI5EyobfcixuNXbmNQhpcVV05c5x3WEXf/kjaGM+EPHu
+ tGBE6HTFpKjCZtNTXVV8UPM9Vk8UL4pSEfbSPO+k6up3suY61/8U4XIoz//9ZRSFYP/F
+ +yF4Qxyid5yWNkzOYjIXjH19tL1SdblqYpMph1PnMlZ265im9TMzewwBMsM3P+n1ibR9
+ Md4A==
+X-Gm-Message-State: AOAM53350udFSPIaJhfvTudeh0yGqfADK0biuXl69qnFHdAJOce7H8Pq
+ 0mKSyr9T58k1hvrEeCRHMkG8HPpDhqrFfQ==
+X-Received: by 2002:a5d:67d2:: with SMTP id n18mr19256635wrw.158.1623683411963; 
+ Mon, 14 Jun 2021 08:10:11 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id b8sm20865639wmd.35.2021.06.14.08.10.11
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 14 Jun 2021 08:10:11 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 14 Jun 2021 12:04:29 +0100
-Message-ID: <CAFEAcA92O_8E6CortSu==UHzwWC5-ARbP5T=H1Ok5zZC8tnhrw@mail.gmail.com>
-Subject: Re: [PATCH 43/55] target/arm: Implement MVE VQSHL (vector)
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62b.google.com
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH v2 02/57] target/arm: Enable FPSCR.QC bit for MVE
+Date: Mon, 14 Jun 2021 16:09:12 +0100
+Message-Id: <20210614151007.4545-3-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20210614151007.4545-1-peter.maydell@linaro.org>
+References: <20210614151007.4545-1-peter.maydell@linaro.org>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -111,26 +116,92 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Richard Henderson <richard.henderson@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FKxqC0UC0ZxJ
+X-TUID: Euxz76OBYhq+
 
-On Wed, 9 Jun 2021 at 20:26, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> On 6/7/21 9:58 AM, Peter Maydell wrote:
-> > Implement the MVE VQSHL insn (encoding T4, which is the
-> > vector-shift-by-vector version).
-> >
-> > The DO_SQSHL_OP and DO_UQSHL_OP macros here are derived from
-> > the neon_helper.c code for qshl_u{8,16,32} and qshl_s{8,16,32}.
->
-> Ah, from before the sve2 merge, and associated cleanup.
-> There are now helper functions in vec_internal.h for this.
+MVE has an FPSCR.QC bit similar to the A-profile Neon one; when MVE
+is implemented make the bit writeable, both in the generic "load and
+store FPSCR" helper functions and in the code for handling the NZCVQC
+sysreg which we had previously left as "TODO when we implement MVE".
 
-Ah, that's helpful. Annoyingly, the helper wants to take a
-uint32_t* for the "write to this when saturating" argument,
-and I have a bool*...
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/translate-vfp.c | 30 +++++++++++++++++++++---------
+ target/arm/vfp_helper.c    |  3 ++-
+ 2 files changed, 23 insertions(+), 10 deletions(-)
 
--- PMM
+diff --git a/target/arm/translate-vfp.c b/target/arm/translate-vfp.c
+index d01e465821b..728856dfd45 100644
+--- a/target/arm/translate-vfp.c
++++ b/target/arm/translate-vfp.c
+@@ -784,10 +784,17 @@ static bool gen_M_fp_sysreg_write(DisasContext *s, int regno,
+     {
+         TCGv_i32 fpscr;
+         tmp = loadfn(s, opaque);
+-        /*
+-         * TODO: when we implement MVE, write the QC bit.
+-         * For non-MVE, QC is RES0.
+-         */
++        if (dc_isar_feature(aa32_mve, s)) {
++            /* QC is only present for MVE; otherwise RES0 */
++            TCGv_i32 qc = tcg_temp_new_i32();
++            tcg_gen_andi_i32(qc, tmp, FPCR_QC);
++            /*
++             * The 4 vfp.qc[] fields need only be "zero" vs "non-zero";
++             * here writing the same value into all elements is simplest.
++             */
++            tcg_gen_gvec_dup_i32(MO_32, offsetof(CPUARMState, vfp.qc),
++                                 16, 16, qc);
++        }
+         tcg_gen_andi_i32(tmp, tmp, FPCR_NZCV_MASK);
+         fpscr = load_cpu_field(vfp.xregs[ARM_VFP_FPSCR]);
+         tcg_gen_andi_i32(fpscr, fpscr, ~FPCR_NZCV_MASK);
+@@ -869,6 +876,11 @@ static bool gen_M_fp_sysreg_read(DisasContext *s, int regno,
+         break;
+     }
+ 
++    if (regno == ARM_VFP_FPSCR_NZCVQC && !dc_isar_feature(aa32_mve, s)) {
++        /* QC is RES0 without MVE, so NZCVQC simplifies to NZCV */
++        regno = QEMU_VFP_FPSCR_NZCV;
++    }
++
+     switch (regno) {
+     case ARM_VFP_FPSCR:
+         tmp = tcg_temp_new_i32();
+@@ -876,11 +888,11 @@ static bool gen_M_fp_sysreg_read(DisasContext *s, int regno,
+         storefn(s, opaque, tmp);
+         break;
+     case ARM_VFP_FPSCR_NZCVQC:
+-        /*
+-         * TODO: MVE has a QC bit, which we probably won't store
+-         * in the xregs[] field. For non-MVE, where QC is RES0,
+-         * we can just fall through to the FPSCR_NZCV case.
+-         */
++        tmp = tcg_temp_new_i32();
++        gen_helper_vfp_get_fpscr(tmp, cpu_env);
++        tcg_gen_andi_i32(tmp, tmp, FPCR_NZCVQC_MASK);
++        storefn(s, opaque, tmp);
++        break;
+     case QEMU_VFP_FPSCR_NZCV:
+         /*
+          * Read just NZCV; this is a special case to avoid the
+diff --git a/target/arm/vfp_helper.c b/target/arm/vfp_helper.c
+index 496f0034772..8a716600592 100644
+--- a/target/arm/vfp_helper.c
++++ b/target/arm/vfp_helper.c
+@@ -220,7 +220,8 @@ void HELPER(vfp_set_fpscr)(CPUARMState *env, uint32_t val)
+                                      FPCR_LTPSIZE_LENGTH);
+     }
+ 
+-    if (arm_feature(env, ARM_FEATURE_NEON)) {
++    if (arm_feature(env, ARM_FEATURE_NEON) ||
++        cpu_isar_feature(aa32_mve, cpu)) {
+         /*
+          * The bit we set within fpscr_q is arbitrary; the register as a
+          * whole being zero/non-zero is what counts.
+-- 
+2.20.1
+

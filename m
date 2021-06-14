@@ -1,103 +1,100 @@
-Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp2282566lff;
-        Mon, 14 Jun 2021 13:10:07 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxta3cqKp5NXy/glGJzUB+vzi2bnMpOEuCN0YwE/5koacR7jxxZeM32J8Ptm5sv3gYvSu1j
-X-Received: by 2002:a7b:c453:: with SMTP id l19mr921371wmi.154.1623701407808;
-        Mon, 14 Jun 2021 13:10:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623701407; cv=none;
+Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp2282942lff;
+        Mon, 14 Jun 2021 13:10:44 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxukvf8oBIhOQy26NpyeT4yBHGKo9n2eCgFOD5wCS6tr4fF+L73sJWLo+wMEcq0QB1Pr3wF
+X-Received: by 2002:a05:6402:144d:: with SMTP id d13mr18561535edx.288.1623701444027;
+        Mon, 14 Jun 2021 13:10:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623701444; cv=none;
         d=google.com; s=arc-20160816;
-        b=TXskmJcXVD8YmCfpv9Aptb2acYQEpjolWz+xa8vmUcVMyxPOiqSR3f7LYH8MzxOPs0
-         JpIyRdbzwEvJiQqlksYEdssK7wAq2GTQGyXMkAg9UoJY8AUZjCntbzgG6DTyuLpfP3ka
-         h4FbmYnYlmR/KR4lyuB04kn+cSAkHxW87aO/rV0wMPevzxiH+QWrsbqbG1Z9OWPQO4/0
-         zRoxstTIB5cJlsR5zx1ksJwavZyBB9d3z9Ob4cRUrnNtme+cCeT4OjwWGSfFu6zNkc3k
-         QEaHnVnxDeNHD4MnL1Bagfz+DdtszUjfm3KBS4zhDQDbGUXwMtHpm/tjMJQaG1d5FIeg
-         YlPQ==
+        b=wmjmqbJRM84V+3uEGoUkPbZHpKAHtnuzFs2iYFi6N4QMqkmTgwRezphIAWP6pA7wiX
+         ScmV5C8z7x0+pO+6/gXJIv+hGdVAfKPLnDWmwGDNBFcv1ToeJNOBxRZ4B8tS7LMTCaEO
+         sq5i588Rn95kXyU1QXc5pvlhAxy4vVLEiNP4yLvFdsgrutzvWy3tLOfu+aIds1d+Dofp
+         7ZM8V4JI84MTGY+6kSZzuYRa5w8P6f2qkX57EZjCcDgrNWLLnUyMa4cYwhOAGnl5bnsB
+         J5jmnXYTmDvuts+2GD+41YwAihEg158lBytyIa4QEkjP8STud/2iWxstaHY4bAZcb1DB
+         UJTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=40vzgrQVAoTrypUvftjd8gyH06NkxRrNl5FBl3A4XCw=;
-        b=AyfLmrxrO/S3Wqjc1uJQi/yCVDDgg/B+1FWgpcmExKnQH0d85wTijIdKtnI2dHVEkV
-         sd3XVTvQQpR/yP7S49/Hb2494Z9CZTMnjyra2+x0ERKyymUDXnduAXmiX/1RDooIKmSt
-         ouQ0j7UV6vAvppViZvU/KQoB7VjiNoX1x58rLQXpa7rMCM5m4WEFfvLZX8JPfRTDwucv
-         T+O/Y8b++8IMm683kxNqlwyFxogx+0lPZWryR+sLzSRgA2T9SsUQYskYxGPyoLTtAK/w
-         5/Hm3iGkRj0jmxL02w+q+/z0JYqtYeqzNKlNWhdQ+i1u2HGfv+FuDSnlb1W+WT0sPf6s
-         rWew==
+        bh=983yM9Ivhh0Jdv/knxi7k66F6inZsKoawfPPt/Wd0Sg=;
+        b=K1nIjIbqYi1oTQG0M9GkNJ+299e2AbGXPlFl+ApyKxvdaHLlkZU+0xM3yOveyy9Ahq
+         sli0yW7SF2SchqwrzjFF2qtlmrI3+5EkBYHMQ2iSCEyH3rUUxxsN39imcWntvDzniU4k
+         Zbi0uVwmqwm9gzx7Jei1Wz3wtdwCohxW85KWKKmcManF27xUQdgG6IHALyZr9k4wP6oq
+         hhKnZNE9R+iDbxkPu3f9KR/ymNDrtltzv8qsFAJlPtbYbQtik7QiQZOkcmk27+tZxsaI
+         TswYN4XYkLZTNPqV6eSUI0Gtkryn4HEg5IbPGOGsYNLyP98ptxt4xBqNHoK877Z50ZLB
+         SdTA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=btuTjvcM;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Mg3IeQjA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g12si13112869wrm.29.2021.06.14.13.10.07
+        by mx.google.com with ESMTPS id ka11si13018889ejc.367.2021.06.14.13.10.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Jun 2021 13:10:07 -0700 (PDT)
+        Mon, 14 Jun 2021 13:10:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=btuTjvcM;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Mg3IeQjA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54744 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55896 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lssuM-0001C2-RX
-	for alex.bennee@linaro.org; Mon, 14 Jun 2021 16:10:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49120)
+	id 1lssuw-00026x-Cp
+	for alex.bennee@linaro.org; Mon, 14 Jun 2021 16:10:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49260)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lssu9-00018d-SA
- for qemu-arm@nongnu.org; Mon, 14 Jun 2021 16:09:53 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:25746)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lssuQ-000227-3Q
+ for qemu-arm@nongnu.org; Mon, 14 Jun 2021 16:10:10 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:22567)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lssu7-0002rh-Le
- for qemu-arm@nongnu.org; Mon, 14 Jun 2021 16:09:53 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lssuN-00031T-TW
+ for qemu-arm@nongnu.org; Mon, 14 Jun 2021 16:10:09 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1623701391;
+ s=mimecast20190719; t=1623701407;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=40vzgrQVAoTrypUvftjd8gyH06NkxRrNl5FBl3A4XCw=;
- b=btuTjvcMo7LblntTDX7pJexHV+ZOeLHGQTUvMeQf4ZLWGJmVa5Re0dZcUHNuxx5szu/Gkj
- 7LhaB88T3BPBI00ZL1E+h05951PyR8DgMjKCuzgG6axp0VRqvGSL2PVQAlooXo1OS4M99y
- cVRgfvSpWWw9Ocmky/aLOTn/rFUh9ps=
+ bh=983yM9Ivhh0Jdv/knxi7k66F6inZsKoawfPPt/Wd0Sg=;
+ b=Mg3IeQjAaEXNt6AIoRDocbPVsfKBXifJ8l7nsYkHcm/QaQRkgnYHWDsQGP5NV4YIaj1jOH
+ hvulwSzEEb5QJ4Gdki7CQoF8caq5ytVbDZ3qgHYkMMlq5MGAVLekvL1QqYhopBjbVkOuzi
+ FzEhIgHPh4QKDIlKIS9L9w9ADMe03wo=
 Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
  [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-510-3cJAGtSwNh6kYdQa0Eb1og-1; Mon, 14 Jun 2021 16:09:47 -0400
-X-MC-Unique: 3cJAGtSwNh6kYdQa0Eb1og-1
+ us-mta-442-0tXir73bO2m4dL7hITFvCQ-1; Mon, 14 Jun 2021 16:10:05 -0400
+X-MC-Unique: 0tXir73bO2m4dL7hITFvCQ-1
 Received: by mail-wr1-f69.google.com with SMTP id
- h104-20020adf90710000b029010de8455a3aso7507621wrh.12
- for <qemu-arm@nongnu.org>; Mon, 14 Jun 2021 13:09:47 -0700 (PDT)
+ z4-20020adfe5440000b0290114f89c9931so7477075wrm.17
+ for <qemu-arm@nongnu.org>; Mon, 14 Jun 2021 13:10:05 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=40vzgrQVAoTrypUvftjd8gyH06NkxRrNl5FBl3A4XCw=;
- b=AyFvpy+6jWuG/NjF8S7yR8Q0ZpuIvoCr/Wk081GUj3mJRAcVpIz3gYUxxmCoGZpEU4
- ljd6S2hqGGWrmlPitqw2GxZLflwfSoLo+EiEiqPzcABWd98l97kMlx4d2cavexjySK76
- 9LV4R44OAQ994y69etDRtXzMR0QXQh+8r1sVeX1Of/CzB84tlsRnoE7HWBVShifKmsHv
- cmMssuFBfPDrJUPmvIcw66AlFHM8LCzQp68GtOAcyE5MGAICDC+h4s6aZ+7kuTROyVu9
- JEKczuI/n0axIOEGVgXNHHFoTmjm6sBm+VnkHMjHtwWAiigowsTRpyE/JTd6oGmbOy+i
- wq+w==
-X-Gm-Message-State: AOAM531TGtAyxlo1j9EQFYKyP8xR5CwrcbC49V0A5Xpcxdlyph20w0fB
- 8nag+m4gUse/dYcBy94hFoqNQso57JoHZZBN2QMYJel4NlJQ5fZ+osVZw0GGBa0bOea3Gvxbmjj
- Nk1KHv+2lfmE2
-X-Received: by 2002:a05:600c:5112:: with SMTP id
- o18mr17697357wms.15.1623701386740; 
- Mon, 14 Jun 2021 13:09:46 -0700 (PDT)
-X-Received: by 2002:a05:600c:5112:: with SMTP id
- o18mr17697335wms.15.1623701386557; 
- Mon, 14 Jun 2021 13:09:46 -0700 (PDT)
+ bh=983yM9Ivhh0Jdv/knxi7k66F6inZsKoawfPPt/Wd0Sg=;
+ b=czUnVjhqB1ysUDpvYL1EWhE9zmtgk5FI1Jgmq6GgCWX6hgmHs6MFhfWvAXwfK3Fj0S
+ NAwORk/pPPrxvX8wOOGlAj/vzybBJINhaio9wU1ktdYDVF9iR3dTIevC3NYFTysQQYTA
+ Qrdhc12aYmM6yw6Ek3ftw5AOuaE7SxFXF8dI2rhoSVqIeKI/wMpfgHHZ8wkc4QECDyVs
+ uUE/qDN8fWPpUZN7TP0xtlXfmupSPgMqFYQv9w9LbwV/PeRxt6OjAm+zS20y6Gd7wY7P
+ EaH16fKRNX4Y929PAcrNn+SSxsAMYggdkwF7KARXavVNLe8iIKT4ed3pyJ5i2/a6Nrcz
+ KMSw==
+X-Gm-Message-State: AOAM533bhY2r5MHSAaKgDsM40gvdqJ7TSRHawHdZk54oTJ8kki1h9jU0
+ rSTelJ9jTpdgWDqlY7NcvTniE0Veu0aEGdVuoawL5Z+V5AvKpOrveaKe61Dg/dEye3VSHe5zsKo
+ iW6Iz4q+1Wq1E
+X-Received: by 2002:a05:600c:214c:: with SMTP id v12mr7732wml.33.1623701404808; 
+ Mon, 14 Jun 2021 13:10:04 -0700 (PDT)
+X-Received: by 2002:a05:600c:214c:: with SMTP id v12mr7711wml.33.1623701404620; 
+ Mon, 14 Jun 2021 13:10:04 -0700 (PDT)
 Received: from x1w.. (93.red-83-35-24.dynamicip.rima-tde.net. [83.35.24.93])
- by smtp.gmail.com with ESMTPSA id r1sm3338409wmh.32.2021.06.14.13.09.45
+ by smtp.gmail.com with ESMTPSA id r3sm13478975wmq.8.2021.06.14.13.10.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 14 Jun 2021 13:09:46 -0700 (PDT)
+ Mon, 14 Jun 2021 13:10:04 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 1/5] i386: Eliminate all TPM related code if CONFIG_TPM is
- not set
-Date: Mon, 14 Jun 2021 22:09:36 +0200
-Message-Id: <20210614200940.2056770-2-philmd@redhat.com>
+Subject: [PATCH v3 5/5] tpm: Return QMP error when TPM is disabled in build
+Date: Mon, 14 Jun 2021 22:09:40 +0200
+Message-Id: <20210614200940.2056770-6-philmd@redhat.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210614200940.2056770-1-philmd@redhat.com>
 References: <20210614200940.2056770-1-philmd@redhat.com>
@@ -133,174 +130,213 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Stefan Berger <stefanb@linux.vnet.ibm.com>,
  Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
- Igor Mammedov <imammedo@redhat.com>, Eric Blake <eblake@redhat.com>,
- Stefan Berger <stefanb@linux.ibm.com>
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>, Eric Blake <eblake@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LTx7ol20Jte+
+X-TUID: LrOK433Jg0cC
 
-From: Stefan Berger <stefanb@linux.ibm.com>
+When the management layer queries a binary built using --disable-tpm
+for TPM devices, it gets confused by getting empty responses:
 
-Cc: Michael S. Tsirkin <mst@redhat.com>
-Cc: Igor Mammedov <imammedo@redhat.com>
-Signed-off-by: Stefan Berger <stefanb@linux.ibm.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20210614191335.1968807-2-stefanb@linux.ibm.com>
+  { "execute": "query-tpm" }
+  {
+      "return": [
+      ]
+  }
+  { "execute": "query-tpm-types" }
+  {
+      "return": [
+      ]
+  }
+  { "execute": "query-tpm-models" }
+  {
+      "return": [
+      ]
+  }
+
+To make it clearer by returning an error:
+- Make the TPM QAPI schema conditional
+- Adapt the HMP command
+- Remove stubs which became unnecessary
+
+The management layer now gets a 'CommandNotFound' error:
+
+  { "execute": "query-tpm" }
+  {
+      "error": {
+          "class": "CommandNotFound",
+          "desc": "The command query-tpm has not been found"
+      }
+  }
+
+Suggested-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- hw/i386/acpi-build.c | 20 ++++++++++++++++++++
- stubs/tpm.c          |  4 ----
- 2 files changed, 20 insertions(+), 4 deletions(-)
+ qapi/tpm.json      | 28 +++++++++++++++++++---------
+ monitor/hmp-cmds.c |  4 ++++
+ stubs/tpm.c        | 25 -------------------------
+ stubs/meson.build  |  1 -
+ 4 files changed, 23 insertions(+), 35 deletions(-)
+ delete mode 100644 stubs/tpm.c
 
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index 80bee00da66..796ffc6f5c4 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -107,7 +107,9 @@ typedef struct AcpiPmInfo {
- typedef struct AcpiMiscInfo {
-     bool is_piix4;
-     bool has_hpet;
-+#ifdef CONFIG_TPM
-     TPMVersion tpm_version;
-+#endif
-     const unsigned char *dsdt_code;
-     unsigned dsdt_size;
-     uint16_t pvpanic_port;
-@@ -286,7 +288,9 @@ static void acpi_get_misc_info(AcpiMiscInfo *info)
-     }
+diff --git a/qapi/tpm.json b/qapi/tpm.json
+index 6a10c9ed8d2..75590979fde 100644
+--- a/qapi/tpm.json
++++ b/qapi/tpm.json
+@@ -17,7 +17,9 @@
+ #
+ # Since: 1.5
+ ##
+-{ 'enum': 'TpmModel', 'data': [ 'tpm-tis', 'tpm-crb', 'tpm-spapr' ] }
++{ 'enum': 'TpmModel', 'data': [ 'tpm-tis', 'tpm-crb', 'tpm-spapr' ],
++  'if': 'defined(CONFIG_TPM)' }
++
+ ##
+ # @query-tpm-models:
+ #
+@@ -33,7 +35,8 @@
+ # <- { "return": [ "tpm-tis", "tpm-crb", "tpm-spapr" ] }
+ #
+ ##
+-{ 'command': 'query-tpm-models', 'returns': ['TpmModel'] }
++{ 'command': 'query-tpm-models', 'returns': ['TpmModel'],
++  'if': 'defined(CONFIG_TPM)' }
  
-     info->has_hpet = hpet_find();
-+#ifdef CONFIG_TPM
-     info->tpm_version = tpm_get_version(tpm_find());
-+#endif
-     info->pvpanic_port = pvpanic_port();
-     info->applesmc_io_base = applesmc_port();
- }
-@@ -1371,7 +1375,9 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
-     uint32_t nr_mem = machine->ram_slots;
-     int root_bus_limit = 0xFF;
-     PCIBus *bus = NULL;
-+#ifdef CONFIG_TPM
-     TPMIf *tpm = tpm_find();
-+#endif
-     int i;
-     VMBusBridge *vmbus_bridge = vmbus_bridge_find();
+ ##
+ # @TpmType:
+@@ -46,7 +49,8 @@
+ #
+ # Since: 1.5
+ ##
+-{ 'enum': 'TpmType', 'data': [ 'passthrough', 'emulator' ] }
++{ 'enum': 'TpmType', 'data': [ 'passthrough', 'emulator' ],
++  'if': 'defined(CONFIG_TPM)' }
  
-@@ -1604,10 +1610,12 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
-         }
-     }
+ ##
+ # @query-tpm-types:
+@@ -63,7 +67,8 @@
+ # <- { "return": [ "passthrough", "emulator" ] }
+ #
+ ##
+-{ 'command': 'query-tpm-types', 'returns': ['TpmType'] }
++{ 'command': 'query-tpm-types', 'returns': ['TpmType'],
++  'if': 'defined(CONFIG_TPM)' }
  
-+#ifdef CONFIG_TPM
-     if (TPM_IS_TIS_ISA(tpm_find())) {
-         aml_append(crs, aml_memory32_fixed(TPM_TIS_ADDR_BASE,
-                    TPM_TIS_ADDR_SIZE, AML_READ_WRITE));
-     }
-+#endif
-     aml_append(scope, aml_name_decl("_CRS", crs));
+ ##
+ # @TPMPassthroughOptions:
+@@ -79,7 +84,8 @@
+ ##
+ { 'struct': 'TPMPassthroughOptions',
+   'data': { '*path': 'str',
+-            '*cancel-path': 'str' } }
++            '*cancel-path': 'str' },
++  'if': 'defined(CONFIG_TPM)' }
  
-     /* reserve GPE0 block resources */
-@@ -1753,6 +1761,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
-             /* Scan all PCI buses. Generate tables to support hotplug. */
-             build_append_pci_bus_devices(scope, bus, pm->pcihp_bridge_en);
+ ##
+ # @TPMEmulatorOptions:
+@@ -90,7 +96,8 @@
+ #
+ # Since: 2.11
+ ##
+-{ 'struct': 'TPMEmulatorOptions', 'data': { 'chardev' : 'str' } }
++{ 'struct': 'TPMEmulatorOptions', 'data': { 'chardev' : 'str' },
++  'if': 'defined(CONFIG_TPM)' }
  
-+#ifdef CONFIG_TPM
-             if (TPM_IS_TIS_ISA(tpm)) {
-                 if (misc->tpm_version == TPM_VERSION_2_0) {
-                     dev = aml_device("TPM");
-@@ -1780,11 +1789,13 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+ ##
+ # @TpmTypeOptions:
+@@ -104,7 +111,8 @@
+ ##
+ { 'union': 'TpmTypeOptions',
+    'data': { 'passthrough' : 'TPMPassthroughOptions',
+-             'emulator': 'TPMEmulatorOptions' } }
++             'emulator': 'TPMEmulatorOptions' },
++  'if': 'defined(CONFIG_TPM)' }
  
-                 aml_append(scope, dev);
-             }
-+#endif
+ ##
+ # @TPMInfo:
+@@ -122,7 +130,8 @@
+ { 'struct': 'TPMInfo',
+   'data': {'id': 'str',
+            'model': 'TpmModel',
+-           'options': 'TpmTypeOptions' } }
++           'options': 'TpmTypeOptions' },
++  'if': 'defined(CONFIG_TPM)' }
  
-             aml_append(sb_scope, scope);
-         }
-     }
+ ##
+ # @query-tpm:
+@@ -152,4 +161,5 @@
+ #    }
+ #
+ ##
+-{ 'command': 'query-tpm', 'returns': ['TPMInfo'] }
++{ 'command': 'query-tpm', 'returns': ['TPMInfo'],
++  'if': 'defined(CONFIG_TPM)' }
+diff --git a/monitor/hmp-cmds.c b/monitor/hmp-cmds.c
+index d10ee141109..f6cadede40f 100644
+--- a/monitor/hmp-cmds.c
++++ b/monitor/hmp-cmds.c
+@@ -901,6 +901,9 @@ void hmp_info_pci(Monitor *mon, const QDict *qdict)
  
-+#ifdef CONFIG_TPM
-     if (TPM_IS_CRB(tpm)) {
-         dev = aml_device("TPM");
-         aml_append(dev, aml_name_decl("_HID", aml_string("MSFT0101")));
-@@ -1799,6 +1810,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
- 
-         aml_append(sb_scope, dev);
-     }
-+#endif
- 
-     aml_append(dsdt, sb_scope);
- 
-@@ -1828,6 +1840,7 @@ build_hpet(GArray *table_data, BIOSLinker *linker, const char *oem_id,
-                  "HPET", sizeof(*hpet), 1, oem_id, oem_table_id);
- }
- 
-+#ifdef CONFIG_TPM
- static void
- build_tpm_tcpa(GArray *table_data, BIOSLinker *linker, GArray *tcpalog,
-                const char *oem_id, const char *oem_table_id)
-@@ -1854,6 +1867,7 @@ build_tpm_tcpa(GArray *table_data, BIOSLinker *linker, GArray *tcpalog,
-                  (void *)(table_data->data + tcpa_start),
-                  "TCPA", sizeof(*tcpa), 2, oem_id, oem_table_id);
- }
-+#endif
- 
- #define HOLE_640K_START  (640 * KiB)
- #define HOLE_640K_END   (1 * MiB)
-@@ -2403,6 +2417,7 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
-         build_hpet(tables_blob, tables->linker, x86ms->oem_id,
-                    x86ms->oem_table_id);
-     }
-+#ifdef CONFIG_TPM
-     if (misc.tpm_version != TPM_VERSION_UNSPEC) {
-         if (misc.tpm_version == TPM_VERSION_1_2) {
-             acpi_add_table(table_offsets, tables_blob);
-@@ -2414,6 +2429,7 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
-                        x86ms->oem_id, x86ms->oem_table_id);
-         }
-     }
-+#endif
-     if (pcms->numa_nodes) {
-         acpi_add_table(table_offsets, tables_blob);
-         build_srat(tables_blob, tables->linker, machine);
-@@ -2605,8 +2621,10 @@ void acpi_setup(void)
-     AcpiBuildTables tables;
-     AcpiBuildState *build_state;
-     Object *vmgenid_dev;
-+#ifdef CONFIG_TPM
-     TPMIf *tpm;
-     static FwCfgTPMConfig tpm_config;
-+#endif
- 
-     if (!x86ms->fw_cfg) {
-         ACPI_BUILD_DPRINTF("No fw cfg. Bailing out.\n");
-@@ -2638,6 +2656,7 @@ void acpi_setup(void)
-         acpi_add_rom_blob(acpi_build_update, build_state,
-                           tables.linker->cmd_blob, ACPI_BUILD_LOADER_FILE);
- 
-+#ifdef CONFIG_TPM
-     fw_cfg_add_file(x86ms->fw_cfg, ACPI_BUILD_TPMLOG_FILE,
-                     tables.tcpalog->data, acpi_data_len(tables.tcpalog));
- 
-@@ -2651,6 +2670,7 @@ void acpi_setup(void)
-         fw_cfg_add_file(x86ms->fw_cfg, "etc/tpm/config",
-                         &tpm_config, sizeof tpm_config);
-     }
-+#endif
- 
-     vmgenid_dev = find_vmgenid_dev();
-     if (vmgenid_dev) {
-diff --git a/stubs/tpm.c b/stubs/tpm.c
-index 9bded191d9d..22014595a06 100644
---- a/stubs/tpm.c
-+++ b/stubs/tpm.c
-@@ -33,7 +33,3 @@ TpmModelList *qmp_query_tpm_models(Error **errp)
+ void hmp_info_tpm(Monitor *mon, const QDict *qdict)
  {
-     return NULL;
++#ifndef CONFIG_TPM
++    monitor_printf(mon, "TPM device not supported\n");
++#else
+     TPMInfoList *info_list, *info;
+     Error *err = NULL;
+     unsigned int c = 0;
+@@ -946,6 +949,7 @@ void hmp_info_tpm(Monitor *mon, const QDict *qdict)
+         c++;
+     }
+     qapi_free_TPMInfoList(info_list);
++#endif /* CONFIG_TPM */
  }
+ 
+ void hmp_quit(Monitor *mon, const QDict *qdict)
+diff --git a/stubs/tpm.c b/stubs/tpm.c
+deleted file mode 100644
+index e79bd2a6c2d..00000000000
+--- a/stubs/tpm.c
++++ /dev/null
+@@ -1,25 +0,0 @@
+-/*
+- * TPM stubs
+- *
+- * This work is licensed under the terms of the GNU GPL, version 2 or later.
+- * See the COPYING file in the top-level directory.
+- */
 -
--void tpm_build_ppi_acpi(TPMIf *tpm, Aml *dev)
+-#include "qemu/osdep.h"
+-#include "qapi/qapi-commands-tpm.h"
+-#include "hw/acpi/tpm.h"
+-
+-TPMInfoList *qmp_query_tpm(Error **errp)
 -{
+-    return NULL;
 -}
+-
+-TpmTypeList *qmp_query_tpm_types(Error **errp)
+-{
+-    return NULL;
+-}
+-
+-TpmModelList *qmp_query_tpm_models(Error **errp)
+-{
+-    return NULL;
+-}
+diff --git a/stubs/meson.build b/stubs/meson.build
+index 65c22c0568c..d4e9549dc99 100644
+--- a/stubs/meson.build
++++ b/stubs/meson.build
+@@ -38,7 +38,6 @@
+ stub_ss.add(files('sysbus.c'))
+ stub_ss.add(files('target-get-monitor-def.c'))
+ stub_ss.add(files('target-monitor-defs.c'))
+-stub_ss.add(files('tpm.c'))
+ stub_ss.add(files('trace-control.c'))
+ stub_ss.add(files('uuid.c'))
+ stub_ss.add(files('vmgenid.c'))
 -- 
 2.31.1
 

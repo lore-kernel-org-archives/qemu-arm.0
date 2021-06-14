@@ -1,186 +1,143 @@
-Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp2246545lff;
-        Mon, 14 Jun 2021 12:17:14 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyLC/qycmKSoPmx8/Nlj3cS+WiVJLjb6XqdpNQCXCxLsUXwo0Iv1+XKekZWDT02SiqqSKTg
-X-Received: by 2002:aa7:c3ce:: with SMTP id l14mr18657820edr.99.1623698234016;
-        Mon, 14 Jun 2021 12:17:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623698234; cv=none;
+Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp2249625lff;
+        Mon, 14 Jun 2021 12:21:28 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxXXhAzMh7P3Q9E5QrRW9rIPVKqmnQ1MqzVv0cwsLEwoGJi6NO9FgWhNq6I4iDswvmmjrfg
+X-Received: by 2002:a5d:47cb:: with SMTP id o11mr20636591wrc.38.1623698488637;
+        Mon, 14 Jun 2021 12:21:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623698488; cv=none;
         d=google.com; s=arc-20160816;
-        b=QI76WZ4x8nxZrYdGkwjPz2p5n8rtMQAt5BvJUBjuKzBqeAAMIKDvbNmcjNqciZSuE5
-         8szCh/wHNYs3i+xlZtgy0hMD9SZCZVZ3Qkdu+lR7HrEysIdejFWhNMRrybYh9z24eKzG
-         BS6XLiaPN6PsCrUsZVdu0CTUDBZu1QbPAoNEK+MZfZFf8qDczpACK2dTti8tnWOQOi6g
-         Sw6QQn93lbPa9KXAJFrB0I3aLqj0gCEx3lfyjPIvydK7zH32KncgqVR4FfH3L5lPgTJP
-         ZNkKB+GQR7gtzM7DepIbHrEjaNkgPbuXSQmFZYQZ7MHVhwqDqOX0apiKUGVYcY+mxtSi
-         NHlA==
+        b=jxWLHjZ9faOKAoe1/ij7iKWIno23MgvanRKUB/xO5VxDPKJsX4oV7+s2CwaEe37vlD
+         nN7ROcBVW/HyH8/kfJrWzCitvuR9bNYJf4WZOOp/ddAakOvl9Zv7Sok1T3/fPe4wnJTd
+         YQXybdWML41pW2sPV3cla9OU14lzRL8O7nCHnJ3xJNkxcTDmHWG43M9xc+RA1PjOMKLN
+         xZF3R/RBrQmPfDBTbta7lSxuf2jeteP+LJjH+FORIckeUs9/s9Kw1uqv/GHXZTxehNo+
+         P0v0lxZvZ9ZGvGRfr5izYy80FvRcvIczJ3ELvX1MwsRGmZnAQe4cqAfFuAYJMike4//o
+         d6/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=IDEQ3CQ7DSnATLxeRFmOx8WuykiK69J0la5swz5Ihf0=;
-        b=K7bFaFfLAgLb67xpvwT9gg0IxiHhDJAhA3pMxCmUDCCO2IHdWkbyPNcC1PKEIiMyEo
-         M5EbAOueGVh7TD91UQSN/qLN/Rpg/nrPvfr9phH48tCoGXI7NuQRfV2QQ2gCZERiXjyv
-         /UmZASrfcSxWqMS/fNhYM1ttnjLQk+vIs7Xg5XXYdnbZG2tARpSx5pQO4X4yUfzhMkbU
-         NdsV+rG8T6LEknfdun7JXy2LbadEZ3IneupvF3Loi2O7WAZVr2ind/YaRkOm5QkwjWZd
-         f8fkQRfwQ2bDNxKvbEit5SINnxGr6+8JlAhhxQjGvQdI9jUV2EvZ2FHSMEbnU2MGB+Os
-         sEgQ==
+        bh=SNdXnr1gFQuDYNXy35VNpIVS6LJ2vn/tLdKps1dm1Uw=;
+        b=J7YPtgKWX/huY1JXR827NY/scSkfSuH7K3+I7UZ2vWaQd9TpUSBeEshQLDluF348rt
+         pnA7YXP+7jBK3iBujyw7E54rycWWgxmgy3PqYC6BJcsbBBn7Z0v7EopmunCNfqITbOEj
+         uuMt78WnfSlHU0IA0GU5eKuVIhnpj2bBPpqa40accUTzvCqVKmeEItpZQZtfzNZLljqF
+         LeVfGbHSiDF4JXTARlqAZxdcHrdsqZgO63kkvpk2Qf1xtgdqzVBcrcBsVn4N/brMGgGN
+         9s+ason0qw2Hgc+Vil3KHmE83A+LSn9dYW0jmhemIH9cVMnbFavzdULiOZgIAQDo6LMd
+         /2Hg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SLE+OMkU;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=vzvFZBp1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 8si7907491eje.741.2021.06.14.12.17.13
+        by mx.google.com with ESMTPS id c11si16640094wrw.122.2021.06.14.12.21.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Jun 2021 12:17:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 14 Jun 2021 12:21:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SLE+OMkU;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=vzvFZBp1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42842 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52716 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lss5B-0001C4-2H
-	for alex.bennee@linaro.org; Mon, 14 Jun 2021 15:17:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40984)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lss9H-0007ro-Pp
+	for alex.bennee@linaro.org; Mon, 14 Jun 2021 15:21:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41778)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lss3V-0007R9-Au
- for qemu-devel@nongnu.org; Mon, 14 Jun 2021 15:15:29 -0400
-Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533]:40830)
+ id 1lss8w-0007oz-66
+ for qemu-arm@nongnu.org; Mon, 14 Jun 2021 15:21:06 -0400
+Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433]:37601)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lss3T-0002al-4e
- for qemu-devel@nongnu.org; Mon, 14 Jun 2021 15:15:28 -0400
-Received: by mail-pg1-x533.google.com with SMTP id m2so2736272pgk.7
- for <qemu-devel@nongnu.org>; Mon, 14 Jun 2021 12:15:26 -0700 (PDT)
+ id 1lss8s-00065t-Q4
+ for qemu-arm@nongnu.org; Mon, 14 Jun 2021 15:21:05 -0400
+Received: by mail-pf1-x433.google.com with SMTP id y15so11317928pfl.4
+ for <qemu-arm@nongnu.org>; Mon, 14 Jun 2021 12:21:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:references:from:message-id:date:user-agent:mime-version
  :in-reply-to:content-language:content-transfer-encoding;
- bh=IDEQ3CQ7DSnATLxeRFmOx8WuykiK69J0la5swz5Ihf0=;
- b=SLE+OMkUjT1X4A9f6WYv87h2uRyt2TpO9yMNkk/CM79+QQRmbsmLT2J+17Sg8uGg40
- TL/Wrr/8OqAKroWWA8I76quQv5/pi7g8wcO3BqZ9KDfZrhCFd3dp7qeM4Q6mTHd6vv/0
- tagVHW6pcrbdC5lfvOFvI8JpNzL4tn5WpJtuIRHLKGBar95OfeJNUWCmgOdDMzNVX5C5
- vVcOQOLfoTBsuL8i8dWSxPvK99Xy4te5wnl6tLkXPHVzyEfE0TNMUypQTBExcDVI21GB
- 5K6wSIb91eG+fl59K85D3ltx0hPLMf9RmbfRdQNRZuuoiS5IfDbwHVwDmZgNNus93RNw
- if6w==
+ bh=SNdXnr1gFQuDYNXy35VNpIVS6LJ2vn/tLdKps1dm1Uw=;
+ b=vzvFZBp1CErX+EcQOc5/Nuwm2a0+T0yp9j3OPw7zqN1ckl5jvkSspIkZqsEkQcBb9D
+ fN20VU40ASPwk/mIvZ2GvzXcw5bmHXDIa1/Gbc4/99w5OrJdCe3NeQVkAfLoFWFzDcF7
+ Q2moRPEs/1cLV18KfYWi3hBxMYOh7fwvMzGvTj2ExU1fNSiRopjCkg6uhizwR60p9+Y5
+ LbcjJ+GOyrui5fDG6JL6w7+raTpyLpjKlpjWF1ybAmueebl1Tz6UO4At1QHjKwsJH/RE
+ MAypM+FkkeRaJsbtTa8FmFVPRZp8hx8xcWbCd3sEHgk+moYVqXJQgVOBFFwJaBrASTcX
+ OkNg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=IDEQ3CQ7DSnATLxeRFmOx8WuykiK69J0la5swz5Ihf0=;
- b=oCzlXF3GDhw8nV5n815XWNTDCJUZExxP6oximVPcGXpzN2apOnffdGSrdGNhJx0P0J
- U+/fjuKPLylVRg35RD8AqUcTXSLjgvVXedK3ksBwwI/ImlktWoh65eRyYdwMiJkQRb4S
- gXm25tnHS5FDih/IhpgdTHay83i9OjcVPQ5XaPBiM/iJAVQGhMx/wDRlImWEf4MtqFv9
- HSc/EeI15bgYWUh3eAXeGaMaegqVXb5nAe9JkUuzyNSZePyjPqD3USsg/BIyHWA+a73H
- m8z2egcwtsJpKMA4mjlZm1mL45xnFa4VHVS2WxnDe1DiCBo/w1gjeXnEN2XP4/4l5lrw
- Sg3g==
-X-Gm-Message-State: AOAM530oJYwo3Wq6oL00GAU39dkwKsvMdaTodagq2ktYksWQHNYIuip/
- nohkGBdGf7hBH4tmSEbrabPjOzASBFJcaA==
-X-Received: by 2002:a63:4c09:: with SMTP id z9mr8394596pga.283.1623698125392; 
- Mon, 14 Jun 2021 12:15:25 -0700 (PDT)
+ bh=SNdXnr1gFQuDYNXy35VNpIVS6LJ2vn/tLdKps1dm1Uw=;
+ b=rRxRtctxyU7IVhGt7mtt80LC0UdurB8jQcaUbEo1Ir5eTMzejmnLiYeRIHMhOAY9/9
+ /OjQUOsP5GW8DXxsKACvyywOGHL6WUh02j3jqVBMkLVhVG7FJz0lHe0e8i7+UAV1lqw7
+ mwd8MACiKqGC/iIOQkK1Q9Lt/xIAcaFOHQjQxUplueR8xndzb47yFDnR+qrGu2mRHU9U
+ uul1epTGfMVtynr/d4VSKVFU9QoxlOiKyYNVeT7mEMsbPOCz2D+rpAVNX3ctfuWxZHhE
+ 5S4PJUP5ut6TFeI2Ee7DBOSijCQIbhD8YQt1EOcaE/U5XvaifSWC8NXWuCm/tAthbZkR
+ b5pg==
+X-Gm-Message-State: AOAM530IzES5BB9uzWjVecqR5s09na74qkgFPkkHtwbYOUC6d89vRCsB
+ fR1zXD7i5jk9OlxWg3ZO8jKQjw==
+X-Received: by 2002:a65:47ca:: with SMTP id f10mr10749983pgs.94.1623698461213; 
+ Mon, 14 Jun 2021 12:21:01 -0700 (PDT)
 Received: from [192.168.1.11] (174-21-70-228.tukw.qwest.net. [174.21.70.228])
  by smtp.gmail.com with ESMTPSA id
- z9sm13399399pfc.101.2021.06.14.12.15.24
+ v8sm276103pff.34.2021.06.14.12.21.00
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 14 Jun 2021 12:15:25 -0700 (PDT)
-Subject: Re: [PATCH v2 04/57] target/arm: Add handling for PSR.ECI/ICI
+ Mon, 14 Jun 2021 12:21:01 -0700 (PDT)
+Subject: Re: [PATCH v2 07/57] target/arm: Implement MVE WLSTP insn
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20210614151007.4545-1-peter.maydell@linaro.org>
- <20210614151007.4545-5-peter.maydell@linaro.org>
+ <20210614151007.4545-8-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <ea4f1b0c-4e7a-c900-3bdf-d24bda0b5b29@linaro.org>
-Date: Mon, 14 Jun 2021 12:15:23 -0700
+Message-ID: <1d66f483-cc5c-9e75-a469-d933a1e601c2@linaro.org>
+Date: Mon, 14 Jun 2021 12:20:59 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <20210614151007.4545-5-peter.maydell@linaro.org>
+In-Reply-To: <20210614151007.4545-8-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::533;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x533.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x433.google.com
 X-Spam_score_int: -25
 X-Spam_score: -2.6
 X-Spam_bar: --
 X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.489,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CI0DlZ76H9U0
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: f3dvO3rHidhv
 
 On 6/14/21 8:09 AM, Peter Maydell wrote:
-> On A-profile, PSR bits [15:10][26:25] are always the IT state bits.
-> On M-profile, some of the reserved encodings of the IT state are used
-> to instead indicate partial progress through instructions that were
-> interrupted partway through by an exception and can be resumed.
+> Implement the MVE WLSTP insn; this is like the existing WLS insn,
+> except that it specifies a size value which is used to set
+> FPSCR.LTPSIZE.
 > 
-> These resumable instructions fall into two categories:
-> 
-> (1) load/store multiple instructions, where these bits are called
-> "ICI" and specify the register in the ldm/stm list where execution
-> should resume.  (Specifically: LDM, STM, VLDM, VSTM, VLLDM, VLSTM,
-> CLRM, VSCCLRM.)
-> 
-> (2) MVE instructions subject to beatwise execution, where these bits
-> are called "ECI" and specify which beats in this and possibly also
-> the following MVE insn have been executed.
-> 
-> There are also a few insns (LE, LETP, and BKPT) which do not use the
-> ICI/ECI bits but must leave them alone.
-> 
-> Otherwise, we should raise an INVSTATE UsageFault for any attempt to
-> execute an insn with non-zero ICI/ECI bits.
-> 
-> So far we have been able to ignore ECI/ICI, because the architecture
-> allows the IMPDEF choice of "always restart load/store multiple from
-> the beginning regardless of ICI state", so the only thing we have
-> been missing is that we don't raise the INVSTATE fault for bad guest
-> code.  However, MVE requires that we honour ECI bits and do not
-> rexecute beats of an insn that have already been executed.
-> 
-> Add the support in the decoder for handling ECI/ICI:
->   * identify the ECI/ICI case in the CONDEXEC TB flags
->   * when a load/store multiple insn succeeds, it updates the ECI/ICI
->     state (both in DisasContext and in the CPU state), and sets a flag
->     to say that the ECI/ICI state was handled
->   * if we find that the insn we just decoded did not handle the
->     ECI/ICI state, we delete all the code that we just generated for
->     it and instead emit the code to raise the INVFAULT.  This allows
->     us to avoid having to update every non-MVE non-LDM/STM insn to
->     make it check for "is ECI/ICI set?".
-> 
-> We continue with our existing IMPDEF choice of not caring about the
-> ICI state for the load/store multiples and simply restarting them
-> from the beginning.  Because we don't allow interrupts in the middle
-> of an insn, the only way we would see this state is if the guest set
-> ICI manually on return from an exception handler, so it's a corner
-> case which doesn't merit optimisation.
-> 
-> ICI update for LDM/STM is simple -- it always zeroes the state.  ECI
-> update for MVE beatwise insns will be a little more complex, since
-> the ECI state may include information for the following insn.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
 > ---
-> v1->v2: minor changes as suggested by rth
+> v1->v2: swapped LE/WLS lines in t32.decode; added missing return
+> ---
+>   target/arm/t32.decode  |  8 ++++++--
+>   target/arm/translate.c | 37 ++++++++++++++++++++++++++++++++++++-
+>   2 files changed, 42 insertions(+), 3 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

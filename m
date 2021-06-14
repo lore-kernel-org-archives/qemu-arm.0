@@ -1,191 +1,381 @@
-Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp2067866lff;
-        Mon, 14 Jun 2021 08:21:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwmwqfqRli7Zq/AvrPhvFl9sjnM7vUnyB0YDV+PlXRm7pdY/Hf/EYyEfyCgpJagm7w71gkv
-X-Received: by 2002:a17:906:8a55:: with SMTP id gx21mr16056145ejc.179.1623684103419;
-        Mon, 14 Jun 2021 08:21:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623684103; cv=none;
+Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp2068445lff;
+        Mon, 14 Jun 2021 08:22:25 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzXsk2c41eucT2FxxSxH1A29+z5DSuVcMQ6Vrkqf1g3t4dsPyrcIYdufQM6WQOH+LPNY30o
+X-Received: by 2002:a50:fb8f:: with SMTP id e15mr17212769edq.46.1623684145234;
+        Mon, 14 Jun 2021 08:22:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623684145; cv=none;
         d=google.com; s=arc-20160816;
-        b=kFGHA0OJXZ3C4U1bFkWA8P4qZSr0Q2IVNuvYyk0MyUS1CWLFCfCSWTZ/aO70Na+z+d
-         6Q1oqnItXHA8yy2S9zY1tPou9SgKHy+nbNUrtQfq4g+SfB/3NgfrnoF+jScOz0A6zlsQ
-         NpZrnGZULibHvH8T7jJNyxTtnHBiX9hLTIIowe5GDHU59AEUy8Mhsthi4tENujFyF+s1
-         iq+QixaR0ev44RzXD6tinGKkbghXnqJKC2wAMrCS3PZ06wpmyVS63GT3Tp7TrwecmZfx
-         nSUJ4ZR3XY2RZCpwZRlLkSvCf6PFOZkiqdxTdvl48HSaQ1P2LCU/sY4hHpjOLgc6KCy5
-         gFsA==
+        b=b/zRmNjkQV9IfDvgsiC7S+dsEbpPFfMSnx/x6mUdvX08FbW76TxpeCEpCrMo0RGbMP
+         3bRQ9qp40hh9dqcmLRhEKxtHrrSbXN2FPI7XpO6a4ORoCfGdjHrxSPntCTyP/nLC8QTQ
+         ip5NdUTF6vHJbW8jfl0Na6+EKmdBcEX3A/l2muqCayZnuss6DdxCbsUctC9ZR9H0yr6O
+         mIaCLUGSNK6PLh7yioIsiDJNIRGzXV3D5+YsWm4D47eiCV0DLnwp8wmu77cz9nMh5yOu
+         s4ozpoJ2coZluykHM28hKiq/Wznnisv1Q8kblCLDN9cdUzX1Bstbkgp+Z8V6+jPWrI6C
+         GkFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=rl5qJBg3qQz3yb23IGMzCXWq2gFztrjsomKiGeGjjRc=;
-        b=rI9GG1Ci8NCQ+rVp0o4450CQct4/X/IM5SML6LFJkJzDyDS3fmtNH8YbJHinCITaIM
-         EfpSnyQsaDiy8jFli5Er6IcTOMvABzb5YSYez8oPSWwL6f0QstqJj2Kn6LMltGjIaP4L
-         Rn087IMnETtrK26owv7ZumuaDXO4bXZdpPDFxas5zccYRrJzSvQM2E+W5YRIFk9VydiT
-         M4qLmdMBvvrR8R7LIDDOg6slOuqYKgCPnZl9ZKuB2spNFxCI3huNjFoq4tWLEC3O+nPv
-         tIhLxaPDqeD+5UOVex7XRcb6+a/VJnugMYRW3/PrLWjIhyM7BFaGuLZ7Xuj4Lq+ynCbj
-         n6tw==
+        bh=g+MkORdyxrUpm6RPHbrcYTE1KJKpVHZOg8V/ZE/H9t0=;
+        b=S4g+6YUt/q/YuJbHDSWBgXnTiQWM1nnPPhq8f3VHSESqRf62DBUkTg9gHDozA2sU9T
+         2cEG31uFkk857ctOpAAj74IZK77OniNlsX7IjmTqc56CQIgN6rTkOUWpUN7CxgP4gq9+
+         gqhgiwZwRDqDvLOi1phZN04DUkE1zD7TUGoKjkrBIA/74VWo1OAmswt+xpGJKwJhJQs/
+         3Si44wKkrSEuOknSh14MQu5X3hJyDcjdn8y09sH7Uhuy5gEwnY15/INkRLjJp52Ux1em
+         I9EW6igP1jyZGSS3Ye95g2kE9jEjmpcljgn9N3xBwiEQYNvl0G2+GXgAsRhk2CnpsREl
+         oxBw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MdJaYzig;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=o5gqDHeb;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l3si13491614ejd.313.2021.06.14.08.21.43
+        by mx.google.com with ESMTPS id z16si7629046edb.194.2021.06.14.08.22.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Jun 2021 08:21:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 14 Jun 2021 08:22:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MdJaYzig;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=o5gqDHeb;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39668 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43608 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lsoPG-0005uj-Ez
-	for alex.bennee@linaro.org; Mon, 14 Jun 2021 11:21:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47576)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lsoPw-0000Cx-6f
+	for alex.bennee@linaro.org; Mon, 14 Jun 2021 11:22:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47550)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lsoEZ-00010X-52
- for qemu-devel@nongnu.org; Mon, 14 Jun 2021 11:10:39 -0400
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436]:38728)
+ id 1lsoEY-0000xt-9d
+ for qemu-arm@nongnu.org; Mon, 14 Jun 2021 11:10:38 -0400
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a]:34512)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lsoEO-0000JX-Io
- for qemu-devel@nongnu.org; Mon, 14 Jun 2021 11:10:38 -0400
-Received: by mail-wr1-x436.google.com with SMTP id c9so14928495wrt.5
- for <qemu-devel@nongnu.org>; Mon, 14 Jun 2021 08:10:26 -0700 (PDT)
+ id 1lsoEM-0000HE-UN
+ for qemu-arm@nongnu.org; Mon, 14 Jun 2021 11:10:37 -0400
+Received: by mail-wr1-x42a.google.com with SMTP id q5so14962480wrm.1
+ for <qemu-arm@nongnu.org>; Mon, 14 Jun 2021 08:10:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=rl5qJBg3qQz3yb23IGMzCXWq2gFztrjsomKiGeGjjRc=;
- b=MdJaYzigECveU/Yx2JNTm8LbLQOvG7FLFKefNbA+7H0OVernnwJiSscR0EKN6B0wG2
- Oi0WCL+MA3I42f3ZYRuM2zski0tBC0Sr+IxCGmCb5VsuLJl5Hl0xfKAZX0+BWo4XVv/u
- nL7PjU34i4KDoGjKRCzKcAsrscutoXiH1wHMctYMyDVAFSyCtExvVMlpqnyBdW4BICcC
- N96XIoCYvHU4Rg6kMab09g/IpXpk8IDLd+X+gKLsoGDlHgkEWpqIFOKeC2gORNOSanpZ
- r7zzcU4bQ93S78cWiGaz/0KXRD/PHOYq+vo/aLLU/1MArMGpP7n9JzBZm58FbyQgmyaS
- 7rSA==
+ bh=g+MkORdyxrUpm6RPHbrcYTE1KJKpVHZOg8V/ZE/H9t0=;
+ b=o5gqDHeby4Mg+cKyPU7rlts256SexWiigC+r1iWOSt2sVBlceWbKFOUIH8L1jgj/5J
+ c7rmE5DVr9FvciY4uc5r/+5N+n/1sURMz1cb3My/kbF36iVNb2bMfysXa9e66kMlRmxA
+ Woqn7kvqLItB1ceaqDRL3rIOFbtY6ZsrjnF4jOfqkOZyDZLR0BubijS0jK9p1pzS8COX
+ 3FL2nvoQ4i+XhsieJNK7o61lKvOoNK4nAlvPVren32ABY5G3pL1BxfVrAWVqQYh+AtEU
+ eggfCObX4xAzbVLGteSMjaTKstuxRgZifQHbL4kT8/WipXWLtIEFfzfBJEZ/t77Pbc2+
+ sxgg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=rl5qJBg3qQz3yb23IGMzCXWq2gFztrjsomKiGeGjjRc=;
- b=i8A0pnUHlZtkcaixnOU7GYsgdHlHce2EKw8nsyThs84ziIbyoCIaS+qcjQuSukif4Z
- DAlWxKR9pRwpyRv1Ho++ZxPgtOUu4o3c5UMymwStqTDEr1rNDamDe8OhakMRlCjcYuP/
- 1VbpjnUOb1VtnjPfoRBJt4+QtDAHGQ6GXyIxGd/0/seOCBCqTWMpvBWthJyX96zD/IAO
- 5gLH1W3g6ELqR2xNLC3JUVVr/BMJSFLKrtuonSoduny1pkG4u1/0ehzYv0rpLFOHak1m
- hCCtqcxDOeY5LuXZvW3W6WblsJloqM09DHTTDlUY/L1g7AxCt0c+TnjgTDxVoghrHOAB
- mLIQ==
-X-Gm-Message-State: AOAM5331BhD6cSkR7/k6VXoxlmBaREV05BRiM3PkiUomJd++R5YyvkuY
- pwFnAFDcEmI2HPYoM03huAfSh/LwhrcV5A==
-X-Received: by 2002:a5d:6952:: with SMTP id r18mr19278033wrw.392.1623683426065; 
- Mon, 14 Jun 2021 08:10:26 -0700 (PDT)
+ bh=g+MkORdyxrUpm6RPHbrcYTE1KJKpVHZOg8V/ZE/H9t0=;
+ b=WNEvoBUAAfn81Y/gM5JNPPoJCnJIAdGGVPNLArwd9Tsv0ydPJCmRF5xXnj5EuO0Ceq
+ 9UTpY+KD3NWKgub3ESW6fRn+X6S8VVj/KFBWPCZztFXS8bXjjWMfIQ87FGO8n6gRnAoW
+ 8MEHsti2IUkhQKw+kzprhTDaC4FWGAXMqZ83ey48nkr2+lANzMolyaUqdcbGoF6yN86e
+ HDYLl8GBL4SrAyVHeYKHpQ8FYBT0Xsez62Jngn2wcyjTMjDh4+VhY6JVpNdnzsikYT5v
+ nAPl1ji7r4sRznGnSgeUuTuCM6xvVRcfzVq5sDNElta81UWtOPFDZ/wz+skNyAFcbFLv
+ JFbg==
+X-Gm-Message-State: AOAM532jz0KLXDH97uQ+zwsOVd0Geks3JCNUORwdL0V6dKcWOrpiCLvx
+ fZ6X+9oLl5136sDLlKgWLbd4F3ocRkhcmA==
+X-Received: by 2002:a5d:648a:: with SMTP id o10mr19172609wri.274.1623683422367; 
+ Mon, 14 Jun 2021 08:10:22 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id b8sm20865639wmd.35.2021.06.14.08.10.25
+ by smtp.gmail.com with ESMTPSA id b8sm20865639wmd.35.2021.06.14.08.10.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 14 Jun 2021 08:10:25 -0700 (PDT)
+ Mon, 14 Jun 2021 08:10:22 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 18/57] target/arm: Implement MVE VMVN (register)
-Date: Mon, 14 Jun 2021 16:09:28 +0100
-Message-Id: <20210614151007.4545-19-peter.maydell@linaro.org>
+Subject: [PATCH v2 13/57] target/arm: Move expand_pred_b() data to translate.c
+Date: Mon, 14 Jun 2021 16:09:23 +0100
+Message-Id: <20210614151007.4545-14-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210614151007.4545-1-peter.maydell@linaro.org>
 References: <20210614151007.4545-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x436.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Richard Henderson <richard.henderson@linaro.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: X68Aua3WP9T9
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: QbUPwH8U+GV7
 
-Implement the MVE VMVN(register) operation.  Note that for
-predication this operation is byte-by-byte.
+For MVE, we want to re-use the large data table from expand_pred_b().
+Move the data table to translate.c so it is no longer in an SVE
+specific source file.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper-mve.h    | 2 ++
- target/arm/mve.decode      | 3 +++
- target/arm/mve_helper.c    | 4 ++++
- target/arm/translate-mve.c | 5 +++++
- 4 files changed, 14 insertions(+)
+ target/arm/vec_internal.h |   3 ++
+ target/arm/sve_helper.c   | 103 ++------------------------------------
+ target/arm/vec_helper.c   | 102 +++++++++++++++++++++++++++++++++++++
+ 3 files changed, 109 insertions(+), 99 deletions(-)
 
-diff --git a/target/arm/helper-mve.h b/target/arm/helper-mve.h
-index 4c89387587d..f1dc52f7a50 100644
---- a/target/arm/helper-mve.h
-+++ b/target/arm/helper-mve.h
-@@ -47,3 +47,5 @@ DEF_HELPER_FLAGS_3(mve_vrev32h, TCG_CALL_NO_WG, void, env, ptr, ptr)
- DEF_HELPER_FLAGS_3(mve_vrev64b, TCG_CALL_NO_WG, void, env, ptr, ptr)
- DEF_HELPER_FLAGS_3(mve_vrev64h, TCG_CALL_NO_WG, void, env, ptr, ptr)
- DEF_HELPER_FLAGS_3(mve_vrev64w, TCG_CALL_NO_WG, void, env, ptr, ptr)
-+
-+DEF_HELPER_FLAGS_3(mve_vmvn, TCG_CALL_NO_WG, void, env, ptr, ptr)
-diff --git a/target/arm/mve.decode b/target/arm/mve.decode
-index 16ee511a5cb..ff8afb682fb 100644
---- a/target/arm/mve.decode
-+++ b/target/arm/mve.decode
-@@ -30,6 +30,7 @@
- @vldst_wn ... u:1 ... . . . . l:1 . rn:3 qd:3 . ... .. imm:7 &vldr_vstr
+diff --git a/target/arm/vec_internal.h b/target/arm/vec_internal.h
+index 613f3421b9c..865d2139447 100644
+--- a/target/arm/vec_internal.h
++++ b/target/arm/vec_internal.h
+@@ -50,6 +50,9 @@
+ #define H8(x)   (x)
+ #define H1_8(x) (x)
  
- @1op .... .... .... size:2 .. .... .... .... .... &1op qd=%qd qm=%qm
-+@1op_nosz .... .... .... .... .... .... .... .... &1op qd=%qd qm=%qm size=0
- 
- # Vector loads and stores
- 
-@@ -74,3 +75,5 @@ VCLZ             1111 1111 1 . 11 .. 00 ... 0 0100 11 . 0 ... 0 @1op
- VREV16           1111 1111 1 . 11 .. 00 ... 0 0001 01 . 0 ... 0 @1op
- VREV32           1111 1111 1 . 11 .. 00 ... 0 0000 11 . 0 ... 0 @1op
- VREV64           1111 1111 1 . 11 .. 00 ... 0 0000 01 . 0 ... 0 @1op
++/* Data for expanding active predicate bits to bytes, for byte elements. */
++extern const uint64_t expand_pred_b_data[256];
 +
-+VMVN             1111 1111 1 . 11 00 00 ... 0 0101 11 . 0 ... 0 @1op_nosz
-diff --git a/target/arm/mve_helper.c b/target/arm/mve_helper.c
-index 50af6aadec6..564f86fc65f 100644
---- a/target/arm/mve_helper.c
-+++ b/target/arm/mve_helper.c
-@@ -292,3 +292,7 @@ DO_1OP(vrev32h, 4, uint32_t, hswap32)
- DO_1OP(vrev64b, 8, uint64_t, bswap64)
- DO_1OP(vrev64h, 8, uint64_t, hswap64)
- DO_1OP(vrev64w, 8, uint64_t, wswap64)
-+
-+#define DO_NOT(N) (~(N))
-+
-+DO_1OP(vmvn, 8, uint64_t, DO_NOT)
-diff --git a/target/arm/translate-mve.c b/target/arm/translate-mve.c
-index 32a8324c5e6..bd908abcff7 100644
---- a/target/arm/translate-mve.c
-+++ b/target/arm/translate-mve.c
-@@ -232,3 +232,8 @@ static bool trans_VREV64(DisasContext *s, arg_1op *a)
-     };
-     return do_1op(s, a, fns[a->size]);
+ static inline void clear_tail(void *vd, uintptr_t opr_sz, uintptr_t max_sz)
+ {
+     uint64_t *d = vd + opr_sz;
+diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
+index a373f8c573e..321098e2651 100644
+--- a/target/arm/sve_helper.c
++++ b/target/arm/sve_helper.c
+@@ -103,108 +103,13 @@ uint32_t HELPER(sve_predtest)(void *vd, void *vg, uint32_t words)
+     return flags;
  }
+ 
+-/* Expand active predicate bits to bytes, for byte elements.
+- *  for (i = 0; i < 256; ++i) {
+- *      unsigned long m = 0;
+- *      for (j = 0; j < 8; j++) {
+- *          if ((i >> j) & 1) {
+- *              m |= 0xfful << (j << 3);
+- *          }
+- *      }
+- *      printf("0x%016lx,\n", m);
+- *  }
++/*
++ * Expand active predicate bits to bytes, for byte elements.
++ * (The data table itself is in vec_helper.c as MVE also needs it.)
+  */
+ static inline uint64_t expand_pred_b(uint8_t byte)
+ {
+-    static const uint64_t word[256] = {
+-        0x0000000000000000, 0x00000000000000ff, 0x000000000000ff00,
+-        0x000000000000ffff, 0x0000000000ff0000, 0x0000000000ff00ff,
+-        0x0000000000ffff00, 0x0000000000ffffff, 0x00000000ff000000,
+-        0x00000000ff0000ff, 0x00000000ff00ff00, 0x00000000ff00ffff,
+-        0x00000000ffff0000, 0x00000000ffff00ff, 0x00000000ffffff00,
+-        0x00000000ffffffff, 0x000000ff00000000, 0x000000ff000000ff,
+-        0x000000ff0000ff00, 0x000000ff0000ffff, 0x000000ff00ff0000,
+-        0x000000ff00ff00ff, 0x000000ff00ffff00, 0x000000ff00ffffff,
+-        0x000000ffff000000, 0x000000ffff0000ff, 0x000000ffff00ff00,
+-        0x000000ffff00ffff, 0x000000ffffff0000, 0x000000ffffff00ff,
+-        0x000000ffffffff00, 0x000000ffffffffff, 0x0000ff0000000000,
+-        0x0000ff00000000ff, 0x0000ff000000ff00, 0x0000ff000000ffff,
+-        0x0000ff0000ff0000, 0x0000ff0000ff00ff, 0x0000ff0000ffff00,
+-        0x0000ff0000ffffff, 0x0000ff00ff000000, 0x0000ff00ff0000ff,
+-        0x0000ff00ff00ff00, 0x0000ff00ff00ffff, 0x0000ff00ffff0000,
+-        0x0000ff00ffff00ff, 0x0000ff00ffffff00, 0x0000ff00ffffffff,
+-        0x0000ffff00000000, 0x0000ffff000000ff, 0x0000ffff0000ff00,
+-        0x0000ffff0000ffff, 0x0000ffff00ff0000, 0x0000ffff00ff00ff,
+-        0x0000ffff00ffff00, 0x0000ffff00ffffff, 0x0000ffffff000000,
+-        0x0000ffffff0000ff, 0x0000ffffff00ff00, 0x0000ffffff00ffff,
+-        0x0000ffffffff0000, 0x0000ffffffff00ff, 0x0000ffffffffff00,
+-        0x0000ffffffffffff, 0x00ff000000000000, 0x00ff0000000000ff,
+-        0x00ff00000000ff00, 0x00ff00000000ffff, 0x00ff000000ff0000,
+-        0x00ff000000ff00ff, 0x00ff000000ffff00, 0x00ff000000ffffff,
+-        0x00ff0000ff000000, 0x00ff0000ff0000ff, 0x00ff0000ff00ff00,
+-        0x00ff0000ff00ffff, 0x00ff0000ffff0000, 0x00ff0000ffff00ff,
+-        0x00ff0000ffffff00, 0x00ff0000ffffffff, 0x00ff00ff00000000,
+-        0x00ff00ff000000ff, 0x00ff00ff0000ff00, 0x00ff00ff0000ffff,
+-        0x00ff00ff00ff0000, 0x00ff00ff00ff00ff, 0x00ff00ff00ffff00,
+-        0x00ff00ff00ffffff, 0x00ff00ffff000000, 0x00ff00ffff0000ff,
+-        0x00ff00ffff00ff00, 0x00ff00ffff00ffff, 0x00ff00ffffff0000,
+-        0x00ff00ffffff00ff, 0x00ff00ffffffff00, 0x00ff00ffffffffff,
+-        0x00ffff0000000000, 0x00ffff00000000ff, 0x00ffff000000ff00,
+-        0x00ffff000000ffff, 0x00ffff0000ff0000, 0x00ffff0000ff00ff,
+-        0x00ffff0000ffff00, 0x00ffff0000ffffff, 0x00ffff00ff000000,
+-        0x00ffff00ff0000ff, 0x00ffff00ff00ff00, 0x00ffff00ff00ffff,
+-        0x00ffff00ffff0000, 0x00ffff00ffff00ff, 0x00ffff00ffffff00,
+-        0x00ffff00ffffffff, 0x00ffffff00000000, 0x00ffffff000000ff,
+-        0x00ffffff0000ff00, 0x00ffffff0000ffff, 0x00ffffff00ff0000,
+-        0x00ffffff00ff00ff, 0x00ffffff00ffff00, 0x00ffffff00ffffff,
+-        0x00ffffffff000000, 0x00ffffffff0000ff, 0x00ffffffff00ff00,
+-        0x00ffffffff00ffff, 0x00ffffffffff0000, 0x00ffffffffff00ff,
+-        0x00ffffffffffff00, 0x00ffffffffffffff, 0xff00000000000000,
+-        0xff000000000000ff, 0xff0000000000ff00, 0xff0000000000ffff,
+-        0xff00000000ff0000, 0xff00000000ff00ff, 0xff00000000ffff00,
+-        0xff00000000ffffff, 0xff000000ff000000, 0xff000000ff0000ff,
+-        0xff000000ff00ff00, 0xff000000ff00ffff, 0xff000000ffff0000,
+-        0xff000000ffff00ff, 0xff000000ffffff00, 0xff000000ffffffff,
+-        0xff0000ff00000000, 0xff0000ff000000ff, 0xff0000ff0000ff00,
+-        0xff0000ff0000ffff, 0xff0000ff00ff0000, 0xff0000ff00ff00ff,
+-        0xff0000ff00ffff00, 0xff0000ff00ffffff, 0xff0000ffff000000,
+-        0xff0000ffff0000ff, 0xff0000ffff00ff00, 0xff0000ffff00ffff,
+-        0xff0000ffffff0000, 0xff0000ffffff00ff, 0xff0000ffffffff00,
+-        0xff0000ffffffffff, 0xff00ff0000000000, 0xff00ff00000000ff,
+-        0xff00ff000000ff00, 0xff00ff000000ffff, 0xff00ff0000ff0000,
+-        0xff00ff0000ff00ff, 0xff00ff0000ffff00, 0xff00ff0000ffffff,
+-        0xff00ff00ff000000, 0xff00ff00ff0000ff, 0xff00ff00ff00ff00,
+-        0xff00ff00ff00ffff, 0xff00ff00ffff0000, 0xff00ff00ffff00ff,
+-        0xff00ff00ffffff00, 0xff00ff00ffffffff, 0xff00ffff00000000,
+-        0xff00ffff000000ff, 0xff00ffff0000ff00, 0xff00ffff0000ffff,
+-        0xff00ffff00ff0000, 0xff00ffff00ff00ff, 0xff00ffff00ffff00,
+-        0xff00ffff00ffffff, 0xff00ffffff000000, 0xff00ffffff0000ff,
+-        0xff00ffffff00ff00, 0xff00ffffff00ffff, 0xff00ffffffff0000,
+-        0xff00ffffffff00ff, 0xff00ffffffffff00, 0xff00ffffffffffff,
+-        0xffff000000000000, 0xffff0000000000ff, 0xffff00000000ff00,
+-        0xffff00000000ffff, 0xffff000000ff0000, 0xffff000000ff00ff,
+-        0xffff000000ffff00, 0xffff000000ffffff, 0xffff0000ff000000,
+-        0xffff0000ff0000ff, 0xffff0000ff00ff00, 0xffff0000ff00ffff,
+-        0xffff0000ffff0000, 0xffff0000ffff00ff, 0xffff0000ffffff00,
+-        0xffff0000ffffffff, 0xffff00ff00000000, 0xffff00ff000000ff,
+-        0xffff00ff0000ff00, 0xffff00ff0000ffff, 0xffff00ff00ff0000,
+-        0xffff00ff00ff00ff, 0xffff00ff00ffff00, 0xffff00ff00ffffff,
+-        0xffff00ffff000000, 0xffff00ffff0000ff, 0xffff00ffff00ff00,
+-        0xffff00ffff00ffff, 0xffff00ffffff0000, 0xffff00ffffff00ff,
+-        0xffff00ffffffff00, 0xffff00ffffffffff, 0xffffff0000000000,
+-        0xffffff00000000ff, 0xffffff000000ff00, 0xffffff000000ffff,
+-        0xffffff0000ff0000, 0xffffff0000ff00ff, 0xffffff0000ffff00,
+-        0xffffff0000ffffff, 0xffffff00ff000000, 0xffffff00ff0000ff,
+-        0xffffff00ff00ff00, 0xffffff00ff00ffff, 0xffffff00ffff0000,
+-        0xffffff00ffff00ff, 0xffffff00ffffff00, 0xffffff00ffffffff,
+-        0xffffffff00000000, 0xffffffff000000ff, 0xffffffff0000ff00,
+-        0xffffffff0000ffff, 0xffffffff00ff0000, 0xffffffff00ff00ff,
+-        0xffffffff00ffff00, 0xffffffff00ffffff, 0xffffffffff000000,
+-        0xffffffffff0000ff, 0xffffffffff00ff00, 0xffffffffff00ffff,
+-        0xffffffffffff0000, 0xffffffffffff00ff, 0xffffffffffffff00,
+-        0xffffffffffffffff,
+-    };
+-    return word[byte];
++    return expand_pred_b_data[byte];
+ }
+ 
+ /* Similarly for half-word elements.
+diff --git a/target/arm/vec_helper.c b/target/arm/vec_helper.c
+index e8138d3d222..034f6b84f78 100644
+--- a/target/arm/vec_helper.c
++++ b/target/arm/vec_helper.c
+@@ -25,6 +25,108 @@
+ #include "qemu/int128.h"
+ #include "vec_internal.h"
+ 
++/*
++ * Data for expanding active predicate bits to bytes, for byte elements.
++ *
++ *  for (i = 0; i < 256; ++i) {
++ *      unsigned long m = 0;
++ *      for (j = 0; j < 8; j++) {
++ *          if ((i >> j) & 1) {
++ *              m |= 0xfful << (j << 3);
++ *          }
++ *      }
++ *      printf("0x%016lx,\n", m);
++ *  }
++ */
++const uint64_t expand_pred_b_data[256] = {
++    0x0000000000000000, 0x00000000000000ff, 0x000000000000ff00,
++    0x000000000000ffff, 0x0000000000ff0000, 0x0000000000ff00ff,
++    0x0000000000ffff00, 0x0000000000ffffff, 0x00000000ff000000,
++    0x00000000ff0000ff, 0x00000000ff00ff00, 0x00000000ff00ffff,
++    0x00000000ffff0000, 0x00000000ffff00ff, 0x00000000ffffff00,
++    0x00000000ffffffff, 0x000000ff00000000, 0x000000ff000000ff,
++    0x000000ff0000ff00, 0x000000ff0000ffff, 0x000000ff00ff0000,
++    0x000000ff00ff00ff, 0x000000ff00ffff00, 0x000000ff00ffffff,
++    0x000000ffff000000, 0x000000ffff0000ff, 0x000000ffff00ff00,
++    0x000000ffff00ffff, 0x000000ffffff0000, 0x000000ffffff00ff,
++    0x000000ffffffff00, 0x000000ffffffffff, 0x0000ff0000000000,
++    0x0000ff00000000ff, 0x0000ff000000ff00, 0x0000ff000000ffff,
++    0x0000ff0000ff0000, 0x0000ff0000ff00ff, 0x0000ff0000ffff00,
++    0x0000ff0000ffffff, 0x0000ff00ff000000, 0x0000ff00ff0000ff,
++    0x0000ff00ff00ff00, 0x0000ff00ff00ffff, 0x0000ff00ffff0000,
++    0x0000ff00ffff00ff, 0x0000ff00ffffff00, 0x0000ff00ffffffff,
++    0x0000ffff00000000, 0x0000ffff000000ff, 0x0000ffff0000ff00,
++    0x0000ffff0000ffff, 0x0000ffff00ff0000, 0x0000ffff00ff00ff,
++    0x0000ffff00ffff00, 0x0000ffff00ffffff, 0x0000ffffff000000,
++    0x0000ffffff0000ff, 0x0000ffffff00ff00, 0x0000ffffff00ffff,
++    0x0000ffffffff0000, 0x0000ffffffff00ff, 0x0000ffffffffff00,
++    0x0000ffffffffffff, 0x00ff000000000000, 0x00ff0000000000ff,
++    0x00ff00000000ff00, 0x00ff00000000ffff, 0x00ff000000ff0000,
++    0x00ff000000ff00ff, 0x00ff000000ffff00, 0x00ff000000ffffff,
++    0x00ff0000ff000000, 0x00ff0000ff0000ff, 0x00ff0000ff00ff00,
++    0x00ff0000ff00ffff, 0x00ff0000ffff0000, 0x00ff0000ffff00ff,
++    0x00ff0000ffffff00, 0x00ff0000ffffffff, 0x00ff00ff00000000,
++    0x00ff00ff000000ff, 0x00ff00ff0000ff00, 0x00ff00ff0000ffff,
++    0x00ff00ff00ff0000, 0x00ff00ff00ff00ff, 0x00ff00ff00ffff00,
++    0x00ff00ff00ffffff, 0x00ff00ffff000000, 0x00ff00ffff0000ff,
++    0x00ff00ffff00ff00, 0x00ff00ffff00ffff, 0x00ff00ffffff0000,
++    0x00ff00ffffff00ff, 0x00ff00ffffffff00, 0x00ff00ffffffffff,
++    0x00ffff0000000000, 0x00ffff00000000ff, 0x00ffff000000ff00,
++    0x00ffff000000ffff, 0x00ffff0000ff0000, 0x00ffff0000ff00ff,
++    0x00ffff0000ffff00, 0x00ffff0000ffffff, 0x00ffff00ff000000,
++    0x00ffff00ff0000ff, 0x00ffff00ff00ff00, 0x00ffff00ff00ffff,
++    0x00ffff00ffff0000, 0x00ffff00ffff00ff, 0x00ffff00ffffff00,
++    0x00ffff00ffffffff, 0x00ffffff00000000, 0x00ffffff000000ff,
++    0x00ffffff0000ff00, 0x00ffffff0000ffff, 0x00ffffff00ff0000,
++    0x00ffffff00ff00ff, 0x00ffffff00ffff00, 0x00ffffff00ffffff,
++    0x00ffffffff000000, 0x00ffffffff0000ff, 0x00ffffffff00ff00,
++    0x00ffffffff00ffff, 0x00ffffffffff0000, 0x00ffffffffff00ff,
++    0x00ffffffffffff00, 0x00ffffffffffffff, 0xff00000000000000,
++    0xff000000000000ff, 0xff0000000000ff00, 0xff0000000000ffff,
++    0xff00000000ff0000, 0xff00000000ff00ff, 0xff00000000ffff00,
++    0xff00000000ffffff, 0xff000000ff000000, 0xff000000ff0000ff,
++    0xff000000ff00ff00, 0xff000000ff00ffff, 0xff000000ffff0000,
++    0xff000000ffff00ff, 0xff000000ffffff00, 0xff000000ffffffff,
++    0xff0000ff00000000, 0xff0000ff000000ff, 0xff0000ff0000ff00,
++    0xff0000ff0000ffff, 0xff0000ff00ff0000, 0xff0000ff00ff00ff,
++    0xff0000ff00ffff00, 0xff0000ff00ffffff, 0xff0000ffff000000,
++    0xff0000ffff0000ff, 0xff0000ffff00ff00, 0xff0000ffff00ffff,
++    0xff0000ffffff0000, 0xff0000ffffff00ff, 0xff0000ffffffff00,
++    0xff0000ffffffffff, 0xff00ff0000000000, 0xff00ff00000000ff,
++    0xff00ff000000ff00, 0xff00ff000000ffff, 0xff00ff0000ff0000,
++    0xff00ff0000ff00ff, 0xff00ff0000ffff00, 0xff00ff0000ffffff,
++    0xff00ff00ff000000, 0xff00ff00ff0000ff, 0xff00ff00ff00ff00,
++    0xff00ff00ff00ffff, 0xff00ff00ffff0000, 0xff00ff00ffff00ff,
++    0xff00ff00ffffff00, 0xff00ff00ffffffff, 0xff00ffff00000000,
++    0xff00ffff000000ff, 0xff00ffff0000ff00, 0xff00ffff0000ffff,
++    0xff00ffff00ff0000, 0xff00ffff00ff00ff, 0xff00ffff00ffff00,
++    0xff00ffff00ffffff, 0xff00ffffff000000, 0xff00ffffff0000ff,
++    0xff00ffffff00ff00, 0xff00ffffff00ffff, 0xff00ffffffff0000,
++    0xff00ffffffff00ff, 0xff00ffffffffff00, 0xff00ffffffffffff,
++    0xffff000000000000, 0xffff0000000000ff, 0xffff00000000ff00,
++    0xffff00000000ffff, 0xffff000000ff0000, 0xffff000000ff00ff,
++    0xffff000000ffff00, 0xffff000000ffffff, 0xffff0000ff000000,
++    0xffff0000ff0000ff, 0xffff0000ff00ff00, 0xffff0000ff00ffff,
++    0xffff0000ffff0000, 0xffff0000ffff00ff, 0xffff0000ffffff00,
++    0xffff0000ffffffff, 0xffff00ff00000000, 0xffff00ff000000ff,
++    0xffff00ff0000ff00, 0xffff00ff0000ffff, 0xffff00ff00ff0000,
++    0xffff00ff00ff00ff, 0xffff00ff00ffff00, 0xffff00ff00ffffff,
++    0xffff00ffff000000, 0xffff00ffff0000ff, 0xffff00ffff00ff00,
++    0xffff00ffff00ffff, 0xffff00ffffff0000, 0xffff00ffffff00ff,
++    0xffff00ffffffff00, 0xffff00ffffffffff, 0xffffff0000000000,
++    0xffffff00000000ff, 0xffffff000000ff00, 0xffffff000000ffff,
++    0xffffff0000ff0000, 0xffffff0000ff00ff, 0xffffff0000ffff00,
++    0xffffff0000ffffff, 0xffffff00ff000000, 0xffffff00ff0000ff,
++    0xffffff00ff00ff00, 0xffffff00ff00ffff, 0xffffff00ffff0000,
++    0xffffff00ffff00ff, 0xffffff00ffffff00, 0xffffff00ffffffff,
++    0xffffffff00000000, 0xffffffff000000ff, 0xffffffff0000ff00,
++    0xffffffff0000ffff, 0xffffffff00ff0000, 0xffffffff00ff00ff,
++    0xffffffff00ffff00, 0xffffffff00ffffff, 0xffffffffff000000,
++    0xffffffffff0000ff, 0xffffffffff00ff00, 0xffffffffff00ffff,
++    0xffffffffffff0000, 0xffffffffffff00ff, 0xffffffffffffff00,
++    0xffffffffffffffff,
++};
 +
-+static bool trans_VMVN(DisasContext *s, arg_1op *a)
-+{
-+    return do_1op(s, a, gen_helper_mve_vmvn);
-+}
+ /* Signed saturating rounding doubling multiply-accumulate high half, 8-bit */
+ int8_t do_sqrdmlah_b(int8_t src1, int8_t src2, int8_t src3,
+                      bool neg, bool round)
 -- 
 2.20.1
 

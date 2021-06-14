@@ -1,112 +1,116 @@
-Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp2253731lff;
-        Mon, 14 Jun 2021 12:27:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzcfgldQLEbv4GEwx5GTnVDuB4X5o9QiHsDNJNzPzKOjBxo9GIcoym3DsRaG/rO63xhJw7e
-X-Received: by 2002:a67:ec51:: with SMTP id z17mr1193852vso.12.1623698844335;
-        Mon, 14 Jun 2021 12:27:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623698844; cv=none;
+Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp2255221lff;
+        Mon, 14 Jun 2021 12:29:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJywlBc9BdRzNLRoA5Vg8/dTYqtuOoKOzYvRZCJN5SA68mrmyfhwtis+URXwrUdhUnZ0xnqE
+X-Received: by 2002:a7b:c206:: with SMTP id x6mr766940wmi.26.1623698993775;
+        Mon, 14 Jun 2021 12:29:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623698993; cv=none;
         d=google.com; s=arc-20160816;
-        b=kay36pnvJJ5ZshLFABTnPWklHrP52b+82UP2DTEwD1AcayVIfLlA1pkgdJSffIxrJn
-         GIrZAnLhKI2u8T9w3/YxbDA9/ekPCB5baOjX7Kt4M4d407KvfwJKZFOHyfMSwfBJSw5K
-         wtkNiupMsZVkutyOxOGgIGB0E66heDXhBeVsCkWpGMHlDWlWU78YmWbV1RlPCP2uCuev
-         Anf+urDVFe7+n3n1l9wBXgS3kJ2hWi1KBIJxuK+6NAkUxpAvEge6Zs3jWVe1LKxRpzrV
-         0DSYA/yJps1okPuR/G6NPzU56XZOtIhnHxE+6EuyfNNlNoKccDTwkTnYg568t6J9WwUg
-         H9HA==
+        b=UJtGoPRVRe6AI05MQ1RTd+suJyYzfPZYCvxuwGq/QA2Q8MQgdjwrW0kBIWe/s68oQa
+         dcRlFdfp6xl4A3zgVh8IXa1lLE7d03sKPnYiKUXyY4jTrTSIPRRawzXoEafeqC54vcVg
+         mWAmNIlWWLanPltR3g/j5vzOC106iRee6psvdaUwZwtnuJIt+iZK8YfeeMAhK3EH3ZB7
+         iFlCI6Q1yhnNG7kXvy4NfDr2bKh2lle3d1e4Rlhp9E4dfSyJwCg+fajhS7mDuI5duuVL
+         nZNO6N35Oi/2xdyKRF483LOeDaClGjsxyS/KzRKgVir4vExEIl3NGYFLm4PsVMV7fXZt
+         KmNQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:references:to:from:subject:dkim-signature;
-        bh=H1j2XMIXZnodzaW4t8yVCtuUz7nFeaKbQx6ycZPqf+k=;
-        b=cltnABTlJwPEf8MlUDbz64oT8vkNdsv4c3xk+icyFSACxYadbqHp+qmSn0/zQDkTMk
-         xr+hlKpAk2/zgiXbG4OcP2Vr5D1WiVfDSvxBqACs26oO5MjZrtI+ZuSHGlAnAONGxulY
-         Za55sFuGJ6oAUIn5Hz5DpsSvYJKFviU+lDxFB890VfYRFjaOiZLxtQjg2nGY4mMMGfPW
-         yJGE3vMcj90d/Un0gb/WX4OAvUXLHZ4W5/Rrf2Q4DtubCeEQS0rW2HDpyt5T96K5TSbF
-         6XtURm3wN5DkKxIOYrkg+56MgMxOnsPqX1yCA/I8GhnUZe2TDqoxwy6hpyPWObb0Cb/2
-         XarA==
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=0AVJJPK+5LgiBD1Zr7rUGG/EI24GQJyzjdlN0hv2jWE=;
+        b=IFn68Goqt2EmW4TJXS9J/h7Hoapb98vnGHwqoSSgQcLy9hlNGtxvebVnyzCzMe5B/5
+         6SRvmaUtjpCRdvOSNfH4E/arY/Q7WVFaSEpzFiBIQQiiq4HEzMkhVOjDbW7yg3Hb5vtA
+         vjVLFkmN9lNKR5OIIFUfksJP3PUH13ecvqO2f6CVKN6w908JienyhX6KngoQv2SPJvc4
+         slSg1pGvEBwHGFYZusjKk92b7BPJbaAdgomwRVEja2S5PVO+nQ16/ZVkfMugiTVK6cZN
+         pOVqRXQyZjbqknxo2mItOmRw6e0hATmvUUcQvfvlmarGtF4gAk6Q5gcJnh7AyY1EteWX
+         khQQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmx.net header.s=badeba3b8450 header.b=Jj2MKUJM;
+       dkim=pass header.i=@linaro.org header.s=google header.b=cvwQKXk9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmx.de
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x15si3952390vso.264.2021.06.14.12.27.24
+        by mx.google.com with ESMTPS id b23si16416302wmj.185.2021.06.14.12.29.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Jun 2021 12:27:24 -0700 (PDT)
+        Mon, 14 Jun 2021 12:29:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmx.net header.s=badeba3b8450 header.b=Jj2MKUJM;
+       dkim=pass header.i=@linaro.org header.s=google header.b=cvwQKXk9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmx.de
-Received: from localhost ([::1]:34090 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:37460 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lssF1-0007E3-Kb
-	for alex.bennee@linaro.org; Mon, 14 Jun 2021 15:27:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42472)
+	id 1lssHQ-0001bW-SX
+	for alex.bennee@linaro.org; Mon, 14 Jun 2021 15:29:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42890)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <xypron.glpk@gmx.de>)
- id 1lssEr-0007Av-Vk; Mon, 14 Jun 2021 15:27:13 -0400
-Received: from mout.gmx.net ([212.227.17.21]:47715)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <xypron.glpk@gmx.de>)
- id 1lssEp-0001Wl-SV; Mon, 14 Jun 2021 15:27:13 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1623698823;
- bh=H1j2XMIXZnodzaW4t8yVCtuUz7nFeaKbQx6ycZPqf+k=;
- h=X-UI-Sender-Class:Subject:From:To:Cc:References:Date:In-Reply-To;
- b=Jj2MKUJMqq3nFwbUCtoGAOvIFMJqECp8zosje0aHlT8qm0AE8D0+bnN0Vxw4aTQbo
- g7lJvjoS2kafr1i130DpOM29cdOeIlum0aJjFBYutIiIrVhk8WBC4G/TbA7KCazaw0
- +aDaziLEGutUsrxxDQFuvvdHto/QL043Ww0rk6qM=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [192.168.123.35] ([62.143.247.63]) by mail.gmx.net (mrgmx105
- [212.227.17.168]) with ESMTPSA (Nemesis) id 1ML9yc-1lanQ43CPS-00IEoi; Mon, 14
- Jun 2021 21:27:02 +0200
-Subject: Re: [PATCH v2 3/3] hw/nvme: default for namespace EUI-64
-From: Heinrich Schuchardt <xypron.glpk@gmx.de>
-To: Klaus Jensen <its@irrelevant.dk>
-References: <20210611234631.81314-1-xypron.glpk@gmx.de>
- <20210611234631.81314-4-xypron.glpk@gmx.de>
- <YMege+mwy768d/Uk@apples.localdomain>
- <d20f88a5-9fe2-3f8f-5251-5379854afc87@gmx.de>
-Message-ID: <52582a9b-a44e-ef26-e363-7850f44072a3@gmx.de>
-Date: Mon, 14 Jun 2021 21:27:02 +0200
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1lssHI-0001ZI-6c
+ for qemu-arm@nongnu.org; Mon, 14 Jun 2021 15:29:44 -0400
+Received: from mail-pg1-x52e.google.com ([2607:f8b0:4864:20::52e]:42568)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1lssHG-00034G-B0
+ for qemu-arm@nongnu.org; Mon, 14 Jun 2021 15:29:43 -0400
+Received: by mail-pg1-x52e.google.com with SMTP id i34so9467223pgl.9
+ for <qemu-arm@nongnu.org>; Mon, 14 Jun 2021 12:29:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:references:from:message-id:date:user-agent:mime-version
+ :in-reply-to:content-language:content-transfer-encoding;
+ bh=0AVJJPK+5LgiBD1Zr7rUGG/EI24GQJyzjdlN0hv2jWE=;
+ b=cvwQKXk95xb7KXdRfdkIqhnp6FFyX5g+uhy0PxkslYe40rt9WD26su5BVRmyVHnFO+
+ ma94lRnW6Jqfcb6Zrvmawny6mt2TgF6WYIpMkMWzKhLYVI+zxSBR06hM+b8PkOiiPtAr
+ OlHqvyrsiL7fgQ1pZewi1MM7bWnZ+Ngtz4nUU4ijfI2LqaFQHfleOg8hI9Lg/TurkG5F
+ oC7byO9SMwqHdwMf+k/0wQq1/6i3rXbV3GiNEWbdkcauPu9oBCRqnmm5wPitcG5D0An2
+ ZUFZLf/thpPrdJ/ooMWVxefii6VS00cE8WmgfNJ5wSOl6NtH/kCsSja13DlNyDpKoWzo
+ d/2A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=0AVJJPK+5LgiBD1Zr7rUGG/EI24GQJyzjdlN0hv2jWE=;
+ b=oGfGz/HzNfHFQlw37S4hAxC406Jatzj7XfXSY+fdbUD11h42WHztCojA6xyl36X+vl
+ arr/zLyG8Lv0FJDXeunHE/M2wNCsKT8ZigGLgF0x2GgsRpDvzs7hFiQ5/krlFCx+83VF
+ 68iuObY0E9ZIAyd/JTcT1IfM3BfHPVNxe2I1/bD5D7fQvEUGx4kuiX4PtrMjhIw271xv
+ IIYXWZf7hluPlTINLsG2UEWHDx2b2qYh0jOmLSVOGDWzWn5HOuooYhstedeA/PBzyoqE
+ Z5uRyAQ6yWk4y5GoBu84iXJL0Ie9CLgPXHfdKd9SWQerb/lL0V9AWl7R59zXFABN5zr+
+ mdnw==
+X-Gm-Message-State: AOAM533sE3bgr6uM07e+yuSf27g7g/PQYqF/2EgjStTUSuSB0akUUCls
+ 0N4gbJFqW2/qXGqTW1wFI2K8eA==
+X-Received: by 2002:aa7:905a:0:b029:2f6:d759:6c2d with SMTP id
+ n26-20020aa7905a0000b02902f6d7596c2dmr521915pfo.33.1623698978468; 
+ Mon, 14 Jun 2021 12:29:38 -0700 (PDT)
+Received: from [192.168.1.11] (174-21-70-228.tukw.qwest.net. [174.21.70.228])
+ by smtp.gmail.com with ESMTPSA id
+ c15sm14298443pgt.68.2021.06.14.12.29.38
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 14 Jun 2021 12:29:38 -0700 (PDT)
+Subject: Re: [PATCH v2 11/57] target/arm: Implement MVE VLDR/VSTR
+ (non-widening forms)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20210614151007.4545-1-peter.maydell@linaro.org>
+ <20210614151007.4545-12-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <079d20d6-336e-2a95-8b3b-abe5d1604aec@linaro.org>
+Date: Mon, 14 Jun 2021 12:29:36 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <d20f88a5-9fe2-3f8f-5251-5379854afc87@gmx.de>
+In-Reply-To: <20210614151007.4545-12-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:vN9gvByqMqQyrHf9J1IS481gElSJlzDk2wG5V5Fgjbo9PLntCc/
- ZsAA5lS641oZ3XteyxgNEiOnjKs6odk/DiRyHpDjV1wiJTD//ApKbX7C+zQNqStdbUb124+
- MZt9gmqTRhPR/cy1hQ6jrMIYkW8CsxFOOqPIfkSOhA+n7VDikEunuAFlAm3ZGCUUXuFTPhG
- INIpMmPqfKXkjKwAX87EA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:I9wT/2iAYEc=:2rDZqNw22mnk3M/CLbVyC1
- XcZBvqniuHxaufNMiBj5x7B55a9XGKqP2X2VSJ4UfTXsA5nGLgSF24bH99KvQPt9sHMPyF/b0
- 8CR50i7qcnEFJgaOyOZLv/Cm+EpyanVY4ZDsj0qYbkwtS74fVrQYqgZ6l8lXhIA7khr9YU+Gd
- 1lm9DjyEcC/sYMIm3QqJ4JBpne5mnHy4POvLJKL/k3ALebW469cG8NknBiITx1XNv3kOmaIWN
- aaM3oj5OZiV2WRT8ZWDV9m4p2FA56X8iCefaSWnkV4R/OI1r/m+/bsCQM/+VgM5NWZ2woPbht
- JV9mApTqTkDlgSKIl2vKtnsdPq/L0uzOIzFTIpcxe3xGmZw0N2M/gFeD1FZvN3NVL+knG5Xn/
- RMgLLvnfRvojD+JkGIotwKXpSrbvMPl6Vqm5kEdthkYnqe955uzmkudVHBeWCvUc6Ud2McdL0
- JrTRVIA1J0PFuJLtkekYp0SKuWAQpjtyIVJbs7bt5eMwIu/bRmtJcNQSDUphln/SQI0o8L5em
- QSAcPPjMhIMYqLJBF0++CH4zd4ddAyKkXJ7SENgN24cnzKF1r5vZJpFVDVtXfZagH31tXwgrB
- Ny76wXK6GLL47xdyPQJSWVyYRvmyJBx6beVi+JupQsevZqm/m1uQ0+e+ZSk5fnqjiDnvL2h1D
- 2K/ZgKvtCxPY6HihJVl3FiqT87E6RGcsWbS8RwRA8auiupbph4ZsWTUACvTm1O5ZyOWqrm4E1
- PZur6EMMsAI1/r4aeysEIZf4/4oKNu2/Q8zujH5WDnAx2In7AtzOr/B2Dyfk5Gyiv4u58l7qw
- zuWlye2IvmBUlh9iEMoM2FndBxbFz9g7Yblut5XORbxwySB4b3wcTn+Zgghp48FRDdsBrcQWI
- NHxqYf8P6cVcmB1BVdKW+ic8ie6Af+I2LrcR8XfpAX+cVTypVHujn21SITLzguBhD/1jrDMra
- 25MbnwdpV6co/8RMCz/5drdke6vdjsTgiOuU/JgmUM9ECKtF4NjYPZoja9neb3MnxG+hWeTPO
- vBIbVY8LX0PFTQa9VcOIhkdm0KjbBcb3wECw02N73Y3pQJTmvTW2Qb2DQcEi7y+y+REtPA5ls
- GqzpmCKUGAdzLWP9y9C0ZUdnJgEM9zNds1p
-Received-SPF: pass client-ip=212.227.17.21; envelope-from=xypron.glpk@gmx.de;
- helo=mout.gmx.net
-X-Spam_score_int: -23
-X-Spam_score: -2.4
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52e.google.com
+X-Spam_score_int: -25
+X-Spam_score: -2.6
 X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, FREEMAIL_FROM=0.001, NICE_REPLY_A=-0.489,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.489,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -120,162 +124,23 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>, qemu-block@nongnu.org,
- Cornelia Huck <cohuck@redhat.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Keith Busch <kbusch@kernel.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6NcEfHkgffY1
+X-TUID: QNd+rxMcQiwu
 
-On 6/14/21 9:23 PM, Heinrich Schuchardt wrote:
-> On 6/14/21 8:31 PM, Klaus Jensen wrote:
->> On Jun 12 01:46, Heinrich Schuchardt wrote:
->>> On machines with version > 6.0 replace a missing EUI-64 by a generated
->>> value.
->>>
->>> Signed-off-by: Heinrich Schuchardt <xypron.glpk@gmx.de>
->>> ---
->>> v2:
->>> =C2=A0=C2=A0=C2=A0=C2=A0new patch
->>> ---
->>> docs/system/nvme.rst | 2 ++
->>> hw/core/machine.c=C2=A0=C2=A0=C2=A0 | 1 +
->>> hw/nvme/ns.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 9 +++++=
-++++
->>> hw/nvme/nvme.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 2 ++
->>> 4 files changed, 14 insertions(+)
->>>
->>> diff --git a/docs/system/nvme.rst b/docs/system/nvme.rst
->>> index b5f8288d7c..33a15c7dbc 100644
->>> --- a/docs/system/nvme.rst
->>> +++ b/docs/system/nvme.rst
->>> @@ -84,6 +84,8 @@ There are a number of parameters available:
->>> ``eui64``
->>> =C2=A0 Set the EUI-64 of the namespace. This will be reported as a "IE=
-EE
->>> Extended
->>> =C2=A0 Unique Identifier" descriptor in the Namespace Identification
->>> Descriptor List.
->>> +=C2=A0 Since machine type 6.1 a non-zero default value is used if the
->>> parameter
->>> +=C2=A0 is not provided. For earlier machine types the field defaults =
-to 0.
->>>
->>> ``bus``
->>> =C2=A0 If there are more ``nvme`` devices defined, this parameter may =
-be
->>> used to
->>> diff --git a/hw/core/machine.c b/hw/core/machine.c
->>> index 55b9bc7817..d0e9348888 100644
->>> --- a/hw/core/machine.c
->>> +++ b/hw/core/machine.c
->>> @@ -39,6 +39,7 @@
->>> GlobalProperty hw_compat_6_0[] =3D {
->>> =C2=A0=C2=A0=C2=A0 { "gpex-pcihost", "allow-unmapped-accesses", "false=
-" },
->>> =C2=A0=C2=A0=C2=A0 { "i8042", "extended-state", "false"},
->>> +=C2=A0=C2=A0=C2=A0 { "nvme-ns", "eui64-default", "off"},
->>> };
->>> const size_t hw_compat_6_0_len =3D G_N_ELEMENTS(hw_compat_6_0);
->>>
->>> diff --git a/hw/nvme/ns.c b/hw/nvme/ns.c
->>> index 45e457de6a..4275c3db63 100644
->>> --- a/hw/nvme/ns.c
->>> +++ b/hw/nvme/ns.c
->>> @@ -56,6 +56,7 @@ void nvme_ns_init_format(NvmeNamespace *ns)
->>>
->>> static int nvme_ns_init(NvmeNamespace *ns, Error **errp)
->>> {
->>> +=C2=A0=C2=A0=C2=A0 static uint64_t ns_count;
->>> =C2=A0=C2=A0=C2=A0 NvmeIdNs *id_ns =3D &ns->id_ns;
->>> =C2=A0=C2=A0=C2=A0 uint8_t ds;
->>> =C2=A0=C2=A0=C2=A0 uint16_t ms;
->>> @@ -73,6 +74,12 @@ static int nvme_ns_init(NvmeNamespace *ns, Error
->>> **errp)
->>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 id_ns->nmic |=3D NVME_NMIC_=
-NS_SHARED;
->>> =C2=A0=C2=A0=C2=A0 }
->>>
->>> +=C2=A0=C2=A0=C2=A0 /* Substitute a missing EUI-64 by an autogenerated=
- one */
->>> +=C2=A0=C2=A0=C2=A0 ++ns_count;
->>> +=C2=A0=C2=A0=C2=A0 if (!ns->params.eui64 && ns->params.eui64_default)=
- {
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ns->params.eui64 =3D ns_co=
-unt + NVME_EUI64_DEFAULT;
->>> +=C2=A0=C2=A0=C2=A0 }
->>> +
->>> =C2=A0=C2=A0=C2=A0 /* simple copy */
->>> =C2=A0=C2=A0=C2=A0 id_ns->mssrl =3D cpu_to_le16(ns->params.mssrl);
->>> =C2=A0=C2=A0=C2=A0 id_ns->mcl =3D cpu_to_le32(ns->params.mcl);
->>> @@ -533,6 +540,8 @@ static Property nvme_ns_props[] =3D {
->>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 params.max=
-_open_zones, 0),
->>> =C2=A0=C2=A0=C2=A0 DEFINE_PROP_UINT32("zoned.descr_ext_size", NvmeName=
-space,
->>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 params.zd_=
-extension_size, 0),
->>> +=C2=A0=C2=A0=C2=A0 DEFINE_PROP_BOOL("eui64-default", NvmeNamespace,
->>> params.eui64_default,
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 true),
->>> =C2=A0=C2=A0=C2=A0 DEFINE_PROP_END_OF_LIST(),
->>> };
->>>
->>> diff --git a/hw/nvme/nvme.h b/hw/nvme/nvme.h
->>> index ac90e13d7b..3fb869731d 100644
->>> --- a/hw/nvme/nvme.h
->>> +++ b/hw/nvme/nvme.h
->>> @@ -26,6 +26,7 @@
->>>
->>> #define NVME_MAX_CONTROLLERS 32
->>> #define NVME_MAX_NAMESPACES=C2=A0 256
->>> +#define NVME_EUI64_DEFAULT 0x27fed9272381cbd0UL
->>
->> Is there any significance to this value? Any particular reason it is no=
-t
->> using the QEMU OUI (52:54:00)?
->
-> 52:54:00 does not exist in http://standards-oui.ieee.org/oui/oui.txt
-> So this seems not to be an OUI. We should not use a number that IEEE may
-> sell to some other entity.
->
-> Until somebody buys a 36bit OUI in the name of QEMU for 780 USD we have
-> to use a locally assigned number.
+On 6/14/21 8:09 AM, Peter Maydell wrote:
+> Implement the forms of the MVE VLDR and VSTR insns which perform
+> non-widening loads of bytes, halfwords or words from memory into
+> vector elements of the same width (encodings T5, T6, T7).
+> 
+> (At the moment we know for MVE and M-profile in general that
+> vfp_access_check() can never return false, but we include the
+> conventional return-true-on-failure check for consistency
+> with non-M-profile translation code.)
+> 
+> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
+> ---
 
-I got that wrong IEEE_COMPANY_LOCALLY_ASSIGNED 0x525400 is locally
-assigned and therefore not in the OUI list.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-I will resubmit the patch.
-
-Best regards
-
-Heinrich
-
->
-> Best regards
->
-> Heinrich
->
->>
->>>
->>> typedef struct NvmeCtrl NvmeCtrl;
->>> typedef struct NvmeNamespace NvmeNamespace;
->>> @@ -84,6 +85,7 @@ typedef struct NvmeNamespaceParams {
->>> =C2=A0=C2=A0=C2=A0 uint32_t nsid;
->>> =C2=A0=C2=A0=C2=A0 QemuUUID uuid;
->>> =C2=A0=C2=A0=C2=A0 uint64_t eui64;
->>> +=C2=A0=C2=A0=C2=A0 bool=C2=A0=C2=A0=C2=A0=C2=A0 eui64_default;
->>>
->>> =C2=A0=C2=A0=C2=A0 uint16_t ms;
->>> =C2=A0=C2=A0=C2=A0 uint8_t=C2=A0 mset;
->>> --
->>> 2.30.2
->>>
->>>
->>
->
-
+r~

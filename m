@@ -1,100 +1,103 @@
-Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp2760399lff;
-        Tue, 15 Jun 2021 02:19:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw7vsDS2385uQxDrJ6YLtWvGuQASD4ocq92kKuV/X6krvWKKP0wsvRwgvPcN6RbHOWItS3T
-X-Received: by 2002:a05:6102:208f:: with SMTP id h15mr3476105vsr.7.1623748791785;
-        Tue, 15 Jun 2021 02:19:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623748791; cv=none;
+Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp2817532lff;
+        Tue, 15 Jun 2021 03:41:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyXQuAlAoXM7sZotdTu9oW/4pgb4vsPnHFko9pfiPoeaT2+jORR+psijLPR+LDRye9XM/jt
+X-Received: by 2002:a25:fc1a:: with SMTP id v26mr19352649ybd.486.1623753680974;
+        Tue, 15 Jun 2021 03:41:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623753680; cv=none;
         d=google.com; s=arc-20160816;
-        b=qMR9N0u3SOISxZCxw7zUEgD7kysuI5aYsAbNYUCRZR8MJB5hy2a9y8fCV35ELd/Sqr
-         lV1UhwUm7P+YOH0k6iswrmvdnjR9D3h4ey6+MyJwryx0ilwrw4l6F4mKK/AEL5jwUEVU
-         gJL+EW+1oZUfKDr/14pR0SMKZuxsL7anO1QctZg3zjGDkICGNnh69uQs41oOX9uqnBTr
-         BJ+HXpd6GJ8dXgU05RMNmhHOsHvoBtneRCGZjImAS65KenAHgQzz+ZA02bePrauLzMVC
-         uso9PTWD0SqOMmbFLZ8ww+s9Q7gaNPX5pjfo7FHWeMXo/rqqOEc6htw77PDT3cKC0gW3
-         C7ng==
+        b=HCs/Mq+NJb+nBpYYEQUAW0GGscGL+u3YsKeO3/NfjE7EX1Wq5/u5fXN6cUBEjRaOPa
+         LVelK+QWxGcjU1MLG7octCQHRPU/wKfEn/Lr4be/8Qsux4ZvpClRWr+PRRu0NS21MTA0
+         fxZgP0Hw1WRuhvaciaT7URn4NGG4kU+sdy/di/nfe5F1tfAUgbyMl6C6XuY2PNabQZM8
+         yu6zEKQEbzU4/GGBoCTlAQ+Bkod9GYQ0LlxP+dJJrcDqWBd+VGvVqRmwQrdVeRaOgdPe
+         Aa3oW8ORwhMXr0TyZOoIe+SrTlt+0Mx9rlRJmhUlOapD632mF7mskcvRnq21KyTsPQUS
+         0UgQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=xvKwHt8rra6AElWDhlqLXcIcLDgAbXP1fBEbpsLGWQs=;
-        b=D+r2Rbfuol5+cH89ZFoDHmrWuLOE5zjj1dwwJj3tCb36qHuXQZJ5zkXKxLVIN6TM6H
-         zt7FT9o+Z/WV4e08JNpYYSsL8SWBFhqNmckqaY6HOk5iYS4qoLwFHgtg6bn1iVe7vwrg
-         XJeMCK9lpOlN/UA7oBtpxZWw07RbCZ63tSjYnJCP1e8/XhxvZoesp2J6AFKZwXROjra7
-         xrvtTRtXXmvItNk6AUj9iVrz6PT55X3Tno8AoaoiOA/gi+L//2To2DJ+XNtKr8Gv+NzD
-         sn/7Fq9wS8DuoHQL5wum3pwPh/HUGU8PHnNCctIU7yg4Nv1OI9OsN1jDXOsA5E1zHWtR
-         IG7Q==
+        bh=ky3cimQWhOYafWrZiZYmtahXi2f272EJQV3NdOgm49g=;
+        b=dsxyiRHbhs+bH/0WupXAKKQmejLUD2psw/BqfYzowIMusWlBQ2m1AtE5YcwUhhdbTq
+         tYg2VAFZSTSpnEerlmQJbEie7EwwG5iPsKL1wXck4HqM2A88RS7OJnSH2ostl4kZmoc0
+         KZFl76g1Wvnv4Pdt4L5Dt2VM1fZFLDLVdplZkDrX6zWNi4byeKgNbqyci1a+cbHHmd/m
+         uc+3pQ8PtlKh8vM4TxD+UH46Zk9ztFt3i3dvjmvgrpbgDwRCuh5ntkZ2HRNidscQGrMs
+         4wWucmQyqU3IcmJ0pC26Caqh7CGJ50cgINq0N+whTFTFMbDHTReUg1DQkm4Ri8McloWI
+         usEA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=kGsQb1yk;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Ea3+nE8w;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n4si8978987vsh.439.2021.06.15.02.19.51
+        by mx.google.com with ESMTPS id q14si10840301ybm.365.2021.06.15.03.41.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 15 Jun 2021 02:19:51 -0700 (PDT)
+        Tue, 15 Jun 2021 03:41:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=kGsQb1yk;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Ea3+nE8w;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47516 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:46906 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lt5Ed-0001Tu-3W
-	for alex.bennee@linaro.org; Tue, 15 Jun 2021 05:19:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53052)
+	id 1lt6VU-0000Vt-AW
+	for alex.bennee@linaro.org; Tue, 15 Jun 2021 06:41:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40702)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lt5ER-0001TS-Qo
- for qemu-arm@nongnu.org; Tue, 15 Jun 2021 05:19:39 -0400
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a]:33490)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1lt6VK-0000Vc-Ta; Tue, 15 Jun 2021 06:41:10 -0400
+Received: from mail-io1-xd34.google.com ([2607:f8b0:4864:20::d34]:39780)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lt5EP-0000qC-V3
- for qemu-arm@nongnu.org; Tue, 15 Jun 2021 05:19:39 -0400
-Received: by mail-ed1-x52a.google.com with SMTP id d7so2075144edx.0
- for <qemu-arm@nongnu.org>; Tue, 15 Jun 2021 02:19:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1lt6VF-0006h4-Ht; Tue, 15 Jun 2021 06:41:10 -0400
+Received: by mail-io1-xd34.google.com with SMTP id f10so28343480iok.6;
+ Tue, 15 Jun 2021 03:41:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=xvKwHt8rra6AElWDhlqLXcIcLDgAbXP1fBEbpsLGWQs=;
- b=kGsQb1yk4w7yjmyTSFb0qmszPdt2G9x8FihS2RxY+sA3ueTWp81/iuWnO2iUbAZh1N
- qfC2xcDSLQ1y5PwF8cAdiw37f7aJW+4MMX6PWO7QB7asc61HIoN64992JVYkdJBAr4nw
- fYBQfpgzXVxHENldKg4Ne9XTRvkJ/eQbmO/nPEWsYJGd0yk3MIAZTTYMmY+Xe/BFtgh3
- 5rGbYnHXDq+XgxHm1GJWVQt3phgp70tUFS5wNzqKbSwe0EJbs16ckGMp8Cl0nNOoriOq
- CN2k3lhkPInAh74y2sr452a7+4Q+6ZYfa2TQkXvAWyTSoErucfybh1TtpmSNPNGsob2C
- wHwQ==
+ :cc; bh=ky3cimQWhOYafWrZiZYmtahXi2f272EJQV3NdOgm49g=;
+ b=Ea3+nE8wRN5Lw8lOiHuBT4RESeSqU4G7Foz8UcANlfuoYkDHj4HlRGwaff2aGNE30a
+ zHrKEnyS1w/z2j3fGOnm7B822hVMs5NBeOwIZEw6zsuLXG+4TKQ8+GV/OOesv2RqZ3rj
+ 2H6IxX0cicwefr0QOQTD0654zRUPtWm/EDI5TGKmE9SII3SZI6F4ETOgWmxJLbAmr5+M
+ +JYd7+edb4N9AGiIf0UKdAifXI7uG+PSQLoaFj+7JvYYxs4nYlLgdyEd8QaBT3gfLrLy
+ xqaIex2MT+WHLDlttBAsIdI84CzPIrtnMHj5dbp3YbdMUSzPQrdesjUIyzrvaWAJ+lpu
+ aX6w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=xvKwHt8rra6AElWDhlqLXcIcLDgAbXP1fBEbpsLGWQs=;
- b=fscZIkBBm9hJtnTQq3WUZLLDfdTdzOcEoD0VX5vLaQ3GLTuP3WYjkUhiFu12LNuELy
- AjVIAtqplQezYkGUsjheiFGyv+QK63s6c5+c0XaGN4rW/7czNY9yuJ6YA089SG64IrIq
- NeUgRqs6Gt+kzlqtrVU2u7cnVqch9DnWLTQvP1r15fVkqu7GcppFDcewqWyH/mEbY3va
- FYibM46FMs1jC8PxB42xzcRVowR41AHMf7SCc3hYpnRiP8ajgrm5OG40Uq3BUTYUAGmz
- j38b4p9R4M1wBuBQz1N4A53+xiygzBd8MvpdLYf71jpcrBVeQ7a/Eq/wXBh46eWWiyXH
- 3LYA==
-X-Gm-Message-State: AOAM530Z8VFTBCBRIh2s6nksPM/DfYHEdR2CZt7aWOu7i1syM/9TnQ0x
- qm4/P+w63ngKuG1Nr0JmdDbL3CKh3WdqSAYM50yXBnebNN8=
-X-Received: by 2002:a05:6402:3554:: with SMTP id
- f20mr3938817edd.204.1623748776287; 
- Tue, 15 Jun 2021 02:19:36 -0700 (PDT)
+ bh=ky3cimQWhOYafWrZiZYmtahXi2f272EJQV3NdOgm49g=;
+ b=IXUgJpd1dOtRa/y2I0oRbmg11Ilu7IALLi8wQ3syXevuNtGFLywvUUWfg1nNvpHk4U
+ q5t3D5xNZC0Bms1JtGnZ5SiBfo3dAD1C6KYHQExH2h2YgI8CkxTu7tZdrBP4fZYtenEj
+ l0qTNINIFX9eFNtKPLTIifxkTLcrjK/aGrjRn/i38O1l79+ZuAHljYuKj60dJBsQGMbE
+ txRT7hmJtLUN8PHcV3u/weeNJ3xsGFl6h9BDXMl/DlY8C/Fl9uCrljB7BAGILJxDcOrq
+ 91r7MeGgAnyIDQQZSRagMgFN7S0a8NHmlPola1w1Jh8lSlntVPe5+pYQVSOxYJEeS+kM
+ lgCg==
+X-Gm-Message-State: AOAM5312sE/ZVb8S9eOEQsB2RDZromonxPWIbjhRIMbTSpBLNrGzkShf
+ 5aXDRYuOpUIzg/4c7+jSzbXrnrPADZtblet3+ws=
+X-Received: by 2002:a02:8816:: with SMTP id r22mr20997182jai.135.1623753663869; 
+ Tue, 15 Jun 2021 03:41:03 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210603171259.27962-1-peter.maydell@linaro.org>
-In-Reply-To: <20210603171259.27962-1-peter.maydell@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 15 Jun 2021 10:19:01 +0100
-Message-ID: <CAFEAcA98cteF4aH+M9z5==dXUv8CJJnVzyB4YofX+htiBhqDHw@mail.gmail.com>
-Subject: Re: [PATCH 0/3] hw/acpi, arm: Provide and use acpi_ghes_present()
-To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+References: <20210608161028.4159582-1-erdnaxe@crans.org>
+ <20210608161028.4159582-2-erdnaxe@crans.org>
+ <CAKmqyKMs4Sr9oXR8k3jeXo=Umy3F6k-CfQW4Fz3zB++uFKkmDg@mail.gmail.com>
+ <6bcf8d1b-7caf-ded5-937a-4c1bf96e2d85@crans.org>
+ <CAKmqyKMETmc0sJbG8FdUokg9Ke_hg5ohZ2YnLzyQO1xwzpXMRA@mail.gmail.com>
+ <7e8a01c5-0130-1003-8396-af8d4b45d2c0@crans.org>
+In-Reply-To: <7e8a01c5-0130-1003-8396-af8d4b45d2c0@crans.org>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Tue, 15 Jun 2021 20:40:37 +1000
+Message-ID: <CAKmqyKNtzSyX7paN8jfKWWNzBpVx61_o05E3uCQMCTxGHhwEAg@mail.gmail.com>
+Subject: Re: [PATCH 1/2] stm32f100: Add the stm32f100 SoC
+To: Alexandre IOOSS <erdnaxe@crans.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d34;
+ envelope-from=alistair23@gmail.com; helo=mail-io1-xd34.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -109,38 +112,81 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Igor Mammedov <imammedo@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>,
- Swetha <swjoshi@microsoft.com>, "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "open list:STM32F100" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XmSZoTqAMpaN
+X-TUID: 9fGmNw+ffvNN
 
-On Thu, 3 Jun 2021 at 18:13, Peter Maydell <peter.maydell@linaro.org> wrote:
+On Tue, Jun 15, 2021 at 7:15 PM Alexandre IOOSS <erdnaxe@crans.org> wrote:
 >
-> Currently the Arm code in target/arm/kvm64.c which decides whether
-> it should report memory errors via the ACPI GHES table works
-> only with the 'virt' board; in fact it won't even link if the
-> virt board is configured out of the QEMU binary.
 >
-> This patchset replaces those virt-specific checks with a single
-> new acpi_ghes_present() function which tells the caller whether
-> it's OK to report errors by calling acpi_ghes_record_errors().
-> The mechanism we use is a simple flag in the AcpiGhesState
-> which gets sent if the board calls acpi_ghes_add_fw_cfg() to
-> set up the GHES stuff.
 >
-> We need also to provide 'stub' versions of both acpi_ghes_present()
-> and acpi_ghes_record_errors() so that we can link even if no
-> board using ACPI GHES has been configured into the binary.
+> On 6/15/21 10:04 AM, Alistair Francis wrote:
+> > On Tue, Jun 15, 2021 at 5:50 PM Alexandre IOOSS <erdnaxe@crans.org> wrote:
+> >>
+> >> On 6/15/21 9:41 AM, Alistair Francis wrote:
+> >>> Aren't you missing some timers, like timer[5] 0x4000_0C00?
+> >>>
+> >>> Alistair
+> >>
+> >> I double-checked using the reference manual and the datasheet and there
+> >> is not timer[5]:
+> >> - page 36 of
+> >> https://www.st.com/resource/en/reference_manual/cd00246267-stm32f100xx-advanced-arm-based-32-bit-mcus-stmicroelectronics.pdf
+> >
+> > Strange, https://www.st.com/resource/en/datasheet/stm32f100rc.pdf
+> > describes Timer 5 and page 282 of the document you linked talks about
+> > timer 5 as well.
+> >
+> > Alistair
+> >
+> >> - page 30 of https://www.st.com/resource/en/datasheet/stm32f100cb.pdf
+> >>
+> >> I believe ST is skipping numbers to guarantee that timer[n] will have a
+> >> consistent address on different STM32 SoC.
+> >>
+> >> Thanks,
+> >> -- Alexandre
+> >>
 >
-> (You can test that this series is necessary by commenting out the
-> 'CONFIG_ARM_VIRT=y' line in default-configs/devices/arm-softmmu.mak
-> and building with KVM enabled on an AArch64 host.)
->
-> I have tested with 'make' and 'make check' but nothing beyond
-> that; testing by somebody who has a guest setup that uses GHES
-> would be helpful just to check I haven't accidentally broken it.
+>  From what I understand from other STM32F100xx reference manuals:
+> I am implementing all peripherals in the STM32F100xx reference manual
+> which match with what is actually in the STM32F100RB SoC (used in the
+> STM32VLDISCOVERY).
 
-Thanks for the review; I've applied this to target-arm.next.
+Ah, my mistake. The STM numbering always confuses me.
 
--- PMM
+>
+> STM32F100RC SoC implements more peripherals (more USART, more
+> timers...). Adding these peripherals in stm32f100.c means that the
+> STM32VLDISCOVERY machine would have peripherals that does not exist on
+> the real target. Do we want to avoid that?
+
+Yep, this is fine as is.
+
+>
+> Should we keep stm32f100.c with the common subset of peripherals and
+> extend it when a machine is using a variant with more peripherals?
+>
+> I believe this issue is also linked with what Philippe proposed: we
+> could abstract STM32 SoC in the same way ATMEGA is abstracted. This
+> would make a lot of sense since the STM32 family has a lot of
+> similarities and we don't want to bloat QEMU with N times the same code.
+
+I agree. That's the best way forward and I think it's a good goal. We
+don't have to block this series on that though. If you would like to
+work on a shared abstraction that would be great :)
+
+Once the IRQs are fixed:
+
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+
+Alistair
+
+>
+> Thanks,
+> -- Alexandre
+>

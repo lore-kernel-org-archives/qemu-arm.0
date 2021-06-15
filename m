@@ -1,102 +1,71 @@
-Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp2995173lff;
-        Tue, 15 Jun 2021 07:14:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxwsqSTBHHNzMeXm6LXczfzvrxHA+FaC6TLbsa731AwoJ7ovJ2YL0wPjcJqxCckBRRS79sZ
-X-Received: by 2002:a17:906:480a:: with SMTP id w10mr4536962ejq.18.1623766461515;
-        Tue, 15 Jun 2021 07:14:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623766461; cv=none;
+Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp3070995lff;
+        Tue, 15 Jun 2021 08:38:18 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwcq6RNtrpwPBqmEayTAN99Lu3RHj9HBo0d0dV/WsCRo+fRZXnhKgk5OHsfVEAeMseVr8Pc
+X-Received: by 2002:a1c:7913:: with SMTP id l19mr5975060wme.179.1623771498568;
+        Tue, 15 Jun 2021 08:38:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623771498; cv=none;
         d=google.com; s=arc-20160816;
-        b=auFkOh60ZP8dlj+cDD2dOkjD1TS7tV2zmC+1P7QXMBCPwEtDoxNMHSSrmxzokXtNz6
-         5kfoM3HY1UUwA1MlD9FXpXcVqGC48X2vWI44HGvRIv083UK1p5vtla2akFjUqrpmB3pA
-         ZiN5hwAr4nnByFxtNe2zwQDsOAu44zERA4DeS8l+mICkhoUSP9Nmp6MNljbizxE6k+zH
-         j/7b7sfg2sgUyD+vPC/rnATiQW6NTVzNzLfCXSO2HFL3pS6x8NTs6QzTa5deT3ZL0dm4
-         FrKKmsrZaGesP/SWcf7+wsJoIhfYmW0+Kzf5UAOmmPH7Iez0xGZH5Vh9WhqGIYN33nN+
-         Wong==
+        b=t/c3yj9U7RJzs2k9Qs4lidZBZjHzPADaXOG6+oWPgOGvKkzE8Th8XCLyzmNJ2Y93ho
+         Oe9cISF0LUxQw4OHCmF7+e2HvLJpHzPSB8F6lDXknyerfZNyCBfJlX/vuWVY5flQds2N
+         XhIKoLk/VfYOqhi8dAbNsuLLxr2gPlaGeHsSnsbUP45oihERUtkLkeS6HWLtqg1JD5o8
+         55/nH3l0f0rfninMHvJoVxts7tON6Uzqkr5BLVnF00kHgDycws6K0/yOaVd2R0YvS+FH
+         S1YhQoMhSFkwpgaqRmpxJApPBA5/AARyezFC3x8V5zbw6DL5IxLWWYxorMZpSOsevF2w
+         LF3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=iGKwXYDOrUJZbFIaPks0Bbjn9N1nJOlm+daK1f6jgg0=;
-        b=o5sxg+IgATqy06mvF3ItuIARBjtbhj7QHahl9oMBNcaxDyJA1NDavlVgXgsv3CzTg/
-         QgwmwxhAcc7Ty2YXiHfgwaVnYyM3jXqw+SsyCxD3S+lKNxhUwP1CzjI1mhFsWyLwjykh
-         xUsf4rsNNUl1Fsy+XUwreFLzUn5uEZheVuKkn03kky/iY1GDkg1pcB9hJ60a3khatIOG
-         4s2atyQ+2qYUv7BTSv7kHaWGeXDMbF+6tJg86OfZYutG8CivIwunQb748ymB8+6EfbcK
-         GujDLBBVplI8+aI764ZVmuPzyGHDXL49Z/PcY4UNY/pIrabVTh0s2HL5kaDKZatgW79X
-         SZTg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=Pu9uwqAEP30Fm+DIZc+TKd4pvqB9j5boLECYiyxolNg=;
+        b=dWcwVoKRpuWjL79BVbbD8Jy1h3Hb1HyYVPsqaNlES5ZPxUmf2UqLHTxEQ5ciALpUK/
+         +O2rk3L5g4w98L4Lyp52EPXXbpo6TF4qJldQrUXDOVO1TIlRvaYlEQDghvQEOtaPoIu+
+         Puw9s39eoLnPa6tYrAFsULgZXghE8QmB8+hSkav/sgFcE0qZvvNURsHsmyMJvxO0qALv
+         NN5Yc7uwXkYFugh/Bpq0UynqbFUKI1Jwt5U17puH/UolH7q9QWAbsZ8Bt1k7LuDw0FGO
+         L18uskdCpOD7k3vPnV5aUbZ8/L0WOtrpdwL4583BLw+nqOtVopXPWni+wkX3egcM8g1I
+         TnWQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=IWTGt6nX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=crans.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v4si16887009edj.103.2021.06.15.07.14.21
+        by mx.google.com with ESMTPS id l19si4881040wmq.135.2021.06.15.08.38.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 15 Jun 2021 07:14:21 -0700 (PDT)
+        Tue, 15 Jun 2021 08:38:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=IWTGt6nX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56490 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=crans.org
+Received: from localhost ([::1]:58008 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lt9pc-0001XP-I9
-	for alex.bennee@linaro.org; Tue, 15 Jun 2021 10:14:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37152)
+	id 1ltB8r-0005cx-MF
+	for alex.bennee@linaro.org; Tue, 15 Jun 2021 11:38:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34382)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lt9id-0003o1-9J
- for qemu-arm@nongnu.org; Tue, 15 Jun 2021 10:07:07 -0400
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635]:45821)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lt9ib-0002Ig-0a
- for qemu-arm@nongnu.org; Tue, 15 Jun 2021 10:07:06 -0400
-Received: by mail-ej1-x635.google.com with SMTP id k7so22781692ejv.12
- for <qemu-arm@nongnu.org>; Tue, 15 Jun 2021 07:07:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=iGKwXYDOrUJZbFIaPks0Bbjn9N1nJOlm+daK1f6jgg0=;
- b=IWTGt6nXjnIpIEb1vHhfU7E81ogi9Hg18xTIwKUiQllYHSL8cnTOum4ldfz7KgJ9KO
- iPn4QMSSiK1e8S1EjIzWv5D9ezXCHzaJpMQZeP09JPGka3fE9aH2q7ov6UX8zd7RIdgB
- V6IrBSsJFiCiYQSnGcLg7R4QQBrBJ9cmDQOcYMFj3rvkqtpN5PA2O5h6ARGv9fn9yog7
- RV2vUJReAJOgIVlzhKoPQx/dXjmUOwtJltEv2Fi7LImnC6byOxPyFumi4v/J0paBXHzC
- mm60W2dauIYckLQcjOxzmUSVlIzDB9lbq2k2DXUKcJTF/L2tF761HBqsohaoUQNlC3CP
- reow==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=iGKwXYDOrUJZbFIaPks0Bbjn9N1nJOlm+daK1f6jgg0=;
- b=EkikMmwm3hdZvVgHkncGaqBJ6ZxhbFZI00wMuQ2GGMMy6CeuYv6als3XDU/cYdyamm
- OK76HP0seVxF5uNdn8h455q8Zt/O74MbQcMa+5oT6V25XcWSDECfOxsSxr/w/NcPh9jw
- iMRuftHwJAlzWNTX31/CBAh27PEIC4dO9TTnVyb3/TXuN+955jjgfLLfp7k0t+gOVptV
- VcrSAdq9sDUlI4f9GDGBtbC1n6SDtQGdvDCLhQSp2bfFn0Pkk4/ZXukdQQptbQIeD7Xw
- Fuwp4KldtlUwG7jxzZ+QsnokvQgYdYw7D7eyQzDQQTThz55XVmmu6WvW6t/DnmLFqmCM
- 8diA==
-X-Gm-Message-State: AOAM530N/b1+0RHERwiOyGaTJL0SiexN32mI8WuHPkZ7hReDgdZauT5h
- +jVi+inRPITf/X4Z/7YeSog7+4xFk8IP8WjYo+XdnA==
-X-Received: by 2002:a17:906:a108:: with SMTP id
- t8mr20773832ejy.407.1623766023326; 
- Tue, 15 Jun 2021 07:07:03 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <erdnaxe@crans.org>)
+ id 1ltB6T-0001WZ-Qe; Tue, 15 Jun 2021 11:35:49 -0400
+Received: from zamok.crans.org ([2a0c:700:2:0:ec4:7aff:fe59:a1ad]:40644)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <erdnaxe@crans.org>)
+ id 1ltB6I-0004lg-CY; Tue, 15 Jun 2021 11:35:49 -0400
+Received: by zamok.crans.org (Postfix, from userid 11692)
+ id 98A28E00A3; Tue, 15 Jun 2021 17:35:35 +0200 (CEST)
+From: Alexandre Iooss <erdnaxe@crans.org>
+To: qemu-devel@nongnu.org (open list:All patches CC here)
+Subject: [PATCH v2 3/3] docs/system: arm: Add stm32 boards description
+Date: Tue, 15 Jun 2021 17:34:40 +0200
+Message-Id: <20210615153440.1307729-4-erdnaxe@crans.org>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20210615153440.1307729-1-erdnaxe@crans.org>
+References: <20210615153440.1307729-1-erdnaxe@crans.org>
 MIME-Version: 1.0
-References: <20210608202522.2677850-1-venture@google.com>
-In-Reply-To: <20210608202522.2677850-1-venture@google.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 15 Jun 2021 15:06:28 +0100
-Message-ID: <CAFEAcA_P6vtoqttG1bdegmh560xNkzjcBQrdBK77BNv9di+H=A@mail.gmail.com>
-Subject: Re: [PATCH v2 0/3] With the pca954x i2c mux available, enable it on
- aspeed and nuvoton BMC boards.
-To: Patrick Venture <venture@google.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::635;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x635.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a0c:700:2:0:ec4:7aff:fe59:a1ad;
+ envelope-from=erdnaxe@crans.org; helo=zamok.crans.org
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -110,27 +79,120 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>,
- Havard Skinnemoen <hskinnemoen@google.com>,
- QEMU Developers <qemu-devel@nongnu.org>, CS20 KFTing <kfting@nuvoton.com>,
- qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "open list:STM32VLDISCOVERY" <qemu-arm@nongnu.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Alistair Francis <alistair23@gmail.com>, Alexandre Iooss <erdnaxe@crans.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MOWGHI9YvJ1a
+X-TUID: GVYVYCrAD1Hp
 
-On Tue, 8 Jun 2021 at 21:25, Patrick Venture <venture@google.com> wrote:
->
-> v2:
-> - Dropped sonorapass patch.
->
-> Patrick Venture (3):
->   hw/arm: gsj add i2c comments
->   hw/arm: gsj add pca9548
->   hw/arm: quanta-q71l add pca954x muxes
+This adds the target guide for Netduino 2, Netduino Plus 2 and STM32VLDISCOVERY.
 
+Signed-off-by: Alexandre Iooss <erdnaxe@crans.org>
+---
+ MAINTAINERS                |  1 +
+ docs/system/arm/stm32.rst  | 66 ++++++++++++++++++++++++++++++++++++++
+ docs/system/target-arm.rst |  1 +
+ 3 files changed, 68 insertions(+)
+ create mode 100644 docs/system/arm/stm32.rst
 
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 0aa8016936..47fb06e5fc 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -896,6 +896,7 @@ M: Alexandre Iooss <erdnaxe@crans.org>
+ L: qemu-arm@nongnu.org
+ S: Maintained
+ F: hw/arm/stm32vldiscovery.c
++F: docs/system/arm/stm32.rst
+ 
+ Versatile Express
+ M: Peter Maydell <peter.maydell@linaro.org>
+diff --git a/docs/system/arm/stm32.rst b/docs/system/arm/stm32.rst
+new file mode 100644
+index 0000000000..508b92cf86
+--- /dev/null
++++ b/docs/system/arm/stm32.rst
+@@ -0,0 +1,66 @@
++STMicroelectronics STM32 boards (``netduino2``, ``netduinoplus2``, ``stm32vldiscovery``)
++========================================================================================
++
++The `STM32`_ chips are a family of 32-bit ARM-based microcontroller by
++STMicroelectronics.
++
++.. _STM32: https://www.st.com/en/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus.html
++
++The STM32F1 series is based on ARM Cortex-M3 core. The following machines are
++based on this chip :
++
++- ``stm32vldiscovery``  STM32VLDISCOVERY board with STM32F100RBT6 microcontroller
++
++The STM32F2 series is based on ARM Cortex-M3 core. The following machines are
++based on this chip :
++
++- ``netduino2``         Netduino 2 board with STM32F205RFT6 microcontroller
++
++The STM32F4 series is based on ARM Cortex-M4F core. This series is pin-to-pin
++compatible with STM32F2 series. The following machines are based on this chip :
++
++- ``netduinoplus2``     Netduino Plus 2 board with STM32F405RGT6 microcontroller
++
++There are many other STM32 series that are currently not supported by QEMU.
++
++Supported devices
++-----------------
++
++ * ARM Cortex-M3, Cortex M4F
++ * Analog to Digital Converter (ADC)
++ * EXTI interrupt
++ * Serial ports (USART)
++ * SPI controller
++ * System configuration (SYSCFG)
++ * Timer controller (TIMER)
++
++Missing devices
++---------------
++
++ * Camera interface (DCMI)
++ * Controller Area Network (CAN)
++ * Cycle Redundancy Check (CRC) calculation unit
++ * Digital to Analog Converter (DAC)
++ * DMA controller
++ * Ethernet controller
++ * Flash Interface Unit
++ * GPIO controller
++ * I2C controller
++ * Inter-Integrated Sound (I2S) controller
++ * Power supply configuration (PWR)
++ * Random Number Generator (RNG)
++ * Real-Time Clock (RTC) controller
++ * Reset and Clock Controller (RCC)
++ * Secure Digital Input/Output (SDIO) interface
++ * USB OTG
++ * Watchdog controller (IWDG, WWDG)
++
++Boot options
++------------
++
++The STM32 machines can be started using the ``-kernel`` option to load a
++firmware. Example:
++
++.. code-block:: bash
++
++  $ qemu-system-arm -M stm32vldiscovery -kernel firmware.bin
+diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
+index edd013c7bb..addd3d1613 100644
+--- a/docs/system/target-arm.rst
++++ b/docs/system/target-arm.rst
+@@ -96,6 +96,7 @@ undocumented; you can get a complete list by running
+    arm/collie
+    arm/sx1
+    arm/stellaris
++   arm/stm32
+    arm/virt
+    arm/xlnx-versal-virt
+ 
+-- 
+2.25.1
 
-Applied to target-arm.next, thanks.
-
--- PMM

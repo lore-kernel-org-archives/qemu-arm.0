@@ -1,102 +1,103 @@
-Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp2834697lff;
-        Tue, 15 Jun 2021 04:03:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwduli08tqRV21eZluGxSsT6JFOcqmyAoMNras4Frk4WubXqqIvgrl3692wXFEEHy4cFflh
-X-Received: by 2002:a05:600c:499a:: with SMTP id h26mr22549426wmp.32.1623755004438;
-        Tue, 15 Jun 2021 04:03:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623755004; cv=none;
+Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp2923452lff;
+        Tue, 15 Jun 2021 05:55:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzKpCiK4mBEIdFIO44LnJtOUHHYODo5ww/mFkfzID4phQejIWqiFUNvDK8r0T9EFVgEQvTj
+X-Received: by 2002:ab0:8e:: with SMTP id 14mr5888712uaj.103.1623761721925;
+        Tue, 15 Jun 2021 05:55:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623761721; cv=none;
         d=google.com; s=arc-20160816;
-        b=eE29XOTvPHVbOtmp0Sin4VOUZaAAQywVW1z7S0+2Ij+1qsGGPyTdgnjyEdTzsQPGo2
-         NcXzOMfuwWZlJgxFHmr4R6VdOSj+t0jJ8dbHnqrp0vBGghBdDDDYdizHP7g+owsVFCDj
-         Em0qSoil+eF/26JBEPUvjX4lk7wOJosuPAkB+x7c0kOXWLNM9sv6l+dt+YA4RLsa53CB
-         ifRsqmaWYuuttKF49bXQG075QIMC//7N3PORv5yjCfzehyE6UweqNp0qMzO6+WWCKmE2
-         gw0/SCPBPysIPT9zkJdrzp7OKO7/KK+CJ0f/QziPdFkJMHPobakxLQ2zceJVl9LL/o/n
-         f9qg==
+        b=uAGZAM+y3rz/GZoZXHSJp9g7XCLbC6njR57L5fFiPwIvspBZEc3gD1XKo0mx4dWj/3
+         a/OVrIPVADHSNJk94CGu6+vEht1+tra/mXspjOR2bfI7nYCPrl4YRPjjFr+JcgJMUCqt
+         om/HZYNK78CAVb4L59UeZAxwgNfuDHTZIp90Z95JQ0BYj+I60uL8W1EpYLcFlA0FIMPa
+         hzeL7AlGwg1BPBkZvPZ2E/88ulxcmikyNUbHtsjAjPU5ukOpJoNMf5LYU362mWFJRNjI
+         Eqa8+bWCWtifTs83VgnrlVB5vp4rTrmLiCNxiJvL6nVLqVVCQ3kwRCK7saH+gI9vHpze
+         NiQg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=djBlKwioWVzQDGT311lG8sXwZQ13ZtcbvYrvrLZ/zZw=;
-        b=ELCSwDlJKCdZ6q8bTI1RdfpBPSNw7+EyiQ+OkxOZFzFl/NDnkDXcz6iUC2ywNlNo8o
-         W7Urkz+XwC54xBJwkbOaBykdyVLlWmxy3h6GJsTb77I6nwRJbJpHgLa+Yy6fBeX0DNCo
-         CUHGF8+zRk/tuxJktxIkz8U6L6PBnvv8n6u0UZnPmYe/0Y0WgeoGDllaMGMvebkko0rC
-         oe0WliEvX/WJNSMIGXPNRJf4zzWg+Se3gdUWTWZQkNQh6AIRNTnTnr5rQc7xftTtN8eI
-         zLQyE8m4w8H+FBdGBUhq1p3b++0Adzsc2qFeQ9GgMnOTxpoIhny8z4RTbf2726QYJzPn
-         wTwA==
+        bh=SttRVsuOeUIrqIsH1LMx9Q9SZS1d06FixTeiaKxCb38=;
+        b=xwSWasLKktBulzqYA9D6goDJsvZjFwiJs+CN80Ih63vAW1UAdke1XEVeUS5JNjXFZg
+         6DTIjQazS12x8bxHGs9noHZCi9ftWXlnHmouTgeh73pj0yD2S9jZEzPCQZlQ2RpoGVdu
+         Oy6C6Sh3ltEKrn/ruPCqVzBfsqKic9k0Myzq8pLL0j4XazGSO8rAp4OXl4jPx6YJuUt7
+         SOxpPZ8draAnEsWgAETGLio7ge3HWAEimJ4VDTujYrvZg3eDRO2sOnp1ZHyTRqay4Nw0
+         xnSGs5gRRNfnHKkGXL+VMBmE+cfUTLnPhlvBpzeFl4c9rZrmTjHPK+h46pqQingts0kY
+         0BhA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=LJaxDjO3;
+       dkim=fail header.i=@linaro.org header.s=google header.b=fAvTbnDF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w18si19346901wrs.268.2021.06.15.04.03.24
+        by mx.google.com with ESMTPS id c14si7475845uav.218.2021.06.15.05.55.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 15 Jun 2021 04:03:24 -0700 (PDT)
+        Tue, 15 Jun 2021 05:55:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=LJaxDjO3;
+       dkim=fail header.i=@linaro.org header.s=google header.b=fAvTbnDF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:38986 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33634 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lt6qp-0006gN-H2
-	for alex.bennee@linaro.org; Tue, 15 Jun 2021 07:03:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45244)
+	id 1lt8bB-00005S-60
+	for alex.bennee@linaro.org; Tue, 15 Jun 2021 08:55:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49406)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lt6qX-0006g6-NQ
- for qemu-arm@nongnu.org; Tue, 15 Jun 2021 07:03:05 -0400
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c]:40756)
+ id 1lt8ax-00005K-EZ
+ for qemu-arm@nongnu.org; Tue, 15 Jun 2021 08:55:07 -0400
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636]:46734)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lt6qQ-0003vL-RJ
- for qemu-arm@nongnu.org; Tue, 15 Jun 2021 07:03:05 -0400
-Received: by mail-ed1-x52c.google.com with SMTP id t3so50550646edc.7
- for <qemu-arm@nongnu.org>; Tue, 15 Jun 2021 04:02:58 -0700 (PDT)
+ id 1lt8ar-0000Zh-VD
+ for qemu-arm@nongnu.org; Tue, 15 Jun 2021 08:55:07 -0400
+Received: by mail-ej1-x636.google.com with SMTP id he7so22189189ejc.13
+ for <qemu-arm@nongnu.org>; Tue, 15 Jun 2021 05:55:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=djBlKwioWVzQDGT311lG8sXwZQ13ZtcbvYrvrLZ/zZw=;
- b=LJaxDjO3oZ9dYwLSTgq5n/f9jWcM8msQ77DKmO7p43EudZpLD90ontAeB+AvFF7NUG
- xJu9Y/ALL/0aeNQ2CSEmIZUnRwK/uisN7LgaOhKlIPXhwYaG1k1Ol6TtqWsAyhqfdo2k
- lga11aei8FGJe9vrq7ZDy8z23Zj52ZeHvJrGjoecEYhmd4EE1yQ+cCKGv5WmIzXlJt01
- jzUt/DNjmfjbO/1gGYQ3N5d33Qo2P/j4pRHQFqfKdqctshhvi626+SU8hzf2ltpPhfB8
- vSv4xCcK6+UtJAHh95/c8MTCktXsgvoiC19c6tinjpA/BDNNSniOvvXJUyHl5J5GT4sn
- TPwA==
+ :cc; bh=SttRVsuOeUIrqIsH1LMx9Q9SZS1d06FixTeiaKxCb38=;
+ b=fAvTbnDFYmvpbUGPAipzB3ggWQCU4zWiRl/+799+7zcP4mcGjvtGZgiShgQv7Muea4
+ xpwFZey8ha3NtRqn4tngpmY+YgdQqTMet9wRe10uE45tMRAsBVk5wXQrMtFILeO+yuiw
+ nxTItGFBYqcHRthf85/jtA0RVxjhuJDOm1dPM0NeADZLHibTOpuLTZb8CjMEbLk8GsKu
+ xFuZ9bgMeBMU2+SCZPyz1Vw13oJpgXqIQfW72bC12JRhDtRFNEb/pYJVj7px9UYi9u0V
+ wO8or/lBhe9fsRGPOnolL8KDsVTOGkfWGjbakOJo+RMhKdiAWCEBJ9zJIQQzGyPIFgI+
+ Rk+Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=djBlKwioWVzQDGT311lG8sXwZQ13ZtcbvYrvrLZ/zZw=;
- b=kBXnuLEa7pFEjHPqptmHE0eVaSJ+Bh6DSx0rAUMMJyP4SSjXsb2OIS1wrlOUl+UmSp
- vqW9cNPRw2ka8MOTfNnWRsqcI4KMQTDYvlG1lHlgOEkV7U1EMCYD2/bpI06EE+996aHA
- PxlU+DKc6ecLe4BL4mEPEjvvhE9AUFCFd5v1EpK94q/7+LZ7s5S5ioLdQFYr0W8Qm9vz
- y+h17pyKvvk/P29p3XMw1G9e5GvI/QZoRK8fiDtmM5K5MQWJi8XyMxmj8Y9b44ucCdx8
- 1tYCm5urkc4BFzgoMLU0aaR0eNaQBST1tKgy3E0NBVJefgtKOAhfpmsj02jYDvFFoQ7z
- K+wg==
-X-Gm-Message-State: AOAM530a+IodNH3zitDCom0W/l1foVFe214zTUuKvmC+hF7kWfQjAnK6
- ZPnjW8f7EygxL8+M7bNIlOp71MMwcN14tW71Stu+Yg==
-X-Received: by 2002:aa7:c857:: with SMTP id g23mr22210125edt.100.1623754977331; 
- Tue, 15 Jun 2021 04:02:57 -0700 (PDT)
+ bh=SttRVsuOeUIrqIsH1LMx9Q9SZS1d06FixTeiaKxCb38=;
+ b=s7wsG4jqPa6JogxwWmhIv60RTCQYS3/pw5m5K9hqrsdMSKINz98Gs4LjB42HyXqrZD
+ h+KiP3klQO8NPiNB7Vd8kFiDEsk0ZKoBoqg+EDnll2Som3Avo6Vclroa56Kw2ywIlKSN
+ UHfH4L2stPuswS7e3YcuQcjKCpzbSY+GWvVuVEJIPoyO9tSeHm5PS0UUBBo4tbQtGOy0
+ vIQeITznakCV/0WLlppBPMGwANonVwNy9cz1c4YuTPNcjUABXmofkNFvtaBrivpwAGsg
+ LdTvWF72IMrzOzLpURZksdYsnkdAFOl368MDqxB/itlpPBLgYGCXQ2cA38CgAauLUG04
+ kVyA==
+X-Gm-Message-State: AOAM533uh9t0D1d2UyC/6lNUbIBYxK38zdOjedlOHY5g8Sh9z/yXHeNj
+ 5mvUmBqMIMLerC4jwhUEGG1EHKBSs5wEzGebVo2NVA==
+X-Received: by 2002:a17:906:b294:: with SMTP id
+ q20mr20275465ejz.382.1623761700319; 
+ Tue, 15 Jun 2021 05:55:00 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210519202253.76782-1-agraf@csgraf.de>
- <20210519202253.76782-19-agraf@csgraf.de>
-In-Reply-To: <20210519202253.76782-19-agraf@csgraf.de>
+ <20210519202253.76782-17-agraf@csgraf.de>
+In-Reply-To: <20210519202253.76782-17-agraf@csgraf.de>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 15 Jun 2021 12:02:22 +0100
-Message-ID: <CAFEAcA825LDibg_4rnBQ8TmE8fZNauDkKzKBMGbnfY+j7bSjWg@mail.gmail.com>
-Subject: Re: [PATCH v8 18/19] arm: Enable Windows 10 trusted SMCCC boot call
+Date: Tue, 15 Jun 2021 13:54:25 +0100
+Message-ID: <CAFEAcA_VJa_vJtJx6PtQS=WTy2y9ZJg8pcgu4Pkzp=CbuH85qw@mail.gmail.com>
+Subject: Re: [PATCH v8 16/19] hvf: arm: Implement PSCI handling
 To: Alexander Graf <agraf@csgraf.de>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::636;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x636.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,29 +119,182 @@ Cc: Eduardo Habkost <ehabkost@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Peter Collingbourne <pcc@google.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RXaOaha7axoX
+X-TUID: Mnl3DoAQRmtD
 
 On Wed, 19 May 2021 at 21:23, Alexander Graf <agraf@csgraf.de> wrote:
 >
-> Windows 10 calls an SMCCC call via SMC unconditionally on boot. It lives
-> in the trusted application call number space, but its purpose is unknown.
+> We need to handle PSCI calls. Most of the TCG code works for us,
+> but we can simplify it to only handle aa64 mode and we need to
+> handle SUSPEND differently.
 >
-> In our current SMC implementation, we inject a UDEF for unknown SMC calls,
-> including this one. However, Windows breaks on boot when we do this. Instead,
-> let's return an error code.
+> This patch takes the TCG code as template and duplicates it in HVF.
 >
-> With this and -M virt,virtualization=on I can successfully boot the current
-> Windows 10 Insider Preview in TCG.
+> To tell the guest that we support PSCI 0.2 now, update the check in
+> arm_cpu_initfn() as well.
+>
+> Signed-off-by: Alexander Graf <agraf@csgraf.de>
+>
+> ---
+>
+> v6 -> v7:
+>
+>   - This patch integrates "arm: Set PSCI to 0.2 for HVF"
+>
+> v7 -> v8:
+>
+>   - Do not advance for HVC, PC is already updated by hvf
+>   - Fix checkpatch error
 
 
-Same comments apply here and for patch 19.
+> +static int hvf_psci_cpu_off(ARMCPU *arm_cpu)
+> +{
+> +    int32_t ret = 0;
+> +    ret = arm_set_cpu_off(arm_cpu->mp_affinity);
+> +    assert(ret == QEMU_ARM_POWERCTL_RET_SUCCESS);
+> +
+> +    return 0;
 
-Either we can:
- * find a spec for whatever this SMC ABI is and implement it
-   consistently across TCG, KVM and HVF
- * find whether we're misimplementing whatever the SMCCC spec says
-   should happen for unknown SMC calls, and fix that bug
+If you're always returning 0 you might as well just make
+it return void.
 
-But we're not adding random hacky workarounds for specific guest OSes.
+> +}
+> +
+> +static int hvf_handle_psci_call(CPUState *cpu)
 
+I think the callsites would be clearer if you made the function
+return true for "PSCI call handled", false for "not recognised,
+give the guest an UNDEF". Code like
+         if (hvf_handle_psci_call(cpu)) {
+             stuff;
+         }
+
+looks like the 'stuff' is for the "psci call handled" case,
+which at the moment it isn't.
+
+Either way, a comment for this function describing what its
+return value semantics are would be useful.
+
+> +    ARMCPU *arm_cpu = ARM_CPU(cpu);
+> +    CPUARMState *env = &arm_cpu->env;
+> +    uint64_t param[4] = {
+> +        env->xregs[0],
+> +        env->xregs[1],
+> +        env->xregs[2],
+> +        env->xregs[3]
+> +    };
+> +    uint64_t context_id, mpidr;
+> +    bool target_aarch64 = true;
+> +    CPUState *target_cpu_state;
+> +    ARMCPU *target_cpu;
+> +    target_ulong entry;
+> +    int target_el = 1;
+> +    int32_t ret = 0;
+> +
+> +    trace_hvf_psci_call(param[0], param[1], param[2], param[3],
+> +                        arm_cpu->mp_affinity);
+> +
+> +    switch (param[0]) {
+> +    case QEMU_PSCI_0_2_FN_PSCI_VERSION:
+> +        ret = QEMU_PSCI_0_2_RET_VERSION_0_2;
+> +        break;
+> +    case QEMU_PSCI_0_2_FN_MIGRATE_INFO_TYPE:
+> +        ret = QEMU_PSCI_0_2_RET_TOS_MIGRATION_NOT_REQUIRED; /* No trusted OS */
+> +        break;
+> +    case QEMU_PSCI_0_2_FN_AFFINITY_INFO:
+> +    case QEMU_PSCI_0_2_FN64_AFFINITY_INFO:
+> +        mpidr = param[1];
+> +
+> +        switch (param[2]) {
+> +        case 0:
+> +            target_cpu_state = arm_get_cpu_by_id(mpidr);
+> +            if (!target_cpu_state) {
+> +                ret = QEMU_PSCI_RET_INVALID_PARAMS;
+> +                break;
+> +            }
+> +            target_cpu = ARM_CPU(target_cpu_state);
+> +
+> +            ret = target_cpu->power_state;
+> +            break;
+> +        default:
+> +            /* Everything above affinity level 0 is always on. */
+> +            ret = 0;
+> +        }
+> +        break;
+> +    case QEMU_PSCI_0_2_FN_SYSTEM_RESET:
+> +        qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+> +        /* QEMU reset and shutdown are async requests, but PSCI
+> +         * mandates that we never return from the reset/shutdown
+> +         * call, so power the CPU off now so it doesn't execute
+> +         * anything further.
+> +         */
+> +        return hvf_psci_cpu_off(arm_cpu);
+> +    case QEMU_PSCI_0_2_FN_SYSTEM_OFF:
+> +        qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+> +        return hvf_psci_cpu_off(arm_cpu);
+> +    case QEMU_PSCI_0_1_FN_CPU_ON:
+> +    case QEMU_PSCI_0_2_FN_CPU_ON:
+> +    case QEMU_PSCI_0_2_FN64_CPU_ON:
+> +        mpidr = param[1];
+> +        entry = param[2];
+> +        context_id = param[3];
+> +        ret = arm_set_cpu_on(mpidr, entry, context_id,
+> +                             target_el, target_aarch64);
+> +        break;
+> +    case QEMU_PSCI_0_1_FN_CPU_OFF:
+> +    case QEMU_PSCI_0_2_FN_CPU_OFF:
+> +        return hvf_psci_cpu_off(arm_cpu);
+> +    case QEMU_PSCI_0_1_FN_CPU_SUSPEND:
+> +    case QEMU_PSCI_0_2_FN_CPU_SUSPEND:
+> +    case QEMU_PSCI_0_2_FN64_CPU_SUSPEND:
+> +        /* Affinity levels are not supported in QEMU */
+> +        if (param[1] & 0xfffe0000) {
+> +            ret = QEMU_PSCI_RET_INVALID_PARAMS;
+> +            break;
+> +        }
+> +        /* Powerdown is not supported, we always go into WFI */
+> +        env->xregs[0] = 0;
+> +        hvf_wfi(cpu);
+> +        break;
+> +    case QEMU_PSCI_0_1_FN_MIGRATE:
+> +    case QEMU_PSCI_0_2_FN_MIGRATE:
+> +        ret = QEMU_PSCI_RET_NOT_SUPPORTED;
+> +        break;
+> +    default:
+> +        return 1;
+> +    }
+> +
+> +    env->xregs[0] = ret;
+> +    return 0;
+> +}
+> +
+>  static uint64_t hvf_sysreg_read(CPUState *cpu, uint32_t reg)
+>  {
+>      ARMCPU *arm_cpu = ARM_CPU(cpu);
+> @@ -716,6 +823,8 @@ int hvf_vcpu_exec(CPUState *cpu)
+>      }
+>
+>      if (cpu->halted) {
+> +        /* On unhalt, we usually have CPU state changes. Prepare for them. */
+> +        cpu_synchronize_state(cpu);
+>          return EXCP_HLT;
+>      }
+
+This seems odd. If I understand the control flow correctly, this
+is neither:
+ (a) just before we're about to emulate a PSCI call so we need
+the current values of the registers from hvf
+ (b) when we've just changed the CPU registers because we made
+a PSCI call and we want to push them back to hvf
+ (c) when we're about to resume the CPU because it's gone from
+halted to not-halted, which might also be a good time to push
+register state back to hvf
+
+So what's it for ?
+
+My expectation would be that we would ensure the state is in sync
+(ie that hvf has any local changes) before we call hv_cpu_run(),
+and that we would go the other way before we access any local
+register CPU struct state.
+
+thanks
 -- PMM

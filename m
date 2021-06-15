@@ -1,43 +1,115 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id e17sm21300308wre.79.2021.06.15.09.58.00
+        by smtp.gmail.com with ESMTPSA id q5sm20162320wrm.15.2021.06.15.09.58.01
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 15 Jun 2021 09:58:01 -0700 (PDT)
+        Tue, 15 Jun 2021 09:58:02 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 4DB071FF7E;
+	by zen.linaroharston (Postfix) with ESMTP id BB38B1FF8C;
 	Tue, 15 Jun 2021 17:58:00 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH  v3 0/2] semihosting/next (SYS_HEAPINFO)
-Date: Tue, 15 Jun 2021 17:57:58 +0100
-Message-Id: <20210615165800.23265-1-alex.bennee@linaro.org>
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH  v3 2/2] tests/tcg: port SYS_HEAPINFO to a system test
+Date: Tue, 15 Jun 2021 17:58:00 +0100
+Message-Id: <20210615165800.23265-3-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20210615165800.23265-1-alex.bennee@linaro.org>
+References: <20210615165800.23265-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: P0ZMEfavUOyP
+X-TUID: 4yRijUD84/7q
 
-Hi,
+This allows us to check our new SYS_HEAPINFO implementation generates
+sane values.
 
-Hopefully the 3rd time is a charm for this series. I've removed all
-the review and tested tags as it is a full rewrite. The code is
-hopefully generic and doesn't have to play tricks with guest registers
-to work out where RAM is.
-
-Please review.
-
-Alex Bennée (2):
-  semihosting/arm-compat: replace heuristic for softmmu SYS_HEAPINFO
-  tests/tcg: port SYS_HEAPINFO to a system test
-
- include/hw/loader.h                 |  10 +++
- hw/core/loader.c                    |  19 ++++
- semihosting/arm-compat-semi.c       | 131 +++++++++++++++-------------
- tests/tcg/aarch64/system/semiheap.c |  74 ++++++++++++++++
- 4 files changed, 173 insertions(+), 61 deletions(-)
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ tests/tcg/aarch64/system/semiheap.c | 74 +++++++++++++++++++++++++++++
+ 1 file changed, 74 insertions(+)
  create mode 100644 tests/tcg/aarch64/system/semiheap.c
 
+diff --git a/tests/tcg/aarch64/system/semiheap.c b/tests/tcg/aarch64/system/semiheap.c
+new file mode 100644
+index 0000000000..d5613dca59
+--- /dev/null
++++ b/tests/tcg/aarch64/system/semiheap.c
+@@ -0,0 +1,74 @@
++/*
++ * Semihosting System HEAPINFO Test
++ *
++ * Copyright (c) 2021 Linaro Ltd
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include <inttypes.h>
++#include <stddef.h>
++#include <minilib.h>
++
++#define SYS_HEAPINFO    0x16
++
++uintptr_t __semi_call(uintptr_t type, uintptr_t arg0)
++{
++    register uintptr_t t asm("x0") = type;
++    register uintptr_t a0 asm("x1") = arg0;
++    asm("hlt 0xf000"
++        : "=r" (t)
++        : "r" (t), "r" (a0));
++
++    return t;
++}
++
++int main(int argc, char *argv[argc])
++{
++    struct {
++        void *heap_base;
++        void *heap_limit;
++        void *stack_base;
++        void *stack_limit;
++    } info;
++    void *ptr_to_info = (void *) &info;
++
++    ml_printf("Semihosting Heap Info Test\n");
++
++    /* memset(&info, 0, sizeof(info)); */
++    __semi_call(SYS_HEAPINFO, (uintptr_t) &ptr_to_info);
++
++    if (info.heap_base == NULL || info.heap_limit == NULL) {
++        ml_printf("null heap: %p -> %p\n", info.heap_base, info.heap_limit);
++        return -1;
++    }
++
++    /* Error if heap base is above limit */
++    if ((uintptr_t) info.heap_base >= (uintptr_t) info.heap_limit) {
++        ml_printf("heap base %p >= heap_limit %p\n",
++               info.heap_base, info.heap_limit);
++        return -2;
++    }
++
++    if (info.stack_base == NULL) {
++        ml_printf("null stack: %p -> %p\n", info.stack_base, info.stack_limit);
++        return -3;
++    }
++
++    /*
++     * We don't check our local variables are inside the reported
++     * stack because the runtime may select a different stack area (as
++     * our boot.S code does). However we can check we don't clash with
++     * the heap.
++     */
++    if (ptr_to_info > info.heap_base && ptr_to_info < info.heap_limit) {
++        ml_printf("info appears to be inside the heap: %p in %p:%p\n",
++               ptr_to_info, info.heap_base, info.heap_limit);
++        return -4;
++    }
++
++    ml_printf("heap: %p -> %p\n", info.heap_base, info.heap_limit);
++    ml_printf("stack: %p <- %p\n", info.stack_limit, info.stack_base);
++    ml_printf("Passed HeapInfo checks\n");
++    return 0;
++}
 -- 
 2.20.1

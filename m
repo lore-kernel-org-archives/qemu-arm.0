@@ -1,104 +1,92 @@
-Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp2817532lff;
-        Tue, 15 Jun 2021 03:41:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyXQuAlAoXM7sZotdTu9oW/4pgb4vsPnHFko9pfiPoeaT2+jORR+psijLPR+LDRye9XM/jt
-X-Received: by 2002:a25:fc1a:: with SMTP id v26mr19352649ybd.486.1623753680974;
-        Tue, 15 Jun 2021 03:41:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623753680; cv=none;
+Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp2881228lff;
+        Tue, 15 Jun 2021 05:04:41 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxCqX49ke1QbS6dVEvUncX2uXiet2n2H7xsA+Ml8Ykas5ZlWwe0Qnk6VpcfUpOkwGn7BNju
+X-Received: by 2002:a05:6402:2378:: with SMTP id a24mr22666067eda.161.1623758681248;
+        Tue, 15 Jun 2021 05:04:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623758681; cv=none;
         d=google.com; s=arc-20160816;
-        b=HCs/Mq+NJb+nBpYYEQUAW0GGscGL+u3YsKeO3/NfjE7EX1Wq5/u5fXN6cUBEjRaOPa
-         LVelK+QWxGcjU1MLG7octCQHRPU/wKfEn/Lr4be/8Qsux4ZvpClRWr+PRRu0NS21MTA0
-         fxZgP0Hw1WRuhvaciaT7URn4NGG4kU+sdy/di/nfe5F1tfAUgbyMl6C6XuY2PNabQZM8
-         yu6zEKQEbzU4/GGBoCTlAQ+Bkod9GYQ0LlxP+dJJrcDqWBd+VGvVqRmwQrdVeRaOgdPe
-         Aa3oW8ORwhMXr0TyZOoIe+SrTlt+0Mx9rlRJmhUlOapD632mF7mskcvRnq21KyTsPQUS
-         0UgQ==
+        b=UpRjiJ8fCTEW5kEB9LFxgBMaHbD/AS/FnkPvD/7R9pk2OQmvTsa4UkJdu4AC9BuEgr
+         Hr/2QaUXezSVRmjEjfWB6Y5CY/o1OglbkYhEr3hHdPm82thZ1a5RbgMh1QgpooVskHbb
+         9HRX0Uj9mpU16/DRmO8pxPirWBuBrX5fkwidvpo/M/wwZqYFwjiaOzYNCOv+5ir0og02
+         rvsIR3L275fyeVbTZeUoCzRMVoJ6B0ikSSzzH5/XA3yc5Zug/Bpk8+tEL8X6Ku1tCjIa
+         GAWEwlpEEaetse+ytXfZFhqPXoUNfI5PxTaBpdJJOSkNIAAfqXA5veYdtVcAixdEWk/D
+         9lJw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=ky3cimQWhOYafWrZiZYmtahXi2f272EJQV3NdOgm49g=;
-        b=dsxyiRHbhs+bH/0WupXAKKQmejLUD2psw/BqfYzowIMusWlBQ2m1AtE5YcwUhhdbTq
-         tYg2VAFZSTSpnEerlmQJbEie7EwwG5iPsKL1wXck4HqM2A88RS7OJnSH2ostl4kZmoc0
-         KZFl76g1Wvnv4Pdt4L5Dt2VM1fZFLDLVdplZkDrX6zWNi4byeKgNbqyci1a+cbHHmd/m
-         uc+3pQ8PtlKh8vM4TxD+UH46Zk9ztFt3i3dvjmvgrpbgDwRCuh5ntkZ2HRNidscQGrMs
-         4wWucmQyqU3IcmJ0pC26Caqh7CGJ50cgINq0N+whTFTFMbDHTReUg1DQkm4Ri8McloWI
-         usEA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:subject:from:references:to;
+        bh=CgqXjEyDqulK7PAU0oTY+9jDp9lojhg0Iq09EKuzEqQ=;
+        b=hYqNJT/rCtSfBWnHPVaTwI4oqMeRbyySz2XGNNxyGqV6DckQ90m2TEOM4YeV/5YLNz
+         MVs3Miy8MU05fL80EbNV7V86tRKZN5RHDRRUtIKxOVIuutiBm61tp6uC5jwvqVxkbsv7
+         4d/g8ZjbV5W0nLYOzCNeOE2sHHcEEJs8Gs486vwaKReX/WCIFvEDUHUJFIYD6ze9Svup
+         BjLF/QMMbOqS8EhOmrp1DC0GalSBPGwBuxQE39G4Fbl3nP5PmOPWzWrIw4RDieT18o5d
+         fAWyhGMG6i/ovIa6X/6P4b06d6O/qdCgxvywZZW/otyll/UGnFYvc/SDJP1sDyzbw1yN
+         WcPg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Ea3+nE8w;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q14si10840301ybm.365.2021.06.15.03.41.20
+        by mx.google.com with ESMTPS id ho40si14533949ejc.97.2021.06.15.05.04.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 15 Jun 2021 03:41:20 -0700 (PDT)
+        Tue, 15 Jun 2021 05:04:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Ea3+nE8w;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:46906 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Received: from localhost ([::1]:33234 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lt6VU-0000Vt-AW
-	for alex.bennee@linaro.org; Tue, 15 Jun 2021 06:41:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40702)
+	id 1lt7o8-00031B-7m
+	for alex.bennee@linaro.org; Tue, 15 Jun 2021 08:04:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38094)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1lt6VK-0000Vc-Ta; Tue, 15 Jun 2021 06:41:10 -0400
-Received: from mail-io1-xd34.google.com ([2607:f8b0:4864:20::d34]:39780)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1lt6VF-0006h4-Ht; Tue, 15 Jun 2021 06:41:10 -0400
-Received: by mail-io1-xd34.google.com with SMTP id f10so28343480iok.6;
- Tue, 15 Jun 2021 03:41:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ky3cimQWhOYafWrZiZYmtahXi2f272EJQV3NdOgm49g=;
- b=Ea3+nE8wRN5Lw8lOiHuBT4RESeSqU4G7Foz8UcANlfuoYkDHj4HlRGwaff2aGNE30a
- zHrKEnyS1w/z2j3fGOnm7B822hVMs5NBeOwIZEw6zsuLXG+4TKQ8+GV/OOesv2RqZ3rj
- 2H6IxX0cicwefr0QOQTD0654zRUPtWm/EDI5TGKmE9SII3SZI6F4ETOgWmxJLbAmr5+M
- +JYd7+edb4N9AGiIf0UKdAifXI7uG+PSQLoaFj+7JvYYxs4nYlLgdyEd8QaBT3gfLrLy
- xqaIex2MT+WHLDlttBAsIdI84CzPIrtnMHj5dbp3YbdMUSzPQrdesjUIyzrvaWAJ+lpu
- aX6w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=ky3cimQWhOYafWrZiZYmtahXi2f272EJQV3NdOgm49g=;
- b=IXUgJpd1dOtRa/y2I0oRbmg11Ilu7IALLi8wQ3syXevuNtGFLywvUUWfg1nNvpHk4U
- q5t3D5xNZC0Bms1JtGnZ5SiBfo3dAD1C6KYHQExH2h2YgI8CkxTu7tZdrBP4fZYtenEj
- l0qTNINIFX9eFNtKPLTIifxkTLcrjK/aGrjRn/i38O1l79+ZuAHljYuKj60dJBsQGMbE
- txRT7hmJtLUN8PHcV3u/weeNJ3xsGFl6h9BDXMl/DlY8C/Fl9uCrljB7BAGILJxDcOrq
- 91r7MeGgAnyIDQQZSRagMgFN7S0a8NHmlPola1w1Jh8lSlntVPe5+pYQVSOxYJEeS+kM
- lgCg==
-X-Gm-Message-State: AOAM5312sE/ZVb8S9eOEQsB2RDZromonxPWIbjhRIMbTSpBLNrGzkShf
- 5aXDRYuOpUIzg/4c7+jSzbXrnrPADZtblet3+ws=
-X-Received: by 2002:a02:8816:: with SMTP id r22mr20997182jai.135.1623753663869; 
- Tue, 15 Jun 2021 03:41:03 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <wangxingang5@huawei.com>)
+ id 1lt7nz-00030s-Nv; Tue, 15 Jun 2021 08:04:31 -0400
+Received: from szxga08-in.huawei.com ([45.249.212.255]:2239)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <wangxingang5@huawei.com>)
+ id 1lt7nv-0002RK-NO; Tue, 15 Jun 2021 08:04:31 -0400
+Received: from dggemv711-chm.china.huawei.com (unknown [172.30.72.56])
+ by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4G46LC4vTRz1BL1K;
+ Tue, 15 Jun 2021 19:59:15 +0800 (CST)
+Received: from dggpemm500009.china.huawei.com (7.185.36.225) by
+ dggemv711-chm.china.huawei.com (10.1.198.66) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2176.2; Tue, 15 Jun 2021 20:04:15 +0800
+Received: from [10.174.185.226] (10.174.185.226) by
+ dggpemm500009.china.huawei.com (7.185.36.225) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2176.2; Tue, 15 Jun 2021 20:04:14 +0800
+To: Igor Mammedov <imammedo@redhat.com>
+References: <1621914605-14724-1-git-send-email-wangxingang5@huawei.com>
+ <20210605143238.2e52b08a@redhat.com>
+ <f04e5527-d9d8-953e-a572-83b91bcd05c7@huawei.com>
+ <20210608153828.05b400e6@redhat.com>
+From: Xingang Wang <wangxingang5@huawei.com>
+Subject: Re: [PATCH v4 0/8] IOMMU: Add support for IOMMU Bypass Feature
+Message-ID: <4a53f328-ed16-1ee9-b819-fbc74e0fabc9@huawei.com>
+Date: Tue, 15 Jun 2021 20:04:13 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.5.1
 MIME-Version: 1.0
-References: <20210608161028.4159582-1-erdnaxe@crans.org>
- <20210608161028.4159582-2-erdnaxe@crans.org>
- <CAKmqyKMs4Sr9oXR8k3jeXo=Umy3F6k-CfQW4Fz3zB++uFKkmDg@mail.gmail.com>
- <6bcf8d1b-7caf-ded5-937a-4c1bf96e2d85@crans.org>
- <CAKmqyKMETmc0sJbG8FdUokg9Ke_hg5ohZ2YnLzyQO1xwzpXMRA@mail.gmail.com>
- <7e8a01c5-0130-1003-8396-af8d4b45d2c0@crans.org>
-In-Reply-To: <7e8a01c5-0130-1003-8396-af8d4b45d2c0@crans.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 15 Jun 2021 20:40:37 +1000
-Message-ID: <CAKmqyKNtzSyX7paN8jfKWWNzBpVx61_o05E3uCQMCTxGHhwEAg@mail.gmail.com>
-Subject: Re: [PATCH 1/2] stm32f100: Add the stm32f100 SoC
-To: Alexandre IOOSS <erdnaxe@crans.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d34;
- envelope-from=alistair23@gmail.com; helo=mail-io1-xd34.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+In-Reply-To: <20210608153828.05b400e6@redhat.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.174.185.226]
+X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
+ dggpemm500009.china.huawei.com (7.185.36.225)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.255;
+ envelope-from=wangxingang5@huawei.com; helo=szxga08-in.huawei.com
+X-Spam_score_int: -42
+X-Spam_score: -4.3
+X-Spam_bar: ----
+X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.095,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -112,81 +100,138 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "open list:STM32F100" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: xieyingtai@huawei.com, peter.maydell@linaro.org, ehabkost@redhat.com,
+ mst@redhat.com, shannon.zhaosl@gmail.com, richard.henderson@linaro.org,
+ qemu-devel@nongnu.org, eric.auger@redhat.com, qemu-arm@nongnu.org,
+ marcel.apfelbaum@gmail.com, pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9fGmNw+ffvNN
+X-TUID: UYnShbaIO5vJ
 
-On Tue, Jun 15, 2021 at 7:15 PM Alexandre IOOSS <erdnaxe@crans.org> wrote:
->
->
->
-> On 6/15/21 10:04 AM, Alistair Francis wrote:
-> > On Tue, Jun 15, 2021 at 5:50 PM Alexandre IOOSS <erdnaxe@crans.org> wrote:
-> >>
-> >> On 6/15/21 9:41 AM, Alistair Francis wrote:
-> >>> Aren't you missing some timers, like timer[5] 0x4000_0C00?
-> >>>
-> >>> Alistair
-> >>
-> >> I double-checked using the reference manual and the datasheet and there
-> >> is not timer[5]:
-> >> - page 36 of
-> >> https://www.st.com/resource/en/reference_manual/cd00246267-stm32f100xx-advanced-arm-based-32-bit-mcus-stmicroelectronics.pdf
-> >
-> > Strange, https://www.st.com/resource/en/datasheet/stm32f100rc.pdf
-> > describes Timer 5 and page 282 of the document you linked talks about
-> > timer 5 as well.
-> >
-> > Alistair
-> >
-> >> - page 30 of https://www.st.com/resource/en/datasheet/stm32f100cb.pdf
-> >>
-> >> I believe ST is skipping numbers to guarantee that timer[n] will have a
-> >> consistent address on different STM32 SoC.
-> >>
-> >> Thanks,
-> >> -- Alexandre
-> >>
->
->  From what I understand from other STM32F100xx reference manuals:
-> I am implementing all peripherals in the STM32F100xx reference manual
-> which match with what is actually in the STM32F100RB SoC (used in the
-> STM32VLDISCOVERY).
+Hi Igor,
 
-Ah, my mistake. The STM numbering always confuses me.
+On 2021/6/8 21:38, Igor Mammedov wrote:
+> On Tue, 8 Jun 2021 20:24:35 +0800
+> Xingang Wang <wangxingang5@huawei.com> wrote:
+> 
+>> Hi Igor,
+>>
+>> On 2021/6/5 20:32, Igor Mammedov wrote:
+>>> On Tue, 25 May 2021 03:49:57 +0000
+>>> Wang Xingang <wangxingang5@huawei.com> wrote:
+>>>    
+>>>> From: Xingang Wang <wangxingang5@huawei.com>
+>>>>
+>>>> These patches add support for configure bypass_iommu on/off for
+>>>> pci root bus, including primary bus and pxb root bus. At present,
+>>>> all root bus will go through iommu when iommu is configured,
+>>>> which is not flexible, because in many situations the need for using
+>>>> iommu and bypass iommu aften exists at the same time.
+>>>
+>>> 'many situations' doesn't describe why bypass is needed,
+>>> can you provide a use-cases here and what are security implications
+>>> when bypass is allowed.
+>>> (PS: the later probably should be documented somewhere in the docs/option description)
+>>>      
+>>
+>> It is possible that some devices support the iommu and some devices do
+>> not. When we need to pass through both kind of devices to a virtual
+>> machine, bypass iommu would help.
+>>
+>> E.g I have a HiSilicon network and computing encryption device(SEC),
+>> which supports both iommu and noiommu mode. If I have to use a SEC in
+>> noiommu mode along with another device which need iommu, then it would
+>> need this bypass iommu feature.
+>>
+>> Besides, bypass iommu would have less performance loss because there
+>> might be many trap in and out using a virtual iommu.
+> usually if one enables 'iommu', one wants the isolation it provides.
+> so the bypass option negates that. Why not just use machine with IOMMU
+> disabled globally in the first place?
+> 
+I am considering the situation that devices with IOMMU enabled and
+devices with IOMMU disabled are used at the same time. Right now there's
+only one global switch to check whether IOMMU will be used, which is
+not flexible for this kind of usage.
 
->
-> STM32F100RC SoC implements more peripherals (more USART, more
-> timers...). Adding these peripherals in stm32f100.c means that the
-> STM32VLDISCOVERY machine would have peripherals that does not exist on
-> the real target. Do we want to avoid that?
+To keep consistent with previous usages with global IOMMU switch
+enabled, IOMMU is enabled by default if no bypass option is set.
 
-Yep, this is fine as is.
+>> However there might be potential security risks without iommu,
+>> as devices might send malicious dma requests.
+>> It would be necessary to only bypass iommu for trusted devices.
+> that's what I was worried about, at least it should be documented
+> or a warning printed to discourage using the feature.
+> 
+Thanks for your suggestions, I will try to add enough explanation in
+docs and add warning for usage of iommu bypass.
 
->
-> Should we keep stm32f100.c with the common subset of peripherals and
-> extend it when a machine is using a variant with more peripherals?
->
-> I believe this issue is also linked with what Philippe proposed: we
-> could abstract STM32 SoC in the same way ATMEGA is abstracted. This
-> would make a lot of sense since the STM32 family has a lot of
-> similarities and we don't want to bloat QEMU with N times the same code.
-
-I agree. That's the best way forward and I think it's a good goal. We
-don't have to block this series on that though. If you would like to
-work on a shared abstraction that would be great :)
-
-Once the IRQs are fixed:
-
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-
-Alistair
-
->
-> Thanks,
-> -- Alexandre
->
+>>
+>> Thanks
+>>
+>> Xingang
+>>
+>>>> So this add option to enable/disable bypass_iommu for primary bus
+>>>> and pxb root bus. The bypass_iommu property is set to false default,
+>>>> meaning that devcies will go through iommu if no explicit configuration
+>>>> is added. When bypass_iommu is enabled for the root bus, devices
+>>>> attached to it will bypass iommu, otherwise devices will go through
+>>>> iommu.
+>>>>
+>>>> This feature can be used in this manner:
+>>>> arm: -machine virt,iommu=smmuv3,bypass_iommu=true
+>>>> x86: -machine q35,bypass_iommu=true
+>>>> pxb: -device pxb-pcie,bus_nr=0x10,id=pci.10,bus=pcie.0,bypass_iommu=true
+>>>>
+>>>> History:
+>>>>
+>>>> v3 -> v4:
+>>>> - simplify the logic in building the IORT idmap
+>>>>
+>>>> v2 -> v3:
+>>>> - rebase on top of v6.0.0-rc4
+>>>> - Took into account Eric's comments, replace with a bypass_iommu
+>>>>     proerty
+>>>> - When building the IORT idmap, cover the whole RID space
+>>>>
+>>>> v1 -> v2:
+>>>> - rebase on top of v6.0.0-rc0
+>>>> - Fix some issues
+>>>> - Took into account Eric's comments, and remove the PCI_BUS_IOMMU flag,
+>>>>     replace it with a property in PCIHostState.
+>>>> - Add support for x86 iommu option
+>>>>
+>>>> Xingang Wang (8):
+>>>>     hw/pci/pci_host: Allow bypass iommu for pci host
+>>>>     hw/pxb: Add a bypass iommu property
+>>>>     hw/arm/virt: Add a machine option to bypass iommu for primary bus
+>>>>     hw/i386: Add a pc machine option to bypass iommu for primary bus
+>>>>     hw/pci: Add pci_bus_range to get bus number range
+>>>>     hw/arm/virt-acpi-build: Add explicit IORT idmap for smmuv3 node
+>>>>     hw/i386/acpi-build: Add explicit scope in DMAR table
+>>>>     hw/i386/acpi-build: Add bypass_iommu check when building IVRS table
+>>>>
+>>>>    hw/arm/virt-acpi-build.c            | 135 ++++++++++++++++++++++++----
+>>>>    hw/arm/virt.c                       |  26 ++++++
+>>>>    hw/i386/acpi-build.c                |  70 ++++++++++++++-
+>>>>    hw/i386/pc.c                        |  18 ++++
+>>>>    hw/pci-bridge/pci_expander_bridge.c |   3 +
+>>>>    hw/pci-host/q35.c                   |   1 +
+>>>>    hw/pci/pci.c                        |  33 ++++++-
+>>>>    hw/pci/pci_host.c                   |   2 +
+>>>>    include/hw/arm/virt.h               |   1 +
+>>>>    include/hw/i386/pc.h                |   1 +
+>>>>    include/hw/pci/pci.h                |   2 +
+>>>>    include/hw/pci/pci_host.h           |   1 +
+>>>>    12 files changed, 270 insertions(+), 23 deletions(-)
+>>>>   
+>>>
+>>> .
+>>>    
+>>
+>> .
+>>
+> 
+> .
+> 
+.

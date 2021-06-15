@@ -1,182 +1,174 @@
-Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp2701011lff;
-        Tue, 15 Jun 2021 00:50:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzuvGaRHF54DravrbcQHKu5rFFdorl2O1lErf07ShTAHny+A5aexCwWEbP0U3eXKbsTgvPE
-X-Received: by 2002:ac8:7d92:: with SMTP id c18mr4283558qtd.161.1623743431825;
-        Tue, 15 Jun 2021 00:50:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623743431; cv=none;
+Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp2702489lff;
+        Tue, 15 Jun 2021 00:52:57 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzEmUWdhhx+5O8CHBBw4i8ehyZTPT+c/XriPIw9RMfFZDACyJwLtP38OUbcU1EWrbGZdLwI
+X-Received: by 2002:a05:6638:3492:: with SMTP id t18mr1774864jal.3.1623743577360;
+        Tue, 15 Jun 2021 00:52:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623743577; cv=none;
         d=google.com; s=arc-20160816;
-        b=vbRkLvW0oWt5L/v4b61vr1suvNtG8W7eO4moOvKKVglmnyF5utdtYYEZlyLZF9oVIc
-         lJTrH4TfVUnyFSWcmWQ5tyh6RymhmrSwg55c/zcfQpZ73TosxBvqVL/9tqeLYFaPk84d
-         6HLCT8rmzXXzq02bJHVpKOJpdlTyE9Cn/s76Sjetyhqr6rmSxiBkOyDKGriE/ngXTTSM
-         8/88v/JFH6R5TwoZKFLOjHmerS40lTECStwOR7V66yMYxv41qD9rrwqvTWFgJHGTnR1l
-         vHfL1/IVwMdIaRBREnvF0h0NwZymZ6NnTQYr2wJCYoI4jcMkC826br2yOpKHHDYK0TW6
-         lDCg==
+        b=Ju4Bw3hZKd+MLkiJfPv+PkQ0BlUFUQYmmqNwnHSTpuNeRd717TLsOQ24jz2gMPHFiu
+         ASDEjnXOS7dcO+N5OqqjC8scC6EeyJBpCBjHu11WcrSCYlyO0R3iDzuzSqR40XG6b4/i
+         8hwExO8YcJ28i9Drlcw8g+SrpmZOT3NNZPatVABDkfVpMrtxX0JpTJjiGRAxPaO8eAAk
+         KScbDm9Nu9IhEkRbuvMGCYLQVrG/wgYa3kPhegk3ZyXjNb+Xj2KCVUS7kNMPnb6R4HIQ
+         5vZyMxFlCc9QsMxZapYAHcDqC401QIt4WAJCkAbdINwZhCxqPL4QFdfxL20xo7j5J27v
+         iF/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:mime-version
-         :user-agent:date:message-id:organization:from:references:to:subject
-         :dkim-signature;
-        bh=IGV4xOD+EP3wxVoSZkvo1W/mXJOBIiNU97X3RqNzKDw=;
-        b=Wrs5I4b8rMyTMOD/HTstCRmyxBBQAsv2hoJHgHtpyJ5I5OvtUrgjlpN5JyhECtkkEQ
-         csE3dVQVQKycitHHB8hVIkAomo6g/fd9eaY4Dlq9RpGA/5Bu2qPmJL64VxDQBwPwmFH2
-         NPVIFGDJwlLL/WxLOrDQUVsneSj/KdPi0AeoJbLrTam5aamD4yN+rsJBALD2ZzKevilX
-         Gp7nO57MC9O9NBtJFzUpogUupP5D0SelxbeFFpy77zsnuqLDGA05O7elZyxLwOjUMnWC
-         FE7MsFRkukc40VVux6KMKrVUfdW9uSaGz8WJ12ltkEAFFBt8dAOJAugCoF/1kJFzQ1tU
-         whow==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=ggyYiI42YeOFm1U/6uM+KysWQEXe86JOWUUnEO6Ovng=;
+        b=nw1cUmdk6tZPSw8I71f24RHZM1FEROWFjuYnraaNm/LkBnJNu6tBkwdHkyM8TqOQ4L
+         tTmV0YFdhDOGiHqh4ytAMXl9NbP03SFwCTu2B1Lx7Dea2njQjGT3sOhRQU7uEnDqkSYN
+         qGJSdUGkXIIeYd0+gdO9iVwOEsZoA4JFaL1gtG9DAy5hBB8EnyI6VBT1redFbjOz+er7
+         Y1JO9OjyZyn6xOmf3ZRysy60To80Y63DF0qZaBDzuqccBaZTax6qfun9EAfqHEK/EdaC
+         CPdOTUgjR0ytGClOfO5c/5nuxmCbUA72St5wNtaVWeCBdutWuaFR0drNzd5/9I/DyjRS
+         uZYw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@crans.org header.s=mail header.b=MsFFdlzP;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=crans.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="VNjgj/UX";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x189si11805074qkd.193.2021.06.15.00.50.31
+        by mx.google.com with ESMTPS id a17si13210044iow.93.2021.06.15.00.52.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 15 Jun 2021 00:50:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 15 Jun 2021 00:52:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@crans.org header.s=mail header.b=MsFFdlzP;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=crans.org
-Received: from localhost ([::1]:60858 helo=lists1p.gnu.org)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="VNjgj/UX";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:38530 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lt3qB-0000Iz-43
-	for alex.bennee@linaro.org; Tue, 15 Jun 2021 03:50:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36202)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lt3sW-0004Lv-Jm
+	for alex.bennee@linaro.org; Tue, 15 Jun 2021 03:52:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36300)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <erdnaxe@crans.org>)
- id 1lt3pm-0000D7-8F; Tue, 15 Jun 2021 03:50:06 -0400
-Received: from redisdead.crans.org ([2a0c:700:2::ff:fe01:2402]:49328)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <erdnaxe@crans.org>)
- id 1lt3pj-0008KN-Me; Tue, 15 Jun 2021 03:50:05 -0400
-Received: from [IPv6:2a02:8428:4db:b001:f255:832d:4007:dcd0]
- (2a02-8428-04db-b001-f255-832d-4007-dcd0.rev.sfr.net
- [IPv6:2a02:8428:4db:b001:f255:832d:4007:dcd0])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by redisdead.crans.org (Postfix) with ESMTPSA id 501A7205;
- Tue, 15 Jun 2021 09:50:00 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=crans.org; s=mail;
- t=1623743400; bh=IGV4xOD+EP3wxVoSZkvo1W/mXJOBIiNU97X3RqNzKDw=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=MsFFdlzP4gDKuhfcyu/U9x662G4DMeKlrrYVMjJqUdKXw2xtHdwayjAT7S1B4ma8y
- QI3aMG59FwbqEWC9973twDYIkFxGQ758eZDWPpat99Kdr+jfwLS2KptggERMN3Bl5g
- vB0LPHqmgScbdpCw9JousvpscMHDwluB//ajfNH+lhyXR7cRbEcvUuwGHtuJVXaqx+
- 4JfggGB8apLYdGS6bPwehykwYeWO1cHEaiU01zVwAu5NB3rzlNOzl+1enAyjB9Rjx3
- cVhRcO3r4XtWMduGo1cf87owRfO0Co0u4SgtJamcDwGQU5GvawDZ7i5jdyQCeWMUbw
- U/3OaJlUsuokNezWvTuRlprF/J+NMntYmBUY/EYpT3TL8fvVhc/R8SbXcQzui6w2U3
- xCHXOPxNCMsyPDZiFyscAfzp7n2b3PNSivYrR46ZmZIEpwPDrtj2OzagT1VWGMZkPB
- D+qHhx2IsuWfcRzBkoTlqAAnq7toE3WQ/ebnVik3tTeFlq0vTR+ietOskYZ2J4VrGm
- aCqMc2fkbuo1vo4qAqXE3Wk+FT3cK7eVmpdbfCSXXcJ5wxDAwT/TNrwqvMQdFcwhtv
- FPTBMPhneS8EZa9k9uB1qQ/3H4c3GwDp5E0EZZhKyAbt+sMVcyxmTSvNE02l8vV1PC
- Oe8WOaYJ5d3MC3w3Q2udo9s4=
-Subject: Re: [PATCH 1/2] stm32f100: Add the stm32f100 SoC
-To: Alistair Francis <alistair23@gmail.com>
-References: <20210608161028.4159582-1-erdnaxe@crans.org>
- <20210608161028.4159582-2-erdnaxe@crans.org>
- <CAKmqyKMs4Sr9oXR8k3jeXo=Umy3F6k-CfQW4Fz3zB++uFKkmDg@mail.gmail.com>
-From: Alexandre IOOSS <erdnaxe@crans.org>
-Organization: Crans
-Message-ID: <6bcf8d1b-7caf-ded5-937a-4c1bf96e2d85@crans.org>
-Date: Tue, 15 Jun 2021 09:49:59 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.2
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1lt3qN-0001SC-9E; Tue, 15 Jun 2021 03:50:44 -0400
+Received: from mail-il1-x12c.google.com ([2607:f8b0:4864:20::12c]:45993)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1lt3qL-0000NO-82; Tue, 15 Jun 2021 03:50:43 -0400
+Received: by mail-il1-x12c.google.com with SMTP id b5so14478858ilc.12;
+ Tue, 15 Jun 2021 00:50:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=ggyYiI42YeOFm1U/6uM+KysWQEXe86JOWUUnEO6Ovng=;
+ b=VNjgj/UXt90kWlVQWR6WGixTkkFkeiaYXJS7SSCyJljmkWDLRp8Kukc43u9rmqZurY
+ JIcZuChgkq0fX3T39gg7UA4SSteLkR7WM10xc2/891u1fTS1ZeSXlGY6ElSwhl1aDvHG
+ O8TA7AjRK74gqh9U1A1TgdbuRumfKUwCqxHfbIJFfMG0tkR5T1P/7ocgPCDn6K27E6go
+ sra0A9e0WYy0J/gwMmNFoLMLiCezjDafC84MylUEpTPVn8AVErhQZXFVpBhJahzKY+uh
+ 5hd3CoDA5aMQ8I6rlaoG3ivbpHv/j0vMAdtS9XIJoSaV6fV7QEgovHETW1iqoRQ5FddH
+ kXFQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ggyYiI42YeOFm1U/6uM+KysWQEXe86JOWUUnEO6Ovng=;
+ b=cux+dDsGP85Iy3sTU7FWlgeqT90UUc8uKGWpjZd0qOvsx3T3RHZgovGfXjIbMmP9hs
+ IHGrVfeLKW+VUPJl7JMHmLQ9qZDtiGz0RU5UjVfRLPmSmZ/ZpHzYTgZ/oRWvsNsIsZ3C
+ p8gxWPOakc3htM0urP3Pk2WsBSvkU1aYO8BWxnPwC4huwN2KM2S4cLJAjf+eIQUkvkXf
+ oihgYuF7dQifp1V9Q6i0nTlZE7Pe7BiyyowKUC6A4jIVebiYBpl6cf9R9R9t9SymQYFZ
+ LvLGfspjXNfDPlV0HqwPAbLg7g+5mIjHBzpyY0UeYmX8qAiKVrshrhbERmPNx2loj6qn
+ hTgA==
+X-Gm-Message-State: AOAM531fULbT6B+KKDciWjeeIvmw+nJAHfM9KdBcap2A4O+jFRf/Hu+O
+ XhLW+PzB+U/+fAPRXjkOQNqeSKlSkRvkfrFHnso=
+X-Received: by 2002:a05:6e02:dc7:: with SMTP id
+ l7mr16626770ilj.40.1623743439737; 
+ Tue, 15 Jun 2021 00:50:39 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAKmqyKMs4Sr9oXR8k3jeXo=Umy3F6k-CfQW4Fz3zB++uFKkmDg@mail.gmail.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="c3wOUuVGaTg0xZxv7TfkLPrytQrW3HSHf"
-Received-SPF: pass client-ip=2a0c:700:2::ff:fe01:2402;
- envelope-from=erdnaxe@crans.org; helo=redisdead.crans.org
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.489,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20210608161028.4159582-1-erdnaxe@crans.org>
+ <20210608161028.4159582-3-erdnaxe@crans.org>
+ <CAFEAcA9EEOg92Vz3ZiyV3XeWXn8PV=sGm7wiaqoj==K6PoPM-w@mail.gmail.com>
+ <4fdbc225-3c4a-ba38-2fa6-5a031e6a1845@crans.org>
+In-Reply-To: <4fdbc225-3c4a-ba38-2fa6-5a031e6a1845@crans.org>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Tue, 15 Jun 2021 17:50:13 +1000
+Message-ID: <CAKmqyKM6sA0O7rmr-Mt=_JS34UGwD5jfmAhgi9MOfs3b3+2atA@mail.gmail.com>
+Subject: Re: [PATCH 2/2] stm32vldiscovery: Add the STM32VLDISCOVERY Machine
+To: Alexandre IOOSS <erdnaxe@crans.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::12c;
+ envelope-from=alistair23@gmail.com; helo=mail-il1-x12c.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  "open list:STM32F100" <qemu-arm@nongnu.org>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: J8RXchnqm8hK
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: rupnOjlUtNxY
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---c3wOUuVGaTg0xZxv7TfkLPrytQrW3HSHf
-Content-Type: multipart/mixed; boundary="GKfrKOfbcFsLAO6MNsGRDp64JazJiIRfo";
- protected-headers="v1"
-From: Alexandre IOOSS <erdnaxe@crans.org>
-To: Alistair Francis <alistair23@gmail.com>
-Cc: "open list:All patches CC here" <qemu-devel@nongnu.org>,
- "open list:STM32F100" <qemu-arm@nongnu.org>,
- Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <6bcf8d1b-7caf-ded5-937a-4c1bf96e2d85@crans.org>
-Subject: Re: [PATCH 1/2] stm32f100: Add the stm32f100 SoC
-References: <20210608161028.4159582-1-erdnaxe@crans.org>
- <20210608161028.4159582-2-erdnaxe@crans.org>
- <CAKmqyKMs4Sr9oXR8k3jeXo=Umy3F6k-CfQW4Fz3zB++uFKkmDg@mail.gmail.com>
-In-Reply-To: <CAKmqyKMs4Sr9oXR8k3jeXo=Umy3F6k-CfQW4Fz3zB++uFKkmDg@mail.gmail.com>
+On Tue, Jun 15, 2021 at 5:17 PM Alexandre IOOSS <erdnaxe@crans.org> wrote:
+>
+> On 6/14/21 5:52 PM, Peter Maydell wrote:
+> > On Tue, 8 Jun 2021 at 17:10, Alexandre Iooss <erdnaxe@crans.org> wrote:
+> >>
+> >> This is a Cortex-M3 based machine. Information can be found at:
+> >> https://www.st.com/en/evaluation-tools/stm32vldiscovery.html
+> >>
+> >> Signed-off-by: Alexandre Iooss <erdnaxe@crans.org>
+> >
+> > The commit message says this is Cortex-M3 based, but the
+> > code gives it a Cortex-M4. Which is correct?
+>
+> This is an typo. The board is Cortex-M3 so I will fix the machine code
+> in next version of this patchset.
+>
+> >> ---
+> >>   MAINTAINERS                             |  6 +++
+> >>   default-configs/devices/arm-softmmu.mak |  1 +
+> >>   hw/arm/Kconfig                          |  4 ++
+> >>   hw/arm/meson.build                      |  1 +
+> >>   hw/arm/stm32vldiscovery.c               | 66 +++++++++++++++++++++++++
+> >>   5 files changed, 78 insertions(+)
+> >>   create mode 100644 hw/arm/stm32vldiscovery.c
+> >
+> > Could you add some documentation for the new board, please?
+> > This lives in docs/system/arm. Commit c9f8511ea8d2b807 gives
+> > an example of adding docs for a board.
+> >
+> > thanks
+> > -- PMM
+> >
+>
+> Should I rather:
+> 1. Add `docs/system/arm/stm32vldiscovery.rst` to document only this new
+> machine?
+> 2. Add `docs/system/arm/stm32discovery.rst` to document this new machine
+> and future STM32 Discovery boards?
+> 3. Add `docs/system/arm/stm32.rst` to document all STM32-based boards?
+>
+> STM32 boards share a lot in common so I believe option 3 is more
+> appropriate, what is your opinion?
+> If we go with option 3, I can also try to document the Netduino Plus 2
+> (maybe in another commit, or another patchset later).
 
---GKfrKOfbcFsLAO6MNsGRDp64JazJiIRfo
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+Looking at the existing `nuvoton.rst` file I would say option 3 is the
+best bet here.
 
-On 6/15/21 9:41 AM, Alistair Francis wrote:
-> Aren't you missing some timers, like timer[5] 0x4000_0C00?
->=20
-> Alistair
+Alistair
 
-I double-checked using the reference manual and the datasheet and there=20
-is not timer[5]:
-- page 36 of=20
-https://www.st.com/resource/en/reference_manual/cd00246267-stm32f100xx-ad=
-vanced-arm-based-32-bit-mcus-stmicroelectronics.pdf
-- page 30 of https://www.st.com/resource/en/datasheet/stm32f100cb.pdf
-
-I believe ST is skipping numbers to guarantee that timer[n] will have a=20
-consistent address on different STM32 SoC.
-
-Thanks,
--- Alexandre
-
-
---GKfrKOfbcFsLAO6MNsGRDp64JazJiIRfo--
-
---c3wOUuVGaTg0xZxv7TfkLPrytQrW3HSHf
-Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="OpenPGP_signature"
-
------BEGIN PGP SIGNATURE-----
-
-wsF5BAABCAAjFiEELTca0n4rvHeX4bdZbHknjz/NzAIFAmDIW6cFAwAAAAAACgkQbHknjz/NzAIa
-qQ/9EgdS0hPVI92tjW2/7+Da0vWu4xOPVaY2m+q/6+Qw98ntLDMlPweNulKqgQ2Pb2nILOpSl4oP
-/FVfGbZtxz2VZsE5ZOJfyVcoi9EhckBMmm6qiTy96GWGAVF77A8KAm9ZrAuf/0yfiJsXDK54nTV8
-vG1y+ZEZ9e6UpYT1XAyNg9i5rj8N/HeQU8ifvpM/JQmfgtG3AutvNVkg2GYC+kyO8EY0vSRp44zn
-19jLHsfqkf0ENWwIJzAZOaTH8RdjqLDA4cTX7ALaR/X3iSjQ8le5fGJDI8tXobHuphEA1KM6vgTD
-XZEkjdJ5Mfb/DETmsqs7AGOnB8kM0OJvC8q16b4r/HWntE2WJQsDnhd4ylfRQAcxo4PEv1BZSk2M
-bMXOSoRdAlXvJlqc8Y8E1bHVAQDdCbM19ICBDbLuSbODHNJkQ1BWYASccxmtXPbuteYyuOU+wGlG
-GOglKjl+QZLojONfh7UDpCK6ZLz7gywXXYmNfdlNkb4IwvKyLs3SJPXJEwgF4Etl7YbanqqdgLCk
-sEzLSHVLiyy2D3QXRzA3ZFmEu+DO3y96pPYGjvWj5YeN649R8sN2/H1zu6JiaoEzKZhTVLvfCgE5
-J2BQqaI7fBHXPbJew/yDAr7gQAwIJDSZ2KE5NNRJ3RJR7fd16xz4PnQT7lJiAngqyMkoPDAg3Mly
-Pqc=
-=U0kp
------END PGP SIGNATURE-----
-
---c3wOUuVGaTg0xZxv7TfkLPrytQrW3HSHf--
+>
+> Thanks,
+> -- Alexandre
+>

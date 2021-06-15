@@ -1,104 +1,110 @@
-Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp2710643lff;
-        Tue, 15 Jun 2021 01:05:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwgX1OpoM+rGSP4PzvtiLYVbWmzIvN0IMPbF1CNRwy+/pG5rcIkuntiu5jLGWHJWkJ3q6gA
-X-Received: by 2002:a1c:f717:: with SMTP id v23mr3635806wmh.32.1623744337570;
-        Tue, 15 Jun 2021 01:05:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623744337; cv=none;
+Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp2740373lff;
+        Tue, 15 Jun 2021 01:51:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyXtZ983OklYEEAa53DcyTFrTWoKaLXffHu1lD1w4PZmWDv0IzFc7fmdF0TrtScAt5AUA3x
+X-Received: by 2002:a37:618f:: with SMTP id v137mr20831198qkb.282.1623747095709;
+        Tue, 15 Jun 2021 01:51:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623747095; cv=none;
         d=google.com; s=arc-20160816;
-        b=DsO0uHIj8G/IDE5jyK1fSQM/CGmqtc9OSh58/HHX9GXsqfIPXEKv3rYp0BnTBt6/h7
-         dL9dDPSkv71uZoRVE++iZ+fJPYCF6Guu7X6UvItEWaBS9Kk+408QoPbRmscl1R971bf9
-         iy4zFiXWbyVfHwt8Tr/dHU0wtZTCGCSNkbUpELnFscz+5QcbR2J+ip88wjVX8EKdWozP
-         0678QiULxA9NOox2dCKvqhhJleOq8BncHGCqm/toEYv2fgKIfEzHJRIMV6JFz18UVvmX
-         B5+dmh7iz/E6Y9ATyaC2owVzHuCUMlh3TA/2ckybJ8DUMhP8CWGjAY5TCX1r3gDsRqei
-         cR5A==
+        b=wPgkz8bcZY6wZluHRZnFqXZbO4SBN0t/3+Nn7nWCsam40JxF2txXYPmEbc/YqyW30B
+         fRu2tRZ9djdbDph7MIluqIgYXfhR0sGnDeyzVm+MzevjXOrRxHW2h5oh09ZEtwqBiZX3
+         nkz69jaz4YdLzTW6k5b9fqzB69cFCWGq+cs6RsqChuuWQ8HCSZE0TYEKQWB8daqRUq4u
+         g0gAP9LshzS1Wioo6gQfWVC3PGa+6vQ5Na34Qz/58wCnKlIa9C3hfvLYkpRLfUEOGuOM
+         6by8Z9dzv+U9BqNuq5gQZJC9sPB2vksoSJrdrx8+J8WR373d2rubvBobO1QHKIguPwzS
+         R3hw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=DDxycEP+amo/2i66FxzZSk5sT33AMu/ZG42ZpU8J0Bs=;
-        b=in34dHeM02dOhl00AcIVtD3QIFepBGlVKCDze8NjrSqwA4T2pxt3QFpUVCZ/89HrrU
-         tg1OStSKTnAdM56vWTmtKybiEJ97jZCj8LbPjQJQR+2757nBuzn1S5SXkr0fNHBivgnu
-         Ge4t9C87A/xTry2omUwHOTUL/ubfBGvJK9FhjtxZ6MQ1PZ+REpwKI4lPo+N3pbWGNqzV
-         JDrMWEmQT1VgxpmDvuK6gn4kjmbGk9dWYQZw5yadFULapBQUCEaPKnvWkTZOA+sYXJGr
-         Wakm/C5E4Ak9kLOxehdpaRp8VpeH826/gsTHaa5sgbETyHU9Be86PNCI4axIwYgo+927
-         Obeg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:to:from:dkim-signature;
+        bh=NRO2opk2+Vk/udPQ2WyTHi5eYR4nXTRhUJkDj3S4Zg8=;
+        b=wkXeV/DtLKzPiWovb5w++Dje9FdFu9MRh1WoDm/S94Da/mXMNe64MNCIp4/+1sX68+
+         sks5j3shg3hsFbmX3w3v/2g8aA1LkdP4Go6o8w4CMmTU2TaokPCtVayEkPSuf0ZK983J
+         TKBvJFyk8b/jN7ukMWalywQkhcl3W5tSRXhe4wI8fz3qH6kO2JQ+76d8SgT/PqNttjtI
+         Nn19KSD3QBTl+5ytQ/n8aF0FUWlbGCY5P6PuWg+jgLnKkuJZjteErDePkwN5qv3XtFBD
+         b0IuY9gJUk12FesxUxqySf2OmbFx2sN2vLZGRyT6YEQ0uXUMVzvZ7JpgA40IJp8dWF4r
+         tg8A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=bhRNpDsT;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GPptvyvJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z16si18236305wro.399.2021.06.15.01.05.37
+        by mx.google.com with ESMTPS id r11si11399116qtx.356.2021.06.15.01.51.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 15 Jun 2021 01:05:37 -0700 (PDT)
+        Tue, 15 Jun 2021 01:51:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=bhRNpDsT;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GPptvyvJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:42806 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:42026 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lt44m-0001h4-N6
-	for alex.bennee@linaro.org; Tue, 15 Jun 2021 04:05:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39264)
+	id 1lt4nG-0002xc-Ux
+	for alex.bennee@linaro.org; Tue, 15 Jun 2021 04:51:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46986)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1lt44Q-0001bJ-OF; Tue, 15 Jun 2021 04:05:17 -0400
-Received: from mail-io1-xd36.google.com ([2607:f8b0:4864:20::d36]:42663)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1lt44O-0002XP-15; Tue, 15 Jun 2021 04:05:14 -0400
-Received: by mail-io1-xd36.google.com with SMTP id s26so13318800ioe.9;
- Tue, 15 Jun 2021 01:05:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=DDxycEP+amo/2i66FxzZSk5sT33AMu/ZG42ZpU8J0Bs=;
- b=bhRNpDsTExs3EAVGYlYRIPxNzj6QPVvBjtJ3wV4D/taut6jP0LnUjRtSF3PAN+LIM2
- T2tB+w/Bu60RjaeSQZx17IL5r/99BNuVcWfswYUqey5V17NEJik+p5ui/D9cl3LTYbOz
- yOrPyMsLj4NYRtVyErGVc30E8mqz2u4ADXQLIkAAlO3NPNri2oJcrW5ESJYcQRDNh65r
- aLuA8pKcXrmj9OJFg4xE+y9BiB979DN8emq98TiyDtNac9WtTgWGTgNKnbj1fqtXgwET
- Hm7i7mX2eFikFs/A5xRIux4O3PhY39aRGklEb8Mawt4FvTsYZbDPuMEjSNhwkEG2H58E
- bGVw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=DDxycEP+amo/2i66FxzZSk5sT33AMu/ZG42ZpU8J0Bs=;
- b=CKNpyqa5ymY33XoWXvMI+1FfX2lcbtnNDbJvyfy1BDywwqp/XulvarP8XV0+wc0KI8
- KVcHTsI6PBYLiEoPx9TZD0BItXMfW9rXR6++N0deZ5fz2vpaFm+HWqDB6QUxVTIZp11M
- JTwo1Qb81f9vS7pREXWNnKqnQXlICvS1PwN4p6ipVDoE8dpni8jk1P50SgGEPxoh5a7C
- 4+PgRSERDVOu8rZWry9t8fMgkvBU3lehPt5Nwi2Cq19ukvI2ox0QZ4aXQF9NGTvT4nsh
- CJvo4GUadsThPmaNRbXVvdOSPkhYSvcFru5AgB8fphap5n4VEx17+SwbgOEAt3wvyCnj
- n4Rw==
-X-Gm-Message-State: AOAM53230mPzWaOtj8axoxmiagRotatqgUjfDJ2nNcTh/7vFkFx26qtS
- 5JwpT12/+rtCicizI3cMhBjaGAwq6ZinrHxfmWg=
-X-Received: by 2002:a05:6602:722:: with SMTP id
- g2mr12041011iox.118.1623744310485; 
- Tue, 15 Jun 2021 01:05:10 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1lt4n1-0002wk-H4
+ for qemu-arm@nongnu.org; Tue, 15 Jun 2021 04:51:19 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:54217)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1lt4my-0005N1-Mq
+ for qemu-arm@nongnu.org; Tue, 15 Jun 2021 04:51:19 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1623747074;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=NRO2opk2+Vk/udPQ2WyTHi5eYR4nXTRhUJkDj3S4Zg8=;
+ b=GPptvyvJ7LTL8EKheJ6i5+vLAapLIXbYh6rSfKlyoDJzfWWRKcpexJN+7KGMMSBuit8vR9
+ JbROwvq9ctykEam2F9qSE6EHBpiXWE0wgf7w+kvE4NY0XAMoaweS9oGJYLvCHilxjq3q+f
+ MJvzHCjm9UBVcZZvabqvWKvzr4SpKts=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-149-EoMAHBf1N8mN8DRhyZ35uQ-1; Tue, 15 Jun 2021 04:51:13 -0400
+X-MC-Unique: EoMAHBf1N8mN8DRhyZ35uQ-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 59D3B800D55;
+ Tue, 15 Jun 2021 08:51:12 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-104.ams2.redhat.com
+ [10.36.112.104])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 4084A60877;
+ Tue, 15 Jun 2021 08:51:04 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id C9CB9113865F; Tue, 15 Jun 2021 10:51:02 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: Re: [PATCH v3 5/5] tpm: Return QMP error when TPM is disabled in build
+References: <20210614200940.2056770-1-philmd@redhat.com>
+ <20210614200940.2056770-6-philmd@redhat.com>
+Date: Tue, 15 Jun 2021 10:51:02 +0200
+In-Reply-To: <20210614200940.2056770-6-philmd@redhat.com> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Mon, 14 Jun 2021 22:09:40
+ +0200")
+Message-ID: <87tulzse89.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
 MIME-Version: 1.0
-References: <20210608161028.4159582-1-erdnaxe@crans.org>
- <20210608161028.4159582-2-erdnaxe@crans.org>
- <CAKmqyKMs4Sr9oXR8k3jeXo=Umy3F6k-CfQW4Fz3zB++uFKkmDg@mail.gmail.com>
- <6bcf8d1b-7caf-ded5-937a-4c1bf96e2d85@crans.org>
-In-Reply-To: <6bcf8d1b-7caf-ded5-937a-4c1bf96e2d85@crans.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 15 Jun 2021 18:04:44 +1000
-Message-ID: <CAKmqyKMETmc0sJbG8FdUokg9Ke_hg5ohZ2YnLzyQO1xwzpXMRA@mail.gmail.com>
-Subject: Re: [PATCH 1/2] stm32f100: Add the stm32f100 SoC
-To: Alexandre IOOSS <erdnaxe@crans.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d36;
- envelope-from=alistair23@gmail.com; helo=mail-io1-xd36.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.2,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -111,36 +117,225 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "open list:STM32F100" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: Stefan Berger <stefanb@linux.vnet.ibm.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
+ =?utf-8?Q?Mar?= =?utf-8?Q?c-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+ Eric Blake <eblake@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yb5Ss49m8ScD
+X-TUID: SkEr0LGTuwxl
 
-On Tue, Jun 15, 2021 at 5:50 PM Alexandre IOOSS <erdnaxe@crans.org> wrote:
->
-> On 6/15/21 9:41 AM, Alistair Francis wrote:
-> > Aren't you missing some timers, like timer[5] 0x4000_0C00?
-> >
-> > Alistair
->
-> I double-checked using the reference manual and the datasheet and there
-> is not timer[5]:
-> - page 36 of
-> https://www.st.com/resource/en/reference_manual/cd00246267-stm32f100xx-advanced-arm-based-32-bit-mcus-stmicroelectronics.pdf
+Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
 
-Strange, https://www.st.com/resource/en/datasheet/stm32f100rc.pdf
-describes Timer 5 and page 282 of the document you linked talks about
-timer 5 as well.
+> When the management layer queries a binary built using --disable-tpm
+> for TPM devices, it gets confused by getting empty responses:
+>
+>   { "execute": "query-tpm" }
+>   {
+>       "return": [
+>       ]
+>   }
+>   { "execute": "query-tpm-types" }
+>   {
+>       "return": [
+>       ]
+>   }
+>   { "execute": "query-tpm-models" }
+>   {
+>       "return": [
+>       ]
+>   }
+>
+> To make it clearer by returning an error:
+> - Make the TPM QAPI schema conditional
 
-Alistair
+All of tpm.json is now 'if': 'defined(CONFIG_TPM)'.  Good.
 
-> - page 30 of https://www.st.com/resource/en/datasheet/stm32f100cb.pdf
+> - Adapt the HMP command
+> - Remove stubs which became unnecessary
 >
-> I believe ST is skipping numbers to guarantee that timer[n] will have a
-> consistent address on different STM32 SoC.
+> The management layer now gets a 'CommandNotFound' error:
 >
-> Thanks,
-> -- Alexandre
+>   { "execute": "query-tpm" }
+>   {
+>       "error": {
+>           "class": "CommandNotFound",
+>           "desc": "The command query-tpm has not been found"
+>       }
+>   }
 >
+> Suggested-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>  qapi/tpm.json      | 28 +++++++++++++++++++---------
+>  monitor/hmp-cmds.c |  4 ++++
+>  stubs/tpm.c        | 25 -------------------------
+>  stubs/meson.build  |  1 -
+>  4 files changed, 23 insertions(+), 35 deletions(-)
+>  delete mode 100644 stubs/tpm.c
+>
+> diff --git a/qapi/tpm.json b/qapi/tpm.json
+> index 6a10c9ed8d2..75590979fde 100644
+> --- a/qapi/tpm.json
+> +++ b/qapi/tpm.json
+> @@ -17,7 +17,9 @@
+>  #
+>  # Since: 1.5
+>  ##
+> -{ 'enum': 'TpmModel', 'data': [ 'tpm-tis', 'tpm-crb', 'tpm-spapr' ] }
+> +{ 'enum': 'TpmModel', 'data': [ 'tpm-tis', 'tpm-crb', 'tpm-spapr' ],
+> +  'if': 'defined(CONFIG_TPM)' }
+> +
+>  ##
+>  # @query-tpm-models:
+>  #
+> @@ -33,7 +35,8 @@
+>  # <- { "return": [ "tpm-tis", "tpm-crb", "tpm-spapr" ] }
+>  #
+>  ##
+> -{ 'command': 'query-tpm-models', 'returns': ['TpmModel'] }
+> +{ 'command': 'query-tpm-models', 'returns': ['TpmModel'],
+> +  'if': 'defined(CONFIG_TPM)' }
+> =20
+>  ##
+>  # @TpmType:
+> @@ -46,7 +49,8 @@
+>  #
+>  # Since: 1.5
+>  ##
+> -{ 'enum': 'TpmType', 'data': [ 'passthrough', 'emulator' ] }
+> +{ 'enum': 'TpmType', 'data': [ 'passthrough', 'emulator' ],
+> +  'if': 'defined(CONFIG_TPM)' }
+> =20
+>  ##
+>  # @query-tpm-types:
+> @@ -63,7 +67,8 @@
+>  # <- { "return": [ "passthrough", "emulator" ] }
+>  #
+>  ##
+> -{ 'command': 'query-tpm-types', 'returns': ['TpmType'] }
+> +{ 'command': 'query-tpm-types', 'returns': ['TpmType'],
+> +  'if': 'defined(CONFIG_TPM)' }
+> =20
+>  ##
+>  # @TPMPassthroughOptions:
+> @@ -79,7 +84,8 @@
+>  ##
+>  { 'struct': 'TPMPassthroughOptions',
+>    'data': { '*path': 'str',
+> -            '*cancel-path': 'str' } }
+> +            '*cancel-path': 'str' },
+> +  'if': 'defined(CONFIG_TPM)' }
+> =20
+>  ##
+>  # @TPMEmulatorOptions:
+> @@ -90,7 +96,8 @@
+>  #
+>  # Since: 2.11
+>  ##
+> -{ 'struct': 'TPMEmulatorOptions', 'data': { 'chardev' : 'str' } }
+> +{ 'struct': 'TPMEmulatorOptions', 'data': { 'chardev' : 'str' },
+> +  'if': 'defined(CONFIG_TPM)' }
+> =20
+>  ##
+>  # @TpmTypeOptions:
+> @@ -104,7 +111,8 @@
+>  ##
+>  { 'union': 'TpmTypeOptions',
+>     'data': { 'passthrough' : 'TPMPassthroughOptions',
+> -             'emulator': 'TPMEmulatorOptions' } }
+> +             'emulator': 'TPMEmulatorOptions' },
+> +  'if': 'defined(CONFIG_TPM)' }
+> =20
+>  ##
+>  # @TPMInfo:
+> @@ -122,7 +130,8 @@
+>  { 'struct': 'TPMInfo',
+>    'data': {'id': 'str',
+>             'model': 'TpmModel',
+> -           'options': 'TpmTypeOptions' } }
+> +           'options': 'TpmTypeOptions' },
+> +  'if': 'defined(CONFIG_TPM)' }
+> =20
+>  ##
+>  # @query-tpm:
+> @@ -152,4 +161,5 @@
+>  #    }
+>  #
+>  ##
+> -{ 'command': 'query-tpm', 'returns': ['TPMInfo'] }
+> +{ 'command': 'query-tpm', 'returns': ['TPMInfo'],
+> +  'if': 'defined(CONFIG_TPM)' }
+> diff --git a/monitor/hmp-cmds.c b/monitor/hmp-cmds.c
+> index d10ee141109..f6cadede40f 100644
+> --- a/monitor/hmp-cmds.c
+> +++ b/monitor/hmp-cmds.c
+> @@ -901,6 +901,9 @@ void hmp_info_pci(Monitor *mon, const QDict *qdict)
+> =20
+>  void hmp_info_tpm(Monitor *mon, const QDict *qdict)
+>  {
+> +#ifndef CONFIG_TPM
+> +    monitor_printf(mon, "TPM device not supported\n");
+> +#else
+
+I dislike #ifndef ... #else.  Matter of taste.
+
+>      TPMInfoList *info_list, *info;
+>      Error *err =3D NULL;
+>      unsigned int c =3D 0;
+> @@ -946,6 +949,7 @@ void hmp_info_tpm(Monitor *mon, const QDict *qdict)
+>          c++;
+>      }
+>      qapi_free_TPMInfoList(info_list);
+> +#endif /* CONFIG_TPM */
+>  }
+> =20
+>  void hmp_quit(Monitor *mon, const QDict *qdict)
+> diff --git a/stubs/tpm.c b/stubs/tpm.c
+> deleted file mode 100644
+> index e79bd2a6c2d..00000000000
+> --- a/stubs/tpm.c
+> +++ /dev/null
+> @@ -1,25 +0,0 @@
+> -/*
+> - * TPM stubs
+> - *
+> - * This work is licensed under the terms of the GNU GPL, version 2 or la=
+ter.
+> - * See the COPYING file in the top-level directory.
+> - */
+> -
+> -#include "qemu/osdep.h"
+> -#include "qapi/qapi-commands-tpm.h"
+> -#include "hw/acpi/tpm.h"
+> -
+> -TPMInfoList *qmp_query_tpm(Error **errp)
+> -{
+> -    return NULL;
+> -}
+> -
+> -TpmTypeList *qmp_query_tpm_types(Error **errp)
+> -{
+> -    return NULL;
+> -}
+> -
+> -TpmModelList *qmp_query_tpm_models(Error **errp)
+> -{
+> -    return NULL;
+> -}
+> diff --git a/stubs/meson.build b/stubs/meson.build
+> index 65c22c0568c..d4e9549dc99 100644
+> --- a/stubs/meson.build
+> +++ b/stubs/meson.build
+> @@ -38,7 +38,6 @@
+>  stub_ss.add(files('sysbus.c'))
+>  stub_ss.add(files('target-get-monitor-def.c'))
+>  stub_ss.add(files('target-monitor-defs.c'))
+> -stub_ss.add(files('tpm.c'))
+>  stub_ss.add(files('trace-control.c'))
+>  stub_ss.add(files('uuid.c'))
+>  stub_ss.add(files('vmgenid.c'))
+
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
+

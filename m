@@ -1,111 +1,105 @@
-Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp2742124lff;
-        Tue, 15 Jun 2021 01:54:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwdAdUA65SsU52QaxGeN9JmpCeFQlzAOC/ZkVkQSUrHoYlUvP79NRp4h8S06SjbXxiazxeE
-X-Received: by 2002:a25:1e43:: with SMTP id e64mr30709412ybe.489.1623747272595;
-        Tue, 15 Jun 2021 01:54:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623747272; cv=none;
+Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp2751667lff;
+        Tue, 15 Jun 2021 02:08:25 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyf/rnzLBNhW68QO7KT9yroHAQz0/ZFkt+Ra3CX0JQJXe/CUsxMv/vDhVoK8HGm2R4J6ZD1
+X-Received: by 2002:ab0:5fd8:: with SMTP id g24mr16933184uaj.14.1623748105103;
+        Tue, 15 Jun 2021 02:08:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623748105; cv=none;
         d=google.com; s=arc-20160816;
-        b=IvJUM5Jbpccn3Lv7ei5bqDjYmmFyNbeuIWg3Xwqp3afr/+HbWlSLyBEUwVwpViK9zA
-         75iY1ZBOWHyaZGu1DfMtEeU3q1DGQVHZgBIiaroBbRRaBS/P66L2uwUgNtbyhlcCI7q7
-         aAF5Y0rTZmExiMB569quNUEvgcpZbgOzm/ZofKhpEuZejCv7O8nVsL2UcA76o78D8Dhd
-         UWpsbERuRBpbXlYR10L7uQKXA2J72Gf2hLqvMWCnU27gY9khKVBqI/xcCDc93MV7kD0u
-         ZVliy0UMAshGsX05UfgDrLns7JpODjmsTq8A1JvVnPS/D8ZW44hlkPDUGrKdyhCMaClW
-         FkDg==
+        b=xvErQdTwVfd8ixbah6r6Xv0fZxQ70l1nfrKA0ud10+LObKFam0BvvscCs3Z2Kssd61
+         nE1EB6s5ViGQjU76QgDNKze5ZANGK1ltPIORVuwqYFV2NqpQAxbpnF9D/Jm6NE7v3DXC
+         l6a6SfNEIV7x7c2aSkUyFJgt52x+oPRX1a25WSOk6vryokCt/PnRvmJ38PRPHb2t5A6W
+         m2pyn/1e3UKu1EyLS4XeDgRoMx6XWphPBqUKOxr0q4TQG+tJH21PBaeySitqDYCIyp5i
+         QFEg34Emfkb7GYTTMVDrGWlU0cZErNXIe0biAmsyFIkwP44VBSRuii2/WC0wtEURUsRu
+         GSJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:message-id:in-reply-to:date:references
-         :subject:to:from:dkim-signature;
-        bh=G2YZsqeukdC46/bN+Dw2UWlCqyuoccTROdQIu/iwPow=;
-        b=Xx4WybsNsN09QMBPu1cUlFXx7znTmJo1POs1OOtuILeK+5hSupnwhtkZyEsBLEP/uU
-         0RDKwOrsnmOoLTrOX0ntttmL029hqpghxdBR60tSCIqFfYpUpOG1adaHKdOqwuxhvvQW
-         dkkZb+j9oRCwVATf3KLjZ1S+kfsJp5gqeV6KWmETs5n+bz/ZEvw2jExhbgnqJ9jkrGD6
-         AVbLlPG2LnRBm3QZtpXA/LhP6RppYyXBmYRr7LojDp6tmyezdEkiLTQ2l///xA5v5FAV
-         MEUYaOcHS7iNvTzrazYbUtPHyxycYc15ukqgbBG5dD2TsIULgQ/i1xg/piZa3iRS25Tl
-         Xsqw==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=ghtabWKaLVE7wk08TGzpI4OvyM7abc7BhaYk2ImRNVE=;
+        b=v+9R9XfsENMH3X/NsPwdamrbqfxVLC60d/2tSi9fW7iiGS+BnyDu+MgrL3VOMNVM+9
+         JxvfPovkaxog27KLo+uMn8wDOTuA2V62sWlWE1GhIjFL0TehK8bWSPc0ZMLpGtPZ1KgR
+         lhwixde/ovYxtEOloQhTVONX36JX3ZAR9vIyii5AO8uN48gs4ZSZKIG0V6KyIyvweRMa
+         1lMjkwerywezaiXeaMgGwtsbjTy0cCIsDVFdwVOuXV+7DMlESMU1W5FGwAlG34KaZCFt
+         YDXob3XSyMX7emy4L04wnfjgy5qi51CCWNoK+OfKjMhWI7hVPxR/k/QHzB2H7COiY8tC
+         hrNg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FvoJkNy8;
+       dkim=fail header.i=@linaro.org header.s=google header.b=c4VsOqmX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n65si17320674ybn.477.2021.06.15.01.54.32
+        by mx.google.com with ESMTPS id f20si8054273uav.170.2021.06.15.02.08.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 15 Jun 2021 01:54:32 -0700 (PDT)
+        Tue, 15 Jun 2021 02:08:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FvoJkNy8;
+       dkim=fail header.i=@linaro.org header.s=google header.b=c4VsOqmX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:48324 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:36942 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lt4q7-0007DM-Va
-	for alex.bennee@linaro.org; Tue, 15 Jun 2021 04:54:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47302)
+	id 1lt53Y-0002Br-Dk
+	for alex.bennee@linaro.org; Tue, 15 Jun 2021 05:08:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50478)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1lt4oE-0004wC-UH
- for qemu-arm@nongnu.org; Tue, 15 Jun 2021 04:52:34 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:23516)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1lt4oD-0006II-Ai
- for qemu-arm@nongnu.org; Tue, 15 Jun 2021 04:52:34 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1623747152;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=G2YZsqeukdC46/bN+Dw2UWlCqyuoccTROdQIu/iwPow=;
- b=FvoJkNy8nxxMt4OgyKu2TKoGFErzgoYmE583q0wR0qgRWnYceLzLKWXfVaOAhOap3lKyvB
- TDEcq83oGtFEapHDkzawPx/30KG8rdIjGqU57Lfc8gaVFnrrg0YYbi4m8g6jfVu/P/6+lT
- wmZdkhRx1PZgius+2DXlgV0wV22E8jY=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-528-y4wrMDlyPVGQneb5Cu8RyA-1; Tue, 15 Jun 2021 04:52:31 -0400
-X-MC-Unique: y4wrMDlyPVGQneb5Cu8RyA-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 33F6380293F;
- Tue, 15 Jun 2021 08:52:30 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-112-104.ams2.redhat.com
- [10.36.112.104])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 3B9ED60877;
- Tue, 15 Jun 2021 08:52:22 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id C02DA113865F; Tue, 15 Jun 2021 10:52:20 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Stefan Berger <stefanb@linux.ibm.com>
-Subject: Re: [PATCH v3 5/5] tpm: Return QMP error when TPM is disabled in build
-References: <20210614200940.2056770-1-philmd@redhat.com>
- <20210614200940.2056770-6-philmd@redhat.com>
- <270e0d89-f074-0713-6871-6e4a21791494@redhat.com>
- <2745685d-c988-4838-24c3-829295aec2fb@linux.ibm.com>
-Date: Tue, 15 Jun 2021 10:52:20 +0200
-In-Reply-To: <2745685d-c988-4838-24c3-829295aec2fb@linux.ibm.com> (Stefan
- Berger's message of "Mon, 14 Jun 2021 17:57:29 -0400")
-Message-ID: <87pmwnse63.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lt53E-00029l-UW
+ for qemu-arm@nongnu.org; Tue, 15 Jun 2021 05:08:05 -0400
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c]:34362)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lt53B-0000U7-BD
+ for qemu-arm@nongnu.org; Tue, 15 Jun 2021 05:08:04 -0400
+Received: by mail-ej1-x62c.google.com with SMTP id g8so21339776ejx.1
+ for <qemu-arm@nongnu.org>; Tue, 15 Jun 2021 02:08:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=ghtabWKaLVE7wk08TGzpI4OvyM7abc7BhaYk2ImRNVE=;
+ b=c4VsOqmXnXECG165rJWxjMJHZdDcfhsRZSoT5n6tz4zhTRzuIt2TPvsVgL9iPBCike
+ cRXCqCAqVCXJ1TNhEJlOTyggqAhaW35DprIvua81EwGzNKTo7y4tZf3eZ1VgfPfJTSJ1
+ OQZepC6irrJmJQHOR5hJIErQMxIwfGkkcugiM5EvDBAiop0Vjx0kq8GZjtJCTG+mJEdO
+ Wu+yQjpBwQCAjdEdEss2ANNhEPcHaRg2x7xsPg/UgNQEwwz9+Nfuc3R3cX26aNjOfnJV
+ EfDeXdYjga+7sGe/LmXNw+mtCh+Z1m+1vhFUEZmQ1pTYxBxiXWBgZiURMEGV47ANGp6K
+ Jikg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ghtabWKaLVE7wk08TGzpI4OvyM7abc7BhaYk2ImRNVE=;
+ b=LQ5rVWArKw5LL8x9DFJkXPVyEj2ZKQ2TLsNZh1BVkaDXNbUjcfobiAqgGHKlJ8H4Uu
+ nHmxpWs0N0+ITNooP6oOFwldusxOJ7uwg7plJi/rdH6t5Q8tPfEE56ZL0bMs8wE/TbHL
+ tO3X+AHI+5GErt2sPmg7+PGGBhcXP6YvDpD5niVszHQlM5RCeIMMz5uz6bjG5nHI0hSD
+ /hHvaOtO49sZaOCBwvvuEHTl4CfUmiTrtTZjbuhAPi8WoapvmtQ63GO1ztKN7ob97REg
+ AkGCXK0KNnJr8gGW2IY531IPn026Rb+KSGPouob7wKt4anUxtfZV6OplwQW/dneERR62
+ YRvQ==
+X-Gm-Message-State: AOAM532MLSdi8Bh6eBopV620t0fhAZRoYj4uiIk0C1oXQZCXzl6uVx2P
+ 4DEzF5kJgtJJbsQg+ixfPj1I+mWa88eOZa51aKF2HQ==
+X-Received: by 2002:a17:907:9047:: with SMTP id
+ az7mr19432297ejc.4.1623748079287; 
+ Tue, 15 Jun 2021 02:07:59 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.2,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20210608161028.4159582-1-erdnaxe@crans.org>
+ <20210608161028.4159582-3-erdnaxe@crans.org>
+ <CAFEAcA9EEOg92Vz3ZiyV3XeWXn8PV=sGm7wiaqoj==K6PoPM-w@mail.gmail.com>
+ <4fdbc225-3c4a-ba38-2fa6-5a031e6a1845@crans.org>
+In-Reply-To: <4fdbc225-3c4a-ba38-2fa6-5a031e6a1845@crans.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 15 Jun 2021 10:07:24 +0100
+Message-ID: <CAFEAcA8rz3XkBzieMGZf7TbMkv-RPdgQG-LD06-f6kTLo-G2WQ@mail.gmail.com>
+Subject: Re: [PATCH 2/2] stm32vldiscovery: Add the STM32VLDISCOVERY Machine
+To: Alexandre IOOSS <erdnaxe@crans.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,39 +112,34 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Stefan Berger <stefanb@linux.vnet.ibm.com>, Eric Blake <eblake@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
- =?utf-8?Q?Marc-Andr?= =?utf-8?Q?=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: "open list:STM32F100" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Xou3xsAGcPiz
+X-TUID: 0l0cu+FIIXHK
 
-Stefan Berger <stefanb@linux.ibm.com> writes:
+On Tue, 15 Jun 2021 at 08:16, Alexandre IOOSS <erdnaxe@crans.org> wrote:
+>
+> On 6/14/21 5:52 PM, Peter Maydell wrote:
+> > Could you add some documentation for the new board, please?
+> > This lives in docs/system/arm. Commit c9f8511ea8d2b807 gives
+> > an example of adding docs for a board.
 
-> On 6/14/21 4:12 PM, Philippe Mathieu-Daud=C3=A9 wrote:
->>
->> Grrrr I forgot to commit:
->>
->> -- >8 --
->> diff --git a/MAINTAINERS b/MAINTAINERS
->> index 7d9cd290426..636bf2f5365 100644
->> --- a/MAINTAINERS
->> +++ b/MAINTAINERS
->> @@ -2707,7 +2707,6 @@ TPM
->>   M: Stefan Berger <stefanb@linux.ibm.com>
->>   S: Maintained
->>   F: tpm.c
->> -F: stubs/tpm.c
->>   F: hw/tpm/*
->>   F: include/hw/acpi/tpm.h
->>   F: include/sysemu/tpm*
->> ---
->>
-> Who is going to upstream the series? I could add this part ...
+> Should I rather:
+> 1. Add `docs/system/arm/stm32vldiscovery.rst` to document only this new
+> machine?
+> 2. Add `docs/system/arm/stm32discovery.rst` to document this new machine
+> and future STM32 Discovery boards?
+> 3. Add `docs/system/arm/stm32.rst` to document all STM32-based boards?
+>
+> STM32 boards share a lot in common so I believe option 3 is more
+> appropriate, what is your opinion?
+> If we go with option 3, I can also try to document the Netduino Plus 2
+> (maybe in another commit, or another patchset later).
 
-Please do.
+Yes, I think that a shared stm32.rst is probably the best thing.
+If you want to document the netduino boards too that would be
+great, but I don't insist on it.
 
-Thank you!
-
+thanks
+-- PMM

@@ -1,86 +1,111 @@
-Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp789464lff;
-        Wed, 16 Jun 2021 16:09:33 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzMTV5jzF6kzUyxICdOMzeQC0QpW+HegUg9rCkx61p47yzMbJMtsWtQ/c5wr05Qw80zoXWQ
-X-Received: by 2002:a7b:cbd2:: with SMTP id n18mr1505613wmi.112.1623884972943;
-        Wed, 16 Jun 2021 16:09:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623884972; cv=none;
+Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp631752lff;
+        Wed, 16 Jun 2021 12:15:26 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzjeVGYa7wrn8pi+pwgVqtnrMFgEwZaVKfijovH90g4S6YR+gKwWr7ycOvphOIvnD6/zXmR
+X-Received: by 2002:a05:600c:21d1:: with SMTP id x17mr548306wmj.167.1623870926117;
+        Wed, 16 Jun 2021 12:15:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623870926; cv=none;
         d=google.com; s=arc-20160816;
-        b=zWp9fZpcxV1W3PbuQSL1f22balqirzBig44g926iNDQD4VhVEP9P9N9G4jjQAgp7k0
-         QV3V6zr9EfAnKlz4QHPrml5xwfm1arp9oxshdn2cUba5jQxT9qnmIKrgQgA/yufDmRVd
-         W36hy94lOu/XdG1JCgcRQUhJiZx6scKUczeDFA/q/7Sf2RIkGuCsI+3dHQQT3g1zSNQ2
-         ilV4xc5VtvqLnyPn+a6Htv0jLjL5qNBmm+379/w/3+ocIhH1Q9IjTepbBICdIjXPlHPr
-         TVVAvqqfZc2Ykl+ALPmgAVJepMpDhBR2r7YYmdy51gH2mBEDvfCJF6/9j1baK8C16rfN
-         PcEw==
+        b=zhTFEJqdtylNhr+R4gIhVOwugNb5f2MyrRG5NsfXrkIDuIXIkJZe8UjqvkAe1Wh9ix
+         JqgT4Ky3J4PyLNZSPVpnaL0UBnGbBV89PZLYyiG7HcmjnzPHMtml501gE2TyNjuNlhOZ
+         TopKlwG/I1a49DbeMhSH5g7vxJ55q6LOudXK1oWZiMQvGKhQiR53ImI2K8i/rDMRvzi7
+         vLsPNiHWQxaq1GZjih+wIprOwWf2WclUKXFXGhj1BK0SXKO4R5v7iAp8Qv3pa+a7zXk6
+         IGoq3nnanmPCvC25vgldz49RO5wTAQngCyVxT3f8sVEAjdIGvo5T5g0Zk9Ijq3PGCAGX
+         RRgA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-id:mime-version
-         :references:message-id:in-reply-to:subject:to:from:date;
-        bh=VDsdoKGe48wAFisEJcqdLsN0z4/wbR7IRs2dA2cwyTQ=;
-        b=SdEPPGTyfQTlsim2W0L5SBC+jLrSXG3BjEst8UcfNo83yIG0R6Mt0RiBmILbL0wVg6
-         Xv30UTKyFCmcLqdMPNk0HE/sN9n1uJN4ItBbLM1hvsngCZaHXY/0jCRDp1wbxYUVBh2v
-         Bvsy8Dtku5qTQogkmBrgtaqsj0tW2bf8OneDCefBxCenTI/27e2BtRnq0RpJe0pcOUMb
-         0iM5rRvjNM6Uevsf8aS0GLCa8zwatMEIWENI2e9s+DBzHQmXS4YhiC1RoY7zQz+f1fKW
-         KyuD3k7a9VWVErfSnSGqPplJSeTD6E471WhZegZQBYAORQI9Runhj6JurVgJe2FZcCbj
-         uiFA==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:to:from:date:dkim-signature;
+        bh=ATh12DGf3i1forOs8VBMp5LPyeOz4NLGeOwRoZijAJE=;
+        b=lJymX3LBYJeSbCnndvrquGE1Vp3AhBN+Ignvr6V6TtfVArr53DfnjHcZzIZB3nhwCW
+         gM1xSnZIewFXdrn3DmfvEJmwGx9Mq/jGgyKbsmjhnxpTzp2sONpq6uXp+WJws4ch0AEw
+         mcUtjJjhigTXkMBMch3XqJs2jg6bz4HySUe7rlwXDbb7IK0UuNlZpSWteery0l6T1EGX
+         9nlj1AXE5wzH84hZYLnd/tOAwqGaOVveFmYP6F8VNqy81sBDXTSqMjW8N8767485yrv3
+         pMcLScfBr+KEnW+Uu2xVV2n5khJh6tMhGb8lD/tt4VzOBGqmFxGi/yE/CCGbi7CbfE+M
+         MqgA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+       dkim=fail header.i=@mvista-com.20150623.gappssmtp.com header.s=20150623 header.b=ae+E7ycS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r8si4047992wmh.189.2021.06.16.16.09.32
+        by mx.google.com with ESMTPS id n7si3516029wrq.31.2021.06.16.12.15.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 16 Jun 2021 16:09:32 -0700 (PDT)
+        Wed, 16 Jun 2021 12:15:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
-Received: from localhost ([::1]:42730 helo=lists1p.gnu.org)
+       dkim=fail header.i=@mvista-com.20150623.gappssmtp.com header.s=20150623 header.b=ae+E7ycS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:48338 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ltef5-0004Fz-T4
-	for alex.bennee@linaro.org; Wed, 16 Jun 2021 19:09:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45524)
+	id 1ltb0X-0004Ho-9a
+	for alex.bennee@linaro.org; Wed, 16 Jun 2021 15:15:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52770)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1lteeo-0004Fl-4p; Wed, 16 Jun 2021 19:09:14 -0400
-Received: from zero.eik.bme.hu ([152.66.115.2]:38806)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1lteek-0002uI-LK; Wed, 16 Jun 2021 19:09:13 -0400
-Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
- by localhost (Postfix) with SMTP id 28CD274570E;
- Thu, 17 Jun 2021 01:09:06 +0200 (CEST)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id D6B7574570B; Thu, 17 Jun 2021 01:09:05 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id D4ABF7456B4;
- Thu, 17 Jun 2021 01:09:05 +0200 (CEST)
-Date: Thu, 17 Jun 2021 01:09:05 +0200 (CEST)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <f4bug@amsat.org>
-Subject: Re: [PATCH v3 06/13] hw/i2c/ppc4xx_i2c: Replace i2c_send_recv() by
+ (Exim 4.90_1) (envelope-from <cminyard@mvista.com>)
+ id 1ltb0D-0004HJ-GG
+ for qemu-arm@nongnu.org; Wed, 16 Jun 2021 15:15:05 -0400
+Received: from mail-oo1-xc29.google.com ([2607:f8b0:4864:20::c29]:34694)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <cminyard@mvista.com>)
+ id 1ltb0A-0008P2-8h
+ for qemu-arm@nongnu.org; Wed, 16 Jun 2021 15:15:04 -0400
+Received: by mail-oo1-xc29.google.com with SMTP id
+ i8-20020a4aa1080000b0290201edd785e7so971664ool.1
+ for <qemu-arm@nongnu.org>; Wed, 16 Jun 2021 12:14:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mvista-com.20150623.gappssmtp.com; s=20150623;
+ h=date:from:to:cc:subject:message-id:reply-to:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to;
+ bh=ATh12DGf3i1forOs8VBMp5LPyeOz4NLGeOwRoZijAJE=;
+ b=ae+E7ycSsAH0O33MaGhUO84Yb2FTDdAjgOzsrMxHvbskBln5gYNjLNgYx1uTBcSR/y
+ S6WQApQKKVOoImwbseBo/h5W/59yJoGhuXvXi+Pyw2fuRk1yYF5K39natSp3bmgkO4bN
+ 4W0mxU862x8MxYbG+O60bngZJrAC4Sy1qKmjK2iJg+mxkvAuno88IdPgzEdmCANqsgCu
+ 7IQPa00Dx7t417PYkSQIMDMkU6OOexkvDxGvgbpjAW5yKYYSxoJ7dvpX2AC/vEmDGCr4
+ zFDKnsvDzSg1f/fMppg2n9aVI8+rJvIdP0l/m7BGE+/7FwG9Bc4wJQTshgCFK5YYCECW
+ icmA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:reply-to
+ :references:mime-version:content-disposition
+ :content-transfer-encoding:in-reply-to;
+ bh=ATh12DGf3i1forOs8VBMp5LPyeOz4NLGeOwRoZijAJE=;
+ b=GXER0QDIBTXu/bw0OvgF+PUWUrR+gnmYE8l1ErHuaw+Twauvu8IFAlVtCMeulK+6oj
+ FLaaBBGNewEmZM6Rw7tvlAnoVUYJHSMHrOZqsctneb2TznUFgWoN3kvexDh7D+hzCyx5
+ gTN4FxcLbYefBq5Lwa7vWhhdloSDZzODD22gVXiezqe6ysN9Eg0D+W/UgHCJL2YXtdoQ
+ u+vx3MA1R4u5y55MMcN0vKfrl0mh2Y+VQJzLpbLSxmnY5NnZb0GR14pxGQIq0BW4MCIn
+ O2TL9ZL1zZDdcoKNykUhswZW/tgVcfzolinqPc0M4J94NPQeFaRi1nAL3ca1/aFJosq1
+ p1og==
+X-Gm-Message-State: AOAM532hoWvt4MeFjGIp7hyEIQLi69CoSr/UvNuJtHgQMlDNb8V8fyL1
+ S3N1iuWnawc9NTihYprVx098yQ==
+X-Received: by 2002:a4a:952b:: with SMTP id m40mr1253460ooi.69.1623870898725; 
+ Wed, 16 Jun 2021 12:14:58 -0700 (PDT)
+Received: from minyard.net ([2001:470:b8f6:1b:ede8:ade8:da1:e1cc])
+ by smtp.gmail.com with ESMTPSA id l7sm702502otu.76.2021.06.16.12.14.58
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 16 Jun 2021 12:14:58 -0700 (PDT)
+Date: Wed, 16 Jun 2021 14:14:56 -0500
+From: Corey Minyard <cminyard@mvista.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: Re: [PATCH v3 04/13] hw/display/sm501: Replace i2c_send_recv() by
  i2c_recv() & i2c_send()
-In-Reply-To: <416b4c36-b838-a5f4-6575-74685627b9c3@amsat.org>
-Message-ID: <9ecae65d-e554-3e95-2ecf-3e2c866d718@eik.bme.hu>
+Message-ID: <20210616191456.GE11196@minyard.net>
 References: <20210616161418.2514095-1-f4bug@amsat.org>
- <20210616161418.2514095-7-f4bug@amsat.org>
- <20210616191637.GF11196@minyard.net>
- <59fb23da-ddad-0436-6935-89712fbddf0f@amsat.org>
- <7bf42f64-b6dd-1e1d-dec9-f710cc94cb2@eik.bme.hu>
- <416b4c36-b838-a5f4-6575-74685627b9c3@amsat.org>
+ <20210616161418.2514095-5-f4bug@amsat.org>
 MIME-Version: 1.0
-Content-Type: multipart/mixed;
- BOUNDARY="3866299591-938073621-1623883457=:97089"
-Content-ID: <cfb4efd-e175-13b8-8e27-6c433cdf7fdb@eik.bme.hu>
-X-Spam-Probability: 9%
-Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
- helo=zero.eik.bme.hu
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20210616161418.2514095-5-f4bug@amsat.org>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::c29;
+ envelope-from=cminyard@mvista.com; helo=mail-oo1-xc29.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -93,117 +118,54 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: cminyard@mvista.com,
- "Signed-off-by : Frederic Konrad" <frederic.konrad@adacore.com>,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-devel@nongnu.org
+Reply-To: cminyard@mvista.com
+Cc: "Signed-off-by : Frederic Konrad" <frederic.konrad@adacore.com>,
+ qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-devel@nongnu.org,
+ BALATON Zoltan <balaton@eik.bme.hu>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: h99lK0SDxuMa
+X-TUID: Y440XKkQU66r
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+On Wed, Jun 16, 2021 at 06:14:09PM +0200, Philippe Mathieu-DaudÃ© wrote:
+> Instead of using the confuse i2c_send_recv(), rewrite to directly
+> call i2c_recv() & i2c_send(), resulting in code easire to review.
+                                                  ^easier
 
---3866299591-938073621-1623883457=:97089
-Content-Type: text/plain; CHARSET=ISO-8859-15; format=flowed
-Content-Transfer-Encoding: 8BIT
-Content-ID: <b04b4022-9c26-ace8-aa1-198b3b9faba@eik.bme.hu>
 
-On Wed, 16 Jun 2021, Philippe Mathieu-Daudé wrote:
-> On 6/16/21 10:01 PM, BALATON Zoltan wrote:
->> On Wed, 16 Jun 2021, Philippe Mathieu-Daudé wrote:
->>> On 6/16/21 9:16 PM, Corey Minyard wrote:
->>>> On Wed, Jun 16, 2021 at 06:14:11PM +0200, Philippe Mathieu-Daudé wrote:
->>>>> Instead of using the confuse i2c_send_recv(), rewrite to directly
->>>>> call i2c_recv() & i2c_send(), resulting in code easire to review.
->>>>>
->>>>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->>>>> ---
->>>>>  hw/i2c/ppc4xx_i2c.c | 13 ++++++++-----
->>>>>  1 file changed, 8 insertions(+), 5 deletions(-)
->>>>>
->>>>> diff --git a/hw/i2c/ppc4xx_i2c.c b/hw/i2c/ppc4xx_i2c.c
->>>>> index f4c5bc12d36..b3d3da56e38 100644
->>>>> --- a/hw/i2c/ppc4xx_i2c.c
->>>>> +++ b/hw/i2c/ppc4xx_i2c.c
->>>>> @@ -240,11 +240,14 @@ static void ppc4xx_i2c_writeb(void *opaque,
->>>>> hwaddr addr, uint64_t value,
->>>>>                          i2c->sts &= ~IIC_STS_ERR;
->>>>>                      }
->>>>>                  }
->>>>> -                if (!(i2c->sts & IIC_STS_ERR) &&
->>>>> -                    i2c_send_recv(i2c->bus, &i2c->mdata[i], !recv)) {
->>>>> -                    i2c->sts |= IIC_STS_ERR;
->>>>> -                    i2c->extsts |= IIC_EXTSTS_XFRA;
->>>>> -                    break;
->>>>> +                if (!(i2c->sts & IIC_STS_ERR)) {
->>>>> +                    if (recv) {
->>>>> +                        i2c->mdata[i] = i2c_recv(i2c->bus);
->>>>> +                    } else if (i2c_send(i2c->bus, i2c->mdata[i])) {
->>>>
->>>> In the previous patch you checked < 0, it would be nice to be
->>>> consistent.
->>>
->>> I did that first but thought Zoltan wouldn't be happy, then went back :)
->>>
->>> I'll fix for the next iteration, thanks.
->>
->> I generally had no problem with i2c_send_recv only that its argument
->> that decides which operation to do was inverted compared to other
->> similar i2c functions so my original patch just corrected that for
->> consistency and I was happy with that.
->
-> But we have to make the maintainer happy too to get patch merged ;)
 
-Getting this series in actually means more work for me as I have to 
-rewrite my unfinfshed patch to not use send_recv so just leaving it as it 
-is would be less work. I mean this patch:
-
-https://lists.nongnu.org/archive/html/qemu-ppc/2020-06/msg00682.html
-
-Where having send_recv is actually nice as I can write it without too much 
-if-else clauses but having send_recv and start_transfer with opposite 
-sense recv argument is confusing. This is where the orignal patch comes 
-from and the point was to just correct this inconsistency between 
-start_transfer and send_recv because I got it wrong first but it went 
-overboard now removing the whole function instead of just correcting it so 
-I'll have to rewrite this patch and make it longer and also have to 
-rethink what can fail and how. I also have to review and test all other 
-places I've used send_recv before so at this point I would not mind if it 
-was left as it is now, then I could just drop my original patch and 
-reverse the last argument of send_recv in the above WIP patch and be done 
-with it. Much less work than going through this series so I almost regret 
-bringing this up again. But if it makes you happy so be it.
-
->> Having a send_recv in one func
->> allowed to avoid if-else in some places like these but if you think it's
->> better without this function at all I can work with that too. I'll have
->> to check if these changes could break anything. At first sight I'm not
->> sure errors are handled as before if recv fails but it was years ago I
->> did the sm501 and ati parts and I forgot how they work so I need to
->> check again. I'll wait for the final version of the series then and test
->> that.
->
-> Thanks, that would be great!
->
->> I remember I had to tweak these a lot because each guest OS had
->> drivers that did things slightly differently so if I've fixed one,
->> another broke until I've found a way that worked for all.
->
-> I wish Avocado (or any other testing framework) could help you with
-> your testing, and you could contribute your tests even if you can not
-> contribute your firmware blob due to incompatible license.
-> That would help us understand how you use your firmware, and save you
-> time while testing.
-
-Unfortunately it's not only firmware but there's also AmigaOS which is not 
-freely available so that would be hard to automate. Other than that 
-testing sam460ex and pegasos2 with Linux and MorphOS could be done but I'm 
-more comfortable with running a few commands that I already have than 
-setting up and learning a testing framework for this so it won't be me who 
-makes these test cases. It's not that many boards and OSes that I care 
-about to need it automated but I've shared the commands before, they are 
-on my web pages about these boards.
-
-Regards,
-BALATON Zoltan
---3866299591-938073621-1623883457=:97089--
+> 
+> Signed-off-by: Philippe Mathieu-DaudÃ© <f4bug@amsat.org>
+> ---
+>  hw/display/sm501.c | 9 +++++----
+>  1 file changed, 5 insertions(+), 4 deletions(-)
+> 
+> diff --git a/hw/display/sm501.c b/hw/display/sm501.c
+> index f276276f7f1..569661a0746 100644
+> --- a/hw/display/sm501.c
+> +++ b/hw/display/sm501.c
+> @@ -1033,17 +1033,18 @@ static void sm501_i2c_write(void *opaque, hwaddr addr, uint64_t value,
+>      case SM501_I2C_CONTROL:
+>          if (value & SM501_I2C_CONTROL_ENABLE) {
+>              if (value & SM501_I2C_CONTROL_START) {
+> +                bool is_recv = s->i2c_addr & 1;
+>                  int res = i2c_start_transfer(s->i2c_bus,
+>                                               s->i2c_addr >> 1,
+> -                                             s->i2c_addr & 1);
+> +                                             is_recv);
+>                  if (res) {
+>                      s->i2c_status |= SM501_I2C_STATUS_ERROR;
+>                  } else {
+>                      int i;
+>                      for (i = 0; i <= s->i2c_byte_count; i++) {
+> -                        res = i2c_send_recv(s->i2c_bus, &s->i2c_data[i],
+> -                                            !(s->i2c_addr & 1));
+> -                        if (res) {
+> +                        if (is_recv) {
+> +                            s->i2c_data[i] = i2c_recv(s->i2c_bus);
+> +                        } else if (i2c_send(s->i2c_bus, s->i2c_data[i]) < 0) {
+>                              s->i2c_status |= SM501_I2C_STATUS_ERROR;
+>                              return;
+>                          }
+> -- 
+> 2.31.1
+> 

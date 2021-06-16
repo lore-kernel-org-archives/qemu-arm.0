@@ -1,143 +1,68 @@
-Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp128870lff;
-        Wed, 16 Jun 2021 02:06:17 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwfKim1NQD4IZBvFbHVmKrxWPwAChUHCmGpoHCjnubLdttEsmyw2924o03yjknAb0QKTGKu
-X-Received: by 2002:ab0:4046:: with SMTP id h64mr3507120uad.43.1623834377294;
-        Wed, 16 Jun 2021 02:06:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623834377; cv=none;
-        d=google.com; s=arc-20160816;
-        b=fkOCR5zd5qRsiTmr/RfgPT1QN1sCH9KEtTUUgVr6BX2n2kVPnLOrLLiXeimjXiR+bk
-         v+EETOZyBhaA6z7jhFbyFwtE5UFXsK5bL81BiN6NfYA9Ao3KOLBQN6yrYbH60seus3Ek
-         zyBGHPWE9RHLFQUtCcCzE6V1IyvQHKqoD7Zp+kayIr2yhO26hzzNk1pU0scLALYUNHnH
-         1+SI4mWzeGsKjtPxOw1fjcyka41j9E+gdPV5hccBi0EbD+u/RtHrZRUqSisXEq869Vyb
-         cDOaVGQucQAWzb2pUdnjbD9IjeVuQyUJYUAWwzr+lL9TVNIEbn0lNbEGuKX5XlnWoaax
-         /PTA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=J2ENmH4aK1LUZK4j2LHL6mdoUQ5GHb4uO0cWVSl4XlQ=;
-        b=x92NidfFRPYfnDcVELWcbCGhQwywKShLxE7rm6HlwTm4rDwUhp8n+PWd8heqWfk80M
-         4CFNQNCJqzdkR8yARJkxl2RctJr9pPzZDkoA/dLmjSEYRnly+Z96Dzxw5sDrWKOHyGiB
-         aJBYr8HDjwigkn3GCkfb78OLKzl23huzSJjgDhhhbdD1Ft+JFBaKEO3bQWK09c62hLDv
-         VaOFK3ZY6XGkxzT1cdRjlwx9NhPe7RLzl8vxZOv7WCq/flzKDjrsv7aPPH0NK4Ixt/gL
-         0+guqbPslADDUzB7fFRIKRtt/7LKhhl7+hLjBgCM73EKkVlNi/7sM/QatMQ0mpXWlnrA
-         PemA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t24si962363uar.184.2021.06.16.02.06.17
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 16 Jun 2021 02:06:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40332 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ltRV2-0003LW-GJ
-	for alex.bennee@linaro.org; Wed, 16 Jun 2021 05:06:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38992)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1ltRUO-0002sH-B0
- for qemu-arm@nongnu.org; Wed, 16 Jun 2021 05:05:36 -0400
-Received: from smtpout3.3005.mail-out.ovh.net ([217.182.185.173]:50361)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1ltRUI-0007yX-Jv
- for qemu-arm@nongnu.org; Wed, 16 Jun 2021 05:05:36 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.16.53])
- by mo3005.mail-out.ovh.net (Postfix) with ESMTPS id 8DCC014004D;
- Wed, 16 Jun 2021 09:05:25 +0000 (UTC)
-Received: from kaod.org (37.59.142.104) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2242.10; Wed, 16 Jun
- 2021 11:05:22 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-104R0059fbf1422-bcba-4473-872a-5e395f123ce4,
- 06345D7E1B8C8FAD34147FE460F0DA442DB8F7FD) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 90.89.73.13
-Subject: Re: [PATCH 2/2] docs/system/arm: Add quanta-gbs-bmc reference
-To: Patrick Venture <venture@google.com>, <hskinnemoen@google.com>,
- <kfting@nuvoton.com>, <peter.maydell@linaro.org>, <andrew@aj.id.au>,
- <joel@jms.id.au>
-References: <20210615192848.1065297-1-venture@google.com>
- <20210615192848.1065297-3-venture@google.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <c98887ca-33b2-e8b7-6413-535ab9f430a1@kaod.org>
-Date: Wed, 16 Jun 2021 11:05:21 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id i21sm4886971wmq.12.2021.06.16.06.46.13
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 16 Jun 2021 06:46:13 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id C04E41FF7E;
+	Wed, 16 Jun 2021 14:46:12 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  laurent@vivier.eu
+Subject: Re: [PATCH 04/21] linux-user/arm: Implement setup_sigtramp
+References: <20210616011209.1446045-1-richard.henderson@linaro.org>
+	<20210616011209.1446045-5-richard.henderson@linaro.org>
+Date: Wed, 16 Jun 2021 14:46:12 +0100
+In-Reply-To: <20210616011209.1446045-5-richard.henderson@linaro.org> (Richard
+	Henderson's message of "Tue, 15 Jun 2021 18:11:52 -0700")
+Message-ID: <87y2b9gbx7.fsf@linaro.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.0.50 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <20210615192848.1065297-3-venture@google.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.104]
-X-ClientProxiedBy: DAG6EX2.mxp5.local (172.16.2.52) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: e2e9d053-da1a-469b-8efe-8e9e3699431c
-X-Ovh-Tracer-Id: 13750897037679496044
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduledrfedvledguddvucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepjeekudeuudevleegudeugeekleffveeludejteffiedvledvgfekueefudehheefnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdegnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehvvghnthhurhgvsehgohhoghhlvgdrtghomh
-Received-SPF: pass client-ip=217.182.185.173; envelope-from=clg@kaod.org;
- helo=smtpout3.3005.mail-out.ovh.net
-X-Spam_score_int: -19
-X-Spam_score: -2.0
-X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.095,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PqurNsTxiYSg
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: TY3/eV90EPSZ
 
-On 6/15/21 9:28 PM, Patrick Venture wrote:
-> Add line item reference to quanta-gbs-bmc machine.
-> 
-> Signed-off-by: Patrick Venture <venture@google.com>
+Richard Henderson <richard.henderson@linaro.org> writes:
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-
-Thanks,
-
-C.
-
+> ARM is more complicated than the others, in that we also
+> have trampolines for using SA_RESTORER with FDPIC, and
+> we need to create trampolines for both ARM and Thumb modes.
+>
+> Cc: qemu-arm@nongnu.org
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->  docs/system/arm/nuvoton.rst | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/docs/system/arm/nuvoton.rst b/docs/system/arm/nuvoton.rst
-> index ca011bd479..197d149f66 100644
-> --- a/docs/system/arm/nuvoton.rst
-> +++ b/docs/system/arm/nuvoton.rst
-> @@ -1,4 +1,4 @@
-> -Nuvoton iBMC boards (``npcm750-evb``, ``quanta-gsj``)
-> +Nuvoton iBMC boards (``*-bmc``, ``npcm750-evb``, ``quanta-gsj``)
->  =====================================================
->  
->  The `Nuvoton iBMC`_ chips (NPCM7xx) are a family of ARM-based SoCs that are
-> @@ -18,6 +18,7 @@ segment. The following machines are based on this chip :
->  The NPCM730 SoC has two Cortex-A9 cores and is targeted for Data Center and
->  Hyperscale applications. The following machines are based on this chip :
->  
-> +- ``quanta-gbs-bmc``    Quanta GBS server BMC
->  - ``quanta-gsj``        Quanta GSJ server BMC
->  
->  There are also two more SoCs, NPCM710 and NPCM705, which are single-core
-> 
+>  linux-user/arm/target_signal.h |   2 +
+>  linux-user/arm/signal.c        | 170 +++++++++++++++++++--------------
+>  2 files changed, 100 insertions(+), 72 deletions(-)
+>
+> +
+> +    /* ARM sigframe */
+> +    _Static_assert(SIGFRAME_FDPIC_OFS <=3D 0xfff);
+> +    __put_user(0xe59d9000 | SIGFRAME_FDPIC_OFS, &tramp[i++]);
+> +    __put_user(0xe8998200, &tramp[i++]);
 
+Erm is this based on your c11 series?
+
+> +
+> +    /* Thumb sigframe */
+> +    _Static_assert(SIGFRAME_FDPIC_OFS <=3D 0xff << 2);
+> +    _Static_assert((SIGFRAME_FDPIC_OFS & 3) =3D=3D 0);
+> +    __put_user(0x9a00e9dd | (SIGFRAME_FDPIC_OFS << 14), &tramp[i++]);
+> +    __put_user(0x46c04750, &tramp[i++]);
+> +
+> +    /* ARM rt_sigframe */
+> +    _Static_assert(RT_SIGFRAME_FDPIC_OFS <=3D 0xfff);
+> +    __put_user(0xe59d9000 | RT_SIGFRAME_FDPIC_OFS, &tramp[i++]);
+> +    __put_user(0xe8998200, &tramp[i++]);
+> +
+> +    /* Thumb rt_sigframe */
+> +    _Static_assert(RT_SIGFRAME_FDPIC_OFS <=3D 0xff << 2);
+> +    _Static_assert((RT_SIGFRAME_FDPIC_OFS & 3) =3D=3D 0);
+> +    __put_user(0x9a00e9dd | (RT_SIGFRAME_FDPIC_OFS << 14), &tramp[i++]);
+> +    __put_user(0x46c04750, &tramp[i++]);
+> +
+> +    unlock_user(tramp, sigtramp_page, total_size);
+> +}
+
+--=20
+Alex Benn=C3=A9e

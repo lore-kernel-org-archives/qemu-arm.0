@@ -1,100 +1,101 @@
-Received: by 2002:a05:6214:c86:0:0:0:0 with SMTP id r6csp1057135qvr;
-        Wed, 16 Jun 2021 09:20:10 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw8YXs2W+Ct3S0QlLtpWVzJSS+XyGSvn9w5Eou02NdD8I69tVuBlleIKTYmKyWsMJH+WQnW
-X-Received: by 2002:a17:907:f9b:: with SMTP id kb27mr375389ejc.44.1623860410533;
-        Wed, 16 Jun 2021 09:20:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623860410; cv=none;
+Received: by 2002:a05:6214:c86:0:0:0:0 with SMTP id r6csp1057154qvr;
+        Wed, 16 Jun 2021 09:20:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxCXyZkUrB7b07HmKiThEvYFUUi7I1W5SpJeO5osdeHdPKurUAGtTonUoKD/9SmsAokhZFj
+X-Received: by 2002:a05:6512:4d9:: with SMTP id w25mr399391lfq.138.1623860411242;
+        Wed, 16 Jun 2021 09:20:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623860411; cv=none;
         d=google.com; s=arc-20160816;
-        b=iCo+yTXenX7fq8FpgbO6GX3UJbCV4KuvVfIsEfdo4oc7xDyXxTV28lKeDdE+MJcaGM
-         BNZ54COfX4cQo6GtP41dgvqrs9QcuuRSGYfr9PGfh0CJiicHEBDn3DS78llyA3XXJpay
-         wyxIX2r06R2x7+eVWEtaJnF+9zaHIkfR9GTSuN73oY/FK4aTTAL0fHEp/1F7PZ493uzX
-         TDeqjIW3VvSViZ0F+CsL4UgnQDZAP0gzToiy/UHZwlAoLsBxvDLRJficaR3C4CuOIGwx
-         PGsGTOAhyfkapmCVz7DX/DsPmOmob8ZH6xkG4gi1vIFTQzj+BOQ7QqMZBQ0w5uKkdYB5
-         9atg==
+        b=D32u5QouOjXE9rasG2j2tRVVscZkLKdATjHBUwd+MZaFMWJqqFFkkyI89HSvdXVBwp
+         jeIypTLDNTx+GZr6dR7wUdu3f6MkjdGK0CjeFlpF+NkD9FXWJ7OoGOgJlFop0bkNk0AA
+         3Q4XDJpsqBqch4xqmML+kYBoIsV5x03S1MolO6n47fVhZkgZWrvbDtE3ARQTRh0UHR8t
+         myaYuxbN99PukllOYjSu8j2K06X2Y8qZVEsAN9CeXxGFG+djFygHDfUODq339CL5TuqI
+         pihi11KjsZVF4JuA9qVf+PW4+Q24jZ0qOp1jegca5Oyj+/oSNdvffzzI1VgLC2x1HoIO
+         cfiw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=a3rlIikyzOrYII/I4PVDBAmEgVhKf/CZtF0tScG6WL0=;
-        b=CHZEtKJI9jf/IckSjC40p92OqA9ovJiiaC6ibsRlHGZY6P9eewSLTbo3XY4L6bcozc
-         sxQHx8cv2mTwaXqNkfgmTQUXeJQQZ2/c2Kh5xCl1uwUuVrZqezSxSemgM5xtpZQA0YLH
-         GPYTXzqXKSwpM30JE0BDDCahiY1/Ib3TVp/yZP/YYljP3pfao25ow14Xshgr2ls3S+po
-         mC8nZdBj/ah3PvNcLw2TKyeAAySQ60xJg+3faTkTulPmoRG3NYbzVxe1xMyTWC+kWI9n
-         alE4mVKwjM535fmpokqurEANH80UUtEEkr64/JEj8o9Z1HO5EoSuKZwpxgtRS9y2TzSs
-         6bDQ==
+        bh=YnpC7skv5DHlC3FSHAcwV7gYnTT6SGeWYmONsyLMX7o=;
+        b=exI+MOqgcW5QeGGOsAMiSpo4w2rxbbjUF/JId7pP6pDQ/tBHJudJtin5LGvF3/8Q1r
+         nrjL2Oh6ugsetxtBy3K03vwjwAs9y4Fiy+N4DzPWIQDpH1+1qOYxreENiOKOmDHPaaXI
+         Gxg1Hl9TBBAsjP/8v9VXuSbLdxzMJvnKfSi+x0zJIL4A15mw7GA7dueKeqXjQQMsYw+V
+         u/D9F9G36XBKLNk8glVKQJFywXHqbAH1wGwWFG1oDmWb13jiKYqCNFgNTO1AwzKVd5Dt
+         7zOkMISMlQxmUDl7F09mj9neA0M7TyAvTtkvZjEbdX2ikLRiN7tBLMZ+U/awa3EUZo6k
+         vYFQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=HtbvU57k;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=U5uFFXrm;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 24si2845773edv.190.2021.06.16.09.20.10
+        by mx.google.com with ESMTPS id d9si3718871ljo.461.2021.06.16.09.20.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 16 Jun 2021 09:20:10 -0700 (PDT)
+        Wed, 16 Jun 2021 09:20:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=HtbvU57k;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=U5uFFXrm;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:34902 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35014 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ltYGv-0002XC-8n
-	for alex.bennee@linaro.org; Wed, 16 Jun 2021 12:20:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36540)
+	id 1ltYGv-0002c8-Vd
+	for alex.bennee@linaro.org; Wed, 16 Jun 2021 12:20:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36652)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1ltYBa-0001ic-PC; Wed, 16 Jun 2021 12:14:38 -0400
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a]:40934)
+ id 1ltYBz-0003GM-28; Wed, 16 Jun 2021 12:15:03 -0400
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e]:44775)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1ltYBZ-0005oM-7b; Wed, 16 Jun 2021 12:14:38 -0400
-Received: by mail-wr1-x42a.google.com with SMTP id y7so3300977wrh.7;
- Wed, 16 Jun 2021 09:14:36 -0700 (PDT)
+ id 1ltYBx-000647-BW; Wed, 16 Jun 2021 12:15:02 -0400
+Received: by mail-wr1-x42e.google.com with SMTP id f2so3302979wri.11;
+ Wed, 16 Jun 2021 09:15:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=a3rlIikyzOrYII/I4PVDBAmEgVhKf/CZtF0tScG6WL0=;
- b=HtbvU57kUem2qJOKQwQ1McwxTuzLlcNhZBPL55Jbt5VumOreVyU4LNPtaKYCRXZze2
- 8ynrD9OmYvsfe+c1mR4+AFtXNfCi1iQsoEgKAbTVfs+KsEvo6Cp2Ry2Quk60z6MMr69E
- 7uahYG01zevbWnepVxs6I/+PrqlT02GGzrO3GJHPK7t/OC+6vvj4UhEsxOBtkcRttLM0
- alu4TUKbnAHMcDLcUpUWQ6SlSszFvMRn6PPgIFp/UTSenljj4MgzWMtWVYG79ovBaLnl
- a0W8/aFwOv84kHo4KL1f7MxXD4JV5vvIq+etEg7a6IQFmfdk/PmDGD3duJeWbMERS2rN
- u5NQ==
+ bh=YnpC7skv5DHlC3FSHAcwV7gYnTT6SGeWYmONsyLMX7o=;
+ b=U5uFFXrmFtFFjMKEeqShBc9WfToviVZLjgbgBoqIyAGpSlHZtRpiLMM0iriDBgFQzt
+ cMwMdXSVbmzdk8RWge+lRqdkdeN4lpe0fhEdEEDgxhy/lsayVCH2EyziNR9A0rZR38T4
+ HLSia8GhrZKIfV5+UfIJ18ByCxZSd4SWWjcyYheDahNBk1uN4ISgi+jGLOxprQGD8nSq
+ kQXS5gWU7HWwbhYSyzDtmGLuXujf2u0VHOqoefpKO3vbNi5QQIXTw3QxmzTZobL/X126
+ cxUfk/zkEMnaAwnoheu1x358yyyBjv+twwjyhy8Gq2AnFe08hTvnAXoJ9i6xTIsl8NE5
+ vyJw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=a3rlIikyzOrYII/I4PVDBAmEgVhKf/CZtF0tScG6WL0=;
- b=f7nB9Wu6iFd86fG1/2jiXvsrlqyG5yd/CvcT022vKurgPZfBcJ1GmjNb2TPSxNyTyR
- GdLmpGTH8r7K8u79B2p30/gMJPoMXTdASnNqmJ2p3hwweEAcif1dhcBUmicvKbc1DVqo
- 8W6uZapu58yg8UwMJCNls1S/IW3BNySEAc7PO1Oe20LFE43cK+FfSsN8p30zc9I3s2z8
- 6x59mCjjy0C3JJnVzLIlkGKr1gBD734OIHX4g2B3d1ctE61YVArRYQt5aUH3bSvVt5Zk
- 1OrfCAPHLry70kLNvOX5flc4yCS5hizmNGgZNYvQQvurJQkbToYuPsxL42bBp7qm3+T/
- MC6A==
-X-Gm-Message-State: AOAM532bCmfTOfPT5wA9TaK7XA+Sv8BsI+anzUcCdlYRwzze9wlUBXFm
- w2o7dRFsTlZuKVcqskGojM/vcBOSYTxygg==
-X-Received: by 2002:adf:8bc7:: with SMTP id w7mr253537wra.198.1623860074990;
- Wed, 16 Jun 2021 09:14:34 -0700 (PDT)
+ bh=YnpC7skv5DHlC3FSHAcwV7gYnTT6SGeWYmONsyLMX7o=;
+ b=t8viu87pYayVm3CgCGpGNekrHjHtkTuUkzYKc2dSn/eQd7XwiI0t6cMYMh861CLBwz
+ cTu1/lXeu4moaLBWSfWUd8bNS7ZwwvRm5nkaNAbxmcXqqI29GeJlzhQ7PtZq5aPK8UpG
+ mQXhpeMSKa9ziKTkCGIIJkNHRjcWxOmruObbU0sEMkxwFbpGFxevxp6B8tilhqFQ95Z4
+ cp0XKrNVDDYMPQF2Ik1OwcmeCc4vCqqaT0ZgTXV6Fm4oFNaxEbmDrRkI8tmruWxx9tyY
+ i7ZcQ0/P1rWdtCCzXqihJHdCjC52XEMFxvVhru+PELSiEXJ8V88IoP6IuqdDLTpJ7CYR
+ ljSw==
+X-Gm-Message-State: AOAM531BQdkX03HhKijEcpEem6OoEYGxqXb6YGWXZG4+wDHvEudGx3FO
+ z6sJeNa1Rvz4Pf4y0VV/l4BwooBisCI/cA==
+X-Received: by 2002:adf:f648:: with SMTP id x8mr200267wrp.215.1623860099030;
+ Wed, 16 Jun 2021 09:14:59 -0700 (PDT)
 Received: from x1w.. (93.red-83-35-24.dynamicip.rima-tde.net. [83.35.24.93])
- by smtp.gmail.com with ESMTPSA id u15sm5201091wmq.48.2021.06.16.09.14.34
+ by smtp.gmail.com with ESMTPSA id t4sm2632791wru.53.2021.06.16.09.14.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 16 Jun 2021 09:14:34 -0700 (PDT)
+ Wed, 16 Jun 2021 09:14:58 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 03/13] hw/display/sm501: Simplify sm501_i2c_write() logic
-Date: Wed, 16 Jun 2021 18:14:08 +0200
-Message-Id: <20210616161418.2514095-4-f4bug@amsat.org>
+Subject: [PATCH v3 08/13] hw/misc/auxbus: Explode READ_I2C / WRITE_I2C_MOT
+ cases
+Date: Wed, 16 Jun 2021 18:14:13 +0200
+Message-Id: <20210616161418.2514095-9-f4bug@amsat.org>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210616161418.2514095-1-f4bug@amsat.org>
 References: <20210616161418.2514095-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42e.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -121,29 +122,88 @@ Cc: Corey Minyard <cminyard@mvista.com>,
  qemu-arm@nongnu.org, qemu-ppc@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: N/o6DSqsUcx9
+X-TUID: xbpMc2ny1mOs
+
+To allow further simplifications in the following commits,
+start copying WRITE_I2C code to the READ_I2C, and READ_I2C_MOT
+to WRITE_I2C_MOT. No logical change.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/display/sm501.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ hw/misc/auxbus.c | 53 ++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 53 insertions(+)
 
-diff --git a/hw/display/sm501.c b/hw/display/sm501.c
-index 8789722ef27..f276276f7f1 100644
---- a/hw/display/sm501.c
-+++ b/hw/display/sm501.c
-@@ -1036,8 +1036,9 @@ static void sm501_i2c_write(void *opaque, hwaddr addr, uint64_t value,
-                 int res = i2c_start_transfer(s->i2c_bus,
-                                              s->i2c_addr >> 1,
-                                              s->i2c_addr & 1);
--                s->i2c_status |= (res ? SM501_I2C_STATUS_ERROR : 0);
--                if (!res) {
-+                if (res) {
-+                    s->i2c_status |= SM501_I2C_STATUS_ERROR;
-+                } else {
-                     int i;
-                     for (i = 0; i <= s->i2c_byte_count; i++) {
-                         res = i2c_send_recv(s->i2c_bus, &s->i2c_data[i],
+diff --git a/hw/misc/auxbus.c b/hw/misc/auxbus.c
+index 148b070ce4a..9cc9cf3be32 100644
+--- a/hw/misc/auxbus.c
++++ b/hw/misc/auxbus.c
+@@ -133,6 +133,26 @@ AUXReply aux_request(AUXBus *bus, AUXCommand cmd, uint32_t address,
+      * Classic I2C transactions..
+      */
+     case READ_I2C:
++        is_write = cmd == READ_I2C ? false : true;
++        if (i2c_bus_busy(i2c_bus)) {
++            i2c_end_transfer(i2c_bus);
++        }
++
++        if (i2c_start_transfer(i2c_bus, address, !is_write)) {
++            ret = AUX_I2C_NACK;
++            break;
++        }
++
++        ret = AUX_I2C_ACK;
++        while (len > 0) {
++            if (i2c_send_recv(i2c_bus, data++, is_write) < 0) {
++                ret = AUX_I2C_NACK;
++                break;
++            }
++            len--;
++        }
++        i2c_end_transfer(i2c_bus);
++        break;
+     case WRITE_I2C:
+         is_write = cmd == READ_I2C ? false : true;
+         if (i2c_bus_busy(i2c_bus)) {
+@@ -163,6 +183,39 @@ AUXReply aux_request(AUXBus *bus, AUXCommand cmd, uint32_t address,
+      *  - We changed the address.
+      */
+     case WRITE_I2C_MOT:
++        is_write = cmd == READ_I2C_MOT ? false : true;
++        ret = AUX_I2C_NACK;
++        if (!i2c_bus_busy(i2c_bus)) {
++            /*
++             * No transactions started..
++             */
++            if (i2c_start_transfer(i2c_bus, address, !is_write)) {
++                break;
++            }
++        } else if ((address != bus->last_i2c_address) ||
++                   (bus->last_transaction != cmd)) {
++            /*
++             * Transaction started but we need to restart..
++             */
++            i2c_end_transfer(i2c_bus);
++            if (i2c_start_transfer(i2c_bus, address, !is_write)) {
++                break;
++            }
++        }
++
++        bus->last_transaction = cmd;
++        bus->last_i2c_address = address;
++        while (len > 0) {
++            if (i2c_send_recv(i2c_bus, data++, is_write) < 0) {
++                i2c_end_transfer(i2c_bus);
++                break;
++            }
++            len--;
++        }
++        if (len == 0) {
++            ret = AUX_I2C_ACK;
++        }
++        break;
+     case READ_I2C_MOT:
+         is_write = cmd == READ_I2C_MOT ? false : true;
+         ret = AUX_I2C_NACK;
 -- 
 2.31.1
 

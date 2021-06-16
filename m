@@ -1,194 +1,134 @@
-Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp742985lff;
-        Wed, 16 Jun 2021 15:00:10 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxMT/t2bm86czNiq5Q97nVmPCTV2j2v1zAS9xFQtxBrufVghbj7CUVk9mbnDGxj1uV7qyEf
-X-Received: by 2002:a05:6e02:1a08:: with SMTP id s8mr1191647ild.5.1623880809834;
-        Wed, 16 Jun 2021 15:00:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623880809; cv=none;
+Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp794339lff;
+        Wed, 16 Jun 2021 16:16:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzcoE3Ue3P1y+Q027E0OQJ4LLLkLrMyW0+p5hpDtPR+EG4yEd5mrNkJqEAwtFnIRO+eNrPi
+X-Received: by 2002:a67:f659:: with SMTP id u25mr2009796vso.9.1623885381955;
+        Wed, 16 Jun 2021 16:16:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623885381; cv=none;
         d=google.com; s=arc-20160816;
-        b=kHvDs3MUh0cTMlVOR/LByuAuPVxlrC0IiBgjyJGjUxx2/T71WjYgf8QDPBiITWqlYB
-         wN4THu4eua8VjLe1pTEjZMPf5eriaw+gfAHhjlj7fZsADf9d0CdaSogJopLbj/fjhO0K
-         lr5x10SJSJAJ1eZJgH8U0rg9rPN7LRyYu1MnywemjBvUIcDBerblF+FgLdtSzMV3Lsw2
-         Bwnxog4ok3NxWP2hQDnh+x+N5FjQhWzHaQHgeptnZyVopQjYOiOQorfDOY/haBMFWcNm
-         U962ChcoGRYQ9sxaMd93jj/LF7o4tukUS3MIZ/LDOVDZosSqPX+HGyw2dH+TpHJusJSr
-         G0pw==
+        b=jew5tja07I0ixontsGVHe/Fgf5o2gRqPRnOq0pGfJB2RkEUJ2L3q4WsRAiarvpCMEa
+         SV5xC0pMmNA4WvUiuFl2ZVUEZ4zVZiETHMxH6bNi/70cxkh4B74uhv/3TXEqqsWqAIDA
+         S7yqZrPUndlzR+8YXM5TfjugyPtmAP9f5caQnoEWHRpbHajb2DNGG15wsutnQKAb7IK0
+         ypaScR4BuKmno9kHCwRl/RE9ldNIQnaBXePUIDvp32irfqKtSapqllv8rlr/D79kvel2
+         Ga3meVnt8PzA2h1w87biR5urgU27rcRLEKNkyBB176gks3Y1eAKbRTzIBCQiTZaxssBa
+         QeNw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=DtENdvfDn6VhzVLT/89Jq/1ZlyaMFR9nNkP3jZQYETo=;
-        b=PBvVzYHvDKJEXOPcvdAcjY7RLwK5+BqTzSAt/vUDq03g2hj9cCuUVeZpidDCycg9MT
-         qgLbz19SatMtYDxyEFb+eK+sbnXCaVZy+KwUtThyWNtBzFYKkO8Cttx5BxrA2f719s6X
-         iXuCErf65L7hqIRb1FB+vfVaHkV7SVXOe5rPpfJ/4iDV9f+CGokOSxalR0bKoCV7rxpJ
-         6LErlRl0BlCzMDAPrGuGSU41P59j5Tl4RPapOScWHrXVybxTicrJUExGySQSO56Pa6rS
-         gAV4zzPqXQQb/ScGJkXFeaK3QoqO1iUPPaDqAZI9X/hMJFaX3eG3qde71zTdj0QyclrB
-         aaGA==
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :message-id:in-reply-to:subject:to:from:date;
+        bh=y7ZNZ1dtRsxhK+zVc7IByL6mmNZW1rKZCOAQ4gvR8rw=;
+        b=gmK0VVHX+sDr+Zy/0hzUkvZrsMJ4Y180CNgHLdOqAzYsyMI0QHqnsOaR6I4BRDQMZ+
+         i4fl6RkMQPxItY3L0yJYeIg20REX6OdSKV5d9lDL1DtbVS8IMe+nuP0VH2RTdicYTgdX
+         9CmuOCsSb45c8+FWfVNrNEhkx292CJNZut8ZSXqIstZQSFLajJhQn13/oNp7ihp1meap
+         zmFwNc8gZW4I3F5cJ76FCZPi3d4w8lYGEkoIdEZuuYo3FGzw8g54BPsdTr35dNoc4zTS
+         IM4SftM6rs457esqpdPvvPhfvxPZtUM4zD4OtCQyWogXQOhF34YFu96g8rL1HprJH8XT
+         iYBA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LeH+0XzZ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m2si3844384jap.105.2021.06.16.15.00.09
+        by mx.google.com with ESMTPS id l64si2767447ual.99.2021.06.16.16.16.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 16 Jun 2021 15:00:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 16 Jun 2021 16:16:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LeH+0XzZ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:50496 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+Received: from localhost ([::1]:47344 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ltdZx-0003gR-3d
-	for alex.bennee@linaro.org; Wed, 16 Jun 2021 18:00:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49238)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ltelh-0007fK-5b
+	for alex.bennee@linaro.org; Wed, 16 Jun 2021 19:16:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46660)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1ltdKZ-0002mK-CK; Wed, 16 Jun 2021 17:44:15 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c]:35754)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1ltdKU-0006pf-0P; Wed, 16 Jun 2021 17:44:15 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id
- o39-20020a05600c5127b02901d23584fd9bso2189111wms.0; 
- Wed, 16 Jun 2021 14:44:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=DtENdvfDn6VhzVLT/89Jq/1ZlyaMFR9nNkP3jZQYETo=;
- b=LeH+0XzZjrI9Ahy3mFlNXUOSl0AOt8muIB9GjpLaz1jcZ1Lx5MGiVZ6TTGYYY3KoEz
- q7Ck6+HTjCkse8FD7Z+qXvX74jhenGGtSUjwobtoJ4xUmNK5shKGrrkTI6/rPmwqxggb
- mufat7s44juoLdwYeN1BrgbKWTEvFevPkYVeoR7fbxuzQxOOaLAbdMomh6L5gE6SIFSx
- SzB9CpplN9O0j5rXwdMR70sA6YEaEupCTFKV+5NoP1n5wm4A+6G7i8vufsD/ds/ed4/N
- VZQ3DF0viYuRKlCJLi+jW5PLLG5Gbzc+IVYtUYg+dr++nfA7ZMseDDr7FUWeeUOW61Ug
- Dqqw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=DtENdvfDn6VhzVLT/89Jq/1ZlyaMFR9nNkP3jZQYETo=;
- b=ANuTfxOVtc4UHIOPRMLx7i6P5e8x+1ROtxbw5iuLmwirwi9xr4+af8LGp7Y2F7gFCk
- tUEhZLtujbWqoe4YNRm58+F3hmQBb8otYRqXQUAIpCU1/N9lACEnh84uM4mGhwol9fI/
- tpmzdHaH2VvGwBPqeJ5GTBTJ8XGRikyRTENdaWVKPYI93tVPTUucXRUgvECj+xaF/n5h
- CR6Y6BuRwcnUtjCrCc399dORUzX09X48O1VJhMzNge6902gcWCXwna5FJxlH431g495v
- ClX9kMhzTd9N2A1Jvs0sZYxT9CRStMQhc43bZSpjFf48zVTHv0Cl2Z2idD+EYx2+HZo3
- nbLg==
-X-Gm-Message-State: AOAM531UV2XsEI8l7sHvwdldyQ67nQgzKXpnPELVklvP6KfoasTvgM4I
- liiOHNs/ehgpeFZ4N0FMbeWytAGbF5JbQg==
-X-Received: by 2002:a1c:b306:: with SMTP id c6mr1097964wmf.37.1623879847485;
- Wed, 16 Jun 2021 14:44:07 -0700 (PDT)
-Received: from x1w.. (93.red-83-35-24.dynamicip.rima-tde.net. [83.35.24.93])
- by smtp.gmail.com with ESMTPSA id v8sm3705536wrc.29.2021.06.16.14.44.06
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 16 Jun 2021 14:44:06 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v4 13/15] hw/i2c: Make i2c_start_transfer() direction argument
- a boolean
-Date: Wed, 16 Jun 2021 23:42:52 +0200
-Message-Id: <20210616214254.2647796-14-f4bug@amsat.org>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20210616214254.2647796-1-f4bug@amsat.org>
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1ltelA-0007OR-Cl; Wed, 16 Jun 2021 19:15:48 -0400
+Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001]:55950)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1ltel7-0006nr-DC; Wed, 16 Jun 2021 19:15:47 -0400
+Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
+ by localhost (Postfix) with SMTP id E955774570E;
+ Thu, 17 Jun 2021 01:15:38 +0200 (CEST)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id A99E974570B; Thu, 17 Jun 2021 01:15:38 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id A7F957456B4;
+ Thu, 17 Jun 2021 01:15:38 +0200 (CEST)
+Date: Thu, 17 Jun 2021 01:15:38 +0200 (CEST)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <f4bug@amsat.org>
+Subject: Re: [PATCH v4 03/15] hw/display/sm501: Simplify sm501_i2c_write()
+ logic
+In-Reply-To: <20210616214254.2647796-4-f4bug@amsat.org>
+Message-ID: <8f39606a-eaab-aac-48d0-b9307aba496@eik.bme.hu>
 References: <20210616214254.2647796-1-f4bug@amsat.org>
+ <20210616214254.2647796-4-f4bug@amsat.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32c.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
+Content-Type: multipart/mixed;
+ boundary="3866299591-165660671-1623885338=:97089"
+X-Spam-Probability: 9%
+Received-SPF: pass client-ip=2001:738:2001:2001::2001;
+ envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Corey Minyard <cminyard@mvista.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
  KONRAD Frederic <frederic.konrad@adacore.com>, qemu-arm@nongnu.org,
  qemu-ppc@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZJbBYJSnwfF5
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ecr/9LQjqp+6
 
-From: BALATON Zoltan <balaton@eik.bme.hu>
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Make the argument representing the direction of the transfer a
-boolean type.
-Rename the boolean argument as 'is_recv' to match i2c_recv_send().
-Document the function prototype.
+--3866299591-165660671-1623885338=:97089
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8BIT
 
-Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
-Message-Id: <20200621145235.9E241745712@zero.eik.bme.hu>
-[PMD: Split patch, added docstring]
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Acked-by: Corey Minyard <cminyard@mvista.com>
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- include/hw/i2c/i2c.h | 12 +++++++++++-
- hw/i2c/core.c        |  4 ++--
- 2 files changed, 13 insertions(+), 3 deletions(-)
+On Wed, 16 Jun 2021, Philippe Mathieu-Daudé wrote:
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> Acked-by: Corey Minyard <cminyard@mvista.com>
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-diff --git a/include/hw/i2c/i2c.h b/include/hw/i2c/i2c.h
-index 2adf521b271..21f2dba1bf7 100644
---- a/include/hw/i2c/i2c.h
-+++ b/include/hw/i2c/i2c.h
-@@ -80,7 +80,17 @@ struct I2CBus {
- 
- I2CBus *i2c_init_bus(DeviceState *parent, const char *name);
- int i2c_bus_busy(I2CBus *bus);
--int i2c_start_transfer(I2CBus *bus, uint8_t address, int recv);
-+
-+/**
-+ * i2c_start_transfer: start a transfer on an I2C bus.
-+ *
-+ * @bus: #I2CBus to be used
-+ * @address: address of the slave
-+ * @is_recv: indicates the transfer direction
-+ *
-+ * Returns: 0 on success, -1 on error
-+ */
-+int i2c_start_transfer(I2CBus *bus, uint8_t address, bool is_recv);
- void i2c_end_transfer(I2CBus *bus);
- void i2c_nack(I2CBus *bus);
- int i2c_send(I2CBus *bus, uint8_t data);
-diff --git a/hw/i2c/core.c b/hw/i2c/core.c
-index 6af24c9e797..6639ca8c2e0 100644
---- a/hw/i2c/core.c
-+++ b/hw/i2c/core.c
-@@ -115,7 +115,7 @@ bool i2c_scan_bus(I2CBus *bus, uint8_t address, bool broadcast,
-  * without releasing the bus.  If that fails, the bus is still
-  * in a transaction.
-  */
--int i2c_start_transfer(I2CBus *bus, uint8_t address, int recv)
-+int i2c_start_transfer(I2CBus *bus, uint8_t address, bool is_recv)
- {
-     I2CSlaveClass *sc;
-     I2CNode *node;
-@@ -157,7 +157,7 @@ int i2c_start_transfer(I2CBus *bus, uint8_t address, int recv)
- 
-         if (sc->event) {
-             trace_i2c_event("start", s->address);
--            rv = sc->event(s, recv ? I2C_START_RECV : I2C_START_SEND);
-+            rv = sc->event(s, is_recv ? I2C_START_RECV : I2C_START_SEND);
-             if (rv && !bus->broadcast) {
-                 if (bus_scanned) {
-                     /* First call, terminate the transfer. */
--- 
-2.31.1
+Reviewed-by: BALATON Zoltan <balaton@eik.bme.hu>
 
+> ---
+> hw/display/sm501.c | 5 +++--
+> 1 file changed, 3 insertions(+), 2 deletions(-)
+>
+> diff --git a/hw/display/sm501.c b/hw/display/sm501.c
+> index 8789722ef27..f276276f7f1 100644
+> --- a/hw/display/sm501.c
+> +++ b/hw/display/sm501.c
+> @@ -1036,8 +1036,9 @@ static void sm501_i2c_write(void *opaque, hwaddr addr, uint64_t value,
+>                 int res = i2c_start_transfer(s->i2c_bus,
+>                                              s->i2c_addr >> 1,
+>                                              s->i2c_addr & 1);
+> -                s->i2c_status |= (res ? SM501_I2C_STATUS_ERROR : 0);
+> -                if (!res) {
+> +                if (res) {
+> +                    s->i2c_status |= SM501_I2C_STATUS_ERROR;
+> +                } else {
+>                     int i;
+>                     for (i = 0; i <= s->i2c_byte_count; i++) {
+>                         res = i2c_send_recv(s->i2c_bus, &s->i2c_data[i],
+>
+--3866299591-165660671-1623885338=:97089--

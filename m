@@ -1,234 +1,157 @@
-Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp3350378lff;
-        Tue, 15 Jun 2021 14:55:00 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxC7niL8oD2AWbJrmGIfd3z2QTBqxEnHyp6J3B9YjWO41aumJO8JwepVzU6XrTDAzOju8Xq
-X-Received: by 2002:ac8:7f88:: with SMTP id z8mr1848615qtj.77.1623794100299;
-        Tue, 15 Jun 2021 14:55:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623794100; cv=none;
+Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp3469930lff;
+        Tue, 15 Jun 2021 18:12:12 -0700 (PDT)
+X-Received: by 2002:a17:90a:8e82:: with SMTP id f2mr8004166pjo.177.1623805932271;
+        Tue, 15 Jun 2021 18:12:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623805932; cv=none;
         d=google.com; s=arc-20160816;
-        b=YUA1VFfhmuHfmN4GqKLhoVvtxM52ZlfPZ8WjYMuJLOmlWJdWH1yu2FjOdULr08V0C/
-         1PfkcV9FVS7INv4P7m1N13zWxeZ9yXF5sviDBBBsDDBA+VEcREwpXMuE0S/c4YOK0FU2
-         cNS+niBVYwfzzbEAmHXRlZ0XL3uMG4IyPpJnANq6XLYFHveZgZwZYlz35WcuQ3XSPK6r
-         CPOImg4tak4vMEvaFKxb/Vwh9RW3eAg2U2Ai1bWH5MldU2UY8Ggt0K/rNvvwHl78KGvY
-         eEsDGP95NHyjbBe6DN7Bh7M7vPTOYvRPULu7mYNkytaCWYnqdcEBGIV/hDmh1iTFwV1C
-         ricg==
+        b=kkREYnwToWY0xGlYKqzJyOG4votQkbvyDYtrZfiSOl61S+cDCr+TmImq32qIAzdqht
+         u7ZAnt1zwsx4ZSbAahm29LalfYqs6xbulrdWyIdkJTcevW1duaSGjQW7NxqvHHgcBZAQ
+         HftXW5Dd/KEavSv9Wp28HtAHTOnU+A7Bky04CYCAJm/fee3BDrQ7+AAPp0+P8QSKyk0K
+         Rpzky9rXT3/vsjN+At0V5wZYCVbC6cPNHObHh3a+3KYj382Bw1OiRG6Zr/Fu0J+YhaYb
+         0JCGKg+VKKa3YFRjO6rVRNBh5OzrEdKJRRSbMlAC0Ga0dgLN/hEMB8TrjF/HRCAl3037
+         EZtw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=L8Wr+vVlpS7RBuWeP7oXdC87KRHJWCD4XNU58f8BPXg=;
-        b=xVoCVhD2hnBhF1X3I157mGii4Uvu96D4BaNzl1HlJdmbYopCIxYjs/mqLhhoRWw1QO
-         sou9lFAzAjPWaxAOZvB0Y1+UpvsGIFOqYNVkIoUgIlp8RcU3BHl9NJMG5KDnMWjqIk7r
-         MsyBwamt0XnXQKUlZDyX0XBip+HTVWxKXsvP8us1kTMZFU0iHOVyUVeZf0TtjHk6fS8J
-         Xu5SgbEoCGHfabmWetp4zzKp0inmOQQ8gkGTgS/fB/vpDyaxlR0IpAZlgvRz86OSFhoY
-         oEevQlfZPcvxjfFoR6SGPu8XuJ+sgdAjqVbDuTB2FR+BxEX8ZGAt9l1kBouGwZYapwBW
-         ok5Q==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=pYIekZ7E/4IYX4eiK6xNe4M6uHE016F0haAs2Oq20xQ=;
+        b=FLYnAesSZZ8HSbzDntyaI2Kz6Gxr36aOdZNXY8nMHBqobwhUTi+McDb8nMPTDnXleB
+         Se9n/ovM2V49v5u2Fs+rsm0z19aA7WW7o47anw8AEV0btviqqPpnJ07A4b2SxOX9nqpI
+         mPNrzZxV58k2Y6ISSIwAS8EVizZp6qb1J2PBb4ZhrMJT6i3KRQAsRlC/BwQeQqiKD6cA
+         J+vp90ppTpqW081SUNiduRafmBlMlUb/d1AlKfA3UB3Iz40cCCki1ZaYDCXoR1RO6icI
+         A+4o0RMjoDD1Ayu13AQ4z8S3q8C6uzTmHaON2euDXqcYr+qDoWnKK7aghtSuyQsuW6B+
+         He8Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Jaug9ABo;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b7si105787qkn.213.2021.06.15.14.55.00
+       dkim=pass header.i=@linaro.org header.s=google header.b=Cop90s9p;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 69sor263174pfb.41.2021.06.15.18.12.12
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 15 Jun 2021 14:55:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 15 Jun 2021 18:12:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Jaug9ABo;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:34822 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ltH1P-0003rg-Lg
-	for alex.bennee@linaro.org; Tue, 15 Jun 2021 17:54:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41336)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1ltH0f-0003AG-Vr; Tue, 15 Jun 2021 17:54:14 -0400
-Received: from mail-io1-xd29.google.com ([2607:f8b0:4864:20::d29]:39593)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1ltH0c-0006Wn-9A; Tue, 15 Jun 2021 17:54:13 -0400
-Received: by mail-io1-xd29.google.com with SMTP id f10so804747iok.6;
- Tue, 15 Jun 2021 14:54:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=L8Wr+vVlpS7RBuWeP7oXdC87KRHJWCD4XNU58f8BPXg=;
- b=Jaug9ABo7c46Po3YPqEoGTX+eZj6Nq3/lnXelPODBrmWghtcWOXuNBP7w4EoFVLob8
- kOhuSVtrqGG5G+MxuFBHYycHulgx6kjHZvMLYa1iOhCWPZOaQUW5chUaEcFuc9xaIAS8
- a9iI+WMTMVJnBEqd+rgEjSVzAVfLediT8ixnkZ8WN+nx4VLt6rPc5SAUkytoF6rXVFqN
- tc6FBelixjmw+gGSymHGi7uVLUojbn9dgLxjJ35EpeC0Do5kZ5ZN9qmiQnbuh6n3mE0g
- CMeVCwvYQzXM68tYZIZLc+ALVKGmZ2OvSKT7I5/dTDAInpp039k1mVj7OqfzeweD6AG5
- NVMA==
+       dkim=pass header.i=@linaro.org header.s=google header.b=Cop90s9p;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=pYIekZ7E/4IYX4eiK6xNe4M6uHE016F0haAs2Oq20xQ=;
+        b=Cop90s9pWYpPLPVIBKugKe96uw6O0INI6O5CcP/EL2iTFNKsBstuetvJG4dR1F73gu
+         P9vVyf47OGlWh35TZBk9/TRzOtmGCMFbw6wLsMUl50/hNRGCZZ5RdNWtkuz0S3MJxzPK
+         PeAfdwOsbrNJ6sDsk/3xiJA2wtVcmylFVQKSfxM3KHJz1jipMDMayX4qvad58ThzWYXR
+         poKRmOheb5gC3LdjCZq/nutiv6uGIeJjKdpWeSXT0NcFodWw5/6PWznK/3GLOek6CDRn
+         gzjAvtEFrL5u3zYzzAYw/3JDGVkCRGno4R0k96V/k/80fLI9tzU65I5gpgfZYW8s2zr2
+         sKdQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=L8Wr+vVlpS7RBuWeP7oXdC87KRHJWCD4XNU58f8BPXg=;
- b=s18yrSp17qp3pWjBpyTJVlglFSB78ReGMONejqUwetxD8mp018Mf7gAdadHMozDh/p
- dU12aEsx7xvlUVirmwDrOLijFYs6ELdFl8n87vhu3XemHJGf7pRIFeD3HhTGL57Uqrmo
- vm7KcbNOZDfk8DcWiRAwWb6XW18KtjC6i2TI12hZBUtVYU9VkPFuY+CSlYTwAxKZ3xEN
- J58LlIntU8p39BS+E+i5iSYZdr6DbBr1OW00n866rMN+urPajlXnrfRSWGhaweWXtDD7
- CYncV4GcRXakcUPPRLuClmfB3tZd/bnxCIXNTrZFGGemFo8Gtpbrw2n1o6cYZj6AFzW/
- 35XA==
-X-Gm-Message-State: AOAM532r+F7I66u9N/MlNw93VcSjkbIDF1abDxY+U1+196zBAbRIoXex
- dWfQxF/sMXrKz9ts7nZqUsO40ngfRAymjN1HK6s=
-X-Received: by 2002:a6b:490d:: with SMTP id u13mr1066217iob.176.1623794048827; 
- Tue, 15 Jun 2021 14:54:08 -0700 (PDT)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=pYIekZ7E/4IYX4eiK6xNe4M6uHE016F0haAs2Oq20xQ=;
+        b=HhWo32qSOtz4GHs19BfSYVD+/Ek3QOQW9lihig3McJ7xKVh/fvWBvw5uclqy0/W2oR
+         9Qg3aTZj+ijnu509JP2XT8kr80QUke0gIISHPDAVXT9yYnRHlqor0fB7ddzESDASEsGO
+         v+QmsCvB1wJJV7YoZzTVqF7AFvLCVVdejcdwGKij3oHXocWYkdoP+/kug88uIg947lD8
+         /T3YvhnXw5z0067Gkm3NU8tOEhlGOR4JAa/W5aT+buzZSAqCteQSgvuaiO6c9iph0dE6
+         gsQ1hgMrmgHiBL8Augj3jZNmwEM3puTTalqP/Bm+hqh+IfQGjU2uCk1UJE/gmGn99DnT
+         qXDA==
+X-Gm-Message-State: AOAM5326tl1HBAyslB7CdCzsSQbdrippxJexxBEeySdDC1HWHjFoUfFi
+	F9gb2++vUDtffqN2LJZ43vGJXz6+
+X-Google-Smtp-Source: ABdhPJy7tc7mQXkXt2kWBh75KuMUvKYI2MbNJbjL0kctjIV6w4PfySfE+Hnb2qi2xUcvuQG1QLrNfg==
+X-Received: by 2002:a62:e307:0:b029:2f8:d49:7b65 with SMTP id g7-20020a62e3070000b02902f80d497b65mr6998165pfh.48.1623805931806;
+        Tue, 15 Jun 2021 18:12:11 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from localhost.localdomain (174-21-70-228.tukw.qwest.net. [174.21.70.228])
+        by smtp.gmail.com with ESMTPSA id y18sm305297pgk.53.2021.06.15.18.12.11
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 15 Jun 2021 18:12:11 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: laurent@vivier.eu,
+	alex.bennee@linaro.org,
+	qemu-arm@nongnu.org
+Subject: [PATCH 02/21] linux-user/aarch64: Implement setup_sigtramp
+Date: Tue, 15 Jun 2021 18:11:50 -0700
+Message-Id: <20210616011209.1446045-3-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20210616011209.1446045-1-richard.henderson@linaro.org>
+References: <20210616011209.1446045-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-References: <20210615153440.1307729-1-erdnaxe@crans.org>
- <20210615153440.1307729-4-erdnaxe@crans.org>
-In-Reply-To: <20210615153440.1307729-4-erdnaxe@crans.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Wed, 16 Jun 2021 07:53:42 +1000
-Message-ID: <CAKmqyKMDO7LpvBSG98=EX+vHqkveWFLu-J57EcwLAKuA7YUSsg@mail.gmail.com>
-Subject: Re: [PATCH v2 3/3] docs/system: arm: Add stm32 boards description
-To: Alexandre Iooss <erdnaxe@crans.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d29;
- envelope-from=alistair23@gmail.com; helo=mail-io1-xd29.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "open list:STM32VLDISCOVERY" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WXx7rKRGeoHf
+Content-Transfer-Encoding: 8bit
+X-TUID: reg7cAg53bAX
 
-On Wed, Jun 16, 2021 at 1:35 AM Alexandre Iooss <erdnaxe@crans.org> wrote:
->
-> This adds the target guide for Netduino 2, Netduino Plus 2 and STM32VLDISCOVERY.
->
-> Signed-off-by: Alexandre Iooss <erdnaxe@crans.org>
+Create and record the rt signal trampoline.
+Use it when the guest does not use SA_RESTORER.
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Cc: qemu-arm@nongnu.org
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ linux-user/aarch64/target_signal.h |  2 ++
+ linux-user/aarch64/signal.c        | 28 ++++++++++++++++++----------
+ 2 files changed, 20 insertions(+), 10 deletions(-)
 
-Alistair
-
-> ---
->  MAINTAINERS                |  1 +
->  docs/system/arm/stm32.rst  | 66 ++++++++++++++++++++++++++++++++++++++
->  docs/system/target-arm.rst |  1 +
->  3 files changed, 68 insertions(+)
->  create mode 100644 docs/system/arm/stm32.rst
->
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 0aa8016936..47fb06e5fc 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -896,6 +896,7 @@ M: Alexandre Iooss <erdnaxe@crans.org>
->  L: qemu-arm@nongnu.org
->  S: Maintained
->  F: hw/arm/stm32vldiscovery.c
-> +F: docs/system/arm/stm32.rst
->
->  Versatile Express
->  M: Peter Maydell <peter.maydell@linaro.org>
-> diff --git a/docs/system/arm/stm32.rst b/docs/system/arm/stm32.rst
-> new file mode 100644
-> index 0000000000..508b92cf86
-> --- /dev/null
-> +++ b/docs/system/arm/stm32.rst
-> @@ -0,0 +1,66 @@
-> +STMicroelectronics STM32 boards (``netduino2``, ``netduinoplus2``, ``stm32vldiscovery``)
-> +========================================================================================
-> +
-> +The `STM32`_ chips are a family of 32-bit ARM-based microcontroller by
-> +STMicroelectronics.
-> +
-> +.. _STM32: https://www.st.com/en/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus.html
-> +
-> +The STM32F1 series is based on ARM Cortex-M3 core. The following machines are
-> +based on this chip :
-> +
-> +- ``stm32vldiscovery``  STM32VLDISCOVERY board with STM32F100RBT6 microcontroller
-> +
-> +The STM32F2 series is based on ARM Cortex-M3 core. The following machines are
-> +based on this chip :
-> +
-> +- ``netduino2``         Netduino 2 board with STM32F205RFT6 microcontroller
-> +
-> +The STM32F4 series is based on ARM Cortex-M4F core. This series is pin-to-pin
-> +compatible with STM32F2 series. The following machines are based on this chip :
-> +
-> +- ``netduinoplus2``     Netduino Plus 2 board with STM32F405RGT6 microcontroller
-> +
-> +There are many other STM32 series that are currently not supported by QEMU.
-> +
-> +Supported devices
-> +-----------------
-> +
-> + * ARM Cortex-M3, Cortex M4F
-> + * Analog to Digital Converter (ADC)
-> + * EXTI interrupt
-> + * Serial ports (USART)
-> + * SPI controller
-> + * System configuration (SYSCFG)
-> + * Timer controller (TIMER)
-> +
-> +Missing devices
-> +---------------
-> +
-> + * Camera interface (DCMI)
-> + * Controller Area Network (CAN)
-> + * Cycle Redundancy Check (CRC) calculation unit
-> + * Digital to Analog Converter (DAC)
-> + * DMA controller
-> + * Ethernet controller
-> + * Flash Interface Unit
-> + * GPIO controller
-> + * I2C controller
-> + * Inter-Integrated Sound (I2S) controller
-> + * Power supply configuration (PWR)
-> + * Random Number Generator (RNG)
-> + * Real-Time Clock (RTC) controller
-> + * Reset and Clock Controller (RCC)
-> + * Secure Digital Input/Output (SDIO) interface
-> + * USB OTG
-> + * Watchdog controller (IWDG, WWDG)
-> +
-> +Boot options
-> +------------
-> +
-> +The STM32 machines can be started using the ``-kernel`` option to load a
-> +firmware. Example:
-> +
-> +.. code-block:: bash
-> +
-> +  $ qemu-system-arm -M stm32vldiscovery -kernel firmware.bin
-> diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
-> index edd013c7bb..addd3d1613 100644
-> --- a/docs/system/target-arm.rst
-> +++ b/docs/system/target-arm.rst
-> @@ -96,6 +96,7 @@ undocumented; you can get a complete list by running
->     arm/collie
->     arm/sx1
->     arm/stellaris
-> +   arm/stm32
->     arm/virt
->     arm/xlnx-versal-virt
->
-> --
-> 2.25.1
->
+diff --git a/linux-user/aarch64/target_signal.h b/linux-user/aarch64/target_signal.h
+index 18013e1b23..7580d99403 100644
+--- a/linux-user/aarch64/target_signal.h
++++ b/linux-user/aarch64/target_signal.h
+@@ -25,4 +25,6 @@ typedef struct target_sigaltstack {
+ #define TARGET_SEGV_MTESERR  9  /* Synchronous ARM MTE exception */
+ 
+ #define TARGET_ARCH_HAS_SETUP_FRAME
++#define TARGET_ARCH_HAS_SIGTRAMP_PAGE 1
++
+ #endif /* AARCH64_TARGET_SIGNAL_H */
+diff --git a/linux-user/aarch64/signal.c b/linux-user/aarch64/signal.c
+index 662bcd1c4e..65b84eb04e 100644
+--- a/linux-user/aarch64/signal.c
++++ b/linux-user/aarch64/signal.c
+@@ -108,7 +108,6 @@ struct target_rt_sigframe {
+ struct target_rt_frame_record {
+     uint64_t fp;
+     uint64_t lr;
+-    uint32_t tramp[2];
+ };
+ 
+ static void target_setup_general_frame(struct target_rt_sigframe *sf,
+@@ -495,15 +494,7 @@ static void target_setup_frame(int usig, struct target_sigaction *ka,
+     if (ka->sa_flags & TARGET_SA_RESTORER) {
+         return_addr = ka->sa_restorer;
+     } else {
+-        /*
+-         * mov x8,#__NR_rt_sigreturn; svc #0
+-         * Since these are instructions they need to be put as little-endian
+-         * regardless of target default or current CPU endianness.
+-         */
+-        __put_user_e(0xd2801168, &fr->tramp[0], le);
+-        __put_user_e(0xd4000001, &fr->tramp[1], le);
+-        return_addr = frame_addr + fr_ofs
+-            + offsetof(struct target_rt_frame_record, tramp);
++        return_addr = default_rt_sigreturn;
+     }
+     env->xregs[0] = usig;
+     env->xregs[29] = frame_addr + fr_ofs;
+@@ -576,3 +567,20 @@ long do_sigreturn(CPUARMState *env)
+ {
+     return do_rt_sigreturn(env);
+ }
++
++void setup_sigtramp(abi_ulong sigtramp_page)
++{
++    uint32_t *tramp = lock_user(VERIFY_WRITE, sigtramp_page, 8, 0);
++    assert(tramp != NULL);
++
++    /*
++     * mov x8,#__NR_rt_sigreturn; svc #0
++     * Since these are instructions they need to be put as little-endian
++     * regardless of target default or current CPU endianness.
++     */
++    __put_user_e(0xd2801168, &tramp[0], le);
++    __put_user_e(0xd4000001, &tramp[1], le);
++
++    default_rt_sigreturn = sigtramp_page;
++    unlock_user(tramp, sigtramp_page, 8);
++}
+-- 
+2.25.1

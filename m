@@ -1,113 +1,113 @@
-Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp706823lff;
-        Wed, 16 Jun 2021 14:04:12 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyF4ZwztwF64t8DL4V76Ql2g/XZq1Fk465oy10RuB1xlrykDRkmbHAAK2w/rvH9iaite0dQ
-X-Received: by 2002:aa7:c799:: with SMTP id n25mr2029913eds.16.1623877452294;
-        Wed, 16 Jun 2021 14:04:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623877452; cv=none;
+Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp707125lff;
+        Wed, 16 Jun 2021 14:04:39 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyrwuCgtzB5RLjK7f/5EPa7+P82PHfGz7SX5Y5E2+Gjr1ubvpn3AsMzOhOzj6ySs32x7ouB
+X-Received: by 2002:a17:906:848:: with SMTP id f8mr1448908ejd.198.1623877479507;
+        Wed, 16 Jun 2021 14:04:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623877479; cv=none;
         d=google.com; s=arc-20160816;
-        b=YJe8PneXUvyR/S+LzEpH8Lkx5bd1m8ElgKqCNPKCHShstzgkr8YiQqEtDqzpPYuJ6n
-         TXyL2S5AA1OIecqBzc1jRNkwg+5W4LZfPWrC/6HlmZD7HRKanXEpkLV1EGmX6udRJiHj
-         EIpi4lbMH0GhXfAJ4lvWejGZJbrXnX5npqXo8UVez24me/pjoX9KlBPZ12Pgun5C8q5u
-         WONpufeljKT3vpVr/VfuecXr1Z/38+pEVLGrFnun2+kULXxgg6dA+zDDRlXLFcRaYLVj
-         Zv2ilUdwYYVz9magT1SCuowcwKKumOxznx0SHtgrnQ2rCbT1LRA7H3qhAo65BLQJzdHR
-         uyWw==
+        b=ZXf2jvrHx9xfQU3gTwuCSMbuM1ZG2c0sj7gpDNy+/9kXzpMBlAML9sf4WNugRkUXj4
+         KbwC6OI8az/YGLD4zdaBdec/2rgM3swWwvFK++pNuV5upHViVvC9chD9jrGPJPIu6UH5
+         GprQWObXqYs3kobo/+fxW121NFFfAnEkTcmn3lp9qHXDQsPdHyuaFEeYBLywEwRnXlI2
+         9LcA9BzxTpmHsmnTLAs5fewFfx75GFM+kLEAyd47TbVFFAzaZx9LB6mc/MZI/1E33kNB
+         gPYAZ1DJyj9W+wW2GoJaIn1qjNzQUYUZ6fQB1BoVMErOwqRnXXPUqUwO1nbVVu7M5Fiz
+         BXvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:date:to:from:subject:message-id
          :dkim-signature;
-        bh=FFiO7XxWwZGGXJAEymjbBSjoxf0wGUoMDM7OzDOg5c4=;
-        b=xr0OjPXAJrGLtUQ/sIQgY4yUpnMlthFHT6JaD09j4xrnNdMtSVIZ2OwRlPK/GBh61b
-         HnErJhps5y/hAqHbvAEHZWQeg+AAsFZVs2S5UBeTfhwZ1JHAEY44bxkDeuMh6BDciA5m
-         /HEDZ/G0znlClmeXn5EsNIrd2+3jtCoC1z2aEIa9bg+BVamoaQXteB7KWsFw7I7ep5CP
-         Yj/YdMWkFKdX3PeC8KDpRSk2zOEIyQfUPcsMo1z5O3rACvwThTCFqv6c5AI+PZZlg4za
-         HCuoLemPgc2gtF/qsZct4p1+4OzDqHy59p+5xj8gdFSkb/id/B/hQ7/plE0MulGIpxZW
-         8dAw==
+        bh=vZro5+yjY17WzQ5tbhViEDhmO1hPB8l3+OREO6y5ri0=;
+        b=NXO3r2a23oBd7Hdfj9LNVroQHQjEHw48cAHbJ08aeGvopEJejD1W0snasZ6IRY/PMe
+         VtwNUOC/xNyWME5AtHjLmf+bq8ZYJ5jPiPBziGlkCuZdw8MsRYxXFun1IWWGVYBAB2DT
+         lvK6KnbckFj1XIr5BzP5dOkFgKnWl7K1b9tWH9Zp1Gv3eAHn118/jVjkUyCuTElEfZh5
+         JzEhyaEoTFceVXaBGS1sEI06Izb2Nw7beA47LuwqPhelurfHi1Wuu/yL6O5flvGL9AEI
+         rtligj4mOuGs3hrZM8NXnKK2Km5rk4Em4XArgUZWxI3QhCMkyjTwbyHMh029mJTv22X3
+         2qcg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VnrrPmDN;
+       dkim=pass header.i=@linaro.org header.s=google header.b=QGCPuzRw;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id cq10si3116147edb.358.2021.06.16.14.04.12
+        by mx.google.com with ESMTPS id s6si3293818ejm.200.2021.06.16.14.04.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 16 Jun 2021 14:04:12 -0700 (PDT)
+        Wed, 16 Jun 2021 14:04:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VnrrPmDN;
+       dkim=pass header.i=@linaro.org header.s=google header.b=QGCPuzRw;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33240 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35572 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ltchn-0001jh-7J
-	for alex.bennee@linaro.org; Wed, 16 Jun 2021 17:04:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54562)
+	id 1ltciE-0003Ge-DJ
+	for alex.bennee@linaro.org; Wed, 16 Jun 2021 17:04:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54672)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shashi.mallela@linaro.org>)
- id 1ltcg4-0007Xy-JE
- for qemu-devel@nongnu.org; Wed, 16 Jun 2021 17:02:24 -0400
-Received: from mail-qv1-xf36.google.com ([2607:f8b0:4864:20::f36]:39785)
+ id 1ltcgP-0008OP-6v
+ for qemu-devel@nongnu.org; Wed, 16 Jun 2021 17:02:45 -0400
+Received: from mail-qk1-x731.google.com ([2607:f8b0:4864:20::731]:46042)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shashi.mallela@linaro.org>)
- id 1ltcfz-0003sE-OQ
- for qemu-devel@nongnu.org; Wed, 16 Jun 2021 17:02:24 -0400
-Received: by mail-qv1-xf36.google.com with SMTP id u14so486786qvq.6
- for <qemu-devel@nongnu.org>; Wed, 16 Jun 2021 14:02:17 -0700 (PDT)
+ id 1ltcgM-00045N-AH
+ for qemu-devel@nongnu.org; Wed, 16 Jun 2021 17:02:44 -0400
+Received: by mail-qk1-x731.google.com with SMTP id d196so903446qkg.12
+ for <qemu-devel@nongnu.org>; Wed, 16 Jun 2021 14:02:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=message-id:subject:from:to:cc:date:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=FFiO7XxWwZGGXJAEymjbBSjoxf0wGUoMDM7OzDOg5c4=;
- b=VnrrPmDNkoxWd+Z8BuQmKvHXyMGpK7mbjadFM5fAFz0EwUeruGhbLB0SUYLq0Mtyug
- wRcBqsDYuoH2by0wke8ukUZE56MwoHlKQZsEkmPjvDH4Z7XHYPG2LZ7+0Vz2yxcg2Srj
- 3WAtL8bSP4enYYPCJfpDyR+WorQXvVW8+mBKrpfo8gIbGEHoxCPxbprIEj/uI2AFSXZY
- U8ReuI50t1oKF/ntGR+EMZimlZmbbTKb4WdZ9dd3qANcvtbMCcKS236bam6B/X2KHzXb
- YcewB7AwSEt27Pxb+0gJeg6DHctqJwE6w+v3jKtCePwVCY4r06MuYMqkH5bRI5CVVBde
- sOJA==
+ bh=vZro5+yjY17WzQ5tbhViEDhmO1hPB8l3+OREO6y5ri0=;
+ b=QGCPuzRw86GAjAa8iydlmu4z9+kZ+wJed30hZkGQeJ+av7Zb8NYcIJ+/USsdmUpqgS
+ fZTwaiRZkUe9cJ+x56M+yLrmMFQ0rU0CmNoAI3U9e2Qqx8h6NDgOHNKyQzFasR9kowzc
+ rlvAazFMRYAzuvCBpaOLdMz2lTtdIeeFtjXrBwdglJb/6x9T5TVGSJfD+t2EmK1N+ZwI
+ fgpK87fX65hwKbjp7JWnNecCfjp1qL+t9o2Z7oRDESiPdyMlJmrd3LVkxWI/H8tzwv9n
+ lbGJazCJMmvtqnpIMUAAJ97WZZRu6VguONIMAkNKE+PS+7m1pwlkUETE4vBBOk6XPM6P
+ G9Qw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=FFiO7XxWwZGGXJAEymjbBSjoxf0wGUoMDM7OzDOg5c4=;
- b=m5fFZKIdBY4zPWlkn1pXtI8nmt3EHpd+c8+/q14TqIBg8zwSaWUuWq+5Ud2i6GGu0K
- emvVgoYgFIm3Phn6dcI3bQyxVD8hdVLf1dGViwhE5qSDEHkD//z/B9wWROkNyCKWxrja
- kQNcmfnWE4KJZqyzA1YGVP2qjsFNpeKAodm/2Cb9q60Mdue6qM+JZ0RdIfIdSc3ZoAkm
- yTNr5HLmbRmMdmy3Zc3uwWhVcbprQE/lKJYpU+Fhxl0WvJ6hWBRH+4jFX1iLeDvy94n4
- RNVKK0yHNXG/F0w/VQi95+NO7+TjuOAtnIpJBVYfrAz/Muyd5mVD1xpn+4xKR2Qor8/z
- /GgA==
-X-Gm-Message-State: AOAM530FE4nrfuAaQZ6gqjIaDOxekufTo4OQeACakTD+4YkaoyB7v/PT
- 4QwINhkWi9n0sAiEFYbasMz2Og==
-X-Received: by 2002:a0c:a181:: with SMTP id e1mr2064426qva.9.1623877336995;
- Wed, 16 Jun 2021 14:02:16 -0700 (PDT)
+ bh=vZro5+yjY17WzQ5tbhViEDhmO1hPB8l3+OREO6y5ri0=;
+ b=AsEuzCd5RqY8fkb2Bs6Ml9zn4qdI+7Hxq3O/uHpcQPMwOQ+l+8HZFOpswi66GKiqY6
+ VaWK1bXyyU23O01equDHJ2Nt2RaEb+PHSO08vtNjQuEyvOd2c4XracQjbL6Yb4/DLe5G
+ la+wUvNhbmSzP8Lq9lMOCVbdOHXGcrppI/fb+tNgrUFWRrW6Cg3RUXZoFEuVXuh+kkvp
+ xdH1yzgokLU1KmezHOTUqr0kybh+PGEEx7muaZt8Y76DFHb9jddviChQsPRB4GYkmNUa
+ j3irPIpHUU2G4VCQLmMON067j09OUS6jlUTEFg4OSvTwZfAM6FHes1Iq9zV42TUEtRIy
+ tWiQ==
+X-Gm-Message-State: AOAM533lbjQnkMWAmJGGJbsAYRSYKHNtfZDAlvupYifhy97IMU0/hl30
+ 4ZkKA4uToMvZNfbetDNkw1I/Wg==
+X-Received: by 2002:a37:ac03:: with SMTP id e3mr285646qkm.367.1623877361327;
+ Wed, 16 Jun 2021 14:02:41 -0700 (PDT)
 Received: from localhost.localdomain
  (bras-base-stsvon1503w-grc-21-142-114-142-78.dsl.bell.ca. [142.114.142.78])
- by smtp.gmail.com with ESMTPSA id g5sm2026851qth.39.2021.06.16.14.02.16
+ by smtp.gmail.com with ESMTPSA id g2sm1979479qtb.63.2021.06.16.14.02.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 16 Jun 2021 14:02:16 -0700 (PDT)
-Message-ID: <a21b1f173d81fe55952c1795ca191c034991cf6d.camel@linaro.org>
-Subject: Re: [PATCH v4 2/8] hw/intc: GICv3 ITS register definitions added
+ Wed, 16 Jun 2021 14:02:41 -0700 (PDT)
+Message-ID: <2425778b1d615d72153233cb321cf56677ebba5a.camel@linaro.org>
+Subject: Re: [PATCH v4 4/8] hw/intc: GICv3 ITS Command processing
 From: shashi.mallela@linaro.org
 To: Eric Auger <eauger@redhat.com>, peter.maydell@linaro.org,
  leif@nuviainc.com,  rad@semihalf.com
-Date: Wed, 16 Jun 2021 17:02:15 -0400
-In-Reply-To: <0fd86cf3-b83d-6e82-2894-f7b8d76537aa@redhat.com>
+Date: Wed, 16 Jun 2021 17:02:40 -0400
+In-Reply-To: <bed8a5fa-2963-07c8-eefa-00f28a7401eb@redhat.com>
 References: <20210602180042.111347-1-shashi.mallela@linaro.org>
- <20210602180042.111347-3-shashi.mallela@linaro.org>
- <0fd86cf3-b83d-6e82-2894-f7b8d76537aa@redhat.com>
+ <20210602180042.111347-5-shashi.mallela@linaro.org>
+ <bed8a5fa-2963-07c8-eefa-00f28a7401eb@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 X-Mailer: Evolution 3.28.5 (3.28.5-16.el8) 
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f36;
- envelope-from=shashi.mallela@linaro.org; helo=mail-qv1-xf36.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::731;
+ envelope-from=shashi.mallela@linaro.org; helo=mail-qk1-x731.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -123,678 +123,570 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rCq2+EnYVE/e
+X-TUID: joExvjnGyS8X
 
 Hi Eric,
 
 Please find my responses inline (below):-
 
-On Sat, 2021-06-12 at 08:08 +0200, Eric Auger wrote:
+On Sun, 2021-06-13 at 17:55 +0200, Eric Auger wrote:
+> Hi Shashi,
 > 
 > On 6/2/21 8:00 PM, Shashi Mallela wrote:
-> > Defined descriptors for ITS device table,collection table and ITS
-> > command queue entities.Implemented register read/write functions,
-> > extract ITS table parameters and command queue parameters,extended
-> > gicv3 common to capture qemu address space(which host the ITS table
-> > platform memories required for subsequent ITS processing) and
-> > initialize the same in ITS device.
+> > Added ITS command queue handling for MAPTI,MAPI commands,handled
+> > ITS
+> > translation which triggers an LPI via INT command as well as write
+> > to GITS_TRANSLATER register,defined enum to differentiate between
+> > ITS
+> > command interrupt trigger and GITS_TRANSLATER based interrupt
+> > trigger.
+> > Each of these commands make use of other functionalities
+> > implemented to
+> > get device table entry,collection table entry or interrupt
+> > translation
+> > table entry required for their processing.
 > > 
 > > Signed-off-by: Shashi Mallela <shashi.mallela@linaro.org>
 > > ---
-> >  hw/intc/arm_gicv3_its.c                | 335
-> > +++++++++++++++++++++++++
-> >  hw/intc/gicv3_internal.h               |  28 ++-
-> >  include/hw/intc/arm_gicv3_common.h     |   3 +
-> >  include/hw/intc/arm_gicv3_its_common.h |  30 +++
-> >  4 files changed, 395 insertions(+), 1 deletion(-)
+> >  hw/intc/arm_gicv3_its.c            | 334
+> > +++++++++++++++++++++++++++++
+> >  hw/intc/gicv3_internal.h           |  12 ++
+> >  include/hw/intc/arm_gicv3_common.h |   2 +
+> >  3 files changed, 348 insertions(+)
 > > 
 > > diff --git a/hw/intc/arm_gicv3_its.c b/hw/intc/arm_gicv3_its.c
-> > index 545cda3665..af60f19c98 100644
+> > index 6551c577b3..82bb5b84ef 100644
 > > --- a/hw/intc/arm_gicv3_its.c
 > > +++ b/hw/intc/arm_gicv3_its.c
-> > @@ -28,6 +28,157 @@ struct GICv3ITSClass {
+> > @@ -28,6 +28,13 @@ struct GICv3ITSClass {
 > >      void (*parent_reset)(DeviceState *dev);
 > >  };
 > >  
-> > +static uint64_t baser_base_addr(uint64_t value, uint32_t page_sz)
+> > +typedef enum ItsCmdType {
+> > +    NONE = 0, /* internal indication for GITS_TRANSLATER write */
+> > +    CLEAR = 1,
+> > +    DISCARD = 2,
+> > +    INT = 3,
+> > +} ItsCmdType;
+> Add a comment to explain what this enum stand for. This sounds
+> misleading to me versus the command IDs. Why don't you use the cmd id
+> then and add NONE?
+This is an internal enum used to distinguish between interrupt
+triggered via command queue and interrupt triggered via gits_translater
+write.Will add the same comment in code.
+Since NONE is only 1 command applicable for GITS_TRANSLATER,started
+with it so that in the future if any further command queue commands
+have to be added we can just extend the numbering.
+> > +
+> >  static uint64_t baser_base_addr(uint64_t value, uint32_t page_sz)
+> >  {
+> >      uint64_t result = 0;
+> > @@ -49,6 +56,315 @@ static uint64_t baser_base_addr(uint64_t value,
+> > uint32_t page_sz)
+> >      return result;
+> >  }
+> >  
+> > +static bool get_cte(GICv3ITSState *s, uint16_t icid, uint64_t
+> > *cte,
+> > +                    MemTxResult *res)
 > > +{
-> > +    uint64_t result = 0;
-> > +
-> > +    switch (page_sz) {
-> > +    case GITS_ITT_PAGE_SIZE_0:
-> > +    case GITS_ITT_PAGE_SIZE_1:
-> > +        result = value & R_GITS_BASER_PHYADDR_MASK;
-> Use FIELD_EX64 as well for homogeneity?
-Done
-> > +        break;
-> > +
-> > +    case GITS_ITT_PAGE_SIZE_2:
-> > +        result = value & R_GITS_BASER_PHYADDRL_64K_MASK;
-> here as well?
-Done
-> > +        result |= FIELD_EX64(value, GITS_BASER, PHYADDRH_64K) <<
-> > 48;
-> > +        break;
-> > +
-> > +    default:
-> > +        break;
-> > +    }
-> > +    return result;
-> > +}
-> > +
-> > +static void extract_table_params(GICv3ITSState *s)
-> > +{
-> > +    uint16_t num_pages = 0;
-> > +    uint8_t  page_sz_type;
-> > +    uint8_t type;
-> > +    uint32_t page_sz = 0;
+> > +    AddressSpace *as = &s->gicv3->dma_as;
+> > +    uint64_t l2t_addr;
 > > +    uint64_t value;
+> > +    bool valid_l2t;
+> > +    uint32_t l2t_id;
+> > +    uint32_t max_l2_entries;
+> > +    bool status = false;
 > > +
-> > +    for (int i = 0; i < 8; i++) {
-> > +        value = s->baser[i];
+> > +    if (s->ct.indirect) {
+> > +        l2t_id = icid / (s->ct.page_sz / L1TABLE_ENTRY_SIZE);
 > > +
-> > +        if (!value) {
-> > +            continue;
-> > +        }
+> > +        value = address_space_ldq_le(as,
+> > +                                     s->ct.base_addr +
+> > +                                     (l2t_id *
+> > L1TABLE_ENTRY_SIZE),
+> > +                                     MEMTXATTRS_UNSPECIFIED, res);
 > > +
-> > +        page_sz_type = FIELD_EX64(value, GITS_BASER, PAGESIZE);
+> > +        if (*res == MEMTX_OK) {
+> > +            valid_l2t = (value >> VALID_SHIFT) & VALID_MASK;
 > > +
-> > +        switch (page_sz_type) {
-> > +        case 0:
-> > +            page_sz = GITS_ITT_PAGE_SIZE_0;
-> > +            break;
+> > +            if (valid_l2t) {
+> > +                max_l2_entries = s->ct.page_sz / s->ct.entry_sz;
 > > +
-> > +        case 1:
-> > +            page_sz = GITS_ITT_PAGE_SIZE_1;
-> > +            break;
+> > +                l2t_addr = value & ((1ULL << 51) - 1);
 > > +
-> > +        case 2:
-> > +        case 3:
-> > +            page_sz = GITS_ITT_PAGE_SIZE_2;
-> > +            break;
-> > +
-> > +        default:
-> > +            g_assert_not_reached();
-> > +        }
-> > +
-> > +        num_pages = FIELD_EX64(value, GITS_BASER, SIZE);
->  + 1 directly? and remove num_pages + 1 below.
-Done
-> > +
-> > +        type = FIELD_EX64(value, GITS_BASER, TYPE);
-> > +
-> > +        switch (type) {
-> > +
-> > +        case GITS_ITT_TYPE_DEVICE:
-> > +            memset(&s->dt, 0 , sizeof(s->dt));
-> > +            s->dt.valid = FIELD_EX64(value, GITS_BASER, VALID);
-> > +
-> > +            if (!s->dt.valid) {
-> > +                return;
-> > +            }
-> > +
-> > +            s->dt.page_sz = page_sz;
-> > +            s->dt.indirect = FIELD_EX64(value, GITS_BASER,
-> > INDIRECT);
-> > +            s->dt.entry_sz = FIELD_EX64(value, GITS_BASER,
-> > ENTRYSIZE);
-> > +
-> > +            if (!s->dt.indirect) {
-> > +                s->dt.max_entries = ((num_pages + 1) * page_sz) /
-> > +                                     s->dt.entry_sz;
-> > +            } else {
-> > +                s->dt.max_entries = ((((num_pages + 1) * page_sz)
-> > /
-> > +                                     L1TABLE_ENTRY_SIZE) *
-> > +                                     (page_sz / s->dt.entry_sz));
-> > +            }
-> > +
-> > +            s->dt.max_devids = (1UL << (FIELD_EX64(s->typer,
-> > GITS_TYPER,
-> > +                                DEVBITS) + 1));
-> > +
-> > +            s->dt.base_addr = baser_base_addr(value, page_sz);
-> > +
-> > +            break;
-> > +
-> > +        case GITS_ITT_TYPE_COLLECTION:
-> > +            memset(&s->ct, 0 , sizeof(s->ct));
-> > +            s->ct.valid = FIELD_EX64(value, GITS_BASER, VALID);
-> > +
-> > +            /*
-> > +             * GITS_TYPER.HCC is 0 for this implementation
-> > +             * hence writes are discarded if ct.valid is 0
-> > +             */
-> > +            if (!s->ct.valid) {
-> > +                return;
-> as this is an helper routine, I think it would be better to have this
-> check in the caller. Also you reset ct above.
-The idea here was to keep all the GITS_BASER fields parsing and
-extraction in one place in this function without the caller (like
-its_writel) having to know the GITS_BASER fields format and thereby
-split the logic between the caller and this function 
-> > +            }
-> > +
-> > +            s->ct.page_sz = page_sz;
-> > +            s->ct.indirect = FIELD_EX64(value, GITS_BASER,
-> > INDIRECT);
-> > +            s->ct.entry_sz = FIELD_EX64(value, GITS_BASER,
-> > ENTRYSIZE);
-> > +
-> > +            if (!s->ct.indirect) {
-> > +                s->ct.max_entries = ((num_pages + 1) * page_sz) /
-> > +                                     s->ct.entry_sz;
-> > +            } else {
-> > +                s->ct.max_entries = ((((num_pages + 1) * page_sz)
-> > /
-> > +                                     L1TABLE_ENTRY_SIZE) *
-> > +                                     (page_sz / s->ct.entry_sz));
-> > +            }
-> > +
-> > +            if (FIELD_EX64(s->typer, GITS_TYPER, CIL)) {
-> > +                s->ct.max_collids = (1UL << (FIELD_EX64(s->typer,
-> > +                                     GITS_TYPER, CIDBITS) + 1));
-> > +            } else {
-> > +                /* 16-bit CollectionId supported when CIL == 0 */
-> > +                s->ct.max_collids = (1UL << 16);
-> > +            }
-> > +
-> > +            s->ct.base_addr = baser_base_addr(value, page_sz);
-> > +
-> > +            break;
-> > +
-> > +        default:
-> > +            break;
-> > +        }
+> > +                *cte =  address_space_ldq_le(as, l2t_addr +
+> > +                                    ((icid % max_l2_entries) *
+> > GITS_CTE_SIZE),
+> > +                                    MEMTXATTRS_UNSPECIFIED, res);
+> > +           }
+> > +       }
+> > +    } else {
+> > +        /* Flat level table */
+> > +        *cte =  address_space_ldq_le(as, s->ct.base_addr +
+> > +                                     (icid * GITS_CTE_SIZE),
+> > +                                      MEMTXATTRS_UNSPECIFIED,
+> > res);
 > > +    }
+> > +
+> > +    if (*cte & VALID_MASK) {
+> > +        status = true;
+> > +    }
+> > +
+> > +    return status;
 > > +}
 > > +
-> > +static void extract_cmdq_params(GICv3ITSState *s)
+> > +static MemTxResult update_ite(GICv3ITSState *s, uint32_t eventid,
+> > uint64_t dte,
+> > +                              uint64_t itel, uint32_t iteh)
+> why not introducing an ite struct instead of the h/l args?based on
+> the same reason for packing individual fields within bit positions
+> instead of using more memory to store the same fields as struct
+> members.
+Will create an ite struct with existing itel & iteh as members and
+retain their bit fields processing to avoid extra params being passed.
 > > +{
-> > +    uint16_t num_pages = 0;
-> > +    uint64_t value = s->cbaser;
+> > +    AddressSpace *as = &s->gicv3->dma_as;
+> > +    uint64_t itt_addr;
+> > +    MemTxResult res = MEMTX_OK;
 > > +
-> > +    num_pages = FIELD_EX64(value, GITS_CBASER, SIZE);
-> + 1
+> > +    itt_addr = (dte >> 6ULL) & ITTADDR_MASK;
+> > +    itt_addr <<= ITTADDR_SHIFT; /* 256 byte aligned */
 > > +
-> > +    memset(&s->cq, 0 , sizeof(s->cq));
-> > +    s->cq.valid = FIELD_EX64(value, GITS_CBASER, VALID);
+> > +    address_space_stq_le(as, itt_addr + (eventid *
+> > sizeof(uint64_t)),
+> > +                         itel, MEMTXATTRS_UNSPECIFIED, &res);
 > > +
-> > +    if (s->cq.valid) {
-> > +        s->cq.max_entries = ((num_pages + 1) *
-> > GITS_ITT_PAGE_SIZE_0) /
-> nit: use of GITS_ITT_PAGE_SIZE_0 is misleading as ITT stands for
-> interrupt translation table and does not relate to CMDQ. Use 4K
-> define
-> instead.
-changed the names to GITS_PAGE_SIZE_4K/16K/64K
-> > +                             GITS_CMDQ_ENTRY_SIZE;
-> > +        s->cq.base_addr = FIELD_EX64(value, GITS_CBASER, PHYADDR);
-> > +        s->cq.base_addr <<= R_GITS_CBASER_PHYADDR_SHIFT;
+> > +    if (res == MEMTX_OK) {
+> > +        address_space_stl_le(as, itt_addr + ((eventid +
+> > sizeof(uint64_t)) *
+> > +                             sizeof(uint32_t)), iteh,
+> > MEMTXATTRS_UNSPECIFIED,
+> > +                             &res);
 > > +    }
+> > +   return res;
 > > +}
 > > +
-> >  static MemTxResult gicv3_its_translation_write(void *opaque,
-> > hwaddr offset,
+> > +static bool get_ite(GICv3ITSState *s, uint32_t eventid, uint64_t
+> > dte,
+> > +                    uint16_t *icid, uint32_t *pIntid, MemTxResult
+> > *res)
+> > +{
+> > +    AddressSpace *as = &s->gicv3->dma_as;
+> > +    uint64_t itt_addr;
+> > +    bool status = false;
+> > +    uint64_t itel = 0;
+> > +    uint32_t iteh = 0;
+> > +
+> > +    itt_addr = (dte >> 6ULL) & ITTADDR_MASK;
+> > +    itt_addr <<= ITTADDR_SHIFT; /* 256 byte aligned */
+> > +
+> > +    itel = address_space_ldq_le(as, itt_addr + (eventid *
+> > sizeof(uint64_t)),
+> > +                                MEMTXATTRS_UNSPECIFIED, res);
+> > +
+> > +    if (*res == MEMTX_OK) {
+> > +        iteh = address_space_ldl_le(as, itt_addr + ((eventid +
+> > +                                    sizeof(uint64_t)) *
+> > sizeof(uint32_t)),
+> > +                                    MEMTXATTRS_UNSPECIFIED, res);
+> > +
+> > +        if (*res == MEMTX_OK) {
+> > +            if (itel & VALID_MASK) {
+> > +                if ((itel >> ITE_ENTRY_INTTYPE_SHIFT) &
+> > GITS_TYPE_PHYSICAL) {
+> > +                    *pIntid = (itel >> ITE_ENTRY_INTID_SHIFT) &
+> > +                               ITE_ENTRY_INTID_MASK;
+> > +                    *icid = iteh & ITE_ENTRY_ICID_MASK;
+> > +                    status = true;
+> > +                }
+> > +            }
+> > +        }
+> > +    }
+> > +    return status;
+> > +}
+> > +
+> > +static uint64_t get_dte(GICv3ITSState *s, uint32_t devid,
+> > MemTxResult *res)
+> maybe the code would be more readable if you were returning a strcut
+> for
+> dte/cte instead of uint64_t. The decoding of the fields would be done
+> here instead?
+Both dte and cte are 8 bytes and hence chose a single uint64_t to
+efficiently utilize the applicable bit fields in the variable instead
+of a struct(either with bitfields to match the current field layouts
+within dte/cte/ite entries or use more memory variables within the
+struct to hold each individual dte/cte/ite fields)
+> > +{
+> > +    AddressSpace *as = &s->gicv3->dma_as;
+> > +    uint64_t l2t_addr;
+> > +    uint64_t value;
+> > +    bool valid_l2t;
+> > +    uint32_t l2t_id;
+> > +    uint32_t max_l2_entries;
+> > +
+> > +    if (s->dt.indirect) {
+> > +        l2t_id = devid / (s->dt.page_sz / L1TABLE_ENTRY_SIZE);
+> > +
+> > +        value = address_space_ldq_le(as,
+> > +                                     s->dt.base_addr +
+> > +                                     (l2t_id *
+> > L1TABLE_ENTRY_SIZE),
+> > +                                     MEMTXATTRS_UNSPECIFIED, res);
+> > +
+> > +        if (*res == MEMTX_OK) {
+> > +            valid_l2t = (value >> VALID_SHIFT) & VALID_MASK;
+> > +
+> > +            if (valid_l2t) {
+> > +                max_l2_entries = s->dt.page_sz / s->dt.entry_sz;
+> > +
+> > +                l2t_addr = value & ((1ULL << 51) - 1);
+> > +
+> > +                value =  address_space_ldq_le(as, l2t_addr +
+> > +                                   ((devid % max_l2_entries) *
+> > GITS_DTE_SIZE),
+> > +                                   MEMTXATTRS_UNSPECIFIED, res);
+> > +            }
+> > +        }
+> > +    } else {
+> > +        /* Flat level table */
+> > +        value = address_space_ldq_le(as, s->dt.base_addr +
+> > +                                     (devid * GITS_DTE_SIZE),
+> > +                                     MEMTXATTRS_UNSPECIFIED, res);
+> > +    }
+> > +
+> > +    return value;
+> > +}
+> I think a common helper could be defined for get_cte and get_dte.
+was just trying to keep the code modular for getting dte and cte
+instead of various if else's within a common helper 
+> > +
+> > +static MemTxResult process_int(GICv3ITSState *s, uint64_t value,
+> > +                               uint32_t offset, ItsCmdType cmd)
+> this is a bit misleanding as INT is a command. You should rename it I
+> think. Also it is not really homogeneous with other cmds, ie. you
+> have
+> process_mapti, process_mapd, process_mac and all the remaining cmds
+> are
+> handled though this one? At least add a doc comment to explain what
+> it does.
+the naming of this function is along the lines of other ITS commands
+i.e process_xxx format where xxx is the actual ITS command.
+There is no connection between handling of process_mapd,process_mapc
+with process_int.Each of them handle their respective command
+processing independently.
+> > +{
+> > +    AddressSpace *as = &s->gicv3->dma_as;
+> > +    uint32_t devid, eventid;
+> > +    MemTxResult res = MEMTX_OK;
+> > +    bool dte_valid;
+> > +    uint64_t dte = 0;
+> > +    uint32_t max_eventid;
+> > +    uint16_t icid = 0;
+> > +    uint32_t pIntid = 0;
+> > +    bool ite_valid = false;
+> > +    uint64_t cte = 0;
+> > +    bool cte_valid = false;
+> > +    uint64_t itel = 0;
+> > +    uint32_t iteh = 0;
+> > +
+> > +    if (cmd == NONE) {
+> > +        devid = offset;
+> > +    } else {
+> > +        devid = (value >> DEVID_SHIFT) & DEVID_MASK;
+> > +
+> > +        offset += NUM_BYTES_IN_DW;
+> > +        value = address_space_ldq_le(as, s->cq.base_addr + offset,
+> > +                                     MEMTXATTRS_UNSPECIFIED,
+> > &res);
+> > +    }
+> > +
+> > +    if (res != MEMTX_OK) {
+> > +        return res;
+> > +    }
+> > +
+> > +    eventid = (value & EVENTID_MASK);
+> > +
+> > +    dte = get_dte(s, devid, &res);
+> > +
+> > +    if (res != MEMTX_OK) {
+> > +        return res;
+> > +    }
+> > +    dte_valid = dte & VALID_MASK;
+> > +
+> > +    if (dte_valid) {
+> > +        max_eventid = (1UL << (((dte >> 1U) & SIZE_MASK) + 1));
+> THE DTE format is implementation defined, and the decoding is hard to
+> follow because it is documented somewhere else.
+The decoding of fields within each of dte,cte and ite has been
+explained as comments in gicv3_internal.h via
+GITS_DTE_SIZE,GITS_CTE_SIZE, ITS_ITT_ENTRY_SIZE defines
+> > +
+> > +        ite_valid = get_ite(s, eventid, dte, &icid, &pIntid,
+> > &res);
+> > +
+> > +        if (res != MEMTX_OK) {
+> > +            return res;
+> > +        }
+> > +
+> > +        if (ite_valid) {
+> > +            cte_valid = get_cte(s, icid, &cte, &res);
+> > +        }
+> > +
+> > +        if (res != MEMTX_OK) {
+> > +            return res;
+> > +        }
+> instead of having this process_int() helper, why not having a helper
+> doing just the decoding phase, ie.
+> get_dte -> get_ite -> get_cte and collect the relevant info and
+> collect
+> error and then keep the actual cmd processing in the switch?
+As explained previously chose to keep the code modular instead of a
+large monolothic structure with all the functionality in 1 place.
+process_cmdq handles the command queue (and their read/write offsets)
+while the individual ITS command handling is done by respective
+functions
+> > +    }
+> > +
+> > +    if ((devid > s->dt.max_devids) || !dte_valid || !ite_valid ||
+> > +            !cte_valid || (eventid > max_eventid)) {
+> > +        qemu_log_mask(LOG_GUEST_ERROR,
+> > +                      "%s: invalid interrupt translation table
+> > attributes "
+> > +                      "devid %d or eventid %d\n",
+> > +                      __func__, devid, eventid);
+> the msg does not necessarily match the error case. You mention ITT
+> issue
+> whereas the problem may come from invalid DTE, CTE, or even devid.
+will change it to consider the missing cases
+> > +        /*
+> > +         * in this implementation,in case of error
+> > +         * we ignore this command and move onto the next
+> > +         * command in the queue
+> > +         */
+> so you don't return an error?
+yes we dont,we just ignore this command and move onto next one in the
+queue
+> > +    } else {
+> > +        /*
+> > +         * Current implementation only supports rdbase == procnum
+> > +         * Hence rdbase physical address is ignored
+> > +         */
+> > +        if (cmd == DISCARD) {
+> > +            /* remove mapping from interrupt translation table */
+> > +            res = update_ite(s, eventid, dte, itel, iteh);
+> iteh and itel always are 0, why not use a struct ite with valid field
+> unset.
+based on the same reason for packing individual fields within bit
+positions instead of using more memory to store the same fields as
+struct members.
+I could however create an ite struct with existing itel & iteh as
+members and retain their bit fields processing. 
+> > +        }
+> > +    }
+> > +
+> > +    return res;
+> > +}
+> > +
+> > +static MemTxResult process_mapti(GICv3ITSState *s, uint64_t value,
+> > +                                 uint32_t offset, bool
+> > ignore_pInt)
+> > +{
+> > +    AddressSpace *as = &s->gicv3->dma_as;
+> > +    uint32_t devid, eventid;
+> > +    uint32_t pIntid = 0;
+> > +    uint32_t max_eventid, max_Intid;
+> > +    bool dte_valid;
+> > +    MemTxResult res = MEMTX_OK;
+> > +    uint16_t icid = 0;
+> > +    uint64_t dte = 0;
+> > +    uint64_t itel = 0;
+> > +    uint32_t iteh = 0;
+> > +    uint32_t int_spurious = INTID_SPURIOUS;
+> > +
+> > +    devid = (value >> DEVID_SHIFT) & DEVID_MASK;
+> > +    offset += NUM_BYTES_IN_DW;
+> > +    value = address_space_ldq_le(as, s->cq.base_addr + offset,
+> > +                                 MEMTXATTRS_UNSPECIFIED, &res);
+> > +
+> > +    if (res != MEMTX_OK) {
+> > +        return res;
+> > +    }
+> > +
+> > +    eventid = (value & EVENTID_MASK);
+> > +
+> > +    if (!ignore_pInt) {
+> > +        pIntid = (value >> pINTID_OFFSET) & pINTID_MASK;
+> > +    }
+> > +
+> > +    offset += NUM_BYTES_IN_DW;
+> > +    value = address_space_ldq_le(as, s->cq.base_addr + offset,
+> > +                                 MEMTXATTRS_UNSPECIFIED, &res);
+> > +
+> > +    if (res != MEMTX_OK) {
+> > +        return res;
+> > +    }
+> > +
+> > +    icid = value & ICID_MASK;
+> > +
+> > +    dte = get_dte(s, devid, &res);
+> > +
+> > +    if (res != MEMTX_OK) {
+> > +        return res;
+> > +    }
+> > +    dte_valid = dte & VALID_MASK;
+> > +
+> > +    max_eventid = (1UL << (((dte >> 1U) & SIZE_MASK) + 1));
+> Again I think you would gain in readibility if get_cte were to return
+> a
+> struct and you would avoid code duplication.
+Like mentioned earlier, preferred to use a single uint64_t for cte (and
+dte) instead of a struct (either with bitfields to match the current
+field layouts within dte/cte/ite entries or use more memory variables
+within the struct to hold each individual dte/cte/ite fields).The
+layout of all these functions follows the pseudocde format defined
+under each ITS command in the spec.
+> > +
+> > +    if (!ignore_pInt) {
+> > +        max_Intid = (1UL << (FIELD_EX64(s->typer, GITS_TYPER,
+> > IDBITS) + 1));
+> > +    }
+> > +
+> > +    if ((devid > s->dt.max_devids) || (icid > s->ct.max_collids)
+> > ||
+> > +            !dte_valid || (eventid > max_eventid) ||
+> > +            (!ignore_pInt && ((pIntid < GICV3_LPI_INTID_START) ||
+> > +               (pIntid > max_Intid)))) {
+> > +        qemu_log_mask(LOG_GUEST_ERROR,
+> > +                      "%s: invalid interrupt translation table
+> > attributes "
+> > +                      "devid %d or icid %d or eventid %d or pIntid
+> > %d\n",
+> > +                      __func__, devid, icid, eventid, pIntid);
+> > +        /*
+> > +         * in this implementation,in case of error
+> > +         * we ignore this command and move onto the next
+> > +         * command in the queue
+> > +         */
+> > +    } else {
+> > +        /* add ite entry to interrupt translation table */
+> > +        itel = (dte_valid & VALID_MASK) | (GITS_TYPE_PHYSICAL <<
+> > +                                           ITE_ENTRY_INTTYPE_SHIFT
+> > );
+> > +
+> > +        if (ignore_pInt) {
+> > +            itel |= (eventid << ITE_ENTRY_INTID_SHIFT);
+> > +        } else {
+> > +            itel |= (pIntid << ITE_ENTRY_INTID_SHIFT);
+> > +        }
+> > +        itel |= (int_spurious << ITE_ENTRY_INTSP_SHIFT);
+> > +        iteh |= icid;
+> > +
+> > +        res = update_ite(s, eventid, dte, itel, iteh);
+> > +    }
+> > +
+> > +    return res;
+> > +}
+> > +
+> >  static MemTxResult update_cte(GICv3ITSState *s, uint16_t icid,
+> > bool valid,
+> >                                uint64_t rdbase)
+> >  {
+> > @@ -295,8 +611,10 @@ static void process_cmdq(GICv3ITSState *s)
+> >  
+> >          switch (cmd) {
+> >          case GITS_CMD_INT:
+> > +            res = process_int(s, data, cq_offset, INT);
+> >              break;
+> >          case GITS_CMD_CLEAR:
+> > +            res = process_int(s, data, cq_offset, CLEAR);
+> >              break;
+> >          case GITS_CMD_SYNC:
+> >              /*
+> > @@ -313,10 +631,13 @@ static void process_cmdq(GICv3ITSState *s)
+> >              res = process_mapc(s, cq_offset);
+> >              break;
+> >          case GITS_CMD_MAPTI:
+> > +            res = process_mapti(s, data, cq_offset, false);
+> >              break;
+> >          case GITS_CMD_MAPI:
+> > +            res = process_mapti(s, data, cq_offset, true);
+> >              break;
+> >          case GITS_CMD_DISCARD:
+> > +            res = process_int(s, data, cq_offset, DISCARD);
+> >              break;
+> >          default:
+> >              break;
+> > @@ -472,7 +793,20 @@ static MemTxResult
+> > gicv3_its_translation_write(void *opaque, hwaddr offset,
 > >                                                 uint64_t data,
 > > unsigned size,
 > >                                                 MemTxAttrs attrs)
-> > @@ -41,7 +192,73 @@ static MemTxResult its_writel(GICv3ITSState *s,
-> > hwaddr offset,
-> >                                uint64_t value, MemTxAttrs attrs)
 > >  {
+> > +    GICv3ITSState *s = (GICv3ITSState *)opaque;
 > >      MemTxResult result = MEMTX_OK;
-> > +    int index;
-> >  
-> > +    switch (offset) {
-> > +    case GITS_CTLR:
-> > +        s->ctlr |= (value & ~(s->ctlr));
+> > +    uint32_t devid = 0;
 > > +
+> > +    switch (offset) {
+> > +    case GITS_TRANSLATER:
 > > +        if (s->ctlr & ITS_CTLR_ENABLED) {
-> > +            extract_table_params(s);
-> > +            extract_cmdq_params(s);
-> > +            s->creadr = 0;
-> The KVM code also checks the he CBASER and
-> device/collection BASER are valid
-> we do check CBASER and device/collection BASER are valid in this
-> implementation too (via extract_cmdq_params & extract_table_params)
-> To be further checked in subsequent patches:
-> - cache invalidation when turning off
-> - process commands if turned on?
-> - any cmd lock
-> 
-> > +        }
-> > +        break;
-> > +    case GITS_CBASER:
-> > +        /*
-> > +         * IMPDEF choice:- GITS_CBASER register becomes RO if ITS
-> > is
-> > +         *                 already enabled
-> > +         */
-> > +        if (!(s->ctlr & ITS_CTLR_ENABLED)) {
-> > +            s->cbaser = deposit64(s->cbaser, 0, 32, value);
-> > +            s->creadr = 0;
-> > +        }
-> > +        break;
-> > +    case GITS_CBASER + 4:
-> > +        /*
-> > +         * IMPDEF choice:- GITS_CBASER register becomes RO if ITS
-> > is
-> > +         *                 already enabled
-> > +         */
-> > +        if (!(s->ctlr & ITS_CTLR_ENABLED)) {
-> > +            s->cbaser = deposit64(s->cbaser, 32, 32, value);
-> you need to reset creadr here also
-Done
-> 
-> also CWRITER should be reset to CREADR.
-Done
-> KVM code comment:
-> /*
->  * CWRITER is architecturally UNKNOWN on reset, but we need to reset
->  * it to CREADR to make sure we start with an empty command buffer.
->  */
-> 
-> > +        }> +        break;
-> > +    case GITS_CWRITER:
-> > +        s->cwriter = deposit64(s->cwriter, 0, 32,
-> > +                               (value &
-> > ~R_GITS_CWRITER_RETRY_MASK));
-> how do you implement the overflow case?
-> "If GITS_CWRITER is written with a value outside of the valid range
-> specified by
-> GITS_CBASER.Physical_Address and GITS_CBASER.Size, behavior is a
-> CONSTRAINED UNPREDICTABLE choice"
-> for info the KVM code does not write the actual reg
-we write the reg and log a guest error
-> further check: process command?
-> 
-> > +        break;
-> > +    case GITS_CWRITER + 4:
-> > +        s->cwriter = deposit64(s->cwriter, 32, 32,
-> > +                               (value &
-> > ~R_GITS_CWRITER_RETRY_MASK));
-> > +        break;
-> > +    case GITS_BASER ... GITS_BASER + 0x3f:
-> > +        /*
-> > +         * IMPDEF choice:- GITS_BASERn register becomes RO if ITS
-> > is
-> > +         *                 already enabled
-> > +         */
-> > +        if (!(s->ctlr & ITS_CTLR_ENABLED)) {
-> > +            index = (offset - GITS_BASER) / 8;
-> > +
-> > +            if (offset & 7) {
-> > +                s->baser[index] = deposit64(s->baser[index], 32,
-> > 32,
-> > +                                            (value &
-> > ~GITS_BASER_VAL_MASK));
-> > +            } else {
-> > +                s->baser[index] = deposit64(s->baser[index], 0,
-> > 32,
-> > +                                            (value &
-> > ~GITS_BASER_VAL_MASK));
-> > +            }
-> > +        }
-> > +        break;
-> > +    case GITS_IIDR:
-> > +    case GITS_IDREGS ... GITS_IDREGS + 0x2f:
-> > +        /* RO registers, ignore the write */
-> > +        qemu_log_mask(LOG_GUEST_ERROR,
-> > +                      "%s: invalid guest write to RO register at
-> > offset "
-> > +                      TARGET_FMT_plx "\n", __func__, offset);
-> > +        break;
-> > +    default:
-> > +        result = MEMTX_ERROR;
-> > +        break;
-> > +    }
-> >      return result;
-> >  }
-> >  
-> > @@ -49,7 +266,55 @@ static MemTxResult its_readl(GICv3ITSState *s,
-> > hwaddr offset,
-> >                               uint64_t *data, MemTxAttrs attrs)
-> >  {
-> >      MemTxResult result = MEMTX_OK;
-> > +    int index;
-> >  
-> > +    switch (offset) {
-> > +    case GITS_CTLR:
-> > +        *data = s->ctlr;
-> > +        break;
-> > +    case GITS_IIDR:
-> > +        *data = gicv3_iidr();
-> > +        break;
-> > +    case GITS_IDREGS ... GITS_IDREGS + 0x2f:
-> > +        /* ID registers */
-> > +        *data = gicv3_idreg(offset - GITS_IDREGS);
-> I am not sure those are the same as the gicv3
-Yes they are, and consistent with the distributor,redistributor gicv3
-idregs implementation too in qemu (as indicated in previous patch
-review comments)
-> on KVM we have
->         case GITS_PIDR0:
->                 return 0x92;    /* part number, bits[7:0] */
->         case GITS_PIDR1:
->                 return 0xb4;    /* part number, bits[11:8] */
->         case GITS_PIDR2:
->                 return GIC_PIDR2_ARCH_GICv3 | 0x0b;
->         case GITS_PIDR4:
->                 return 0x40;    /* This is a 64K software visible
-> page */
->         /* The following are the ID registers for (any) GIC. */
->         case GITS_CIDR0:
->                 return 0x0d;
->         case GITS_CIDR1:
->                 return 0xf0;
->         case GITS_CIDR2:
->                 return 0x05;
->         case GITS_CIDR3:
->                 return 0xb1;
-> 
-> 
-> > +        break;
-> > +    case GITS_TYPER:
-> > +        *data = extract64(s->typer, 0, 32);
-> > +        break;
-> > +    case GITS_TYPER + 4:
-> > +        *data = extract64(s->typer, 32, 32);
-> > +        break;
-> > +    case GITS_CBASER:
-> > +        *data = extract64(s->cbaser, 0, 32);
-> > +        break;
-> > +    case GITS_CBASER + 4:
-> > +        *data = extract64(s->cbaser, 32, 32);
-> > +        break;
-> > +    case GITS_CREADR:
-> > +        *data = extract64(s->creadr, 0, 32);
-> > +        break;
-> > +    case GITS_CREADR + 4:
-> > +        *data = extract64(s->creadr, 32, 32);
-> > +        break;
-> > +    case GITS_CWRITER:
-> > +        *data = extract64(s->cwriter, 0, 32);
-> > +        break;
-> > +    case GITS_CWRITER + 4:
-> > +        *data = extract64(s->cwriter, 32, 32);
-> > +        break;
-> > +    case GITS_BASER ... GITS_BASER + 0x3f:
-> > +        index = (offset - GITS_BASER) / 8;
-> > +        if (offset & 7) {
-> > +            *data = extract64(s->baser[index], 32, 32);
-> > +        } else {
-> > +            *data = extract64(s->baser[index], 0, 32);
+> > +            devid = attrs.requester_id;
+> > +            result = process_int(s, data, devid, NONE);
 > > +        }
 > > +        break;
 > > +    default:
-> > +        result = MEMTX_ERROR;
 > > +        break;
 > > +    }
+> >  
 > >      return result;
 > >  }
-> >  
-> > @@ -57,7 +322,42 @@ static MemTxResult its_writell(GICv3ITSState
-> > *s, hwaddr offset,
-> >                                 uint64_t value, MemTxAttrs attrs)
-> >  {
-> >      MemTxResult result = MEMTX_OK;
-> > +    int index;
-> >  
-> > +    switch (offset) {
-> > +    case GITS_BASER ... GITS_BASER + 0x3f:
-> > +        /*
-> > +         * IMPDEF choice:- GITS_BASERn register becomes RO if ITS
-> > is
-> > +         *                 already enabled
-> > +         */
-> > +        if (!(s->ctlr & ITS_CTLR_ENABLED)) {
-> > +            index = (offset - GITS_BASER) / 8;
-> > +            s->baser[index] |= (value & ~GITS_BASER_VAL_MASK);
-> > +        }
-> > +        break;
-> > +    case GITS_CBASER:
-> > +        /*
-> > +         * IMPDEF choice:- GITS_CBASER register becomes RO if ITS
-> > is
-> > +         *                 already enabled
-> > +         */
-> > +        if (!(s->ctlr & ITS_CTLR_ENABLED)) {
-> > +            s->cbaser = value;
-> s->creadr = 0;
-> cwriter = creader?
-Done
-> > +        }
-> > +        break;
-> > +    case GITS_CWRITER:
-> > +        s->cwriter = value & ~R_GITS_CWRITER_RETRY_MASK;
-> > +        break;
-> > +    case GITS_CREADR:
-> RO if GICD_CTLR.DS = 0
-> On KVM side the write access is implemented
-Done
-> > +    case GITS_TYPER:
-> > +        /* RO registers, ignore the write */
-> > +        qemu_log_mask(LOG_GUEST_ERROR,
-> > +                      "%s: invalid guest write to RO register at
-> > offset "
-> > +                      TARGET_FMT_plx "\n", __func__, offset);
-> > +        break;
-> > +    default:
-> > +        result = MEMTX_ERROR;
-> > +        break;
-> > +    }
-> >      return result;
-> >  }
-> >  
-> > @@ -65,7 +365,29 @@ static MemTxResult its_readll(GICv3ITSState *s,
-> > hwaddr offset,
-> >                                uint64_t *data, MemTxAttrs attrs)
-> >  {
-> >      MemTxResult result = MEMTX_OK;
-> > +    int index;
-> >  
-> > +    switch (offset) {
-> > +    case GITS_TYPER:
-> > +        *data = s->typer;
-> > +        break;
-> > +    case GITS_BASER ... GITS_BASER + 0x3f:
-> > +        index = (offset - GITS_BASER) / 8;
-> > +        *data = s->baser[index];
-> > +        break;
-> > +    case GITS_CBASER:
-> > +        *data = s->cbaser;
-> > +        break;
-> > +    case GITS_CREADR:
-> > +        *data = s->creadr;
-> > +        break;
-> > +    case GITS_CWRITER:
-> > +        *data = s->cwriter;
-> > +        break;
-> > +    default:
-> > +        result = MEMTX_ERROR;
-> > +        break;
-> > +    }
-> >      return result;
-> >  }
-> >  
-> > @@ -162,6 +484,9 @@ static void gicv3_arm_its_realize(DeviceState
-> > *dev, Error **errp)
-> >      gicv3_its_init_mmio(s, &gicv3_its_control_ops,
-> > &gicv3_its_translation_ops);
-> >  
-> >      if (s->gicv3->cpu->gicr_typer & GICR_TYPER_PLPIS) {
-> > +        address_space_init(&s->gicv3->dma_as, s->gicv3->dma,
-> > +                           "gicv3-its-sysmem");
-> > +
-> >          /* set the ITS default features supported */
-> >          s->typer = FIELD_DP64(s->typer, GITS_TYPER, PHYSICAL,
-> >                                GITS_TYPE_PHYSICAL);
-> > @@ -208,6 +533,14 @@ static void gicv3_its_reset(DeviceState *dev)
-> >      }
-> >  }
-> >  
-> > +static void gicv3_its_post_load(GICv3ITSState *s)
-> > +{
-> > +    if (s->ctlr & ITS_CTLR_ENABLED) {
-> > +        extract_table_params(s);
-> > +        extract_cmdq_params(s);
-> > +    }
-> > +}
-> > +
-> >  static Property gicv3_its_props[] = {
-> >      DEFINE_PROP_LINK("parent-gicv3", GICv3ITSState, gicv3, "arm-
-> > gicv3",
-> >                       GICv3State *),
-> > @@ -218,10 +551,12 @@ static void gicv3_its_class_init(ObjectClass
-> > *klass, void *data)
-> >  {
-> >      DeviceClass *dc = DEVICE_CLASS(klass);
-> >      GICv3ITSClass *ic = ARM_GICV3_ITS_CLASS(klass);
-> > +    GICv3ITSCommonClass *icc = ARM_GICV3_ITS_COMMON_CLASS(klass);
-> >  
-> >      dc->realize = gicv3_arm_its_realize;
-> >      device_class_set_props(dc, gicv3_its_props);
-> >      device_class_set_parent_reset(dc, gicv3_its_reset, &ic-
-> > >parent_reset);
-> > +    icc->post_load = gicv3_its_post_load;
-> >  }
-> >  
-> >  static const TypeInfo gicv3_its_info = {
 > > diff --git a/hw/intc/gicv3_internal.h b/hw/intc/gicv3_internal.h
-> > index e0b06930a7..d6aaa94e4c 100644
+> > index 0932a30560..ce45cd0ef6 100644
 > > --- a/hw/intc/gicv3_internal.h
 > > +++ b/hw/intc/gicv3_internal.h
-> > @@ -238,7 +238,7 @@ FIELD(GITS_BASER, PAGESIZE, 8, 2)
-> >  FIELD(GITS_BASER, SHAREABILITY, 10, 2)
-> >  FIELD(GITS_BASER, PHYADDR, 12, 36)
-> >  FIELD(GITS_BASER, PHYADDRL_64K, 16, 32)
-> > -FIELD(GITS_BASER, PHYADDRH_64K, 48, 4)
-> > +FIELD(GITS_BASER, PHYADDRH_64K, 12, 4)
-> >  FIELD(GITS_BASER, ENTRYSIZE, 48, 5)
-> >  FIELD(GITS_BASER, OUTERCACHE, 53, 3)
-> >  FIELD(GITS_BASER, TYPE, 56, 3)
-> > @@ -246,6 +246,17 @@ FIELD(GITS_BASER, INNERCACHE, 59, 3)
-> >  FIELD(GITS_BASER, INDIRECT, 62, 1)
-> >  FIELD(GITS_BASER, VALID, 63, 1)
+> > @@ -324,6 +324,13 @@ FIELD(MAPC, RDBASE, 16, 32)
+> >  #define ITTADDR_MASK              ((1ULL << ITTADDR_LENGTH) - 1)
+> >  #define SIZE_MASK                 0x1f
 > >  
-> > +FIELD(GITS_CBASER, SIZE, 0, 8)
-> > +FIELD(GITS_CBASER, SHAREABILITY, 10, 2)
-> > +FIELD(GITS_CBASER, PHYADDR, 12, 40)
-> > +FIELD(GITS_CBASER, OUTERCACHE, 53, 3)
-> > +FIELD(GITS_CBASER, INNERCACHE, 59, 3)
-> > +FIELD(GITS_CBASER, VALID, 63, 1)
+> > +/* MAPI command fields */
+> > +#define EVENTID_MASK              ((1ULL << 32) - 1)
 > > +
-> > +FIELD(GITS_CWRITER, RETRY, 0, 1)
-> > +FIELD(GITS_CWRITER, OFFSET, 5, 15)
+> > +/* MAPTI command fields */
+> > +#define pINTID_OFFSET              32
+> > +#define pINTID_MASK               ((1ULL << 32) - 1)
 > > +
-> > +FIELD(GITS_CTLR, ENABLED, 0, 1)
-> >  FIELD(GITS_CTLR, QUIESCENT, 31, 1)
+> >  #define VALID_SHIFT               63
+> >  #define VALID_MASK                1ULL
 > >  
-> >  FIELD(GITS_TYPER, PHYSICAL, 0, 1)
-> > @@ -257,6 +268,13 @@ FIELD(GITS_TYPER, PTA, 19, 1)
-> >  FIELD(GITS_TYPER, CIDBITS, 32, 4)
-> >  FIELD(GITS_TYPER, CIL, 36, 1)
-> >  
-> > +#define GITS_IDREGS           0xFFD0
-> > +
-> > +#define ITS_CTLR_ENABLED               (1U)  /* ITS Enabled */
-> > +
-> > +#define
-> > GITS_BASER_VAL_MASK                  (R_GITS_BASER_ENTRYSIZE_MASK |
-> > \
-> > +                                              R_GITS_BASER_TYPE_MA
-> > SK)
-> > +
-> >  #define GITS_BASER_PAGESIZE_4K                0
-> >  #define GITS_BASER_PAGESIZE_16K               1
-> >  #define GITS_BASER_PAGESIZE_64K               2
-> > @@ -264,6 +282,14 @@ FIELD(GITS_TYPER, CIL, 36, 1)
-> >  #define GITS_ITT_TYPE_DEVICE                  1ULL
-> >  #define GITS_ITT_TYPE_COLLECTION              4ULL
-> >  
-> > +#define GITS_ITT_PAGE_SIZE_0      0x1000
-> > +#define GITS_ITT_PAGE_SIZE_1      0x4000
-> > +#define GITS_ITT_PAGE_SIZE_2      0x10000
-> Why not naming _4K 16K 64K instead of _0, 1, 2?
-Done,as indicated above
-> > +
-> > +#define L1TABLE_ENTRY_SIZE         8
-> > +
-> > +#define GITS_CMDQ_ENTRY_SIZE               32
-> > +
-> >  /**
-> >   * Default features advertised by this version of ITS
+> > @@ -344,6 +351,11 @@ FIELD(MAPC, RDBASE, 16, 32)
+> >   * vPEID = 16 bits
 > >   */
+> >  #define ITS_ITT_ENTRY_SIZE            0xC
+> > +#define ITE_ENTRY_INTTYPE_SHIFT        1
+> > +#define ITE_ENTRY_INTID_SHIFT          2
+> > +#define ITE_ENTRY_INTID_MASK         ((1ULL << 24) - 1)
+> > +#define ITE_ENTRY_INTSP_SHIFT          26
+> > +#define ITE_ENTRY_ICID_MASK          ((1ULL << 16) - 1)
+> >  
+> >  /* 16 bits EventId */
+> >  #define ITS_IDBITS                   GICD_TYPER_IDBITS
 > > diff --git a/include/hw/intc/arm_gicv3_common.h
 > > b/include/hw/intc/arm_gicv3_common.h
-> > index 91491a2f66..1fd5cedbbd 100644
+> > index 1fd5cedbbd..0715b0bc2a 100644
 > > --- a/include/hw/intc/arm_gicv3_common.h
 > > +++ b/include/hw/intc/arm_gicv3_common.h
-> > @@ -226,6 +226,9 @@ struct GICv3State {
-> >      int dev_fd; /* kvm device fd if backed by kvm vgic support */
-> >      Error *migration_blocker;
+> > @@ -36,6 +36,8 @@
+> >  #define GICV3_MAXIRQ 1020
+> >  #define GICV3_MAXSPI (GICV3_MAXIRQ - GIC_INTERNAL)
 > >  
-> > +    MemoryRegion *dma;
-> > +    AddressSpace dma_as;
+> > +#define GICV3_LPI_INTID_START 8192
 > > +
-> >      /* Distributor */
+> >  #define GICV3_REDIST_SIZE 0x20000
 > >  
-> >      /* for a GIC with the security extensions the NS banked
-> > version of this
-> > diff --git a/include/hw/intc/arm_gicv3_its_common.h
-> > b/include/hw/intc/arm_gicv3_its_common.h
-> > index 65d1191db1..78b1ba7e6b 100644
-> > --- a/include/hw/intc/arm_gicv3_its_common.h
-> > +++ b/include/hw/intc/arm_gicv3_its_common.h
-> > @@ -41,6 +41,32 @@
-> >  
-> >  #define GITS_TRANSLATER  0x0040
-> >  
-> > +typedef struct {
-> > +    bool valid;
-> > +    bool indirect;
-> > +    uint16_t entry_sz;
-> > +    uint32_t page_sz;
-> > +    uint32_t max_entries;
-> > +    uint32_t max_devids;
-> > +    uint64_t base_addr;
-> > +} DevTableDesc;
-> > +
-> > +typedef struct {
-> > +    bool valid;
-> > +    bool indirect;
-> > +    uint16_t entry_sz;
-> > +    uint32_t page_sz;
-> > +    uint32_t max_entries;
-> > +    uint32_t max_collids;
-> > +    uint64_t base_addr;
-> > +} CollTableDesc;
-> > +
-> > +typedef struct {
-> > +    bool valid;
-> > +    uint32_t max_entries;
-> > +    uint64_t base_addr;
-> > +} CmdQDesc;> +
-> >  struct GICv3ITSState {
-> >      SysBusDevice parent_obj;
-> >  
-> > @@ -63,6 +89,10 @@ struct GICv3ITSState {
-> >      uint64_t creadr;
-> >      uint64_t baser[8];
-> >  
-> > +    DevTableDesc  dt;
-> > +    CollTableDesc ct;
-> > +    CmdQDesc      cq;
-> > +
-> >      Error *migration_blocker;
-> >  };
+> >  /* Number of SGI target-list bits */
+> > 
 > Thanks
 > 
 > Eric
-> >  
-> > 
-
-
-
+> 
 

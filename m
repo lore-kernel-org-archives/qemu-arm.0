@@ -1,100 +1,101 @@
-Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp736792lff;
-        Wed, 16 Jun 2021 14:49:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzyxd/IynXckcanmH5qxqPVBCrfHztf3ds4Q3IobwRsK7es6OYz7gi/YpzuuHvdwtT/AUWu
-X-Received: by 2002:a67:2f83:: with SMTP id v125mr1748572vsv.8.1623880168067;
-        Wed, 16 Jun 2021 14:49:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623880168; cv=none;
+Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp737619lff;
+        Wed, 16 Jun 2021 14:50:44 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwxpyHP3DbrMCtVxl5AR9sHE82m0C8dQiHBDtIb2YRf1rfG1Q8WlLcQ5nbq9enL1idWIN4s
+X-Received: by 2002:a05:6102:2330:: with SMTP id b16mr1774576vsa.2.1623880244319;
+        Wed, 16 Jun 2021 14:50:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623880244; cv=none;
         d=google.com; s=arc-20160816;
-        b=IPRxMPgReCFrICjqr3VgAoZJgn/61TMuSFmRsGO4H1lDCnzADvZ/kEieYCvIu1/7QT
-         y9iCrEzXjUNp38M+jXXjC6eXc/4k7a/ifvBIRnqgFg2LDYavHTZaLWkwNx7WFUBegKeV
-         m5GN5gr8wzLQ1qI/oOMh7DUmn7g5P7PGEz2DberfP7ZWymAhaz0dO7cjHN9Y8ZkI1vu0
-         UToFc4lmxr4Q1uTyzsGQ7Fqyp4tLXxpm4wy06hXD9juiVH7yovts285rhF6lyHXzpeJZ
-         iIcPdt/fLELNaf9ejehQb3BFYm8beBTx8OWcDHnSvxI7frH9HyzkvafU3tQUhexUB1Vn
-         P3Fw==
+        b=KOqFdgZFyErQCi1CM4TUHKtZIC2e61+seMAwPyW1OA3aboyOXvnMPHoLnMtpK+odwb
+         WElGSxCDQ0WfwTmM13l/7qdagFVeTyYdzgEDUGhVMPPNrs7jUDp0QOQdCeCCJLk1X8kj
+         cWEcHyqXIvkhBCR57ceffwdNb3bZDsO8TWrLSmq0A/qQ/7RYn8oY8AwxXlL5FMidTDbY
+         0qoMntw384VfBggUGi653GT3HzT8F5s14PU0vV2go2PHTrelpfOtjLQfiV9jopNO9ysC
+         AH+rauZAGXBVDmQFjTRoh4II2XzuXMmgV9zVT2cZ60/qOu5dN6oiBDMGIYDpGLsOVPq/
+         enlg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=Xaw3RJNkpGriYz8vt+BCpgugibw18q+MPp6XakrxTs4=;
-        b=EOp97uP/yAjdlLpwlTggD/gjNOBmMj6yLb37z/ZQKLy6PQ7CSdlAP7v55MS2o7iKxD
-         ccEl0DEHhgB5kbMtwnDGHOFKqSTSmSbpRKCnPy1s4FnzXNOuWRom38k7iyDya5Jh/hEK
-         fhKUYX6VZlZt/KsUXoPpNnnKGmliEJMjFlLY9Zc2k5wZs4UQgL2fcr31z2pNdcwYipuh
-         gbeY8Xtnmd4NSnL8jRK+1j1hsOU3VqZ/XTVoARum3kcXaAV9nhBCYf/X0LuK/hKSY+Fr
-         YN4mrKe1v76OBgnO3lpbVJZXVExFGIG380wQpIOO+0IZKTDS15n/nLFtoitkwYM+gw0q
-         OC6Q==
+        bh=eoP4CL94JaZlg7eqmYc7iZiTJ8FoF/Caiy1Z28ZBDWs=;
+        b=wfWEC99c3PSDZMVOLVjQCH0maVGKhXPNZT/KZeUdYvkXFBdIdOZ//qb/z/BhP/jKeP
+         76HpTlJCAijPUgrZeCw6M8HjCGF4l6YgmBLPfHGUbjvSG9QeSJMm6ZabmpK5jckisIiX
+         tdubnZbQCLtic57hLfCSJaWhgijK4nkkkDOTnTtGsm3l54MZ4zux0Y0RAzOiu4ZYWIou
+         9A8m8Dto/UVRx5i6SVoDJvp5ECFxSQKJSPaA/LjR4Jy9bbW46soIbNfpqLYD7nxTZJ+T
+         Y7EM7BP3krS9dil8FdjqU8J9yblzdgSfTb0u9fIxH22YwsW/u3jVeLBYLjNAJ+3BEca+
+         KUpA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=b1kEKiK4;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qV7V8ajq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j9si2647477vkl.72.2021.06.16.14.49.27
+        by mx.google.com with ESMTPS id r10si2583596vsl.112.2021.06.16.14.50.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 16 Jun 2021 14:49:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 16 Jun 2021 14:50:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=b1kEKiK4;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qV7V8ajq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:55422 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60984 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ltdPb-0004ax-88
-	for alex.bennee@linaro.org; Wed, 16 Jun 2021 17:49:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49188)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ltdQp-0008IT-GE
+	for alex.bennee@linaro.org; Wed, 16 Jun 2021 17:50:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49202)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1ltdKK-0002Eg-Co; Wed, 16 Jun 2021 17:44:00 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:44969)
+ id 1ltdKQ-0002ZN-Cn; Wed, 16 Jun 2021 17:44:06 -0400
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:43648)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1ltdKI-0006jL-Ng; Wed, 16 Jun 2021 17:44:00 -0400
-Received: by mail-wr1-x431.google.com with SMTP id f2so4230946wri.11;
- Wed, 16 Jun 2021 14:43:57 -0700 (PDT)
+ id 1ltdKO-0006nG-MP; Wed, 16 Jun 2021 17:44:06 -0400
+Received: by mail-wr1-x42f.google.com with SMTP id r9so4241276wrz.10;
+ Wed, 16 Jun 2021 14:44:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=Xaw3RJNkpGriYz8vt+BCpgugibw18q+MPp6XakrxTs4=;
- b=b1kEKiK4zGbDqxWxgK1H0qAR4HxX9/cswfC4wJTbHEyLL62akF47X2U/cCX/ic5RFG
- s4ooq6qdq28WM0hqoN0iVjfyNAb3SPuj5zPEESzHuH1dIL7Dw0uk03o9qT7/i4jREwNG
- SSCQJ1H7j1HVqrnY1sywr5NlkJMbL3Yu+YX2C41eOv21xNPDDHZKgJidKdTRy4UKXDSQ
- qoMEmibVGloS0wQz29w6c/KnnAN0Pwolp5SIKUa5ZM3JJpy0COZaY24jmTv44JV8psRl
- Eo9k6qaLmCdI0oxRIp5n9z9E8Kh2YcBIH65nDsDIKaphOxxAZlPX/K7bYEOYUdgsaK1e
- NhSw==
+ bh=eoP4CL94JaZlg7eqmYc7iZiTJ8FoF/Caiy1Z28ZBDWs=;
+ b=qV7V8ajq5SO9Dkmn7fJaakBUZiAJ7MexVY4MKZtdyXMF53pDkpRGEFZ9moMRN4GXXT
+ L7GUmh/CnoP5N18MipnoYVe3MYotZMhcfDzoeWmgWDLHHiy5h3Q/muwK3LoJIXkUoIBX
+ 2BSRyDDlzGQKmcoj7HCemZYsKnEuYsjscw1XA7nRDIU6dv00cuk0TDofVEb74bYOkGGO
+ cqVpDK8I4/5RjkQCxNDXGNPFoRJBkeaw36mYVNMLsSGISyRBYMRt0DW7DWQoKqPiDazn
+ dbOaUzG5nF+y8AL025uYmo+toNdI6bYWofAMxb/pnyjn3dxLECO1Kq49iQ0R6OTBlt3f
+ 6kyg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=Xaw3RJNkpGriYz8vt+BCpgugibw18q+MPp6XakrxTs4=;
- b=SNve24Y69K8Ccpd5TXaTvKYrWVgXxMLyUqGf43SLKef2JNNDyXvKAvlZPs/+N/D55h
- MGOsURqWN+0mt3YUycSQORai4PvGXzi26FfWMdfoH1gdjRmoHtphHvvyrWROcM0/M7Bq
- Pn6fD3IN6Vij5bmfJTFJYexWgMBo120iYn8k3SO16TPrs8xkcozYweHGq3ieT/rV9Puj
- skT30wKf4BdOvgrZ6OAEckX7nSoJqoOzwKtMH8gbBpxnBpaJRE/YsG6TlOYnM1AyWMoc
- KhNABb0cj+OjhnIdHZO7KNOQzD/iuIwwaPkXDRAwi3qhkpeJ4oDf62y3xq6KQYy+MCOr
- nK/g==
-X-Gm-Message-State: AOAM530xI1EbMldO1cFB0y4YpU3Smhk4IwcHuyj1icJPGAisAJppsvw5
- g9nNeMl8G/TWq5v7Z8+xkLK5/rg+sqwMNg==
-X-Received: by 2002:a5d:5986:: with SMTP id n6mr1460631wri.60.1623879836653;
- Wed, 16 Jun 2021 14:43:56 -0700 (PDT)
+ bh=eoP4CL94JaZlg7eqmYc7iZiTJ8FoF/Caiy1Z28ZBDWs=;
+ b=m/9CxIXKiAA0tOcvht0OPLl3uVgkd9D9T3UANqZxf7/ttzQNAODzePfHDX8FcLClr7
+ n7EjdMvGmMJYu3bRpfgrRGvf48Tcqk0lXU4JgxF6XYmJT3lgIzYznLaS9CpyTIwZuxEh
+ gC9KpRgxgQi9YwjFFO/KHJWJiDsJbTMkJ4nF/+2gfAmf10tO03pEgrigbmHuRdpUn0jB
+ 40qosvD05lZ+/6BKSSWy4LtCOkBvmRb/LAnjNcORBfY6qFsDr8zVQKYcBSM6cD5cBL8L
+ 8OpZsUZED5kIDlXKINT5YQta/nlogo6zAW0e+vgRDXM7PaH3fmtggDD3wtOfEraI7vtb
+ QnjA==
+X-Gm-Message-State: AOAM531LV6cHaYYtbQ4AeylSpqzAoHGUtIZJFJpVvMXocNQa9Dqpr+L3
+ ZyL3GraXrxCz6STDwzcxhful5xTLY7sV5g==
+X-Received: by 2002:adf:fa08:: with SMTP id m8mr1360256wrr.319.1623879842361; 
+ Wed, 16 Jun 2021 14:44:02 -0700 (PDT)
 Received: from x1w.. (93.red-83-35-24.dynamicip.rima-tde.net. [83.35.24.93])
- by smtp.gmail.com with ESMTPSA id f12sm3947441wru.81.2021.06.16.14.43.55
+ by smtp.gmail.com with ESMTPSA id z6sm503498wrl.15.2021.06.16.14.44.01
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 16 Jun 2021 14:43:56 -0700 (PDT)
+ Wed, 16 Jun 2021 14:44:01 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v4 11/15] hw/i2c: Remove confusing i2c_send_recv()
-Date: Wed, 16 Jun 2021 23:42:50 +0200
-Message-Id: <20210616214254.2647796-12-f4bug@amsat.org>
+Subject: [PATCH v4 12/15] hw/i2c: Rename i2c_set_slave_address() ->
+ i2c_slave_set_address()
+Date: Wed, 16 Jun 2021 23:42:51 +0200
+Message-Id: <20210616214254.2647796-13-f4bug@amsat.org>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210616214254.2647796-1-f4bug@amsat.org>
 References: <20210616214254.2647796-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x431.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42f.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -104,125 +105,170 @@ X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Corey Minyard <cminyard@mvista.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ BALATON Zoltan <balaton@eik.bme.hu>,
  KONRAD Frederic <frederic.konrad@adacore.com>, qemu-arm@nongnu.org,
  qemu-ppc@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: J8cDLW7suDhs
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: lT6LbTP55URB
 
-We replaced all the i2c_send_recv() calls by the clearer i2c_recv()
-and i2c_send(), so we can remove this confusing API.
+Other functions from I2C slave API are named "i2c_slave_XXX()".
+Follow that pattern with set_address(). Add docstring along.
+No logical change.
+
+Patch created mechanically using:
+
+  $ sed -i s/i2c_set_slave_address/i2c_slave_set_address/ \
+    $(git grep -l i2c_set_slave_address)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Acked-by: Corey Minyard <cminyard@mvista.com>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/i2c/i2c.h |  1 -
- hw/i2c/core.c        | 50 +++++++++++++++++++-------------------------
- 2 files changed, 21 insertions(+), 30 deletions(-)
+ include/hw/i2c/i2c.h | 8 +++++++-
+ hw/arm/pxa2xx.c      | 2 +-
+ hw/arm/spitz.c       | 4 ++--
+ hw/display/ati.c     | 2 +-
+ hw/display/sm501.c   | 2 +-
+ hw/display/xlnx_dp.c | 2 +-
+ hw/i2c/core.c        | 2 +-
+ hw/i2c/imx_i2c.c     | 2 +-
+ 8 files changed, 15 insertions(+), 9 deletions(-)
 
 diff --git a/include/hw/i2c/i2c.h b/include/hw/i2c/i2c.h
-index 850815e707c..99635b837a5 100644
+index 99635b837a5..2adf521b271 100644
 --- a/include/hw/i2c/i2c.h
 +++ b/include/hw/i2c/i2c.h
-@@ -84,7 +84,6 @@ int i2c_bus_busy(I2CBus *bus);
+@@ -79,7 +79,6 @@ struct I2CBus {
+ };
+ 
+ I2CBus *i2c_init_bus(DeviceState *parent, const char *name);
+-void i2c_set_slave_address(I2CSlave *dev, uint8_t address);
+ int i2c_bus_busy(I2CBus *bus);
  int i2c_start_transfer(I2CBus *bus, uint8_t address, int recv);
  void i2c_end_transfer(I2CBus *bus);
- void i2c_nack(I2CBus *bus);
--int i2c_send_recv(I2CBus *bus, uint8_t *data, bool send);
- int i2c_send(I2CBus *bus, uint8_t data);
- uint8_t i2c_recv(I2CBus *bus);
- bool i2c_scan_bus(I2CBus *bus, uint8_t address, bool broadcast,
+@@ -141,6 +140,13 @@ I2CSlave *i2c_slave_create_simple(I2CBus *bus, const char *name, uint8_t addr);
+  */
+ bool i2c_slave_realize_and_unref(I2CSlave *dev, I2CBus *bus, Error **errp);
+ 
++/**
++ * Set the I2C bus address of a slave device
++ * @dev: I2C slave device
++ * @address: I2C address of the slave when put on a bus
++ */
++void i2c_slave_set_address(I2CSlave *dev, uint8_t address);
++
+ extern const VMStateDescription vmstate_i2c_slave;
+ 
+ #define VMSTATE_I2C_SLAVE(_field, _state) {                          \
+diff --git a/hw/arm/pxa2xx.c b/hw/arm/pxa2xx.c
+index fdc4955e95b..15a247efae2 100644
+--- a/hw/arm/pxa2xx.c
++++ b/hw/arm/pxa2xx.c
+@@ -1437,7 +1437,7 @@ static void pxa2xx_i2c_write(void *opaque, hwaddr addr,
+         break;
+ 
+     case ISAR:
+-        i2c_set_slave_address(I2C_SLAVE(s->slave), value & 0x7f);
++        i2c_slave_set_address(I2C_SLAVE(s->slave), value & 0x7f);
+         break;
+ 
+     case IDBR:
+diff --git a/hw/arm/spitz.c b/hw/arm/spitz.c
+index b45a929cbd9..c0f0f8193f4 100644
+--- a/hw/arm/spitz.c
++++ b/hw/arm/spitz.c
+@@ -769,9 +769,9 @@ static void spitz_wm8750_addr(void *opaque, int line, int level)
+ {
+     I2CSlave *wm = (I2CSlave *) opaque;
+     if (level)
+-        i2c_set_slave_address(wm, SPITZ_WM_ADDRH);
++        i2c_slave_set_address(wm, SPITZ_WM_ADDRH);
+     else
+-        i2c_set_slave_address(wm, SPITZ_WM_ADDRL);
++        i2c_slave_set_address(wm, SPITZ_WM_ADDRL);
+ }
+ 
+ static void spitz_i2c_setup(PXA2xxState *cpu)
+diff --git a/hw/display/ati.c b/hw/display/ati.c
+index 4c3ad8f47b0..31f22754dce 100644
+--- a/hw/display/ati.c
++++ b/hw/display/ati.c
+@@ -968,7 +968,7 @@ static void ati_vga_realize(PCIDevice *dev, Error **errp)
+     I2CBus *i2cbus = i2c_init_bus(DEVICE(s), "ati-vga.ddc");
+     bitbang_i2c_init(&s->bbi2c, i2cbus);
+     I2CSlave *i2cddc = I2C_SLAVE(qdev_new(TYPE_I2CDDC));
+-    i2c_set_slave_address(i2cddc, 0x50);
++    i2c_slave_set_address(i2cddc, 0x50);
+     qdev_realize_and_unref(DEVICE(i2cddc), BUS(i2cbus), &error_abort);
+ 
+     /* mmio register space */
+diff --git a/hw/display/sm501.c b/hw/display/sm501.c
+index 569661a0746..663c37e7f28 100644
+--- a/hw/display/sm501.c
++++ b/hw/display/sm501.c
+@@ -1828,7 +1828,7 @@ static void sm501_init(SM501State *s, DeviceState *dev,
+     s->i2c_bus = i2c_init_bus(dev, "sm501.i2c");
+     /* ddc */
+     I2CDDCState *ddc = I2CDDC(qdev_new(TYPE_I2CDDC));
+-    i2c_set_slave_address(I2C_SLAVE(ddc), 0x50);
++    i2c_slave_set_address(I2C_SLAVE(ddc), 0x50);
+     qdev_realize_and_unref(DEVICE(ddc), BUS(s->i2c_bus), &error_abort);
+ 
+     /* mmio */
+diff --git a/hw/display/xlnx_dp.c b/hw/display/xlnx_dp.c
+index 4fd6aeb18b5..2bb7a5441ad 100644
+--- a/hw/display/xlnx_dp.c
++++ b/hw/display/xlnx_dp.c
+@@ -1253,7 +1253,7 @@ static void xlnx_dp_init(Object *obj)
+     object_property_add_child(OBJECT(s), "dpcd", OBJECT(s->dpcd));
+ 
+     s->edid = I2CDDC(qdev_new("i2c-ddc"));
+-    i2c_set_slave_address(I2C_SLAVE(s->edid), 0x50);
++    i2c_slave_set_address(I2C_SLAVE(s->edid), 0x50);
+     object_property_add_child(OBJECT(s), "edid", OBJECT(s->edid));
+ 
+     fifo8_create(&s->rx_fifo, 16);
 diff --git a/hw/i2c/core.c b/hw/i2c/core.c
-index 3a7bae311df..27a66df7f34 100644
+index 27a66df7f34..6af24c9e797 100644
 --- a/hw/i2c/core.c
 +++ b/hw/i2c/core.c
-@@ -188,50 +188,42 @@ void i2c_end_transfer(I2CBus *bus)
-     bus->broadcast = false;
+@@ -66,7 +66,7 @@ I2CBus *i2c_init_bus(DeviceState *parent, const char *name)
+     return bus;
  }
  
--int i2c_send_recv(I2CBus *bus, uint8_t *data, bool send)
-+int i2c_send(I2CBus *bus, uint8_t data)
+-void i2c_set_slave_address(I2CSlave *dev, uint8_t address)
++void i2c_slave_set_address(I2CSlave *dev, uint8_t address)
  {
-     I2CSlaveClass *sc;
-     I2CSlave *s;
-     I2CNode *node;
-     int ret = 0;
- 
--    if (send) {
--        QLIST_FOREACH(node, &bus->current_devs, next) {
--            s = node->elt;
--            sc = I2C_SLAVE_GET_CLASS(s);
--            if (sc->send) {
--                trace_i2c_send(s->address, *data);
--                ret = ret || sc->send(s, *data);
--            } else {
--                ret = -1;
--            }
-+    QLIST_FOREACH(node, &bus->current_devs, next) {
-+        s = node->elt;
-+        sc = I2C_SLAVE_GET_CLASS(s);
-+        if (sc->send) {
-+            trace_i2c_send(s->address, data);
-+            ret = ret || sc->send(s, data);
-+        } else {
-+            ret = -1;
-         }
--        return ret ? -1 : 0;
--    } else {
--        ret = 0xff;
--        if (!QLIST_EMPTY(&bus->current_devs) && !bus->broadcast) {
--            sc = I2C_SLAVE_GET_CLASS(QLIST_FIRST(&bus->current_devs)->elt);
--            if (sc->recv) {
--                s = QLIST_FIRST(&bus->current_devs)->elt;
--                ret = sc->recv(s);
--                trace_i2c_recv(s->address, ret);
--            }
--        }
--        *data = ret;
--        return 0;
-     }
--}
- 
--int i2c_send(I2CBus *bus, uint8_t data)
--{
--    return i2c_send_recv(bus, &data, true);
-+    return ret ? -1 : 0;
+     dev->address = address;
  }
- 
- uint8_t i2c_recv(I2CBus *bus)
- {
-     uint8_t data = 0xff;
-+    I2CSlaveClass *sc;
-+    I2CSlave *s;
-+
-+    if (!QLIST_EMPTY(&bus->current_devs) && !bus->broadcast) {
-+        sc = I2C_SLAVE_GET_CLASS(QLIST_FIRST(&bus->current_devs)->elt);
-+        if (sc->recv) {
-+            s = QLIST_FIRST(&bus->current_devs)->elt;
-+            data = sc->recv(s);
-+            trace_i2c_recv(s->address, data);
-+        }
-+    }
- 
--    i2c_send_recv(bus, &data, false);
-     return data;
- }
- 
+diff --git a/hw/i2c/imx_i2c.c b/hw/i2c/imx_i2c.c
+index 2e02e1c4faa..9792583fea7 100644
+--- a/hw/i2c/imx_i2c.c
++++ b/hw/i2c/imx_i2c.c
+@@ -171,7 +171,7 @@ static void imx_i2c_write(void *opaque, hwaddr offset,
+     switch (offset) {
+     case IADR_ADDR:
+         s->iadr = value & IADR_MASK;
+-        /* i2c_set_slave_address(s->bus, (uint8_t)s->iadr); */
++        /* i2c_slave_set_address(s->bus, (uint8_t)s->iadr); */
+         break;
+     case IFDR_ADDR:
+         s->ifdr = value & IFDR_MASK;
 -- 
 2.31.1
 

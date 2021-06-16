@@ -1,75 +1,75 @@
-Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp664903lff;
-        Wed, 16 Jun 2021 13:01:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwgWf2dzhIqiK7+f5gRTY4+wZ0fo8K64P3lRjBnbw9kUMbfIP7vAAQ2TMKgZ5QpNAoFfv1Z
-X-Received: by 2002:a2e:bc10:: with SMTP id b16mr1347195ljf.347.1623873700219;
-        Wed, 16 Jun 2021 13:01:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623873700; cv=none;
+Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp669138lff;
+        Wed, 16 Jun 2021 13:06:48 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJytB8LoY76PV3abB4r9gnx9DVKic75sxh24xtijIQ1m7zifYuydMZHlH2xBpGOS2bhUe9+w
+X-Received: by 2002:a05:600c:a45:: with SMTP id c5mr781210wmq.153.1623874008724;
+        Wed, 16 Jun 2021 13:06:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623874008; cv=none;
         d=google.com; s=arc-20160816;
-        b=xeGARclLdTYHPWKBP2Yckz4r+bbCZH9ZpZuh9dd9f/ViwHcPGcvig1bA5JzMTtdI9r
-         wIUvHKDuCCoBnC9uqTuS8wsnAz0ait/6Pn+vTdBqGijTlgRTyCmSoYueXNGQJPsajFtl
-         ML70mf+ZBxhhh7Mz3qXI7ckECD9AhzUIzMX2i3DEhKj6/DLqrK9LDsNtlPqgQDuRzBNB
-         68ZBhs8xs8mHa4xKzIVsWCGvzTLocuXwIFd0J1VfzJq+M22JpFEI1F+MHPzinZ7ppu7u
-         lxh+6oVKOQm9d4fGAg0/EB4XDs9UKRPFvIE/2rAtCV3Rcpu3+L1dPIh8ndD1DQuKKSr6
-         w8Qg==
+        b=nG8GykqC5hAuuvxGU1amu14Ae61RBqghU5kW0paUxoO5/EDuPgyN/zMRUgmgcax6Ie
+         mAydDBK42sxZTZtV7Lm5zh5TIsVo5vpNTL1bv5UUUeDDqp34B/vic9/qyJQDzCy8Srs0
+         +6ODxXopgUoNlYtSiRr8DnHWtlyLhduqe1DOY0csUFd3J9kAOGHIiUhOhO41zIjQt9ox
+         zJoEhttJIj9hGBBG198SnhCs1mTWjmqqNTVVgLhiR0euqkhZZJUNRt+qPCnyyzx2hKOu
+         4XlI+ZNZrT8fh2jJgyR7aT+Vx6LxVZMighYT3mVxZ/PmEZqtPYJHMLyyjcdDrX2F79lk
+         ewZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:references
          :message-id:in-reply-to:subject:to:from:date;
-        bh=uz8vnCE0HOgpZaLiukBHOnxrOcRJfRCyuPILYNBaP34=;
-        b=dXigiSjaOgdr5Oq5wIhe8wn7a58pKhcGVu8yjts+igxkKvXo3iK5mh53PXaOCLGl1R
-         NZrVKg+IPbSHDPkkqim2hEvI4pUnADXrkyttF5uiP+uM6gTO3PfYYjVn+lwBjm4lmkov
-         zkYrRYIMkKMRzqYDuKTUxYLJM2xldVi4IBsEHFkZ0x9qiIFLvVVz7y5yo3IRTE4rgmAR
-         eNDqZq+EMe+OarrSgU4pAsqW14FWSDnFlsWBjBh1/NJvbv6ZBGqw3MtdUK+4l3HPrWiB
-         waj8dkyS8rSNPpldIXe0F32aSJNczgwfblXo3k8APcD40kSwKXH1HZ5ZqXgSUvzz5nZW
-         i6mg==
+        bh=S61elWUM9PLj57TpnaeHuih6+oIHpdscyHw6MnNcKV0=;
+        b=WddafYe8pp1BKJqsqf42+OFR2AZgwmxfICXe/PFyNVKeR4IIRasXwWhAH4xGiDB76v
+         axILw79H6HnQWuXSCvjiHNhMRXoBmGXBvigh1XMN1FUhfuQq+24FVSs3iXFZfyOeEgxE
+         rclNjs144GTQy72cpain81sHSYbOYFi0/61nzynY23UrR5NGEnN13ETWtoWNJGjQJ5Nm
+         qocTUYZVy7oK+c7Vav+oJjnA/grdWE4cxcUO/rGqKQSJ4rhFf6T4jX6wjQzFZryO9V6Z
+         XraFAF8xrsYXoWhqUv8ee6kF2Qf1gRnXOBk07vqWRinOgrY8UI+IwrEBvtFnbHQ6v6CJ
+         w74A==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z2si4619802ljj.40.2021.06.16.13.01.40
+        by mx.google.com with ESMTPS id r67si2286887wma.19.2021.06.16.13.06.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 16 Jun 2021 13:01:40 -0700 (PDT)
+        Wed, 16 Jun 2021 13:06:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
-Received: from localhost ([::1]:33322 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36954 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ltbjH-0000vr-7o
-	for alex.bennee@linaro.org; Wed, 16 Jun 2021 16:01:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38886)
+	id 1ltboF-0003eo-OU
+	for alex.bennee@linaro.org; Wed, 16 Jun 2021 16:06:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40350)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1ltbj7-0000vV-Jq; Wed, 16 Jun 2021 16:01:29 -0400
-Received: from zero.eik.bme.hu ([152.66.115.2]:50359)
+ id 1ltbo2-0003eY-5J; Wed, 16 Jun 2021 16:06:34 -0400
+Received: from zero.eik.bme.hu ([152.66.115.2]:59053)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1ltbj4-0006Av-7T; Wed, 16 Jun 2021 16:01:28 -0400
+ id 1ltbnz-0000xd-Hq; Wed, 16 Jun 2021 16:06:33 -0400
 Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
- by localhost (Postfix) with SMTP id F20C774570E;
- Wed, 16 Jun 2021 22:01:21 +0200 (CEST)
+ by localhost (Postfix) with SMTP id 7E15974570B;
+ Wed, 16 Jun 2021 22:06:27 +0200 (CEST)
 Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id CEB5A7456E3; Wed, 16 Jun 2021 22:01:21 +0200 (CEST)
+ id 51B957456E3; Wed, 16 Jun 2021 22:06:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id CCF637456B4;
- Wed, 16 Jun 2021 22:01:21 +0200 (CEST)
-Date: Wed, 16 Jun 2021 22:01:21 +0200 (CEST)
+ by zero.eik.bme.hu (Postfix) with ESMTP id 4CB727456B4;
+ Wed, 16 Jun 2021 22:06:27 +0200 (CEST)
+Date: Wed, 16 Jun 2021 22:06:27 +0200 (CEST)
 From: BALATON Zoltan <balaton@eik.bme.hu>
 To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <f4bug@amsat.org>
-Subject: Re: [PATCH v3 06/13] hw/i2c/ppc4xx_i2c: Replace i2c_send_recv() by
+Subject: Re: [PATCH v3 10/13] hw/misc/auxbus: Replace i2c_send_recv() by
  i2c_recv() & i2c_send()
-In-Reply-To: <59fb23da-ddad-0436-6935-89712fbddf0f@amsat.org>
-Message-ID: <7bf42f64-b6dd-1e1d-dec9-f710cc94cb2@eik.bme.hu>
+In-Reply-To: <cad0abfc-da54-1ac5-74e6-882251c70465@amsat.org>
+Message-ID: <edfa6c2-b157-53cd-c083-8cd01e489e8@eik.bme.hu>
 References: <20210616161418.2514095-1-f4bug@amsat.org>
- <20210616161418.2514095-7-f4bug@amsat.org>
- <20210616191637.GF11196@minyard.net>
- <59fb23da-ddad-0436-6935-89712fbddf0f@amsat.org>
+ <20210616161418.2514095-11-f4bug@amsat.org>
+ <0a45d89a-b710-12f7-6f82-75fdc6f0384d@linaro.org>
+ <cad0abfc-da54-1ac5-74e6-882251c70465@amsat.org>
 MIME-Version: 1.0
 Content-Type: multipart/mixed;
- boundary="3866299591-882278050-1623873681=:48693"
+ boundary="3866299591-1997640944-1623873987=:48693"
 X-Spam-Probability: 9%
 Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
  helo=zero.eik.bme.hu
@@ -90,70 +90,75 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: cminyard@mvista.com,
+Cc: Corey Minyard <cminyard@mvista.com>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
  "Signed-off-by : Frederic Konrad" <frederic.konrad@adacore.com>,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-devel@nongnu.org
+ qemu-arm@nongnu.org, qemu-ppc@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: V1qo3LMcWmDB
+X-TUID: 5atG4w6CpIxv
 
   This message is in MIME format.  The first part should be readable text,
   while the remaining parts are likely unreadable without MIME-aware tools.
 
---3866299591-882278050-1623873681=:48693
+--3866299591-1997640944-1623873987=:48693
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8BIT
 
 On Wed, 16 Jun 2021, Philippe Mathieu-Daudé wrote:
-> On 6/16/21 9:16 PM, Corey Minyard wrote:
->> On Wed, Jun 16, 2021 at 06:14:11PM +0200, Philippe Mathieu-Daudé wrote:
->>> Instead of using the confuse i2c_send_recv(), rewrite to directly
->>> call i2c_recv() & i2c_send(), resulting in code easire to review.
->>>
->>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->>> ---
->>>  hw/i2c/ppc4xx_i2c.c | 13 ++++++++-----
->>>  1 file changed, 8 insertions(+), 5 deletions(-)
->>>
->>> diff --git a/hw/i2c/ppc4xx_i2c.c b/hw/i2c/ppc4xx_i2c.c
->>> index f4c5bc12d36..b3d3da56e38 100644
->>> --- a/hw/i2c/ppc4xx_i2c.c
->>> +++ b/hw/i2c/ppc4xx_i2c.c
->>> @@ -240,11 +240,14 @@ static void ppc4xx_i2c_writeb(void *opaque, hwaddr addr, uint64_t value,
->>>                          i2c->sts &= ~IIC_STS_ERR;
->>>                      }
->>>                  }
->>> -                if (!(i2c->sts & IIC_STS_ERR) &&
->>> -                    i2c_send_recv(i2c->bus, &i2c->mdata[i], !recv)) {
->>> -                    i2c->sts |= IIC_STS_ERR;
->>> -                    i2c->extsts |= IIC_EXTSTS_XFRA;
->>> -                    break;
->>> +                if (!(i2c->sts & IIC_STS_ERR)) {
->>> +                    if (recv) {
->>> +                        i2c->mdata[i] = i2c_recv(i2c->bus);
->>> +                    } else if (i2c_send(i2c->bus, i2c->mdata[i])) {
+> On 6/16/21 8:46 PM, Richard Henderson wrote:
+>> On 6/16/21 9:14 AM, Philippe Mathieu-Daudé wrote:
+>>> @@ -161,12 +157,11 @@ AUXReply aux_request(AUXBus *bus, AUXCommand
+>>> cmd, uint32_t address,
+>>>           }
+>>>             ret = AUX_I2C_ACK;
+>>> -        while (len > 0) {
+>>> -            if (i2c_send_recv(i2c_bus, data++, true) < 0) {
+>>> +        for (i = 0; i < len; i++) {
+>>> +            if (i2c_send(i2c_bus, data[i]) < 0) {
+>>>                   ret = AUX_I2C_NACK;
+>>>                   break;
+>>>               }
+>>> -            len--;
+>>>           }
 >>
->> In the previous patch you checked < 0, it would be nice to be
->> consistent.
+>> This form of updating ret is better than...
+>>
+>>> @@ -200,14 +195,13 @@ AUXReply aux_request(AUXBus *bus, AUXCommand
+>>> cmd, uint32_t address,
+>>>             bus->last_transaction = cmd;
+>>>           bus->last_i2c_address = address;
+>>> -        while (len > 0) {
+>>> -            if (i2c_send_recv(i2c_bus, data++, true) < 0) {
+>>> +        for (i = 0; i < len; i++) {
+>>> +            if (i2c_send(i2c_bus, data[i]) < 0) {
+>>>                   i2c_end_transfer(i2c_bus);
+>>>                   break;
+>>>               }
+>>> -            len--;
+>>>           }
+>>> -        if (len == 0) {
+>>> +        if (i == len) {
+>>>               ret = AUX_I2C_ACK;
+>>>           }
+>>
+>> ... this one.
 >
-> I did that first but thought Zoltan wouldn't be happy, then went back :)
->
-> I'll fix for the next iteration, thanks.
+> I totally agree :) I was a bit ashamed for posting that, I thought
+> Zoltan would prefer less changes so used this form.
+> Will update on respin.
 
-I generally had no problem with i2c_send_recv only that its argument that 
-decides which operation to do was inverted compared to other similar i2c 
-functions so my original patch just corrected that for consistency and I 
-was happy with that. Having a send_recv in one func allowed to avoid 
-if-else in some places like these but if you think it's better without 
-this function at all I can work with that too. I'll have to check if these 
-changes could break anything. At first sight I'm not sure errors are 
-handled as before if recv fails but it was years ago I did the sm501 and 
-ati parts and I forgot how they work so I need to check again. I'll wait 
-for the final version of the series then and test that. I remember I had 
-to tweak these a lot because each guest OS had drivers that did things 
-slightly differently so if I've fixed one, another broke until I've found 
-a way that worked for all.
+It's not the number of changes that matters but if there's any change in 
+behaviour. If you can make it clearer that there's no change in behaviour 
+by making more changes then that's OK.
 
 Regards,
 BALATON Zoltan
---3866299591-882278050-1623873681=:48693--
+
+>> Otherwise,
+>> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+>
+> Thanks!
+>
+>
+--3866299591-1997640944-1623873987=:48693--

@@ -1,91 +1,82 @@
-Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp3021832lfg;
-        Tue, 22 Jun 2021 05:33:27 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz1GQTChbxeUPf90n5TECa3rNr04OZJiXv7UWLntpLlGatVb84pXqa5cD4EfEmbOzEnfrBA
-X-Received: by 2002:ac2:5e64:: with SMTP id a4mr2708743lfr.657.1624365207000;
-        Tue, 22 Jun 2021 05:33:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1624365206; cv=none;
+Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp664903lff;
+        Wed, 16 Jun 2021 13:01:40 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwgWf2dzhIqiK7+f5gRTY4+wZ0fo8K64P3lRjBnbw9kUMbfIP7vAAQ2TMKgZ5QpNAoFfv1Z
+X-Received: by 2002:a2e:bc10:: with SMTP id b16mr1347195ljf.347.1623873700219;
+        Wed, 16 Jun 2021 13:01:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623873700; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZrCCqlv9Su26eDqKcCmqe8Rgp/wJzqy16+yymC0Nq6QxZZvs3iUsNRwPcegApW4JE7
-         3miv6yg8I7G9KZsfgn5Nlb2bZ6gAF7YEwOJy/zxREP6EQIgGtBkFQ8kP8SgkxtLqDsnh
-         /fZIy/MN3xmv0llZOlSOKzy5Qyt2Pjbqc4PAX9SaZkFbaBxqC7gdEwzCadcQn+2wQ0xm
-         +I/LFArJs9ziipdyN4zJ2aIMN4umbbSCQoqgCLly6cLSWHgi9W91fJ1fec6KSvZwsTim
-         gZM57FXqktEu0ou2rpzdrEHCgioe4M5iwOrphp1FxcGZ7+zZ60FI7TJXDKWkRExGhC/l
-         rBDQ==
+        b=xeGARclLdTYHPWKBP2Yckz4r+bbCZH9ZpZuh9dd9f/ViwHcPGcvig1bA5JzMTtdI9r
+         wIUvHKDuCCoBnC9uqTuS8wsnAz0ait/6Pn+vTdBqGijTlgRTyCmSoYueXNGQJPsajFtl
+         ML70mf+ZBxhhh7Mz3qXI7ckECD9AhzUIzMX2i3DEhKj6/DLqrK9LDsNtlPqgQDuRzBNB
+         68ZBhs8xs8mHa4xKzIVsWCGvzTLocuXwIFd0J1VfzJq+M22JpFEI1F+MHPzinZ7ppu7u
+         lxh+6oVKOQm9d4fGAg0/EB4XDs9UKRPFvIE/2rAtCV3Rcpu3+L1dPIh8ndD1DQuKKSr6
+         w8Qg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=mppc1vGZcxWeNW7Q77NUMhKTb6ODtzj+ATHxyiwq5U8=;
-        b=tbjaOgETyl9G41rogUZD5uOscSFw6qr29TqzKpkIxVjiMs2snRwFVZ8IzLcH0mcLn1
-         YucdorvCAFMg3quFDTQeHaRJyBq2TZXFGbz1onravg+zLR+tghtG1Z/R+gCbu7EM1AQC
-         dMPDc8WmgdNalTq4T2ZscF23zYpM9vgzQ500xvdaOgyLLdvt0bmKQHottUtFOiZksZSG
-         /TbRR9VLKYQlmBzqsDsxcJZPCvuYShnPgPZxXXlXwAPCX1abPPXZfqxCAinQeoYwWPK7
-         MWsVg+WLYYf0fU5XDgkeykqgbHHabhQ+Dvi+XgTx8ZaCXAEELzm/aybLggNj9boRGfAa
-         kesQ==
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :message-id:in-reply-to:subject:to:from:date;
+        bh=uz8vnCE0HOgpZaLiukBHOnxrOcRJfRCyuPILYNBaP34=;
+        b=dXigiSjaOgdr5Oq5wIhe8wn7a58pKhcGVu8yjts+igxkKvXo3iK5mh53PXaOCLGl1R
+         NZrVKg+IPbSHDPkkqim2hEvI4pUnADXrkyttF5uiP+uM6gTO3PfYYjVn+lwBjm4lmkov
+         zkYrRYIMkKMRzqYDuKTUxYLJM2xldVi4IBsEHFkZ0x9qiIFLvVVz7y5yo3IRTE4rgmAR
+         eNDqZq+EMe+OarrSgU4pAsqW14FWSDnFlsWBjBh1/NJvbv6ZBGqw3MtdUK+4l3HPrWiB
+         waj8dkyS8rSNPpldIXe0F32aSJNczgwfblXo3k8APcD40kSwKXH1HZ5ZqXgSUvzz5nZW
+         i6mg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f22si29356646ljk.66.2021.06.22.05.33.26
+        by mx.google.com with ESMTPS id z2si4619802ljj.40.2021.06.16.13.01.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Jun 2021 05:33:26 -0700 (PDT)
+        Wed, 16 Jun 2021 13:01:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:32986 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+Received: from localhost ([::1]:33322 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lvfao-0006cD-1X
-	for alex.bennee@linaro.org; Tue, 22 Jun 2021 08:33:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33378)
+	id 1ltbjH-0000vr-7o
+	for alex.bennee@linaro.org; Wed, 16 Jun 2021 16:01:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38886)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1lvfZ2-0004YT-UZ; Tue, 22 Jun 2021 08:31:37 -0400
-Received: from szxga08-in.huawei.com ([45.249.212.255]:2243)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1ltbj7-0000vV-Jq; Wed, 16 Jun 2021 16:01:29 -0400
+Received: from zero.eik.bme.hu ([152.66.115.2]:50359)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1lvfYw-0002qt-Hu; Tue, 22 Jun 2021 08:31:36 -0400
-Received: from dggemv704-chm.china.huawei.com (unknown [172.30.72.53])
- by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4G8Qc65DCHz1BQQB;
- Tue, 22 Jun 2021 20:26:14 +0800 (CST)
-Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
- dggemv704-chm.china.huawei.com (10.3.19.47) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2176.2; Tue, 22 Jun 2021 20:31:23 +0800
-Received: from [10.174.187.128] (10.174.187.128) by
- dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
- 15.1.2176.2; Tue, 22 Jun 2021 20:31:22 +0800
-Subject: Re: [RFC PATCH v4 0/7] hw/arm/virt: Introduce cpu topology support
-To: Andrew Jones <drjones@redhat.com>, =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?=
- <berrange@redhat.com>
-References: <20210622093413.13360-1-wangyanan55@huawei.com>
- <YNG44c9KtaiNXT7b@redhat.com> <20210622114634.crjqusw6x6oj4j6v@gator>
-From: "wangyanan (Y)" <wangyanan55@huawei.com>
-Message-ID: <bc47a66a-b1ff-939c-32a2-94c90efd0caf@huawei.com>
-Date: Tue, 22 Jun 2021 20:31:22 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1ltbj4-0006Av-7T; Wed, 16 Jun 2021 16:01:28 -0400
+Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
+ by localhost (Postfix) with SMTP id F20C774570E;
+ Wed, 16 Jun 2021 22:01:21 +0200 (CEST)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id CEB5A7456E3; Wed, 16 Jun 2021 22:01:21 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id CCF637456B4;
+ Wed, 16 Jun 2021 22:01:21 +0200 (CEST)
+Date: Wed, 16 Jun 2021 22:01:21 +0200 (CEST)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <f4bug@amsat.org>
+Subject: Re: [PATCH v3 06/13] hw/i2c/ppc4xx_i2c: Replace i2c_send_recv() by
+ i2c_recv() & i2c_send()
+In-Reply-To: <59fb23da-ddad-0436-6935-89712fbddf0f@amsat.org>
+Message-ID: <7bf42f64-b6dd-1e1d-dec9-f710cc94cb2@eik.bme.hu>
+References: <20210616161418.2514095-1-f4bug@amsat.org>
+ <20210616161418.2514095-7-f4bug@amsat.org>
+ <20210616191637.GF11196@minyard.net>
+ <59fb23da-ddad-0436-6935-89712fbddf0f@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <20210622114634.crjqusw6x6oj4j6v@gator>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-X-Originating-IP: [10.174.187.128]
-X-ClientProxiedBy: dggeme707-chm.china.huawei.com (10.1.199.103) To
- dggpemm500023.china.huawei.com (7.185.36.83)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.255;
- envelope-from=wangyanan55@huawei.com; helo=szxga08-in.huawei.com
+Content-Type: multipart/mixed;
+ boundary="3866299591-882278050-1623873681=:48693"
+X-Spam-Probability: 9%
+Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
+ helo=zero.eik.bme.hu
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -99,83 +90,70 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Barry Song <song.bao.hua@hisilicon.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "Michael S . Tsirkin" <mst@redhat.com>, wanghaibin.wang@huawei.com,
- qemu-devel@nongnu.org, yangyicong@huawei.com,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org, Alistair
- Francis <alistair.francis@wdc.com>, prime.zeng@hisilicon.com,
- Paolo Bonzini <pbonzini@redhat.com>, yuzenghui@huawei.com,
- Igor Mammedov <imammedo@redhat.com>, zhukeqian1@huawei.com,
- David Gibson <david@gibson.dropbear.id.au>
+Cc: cminyard@mvista.com,
+ "Signed-off-by : Frederic Konrad" <frederic.konrad@adacore.com>,
+ qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1V5kOOgwFp1X
+X-TUID: V1qo3LMcWmDB
 
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
+--3866299591-882278050-1623873681=:48693
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8BIT
 
-On 2021/6/22 19:46, Andrew Jones wrote:
-> On Tue, Jun 22, 2021 at 11:18:09AM +0100, Daniel P. Berrangé wrote:
->> On Tue, Jun 22, 2021 at 05:34:06PM +0800, Yanan Wang wrote:
->>> Hi,
+On Wed, 16 Jun 2021, Philippe Mathieu-Daudé wrote:
+> On 6/16/21 9:16 PM, Corey Minyard wrote:
+>> On Wed, Jun 16, 2021 at 06:14:11PM +0200, Philippe Mathieu-Daudé wrote:
+>>> Instead of using the confuse i2c_send_recv(), rewrite to directly
+>>> call i2c_recv() & i2c_send(), resulting in code easire to review.
 >>>
->>> This is v4 of the series [1] that I posted to introduce support for
->>> generating cpu topology descriptions to guest. Comments are welcome!
+>>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>>> ---
+>>>  hw/i2c/ppc4xx_i2c.c | 13 ++++++++-----
+>>>  1 file changed, 8 insertions(+), 5 deletions(-)
 >>>
->>> Description:
->>> Once the view of an accurate virtual cpu topology is provided to guest,
->>> with a well-designed vCPU pinning to the pCPU we may get a huge benefit,
->>> e.g., the scheduling performance improvement. See Dario Faggioli's
->>> research and the related performance tests in [2] for reference. So here
->>> we go, this patch series introduces cpu topology support for ARM platform.
->>>
->>> In this series, instead of quietly enforcing the support for the latest
->>> machine type, a new parameter "expose=on|off" in -smp command line is
->>> introduced to leave QEMU users a choice to decide whether to enable the
->>> feature or not. This will allow the feature to work on different machine
->>> types and also ideally compat with already in-use -smp command lines.
->>> Also we make much stricter requirement for the topology configuration
->>> with "expose=on".
->> Seeing this 'expose=on' parameter feels to me like we're adding a
->> "make-it-work=yes" parameter. IMHO this is just something that should
->> be done by default for the current machine type version and beyond.
->> I don't see the need for a parameter to turnthis on, especially since
->> it is being made architecture specific.
+>>> diff --git a/hw/i2c/ppc4xx_i2c.c b/hw/i2c/ppc4xx_i2c.c
+>>> index f4c5bc12d36..b3d3da56e38 100644
+>>> --- a/hw/i2c/ppc4xx_i2c.c
+>>> +++ b/hw/i2c/ppc4xx_i2c.c
+>>> @@ -240,11 +240,14 @@ static void ppc4xx_i2c_writeb(void *opaque, hwaddr addr, uint64_t value,
+>>>                          i2c->sts &= ~IIC_STS_ERR;
+>>>                      }
+>>>                  }
+>>> -                if (!(i2c->sts & IIC_STS_ERR) &&
+>>> -                    i2c_send_recv(i2c->bus, &i2c->mdata[i], !recv)) {
+>>> -                    i2c->sts |= IIC_STS_ERR;
+>>> -                    i2c->extsts |= IIC_EXTSTS_XFRA;
+>>> -                    break;
+>>> +                if (!(i2c->sts & IIC_STS_ERR)) {
+>>> +                    if (recv) {
+>>> +                        i2c->mdata[i] = i2c_recv(i2c->bus);
+>>> +                    } else if (i2c_send(i2c->bus, i2c->mdata[i])) {
 >>
-> I agree.
+>> In the previous patch you checked < 0, it would be nice to be
+>> consistent.
 >
-> Yanan, we never discussed an "expose" parameter in the previous versions
-> of this series. We discussed a "strict" parameter though, which would
-> allow existing command lines to "work" using assumptions of what the user
-> meant and strict=on users to get what they mean or an error saying that
-> they asked for something that won't work or would require unreasonable
-> assumptions. Why was this changed to an "expose" parameter?
-Yes, we indeed discuss a new "strict" parameter but not a "expose" in v2 
-[1] of this series.
-[1] 
-https://patchwork.kernel.org/project/qemu-devel/patch/20210413080745.33004-6-wangyanan55@huawei.com/
-
-And in the discussion, we hoped things would work like below with 
-"strict" parameter:
-Users who want to describe cpu topology should provide cmdline like
-
--smp strict=on,cpus=4,sockets=2,cores=2,threads=1
-
-and in this case we require an more accurate -smp configuration and
-then generate the cpu topology description through ACPI/DT.
-
-While without a strict description, no cpu topology description would
-be generated, so they get nothing through ACPI/DT.
-
-It seems to me that the "strict" parameter actually serves as a knob to
-turn on/off the exposure of topology, and this is the reason I changed
-the name.
-
-Thanks,
-Yanan
-.
-> Thanks,
-> drew
+> I did that first but thought Zoltan wouldn't be happy, then went back :)
 >
-> .
+> I'll fix for the next iteration, thanks.
 
+I generally had no problem with i2c_send_recv only that its argument that 
+decides which operation to do was inverted compared to other similar i2c 
+functions so my original patch just corrected that for consistency and I 
+was happy with that. Having a send_recv in one func allowed to avoid 
+if-else in some places like these but if you think it's better without 
+this function at all I can work with that too. I'll have to check if these 
+changes could break anything. At first sight I'm not sure errors are 
+handled as before if recv fails but it was years ago I did the sm501 and 
+ati parts and I forgot how they work so I need to check again. I'll wait 
+for the final version of the series then and test that. I remember I had 
+to tweak these a lot because each guest OS had drivers that did things 
+slightly differently so if I've fixed one, another broke until I've found 
+a way that worked for all.
+
+Regards,
+BALATON Zoltan
+--3866299591-882278050-1623873681=:48693--

@@ -1,103 +1,103 @@
-Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp483350lff;
-        Thu, 17 Jun 2021 05:19:30 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxggCSf3VaVPr9jJQVBVAhN8CcUTrrWZ5Bu/10e54T0gFhcJFBbRtVyDW4G9wZYa992eMEl
-X-Received: by 2002:a1c:f613:: with SMTP id w19mr4868926wmc.136.1623932370233;
-        Thu, 17 Jun 2021 05:19:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623932370; cv=none;
+Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp486089lff;
+        Thu, 17 Jun 2021 05:22:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxLBIHT4hldrhqoAx3laeJTiC7chjsLpxizkpOj62xC/WxBuJY1YbkiP1EMEhc2j3ZUyLsh
+X-Received: by 2002:a05:6102:3229:: with SMTP id x9mr3684138vsf.58.1623932575352;
+        Thu, 17 Jun 2021 05:22:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623932575; cv=none;
         d=google.com; s=arc-20160816;
-        b=oJkUY+wNWkPEwtjF7KX8PLb+omzkqfv+2nF8LV3JJNwDVeiQUMvHeQ2GZhwdEY7LRc
-         tZXP8vguPnQUR2bHmgzd07TgoJTk8OsX/2ul2/Nf1YUqRyigqwuQJGhoRRG0bNacY/k2
-         7xxHChOG/LIRItM1E4vQ+J4S+bDpS4OO77KNVsVdiY6rmYxRLM9bCgAPX6DDCA6dNkCF
-         tKHYFqL5hg6YrSyu7YikBjkLKMEF3HA2FqzqnIacaG2ZbShT2IRH+dWe41tZYlPENhHn
-         cdPbYgtGCMCe2rl6vvMU4YddtyEXwjMHmjTgn0tztqyAruWUjlBIDRsyvCJgiIGDAo5U
-         IH5A==
+        b=oRNpBRTCQRMJIvbBeuoHTPKpMGgnpt0iXoWPaskFw3FGMltUmoQ+d5CxOWWmNAws57
+         w+ZIuO/VLltXt4L7z9dHN8liT/eVGgfpWuSM1gWlxcdg46WeC9Mi+yHFD6hJ31fqbh0c
+         OyHZm5H5FeA1x7cezvh/c5jUxwmXHDOkkU9XOR4pE348DF/KQmXkaRBUa8ri1G7zU798
+         xXDGb36PaGPh1lK5UlsdqFPG9WBtj59KYqQIOZDHD8SStJbNMrvisnKuTThWNAMDlmmI
+         WPIAa2nr+knTgD8wL0qCdRD/SAN7xwqHlnDUqBE2XPCGDS1pPJm0on/6GT5jaiSRuzhE
+         dmOQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=AjU+j51JCz+8YTrac3SuF15ciH6osQr8PuKPZdyYi+k=;
-        b=bisw87a9JjW+Xm2MXjpM4i+A22rDrjP7qH0RzTGW7c3EHNF8Ejmh/3n/BM9HECq46L
-         Ad11iLPyEnlrD9uSCbFXAyqxNbqSvyXuKp71wJqMYP0fH1FqrPc+JsFSTr7tTRSL+sQK
-         up4qIrw6rQa36SONGAfNLc6PvY2rAMSBog9Higu0DZ7BngEeEPmh8FtwuKFTDELsnQQ4
-         nNu7fAyUO+S+NxAkGn2WGQqBN6J4n+n6YiHkle76YzlCc0WeGq+7yIvxf0Vr2Zk8pqiA
-         FUxLCX9SL1UpcC18JbIq45vuN5q7p73t7gnCJ1uHYHWHxbaxf/enDTcTYQbNhNR2GfE2
-         IDTQ==
+        bh=GJB8aXKILs300m2kbdVQkD8F6NZ4Il0sjYcZONampNM=;
+        b=txfqzTs1UQHfMGJ66AyvRirAKFD8f7bml6CSml1GADGfD1tIZLsz0jQ5Q4KyzpFG8e
+         fqEvjWKKjKqoo2x/OW5/1w6J7rdnOpKnw1+TsBW0phuKw49Uo7/gs0J9BIcL3fq5Fs5X
+         8G3IT381bllJ+C7L6Q8SNDcZ9B7rY0rJKHmTc34ZTA/YdFO3ZvQsgBo0+TAHXA0OEGx/
+         sxHem+5292BbT2F8jE9MuY+hb30rtmpyE1HdidD+guz8uUGdS81zQISSSYs4MyrCmnwS
+         gxFp7tAQwGpgLnnDWGdOlC4zd0/PQV1hOstuUOu6WeEMiT+1ayxhF2YYkmlHKzP/0itv
+         ZPtw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aI3YSagX;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Th0ESOqR;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e12si1442990wrm.69.2021.06.17.05.19.30
+        by mx.google.com with ESMTPS id z184si3699113vkf.46.2021.06.17.05.22.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 17 Jun 2021 05:19:30 -0700 (PDT)
+        Thu, 17 Jun 2021 05:22:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aI3YSagX;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Th0ESOqR;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34250 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43032 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ltqzZ-00062T-0j
-	for alex.bennee@linaro.org; Thu, 17 Jun 2021 08:19:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60574)
+	id 1ltr2s-00048J-F3
+	for alex.bennee@linaro.org; Thu, 17 Jun 2021 08:22:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60608)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ltqwv-0001JQ-LI
- for qemu-devel@nongnu.org; Thu, 17 Jun 2021 08:16:45 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f]:50787)
+ id 1ltqww-0001Mf-RO
+ for qemu-devel@nongnu.org; Thu, 17 Jun 2021 08:16:46 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335]:50793)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ltqwo-0006xD-Rg
- for qemu-devel@nongnu.org; Thu, 17 Jun 2021 08:16:45 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id k42so1410403wms.0
- for <qemu-devel@nongnu.org>; Thu, 17 Jun 2021 05:16:38 -0700 (PDT)
+ id 1ltqwq-0006z5-Jq
+ for qemu-devel@nongnu.org; Thu, 17 Jun 2021 08:16:46 -0400
+Received: by mail-wm1-x335.google.com with SMTP id k42so1410466wms.0
+ for <qemu-devel@nongnu.org>; Thu, 17 Jun 2021 05:16:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=AjU+j51JCz+8YTrac3SuF15ciH6osQr8PuKPZdyYi+k=;
- b=aI3YSagXc6razkEAD/4P1fF9w+nue1EI+2MuwqMsq1Ltv/rBfMcboBwEHF1mg60Goi
- OKPJFla7hLbvz08O6wOVA4Y7g/DHm4LIOXPP0ZQq0tbhZwVOQwkuETNhwG4gxMn5uxkG
- a9zhvtw/nldSUjmZE97crixKmazksA57aUgC1joJVR376bsTpAO/EGHXad6AS5jOJVQz
- 85CpFn+HzQYasNk//loF4jYpHuV1wYF+8GkJg+fvU0TeBfX9EneVQjEcGYFRsm24Lz9Z
- 8/Nc+B1qJlccQOCItYdH68MJPXpKzyhn1YHKtMToQFSqpPrJ1tbO8/yUBTK8FpvjIQ8t
- t0wg==
+ bh=GJB8aXKILs300m2kbdVQkD8F6NZ4Il0sjYcZONampNM=;
+ b=Th0ESOqRVtMSHbE5MndeY5P2MzCOik/NAXl81smvcEW1D8xbc0zZKWMgOJ8qtob8Hr
+ 5GOj637RlV7B1UwxC0S5re4Rz1RIqVDdFIy2F/FRranh+9FwtqlnBmAY1+Z1OvZSzSVM
+ 9tKhiT7VvQIO8PHKCJ4T7ybvIHzSKQS368+gm7a3L+V0Mmy5xWIgkrbJuWdURb7ncQ4W
+ NAX9xHj9cqxkeIYSW1OvNfSBSyAlN56iHGwVeGx7w5dJSBaTXZrZQrnrrHmkgGI3/1+u
+ k8WPZaHSp+GoIk/6KTAqIPax3tFM2N7wTv0aROd00YMCYXoylZEEjp3hB+fo0YAMAL7L
+ sZtQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=AjU+j51JCz+8YTrac3SuF15ciH6osQr8PuKPZdyYi+k=;
- b=EpXcFTCj1JeDIZUmM1GMSB0OAj6Ek8yxLkIVKpwdWf342IZ+7lZ1XMRCUtGoxbTZBa
- Z43n5fIFB05esoGneV6D6ihv0nZKSQCFIrCjoVwGFoBZ9XKWVTlY+OMLhG339E6vL1su
- Clt/YzesbmjyQlPY2Akjy3XXlc5xaI9YkzbTPVlroUcfB+HAgEoIEt7CJV7ogI6fp4mm
- aPijYxfTEi60pdaO8aA9yBBPaB7Zu3bDwEwzoSspBETac6m1YyFVbM8caUIJU3iR0yIq
- k863ZBzuFiyf8tJPbV3ljfUm/JLBO/QNUBOkk5xx7mRzmsY42YUXGl1zfQ2kzvEubwTv
- HsBg==
-X-Gm-Message-State: AOAM531VS7ngUdIS+0Cxg7apPy5+yYHFkx+nPFeP4Hln4DNphiGaF+/7
- Z2Bvn67znixXZgomSR2MnVMr1w==
-X-Received: by 2002:a1c:1b10:: with SMTP id b16mr4735166wmb.130.1623932197499; 
- Thu, 17 Jun 2021 05:16:37 -0700 (PDT)
+ bh=GJB8aXKILs300m2kbdVQkD8F6NZ4Il0sjYcZONampNM=;
+ b=eR+IJDrWpQktt5D8BLuOuyS1Eue8HSYPzfK0XdzDu9V0IBVUwtljvKoepuDc/DpZm5
+ 4qLDqo/VNpv5saYYsusmw56d94tp2EguxIDi1Qg/oG18PpfdPZ1EVCVRCzU9Yc0peKml
+ 0fiZmbvLm02rvP85K/YsADEi1JiZBicW5lcTi6jQWxBBKiC5CQDgsbm7FnjSmFvH/r59
+ CtLZlv9h1lIiXIL05QGm9JRnElTfllCp+7A3vBc7BdLpyIYDjr8Uvd9/qhQY89qwhWG+
+ T+7pRrp6TKtx0X3AcVXto0z/7QlagZZqb3P3dYBK4KJ6R3OUFlX2CO3GbL0gsce4Yn7U
+ Licg==
+X-Gm-Message-State: AOAM533niKZG+K1MXQilEYVhYqaORnBfg8vxPDi7LDeTtB7ra55oVzQb
+ STX0S2T4+JJ6gG+huWJ1nFzcFcYARWOU6g==
+X-Received: by 2002:a7b:c2f0:: with SMTP id e16mr4712472wmk.136.1623932199182; 
+ Thu, 17 Jun 2021 05:16:39 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id a1sm6961970wra.63.2021.06.17.05.16.36
+ by smtp.gmail.com with ESMTPSA id a1sm6961970wra.63.2021.06.17.05.16.38
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 17 Jun 2021 05:16:37 -0700 (PDT)
+ Thu, 17 Jun 2021 05:16:38 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v3 09/44] tcg: Make gen_dup_i32/i64() public as
- tcg_gen_dup_i32/i64
-Date: Thu, 17 Jun 2021 13:15:53 +0100
-Message-Id: <20210617121628.20116-10-peter.maydell@linaro.org>
+Subject: [PATCH v3 11/44] target/arm: Implement MVE VAND, VBIC, VORR, VORN,
+ VEOR
+Date: Thu, 17 Jun 2021 13:15:55 +0100
+Message-Id: <20210617121628.20116-12-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210617121628.20116-1-peter.maydell@linaro.org>
 References: <20210617121628.20116-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,167 +120,154 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: Richard Henderson <richard.henderson@linaro.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tU4uhnpMa/Us
+X-TUID: XDB7H/1+VQK6
 
-The Arm MVE VDUP implementation would like to be able to emit code to
-duplicate a byte or halfword value into an i32.  We have code to do
-this already in tcg-op-gvec.c, so all we need to do is make the
-functions global.
+Implement the MVE vector logical operations operating
+on two registers.
 
-For consistency with other functions made available to the frontends:
- * we rename to tcg_gen_dup_*
- * we expose both the _i32 and _i64 forms
- * we provide the #define for a _tl form
-
-Suggested-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
-Changes v2->v3: renamed and used different header file, as suggested
-by Richard. I also added the _tl #define.
----
- include/tcg/tcg-op.h |  8 ++++++++
- include/tcg/tcg.h    |  1 -
- tcg/tcg-op-gvec.c    | 20 ++++++++++----------
- 3 files changed, 18 insertions(+), 11 deletions(-)
+ target/arm/helper-mve.h    |  6 ++++++
+ target/arm/mve.decode      |  9 +++++++++
+ target/arm/mve_helper.c    | 26 ++++++++++++++++++++++++++
+ target/arm/translate-mve.c | 37 +++++++++++++++++++++++++++++++++++++
+ 4 files changed, 78 insertions(+)
 
-diff --git a/include/tcg/tcg-op.h b/include/tcg/tcg-op.h
-index ef8a008ea74..1a2ae937583 100644
---- a/include/tcg/tcg-op.h
-+++ b/include/tcg/tcg-op.h
-@@ -338,6 +338,9 @@ void tcg_gen_umin_i32(TCGv_i32, TCGv_i32 arg1, TCGv_i32 arg2);
- void tcg_gen_umax_i32(TCGv_i32, TCGv_i32 arg1, TCGv_i32 arg2);
- void tcg_gen_abs_i32(TCGv_i32, TCGv_i32);
- 
-+/* Replicate a value of size @vece from @in to all the lanes in @out */
-+void tcg_gen_dup_i32(unsigned vece, TCGv_i32 out, TCGv_i32 in);
+diff --git a/target/arm/helper-mve.h b/target/arm/helper-mve.h
+index 64c3f9e049e..01b6123f250 100644
+--- a/target/arm/helper-mve.h
++++ b/target/arm/helper-mve.h
+@@ -63,3 +63,9 @@ DEF_HELPER_FLAGS_3(mve_vnegh, TCG_CALL_NO_WG, void, env, ptr, ptr)
+ DEF_HELPER_FLAGS_3(mve_vnegw, TCG_CALL_NO_WG, void, env, ptr, ptr)
+ DEF_HELPER_FLAGS_3(mve_vfnegh, TCG_CALL_NO_WG, void, env, ptr, ptr)
+ DEF_HELPER_FLAGS_3(mve_vfnegs, TCG_CALL_NO_WG, void, env, ptr, ptr)
 +
- static inline void tcg_gen_discard_i32(TCGv_i32 arg)
- {
-     tcg_gen_op1_i32(INDEX_op_discard, arg);
-@@ -534,6 +537,9 @@ void tcg_gen_umin_i64(TCGv_i64, TCGv_i64 arg1, TCGv_i64 arg2);
- void tcg_gen_umax_i64(TCGv_i64, TCGv_i64 arg1, TCGv_i64 arg2);
- void tcg_gen_abs_i64(TCGv_i64, TCGv_i64);
++DEF_HELPER_FLAGS_4(mve_vand, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++DEF_HELPER_FLAGS_4(mve_vbic, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++DEF_HELPER_FLAGS_4(mve_vorr, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++DEF_HELPER_FLAGS_4(mve_vorn, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++DEF_HELPER_FLAGS_4(mve_veor, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
+diff --git a/target/arm/mve.decode b/target/arm/mve.decode
+index 09849917f5a..332e0b8d1d6 100644
+--- a/target/arm/mve.decode
++++ b/target/arm/mve.decode
+@@ -25,6 +25,7 @@
  
-+/* Replicate a value of size @vece from @in to all the lanes in @out */
-+void tcg_gen_dup_i64(unsigned vece, TCGv_i64 out, TCGv_i64 in);
+ &vldr_vstr rn qd imm p a w size l u
+ &1op qd qm size
++&2op qd qm qn size
+ 
+ @vldr_vstr ....... . . . . l:1 rn:4 ... ...... imm:7 &vldr_vstr qd=%qd u=0
+ # Note that both Rn and Qd are 3 bits only (no D bit)
+@@ -32,6 +33,7 @@
+ 
+ @1op .... .... .... size:2 .. .... .... .... .... &1op qd=%qd qm=%qm
+ @1op_nosz .... .... .... .... .... .... .... .... &1op qd=%qd qm=%qm size=0
++@2op_nosz .... .... .... .... .... .... .... .... &2op qd=%qd qm=%qm qn=%qn size=0
+ 
+ # Vector loads and stores
+ 
+@@ -68,6 +70,13 @@ VLDR_VSTR        1110110 1 a:1 . w:1 . .... ... 111101 .......   @vldr_vstr \
+ VLDR_VSTR        1110110 1 a:1 . w:1 . .... ... 111110 .......   @vldr_vstr \
+                  size=2 p=1
+ 
++# Vector 2-op
++VAND             1110 1111 0 . 00 ... 0 ... 0 0001 . 1 . 1 ... 0 @2op_nosz
++VBIC             1110 1111 0 . 01 ... 0 ... 0 0001 . 1 . 1 ... 0 @2op_nosz
++VORR             1110 1111 0 . 10 ... 0 ... 0 0001 . 1 . 1 ... 0 @2op_nosz
++VORN             1110 1111 0 . 11 ... 0 ... 0 0001 . 1 . 1 ... 0 @2op_nosz
++VEOR             1111 1111 0 . 00 ... 0 ... 0 0001 . 1 . 1 ... 0 @2op_nosz
 +
- #if TCG_TARGET_REG_BITS == 64
- static inline void tcg_gen_discard_i64(TCGv_i64 arg)
- {
-@@ -1127,6 +1133,7 @@ void tcg_gen_stl_vec(TCGv_vec r, TCGv_ptr base, TCGArg offset, TCGType t);
- #define tcg_gen_atomic_smax_fetch_tl tcg_gen_atomic_smax_fetch_i64
- #define tcg_gen_atomic_umax_fetch_tl tcg_gen_atomic_umax_fetch_i64
- #define tcg_gen_dup_tl_vec  tcg_gen_dup_i64_vec
-+#define tcg_gen_dup_tl tcg_gen_dup_i64
- #else
- #define tcg_gen_movi_tl tcg_gen_movi_i32
- #define tcg_gen_mov_tl tcg_gen_mov_i32
-@@ -1241,6 +1248,7 @@ void tcg_gen_stl_vec(TCGv_vec r, TCGv_ptr base, TCGArg offset, TCGType t);
- #define tcg_gen_atomic_smax_fetch_tl tcg_gen_atomic_smax_fetch_i32
- #define tcg_gen_atomic_umax_fetch_tl tcg_gen_atomic_umax_fetch_i32
- #define tcg_gen_dup_tl_vec  tcg_gen_dup_i32_vec
-+#define tcg_gen_dup_tl tcg_gen_dup_i32
- #endif
+ # Vector miscellaneous
  
- #if UINTPTR_MAX == UINT32_MAX
-diff --git a/include/tcg/tcg.h b/include/tcg/tcg.h
-index 064dab383bc..483e1e1f24e 100644
---- a/include/tcg/tcg.h
-+++ b/include/tcg/tcg.h
-@@ -1331,7 +1331,6 @@ uint64_t dup_const(unsigned vece, uint64_t c);
-         : (qemu_build_not_reached_always(), 0))                    \
-      : dup_const(VECE, C))
+ VCLS             1111 1111 1 . 11 .. 00 ... 0 0100 01 . 0 ... 0 @1op
+diff --git a/target/arm/mve_helper.c b/target/arm/mve_helper.c
+index 23aecaac2f0..a8f873e735e 100644
+--- a/target/arm/mve_helper.c
++++ b/target/arm/mve_helper.c
+@@ -337,3 +337,29 @@ DO_1OP(vnegw, 4, int32_t, DO_NEG)
+ /* We can do these 64 bits at a time */
+ DO_1OP(vfnegh, 8, uint64_t, DO_FNEGH)
+ DO_1OP(vfnegs, 8, uint64_t, DO_FNEGS)
++
++#define DO_2OP(OP, ESIZE, TYPE, FN)                                     \
++    void HELPER(glue(mve_, OP))(CPUARMState *env,                       \
++                                void *vd, void *vn, void *vm)           \
++    {                                                                   \
++        TYPE *d = vd, *n = vn, *m = vm;                                 \
++        uint16_t mask = mve_element_mask(env);                          \
++        unsigned e;                                                     \
++        for (e = 0; e < 16 / ESIZE; e++, mask >>= ESIZE) {              \
++            mergemask(&d[H##ESIZE(e)],                                  \
++                      FN(n[H##ESIZE(e)], m[H##ESIZE(e)]), mask);        \
++        }                                                               \
++        mve_advance_vpt(env);                                           \
++    }
++
++#define DO_AND(N, M)  ((N) & (M))
++#define DO_BIC(N, M)  ((N) & ~(M))
++#define DO_ORR(N, M)  ((N) | (M))
++#define DO_ORN(N, M)  ((N) | ~(M))
++#define DO_EOR(N, M)  ((N) ^ (M))
++
++DO_2OP(vand, 8, uint64_t, DO_AND)
++DO_2OP(vbic, 8, uint64_t, DO_BIC)
++DO_2OP(vorr, 8, uint64_t, DO_ORR)
++DO_2OP(vorn, 8, uint64_t, DO_ORN)
++DO_2OP(veor, 8, uint64_t, DO_EOR)
+diff --git a/target/arm/translate-mve.c b/target/arm/translate-mve.c
+index 3714be7f8d1..2546567774c 100644
+--- a/target/arm/translate-mve.c
++++ b/target/arm/translate-mve.c
+@@ -30,6 +30,7 @@
  
--
- /*
-  * Memory helpers that will be used by TCG generated code.
-  */
-diff --git a/tcg/tcg-op-gvec.c b/tcg/tcg-op-gvec.c
-index 498a959839f..515db120cc6 100644
---- a/tcg/tcg-op-gvec.c
-+++ b/tcg/tcg-op-gvec.c
-@@ -386,7 +386,7 @@ uint64_t (dup_const)(unsigned vece, uint64_t c)
- }
+ typedef void MVEGenLdStFn(TCGv_ptr, TCGv_ptr, TCGv_i32);
+ typedef void MVEGenOneOpFn(TCGv_ptr, TCGv_ptr, TCGv_ptr);
++typedef void MVEGenTwoOpFn(TCGv_ptr, TCGv_ptr, TCGv_ptr, TCGv_ptr);
  
- /* Duplicate IN into OUT as per VECE.  */
--static void gen_dup_i32(unsigned vece, TCGv_i32 out, TCGv_i32 in)
-+void tcg_gen_dup_i32(unsigned vece, TCGv_i32 out, TCGv_i32 in)
- {
-     switch (vece) {
-     case MO_8:
-@@ -404,7 +404,7 @@ static void gen_dup_i32(unsigned vece, TCGv_i32 out, TCGv_i32 in)
+ /* Return the offset of a Qn register (same semantics as aa32_vfp_qreg()) */
+ static inline long mve_qreg_offset(unsigned reg)
+@@ -294,3 +295,39 @@ static bool trans_VNEG_fp(DisasContext *s, arg_1op *a)
      }
+     return do_1op(s, a, fns[a->size]);
  }
- 
--static void gen_dup_i64(unsigned vece, TCGv_i64 out, TCGv_i64 in)
-+void tcg_gen_dup_i64(unsigned vece, TCGv_i64 out, TCGv_i64 in)
- {
-     switch (vece) {
-     case MO_8:
-@@ -578,15 +578,15 @@ static void do_dup(unsigned vece, uint32_t dofs, uint32_t oprsz,
-                 && (vece != MO_32 || !check_size_impl(oprsz, 4))) {
-                 t_64 = tcg_temp_new_i64();
-                 tcg_gen_extu_i32_i64(t_64, in_32);
--                gen_dup_i64(vece, t_64, t_64);
-+                tcg_gen_dup_i64(vece, t_64, t_64);
-             } else {
-                 t_32 = tcg_temp_new_i32();
--                gen_dup_i32(vece, t_32, in_32);
-+                tcg_gen_dup_i32(vece, t_32, in_32);
-             }
-         } else if (in_64) {
-             /* We are given a 64-bit variable input.  */
-             t_64 = tcg_temp_new_i64();
--            gen_dup_i64(vece, t_64, in_64);
-+            tcg_gen_dup_i64(vece, t_64, in_64);
-         } else {
-             /* We are given a constant input.  */
-             /* For 64-bit hosts, use 64-bit constants for "simple" constants
-@@ -1311,14 +1311,14 @@ void tcg_gen_gvec_2s(uint32_t dofs, uint32_t aofs, uint32_t oprsz,
-     } else if (g->fni8 && check_size_impl(oprsz, 8)) {
-         TCGv_i64 t64 = tcg_temp_new_i64();
- 
--        gen_dup_i64(g->vece, t64, c);
-+        tcg_gen_dup_i64(g->vece, t64, c);
-         expand_2s_i64(dofs, aofs, oprsz, t64, g->scalar_first, g->fni8);
-         tcg_temp_free_i64(t64);
-     } else if (g->fni4 && check_size_impl(oprsz, 4)) {
-         TCGv_i32 t32 = tcg_temp_new_i32();
- 
-         tcg_gen_extrl_i64_i32(t32, c);
--        gen_dup_i32(g->vece, t32, t32);
-+        tcg_gen_dup_i32(g->vece, t32, t32);
-         expand_2s_i32(dofs, aofs, oprsz, t32, g->scalar_first, g->fni4);
-         tcg_temp_free_i32(t32);
-     } else {
-@@ -2538,7 +2538,7 @@ void tcg_gen_gvec_ands(unsigned vece, uint32_t dofs, uint32_t aofs,
-                        TCGv_i64 c, uint32_t oprsz, uint32_t maxsz)
- {
-     TCGv_i64 tmp = tcg_temp_new_i64();
--    gen_dup_i64(vece, tmp, c);
-+    tcg_gen_dup_i64(vece, tmp, c);
-     tcg_gen_gvec_2s(dofs, aofs, oprsz, maxsz, tmp, &gop_ands);
-     tcg_temp_free_i64(tmp);
- }
-@@ -2562,7 +2562,7 @@ void tcg_gen_gvec_xors(unsigned vece, uint32_t dofs, uint32_t aofs,
-                        TCGv_i64 c, uint32_t oprsz, uint32_t maxsz)
- {
-     TCGv_i64 tmp = tcg_temp_new_i64();
--    gen_dup_i64(vece, tmp, c);
-+    tcg_gen_dup_i64(vece, tmp, c);
-     tcg_gen_gvec_2s(dofs, aofs, oprsz, maxsz, tmp, &gop_xors);
-     tcg_temp_free_i64(tmp);
- }
-@@ -2586,7 +2586,7 @@ void tcg_gen_gvec_ors(unsigned vece, uint32_t dofs, uint32_t aofs,
-                       TCGv_i64 c, uint32_t oprsz, uint32_t maxsz)
- {
-     TCGv_i64 tmp = tcg_temp_new_i64();
--    gen_dup_i64(vece, tmp, c);
-+    tcg_gen_dup_i64(vece, tmp, c);
-     tcg_gen_gvec_2s(dofs, aofs, oprsz, maxsz, tmp, &gop_ors);
-     tcg_temp_free_i64(tmp);
- }
++
++static bool do_2op(DisasContext *s, arg_2op *a, MVEGenTwoOpFn fn)
++{
++    TCGv_ptr qd, qn, qm;
++
++    if (!dc_isar_feature(aa32_mve, s) ||
++        !mve_check_qreg_bank(s, a->qd | a->qn | a->qm) ||
++        !fn) {
++        return false;
++    }
++    if (!mve_eci_check(s) || !vfp_access_check(s)) {
++        return true;
++    }
++
++    qd = mve_qreg_ptr(a->qd);
++    qn = mve_qreg_ptr(a->qn);
++    qm = mve_qreg_ptr(a->qm);
++    fn(cpu_env, qd, qn, qm);
++    tcg_temp_free_ptr(qd);
++    tcg_temp_free_ptr(qn);
++    tcg_temp_free_ptr(qm);
++    mve_update_eci(s);
++    return true;
++}
++
++#define DO_LOGIC(INSN, HELPER)                                  \
++    static bool trans_##INSN(DisasContext *s, arg_2op *a)       \
++    {                                                           \
++        return do_2op(s, a, HELPER);                            \
++    }
++
++DO_LOGIC(VAND, gen_helper_mve_vand)
++DO_LOGIC(VBIC, gen_helper_mve_vbic)
++DO_LOGIC(VORR, gen_helper_mve_vorr)
++DO_LOGIC(VORN, gen_helper_mve_vorn)
++DO_LOGIC(VEOR, gen_helper_mve_veor)
 -- 
 2.20.1
 

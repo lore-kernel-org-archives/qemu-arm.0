@@ -1,60 +1,60 @@
-Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp731804lff;
+Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp731815lff;
         Thu, 17 Jun 2021 09:57:25 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxB1uOYDE02po4a+GqyoHAZDTerYVJq4crv5v2G6Tp2i1QTQ6adKQ83SXYCR79C8vPieJ+y
-X-Received: by 2002:a67:f80a:: with SMTP id l10mr1556147vso.37.1623949044993;
-        Thu, 17 Jun 2021 09:57:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623949044; cv=none;
+X-Google-Smtp-Source: ABdhPJxfQU84qsl139FZO0Y6UFURklrQ0rYdhzCK2IUOSp6gsEQDlTwZqyeU5BtYfpTAuBUYNqMn
+X-Received: by 2002:ac5:c96e:: with SMTP id t14mr1179345vkm.24.1623949045366;
+        Thu, 17 Jun 2021 09:57:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623949045; cv=none;
         d=google.com; s=arc-20160816;
-        b=guv5K8eJc5Cr+J3MAMYOLI/RhASQlQ8emCNaP9BGp4pdIdnEYKpE/a/nDY5Wbxy9mH
-         xdpjxDxVn9At8VJPgNvpyr8II3j/uAVNJgUPzlyvHa7qJ6PWV5xXPt+HN00AKL4ieKLt
-         2BQoJkSr2WXOor+51pXst/8H3iZfwOrUKUClgEvZXCHP/9OFwuasxrhBxSJi2ZiR5PI9
-         mZpo+6/V3BPgJX0oYl28nuV9olbHDPKF4CRK3t4UdkqnOa43npv621Rw5wgvkexEmZY/
-         fHclaAVaN6g/+eE7HQUJ3Gii1uicjeQPoNVTwjNiwMMMkMDDtvxMueaR6GIie7UYMGGk
-         dmSA==
+        b=CJrP5OEKAXHixZ7rWDnJn3lIK9LA9f7wrYEJTFw5nSQCvg4nMmJfosjMqsBdQdU18C
+         O/igRwgwXNq5hUcnqatP1ooR8V3PKoJ3HPoLelkkrulg2XdugDvmPr2lfvplOEIGH1if
+         XGZh4H0++SljUwfV4srLQ6WXwgxKemjG9o043G3Ac+1ZqAJD3CnayHwSEpc9AS/iZdLP
+         ThelWqxDCR+Y77roVqjRrFRE+c2doVQVO2A5Bn9IHWu2/J7CqHVgEpONBQn+1AzOA8IX
+         k/5gh66dYhgeoJ2VGLTVl06lmFdH3GysUq68TelTwXzYojvniqydtXhJyjAGNk65m589
+         x6hg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=jlrgSTKrmiNASL+7qMOwtDo+kC4+cKNvKauQWLU22NE=;
-        b=AWZipPebWnpQG1njnaY6SssQTHhBpwB6HgZFGZFJMgHSLLHfZvQRusT7JwxkkAbe+q
-         ZmPKRl0LdJu0XSmGGASf0Mu3scnZMkZZu/pEAbRZMWI3br29xRgm8jZk++knPednqxq9
-         Ip48vQrXl4R0b9KXMr/yr9/qlxwQOfwJWNOinU9fePbwImcRnko83u18dBrSmkk15zhr
-         fAgt1pJWRI771E86NZTpRKR6MzBqKOTKxb+2hKl7+QnawjDIrRPq9ZhdX7N6wCdHXrJO
-         1OULH1Cm13LVcwPros5ofIWYWU3W+zZG4Cx4jTbKiLitlA+oNrO82sVb3GMF3/6++8xz
-         X9rQ==
+        bh=Pu9uwqAEP30Fm+DIZc+TKd4pvqB9j5boLECYiyxolNg=;
+        b=lLsqBBSnZFis9Tlo2eyJIr6zetZUF41SBn/raSeN6aFiEEfHSZ8Jau0oYAZeThEI8f
+         yI4H0vJPTcUpFHqJktcdRUS/rEfoSu2UIBScWtdwdcV45ojlpAoK+xgERsPEECyq3CiC
+         Iy0F1eoKw6iSwig7u+RUopnaXAQEjNmSYbQEBZxeGRMHi49SEzJNN2ccJPvDYsWuhMLE
+         Xu8FBHluqKSekrjyeVMNquJvMpQFBxURt0lIYoUMicWv/GyLrcSiLbUg3innDtYzpS/p
+         HZB2oKYyOP7M2GTzNATZe78yBbCshRj/hwInsClfspNsfBiuU2JUeir1h/fBEFDDrKCr
+         hibg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=crans.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q8si4251529ual.117.2021.06.17.09.57.24
+        by mx.google.com with ESMTPS id t16si5403742uad.27.2021.06.17.09.57.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 17 Jun 2021 09:57:24 -0700 (PDT)
+        Thu, 17 Jun 2021 09:57:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=crans.org
-Received: from localhost ([::1]:44694 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44704 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ltvKW-0000sZ-7S
+	id 1ltvKW-0000tB-La
 	for alex.bennee@linaro.org; Thu, 17 Jun 2021 12:57:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57116)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57120)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <erdnaxe@crans.org>)
- id 1ltvKK-0000rl-Gl; Thu, 17 Jun 2021 12:57:12 -0400
-Received: from zamok.crans.org ([185.230.79.1]:34466)
+ id 1ltvKK-0000s0-U8; Thu, 17 Jun 2021 12:57:12 -0400
+Received: from zamok.crans.org ([185.230.79.1]:34478)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <erdnaxe@crans.org>)
- id 1ltvKH-0005vr-22; Thu, 17 Jun 2021 12:57:12 -0400
+ id 1ltvKH-0005wX-32; Thu, 17 Jun 2021 12:57:12 -0400
 Received: by zamok.crans.org (Postfix, from userid 11692)
- id 9EA48E0159; Thu, 17 Jun 2021 18:56:57 +0200 (CEST)
+ id 45E4DE013B; Thu, 17 Jun 2021 18:56:58 +0200 (CEST)
 From: Alexandre Iooss <erdnaxe@crans.org>
 To: "open list : All patches CC here" <qemu-devel@nongnu.org>
-Subject: [PATCH v3 2/4] stm32vldiscovery: Add the STM32VLDISCOVERY Machine
-Date: Thu, 17 Jun 2021 18:56:45 +0200
-Message-Id: <20210617165647.2575955-3-erdnaxe@crans.org>
+Subject: [PATCH v3 3/4] docs/system: arm: Add stm32 boards description
+Date: Thu, 17 Jun 2021 18:56:46 +0200
+Message-Id: <20210617165647.2575955-4-erdnaxe@crans.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210617165647.2575955-1-erdnaxe@crans.org>
 References: <20210617165647.2575955-1-erdnaxe@crans.org>
@@ -85,149 +85,114 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Alistair Francis <alistair23@gmail.com>, Alexandre Iooss <erdnaxe@crans.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: w9w/a1ouUsSk
+X-TUID: zRU+wUYkL6Pz
 
-This is a Cortex-M3 based machine. Information can be found at:
-https://www.st.com/en/evaluation-tools/stm32vldiscovery.html
+This adds the target guide for Netduino 2, Netduino Plus 2 and STM32VLDISCOVERY.
 
 Signed-off-by: Alexandre Iooss <erdnaxe@crans.org>
 ---
- MAINTAINERS                             |  6 +++
- default-configs/devices/arm-softmmu.mak |  1 +
- hw/arm/Kconfig                          |  4 ++
- hw/arm/meson.build                      |  1 +
- hw/arm/stm32vldiscovery.c               | 66 +++++++++++++++++++++++++
- 5 files changed, 78 insertions(+)
- create mode 100644 hw/arm/stm32vldiscovery.c
+ MAINTAINERS                |  1 +
+ docs/system/arm/stm32.rst  | 66 ++++++++++++++++++++++++++++++++++++++
+ docs/system/target-arm.rst |  1 +
+ 3 files changed, 68 insertions(+)
+ create mode 100644 docs/system/arm/stm32.rst
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index 62dfa31800..0aa8016936 100644
+index 0aa8016936..47fb06e5fc 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -891,6 +891,12 @@ F: hw/*/stellaris*
- F: include/hw/input/gamepad.h
- F: docs/system/arm/stellaris.rst
+@@ -896,6 +896,7 @@ M: Alexandre Iooss <erdnaxe@crans.org>
+ L: qemu-arm@nongnu.org
+ S: Maintained
+ F: hw/arm/stm32vldiscovery.c
++F: docs/system/arm/stm32.rst
  
-+STM32VLDISCOVERY
-+M: Alexandre Iooss <erdnaxe@crans.org>
-+L: qemu-arm@nongnu.org
-+S: Maintained
-+F: hw/arm/stm32vldiscovery.c
-+
  Versatile Express
  M: Peter Maydell <peter.maydell@linaro.org>
- L: qemu-arm@nongnu.org
-diff --git a/default-configs/devices/arm-softmmu.mak b/default-configs/devices/arm-softmmu.mak
-index 0500156a0c..cdc0e97f9d 100644
---- a/default-configs/devices/arm-softmmu.mak
-+++ b/default-configs/devices/arm-softmmu.mak
-@@ -18,6 +18,7 @@ CONFIG_CHEETAH=y
- CONFIG_SX1=y
- CONFIG_NSERIES=y
- CONFIG_STELLARIS=y
-+CONFIG_STM32VLDISCOVERY=y
- CONFIG_REALVIEW=y
- CONFIG_VERSATILE=y
- CONFIG_VEXPRESS=y
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 0bc3ee3e91..dc4e47b721 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -239,6 +239,10 @@ config STELLARIS
-     select STELLARIS_ENET # ethernet
-     select UNIMP
- 
-+config STM32VLDISCOVERY
-+    bool
-+    select STM32F100_SOC
-+
- config STRONGARM
-     bool
-     select PXA2XX
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index 0e637e6a9e..721a8eb8be 100644
---- a/hw/arm/meson.build
-+++ b/hw/arm/meson.build
-@@ -24,6 +24,7 @@ arm_ss.add(when: 'CONFIG_Z2', if_true: files('z2.c'))
- arm_ss.add(when: 'CONFIG_REALVIEW', if_true: files('realview.c'))
- arm_ss.add(when: 'CONFIG_SBSA_REF', if_true: files('sbsa-ref.c'))
- arm_ss.add(when: 'CONFIG_STELLARIS', if_true: files('stellaris.c'))
-+arm_ss.add(when: 'CONFIG_STM32VLDISCOVERY', if_true: files('stm32vldiscovery.c'))
- arm_ss.add(when: 'CONFIG_COLLIE', if_true: files('collie.c'))
- arm_ss.add(when: 'CONFIG_VERSATILE', if_true: files('versatilepb.c'))
- arm_ss.add(when: 'CONFIG_VEXPRESS', if_true: files('vexpress.c'))
-diff --git a/hw/arm/stm32vldiscovery.c b/hw/arm/stm32vldiscovery.c
+diff --git a/docs/system/arm/stm32.rst b/docs/system/arm/stm32.rst
 new file mode 100644
-index 0000000000..7e8191ebf5
+index 0000000000..508b92cf86
 --- /dev/null
-+++ b/hw/arm/stm32vldiscovery.c
++++ b/docs/system/arm/stm32.rst
 @@ -0,0 +1,66 @@
-+/*
-+ * ST STM32VLDISCOVERY machine
-+ *
-+ * Copyright (c) 2021 Alexandre Iooss <erdnaxe@crans.org>
-+ * Copyright (c) 2014 Alistair Francis <alistair@alistair23.me>
-+ *
-+ * Permission is hereby granted, free of charge, to any person obtaining a copy
-+ * of this software and associated documentation files (the "Software"), to deal
-+ * in the Software without restriction, including without limitation the rights
-+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-+ * copies of the Software, and to permit persons to whom the Software is
-+ * furnished to do so, subject to the following conditions:
-+ *
-+ * The above copyright notice and this permission notice shall be included in
-+ * all copies or substantial portions of the Software.
-+ *
-+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-+ * THE SOFTWARE.
-+ */
++STMicroelectronics STM32 boards (``netduino2``, ``netduinoplus2``, ``stm32vldiscovery``)
++========================================================================================
 +
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "hw/boards.h"
-+#include "hw/qdev-properties.h"
-+#include "qemu/error-report.h"
-+#include "hw/arm/stm32f100_soc.h"
-+#include "hw/arm/boot.h"
++The `STM32`_ chips are a family of 32-bit ARM-based microcontroller by
++STMicroelectronics.
 +
-+/* stm32vldiscovery implementation is derived from netduinoplus2 */
++.. _STM32: https://www.st.com/en/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus.html
 +
-+/* Main SYSCLK frequency in Hz (24MHz) */
-+#define SYSCLK_FRQ 24000000ULL
++The STM32F1 series is based on ARM Cortex-M3 core. The following machines are
++based on this chip :
 +
-+static void stm32vldiscovery_init(MachineState *machine)
-+{
-+    DeviceState *dev;
++- ``stm32vldiscovery``  STM32VLDISCOVERY board with STM32F100RBT6 microcontroller
 +
-+    /*
-+     * TODO: ideally we would model the SoC RCC and let it handle
-+     * system_clock_scale, including its ability to define different
-+     * possible SYSCLK sources.
-+     */
-+    system_clock_scale = NANOSECONDS_PER_SECOND / SYSCLK_FRQ;
++The STM32F2 series is based on ARM Cortex-M3 core. The following machines are
++based on this chip :
 +
-+    dev = qdev_new(TYPE_STM32F100_SOC);
-+    qdev_prop_set_string(dev, "cpu-type", ARM_CPU_TYPE_NAME("cortex-m3"));
-+    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++- ``netduino2``         Netduino 2 board with STM32F205RFT6 microcontroller
 +
-+    armv7m_load_kernel(ARM_CPU(first_cpu),
-+                       machine->kernel_filename,
-+                       FLASH_SIZE);
-+}
++The STM32F4 series is based on ARM Cortex-M4F core. This series is pin-to-pin
++compatible with STM32F2 series. The following machines are based on this chip :
 +
-+static void stm32vldiscovery_machine_init(MachineClass *mc)
-+{
-+    mc->desc = "ST STM32VLDISCOVERY (Cortex-M3)";
-+    mc->init = stm32vldiscovery_init;
-+}
++- ``netduinoplus2``     Netduino Plus 2 board with STM32F405RGT6 microcontroller
 +
-+DEFINE_MACHINE("stm32vldiscovery", stm32vldiscovery_machine_init)
++There are many other STM32 series that are currently not supported by QEMU.
 +
++Supported devices
++-----------------
++
++ * ARM Cortex-M3, Cortex M4F
++ * Analog to Digital Converter (ADC)
++ * EXTI interrupt
++ * Serial ports (USART)
++ * SPI controller
++ * System configuration (SYSCFG)
++ * Timer controller (TIMER)
++
++Missing devices
++---------------
++
++ * Camera interface (DCMI)
++ * Controller Area Network (CAN)
++ * Cycle Redundancy Check (CRC) calculation unit
++ * Digital to Analog Converter (DAC)
++ * DMA controller
++ * Ethernet controller
++ * Flash Interface Unit
++ * GPIO controller
++ * I2C controller
++ * Inter-Integrated Sound (I2S) controller
++ * Power supply configuration (PWR)
++ * Random Number Generator (RNG)
++ * Real-Time Clock (RTC) controller
++ * Reset and Clock Controller (RCC)
++ * Secure Digital Input/Output (SDIO) interface
++ * USB OTG
++ * Watchdog controller (IWDG, WWDG)
++
++Boot options
++------------
++
++The STM32 machines can be started using the ``-kernel`` option to load a
++firmware. Example:
++
++.. code-block:: bash
++
++  $ qemu-system-arm -M stm32vldiscovery -kernel firmware.bin
+diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
+index edd013c7bb..addd3d1613 100644
+--- a/docs/system/target-arm.rst
++++ b/docs/system/target-arm.rst
+@@ -96,6 +96,7 @@ undocumented; you can get a complete list by running
+    arm/collie
+    arm/sx1
+    arm/stellaris
++   arm/stm32
+    arm/virt
+    arm/xlnx-versal-virt
+ 
 -- 
 2.25.1
 

@@ -1,152 +1,174 @@
-Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp896040lff;
-        Thu, 17 Jun 2021 13:35:10 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwIYJ/QiH44nzwjl4oYaiHIFl++q8IB10hMVDf2fXRoc+34h0N8gRbsZmaOG3HeJyPME9/f
-X-Received: by 2002:a5d:648a:: with SMTP id o10mr8060452wri.274.1623962110827;
-        Thu, 17 Jun 2021 13:35:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623962110; cv=none;
+Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp1023279lff;
+        Thu, 17 Jun 2021 16:49:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzJEMtmujaNFBucTAX4ys5ghAqgjZAOB3vgXKLwbXToLFVS620F4cw9aNqLXyqfrlE3fOA3
+X-Received: by 2002:a05:6102:482:: with SMTP id n2mr3970543vsa.60.1623973757422;
+        Thu, 17 Jun 2021 16:49:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623973757; cv=none;
         d=google.com; s=arc-20160816;
-        b=SpDt8ZYD0ZhfhWrQt5avl9aqN4a4P3LNObog4ZcfDsNLpPYCiH6WxLvNWOdwLn0OW1
-         f5TtBtkHKU07wBHiAy5VU7yGlTlo7aJG0N7wldNPOBY9yuCdzP2C0NQshb0n2JJKZ4WR
-         e6DKDYyZoqkzj0oRnCxIdQU8OskJd9XfljHHOG+QcTR1DQMQSHbAyUamw9mKs4ua6Co4
-         OBT5ASADMhRy7mnQLwcUlPj48YbArxo5TVpRu8FYw/+9g6g+aJcLBxZ62Ib1fOsPVqJS
-         k5J/xulRkX573xDl9nvNhhL857EEWYIvPZ6VRHJZ7soKIABr0M1lMV+pi+XT0r5OFCKD
-         3D8w==
+        b=n7yH9bdqaGOkz5qFsCa0svhZ9Lvh3ExpzOv0L4QoHzxAXZoWz0ScQlxca4w8X9AUxK
+         jxoJln6qw8JYOPM78roG5Kqfyfdbo38rE+G1CezQYBKd49A0YqeTXkMXbdDC8vBCVOvt
+         rgtLm4zjCFbqkZYc7RiV4QGWA3hY8BwrTwEFr6PrMs2mKozeNSvQq5VNLJAUu6cqZk2O
+         m4yBNY0yIKFd4dlZzAOMs/JpXIS+I8Bbwqq9yWLALaVngDFhqYaXicpwPRL7MbYrEQUf
+         3oZnxRHAL4EXlP69QcKG5Mia2RAWTqzmpGxnzPkPFRFmzoIcUaNXwhdYaLi4aH5ueX6h
+         4cPw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature:dkim-signature:dkim-signature:dkim-signature;
-        bh=gALxrBprrngFa9FVDsVZgfzgcaS8rM1zYV9nTR88YhE=;
-        b=WpfRmoNjOKVMJ0nKv1gQtB1LXPgjBwQyYTXztr8pySq57MBmyWapkS2Lpz+rum4/er
-         wQQpGEIIWaI75Om/1uMiL9lRmEL56V2jZqVgxPSBCoL+3hlwXe9P0GvUAXuBXdJW48cY
-         vUeLKsmC1EjNHf89wUSTyTyKpUVeq9DE75L3JnDK2Lirf19XiI6hH2Z7NrPGtIOI8Eyh
-         Utac6Dc7yoT9skCZggeWgn8IpuXm2NPwef9oKxOR4WPYA8SDrjE1Qr8JPJ7AeVqtrIjQ
-         5VIne+TLUwBAs85Fz8f4v82IkciXq8rwtSwIc4X8ZYJ2Tn3yvP08g250LaLPWY2+FUXn
-         ww6g==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :message-id:in-reply-to:subject:to:from:date;
+        bh=k2N0a9W6NQ/964dzMDzizTRIte6s6hsFFeCvHB/iJD0=;
+        b=FxbVSIJGgKJiPHXeTKaGtVCc+sWWInrQyTO+XEw8wi0B5gzda2z+vGcQHs0D63EY5i
+         5Q94vnFJ5d2lj1DIsf03i5CyQ/V8ZRAUyJLpBa2FKZJ1NOhDgJAFGiRRbO5hzL+E8Tv5
+         gKAK4VyyQPx0dI/eGGlLkoUFN0wrgIvux/DklBspYzddm7ykxMw1nbvnob2y4DIp5DqC
+         LNpTl9YNtcEYdVEqqgiJ+thVSl18I30HAVQ85tOzFGG8nFwC/lYSoNzIZP9yDNO3ke+8
+         /g1Rbv1ZtZ+epCCQp77vkVwqyxlykYxxldJu6bm3iJqiyLdwYDy5TnDZMTdvkgxDWNAF
+         nYRg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=Yfas6YPw;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=Yfas6YPw;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=4kzixqtb;
-       spf=pass (google.com: domain of cfontana@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=cfontana@suse.de
-Return-Path: <cfontana@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [195.135.220.29])
-        by mx.google.com with ESMTPS id 6si1355874wrb.237.2021.06.17.13.35.10
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 17 Jun 2021 13:35:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cfontana@suse.de designates 195.135.220.29 as permitted sender) client-ip=195.135.220.29;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id c15si5359839uad.85.2021.06.17.16.49.17
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 17 Jun 2021 16:49:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=Yfas6YPw;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=Yfas6YPw;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=4kzixqtb;
-       spf=pass (google.com: domain of cfontana@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=cfontana@suse.de
-Received: from imap.suse.de (imap-alt.suse-dmz.suse.de [192.168.254.47])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id 0C2961FDDE;
-	Thu, 17 Jun 2021 20:35:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1623962110; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=gALxrBprrngFa9FVDsVZgfzgcaS8rM1zYV9nTR88YhE=;
-	b=Yfas6YPw0StSh/mxqVdISMvg39L3DTKZvOqXjduTYgll5dHz12eJ2eWuo6zrd3VTGprM6U
-	u9LuNKGTdO3jhV2dPpi9EF+LwUqbT2WV3zkYESVh2y/lNkuHiWaC+oCjJgxNzLyd0uOjdE
-	WWlvFfAcoHEnC09tx/JpRgNHenooNqs=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1623962110;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=gALxrBprrngFa9FVDsVZgfzgcaS8rM1zYV9nTR88YhE=;
-	b=4kzixqtb7B8NpL2zF1jG4JNWzt8fb9bOFlZkZwuob1RXg4s7pc+48OXtAgILSsxORU5vNT
-	gnnewgfUmGuptwDg==
-Received: from imap3-int (imap-alt.suse-dmz.suse.de [192.168.254.47])
-	by imap.suse.de (Postfix) with ESMTP id C5E95118DD;
-	Thu, 17 Jun 2021 20:35:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1623962110; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=gALxrBprrngFa9FVDsVZgfzgcaS8rM1zYV9nTR88YhE=;
-	b=Yfas6YPw0StSh/mxqVdISMvg39L3DTKZvOqXjduTYgll5dHz12eJ2eWuo6zrd3VTGprM6U
-	u9LuNKGTdO3jhV2dPpi9EF+LwUqbT2WV3zkYESVh2y/lNkuHiWaC+oCjJgxNzLyd0uOjdE
-	WWlvFfAcoHEnC09tx/JpRgNHenooNqs=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1623962110;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=gALxrBprrngFa9FVDsVZgfzgcaS8rM1zYV9nTR88YhE=;
-	b=4kzixqtb7B8NpL2zF1jG4JNWzt8fb9bOFlZkZwuob1RXg4s7pc+48OXtAgILSsxORU5vNT
-	gnnewgfUmGuptwDg==
-Received: from director2.suse.de ([192.168.254.72])
-	by imap3-int with ESMTPSA
-	id VDqlLv2xy2CcDwAALh3uQQ
-	(envelope-from <cfontana@suse.de>); Thu, 17 Jun 2021 20:35:09 +0000
-Subject: Re: [PATCH v16 43/99] target/arm: move a15 cpu model away from the
- TCG-only models
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org
-References: <20210604155312.15902-1-alex.bennee@linaro.org>
- <20210604155312.15902-44-alex.bennee@linaro.org>
- <51fbcf63-a205-8848-95f7-b2c7e74754a9@linaro.org> <87v96ce5e0.fsf@linaro.org>
-From: Claudio Fontana <cfontana@suse.de>
-Message-ID: <5710327c-79c4-2feb-2876-3f31ec045e0d@suse.de>
-Date: Thu, 17 Jun 2021 22:35:09 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+Received: from localhost ([::1]:52212 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lu1l6-0004m1-LN
+	for alex.bennee@linaro.org; Thu, 17 Jun 2021 19:49:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52938)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1lu1kx-0004k8-7u; Thu, 17 Jun 2021 19:49:07 -0400
+Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001]:25439)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1lu1kv-0005VL-5P; Thu, 17 Jun 2021 19:49:06 -0400
+Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
+ by localhost (Postfix) with SMTP id 2F3AB7457E5;
+ Fri, 18 Jun 2021 01:49:02 +0200 (CEST)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 0874A7456E3; Fri, 18 Jun 2021 01:49:02 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 06DFE7456B4;
+ Fri, 18 Jun 2021 01:49:02 +0200 (CEST)
+Date: Fri, 18 Jun 2021 01:49:01 +0200 (CEST)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <f4bug@amsat.org>
+Subject: Re: [PATCH v3 06/13] hw/i2c/ppc4xx_i2c: Replace i2c_send_recv() by
+ i2c_recv() & i2c_send()
+In-Reply-To: <416b4c36-b838-a5f4-6575-74685627b9c3@amsat.org>
+Message-ID: <675080b9-cb1-9ee4-c515-ebd0401b302b@eik.bme.hu>
+References: <20210616161418.2514095-1-f4bug@amsat.org>
+ <20210616161418.2514095-7-f4bug@amsat.org>
+ <20210616191637.GF11196@minyard.net>
+ <59fb23da-ddad-0436-6935-89712fbddf0f@amsat.org>
+ <7bf42f64-b6dd-1e1d-dec9-f710cc94cb2@eik.bme.hu>
+ <416b4c36-b838-a5f4-6575-74685627b9c3@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <87v96ce5e0.fsf@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: ChLTgcoILuxv
+Content-Type: multipart/mixed;
+ boundary="3866299591-853930170-1623973742=:59666"
+X-Spam-Probability: 9%
+Received-SPF: pass client-ip=2001:738:2001:2001::2001;
+ envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: cminyard@mvista.com,
+ "Signed-off-by : Frederic Konrad" <frederic.konrad@adacore.com>,
+ qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: GmJ5iYO73JlX
 
-On 6/17/21 8:01 PM, Alex Bennée wrote:
-> 
-> Richard Henderson <richard.henderson@linaro.org> writes:
-> 
->> On 6/4/21 8:52 AM, Alex Bennée wrote:
->>> From: Claudio Fontana<cfontana@suse.de>
->>> Cortex-A15 is the only ARM cpu class we need in KVM too.
->>> We will be able to move it to tcg/ once the board code and
->>> configurations
->>> are fixed.
->>> Signed-off-by: Claudio Fontana<cfontana@suse.de>
->>> Signed-off-by: Alex Bennée<alex.bennee@linaro.org>
->>> ---
->>>   target/arm/cpu32.h   |  4 +++
->>>   target/arm/cpu32.c   | 73 ++++++++++++++++++++++++++++++++++++++++++++
->>>   target/arm/cpu_tcg.c | 67 ----------------------------------------
->>>   3 files changed, 77 insertions(+), 67 deletions(-)
->>
->> I don't follow this one.  Why would kvm, which is 64-bit only, require
->> a 32-bit only cpu?
->>
->> I guess I can accept that our board configurations are old and
->> fragile, and I realize there are already 99 bottles of beer on^W^W^W^W
->> patches here, but what needs to happen to fix this properly?
-> 
-> I'll drop this and fix whatever we need to. 32 bit ARM KVM is listed in
-> removed-features so I think we are good.
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Problem is, if I recall correctly, that the virt board currently requires an a15 to exist.
+--3866299591-853930170-1623973742=:59666
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8BIT
 
-> 
+On Wed, 16 Jun 2021, Philippe Mathieu-Daudé wrote:
+> On 6/16/21 10:01 PM, BALATON Zoltan wrote:
+>> On Wed, 16 Jun 2021, Philippe Mathieu-Daudé wrote:
+>>> On 6/16/21 9:16 PM, Corey Minyard wrote:
+>>>> On Wed, Jun 16, 2021 at 06:14:11PM +0200, Philippe Mathieu-Daudé wrote:
+>>>>> Instead of using the confuse i2c_send_recv(), rewrite to directly
+>>>>> call i2c_recv() & i2c_send(), resulting in code easire to review.
+>>>>>
+>>>>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>>>>> ---
+>>>>>  hw/i2c/ppc4xx_i2c.c | 13 ++++++++-----
+>>>>>  1 file changed, 8 insertions(+), 5 deletions(-)
+>>>>>
+>>>>> diff --git a/hw/i2c/ppc4xx_i2c.c b/hw/i2c/ppc4xx_i2c.c
+>>>>> index f4c5bc12d36..b3d3da56e38 100644
+>>>>> --- a/hw/i2c/ppc4xx_i2c.c
+>>>>> +++ b/hw/i2c/ppc4xx_i2c.c
+>>>>> @@ -240,11 +240,14 @@ static void ppc4xx_i2c_writeb(void *opaque,
+>>>>> hwaddr addr, uint64_t value,
+>>>>>                          i2c->sts &= ~IIC_STS_ERR;
+>>>>>                      }
+>>>>>                  }
+>>>>> -                if (!(i2c->sts & IIC_STS_ERR) &&
+>>>>> -                    i2c_send_recv(i2c->bus, &i2c->mdata[i], !recv)) {
+>>>>> -                    i2c->sts |= IIC_STS_ERR;
+>>>>> -                    i2c->extsts |= IIC_EXTSTS_XFRA;
+>>>>> -                    break;
+>>>>> +                if (!(i2c->sts & IIC_STS_ERR)) {
+>>>>> +                    if (recv) {
+>>>>> +                        i2c->mdata[i] = i2c_recv(i2c->bus);
+>>>>> +                    } else if (i2c_send(i2c->bus, i2c->mdata[i])) {
+>>>>
+>>>> In the previous patch you checked < 0, it would be nice to be
+>>>> consistent.
+>>>
+>>> I did that first but thought Zoltan wouldn't be happy, then went back :)
+>>>
+>>> I'll fix for the next iteration, thanks.
 >>
->> I guess I can give it an
->> Acked-by: Richard Henderson <richard.henderson@linaro.org>
->>
->> if it helps us move forward.
->>
->>
->> r~
-> 
-> 
+>> I generally had no problem with i2c_send_recv only that its argument
+>> that decides which operation to do was inverted compared to other
+>> similar i2c functions so my original patch just corrected that for
+>> consistency and I was happy with that.
+>
+> But we have to make the maintainer happy too to get patch merged ;)
+>
+>> Having a send_recv in one func
+>> allowed to avoid if-else in some places like these but if you think it's
+>> better without this function at all I can work with that too. I'll have
+>> to check if these changes could break anything. At first sight I'm not
+>> sure errors are handled as before if recv fails but it was years ago I
+>> did the sm501 and ati parts and I forgot how they work so I need to
+>> check again. I'll wait for the final version of the series then and test
+>> that.
+>
+> Thanks, that would be great!
+
+I've tried AmigaOS and MorphOS on sam460ex and mac99 with sm501 and 
+ati-vga and these still work so I think the patches are OK but I did not 
+test other changes to other machines so I did not give a tested-by for the 
+series just some reviewed-by to patches I've verified. (Found a regression 
+with AROS but that's not related to these changes.)
+
+Regards,
+BALATON Zoltan
+--3866299591-853930170-1623973742=:59666--

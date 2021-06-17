@@ -1,60 +1,60 @@
-Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp731815lff;
-        Thu, 17 Jun 2021 09:57:25 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxfQU84qsl139FZO0Y6UFURklrQ0rYdhzCK2IUOSp6gsEQDlTwZqyeU5BtYfpTAuBUYNqMn
-X-Received: by 2002:ac5:c96e:: with SMTP id t14mr1179345vkm.24.1623949045366;
-        Thu, 17 Jun 2021 09:57:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623949045; cv=none;
+Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp731981lff;
+        Thu, 17 Jun 2021 09:57:40 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzOjMGhPPQ9NbRa6qHSoWIH6eut9sYhSFE7ZBALsjtEEFBuZcdNxw52fDC80zFWW0LW/stM
+X-Received: by 2002:a67:ea50:: with SMTP id r16mr1571913vso.11.1623949060061;
+        Thu, 17 Jun 2021 09:57:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623949060; cv=none;
         d=google.com; s=arc-20160816;
-        b=CJrP5OEKAXHixZ7rWDnJn3lIK9LA9f7wrYEJTFw5nSQCvg4nMmJfosjMqsBdQdU18C
-         O/igRwgwXNq5hUcnqatP1ooR8V3PKoJ3HPoLelkkrulg2XdugDvmPr2lfvplOEIGH1if
-         XGZh4H0++SljUwfV4srLQ6WXwgxKemjG9o043G3Ac+1ZqAJD3CnayHwSEpc9AS/iZdLP
-         ThelWqxDCR+Y77roVqjRrFRE+c2doVQVO2A5Bn9IHWu2/J7CqHVgEpONBQn+1AzOA8IX
-         k/5gh66dYhgeoJ2VGLTVl06lmFdH3GysUq68TelTwXzYojvniqydtXhJyjAGNk65m589
-         x6hg==
+        b=XINXkpOJL+NVIjxfJ62+8MtmNnt3N/iNiYkhnS9PaBvWZEOw0+d+LB7MkmeCSyJ6Wc
+         azX08Wjl7ttoXaS/MQ4ZFeIfwyn5On2e/9C7WWb3LujkiX1wUbXAjjVpKuM1VgnoGkRf
+         L2zHWaiD4f1uQCZJP0v3PlrC3eIyyYXIFsD2Xm/mv83/Z8xyEgpmacJgKbQ+ou+T5WIo
+         KRIDIVMkolc8BkYFkfpgHgxY11iEQYmshU/T/07p6d6sKonTyjhCgkxwzFcH0vkcn3Bo
+         zZp+bxEDriSufmuMq63Hp1HvCAjHc+qzjjziZkcKq4EmpVtvv9a+DDBOWEzYDLNZsR/W
+         WvGQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=Pu9uwqAEP30Fm+DIZc+TKd4pvqB9j5boLECYiyxolNg=;
-        b=lLsqBBSnZFis9Tlo2eyJIr6zetZUF41SBn/raSeN6aFiEEfHSZ8Jau0oYAZeThEI8f
-         yI4H0vJPTcUpFHqJktcdRUS/rEfoSu2UIBScWtdwdcV45ojlpAoK+xgERsPEECyq3CiC
-         Iy0F1eoKw6iSwig7u+RUopnaXAQEjNmSYbQEBZxeGRMHi49SEzJNN2ccJPvDYsWuhMLE
-         Xu8FBHluqKSekrjyeVMNquJvMpQFBxURt0lIYoUMicWv/GyLrcSiLbUg3innDtYzpS/p
-         HZB2oKYyOP7M2GTzNATZe78yBbCshRj/hwInsClfspNsfBiuU2JUeir1h/fBEFDDrKCr
-         hibg==
+        bh=/0Ctnk21DJ5cnBQ/qaQ8gH7w7GsXBSXCPcO5SmXUHt8=;
+        b=dZnRtIA+Kmx4meE0E512ek5UfzPwEOlAEtG3TI1OQsmGLOgon/aZ9H+hhi4jAP1fQi
+         C8v863Rthn31nhA8ScpU06vQ/coRPgnVAO+qgY8ZNQIuQP5oPdKD8ISvFWb8H7w9zHim
+         J6sumOcdj7XMbZQEHlbl8cE/jb6hwPAyJFmeGlPfvgxhNR4Lr2b3zpHdAWpyfMFgb3kW
+         WLYTiGJZwrsjQoUq/MzC0iODLhXMWM4az50id3Aq5StzdJCqFEfvGInrTXJaN3HUdUJf
+         VXbKpy8rl7nQqkiYdXGi3FRI2MVEv5tEox0tiea9j2lOyMOyTOoi3Zo1zAnF9lzT9Jau
+         Zknw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=crans.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t16si5403742uad.27.2021.06.17.09.57.25
+        by mx.google.com with ESMTPS id i3si939233uaj.70.2021.06.17.09.57.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 17 Jun 2021 09:57:25 -0700 (PDT)
+        Thu, 17 Jun 2021 09:57:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=crans.org
-Received: from localhost ([::1]:44704 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46176 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ltvKW-0000tB-La
-	for alex.bennee@linaro.org; Thu, 17 Jun 2021 12:57:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57120)
+	id 1ltvKl-0001re-9J
+	for alex.bennee@linaro.org; Thu, 17 Jun 2021 12:57:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57154)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <erdnaxe@crans.org>)
- id 1ltvKK-0000s0-U8; Thu, 17 Jun 2021 12:57:12 -0400
-Received: from zamok.crans.org ([185.230.79.1]:34478)
+ id 1ltvKM-0000tG-Id; Thu, 17 Jun 2021 12:57:14 -0400
+Received: from zamok.crans.org ([185.230.79.1]:34458)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <erdnaxe@crans.org>)
- id 1ltvKH-0005wX-32; Thu, 17 Jun 2021 12:57:12 -0400
+ id 1ltvKH-0005v4-3B; Thu, 17 Jun 2021 12:57:14 -0400
 Received: by zamok.crans.org (Postfix, from userid 11692)
- id 45E4DE013B; Thu, 17 Jun 2021 18:56:58 +0200 (CEST)
+ id 04A0FE0156; Thu, 17 Jun 2021 18:56:57 +0200 (CEST)
 From: Alexandre Iooss <erdnaxe@crans.org>
 To: "open list : All patches CC here" <qemu-devel@nongnu.org>
-Subject: [PATCH v3 3/4] docs/system: arm: Add stm32 boards description
-Date: Thu, 17 Jun 2021 18:56:46 +0200
-Message-Id: <20210617165647.2575955-4-erdnaxe@crans.org>
+Subject: [PATCH v3 1/4] stm32f100: Add the stm32f100 SoC
+Date: Thu, 17 Jun 2021 18:56:44 +0200
+Message-Id: <20210617165647.2575955-2-erdnaxe@crans.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210617165647.2575955-1-erdnaxe@crans.org>
 References: <20210617165647.2575955-1-erdnaxe@crans.org>
@@ -85,114 +85,319 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Alistair Francis <alistair23@gmail.com>, Alexandre Iooss <erdnaxe@crans.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zRU+wUYkL6Pz
+X-TUID: 0jiaOuW+aQUQ
 
-This adds the target guide for Netduino 2, Netduino Plus 2 and STM32VLDISCOVERY.
+This SoC is similar to stm32f205 SoC.
+This will be used by the STM32VLDISCOVERY to create a machine.
 
 Signed-off-by: Alexandre Iooss <erdnaxe@crans.org>
 ---
- MAINTAINERS                |  1 +
- docs/system/arm/stm32.rst  | 66 ++++++++++++++++++++++++++++++++++++++
- docs/system/target-arm.rst |  1 +
- 3 files changed, 68 insertions(+)
- create mode 100644 docs/system/arm/stm32.rst
+ MAINTAINERS                    |   6 ++
+ hw/arm/Kconfig                 |   6 ++
+ hw/arm/meson.build             |   1 +
+ hw/arm/stm32f100_soc.c         | 182 +++++++++++++++++++++++++++++++++
+ include/hw/arm/stm32f100_soc.h |  57 +++++++++++
+ 5 files changed, 252 insertions(+)
+ create mode 100644 hw/arm/stm32f100_soc.c
+ create mode 100644 include/hw/arm/stm32f100_soc.h
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index 0aa8016936..47fb06e5fc 100644
+index 7d9cd29042..62dfa31800 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -896,6 +896,7 @@ M: Alexandre Iooss <erdnaxe@crans.org>
- L: qemu-arm@nongnu.org
+@@ -946,6 +946,12 @@ L: qemu-arm@nongnu.org
  S: Maintained
- F: hw/arm/stm32vldiscovery.c
-+F: docs/system/arm/stm32.rst
+ F: hw/arm/virt-acpi-build.c
  
- Versatile Express
++STM32F100
++M: Alexandre Iooss <erdnaxe@crans.org>
++L: qemu-arm@nongnu.org
++S: Maintained
++F: hw/arm/stm32f100_soc.c
++
+ STM32F205
+ M: Alistair Francis <alistair@alistair23.me>
  M: Peter Maydell <peter.maydell@linaro.org>
-diff --git a/docs/system/arm/stm32.rst b/docs/system/arm/stm32.rst
-new file mode 100644
-index 0000000000..508b92cf86
---- /dev/null
-+++ b/docs/system/arm/stm32.rst
-@@ -0,0 +1,66 @@
-+STMicroelectronics STM32 boards (``netduino2``, ``netduinoplus2``, ``stm32vldiscovery``)
-+========================================================================================
-+
-+The `STM32`_ chips are a family of 32-bit ARM-based microcontroller by
-+STMicroelectronics.
-+
-+.. _STM32: https://www.st.com/en/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus.html
-+
-+The STM32F1 series is based on ARM Cortex-M3 core. The following machines are
-+based on this chip :
-+
-+- ``stm32vldiscovery``  STM32VLDISCOVERY board with STM32F100RBT6 microcontroller
-+
-+The STM32F2 series is based on ARM Cortex-M3 core. The following machines are
-+based on this chip :
-+
-+- ``netduino2``         Netduino 2 board with STM32F205RFT6 microcontroller
-+
-+The STM32F4 series is based on ARM Cortex-M4F core. This series is pin-to-pin
-+compatible with STM32F2 series. The following machines are based on this chip :
-+
-+- ``netduinoplus2``     Netduino Plus 2 board with STM32F405RGT6 microcontroller
-+
-+There are many other STM32 series that are currently not supported by QEMU.
-+
-+Supported devices
-+-----------------
-+
-+ * ARM Cortex-M3, Cortex M4F
-+ * Analog to Digital Converter (ADC)
-+ * EXTI interrupt
-+ * Serial ports (USART)
-+ * SPI controller
-+ * System configuration (SYSCFG)
-+ * Timer controller (TIMER)
-+
-+Missing devices
-+---------------
-+
-+ * Camera interface (DCMI)
-+ * Controller Area Network (CAN)
-+ * Cycle Redundancy Check (CRC) calculation unit
-+ * Digital to Analog Converter (DAC)
-+ * DMA controller
-+ * Ethernet controller
-+ * Flash Interface Unit
-+ * GPIO controller
-+ * I2C controller
-+ * Inter-Integrated Sound (I2S) controller
-+ * Power supply configuration (PWR)
-+ * Random Number Generator (RNG)
-+ * Real-Time Clock (RTC) controller
-+ * Reset and Clock Controller (RCC)
-+ * Secure Digital Input/Output (SDIO) interface
-+ * USB OTG
-+ * Watchdog controller (IWDG, WWDG)
-+
-+Boot options
-+------------
-+
-+The STM32 machines can be started using the ``-kernel`` option to load a
-+firmware. Example:
-+
-+.. code-block:: bash
-+
-+  $ qemu-system-arm -M stm32vldiscovery -kernel firmware.bin
-diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
-index edd013c7bb..addd3d1613 100644
---- a/docs/system/target-arm.rst
-+++ b/docs/system/target-arm.rst
-@@ -96,6 +96,7 @@ undocumented; you can get a complete list by running
-    arm/collie
-    arm/sx1
-    arm/stellaris
-+   arm/stm32
-    arm/virt
-    arm/xlnx-versal-virt
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 67723d9ea6..0bc3ee3e91 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -326,6 +326,12 @@ config RASPI
+     select SDHCI
+     select USB_DWC2
  
++config STM32F100_SOC
++    bool
++    select ARM_V7M
++    select STM32F2XX_USART
++    select STM32F2XX_SPI
++
+ config STM32F205_SOC
+     bool
+     select ARM_V7M
+diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+index be39117b9b..0e637e6a9e 100644
+--- a/hw/arm/meson.build
++++ b/hw/arm/meson.build
+@@ -39,6 +39,7 @@ arm_ss.add(when: 'CONFIG_STRONGARM', if_true: files('strongarm.c'))
+ arm_ss.add(when: 'CONFIG_ALLWINNER_A10', if_true: files('allwinner-a10.c', 'cubieboard.c'))
+ arm_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3.c', 'orangepi.c'))
+ arm_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2835_peripherals.c', 'bcm2836.c', 'raspi.c'))
++arm_ss.add(when: 'CONFIG_STM32F100_SOC', if_true: files('stm32f100_soc.c'))
+ arm_ss.add(when: 'CONFIG_STM32F205_SOC', if_true: files('stm32f205_soc.c'))
+ arm_ss.add(when: 'CONFIG_STM32F405_SOC', if_true: files('stm32f405_soc.c'))
+ arm_ss.add(when: 'CONFIG_XLNX_ZYNQMP_ARM', if_true: files('xlnx-zynqmp.c', 'xlnx-zcu102.c'))
+diff --git a/hw/arm/stm32f100_soc.c b/hw/arm/stm32f100_soc.c
+new file mode 100644
+index 0000000000..0c4a5c6645
+--- /dev/null
++++ b/hw/arm/stm32f100_soc.c
+@@ -0,0 +1,182 @@
++/*
++ * STM32F100 SoC
++ *
++ * Copyright (c) 2021 Alexandre Iooss <erdnaxe@crans.org>
++ * Copyright (c) 2014 Alistair Francis <alistair@alistair23.me>
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
++ * THE SOFTWARE.
++ */
++
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "qemu/module.h"
++#include "hw/arm/boot.h"
++#include "exec/address-spaces.h"
++#include "hw/arm/stm32f100_soc.h"
++#include "hw/qdev-properties.h"
++#include "hw/misc/unimp.h"
++#include "sysemu/sysemu.h"
++
++/* stm32f100_soc implementation is derived from stm32f205_soc */
++
++static const uint32_t usart_addr[STM_NUM_USARTS] = { 0x40013800, 0x40004400,
++    0x40004800 };
++static const uint32_t spi_addr[STM_NUM_SPIS] = { 0x40013000, 0x40003800 };
++
++static const int usart_irq[STM_NUM_USARTS] = {37, 38, 39};
++static const int spi_irq[STM_NUM_SPIS] = {35, 36};
++
++static void stm32f100_soc_initfn(Object *obj)
++{
++    STM32F100State *s = STM32F100_SOC(obj);
++    int i;
++
++    object_initialize_child(obj, "armv7m", &s->armv7m, TYPE_ARMV7M);
++
++    for (i = 0; i < STM_NUM_USARTS; i++) {
++        object_initialize_child(obj, "usart[*]", &s->usart[i],
++                                TYPE_STM32F2XX_USART);
++    }
++
++    for (i = 0; i < STM_NUM_SPIS; i++) {
++        object_initialize_child(obj, "spi[*]", &s->spi[i], TYPE_STM32F2XX_SPI);
++    }
++}
++
++static void stm32f100_soc_realize(DeviceState *dev_soc, Error **errp)
++{
++    STM32F100State *s = STM32F100_SOC(dev_soc);
++    DeviceState *dev, *armv7m;
++    SysBusDevice *busdev;
++    int i;
++
++    MemoryRegion *system_memory = get_system_memory();
++    MemoryRegion *sram = g_new(MemoryRegion, 1);
++    MemoryRegion *flash = g_new(MemoryRegion, 1);
++    MemoryRegion *flash_alias = g_new(MemoryRegion, 1);
++
++    /*
++     * Init flash region
++     * Flash starts at 0x08000000 and then is aliased to boot memory at 0x0
++     */
++    memory_region_init_rom(flash, OBJECT(dev_soc), "STM32F100.flash",
++                           FLASH_SIZE, &error_fatal);
++    memory_region_init_alias(flash_alias, OBJECT(dev_soc),
++                             "STM32F100.flash.alias", flash, 0, FLASH_SIZE);
++    memory_region_add_subregion(system_memory, FLASH_BASE_ADDRESS, flash);
++    memory_region_add_subregion(system_memory, 0, flash_alias);
++
++    /* Init SRAM region */
++    memory_region_init_ram(sram, NULL, "STM32F100.sram", SRAM_SIZE,
++                           &error_fatal);
++    memory_region_add_subregion(system_memory, SRAM_BASE_ADDRESS, sram);
++
++    /* Init ARMv7m */
++    armv7m = DEVICE(&s->armv7m);
++    qdev_prop_set_uint32(armv7m, "num-irq", 61);
++    qdev_prop_set_string(armv7m, "cpu-type", s->cpu_type);
++    qdev_prop_set_bit(armv7m, "enable-bitband", true);
++    object_property_set_link(OBJECT(&s->armv7m), "memory",
++                             OBJECT(get_system_memory()), &error_abort);
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->armv7m), errp)) {
++        return;
++    }
++
++    /* Attach UART (uses USART registers) and USART controllers */
++    for (i = 0; i < STM_NUM_USARTS; i++) {
++        dev = DEVICE(&(s->usart[i]));
++        qdev_prop_set_chr(dev, "chardev", serial_hd(i));
++        if (!sysbus_realize(SYS_BUS_DEVICE(&s->usart[i]), errp)) {
++            return;
++        }
++        busdev = SYS_BUS_DEVICE(dev);
++        sysbus_mmio_map(busdev, 0, usart_addr[i]);
++        sysbus_connect_irq(busdev, 0, qdev_get_gpio_in(armv7m, usart_irq[i]));
++    }
++
++    /* SPI 1 and 2 */
++    for (i = 0; i < STM_NUM_SPIS; i++) {
++        dev = DEVICE(&(s->spi[i]));
++        if (!sysbus_realize(SYS_BUS_DEVICE(&s->spi[i]), errp)) {
++            return;
++        }
++        busdev = SYS_BUS_DEVICE(dev);
++        sysbus_mmio_map(busdev, 0, spi_addr[i]);
++        sysbus_connect_irq(busdev, 0, qdev_get_gpio_in(armv7m, spi_irq[i]));
++    }
++
++    create_unimplemented_device("timer[2]",  0x40000000, 0x400);
++    create_unimplemented_device("timer[3]",  0x40000400, 0x400);
++    create_unimplemented_device("timer[4]",  0x40000800, 0x400);
++    create_unimplemented_device("timer[6]",  0x40001000, 0x400);
++    create_unimplemented_device("timer[7]",  0x40001400, 0x400);
++    create_unimplemented_device("RTC",       0x40002800, 0x400);
++    create_unimplemented_device("WWDG",      0x40002C00, 0x400);
++    create_unimplemented_device("IWDG",      0x40003000, 0x400);
++    create_unimplemented_device("I2C1",      0x40005400, 0x400);
++    create_unimplemented_device("I2C2",      0x40005800, 0x400);
++    create_unimplemented_device("BKP",       0x40006C00, 0x400);
++    create_unimplemented_device("PWR",       0x40007000, 0x400);
++    create_unimplemented_device("DAC",       0x40007400, 0x400);
++    create_unimplemented_device("CEC",       0x40007800, 0x400);
++    create_unimplemented_device("AFIO",      0x40010000, 0x400);
++    create_unimplemented_device("EXTI",      0x40010400, 0x400);
++    create_unimplemented_device("GPIOA",     0x40010800, 0x400);
++    create_unimplemented_device("GPIOB",     0x40010C00, 0x400);
++    create_unimplemented_device("GPIOC",     0x40011000, 0x400);
++    create_unimplemented_device("GPIOD",     0x40011400, 0x400);
++    create_unimplemented_device("GPIOE",     0x40011800, 0x400);
++    create_unimplemented_device("ADC1",      0x40012400, 0x400);
++    create_unimplemented_device("timer[1]",  0x40012C00, 0x400);
++    create_unimplemented_device("timer[15]", 0x40014000, 0x400);
++    create_unimplemented_device("timer[16]", 0x40014400, 0x400);
++    create_unimplemented_device("timer[17]", 0x40014800, 0x400);
++    create_unimplemented_device("DMA",       0x40020000, 0x400);
++    create_unimplemented_device("RCC",       0x40021000, 0x400);
++    create_unimplemented_device("Flash Int", 0x40022000, 0x400);
++    create_unimplemented_device("CRC",       0x40023000, 0x400);
++}
++
++static Property stm32f100_soc_properties[] = {
++    DEFINE_PROP_STRING("cpu-type", STM32F100State, cpu_type),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
++static void stm32f100_soc_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->realize = stm32f100_soc_realize;
++    device_class_set_props(dc, stm32f100_soc_properties);
++}
++
++static const TypeInfo stm32f100_soc_info = {
++    .name          = TYPE_STM32F100_SOC,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(STM32F100State),
++    .instance_init = stm32f100_soc_initfn,
++    .class_init    = stm32f100_soc_class_init,
++};
++
++static void stm32f100_soc_types(void)
++{
++    type_register_static(&stm32f100_soc_info);
++}
++
++type_init(stm32f100_soc_types)
+diff --git a/include/hw/arm/stm32f100_soc.h b/include/hw/arm/stm32f100_soc.h
+new file mode 100644
+index 0000000000..71bffcf4fd
+--- /dev/null
++++ b/include/hw/arm/stm32f100_soc.h
+@@ -0,0 +1,57 @@
++/*
++ * STM32F100 SoC
++ *
++ * Copyright (c) 2021 Alexandre Iooss <erdnaxe@crans.org>
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
++ * THE SOFTWARE.
++ */
++
++#ifndef HW_ARM_STM32F100_SOC_H
++#define HW_ARM_STM32F100_SOC_H
++
++#include "hw/char/stm32f2xx_usart.h"
++#include "hw/ssi/stm32f2xx_spi.h"
++#include "hw/arm/armv7m.h"
++#include "qom/object.h"
++
++#define TYPE_STM32F100_SOC "stm32f100-soc"
++OBJECT_DECLARE_SIMPLE_TYPE(STM32F100State, STM32F100_SOC)
++
++#define STM_NUM_USARTS 3
++#define STM_NUM_SPIS 2
++
++#define FLASH_BASE_ADDRESS 0x08000000
++#define FLASH_SIZE (128 * 1024)
++#define SRAM_BASE_ADDRESS 0x20000000
++#define SRAM_SIZE (8 * 1024)
++
++struct STM32F100State {
++    /*< private >*/
++    SysBusDevice parent_obj;
++
++    /*< public >*/
++    char *cpu_type;
++
++    ARMv7MState armv7m;
++
++    STM32F2XXUsartState usart[STM_NUM_USARTS];
++    STM32F2XXSPIState spi[STM_NUM_SPIS];
++};
++
++#endif
 -- 
 2.25.1
 

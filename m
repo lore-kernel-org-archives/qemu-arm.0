@@ -1,240 +1,217 @@
-Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp494136lff;
-        Thu, 17 Jun 2021 05:32:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzstBEYz9tHOFXjYBeAr9HQ/9tpL9AGrkyKqmUPs1UI3otITAvuLNsa9M2B2bFGzSWzkDWV
-X-Received: by 2002:a17:906:9bce:: with SMTP id de14mr5044050ejc.353.1623933157362;
-        Thu, 17 Jun 2021 05:32:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623933157; cv=none;
+Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp496135lff;
+        Thu, 17 Jun 2021 05:35:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzjKZ12P/YcuJCxh7e4TkvAQ9v54XuOXx9SwH7rufQqLDhIAj/LrPVGSaA5xIrL5G+L0jda
+X-Received: by 2002:a05:6122:7d2:: with SMTP id l18mr3696814vkr.20.1623933305086;
+        Thu, 17 Jun 2021 05:35:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623933305; cv=none;
         d=google.com; s=arc-20160816;
-        b=HY7YgeVwZb1ERWWo7YP67KjRDQ06BJxdbQm1nVcbHfUBHqsqBLEvIxxO5wS8AM9H9n
-         92ZtCbqBuZgkP/AjcLqWevWGYkWvSc2m+n6lNICyXY6WvlAbPH9+rkCQD59+B59OaUK4
-         K65P8mrGNfC3hcHVeRzgpgX0zRJbarKOi405TFCRl5M2AkrcAsCE2WJUXBL8TSpd51zA
-         Xyb2e/YixLgrv8SurP/QbmQoSLZXYmsBn7Rx4QlIcZZ6LN+5Lg2ITr4oz92WLGYTG8/p
-         ExdI2v4CyigtgEFQS4SpBBcwr0wsNEq+6COPvRAweAPKguauqYX+XeKT5eRPdI/w5kPZ
-         AsFA==
+        b=hhiAhsiI7luvusiv9y0BfiFUFcAK9RvQhEhqum2inqpRNBRQluEnrO2LnhCkECFcMp
+         KOrXPSZrZc2E+iGSoE+s4F6LswBMsRJI8bOMvAGHEBxjtyye2qCj+S0TZpINqQ21CgzA
+         BMqeGK7pHH3WXlGE2I87btVVNAa8mo41QUWhgApGtoWtrJlFmbWs0QsnKW69njzbiHju
+         gJ1y8alN3X7eyWPbp0pmeF0lTkYCIiTPgICMST0td3dwhthjFnz5ij+onqUBYJzNuN92
+         yt5xBTyWVPQfyjWvmO56mFQ8BCJr9VF4mrfCbzIUwa/0fY+R4bpOFFnNe5txlK2rVzb9
+         3wUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=6f3B20YB7jO7BQgfTo9BwyrubdLLqVfugqIcbJ7LZZ4=;
-        b=Dv3dB1U2NVraiQwabGOlqPrviKb6ES/CP/s+oEIyRn8lqXM9N6q7ihYYzvCIKmWULx
-         vfTX/gEGrl/xPu4lLzeBZJtsEqoqD6W6OA0ig9djaBynKXhr57JLEYbrCGa+OH6Xn+xt
-         TMFQZdq7FRGXSofuYZifMw+Gz5mO+V+0Rcgen999tvtWmUIR/fmd1zyfyR074GanN2mh
-         4PAwsvjGLyA0+nVKiVMu2BA6EncsGWXUpdUs8t7jSuGZfOhcQ7hick85YArcuspwNf2K
-         HeonUeRh1k9gcFY3ZBD001dQksnFHMH/8ZFHidXfelj6kHD/iIsG39Epogvw/9ynooha
-         86Rw==
+        bh=7aDnNnERKIOdMfDpMw/E34SJCR3x0rNEDhP50IL7Vl8=;
+        b=PHFB3JlQQJURHi4tWXRLBpsTr3BFa1Y3u60dNDqCQpyjFboeL79IDMDHNRpb/l36Kn
+         UEFWQ25SDAZ14u7GVVWPiIGiKohUS9M++u949XGkB4/67G8M84SoFhRjGFjsLZ0YOHPJ
+         Xd6F3XzWguxi+hKXYc8+TaysZ3mu5HzWc6JVOvAfIEyyVhFW/lpeb40mTmAkDUSZkb+m
+         ZSG4sEwJwWca/bpGGZ9JuUVbGbHKVxV/0XGYuteHnIhK7NAdqVv4OPbGNFrk07F2AuLo
+         MsRHEtGmJuv81VWjhvrmj70TiZqeSQdErngy/VzRNPRtrVR15sZM+Gc3sKuRwolswaOs
+         3fGw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mNEC8PP4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=S9NmXM34;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x15si5106396edd.555.2021.06.17.05.32.37
+        by mx.google.com with ESMTPS id n7si3612148vsa.266.2021.06.17.05.35.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 17 Jun 2021 05:32:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 17 Jun 2021 05:35:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mNEC8PP4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=S9NmXM34;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40832 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44684 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ltrCG-0004wE-B4
-	for alex.bennee@linaro.org; Thu, 17 Jun 2021 08:32:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60860)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ltrEe-0007Xs-7X
+	for alex.bennee@linaro.org; Thu, 17 Jun 2021 08:35:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60772)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ltqx4-0001et-Tc
- for qemu-arm@nongnu.org; Thu, 17 Jun 2021 08:16:54 -0400
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434]:33469)
+ id 1ltqx1-0001al-Az
+ for qemu-devel@nongnu.org; Thu, 17 Jun 2021 08:16:51 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a]:37609)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ltqwv-000722-SP
- for qemu-arm@nongnu.org; Thu, 17 Jun 2021 08:16:54 -0400
-Received: by mail-wr1-x434.google.com with SMTP id d11so4169520wrm.0
- for <qemu-arm@nongnu.org>; Thu, 17 Jun 2021 05:16:45 -0700 (PDT)
+ id 1ltqwt-00070E-HC
+ for qemu-devel@nongnu.org; Thu, 17 Jun 2021 08:16:51 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ f16-20020a05600c1550b02901b00c1be4abso6248474wmg.2
+ for <qemu-devel@nongnu.org>; Thu, 17 Jun 2021 05:16:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=6f3B20YB7jO7BQgfTo9BwyrubdLLqVfugqIcbJ7LZZ4=;
- b=mNEC8PP45JaToixzpnIqfPs1loGqBh33eaQ77lYGiFk71KSMUxfL5TRBDGTixsIb5K
- 2QEHjQ9pbLFEdEtLoxMT6QzJlcJWnXn59dQIX5sBxFUuWAV8BznXQl/fI+3Oc/5dbLAx
- QBVnRCo14lCnxOJSQbZoJBbjuxgJLbkclDAoUBZYcUr6Aab4tTovaP0popKXdudBOcBX
- +U4c/B+ctEPJIemqAb+lMQL2sV89GpPfFChnYN6zaXNnBRjswMCA4dSNKTiGpRVnn2XF
- +EPId0A55hoOVHy9JDYwS59wmWqprN6H87oaHlOI7p62KQK4DIyXeAp+PMlp9Bl0Xqr0
- kUBg==
+ bh=7aDnNnERKIOdMfDpMw/E34SJCR3x0rNEDhP50IL7Vl8=;
+ b=S9NmXM34cccfpWN3RIgJIbLy4nPBGPUxDJhpaeuNVf3U2lZvvBl3ZzjusVZw+U28P6
+ MdNpoEfjwaIr69SV2rVcv7fheFaZtKG3DXNUIxoSd5R/vZMDWtyFsa7AcSiCHdGo/PFz
+ 80+j72EZqW/tiHZOo6r+5ybYNA7bd18WuGRCy+7Uash5nQe0fll7m6A+d/1yOZZ4LaCa
+ oQMQCaKjYgWO99rZN4mr7e3U7eoJkdPMDcc3awFq797IZP5upPRJ5kNEYUef5sMQDQeD
+ efqTqL7KpZ5srFZDPRtRLEpmR7hsusvsvaCsKuC4akX3aQoknsxZg9Xkp51gN//BGHe6
+ r0yg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=6f3B20YB7jO7BQgfTo9BwyrubdLLqVfugqIcbJ7LZZ4=;
- b=t9x5Z4KyhlguidaS4zH6bgTWX7XBdEhhux6t9QDTvyAARKVWEKM8iH19vcoO5jgqxx
- squ/Yty9FhMX4VCSGzgnE+jJrUpn1j0Z97jzAp4HKkYpchYnYfycWh4uBK/IIEnUcYHC
- 1jzz7SZYL7JVkMBw2d84kWFRnJi+jU2V/uXVLI+ObT0wqIEgOeqPRjK+Tvz0am/fvxll
- 54gaZsH9ijbapaL511qoEd/Kva9/WvU+BtW7XiYbTQdDGY7IpwiIFpJLSSjoKIq5avM1
- j6KHnPkz1FUme17RpDLFBxXtIEV2UV1KMxQHVaApezR2xZ7YIgsWq6DhtEyeAOtVvVQ7
- uKyA==
-X-Gm-Message-State: AOAM53103ix7E6VgNqgXK74fwZVlEilDztbwGURWo66cYWbPRW2UW4Xq
- YT4v46hh3RhvzXtd49N+QFw/u3YpeMPXaQ==
-X-Received: by 2002:a5d:6945:: with SMTP id r5mr5347314wrw.249.1623932204405; 
- Thu, 17 Jun 2021 05:16:44 -0700 (PDT)
+ bh=7aDnNnERKIOdMfDpMw/E34SJCR3x0rNEDhP50IL7Vl8=;
+ b=VE81dJ/P64iTQEUHm2gLyx4lH7STsy7BgMCUzSnwJrOcY1bk8IgVlurAa39UQix6X/
+ WysErP7dC1qrNeGjccJWBGJPOHYobkz3sOCrQBkNCB8xZfIT+TlsNh2h1nj2vxVvvbCM
+ W5B8aeTaN9P6y3TjDVlDZwp6p0lqvOIr1O4shB+OQLtcd/ak4HGyytj6F3Cq2WU6VTFj
+ 2GSVuuinMiHgEEwjFQU18m8JOz0F0R++o4qZeMDe6CWoTkwFX7S92G/ujY6NVvy8pQu/
+ +pLSNubAe8lQImBkBT+zCizAOWfd9P6SRSBwY8jdiio0uO1eXpga/B66h9I8nefMm2mX
+ 38uw==
+X-Gm-Message-State: AOAM532zYtfjvVx90RLMUHiDpIvmMosmcWPunjgcRnuojIEqQX5GUTqd
+ XDyuroIuYDXfYPKR6oEW6gciJw==
+X-Received: by 2002:a7b:cb01:: with SMTP id u1mr4778083wmj.188.1623932202149; 
+ Thu, 17 Jun 2021 05:16:42 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id a1sm6961970wra.63.2021.06.17.05.16.43
+ by smtp.gmail.com with ESMTPSA id a1sm6961970wra.63.2021.06.17.05.16.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 17 Jun 2021 05:16:44 -0700 (PDT)
+ Thu, 17 Jun 2021 05:16:41 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v3 18/44] target/arm: Implement MVE VMULL
-Date: Thu, 17 Jun 2021 13:16:02 +0100
-Message-Id: <20210617121628.20116-19-peter.maydell@linaro.org>
+Subject: [PATCH v3 15/44] target/arm: Implement MVE VMAX, VMIN
+Date: Thu, 17 Jun 2021 13:15:59 +0100
+Message-Id: <20210617121628.20116-16-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210617121628.20116-1-peter.maydell@linaro.org>
 References: <20210617121628.20116-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x434.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Richard Henderson <richard.henderson@linaro.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4hhLwHfr8+r7
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 5a+5cl8lCZL0
 
-Implement the MVE VMULL insn, which multiplies two single
-width integer elements to produce a double width result.
+Implement the MVE VMAX and VMIN insns.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
  target/arm/helper-mve.h    | 14 ++++++++++++++
  target/arm/mve.decode      |  5 +++++
- target/arm/mve_helper.c    | 34 ++++++++++++++++++++++++++++++++++
+ target/arm/mve_helper.c    | 14 ++++++++++++++
  target/arm/translate-mve.c |  4 ++++
- 4 files changed, 57 insertions(+)
+ 4 files changed, 37 insertions(+)
 
 diff --git a/target/arm/helper-mve.h b/target/arm/helper-mve.h
-index 02bef53ed41..9bbeb7ec49d 100644
+index 0e496971f02..5181d3b9413 100644
 --- a/target/arm/helper-mve.h
 +++ b/target/arm/helper-mve.h
-@@ -130,3 +130,17 @@ DEF_HELPER_FLAGS_4(mve_vhsubsw, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
- DEF_HELPER_FLAGS_4(mve_vhsubub, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
- DEF_HELPER_FLAGS_4(mve_vhsubuh, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
- DEF_HELPER_FLAGS_4(mve_vhsubuw, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
+@@ -95,3 +95,17 @@ DEF_HELPER_FLAGS_4(mve_vrmulhsw, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
+ DEF_HELPER_FLAGS_4(mve_vrmulhub, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
+ DEF_HELPER_FLAGS_4(mve_vrmulhuh, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
+ DEF_HELPER_FLAGS_4(mve_vrmulhuw, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
 +
-+DEF_HELPER_FLAGS_4(mve_vmullbsb, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
-+DEF_HELPER_FLAGS_4(mve_vmullbsh, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
-+DEF_HELPER_FLAGS_4(mve_vmullbsw, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
-+DEF_HELPER_FLAGS_4(mve_vmullbub, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
-+DEF_HELPER_FLAGS_4(mve_vmullbuh, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
-+DEF_HELPER_FLAGS_4(mve_vmullbuw, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++DEF_HELPER_FLAGS_4(mve_vmaxsb, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++DEF_HELPER_FLAGS_4(mve_vmaxsh, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++DEF_HELPER_FLAGS_4(mve_vmaxsw, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++DEF_HELPER_FLAGS_4(mve_vmaxub, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++DEF_HELPER_FLAGS_4(mve_vmaxuh, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++DEF_HELPER_FLAGS_4(mve_vmaxuw, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
 +
-+DEF_HELPER_FLAGS_4(mve_vmulltsb, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
-+DEF_HELPER_FLAGS_4(mve_vmulltsh, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
-+DEF_HELPER_FLAGS_4(mve_vmulltsw, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
-+DEF_HELPER_FLAGS_4(mve_vmulltub, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
-+DEF_HELPER_FLAGS_4(mve_vmulltuh, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
-+DEF_HELPER_FLAGS_4(mve_vmulltuw, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++DEF_HELPER_FLAGS_4(mve_vminsb, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++DEF_HELPER_FLAGS_4(mve_vminsh, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++DEF_HELPER_FLAGS_4(mve_vminsw, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++DEF_HELPER_FLAGS_4(mve_vminub, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++DEF_HELPER_FLAGS_4(mve_vminuh, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
++DEF_HELPER_FLAGS_4(mve_vminuw, TCG_CALL_NO_WG, void, env, ptr, ptr, ptr)
 diff --git a/target/arm/mve.decode b/target/arm/mve.decode
-index 241d1c44c19..5a480d61cd6 100644
+index 4ab6c9dba90..42d5504500c 100644
 --- a/target/arm/mve.decode
 +++ b/target/arm/mve.decode
-@@ -101,6 +101,11 @@ VHADD_U          111 1 1111 0 . .. ... 0 ... 0 0000 . 1 . 0 ... 0 @2op
- VHSUB_S          111 0 1111 0 . .. ... 0 ... 0 0010 . 1 . 0 ... 0 @2op
- VHSUB_U          111 1 1111 0 . .. ... 0 ... 0 0010 . 1 . 0 ... 0 @2op
+@@ -88,6 +88,11 @@ VMULH_U          111 1 1110 0 . .. ...1 ... 0 1110 . 0 . 0 ... 1 @2op
+ VRMULH_S         111 0 1110 0 . .. ...1 ... 1 1110 . 0 . 0 ... 1 @2op
+ VRMULH_U         111 1 1110 0 . .. ...1 ... 1 1110 . 0 . 0 ... 1 @2op
  
-+VMULL_BS         111 0 1110 0 . .. ... 1 ... 0 1110 . 0 . 0 ... 0 @2op
-+VMULL_BU         111 1 1110 0 . .. ... 1 ... 0 1110 . 0 . 0 ... 0 @2op
-+VMULL_TS         111 0 1110 0 . .. ... 1 ... 1 1110 . 0 . 0 ... 0 @2op
-+VMULL_TU         111 1 1110 0 . .. ... 1 ... 1 1110 . 0 . 0 ... 0 @2op
++VMAX_S           111 0 1111 0 . .. ... 0 ... 0 0110 . 1 . 0 ... 0 @2op
++VMAX_U           111 1 1111 0 . .. ... 0 ... 0 0110 . 1 . 0 ... 0 @2op
++VMIN_S           111 0 1111 0 . .. ... 0 ... 0 0110 . 1 . 1 ... 0 @2op
++VMIN_U           111 1 1111 0 . .. ... 0 ... 0 0110 . 1 . 1 ... 0 @2op
 +
  # Vector miscellaneous
  
  VCLS             1111 1111 1 . 11 .. 00 ... 0 0100 01 . 0 ... 0 @1op
 diff --git a/target/arm/mve_helper.c b/target/arm/mve_helper.c
-index a89f6e3b01b..4bb4b6ce02e 100644
+index 1f606e0ae70..888d74d5b1c 100644
 --- a/target/arm/mve_helper.c
 +++ b/target/arm/mve_helper.c
-@@ -364,6 +364,26 @@ DO_1OP(vfnegs, 8, uint64_t, DO_FNEGS)
-     DO_2OP(OP##h, 2, int16_t, FN)               \
-     DO_2OP(OP##w, 4, int32_t, FN)
+@@ -358,6 +358,12 @@ DO_1OP(vfnegs, 8, uint64_t, DO_FNEGS)
+     DO_2OP(OP##h, 2, uint16_t, FN)              \
+     DO_2OP(OP##w, 4, uint32_t, FN)
  
-+/*
-+ * "Long" operations where two half-sized inputs (taken from either the
-+ * top or the bottom of the input vector) produce a double-width result.
-+ * Here ESIZE, TYPE are for the input, and LESIZE, LTYPE for the output.
-+ */
-+#define DO_2OP_L(OP, TOP, ESIZE, TYPE, LESIZE, LTYPE, FN)               \
-+    void HELPER(glue(mve_, OP))(CPUARMState *env, void *vd, void *vn, void *vm) \
-+    {                                                                   \
-+        LTYPE *d = vd;                                                  \
-+        TYPE *n = vn, *m = vm;                                          \
-+        uint16_t mask = mve_element_mask(env);                          \
-+        unsigned le;                                                    \
-+        for (le = 0; le < 16 / LESIZE; le++, mask >>= LESIZE) {         \
-+            LTYPE r = FN((LTYPE)n[H##ESIZE(le * 2 + TOP)],              \
-+                         m[H##ESIZE(le * 2 + TOP)]);                    \
-+            mergemask(&d[H##LESIZE(le)], r, mask);                      \
-+        }                                                               \
-+        mve_advance_vpt(env);                                           \
-+    }
++/* provide signed 2-op helpers for all sizes */
++#define DO_2OP_S(OP, FN)                        \
++    DO_2OP(OP##b, 1, int8_t, FN)                \
++    DO_2OP(OP##h, 2, int16_t, FN)               \
++    DO_2OP(OP##w, 4, int32_t, FN)
 +
  #define DO_AND(N, M)  ((N) & (M))
  #define DO_BIC(N, M)  ((N) & ~(M))
  #define DO_ORR(N, M)  ((N) | (M))
-@@ -384,6 +404,20 @@ DO_2OP_U(vadd, DO_ADD)
- DO_2OP_U(vsub, DO_SUB)
- DO_2OP_U(vmul, DO_MUL)
- 
-+DO_2OP_L(vmullbsb, 0, 1, int8_t, 2, int16_t, DO_MUL)
-+DO_2OP_L(vmullbsh, 0, 2, int16_t, 4, int32_t, DO_MUL)
-+DO_2OP_L(vmullbsw, 0, 4, int32_t, 8, int64_t, DO_MUL)
-+DO_2OP_L(vmullbub, 0, 1, uint8_t, 2, uint16_t, DO_MUL)
-+DO_2OP_L(vmullbuh, 0, 2, uint16_t, 4, uint32_t, DO_MUL)
-+DO_2OP_L(vmullbuw, 0, 4, uint32_t, 8, uint64_t, DO_MUL)
+@@ -425,3 +431,11 @@ DO_2OP(vrmulhsw, 4, int32_t, do_rmulh_w)
+ DO_2OP(vrmulhub, 1, uint8_t, do_rmulh_b)
+ DO_2OP(vrmulhuh, 2, uint16_t, do_rmulh_h)
+ DO_2OP(vrmulhuw, 4, uint32_t, do_rmulh_w)
 +
-+DO_2OP_L(vmulltsb, 1, 1, int8_t, 2, int16_t, DO_MUL)
-+DO_2OP_L(vmulltsh, 1, 2, int16_t, 4, int32_t, DO_MUL)
-+DO_2OP_L(vmulltsw, 1, 4, int32_t, 8, int64_t, DO_MUL)
-+DO_2OP_L(vmulltub, 1, 1, uint8_t, 2, uint16_t, DO_MUL)
-+DO_2OP_L(vmulltuh, 1, 2, uint16_t, 4, uint32_t, DO_MUL)
-+DO_2OP_L(vmulltuw, 1, 4, uint32_t, 8, uint64_t, DO_MUL)
++#define DO_MAX(N, M)  ((N) >= (M) ? (N) : (M))
++#define DO_MIN(N, M)  ((N) >= (M) ? (M) : (N))
 +
- /*
-  * Because the computation type is at least twice as large as required,
-  * these work for both signed and unsigned source types.
++DO_2OP_S(vmaxs, DO_MAX)
++DO_2OP_U(vmaxu, DO_MAX)
++DO_2OP_S(vmins, DO_MIN)
++DO_2OP_U(vminu, DO_MIN)
 diff --git a/target/arm/translate-mve.c b/target/arm/translate-mve.c
-index f593d3693b9..1cadc3b04da 100644
+index bc66058fd38..107c393a997 100644
 --- a/target/arm/translate-mve.c
 +++ b/target/arm/translate-mve.c
-@@ -361,3 +361,7 @@ DO_2OP(VHADD_S, vhadds)
- DO_2OP(VHADD_U, vhaddu)
- DO_2OP(VHSUB_S, vhsubs)
- DO_2OP(VHSUB_U, vhsubu)
-+DO_2OP(VMULL_BS, vmullbs)
-+DO_2OP(VMULL_BU, vmullbu)
-+DO_2OP(VMULL_TS, vmullts)
-+DO_2OP(VMULL_TU, vmulltu)
+@@ -351,3 +351,7 @@ DO_2OP(VMULH_S, vmulhs)
+ DO_2OP(VMULH_U, vmulhu)
+ DO_2OP(VRMULH_S, vrmulhs)
+ DO_2OP(VRMULH_U, vrmulhu)
++DO_2OP(VMAX_S, vmaxs)
++DO_2OP(VMAX_U, vmaxu)
++DO_2OP(VMIN_S, vmins)
++DO_2OP(VMIN_U, vminu)
 -- 
 2.20.1
 

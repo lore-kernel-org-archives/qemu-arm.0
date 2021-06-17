@@ -1,65 +1,428 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id r3sm5301204wmq.8.2021.06.17.11.02.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 17 Jun 2021 11:02:32 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id D3AD01FF7E;
-	Thu, 17 Jun 2021 19:02:31 +0100 (BST)
-References: <20210604155312.15902-1-alex.bennee@linaro.org>
- <20210604155312.15902-44-alex.bennee@linaro.org>
- <51fbcf63-a205-8848-95f7-b2c7e74754a9@linaro.org>
-User-agent: mu4e 1.5.13; emacs 28.0.50
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, Claudio Fontana <cfontana@suse.de>
-Subject: Re: [PATCH v16 43/99] target/arm: move a15 cpu model away from the
- TCG-only models
-Date: Thu, 17 Jun 2021 19:01:43 +0100
-In-reply-to: <51fbcf63-a205-8848-95f7-b2c7e74754a9@linaro.org>
-Message-ID: <87v96ce5e0.fsf@linaro.org>
+Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp845129lff;
+        Thu, 17 Jun 2021 12:22:56 -0700 (PDT)
+X-Received: by 2002:aa7:db52:: with SMTP id n18mr3154157edt.170.1623957776511;
+        Thu, 17 Jun 2021 12:22:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623957776; cv=none;
+        d=google.com; s=arc-20160816;
+        b=BYj1SdfckF62tOSVmfjTy7j9VCuYVS6kS4Mx8LBxWctIpL6ASo/wqpAMkeMY9KMXVT
+         5iCuIB9RyKVF/8rp4UR326KknrksRQqfufCMpr5lcMXc9az/g/XtEko92eGZzI4dr5AS
+         +h5oLsVCzOLScfypGKiGgd+xZvJwt4MfF6gz9SLHgIjKyE9TrN5faBzjnOFcWcAqjL+L
+         l7GaZvBzU9fqQKprwkIutZ47//Hun2wIP5NBI7433opl/fHqe7CeljKMxDj8/voGXbzL
+         IxXjkAb7nbMBH7yykarqXemOMtyIUHdcTJgvXwBufsQQk8InpJP1GriB3tLBdTmWjAcu
+         Y/PQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=zrG7L2FV1w06vgFqT2/2igabM5UFxRrsRY1/b1/itlw=;
+        b=sBlYMaR/2T5mAKppWcGLzBmPmDeLVANbJlrnNpAZz7041YEAacQ1mvsNB/XkMyRnHz
+         T3gKykw1wH3uhd1XHYbGG3KqF+NGuCNk5IAdpevd/NeqjWSD1TAdLBc61fi57P/8W3yZ
+         fWejrAEJpoY2aAey2u9M0eOuFP3e6lJxUCOXHQmi+g15kN0gTXjYB+WNuJ76j91imGe0
+         HdiWoDohOa2p/E2dwTh8otxByRTAZuyp+eqqYJfzH+OmstSWSCQBkU+3FGJJFZVPu/Mp
+         9wz59fywNUVolGf1llaMXxDgJhLxmjQVwQyXkza0SLs7LhD26wuUTvUSfrNHDD1Df8q+
+         +HRg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Z02Li6Sj;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id gu5sor3777593ejb.52.2021.06.17.12.22.56
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Thu, 17 Jun 2021 12:22:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Z02Li6Sj;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=zrG7L2FV1w06vgFqT2/2igabM5UFxRrsRY1/b1/itlw=;
+        b=Z02Li6Sj1Xfx6Rj76S1+fPAE2dtulmmZRlNko4G5rFdTffugDnHDBNERNrNj7ml4mN
+         fy8eRtN5XYpJXuzlN7qzLyBNyu6xtSW4KS5LrKJEc7/qVgbrpIAAHBA0pfzGuShkSopY
+         VzLdh1zWJA8eVY9p/jWsqTcbhOmqtpV4uTnvy9HqwMEZmLo97U1Xnay1sfpXhXjGVtLI
+         Bi+sX4mIVVSb7D7Fu1E5vPyGZLqgXfjJVjU2BbJPwNh+LU8CwCds9k/lWI3QxiJDyzXW
+         QNsaeWlONJNt0wwXgQfpCT2dBg1s8bc+X35+JK3RPVoYSMl9N05xNx3weX+9CPHePnn+
+         JHnw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=zrG7L2FV1w06vgFqT2/2igabM5UFxRrsRY1/b1/itlw=;
+        b=YWAggwmHMf5ay3+tN0JTW56BlNIR7OR5XqRsS2fFbXtjDEVZzJIh0C7t0tTMfcIi8h
+         n4iJ/QgBJTAX6DbmXPG7aO42flXYzaljHvnanxIUo/VD+QOJ70Yw5YzGh7xGFjYHQTXq
+         9QSTbYfKUdf9ZU8dhsqNyoiVYG+5lsAX/FTPjSltPaBZ6pPo+oOCaA4yl6r4nrU2FJLG
+         tzb//Cc5PABx3+oB/FiXR9kMZsGAD3ulnnsGhYTKkhpGPkFvdvev+S1JumDbAqjm9cuy
+         Am+YevjlYQJIXfvqZemLxWyxM3TuN8SCQ9dvysNasaw+CXJm5bnJPdvOjJKHg7XY1NyX
+         Wreg==
+X-Gm-Message-State: AOAM533340UQ0TFzlGfglQIe/jocgVb+MbAWrKw6qGB5G4RlGvn8xvYa
+	Y3A4shiLlxWr85w2Hdb/WXors9a9sAL+L0kloqk/E+A5OHfcOwfLcOM=
+X-Google-Smtp-Source: ABdhPJxuN4fra0d/FWB8RmAe30NkrF/588AqN6xC4XJ5ryWBG4+CIcUsNZr/NhRx1Gz2QBPcBCcfgWshjvThaqX9K7M=
+X-Received: by 2002:a17:907:98eb:: with SMTP id ke11mr5259049ejc.85.1623957776114;
+ Thu, 17 Jun 2021 12:22:56 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+References: <20210615165800.23265-1-alex.bennee@linaro.org> <20210615165800.23265-2-alex.bennee@linaro.org>
+In-Reply-To: <20210615165800.23265-2-alex.bennee@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 17 Jun 2021 20:22:20 +0100
+Message-ID: <CAFEAcA8t8q8pJNOOYK-zkDtME7hOWfXVUj3+HLVMRkFzY6Ei1g@mail.gmail.com>
+Subject: Re: [PATCH v3 1/2] semihosting/arm-compat: replace heuristic for
+ softmmu SYS_HEAPINFO
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Andrew Strauss <astrauss11@gmail.com>, 
+	qemu-arm <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: t8UJ9GYJ4ldx
+X-TUID: +duJudX3J/Nm
 
-
-Richard Henderson <richard.henderson@linaro.org> writes:
-
-> On 6/4/21 8:52 AM, Alex Benn=C3=A9e wrote:
->> From: Claudio Fontana<cfontana@suse.de>
->> Cortex-A15 is the only ARM cpu class we need in KVM too.
->> We will be able to move it to tcg/ once the board code and
->> configurations
->> are fixed.
->> Signed-off-by: Claudio Fontana<cfontana@suse.de>
->> Signed-off-by: Alex Benn=C3=A9e<alex.bennee@linaro.org>
->> ---
->>   target/arm/cpu32.h   |  4 +++
->>   target/arm/cpu32.c   | 73 ++++++++++++++++++++++++++++++++++++++++++++
->>   target/arm/cpu_tcg.c | 67 ----------------------------------------
->>   3 files changed, 77 insertions(+), 67 deletions(-)
+On Tue, 15 Jun 2021 at 18:01, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
 >
-> I don't follow this one.  Why would kvm, which is 64-bit only, require
-> a 32-bit only cpu?
+> The previous numbers were a guess at best and rather arbitrary without
+> taking into account anything that might be loaded. Instead of using
+> guesses based on the state of registers implement a new function that
+> scans MemoryRegions for the RAM of the current address space and then
+> looks for the lowest address above any ROM blobs (which include
+> -kernel loaded code).
 >
-> I guess I can accept that our board configurations are old and
-> fragile, and I realize there are already 99 bottles of beer on^W^W^W^W
-> patches here, but what needs to happen to fix this properly?
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> Cc: Andrew Strauss <astrauss11@gmail.com>
+> Message-Id: <20210601090715.22330-1-alex.bennee@linaro.org>
+>
+> ---
+> v2
+>   - report some known information (limits)
+>   - reword the commit message
+> v3
+>   - rework to use the ROM blob scanning suggested by Peter
+>   - drop arch specific wrappers
+>   - dropped rb/tb tags as it's a rework
+> ---
+>  include/hw/loader.h           |  10 +++
+>  hw/core/loader.c              |  19 +++++
+>  semihosting/arm-compat-semi.c | 131 ++++++++++++++++++----------------
+>  3 files changed, 99 insertions(+), 61 deletions(-)
+>
+> diff --git a/include/hw/loader.h b/include/hw/loader.h
+> index cbfc184873..037828e94d 100644
+> --- a/include/hw/loader.h
+> +++ b/include/hw/loader.h
+> @@ -349,4 +349,14 @@ int rom_add_option(const char *file, int32_t bootind=
+ex);
+>   * overflow on real hardware too. */
+>  #define UBOOT_MAX_GUNZIP_BYTES (64 << 20)
+>
+> +/**
+> + * rom_find_highest_addr: return highest address of ROM in region
+> + *
+> + * This function is used to find the highest ROM address (or loaded
+> + * blob) so we can advise where true heap memory may be.
+> + *
+> + * Returns: highest found address in region
+> + */
+> +hwaddr rom_find_highest_addr(hwaddr base, size_t size);
+> +
+>  #endif
+> diff --git a/hw/core/loader.c b/hw/core/loader.c
+> index 5b34869a54..05003556ee 100644
+> --- a/hw/core/loader.c
+> +++ b/hw/core/loader.c
+> @@ -1310,6 +1310,25 @@ static Rom *find_rom(hwaddr addr, size_t size)
+>      return NULL;
+>  }
+>
+> +hwaddr rom_find_highest_addr(hwaddr base, size_t size)
+> +{
+> +    Rom *rom;
+> +    hwaddr lowest =3D base;
+> +
+> +    QTAILQ_FOREACH(rom, &roms, next) {
 
-I'll drop this and fix whatever we need to. 32 bit ARM KVM is listed in
-removed-features so I think we are good.
+You should ignore roms with rom->mr non-NULL (which are rom blobs
+that have been set up to be loaded into a specific MR), and ones with
+fw_file non NULL (which are rom blobs that have been set up to be
+loaded into the fw_cfg device).
 
->
-> I guess I can give it an
-> Acked-by: Richard Henderson <richard.henderson@linaro.org>
->
-> if it helps us move forward.
->
->
-> r~
+> +        if (rom->addr < base) {
+> +            continue;
+> +        }
+> +        if (rom->addr + rom->romsize > base + size) {
+> +            continue;
+> +        }
 
+This will incorrectly ignore ROM blobs that start below
+'base' but end partway through it, as well as blobs that
+start within the region but end after it.
 
---=20
-Alex Benn=C3=A9e
+> +        if (rom->addr + rom->romsize > lowest) {
+> +            lowest =3D rom->addr + rom->romsize;
+> +        }
+> +    }
+
+There's a cute algorithm (suggested by a friend) which you could
+use to find the largest unoccupied chunk of (base, size) rather than
+merely looking for the unoccupied part at the top of it:
+
+(1) iterate through the rom list, constructing a list of tuples
+(hwaddr addr, int count). For every relevant rom, add two entries
+to the tuple list: (rom->addr, 1) and (rom->addr + rom->romsize, -1)
+(2) Sort the tuple list by addr; break ties by sorting (x,1) before (x,-1)
+(3) Set gapstart to 0.
+(4) iterate through the sorted tuple list, keeping a running count
+(increment the count for each (x, 1) tuple, decrement for (x, -1) tuples).
+If the count goes from 0 to 1, you've just left an empty section of
+the range, and there was a gap from gapstart to x-1 (so if that's the
+largest gap you've seen so far, remember it). If the count goes from
+1 to 0, that's the beginning of a new gap, so set gapstart to x.
+(5) Return whatever is the largest gap we saw.
+
+Exercises for the reader:
+ (a) locate any off-by-one errors in the above sketch
+ (b) account for the fact that gaps outside our (base,size)
+     are of no use to us and should be ignored, and gaps that
+     overlap with our range need to be clipped
+ (c) decide whether you think this is worth doing :-)
+
+> +    return lowest;
+> +}
+> +
+>  /*
+>   * Copies memory from registered ROMs to dest. Any memory that is contai=
+ned in
+>   * a ROM between addr and addr + size is copied. Note that this can invo=
+lve
+> diff --git a/semihosting/arm-compat-semi.c b/semihosting/arm-compat-semi.=
+c
+> index 1c29146dcf..a276161181 100644
+> --- a/semihosting/arm-compat-semi.c
+> +++ b/semihosting/arm-compat-semi.c
+> @@ -44,6 +44,7 @@
+>  #else
+>  #include "exec/gdbstub.h"
+>  #include "qemu/cutils.h"
+> +#include "hw/loader.h"
+>  #ifdef TARGET_ARM
+>  #include "hw/arm/boot.h"
+>  #endif
+> @@ -144,33 +145,71 @@ typedef struct GuestFD {
+>  static GArray *guestfd_array;
+>
+>  #ifndef CONFIG_USER_ONLY
+> -#include "exec/address-spaces.h"
+> -/*
+> - * Find the base of a RAM region containing the specified address
+> +
+> +/**
+> + * common_semi_find_bases: find information about ram and heap base
+> + *
+> + * This function attempts to provide meaningful numbers for RAM and
+> + * HEAP base addresses. The rambase is simply the lowest addressable
+> + * RAM position. For the heapbase we scan though the address space and
+> + * return the first available address above any ROM regions created by
+> + * the loaders.
+> + *
+> + * Returns: a structure with the numbers we need.
+>   */
+> -static inline hwaddr
+> -common_semi_find_region_base(hwaddr addr)
+> +
+> +typedef struct LayoutInfo {
+> +    target_ulong rambase;
+> +    size_t ramsize;
+> +    target_ulong heapbase;
+> +    target_ulong heaplimit;
+> +    target_ulong stackbase;
+> +    target_ulong stacklimit;
+
+You should work in 'hwaddr's at least while you're working with
+addresses from the memory subsystem; convert to target_ulong only
+at the end (and it would probably be a good idea to catch the
+improbable case of "turns out the RAM we found for the heap is
+beyond the range of a target_ulong"...)
+
+> +} LayoutInfo;
+> +
+> +static bool find_ram_cb(Int128 start, Int128 len, const MemoryRegion *mr=
+,
+> +                        hwaddr offset_in_region, void *opaque)
+>  {
+> -    MemoryRegion *subregion;
+> +    LayoutInfo *info =3D (LayoutInfo *) opaque;
+> +
+> +    if (!mr->ram || mr->readonly) {
+> +        return false;
+> +    }
+> +
+> +    info->rambase =3D mr->addr;
+> +    info->ramsize =3D int128_get64(len);
+> +
+> +    return true;
+
+This will pick the first MR it finds that happens to be RAM (which
+could be some tiny thing). You don't want that, you want specifically
+whatever the board decided was the system RAM, which is the MemoryRegion
+MachineState::ram.
+
+mr->addr is also not the address of the MR in the flatview, it's
+the address of the MR in its container, which might not start at the
+base of the address space.
+
+In this case what we want is the address within the flatrange
+of the first visible bit of that MR, which is just 'start'.
+
+> +}
+> +
+> +static LayoutInfo common_semi_find_bases(CPUState *cs)
+> +{
+> +    FlatView *fv;
+> +    LayoutInfo info =3D { 0, 0, 0, 0, 0, 0 };
+> +
+> +    RCU_READ_LOCK_GUARD();
+> +
+> +    fv =3D address_space_to_flatview(cs->as);
+> +    flatview_for_each_range(fv, find_ram_cb, &info);
+>
+>      /*
+> -     * Find the chunk of R/W memory containing the address.  This is
+> -     * used for the SYS_HEAPINFO semihosting call, which should
+> -     * probably be using information from the loaded application.
+> +     * If we have found the RAM lets iterate through the ROM blobs to
+> +     * workout the best place for the remainder of RAM and split it
+> +     * equally between stack and heap.
+>       */
+> -    QTAILQ_FOREACH(subregion, &get_system_memory()->subregions,
+> -                   subregions_link) {
+> -        if (subregion->ram && !subregion->readonly) {
+> -            Int128 top128 =3D int128_add(int128_make64(subregion->addr),
+> -                                       subregion->size);
+> -            Int128 addr128 =3D int128_make64(addr);
+> -            if (subregion->addr <=3D addr && int128_lt(addr128, top128))=
+ {
+> -                return subregion->addr;
+> -            }
+> -        }
+> +    if (info.rambase && info.ramsize) {
+> +        hwaddr limit =3D info.rambase + info.ramsize;
+> +        size_t space;
+> +        info.heapbase =3D rom_find_highest_addr(info.rambase, info.ramsi=
+ze);
+> +        space =3D QEMU_ALIGN_DOWN((limit - info.heapbase) / 2, TARGET_PA=
+GE_SIZE);
+> +        info.heaplimit =3D info.heapbase + space;
+> +        info.stackbase =3D info.rambase + info.ramsize;
+> +        info.stacklimit =3D info.stackbase - space;
+
+I don't think we need to divide the memory into separate stack
+and heap like this -- guests can probably handle the heaplimit
+being the same as the stackbase and the stacklimit being the
+same as the heapbase, which is what we've been giving them so far.
+
+>      }
+> -    return 0;
+> +
+> +    return info;
+
+This will recalculate it for every call, but I don't suppose the
+guest is going to call it more than once so that's fine.
+
+>  }
+> +
+>  #endif
+>
+>  #ifdef TARGET_ARM
+> @@ -204,28 +243,6 @@ common_semi_sys_exit_extended(CPUState *cs, int nr)
+>      return (nr =3D=3D TARGET_SYS_EXIT_EXTENDED || is_a64(cs->env_ptr));
+>  }
+>
+> -#ifndef CONFIG_USER_ONLY
+> -#include "hw/arm/boot.h"
+> -static inline target_ulong
+> -common_semi_rambase(CPUState *cs)
+> -{
+> -    CPUArchState *env =3D cs->env_ptr;
+> -    const struct arm_boot_info *info =3D env->boot_info;
+> -    target_ulong sp;
+> -
+> -    if (info) {
+> -        return info->loader_start;
+> -    }
+> -
+> -    if (is_a64(env)) {
+> -        sp =3D env->xregs[31];
+> -    } else {
+> -        sp =3D env->regs[13];
+> -    }
+> -    return common_semi_find_region_base(sp);
+> -}
+> -#endif
+> -
+>  #endif /* TARGET_ARM */
+>
+>  #ifdef TARGET_RISCV
+> @@ -251,17 +268,6 @@ common_semi_sys_exit_extended(CPUState *cs, int nr)
+>      return (nr =3D=3D TARGET_SYS_EXIT_EXTENDED || sizeof(target_ulong) =
+=3D=3D 8);
+>  }
+>
+> -#ifndef CONFIG_USER_ONLY
+> -
+> -static inline target_ulong
+> -common_semi_rambase(CPUState *cs)
+> -{
+> -    RISCVCPU *cpu =3D RISCV_CPU(cs);
+> -    CPURISCVState *env =3D &cpu->env;
+> -    return common_semi_find_region_base(env->gpr[xSP]);
+> -}
+> -#endif
+> -
+>  #endif
+>
+>  /*
+> @@ -1165,12 +1171,12 @@ target_ulong do_common_semihosting(CPUState *cs)
+>      case TARGET_SYS_HEAPINFO:
+>          {
+>              target_ulong retvals[4];
+> -            target_ulong limit;
+>              int i;
+>  #ifdef CONFIG_USER_ONLY
+>              TaskState *ts =3D cs->opaque;
+> +            target_ulong limit;
+>  #else
+> -            target_ulong rambase =3D common_semi_rambase(cs);
+> +            LayoutInfo info =3D common_semi_find_bases(cs);
+>  #endif
+>
+>              GET_ARG(0);
+> @@ -1201,12 +1207,15 @@ target_ulong do_common_semihosting(CPUState *cs)
+>              retvals[2] =3D ts->stack_base;
+>              retvals[3] =3D 0; /* Stack limit.  */
+>  #else
+> -            limit =3D current_machine->ram_size;
+> -            /* TODO: Make this use the limit of the loaded application. =
+ */
+> -            retvals[0] =3D rambase + limit / 2;
+> -            retvals[1] =3D rambase + limit;
+> -            retvals[2] =3D rambase + limit; /* Stack base */
+> -            retvals[3] =3D rambase; /* Stack limit.  */
+> +            /*
+> +             * Reporting 0 indicates we couldn't calculate the real
+> +             * values which should force most software to fall back to
+> +             * using information it has.
+> +             */
+
+AIUI this is true for the specific case of "zero heapbase" but
+probably not for zero anything else. (That bit of Arm compiler
+docs that had a note not in the semihosting spec is apparently
+accidentally over-optimistic about what the Arm compiler libc
+implementation can handle.) Still, if we have no idea I guess
+returning all-zeroes is the best we can do.
+
+> +            retvals[0] =3D info.heapbase; /* Heap Base */
+> +            retvals[1] =3D info.heaplimit; /* Heap Limit */
+> +            retvals[2] =3D info.stackbase; /* Stack base */
+> +            retvals[3] =3D info.stacklimit; /* Stack limit.  */
+>  #endif
+
+-- PMM

@@ -1,103 +1,109 @@
-Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp2063130lfg;
-        Mon, 21 Jun 2021 06:29:49 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwiki1qrgXcK0wOkdqxjr7d03HPyI7sgAdQFg2ZAV8y3FX5mC5+MgUdcLyWxnIJQFy1Y+M5
-X-Received: by 2002:a05:651c:1043:: with SMTP id x3mr20133090ljm.342.1624282189774;
-        Mon, 21 Jun 2021 06:29:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1624282189; cv=none;
+Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp1597830lff;
+        Fri, 18 Jun 2021 07:11:18 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzCWLwxBAkZ520giIxhr8urHsC77n0olUOPZ/flJNeI3VGYpF0ygu1M1+wM/uOTg4w8PD5r
+X-Received: by 2002:a17:906:c83b:: with SMTP id dd27mr1914465ejb.547.1624025478692;
+        Fri, 18 Jun 2021 07:11:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1624025478; cv=none;
         d=google.com; s=arc-20160816;
-        b=eYVwTS9hge2gjRRZrsCa/NBLUzbzCiKtDMkLHoTyeGwGzGA1JqcweEEmcOdY8oKa/D
-         l5+fe8k8cEtO28F8TiZeY0kDQJWd9GvrdVz8CegY08XDYfsgrJgaJXofLTaRT4DLvqZn
-         HwOOMzIqfsFBmcMNMGL6l8cZm+kcGTU+hu+XHywGZQEO2nLdHwMAJwhz+FOiPlu18u8N
-         eIm71mGRnjhew22CQ5H2kMWdmccBPkwfwIXnh95rpZmDG+Q1mkTDtqk4RzXWyYq7Zly9
-         f5JnY4uUTKGPK2NMG42cN2okA7YFLcRB45gGOLrDhk7RVYDmwbKb+3Csrxz8c3uEI8wu
-         L8Tg==
+        b=rCLWid5xMLlFcu0VsIsllwzSGsyi8MaFeSviWTq5Vg1zO3SCPWBCcxEgiR6WfKoQIJ
+         KSz5KNqoenGwrnRNI4cND7oacFnGwbKJA8baKOL9cWzmWZonl+FhfGo1vZBtvKaQDHp8
+         LU4H18SYByl96BPXPWKwHN2OM0QHX65JxBXjaVv+i/JagC9YSZ2vfRzWl+Ywz6vc+z9f
+         GsbY/3pD1EomBEkzi+fdahkontOx8KscS6wKj5GE2lmgMLEwFG3RFRFzdQGVyWJZP6ak
+         OVat/zlWazzD3cXPTDR6ygVdqigwVNnNpeuk4CRIAuAld74qFlMRBhxZMn3i8vRGQyba
+         pjWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=lHpPzrIcM8jjrNm0G0OJk0rMZOh+1o4vGe83nlS1eiY=;
-        b=KEpcVxLIYe4URSzsAO4XMeehcMiV+GaixmMhw5104BSUR2wWWZuQwSeuvRs8tXvTU+
-         8bJomkaNG+xL1K7u84q1WmUbB9iXGuDarOaDmHpaNs3glv4QKPQCNidLbkS/Xspj2ZC5
-         2lN0DnnRZoEXTd5AJ1yXd3P0vRzkklSadmsgMpfiHsyC44m50mqLWJDdMqtPI6u6X7Tp
-         rKAZOWkLG5PBQp52oo8lkjJaj+6YXzwNLdwsuIqEHzQaulm1fGMcUGrsDdiBjyi1B0yv
-         c2eAyU6rZIyk3mzAPUl3sAumOrG7dAFUBYqKDbOJ4kCooT5XpP65lRwjgolQa6efnGy4
-         Tsyg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=dRfZrUkzHx2HbQeo0FP4Jf8eMM4MIpIZDbO0Ga50h6Y=;
+        b=adzx2Ac6foliZeLzETax825p4S9Dd3Y4MM5GgB+AQ0vC8SPAovk4wCdw3zVwFLQoEW
+         asYlmVMIy+WPyrCkxqBVhuyygbXFs2n0u9D+UTkiS3q27U7kqGWo0jVRIQneAfVNqU1L
+         q4EzUJFqcBuWrE9l9djvFpOrx8vGGys3hJzvXvx8azoqEwiY0BniXA2E/+Ey0DAyXi7N
+         /uDHwPIepwmHyinbyTg+kY8K5U/Z16Fn6prgiTPK8bGm2S8B6MhlFt/u+a2CWeHFKW7v
+         oHZzrLnmwCt3lDNSQESm1NvwlWIj57oIQIgIBxuYDHTXhU9AHnX6nckq+MI8EzWd9cts
+         pMKQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kyGm0Nb8;
+       dkim=pass header.i=@linaro.org header.s=google header.b=P2TzW2Za;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s14si9531435ljj.472.2021.06.21.06.29.49
+        by mx.google.com with ESMTPS id r9si2496318ejr.730.2021.06.18.07.11.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 21 Jun 2021 06:29:49 -0700 (PDT)
+        Fri, 18 Jun 2021 07:11:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kyGm0Nb8;
+       dkim=pass header.i=@linaro.org header.s=google header.b=P2TzW2Za;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:41204 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52156 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lvJzn-0003kO-PD
-	for alex.bennee@linaro.org; Mon, 21 Jun 2021 09:29:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50248)
+	id 1luFDJ-0007Oj-Qz
+	for alex.bennee@linaro.org; Fri, 18 Jun 2021 10:11:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49584)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lvJze-0003gJ-0w
- for qemu-arm@nongnu.org; Mon, 21 Jun 2021 09:29:38 -0400
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531]:34747)
+ id 1luFCX-0007OT-J3
+ for qemu-arm@nongnu.org; Fri, 18 Jun 2021 10:10:29 -0400
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434]:36459)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lvJza-00083j-DY
- for qemu-arm@nongnu.org; Mon, 21 Jun 2021 09:29:37 -0400
-Received: by mail-ed1-x531.google.com with SMTP id i5so1514528eds.1
- for <qemu-arm@nongnu.org>; Mon, 21 Jun 2021 06:29:33 -0700 (PDT)
+ id 1luFCU-0001xU-0A
+ for qemu-arm@nongnu.org; Fri, 18 Jun 2021 10:10:29 -0400
+Received: by mail-wr1-x434.google.com with SMTP id n7so10955597wri.3
+ for <qemu-arm@nongnu.org>; Fri, 18 Jun 2021 07:10:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=lHpPzrIcM8jjrNm0G0OJk0rMZOh+1o4vGe83nlS1eiY=;
- b=kyGm0Nb8jZLTSdVF6x8CDbimchezec5C5X9ZpZvkIQYUPybhWOzQbYc2kP6QGatnKb
- HVcrcT2WMYOK0A4Qy80lCV9Imtxs+mn2aGCTxXS/CzZHvtKdiFlabzgm5wR471DfHSfS
- ZSCPIagTg7m5BZOdkGeS1aqx/dNgMdA6Lup3POXJhNgs2OojuWBqgh+wtX3i13RSA6kX
- zRp31YCUIC+zHhwmZovPIjfHhWPPMeG1A91AQBFDn8vvUyHSLtAntbstWQR5RMwvQZKv
- YTNrv85LoHmgN6YIIOD7EnnAEM9X38C4jlxZIa0mVNh3VoDvq2hb3fH5z1UqccZRze8y
- vkvw==
+ h=from:to:subject:date:message-id:in-reply-to:references:mime-version
+ :content-transfer-encoding;
+ bh=dRfZrUkzHx2HbQeo0FP4Jf8eMM4MIpIZDbO0Ga50h6Y=;
+ b=P2TzW2ZaSkaDoxIiTnH2mrWozcCUa/cHSp9hXD+uDq+E5oBJxbdpBh8LIbZhvYLem/
+ EGpoOhpF4kPtsAY7QZpIZFZWe1KBrFTmAoJVEBrMNGQLzrb30oDTCftnM7XfHxH1tOKw
+ FgDH2un/6B3ewOXcgJEc7aiNtb5aL3rkY1wj08dVcQO49GB6P1Hop+85J/Wv21fpNkXj
+ BbinOQjvUP5oLcmYM5jNiJz3UaVFi4Aotx5TSey7e2aHihk/5Gt1oGyHQgQHHsgjE8MV
+ GkQkkiczgSDW63VbAmoigUzVgw/GpIseELAtD75GcITF6dNO05IOug7DfmcBPXIsE4By
+ CpAQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=lHpPzrIcM8jjrNm0G0OJk0rMZOh+1o4vGe83nlS1eiY=;
- b=lNCkRT2IdrXUjPMzsn8i3ncA85REMdi6tgctD80vnii8frY/TPmMVm+0ke/rnFSOfL
- m0QrGcCpcB1i2BWbhKdNYd/6KIznj8lzI/UuiL0MYFFXgHeKlBX8MR8MdubQLE8bnYbQ
- F+tLWuxEspZIH/rR+t7bz20dCgUVBKKPH9y3SLWQhHuIUgd1ll3ydjvbCLkBhbUAQxrl
- 2bSp9yZbDytVjKOUJJ/7MNwzwbfhza2UzQg0EWKVqJyx6SBB1sSl1nGFJFCHnampGl2x
- l3FbNWMjDwmJjV74q1ObtkZmh/vQkUxFEPufVi+WOU85mmAyOLZ5T0N9g/hC+iHdu4sg
- 9aAw==
-X-Gm-Message-State: AOAM533b33UWzW49qXlWA5vmWdDDtQfyQ8eciqPtwIdtWh77jTkV1bip
- NDFporrE40vQjFP1SPmpsugkRYS2M489/GZ43X4SMt1WKrjFxLHD
-X-Received: by 2002:a05:6402:748:: with SMTP id
- p8mr18981586edy.251.1624282172638; 
- Mon, 21 Jun 2021 06:29:32 -0700 (PDT)
-MIME-Version: 1.0
-References: <20210617121628.20116-1-peter.maydell@linaro.org>
- <20210617121628.20116-4-peter.maydell@linaro.org>
-In-Reply-To: <20210617121628.20116-4-peter.maydell@linaro.org>
+ h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=dRfZrUkzHx2HbQeo0FP4Jf8eMM4MIpIZDbO0Ga50h6Y=;
+ b=O1L4PVf0wP0zKzGCJyvjmikrt+QVRPOShilN1CQdQ/HyqCmMltEqCwFrd8hn3Gk8N3
+ PAbEa17oKnZu0AOoBoeurN5+9mUs3Jt/mYo4FSXFKFtVt+2nIumE0E2mocA+dLUtO3AX
+ QMxFa0EH/wv6iTBxdEcKLNv7d1NK8XF1PKkXGA7ZeDSaZ6zqiDjI02HcCz6EIH5Tw1lJ
+ +9IGIdjhKXCrZrR5rKN6LqDFdmw1LrmIa9lKvWN7hxRz4d5sGEISaQlJ5ZtgX6a2xRO/
+ pEH4teYbf++/jjci54MyCp9hn7QaHe7U+psnK+jcqwPVHqLxq5OSLDO1dsdygiD/W44u
+ uEpQ==
+X-Gm-Message-State: AOAM531hlKquiqNvIafyuhPw/3wOrU9FkOxsPhk0vD/BnKdubIOcymPe
+ Ck6gcXF58T/Y2BBrdh5RJPK+EC4Mw8YHeNZ2
+X-Received: by 2002:adf:ef87:: with SMTP id d7mr12797263wro.24.1624025423083; 
+ Fri, 18 Jun 2021 07:10:23 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id j11sm7751661wmq.4.2021.06.18.07.10.22
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 18 Jun 2021 07:10:22 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 21 Jun 2021 14:28:56 +0100
-Message-ID: <CAFEAcA_HT=f8CN9j5rw2gL9pboiia1dzNcaNtikymuT3DRJiWg@mail.gmail.com>
-Subject: Re: [PATCH v3 03/44] target/arm: Implement MVE VCLZ
-To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::531;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x531.google.com
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH 2/7] target/arm: Handle FPU being disabled in FPCXT_NS accesses
+Date: Fri, 18 Jun 2021 15:10:14 +0100
+Message-Id: <20210618141019.10671-3-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20210618141019.10671-1-peter.maydell@linaro.org>
+References: <20210618141019.10671-1-peter.maydell@linaro.org>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x434.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -110,55 +116,88 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Richard Henderson <richard.henderson@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OT4tIkrYN1ko
+X-TUID: S0aG2dzZgF93
 
-On Thu, 17 Jun 2021 at 13:16, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> Implement the MVE VCLZ insn (and the necessary machinery
-> for MVE 1-input vector ops).
->
-> Note that for non-load instructions predication is always performed
-> at a byte level granularity regardless of element size (R_ZLSJ),
-> and so the masking logic here differs from that used in the VLDR
-> and VSTR helpers.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+If the guest makes an FPCXT_NS access when the FPU is disabled,
+one of two things happens:
+ * if there is no active FP context, then the insn behaves the
+   same way as if the FPU was enabled: writes ignored, reads
+   same value as FPDSCR_NS
+ * if there is an active FP context, then we take a NOCP
+   exception
 
+Add code to the sysreg read/write functions which emits
+code to take the NOCP exception in the latter case.
 
-> +#define DO_1OP(OP, ESIZE, TYPE, FN)                                     \
-> +    void HELPER(mve_##OP)(CPUARMState *env, void *vd, void *vm)         \
-> +    {                                                                   \
-> +        TYPE *d = vd, *m = vm;                                          \
-> +        uint16_t mask = mve_element_mask(env);                          \
-> +        unsigned e;                                                     \
-> +        unsigned const esize = sizeof(TYPE);                            \
-> +        for (e = 0; e < 16 / esize; e++, mask >>= esize) {              \
-> +            mergemask(&d[H##ESIZE(e)], FN(m[H##ESIZE(e)]), mask);       \
-> +        }                                                               \
-> +        mve_advance_vpt(env);                                           \
-> +    }
+At the moment this will never be used, because the NOCP checks in
+m-nocp.decode happen first, and so the trans functions are never
+called when the FPU is disabled.  The code will be needed when we
+move the sysreg access insns to before the NOCP patterns in the
+following commit.
 
-Just noticed I didn't quite get the refactoring from "use sizeof(TYPE)"
-to "take ESIZE" right here, so we currently do both (correct behaviour,
-but oddly written). I'm going to squash in this trivial fixup:
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+The "check for exception; then call gen_preserve_fp_state()"
+is a little repetitive. We'll clean this up in a bit of
+refactoring at the end of the patchseries, because the nicest
+way to do it involves restructuring vfp_access_check().
+---
+ target/arm/translate-vfp.c | 32 ++++++++++++++++++++++++++++++--
+ 1 file changed, 30 insertions(+), 2 deletions(-)
 
---- a/target/arm/mve_helper.c
-+++ b/target/arm/mve_helper.c
-@@ -265,8 +265,7 @@ static inline void unknown_mergemask_type(void *d,
-uint64_t r, uint16_t mask)
-         TYPE *d = vd, *m = vm;                                          \
-         uint16_t mask = mve_element_mask(env);                          \
-         unsigned e;                                                     \
--        unsigned const esize = sizeof(TYPE);                            \
--        for (e = 0; e < 16 / esize; e++, mask >>= esize) {              \
-+        for (e = 0; e < 16 / ESIZE; e++, mask >>= ESIZE) {              \
-             mergemask(&d[H##ESIZE(e)], FN(m[H##ESIZE(e)]), mask);       \
-         }                                                               \
-         mve_advance_vpt(env);                                           \
+diff --git a/target/arm/translate-vfp.c b/target/arm/translate-vfp.c
+index 5a4a13ec1e1..107d6143be8 100644
+--- a/target/arm/translate-vfp.c
++++ b/target/arm/translate-vfp.c
+@@ -821,7 +821,21 @@ static bool gen_M_fp_sysreg_write(DisasContext *s, int regno,
+         lab_end = gen_new_label();
+         /* fpInactive case: write is a NOP, so branch to end */
+         gen_branch_fpInactive(s, TCG_COND_NE, lab_end);
+-        /* !fpInactive: PreserveFPState(), and reads same as FPCXT_S */
++        /*
++         * !fpInactive: if FPU disabled, take NOCP exception;
++         * otherwise PreserveFPState(), and then FPCXT_NS writes
++         * behave the same as FPCXT_S writes.
++         */
++        if (s->fp_excp_el) {
++            gen_exception_insn(s, s->pc_curr, EXCP_NOCP,
++                               syn_uncategorized(), s->fp_excp_el);
++            /*
++             * This was only a conditional exception, so override
++             * gen_exception_insn()'s default to DISAS_NORETURN
++             */
++            s->base.is_jmp = DISAS_NEXT;
++            break;
++        }
+         gen_preserve_fp_state(s);
+         /* fall through */
+     case ARM_VFP_FPCXT_S:
+@@ -961,7 +975,21 @@ static bool gen_M_fp_sysreg_read(DisasContext *s, int regno,
+         tcg_gen_br(lab_end);
+ 
+         gen_set_label(lab_active);
+-        /* !fpInactive: Reads the same as FPCXT_S, but side effects differ */
++        /*
++         * !fpInactive: if FPU disabled, take NOCP exception;
++         * otherwise PreserveFPState(), and then FPCXT_NS
++         * reads the same as FPCXT_S.
++         */
++        if (s->fp_excp_el) {
++            gen_exception_insn(s, s->pc_curr, EXCP_NOCP,
++                               syn_uncategorized(), s->fp_excp_el);
++            /*
++             * This was only a conditional exception, so override
++             * gen_exception_insn()'s default to DISAS_NORETURN
++             */
++            s->base.is_jmp = DISAS_NEXT;
++            break;
++        }
+         gen_preserve_fp_state(s);
+         tmp = tcg_temp_new_i32();
+         sfpa = tcg_temp_new_i32();
+-- 
+2.20.1
 
-thanks
--- PMM

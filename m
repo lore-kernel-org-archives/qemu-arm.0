@@ -1,93 +1,94 @@
-Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp1086636lff;
-        Thu, 17 Jun 2021 18:31:44 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzwQA/SPdiCZdtLqDbFVlPCE7QuniLHD+78WcwKdaHTHVgFpeiC2dvufBaF8LqlKFyj3DqP
-X-Received: by 2002:ab0:c07:: with SMTP id a7mr9312731uak.120.1623979904153;
-        Thu, 17 Jun 2021 18:31:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623979904; cv=none;
+Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp1087763lff;
+        Thu, 17 Jun 2021 18:33:33 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxP5KeLcAon8hZYo9KQuOH99RiIPCA+7vbiQJpfu5Mo5Hh28FL2Wj0Bwin8Iws4OvBYjkdc
+X-Received: by 2002:ab0:4128:: with SMTP id j37mr9498878uad.79.1623980013808;
+        Thu, 17 Jun 2021 18:33:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623980013; cv=none;
         d=google.com; s=arc-20160816;
-        b=zm7xd/ccFmkoJxvIBkmopQf7U152He5vY8Jh0NZ0cBYY1z0WISsJcViRciBlXTpw6B
-         CZs1k5Ia+ykjUuajbt9VIJxYG1tpWlDHy0e284fUyhxmq0U+w4MAESsKqcGGQaWWbJgT
-         1cS+hqHVIq2+HawSKlr4qsaxOm3nN7vrMl5EWLWA62+vKXrNRviC3MXwwrVddaz9m7TE
-         vAOZ1zjlpwPuz04TW52F4j8AY1pDGwrNq3OK5dWz8dSyejEFqiQJQDjdof9QyuJyTqVX
-         yRPilN0p2aLWrvJeH2xWObjDEOi8BHBZXLgMfMHyDvE6ZJ53ry2sJe3zHrH88JzIhQo2
-         KSSg==
+        b=Y//Bymre73rnmx2HO9zc5Fc0SsP8D7Fw4Sb+nJHa6i432/ZvaSFR6Sl+xaiGKHwxDG
+         Uj4Hna5dwT3V3S+hMMvPtvpfGibJuYADGSFbOOxJ/kPmPZQ/MdN9yCxRoSsQoanbKXMH
+         F0UTowUrPAGCfapr4erpBRoKp2b2KItuPUX832Hjk+bm+k/hVa0AVMv4q3jz3mBlAIsx
+         MH1IQwvSu+tnlMpPANBfOcO1XoO4gIU0PsS2N4HAGZYlpYbX+HPOLi4V1hq59GIRk20W
+         AsCSSOb8z3/344o72dz9xqGS7rTwCtulaLyKhHZY1201cDxp/nNMnCoYHxTVjJ5zzE8R
+         tnwQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=Sq8DE34U2OBYVb/p6cCAaZPg/yRXmFcqN6BKnOjg3Tw=;
-        b=MJY710G9PVwNw5Ke6uebTdSZ4mjj+1GyvjFoMHjLK8EMNL0ujqLgrLWesgQ4jTxhet
-         jXX25o2JJzLks1Hvc9oo2+L64DoK3DIxhua9yJ4Y5Q0pom9v1Fsz0wd5IqdhBUA7fy61
-         /nmojhd/CuisrnfcGmCsU16Z+iRLE8dzaxj4jXKvg5g1QHBjjnHvDnfFAcHn3OSxBSmn
-         qlJ7l4guz5zS9kHkztlR/Rce473a/qppknDc9d0sHlq/AfkmBVXzd61yS/LOy3b0EHKo
-         V3yqJjwFIyTpLLx+mHaqau5IKWoIdVXoNluQqj8DN0whhG7XnGd7IBjacd86Km3eNBRh
-         Cvrw==
+        bh=TdPcNhtAUavYp7VAA7LbLvuIHP++3IPugdSDG6OIUuc=;
+        b=U+QYeqTCho/m3Hjdh9BBrWi/VlOakA95k8Wz+XWAQbnuqUI+SCR4pzHUpUM/E0Qzlj
+         h+sZ9kZiGTEA7UNhvraf4KmUuQdxbIZnNehAU8G3Ja0IBiSXOCoz8RsGQNIUwm8Jx4h1
+         BXky/NyU46jBwEJ536jBXytqc9mL948LiU6+t92ydFH1ECtG5kcnIvviIbuIeVP5NL15
+         FF0jxHGf5xPWHXx+3knEFdcjhkXiaAzPKP9xMAAv4h1OSSEjSdnJ/aU6hKw4GxP25u3Z
+         zDdW66y6DUSmH2QOKVKO444hX37MccN3TLHtbpN5wUs1gxXLWWSuP71r1gsXdWVCAyU2
+         3xXw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=M+Uztu7h;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CzIFgTcW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i7si2616940uab.111.2021.06.17.18.31.44
+        by mx.google.com with ESMTPS id k63si5738197vkg.21.2021.06.17.18.33.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 17 Jun 2021 18:31:44 -0700 (PDT)
+        Thu, 17 Jun 2021 18:33:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=M+Uztu7h;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CzIFgTcW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:57632 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33412 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lu3MF-0006W2-Gl
-	for alex.bennee@linaro.org; Thu, 17 Jun 2021 21:31:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38238)
+	id 1lu3O0-0000l7-Vp
+	for alex.bennee@linaro.org; Thu, 17 Jun 2021 21:33:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38694)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1lu3Jo-0003DS-Ej; Thu, 17 Jun 2021 21:29:12 -0400
-Received: from mail-io1-xd31.google.com ([2607:f8b0:4864:20::d31]:44991)
+ id 1lu3Nd-0000iN-As; Thu, 17 Jun 2021 21:33:09 -0400
+Received: from mail-io1-xd36.google.com ([2607:f8b0:4864:20::d36]:39509)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1lu3Jk-0001b9-Jm; Thu, 17 Jun 2021 21:29:12 -0400
-Received: by mail-io1-xd31.google.com with SMTP id q3so5251218iop.11;
- Thu, 17 Jun 2021 18:29:07 -0700 (PDT)
+ id 1lu3Na-00044A-Fp; Thu, 17 Jun 2021 21:33:09 -0400
+Received: by mail-io1-xd36.google.com with SMTP id f10so1392478iok.6;
+ Thu, 17 Jun 2021 18:33:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Sq8DE34U2OBYVb/p6cCAaZPg/yRXmFcqN6BKnOjg3Tw=;
- b=M+Uztu7hAmTGYvpXDpAHYxSoznu4V8VwnLD1vXqlETMDSwEE8RzFbXH2urhelTf91C
- HmegFrvQ1Gl+2kP4ZKztE9xSpt8ef+wjPi2YkQM8gpH2n5exW9EKN1ve7rGphkptKMlc
- eDN588X9G2+DCMH2ynxnjYu7mE/qtkWmAlkjgynAqjglu9F2NdlcxKQ8OasebcV6rlwi
- nMoKn72gqZL2hrqi2QFwTAcr6NZUp3HXPnBCwfMjonlQwfwXMxUxrwlsa/jdBys/lsul
- z4O/ZBdyvLDkrB7KCkrZDoYnX7iK2jrVPMQqYSlLv7sMgD8McF3PGCrLlNxRpDHY0XBz
- /Bqw==
+ :cc; bh=TdPcNhtAUavYp7VAA7LbLvuIHP++3IPugdSDG6OIUuc=;
+ b=CzIFgTcWGTLsFHE6Xm3/j9Av4V3xUHdEyHdz2zQk06lqnwZaJWFMU3A8qJ088lRsdA
+ HbQpeG716eN6uP1XBbqw2Kl343l8nqhQI4Kay4W1vbaO1ckbQ1nifXMGavD503FMq6Hf
+ Quo0/RRZtV+FB3ag1AmrgH2ugNOKZpgCBbw/6exxtHswTLj3knXudyS8sTpR3hU/E9yP
+ s81Gre4Guwep7rhVstY4Bt/Cyrt9nXZQxVqTYNep2p49f7ZXMysPFrH1+DK/ujzMBg/x
+ sClpnj455o++wAxHe+JoC3OQg+3LfaYkdXU8Q3dtLoAS+X9k9ZLwYgn0EHeAFHIAnL5P
+ Mmuw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=Sq8DE34U2OBYVb/p6cCAaZPg/yRXmFcqN6BKnOjg3Tw=;
- b=WAxHr8w0xHrn+iY3Rwstk+l4oklSTnZ+ifNe6nMLcMjaW2qIVyt1VR32AAHPQbZffL
- NRoz/Tmeeuh/mlaOdHiVS/oF50GnQaN0mvUYk07aC+GHfSz4rNHsvAdzlYpNP3hIz3zB
- cYcIsM18A3AUMTG34uVV6PwZ9chnvIXGHhe+XhYUAqJ9k2yND0d+V29OWUsm5Pbbfm8c
- XEr26VtfXL/2nHriL3HLGXrDQLHC0I1C2oxv9ECD42m6QuGvEm0IA9U2KazF7kY1seq/
- 0QBtRhtTWAp0xIkE67R2m/r/hoC+SgPmYQcHS6IJsOv5nk8NvKitgvGwsF1MWHrpmCdL
- MOZw==
-X-Gm-Message-State: AOAM531Lj0/numfdMD9vH7BHEZXL70C5j7IVElj30XBhdDVKhiwHNgxD
- IkpFbYf1cEIA7SExHdETRQKh7xannvs7K4aqvZI=
-X-Received: by 2002:a02:8816:: with SMTP id r22mr937703jai.135.1623979747239; 
- Thu, 17 Jun 2021 18:29:07 -0700 (PDT)
+ bh=TdPcNhtAUavYp7VAA7LbLvuIHP++3IPugdSDG6OIUuc=;
+ b=WKuhD7S7uV3Rk1CgaK5fA5Gc/Hnby9TiZbE+6/Gcp5mBddH+y5tEpDQKBtbUl7/f+p
+ oFF4r8jo5MrlPmHH184u1FviTKUDPNDfuGimSYvUAIvP26PaFqbo7gLX8Bndcs9cdS1O
+ wn46KqaVYXC1axzEdKv9+6do9AfX0ztb4e815CQ+L5yUjePAmWruhdqeI37iTq5apF/T
+ LCKXSZXPhGngeDkCtPyYiZKhtFS5uWzVfkDJUJFMjyWlZjss/bmlo7aqYxFThOnhyBsq
+ 8i8GvbAlbsvg9SujI2SAQafLzkPKbOFujWyNzSSzBvtbYf7KtKpiAz1c6fSeDsAByCa8
+ PMoA==
+X-Gm-Message-State: AOAM5310BLEgXelVm/hpkKYp62aH1Sc5xNPGNpTtFmOzrkSy4kUm5WLa
+ j8boVZKaMkBSraK+vbjbx9JgiGFuGYJAq7LRf4s=
+X-Received: by 2002:a02:8784:: with SMTP id t4mr969497jai.26.1623979985009;
+ Thu, 17 Jun 2021 18:33:05 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210617165647.2575955-1-erdnaxe@crans.org>
- <20210617165647.2575955-4-erdnaxe@crans.org>
-In-Reply-To: <20210617165647.2575955-4-erdnaxe@crans.org>
+ <20210617165647.2575955-5-erdnaxe@crans.org>
+In-Reply-To: <20210617165647.2575955-5-erdnaxe@crans.org>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Fri, 18 Jun 2021 11:28:41 +1000
-Message-ID: <CAKmqyKO2wnR27S0eM+nAkMHibQLzTbzJbfUYgJH4ajpoij+jwg@mail.gmail.com>
-Subject: Re: [PATCH v3 3/4] docs/system: arm: Add stm32 boards description
+Date: Fri, 18 Jun 2021 11:32:38 +1000
+Message-ID: <CAKmqyKMUNEahkv_x9GFaq5sb-K43vXiweWBqHNf6yVR6Buh-tg@mail.gmail.com>
+Subject: Re: [PATCH v3 4/4] tests/boot-serial-test: Add STM32VLDISCOVERY board
+ testcase
 To: Alexandre Iooss <erdnaxe@crans.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d31;
- envelope-from=alistair23@gmail.com; helo=mail-io1-xd31.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d36;
+ envelope-from=alistair23@gmail.com; helo=mail-io1-xd36.google.com
 X-Spam_score_int: -17
 X-Spam_score: -1.8
 X-Spam_bar: -
@@ -114,121 +115,77 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: X6gs37d+v0eJ
+X-TUID: UQ5MVduYd0hx
 
 On Fri, Jun 18, 2021 at 2:56 AM Alexandre Iooss <erdnaxe@crans.org> wrote:
 >
-> This adds the target guide for Netduino 2, Netduino Plus 2 and STM32VLDISCOVERY.
+> New mini-kernel test for STM32VLDISCOVERY USART1.
 >
 > Signed-off-by: Alexandre Iooss <erdnaxe@crans.org>
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Acked-by: Alistair Francis <alistair.francis@wdc.com>
 
 Alistair
 
 > ---
->  MAINTAINERS                |  1 +
->  docs/system/arm/stm32.rst  | 66 ++++++++++++++++++++++++++++++++++++++
->  docs/system/target-arm.rst |  1 +
->  3 files changed, 68 insertions(+)
->  create mode 100644 docs/system/arm/stm32.rst
+>  tests/qtest/boot-serial-test.c | 37 ++++++++++++++++++++++++++++++++++
+>  1 file changed, 37 insertions(+)
 >
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 0aa8016936..47fb06e5fc 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -896,6 +896,7 @@ M: Alexandre Iooss <erdnaxe@crans.org>
->  L: qemu-arm@nongnu.org
->  S: Maintained
->  F: hw/arm/stm32vldiscovery.c
-> +F: docs/system/arm/stm32.rst
+> diff --git a/tests/qtest/boot-serial-test.c b/tests/qtest/boot-serial-test.c
+> index d40adddafa..96849cec91 100644
+> --- a/tests/qtest/boot-serial-test.c
+> +++ b/tests/qtest/boot-serial-test.c
+> @@ -94,6 +94,41 @@ static const uint8_t kernel_nrf51[] = {
+>      0x1c, 0x25, 0x00, 0x40                  /* 0x4000251c = UART TXD */
+>  };
 >
->  Versatile Express
->  M: Peter Maydell <peter.maydell@linaro.org>
-> diff --git a/docs/system/arm/stm32.rst b/docs/system/arm/stm32.rst
-> new file mode 100644
-> index 0000000000..508b92cf86
-> --- /dev/null
-> +++ b/docs/system/arm/stm32.rst
-> @@ -0,0 +1,66 @@
-> +STMicroelectronics STM32 boards (``netduino2``, ``netduinoplus2``, ``stm32vldiscovery``)
-> +========================================================================================
+> +static const uint8_t kernel_stm32vldiscovery[] = {
+> +    0x00, 0x00, 0x00, 0x00,                 /* Stack top address */
+> +    0x1d, 0x00, 0x00, 0x00,                 /* Reset handler address */
+> +    0x00, 0x00, 0x00, 0x00,                 /* NMI */
+> +    0x00, 0x00, 0x00, 0x00,                 /* Hard fault */
+> +    0x00, 0x00, 0x00, 0x00,                 /* Memory management fault */
+> +    0x00, 0x00, 0x00, 0x00,                 /* Bus fault */
+> +    0x00, 0x00, 0x00, 0x00,                 /* Usage fault */
+> +    0x0b, 0x4b,                             /* ldr  r3, [pc, #44] Get RCC */
+> +    0x44, 0xf2, 0x04, 0x02,                 /* movw r2, #16388 */
+> +    0x1a, 0x60,                             /* str  r2, [r3] */
+> +    0x0a, 0x4b,                             /* ldr  r3, [pc, #40] Get GPIOA */
+> +    0x1a, 0x68,                             /* ldr  r2, [r3] */
+> +    0x22, 0xf0, 0xf0, 0x02,                 /* bic  r2, r2, #240 */
+> +    0x1a, 0x60,                             /* str  r2, [r3] */
+> +    0x1a, 0x68,                             /* ldr  r2, [r3] */
+> +    0x42, 0xf0, 0xb0, 0x02,                 /* orr  r2, r2, #176 */
+> +    0x1a, 0x60,                             /* str  r2, [r3] */
+> +    0x07, 0x4b,                             /* ldr  r3, [pc, #26] Get BAUD */
+> +    0x45, 0x22,                             /* movs r2, #69 */
+> +    0x1a, 0x60,                             /* str  r2, [r3] */
+> +    0x06, 0x4b,                             /* ldr  r3, [pc, #24] Get ENABLE */
+> +    0x42, 0xf2, 0x08, 0x02,                 /* movw r2, #8200 */
+> +    0x1a, 0x60,                             /* str  r2, [r3] */
+> +    0x05, 0x4b,                             /* ldr  r3, [pc, #20] Get TXD */
+> +    0x54, 0x22,                             /* movs r2, 'T' */
+> +    0x1a, 0x60,                             /* str  r2, [r3] */
+> +    0xfe, 0xe7,                             /* b    . */
+> +    0x18, 0x10, 0x02, 0x40,                 /* 0x40021018 = RCC */
+> +    0x04, 0x08, 0x01, 0x40,                 /* 0x40010804 = GPIOA */
+> +    0x08, 0x38, 0x01, 0x40,                 /* 0x40013808 = USART1 BAUD */
+> +    0x0c, 0x38, 0x01, 0x40,                 /* 0x4001380c = USART1 ENABLE */
+> +    0x04, 0x38, 0x01, 0x40                  /* 0x40013804 = USART1 TXD */
+> +};
 > +
-> +The `STM32`_ chips are a family of 32-bit ARM-based microcontroller by
-> +STMicroelectronics.
-> +
-> +.. _STM32: https://www.st.com/en/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus.html
-> +
-> +The STM32F1 series is based on ARM Cortex-M3 core. The following machines are
-> +based on this chip :
-> +
-> +- ``stm32vldiscovery``  STM32VLDISCOVERY board with STM32F100RBT6 microcontroller
-> +
-> +The STM32F2 series is based on ARM Cortex-M3 core. The following machines are
-> +based on this chip :
-> +
-> +- ``netduino2``         Netduino 2 board with STM32F205RFT6 microcontroller
-> +
-> +The STM32F4 series is based on ARM Cortex-M4F core. This series is pin-to-pin
-> +compatible with STM32F2 series. The following machines are based on this chip :
-> +
-> +- ``netduinoplus2``     Netduino Plus 2 board with STM32F405RGT6 microcontroller
-> +
-> +There are many other STM32 series that are currently not supported by QEMU.
-> +
-> +Supported devices
-> +-----------------
-> +
-> + * ARM Cortex-M3, Cortex M4F
-> + * Analog to Digital Converter (ADC)
-> + * EXTI interrupt
-> + * Serial ports (USART)
-> + * SPI controller
-> + * System configuration (SYSCFG)
-> + * Timer controller (TIMER)
-> +
-> +Missing devices
-> +---------------
-> +
-> + * Camera interface (DCMI)
-> + * Controller Area Network (CAN)
-> + * Cycle Redundancy Check (CRC) calculation unit
-> + * Digital to Analog Converter (DAC)
-> + * DMA controller
-> + * Ethernet controller
-> + * Flash Interface Unit
-> + * GPIO controller
-> + * I2C controller
-> + * Inter-Integrated Sound (I2S) controller
-> + * Power supply configuration (PWR)
-> + * Random Number Generator (RNG)
-> + * Real-Time Clock (RTC) controller
-> + * Reset and Clock Controller (RCC)
-> + * Secure Digital Input/Output (SDIO) interface
-> + * USB OTG
-> + * Watchdog controller (IWDG, WWDG)
-> +
-> +Boot options
-> +------------
-> +
-> +The STM32 machines can be started using the ``-kernel`` option to load a
-> +firmware. Example:
-> +
-> +.. code-block:: bash
-> +
-> +  $ qemu-system-arm -M stm32vldiscovery -kernel firmware.bin
-> diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
-> index edd013c7bb..addd3d1613 100644
-> --- a/docs/system/target-arm.rst
-> +++ b/docs/system/target-arm.rst
-> @@ -96,6 +96,7 @@ undocumented; you can get a complete list by running
->     arm/collie
->     arm/sx1
->     arm/stellaris
-> +   arm/stm32
->     arm/virt
->     arm/xlnx-versal-virt
+>  typedef struct testdef {
+>      const char *arch;       /* Target architecture */
+>      const char *machine;    /* Name of the machine */
+> @@ -144,6 +179,8 @@ static testdef_t tests[] = {
+>      { "aarch64", "virt", "-cpu max", "TT", sizeof(kernel_aarch64),
+>        kernel_aarch64 },
+>      { "arm", "microbit", "", "T", sizeof(kernel_nrf51), kernel_nrf51 },
+> +    { "arm", "stm32vldiscovery", "", "T",
+> +      sizeof(kernel_stm32vldiscovery), kernel_stm32vldiscovery },
 >
+>      { NULL }
+>  };
 > --
 > 2.25.1
 >

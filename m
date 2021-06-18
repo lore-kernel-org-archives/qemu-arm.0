@@ -1,113 +1,102 @@
-Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp1716930lff;
-        Fri, 18 Jun 2021 09:26:06 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxdbHK6vcE/dE95bDx8iEFASCASVSr7h5xEKrja9sYQmiUGlFmnikyukH3TprkPUb+vypqJ
-X-Received: by 2002:adf:ef0d:: with SMTP id e13mr6141125wro.155.1624033566088;
-        Fri, 18 Jun 2021 09:26:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1624033566; cv=none;
+Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp1739882lff;
+        Fri, 18 Jun 2021 09:55:37 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwocoGPaNCxJukhrfr6l9EGwrCShDjEOkXyDDOtNykXgibbUBsIJpQ/tRe+N0wVLQapCavL
+X-Received: by 2002:a5d:65cf:: with SMTP id e15mr13945329wrw.310.1624035337448;
+        Fri, 18 Jun 2021 09:55:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1624035337; cv=none;
         d=google.com; s=arc-20160816;
-        b=sDHsWvGXKJXKbY78C7zLcQmtAkrSUS+x3dmELx9Uwgb3dtMFUtSkih8Jn8T1oEXPSY
-         F3a4Nm6EANKd6xi26j89hvo6RSJ0kV1q8odoUQuYv3WDiKOBXQbScmEd0ISc3Vu6tMM+
-         XnZK5KreT7HEoSzMYF9emIzkuLnnWA8+6h5F6J3Wral/uEylu921qArZ3Nsqko93zS3r
-         NsD2cdYnoFRXUDkLu7kv8i/hOLsfPGns2VY3+L2v1aIZ5jbMcVoZNrSE+IUrHid9IAgt
-         4SchrdXrPcPdmdqzpaShsjNaFkH4NfMM3sWUFFA72VbhD+vs4lvq40sdHabp7rGXnkJU
-         Oetw==
+        b=FlCWCwMlM1E2PRunm3a8EG+0UUy+bTu4CHQVylSpu4zOlQ9eJXaDAjkfA4n8hNX9kB
+         cFx/MCtLob7U07/EuQ0GL9RL1MedHm/K5PFfteTdK0xdr9ow8OfAri+MQ9d9VSOTDtLh
+         dWPqqTXp0muesZe9FrOp6b5ey0vHDoGB+bNkHE1mACVgPoPs5JIaoc+ble00M8MJcbGA
+         YI6fHxn41FsVge4h4MBJbD85eBIJLDUU9sudl9SPRu4krc0NBd6ta3oshp2Gsfk/aybA
+         a35GHHcpoeioUkkWNtBrWrX9rC0JVZgLIMKRbTuma2a60K+urd5aiWjffGslIMzZHCRx
+         6mng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=ibXeOQEkwijqn1VkyUt19cBgm7EwKCI1LaKaTip8Xl8=;
-        b=kEnu/+/5jNl4DS+m8ThK/fnPIk9ONu1XHAkKhm1SQsiMtq2EKG2Zh915IQf6uy8hmo
-         QpNMG9EnCKJADL0JnvCzBljRxgw00sbidxeMTuSz+DDSUKvoU4Y6LrMcreZaSibhTLu8
-         MxgqTqEZtcszQtTM1XQEd6K2lQjVT6zLahwjWyxx7l807qFtdPflTF2zkVyiaxhbke70
-         nn+9a7202lXG5Twoqwxvmu/OzSwQhBj+UgnArseaYgJ2ZrO4aysn59goETyHbpeDgzc0
-         LFTJ+e6ODfb5mMZjlDjnygJe8X/shZzoUbcTSy6EW2/6V6WPjCwpjNvCBdL3161A3LrU
-         BpWQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=lw7IeOdWe+kKsmBcgwpRgjAY48lKE3ebyYwBJeSi5fo=;
+        b=FuL4gM5/OK4hb8JXdmxRcjV3uABFR3cLM3cIhZWqWxeq3+1vDK0hWrokfoQMjSTltT
+         eTiuC0b0rBFqnTkOeNLJeH0IVFo5/jQkhjA7D7Rd4Nz1WKKjEujYn6QJHYx/Tbm24b3D
+         4WF0ZnziBZ3idm52+wvmznVtrsHxKKus35vf5x23d+yeJywi/6M+QZPBX3tpSggjQi/8
+         rBnzZOQFeeZbF8eHeM0+CoisFHfLE9C7IHmbCUixLHlBY6pEhsZd68cI1DI91Fz55G96
+         bqGnKl/I+VU8pl9XG3zvlpJ0xSh6jF/aTS9dqdorQfEFiGVnM12kZ4RwJtPss8KCvG1Q
+         /8OQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ss1mtOkh;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Lxqi3WJe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c3si16626230wmq.32.2021.06.18.09.26.06
+        by mx.google.com with ESMTPS id n1si12962129wrj.549.2021.06.18.09.55.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 18 Jun 2021 09:26:06 -0700 (PDT)
+        Fri, 18 Jun 2021 09:55:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ss1mtOkh;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Lxqi3WJe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42060 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43954 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1luHJl-0006H2-59
-	for alex.bennee@linaro.org; Fri, 18 Jun 2021 12:26:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55868)
+	id 1luHmK-0002li-HI
+	for alex.bennee@linaro.org; Fri, 18 Jun 2021 12:55:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33158)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1luHJa-0006C7-LH
- for qemu-arm@nongnu.org; Fri, 18 Jun 2021 12:25:54 -0400
-Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536]:43752)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1luHmA-0002kp-Q2
+ for qemu-arm@nongnu.org; Fri, 18 Jun 2021 12:55:26 -0400
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e]:43521)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1luHJY-0003hG-Uw
- for qemu-arm@nongnu.org; Fri, 18 Jun 2021 12:25:54 -0400
-Received: by mail-pg1-x536.google.com with SMTP id e22so2017202pgv.10
- for <qemu-arm@nongnu.org>; Fri, 18 Jun 2021 09:25:52 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1luHm7-0005Pd-KV
+ for qemu-arm@nongnu.org; Fri, 18 Jun 2021 12:55:26 -0400
+Received: by mail-ed1-x52e.google.com with SMTP id s6so9479426edu.10
+ for <qemu-arm@nongnu.org>; Fri, 18 Jun 2021 09:55:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:references:from:message-id:date:user-agent:mime-version
- :in-reply-to:content-language:content-transfer-encoding;
- bh=ibXeOQEkwijqn1VkyUt19cBgm7EwKCI1LaKaTip8Xl8=;
- b=ss1mtOkhd/qvwVmLYd9zFItXPHXsM9G/ZfQdYRoqpgLLbszBx9JvMkOVUUn0ocioPS
- Fov5qopJy3sEy2+vVgtP1/TwUNl94C9dNusBf8VxN4HFgXztlDvjeLubvgHEurSaeRR+
- P4tG/EDK1lVgqZlFGf2cqRwBbhNELfIOnxJ9yjN4fI0/hh4yFx05FY/XfuFJAr6Y+Kcd
- 9IVlhsU/p7BoCmB5yv68yTia4pk8PlYVinPeQPSdT06EPuK1dK03sBWojxjyhDwey9/N
- 84tqFD7Zp2vqJhZIgHhzMPkEc8/iNkBFpopxnPnjXybrL27azf1SLeR18erFA3HO45fO
- h1yA==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=lw7IeOdWe+kKsmBcgwpRgjAY48lKE3ebyYwBJeSi5fo=;
+ b=Lxqi3WJelgjYaNcvjK2iogGotqWDtslko/uE9tDSVNAhG9Y+x6E9yQPTxOc2DK9R+H
+ 6oKgsG90iE80oe1EEss4pAw/Ecbe9/3pIjWN+nrZnBqxBTpT8+AcBWqKgqREA+EAU2rr
+ mz3mMt92sf075RJyRkso0MJhDgXG5G4ZM7yeQ3W0kHBWgvmeM5qtb2OK1Bi3w2OPluos
+ 2dJrVqPPmUtwArlAmy07DBJHbLXGTMdMN1N86jjTFlDr+CjlozMZeun8So1spn0KscHH
+ /esjpUusxemZkbDrc/BSeWNBMehkg7BtCNT46FUwS7Rnk/b5eQ8a9GLGv+h9kUwDCGGc
+ ti6A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=ibXeOQEkwijqn1VkyUt19cBgm7EwKCI1LaKaTip8Xl8=;
- b=icuHVwD9Y++3wGM9qe8JNwN4izdzM6ZNJBgKZK06lrm3uXzv/vIbwCEAZvX4xGgEzt
- p0r3Bwris4Uycu/GL3YRGRYcoETOLSdHRSYFJHU2VpKTF3trlIrmZY1EKS1bzQBZEEy4
- G99JPY2pXkHT0AkyA/fRYLwMXDIbZ1TfjauZ4flEgRy1n/D7dXa4zBfwbxwyW2L7AZRt
- vJ889g/eJQsPQB7fyYTAD+M1sTanNA2OVblwU+MEVfP+wvANXAgSJEbp2tGN/wHWfUvB
- +VQpmdN7gARjAenw+8Y5w5K6vjNnkYv2V4p/rkNnBY3rlXT/7RkyUarBQQWoStgSE3pN
- ucbQ==
-X-Gm-Message-State: AOAM532uIe1lQDiqXXp3whXOobCeBU2P6QxWB6HFHZqrnQVVWgbybIDZ
- 8gTuURop/YaxYba0bClqeUCHcg==
-X-Received: by 2002:a63:1b62:: with SMTP id b34mr10616900pgm.417.1624033551415; 
- Fri, 18 Jun 2021 09:25:51 -0700 (PDT)
-Received: from [192.168.1.11] ([71.212.149.176])
- by smtp.gmail.com with ESMTPSA id k25sm8206594pfa.213.2021.06.18.09.25.50
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 18 Jun 2021 09:25:51 -0700 (PDT)
-Subject: Re: [PATCH 7/7] target/arm: Handle FPU check for FPCXT_NS insns via
- vfp_access_check_m()
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20210618141019.10671-1-peter.maydell@linaro.org>
- <20210618141019.10671-8-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <a3ead921-b138-402b-20d8-4559162135cd@linaro.org>
-Date: Fri, 18 Jun 2021 09:25:49 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=lw7IeOdWe+kKsmBcgwpRgjAY48lKE3ebyYwBJeSi5fo=;
+ b=Wspv8bCzTnlpSmb3+vryjKK1+sKJ3FRJWbsaqfxIBemBRLSlem2Ooz8DnK3OHgbYsk
+ tSWvXHcjAgXmYkZkdrCtPDFwnkOW0Ste4EVOFlP+8koiLhfFH5sZ6Tou8hWFWZANuCQi
+ EpCwhUo1zUuClkINKC99gldYT9pScaDLCJsWUb/NjkeTh3EaCwjbyXlRGD15PD0zP6RD
+ lmYWnd7P/7XYsYjEQ7Hf4zV2+d1oR7A7MBJtKS6/ZIzqfXmlU8EIrIfgJ+KhkEPPpeOM
+ RzuwMnP7/autopghP8C8+cxjtFuIUqHw1PHbGov2YzQiKYa8M6No9StaTBl7FA7+AYTk
+ 29kw==
+X-Gm-Message-State: AOAM531CseCq/NIeBtHOb07W5rkHnhrvfDu8Sqjw4YPTJNJ5ehjvlAOn
+ A9tC5MOPDowwm7DljelSZnqwxMZMHsAHBuDxB2qUUQ==
+X-Received: by 2002:aa7:c857:: with SMTP id g23mr6282077edt.100.1624035321326; 
+ Fri, 18 Jun 2021 09:55:21 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20210618141019.10671-8-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::536;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x536.google.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
+References: <20210618141019.10671-1-peter.maydell@linaro.org>
+ <20210618141019.10671-5-peter.maydell@linaro.org>
+ <73b67dcb-6d84-03d8-cc37-f8b8b3f94905@linaro.org>
+In-Reply-To: <73b67dcb-6d84-03d8-cc37-f8b8b3f94905@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 18 Jun 2021 17:54:46 +0100
+Message-ID: <CAFEAcA_qQ7SmbRifq5U-YQL9fF956MxXE1fouKkzRniLCSuefg@mail.gmail.com>
+Subject: Re: [PATCH 4/7] target/arm: Handle writeback in VLDR/VSTR sysreg with
+ no memory access
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.202,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -122,24 +111,34 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ww8851OLHlaY
+X-TUID: txoMuSbkVEs4
 
-On 6/18/21 7:10 AM, Peter Maydell wrote:
-> Instead of open-coding the "take NOCP exception if FPU disabled,
-> otherwise call gen_preserve_fp_state()" code in the accessors for
-> FPCXT_NS, add an argument to vfp_access_check_m() which tells it to
-> skip the gen_update_fp_context() call, so we can use it for the
-> FPCXT_NS case.
-> 
-> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
-> ---
->   target/arm/translate-a32.h    |  2 +-
->   target/arm/translate-m-nocp.c | 10 ++--------
->   target/arm/translate-vfp.c    | 13 ++++++++-----
->   3 files changed, 11 insertions(+), 14 deletions(-)
+On Fri, 18 Jun 2021 at 17:15, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> On 6/18/21 7:10 AM, Peter Maydell wrote:
+> > @@ -633,9 +665,11 @@ static void fp_sysreg_to_memory(DisasContext *s, void *opaque, TCGv_i32 value)
+> >           gen_helper_v8m_stackcheck(cpu_env, addr);
+> >       }
+> >
+> > -    gen_aa32_st_i32(s, value, addr, get_mem_index(s),
+> > -                    MO_UL | MO_ALIGN | s->be_data);
+> > -    tcg_temp_free_i32(value);
+> > +    if (do_access) {
+> > +        gen_aa32_st_i32(s, value, addr, get_mem_index(s),
+> > +                        MO_UL | MO_ALIGN | s->be_data);
+> > +        tcg_temp_free_i32(value);
+> > +    }
+>
+> So, this bit looked funny at first glance -- are we missing the free of value?  But of
+> course value == NULL when !do_access.  Which made me wonder if it wouldn't be better to
+> just use value == NULL and not add the extra argument?
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+That was how I thought I'd do it initially, but of course you
+can't do that for the fp_memory_to_sysreg callbacks, and I
+preferred to be consistent across the two.
 
-r~
+-- PMM

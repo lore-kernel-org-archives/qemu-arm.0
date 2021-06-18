@@ -1,256 +1,256 @@
-Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp510864lff;
-        Thu, 17 Jun 2021 05:54:47 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyhTdNwhHx492FAyUexGjFQFndTu8Af3DRNbikplSBkf2Ov2G2IrMI+XBPrOgWckXpfJ9JM
-X-Received: by 2002:ab0:784f:: with SMTP id y15mr4870463uaq.60.1623934487406;
-        Thu, 17 Jun 2021 05:54:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623934487; cv=none;
+Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp1606277lff;
+        Fri, 18 Jun 2021 07:19:41 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxCem/Tatlu4HrHE6T0M8bOnNDJiPWvKsa+NfHYcCKBGbJ95xD3rawKMNNcqk0ssrebW8mo
+X-Received: by 2002:a17:906:19cc:: with SMTP id h12mr11106859ejd.306.1624025981659;
+        Fri, 18 Jun 2021 07:19:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1624025981; cv=none;
         d=google.com; s=arc-20160816;
-        b=B+PdDr6mqffe6goytsIMCmtSY21i1YipfJF9DpQpvljbFN5lbrJII8Ux9VRYFRzauC
-         tcdTKmTx6JIL/AZeL+XdY7Juyt1v/Ds0NAXxjKTX0gVNXSBtDirmiXjO7qVHm1++JyiO
-         p9p5yrIOo89VCTJbzBBQyOx/cPjoNp+i6aHnOINAIoaicw54o1bN0yi5u1/9v59RYPrT
-         Xr8w8QueWTYl2QY6lgpD6ODIgNCpRdaZ0t47EK9QNBQ320GNFGV4bdP4XLTKXp8Y0khk
-         mxzYMdDxdq2m7DviiwCFWu2QlzK8+9qtD438NbsOsADIVkMPPA1ZcdSTv64qoU0kLNdu
-         ZWQA==
+        b=m3cdcdFd3ucMw+6g3tLQj30wM088+N33D5VjadhOF097F64oxwWf+jx1qWoSWZS37r
+         ZrIisZH+9FcuWALbIT20I0HGw6L2ehIf6nw4zw0GIqVwg13pMwzWWV7j1XkNrszPHjfx
+         z3YS1AB9uZX+kEbw5g039BI6E8onbNJQmNSMxg2QidFS3kzRemDRJ/xZyVmM2jV6U+1X
+         4ZpqwB6YOhQR5Ibtq2iG7bTrMWADuAEODXP+zs+KFzMBRjdwC+rydVF2UQy4BS/TwyHo
+         RN9ory1sqDBkBbj2sta0vo7mi/SLQ5CP6vKzndsuslUWccuweSSmLGixwLWKTA6WmOwb
+         M1nQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=hStj6zof4ZIVqXLILY6nUnm8m7n+pOxOXy95R7wxh4g=;
-        b=kpHWOIau36WOnTqE5a55wnl1jibe6KZRBhJ3GmRY69VvfbkeUz+aLaewYDnPfuiUNX
-         7RcvadVQSCTkKdM/R4J11ZV1HZ8NujLB7xe0aC1BNnu+wlyVs3pc7/MWDYWIdNSGiaBn
-         g5yitfRpY8dIfwR+/rUv84grWyUwHjjc8Hy+MN+3EQJoRYuHm2+jNs67R/GK7eixeert
-         ilwrJA4NEBo5c8LjJq4eF3TQdZYE/VnjQAhniBRFPUwU45w0kLDili/Jnv2Y4SfqKJoD
-         Z2VqmpGCJZs9lvMMksh3nEayTcnixF4B00s2ufC2oBROqLhpUNqQggaXjhf/cTwAAsnp
-         T9Zg==
+        bh=s+/OW/sFe2egCGOmpvnbQvn6rHu2TjvlR2dS4FiM/Es=;
+        b=zI+SswgZjB4cYyYRULN4UOGTZ2+07r6jaJcMng440vIM0Ft3EBoazWLKF0jI3oghFd
+         2aui8kqRuzJOlDyHwt6zzlBimXHzqlOpX+rtwMdcfeSRZb9sHDpid0OhPuvnHY9F1ok6
+         WKJqaFiKjk+hCReKsGw23b90RjpEdnhnnrre60SKvWok7TeYwfGRq8cbWjdZCS+6287d
+         CzNojQaowlVA59IVeu9vmRZXAk5er/l0YrU4QM+75Pt2Rr5dFu1I5vnAgF0KczBD0rwF
+         UFxjyiFes+kpmDALfCzfN56CW817B1XNx5vmai5i/tCFDcAWgQj7WUmMmg6S3zFmwsDp
+         Jk/A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sln994PN;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=xVS0gbG0;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o189si3965781vsd.192.2021.06.17.05.54.47
+        by mx.google.com with ESMTPS id by13si2660042ejc.433.2021.06.18.07.19.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 17 Jun 2021 05:54:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 18 Jun 2021 07:19:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sln994PN;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=xVS0gbG0;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35266 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44690 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ltrXi-0007MN-Kb
-	for alex.bennee@linaro.org; Thu, 17 Jun 2021 08:54:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33266)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1luFLQ-0004YB-LM
+	for alex.bennee@linaro.org; Fri, 18 Jun 2021 10:19:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49788)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ltqxS-0002nw-FM
- for qemu-arm@nongnu.org; Thu, 17 Jun 2021 08:17:18 -0400
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435]:44746)
+ id 1luFCu-0007kK-N1
+ for qemu-devel@nongnu.org; Fri, 18 Jun 2021 10:10:52 -0400
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433]:39570)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ltqxG-0007JQ-D2
- for qemu-arm@nongnu.org; Thu, 17 Jun 2021 08:17:18 -0400
-Received: by mail-wr1-x435.google.com with SMTP id f2so6508130wri.11
- for <qemu-arm@nongnu.org>; Thu, 17 Jun 2021 05:17:05 -0700 (PDT)
+ id 1luFCW-00021Q-1b
+ for qemu-devel@nongnu.org; Fri, 18 Jun 2021 10:10:52 -0400
+Received: by mail-wr1-x433.google.com with SMTP id b3so680198wrm.6
+ for <qemu-devel@nongnu.org>; Fri, 18 Jun 2021 07:10:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=hStj6zof4ZIVqXLILY6nUnm8m7n+pOxOXy95R7wxh4g=;
- b=sln994PNpe2dB93XhabIX2iRykqKJx/XOxuSbRLdD/MVjEjh9X4h2Q6DI2uQmOXusH
- aEhjUEci5DXJ70g3z+tIipOwjqPtd4U3OWmMo7rBYWM7p36EDPY/rNawmfgjRDoJCniJ
- CmQ6H3bBZEGBfEyhvcVcBQf0BW6kE4rxHqJCzb9T78xDooof6yQTcKpISlF6uZf99hWK
- 0wdXdEtOLbY76MpG42RJ8+nxnMDnrNH8q7PD+b1do2i7CEJKBN1jV7TdJvt+Spgf6/UC
- lYyloIOteMBPNhJmZVDNp0ltrAYTZJC8JJJsIY5AQx/XOQGTZBo8sNM4FoifdkJVfgb5
- kfdQ==
+ h=from:to:subject:date:message-id:in-reply-to:references:mime-version
+ :content-transfer-encoding;
+ bh=s+/OW/sFe2egCGOmpvnbQvn6rHu2TjvlR2dS4FiM/Es=;
+ b=xVS0gbG06NwDSpb+gjm5ECyaDk+hbPjjXM7p23bOAQJJ65HLKnWQJ3wFDbtmGuPC6c
+ OBj/qz8Hrh9UQy8LdTeeNvvDib39AET33++an0HMpv2+TvzkmQ5SEJII6ntgO5r0dk99
+ bc1+zJxM2p0s+d+L4US2gQPohd+qs+/ZpMuqZH1E53xiQ/0nZgoOBFhUZidOuqdi35te
+ WWAa6a/rvs866+faDWMkkSE7lenHXxWUQu6er7fOTIipdyXiQkzUsmXbccCxba7QgEJP
+ BWLoxCsev8fUycycxLvB75Py5eRBnKEBHpL3HuTnKxZY8q6wtUtR2VWIUCuDjWxW+7ys
+ hnUg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=hStj6zof4ZIVqXLILY6nUnm8m7n+pOxOXy95R7wxh4g=;
- b=HhoDK+80hXSUhP45ITrM0ZVDTkezx/1ANEd/rR/5Rv5MW4Qlpvy1o3av/WBLrnokX4
- gigjBH+ynLadESp17zxrxbQ7MvTrZxy7Fb/doL3D7yPwZM0bgN+8d3fNN4BKY5cyXzey
- 3GNDF/gLa132b0G3XDXvY7bv1rts1LuBKGkAmxlC6rReTbUXWkLhXSUZj2Y3oyj9KQXI
- 7dmrk6y4toQY7NqLWKg1w6l1IozWWWez+AsXuXgbpbd8mqGfncton3ZZnUCZmO0fywfy
- tdqaeimJAMa38vp/pQdBYF++UZJY1p35qpdVTBpXTPJjCWi7nL0Q5e6MG/8LgG0jzqqG
- JGfQ==
-X-Gm-Message-State: AOAM530VREwnKg7/Huu4NNsFqlnTPihcSPywlaragN/155om5QHpG70l
- VKutTFoTihdhNiw13UQUgMtAGl++ZNbhTA==
-X-Received: by 2002:adf:d4cc:: with SMTP id w12mr5294553wrk.216.1623932224283; 
- Thu, 17 Jun 2021 05:17:04 -0700 (PDT)
+ bh=s+/OW/sFe2egCGOmpvnbQvn6rHu2TjvlR2dS4FiM/Es=;
+ b=nOm/el8YOHoq4Go8WJap4/M2bo4Be0KYQV0umTn3/kvNa1WCoftdoZuqzVs5Z5XhnF
+ 2THxtw0xiSXvPtC3VxZtUsKSTRZ91l6pguxcTfb/cyZPseD1naYZMMV+8Y48TBkHjjJn
+ /hAGCiSeHusFYy62bHt+7IXbqW2atJzti+xRSndgbPS/1dZRUNs9e1ObB52I5cvUxP98
+ e35nspgUpKfd6WIZdIGP0jQoQ5Bwuw6gzLNVP/hQj0gE8dR7YQukTOiADHzRdKW1zqLE
+ bzcFq269pe0SkSOVatDQo5NRY8ecqzVvzyENwEgUSDxqCqjBSuom9J6FzagxujaGd2XT
+ Mqbg==
+X-Gm-Message-State: AOAM5333PFh/XCsF7hVlwHhdOwE06X/1eXumbkfnvBzvC5phEHGJ511u
+ jpTRok6k8AGJHpkmmo2Qkr4tMiYjTQ+E6cn7
+X-Received: by 2002:adf:e948:: with SMTP id m8mr12791619wrn.205.1624025426812; 
+ Fri, 18 Jun 2021 07:10:26 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id a1sm6961970wra.63.2021.06.17.05.17.03
+ by smtp.gmail.com with ESMTPSA id j11sm7751661wmq.4.2021.06.18.07.10.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 17 Jun 2021 05:17:03 -0700 (PDT)
+ Fri, 18 Jun 2021 07:10:26 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v3 43/44] target/arm: Implement MVE VADDV
-Date: Thu, 17 Jun 2021 13:16:27 +0100
-Message-Id: <20210617121628.20116-44-peter.maydell@linaro.org>
+Subject: [PATCH 6/7] target/arm: Split vfp_access_check() into A and M versions
+Date: Fri, 18 Jun 2021 15:10:18 +0100
+Message-Id: <20210618141019.10671-7-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210617121628.20116-1-peter.maydell@linaro.org>
-References: <20210617121628.20116-1-peter.maydell@linaro.org>
+In-Reply-To: <20210618141019.10671-1-peter.maydell@linaro.org>
+References: <20210618141019.10671-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::435;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x435.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x433.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Richard Henderson <richard.henderson@linaro.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IK36jqsJAP91
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: pb0NUyQifm+1
 
-Implement the MVE VADDV insn, which performs an addition
-across vector lanes.
+vfp_access_check and its helper routine full_vfp_access_check() has
+gradually grown and is now an awkward mix of A-profile only and
+M-profile only pieces.  Refactor it into an A-profile only and an
+M-profile only version, taking advantage of the fact that now the
+only direct call to full_vfp_access_check() is in A-profile-only
+code.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper-mve.h    |  7 +++++++
- target/arm/mve.decode      |  2 ++
- target/arm/mve_helper.c    | 24 +++++++++++++++++++++
- target/arm/translate-mve.c | 43 ++++++++++++++++++++++++++++++++++++++
- 4 files changed, 76 insertions(+)
+ target/arm/translate-vfp.c | 79 +++++++++++++++++++++++---------------
+ 1 file changed, 48 insertions(+), 31 deletions(-)
 
-diff --git a/target/arm/helper-mve.h b/target/arm/helper-mve.h
-index 161308b67e6..4bbb9b3ae2c 100644
---- a/target/arm/helper-mve.h
-+++ b/target/arm/helper-mve.h
-@@ -348,3 +348,10 @@ DEF_HELPER_FLAGS_4(mve_vrmlaldavhuw, TCG_CALL_NO_WG, i64, env, ptr, ptr, i64)
- 
- DEF_HELPER_FLAGS_4(mve_vrmlsldavhsw, TCG_CALL_NO_WG, i64, env, ptr, ptr, i64)
- DEF_HELPER_FLAGS_4(mve_vrmlsldavhxsw, TCG_CALL_NO_WG, i64, env, ptr, ptr, i64)
-+
-+DEF_HELPER_FLAGS_3(mve_vaddvsb, TCG_CALL_NO_WG, i32, env, ptr, i32)
-+DEF_HELPER_FLAGS_3(mve_vaddvub, TCG_CALL_NO_WG, i32, env, ptr, i32)
-+DEF_HELPER_FLAGS_3(mve_vaddvsh, TCG_CALL_NO_WG, i32, env, ptr, i32)
-+DEF_HELPER_FLAGS_3(mve_vaddvuh, TCG_CALL_NO_WG, i32, env, ptr, i32)
-+DEF_HELPER_FLAGS_3(mve_vaddvsw, TCG_CALL_NO_WG, i32, env, ptr, i32)
-+DEF_HELPER_FLAGS_3(mve_vaddvuw, TCG_CALL_NO_WG, i32, env, ptr, i32)
-diff --git a/target/arm/mve.decode b/target/arm/mve.decode
-index 695097dcca4..d9ece7be5da 100644
---- a/target/arm/mve.decode
-+++ b/target/arm/mve.decode
-@@ -252,6 +252,8 @@ VBRSR            1111 1110 0 . .. ... 1 ... 1 1110 . 110 .... @2scalar
- VQDMULH_scalar   1110 1110 0 . .. ... 1 ... 0 1110 . 110 .... @2scalar
- VQRDMULH_scalar  1111 1110 0 . .. ... 1 ... 0 1110 . 110 .... @2scalar
- 
-+# Vector add across vector
-+VADDV            111 u:1 1110 1111 size:2 01 ... 0 1111 0 0 a:1 0 qm:3 0 rda=%rdalo
- 
- # Predicate operations
- %mask_22_13      22:1 13:3
-diff --git a/target/arm/mve_helper.c b/target/arm/mve_helper.c
-index fb002465413..e45f8a21e73 100644
---- a/target/arm/mve_helper.c
-+++ b/target/arm/mve_helper.c
-@@ -1149,3 +1149,27 @@ DO_LDAVH(vrmlaldavhuw, 4, uint32_t, false, int128_add, int128_add, int128_make64
- 
- DO_LDAVH(vrmlsldavhsw, 4, int32_t, false, int128_add, int128_sub, int128_makes64)
- DO_LDAVH(vrmlsldavhxsw, 4, int32_t, true, int128_add, int128_sub, int128_makes64)
-+
-+/* Vector add across vector */
-+#define DO_VADDV(OP, ESIZE, TYPE)                               \
-+    uint32_t HELPER(glue(mve_, OP))(CPUARMState *env, void *vm, \
-+                                    uint32_t ra)                \
-+    {                                                           \
-+        uint16_t mask = mve_element_mask(env);                  \
-+        unsigned e;                                             \
-+        TYPE *m = vm;                                           \
-+        for (e = 0; e < 16 / ESIZE; e++, mask >>= ESIZE) {      \
-+            if (mask & 1) {                                     \
-+                ra += m[H##ESIZE(e)];                           \
-+            }                                                   \
-+        }                                                       \
-+        mve_advance_vpt(env);                                   \
-+        return ra;                                              \
-+    }                                                           \
-+
-+DO_VADDV(vaddvsb, 1, uint8_t)
-+DO_VADDV(vaddvsh, 2, uint16_t)
-+DO_VADDV(vaddvsw, 4, uint32_t)
-+DO_VADDV(vaddvub, 1, uint8_t)
-+DO_VADDV(vaddvuh, 2, uint16_t)
-+DO_VADDV(vaddvuw, 4, uint32_t)
-diff --git a/target/arm/translate-mve.c b/target/arm/translate-mve.c
-index 73c15f41333..04d84e88461 100644
---- a/target/arm/translate-mve.c
-+++ b/target/arm/translate-mve.c
-@@ -33,6 +33,7 @@ typedef void MVEGenOneOpFn(TCGv_ptr, TCGv_ptr, TCGv_ptr);
- typedef void MVEGenTwoOpFn(TCGv_ptr, TCGv_ptr, TCGv_ptr, TCGv_ptr);
- typedef void MVEGenTwoOpScalarFn(TCGv_ptr, TCGv_ptr, TCGv_ptr, TCGv_i32);
- typedef void MVEGenDualAccOpFn(TCGv_i64, TCGv_ptr, TCGv_ptr, TCGv_ptr, TCGv_i64);
-+typedef void MVEGenVADDVFn(TCGv_i32, TCGv_ptr, TCGv_ptr, TCGv_i32);
- 
- /* Return the offset of a Qn register (same semantics as aa32_vfp_qreg()) */
- static inline long mve_qreg_offset(unsigned reg)
-@@ -743,3 +744,45 @@ static bool trans_VPST(DisasContext *s, arg_VPST *a)
-     mve_update_and_store_eci(s);
-     return true;
+diff --git a/target/arm/translate-vfp.c b/target/arm/translate-vfp.c
+index 85418dee2e4..d89c7834faa 100644
+--- a/target/arm/translate-vfp.c
++++ b/target/arm/translate-vfp.c
+@@ -188,32 +188,19 @@ static void gen_update_fp_context(DisasContext *s)
  }
-+
-+static bool trans_VADDV(DisasContext *s, arg_VADDV *a)
-+{
-+    /* VADDV: vector add across vector */
-+    static MVEGenVADDVFn * const fns[4][2] = {
-+        { gen_helper_mve_vaddvsb, gen_helper_mve_vaddvub },
-+        { gen_helper_mve_vaddvsh, gen_helper_mve_vaddvuh },
-+        { gen_helper_mve_vaddvsw, gen_helper_mve_vaddvuw },
-+        { NULL, NULL }
-+    };
-+    TCGv_ptr qm;
-+    TCGv_i32 rda;
-+
-+    if (!dc_isar_feature(aa32_mve, s) ||
-+        a->size == 3) {
-+        return false;
-+    }
-+    if (!mve_eci_check(s) || !vfp_access_check(s)) {
-+        return true;
-+    }
-+
-+    /*
-+     * This insn is subject to beat-wise execution. Partial execution
-+     * of an A=0 (no-accumulate) insn which does not execute the first
-+     * beat must start with the current value of Rda, not zero.
-+     */
-+    if (a->a || mve_skip_first_beat(s)) {
-+        /* Accumulate input from Rda */
-+        rda = load_reg(s, a->rda);
-+    } else {
-+        /* Accumulate starting at zero */
-+        rda = tcg_const_i32(0);
-+    }
-+
-+    qm = mve_qreg_ptr(a->qm);
-+    fns[a->size][a->u](rda, cpu_env, qm, rda);
-+    store_reg(s, a->rda, rda);
-+    tcg_temp_free_ptr(qm);
-+
-+    mve_update_eci(s);
+ 
+ /*
+- * Check that VFP access is enabled. If it is, do the necessary
+- * M-profile lazy-FP handling and then return true.
+- * If not, emit code to generate an appropriate exception and
+- * return false.
++ * Check that VFP access is enabled, A-profile specific version.
++ *
++ * If VFP is enabled, return true. If not, emit code to generate an
++ * appropriate exception and return false.
+  * The ignore_vfp_enabled argument specifies that we should ignore
+- * whether VFP is enabled via FPEXC[EN]: this should be true for FMXR/FMRX
++ * whether VFP is enabled via FPEXC.EN: this should be true for FMXR/FMRX
+  * accesses to FPSID, FPEXC, MVFR0, MVFR1, MVFR2, and false for all other insns.
+  */
+-static bool full_vfp_access_check(DisasContext *s, bool ignore_vfp_enabled)
++static bool vfp_access_check_a(DisasContext *s, bool ignore_vfp_enabled)
+ {
+     if (s->fp_excp_el) {
+-        if (arm_dc_feature(s, ARM_FEATURE_M)) {
+-            /*
+-             * M-profile mostly catches the "FPU disabled" case early, in
+-             * disas_m_nocp(), but a few insns (eg LCTP, WLSTP, DLSTP)
+-             * which do coprocessor-checks are outside the large ranges of
+-             * the encoding space handled by the patterns in m-nocp.decode,
+-             * and for them we may need to raise NOCP here.
+-             */
+-            gen_exception_insn(s, s->pc_curr, EXCP_NOCP,
+-                               syn_uncategorized(), s->fp_excp_el);
+-        } else {
+-            gen_exception_insn(s, s->pc_curr, EXCP_UDEF,
+-                               syn_fp_access_trap(1, 0xe, false),
+-                               s->fp_excp_el);
+-        }
++        gen_exception_insn(s, s->pc_curr, EXCP_UDEF,
++                           syn_fp_access_trap(1, 0xe, false), s->fp_excp_el);
+         return false;
+     }
+ 
+@@ -222,17 +209,39 @@ static bool full_vfp_access_check(DisasContext *s, bool ignore_vfp_enabled)
+         unallocated_encoding(s);
+         return false;
+     }
 +    return true;
 +}
+ 
+-    if (arm_dc_feature(s, ARM_FEATURE_M)) {
+-        /* Handle M-profile lazy FP state mechanics */
+-
+-        /* Trigger lazy-state preservation if necessary */
+-        gen_preserve_fp_state(s);
+-
+-        /* Update ownership of FP context and create new FP context if needed */
+-        gen_update_fp_context(s);
++/*
++ * Check that VFP access is enabled, M-profile specific version.
++ *
++ * If VFP is enabled, do the necessary M-profile lazy-FP handling and then
++ * return true. If not, emit code to generate an appropriate exception and
++ * return false.
++ */
++static bool vfp_access_check_m(DisasContext *s)
++{
++    if (s->fp_excp_el) {
++        /*
++         * M-profile mostly catches the "FPU disabled" case early, in
++         * disas_m_nocp(), but a few insns (eg LCTP, WLSTP, DLSTP)
++         * which do coprocessor-checks are outside the large ranges of
++         * the encoding space handled by the patterns in m-nocp.decode,
++         * and for them we may need to raise NOCP here.
++         */
++        gen_exception_insn(s, s->pc_curr, EXCP_NOCP,
++                           syn_uncategorized(), s->fp_excp_el);
++        return false;
+     }
+ 
++    /* Handle M-profile lazy FP state mechanics */
++
++    /* Trigger lazy-state preservation if necessary */
++    gen_preserve_fp_state(s);
++
++    /* Update ownership of FP context and create new FP context if needed */
++    gen_update_fp_context(s);
++
+     return true;
+ }
+ 
+@@ -242,7 +251,11 @@ static bool full_vfp_access_check(DisasContext *s, bool ignore_vfp_enabled)
+  */
+ bool vfp_access_check(DisasContext *s)
+ {
+-    return full_vfp_access_check(s, false);
++    if (arm_dc_feature(s, ARM_FEATURE_M)) {
++        return vfp_access_check_m(s);
++    } else {
++        return vfp_access_check_a(s, false);
++    }
+ }
+ 
+ static bool trans_VSEL(DisasContext *s, arg_VSEL *a)
+@@ -732,7 +745,11 @@ static bool trans_VMSR_VMRS(DisasContext *s, arg_VMSR_VMRS *a)
+         return false;
+     }
+ 
+-    if (!full_vfp_access_check(s, ignore_vfp_enabled)) {
++    /*
++     * Call vfp_access_check_a() directly, because we need to tell
++     * it to ignore FPEXC.EN for some register accesses.
++     */
++    if (!vfp_access_check_a(s, ignore_vfp_enabled)) {
+         return true;
+     }
+ 
 -- 
 2.20.1
 

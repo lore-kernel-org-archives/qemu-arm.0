@@ -1,102 +1,114 @@
-Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp1087763lff;
-        Thu, 17 Jun 2021 18:33:33 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxP5KeLcAon8hZYo9KQuOH99RiIPCA+7vbiQJpfu5Mo5Hh28FL2Wj0Bwin8Iws4OvBYjkdc
-X-Received: by 2002:ab0:4128:: with SMTP id j37mr9498878uad.79.1623980013808;
-        Thu, 17 Jun 2021 18:33:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623980013; cv=none;
+Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp273402lfg;
+        Sat, 19 Jun 2021 03:27:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwkSlGqYVIojGVGYA0R+cY/0ESF3LqTottTStH+/tOl5tpCBRDSETTj2nPiwaNIEgAP/CMZ
+X-Received: by 2002:a05:620a:2953:: with SMTP id n19mr14032004qkp.20.1624098462277;
+        Sat, 19 Jun 2021 03:27:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1624098462; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y//Bymre73rnmx2HO9zc5Fc0SsP8D7Fw4Sb+nJHa6i432/ZvaSFR6Sl+xaiGKHwxDG
-         Uj4Hna5dwT3V3S+hMMvPtvpfGibJuYADGSFbOOxJ/kPmPZQ/MdN9yCxRoSsQoanbKXMH
-         F0UTowUrPAGCfapr4erpBRoKp2b2KItuPUX832Hjk+bm+k/hVa0AVMv4q3jz3mBlAIsx
-         MH1IQwvSu+tnlMpPANBfOcO1XoO4gIU0PsS2N4HAGZYlpYbX+HPOLi4V1hq59GIRk20W
-         AsCSSOb8z3/344o72dz9xqGS7rTwCtulaLyKhHZY1201cDxp/nNMnCoYHxTVjJ5zzE8R
-         tnwQ==
+        b=ndjH1aIpdnWcLq++zBncNuqGf1sFJnY79419ykpCzRGSl33Tr1l50f4nPisL5vNRV/
+         YJ7clRlGeT5wQRbRe9ICgv3ejZY42XkXgqaIpz9Y0o3ulv2ysaelbr3f6DAODUSikWz9
+         TEu7qP4y+YJvzU6aOzjljksl4e1yZNoIkuli7zzXRND3dsxgmJnOPjm1RZp7Fp1dcM3K
+         UM8tdIAYFMreURhpuC+BBOavMYfa2WNxVOjBUVUKSJnDSG9socnmZtEMWkv1FHcbeNge
+         4a/82s+KSW/RAqm74r/Ue91lmMGlLoOuKmp9hoe33M2AI/eUKwgvwvn3PKjr/wcCgUGX
+         F6rA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=TdPcNhtAUavYp7VAA7LbLvuIHP++3IPugdSDG6OIUuc=;
-        b=U+QYeqTCho/m3Hjdh9BBrWi/VlOakA95k8Wz+XWAQbnuqUI+SCR4pzHUpUM/E0Qzlj
-         h+sZ9kZiGTEA7UNhvraf4KmUuQdxbIZnNehAU8G3Ja0IBiSXOCoz8RsGQNIUwm8Jx4h1
-         BXky/NyU46jBwEJ536jBXytqc9mL948LiU6+t92ydFH1ECtG5kcnIvviIbuIeVP5NL15
-         FF0jxHGf5xPWHXx+3knEFdcjhkXiaAzPKP9xMAAv4h1OSSEjSdnJ/aU6hKw4GxP25u3Z
-         zDdW66y6DUSmH2QOKVKO444hX37MccN3TLHtbpN5wUs1gxXLWWSuP71r1gsXdWVCAyU2
-         3xXw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=nc5VNATnJB1OuvV3i6163i6nDpvBOrIOQIN1kwM7sUk=;
+        b=PHsZvNLkZPT7Ndq4t+E+dhRuGF4EtRDRynNQkHa/k+kWMNiRBQLkF3JRih4iX8m7ze
+         wAC0tc98af9oIu5oE3+0PpEAKvMjOFzZd7/ifEeHDKku1Vk40trXsxCCRgywJh7XfbDY
+         NRAbT3hVux3OlAAwrHx9RwhY6pAEZAj1gRR1v0Karj5qFLMZrFsiVNBnzTkinLNfRBI9
+         ZiqEI8NBBbF98mPCeo2k0KZAu6KAcds27rlUHgU6Xsna4XKF9spe5YQshryAycRO4x2c
+         9LUpvlSRyZEFACkcH9pVd07PGdEL900HKrgv1eyEnH36SIozhliqdCTJnGbb9BtPojuW
+         x/dA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CzIFgTcW;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uTDSbMgp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k63si5738197vkg.21.2021.06.17.18.33.33
+        by mx.google.com with ESMTPS id f18si9051864qth.65.2021.06.19.03.27.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 17 Jun 2021 18:33:33 -0700 (PDT)
+        Sat, 19 Jun 2021 03:27:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CzIFgTcW;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uTDSbMgp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:33412 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:52430 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lu3O0-0000l7-Vp
-	for alex.bennee@linaro.org; Thu, 17 Jun 2021 21:33:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38694)
+	id 1luYCT-0002ds-GD
+	for alex.bennee@linaro.org; Sat, 19 Jun 2021 06:27:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47062)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1lu3Nd-0000iN-As; Thu, 17 Jun 2021 21:33:09 -0400
-Received: from mail-io1-xd36.google.com ([2607:f8b0:4864:20::d36]:39509)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1luYC8-0002cT-1H; Sat, 19 Jun 2021 06:27:23 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335]:40900)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1lu3Na-00044A-Fp; Thu, 17 Jun 2021 21:33:09 -0400
-Received: by mail-io1-xd36.google.com with SMTP id f10so1392478iok.6;
- Thu, 17 Jun 2021 18:33:05 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1luYC6-0000GP-1h; Sat, 19 Jun 2021 06:27:19 -0400
+Received: by mail-wm1-x335.google.com with SMTP id
+ n35-20020a05600c3ba3b02901cdecb6bda8so10258959wms.5; 
+ Sat, 19 Jun 2021 03:27:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=TdPcNhtAUavYp7VAA7LbLvuIHP++3IPugdSDG6OIUuc=;
- b=CzIFgTcWGTLsFHE6Xm3/j9Av4V3xUHdEyHdz2zQk06lqnwZaJWFMU3A8qJ088lRsdA
- HbQpeG716eN6uP1XBbqw2Kl343l8nqhQI4Kay4W1vbaO1ckbQ1nifXMGavD503FMq6Hf
- Quo0/RRZtV+FB3ag1AmrgH2ugNOKZpgCBbw/6exxtHswTLj3knXudyS8sTpR3hU/E9yP
- s81Gre4Guwep7rhVstY4Bt/Cyrt9nXZQxVqTYNep2p49f7ZXMysPFrH1+DK/ujzMBg/x
- sClpnj455o++wAxHe+JoC3OQg+3LfaYkdXU8Q3dtLoAS+X9k9ZLwYgn0EHeAFHIAnL5P
- Mmuw==
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=nc5VNATnJB1OuvV3i6163i6nDpvBOrIOQIN1kwM7sUk=;
+ b=uTDSbMgpwDroudoL4KDQNyXm2Rv94fGz+beB9zCpYWHw6kYYp0zDeAbMYU6KsTVJGD
+ mibur8IQUZ/BWJ066pAZ/wsu+59OY3SPtWKifaLo4rO1bBctEkYYr4B1hssipZiPvgFS
+ gKGngPm6KmD3h0gfG/Ipij6eWMUPb2GbJCQgpMM0B7TRN6nYWqV8OTg4BDaiIN6zOBIS
+ TZaMqV1qdlmYgVAllOmfeQv6Qrq27M4U12IyoaHO28W3mgyWHIqZqIKdWVI+xV6faAQR
+ G8qx0E81quoDuWUfo0ry3/qkXHdeiSTKozS2+zCmReeE7CPzx54r5gH/S2IOgl9IkNFx
+ dYfw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=TdPcNhtAUavYp7VAA7LbLvuIHP++3IPugdSDG6OIUuc=;
- b=WKuhD7S7uV3Rk1CgaK5fA5Gc/Hnby9TiZbE+6/Gcp5mBddH+y5tEpDQKBtbUl7/f+p
- oFF4r8jo5MrlPmHH184u1FviTKUDPNDfuGimSYvUAIvP26PaFqbo7gLX8Bndcs9cdS1O
- wn46KqaVYXC1axzEdKv9+6do9AfX0ztb4e815CQ+L5yUjePAmWruhdqeI37iTq5apF/T
- LCKXSZXPhGngeDkCtPyYiZKhtFS5uWzVfkDJUJFMjyWlZjss/bmlo7aqYxFThOnhyBsq
- 8i8GvbAlbsvg9SujI2SAQafLzkPKbOFujWyNzSSzBvtbYf7KtKpiAz1c6fSeDsAByCa8
- PMoA==
-X-Gm-Message-State: AOAM5310BLEgXelVm/hpkKYp62aH1Sc5xNPGNpTtFmOzrkSy4kUm5WLa
- j8boVZKaMkBSraK+vbjbx9JgiGFuGYJAq7LRf4s=
-X-Received: by 2002:a02:8784:: with SMTP id t4mr969497jai.26.1623979985009;
- Thu, 17 Jun 2021 18:33:05 -0700 (PDT)
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=nc5VNATnJB1OuvV3i6163i6nDpvBOrIOQIN1kwM7sUk=;
+ b=Vq2HJ2ipvnmaf6J0X7tlB7TV646h/ZFZS23Yfdozkhzz+HiQvxF/ajsnHlXuYkPD5x
+ P8oUctH82EL7jvF/iJB8s1EWg/DRm7VP6M6+riZp9f+iua5nwBEf6H++rULPLI3qyFZH
+ Zg2v1Gl9flbRCiIzIFl3D9RfQkTdgwjkQ7+bBtejjsJLC8oSocguwqLxaEMJH21W6Uhz
+ YQP1z4qNkaK2SH/J6MLcPPm+4Ki2b10JPJ+g4WerBfStDC1YPZ0F2n/Ekm+XYe6p2Qwn
+ 8WIsZCUAk/wCqxYVCmFdH7UI4lh3Om58iY75HId51AJigz5IvCl86CjSgec/S0BOwtve
+ RyIg==
+X-Gm-Message-State: AOAM530lgCa6Pfdtd+GIpbsAYc5lp/68vUF1acdaedhozivrcDw/W4Mv
+ OZQcg9kTrjObcVz3+DEpJMk=
+X-Received: by 2002:a1c:2604:: with SMTP id m4mr12380626wmm.131.1624098435589; 
+ Sat, 19 Jun 2021 03:27:15 -0700 (PDT)
+Received: from [192.168.1.36] (93.red-83-35-24.dynamicip.rima-tde.net.
+ [83.35.24.93])
+ by smtp.gmail.com with ESMTPSA id p8sm3677639wmi.46.2021.06.19.03.27.14
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 19 Jun 2021 03:27:14 -0700 (PDT)
+Subject: Re: [PATCH] docs/system: arm: Add nRF boards description
+To: Alexandre Iooss <erdnaxe@crans.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+References: <20210619095750.3216150-1-erdnaxe@crans.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <ce559a20-4abc-7810-f76c-1572feaa7e9e@amsat.org>
+Date: Sat, 19 Jun 2021 12:27:13 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.1
 MIME-Version: 1.0
-References: <20210617165647.2575955-1-erdnaxe@crans.org>
- <20210617165647.2575955-5-erdnaxe@crans.org>
-In-Reply-To: <20210617165647.2575955-5-erdnaxe@crans.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Fri, 18 Jun 2021 11:32:38 +1000
-Message-ID: <CAKmqyKMUNEahkv_x9GFaq5sb-K43vXiweWBqHNf6yVR6Buh-tg@mail.gmail.com>
-Subject: Re: [PATCH v3 4/4] tests/boot-serial-test: Add STM32VLDISCOVERY board
- testcase
-To: Alexandre Iooss <erdnaxe@crans.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d36;
- envelope-from=alistair23@gmail.com; helo=mail-io1-xd36.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
+In-Reply-To: <20210619095750.3216150-1-erdnaxe@crans.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x335.google.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
 X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.202,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -110,82 +122,134 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- "open list : STM32VLDISCOVERY" <qemu-arm@nongnu.org>,
- "open list : All patches CC here" <qemu-devel@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+ Su Hang <suhang16@mails.ucas.ac.cn>,
+ =?UTF-8?Q?Steffen_G=c3=b6rtz?= <contrib@steffen-goertz.de>,
+ "open list:NRF51" <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
+ Julia Suvorova <jusual@mail.ru>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UQ5MVduYd0hx
+X-TUID: aMrQgBe59+4U
 
-On Fri, Jun 18, 2021 at 2:56 AM Alexandre Iooss <erdnaxe@crans.org> wrote:
->
-> New mini-kernel test for STM32VLDISCOVERY USART1.
->
++Julia / Su / Steffen
+
+On 6/19/21 11:57 AM, Alexandre Iooss wrote:
+> This adds the target guide for BBC Micro:bit.
+> 
+> Information is taken from https://wiki.qemu.org/Features/MicroBit
+> and from hw/arm/nrf51_soc.c.
+
+Great idea :)
+
+> 
 > Signed-off-by: Alexandre Iooss <erdnaxe@crans.org>
-
-Acked-by: Alistair Francis <alistair.francis@wdc.com>
-
-Alistair
-
 > ---
->  tests/qtest/boot-serial-test.c | 37 ++++++++++++++++++++++++++++++++++
->  1 file changed, 37 insertions(+)
->
-> diff --git a/tests/qtest/boot-serial-test.c b/tests/qtest/boot-serial-test.c
-> index d40adddafa..96849cec91 100644
-> --- a/tests/qtest/boot-serial-test.c
-> +++ b/tests/qtest/boot-serial-test.c
-> @@ -94,6 +94,41 @@ static const uint8_t kernel_nrf51[] = {
->      0x1c, 0x25, 0x00, 0x40                  /* 0x4000251c = UART TXD */
->  };
->
-> +static const uint8_t kernel_stm32vldiscovery[] = {
-> +    0x00, 0x00, 0x00, 0x00,                 /* Stack top address */
-> +    0x1d, 0x00, 0x00, 0x00,                 /* Reset handler address */
-> +    0x00, 0x00, 0x00, 0x00,                 /* NMI */
-> +    0x00, 0x00, 0x00, 0x00,                 /* Hard fault */
-> +    0x00, 0x00, 0x00, 0x00,                 /* Memory management fault */
-> +    0x00, 0x00, 0x00, 0x00,                 /* Bus fault */
-> +    0x00, 0x00, 0x00, 0x00,                 /* Usage fault */
-> +    0x0b, 0x4b,                             /* ldr  r3, [pc, #44] Get RCC */
-> +    0x44, 0xf2, 0x04, 0x02,                 /* movw r2, #16388 */
-> +    0x1a, 0x60,                             /* str  r2, [r3] */
-> +    0x0a, 0x4b,                             /* ldr  r3, [pc, #40] Get GPIOA */
-> +    0x1a, 0x68,                             /* ldr  r2, [r3] */
-> +    0x22, 0xf0, 0xf0, 0x02,                 /* bic  r2, r2, #240 */
-> +    0x1a, 0x60,                             /* str  r2, [r3] */
-> +    0x1a, 0x68,                             /* ldr  r2, [r3] */
-> +    0x42, 0xf0, 0xb0, 0x02,                 /* orr  r2, r2, #176 */
-> +    0x1a, 0x60,                             /* str  r2, [r3] */
-> +    0x07, 0x4b,                             /* ldr  r3, [pc, #26] Get BAUD */
-> +    0x45, 0x22,                             /* movs r2, #69 */
-> +    0x1a, 0x60,                             /* str  r2, [r3] */
-> +    0x06, 0x4b,                             /* ldr  r3, [pc, #24] Get ENABLE */
-> +    0x42, 0xf2, 0x08, 0x02,                 /* movw r2, #8200 */
-> +    0x1a, 0x60,                             /* str  r2, [r3] */
-> +    0x05, 0x4b,                             /* ldr  r3, [pc, #20] Get TXD */
-> +    0x54, 0x22,                             /* movs r2, 'T' */
-> +    0x1a, 0x60,                             /* str  r2, [r3] */
-> +    0xfe, 0xe7,                             /* b    . */
-> +    0x18, 0x10, 0x02, 0x40,                 /* 0x40021018 = RCC */
-> +    0x04, 0x08, 0x01, 0x40,                 /* 0x40010804 = GPIOA */
-> +    0x08, 0x38, 0x01, 0x40,                 /* 0x40013808 = USART1 BAUD */
-> +    0x0c, 0x38, 0x01, 0x40,                 /* 0x4001380c = USART1 ENABLE */
-> +    0x04, 0x38, 0x01, 0x40                  /* 0x40013804 = USART1 TXD */
-> +};
+>  MAINTAINERS                |  1 +
+>  docs/system/arm/nrf.rst    | 49 ++++++++++++++++++++++++++++++++++++++
+>  docs/system/target-arm.rst |  1 +
+>  3 files changed, 51 insertions(+)
+>  create mode 100644 docs/system/arm/nrf.rst
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 636bf2f536..7c54611cc2 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -1031,6 +1031,7 @@ F: hw/*/microbit*.c
+>  F: include/hw/*/nrf51*.h
+>  F: include/hw/*/microbit*.h
+>  F: tests/qtest/microbit-test.c
+> +F: docs/system/arm/nrf.rst
+>  
+>  AVR Machines
+>  -------------
+> diff --git a/docs/system/arm/nrf.rst b/docs/system/arm/nrf.rst
+> new file mode 100644
+> index 0000000000..e30aba8b06
+> --- /dev/null
+> +++ b/docs/system/arm/nrf.rst
+> @@ -0,0 +1,49 @@
+> +Nordic nRF boards (``microbit``)
+> +================================
 > +
->  typedef struct testdef {
->      const char *arch;       /* Target architecture */
->      const char *machine;    /* Name of the machine */
-> @@ -144,6 +179,8 @@ static testdef_t tests[] = {
->      { "aarch64", "virt", "-cpu max", "TT", sizeof(kernel_aarch64),
->        kernel_aarch64 },
->      { "arm", "microbit", "", "T", sizeof(kernel_nrf51), kernel_nrf51 },
-> +    { "arm", "stm32vldiscovery", "", "T",
-> +      sizeof(kernel_stm32vldiscovery), kernel_stm32vldiscovery },
->
->      { NULL }
->  };
-> --
-> 2.25.1
->
+> +The `Nordic nRF`_ chips are a family of ARM-based System-on-Chip that
+> +are designed to be used for low-power and short-range wireless solutions.
+> +
+> +.. _Nordic nRF: https://www.nordicsemi.com/Products
+> +
+> +The nRF51 series is the first series for short range wireless applications.
+> +It is superseded by the nRF51 series.
+> +The following machines are based on this chip :
+> +
+> +- ``microbit``       BBC micro:bit board with nRF51822 SoC
+> +
+> +There are other series such as nRF52, nRF53 and nRF91 which are currently not
+> +supported by QEMU.
+> +
+> +Supported devices
+> +-----------------
+> +
+> + * ARM Cortex-M0 (ARMv6-M)
+> + * Serial ports (UART)
+> + * Clock controller
+> + * Timers
+> + * Random Number Generator (RNG)
+> + * GPIO controller
+> + * NVMC
+> + * SWI
+> +
+> +Missing devices
+> +---------------
+> +
+> + * Watchdog
+> + * Real-Time Clock (RTC) controller
+> + * TWI (i2c)
+> + * SPI controller
+> + * Analog to Digital Converter (ADC)
+> + * Quadrature decoder
+> + * Radio
+> +
+> +Boot options
+> +------------
+> +
+> +The Micro:bit machine can be started using the ``-device`` option to load a
+> +firmware in hexadecimal format. Example:
+
+I'd use "ihex format" instead of "hexadecimal format", see
+
+https://en.wikipedia.org/wiki/Intel_HEX
+
+and also commit e4a25ed91947af1ec87f23725de4ac86a3353b48:
+
+    loader: Implement .hex file loader
+
+    This patch adds Intel Hexadecimal Object File format support to the
+    generic loader device.  The file format specification is available
+    here: http://www.piclist.com/techref/fileext/hex/intel.htm
+
+    This file format is often used with microcontrollers such as the
+    micro:bit, Arduino, STM32, etc.  Users expect to be able to run .hex
+    files directly with without first converting them to ELF.  Most
+    micro:bit code is developed in web-based IDEs without direct user
+    access to binutils so it is important for QEMU to handle this file
+    format natively.
+
+Otherwise:
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
+> +
+> +.. code-block:: bash
+> +
+> +  $ qemu-system-arm -M microbit -device loader,file=test.hex
+> diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
+> index edd013c7bb..5277ac0242 100644
+> --- a/docs/system/target-arm.rst
+> +++ b/docs/system/target-arm.rst
+> @@ -87,6 +87,7 @@ undocumented; you can get a complete list by running
+>     arm/digic
+>     arm/musicpal
+>     arm/gumstix
+> +   arm/nrf
+>     arm/nseries
+>     arm/nuvoton
+>     arm/orangepi
+> 
+

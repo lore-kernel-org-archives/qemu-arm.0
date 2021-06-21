@@ -1,149 +1,107 @@
-Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp2856710lfg;
-        Tue, 22 Jun 2021 01:54:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyws6z/1A9jjDqdMeGK2ub1H4KhWMOeY6O0L97H/gnGaS7U6nGIG2vFT4ETPXFoZXZTd579
-X-Received: by 2002:a02:a99e:: with SMTP id q30mr2843865jam.69.1624352083015;
-        Tue, 22 Jun 2021 01:54:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1624352083; cv=none;
+Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp2343675lfg;
+        Mon, 21 Jun 2021 12:00:25 -0700 (PDT)
+X-Received: by 2002:adf:fd12:: with SMTP id e18mr27258102wrr.242.1624302025868;
+        Mon, 21 Jun 2021 12:00:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1624302025; cv=none;
         d=google.com; s=arc-20160816;
-        b=yrNRxWGRcACCezzjKLfzOGSkz/+yYivFIFOVWe1fk5oqHD9+qt3Sc9P5pNfernPa6z
-         RCwzY9MZDtV1b4dFuHELXsC9c7KwtyvOvB8ZAKCkS0imWomSVH5n4utfp1Pe+pg5vxcA
-         FbHaAuTQ8ThETHQxxXBa34Jts+7mqp8xYt9t6sxo3nmuB8GD4eQlWSqInbVSyZ6Wfe4L
-         sReEG9xISrrtiDb6DIXWobYSZv/vgAPrFoJE9gLauePxjFSQ+z8Pj/SDE0i3MdUEz/VL
-         ccOwo3JUOPFj6BdZx65aTyNx5rgEzAk6OeCsJOY6vkZot7wA2fE9zR0I6d0ItxflwRrH
-         6qSg==
+        b=PezcFs5APh5/ek3BQL4bCD1blCaYGFUkHb+nYWzEQL0ukTwEqP6Xbc87NXRalr2uij
+         ySw3U8/HKRYg0PKH3aBXMlP4HpsvhseTtfPjZ8cF8BKfRfGrDgo4qXdsIYh6om2X7w70
+         ij8iUVTmKqRRA8PPi2UZPGT3R2t3PR3PTVvLWZgYkW+Ae6rLNDRjQEmSmNs9J8e8+4MC
+         Fe9dRmEyD7uEKhcjqPirXlIuhoAEZksYm0uJPEuDZMGjjevip0FxwKrl6ZnZEtfltX2B
+         /nZTyTkjkPDYgO8dbfMYDrUHmoMor1ywqt8ZprcuWEl33OjEf51hNkOZGw2ERSaTLRVJ
+         JKwA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=HVX1/71wBchz9YblH10D+zie241bi+gGY4yzK4cr+yU=;
-        b=AR3+A/Ap3GXcr3Q2yjNDzyQOZtONVj4rcDmdOMCZO/Oe/KIDRGz621HB7ot17c3dW8
-         suEM2MyZohBXFYbGAlEemieUWrzUVAllWXLdqAS/i/0tVI1sakiD3OmPkPokZsEbotvl
-         r0mitjbWs1JLMtkkYUejTQjPu/Wvdf4BvmF8hIxWWGp1412O8v7b+hWdPDvj1mCDqIzL
-         bEff1J++mvZnKoPMnU93UWe5pNkGvD1vH1O6hGlg5UaZkL5G07C+kYTSKRllnUdtWEec
-         obO5i8Jn6bU6+HXdPQezHjC0Zq9R2nP9wAEkKZ5cuQAOXfs+KKqzEC7DIwFF6pF2vE92
-         ZmfA==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject:sender
+         :dkim-signature;
+        bh=mp/7C6gJIlopFlSsUOSBSkCJRTI2SFidp+JXyaaIBpg=;
+        b=rgScOgh3lpCHfq6FO2i0T913Y1SMfq0VtJ1RskM2w+aEJOwE5OLCCIGLnXfNWp2lsp
+         a/5qtJwWmoPDy+nJji9sGbQKRnR8T96TuoVKYHM+JAAVwZiB89ZJ/GETAm7gx0tLHLrW
+         I5MkFBJ1yM6sFiCBVK2fwWJqQehKY0idpUqA/49B5W09Z/t4S8IZ5vRta0psw0cM6Zxx
+         r5Cb7Qc5wpP+YoASqCjFYg8P+5ixmG8CDI5CNLt/frUS6ULO6gR9xuqaoXb8HOUbeLKn
+         tJ4OK/vcjGOMsM51VHte1nOutQRuhk9uyqaEFLBX6e73z8SLD31g6L3VjT/liqcN1607
+         WfNQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w15si14574156ilm.28.2021.06.22.01.54.42
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Jun 2021 01:54:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=BHDr5Svs;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id c11sor9208787wmr.19.2021.06.21.12.00.25
+        (Google Transport Security);
+        Mon, 21 Jun 2021 12:00:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54092 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lvcB8-0002jp-Be
-	for alex.bennee@linaro.org; Tue, 22 Jun 2021 04:54:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53750)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1lvcAy-0002jT-Jd
- for qemu-arm@nongnu.org; Tue, 22 Jun 2021 04:54:32 -0400
-Received: from 8.mo51.mail-out.ovh.net ([46.105.45.231]:33145)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1lvcAw-0001r2-88
- for qemu-arm@nongnu.org; Tue, 22 Jun 2021 04:54:32 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.156.137])
- by mo51.mail-out.ovh.net (Postfix) with ESMTPS id C690D2AA478;
- Tue, 22 Jun 2021 10:53:58 +0200 (CEST)
-Received: from kaod.org (37.59.142.103) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2242.10; Tue, 22 Jun
- 2021 10:53:25 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-103G0053433db20-4487-466d-bf3e-fc1f9a42290f,
- 05C0DFBD0479AF6D6D6C6191138746449F03B0F5) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 90.89.73.13
-Subject: Re: [PATCH 2/2] docs/system/arm: Add quanta-gbs-bmc reference
-To: Peter Maydell <peter.maydell@linaro.org>, Patrick Venture
- <venture@google.com>
-References: <20210615192848.1065297-1-venture@google.com>
- <20210615192848.1065297-3-venture@google.com>
- <CAFEAcA9=L1F-DGW+1g5K6dC9XDMUJyrLf4PWJq9nQ3XthG7nZg@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <664619f3-b3ca-276f-e947-a37a21a9f80e@kaod.org>
-Date: Tue, 22 Jun 2021 10:53:23 +0200
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=BHDr5Svs;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=sender:subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=mp/7C6gJIlopFlSsUOSBSkCJRTI2SFidp+JXyaaIBpg=;
+        b=BHDr5SvsnP2u5I06nhbe0xclw2OOR45sxetBq0z0Kj9OYcjYMykBrzp6LJjufRb90I
+         M8N/xXZWcbghRgQyNENvHg/W11ekR8kGVJG/chnlXy7Ng60YLo8aZoRI9jRmToKjXEIq
+         VkBqIGx7uqt79HHWmBKpVk22vfWzeFhU5yj3+/Q4VsD0JArflWwfRUaWorH5Onq9Uz/S
+         muL38LNmXPIkgzESligbUDauUSlcM7YboQFdEBcW+ooU6ZYXPKlET5ra+wEB/GxacOFS
+         mXyEDjaOquQX8TMTDk1oZ+Qmla1qox2TaIZo41UUJe01vYzJo4vpktNXoxbpsSUNt3EI
+         UkXQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=mp/7C6gJIlopFlSsUOSBSkCJRTI2SFidp+JXyaaIBpg=;
+        b=ADn1ZMVnIL438Rrsf0Nfrrs7+UX91o01LdjPR7P0Qbf9x/XIUTt+0XIuOVdWNIhZzQ
+         abZnnAqZdVguMaQDJym/thnflzTdQ1CeUODNakAXg0iexIhzXnPBiovOKBrvxnHF9omH
+         azwURTfRay9BSoaqsNQE+hct78Fya6o5lib4aApTx3t9ap8FhoHSouRaZIwfsagsNK8r
+         U7u34+/71KdbtBkwbCLIaOBcpoJKTWhZqOKsGdAEzt6FSV980p/tfc1T6iojOOE7OOeb
+         giG0EMeDlSlG2zXPyedABvuJdISg1+TCVegMZHE30YQFJjp7V2XxaytA2caKMhpK0Khg
+         /xvQ==
+X-Gm-Message-State: AOAM531pmTEUQ5xkLE1p2cDABAIu08/3WBv3aLnwMlY0HEdL9Jq9PfOm
+	ecfzyN/CrBaXfo+nTj+FUcs=
+X-Google-Smtp-Source: ABdhPJwdNPsGg3SKZXcHdV7lbAykCfDR7E0ZxVzxFGzeAZkvXtdDJIDZEbvGGRQS2TIcmFA/aYDmhA==
+X-Received: by 2002:a1c:c90f:: with SMTP id f15mr29069758wmb.142.1624302025642;
+        Mon, 21 Jun 2021 12:00:25 -0700 (PDT)
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from [192.168.1.36] (93.red-83-35-24.dynamicip.rima-tde.net. [83.35.24.93])
+        by smtp.gmail.com with ESMTPSA id b9sm2358223wrt.55.2021.06.21.12.00.22
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 21 Jun 2021 12:00:24 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH v1 2/5] hw/arm: add dependency on OR_IRQ for XLNX_VERSAL
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, thuth@redhat.com,
+ Richard Henderson <richard.henderson@linaro.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>, pbonzini@redhat.com
+References: <20210621152120.4465-1-alex.bennee@linaro.org>
+ <20210621152120.4465-3-alex.bennee@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <d6012d09-a9c9-d7f2-9640-80f368a48ec0@amsat.org>
+Date: Mon, 21 Jun 2021 21:00:22 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.10.1
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9=L1F-DGW+1g5K6dC9XDMUJyrLf4PWJq9nQ3XthG7nZg@mail.gmail.com>
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <20210621152120.4465-3-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.103]
-X-ClientProxiedBy: DAG4EX2.mxp5.local (172.16.2.32) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: c6533944-5a62-4e81-bc20-bc80f8638f6c
-X-Ovh-Tracer-Id: 11891191866657704812
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduledrfeeguddgtdelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtjeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepgedvieejfedvhfduhfffueevheeludffhfdvkeehleegtddttdfhieegveeghfffnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdefnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehpvghtvghrrdhmrgihuggvlhhlsehlihhnrghrohdrohhrgh
-Received-SPF: pass client-ip=46.105.45.231; envelope-from=clg@kaod.org;
- helo=8.mo51.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, QEMU Developers <qemu-devel@nongnu.org>,
- Havard Skinnemoen <hskinnemoen@google.com>, CS20 KFTing <kfting@nuvoton.com>,
- qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /xznYtFkxj+i
+Content-Transfer-Encoding: 8bit
+X-TUID: /9n9vOh3pzMT
 
-On 6/21/21 3:31 PM, Peter Maydell wrote:
-> On Tue, 15 Jun 2021 at 20:29, Patrick Venture <venture@google.com> wrote:
->>
->> Add line item reference to quanta-gbs-bmc machine.
->>
->> Signed-off-by: Patrick Venture <venture@google.com>
->> ---
->>  docs/system/arm/nuvoton.rst | 3 ++-
->>  1 file changed, 2 insertions(+), 1 deletion(-)
->>
->> diff --git a/docs/system/arm/nuvoton.rst b/docs/system/arm/nuvoton.rst
->> index ca011bd479..197d149f66 100644
->> --- a/docs/system/arm/nuvoton.rst
->> +++ b/docs/system/arm/nuvoton.rst
->> @@ -1,4 +1,4 @@
->> -Nuvoton iBMC boards (``npcm750-evb``, ``quanta-gsj``)
->> +Nuvoton iBMC boards (``*-bmc``, ``npcm750-evb``, ``quanta-gsj``)
->>  =====================================================
->>
->>  The `Nuvoton iBMC`_ chips (NPCM7xx) are a family of ARM-based SoCs that are
->> @@ -18,6 +18,7 @@ segment. The following machines are based on this chip :
->>  The NPCM730 SoC has two Cortex-A9 cores and is targeted for Data Center and
->>  Hyperscale applications. The following machines are based on this chip :
->>
->> +- ``quanta-gbs-bmc``    Quanta GBS server BMC
->>  - ``quanta-gsj``        Quanta GSJ server BMC
+On 6/21/21 5:21 PM, Alex Bennée wrote:
+> We need this functionality due to:
 > 
-> Why aren't we consistent about the names of the machines here?
-> This suggests that either we should have called the new board
-> 'quanta-gbs', not 'quanta-gbs-bmc', or we should deprecate
-> 'quanta-gsj' and rename it 'quanta-gsj-bmc' ...
+>     /* XRAM IRQs get ORed into a single line.  */
+>     object_initialize_child(OBJECT(s), "xram-irq-orgate",
+>                             &s->lpd.xram.irq_orgate, TYPE_OR_IRQ);
+> 
 
-Indeed, the latter would be the best option. 
+Fixes: a55b441b2ca ("hw/arm: versal: Add support for the XRAMs")
 
-Thanks,
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-C. 
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> ---
+>  hw/arm/Kconfig | 1 +
+>  1 file changed, 1 insertion(+)

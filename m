@@ -1,373 +1,220 @@
-Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp1856699lff;
-        Fri, 18 Jun 2021 12:29:56 -0700 (PDT)
-X-Received: by 2002:a65:6a16:: with SMTP id m22mr11651094pgu.29.1624044596119;
-        Fri, 18 Jun 2021 12:29:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1624044596; cv=none;
+Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp1607836lfg;
+        Sun, 20 Jun 2021 18:41:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzL10t0qcWKS/zSrWlVn1/asBL4pDXvGR+Os9kjYl5UrItUxAIBZMlRjEfggB/wYHlHwP21
+X-Received: by 2002:a05:6e02:1ca5:: with SMTP id x5mr15252610ill.139.1624239719030;
+        Sun, 20 Jun 2021 18:41:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1624239719; cv=none;
         d=google.com; s=arc-20160816;
-        b=uWxpZTiJQRhKqcEuh+szdaikI0ZMQYSza5UjFg1qDTpCghmidDVJho1S06aRLg57l6
-         xxwjFlxS7q/3Cr6RMyDcLy5w38yN//rET5H8z9toX6Aew52wZYoBUSwEnwTJjM7mGXTx
-         FLfjuaQnT2gXopFnk/BW3fO6Cxgvc13FDMe5pl0APQmBCBSBeoiXNBqWvt/QOudK7Zow
-         IjxQljHA+bimBiHlUlkrib9UVy8/cB9vx04ITB2MsNzWlwjR+ajomMeDMiy6tF2F349z
-         IibPY9RWWjnVbqagGhrOw1R0oY56q+OqhOmZRSLa//QkTe0Cz4iqbNqq8oJGy7c+Am4+
-         ZEPA==
+        b=KrFiGBa+n6AHGRHl74XCcdIsCWsLBr68cbnd75ltAOj1NC2fF/KQu1uYik4ly2SYUu
+         cZjKvu8RLKGG4MQoQtRcAeYcuSg0oVS7JCh7oHwBJqij/D3ErgyESnW/1Hi4lwrDnsnj
+         gn7GeA1dDd4/SOJoISfUEbVo31ZmfTFvmWOp//z1Xn/b/yOeHy5vvPlKR2kTsN/fPXXb
+         KZzIy0w2dOQx9JdLrxrSxPzKFzLcEgJgeAIWy3TBp4fHgVaw6chCj24v/1wQ9rkpwgaC
+         aBKmBeZyUgQ4QOk4DFppv6NtalqGdiJnc8VS23zFwe3FE5GxHTTGSvxyucPiprq3da/a
+         nNNw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=BNQDUVyR3ttAl/s4i0xlO2IvPvq1tkDghI/KxgsvylI=;
-        b=KuPHa1MXypu1+oRneUIOd8bFk85/9rQQSq5Pusb9SYmRD2m66MbQ4qQ/mFn56w5ZFP
-         aCCoOE/p8eHetRXw+LO2KwZ4qwGN2wXjVI9bso5HdyYliSidX2Pe42Ju5xG+OXxgbG7G
-         p72h8F6PrO6LSBtfLVN7ytc2kwtiXZFQxklxWzoubonOdxM1nDGLBSqA8SahA+4JNVgX
-         XPyJMHppl4h0CQFFf0qBW2T/IWnOacpw8/4qzJXZtkuvVk9/A4MsQHgY9hVW7Fhr4x3W
-         yDp2I7i9poN+nUQGzdkPh8gqsCsg1lXmAHcFV3XvG30TKgTMRaDWIMROhFtk3KErkgNp
-         l9NQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=Fo35LiJLxzJ5QjaCRAy6ykdp6FMMYOby7BAD/sQfZQU=;
+        b=MbA1yLUikyoq1spFfl4pGDf62Oa4+9mTrxzSWhqK8IBp1GkDj32MsbviyWHci32j81
+         aKwU8lD6PbF87zkt/DeMyk+bjQ7syjTuMb6PJh37c2FkU3nsp1+OVMOMZOMMOgqjFww0
+         k3l9bxzpKTOoLCvC1YufL8/q1895twivEYvyH3V7+6hyqCckiKw/D5husmBkjagTyjqE
+         MQFy6RKQ+3ZOrmDMwKnQvHBOQe0LcDNdrm3ufsSRunPDcR7NI1d+f8gATD+HDcKNdwBw
+         ps8DYo09/SpmeAIz9zbmCuXm28bwbzOz013LEzRp1h3tKfoBidamYg4D+mzuNbyWrIdR
+         sS3A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=AC1CWAdQ;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b="urnw/uyc";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id k23sor5346704pls.73.2021.06.18.12.29.55
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 16si10901029ilt.38.2021.06.20.18.41.58
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 18 Jun 2021 12:29:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 20 Jun 2021 18:41:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=AC1CWAdQ;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b="urnw/uyc";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=BNQDUVyR3ttAl/s4i0xlO2IvPvq1tkDghI/KxgsvylI=;
-        b=AC1CWAdQvfJEvLg1Akyz7PpKMSo5AtgvImyYJq9b8w9PNfynfZJnTqke3HXHaRPrhm
-         HNM9VOzfKu7/ZkIYCb0VQDNnbCuKEtbgxZqbrCDvTOaXNDAmAeyEhasYaGvZaKYPAMYa
-         DXMl+NdhCPqP3pKl4HhzBhIyj3aCfKVeRhQMYKAv+vjKNtO9IfVfoocSAqQTg3PnK6h6
-         Rom33ECpxZW8e9N9XVxFFzjYMtSvQN/bj8JXfR3fzAxZQS0YNy6e3t8/cBL8ZJdInTkV
-         vOgvmtMsYw3sgB4X0rOxRt81GCtmb7Cxq8HNv2qNBp4XR7txBM45nPRmXPhQ9a/c2AjO
-         sIMQ==
+Received: from localhost ([::1]:56390 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lv8wo-0001Gk-Bv
+	for alex.bennee@linaro.org; Sun, 20 Jun 2021 21:41:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39816)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1lv8ps-0003gy-MG
+ for qemu-devel@nongnu.org; Sun, 20 Jun 2021 21:34:48 -0400
+Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536]:33771)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1lv8pp-0005A1-AK
+ for qemu-devel@nongnu.org; Sun, 20 Jun 2021 21:34:48 -0400
+Received: by mail-pg1-x536.google.com with SMTP id e20so12863002pgg.0
+ for <qemu-devel@nongnu.org>; Sun, 20 Jun 2021 18:34:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=Fo35LiJLxzJ5QjaCRAy6ykdp6FMMYOby7BAD/sQfZQU=;
+ b=urnw/uyckTRcrz9lokvO8z/9sBLJsRPCjrU24bmLZUFCS3m7znSJ98SdgkIG/ejhf4
+ 80oavddRacwR+GaMFsmErSxQ5NPIRzrJ7bbe7aa6OYkHbmrzZmL5bT/wHaC0STfGeFP8
+ K1IyB1ZWQONoHW8bJhUKsfafJMXVqn7tJuYTToa4Fe06PRp8AbmnHAr8lboOxfXjqkAk
+ C0lqbYsrD+LRkOpR5a44U4selX4L+rR3ffBZR0PQXQJIFSkX7EBSpUzU4EwA1ostvGfw
+ RaR2MRSGHiNhzuCKuHYu8Cdl1PJp/cz3HJr4C7nc+NHd5VjriqpZ3v74KLMmbYQkD3nX
+ kxRg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=BNQDUVyR3ttAl/s4i0xlO2IvPvq1tkDghI/KxgsvylI=;
-        b=dQ1lQIC38e37p8NIVZuGZtdAdOYUjpUxu2LtxLsqCR0o67Uz0UCr4dj0nHrNftMFyh
-         ffItB17OmKFm5k/AQpyjoljGGQWawbUqW66B0H9vXYpP/L8qjKqbgEuLSIyrekNi4yhu
-         vk0HpuLI4ptsLNwDEaKQYNtqITbiOb3MXoSj2/TRTFiDfhiq05gkzfMEzYFswX+rJpBq
-         yEnKY478oolv2GyShkjzRoqSPXNa7sD5DvaBCQofYPEZuJ1HlguRR0VTOp2PWhoAaVS9
-         RU5bl1dGkgC+Ts8ZOlLde/y2JwVULMEloD19CHTCopNKBsSl7DfSPWmDkjoEsZb/q6pe
-         uFDw==
-X-Gm-Message-State: AOAM533VnsEJLZsHI6YlgK9gT7C/oXpMpnv12APeXjM/j9yW8Caev+Oa
-	G87dmpMolZ0gGdzlCafFGpGiCJOW
-X-Google-Smtp-Source: ABdhPJx4EZCjuWDopqawF6ieZS7OMH1OO355kYq36I4GWGQatiDkEQDynD29XHD++yTJ6o2q7m/yQQ==
-X-Received: by 2002:a17:902:788d:b029:11f:6a5d:d5e2 with SMTP id q13-20020a170902788db029011f6a5dd5e2mr6264138pll.16.1624044595256;
-        Fri, 18 Jun 2021 12:29:55 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=Fo35LiJLxzJ5QjaCRAy6ykdp6FMMYOby7BAD/sQfZQU=;
+ b=aCluqmxNPIISgK+xfgOfnNSDpk4xiVnWBENngOkyvOQQl9IBwz8E82f8ihn+/SIcAM
+ FOL+34hAhqt4TLIJp6HR85kZRAwpJVtJ52E1wCNbqM0yPlcFrIEQlJTOvORSrQKBRSFz
+ HM7mE+EIM5OsnT0u/PR8c8AHVgBf+Lu5fFlhRityxPtlFHGeWiEiD7xNbnkOUdDPpSp3
+ oMkO2Ub82mXFjH8x4DmDPUtoIl7PYTNg1GIQ1b2PYP4956XBELoOdF2PbSapQPRQWXxh
+ As65+V+nU8l+4TtsOlnLwurCj5DSv47zLHDNpE4HJsbjnw5UCk5afveTFdtWe+Q5TrGD
+ UKiw==
+X-Gm-Message-State: AOAM533T2n62YLM0ZcLiw+aZ73AYVSa9Qu7oE94c4fTMOtf7U4fHoJin
+ fwrcyCczXQq2qwrJMxIHILpCpuuuH+RIBQ==
+X-Received: by 2002:aa7:9729:0:b029:2ff:1e52:e284 with SMTP id
+ k9-20020aa797290000b02902ff1e52e284mr16669103pfg.71.1624239283986; 
+ Sun, 20 Jun 2021 18:34:43 -0700 (PDT)
 Received: from localhost.localdomain ([71.212.149.176])
-        by smtp.gmail.com with ESMTPSA id 92sm11938234pjv.29.2021.06.18.12.29.54
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 18 Jun 2021 12:29:55 -0700 (PDT)
+ by smtp.gmail.com with ESMTPSA id s27sm1495628pfg.169.2021.06.20.18.34.43
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 20 Jun 2021 18:34:43 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: laurent@vivier.eu,
-	alex.bennee@linaro.org,
-	qemu-arm@nongnu.org
-Subject: [PATCH v2 05/23] linux-user/arm: Implement setup_sigtramp
-Date: Fri, 18 Jun 2021 12:29:33 -0700
-Message-Id: <20210618192951.125651-6-richard.henderson@linaro.org>
+Subject: [PATCH 05/26] target/arm: Use translator_use_goto_tb
+Date: Sun, 20 Jun 2021 18:34:18 -0700
+Message-Id: <20210621013439.1791385-6-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210618192951.125651-1-richard.henderson@linaro.org>
-References: <20210618192951.125651-1-richard.henderson@linaro.org>
+In-Reply-To: <20210621013439.1791385-1-richard.henderson@linaro.org>
+References: <20210621013439.1791385-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: yHKLZYBQjZAV
+Received-SPF: pass client-ip=2607:f8b0:4864:20::536;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x536.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: HUYpiH3ORx7g
 
-ARM is more complicated than the others, in that we also
-have trampolines for using SA_RESTORER with FDPIC, and
-we need to create trampolines for both ARM and Thumb modes.
+Put a wrapper in translate.h, which also checks for ss_active.
+The ss_active test was incorrectly missing from the a32 version.
 
 Cc: qemu-arm@nongnu.org
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- linux-user/arm/target_signal.h |   2 +
- linux-user/arm/signal.c        | 170 +++++++++++++++++++--------------
- 2 files changed, 100 insertions(+), 72 deletions(-)
+ target/arm/translate.h     | 13 +++++++++++++
+ target/arm/translate-a64.c | 22 +---------------------
+ target/arm/translate.c     | 10 ----------
+ 3 files changed, 14 insertions(+), 31 deletions(-)
 
-diff --git a/linux-user/arm/target_signal.h b/linux-user/arm/target_signal.h
-index 0998dd6dfa..1e7fb0cecb 100644
---- a/linux-user/arm/target_signal.h
-+++ b/linux-user/arm/target_signal.h
-@@ -22,4 +22,6 @@ typedef struct target_sigaltstack {
- #include "../generic/signal.h"
+diff --git a/target/arm/translate.h b/target/arm/translate.h
+index 2821b325e3..3a62f50faf 100644
+--- a/target/arm/translate.h
++++ b/target/arm/translate.h
+@@ -116,6 +116,19 @@ typedef struct DisasContext {
+     TCGv_i64 tmp_a64[TMP_A64_MAX];
+ } DisasContext;
  
- #define TARGET_ARCH_HAS_SETUP_FRAME
-+#define TARGET_ARCH_HAS_SIGTRAMP_PAGE 1
-+
- #endif /* ARM_TARGET_SIGNAL_H */
-diff --git a/linux-user/arm/signal.c b/linux-user/arm/signal.c
-index 2d30345fc2..63bdd59ab9 100644
---- a/linux-user/arm/signal.c
-+++ b/linux-user/arm/signal.c
-@@ -101,13 +101,12 @@ struct sigframe_v1
- {
-     struct target_sigcontext sc;
-     abi_ulong extramask[TARGET_NSIG_WORDS-1];
--    abi_ulong retcode[4];
- };
- 
- struct sigframe_v2
- {
-     struct target_ucontext_v2 uc;
--    abi_ulong retcode[4];
-+    abi_ulong fdpic_ret;
- };
- 
- struct rt_sigframe_v1
-@@ -116,49 +115,20 @@ struct rt_sigframe_v1
-     abi_ulong puc;
-     struct target_siginfo info;
-     struct target_ucontext_v1 uc;
--    abi_ulong retcode[4];
- };
- 
- struct rt_sigframe_v2
- {
-     struct target_siginfo info;
-     struct target_ucontext_v2 uc;
--    abi_ulong retcode[4];
-+    abi_ulong fdpic_ret;
- };
- 
- /*
-- * For ARM syscalls, we encode the syscall number into the instruction.
-+ * Stubs needed to make sure the FD register (r9) contains the right value.
-+ * There are 4 of them, each consuming 8 bytes.
-  */
--#define SWI_SYS_SIGRETURN       (0xef000000|(TARGET_NR_sigreturn + ARM_SYSCALL_BASE))
--#define SWI_SYS_RT_SIGRETURN    (0xef000000|(TARGET_NR_rt_sigreturn + ARM_SYSCALL_BASE))
--
--/*
-- * For Thumb syscalls, we pass the syscall number via r7.  We therefore
-- * need two 16-bit instructions.
-- */
--#define SWI_THUMB_SIGRETURN     (0xdf00 << 16 | 0x2700 | (TARGET_NR_sigreturn))
--#define SWI_THUMB_RT_SIGRETURN  (0xdf00 << 16 | 0x2700 | (TARGET_NR_rt_sigreturn))
--
--static const abi_ulong retcodes[4] = {
--        SWI_SYS_SIGRETURN,      SWI_THUMB_SIGRETURN,
--        SWI_SYS_RT_SIGRETURN,   SWI_THUMB_RT_SIGRETURN
--};
--
--/*
-- * Stub needed to make sure the FD register (r9) contains the right
-- * value.
-- */
--static const unsigned long sigreturn_fdpic_codes[3] = {
--    0xe59fc004, /* ldr r12, [pc, #4] to read function descriptor */
--    0xe59c9004, /* ldr r9, [r12, #4] to setup GOT */
--    0xe59cf000  /* ldr pc, [r12] to jump into restorer */
--};
--
--static const unsigned long sigreturn_fdpic_thumb_codes[3] = {
--    0xc008f8df, /* ldr r12, [pc, #8] to read function descriptor */
--    0x9004f8dc, /* ldr r9, [r12, #4] to setup GOT */
--    0xf000f8dc  /* ldr pc, [r12] to jump into restorer */
--};
-+static abi_ulong sigreturn_fdpic_tramp;
- 
- static inline int valid_user_regs(CPUARMState *regs)
- {
-@@ -219,13 +189,12 @@ get_sigframe(struct target_sigaction *ka, CPUARMState *regs, int framesize)
- 
- static int
- setup_return(CPUARMState *env, struct target_sigaction *ka,
--             abi_ulong *rc, abi_ulong frame_addr, int usig, abi_ulong rc_addr)
-+             abi_ulong frame_addr, int usig)
- {
-     abi_ulong handler = 0;
-     abi_ulong handler_fdpic_GOT = 0;
-     abi_ulong retcode;
--
--    int thumb;
-+    int thumb, retcode_idx;
-     int is_fdpic = info_is_fdpic(((TaskState *)thread_cpu->opaque)->info);
- 
-     if (is_fdpic) {
-@@ -243,6 +212,7 @@ setup_return(CPUARMState *env, struct target_sigaction *ka,
-     }
- 
-     thumb = handler & 1;
-+    retcode_idx = thumb + (ka->sa_flags & TARGET_SA_SIGINFO ? 2 : 0);
- 
-     uint32_t cpsr = cpsr_read(env);
- 
-@@ -260,37 +230,24 @@ setup_return(CPUARMState *env, struct target_sigaction *ka,
- 
-     if (ka->sa_flags & TARGET_SA_RESTORER) {
-         if (is_fdpic) {
--            /* For FDPIC we ensure that the restorer is called with a
--             * correct r9 value.  For that we need to write code on
--             * the stack that sets r9 and jumps back to restorer
--             * value.
-+            /*
-+             * For FDPIC we ensure that the restorer is called with a
-+             * correct r9 value.  For that we use a special trampoline
-+             * that reads the function descriptor from the frame,
-+             * sets r9 and jumps back to restorer value.
-              */
--            if (thumb) {
--                __put_user(sigreturn_fdpic_thumb_codes[0], rc);
--                __put_user(sigreturn_fdpic_thumb_codes[1], rc + 1);
--                __put_user(sigreturn_fdpic_thumb_codes[2], rc + 2);
--                __put_user((abi_ulong)ka->sa_restorer, rc + 3);
--            } else {
--                __put_user(sigreturn_fdpic_codes[0], rc);
--                __put_user(sigreturn_fdpic_codes[1], rc + 1);
--                __put_user(sigreturn_fdpic_codes[2], rc + 2);
--                __put_user((abi_ulong)ka->sa_restorer, rc + 3);
--            }
--
--            retcode = rc_addr + thumb;
-+            abi_ulong fd_ofs = (retcode_idx & 2
-+                                ? offsetof(struct rt_sigframe_v2, fdpic_ret)
-+                                : offsetof(struct sigframe_v2, fdpic_ret));
-+            put_user_ual(ka->sa_restorer, frame_addr + fd_ofs);
-+            /* Each trampoline variant consumes 8-byte slot. */
-+            retcode = sigreturn_fdpic_tramp + retcode_idx * 8 + thumb;
-         } else {
-             retcode = ka->sa_restorer;
-         }
-     } else {
--        unsigned int idx = thumb;
--
--        if (ka->sa_flags & TARGET_SA_SIGINFO) {
--            idx += 2;
--        }
--
--        __put_user(retcodes[idx], rc);
--
--        retcode = rc_addr + thumb;
-+        /* Each trampoline variant consumes one 4-byte slot. */
-+        retcode = default_sigreturn + retcode_idx * 4 + thumb;
-     }
- 
-     env->regs[0] = usig;
-@@ -394,8 +351,7 @@ static void setup_frame_v1(int usig, struct target_sigaction *ka,
-         __put_user(set->sig[i], &frame->extramask[i - 1]);
-     }
- 
--    if (setup_return(regs, ka, frame->retcode, frame_addr, usig,
--                     frame_addr + offsetof(struct sigframe_v1, retcode))) {
-+    if (setup_return(regs, ka, frame_addr, usig)) {
-         goto sigsegv;
-     }
- 
-@@ -419,8 +375,7 @@ static void setup_frame_v2(int usig, struct target_sigaction *ka,
- 
-     setup_sigframe_v2(&frame->uc, set, regs);
- 
--    if (setup_return(regs, ka, frame->retcode, frame_addr, usig,
--                     frame_addr + offsetof(struct sigframe_v2, retcode))) {
-+    if (setup_return(regs, ka, frame_addr, usig)) {
-         goto sigsegv;
-     }
- 
-@@ -475,8 +430,7 @@ static void setup_rt_frame_v1(int usig, struct target_sigaction *ka,
-         __put_user(set->sig[i], &frame->uc.tuc_sigmask.sig[i]);
-     }
- 
--    if (setup_return(env, ka, frame->retcode, frame_addr, usig,
--                     frame_addr + offsetof(struct rt_sigframe_v1, retcode))) {
-+    if (setup_return(env, ka, frame_addr, usig)) {
-         goto sigsegv;
-     }
- 
-@@ -509,8 +463,7 @@ static void setup_rt_frame_v2(int usig, struct target_sigaction *ka,
- 
-     setup_sigframe_v2(&frame->uc, set, env);
- 
--    if (setup_return(env, ka, frame->retcode, frame_addr, usig,
--                     frame_addr + offsetof(struct rt_sigframe_v2, retcode))) {
-+    if (setup_return(env, ka, frame_addr, usig)) {
-         goto sigsegv;
-     }
- 
-@@ -841,3 +794,76 @@ long do_rt_sigreturn(CPUARMState *env)
-         return do_rt_sigreturn_v1(env);
-     }
- }
-+
-+void setup_sigtramp(abi_ulong sigtramp_page)
++static inline bool use_goto_tb(DisasContext *s, target_ulong dest)
 +{
-+    enum {
-+        /* For ARM, we encode the syscall number into the instruction. */
-+        SWI_SYS_SIGRETURN =
-+            0xef000000 | (TARGET_NR_sigreturn + ARM_SYSCALL_BASE),
-+        SWI_SYS_RT_SIGRETURN =
-+            0xef000000 | (TARGET_NR_rt_sigreturn + ARM_SYSCALL_BASE),
-+
-+        /*
-+         * For Thumb , we pass the syscall number via r7.
-+         * We therefore need two 16-bit instructions.
-+         */
-+        SWI_THUMB_SIGRETURN =
-+            0xdf00 << 16 | 0x2700 | TARGET_NR_sigreturn,
-+        SWI_THUMB_RT_SIGRETURN =
-+            0xdf00 << 16 | 0x2700 | TARGET_NR_rt_sigreturn,
-+
-+        SIGFRAME_FDPIC_OFS = offsetof(struct sigframe_v2, fdpic_ret),
-+        RT_SIGFRAME_FDPIC_OFS = offsetof(struct rt_sigframe_v2, fdpic_ret),
-+    };
-+
-+    uint32_t total_size = 4 * 4 + 2 * 8;
-+    uint32_t *tramp = lock_user(VERIFY_WRITE, sigtramp_page, total_size, 0);
-+    uint32_t i = 0;
-+
-+    assert(tramp != NULL);
-+
-+    default_sigreturn = sigtramp_page;
-+    __put_user(SWI_SYS_SIGRETURN, &tramp[i++]);
-+    __put_user(SWI_THUMB_SIGRETURN, &tramp[i++]);
-+    __put_user(SWI_SYS_RT_SIGRETURN, &tramp[i++]);
-+    __put_user(SWI_THUMB_RT_SIGRETURN, &tramp[i++]);
-+
 +    /*
-+     * FDPIC require trampolines to call sa_restorer.
-+     *
-+     * ARM versions use:
-+     *    ldr   r9, [sp, #ofs]
-+     *    ldmia r9, {r9, pc}
-+     *
-+     * Thumb versions use:
-+     *    ldrd  r9, r10, [sp, #ofs]
-+     *    bx    r10
-+     *    nop
++     * No direct tb linking with singlestep.
++     * This handles the ARM debug architecture kind; the QEMU kind
++     * is handled inside translator_use_goto_tb.
 +     */
-+    sigreturn_fdpic_tramp = sigtramp_page + i * 4;
-+
-+    /* ARM sigframe */
-+    QEMU_BUILD_BUG_ON(SIGFRAME_FDPIC_OFS > 0xfff);
-+    __put_user(0xe59d9000 | SIGFRAME_FDPIC_OFS, &tramp[i++]);
-+    __put_user(0xe8998200, &tramp[i++]);
-+
-+    /* Thumb sigframe */
-+    QEMU_BUILD_BUG_ON(SIGFRAME_FDPIC_OFS > 0xff << 2);
-+    QEMU_BUILD_BUG_ON(SIGFRAME_FDPIC_OFS & 3);
-+    __put_user(0x9a00e9dd | (SIGFRAME_FDPIC_OFS << 14), &tramp[i++]);
-+    __put_user(0x46c04750, &tramp[i++]);
-+
-+    /* ARM rt_sigframe */
-+    QEMU_BUILD_BUG_ON(RT_SIGFRAME_FDPIC_OFS > 0xfff);
-+    __put_user(0xe59d9000 | RT_SIGFRAME_FDPIC_OFS, &tramp[i++]);
-+    __put_user(0xe8998200, &tramp[i++]);
-+
-+    /* Thumb rt_sigframe */
-+    QEMU_BUILD_BUG_ON(RT_SIGFRAME_FDPIC_OFS > 0xff << 2);
-+    QEMU_BUILD_BUG_ON(RT_SIGFRAME_FDPIC_OFS & 3);
-+    __put_user(0x9a00e9dd | (RT_SIGFRAME_FDPIC_OFS << 14), &tramp[i++]);
-+    __put_user(0x46c04750, &tramp[i++]);
-+
-+    unlock_user(tramp, sigtramp_page, total_size);
++    if (s->ss_active) {
++        return false;
++    }
++    return translator_use_goto_tb(&s->base, dest);
 +}
++
+ typedef struct DisasCompare {
+     TCGCond cond;
+     TCGv_i32 value;
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index 7f74d0e81a..ac58a86e59 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -386,32 +386,12 @@ static void gen_step_complete_exception(DisasContext *s)
+     s->base.is_jmp = DISAS_NORETURN;
+ }
+ 
+-static inline bool use_goto_tb(DisasContext *s, int n, uint64_t dest)
+-{
+-    /* No direct tb linking with singlestep (either QEMU's or the ARM
+-     * debug architecture kind) or deterministic io
+-     */
+-    if (s->base.singlestep_enabled || s->ss_active ||
+-        (tb_cflags(s->base.tb) & CF_LAST_IO)) {
+-        return false;
+-    }
+-
+-#ifndef CONFIG_USER_ONLY
+-    /* Only link tbs from inside the same guest page */
+-    if ((s->base.tb->pc & TARGET_PAGE_MASK) != (dest & TARGET_PAGE_MASK)) {
+-        return false;
+-    }
+-#endif
+-
+-    return true;
+-}
+-
+ static inline void gen_goto_tb(DisasContext *s, int n, uint64_t dest)
+ {
+     const TranslationBlock *tb;
+ 
+     tb = s->base.tb;
+-    if (use_goto_tb(s, n, dest)) {
++    if (use_goto_tb(s, dest)) {
+         tcg_gen_goto_tb(n);
+         gen_a64_set_pc_im(dest);
+         tcg_gen_exit_tb(tb, n);
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index 9e2cca7707..3ac7943d86 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -2511,16 +2511,6 @@ static int disas_dsp_insn(DisasContext *s, uint32_t insn)
+     return 1;
+ }
+ 
+-static inline bool use_goto_tb(DisasContext *s, target_ulong dest)
+-{
+-#ifndef CONFIG_USER_ONLY
+-    return (s->base.tb->pc & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK) ||
+-           ((s->base.pc_next - 1) & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK);
+-#else
+-    return true;
+-#endif
+-}
+-
+ static void gen_goto_ptr(void)
+ {
+     tcg_gen_lookup_and_goto_ptr();
 -- 
 2.25.1
+

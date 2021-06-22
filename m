@@ -1,114 +1,90 @@
-Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp3646147lfg;
-        Tue, 22 Jun 2021 19:43:13 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJza4LVh4s/bMKsfrI7kTxqaqnKvuA0bddc48JdmZiR6CCdrRLWccjP2PelnCYbFvxqO3Lw9
-X-Received: by 2002:ac8:5a10:: with SMTP id n16mr1828931qta.124.1624416192938;
-        Tue, 22 Jun 2021 19:43:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1624416192; cv=none;
+Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp2886186lfg;
+        Tue, 22 Jun 2021 02:36:08 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzFqNzVjhJwQQIeH3Y/x2vHajxs8nOlKcGny4eQC9xiGBPF8vuNnY/LKGfjuucV5d8axh/Y
+X-Received: by 2002:ac8:5ad5:: with SMTP id d21mr2504163qtd.166.1624354568641;
+        Tue, 22 Jun 2021 02:36:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1624354568; cv=none;
         d=google.com; s=arc-20160816;
-        b=j8t7pTUljSbBdJY+jr2WLkmDugGLJGrMlfLeIThC2dnGljBk9yh6ps6by2jUrS+Om9
-         qieRjxRbIk6DNp79iKPs7lKL73WCna7wl6C+QQPFfT80yY232YMxAEnaXv3Dqmvjh0kL
-         H3GOEsiE4MkQ5wsf3D1CYWjOq6qgRolJMpPxqjeIZ66q7qegeyzLXX7cvDojdV5liFGE
-         e2FuzqGmLfSXvYdENTQQSYYLXki/L0KBwlLohYVzarYCKYGusu/rTHPvHGGIHxnqpkBS
-         qaa+gCciw/AmXlTIvJbCeoHSDRHeRD2VbalF3TSw608Lo4QdTTmHuxQQZlJqUI4kNB1v
-         68cQ==
+        b=Ft2AFrLQoj/eKXtAdNHOqzsmKyGmnPS6HoyT3/ESPaGnnwCbiXWL9/92B14IXfycln
+         TrK5uDP6iEcyg1gtl0F0aGVjEcLY97c6lSwN+LMUDeGu03OHnf1s/DhnDCg+6mRweLgQ
+         atbcj+MdAlwv5+GDzDoVw3kFkHyYZoxRCEZZ5D+WRvPqIneUgL42p2HZ10nVXQ2fwPCD
+         Xf5IFRCJ5QisXpnKhCo8JrUnzFDC9HjVFi8rPpPDk7DbDOgt3ilmVw3IRbce3mz1+hDT
+         4tBMxnbfVwUXpRapd+8bg0dp31/3mVWwAxpdKX3Kg1F4i2CHrGCwPQZMuP06D8ROATkn
+         g/Iw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:subject
-         :dkim-signature;
-        bh=NT61TJxzA0qNcB5jpOvUgcTbQz7I3GWz0L1hcOoLOSk=;
-        b=McyBM9wOCBqt4SquTpW9+0mxzPLjINwTM+Q3kn1BZ5m2MrjyoHh+YUlOFnwgh6FA1c
-         2k2J8j9UPnHeZGCID7g8cxmmCktK3YPgjeCSUfb1WXCOe0dXtVu+CRfbR+REvGgeEeKN
-         QoPLr1YPXXsylT+nLXOhXoN9G/wSMqP9irjcDRO3IAfwzyKkgV7Nj/oKZUgEwhbvy5H8
-         yVQLzeClsjORmDJ/gaXbiJzGZH9n4PylQYZqIQkP9u0/osQnXCVrHh1BkBTLnplvjVNq
-         McNpinkIBrDqXzoiez+3eyxeNAscoOu5eDktzhParWZbPxze/2b9PyFeZGIqlBHZHOTJ
-         3FIA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :in-reply-to:message-id:date:subject:to:from;
+        bh=ylTe/pevqgxKHN1XVwGri7xs6BgI2XOSmgs8VzXWf4o=;
+        b=V3WVQc5RA68EG5CVmttfm6r0WFmPRKLmE/tvvC5vmAnNUb/l/dBGunNhFe/EVMm4xp
+         HTVKG+klH3txBD0fRThLbEz+mcD18dcwybqTE4SPMxddoBUrZ94wHbO/997sGZlXMidn
+         dpOu2YHpdbNdM3lssh6ZvuiEjDnc3S9lojdB9bOA8OJsuc6MU+UGIQxJhRzV5NosmUkx
+         5JirNcecqlYXl23qxfNWByWLSRBURPBCJ/EXnnqAi0gBim9w3CuJgBrAYxxpZS29H/bc
+         06rRV2SdHN6JlwpCpVh2XE0orAN2OJ13s2gHaMN78jkPugsqP0qmaq5Bfp7XGd4gRLzD
+         845Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BljgKEkf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a20si2939095qtw.140.2021.06.22.19.43.12
+        by mx.google.com with ESMTPS id g21si1398120qtg.203.2021.06.22.02.36.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Jun 2021 19:43:12 -0700 (PDT)
+        Tue, 22 Jun 2021 02:36:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BljgKEkf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54096 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Received: from localhost ([::1]:48852 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lvsrA-0001Mj-8V
-	for alex.bennee@linaro.org; Tue, 22 Jun 2021 22:43:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53900)
+	id 1lvcpD-0005XL-Vd
+	for alex.bennee@linaro.org; Tue, 22 Jun 2021 05:36:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35848)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1lvsr0-0001Km-HP
- for qemu-arm@nongnu.org; Tue, 22 Jun 2021 22:43:02 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:43945)
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1lvcnk-0002wC-5p; Tue, 22 Jun 2021 05:34:36 -0400
+Received: from szxga01-in.huawei.com ([45.249.212.187]:2426)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1lvsqw-0005VQ-NB
- for qemu-arm@nongnu.org; Tue, 22 Jun 2021 22:43:02 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1624416178;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=NT61TJxzA0qNcB5jpOvUgcTbQz7I3GWz0L1hcOoLOSk=;
- b=BljgKEkfpzUP9suyksJWkVA1u1pFJ0YSeInoCwBvrZkH5RXOWAm+HHELwfw5AwkY0TW4ob
- HblOVOd6lRNap0/yWHCPpeqECRZinuGbx9bIC41NJDWMa2ZjpoQeAATCmzmCC0ntP2siXj
- FbCmncdJ0/KzPBAKMHijLLL4Ff+Ab2s=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-529-AmsBjLliPMyH3yCU93jl3w-1; Tue, 22 Jun 2021 22:42:54 -0400
-X-MC-Unique: AmsBjLliPMyH3yCU93jl3w-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 77FFA800D55;
- Wed, 23 Jun 2021 02:42:53 +0000 (UTC)
-Received: from [10.64.54.84] (vpn2-54-84.bne.redhat.com [10.64.54.84])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 0ACB760875;
- Wed, 23 Jun 2021 02:42:47 +0000 (UTC)
-Subject: Re: [PATCH] hw/arm/boot: Use NUMA node ID in memory node name
-To: Andrew Jones <drjones@redhat.com>
-References: <20210601073004.106490-1-gshan@redhat.com>
- <20210601075045.ppmceogd5hp5rqcf@gator.home>
- <e50c52e7-a8d5-c269-cebf-caf1688c629e@redhat.com>
- <20210602113642.axaxxgnw2haghas4@gator.home>
- <493194a5-bf72-de17-8de9-4b3556a011be@redhat.com>
- <7e9e4127-ba08-29e3-fd62-5d686baa9012@redhat.com>
- <20210622071349.ibni4btfjrb2v2p2@gator>
-From: Gavin Shan <gshan@redhat.com>
-Message-ID: <707a90ca-4a12-5813-4834-6ed5c77200b5@redhat.com>
-Date: Wed, 23 Jun 2021 14:43:49 +1000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.0
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1lvcnh-000343-1q; Tue, 22 Jun 2021 05:34:35 -0400
+Received: from dggemv704-chm.china.huawei.com (unknown [172.30.72.53])
+ by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4G8LkV23vDzZh1N;
+ Tue, 22 Jun 2021 17:31:30 +0800 (CST)
+Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
+ dggemv704-chm.china.huawei.com (10.3.19.47) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2176.2; Tue, 22 Jun 2021 17:34:30 +0800
+Received: from DESKTOP-TMVL5KK.china.huawei.com (10.174.187.128) by
+ dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2176.2; Tue, 22 Jun 2021 17:34:29 +0800
+From: Yanan Wang <wangyanan55@huawei.com>
+To: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones
+ <drjones@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, "Michael S .
+ Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>, Shannon Zhao
+ <shannon.zhaosl@gmail.com>, Alistair Francis <alistair.francis@wdc.com>,
+ David Gibson <david@gibson.dropbear.id.au>, <qemu-devel@nongnu.org>,
+ <qemu-arm@nongnu.org>
+Subject: [RFC PATCH v4 7/7] hw/acpi/aml-build: Generate PPTT table
+Date: Tue, 22 Jun 2021 17:34:13 +0800
+Message-ID: <20210622093413.13360-8-wangyanan55@huawei.com>
+X-Mailer: git-send-email 2.8.4.windows.1
+In-Reply-To: <20210622093413.13360-1-wangyanan55@huawei.com>
+References: <20210622093413.13360-1-wangyanan55@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20210622071349.ibni4btfjrb2v2p2@gator>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=gshan@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=gshan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.223,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain
+X-Originating-IP: [10.174.187.128]
+X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
+ dggpemm500023.china.huawei.com (7.185.36.83)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.187;
+ envelope-from=wangyanan55@huawei.com; helo=szxga01-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -122,166 +98,179 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Gavin Shan <gshan@redhat.com>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- shan.gavin@gmail.com, eric.auger@redhat.com
+Cc: Barry Song <song.bao.hua@hisilicon.com>,
+ Yanan Wang <wangyanan55@huawei.com>, prime.zeng@hisilicon.com,
+ wanghaibin.wang@huawei.com, yuzenghui@huawei.com, yangyicong@huawei.com,
+ zhukeqian1@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: adQ0PGjLHVLh
+X-TUID: Dv3mQ3xTk8oZ
 
-Hi Drew,
+From: Andrew Jones <drjones@redhat.com>
 
-On 6/22/21 5:13 PM, Andrew Jones wrote:
-> On Tue, Jun 22, 2021 at 06:53:41PM +1000, Gavin Shan wrote:
->> On 6/3/21 2:48 PM, Gavin Shan wrote:
->>> On 6/2/21 9:36 PM, Andrew Jones wrote:
->>>> On Wed, Jun 02, 2021 at 11:09:32AM +1000, Gavin Shan wrote:
->>>>> On 6/1/21 5:50 PM, Andrew Jones wrote:
->>>>>> On Tue, Jun 01, 2021 at 03:30:04PM +0800, Gavin Shan wrote:
->>>>>>> We possibly populate empty nodes where memory isn't included and might
->>>>>>> be hot added at late time. The FDT memory nodes can't be created due
->>>>>>> to conflicts on their names if multiple empty nodes are specified.
->>>>>>> For example, the VM fails to start with the following error messages.
->>>>>>>
->>>>>>>      /home/gavin/sandbox/qemu.main/build/qemu-system-aarch64          \
->>>>>>>      -accel kvm -machine virt,gic-version=host                        \
->>>>>>>      -cpu host -smp 4,sockets=2,cores=2,threads=1 -m 1024M,maxmem=64G \
->>>>>>>      -object memory-backend-ram,id=mem0,size=512M                     \
->>>>>>>      -object memory-backend-ram,id=mem1,size=512M                     \
->>>>>>>      -numa node,nodeid=0,cpus=0-1,memdev=mem0                         \
->>>>>>>      -numa node,nodeid=1,cpus=2-3,memdev=mem1                         \
->>>>>>>      -numa node,nodeid=2                                              \
->>>>>>>      -numa node,nodeid=3                                              \
->>>>>>>        :
->>>>>>>      -device virtio-balloon-pci,id=balloon0,free-page-reporting=yes
->>>>>>>
->>>>>>>      qemu-system-aarch64: FDT: Failed to create subnode /memory@80000000: \
->>>>>>>                           FDT_ERR_EXISTS
->>>>>>>
->>>>>>> This fixes the issue by using NUMA node ID or zero in the memory node
->>>>>>> name to avoid the conflicting memory node names. With this applied, the
->>>>>>> VM can boot successfully with above command lines.
->>>>>>>
->>>>>>> Signed-off-by: Gavin Shan <gshan@redhat.com>
->>>>>>> ---
->>>>>>>     hw/arm/boot.c | 7 ++++++-
->>>>>>>     1 file changed, 6 insertions(+), 1 deletion(-)
->>>>>>>
->>>>>>> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
->>>>>>> index d7b059225e..3169bdf595 100644
->>>>>>> --- a/hw/arm/boot.c
->>>>>>> +++ b/hw/arm/boot.c
->>>>>>> @@ -432,7 +432,12 @@ static int fdt_add_memory_node(void *fdt, uint32_t acells, hwaddr mem_base,
->>>>>>>         char *nodename;
->>>>>>>         int ret;
->>>>>>> -    nodename = g_strdup_printf("/memory@%" PRIx64, mem_base);
->>>>>>> +    if (numa_node_id >= 0) {
->>>>>>> +        nodename = g_strdup_printf("/memory@%d", numa_node_id);
->>>>>>> +    } else {
->>>>>>> +        nodename = g_strdup("/memory@0");
->>>>>>> +    }
->>>>>>> +
->>>>>>>         qemu_fdt_add_subnode(fdt, nodename);
->>>>>>>         qemu_fdt_setprop_string(fdt, nodename, "device_type", "memory");
->>>>>>>         ret = qemu_fdt_setprop_sized_cells(fdt, nodename, "reg", acells, mem_base,
->>
->> [...]
->>
->>>
->>> I've sent one separate mail to check with Rob Herring. Hopefully he have
->>> ideas as he is maintaining linux FDT subsystem. You have been included to
->>> that thread. I didn't find something meaningful to this thread after doing
->>> some google search either.
->>>
->>> Yes, I agree with you we need to follow the specification strictly. It seems
->>> it's uncertain about the 'physical memory map' bus binding requirements.
->>>
->>
->> I didn't get expected answers from device-tree experts.
-> 
-> What response did you get? Can you please provide a link to the discussion?
-> 
+Add the Processor Properties Topology Table (PPTT) to expose
+CPU topology information defined by users to ACPI guests.
 
-Sorry about the confusion. I meant "no response" by "expected answers". Here
-is the mail sent to Rob before, no reply so far:
+Note, a DT-boot Linux guest with a non-flat CPU topology will
+see socket and core IDs being sequential integers starting
+from zero, which is different from ACPI-boot Linux guest,
+e.g. with -smp 4,sockets=2,cores=2,threads=1
 
-https://lkml.org/lkml/2021/6/2/1446
+a DT boot produces:
 
->> After rethinking about it,
->> I plan to fix this like this way, but please let me know if it sounds sensible
->> to you.
->>
->> The idea is to assign a (not overlapped) dummy base address to each memory
->> node in the device-tree. The dummy is (last_valid_memory_address + NUMA ID).
->> The 'length' of the 'reg' property in the device-tree nodes, corresponding
->> to empty NUMA nodes, is still zero. This ensures the nodes are still invalid
->> until memory is added to these nodes.
->>
->> I had the temporary patch for the implementation. It works fine and VM can
->> boot up successfully.
-> 
-> I would like to be sure that the kernel developers for NUMA, memory
-> hotplug, and devicetree specifications are all happy with the approach
-> before adding it to QEMU.
-> 
+ cpu:  0 package_id:  0 core_id:  0
+ cpu:  1 package_id:  0 core_id:  1
+ cpu:  2 package_id:  1 core_id:  0
+ cpu:  3 package_id:  1 core_id:  1
 
-As I understood, it won't break anything from perspectives of NUMA
-and device-tree specification. First of all, NUMA cares the so-called
-distance map and 'numa-node-id' property in the individual device-tree
-nodes. The device-tree specification doesn't say 'length' in 'reg'
-property of memory node can't be zero. Also, the linux device-tree
-implementation has the check on 'length', the memory block won't be
-added if it's zero.
+an ACPI boot produces:
 
-Documentation/devicetree/bindings/numa.txt has more details about
-the required device-tree NUMA properties.
+ cpu:  0 package_id: 36 core_id:  0
+ cpu:  1 package_id: 36 core_id:  1
+ cpu:  2 package_id: 96 core_id:  2
+ cpu:  3 package_id: 96 core_id:  3
 
-I'm not sure about memory hotplug. I tried memory hot add and it seems
-working finely. Memory hot-add/remove are working without issues:
+This is due to several reasons:
 
-/home/gavin/sandbox/qemu.main/build/qemu-system-aarch64 \
--accel kvm -machine virt,gic-version=host               \
--cpu host -smp 4,sockets=2,cores=2,threads=1            \
--m 4096M,slots=16,maxmem=64G                            \
--object memory-backend-ram,id=mem0,size=2048M           \
--object memory-backend-ram,id=mem1,size=2048M           \
--numa node,nodeid=0,cpus=0-1,memdev=mem0                \
--numa node,nodeid=1,cpus=2-3,memdev=mem1                \
--numa node,nodeid=2                                     \
--numa node,nodeid=3
-    :
+ 1) DT cpu nodes do not have an equivalent field to what the PPTT
+    ACPI Processor ID must be, i.e. something equal to the MADT CPU
+    UID or equal to the UID of an ACPI processor container. In both
+    ACPI cases those are platform dependant IDs assigned by the
+    vendor.
 
-Memory hot-add
-===============
+ 2) While QEMU is the vendor for a guest, if the topology specifies
+    SMT (> 1 thread), then, with ACPI, it is impossible to assign a
+    core-id the same value as a package-id, thus it is not possible
+    to have package-id=0 and core-id=0. This is because package and
+    core containers must be in the same ACPI namespace and therefore
+    must have unique UIDs.
 
-# cat /proc/meminfo  | grep MemTotal
-MemTotal:        4027472 kB
-# cat /sys/devices/system/node/node2/meminfo | grep MemTotal
-Node 2 MemTotal:       0 kB
+ 3) ACPI processor containers are not mandatorily required for PPTT
+    tables to be used and, due to the limitations of which IDs are
+    selected described above in (2), they are not helpful for QEMU,
+    so we don't build them with this patch. In the absence of them,
+    Linux assigns its own unique IDs. The maintainers have chosen not
+    to use counters from zero, but rather ACPI table offsets, which
+    explains why the numbers are so much larger than with DT.
 
-(qemu) object_add memory-backend-ram,id=hp-mem0,size=1G
-(qemu) device_add pc-dimm,id=dimm0,memdev=hp-mem0,node=3
+ 4) When there is no SMT (threads=1) the core IDs for ACPI boot guests
+    match the logical CPU IDs, because these IDs must be equal to the
+    MADT CPU UID (as no processor containers are present), and QEMU
+    uses the logical CPU ID for these MADT IDs.
 
-# cat /proc/meminfo  | grep MemTotal
-MemTotal:        5076048 kB
-# cat /sys/devices/system/node/node2/meminfo | grep MemTotal
-Node 2 MemTotal: 1048576 kB
+So in summary, with QEMU as vender for the guest, we use sequential
+integers starting from zero for non-leaf nodes without valid ID flag,
+so that guest will ignore them and use table offsets as unique IDs.
+And we use logical CPU IDs for leaf nodes to be consistent with MADT.
 
-Memory hot-remove
-=================
+Signed-off-by: Andrew Jones <drjones@redhat.com>
+Co-developed-by: Yanan Wang <wangyanan55@huawei.com>
+Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
+---
+ hw/acpi/aml-build.c         | 49 +++++++++++++++++++++++++++++++++++++
+ hw/arm/virt-acpi-build.c    |  8 +++++-
+ include/hw/acpi/aml-build.h |  3 +++
+ 3 files changed, 59 insertions(+), 1 deletion(-)
 
-(qemu) device_del dimm0
-(qemu) object_del hp-mem0
-
-# cat /proc/meminfo  | grep MemTotal
-MemTotal:        4027472 kB
-# cat /sys/devices/system/node/node2/meminfo | grep MemTotal
-cat: can't open '/sys/devices/system/node/node2/meminfo': No such file or directory
-
-After this point, the memory can be added again without issues with
-"object_add" and "device_add". So it sounds reasonable to remove
-the empty NUMA node during memory hot-remove.
-
-Thanks,
-Gavin
+diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+index 9fa5024414..a92c7d8123 100644
+--- a/hw/acpi/aml-build.c
++++ b/hw/acpi/aml-build.c
+@@ -1946,6 +1946,55 @@ void build_processor_hierarchy_node(GArray *tbl, uint32_t flags,
+     }
+ }
+ 
++/* ACPI 6.2: 5.2.29 Processor Properties Topology Table (PPTT) */
++void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
++                const char *oem_id, const char *oem_table_id)
++{
++    int pptt_start = table_data->len;
++    int uid = 0, socket;
++
++    acpi_data_push(table_data, sizeof(AcpiTableHeader));
++
++    for (socket = 0; socket < ms->smp.sockets; socket++) {
++        uint32_t socket_offset = table_data->len - pptt_start;
++        int core;
++
++        build_processor_hierarchy_node(
++            table_data,
++            (1 << 0), /* ACPI 6.2 - Physical package */
++            0, socket, NULL, 0);
++
++        for (core = 0; core < ms->smp.cores; core++) {
++            uint32_t core_offset = table_data->len - pptt_start;
++            int thread;
++
++            if (ms->smp.threads == 1) {
++                build_processor_hierarchy_node(
++                    table_data,
++                    (1 << 1) | /* ACPI 6.2 - ACPI Processor ID valid */
++                    (1 << 3),  /* ACPI 6.3 - Node is a Leaf */
++                    socket_offset, uid++, NULL, 0);
++            } else {
++                build_processor_hierarchy_node(table_data, 0, socket_offset,
++                                               core, NULL, 0);
++
++                for (thread = 0; thread < ms->smp.threads; thread++) {
++                    build_processor_hierarchy_node(
++                        table_data,
++                        (1 << 1) | /* ACPI 6.2 - ACPI Processor ID valid */
++                        (1 << 2) | /* ACPI 6.3 - Processor is a Thread */
++                        (1 << 3),  /* ACPI 6.3 - Node is a Leaf */
++                        core_offset, uid++, NULL, 0);
++                }
++            }
++        }
++    }
++
++    build_header(linker, table_data,
++                 (void *)(table_data->data + pptt_start), "PPTT",
++                 table_data->len - pptt_start, 2, oem_id, oem_table_id);
++}
++
+ /* build rev1/rev3/rev5.1 FADT */
+ void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
+                 const char *oem_id, const char *oem_table_id)
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index f1024843dd..90d2176b35 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -698,13 +698,19 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+     dsdt = tables_blob->len;
+     build_dsdt(tables_blob, tables->linker, vms);
+ 
+-    /* FADT MADT GTDT MCFG SPCR pointed to by RSDT */
++    /* FADT MADT PPTT GTDT MCFG SPCR pointed to by RSDT */
+     acpi_add_table(table_offsets, tables_blob);
+     build_fadt_rev5(tables_blob, tables->linker, vms, dsdt);
+ 
+     acpi_add_table(table_offsets, tables_blob);
+     build_madt(tables_blob, tables->linker, vms);
+ 
++    if (ms->expose_cpu_topology) {
++        acpi_add_table(table_offsets, tables_blob);
++        build_pptt(tables_blob, tables->linker, ms, vms->oem_id,
++                   vms->oem_table_id);
++    }
++
+     acpi_add_table(table_offsets, tables_blob);
+     build_gtdt(tables_blob, tables->linker, vms);
+ 
+diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+index ea74b8f6ed..6c29f853cd 100644
+--- a/include/hw/acpi/aml-build.h
++++ b/include/hw/acpi/aml-build.h
+@@ -466,6 +466,9 @@ void build_processor_hierarchy_node(GArray *tbl, uint32_t flags,
+                                     uint32_t parent, uint32_t id,
+                                     uint32_t *priv_rsrc, uint32_t priv_num);
+ 
++void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
++                const char *oem_id, const char *oem_table_id);
++
+ void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
+                 const char *oem_id, const char *oem_table_id);
+ 
+-- 
+2.23.0
 

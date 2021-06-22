@@ -1,185 +1,181 @@
-Received: by 2002:a19:f807:0:0:0:0:0 with SMTP id a7csp643490lff;
-        Wed, 16 Jun 2021 12:31:16 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJytrrXD0rwPnhKbDeVW+iYqM7gyOTT7cEKXMawR7oGbzIived3KVO069awDxHB/o+B/EX66
-X-Received: by 2002:a5d:44d2:: with SMTP id z18mr800833wrr.358.1623871876739;
-        Wed, 16 Jun 2021 12:31:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623871876; cv=none;
+Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp3021832lfg;
+        Tue, 22 Jun 2021 05:33:27 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz1GQTChbxeUPf90n5TECa3rNr04OZJiXv7UWLntpLlGatVb84pXqa5cD4EfEmbOzEnfrBA
+X-Received: by 2002:ac2:5e64:: with SMTP id a4mr2708743lfr.657.1624365207000;
+        Tue, 22 Jun 2021 05:33:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1624365206; cv=none;
         d=google.com; s=arc-20160816;
-        b=TE+etWivBbPC45JgptB4ImLHbXP7LGImIOvLUvtuRokHIwSXTCzdnWn5d4jpYMg9kf
-         o5CQ+v9ZNEC8KwUx6Qt2G5B0BdzuIMhwEFI+ER1OukhyhU93A5jaeUjhg0npgrzmSd7W
-         KmfwusZU70BLIXAmiV7pof0dtFW8D1s1s9eMRUfxssSK4RUZavxYCk1ElbleikYl7frj
-         dcll4XHlKbBEtmJXuysMWdfEpKoaO2dt76IhC2jW2wZmDkL3/8tp1rQAZhARvyaeBGk+
-         IXvBHHhjKsZvJRVUPztDpwFElD33Zc3ufM39BRhJ9jx47CIJ3SRtwbANOSof+QQo6VGt
-         wb5Q==
+        b=ZrCCqlv9Su26eDqKcCmqe8Rgp/wJzqy16+yymC0Nq6QxZZvs3iUsNRwPcegApW4JE7
+         3miv6yg8I7G9KZsfgn5Nlb2bZ6gAF7YEwOJy/zxREP6EQIgGtBkFQ8kP8SgkxtLqDsnh
+         /fZIy/MN3xmv0llZOlSOKzy5Qyt2Pjbqc4PAX9SaZkFbaBxqC7gdEwzCadcQn+2wQ0xm
+         +I/LFArJs9ziipdyN4zJ2aIMN4umbbSCQoqgCLly6cLSWHgi9W91fJ1fec6KSvZwsTim
+         gZM57FXqktEu0ou2rpzdrEHCgioe4M5iwOrphp1FxcGZ7+zZ60FI7TJXDKWkRExGhC/l
+         rBDQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:to:from:date:dkim-signature;
-        bh=FCBYsswJDTcntYmgYIvvIu8QxEyHtHxZfSvcQUP0s8U=;
-        b=uIddn6N89UPoMo1h7cNjufMB5o6eVY/mDM64lRBpCtoC4jrhkujKTM/af55DnQSrWg
-         Z6RiGRwVlJDShd3BP1dOkVWgmtJ1jPDoQMosHytmlT2sjSPrHBDX6qew9knF323H2IyY
-         HO9Ru1hpXy3RMv/FKbr1SYm33VATsvXaUA/ts/WnGzgBn+3qyS4A3CAwo+LPsqTvptZK
-         P/dc6d4yPVhE/vyb3AQGRo8XKOW8azAq0/gDhZUeGTxP9hlLNP/IH9Su8FK+J5lJ+5Pv
-         nPkysdKWCkvzm7Ur8Cczv1gDv4DvuOc/58glu2V/xjhiZhqRIprrrlDc1am0W7YIA6hR
-         mR/w==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=mppc1vGZcxWeNW7Q77NUMhKTb6ODtzj+ATHxyiwq5U8=;
+        b=tbjaOgETyl9G41rogUZD5uOscSFw6qr29TqzKpkIxVjiMs2snRwFVZ8IzLcH0mcLn1
+         YucdorvCAFMg3quFDTQeHaRJyBq2TZXFGbz1onravg+zLR+tghtG1Z/R+gCbu7EM1AQC
+         dMPDc8WmgdNalTq4T2ZscF23zYpM9vgzQ500xvdaOgyLLdvt0bmKQHottUtFOiZksZSG
+         /TbRR9VLKYQlmBzqsDsxcJZPCvuYShnPgPZxXXlXwAPCX1abPPXZfqxCAinQeoYwWPK7
+         MWsVg+WLYYf0fU5XDgkeykqgbHHabhQ+Dvi+XgTx8ZaCXAEELzm/aybLggNj9boRGfAa
+         kesQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@mvista-com.20150623.gappssmtp.com header.s=20150623 header.b=hGliG2jr;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 43si3623000wrc.377.2021.06.16.12.31.16
+        by mx.google.com with ESMTPS id f22si29356646ljk.66.2021.06.22.05.33.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 16 Jun 2021 12:31:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 22 Jun 2021 05:33:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@mvista-com.20150623.gappssmtp.com header.s=20150623 header.b=hGliG2jr;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:48814 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Received: from localhost ([::1]:32986 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ltbFr-0007N7-Rz
-	for alex.bennee@linaro.org; Wed, 16 Jun 2021 15:31:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58162)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lvfao-0006cD-1X
+	for alex.bennee@linaro.org; Tue, 22 Jun 2021 08:33:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33378)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cminyard@mvista.com>)
- id 1ltbDk-0005oO-IY
- for qemu-devel@nongnu.org; Wed, 16 Jun 2021 15:29:04 -0400
-Received: from mail-oi1-x233.google.com ([2607:f8b0:4864:20::233]:46728)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <cminyard@mvista.com>)
- id 1ltbDh-0001Lc-Gu
- for qemu-devel@nongnu.org; Wed, 16 Jun 2021 15:29:03 -0400
-Received: by mail-oi1-x233.google.com with SMTP id c13so3646735oib.13
- for <qemu-devel@nongnu.org>; Wed, 16 Jun 2021 12:29:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mvista-com.20150623.gappssmtp.com; s=20150623;
- h=date:from:to:cc:subject:message-id:reply-to:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=FCBYsswJDTcntYmgYIvvIu8QxEyHtHxZfSvcQUP0s8U=;
- b=hGliG2jrHcimXHHGfzQR7u9c2Y8C/KF5L8hOEX4hvs69oBit0AO+/Z21ur4gaDQs9J
- shqTlWW82C9ZsvVQAOHT5WNTZV0QSxgJ/g8rCHgSLWVyxYwp7d1JHBcID1O7JVLfgveJ
- FqQv8GOV5G9GECXIbzkEq3Dl1MvLIhrl1RSmxHJTU8z1+MSEGQhofBzeY/wlx0oYcJNn
- IkLAMjS3wjHFO8lHhh7s0FHGXl1NCLLx4riFky+/SpOduM8jA1vS7ib1TPjivfqYS0MW
- 41hXXJJIMkrkDukIbyvomdKVu22NuSZRKhsanrDHKgTgBHYb4bkV6/I5LhATMZHoxz63
- 1dVw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:reply-to
- :references:mime-version:content-disposition
- :content-transfer-encoding:in-reply-to;
- bh=FCBYsswJDTcntYmgYIvvIu8QxEyHtHxZfSvcQUP0s8U=;
- b=YzXFvwMfGEYZ18cHUdODqyf3J7FJ/hbssatIp9wv1a1szLUo26RuJanNcukmLnzTOM
- PtgahU2aDbZQqOO2vYeao8EWcZTtdBzGcgS3ZrHzwttk9rgormRpRQWmzhcbyy7JmqCX
- fmpZ+0A+woSkryoMPRKNiajeWA7+ZcIqMLaE2g/ybn6j+rDaBKSU02Ebc4ZJ0Rae4Exo
- OFPj7ZHwis9tjA9FE8zHn9OEopq0dP41GNgXRAPiKLyfSdW+5yLrR2uso+XQrg4Qhaqm
- 4RT+ITjiM1zYwXFlXyj+I0D5pZyE3CW4GUTC6Tg+2mTzjCW5Qvd7U9UxQ//oz71Sqni2
- dqPw==
-X-Gm-Message-State: AOAM5316UrNmh/KRpIHTVcEAZNxqjb+F95ljWS+8PQ+u9iDVG9RJRAOj
- tVkgOfT8Ba4Lltd42ZpXipTPog==
-X-Received: by 2002:a05:6808:1148:: with SMTP id
- u8mr733841oiu.125.1623871739871; 
- Wed, 16 Jun 2021 12:28:59 -0700 (PDT)
-Received: from minyard.net ([2001:470:b8f6:1b:ede8:ade8:da1:e1cc])
- by smtp.gmail.com with ESMTPSA id u1sm496917otg.17.2021.06.16.12.28.59
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 16 Jun 2021 12:28:59 -0700 (PDT)
-Date: Wed, 16 Jun 2021 14:28:58 -0500
-From: Corey Minyard <cminyard@mvista.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: Re: [PATCH v3 00/13] hw/i2c: Remove confusing i2c_send_recv() API
-Message-ID: <20210616192858.GG11196@minyard.net>
-References: <20210616161418.2514095-1-f4bug@amsat.org>
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1lvfZ2-0004YT-UZ; Tue, 22 Jun 2021 08:31:37 -0400
+Received: from szxga08-in.huawei.com ([45.249.212.255]:2243)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1lvfYw-0002qt-Hu; Tue, 22 Jun 2021 08:31:36 -0400
+Received: from dggemv704-chm.china.huawei.com (unknown [172.30.72.53])
+ by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4G8Qc65DCHz1BQQB;
+ Tue, 22 Jun 2021 20:26:14 +0800 (CST)
+Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
+ dggemv704-chm.china.huawei.com (10.3.19.47) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2176.2; Tue, 22 Jun 2021 20:31:23 +0800
+Received: from [10.174.187.128] (10.174.187.128) by
+ dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
+ 15.1.2176.2; Tue, 22 Jun 2021 20:31:22 +0800
+Subject: Re: [RFC PATCH v4 0/7] hw/arm/virt: Introduce cpu topology support
+To: Andrew Jones <drjones@redhat.com>, =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?=
+ <berrange@redhat.com>
+References: <20210622093413.13360-1-wangyanan55@huawei.com>
+ <YNG44c9KtaiNXT7b@redhat.com> <20210622114634.crjqusw6x6oj4j6v@gator>
+From: "wangyanan (Y)" <wangyanan55@huawei.com>
+Message-ID: <bc47a66a-b1ff-939c-32a2-94c90efd0caf@huawei.com>
+Date: Tue, 22 Jun 2021 20:31:22 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+In-Reply-To: <20210622114634.crjqusw6x6oj4j6v@gator>
+Content-Type: text/plain; charset="utf-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20210616161418.2514095-1-f4bug@amsat.org>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::233;
- envelope-from=cminyard@mvista.com; helo=mail-oi1-x233.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Language: en-US
+X-Originating-IP: [10.174.187.128]
+X-ClientProxiedBy: dggeme707-chm.china.huawei.com (10.1.199.103) To
+ dggpemm500023.china.huawei.com (7.185.36.83)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.255;
+ envelope-from=wangyanan55@huawei.com; helo=szxga08-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: cminyard@mvista.com
-Cc: "Signed-off-by : Frederic Konrad" <frederic.konrad@adacore.com>,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jUjX/d7nMCYF
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Barry Song <song.bao.hua@hisilicon.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S . Tsirkin" <mst@redhat.com>, wanghaibin.wang@huawei.com,
+ qemu-devel@nongnu.org, yangyicong@huawei.com,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org, Alistair
+ Francis <alistair.francis@wdc.com>, prime.zeng@hisilicon.com,
+ Paolo Bonzini <pbonzini@redhat.com>, yuzenghui@huawei.com,
+ Igor Mammedov <imammedo@redhat.com>, zhukeqian1@huawei.com,
+ David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 1V5kOOgwFp1X
 
-On Wed, Jun 16, 2021 at 06:14:05PM +0200, Philippe Mathieu-Daudé wrote:
-> This is a respin of Zoltan's patch:
-> https://www.mail-archive.com/qemu-devel@nongnu.org/msg714711.html
-> 
-> Since v2, tried to address Corey's review comments resulting
-> in a i2c_send_recv() removal and code easier to review (to my
-> taste at least).
 
-Yes, this is much better.  I had a few minor comments, and Richard did,
-too, but with those fixed this is a big improvement over the existing
-code.
 
-I can give you an:
+On 2021/6/22 19:46, Andrew Jones wrote:
+> On Tue, Jun 22, 2021 at 11:18:09AM +0100, Daniel P. Berrangé wrote:
+>> On Tue, Jun 22, 2021 at 05:34:06PM +0800, Yanan Wang wrote:
+>>> Hi,
+>>>
+>>> This is v4 of the series [1] that I posted to introduce support for
+>>> generating cpu topology descriptions to guest. Comments are welcome!
+>>>
+>>> Description:
+>>> Once the view of an accurate virtual cpu topology is provided to guest,
+>>> with a well-designed vCPU pinning to the pCPU we may get a huge benefit,
+>>> e.g., the scheduling performance improvement. See Dario Faggioli's
+>>> research and the related performance tests in [2] for reference. So here
+>>> we go, this patch series introduces cpu topology support for ARM platform.
+>>>
+>>> In this series, instead of quietly enforcing the support for the latest
+>>> machine type, a new parameter "expose=on|off" in -smp command line is
+>>> introduced to leave QEMU users a choice to decide whether to enable the
+>>> feature or not. This will allow the feature to work on different machine
+>>> types and also ideally compat with already in-use -smp command lines.
+>>> Also we make much stricter requirement for the topology configuration
+>>> with "expose=on".
+>> Seeing this 'expose=on' parameter feels to me like we're adding a
+>> "make-it-work=yes" parameter. IMHO this is just something that should
+>> be done by default for the current machine type version and beyond.
+>> I don't see the need for a parameter to turnthis on, especially since
+>> it is being made architecture specific.
+>>
+> I agree.
+>
+> Yanan, we never discussed an "expose" parameter in the previous versions
+> of this series. We discussed a "strict" parameter though, which would
+> allow existing command lines to "work" using assumptions of what the user
+> meant and strict=on users to get what they mean or an error saying that
+> they asked for something that won't work or would require unreasonable
+> assumptions. Why was this changed to an "expose" parameter?
+Yes, we indeed discuss a new "strict" parameter but not a "expose" in v2 
+[1] of this series.
+[1] 
+https://patchwork.kernel.org/project/qemu-devel/patch/20210413080745.33004-6-wangyanan55@huawei.com/
 
-Acked-by: Corey Minyard <cminyard@mvista.com>
+And in the discussion, we hoped things would work like below with 
+"strict" parameter:
+Users who want to describe cpu topology should provide cmdline like
 
-for all of these, or I can take them into my tree.  I'm fine either way.
+-smp strict=on,cpus=4,sockets=2,cores=2,threads=1
 
--corey
+and in this case we require an more accurate -smp configuration and
+then generate the cpu topology description through ACPI/DT.
 
-> 
-> Supersedes: <20200623063123.20776-1-f4bug@amsat.org>
-> 
-> BALATON Zoltan (1):
->   hw/i2c: Make i2c_start_transfer() direction argument a boolean
-> 
-> Philippe Mathieu-Daudé (12):
->   hw/input/lm832x: Move lm832x_key_event() declaration to "lm832x.h"
->   hw/input/lm832x: Define TYPE_LM8323 in public header
->   hw/display/sm501: Simplify sm501_i2c_write() logic
->   hw/display/sm501: Replace i2c_send_recv() by i2c_recv() & i2c_send()
->   hw/i2c/ppc4xx_i2c: Add reference to datasheet
->   hw/i2c/ppc4xx_i2c: Replace i2c_send_recv() by i2c_recv() & i2c_send()
->   hw/misc/auxbus: Fix MOT/classic I2C mode
->   hw/misc/auxbus: Explode READ_I2C / WRITE_I2C_MOT cases
->   hw/misc/auxbus: Replace 'is_write' boolean by its value
->   hw/misc/auxbus: Replace i2c_send_recv() by i2c_recv() & i2c_send()
->   hw/i2c: Remove confusing i2c_send_recv()
->   hw/i2c: Rename i2c_set_slave_address() -> i2c_slave_set_address()
-> 
->  include/hw/i2c/i2c.h      | 21 +++++++++---
->  include/hw/input/lm832x.h | 28 ++++++++++++++++
->  hw/arm/nseries.c          |  3 +-
->  hw/arm/pxa2xx.c           |  2 +-
->  hw/arm/spitz.c            |  4 +--
->  hw/display/ati.c          |  2 +-
->  hw/display/sm501.c        | 16 +++++----
->  hw/display/xlnx_dp.c      |  2 +-
->  hw/i2c/core.c             | 56 ++++++++++++++-----------------
->  hw/i2c/imx_i2c.c          |  2 +-
->  hw/i2c/ppc4xx_i2c.c       | 15 ++++++---
->  hw/input/lm832x.c         |  2 +-
->  hw/misc/auxbus.c          | 69 +++++++++++++++++++++++++++++----------
->  MAINTAINERS               |  1 +
->  14 files changed, 149 insertions(+), 74 deletions(-)
->  create mode 100644 include/hw/input/lm832x.h
-> 
-> -- 
-> 2.31.1
-> 
+While without a strict description, no cpu topology description would
+be generated, so they get nothing through ACPI/DT.
+
+It seems to me that the "strict" parameter actually serves as a knob to
+turn on/off the exposure of topology, and this is the reason I changed
+the name.
+
+Thanks,
+Yanan
+.
+> Thanks,
+> drew
+>
+> .
+

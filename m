@@ -1,107 +1,225 @@
-Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp2343675lfg;
-        Mon, 21 Jun 2021 12:00:25 -0700 (PDT)
-X-Received: by 2002:adf:fd12:: with SMTP id e18mr27258102wrr.242.1624302025868;
-        Mon, 21 Jun 2021 12:00:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1624302025; cv=none;
+Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp3030531lfg;
+        Tue, 22 Jun 2021 05:43:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw4wSrOyZbX4ShQENukXBIk6zek3AcuAiagpkxJFcO6eLZMjUMYQbjML4hjcJy/+Yhck/SN
+X-Received: by 2002:a17:906:1291:: with SMTP id k17mr3757187ejb.349.1624365816880;
+        Tue, 22 Jun 2021 05:43:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1624365816; cv=none;
         d=google.com; s=arc-20160816;
-        b=PezcFs5APh5/ek3BQL4bCD1blCaYGFUkHb+nYWzEQL0ukTwEqP6Xbc87NXRalr2uij
-         ySw3U8/HKRYg0PKH3aBXMlP4HpsvhseTtfPjZ8cF8BKfRfGrDgo4qXdsIYh6om2X7w70
-         ij8iUVTmKqRRA8PPi2UZPGT3R2t3PR3PTVvLWZgYkW+Ae6rLNDRjQEmSmNs9J8e8+4MC
-         Fe9dRmEyD7uEKhcjqPirXlIuhoAEZksYm0uJPEuDZMGjjevip0FxwKrl6ZnZEtfltX2B
-         /nZTyTkjkPDYgO8dbfMYDrUHmoMor1ywqt8ZprcuWEl33OjEf51hNkOZGw2ERSaTLRVJ
-         JKwA==
+        b=LmCqScDEjRO2zyVv//hvScGDv9hoYrTeqp6iMiHih+NorTrYMLESg9UzOw7OtvJGNa
+         GXrstn2xn4I46qEj7qeh693oZM1zTqiuVTnlT+UC8Ypt9NvDKCcdImHrgVkvI0ESwt74
+         DkU3IugmRicma7cuooQ8TDQ1vtwg2ozOnaawhUWRwFnulS14dTiweLq58iwfidMtWcMm
+         5E1FJiY/IVkW3NrNSKZZeVOvyOdAM5xF5D01EQMSQd41qkVQbK1XeKUarziApCKKYR7v
+         PbLR58n5Xn5eV3OWujbx8ZFMKcZw5CFLhEOP07pOLcNJCC+4cjRUX2uZELdTUsqMKqhg
+         CBAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject:sender
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-disposition:user-agent
+         :in-reply-to:mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=mp/7C6gJIlopFlSsUOSBSkCJRTI2SFidp+JXyaaIBpg=;
-        b=rgScOgh3lpCHfq6FO2i0T913Y1SMfq0VtJ1RskM2w+aEJOwE5OLCCIGLnXfNWp2lsp
-         a/5qtJwWmoPDy+nJji9sGbQKRnR8T96TuoVKYHM+JAAVwZiB89ZJ/GETAm7gx0tLHLrW
-         I5MkFBJ1yM6sFiCBVK2fwWJqQehKY0idpUqA/49B5W09Z/t4S8IZ5vRta0psw0cM6Zxx
-         r5Cb7Qc5wpP+YoASqCjFYg8P+5ixmG8CDI5CNLt/frUS6ULO6gR9xuqaoXb8HOUbeLKn
-         tJ4OK/vcjGOMsM51VHte1nOutQRuhk9uyqaEFLBX6e73z8SLD31g6L3VjT/liqcN1607
-         WfNQ==
+        bh=XUurdi0rVwBgZQ4zG9k39+Hy+/21QEnVB0H9rWZlidg=;
+        b=Oay8ytLla7shb8J+RV4zN2WgLmCFFOlfmKtYBvea8mi/ChLafz33XkcphtGDrb5Lq5
+         f1ymrYvfC1m3Xf5rt4E+iySO7n7j1NwT4iiGOL9TjUHcIq+opLcFtaX3HSEQzbCfq3mm
+         u7+15Kc0XceyAnkrQMoAdTl+iyCRDlOEzLzll5P1P039nELg6KZMl34bwrb5ghpbl9MD
+         2OR8Zm+2NISWGkMPIpIKu9AzSMZQwOB3N+uilj7zd4gtVfzTE7aHZ8RzWTBMQoAOklmp
+         b76NRtiQ6KroVGg1HU438lNH4aii1GA3FXEzHUOliTkV8zkqFMnqDqJVYwzQXK8R7j0N
+         rO4Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=BHDr5Svs;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id c11sor9208787wmr.19.2021.06.21.12.00.25
-        (Google Transport Security);
-        Mon, 21 Jun 2021 12:00:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BP1dOa8R;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id gx5si1984747ejc.328.2021.06.22.05.43.36
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 22 Jun 2021 05:43:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=BHDr5Svs;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=sender:subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=mp/7C6gJIlopFlSsUOSBSkCJRTI2SFidp+JXyaaIBpg=;
-        b=BHDr5SvsnP2u5I06nhbe0xclw2OOR45sxetBq0z0Kj9OYcjYMykBrzp6LJjufRb90I
-         M8N/xXZWcbghRgQyNENvHg/W11ekR8kGVJG/chnlXy7Ng60YLo8aZoRI9jRmToKjXEIq
-         VkBqIGx7uqt79HHWmBKpVk22vfWzeFhU5yj3+/Q4VsD0JArflWwfRUaWorH5Onq9Uz/S
-         muL38LNmXPIkgzESligbUDauUSlcM7YboQFdEBcW+ooU6ZYXPKlET5ra+wEB/GxacOFS
-         mXyEDjaOquQX8TMTDk1oZ+Qmla1qox2TaIZo41UUJe01vYzJo4vpktNXoxbpsSUNt3EI
-         UkXQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=mp/7C6gJIlopFlSsUOSBSkCJRTI2SFidp+JXyaaIBpg=;
-        b=ADn1ZMVnIL438Rrsf0Nfrrs7+UX91o01LdjPR7P0Qbf9x/XIUTt+0XIuOVdWNIhZzQ
-         abZnnAqZdVguMaQDJym/thnflzTdQ1CeUODNakAXg0iexIhzXnPBiovOKBrvxnHF9omH
-         azwURTfRay9BSoaqsNQE+hct78Fya6o5lib4aApTx3t9ap8FhoHSouRaZIwfsagsNK8r
-         U7u34+/71KdbtBkwbCLIaOBcpoJKTWhZqOKsGdAEzt6FSV980p/tfc1T6iojOOE7OOeb
-         giG0EMeDlSlG2zXPyedABvuJdISg1+TCVegMZHE30YQFJjp7V2XxaytA2caKMhpK0Khg
-         /xvQ==
-X-Gm-Message-State: AOAM531pmTEUQ5xkLE1p2cDABAIu08/3WBv3aLnwMlY0HEdL9Jq9PfOm
-	ecfzyN/CrBaXfo+nTj+FUcs=
-X-Google-Smtp-Source: ABdhPJwdNPsGg3SKZXcHdV7lbAykCfDR7E0ZxVzxFGzeAZkvXtdDJIDZEbvGGRQS2TIcmFA/aYDmhA==
-X-Received: by 2002:a1c:c90f:: with SMTP id f15mr29069758wmb.142.1624302025642;
-        Mon, 21 Jun 2021 12:00:25 -0700 (PDT)
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from [192.168.1.36] (93.red-83-35-24.dynamicip.rima-tde.net. [83.35.24.93])
-        by smtp.gmail.com with ESMTPSA id b9sm2358223wrt.55.2021.06.21.12.00.22
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 21 Jun 2021 12:00:24 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH v1 2/5] hw/arm: add dependency on OR_IRQ for XLNX_VERSAL
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, thuth@redhat.com,
- Richard Henderson <richard.henderson@linaro.org>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>, pbonzini@redhat.com
-References: <20210621152120.4465-1-alex.bennee@linaro.org>
- <20210621152120.4465-3-alex.bennee@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <d6012d09-a9c9-d7f2-9640-80f368a48ec0@amsat.org>
-Date: Mon, 21 Jun 2021 21:00:22 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BP1dOa8R;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:39716 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lvfkd-0003Pu-Tj
+	for alex.bennee@linaro.org; Tue, 22 Jun 2021 08:43:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36680)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1lvfjj-0003Pa-Un
+ for qemu-arm@nongnu.org; Tue, 22 Jun 2021 08:42:40 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:32806)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1lvfjb-0006dl-HR
+ for qemu-arm@nongnu.org; Tue, 22 Jun 2021 08:42:39 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1624365746;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=XUurdi0rVwBgZQ4zG9k39+Hy+/21QEnVB0H9rWZlidg=;
+ b=BP1dOa8R2qWpdgpCf3SzYKJcc6EenPHt4XUB84yBPNtcZL3C7XyCXBe5cqo3kFlaIdDvpS
+ YHgqrX/S6Btsm7qqeZhFjfb7kp3hzAAUA9NS0a+lsA04juvVp5yrM3YMgIgeukmQXc9OKV
+ IRIqkq+Z0Ph11HFjoX5j3KjxCOUtFW8=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-386-UuWvBhUiPQi9_q1urgtOTQ-1; Tue, 22 Jun 2021 08:42:13 -0400
+X-MC-Unique: UuWvBhUiPQi9_q1urgtOTQ-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 804711084F4C;
+ Tue, 22 Jun 2021 12:42:11 +0000 (UTC)
+Received: from redhat.com (ovpn-114-176.ams2.redhat.com [10.36.114.176])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id AF1E460877;
+ Tue, 22 Jun 2021 12:42:01 +0000 (UTC)
+Date: Tue, 22 Jun 2021 13:41:58 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: "wangyanan (Y)" <wangyanan55@huawei.com>
+Subject: Re: [RFC PATCH v4 0/7] hw/arm/virt: Introduce cpu topology support
+Message-ID: <YNHalhuNZhMa665J@redhat.com>
+References: <20210622093413.13360-1-wangyanan55@huawei.com>
+ <YNG44c9KtaiNXT7b@redhat.com>
+ <20210622114634.crjqusw6x6oj4j6v@gator>
+ <bc47a66a-b1ff-939c-32a2-94c90efd0caf@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20210621152120.4465-3-alex.bennee@linaro.org>
+In-Reply-To: <bc47a66a-b1ff-939c-32a2-94c90efd0caf@huawei.com>
+User-Agent: Mutt/2.0.7 (2021-05-04)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-TUID: /9n9vOh3pzMT
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.223,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+Cc: Barry Song <song.bao.hua@hisilicon.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+ "Michael S . Tsirkin" <mst@redhat.com>, wanghaibin.wang@huawei.com,
+ qemu-devel@nongnu.org, yangyicong@huawei.com,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+ Alistair Francis <alistair.francis@wdc.com>, prime.zeng@hisilicon.com,
+ Paolo Bonzini <pbonzini@redhat.com>, yuzenghui@huawei.com,
+ Igor Mammedov <imammedo@redhat.com>, zhukeqian1@huawei.com,
+ David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 9cTguIK9vx7f
 
-On 6/21/21 5:21 PM, Alex Bennée wrote:
-> We need this functionality due to:
+On Tue, Jun 22, 2021 at 08:31:22PM +0800, wangyanan (Y) wrote:
 > 
->     /* XRAM IRQs get ORed into a single line.  */
->     object_initialize_child(OBJECT(s), "xram-irq-orgate",
->                             &s->lpd.xram.irq_orgate, TYPE_OR_IRQ);
 > 
+> On 2021/6/22 19:46, Andrew Jones wrote:
+> > On Tue, Jun 22, 2021 at 11:18:09AM +0100, Daniel P. Berrangé wrote:
+> > > On Tue, Jun 22, 2021 at 05:34:06PM +0800, Yanan Wang wrote:
+> > > > Hi,
+> > > > 
+> > > > This is v4 of the series [1] that I posted to introduce support for
+> > > > generating cpu topology descriptions to guest. Comments are welcome!
+> > > > 
+> > > > Description:
+> > > > Once the view of an accurate virtual cpu topology is provided to guest,
+> > > > with a well-designed vCPU pinning to the pCPU we may get a huge benefit,
+> > > > e.g., the scheduling performance improvement. See Dario Faggioli's
+> > > > research and the related performance tests in [2] for reference. So here
+> > > > we go, this patch series introduces cpu topology support for ARM platform.
+> > > > 
+> > > > In this series, instead of quietly enforcing the support for the latest
+> > > > machine type, a new parameter "expose=on|off" in -smp command line is
+> > > > introduced to leave QEMU users a choice to decide whether to enable the
+> > > > feature or not. This will allow the feature to work on different machine
+> > > > types and also ideally compat with already in-use -smp command lines.
+> > > > Also we make much stricter requirement for the topology configuration
+> > > > with "expose=on".
+> > > Seeing this 'expose=on' parameter feels to me like we're adding a
+> > > "make-it-work=yes" parameter. IMHO this is just something that should
+> > > be done by default for the current machine type version and beyond.
+> > > I don't see the need for a parameter to turnthis on, especially since
+> > > it is being made architecture specific.
+> > > 
+> > I agree.
+> > 
+> > Yanan, we never discussed an "expose" parameter in the previous versions
+> > of this series. We discussed a "strict" parameter though, which would
+> > allow existing command lines to "work" using assumptions of what the user
+> > meant and strict=on users to get what they mean or an error saying that
+> > they asked for something that won't work or would require unreasonable
+> > assumptions. Why was this changed to an "expose" parameter?
+> Yes, we indeed discuss a new "strict" parameter but not a "expose" in v2 [1]
+> of this series.
+> [1] https://patchwork.kernel.org/project/qemu-devel/patch/20210413080745.33004-6-wangyanan55@huawei.com/
+> 
+> And in the discussion, we hoped things would work like below with "strict"
+> parameter:
+> Users who want to describe cpu topology should provide cmdline like
+> 
+> -smp strict=on,cpus=4,sockets=2,cores=2,threads=1
+> 
+> and in this case we require an more accurate -smp configuration and
+> then generate the cpu topology description through ACPI/DT.
+> 
+> While without a strict description, no cpu topology description would
+> be generated, so they get nothing through ACPI/DT.
+> 
+> It seems to me that the "strict" parameter actually serves as a knob to
+> turn on/off the exposure of topology, and this is the reason I changed
+> the name.
 
-Fixes: a55b441b2ca ("hw/arm: versal: Add support for the XRAMs")
+Yes, the use of 'strict=on' is no better than expose=on IMHO.
 
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+If I give QEMU a cli
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+  -smp cpus=4,sockets=2,cores=2,threads=1
 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> ---
->  hw/arm/Kconfig | 1 +
->  1 file changed, 1 insertion(+)
+then I expect that topology to be exposed to the guest. I shouldn't
+have to add extra flags to make that happen.
+
+Looking at the thread, it seems the concern was around the fact that
+the settings were not honoured historically and thus the CLI values
+could be garbage. ie  -smp cpus=4,sockets=8,cores=3,thread=9
+
+A similar problem existed on x86 platforms. When we made that stricter
+we had cde that issued a warning for a few releases, essentially
+deprecating the config. EVentually it was turned into a fatal error.
+This gave applications time to fix their broken configs, while having
+correct configs "just work".
+
+I'd suggest doing the same for arm. If the -smp args are semantically
+valid then expose the topology automatically (for new machine type).
+If the -smp args are semantically broken, then issue a warning. In
+a few releases time, turn this warning into an error.
+
+Regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+

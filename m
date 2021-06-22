@@ -1,64 +1,64 @@
-Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp2886406lfg;
-        Tue, 22 Jun 2021 02:36:30 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy1XlBlbSkq1b3adLyjxM0XS1QIhwODc5c8ZQXsaOjofo3zCtqGLXtrexsEcVjQkMm9vEw1
-X-Received: by 2002:a05:622a:392:: with SMTP id j18mr2584843qtx.195.1624354590167;
-        Tue, 22 Jun 2021 02:36:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1624354590; cv=none;
+Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp2886783lfg;
+        Tue, 22 Jun 2021 02:37:13 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxr9yV+xUuGJO3rq3gVcJYwXOUJPbcWnwc2eWzTvWI9RnFDn8CBm3jlBhMokoumRoipkBEW
+X-Received: by 2002:a05:620a:1929:: with SMTP id bj41mr3141730qkb.479.1624354632851;
+        Tue, 22 Jun 2021 02:37:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1624354632; cv=none;
         d=google.com; s=arc-20160816;
-        b=sf4d2Q1D1y8hfJruvUIrOpY4xZGaEVAbzXTPHQT2KFqTgzgdGRoh2hCs88c4tGV+nh
-         KG5XtyexbC1pgWBL8CpZbKh+tkvJBzfZ+4EpJKUx3v4YlNgYNgdpfa6XXNqD5qxzSEbm
-         Ev/Bck/xKXOxrkbUpPa1YPWLOu4FlbUlKfblGRvvdjfaxKra+Ve6VBWSwnNaYlpAKOME
-         iGsxTYiZ2VRejxLGDplntMGOaMlw8hNEnTW9EEF6Iq9g5UmLa/ZDtr3CfFg93HRBIO4F
-         VxeAvCGyThZXbthCntQKezm60bu0fKalPFWEEfLbN1/KIwozInwc8xID+rSX6ltjaZAw
-         C6og==
+        b=cIO3JCnsgCsatj5M3oN9C7GiVxz3Bxi2iCpZnj61JYviuRQ8wKNyV2P832J+cDzdgX
+         xp/j3uzMrSnnEb0cDqfUnSU5TNOrsETz4G+9O9apm23DJOebBdbYIpASLu5MFFD5upQG
+         86HmS36ghKSHaI2dh7Vl5XalhydwPCINg8CC8UsHRT9TIdJWcfZ/mSq3lau601MZNZ00
+         hRUP8ROJFS+gtKzQDFLdpNbKKo46CN5iXORfbmv6xYh8SVTuQai/amNAfHTfqWoNFARK
+         +nSsLeuzUBQEoBqPlXOtGtvSjkKzUxUSR9eerzCcNw+eX9KJMAyqfdNlcoK/em+wv6Mt
+         WA1w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:references
          :in-reply-to:message-id:date:subject:to:from;
-        bh=4mAc5xJoKFvSIyyjVun2ZR5UmXPCNAB3boVUkq4xK6U=;
-        b=0pg1jcaU4D6JA8H3oYEf/6nGuLZhPPTc3xOy+cFEOK8gIQXbwAu0LOSvLnCqksRreF
-         cHXBCLZowU2Czry250D6A8tBO3KXLA5g3z3/wnXLUaFVnFeFpYEEFGwSmYLi6hyDBQmJ
-         H9EHudGF0QpOTEITFnHjLfdkUzyrlYq4EzRIfX1KwPhsPVlRiA+Kr+A2olcLz5gkl0P0
-         yPMhm5rbQF5prBHwfNU2tXaCnDmSHDA8TP1dAU3wGmScyYGnIBVSHi9bYsHQHBXF5L7L
-         eBrIR6QDrfFqqTOsIYYI5+TyjM3ett8vsM1Rkco5vA8l4BbBhobUub1z9ngRTV5eTM/y
-         f5+g==
+        bh=BH8Qd3va+DjPFaUpAKfj+q6qWn8qrhzMFDiraQzSIMs=;
+        b=aEUknCRVWCb5kwb4DYu+VbyypgNS+Hly0Lvs4/W+YQ1HQooljoTxBPCp9RI6BmaIrr
+         Ukc6tBv5cmwjSGUSsPUmN7oqlR9wtGThxpsjotshB3zqkrIfoyLx3eHQWr1AV4yFqcQI
+         gAlh0vAVG22n2O7xj+gz2+jZnuuWL7PeoJxg9IcimYEtMoyU1n1ma7NiJEDUbW2FDwUK
+         cDW8/L83bquhT9V3mutm7aLBTVytXBwPENYuuT3UgeNA6WRflc37NsGDMrzwqYQSY5R1
+         kX8Rzr8IjKdYI+hoqdlbwPNFQLZnyoraoRTcwmGT+6A4TJ/ZA8ooVe1To7B31/7D79vM
+         IGIA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d3si583295qtg.59.2021.06.22.02.36.29
+        by mx.google.com with ESMTPS id ci17si8001231qvb.113.2021.06.22.02.37.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Jun 2021 02:36:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 22 Jun 2021 02:37:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:49182 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53714 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lvcpZ-0005kv-D4
-	for alex.bennee@linaro.org; Tue, 22 Jun 2021 05:36:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35844)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lvcqG-0000Qa-7L
+	for alex.bennee@linaro.org; Tue, 22 Jun 2021 05:37:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35892)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1lvcnj-0002vN-Tn; Tue, 22 Jun 2021 05:34:35 -0400
-Received: from szxga03-in.huawei.com ([45.249.212.189]:2178)
+ id 1lvcnl-000315-Q7; Tue, 22 Jun 2021 05:34:37 -0400
+Received: from szxga02-in.huawei.com ([45.249.212.188]:2148)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1lvcnh-00030F-0G; Tue, 22 Jun 2021 05:34:35 -0400
-Received: from dggemv703-chm.china.huawei.com (unknown [172.30.72.53])
- by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4G8Lj649lQz71H2;
- Tue, 22 Jun 2021 17:30:18 +0800 (CST)
+ id 1lvcnh-00030b-U3; Tue, 22 Jun 2021 05:34:37 -0400
+Received: from dggemv711-chm.china.huawei.com (unknown [172.30.72.53])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4G8Lk63sfcz72kQ;
+ Tue, 22 Jun 2021 17:31:10 +0800 (CST)
 Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
- dggemv703-chm.china.huawei.com (10.3.19.46) with Microsoft SMTP Server
+ dggemv711-chm.china.huawei.com (10.1.198.66) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2176.2; Tue, 22 Jun 2021 17:34:24 +0800
+ 15.1.2176.2; Tue, 22 Jun 2021 17:34:25 +0800
 Received: from DESKTOP-TMVL5KK.china.huawei.com (10.174.187.128) by
  dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2176.2; Tue, 22 Jun 2021 17:34:23 +0800
+ 15.1.2176.2; Tue, 22 Jun 2021 17:34:24 +0800
 From: Yanan Wang <wangyanan55@huawei.com>
 To: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones
  <drjones@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, "Michael S .
@@ -66,10 +66,10 @@ To: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones
  <shannon.zhaosl@gmail.com>, Alistair Francis <alistair.francis@wdc.com>,
  David Gibson <david@gibson.dropbear.id.au>, <qemu-devel@nongnu.org>,
  <qemu-arm@nongnu.org>
-Subject: [RFC PATCH v4 2/7] hw/arm/virt: Add separate -smp parsing function
- for ARM machines
-Date: Tue, 22 Jun 2021 17:34:08 +0800
-Message-ID: <20210622093413.13360-3-wangyanan55@huawei.com>
+Subject: [RFC PATCH v4 3/7] machine: disallow -smp expose=on for non-ARM
+ machines
+Date: Tue, 22 Jun 2021 17:34:09 +0800
+Message-ID: <20210622093413.13360-4-wangyanan55@huawei.com>
 X-Mailer: git-send-email 2.8.4.windows.1
 In-Reply-To: <20210622093413.13360-1-wangyanan55@huawei.com>
 References: <20210622093413.13360-1-wangyanan55@huawei.com>
@@ -79,207 +79,81 @@ X-Originating-IP: [10.174.187.128]
 X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
  dggpemm500023.china.huawei.com (7.185.36.83)
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.189;
- envelope-from=wangyanan55@huawei.com; helo=szxga03-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.188;
+ envelope-from=wangyanan55@huawei.com; helo=szxga02-in.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
 X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Barry Song <song.bao.hua@hisilicon.com>,
  Yanan Wang <wangyanan55@huawei.com>, prime.zeng@hisilicon.com,
  wanghaibin.wang@huawei.com, yuzenghui@huawei.com, yangyicong@huawei.com,
  zhukeqian1@huawei.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zCZPGVTw56Tk
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: JLxSfagJ60ef
 
-Add an ARM-specific -smp parsing function named virt_smp_parse.
-When support for exposing cpu topology to the guest is disabled,
-this function shares the same logic with smp_parse(). While when
-the support is enabled, an accurate virtual cpu topology is very
-important, so we require that cpus/sockets/cores/threads must be
-given, while maxcpus is optional.
+Currently, support for exposure of cpu topology to the guest
+is only introduced for ARM machines and we also have an ARM
+specific parsing function virt_smp_parse(), so we disallow
+the "-smp expose=on" configuration for the other platforms.
 
-Given that ARM cpu hotplug is not supported yet, a configuration
-with "maxcpus > cpus" is meaningless, so if exposure is turned on
-we also explicitly enforce that maxcpus must be equal to smp cpus
-if specified, until cpu hotplug is available.
-
-Given that the virtual cpu topology exposure support may come
-to different architectures in the future, a new structure member
-"bool expose_cpu_topology" is also added to MachineState to
-record whether the feature is supported & enabled.
-
-Suggested-by: Andrew Jones <drjones@redhat.com>
 Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
 ---
- hw/arm/virt.c       | 113 ++++++++++++++++++++++++++++++++++++++++++++
- include/hw/boards.h |   1 +
- 2 files changed, 114 insertions(+)
+ hw/core/machine.c | 7 +++++++
+ hw/i386/pc.c      | 7 +++++++
+ 2 files changed, 14 insertions(+)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 4b96f06014..f29d796f3f 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -77,6 +77,8 @@
- #include "hw/virtio/virtio-iommu.h"
- #include "hw/char/pl011.h"
- #include "qemu/guest-random.h"
-+#include "qapi/qmp/qerror.h"
-+#include "sysemu/replay.h"
- 
- #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
-     static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
-@@ -2584,6 +2586,116 @@ static int virt_kvm_type(MachineState *ms, const char *type_str)
-     return fixed_ipa ? 0 : requested_pa_size;
- }
- 
-+/*
-+ * virt_smp_parse - Parses the -smp command line for ARM machines.
-+ *
-+ * When support for exposing cpu topology to the guest is disabled,
-+ * this function shares the same parsing logic with smp_parse().
-+ * While when the exposure is enabled, an accurate virtual cpu topology
-+ * is important, so we required that cpus/sockets/cores/threads must be
-+ * provided, while maxcpus can be optional.
-+ */
-+static void virt_smp_parse(MachineState *ms, QemuOpts *opts)
-+{
-+    if (opts) {
-+        unsigned cpus = qemu_opt_get_number(opts, "cpus", 0);
-+        unsigned sockets = qemu_opt_get_number(opts, "sockets", 0);
-+        unsigned cores = qemu_opt_get_number(opts, "cores", 0);
-+        unsigned threads = qemu_opt_get_number(opts, "threads", 0);
-+        unsigned maxcpus = qemu_opt_get_number(opts, "maxcpus", 0);
-+        bool expose = qemu_opt_get_bool(opts, "expose", false);
+diff --git a/hw/core/machine.c b/hw/core/machine.c
+index 55b9bc7817..23721bb77e 100644
+--- a/hw/core/machine.c
++++ b/hw/core/machine.c
+@@ -746,6 +746,13 @@ static void smp_parse(MachineState *ms, QemuOpts *opts)
+         unsigned sockets = qemu_opt_get_number(opts, "sockets", 0);
+         unsigned cores   = qemu_opt_get_number(opts, "cores", 0);
+         unsigned threads = qemu_opt_get_number(opts, "threads", 0);
++        bool expose      = qemu_opt_get_bool(opts, "expose", false);
 +
 +        if (expose) {
-+            if (cpus == 0) {
-+                error_report("expose=on: cpus must be specified");
-+                exit(1);
-+            }
-+            if (sockets == 0) {
-+                error_report("expose=on: sockets must be specified");
-+                exit(1);
-+            }
-+            if (cores == 0) {
-+                error_report("expose=on: cores must be specified");
-+                exit(1);
-+            }
-+            if (threads == 0) {
-+                error_report("expose=on: threads must be specified");
-+                exit(1);
-+            }
-+        } else {
-+            /*
-+             * An accurate cpu topology configuration is not required in this
-+             * case, so we compute the missing values preferring sockets over
-+             * cores over threads.
-+             */
-+            if (cpus == 0 || sockets == 0) {
-+                cores = cores > 0 ? cores : 1;
-+                threads = threads > 0 ? threads : 1;
-+                if (cpus == 0) {
-+                    sockets = sockets > 0 ? sockets : 1;
-+                    cpus = cores * threads * sockets;
-+                } else {
-+                    maxcpus = maxcpus > 0 ? maxcpus : cpus;
-+                    sockets = maxcpus / (cores * threads);
-+                }
-+            } else if (cores == 0) {
-+                threads = threads > 0 ? threads : 1;
-+                cores = cpus / (sockets * threads);
-+                cores = cores > 0 ? cores : 1;
-+            } else if (threads == 0) {
-+                threads = cpus / (cores * sockets);
-+                threads = threads > 0 ? threads : 1;
-+            }
-+        }
-+
-+        maxcpus = maxcpus > 0 ? maxcpus : cpus;
-+
-+        if (sockets * cores * threads < cpus) {
-+            error_report("cpu topology: "
-+                         "sockets (%u) * cores (%u) * threads (%u) < "
-+                         "smp_cpus (%u)",
-+                         sockets, cores, threads, cpus);
++            error_report("expose=on: exposing cpu topology to the guest"
++                         "is not supported yet");
 +            exit(1);
 +        }
+ 
+         /* compute missing values, prefer sockets over cores over threads */
+         if (cpus == 0 || sockets == 0) {
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index c6d8d0d84d..afabfa0566 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -720,6 +720,13 @@ void pc_smp_parse(MachineState *ms, QemuOpts *opts)
+         unsigned dies = qemu_opt_get_number(opts, "dies", 1);
+         unsigned cores   = qemu_opt_get_number(opts, "cores", 0);
+         unsigned threads = qemu_opt_get_number(opts, "threads", 0);
++        bool expose      = qemu_opt_get_bool(opts, "expose", false);
 +
-+        if (maxcpus < cpus) {
-+            error_report("maxcpus must be equal to or greater than smp");
++        if (expose) {
++            error_report("expose=on: exposing cpu topology to the guest"
++                         "is not supported yet");
 +            exit(1);
 +        }
-+
-+        if (sockets * cores * threads != maxcpus) {
-+            error_report("Invalid CPU topology: "
-+                         "sockets (%u) * cores (%u) * threads (%u) "
-+                         "!= maxcpus (%u)",
-+                         sockets, cores, threads, maxcpus);
-+            exit(1);
-+        }
-+
-+        /*
-+         * Given that cpu hotplug is not supported yet, require that maxcpus
-+         * must be equal to smp cpus if we are going to expose cpu topology
-+         * to the guest.
-+         */
-+        if (expose == true && maxcpus != cpus) {
-+            error_report("cpu hotplug is not supported yet, maxcpus must be"
-+                         "equal to smp");
-+        }
-+
-+        ms->smp.cpus = cpus;
-+        ms->smp.sockets = sockets;
-+        ms->smp.cores = cores;
-+        ms->smp.threads = threads;
-+        ms->smp.max_cpus = maxcpus;
-+        ms->expose_cpu_topology = expose;
-+    }
-+
-+    if (ms->smp.cpus > 1) {
-+        Error *blocker = NULL;
-+        error_setg(&blocker, QERR_REPLAY_NOT_SUPPORTED, "smp");
-+        replay_add_blocker(blocker);
-+    }
-+}
-+
- static void virt_machine_class_init(ObjectClass *oc, void *data)
- {
-     MachineClass *mc = MACHINE_CLASS(oc);
-@@ -2611,6 +2723,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
-     mc->cpu_index_to_instance_props = virt_cpu_index_to_props;
-     mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a15");
-     mc->get_default_cpu_node_id = virt_get_default_cpu_node_id;
-+    mc->smp_parse = virt_smp_parse;
-     mc->kvm_type = virt_kvm_type;
-     assert(!mc->get_hotplug_handler);
-     mc->get_hotplug_handler = virt_machine_get_hotplug_handler;
-diff --git a/include/hw/boards.h b/include/hw/boards.h
-index 3d55d2bd62..54accc810a 100644
---- a/include/hw/boards.h
-+++ b/include/hw/boards.h
-@@ -332,6 +332,7 @@ struct MachineState {
-     AccelState *accelerator;
-     CPUArchIdList *possible_cpus;
-     CpuTopology smp;
-+    bool expose_cpu_topology;
-     struct NVDIMMState *nvdimms_state;
-     struct NumaState *numa_state;
- };
+ 
+         /* compute missing values, prefer sockets over cores over threads */
+         if (cpus == 0 || sockets == 0) {
 -- 
 2.23.0
 

@@ -1,278 +1,373 @@
-Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp3170262lfg;
-        Tue, 22 Jun 2021 08:17:48 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwFBCZIDSF0c2B+kOhEBC98FKsMtPZePEXL95gPb52uDZIEIP7DAvCnQkP1SZwI1gyRA2LK
-X-Received: by 2002:a05:6512:239d:: with SMTP id c29mr3287049lfv.248.1624375068511;
-        Tue, 22 Jun 2021 08:17:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1624375068; cv=none;
+Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp3219274lfg;
+        Tue, 22 Jun 2021 09:16:02 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJya+bUgdzwPz6zRBC2ELEinovA+iU0rUSobYb7UBhU5MLwzlfLXyxVxeUICEoFLVzuo5Lz4
+X-Received: by 2002:a05:6402:35c8:: with SMTP id z8mr6080252edc.348.1624378562857;
+        Tue, 22 Jun 2021 09:16:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1624378562; cv=none;
         d=google.com; s=arc-20160816;
-        b=vjboOI9bMQ8nlLnHXdx/ur+qYJSZIM6sMy0m5xVA1TyvtW34s1qAMs5goJASlTRPjP
-         efhdQuyfQyki5z8sPNK7Ym+YpF++3dyPcpBKiYzwyJ/lNXcwLFGuvyksRCr8qkXegnBV
-         uhUL8xq+ZTDFlMIJs4CaxnrDD0M4uaEY/3271uyPn4sb7W1Q8Pvy/4Q9DvsWa9S7oCmV
-         PAucqLGp3RQnRpKbvPxEKkwlV4+Z6iDNMrvswJdiLlff27jj6Y/jbzbbyW1x3G1eeA4X
-         0Mp1WIN6jJ5DpWvyGRybHNCpB5oFuokN3srSK5C2JagHzYBwHEkExha0P0fLyg2HD/m/
-         LHKA==
+        b=ih14YruQRgvVjHPqGHP+JvvJ5jM6jqrU+SPEE+q6xea0Bx1GANFdrL4OJjRcD6xTRU
+         AeV69z5tfF7p0qBWGTG7CJz+cVg0B0O/KUZ/lk5XmXhlqA6zoeWxHqO/dPvoZyIrdgmM
+         Wn+vhAycgiaZzIbTeAwXBahNIqYStMmKwegDO14/2dbQvfeaO6WH3eMDYZTCp80ucxv7
+         TGYAt7c3KfHnAXwkglca1cdKseu7oe3zMlLJE/D1ZzIdBu/EPKq9bQkr5WQrqVtaJ7OK
+         6nS1W6z8PPed4aY9Mcet4S9zad3zNYxzMxDGpSu2z96QhzMGXwa8hxR8RLArEaK3kzbB
+         rhvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-disposition:user-agent
-         :in-reply-to:mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=s5WaVsOfy04qsIwiSwHHwAG+QzVhUSz34Y9Z+lqTjck=;
-        b=zwOPi8QhFNjkgzJQsP6IOqqS5MrEoupIqaqLe8HJRhmWkrwkU53m2M9KEfQO8eQZjz
-         v/PnwqcjULzzKpGahT6IAmhlpExp0otki2MdgWDiBLlxA3bbX03zSLSOF4Sf5GQbBY+C
-         rwsMesP1Spk/P5D582/sTMPgXUDIEXjixdk49c+6N8/ZBNh6mfp2mdAbbPZoY7X7H+Nz
-         9Z1Tnui61+JBynHJFFFox8bRaVRsv3DOC3PnMJtBHYtDTPlG9qc5OA2VlPQ3zw4dt9ew
-         NVWyn6xxfqzB/IvanUBAxa3+3dVM9Wz+hKSpD85or9FDR1WLEy8wK436NOwc9UyEBk7J
-         LGdQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=xMuHYlxTGpWZ/cCewwWXbER7wzi9x2/gcVq+Sqd5Dy8=;
+        b=NjKoivO5IoYGFEY0W/dvkVLQG/i6+r9xRnbB/8j9iPcpqjzxjI7fEHcDCkQmWgAzc2
+         e5V/rPcJ5UyGzgIzuEFbbQdFY17FxkiICuh8TdQMq2bzJaAYKEOSxENjlFpU0VFdDAZ9
+         wq45a7/CkqA/b0JoZUrkgqSL66/hZgEBcq0P9U1xTS0H3CkckscUPd/Rt3t19QNG/BDw
+         vLw3ag+eo9bwIOPPq+SPcTL1N5pl7oSC332MQtdURQGEGfVkZkj8VvWevb8Na2Jvr5/k
+         v9CZ8b7B4lNCQG5Yv0SIZyoKtC/44QC2C/7gmVQVo87l4pkwfSBESZFpnS/2HWwsrr8K
+         0XDQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=iGQDLJ6q;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Xe+wGRI0;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s22si29769513ljm.458.2021.06.22.08.17.48
+        by mx.google.com with ESMTPS id 6si13390353ejq.442.2021.06.22.09.16.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Jun 2021 08:17:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 22 Jun 2021 09:16:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=iGQDLJ6q;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38942 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Xe+wGRI0;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:41282 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lvi9r-0008Lx-9O
-	for alex.bennee@linaro.org; Tue, 22 Jun 2021 11:17:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50120)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lvj4D-0003K3-M8
+	for alex.bennee@linaro.org; Tue, 22 Jun 2021 12:16:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36760)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1lvi8h-0006CW-Nv
- for qemu-devel@nongnu.org; Tue, 22 Jun 2021 11:16:35 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:33018)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1lvi8e-0001sr-Tu
- for qemu-devel@nongnu.org; Tue, 22 Jun 2021 11:16:35 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1624374992;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=s5WaVsOfy04qsIwiSwHHwAG+QzVhUSz34Y9Z+lqTjck=;
- b=iGQDLJ6q3Czgax//0mY3sZmxgeU0qDyHun2AlQ5yDliEJCQcW0XrhQ25NVDldXQqRzuGv/
- vHcSdq1qnLmumD6eJHkz9zW4YfwgbXEZ+TRNFbGye3IYkjiMEij6vLbW21uhX+5r/4elML
- H1Ss7UdE2N4Xpp8MZAJsRdF7QMD3wGE=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-304-taQtmtMWM3y5ex9ZOhVK8g-1; Tue, 22 Jun 2021 11:16:17 -0400
-X-MC-Unique: taQtmtMWM3y5ex9ZOhVK8g-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 045D9801596;
- Tue, 22 Jun 2021 15:16:16 +0000 (UTC)
-Received: from redhat.com (ovpn-114-176.ams2.redhat.com [10.36.114.176])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 16AF45C1D1;
- Tue, 22 Jun 2021 15:16:00 +0000 (UTC)
-Date: Tue, 22 Jun 2021 16:15:58 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Andrew Jones <drjones@redhat.com>
-Subject: Re: [RFC PATCH v4 0/7] hw/arm/virt: Introduce cpu topology support
-Message-ID: <YNH+riZpXMxAcNMR@redhat.com>
-References: <20210622093413.13360-1-wangyanan55@huawei.com>
- <YNG44c9KtaiNXT7b@redhat.com>
- <20210622114634.crjqusw6x6oj4j6v@gator>
- <bc47a66a-b1ff-939c-32a2-94c90efd0caf@huawei.com>
- <YNHalhuNZhMa665J@redhat.com>
- <7fcc5f2d-cc84-3464-15cc-3bebb07f8190@huawei.com>
- <YNHvcQAMLSpVcxaE@redhat.com>
- <20210622142915.pekttdvbi3q5vnh3@gator>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lvj3w-0003Gs-7g; Tue, 22 Jun 2021 12:15:45 -0400
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:46899)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lvj3s-0005Bm-Jv; Tue, 22 Jun 2021 12:15:42 -0400
+Received: by mail-wr1-x42f.google.com with SMTP id a11so24344893wrt.13;
+ Tue, 22 Jun 2021 09:15:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=xMuHYlxTGpWZ/cCewwWXbER7wzi9x2/gcVq+Sqd5Dy8=;
+ b=Xe+wGRI0bNQDOKv8jdi9KT9Zbby66/Iigi9EGX3TG75Wqd9kurkGfIAWs+A0BHsnW9
+ v3sy6BZvdAFsWVmqSsS+jZDhBzK7zNDZqs1x9gHCV231sH7bKtXLnCl/C7ljfjxShVAl
+ GSVm9v/9dK1ModS5P5ZrNmpsXHHsgVemZOfnLkckS9tZdkWRNL7dBZbxGYM4W36xY5l4
+ 3r2d5tQdptVFnvv2vTQjiF5EWao1jx4m7YbozoJq+jV6zGjiDZRDwAhcr5D5c4AiCUXg
+ rUWVBN91p6L+E4U9pTcDFzN3ylG4JKobOv48sxx455GSNM3k5gortE/EQW604ZE3ENFF
+ Grlw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=xMuHYlxTGpWZ/cCewwWXbER7wzi9x2/gcVq+Sqd5Dy8=;
+ b=k8E3Yhtdc/jF1gzJ5FKIzBm8T6nGvZF5gHGtz/OwAgPQmcCcsGQzFt0wPoPIn8C9bn
+ 5YCi+ammowLQza3HbwAIU9EANBnV0D8Y4vOPkI+djDgid5WVOtv2nVRN00YsdhhuuqIa
+ UuCmpQ5rlTk16IeKVz46p5jSgFcXC6ExYzu3+M8z2P7c7I3CmPhAfF68QTGVw0hNGR65
+ IPEIR8oEAUWzv6MqpnYpPv7Ds6cO5SyX47hGQv9qRRC2gNDxvHBBquKFAFNT1UqolYV2
+ eg8lbMKMBRyKvJqXZ20VnIjFZmV47nEsGEih3fxNbeQBdsNpnVnd0XBYiu+eCu2ccX2j
+ OwSA==
+X-Gm-Message-State: AOAM5307IqNUaxQMiSmTRly1mVfc/ODAMLfNMg1LRt6PKXfUc4pHA2vB
+ saWfFeb9SKRYrDnJCfBRF1+9MjJvYLxGSg==
+X-Received: by 2002:a5d:4383:: with SMTP id i3mr5836138wrq.255.1624378537238; 
+ Tue, 22 Jun 2021 09:15:37 -0700 (PDT)
+Received: from x1w.redhat.com (93.red-83-35-24.dynamicip.rima-tde.net.
+ [83.35.24.93])
+ by smtp.gmail.com with ESMTPSA id i6sm16360929wro.12.2021.06.22.09.15.35
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 22 Jun 2021 09:15:36 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH] tcg: Avoid including 'trace-tcg.h' in target translate.c
+Date: Tue, 22 Jun 2021 18:15:34 +0200
+Message-Id: <20210622161534.602428-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-In-Reply-To: <20210622142915.pekttdvbi3q5vnh3@gator>
-User-Agent: Mutt/2.0.7 (2021-05-04)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.223,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42f.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Cc: Barry Song <song.bao.hua@hisilicon.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "Michael S . Tsirkin" <mst@redhat.com>, wanghaibin.wang@huawei.com,
- qemu-devel@nongnu.org, yangyicong@huawei.com,
- "wangyanan \(Y\)" <wangyanan55@huawei.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
- Alistair Francis <alistair.francis@wdc.com>, prime.zeng@hisilicon.com,
- Paolo Bonzini <pbonzini@redhat.com>, yuzenghui@huawei.com,
- Igor Mammedov <imammedo@redhat.com>, zhukeqian1@huawei.com,
- David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vm7JbA0Jxov+
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ David Hildenbrand <david@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Thomas Huth <thuth@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Max Filippov <jcmvbkbc@gmail.com>, Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org, Stafford Horne <shorne@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>, Cornelia Huck <cohuck@redhat.com>,
+ Laurent Vivier <laurent@vivier.eu>, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: RYwPstgrJ27+
 
-On Tue, Jun 22, 2021 at 04:29:15PM +0200, Andrew Jones wrote:
-> On Tue, Jun 22, 2021 at 03:10:57PM +0100, Daniel P. Berrangé wrote:
-> > On Tue, Jun 22, 2021 at 10:04:52PM +0800, wangyanan (Y) wrote:
-> > > Hi Daniel,
-> > > 
-> > > On 2021/6/22 20:41, Daniel P. Berrangé wrote:
-> > > > On Tue, Jun 22, 2021 at 08:31:22PM +0800, wangyanan (Y) wrote:
-> > > > > 
-> > > > > On 2021/6/22 19:46, Andrew Jones wrote:
-> > > > > > On Tue, Jun 22, 2021 at 11:18:09AM +0100, Daniel P. Berrangé wrote:
-> > > > > > > On Tue, Jun 22, 2021 at 05:34:06PM +0800, Yanan Wang wrote:
-> > > > > > > > Hi,
-> > > > > > > > 
-> > > > > > > > This is v4 of the series [1] that I posted to introduce support for
-> > > > > > > > generating cpu topology descriptions to guest. Comments are welcome!
-> > > > > > > > 
-> > > > > > > > Description:
-> > > > > > > > Once the view of an accurate virtual cpu topology is provided to guest,
-> > > > > > > > with a well-designed vCPU pinning to the pCPU we may get a huge benefit,
-> > > > > > > > e.g., the scheduling performance improvement. See Dario Faggioli's
-> > > > > > > > research and the related performance tests in [2] for reference. So here
-> > > > > > > > we go, this patch series introduces cpu topology support for ARM platform.
-> > > > > > > > 
-> > > > > > > > In this series, instead of quietly enforcing the support for the latest
-> > > > > > > > machine type, a new parameter "expose=on|off" in -smp command line is
-> > > > > > > > introduced to leave QEMU users a choice to decide whether to enable the
-> > > > > > > > feature or not. This will allow the feature to work on different machine
-> > > > > > > > types and also ideally compat with already in-use -smp command lines.
-> > > > > > > > Also we make much stricter requirement for the topology configuration
-> > > > > > > > with "expose=on".
-> > > > > > > Seeing this 'expose=on' parameter feels to me like we're adding a
-> > > > > > > "make-it-work=yes" parameter. IMHO this is just something that should
-> > > > > > > be done by default for the current machine type version and beyond.
-> > > > > > > I don't see the need for a parameter to turnthis on, especially since
-> > > > > > > it is being made architecture specific.
-> > > > > > > 
-> > > > > > I agree.
-> > > > > > 
-> > > > > > Yanan, we never discussed an "expose" parameter in the previous versions
-> > > > > > of this series. We discussed a "strict" parameter though, which would
-> > > > > > allow existing command lines to "work" using assumptions of what the user
-> > > > > > meant and strict=on users to get what they mean or an error saying that
-> > > > > > they asked for something that won't work or would require unreasonable
-> > > > > > assumptions. Why was this changed to an "expose" parameter?
-> > > > > Yes, we indeed discuss a new "strict" parameter but not a "expose" in v2 [1]
-> > > > > of this series.
-> > > > > [1] https://patchwork.kernel.org/project/qemu-devel/patch/20210413080745.33004-6-wangyanan55@huawei.com/
-> > > > > 
-> > > > > And in the discussion, we hoped things would work like below with "strict"
-> > > > > parameter:
-> > > > > Users who want to describe cpu topology should provide cmdline like
-> > > > > 
-> > > > > -smp strict=on,cpus=4,sockets=2,cores=2,threads=1
-> > > > > 
-> > > > > and in this case we require an more accurate -smp configuration and
-> > > > > then generate the cpu topology description through ACPI/DT.
-> > > > > 
-> > > > > While without a strict description, no cpu topology description would
-> > > > > be generated, so they get nothing through ACPI/DT.
-> > > > > 
-> > > > > It seems to me that the "strict" parameter actually serves as a knob to
-> > > > > turn on/off the exposure of topology, and this is the reason I changed
-> > > > > the name.
-> > > > Yes, the use of 'strict=on' is no better than expose=on IMHO.
-> > > > 
-> > > > If I give QEMU a cli
-> > > > 
-> > > >    -smp cpus=4,sockets=2,cores=2,threads=1
-> > > > 
-> > > > then I expect that topology to be exposed to the guest. I shouldn't
-> > > > have to add extra flags to make that happen.
-> > > > 
-> > > > Looking at the thread, it seems the concern was around the fact that
-> > > > the settings were not honoured historically and thus the CLI values
-> > > > could be garbage. ie  -smp cpus=4,sockets=8,cores=3,thread=9
-> > > This "-smp cpus=4,sockets=8,cores=3,threads=9" behaviors as a wrong
-> > > configuration, and the parsing function already report error for this case.
-> > > 
-> > > We hope more complete config like "-smp 4,sockets=2,cores=2,threads=1"
-> > > for exposure of topology, and the incomplete ones like "-smp 4,sockets=1"
-> > > or "-smp 4, cores=1" are not acceptable any more because we are starting
-> > > to expose the topology.
-> > 
-> > Incomplete specified topologies *are* acceptable.
-> > 
-> > The smp_parse method will automatically fill in any missing values.
-> > 
-> > ie,
-> > 
-> >   -smp 4,cores=1
-> >   -smp cores=1
-> >   -smp threads=1
-> >   -smp sockets=4
-> > 
-> > are all functionally identical to
-> > 
-> >   -smp 4,sockets=4,cores=1,dies=1,threads=1
-> > 
-> > 
-> > The QEMU man page says this explicitly
-> > 
-> >                  For the PC target, the number of cores per die, the
-> >     number of threads per cores, the number of dies per packages and the
-> >     total number of sockets can be specified. Missing values will be
-> >     computed. If any on the three values is given, the total number of
-> >     CPUs n can be omitted.
-> 
-> It doesn't say how it will compute them though, which for the default
-> smp_parse and for x86 is to prefer sockets over cores over threads.
-> That's not necessarily what the user expects. IMO, we need a 'strict=on'
-> parameter that doesn't allow any collection of smp parameters which
-> require unreasonable assumptions. Reasonable assumptions are threads=1,
-> when threads is not specified and the rest of the math adds up. Also,
-> maxcpus == cpus when maxcpus isn't specified is reasonable. But, it's not
-> as reasonable to decide how to divide cores among sockets or to assume
-> threads=1 when only sockets and cores are given. How do we know the user
-> didn't forget to specify threads if we can't check the math?
+The root trace-events only declares a single TCG event:
 
-It is a tradeoff between convenience and error reporting. The
-current approach is obviousy implemented from the POV that the
-convenience of defaulting parameters is more broadly useful
-than error reporting in fact of mistakes.
+  $ git grep -w tcg trace-events
+  trace-events:115:# tcg/tcg-op.c
+  trace-events:137:vcpu tcg guest_mem_before(TCGv vaddr, uint16_t info) "info=%d", "vaddr=0x%016"PRIx64" info=%d"
 
-If strongly caring about the specific break down of sockets,
-dies, cores, threads then all must be provided explicitly
-so the built-in computing of omitted parameters is skipped.
+and only a tcg/tcg-op.c uses it:
 
-If the user can forget to give a threads=NN param, then they
-can also forget to give a strict=on param, so that's not
-especially compelling way to improve error reporting IMHO.
+  $ git grep -l trace_guest_mem_before_tcg
+  tcg/tcg-op.c
 
-Regards,
-Daniel
+therefore it is pointless to include "trace-tcg.h" in each target
+(because it is not used). Remove it.
+
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ target/alpha/translate.c      | 1 -
+ target/arm/translate-a64.c    | 1 -
+ target/arm/translate-sve.c    | 1 -
+ target/arm/translate.c        | 1 -
+ target/cris/translate.c       | 1 -
+ target/hppa/translate.c       | 1 -
+ target/i386/tcg/translate.c   | 1 -
+ target/m68k/translate.c       | 1 -
+ target/microblaze/translate.c | 1 -
+ target/mips/tcg/translate.c   | 1 -
+ target/openrisc/translate.c   | 1 -
+ target/ppc/translate.c        | 1 -
+ target/rx/translate.c         | 1 -
+ target/s390x/translate.c      | 1 -
+ target/sh4/translate.c        | 1 -
+ target/sparc/translate.c      | 1 -
+ target/xtensa/translate.c     | 1 -
+ 17 files changed, 17 deletions(-)
+
+diff --git a/target/alpha/translate.c b/target/alpha/translate.c
+index f454adea5e0..5fcedd85d36 100644
+--- a/target/alpha/translate.c
++++ b/target/alpha/translate.c
+@@ -28,7 +28,6 @@
+ #include "exec/cpu_ldst.h"
+ #include "exec/helper-proto.h"
+ #include "exec/helper-gen.h"
+-#include "trace-tcg.h"
+ #include "exec/translator.h"
+ #include "exec/log.h"
+ 
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index 7f74d0e81a9..066d942b7fc 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -35,7 +35,6 @@
+ #include "exec/helper-gen.h"
+ #include "exec/log.h"
+ 
+-#include "trace-tcg.h"
+ #include "translate-a64.h"
+ #include "qemu/atomic128.h"
+ 
+diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
+index 46210eb696d..35d838aa068 100644
+--- a/target/arm/translate-sve.c
++++ b/target/arm/translate-sve.c
+@@ -30,7 +30,6 @@
+ #include "exec/helper-proto.h"
+ #include "exec/helper-gen.h"
+ #include "exec/log.h"
+-#include "trace-tcg.h"
+ #include "translate-a64.h"
+ #include "fpu/softfloat.h"
+ 
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index 9e2cca77077..3a3ccc97eb6 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -34,7 +34,6 @@
+ #include "exec/helper-proto.h"
+ #include "exec/helper-gen.h"
+ 
+-#include "trace-tcg.h"
+ #include "exec/log.h"
+ 
+ 
+diff --git a/target/cris/translate.c b/target/cris/translate.c
+index 6dd5a267a61..044e587eeb2 100644
+--- a/target/cris/translate.c
++++ b/target/cris/translate.c
+@@ -37,7 +37,6 @@
+ 
+ #include "exec/helper-gen.h"
+ 
+-#include "trace-tcg.h"
+ #include "exec/log.h"
+ 
+ 
+diff --git a/target/hppa/translate.c b/target/hppa/translate.c
+index 64af1e0d5cc..424ec3252ed 100644
+--- a/target/hppa/translate.c
++++ b/target/hppa/translate.c
+@@ -27,7 +27,6 @@
+ #include "exec/helper-proto.h"
+ #include "exec/helper-gen.h"
+ #include "exec/translator.h"
+-#include "trace-tcg.h"
+ #include "exec/log.h"
+ 
+ /* Since we have a distinction between register size and address size,
+diff --git a/target/i386/tcg/translate.c b/target/i386/tcg/translate.c
+index a7f5c0c8f20..5fb3350c5a8 100644
+--- a/target/i386/tcg/translate.c
++++ b/target/i386/tcg/translate.c
+@@ -30,7 +30,6 @@
+ #include "exec/helper-gen.h"
+ #include "helper-tcg.h"
+ 
+-#include "trace-tcg.h"
+ #include "exec/log.h"
+ 
+ #define PREFIX_REPZ   0x01
+diff --git a/target/m68k/translate.c b/target/m68k/translate.c
+index f0c5bf9154e..348fc6e844e 100644
+--- a/target/m68k/translate.c
++++ b/target/m68k/translate.c
+@@ -31,7 +31,6 @@
+ #include "exec/helper-proto.h"
+ #include "exec/helper-gen.h"
+ 
+-#include "trace-tcg.h"
+ #include "exec/log.h"
+ #include "fpu/softfloat.h"
+ 
+diff --git a/target/microblaze/translate.c b/target/microblaze/translate.c
+index c1b13f4c7d3..5dfb08d49f1 100644
+--- a/target/microblaze/translate.c
++++ b/target/microblaze/translate.c
+@@ -29,7 +29,6 @@
+ #include "exec/translator.h"
+ #include "qemu/qemu-print.h"
+ 
+-#include "trace-tcg.h"
+ #include "exec/log.h"
+ 
+ #define EXTRACT_FIELD(src, start, end) \
+diff --git a/target/mips/tcg/translate.c b/target/mips/tcg/translate.c
+index 797eba44347..9895f7336c6 100644
+--- a/target/mips/tcg/translate.c
++++ b/target/mips/tcg/translate.c
+@@ -32,7 +32,6 @@
+ #include "semihosting/semihost.h"
+ 
+ #include "target/mips/trace.h"
+-#include "trace-tcg.h"
+ #include "exec/translator.h"
+ #include "exec/log.h"
+ #include "qemu/qemu-print.h"
+diff --git a/target/openrisc/translate.c b/target/openrisc/translate.c
+index a9c81f8bd5b..5db63d76093 100644
+--- a/target/openrisc/translate.c
++++ b/target/openrisc/translate.c
+@@ -33,7 +33,6 @@
+ #include "exec/helper-gen.h"
+ #include "exec/gen-icount.h"
+ 
+-#include "trace-tcg.h"
+ #include "exec/log.h"
+ 
+ /* is_jmp field values */
+diff --git a/target/ppc/translate.c b/target/ppc/translate.c
+index f65d1e81eac..07d79acc08f 100644
+--- a/target/ppc/translate.c
++++ b/target/ppc/translate.c
+@@ -32,7 +32,6 @@
+ #include "exec/helper-proto.h"
+ #include "exec/helper-gen.h"
+ 
+-#include "trace-tcg.h"
+ #include "exec/translator.h"
+ #include "exec/log.h"
+ #include "qemu/atomic128.h"
+diff --git a/target/rx/translate.c b/target/rx/translate.c
+index 9ea941c6302..22a15ee11d8 100644
+--- a/target/rx/translate.c
++++ b/target/rx/translate.c
+@@ -26,7 +26,6 @@
+ #include "exec/helper-proto.h"
+ #include "exec/helper-gen.h"
+ #include "exec/translator.h"
+-#include "trace-tcg.h"
+ #include "exec/log.h"
+ 
+ typedef struct DisasContext {
+diff --git a/target/s390x/translate.c b/target/s390x/translate.c
+index e243624d2a6..d7c7f37e363 100644
+--- a/target/s390x/translate.c
++++ b/target/s390x/translate.c
+@@ -42,7 +42,6 @@
+ #include "exec/helper-proto.h"
+ #include "exec/helper-gen.h"
+ 
+-#include "trace-tcg.h"
+ #include "exec/translator.h"
+ #include "exec/log.h"
+ #include "qemu/atomic128.h"
+diff --git a/target/sh4/translate.c b/target/sh4/translate.c
+index 93127906237..1096817ee79 100644
+--- a/target/sh4/translate.c
++++ b/target/sh4/translate.c
+@@ -28,7 +28,6 @@
+ #include "exec/helper-proto.h"
+ #include "exec/helper-gen.h"
+ #include "exec/translator.h"
+-#include "trace-tcg.h"
+ #include "exec/log.h"
+ #include "qemu/qemu-print.h"
+ 
+diff --git a/target/sparc/translate.c b/target/sparc/translate.c
+index 4bfa3179f8e..f3fe7a03699 100644
+--- a/target/sparc/translate.c
++++ b/target/sparc/translate.c
+@@ -29,7 +29,6 @@
+ 
+ #include "exec/helper-gen.h"
+ 
+-#include "trace-tcg.h"
+ #include "exec/translator.h"
+ #include "exec/log.h"
+ #include "asi.h"
+diff --git a/target/xtensa/translate.c b/target/xtensa/translate.c
+index 14028d307d8..d5da35f4fcd 100644
+--- a/target/xtensa/translate.c
++++ b/target/xtensa/translate.c
+@@ -43,7 +43,6 @@
+ #include "exec/helper-proto.h"
+ #include "exec/helper-gen.h"
+ 
+-#include "trace-tcg.h"
+ #include "exec/log.h"
+ 
+ 
 -- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+2.31.1
 

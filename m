@@ -1,194 +1,211 @@
-Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp2260940lfg;
-        Mon, 21 Jun 2021 10:13:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyy+YdF5zrbZ6fKwHsmOQXiUTKzrNq9qWfwYU//WymZEHxYwj2rdQK9FM6w7grkydfKwgjk
-X-Received: by 2002:a17:906:6b8a:: with SMTP id l10mr25723062ejr.125.1624295604696;
-        Mon, 21 Jun 2021 10:13:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1624295604; cv=none;
+Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp2778970lfg;
+        Mon, 21 Jun 2021 23:53:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz7Mkw2T4vwG4HcwqZO9LvV64Ai60E42KDiokefT5SDHw7KhTb8DHoHAGCen0d0ew1sN9XW
+X-Received: by 2002:a6b:7e47:: with SMTP id k7mr1690540ioq.108.1624344804056;
+        Mon, 21 Jun 2021 23:53:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1624344804; cv=none;
         d=google.com; s=arc-20160816;
-        b=Nk2f0bZdMJl6A4ZlWVDDhSswBxM4ujHlm8OYiyzBAd7fbfzIAa9cZf4eV0jQtb2Qfo
-         EUNh+Y1zXvLxU6qRT3ChEYBrfH9yqizQg78ly0jbyyMPgnCq0982T7ReVhbsGrX68qAS
-         FC0M5IuGDs3Lm1anNWvrQe//xLrVDCaCETEOP/fuE0TuagOaILsMEnCbjO8Lm4y5s165
-         DbYSqyRMGiHQjSHabaZq1Ku3FWzkaYl5dXKMBErEYe6hfXnPDt3c8fgP33/+Gb/76+W5
-         3goFlJK7P+yS0En0MqBo1W+IWm+iDNaJ2M0sng2ALMOlxa7fULyjQpeUr9FMvuHdboYD
-         KFKA==
+        b=XarhPJRd1HhbScpadm2JfWN0+I8iffxkhLf91BgLQljvetJGGJazoLXy6tD/RWtbSf
+         ZZ7B2zH2/6UmiY5Y+v3OEX23y2inplNfvYpZuZpr8IiHlhZOTckaFSklj1VgU9Ig7NHC
+         lSk9t9OKuqZa7QRVides6wms82AaX4f7MkPKj1O4zSkEGGDDJ6nT0YHjcjq/BDSudVgp
+         Np+468ehATGQxxqg2RxXMKlEHAifOnixmYejn2j/dEzwvx8dMOmDsY7BAVnF0jEu1xMt
+         hXnXxdwtcpfCU+Pr+jb7q9ANb7a0jDCP+Uj6E0F3G563VG3uF62rqP1PlMogku6NL/nQ
+         sRug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=cNyPnxlYlTwEBGjEXebo/3/R4NZM0aR4fkRxX+zCu/A=;
-        b=Uo8cED1wNwx2h8IQGmQ37XzFXtQ1PSa2aC67xyXXky/Kq/YXSyhBbHfM5NcUce5W9/
-         73HEPR7u7g9AYwJDpNGh9XFLJce+MrI1PBrmUN80tCdtXqF2C6BWhyp5xrAPVrsw6CSR
-         m5gAb3T1x0LiRwIvBLwQgSKTkM/C/HcnHrKqENoxo7FB7YywAk95fA1P5KQM/1cPZM9x
-         50Anc0xwouEBuYhhnuFqqOxRJGPl46fy4Wa+YeoOUVDjpgr5RSwCxbNo6D7RhFEdP+Ua
-         198SBm+zZs+Yg7ag/mE7fQzae9GN2blue7ieUycOa4o4PgWiUNl4FJhP0A/I2uZWxN5i
-         1NKQ==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:references:to:from:subject
+         :dkim-signature;
+        bh=NSuqkVBPW+JIZrS5fYWYWz+SMDhNF4gXBhqltHnxIcQ=;
+        b=GcBPrWkNzNZEACME2EbcsA8AGy/uGTXkOkdhAsu/Prp63X9E2bf3dspfmo6rFPjpAh
+         hp8ntJuOmJDjxB2Si5idUGFZbxsHSSF3Zol29ZW8km9oERCp9iXTWLkmdfuAcKDgrTvw
+         TVPNkV2jQuI9CmR7rNsz5IeOCWLR3OY6BobAEvwvS7f4Xblp+4xOUQ3P5aYbL2/3MzGN
+         grA5bZ9b5CbYjphWVd1++mHG1bnI/vOQYJds95Z6EeXO/IMSqfgkvuA9SvMsdWJcb5rI
+         Tgcr9X7FZrNDgh1S9lX6HosJo2JTxyTT64vismEFeVpB046I1n/8x0QbsvO+bTv6bvgf
+         G4Aw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OjAhCUJt;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="JBTzd/yP";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id yd16si11922803ejb.249.2021.06.21.10.13.24
+        by mx.google.com with ESMTPS id e15si5950174ilr.73.2021.06.21.23.53.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 21 Jun 2021 10:13:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 21 Jun 2021 23:53:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OjAhCUJt;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46866 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="JBTzd/yP";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:39486 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lvNUB-0007Ti-P6
-	for alex.bennee@linaro.org; Mon, 21 Jun 2021 13:13:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34994)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lvaHj-0006X3-Ax
+	for alex.bennee@linaro.org; Tue, 22 Jun 2021 02:53:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52856)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lvMvf-0006lx-0i
- for qemu-devel@nongnu.org; Mon, 21 Jun 2021 12:37:43 -0400
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531]:44742)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lvMvb-0004N3-NN
- for qemu-devel@nongnu.org; Mon, 21 Jun 2021 12:37:42 -0400
-Received: by mail-ed1-x531.google.com with SMTP id h17so9921641edw.11
- for <qemu-devel@nongnu.org>; Mon, 21 Jun 2021 09:37:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=cNyPnxlYlTwEBGjEXebo/3/R4NZM0aR4fkRxX+zCu/A=;
- b=OjAhCUJtJtfZ3JwTyEQbFo1EBJb1ZAzUfiC9yCCuXe14S/B1ZAYnNzXqnQuQgj8DfS
- 6ZNSxKw7lf9+8qMfPijKUs7GIdU7HRWZM48QxD9+vHmhAXej4vSVJY7TrHyn/ap7TJoj
- yHkk/NyVgHT7n5SBNnENLX7ys3nKLsOylZg3OXyw6lzqLZd/u5M1TOfisdxMPjlJTGFQ
- yyr+gu6xoQHS7eG+ui04AK0Bblvfqv4/b9swASUJY9RBeJ0bqekKUE1rS2X5rXw2Kd5i
- F9Dv/TFEj1OGcTCbIG10a7m0PNios0l7xRg2JLb+EzC3yRt5n/XQTSYRzTwzk0ThsAEG
- Gg/g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=cNyPnxlYlTwEBGjEXebo/3/R4NZM0aR4fkRxX+zCu/A=;
- b=NWaGzuvcoGw011b3ERmZa3HabACFwCWivSIqvBM+0E9ZfssDHuDhpzqUroqgb6gTph
- 7siMWatwOltmHyIHBfYVtST8Pv96ueQJN/+sa4KLyGVZ07uTrhSv3rxHAx3896+YMyBW
- kp4xLCxGlvLSTTL1V+wwSE13xJ+H7QkGnN0LcyXzT5/EOJ0UvwmdefrqXY5bR68t6JFe
- 1X4Pyic5UsMO+DyJkoYYYS0nSQ/NrSMUnu0KJX58elsIm+zTKCXkPyt1La/QAJKFtwkt
- LerjGb1AiYq5FiPUJAyIO/vo8Z/WIOQfWzgJM3w2OdgzTnCfGksm/1n10I+YVGTxVhm0
- vFUg==
-X-Gm-Message-State: AOAM532N5xCBhN2JV7CFQBo1MyojvsnTqbHLPxbAiFt4ErnsvezfsrpG
- Po9YfkuFxhhfhEHVoQo/6ANPg4wnUKnTkrcFG9YJNw==
-X-Received: by 2002:a50:fd0a:: with SMTP id i10mr397690eds.251.1624293458410; 
- Mon, 21 Jun 2021 09:37:38 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1lvaHM-00065Z-HR
+ for qemu-arm@nongnu.org; Tue, 22 Jun 2021 02:53:00 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:26546)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1lvaHG-0005X2-L0
+ for qemu-arm@nongnu.org; Tue, 22 Jun 2021 02:53:00 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1624344768;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=NSuqkVBPW+JIZrS5fYWYWz+SMDhNF4gXBhqltHnxIcQ=;
+ b=JBTzd/yP3EdLCzqyy1IhBjgbXpUDizlMhHnWbzoM4a9fXAwA0aIl9q+RLVq3zH4GKYl2Ld
+ lRZqGWr9A6Pk2VAbEwnTqfLOn26+uT1J83rpgnor47TPX6h/G0TkLtZlKrvNktS/2UqM2C
+ cx8MfU28soDZSzWo8qZozIWePsgxleQ=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-281-EiPcDx_ONcqPBk-oMshmwg-1; Tue, 22 Jun 2021 02:52:47 -0400
+X-MC-Unique: EiPcDx_ONcqPBk-oMshmwg-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D7CD9804141;
+ Tue, 22 Jun 2021 06:52:45 +0000 (UTC)
+Received: from [10.64.54.84] (vpn2-54-84.bne.redhat.com [10.64.54.84])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 115CB60BF1;
+ Tue, 22 Jun 2021 06:52:40 +0000 (UTC)
+Subject: Re: [PATCH] hw/arm/boot: Use NUMA node ID in memory node name
+From: Gavin Shan <gshan@redhat.com>
+To: Andrew Jones <drjones@redhat.com>
+References: <20210601073004.106490-1-gshan@redhat.com>
+ <20210601075045.ppmceogd5hp5rqcf@gator.home>
+ <e50c52e7-a8d5-c269-cebf-caf1688c629e@redhat.com>
+ <20210602113642.axaxxgnw2haghas4@gator.home>
+ <493194a5-bf72-de17-8de9-4b3556a011be@redhat.com>
+Message-ID: <7e9e4127-ba08-29e3-fd62-5d686baa9012@redhat.com>
+Date: Tue, 22 Jun 2021 18:53:41 +1000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.0
 MIME-Version: 1.0
-References: <20210614151007.4545-1-peter.maydell@linaro.org>
- <2ded6216-9fa3-2b39-87ac-c61d08e80fd7@linaro.org>
-In-Reply-To: <2ded6216-9fa3-2b39-87ac-c61d08e80fd7@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 21 Jun 2021 17:37:02 +0100
-Message-ID: <CAFEAcA9udbXc9jTJORVfTmH6jdBrSwJLaivAoaeCUom-uVGrLg@mail.gmail.com>
-Subject: Re: [PATCH v2 00/57] target/arm: First slice of MVE implementation
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::531;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x531.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <493194a5-bf72-de17-8de9-4b3556a011be@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=gshan@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.373,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GrfdzLXuQ0LR
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Gavin Shan <gshan@redhat.com>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ shan.gavin@gmail.com, eric.auger@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: dw5ISUpgFnS/
 
-On Mon, 14 Jun 2021 at 23:22, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> On 6/14/21 8:09 AM, Peter Maydell wrote:
-> >      - pass only ESIZE, not H, to macros in mve_helper.c
->
-> I've been thinking about the H* macros again while reading this.
->
-> While H##ESIZE is an improvement over passing in HN, I think we can do better and force
-> the adjustment to match the type -- completely avoiding bugs you've caught at least twice
-> during SVE review.
->
-> The form I'm playing with today is
->
-> #ifdef HOST_WORDS_BIGENDIAN
-> #define HTADJ(p) (7 >> __builtin_ctz(sizeof(*(p))))
-> #define HBADJ(p) (7 & (7 << __builtin_ctz(sizeof(*(p)))))
-> #else
-> #define HTADJ(p) 0
-> #define HBADJ(p) 0
-> #endif
->
-> /**
->   * HT: adjust Host addressing by Type
->   * @p: data pointer
->   * @i: array index
->   *
->   * Adjust p[i] for host-endian addressing of sub-quadword values.
->   */
-> #define HT(p, i)  ((p)[(i) ^ HADJ(p)])
->
-> /**
->   * HB: adjust Host addressing by Bype
->   * @p: data pointer
->   * @i: byte offset
->   *
->   * Adjust p[i / sizeof(*p)] for host-endian addressing
->   * of sub-quadword values.  Unlike HT, @i is not an array
->   * index but a byte offset.
->   */
-> #define HB(p, i) (*(__typeof(p))((uintptr_t)(p) + ((i) ^ H1ADJ(p))))
->
-> void bt(unsigned char  *x, long i) { H(x, i) = 0; }
-> void ht(unsigned short *x, long i) { H(x, i) = 0; }
-> void wt(unsigned int   *x, long i) { H(x, i) = 0; }
-> void qt(unsigned long  *x, long i) { H(x, i) = 0; }
->
-> void bb(unsigned char  *x, long i) { H1(x, i) = 0; }
-> void hb(unsigned short *x, long i) { H1(x, i) = 0; }
-> void wb(unsigned int   *x, long i) { H1(x, i) = 0; }
-> void qb(unsigned long  *x, long i) { H1(x, i) = 0; }
+Hi Drew,
 
-What are these functions for ?
+On 6/3/21 2:48 PM, Gavin Shan wrote:
+> On 6/2/21 9:36 PM, Andrew Jones wrote:
+>> On Wed, Jun 02, 2021 at 11:09:32AM +1000, Gavin Shan wrote:
+>>> On 6/1/21 5:50 PM, Andrew Jones wrote:
+>>>> On Tue, Jun 01, 2021 at 03:30:04PM +0800, Gavin Shan wrote:
+>>>>> We possibly populate empty nodes where memory isn't included and might
+>>>>> be hot added at late time. The FDT memory nodes can't be created due
+>>>>> to conflicts on their names if multiple empty nodes are specified.
+>>>>> For example, the VM fails to start with the following error messages.
+>>>>>
+>>>>>     /home/gavin/sandbox/qemu.main/build/qemu-system-aarch64          \
+>>>>>     -accel kvm -machine virt,gic-version=host                        \
+>>>>>     -cpu host -smp 4,sockets=2,cores=2,threads=1 -m 1024M,maxmem=64G \
+>>>>>     -object memory-backend-ram,id=mem0,size=512M                     \
+>>>>>     -object memory-backend-ram,id=mem1,size=512M                     \
+>>>>>     -numa node,nodeid=0,cpus=0-1,memdev=mem0                         \
+>>>>>     -numa node,nodeid=1,cpus=2-3,memdev=mem1                         \
+>>>>>     -numa node,nodeid=2                                              \
+>>>>>     -numa node,nodeid=3                                              \
+>>>>>       :
+>>>>>     -device virtio-balloon-pci,id=balloon0,free-page-reporting=yes
+>>>>>
+>>>>>     qemu-system-aarch64: FDT: Failed to create subnode /memory@80000000: \
+>>>>>                          FDT_ERR_EXISTS
+>>>>>
+>>>>> This fixes the issue by using NUMA node ID or zero in the memory node
+>>>>> name to avoid the conflicting memory node names. With this applied, the
+>>>>> VM can boot successfully with above command lines.
+>>>>>
+>>>>> Signed-off-by: Gavin Shan <gshan@redhat.com>
+>>>>> ---
+>>>>>    hw/arm/boot.c | 7 ++++++-
+>>>>>    1 file changed, 6 insertions(+), 1 deletion(-)
+>>>>>
+>>>>> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+>>>>> index d7b059225e..3169bdf595 100644
+>>>>> --- a/hw/arm/boot.c
+>>>>> +++ b/hw/arm/boot.c
+>>>>> @@ -432,7 +432,12 @@ static int fdt_add_memory_node(void *fdt, uint32_t acells, hwaddr mem_base,
+>>>>>        char *nodename;
+>>>>>        int ret;
+>>>>> -    nodename = g_strdup_printf("/memory@%" PRIx64, mem_base);
+>>>>> +    if (numa_node_id >= 0) {
+>>>>> +        nodename = g_strdup_printf("/memory@%d", numa_node_id);
+>>>>> +    } else {
+>>>>> +        nodename = g_strdup("/memory@0");
+>>>>> +    }
+>>>>> +
+>>>>>        qemu_fdt_add_subnode(fdt, nodename);
+>>>>>        qemu_fdt_setprop_string(fdt, nodename, "device_type", "memory");
+>>>>>        ret = qemu_fdt_setprop_sized_cells(fdt, nodename, "reg", acells, mem_base,
 
-> This gives us
->
-> #define DO_1OP(OP, TYPE, FN)                                            \
->      void HELPER(mve_##OP)(CPUARMState *env, void *vd, void *vm)         \
->      {                                                                   \
->          TYPE *d = vd, *m = vm;                                          \
->          uint16_t mask = mve_element_mask(env);                          \
->          unsigned e;                                                     \
->          unsigned const esize = sizeof(TYPE);                            \
->          for (e = 0; e < 16 / esize; e++, mask >>= esize) {              \
->              mergemask(&HT(d, e), FN(HT(m, e)]), mask);                  \
->          }                                                               \
->          mve_advance_vpt(env);                                           \
->      }
->
-> Thoughts?  Especially on the naming of the macros?
-> If the idea appeals, I'll do a pass over the existing code.
+[...]
 
-Getting rid of the need to keep matches between H macros and
-the types certainly sounds like a good idea. I don't have a strong
-view on the macro names -- they're always going to be a bit opaque
-because we want to give them short names.
+> 
+> I've sent one separate mail to check with Rob Herring. Hopefully he have
+> ideas as he is maintaining linux FDT subsystem. You have been included to
+> that thread. I didn't find something meaningful to this thread after doing
+> some google search either.
+> 
+> Yes, I agree with you we need to follow the specification strictly. It seems
+> it's uncertain about the 'physical memory map' bus binding requirements.
+> 
 
--- PMM
+I didn't get expected answers from device-tree experts. After rethinking about it,
+I plan to fix this like this way, but please let me know if it sounds sensible
+to you.
+
+The idea is to assign a (not overlapped) dummy base address to each memory
+node in the device-tree. The dummy is (last_valid_memory_address + NUMA ID).
+The 'length' of the 'reg' property in the device-tree nodes, corresponding
+to empty NUMA nodes, is still zero. This ensures the nodes are still invalid
+until memory is added to these nodes.
+
+I had the temporary patch for the implementation. It works fine and VM can
+boot up successfully.
+
+Thanks,
+Gavin
+

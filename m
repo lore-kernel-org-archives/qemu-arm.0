@@ -1,110 +1,116 @@
-Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp3114338lfg;
-        Tue, 22 Jun 2021 07:16:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx0ySXRxX3fjHb/HWwxXBvfJQDGwcPC5x6KWN/YYb+VrR1QAHRVVDwnq5Xrwc8S1j6/dEH5
-X-Received: by 2002:aa7:ccd4:: with SMTP id y20mr5329975edt.151.1624371371040;
-        Tue, 22 Jun 2021 07:16:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1624371371; cv=none;
+Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp3127035lfg;
+        Tue, 22 Jun 2021 07:29:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy4ns2mJETD0zLczV0lRhPRT84qwSDNG7D2zlc8iT50yUgJVVbyCkFVzCN6M/DUmk70c2vM
+X-Received: by 2002:a05:6102:e92:: with SMTP id l18mr2237293vst.19.1624372177634;
+        Tue, 22 Jun 2021 07:29:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1624372177; cv=none;
         d=google.com; s=arc-20160816;
-        b=nrbr45s3Z+AZHz5hWi3tpRzU48oxcTi6QhUNFStTpRYDX7IjIpORc0BlP7RKgkRhTQ
-         FagOlIjiyifmNT/RQB3hKB60SzAwTQgqPcL/8tmF2Icar8xvoGijPdib8MRKRMqbEm73
-         DMHF1K86bboH8WDwekCnywubNRKBBe0MSi0SPwXqMDctE9wytu2jWJsmLgIjQxBbbTg8
-         uzvVGmXzzzY+3vlaKILhlchfMPREAKcW3eKv6lozxqCS/bLbtVsZfQYxZwczTIn4kdek
-         lCSRlHbT9o+EmFzrHlROOQOeHVUVw3nlonb2wmZsjJI/7zh3eSmh5EdQW/bak2wd2eHb
-         S82Q==
+        b=p4SftM5V4GHF2d5jYNk9ln+wF8MpgoMPYo+yCF/ojB0uUPpj65ljxNmzVgmEwPCWKC
+         oQc+I9QbY6DF9JmyiaP1gOwI8CvobW/cFSSn3GK6hDYVVfNJ9v4A36QqOXeujskEgpL8
+         iA9QfOLeNbn4fRIZlKvoWLHqu5a75u9jIe0Yc63G4zyRmWIiH2zAdW+Vj/DK3Bh7gtLR
+         LK/BfCLiopP6S+83EN0xw6PbYC1Bcm3n0tlCdK57xFlmS9eQ0qNU8lGoxcKTF/k5AJv7
+         h54lGkAhYu8PE9YnJi4eX1uUcR48oRw4r0GQ4oWXuaa7baxYucCFD8vhsusPdci8W2sV
+         xBGg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-disposition:user-agent
+         :in-reply-to:mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=BBDAQ95PzCigF/6scozDwCGoyusjEsB8XZAQ8m0yhYs=;
-        b=eggTKTxV1MQSKk15b63fPirL6ATuDQuc+uXDJS1ce9PZzHj9+NACkKVH5APYapEIRn
-         kZwIivyy5ERd2jgSpQ7tYLI3Fy//czJZrrMmK5SdiU8mkAM9ESKySM4osH5xd0hZQlQ3
-         OR4JGwr0qTUdmA5jEG0bpOIjytOztm5Z8uVRiBLYY4kBPBL9dthPQfRePe7JKLqHDSr7
-         wPvjPpSMotcHI7aQj+2CMEY5Do9PPscxKpVfeY5qnoGIu5bZDvZ4Wpai+r4oafD5Rlfu
-         Xg7ZTA0Xf0cPxuH9kS4EzoGjSm6I88UbYoPGuG8JlDJa3ayV8+rG4VFsk4V2zOUp7e4T
-         YoVg==
+        bh=GF4xaKdOVOIYVJQDQATGKFZVo26JakLLqObjBfs30Zw=;
+        b=ITzzd7nJCdo+RQSj2GwOTv20NfjNiNqpivD3DLxxyy5cg/IIg/K+OZwx9TO610AqNV
+         oQnjK8qSPw6mv88cHHdiYmoC6VNQuTpjdfXEPsd8eAmwSYqISJGW/31fiybeffaj46SC
+         ZlBOej80uBZ9+Ffi8jwJk84d1d5oYroNVg9rQeIJ4OBF2nUpfbJTl7kj/Ws4Ef0ShoVn
+         5DC7Y3SO3jGWdZv+pA9E89FtU37kulIyfGhuK2R84JjvY6zfBkMaugLLygHP+jJbOmeI
+         84OwjpZw28SKjgQsg1UrTwOdTWdD+YOh94zT+JAnqmMzN4XfKEOqZdhDGuIXQHne57xB
+         XxUA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=hvkshuIw;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=aa75TQqJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c14si10990942edr.274.2021.06.22.07.16.10
+        by mx.google.com with ESMTPS id r12si1348889uat.182.2021.06.22.07.29.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Jun 2021 07:16:11 -0700 (PDT)
+        Tue, 22 Jun 2021 07:29:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=hvkshuIw;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=aa75TQqJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54100 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:35930 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lvhCE-0001In-6h
-	for alex.bennee@linaro.org; Tue, 22 Jun 2021 10:16:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36892)
+	id 1lvhPF-0000H6-1f
+	for alex.bennee@linaro.org; Tue, 22 Jun 2021 10:29:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40422)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lvhC2-0001Hg-4L
- for qemu-arm@nongnu.org; Tue, 22 Jun 2021 10:15:58 -0400
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529]:44886)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lvhC0-0004tP-DB
- for qemu-arm@nongnu.org; Tue, 22 Jun 2021 10:15:57 -0400
-Received: by mail-ed1-x529.google.com with SMTP id h17so13978480edw.11
- for <qemu-arm@nongnu.org>; Tue, 22 Jun 2021 07:15:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=BBDAQ95PzCigF/6scozDwCGoyusjEsB8XZAQ8m0yhYs=;
- b=hvkshuIw2uch4Qh8deIWknWAWkFWTyMY8JgL9io731VD7cAbnP060wgMP1Rh4ETPim
- pFuKOu3KqXGcWkXgifxYW2DTXvXUSVyhQgcVqlA91Z/GrDEMRy97DVOwqo/ChGzQqed8
- QyNP4WcHhncdX6wCrSJMeG3JXxj3hpfqXDMJtsXjk+YwSXhS832Q9Bwvwdcmqh704t4p
- iDMiUXNdckhjT2Ql00HWIL/dzpRhgJydF/uAtp3yl6mPOMPFqsrnO8DGwFoS5rNId+gu
- gtiDDSI/ma9ODZC8s4BNBduAQGzawtOxmgRs8IXKTLVSsruN6taoza6IqZXq++erzJz9
- WtJQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=BBDAQ95PzCigF/6scozDwCGoyusjEsB8XZAQ8m0yhYs=;
- b=npOiyN0mO5sHqYZbwHHfJ+GsbU7bfSXCgAlrYVxls09NpDaQz7FmkN6saKMYn4JVVC
- wh/Axlz2K9313x6p1J0k37k+x8g8xelafxqVjl62TNxgiz9TfAVM6zAm0+7xQeRwUZqy
- xPMtVMIinEVweJoIjyEJQMD7MnRCdjzwfNv+y241Dd5u/lRPJrb4hfxT0k4sllESJFuZ
- i+VPrLNpWcpuXhZtDVdW49JudFsC2+2WsRa42THbJ3zjn0czg7NQJOBhDKrlAOuEO9L3
- 3N4KoFWFvv40Rc95wU+WSmutcU0WBZG9GL/uEmiw8bldaGKvFSlRamIIvSVD4Xslcq7C
- Q9ew==
-X-Gm-Message-State: AOAM531vbMbz5qXNjKQKk7SrpPmq4lkjSI/41RPLCH2PpGWrA9e13AwX
- rho6p1Ix4UrJ/PhLffuLjpBjp+NUekpncfZHVH6oKg==
-X-Received: by 2002:a05:6402:759:: with SMTP id
- p25mr5366536edy.146.1624371354481; 
- Tue, 22 Jun 2021 07:15:54 -0700 (PDT)
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1lvhP7-0000Gm-L0
+ for qemu-arm@nongnu.org; Tue, 22 Jun 2021 10:29:29 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:25771)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1lvhP4-0005k4-Ec
+ for qemu-arm@nongnu.org; Tue, 22 Jun 2021 10:29:29 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1624372164;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=GF4xaKdOVOIYVJQDQATGKFZVo26JakLLqObjBfs30Zw=;
+ b=aa75TQqJ7xAD3hHWOqh9OoqADWFuaanvKnw2U7LlihL4kaiupqdeR8W51RbNiQpAzgDSHT
+ zt3DMQzaZLgT/TBLSBT6l8SNgVkr6svd5z7QQiqd2ahb4kl+gT50UwfV7pWtttiDqr03Mi
+ CZg/Pj3o3EDGXqnUjiUpBecUiXgv264=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-155-UGdnEapqOKWO6aJQWGsPPQ-1; Tue, 22 Jun 2021 10:29:11 -0400
+X-MC-Unique: UGdnEapqOKWO6aJQWGsPPQ-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C04B31084F4C;
+ Tue, 22 Jun 2021 14:29:08 +0000 (UTC)
+Received: from redhat.com (ovpn-114-176.ams2.redhat.com [10.36.114.176])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id F01625D9CA;
+ Tue, 22 Jun 2021 14:28:59 +0000 (UTC)
+Date: Tue, 22 Jun 2021 15:28:56 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [RFC PATCH v4 0/7] hw/arm/virt: Introduce cpu topology support
+Message-ID: <YNHzqHMkfSWCHA3i@redhat.com>
 References: <20210622093413.13360-1-wangyanan55@huawei.com>
- <YNG44c9KtaiNXT7b@redhat.com> <20210622114634.crjqusw6x6oj4j6v@gator>
+ <YNG44c9KtaiNXT7b@redhat.com>
+ <20210622114634.crjqusw6x6oj4j6v@gator>
  <bc47a66a-b1ff-939c-32a2-94c90efd0caf@huawei.com>
  <YNHalhuNZhMa665J@redhat.com>
  <7fcc5f2d-cc84-3464-15cc-3bebb07f8190@huawei.com>
  <YNHvcQAMLSpVcxaE@redhat.com>
-In-Reply-To: <YNHvcQAMLSpVcxaE@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 22 Jun 2021 15:15:18 +0100
-Message-ID: <CAFEAcA9X9fYAFAux4h2n00kYpTgxkNcJg6Ako7s6ndU4KWTJyQ@mail.gmail.com>
-Subject: Re: [RFC PATCH v4 0/7] hw/arm/virt: Introduce cpu topology support
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::529;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x529.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ <CAFEAcA9X9fYAFAux4h2n00kYpTgxkNcJg6Ako7s6ndU4KWTJyQ@mail.gmail.com>
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA9X9fYAFAux4h2n00kYpTgxkNcJg6Ako7s6ndU4KWTJyQ@mail.gmail.com>
+User-Agent: Mutt/2.0.7 (2021-05-04)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.223,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -117,6 +123,7 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Cc: Barry Song <song.bao.hua@hisilicon.com>, Andrew Jones <drjones@redhat.com>,
  "Michael S . Tsirkin" <mst@redhat.com>, wanghaibin.wang@huawei.com,
  QEMU Developers <qemu-devel@nongnu.org>, yangyicong@huawei.com,
@@ -129,19 +136,28 @@ Cc: Barry Song <song.bao.hua@hisilicon.com>, Andrew Jones <drjones@redhat.com>,
  David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3soLWIwrFF/u
+X-TUID: Qle4eF6Dht23
 
-On Tue, 22 Jun 2021 at 15:11, Daniel P. Berrang=C3=A9 <berrange@redhat.com>=
- wrote:
-> The QEMU man page says this explicitly
->
->                  For the PC target, the number of cores per die, the
->     number of threads per cores, the number of dies per packages and the
->     total number of sockets can be specified. Missing values will be
->     computed. If any on the three values is given, the total number of
->     CPUs n can be omitted.
+On Tue, Jun 22, 2021 at 03:15:18PM +0100, Peter Maydell wrote:
+> On Tue, 22 Jun 2021 at 15:11, Daniel P. Berrangé <berrange@redhat.com> wrote:
+> > The QEMU man page says this explicitly
+> >
+> >                  For the PC target, the number of cores per die, the
+> >     number of threads per cores, the number of dies per packages and the
+> >     total number of sockets can be specified. Missing values will be
+> >     computed. If any on the three values is given, the total number of
+> >     CPUs n can be omitted.
+> 
+> Anybody feel like submitting a patch to fix the typo? Should read
+> "If any of"...
 
-Anybody feel like submitting a patch to fix the typo? Should read
-"If any of"...
+Actually looking at the broader text for -smp, the whole thing just needs
+to be rewritten from scratch IMHO. I'll send a patch....
 
--- PMM
+Regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+

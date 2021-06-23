@@ -1,127 +1,115 @@
-Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp2836362lfg;
-        Tue, 22 Jun 2021 01:20:29 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwKCrrneuxzGVZoVSIwmYTVAM8k26ySNDVLYTU83ElG85B9DSPtrUZqxBYRSuOSGfNmkqmr
-X-Received: by 2002:ac8:728c:: with SMTP id v12mr2370699qto.324.1624350029300;
-        Tue, 22 Jun 2021 01:20:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1624350029; cv=none;
+Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp3646147lfg;
+        Tue, 22 Jun 2021 19:43:13 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJza4LVh4s/bMKsfrI7kTxqaqnKvuA0bddc48JdmZiR6CCdrRLWccjP2PelnCYbFvxqO3Lw9
+X-Received: by 2002:ac8:5a10:: with SMTP id n16mr1828931qta.124.1624416192938;
+        Tue, 22 Jun 2021 19:43:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1624416192; cv=none;
         d=google.com; s=arc-20160816;
-        b=anyOM6vYCfSY57dH5jTXN50pEjBeX5Xmw0OcuqrKI6p2uS8ZEz6KmcIGxuX+LH83vk
-         VaBhyh3wO23XJh2jUiC1TIQoKCvI/ypI7MjBE5rQEZ9SfzaXdgCPp+v5yaZmpA2VxtoX
-         4+4PXhQE6hpsdVsr9Alz8ID2TJvSZzs5Je6/wBu8ZQCcGqFleLdfdpzVnv3+SCgTcn1y
-         mlmpvsHBzHJ3jeXID+n9zHZSiCzFUC2Nr8ocpgpWwTGXMcbYvhamsSdFcVkSMpJbkVIb
-         5U3imBwbFvgNOF8v3v4makNEN7KlRxTA/hrucfI9VwKoSDTLOnM7vFhoSjulVd8Xakvw
-         NcPg==
+        b=j8t7pTUljSbBdJY+jr2WLkmDugGLJGrMlfLeIThC2dnGljBk9yh6ps6by2jUrS+Om9
+         qieRjxRbIk6DNp79iKPs7lKL73WCna7wl6C+QQPFfT80yY232YMxAEnaXv3Dqmvjh0kL
+         H3GOEsiE4MkQ5wsf3D1CYWjOq6qgRolJMpPxqjeIZ66q7qegeyzLXX7cvDojdV5liFGE
+         e2FuzqGmLfSXvYdENTQQSYYLXki/L0KBwlLohYVzarYCKYGusu/rTHPvHGGIHxnqpkBS
+         qaa+gCciw/AmXlTIvJbCeoHSDRHeRD2VbalF3TSw608Lo4QdTTmHuxQQZlJqUI4kNB1v
+         68cQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:references:to:from:subject:dkim-signature;
-        bh=OJfG6xHzKZO4p1mF7QOoq2I//Jjw6HTCsW5K0iOYu3Q=;
-        b=aizrAdFSGXVGfoCqqlsrOTB5CGyLm9Zss8APFlfKLKksYC1Lq/r97p3Q6Mh9v2DJRG
-         t4jhLaNEaWuIrtu8pya9oJT572tD16KGWOmkae+MUQKBp5qydAqolkiGPvxov7QqhVcw
-         gyWTHQFU84QmPs/k1NPv8b7EfTCLB1g71yICYdvDr+Cez7kMJNRB4PjdkHIembAfa7KK
-         TW/5ib1RVEjfa1r9goB82PFEZlW2qKdSCaRGADeCnmDNw6P83BEeLbUSWROS8wOT74GK
-         nTkSUPzdj8Tn3yUGaTP5l51OWwMFps6OmxQLHZ2PYeu3ndJb6Xjb4w4re/jyCZ2Odmgl
-         8HjQ==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:subject
+         :dkim-signature;
+        bh=NT61TJxzA0qNcB5jpOvUgcTbQz7I3GWz0L1hcOoLOSk=;
+        b=McyBM9wOCBqt4SquTpW9+0mxzPLjINwTM+Q3kn1BZ5m2MrjyoHh+YUlOFnwgh6FA1c
+         2k2J8j9UPnHeZGCID7g8cxmmCktK3YPgjeCSUfb1WXCOe0dXtVu+CRfbR+REvGgeEeKN
+         QoPLr1YPXXsylT+nLXOhXoN9G/wSMqP9irjcDRO3IAfwzyKkgV7Nj/oKZUgEwhbvy5H8
+         yVQLzeClsjORmDJ/gaXbiJzGZH9n4PylQYZqIQkP9u0/osQnXCVrHh1BkBTLnplvjVNq
+         McNpinkIBrDqXzoiez+3eyxeNAscoOu5eDktzhParWZbPxze/2b9PyFeZGIqlBHZHOTJ
+         3FIA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="bWCturH/";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BljgKEkf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c16si7578792qvr.142.2021.06.22.01.20.29
+        by mx.google.com with ESMTPS id a20si2939095qtw.140.2021.06.22.19.43.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Jun 2021 01:20:29 -0700 (PDT)
+        Tue, 22 Jun 2021 19:43:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="bWCturH/";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BljgKEkf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52180 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:54096 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lvbe0-0006Fu-Jn
-	for alex.bennee@linaro.org; Tue, 22 Jun 2021 04:20:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42868)
+	id 1lvsrA-0001Mj-8V
+	for alex.bennee@linaro.org; Tue, 22 Jun 2021 22:43:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53900)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1lvbdq-0006FF-8H
- for qemu-arm@nongnu.org; Tue, 22 Jun 2021 04:20:18 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:50268)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1lvsr0-0001Km-HP
+ for qemu-arm@nongnu.org; Tue, 22 Jun 2021 22:43:02 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:43945)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1lvbdo-0003M4-8W
- for qemu-arm@nongnu.org; Tue, 22 Jun 2021 04:20:17 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1lvsqw-0005VQ-NB
+ for qemu-arm@nongnu.org; Tue, 22 Jun 2021 22:43:02 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1624350015;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:content-type:content-type:
+ s=mimecast20190719; t=1624416178;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=OJfG6xHzKZO4p1mF7QOoq2I//Jjw6HTCsW5K0iOYu3Q=;
- b=bWCturH/RemvZdq/128m6Zp/BQ83a2JodnjwOcsIne+vQB9OzfvdCxCv5yVF624EQJPgXy
- XrN7bbIVsU1N5E87XwaDhLH3qpl4uuzq+zk5EPnY2KrkgmUO20iLqENXsvfKF5efpoRvnV
- zY3oaduJl50tg/vzPkvDA3vfPFbX5Tg=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-597-Gh6mJl1mPJKHSvDyo59pRQ-1; Tue, 22 Jun 2021 04:20:12 -0400
-X-MC-Unique: Gh6mJl1mPJKHSvDyo59pRQ-1
-Received: by mail-wm1-f71.google.com with SMTP id
- m186-20020a1c26c30000b02901e1c85168f1so127838wmm.2
- for <qemu-arm@nongnu.org>; Tue, 22 Jun 2021 01:20:12 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:from:to:references:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=OJfG6xHzKZO4p1mF7QOoq2I//Jjw6HTCsW5K0iOYu3Q=;
- b=XimEtEFQdMy6T1lNmpKdeRixHpaqy5hbUP73LcS3vFcMFTog7Eog01FDgrVBoazCY8
- 0OFDoXPOaaod4ET3u8+xJrC0hTWwiW4fnSzr31XWB57PRHSXdZ3yR2um5sLeAUKTJe/y
- rxVjL+IeDnWoZy//Jo4nBJvY7kFE6cUl4LKfAbVu3DByQZuEDwzcsF/8S1HATsxaj/qe
- V+TTaviaJNZ8m6ZfeZ6x/Ap/vNwc2brhRwtN3Pdz9nCagMUnxOHy2EdlRaM5LDBY0VPR
- ULIpf6TDKzPMTadZvfEQXx+DYsR4XY0XlIjJJ00OweDUhBuwyByc/v9w8t+ztxOopUeo
- nLXw==
-X-Gm-Message-State: AOAM532P05YLPhlh+UN70Qs/6A+8gqonpEH18MdBr0PhaRLLEaDIPE9J
- i17XoTq/61AkKYxNrla+bQ47wQG0fKLBd4Z6G0zAQMYV97/3aV2zgUVggnHu6gxtbfWfoC24PLh
- hFodYsOF1Hz70
-X-Received: by 2002:a05:600c:210:: with SMTP id
- 16mr3132902wmi.59.1624350010694; 
- Tue, 22 Jun 2021 01:20:10 -0700 (PDT)
-X-Received: by 2002:a05:600c:210:: with SMTP id
- 16mr3132869wmi.59.1624350010385; 
- Tue, 22 Jun 2021 01:20:10 -0700 (PDT)
-Received: from [192.168.43.95] ([37.173.9.63])
- by smtp.gmail.com with ESMTPSA id z6sm16031414wrh.65.2021.06.22.01.20.09
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 22 Jun 2021 01:20:09 -0700 (PDT)
-Subject: Re: QEMU PCIe expander bridge with 64kB page guest -> guest BUG_ON()
-From: Eric Auger <eauger@redhat.com>
-To: qemu list <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Ard Biesheuvel <ardb@kernel.org>, Xingang Wang <wangxingang5@huawei.com>,
- miaoyubo@huawei.com
-References: <1811f735-3426-08c0-ee86-b410b632efb5@redhat.com>
-Message-ID: <f3a5e2ce-54fd-f19a-4a8c-1cdcc4ba8f57@redhat.com>
-Date: Tue, 22 Jun 2021 10:20:08 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ bh=NT61TJxzA0qNcB5jpOvUgcTbQz7I3GWz0L1hcOoLOSk=;
+ b=BljgKEkfpzUP9suyksJWkVA1u1pFJ0YSeInoCwBvrZkH5RXOWAm+HHELwfw5AwkY0TW4ob
+ HblOVOd6lRNap0/yWHCPpeqECRZinuGbx9bIC41NJDWMa2ZjpoQeAATCmzmCC0ntP2siXj
+ FbCmncdJ0/KzPBAKMHijLLL4Ff+Ab2s=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-529-AmsBjLliPMyH3yCU93jl3w-1; Tue, 22 Jun 2021 22:42:54 -0400
+X-MC-Unique: AmsBjLliPMyH3yCU93jl3w-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 77FFA800D55;
+ Wed, 23 Jun 2021 02:42:53 +0000 (UTC)
+Received: from [10.64.54.84] (vpn2-54-84.bne.redhat.com [10.64.54.84])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 0ACB760875;
+ Wed, 23 Jun 2021 02:42:47 +0000 (UTC)
+Subject: Re: [PATCH] hw/arm/boot: Use NUMA node ID in memory node name
+To: Andrew Jones <drjones@redhat.com>
+References: <20210601073004.106490-1-gshan@redhat.com>
+ <20210601075045.ppmceogd5hp5rqcf@gator.home>
+ <e50c52e7-a8d5-c269-cebf-caf1688c629e@redhat.com>
+ <20210602113642.axaxxgnw2haghas4@gator.home>
+ <493194a5-bf72-de17-8de9-4b3556a011be@redhat.com>
+ <7e9e4127-ba08-29e3-fd62-5d686baa9012@redhat.com>
+ <20210622071349.ibni4btfjrb2v2p2@gator>
+From: Gavin Shan <gshan@redhat.com>
+Message-ID: <707a90ca-4a12-5813-4834-6ed5c77200b5@redhat.com>
+Date: Wed, 23 Jun 2021 14:43:49 +1000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.0
 MIME-Version: 1.0
-In-Reply-To: <1811f735-3426-08c0-ee86-b410b632efb5@redhat.com>
+In-Reply-To: <20210622071349.ibni4btfjrb2v2p2@gator>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eauger@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=gshan@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=eauger@redhat.com;
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=gshan@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
+X-Spam_score_int: -29
+X-Spam_score: -3.0
 X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.373,
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.223,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
  RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -134,161 +122,166 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Gavin Shan <gshan@redhat.com>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ shan.gavin@gmail.com, eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bDTySzGhyMeU
+X-TUID: adQ0PGjLHVLh
 
-Adding Yubo in the loop as Jiahui's address is bouncing.
+Hi Drew,
 
+On 6/22/21 5:13 PM, Andrew Jones wrote:
+> On Tue, Jun 22, 2021 at 06:53:41PM +1000, Gavin Shan wrote:
+>> On 6/3/21 2:48 PM, Gavin Shan wrote:
+>>> On 6/2/21 9:36 PM, Andrew Jones wrote:
+>>>> On Wed, Jun 02, 2021 at 11:09:32AM +1000, Gavin Shan wrote:
+>>>>> On 6/1/21 5:50 PM, Andrew Jones wrote:
+>>>>>> On Tue, Jun 01, 2021 at 03:30:04PM +0800, Gavin Shan wrote:
+>>>>>>> We possibly populate empty nodes where memory isn't included and might
+>>>>>>> be hot added at late time. The FDT memory nodes can't be created due
+>>>>>>> to conflicts on their names if multiple empty nodes are specified.
+>>>>>>> For example, the VM fails to start with the following error messages.
+>>>>>>>
+>>>>>>>      /home/gavin/sandbox/qemu.main/build/qemu-system-aarch64          \
+>>>>>>>      -accel kvm -machine virt,gic-version=host                        \
+>>>>>>>      -cpu host -smp 4,sockets=2,cores=2,threads=1 -m 1024M,maxmem=64G \
+>>>>>>>      -object memory-backend-ram,id=mem0,size=512M                     \
+>>>>>>>      -object memory-backend-ram,id=mem1,size=512M                     \
+>>>>>>>      -numa node,nodeid=0,cpus=0-1,memdev=mem0                         \
+>>>>>>>      -numa node,nodeid=1,cpus=2-3,memdev=mem1                         \
+>>>>>>>      -numa node,nodeid=2                                              \
+>>>>>>>      -numa node,nodeid=3                                              \
+>>>>>>>        :
+>>>>>>>      -device virtio-balloon-pci,id=balloon0,free-page-reporting=yes
+>>>>>>>
+>>>>>>>      qemu-system-aarch64: FDT: Failed to create subnode /memory@80000000: \
+>>>>>>>                           FDT_ERR_EXISTS
+>>>>>>>
+>>>>>>> This fixes the issue by using NUMA node ID or zero in the memory node
+>>>>>>> name to avoid the conflicting memory node names. With this applied, the
+>>>>>>> VM can boot successfully with above command lines.
+>>>>>>>
+>>>>>>> Signed-off-by: Gavin Shan <gshan@redhat.com>
+>>>>>>> ---
+>>>>>>>     hw/arm/boot.c | 7 ++++++-
+>>>>>>>     1 file changed, 6 insertions(+), 1 deletion(-)
+>>>>>>>
+>>>>>>> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+>>>>>>> index d7b059225e..3169bdf595 100644
+>>>>>>> --- a/hw/arm/boot.c
+>>>>>>> +++ b/hw/arm/boot.c
+>>>>>>> @@ -432,7 +432,12 @@ static int fdt_add_memory_node(void *fdt, uint32_t acells, hwaddr mem_base,
+>>>>>>>         char *nodename;
+>>>>>>>         int ret;
+>>>>>>> -    nodename = g_strdup_printf("/memory@%" PRIx64, mem_base);
+>>>>>>> +    if (numa_node_id >= 0) {
+>>>>>>> +        nodename = g_strdup_printf("/memory@%d", numa_node_id);
+>>>>>>> +    } else {
+>>>>>>> +        nodename = g_strdup("/memory@0");
+>>>>>>> +    }
+>>>>>>> +
+>>>>>>>         qemu_fdt_add_subnode(fdt, nodename);
+>>>>>>>         qemu_fdt_setprop_string(fdt, nodename, "device_type", "memory");
+>>>>>>>         ret = qemu_fdt_setprop_sized_cells(fdt, nodename, "reg", acells, mem_base,
+>>
+>> [...]
+>>
+>>>
+>>> I've sent one separate mail to check with Rob Herring. Hopefully he have
+>>> ideas as he is maintaining linux FDT subsystem. You have been included to
+>>> that thread. I didn't find something meaningful to this thread after doing
+>>> some google search either.
+>>>
+>>> Yes, I agree with you we need to follow the specification strictly. It seems
+>>> it's uncertain about the 'physical memory map' bus binding requirements.
+>>>
+>>
+>> I didn't get expected answers from device-tree experts.
+> 
+> What response did you get? Can you please provide a link to the discussion?
+> 
 
-On 6/21/21 6:22 PM, Eric Auger wrote:
-> Hi Jiahui,
+Sorry about the confusion. I meant "no response" by "expected answers". Here
+is the mail sent to Rob before, no reply so far:
+
+https://lkml.org/lkml/2021/6/2/1446
+
+>> After rethinking about it,
+>> I plan to fix this like this way, but please let me know if it sounds sensible
+>> to you.
+>>
+>> The idea is to assign a (not overlapped) dummy base address to each memory
+>> node in the device-tree. The dummy is (last_valid_memory_address + NUMA ID).
+>> The 'length' of the 'reg' property in the device-tree nodes, corresponding
+>> to empty NUMA nodes, is still zero. This ensures the nodes are still invalid
+>> until memory is added to these nodes.
+>>
+>> I had the temporary patch for the implementation. It works fine and VM can
+>> boot up successfully.
 > 
-> I noticed the PCIe expander bridge + PCIe root port does not work with a
-> 64kB page guest. One hits a kernel BUG at mm/vmalloc.c:96
-> (BUG_ON(!pte_none(*pte));)! This happens with an upstream guest.
+> I would like to be sure that the kernel developers for NUMA, memory
+> hotplug, and devicetree specifications are all happy with the approach
+> before adding it to QEMU.
 > 
-> I understand this happens on pci_remap_iospace when handling the Io16
-> regions below. Wonder if the edk2 code could be the source (I saw you
-> write both the edk2 and the qemu part [edk2-devel] [PATCH v2 0/4] Add
-> extra pci roots support for Arm).
-> 
-> Please could give me a hand?
-> 
-> Best Regards
-> 
-> Eric
-> 
-> 
-> Sample qemu cmd options:
-> 
-> -device pxb-pcie,bus_nr=4,id=bridge,bus=pcie.0 \
-> -device pcie-root-port,bus=bridge,chassis=4,id=pcie.11 \
-> -device virtio-net-pci,bus=pcie.11,netdev=nic0,mac=6a:f5:10:b1:3d:d2
-> -netdev
-> tap,id=nic0,script=/home/augere/TEST/SCRIPTS/qemu-ifup,downscript=/home/augere/TEST/SCRIPTS/qemu-ifdown
-> 
-> 
-> [    2.867734] ACPI: PCI Root Bridge [PCFE] (domain 0000 [bus fe-ff])
-> [    2.869339] acpi PNP0A08:00: _OSC: OS supports [ExtendedConfig ASPM
-> ClockPM Segments MSI EDR HPX-Type3]
-> [    2.871405] acpi PNP0A08:00: _OSC: platform does not support [LTR DPC]
-> [    2.873226] acpi PNP0A08:00: _OSC: OS now controls [PCIeHotplug PME
-> AER PCIeCapability]
-> [    2.875609] acpi PNP0A08:00: ECAM area [mem
-> 0x401fe00000-0x401fffffff] reserved by PNP0C02:00
-> [    2.877830] acpi PNP0A08:00: ECAM at [mem 0x401fe00000-0x401fffffff]
-> for [bus fe-ff]
-> phys_addr=0x3eff3000
-> [    2.884036] ------------[ cut here ]------------
-> [    2.885249] kernel BUG at mm/vmalloc.c:96!
-> [    2.886322] Internal error: Oops - BUG: 0 [#1] SMP
-> [    2.887560] Modules linked in:
-> [    2.888352] CPU: 7 PID: 1 Comm: swapper/0 Not tainted
-> 5.13.0-rc6-guest-64K+ #57
-> [    2.890216] Hardware name: QEMU KVM Virtual Machine, BIOS 0.0.0
-> 02/06/2015
-> [    2.891983] pstate: 80400005 (Nzcv daif +PAN -UAO -TCO BTYPE=--)
-> [    2.893519] pc : vmap_range+0x1d8/0x208
-> [    2.894600] lr : vmap_range+0x38/0x208
-> [    2.895615] sp : fffffe0012c2f7f0
-> [    2.896517] x29: fffffe0012c2f7f0 x28: fffffffefe800000 x27:
-> fffffffefe801000
-> [    2.898437] x26: ffffffff20070000 x25: 00000001407f0000 x24:
-> 0140000000000000
-> [    2.900357] x23: fffffe001134ffb8 x22: 000000000000003f x21:
-> 0068000000000717
-> [    2.902284] x20: 000000003eff3000 x19: fffffffefe801000 x18:
-> 0000000000000010
-> [    2.904236] x17: 0000000000000000 x16: 0000000000000001 x15:
-> ffffffffffffffff
-> [    2.906157] x14: 695f70616d65725f x13: 696370202a2a2a2a x12:
-> fffffe0011c77150
-> [    2.908084] x11: 0000000000000003 x10: fffffe0011bb7110 x9 :
-> fffffe0010d33ad4
-> [    2.909996] x8 : 00000000000bffe8 x7 : c0000000ffff7fff x6 :
-> 0000000000000001
-> [    2.911323] x5 : 0000000000000000 x4 : 000000003eff0000 x3 :
-> 0000000000001ff7
-> [    2.912631] x2 : 0040000000000001 x1 : fffffc07f4080038 x0 :
-> fffffc07ffbecdc0
-> [    2.913951] Call trace:
-> [    2.914398]  vmap_range+0x1d8/0x208
-> [    2.915363]  ioremap_page_range+0x20/0x30
-> [    2.916453]  pci_remap_iospace+0xcc/0xf0
-> [    2.917519]  acpi_pci_probe_root_resources+0x244/0x268
-> [    2.918907]  pci_acpi_root_prepare_resources+0x28/0xc8
-> [    2.920281]  acpi_pci_root_create+0x9c/0x2f8
-> [    2.921443]  pci_acpi_scan_root+0x14c/0x230
-> [    2.922574]  acpi_pci_root_add+0x268/0x5c0
-> [    2.923710]  acpi_bus_attach+0x15c/0x2c0
-> [    2.924794]  acpi_bus_attach+0x9c/0x2c0
-> [    2.925833]  acpi_bus_attach+0x9c/0x2c0
-> [    2.926881]  acpi_bus_scan+0x64/0x118
-> [    2.927875]  acpi_scan_init+0x10c/0x25c
-> [    2.928922]  acpi_init+0x3e8/0x458
-> [    2.929847]  do_one_initcall+0x54/0x268
-> [    2.930879]  kernel_init_freeable+0x290/0x344
-> [    2.932068]  kernel_init+0x1c/0x128
-> [    2.933017]  ret_from_fork+0x10/0x18
-> [    2.934005] Code: a90687e2 97f518e5 a94687e2 17ffffe4 (d4210000)
-> [    2.935673] ---[ end trace 1d687ce361e3e7ca ]---
-> [    2.936922] Kernel panic - not syncing: Oops - BUG: Fatal exception
-> [    2.938611] SMP: stopping secondary CPUs
-> [    2.939760] ---[ end Kernel panic - not syncing: Oops - BUG: Fatal
-> exception ]---
-> 
-> 
-> At EDK2 level I have:
-> 
-> PciBus: Resource Map for Root Bridge PciRoot(0x0)^M
-> Type =   Io16; Base = 0x0;      Length = 0x3000;        Alignment = 0xFFF^M
->    Base = 0x0;  Length = 0x200; Alignment = 0xFFF;      Owner = PPB
-> [00|02|02:**]^M
->    Base = 0x1000;       Length = 0x200; Alignment = 0xFFF;      Owner =
-> PPB [00|02|01:**]^M
->    Base = 0x2000;       Length = 0x200; Alignment = 0xFFF;      Owner =
-> PPB [00|02|00:**]^M
-> Type =  Mem32; Base = 0x10000000;       Length = 0x700000;
-> Alignment = 0x1FFFFF^M
->    Base = 0x10000000;   Length = 0x200000;      Alignment = 0x1FFFFF;
-> Owner = PPB [00|02|02:**]^M
->    Base = 0x10200000;   Length = 0x200000;      Alignment = 0x1FFFFF;
-> Owner = PPB [00|02|01:**]^M
->    Base = 0x10400000;   Length = 0x200000;      Alignment = 0x1FFFFF;
-> Owner = PPB [00|02|00:**]^M
->    Base = 0x10600000;   Length = 0x1000;        Alignment = 0xFFF;
-> Owner = PPB [00|02|02:10]^M
->    Base = 0x10601000;   Length = 0x1000;        Alignment = 0xFFF;
-> Owner = PPB [00|02|01:10]^M
->    Base = 0x10602000;   Length = 0x1000;        Alignment = 0xFFF;
-> Owner = PPB [00|02|00:10]^M
-> Type =  Mem64; Base = 0x8000000000;     Length = 0x200000;
-> Alignment = 0xFFFFF^M
->    Base = 0x8000000000; Length = 0x100000;      Alignment = 0xFFFFF;
-> Owner = PPB [00|02|01:**]; Type = PMem64^M
->    Base = 0x8000100000; Length = 0x100000;      Alignment = 0xFFFFF;
-> Owner = PPB [00|02|02:**]; Type = PMem64^M
-> 
-> 
-> PciBus: Resource Map for Root Bridge PciRoot(0x4)^M
-> Type =   Io16; Base = 0x3000;   Length = 0x1000;        Alignment = 0xFFF^M
->    Base = 0x3000;       Length = 0x200; Alignment = 0xFFF;      Owner =
-> PPB [04|00|00:**]^M
-> Type =  Mem32; Base = 0x10800000;       Length = 0x300000;
-> Alignment = 0x1FFFFF^M
->    Base = 0x10800000;   Length = 0x200000;      Alignment = 0x1FFFFF;
-> Owner = PPB [04|00|00:**]^M
->    Base = 0x10A00000;   Length = 0x1000;        Alignment = 0xFFF;
-> Owner = PPB [04|00|00:10]^M
-> ^M
-> PciBus: Resource Map for Bridge [04|00|00]^M
-> Type =   Io16; Base = 0x3000;   Length = 0x200; Alignment = 0xFFF^M
->    Base = Padding;      Length = 0x200; Alignment = 0x1FF^M
-> Type =  Mem32; Base = 0x10800000;       Length = 0x200000;
-> Alignment = 0x1FFFFF^M
->    Base = Padding;      Length = 0x200000;      Alignment = 0x1FFFFF^M
-> Type =  Mem32; Base = 0x10A00000;       Length = 0x1000;
-> Alignment = 0xFFF^M
-> 
+
+As I understood, it won't break anything from perspectives of NUMA
+and device-tree specification. First of all, NUMA cares the so-called
+distance map and 'numa-node-id' property in the individual device-tree
+nodes. The device-tree specification doesn't say 'length' in 'reg'
+property of memory node can't be zero. Also, the linux device-tree
+implementation has the check on 'length', the memory block won't be
+added if it's zero.
+
+Documentation/devicetree/bindings/numa.txt has more details about
+the required device-tree NUMA properties.
+
+I'm not sure about memory hotplug. I tried memory hot add and it seems
+working finely. Memory hot-add/remove are working without issues:
+
+/home/gavin/sandbox/qemu.main/build/qemu-system-aarch64 \
+-accel kvm -machine virt,gic-version=host               \
+-cpu host -smp 4,sockets=2,cores=2,threads=1            \
+-m 4096M,slots=16,maxmem=64G                            \
+-object memory-backend-ram,id=mem0,size=2048M           \
+-object memory-backend-ram,id=mem1,size=2048M           \
+-numa node,nodeid=0,cpus=0-1,memdev=mem0                \
+-numa node,nodeid=1,cpus=2-3,memdev=mem1                \
+-numa node,nodeid=2                                     \
+-numa node,nodeid=3
+    :
+
+Memory hot-add
+===============
+
+# cat /proc/meminfo  | grep MemTotal
+MemTotal:        4027472 kB
+# cat /sys/devices/system/node/node2/meminfo | grep MemTotal
+Node 2 MemTotal:       0 kB
+
+(qemu) object_add memory-backend-ram,id=hp-mem0,size=1G
+(qemu) device_add pc-dimm,id=dimm0,memdev=hp-mem0,node=3
+
+# cat /proc/meminfo  | grep MemTotal
+MemTotal:        5076048 kB
+# cat /sys/devices/system/node/node2/meminfo | grep MemTotal
+Node 2 MemTotal: 1048576 kB
+
+Memory hot-remove
+=================
+
+(qemu) device_del dimm0
+(qemu) object_del hp-mem0
+
+# cat /proc/meminfo  | grep MemTotal
+MemTotal:        4027472 kB
+# cat /sys/devices/system/node/node2/meminfo | grep MemTotal
+cat: can't open '/sys/devices/system/node/node2/meminfo': No such file or directory
+
+After this point, the memory can be added again without issues with
+"object_add" and "device_add". So it sounds reasonable to remove
+the empty NUMA node during memory hot-remove.
+
+Thanks,
+Gavin
 

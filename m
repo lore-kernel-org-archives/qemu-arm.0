@@ -1,94 +1,97 @@
-Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp1412130lfg;
-        Fri, 25 Jun 2021 04:19:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxPYB/KmDO0vtmxWlhJywV/uqznkrRFCsoolTfTDrHTnCAXrWx4TMkUw24L9zRbL6KJ+C55
-X-Received: by 2002:ac5:cf08:: with SMTP id y8mr7114394vke.2.1624619949359;
-        Fri, 25 Jun 2021 04:19:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1624619949; cv=none;
+Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp1412158lfg;
+        Fri, 25 Jun 2021 04:19:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwjCu9+vvkRL1hA/AnIwbTHxs6cjeKPSXpam+9QTQF2NJEfUVxyBbfukK7QFnCeixKjynrn
+X-Received: by 2002:a1f:3a4a:: with SMTP id h71mr7075487vka.20.1624619951075;
+        Fri, 25 Jun 2021 04:19:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1624619951; cv=none;
         d=google.com; s=arc-20160816;
-        b=LN8g0Zb5AqPedh6HTSpApCJncx8sE7J/htZV9n1nunVj4McmNu1INYz6RA1nhPl91G
-         xUacEiONu9tQ005U90fvMjNGwYPGtsWfES5V7LUo7kvdGISgaYhwpfjVveA60gi2BSCb
-         i1NdJl4ANKhWETqNfzdt1VwHw5X8Jwh8OLLORSqgeA8oHGVdP/d8EQOIklgqSV/cXFlT
-         ztU2vL7Hw9R2r4wYYVUBho+ACNlmP2YWXqbxxWBjkA4Agm2toLKg/ra5/SoQNlGVs2EH
-         3qkMFScXZBq5C/x2srMVWlscX/iA/ISJo5Vn/Pwo4QDLjr6SwNet4v7ISa45Ucrhk6I4
-         n1cQ==
+        b=QbwITA3vc8YJoM1VwleCyyKIhcODy9pdczr8/n9ILpHPdnMrTLebeeEhOAOnc61ygw
+         XyRG4I7VPGJCPJMpW3bEXqbXsj2kNYJ6nQQBYRILD5p+4c/5tOFN1NYeyXxtB4devlk8
+         xn6wC+/JJg61NHKn454tHDPY2kJrWVM0oRYrCOv3h2et2Kbg1pff41ZsE5bGWihk9GEm
+         FwTF9C1tAF5q2ahKuZ/+AsNF+629PySDzISoamIXvkRav4uiLFEF+FBUCC1nBa4VMQ2m
+         VRvd/U+05/RrdofBiBYb7kdkhMKsFHlO00IJvT4KVFfb+G6jM65KB7DPIimezhsanOGU
+         GYxQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=gtdORX/Lc1UAm+r9wIb6v8yFJiA3dxGeuTUthAA5zdg=;
-        b=xFxu6bcrkl8WRmfTW5bIptN5OgnaLroYiEwnqUdwOZ79/RE/YcRcN8E8zprQ9Us/V6
-         UTnyCb2jedo47u1sepJxo2TX9WPJdo2EVccIZTRjK3Q+V+hJPPu7n2roAFltMFpCMH1g
-         AB019EC09cfvPU7fURWTTUuLBL4eKoGDHvKdaURGpltzNr7LE7fKDTNhfYUtZ7smQylD
-         g+0E7nguMPEZiwGZB5N7BABrlyouqzCzqh8YOJT8rfYXQCSlKrtpysx4VBtTENawMGQq
-         P8IVd/UPVb34QOtnUq1GO8oY/X9NIMGul+xklaILaasfMsTP75uBf5JjwZMshWDZldZ7
-         wsxg==
+         :list-unsubscribe:list-id:precedence:references:in-reply-to
+         :message-id:date:subject:to:from:dkim-signature;
+        bh=72EAHzjgI7n9esbIxOKx7xfZpD41wmTxY05X8fNraEE=;
+        b=CnyzmGvEZvPN1Xz7VR3xfKOB1KbbOxe/RO9yTuo+g0h+tvhVq9rHgS9A/5TPuqlihL
+         98AoaDNnDVDm2tdYXsYc28GWCzwzo+gdRHA5aMzrmxmWqIre75LBXBLaFruo67Cy0cqN
+         GsMOL1YiupUd83aemXmLb8kjO0kn96H4e6hvSmUJkF9jsDpwGNT8eK53EcyB9dZFa51R
+         KfG3K3fF/cSWLXAYCbEq6KHHKEE6bx/hnn0rb/4D1I/LNIk7HdPVdqtitqBSK64Mwn/h
+         ueIWD7oYBEhtnIx7fJ8fY6Oy9sDEZpxZkIBvKF4qj5Cz4xb79HtPHDlXFJgBrG1pz4AK
+         9Z3Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DF74QdlO;
+       dkim=pass header.i=@linaro.org header.s=google header.b=BS0i51QG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d11si4321413vsj.69.2021.06.25.04.19.08
+        by mx.google.com with ESMTPS id 7si4717936vsv.123.2021.06.25.04.19.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 25 Jun 2021 04:19:09 -0700 (PDT)
+        Fri, 25 Jun 2021 04:19:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DF74QdlO;
+       dkim=pass header.i=@linaro.org header.s=google header.b=BS0i51QG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56090 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56150 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lwjrY-0007d5-C7
-	for alex.bennee@linaro.org; Fri, 25 Jun 2021 07:19:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48136)
+	id 1lwjra-0007fc-Bm
+	for alex.bennee@linaro.org; Fri, 25 Jun 2021 07:19:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48186)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <maxim.uvarov@linaro.org>)
- id 1lwjrO-0007ce-QL
- for qemu-arm@nongnu.org; Fri, 25 Jun 2021 07:18:58 -0400
-Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c]:46768)
+ id 1lwjrP-0007cv-Ui
+ for qemu-arm@nongnu.org; Fri, 25 Jun 2021 07:18:59 -0400
+Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d]:38845)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <maxim.uvarov@linaro.org>)
- id 1lwjrM-0004Uy-Vh
- for qemu-arm@nongnu.org; Fri, 25 Jun 2021 07:18:58 -0400
-Received: by mail-lj1-x22c.google.com with SMTP id q4so3622853ljp.13
- for <qemu-arm@nongnu.org>; Fri, 25 Jun 2021 04:18:55 -0700 (PDT)
+ id 1lwjrN-0004W0-Dc
+ for qemu-arm@nongnu.org; Fri, 25 Jun 2021 07:18:59 -0400
+Received: by mail-lj1-x22d.google.com with SMTP id x20so5244072ljc.5
+ for <qemu-arm@nongnu.org>; Fri, 25 Jun 2021 04:18:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id;
- bh=gtdORX/Lc1UAm+r9wIb6v8yFJiA3dxGeuTUthAA5zdg=;
- b=DF74QdlOlGF7Qhq5F7Xee72l7r5TUM05JjtTFsPQE2Qak4TRJit5dE12li8MIZiewM
- iwMtrvL4Dh+4PVjdI+xOmR8v0xMO2BBmr8ImcslORZ9ITk21ACLyJztdC2rSbSAxqkiB
- on7uld/Z9GpuIp813NFE97o45mvrqj8wcEiD9Hs89KUUFn3m2IJZ8DYtovHmwguy8SxM
- csvkxruuIjoKC+VIazy2AIBIzyib9gEqUkC2z4JKgpQY2fwPhFU0hb9n0KnSmq+yD7L9
- wohngJTdh+FL6lu1AiLpLlXyibvNHKCXQOUkcVJ2BU2fm0wxoxbn5bA0y1E3bpu+rl5T
- kwaQ==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references;
+ bh=72EAHzjgI7n9esbIxOKx7xfZpD41wmTxY05X8fNraEE=;
+ b=BS0i51QGphBB7lAKKvSacnw0beS4Yp1wepo2Ec0vsYwt013aBIs93AOUQY76eP2tlI
+ Z3rysiwTV8Nz0630W5GcwrlaXf0xRwYNumdMgYr+/O5lTVJjCFRVnGY11gfa0x5x9QoL
+ UUyM4kUGcjMLHcYeCyhyNYScoFvqSWy9Amn+zaDDGMUgSN9D5x7VUm4pCqE8Bv/9iS/G
+ DbbH7YycLmxdYyc2RsS1pTOarJtrtz4HAzImGS7bYwL9NCROzGgIdyvyHxQQe9IVoujr
+ j6lL01abans+LpGkfqyrk4Pd5pqiUvnYZeg/TY8aRE6JtWW2vQyPZQSQ86778Qt8goPp
+ +w0w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=gtdORX/Lc1UAm+r9wIb6v8yFJiA3dxGeuTUthAA5zdg=;
- b=EYoejE2TFFY7xXeo+FXqsus2k7oTNp+0AHhzkmKjCUolc8cKZzjUntKXxPeFsbW/ZD
- Is57YeaknlEA9sRWkyKSapSCLjplMYz2U1/8HOM1ACbcIixZRRNwVQIrOkM0HWlJ/Vpu
- 13uYrESvT0FxcixwY6yKtQnpKEn2NML8RjI02Qc3X0vUmqO1v+kFFzW/wTObBBNLA6R+
- /krNl11qOmFz6ZaEQWartrXUyEmQ3b2KwSJ9di5kQGQK3tdzScr38z3Oz0H3OllDovby
- b5Z9EGXQI4JtRC43SpGjxh22KTRSCr6iVoLFfsmZyK8eocqATo6B/oFHpPfr1AQ6HaXb
- b0bw==
-X-Gm-Message-State: AOAM533Lo/+eXmJI4HR+4gS8m+OCRA0dYZTx8psCZOnr7EUVsrr33cgj
- i58p1sbbrItqRkrzTCgp1Qv8ag==
-X-Received: by 2002:a2e:6c1a:: with SMTP id h26mr8004059ljc.34.1624619934333; 
- Fri, 25 Jun 2021 04:18:54 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references;
+ bh=72EAHzjgI7n9esbIxOKx7xfZpD41wmTxY05X8fNraEE=;
+ b=tziuFotYogzMvPSSLNnqmE1gFS/BXbERovKdsQgGH8V6spFAxsQH0bX2VkXRNYeoeL
+ 3Eg4/UknyBj+btxwFzpbhcTTWzzvmtRoA+98YOpJDnFFX8uksHS0lDcijKHo27NgczDQ
+ 07TjCpyT2iqsVQlx/zT6QeV1auGswajuFz9Hal8BaEPZIDR893vR0mncIezLDuBHkvpb
+ Im+U/8Tyszvvdt8dYCOvUfmaP2u9NIdCNc+E1Og309V5gEto9gWtUEDYZy6BxRhiugwa
+ vhH1LF00155/hYWmN5P0iQBb8NHu04Gci8+UiUrACl/7AzKqmIQdWql+G4cJkGwPoMyX
+ m3FQ==
+X-Gm-Message-State: AOAM532cI9RsJ/hBTVijTSjkNMy1a2glnM2bHQP1cv53dQ4zScbIi8Mj
+ BGqwyIKFK1QLVOi6juLGS/zDXg==
+X-Received: by 2002:a2e:3619:: with SMTP id d25mr7614924lja.439.1624619935974; 
+ Fri, 25 Jun 2021 04:18:55 -0700 (PDT)
 Received: from localhost.localdomain ([91.193.178.173])
- by smtp.gmail.com with ESMTPSA id p19sm536354lfd.70.2021.06.25.04.18.53
+ by smtp.gmail.com with ESMTPSA id p19sm536354lfd.70.2021.06.25.04.18.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 25 Jun 2021 04:18:53 -0700 (PDT)
+ Fri, 25 Jun 2021 04:18:55 -0700 (PDT)
 From: Maxim Uvarov <maxim.uvarov@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 0/2] arm/virt: fix machine poweroff
-Date: Fri, 25 Jun 2021 14:18:40 +0300
-Message-Id: <20210625111842.3790-1-maxim.uvarov@linaro.org>
+Subject: [PATCH 1/2] arm/virt: fix irq mapping for gpio_pwr
+Date: Fri, 25 Jun 2021 14:18:41 +0300
+Message-Id: <20210625111842.3790-2-maxim.uvarov@linaro.org>
 X-Mailer: git-send-email 2.17.1
-Received-SPF: pass client-ip=2a00:1450:4864:20::22c;
- envelope-from=maxim.uvarov@linaro.org; helo=mail-lj1-x22c.google.com
+In-Reply-To: <20210625111842.3790-1-maxim.uvarov@linaro.org>
+References: <20210625111842.3790-1-maxim.uvarov@linaro.org>
+Received-SPF: pass client-ip=2a00:1450:4864:20::22d;
+ envelope-from=maxim.uvarov@linaro.org; helo=mail-lj1-x22d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -112,20 +115,31 @@ Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org,
  Maxim Uvarov <maxim.uvarov@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: m7KTnGOSkb8k
+X-TUID: JOKt8+goTXZ4
 
-Tested against the latest ecba223da6215d6f6ce2d343b70b2e9a19bfb90b
-and ATF code. Patches fix 'reboot' and 'poweroff' commands issued
-from linux.
+Fix irq mapping for virt machine reboot and shutdown
+interrupts triggered from ATF code.
 
-Maxim Uvarov (2):
-  arm/virt: fix irq mapping for gpio_pwr
-  gpio_pwr: use shutdown function for reboot
+Signed-off-by: Maxim Uvarov <maxim.uvarov@linaro.org>
+---
+ hw/arm/virt.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
- hw/arm/virt.c      | 4 ++--
- hw/gpio/gpio_pwr.c | 2 +-
- 2 files changed, 3 insertions(+), 3 deletions(-)
-
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 4b96f06014..d83f4ebdd3 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -846,8 +846,8 @@ static void create_gpio_keys(char *fdt, DeviceState *pl061_dev,
+                            "gpios", phandle, 3, 0);
+ }
+ 
+-#define SECURE_GPIO_POWEROFF 0
+-#define SECURE_GPIO_RESET    1
++#define SECURE_GPIO_POWEROFF 1
++#define SECURE_GPIO_RESET    2
+ 
+ static void create_secure_gpio_pwr(char *fdt, DeviceState *pl061_dev,
+                                    uint32_t phandle)
 -- 
 2.17.1
 

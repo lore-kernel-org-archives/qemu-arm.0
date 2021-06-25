@@ -1,99 +1,102 @@
-Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp3923441lfg;
-        Mon, 28 Jun 2021 04:53:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzceH+tbFRnErQtBuVUWYgpP19WDePS6jYAq41Ev+QaXWd1bXEm/2s90gI9YfIEGpJNyaGc
-X-Received: by 2002:a67:fa4a:: with SMTP id j10mr4202943vsq.13.1624881204101;
-        Mon, 28 Jun 2021 04:53:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1624881204; cv=none;
+Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp1439625lfg;
+        Fri, 25 Jun 2021 04:58:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyq6r3pmrZiAOljfO5rxWW/3/eFWm/zrewnwaWxKac3SkjsznGb+HAMDk6DswVPkdwxZOJZ
+X-Received: by 2002:a37:454a:: with SMTP id s71mr11006015qka.88.1624622283196;
+        Fri, 25 Jun 2021 04:58:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1624622283; cv=none;
         d=google.com; s=arc-20160816;
-        b=tbLDbnafFXgVuRf+ozvo6Wod/lyskACAWaO8vIiVqsI4aRZv1vpfsvO1y/1jDFvb2r
-         p91nVqVMKbEAKEvMtS6K6i0ektg46s1Uu6Scsmf+LI8vgzQw/LDH4YzKE68psrHf+ClY
-         kIsfOoLG5PrcbdfRqj92G+bNeCr3LlPBZ028pFR4LwxigofCprLN2kYxVuoJxYeR445G
-         BHgK1b3MzNnkkat9tLp/6WVZ1TTZP+PPImpO++wBzAw7/eibLAZGXKfEi+tRH0k3hAT/
-         tPO/RhIMVe9ug9w/RR8qCVLUV7Al+/TewnLT0Cd1IjmUgPW1DPQuhCqZVNfiVQ/E8ZS/
-         gyjg==
+        b=bXHF7yvd+pHI3MCo1JateEwH87ds2DTmey6A2cEcHhIBdoSSjekuSkUEVl8kUJrYjK
+         ZJGheCa7IkFj9OEMEayFyzdk6oxY7PX0pXLbSuCE7Q+Q8h7YM+W8cRImFNunEfNtwkbH
+         CRIQkno5WULpEkwtrBfkd5i7jddlu5lyAXhnif7yaIYtBWnMhDCr8FmLnOFGvyO8RB89
+         oraMX6Wv/jEFmOtTZ4xdwtFzfExPhgpHIfU9pj2pWS2gLDYtGo2J0rMEwfyCqhesXMVr
+         wHDWBLlpt0o52W4kI61TJL6EkhZpExuN7MlxErWCYzHzDVufflwhFFkId5v9SaYt1TCj
+         JHOw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=BA+Mv0gELpOhcx4Nxndhb6n3GYc3jgCBGYfxy6yg2wk=;
-        b=dxyZBaA4RpzBLr7obmwMYHi13mgrUBzxS9A96fcRnE3y2t4igwLLINe0NZuNqL9NgF
-         6nE7au6cFGmJVy8J0cF3NwLBi2WaNvSfg7MLACNcjwCDa5Jb9G0RutvKNWM5rFH9usK3
-         o5xlBTv3MtPDKEHZVzx9zncllMeI3hvH8Yi2jVJd27bsog07OxkBnToW5N73zQFIUlpe
-         I7lv0ltKmGMXa/zNUyNILfQDlWzZcpqp3yywN2add+uVV4332ZxndKECzoxhHq9OFaO9
-         Ga2UTL4qA6Q5smR/xsX0CDmuEbeBFHWP3GtL2r2vDWj7kGmdq+T5nnanW2SZI6YY+fBQ
-         Gjqw==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=o0kJ2o5ve40Q+LEaLQfjI3pVB91S8+tSBhZeiIUy454=;
+        b=hQ0+lwQjYOdaN/LHiL32Y71pVxGC70TnbeVLgpY7GV3OYeWqiCHdB0JjHie8Zb4QWU
+         OUnYzCOb0ydIZzN/J/bKIamCemoLiqhgAibT5AUuXSfwrkGmkPYXXODF5muTTlMPTnjr
+         t1urx6aT71mZpWA6IOlQBlicafiHLSxVGCTfsRKNHHkNakn7i14Iex3w2/8FllyFlMRc
+         ecE2RB1x6QRWCc14owLy0Cjo10Uu4YKV36zv3i5NzKCxi5tyMRxXZjL9OxajXWzKnxSW
+         W9iVwhWght5dO8kCjw5xr8KoBb7WIy0hlKjtS3KwNkvs9XL8cy+IRoeJT2ANgUeuiCq4
+         KujA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=kUsVBelK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k68si9109934vsk.231.2021.06.28.04.53.23
+        by mx.google.com with ESMTPS id u3si4853135qtg.242.2021.06.25.04.58.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 28 Jun 2021 04:53:24 -0700 (PDT)
+        Fri, 25 Jun 2021 04:58:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=kUsVBelK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:42492 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:53570 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lxppL-0008Tx-Df
-	for alex.bennee@linaro.org; Mon, 28 Jun 2021 07:53:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47932)
+	id 1lwkTC-0001s4-J8
+	for alex.bennee@linaro.org; Fri, 25 Jun 2021 07:58:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57896)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1lxppA-0008TA-M7; Mon, 28 Jun 2021 07:53:12 -0400
-Received: from szxga02-in.huawei.com ([45.249.212.188]:2151)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1lxpp7-0003ff-Lm; Mon, 28 Jun 2021 07:53:12 -0400
-Received: from dggemv711-chm.china.huawei.com (unknown [172.30.72.53])
- by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4GD5W959vPz75C5;
- Mon, 28 Jun 2021 19:49:41 +0800 (CST)
-Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
- dggemv711-chm.china.huawei.com (10.1.198.66) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2176.2; Mon, 28 Jun 2021 19:53:01 +0800
-Received: from [10.174.187.128] (10.174.187.128) by
- dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
- 15.1.2176.2; Mon, 28 Jun 2021 19:53:00 +0800
-Subject: Re: [RFC PATCH v4 0/7] hw/arm/virt: Introduce cpu topology support
-To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>
-References: <20210622093413.13360-1-wangyanan55@huawei.com>
- <YNG44c9KtaiNXT7b@redhat.com> <20210622114634.crjqusw6x6oj4j6v@gator>
- <bc47a66a-b1ff-939c-32a2-94c90efd0caf@huawei.com>
- <YNHalhuNZhMa665J@redhat.com>
- <7fcc5f2d-cc84-3464-15cc-3bebb07f8190@huawei.com>
- <YNHvcQAMLSpVcxaE@redhat.com>
- <CAFEAcA9X9fYAFAux4h2n00kYpTgxkNcJg6Ako7s6ndU4KWTJyQ@mail.gmail.com>
- <YNHzqHMkfSWCHA3i@redhat.com>
- <909af1cb-7e7b-7532-06b5-69cd9487e001@huawei.com>
- <YNmzLTSIQrLPm6TF@redhat.com>
-From: "wangyanan (Y)" <wangyanan55@huawei.com>
-Message-ID: <f4c3693f-8200-2004-f5eb-ed2ddfe62761@huawei.com>
-Date: Mon, 28 Jun 2021 19:53:00 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lwkSn-0001pv-J2
+ for qemu-arm@nongnu.org; Fri, 25 Jun 2021 07:57:40 -0400
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a]:38651)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lwkSl-00074e-Lh
+ for qemu-arm@nongnu.org; Fri, 25 Jun 2021 07:57:37 -0400
+Received: by mail-ed1-x52a.google.com with SMTP id q14so13026894eds.5
+ for <qemu-arm@nongnu.org>; Fri, 25 Jun 2021 04:57:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=o0kJ2o5ve40Q+LEaLQfjI3pVB91S8+tSBhZeiIUy454=;
+ b=kUsVBelKUNBKrAUiutZOAQnagZeP90XxQB+MMspRWK0/6LSgXX3DREvfpAavKmdJmW
+ Lzg5S1MzNiSCesFI75cNvi9aeUJ3cfxrt+bxH1rvkF8D/sp7V0Rvd8Tn5c+Nt1mKuzsy
+ OqBJaOCxTuPRJKNayDrlRVzcvnrbGiIVY8cHy9Y3odJvU3oz7KMl4Tsg+43eBGle7gE0
+ XgUELCtM1eE/+8hwMTQ4TFEGfrYReyB/5mW0vi/jNiFSMYJP79QUxo2JN71bc64o4Cne
+ KCCiSD7/ea+f90f5nXkNTzM0WcYCRhjjXP1T2grWO+Mu9Gl1etcooP7rGpgzO6+CkDnk
+ eJbg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=o0kJ2o5ve40Q+LEaLQfjI3pVB91S8+tSBhZeiIUy454=;
+ b=FfpWOmryECJ0GHsoHXKdJeU6lzw8IEJyqOW/EetelaJiSjEnalLfumpsn2IKTgOBA8
+ 3Dlq+qgdjaQUEuusDkG6x/GSSLyAoc4nrRyWC8Nvlzp8UNZpurbsTPFkiwOJwjSqL23g
+ nGYqfV6qcdIoZC1AEICHCubiN/4jOtkNaTZQrlIC/djSpFumxo3yaqates8S7Vnikpl5
+ 3h8tbcoRL/YvLIqO9kwhqwdykXkmhxmr1ebLFOQqHmHKsYsfovIel/boOVvZDGDGmlwY
+ v+NvbKV6eTMQshJKNq4zSzkWi20QxUFdcSmRbJV9xVhUy/DCsAH1p2l6dtFawGqf8cjo
+ IfvQ==
+X-Gm-Message-State: AOAM532RNbDnhjmo9qdUIjr/e0yXlxYTtD5zh0h9f/FVx9S4pGgwN2WT
+ 6XLCFQqH/OORN1S5CuYHgHNvpAbZGATG/8JBU/XJTA==
+X-Received: by 2002:aa7:c857:: with SMTP id g23mr13790595edt.100.1624622253738; 
+ Fri, 25 Jun 2021 04:57:33 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <YNmzLTSIQrLPm6TF@redhat.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-X-Originating-IP: [10.174.187.128]
-X-ClientProxiedBy: dggeme720-chm.china.huawei.com (10.1.199.116) To
- dggpemm500023.china.huawei.com (7.185.36.83)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.188;
- envelope-from=wangyanan55@huawei.com; helo=szxga02-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20210625111842.3790-1-maxim.uvarov@linaro.org>
+ <20210625111842.3790-3-maxim.uvarov@linaro.org>
+In-Reply-To: <20210625111842.3790-3-maxim.uvarov@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 25 Jun 2021 12:56:57 +0100
+Message-ID: <CAFEAcA9K642UHLF5D5wzS0sN8fVurcs4-TN0x6EaT=xBRB0Fkg@mail.gmail.com>
+Subject: Re: [PATCH 2/2] gpio_pwr: use shutdown function for reboot
+To: Maxim Uvarov <maxim.uvarov@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -106,56 +109,35 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Barry Song <song.bao.hua@hisilicon.com>,
- Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
- "Michael S . Tsirkin" <mst@redhat.com>, wanghaibin.wang@huawei.com, QEMU
- Developers <qemu-devel@nongnu.org>, yangyicong@huawei.com,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- Alistair Francis <alistair.francis@wdc.com>,
- "Zengtao \(B\)" <prime.zeng@hisilicon.com>,
- Igor Mammedov <imammedo@redhat.com>, Zenghui Yu <yuzenghui@huawei.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Keqian Zhu <zhukeqian1@huawei.com>,
- David Gibson <david@gibson.dropbear.id.au>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hlp8VC8P+oli
+X-TUID: uf6NR4/Bztnp
 
-
-On 2021/6/28 19:31, Daniel P. Berrangé wrote:
-> On Mon, Jun 28, 2021 at 07:14:02PM +0800, wangyanan (Y) wrote:
->> Hi Daniel,
->>
->> On 2021/6/22 22:28, Daniel P. Berrangé wrote:
->>> On Tue, Jun 22, 2021 at 03:15:18PM +0100, Peter Maydell wrote:
->>>> On Tue, 22 Jun 2021 at 15:11, Daniel P. Berrangé <berrange@redhat.com> wrote:
->>>>> The QEMU man page says this explicitly
->>>>>
->>>>>                    For the PC target, the number of cores per die, the
->>>>>       number of threads per cores, the number of dies per packages and the
->>>>>       total number of sockets can be specified. Missing values will be
->>>>>       computed. If any on the three values is given, the total number of
->>>>>       CPUs n can be omitted.
->>>> Anybody feel like submitting a patch to fix the typo? Should read
->>>> "If any of"...
->>> Actually looking at the broader text for -smp, the whole thing just needs
->>> to be rewritten from scratch IMHO. I'll send a patch....
->> Do you have any plan to rewrite the -smp text in qemu-options.hx recently?
->>
->> I suggest that we explain in more detail how the missing values will
->> be computed, so that qemu users can have a clear image of what a
->> -smp parameter collection would be parsed out if they are using an
->> incomplete cmdline and have read the man page.
->>
->> Also if we all agree to prefer cores over sockets for all arches since
->> machine type 6.2, I'll be glad to add this change for the man page
->> and update the parsing helpers in next version of this patch series.
-> I wrote a docs update on friday, which I've just sent out as a short
-> patch series with yourself CC'd.  I wrote it such that we can easily
-> update it again, if we want to prefer cores over sockets.
+On Fri, 25 Jun 2021 at 12:18, Maxim Uvarov <maxim.uvarov@linaro.org> wrote:
 >
-Great, thanks. I'm going to have a look.
+> qemu has 2 type of functions: shutdown and reboot. Shutdown
+> function has to be used for machine shutdown.
+>
+> Signed-off-by: Maxim Uvarov <maxim.uvarov@linaro.org>
+> ---
+>  hw/gpio/gpio_pwr.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/hw/gpio/gpio_pwr.c b/hw/gpio/gpio_pwr.c
+> index 7714fa0dc4..dbaf1c70c8 100644
+> --- a/hw/gpio/gpio_pwr.c
+> +++ b/hw/gpio/gpio_pwr.c
+> @@ -43,7 +43,7 @@ static void gpio_pwr_reset(void *opaque, int n, int level)
+>  static void gpio_pwr_shutdown(void *opaque, int n, int level)
+>  {
+>      if (level) {
+> -        qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+> +        qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+>      }
+>  }
 
-Thanks,
-Yanan
-.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
+thanks
+-- PMM

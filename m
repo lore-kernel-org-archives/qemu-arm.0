@@ -1,285 +1,145 @@
-Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp1948954lfg;
-        Fri, 25 Jun 2021 16:04:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzXvJUJ2p+MhBaCB+F1fdhaGP5iS3horl/7AyRJNi6gY78YAtP5ll7lAiaYB4v3lXNOKmcs
-X-Received: by 2002:a17:906:9bd5:: with SMTP id de21mr13140464ejc.554.1624662241753;
-        Fri, 25 Jun 2021 16:04:01 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1624662241; cv=pass;
+Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp2057723lfg;
+        Fri, 25 Jun 2021 19:18:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw3qf50ixnzfz9vbid+jLG8xJ/t7L5P0cROctMghzu6Rq5zQplXLeNW8uGMct3gU3Gs1jTd
+X-Received: by 2002:a05:6214:17d2:: with SMTP id cu18mr14400749qvb.48.1624673922854;
+        Fri, 25 Jun 2021 19:18:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1624673922; cv=none;
         d=google.com; s=arc-20160816;
-        b=rt3TVUpg+jokLvUOekpbucBcdHh/M0jFVG/YGJKNjpvFyMlD7p5bA5qw2K+qCUHki2
-         L8pUkMr9tJ/ffFrJvqMtKmcNeZfUGXR/GIrMA5p3YjSRBUCMMkpn0qYpBixbna3gB9kw
-         rJwm9ImxqbhCJzXbbTIpRzzhunZQLMbSZqAyDPyixLnPBxiNCOnsn4+LGrHgxW/DSMLu
-         Y4gkdE9lU+TyBAe0gCs7LvXa2odkzTHPLoRdeGixknNFq0bFa60ZqraklLW5JeAUZz3c
-         uN2EXVcF4no1GM1kUCXFKIHMcKlw0r0Bt5yk2AlR4Cf6YD1LpFsQPq4P9Kbs2GM+Ougb
-         Z0oA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=rBCVROj43FVhCVUMuEyVlfLuzBIeLN1Z5ZhhpUzR6NFo7vNIq3BNr8PodUfIFCRxdu
+         IoayVJyTSfq2M3n42xpcD9vR/y7EWPsOnqOdWVBroAToh/jUMUEDnlowW5R72rXV5bKC
+         R5t7l6B4FdnbXgxL1K2L+lIa3O+nRWQeP7EXxSYqZmqR75PNKMP0igI/aDOBCXBOf93I
+         IZ0TbBb/XsRkUjwmfAx0NU0zJMklhv+M2R0W9dQzSzKZ3l6p715OzkzDAC5zRRcEcoB7
+         62I7xBoXdGPjaPeRmmTx64+fHy2G2juoB4I0zR3AlsdL7Yppr/Ebd3sgXXLU+gicsFBc
+         XKkA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :in-reply-to:message-id:date:subject:to:from:dkim-signature;
-        bh=zn/8Izsc15Bp2MGTWyDZMXyNYEWGNbw2NY7Qan/L6Dg=;
-        b=zY+st6vMnd/bOkxv5K7auCAJdR1RXEwo6wXzhy7nCDGypAtNSAQ5Ik1XNJ0HbMLZgL
-         AX/NPur/+ObbneELrAhv0PND44GLpNTHmiS3QDDa0nTO62Ul3Nj8x6A0F6a5Na3LruX0
-         GMGAK/ZlEGA1q2E8wFBfR+yt57E3nwS7tt9qa3Zn4GEFPb1z1pC4dbP5YuvKIySpNDFS
-         hxeOVuTdQ6PFEHSJ2zYApH78fC5v3hbqCR336lnXBky2mk3+/Co5Yuc7n4tquxcgWM+z
-         Ez9zX3LuGTbItR5uPluhQCbXzBPh3fvuOX8Bq5wRwPrxuwEj7OUiUCdXE4YHGpYMD1va
-         sQGQ==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=DrppKmwM;
-       arc=pass (i=1 spf=pass spfdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=xilinx.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=adTq5jNGvDtdlxJZ0jo/X2Y0G9eh94VT3vNbiTzlDqQ=;
+        b=fTP6VwRnRCY/TegYYeot2CM/UWUoAXe+UcV0mF1U26ZJPaP3phjLCE29B7TTq/AHU/
+         LnLxMvJ6C2aSAIqqHawBp7Fr1Fn4hyWp9OXPE/qWnGrKXR1f6lihhrtmuKcZeIkSZucl
+         Xk1/n3Sa49mJGf1DtFGPMEt1fAkBNG+tD6GZ8cHyNZj0X9K1OeUKEThPEJl54ZJcyeKH
+         eKqm2QIoaSAmN7/vp69ABrdrMu1TL2N5a10dk13E4LdXgmnbBDdLhnjvQSLIJ+8MoVg4
+         8Wdr1iE4nW+XjN4YYLPcaLeuBUub2pq7ihXZEjxsyZ7MLsp9VIBzRTbhSS7g+mbI4cRY
+         Pb7g==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ml2crYcF;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id de28si7451461ejc.136.2021.06.25.16.04.01
+        by mx.google.com with ESMTPS id v21si3286143qtw.349.2021.06.25.19.18.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 25 Jun 2021 16:04:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 25 Jun 2021 19:18:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=DrppKmwM;
-       arc=pass (i=1 spf=pass spfdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=xilinx.com
-Received: from localhost ([::1]:52340 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=ml2crYcF;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:41650 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lwurg-0000zW-P3
-	for alex.bennee@linaro.org; Fri, 25 Jun 2021 19:04:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45500)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lwxu6-0007vE-5t
+	for alex.bennee@linaro.org; Fri, 25 Jun 2021 22:18:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33686)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <komlodi@xilinx.com>)
- id 1lwuqk-00085G-SV; Fri, 25 Jun 2021 19:03:02 -0400
-Received: from mail-bn8nam12on2067.outbound.protection.outlook.com
- ([40.107.237.67]:64704 helo=NAM12-BN8-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <komlodi@xilinx.com>)
- id 1lwuqh-0001BR-FV; Fri, 25 Jun 2021 19:03:02 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=cNzVFdGIVh1TMIgygOhj4w9qO5pRfYiBcCRNoDK9/RberbrMaiEYCcNZ0I5q8/PlKPDdEoGwEGRzOn7OXBVBmUGOcs9Y39bzgWOJf/j2lcEcIECdsjFUe13bxHT2m9K9A+NWkQFwHDBfgMd2b+or0U8HkIgdz93QQ7/irPBA2moj4dUpLBzSxp7H2AwOBfx/FEQNYdxPCR9a3djcIcZc36qTwvNmM9bZj5urZ+l0g5JuEZohr7RjzddO9OhKGAuX12KiOPH/GWDCA3aSnQDtdT2KgGqvjqN48CgKwNSpfZrbmy6k9/Ema6skt2F9JPtibuWd//QAyL2mdB4prYQajw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=zn/8Izsc15Bp2MGTWyDZMXyNYEWGNbw2NY7Qan/L6Dg=;
- b=bPpBIBaUjsfkMDtM3KeuELMuNeWKfWFh7061p/8e/cDQzFkTrOOBYgYHoYmADK8X0DpG20WLx//JAcuQ1I5uk9gMe5EPmyb/Ymw7pPero3lKOr8Xo07sn8WK+9iTvivYlnFE0B7ZYayIQkYvpAG8RF3HbLXMoXkTCU7bwqjG9VG6tkVLAOHxKU+dDuHQ/1HsNoX57q1s/prXldewKyuJkH498fsE3sZ2BEjPWCPXqze5QL5caS7CiguYt6bsdjPpisBz544EnRefXsz19zh9G5nc4Nzi5o4afbT87kg7HLZi9rBBg6IUvOMbm4eGD3k+SXnotzgaOmrKSanj9GZcKQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 149.199.62.198) smtp.rcpttodomain=nongnu.org smtp.mailfrom=xilinx.com;
- dmarc=pass (p=none sp=none pct=100) action=none header.from=xilinx.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=zn/8Izsc15Bp2MGTWyDZMXyNYEWGNbw2NY7Qan/L6Dg=;
- b=DrppKmwMwMB1NwcqLpk8ufku9Ytxm9PKXSEHaKpJvLNyzB/9WPuUrhFb05NMuYFQ/5tAvXCmAv8DcVziZp+wU8orh2FFNrr9wGN4iWaPtTvFpCj79oVc/Ya34JGfUXZeRXmZg9DcTJ0Qg1g1cZwoTw7rGK3k00m5PZsBP3kUD7A=
-Received: from BN6PR13CA0006.namprd13.prod.outlook.com (2603:10b6:404:10a::16)
- by DM5PR02MB3655.namprd02.prod.outlook.com (2603:10b6:4:af::16) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4264.18; Fri, 25 Jun
- 2021 23:02:56 +0000
-Received: from BN1NAM02FT010.eop-nam02.prod.protection.outlook.com
- (2603:10b6:404:10a:cafe::2c) by BN6PR13CA0006.outlook.office365.com
- (2603:10b6:404:10a::16) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4287.8 via Frontend
- Transport; Fri, 25 Jun 2021 23:02:55 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 149.199.62.198)
- smtp.mailfrom=xilinx.com; nongnu.org; dkim=none (message not signed)
- header.d=none;nongnu.org; dmarc=pass action=none header.from=xilinx.com;
-Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
- 149.199.62.198 as permitted sender) receiver=protection.outlook.com;
- client-ip=149.199.62.198; helo=xsj-pvapexch01.xlnx.xilinx.com;
-Received: from xsj-pvapexch01.xlnx.xilinx.com (149.199.62.198) by
- BN1NAM02FT010.mail.protection.outlook.com (10.13.2.128) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.4264.18 via Frontend Transport; Fri, 25 Jun 2021 23:02:55 +0000
-Received: from xsj-pvapexch02.xlnx.xilinx.com (172.19.86.41) by
- xsj-pvapexch01.xlnx.xilinx.com (172.19.86.40) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2176.2; Fri, 25 Jun 2021 16:02:54 -0700
-Received: from smtp.xilinx.com (172.19.127.96) by
- xsj-pvapexch02.xlnx.xilinx.com (172.19.86.41) with Microsoft SMTP Server id
- 15.1.2176.2 via Frontend Transport; Fri, 25 Jun 2021 16:02:54 -0700
-Received: from [172.19.2.32] (port=34046 helo=xsjkomlodi50.xilinx.com)
- by smtp.xilinx.com with esmtp (Exim 4.90)
- (envelope-from <joe.komlodi@xilinx.com>)
- id 1lwuqc-0007uv-TL; Fri, 25 Jun 2021 16:02:54 -0700
-From: Joe Komlodi <joe.komlodi@xilinx.com>
-To: <qemu-devel@nongnu.org>
-Subject: [PATCH 1/1] target/arm: Check NaN mode before silencing NaN
-Date: Fri, 25 Jun 2021 16:02:54 -0700
-Message-ID: <1624662174-175828-2-git-send-email-joe.komlodi@xilinx.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1624662174-175828-1-git-send-email-joe.komlodi@xilinx.com>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1lwxtx-0007uR-Bt
+ for qemu-arm@nongnu.org; Fri, 25 Jun 2021 22:18:33 -0400
+Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032]:55106)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1lwxtu-0001yr-Rc
+ for qemu-arm@nongnu.org; Fri, 25 Jun 2021 22:18:33 -0400
+Received: by mail-pj1-x1032.google.com with SMTP id g24so6464606pji.4
+ for <qemu-arm@nongnu.org>; Fri, 25 Jun 2021 19:18:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=adTq5jNGvDtdlxJZ0jo/X2Y0G9eh94VT3vNbiTzlDqQ=;
+ b=ml2crYcFngrPmqZAajCUjXEnakbeAd37mweOz0RP0ooJ9Lkr9G/jE/JkU3Z7HN+Gpo
+ dR6F/bwWl0AEjC/vtLa2aRTq3mqxAUeEBcq1xEhUJn9Cku+O0Jp3xwLH7C+d8ONw76Dh
+ 5T3cumZbG8VXOXBSb029wXL+BZkncyMdLXMiimHtwtOhhm/n5HQ1DzvFtgEWOm+xdWih
+ UzDe5mXs+0ithYDPZLq7ygv1MYmQtFIVGzbY78VNWtyf5tkYZuSB2HkTl6zGrQlRgdxs
+ 7JXkHLeSU9thtHtLBrqEMcdplNgLYOhmYpyYKDx0bmEB69FqRobPfl7fiXYq0nFLUVHl
+ u0iQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=adTq5jNGvDtdlxJZ0jo/X2Y0G9eh94VT3vNbiTzlDqQ=;
+ b=bm/7Red6ieDdVC9vkRIMFhdhacU0tVUKUZvZZzOqADw3+0Hu062aecI08p2JiC79sw
+ g7sTO5mwk9TgkPw/A8TwFUn3Ps6208uo1h60H1cEXq8Gn8BLPKJncJ4BdsIUGK554LmN
+ xGQ1YEMYSjBc4hPkh1nMKvISFcNyYAuGCnQQ8ERMp4UK4MKlWyTd4RNyLJC+mXq+w/uP
+ nDuSIf1IwAacgDFwQy4uIQXrjwMCnJDLf059EEvv6fdyfNBrpnT7YWHku0q+LSSCUqfR
+ tEtILYAOIB6o7ybdOx60CL9yuZLC3BhHsZ0G77XVWyCxChnUS893zqK0LkRrGJMvURRm
+ ZFrg==
+X-Gm-Message-State: AOAM531Ut6QzpqrZ1qsRIHGyCHfwI1DzCQFlRnNZ0Wqh9rQu30I9dvdG
+ PZvzTHslooj48HPPGulNA/bxMNGy60d2mg==
+X-Received: by 2002:a17:90a:9411:: with SMTP id
+ r17mr14271032pjo.49.1624673909182; 
+ Fri, 25 Jun 2021 19:18:29 -0700 (PDT)
+Received: from [192.168.1.11] ([71.212.149.176])
+ by smtp.gmail.com with ESMTPSA id y4sm6508498pfc.15.2021.06.25.19.18.28
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 25 Jun 2021 19:18:28 -0700 (PDT)
+Subject: Re: [PATCH 1/1] target/arm: Check NaN mode before silencing NaN
+To: Joe Komlodi <joe.komlodi@xilinx.com>, qemu-devel@nongnu.org
 References: <1624662174-175828-1-git-send-email-joe.komlodi@xilinx.com>
+ <1624662174-175828-2-git-send-email-joe.komlodi@xilinx.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <99a806cf-8c54-a504-c51b-bd094a2773b3@linaro.org>
+Date: Fri, 25 Jun 2021 19:18:27 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 3c3d3f03-5896-4ef0-d8e3-08d9382d5e7c
-X-MS-TrafficTypeDiagnostic: DM5PR02MB3655:
-X-Microsoft-Antispam-PRVS: <DM5PR02MB365517A46918A0383ACF1AA5D0069@DM5PR02MB3655.namprd02.prod.outlook.com>
-X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
-X-MS-Oob-TLC-OOBClassifiers: OLM:105;
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: EI2MVrwQSrnD9DyRhLPQ4RMuiXms/WqK2rPDMVL1GgZ9NSaDJsf/hA26GH/ID5Bj7sRKPZjERSH8cFSreFCItf1GFbC4AN1pgdVrQABcfkkhefVjlb3/gnpzZy7pMSbyoSpdOxyy8+f8o12r4GjQW0j85QzCe9qnXp/ZI1fRvIOpv4/yqaabkIBuj8toTc+IDu72yzB3SkgWgsvKu2vi9migGkJcSAjrXzQKKccIP7VFSQrB4noWYAAaRfaZ/sMuoqcyYc5QIJrAjPP4qohQ8CJmS0o6+Z/Vfu8iDbMCMhyxqeXHas91Hn3AQUdX2DV9bQRimef3Sro1tLCuaY8VoiSTI+bcl6KKxsvFwD6sQSeN+ctH61yjSQhT2L1iSbWt/NKrzUK+CA6wI/shuz8qJ8cX/zyYrqWa1tUuGjTRcxsG0ZeICE1KLvo3VFQedoTRmiy81f2jAjQ+VL3+WQ43twGoJ2X7/xVnOrYL1z7Yhhy+/oKMwxo3coYDwzgWxWrLLG1b6WPwX3fN43nr8Kro5ejd5G7OWgn7EbRMardvdmjSnWfwWkSN6lCmPsHGK8Xg75TY9/Tii6GFJGOCUCOR9RHdUVeRoL/s3izp8bPS2Bcu/PMMEzkgDl/8H+6VWDwTt6dusbTGx35v/cPGl78VmAZGW027HdF7U3YQyzpXv9NFtZljJ28IMslAkgchqlyx
-X-Forefront-Antispam-Report: CIP:149.199.62.198; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:xsj-pvapexch01.xlnx.xilinx.com;
- PTR:unknown-62-198.xilinx.com; CAT:NONE;
- SFS:(4636009)(39860400002)(396003)(136003)(346002)(376002)(46966006)(36840700001)(4326008)(36906005)(450100002)(44832011)(336012)(316002)(83380400001)(82310400003)(47076005)(2616005)(8676002)(2906002)(426003)(82740400003)(86362001)(70586007)(7696005)(478600001)(36756003)(6916009)(5660300002)(7636003)(9786002)(36860700001)(26005)(70206006)(8936002)(356005)(186003)(102446001);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Jun 2021 23:02:55.8020 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3c3d3f03-5896-4ef0-d8e3-08d9382d5e7c
-X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.62.198];
- Helo=[xsj-pvapexch01.xlnx.xilinx.com]
-X-MS-Exchange-CrossTenant-AuthSource: BN1NAM02FT010.eop-nam02.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM5PR02MB3655
-Received-SPF: pass client-ip=40.107.237.67; envelope-from=komlodi@xilinx.com;
- helo=NAM12-BN8-obe.outbound.protection.outlook.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <1624662174-175828-2-git-send-email-joe.komlodi@xilinx.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1032;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1032.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: g8ghzRRD7QgJ
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 5ilOIFMx3cpg
 
-If the CPU is running in default NaN mode (FPCR.DN == 1) and we execute
-FRSQRTE, FRECPE, or FRECPX with a signaling NaN, parts_silence_nan_frac() will
-assert due to fpst->default_nan_mode being set.
+On 6/25/21 4:02 PM, Joe Komlodi wrote:
+> If the CPU is running in default NaN mode (FPCR.DN == 1) and we execute
+> FRSQRTE, FRECPE, or FRECPX with a signaling NaN, parts_silence_nan_frac() will
+> assert due to fpst->default_nan_mode being set.
+> 
+> To avoid this, we check to see what NaN mode we're running in before we call
+> floatxx_silence_nan().
+> 
+> Signed-off-by: Joe Komlodi<joe.komlodi@xilinx.com>
+> ---
+>   target/arm/helper-a64.c | 12 +++++++++---
+>   target/arm/vfp_helper.c | 24 ++++++++++++++++++------
+>   2 files changed, 27 insertions(+), 9 deletions(-)
 
-To avoid this, we check to see what NaN mode we're running in before we call
-floatxx_silence_nan().
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Signed-off-by: Joe Komlodi <joe.komlodi@xilinx.com>
----
- target/arm/helper-a64.c | 12 +++++++++---
- target/arm/vfp_helper.c | 24 ++++++++++++++++++------
- 2 files changed, 27 insertions(+), 9 deletions(-)
-
-diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
-index 9cc3b06..ac5c445 100644
---- a/target/arm/helper-a64.c
-+++ b/target/arm/helper-a64.c
-@@ -365,7 +365,9 @@ uint32_t HELPER(frecpx_f16)(uint32_t a, void *fpstp)
-         float16 nan = a;
-         if (float16_is_signaling_nan(a, fpst)) {
-             float_raise(float_flag_invalid, fpst);
--            nan = float16_silence_nan(a, fpst);
-+            if (!fpst->default_nan_mode) {
-+                nan = float16_silence_nan(a, fpst);
-+            }
-         }
-         if (fpst->default_nan_mode) {
-             nan = float16_default_nan(fpst);
-@@ -396,7 +398,9 @@ float32 HELPER(frecpx_f32)(float32 a, void *fpstp)
-         float32 nan = a;
-         if (float32_is_signaling_nan(a, fpst)) {
-             float_raise(float_flag_invalid, fpst);
--            nan = float32_silence_nan(a, fpst);
-+            if (!fpst->default_nan_mode) {
-+                nan = float32_silence_nan(a, fpst);
-+            }
-         }
-         if (fpst->default_nan_mode) {
-             nan = float32_default_nan(fpst);
-@@ -427,7 +431,9 @@ float64 HELPER(frecpx_f64)(float64 a, void *fpstp)
-         float64 nan = a;
-         if (float64_is_signaling_nan(a, fpst)) {
-             float_raise(float_flag_invalid, fpst);
--            nan = float64_silence_nan(a, fpst);
-+            if (!fpst->default_nan_mode) {
-+                nan = float64_silence_nan(a, fpst);
-+            }
-         }
-         if (fpst->default_nan_mode) {
-             nan = float64_default_nan(fpst);
-diff --git a/target/arm/vfp_helper.c b/target/arm/vfp_helper.c
-index 8a71660..24e3d82 100644
---- a/target/arm/vfp_helper.c
-+++ b/target/arm/vfp_helper.c
-@@ -671,7 +671,9 @@ uint32_t HELPER(recpe_f16)(uint32_t input, void *fpstp)
-         float16 nan = f16;
-         if (float16_is_signaling_nan(f16, fpst)) {
-             float_raise(float_flag_invalid, fpst);
--            nan = float16_silence_nan(f16, fpst);
-+            if (!fpst->default_nan_mode) {
-+                nan = float16_silence_nan(f16, fpst);
-+            }
-         }
-         if (fpst->default_nan_mode) {
-             nan =  float16_default_nan(fpst);
-@@ -719,7 +721,9 @@ float32 HELPER(recpe_f32)(float32 input, void *fpstp)
-         float32 nan = f32;
-         if (float32_is_signaling_nan(f32, fpst)) {
-             float_raise(float_flag_invalid, fpst);
--            nan = float32_silence_nan(f32, fpst);
-+            if (!fpst->default_nan_mode) {
-+                nan = float32_silence_nan(f32, fpst);
-+            }
-         }
-         if (fpst->default_nan_mode) {
-             nan =  float32_default_nan(fpst);
-@@ -767,7 +771,9 @@ float64 HELPER(recpe_f64)(float64 input, void *fpstp)
-         float64 nan = f64;
-         if (float64_is_signaling_nan(f64, fpst)) {
-             float_raise(float_flag_invalid, fpst);
--            nan = float64_silence_nan(f64, fpst);
-+            if (!fpst->default_nan_mode) {
-+                nan = float64_silence_nan(f64, fpst);
-+            }
-         }
-         if (fpst->default_nan_mode) {
-             nan =  float64_default_nan(fpst);
-@@ -866,7 +872,9 @@ uint32_t HELPER(rsqrte_f16)(uint32_t input, void *fpstp)
-         float16 nan = f16;
-         if (float16_is_signaling_nan(f16, s)) {
-             float_raise(float_flag_invalid, s);
--            nan = float16_silence_nan(f16, s);
-+            if (!s->default_nan_mode) {
-+                nan = float16_silence_nan(f16, fpstp);
-+            }
-         }
-         if (s->default_nan_mode) {
-             nan =  float16_default_nan(s);
-@@ -910,7 +918,9 @@ float32 HELPER(rsqrte_f32)(float32 input, void *fpstp)
-         float32 nan = f32;
-         if (float32_is_signaling_nan(f32, s)) {
-             float_raise(float_flag_invalid, s);
--            nan = float32_silence_nan(f32, s);
-+            if (!s->default_nan_mode) {
-+                nan = float32_silence_nan(f32, fpstp);
-+            }
-         }
-         if (s->default_nan_mode) {
-             nan =  float32_default_nan(s);
-@@ -953,7 +963,9 @@ float64 HELPER(rsqrte_f64)(float64 input, void *fpstp)
-         float64 nan = f64;
-         if (float64_is_signaling_nan(f64, s)) {
-             float_raise(float_flag_invalid, s);
--            nan = float64_silence_nan(f64, s);
-+            if (!s->default_nan_mode) {
-+                nan = float64_silence_nan(f64, fpstp);
-+            }
-         }
-         if (s->default_nan_mode) {
-             nan =  float64_default_nan(s);
--- 
-2.7.4
-
+r~

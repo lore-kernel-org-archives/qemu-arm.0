@@ -1,186 +1,164 @@
-Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp1948942lfg;
-        Fri, 25 Jun 2021 16:04:00 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwaUJGOdZwGjDyfDuIVrSaJwtDrQ1lz7lovNlAysCO+kAkt44bA497FbT+TMUijYQc80tzU
-X-Received: by 2002:a05:6402:2687:: with SMTP id w7mr18063591edd.98.1624662240188;
-        Fri, 25 Jun 2021 16:04:00 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1624662240; cv=pass;
+Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp3423957lfg;
+        Sun, 27 Jun 2021 14:08:12 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw/WxdevGYzndEs8Z7jRY27cJG3yhwcBMSYULAmHaljzN/bYFE9shEARyH4PNPIaNzn10C7
+X-Received: by 2002:a25:e756:: with SMTP id e83mr6052431ybh.133.1624828091843;
+        Sun, 27 Jun 2021 14:08:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1624828091; cv=none;
         d=google.com; s=arc-20160816;
-        b=jwsbCxN6jnAYDBJpE+2M5mHksKCKomDXEHX1w8EorKQBDJBRwSq22rB+EMHts2uaKO
-         H7ciQK/hCeD06b9fOE2fw+nwShHGPMo8i8wNZYXaLuPVZaO/JVPwbTCErTiDJC1j4MAO
-         qZENhUPRNfi9fuhebQKpVDwbg0qxg0J67FHkoulV3VE5Gun0AkTNaSiQqVacuI1V0zcR
-         jmpXwPil9aXIKMjbCg2M4TNtIsM0XcxqcPjzAGHIKKpSgvj7RaCQ/M8Wyof8WIJkg81R
-         6aHfUapPOxFITJji3rjXVj6AanP/Cqf/dV0yiGHMSQNabE3aBJrek8wY/odH+WH1zYWy
-         HX2g==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=yKM+f316Uoq4Qcq6JOwuvdEWHheseACzobFRvIN0dpGnBgaPZ8lpypP7j0eLQsXGxZ
+         cxQDeTCgHLIxa/9pVjYS2xnQbrTpb/coj//wha8rq64X3KmLW9OeKXgDVo1jIX7OosqE
+         SJF60/SyHvohM1Bofu0eadBhhZxFlV959vAo+GmiDHGFcrvPEKZlEe6QcsFpX+CvJ9DP
+         zHVpSZxeO2B7/rna3uoVPoWat9hklapVHP4lm0arAyPihjFeJ/0Mv1H5KN+jyOe8hAOi
+         7SavP32U2bg7XId1CrWP3Qb/D0Qn+uY+frMiJfgY0EYHMXJ6GDo/sJYwYk4pft7YCZRb
+         nrsA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
-         :subject:to:from:dkim-signature;
-        bh=P8h+d0HHEtpxpZjF77aVSpH02pviQmmF3fhxuPCQStE=;
-        b=If3fmDZbYmssYqSXzMyn+odF6X5EB4raCqJHoL1XRv+gWmUNHsi7PvsIeRAGQKS1Hv
-         +NnWbUUVAbKHNcTJ2yvJEp2kgCRKGeOKss2nLw3SJ6zn9v81+R11FPYoTRVCwGWVy1lw
-         KtWM+aR4ojvbXJHFdiAEedJB5b/o8ZqEgZ0lmgoUr8+qQ3htYX1BwYWlU/JXH1qSyYMH
-         ew6Wuqpaij4fpaPYkcQ6tm61P4Scv2g9wkPZBLOaTSa/alafrjq6y8IKcm+tedqDPd6B
-         rBwq+JHc3rmrZWEUA+axtAvtK2JNAO6WDJhCsa5V7q+/SnilF9NDpAwHlI/BvpM55JGH
-         pKaQ==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=IFSTXGms;
-       arc=pass (i=1 spf=pass spfdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=xilinx.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=JV5N+ro085GwY8awWsWaPXLebrDB6e5a0RmnxZUnf+g=;
+        b=ysbONyuCuYhRWFihHdsd6wayNsvkjQUybKbh8Po5Pj7jNWPrt5gUjxly7AL9VWbR1K
+         YpHfw8q68VENM0hOCSLp+a0KtyFSkmvudqyo7OALpbkM9mkVss6xQx9K5J7Sve5kmCG+
+         RgatL9uznjsqwIhjtAibDGAqwQDqXGelCLVxz5C5Mv3JoFqr8TRCC6BJwhzic8MphhbJ
+         64oEsClm/nvq9ATXej/G9RktitSX9GE7Ha1Yc9YXS53fUNXna4LYmcCdEcn4C+PbGMvf
+         +gR54YL3eMD4c3+GgqM+yft2q9BWxouySvO0a5eMltNGJXyYq+rzKOmNi0JbSEn+L1Bk
+         s2Vw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v2si7297737edr.109.2021.06.25.16.03.59
+        by mx.google.com with ESMTPS id s8si1701259ybp.129.2021.06.27.14.08.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 25 Jun 2021 16:04:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 27 Jun 2021 14:08:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=IFSTXGms;
-       arc=pass (i=1 spf=pass spfdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=xilinx.com
-Received: from localhost ([::1]:52286 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:57320 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lwurf-0000xQ-0o
-	for alex.bennee@linaro.org; Fri, 25 Jun 2021 19:03:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45522)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lxc0h-00020n-84
+	for alex.bennee@linaro.org; Sun, 27 Jun 2021 17:08:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38292)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <komlodi@xilinx.com>)
- id 1lwuqm-00085T-8E; Fri, 25 Jun 2021 19:03:05 -0400
-Received: from mail-bn8nam11on2042.outbound.protection.outlook.com
- ([40.107.236.42]:12974 helo=NAM11-BN8-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <komlodi@xilinx.com>)
- id 1lwuqh-0001Bt-Po; Fri, 25 Jun 2021 19:03:04 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Fzwsvb1gK6MJfUHDR5uEDsJiisiOiQUB8OASuj8PT5xrHU3UKkxEm/jBo5R78amsQkiEjhQ3ABO1ds+Kg3dN+U7oHXIxJVwNN0ik/cUfW0DaK4eeFJ4ZECUmxPLnWMBl/RWgcrCkn828wTZavEvLdkbwXGDLJ77nYib95GWqojHg17UbSf1ijR9aHbJIcV4LdAmrMmT7U/yz0BHxyai/vCn8/3RtjLMgyKN02/WEnv0ID+a1oRcQbI2wTZQ+QHA95OpFecJKcy5njJT2cN1ZIa7R9HJz5TpV8qsky/M3vgJ4vEHsTvObf/E43CbXYjINXUD+iKfiyCHOllZIMXzegw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=P8h+d0HHEtpxpZjF77aVSpH02pviQmmF3fhxuPCQStE=;
- b=B4a/gC/JdqOe4l2m538WO9SWdjdkdWVmM7Te1fscu96fsD1Bs0Dy9TZzP73pXTkiBUJgikwgifKSqJEn5Cc8ISHu+PW2Hg6rd6tmrhTXKpk0DGjwuH8F5ppt/fiSxMlc4rctYz7raxaNt0IAhFNpGByXVWrUDOxCS1GT1wpk3JBzjhwK9X+hvE8KHybM840csr809Ox0TaSdOuOFlb8LbpXC/q07GD2YnCQ88CSp4UZ15EDdNdaR7kvi6NJnE1lcJg5sPKOWwYwTBUHsY/oZWr0569W1L3h4w5O4FlxWxt8XvlnluWajb3dw56bD76oVvF7imY351XHonGBlKB7sgA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 149.199.62.198) smtp.rcpttodomain=nongnu.org smtp.mailfrom=xilinx.com;
- dmarc=pass (p=none sp=none pct=100) action=none header.from=xilinx.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=P8h+d0HHEtpxpZjF77aVSpH02pviQmmF3fhxuPCQStE=;
- b=IFSTXGmsbGGc3WtL/aymWUGBUhw5MF9bIK9M7m8zUfDiscqf0SdoLBYDTfpPUuIyiEnR7XomNdHDl301Z4QFc6HwznJETuc6J+q0DByBETsRcSbPsUiuvDYn33u8sA9FRZN+w01rPuZ0+HmtCHmAcCzgH+F9meIAsSRcCW2dkM0=
-Received: from BN9PR03CA0296.namprd03.prod.outlook.com (2603:10b6:408:f5::31)
- by BYAPR02MB5429.namprd02.prod.outlook.com (2603:10b6:a03:99::31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4264.18; Fri, 25 Jun
- 2021 23:02:56 +0000
-Received: from BN1NAM02FT033.eop-nam02.prod.protection.outlook.com
- (2603:10b6:408:f5:cafe::cf) by BN9PR03CA0296.outlook.office365.com
- (2603:10b6:408:f5::31) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4264.20 via Frontend
- Transport; Fri, 25 Jun 2021 23:02:55 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 149.199.62.198)
- smtp.mailfrom=xilinx.com; nongnu.org; dkim=none (message not signed)
- header.d=none;nongnu.org; dmarc=pass action=none header.from=xilinx.com;
-Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
- 149.199.62.198 as permitted sender) receiver=protection.outlook.com;
- client-ip=149.199.62.198; helo=xsj-pvapexch02.xlnx.xilinx.com;
-Received: from xsj-pvapexch02.xlnx.xilinx.com (149.199.62.198) by
- BN1NAM02FT033.mail.protection.outlook.com (10.13.3.186) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.4264.18 via Frontend Transport; Fri, 25 Jun 2021 23:02:55 +0000
-Received: from xsj-pvapexch02.xlnx.xilinx.com (172.19.86.41) by
- xsj-pvapexch02.xlnx.xilinx.com (172.19.86.41) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2176.2; Fri, 25 Jun 2021 16:02:54 -0700
-Received: from smtp.xilinx.com (172.19.127.96) by
- xsj-pvapexch02.xlnx.xilinx.com (172.19.86.41) with Microsoft SMTP Server id
- 15.1.2176.2 via Frontend Transport; Fri, 25 Jun 2021 16:02:54 -0700
-Received: from [172.19.2.32] (port=34046 helo=xsjkomlodi50.xilinx.com)
- by smtp.xilinx.com with esmtp (Exim 4.90)
- (envelope-from <joe.komlodi@xilinx.com>)
- id 1lwuqc-0007uv-SG; Fri, 25 Jun 2021 16:02:54 -0700
-From: Joe Komlodi <joe.komlodi@xilinx.com>
-To: <qemu-devel@nongnu.org>
-Subject: [PATCH 0/1] target/arm: Check NaN mode before silencing NaN
-Date: Fri, 25 Jun 2021 16:02:53 -0700
-Message-ID: <1624662174-175828-1-git-send-email-joe.komlodi@xilinx.com>
-X-Mailer: git-send-email 2.7.4
+ (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
+ id 1lxc0X-00020b-4f; Sun, 27 Jun 2021 17:08:01 -0400
+Received: from mail.csgraf.de ([85.25.223.15]:32998 helo=zulu616.server4you.de)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <agraf@csgraf.de>)
+ id 1lxc0U-0002Jz-JE; Sun, 27 Jun 2021 17:08:00 -0400
+Received: from MacBook-Air.alex.local
+ (dynamic-077-002-101-004.77.2.pool.telefonica.de [77.2.101.4])
+ by csgraf.de (Postfix) with ESMTPSA id AF34960801CD;
+ Sun, 27 Jun 2021 23:07:55 +0200 (CEST)
+Subject: Re: [PATCH v8 19/19] hvf: arm: Handle Windows 10 SMC call
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20210519202253.76782-1-agraf@csgraf.de>
+ <20210519202253.76782-20-agraf@csgraf.de>
+ <CAFEAcA880Kgb5GtKEQQpnD=fAwfm1Cs1Sjfc4L5S0ETkjm-CWA@mail.gmail.com>
+From: Alexander Graf <agraf@csgraf.de>
+Message-ID: <ee7df565-7b43-f1b3-aee7-de67167acf4c@csgraf.de>
+Date: Sun, 27 Jun 2021 23:07:55 +0200
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0)
+ Gecko/20100101 Thunderbird/78.11.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: dc7911fb-5e0c-40d3-8311-08d9382d5e66
-X-MS-TrafficTypeDiagnostic: BYAPR02MB5429:
-X-Microsoft-Antispam-PRVS: <BYAPR02MB54296EEB0983E3F4A7C023EBD0069@BYAPR02MB5429.namprd02.prod.outlook.com>
-X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
-X-MS-Oob-TLC-OOBClassifiers: OLM:8882;
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 9XIf45fIHn9kZXXuT3t5J1EMVOjCA0k2jqPrWgg5+qEZ1PdKz9pK4lxaK5qQuDguePXLPbQdLLB0OhHJ422Ofl44OQpiXAYpJK5WF5VYAjIB7S/+9VrDgbeUsJuWZuEkgWLkcW+1UdxqO2+qKxbhrrOXhcnknBtQuDdnmazwKzZM13Fi5DxBH3soAc5pTZ1jRN/Jqh+mcbCvraWhRt2vCK+gNt63/9VtGGWmy56B5g13l7cZXZen9ojUEPOk7k3PmObZ0T7o3kfEPUKTGm4yaHR22IC6ENUp2/8bQ7B+mGpHtJfp/MCPEA9NP/cq5RkIU06dqExDDWRBlOnvWLPlM5q88udD0EGiRc3pgC26dxJ7Zx+SQMPBE3HTlJNO62cUOjSoRayVfeOoCaRMicaEDhF1TChRYaYaCrR5edo8L8YF/dh/Ve9iDMjiv9zFOONQcbbGK4jl3qNejeNePQorPnJnCTJUKVBth0WOdVXAC2jwzo8dF5CQlRTJamH25fKXMdcTvqkDlexGAwrm96xgf/m7creiRIcsAuXf54Xj7JnZM8b84yXDY2Y+UqJfD14a4gFzPRqLL5W5YSnKe600Z+PhC2LONhSl7MifyVqgvfqJ4ns5yUUUC/xDLtv1G3epZ4Q8nZ1sQMaUCC9dgCcttck9xKDqyNCiSrdyCSF2oteLR/ywLq7V2SBizwkJsX6/
-X-Forefront-Antispam-Report: CIP:149.199.62.198; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:xsj-pvapexch02.xlnx.xilinx.com;
- PTR:unknown-62-198.xilinx.com; CAT:NONE;
- SFS:(4636009)(39860400002)(376002)(136003)(396003)(346002)(46966006)(36840700001)(6916009)(8676002)(478600001)(426003)(356005)(2616005)(8936002)(83380400001)(82740400003)(2906002)(9786002)(7636003)(26005)(450100002)(44832011)(4326008)(82310400003)(36860700001)(4744005)(186003)(7696005)(70206006)(336012)(316002)(36756003)(36906005)(70586007)(86362001)(5660300002)(47076005)(102446001);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Jun 2021 23:02:55.6566 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: dc7911fb-5e0c-40d3-8311-08d9382d5e66
-X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.62.198];
- Helo=[xsj-pvapexch02.xlnx.xilinx.com]
-X-MS-Exchange-CrossTenant-AuthSource: BN1NAM02FT033.eop-nam02.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR02MB5429
-Received-SPF: pass client-ip=40.107.236.42; envelope-from=komlodi@xilinx.com;
- helo=NAM11-BN8-obe.outbound.protection.outlook.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <CAFEAcA880Kgb5GtKEQQpnD=fAwfm1Cs1Sjfc4L5S0ETkjm-CWA@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+Received-SPF: pass client-ip=85.25.223.15; envelope-from=agraf@csgraf.de;
+ helo=zulu616.server4you.de
+X-Spam_score_int: -36
+X-Spam_score: -3.7
+X-Spam_bar: ---
+X-Spam_report: (-3.7 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.765,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kUvUqIdwCDyf
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Eduardo Habkost <ehabkost@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, Cameron Esfahani <dirty@apple.com>,
+ Roman Bolshakov <r.bolshakov@yadro.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Frank Yang <lfy@google.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Peter Collingbourne <pcc@google.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: KwnQ0v2U4Vqa
 
-Hi all,
 
-This fixes an assertion that occurs when executing FRSQRTE, FRECPE, or FRECPX
-on a signaling NaN when the CPU has default NaN mode enabled.
+On 15.06.21 11:31, Peter Maydell wrote:
+> On Wed, 19 May 2021 at 21:23, Alexander Graf <agraf@csgraf.de> wrote:
+>> Windows 10 calls an SMCCC call via SMC unconditionally on boot. It lives
+>> in the trusted application call number space, but its purpose is unknown.
+>>
+>> In our current SMC implementation, we inject a UDEF for unknown SMC calls,
+>> including this one. However, Windows breaks on boot when we do this. Instead,
+>> let's return an error code.
+>>
+>> With this patch applied I can successfully boot the current Windows 10
+>> Insider Preview in HVF.
+>>
+>> Signed-off-by: Alexander Graf <agraf@csgraf.de>
+>>
+>> ---
+>>
+>> v7 -> v8:
+>>
+>>   - fix checkpatch
+>> ---
+>>  target/arm/hvf/hvf.c | 4 ++++
+>>  1 file changed, 4 insertions(+)
+>>
+>> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+>> index 65c33e2a14..be670af578 100644
+>> --- a/target/arm/hvf/hvf.c
+>> +++ b/target/arm/hvf/hvf.c
+>> @@ -931,6 +931,10 @@ int hvf_vcpu_exec(CPUState *cpu)
+>>          cpu_synchronize_state(cpu);
+>>          if (!hvf_handle_psci_call(cpu)) {
+>>              advance_pc = true;
+>> +        } else if (env->xregs[0] == QEMU_SMCCC_TC_WINDOWS10_BOOT) {
+>> +            /* This special SMC is called by Windows 10 on boot. Return error */
+>> +            env->xregs[0] = -1;
+>> +            advance_pc = true;
+>>          } else {
+>>              trace_hvf_unknown_smc(env->xregs[0]);
+>>              hvf_raise_exception(env, EXCP_UDEF, syn_uncategorized());
+> Where can I find documentation on what this SMC call is and what
+> it's supposed to do ?
 
-When attempting to silence the NaN, we hit an assertion that ensures that the
-CPU FPU status does not have default_nan_mode set.
 
-To avoid this, we check if default_nan_mode is set before trying to silence the
-NaN.
-What happens then is the instruction sets any flags because of the signaling
-NaN, then gets the default NaN value due to default_nan_mode being set.
+It's 0xc3000001 which according to the SMCCC spec [1] means OR'ed values
+of the following:
 
-Thanks!
-Joe
+0x80000000 = Fast Call
+0x40000000 = SMC64
+0x03000000 = OEM Service Calls
+0x00000001 = Function number 1
 
-Joe Komlodi (1):
-  target/arm: Check NaN mode before silencing NaN
+So, uh. I'm not sure how to answer the question above. I don't have
+source level access to Windows to read what the call is supposed to do
+:). But it's definitely calling something OEM specific that it really
+shouldn't be callling.
 
- target/arm/helper-a64.c | 12 +++++++++---
- target/arm/vfp_helper.c | 24 ++++++++++++++++++------
- 2 files changed, 27 insertions(+), 9 deletions(-)
+Reading the SMCCC spec section 5.2, unknown SMCCC calls should return
+-1. It advises against probing by just calling them, but does not
+specify any other fault behavior than the -1 return (such as the #UDEF
+we inject in TCG).
 
--- 
-2.7.4
+
+Alex
+
+[1] https://developer.arm.com/documentation/den0028/latest
 

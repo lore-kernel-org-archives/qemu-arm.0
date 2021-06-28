@@ -1,97 +1,120 @@
-Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp3871808lfg;
-        Mon, 28 Jun 2021 03:48:33 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxaghfpOf2vveHft4kt7yVkU8ltAvpNA+5hIXOBrUlJVJsZ1oo/f0mRFwInP5WmNnz8ia9f
-X-Received: by 2002:a5b:288:: with SMTP id x8mr28980558ybl.333.1624877313273;
-        Mon, 28 Jun 2021 03:48:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1624877313; cv=none;
+Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp3645937lfg;
+        Sun, 27 Jun 2021 21:33:37 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzbHvEuB1x3nUz9v1291dyX+ScF8PtV5/2RsJJt8kY9+XScnak3lCQE2EqpGq1lvCiEVXe3
+X-Received: by 2002:a05:622a:c6:: with SMTP id p6mr20747404qtw.99.1624854816924;
+        Sun, 27 Jun 2021 21:33:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1624854816; cv=none;
         d=google.com; s=arc-20160816;
-        b=UCjg+BqZP9HzdNocvFdYV3xzpGQDRMOT5ODFDK9CA5WROmHIyyyE5DHRhgB7ZAJufL
-         Qn9J3QlF2ZkQQnlJK88n95NsjWhic2EhQuWqTLcEnGjTX7J0WIKydPitOJdGux2+vGIP
-         N28wk3vpTTMidpsC27e/iF/KQl6QiZPj3avQw9Ri7QaBuvV2/45cUl3RUmOM15mx2gnw
-         w2FYDWJOWSRibDfuWwTRtXXllpk7zn/lB5qL8IUc/BkMtxcR8YUeO4AflBDwA6UohBhx
-         ubb2iX6SO2V+rx2FXU5Wd6wo0832h41bLPCcqWOdcVt0ssRCUJJOYaeX9v+UrSi2jjDy
-         UAvQ==
+        b=TvoawMuft6mzUVv5Kjz0p9ZlMlDt0GIIHzE+vhS4VL0TlbSJrL98Hc2ktLGYwJCsD3
+         wcfc+R7Dke4F4Zgjhqc26VMBo2j/6uaaxo1KiTXpDEQH+3DR4NKjmv7BpEJAupQVfKP8
+         68mMnMDt2fNe9XNhbMjANKsWVGwIHpTdu13kuAb81is9Ot9TIVBTeWpNEdq+vUtUViQA
+         lHFdUFQabjJy5kP3IeY5Zvyk6W3OQLJZlADHMRvglaiDp5dSyJdCB09+n2EetwlQx59d
+         uADf8yX+Lk5qPYH0+NHHQFeZFs7B1jypFZpOgKZ8ErVidAqZi8b1lYalbo2mFDWkBmfp
+         t5zg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=9m9ETT3EeUkWK0Pkr60H2aT/7qNaWvL4KMjdC4TaqCM=;
-        b=lao7By5xGPhmtZ9QUta2QUOaoG2aVdPH0cN8uVHGZ5uAKnRysJvIPpHikWCgp8sf59
-         tP++suS8eokhXgeuVAYlQ161jnrWAJYQzSzft7ISSU7P92Z41rkrnGLVw2jKHxeMTYVS
-         yn2j0MST9S5BbULvk6BtQt7SFHU92RggKLJ7PoBVHe+vZeJhWwOlTG87UsohnlyOwzPt
-         aFdGMSy8aEefE2S9stJoySW3UeAOmPIKDlRfoFQjRjekkLsOWUMyYSQN4ojOPc0G0pSE
-         kFKKpUj8jFHFBv+IzHLZQ7XWNxjOQglzYYC3wO/vttPs0c8/4ByeN9vH8jzPyAl5Dtm5
-         382A==
+         :list-unsubscribe:list-id:precedence:subject:to:from:date:references
+         :in-reply-to:message-id:mime-version:user-agent:dkim-signature
+         :dkim-signature;
+        bh=vRXBHPbfYTlmgvRozwLM16bg6nHo6wz51TXIjdwDpNU=;
+        b=r+3NS4BSYgfkcMmcwx6fEvjPmfLfLrr+fZ47eKpC8Q4eyZLmUboEykzDgsxB71z8s+
+         ckUeLH74QXn3AczLusTZLj9bKsOtYu2tSKDjLCoXVbazdJ+HVp5glTTCjHOmw/d/4HYc
+         epWh9QXGDrb+swUQEpffUWW+bC+eiAiniP0uE+n9IXt5GQBc7+bxHcAil/xn+UGt6CDB
+         dmxmHLmYViz4G6zBfy1kCqQgbLRjAI5DfPSiKxeRJ9PkPj6jAM4W7Mr07OiH/OnxNrqV
+         VMdoGXR/KQC+tKoktGOF/iWnpyxmBQhCEuFC/0ZOGnj71lTkdjr4y3KcLVF66a+/B4Cu
+         Uqzg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+       dkim=fail header.i=@aj.id.au header.s=fm3 header.b=GoNfAeRh;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=KbA6U6tP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c127si15863972yba.286.2021.06.28.03.48.33
+        by mx.google.com with ESMTPS id v10si9970790qkp.68.2021.06.27.21.33.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 28 Jun 2021 03:48:33 -0700 (PDT)
+        Sun, 27 Jun 2021 21:33:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:49552 helo=lists1p.gnu.org)
+       dkim=fail header.i=@aj.id.au header.s=fm3 header.b=GoNfAeRh;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=KbA6U6tP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:49836 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lxooa-0004rN-HR
-	for alex.bennee@linaro.org; Mon, 28 Jun 2021 06:48:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35002)
+	id 1lxixk-0008MA-9l
+	for alex.bennee@linaro.org; Mon, 28 Jun 2021 00:33:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55518)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1lxooR-0004r5-GI; Mon, 28 Jun 2021 06:48:23 -0400
-Received: from szxga01-in.huawei.com ([45.249.212.187]:2428)
+ (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
+ id 1lxixP-0008LT-Nj; Mon, 28 Jun 2021 00:33:17 -0400
+Received: from wout5-smtp.messagingengine.com ([64.147.123.21]:46499)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1lxooN-0001ZZ-RQ; Mon, 28 Jun 2021 06:48:23 -0400
-Received: from dggemv704-chm.china.huawei.com (unknown [172.30.72.53])
- by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4GD44h0D2YzZkgy;
- Mon, 28 Jun 2021 18:45:08 +0800 (CST)
-Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
- dggemv704-chm.china.huawei.com (10.3.19.47) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2176.2; Mon, 28 Jun 2021 18:48:12 +0800
-Received: from [10.174.187.128] (10.174.187.128) by
- dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
- 15.1.2176.2; Mon, 28 Jun 2021 18:48:11 +0800
-Subject: Re: [RFC PATCH v4 0/7] hw/arm/virt: Introduce cpu topology support
-To: Andrew Jones <drjones@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>
-References: <bc47a66a-b1ff-939c-32a2-94c90efd0caf@huawei.com>
- <YNHalhuNZhMa665J@redhat.com>
- <7fcc5f2d-cc84-3464-15cc-3bebb07f8190@huawei.com>
- <YNHvcQAMLSpVcxaE@redhat.com> <20210622142915.pekttdvbi3q5vnh3@gator>
- <20210622174013.52422c73@redhat.com> <YNIacfpt+iHHHzT6@redhat.com>
- <20210622172934.537l7e27sxd6car6@gator> <YNIgInK00yNNI4Dy@redhat.com>
- <d695bc58-f648-38e5-cd98-9d91fcebd80a@huawei.com>
- <20210628085805.5y7bxvqprx75hwi4@gator>
-From: "wangyanan (Y)" <wangyanan55@huawei.com>
-Message-ID: <5c8c0f85-4d4f-61db-b1e8-adaae2b78106@huawei.com>
-Date: Mon, 28 Jun 2021 18:48:11 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
-MIME-Version: 1.0
-In-Reply-To: <20210628085805.5y7bxvqprx75hwi4@gator>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-X-Originating-IP: [10.174.187.128]
-X-ClientProxiedBy: dggeme705-chm.china.huawei.com (10.1.199.101) To
- dggpemm500023.china.huawei.com (7.185.36.83)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.187;
- envelope-from=wangyanan55@huawei.com; helo=szxga01-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
+ id 1lxixM-0004Iu-9O; Mon, 28 Jun 2021 00:33:15 -0400
+Received: from compute2.internal (compute2.nyi.internal [10.202.2.42])
+ by mailout.west.internal (Postfix) with ESMTP id AA3F33200645;
+ Mon, 28 Jun 2021 00:33:07 -0400 (EDT)
+Received: from imap43 ([10.202.2.93])
+ by compute2.internal (MEProxy); Mon, 28 Jun 2021 00:33:08 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=
+ mime-version:message-id:in-reply-to:references:date:from:to:cc
+ :subject:content-type; s=fm3; bh=vRXBHPbfYTlmgvRozwLM16bg6nHo6wz
+ 51TXIjdwDpNU=; b=GoNfAeRhwv6I1+O/+R+/Oc6YtBCZ3KIIkIG/MGXHOkGPlnO
+ 1w8VZWjtl18sDyDvGc0tyEJFgFd/e842/JFK3uPL+YXF6uSlAbTigxIOTREqTp8V
+ jKyhgoI6KeS31cGd9EUkVkGT0PkXlRxMfIa5nQSSsOPb0qSj4gUvVwCJh7TMM8K9
+ 5g29mda4e9h+fKt8mV43jUF77/6e9pJI8RQKwlg/G7O/IBCT44VaymAVpcDSVXZz
+ fW3t66jKm82FjTKbTipY0YFz8MRK5WiTFRYviAVCYxzoA0LhLHv5sUWIfW7pIzwv
+ CFgVqaawOFsZOtTQuv0bEeimfr+vmT0Ot1YAeGQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=vRXBHP
+ bfYTlmgvRozwLM16bg6nHo6wz51TXIjdwDpNU=; b=KbA6U6tPA/ngEFFqUiPeFE
+ tV065M26LtTxnOYNAridJJS5bZE0YkYEjlx0U912iAoOS4mdhqbsOWj3PYv4swFR
+ 6QrDjwv0ev5D/oX4mt1+82Qs1dKFSrnoPykSPksTUjD6ftQA9vkyn8WU7sWoyF1I
+ X+xDZExQEduVx9/TwfHiRsPeQDy0mpJSwWmR7HoOGy3M2B3KblajUX4jeQbKCe21
+ X8bIMcrgmsnaq5NxwgarrMp93l+aPUH2xCg010s2xsIbQqcrr3P9s+b5iZcrBKwt
+ Z/pE/xJtdkIQA5dB26pU89LrqT2kjGegiJyY3ZmNztYaQtt8olMupfa/MAYobbMw
+ ==
+X-ME-Sender: <xms:AlHZYLadWk9ZbvdHgWgmDE97XVQqqyyWuJwKukaamK-thw9qqw0KTA>
+ <xme:AlHZYKbGBLOXIFxQWKvk5Ue7A8NGPWh7l3pDMTYq0wPIM4lb-uLXYA3xPQaZ7sxR9
+ t38auUZJvyPP0bhfg>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduledrfeehfedgkedtucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhepofgfggfkjghffffhvffutgesthdtredtreertdenucfhrhhomhepfdetnhgu
+ rhgvficulfgvfhhfvghrhidfuceorghnughrvgifsegrjhdrihgurdgruheqnecuggftrf
+ grthhtvghrnhephefhfeekgfekudevheffheeihedujeefjeevjeefudfgfeeutdeuvdeh
+ hfevueffnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomh
+ eprghnughrvgifsegrjhdrihgurdgruh
+X-ME-Proxy: <xmx:AlHZYN8Q6o_JEAc15TKfAZoiRDLfPnExXhjAidieCIZNNL1O0m4T8A>
+ <xmx:AlHZYBr1SMYH9umrtJdibXs84Rsf0ZDVwiN3oBnJMRM5Ex2UPGIjOw>
+ <xmx:AlHZYGp8gbXQhnuNZmh8l_PTTFDp7c5Y3Ms5Dr8QYpYF9r_yWKJ6Zg>
+ <xmx:A1HZYJVxBeAPkPlk8qvxaksrMdpIxi0HzNefG0UUBr6fEJhSMlj8NA>
+Received: by mailuser.nyi.internal (Postfix, from userid 501)
+ id B9DA6AC0073; Mon, 28 Jun 2021 00:33:06 -0400 (EDT)
+X-Mailer: MessagingEngine.com Webmail Interface
+User-Agent: Cyrus-JMAP/3.5.0-alpha0-530-gd0c265785f-fm-20210616.002-gd0c26578
+Mime-Version: 1.0
+Message-Id: <aea5f8fe-438b-4c11-96c4-21c7e361778d@www.fastmail.com>
+In-Reply-To: <20210625050643.161042-1-joel@jms.id.au>
+References: <20210625050643.161042-1-joel@jms.id.au>
+Date: Mon, 28 Jun 2021 14:02:45 +0930
+From: "Andrew Jeffery" <andrew@aj.id.au>
+To: "Joel Stanley" <joel@jms.id.au>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ "Peter Maydell" <peter.maydell@linaro.org>
+Subject: Re: [PATCH] arm/aspeed: rainier: Add i2c eeproms and muxes
+Content-Type: text/plain
+Received-SPF: pass client-ip=64.147.123.21; envelope-from=andrew@aj.id.au;
+ helo=wout5-smtp.messagingengine.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -104,214 +127,63 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Barry Song <song.bao.hua@hisilicon.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>,
- qemu-devel@nongnu.org, Shannon Zhao <shannon.zhaosl@gmail.com>,
- Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org,
- Alistair Francis <alistair.francis@wdc.com>, prime.zeng@hisilicon.com,
- yangyicong@huawei.com, yuzenghui@huawei.com, wanghaibin.wang@huawei.com,
- zhukeqian1@huawei.com, David Gibson <david@gibson.dropbear.id.au>
+Cc: Patrick Venture <venture@google.com>, qemu-arm@nongnu.org,
+ Cameron Esfahani via <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FNShvfIJHGr3
+X-TUID: Tn++EgkS0fkV
 
-On 2021/6/28 16:58, Andrew Jones wrote:
-> On Mon, Jun 28, 2021 at 04:43:05PM +0800, wangyanan (Y) wrote:
->> Hi,
->> On 2021/6/23 1:39, Daniel P. Berrangé wrote:
->>> On Tue, Jun 22, 2021 at 07:29:34PM +0200, Andrew Jones wrote:
->>>> On Tue, Jun 22, 2021 at 06:14:25PM +0100, Daniel P. Berrangé wrote:
->>>>> On Tue, Jun 22, 2021 at 05:40:13PM +0200, Igor Mammedov wrote:
->>>>>> On Tue, 22 Jun 2021 16:29:15 +0200
->>>>>> Andrew Jones <drjones@redhat.com> wrote:
->>>>>>
->>>>>>> On Tue, Jun 22, 2021 at 03:10:57PM +0100, Daniel P. Berrangé wrote:
->>>>>>>> On Tue, Jun 22, 2021 at 10:04:52PM +0800, wangyanan (Y) wrote:
->>>>>>>>> Hi Daniel,
->>>>>>>>>
->>>>>>>>> On 2021/6/22 20:41, Daniel P. Berrangé wrote:
->>>>>>>>>> On Tue, Jun 22, 2021 at 08:31:22PM +0800, wangyanan (Y) wrote:
->>>>>>>>>>> On 2021/6/22 19:46, Andrew Jones wrote:
->>>>>>>>>>>> On Tue, Jun 22, 2021 at 11:18:09AM +0100, Daniel P. Berrangé wrote:
->>>>>>>>>>>>> On Tue, Jun 22, 2021 at 05:34:06PM +0800, Yanan Wang wrote:
->>>>>>>>>>>>>> Hi,
->>>>>>>>>>>>>>
->>>>>>>>>>>>>> This is v4 of the series [1] that I posted to introduce support for
->>>>>>>>>>>>>> generating cpu topology descriptions to guest. Comments are welcome!
->>>>>>>>>>>>>>
->>>>>>>>>>>>>> Description:
->>>>>>>>>>>>>> Once the view of an accurate virtual cpu topology is provided to guest,
->>>>>>>>>>>>>> with a well-designed vCPU pinning to the pCPU we may get a huge benefit,
->>>>>>>>>>>>>> e.g., the scheduling performance improvement. See Dario Faggioli's
->>>>>>>>>>>>>> research and the related performance tests in [2] for reference. So here
->>>>>>>>>>>>>> we go, this patch series introduces cpu topology support for ARM platform.
->>>>>>>>>>>>>>
->>>>>>>>>>>>>> In this series, instead of quietly enforcing the support for the latest
->>>>>>>>>>>>>> machine type, a new parameter "expose=on|off" in -smp command line is
->>>>>>>>>>>>>> introduced to leave QEMU users a choice to decide whether to enable the
->>>>>>>>>>>>>> feature or not. This will allow the feature to work on different machine
->>>>>>>>>>>>>> types and also ideally compat with already in-use -smp command lines.
->>>>>>>>>>>>>> Also we make much stricter requirement for the topology configuration
->>>>>>>>>>>>>> with "expose=on".
->>>>>>>>>>>>> Seeing this 'expose=on' parameter feels to me like we're adding a
->>>>>>>>>>>>> "make-it-work=yes" parameter. IMHO this is just something that should
->>>>>>>>>>>>> be done by default for the current machine type version and beyond.
->>>>>>>>>>>>> I don't see the need for a parameter to turnthis on, especially since
->>>>>>>>>>>>> it is being made architecture specific.
->>>>>>>>>>>> I agree.
->>>>>>>>>>>>
->>>>>>>>>>>> Yanan, we never discussed an "expose" parameter in the previous versions
->>>>>>>>>>>> of this series. We discussed a "strict" parameter though, which would
->>>>>>>>>>>> allow existing command lines to "work" using assumptions of what the user
->>>>>>>>>>>> meant and strict=on users to get what they mean or an error saying that
->>>>>>>>>>>> they asked for something that won't work or would require unreasonable
->>>>>>>>>>>> assumptions. Why was this changed to an "expose" parameter?
->>>>>>>>>>> Yes, we indeed discuss a new "strict" parameter but not a "expose" in v2 [1]
->>>>>>>>>>> of this series.
->>>>>>>>>>> [1] https://patchwork.kernel.org/project/qemu-devel/patch/20210413080745.33004-6-wangyanan55@huawei.com/
->>>>>>>>>>>
->>>>>>>>>>> And in the discussion, we hoped things would work like below with "strict"
->>>>>>>>>>> parameter:
->>>>>>>>>>> Users who want to describe cpu topology should provide cmdline like
->>>>>>>>>>>
->>>>>>>>>>> -smp strict=on,cpus=4,sockets=2,cores=2,threads=1
->>>>>>>>>>>
->>>>>>>>>>> and in this case we require an more accurate -smp configuration and
->>>>>>>>>>> then generate the cpu topology description through ACPI/DT.
->>>>>>>>>>>
->>>>>>>>>>> While without a strict description, no cpu topology description would
->>>>>>>>>>> be generated, so they get nothing through ACPI/DT.
->>>>>>>>>>>
->>>>>>>>>>> It seems to me that the "strict" parameter actually serves as a knob to
->>>>>>>>>>> turn on/off the exposure of topology, and this is the reason I changed
->>>>>>>>>>> the name.
->>>>>>>>>> Yes, the use of 'strict=on' is no better than expose=on IMHO.
->>>>>>>>>>
->>>>>>>>>> If I give QEMU a cli
->>>>>>>>>>
->>>>>>>>>>      -smp cpus=4,sockets=2,cores=2,threads=1
->>>>>>>>>>
->>>>>>>>>> then I expect that topology to be exposed to the guest. I shouldn't
->>>>>>>>>> have to add extra flags to make that happen.
->>>>>>>>>>
->>>>>>>>>> Looking at the thread, it seems the concern was around the fact that
->>>>>>>>>> the settings were not honoured historically and thus the CLI values
->>>>>>>>>> could be garbage. ie  -smp cpus=4,sockets=8,cores=3,thread=9
->>>>>>>>> This "-smp cpus=4,sockets=8,cores=3,threads=9" behaviors as a wrong
->>>>>>>>> configuration, and the parsing function already report error for this case.
->>>>>>>>>
->>>>>>>>> We hope more complete config like "-smp 4,sockets=2,cores=2,threads=1"
->>>>>>>>> for exposure of topology, and the incomplete ones like "-smp 4,sockets=1"
->>>>>>>>> or "-smp 4, cores=1" are not acceptable any more because we are starting
->>>>>>>>> to expose the topology.
->>>>>>>> Incomplete specified topologies *are* acceptable.
->>>>>>>>
->>>>>>>> The smp_parse method will automatically fill in any missing values.
->>>>>>>>
->>>>>>>> ie,
->>>>>>>>
->>>>>>>>     -smp 4,cores=1
->>>>>>>>     -smp cores=1
->>>>>>>>     -smp threads=1
->>>>>>>>     -smp sockets=4
->>>>>>>>
->>>>>>>> are all functionally identical to
->>>>>>>>
->>>>>>>>     -smp 4,sockets=4,cores=1,dies=1,threads=1
->>>>>>>>
->>>>>>>>
->>>>>>>> The QEMU man page says this explicitly
->>>>>>>>
->>>>>>>>                    For the PC target, the number of cores per die, the
->>>>>>>>       number of threads per cores, the number of dies per packages and the
->>>>>>>>       total number of sockets can be specified. Missing values will be
->>>>>>>>       computed. If any on the three values is given, the total number of
->>>>>>>>       CPUs n can be omitted.
->>>>>>> It doesn't say how it will compute them though, which for the default
->>>>>>> smp_parse and for x86 is to prefer sockets over cores over threads.
->>>>>>> That's not necessarily what the user expects. IMO, we need a 'strict=on'
->>>>>>> parameter that doesn't allow any collection of smp parameters which
->>>>>>> require unreasonable assumptions. Reasonable assumptions are threads=1,
->>>>>>> when threads is not specified and the rest of the math adds up. Also,
->>>>>>> maxcpus == cpus when maxcpus isn't specified is reasonable. But, it's not
->>>>>>> as reasonable to decide how to divide cores among sockets or to assume
->>>>>>> threads=1 when only sockets and cores are given. How do we know the user
->>>>>>> didn't forget to specify threads if we can't check the math?
->>>>>> or just outlaw all invalid topologies incl. incomplete by default
->>>>>> (without requiring extra option), and permit them only for old machine
->>>>>> types ()using compat machinery) without topo info provided to guest.
->>>>>> And maybe later deprecate invalid topologies altogether.
->>>>> This feels like it is creating pain for users to fix a problem that
->>>>> isn't shown to actually be causing any common issues.
->>>>>
->>>>> We've supposed that users are having problems when forgetting to
->>>>> specify "threads" and not having the compute value be desirable,
->>>>> but where are the bug reports to back this up ?
->>>>>
->>>>> The partial topologies are valid and have well defined semantics.
->>>>> Those semantics may not match everyone's preference, but that
->>>>> doesn't make them invalid.
->>>>>
->>>> If we adopt the [undocumented] semantics of x86 for arm, then we may
->>>> surprise some users that expect e.g. '-smp 16' to give them a single
->>>> socket with 16 cores, because they'll start getting 16 sockets with 1
->>>> core each. That's because if we don't describe a topology to an arm linux
->>>> guest then it assumes cores. Maybe we shouldn't worry about this, but I'd
->>>> prefer we require explicit inputs from users and, if necessary, for them
->>>> to explicitly opt-in to requiring those explicit inputs.
->>> Even for x86, defaulting to maximising sockets over cores is sub-optimal.
->>> In real world x86 hardware it is very rare to have sockets > 2 or 4. For
->>> large CPU counts, you generally have large cores-per-socket counts on x86.
->>>
->>> The QEMU preference for sockets over cores on x86 (and PPC too IIUC)
->>> is a fairly arbitrary historical decision.
->>>
->>> It can cause problems with guest OS licensing because both Windows
->>> and RHEL have been known to charge differently for sockets vs cores,
->>> with high core counts being cheaper.
->>>
->>> We are not tied into the precise behaviour of the computed topology
->>> values, as we have no made any promises. All that's required is that
->>> we keep ABI compat for existing machine types.
->> If based on this point of view that we haven't made any promises for the
->> precise behavior of the computed topology, things may get much easier.
->> I have the following understanding (also a proposal):
->>
->> We will introduce the support for exposing cpu topology since machine
->> type 6.2 and we will also describe the computed topology for the guest.
->> We will not make any stricter parsing logic, however the -smp content in
->> qemu-options.hx should be rearranged to clearly explain how the missing
->> values will exactly be computed. And this is what QEMU is responsible for.
->>
->> We know that a well designed cpu topology configuration can gain much
->> benefit for the guest, while a badly designed one will also probably cause
->> negative impact. But the users should be responsible for the design of the
->> -smp cmdlines. If they are using an incomplete cmdline for a 6.2 machine,
->> then they should have known what the computed values will be and that
->> the computed topology will be exposed to the guest.
->>> So we could decide to change the computed topology so that it prefers
->>> high core counts, over sockets, whem using new machine types only.
->>> That would seem to benefit all arches, by making QEMU more reflective
->>> of real world CPUs topology.
->> If we really decide to prefer cores over sockets over threads for new
->> machine
->> types, then I think we should also record this change in qemu-option.hx.
->>
-> I agree. The proposal sounds good to me. I'd like to hear Eduardo's
-> opinion too (CC'ed).
-Thanks, Drew. I also hope that more people will reach an agreement on 
-this issue,
-so that I can prepare v5 with confidence, although it will probably be 
-late for 6.1.
 
-Thanks,
-Yanan
-.
-> Thanks,
-> drew
->
->
-> .
 
+On Fri, 25 Jun 2021, at 14:36, Joel Stanley wrote:
+> These are the devices documented by the Rainier device tree. With this
+> we can see the guest discovering the multiplexers and probing the eeprom
+> devices:
+> 
+>  i2c i2c-2: Added multiplexed i2c bus 16
+>  i2c i2c-2: Added multiplexed i2c bus 17
+>  i2c i2c-2: Added multiplexed i2c bus 18
+>  i2c i2c-2: Added multiplexed i2c bus 19
+>  i2c-mux-gpio i2cmux: 4 port mux on 1e78a180.i2c-bus adapter
+>  at24 20-0050: 8192 byte 24c64 EEPROM, writable, 1 bytes/write
+>  i2c i2c-4: Added multiplexed i2c bus 20
+>  at24 21-0051: 8192 byte 24c64 EEPROM, writable, 1 bytes/write
+>  i2c i2c-4: Added multiplexed i2c bus 21
+>  at24 22-0052: 8192 byte 24c64 EEPROM, writable, 1 bytes/write
+> 
+> Signed-off-by: Joel Stanley <joel@jms.id.au>
+> ---
+>  hw/arm/aspeed.c | 56 +++++++++++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 56 insertions(+)
+> 
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index 1301e8fdffb2..7ed22294c6eb 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -677,6 +677,10 @@ static void g220a_bmc_i2c_init(AspeedMachineState *bmc)
+>  static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
+>  {
+>      AspeedSoCState *soc = &bmc->soc;
+> +    I2CSlave *i2c_mux;
+> +
+> +    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 0), 0x51,
+> +                          g_malloc0(32 * 1024));
+>  
+>      /* The rainier expects a TMP275 but a TMP105 is compatible */
+>      i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), TYPE_TMP105,
+> @@ -685,11 +689,25 @@ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
+>                       0x49);
+>      i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), TYPE_TMP105,
+>                       0x4a);
+> +    i2c_mux = i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4),
+> +                                      "pca9546", 0x70);
+> +    smbus_eeprom_init_one(pca954x_i2c_get_bus(i2c_mux, 0), 0x50,
+> +                          g_malloc0(64 * 1024));
+
+The EEPROMs described in the Rainier devicetree are Atmel AT2x devices and
+not SMBus EEPROMs. The SMBus EEPROM model uses SMBus block reads and 
+writes which are not what the AT2x driver issues. If you try to read or 
+write data under Linux from the EEPROMs in this patch you just get 
+corrupt results. So as far as I can see the patch needs to be reworked.
+
+Andrew

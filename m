@@ -1,254 +1,143 @@
-Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp1299857lfg;
-        Fri, 25 Jun 2021 01:36:36 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxlDsSxLkG0pp51vXmw/XlHXQtYfw7h0d1pac4DEizBKYVjTnukRuFz6yw4fCV1oNquGsx8
-X-Received: by 2002:a25:8543:: with SMTP id f3mr10291676ybn.80.1624610196198;
-        Fri, 25 Jun 2021 01:36:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1624610196; cv=none;
+Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp4183871lfg;
+        Mon, 28 Jun 2021 10:12:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwx2Odb/kkM7dz3jWY9IA5bmOE5o45sD7KC2HHnemfJsKx72aT6E1WoCFBg8ZDZr4DrGH2U
+X-Received: by 2002:aa7:c54c:: with SMTP id s12mr34918840edr.24.1624900375511;
+        Mon, 28 Jun 2021 10:12:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1624900375; cv=none;
         d=google.com; s=arc-20160816;
-        b=OH3nmPvNVD4ldLuczoUJoKxf0N5MWwIH0LXIBmdEnxCCAN2OYXWMj8m1zeX2fy51Fe
-         x5imdESNIdb3DK/ZwR0bll8JV43CtqLQBw3DXq/NFFigHMsZBQ6ixu8j3TGz9HIqu41m
-         gzsHSk80kBn+Hf9tASs2mHRUTgtEPpQJWd2A6D7uS/bO1ScycoyEwS1w14BxoPon4h/N
-         A6apR3KjG7Y3JDIkFlhnOc8pOgkmAHkDjepnTtNgHMGiXQ2N2T2Fy6s49Qyz0iaTP9us
-         xh2MLf1c6zhLcQW3AsGULrp+fzZYDVsOgz2FIoNPln91AgIeox/4ZUJhlxKUPgq1EWXy
-         3o0g==
+        b=Nohq+TpdT6kJ5QXSrLecZ6zAYhjCO41W8jjg8gbp1stnn8vg/V2vO5rYyvOaypLpba
+         9WX6hs3py+tytzyORz+mziyOf84/4SDkfDXcSosBZ7b3WNvRN9eC2DwVxknzufxMOFLu
+         j1yw/GZV5PTReSaYOkatJ3pZZGJkp+E0NFpTXJDFiItAxOkP1y2bap39Wg+V4IZEFuAI
+         IzUX6eRJaJC/aYowaIqkQsEcJwvHM+KNwaWe6aIvFhOaHCL7+6r6/pG3aXP3G7ckH3Cm
+         mRV0FcbmABnesNIZajBhEH8z1S4jDOEpKtkJlcgWXvchnYVqxfGP0qVmuDscWW9KACmG
+         V+Fw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=wfubtvJRH4i4dHm6mpDNKZfT4ykV0+AkfP2lm7uQQAA=;
-        b=fW5+2kOjNBFR0MXUJltiKNFp/TwxUWHLxODEd9JM+vDT+PJQzqngeZoBf0XDumnd2F
-         /leC4hNe/yJ4OHZRhg8Nkh6FIxiHT1nQcNLXcf26+8LcUdEet/eZR2TS3NlFpfSPb845
-         h4VNyTOZLrLzzJp6Mx76MX9ARvp94qhAGxEzEZyy0U5126w4QzH28TPPmkBx4xsAJJ2m
-         Q/BYGKZTG985OdL8cp7YZc1KF6GzOw2lGVWYZFitDZ19Wj2WWavHtubaftuizhr3MAOM
-         2gQQCr+KyDfKMoREBN/RKKk1MHSyNC22eYOmRse+iuYyN7I89R1YzObiekcJS+cLUuRr
-         6UgA==
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=WNRb/HWX20aNjmPPLKY60jUJ6PU04+pJkw3m1FM7R38=;
+        b=K4z36bkwPkgU0gc3R4O2//teXN9ZoHCJ+AXK830W4gfhduAwowQyAFltP+amkllhBg
+         dkQ6YbIdLi+iY8oiqhk8kQy5+B+Sci38Xt9nXFPTPk4ad7PWUPS5nkCj4e6Sg2zZQwgv
+         74UqaAcyBZGXA2xEvDvfQyNcs0EPgwOoWYy8Leo8L1HIrqJ+sUpiXjA6x70WHSyy3pq+
+         ZPdry3Wd/wQ8HpLRq4HmA4xZyJetHH3WECtPY7/apd9fq0aU709L/e5XwT9aYcLtQBXJ
+         w4iQSX+pvmH1i3XhKoJd0HDeM9TX0EVNlqBG3zdZmAqioyecEGGwQMiAiJ3/uhfle0nQ
+         Mi8w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=cAgdECPB;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z126si4711910ybf.431.2021.06.25.01.36.35
+        by mx.google.com with ESMTPS id l24si10346215eds.167.2021.06.28.10.12.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 25 Jun 2021 01:36:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 28 Jun 2021 10:12:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:48272 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=cAgdECPB;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:55720 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lwhKF-0001EK-Ez
-	for alex.bennee@linaro.org; Fri, 25 Jun 2021 04:36:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46826)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lxuoY-0001so-De
+	for alex.bennee@linaro.org; Mon, 28 Jun 2021 13:12:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33650)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1lwhK6-0001Aj-Hx; Fri, 25 Jun 2021 04:36:26 -0400
-Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:60889)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1lwhK3-0006Rc-Kp; Fri, 25 Jun 2021 04:36:26 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.16.210])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id F2EEEB087E27;
- Fri, 25 Jun 2021 10:36:11 +0200 (CEST)
-Received: from kaod.org (37.59.142.100) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2242.10; Fri, 25 Jun
- 2021 10:36:10 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-100R003e1ad01ad-dec2-4dbb-b288-210b8e091b7b,
- DBCB69B7246CE000B0FCA0F5B8457C792B3268C0) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 92.184.105.220
-Subject: Re: [PATCH] arm/aspeed: rainier: Add i2c eeproms and muxes
-To: Joel Stanley <joel@jms.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- Andrew Jeffery <andrew@aj.id.au>
-References: <20210625050643.161042-1-joel@jms.id.au>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <bca2e943-4fa1-ea16-439f-40d8681cfeef@kaod.org>
-Date: Fri, 25 Jun 2021 10:36:09 +0200
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1lxujC-0005Te-Np
+ for qemu-devel@nongnu.org; Mon, 28 Jun 2021 13:07:22 -0400
+Received: from mail-pg1-x52e.google.com ([2607:f8b0:4864:20::52e]:38604)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1lxuj9-0005Vu-Rk
+ for qemu-devel@nongnu.org; Mon, 28 Jun 2021 13:07:22 -0400
+Received: by mail-pg1-x52e.google.com with SMTP id h4so15971494pgp.5
+ for <qemu-devel@nongnu.org>; Mon, 28 Jun 2021 10:07:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:references:from:message-id:date:user-agent:mime-version
+ :in-reply-to:content-language:content-transfer-encoding;
+ bh=WNRb/HWX20aNjmPPLKY60jUJ6PU04+pJkw3m1FM7R38=;
+ b=cAgdECPB+DYaHScR1KZve5e7T/Bso8pERijglQTvuco6fEZFXzafiff2+bhca5gC71
+ W5vwFGPx3lJ8Hd4OXXe3TXC4bR+gT9TY4IGeQTRcCKUmQylFAJthyMU1/4tHyMSOy172
+ 8iAS5hp1FAZZkHrlrzF5XArfMPG+KNaM31HJlEip62JixCZbwXw6ibddHdYj9Evpc//V
+ X0EUHXgF4oKsfbVQEDtx+wsaHtQS+96mWHxSK6D3c82+x2x0DU8JHrzmFF8E3UOlTIrP
+ j/fE3WtQh53bpu8+nDndkaRQ/bAwgTUc1Y809BNVo8vbDgG5LaV6eL7Qh2TfvUC+d+wY
+ gTTA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=WNRb/HWX20aNjmPPLKY60jUJ6PU04+pJkw3m1FM7R38=;
+ b=fHO89y67iuLkHf4SY1qoz663wen7AnETBwHCA6AoSDjV7LjS0GkW74Z1mFDpppE+Ld
+ Up15w1ADL12zBtxD3eF5EvfR4IT2oNXlCPsG5EMCYF7az8BACOoSl6RXe5oALFQdklDA
+ izaN9qYxp7DrMQ1SmW04x2byUivL9fN48Ko30Q45qtm3ppZ5lvfxn6X7wxDJyzl84Ap3
+ enIKhpti51ZJ1iNIV6d/JfBzbNeqwXM7UMACinc27ef6MJfwlUiaF5E7YZjJmm8UYnpj
+ hXLlaCYmT0U6k9tYGT5XMdDSdl6ME1QWR6pb/7wwojMgDRf7qfYB69ZNEbQLkGGx2bkY
+ maNw==
+X-Gm-Message-State: AOAM533hL4EcwmVQo3sckWwHv5ntlIs/X0dfzIYsVYSIBlo+XDbiNS5F
+ SpWKNotJdttRqir/RiMX8j01RfEHyHUZkw==
+X-Received: by 2002:aa7:8489:0:b029:2fb:4ce0:339c with SMTP id
+ u9-20020aa784890000b02902fb4ce0339cmr25765933pfn.16.1624900038287; 
+ Mon, 28 Jun 2021 10:07:18 -0700 (PDT)
+Received: from [192.168.1.11] ([71.212.149.176])
+ by smtp.gmail.com with ESMTPSA id t14sm15690492pfe.45.2021.06.28.10.07.17
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 28 Jun 2021 10:07:18 -0700 (PDT)
+Subject: Re: [PATCH 16/18] target/arm: Implement MVE long shifts by register
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20210628135835.6690-1-peter.maydell@linaro.org>
+ <20210628135835.6690-17-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <69b2a232-ebc8-f6f1-9d7f-1e93df6c543d@linaro.org>
+Date: Mon, 28 Jun 2021 10:07:16 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <20210625050643.161042-1-joel@jms.id.au>
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <20210628135835.6690-17-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.100]
-X-ClientProxiedBy: DAG9EX2.mxp5.local (172.16.2.82) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: e26e4cf5-5f9e-4b7f-b488-9b1bf85803e7
-X-Ovh-Tracer-Id: 10771202935205497638
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduledrfeegjedgtddvucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepjeekudeuudevleegudeugeekleffveeludejteffiedvledvgfekueefudehheefnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutddtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehjohgvlhesjhhmshdrihgurdgruh
-Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
- helo=smtpout1.mo529.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Patrick Venture <venture@google.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uPB4OtUkefOX
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: AQHvM0uHDOqm
 
-On 6/25/21 7:06 AM, Joel Stanley wrote:
-> These are the devices documented by the Rainier device tree. With this
-> we can see the guest discovering the multiplexers and probing the eeprom
-> devices:
-> 
->  i2c i2c-2: Added multiplexed i2c bus 16
->  i2c i2c-2: Added multiplexed i2c bus 17
->  i2c i2c-2: Added multiplexed i2c bus 18
->  i2c i2c-2: Added multiplexed i2c bus 19
->  i2c-mux-gpio i2cmux: 4 port mux on 1e78a180.i2c-bus adapter
->  at24 20-0050: 8192 byte 24c64 EEPROM, writable, 1 bytes/write
->  i2c i2c-4: Added multiplexed i2c bus 20
->  at24 21-0051: 8192 byte 24c64 EEPROM, writable, 1 bytes/write
->  i2c i2c-4: Added multiplexed i2c bus 21
->  at24 22-0052: 8192 byte 24c64 EEPROM, writable, 1 bytes/write
-> 
-> Signed-off-by: Joel Stanley <joel@jms.id.au>
+On 6/28/21 6:58 AM, Peter Maydell wrote:
+> +  LSLL_rr        1110101 0010 1 ... 0 ....  ... 1 0000 1101   @mve_shl_rr
+> +  ASRL_rr        1110101 0010 1 ... 0 ....  ... 1 0010 1101   @mve_shl_rr
+> +  UQRSHLL64_rr   1110101 0010 1 ... 1 ....  ... 1 0000 1101   @mve_shl_rr
+> +  SQRSHRL64_rr   1110101 0010 1 ... 1 ....  ... 1 0010 1101   @mve_shl_rr
+> +  UQRSHLL48_rr   1110101 0010 1 ... 1 ....  ... 1 1000 1101   @mve_shl_rr
+> +  SQRSHRL48_rr   1110101 0010 1 ... 1 ....  ... 1 1010 1101   @mve_shl_rr
+
+Looks like these 6 could be inside [].
+
+Either way,
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-
-
-Thanks,
-
-C. 
-
-
-> ---
->  hw/arm/aspeed.c | 56 +++++++++++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 56 insertions(+)
-> 
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index 1301e8fdffb2..7ed22294c6eb 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -677,6 +677,10 @@ static void g220a_bmc_i2c_init(AspeedMachineState *bmc)
->  static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
->  {
->      AspeedSoCState *soc = &bmc->soc;
-> +    I2CSlave *i2c_mux;
-> +
-> +    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 0), 0x51,
-> +                          g_malloc0(32 * 1024));
->  
->      /* The rainier expects a TMP275 but a TMP105 is compatible */
->      i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), TYPE_TMP105,
-> @@ -685,11 +689,25 @@ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
->                       0x49);
->      i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), TYPE_TMP105,
->                       0x4a);
-> +    i2c_mux = i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4),
-> +                                      "pca9546", 0x70);
-> +    smbus_eeprom_init_one(pca954x_i2c_get_bus(i2c_mux, 0), 0x50,
-> +                          g_malloc0(64 * 1024));
-> +    smbus_eeprom_init_one(pca954x_i2c_get_bus(i2c_mux, 1), 0x51,
-> +                          g_malloc0(64 * 1024));
-> +    smbus_eeprom_init_one(pca954x_i2c_get_bus(i2c_mux, 2), 0x52,
-> +                          g_malloc0(64 * 1024));
->  
->      i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5), TYPE_TMP105,
->                       0x48);
->      i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5), TYPE_TMP105,
->                       0x49);
-> +    i2c_mux = i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5),
-> +                                      "pca9546", 0x70);
-> +    smbus_eeprom_init_one(pca954x_i2c_get_bus(i2c_mux, 0), 0x50,
-> +                          g_malloc0(64 * 1024));
-> +    smbus_eeprom_init_one(pca954x_i2c_get_bus(i2c_mux, 1), 0x51,
-> +                          g_malloc0(64 * 1024));
->  
->      i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), TYPE_TMP105,
->                       0x48);
-> @@ -697,6 +715,16 @@ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
->                       0x4a);
->      i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), TYPE_TMP105,
->                       0x4b);
-> +    i2c_mux = i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6),
-> +                                      "pca9546", 0x70);
-> +    smbus_eeprom_init_one(pca954x_i2c_get_bus(i2c_mux, 0), 0x50,
-> +                          g_malloc0(64 * 1024));
-> +    smbus_eeprom_init_one(pca954x_i2c_get_bus(i2c_mux, 1), 0x51,
-> +                          g_malloc0(64 * 1024));
-> +    smbus_eeprom_init_one(pca954x_i2c_get_bus(i2c_mux, 2), 0x50,
-> +                          g_malloc0(64 * 1024));
-> +    smbus_eeprom_init_one(pca954x_i2c_get_bus(i2c_mux, 3), 0x51,
-> +                          g_malloc0(64 * 1024));
->  
->      /* Bus 7: TODO dps310@76 */
->      /* Bus 7: TODO max31785@52 */
-> @@ -704,11 +732,19 @@ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
->      /* Bus 7: TODO si7021-a20@20 */
->      i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), TYPE_TMP105,
->                       0x48);
-> +    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 7), 0x50,
-> +                          g_malloc0(64 * 1024));
-> +    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 7), 0x51,
-> +                          g_malloc0(64 * 1024));
->  
->      i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), TYPE_TMP105,
->                       0x48);
->      i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), TYPE_TMP105,
->                       0x4a);
-> +    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 8), 0x50,
-> +                          g_malloc0(64 * 1024));
-> +    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 8), 0x51,
-> +                          g_malloc0(64 * 1024));
->      i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), "pca9552", 0x61);
->      /* Bus 8: ucd90320@11 */
->      /* Bus 8: ucd90320@b */
-> @@ -716,14 +752,34 @@ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
->  
->      i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "tmp423", 0x4c);
->      i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "tmp423", 0x4d);
-> +    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 9), 0x50,
-> +                          g_malloc0(128 * 1024));
->  
->      i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 10), "tmp423", 0x4c);
->      i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 10), "tmp423", 0x4d);
-> +    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 10), 0x50,
-> +                          g_malloc0(128 * 1024));
->  
->      i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), TYPE_TMP105,
->                       0x48);
->      i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), TYPE_TMP105,
->                       0x49);
-> +    i2c_mux = i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11),
-> +                                      "pca9546", 0x70);
-> +    smbus_eeprom_init_one(pca954x_i2c_get_bus(i2c_mux, 0), 0x50,
-> +                          g_malloc0(64 * 1024));
-> +    smbus_eeprom_init_one(pca954x_i2c_get_bus(i2c_mux, 1), 0x51,
-> +                          g_malloc0(64 * 1024));
-> +
-> +
-> +    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 13), 0x50,
-> +                          g_malloc0(64 * 1024));
-> +
-> +    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 14), 0x50,
-> +                          g_malloc0(64 * 1024));
-> +
-> +    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 15), 0x50,
-> +                          g_malloc0(64 * 1024));
->  }
->  
->  static bool aspeed_get_mmio_exec(Object *obj, Error **errp)
-> 
-
+r~

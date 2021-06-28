@@ -1,155 +1,328 @@
-Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp4149508lfg;
-        Mon, 28 Jun 2021 09:27:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwp2w3s2WuDItDBLXs5HFG5oywE+OzKONiSljLkw8HRBhbf2EYzJejYPfz5shwDEmu/YhWB
-X-Received: by 2002:a05:6902:1245:: with SMTP id t5mr33613913ybu.448.1624897621726;
-        Mon, 28 Jun 2021 09:27:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1624897621; cv=none;
+Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp4288998lfg;
+        Mon, 28 Jun 2021 12:48:51 -0700 (PDT)
+X-Received: by 2002:a17:906:6b90:: with SMTP id l16mr26269368ejr.439.1624909731499;
+        Mon, 28 Jun 2021 12:48:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1624909731; cv=none;
         d=google.com; s=arc-20160816;
-        b=hlTKh4HrAE8QsM+fIAMAiec8mDR7obOAB42hZCTpRG/zZGSTbcgNaDVBuRykY9w97+
-         aarQgUf4KydWdffLy73wZg8GDu84EKicYAEVMEVwi4xcaVpP2K2uu0xAXppvWpfynqCA
-         ivp19voMfZTBg4/fZZJ4q9a86nXg1xS/LN8QKkQLk/DvptYS4UyHhAhYInKHxnGrrHZ5
-         x+2b3jIAV+8dS3ZCq2/zxI9rPJ/DQKijWT3dJkk1xgosWmX4nEETb6W7ORitxs8Rh4oY
-         KFUTpneH3YM9uqZRukGn4QqloKBw8hdbzd+8/yk2XD3iHT+j++yZbzyS0UTnrT8XBTsK
-         GhxA==
+        b=rFB4QVeZOeIDGOupI89obGbFyavSTtPPmDmWZG/VN7xcCgibjx1TRG7TkKjBR3YjCI
+         kBrvfN58jg7buKgrL+3A6J+N/DDpN1JnNN58tFRuLefbqfmO3FwzVSPU6R4CaZ3AnIrb
+         DUNoDHrBKGz5riB3FcFBhplEPkBQCX83SpN0pCM2lRlUUmrhEGwDXVa7uMs/TK4Xw81G
+         6kcKzXNK83Yv7tpiFOja7Btivs7dm2vlbJMP7vL4gMh+Z9g1lh/nVCd3vCmfFbzfrpaW
+         LR+jTTuJcOVr+l4xW0+O1Zq7h2AjPsesBhOUtIEoQDcvzc0bsErLsTgtro0BbikBpj6D
+         rD3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=5n590fBEpRMrKH6fJYWHH9IGuY38gH9hzq+B+1RgJFs=;
-        b=TyeReTDUP8du8vMMUca2yYQm9F+iXfXcB5rzH+9DaFqBNVfJNwWu4ZC7E/4Kb8ATD4
-         QCJsxLAr31wdq9jIoJQusjEo9jjLPx+TVfGHS4ifecsoZ48jAue31VMGGtdS0knOaMaR
-         xcHHyU1Glgg9JgbUHdrY7nGmunq52pqn2HkyByLhsTI8SzZp7YDjc2NrWlFwF/qirPty
-         lrZWQ+CQ/6vtfY14GPxuuHZuGzKvm3io97I47PNWmeAb3AeIKcjK5byUwVlTEmZY81y6
-         6q0ioC2U0oobzK2pmNCk6OJVIGMOGpa578MWb6N5qvOEJ6bN6A27AUgFvutBh79KVdKX
-         29WQ==
+        bh=xDJV9JWzwK2+wQoOTCATHcYzNEtTWMGbBkjQrsgzQvE=;
+        b=TEnRqZJzigfQ3OVYMamJ+T/ADDxutI/WMba67RovGI+dtJDaN+hkrKbx9f/hhmD9fe
+         cow+QanD9rELeyogi/sX11GIIrnkKzmwG0Ae3+iUgX62/n0TIoRIiM4VaaZ07o8Pxkfg
+         6DY0zSVuT77NXQsspM12m6nTolfuV3ixJi3ooaLeRtPRFHzygjGa4OthPjo87zITYaLQ
+         u/S+4F0lZOZBLdmG8fObpplTwNN8TcA+AG8ZUfrLqyHQZnry6CAbqPVhjHuQxbw9zL0j
+         A9/R1kH4ViV5Rse3VBZIYcP2rvaucrG1PGwGBSbpANxDqIYcDPPIUxnhBhXaBMBSnc+E
+         aUYg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=v47LuQ+3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c4si13817323ybq.62.2021.06.28.09.27.01
+       dkim=pass header.i=@linaro.org header.s=google header.b=zhjLMKnK;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id gb18sor8113523ejc.54.2021.06.28.12.48.51
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 28 Jun 2021 09:27:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Mon, 28 Jun 2021 12:48:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=v47LuQ+3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:60356 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lxu69-0006QO-2y
-	for alex.bennee@linaro.org; Mon, 28 Jun 2021 12:27:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54906)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lxu5d-0006Kc-Ll
- for qemu-arm@nongnu.org; Mon, 28 Jun 2021 12:26:29 -0400
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532]:44702)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lxu5Z-00045D-P7
- for qemu-arm@nongnu.org; Mon, 28 Jun 2021 12:26:29 -0400
-Received: by mail-ed1-x532.google.com with SMTP id h17so26732858edw.11
- for <qemu-arm@nongnu.org>; Mon, 28 Jun 2021 09:26:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=5n590fBEpRMrKH6fJYWHH9IGuY38gH9hzq+B+1RgJFs=;
- b=v47LuQ+3FnGJ7P9XSyiAZbnmhOUDRBmahCZeQflYIFSdNIqLZ4J7B/dipF4VOHuAWX
- Z0jhCTIY6LHQsjRyRUxLX7XF2JEtJDqW6NYfYWj3ewezcXtIcesyJQ9dipPINz99r2O0
- AJBjFC1KAM7uK4EGeTCrCAt7FtxO7K4TKw8y8qU9Pv2wrbzbDUQkHwcd3WP0hLkzGILF
- jsANOXOpiBj1Gp2YNN8PH2wUIzRep/BQ/KcVuf5OgUwS4VEP51q9+iTNmEsAG0Ifdw1R
- GQga5qkb/eDvBPGmb32SKIR9eFnI9HL6QSOidxI8JYKouASkwQIZpaa+9fPdHBlRlyQQ
- J2HQ==
+       dkim=pass header.i=@linaro.org header.s=google header.b=zhjLMKnK;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=xDJV9JWzwK2+wQoOTCATHcYzNEtTWMGbBkjQrsgzQvE=;
+        b=zhjLMKnKQMlokFYJdAnZI0fSW/Lhy06pNBFhyaf1ElQu9p7vMGsNVf/gCPQKS1/swL
+         nbLAuz5oUke6jVA8BSiHTsWiWv8DOJI8VU2OlSd9pXzOPxHSarPusNpqBczuP6tn8ZdT
+         fOs3wSF4MG0LeZZZ3Xpe5NaSxKL9gyXPYxlEdWqZivTpBS3GPdm7tVK6l9/FMYP/Rn1M
+         3s88USEOBHUNxqWZ+I54XPm7V9d1ADPcHYJ/1od8jX3OlEzOUHwOJuMpkzMQjmFX9tS/
+         4QcOtssIsK6MFY51K5JiZwuYmADrKIJK/KMO/iNqKs8oUl9GQkGqQ7eV8ISXeJkbXjx3
+         UBJQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=5n590fBEpRMrKH6fJYWHH9IGuY38gH9hzq+B+1RgJFs=;
- b=BMl7jaVgT0ycRsW9/W0Zswn0vUPc7GWY3CqsvyaQkdca5g7mq2Tq/IzcbMwN9iDVYM
- xn/01Fp57AlPsPRfsN+DgUdMZSfLdlSLuoO1UCBlf+G6Oec/0xqdjYO5E+RJPAy7LQej
- 8CI/mJay0jrNlmesCqK16M50ChpNgdRqtKSueVjysN4imy6Y8PI+z/e7pnnJKemeso2N
- ZyS/W2rVcIdvwkzwL7e+IQbPA8qkRqUlK0rRkVUIsRPLMpLDCwFqCRUttAkhyWAd+Mcq
- o9nRNLrqfhiGDVLhGWKoXqClHfxY10H1Jmxzo9a3k3+7wckCOQM5S0tXOynuPiejhewz
- XCJg==
-X-Gm-Message-State: AOAM531EtnvzYVaZXMdHpAG+9pS0FR5Rn90OjmJ92thRkxsK+DP//E63
- eSwpBG7/FpJu44r+q9SEwuXEIG0vxDmqKq42w/md+w==
-X-Received: by 2002:aa7:c857:: with SMTP id g23mr33257178edt.100.1624897583833; 
- Mon, 28 Jun 2021 09:26:23 -0700 (PDT)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=xDJV9JWzwK2+wQoOTCATHcYzNEtTWMGbBkjQrsgzQvE=;
+        b=mRecx5O0mnL3zwvd0B6y9qEI678IO0ypZVY9mCy08sTPnDx6TfuIKOO1B9HqjZiC97
+         mBsAnhdooCpx36ZMETKsaFvv5IRMagy+GSbG9Lra603GTrel6/VNYAmaOAilBu6hy2t+
+         i2jcV9zeXEUqbnowUoLCa2TDObLkyyW0Ll3NOUi87N1lyw10VwML3dC18P+rYDgeAjd0
+         RQ0x+4KFqEOXyGszs1wXqzvcGtvLizNIbFucXk1W78gW7bnoJMV9Jqt7Nv5SJMvvla5S
+         wMva5GQi2j3Hs/94lHeA2DCDOHjLlItcCk8jBf4SUs18OQSB1RN719Sp0tzG8GLPH2Om
+         Er4g==
+X-Gm-Message-State: AOAM5335Db1Xuz2p0pz6HaWAViH+lThe8KUxQ+fZcXLAEaqYOIqd3P5r
+	vInI2YEzPquAfJaUhLPesSzk51QabSNVwz8H1vFRZF9tb2s0rL5UEfw=
+X-Google-Smtp-Source: ABdhPJyjdXuA9RCzrsvzMxNHPE73DBrPAnHEkgFiL67rcPBUv16+cVezqO4uwS31SDAg7bB44ByTwA0pzX+JvxhS0F4=
+X-Received: by 2002:a17:906:a38d:: with SMTP id k13mr26534758ejz.250.1624909731126;
+ Mon, 28 Jun 2021 12:48:51 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210615192848.1065297-1-venture@google.com>
- <CAFEAcA9mqyn6J-W_qiZ_T=JbsBuahZuLAXXc8c9ASarVASbg7g@mail.gmail.com>
-In-Reply-To: <CAFEAcA9mqyn6J-W_qiZ_T=JbsBuahZuLAXXc8c9ASarVASbg7g@mail.gmail.com>
+References: <20210623134756.30930-1-alex.bennee@linaro.org> <20210623134756.30930-2-alex.bennee@linaro.org>
+In-Reply-To: <20210623134756.30930-2-alex.bennee@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 28 Jun 2021 17:25:46 +0100
-Message-ID: <CAFEAcA8V9TegQbisBufg0CHooV-eDzE6Arvh-7H2wc2F_cRBXA@mail.gmail.com>
-Subject: Re: [PATCH 0/2] Updates docs/system/arm to include new bmc machines
-To: Patrick Venture <venture@google.com>
+Date: Mon, 28 Jun 2021 20:48:13 +0100
+Message-ID: <CAFEAcA8TCTEBnjibsUTyqRXL0tWXGUih-TATNLHuWW-5=VQHLA@mail.gmail.com>
+Subject: Re: [PATCH v4 1/2] semihosting/arm-compat: replace heuristic for
+ softmmu SYS_HEAPINFO
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	Andrew Strauss <astrauss11@gmail.com>, Keith Packard <keithp@keithp.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::532;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x532.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>,
- Havard Skinnemoen <hskinnemoen@google.com>,
- QEMU Developers <qemu-devel@nongnu.org>, CS20 KFTing <kfting@nuvoton.com>,
- qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 33GOjE0u1pcC
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 5coOPlCDVaRk
 
-On Mon, 28 Jun 2021 at 15:07, Peter Maydell <peter.maydell@linaro.org> wrote:
+On Wed, 23 Jun 2021 at 14:47, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
 >
-> On Tue, 15 Jun 2021 at 20:28, Patrick Venture <venture@google.com> wrote:
-> >
-> >
-> > Patrick Venture (2):
-> >   docs/system/arm: Add quanta-q7l1-bmc reference
-> >   docs/system/arm: Add quanta-gbs-bmc reference
-> >
-> >  docs/system/arm/aspeed.rst  | 1 +
-> >  docs/system/arm/nuvoton.rst | 3 ++-
-> >  2 files changed, 3 insertions(+), 1 deletion(-)
+> The previous numbers were a guess at best and rather arbitrary without
+> taking into account anything that might be loaded. Instead of using
+> guesses based on the state of registers implement a new function that:
 >
+>  a) scans the MemoryRegions for the largest RAM block
+>  b) iterates through all "ROM" blobs looking for the biggest gap
 >
+> The "ROM" blobs include all code loaded via -kernel and the various
+> -device loader techniques.
 >
-> Applied to target-arm.next, thanks.
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> Cc: Andrew Strauss <astrauss11@gmail.com>
+> Cc: Keith Packard <keithp@keithp.com>
+> Message-Id: <20210601090715.22330-1-alex.bennee@linaro.org>
 
-Just noticed the docs don't actually build:
+> @@ -349,4 +349,20 @@ int rom_add_option(const char *file, int32_t bootind=
+ex);
+>   * overflow on real hardware too. */
+>  #define UBOOT_MAX_GUNZIP_BYTES (64 << 20)
+>
+> +/**
+> + * rom_find_largest_gap_between: return highest address of ROM in region
+> + *
+> + * This function is used to find the highest ROM address (or loaded
+> + * blob) so we can advise where true heap memory may be.
 
-Warning, treated as error:
-/home/petmay01/linaro/qemu-from-laptop/qemu/docs/system/arm/nuvoton.rst:2:Title
-underline too short.
+This doc comment doesn't match the function name or implementation.
+You probably want something like:
 
-Nuvoton iBMC boards (``*-bmc``, ``npcm750-evb``, ``quanta-gsj``)
-=====================================================
+rom_find_largest_gap_between: return largest gap between ROMs in given rang=
+e
 
+Given a range of addresses, this function finds the largest
+contiguous subrange which has no ROMs loaded to it. That is,
+it finds the biggest gap which is free for use for other things.
 
-But the fix is trivial, so I will make it locally.
+> + *
+> + * Returns: RomGap, describing the largest section not intersected by
+> + * a ROM region.
+> + */
+> +typedef struct RomGap {
+> +    hwaddr base;
+> +    size_t size;
+> +} RomGap;
 
-Passing configure '--enable-docs' will enforce that it complains if you
-don't have enough prerequisites to build the docs, rather than silently
-skipping them.
+I suspect if we ever run the doc-generator on this header it
+would get confused by the doc comment not coming immediately
+before the function prototype it is documenting.
+
+> +RomGap rom_find_largest_gap_between(hwaddr base, size_t size);
+> +
+>  #endif
+> diff --git a/hw/core/loader.c b/hw/core/loader.c
+> index 5b34869a54..d4893fa8d8 100644
+> --- a/hw/core/loader.c
+> +++ b/hw/core/loader.c
+> @@ -1310,6 +1310,80 @@ static Rom *find_rom(hwaddr addr, size_t size)
+>      return NULL;
+>  }
+>
+> +typedef struct RomSec {
+> +    hwaddr base;
+> +    int se; /* start/end flag */
+> +} RomSec;
+> +
+> +
+> +static gint sort_secs(gconstpointer a, gconstpointer b)
+> +{
+> +    RomSec *ra =3D (RomSec *) a;
+> +    RomSec *rb =3D (RomSec *) b;
+
+/*
+ * Sort into address order. We break ties between rom-startpoints
+ * and rom-endpoints in favour of the startpoint, by sorting the 0->1
+ * transition before the 1->0 transition. Either way round would
+ * work, but this way saves a little work later by avoiding
+ * dealing with "gaps" of 0 length.
+ */
+
+> +
+> +    if (ra->base =3D=3D rb->base) {
+> +        return ra->se > rb->se ? -1 : 1;
+> +    }
+> +    return ra->base > rb->base ? 1 : -1;
+
+This has forgotten the "equality" case, which you will
+see if two blobs start at the same address (at least in
+theory; at the moment the rom blob loader will try to
+reject overlaps, though it might not do so forever).
+
+> +}
+> +
+> +RomGap rom_find_largest_gap_between(hwaddr base, size_t size)
+> +{
+> +    Rom *rom;
+> +    RomSec *cand;
+> +    RomGap res =3D {0, 0};
+> +    hwaddr gapstart =3D base;
+> +    GList *it, *secs =3D NULL;
+> +    int count =3D 0;
+> +
+> +    QTAILQ_FOREACH(rom, &roms, next) {
+> +        /* ignore real rom blobs */
+
+They're all real rom blobs (arguably a fw_file blob is less real!). Maybe
+  /* Ignore blobs being loaded to special places */
+?
+
+> +        if (rom->mr || rom->fw_file) {
+> +            continue;
+> +        }
+> +        /* ignore anything finishing bellow base */
+
+"below"
+
+> +        if (rom->addr + rom->romsize < base) {
+
+  <=3D
+(we can ignore a rom that's 0x1000, size 0x1000 if our range starts at 0x20=
+00,
+because it covers [0x1000..0x1fff])
+
+> +            continue;
+> +        }
+> +        /* ignore anything starting above the region */
+> +        if (rom->addr > base + size) {
+
+ >=3D
+(if our region is 0x1000, size 0x1000, we can ignore a rom starting at 0x20=
+00)
+
+> +            continue;
+> +        }
+> +
+> +        /* Save the start and end of each relevant ROM */
+> +        cand =3D g_new(RomSec, 1);
+> +        cand->base =3D rom->addr;
+
+  cand->base =3D MAX(rom->addr, base);
+
+(otherwise you can get exciting special cases like
+"cand->base - gapstart" being negative in the loop below)
+
+> +        cand->se =3D 1;
+> +        secs =3D g_list_append(secs, cand);
+
+The glib docs
+https://developer.gnome.org/glib/stable/glib-Doubly-Linked-Lists.html#g-lis=
+t-append
+say that g_list_append() has to traverse the entire list to find the
+tail in order to append the new item, making this algorithm
+accidentally-quadratic. Since we're about to sort the list, we don't
+care about its order now and can use g_list_prepend() instead.
+
+> +
+> +        if (rom->addr + rom->romsize < base + size) {
+> +            cand =3D g_new(RomSec, 1);
+> +            cand->base =3D rom->addr + rom->romsize;
+> +            cand->se =3D -1;
+> +            secs =3D g_list_append(secs, cand);
+> +        }
+> +    }
+
+We need to append a sentinel to the list to avoid having
+to special case for "the big gap goes all the way to the end
+of the range":
+     cand =3D g_new(RomSec, 1);
+     cand->base =3D base + size;
+     cand->se =3D 1;
+     secs =3D g_list_prepend(secs, cand);
+
+(Maybe a helper function so you can write
+   add_romsec_to_list(secs, base, se);
+rather than having variants on these four lines in three places?)
+
+> +
+> +    secs =3D g_list_sort(secs, sort_secs);
+> +
+
+I would favour initializing gapstart here, just because this
+tail end of the function is the only place where it's used, and
+it makes the algorithm a bit easier to understand if you don't
+have to look 30 lines back up the function to see what its
+initial value is.
+
+> +    for (it =3D g_list_first(secs); it; it =3D g_list_next(it)) {
+> +        cand =3D (RomSec *) it->data;
+> +        if (count =3D=3D 0 && count + cand->se =3D=3D 1) {
+> +            size_t gap =3D cand->base - gapstart;
+> +            if (gap > res.size) {
+> +                res.base =3D gapstart;
+> +                res.size =3D gap;
+> +            }
+> +        } else if (count =3D=3D 1 && count + cand->se =3D=3D 0) {
+> +            gapstart =3D cand->base;
+> +        }
+> +        count +=3D cand->se;
+> +    }
+> +
+> +    g_list_free_full(secs, g_free);
+> +    return res;
+> +}
+
+> +static LayoutInfo common_semi_find_bases(CPUState *cs)
+>  {
+> -    MemoryRegion *subregion;
+> +    FlatView *fv;
+> +    LayoutInfo info =3D { 0, 0, 0, 0 };
+> +
+> +    RCU_READ_LOCK_GUARD();
+> +
+> +    fv =3D address_space_to_flatview(cs->as);
+> +    flatview_for_each_range(fv, find_ram_cb, &info);
+>
+>      /*
+> -     * Find the chunk of R/W memory containing the address.  This is
+> -     * used for the SYS_HEAPINFO semihosting call, which should
+> -     * probably be using information from the loaded application.
+> +     * If we have found the RAM lets iterate through the ROM blobs to
+> +     * workout the best place for the remainder of RAM and split it
+> +     * equally between stack and heap.
+>       */
+> -    QTAILQ_FOREACH(subregion, &get_system_memory()->subregions,
+> -                   subregions_link) {
+> -        if (subregion->ram && !subregion->readonly) {
+> -            Int128 top128 =3D int128_add(int128_make64(subregion->addr),
+> -                                       subregion->size);
+> -            Int128 addr128 =3D int128_make64(addr);
+> -            if (subregion->addr <=3D addr && int128_lt(addr128, top128))=
+ {
+> -                return subregion->addr;
+> -            }
+> -        }
+> +    if (info.rambase && info.ramsize) {
+> +        RomGap gap =3D rom_find_largest_gap_between(info.rambase, info.r=
+amsize);
+> +        info.heapbase =3D gap.base;
+> +        info.heaplimit =3D gap.base + gap.size;
+>      }
+
+You don't want to ignore info.rambase =3D=3D 0 -- it could well be that
+the RAM in the system starts at address zero. It's only size of 0
+that would indicate we failed entirely to find any RAM.
 
 thanks
 -- PMM

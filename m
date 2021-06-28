@@ -1,328 +1,200 @@
-Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp4288998lfg;
-        Mon, 28 Jun 2021 12:48:51 -0700 (PDT)
-X-Received: by 2002:a17:906:6b90:: with SMTP id l16mr26269368ejr.439.1624909731499;
-        Mon, 28 Jun 2021 12:48:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1624909731; cv=none;
+Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp4297253lfg;
+        Mon, 28 Jun 2021 13:02:13 -0700 (PDT)
+X-Received: by 2002:a05:622a:108:: with SMTP id u8mr23437723qtw.326.1624910533043;
+        Mon, 28 Jun 2021 13:02:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1624910533; cv=none;
         d=google.com; s=arc-20160816;
-        b=rFB4QVeZOeIDGOupI89obGbFyavSTtPPmDmWZG/VN7xcCgibjx1TRG7TkKjBR3YjCI
-         kBrvfN58jg7buKgrL+3A6J+N/DDpN1JnNN58tFRuLefbqfmO3FwzVSPU6R4CaZ3AnIrb
-         DUNoDHrBKGz5riB3FcFBhplEPkBQCX83SpN0pCM2lRlUUmrhEGwDXVa7uMs/TK4Xw81G
-         6kcKzXNK83Yv7tpiFOja7Btivs7dm2vlbJMP7vL4gMh+Z9g1lh/nVCd3vCmfFbzfrpaW
-         LR+jTTuJcOVr+l4xW0+O1Zq7h2AjPsesBhOUtIEoQDcvzc0bsErLsTgtro0BbikBpj6D
-         rD3A==
+        b=MSeDiELdnYMyZadEO+I3HF2HhEQtZ97SVTf/u5zADXaYK7zmqXUg5tY8IDgdu/FnsL
+         eTKNrJSE2LxvCtmlmHfL+youvBjqnLH3rAX6EXimDOiHHeVV6zs6J9lXZxBXQFNr4oMZ
+         bawHRsXeZqZSu2wi2pwTU4R8MuwjNAun4WMHUs6l1ZcBtxBmq49BPY6OUPjHbvHytZoW
+         zzlxiuEFnp4QumLfAO6Pnh/wGXV8hb1+kwKiP141nT1pmrqEReZAgndW0CuIinmXwVL3
+         JG+9c6ZL33xhSxMNJezzyyp8uWH44B+vez7QOAGslofbiOReDXv/8btWySyWUdOuH+t+
+         3Hyg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=xDJV9JWzwK2+wQoOTCATHcYzNEtTWMGbBkjQrsgzQvE=;
-        b=TEnRqZJzigfQ3OVYMamJ+T/ADDxutI/WMba67RovGI+dtJDaN+hkrKbx9f/hhmD9fe
-         cow+QanD9rELeyogi/sX11GIIrnkKzmwG0Ae3+iUgX62/n0TIoRIiM4VaaZ07o8Pxkfg
-         6DY0zSVuT77NXQsspM12m6nTolfuV3ixJi3ooaLeRtPRFHzygjGa4OthPjo87zITYaLQ
-         u/S+4F0lZOZBLdmG8fObpplTwNN8TcA+AG8ZUfrLqyHQZnry6CAbqPVhjHuQxbw9zL0j
-         A9/R1kH4ViV5Rse3VBZIYcP2rvaucrG1PGwGBSbpANxDqIYcDPPIUxnhBhXaBMBSnc+E
-         aUYg==
+        bh=SJGXWSQqZqpp78kNZXI1pjCnN4IFLVvgnZNfWDe9g+8=;
+        b=BqvpXAMwmBLddEHWD6pP8RI2DXtW/xYLKuw665FnsU87N3IHY/eYTrH6PCzQc4VH04
+         OSyVuqaonV9GA5aXf6tUwOBZIGTMOC3RzMYA99sdiUzPf6Zmnl4HFu2Yw99TQghj2s/o
+         phxzgxNVs+ZmPDyIGj7LkBOzyYeFb67d4t+euMDD+bVfpztdLzg67/DU35MF52Dl6Y+i
+         S2zZtCyFF46ECK3qHAUze4URb3L9btYhJwQiGDLUvKDmB8d5dH+PhYyVXXJAPXUIH4Ui
+         YmTPXENH4QiIKTRpr8Iyo59FNQIFxnk3ZVpBSK+lTcIiyfqM8sbbgb/ZGcguPLmeXsDJ
+         EGWw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zhjLMKnK;
+       dkim=pass header.i=@linaro.org header.s=google header.b=uUbc12sC;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id gb18sor8113523ejc.54.2021.06.28.12.48.51
+        by mx.google.com with SMTPS id d6sor3816161qkl.177.2021.06.28.13.02.12
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 28 Jun 2021 12:48:51 -0700 (PDT)
+        Mon, 28 Jun 2021 13:02:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zhjLMKnK;
+       dkim=pass header.i=@linaro.org header.s=google header.b=uUbc12sC;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc:content-transfer-encoding;
-        bh=xDJV9JWzwK2+wQoOTCATHcYzNEtTWMGbBkjQrsgzQvE=;
-        b=zhjLMKnKQMlokFYJdAnZI0fSW/Lhy06pNBFhyaf1ElQu9p7vMGsNVf/gCPQKS1/swL
-         nbLAuz5oUke6jVA8BSiHTsWiWv8DOJI8VU2OlSd9pXzOPxHSarPusNpqBczuP6tn8ZdT
-         fOs3wSF4MG0LeZZZ3Xpe5NaSxKL9gyXPYxlEdWqZivTpBS3GPdm7tVK6l9/FMYP/Rn1M
-         3s88USEOBHUNxqWZ+I54XPm7V9d1ADPcHYJ/1od8jX3OlEzOUHwOJuMpkzMQjmFX9tS/
-         4QcOtssIsK6MFY51K5JiZwuYmADrKIJK/KMO/iNqKs8oUl9GQkGqQ7eV8ISXeJkbXjx3
-         UBJQ==
+        bh=SJGXWSQqZqpp78kNZXI1pjCnN4IFLVvgnZNfWDe9g+8=;
+        b=uUbc12sC5H8QxpgmHay1oM/EJglgmL2ipkNUMxNWLPJ/umMNcGU5foZmp22oiBHtVS
+         33oZQUYOFcaodFWuVyxJrV6SGxT+VvJBqdeVfi47fESrWRmUny1SFvQsqZTdAcmx4Hdc
+         oDb92TUP6r955N8DPtw+G1GdJszVgOXcn6N/n7837o1gJIs8/fCiL098JGgOijP6ugJH
+         lMMnzdDyyD4CfXXdAfmT9Dg8TcnBYRJINwVAdnFWtNGVZ2vDYqy8xwVIB4gJ6wLpzRJp
+         TcZDDQ7sXGwDgnfoxC3yjtDQw8O0Qho2wcx8DwiJHlTWAgCFzWf7tTf69L83/dWAl6lx
+         6Oiw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc:content-transfer-encoding;
-        bh=xDJV9JWzwK2+wQoOTCATHcYzNEtTWMGbBkjQrsgzQvE=;
-        b=mRecx5O0mnL3zwvd0B6y9qEI678IO0ypZVY9mCy08sTPnDx6TfuIKOO1B9HqjZiC97
-         mBsAnhdooCpx36ZMETKsaFvv5IRMagy+GSbG9Lra603GTrel6/VNYAmaOAilBu6hy2t+
-         i2jcV9zeXEUqbnowUoLCa2TDObLkyyW0Ll3NOUi87N1lyw10VwML3dC18P+rYDgeAjd0
-         RQ0x+4KFqEOXyGszs1wXqzvcGtvLizNIbFucXk1W78gW7bnoJMV9Jqt7Nv5SJMvvla5S
-         wMva5GQi2j3Hs/94lHeA2DCDOHjLlItcCk8jBf4SUs18OQSB1RN719Sp0tzG8GLPH2Om
-         Er4g==
-X-Gm-Message-State: AOAM5335Db1Xuz2p0pz6HaWAViH+lThe8KUxQ+fZcXLAEaqYOIqd3P5r
-	vInI2YEzPquAfJaUhLPesSzk51QabSNVwz8H1vFRZF9tb2s0rL5UEfw=
-X-Google-Smtp-Source: ABdhPJyjdXuA9RCzrsvzMxNHPE73DBrPAnHEkgFiL67rcPBUv16+cVezqO4uwS31SDAg7bB44ByTwA0pzX+JvxhS0F4=
-X-Received: by 2002:a17:906:a38d:: with SMTP id k13mr26534758ejz.250.1624909731126;
- Mon, 28 Jun 2021 12:48:51 -0700 (PDT)
+        bh=SJGXWSQqZqpp78kNZXI1pjCnN4IFLVvgnZNfWDe9g+8=;
+        b=MwyN5/jwPdxcoB5B9F7AFIdFGgFWESem+dYVPlVRkHLvO8Bib84wIrktqwvmjVCEBd
+         r49yY9yFhKrp2zeej+OH992e1MJ8yv90GVRntyN9vhdY13Imu4qbuDk0XYw0FJ1kAZ4K
+         WvOns68qHZt8BZFZfSwUq7P68Lo0tr30/cfFfJPGFTWBbTnDLh0HfZkXfgYtJR/UHsJa
+         EeQl+nnEqjghWNQxhIdmTFMjrQslw0SdDiFbb2USO+r9A9KWSQb9GYPPGm6guesvx5vr
+         YbsXy7OHvepdt1j67/ERxmKtrpeGME6NGx024kbNtiI8dqn3xwW+ocfxEFnMhsvk2G5u
+         kMdg==
+X-Gm-Message-State: AOAM53038CVTD2YRM8dhf3Lkc4Hy8wmIIGuEpoLcQskXG/u9ouIGCVF1
+	STmiZJtGBiuEZfVAOKpisfi51ef50ABRUgEZ6KsvyslQxEPD6+jM
+X-Google-Smtp-Source: ABdhPJydp+Xl452A5QRMgDvVJUgZTGlq67WeKkDRI0BlQbnhhZSR0awtyMLd8J3uSgiai/6oUSzLDzfgA+8XOs1WUEs=
+X-Received: by 2002:aa7:c644:: with SMTP id z4mr34760822edr.204.1624910532099;
+ Mon, 28 Jun 2021 13:02:12 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210623134756.30930-1-alex.bennee@linaro.org> <20210623134756.30930-2-alex.bennee@linaro.org>
-In-Reply-To: <20210623134756.30930-2-alex.bennee@linaro.org>
+References: <20210623134756.30930-1-alex.bennee@linaro.org> <20210623134756.30930-3-alex.bennee@linaro.org>
+In-Reply-To: <20210623134756.30930-3-alex.bennee@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 28 Jun 2021 20:48:13 +0100
-Message-ID: <CAFEAcA8TCTEBnjibsUTyqRXL0tWXGUih-TATNLHuWW-5=VQHLA@mail.gmail.com>
-Subject: Re: [PATCH v4 1/2] semihosting/arm-compat: replace heuristic for
- softmmu SYS_HEAPINFO
+Date: Mon, 28 Jun 2021 21:01:35 +0100
+Message-ID: <CAFEAcA-UPE5+moyVM-1pJ_gi9fj3t1nWtWfZaZ13hkd6-=L5nw@mail.gmail.com>
+Subject: Re: [PATCH v4 2/2] tests/tcg: port SYS_HEAPINFO to a system test
 To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
-	Andrew Strauss <astrauss11@gmail.com>, Keith Packard <keithp@keithp.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: 5coOPlCDVaRk
+X-TUID: 7nnoZq87xo26
 
-On Wed, 23 Jun 2021 at 14:47, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+On Wed, 23 Jun 2021 at 14:48, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
 te:
 >
-> The previous numbers were a guess at best and rather arbitrary without
-> taking into account anything that might be loaded. Instead of using
-> guesses based on the state of registers implement a new function that:
->
->  a) scans the MemoryRegions for the largest RAM block
->  b) iterates through all "ROM" blobs looking for the biggest gap
->
-> The "ROM" blobs include all code loaded via -kernel and the various
-> -device loader techniques.
+> This allows us to check our new SYS_HEAPINFO implementation generates
+> sane values.
 >
 > Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> Cc: Andrew Strauss <astrauss11@gmail.com>
-> Cc: Keith Packard <keithp@keithp.com>
-> Message-Id: <20210601090715.22330-1-alex.bennee@linaro.org>
-
-> @@ -349,4 +349,20 @@ int rom_add_option(const char *file, int32_t bootind=
-ex);
->   * overflow on real hardware too. */
->  #define UBOOT_MAX_GUNZIP_BYTES (64 << 20)
+> ---
+>  tests/tcg/aarch64/system/semiheap.c | 74 +++++++++++++++++++++++++++++
+>  1 file changed, 74 insertions(+)
+>  create mode 100644 tests/tcg/aarch64/system/semiheap.c
 >
-> +/**
-> + * rom_find_largest_gap_between: return highest address of ROM in region
+> diff --git a/tests/tcg/aarch64/system/semiheap.c b/tests/tcg/aarch64/syst=
+em/semiheap.c
+> new file mode 100644
+> index 0000000000..d5613dca59
+> --- /dev/null
+> +++ b/tests/tcg/aarch64/system/semiheap.c
+> @@ -0,0 +1,74 @@
+> +/*
+> + * Semihosting System HEAPINFO Test
 > + *
-> + * This function is used to find the highest ROM address (or loaded
-> + * blob) so we can advise where true heap memory may be.
-
-This doc comment doesn't match the function name or implementation.
-You probably want something like:
-
-rom_find_largest_gap_between: return largest gap between ROMs in given rang=
-e
-
-Given a range of addresses, this function finds the largest
-contiguous subrange which has no ROMs loaded to it. That is,
-it finds the biggest gap which is free for use for other things.
-
+> + * Copyright (c) 2021 Linaro Ltd
 > + *
-> + * Returns: RomGap, describing the largest section not intersected by
-> + * a ROM region.
+> + * SPDX-License-Identifier: GPL-2.0-or-later
 > + */
-> +typedef struct RomGap {
-> +    hwaddr base;
-> +    size_t size;
-> +} RomGap;
-
-I suspect if we ever run the doc-generator on this header it
-would get confused by the doc comment not coming immediately
-before the function prototype it is documenting.
-
-> +RomGap rom_find_largest_gap_between(hwaddr base, size_t size);
 > +
->  #endif
-> diff --git a/hw/core/loader.c b/hw/core/loader.c
-> index 5b34869a54..d4893fa8d8 100644
-> --- a/hw/core/loader.c
-> +++ b/hw/core/loader.c
-> @@ -1310,6 +1310,80 @@ static Rom *find_rom(hwaddr addr, size_t size)
->      return NULL;
->  }
->
-> +typedef struct RomSec {
-> +    hwaddr base;
-> +    int se; /* start/end flag */
-> +} RomSec;
+> +#include <inttypes.h>
+> +#include <stddef.h>
+> +#include <minilib.h>
 > +
+> +#define SYS_HEAPINFO    0x16
 > +
-> +static gint sort_secs(gconstpointer a, gconstpointer b)
+> +uintptr_t __semi_call(uintptr_t type, uintptr_t arg0)
 > +{
-> +    RomSec *ra =3D (RomSec *) a;
-> +    RomSec *rb =3D (RomSec *) b;
+> +    register uintptr_t t asm("x0") =3D type;
+> +    register uintptr_t a0 asm("x1") =3D arg0;
+> +    asm("hlt 0xf000"
+> +        : "=3Dr" (t)
+> +        : "r" (t), "r" (a0));
 
-/*
- * Sort into address order. We break ties between rom-startpoints
- * and rom-endpoints in favour of the startpoint, by sorting the 0->1
- * transition before the 1->0 transition. Either way round would
- * work, but this way saves a little work later by avoiding
- * dealing with "gaps" of 0 length.
- */
+You should include "memory" in the clobbers list here, or the compiler
+has license to assume that the semihosting call doesn't actually
+write to the struct info.
 
 > +
-> +    if (ra->base =3D=3D rb->base) {
-> +        return ra->se > rb->se ? -1 : 1;
-> +    }
-> +    return ra->base > rb->base ? 1 : -1;
-
-This has forgotten the "equality" case, which you will
-see if two blobs start at the same address (at least in
-theory; at the moment the rom blob loader will try to
-reject overlaps, though it might not do so forever).
-
+> +    return t;
 > +}
 > +
-> +RomGap rom_find_largest_gap_between(hwaddr base, size_t size)
+> +int main(int argc, char *argv[argc])
 > +{
-> +    Rom *rom;
-> +    RomSec *cand;
-> +    RomGap res =3D {0, 0};
-> +    hwaddr gapstart =3D base;
-> +    GList *it, *secs =3D NULL;
-> +    int count =3D 0;
+> +    struct {
+> +        void *heap_base;
+> +        void *heap_limit;
+> +        void *stack_base;
+> +        void *stack_limit;
+> +    } info;
+> +    void *ptr_to_info =3D (void *) &info;
 > +
-> +    QTAILQ_FOREACH(rom, &roms, next) {
-> +        /* ignore real rom blobs */
-
-They're all real rom blobs (arguably a fw_file blob is less real!). Maybe
-  /* Ignore blobs being loaded to special places */
-?
-
-> +        if (rom->mr || rom->fw_file) {
-> +            continue;
-> +        }
-> +        /* ignore anything finishing bellow base */
-
-"below"
-
-> +        if (rom->addr + rom->romsize < base) {
-
-  <=3D
-(we can ignore a rom that's 0x1000, size 0x1000 if our range starts at 0x20=
-00,
-because it covers [0x1000..0x1fff])
-
-> +            continue;
-> +        }
-> +        /* ignore anything starting above the region */
-> +        if (rom->addr > base + size) {
-
- >=3D
-(if our region is 0x1000, size 0x1000, we can ignore a rom starting at 0x20=
-00)
-
-> +            continue;
-> +        }
+> +    ml_printf("Semihosting Heap Info Test\n");
 > +
-> +        /* Save the start and end of each relevant ROM */
-> +        cand =3D g_new(RomSec, 1);
-> +        cand->base =3D rom->addr;
+> +    /* memset(&info, 0, sizeof(info)); */
 
-  cand->base =3D MAX(rom->addr, base);
+Why is this here but commented out ? (If you want to zero initialize
+the struct, using "=3D { }" when you define it above is simpler.)
 
-(otherwise you can get exciting special cases like
-"cand->base - gapstart" being negative in the loop below)
-
-> +        cand->se =3D 1;
-> +        secs =3D g_list_append(secs, cand);
-
-The glib docs
-https://developer.gnome.org/glib/stable/glib-Doubly-Linked-Lists.html#g-lis=
-t-append
-say that g_list_append() has to traverse the entire list to find the
-tail in order to append the new item, making this algorithm
-accidentally-quadratic. Since we're about to sort the list, we don't
-care about its order now and can use g_list_prepend() instead.
-
+> +    __semi_call(SYS_HEAPINFO, (uintptr_t) &ptr_to_info);
 > +
-> +        if (rom->addr + rom->romsize < base + size) {
-> +            cand =3D g_new(RomSec, 1);
-> +            cand->base =3D rom->addr + rom->romsize;
-> +            cand->se =3D -1;
-> +            secs =3D g_list_append(secs, cand);
-> +        }
-> +    }
-
-We need to append a sentinel to the list to avoid having
-to special case for "the big gap goes all the way to the end
-of the range":
-     cand =3D g_new(RomSec, 1);
-     cand->base =3D base + size;
-     cand->se =3D 1;
-     secs =3D g_list_prepend(secs, cand);
-
-(Maybe a helper function so you can write
-   add_romsec_to_list(secs, base, se);
-rather than having variants on these four lines in three places?)
-
-> +
-> +    secs =3D g_list_sort(secs, sort_secs);
-> +
-
-I would favour initializing gapstart here, just because this
-tail end of the function is the only place where it's used, and
-it makes the algorithm a bit easier to understand if you don't
-have to look 30 lines back up the function to see what its
-initial value is.
-
-> +    for (it =3D g_list_first(secs); it; it =3D g_list_next(it)) {
-> +        cand =3D (RomSec *) it->data;
-> +        if (count =3D=3D 0 && count + cand->se =3D=3D 1) {
-> +            size_t gap =3D cand->base - gapstart;
-> +            if (gap > res.size) {
-> +                res.base =3D gapstart;
-> +                res.size =3D gap;
-> +            }
-> +        } else if (count =3D=3D 1 && count + cand->se =3D=3D 0) {
-> +            gapstart =3D cand->base;
-> +        }
-> +        count +=3D cand->se;
+> +    if (info.heap_base =3D=3D NULL || info.heap_limit =3D=3D NULL) {
+> +        ml_printf("null heap: %p -> %p\n", info.heap_base, info.heap_lim=
+it);
+> +        return -1;
 > +    }
 > +
-> +    g_list_free_full(secs, g_free);
-> +    return res;
+> +    /* Error if heap base is above limit */
+> +    if ((uintptr_t) info.heap_base >=3D (uintptr_t) info.heap_limit) {
+> +        ml_printf("heap base %p >=3D heap_limit %p\n",
+> +               info.heap_base, info.heap_limit);
+> +        return -2;
+> +    }
+> +
+> +    if (info.stack_base =3D=3D NULL) {
+> +        ml_printf("null stack: %p -> %p\n", info.stack_base, info.stack_=
+limit);
+> +        return -3;
+> +    }
+> +
+> +    /*
+> +     * We don't check our local variables are inside the reported
+> +     * stack because the runtime may select a different stack area (as
+> +     * our boot.S code does). However we can check we don't clash with
+> +     * the heap.
+> +     */
+> +    if (ptr_to_info > info.heap_base && ptr_to_info < info.heap_limit) {
+> +        ml_printf("info appears to be inside the heap: %p in %p:%p\n",
+> +               ptr_to_info, info.heap_base, info.heap_limit);
+
+I'm not sure this test is valid -- the 'struct info' is on our stack,
+so it could be anywhere in RAM, including possibly in the big
+range we got back from SYS_HEAPINFO.
+
+You could if you liked check that for instance the address of 'main'
+is not inside the heap (assuming that you load this test case with
+the ELF loader, it should be in a rom blob and thus excluded from
+the heap range.)
+
+> +        return -4;
+> +    }
+> +
+> +    ml_printf("heap: %p -> %p\n", info.heap_base, info.heap_limit);
+> +    ml_printf("stack: %p <- %p\n", info.stack_limit, info.stack_base);
+> +    ml_printf("Passed HeapInfo checks\n");
+> +    return 0;
 > +}
 
-> +static LayoutInfo common_semi_find_bases(CPUState *cs)
->  {
-> -    MemoryRegion *subregion;
-> +    FlatView *fv;
-> +    LayoutInfo info =3D { 0, 0, 0, 0 };
-> +
-> +    RCU_READ_LOCK_GUARD();
-> +
-> +    fv =3D address_space_to_flatview(cs->as);
-> +    flatview_for_each_range(fv, find_ram_cb, &info);
->
->      /*
-> -     * Find the chunk of R/W memory containing the address.  This is
-> -     * used for the SYS_HEAPINFO semihosting call, which should
-> -     * probably be using information from the loaded application.
-> +     * If we have found the RAM lets iterate through the ROM blobs to
-> +     * workout the best place for the remainder of RAM and split it
-> +     * equally between stack and heap.
->       */
-> -    QTAILQ_FOREACH(subregion, &get_system_memory()->subregions,
-> -                   subregions_link) {
-> -        if (subregion->ram && !subregion->readonly) {
-> -            Int128 top128 =3D int128_add(int128_make64(subregion->addr),
-> -                                       subregion->size);
-> -            Int128 addr128 =3D int128_make64(addr);
-> -            if (subregion->addr <=3D addr && int128_lt(addr128, top128))=
- {
-> -                return subregion->addr;
-> -            }
-> -        }
-> +    if (info.rambase && info.ramsize) {
-> +        RomGap gap =3D rom_find_largest_gap_between(info.rambase, info.r=
-amsize);
-> +        info.heapbase =3D gap.base;
-> +        info.heaplimit =3D gap.base + gap.size;
->      }
-
-You don't want to ignore info.rambase =3D=3D 0 -- it could well be that
-the RAM in the system starts at address zero. It's only size of 0
-that would indicate we failed entirely to find any RAM.
+It would also be useful to check that you can write to the memory and
+read back the value written (ie that we have not been given
+back a range that's read-only or which is not backed by anything).
+(You might need to jump through a hoop or two to check where your
+current stack is before potentially stomping on it...)
 
 thanks
 -- PMM

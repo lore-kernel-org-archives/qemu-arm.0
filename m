@@ -1,128 +1,161 @@
-Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp4996346lfg;
-        Tue, 29 Jun 2021 07:30:11 -0700 (PDT)
-X-Received: by 2002:a17:903:248f:b029:128:d5ea:18a7 with SMTP id p15-20020a170903248fb0290128d5ea18a7mr11435378plw.83.1624977011482;
-        Tue, 29 Jun 2021 07:30:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1624977011; cv=none;
+Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp4999834lfg;
+        Tue, 29 Jun 2021 07:34:07 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyKSFl4kBPXvumndDA6XdAnJDcFXj+CIyF0fQxHJ8LOERF5MB6ygIdBuhCLQbnVZM8t/4o3
+X-Received: by 2002:a25:d88a:: with SMTP id p132mr3862510ybg.409.1624977247799;
+        Tue, 29 Jun 2021 07:34:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1624977247; cv=none;
         d=google.com; s=arc-20160816;
-        b=McbOZgHXLsDfSi+sbUZ3/mt1QwvRALK+4A8todkOdUAV7gaZGR9qNIWIsi93ZoBIG+
-         oR7c1my+PRAzVAMxqiL32vsjogaN/oAya38DW9FKdABfSgHv4drtUFDy5Bp+fqeszb9E
-         ASom/fsEyX9SeUyTJJ9kov471dR4ZN2MpUfZaKtJ96WGoa2DHcqSP9UKM0TztuBVvmeC
-         QOYjnzi7MUYb7xH+fV/liV1+Do3LK9m9QFc/GKQ7Oxdgz9JLEczvMafDuNEz2ijxyqv/
-         9PIp9OVrEox+l2WGovyZM6/E8hNAOotEs3dYhM1Hd+1wSJmI6MB4BDbIxyIQJhnE69V4
-         4xGQ==
+        b=DgQrRIoLIs4d0gKZl1oyIIkCungmIAS+rlX+CayRdH+GBjtiY4nu/JCVxN7+EqdFkM
+         I1zNxTABjxDJ2fOFVn2cRzL5xOXS2LyWsCXQCODAY2YXrKKo95NtC+BC3ERShoRuCUdA
+         G8RNTQoiODlwRoBLXN4MtaZJs3pbDfibOY5JYPDCscylTHA6/0XnRhmXSZd8dEV2MF/1
+         tZE278bmQBzIdiWSCSxHxQocf9CrJ8elmtQV6ej7+76hTI8qmXClIrt2MmbrpNFJi1Vl
+         +Xdj2WSM4xRsYHh03Koa4q4oQcFAS+/CLLwQZP+Br4ejNYVbdsz+tgtud8CQD44z3qAH
+         dmSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=uJ9HqMO2697to4vZ9XNe3EnzXOWf5jyma7zfl8CPKVA=;
-        b=VuToSTJfTYyejy4WhzaDPUH0jrvrrOM5OcU4BlyIYauyZzTh3Ba8oYTOkSYtRTWggM
-         TEd4D6yJSpbUVh9sxLR+uM4nfOtQZQ5L6yoCW4ZCqJblpy9gnjr9lzWFqY8BbUIdBn09
-         UGyntv76huK+DhiM5x7RQzGcAyZdSEOd8DPlmIjMxiyG6zItaYM9ePkCDGBhtY7t0Evy
-         gAmkEvacLEAxXHpopADzbeLZjnMc52l4Ocf+UlCZ6v/7oJ7noXlHtCRdlqID02r4zR2V
-         3wfsCjs/rb37IIqMPH9j1kd3UIND+CTu/omCp9bxxhi5YoZeZ+cOqUripmeI4+c5UkU4
-         /1WA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from;
+        bh=3V7Z5GRJ/pb1gg4Cjz4N+Yq7pKp6BHcZbcUaVuvfdMM=;
+        b=DgYA3GNLt+63ySJSmuDr8RlKx/d/euUc8cECV7GhpEFoP3e9yineoUJpb4mRdQRZFM
+         XgVSYJb4389xnvynI0RBLt2FOPxxjHTP8mS9x5oCTYAhkDaj3NwFcRl+50gYrybCguEa
+         Y+vi37lAPSOJh46LYitkYhgQrFLa2WzxFmwTWiUfsljRlNl+DeoepjPWkkizSJ1OHpuL
+         cVM8qX+SB2vgtRa10V4I7nx5n4hIX5YghIaVufN+KPiMxzyAViSEEaNhHYiS2CHe5xT0
+         Uw86P1/d5cR9UOgeCHum4mFLVjK/BC2yxvDZRshvuJK7IV9QMr3GRTNtCsbmlliY6ODh
+         apxw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YzuEoaKm;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id q12sor7870458pgb.60.2021.06.29.07.30.11
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id q20si4196389ybg.420.2021.06.29.07.34.07
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 29 Jun 2021 07:30:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 29 Jun 2021 07:34:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YzuEoaKm;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=uJ9HqMO2697to4vZ9XNe3EnzXOWf5jyma7zfl8CPKVA=;
-        b=YzuEoaKmqQ3lJFe8lHw/9GsBPnT4Dht+sgpRpAUQJgwkEfniTKwGdAV3Gdww0ljXRq
-         jPi4bKR4oQoAcpvK/5h7nhOq7sb4h4alpB+mzPGm4yWj4a76Rj/HA3jozSsrNHXj8L9a
-         M3stxHYSf+GGwbjr1PcF/l4f+D8KNhglYc/+SdR8ZBoQ/gnIuzJ6g/YcmJkTJz1riBai
-         8MGZrSbnVbJ0mcTFv7facTad1BI1RoNz8HoAIQ4IwH8sCCNwa4mUJVhfB3mfu0h7ueJl
-         2DBWGWGhw82qQFahD/ScNTgKpcXAdk+bI1p5oNkwfWqC7+KpPYy/xBlFsZRVIwzqXB1j
-         YhSw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=uJ9HqMO2697to4vZ9XNe3EnzXOWf5jyma7zfl8CPKVA=;
-        b=hmTslQmlvJ7564eYX2OaqCsyNgOhqiRmZev7EEXQvUW5EV5entTb02BGrLtKG5HHGd
-         5yb34kDr8Rur//UizWNc4PWjLk63S3fZT/lR/iidZ7kjW8Pmd8xNvIHIYxKrh7fSO6F3
-         ZfmEXZAZCxGvTe6cZxPOgF1s+Fw+OYZwtjRlq5zaI4IFkW1V0mmElDtj0wllfewL0a+o
-         CRuSta4q4u/QVrzoVWIT5l1ZV9eBTCglAvQi82TawNFQOrUKBEaIVnGUWif0Id7lXTYq
-         I7sFn7iS/Lq5S6MwPtNU997Z7dSOcCMRjuH1jX6erK1KgksCfnFRXzD1oYKs72IR6OQm
-         iPew==
-X-Gm-Message-State: AOAM532ptsloG0dYx80z9iQRp5qzsyoLyBtQoDDpJfvojGnfDMlLcs4b
-	qnCOpJJ6EKa9FVOQfQXoUzyuLFc3
-X-Google-Smtp-Source: ABdhPJwARwGNz+DoVFRG3P3+3Qx034XeQtp4NPxhByX13GzgKPWRf23OZbE2UM09bHvBQTJUUccOvg==
-X-Received: by 2002:a63:3105:: with SMTP id x5mr24302478pgx.364.1624977010970;
-        Tue, 29 Jun 2021 07:30:10 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.1.11] ([71.212.149.176])
-        by smtp.gmail.com with ESMTPSA id t3sm18004378pfl.44.2021.06.29.07.30.10
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 29 Jun 2021 07:30:10 -0700 (PDT)
-Subject: Re: [PATCH v2 03/23] linux-user/arm: Split out v2_frame
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:36248 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lyEoR-0000eT-5V
+	for alex.bennee@linaro.org; Tue, 29 Jun 2021 10:34:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53906)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1lyEef-0006ip-Bf; Tue, 29 Jun 2021 10:24:02 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:32658)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1lyEec-0005wG-Fl; Tue, 29 Jun 2021 10:24:00 -0400
+Received: from pps.filterd (m0098396.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
+ 15TE3ptX051963; Tue, 29 Jun 2021 10:23:44 -0400
+Received: from ppma06fra.de.ibm.com (48.49.7a9f.ip4.static.sl-reverse.com
+ [159.122.73.72])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 39g4v1gr90-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 29 Jun 2021 10:23:43 -0400
+Received: from pps.filterd (ppma06fra.de.ibm.com [127.0.0.1])
+ by ppma06fra.de.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 15TEF8rs013009;
+ Tue, 29 Jun 2021 14:23:41 GMT
+Received: from b06cxnps4076.portsmouth.uk.ibm.com
+ (d06relay13.portsmouth.uk.ibm.com [9.149.109.198])
+ by ppma06fra.de.ibm.com with ESMTP id 39dugh8pt1-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 29 Jun 2021 14:23:41 +0000
+Received: from d06av21.portsmouth.uk.ibm.com (d06av21.portsmouth.uk.ibm.com
+ [9.149.105.232])
+ by b06cxnps4076.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 15TENdd633423758
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 29 Jun 2021 14:23:39 GMT
+Received: from d06av21.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 175F45217C;
+ Tue, 29 Jun 2021 14:23:39 +0000 (GMT)
+Received: from smtp.tlslab.ibm.com (unknown [9.101.4.1])
+ by d06av21.portsmouth.uk.ibm.com (Postfix) with SMTP id C59245215B;
+ Tue, 29 Jun 2021 14:23:38 +0000 (GMT)
+Received: from yukon.ibmuc.com (unknown [9.171.54.151])
+ by smtp.tlslab.ibm.com (Postfix) with ESMTP id EF78122007E;
+ Tue, 29 Jun 2021 16:23:37 +0200 (CEST)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>
-References: <20210618192951.125651-1-richard.henderson@linaro.org>
- <20210618192951.125651-4-richard.henderson@linaro.org>
- <CAFEAcA92sHgV1DSKv6XaSBcuyaSfOLhm4OyH5hNsTJTVCx+Tkw@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <66be19d6-507b-8a28-1544-80727abdbadc@linaro.org>
-Date: Tue, 29 Jun 2021 07:30:09 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+Subject: [PATCH 0/4] Aspeed: I2C extensions
+Date: Tue, 29 Jun 2021 16:23:32 +0200
+Message-Id: <20210629142336.750058-1-clg@kaod.org>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA92sHgV1DSKv6XaSBcuyaSfOLhm4OyH5hNsTJTVCx+Tkw@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-TUID: ftH4z59p4HW2
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: 0sCPDCOhgeQjsY3NmXzvMR3nR5ZfCfHx
+X-Proofpoint-GUID: 0sCPDCOhgeQjsY3NmXzvMR3nR5ZfCfHx
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.790
+ definitions=2021-06-29_06:2021-06-28,
+ 2021-06-29 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ mlxscore=0 lowpriorityscore=0
+ bulkscore=0 clxscore=1034 suspectscore=0 mlxlogscore=614 spamscore=0
+ phishscore=0 adultscore=0 impostorscore=0 priorityscore=1501
+ malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2104190000 definitions=main-2106290095
+Received-SPF: softfail client-ip=148.163.156.1; envelope-from=clg@kaod.org;
+ helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -11
+X-Spam_score: -1.2
+X-Spam_bar: -
+X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 02uogKbMuE51
 
-On 6/29/21 6:53 AM, Peter Maydell wrote:
-> On Fri, 18 Jun 2021 at 20:32, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
->>
->> Split out a helper function to test for a v2 signal frame.
->>
->> Cc: qemu-arm@nongnu.org
->> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
->> ---
->>   linux-user/arm/signal.c | 13 +++++++++----
->>   1 file changed, 9 insertions(+), 4 deletions(-)
->>
->> diff --git a/linux-user/arm/signal.c b/linux-user/arm/signal.c
->> index 32b68ee302..cb65623965 100644
->> --- a/linux-user/arm/signal.c
->> +++ b/linux-user/arm/signal.c
->> @@ -165,6 +165,11 @@ static inline int valid_user_regs(CPUARMState *regs)
->>       return 1;
->>   }
->>
->> +static bool v2_frame(void)
->> +{
->> +    return get_osversion() >= 0x020612;
->> +}
-> 
-> Not sure how much we care about supporting claiming to be a 15-year-old
-> kernel any more (especially since we set UNAME_MINIMUM_RELEASE to 2.6.32...)
-> so it's awfully tempting to just blow away the v1 frame support instead...
-> 
-> Anyway
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Hello,
 
-I hadn't noticed the minimum release setting.  Yes, I think it would be better to remove 
-the v1 support instead of bodging around it like this.
+Here is a small series of patches I have been collecting from Joel. It
+populates the Aspeed machines with more I2C devices and adds a minimal
+model for the DPS310 sensor model.
 
+The AST2600 SoC revision is updated to A3 and the A1 is dropped as it
+didn't seem useful to keep multiple revision of a SoC.
 
-r~
+If all is fine, I will send a pull request with these patches.
+
+Thanks,
+
+C.=20
+
+Joel Stanley (4):
+  arm/aspeed: rainier: Add i2c eeproms and muxes
+  aspeed: Emulate the AST2600A3
+  hw/misc: Add Infineon DPS310 sensor model
+  arm/aspeed: Add DPS310 to Witherspoon and Rainier
+
+ include/hw/misc/aspeed_scu.h |   2 +
+ hw/arm/aspeed.c              |  54 ++++++++-
+ hw/arm/aspeed_ast2600.c      |   6 +-
+ hw/misc/aspeed_scu.c         |  36 ++++--
+ hw/misc/dps310.c             | 227 +++++++++++++++++++++++++++++++++++
+ hw/arm/Kconfig               |   1 +
+ hw/misc/Kconfig              |   4 +
+ hw/misc/meson.build          |   1 +
+ 8 files changed, 316 insertions(+), 15 deletions(-)
+ create mode 100644 hw/misc/dps310.c
+
+--=20
+2.31.1
+

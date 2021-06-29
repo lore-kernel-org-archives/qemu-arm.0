@@ -1,779 +1,210 @@
-Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp4370160lfg;
-        Mon, 28 Jun 2021 15:04:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyNtzTNYFa9rkdfR2CNUs0TznxBT9WXxKHvlN1k9oSalvE8ELq088hbrR1BQbduUNIYMPr2
-X-Received: by 2002:a17:906:d149:: with SMTP id br9mr25376898ejb.508.1624917874262;
-        Mon, 28 Jun 2021 15:04:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1624917874; cv=none;
+Received: by 2002:a0c:fe44:0:0:0:0:0 with SMTP id u4csp809481qvs;
+        Tue, 29 Jun 2021 08:57:44 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw2IF7tUyd1G5dIULs38Heo4duE/h96SUcU3pJ8QnD/tLEVp/p1UnoIZtbkhVk0QgHrdJ1q
+X-Received: by 2002:a05:6102:227c:: with SMTP id v28mr25157900vsd.7.1624982263877;
+        Tue, 29 Jun 2021 08:57:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1624982263; cv=none;
         d=google.com; s=arc-20160816;
-        b=JOMNltl5WrHKi1vq3Hy1NolBLu2A6R2GVYEpvZgUeEDFRCIFSMfUQlYvpls+xgKoXR
-         vmKZzfDSim4mkTFVC775Xo5GvCquR8gIghTnCHXwRi9UYBIygTOib54lwhD+o6ysEvX1
-         +LYdX7Sb3IL7qZ0xD2QAcG7LrbJZMoNQWny4VnQ/bFOhg5Od3oB+pF6kXKaRSQOIWbvu
-         eUcDD+vzrqZW3JyfVPUDh9BPTty/mj9lQrak4ztlg+fDBwaYUxEM7isX3V+kh7KfgKEz
-         5SD3vizEX2rEbHNCkiv7hYWE7wdne2yfaAqDbK4a8ELo9j2+LcTG1kbHefPhH+V9VkZv
-         JbrA==
+        b=OvDwnzG1nWWyRiwqoFVFwXJWUu6cTevN+xMR0cX3NfE7GQz5uiQeSp3JzbHaaolkHk
+         9gneObqqWr8bPZx1p08rnE5O4DwMAqtnMDqkCDUXLSMkYS0bn/JVATJuC4/6Q53BtcGG
+         Vim9/vpHPWPjd3shQW2HinNhEWhxYI5JvsGbYF1ghu1GWLfGRNKqnH57wIou1pDEx7XK
+         hrTuqcS5F11jSBfNcw8ebqoczLFi1jUFNAVUACF/x0gNBucrVZhWsG+arDsWV3W/8uMp
+         8xIUv4EP0Xp3jcx6o9ZFc6AUeMEdokdYOf+25rPa8VeVA1q11OrtzDju0VK4hBJseLH7
+         9NYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:date:to:from:subject:message-id
-         :dkim-signature;
-        bh=Wgoo+pEKOSEou1TtqRefcsq064yJ7WZCulP0BW99HMA=;
-        b=Bnay6V7fnavij/Vh1I8id+CRunTIGfdHbwAvP5jembWj88UMfP0hDMa7MP70RH6LbB
-         HiolQ+oq92r27BMzmYTK/vBE8UvlZgPICNFIWzXJieTpRN0RGVgzSfF5EEhn56TajvCO
-         T3RNBA7F7/v31UrCpWEvhZGqiU51UofSiixmGHG8Dzs4k5+AFAIyGUQ/DKkNr9Ead4+5
-         OxW6uN6WCLhC0P8EZUKJV7k6y91HNUfaqkSxNK4DihvXD5ZJIBu2CR4uQXl7f4rvSEqG
-         J59y0mv1Uk14EwRl6nDLvOEtmGmDR+wZhVW730WT2VZYUNXE017vWynkjcILwSJsjoZ9
-         prAQ==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=P3KcIrhSWcSf8wXx42x1OWdOMEZCI3OBkhHevGPtBnk=;
+        b=uHW+N8rJ++2vH4hkeVddtOI9qdF+pz3t8oNkNH84pR0ET1/HsRdRa3En6cnghGeBg9
+         heQsZ3CHXD4LnPoDO0KB2jXwvSde+K4jpUfQQSivXw/+FNlwDwaVoZF6YvEl4EyRqsYv
+         jzYOV1bfrSu1kGrEPpQ4aRtyWxtAACd5kSvOSAk4i6Dqak6/aR1xpoXLdpUE/DkdjhBE
+         vq2lCzKc/08eerqeLY3IGwzItHVN6mKHVcQl2PnUfQrld30ymAEVEizsN1S+jpoGOncw
+         tAn9i1Z21bWAwBZ7hfWQEs31KfW0rm77qssc0oFQDrY3Ff4uUuBafptQ4lx0gt3LP5Wi
+         8/UA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rOY80B6J;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="ox/zXMUg";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j2si13771429ejo.509.2021.06.28.15.04.33
+        by mx.google.com with ESMTPS id y6si12754145vko.56.2021.06.29.08.57.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 28 Jun 2021 15:04:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 29 Jun 2021 08:57:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rOY80B6J;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="ox/zXMUg";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39364 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50872 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lxzMn-000756-5Y
-	for alex.bennee@linaro.org; Mon, 28 Jun 2021 18:04:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50332)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lyG7L-0006td-6P
+	for alex.bennee@linaro.org; Tue, 29 Jun 2021 11:57:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49978)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shashi.mallela@linaro.org>)
- id 1lxzMZ-00072X-2Y
- for qemu-arm@nongnu.org; Mon, 28 Jun 2021 18:04:19 -0400
-Received: from mail-qk1-x734.google.com ([2607:f8b0:4864:20::734]:36475)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lyG6Z-0005uK-46
+ for qemu-devel@nongnu.org; Tue, 29 Jun 2021 11:56:55 -0400
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534]:43931)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shashi.mallela@linaro.org>)
- id 1lxzMQ-0003na-Mz
- for qemu-arm@nongnu.org; Mon, 28 Jun 2021 18:04:18 -0400
-Received: by mail-qk1-x734.google.com with SMTP id l16so9771039qkp.3
- for <qemu-arm@nongnu.org>; Mon, 28 Jun 2021 15:04:10 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lyG6X-0007fK-0G
+ for qemu-devel@nongnu.org; Tue, 29 Jun 2021 11:56:54 -0400
+Received: by mail-ed1-x534.google.com with SMTP id w17so16469915edd.10
+ for <qemu-devel@nongnu.org>; Tue, 29 Jun 2021 08:56:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:subject:from:to:cc:date:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=Wgoo+pEKOSEou1TtqRefcsq064yJ7WZCulP0BW99HMA=;
- b=rOY80B6JZQ6ZpIaweDUEzFtDEM5dZwa6CZUKnU0CCwJ6saHxP+kEGAA90XJbB1H7Wt
- DlOFkOx6wtOZz5wkXQ/Y+AH5qrLTRfXvakyx6dzBn3RnQu17H4tnXtE92VB2yqX7SnJ5
- 42d9ZwYTuM7TjYh1bCs5ejTfkDDCi46eBGDyxm7WxAvqVbKnvnBK1wXWMQa9ZsxgZq+X
- E5tLPpHVWVuHytWJ8VS97rVp3YqgMMxk0gux/BTAlZmexCEz4obo9cBYlnNr3q9Dcuqs
- AkfgqwtNhranDhFfnf5BWaoKYf81EfdXWhFPSUrItb28rP4WCBvyBDqZbxk7CXP4d+gB
- 2qlA==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=P3KcIrhSWcSf8wXx42x1OWdOMEZCI3OBkhHevGPtBnk=;
+ b=ox/zXMUglL6z00lJAkRsuumKi7h7VLYGzBkbbl0TfPX96OrZ1atoAEErc25MQHwn/I
+ gXT4Ivctu6aAI+LbVNwdBuE58GypDTTPog43EYxfpbr+WvcXTp5BEl6N/9ZNYxMopqVj
+ zANxp7HBgfmvs0wFxTnS50Kr9IMUMERWaSBQCit9ibglgk6aXqFQZbBkxTXmCdRR57hp
+ ae0BM6Ik0FBjnv5neNULXS+wiVeW3o1cdu7Wr54Z5IeLUqGAd7/IbeaHxv51HmXLOWJc
+ VihpbUzZTgY1LRa38dykFLjHelQWv4qwyYQ9U3oQ66Yt4yfxJfsNjoN914KvBjUTPzaM
+ RtrA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=Wgoo+pEKOSEou1TtqRefcsq064yJ7WZCulP0BW99HMA=;
- b=Z/veHBf/MIyRt6+ZfYBnwhbMiebuMev2RnUpdEb/uFr2rLJlWrfFDU9tIZnTBVVew4
- H+vJzHhnjas6+AHcfupjSaDbu4XsBjKHChyV9YBNIm0iCkysLb+iQs69JvCRG3mirqWb
- Bs93cNBsZ3KR7+SRxX3SlylfSqZ9XPQU5jprz+tmZUcAYqTuMzkrnevGXmslVDADlwN6
- +UMN7ziVOzpJHUHbkjjF/bZvFPvWMvn2k+Q5eay5WbM4HI7D9Rn83bs8bOglf6kjtwF/
- tKNQOEeQAkH1W7nKxtjUoa+/PO/rdA7NbFrTLaBByK94hriQ4ybju19VWJz57mjLsAt2
- Dwwg==
-X-Gm-Message-State: AOAM532nd+lBXECsAlHlEBkkK7nDQ/9DmGa/GA6qOcTwoZKGJ38bjYiI
- 1dw0qfxQu/1ed9pPE6PuQBmVHg==
-X-Received: by 2002:a05:620a:294a:: with SMTP id
- n10mr27586935qkp.164.1624917849561; 
- Mon, 28 Jun 2021 15:04:09 -0700 (PDT)
-Received: from localhost.localdomain
- (bras-base-stsvon1503w-grc-22-142-114-143-47.dsl.bell.ca. [142.114.143.47])
- by smtp.gmail.com with ESMTPSA id m3sm11446352qkh.135.2021.06.28.15.04.08
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 28 Jun 2021 15:04:09 -0700 (PDT)
-Message-ID: <e4f1d0d2cfb359ae98af9be55338e2176b55ed8e.camel@linaro.org>
-Subject: Re: [PATCH v4 4/8] hw/intc: GICv3 ITS Command processing
-From: shashi.mallela@linaro.org
-To: Eric Auger <eauger@redhat.com>, peter.maydell@linaro.org,
- leif@nuviainc.com,  rad@semihalf.com
-Date: Mon, 28 Jun 2021 18:04:08 -0400
-In-Reply-To: <417632ff-7de6-b092-5853-a7df225a30c3@redhat.com>
-References: <20210602180042.111347-1-shashi.mallela@linaro.org>
- <20210602180042.111347-5-shashi.mallela@linaro.org>
- <bed8a5fa-2963-07c8-eefa-00f28a7401eb@redhat.com>
- <2425778b1d615d72153233cb321cf56677ebba5a.camel@linaro.org>
- <417632ff-7de6-b092-5853-a7df225a30c3@redhat.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=P3KcIrhSWcSf8wXx42x1OWdOMEZCI3OBkhHevGPtBnk=;
+ b=t71c493R3q5ws0Dwwshf6SeRdZTYW2hTAvCdwgouOtNzm6O+BO6AT/yIE2DX3mWh3M
+ kFFoMviGqFvbZWt0wlrjr4mf2Xj5jGrTTikF199jAH7dCZcpzlmT/4l/Zh2xUh5j4Lp6
+ X0KjFFj/rPAhsEL34cN+G8vJND70TLx8MvujDI9bS+n9LUi6qtf1O3IKsVaMDDW1r8l1
+ SAy8+vi9xIfFxNvIUCAYVg+o+KHDk9SizsdcBfMu0lfvuT7ihpoF6AgWOddVBLwwQtjY
+ vA5oPmQKDRvrQT/nslsdzkMFT6+28v2qp4zBG9t30wKtDGLfGtt9Cs/012PQZxX0iVg0
+ Xj7A==
+X-Gm-Message-State: AOAM532w4929hQrSwMm5S9laaquzhl04GJbuhnE6xYmVlMmcW2x7LCwK
+ ronYavONI2P3twcW5abwnZZMlnHvyNGKhWqtECMbWg==
+X-Received: by 2002:a05:6402:1911:: with SMTP id
+ e17mr40753241edz.36.1624982211154; 
+ Tue, 29 Jun 2021 08:56:51 -0700 (PDT)
+MIME-Version: 1.0
+References: <20210628135835.6690-1-peter.maydell@linaro.org>
+ <20210628135835.6690-16-peter.maydell@linaro.org>
+ <b12b3fb9-8919-8e87-1aa9-e54807bf82af@linaro.org>
+ <42d6f71c-6d91-1ae2-bc13-39cb5a70b1cc@linaro.org>
+In-Reply-To: <42d6f71c-6d91-1ae2-bc13-39cb5a70b1cc@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 29 Jun 2021 16:56:14 +0100
+Message-ID: <CAFEAcA_9Ss6LffwquHbssZ=XUSWAsL6KkKCPs1N3q44aG5m3Hw@mail.gmail.com>
+Subject: Re: [PATCH 15/18] target/arm: Implement MVE long shifts by immediate
+To: Richard Henderson <richard.henderson@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5 (3.28.5-16.el8) 
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::734;
- envelope-from=shashi.mallela@linaro.org; helo=mail-qk1-x734.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::534;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x534.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LzEWpnJ1SmPv
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 0jfoPoTdOcs6
 
-Hi Eric,
+On Mon, 28 Jun 2021 at 18:45, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> On 6/28/21 9:54 AM, Richard Henderson wrote:
+> > On 6/28/21 6:58 AM, Peter Maydell wrote:
+> >>   {
+> >> +  # The v8.1M MVE shift insns overlap in encoding with MOVS/ORRS
+> >> +  # and are distinguished by having Rm==13 or 15. Those are UNPREDICTABLE
+> >> +  # cases for MOVS/ORRS. We decode the MVE cases first, ensuring that
+> >> +  # they explicitly call unallocated_encoding() for cases that must UNDEF
+> >> +  # (eg "using a new shift insn on a v8.1M CPU without MVE"), and letting
+> >> +  # the rest fall through (where ORR_rrri and MOV_rxri will end up
+> >> +  # handling them as r13 and r15 accesses with the same semantics as A32).
+> >> +  LSLL_ri        1110101 0010 1 ... 0 0 ... ... 1 .. 00 1111  @mve_shl_ri
+> >> +  LSRL_ri        1110101 0010 1 ... 0 0 ... ... 1 .. 01 1111  @mve_shl_ri
+> >> +  ASRL_ri        1110101 0010 1 ... 0 0 ... ... 1 .. 10 1111  @mve_shl_ri
+> >> +
+> >> +  UQSHLL_ri      1110101 0010 1 ... 1 0 ... ... 1 .. 00 1111  @mve_shl_ri
+> >> +  URSHRL_ri      1110101 0010 1 ... 1 0 ... ... 1 .. 01 1111  @mve_shl_ri
+> >> +  SRSHRL_ri      1110101 0010 1 ... 1 0 ... ... 1 .. 10 1111  @mve_shl_ri
+> >> +  SQSHLL_ri      1110101 0010 1 ... 1 0 ... ... 1 .. 11 1111  @mve_shl_ri
+> >> +
+> >
+> > Could perhaps usefully be nested under [ ].
+>
+> Actually, it looks like there could be a couple of groups that sort [0:3] into 1111 and
+> 1101 with { }, then further into a couple of groups with [ ].
 
-Have taken care of the pending & latest "process_int" comment(below) by
-renaming it to process_its_cmd to keep it more generic since it is also
-handles other ITS commands and interrupt trigger both by INT command as
-well as GITS_TRANSLATER write.Have added comments for this function as
-well.
+I added the groupings, and the final result is:
 
-Will be sharing the updated patchset with all comments addressed soon.
+{
+  # The v8.1M MVE shift insns overlap in encoding with MOVS/ORRS
+  # and are distinguished by having Rm==13 or 15. Those are UNPREDICTABLE
+  # cases for MOVS/ORRS. We decode the MVE cases first, ensuring that
+  # they explicitly call unallocated_encoding() for cases that must UNDEF
+  # (eg "using a new shift insn on a v8.1M CPU without MVE"), and letting
+  # the rest fall through (where ORR_rrri and MOV_rxri will end up
+  # handling them as r13 and r15 accesses with the same semantics as A32).
+  [
+    {
+      UQSHL_ri   1110101 0010 1 ....  0 ...  1111 .. 00 1111  @mve_sh_ri
+      LSLL_ri    1110101 0010 1 ... 0 0 ... ... 1 .. 00 1111  @mve_shl_ri
+      UQSHLL_ri  1110101 0010 1 ... 1 0 ... ... 1 .. 00 1111  @mve_shl_ri
+    }
 
-Thanks
-Shashi
+    {
+      URSHR_ri   1110101 0010 1 ....  0 ...  1111 .. 01 1111  @mve_sh_ri
+      LSRL_ri    1110101 0010 1 ... 0 0 ... ... 1 .. 01 1111  @mve_shl_ri
+      URSHRL_ri  1110101 0010 1 ... 1 0 ... ... 1 .. 01 1111  @mve_shl_ri
+    }
 
-On Mon, 2021-06-21 at 12:13 +0200, Eric Auger wrote:
-> 
-> On 6/16/21 11:02 PM, shashi.mallela@linaro.org wrote:
-> > Hi Eric,
-> > 
-> > Please find my responses inline (below):-
-> > 
-> > On Sun, 2021-06-13 at 17:55 +0200, Eric Auger wrote:
-> > > Hi Shashi,
-> > > 
-> > > On 6/2/21 8:00 PM, Shashi Mallela wrote:
-> > > > Added ITS command queue handling for MAPTI,MAPI
-> > > > commands,handled
-> > > > ITS
-> > > > translation which triggers an LPI via INT command as well as
-> > > > write
-> > > > to GITS_TRANSLATER register,defined enum to differentiate
-> > > > between
-> > > > ITS
-> > > > command interrupt trigger and GITS_TRANSLATER based interrupt
-> > > > trigger.
-> > > > Each of these commands make use of other functionalities
-> > > > implemented to
-> > > > get device table entry,collection table entry or interrupt
-> > > > translation
-> > > > table entry required for their processing.
-> > > > 
-> > > > Signed-off-by: Shashi Mallela <shashi.mallela@linaro.org>
-> > > > ---
-> > > >  hw/intc/arm_gicv3_its.c            | 334
-> > > > +++++++++++++++++++++++++++++
-> > > >  hw/intc/gicv3_internal.h           |  12 ++
-> > > >  include/hw/intc/arm_gicv3_common.h |   2 +
-> > > >  3 files changed, 348 insertions(+)
-> > > > 
-> > > > diff --git a/hw/intc/arm_gicv3_its.c b/hw/intc/arm_gicv3_its.c
-> > > > index 6551c577b3..82bb5b84ef 100644
-> > > > --- a/hw/intc/arm_gicv3_its.c
-> > > > +++ b/hw/intc/arm_gicv3_its.c
-> > > > @@ -28,6 +28,13 @@ struct GICv3ITSClass {
-> > > >      void (*parent_reset)(DeviceState *dev);
-> > > >  };
-> > > >  
-> > > > +typedef enum ItsCmdType {
-> > > > +    NONE = 0, /* internal indication for GITS_TRANSLATER write
-> > > > */
-> > > > +    CLEAR = 1,
-> > > > +    DISCARD = 2,
-> > > > +    INT = 3,
-> > > > +} ItsCmdType;
-> > > Add a comment to explain what this enum stand for. This sounds
-> > > misleading to me versus the command IDs. Why don't you use the
-> > > cmd id
-> > > then and add NONE?
-> > This is an internal enum used to distinguish between interrupt
-> > triggered via command queue and interrupt triggered via
-> > gits_translater
-> > write.Will add the same comment in code.
-> > Since NONE is only 1 command applicable for GITS_TRANSLATER,started
-> > with it so that in the future if any further command queue commands
-> > have to be added we can just extend the numbering.
-> > > > +
-> > > >  static uint64_t baser_base_addr(uint64_t value, uint32_t
-> > > > page_sz)
-> > > >  {
-> > > >      uint64_t result = 0;
-> > > > @@ -49,6 +56,315 @@ static uint64_t baser_base_addr(uint64_t
-> > > > value,
-> > > > uint32_t page_sz)
-> > > >      return result;
-> > > >  }
-> > > >  
-> > > > +static bool get_cte(GICv3ITSState *s, uint16_t icid, uint64_t
-> > > > *cte,
-> > > > +                    MemTxResult *res)
-> > > > +{
-> > > > +    AddressSpace *as = &s->gicv3->dma_as;
-> > > > +    uint64_t l2t_addr;
-> > > > +    uint64_t value;
-> > > > +    bool valid_l2t;
-> > > > +    uint32_t l2t_id;
-> > > > +    uint32_t max_l2_entries;
-> > > > +    bool status = false;
-> > > > +
-> > > > +    if (s->ct.indirect) {
-> > > > +        l2t_id = icid / (s->ct.page_sz / L1TABLE_ENTRY_SIZE);
-> > > > +
-> > > > +        value = address_space_ldq_le(as,
-> > > > +                                     s->ct.base_addr +
-> > > > +                                     (l2t_id *
-> > > > L1TABLE_ENTRY_SIZE),
-> > > > +                                     MEMTXATTRS_UNSPECIFIED,
-> > > > res);
-> > > > +
-> > > > +        if (*res == MEMTX_OK) {
-> > > > +            valid_l2t = (value >> VALID_SHIFT) & VALID_MASK;
-> > > > +
-> > > > +            if (valid_l2t) {
-> > > > +                max_l2_entries = s->ct.page_sz / s-
-> > > > >ct.entry_sz;
-> > > > +
-> > > > +                l2t_addr = value & ((1ULL << 51) - 1);
-> > > > +
-> > > > +                *cte =  address_space_ldq_le(as, l2t_addr +
-> > > > +                                    ((icid % max_l2_entries) *
-> > > > GITS_CTE_SIZE),
-> > > > +                                    MEMTXATTRS_UNSPECIFIED,
-> > > > res);
-> > > > +           }
-> > > > +       }
-> > > > +    } else {
-> > > > +        /* Flat level table */
-> > > > +        *cte =  address_space_ldq_le(as, s->ct.base_addr +
-> > > > +                                     (icid * GITS_CTE_SIZE),
-> > > > +                                      MEMTXATTRS_UNSPECIFIED,
-> > > > res);
-> > > > +    }
-> > > > +
-> > > > +    if (*cte & VALID_MASK) {
-> > > > +        status = true;
-> > > > +    }
-> > > > +
-> > > > +    return status;
-> > > > +}
-> > > > +
-> > > > +static MemTxResult update_ite(GICv3ITSState *s, uint32_t
-> > > > eventid,
-> > > > uint64_t dte,
-> > > > +                              uint64_t itel, uint32_t iteh)
-> > > why not introducing an ite struct instead of the h/l args?based
-> > > on
-> > > the same reason for packing individual fields within bit
-> > > positions
-> > > instead of using more memory to store the same fields as struct
-> > > members.
-> > Will create an ite struct with existing itel & iteh as members and
-> > retain their bit fields processing to avoid extra params being
-> > passed.
-> > > > +{
-> > > > +    AddressSpace *as = &s->gicv3->dma_as;
-> > > > +    uint64_t itt_addr;
-> > > > +    MemTxResult res = MEMTX_OK;
-> > > > +
-> > > > +    itt_addr = (dte >> 6ULL) & ITTADDR_MASK;
-> > > > +    itt_addr <<= ITTADDR_SHIFT; /* 256 byte aligned */
-> > > > +
-> > > > +    address_space_stq_le(as, itt_addr + (eventid *
-> > > > sizeof(uint64_t)),
-> > > > +                         itel, MEMTXATTRS_UNSPECIFIED, &res);
-> > > > +
-> > > > +    if (res == MEMTX_OK) {
-> > > > +        address_space_stl_le(as, itt_addr + ((eventid +
-> > > > sizeof(uint64_t)) *
-> > > > +                             sizeof(uint32_t)), iteh,
-> > > > MEMTXATTRS_UNSPECIFIED,
-> > > > +                             &res);
-> > > > +    }
-> > > > +   return res;
-> > > > +}
-> > > > +
-> > > > +static bool get_ite(GICv3ITSState *s, uint32_t eventid,
-> > > > uint64_t
-> > > > dte,
-> > > > +                    uint16_t *icid, uint32_t *pIntid,
-> > > > MemTxResult
-> > > > *res)
-> > > > +{
-> > > > +    AddressSpace *as = &s->gicv3->dma_as;
-> > > > +    uint64_t itt_addr;
-> > > > +    bool status = false;
-> > > > +    uint64_t itel = 0;
-> > > > +    uint32_t iteh = 0;
-> > > > +
-> > > > +    itt_addr = (dte >> 6ULL) & ITTADDR_MASK;
-> > > > +    itt_addr <<= ITTADDR_SHIFT; /* 256 byte aligned */
-> > > > +
-> > > > +    itel = address_space_ldq_le(as, itt_addr + (eventid *
-> > > > sizeof(uint64_t)),
-> > > > +                                MEMTXATTRS_UNSPECIFIED, res);
-> > > > +
-> > > > +    if (*res == MEMTX_OK) {
-> > > > +        iteh = address_space_ldl_le(as, itt_addr + ((eventid +
-> > > > +                                    sizeof(uint64_t)) *
-> > > > sizeof(uint32_t)),
-> > > > +                                    MEMTXATTRS_UNSPECIFIED,
-> > > > res);
-> > > > +
-> > > > +        if (*res == MEMTX_OK) {
-> > > > +            if (itel & VALID_MASK) {
-> > > > +                if ((itel >> ITE_ENTRY_INTTYPE_SHIFT) &
-> > > > GITS_TYPE_PHYSICAL) {
-> > > > +                    *pIntid = (itel >> ITE_ENTRY_INTID_SHIFT)
-> > > > &
-> > > > +                               ITE_ENTRY_INTID_MASK;
-> > > > +                    *icid = iteh & ITE_ENTRY_ICID_MASK;
-> > > > +                    status = true;
-> > > > +                }
-> > > > +            }
-> > > > +        }
-> > > > +    }
-> > > > +    return status;
-> > > > +}
-> > > > +
-> > > > +static uint64_t get_dte(GICv3ITSState *s, uint32_t devid,
-> > > > MemTxResult *res)
-> > > maybe the code would be more readable if you were returning a
-> > > strcut
-> > > for
-> > > dte/cte instead of uint64_t. The decoding of the fields would be
-> > > done
-> > > here instead?
-> > Both dte and cte are 8 bytes and hence chose a single uint64_t to
-> > efficiently utilize the applicable bit fields in the variable
-> > instead
-> > of a struct(either with bitfields to match the current field
-> > layouts
-> > within dte/cte/ite entries or use more memory variables within the
-> > struct to hold each individual dte/cte/ite fields)
-> > > > +{
-> > > > +    AddressSpace *as = &s->gicv3->dma_as;
-> > > > +    uint64_t l2t_addr;
-> > > > +    uint64_t value;
-> > > > +    bool valid_l2t;
-> > > > +    uint32_t l2t_id;
-> > > > +    uint32_t max_l2_entries;
-> > > > +
-> > > > +    if (s->dt.indirect) {
-> > > > +        l2t_id = devid / (s->dt.page_sz / L1TABLE_ENTRY_SIZE);
-> > > > +
-> > > > +        value = address_space_ldq_le(as,
-> > > > +                                     s->dt.base_addr +
-> > > > +                                     (l2t_id *
-> > > > L1TABLE_ENTRY_SIZE),
-> > > > +                                     MEMTXATTRS_UNSPECIFIED,
-> > > > res);
-> > > > +
-> > > > +        if (*res == MEMTX_OK) {
-> > > > +            valid_l2t = (value >> VALID_SHIFT) & VALID_MASK;
-> > > > +
-> > > > +            if (valid_l2t) {
-> > > > +                max_l2_entries = s->dt.page_sz / s-
-> > > > >dt.entry_sz;
-> > > > +
-> > > > +                l2t_addr = value & ((1ULL << 51) - 1);
-> > > > +
-> > > > +                value =  address_space_ldq_le(as, l2t_addr +
-> > > > +                                   ((devid % max_l2_entries) *
-> > > > GITS_DTE_SIZE),
-> > > > +                                   MEMTXATTRS_UNSPECIFIED,
-> > > > res);
-> > > > +            }
-> > > > +        }
-> > > > +    } else {
-> > > > +        /* Flat level table */
-> > > > +        value = address_space_ldq_le(as, s->dt.base_addr +
-> > > > +                                     (devid * GITS_DTE_SIZE),
-> > > > +                                     MEMTXATTRS_UNSPECIFIED,
-> > > > res);
-> > > > +    }
-> > > > +
-> > > > +    return value;
-> > > > +}
-> > > I think a common helper could be defined for get_cte and get_dte.
-> > was just trying to keep the code modular for getting dte and cte
-> > instead of various if else's within a common helper 
-> > > > +
-> > > > +static MemTxResult process_int(GICv3ITSState *s, uint64_t
-> > > > value,
-> > > > +                               uint32_t offset, ItsCmdType
-> > > > cmd)
-> > > this is a bit misleanding as INT is a command. You should rename
-> > > it I
-> > > think. Also it is not really homogeneous with other cmds, ie. you
-> > > have
-> > > process_mapti, process_mapd, process_mac and all the remaining
-> > > cmds
-> > > are
-> > > handled though this one? At least add a doc comment to explain
-> > > what
-> > > it does.
-> > the naming of this function is along the lines of other ITS
-> > commands
-> > i.e process_xxx format where xxx is the actual ITS command.
-> > There is no connection between handling of
-> > process_mapd,process_mapc
-> > with process_int.Each of them handle their respective command
-> > processing independently.
-> Well I am not big fan of keeping that name ;-) but well.
-> > > > +{
-> > > > +    AddressSpace *as = &s->gicv3->dma_as;
-> > > > +    uint32_t devid, eventid;
-> > > > +    MemTxResult res = MEMTX_OK;
-> > > > +    bool dte_valid;
-> > > > +    uint64_t dte = 0;
-> > > > +    uint32_t max_eventid;
-> > > > +    uint16_t icid = 0;
-> > > > +    uint32_t pIntid = 0;
-> > > > +    bool ite_valid = false;
-> > > > +    uint64_t cte = 0;
-> > > > +    bool cte_valid = false;
-> > > > +    uint64_t itel = 0;
-> > > > +    uint32_t iteh = 0;
-> > > > +
-> > > > +    if (cmd == NONE) {
-> > > > +        devid = offset;
-> > > > +    } else {
-> > > > +        devid = (value >> DEVID_SHIFT) & DEVID_MASK;
-> > > > +
-> > > > +        offset += NUM_BYTES_IN_DW;
-> > > > +        value = address_space_ldq_le(as, s->cq.base_addr +
-> > > > offset,
-> > > > +                                     MEMTXATTRS_UNSPECIFIED,
-> > > > &res);
-> > > > +    }
-> > > > +
-> > > > +    if (res != MEMTX_OK) {
-> > > > +        return res;
-> > > > +    }
-> > > > +
-> > > > +    eventid = (value & EVENTID_MASK);
-> > > > +
-> > > > +    dte = get_dte(s, devid, &res);
-> > > > +
-> > > > +    if (res != MEMTX_OK) {
-> > > > +        return res;
-> > > > +    }
-> > > > +    dte_valid = dte & VALID_MASK;
-> > > > +
-> > > > +    if (dte_valid) {
-> > > > +        max_eventid = (1UL << (((dte >> 1U) & SIZE_MASK) +
-> > > > 1));
-> > > THE DTE format is implementation defined, and the decoding is
-> > > hard to
-> > > follow because it is documented somewhere else.
-> > The decoding of fields within each of dte,cte and ite has been
-> > explained as comments in gicv3_internal.h via
-> > GITS_DTE_SIZE,GITS_CTE_SIZE, ITS_ITT_ENTRY_SIZE defines
-> > > > +
-> > > > +        ite_valid = get_ite(s, eventid, dte, &icid, &pIntid,
-> > > > &res);
-> > > > +
-> > > > +        if (res != MEMTX_OK) {
-> > > > +            return res;
-> > > > +        }
-> > > > +
-> > > > +        if (ite_valid) {
-> > > > +            cte_valid = get_cte(s, icid, &cte, &res);
-> > > > +        }
-> > > > +
-> > > > +        if (res != MEMTX_OK) {
-> > > > +            return res;
-> > > > +        }
-> > > instead of having this process_int() helper, why not having a
-> > > helper
-> > > doing just the decoding phase, ie.
-> > > get_dte -> get_ite -> get_cte and collect the relevant info and
-> > > collect
-> > > error and then keep the actual cmd processing in the switch?
-> > As explained previously chose to keep the code modular instead of a
-> > large monolothic structure with all the functionality in 1 place.
-> > process_cmdq handles the command queue (and their read/write
-> > offsets)
-> > while the individual ITS command handling is done by respective
-> > functions
-> 
-> OK That's not my opinion but it is not a blocker anyway ;-)
-> > > > +    }
-> > > > +
-> > > > +    if ((devid > s->dt.max_devids) || !dte_valid || !ite_valid
-> > > > ||
-> > > > +            !cte_valid || (eventid > max_eventid)) {
-> > > > +        qemu_log_mask(LOG_GUEST_ERROR,
-> > > > +                      "%s: invalid interrupt translation table
-> > > > attributes "
-> > > > +                      "devid %d or eventid %d\n",
-> > > > +                      __func__, devid, eventid);
-> > > the msg does not necessarily match the error case. You mention
-> > > ITT
-> > > issue
-> > > whereas the problem may come from invalid DTE, CTE, or even
-> > > devid.
-> > will change it to consider the missing cases
-> > > > +        /*
-> > > > +         * in this implementation,in case of error
-> > > > +         * we ignore this command and move onto the next
-> > > > +         * command in the queue
-> > > > +         */
-> > > so you don't return an error?
-> > yes we dont,we just ignore this command and move onto next one in
-> > the
-> > queue
-> > > > +    } else {
-> > > > +        /*
-> > > > +         * Current implementation only supports rdbase ==
-> > > > procnum
-> > > > +         * Hence rdbase physical address is ignored
-> > > > +         */
-> > > > +        if (cmd == DISCARD) {
-> > > > +            /* remove mapping from interrupt translation table
-> > > > */
-> > > > +            res = update_ite(s, eventid, dte, itel, iteh);
-> > > iteh and itel always are 0, why not use a struct ite with valid
-> > > field
-> > > unset.
-> > based on the same reason for packing individual fields within bit
-> > positions instead of using more memory to store the same fields as
-> > struct members.
-> > I could however create an ite struct with existing itel & iteh as
-> > members and retain their bit fields processing. 
-> > > > +        }
-> > > > +    }
-> > > > +
-> > > > +    return res;
-> > > > +}
-> > > > +
-> > > > +static MemTxResult process_mapti(GICv3ITSState *s, uint64_t
-> > > > value,
-> > > > +                                 uint32_t offset, bool
-> > > > ignore_pInt)
-> > > > +{
-> > > > +    AddressSpace *as = &s->gicv3->dma_as;
-> > > > +    uint32_t devid, eventid;
-> > > > +    uint32_t pIntid = 0;
-> > > > +    uint32_t max_eventid, max_Intid;
-> > > > +    bool dte_valid;
-> > > > +    MemTxResult res = MEMTX_OK;
-> > > > +    uint16_t icid = 0;
-> > > > +    uint64_t dte = 0;
-> > > > +    uint64_t itel = 0;
-> > > > +    uint32_t iteh = 0;
-> > > > +    uint32_t int_spurious = INTID_SPURIOUS;
-> > > > +
-> > > > +    devid = (value >> DEVID_SHIFT) & DEVID_MASK;
-> > > > +    offset += NUM_BYTES_IN_DW;
-> > > > +    value = address_space_ldq_le(as, s->cq.base_addr + offset,
-> > > > +                                 MEMTXATTRS_UNSPECIFIED,
-> > > > &res);
-> > > > +
-> > > > +    if (res != MEMTX_OK) {
-> > > > +        return res;
-> > > > +    }
-> > > > +
-> > > > +    eventid = (value & EVENTID_MASK);
-> > > > +
-> > > > +    if (!ignore_pInt) {
-> > > > +        pIntid = (value >> pINTID_OFFSET) & pINTID_MASK;
-> > > > +    }
-> > > > +
-> > > > +    offset += NUM_BYTES_IN_DW;
-> > > > +    value = address_space_ldq_le(as, s->cq.base_addr + offset,
-> > > > +                                 MEMTXATTRS_UNSPECIFIED,
-> > > > &res);
-> > > > +
-> > > > +    if (res != MEMTX_OK) {
-> > > > +        return res;
-> > > > +    }
-> > > > +
-> > > > +    icid = value & ICID_MASK;
-> > > > +
-> > > > +    dte = get_dte(s, devid, &res);
-> > > > +
-> > > > +    if (res != MEMTX_OK) {
-> > > > +        return res;
-> > > > +    }
-> > > > +    dte_valid = dte & VALID_MASK;
-> > > > +
-> > > > +    max_eventid = (1UL << (((dte >> 1U) & SIZE_MASK) + 1));
-> > > Again I think you would gain in readibility if get_cte were to
-> > > return
-> > > a
-> > > struct and you would avoid code duplication.
-> > Like mentioned earlier, preferred to use a single uint64_t for cte
-> > (and
-> > dte) instead of a struct (either with bitfields to match the
-> > current
-> > field layouts within dte/cte/ite entries or use more memory
-> > variables
-> > within the struct to hold each individual dte/cte/ite fields).The
-> > layout of all these functions follows the pseudocde format defined
-> > under each ITS command in the spec.
-> > > > +
-> > > > +    if (!ignore_pInt) {
-> > > > +        max_Intid = (1UL << (FIELD_EX64(s->typer, GITS_TYPER,
-> > > > IDBITS) + 1));
-> > > > +    }
-> > > > +
-> > > > +    if ((devid > s->dt.max_devids) || (icid > s-
-> > > > >ct.max_collids)
-> > > > +            !dte_valid || (eventid > max_eventid) ||
-> > > > +            (!ignore_pInt && ((pIntid < GICV3_LPI_INTID_START)
-> > > > ||
-> > > > +               (pIntid > max_Intid)))) {
-> > > > +        qemu_log_mask(LOG_GUEST_ERROR,
-> > > > +                      "%s: invalid interrupt translation table
-> > > > attributes "
-> > > > +                      "devid %d or icid %d or eventid %d or
-> > > > pIntid
-> > > > %d\n",
-> > > > +                      __func__, devid, icid, eventid, pIntid);
-> > > > +        /*
-> > > > +         * in this implementation,in case of error
-> > > > +         * we ignore this command and move onto the next
-> > > > +         * command in the queue
-> > > > +         */
-> > > > +    } else {
-> > > > +        /* add ite entry to interrupt translation table */
-> > > > +        itel = (dte_valid & VALID_MASK) | (GITS_TYPE_PHYSICAL
-> > > > <<
-> > > > +                                           ITE_ENTRY_INTTYPE_S
-> > > > HIFT
-> > > > );
-> > > > +
-> > > > +        if (ignore_pInt) {
-> > > > +            itel |= (eventid << ITE_ENTRY_INTID_SHIFT);
-> > > > +        } else {
-> > > > +            itel |= (pIntid << ITE_ENTRY_INTID_SHIFT);
-> > > > +        }
-> > > > +        itel |= (int_spurious << ITE_ENTRY_INTSP_SHIFT);
-> > > > +        iteh |= icid;
-> > > > +
-> > > > +        res = update_ite(s, eventid, dte, itel, iteh);
-> > > > +    }
-> > > > +
-> > > > +    return res;
-> > > > +}
-> > > > +
-> > > >  static MemTxResult update_cte(GICv3ITSState *s, uint16_t icid,
-> > > > bool valid,
-> > > >                                uint64_t rdbase)
-> > > >  {
-> > > > @@ -295,8 +611,10 @@ static void process_cmdq(GICv3ITSState *s)
-> > > >  
-> > > >          switch (cmd) {
-> > > >          case GITS_CMD_INT:
-> > > > +            res = process_int(s, data, cq_offset, INT);
-> > > >              break;
-> > > >          case GITS_CMD_CLEAR:
-> > > > +            res = process_int(s, data, cq_offset, CLEAR);
-> > > >              break;
-> > > >          case GITS_CMD_SYNC:
-> > > >              /*
-> > > > @@ -313,10 +631,13 @@ static void process_cmdq(GICv3ITSState
-> > > > *s)
-> > > >              res = process_mapc(s, cq_offset);
-> > > >              break;
-> > > >          case GITS_CMD_MAPTI:
-> > > > +            res = process_mapti(s, data, cq_offset, false);
-> > > >              break;
-> > > >          case GITS_CMD_MAPI:
-> > > > +            res = process_mapti(s, data, cq_offset, true);
-> > > >              break;
-> > > >          case GITS_CMD_DISCARD:
-> > > > +            res = process_int(s, data, cq_offset, DISCARD);
-> > > >              break;
-> > > >          default:
-> > > >              break;
-> > > > @@ -472,7 +793,20 @@ static MemTxResult
-> > > > gicv3_its_translation_write(void *opaque, hwaddr offset,
-> > > >                                                 uint64_t data,
-> > > > unsigned size,
-> > > >                                                 MemTxAttrs
-> > > > attrs)
-> > > >  {
-> > > > +    GICv3ITSState *s = (GICv3ITSState *)opaque;
-> > > >      MemTxResult result = MEMTX_OK;
-> > > > +    uint32_t devid = 0;
-> > > > +
-> > > > +    switch (offset) {
-> > > > +    case GITS_TRANSLATER:
-> > > > +        if (s->ctlr & ITS_CTLR_ENABLED) {
-> > > > +            devid = attrs.requester_id;
-> > > > +            result = process_int(s, data, devid, NONE);
-> > > > +        }
-> > > > +        break;
-> > > > +    default:
-> > > > +        break;
-> > > > +    }
-> > > >  
-> > > >      return result;
-> > > >  }
-> > > > diff --git a/hw/intc/gicv3_internal.h
-> > > > b/hw/intc/gicv3_internal.h
-> > > > index 0932a30560..ce45cd0ef6 100644
-> > > > --- a/hw/intc/gicv3_internal.h
-> > > > +++ b/hw/intc/gicv3_internal.h
-> > > > @@ -324,6 +324,13 @@ FIELD(MAPC, RDBASE, 16, 32)
-> > > >  #define ITTADDR_MASK              ((1ULL << ITTADDR_LENGTH) -
-> > > > 1)
-> > > >  #define SIZE_MASK                 0x1f
-> > > >  
-> > > > +/* MAPI command fields */
-> > > > +#define EVENTID_MASK              ((1ULL << 32) - 1)
-> > > > +
-> > > > +/* MAPTI command fields */
-> > > > +#define pINTID_OFFSET              32
-> > > > +#define pINTID_MASK               ((1ULL << 32) - 1)
-> > > > +
-> > > >  #define VALID_SHIFT               63
-> > > >  #define VALID_MASK                1ULL
-> > > >  
-> > > > @@ -344,6 +351,11 @@ FIELD(MAPC, RDBASE, 16, 32)
-> > > >   * vPEID = 16 bits
-> > > >   */
-> > > >  #define ITS_ITT_ENTRY_SIZE            0xC
-> > > > +#define ITE_ENTRY_INTTYPE_SHIFT        1
-> > > > +#define ITE_ENTRY_INTID_SHIFT          2
-> > > > +#define ITE_ENTRY_INTID_MASK         ((1ULL << 24) - 1)
-> > > > +#define ITE_ENTRY_INTSP_SHIFT          26
-> > > > +#define ITE_ENTRY_ICID_MASK          ((1ULL << 16) - 1)
-> > > >  
-> > > >  /* 16 bits EventId */
-> > > >  #define ITS_IDBITS                   GICD_TYPER_IDBITS
-> > > > diff --git a/include/hw/intc/arm_gicv3_common.h
-> > > > b/include/hw/intc/arm_gicv3_common.h
-> > > > index 1fd5cedbbd..0715b0bc2a 100644
-> > > > --- a/include/hw/intc/arm_gicv3_common.h
-> > > > +++ b/include/hw/intc/arm_gicv3_common.h
-> > > > @@ -36,6 +36,8 @@
-> > > >  #define GICV3_MAXIRQ 1020
-> > > >  #define GICV3_MAXSPI (GICV3_MAXIRQ - GIC_INTERNAL)
-> > > >  
-> > > > +#define GICV3_LPI_INTID_START 8192
-> > > > +
-> > > >  #define GICV3_REDIST_SIZE 0x20000
-> > > >  
-> > > >  /* Number of SGI target-list bits */
-> > > > 
-> > > Thanks
-> > > 
-> > > Eric
-> > > 
-> Thanks
-> 
-> Eric
-> 
+    {
+      SRSHR_ri   1110101 0010 1 ....  0 ...  1111 .. 10 1111  @mve_sh_ri
+      ASRL_ri    1110101 0010 1 ... 0 0 ... ... 1 .. 10 1111  @mve_shl_ri
+      SRSHRL_ri  1110101 0010 1 ... 1 0 ... ... 1 .. 10 1111  @mve_shl_ri
+    }
 
+    {
+      SQSHL_ri   1110101 0010 1 ....  0 ...  1111 .. 11 1111  @mve_sh_ri
+      SQSHLL_ri  1110101 0010 1 ... 1 0 ... ... 1 .. 11 1111  @mve_shl_ri
+    }
+
+    {
+      UQRSHL_rr    1110101 0010 1 ....  ....  1111 0000 1101  @mve_sh_rr
+      LSLL_rr      1110101 0010 1 ... 0 .... ... 1 0000 1101  @mve_shl_rr
+      UQRSHLL64_rr 1110101 0010 1 ... 1 .... ... 1 0000 1101  @mve_shl_rr
+    }
+
+    {
+      SQRSHR_rr    1110101 0010 1 ....  ....  1111 0010 1101  @mve_sh_rr
+      ASRL_rr      1110101 0010 1 ... 0 .... ... 1 0010 1101  @mve_shl_rr
+      SQRSHRL64_rr 1110101 0010 1 ... 1 .... ... 1 0010 1101  @mve_shl_rr
+    }
+
+    UQRSHLL48_rr 1110101 0010 1 ... 1 ....  ... 1  1000 1101  @mve_shl_rr
+    SQRSHRL48_rr 1110101 0010 1 ... 1 ....  ... 1  1010 1101  @mve_shl_rr
+  ]
+
+  MOV_rxri       1110101 0010 . 1111 0 ... .... .... ....     @s_rxr_shi
+  ORR_rrri       1110101 0010 . .... 0 ... .... .... ....     @s_rrr_shi
+
+  # v8.1M CSEL and friends
+  CSEL           1110101 0010 1 rn:4 10 op:2 rd:4 fcond:4 rm:4
+}
+
+
+Unless you would prefer otherwise, I plan to put the adjusted patches
+into a pullreq later this week, without resending a v2.
+
+thanks
+-- PMM

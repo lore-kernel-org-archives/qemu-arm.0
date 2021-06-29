@@ -1,210 +1,161 @@
-Received: by 2002:a0c:fe44:0:0:0:0:0 with SMTP id u4csp809481qvs;
-        Tue, 29 Jun 2021 08:57:44 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw2IF7tUyd1G5dIULs38Heo4duE/h96SUcU3pJ8QnD/tLEVp/p1UnoIZtbkhVk0QgHrdJ1q
-X-Received: by 2002:a05:6102:227c:: with SMTP id v28mr25157900vsd.7.1624982263877;
-        Tue, 29 Jun 2021 08:57:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1624982263; cv=none;
+Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp4768665lfg;
+        Tue, 29 Jun 2021 02:34:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwWNzJ8PL63SHiQhvgkSF1Qb57QBx/+Q/+qfNw4j2sIH1uSqJ98LKM4+ZZJ2T3Eq0uR6FgX
+X-Received: by 2002:a25:af06:: with SMTP id a6mr37313796ybh.326.1624959271084;
+        Tue, 29 Jun 2021 02:34:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1624959271; cv=none;
         d=google.com; s=arc-20160816;
-        b=OvDwnzG1nWWyRiwqoFVFwXJWUu6cTevN+xMR0cX3NfE7GQz5uiQeSp3JzbHaaolkHk
-         9gneObqqWr8bPZx1p08rnE5O4DwMAqtnMDqkCDUXLSMkYS0bn/JVATJuC4/6Q53BtcGG
-         Vim9/vpHPWPjd3shQW2HinNhEWhxYI5JvsGbYF1ghu1GWLfGRNKqnH57wIou1pDEx7XK
-         hrTuqcS5F11jSBfNcw8ebqoczLFi1jUFNAVUACF/x0gNBucrVZhWsG+arDsWV3W/8uMp
-         8xIUv4EP0Xp3jcx6o9ZFc6AUeMEdokdYOf+25rPa8VeVA1q11OrtzDju0VK4hBJseLH7
-         9NYQ==
+        b=reCbaxOLrvId7mN7GIYSOe60Gl2ryMZmhjeBSE1FH2ONSjyNWYJ30YJ3Bl9NHl8QSZ
+         SBgHd2SssczT1vp/SqxgpmsUBARJymqjTjGyF2RiE7+u6pS6uecmENbPclS7xO7uWbM9
+         hp2BjvCOsDzjlcPY2osPA/zfKZh6hoS/j5w7vdb53ZPsksiY3TiNbbO4dUVLjM//thUZ
+         AR07S129BdY87GBY3V6UTKSEi57+g6d5pF+QNwIkEzLsQbR1/03lcAnEbhVRfKDTXpNc
+         DYyqHqiqRKRbOnMT3XUcKQ6hutXcZkIhRK1LVz8gf+pxyboTCynTCTwAx0re57Td3w7a
+         ooxQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=P3KcIrhSWcSf8wXx42x1OWdOMEZCI3OBkhHevGPtBnk=;
-        b=uHW+N8rJ++2vH4hkeVddtOI9qdF+pz3t8oNkNH84pR0ET1/HsRdRa3En6cnghGeBg9
-         heQsZ3CHXD4LnPoDO0KB2jXwvSde+K4jpUfQQSivXw/+FNlwDwaVoZF6YvEl4EyRqsYv
-         jzYOV1bfrSu1kGrEPpQ4aRtyWxtAACd5kSvOSAk4i6Dqak6/aR1xpoXLdpUE/DkdjhBE
-         vq2lCzKc/08eerqeLY3IGwzItHVN6mKHVcQl2PnUfQrld30ymAEVEizsN1S+jpoGOncw
-         tAn9i1Z21bWAwBZ7hfWQEs31KfW0rm77qssc0oFQDrY3Ff4uUuBafptQ4lx0gt3LP5Wi
-         8/UA==
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:mime-version:user-agent:date:message-id
+         :subject:from:to;
+        bh=U2gYKqCrLBpxvsn4NDiB7+k12XOOuqtJkqv+JlWF/Rk=;
+        b=wIy1oitrX/m5s8M6LKTBADjIhloC17HwrIb782mDN/56sroTwp5Li7fMxecaZM+6pz
+         snbVAzLaHjqvxTygGh0NV1FIdaK2kfwMWs1Ityb6he3Tmo9KCqgJrwH5fIvbd7iEPyXG
+         H5Dv+trvqEs1aJIJ0aZiXi3KTF6NwlxFL2382LEh1rShDQXH3iVWmQ07VXbkczwVcb3e
+         gXsxlhQwnu/9R9EA4DzZVYo+NTQR1G+f3dOKHFoiDmfaj8JNhIN+yyQ0lJFVWI6Mp9Kr
+         Py9WnZ3LGlw3u2SWUxQ7LLQPB7tMwWSsjPn8axLGt+DfzgmPvopoDKG9KdFpwyMWbAjh
+         5xXA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="ox/zXMUg";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y6si12754145vko.56.2021.06.29.08.57.43
+        by mx.google.com with ESMTPS id s8si6677674ybp.129.2021.06.29.02.34.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 29 Jun 2021 08:57:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 29 Jun 2021 02:34:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="ox/zXMUg";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50872 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Received: from localhost ([::1]:53470 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lyG7L-0006td-6P
-	for alex.bennee@linaro.org; Tue, 29 Jun 2021 11:57:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49978)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lyA8U-0003Fx-9S
+	for alex.bennee@linaro.org; Tue, 29 Jun 2021 05:34:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42370)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lyG6Z-0005uK-46
- for qemu-devel@nongnu.org; Tue, 29 Jun 2021 11:56:55 -0400
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534]:43931)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lyG6X-0007fK-0G
- for qemu-devel@nongnu.org; Tue, 29 Jun 2021 11:56:54 -0400
-Received: by mail-ed1-x534.google.com with SMTP id w17so16469915edd.10
- for <qemu-devel@nongnu.org>; Tue, 29 Jun 2021 08:56:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=P3KcIrhSWcSf8wXx42x1OWdOMEZCI3OBkhHevGPtBnk=;
- b=ox/zXMUglL6z00lJAkRsuumKi7h7VLYGzBkbbl0TfPX96OrZ1atoAEErc25MQHwn/I
- gXT4Ivctu6aAI+LbVNwdBuE58GypDTTPog43EYxfpbr+WvcXTp5BEl6N/9ZNYxMopqVj
- zANxp7HBgfmvs0wFxTnS50Kr9IMUMERWaSBQCit9ibglgk6aXqFQZbBkxTXmCdRR57hp
- ae0BM6Ik0FBjnv5neNULXS+wiVeW3o1cdu7Wr54Z5IeLUqGAd7/IbeaHxv51HmXLOWJc
- VihpbUzZTgY1LRa38dykFLjHelQWv4qwyYQ9U3oQ66Yt4yfxJfsNjoN914KvBjUTPzaM
- RtrA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=P3KcIrhSWcSf8wXx42x1OWdOMEZCI3OBkhHevGPtBnk=;
- b=t71c493R3q5ws0Dwwshf6SeRdZTYW2hTAvCdwgouOtNzm6O+BO6AT/yIE2DX3mWh3M
- kFFoMviGqFvbZWt0wlrjr4mf2Xj5jGrTTikF199jAH7dCZcpzlmT/4l/Zh2xUh5j4Lp6
- X0KjFFj/rPAhsEL34cN+G8vJND70TLx8MvujDI9bS+n9LUi6qtf1O3IKsVaMDDW1r8l1
- SAy8+vi9xIfFxNvIUCAYVg+o+KHDk9SizsdcBfMu0lfvuT7ihpoF6AgWOddVBLwwQtjY
- vA5oPmQKDRvrQT/nslsdzkMFT6+28v2qp4zBG9t30wKtDGLfGtt9Cs/012PQZxX0iVg0
- Xj7A==
-X-Gm-Message-State: AOAM532w4929hQrSwMm5S9laaquzhl04GJbuhnE6xYmVlMmcW2x7LCwK
- ronYavONI2P3twcW5abwnZZMlnHvyNGKhWqtECMbWg==
-X-Received: by 2002:a05:6402:1911:: with SMTP id
- e17mr40753241edz.36.1624982211154; 
- Tue, 29 Jun 2021 08:56:51 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <jiangkunkun@huawei.com>)
+ id 1lyA8B-0003FF-L9; Tue, 29 Jun 2021 05:34:12 -0400
+Received: from szxga02-in.huawei.com ([45.249.212.188]:2057)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jiangkunkun@huawei.com>)
+ id 1lyA83-0006eH-Vh; Tue, 29 Jun 2021 05:34:11 -0400
+Received: from dggemv704-chm.china.huawei.com (unknown [172.30.72.53])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4GDfNP31DNzZnkT;
+ Tue, 29 Jun 2021 17:30:45 +0800 (CST)
+Received: from dggema765-chm.china.huawei.com (10.1.198.207) by
+ dggemv704-chm.china.huawei.com (10.3.19.47) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
+ 15.1.2176.2; Tue, 29 Jun 2021 17:33:49 +0800
+Received: from [10.174.185.210] (10.174.185.210) by
+ dggema765-chm.china.huawei.com (10.1.198.207) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.2176.2; Tue, 29 Jun 2021 17:33:49 +0800
+To: Peter Maydell <peter.maydell@linaro.org>, Eric Auger
+ <eric.auger@redhat.com>, "open list:ARM cores" <qemu-arm@nongnu.org>, "open
+ list:All patches CC here" <qemu-devel@nongnu.org>
+From: Kunkun Jiang <jiangkunkun@huawei.com>
+Subject: [question] Shall we flush ITS tables into guest RAM when shutdown the
+ VM?
+Message-ID: <ef4df56d-5b60-99f1-fec6-fe2e62434d3f@huawei.com>
+Date: Tue, 29 Jun 2021 17:33:49 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-References: <20210628135835.6690-1-peter.maydell@linaro.org>
- <20210628135835.6690-16-peter.maydell@linaro.org>
- <b12b3fb9-8919-8e87-1aa9-e54807bf82af@linaro.org>
- <42d6f71c-6d91-1ae2-bc13-39cb5a70b1cc@linaro.org>
-In-Reply-To: <42d6f71c-6d91-1ae2-bc13-39cb5a70b1cc@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 29 Jun 2021 16:56:14 +0100
-Message-ID: <CAFEAcA_9Ss6LffwquHbssZ=XUSWAsL6KkKCPs1N3q44aG5m3Hw@mail.gmail.com>
-Subject: Re: [PATCH 15/18] target/arm: Implement MVE long shifts by immediate
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::534;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x534.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+Content-Language: en-US
+X-Originating-IP: [10.174.185.210]
+X-ClientProxiedBy: dggeme704-chm.china.huawei.com (10.1.199.100) To
+ dggema765-chm.china.huawei.com (10.1.198.207)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.188;
+ envelope-from=jiangkunkun@huawei.com; helo=szxga02-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0jfoPoTdOcs6
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: wanghaibin.wang@huawei.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 51DYKkMAhBn9
 
-On Mon, 28 Jun 2021 at 18:45, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> On 6/28/21 9:54 AM, Richard Henderson wrote:
-> > On 6/28/21 6:58 AM, Peter Maydell wrote:
-> >>   {
-> >> +  # The v8.1M MVE shift insns overlap in encoding with MOVS/ORRS
-> >> +  # and are distinguished by having Rm==13 or 15. Those are UNPREDICTABLE
-> >> +  # cases for MOVS/ORRS. We decode the MVE cases first, ensuring that
-> >> +  # they explicitly call unallocated_encoding() for cases that must UNDEF
-> >> +  # (eg "using a new shift insn on a v8.1M CPU without MVE"), and letting
-> >> +  # the rest fall through (where ORR_rrri and MOV_rxri will end up
-> >> +  # handling them as r13 and r15 accesses with the same semantics as A32).
-> >> +  LSLL_ri        1110101 0010 1 ... 0 0 ... ... 1 .. 00 1111  @mve_shl_ri
-> >> +  LSRL_ri        1110101 0010 1 ... 0 0 ... ... 1 .. 01 1111  @mve_shl_ri
-> >> +  ASRL_ri        1110101 0010 1 ... 0 0 ... ... 1 .. 10 1111  @mve_shl_ri
-> >> +
-> >> +  UQSHLL_ri      1110101 0010 1 ... 1 0 ... ... 1 .. 00 1111  @mve_shl_ri
-> >> +  URSHRL_ri      1110101 0010 1 ... 1 0 ... ... 1 .. 01 1111  @mve_shl_ri
-> >> +  SRSHRL_ri      1110101 0010 1 ... 1 0 ... ... 1 .. 10 1111  @mve_shl_ri
-> >> +  SQSHLL_ri      1110101 0010 1 ... 1 0 ... ... 1 .. 11 1111  @mve_shl_ri
-> >> +
-> >
-> > Could perhaps usefully be nested under [ ].
->
-> Actually, it looks like there could be a couple of groups that sort [0:3] into 1111 and
-> 1101 with { }, then further into a couple of groups with [ ].
+Hi all,
 
-I added the groupings, and the final result is:
+Accroding to the patch cddafd8f353d2d251b1a5c6c948a577a85838582,
+our original intention is to flush the ITS tables into guest RAM at the 
+point
+RUN_STATE_FINISH_MIGRATE, but sometimes the VM gets stopped before
+migration launch so let's simply flush the tables each time the VM gets
+stopped.
 
-{
-  # The v8.1M MVE shift insns overlap in encoding with MOVS/ORRS
-  # and are distinguished by having Rm==13 or 15. Those are UNPREDICTABLE
-  # cases for MOVS/ORRS. We decode the MVE cases first, ensuring that
-  # they explicitly call unallocated_encoding() for cases that must UNDEF
-  # (eg "using a new shift insn on a v8.1M CPU without MVE"), and letting
-  # the rest fall through (where ORR_rrri and MOV_rxri will end up
-  # handling them as r13 and r15 accesses with the same semantics as A32).
-  [
-    {
-      UQSHL_ri   1110101 0010 1 ....  0 ...  1111 .. 00 1111  @mve_sh_ri
-      LSLL_ri    1110101 0010 1 ... 0 0 ... ... 1 .. 00 1111  @mve_shl_ri
-      UQSHLL_ri  1110101 0010 1 ... 1 0 ... ... 1 .. 00 1111  @mve_shl_ri
-    }
+But I encountered an error when I shut down the virtual machine.
 
-    {
-      URSHR_ri   1110101 0010 1 ....  0 ...  1111 .. 01 1111  @mve_sh_ri
-      LSRL_ri    1110101 0010 1 ... 0 0 ... ... 1 .. 01 1111  @mve_shl_ri
-      URSHRL_ri  1110101 0010 1 ... 1 0 ... ... 1 .. 01 1111  @mve_shl_ri
-    }
+> qemu-system-aarch64: KVM_SET_DEVICE_ATTR failed: Group 4 attr 
+> 0x0000000000000001: Permission denied
 
-    {
-      SRSHR_ri   1110101 0010 1 ....  0 ...  1111 .. 10 1111  @mve_sh_ri
-      ASRL_ri    1110101 0010 1 ... 0 0 ... ... 1 .. 10 1111  @mve_shl_ri
-      SRSHRL_ri  1110101 0010 1 ... 1 0 ... ... 1 .. 10 1111  @mve_shl_ri
-    }
+Shall we need to flush ITS tables into guest RAM when 'shutdown' the VM?
+Or do you think this error is normal?
 
-    {
-      SQSHL_ri   1110101 0010 1 ....  0 ...  1111 .. 11 1111  @mve_sh_ri
-      SQSHLL_ri  1110101 0010 1 ... 1 0 ... ... 1 .. 11 1111  @mve_shl_ri
-    }
+This error occurs in the following scenario:
+Kunpeng 920 、enable GICv4、passthrough a accelerator Hisilicon SEC to the 
+VM.
 
-    {
-      UQRSHL_rr    1110101 0010 1 ....  ....  1111 0000 1101  @mve_sh_rr
-      LSLL_rr      1110101 0010 1 ... 0 .... ... 1 0000 1101  @mve_shl_rr
-      UQRSHLL64_rr 1110101 0010 1 ... 1 .... ... 1 0000 1101  @mve_shl_rr
-    }
+The flow is as follows:
 
-    {
-      SQRSHR_rr    1110101 0010 1 ....  ....  1111 0010 1101  @mve_sh_rr
-      ASRL_rr      1110101 0010 1 ... 0 .... ... 1 0010 1101  @mve_shl_rr
-      SQRSHRL64_rr 1110101 0010 1 ... 1 .... ... 1 0010 1101  @mve_shl_rr
-    }
+QEMU:
+vm_shutdown
+     do_vm_stop(RUN_STATE_SHUTDOWN)
+         vm_state_notify
+             ...
+             vm_change_state_handler (hw/intc/arm_gicv3_its_kvm.c)
+                 kvm_device_access
 
-    UQRSHLL48_rr 1110101 0010 1 ... 1 ....  ... 1  1000 1101  @mve_shl_rr
-    SQRSHRL48_rr 1110101 0010 1 ... 1 ....  ... 1  1010 1101  @mve_shl_rr
-  ]
+Kernel:
+     vgic_its_save_tables_v0
+         vgic_its_save_device_tables
+             vgic_its_save_itt
 
-  MOV_rxri       1110101 0010 . 1111 0 ... .... .... ....     @s_rxr_shi
-  ORR_rrri       1110101 0010 . .... 0 ... .... .... ....     @s_rrr_shi
+There is such a code in vgic_its_save_itt():
+> /*
+>  * If an LPI carries the HW bit, this means that this
+>  * interrupt is controlled by GICv4, and we do not
+>  * have direct access to that state without GICv4.1.
+>  * Let's simply fail the save operation...
+>  */
+> if (ite->irq->hw && !kvm_vgic_global_state.has_gicv4_1)
+>           return -EACCES;
 
-  # v8.1M CSEL and friends
-  CSEL           1110101 0010 1 rn:4 10 op:2 rd:4 fcond:4 rm:4
-}
+Looking forward to your reply.
+
+Thanks,
+Kunkun Jiang
 
 
-Unless you would prefer otherwise, I plan to put the adjusted patches
-into a pullreq later this week, without resending a v2.
 
-thanks
--- PMM
+
+
+

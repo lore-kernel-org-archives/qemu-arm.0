@@ -1,154 +1,301 @@
-Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp327284lfg;
-        Thu, 24 Jun 2021 02:42:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxbT8bKwY1sBCWMjHK1FuNWopubjVxagikNaDYA0603ZuXmIsoTcthSj/h8g1F6VExgFpAY
-X-Received: by 2002:a25:6dc1:: with SMTP id i184mr3498103ybc.392.1624527779722;
-        Thu, 24 Jun 2021 02:42:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1624527779; cv=none;
+Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp5008300lfg;
+        Tue, 29 Jun 2021 07:44:28 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzPj8F4J2YPGF53Mz8KhVindfMa6ckHgu3WNX8UqET3uj/rhpOtTJJC8KXIFpXX+Qll1FsG
+X-Received: by 2002:a67:f94d:: with SMTP id u13mr25225651vsq.39.1624977868173;
+        Tue, 29 Jun 2021 07:44:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1624977868; cv=none;
         d=google.com; s=arc-20160816;
-        b=WW/Bu7hlDRx2bNAwkKlN6cWJL7YIcGByngZFoInTjEwAi84Zg47n9C4tmn59N5jt7T
-         /rN0XRrs/HfRA/LHUMhKkt+n9hod14+BDnSvQbB40IWrjtnRRR9to0Kvj+86Gu8ZqHxc
-         /DNvYbU2Pev2ciIemnynOHD+Ky2a8gE24geBYDg5C8W18GthfXpjCF44j+O8F7scDOdp
-         hfWq55vrYK7203u5Oxz1mUeUvjIrgkirQhaL3SUilx02+BVZ6VNGIuOjf1XZLvtYWPKt
-         oiGMEl+4O4i0spNW0jB4/rjY9piQj6ZAdn9WehP2T9G4gIV+D5vFZpWNq6fc0k5me4fn
-         7aTw==
+        b=fzU7xluONtZ/6AYfTboK47kFNT+fSgOBMVLcLp1V8W6JbW9/wEi9WbyTYtw/3OUqHB
+         W2DSQQs5SKDo7lbC0SLD2N9IIT0Z6f7+qNID62vhKT3QqalP4YvN+rmdIPQPH6CQeyv4
+         Z4lSHsHJDCgo4sgzg91C5kG2JiBzjtrUKZ0vjqrlNsy823Fmnp0NwOjhO4WhLo8ookdI
+         7BV+VJ7UoYQhroxzc4sBDLGfNj2+XXWJMuMG8IhqHQlJZAEiqxTLq5h+EGtcV7qs305R
+         Gzz0A+4mdkFulKc3LmPMXzZqrB1mmmGPWS0jItnr99ccgOtXIimwyHbp8vVFvneCi3Y8
+         +UUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=qS2N57MROo7w9B22mX8YbHVQxkUJOwL+bi30X0BtEWI=;
-        b=q0mThJ66n2APINIpmG8Mn3Q/KM9+7XEQlFJJe5qcywFNjAiaBTDEvH2E0x09ByBcHD
-         du59tp9H4Tl93mj9xcZTEIl7PUK3D3oMsbvyaA3yYtq+MWaUNxXjyjvtMtMlEh1G1rGv
-         ML+hcastKMzyuda8ZGLN9Av+nyknIh+swyc7tyTEg3BTrRYfp8NXZfLtouL+za5q+BjG
-         2rBIWo4tK0l1NNJKxR79wDuTZ/hLinz0tNLR8ChZFzD//YG65NYIw085smZEF0E+R0LY
-         dxeNi+RWhj6bszr8FMRbX/p5Y3Z7rgsKpMJBGPRP+7V1/3BWMSbGTosMrkrcpaETOxhR
-         coyg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=e/SRFQe2fCa+aFfmmsKP4Qeh21jiPzHXjj14m8YwEKQ=;
+        b=mWhRoCCHEKXVGFLRgHZ/APOYbm0ONvytDZwBbs4F1TtvKuVOGy1imNs9feox0jCrdd
+         OkWXGBr4FQ3hQ+sbPw6MGlks4nv/bE/E4k7Ai/vioezbvVB9KNHg/WJVpi8CQRaQidSn
+         659gDofz4psi24JkfGihMYwBu9wdb3/QSL2IbhrkpPfePCwfgoExup0xV+sUPHCKGLjm
+         wGweDMuYd9pNE9l+akZ7EZs2bOVt1dLhmS+rDD9f3VujZahmKJH+D62XzfiyYJCBavmf
+         1Tzmnktjpksc7qnqDbveULTlslVmPYoo3YdmOVwaAlPCPlkfwtaeuLBlJa57eP7ZuNb8
+         DlhA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FJVWAr1L;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b13si2111583ybk.347.2021.06.24.02.42.59
+        by mx.google.com with ESMTPS id w2si10952038uao.226.2021.06.29.07.44.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 24 Jun 2021 02:42:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 29 Jun 2021 07:44:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FJVWAr1L;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42214 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:34462 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lwLsx-0006kv-3i
-	for alex.bennee@linaro.org; Thu, 24 Jun 2021 05:42:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55104)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lyEyR-00022U-CO
+	for alex.bennee@linaro.org; Tue, 29 Jun 2021 10:44:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53912)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1lwLsl-0006jS-Ex
- for qemu-arm@nongnu.org; Thu, 24 Jun 2021 05:42:48 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:23378)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1lyEef-0006jA-JO; Tue, 29 Jun 2021 10:24:02 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:36481
+ helo=mx0a-001b2d01.pphosted.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1lwLsh-0000LD-CD
- for qemu-arm@nongnu.org; Thu, 24 Jun 2021 05:42:47 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1624527761;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=qS2N57MROo7w9B22mX8YbHVQxkUJOwL+bi30X0BtEWI=;
- b=FJVWAr1L7tIzh6TeN/hyq2nSRswDu7hL8RwmgJGYBm2HN2JsiSdSofV+t9cDjeivRMV2rA
- BzDezky8OJzbc7GjsyQFsnDQFmgxWmaBkcv5H85FRj5emserd36vE5E/e5gpn+L9WFHq4n
- K2dHDc2yRgOpgC4qg1EhjNIyPJOvmqs=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-416-QyGY5lirOpaulA3jQbmi4g-1; Thu, 24 Jun 2021 05:42:40 -0400
-X-MC-Unique: QyGY5lirOpaulA3jQbmi4g-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id F15088C5EC0;
- Thu, 24 Jun 2021 09:42:38 +0000 (UTC)
-Received: from sirius.home.kraxel.org (ovpn-112-38.ams2.redhat.com
- [10.36.112.38])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 208F1E710;
- Thu, 24 Jun 2021 09:42:28 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 08D2E180060E; Thu, 24 Jun 2021 11:42:25 +0200 (CEST)
-Date: Thu, 24 Jun 2021 11:42:24 +0200
-From: Gerd Hoffmann <kraxel@redhat.com>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1lyEed-0005wD-63; Tue, 29 Jun 2021 10:24:01 -0400
+Received: from pps.filterd (m0098419.ppops.net [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
+ 15TE2gf0184719; Tue, 29 Jun 2021 10:23:45 -0400
+Received: from ppma06ams.nl.ibm.com (66.31.33a9.ip4.static.sl-reverse.com
+ [169.51.49.102])
+ by mx0b-001b2d01.pphosted.com with ESMTP id 39g3fqbhxa-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 29 Jun 2021 10:23:45 -0400
+Received: from pps.filterd (ppma06ams.nl.ibm.com [127.0.0.1])
+ by ppma06ams.nl.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 15TEDPAk007442;
+ Tue, 29 Jun 2021 14:23:43 GMT
+Received: from b06cxnps4076.portsmouth.uk.ibm.com
+ (d06relay13.portsmouth.uk.ibm.com [9.149.109.198])
+ by ppma06ams.nl.ibm.com with ESMTP id 39dughhbdn-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 29 Jun 2021 14:23:43 +0000
+Received: from d06av23.portsmouth.uk.ibm.com (d06av23.portsmouth.uk.ibm.com
+ [9.149.105.59])
+ by b06cxnps4076.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 15TENel834472412
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 29 Jun 2021 14:23:40 GMT
+Received: from d06av23.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id B7E59A409F;
+ Tue, 29 Jun 2021 14:23:40 +0000 (GMT)
+Received: from d06av23.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 76423A4083;
+ Tue, 29 Jun 2021 14:23:40 +0000 (GMT)
+Received: from smtp.tlslab.ibm.com (unknown [9.101.4.1])
+ by d06av23.portsmouth.uk.ibm.com (Postfix) with SMTP;
+ Tue, 29 Jun 2021 14:23:40 +0000 (GMT)
+Received: from yukon.ibmuc.com (unknown [9.171.54.151])
+ by smtp.tlslab.ibm.com (Postfix) with ESMTP id A8FCA2201D3;
+ Tue, 29 Jun 2021 16:23:38 +0200 (CEST)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PULL 04/21] acpi: ged: add control regs
-Message-ID: <20210624094224.d6zgfyjgbsz5wp4m@sirius.home.kraxel.org>
-References: <20200917135323.18022-1-kraxel@redhat.com>
- <20200917135323.18022-5-kraxel@redhat.com>
- <CAFEAcA_7w2MrTBBafUe6CFDDuAK+vAUP2fdhPG1TzA70sJW+4w@mail.gmail.com>
+Subject: [PATCH 1/4] arm/aspeed: rainier: Add i2c eeproms and muxes
+Date: Tue, 29 Jun 2021 16:23:33 +0200
+Message-Id: <20210629142336.750058-2-clg@kaod.org>
+X-Mailer: git-send-email 2.31.1
+In-Reply-To: <20210629142336.750058-1-clg@kaod.org>
+References: <20210629142336.750058-1-clg@kaod.org>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_7w2MrTBBafUe6CFDDuAK+vAUP2fdhPG1TzA70sJW+4w@mail.gmail.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=kraxel@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.373,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: 60ZKwtJpJ6hhWVjJYtVKneho-yIYEiR0
+X-Proofpoint-ORIG-GUID: 60ZKwtJpJ6hhWVjJYtVKneho-yIYEiR0
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.790
+ definitions=2021-06-29_06:2021-06-28,
+ 2021-06-29 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ phishscore=0 malwarescore=0
+ bulkscore=0 priorityscore=1501 impostorscore=0 mlxscore=0
+ lowpriorityscore=0 suspectscore=0 clxscore=1034 adultscore=0
+ mlxlogscore=999 spamscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.12.0-2104190000 definitions=main-2106290095
+Received-SPF: softfail client-ip=148.163.158.5; envelope-from=clg@kaod.org;
+ helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -9
+X-Spam_score: -1.0
+X-Spam_bar: -
+X-Spam_report: (-1.0 / 5.0 requ) BAYES_00=-1.9, KHOP_HELO_FCRDNS=0.207,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cBWA58PJU1Xf
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: VOHM0LQjzSOc
 
-  Hi,
+From: Joel Stanley <joel@jms.id.au>
 
-> > +    switch (addr) {
-> > +    case ACPI_GED_REG_SLEEP_CTL:
-> > +        slp_typ = (data >> 2) & 0x07;
-> > +        slp_en  = (data >> 5) & 0x01;
-> > +        if (slp_en && slp_typ == 5) {
-> > +            qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
-> > +        }
-> > +        return;
-> > +    case ACPI_GED_REG_SLEEP_STS:
-> > +        return;
-> > +    case ACPI_GED_REG_RESET:
-> > +        if (data == ACPI_GED_RESET_VALUE) {
-> > +            qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
-> 
-> Here we call qemu_system_reset_request(), but we pass it a cause
-> value of GUEST_SHUTDOWN. Is this trying to do a reset (in which
-> case it should probably be SHUTDOWN_CAUSE_GUEST_RESET) or a shutdown
-> (in which case it needs to call qemu_system_shutdown_request()) ?
+These are the devices documented by the Rainier device tree. With this
+we can see the guest discovering the multiplexers and probing the eeprom
+devices:
 
-It is reset (shutdown is a few lines above and the cause was probably
-just copy & pasted ...).
+ i2c i2c-2: Added multiplexed i2c bus 16
+ i2c i2c-2: Added multiplexed i2c bus 17
+ i2c i2c-2: Added multiplexed i2c bus 18
+ i2c i2c-2: Added multiplexed i2c bus 19
+ i2c-mux-gpio i2cmux: 4 port mux on 1e78a180.i2c-bus adapter
+ at24 20-0050: 8192 byte 24c64 EEPROM, writable, 1 bytes/write
+ i2c i2c-4: Added multiplexed i2c bus 20
+ at24 21-0051: 8192 byte 24c64 EEPROM, writable, 1 bytes/write
+ i2c i2c-4: Added multiplexed i2c bus 21
+ at24 22-0052: 8192 byte 24c64 EEPROM, writable, 1 bytes/write
 
-take care,
-  Gerd
+Signed-off-by: Joel Stanley <joel@jms.id.au>
+[ clg: Introduced aspeed_eeprom_init ]
+Message-Id: <20210625050643.161042-1-joel@jms.id.au>
+Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+---
+ hw/arm/aspeed.c | 44 ++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 44 insertions(+)
+
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 1301e8fdffb2..62862a244842 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -674,9 +674,21 @@ static void g220a_bmc_i2c_init(AspeedMachineState *b=
+mc)
+                           eeprom_buf);
+ }
+=20
++static void aspeed_eeprom_init(I2CBus *bus, uint8_t addr, uint32_t rsize=
+)
++{
++    I2CSlave *i2c_dev =3D i2c_slave_new("at24c-eeprom", addr);
++    DeviceState *dev =3D DEVICE(i2c_dev);
++
++    qdev_prop_set_uint32(dev, "rom-size", rsize);
++    i2c_slave_realize_and_unref(i2c_dev, bus, &error_abort);
++}
++
+ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
+ {
+     AspeedSoCState *soc =3D &bmc->soc;
++    I2CSlave *i2c_mux;
++
++    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 0), 0x51, 32 * KiB)=
+;
+=20
+     /* The rainier expects a TMP275 but a TMP105 is compatible */
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), TYPE_TMP10=
+5,
+@@ -685,11 +697,20 @@ static void rainier_bmc_i2c_init(AspeedMachineState=
+ *bmc)
+                      0x49);
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), TYPE_TMP10=
+5,
+                      0x4a);
++    i2c_mux =3D i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4)=
+,
++                                      "pca9546", 0x70);
++    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 64 * KiB);
++    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x51, 64 * KiB);
++    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 2), 0x52, 64 * KiB);
+=20
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5), TYPE_TMP10=
+5,
+                      0x48);
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5), TYPE_TMP10=
+5,
+                      0x49);
++    i2c_mux =3D i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5)=
+,
++                                      "pca9546", 0x70);
++    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 64 * KiB);
++    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x51, 64 * KiB);
+=20
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), TYPE_TMP10=
+5,
+                      0x48);
+@@ -697,6 +718,12 @@ static void rainier_bmc_i2c_init(AspeedMachineState =
+*bmc)
+                      0x4a);
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), TYPE_TMP10=
+5,
+                      0x4b);
++    i2c_mux =3D i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6)=
+,
++                                      "pca9546", 0x70);
++    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 64 * KiB);
++    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x51, 64 * KiB);
++    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 2), 0x50, 64 * KiB);
++    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 3), 0x51, 64 * KiB);
+=20
+     /* Bus 7: TODO dps310@76 */
+     /* Bus 7: TODO max31785@52 */
+@@ -704,11 +731,15 @@ static void rainier_bmc_i2c_init(AspeedMachineState=
+ *bmc)
+     /* Bus 7: TODO si7021-a20@20 */
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), TYPE_TMP10=
+5,
+                      0x48);
++    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 7), 0x50, 64 * KiB)=
+;
++    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 7), 0x51, 64 * KiB)=
+;
+=20
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), TYPE_TMP10=
+5,
+                      0x48);
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), TYPE_TMP10=
+5,
+                      0x4a);
++    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 8), 0x50, 64 * KiB)=
+;
++    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 8), 0x51, 64 * KiB)=
+;
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), "pca9552",=
+ 0x61);
+     /* Bus 8: ucd90320@11 */
+     /* Bus 8: ucd90320@b */
+@@ -716,14 +747,27 @@ static void rainier_bmc_i2c_init(AspeedMachineState=
+ *bmc)
+=20
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "tmp423", =
+0x4c);
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "tmp423", =
+0x4d);
++    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 9), 0x50, 128 * KiB=
+);
+=20
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 10), "tmp423",=
+ 0x4c);
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 10), "tmp423",=
+ 0x4d);
++    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 10), 0x50, 128 * Ki=
+B);
+=20
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), TYPE_TMP1=
+05,
+                      0x48);
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), TYPE_TMP1=
+05,
+                      0x49);
++    i2c_mux =3D i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11=
+),
++                                      "pca9546", 0x70);
++    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 64 * KiB);
++    aspeed_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x51, 64 * KiB);
++
++
++    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 13), 0x50, 64 * KiB=
+);
++
++    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 14), 0x50, 64 * KiB=
+);
++
++    aspeed_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 15), 0x50, 64 * KiB=
+);
+ }
+=20
+ static bool aspeed_get_mmio_exec(Object *obj, Error **errp)
+--=20
+2.31.1
 

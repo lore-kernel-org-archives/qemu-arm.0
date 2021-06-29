@@ -1,200 +1,108 @@
-Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp4297253lfg;
-        Mon, 28 Jun 2021 13:02:13 -0700 (PDT)
-X-Received: by 2002:a05:622a:108:: with SMTP id u8mr23437723qtw.326.1624910533043;
-        Mon, 28 Jun 2021 13:02:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1624910533; cv=none;
+Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp4771993lfg;
+        Tue, 29 Jun 2021 02:39:29 -0700 (PDT)
+X-Received: by 2002:aa7:cf03:: with SMTP id a3mr39398113edy.27.1624959569121;
+        Tue, 29 Jun 2021 02:39:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1624959569; cv=none;
         d=google.com; s=arc-20160816;
-        b=MSeDiELdnYMyZadEO+I3HF2HhEQtZ97SVTf/u5zADXaYK7zmqXUg5tY8IDgdu/FnsL
-         eTKNrJSE2LxvCtmlmHfL+youvBjqnLH3rAX6EXimDOiHHeVV6zs6J9lXZxBXQFNr4oMZ
-         bawHRsXeZqZSu2wi2pwTU4R8MuwjNAun4WMHUs6l1ZcBtxBmq49BPY6OUPjHbvHytZoW
-         zzlxiuEFnp4QumLfAO6Pnh/wGXV8hb1+kwKiP141nT1pmrqEReZAgndW0CuIinmXwVL3
-         JG+9c6ZL33xhSxMNJezzyyp8uWH44B+vez7QOAGslofbiOReDXv/8btWySyWUdOuH+t+
-         3Hyg==
+        b=loZhvLSSmRcMqXk9VZqqrz2ktzBSgMyQZf6wDi6h6+Pu0QX+5ch4YDqfBXH0ik22W6
+         kwz9lnxfq/Umf3qa/N0Zw/AxLi93Dd88onbDu9BCtOML9vc/MhUXwJeLLuOUGD7yhiTD
+         LtqaqwoK6q1dSuRcld4y1B3hwB4Dl2tc6Z/X7PzmznYZNnJoFk74QbXs8wZvs5g1gv4x
+         TYlc8GCnxbu5UuQcdfSSHlJWhsWGMVCpxrB3H8oPP8aos96jkF7+z6pB9C0exmmslkzw
+         35pix7RA4RoMGVfgFaxpMGAYBsm0YYgKZX2vRNbbqIDVd7No4NMI1z62Yaks3owcN8Hm
+         ilMg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=SJGXWSQqZqpp78kNZXI1pjCnN4IFLVvgnZNfWDe9g+8=;
-        b=BqvpXAMwmBLddEHWD6pP8RI2DXtW/xYLKuw665FnsU87N3IHY/eYTrH6PCzQc4VH04
-         OSyVuqaonV9GA5aXf6tUwOBZIGTMOC3RzMYA99sdiUzPf6Zmnl4HFu2Yw99TQghj2s/o
-         phxzgxNVs+ZmPDyIGj7LkBOzyYeFb67d4t+euMDD+bVfpztdLzg67/DU35MF52Dl6Y+i
-         S2zZtCyFF46ECK3qHAUze4URb3L9btYhJwQiGDLUvKDmB8d5dH+PhYyVXXJAPXUIH4Ui
-         YmTPXENH4QiIKTRpr8Iyo59FNQIFxnk3ZVpBSK+lTcIiyfqM8sbbgb/ZGcguPLmeXsDJ
-         EGWw==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=2m1cm4DNjdxFK97J07+kJqGsdUAHFeoMZD6p9ec3dTs=;
+        b=fX1YF2tXUifPdWiYcYDQCh1fafZk+sMvrppUNyOCd30rVCrrNX3D9oUxvujSud0M8k
+         PQAsHb82KbcbbCYEpDZMbtX1Q6cXki05kWMFvhTVU6GiqeK3oOfNb7VqLDL/MxQqyHke
+         UVG9NllYCVxNZF3pfLCA02kcISgW0cRvTFmJpymOMehNZvApiSL+vnNPSq1qf3Dt0rY6
+         yKE+Zno+B02JymHnzuLd3bBmcCiyq0HuIxpyerFXcDUzJ8NhyPy2XskwhKVAikA9bDby
+         9mxayAdukR+11gmQI399Yps2SbuQ+EzHJHp0ykmd7J2eRciCj+7naBw/M8aO4kP/4vC8
+         QWaA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uUbc12sC;
+       dkim=pass header.i=@linaro.org header.s=google header.b=DgsI38+K;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d6sor3816161qkl.177.2021.06.28.13.02.12
+        by mx.google.com with SMTPS id hw8sor7506561ejc.25.2021.06.29.02.39.29
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 28 Jun 2021 13:02:12 -0700 (PDT)
+        Tue, 29 Jun 2021 02:39:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uUbc12sC;
+       dkim=pass header.i=@linaro.org header.s=google header.b=DgsI38+K;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=SJGXWSQqZqpp78kNZXI1pjCnN4IFLVvgnZNfWDe9g+8=;
-        b=uUbc12sC5H8QxpgmHay1oM/EJglgmL2ipkNUMxNWLPJ/umMNcGU5foZmp22oiBHtVS
-         33oZQUYOFcaodFWuVyxJrV6SGxT+VvJBqdeVfi47fESrWRmUny1SFvQsqZTdAcmx4Hdc
-         oDb92TUP6r955N8DPtw+G1GdJszVgOXcn6N/n7837o1gJIs8/fCiL098JGgOijP6ugJH
-         lMMnzdDyyD4CfXXdAfmT9Dg8TcnBYRJINwVAdnFWtNGVZ2vDYqy8xwVIB4gJ6wLpzRJp
-         TcZDDQ7sXGwDgnfoxC3yjtDQw8O0Qho2wcx8DwiJHlTWAgCFzWf7tTf69L83/dWAl6lx
-         6Oiw==
+         :cc;
+        bh=2m1cm4DNjdxFK97J07+kJqGsdUAHFeoMZD6p9ec3dTs=;
+        b=DgsI38+KTWaigw4Q4tYn+iz7ZMMmc+e8Mz7IWnRyEqwzI1ZaTsMYCDOyKGvBmj8bHh
+         FyHfo7K1plkgSx7hXcqUbS0eg65gZPI/VvBIWDXO/WcFhwah+wUmWwf2h33K2fe1yP6Q
+         AiSsE36DFxrww2oC7gpgE/Ev2NWugr4uZqrtyvbBCfsK8wH6HjeWU2uNpkwA1HHgz3FT
+         BcKfCHCgspub+cM6JH6NltoVkbUkMzwAlF/lQmnHwAlnudD85uw91Y7xG8G9ue9A6M18
+         E1eHuAKK6Z1sEA5s7KjRPZ0JhQ5cwzBudtQB8fYW8FKPv3yj3AFUsHBZdP1UeoIkZ2/b
+         p3YQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=SJGXWSQqZqpp78kNZXI1pjCnN4IFLVvgnZNfWDe9g+8=;
-        b=MwyN5/jwPdxcoB5B9F7AFIdFGgFWESem+dYVPlVRkHLvO8Bib84wIrktqwvmjVCEBd
-         r49yY9yFhKrp2zeej+OH992e1MJ8yv90GVRntyN9vhdY13Imu4qbuDk0XYw0FJ1kAZ4K
-         WvOns68qHZt8BZFZfSwUq7P68Lo0tr30/cfFfJPGFTWBbTnDLh0HfZkXfgYtJR/UHsJa
-         EeQl+nnEqjghWNQxhIdmTFMjrQslw0SdDiFbb2USO+r9A9KWSQb9GYPPGm6guesvx5vr
-         YbsXy7OHvepdt1j67/ERxmKtrpeGME6NGx024kbNtiI8dqn3xwW+ocfxEFnMhsvk2G5u
-         kMdg==
-X-Gm-Message-State: AOAM53038CVTD2YRM8dhf3Lkc4Hy8wmIIGuEpoLcQskXG/u9ouIGCVF1
-	STmiZJtGBiuEZfVAOKpisfi51ef50ABRUgEZ6KsvyslQxEPD6+jM
-X-Google-Smtp-Source: ABdhPJydp+Xl452A5QRMgDvVJUgZTGlq67WeKkDRI0BlQbnhhZSR0awtyMLd8J3uSgiai/6oUSzLDzfgA+8XOs1WUEs=
-X-Received: by 2002:aa7:c644:: with SMTP id z4mr34760822edr.204.1624910532099;
- Mon, 28 Jun 2021 13:02:12 -0700 (PDT)
+         :message-id:subject:to:cc;
+        bh=2m1cm4DNjdxFK97J07+kJqGsdUAHFeoMZD6p9ec3dTs=;
+        b=CkGQHpDRl8p1EtK5Pps5HYlZ5TsTwACGFa7AqJOnJjZeB0LHpua+ychOV6LeQqQ/kU
+         MYRkag+xEOLp7YDrPZ/VgBwtTasLtDPofH/j5WR+vXPi7K+11z8EmwdU9vBEhtZwju7b
+         kAdvOHDAZbllTqPrtqZn+6dJjQ6q1vfhQA2d/68o5kzS3SB5Ev3xG4EactQ272ChtIaN
+         RvOQlm+MbJju2B4eG2DjmW3peVJTUW//vyD/uY2d0rfTbIhuBy+uSFtG/i0ivIzaDwoh
+         bc/bcm5ZPKif8kWlFduWypAW9dLaeL0C1u1E3PO6VVrd4Uo27d2ideN/HZW4zC0nr0w+
+         SLzw==
+X-Gm-Message-State: AOAM5313CquV9OV3ZRC4+D9y/b+F953XaGvIcwq+mkU6y/pKgeCRPkvc
+	X8g/+rU2cIyOLbihtKYqvhQKu9omMd6L/Yix9FSkngIX
+X-Google-Smtp-Source: ABdhPJwLVelBNDqeZRe4FWYQ7Upvh1ty3HtU8x0P3wuLuo36vBnloNnJW/FrYjR6pZqapK9zEkH3Lgg1cMLvsraNYq8=
+X-Received: by 2002:a17:907:98eb:: with SMTP id ke11mr29411177ejc.85.1624959568867;
+ Tue, 29 Jun 2021 02:39:28 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210623134756.30930-1-alex.bennee@linaro.org> <20210623134756.30930-3-alex.bennee@linaro.org>
-In-Reply-To: <20210623134756.30930-3-alex.bennee@linaro.org>
+References: <1624662174-175828-1-git-send-email-joe.komlodi@xilinx.com>
+ <CAFEAcA_vxA12WMi6qdV2_wNiNAKZ4j6-FTKnwfphT7nGznJoYw@mail.gmail.com> <12d4c7de-1346-2aee-75f5-4db729b7f1c7@linaro.org>
+In-Reply-To: <12d4c7de-1346-2aee-75f5-4db729b7f1c7@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 28 Jun 2021 21:01:35 +0100
-Message-ID: <CAFEAcA-UPE5+moyVM-1pJ_gi9fj3t1nWtWfZaZ13hkd6-=L5nw@mail.gmail.com>
-Subject: Re: [PATCH v4 2/2] tests/tcg: port SYS_HEAPINFO to a system test
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
+Date: Tue, 29 Jun 2021 10:38:51 +0100
+Message-ID: <CAFEAcA_BOGSuFBuW_YczvbT1eFRhq9eL4K7f8EaSwjvPfEXmbQ@mail.gmail.com>
+Subject: Re: [PATCH 0/1] target/arm: Check NaN mode before silencing NaN
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: Joe Komlodi <joe.komlodi@xilinx.com>, QEMU Developers <qemu-devel@nongnu.org>, 
+	qemu-arm <qemu-arm@nongnu.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 7nnoZq87xo26
+X-TUID: CVKyrXt0tEBR
 
-On Wed, 23 Jun 2021 at 14:48, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
-te:
+On Mon, 28 Jun 2021 at 16:05, Richard Henderson
+<richard.henderson@linaro.org> wrote:
 >
-> This allows us to check our new SYS_HEAPINFO implementation generates
-> sane values.
+> On 6/28/21 7:54 AM, Peter Maydell wrote:
+> > Richard, Alex: what is the assertion trying to achieve ? It doesn't
+> > seem entirely obvious to me that because we're in default-NaN mode
+> > (which is a property of the *output* of FPU insns) that we should
+> > blow up on calling float*_silence_nan() (which is typically an action
+> > performed on the *input* of FPU insns).
 >
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> ---
->  tests/tcg/aarch64/system/semiheap.c | 74 +++++++++++++++++++++++++++++
->  1 file changed, 74 insertions(+)
->  create mode 100644 tests/tcg/aarch64/system/semiheap.c
+> This was in response to e9e5534ff30.
 >
-> diff --git a/tests/tcg/aarch64/system/semiheap.c b/tests/tcg/aarch64/syst=
-em/semiheap.c
-> new file mode 100644
-> index 0000000000..d5613dca59
-> --- /dev/null
-> +++ b/tests/tcg/aarch64/system/semiheap.c
-> @@ -0,0 +1,74 @@
-> +/*
-> + * Semihosting System HEAPINFO Test
-> + *
-> + * Copyright (c) 2021 Linaro Ltd
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + */
-> +
-> +#include <inttypes.h>
-> +#include <stddef.h>
-> +#include <minilib.h>
-> +
-> +#define SYS_HEAPINFO    0x16
-> +
-> +uintptr_t __semi_call(uintptr_t type, uintptr_t arg0)
-> +{
-> +    register uintptr_t t asm("x0") =3D type;
-> +    register uintptr_t a0 asm("x1") =3D arg0;
-> +    asm("hlt 0xf000"
-> +        : "=3Dr" (t)
-> +        : "r" (t), "r" (a0));
+> My assumption in adding the assert is that it was probably a configuration error.  If you
+> disagree, I suppose we can revert it, as it's not critical.
+>
+> > If we do want to keep the assertion, somebody should audit the
+> > other frontends that use float*_silence_nan() (i386, m68k, s390x)
+> > to see if they also need updating.
+>
+> Easily done.  None of them ever set default_nan mode.
 
-You should include "memory" in the clobbers list here, or the compiler
-has license to assume that the semihosting call doesn't actually
-write to the struct info.
+Hmm, I guess this was just Arm, then, and the current code
+is silencing the NaN and then ignoring that result in favour
+of the default NaN, which is a bit unnecessary. Plus, we have
+this patch now thanks to Joe and we don't have the hypothetical
+"drop the assert" patch :-)
 
-> +
-> +    return t;
-> +}
-> +
-> +int main(int argc, char *argv[argc])
-> +{
-> +    struct {
-> +        void *heap_base;
-> +        void *heap_limit;
-> +        void *stack_base;
-> +        void *stack_limit;
-> +    } info;
-> +    void *ptr_to_info =3D (void *) &info;
-> +
-> +    ml_printf("Semihosting Heap Info Test\n");
-> +
-> +    /* memset(&info, 0, sizeof(info)); */
+Applied to target-arm.next, thanks.
 
-Why is this here but commented out ? (If you want to zero initialize
-the struct, using "=3D { }" when you define it above is simpler.)
-
-> +    __semi_call(SYS_HEAPINFO, (uintptr_t) &ptr_to_info);
-> +
-> +    if (info.heap_base =3D=3D NULL || info.heap_limit =3D=3D NULL) {
-> +        ml_printf("null heap: %p -> %p\n", info.heap_base, info.heap_lim=
-it);
-> +        return -1;
-> +    }
-> +
-> +    /* Error if heap base is above limit */
-> +    if ((uintptr_t) info.heap_base >=3D (uintptr_t) info.heap_limit) {
-> +        ml_printf("heap base %p >=3D heap_limit %p\n",
-> +               info.heap_base, info.heap_limit);
-> +        return -2;
-> +    }
-> +
-> +    if (info.stack_base =3D=3D NULL) {
-> +        ml_printf("null stack: %p -> %p\n", info.stack_base, info.stack_=
-limit);
-> +        return -3;
-> +    }
-> +
-> +    /*
-> +     * We don't check our local variables are inside the reported
-> +     * stack because the runtime may select a different stack area (as
-> +     * our boot.S code does). However we can check we don't clash with
-> +     * the heap.
-> +     */
-> +    if (ptr_to_info > info.heap_base && ptr_to_info < info.heap_limit) {
-> +        ml_printf("info appears to be inside the heap: %p in %p:%p\n",
-> +               ptr_to_info, info.heap_base, info.heap_limit);
-
-I'm not sure this test is valid -- the 'struct info' is on our stack,
-so it could be anywhere in RAM, including possibly in the big
-range we got back from SYS_HEAPINFO.
-
-You could if you liked check that for instance the address of 'main'
-is not inside the heap (assuming that you load this test case with
-the ELF loader, it should be in a rom blob and thus excluded from
-the heap range.)
-
-> +        return -4;
-> +    }
-> +
-> +    ml_printf("heap: %p -> %p\n", info.heap_base, info.heap_limit);
-> +    ml_printf("stack: %p <- %p\n", info.stack_limit, info.stack_base);
-> +    ml_printf("Passed HeapInfo checks\n");
-> +    return 0;
-> +}
-
-It would also be useful to check that you can write to the memory and
-read back the value written (ie that we have not been given
-back a range that's read-only or which is not backed by anything).
-(You might need to jump through a hoop or two to check where your
-current stack is before potentially stomping on it...)
-
-thanks
 -- PMM

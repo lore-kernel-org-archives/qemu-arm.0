@@ -1,325 +1,151 @@
-Received: by 2002:a19:ca1d:0:0:0:0:0 with SMTP id a29csp5013009lfg;
-        Tue, 29 Jun 2021 07:50:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyZcFpRzXKGEwx6BzWiP/GxIlumETWigzbpnfOYedvzebTqrX18i+xDmDRSq1ym308zUETR
-X-Received: by 2002:a25:1e57:: with SMTP id e84mr23260903ybe.308.1624978241971;
-        Tue, 29 Jun 2021 07:50:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1624978241; cv=none;
+Received: by 2002:a0c:fe44:0:0:0:0:0 with SMTP id u4csp788528qvs;
+        Tue, 29 Jun 2021 08:29:56 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw+OMnB+la1fyeyH+b3JqW1U0AIxtRaG3iFTdBWS0sDXOr7lZxbAhuWbNXoLMt9I2Iy6i8E
+X-Received: by 2002:aa7:d74b:: with SMTP id a11mr41190281eds.40.1624980596110;
+        Tue, 29 Jun 2021 08:29:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1624980596; cv=none;
         d=google.com; s=arc-20160816;
-        b=sywXfzJeuVlyaW1Ef+jvlz/KunCONnmZpDE0GjNYH1NhbbIE4ozdKfLF3IbUyXVIYK
-         XVxC8KZUsD2sEOahiq3uhVPG+0LA4scvd9BKLnQP7/LgGTthOm0xfLdrRAooELWHs3uh
-         RsotaHks041UIqQoZKd3zMjP5zOpOB8nU4wDBiBMGmjXXGcxtm4LpXut7ogPHOIurVdO
-         Yw/huyKLT3oVFWg6iZOZ7+LLJUNRc/v0RVn1B7cUMwYwxWRe3uDtcLWvwBDYiN/TnqWH
-         neanI72AcADoxkXFpdVAwjCgfjeikrsidAK4gLv3PZWNu/bT/uZHnyYhVOx2BPPGrT14
-         7TVw==
+        b=B0HsVXMLJMX5+k8EPUYQtS4/xYskyVN/h8iijwZAxvNhHWmmQc2J5D1tgN+Mr1HM2D
+         GWW69gpTsODSLzDSM96FzBFMIRK/UCrXz2Lfon53dUwl9n4S2sTdKLsGUHKfwk6rcd45
+         DtVuEp7Krtt2LBYj3VYuYnGwhCZxAcvuIyGW8sHrtGwVbKVeq+OEiVIoRjcX6WjZT6ex
+         P4p0XECF8pSeP8+BBd9yLwJ7vs9IBjW7/qAMgGAY8fGfyJ59MITFkoUSrolEoUUrMY2k
+         WWA8cDRgJoJActAjp/X8ilAdaJ7W9qAAwhEfBZZ1MOhMSd5eVAxYTCw4bvdhvvu4b7K6
+         RWBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=anp3ZPbVL/l/+2krK7liT3lC/82a7q84tGXuAgSOAII=;
-        b=hxVEBY+r2xn4Vx5FSxeK/wg7TLZcDp2IyetYq7C5V2R8JTWRSk2G/qaN3414/kQVy5
-         a4vA/JQVXJNIH9NSqSaVhe2m0SjQcR750IiFRQ4bC1zjAj1xtdF6wDumxWGHcOY5O99y
-         DyPIRS8Ufjd6ol6df/zbDYHs1V1DdHjYh2JLgLqgrIhBhcETz3+N7ktWpC4gk8JM+LYd
-         LpFtHn1qy4HBhxddUvHOTpbS6dUZ6ibQU6URJJGKV2ABlwtvSwdn3P3iEOsKktOiLZZu
-         dfuh93RxwnWZklUGbfUbIVErpoBjtImd+M1FNy7R741wIbMbBCgLe5tK4gopULqFsP4d
-         87BQ==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=MdfKbITDCX6m8sRlWNWLycTq5IZIdSqG13zXlc0UuMQ=;
+        b=O1uwb/r4/PyH+c7IZriazGnmxbFOn28a8JnRN6K7TURfSCQNh/lfSPXhL70/vYuCZi
+         5D8eZxH/bZcHzD5yHZPJG0Q+z2+WnldCbo9lpQ287W6rNm54D54xxm/BrmbODedJhR3K
+         504boRmeFMkTx4gbJVm3HXvM4LkSBrLzpfb5JsLFucWnMl/tuEEcV4RZ0ZjBt5PC6pJp
+         JAYMys6eWlCfHUsYT6VUotTYbqpAiF6IMalsKvzAwSguMQ6JzQuqDDQmPp+M2Gv9S1a6
+         VOwUCeKJjd2Hf5nc/Bf6NiildV9miRnBLEWNbrPslKYmRFPszuj/7J20pOXMN8i8NQVR
+         sArA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=KTUNQ7N4;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h67si19283889ybc.482.2021.06.29.07.50.41
+        by mx.google.com with ESMTPS id ga41si10671397ejc.571.2021.06.29.08.29.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 29 Jun 2021 07:50:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 29 Jun 2021 08:29:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:47878 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=KTUNQ7N4;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:51602 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lyF4T-0002sv-9s
-	for alex.bennee@linaro.org; Tue, 29 Jun 2021 10:50:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53940)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lyFgR-0002w8-3V
+	for alex.bennee@linaro.org; Tue, 29 Jun 2021 11:29:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41344)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1lyEet-0006m0-J1; Tue, 29 Jun 2021 10:24:15 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:47593)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1lyEei-0005yX-Iw; Tue, 29 Jun 2021 10:24:06 -0400
-Received: from pps.filterd (m0098417.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 15TE3v93026091; Tue, 29 Jun 2021 10:23:45 -0400
-Received: from ppma03ams.nl.ibm.com (62.31.33a9.ip4.static.sl-reverse.com
- [169.51.49.98])
- by mx0a-001b2d01.pphosted.com with ESMTP id 39g4ungtpx-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 29 Jun 2021 10:23:44 -0400
-Received: from pps.filterd (ppma03ams.nl.ibm.com [127.0.0.1])
- by ppma03ams.nl.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 15TEElK6025583;
- Tue, 29 Jun 2021 14:23:43 GMT
-Received: from b06cxnps4076.portsmouth.uk.ibm.com
- (d06relay13.portsmouth.uk.ibm.com [9.149.109.198])
- by ppma03ams.nl.ibm.com with ESMTP id 39duv89b54-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 29 Jun 2021 14:23:43 +0000
-Received: from d06av24.portsmouth.uk.ibm.com (d06av24.portsmouth.uk.ibm.com
- [9.149.105.60])
- by b06cxnps4076.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 15TENfT634472414
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 29 Jun 2021 14:23:41 GMT
-Received: from d06av24.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id E84F842087;
- Tue, 29 Jun 2021 14:23:40 +0000 (GMT)
-Received: from d06av24.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 66CB2420A4;
- Tue, 29 Jun 2021 14:23:40 +0000 (GMT)
-Received: from smtp.tlslab.ibm.com (unknown [9.101.4.1])
- by d06av24.portsmouth.uk.ibm.com (Postfix) with SMTP;
- Tue, 29 Jun 2021 14:23:40 +0000 (GMT)
-Received: from yukon.ibmuc.com (unknown [9.171.54.151])
- by smtp.tlslab.ibm.com (Postfix) with ESMTP id A3C6122007E;
- Tue, 29 Jun 2021 16:23:39 +0200 (CEST)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH 2/4] aspeed: Emulate the AST2600A3
-Date: Tue, 29 Jun 2021 16:23:34 +0200
-Message-Id: <20210629142336.750058-3-clg@kaod.org>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20210629142336.750058-1-clg@kaod.org>
-References: <20210629142336.750058-1-clg@kaod.org>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lyFgG-0002vd-Ce
+ for qemu-arm@nongnu.org; Tue, 29 Jun 2021 11:29:44 -0400
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d]:36578)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lyFgE-0006PX-RQ
+ for qemu-arm@nongnu.org; Tue, 29 Jun 2021 11:29:44 -0400
+Received: by mail-ej1-x62d.google.com with SMTP id nd37so37102108ejc.3
+ for <qemu-arm@nongnu.org>; Tue, 29 Jun 2021 08:29:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=MdfKbITDCX6m8sRlWNWLycTq5IZIdSqG13zXlc0UuMQ=;
+ b=KTUNQ7N4PZAX0ipo861fgx64MDG8Em0/7aoPKA5CeOEfElhNkK7CyhcR1Ku+WxUlPY
+ uNVuRFh5H+MKZdX0HR6aE3AGOLSWaA40Ruk98lxfXTil9ZqL8JrlcMXBR7B7VNbjzABl
+ SMK7h0AOdGjPBFAThmx/ZG5e0gQ8ezPJvaTJ0+5npePywEYhGw7usw/7w/x12x+8cTQg
+ POn3VPhF4qdOM5KYbjylEW5d/5f8d+RNCFpdoYZvHMnPDAfHJ9hat8OLCyvnFgzNYy7l
+ AUDdUC+CpYLhrZve/cGI69M1Np3Hz5xZx90wnQbnHyaiFQOphDx4jMOnVAVdSII0Y7dS
+ ZuFw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=MdfKbITDCX6m8sRlWNWLycTq5IZIdSqG13zXlc0UuMQ=;
+ b=cuKHpYYUBs1bT+PtP1825M8B7kMhTqxVMKh3Dzpwk7KruXH5rDT02Q82L8JECX1a+0
+ 8JZ+yw3G6NFtUTfr8NEpix4F5OI1p5ZL9IZ66VYQ1+01y9ojcmcHVYs/NoJqjwLNaHzk
+ Tvexe1C+RMuB7ynICN0Jk2tovPpsUgOC6B2o7gvyndxgM7gSQltg958PwkxtoiWEZruv
+ NJaXyfjuQQVHZLPAzZ822tKUkrJSSaEzaAdXzNO/a+uWRkYeaG5CfbfnEigE4CbSmbaZ
+ uRIP2tOC6oGum0xoXdBcKYLlZpdJwZ+gLM5P49w/SS8wIHAfO7BkRLLggrvRTmHykaV8
+ SnnA==
+X-Gm-Message-State: AOAM5325Is6AeQXeRr8E0MfpsTtFCEFsI2POPPFBzZ0T4X5V0wmpyaLd
+ iFJ6Xw82N4clKnKGNT/BaQfMhgy9BZF0IQdYGIpAXQ==
+X-Received: by 2002:a17:906:4759:: with SMTP id
+ j25mr30298496ejs.4.1624980580400; 
+ Tue, 29 Jun 2021 08:29:40 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: 4Pzdz8k2D8CVJoJULr_RttPKE2gBHdaA
-X-Proofpoint-GUID: 4Pzdz8k2D8CVJoJULr_RttPKE2gBHdaA
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.790
- definitions=2021-06-29_06:2021-06-28,
- 2021-06-29 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- mlxlogscore=999 adultscore=0
- suspectscore=0 bulkscore=0 priorityscore=1501 clxscore=1034 malwarescore=0
- phishscore=0 mlxscore=0 impostorscore=0 lowpriorityscore=0 spamscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2104190000
- definitions=main-2106290095
-Received-SPF: softfail client-ip=148.163.158.5; envelope-from=clg@kaod.org;
- helo=mx0b-001b2d01.pphosted.com
-X-Spam_score_int: -11
-X-Spam_score: -1.2
-X-Spam_bar: -
-X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
+References: <20210625111842.3790-1-maxim.uvarov@linaro.org>
+ <20210625111842.3790-3-maxim.uvarov@linaro.org>
+ <CAFEAcA9K642UHLF5D5wzS0sN8fVurcs4-TN0x6EaT=xBRB0Fkg@mail.gmail.com>
+In-Reply-To: <CAFEAcA9K642UHLF5D5wzS0sN8fVurcs4-TN0x6EaT=xBRB0Fkg@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 29 Jun 2021 16:29:03 +0100
+Message-ID: <CAFEAcA9oxUu13yHT0yzsAg57uOWH4opNUzhg7EwGJcb=_sicQA@mail.gmail.com>
+Subject: Re: [PATCH 2/2] gpio_pwr: use shutdown function for reboot
+To: Maxim Uvarov <maxim.uvarov@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9ixSvwEUZ+qT
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: r7Jpxrxqkh/F
 
-From: Joel Stanley <joel@jms.id.au>
+On Fri, 25 Jun 2021 at 12:56, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> On Fri, 25 Jun 2021 at 12:18, Maxim Uvarov <maxim.uvarov@linaro.org> wrote:
+> >
+> > qemu has 2 type of functions: shutdown and reboot. Shutdown
+> > function has to be used for machine shutdown.
+> >
+> > Signed-off-by: Maxim Uvarov <maxim.uvarov@linaro.org>
+> > ---
+> >  hw/gpio/gpio_pwr.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/hw/gpio/gpio_pwr.c b/hw/gpio/gpio_pwr.c
+> > index 7714fa0dc4..dbaf1c70c8 100644
+> > --- a/hw/gpio/gpio_pwr.c
+> > +++ b/hw/gpio/gpio_pwr.c
+> > @@ -43,7 +43,7 @@ static void gpio_pwr_reset(void *opaque, int n, int level)
+> >  static void gpio_pwr_shutdown(void *opaque, int n, int level)
+> >  {
+> >      if (level) {
+> > -        qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+> > +        qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+> >      }
+> >  }
+>
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-This is the latest revision of the ASPEED 2600 SoC. As there is no
-need to model multiple revisions of the same SoC for the moment,
-update the SCU AST2600 to model the A3 revision instead of the A1 and
-adapt the AST2600 SoC and machines.
+There are clearly more problems with this GPIO setup that we need
+to get to the bottom of. But in the meantime this patch 2 is an
+obvious bug fix, so I'm going to to apply it to target-arm.next.
 
-Reset values are taken from v8 of the datasheet.
-
-Signed-off-by: Joel Stanley <joel@jms.id.au>
-[ clg: - Introduced an Aspeed "ast2600-a3" SoC class
-       - Commit log update ]
-Message-Id: <20210407171637.777743-21-clg@kaod.org>
-Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
----
- include/hw/misc/aspeed_scu.h |  2 ++
- hw/arm/aspeed.c              |  6 +++---
- hw/arm/aspeed_ast2600.c      |  6 +++---
- hw/misc/aspeed_scu.c         | 36 +++++++++++++++++++++++++++++-------
- 4 files changed, 37 insertions(+), 13 deletions(-)
-
-diff --git a/include/hw/misc/aspeed_scu.h b/include/hw/misc/aspeed_scu.h
-index d49bfb02fbdb..c14aff2bcbb5 100644
---- a/include/hw/misc/aspeed_scu.h
-+++ b/include/hw/misc/aspeed_scu.h
-@@ -43,6 +43,8 @@ struct AspeedSCUState {
- #define AST2500_A1_SILICON_REV   0x04010303U
- #define AST2600_A0_SILICON_REV   0x05000303U
- #define AST2600_A1_SILICON_REV   0x05010303U
-+#define AST2600_A2_SILICON_REV   0x05020303U
-+#define AST2600_A3_SILICON_REV   0x05030303U
-=20
- #define ASPEED_IS_AST2500(si_rev)     ((((si_rev) >> 24) & 0xff) =3D=3D =
-0x04)
-=20
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 62862a244842..aac52a8cc2fd 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -997,7 +997,7 @@ static void aspeed_machine_ast2600_evb_class_init(Obj=
-ectClass *oc, void *data)
-     AspeedMachineClass *amc =3D ASPEED_MACHINE_CLASS(oc);
-=20
-     mc->desc       =3D "Aspeed AST2600 EVB (Cortex-A7)";
--    amc->soc_name  =3D "ast2600-a1";
-+    amc->soc_name  =3D "ast2600-a3";
-     amc->hw_strap1 =3D AST2600_EVB_HW_STRAP1;
-     amc->hw_strap2 =3D AST2600_EVB_HW_STRAP2;
-     amc->fmc_model =3D "w25q512jv";
-@@ -1016,7 +1016,7 @@ static void aspeed_machine_tacoma_class_init(Object=
-Class *oc, void *data)
-     AspeedMachineClass *amc =3D ASPEED_MACHINE_CLASS(oc);
-=20
-     mc->desc       =3D "OpenPOWER Tacoma BMC (Cortex-A7)";
--    amc->soc_name  =3D "ast2600-a1";
-+    amc->soc_name  =3D "ast2600-a3";
-     amc->hw_strap1 =3D TACOMA_BMC_HW_STRAP1;
-     amc->hw_strap2 =3D TACOMA_BMC_HW_STRAP2;
-     amc->fmc_model =3D "mx66l1g45g";
-@@ -1053,7 +1053,7 @@ static void aspeed_machine_rainier_class_init(Objec=
-tClass *oc, void *data)
-     AspeedMachineClass *amc =3D ASPEED_MACHINE_CLASS(oc);
-=20
-     mc->desc       =3D "IBM Rainier BMC (Cortex-A7)";
--    amc->soc_name  =3D "ast2600-a1";
-+    amc->soc_name  =3D "ast2600-a3";
-     amc->hw_strap1 =3D RAINIER_BMC_HW_STRAP1;
-     amc->hw_strap2 =3D RAINIER_BMC_HW_STRAP2;
-     amc->fmc_model =3D "mx66l1g45g";
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index e3013128c670..8e1993790e6f 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -516,9 +516,9 @@ static void aspeed_soc_ast2600_class_init(ObjectClass=
- *oc, void *data)
-=20
-     dc->realize      =3D aspeed_soc_ast2600_realize;
-=20
--    sc->name         =3D "ast2600-a1";
-+    sc->name         =3D "ast2600-a3";
-     sc->cpu_type     =3D ARM_CPU_TYPE_NAME("cortex-a7");
--    sc->silicon_rev  =3D AST2600_A1_SILICON_REV;
-+    sc->silicon_rev  =3D AST2600_A3_SILICON_REV;
-     sc->sram_size    =3D 0x16400;
-     sc->spis_num     =3D 2;
-     sc->ehcis_num    =3D 2;
-@@ -530,7 +530,7 @@ static void aspeed_soc_ast2600_class_init(ObjectClass=
- *oc, void *data)
- }
-=20
- static const TypeInfo aspeed_soc_ast2600_type_info =3D {
--    .name           =3D "ast2600-a1",
-+    .name           =3D "ast2600-a3",
-     .parent         =3D TYPE_ASPEED_SOC,
-     .instance_size  =3D sizeof(AspeedSoCState),
-     .instance_init  =3D aspeed_soc_ast2600_init,
-diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
-index 40a38ebd8549..05edebedeb46 100644
---- a/hw/misc/aspeed_scu.c
-+++ b/hw/misc/aspeed_scu.c
-@@ -101,14 +101,24 @@
- #define AST2600_CLK_STOP_CTRL_CLR TO_REG(0x84)
- #define AST2600_CLK_STOP_CTRL2     TO_REG(0x90)
- #define AST2600_CLK_STOP_CTRL2_CLR TO_REG(0x94)
-+#define AST2600_DEBUG_CTRL        TO_REG(0xC8)
-+#define AST2600_DEBUG_CTRL2       TO_REG(0xD8)
- #define AST2600_SDRAM_HANDSHAKE   TO_REG(0x100)
- #define AST2600_HPLL_PARAM        TO_REG(0x200)
- #define AST2600_HPLL_EXT          TO_REG(0x204)
-+#define AST2600_APLL_PARAM        TO_REG(0x210)
-+#define AST2600_APLL_EXT          TO_REG(0x214)
-+#define AST2600_MPLL_PARAM        TO_REG(0x220)
- #define AST2600_MPLL_EXT          TO_REG(0x224)
-+#define AST2600_EPLL_PARAM        TO_REG(0x240)
- #define AST2600_EPLL_EXT          TO_REG(0x244)
-+#define AST2600_DPLL_PARAM        TO_REG(0x260)
-+#define AST2600_DPLL_EXT          TO_REG(0x264)
- #define AST2600_CLK_SEL           TO_REG(0x300)
- #define AST2600_CLK_SEL2          TO_REG(0x304)
--#define AST2600_CLK_SEL3          TO_REG(0x310)
-+#define AST2600_CLK_SEL3          TO_REG(0x308)
-+#define AST2600_CLK_SEL4          TO_REG(0x310)
-+#define AST2600_CLK_SEL5          TO_REG(0x314)
- #define AST2600_HW_STRAP1         TO_REG(0x500)
- #define AST2600_HW_STRAP1_CLR     TO_REG(0x504)
- #define AST2600_HW_STRAP1_PROT    TO_REG(0x508)
-@@ -433,6 +443,8 @@ static uint32_t aspeed_silicon_revs[] =3D {
-     AST2500_A1_SILICON_REV,
-     AST2600_A0_SILICON_REV,
-     AST2600_A1_SILICON_REV,
-+    AST2600_A2_SILICON_REV,
-+    AST2600_A3_SILICON_REV,
- };
-=20
- bool is_supported_silicon_rev(uint32_t silicon_rev)
-@@ -651,16 +663,26 @@ static const MemoryRegionOps aspeed_ast2600_scu_ops=
- =3D {
-     .valid.unaligned =3D false,
- };
-=20
--static const uint32_t ast2600_a1_resets[ASPEED_AST2600_SCU_NR_REGS] =3D =
-{
-+static const uint32_t ast2600_a3_resets[ASPEED_AST2600_SCU_NR_REGS] =3D =
-{
-     [AST2600_SYS_RST_CTRL]      =3D 0xF7C3FED8,
--    [AST2600_SYS_RST_CTRL2]     =3D 0xFFFFFFFC,
-+    [AST2600_SYS_RST_CTRL2]     =3D 0x0DFFFFFC,
-     [AST2600_CLK_STOP_CTRL]     =3D 0xFFFF7F8A,
-     [AST2600_CLK_STOP_CTRL2]    =3D 0xFFF0FFF0,
-+    [AST2600_DEBUG_CTRL]        =3D 0x00000FFF,
-+    [AST2600_DEBUG_CTRL2]       =3D 0x000000FF,
-     [AST2600_SDRAM_HANDSHAKE]   =3D 0x00000000,
--    [AST2600_HPLL_PARAM]        =3D 0x1000405F,
-+    [AST2600_HPLL_PARAM]        =3D 0x1000408F,
-+    [AST2600_APLL_PARAM]        =3D 0x1000405F,
-+    [AST2600_MPLL_PARAM]        =3D 0x1008405F,
-+    [AST2600_EPLL_PARAM]        =3D 0x1004077F,
-+    [AST2600_DPLL_PARAM]        =3D 0x1078405F,
-+    [AST2600_CLK_SEL]           =3D 0xF3940000,
-+    [AST2600_CLK_SEL2]          =3D 0x00700000,
-+    [AST2600_CLK_SEL3]          =3D 0x00000000,
-+    [AST2600_CLK_SEL4]          =3D 0xF3F40000,
-+    [AST2600_CLK_SEL5]          =3D 0x30000000,
-     [AST2600_CHIP_ID0]          =3D 0x1234ABCD,
-     [AST2600_CHIP_ID1]          =3D 0x88884444,
--
- };
-=20
- static void aspeed_ast2600_scu_reset(DeviceState *dev)
-@@ -675,7 +697,7 @@ static void aspeed_ast2600_scu_reset(DeviceState *dev=
-)
-      * of actual revision. QEMU and Linux only support A1 onwards so thi=
-s is
-      * sufficient.
-      */
--    s->regs[AST2600_SILICON_REV] =3D AST2600_A1_SILICON_REV;
-+    s->regs[AST2600_SILICON_REV] =3D AST2600_A3_SILICON_REV;
-     s->regs[AST2600_SILICON_REV2] =3D s->silicon_rev;
-     s->regs[AST2600_HW_STRAP1] =3D s->hw_strap1;
-     s->regs[AST2600_HW_STRAP2] =3D s->hw_strap2;
-@@ -689,7 +711,7 @@ static void aspeed_2600_scu_class_init(ObjectClass *k=
-lass, void *data)
-=20
-     dc->desc =3D "ASPEED 2600 System Control Unit";
-     dc->reset =3D aspeed_ast2600_scu_reset;
--    asc->resets =3D ast2600_a1_resets;
-+    asc->resets =3D ast2600_a3_resets;
-     asc->calc_hpll =3D aspeed_2500_scu_calc_hpll; /* No change since AST=
-2500 */
-     asc->apb_divider =3D 4;
-     asc->nr_regs =3D ASPEED_AST2600_SCU_NR_REGS;
---=20
-2.31.1
-
+thanks
+-- PMM

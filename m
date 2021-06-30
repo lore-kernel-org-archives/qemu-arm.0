@@ -1,115 +1,94 @@
-Received: by 2002:ac2:593b:0:0:0:0:0 with SMTP id v27csp121962lfi;
-        Tue, 29 Jun 2021 11:33:30 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwD6W1u/JhCo8kLbQsRBVKvQS6VrtRGNbzQg4VyIoKrfHNgIYIwV9vx91ocDmntEy51drnZ
-X-Received: by 2002:a67:7908:: with SMTP id u8mr26454221vsc.10.1624991610408;
-        Tue, 29 Jun 2021 11:33:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1624991610; cv=none;
+Received: by 2002:ac2:593b:0:0:0:0:0 with SMTP id v27csp390159lfi;
+        Tue, 29 Jun 2021 18:38:58 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw5cieeCmbMDPNUa0M15rW4bg+VKgZn1WtOI56CSBzVj8/zouIqxKr0QbBaxUPnIUYMVTnF
+X-Received: by 2002:a67:d80f:: with SMTP id e15mr28063527vsj.50.1625017138420;
+        Tue, 29 Jun 2021 18:38:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1625017138; cv=none;
         d=google.com; s=arc-20160816;
-        b=b0Suv0x3BKtG9IvFGSglbol9bP76XoTWWecf0dsQJYd7VVd7zPU7XZSa0ieC17oIkJ
-         xyjzEN0ejrgBStwfXh8kJ2p/T+95iINBzEQdZ8XlAHBeg1AgJLIj//5ekWUyWjctzW1u
-         b0jyyXfy6dyflL87a4mATcgjljjnlx7trAz5/X4wOiCBHKJHoppXyN2h8sIWUnx8BbtY
-         qsSSX8pFpUwLtnr+VFw0hax1/KVY2hkSVRolzSclDtGwNe3+7FdsiQEem8ujfEh/ewjK
-         /6I76THVHGv0ISFqHjz+yV+xel5z68EnFjnYsjEbRRnUx8opmi6/7/8Rl+H5P/1wIVNG
-         GeLA==
+        b=HNJfTVPd4E2vH8ev37lwQFc9NgK6ipIK1hS3ZNk+lbf3zM3vk2KWe01ZnK65mtkwyk
+         VkuVimpov8qBTAqQXePCwayafBllzG0V007HG8sPAao/x3DxDUmgaHuPygqltxkJbWaI
+         OfJvLzQ1Tytdd6EJAVr3Bs5/4I8ETaoMEsk7o46TTx4cgTpHNBCmcFGudpUgRmpL7ZuD
+         L/K7bGEB6ZoIQeJOH0WkySnLY3I9nqliR92OIlugYnwp7I9UKd21ow8d/XVTYJqRv7L1
+         lZ+rnIXBNHkbIGCLPyTHu2HDOQX84M2ByPd8R2XjQ4+EwS2Nz7asiOawMlOo7AO5WROO
+         jjAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=9QzL1z6vcX25s6sUIhuDHggygoMjsvQaR8I6rC665A4=;
-        b=FsdwID6XJUycdUnK79BJF5ubAKFxgthfjV3E463WFEj7rZEoma+tm78GVRxCgYLusy
-         n3vx7vz04SDBVPLrLZWW+CYfB5NeakBa7w8ZZFvTZtNnISKfNSjnJOcxVBhkGpLnkrH8
-         Ya7XeTi96lZOkaIMnOPhJJHCvZxI4xpzcMT/vtTzmVpb1ebyk3GYrCqD0IE5v2stPpzh
-         +FNrTnpWUHKuaZDCOem2TAp1tuNit/ONLOzSRiF4haP+9Qtf89gMvGEbFZpHdirwlS4p
-         5hJNnYnHF/cg4cHmGy/gjsbL5DYTivcX+Q1O1g6Mp0ZHz1oBhT9sFL6EsutNVECA3uhN
-         96/g==
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=q8p5b/FdcBJQrRPfyDw3P5rZs6OpgYY7l6BZKpR9m6o=;
+        b=wB7K4FLQAVjrND8/F5a8nWPoTgrT5Pefrm0uFW0mcNlzG8AcanyogKEIs6uLxiQ+HI
+         +qJpbHoGh9kSuh8BINGWnmmxN5+R4oVRIECxLuMwtNIudjIL/AVBCgEf/bnV1/49xYsD
+         jIqZ0+5yIFq3zidiUHscx0QSkgiRyTvrEjhSIkR7w1/4QFKeRtX7FQEUEJkwPxPGOMJa
+         XFN8AvCRFZwtJj2pHovJFR8PPiBs86FNC3zmOf9bqLeKfVA+gwXWxMzHGiYgs/CwPuJc
+         7dZrT7ZMlMgfA3L34MxvoI1m4VTFErcXS3yIRf9eYXsuMrE/xNSmMsCLllWa+QKHlZeJ
+         8JJg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="KzIyOi/R";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s135si12085522vsc.200.2021.06.29.11.33.30
+        by mx.google.com with ESMTPS id e21si12320604vsq.254.2021.06.29.18.38.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 29 Jun 2021 11:33:30 -0700 (PDT)
+        Tue, 29 Jun 2021 18:38:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="KzIyOi/R";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34580 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
+Received: from localhost ([::1]:58482 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lyIY5-00066a-No
-	for alex.bennee@linaro.org; Tue, 29 Jun 2021 14:33:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33882)
+	id 1lyPBp-0006mq-PY
+	for alex.bennee@linaro.org; Tue, 29 Jun 2021 21:38:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46418)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lyIXh-00066R-6e
- for qemu-arm@nongnu.org; Tue, 29 Jun 2021 14:33:05 -0400
-Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529]:43772)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lyIXe-0004NJ-VT
- for qemu-arm@nongnu.org; Tue, 29 Jun 2021 14:33:04 -0400
-Received: by mail-pg1-x529.google.com with SMTP id 80so3565958pgg.10
- for <qemu-arm@nongnu.org>; Tue, 29 Jun 2021 11:33:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=9QzL1z6vcX25s6sUIhuDHggygoMjsvQaR8I6rC665A4=;
- b=KzIyOi/RpBf6UxOFaeagwCC/Kzqq6vt2lm8UE/V62YO573k5LbeF2E9Sj/QB0R0ZwY
- 1sxRwHDoQewR8+sXWBKd40dpByUAtGSMoVuBlCJ2nnvoyFr5Fcwd9pcVLbaOCD1BCuKt
- e3VYKnCIJnVoePYhyBmRFKsZ6WLMfDh1v74D8fanYVGPhpWrSJ9CdgbGDA5tibj/3n3b
- DQVZceg4/iSQm0XORUnwroKZ8ynV2cveZG5O2KFDLXxq2qNkqKghfshst1OUOFtsIUFo
- Z3Wyb27QEmEEGbWlebA4LFgPBwB9XeFmFCbRdfnCxNFSMdWWLXP95RoWf9yDBdJQB9Mn
- KBVA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=9QzL1z6vcX25s6sUIhuDHggygoMjsvQaR8I6rC665A4=;
- b=GTbLeDQRE9vnoKbg/yvofolyrwsYvrqPJ42ZxLRPImPuh9ix8xU7+TVcrVrl0RPYxi
- WQKPQNp7rxMwwTKg0v6p/DsmJ8l0NJaIBK7gyLgccY/g31LdYWKaDSYSDown6VUi0yH6
- hyGh4ULmJFP4wY5oXM/pz02IXj1GUIr3nnt6YtEQpHBgfCTo+OU3EJvo6fOyKX2bD6Wt
- vz/MJVWM+LIn8sG74QDWLkoaUCFUWVL+o1eUT6sCPTzc7qL4QElMUZsJ/xPX+7HHl/WS
- TIyQHGch+ZnMfTQL6RJzrrtxpI6Xhjz4YHPH73Uq7Xkr68Mnoz9tnEPUs0JXkqf40h1E
- Vacw==
-X-Gm-Message-State: AOAM531WytpJRLh1SWdo0YJ1i3N/b1tu8r23l2LsOGnKOQiQahB3HL6U
- l8XsfVpiKLo9LFyy3cq8PiBtZw==
-X-Received: by 2002:a62:ae19:0:b029:307:403b:5d7f with SMTP id
- q25-20020a62ae190000b0290307403b5d7fmr31603695pff.5.1624991579724; 
- Tue, 29 Jun 2021 11:32:59 -0700 (PDT)
-Received: from [192.168.1.11] ([71.212.149.176])
- by smtp.gmail.com with ESMTPSA id j2sm18365087pfj.168.2021.06.29.11.32.57
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 29 Jun 2021 11:32:58 -0700 (PDT)
-Subject: Re: [PATCH v2 05/23] linux-user/arm: Implement setup_sigtramp
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20210618192951.125651-1-richard.henderson@linaro.org>
- <20210618192951.125651-6-richard.henderson@linaro.org>
- <CAFEAcA91p7_PKvs3aJnqe2zy9MOv=y5pn6yp-SmwRVZow92tww@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <91029900-3fe9-f252-bede-26c9cc1325d3@linaro.org>
-Date: Tue, 29 Jun 2021 11:32:55 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ (Exim 4.90_1) (envelope-from <jiangkunkun@huawei.com>)
+ id 1lyPBh-0006me-19; Tue, 29 Jun 2021 21:38:49 -0400
+Received: from szxga01-in.huawei.com ([45.249.212.187]:2494)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jiangkunkun@huawei.com>)
+ id 1lyPBe-0004g0-1f; Tue, 29 Jun 2021 21:38:48 -0400
+Received: from dggemv704-chm.china.huawei.com (unknown [172.30.72.53])
+ by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4GF3l26nbDzXmFw;
+ Wed, 30 Jun 2021 09:33:18 +0800 (CST)
+Received: from dggema765-chm.china.huawei.com (10.1.198.207) by
+ dggemv704-chm.china.huawei.com (10.3.19.47) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
+ 15.1.2176.2; Wed, 30 Jun 2021 09:38:38 +0800
+Received: from [10.174.185.210] (10.174.185.210) by
+ dggema765-chm.china.huawei.com (10.1.198.207) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.2176.2; Wed, 30 Jun 2021 09:38:37 +0800
+Subject: Re: [question] Shall we flush ITS tables into guest RAM when shutdown
+ the VM?
+To: <eric.auger@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, "open
+ list:ARM cores" <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
+References: <ef4df56d-5b60-99f1-fec6-fe2e62434d3f@huawei.com>
+ <82c78e1f-98ef-982e-fbcc-34da6b8aaad7@redhat.com>
+From: Kunkun Jiang <jiangkunkun@huawei.com>
+Message-ID: <91d179e0-8365-e3b4-cee6-d05ce918a32d@huawei.com>
+Date: Wed, 30 Jun 2021 09:38:37 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA91p7_PKvs3aJnqe2zy9MOv=y5pn6yp-SmwRVZow92tww@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <82c78e1f-98ef-982e-fbcc-34da6b8aaad7@redhat.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Transfer-Encoding: 8bit
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::529;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x529.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Originating-IP: [10.174.185.210]
+X-ClientProxiedBy: dggeme701-chm.china.huawei.com (10.1.199.97) To
+ dggema765-chm.china.huawei.com (10.1.198.207)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.187;
+ envelope-from=jiangkunkun@huawei.com; helo=szxga01-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -122,33 +101,105 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
- Laurent Vivier <laurent@vivier.eu>
+Cc: wanghaibin.wang@huawei.com, lushenming@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Yg2Z+EcfntFX
+X-TUID: 4mKA0DOm7uLW
 
-On 6/29/21 7:09 AM, Peter Maydell wrote:
-> On Fri, 18 Jun 2021 at 20:33, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
+On 2021/6/30 4:14, Eric Auger wrote:
+> Hi Kunkun,
+>
+> On 6/29/21 11:33 AM, Kunkun Jiang wrote:
+>> Hi all,
 >>
->> ARM is more complicated than the others, in that we also
->> have trampolines for using SA_RESTORER with FDPIC, and
->> we need to create trampolines for both ARM and Thumb modes.
+>> Accroding to the patch cddafd8f353d2d251b1a5c6c948a577a85838582,
+>> our original intention is to flush the ITS tables into guest RAM at
+>> the point
+>> RUN_STATE_FINISH_MIGRATE, but sometimes the VM gets stopped before
+>> migration launch so let's simply flush the tables each time the VM gets
+>> stopped.
 >>
->> Cc: qemu-arm@nongnu.org
->> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
->> ---
->>   linux-user/arm/target_signal.h |   2 +
->>   linux-user/arm/signal.c        | 170 +++++++++++++++++++--------------
->>   2 files changed, 100 insertions(+), 72 deletions(-)
-> 
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> 
-> though I'm not 100% confident I checked all the details. Do you have
-> test programs that checked all the different trampolines ?
+>> But I encountered an error when I shut down the virtual machine.
+>>
+>>> qemu-system-aarch64: KVM_SET_DEVICE_ATTR failed: Group 4 attr
+>>> 0x0000000000000001: Permission denied
+>> Shall we need to flush ITS tables into guest RAM when 'shutdown' the VM?
+>> Or do you think this error is normal?
+> yes we determined in the past this was the right moment do save the tables
+>
+> "with a live migration the guest is still running after
+> the RAM has been first saved, and so the tables may still change
+> during the iterative RAM save. You would actually need to do this
+> at just the point we stop the VM before the final RAM save; that *might*
+> be possible by using a notifier hook a vm run state change to RUN_STATE_FINISH_MIGRATE
+> - if you can do the changes just as the migration flips into that mode
+> it *should* work. " said David.
+>
+> But sometimes as the commit msg says, the VM is stopped before the migration launch - I do not remember the exact scenario tbh -.
+Well, I initially wanted to know more about this scenario to determine 
+whether
+a normal shutdown would fall into it.😂
+In my opinion, when the virtual machine is normally shutdown, flushing the
+ITS tables is not necessary. If we can't tell the difference between 
+'normal shutdown'
+and the above scenario, then this 'error' is inevitable.
+> So each time the VM is stopped we flush the caches into guest RAM.
+>
+>
+>
+>> This error occurs in the following scenario:
+>> Kunpeng 920 、enable GICv4、passthrough a accelerator Hisilicon SEC to
+>> the VM.
+>>
+>> The flow is as follows:
+>>
+>> QEMU:
+>> vm_shutdown
+>>      do_vm_stop(RUN_STATE_SHUTDOWN)
+>>          vm_state_notify
+>>              ...
+>>              vm_change_state_handler (hw/intc/arm_gicv3_its_kvm.c)
+>>                  kvm_device_access
+>>
+>> Kernel:
+>>      vgic_its_save_tables_v0
+>>          vgic_its_save_device_tables
+>>              vgic_its_save_itt
+>>
+>> There is such a code in vgic_its_save_itt():
+>>> /*
+>>>   * If an LPI carries the HW bit, this means that this
+>>>   * interrupt is controlled by GICv4, and we do not
+>>>   * have direct access to that state without GICv4.1.
+>>>   * Let's simply fail the save operation...
+>>>   */
+>>> if (ite->irq->hw && !kvm_vgic_global_state.has_gicv4_1)
+>>>            return -EACCES;
+> As far as I understand you need a v4.1 to migrate,
+> following Shenming's series
+> [PATCH v5 0/6] KVM: arm64: Add VLPI migration support on GICv4.1
+> Maybe sync with him?
+Yes, GICv4 does not support live migrate.
 
-No, I have no fdpic testcases, and wasn't keen to spend an afternoon building the toolchain.
+Thanks,
+Kunkun Jiang
+>
+> Thanks
+>
+> Eric
+>
+>
+>> Looking forward to your reply.
+>>
+>> Thanks,
+>> Kunkun Jiang
+>>
+>>
+>>
+>>
+>>
+>>
+>>
+> .
 
 
-r~

@@ -1,104 +1,103 @@
-Received: by 2002:ac2:593b:0:0:0:0:0 with SMTP id v27csp1224740lfi;
-        Fri, 2 Jul 2021 03:43:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw72+nmgFL87ld6I2H90zYP2Q1wZPtIVhX681tqiI7wv5FvY4f9sGmIXZf6RgMg1wWLAR75
-X-Received: by 2002:a67:df0e:: with SMTP id s14mr5412415vsk.15.1625222617296;
-        Fri, 02 Jul 2021 03:43:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1625222617; cv=none;
+Received: by 2002:ac2:593b:0:0:0:0:0 with SMTP id v27csp1227966lfi;
+        Fri, 2 Jul 2021 03:48:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyuAEucbE0Rzm09CiL3bL9cVWKsosavAoWXbGlbLscq9iDNMRAfF46NjCzcWXaTSbMdbaaV
+X-Received: by 2002:a05:620a:2229:: with SMTP id n9mr4743635qkh.41.1625222886474;
+        Fri, 02 Jul 2021 03:48:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1625222886; cv=none;
         d=google.com; s=arc-20160816;
-        b=nVzCPygGs8v0VyK90JuY8c8xAsplmO/BGg3npCJLSXBjQU23IztaNfKoVzLPx6rbd2
-         frqk5WXB9VHieABT4feTLYIC8/NEDRzOqxEj+RNv7cCusiHxABUpHwzhS6H6Tz0Ggfhr
-         nYJaHrTzBPaigLbHcxjN3THLeNJeYEetvU9sx51+1dV1eNxPaYEfAOmEv2yCYFWSoslu
-         gS1t+DULKXIAxc78f1hD8NJGfLo+diZMk1EoJHS/gk4zNaoBudJGKNdCMz8qUS1j2nG9
-         cP77ldxEZmwYlll6DmrHX49ohQnJgwX5DJp8K9NS0ACKhO2qIs/8B24+fQHsvfkr+f9s
-         invA==
+        b=qolKbP6+8accPe+YuyioV6yiORTXQ848Ylwy6+uLntZE0dSnrBvZSIv9P6qfSkiwVk
+         WC4y4tHQbJPXyvHXYKNRXRLfxxUAfS3+Xoz2SljwLLay7XgHQWhwBE8Bm6UlxjQXxUmn
+         8aLUo3rGlD5EV1uZ+31c01//834WI83MeBZ3AfVvZnj0WA5hpAT+q5hWEokndqWCzK7N
+         08fYWIYp6LAMcaAq+Igp70Ywh73GL+z+Eu/0JklUqQ+lDDUQHdRwkauLhGILZ9lC6ZCq
+         yqd6NgBDwuQ984b7IEpbcqVMnALy0JTLZUR5OFfCm58jfDu7ewa3hQMGuNL8Ftgc8pNh
+         x+dw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=CnOCqrZmWUxfwjKjUalVZwOU/ZbiNiTaO6KmtADP/mk=;
-        b=vpkUVjCg/zEweQkP117ODL5GKanSQVy951p9UsRJO1IXKu2bUAGmmToaqkqsRuQFh9
-         F4h+KEFctV/+Ml/3hVRxye6QyewmNbsQbpg1hgvsS1rQLOm/rkxaMU+3w9PIdyYK68Sy
-         NeiNKZTgOyiojTusKgylh3mcHTCe9ueuHcCbEddNrekAebWyx8ObapUkhJksUtp3BoM7
-         2tmeCCD2OMeTsCJNlUkcoPrjAr+On/GSUjn5GW7/2Hts+iQ89UuZUsF9MDd0nQ3RGd+X
-         P+AN2bYMWiN38e8TYmbhD+Yj8yywQtVvaRp9OXOCDJglec0P39HswCdpXHnZVYGCMsTa
-         MhMw==
+        bh=OHxj/xUOSn5B7Ujk/a1aY2KoAO5Tcc5/XFJvO0oLWf4=;
+        b=V3RqWD7coHKlnt9mTgjMGLqn9zcshoa+71+HuF8ycBRBEM3X7W1khPTJNaAB5yv/Fv
+         NIA8FkHLMgjYSxXipUQfi9I+LAqWJUfzLbAcpn/q1yUyYaXydVekdK+fByHOCMNlAQmQ
+         sbLxKyFhAChNzFe0xi6SL2NcVEo4YUYiNE7caH039h7G1OdWnM3vqexS4Or4tENYYr9g
+         duxeN+KjE9LceHJzbUjlVpJw2saalcGzFuRJgHxXzzAugOrFF2Pav4sgWUcF6QHS/YBZ
+         jNTZhUGfcx849WiAvF+jADDKf/wnDwrguiBL+0jxQCMd/V1GUNS/N0SyxEc9Dmrb+U0q
+         gYEQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Bg5ipmEd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=pKfNGLE8;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n23si854023vsa.295.2021.07.02.03.43.37
+        by mx.google.com with ESMTPS id a1si2090083qvm.151.2021.07.02.03.48.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 02 Jul 2021 03:43:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 02 Jul 2021 03:48:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Bg5ipmEd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=pKfNGLE8;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37514 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46650 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lzGe0-0002qo-IB
-	for alex.bennee@linaro.org; Fri, 02 Jul 2021 06:43:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59812)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lzGiL-0000bG-Oa
+	for alex.bennee@linaro.org; Fri, 02 Jul 2021 06:48:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59842)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lzGb1-0004hY-AP
- for qemu-arm@nongnu.org; Fri, 02 Jul 2021 06:40:31 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336]:56086)
+ id 1lzGb2-0004j7-8B
+ for qemu-devel@nongnu.org; Fri, 02 Jul 2021 06:40:32 -0400
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434]:38664)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lzGax-0006dA-7u
- for qemu-arm@nongnu.org; Fri, 02 Jul 2021 06:40:31 -0400
-Received: by mail-wm1-x336.google.com with SMTP id j34so6350758wms.5
- for <qemu-arm@nongnu.org>; Fri, 02 Jul 2021 03:40:26 -0700 (PDT)
+ id 1lzGax-0006dT-A2
+ for qemu-devel@nongnu.org; Fri, 02 Jul 2021 06:40:31 -0400
+Received: by mail-wr1-x434.google.com with SMTP id a8so218443wrp.5
+ for <qemu-devel@nongnu.org>; Fri, 02 Jul 2021 03:40:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=CnOCqrZmWUxfwjKjUalVZwOU/ZbiNiTaO6KmtADP/mk=;
- b=Bg5ipmEdn5wI/Damf0iQdqGhk40VGHkKnPgiZnflIo/pVz7CwVq9eEGs9CvdScXgz3
- My0PlJ0HHbIIR1sRg/Neran4WFC1D9++tqU1+RyGud4nshhJVLgchVJjHqrUVZI9dqpZ
- WgBBIaLCFiVu1b2juv5mNDinxbx6eu1cqWeqBtnwKaZ850eVwdrHqAM1qOYufiEMymBh
- ovchTKpEHcb4kiWIxQ+0ujHQu39a9JgzKKZIBAG0ZGAzb1RHpFLzamXXJbqFyirLDsqn
- BZLMyup+4g1zUSMyisbA0ysAmOU8tk/Yv5nFHkbZ6el4wi/ZnjDGkBnVuyiDwHhOR8wN
- fxJA==
+ bh=OHxj/xUOSn5B7Ujk/a1aY2KoAO5Tcc5/XFJvO0oLWf4=;
+ b=pKfNGLE80XJP6BdmjqJu83DHv/hT0/LRl/xezT6oIy5lof2rbz2iCvfGumKzWaudet
+ TGA8SIWrvJ3MmRrk3u4FsrhDE7Qef2jJcSeVyUKQY45c2o5jk4OZ7wcxMLkPPNKfXQot
+ bTz6G2h0Xbw55PQuF3qQ9bOLOpD8s0xz/Y4cGjGlztfwddZINmDks8M4/B0TaRtI2Lwn
+ Hst+POFYWA58yyyfF7s/GSzBaifKrIbiECU/l/zwN8ICik5NkQFrRqYBXrAYkO7/DNjB
+ i7hA2d4YkU/ZygiUhCNOXb0i8f9WSaGjSpiSwpcS3+lB0e0yC+her/pMNf61snjm4JPd
+ cDxg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=CnOCqrZmWUxfwjKjUalVZwOU/ZbiNiTaO6KmtADP/mk=;
- b=TtLu4pGASHR31+iHHHmCf0+ig0NMZ2HoMmdzc6eFZQO52Alg5ZkKBx7fkCw7PLJgtJ
- stwDEG7aEfVqFMHFEQixmuZv7HuNuwUddXkG+9MTCTkx4TaTL8Jw//y9ArujWzHUnEYm
- cukkmVBDphxL1KFupufk+nMhshHT74+p/XhaIsQ6bQdNvLIuvXg555wkRawwbKHLGLWF
- sDk2bReKtlz1/ceMfnk//kzchNQ3lLSWzuMgM2nmvqWTob2WoBR3FuDOFbP3aUZXXyxR
- 9WesLPOuNOhOngSe/h55Poc9kPM+Trr/ZmkvRL77ptiziAbgsI9gyqwKVoKOCx7EJy0R
- HyOQ==
-X-Gm-Message-State: AOAM530UWObCIhMC+eC5EIt7/a9jyQRWZoiN9yxzbDyMaNP0tjq1XGZh
- bU19ImjHlGOYQyYkiY4xbl2pDGY1QaYFODUH
-X-Received: by 2002:a05:600c:296:: with SMTP id
- 22mr15229146wmk.17.1625222425235; 
- Fri, 02 Jul 2021 03:40:25 -0700 (PDT)
+ bh=OHxj/xUOSn5B7Ujk/a1aY2KoAO5Tcc5/XFJvO0oLWf4=;
+ b=En4c6CgLnqI7zmeRdJza0w91ZU2Zl62Wk6Xi+IgwdcmrqBZG9iW4zDFBbOy7LKJFwR
+ PxK4oFFb9kFt7ZKWU4XI8Ci6LQyyjYQm69xsNMKe9bxRSvy8LHxjTFjctboD0xTcPZAN
+ h7s4Atdo1JhfcGHts08BQWT45BJcqkmyQYT0KNNZPoJJP6V/+xhPy2cGWocBK1S14n9W
+ vqeDF+M00HJCvMHZicwK87+lR5sYpGD07/00qt+/bj/Telij8UJ49EnxzcWO6/FpLxJJ
+ RPwI5YcF/sMhv1DQQShy9hnlaB1wVW60x3TqJnVnNkCSZ3QVKkdB416ncXb14YBef2fx
+ ddHw==
+X-Gm-Message-State: AOAM530xSJ9cVwW+69r/4ZlctmEg0kB2CWpkg8H0NHxdYlpb/RKUFzzN
+ kHgsEiqq5pWOIlqu/zrR/C0rSA==
+X-Received: by 2002:adf:eece:: with SMTP id a14mr5043230wrp.313.1625222426063; 
+ Fri, 02 Jul 2021 03:40:26 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id p16sm2745810wrs.52.2021.07.02.03.40.24
+ by smtp.gmail.com with ESMTPSA id p16sm2745810wrs.52.2021.07.02.03.40.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 02 Jul 2021 03:40:24 -0700 (PDT)
+ Fri, 02 Jul 2021 03:40:25 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 06/11] hw/gpio/pl061: Honour Luminary PL061 PUR and PDR
- registers
-Date: Fri,  2 Jul 2021 11:40:13 +0100
-Message-Id: <20210702104018.19881-7-peter.maydell@linaro.org>
+Subject: [PATCH 07/11] hw/gpio/pl061: Make pullup/pulldown of outputs
+ configurable
+Date: Fri,  2 Jul 2021 11:40:14 +0100
+Message-Id: <20210702104018.19881-8-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210702104018.19881-1-peter.maydell@linaro.org>
 References: <20210702104018.19881-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x336.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x434.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -107,132 +106,149 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Maxim Uvarov <maxim.uvarov@linaro.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7wYHjJ6uvEoF
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: eioiankdQArq
 
-The Luminary variant of the PL061 has registers GPIOPUR and GPIOPDR
-which lets the guest configure whether the GPIO lines are pull-up,
-pull-down, or truly floating. Instead of assuming all lines are pulled
-high, honour the PUR and PDR registers.
+The PL061 GPIO does not itself include pullup or pulldown resistors
+to set the value of a GPIO line treated as an output when it is
+configured as an input (ie when the PL061 itself is not driving it).
+In real hardware it is up to the board to add suitable pullups or
+pulldowns.  Currently our implementation hardwires this to "outputs
+pulled high", which is correct for some boards (eg the realview ones:
+see figure 3-29 in the "RealView Platform Baseboard for ARM926EJ-S
+User Guide" DUI0224I), but wrong for others.
 
-For the plain PL061, continue to assume that lines have an external
-pull-up resistor, as we did before.
+In particular, the wiring in the 'virt' board and the gpio-pwr device
+assumes that wires should be pulled low, because otherwise the
+pull-to-high will trigger a shutdown or reset action.  (The only
+reason this doesn't happen immediately on startup is due to another
+bug in the PL061, where we don't assert the GPIOs to the correct
+value on reset, but will do so as soon as the guest touches a
+register and pl061_update() gets called.)
 
-The stellaris board actually relies on this behaviour -- the CD line
-of the ssd0323 display device is connected to GPIO output C7, and it
-is only because of a different bug which we're about to fix that we
-weren't incorrectly driving this line high on reset and putting the
-ssd0323 into data mode.
+Add properties to the pl061 so the board can configure whether it
+wants GPIO lines to have pullup, pulldown, or neither.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/gpio/pl061.c      | 58 +++++++++++++++++++++++++++++++++++++++++---
- hw/gpio/trace-events |  2 +-
- 2 files changed, 55 insertions(+), 5 deletions(-)
+ hw/gpio/pl061.c | 51 +++++++++++++++++++++++++++++++++++++++++++++----
+ 1 file changed, 47 insertions(+), 4 deletions(-)
 
 diff --git a/hw/gpio/pl061.c b/hw/gpio/pl061.c
-index 06a1b82a503..44bed56fef0 100644
+index 44bed56fef0..bb496a19ade 100644
 --- a/hw/gpio/pl061.c
 +++ b/hw/gpio/pl061.c
-@@ -94,18 +94,68 @@ static const VMStateDescription vmstate_pl061 = {
-     }
+@@ -13,12 +13,28 @@
+  *  + unnamed GPIO inputs 0..7: inputs to connect to the emulated GPIO lines
+  *  + unnamed GPIO outputs 0..7: the emulated GPIO lines, considered as
+  *    outputs
++ *  + QOM property "pullups": an integer defining whether non-floating lines
++ *    configured as inputs should be pulled up to logical 1 (ie whether in
++ *    real hardware they have a pullup resistor on the line out of the PL061).
++ *    This should be an 8-bit value, where bit 0 is 1 if GPIO line 0 should
++ *    be pulled high, bit 1 configures line 1, and so on. The default is 0xff,
++ *    indicating that all GPIO lines are pulled up to logical 1.
++ *  + QOM property "pulldowns": an integer defining whether non-floating lines
++ *    configured as inputs should be pulled down to logical 0 (ie whether in
++ *    real hardware they have a pulldown resistor on the line out of the PL061).
++ *    This should be an 8-bit value, where bit 0 is 1 if GPIO line 0 should
++ *    be pulled low, bit 1 configures line 1, and so on. The default is 0x0.
++ *    It is an error to set a bit in both "pullups" and "pulldowns". If a bit
++ *    is 0 in both, then the line is considered to be floating, and it will
++ *    not have qemu_set_irq() called on it when it is configured as an input.
+  */
+ 
+ #include "qemu/osdep.h"
+ #include "hw/irq.h"
+ #include "hw/sysbus.h"
++#include "hw/qdev-properties.h"
+ #include "migration/vmstate.h"
++#include "qapi/error.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
+ #include "qom/object.h"
+@@ -62,6 +78,9 @@ struct PL061State {
+     qemu_irq irq;
+     qemu_irq out[N_GPIOS];
+     const unsigned char *id;
++    /* Properties, for non-Luminary PL061 */
++    uint32_t pullups;
++    uint32_t pulldowns;
  };
  
-+static uint8_t pl061_floating(PL061State *s)
+ static const VMStateDescription vmstate_pl061 = {
+@@ -109,8 +128,7 @@ static uint8_t pl061_floating(PL061State *s)
+          */
+         floating = ~(s->pur | s->pdr);
+     } else {
+-        /* Assume outputs are pulled high. FIXME: this is board dependent. */
+-        floating = 0;
++        floating = ~(s->pullups | s->pulldowns);
+     }
+     return floating & ~s->dir;
+ }
+@@ -131,8 +149,7 @@ static uint8_t pl061_pullups(PL061State *s)
+          */
+         pullups = s->pur;
+     } else {
+-        /* Assume outputs are pulled high. FIXME: this is board dependent. */
+-        pullups = 0xff;
++        pullups = s->pullups;
+     }
+     return pullups & ~s->dir;
+ }
+@@ -501,12 +518,38 @@ static void pl061_init(Object *obj)
+     qdev_init_gpio_out(dev, s->out, N_GPIOS);
+ }
+ 
++static void pl061_realize(DeviceState *dev, Error **errp)
 +{
-+    /*
-+     * Return mask of bits which correspond to pins configured as inputs
-+     * and which are floating (neither pulled up to 1 nor down to 0).
-+     */
-+    uint8_t floating;
++    PL061State *s = PL061(dev);
 +
-+    if (s->id == pl061_id_luminary) {
-+        /*
-+         * If both PUR and PDR bits are clear, there is neither a pullup
-+         * nor a pulldown in place, and the output truly floats.
-+         */
-+        floating = ~(s->pur | s->pdr);
-+    } else {
-+        /* Assume outputs are pulled high. FIXME: this is board dependent. */
-+        floating = 0;
++    if (s->pullups > 0xff) {
++        error_setg(errp, "pullups property must be between 0 and 0xff");
++        return;
 +    }
-+    return floating & ~s->dir;
++    if (s->pulldowns > 0xff) {
++        error_setg(errp, "pulldowns property must be between 0 and 0xff");
++        return;
++    }
++    if (s->pullups & s->pulldowns) {
++        error_setg(errp, "no bit may be set both in pullups and pulldowns");
++        return;
++    }
 +}
 +
-+static uint8_t pl061_pullups(PL061State *s)
-+{
-+    /*
-+     * Return mask of bits which correspond to pins configured as inputs
-+     * and which are pulled up to 1.
-+     */
-+    uint8_t pullups;
++static Property pl061_props[] = {
++    DEFINE_PROP_UINT32("pullups", PL061State, pullups, 0xff),
++    DEFINE_PROP_UINT32("pulldowns", PL061State, pulldowns, 0x0),
++    DEFINE_PROP_END_OF_LIST()
++};
 +
-+    if (s->id == pl061_id_luminary) {
-+        /*
-+         * The Luminary variant of the PL061 has an extra registers which
-+         * the guest can use to configure whether lines should be pullup
-+         * or pulldown.
-+         */
-+        pullups = s->pur;
-+    } else {
-+        /* Assume outputs are pulled high. FIXME: this is board dependent. */
-+        pullups = 0xff;
-+    }
-+    return pullups & ~s->dir;
-+}
-+
- static void pl061_update(PL061State *s)
+ static void pl061_class_init(ObjectClass *klass, void *data)
  {
-     uint8_t changed;
-     uint8_t mask;
-     uint8_t out;
-     int i;
-+    uint8_t pullups = pl061_pullups(s);
-+    uint8_t floating = pl061_floating(s);
+     DeviceClass *dc = DEVICE_CLASS(klass);
  
--    trace_pl061_update(DEVICE(s)->canonical_path, s->dir, s->data);
-+    trace_pl061_update(DEVICE(s)->canonical_path, s->dir, s->data,
-+                       pullups, floating);
+     dc->vmsd = &vmstate_pl061;
+     dc->reset = &pl061_reset;
++    dc->realize = pl061_realize;
++    device_class_set_props(dc, pl061_props);
+ }
  
--    /* Outputs float high.  */
--    /* FIXME: This is board dependent.  */
--    out = (s->data & s->dir) | ~s->dir;
-+    /*
-+     * Pins configured as output are driven from the data register;
-+     * otherwise if they're pulled up they're 1, and if they're floating
-+     * then we give them the same value they had previously, so we don't
-+     * report any change to the other end.
-+     */
-+    out = (s->data & s->dir) | pullups | (s->old_out_data & floating);
-     changed = s->old_out_data ^ out;
-     if (changed) {
-         s->old_out_data = out;
-diff --git a/hw/gpio/trace-events b/hw/gpio/trace-events
-index 442be9406f5..eb5fb4701c6 100644
---- a/hw/gpio/trace-events
-+++ b/hw/gpio/trace-events
-@@ -14,7 +14,7 @@ nrf51_gpio_set(int64_t line, int64_t value) "line %" PRIi64 " value %" PRIi64
- nrf51_gpio_update_output_irq(int64_t line, int64_t value) "line %" PRIi64 " value %" PRIi64
- 
- # pl061.c
--pl061_update(const char *id, uint32_t dir, uint32_t data) "%s GPIODIR 0x%x GPIODATA 0x%x"
-+pl061_update(const char *id, uint32_t dir, uint32_t data, uint32_t pullups, uint32_t floating) "%s GPIODIR 0x%x GPIODATA 0x%x pullups 0x%x floating 0x%x"
- pl061_set_output(const char *id, int gpio, int level) "%s setting output %d to %d"
- pl061_input_change(const char *id, int gpio, int level) "%s input %d changed to %d"
- pl061_update_istate(const char *id, uint32_t istate, uint32_t im, int level) "%s GPIORIS 0x%x GPIOIE 0x%x interrupt level %d"
+ static const TypeInfo pl061_info = {
 -- 
 2.20.1
 

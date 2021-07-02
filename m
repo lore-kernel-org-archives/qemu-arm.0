@@ -1,102 +1,102 @@
-Received: by 2002:ac2:593b:0:0:0:0:0 with SMTP id v27csp1224149lfi;
-        Fri, 2 Jul 2021 03:42:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxSRr5u5G6kAkg2IuBCrS/qWZClZ190AEdK1biiI4FVONbau2NEPT9kIFUYlRBndRUbfaqe
-X-Received: by 2002:a67:fa84:: with SMTP id f4mr5589163vsq.59.1625222557631;
-        Fri, 02 Jul 2021 03:42:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1625222557; cv=none;
+Received: by 2002:ac2:593b:0:0:0:0:0 with SMTP id v27csp1224554lfi;
+        Fri, 2 Jul 2021 03:43:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxklLsNi8kPTPJdMtlN9Ryu7NbZdqRcqqUcbbqkjN9ZrCJu0R9E3pLRK0G46AHMi3sPi8eJ
+X-Received: by 2002:a37:7d04:: with SMTP id y4mr4782502qkc.399.1625222601496;
+        Fri, 02 Jul 2021 03:43:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1625222601; cv=none;
         d=google.com; s=arc-20160816;
-        b=EEuon939eV0uiuB/vhEY+f/SxjHtX2ikWbJBjwwUJ4dPwCai36j4ih/HyGSTlxf3do
-         0g+tXkbTowSbjF+VnmaO+hHXWrZYhyg8yNh1ggdxyaMHiyYNnGjjpnyk/+sxGJbMJ7/A
-         NkXalf23INQSAOfwg8chsQbOSzuzCYP0WuGLFpWQVxKNm3Qw03f5gEhpdTBOm1JwTzte
-         i2WT5CS8CzRnuqlpEaqKl5EJiYr0taN436pqykJDdjTNIL+wv+pnhtVQmnwLgaPVO5pB
-         +xCTZL+lF3W6p1otRuRf1oonHbIz6yNCZdNopuVS5DVpF+ciLf0yNBPZP2cbh0igYjQL
-         8Ckw==
+        b=in2K67ARaxdZDn3PdO0D+v2RRkUsF7qnHVr+CSeqV7IxwqMf+5973O4ndjHmPfzgYa
+         CpwSTy0MacgVvajsDuuZcUANWTDUl3N2M42lYJ2uiDnJbaQLxvdCD4SXtSSHaZm+qCO7
+         +CxGfOuUcvozu7/Q8M1xTqyedDoFQtMlzB4HAYCJPb4BM9XxpV2tHEJfOCSqowblfgno
+         zNifxvUZF6MfKQZwzjrutjppjfvGCIDq7Oc6ukx5IdyqNSUfkaCnT1JfvB/rB27c9G97
+         wVfUF0Nbd+rSpRiiKK4zRnD3F4QZXlEcnAJKxPySOOioi9/Veb7FE4Bpbo3tNG5IcgCW
+         A6bg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=cyVR+RM9P0Fu8J9agxc+syCsAuN2LmIMWIgCF4vgRTg=;
-        b=UStJnJwVP3gJpMmFIEX/yCWvUeGyWCiSlYf9iPt8J9qHWBeiMmz7GD6b8zGcpPaUi/
-         dBkN/CI7YTS1zjnCxLyP2PQsdVGyu9YJNad8Od8se4jeydNz7grlxCFuclyLObn2k9YF
-         tqDTUV7yY+uy5Lzhw6cr0d2a5pywT9/fRis8lBHwBNevWODZIk86iwUNEw7WNhMNIlaD
-         6krExaVldpyVJt868u5BEtBbTN2OW7y+lGmoYLjzf3c3YO38oa8FlfeA3Vva1p5RD2v9
-         A7GCDt/UcypEv87rBf9dycwO56VdkuSJKMybGqFZ09Z8L8/g252Z2cIbWteGkwHlPve9
-         aaEA==
+        bh=b4cQvDxv3U0hq7oSF/cGe7YwUjG/pIr/hMSWdlGoaBw=;
+        b=Zhnx3lFShaX6Ne+eJ7WV+ACFLqe4EYTXbwk5U3EjfahTEb5r6uVpt0cEYyUD6Z3QLY
+         n8WN8kVBiPcC7GlD4hEJkvdPVY7oGNOit+6rYxqXRjk+4oRWtG1YHQNK6BA5YOfVLsPp
+         +vQd/rSZEHy2PfDdosUlG/9KJBy2TJ22RZ4IjmH/iZZEf4OkYcvXUdTRkvYLUNEKBeGy
+         vIQwGayZj5TEcttaqO2YtJiK7AF6EsfXfGqQknBd3p3navRFgRfvPDx+gDyELU7+vviR
+         rjieYVyHD5/r5pDhqcwuxwVZXgWhkXFlAOGRF9ZlTEgJlW1LSw7xn5oPfunJ80PLSr31
+         nGbw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sdDsSJM3;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=PEVszNmT;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e23si2686896ual.6.2021.07.02.03.42.37
+        by mx.google.com with ESMTPS id l15si2468945qkp.268.2021.07.02.03.43.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 02 Jul 2021 03:42:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 02 Jul 2021 03:43:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sdDsSJM3;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=PEVszNmT;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:32908 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36594 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lzGd2-00089r-SS
-	for alex.bennee@linaro.org; Fri, 02 Jul 2021 06:42:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59684)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lzGdk-0002Ff-Oz
+	for alex.bennee@linaro.org; Fri, 02 Jul 2021 06:43:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59814)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lzGaw-0004c8-Qi
- for qemu-devel@nongnu.org; Fri, 02 Jul 2021 06:40:27 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:45766)
+ id 1lzGb1-0004hZ-BT
+ for qemu-arm@nongnu.org; Fri, 02 Jul 2021 06:40:31 -0400
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c]:51767)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lzGat-0006Yp-Hk
- for qemu-devel@nongnu.org; Fri, 02 Jul 2021 06:40:26 -0400
-Received: by mail-wr1-x431.google.com with SMTP id j2so11865362wrs.12
- for <qemu-devel@nongnu.org>; Fri, 02 Jul 2021 03:40:23 -0700 (PDT)
+ id 1lzGaw-0006cl-38
+ for qemu-arm@nongnu.org; Fri, 02 Jul 2021 06:40:31 -0400
+Received: by mail-wm1-x32c.google.com with SMTP id r3so6388157wmq.1
+ for <qemu-arm@nongnu.org>; Fri, 02 Jul 2021 03:40:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=cyVR+RM9P0Fu8J9agxc+syCsAuN2LmIMWIgCF4vgRTg=;
- b=sdDsSJM3o8ByLAVGX+u7ux2gd3O5MnBkU/Qg9bXeucpPywXtLQNnMQIdOvJ3A0ecaI
- e5TSBB8re+kwEPdCH9hpzoGBiOigGy0L1mJAqpAxs51kk1IYu05ZXijTjBThmOq9NQqj
- PHPjivs9jOyikzNJAh16ui3KOwaNTu3LQrv+Q5c1UMwvSPtI6iJcQw3SlATAiqOELG0Q
- PLKu3KhuoYmdnNErCnF4qdkgqH85mpuY+NI/UNd01kOkM+i8ChiWbq0oV2xPfW/lE4B1
- 5lohes8Or1THXOgHK0+Od3aaiNGvISi0YUQLp6pAWp55/lxNWnol/2o1oN5U/BrRFxar
- N4Yg==
+ bh=b4cQvDxv3U0hq7oSF/cGe7YwUjG/pIr/hMSWdlGoaBw=;
+ b=PEVszNmTs/x19yK9bZJV98DZatrUysk+75eEB8JwhZvZSkjxT0VxfFwjdW2pZv2h8Y
+ 5XVZBuqmBXMtW5bWHmHBEuSw6XiZ9uQtDF2TQeLnW336RgyXImdzoJEVU99rhiX0O4da
+ GK5bEC+Lin/VqFdiKOJFSDS0wJ3FrXTnvWwSjE9p2a6S2+kUmdBegUA1mTRuxsS7XAJB
+ CWhcxRvXFKVC1mRldZ4HJ0/MGjehiK10LuUSZjht71W0x53GB8yKhyXoqO0u64kxuIcw
+ qhVTq96fn35DUGHtTrEIPKLSCwY2WiszXGzomqBEBnhx/TINgHMFLLXwJTMsjfATWwdk
+ OiZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=cyVR+RM9P0Fu8J9agxc+syCsAuN2LmIMWIgCF4vgRTg=;
- b=OFvfaXKqxTOqt4fo3vRIqZnseICg/kvW86qcmsN/k1SLSEbMVkcx9zh5joHfChPOSJ
- +jTTw+LDKapVqDlp3OG6uMUbu4c5zaPAAKf/66CftoNc9n3L0eldaa0/bYIeF6HYyu+T
- bw0aqJOGlZ3s1R3iqEAgta6BvXwcgb6DOxeLfbfg4UXKBEDBfdF89cNbFNHa+HRVHbGC
- hE1gVovxDBYNt/iPRKGvtt4ggYGCUBU9qz8MNgqEtWFZs9uWcwqZheCApoL7fvjmtq/Y
- ayKwrHYfHArm4KtBlnOd8pwli1FAjKe0BSif7pgst1ZflAS1sjGG0CERXl97pAtMQlic
- 8z0Q==
-X-Gm-Message-State: AOAM533+YCj8e97peb86LGPUsULK5/mM9bob4p8vyFFhlA4+heWPhuDr
- 0j1CRcrDjaA1YWP9F7RbV8o9LA==
-X-Received: by 2002:a5d:6742:: with SMTP id l2mr4983888wrw.202.1625222422232; 
- Fri, 02 Jul 2021 03:40:22 -0700 (PDT)
+ bh=b4cQvDxv3U0hq7oSF/cGe7YwUjG/pIr/hMSWdlGoaBw=;
+ b=ni0HTqU1L9KW47IYPBtYiz3i7/pVD4pKcfkNIvl8hMg6wYGlhVxViYzHX4lhlrI9z8
+ RFUxQyhGTHqtl9tvaPxBFiGlkqKdm9AHyNCJrVaIK7KVzOXDgPeG1jxbJMkVUtKl3MlU
+ 9OkvrMtNyBHZJV4cD0n6X7rAmu3ZMdd/fHJGOrbyjlEuqRsgRmzL8y1tUGzSeaI3OMpt
+ XS+o//+fhKc4K1LYBJ1zVqp4xy+8F+uvCrc5QD7bHQa3ypvPgR5Q9+ZyI17FgN+kuyC9
+ PbpsKBRf5V+E7S5SO0Ec7pULIU6UzIeBXVjJErnul6KDkxnYGkt632m6I5+JHzUHuD3k
+ HW/w==
+X-Gm-Message-State: AOAM5322VLnzUkdGrSeJ17LZB0sfyQzp0jF4piSUzc8UTjNdPRoeYtCi
+ M2TEQWaKjHPjCnCdFO8pzOElC1AlNFxbnKOd
+X-Received: by 2002:a7b:ce82:: with SMTP id q2mr15536075wmj.60.1625222424453; 
+ Fri, 02 Jul 2021 03:40:24 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id p16sm2745810wrs.52.2021.07.02.03.40.21
+ by smtp.gmail.com with ESMTPSA id p16sm2745810wrs.52.2021.07.02.03.40.23
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 02 Jul 2021 03:40:21 -0700 (PDT)
+ Fri, 02 Jul 2021 03:40:24 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 02/11] hw/gpio/pl061: Convert DPRINTF to tracepoints
-Date: Fri,  2 Jul 2021 11:40:09 +0100
-Message-Id: <20210702104018.19881-3-peter.maydell@linaro.org>
+Subject: [PATCH 05/11] hw/gpio/pl061: Document the interface of this device
+Date: Fri,  2 Jul 2021 11:40:12 +0100
+Message-Id: <20210702104018.19881-6-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210702104018.19881-1-peter.maydell@linaro.org>
 References: <20210702104018.19881-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x431.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,114 +105,48 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Maxim Uvarov <maxim.uvarov@linaro.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TFlDqmPRCwW8
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ZlSU+m1ios0s
 
-Convert the use of the DPRINTF debug macro in the PL061 model to
-use tracepoints.
+Add a comment documenting the "QEMU interface" of this device:
+which MMIO regions, IRQ lines, GPIO lines, etc it exposes.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/gpio/pl061.c      | 27 +++++++++------------------
- hw/gpio/trace-events |  6 ++++++
- 2 files changed, 15 insertions(+), 18 deletions(-)
+ hw/gpio/pl061.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
 diff --git a/hw/gpio/pl061.c b/hw/gpio/pl061.c
-index e72e77572a0..a6ace88895d 100644
+index f3b80c7776f..06a1b82a503 100644
 --- a/hw/gpio/pl061.c
 +++ b/hw/gpio/pl061.c
-@@ -15,19 +15,7 @@
- #include "qemu/log.h"
- #include "qemu/module.h"
- #include "qom/object.h"
--
--//#define DEBUG_PL061 1
--
--#ifdef DEBUG_PL061
--#define DPRINTF(fmt, ...) \
--do { printf("pl061: " fmt , ## __VA_ARGS__); } while (0)
--#define BADF(fmt, ...) \
--do { fprintf(stderr, "pl061: error: " fmt , ## __VA_ARGS__); exit(1);} while (0)
--#else
--#define DPRINTF(fmt, ...) do {} while(0)
--#define BADF(fmt, ...) \
--do { fprintf(stderr, "pl061: error: " fmt , ## __VA_ARGS__);} while (0)
--#endif
-+#include "trace.h"
+@@ -6,6 +6,13 @@
+  * Written by Paul Brook
+  *
+  * This code is licensed under the GPL.
++ *
++ * QEMU interface:
++ *  + sysbus MMIO region 0: the device registers
++ *  + sysbus IRQ: the GPIOINTR interrupt line
++ *  + unnamed GPIO inputs 0..7: inputs to connect to the emulated GPIO lines
++ *  + unnamed GPIO outputs 0..7: the emulated GPIO lines, considered as
++ *    outputs
+  */
  
- static const uint8_t pl061_id[12] =
-   { 0x00, 0x00, 0x00, 0x00, 0x61, 0x10, 0x04, 0x00, 0x0d, 0xf0, 0x05, 0xb1 };
-@@ -107,7 +95,7 @@ static void pl061_update(PL061State *s)
-     uint8_t out;
-     int i;
- 
--    DPRINTF("dir = %d, data = %d\n", s->dir, s->data);
-+    trace_pl061_update(DEVICE(s)->canonical_path, s->dir, s->data);
- 
-     /* Outputs float high.  */
-     /* FIXME: This is board dependent.  */
-@@ -118,8 +106,9 @@ static void pl061_update(PL061State *s)
-         for (i = 0; i < N_GPIOS; i++) {
-             mask = 1 << i;
-             if (changed & mask) {
--                DPRINTF("Set output %d = %d\n", i, (out & mask) != 0);
--                qemu_set_irq(s->out[i], (out & mask) != 0);
-+                int level = (out & mask) != 0;
-+                trace_pl061_set_output(DEVICE(s)->canonical_path, i, level);
-+                qemu_set_irq(s->out[i], level);
-             }
-         }
-     }
-@@ -131,7 +120,8 @@ static void pl061_update(PL061State *s)
-         for (i = 0; i < N_GPIOS; i++) {
-             mask = 1 << i;
-             if (changed & mask) {
--                DPRINTF("Changed input %d = %d\n", i, (s->data & mask) != 0);
-+                trace_pl061_input_change(DEVICE(s)->canonical_path, i,
-+                                         (s->data & mask) != 0);
- 
-                 if (!(s->isense & mask)) {
-                     /* Edge interrupt */
-@@ -150,7 +140,8 @@ static void pl061_update(PL061State *s)
-     /* Level interrupt */
-     s->istate |= ~(s->data ^ s->iev) & s->isense;
- 
--    DPRINTF("istate = %02X\n", s->istate);
-+    trace_pl061_update_istate(DEVICE(s)->canonical_path,
-+                              s->istate, s->im, (s->istate & s->im) != 0);
- 
-     qemu_set_irq(s->irq, (s->istate & s->im) != 0);
- }
-diff --git a/hw/gpio/trace-events b/hw/gpio/trace-events
-index f0b664158e2..48ccbb183cc 100644
---- a/hw/gpio/trace-events
-+++ b/hw/gpio/trace-events
-@@ -13,6 +13,12 @@ nrf51_gpio_write(uint64_t offset, uint64_t value) "offset 0x%" PRIx64 " value 0x
- nrf51_gpio_set(int64_t line, int64_t value) "line %" PRIi64 " value %" PRIi64
- nrf51_gpio_update_output_irq(int64_t line, int64_t value) "line %" PRIi64 " value %" PRIi64
- 
-+# pl061.c
-+pl061_update(const char *id, uint32_t dir, uint32_t data) "%s GPIODIR 0x%x GPIODATA 0x%x"
-+pl061_set_output(const char *id, int gpio, int level) "%s setting output %d to %d"
-+pl061_input_change(const char *id, int gpio, int level) "%s input %d changed to %d"
-+pl061_update_istate(const char *id, uint32_t istate, uint32_t im, int level) "%s GPIORIS 0x%x GPIOIE 0x%x interrupt level %d"
-+
- # sifive_gpio.c
- sifive_gpio_read(uint64_t offset, uint64_t r) "offset 0x%" PRIx64 " value 0x%" PRIx64
- sifive_gpio_write(uint64_t offset, uint64_t value) "offset 0x%" PRIx64 " value 0x%" PRIx64
+ #include "qemu/osdep.h"
 -- 
 2.20.1
 

@@ -1,110 +1,110 @@
-Received: by 2002:ac2:593b:0:0:0:0:0 with SMTP id v27csp1228451lfi;
-        Fri, 2 Jul 2021 03:48:58 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxaD43PiLjHogN9zHz/K6myDiyRgu2hHbCpNtCDgJfu6ZElqS0mfFbNdUKeRV0hRIipGN/q
-X-Received: by 2002:ae9:dfc7:: with SMTP id t190mr4658236qkf.293.1625222938083;
-        Fri, 02 Jul 2021 03:48:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1625222938; cv=none;
+Received: by 2002:ac2:593b:0:0:0:0:0 with SMTP id v27csp1222981lfi;
+        Fri, 2 Jul 2021 03:40:48 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyiheG6NzWS0dThVabI35Cv+C+6nFUzJedi6/2Lj99U+MWgju2AX04XvN6i/j4hJoQrh5aF
+X-Received: by 2002:a1f:194a:: with SMTP id 71mr4481185vkz.18.1625222448528;
+        Fri, 02 Jul 2021 03:40:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1625222448; cv=none;
         d=google.com; s=arc-20160816;
-        b=DISSfTCyLII1ZJNDcnB/TEgysG5EY/U7NDVfpLJRwbGJEsqBWCC5P3SRZ7Ldu8zQhq
-         9RlhmnZplDn+Qrb8gtKtjXYIJUNzjwr9bW18MdnTpMKIOJiFuKAi4nCPj5gkacojtbFo
-         phMbQujeXzm7JARQzRi4KhAAxf7x0n920LhM/VrTSa5B/yVsqaANhBmL3jRexK3BPXFB
-         WitfWBrwWI2bOpqf3dy9zJDQ783v++bQHgACET2nby/N5a732Cq7wvnfQ4HXgsSQijpM
-         uPqjWft3PLtAeL0ZFbm67kplbgXuT3wqWYfqYJoyS89awW/1qRDIS4XcI6r9bJH4tN5H
-         rQUQ==
+        b=itGyk1h5HlHL8aTGdgN1KCXeG8H3uwcyZxX45FKV+dH474d84UaAaOyu2rgAwYigmz
+         MIhr09MjMnIMWtm7d1vDKSeiYb5jqHcF81VOFL3tYYj1jDJ11NL3+uUepAkZt8tNKx2M
+         mYXWI32+XfhyP7boLi7wWyc3RpZuPLK5QZBOrCBpT+E7C6P6b7fMjXhAaMUNHk/oeyRJ
+         UHwlx+sumewTHF2y3aL+dlA/vtpj8RBDm3Z53qRb0DuOj43w4UhLuv8PovAVsQtgTR1n
+         VKhJR5SjNmFLlFlQTx4UFGPQ5I6eP4pkaNeIj6NygNP8iBz1pDBZkbEiGSF/H2S7W48X
+         Mw0A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=4BANoWgI0RjhipvmntovUAzoJsSWS5FJsfiHUg00m54=;
-        b=UGFdgGAcZz/T5/ho4e16ousziA3GgmBO1MUBjkQt+m8M3Uuyl2jv4S5mGrCEz7Xxz6
-         rrJTMpHjBINDttyRy2MIFjQT74F1pRMGLrVzbPw/JlVgYfX1ZSGJ08GYCz6EaxzDrytR
-         729RrqQk252PKuSNJu4lG0fgOp0zd+5g8pWgIi63fCBiRThkZyXTc88MPO7nr1f5Ms7X
-         cztDTBifvGx9dK519p3gAc0NYg0KBy7pNEwYHj9kz8g38mm0Kb0hj/Uymfq4nUqbgauJ
-         UicXbBo4jMdzJwo0Z6frRgP4qfWunYsMAZk6qN7Q8mkdRW/WSyqr2KeNN22qV/9i+b19
-         vYsA==
+        bh=V8sS0Bb0e+XFKMXcd7X5sBnIKxL0C6ytZPnPqSvPiJU=;
+        b=dPxuwzy4NZ/wZP3Hahop+a4w3o0I7tgqm3ih2zekXCim40BSMY0PSddz1v1l8O0hoO
+         u0yDsoMyt8zCqtHLNbetZTvsq/u9pi1mzp76k0Ta5GNOgmx5jSURNBr51JnvNSvXVCg7
+         Y+MlJWb7FDwuUpH551zpPxa4J6jyH/wnuH2LAchmf+kV8blOTISNZhjsfREZMpU5iOIi
+         PooQ7zp09d5+3/bUw0PYuINzSZ5x7DkGgQCu3G+yT8XtqLAQG/JQxzq10ePRvu+hyNjZ
+         D2vRN5hNF1K00Y/bw+lA4KTGXlE47j9s7roU48e32ak51Rwj5P4CHoMSKi82CFl5+hwb
+         07Iw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QksazumL;
+       dkim=pass header.i=@linaro.org header.s=google header.b="CJU/ZSNy";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 76si2136876qkj.292.2021.07.02.03.48.57
+        by mx.google.com with ESMTPS id p22si2336031vsm.257.2021.07.02.03.40.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 02 Jul 2021 03:48:58 -0700 (PDT)
+        Fri, 02 Jul 2021 03:40:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QksazumL;
+       dkim=pass header.i=@linaro.org header.s=google header.b="CJU/ZSNy";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50908 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56118 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lzGjB-0003PW-C3
-	for alex.bennee@linaro.org; Fri, 02 Jul 2021 06:48:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59910)
+	id 1lzGbH-0004jI-Nt
+	for alex.bennee@linaro.org; Fri, 02 Jul 2021 06:40:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59788)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lzGb6-0004qp-DI
- for qemu-arm@nongnu.org; Fri, 02 Jul 2021 06:40:36 -0400
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b]:44839)
+ id 1lzGb0-0004gK-Gv
+ for qemu-arm@nongnu.org; Fri, 02 Jul 2021 06:40:30 -0400
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434]:46805)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lzGb0-0006gq-Gt
- for qemu-arm@nongnu.org; Fri, 02 Jul 2021 06:40:36 -0400
-Received: by mail-wr1-x42b.google.com with SMTP id t15so8528958wry.11
- for <qemu-arm@nongnu.org>; Fri, 02 Jul 2021 03:40:30 -0700 (PDT)
+ id 1lzGav-0006bD-8I
+ for qemu-arm@nongnu.org; Fri, 02 Jul 2021 06:40:30 -0400
+Received: by mail-wr1-x434.google.com with SMTP id l8so11846230wry.13
+ for <qemu-arm@nongnu.org>; Fri, 02 Jul 2021 03:40:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=4BANoWgI0RjhipvmntovUAzoJsSWS5FJsfiHUg00m54=;
- b=QksazumLwCZ8AW6hLacg+J8/71Omk45FlLqCWaed+2MOyNiGEJjyf8y9CWbJMwg7hH
- 1+p3DKi4OA4LItQ9VEM2iscgFp4/CxBPj5/3y4i8tkCvZRr5pXWKCqc94WDjD9BaYhGB
- MUA8j8yZPrPfIegkWZhcf768G74r2t6FQhDnLxKXSz3RECZJIsZaa7y4o5U2n89F8Y93
- OEk/N301J7qhB6Ida+ZEN6ppYucSbvCllL6ZujZPUwLl6FMA74KKhLsOVAoPxGruQhGu
- xju+xHlejbTeaq8fNadqH1JiD7kW/Xr/llpNJ8/fknRYxnclaFstB3C7YilQP0RA/cIi
- LxdQ==
+ bh=V8sS0Bb0e+XFKMXcd7X5sBnIKxL0C6ytZPnPqSvPiJU=;
+ b=CJU/ZSNyxabb0AWd/Kuic/rkOR/4dAGTEg2H5OmumG6WumJWQc4sdZHVrq/6sMLfM+
+ Y1uePmtw6ATBU9Sq74NBGxTPpC5soFmnLxwfHOYGUDfG2LQlktYQ7WoXl4IhEagqI6JN
+ HN6VwxtE2tAHAtsglKV2huQREXP5p8cGpsO2pmKvpdGctw5H3nvxFNrgCGDFvmCMPmQ+
+ OtVPvNifRz07ms+6uznbxXtScOokxQZdcAn2HOesoMIMUftVdC8Azj4jvFgfmG542O9n
+ SoVJtNlhxujWWPAtzDT0PN3K4c46mFWJRG15/6DeU0n1rWYyw/3Py+JmZtg9zvHW/7di
+ BLKw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=4BANoWgI0RjhipvmntovUAzoJsSWS5FJsfiHUg00m54=;
- b=gQssuzdEu4/muG8MXb7fV/unXIunHmgZjGC1WzHJnZVhBizCnVaKL3jboUrDHHPxc7
- aJ+c/HTW7RmvJ4zJYHTFbWQRl5gSaUetpz3RX3rBV4g0XcrboMOVZur8SIEppJ/bSTXo
- mFEfuINM9/fyjRxCOk4pSJaWWU5iOJ/qWxbYQnC3nCPZN72ceNQPw79M4fk9FSkUVOiM
- nxo9LLcl715fS3wElOOPnWmbVk1F2LI+dIwbZruYx4mxdkOQW1rkRWO61lt7XeCTu+Tl
- uSVIBEvUT1M4ZbWrl0Qtje3o36wtGa3m1ZYWTmOpNXLE92zWoHFtxwJrRZOxG3FKhwq7
- KYBw==
-X-Gm-Message-State: AOAM530o0ev5/b5aAGLxngLyt0p06ltSbyjE7f97D3iKH/ad5h+lali9
- 0jTAho3TYNkBwS0igzEoeC/n/DyWYGhd16dg
-X-Received: by 2002:adf:fd42:: with SMTP id h2mr5150186wrs.262.1625222429140; 
- Fri, 02 Jul 2021 03:40:29 -0700 (PDT)
+ bh=V8sS0Bb0e+XFKMXcd7X5sBnIKxL0C6ytZPnPqSvPiJU=;
+ b=CkrOFZTcnX6TC0LAnHMBgtiO4Wrf3649TsUwtJPHsPLBBwXUnL/RU/8CtjZZKPPpa9
+ PM0/28vCcdI+F53ZVW+42sOfZHyyX5SJ/usVtiQ1aRhnM/I26/+iIFG8huxOU2F9yIpS
+ BHrov2j+02WOVGBoeTEatDI/iEb2zsfeUwfAdTrUZkL9R111cYjVZR7O7CGoSIhrbV7O
+ IYJIpjUj894WHIuBofsNDc81wJRtGdpky+0a6Ln3gY3Cw7egjLrLwf+bsoBULdY5TR2X
+ +e9XdcTwd7tboFyRdlGEsnllLwIyJPUgGKizNEq1J1WI1iV3/mYunAvK7WbU/p18RFXI
+ S/eQ==
+X-Gm-Message-State: AOAM531ftMRimMr4MbfPa3j3Gl6jVezUD060SZ3njd3sxaLZzWUaKtKr
+ Kgwy72vXqtiSpn6dQbCKEt4QZR19mGppCD4a
+X-Received: by 2002:adf:f10d:: with SMTP id r13mr5022432wro.59.1625222423805; 
+ Fri, 02 Jul 2021 03:40:23 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id p16sm2745810wrs.52.2021.07.02.03.40.28
+ by smtp.gmail.com with ESMTPSA id p16sm2745810wrs.52.2021.07.02.03.40.23
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 02 Jul 2021 03:40:28 -0700 (PDT)
+ Fri, 02 Jul 2021 03:40:23 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 11/11] hw/arm/stellaris: Expand comment about handling of OLED
- chipselect
-Date: Fri,  2 Jul 2021 11:40:18 +0100
-Message-Id: <20210702104018.19881-12-peter.maydell@linaro.org>
+Subject: [PATCH 04/11] hw/gpio/pl061: Add tracepoints for register read and
+ write
+Date: Fri,  2 Jul 2021 11:40:11 +0100
+Message-Id: <20210702104018.19881-5-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210702104018.19881-1-peter.maydell@linaro.org>
 References: <20210702104018.19881-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x434.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -120,95 +120,183 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Maxim Uvarov <maxim.uvarov@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4jTMkWyL2LGd
+X-TUID: grWROjWNHpdV
 
-The stellaris board doesn't emulate the handling of the OLED
-chipselect line correctly.  Expand the comment describing this,
-including a sketch of the theoretical correct way to do it.
+Add tracepoints for reads and writes to the PL061 registers. This requires
+restructuring pl061_read() to only return after the tracepoint, rather
+than having lots of early-returns.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
-Given the stellaris board is old and not very useful these days,
-I didn't think it worth the effort of actually implementing the
-correct behaviour, but I wanted to record what I figured out
-from various data sheets while I was looking at PL061 stuff...
----
- hw/arm/stellaris.c | 56 +++++++++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 55 insertions(+), 1 deletion(-)
+ hw/gpio/pl061.c      | 70 ++++++++++++++++++++++++++++++--------------
+ hw/gpio/trace-events |  2 ++
+ 2 files changed, 50 insertions(+), 22 deletions(-)
 
-diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
-index 8b4dab9b79f..ad48cf26058 100644
---- a/hw/arm/stellaris.c
-+++ b/hw/arm/stellaris.c
-@@ -1453,13 +1453,67 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
-             DeviceState *sddev;
-             DeviceState *ssddev;
+diff --git a/hw/gpio/pl061.c b/hw/gpio/pl061.c
+index 0f5d12e6d5a..f3b80c7776f 100644
+--- a/hw/gpio/pl061.c
++++ b/hw/gpio/pl061.c
+@@ -149,92 +149,116 @@ static uint64_t pl061_read(void *opaque, hwaddr offset,
+                            unsigned size)
+ {
+     PL061State *s = (PL061State *)opaque;
++    uint64_t r = 0;
  
--            /* Some boards have both an OLED controller and SD card connected to
-+            /*
-+             * Some boards have both an OLED controller and SD card connected to
-              * the same SSI port, with the SD card chip select connected to a
-              * GPIO pin.  Technically the OLED chip select is connected to the
-              * SSI Fss pin.  We do not bother emulating that as both devices
-              * should never be selected simultaneously, and our OLED controller
-              * ignores stray 0xff commands that occur when deselecting the SD
-              * card.
-+             *
-+             * The h/w wiring is:
-+             *  - GPIO pin D0 is wired to the active-low SD card chip select
-+             *  - GPIO pin A3 is wired to the active-low OLED chip select
-+             *  - The SoC wiring of the PL061 "auxiliary function" for A3 is
-+             *    SSI0Fss ("frame signal"), which is an output from the SoC's
-+             *    SSI controller. The SSI controller takes SSI0Fss low when it
-+             *    transmits a frame, so it can work as a chip-select signal.
-+             *  - GPIO A4 is aux-function SSI0Rx, and wired to the SD card Tx
-+             *    (the OLED never sends data to the CPU, so no wiring needed)
-+             *  - GPIO A5 is aux-function SSI0Tx, and wired to the SD card Rx
-+             *    and the OLED display-data-in
-+             *  - GPIO A2 is aux-function SSI0Clk, wired to SD card and OLED
-+             *    serial-clock input
-+             * So a guest that wants to use the OLED can configure the PL061
-+             * to make pins A2, A3, A5 aux-function, so they are connected
-+             * directly to the SSI controller. When the SSI controller sends
-+             * data it asserts SSI0Fss which selects the OLED.
-+             * A guest that wants to use the SD card configures A2, A4 and A5
-+             * as aux-function, but leaves A3 as a software-controlled GPIO
-+             * line. It asserts the SD card chip-select by using the PL061
-+             * to control pin D0, and lets the SSI controller handle Clk, Tx
-+             * and Rx. (The SSI controller asserts Fss during tx cycles as
-+             * usual, but because A3 is not set to aux-function this is not
-+             * forwarded to the OLED, and so the OLED stays unselected.)
-+             *
-+             * The QEMU implementation instead is:
-+             *  - GPIO pin D0 is wired to the active-low SD card chip select,
-+             *    and also to the OLED chip-select which is implemented
-+             *    as *active-high*
-+             *  - SSI controller signals go to the devices regardless of
-+             *    whether the guest programs A2, A4, A5 as aux-function or not
-+             *
-+             * The problem with this implementation is if the guest doesn't
-+             * care about the SD card and only uses the OLED. In that case it
-+             * may choose never to do anything with D0 (leaving it in its
-+             * default floating state, which reliably leaves the card disabled
-+             * because an SD card has a pullup on CS within the card itself),
-+             * and only set up A2, A3, A5. This for us would mean the OLED
-+             * never gets the chip-select assert it needs. We work around
-+             * this with a manual raise of D0 here (despite board creation
-+             * code being the wrong place to raise IRQ lines) to put the OLED
-+             * into an initially selected state.
-+             *
-+             * In theory the right way to model this would be:
-+             *  - Implement aux-function support in the PL061, with an
-+             *    extra set of AFIN and AFOUT GPIO lines (set up so that
-+             *    if a GPIO line is in auxfn mode the main GPIO in and out
-+             *    track the AFIN and AFOUT lines)
-+             *  - Wire the AFOUT for D0 up to either a line from the
-+             *    SSI controller that's pulled low around every transmit,
-+             *    or at least to an always-0 line here on the board
-+             *  - Make the ssd0323 OLED controller chipselect active-low
-              */
-             bus = qdev_get_child_bus(dev, "ssi");
+     switch (offset) {
+     case 0x0 ... 0x3fc: /* Data */
+-        return s->data & (offset >> 2);
++        r = s->data & (offset >> 2);
++        break;
+     case 0x400: /* Direction */
+-        return s->dir;
++        r = s->dir;
++        break;
+     case 0x404: /* Interrupt sense */
+-        return s->isense;
++        r = s->isense;
++        break;
+     case 0x408: /* Interrupt both edges */
+-        return s->ibe;
++        r = s->ibe;
++        break;
+     case 0x40c: /* Interrupt event */
+-        return s->iev;
++        r = s->iev;
++        break;
+     case 0x410: /* Interrupt mask */
+-        return s->im;
++        r = s->im;
++        break;
+     case 0x414: /* Raw interrupt status */
+-        return s->istate;
++        r = s->istate;
++        break;
+     case 0x418: /* Masked interrupt status */
+-        return s->istate & s->im;
++        r = s->istate & s->im;
++        break;
+     case 0x420: /* Alternate function select */
+-        return s->afsel;
++        r = s->afsel;
++        break;
+     case 0x500: /* 2mA drive */
+         if (s->id != pl061_id_luminary) {
+             goto bad_offset;
+         }
+-        return s->dr2r;
++        r = s->dr2r;
++        break;
+     case 0x504: /* 4mA drive */
+         if (s->id != pl061_id_luminary) {
+             goto bad_offset;
+         }
+-        return s->dr4r;
++        r = s->dr4r;
++        break;
+     case 0x508: /* 8mA drive */
+         if (s->id != pl061_id_luminary) {
+             goto bad_offset;
+         }
+-        return s->dr8r;
++        r = s->dr8r;
++        break;
+     case 0x50c: /* Open drain */
+         if (s->id != pl061_id_luminary) {
+             goto bad_offset;
+         }
+-        return s->odr;
++        r = s->odr;
++        break;
+     case 0x510: /* Pull-up */
+         if (s->id != pl061_id_luminary) {
+             goto bad_offset;
+         }
+-        return s->pur;
++        r = s->pur;
++        break;
+     case 0x514: /* Pull-down */
+         if (s->id != pl061_id_luminary) {
+             goto bad_offset;
+         }
+-        return s->pdr;
++        r = s->pdr;
++        break;
+     case 0x518: /* Slew rate control */
+         if (s->id != pl061_id_luminary) {
+             goto bad_offset;
+         }
+-        return s->slr;
++        r = s->slr;
++        break;
+     case 0x51c: /* Digital enable */
+         if (s->id != pl061_id_luminary) {
+             goto bad_offset;
+         }
+-        return s->den;
++        r = s->den;
++        break;
+     case 0x520: /* Lock */
+         if (s->id != pl061_id_luminary) {
+             goto bad_offset;
+         }
+-        return s->locked;
++        r = s->locked;
++        break;
+     case 0x524: /* Commit */
+         if (s->id != pl061_id_luminary) {
+             goto bad_offset;
+         }
+-        return s->cr;
++        r = s->cr;
++        break;
+     case 0x528: /* Analog mode select */
+         if (s->id != pl061_id_luminary) {
+             goto bad_offset;
+         }
+-        return s->amsel;
++        r = s->amsel;
++        break;
+     case 0x52c ... 0xfcc: /* Reserved */
+         goto bad_offset;
+     case 0xfd0 ... 0xffc: /* ID registers */
+-        return s->id[(offset - 0xfd0) >> 2];
++        r = s->id[(offset - 0xfd0) >> 2];
++        break;
+     default:
+     bad_offset:
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "pl061_read: Bad offset %x\n", (int)offset);
+         break;
+     }
+-    return 0;
++
++    trace_pl061_read(DEVICE(s)->canonical_path, offset, r);
++    return r;
+ }
  
+ static void pl061_write(void *opaque, hwaddr offset,
+@@ -243,6 +267,8 @@ static void pl061_write(void *opaque, hwaddr offset,
+     PL061State *s = (PL061State *)opaque;
+     uint8_t mask;
+ 
++    trace_pl061_write(DEVICE(s)->canonical_path, offset, value);
++
+     switch (offset) {
+     case 0 ... 0x3fc:
+         mask = (offset >> 2) & s->dir;
+diff --git a/hw/gpio/trace-events b/hw/gpio/trace-events
+index 48ccbb183cc..442be9406f5 100644
+--- a/hw/gpio/trace-events
++++ b/hw/gpio/trace-events
+@@ -18,6 +18,8 @@ pl061_update(const char *id, uint32_t dir, uint32_t data) "%s GPIODIR 0x%x GPIOD
+ pl061_set_output(const char *id, int gpio, int level) "%s setting output %d to %d"
+ pl061_input_change(const char *id, int gpio, int level) "%s input %d changed to %d"
+ pl061_update_istate(const char *id, uint32_t istate, uint32_t im, int level) "%s GPIORIS 0x%x GPIOIE 0x%x interrupt level %d"
++pl061_read(const char *id, uint64_t offset, uint64_t r) "%s offset 0x%" PRIx64 " value 0x%" PRIx64
++pl061_write(const char *id, uint64_t offset, uint64_t value) "%s offset 0x%" PRIx64 " value 0x%" PRIx64
+ 
+ # sifive_gpio.c
+ sifive_gpio_read(uint64_t offset, uint64_t r) "offset 0x%" PRIx64 " value 0x%" PRIx64
 -- 
 2.20.1
 

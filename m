@@ -1,104 +1,106 @@
-Received: by 2002:ac2:593b:0:0:0:0:0 with SMTP id v27csp1232068lfi;
-        Fri, 2 Jul 2021 03:54:17 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzFba8rVzHDWtP5I1r0a0B78mVdQS3J2ruHte79Q6pFRbS6RFwtmgVvVhetLTqW7v066Agr
-X-Received: by 2002:ac8:6e9c:: with SMTP id c28mr4563606qtv.145.1625223257675;
-        Fri, 02 Jul 2021 03:54:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1625223257; cv=none;
+Received: by 2002:ac2:593b:0:0:0:0:0 with SMTP id v27csp1233112lfi;
+        Fri, 2 Jul 2021 03:56:06 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwPGjGxIVkpXaeRgOrAr+YMKrG8dbiYv0jA3mBEOHdqbv5xmZgfVNsTI/RQ6RFI0ztxAUgz
+X-Received: by 2002:ac8:100c:: with SMTP id z12mr4190995qti.307.1625223366622;
+        Fri, 02 Jul 2021 03:56:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1625223366; cv=none;
         d=google.com; s=arc-20160816;
-        b=ISApp4S/VHYOfo+pJqvjZkTr1DBtmGXAHXdEPzEyYqfbAAE57QMUeC+KEXiSwY1RQP
-         USdtDnrIsLkQBJRR4VfbKtEmGc+CtIQOV+TMct+7xN90vlW0MZAU+2cXYJALaPnWVCeD
-         oDKvx/NRSgjFFQawrbZLoIWvYM4YXc5K6+wYSIVWrVizSGLHZm3kBC3WLmcqs+2x852V
-         z3APed83aAhp/MlvoPni9hWucan62YmRT76Qa+6P6wx6quki5FDKX6Ifh7rMxuse5GF7
-         M0Yg7Zv4OB8Y/lyiDXOb4oIFfj6LMGpTu6wF4kp42CfeC13p0G6RpUo/OS+40Y+ZefjR
-         bE1w==
+        b=brHZ7Q8tc+eUN9df/Eu05ao/L76iklyU1eRFRAVgkrNcBgzPxegGRPo+1X9XU8Syy0
+         5JWMKeTbnZ/kGYqiqnKI9nzHH8DrkTw1JvcrUmtWKvLd3HErppHq+J8XJbZ4T8A0dXLi
+         Pr1a4H3vrncZJjPmRLLE7Y/Eyxaup79PL2WWsDByYovFOTOyMn0dHS14muDAcBNHuEAP
+         Wk6sNyV6dl7+QtE4bPk+aIZWSKTNuROm0DcwfCBKOvminYeQgbLdvk7RzSoCfKBLHfY1
+         jGnwKBsWuYG/QfGVzsbN8PuoydYEKEfFEflIpsYgh3gfAAFE3sTYlIfjr5yxRZYNsrTI
+         iWpQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=76AMih/0CdvT88bh+p2rDyuQw/2AO+hwfxP8GDEeKNs=;
-        b=VXRwWTYRCed+0FEhYKn7TdBrQUzFnn+nZmwmlcK24ciRJpiVaO3ebOCHi5y1fd9oiU
-         QvtQExuKN7gmteVLRqNVipBltYhskYVVywFNce0vMWzMOymTD8svm5JQonkuXJtL2Yna
-         rJCyuV/fKlM7fxzCepl31PIc3+ddW3pBqWdrxyrA7O2Evxv12wG0yKUKd+n1uMeh9l8V
-         Fw78boMnIv9ZYivGB0GEr3Af+RuT2WQwF7eo3NjGv0W0gL/8HZlU/tTT4OicmyLFhtE9
-         3zYEjP9EssDuLOnwZOmP9ZrVZhvsleWwSARGcsPqYc9oWvI7Bx3gcRBH540aTfvkJQm+
-         wTTA==
+        bh=/c+jRma3FgFmmJgityu7teZCDoVgJXDdPugvthcVjyY=;
+        b=RWWt6UeAP8m3GdOaRrAxq5rZXPw96Avse3N4sn+lIg2beSQtI4/EGVJYuyOb4Eb4Qq
+         7VJfNP7ZZHbhZBmfAGmWaWi4ZCummYUNjDehMA8R59AXdgnPlKbhgjAFTXSIfiVAV5SM
+         25f/hQ9Yl+BR5vOxG2ffojFtUWzN/bGGBtLWAf70wGVcwCVN6NFeJMc+/5uDiRbqpEDz
+         9320mb99B8+VNynEFpeohKIymflvTAPcuRnC8YoS4U7BITACzFLsTniTzvU1GaITYzDi
+         Tpg8QdjIIK1E/2nAR4N5QhQrppbqKmu4hatXvYq90T6K44LhqvT9nWFA0OpZn38TxUKs
+         Z9ig==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LlIZLTUL;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=fCOqJN+S;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y13si2161315qkm.234.2021.07.02.03.54.17
+        by mx.google.com with ESMTPS id c12si2890653qtm.374.2021.07.02.03.56.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 02 Jul 2021 03:54:17 -0700 (PDT)
+        Fri, 02 Jul 2021 03:56:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LlIZLTUL;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=fCOqJN+S;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:35704 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40062 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lzGoK-0003it-VH
-	for alex.bennee@linaro.org; Fri, 02 Jul 2021 06:54:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34092)
+	id 1lzGq5-0006lq-UF
+	for alex.bennee@linaro.org; Fri, 02 Jul 2021 06:56:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34524)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lzGo0-0003Hx-BP; Fri, 02 Jul 2021 06:53:57 -0400
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429]:33493)
+ id 1lzGpC-0005QU-KC; Fri, 02 Jul 2021 06:55:10 -0400
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:46941)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lzGnz-0008Hy-1w; Fri, 02 Jul 2021 06:53:56 -0400
-Received: by mail-wr1-x429.google.com with SMTP id i8so12009660wrc.0;
- Fri, 02 Jul 2021 03:53:54 -0700 (PDT)
+ id 1lzGpB-0000pN-2U; Fri, 02 Jul 2021 06:55:10 -0400
+Received: by mail-wr1-x42c.google.com with SMTP id l8so11894134wry.13;
+ Fri, 02 Jul 2021 03:55:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=76AMih/0CdvT88bh+p2rDyuQw/2AO+hwfxP8GDEeKNs=;
- b=LlIZLTUL4F/FaTUooBGWKRYw/O+4KhwCgCvNVtYPkREHnQpCEnHRDmZvS75PyuMuEZ
- s9pyvZeLDe5bcC3s74YZy3eTSX9FigwE5xDqHuTZyd2+3SNGdESuB8Db3TPf4Xkwd7o7
- wC0krl7hrMfsaCtKYKiHEWWOPRVtgXCXX1X0nr32f4UuuBakTeaBv/rDA4LcH9lJZk5o
- kL2DBPELV6PRBft73hEA+HqWhgG2IXuhElP4k2JwgVxe9ovVoY3ZFOM9mMJ0ivRHIh57
- NLXVRadBXBvyBaQWDMoAsY/5m3ZRZu3193V3qCthoA9FPJ8YHYy9EwIy43QVLkAtVSt6
- D9Fg==
+ bh=/c+jRma3FgFmmJgityu7teZCDoVgJXDdPugvthcVjyY=;
+ b=fCOqJN+SodxMQdfIQZD4QFnbssgkCHCaZFypa0M37ccK3zQV3DoChZWaQYyEah/o2F
+ oZOuVF+fPjT33hIKfXSTGd88YE/aPNuK1waAC97t+ux0B1WUP2TvuSvp6CNrsneEgtZ5
+ kn+C4bDTASOqpf5A16TbL3Hp34a7HSBbNGcMndJ70YYsOKlxiF17wQWIsdX3gW6b9JUt
+ jem+qs23JEiP9GGKxifv4/2P+dGyBcXEm5iMYArhkCt5F363Q0Tm1KBCUBz3jhjA+e64
+ 5u/VoYmD8QFA1wRIj7yn/Cb9bGQGhxagtBTNJX0hOYMqQ9m967/y3UkoGEwTuptrK1T2
+ qPog==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=76AMih/0CdvT88bh+p2rDyuQw/2AO+hwfxP8GDEeKNs=;
- b=pS0zaPsoJFZe3btFXzFEF+cXjaRnD+hVr6Z7dCFKigADMbsZ7+Q2WBah4RSHcCd0oI
- 43AzAuRsLnJqU2r5swcBXJE2srQYOOljGZzORlgNK0AMP4CjnNP4pvkxqNCZr8GYFvQY
- 8ayqY0yGXzgEWedJ2ojEXS9io2E2SBpm9rwYH2W4uYI22WgFKyy/k4BMXdO5iWHP01SB
- C9vmwhNUl7u7Xd+zeIC9cl76f1iuq1vEtQY4JS9Mzx/qUO9vCcXy88dzZpWZSqy6pRZb
- SE7WTejzkhGIJ1TwKZ/T7i00Uupqjzk6eHRxMDAzQ4hCvJrHBLqrnRpGgeBR7Awb7v3o
- ytPA==
-X-Gm-Message-State: AOAM531Azmj24kp0aJVzzGrMekQGOWEgyPwrUdb/cpyKy4PFaEaNj7xK
- YqX6c/LcY6Z73m2I6dIMb0c=
-X-Received: by 2002:a5d:534d:: with SMTP id t13mr5104915wrv.171.1625223233309; 
- Fri, 02 Jul 2021 03:53:53 -0700 (PDT)
+ bh=/c+jRma3FgFmmJgityu7teZCDoVgJXDdPugvthcVjyY=;
+ b=XFZ2mY1IZiXagqZKQC1miArWe2nvi2dJ7j/s5+nVLXUbMzuyNBSiRu+Vc+aNiX1fp/
+ gLvy7vpFSPCJ2TjDmM4Jth6T5mF8NsiBmFWlNYpuwSOPrG6wqsZkVdbRq/GhxwIWQbfi
+ i0k+B17Kke55DuU6eHYVKblrR/uZ2ncuUlrdLa04RW/FgBT2yhJhz+hxsvC0WBBCCJjN
+ 0bfy63ISBfwutsvCfDQvBgMa0fAsh21tn7Bh3KAPMRcObqpuFa3wu8Mbv9aNQvKQlE7h
+ TjKivh/YuAWgqvem/EnCqqODFUgENq1OgXW7v1RfBcW8TaWAU7GFde1JuVZccWxiLV14
+ xlyg==
+X-Gm-Message-State: AOAM533c/z4dN0u3r6CHLiQuA00uTEHXaDgMaBZ2LJVh7XevhTSyIss/
+ eGiClvtaEReMoc258R7avwM=
+X-Received: by 2002:a05:6000:1251:: with SMTP id
+ j17mr5164072wrx.122.1625223307192; 
+ Fri, 02 Jul 2021 03:55:07 -0700 (PDT)
 Received: from [192.168.11.95] (pop.92-184-108-94.mobile.abo.orange.fr.
  [92.184.108.94])
- by smtp.gmail.com with ESMTPSA id g1sm1088539wmh.30.2021.07.02.03.53.52
+ by smtp.gmail.com with ESMTPSA id n7sm11436599wmq.37.2021.07.02.03.55.06
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 02 Jul 2021 03:53:52 -0700 (PDT)
-Subject: Re: [PATCH 02/11] hw/gpio/pl061: Convert DPRINTF to tracepoints
+ Fri, 02 Jul 2021 03:55:06 -0700 (PDT)
+Subject: Re: [PATCH 04/11] hw/gpio/pl061: Add tracepoints for register read
+ and write
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20210702104018.19881-1-peter.maydell@linaro.org>
- <20210702104018.19881-3-peter.maydell@linaro.org>
+ <20210702104018.19881-5-peter.maydell@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <26e398f8-0e41-8791-f09f-14dcca6195d4@amsat.org>
-Date: Fri, 2 Jul 2021 12:53:51 +0200
+Message-ID: <29ab6a12-df76-f76e-a7d2-e0abdaa6186b@amsat.org>
+Date: Fri, 2 Jul 2021 12:55:05 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <20210702104018.19881-3-peter.maydell@linaro.org>
+In-Reply-To: <20210702104018.19881-5-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x429.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42c.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -122,16 +124,17 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Maxim Uvarov <maxim.uvarov@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pKy4fzbPC+gB
+X-TUID: E9s2Zvlm16tX
 
 On 7/2/21 12:40 PM, Peter Maydell wrote:
-> Convert the use of the DPRINTF debug macro in the PL061 model to
-> use tracepoints.
+> Add tracepoints for reads and writes to the PL061 registers. This requires
+> restructuring pl061_read() to only return after the tracepoint, rather
+> than having lots of early-returns.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  hw/gpio/pl061.c      | 27 +++++++++------------------
->  hw/gpio/trace-events |  6 ++++++
->  2 files changed, 15 insertions(+), 18 deletions(-)
+>  hw/gpio/pl061.c      | 70 ++++++++++++++++++++++++++++++--------------
+>  hw/gpio/trace-events |  2 ++
+>  2 files changed, 50 insertions(+), 22 deletions(-)
 
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

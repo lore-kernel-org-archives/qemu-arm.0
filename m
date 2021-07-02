@@ -1,105 +1,105 @@
-Received: by 2002:ac2:593b:0:0:0:0:0 with SMTP id v27csp1234149lfi;
-        Fri, 2 Jul 2021 03:57:49 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxZ9KqikWZOY6Gk/n6thkqz+JkHt6PRQZ28vhXTg9KDAhUxeZ1/kl7mCqFQ/8sx5dJM7kAe
-X-Received: by 2002:a37:a0d2:: with SMTP id j201mr4639553qke.456.1625223468868;
-        Fri, 02 Jul 2021 03:57:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1625223468; cv=none;
+Received: by 2002:ac2:593b:0:0:0:0:0 with SMTP id v27csp1234961lfi;
+        Fri, 2 Jul 2021 03:59:00 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJySNt1D61a54s+cYFDHiKGuvPaSQ8KuF3I/GZ3Ymd9PMISNpD814xwM7N74eaCjjr2sGg/E
+X-Received: by 2002:a37:a117:: with SMTP id k23mr4867817qke.239.1625223540054;
+        Fri, 02 Jul 2021 03:59:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1625223540; cv=none;
         d=google.com; s=arc-20160816;
-        b=Mh4agDzjK7+vMs2wRHv2/+D+PNEt2dJ1YNCqyKLLWRnVOczHs60eAcTaQk9U827LjL
-         Q7Xa+l4Iksp4wFbt9n2S4+HVnAcJ0CrPr+j6f9/DXuX4APb6i8kK0U/ftIDPqnM5+Y77
-         n/u7+2Z4k1vvhbDyDE8QQhc1qqqcW/H4zgf7i8VszVeLfk4o5Ro8W8lISo5NhvXIW/sg
-         WyWdN5lrjWYGlmyygyV7C9PztWijBVgYQn3kzQmMD0xSBd3U2LdZ9LQhv3ihlpoLSvuE
-         sr3UfjckUE36JcMRUMkgHyiy3/lEsHY32KrVCMXXzCHT2+dZmGOiKSdWIiCNF76Ju0t3
-         RgxA==
+        b=M0iuUFTZz09rM1+jb2bkllu/Jqd3yR6I5TUsppsLPz6NvpZapF1BKvYoHNN51KEZ/j
+         qRzVuvz+mKDncsaxo5alMg1Il0qcRZntihGs4hvY8Q3zjBTnbiHInAeukOBIrr6Imr3e
+         0SW8V9Hats575M0XWxuJRtuapuD0SUasm3Kte6l2uwSeZQ7CZxuqhQfeNiwLZQmxDSgH
+         BNX91qJsDuQhYGcfk2Fzv4F8UO8Iklkb/iifKL8qEBHDGxNMGzw7abkAd+bIQ+1Nq6s0
+         DDnjs0+GPEf16Zfn9gR6Q5JTSENSMTF8cuF/CweFnWZ29Cqxf6NOS+KCrW2RkD1HRrs4
+         32tA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=Tby/6DJUaj2Nt0wEA3K+vtavMY5dIXRRq94T8n3bkq0=;
-        b=rvUImzNnH/hwvP8FP0FIvUZq/rQVH2cAabgswaJ4jQtkonG+hZZE3blFGLnlVn+jac
-         k7hmlXH5eWwW9ye9+mUQM23D83fUR2Z3IcCIPQ59PUwVJCllZkYoGgQVtlpZLT2uTJ3t
-         k9emhbi1FijYjsyai2tvqHT60z1b3KFPmWRwd0CI51ao9UEiDAf02TnAqj9b00OO0Ugi
-         g4aIXwFxZXYqMSlNtXU/E4D+1nxFM1HNK/c2mvtl7yTumjvvGyO+dEByY9JufMbIjRSP
-         us50VfMFqBEfbd5PHdqYaHHQoYebw5kbTGSjG3d49BAwtjI0HuPOVOXfTG7IHLlnBRfT
-         jNEQ==
+        bh=onb2XVrAjEjix2hjRw+1dfpXofYh8x588wOQOqhKH04=;
+        b=LgQRtE9WwyMst4MDIlbxqzmNnamYOeZqEHDWHi5wnhm8W0ybiCVrkam81CSsRfCHl6
+         ifxkHY5L4WTWEOyMkGTq7SBp53kWzdbXc2i59bV88Gav2wdxe2vRqV+utDkJ76+bDniV
+         K/rLGf2FMX6wSIDkcKi+jDIIGKsera7bH5AlxvMrIiW4/pzhDkEwLc35KK1Db1cXUFTU
+         cuUZCP6+ApXZcyU2iTNfrRVA9/zkG/lvWYZrBsZC2jtp5u3MyHxPgebU7psbglHZH7Xo
+         DpdOlqbwfH1ZYnoImCg3ccMPFOeYBjBoiToefuzjHSNUd9IxH+MCyxgWB597EnIhByGK
+         OHZw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=r493vbrY;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LXF3PU+s;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b7si2099169qkj.162.2021.07.02.03.57.48
+        by mx.google.com with ESMTPS id h24si1983234qka.244.2021.07.02.03.58.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 02 Jul 2021 03:57:48 -0700 (PDT)
+        Fri, 02 Jul 2021 03:59:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=r493vbrY;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LXF3PU+s;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43180 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46202 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lzGrk-0000XW-60
-	for alex.bennee@linaro.org; Fri, 02 Jul 2021 06:57:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34860)
+	id 1lzGst-0002YV-DY
+	for alex.bennee@linaro.org; Fri, 02 Jul 2021 06:58:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35004)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lzGqz-00087J-E9; Fri, 02 Jul 2021 06:57:01 -0400
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a]:40611)
+ id 1lzGrp-00013l-6T; Fri, 02 Jul 2021 06:57:53 -0400
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433]:38835)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lzGqx-0002Ol-VO; Fri, 02 Jul 2021 06:57:01 -0400
-Received: by mail-wr1-x42a.google.com with SMTP id g7so11917826wri.7;
- Fri, 02 Jul 2021 03:56:59 -0700 (PDT)
+ id 1lzGrn-0003AH-Qx; Fri, 02 Jul 2021 06:57:52 -0400
+Received: by mail-wr1-x433.google.com with SMTP id a8so275509wrp.5;
+ Fri, 02 Jul 2021 03:57:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=Tby/6DJUaj2Nt0wEA3K+vtavMY5dIXRRq94T8n3bkq0=;
- b=r493vbrYiOaYv/csvJa/JsSOYOi8rWNzSJYVvK1FkAJ2zH6IXroqggXgPfYJ1YFcK/
- cR6QUVs1uFVXl5aQNmaxSSphm1v21xAFrdajKYDYxjfxsyDka9qV8z6fbVMvLUiOgTGN
- xwpFeMlQz00TOQ1IwEG2TWQWjUmJL0wjKR0qZUVUvYr6adLNTSFLEHFDF94pmZ1bhmGI
- A9QNE91DGIkqiNUfgvdYBR2mWbynmgaFU39CY2Z6yXTb3MKGVgDDTH6fArP8oL/wkcrS
- pc4B6+5GVcsjfw/4Ccli3sMTvbHBZ4hFBM/WJtivbT0sKkCMoYOjozHYU1RHU3ChLUTt
- iYXg==
+ bh=onb2XVrAjEjix2hjRw+1dfpXofYh8x588wOQOqhKH04=;
+ b=LXF3PU+sC0y2S11swQBlMGDriL8cwV6uk05qau2zDiEfEOyXDkL1b4xr3g+2MEhLeZ
+ JJAUKL907jkHSbwuxQ46l8qwk39UGsRfFLauMFQ8/DkqOnQwYYj8ZRXy3W+ZJa18XV9X
+ HFBZ39Fh7GRTtflYqDbrbKWMSq5RA1rwOPmd8LMpxmgiEfhi16mNKyNalatHVKidupOl
+ CbcTQo6iz2CpT0hmbvQnFH4shhrTCJjW+JNXmw7YdIKU/zuIxJcVFBXlZH6QeMpy2g70
+ tQstavUYV741aNkXOt4UaHtN3kvUcI9Jre4lECYJcIBYsbVFLgtGf4K0UCbCWxWMbuSW
+ ff3Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=Tby/6DJUaj2Nt0wEA3K+vtavMY5dIXRRq94T8n3bkq0=;
- b=b4VLnbnvl5bAQXATT9XdrDzTMznU2DTQvqffB22Ga8AmYnB2VgnRGm7rJtdjEhzv6O
- HDlAkdOD0akDC6OCDD+452mOOVZoovj0218fhS8eLa2EtHiDtMzEI3EQ4TJGOnXChLrr
- aSG6mk047Hj10sa97AczgKOGatg0oU6cPFZ8FL5tX8vO3TfvnKuIKqMrYftSIETLuK/Q
- GxZbSaDTNwc76QOh6YkOXBN9V8O7CyYl0EpMtfYf4g4tp8DSRbSAriVodmbQdpgEtukz
- 4tiJavEXPKeDiwMan7JEvT9y/9iysOHz+nBfwsv4ssH1gJ+uwzLhKOHJhq7Ykmg90k+k
- 2ydw==
-X-Gm-Message-State: AOAM532o5rLddn4Q6GPpEP7FqDCdBnphG9JKyakTq8u+yku3v9Bdpkf/
- a2amM+RiadqP8TWdFfxkeJw=
-X-Received: by 2002:adf:a446:: with SMTP id e6mr5094978wra.187.1625223418029; 
- Fri, 02 Jul 2021 03:56:58 -0700 (PDT)
+ bh=onb2XVrAjEjix2hjRw+1dfpXofYh8x588wOQOqhKH04=;
+ b=nlGA3BqP0O0CROoCaYfPAFTSe/+keHhhuaKMdbZVzwOdd5PD6f+biIg7cw0Ev/gdaA
+ Yh+dClv6mwR/6wZ32YjyZBoEnHQkdwJPL5rn/pNwfES8AKRMaHtw47vYnjhW2LdlFaMZ
+ o+dqqp1lYxbLEGGQZQfeo9mcBo39BhrFNeXmlK4ihvrPlIpMYG9iTbdU77R1MMYiFAhw
+ xy3SlogoiNtf85lJsXnxfPGJofV/mdV6p5LCUaKMDdu3U/fZWIphb6MrqscuLioL/AGe
+ ThWa3p1eUJesTEXmz+wrGhmylBn3WiRN0pPzJXqX3X6+lq5dyzBNepPpEUet0nEW1ny1
+ sjfg==
+X-Gm-Message-State: AOAM531Gkry6fVwwojUYrvFax8EXIxqk4VGCpprpJr2tzXD8PZPYpD7i
+ y2pLLE+0MucLTqDgb7/Mcb4=
+X-Received: by 2002:adf:f850:: with SMTP id d16mr5128934wrq.258.1625223470159; 
+ Fri, 02 Jul 2021 03:57:50 -0700 (PDT)
 Received: from [192.168.11.95] (pop.92-184-108-94.mobile.abo.orange.fr.
  [92.184.108.94])
- by smtp.gmail.com with ESMTPSA id k13sm2833091wro.2.2021.07.02.03.56.56
+ by smtp.gmail.com with ESMTPSA id z4sm1218225wrp.46.2021.07.02.03.57.49
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 02 Jul 2021 03:56:57 -0700 (PDT)
-Subject: Re: [PATCH 09/11] hw/gpio/pl061: Convert to 3-phase reset and assert
- GPIO lines correctly on reset
+ Fri, 02 Jul 2021 03:57:49 -0700 (PDT)
+Subject: Re: [PATCH 10/11] hw/gpio/pl061: Document a shortcoming in our
+ implementation
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20210702104018.19881-1-peter.maydell@linaro.org>
- <20210702104018.19881-10-peter.maydell@linaro.org>
+ <20210702104018.19881-11-peter.maydell@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <f4959c10-8f82-75a6-7828-1ede004239b1@amsat.org>
-Date: Fri, 2 Jul 2021 12:56:56 +0200
+Message-ID: <aa1500bd-23f0-29c8-5d21-11cb76a7a748@amsat.org>
+Date: Fri, 2 Jul 2021 12:57:47 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <20210702104018.19881-10-peter.maydell@linaro.org>
+In-Reply-To: <20210702104018.19881-11-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x433.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -123,25 +123,21 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: Maxim Uvarov <maxim.uvarov@linaro.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rY/zDqblzcp4
+X-TUID: Ah57WFwRxvoO
 
 On 7/2/21 12:40 PM, Peter Maydell wrote:
-> The PL061 comes out of reset with all its lines configured as input,
-> which means they might need to be pulled to 0 or 1 depending on the
-> 'pullups' and 'pulldowns' properties.  Currently we do not assert
-> these lines on reset; they will only be set whenever the guest first
-> touches a register that triggers a call to pl061_update().
-> 
-> Convert the device to three-phase reset so we have a place where we
-> can safely call qemu_set_irq() to set the floating lines to their
-> correct values.
+> The Luminary PL061s in the Stellaris LM3S9695 don't all have the same
+> reset value for GPIOPUR.  We can get away with not letting the board
+> configure the PUR reset value because we don't actually wire anything
+> up to the lines which should reset to pull-up.  Add a comment noting
+> this omission.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  hw/gpio/pl061.c      | 29 +++++++++++++++++++++++++----
->  hw/gpio/trace-events |  1 +
->  2 files changed, 26 insertions(+), 4 deletions(-)
-
-Nice.
+> Not worth actually fixing, but I wanted a note since I spotted this
+> while I was reading the datasheet anyway.
+> ---
+>  hw/gpio/pl061.c | 9 +++++++++
+>  1 file changed, 9 insertions(+)
 
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

@@ -1,103 +1,113 @@
-Received: by 2002:ac2:5485:0:0:0:0:0 with SMTP id t5csp1260784lfk;
-        Mon, 5 Jul 2021 07:08:14 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzksWeF7RKNppZJ0JtFsndKiH8Zno3YKJbRvlJOss5ZwimqxsuIBedRtHQq/wrOZpdb8o8A
-X-Received: by 2002:a17:906:bc83:: with SMTP id lv3mr13427732ejb.133.1625494094358;
-        Mon, 05 Jul 2021 07:08:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1625494094; cv=none;
+Received: by 2002:ac2:5485:0:0:0:0:0 with SMTP id t5csp1285681lfk;
+        Mon, 5 Jul 2021 07:38:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxzeDW+gK7P+IkuHmSRFINJ174DOWdWrgBDkr5WRSiTzpUjqo4zEbrk8vJuT/fkuDm1yN/r
+X-Received: by 2002:a17:906:1704:: with SMTP id c4mr13938286eje.182.1625495885695;
+        Mon, 05 Jul 2021 07:38:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1625495885; cv=none;
         d=google.com; s=arc-20160816;
-        b=wJHKn/wZN/4bk1ygJJyItczMFgTVlKvIOf0ilYQ3C+aCvi3odP4bfZJWTpreiBsLmF
-         v3Sne5YWQFmeew7j7dT/fgfHVFP4T14BvAcn7/p8CitWNno0NNtq2fjlsEWGqcyrmKZe
-         Rioml9PTMdzmXTjMlTr2qECsd3ducmqMhpN3c+77e3Pg2Fop7upm7JzxfnEJlG7T0NX1
-         /ThuowZhh0rL9Ld6FMg5shSktHbzo8zunuxCtBEjg5oGzlKTt5cacWFnqbPEvX/wlgUW
-         j8hSl1I+T83xafJDCUSEORLlKYfvSKUSqaNqunpjKlf2T4h8eTpap1+NiTgIgjciV14t
-         qFpA==
+        b=0nxuUOHUxORYV/tEC8scl0lqnjBEsTGl5dla2AsQ0HUT4X+HIGOENphxXuhsRv356C
+         mHW7luGhnFsLapkM6XtQsec+piYiYPAWRG/xM8sfR/G5Wo/qygZJFdx2kXt8XsZR7ATC
+         6YtpNYmcK4I9IuTzniljyB29ATv2nKEVcE7F7Y4MBngxt62FoUp7TTuRM15l6hiy9Ff/
+         3gv8IavgFpBfJq44r/zl//SFhfUC1zvGCzDpkL2O+mLqumsc8zLE+PYhUUHtDL2UYucf
+         opvgFKFmp59vj607iF0DWDvE05lNpm0MxwiDNne3aYwZrloLQStqStBIpiyTXxPQKBo5
+         IxSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=y61USB1/SUcg3py8FtuucxuF8UNof2a3ssdHL3nsCLY=;
-        b=yGCSy/pB6yqHITsqx47p/6Cop49rLyLXVh7nNgiUnhrTwzpb41VjEDEQHfefpPrnSH
-         iIur7nMEMWCSvCnzaHXpdS/sUFBxIjyM/vwxdxTEyyYNak4M1IecdH4ZRi7D3JYhMN/M
-         lLaE2SGfsU46N8sJlx9+ekX0/1ZLwzesn9hQ3rwuQE60KPh92NbT3bUlDDkb8rFt9FoV
-         gl8ynLw3giLtwjt81EEPb/3lV1A+KvFs5Byq62vpUQceVdsNhh1uDmpWXnSqwlklazJG
-         Z/4IfotRVZ7gt89UhEHzaAE7GR2DASLT1QTzjwjOfXTlPZIeOcjp4Ju4Ktnkw6QQl4Y9
-         zEIQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=LppOIR9ZmFRBZNwuvu6fjl7ofcQk/QqnRSKrtpEoIHs=;
+        b=1Jjxuk+32z4Iyga913bfc4Ht+7jNrDfhcCJ9w2scPZD4wiI3i+P8ZGL3rIQ3AlTSRz
+         fUkknl3geRbugfiaqof7cvEP/75FXD7CceQV7EYtrKLjG/NjZSRHVfADblHNj5g2tNyi
+         b1duN2b3QKzyiWZhM85WxQK3H9NtbWVubuFGfTBuqQCH8avjOVI0fDx+Sr6knmx738ol
+         11x6MsyFTnDgqiQzKJWnGDlZRej3dITQDxrOf4HZnCszsJ3wnqXXvKh6aO6E/ni7EsRl
+         rTjCjNs5fUetsi5yt7tPWBzYht+K1LmPfzXaCV3KUaGgLBcTOD6IfAqQq9IPjCxTj39Y
+         84FA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=fuVl80GN;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="Qtz1Qdd/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g20si13513700ejm.455.2021.07.05.07.08.14
+        by mx.google.com with ESMTPS id cs15si2287151ejc.470.2021.07.05.07.38.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 Jul 2021 07:08:14 -0700 (PDT)
+        Mon, 05 Jul 2021 07:38:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=fuVl80GN;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:44688 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="Qtz1Qdd/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:33632 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m0PGf-0000zF-D0
-	for alex.bennee@linaro.org; Mon, 05 Jul 2021 10:08:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37178)
+	id 1m0PjY-0005Xe-Rn
+	for alex.bennee@linaro.org; Mon, 05 Jul 2021 10:38:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43216)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m0PGW-0000yg-SM
- for qemu-arm@nongnu.org; Mon, 05 Jul 2021 10:08:04 -0400
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b]:39459)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1m0Pj2-00057A-AQ; Mon, 05 Jul 2021 10:37:32 -0400
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331]:40696)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m0PGS-0001VR-BT
- for qemu-arm@nongnu.org; Mon, 05 Jul 2021 10:08:04 -0400
-Received: by mail-ej1-x62b.google.com with SMTP id ga42so11911761ejc.6
- for <qemu-arm@nongnu.org>; Mon, 05 Jul 2021 07:07:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=y61USB1/SUcg3py8FtuucxuF8UNof2a3ssdHL3nsCLY=;
- b=fuVl80GNalIudAvJj3krN8L1XaZDtWJXxr2Si8Rq4VZb8HBCjgllGmNu+oUQFdY08w
- PPmQkPVaCcZRvPVwOi06qWWxhhwLxIa7xT1CUoFHN3NoFq8KIfcyRbfHcBcT4JfjZ3Uo
- nAbLIotkFkH8suKp6oTUQw4Y9OIhAV/GTyomAMoGVi+07KQByGA070tRymmTEOLzqyHB
- jCAJxKLzoozFF371VAxOdxvBjlOuIsOp+RkInWSX1/1YG2AKWm+pjH2lF7zDbgI/vrPh
- qBrWKjH1sTP3094lqzeHUtVMnGIagFNKmunkJU0qL6iJHaYmMe3Qz6haA9InsQ6mJzQ0
- NwWA==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1m0Pj0-0001Q3-NP; Mon, 05 Jul 2021 10:37:31 -0400
+Received: by mail-wm1-x331.google.com with SMTP id
+ h18-20020a05600c3512b029020e4ceb9588so972204wmq.5; 
+ Mon, 05 Jul 2021 07:37:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=LppOIR9ZmFRBZNwuvu6fjl7ofcQk/QqnRSKrtpEoIHs=;
+ b=Qtz1Qdd/AnidMC7mS1aHPCC6M0/vfsoTKSlqRATd6vYHDvB90+2idLdaOkjm2O1Ier
+ ataQb48jLwhgBw3YLJvsAZqcP/iCJ7RR4vYiJYjMSWy4hk9MZijPqm4y5ViHgA+V8E6h
+ tQejVbEruUizU2obQGOp5YbsAgGBt52qgFFJ5nHWcmdrmWy04opw8BYmkVTukDMsXtIY
+ +E1YL3KC6oI7qr6pBSxNLWRVlrUmpxwO7/daCbNnFFhhyuGbEWQWruq5DY3yOoi/yTeo
+ xp3CALKynQEITqeKb6OSyWVC2foUJp4yOLelXslLLZ9k15dAG8t/eudzkHEBYxIFmlcP
+ /kNQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=y61USB1/SUcg3py8FtuucxuF8UNof2a3ssdHL3nsCLY=;
- b=lgnLD1pOO3lNhUMtMzx9XmweoOUCn2dACqBbaY46Y7LHhFG17sFw2DzWQUn3k7t/V5
- F6wqd4PWMNT5EgZKwrMSvsqX++Mkt4cZ+fT8D27tdoktiPVlls6nnnKJxvynFk5efkU3
- 7/L1w0Zu9L81urhPmkQGatbUucK4l03Yi08S0cDQTZKVdul5ZFeq/53qg/EwkyoMl4Em
- E1Tkk5Dt7xlE7Ckc2C67cfIihtfcBAwdqNDTOxMhmFdvV0xCxE6t1iUX7421rJxyZ2kF
- UzVQGnmNMktGAkgZD+l789VdQZdkhHFhdJzqp5ENM4XOgJrA+SuD73zw2faPjqQhNqDi
- tjVA==
-X-Gm-Message-State: AOAM533Oxx0TrhRBqsAcB2n8hR1AfzBRnJBoquMmb1OnjbC/Zi6hzXTV
- 9SgWVzPlRrfd9yPrekrT5r+7/Vtmr+/1hvt+oQ3IbQ==
-X-Received: by 2002:a17:906:a108:: with SMTP id
- t8mr13438772ejy.407.1625494078628; 
- Mon, 05 Jul 2021 07:07:58 -0700 (PDT)
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=LppOIR9ZmFRBZNwuvu6fjl7ofcQk/QqnRSKrtpEoIHs=;
+ b=Nndiao5SdDnM1vuDCD1P8tcwpglDvdwAayypnEgkGOCITCrbKUYYpFKXddcw5EXCRX
+ okzpSFU/KThUMKEmH1kQrPIbM6wydV9Dj+BjfXxvI79Af/TPRRktavBU5pGm4QZhLC0+
+ SWgIyMnneiMov/0Xry6TV47DSUKFznsnJAtjdu+lvpDdIx7iqzDTDC90WaQbkm4GGLQB
+ arYwRKrgckKdwCOqxfoJDW7hypEbB/0ClDnknDNKN2NSbugXELyboyQDYdp52VLbTaVF
+ ms8oWM64+InAJT924r1G1B6jQGYIFG35DULhvOFTlQ4oPRny4m/0K9a+hClDpp+/vSc4
+ iuFg==
+X-Gm-Message-State: AOAM531K6kqEIPb36OMvJlFgU+2fCrWcNA3vUUVEgPVvuPLPRedC3zeC
+ 2oxCuUdUSYWR/eAThk0QBb8=
+X-Received: by 2002:a7b:cbc5:: with SMTP id n5mr15822033wmi.39.1625495848823; 
+ Mon, 05 Jul 2021 07:37:28 -0700 (PDT)
+Received: from [192.168.1.36] (93.red-83-35-24.dynamicip.rima-tde.net.
+ [83.35.24.93])
+ by smtp.gmail.com with ESMTPSA id z7sm11150318wmi.1.2021.07.05.07.37.27
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 05 Jul 2021 07:37:28 -0700 (PDT)
+Subject: Re: [PATCH 2/3] docs: Add skeletal documentation of the emcraft-sf2
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20210705122011.753-1-peter.maydell@linaro.org>
+ <20210705122011.753-3-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <706f629c-4780-552a-fac0-53ab4002db21@amsat.org>
+Date: Mon, 5 Jul 2021 16:37:27 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-References: <20210630153156.9421-1-shashi.mallela@linaro.org>
- <20210630153156.9421-5-shashi.mallela@linaro.org>
-In-Reply-To: <20210630153156.9421-5-shashi.mallela@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 5 Jul 2021 15:07:20 +0100
-Message-ID: <CAFEAcA-e9-oBgK9wi6DOp5SGGd4vm-3sQY-fFn7HdTM842D1mg@mail.gmail.com>
-Subject: Re: [PATCH v5 04/10] hw/intc: GICv3 ITS Command processing
-To: Shashi Mallela <shashi.mallela@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+In-Reply-To: <20210705122011.753-3-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x331.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -110,60 +120,65 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>,
- Radoslaw Biernacki <rad@semihalf.com>, QEMU Developers <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>, Igor Mammedov <imammedo@redhat.com>,
- Leif Lindholm <leif@nuviainc.com>
+Cc: Beniamino Galvani <b.galvani@gmail.com>, Rob Herring <robh@kernel.org>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: A+k5iE99bZKi
+X-TUID: HHTsC/QxW+T4
 
-On Wed, 30 Jun 2021 at 16:32, Shashi Mallela <shashi.mallela@linaro.org> wrote:
->
-> Added ITS command queue handling for MAPTI,MAPI commands,handled ITS
-> translation which triggers an LPI via INT command as well as write
-> to GITS_TRANSLATER register,defined enum to differentiate between ITS
-> command interrupt trigger and GITS_TRANSLATER based interrupt trigger.
-> Each of these commands make use of other functionalities implemented to
-> get device table entry,collection table entry or interrupt translation
-> table entry required for their processing.
->
-> Signed-off-by: Shashi Mallela <shashi.mallela@linaro.org>
+On 7/5/21 2:20 PM, Peter Maydell wrote:
+> Add skeletal documentation of the emcraft-sf2 machine.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  hw/intc/arm_gicv3_its.c            | 361 ++++++++++++++++++++++++++++-
->  hw/intc/gicv3_internal.h           |  26 +++
->  include/hw/intc/arm_gicv3_common.h |   2 +
->  3 files changed, 388 insertions(+), 1 deletion(-)
+>  docs/system/arm/emcraft-sf2.rst | 10 ++++++++++
+>  docs/system/target-arm.rst      |  1 +
+>  MAINTAINERS                     |  1 +
+>  3 files changed, 12 insertions(+)
+>  create mode 100644 docs/system/arm/emcraft-sf2.rst
+> 
+> diff --git a/docs/system/arm/emcraft-sf2.rst b/docs/system/arm/emcraft-sf2.rst
+> new file mode 100644
+> index 00000000000..9f10b86427a
+> --- /dev/null
+> +++ b/docs/system/arm/emcraft-sf2.rst
+> @@ -0,0 +1,10 @@
+> +Emcraft SmartFusion2 SOM kit (``emcraft-sf2``)
+> +==============================================
+> +
+> +The ``emcraft-sf2`` board emulates the SmartFusion2 SOM kit from
+> +Emcraft (M2S010). This is a System-on-Module from EmCraft systems,
+> +based on the SmartFusion2 SoC FPGA from Microsemi Corporation.
+> +The SoC is based on a Cortex-M4 processor.
+> +
+> +At the moment only the system timer, system registers and SPI
+> +controller are modelled.
 
-> +/*
-> + * This function handles the processing of following commands based on
-> + * the ItsCmdType parameter passed:-
-> + * 1. trigerring of lpi interrupt translation via ITS INT command
-> + * 2. trigerring of lpi interrupt translation via gits_translater register
-> + * 3. handling of ITS CLEAR command
-> + * 4. handling of ITS DISCARD command
-> + */
+Also UART and EMAC :)
 
-"triggering"
+> diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
+> index 0a3ef309472..d316e684106 100644
+> --- a/docs/system/target-arm.rst
+> +++ b/docs/system/target-arm.rst
+> @@ -86,6 +86,7 @@ undocumented; you can get a complete list by running
+>     arm/sabrelite
+>     arm/digic
+>     arm/cubieboard
+> +   arm/emcraft-sf2
+>     arm/musicpal
+>     arm/gumstix
+>     arm/nrf
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 76a2c608d1e..dbbd71958ac 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -1007,6 +1007,7 @@ M: Peter Maydell <peter.maydell@linaro.org>
+>  L: qemu-arm@nongnu.org
+>  S: Maintained
+>  F: hw/arm/msf2-som.c
+> +F: docs/system/arm/emcraft-sf2.rst
+>  
+>  ASPEED BMCs
+>  M: Cédric Le Goater <clg@kaod.org>
+> 
 
->  #define DEVID_SHIFT                  32
->  #define DEVID_MASK                MAKE_64BIT_MASK(32, 32)
-
-> @@ -347,6 +368,11 @@ FIELD(MAPC, RDBASE, 16, 32)
->   * vPEID = 16 bits
->   */
->  #define ITS_ITT_ENTRY_SIZE            0xC
-> +#define ITE_ENTRY_INTTYPE_SHIFT        1
-> +#define ITE_ENTRY_INTID_SHIFT          2
-> +#define ITE_ENTRY_INTID_MASK         ((1ULL << 24) - 1)
-> +#define ITE_ENTRY_INTSP_SHIFT          26
-> +#define ITE_ENTRY_ICID_MASK          ((1ULL << 16) - 1)
-
-This is still using a MASK value that's at the bottom of the
-integer, not in its shifted location.
-
-Otherwise
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-thanks
--- PMM

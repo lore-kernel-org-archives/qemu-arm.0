@@ -1,126 +1,170 @@
-Received: by 2002:ac2:5485:0:0:0:0:0 with SMTP id t5csp2100091lfk;
-        Tue, 6 Jul 2021 05:14:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxO8LuX0WKJQj24U6yIkcLMqcM7ddjGedtLZEpqGuzXgmmOoguPjqG24jwyFVlXQfMq6O0d
-X-Received: by 2002:aa7:c34a:: with SMTP id j10mr14359614edr.86.1625573649488;
-        Tue, 06 Jul 2021 05:14:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1625573649; cv=none;
+Received: by 2002:ac2:5485:0:0:0:0:0 with SMTP id t5csp2129625lfk;
+        Tue, 6 Jul 2021 05:48:00 -0700 (PDT)
+X-Received: by 2002:a05:6000:256:: with SMTP id m22mr18331444wrz.307.1625575680156;
+        Tue, 06 Jul 2021 05:48:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1625575680; cv=none;
         d=google.com; s=arc-20160816;
-        b=TRlYccBOi0BI6UkMHULuJ/g+3py+zyxq5uERL/VFX3NQc+ziKOAZxl/+JsSXoHOw9x
-         S+5SMFYLFaL8DoSHiZIKLoS7hnaG98KsKVWaVjaJgg/wxXYyZn+6zrntmQ/EVWiGLPw3
-         MFO7FzbuDLKcePztNA4ZZZbZwrXKfAePv2nZHqmb9VsKiidrW0HyIkt2c7Azv0Tf36KP
-         tKehf5Dqczllns/NShA2E1aUG8PxFi2YkVKUxo40Hip+MHm5XkwnAd7Wl/gIRTPVwECm
-         bcxUVkxnP0UcOXI7kC3whs5zJr1IY+EVN0Ku6kDV4kMwtuQjnKtskJYcTSuZ6ZzXauKI
-         jRpA==
+        b=i8qAjuZKIJFvA3PKiRrN/MtGfrXUxfAT8S9HBQWaok6w2qx8AGMitB0HqCffzf+127
+         kq/pyGWjkdc6sfe7fvpHBE0EMUVpz0Ap9Z4madmeYt/AFLf+Jchwirj5tbKCV8ymgEyz
+         mTRUuIhQdo9jw/lSG/ICNipUp49sQIYIEfmw5NJuoDzRY9K1KrVA860N4l38/SIlsqKO
+         oZqApttRT84ulC2/W9960qGfG6fkosINIXXtyfPqkBNNkZDH0l5fd27puwB5gbn3aIx/
+         HQsR6oflr29kgHoRuCWRk9OVnug6cagZOUPIJUce0M7/HqIVXsoyJ6p7AY0FDz/jPvb8
+         6Ofg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
+         :user-agent:date:message-id:from:references:cc:to:subject:sender
          :dkim-signature;
-        bh=FZSJ5yDtmPrUJoJ7TeNVxDqQ5Ol+eC5DmPRhJA7vhbs=;
-        b=DK5O8SUp3+aENz1qFxDpDf2S0duCWYiN3IHxlZlV4aXbYgRMeG8g+HGaDcFQiYYdkq
-         18JJ3EVj5qfaJNM45fEOSRQZcR11fAIR14OL3RozWiUjXUEfhm5yFjI/YpskBVMlfCBV
-         w6o8lPnfAebjnZLbXUbd7AeO5cXvdOcy9awGtC2kyM+5jS/CJ6G7MOTSSEpUux9pVtfi
-         A3/vNC2nYDDovZSofcwoxlL5O5Ec616syxccp8JdlmxU3vocuU6Lf7qKM6OKvxwCHs+t
-         x/fmUVGRZp34gqSIWhsIlaT1OZOCAIHtrMV08VMkLWhyiVkBMfs6GKwFdVRNWAhYnBZi
-         Yk1Q==
+        bh=NEhc5WhDYlEEKVlhSzUmANOUr6OiHh9Mh0E8nMqQW6U=;
+        b=bmdQqvYEyKAw4o93XDxTgd6hEk3SF/DrVw0rUsLiPfB+yHLt70AVeGPrZjgfO1VoSt
+         k/+rZz2S8ht9tiXR5lMhsepZuC1gXo0A32k5TU0aoAbuhS/4wHoYGeX6QIF+f2alLnuB
+         nH0psB3gRc9U6wKHTcndPsV+9JfPuA0I41q+c1r65Yrpz4jtJboDoVixlggC4o1+qFBP
+         ZYayapInPDLajzyYhC8yB9qRWwiwpQI5D/Lu0maTHUVK3IbQytjIy988wTC6RjqiXNlA
+         WvxmfnWZOTPw8ZhPs1c/WgVkg4D57KMFq+X8sLQEmvgNK56QWkuNK1uft65qilHmLnoe
+         mrXA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="c+NI/3Xu";
-       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
-        by mx.google.com with ESMTPS id en10si14444177ejc.118.2021.07.06.05.14.09
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 06 Jul 2021 05:14:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qBJ5s8dB;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id b67sor7484356wmb.16.2021.07.06.05.47.59
+        (Google Transport Security);
+        Tue, 06 Jul 2021 05:48:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="c+NI/3Xu";
-       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1625573648;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=FZSJ5yDtmPrUJoJ7TeNVxDqQ5Ol+eC5DmPRhJA7vhbs=;
-	b=c+NI/3Xutb0Hf0kzbnFTMb5nDnNBxq67tfobyxl4HGPbOHn9EfgvFSgALqooGXRkdTw5Y2
-	C9J+sDAN3C7BogU9zTSKsLo0mfsNDwc0c4X696jreoXaMqn6qhdYsdxFKGl04FZ3uCFtUH
-	p9Sw8bkxClk4jhLZZe/0tFXxIJKCxB4=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-501-ZbtrEjQ1OzaqgGnY3yJJ_Q-1; Tue, 06 Jul 2021 08:14:07 -0400
-X-MC-Unique: ZbtrEjQ1OzaqgGnY3yJJ_Q-1
-Received: by mail-wm1-f71.google.com with SMTP id k16-20020a7bc3100000b02901d849b41038so1007957wmj.7
-        for <alex.bennee@linaro.org>; Tue, 06 Jul 2021 05:14:07 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qBJ5s8dB;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=sender:subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=NEhc5WhDYlEEKVlhSzUmANOUr6OiHh9Mh0E8nMqQW6U=;
+        b=qBJ5s8dBix/ei+6rR/Fi/5PkDB8J6MDTafEpTEMru3KoB8fgdZCPWUxonYyjrp+Ijc
+         yGW6wY6y29XYuPmJOTojJv8yUi85vHDhz2gZx5oUJiVMiTW2Z3ofL9jAfXryhIGXQEy6
+         T3dMHNwoW9KepwkcpxmYAP1QOt9o+0wabXHifHtV6MBR0R/vYTQsCF6Q8kwwhHoX4nO+
+         FInEh6+8wCTr/oy7N95L2/Ug/PpLdR9WtCu0mFtSqxcfwn4ZqvWg1Ggw5YFb0yFw8c5h
+         LKvzFYVS9TDA3Oho23Fwyq6yvN0X8AX3eHc0mPgnh/ImCyIgjGggGgn0BVrhjxtb0pu0
+         u+xg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
+        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=FZSJ5yDtmPrUJoJ7TeNVxDqQ5Ol+eC5DmPRhJA7vhbs=;
-        b=JTcXYL3KVfaFwzSYDQWEBQyl6I4frre+PsqPNsF3FAwdnBW39TSaeITZl+7OA1cgsZ
-         XwdmplUDUJI56v3CK3+DuN4VxG9y1EKh0ysqk5mGd14HBHhIyu0+FwkzVumEA3XdaBKS
-         C7pE6ff5IRPtn305e7d6g2eCocy4OwyN8w2GwwJJi6TrAIb5PhisynzVioOGDBVaz0WB
-         tSJwAu2/RH5ALIiFIqt/l4pdiRVXaP7NJLhwSjwVZ8FYZ1/B6JFSJF4/YIBCQeTpKMhZ
-         wjsXkd6qiuGLydsV7gIF2ReUP03QMNMbyJg83DMOZnEFCQB0FkvXQ0r4CM528YBQhoqV
-         3HYA==
-X-Gm-Message-State: AOAM533eDFaxsUSBzkv8sporF0Sm+guKwtGBAZAkcHph8FoO/kOa1FDY
-	k+ZZcTZOAzoP59A4XfgIDFmPWAlvW+tV/OzlvF4p0412vJxQGO6yUZ4Pwj7MdLDd2RSOmduHtwr
-	3ZT6wSXy7GsqHbZiM
-X-Received: by 2002:a05:600c:198c:: with SMTP id t12mr19801533wmq.140.1625573646167;
-        Tue, 06 Jul 2021 05:14:06 -0700 (PDT)
-X-Received: by 2002:a05:600c:198c:: with SMTP id t12mr19801525wmq.140.1625573646036;
-        Tue, 06 Jul 2021 05:14:06 -0700 (PDT)
-Return-Path: <philmd@redhat.com>
+        bh=NEhc5WhDYlEEKVlhSzUmANOUr6OiHh9Mh0E8nMqQW6U=;
+        b=qF4lIMJBBrsmU5R68RzSM+KOJKFkThU29G7iMPw5CS83WyqK6iv7+xeDfRektqznD8
+         MlvfnCPbhmxttkBXDOVHgrmqlda6PiRDowNtR12BHcYtoje0wcQgkI676Wr3eeBETghm
+         bEoQufQqwTVDAOTgmBIATme4NjTyp4KyP/blVaK6Ia+PmdJOipMvHH5hkZiXbOlP5lpP
+         AdygRvRlfAPaqscLt4dbo/jYzKSDRbmqadZSs/OVtnpBD2LdBoxTTtQxBg23MqOjvuvh
+         xB/inl7RAshzxgL7uyERDYmZyb3QM5MKumfPnALoHt5Mf4XCwFSdsBGxXGpYZkzr9FFd
+         lmFw==
+X-Gm-Message-State: AOAM5336EKB3JUon/C9teaZaUHTcIJVwiaWnhBkjDg/q3VnmPn5evqPR
+	7JyAnZM6gjRPNnwV++yz/b4=
+X-Google-Smtp-Source: ABdhPJzA7h0Ajc7fujgjB/Xv1LlickoIHZuPkeEk8lL+ygfFTP6GlWEZlOHZ24Au2tMaRm7f2Lw/QA==
+X-Received: by 2002:a05:600c:b48:: with SMTP id k8mr507814wmr.180.1625575679578;
+        Tue, 06 Jul 2021 05:47:59 -0700 (PDT)
+Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from [192.168.1.36] (93.red-83-35-24.dynamicip.rima-tde.net. [83.35.24.93])
-        by smtp.gmail.com with ESMTPSA id b12sm12441008wrx.60.2021.07.06.05.14.04
+        by smtp.gmail.com with ESMTPSA id h21sm14983105wmq.38.2021.07.06.05.47.57
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 06 Jul 2021 05:14:05 -0700 (PDT)
-Subject: Re: [PATCH v1 3/5] hw/arm: move CONFIG_V7M out of default-devices
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, thuth@redhat.com,
- Richard Henderson <richard.henderson@linaro.org>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>, pbonzini@redhat.com
+        Tue, 06 Jul 2021 05:47:58 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH v1 1/5] meson: Introduce target-specific Kconfig
+To: Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Cornelia Huck <cohuck@redhat.com>, David Hildenbrand <david@redhat.com>,
+ Bin Meng <bin.meng@windriver.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Laurent Vivier <laurent@vivier.eu>,
+ Max Filippov <jcmvbkbc@gmail.com>,
+ Alistair Francis <alistair.francis@wdc.com>, Marek Vasut <marex@denx.de>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ "open list:PowerPC TCG CPUs" <qemu-ppc@nongnu.org>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Richard Henderson <richard.henderson@linaro.org>, Greg Kurz
+ <groug@kaod.org>, "open list:S390 general arch..." <qemu-s390x@nongnu.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
+ Michael Rolnik <mrolnik@gmail.com>, Stafford Horne <shorne@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ "open list:RISC-V TCG CPUs" <qemu-riscv@nongnu.org>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Chris Wulff <crwulff@gmail.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ pbonzini@redhat.com, Aurelien Jarno <aurelien@aurel32.net>
 References: <20210621152120.4465-1-alex.bennee@linaro.org>
- <20210621152120.4465-4-alex.bennee@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <cb956777-828c-0b29-66ca-f356d6495fa8@redhat.com>
-Date: Tue, 6 Jul 2021 14:14:04 +0200
+ <20210621152120.4465-2-alex.bennee@linaro.org>
+ <c3d33a80-b3bb-5aa5-50c7-7c1a379814ba@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <8d018805-8e1f-4c1e-b1a4-45a34c8d2e63@amsat.org>
+Date: Tue, 6 Jul 2021 14:47:56 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <20210621152120.4465-4-alex.bennee@linaro.org>
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <c3d33a80-b3bb-5aa5-50c7-7c1a379814ba@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: 8vELc4NwwCL2
+X-TUID: 54CkiBnCsEEj
 
-On 6/21/21 5:21 PM, Alex Bennée wrote:
-> We currently select CONFIG_V7M for a bunch of our m-profile devices.
-> The last sticking point is translate.c which cannot be compiled
-> without expecting v7m support. Express this dependency in Kconfig
-> rather than in default devices as a stepping stone to a fully
-> configurable translate.c.
+On 7/6/21 12:52 PM, Thomas Huth wrote:
+> On 21/06/2021 17.21, Alex Bennée wrote:
+>> From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>>
+>> Add a target-specific Kconfig. We need the definitions in Kconfig so
+>> the minikconf tool can verify they exit. However CONFIG_FOO is only
 > 
-> While we are at it we also need to select ARM_COMPATIBLE_SEMIHOSTING
-> as that is implied for M profile machines.
+> s/exit/exist/ ?
 > 
-> Acked-by: Richard Henderson <richard.henderson@linaro.org>
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+>> enabled for target foo via the meson.build rules.
+>>
+>> Two architecture have a particularity, ARM and MIPS:
+>> their 64-bit version include the 32-bit subset.
 > 
-> ---
-> vconfigs
->   - cherry pick from re-factor
->   - minor tweak to subject line
-> ---
->  default-configs/devices/arm-softmmu.mak | 3 ---
->  hw/arm/Kconfig                          | 3 +++
->  2 files changed, 3 insertions(+), 3 deletions(-)
+> Why do you mention these here, but not x86, Sparc, PPC and RISC-V which
+> also have 32-bit and 64-bit variants?
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Because we consider them as different targets, they don't include
+(kselect) the subset.
+
+> 
+> The patch itself looks fine to me, so once you've clarified the commit
+> message:
+> 
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
+> 
+> 
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> Message-Id: <20210131111316.232778-6-f4bug@amsat.org>
+>> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+>>
+>> ---
+>> vajb:
+>>    - removed targets that no longer exist
+>>    - reword commit message to show why we need the Kconfigs
+>> ---
+
+>> diff --git a/target/arm/Kconfig b/target/arm/Kconfig
+>> new file mode 100644
+>> index 0000000000..3f3394a22b
+>> --- /dev/null
+>> +++ b/target/arm/Kconfig
+>> @@ -0,0 +1,6 @@
+>> +config ARM
+>> +    bool
+>> +
+>> +config AARCH64
+>> +    bool
+>> +    select ARM
+
+>> diff --git a/target/mips/Kconfig b/target/mips/Kconfig
+>> new file mode 100644
+>> index 0000000000..6adf145354
+>> --- /dev/null
+>> +++ b/target/mips/Kconfig
+>> @@ -0,0 +1,6 @@
+>> +config MIPS
+>> +    bool
+>> +
+>> +config MIPS64
+>> +    bool
+>> +    select MIPS

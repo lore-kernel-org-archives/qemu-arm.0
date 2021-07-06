@@ -1,110 +1,112 @@
-Received: by 2002:ac2:5485:0:0:0:0:0 with SMTP id t5csp2236578lfk;
-        Tue, 6 Jul 2021 07:51:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw/9XFyQvDM7WUJHLvGkiiPttzutdY4rRDXqKtP8Q/xkeY2AmDWwrpf7WEYxjF4u3LpWozH
-X-Received: by 2002:a17:906:32d8:: with SMTP id k24mr19110845ejk.422.1625583111338;
-        Tue, 06 Jul 2021 07:51:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1625583111; cv=none;
+Received: by 2002:ac2:5485:0:0:0:0:0 with SMTP id t5csp2521524lfk;
+        Tue, 6 Jul 2021 14:25:26 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxBOJZOeMesk6XOBLxLFiCQxW/rakyYxDHHob3q4Pxdvk2mc9FPAJgwPFfhu84jo1jigewF
+X-Received: by 2002:a05:6102:38cd:: with SMTP id k13mr17095986vst.44.1625606726660;
+        Tue, 06 Jul 2021 14:25:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1625606726; cv=none;
         d=google.com; s=arc-20160816;
-        b=hrUUgiYc+bqRo5DT33zmVrdPSo3bqpXasmEl2v2FFbVw3RjObQ7xmbWmFvYOJtJriq
-         1oysIw7pfslXccI1sHTLWfERQToP5T2Tb/mBzi7bGqthvbu0TLYej0xtnu6seyVlqwjJ
-         MhdO1v7d+DnQsDi5r47kcPlkDar9/riV4brLj9ttF9DQBSPeD0qR2g1lSOzDwj8b0cE1
-         HXjWEAWUIAcnVCD3IR0hoFoVpqR+H6zglIcNIMU/k7roTkuI4SQuOdoZq9rx9u8kCq+B
-         TJoPnc6ZF1lH3/r+2iFKvGkT+F17abJNDnyBCnnKAnjQgfvGCDuMpuxOJs1t9X/7iYWi
-         KtRw==
+        b=eKE5DMWG7q+Fq/rYLr/1LfuzOmnyWJzRlfVy/4ocvTlXGFDHuqdZKyTUfIfktC/zti
+         Hac7ijNIFGB8er1wd9eGcL/mB28yJ9K/avRdsY/IhwFB0YF5SXFtmHZPMB+bmKu1O7uo
+         7NUbpu8+NERKLEhhoV6Tt+MskYTHiNYBBX0z/vmoWfmCzCSSO5dCLZI/V9E/rIOGj0Pw
+         s1FzIbylT06JgI9xhD+6RZtFWbxdwrBCg93sZ6I/hHMYK/7osTo7LbRecGdzTnVvgsiR
+         KMz/UZyUKSCH+iwSK4+f8aKPlRDG4ltrKrvP/vzJjyueVIg8DhG7TL0f1TvmIRmj3Bs2
+         1udg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=BEJp0TISYVu0JuDYCxLPKlT0FeibnwjPK9OCXGU6RXc=;
-        b=O5ztTQYBGWhWRY1/zA4JI4i/mXOWFOGqVTnVw5cfvD2ZZ75LktHlghu1fRMfbtQcZ5
-         JziN5MUYn4uebT3tb82KaasEkNLNdCvIShK71UHM66yvnNnUO6rTYzMxAXwXdZzVCBFy
-         kcZI976oZu9+FMb0qb/YVTkcxyKwqrh7bFvgGpp22XLZcQ9Ixwb3UG6K2TEO0K6Esh4c
-         sNJFc9g8u1sau0yGmBz0LnU956ZZO2NB6dFZTfO/C4Buc/ZlOhsIDxO4NO35APTxtk8s
-         CUeD0oub8i6YMcINbO/dgoabVt66AfLR7WWUGLBHxfqRNU7Ckmp3Wa4WQYM0d61HRV24
-         /Pzw==
+        bh=7VYZNGbFoL5cGqEzswc/n3mhhPontMBo01UGOUHMrXg=;
+        b=gxYsWrlE0NjjLUX1hBWD5JKujYFKJftvd3TOaJPaucppr9l3s1vskLS3dO1/JwTAdW
+         XZp3843zzMaw4Sf6p7v39NcE7a9dzMU79+uDyvDasiHX2Z08P91cuuT4PZVM6Myw3rBd
+         +LnNoTT3D3Lgxyr+VX7AOX8a0tceYjV6n1FSWWEr4LxV8u4zyJuyJgWCfrOb1HV1VSA9
+         bwNqjMHWbnNtBMaJAKpuSkm/A1A/Nt6tU9pvTBdNBUQ31xyg5PLJ8D/lUhDIPfddXBTd
+         wpAyVay7AJVo9va0Rg8uZ/bVZywCurRP5AmVqn0q1lzQl6IhR/P9Zq8UXwZ7Sk5+F4DQ
+         20cw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="fa/qlLQD";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=JcSQvuBI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z20si14804390edc.592.2021.07.06.07.51.51
+        by mx.google.com with ESMTPS id x8si11720833vsr.24.2021.07.06.14.25.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 Jul 2021 07:51:51 -0700 (PDT)
+        Tue, 06 Jul 2021 14:25:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="fa/qlLQD";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=JcSQvuBI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:35990 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43578 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m0mQQ-0004RE-DX
-	for alex.bennee@linaro.org; Tue, 06 Jul 2021 10:51:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59600)
+	id 1m0sZJ-0005qs-Ut
+	for alex.bennee@linaro.org; Tue, 06 Jul 2021 17:25:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57700)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1m0mQG-0004Qt-6L; Tue, 06 Jul 2021 10:51:40 -0400
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333]:52799)
+ id 1m0sYu-0005q1-V5; Tue, 06 Jul 2021 17:25:00 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b]:39489)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1m0mQE-0006CI-JF; Tue, 06 Jul 2021 10:51:39 -0400
-Received: by mail-wm1-x333.google.com with SMTP id g10so7921648wmh.2;
- Tue, 06 Jul 2021 07:51:37 -0700 (PDT)
+ id 1m0sYt-00057k-5N; Tue, 06 Jul 2021 17:25:00 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id f17so582916wrt.6;
+ Tue, 06 Jul 2021 14:24:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:references:from:cc:message-id:date:user-agent
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=BEJp0TISYVu0JuDYCxLPKlT0FeibnwjPK9OCXGU6RXc=;
- b=fa/qlLQDZvfs162oZMv97Si8iDufKQfGIeL80pAQ3Ql4R32Zr3W8/0tr/kbi7Y0s46
- +1QjxOS56Lp5VxDvst6d66SZQmdizs+qKo9R1Hzh4dTqgJmUg8neX8c7FUWkofjUc4Rz
- K+9TFiquPZCzqH725uzk8iq65tOqUJnwconEVs7QWJIoFd0EKtdgkO7uamrbLpkUgkkC
- dEyS0CmJgEFEYX5eOozYR3bI72iR/vcXb3oP5UgIr5znXQfJm36UpcjrZv9v0Fiq2YHG
- eTfeptqCWjTc+X1cNLbY1mK9En1eYaVCy5REQ/QqTrH/vG257jAKltGeOU2xwXiys1xw
- aXBQ==
+ bh=7VYZNGbFoL5cGqEzswc/n3mhhPontMBo01UGOUHMrXg=;
+ b=JcSQvuBI1v0i5DKpWKpIWHsWKOUqp+hstBzLeThBGOUgM4R0nN3VSSOzTYv4M2i5ct
+ 4zxl0ze1uP9cbi7xOVzqrvwACesCigcX/+zEAFd586rvBpAOUTOc+m9soJ4IdzSy94NX
+ CEI/iiVzFIsDd/QdlfimDnt8E+m0st2xrnSdLGMbXbPX40+58ygLtOvJChtplKDMs6bQ
+ iIzTon8Y4j/lbF/v9T0UEpE5DXvLfGNbyllyL9ampxsuFDxB2fNrnCRlxhy8F155OQ8T
+ 79s6gcBSgK+mvtAIWp4H91etFxghg+XvdDzMHGFfD3wqbk3eWYrT1c7ViphwOod65bS4
+ pu1A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:references:from:cc:message-id
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=BEJp0TISYVu0JuDYCxLPKlT0FeibnwjPK9OCXGU6RXc=;
- b=XcpLkq/ikazCVFhpDWxT2zz7jIl7b1QprH7vC5StKmAh9bwNZBVcWYKmTkqfnJW4ul
- j8Ks8UDwWADLIBfNVBHKKGGI9hMgADB9HQjbtBDyiIZ00J1w9UowBT0ZDAlyDxbkX4uU
- SPzhmG2PV/XDjkAl3bTmMX/X/B+G0WRGC8kwYhqT159zYUR2YxO+vzxy87Z6rJYcaafl
- 0+kZosF53lZmry+ZGXre6LhsJT7GuzygyERKECBssDDBd8VFjT7s63NnWEvo0cbJdvhC
- qlL7pek3NW5BcFP4aInkJrn2dQYYFxRXi6A53YmCQ6jl9OCClsg7+H17Wx7ID6PWK++B
- IvOQ==
-X-Gm-Message-State: AOAM530h69ZSKRwYDX++RuST5IJUbYbmB50X5PPV0HnZOOxNB1xXi//3
- bvNUnhccpsF2/cqKAqxYgdcIL3kvI1Y=
-X-Received: by 2002:a7b:cf2f:: with SMTP id m15mr303502wmg.33.1625583095357;
- Tue, 06 Jul 2021 07:51:35 -0700 (PDT)
+ bh=7VYZNGbFoL5cGqEzswc/n3mhhPontMBo01UGOUHMrXg=;
+ b=Cdc2o84klh7U9D+ymEyw1gigKWJpuDoy7aaa9CfS0ul8v7AjCAl1xK945BurZ84j7j
+ Vdd5G9CIm48BwuNcusj5n89vKo2cAQYLfsRKiqyK63iBIEkqPK+NhPPg72NSh8UDNRR6
+ sTtLtSpHypYYV01rfx4qBzQEZ++k7WztY82QgTdqonlJAFnuxbKVpfJABNhtoCujExNQ
+ kRLFY0O/mSXR/ERUW1tkl4x/3FJUIvhZ2pLTuXRZIFLfjGnLzNAUuYYVKQNR5Ak555Fl
+ TZVhfaFj+YC5sZic+pkMh3zc8v+ebeeE7atbTILUgSOPcPUFAxAUffrS2B4NEuLkxKyt
+ in9w==
+X-Gm-Message-State: AOAM532uxLFb0WFEmXx0TkpbEbIMF5ajiaDBIqiez3gANwx0ASNtC+bs
+ YvjlPmZCLer3CL0NwjZdz58=
+X-Received: by 2002:a5d:5701:: with SMTP id a1mr23842504wrv.216.1625606696848; 
+ Tue, 06 Jul 2021 14:24:56 -0700 (PDT)
 Received: from [192.168.1.36] (93.red-83-35-24.dynamicip.rima-tde.net.
  [83.35.24.93])
- by smtp.gmail.com with ESMTPSA id r4sm18026139wre.84.2021.07.06.07.51.34
+ by smtp.gmail.com with ESMTPSA id 12sm4378009wme.28.2021.07.06.14.24.55
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 06 Jul 2021 07:51:34 -0700 (PDT)
-Subject: Re: support for raspberry3/3B/4B
-To: =?UTF-8?B?5q635Yas?= <yindongbest@126.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-References: <4417b006.b29.17a79788175.Coremail.yindongbest@126.com>
+ Tue, 06 Jul 2021 14:24:55 -0700 (PDT)
+Subject: Re: [RFC PATCH v2 1/7] hw/misc: Add device to help managing aliased
+ memory regions
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+References: <20210419094329.1402767-1-f4bug@amsat.org>
+ <20210419094329.1402767-2-f4bug@amsat.org>
+ <2b3a6aec-aef9-6f31-1537-310757d6aa83@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <16a7ca76-531a-39a4-36e2-dce5995e29aa@amsat.org>
-Date: Tue, 6 Jul 2021 16:51:33 +0200
+Message-ID: <b9dba106-de0e-54d7-da9a-1519cd71b9fd@amsat.org>
+Date: Tue, 6 Jul 2021 23:24:54 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <4417b006.b29.17a79788175.Coremail.yindongbest@126.com>
-Content-Type: text/plain; charset=gbk
+In-Reply-To: <2b3a6aec-aef9-6f31-1537-310757d6aa83@linaro.org>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x333.google.com
-X-Spam_score_int: 9
-X-Spam_score: 0.9
-X-Spam_bar: /
-X-Spam_report: (0.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, MIME_CHARSET_FARAWAY=2.45,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42b.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -118,35 +120,94 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>
+Cc: Stephen Checkoway <stephen.checkoway@oberlin.edu>, qemu-block@nongnu.org,
+ Peter Xu <peterx@redhat.com>, David Edmondson <david.edmondson@oracle.com>,
+ qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 47zfK8W4sVm1
+X-TUID: 9emJv2o8gIEE
 
-Hi,
+On 4/22/21 3:33 AM, Richard Henderson wrote:
+> On 4/19/21 2:43 AM, Philippe Mathieu-Daudé wrote:
+>> Not really RFC, simply that I'v to add the technical description,
+>> but I'd like to know if there could be a possibility to not accept
+>> this device (because I missed something) before keeping working on
+>> it. So far it is only used in hobbyist boards.
+>>
+>> Cc: Peter Xu<peterx@redhat.com>
+>> Cc: Paolo Bonzini<pbonzini@redhat.com>
+>> ---
+>>   include/hw/misc/aliased_region.h |  87 ++++++++++++++++++++
+>>   hw/misc/aliased_region.c         | 132 +++++++++++++++++++++++++++++++
+>>   MAINTAINERS                      |   6 ++
+>>   hw/misc/Kconfig                  |   3 +
+>>   hw/misc/meson.build              |   1 +
+>>   5 files changed, 229 insertions(+)
+>>   create mode 100644 include/hw/misc/aliased_region.h
+>>   create mode 100644 hw/misc/aliased_region.c
+> 
+> Looks reasonable to me.
+> 
+> 
+>> +    subregion_bits = 64 - clz64(s->span_size - 1);
+>> +    s->mem.count = s->region_size >> subregion_bits;
+>> +    assert(s->mem.count > 1);
+>> +    subregion_size = 1ULL << subregion_bits;
+> 
+> So... subregion_size = pow2floor(s->span_size)?
 
-On 7/6/21 3:39 AM, �� wrote:
-> Hi team of qemu
-> I see the qemu6.0 has supported for raspberryPick 2B. but i want use it
-> for raspberrypi 3/3B/4B. So can you tell me about raspberrypi 3/3B/4B plan ?
+No... should be subregion_size = pow2ceil(s->span_size).
 
-The raspi3 is supported (since QEMU v2.12):
+> Why use a floor-ish computation here and pow2ceil later in
+> aliased_mr_realize?
 
-$ qemu-system-aarch64 -M help | fgrep raspi3
-raspi3ap             Raspberry Pi 3A+ (revision 1.0)
-raspi3b              Raspberry Pi 3B (revision 1.2)
-raspi3               Raspberry Pi 3B (revision 1.2) (alias of raspi3b)
+I missed it :)
 
-See https://qemu-project.gitlab.io/qemu/system/arm/raspi.html
+> Why use either floor or ceil as opposed to
+> asserting that the size is in fact a power of 2?
 
+Unfortunately not all memory regions are power of 2 :(
 
-The raspi emulation is mostly contributed by hobbyist, so there
-are no precise plan, it depends of their time / motivation.
+See for example the armv7m_systick device (size 0xe0).
 
-What would be your use case?
+> Why must the region be
+> a power of 2, as opposed to e.g. a multiple of page_size?
 
-By the way anybody is welcome to contribute patches :)
+I/O regions don't have to be multiple of page_size... See
+AVR devices for example:
 
-Regards,
+(qemu) info mtree
+address-space: memory
+  0000000000000000-ffffffffffffffff (prio 0, i/o): system
+    0000000000000000-0000000000007fff (prio 0, rom): flash
+    0000000000800000-00000000008000ff (prio -1234, i/o): I/O
+    0000000000800023-0000000000800025 (prio -1000, i/o): atmega-gpio-b
+    0000000000800026-0000000000800028 (prio -1000, i/o): atmega-gpio-c
+    0000000000800029-000000000080002b (prio -1000, i/o): atmega-gpio-d
+    0000000000800035-0000000000800035 (prio -1000, i/o): avr-timer8-intflag
+    0000000000800036-0000000000800036 (prio 0, i/o): avr-timer16-intflag
+    0000000000800037-0000000000800037 (prio -1000, i/o): avr-timer8-intflag
+    000000000080003f-0000000000800041 (prio -1000, i/o): avr-eeprom
+    0000000000800044-0000000000800048 (prio -1000, i/o): avr-timer8
+    000000000080004c-000000000080004e (prio -1000, i/o): avr-spi
+    0000000000800060-0000000000800060 (prio -1000, i/o): avr-watchdog
+    0000000000800064-0000000000800064 (prio 0, i/o): avr-power
+    000000000080006e-000000000080006e (prio -1000, i/o): avr-timer8-intmask
+    000000000080006f-000000000080006f (prio 0, i/o): avr-timer16-intmask
+    0000000000800070-0000000000800070 (prio -1000, i/o): avr-timer8-intmask
+    0000000000800074-0000000000800075 (prio -1000, i/o): avr-ext-mem-ctrl
+    0000000000800078-000000000080007f (prio -1000, i/o): avr-adc
+    0000000000800080-000000000080008d (prio 0, i/o): avr-timer16
+    00000000008000b0-00000000008000b4 (prio -1000, i/o): avr-timer8
+    00000000008000b8-00000000008000bd (prio -1000, i/o): avr-twi
+    00000000008000c0-00000000008000c6 (prio 0, i/o): avr-usart
+    0000000000800100-00000000008008ff (prio 0, ram): sram
+
+> Or just the
+> most basic requirement that region_size be a multiple of span_size?
+
+OK.
+
+Thanks for the review! Now I need to fill the documentation part :/
 
 Phil.

@@ -1,138 +1,382 @@
-Received: by 2002:ac2:5485:0:0:0:0:0 with SMTP id t5csp2528259lfk;
-        Tue, 6 Jul 2021 14:37:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyXMg90WdRtQC8j4WmZJLVzsoaojjmDHKrMalxxJh2l6KUCqfKsfnQwSX8rKY7FMabT7QNq
-X-Received: by 2002:a67:e252:: with SMTP id w18mr17656623vse.9.1625607422518;
-        Tue, 06 Jul 2021 14:37:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1625607422; cv=none;
+Received: by 2002:ac2:5485:0:0:0:0:0 with SMTP id t5csp2602709lfk;
+        Tue, 6 Jul 2021 16:49:43 -0700 (PDT)
+X-Received: by 2002:a63:515f:: with SMTP id r31mr23054196pgl.406.1625615382833;
+        Tue, 06 Jul 2021 16:49:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1625615382; cv=none;
         d=google.com; s=arc-20160816;
-        b=c/+lSk1DyLMD2hRGAKYgULtUt+lfy4H+Bzf3x2DsOljSyfUnlRsEXaml9iyfsV0cOq
-         dmD3TqJiDC58T3/cG58dUoPkZqyAkykeP52ABI60JbIafp19fRu768yosBDQZGygn0wD
-         8J2t4RNnfZd8Q6G+x5eXNpmDg25AlTvUchKDEWd6Ef8ysyzgXcCqVGB/eoobu1Dw9Dz7
-         UGFVlD4KslEpvC/gDBsSCPkBGkkncO/ljo0jsMUUGjxCoYTduSEBat1ZMRaejP/X8Fvy
-         0MXfWw30ZXmz3PGgLMVy0g9jJVaaq69uFa932Yet8dD1Y39/owajeyfNi5H3FgOYmPex
-         hVbg==
+        b=wc56IjYNBg3wWWhqBRJcip6fq6A50+iktEOPAc+YTVDiGumcsks0vVuvtMV2LUfyAl
+         lrVPx4+3WftrUFLpQw0cc4wDlNQyu24lcH4CYJdtN3/VcK0ojend+Nvzctb5tWqQfGDa
+         z1SX8DDnIDqca1ktMFbl8kfsZTZu7dMLw+45uorJazwCf30qJ55VxkLswHJIjLbnr0Rz
+         +Tu+bq32Q2mv7o85yedNFmqFOO0u3OOQkyyw1sSdowIzYsrqIWfmwOJlU2qYF64i3/lj
+         CM2pEtyge8p/I9ZElQxwlJnGwAhNNA7QOPp8vtNqslaJgg9ilZN/FP779y571ZpymMlU
+         Dhqg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=/xyQ+8xWq9WNDxU0P4YSxCX5JZV2CK7DEzY6bJuna8s=;
-        b=qmsd9Jh96JG8dGMGfd3KXAN04J1YskSlXIBQt0a/3OlY6/dbqjUsmOBfJIWfh9pQ/8
-         FHipz6eT8Qn0PduvoFqG0/sfl/uPzO7cfJd4KBGB42jBfKRM6yc+hhTHy8y1YHbPQr5C
-         e/6Q3b25Fd1FAKkt/d1z0p4znUF39SbxayFoRV5/Mo6p7PWQNMI53q7X5QlNNCyyiR5/
-         JncewTXVLLyAdq3DtZ5qR/DdLXravoNn3u7pEDcrWpLcN1117Uw75OGtD0f5FCzKR9XK
-         2imgckLvd663zu/eHYMrkWJARhaq11Id+QL7bSzVxfKx9qFNedswd4iW3nn4rBPyMOtK
-         ZNlg==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=hwVQg6JfrKcWBzKjLQvWYej+HfhSntpRLUvINIA96YI=;
+        b=Ewkm/xZt90K328jOLfj+sz4us3/hlkwK10gW6ODnPCvYBd1Nr+dwj9fMmENlVW0VX1
+         xdPVsYR0sdf0z1LoROVMH4tMMz/FW3nR+uaL+y52JLblo007xI2jZisPK0ROusksVZv7
+         /BAReCgS/FZM5GaawFXJJjit9B5I91z5O9tneGXdGva+vLTLavOxUCZRifXIIxJ5ORJ8
+         QiX8j4S+Y08nAaLW+SE1JFYt9ZEYqu1KcJp7AZ5K3O6AGym9tK7eLisxNrz98PnCz4PO
+         zLbFYtL+aVfVnEGNgEiA+rccgk9gnM4LHVMrm3oN1cqf+Hj0vkvr0MtfXiQEWP8FLurP
+         JQrg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=igFpbRdX;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n141si7022361vkf.71.2021.07.06.14.37.02
+       dkim=pass header.i=@linaro.org header.s=google header.b=CG31aZ1Q;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id c21sor25451pfv.62.2021.07.06.16.49.42
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 Jul 2021 14:37:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 06 Jul 2021 16:49:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=igFpbRdX;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:53242 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m0skX-0004Xz-4c
-	for alex.bennee@linaro.org; Tue, 06 Jul 2021 17:37:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59984)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1m0skK-0004XZ-0v; Tue, 06 Jul 2021 17:36:48 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d]:44981)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1m0skI-000630-Fg; Tue, 06 Jul 2021 17:36:47 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id t15so586426wry.11;
- Tue, 06 Jul 2021 14:36:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=/xyQ+8xWq9WNDxU0P4YSxCX5JZV2CK7DEzY6bJuna8s=;
- b=igFpbRdXB4/EwVwKqsGN1dG/3i72dH9w2y/JYYv8SSo8DYBt9aZG5meU5sJAfJj2iG
- ZmX4G+yp/87YySNubjG2/WjjJPpAYzE78zMpdTeQzVmZjGgK3mbx4mIpaKGbekywxoht
- AzVm3/gW79fLIGZ5LHEwb78BngEUsXoR4oAJSt4lTniMD/ZVBlcHf7poK2j1URRxFDjg
- wUFCV1vtRkBJZvRT08vzNbkQ6eFHCsrUpp1OsbfVrGRzXXIhotrPjNOj2EH8EHAh9dlQ
- VbznE2KkGcX3edXTNg2IqSHE+qx+CmRLEuJQ3CLwx78f0h+CMk+LmvFc8x/+sNM919Nv
- CnQA==
+       dkim=pass header.i=@linaro.org header.s=google header.b=CG31aZ1Q;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=hwVQg6JfrKcWBzKjLQvWYej+HfhSntpRLUvINIA96YI=;
+        b=CG31aZ1Q1UoD/nk2lA8WNWHRZAyBMyGxO4pTT318c6mRXTbOBGpkdQi+WyIPCezNrB
+         AXny0prqngMOX18DMhr5xMHaSv2L7ht+hfTujQi60LxDdJRv+9IxoGzbjJjoO+BF354p
+         1OF0RYLKoXkwTlxEX4BmlN73QMPHaDLYrZ3w8HfjFx1oh5MWfTwbCxhsdIpAohQ4F5Bu
+         +v8g5bCHqXtvx+FzjNfFa6zlEzdyetG+PMedG5WKj4SzXaq89YORXuP1IBHNtMEHnUtA
+         a4YqFUVmJOBBFeeWlej54nLiogkYPoubnhLGhjOWcoT0YUJdPUPf+gQbqt3ECyDeTAuy
+         nn8Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=/xyQ+8xWq9WNDxU0P4YSxCX5JZV2CK7DEzY6bJuna8s=;
- b=dSAo9/9WxQckA2tkEg1qgBf+3tlGy5n2gpgoHgm7wfEjxf4ubpCJzar5rk7+ICOO7H
- osYsl/GXHucB3JYA1DENCL68tTPJRKa0yLe+7nS4r4aqB/ydvYNzeOkW7rmJ3gGHxC2N
- KyOEAH7t/w6M7sKrMKpK6Lcmt12HRg/T8KELpMj9i1J/aKQfx6E7lqWOTgnV8vxR47qp
- ltRUR8r+TpUoD2kwpPc0VeiaGJKBvKs1vZqoefsDblVSZdzJEunPT7CRIPYOMDXS409P
- GN5w0Fh63qQ/c5OaNlmCwDuItbTSDzf3B7cx0aksfZTo6Xlm7FEq5hCKREoBf4ZNlBCX
- BO6g==
-X-Gm-Message-State: AOAM533BNhkJBM8/Wqh0MBeg+o4Kx+BmuOXOIXRm2fbIKoi1jtara3uq
- TjoQmnR7AmD3mbgPQ2G/KjShmaSi0ck=
-X-Received: by 2002:a05:6000:12cf:: with SMTP id
- l15mr23911183wrx.24.1625607404129; 
- Tue, 06 Jul 2021 14:36:44 -0700 (PDT)
-Received: from [192.168.1.36] (93.red-83-35-24.dynamicip.rima-tde.net.
- [83.35.24.93])
- by smtp.gmail.com with ESMTPSA id r13sm7602921wrt.38.2021.07.06.14.36.42
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 06 Jul 2021 14:36:43 -0700 (PDT)
-Subject: Re: [trivial PATCH 1/1] hw/intc: Improve formatting of MEMTX_ERROR
- guest error message
-To: Rebecca Cran <rebecca@nuviainc.com>, Michael Tokarev <mjt@tls.msk.ru>,
- Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-References: <20210706211432.31902-1-rebecca@nuviainc.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <8663abbf-8cee-e144-de6e-b5e80634935e@amsat.org>
-Date: Tue, 6 Jul 2021 23:36:41 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=hwVQg6JfrKcWBzKjLQvWYej+HfhSntpRLUvINIA96YI=;
+        b=lGkyZsOJfvvyThOP5zosnLZCwtcsJ2U/KqvHKdX6DePdYONJOPmbjrahM2yA5lsGGk
+         3hevFiUC29Hbs3eQFGcv7ufxsONUPRxDmDPeLJtHx56C3t86s881qjY5M5PllisjkbjQ
+         5SEW6w5cmj83DZkB4GdupFHQ5huTvagJSm0833kpr3KB0l7ukKSCsz4dF2i5wP64+edA
+         7DU2uY7FcStyMaByloCDLc7HvXO9ktBPk14eosrpWIBvoid8FbOjuCOpKFR+SuyVUTmD
+         7A1ZrQ/Nz3w1mWwnbc/xFWU6q4Ob+0uddwTMGRFssxnhCiKPp6B5ivjpV+i5SpMzfSzm
+         opcA==
+X-Gm-Message-State: AOAM533UeWmisQCMC2Evsa/WMQch+2IaILnKIGFe3dSO+ouHO0S1vyXJ
+	Q9dvJnfux7IbIO+/ZVFG0491cC5Y
+X-Google-Smtp-Source: ABdhPJysAH1REYD6lBTqv36FxjoihfPPEaVgsJSF3tGJNJXu3zobLCJwKqBmSj1XdsRUbbxJrJF1aQ==
+X-Received: by 2002:aa7:828f:0:b029:200:6e27:8c8f with SMTP id s15-20020aa7828f0000b02902006e278c8fmr22828734pfm.44.1625615382299;
+        Tue, 06 Jul 2021 16:49:42 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from localhost.localdomain ([71.212.149.176])
+        by smtp.gmail.com with ESMTPSA id b3sm18058114pfi.179.2021.07.06.16.49.41
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 06 Jul 2021 16:49:42 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: laurent@vivier.eu,
+	alex.bennee@linaro.org,
+	qemu-arm@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v2 13/36] linux-user/arm: Drop v1 signal frames
+Date: Tue,  6 Jul 2021 16:49:09 -0700
+Message-Id: <20210706234932.356913-14-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20210706234932.356913-1-richard.henderson@linaro.org>
+References: <20210706234932.356913-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20210706211432.31902-1-rebecca@nuviainc.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42d.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vKocCY80eMVz
+X-TUID: Gx4h76yxEVHD
 
-On 7/6/21 11:14 PM, Rebecca Cran wrote:
-> Add a space in the message printed when gicr_read*/gicr_write* returns
-> MEMTX_ERROR in arm_gicv3_redist.c.
-> 
-> Signed-off-by: Rebecca Cran <rebecca@nuviainc.com>
-> ---
->  hw/intc/arm_gicv3_redist.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+Version 2 signal frames are used from 2.6.12.
+Since cbc14e6f286, we have set UNAME_MINIMUM_RELEASE to 2.6.32,
+which means that version 1 signal frames are never used.
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Cc: qemu-arm@nongnu.org
+Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ linux-user/arm/signal.c | 220 +---------------------------------------
+ 1 file changed, 4 insertions(+), 216 deletions(-)
+
+diff --git a/linux-user/arm/signal.c b/linux-user/arm/signal.c
+index 32b68ee302..f8288ab51c 100644
+--- a/linux-user/arm/signal.c
++++ b/linux-user/arm/signal.c
+@@ -45,14 +45,6 @@ struct target_sigcontext {
+     abi_ulong fault_address;
+ };
+ 
+-struct target_ucontext_v1 {
+-    abi_ulong tuc_flags;
+-    abi_ulong tuc_link;
+-    target_stack_t tuc_stack;
+-    struct target_sigcontext tuc_mcontext;
+-    target_sigset_t  tuc_sigmask;       /* mask last for extensibility */
+-};
+-
+ struct target_ucontext_v2 {
+     abi_ulong tuc_flags;
+     abi_ulong tuc_link;
+@@ -97,28 +89,12 @@ struct target_iwmmxt_sigframe {
+ #define TARGET_VFP_MAGIC 0x56465001
+ #define TARGET_IWMMXT_MAGIC 0x12ef842a
+ 
+-struct sigframe_v1
+-{
+-    struct target_sigcontext sc;
+-    abi_ulong extramask[TARGET_NSIG_WORDS-1];
+-    abi_ulong retcode[4];
+-};
+-
+ struct sigframe_v2
+ {
+     struct target_ucontext_v2 uc;
+     abi_ulong retcode[4];
+ };
+ 
+-struct rt_sigframe_v1
+-{
+-    abi_ulong pinfo;
+-    abi_ulong puc;
+-    struct target_siginfo info;
+-    struct target_ucontext_v1 uc;
+-    abi_ulong retcode[4];
+-};
+-
+ struct rt_sigframe_v2
+ {
+     struct target_siginfo info;
+@@ -363,37 +339,6 @@ static void setup_sigframe_v2(struct target_ucontext_v2 *uc,
+     }
+ }
+ 
+-/* compare linux/arch/arm/kernel/signal.c:setup_frame() */
+-static void setup_frame_v1(int usig, struct target_sigaction *ka,
+-                           target_sigset_t *set, CPUARMState *regs)
+-{
+-    struct sigframe_v1 *frame;
+-    abi_ulong frame_addr = get_sigframe(ka, regs, sizeof(*frame));
+-    int i;
+-
+-    trace_user_setup_frame(regs, frame_addr);
+-    if (!lock_user_struct(VERIFY_WRITE, frame, frame_addr, 0)) {
+-        goto sigsegv;
+-    }
+-
+-    setup_sigcontext(&frame->sc, regs, set->sig[0]);
+-
+-    for(i = 1; i < TARGET_NSIG_WORDS; i++) {
+-        __put_user(set->sig[i], &frame->extramask[i - 1]);
+-    }
+-
+-    if (setup_return(regs, ka, frame->retcode, frame_addr, usig,
+-                     frame_addr + offsetof(struct sigframe_v1, retcode))) {
+-        goto sigsegv;
+-    }
+-
+-    unlock_user_struct(frame, frame_addr, 1);
+-    return;
+-sigsegv:
+-    unlock_user_struct(frame, frame_addr, 1);
+-    force_sigsegv(usig);
+-}
+-
+ static void setup_frame_v2(int usig, struct target_sigaction *ka,
+                            target_sigset_t *set, CPUARMState *regs)
+ {
+@@ -422,60 +367,7 @@ sigsegv:
+ void setup_frame(int usig, struct target_sigaction *ka,
+                  target_sigset_t *set, CPUARMState *regs)
+ {
+-    if (get_osversion() >= 0x020612) {
+-        setup_frame_v2(usig, ka, set, regs);
+-    } else {
+-        setup_frame_v1(usig, ka, set, regs);
+-    }
+-}
+-
+-/* compare linux/arch/arm/kernel/signal.c:setup_rt_frame() */
+-static void setup_rt_frame_v1(int usig, struct target_sigaction *ka,
+-                              target_siginfo_t *info,
+-                              target_sigset_t *set, CPUARMState *env)
+-{
+-    struct rt_sigframe_v1 *frame;
+-    abi_ulong frame_addr = get_sigframe(ka, env, sizeof(*frame));
+-    struct target_sigaltstack stack;
+-    int i;
+-    abi_ulong info_addr, uc_addr;
+-
+-    trace_user_setup_rt_frame(env, frame_addr);
+-    if (!lock_user_struct(VERIFY_WRITE, frame, frame_addr, 0)) {
+-        goto sigsegv;
+-    }
+-
+-    info_addr = frame_addr + offsetof(struct rt_sigframe_v1, info);
+-    __put_user(info_addr, &frame->pinfo);
+-    uc_addr = frame_addr + offsetof(struct rt_sigframe_v1, uc);
+-    __put_user(uc_addr, &frame->puc);
+-    tswap_siginfo(&frame->info, info);
+-
+-    /* Clear all the bits of the ucontext we don't use.  */
+-    memset(&frame->uc, 0, offsetof(struct target_ucontext_v1, tuc_mcontext));
+-
+-    memset(&stack, 0, sizeof(stack));
+-    target_save_altstack(&stack, env);
+-    memcpy(&frame->uc.tuc_stack, &stack, sizeof(stack));
+-
+-    setup_sigcontext(&frame->uc.tuc_mcontext, env, set->sig[0]);
+-    for(i = 0; i < TARGET_NSIG_WORDS; i++) {
+-        __put_user(set->sig[i], &frame->uc.tuc_sigmask.sig[i]);
+-    }
+-
+-    if (setup_return(env, ka, frame->retcode, frame_addr, usig,
+-                     frame_addr + offsetof(struct rt_sigframe_v1, retcode))) {
+-        goto sigsegv;
+-    }
+-
+-    env->regs[1] = info_addr;
+-    env->regs[2] = uc_addr;
+-
+-    unlock_user_struct(frame, frame_addr, 1);
+-    return;
+-sigsegv:
+-    unlock_user_struct(frame, frame_addr, 1);
+-    force_sigsegv(usig);
++    setup_frame_v2(usig, ka, set, regs);
+ }
+ 
+ static void setup_rt_frame_v2(int usig, struct target_sigaction *ka,
+@@ -516,11 +408,7 @@ void setup_rt_frame(int usig, struct target_sigaction *ka,
+                     target_siginfo_t *info,
+                     target_sigset_t *set, CPUARMState *env)
+ {
+-    if (get_osversion() >= 0x020612) {
+-        setup_rt_frame_v2(usig, ka, info, set, env);
+-    } else {
+-        setup_rt_frame_v1(usig, ka, info, set, env);
+-    }
++    setup_rt_frame_v2(usig, ka, info, set, env);
+ }
+ 
+ static int
+@@ -554,54 +442,6 @@ restore_sigcontext(CPUARMState *env, struct target_sigcontext *sc)
+     return err;
+ }
+ 
+-static long do_sigreturn_v1(CPUARMState *env)
+-{
+-    abi_ulong frame_addr;
+-    struct sigframe_v1 *frame = NULL;
+-    target_sigset_t set;
+-    sigset_t host_set;
+-    int i;
+-
+-    /*
+-     * Since we stacked the signal on a 64-bit boundary,
+-     * then 'sp' should be word aligned here.  If it's
+-     * not, then the user is trying to mess with us.
+-     */
+-    frame_addr = env->regs[13];
+-    trace_user_do_sigreturn(env, frame_addr);
+-    if (frame_addr & 7) {
+-        goto badframe;
+-    }
+-
+-    if (!lock_user_struct(VERIFY_READ, frame, frame_addr, 1)) {
+-        goto badframe;
+-    }
+-
+-    __get_user(set.sig[0], &frame->sc.oldmask);
+-    for(i = 1; i < TARGET_NSIG_WORDS; i++) {
+-        __get_user(set.sig[i], &frame->extramask[i - 1]);
+-    }
+-
+-    target_to_host_sigset_internal(&host_set, &set);
+-    set_sigmask(&host_set);
+-
+-    if (restore_sigcontext(env, &frame->sc)) {
+-        goto badframe;
+-    }
+-
+-#if 0
+-    /* Send SIGTRAP if we're single-stepping */
+-    if (ptrace_cancel_bpt(current))
+-        send_sig(SIGTRAP, current, 1);
+-#endif
+-    unlock_user_struct(frame, frame_addr, 0);
+-    return -TARGET_QEMU_ESIGRETURN;
+-
+-badframe:
+-    force_sig(TARGET_SIGSEGV);
+-    return -TARGET_QEMU_ESIGRETURN;
+-}
+-
+ static abi_ulong *restore_sigframe_v2_vfp(CPUARMState *env, abi_ulong *regspace)
+ {
+     int i;
+@@ -734,55 +574,7 @@ badframe:
+ 
+ long do_sigreturn(CPUARMState *env)
+ {
+-    if (get_osversion() >= 0x020612) {
+-        return do_sigreturn_v2(env);
+-    } else {
+-        return do_sigreturn_v1(env);
+-    }
+-}
+-
+-static long do_rt_sigreturn_v1(CPUARMState *env)
+-{
+-    abi_ulong frame_addr;
+-    struct rt_sigframe_v1 *frame = NULL;
+-    sigset_t host_set;
+-
+-    /*
+-     * Since we stacked the signal on a 64-bit boundary,
+-     * then 'sp' should be word aligned here.  If it's
+-     * not, then the user is trying to mess with us.
+-     */
+-    frame_addr = env->regs[13];
+-    trace_user_do_rt_sigreturn(env, frame_addr);
+-    if (frame_addr & 7) {
+-        goto badframe;
+-    }
+-
+-    if (!lock_user_struct(VERIFY_READ, frame, frame_addr, 1)) {
+-        goto badframe;
+-    }
+-
+-    target_to_host_sigset(&host_set, &frame->uc.tuc_sigmask);
+-    set_sigmask(&host_set);
+-
+-    if (restore_sigcontext(env, &frame->uc.tuc_mcontext)) {
+-        goto badframe;
+-    }
+-
+-    target_restore_altstack(&frame->uc.tuc_stack, env);
+-
+-#if 0
+-    /* Send SIGTRAP if we're single-stepping */
+-    if (ptrace_cancel_bpt(current))
+-        send_sig(SIGTRAP, current, 1);
+-#endif
+-    unlock_user_struct(frame, frame_addr, 0);
+-    return -TARGET_QEMU_ESIGRETURN;
+-
+-badframe:
+-    unlock_user_struct(frame, frame_addr, 0);
+-    force_sig(TARGET_SIGSEGV);
+-    return -TARGET_QEMU_ESIGRETURN;
++    return do_sigreturn_v2(env);
+ }
+ 
+ static long do_rt_sigreturn_v2(CPUARMState *env)
+@@ -823,9 +615,5 @@ badframe:
+ 
+ long do_rt_sigreturn(CPUARMState *env)
+ {
+-    if (get_osversion() >= 0x020612) {
+-        return do_rt_sigreturn_v2(env);
+-    } else {
+-        return do_rt_sigreturn_v1(env);
+-    }
++    return do_rt_sigreturn_v2(env);
+ }
+-- 
+2.25.1

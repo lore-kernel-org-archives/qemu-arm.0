@@ -1,107 +1,111 @@
-Received: by 2002:ac2:5485:0:0:0:0:0 with SMTP id t5csp2692160lfk;
-        Tue, 6 Jul 2021 19:18:57 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxKrJ0JJwt6tedHL+1BQoi1oTnOlcKfkFzwXbQPAz5agA/Fj6U5v2VVKfTDGLHn3u5dwPpH
-X-Received: by 2002:a05:620a:1a9d:: with SMTP id bl29mr21761502qkb.352.1625624336927;
-        Tue, 06 Jul 2021 19:18:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1625624336; cv=none;
+Received: by 2002:ac2:5485:0:0:0:0:0 with SMTP id t5csp2236578lfk;
+        Tue, 6 Jul 2021 07:51:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw/9XFyQvDM7WUJHLvGkiiPttzutdY4rRDXqKtP8Q/xkeY2AmDWwrpf7WEYxjF4u3LpWozH
+X-Received: by 2002:a17:906:32d8:: with SMTP id k24mr19110845ejk.422.1625583111338;
+        Tue, 06 Jul 2021 07:51:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1625583111; cv=none;
         d=google.com; s=arc-20160816;
-        b=QaaNSovrG6SgHYK9tA7k5z0X6Z30FIQXnWkT4sL5NJNPB9Ox4zKQ2WOXsEbt5Jt2rq
-         56r5ToD86A7dLTD+SKp3UJhDPoT2oSh4G99q8WQq/vqqxriS2kl9D5B0eLUWjXSGG3Fq
-         xdR4WDAm+mtk4FyRnkRHx2AUsb0f/EqU+wGRUsVmrc12FH+4sRw00fvmQwsQt61xKeYq
-         EIz0elSazp2E18dLIgoGfCEKiAJe17ge56UGw/kMZEZsS08+9q8j9UkW/Zfg2adT1Tmo
-         87IM63VwK+yCEW1N/eEfMKO47dXpUI5AdOQJTK0MrYEmv/SRcH+Rdd2KXoJhQMjj1/A8
-         FAbw==
+        b=hrUUgiYc+bqRo5DT33zmVrdPSo3bqpXasmEl2v2FFbVw3RjObQ7xmbWmFvYOJtJriq
+         1oysIw7pfslXccI1sHTLWfERQToP5T2Tb/mBzi7bGqthvbu0TLYej0xtnu6seyVlqwjJ
+         MhdO1v7d+DnQsDi5r47kcPlkDar9/riV4brLj9ttF9DQBSPeD0qR2g1lSOzDwj8b0cE1
+         HXjWEAWUIAcnVCD3IR0hoFoVpqR+H6zglIcNIMU/k7roTkuI4SQuOdoZq9rx9u8kCq+B
+         TJoPnc6ZF1lH3/r+2iFKvGkT+F17abJNDnyBCnnKAnjQgfvGCDuMpuxOJs1t9X/7iYWi
+         KtRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=LlfYE6GosY6ASC/rsUukB4KR+vpFhOf0HuSrLzk2U+g=;
-        b=FUbI2+wuI0h4wRNsoVzJmVLurvd6hjpy15Zeywus3uKqxowLRMHvQA8zoFnPpEdDjI
-         2yqIFSPA3HEfwle4uc8fbF+0rBAEuoW/GaUYwM1vkM2dsK04ZcES68tDhKCuNd6Owf9n
-         XrvIN5dWmhrEU1Agmcn3WfvjnquMnIv3WT20GMtUwrQrgWdwrtqQsg6AT4d7XE8oh9XT
-         zHMfLH/3QTKnPVBjzpeKz85vIctBf4J6sxUYaTnbHKTKEQr12AEafCzZozWDuA/qNduP
-         YhduW89CDXmfbytayRgGHFj90hs6g1YddOegUpp6AHbDkjmKfSyWZWtmpV2XTu8R3gK0
-         lpiw==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=BEJp0TISYVu0JuDYCxLPKlT0FeibnwjPK9OCXGU6RXc=;
+        b=O5ztTQYBGWhWRY1/zA4JI4i/mXOWFOGqVTnVw5cfvD2ZZ75LktHlghu1fRMfbtQcZ5
+         JziN5MUYn4uebT3tb82KaasEkNLNdCvIShK71UHM66yvnNnUO6rTYzMxAXwXdZzVCBFy
+         kcZI976oZu9+FMb0qb/YVTkcxyKwqrh7bFvgGpp22XLZcQ9Ixwb3UG6K2TEO0K6Esh4c
+         sNJFc9g8u1sau0yGmBz0LnU956ZZO2NB6dFZTfO/C4Buc/ZlOhsIDxO4NO35APTxtk8s
+         CUeD0oub8i6YMcINbO/dgoabVt66AfLR7WWUGLBHxfqRNU7Ckmp3Wa4WQYM0d61HRV24
+         /Pzw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=XeBnAqjD;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="fa/qlLQD";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m13si13347qkp.129.2021.07.06.19.18.55
+        by mx.google.com with ESMTPS id z20si14804390edc.592.2021.07.06.07.51.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 Jul 2021 19:18:56 -0700 (PDT)
+        Tue, 06 Jul 2021 07:51:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=XeBnAqjD;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51908 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="fa/qlLQD";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:35990 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m0x9L-0000BU-7w
-	for alex.bennee@linaro.org; Tue, 06 Jul 2021 22:18:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52208)
+	id 1m0mQQ-0004RE-DX
+	for alex.bennee@linaro.org; Tue, 06 Jul 2021 10:51:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59600)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shashi.mallela@linaro.org>)
- id 1m0x97-000091-Cx
- for qemu-arm@nongnu.org; Tue, 06 Jul 2021 22:18:41 -0400
-Received: from mail-qk1-x736.google.com ([2607:f8b0:4864:20::736]:39928)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1m0mQG-0004Qt-6L; Tue, 06 Jul 2021 10:51:40 -0400
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333]:52799)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shashi.mallela@linaro.org>)
- id 1m0x8k-0001NT-0J
- for qemu-arm@nongnu.org; Tue, 06 Jul 2021 22:18:41 -0400
-Received: by mail-qk1-x736.google.com with SMTP id j184so481080qkd.6
- for <qemu-arm@nongnu.org>; Tue, 06 Jul 2021 19:18:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=LlfYE6GosY6ASC/rsUukB4KR+vpFhOf0HuSrLzk2U+g=;
- b=XeBnAqjD/CnU+Gt0WuQYZsOAhGSxzVCOsOiqLbjUDarcmy/I8Xb6FxLl1Vr9Va45CU
- 2H6pdWOrujbIg2hdD1KLwM5g/YT/u1kpnyEOhNQxJDonkbRAf+js79u40nzQTI3fBme1
- 2uwvcHm+z8GD4wfR0Rb03uUzSNiYFsIf+NLCg/+OSKJq43qmfQzqVwdGNzuLQ6sH9L/q
- obzTbt56hunJbuMfMaNTsKuMs0RdhMN2ebrdqi+QnyV+MNcMVMLlzl8fufxgnekdXQI8
- bT6Lvv07z/UddhkQlSRpXVb/nuEet3XjMa9EL2CWpQ0piwYjznBYCsMBjdJN4mKBtdO+
- da5Q==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1m0mQE-0006CI-JF; Tue, 06 Jul 2021 10:51:39 -0400
+Received: by mail-wm1-x333.google.com with SMTP id g10so7921648wmh.2;
+ Tue, 06 Jul 2021 07:51:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:references:from:cc:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=BEJp0TISYVu0JuDYCxLPKlT0FeibnwjPK9OCXGU6RXc=;
+ b=fa/qlLQDZvfs162oZMv97Si8iDufKQfGIeL80pAQ3Ql4R32Zr3W8/0tr/kbi7Y0s46
+ +1QjxOS56Lp5VxDvst6d66SZQmdizs+qKo9R1Hzh4dTqgJmUg8neX8c7FUWkofjUc4Rz
+ K+9TFiquPZCzqH725uzk8iq65tOqUJnwconEVs7QWJIoFd0EKtdgkO7uamrbLpkUgkkC
+ dEyS0CmJgEFEYX5eOozYR3bI72iR/vcXb3oP5UgIr5znXQfJm36UpcjrZv9v0Fiq2YHG
+ eTfeptqCWjTc+X1cNLbY1mK9En1eYaVCy5REQ/QqTrH/vG257jAKltGeOU2xwXiys1xw
+ aXBQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ h=x-gm-message-state:sender:subject:to:references:from:cc:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=LlfYE6GosY6ASC/rsUukB4KR+vpFhOf0HuSrLzk2U+g=;
- b=sEmLcXEqEOahEZfdwszWa2WrQmyLFD/YBaVQbbsMaZ7TD/bL0mQWX2EaAAE8oc3SdN
- l3f6DHjjvm4K+fHUJ2ybF8qmJBPQS3agnShbXZsVXiGfQDqrYUC4qVOXxLFDbKazUgXy
- zmYv7awt6B7wCqWuVchj24vGMjawBPHoPzrkHTKJ02CHZwfml0W/mc3H1XZWo8/Gr2qz
- yqRg8MxQro5B4jWdDk7or/pbIQhHMfmAPzGPZv2h6D4gHmBDIDxTDluw6TdulcohlANt
- 3O02BdhAphzdFcjv8TVzyAnQIHLoJ67d4WWxK8VegM4maUOZPc9YMblvk0iagTVaQgMK
- iAfw==
-X-Gm-Message-State: AOAM533WgqK6ucW4McTTes0ZR4cms7+xlJJosimS9q6KYMOkN5ofYQuF
- 4/ZVZzTyu2n2InR4Mk6caa9vYg==
-X-Received: by 2002:a37:ac14:: with SMTP id e20mr23303315qkm.362.1625624296998; 
- Tue, 06 Jul 2021 19:18:16 -0700 (PDT)
-Received: from localhost.localdomain
- (bras-base-stsvon1503w-grc-22-142-114-143-47.dsl.bell.ca. [142.114.143.47])
- by smtp.googlemail.com with ESMTPSA id z6sm7768613qke.24.2021.07.06.19.18.16
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 06 Jul 2021 19:18:16 -0700 (PDT)
-From: Shashi Mallela <shashi.mallela@linaro.org>
-To: peter.maydell@linaro.org, leif@nuviainc.com, rad@semihalf.com,
- mst@redhat.com, imammedo@redhat.com
-Subject: [PATCH v6 00/10] GICv3 LPI and ITS feature implementation
-Date: Tue,  6 Jul 2021 22:18:05 -0400
-Message-Id: <20210707021815.45938-1-shashi.mallela@linaro.org>
-X-Mailer: git-send-email 2.27.0
+ bh=BEJp0TISYVu0JuDYCxLPKlT0FeibnwjPK9OCXGU6RXc=;
+ b=XcpLkq/ikazCVFhpDWxT2zz7jIl7b1QprH7vC5StKmAh9bwNZBVcWYKmTkqfnJW4ul
+ j8Ks8UDwWADLIBfNVBHKKGGI9hMgADB9HQjbtBDyiIZ00J1w9UowBT0ZDAlyDxbkX4uU
+ SPzhmG2PV/XDjkAl3bTmMX/X/B+G0WRGC8kwYhqT159zYUR2YxO+vzxy87Z6rJYcaafl
+ 0+kZosF53lZmry+ZGXre6LhsJT7GuzygyERKECBssDDBd8VFjT7s63NnWEvo0cbJdvhC
+ qlL7pek3NW5BcFP4aInkJrn2dQYYFxRXi6A53YmCQ6jl9OCClsg7+H17Wx7ID6PWK++B
+ IvOQ==
+X-Gm-Message-State: AOAM530h69ZSKRwYDX++RuST5IJUbYbmB50X5PPV0HnZOOxNB1xXi//3
+ bvNUnhccpsF2/cqKAqxYgdcIL3kvI1Y=
+X-Received: by 2002:a7b:cf2f:: with SMTP id m15mr303502wmg.33.1625583095357;
+ Tue, 06 Jul 2021 07:51:35 -0700 (PDT)
+Received: from [192.168.1.36] (93.red-83-35-24.dynamicip.rima-tde.net.
+ [83.35.24.93])
+ by smtp.gmail.com with ESMTPSA id r4sm18026139wre.84.2021.07.06.07.51.34
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 06 Jul 2021 07:51:34 -0700 (PDT)
+Subject: Re: support for raspberry3/3B/4B
+To: =?UTF-8?B?5q635Yas?= <yindongbest@126.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+References: <4417b006.b29.17a79788175.Coremail.yindongbest@126.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <16a7ca76-531a-39a4-36e2-dce5995e29aa@amsat.org>
+Date: Tue, 6 Jul 2021 16:51:33 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
+In-Reply-To: <4417b006.b29.17a79788175.Coremail.yindongbest@126.com>
+Content-Type: text/plain; charset=gbk
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::736;
- envelope-from=shashi.mallela@linaro.org; helo=mail-qk1-x736.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x333.google.com
+X-Spam_score_int: 9
+X-Spam_score: 0.9
+X-Spam_bar: /
+X-Spam_report: (0.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, MIME_CHARSET_FARAWAY=2.45,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -114,75 +118,35 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: eric.auger@redhat.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: F2alla1nYFQK
+X-TUID: 47zfK8W4sVm1
 
-This patchset implements qemu device model for enabling physical
-LPI support and ITS functionality in GIC as per GICv3 specification.
-Both flat table and 2 level tables are implemented.The ITS commands
-for adding/deleting ITS table entries,trigerring LPI interrupts are
-implemented.Translated LPI interrupt ids are processed by redistributor
-to determine priority and set pending state appropriately before
-forwarding the same to cpu interface.
-The ITS feature support has been added to sbsa-ref platform as well as
-virt platform,wherein the emulated functionality co-exists with kvm
-kernel functionality.
+Hi,
 
-Changes in v6:
- - made changes to masking scheme being used in all relevant sections
- - updated process_mapti to validate idbits based on GICD_TYPER.IDbits
-   instead of GICR_PROPBASER.IDbits
- - updated its_realize() to check every CPU for physical LPI support in
-   each associated redistibutor and return error if not
- - removed GICR_TYPER_PLPIS check in its_reset()
- - addressed pending v4 comments in gicv3_internal.h #defines
- - refactored gicv3_redist_lpi_pending() as per v5 comments
- - added iasl disassembly for new IORT.pxb file
- - addressed all v5 comments around code formatting and
-   gicv3_internal.h #defines 
- - All kvm_unit_tests PASS
+On 7/6/21 3:39 AM, Òó¶¬ wrote:
+> Hi team of qemu
+> I see the qemu6.0 has supported for raspberryPick 2B. but i want use it
+> for raspberrypi 3/3B/4B. So can you tell me about raspberrypi 3/3B/4B plan ?
 
-Shashi Mallela (10):
-  hw/intc: GICv3 ITS initial framework
-  hw/intc: GICv3 ITS register definitions added
-  hw/intc: GICv3 ITS command queue framework
-  hw/intc: GICv3 ITS Command processing
-  hw/intc: GICv3 ITS Feature enablement
-  hw/intc: GICv3 redistributor ITS processing
-  hw/arm/sbsa-ref: add ITS support in SBSA GIC
-  tests/data/acpi/virt: Add IORT files for ITS
-  hw/arm/virt: add ITS support in virt GIC
-  tests/data/acpi/virt: Update IORT files for ITS
+The raspi3 is supported (since QEMU v2.12):
 
- hw/arm/sbsa-ref.c                      |   26 +-
- hw/arm/virt.c                          |   28 +-
- hw/intc/arm_gicv3.c                    |   14 +
- hw/intc/arm_gicv3_common.c             |   13 +
- hw/intc/arm_gicv3_cpuif.c              |    7 +-
- hw/intc/arm_gicv3_dist.c               |    5 +-
- hw/intc/arm_gicv3_its.c                | 1301 ++++++++++++++++++++++++
- hw/intc/arm_gicv3_its_common.c         |    7 +-
- hw/intc/arm_gicv3_its_kvm.c            |    2 +-
- hw/intc/arm_gicv3_redist.c             |  154 ++-
- hw/intc/gicv3_internal.h               |  189 +++-
- hw/intc/meson.build                    |    1 +
- include/hw/arm/virt.h                  |    2 +
- include/hw/intc/arm_gicv3_common.h     |   13 +
- include/hw/intc/arm_gicv3_its_common.h |   32 +-
- target/arm/kvm_arm.h                   |    4 +-
- tests/data/acpi/virt/IORT              |  Bin 0 -> 124 bytes
- tests/data/acpi/virt/IORT.memhp        |  Bin 0 -> 124 bytes
- tests/data/acpi/virt/IORT.numamem      |  Bin 0 -> 124 bytes
- tests/data/acpi/virt/IORT.pxb          |  Bin 0 -> 124 bytes
- 20 files changed, 1771 insertions(+), 27 deletions(-)
- create mode 100644 hw/intc/arm_gicv3_its.c
- create mode 100644 tests/data/acpi/virt/IORT
- create mode 100644 tests/data/acpi/virt/IORT.memhp
- create mode 100644 tests/data/acpi/virt/IORT.numamem
- create mode 100644 tests/data/acpi/virt/IORT.pxb
+$ qemu-system-aarch64 -M help | fgrep raspi3
+raspi3ap             Raspberry Pi 3A+ (revision 1.0)
+raspi3b              Raspberry Pi 3B (revision 1.2)
+raspi3               Raspberry Pi 3B (revision 1.2) (alias of raspi3b)
 
--- 
-2.27.0
+See https://qemu-project.gitlab.io/qemu/system/arm/raspi.html
 
+
+The raspi emulation is mostly contributed by hobbyist, so there
+are no precise plan, it depends of their time / motivation.
+
+What would be your use case?
+
+By the way anybody is welcome to contribute patches :)
+
+Regards,
+
+Phil.

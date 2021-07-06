@@ -1,110 +1,112 @@
-Received: by 2002:ac2:5485:0:0:0:0:0 with SMTP id t5csp1898934lfk;
-        Tue, 6 Jul 2021 00:29:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxdRPDFVQ7sHao3laBF4w6zvwJ+jnXWA03RT0zX3RKDpidGEaL0QdlCbbZRjDZAEZUMfA1o
-X-Received: by 2002:a17:907:778a:: with SMTP id ky10mr17106102ejc.32.1625556591221;
-        Tue, 06 Jul 2021 00:29:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1625556591; cv=none;
+Received: by 2002:ac2:5485:0:0:0:0:0 with SMTP id t5csp1904986lfk;
+        Tue, 6 Jul 2021 00:39:58 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJziX9OQlEYkAYYsli78cjujrg1wfZ7d2BUCcOP2Wfl5/TyktU7X4xNF5UeUc5jSIwHVN9OR
+X-Received: by 2002:aa7:c7d0:: with SMTP id o16mr21111866eds.75.1625557198188;
+        Tue, 06 Jul 2021 00:39:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1625557198; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y58B6aNIRD1gVKyII2fDbfLKHdxp8jUzCkPOSXvnnive4Exa/TEzzKkh244kKx2dNa
-         Ah9plp6UT5Jwo/zM3Bx7PDeAk1e1kkTxEPFPgeMnfQ4URhj6IoWfCeFjRm8ff/N2h4BF
-         bioL36z+3SV3npx9N0Y3G6ijyx1FCjp6NkInshLFKRPzM8zvVu8EJRFLaMyH0q6/2phd
-         nDIoPZIxPNF/TmO11o2BQ2g+Sf/H/j7t/q6eS2Whhre4Pda0OrFSpmGNvvICTPpXH6jM
-         jhb7z/GqbYUHEBZaEcsIt3Lxvz/eAwSDL6zt3x2BdvMAqSrRk0/abgO794M6F3V0zo0/
-         EYtQ==
+        b=Zv6R5h7OKeBsGa4Rb4KOpNQPdPR91Jcn09xAuukTMiipjld1QBQaJC8CxMgoVAOYG3
+         rH5sJ2OoNkY9JglD3EWnZLKqnCh3tzwsaIsPPYWRv6DQhZSrczF8EEvrGwIwdPtMscBR
+         rl2g4723ZPHmpbxQcWs5MPtZqI1jdu487B0WS04WkP4fGQP6NmYTXzPlLQPIb69iMpA3
+         eKSX2xCp6UXdyUhBwbzzuS0/CVC3HYCoNndoKezTV3KdKCe9O61lHXXiPbh6S5FooVuz
+         vWKoF3bJEd5ybfpSgh04yJ1c7sbTNwMvFLmrghTis+kztNI22EwdtR/Et4DjKpuHE0it
+         eSIg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:references:to:from:subject:dkim-signature;
-        bh=iEW7okWFHYCUsj5DLk7JgaAUoFSHVu95i7HmzgqEwOA=;
-        b=LoOs3ByEzxyR4XAhhrck8w9hd5kIfelqCPDDmInBZThb46grCzsK+8Z2BGYzbXl72W
-         zE9WTtAvqFTfA10WpF0jVYU4ZxBOGdKr2W7qo8Z0SjTkbXdqSxdJ3uamQdJ49uWFqucv
-         lvs3BbBQWMcTIsczsY01oWmkLIIlku1vbXWbN4VElVW5ChPuWgFaL6442BXwtUVl1YIQ
-         J7XW3YOPO3udWwK1y/AhZQmw3WgxIWKI4wwf/tIvK5DarIkKaSwZfBoThiYh64qsc2h/
-         OLIHKC/0mxmfecaqsRDUmAHVo9RgNmJI8OlahZPr2BKezEsZn9Dph7/KAHYo1JxK1rw4
-         MCGw==
+        bh=syNqmInU6Jmhhs2xOUHwtuIDMFj2NKgybSIxgV3CPkI=;
+        b=np/sBNONJpUQysFFXFJlMuVjUCK0WSVeqIg6DGtnL98DuY2XzP0GmfIUuKFEA/L+Qd
+         eTdzFp2nBa/csrafvKqb0Rx3lRoEDvaleDxg4kGiOX9eY+2ZCsWV53fVddNV7k0Evt6R
+         R4JAGYNgwgsXCc4rhs6M4KYiypuvS4BTOj2sctZc8khFeiA4oKW7wu/9KwbLceLgcwin
+         EsXPdAlgzE2Tlt4w3QrVL6WNYEbK3s+uckidOHcicwjHdH8shegqRH9fK/LnWQ1f2rZE
+         oX8jQ7DHQN3dFTeLN6t7hoGagHrHduYX8MpJZH7Ij0BgvCk9M7u0++ttqsfWSgLVh2KY
+         O+/A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Mmbk7bpL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Gjw9QYzJ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id hb11si4839904ejc.650.2021.07.06.00.29.51
+        by mx.google.com with ESMTPS id dt9si7978060ejc.65.2021.07.06.00.39.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 Jul 2021 00:29:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 06 Jul 2021 00:39:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Mmbk7bpL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Gjw9QYzJ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38924 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52662 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m0fWg-0005li-7C
-	for alex.bennee@linaro.org; Tue, 06 Jul 2021 03:29:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41244)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1m0fgT-0006up-3U
+	for alex.bennee@linaro.org; Tue, 06 Jul 2021 03:39:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42786)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1m0fWH-0005k4-8h
- for qemu-arm@nongnu.org; Tue, 06 Jul 2021 03:29:25 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:33507)
+ (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1m0ffK-0005Ww-Qe
+ for qemu-devel@nongnu.org; Tue, 06 Jul 2021 03:38:48 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:48806)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1m0fWE-0001l5-4K
- for qemu-arm@nongnu.org; Tue, 06 Jul 2021 03:29:24 -0400
+ (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1m0ffI-0008KD-9t
+ for qemu-devel@nongnu.org; Tue, 06 Jul 2021 03:38:46 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1625556559;
+ s=mimecast20190719; t=1625557123;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=iEW7okWFHYCUsj5DLk7JgaAUoFSHVu95i7HmzgqEwOA=;
- b=Mmbk7bpLH8NU212kGQrCXUpTAKPMV/TDxYHFKrNMyuv+ykkR3h5cgXVdXusAqOJm3yNCrA
- nDMk/CSo7+eRTg9RiNiK4eayEo2BDXd/B8lrkp/WEKZcX18A8EynxkLljTFQ0Oagxwan4+
- vcFRFYld1cC2GDRePX3pmhzVN2Prk64=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-211-IMerwfvnNGypBdhjU_-HgA-1; Tue, 06 Jul 2021 03:29:17 -0400
-X-MC-Unique: IMerwfvnNGypBdhjU_-HgA-1
-Received: by mail-wr1-f69.google.com with SMTP id
- p6-20020a5d45860000b02901258b6ae8a5so6861413wrq.15
- for <qemu-arm@nongnu.org>; Tue, 06 Jul 2021 00:29:17 -0700 (PDT)
+ bh=syNqmInU6Jmhhs2xOUHwtuIDMFj2NKgybSIxgV3CPkI=;
+ b=Gjw9QYzJS784AlnZzl7Tasl1L1lKrqoL3PZMSTwYoRIzAUE6hfZky9U48dxCaOpq1Zm3DR
+ bcrt3y9Fa83kMnL7phiXH+zWHC0pmuh/DKFmn3WcrwHUbl8Bfk4lALGgrncZE6PJlUwGdF
+ MjqQzs6DoZJO+A2aQjNyII69IpiUGbU=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-570-Vm_V2RSwMQe-IQ9ZVHPTNw-1; Tue, 06 Jul 2021 03:38:41 -0400
+X-MC-Unique: Vm_V2RSwMQe-IQ9ZVHPTNw-1
+Received: by mail-wm1-f70.google.com with SMTP id
+ p3-20020a05600c3583b02901f55d71e34aso546104wmq.4
+ for <qemu-devel@nongnu.org>; Tue, 06 Jul 2021 00:38:41 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:from:to:cc:references:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=iEW7okWFHYCUsj5DLk7JgaAUoFSHVu95i7HmzgqEwOA=;
- b=GrPfZHJGb4w3xrj7eGzoax/EjGISR6ThGodiRDsCtFDu1gq7cUU2dXAgyWMVecw676
- U/a1y7tbR9U27NiK3o2sr4EpHm/wvycbcQs48KMwC70pVHsW7E+RZsrG2xoVLnONNioT
- 26SSnx7EUzRjFo76Gx37t2smlh5rc0f5lYDuTNeW1KjaIdPInMOgRjtHnYFKcwEiufrB
- OqtkUDm6qEmKL3ASmfGdeXw8diBgua/dQfRmTOAdw5usvN2KuHaUSxStGbgZzwOe6pcp
- 75pVr7Fup+daPgoAkXK5LICjnqrdIFs7VEZSkK2WSELd2x2i/Ow8RKTEX6ihKqP5yRHM
- r1iQ==
-X-Gm-Message-State: AOAM5338uIRl4cQqJFJWp0mbSDKThTrD0B2uSXfslPRo3Jikm93QsSbN
- znP0fkEDLEsquMw2S438vJD6xZwKaGXcdAXsI+/ITkuVcNAsxXbDdFkbRQNkiWP7mt/ixn6U6er
- chdIgqZTxb8fX
-X-Received: by 2002:adf:d214:: with SMTP id j20mr15518092wrh.392.1625556556545; 
- Tue, 06 Jul 2021 00:29:16 -0700 (PDT)
-X-Received: by 2002:adf:d214:: with SMTP id j20mr15518071wrh.392.1625556556354; 
- Tue, 06 Jul 2021 00:29:16 -0700 (PDT)
+ bh=syNqmInU6Jmhhs2xOUHwtuIDMFj2NKgybSIxgV3CPkI=;
+ b=li3vhith/PXVH0PJswcLi0HcIV5Ec9bRsHoyhyLaamhgs9EBnBZTmhmwOUoJh7uhFG
+ U0r/AVg7x7tc6ScfDOVdQaDFvf8uWePwxGs7KzcjQ3sFTk8iSsGbDww32mC4/Sprsdij
+ 9nW3SxghcNdsMgEJ/nYEGm82gkdsXPe39JBD2wHCCtKbqpGxBJoXlFuhpcqql2F96g4w
+ NjdiiipfQPOXOxh1GUz7stPB2MKwnwO6YaVRfVXnN7NJOyKXs+NYsSa5HhbOLL2/BjiU
+ 941rAl4Q+m2Io0zg3GkaEiE3zQqYit3ckiG9ww9YcQhlYjnCT0A8tLIby3vfTyQ0R0pd
+ n7jQ==
+X-Gm-Message-State: AOAM532/TW80VNubsZ3/RuaLgUbd8WsPubkkrPM5w4hjoJ3/GiuV7Sfp
+ OAquDltUhJ8qx3JdMEQUCnowp2H77eUzyvlpA0O8lJv7130NAZlPNgw3/3C7xYcAv79qyk7xy9e
+ oPL4d4hEZS0ZoU259cMwrRTrkNJeEwRiy1JqBgSqFEfuunBdxVLBJ56cm0l/F6D1C
+X-Received: by 2002:a05:600c:3501:: with SMTP id
+ h1mr12108601wmq.157.1625557119338; 
+ Tue, 06 Jul 2021 00:38:39 -0700 (PDT)
+X-Received: by 2002:a05:600c:3501:: with SMTP id
+ h1mr12108575wmq.157.1625557119079; 
+ Tue, 06 Jul 2021 00:38:39 -0700 (PDT)
 Received: from ?IPv6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
  ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id a64sm617757wme.8.2021.07.06.00.29.15
+ by smtp.gmail.com with ESMTPSA id n41sm1741116wms.26.2021.07.06.00.38.37
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 06 Jul 2021 00:29:15 -0700 (PDT)
+ Tue, 06 Jul 2021 00:38:38 -0700 (PDT)
 Subject: Re: [PATCH v4 1/8] hw/intc: GICv3 ITS initial framework
 From: Eric Auger <eauger@redhat.com>
 To: Shashi Mallela <shashi.mallela@linaro.org>, peter.maydell@linaro.org,
  leif@nuviainc.com, rad@semihalf.com
 References: <20210602180042.111347-1-shashi.mallela@linaro.org>
  <20210602180042.111347-2-shashi.mallela@linaro.org>
- <df2a3a62-2e28-d673-f64e-bbc8327837b5@redhat.com>
-Message-ID: <1b856c6e-8717-02ac-cbe8-709af365e75b@redhat.com>
-Date: Tue, 6 Jul 2021 09:29:14 +0200
+ <91f0cc7a-69e5-7234-3f9d-4bc0df98990d@redhat.com>
+Message-ID: <e25fc87c-a6be-510d-500f-1a675ec02852@redhat.com>
+Date: Tue, 6 Jul 2021 09:38:37 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.10.1
 MIME-Version: 1.0
-In-Reply-To: <df2a3a62-2e28-d673-f64e-bbc8327837b5@redhat.com>
+In-Reply-To: <91f0cc7a-69e5-7234-3f9d-4bc0df98990d@redhat.com>
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eauger@redhat.com
 X-Mimecast-Spam-Score: 0
@@ -112,7 +114,7 @@ X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=eauger@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=eauger@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -121,28 +123,28 @@ X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.442,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
  RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VGID43totGRy
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: NPrekLQTX0xX
 
 Hi,
 
-On 6/12/21 8:52 AM, Eric Auger wrote:
-> 
+On 6/11/21 6:21 PM, Eric Auger wrote:
+> Hi,
 > 
 > On 6/2/21 8:00 PM, Shashi Mallela wrote:
 >> Added register definitions relevant to ITS,implemented overall
@@ -497,38 +499,9 @@ On 6/12/21 8:52 AM, Eric Auger wrote:
 >> -#define GICR_PENDBASER_SHAREABILITY_MASK       (3U << 10)
 >> -#define GICR_PENDBASER_CACHEABILITY_MASK       (7U << 7)
 >> -
-> Here you remove those defs without much explanation in the commit msg.
-> I see you restore them in 5/8
-> 
-> +FIELD(GICR_PROPBASER, IDBITS, 0, 5)
-> +FIELD(GICR_PROPBASER, INNERCACHE, 7, 3)
-> +FIELD(GICR_PROPBASER, SHAREABILITY, 10, 2)
-> +FIELD(GICR_PROPBASER, PHYADDR, 12, 40)
-> +FIELD(GICR_PROPBASER, OUTERCACHE, 56, 3)
-> +
-> +#define GICR_PROPBASER_IDBITS_THRESHOLD          0xd
-> +
-> +FIELD(GICR_PENDBASER, INNERCACHE, 7, 3)
-> +FIELD(GICR_PENDBASER, SHAREABILITY, 10, 2)
-> +FIELD(GICR_PENDBASER, PHYADDR, 16, 36)
-> +FIELD(GICR_PENDBASER, OUTERCACHE, 56, 3)
-> +FIELD(GICR_PENDBASER, PTZ, 62, 1)
-> 
-> Maybe squash this in this patch?
-
-not addressed in v5.
-
-Thanks
-
-Eric
-> 
-> Thanks
-> 
-> Eric
-> 
 >>  #define ICC_CTLR_EL1_CBPR           (1U << 0)
 >>  #define ICC_CTLR_EL1_EOIMODE        (1U << 1)
->>  #define ICC_CTLR_EL1_PMHE           (1U << 6)
+>>  #define ICC_CTLR_EL1_PMHE            (1U << 6)
 >> @@ -239,6 +231,78 @@
 >>  #define ICH_VTR_EL2_PREBITS_SHIFT 26
 >>  #define ICH_VTR_EL2_PRIBITS_SHIFT 29
@@ -541,6 +514,10 @@ Eric
 >> +FIELD(GITS_BASER, PHYADDR, 12, 36)
 >> +FIELD(GITS_BASER, PHYADDRL_64K, 16, 32)
 >> +FIELD(GITS_BASER, PHYADDRH_64K, 48, 4)
+> Isn't it FIELD(GITS_BASER, PHYADDRH_64K, 12, 4)
+> hum actually it is fixed in next patch ;-) The right value can be put
+> here directly
+not addressed in v5
 >> +FIELD(GITS_BASER, ENTRYSIZE, 48, 5)
 >> +FIELD(GITS_BASER, OUTERCACHE, 53, 3)
 >> +FIELD(GITS_BASER, TYPE, 56, 3)
@@ -565,6 +542,8 @@ Eric
 >> +
 >> +#define GITS_ITT_TYPE_DEVICE                  1ULL
 >> +#define GITS_ITT_TYPE_COLLECTION              4ULL
+> you may rename into GITS_BASER_TYPE_DEVICE and COLLECTION?
+not addressed in v5
 >> +
 >> +/**
 >> + * Default features advertised by this version of ITS
@@ -578,9 +557,19 @@ Eric
 >> + * Valid = 1 bit,InterruptType = 1 bit,
 >> + * Size of LPI number space[considering max 24 bits],
 >> + * Size of LPI number space[considering max 24 bits],
+> repeated
+not adressed in v5
 >> + * ITE Higher 4 Bytes
 >> + * ICID = 16 bits,
 >> + * vPEID = 16 bits
+> 
+> for info the ABI used by the kernel can be found in linux
+> Documentation/virt/kvm/devices/arm-vgic-its.rst
+> 
+> The ITE there is 8 bytes.
+> 
+> Have you considered the same?
+> 
 >> + */
 >> +#define ITS_ITT_ENTRY_SIZE            0xC
 >> +
@@ -666,4 +655,12 @@ Eric
 >>  #define TYPE_ARM_GICV3_ITS_COMMON "arm-gicv3-its-common"
 >>  typedef struct GICv3ITSCommonClass GICv3ITSCommonClass;
 >>
+> Thanks
+> 
+> Eric
+> 
+
+Thanks
+
+Eric
 

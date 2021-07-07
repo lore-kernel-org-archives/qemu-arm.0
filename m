@@ -1,108 +1,109 @@
-Received: by 2002:ac2:5485:0:0:0:0:0 with SMTP id t5csp2664540lfk;
-        Tue, 6 Jul 2021 18:33:12 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyvD3lKeSrp0hvuNyCREPBxc4K6QSg4yq3Bd2AhMb1wmHwzmpnIA3UHUQi7mAUcXfyHlquP
-X-Received: by 2002:a1f:1487:: with SMTP id 129mr16591334vku.14.1625621592337;
-        Tue, 06 Jul 2021 18:33:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1625621592; cv=none;
+Received: by 2002:ac2:5485:0:0:0:0:0 with SMTP id t5csp2665267lfk;
+        Tue, 6 Jul 2021 18:34:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy91dG1nVkcTD1SqHqu9Jte3Q76BQu/H4OdXd7OrubfQcxK1ccETkVgZyY/VT8bUmWEyCqW
+X-Received: by 2002:a05:6102:1042:: with SMTP id h2mr17917420vsq.33.1625621662788;
+        Tue, 06 Jul 2021 18:34:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1625621662; cv=none;
         d=google.com; s=arc-20160816;
-        b=f39T8T8LSHuP9j2WKcLCbjleeJw4TKxEVanJFP+GKzdu6UCHd6C77GaeAE+oYsp2hi
-         NBc6trpHcZD7roZq5o3RmtFrRuDCDLmAYlzQd//rJUzNKoXnvAcORQ7VxBKMFhKriWjc
-         CbkpZ9tsGPb7iOZKyDlHUO7VoyqUDqjbBYPycMjQMyOPN4T/vScqY/nuBsxaGXyM0qId
-         IN3xU3N7YbAkED+HnGLx+IRMZ19Uw5AuD3Q0+2pNuk3LK5pvrgetM/cTpFqnpFo8amdZ
-         dlTfDF0K7iZToEIdDrOHCgNe9skjUQijj2s5TwQe9fGe+tZA2frubA1SP4w8i/GG4yyM
-         dVJQ==
+        b=GuYsI12pgl3Ux5DTr2qZJqG9lzTrHxNnfaLjVpQpVMAhuxvVSIE9XtWVJmgCQ2Yu11
+         wYNELG5PgetuWDcsuDZztbsct4159nWJZYfNelQEKZ4Y6+JdGWVdbWVGuKaajLTzkAcf
+         geImbHo02yReVTVFvuBFVkWIb+FDUFK3Aq+K+xX+ZQS6mU61WhEhnTBjN7j9XTmlVnXQ
+         tXzZj+z6jRkBfh7eQ9rqMBqwT1V5P2Xj0eoxggaFgg7LOcLH1ioBjdnAkKQsYRworQDo
+         kA9uaOAXtdUbfOK/dyYP3A+KkCM2bg0l5oVkEZMt6Wr6IUpBYuqoRdMg+W3Ur4yroDK+
+         Fdkw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=5xe0rW2DfzVZcL35mReT6fuZ9hjF3alH87O+aqyNIac=;
-        b=tiUko2FaaKiqkyakD3LQySotU68vZazRllj/qbnxitas0f3a2OQcGWFihNePf6TUQ6
-         Pgj6I+wHaZd1yYH7Br+E5W/4ihKkvfiINp76wPX89IX2afau+UENsjnTYc9zeXxNtsv8
-         JQjYKJq3aq9qegV2iz1MXHv+6x9HntV+A4JmluOA61upwB92bPvPm4bfB8YkyvM/pOir
-         cEWFfc4ELUlKsZzEtV77AmSU8/88Xjz6iJESj5YyQyC2htWFXa9A/xojJeMGydZVgag/
-         L+Nw0yBqhF3aGROzOfU2+fsQRxogpO6wEjnccV4+aT/xfqP6zuCIUYAwsf7yxqRu1xJu
-         Brbg==
+        bh=GfnO4w7zfONq/KjtjkwO2tXT1byxVRFhpgIOQqCHeBM=;
+        b=D7C0f3rLNUJa3lybnrVWMkzRRQdp1QIcUZcWcqsFz/Ry/b4e02v8zDhgMj/jj9rhrh
+         jZdym4DbHTs8YHfninjTZtX8JrnHAnjuJzganPttX1N2HueFzwpqMl5ibZ8hDzxWwxZn
+         YVadK3CbHIiZI6t5JonBMyW2SXdk+01ZXlZDk5B2VnZse97vlyvdgPGFSO2H4HHbsc3f
+         bA172Pj33MCqhM+b9zXLMM1nCHCIzHS5cuDoJHdqHJrbsaU3IAWfyRtKo5n5KWlWBvuD
+         e1XvWiM9n15DzHppCt51Lc6UVsxbhqC7UW63sRo2nwY8ojfwphnYHlx4yEawyVQMhhc7
+         Znsw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iMt06ui9;
+       dkim=pass header.i=@linaro.org header.s=google header.b=RaLkM3yL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u5si13186391uae.108.2021.07.06.18.33.12
+        by mx.google.com with ESMTPS id m7si14250950uad.138.2021.07.06.18.34.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 Jul 2021 18:33:12 -0700 (PDT)
+        Tue, 06 Jul 2021 18:34:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iMt06ui9;
+       dkim=pass header.i=@linaro.org header.s=google header.b=RaLkM3yL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51206 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52530 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m0wR5-0005K5-MI
-	for alex.bennee@linaro.org; Tue, 06 Jul 2021 21:33:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42124)
+	id 1m0wSE-0006DC-23
+	for alex.bennee@linaro.org; Tue, 06 Jul 2021 21:34:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42552)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1m0wQ4-00030i-Kj
- for qemu-arm@nongnu.org; Tue, 06 Jul 2021 21:32:10 -0400
-Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a]:41485)
+ id 1m0wRv-0006CX-Ov
+ for qemu-arm@nongnu.org; Tue, 06 Jul 2021 21:34:03 -0400
+Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533]:34542)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1m0wQ2-00068K-2Y
- for qemu-arm@nongnu.org; Tue, 06 Jul 2021 21:32:08 -0400
-Received: by mail-pf1-x42a.google.com with SMTP id f17so702973pfj.8
- for <qemu-arm@nongnu.org>; Tue, 06 Jul 2021 18:32:05 -0700 (PDT)
+ id 1m0wRr-0006Fv-PJ
+ for qemu-arm@nongnu.org; Tue, 06 Jul 2021 21:34:03 -0400
+Received: by mail-pg1-x533.google.com with SMTP id 62so606560pgf.1
+ for <qemu-arm@nongnu.org>; Tue, 06 Jul 2021 18:33:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=5xe0rW2DfzVZcL35mReT6fuZ9hjF3alH87O+aqyNIac=;
- b=iMt06ui9DcEjW7w5zxzjBP8KKqcIMX+X+h24oykxw6xhyGH7Bvb4SXMqYaj3nIR9Tv
- gl/yBrJF9A1WTlInQOjxEGXC0iMJahrH7xfjW56Y47frz2Xri3b3Lv2hQikPUjUwIKgC
- kj+xgePqzBA31z6En5E4x42/6av++7ymGhCUryupBYjVsxoH6xRl+KdY2t0yrHMPspg+
- SH1nOfS54ObicTUi4NatcnWUfxlPeCxkr6G3enT3iD9jBo2C4vUAREmQfv05KG+nx+kA
- ucI2LOL3MOlBJmoN9X3ytZVR8hHM6Y5jHjVLsjLENlHB4hE8WfsdX8UPdA6GjK8+qfP0
- qz+w==
+ bh=GfnO4w7zfONq/KjtjkwO2tXT1byxVRFhpgIOQqCHeBM=;
+ b=RaLkM3yL/0pR9lSYi1peHOzXj6rYZZQ8lvUtZkyykLWeCUluydcEfWiU+1NJh9g+kj
+ LMKdoZvHCh+lfPzSeBgCzzp9TLKWwgBBJBB8ZZ3xSbc59k2i+QDm3yzqHtjeoqgCwxMu
+ NhlsBcyi0xIQlTuUnQAyFV5/7M9ncf5uf5iOWuMAAqPwiW6K6egwVhLTQj7zRaPj1Oml
+ K50YPDYJjXxEOb3vOYncUS1EqmgcQpk4VupSH/6n6kwK/hSdv5W9HZThebHe5BXI5pPb
+ buU2xc+eB+hgY5V3FJ+tjmP4bbNR/Nxosfy3aI7iGfKuDj3Csz+iOkWSnuWFfn3kyTdb
+ nUBQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=5xe0rW2DfzVZcL35mReT6fuZ9hjF3alH87O+aqyNIac=;
- b=WtuDj26CyW7X0yEqvEoNvt5ORDkFMLMCF5n0rIdTrsaU36Q6C2sZxJWSgpG8mIqBgC
- QdumSF8rTpgEtgFKJldwfhDSJ0BImR5G6pV09LxP6NWZhMx9WwBbjrf9aDVkz17jV6sI
- KV/Gm3JWZ/BLttAi3X4hiakMt1YZDpqMbJADCrscxhKpPTGluHhFG4KyQfT8wC/w9z5g
- t7XkcoW/QtTEmmsfl7qfDa9Xi/eyrT1MH14vOzkdCSw4aPrroOZTCGotLonu2cLO+zxZ
- nTJjxvTei1nZcn+GPTv5VxNdVd1e9Wz8V/1hEuEQURKTp1zoK/9BFfSzji30Z1fHyzpE
- MUSA==
-X-Gm-Message-State: AOAM5337x8Gh9s8r2ndgV/NkZZvza8XMpCMmiw/4ZSW4VztoI/BxFoue
- L1MAijNIDCg6dYUK8oWb6tas4w==
-X-Received: by 2002:a63:ef4c:: with SMTP id c12mr23890728pgk.441.1625621524645; 
- Tue, 06 Jul 2021 18:32:04 -0700 (PDT)
+ bh=GfnO4w7zfONq/KjtjkwO2tXT1byxVRFhpgIOQqCHeBM=;
+ b=m5dDqGcCBvcamhKBt4LZ4EVCGWD9O3PLGd+0oyhp9QmB1QjFohkBnBinnGUbzaCRF0
+ DltRqCITbfgdgbtNE8qCJNfHnfM7OXyi56e5ViHd4cJB4syoPmb6HRfRVhsaQzUMAfaB
+ eFjZDcFBwlRZFC96FQHqZSpuATnDD1Y6rKGA0tam7xAjQMxoKTY5tr4tqI/V6/FoyqaC
+ LGZtzVPUqLFKRf0HYaeS6/YgUG1ELootACKgDvyU8z4znWgVaiZe0k8lkie2ISwcOp0c
+ z46WqYnFHHZGrTtLfrwxf3FNIOb8C13fD34MZKZpYWaCkE0KN8aisFaHpgUo4zQUwqtp
+ Nwwg==
+X-Gm-Message-State: AOAM531WPl7HBG6Aptirg367ryguOh4Tvc/W4dQgEnQ52quToRar6YD+
+ g7O/HnVKiOsBUYyLtPb0RxK/519cd7CodA==
+X-Received: by 2002:a62:758c:0:b029:31b:908f:4507 with SMTP id
+ q134-20020a62758c0000b029031b908f4507mr18578145pfc.42.1625621638538; 
+ Tue, 06 Jul 2021 18:33:58 -0700 (PDT)
 Received: from [192.168.1.11] ([71.212.149.176])
- by smtp.gmail.com with ESMTPSA id q18sm20014397pgj.8.2021.07.06.18.32.04
+ by smtp.gmail.com with ESMTPSA id s126sm18038749pfb.164.2021.07.06.18.33.58
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 06 Jul 2021 18:32:04 -0700 (PDT)
-Subject: Re: [PATCH 08/11] hw/arm/virt: Make PL061 GPIO lines pulled low, not
- high
+ Tue, 06 Jul 2021 18:33:58 -0700 (PDT)
+Subject: Re: [PATCH 09/11] hw/gpio/pl061: Convert to 3-phase reset and assert
+ GPIO lines correctly on reset
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20210702104018.19881-1-peter.maydell@linaro.org>
- <20210702104018.19881-9-peter.maydell@linaro.org>
+ <20210702104018.19881-10-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <30151204-d365-7c23-071f-b740b09d8b2f@linaro.org>
-Date: Tue, 6 Jul 2021 18:32:02 -0700
+Message-ID: <31d9f554-8094-01ff-a7f4-a2645016d1eb@linaro.org>
+Date: Tue, 6 Jul 2021 18:33:56 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <20210702104018.19881-9-peter.maydell@linaro.org>
+In-Reply-To: <20210702104018.19881-10-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::533;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x533.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -125,23 +126,24 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Maxim Uvarov <maxim.uvarov@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0OIhC9Yp3QtJ
+X-TUID: hAzbiExlYJAj
 
 On 7/2/21 3:40 AM, Peter Maydell wrote:
-> For the virt board we have two PL061 devices -- one for NonSecure which
-> is inputs only, and one for Secure which is outputs only. For the former,
-> we don't care whether its outputs are pulled low or high when the line is
-> configured as an input, because we don't connect them. For the latter,
-> we do care, because we wire the lines up to the gpio-pwr device, which
-> assumes that level 1 means "do the action" and 1 means "do nothing".
-> For consistency in case we add more outputs in future, configure both
-> PL061s to pull GPIO lines down to 0.
+> The PL061 comes out of reset with all its lines configured as input,
+> which means they might need to be pulled to 0 or 1 depending on the
+> 'pullups' and 'pulldowns' properties.  Currently we do not assert
+> these lines on reset; they will only be set whenever the guest first
+> touches a register that triggers a call to pl061_update().
 > 
-> Reported-by: Maxim Uvarov<maxim.uvarov@linaro.org>
+> Convert the device to three-phase reset so we have a place where we
+> can safely call qemu_set_irq() to set the floating lines to their
+> correct values.
+> 
 > Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
 > ---
->   hw/arm/virt.c | 3 +++
->   1 file changed, 3 insertions(+)
+>   hw/gpio/pl061.c      | 29 +++++++++++++++++++++++++----
+>   hw/gpio/trace-events |  1 +
+>   2 files changed, 26 insertions(+), 4 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

@@ -1,156 +1,98 @@
-Received: by 2002:ac2:5485:0:0:0:0:0 with SMTP id t5csp2515494lfk;
-        Tue, 6 Jul 2021 14:15:00 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyW4TgWx+DR8smI5PoYGNtcR17BS5VwQV77Qv8n1UZXMt5p0mRSWiYNrY5RQ2zq6mMUlqoD
-X-Received: by 2002:a67:fd09:: with SMTP id f9mr9694634vsr.15.1625606100730;
-        Tue, 06 Jul 2021 14:15:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1625606100; cv=none;
+Received: by 2002:ac2:5485:0:0:0:0:0 with SMTP id t5csp2905241lfk;
+        Wed, 7 Jul 2021 01:19:59 -0700 (PDT)
+X-Received: by 2002:adf:8b1d:: with SMTP id n29mr2328669wra.291.1625645998872;
+        Wed, 07 Jul 2021 01:19:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1625645998; cv=none;
         d=google.com; s=arc-20160816;
-        b=yGEznSCnDSJxCSD0cs9wke91zsjCRUp23PDUh49aPteDQHmQNCiEESWA8pqFaicgRN
-         9JyCM6enZ2wV1Sj7qqFw9nWMcVR/4wS4Mmy1pI40Q0dWB/jUwtKJwsfpmSbrz3t80r4l
-         kRdZWvnMM+E6Ud/WEeXHsbN6Hk8XZDEtwk1SMiSSr+yvLqx3fZ1pJRb+V0YgvK5Y7gd4
-         HWJh43J4XCnYyVhukSYJWn162RFIrPlkOBB74ekaedgXzRUQKASM9c/7/EX6uO8ht9Vf
-         Uki9rsKv5soSwMLOQY6KipC9lyxTO8XXkdAGF+f4wH4bEkj0RlSsu0pgIMPvcgyCMl62
-         Tegw==
+        b=It2yaPuTBG6+gmxN7J3ufA6ab26/yqU1TYo09PUSS39evkVm5yifJHAmiRioIe3SJB
+         v3W7N7YRdRTaphrc9doKsvoApy3lnxIeHjdumyxu3I0+PBjlfsjzzNUcz5ytYqxCcGS7
+         NvErUVmUv2UZOpTi+Mj6eVMBFfDDQwuo2mqI1MhYyxTyohvlWGA65sj8GsddkfiHnYc6
+         ZGjrRrjG0SzFiZrMD10Tbs48ZG4Gz/yRiGHagytBxR4fAVOUX1uefEsJR3FvyFqzzFvJ
+         P+1X3IL7sGW6Kf6tOWHZL3yYgibKSMrdXnjeyMwlzyzX2Unz2zv7M9OfXBxB6I7ni+D4
+         zs2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=wExOrkbXE+k9ZzW4PHpFswTvMVslLSEWrRVPqGpkEPQ=;
-        b=hJLMgi2dhOH1CnaJp/UfifBW6xHiR2GNOHcJBxA6yLc0iFzxgmZARfC/A5vtuzj9kr
-         HzQ9fhqceWh5vtDPNHYkMHNIUTAw1s0HvNoXPYzPtHhb2sizcELcl3h9WEOHv6IyVnA+
-         4RCLMF+B3iTicaZi3GQ7K1rY4TOxMXxPm0qhM0qAxHUMfaMl4+mMz4OWZJCk+vgvv9Fk
-         0BEufiXG6yBMrejF6Er0tR1e+5iXMVdg/e9FYEnZmhNlg1CKBHS7kVMF3xX/e7p5sFlW
-         d6fjvjFqWFrtJIx5CNS5G2WNXiTp9S7D4D6oeHlHvARTVVVo3kzNtyb/s0fmwcPhIcsn
-         j38w==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject:sender
+         :dkim-signature;
+        bh=vlLLwTSvZY5GMEjw/IRDS1ZEL4ADJORW92gO8p1AVPo=;
+        b=pzgOOtUsdzN7V8+0On9UEG29754n747pM4sMixhx4mSQHEltBdfexarbPJ7XOdB9TF
+         QIXHAU1HCEfrKinYJ/zSUbJYEtWlbyMQgViCN4KfNIWFcNemx1EdaCfYq8GghxuJ9Y/1
+         97EYNJLxYDz0RHq2WsUQ2v1iiRK05IFnorwgsvf9gClSUrINvZVwvjb5hrNs3nV8jwZi
+         jJerdBCmN+waANK+rCTEUSHNUrrw44DnqatzsRv9tW2jlTaXW1nVdHQqc9QYXkAWHlez
+         /beNQeai+ugH6WywrWpWtymjcpyYu5hZCSjzNEzP6iU/E5FEy96zmPdQef9ixXjm7ilP
+         4sUQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=OoQqHtKY;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v191si11492705vkv.58.2021.07.06.14.15.00
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 Jul 2021 14:15:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="phcjUTH/";
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id v1sor1068923wri.40.2021.07.07.01.19.58
+        (Google Transport Security);
+        Wed, 07 Jul 2021 01:19:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=OoQqHtKY;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:35658 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m0sPD-0000TU-V9
-	for alex.bennee@linaro.org; Tue, 06 Jul 2021 17:15:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56128)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
- id 1m0sOy-0000TD-Bh
- for qemu-arm@nongnu.org; Tue, 06 Jul 2021 17:14:44 -0400
-Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033]:46769)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
- id 1m0sOw-0004Rd-7S
- for qemu-arm@nongnu.org; Tue, 06 Jul 2021 17:14:44 -0400
-Received: by mail-pj1-x1033.google.com with SMTP id
- b5-20020a17090a9905b029016fc06f6c5bso251517pjp.5
- for <qemu-arm@nongnu.org>; Tue, 06 Jul 2021 14:14:41 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="phcjUTH/";
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=wExOrkbXE+k9ZzW4PHpFswTvMVslLSEWrRVPqGpkEPQ=;
- b=OoQqHtKYy4y8XnAq4xz+KE0h5kIUCasmhylHledcVzh5NLJjPC8BUcQFK9l+2lIvEY
- 1WffRJEIMB0YV31GJkvLOo28qLKf1MKQA9UywbgGRhGF49B5lBoGdDO6Fn3klxqVKoso
- lvJF9jobLQrDFyRXu70SlD9Nwejo2sMzSU0Vh69h3OJDIABNC1sKoG7+AlaIg3WND0DD
- PlPPnArg/DbcUVw0esJO650rDgX45YNq55vLS+j8jzguAzjASmjtqQdKvKlO7rwBmq6N
- bAaTQE+7/fgvds9QpCGclLxPbGd/oZWgNi6n0gpdg2fj2k1VYlj0D3uNbjrvkURFe+j+
- /CZw==
+        d=gmail.com; s=20161025;
+        h=sender:subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=vlLLwTSvZY5GMEjw/IRDS1ZEL4ADJORW92gO8p1AVPo=;
+        b=phcjUTH/90tqdgi6GUSLEDkaCrIWLx2IBE9vSkLVswG/BkzRCrx3ftb/RAMIZ0TR92
+         qLt1/jO8mDYqLNY0ewnsVJh9l/fprUfR7cq8ILWjR2Fut/fvUDYy0B9WLUvvzs9QYqz5
+         y7UVMyvEUWb7LNzmIwcfkNz8f5RT/3vyYHnrQDDEaMJ4M+7fzu3bu1P3XPBEphz3D27h
+         xbAPrvRR1dYhlGMxB2KAs3NTO5zu6kGfF9lF5lTZ/04+/RbaYcW75k2WPKIZgMEpwEGZ
+         RNPl7WJOi+KDkfmkyprutW5zw2fH1+XT0F+ldm2Ed83Sbnfvs30C2NqoSbslTiBN+FyZ
+         iRAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=wExOrkbXE+k9ZzW4PHpFswTvMVslLSEWrRVPqGpkEPQ=;
- b=GpnDehSI87nQwjfihgYMMB62PFfFf+62B0lYmhnVzeIH1oIFsdScLoN+Pqfo88XKeO
- ktxF9NtUR6LMniNZCtlIy2YinyuEEpnOYH0+56FloRA/0fQY0z+dFCByuIHtnmyJLRUg
- +RvbKVJH7aBpvVADR/GLt850n0DQu1Ev/qZRXwB2jNpLztc4zKzidDqIySJ3r0OjUoeD
- Lgi1y/rsIPoPW+uEE/eY+iQcQFDqPCO6eVK4PqMuRH9zzH2f6YR3wuVv0mt85datszs9
- aXY1j9xvWtlnLK/yhbEg14jdl+K/1iFLbQB93hwiHUSpNFcJtuv5itoesN/YFT8D3scb
- YgNw==
-X-Gm-Message-State: AOAM531x90dY4obQ4+yfI8+KZ90NooW4INuPUbCDNF27oNuXORdXXxBB
- bDhTizjw4bIDkrUTBvTxUQUN+Q==
-X-Received: by 2002:a17:90b:2512:: with SMTP id
- ns18mr22460568pjb.215.1625606080012; 
- Tue, 06 Jul 2021 14:14:40 -0700 (PDT)
-Received: from linbox.int.bluestop.org.com
- (c-174-52-16-57.hsd1.ut.comcast.net. [174.52.16.57])
- by smtp.gmail.com with ESMTPSA id e2sm20606290pgh.5.2021.07.06.14.14.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 06 Jul 2021 14:14:39 -0700 (PDT)
-From: Rebecca Cran <rebecca@nuviainc.com>
-To: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
- qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org
-Subject: [trivial PATCH 1/1] hw/intc: Improve formatting of MEMTX_ERROR guest
- error message
-Date: Tue,  6 Jul 2021 15:14:32 -0600
-Message-Id: <20210706211432.31902-1-rebecca@nuviainc.com>
-X-Mailer: git-send-email 2.26.2
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=vlLLwTSvZY5GMEjw/IRDS1ZEL4ADJORW92gO8p1AVPo=;
+        b=CiRBEtwGDiaBmPuodl1qLGkeJB+21U5E43xyflJRmJbmJEEynzL/FYYgZi5NXPw0NX
+         /maFpIFbjqTlJdvo1Qxs45n7JKo3/a6TMbJM+qxRe4cpms13Aqs2HTaobi50pLF8V2Ag
+         sgvhrahSWKtRh8pHKSLkuxfVpXrnNQYJJdHOm1YQ+78uPexeNxE8pflqX2s8DYjuU1i1
+         5wLjouOooA1f5agBIXEBSjWSlxK5+NbbQhzS8PD2+IEPXmPv0h2xt4C7eMQNHnBf03Az
+         TKlNPijrBTs3463Mc1E5eIu+ZwjJOEeBC2ETpbMsQg5j+OUYyZPdPU2f66pV/gZwG/Rk
+         zjJA==
+X-Gm-Message-State: AOAM532/9NPamZ9lt4lwp8Edx6SCv5nVXDsCQobOZ6BZK7uv0uLD6LYJ
+	Hamf6CNLTQlHcYoItpgXenPrZ7Lloek=
+X-Google-Smtp-Source: ABdhPJzJTFClzSqvqfF1xeaW3mPWk2eptKFj9GK+kXWU46bHE8LrCaTIlD0wCuz2SC58sruZfZVGyw==
+X-Received: by 2002:a5d:6c69:: with SMTP id r9mr25733314wrz.8.1625645998604;
+        Wed, 07 Jul 2021 01:19:58 -0700 (PDT)
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from [192.168.1.36] (93.red-83-35-24.dynamicip.rima-tde.net. [83.35.24.93])
+        by smtp.gmail.com with ESMTPSA id w22sm5447122wmc.4.2021.07.07.01.19.57
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 07 Jul 2021 01:19:58 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH v2 14/36] linux-user/arm: Drop "_v2" from symbols in
+ signal.c
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, laurent@vivier.eu
+References: <20210706234932.356913-1-richard.henderson@linaro.org>
+ <20210706234932.356913-15-richard.henderson@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <65540b48-3192-86b2-c176-3b6f7b2a1fad@amsat.org>
+Date: Wed, 7 Jul 2021 10:19:57 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
+In-Reply-To: <20210706234932.356913-15-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1033;
- envelope-from=rebecca@nuviainc.com; helo=mail-pj1-x1033.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Rebecca Cran <rebecca@nuviainc.com>, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PQimDvEXPbhV
+X-TUID: oadIYvuhlaQ7
 
-Add a space in the message printed when gicr_read*/gicr_write* returns
-MEMTX_ERROR in arm_gicv3_redist.c.
+On 7/7/21 1:49 AM, Richard Henderson wrote:
+> Since we no longer support "v1", there's no need to
+> distinguish "v2".
+> 
+> Cc: qemu-arm@nongnu.org
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  linux-user/arm/signal.c | 155 +++++++++++++++++-----------------------
+>  1 file changed, 65 insertions(+), 90 deletions(-)
 
-Signed-off-by: Rebecca Cran <rebecca@nuviainc.com>
----
- hw/intc/arm_gicv3_redist.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/hw/intc/arm_gicv3_redist.c b/hw/intc/arm_gicv3_redist.c
-index 8645220d6183..53da703ed843 100644
---- a/hw/intc/arm_gicv3_redist.c
-+++ b/hw/intc/arm_gicv3_redist.c
-@@ -453,7 +453,7 @@ MemTxResult gicv3_redist_read(void *opaque, hwaddr offset, uint64_t *data,
-     if (r == MEMTX_ERROR) {
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "%s: invalid guest read at offset " TARGET_FMT_plx
--                      "size %u\n", __func__, offset, size);
-+                      " size %u\n", __func__, offset, size);
-         trace_gicv3_redist_badread(gicv3_redist_affid(cs), offset,
-                                    size, attrs.secure);
-         /* The spec requires that reserved registers are RAZ/WI;
-@@ -510,7 +510,7 @@ MemTxResult gicv3_redist_write(void *opaque, hwaddr offset, uint64_t data,
-     if (r == MEMTX_ERROR) {
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "%s: invalid guest write at offset " TARGET_FMT_plx
--                      "size %u\n", __func__, offset, size);
-+                      " size %u\n", __func__, offset, size);
-         trace_gicv3_redist_badwrite(gicv3_redist_affid(cs), offset, data,
-                                     size, attrs.secure);
-         /* The spec requires that reserved registers are RAZ/WI;
--- 
-2.26.2
-
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

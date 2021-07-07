@@ -1,103 +1,174 @@
-Received: by 2002:ac2:5485:0:0:0:0:0 with SMTP id t5csp2929376lfk;
-        Wed, 7 Jul 2021 01:59:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz5snfMbE+8RzeJG3V+j1E4gfNKy+VvJxVF8kWiwF0wchWVrDLDw+ljSSTPj2VipGYjgZjM
-X-Received: by 2002:a25:b3c8:: with SMTP id x8mr30801506ybf.466.1625648351497;
-        Wed, 07 Jul 2021 01:59:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1625648351; cv=none;
+Received: by 2002:ac2:5485:0:0:0:0:0 with SMTP id t5csp3085896lfk;
+        Wed, 7 Jul 2021 05:49:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzjvkkbYQsIADDM9y49wKh/058MguXCAH8ZDrIOAUEMmfVfxd3TjdsOPN40FJ4JJgiTKZeF
+X-Received: by 2002:a05:6402:5214:: with SMTP id s20mr2924550edd.128.1625662163133;
+        Wed, 07 Jul 2021 05:49:23 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1625662163; cv=pass;
         d=google.com; s=arc-20160816;
-        b=yMHZ7cieTktB96/uFlpI1bs2bwaC+7XI6MJECaM251i/KsKsa2pYBsmW7IQRyynh6h
-         IbADTB+QIaJFrFMpnwMMzcFBrFsM6Q4pooSfdUYIArkPVycNDybKIuiYbx7AYceZgd45
-         GsLajtwj/aXnlZvTzlAbxKB+8tYjPvhO9H3mbnibukSjdKbyExLh6wiYerlS9KN9null
-         0lBzTlzfWUHuc8sLtcPUlCtyMbCtY+s+P5oiZb+mBclrvJk3eU1GSTl/C/HmP9aPFC0D
-         qi7kiTuX9P003taGWgKKr9cSxLa2OnNSW5imlZ0IIaSz2wPUNP/VRIAVNi21xMjC58A6
-         E+6w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :mime-version:dkim-signature;
-        bh=mdr47SYEb4XwzmWuDW170BuCPGspsoVPn7BPSWQRkPc=;
-        b=pnelSeWIx1OhxqP9V4zsJVSPxO16wKrfjp62aZaS1iIK/OPFoP/lLhqyTotx+Ykb+I
-         U+PbvTu7mTq3PgLkSN7gR/9wJMu0QSbO5Ko5jjhhwoiZNv68EvkE+IimIv8pmive4XDR
-         Ujc7al5AMidu040FEXf3lXmAsXVvJw56MGSIh4Xh7dePfxKokkAIqziGRLnD6Fgv0z4N
-         QIK3ac+MA/BUhOZR+LXdmHzjQc0ieJvZDQEWDIAP2O30PUS7W4uJlK0nlfKrPuKW42iX
-         dtRHBgcS9MavMpl7B1CbKbNZGBAENbdzwyOGprvtrm09uGHmsne6eNmYQOvyx0a81fx8
-         G4ww==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZnLdq1Fh;
+        b=PWPz39QcVcl8QHauik8rmTZDvze+5oKY7x0OZc0dLSxON8VbDWRTFisjJmhiqpyGHu
+         it5m2VTw3rukRN5/7SE84Lx8Hs5EDSYuAy4C4Ek91b/XWWVVm0RO7SpY7tQHhmdJjbT+
+         w0f1E5Mb/u15vvA/iZ7B35bZ9Mzud42x4tn6q7MG7wSxzCVyvrzPieMxg0AR8SOyJpDe
+         w0DZziAmloHh292aF9QFnFMn4zDTytIMqRz7t4CsiE9M3ga0/JS7H5JrWmPKf4HOaw+v
+         46mvP4GtkqyJJb54wnsG759ORn06NGTRXOvIwpqQqMt6phB5V5vhB6I41GLr2SuPCJeu
+         2pfQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=7yumNUEEawUO7yujwdkdPjG3KawrnRnLZH9GNBHwv74=;
+        b=DDgu8tD7jUY54Sxn7Q98mZRXsO+93hA7PMHLQXODbFgBYWIOPrAsa4NE/3YrSbhpZL
+         zrk/CqP/TE1bX9+lBKA9FRiQ9noGzm3+FX9onINcDBi9r1aEXqVhdCXx2ujsngpj9Bp4
+         vF9Ys5vTn+tzgELee4CvHvVU5hsS7m3SgEUAcB8w90p68cfdGVaI9e9efb0RhD+DAoDS
+         bwQ9LI6kAA1wq1Vc879bqD1+EaSUfUcaUBmeEEcnmasAW/NU2k26RDWIpIScuB7QeIQi
+         cjuZazj8wP6j64vbaqwc4Hlf1MUykfku6pYUp5Djl78U8ULPoRDj7PBlGsVHW4mRVYc/
+         NeJQ==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@NXP1.onmicrosoft.com header.s=selector2-NXP1-onmicrosoft-com header.b=bJAZjyKy;
+       arc=pass (i=1 spf=pass spfdomain=oss.nxp.com dkim=pass dkdomain=oss.nxp.com dmarc=pass fromdomain=oss.nxp.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=nxp.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x1si17016755ybn.274.2021.07.07.01.59.11
+        by mx.google.com with ESMTPS id k9si19774857edv.565.2021.07.07.05.49.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Jul 2021 01:59:11 -0700 (PDT)
+        Wed, 07 Jul 2021 05:49:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZnLdq1Fh;
+       dkim=pass header.i=@NXP1.onmicrosoft.com header.s=selector2-NXP1-onmicrosoft-com header.b=bJAZjyKy;
+       arc=pass (i=1 spf=pass spfdomain=oss.nxp.com dkim=pass dkdomain=oss.nxp.com dmarc=pass fromdomain=oss.nxp.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:37922 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=nxp.com
+Received: from localhost ([::1]:39774 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m13Og-00026D-S6
-	for alex.bennee@linaro.org; Wed, 07 Jul 2021 04:59:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33630)
+	id 1m16zS-0006XX-02
+	for alex.bennee@linaro.org; Wed, 07 Jul 2021 08:49:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36302)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cyruscyliu@gmail.com>)
- id 1m10j2-000146-6y; Wed, 07 Jul 2021 02:08:00 -0400
-Received: from mail-ot1-x335.google.com ([2607:f8b0:4864:20::335]:45757)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <cyruscyliu@gmail.com>)
- id 1m10j0-00023s-2p; Wed, 07 Jul 2021 02:07:59 -0400
-Received: by mail-ot1-x335.google.com with SMTP id
- 75-20020a9d08510000b02904acfe6bcccaso1188963oty.12; 
- Tue, 06 Jul 2021 23:07:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:from:date:message-id:subject:to;
- bh=mdr47SYEb4XwzmWuDW170BuCPGspsoVPn7BPSWQRkPc=;
- b=ZnLdq1FhwZDrH4CWH8KCsiP5PtFdF70s2bgqyySZHtBLnaKp+kilkA5N5sezDlScaA
- fjAPjQRyg6FYilWxuZ3VgFsvQZkUbPXerV/6bb+vk8dA7ds4HTFzlrhVbN1cVwYoQjid
- mJexdGicuM/PFMUs+nbIj+1qfRdZIxj9i/5gLLzMoSWZoHPDNHPB3xOMh2d3Q/s+ZBF2
- dUIdo8jhtIp1TGnSUC7ZiJTSdYzhogOgZUREw+bI9muRxfTmwKZSMMTakwSL/2rObsIj
- x9Zs+ys5Q4gUqAKKny3Cj2Woe6hcB0YcE/+HdKclVvhjawvJsLcYr+Sbd/KnZA7blXPm
- GcjA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=mdr47SYEb4XwzmWuDW170BuCPGspsoVPn7BPSWQRkPc=;
- b=BhgqJindRF+bfIV8RG15SUNIZpb/elP3wmP1dnJgZEvcSXKbD2gOgwip1ymJ3kn2Np
- bR5Mw7ZlkZ/VdfLcACobHUM7eCJQWDjCm/vlGCAqkwcIUa9nZax5gt4u60tIgEQ47Pjx
- yts04xy2U1qrhafiNBz5sZ2oXorRdOGcPpW94nyAWXTSD8qEiKY8zgg+hfQ3b5MGzSZL
- t+t6GUdHp3On6MLn0IkPpvMDl6b1Mif/uWQN4Oj35HcMv/RP+31ncH2/ekdC0+PW9eOP
- POvI6ksZDOZDuhNeId4rhtCEGVWI7N3/QqYO3qAUyGVe3uiDQEbDrcaCcivEQlNgwSE0
- cl8Q==
-X-Gm-Message-State: AOAM532UETf0bM+Dijbai4u+cvvMPjMTj8kLCyWVAaPQZFMJBYDf/O+j
- rlm/YB1tU/x4fXMPvJ8HSrAVShZxFHyz8sQItatai+JTjUw/fscaU5g=
-X-Received: by 2002:a05:6830:1101:: with SMTP id
- w1mr17865102otq.156.1625638075663; 
- Tue, 06 Jul 2021 23:07:55 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <daniel.baluta@oss.nxp.com>)
+ id 1m15uO-0006Jh-44; Wed, 07 Jul 2021 07:40:04 -0400
+Received: from mail-eopbgr70052.outbound.protection.outlook.com
+ ([40.107.7.52]:17390 helo=EUR04-HE1-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <daniel.baluta@oss.nxp.com>)
+ id 1m15uK-0006tY-Od; Wed, 07 Jul 2021 07:40:03 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=S5CG6IZEEjY6EAgdSo7+LseHhpYRQv5Lrxbfvie2ADk8Hh+VHNzEH7Nd08R0ZSSw6DJb8cMU74vKMisoDrpEiGzxIK38save4qnDIyhJmcqqDFDHEQqb/fpHJ52Boe86G/MRjqZtAHQoQc0R0OMf/DEW9PS7nDk/BG3YAN7VxRMRN1gu+B8iLIQwTjYsCWtamVdX23yyv4zzut8CJkKj4VrEWE4Y7hLczcg8sKYiIJ6KscRyCx9cqC5OGlm4NMpdcEpHuysp39frBIYXi4MEBUCcWawTvK8oxtI8Gkyv4WD6O1QOHWIzaMagv2pOVM9KXUuMUVRtv8C4S4kEkAd9dA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=7yumNUEEawUO7yujwdkdPjG3KawrnRnLZH9GNBHwv74=;
+ b=RG4Us1Dq8Um2GP8le2GJ51wtE/FfK/Z8w0PQu39JYmrCaEayzazEsRSwWZSLBCD+zz7aNGllyPWadq3rvrxhXn47cSMJlYhqb1L/d5sQCqi6xYaBQzWgnb7ajOZsu1/845xPxkhKegfWES1bTuNrxX5hg17lqYLAb+NnmL+lITeTI4mvs4eoKwnJJgTfcPJ6VjWAm/Q3+1mK/4kP1n/Lqz22U7ZcyC/M/ULK5yBHxUTsZVlIfBh62VxvgV7a9usjkfTH6Mu7v7dtdiyzqpB669Lpj+V6r5uDN556ScwI2cmzJUdWw9AURXtkNG5G8HpJckvftSj1psVhBUxXQFzszw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oss.nxp.com; dmarc=pass action=none header.from=oss.nxp.com;
+ dkim=pass header.d=oss.nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=NXP1.onmicrosoft.com; 
+ s=selector2-NXP1-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=7yumNUEEawUO7yujwdkdPjG3KawrnRnLZH9GNBHwv74=;
+ b=bJAZjyKyvx3qpXAk3pENpyniZ0Uoq9tLAJgtnHH44rY0+eBeCAi7utVA0YDIaoxsAZPzv5DZvTqgW34klnO3XNOqR2GTG6792g8LwLbNN7qj2fMvZDDkJiSt7cKIisavqQ/UFDuBRAi9Ob0B/1Rk2A7b2clihRMFbFnlSoeuzzQ=
+Authentication-Results: nongnu.org; dkim=none (message not signed)
+ header.d=none;nongnu.org; dmarc=none action=none header.from=oss.nxp.com;
+Received: from VI1PR04MB5151.eurprd04.prod.outlook.com (2603:10a6:803:61::28)
+ by VI1PR0402MB3664.eurprd04.prod.outlook.com (2603:10a6:803:1e::18)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4287.31; Wed, 7 Jul
+ 2021 11:39:53 +0000
+Received: from VI1PR04MB5151.eurprd04.prod.outlook.com
+ ([fe80::693d:621d:666a:ac03]) by VI1PR04MB5151.eurprd04.prod.outlook.com
+ ([fe80::693d:621d:666a:ac03%6]) with mapi id 15.20.4287.033; Wed, 7 Jul 2021
+ 11:39:53 +0000
+From: Daniel Baluta <daniel.baluta@oss.nxp.com>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org,
+	peter.maydell@linaro.org
+Subject: [PATCH] hw: timer: Add i.MX sysctr timer implementation
+Date: Wed,  7 Jul 2021 14:39:37 +0300
+Message-Id: <20210707113937.72602-1-daniel.baluta@oss.nxp.com>
+X-Mailer: git-send-email 2.27.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: AM0PR01CA0132.eurprd01.prod.exchangelabs.com
+ (2603:10a6:208:168::37) To VI1PR04MB5151.eurprd04.prod.outlook.com
+ (2603:10a6:803:61::28)
 MIME-Version: 1.0
-From: Qiang Liu <cyruscyliu@gmail.com>
-Date: Wed, 7 Jul 2021 14:07:43 +0800
-Message-ID: <CAAKa2jmatcBonTYeZCHnE4TR543FKQR4Lrv2iMKaZUprXH=3ng@mail.gmail.com>
-Subject: [QEMU-SECURITY] Out-of-bounds read in xlnx_dp_read
-To: qemu-security@nongnu.org, Alistair Francis <alistair@alistair23.me>, 
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
- yajin@vm-kernel.org, Mathias Payer <mathias.payer@epfl.ch>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::335;
- envelope-from=cyruscyliu@gmail.com; helo=mail-ot1-x335.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from localhost.localdomain (2a02:2f08:5901:c300:30d0:4026:5ebc:eb2d)
+ by AM0PR01CA0132.eurprd01.prod.exchangelabs.com (2603:10a6:208:168::37) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4308.19 via Frontend
+ Transport; Wed, 7 Jul 2021 11:39:52 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 73f63534-810b-489c-be05-08d9413bef9b
+X-MS-TrafficTypeDiagnostic: VI1PR0402MB3664:
+X-MS-Exchange-SharedMailbox-RoutingAgent-Processed: True
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <VI1PR0402MB3664D248273A0D1C123949E9B81A9@VI1PR0402MB3664.eurprd04.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:186;
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: rX+FTgk3vEJYsf8WJpEPx5BRpOcqQZHvgZ7eqKKJzP40DscBmu6/jT8403fo2HxA/YfEUUsoGGX0TiSl0cwnCGUAfP0zV5pC5sB43RgSwymSPusl6l200GoroWRDyghHQL1LEFlss54xf59Ldb+zP4uZwKZbUpXCtBQUCXsVxZJcS8Usvo3InAZX2J9Yhk9+8V/6PRk+wsalG5VL7DSmIhxwBNlVSgJtoJz1WfCaZkbhbk3qiulwyrAUOt6Sea5ZZYyK8aR2E+ISAAahTYcmz4YnsTMBimCI+C8BSM3r5TRr2yVkcJFmcPY0Y1sCEOEQ0UHTTxIqOK0mh5nBcSMmAb6njP99w2m3uBgXSsiH7cQxDdczm1Em1JU6ljgJZvxQ0Q+EtYEj3PK4YoA/XK1MrA29bd/04ggq+KRWsT0Zz1V7ienxmRAqgzvqXdEMBUnlSjvUMjRtIrbAFbVlqC0uRek8zf+PNko8vGr/t2j05x9n4lFJHnG/VDlXsQQAG1wy6xyS5k7qbcuAVJs9QKDos0wEGrDNCrOse3CcBzS3NWBgaH3JeEMEZ7TtX60GCqG5FqZmrMOhFeFrl8Txt6dhIfyMC2tKMRQe/8k4bz1LyvDFaW1z5g5sF5M+Ohnwk3fYtgQxAMm7sEcRnHDLOobVIw==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:VI1PR04MB5151.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(39860400002)(376002)(366004)(136003)(346002)(396003)(44832011)(38100700002)(83380400001)(86362001)(4326008)(66476007)(30864003)(8936002)(316002)(186003)(2906002)(6506007)(66556008)(66946007)(1076003)(6512007)(8676002)(52116002)(478600001)(2616005)(5660300002)(6666004)(6486002);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?amRtbkszd0h1b1UrUU96TFM0SHlSemVKRzJkK0ZydC8wU2NNNEV0elo0cFBi?=
+ =?utf-8?B?UHZSWkhlb1FGU3MySlB1VTd2YW01V0JNZ1JhVGNvVFc3UHdKSU1IVC9QUGVY?=
+ =?utf-8?B?RGFoNDdBQzJZaFRTMWVvd3VRQm1scHFNUEdQL2NhMi9MODdIUnFtUnkyVVJy?=
+ =?utf-8?B?dVJtcDhOUjRqdWN5RDFySCtFb1gvT3NhT2wraDV3WjhqMzNwUVBDT0YrSzMr?=
+ =?utf-8?B?aVh1Z01rKzlYOVBoK0x2cGdHYVNsNmVINEV1VnVsTzRXTVJacHkvNVdPNDRU?=
+ =?utf-8?B?TTlyc0VmYmF2bnRaSisyMzVWRm9ZbCtVQ29ZdHZ2R09rZkRFSjA1YklTeEpp?=
+ =?utf-8?B?d3Z1QmNaNlpBdDg5UWZ3RWtQcGpNWkdmS0U1TVhzMFhxa2pRc2NqV25iSTl0?=
+ =?utf-8?B?SG0wN1RuYVp3Wi9QVEtZc3JhakFDeXJBWUxSVExOTkxhU2xkL0pZWllONG9E?=
+ =?utf-8?B?TElQV1ora1ZUdThCLzVpWWVjd1BsOVR6SG5Hb3VlVFYyYmErdFJvWVhwQzhE?=
+ =?utf-8?B?bkhSaXRMVnAzNGNIMEM4VElGc1U2OFFOdzNvaXlCdFhhc2NTdVcza1JzYXR6?=
+ =?utf-8?B?bVlOWFpwcGwva2cxZ2FLckYrUG1xeEZUWVo2d0JRVStWWlhpQVliOVNwdlgx?=
+ =?utf-8?B?TldXYmg4U0ljUGhaNmpXejFFT2syU0hJVjVCa1FSOXZ3OVpYZEx0TGUwcFZD?=
+ =?utf-8?B?ejE4RW0zSlBnNGkvR0hkb1RrckNNa3ZJSmFtbXBRbkFXbXFmL1R1M1cwaWJE?=
+ =?utf-8?B?eXFTTTNrU2I5Mkg1Rjl5UmFxM0N4VW1TSk01ZUx2bHZJVVF5YTZBcmx2M2sy?=
+ =?utf-8?B?STN5RU15czFJMDZLWnVaN3hzWFU3R0d5bVZXeUdIMTQzTHI0TGZidDlYc3E5?=
+ =?utf-8?B?OFhJVllDMUpLS2p4OEJjczJMWXpDUUhtYWR2bXIzVm5hM1h0U0hDTGpvRFEx?=
+ =?utf-8?B?bjBRT0ltK0lCVmJFaXJ6aU1ZNHZBZXFhVUNtVzRZTndVUEFDZ2tCb0xOQnk4?=
+ =?utf-8?B?WE1DR3oxdkh6K2UwM1J6M0VqdjZNRS9uN0svZThjbmNVdktUV0wzMGlzdklz?=
+ =?utf-8?B?dmNxZ1RNTjNTMkRKTXZvZS9mVC9SOHVhMEJkNitjQVdUSWNzeDkydFVOVzNX?=
+ =?utf-8?B?WmxDcWVnK1p5QVpXenVEQzRXd2NwWnZMVnl1TitlU0kvOFV6ODAveWIvVzBq?=
+ =?utf-8?B?YVlMRVF3YTM0Sy9qMjNzM0NtTVN5azNCU3RrZHowalVjYnNsanFPVVRZdU1C?=
+ =?utf-8?B?Tlp4VHYxZEN1MVQ5RjY0YTNibENRc2p3ZWp1NklGN2c0WFp1aG9MQklxTmpl?=
+ =?utf-8?B?bmwwOWgxaHE0elNNY3Fta2pSdXBISGt5ekZlL01iVmgzTjI4eC9pMm1Kc05p?=
+ =?utf-8?B?RzBOYXMyZTR2Mzd0QWtlblh2TUg5ZitCblFJL0lNeVdKTVhOZXhFMk9KZEZx?=
+ =?utf-8?B?K0Fwb0toMnYwMVNFOXIrdkpDTmlhTWpmMWcxNmpnbXFQRHZVNHdTakJxdU1l?=
+ =?utf-8?B?U2tqa2NBRHZPNE55OGQ5Sk45WERUM1hpV1lQbVdDOGFjOEhVeFlBVUx1Tyto?=
+ =?utf-8?B?SVFrWGYrSnpkajJVc3lHSkNtUkIvYitidnU4bWVoZ01hVXhFY1l3TUcxakhn?=
+ =?utf-8?B?M1pYVlFHQTYvVHF3VXp5YU9UQlZoT0hxZXZGU2VhL2w5UTV6U2JjRmNwbFRz?=
+ =?utf-8?B?bjArLyt6MGxQUUtZUXljTmFxWlk2ekVlZjE4cEZ0bmJWNitsSndwanZjZU5h?=
+ =?utf-8?B?ZXp5TlVWb082RVF6UUVCOWhJZHVMRXJ0UkJYZVh0TTl0NnRGMk5WTGxVK0Qw?=
+ =?utf-8?B?emF1bm9RMXNwcmc3N3NSZkRaNTh3aENvL1RMeTNtMzFsQ2I5NC9KYUl1M2xZ?=
+ =?utf-8?Q?z2ei1NuwuWOF9?=
+X-OriginatorOrg: oss.nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 73f63534-810b-489c-be05-08d9413bef9b
+X-MS-Exchange-CrossTenant-AuthSource: VI1PR04MB5151.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Jul 2021 11:39:53.3790 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: FZx+pDNLtUe6XiI84Z7rtiLUU6+1NjmltgiTq8KoYdilA7AMY2Kx82tLfYmEe2Kw/CobYy4BItWkXwHucHxrvg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR0402MB3664
+Received-SPF: pass client-ip=40.107.7.52;
+ envelope-from=daniel.baluta@oss.nxp.com;
+ helo=EUR04-HE1-obe.outbound.protection.outlook.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, MSGID_FROM_MTA_HEADER=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 07 Jul 2021 04:59:03 -0400
+X-Mailman-Approved-At: Wed, 07 Jul 2021 08:48:48 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -109,143 +180,513 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: vioricamancas@yahoo.com, daniel.baluta@gmail.com,
+ Daniel Baluta <daniel.baluta@nxp.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mE/5WKXtBdvR
+X-TUID: fDDGYyyUJStl
 
-Hi folks,
+From: Viorica Mancas <vioricamancas@yahoo.com>
 
-I found an out-of-bounds read in xlxn_dp_read and here are the details.
+The System Counter (SYS_CTR) is a programmable system counter, which provides a
+shared time base to multiple processors. It is intended for applications where the counter
+is always powered on, and supports multiple unrelated clocks.
 
-## Root Cause Analysis
+This system counter can be found on NXP i.MX8MN.
 
-1. xlnx_dp_read allows one-element-off read at its default branch
-because of an improper index.
+Signed-off-by: Viorica Mancas <vioricamancas@yahoo.com>
+Signed-off-by: Daniel Baluta <daniel.baluta@nxp.com>
+---
+ hw/timer/imx_sysctr_timer.c         | 374 ++++++++++++++++++++++++++++
+ hw/timer/meson.build                |   1 +
+ include/hw/timer/imx_sysctr_timer.h |  84 +++++++
+ 3 files changed, 459 insertions(+)
+ create mode 100644 hw/timer/imx_sysctr_timer.c
+ create mode 100644 include/hw/timer/imx_sysctr_timer.h
 
-```
-#define DP_CORE_REG_ARRAY_SIZE (0x3AF >> 2)
-struct XlnxDPState {
-    uint32_t core_registers[DP_CORE_REG_ARRAY_SIZE];
-    MemoryRegion core_iomem;
-}
-static uint64_t xlnx_dp_read(void *opaque, hwaddr ...
-    switch (offset) {
-        default:                             // (0x3AF >> 2) is equal
-to (0x3AC >> 2)
-            assert(offset <= (0x3AC >> 2));  // the op should be <
-            ret = s->core_registers[offset]; // one-element-off access
-            break;
-```
+diff --git a/hw/timer/imx_sysctr_timer.c b/hw/timer/imx_sysctr_timer.c
+new file mode 100644
+index 0000000000..728cde9c79
+--- /dev/null
++++ b/hw/timer/imx_sysctr_timer.c
+@@ -0,0 +1,374 @@
++/*
++ * QEMU NXP Sysctr Timer
++ *
++ * Author: Viorica Mancas <vioricamancas@yahoo.com>
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
++ * THE SOFTWARE.
++ */
++
++#include "qemu/osdep.h"
++#include "hw/sysbus.h"
++#include "hw/irq.h"
++#include "hw/ptimer.h"
++#include "hw/qdev-properties.h"
++#include "qemu/log.h"
++#include "qemu/module.h"
++#include "qom/object.h"
++#include "hw/timer/imx_sysctr_timer.h"
++
++#ifndef DEBUG_IMX_SYSCTR
++#define DEBUG_IMX_SYSCTR 0
++#endif
++
++#define DPRINTF(fmt, args...) \
++    do { \
++        if (DEBUG_IMX_SYSCTR) { \
++            fprintf(stderr, "[%s]%s: " fmt , TYPE_IMX_SYSCTR_TIMER, \
++                                             __func__, ##args); \
++        } \
++    } while (0)
++
++#define low(x) (x & 0xFFFFFFFFLL)
++#define high(x) (x >> 32)
++
++#define CLEAR_LOW_MASK (0xFFFFFFFFUL << 32)
++#define CLEAR_HIGH_MASK (0xFFFFFFFF)
++
++static const char *imx_sysctr_timer_reg_name(uint32_t reg);
++
++/* The system counter counts up and the ptimer counts down */
++static uint64_t imx_sysctr_update_count(IMXSysctrState *s)
++{
++    s->cnt = s->next_timeout - ptimer_get_count(s->timer);
++
++    return s->cnt;
++}
++
++static void imx_sysctr_update_int(IMXSysctrState *s)
++{
++    if (!(s->cmpcr & SYSCTR_CMPCR_IMASK) && (s->cmpcr & SYSCTR_CMPCR_EN)) {
++        qemu_irq_raise(s->irq);
++    } else {
++        qemu_irq_lower(s->irq);
++    }
++}
++
++/* Must be called from within ptimer_transaction_begin/commit block */
++static void imx_sysctr_compute_next_timeout(IMXSysctrState *s, bool event)
++{
++    uint64_t timeout = SYSCTR_TIMER_MAX;
++    uint64_t count;
++    uint64_t cmp_reg;
++    long long limit;
++
++    if (!(s->cmpcr & SYSCTR_CMPCR_EN)) {
++        /* if not enabled just return */
++        return;
++    }
++
++    /* update the count */
++    count = imx_sysctr_update_count(s);
++
++    if (event) {
++        /*
++         * This is an event (the ptimer reached 0 and stopped), and the
++         * timer counter is now equal to s->next_timeout.
++         * 
++         * The clock counts to overflow unless it is reset.
++         */
++        if (count == SYSCTR_TIMER_MAX) {
++            /* We reached SYSCTR_TIMER_MAX so we need to rollover */
++            count = s->cnt = s->next_timeout = 0;
++        }
++    }
++
++    /* now, find the next timeout related to count */
++    cmp_reg = s->cmpcv;
++    if ((count < cmp_reg) && (timeout > cmp_reg)) {
++        timeout = cmp_reg;
++    }
++
++    /* the new range to count down from */
++    limit = timeout - imx_sysctr_update_count(s);
++
++    if (limit < 0) {
++        /*
++         * if we reach here, then QEMU is running too slow and we pass the
++         * timeout limit while computing it. Let's deliver the interrupt
++         * and compute a new limit.
++         */
++        imx_sysctr_compute_next_timeout(s, true);
++
++        s->cmpcr |= SYSCTR_CMPCR_ISTAT;
++        /* send the irq */
++        imx_sysctr_update_int(s);
++    } else {
++        /* New timeout value */
++        s->next_timeout = timeout;
++
++        /* reset the limit to the computed range */
++        ptimer_set_limit(s->timer, limit, 1);
++    }
++}
++
++static void sysctr_compare_value_update(IMXSysctrState *s) {
++    ptimer_transaction_begin(s->timer);
++
++    /* compute the new timeout */
++    imx_sysctr_compute_next_timeout(s, false);
++    ptimer_transaction_commit(s->timer);
++}
++
++static uint64_t
++timer_read(void *opaque, hwaddr offset, unsigned int size)
++{
++    IMXSysctrState *s = IMX_SYSCTR_TIMER(opaque);
++    uint32_t reg_value = 0;
++
++    switch (offset) {
++    case CNTCV_LO: /* Counter Count Value Low Register */
++        imx_sysctr_update_count(s);
++        reg_value = low(s->cnt);
++        break;
++
++    case CNTCV_HI: /* Counter Count Value High Register */
++        imx_sysctr_update_count(s);
++        reg_value = high(s->cnt);
++        break;
++
++    case CMPCR: /* Compare Control Register 0*/
++        reg_value = s->cmpcr;
++        break;
++
++    case CMPCV_LO: /* Compare Count Value Low Register 0 */
++        reg_value = low(s->cmpcv);
++        break;
++
++    case CMPCV_HI: /* Compare Count Value High Register 0 */
++        reg_value = high(s->cmpcv);
++        break;
++    
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                  "Guest read from unimplemented/invalid register\n");
++        break;
++    }
++
++    DPRINTF("(%s) = 0x%08x\n", imx_sysctr_timer_reg_name(offset), reg_value);
++
++    return reg_value;
++}
++
++static void handle_control_register_update(IMXSysctrState *s, uint32_t oldreg)
++{
++    ptimer_transaction_begin(s->timer);
++
++    if (s->cmpcr & SYSCTR_CMPCR_EN) {
++        /* if enabled we want the timer to count until overflow */
++        s->next_timeout = SYSCTR_TIMER_MAX;
++        ptimer_set_count(s->timer, SYSCTR_TIMER_MAX);
++        /* update the cnt value */
++        imx_sysctr_compute_next_timeout(s, false);
++        ptimer_run(s->timer, 1);
++    } else {
++        /* Clearing the enable bit (EN=0) will clear the status bit
++        * (ISTAT=0) and will negate the interrupt output signal.
++        */
++        s->cmpcr &= ~SYSCTR_CMPCR_ISTAT;
++        qemu_irq_lower(s->irq);
++        /* stop timer */
++        ptimer_stop(s->timer);
++    }
++    ptimer_transaction_commit(s->timer);
++}
++
++static void
++timer_write(void *opaque, hwaddr offset,
++            uint64_t val64, unsigned int size)
++{
++    IMXSysctrState *s = IMX_SYSCTR_TIMER(opaque);
++    uint32_t value = val64, oldreg;
++  
++    switch (offset) {
++    case CNTCV_LO: /* Counter Count Value Low Register */
++        qemu_log_mask(LOG_GUEST_ERROR,
++                  "Guest write to read only register\n");
++        break;
++
++    case CNTCV_HI: /* Counter Count Value High Register */
++        qemu_log_mask(LOG_GUEST_ERROR,
++                  "Guest write to read only register\n");
++        break;
++
++    case CMPCR: /* Compare Control Register 0*/
++        oldreg = s->cmpcr;
++        /* the CMPCR_ISTAT bit is read only */
++        s->cmpcr &= ~CMPCR_WRITE;
++        s->cmpcr |= value & CMPCR_WRITE;
++
++        DPRINTF("the value of cmpcr is now: 0x%"PRIx32"\n", s->cmpcr);
++
++        handle_control_register_update(s, oldreg);
++        break;
++
++    case CMPCV_LO: /* Compare Count Value Low Register 0 */
++        s->cmpcv &= CLEAR_LOW_MASK;
++        s->cmpcv |= value;
++
++        DPRINTF("the value of cmpcv is now: 0x%"PRIx64"\n", s->cmpcv);
++
++        sysctr_compare_value_update(s);
++        break;
++
++    case CMPCV_HI: /* Compare Count Value High Register 0 */
++        s->cmpcv &= CLEAR_HIGH_MASK;
++        value &= 0x00FFFFFF;
++        s->cmpcv |= ((uint64_t) value) << 32;
++
++        DPRINTF("the value of cmpcv is now: 0x%"PRIx64"\n", s->cmpcv);
++
++        sysctr_compare_value_update(s);
++        break;
++    
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                  "Guest write to invalid register\n");
++        break;
++    }
++}
++
++static void imx_sysctr_timer_init(Object *obj)
++{
++    IMXSysctrState *t = IMX_SYSCTR_TIMER(obj);
++
++    sysbus_init_irq(SYS_BUS_DEVICE(obj), &t->irq);
++}
++
++static const MemoryRegionOps timer_ops = {
++    .read = timer_read,
++    .write = timer_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++    .valid = {
++        .min_access_size = 4,
++        .max_access_size = 4
++    }
++};
++
++
++static void imx_sysctr_timeout(void *opaque)
++{
++    IMXSysctrState *s = IMX_SYSCTR_TIMER(opaque);
++
++    /* continue counting up */
++    imx_sysctr_compute_next_timeout(s, true);
++
++    s->cmpcr |= SYSCTR_CMPCR_ISTAT;
++    /* send the irq */
++    imx_sysctr_update_int(s);
++
++    if ((s->cmpcr & SYSCTR_CMPCR_EN)) {
++        ptimer_run(s->timer, 1);
++    }
++}
++
++static void imx_sysctr_timer_realize(DeviceState *dev, Error **errp)
++{
++    IMXSysctrState *s = IMX_SYSCTR_TIMER(dev);
++
++    memory_region_init_io(&s->iomem,
++                            OBJECT(s),
++                            &timer_ops,
++                            s,
++                            TYPE_IMX_SYSCTR_TIMER,
++                            0x20000);
++    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->iomem);
++
++    s->timer = ptimer_init(imx_sysctr_timeout, s, PTIMER_POLICY_DEFAULT);
++
++    /* the default freq is 24Mhz and divided by 3*/
++    ptimer_transaction_begin(s->timer);
++    ptimer_set_freq(s->timer, 24000000 / 3);
++    ptimer_transaction_commit(s->timer);
++}
++
++static void imx_sysctr_timer_reset(DeviceState *dev)
++{
++    IMXSysctrState *s = IMX_SYSCTR_TIMER(dev);
++
++    ptimer_transaction_begin(s->timer);
++    /* stop timer */
++    ptimer_stop(s->timer);
++    s->cmpcr = 0;
++    s->cmpcv = 0;
++    s->cnt = 0;
++
++    s->next_timeout = SYSCTR_TIMER_MAX;
++
++    ptimer_set_limit(s->timer, SYSCTR_TIMER_MAX, 1);
++
++    /* if the timer is still enabled, restart it */
++    if ((s->cmpcr & SYSCTR_CMPCR_EN)) {
++        ptimer_run(s->timer, 1);
++    }
++    ptimer_transaction_commit(s->timer);
++
++    DPRINTF("System counter was reset\n");
++
++}
++
++static void imx_sysctr_timer_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->realize = imx_sysctr_timer_realize;
++    dc->reset = imx_sysctr_timer_reset;
++}
++
++static const TypeInfo imx_sysctr_timer_info = {
++    .name          = TYPE_IMX_SYSCTR_TIMER,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(IMXSysctrState),
++    .instance_init = imx_sysctr_timer_init,
++    .class_init    = imx_sysctr_timer_class_init,
++};
++
++static void imx_sysctr_timer_register_types(void)
++{
++    type_register_static(&imx_sysctr_timer_info);
++}
++
++type_init(imx_sysctr_timer_register_types)
++
++static const char *imx_sysctr_timer_reg_name(uint32_t reg)
++{
++    switch (reg) {
++    case CMPCR:
++        return "CMPCR";
++    case CMPCV_LO:
++        return "CMPCV_LO";
++    case CMPCV_HI:
++        return "CMPCV_HI";
++    case CNTCV_HI:
++        return "CNTCV_HI";
++    case CNTCV_LO:
++        return "CNTCV_LO";
++    default:
++        return "[?]";
++    }
++}
+\ No newline at end of file
+diff --git a/hw/timer/meson.build b/hw/timer/meson.build
+index 598d058506..b6cd52a0b1 100644
+--- a/hw/timer/meson.build
++++ b/hw/timer/meson.build
+@@ -19,6 +19,7 @@ softmmu_ss.add(when: 'CONFIG_HPET', if_true: files('hpet.c'))
+ softmmu_ss.add(when: 'CONFIG_I8254', if_true: files('i8254_common.c', 'i8254.c'))
+ softmmu_ss.add(when: 'CONFIG_IMX', if_true: files('imx_epit.c'))
+ softmmu_ss.add(when: 'CONFIG_IMX', if_true: files('imx_gpt.c'))
++softmmu_ss.add(when: 'CONFIG_IMX', if_true: files('imx_sysctr_timer.c'))
+ softmmu_ss.add(when: 'CONFIG_LM32_DEVICES', if_true: files('lm32_timer.c'))
+ softmmu_ss.add(when: 'CONFIG_MILKYMIST', if_true: files('milkymist-sysctl.c'))
+ softmmu_ss.add(when: 'CONFIG_MIPS_CPS', if_true: files('mips_gictimer.c'))
+diff --git a/include/hw/timer/imx_sysctr_timer.h b/include/hw/timer/imx_sysctr_timer.h
+new file mode 100644
+index 0000000000..c36ae9b393
+--- /dev/null
++++ b/include/hw/timer/imx_sysctr_timer.h
+@@ -0,0 +1,84 @@
++/*
++ * QEMU NXP Sysctr Timer
++ *
++ * Author: Viorica Mancas <vioricamancas@yahoo.com>
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
++ * THE SOFTWARE.
++ */
++
++#ifndef IMX_SYSCTR_H
++#define IMX_SYSCTR_H
++
++#include "hw/sysbus.h"
++#include "hw/ptimer.h"
++#include "hw/misc/imx_ccm.h"
++#include "qom/object.h"
++
++/*
++ * sysctr : System counter
++ *
++ * The System Counter inputs two counter clock sources and outputs a counter
++ * value and interrupt signals (one per compare frame) to the platform’s
++ * interrupt controller.
++ */
++
++/* The counter in the timer is 56 bits (first 8 are 0) */
++#define SYSCTR_TIMER_MAX  0X00FFFFFFFFFFFFFFUL
++
++/* addresses */
++#define CMP_OFFSET	0x10000
++
++#define CNTCV_LO	0x8
++#define CNTCV_HI	0xc
++#define CMPCV_LO	(CMP_OFFSET + 0x20)
++#define CMPCV_HI	(CMP_OFFSET + 0x24)
++#define CMPCR		(CMP_OFFSET + 0x2c)
++
++/* Control register.  Not all of these bits have any effect (yet) */
++#define SYSCTR_CMPCR_EN        (1 << 0)  /*  Enable */
++#define SYSCTR_CMPCR_IMASK     (1 << 1)  /*  Enable */
++#define SYSCTR_CMPCR_ISTAT     (1 << 2)  /*  Compare (interrupt) status (read only) */
++/* interupt condition: ISTAT = (CNTCV >= CMPCV) */
++
++#define CMPCR_WRITE (SYSCTR_CMPCR_IMASK | SYSCTR_CMPCR_EN)
++
++#define TYPE_IMX_SYSCTR_TIMER "imx.sysctr-timer"
++
++typedef struct IMXSysctrState IMXSysctrState;
++DECLARE_INSTANCE_CHECKER(IMXSysctrState, IMX_SYSCTR_TIMER,
++                         TYPE_IMX_SYSCTR_TIMER)
++
++struct IMXSysctrState {
++    /*< private >*/
++    SysBusDevice parent_obj;
++
++    /*< public >*/
++    ptimer_state *timer;
++    MemoryRegion  iomem;
++    
++    qemu_irq irq;
++
++    uint32_t cmpcr; /* Compare Control Register */
++    uint64_t cnt;   /* Counter on 56 bits */
++    uint64_t cmpcv; /* Compare Count Value */
++
++    uint64_t next_timeout;
++};
++
++#endif /* IMX_SYSCTR_H */
+-- 
+2.20.1
 
-Because the following object is a MemoryRegion whose first 4 four bytes
-are part of the type name, this out-of-bounds read may not be harmful.
-
-2. More information.
-
-According to
-https://www.xilinx.com/html_docs/registers/ug1087/ug1087-zynq-ultrascale-registers.html,
-offset 0x3AC is allowed.
-
-DP_INT_MASK 0x000003A4 32 mixed 0xFFFFF03F Interrupt Mask Register for
-intrN. This is a read-only location and can be atomically altered by
-either the IDR or the IER.
-DP_INT_EN 0x000003A8 32 mixed 0x00000000 Interrupt Enable Register. A
-write of to this location will unmask the interrupt. (IMR: 0)
-DP_INT_DS 0x000003AC 32 mixed 0x00000000 Interrupt Disable Register. A
-write of one to this location will mask the interrupt. (IMR:
-
-```
-memory_region_init_io(&s->core_iomem, obj, &dp_ops, s, TYPE_XLNX_DP,
-".core", 0x3AF);
-```
-The size of this memory region is 0x3AF, which is also reasonable (0x3B0
-is better).
-
-According to the implementation of xlnx_dp_write, when the offset is
-0x3A8 and 0x3AC, the virtual device will access s->core_registers[0x3A4
->> 2]. That is to say, the maxize of s->core_registers could be ((0x3A4
->> 2) + 1). Therefore, it is also reasonable to define
-s->core_registers[DP_CORE_REG_ARRAY_SIZE] where DP_CORE_REG_ARRAY_SIZE
-is (0x3AF >> 2) (0x3A8 >> 2 is better). However, in xlxn_dp_read, offset
-0x3A8 and 0x3AC is not handled like what is done in the xlnx_dp_write.
-
-## More technique details
-
-### QEMU version, upstream commit/tag
-3e13d8e34b53d8f9a3421a816ccfbdc5fa874e98/6.0.50
-
-### Host and Guest
-Ubuntu 18.04 docker/QTest Fuzzer
-
-### Stack traces, crash details (UBSAN enabled)
-
-```
-../hw/display/xlnx_dp.c:717:15: runtime error: index 235 out of bounds
-for type 'uint32_t [235]'
-SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior
-../hw/display/xlnx_dp.c:717:15 in
-```
-
-### Reproducer steps
-
-```
-#!/bin/bash -x
-export QEMU=/root/qemu/build-ubsan/qemu-system-aarch64
-export BUILDROOT=./
-cat << EOF | $QEMU \
--machine xlnx-zcu102,accel=qtest -qtest stdio -monitor none -serial none \
--display none -nodefaults -qtest stdio
-readl 0xfd4a03ac
-EOF
-```
-## Suggested fix
-
-```
-diff --git a/hw/display/xlnx_dp.c b/hw/display/xlnx_dp.c
-index 7bcbb13..ff0b8a9 100644
---- a/hw/display/xlnx_dp.c
-+++ b/hw/display/xlnx_dp.c
-@@ -713,8 +713,10 @@ static uint64_t xlnx_dp_read(void *opaque, hwaddr
-offset, unsigned size)
-         ret = 0;
-         break;
-     default:
--        assert(offset <= (0x3AC >> 2));
--        ret = s->core_registers[offset];
-+        if (offset == (0x3A8 >> 2) || offset == (0x3AC >> 2))
-+            ret = s->core_registers[DP_INT_MASK];
-+        else:
-+            ret = s->core_registers[offset];
-         break;
-     }
-
-@@ -876,7 +878,6 @@ static void xlnx_dp_write(void *opaque, hwaddr
-offset, uint64_t value,
-         xlnx_dp_update_irq(s);
-         break;
-     default:
--        assert(offset <= (0x504C >> 2));
-         s->core_registers[offset] = value;
-         break;
-     }
-diff --git a/include/hw/display/xlnx_dp.h b/include/hw/display/xlnx_dp.h
-index e85e428..99a6d47 100644
---- a/include/hw/display/xlnx_dp.h
-+++ b/include/hw/display/xlnx_dp.h
-@@ -39,7 +39,7 @@
- #define AUD_CHBUF_MAX_DEPTH                 (32 * KiB)
- #define MAX_QEMU_BUFFER_SIZE                (4 * KiB)
-
--#define DP_CORE_REG_ARRAY_SIZE              (0x3AF >> 2)
-+#define DP_CORE_REG_ARRAY_SIZE              (0x3A8 >> 2)
- #define DP_AVBUF_REG_ARRAY_SIZE             (0x238 >> 2)
- #define DP_VBLEND_REG_ARRAY_SIZE            (0x1DF >> 2)
- #define DP_AUDIO_REG_ARRAY_SIZE             (0x50 >> 2)
-```
-
-## Contact
-
-Let me know if I need to provide more information.
-
-Best,
-Qiang

@@ -1,72 +1,72 @@
-Received: by 2002:ac2:5fca:0:0:0:0:0 with SMTP id q10csp297483lfg;
-        Thu, 8 Jul 2021 05:56:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxtlKgvVWmYCVcbBeBUH7Ex0ZysHHiW/LMPbyc9ptUHXPZhvR19au5WHQDllUlhDZBpbHqZ
-X-Received: by 2002:a17:906:498b:: with SMTP id p11mr31149244eju.295.1625748970953;
-        Thu, 08 Jul 2021 05:56:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1625748970; cv=none;
+Received: by 2002:ac2:5fca:0:0:0:0:0 with SMTP id q10csp297879lfg;
+        Thu, 8 Jul 2021 05:56:44 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy30iCpy/CYmegSw/959JuclC7KfNdfyb9Ks197vvK/cQDH4XCgcQnOd2Cs9I/pgTeaHDLS
+X-Received: by 2002:ab0:550d:: with SMTP id t13mr29425465uaa.59.1625749004361;
+        Thu, 08 Jul 2021 05:56:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1625749004; cv=none;
         d=google.com; s=arc-20160816;
-        b=xoVTWlwMazyErMIMs6Sqto69czBOqta/P7EGnkOL45J76S6iXR+ZgupIN+sQjqsvM0
-         iFC6qC+sa3gHsXouF+654VPlCWkHsQwD3LDdgouL6JvqRS/2H1s3GFvLgLguPfl6daZ6
-         OywgQaVGLk1l9l1Xm5F8Klj5V4ZSpg7AE/hrQpb0iG0PSZQGZiz4qav3hQKMxjs1ADds
-         aXZLyFWeJP3+hVpqoO1ENV+zaNomMBsuJTSajgU7Ig6Kk7OeY0z+UEruxdzv2H9r4/wN
-         mpjPy65mcz1euL8BYicR7FeUaAAJGAynVEpHnmdzRYyE9NXDaO96wOOwn/RJ4eKHk74n
-         nhpg==
+        b=vEh++/2PVMmfhc6Ips/mh1bOEkupqGfdjlCiqk26x66MWOdfu+KUYsiBF/+tPAVf3G
+         SXiDQi9OPiH0yMLQch/R3WeTJn2g5xhd8SRUu+bFeYOM2ypwUxOWRHF349soM7O3vcD7
+         8Uy2Z6EIIAcA52L0AOmJdJTNphPagAjN48gD8QSPzlCxf/TXLJeb2mx1DRpUyF1WBgHK
+         tSVrFv4b9OmvyaRl1Lr3BI7kM7rCJxIfraBGAQHKbEw2kwOBe6Wp1tux81ylEGYpRE0J
+         daiQlBUh313suyGeRdR2MmYUvPey4RS2w4EpKHM7GWAsj/mZ4LKAEYrmrHj4uxSAcby1
+         y3fA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:references
          :in-reply-to:message-id:date:subject:to:from;
-        bh=SdfYf+SCilV6edgiiLgBVYZIMFMEVRiguiR4ZtcZxeE=;
-        b=DVK3BY8LFVQgCjjXduEME7KcA0Iw3uhJbX7SDagXAgSCOax6GUrrCd6VNLYcKYCy3A
-         TnMi5PfSAyMlUIX2pmcC8CdAkaxpVrb5AH7WhD/SkZ0zDwVGPqN4oKmCpKflg3KMEQ/w
-         AA3JKnOdkU1PaWhF2nDyRsCiF7toamU7ReVs/oYx0mOEghRltbHFPxyRUnlw4nD68ub4
-         PlIhlQjyCvrZ6mwLWfOlxbuaSnDJTYb3hNQIiznTq0n/OHareHL64FjRbx40xmPxe2a+
-         zQ1XA622GIJf6ICprelgZuaTLdrldfmlvFzItPRP2DyQ09VexYK/h0KvIO1cPTFXiski
-         igSQ==
+        bh=JUTmMEJTpwxZC6zBQhyQWRxvqEkg7flt/eSUqYagHG0=;
+        b=RGqfSqyMRDDtMoTi4AgX19FmNVu0uy6pS3z5L9dfNy91x2VpWRuWgCwUWhjqTsDYsl
+         qeGG/Fa54jp4oIzRwIVAxN8WD7YBtwCHHE+0N7uaFPSQc7fTK03+IIFYsjLkvhwyYbye
+         MDkzFk2uSYjJhQIpJuX5IsuhqwjR+8qkFKLrQgEPrHdYL/+RME7DU94J4ojM89UV2Xaf
+         f6N+u+EDKcwuHeuurQwtCGS+EBILu7LJfn7CgThlgXXXIlUPnJEXKMEcJjLwmhwWgBQt
+         2tgtPNiHVsHoutF8BKvMLpnyvR4hxKAqrdMyNNnEMaFutecceWiWaTbZVIQjdNFoXa+U
+         tLNA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id hq18si2930917ejc.5.2021.07.08.05.56.10
+        by mx.google.com with ESMTPS id n23si2316170vsa.295.2021.07.08.05.56.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Jul 2021 05:56:10 -0700 (PDT)
+        Thu, 08 Jul 2021 05:56:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=huawei.com
-Received: from localhost ([::1]:49812 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51018 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1m1TZZ-0004P5-Uh
-	for alex.bennee@linaro.org; Thu, 08 Jul 2021 08:56:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41292)
+	id 1m1Ta7-0005Gs-Jc
+	for alex.bennee@linaro.org; Thu, 08 Jul 2021 08:56:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41310)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangxingang5@huawei.com>)
- id 1m1TZI-0004LF-6Y; Thu, 08 Jul 2021 08:55:52 -0400
-Received: from szxga01-in.huawei.com ([45.249.212.187]:2432)
+ id 1m1TZJ-0004Lh-Gg; Thu, 08 Jul 2021 08:55:53 -0400
+Received: from szxga08-in.huawei.com ([45.249.212.255]:2248)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangxingang5@huawei.com>)
- id 1m1TZE-0005Z2-Jx; Thu, 08 Jul 2021 08:55:51 -0400
-Received: from dggemv704-chm.china.huawei.com (unknown [172.30.72.53])
- by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4GLGQm05h5zbbYg;
- Thu,  8 Jul 2021 20:52:16 +0800 (CST)
+ id 1m1TZF-0005ZY-0W; Thu, 08 Jul 2021 08:55:53 -0400
+Received: from dggemv704-chm.china.huawei.com (unknown [172.30.72.57])
+ by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4GLGN843d1z1CGSF;
+ Thu,  8 Jul 2021 20:50:00 +0800 (CST)
 Received: from dggpemm500009.china.huawei.com (7.185.36.225) by
  dggemv704-chm.china.huawei.com (10.3.19.47) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2176.2; Thu, 8 Jul 2021 20:55:28 +0800
+ 15.1.2176.2; Thu, 8 Jul 2021 20:55:30 +0800
 Received: from huawei.com (10.174.185.226) by dggpemm500009.china.huawei.com
  (7.185.36.225) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2176.2; Thu, 8 Jul 2021
- 20:55:28 +0800
+ 20:55:30 +0800
 From: Wang Xingang <wangxingang5@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
  <shannon.zhaosl@gmail.com>, <imammedo@redhat.com>, <mst@redhat.com>,
  <marcel.apfelbaum@gmail.com>, <peter.maydell@linaro.org>,
  <ehabkost@redhat.com>, <richard.henderson@linaro.org>, <pbonzini@redhat.com>
-Subject: [PATCH v5 2/9] hw/pxb: Add a bypass iommu property
-Date: Thu, 8 Jul 2021 12:55:12 +0000
-Message-ID: <1625748919-52456-3-git-send-email-wangxingang5@huawei.com>
+Subject: [PATCH v5 5/9] hw/pci: Add pci_bus_range() to get PCI bus number range
+Date: Thu, 8 Jul 2021 12:55:15 +0000
+Message-ID: <1625748919-52456-6-git-send-email-wangxingang5@huawei.com>
 X-Mailer: git-send-email 2.6.4.windows.1
 In-Reply-To: <1625748919-52456-1-git-send-email-wangxingang5@huawei.com>
 References: <1625748919-52456-1-git-send-email-wangxingang5@huawei.com>
@@ -76,8 +76,8 @@ X-Originating-IP: [10.174.185.226]
 X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
  dggpemm500009.china.huawei.com (7.185.36.225)
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.187;
- envelope-from=wangxingang5@huawei.com; helo=szxga01-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.255;
+ envelope-from=wangxingang5@huawei.com; helo=szxga08-in.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
@@ -99,49 +99,58 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: xieyingtai@huawei.com, wangxingang5@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /lJ3KoiT0Uzh
+X-TUID: JOQg0jeqa6W9
 
 From: Xingang Wang <wangxingang5@huawei.com>
 
-Add a bypass_iommu property for pci_expander_bridge, the property
-is used to indicate whether pxb root bus will bypass iommu. By
-default the bypass_iommu is disabled, and it can be enabled with:
-qemu -device pxb-pcie,bus_nr=0x10,addr=0x1,bypass_iommu=true
+This helps to get the min and max bus number of a PCI bus hierarchy.
 
 Signed-off-by: Xingang Wang <wangxingang5@huawei.com>
 Reviewed-by: Eric Auger <eric.auger@redhat.com>
 ---
- hw/pci-bridge/pci_expander_bridge.c | 3 +++
- 1 file changed, 3 insertions(+)
+ hw/pci/pci.c         | 16 ++++++++++++++++
+ include/hw/pci/pci.h |  1 +
+ 2 files changed, 17 insertions(+)
 
-diff --git a/hw/pci-bridge/pci_expander_bridge.c b/hw/pci-bridge/pci_expander_bridge.c
-index aedded1064..7112dc3062 100644
---- a/hw/pci-bridge/pci_expander_bridge.c
-+++ b/hw/pci-bridge/pci_expander_bridge.c
-@@ -57,6 +57,7 @@ struct PXBDev {
+diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+index 27d588e268..23d2ae2ab2 100644
+--- a/hw/pci/pci.c
++++ b/hw/pci/pci.c
+@@ -537,6 +537,22 @@ int pci_bus_num(PCIBus *s)
+     return PCI_BUS_GET_CLASS(s)->bus_num(s);
+ }
  
-     uint8_t bus_nr;
-     uint16_t numa_node;
-+    bool bypass_iommu;
- };
- 
- static PXBDev *convert_to_pxb(PCIDevice *dev)
-@@ -255,6 +256,7 @@ static void pxb_dev_realize_common(PCIDevice *dev, bool pcie, Error **errp)
-     bus->map_irq = pxb_map_irq_fn;
- 
-     PCI_HOST_BRIDGE(ds)->bus = bus;
-+    PCI_HOST_BRIDGE(ds)->bypass_iommu = pxb->bypass_iommu;
- 
-     pxb_register_bus(dev, bus, &local_err);
-     if (local_err) {
-@@ -301,6 +303,7 @@ static Property pxb_dev_properties[] = {
-     /* Note: 0 is not a legal PXB bus number. */
-     DEFINE_PROP_UINT8("bus_nr", PXBDev, bus_nr, 0),
-     DEFINE_PROP_UINT16("numa_node", PXBDev, numa_node, NUMA_NODE_UNASSIGNED),
-+    DEFINE_PROP_BOOL("bypass_iommu", PXBDev, bypass_iommu, false),
-     DEFINE_PROP_END_OF_LIST(),
- };
- 
++/* Returns the min and max bus numbers of a PCI bus hierarchy */
++void pci_bus_range(PCIBus *bus, int *min_bus, int *max_bus)
++{
++    int i;
++    *min_bus = *max_bus = pci_bus_num(bus);
++
++    for (i = 0; i < ARRAY_SIZE(bus->devices); ++i) {
++        PCIDevice *dev = bus->devices[i];
++
++        if (dev && PCI_DEVICE_GET_CLASS(dev)->is_bridge) {
++            *min_bus = MIN(*min_bus, dev->config[PCI_SECONDARY_BUS]);
++            *max_bus = MAX(*max_bus, dev->config[PCI_SUBORDINATE_BUS]);
++        }
++    }
++}
++
+ int pci_bus_numa_node(PCIBus *bus)
+ {
+     return PCI_BUS_GET_CLASS(bus)->numa_node(bus);
+diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
+index f4d51b672b..d0f4266e37 100644
+--- a/include/hw/pci/pci.h
++++ b/include/hw/pci/pci.h
+@@ -450,6 +450,7 @@ static inline PCIBus *pci_get_bus(const PCIDevice *dev)
+     return PCI_BUS(qdev_get_parent_bus(DEVICE(dev)));
+ }
+ int pci_bus_num(PCIBus *s);
++void pci_bus_range(PCIBus *bus, int *min_bus, int *max_bus);
+ static inline int pci_dev_bus_num(const PCIDevice *dev)
+ {
+     return pci_bus_num(pci_get_bus(dev));
 -- 
 2.19.1
 
